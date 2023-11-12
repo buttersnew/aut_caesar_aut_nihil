@@ -3752,6 +3752,14 @@ game_menus = [
   "Choose an action:",
   "none",
   [],[
+    ("camp_action",[
+    ],"Show legendary items.",[
+      (assign, "$cheat_find_item_range_begin", 0),
+      (assign,"$current_item",-1),
+      (assign,"$selected_item",-1),
+
+      (start_presentation, "prsnt_display_special_items"),
+    ]),
     # Original camp menus
     ("camp_action",[
       (ge, "$cheat_mode", 1)

@@ -1017,7 +1017,7 @@ scenes = [
   ("pillars", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x000000003000050000046d1b0000189f00002a8380006d91",[], ["bonus_chest_10"], "outer_terrain_beach_2"),
   ("grave_anatolia", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x000000003000050000046d1b0000189f00002a8380006d91",[], ["bonus_chest_11"], "outer_terrain_beach"),
 
-  ("parthian_palace_garden", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0x000000003000050000046d1b0000189f00002a8380006d91",["exit"], [], "outer_terrain_desert"),
+  ("parthian_palace_garden", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0x000000003000050000046d1b0000189f00002a8380006d91",[], ["bonus_chest_17"], "outer_terrain_desert"),
 
   ("gardens_of_manacea", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x0000000230000500000a9ea90000654a0000214300005720",[], [], "outer_terrain_plain"),
 

@@ -2383,7 +2383,7 @@ all_items_end = "itm_items_end"
 # horses_end      = "itm_arrows"
 
 legendary_items_begin = "itm_hercules_club"
-legendary_items_end = all_items_end
+legendary_items_end = "itm_dedal_kufel"
 
 all_quests_begin = 0
 all_quests_end = "qst_quests_end"
@@ -2929,7 +2929,7 @@ ballista_end   = "itm_torch"
 
 # music instruments
 roman_music_begin   = "itm_f_cornu"
-roman_music_end     = "itm_lyre_rich"
+roman_music_end     = "itm_lyre"
 
 barbarian_music_begin   = "itm_horn"
 barbarian_music_end     = "itm_f_cornu"

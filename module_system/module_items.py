@@ -5978,20 +5978,13 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
 ##for musicans
 ["horn","Horn",[("horn",0)],itp_type_one_handed_wpn|itp_primary|itp_no_parry|itp_merchandise,0,
 1000,weight(2.0)|abundance(20),0,[],[fac_culture_1,fac_culture_2,fac_culture_2_1,fac_culture_3,fac_culture_4]],
-
 ["trumpet_celtic","Carnyx",[("trumpet_celtic",0)],itp_type_one_handed_wpn|itp_primary|itp_no_parry|itp_merchandise,0,
 1000,weight(2.0)|abundance(20),0,[],[fac_culture_1,fac_culture_2,fac_culture_2_1,fac_culture_3,fac_culture_4]],
-
 ["trumpet_eastern","Trumpet",[("trumpet_eastern",0)],itp_type_one_handed_wpn|itp_primary|itp_no_parry|itp_merchandise,0,
 1000,weight(2.0)|abundance(20),0,[],[fac_culture_1,fac_culture_2,fac_culture_2_1,fac_culture_3,fac_culture_4]],
-
-
 ["f_cornu", "Cornu", [("f_cornu",0),("cornu_carry_spear",ixmesh_carry)], itp_type_two_handed_wpn|itp_two_handed|itp_primary|itp_cant_use_on_horseback, itcf_carry_spear,
 400, weight(2.75)|difficulty(0)|spd_rtng(40)|weapon_length(125)|swing_damage(0,cut)|thrust_damage(0,pierce), imodbits_sword_high ],
-##for musicans end
-## for ministrels
-["lyre_rich","Golden Lyre",[("lyre_neroL",0)],		itp_type_hand_armor|itp_force_show_left_hand|itp_force_show_right_hand|itp_civilian,0,
-4000,weight(1),0],
+
 ["lyre","Lyre",[("dedal_liraL",0)],		itp_type_hand_armor|itp_force_show_left_hand|itp_force_show_right_hand|itp_civilian,0,
 100,weight(1),0],
 ["lute","Lute",[("dedal_lutniaL",0)],	itp_type_hand_armor|itp_force_show_left_hand|itp_force_show_right_hand|itp_civilian,0,
@@ -6092,6 +6085,10 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
 ##special perfume
 ["perfume_special","Roses of Egypt", [("roman_palace_plate_2",0)],itp_unique|itp_type_goods,0,
 15000,weight(1)|abundance(60),imodbits_none],
+
+# Neros lyre
+["lyre_rich","Golden Lyre",[("lyre_neroL",0)],itp_type_hand_armor|itp_force_show_left_hand|itp_force_show_right_hand|itp_civilian,0,
+4000,weight(1),0],
 
 ##special items
 #crown
@@ -6256,8 +6253,9 @@ itp_type_one_handed_wpn|itp_unique|itp_primary, itc_gladius_2|itcf_carry_dagger_
 5000 , weight(3)|abundance(100)|head_armor(30)|body_armor(0)|leg_armor(0)|difficulty(9) ,imodbits_armor ],
 
 #vitellius
-["roman_rich_vitellius", "Vitellius", [("aristocrats_cloth_vitellius",0)],itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["roman_rich_vitellius", "Toga with a fat belly", [("aristocrats_cloth_vitellius",0)],itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 roman_rich_armor_price,roman_rich_armor,imodbits_cloth, [], [] ],
+
 ##wild animals for hunting
 ["animal_boar","Boar", [("boar",0),("boar_2",imodbit_cracked)],	itp_disable_agent_sounds, 0,
 10,abundance(10)|hit_points(45)|body_armor(18)|difficulty(0)|horse_speed(55)|horse_maneuver(150)|horse_charge(30)|horse_scale(70),imodbits_horse_basic],
@@ -6273,27 +6271,6 @@ roman_rich_armor_price,roman_rich_armor,imodbits_cloth, [], [] ],
 ["wild_lion_2","Leopard", [("leopard", 0)], itp_disable_agent_sounds|itp_type_horse, 0,
 10, abundance(10)|body_armor(25)|difficulty(1)|hit_points(250)|horse_maneuver(65)|horse_speed(50)|horse_charge(40)|horse_scale(96), imodbits_horse_basic, []],
 ##wild animals for hunting end
-##item for tavern goers
-["dedal_kufel","Cup",[("dedal_kufelL",0)],	itp_type_hand_armor|itp_force_show_left_hand|itp_force_show_right_hand|itp_civilian,0,
-1,weight(1),0],
-##item for tavern goers end
-##invisible items
-["nothing_body", "nothing", [("nothing_rig",0)], itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
-500 , weight(3)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(10)|difficulty(0) ,imodbits_cloth],
-["nothing_head", "nothing", [("nothing_rig",0)],  itp_type_head_armor |itp_covers_head |itp_civilian |itp_attach_armature,0,
-1 , weight(0.5)|abundance(100)|head_armor(4)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_cloth ],
-["nothing_legs", "nothing", [("nothing_rig",0)], itp_type_foot_armor |itp_civilian | itp_attach_armature ,0,
-30 , weight(1)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
-["nothing_hands","nothing",[("nothing",0)],	itp_type_hand_armor,0,0,weight(1),0],
-##invisible items end
-["banner_background1","Banner", [("background_banner_01",0)],itp_type_polearm|itp_offset_lance|itp_primary|itp_penalty_with_shield|itp_wooden_parry|itp_wooden_attack,itc_parry_polearm|itcf_carry_sword_back,9, weight(3.5)|spd_rtng(120) | weapon_length(115)|swing_damage(0,blunt) | thrust_damage(0,blunt),imodbits_none, [
-(ti_on_init_item, [(store_trigger_param_1, ":agent_no"),
-(store_trigger_param_2, ":troop_no"),
-(call_script, "script_shield_item_set_banner", "tableau_custom_banner_default", ":agent_no", ":troop_no")])]],
-["banner_background2","Banner", [("background_banner_02",0)],itp_type_polearm|itp_offset_lance|itp_primary|itp_penalty_with_shield|itp_wooden_parry|itp_wooden_attack,itc_parry_polearm|itcf_carry_sword_back,9, weight(3.5)|spd_rtng(120) | weapon_length(115)|swing_damage(0,blunt) | thrust_damage(0,blunt),imodbits_none, [
-(ti_on_init_item, [(store_trigger_param_1, ":agent_no"),
-(store_trigger_param_2, ":troop_no"),
-(call_script, "script_shield_item_set_banner", "tableau_custom_banner_default", ":agent_no", ":troop_no")])]],
 
 ["female_slave1", "Dancers Outfit", [("slave_roba",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
@@ -6344,6 +6321,28 @@ roman_rich_armor_price*2,roman_rich_armor,imodbits_none, [(ti_on_init_item,
 ["roman_rich_emperor_2", "Toga Picta", [("aristocrats_cloth_pruple_2",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 roman_rich_armor_price*2,roman_rich_armor,imodbits_none, [(ti_on_init_item,
 [(call_script, "script_init_roman_rich2"),]),], [fac_culture_7] ],
+
+##item for tavern goers
+["dedal_kufel","Cup",[("dedal_kufelL",0)],	itp_type_hand_armor|itp_force_show_left_hand|itp_force_show_right_hand|itp_civilian,0,
+1,weight(1),0],
+##item for tavern goers end
+##invisible items
+["nothing_body", "nothing", [("nothing_rig",0)], itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+500 , weight(3)|abundance(100)|head_armor(0)|body_armor(10)|leg_armor(10)|difficulty(0) ,imodbits_cloth],
+["nothing_head", "nothing", [("nothing_rig",0)],  itp_type_head_armor |itp_covers_head |itp_civilian |itp_attach_armature,0,
+1 , weight(0.5)|abundance(100)|head_armor(4)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_cloth ],
+["nothing_legs", "nothing", [("nothing_rig",0)], itp_type_foot_armor |itp_civilian | itp_attach_armature ,0,
+30 , weight(1)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
+["nothing_hands","nothing",[("nothing",0)],	itp_type_hand_armor,0,0,weight(1),0],
+##invisible items end
+["banner_background1","Banner", [("background_banner_01",0)],itp_type_polearm|itp_offset_lance|itp_primary|itp_penalty_with_shield|itp_wooden_parry|itp_wooden_attack,itc_parry_polearm|itcf_carry_sword_back,9, weight(3.5)|spd_rtng(120) | weapon_length(115)|swing_damage(0,blunt) | thrust_damage(0,blunt),imodbits_none, [
+(ti_on_init_item, [(store_trigger_param_1, ":agent_no"),
+(store_trigger_param_2, ":troop_no"),
+(call_script, "script_shield_item_set_banner", "tableau_custom_banner_default", ":agent_no", ":troop_no")])]],
+["banner_background2","Banner", [("background_banner_02",0)],itp_type_polearm|itp_offset_lance|itp_primary|itp_penalty_with_shield|itp_wooden_parry|itp_wooden_attack,itc_parry_polearm|itcf_carry_sword_back,9, weight(3.5)|spd_rtng(120) | weapon_length(115)|swing_damage(0,blunt) | thrust_damage(0,blunt),imodbits_none, [
+(ti_on_init_item, [(store_trigger_param_1, ":agent_no"),
+(store_trigger_param_2, ":troop_no"),
+(call_script, "script_shield_item_set_banner", "tableau_custom_banner_default", ":agent_no", ":troop_no")])]],
 
 ##for min workers
 ["pickaxe_work","Pickaxe",[("pickaxe_work2_L",0)],itp_type_hand_armor|itp_force_show_left_hand|itp_force_show_right_hand,0,0,weight(1),0],
