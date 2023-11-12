@@ -22,18 +22,20 @@ slot_item_book_reading_progress    = 2
 slot_item_book_read                = 3
 slot_item_intelligence_requirement = 4
 
-slot_item_amount_available         = 7
+slot_item_discovered               = 5
 
-slot_item_urban_demand             = 11 #consumer demand for a good in town, measured in abstract units. The more essential the item (ie, like grain) the higher the price
-slot_item_rural_demand             = 12 #consumer demand in villages, measured in abstract units
-slot_item_desert_demand            = 13 #consumer demand in villages, measured in abstract units
+slot_item_amount_available         = 5
 
-slot_item_production_slot          = 14
-slot_item_production_string        = 15
+slot_item_urban_demand             = 6 #consumer demand for a good in town, measured in abstract units. The more essential the item (ie, like grain) the higher the price
+slot_item_rural_demand             = 7 #consumer demand in villages, measured in abstract units
+slot_item_desert_demand            = 8 #consumer demand in villages, measured in abstract units
 
-slot_item_tied_to_good_price       = 20 #ie, weapons and metal armor to tools, padded to cloth, leather to leatherwork, etc
+slot_item_production_slot          = 9
+slot_item_production_string        = 10
 
-slot_item_num_positions            = 22
+slot_item_tied_to_good_price       = 11 #ie, weapons and metal armor to tools, padded to cloth, leather to leatherwork, etc
+
+slot_item_num_positions            = 21
 slot_item_positions_begin          = 23 #reserve around 5 slots after this
 
 
