@@ -9548,7 +9548,9 @@ simple_triggers = [
     (try_begin),
         #(party_slot_eq, "p_main_party", slot_party_on_water, 0),
         (neq, "$g_player_is_captive", 1),
-        (eq, "$g_is_emperor", 1),
+        # (eq, "$g_is_emperor", 1),
+        (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
+        (faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, "trp_player"),
         (neg|quest_slot_eq, "qst_become_pharao", slot_quest_object_state, 1),#only trigger once
         (store_faction_of_party, ":fac", "p_town_20"),#Alexandria
         (eq, ":fac", "$players_kingdom"),

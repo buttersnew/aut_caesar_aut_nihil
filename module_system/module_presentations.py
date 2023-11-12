@@ -6378,6 +6378,7 @@ presentations = [
 
     (try_begin),
         (gt, "$players_kingdom", 1),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
         (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_feudal),
 
         (create_text_overlay, reg1, "@Tributes paid to king:", 0),

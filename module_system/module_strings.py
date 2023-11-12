@@ -9065,6 +9065,17 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("description_roman_rich_emperor", "test"),
 ("description_roman_rich_emperor_2", "description_roman_rich_emperor_2"),
 
+("event_pharaoh_emperor_description",
+  "Pharaoh of Egypt^^Egyptian custom requires a god pharaoh as an intermediary between the people and divine world. Since Egypt became a province over a century ago, this role is traditionally held by Caesar Augustus, the Princeps of Rome.^^"
+  +"Though the Roman people do not much care about such Egyptian customs, the fertile Nile valley is a vital grain source for the city, and they do care about that. Disruptions in grain supplies will quickly hit the popularity of any ruler.^^"
+  +"An elaborate ceremony involving a whole ancient kingdom worshiping you as a god would not hurt a new Caesar's credibility either. Once you control Thebae, it is time to be officially recognized as Pharaoh."
+),
+("event_pharaoh_king_description",
+  "Pharaoh of Egypt^^Egyptian custom requires a god pharaoh as an intermediary between the people and divine world. Egypt has been conquered multiple times and the conquerers declared themselves pharaoh.^^"
+  +"Though your people do not much care about such Egyptian customs, the fertile Nile valley is a vital grain source and they do care about that.^^"
+  +"An elaborate ceremony involving a whole ancient kingdom worshiping you as a god would not hurt a new king's credibility either. Once you control Thebae, it is time to be officially recognized as Pharaoh."
+),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names

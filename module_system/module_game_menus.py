@@ -35373,16 +35373,20 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ##########################
 ##event for pharaoh quest line
 ("emperor_event_pharaoh",0,
-  "Pharaoh of Egypt^^Egyptian custom requires a god pharaoh as an intermediary between the people and divine world. Since Egypt became a province over a century ago, this role is traditionally held by Caesar Augustus, the Princeps of Rome.^^"
-  +"Though the Roman people do not much care about such Egyptian customs, the fertile Nile valley is a vital grain source for the city, and they do care about that. Disruptions in grain supplies will quickly hit the popularity of any ruler.^^"
-  +"An elaborate ceremony involving a whole ancient kingdom worshiping you as a god would not hurt a new Caesar's credibility either. Once you control Thebae, it is time to be officially recognized as Pharaoh.",
+  "{s25}",
   "none",[
+    (try_begin),
+        (ge, "$g_is_emperor", 1),
+        (str_store_string, s25, "str_event_pharaoh_emperor_description"),
+    (else_try),
+        (str_store_string, s25, "str_event_pharaoh_king_description"),
+    (try_end),
     (set_background_mesh, "mesh_pic_pyramid"),
   ],[
     ("continue",[],"Time to be become Pharaoh!",[
       (setup_quest_text,"qst_become_pharao"),
       (str_store_party_name, s22, "p_town_48"),
-      (str_store_string, s2, "@When you control {s22}, speak to the magistrate civium there to initiate a coronation ceremony."),
+      (str_store_string, s2, "@Speak to the magistrate civium of {s22} to initiate a coronation ceremony."),
       (call_script, "script_start_quest", "qst_become_pharao", "trp_fortuna"),
       (quest_set_slot, "qst_become_pharao", slot_quest_current_state, 1),
       (quest_set_slot, "qst_become_pharao", slot_quest_object_state, 1),
@@ -55430,112 +55434,123 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ),
 
 ##pharaoh ceremony events
-(
-    "pharaoh_event_1",0,
-    "The whole of Egypt is shocked by such blatant disregard of their traditions. News of your insulting behavior spreads and your numerous enemies are quick to jump on the opportunity, adding oil into the fire and stirring unrest.\
-^^Before long, there are rebellions breaking out all over the province. Troops loyal to you are tied up in the fighting, thousands are slaughtered, villages razed and crops burned down. Rome's precious supply of grain is disrupted and difficult to replace, causing unrest in the eternal city itself. Soon, Rome's streets are filled with riotous mobs and awash in blood.\
-^^None of this helps anyone see you as a true Caesar, a true Augustus, a true Princeps.",
-    "none",
-    [
+("pharaoh_event_1",0,
+  "The whole of Egypt is shocked by such blatant disregard of their traditions. News of your insulting behavior spreads and your numerous enemies are quick to jump on the opportunity, adding oil into the fire and stirring unrest."
+  +"^^Before long, there are rebellions breaking out all over the province. Troops loyal to you are tied up in the fighting, thousands are slaughtered, villages razed and crops burned down."
+  +" {s25}",
+  "none",[
+    (try_begin),
+        (ge, "$g_is_emperor", 1),
+        (str_store_string, s25,
+        "@Rome's precious supply of grain is disrupted and difficult to replace, causing unrest in the eternal city itself. Soon, Rome's streets are filled with riotous mobs and awash in blood."
+        +"^^None of this helps anyone see you as a true Caesar, a true Augustus, a true Princeps."),
+    (else_try),
+        (str_store_string, s25, "@This is a disastrous day for your rule."),
+    (try_end),
     (set_background_mesh, "mesh_pic_pyramid"),
-      ],
-    [
-      ("continue",[],"Continue...",
-       [
-        (call_script, "script_change_player_relation_with_center", "p_town_48", -12),#theben
-        (call_script, "script_change_player_relation_with_center", "p_town_20", -12),#alexandria
+  ],[
+  ("continue",[],"Continue...",[
+    (call_script, "script_change_player_relation_with_center", "p_town_48", -25),#theben
+    (call_script, "script_change_player_relation_with_center", "p_town_20", -25),#alexandria
+
+    (try_begin),
+        (ge, "$g_is_emperor", 1),
         (call_script, "script_change_player_relation_with_center", "p_town_6", -12),#Rome
-        (set_spawn_radius, 10),
+    (try_end),
+    (set_spawn_radius, 10),
 
-        (try_begin),
-            (store_num_parties_of_template, ":num_parties", "pt_rebels"),
-            (lt, ":num_parties", 30),
-            (call_script, "script_spawn_party","p_town_20","pt_rebels"),
-        (try_end),
+    (try_begin),
+        (store_num_parties_of_template, ":num_parties", "pt_rebels"),
+        (lt, ":num_parties", 30),
+        (call_script, "script_spawn_party","p_town_20","pt_rebels"),
+    (try_end),
 
-        (call_script, "script_spawn_party","p_town_48","pt_egyptian_rebels"),
-        (call_script, "script_spawn_party","p_town_48","pt_egyptian_rebels"),
-        (call_script, "script_spawn_party","p_town_48","pt_egyptian_rebels"),
+    (call_script, "script_spawn_party","p_town_48","pt_egyptian_rebels"),
+    (call_script, "script_spawn_party","p_town_48","pt_egyptian_rebels"),
+    (call_script, "script_spawn_party","p_town_48","pt_egyptian_rebels"),
 
-        (try_begin),
-            (store_num_parties_of_template, ":num_parties", "pt_rebels"),
-            (lt, ":num_parties", 30),
-            (call_script, "script_spawn_party","p_town_20","pt_rebels"),
-        (try_end),
+    (try_begin),
+        (store_num_parties_of_template, ":num_parties", "pt_rebels"),
+        (lt, ":num_parties", 30),
+        (call_script, "script_spawn_party","p_town_20","pt_rebels"),
+    (try_end),
 
-        (call_script, "script_spawn_party","p_town_20","pt_egyptian_rebels"),
-        (call_script, "script_spawn_party","p_town_20","pt_egyptian_rebels"),
-        (call_script, "script_spawn_party","p_town_20","pt_egyptian_rebels"),
-        (val_add, "$g_unrest", 5),
-        (display_message, "@Stability of the Empire decreases", color_bad_news),
-        (call_script, "script_change_center_prosperity", "p_town_20", -5),
-        (call_script, "script_end_quest", "qst_become_pharao"),
-        (call_script, "script_change_player_right_to_rule", -15),
-        (change_screen_map),
-        ]),
+    (call_script, "script_spawn_party","p_town_20","pt_egyptian_rebels"),
+    (call_script, "script_spawn_party","p_town_20","pt_egyptian_rebels"),
+    (call_script, "script_spawn_party","p_town_20","pt_egyptian_rebels"),
+    (val_add, "$g_unrest", 5),
+    (display_message, "@Stability of the Empire decreases", color_bad_news),
+    (call_script, "script_change_center_prosperity", "p_town_20", -5),
+    (call_script, "script_end_quest", "qst_become_pharao"),
+    (call_script, "script_change_player_right_to_rule", -15),
+    (change_screen_map),
+  ]),
+]),
 
-     ]
-),
-(
-    "pharaoh_event_2",0,
-    "You finance a lavish festival while the best of Egypt's priests and scholars find elaborate ways to absolutely minimize the time necessary to conduct all ceremonies without offending traditions too much. Your haste raises a few eyebrows and there is a disgruntled minority of traditionalists, but overall the ceremony is a success. You presented before the people of Egypt wearing the double crown and they have recognized you as a god. The province is at peace and steady supplies of grain flow to Rome, buying the loyalty of its people.",
-    "none",
-    [
+("pharaoh_event_2",0,
+  "You finance a lavish festival while the best of Egypt's priests and scholars find elaborate ways to absolutely minimize the time necessary to conduct all ceremonies without offending traditions too much."
+  +" Your haste raises a few eyebrows and there is a disgruntled minority of traditionalists, but overall the ceremony is a success. You presented before the people of Egypt wearing the double crown and they have recognized you as a god."
+  +" {s25}",
+  "none",[
     (set_background_mesh, "mesh_pic_pyramid"),
-      ],
-    [
-      ("continue",[],"Continue...",
-       [
-        (add_xp_as_reward, 250),
-        (call_script, "script_change_player_relation_with_center", "p_town_48", 10),#theben
-        (call_script, "script_change_player_relation_with_center", "p_town_20", 10),#alexandria
-        (val_sub, "$g_unrest", 2),
-        (display_message, "@Stability of the Empire increases", color_good_news),
-        (call_script, "script_change_center_prosperity", "p_town_20", 2),
-        (call_script, "script_end_quest", "qst_become_pharao"),
-        (quest_set_slot, "qst_become_pharao", slot_quest_target_state, 1),
-        (troop_add_item, "trp_player", "itm_pharaoh_crown", 0),
-        (call_script, "script_change_player_right_to_rule", 2),
-        (call_script, "script_change_senate_support", 2, 0),
-        (call_script, "script_change_troop_renown", "trp_player", 100),
-        (call_script, "script_start_ceremnoy_pharao"),
-        ]),
-
-     ]
-),
-
-(
-    "pharaoh_event_3",0,
-    "The Egyptian nobility resents having to pay for your celebration, but they have little choice. Egypt's priests and scholars find elaborate ways to absolutely minimize the time necessary to conduct all ceremonies without offending traditions too much. Your haste raises a few eyebrows and there is a disgruntled minority of traditionalists, but overall the ceremony is a success. You presented before the people of Egypt wearing the double crown and they have recognized you as a god. The province is at peace and steady supplies of grain flow to Rome, buying the loyalty of its people.",
-    "none",
-    [
+    (try_begin),
+        (ge, "$g_is_emperor", 1),
+        (str_store_string, s25, "@The province is at peace and steady supplies of grain flow to Rome, buying the loyalty of its people."),
+    (else_try),
+        (str_store_string, s25, "@The land of Egypt is at peace."),
+    (try_end),
     (set_background_mesh, "mesh_pic_pyramid"),
-      ],
-    [
-      ("continue",[],"Continue...",
-       [
-        (add_xp_as_reward, 250),
-        (call_script, "script_change_player_relation_with_center", "p_town_48", -5),#theben
-        (call_script, "script_change_player_relation_with_center", "p_town_20", -5),#alexandria
-        (val_sub, "$g_unrest", 2),
-        (display_message, "@Stability of the Empire increases", color_good_news),
-        (call_script, "script_change_center_prosperity", "p_town_20", 2),
-        (call_script, "script_end_quest", "qst_become_pharao"),
-        (troop_add_item, "trp_player", "itm_pharaoh_crown", 0),
-        (call_script, "script_change_player_right_to_rule", 2),
-        (call_script, "script_change_senate_support", 2, 0),
-        (call_script, "script_change_troop_renown", "trp_player", 100),
-        (call_script, "script_start_ceremnoy_pharao"),
-        ]),
+  ],[
+  ("continue",[],"Continue...",[
+    (add_xp_as_reward, 250),
+    (call_script, "script_change_player_relation_with_center", "p_town_48", 10),#theben
+    (call_script, "script_change_player_relation_with_center", "p_town_20", 10),#alexandria
+    (val_sub, "$g_unrest", 2),
+    (display_message, "@Stability of the Empire increases", color_good_news),
+    (call_script, "script_change_center_prosperity", "p_town_20", 2),
+    (call_script, "script_end_quest", "qst_become_pharao"),
+    (quest_set_slot, "qst_become_pharao", slot_quest_target_state, 1),
+    (troop_add_item, "trp_player", "itm_pharaoh_crown", 0),
+    (call_script, "script_change_player_right_to_rule", 2),
+    (call_script, "script_change_senate_support", 2, 0),
+    (call_script, "script_change_troop_renown", "trp_player", 100),
+    (call_script, "script_start_ceremnoy_pharao"),
+  ]),
+]),
 
-     ]
-),
+("pharaoh_event_3",0,
+  "The Egyptian nobility resents having to pay for your celebration, but they have little choice. Egypt's priests and scholars find elaborate ways to absolutely minimize the time necessary to conduct all ceremonies without offending traditions too much."
+  +" Your haste raises a few eyebrows and there is a disgruntled minority of traditionalists, but overall the ceremony is a success. You presented before the people of Egypt wearing the double crown and they have recognized you as a god."
+  +" {s25}",
+  "none",[
+    (set_background_mesh, "mesh_pic_pyramid"),
+    (try_begin),
+        (ge, "$g_is_emperor", 1),
+        (str_store_string, s25, "@The province is at peace and steady supplies of grain flow to Rome, buying the loyalty of its people."),
+    (else_try),
+        (str_store_string, s25, "@The land of Egypt is at peace."),
+    (try_end),
+  ],[
+  ("continue",[],"Continue...",[
+    (add_xp_as_reward, 250),
+    (call_script, "script_change_player_relation_with_center", "p_town_48", -5),#theben
+    (call_script, "script_change_player_relation_with_center", "p_town_20", -5),#alexandria
+    (val_sub, "$g_unrest", 2),
+    (display_message, "@Stability of the Empire increases", color_good_news),
+    (call_script, "script_change_center_prosperity", "p_town_20", 2),
+    (call_script, "script_end_quest", "qst_become_pharao"),
+    (troop_add_item, "trp_player", "itm_pharaoh_crown", 0),
+    (call_script, "script_change_player_right_to_rule", 2),
+    (call_script, "script_change_senate_support", 2, 0),
+    (call_script, "script_change_troop_renown", "trp_player", 100),
+    (call_script, "script_start_ceremnoy_pharao"),
+  ]),
+]),
 
-(
-    "pharaoh_event_4",0,
-    "The festival richly predisposes all involved towards you with fancy food and drinks, musicians play, dancers perform. Finally, it is time for the ceremony to begin. ^^{s1}",
-    "none",
-    [
+("pharaoh_event_4",0,
+  "The festival richly predisposes all involved towards you with fancy food and drinks, musicians play, dancers perform."
+  +" Finally, it is time for the ceremony to begin.^^{s1}",
+  "none",[
     (set_background_mesh, "mesh_pic_pyramid"),
     (quest_get_slot, ":stage", "qst_become_pharao", slot_quest_current_state),
     (store_add, ":new_stage", ":stage", 1),
@@ -55543,45 +55558,41 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     (store_sub, ":new_stage", ":stage", 2),
     (val_add, ":new_stage", "str_become_pharaoh_ceremony_text2"),
     (str_store_string, s1, ":new_stage"),
-      ],
-    [
-      ("continue",[],"Continue...",
-       [
-        (add_xp_as_reward, 100),
-        (try_begin),
-          (quest_slot_ge, "qst_become_pharao", slot_quest_current_state, 7),
-          (quest_set_slot, "qst_become_pharao", slot_quest_target_state, 1),
-          (call_script, "script_end_quest", "qst_become_pharao"),
-          (try_for_range, ":village", villages_begin, villages_end),
-            (this_or_next|eq, ":village", "p_village_202"),
-            (this_or_next|eq, ":village", "p_village_203"),
-            (this_or_next|eq, ":village", "p_village_95"),
-            (this_or_next|eq, ":village", "p_village_205"),
-            (this_or_next|eq, ":village", "p_village_207"),
-            (eq, ":village", "p_village_206"),
-            (call_script, "script_change_player_relation_with_center", ":village", 5),
-          (try_end),
-        (try_end),
-        (call_script, "script_change_player_relation_with_center", "p_town_48", 3),#theben
-        (call_script, "script_change_player_relation_with_center", "p_town_20", 3),#alexandria
-        (val_sub, "$g_unrest", 1),
-        (display_message, "@Stability of the Empire increases", color_good_news),
-        (call_script, "script_change_center_prosperity", "p_town_20", 1),
-        (call_script, "script_change_player_right_to_rule", 1),
-        (call_script, "script_change_senate_support", 1, 0),
-        (call_script, "script_change_troop_renown", "trp_player", 30),
+  ],[
+  ("continue",[],"Continue...",[
+    (add_xp_as_reward, 100),
+    (try_begin),
+      (quest_slot_ge, "qst_become_pharao", slot_quest_current_state, 7),
+      (quest_set_slot, "qst_become_pharao", slot_quest_target_state, 1),
+      (call_script, "script_end_quest", "qst_become_pharao"),
+      (try_for_range, ":village", villages_begin, villages_end),
+        (this_or_next|eq, ":village", "p_village_202"),
+        (this_or_next|eq, ":village", "p_village_203"),
+        (this_or_next|eq, ":village", "p_village_95"),
+        (this_or_next|eq, ":village", "p_village_205"),
+        (this_or_next|eq, ":village", "p_village_207"),
+        (eq, ":village", "p_village_206"),
+        (call_script, "script_change_player_relation_with_center", ":village", 5),
+      (try_end),
+    (try_end),
+    (call_script, "script_change_player_relation_with_center", "p_town_48", 3),#theben
+    (call_script, "script_change_player_relation_with_center", "p_town_20", 3),#alexandria
+    (val_sub, "$g_unrest", 1),
+    (display_message, "@Stability of the Empire increases", color_good_news),
+    (call_script, "script_change_center_prosperity", "p_town_20", 1),
+    (call_script, "script_change_player_right_to_rule", 1),
+    (call_script, "script_change_senate_support", 1, 0),
+    (call_script, "script_change_troop_renown", "trp_player", 30),
 
-        (try_begin),
-          (quest_slot_ge, "qst_become_pharao", slot_quest_current_state, 7),
-          (call_script, "script_start_ceremnoy_pharao"),
-          (troop_add_item, "trp_player", "itm_pharaoh_crown", 0),
-        (else_try),
-          (change_screen_map),
-        (try_end),
-        ]),
-
-     ]
-),
+    (try_begin),
+      (quest_slot_ge, "qst_become_pharao", slot_quest_current_state, 7),
+      (call_script, "script_start_ceremnoy_pharao"),
+      (troop_add_item, "trp_player", "itm_pharaoh_crown", 0),
+    (else_try),
+      (change_screen_map),
+    (try_end),
+  ]),
+]),
 ###Disaster events for Latifundium
 ("event_latifundium_fire_damage",0,
   "Wildfires threaten {s11}^^Summer is the season of wild fires and every year thousands of estates are devastated by the flames. This year, fires burning near {s12} have approached close enough to threaten your {s11}."
@@ -60822,12 +60833,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (try_end),
   ],[
     ("option_1", [
-      (party_slot_eq, "$g_notification_menu_var1", slot_town_lord, "trp_player"),
-    ],"Damn it.",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
-    ]),
-    ("option_1", [
-      (neg|party_slot_eq, "$g_notification_menu_var1", slot_town_lord, "trp_player"),
     ],"Continue.",[
       (jump_to_menu, "mnu_auto_return_to_map"),
     ]),
