@@ -3795,13 +3795,6 @@ game_menus = [
       (change_screen_map),
     ]),
 
-    ("camp_action",[
-    ],"TEST PLAYER.",[
-      (call_script, "script_troop_get_family_relation_to_troop", "trp_player", "trp_player"),
-
-      (display_message, "@{s11}, {reg0}"),
-    ]),
-
     ("camp_cheat",[
       (ge, "$cheat_mode", 1)
     ], "CHEATS!",[
@@ -3817,13 +3810,6 @@ game_menus = [
       (ge, "$cheat_mode", 1),
     ],"MORE CHEATS.",[
       (jump_to_menu, "mnu_cheat_menu2"),
-    ]),
-
-    ("town_action",[
-      (ge, "$cheat_mode", 1),
-      (quest_get_slot, reg0, "qst_nero_special_quest", slot_quest_target_dna),
-    ],"DEBUG: quest reset slot. (cur: {reg0})",[
-      (quest_set_slot, "qst_nero_special_quest", slot_quest_target_dna, -1),
     ]),
 
     # ("options",[
@@ -3903,7 +3889,6 @@ game_menus = [
     ], "Recruit some of your prisoners to your party.",[
       (jump_to_menu, "mnu_camp_recruit_prisoners"),
     ]),
-
     ("camp_recruit_prisoners",[
       (assign, ":num_non_slaves", 0),
       (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
@@ -3921,64 +3906,17 @@ game_menus = [
     ], "Convert your prisoners to slaves.",[
       (jump_to_menu, "mnu_camp_make_slaves"),
     ]),
-
     ("action_read_book",[],"Select a book to read.",[
       (jump_to_menu, "mnu_camp_action_read_book"),
     ]),
-
     ("action_food",[],"Change your party's food consumption habits.",[
       (start_presentation, "prsnt_food_options"),
     ]),
-     ##Custom troops:
-       # ("action_rename_legion",
-       # [
-          # (troop_slot_eq, "trp_players_legion", 1, 1),
-         # ],"Rename your Legion.",
-       # [
-         # (assign, "$g_player_troop", "trp_players_legion"),
-         # (assign, "$g_presentation_state", rename_legion),
-         # (start_presentation, "prsnt_name_kingdom"),
-        # ]
-       # ),
-
-       # ("action_rename_legion",
-       # [(ge, "$cheat_mode", 1),
-         # ],"Set city names to their lord names.",
-       # [
-        # (try_for_range, ":center", centers_begin, centers_end),
-          # (party_get_slot, ":lord", ":center", slot_town_lord),
-          # (gt, ":lord", -1),
-          # (str_store_troop_name_plural, s1, ":lord"),
-          # (party_set_name, ":center", s1),
-        # (try_end),
-        # ]
-       # ),
-       # ("action_rename_legion",
-       # [
-          # (troop_slot_eq, "trp_players_aux_inf", 1, 1),
-         # ],"Rename your Auxilia Cohort.",
-       # [
-         # (assign, "$g_player_troop", "trp_players_aux_inf"),
-         # (assign, "$g_presentation_state", rename_aux_inf),
-         # (start_presentation, "prsnt_name_kingdom"),
-        # ]
-       # ),
-      # ("action_rename_legion",
-       # [
-          # (troop_slot_eq, "trp_players_aux_cav", 1, 1),
-         # ],"Rename your Auxilia Ala.",
-       # [
-         # (assign, "$g_player_troop", "trp_players_aux_cav"),
-         # (assign, "$g_presentation_state", rename_aux_cav),
-         # (start_presentation, "prsnt_name_kingdom"),
-        # ]
-       # ),
     ("camp_change_name",[],"Rename your party.",[
       (assign, "$g_presentation_state", rename_party),
       (assign, "$g_encountered_party", "p_main_party"),
       (start_presentation, "prsnt_name_kingdom"),
     ]),
-
     ("action_modify_factions_color",[],"Change faction colors.",[
       (assign, "$g_presentation_state", recolor_kingdom),
       (try_begin),
@@ -3990,7 +3928,6 @@ game_menus = [
       (try_end),
       (start_presentation, "prsnt_change_color"),
     ]),
-
     ("action_rename_kingdom",[
       #SB : use bits
       (store_and, ":name_set", "$players_kingdom_name_set", rename_kingdom),
@@ -4007,7 +3944,6 @@ game_menus = [
       (assign, "$g_presentation_state", rename_kingdom),
       (start_presentation, "prsnt_name_kingdom"),
     ]),
-
     ("action_change_policies",[
       (gt, "$cheat_mode", 0),
       #SB : name set bits
@@ -4018,7 +3954,6 @@ game_menus = [
     ],"{!}Cheat: Change kingdom policies",[
       (start_presentation, "prsnt_dplmc_policy_management"),
     ]),
-
     ("action_modify_banner",[
       (this_or_next|troop_slot_ge, "trp_player", slot_troop_banner_scene_prop, 1),
       (troop_slot_eq, "trp_player", slot_troop_banner_scene_prop, -1),
@@ -4030,11 +3965,9 @@ game_menus = [
       (assign, "$g_presentation_next_presentation", -1),
       (jump_to_menu, "mnu_choose_banner"),
     ]),
-
-    ("action_retire",[],"Commit suicide.",[
+    ("action_retire",[],"Commit suicide. [End game]",[
       (jump_to_menu, "mnu_retirement_verify"),
     ]),
-
     ("camp_action_4",[],"Back to camp menu.",[
       (jump_to_menu, "mnu_camp"),
     ]),
