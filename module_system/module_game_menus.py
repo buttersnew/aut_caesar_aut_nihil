@@ -3760,6 +3760,13 @@ game_menus = [
 
       (start_presentation, "prsnt_display_special_items"),
     ]),
+    ("camp_action",[
+      (ge, "$cheat_mode", 1)
+    ],"CHEAT add all legendary items.",[
+      (try_for_range, ":item", legendary_items_begin, legendary_items_end),
+          (troop_add_item, "trp_player", ":item", 0),
+      (try_end),
+    ]),
     # Original camp menus
     ("camp_action",[
       (ge, "$cheat_mode", 1)
@@ -38272,104 +38279,96 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       ]),
 	],
   ),
-  (
-    "sartemis",0,
-    "Behind the ruins of the old city of Babylon you spot a large palace, overgrown with all kinds of plants. This must be the legendary hanging gardens of Semiramis.",
-    "none",
-    [
+
+("sartemis",0,
+  "Behind the ruins of the old city of Babylon you spot a large palace, overgrown with all kinds of plants. This must be the legendary hanging gardens of Semiramis.",
+  "none",[
     (set_background_mesh, "mesh_pic_hanging_gardens"),
-      ],
-    [
-      ("answere_1",[
-	  ],
-	  "Explore.",
-	  [
-     #(party_get_slot, ":scene_to_use", "$g_encountered_party", slot_castle_exterior),
-      (modify_visitors_at_site, "scn_sartemis"),
-      (reset_visitors),
-      (set_jump_mission, "mt_visit_sartemis"),
+  ],[
+  ("answere_1",[
+  ],"Explore.",[
+    #(party_get_slot, ":scene_to_use", "$g_encountered_party", slot_castle_exterior),
+    (modify_visitors_at_site, "scn_sartemis"),
+    (reset_visitors),
+    (set_jump_mission, "mt_visit_sartemis"),
+    (try_begin),
+      (quest_slot_eq, "qst_gardens_of_pleasure", slot_quest_current_state, 0),
+      (neg|is_currently_night),
+      (set_visitor, 2, "trp_persian_village_walker"),
+    (else_try),
+      (is_currently_night),
+      (this_or_next|quest_slot_eq, "qst_gardens_of_pleasure", slot_quest_current_state, 3),
+      (quest_slot_eq, "qst_gardens_of_pleasure", slot_quest_current_state, 4),
+      (set_visitor, 12, "trp_fortuna"),
+    (else_try),
+      (quest_slot_ge, "qst_gardens_of_pleasure", slot_quest_current_state, 7),
+      ##13-26 sitting
+      #27-32 kissing
+      #33 - 40 dancers
+      (set_visitor, 12, "trp_fortuna"),
+
+      (set_visitor,33,"trp_dancer1"),
+      (set_visitor,34,"trp_dancer2"),
+      (set_visitor,35,"trp_dancer3"),
+      (set_visitor,36,"trp_dancer4"),
+      (set_visitor,37,"trp_dancer1"),
+      (set_visitor,38,"trp_dancer2"),
+      (set_visitor,39,"trp_dancer3"),
+      (set_visitor,40,"trp_dancer4"),
+
+      (set_visitor,13,"trp_orgie_male1"),
+      (set_visitor,14,"trp_orgie_male1"),
+      (set_visitor,15,"trp_orgie_male1"),
+      (set_visitor,16,"trp_orgie_fem3"),
+      (set_visitor,17,"trp_orgie_male1"),
+      (set_visitor,18,"trp_orgie_fem2"),
+      (set_visitor,19,"trp_orgie_fem2"),
+      (set_visitor,20,"trp_orgie_male1"),
+      (set_visitor,21,"trp_orgie_fem3"),
+      (set_visitor,22,"trp_orgie_fem3"),
+      (set_visitor,23,"trp_orgie_male1"),
+      (set_visitor,24,"trp_orgie_fem2"),
+      (set_visitor,25,"trp_orgie_fem3"),
+      (set_visitor,26,"trp_orgie_male1"),
+      #kissing
+      (set_visitor,27,"trp_orgie_fem_kissing"),
+      (set_visitor,28,"trp_orgie_male1_kissing"),
+      #kissing
+      (set_visitor,29,"trp_orgie_fem_kissing"),
+      (set_visitor,30,"trp_orgie_male1_kissing"),
+      #kissing
+      (set_visitor,31,"trp_orgie_fem_kissing"),
+      (set_visitor,32,"trp_orgie_male1_kissing"),
+      #some music guys
+      (store_random_in_range, ":music_guy", tavern_minstrels_begin, tavern_minstrels_end),
+      (set_visitor,42,":music_guy"),
+      (store_random_in_range, ":music_guy2", tavern_minstrels_begin, tavern_minstrels_end),
+      (set_visitor,43,":music_guy2"),
+    (else_try),
+      (neg|is_currently_night),
+      (quest_slot_ge, "qst_gardens_of_pleasure", slot_quest_current_state, 5),
+      (set_visitor, 12, "trp_fortuna"),
+    (try_end),
+
+    (try_begin),
+      (quest_slot_ge, "qst_gardens_of_pleasure", slot_quest_current_state, 7),
       (try_begin),
-        (quest_slot_eq, "qst_gardens_of_pleasure", slot_quest_current_state, 0),
-        (neg|is_currently_night),
-        (set_visitor, 2, "trp_persian_village_walker"),
-      (else_try),
-        (is_currently_night),
-        (this_or_next|quest_slot_eq, "qst_gardens_of_pleasure", slot_quest_current_state, 3),
-        (quest_slot_eq, "qst_gardens_of_pleasure", slot_quest_current_state, 4),
-        (set_visitor, 12, "trp_fortuna"),
-      (else_try),
-        (quest_slot_ge, "qst_gardens_of_pleasure", slot_quest_current_state, 7),
-        ##13-26 sitting
-        #27-32 kissing
-        #33 - 40 dancers
-        (set_visitor, 12, "trp_fortuna"),
-
-        (set_visitor,33,"trp_dancer1"),
-        (set_visitor,34,"trp_dancer2"),
-        (set_visitor,35,"trp_dancer3"),
-        (set_visitor,36,"trp_dancer4"),
-        (set_visitor,37,"trp_dancer1"),
-        (set_visitor,38,"trp_dancer2"),
-        (set_visitor,39,"trp_dancer3"),
-        (set_visitor,40,"trp_dancer4"),
-
-        (set_visitor,13,"trp_orgie_male1"),
-        (set_visitor,14,"trp_orgie_male1"),
-        (set_visitor,15,"trp_orgie_male1"),
-        (set_visitor,16,"trp_orgie_fem3"),
-        (set_visitor,17,"trp_orgie_male1"),
-        (set_visitor,18,"trp_orgie_fem2"),
-        (set_visitor,19,"trp_orgie_fem2"),
-        (set_visitor,20,"trp_orgie_male1"),
-        (set_visitor,21,"trp_orgie_fem3"),
-        (set_visitor,22,"trp_orgie_fem3"),
-        (set_visitor,23,"trp_orgie_male1"),
-        (set_visitor,24,"trp_orgie_fem2"),
-        (set_visitor,25,"trp_orgie_fem3"),
-        (set_visitor,26,"trp_orgie_male1"),
-        #kissing
-        (set_visitor,27,"trp_orgie_fem_kissing"),
-        (set_visitor,28,"trp_orgie_male1_kissing"),
-        #kissing
-        (set_visitor,29,"trp_orgie_fem_kissing"),
-        (set_visitor,30,"trp_orgie_male1_kissing"),
-        #kissing
-        (set_visitor,31,"trp_orgie_fem_kissing"),
-        (set_visitor,32,"trp_orgie_male1_kissing"),
-        #some music guys
-        (store_random_in_range, ":music_guy", tavern_minstrels_begin, tavern_minstrels_end),
-        (set_visitor,42,":music_guy"),
-        (store_random_in_range, ":music_guy2", tavern_minstrels_begin, tavern_minstrels_end),
-        (set_visitor,43,":music_guy2"),
-      (else_try),
-        (neg|is_currently_night),
-        (quest_slot_ge, "qst_gardens_of_pleasure", slot_quest_current_state, 5),
-        (set_visitor, 12, "trp_fortuna"),
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_visit_sartemis", 7),
+        (mission_tpl_entry_set_override_flags, "mt_visit_sartemis", 7, af_override_outfit_1|af_override_horse),
       (try_end),
-
-      (try_begin),
-        (quest_slot_ge, "qst_gardens_of_pleasure", slot_quest_current_state, 7),
-        (try_begin),
-          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_visit_sartemis", 7),
-          (mission_tpl_entry_set_override_flags, "mt_visit_sartemis", 7, af_override_outfit_1|af_override_horse),
-        (try_end),
-        (set_visitor, 7, "trp_player"),
-      (else_try),
-        (set_visitor, 0, "trp_player"),
-      (try_end),
-      (jump_to_scene, "scn_sartemis"),
-	    (change_screen_mission),
-
-      ]),
-      ("answere_2",[
-	  ],
-	  "Leave.",
-	  [
+      (set_visitor, 7, "trp_player"),
+    (else_try),
+      (set_visitor, 0, "trp_player"),
+    (try_end),
+    (jump_to_scene, "scn_sartemis"),
+    (change_screen_mission),
+  ]),
+  ("answere_2",[
+	],"Leave.",[
 		(change_screen_map),
-      ]),
-	],
-  ),
+  ]),
+]),
 
 ("census",0,
   "Census!^^You receive a message. It contains the census:^^"

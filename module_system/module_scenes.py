@@ -973,7 +973,7 @@ scenes = [
   ("lair_jungle", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000030000500000d2348000043230000429700002c21",[], [], "outer_terrain_plain"),
   ("nile_attack", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001500003e3000fffff0000074800005c49000021c5",[], [], "outer_terrain_desert"),
   ("slavic_holy_side", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x000000033000050000084a1200006aaa000036e000000581",[], [], "outer_terrain_mountain"),
-  ("sartemis", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000002564005630008f23b0000549f00004ba500006801",[], [], "outer_terrain_desert"),
+  ("sartemis", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000002564005630008f23b0000549f00004ba500006801",[], ["bonus_chest_18"], "outer_terrain_desert"),
   ("library", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000013a01c85000057ddf700072a70000240a00001e090",[], [], "outer_terrain_plain_1"),
   ("cave", sf_indoors, "cave-p01", "bo_cave-p01", (-100, -100), (100, 100), -100, "0",[], ["bonus_chest_4"]),
   ("cave_outside", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000013a01c85000057ddf700072a70000240a00001e090",[], [], "outer_terrain_plain_1"),

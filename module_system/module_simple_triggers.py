@@ -8534,7 +8534,7 @@ simple_triggers = [
     (try_end),
 ]),
 
-(ti_on_switch_to_map, [
+(ti_on_switch_to_map,[
     (call_script, "script_execude_debug_message", 136),
     (try_begin),
         (faction_slot_eq, "fac_kingdom_7", slot_faction_icon, 0),
@@ -8559,6 +8559,14 @@ simple_triggers = [
     (try_begin),
         (ge, "$cheat_mode", 1),
         (display_message, "@Shaders set"),
+    (try_end),
+
+    (try_for_range, ":item", legendary_items_begin, legendary_items_end),
+        (item_slot_eq, ":item", slot_item_discovered, -1),
+        (this_or_next|troop_has_item_equipped, "trp_player",  ":item"),
+        (player_has_item, ":item"),
+        (store_current_hours, ":hours"),
+        (item_set_slot, ":item", slot_item_discovered, ":hours"),
     (try_end),
 
     (try_begin),
