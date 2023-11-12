@@ -8550,12 +8550,6 @@ simple_triggers = [
         (assign, "$g_rank", 0),#player is part of Roman faction as Lord
         (display_log_message, "@You are no longer part of Rome and lost your rank."),
     (try_end),
-    (try_begin),
-        (neq, "$players_kingdom", "fac_kingdom_7"),
-        (ge, "$g_rank", 1),
-        (assign, "$g_rank", 0),#player is part of Roman faction as Lord
-        (display_log_message, "@You are no longer part of Rome and lost your rank."),
-    (try_end),
     #(faction_set_note_available, "fac_neutral", 0),##some bug which I don't know why it happens
     (stop_all_sounds, 0), #to fix looping sounds not stopping
     ##seasonal shader START
@@ -8621,7 +8615,6 @@ simple_triggers = [
                 (assign, ":c",1),
             (try_end),
             (eq, ":c",0),
-
             (party_detach, ":attached_party"),
             (party_relocate_near_party, ":attached_party", "p_main_party", 1),
             (party_set_slot,":attached_party",slot_party_time_service, -1),
@@ -8666,7 +8659,7 @@ simple_triggers = [
         (eq, "$g_is_emperor", 1),
         (neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
         (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_7"),
-        (display_message, "@Since you are Caesar Augustus, Princeps of Rome, you change your culture to Roman."),
+        (display_message, "@As you are now Caesar Augustus, Princeps of Rome, you change your culture to Roman."),
     (try_end),
     ##honory titles for player faction Rome
     (try_begin),
@@ -8732,7 +8725,7 @@ simple_triggers = [
         (quest_set_slot, "qst_blank_quest_10", slot_quest_target_troop, ":target_troop"),
     (try_end),
     (try_for_parties, ":party_no"),
-    ##fix latifundium not changing factions properly
+        ## fix latifundium not changing factions properly
         (party_slot_eq, ":party_no", slot_party_type, spt_latifunidum),
         (party_get_slot, ":village", ":party_no", slot_village_bound_center),
         (store_faction_of_party, ":fac1", ":party_no"),
