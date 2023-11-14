@@ -6104,7 +6104,7 @@ crown_head_price,crown_head,imodbits_none],
 crown_head_price,crown_head,imodbits_none],
 ["laurel_silver", "Silver Laurel", [("laurel_silver",0)],itp_unique|itp_type_head_armor|itp_civilian|itp_doesnt_cover_hair,0,
 crown_head_price,crown_head,imodbits_none],
-["pharaoh_crown", "Double Crown of Egypt", [("pharaoh",0)],itp_unique|itp_type_head_armor|itp_civilian|itp_attach_armature|itp_fit_to_head,0,
+["pharaoh_crown", "Pschent ", [("pharaoh",0)],itp_unique|itp_type_head_armor|itp_civilian|itp_attach_armature|itp_fit_to_head,0,
 crown_head_price,crown_head,imodbits_none],
 
 ##bonus item
