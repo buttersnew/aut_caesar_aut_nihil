@@ -37891,78 +37891,63 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ),
 
 ("loot_final",0,
-    "Your men wear pligrim cloths over their armors to get not suspicious. Then you pass through the streams of pilgrim into the forecourt. Then you and your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out.^\
+  "Your men wear pligrim cloths over their armors to get not suspicious. Then you pass through the streams of pilgrim into the forecourt. Then you and your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out.^\
 	You order that some of your men guard the entrance into the inner court. You and your other men storm into the inner court and kill every priests you see. Then your men break up the door into the sanctum and start looting every thing.^^\
 	You and your men carry all the treasuries out of the temple to the carts.^^\
 	After half an hour one of your men reports that there is nothing left to loot. You order that the men with the carts shall leave Jerusalem dressed as pilgrims. As the carts leave the temple hill over the main entrance, you see an angry mob, shouting insults, moving in your direction.^\
 	Now you must fight or you will die!",
-    "none",
-    [
-	(set_background_mesh, "mesh_pic_jerusalem_tempel"),
-      ],
-    [
-      ("answere_1",[],
-	  "Damn it.",
-	  [
-        (modify_visitors_at_site, "scn_temple_jerusalem"),
-        (reset_visitors),
-        (assign, ":num_monks", 50),
-        (store_character_level, ":level", "trp_player"),
-        (val_div, ":level", 5),
-        (val_add, ":num_monks", ":level"),
-        (set_visitors, 1, "trp_mountain_bandit", ":num_monks"),
-        (set_visitors, 1, "trp_judean_village_walker", ":num_monks"),
-        #(set_visitors, 1, "trp_abad", 1),
-        (set_jump_mission,"mt_temple_raid"),
-        (jump_to_scene, "scn_temple_jerusalem"),
-        (change_screen_mission),
-        #
-        (party_clear, "p_total_enemy_casualties"),
-      ]),
-	],
-),
+  "none",[
+	  (set_background_mesh, "mesh_pic_jerusalem_tempel"),
+  ],[
+  ("answere_1",[],"Damn it.",[
+    (modify_visitors_at_site, "scn_temple_jerusalem"),
+    (reset_visitors),
+    (assign, ":num_monks", 50),
+    (store_character_level, ":level", "trp_player"),
+    (val_div, ":level", 5),
+    (val_add, ":num_monks", ":level"),
+    (set_visitors, 1, "trp_mountain_bandit", ":num_monks"),
+    (set_visitors, 1, "trp_judean_village_walker", ":num_monks"),
+    #(set_visitors, 1, "trp_abad", 1),
+    (set_jump_mission,"mt_temple_raid"),
+    (jump_to_scene, "scn_temple_jerusalem"),
+    (change_screen_mission),
+    #
+    (party_clear, "p_total_enemy_casualties"),
+  ]),
+]),
 
-  (
-    "great_jewish_reolt_start",0,
-    "After you defeated the mob you quickly leave the temple hill. You must get out of Jerusalem, as fast as possible. {s20}",
-    "none",
-    [
-	(set_background_mesh, "mesh_pic_victory"),
-	(try_begin),
-		(eq, "$jewish_revolt", 0),
-		(str_store_string, s20, "@As your run through Jerusalem you see no Roman troops. That is strange. You run and run. Finally you manage to get out of the city. You meet the other men with the loot. Then you look to the city, you see fire in some parts of Jerusalem. Strange."),
-	(else_try),
-		(str_store_string, s20, "@You run and run. Finally you get out of the city. You meet the other men with the loot on the agreed point on a hill near Jerusalem."),
-	(try_end),
-
-      ],
-    [
-      ("answere_1",[],
-	  "Luckily alive!",
-	  [
-	(try_begin),
-     (neq, "$jewish_revolt", 1),
-	   (display_message, "@Your dishonorable greedy act has angered the Jewish population so much, that they started to rebel against the foreign occupation!", message_negative),
-	   (call_script, "script_cf_start_jewish_revolt"),
-		 (call_script, "script_change_player_relation_with_center", "p_town_19", -100),
-		 (call_script, "script_change_player_honor", -20),
-		 (call_script, "script_change_troop_renown", "trp_player", 150),
-		 (call_script, "script_change_player_relation_with_faction", "fac_kingdom_17", -200),
-	   (jump_to_menu, "mnu_loot_final2"),
-	 (else_try),
-		 (call_script, "script_change_player_relation_with_center", "p_town_19", -100),
-		 (call_script, "script_change_player_honor", -20),
-		 (call_script, "script_change_troop_renown", "trp_player", 150),
-		 (jump_to_menu, "mnu_loot_final2"),
-	 (try_end),
-
-      ]),
-
-	],
-  ),
-  (
-    "loot_final2",0,
-    "Now lets see what your men have looted:^^\
+("great_jewish_reolt_start",0,
+  "After you defeated the mob you quickly leave the temple hill. You must get out of Jerusalem, as fast as possible. {s20}",
+  "none",[
+    (set_background_mesh, "mesh_pic_victory"),
+    (try_begin),
+      (eq, "$jewish_revolt", 0),
+      (str_store_string, s20, "@As your run through Jerusalem you see no Roman troops. That is strange. You run and run. Finally you manage to get out of the city. You meet the other men with the loot. Then you look to the city, you see fire in some parts of Jerusalem. Strange."),
+    (else_try),
+      (str_store_string, s20, "@You run and run. Finally you get out of the city. You meet the other men with the loot on the agreed point on a hill near Jerusalem."),
+    (try_end),
+  ],[
+  ("answere_1",[],"Luckily alive!",[
+    (try_begin),
+      (neq, "$jewish_revolt", 1),
+      (display_message, "@Your dishonorable greedy act has angered the Jewish population so much, that they started to rebel against the foreign occupation!", message_negative),
+      (call_script, "script_cf_start_jewish_revolt"),
+      (call_script, "script_change_player_relation_with_center", "p_town_19", -100),
+      (call_script, "script_change_player_honor", -20),
+      (call_script, "script_change_troop_renown", "trp_player", 150),
+      (call_script, "script_change_player_relation_with_faction", "fac_kingdom_17", -200),
+      (jump_to_menu, "mnu_loot_final2"),
+    (else_try),
+      (call_script, "script_change_player_relation_with_center", "p_town_19", -100),
+      (call_script, "script_change_player_honor", -20),
+      (call_script, "script_change_troop_renown", "trp_player", 150),
+      (jump_to_menu, "mnu_loot_final2"),
+    (try_end),
+  ]),
+]),
+("loot_final2",0,
+  "Now lets see what your men have looted:^^\
 	A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'^^\
 	A golden menorah^^\
     Gold, gold coins^^\
@@ -37970,36 +37955,32 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	Velvet cloths and nice carpeting^^\
 	Silver ingots^^\
 	Additionally you looted expensive artifacts worth 150,000 denars.",
-    "none",
-    [
+  "none",[
     (troop_add_gold, "trp_player", 150000),
-	(troop_add_item, "trp_player", "itm_menorah"),
-	(troop_add_item, "trp_player", "itm_thunder",imodbit_masterwork),
+    (troop_add_item, "trp_player", "itm_menorah"),
+    (troop_add_item, "trp_player", "itm_thunder",imodbit_masterwork),
     (troop_add_item, "trp_player", "itm_thunder_arrows"),
-	(troop_add_item, "trp_player", "itm_temple_gold"),
-	(troop_add_item, "trp_player", "itm_temple_gold"),
-	(troop_add_item, "trp_player", "itm_silver"),
-	(troop_add_item, "trp_player", "itm_silver"),
-	(troop_add_item, "trp_player", "itm_jewelry"),
-	(troop_add_item, "trp_player", "itm_wool_cloth"),
-	(troop_add_item, "trp_player", "itm_wool_cloth"),
-	(troop_add_item, "trp_player", "itm_velvet"),
-	(troop_add_item, "trp_player", "itm_velvet"),
+    (troop_add_item, "trp_player", "itm_temple_gold"),
+    (troop_add_item, "trp_player", "itm_temple_gold"),
+    (troop_add_item, "trp_player", "itm_silver"),
+    (troop_add_item, "trp_player", "itm_silver"),
+    (troop_add_item, "trp_player", "itm_jewelry"),
+    (troop_add_item, "trp_player", "itm_wool_cloth"),
+    (troop_add_item, "trp_player", "itm_wool_cloth"),
+    (troop_add_item, "trp_player", "itm_velvet"),
+    (troop_add_item, "trp_player", "itm_velvet"),
     (assign, "$templelooted", 1),
-      ],
-    [
-      ("answere_1",[],
-	  "Well done.",
-	  [
-	(try_begin),
-		(party_get_slot, ":lord", "p_town_19", slot_town_lord),
-		(gt, ":lord", 1),
-		(call_script, "script_change_player_relation_with_troop", ":lord", -30),
-		(str_store_troop_name, s21, ":lord"),
-		(display_message, "@ The governer of Jerusalem, {s21}, is not very amused about your action."),
-	(try_end),
-	(change_screen_map),
-      ]),
+  ],[
+  ("answere_1",[],"Well done.",[
+    (try_begin),
+      (party_get_slot, ":lord", "p_town_19", slot_town_lord),
+      (gt, ":lord", 1),
+      (call_script, "script_change_player_relation_with_troop", ":lord", -30),
+      (str_store_troop_name, s21, ":lord"),
+      (display_message, "@ The governer of Jerusalem, {s21}, is not very amused about your action."),
+    (try_end),
+    (change_screen_map),
+  ]),
 ]),
 
 ("death_waits",0,
