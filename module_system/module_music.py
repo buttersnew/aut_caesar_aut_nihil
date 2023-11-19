@@ -52,6 +52,10 @@ tracks = [
   ("ambushed_by_khergit6", "ambushed_caoyuan_01.ogg", mtf_culture_3|mtf_sit_ambushed|mtf_sit_siege, mtf_sit_fight|mtf_culture_all),
   ("ambushed_by_khergit7", "ambushed_caoyuan_02.ogg", mtf_culture_3|mtf_sit_ambushed|mtf_sit_siege, mtf_sit_fight|mtf_culture_all),
 
+  ("germanic_track_1", "germanic_track_1.ogg", mtf_culture_3|mtf_sit_ambushed|mtf_sit_siege|mtf_sit_town|mtf_sit_travel, mtf_sit_fight|mtf_culture_all),
+  ("germanic_track_2", "germanic_track_2.ogg", mtf_culture_3|mtf_sit_ambushed|mtf_sit_siege|mtf_sit_town|mtf_sit_travel, mtf_sit_fight|mtf_culture_all),
+  ("germanic_track_3", "germanic_track_3.ogg", mtf_culture_3|mtf_sit_ambushed|mtf_sit_siege|mtf_sit_town|mtf_sit_travel, mtf_sit_fight|mtf_culture_all),
+
   ("arena_1", "arena_1.ogg", mtf_sit_arena, 0),
   ("armorer", "armorer.ogg", mtf_sit_travel, 0),
   ("bandit_fight", "bandit_fight.ogg", mtf_sit_fight|mtf_sit_ambushed, 0),
@@ -111,6 +115,9 @@ tracks = [
   ("town_vaegir1", "celtic_peace_1.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("town_vaegir2", "celtic_peace_2.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("town_vaegir3", "celtic_peace_3.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
+
+  ("celtic_track_1", "celtic_track_1.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel|mtf_sit_ambushed|mtf_sit_siege, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
+
 
   ("town_roman", "roman_peace_1.ogg", mtf_culture_6|mtf_sit_town|mtf_sit_travel, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("town_roman1", "roman_peace_2.ogg", mtf_culture_6|mtf_sit_town|mtf_sit_travel, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
