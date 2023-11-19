@@ -1288,6 +1288,30 @@ attrib_level_26, wp_melee(150), knows_level_29, eastern_man_face_younger_1, east
 [itm_javelin]+horse_parth+jew_boots_heavy+jew_mail_1+jew_scale+jew_helm_heavy+jew_spears+old_roman_roundshields,
 attrib_level_29, wp_melee(170), knows_level_31, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 
+["judean_guard","Sebastenoi Peltastes","Sebastenoi Peltastai",tf_guarantee_soldier,0,0,fac_neutral,
+[itm_throwing_spears_roman]
++jew_linothorax+jew_phalanx_gear+jew_swords_greek+jew_boots_heavy+jew_boots_simple+jew_helm_heavy
++jew_helm_light+jew_mail_1+jew_mail_2+jew_scale+jew_shields_large+jew_shields_poor+jew_swords+jew_spears,
+ attrib_level_29,wp(170),knows_level_29, arab_face_young, arab_face_old],
+["judean_guard_vet","Sebastenoi Peltastes","Sebastenoi Peltastai (vet)",tf_guarantee_soldier,0,0,fac_neutral,
+[itm_throwing_spears_roman]
++jew_linothorax+jew_phalanx_gear+jew_swords_greek+jew_boots_heavy+jew_boots_simple+jew_helm_heavy
++jew_helm_light+jew_mail_1+jew_mail_2+jew_scale+jew_shields_large+jew_shields_poor+jew_swords+jew_spears,
+ attrib_level_31_warrior,wp(190),knows_level_29_warrior, arab_face_young, arab_face_old],
+
+["judean_guard_archer","Sebastenoi Toxotes","Sebastenoi Toxotai",tf_guarantee_soldier|tf_guarantee_ranged,0,0,fac_neutral,
+[itm_throwing_spears_roman,itm_arrows,itm_bodkin_arrows,itm_barbed_arrows,itm_german_shortbow,itm_short_bow,itm_nomad_bow,itm_long_bow,
+itm_strong_bow,itm_war_bow,itm_nubian_war_bow,itm_khergit_bow_2,itm_khergit_bow]
++jew_linothorax+jew_phalanx_gear+jew_swords_greek+jew_boots_heavy+jew_boots_simple+jew_helm_heavy+jew_helm_light
++jew_mail_1+jew_mail_2+jew_scale+jew_shields_large+jew_shields_poor+jew_swords+jew_spears,
+ attrib_level_29,wpe(100,170,170,170),knows_archer_elit, arab_face_young, arab_face_old],
+["judean_guard_archer_vet","Sebastenoi Toxotes","Sebastenoi Toxotai (vet)",tf_guarantee_soldier|tf_guarantee_ranged,0,0,fac_neutral,
+[itm_throwing_spears_roman,itm_arrows,itm_bodkin_arrows,itm_barbed_arrows,itm_german_shortbow,itm_short_bow,itm_nomad_bow,itm_long_bow,
+itm_strong_bow,itm_war_bow,itm_nubian_war_bow,itm_khergit_bow_2,itm_khergit_bow]
++jew_linothorax+jew_phalanx_gear+jew_swords_greek+jew_boots_heavy+jew_boots_simple+jew_helm_heavy+jew_helm_light
++jew_mail_1+jew_mail_2+jew_scale+jew_shields_large+jew_shields_poor+jew_swords+jew_spears,
+ attrib_level_31_warrior,wpe(110,190,190,190),knows_archer_elit_eastern, arab_face_young, arab_face_old],
+
 ##Bosporan troops
 ["bosporan_light_spearman", "Entopioi", "Entopioi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_9,
 [itm_celtic_boots,
@@ -5711,24 +5735,6 @@ def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
 # ]+items_roman_helmets+items_roman_additional_armors+items_roman_armors+items_roman_horses,
 # def_attrib|int_30|level(30),wp(60),knows_inventory_management_10,0],
 
-["custom_judean_guard","Sebastenoi Peltastes (custom)","Sebastenoi Peltastai (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
- attrib_level_31,wp(185),knows_level_31, arab_face_young, arab_face_old],
-["custom_judean_guard_equip","Sebastenoi Peltastes (custom)","Sebastenoi Peltastai (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
-[itm_legio_armored_caligea,itm_judean_scale_1,itm_judean_scale_2,itm_roman_aux_helm_4,itm_roman_townguard_helm,itm_judean_shield_large_1,itm_judean_shield_large_2,itm_judean_shield_large_3,itm_judean_shield_large_4,itm_old_gladius_2,itm_throwing_spears_roman,itm_throwing_spears_roman],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
-# ["custom_judean_guard_selection","na","na",tf_hero|tf_inactive,0,0,fac_neutral,
-# [itm_throwing_spears_roman]+jew_linothorax+jew_phalanx_gear+jew_swords_greek+jew_boots_heavy+jew_boots_simple+jew_helm_heavy+jew_helm_light+jew_mail_1+jew_mail_2+jew_scale+jew_shields_large+jew_shields_poor+jew_swords+jew_spears,
-# def_attrib|int_30|level(30),wp(60),knows_inventory_management_10,0],
-
-["custom_judean_guard_archer","Sebastenoi Toxotes (custom)","Sebastenoi Toxotai (custom)",tf_guarantee_soldier|tf_guarantee_ranged,0,0,fac_neutral,[],
- attrib_level_31,wpe(110,185,185,185),knows_archer_elit_eastern, arab_face_young, arab_face_old],
-["custom_judean_guard_archer_equip","Sebastenoi Toxotes (custom)","Sebastenoi Toxotai (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
-[itm_old_gladius_2,itm_khergit_arrows,itm_khergit_bow,itm_judean_mail_1,itm_judean_mail_2,itm_roman_aux_helm_8,itm_roman_aux_helm_11,itm_legio_armored_caligea],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
-# ["custom_judean_guard_archer_selection","na","na",tf_hero|tf_inactive,0,0,fac_neutral,
-# [itm_throwing_spears_roman,itm_arrows,itm_bodkin_arrows,itm_barbed_arrows,itm_german_shortbow,itm_short_bow,itm_nomad_bow,itm_long_bow,itm_strong_bow,itm_war_bow,itm_nubian_war_bow,itm_khergit_bow_2,itm_khergit_bow]+jew_linothorax+jew_phalanx_gear+jew_swords_greek+jew_boots_heavy+jew_boots_simple+jew_helm_heavy+jew_helm_light+jew_mail_1+jew_mail_2+jew_scale+jew_shields_large+jew_shields_poor+jew_swords+jew_spears,
-# def_attrib|int_30|level(30),wp(60),knows_inventory_management_10,0],
-
 ["custom_troops_end","na","na",0,0,0,fac_neutral,[itm_velvet],def_attrib|level(1),wp(60),knows_common,roman_face1, roman_face2],
 
 ["inventory_backup","Inventory","Inventory",tf_hero|tf_inactive,0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_inventory_management_10,0],
@@ -6153,6 +6159,9 @@ upgrade(troops,"bosporan_elite_exp","bosporan_elite_vet")
 
 upgrade(troops,"bosporan_light_spearman","bosporan_light_spearman_exp")
 upgrade(troops,"bosporan_light_spearman_exp","bosporan_light_spearman_vet")
+
+upgrade(troops,"judean_guard_archer","judean_guard_archer_vet")
+upgrade(troops,"judean_guard","judean_guard_vet")
 
 upgrade(troops,"judean_archer","judean_archer_exp")
 upgrade(troops,"judean_archer_exp","judean_archer_vet")

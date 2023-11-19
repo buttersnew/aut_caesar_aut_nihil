@@ -14774,165 +14774,66 @@ game_menus = [
     ],
   ),
 
-  (
-    "recruit_volunteers_castle",0,
-    "{s18}",
-    "none",
-    [(party_get_slot, ":volunteer_troop", "$current_town", slot_center_volunteer_troop_type),
-     (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
-     (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-     (store_troop_gold, ":gold", "trp_player"),
-     (store_div, ":gold_capacity", ":gold", 500),#500 denars per man
-     (assign, ":party_capacity", ":free_capacity"),
-     (val_min, ":party_capacity", ":gold_capacity"),
-     (try_begin),
-       (gt, ":party_capacity", 0),
-       (val_min, ":volunteer_amount", ":party_capacity"),
-     (try_end),
-     (assign, reg5, ":volunteer_amount"),
-     (assign, reg7, 0),
-     (try_begin),
-       (gt, ":volunteer_amount", ":gold_capacity"),
-       (assign, reg7, 1), #not enough money
-     (try_end),
-     (try_begin),
-       (eq, ":volunteer_amount", 0),
-       (str_store_string, s18, "@No one here seems to be willing to join your party."),
-     (else_try),
-       (store_mul, reg6, ":volunteer_amount", 500),#500 denars per man
-       (str_store_troop_name_by_count, s3, ":volunteer_troop", ":volunteer_amount"),
-       (try_begin),
-         (eq, reg5, 1),
-         (str_store_string, s18, "@One  {s3} volunteer to follow you."),
-       (else_try),
-         (str_store_string, s18, "@{reg5}  {s3} volunteer to follow you."),
-       (try_end),
-       (set_background_mesh, "mesh_pic_recruits"),
-     (try_end),
-    ],
-    [
-
-
-      ("continue",
-      [
-        (eq, reg7, 0),
-        (eq, reg5, 0),
-      ], #noone willing to join
-      "Continue...",
-      [
-        (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
-        (jump_to_menu,"mnu_town"),
-      ]),
-
-      ("recruit_them",
-      [ (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),
-        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_8"),
-        (eq, reg7, 0),
-        (gt, reg5, 0),
-      ],
-      "Recruit them as temple guard (customizable troop) ({reg6} denars).",
-      [
-     (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
-     (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-     (val_min, ":volunteer_amount", ":free_capacity"),
-     (store_troop_gold, ":gold", "trp_player"),
-     (store_div, ":gold_capacity", ":gold", 500),#500 denars per man
-     (val_min, ":volunteer_amount", ":gold_capacity"),
-     (party_add_members, "p_main_party", "trp_custom_judean_guard", ":volunteer_amount"),
-     (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
-     (store_mul, ":cost", ":volunteer_amount", 500),#500 denars per man
-     (troop_remove_gold, "trp_player", ":cost"),
-     (jump_to_menu,"mnu_town"),
-      ]),
-
-     ("recruit_them",
-      [ (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),
-        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_8"),
-        (eq, reg7, 0),
-        (gt, reg5, 0),
-      ],
-      "Recruit them as temple guard archers (customizable troop) ({reg6} denars).",
-      [
-     (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
-     (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-     (val_min, ":volunteer_amount", ":free_capacity"),
-     (store_troop_gold, ":gold", "trp_player"),
-     (store_div, ":gold_capacity", ":gold", 500),#500 denars per man
-     (val_min, ":volunteer_amount", ":gold_capacity"),
-     (party_add_members, "p_main_party", "trp_custom_judean_guard_archer", ":volunteer_amount"),
-     (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
-     (store_mul, ":cost", ":volunteer_amount", 500),#500 denars per man
-     (troop_remove_gold, "trp_player", ":cost"),
-     (jump_to_menu,"mnu_town"),
-      ]),
-
-
-      ("recruit_them",
-      [
-        (eq, reg7, 0),
-        (gt, reg5, 0),
-      ],
-      "Recruit them ({reg6} denars).",
-      [
-        (call_script, "script_castle_recruit_volunteers_recruit"),
-
-        (jump_to_menu,"mnu_town"),
-      ]),
-
-    #  ("recruit_them",
-    #   [
-    #     (eq, reg7, 0),
-    #     (gt, reg5, 0),
-    #   ],
-    #   "Recruit them as hornmen ({reg6} denars).",
-    #   [
-    #  (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
-    #  (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-    #  (val_min, ":volunteer_amount", ":free_capacity"),
-    #  (store_troop_gold, ":gold", "trp_player"),
-    #  (store_div, ":gold_capacity", ":gold", 500),#500 denars per man
-    #  (val_min, ":volunteer_amount", ":gold_capacity"),
-    #  (try_begin),
-    #    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_1"),
-    #    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2"),
-    #    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2_1"),
-    #    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_3"),
-    #    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),
-    #    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_9"),
-    #    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_4"),
-    #    (party_add_members, "p_main_party", "trp_hornman", ":volunteer_amount"),
-    #  (else_try),
-    #    (party_add_members, "p_main_party", "trp_judean_hornman", ":volunteer_amount"),
-    #  (try_end),
-    #  (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
-    #  (store_mul, ":cost", ":volunteer_amount", 100),#100 denars per man
-    #  (troop_remove_gold, "trp_player", ":cost"),
-    #  (jump_to_menu,"mnu_town"),
-    #   ]),
-
-      #SB : disable_menu_option
-      ("continue_not_enough_gold",
-      [
-        (eq, reg7, 1),
-        (disable_menu_option),
-      ],
-      "I don't have enough money...",
-      [
-        (jump_to_menu,"mnu_town"),
-      ]),
-
-      ("forget_it",
-      [
-      #SB : conditions now not applied
-        # (eq, reg7, 0),
-        # (gt, reg5, 0),
-      ],
-      "Forget it.",
-      [
-        (jump_to_menu,"mnu_town"),
-      ]),
-    ],
-  ),
+("recruit_volunteers_castle",0,
+  "{s18}",
+  "none",[
+    (party_get_slot, ":volunteer_troop", "$current_town", slot_center_volunteer_troop_type),
+    (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
+    (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
+    (store_troop_gold, ":gold", "trp_player"),
+    (store_div, ":gold_capacity", ":gold", 500),#500 denars per man
+    (assign, ":party_capacity", ":free_capacity"),
+    (val_min, ":party_capacity", ":gold_capacity"),
+    (try_begin),
+      (gt, ":party_capacity", 0),
+      (val_min, ":volunteer_amount", ":party_capacity"),
+    (try_end),
+    (assign, reg5, ":volunteer_amount"),
+    (assign, reg7, 0),
+    (try_begin),
+      (gt, ":volunteer_amount", ":gold_capacity"),
+      (assign, reg7, 1), #not enough money
+    (try_end),
+    (try_begin),
+      (eq, ":volunteer_amount", 0),
+      (str_store_string, s18, "@No one here seems to be willing to join your party."),
+    (else_try),
+      (store_mul, reg6, ":volunteer_amount", 500),#500 denars per man
+      (str_store_troop_name_by_count, s3, ":volunteer_troop", ":volunteer_amount"),
+      (try_begin),
+        (eq, reg5, 1),
+        (str_store_string, s18, "@One  {s3} volunteer to follow you."),
+      (else_try),
+        (str_store_string, s18, "@{reg5}  {s3} volunteer to follow you."),
+      (try_end),
+      (set_background_mesh, "mesh_pic_recruits"),
+    (try_end),
+  ],[
+  ("continue",[
+    (eq, reg7, 0),
+    (eq, reg5, 0),
+  ],"Continue...",[
+    (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
+    (jump_to_menu,"mnu_town"),
+  ]),
+  ("recruit_them",[
+    (eq, reg7, 0),
+    (gt, reg5, 0),
+  ],"Recruit them ({reg6} denars).",[
+    (call_script, "script_castle_recruit_volunteers_recruit"),
+    (jump_to_menu,"mnu_town"),
+  ]),
+  ("continue_not_enough_gold",[
+    (eq, reg7, 1),
+    (disable_menu_option),
+  ],"I don't have enough money...",[
+    (jump_to_menu,"mnu_town"),
+  ]),
+  ("forget_it",[
+  ],"Forget it.",[
+    (jump_to_menu,"mnu_town"),
+  ]),
+]),
 
 
   (
@@ -48270,16 +48171,6 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
          (call_script, "script_update_all_notes"),
          (assign, "$g_recalculate_ais", 1),
        (try_end),
-
-        # (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_8"),
-        # (faction_set_slot, "$players_kingdom", slot_faction_deserter_troop, "trp_angle_deserter"),
-        # (faction_set_slot, "$players_kingdom", slot_faction_guard_troop, "trp_custom_judean_guard"),
-        # (faction_set_slot, "$players_kingdom", slot_faction_messenger_troop, "trp_judean_cav"),
-        # (faction_set_slot, "$players_kingdom", slot_faction_prison_guard_troop, "trp_jew_prison_guard"),
-        # (faction_set_slot, "$players_kingdom", slot_faction_castle_guard_troop, "trp_jew_castle_guard"),
-        # (faction_set_slot, "$players_kingdom",  slot_faction_reinforcements_a, "pt_kingdom_8_reinforcements_a"),
-        # (faction_set_slot, "$players_kingdom",  slot_faction_reinforcements_b, "pt_kingdom_8_reinforcements_b"),
-        # (faction_set_slot, "$players_kingdom",  slot_faction_reinforcements_c, "pt_kingdom_8_reinforcements_c"),
 
        (try_begin),
          (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
