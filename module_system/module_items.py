@@ -6329,7 +6329,7 @@ rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
 
 ##augusta dresses
 ["roman_female_augusta", "Fancy Dress", [("new_dress_augusta",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
-get_barmour_price(60,50),rich_dress_r_armor,imodbits_none, [
+roman_rich_armor_price*3,rich_dress_r_armor,imodbits_none, [
 (ti_on_init_item,[
     (cur_item_add_mesh, "str_braclets_3"),
     (cur_item_add_mesh, "str_braclets_4"),
@@ -6341,6 +6341,13 @@ rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
 [(ti_on_init_item,[(cur_item_add_mesh, "str_braclets_2"),
 (call_script, "script_init_dress_boobs_new"),
 ]), ],[] ],
+
+["saka_dress", "Saka Royal Dress", [("saka_dress",0)], itp_unique|itp_type_body_armor|itp_covers_legs,0,
+roman_rich_armor_price*3,rich_dress_r_armor,imodbits_none,
+ [(ti_on_init_item,[  (call_script, "script_init_dress_no_arms"),]), ], []],
+["saka_crown", "Saka Crown", [("saka_crown",0)], itp_unique|itp_type_head_armor,0,
+15000, weight(2.5)|head_armor(48)|body_armor(0)|leg_armor(0)|difficulty(9) ,imodbits_plate ],
+
 ["seiden_dress", "Silk Dress", [("new_dress_augusta_2",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
 [(ti_on_init_item,[(cur_item_add_mesh, "str_braclets_2"),

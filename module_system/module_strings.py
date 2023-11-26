@@ -9077,6 +9077,10 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("description_female_slave4", "Description:^^This is a dancers outfit made out of slightly transparent silk.^^Background:^^Hot or not?"),
 ("description_roman_female_augusta", "Description:^^This dress is lavishly decorated with gold, worthy for the spouse of Divine Caesar.^^Background:^^Its fictional. And?"),
 ("description_roman_female_augusta_2", "Description:^^This dress is decorated with gold and made out of slightly transparent silk.^^Background:^^Its fictional. And?"),
+
+("description_saka_dress", "Description:^^This is the royal dress of queen Zarinaia. It is decorated with gold and gemstones.^^Background:^^Roughly based on Saka clothing. Though it's more fictional than historical."),
+("description_saka_crown", "Description:^^This is the crown of queen Zarinaia.^^Background:^^Roughly based on Saka clothing. Though it's more fictional than historical."),
+
 ("description_seiden_dress", "Description:^^This nightdress is made out of transparent silk.^^Background:^^Its fictional. And?"),
 ("description_roman_rich_emperor", "Description:^^This is a lavishly decorated toga.^^Background:^^Toga picta is Latin and means 'painted toga'. Usually dyed solid purple, decorated with imagery in gold thread, and worn over a similarly-decorated tunica palmata; used by generals in their triumphs. During the Empire, it was worn by consuls and emperors. Over time, it became increasingly elaborate, and was combined with elements of the consular trabea."),
 ("description_roman_rich_emperor_2", "Description:^^This is a lavishly decorated toga.^^Background:^^Toga picta is Latin and means 'painted toga'. Usually dyed solid purple, decorated with imagery in gold thread, and worn over a similarly-decorated tunica palmata; used by generals in their triumphs. During the Empire, it was worn by consuls and emperors. Over time, it became increasingly elaborate, and was combined with elements of the consular trabea."),

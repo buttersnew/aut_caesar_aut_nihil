@@ -591,7 +591,7 @@ parties = [
 	("sartemis", "Hanging Gardens of Babylon", icon_sartemis_icon|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (164.16, -24.18), [], 90), #[swycartographr] prev. coords: (75.642, -22.953) #[swycartographr] prev. coords: (128.39, -29.25) #[swycartographr] prev. coords: (153.95, -17.22)
 	("island", "Cythnus", icon_map_island|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-107, -4.08), [], 90),                #[swycartographr] prev. coords: (-156, -6)
 	("langobard_landing", "Lugian Camp", icon_forest|pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-80.5,150.9), [], 90),
-	("kurgan", "Old burial mount", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (276.077, 90.409), [(trp_scythian_amazon, 100, 0)], 135), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
+	("kurgan", "Old burial mound", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (276.077, 90.409), [(trp_scythian_amazon, 100, 0)], 135), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
 
 	("vally_of_kings", "Valley of the Kings", icon_valley_of_kings_combined|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (72.67, -124.38), []), #[swycartographr] prev. coords: (-8, -116.44) #[swycartographr] prev. coords: (70.52, -123.7)
 ]

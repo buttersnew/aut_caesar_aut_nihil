@@ -31777,8 +31777,8 @@ mission_templates = [
 
 ("explore_kurgan", 0, -1,
   "Test.",[
-    (0,mtef_scene_source,0,0,1,[]),
-    (1,mtef_visitor_source,0,0,1,[]),
+    (0,mtef_visitor_source,af_override_horse,0,1,[]),
+    (1,mtef_visitor_source,af_override_horse,0,1,[]),
   ], global_common_triggers +
   [
     (0, 0, 0,[(key_clicked, key_k),
@@ -31791,12 +31791,14 @@ mission_templates = [
       (tutorial_message_set_position, 500, 650),
       (tutorial_message_set_center_justify, 0),
       (tutorial_message_set_background, 1),
-      (tutorial_message, "@The air .^^(press K to finish read)"),
+      (tutorial_message, "@The air is stale. The tomb has not been accessed for probably hundreds of years. Hardly able to breathe.^^(press K to finish read)"),
 		]),
 
     (0, 0, ti_once, [],[
       (mission_cam_set_screen_color, 0xFF000000),
       (mission_cam_animate_to_screen_color, 0x4D000000, 3000),#black
+
+      (scene_set_slot, "scn_kurgan_enter", slot_scene_visited, 1),
     ]),
 
     (ti_tab_pressed, 0, 0,[],[
@@ -31804,13 +31806,15 @@ mission_templates = [
       (finish_mission, 3),
     ]),
 
-    (ti_on_agent_spawn, 0, 0,[],[
-      (store_trigger_param_1, ":agent_no"),
-      (agent_get_troop_id, ":troop_no", ":agent_no"),
-      (eq, ":troop_no", "trp_zarinaia"),
-      (agent_ai_set_interact_with_player, ":agent_no", 0),
-      (agent_set_no_dynamics, ":agent_no"),
-      (agent_set_stand_animation, ":agent_no", "anim_stand_still"),
+    (0, 0, ti_once,[],[
+      (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
+        (agent_get_troop_id, ":troop_no", ":agent_no"),
+        (eq, ":troop_no", "trp_zarinaia"),
+        (agent_ai_set_interact_with_player, ":agent_no", 0),
+        (agent_set_no_dynamics, ":agent_no"),
+        (agent_set_stand_animation, ":agent_no", "anim_stand_still"),
+      (try_end),
     ]),
 
     common_inventory_not_available,

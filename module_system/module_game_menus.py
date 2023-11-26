@@ -56017,8 +56017,10 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ("op3",[
       (scene_slot_eq, "scn_kurgan_enter", slot_scene_visited, 1),
     ],"Enter the kurgan",[
-      (set_jump_mission, "mt_explore_secret_place"),
-      (set_jump_entry, 0),
+      (modify_visitors_at_site, "scn_kurgan_enter"),
+      (reset_visitors),
+      (set_jump_mission, "mt_explore_kurgan"),
+      (set_visitor, 0, "trp_player"),
       (try_begin),
         (troop_slot_eq, "trp_zarinaia", slot_troop_occupation, 0),
         (set_visitor, 1, "trp_zarinaia"),
