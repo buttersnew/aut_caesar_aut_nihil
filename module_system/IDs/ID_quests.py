@@ -142,4 +142,5 @@ qst_poking_the_lion = 140
 qst_four_emperors = 141
 qst_player_treason = 142
 qst_neros_fate = 143
-qst_quests_end = 144
+qst_zarinaia = 144
+qst_quests_end = 145

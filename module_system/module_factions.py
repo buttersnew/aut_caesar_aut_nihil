@@ -42,6 +42,7 @@ factions = [
   ("culture_11",  "Berber", 0, 0.9, [], []),
   ("culture_12",  "Garamantian", 0, 0.9, [], []),
   ("culture_13",  "Nubian", 0, 0.9, [], []),
+  ("culture_14",  "Saka", 0, 0.9, [], []),
 
   ("player_faction","Player Faction",0, 0.9, [], [], 0xED1C24),
   ("player_supporters_faction","Player's Supporters",0, 0.9, [("furor_teutonicus",-0.02),("egypt",-0.02),("black_khergits",-0.9),("picton",-0.05),("player_faction",1.00),("outlaws",-0.05),("peasant_rebels", -0.1),("deserters", -0.02),("mountain_bandits", -0.05),("forest_bandits", -0.05),("taiga_bandits", -0.05),("arabian_bandits", -0.05)], [], 0xED1C24), #changed name so that can tell difference if shows up on map
@@ -106,6 +107,8 @@ factions = [
   ("danish","Heruli", 0, 0.9,[("merchants",0.5),("outlaws",-0.6),("mountain_bandits",-0.02),("black_khergits",-0.02),("deserters",-0.02),], [], 0x917bb6),
   ("slavic","Geloni", 0, 0.9,[("merchants",0.5),("outlaws",-0.6),("mountain_bandits",-0.02),("black_khergits",-0.02),("deserters",-0.02),], [], 0xb6a551),
   ("georgians","Diduroi", 0, 0.9,[("merchants",0.5),("outlaws",-0.6),("mountain_bandits",-0.02),("black_khergits",-0.02),("deserters",-0.02),], [], 0xA2E774),
+  ("dahae","Dahae", 0, 0.9,[("merchants",0.5),("outlaws",-0.6),("mountain_bandits",-0.02),("black_khergits",-0.02),("deserters",-0.02),], [], 0x639652),
+
   ("minor_kingdoms_end","Greek", 0, 0,[], []),#use this as greek culture dummy for items
   #minor factions end
 

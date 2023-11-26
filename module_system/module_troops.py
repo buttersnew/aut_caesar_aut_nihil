@@ -343,7 +343,11 @@ girl_face2    = woman_face_2
 mercenary_face_1 = white_face_11
 mercenary_face_2 = white_face_12
 
+saka_face_1 = 0x0000000000008001249249249249249200000000001d24920000000000000000
+saka_face_2 = 0x00000009bf00940a5b6db6db6db6db6d00000000001edb6d0000000000000000
 
+saka_face_female_1 = 0x000000003308608127db6db6db49b6da00000000001db49a0000000000000000
+saka_face_female_2 = 0x000000003f08708a5bedb6d96db6db6a00000000001ec9240000000000000000
 
 
 tf_guarantee_all = tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged
@@ -1051,6 +1055,19 @@ attrib_level_18, wp(140), knows_level_18, persian_face_young, persian_face_middl
 [itm_cataphract_eastern,itm_mamluke_mail,itm_sarranid_elite_armor,itm_sarranid_mace_1,itm_cataphract_boots,
 itm_persian_bow,itm_barbed_arrows,itm_lance]+horse_parth_cataphract+horse_parth_half_cataphract+parthian_helm_sallet+armenian_helm_heavy,
 attrib_level_31, wpe(140,150,150,150), knows_horseman_eastern, persian_face_young, persian_face_middle ],
+
+["saka_horse_archer", "Yukhuna Ysaninu Purma", "Yukhuna Ysaninu Purma", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_3,
+[itm_heavy_lance,itm_khergit_bow_2,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_kaftan_1,itm_kaftan_2,itm_kaftan_3,itm_sarmatian_shoes,
+itm_saka_cap_1,itm_saka_hat_1,itm_saka_cap_2,itm_saka_hat_2,itm_saka_cap_3,itm_saka_hat_3,itm_sarmatian_ringsword_1
+]+horse_steppe,
+attrib_level_26_warrior, wp(165), knows_archer_exp_eastern, saka_face_1, saka_face_2 ],
+["saka_heavy_cavalry", "Sakaya Azaryanaka", "Sakaya Azaryanaka", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse, no_scene, reserved, fac_culture_3,
+[itm_lance,itm_alan_long_sword,itm_alan_long_sword_ring,
+itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y,
+itm_saka_helmet_1,itm_saka_helmet_2,itm_saka_helmet_3,
+itm_saka_armour_1,itm_saka_armour_2,itm_saka_armour_3,itm_saka_armour_4
+]+horse_steppe_cataphract,
+attrib_level_29_warrior, wp(180), knows_archer_elit_eastern, saka_face_1, saka_face_2 ],
 
 #indian
 ["indian_archer", "Dhanurdhara", "Dhanurdhara", tf_guarantee_boots|tf_male_eastern|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_helmet, no_scene, reserved, fac_culture_4,
@@ -2901,10 +2918,17 @@ def_attrib|level(1)|agi_18, wp(10), knows_common|knows_athletics_5, 0x0000000000
 
 ["african_man","Nubian Tribesman", "Nubian Tribesmen", tf_male_black|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_garamantes,
 [itm_knife,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_headcloth,itm_turban,itm_caligea,itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_numidian_armor_5],
-def_attrib|level(24), wp(100), knows_riding_4|knows_horse_archery_3|knows_power_draw_3, nubian_man_face_younger_1, nubian_man_face_older_2 ],
+attrib_level_6, wp(60), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
 ["african_woman","Nubian Tribeswoman", "Nubian Tribeswomen", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_garamantes,
 [itm_knife,itm_sarranid_common_dress,itm_head_wrappings,itm_caligea],
-def_attrib|level(12), wp(50), knows_riding_2, african_face_female, african_face_female2 ],
+attrib_level_6, wp(40), knows_riding_2, african_face_female, african_face_female2 ],
+
+["saka_man","Saka Tribesman", "Saka Tribesmen", tf_male|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_dahae,
+[itm_knife,itm_sarmatian_shoes, itm_kaftan_1, itm_kaftan_2,itm_kaftan_3,itm_saka_cap_1,itm_saka_hat_1,itm_saka_cap_2,itm_saka_hat_2,itm_saka_cap_3,itm_saka_hat_3],
+attrib_level_6, wp(60), knows_level_6, saka_face_1, saka_face_2 ],
+["saka_woman","Saka Tribeswoman", "Saka Tribeswomen", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_dahae,
+[itm_saka_hat_2,itm_saka_hat_3,itm_saka_hat_1]+nomadic_dress_peasant+nomadic_foot_peasant+nomadic_weapons_peasant,
+attrib_level_6, wp(40), knows_level_6, saka_face_female_1, saka_face_female_2 ],
 
 ["sarmatian_village_walker", "Sarmatian Tribesman", "Sarmatian Tribesmen", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 []+nomadic_tunic+nomadic_foot_peasant+nomadic_head_peasant+nomadic_weapons_peasant,
@@ -5356,6 +5380,9 @@ attrib_level_31_warrior, wp(250), knows_level_31_warrior, african_face_younger, 
 [itm_sarmatian_shoes,itm_caucasian_longsword,itm_strong_bow,itm_bodkin_arrows,itm_bosporan_pointed_helm_3,
 itm_sarmitian_scale_9],
 attrib_level_31_warrior, wp(250), knows_level_31_warrior, 0x000000003f0513053b848ae75b8f69e300000000001e9ae30000000000000000, arab_face_old],
+["saka_king", "Skunxa the Great", "Skunxa the Great", tf_hero, no_scene, reserved, fac_dahae,
+[itm_eastern_shoe_r,itm_saka_armour_2,itm_saka_helmet_2,itm_lance, itm_alan_long_sword_ring, itm_cataphract_horse_steppe_2],
+attrib_level_31_warrior, wp(250), knows_level_31_warrior, 0x000000064000939036eb723ad38ddcdc00000000001dd6db0000000000000000, arab_face_old],
 
 ["gaetulian_queen", "Farina", "Farina", tf_hero|tf_female|tf_randomize_face, no_scene, reserved, fac_gaetuli,
 [itm_eastern_shoe_r,itm_sarranid_lady_dress],
@@ -5403,6 +5430,17 @@ def_attrib|level(18),wp(60),knows_inventory_management_10,celtic_face_11, celtic
 [itm_celtic_boots,itm_celtic_naked11],
 def_attrib|level(18),wp(60),knows_inventory_management_10,celtic_face_21, celtic_face_22],
 
+["saka_richmerchant","Merchant","Merchants", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
+[itm_eastern_shoe_b,itm_kaftan_3],
+def_attrib|level(18),wp(60),knows_inventory_management_10,saka_face_1, saka_face_2],
+["saka_poormerchant","Merchant","Merchants", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
+[itm_sarmatian_shoes,itm_kaftan_1],
+def_attrib|level(18),wp(60),knows_inventory_management_10,saka_face_1, saka_face_2],
+
+
+["saka_tavernkeeper","Tavernkeeper","Tavernkeepers", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
+[itm_kaftan_2,itm_eastern_shoe_r,itm_saka_hat_3],
+def_attrib|level(18),wp(60),knows_common,saka_face_1, saka_face_2],
 ["african_tavernkeeper","Tavernkeeper","Tavernkeepers", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[itm_sarranid_cloth_robe_b,itm_eastern_shoe],
 def_attrib|level(18),wp(60),knows_common,african_face_younger, african_face_older],
 ["arab_tavernkeeper","Tavernkeeper","Tavernkeepers", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[itm_robe,itm_eastern_shoe],
@@ -6103,6 +6141,16 @@ hero_attrib,wp(300),knows_hero,0x00000006400d138775a8aab6db6db6db00000000001c067
 ["egino","Egino","Egino",tf_male|tf_hero,0,0,fac_commoners,
 [itm_celtic_boots, itm_rawhide_coat, itm_germanic_axe2, itm_throwing_spears, itm_eastern_germanic_shield_3, itm_bear_skin_1],
 hero_attrib,wp(300),knows_hero,0x00000000000d100438db8836536db6db00000000001c86490000000000000000],
+
+#Pamphile of Epidaurus
+["pamphile","Pamphile of Epidaurus","Pamphile of Epidaurus",tf_female|tf_hero,0,0,fac_commoners,
+[itm_roman_noble_dress_1,itm_caligea],
+attrib_level_12,wp(100),knows_level_12,0x000000003f00b04549981ff8e0e978b900000000001de8dc0000000000000000],
+
+["zarinaia","Zarinaia","Zarinaia",tf_female|tf_hero,0,0,fac_commoners,
+[itm_barb_femal_rich2],
+attrib_level_12,wp(100),knows_level_12,0x000000003f00b04549981ff8e0e978b900000000001de8dc0000000000000000],
+
 
 ["troops_end", "END", "END", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 

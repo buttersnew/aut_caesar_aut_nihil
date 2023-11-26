@@ -568,5 +568,8 @@ quests = [
   ("neros_fate", "Special Quest: Fate of an artist", 0,
   "{!}placeholder."
   ),
+  ("zarinaia", "Special Quest: Zarinaia, the golden one", 0,
+  "{!}placeholder."
+  ),
   ("quests_end", "Quests End", 0, "{!}."),
 ]

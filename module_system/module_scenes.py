@@ -880,6 +880,7 @@ scenes = [
   ("slavic_town_1",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000005695d00007fbc00005de100006275",[],[],"outer_terrain_plain"),
   ("danish_town_1",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000005695d00007fbc00005de100006275",[],[],"outer_terrain_plain"),
   ("georgian_town_1",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000005695d00007fbc00005de100006275",[],[],"outer_terrain_mountain_2"),
+  ("dahae_town_1",sf_generate,"none", "none", (0,0),(100,100),-100,"0x0000000220000500000811ff00007c1000000733000040f4",[],[],"outer_terrain_steppe_2"),
 
   ("slavemarket", sf_indoors, "oil_press_interior", "bo_oil_press_interior", (-100, -100), (100, 100), -100, "0",[], []),
   ##sea scenes
@@ -1046,6 +1047,9 @@ scenes = [
 
   ("scene_camp_forest", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000003c600563000d2348000052d4000067d5000029c1",[], [], "outer_terrain_forest"),
   ("baltic_town", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000000300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_forest"),
+
+  ("kurgan", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000220600500000afebf000002bc000075c0000003db",[], [], "outer_terrain_steppe"),
+  ("kurgan_enter", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], ["bonus_chest_16"]),
 
 ]#end of file
 #

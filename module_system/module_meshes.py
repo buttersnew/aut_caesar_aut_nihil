@@ -117,7 +117,7 @@ meshes = [
   ("pic_villa", 0, "pic_villa", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_numider", 0, "pic_numider", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_nubian", 0, "pic_nubian", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+
   #minor factions
   ("pic_arms_gaetuli", 0, "pic_arms_gaetuli", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_garamantes", 0, "pic_arms_garamantes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -127,7 +127,8 @@ meshes = [
   ("pic_arms_danish", 0, "pic_arms_danish", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_slavic", 0, "pic_arms_slavic", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_georgians", 0, "pic_arms_georgians", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+  ("pic_arms_dahae", 0, "pic_arms_dahae", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+
   ("pic_library", 0, "pic_library", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_governor_judgment", 0, "pic_governor_judgment", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_hexe_party", 0, "pic_hexe_party", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -156,11 +157,11 @@ meshes = [
   ("pic_alexandria", 0, "pic_alexandria", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_athen", 0, "pic_athen", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_elysium", 0, "pic_elysium", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+
   ("pic_mb_warrior_2", 0, "new_pic_mb_warrior_2", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_mb_warrior_3", 0, "new_pic_mb_warrior_3", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_mb_warrior_4", 0, "new_pic_mb_warrior_4", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+
   ##this buttons are already used by the game engine
   ("game_log_window", 0, "game_log_window", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("left_button", 0, "cb_ui_comp_arrow_l_d", 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5),
@@ -172,7 +173,7 @@ meshes = [
   ("center_button", 0, "cb_ui_title_panel", 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5),
   ("used_button", 0, "medium_button", 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5),
   ("used_button_down", 0, "medium_button_down", 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5),
-  
+
   ("pic_statue", 0, "pic_statue", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_character_report", 0, "pic_character_report", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 
@@ -300,7 +301,7 @@ meshes = [
   ("tableau_mesh_custom_banner_square", 0, "tableau_mesh_custom_banner_square", 0, 0, 0, 0, 0, 0, 10, 10, 10),
   ("tableau_mesh_custom_banner_tall", 0, "tableau_mesh_custom_banner_tall", 0, 0, 0, 0, 0, 0, 10, 10, 10),
   ("tableau_mesh_custom_banner_short", 0, "tableau_mesh_custom_banner_short", 0, 0, 0, 0, 0, 0, 10, 10, 10),
-  
+
   ("outer_terrain_plain_1", 0, "outer_terrain_plain", -90, 0, 0, 0, 0, 0, 1, 1, 1),
   ##faction banners
   ("banner_kingdom_1", 0, "banner_kingdom_1", 0, 0, 0, -90, 0, 0, 1, 1, 1),
@@ -418,8 +419,8 @@ meshes = [
   ("arms_39", 0, "banner_39", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("arms_40", 0, "banner_40", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("arms_41", 0, "banner_41", 0, 0, 0, -90, 0, 0, 1, 1, 1),
-  ("arms_42", 0, "banner_42", 0, 0, 0, -90, 0, 0, 1, 1, 1),  
-  
+  ("arms_42", 0, "banner_42", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+
   ("arms_legion_vexilium_italica_ii",0,"banner_legion_vexilium_italica_ii", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("arms_legion_vexilium_scythica_iv",0,"banner_legion_vexilium_scythica_iv", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("arms_legion_vexilium_fulminata_xii",0,"banner_legion_vexilium_fulminata_xii", 0, 0, 0, -90, 0, 0, 1, 1, 1),
@@ -448,7 +449,7 @@ meshes = [
   ("arms_legion_vexilium_macedonica_v",0,"banner_legion_vexilium_macedonica_v", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("arms_legion_vexilium_gemina_xiii",0,"banner_legion_vexilium_gemina_xiii", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("arms_legion_vexilium_galbiana_vii",0,"banner_legion_vexilium_galbiana_vii", 0, 0, 0, -90, 0, 0, 1, 1, 1),
-  
+
   ("arms_f21", 0, "banner_42", 0, 0, 0, -90, 0, 0, 1, 1, 1),
 
   ("banners_default_a", 0, "banners_default_a", 0, 0, 0, -90, 0, 0, 1, 1, 1),
@@ -497,7 +498,7 @@ meshes = [
 
   ("quit_adv", 0, "quit_adv", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("quit_adv_b", 0, "quit_adv_b", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+
   ("flag_project_rb", 0, "flag_project_rb", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("flag_project_rb_miss", 0, "flag_project_rb_miss", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("mp_ui_host_maps_16", 0, "mp_ui_host_maps_d1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -506,7 +507,7 @@ meshes = [
   ("mp_ui_host_maps_19", 0, "mp_ui_host_maps_e2", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("mp_ui_host_maps_20", 0, "mp_ui_host_maps_e1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("mp_ui_bg", 0, "mp_ui_bg", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+
   #trailer
   ("pic_roman_nero", 0, "pic_roman_nero", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_roman_map", 0, "pic_roman_map", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -539,13 +540,13 @@ meshes = [
   ("drop_button_child", 0, "button_drop_child", 0, 0, 0, 0, 0, 0, 1.0, 0.5, 0.5),
   ("drop_button_child_down", 0, "button_drop_child_clicked", 0, 0, 0, 0, 0, 0, 1.0, 0.5, 0.5),
   ("drop_button_child_hl", 0, "button_drop_child_hl", 0, 0, 0, 0, 0, 0, 1.0, 0.5, 0.5),
-  
+
   ("inventory_equipment_panel", 0, "inventory_equipment_panel", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 
   ("icon_morningstar", 0, "ico_morningstar", 0, 0, 0, 0, 0, 0, 0.3, 0.3, 0.3),
   ("icon_lance", 0, "ico_couchedlance", 0, 0, 0, 0, 0, 0, 0.3, 0.3, 0.3),
   ("icon_spear", 0, "ico_spear", 0, 0, 0, 0, 0, 0, 0.3, 0.3, 0.3),
-  ("icon_bardiche", 0, "ico_axetwo", 0, 0, 0, 0, 0, 0, 0.3, 0.3, 0.3), 
+  ("icon_bardiche", 0, "ico_axetwo", 0, 0, 0, 0, 0, 0, 0.3, 0.3, 0.3),
   #form
   ("order_frame", 0, "mp_ui_order_button", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("flag_spears", 0, "flag_spears", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -554,11 +555,11 @@ meshes = [
   ("flag_d7", 0, "flag_d7", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("flag_d8", 0, "flag_d8", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("flag_d9", 0, "flag_d9", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+
   #for settlement buildings
   ("vc_menu_board", 0, "menu_board", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_settlement_display", 0, "pic_settlement_display", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+
   ("main_menu_dust", 0, "main_menu_dust", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("warrider_logo", 0, "warrider_logo", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 
@@ -567,7 +568,7 @@ meshes = [
   # ("main_menu_prs", 0, "main_menu_prs", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   # ("main_menu_static", 0, "main_menu_static", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   # ("main_menu_background", 0, "main_menu_crusaders", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  
+
   # ("pic_settlement_silvermine", 0, "pic_settlement_silvermine", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   # ("pic_settlement_manor", 0, "pic_settlement_manor", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   # ("pic_settlement_mill", 0, "pic_settlement_mill", 0, 0, 0, 0, 0, 0, 1, 1, 1),

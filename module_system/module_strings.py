@@ -13,6 +13,7 @@ from strings_character_names.module_names_north_african import *
 from strings_character_names.module_names_persian import *
 from strings_character_names.module_names_sarmatian import *
 from strings_character_names.module_names_hebrew import *
+from strings_character_names.module_names_saka import *
 
 #from compiler import *
 #SB : skill strings from CC, see bottom
@@ -8645,6 +8646,7 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("mercenary_arab_cav","Bedouin Mercenaries"),
 ("mercenary_palmyra","Palmyrean Mercenaries"),
 ("mercenary_caucasia","North Caucasian Mercenaries"),
+("mercenary_dahae","Saka Mercenaries"),
 
 ("kingdom_1_town_watch","Local Townwatch(Dacian)"),
 ("kingdom_2_town_watch","Local Townwatch (Celtic)"),
@@ -8889,6 +8891,7 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("culture_11",  "You are a Berber, a brought inhabitant of North Africa. Your people are skilled horsemen and adept at using weapons such as spears, bows, and arrows. Your people are also known for weaving and pottery-making abilities. The nomadic lifestyle revolves around herds of cattle, sheep, and goats, which are moved from place to place in search of grazing lands. ach tribe having its own distinct customs and traditions. Your people are organized into clans, which are further divided into smaller groups based on family ties. Your people have a strong sense of community and place a great deal of importance on hospitality and honor.^^Your people believe in various gods and deities, also new gods adapted from the Romans."),
 ("culture_12",  "You are a Garamantian, inhabitating the fertile oases of Lybia. Your people are skilled horsemen and traders who establish a network of trade routes throughout North Africa. Your people are also known for their military prowess and are feared by neighboring tribes. Your people have a hierarchical system with a king at the top and a patriarchal society where men hold most of the power, but women also play important roles in trade and agriculture."),
 ("culture_13",  "You are a Nubian, inhabitating the fertile lands around the Nile. Your people are known for impressive architecture, including distinctive pyramids and temple complexes. Your people have a deep respect for their ancestors and have developed a sophisticated system of honoring them through rituals and ceremonies. The fertile Nile gives much place for farmers who grow crops such as wheat, barley, and beans. Your people also trade with neighboring regions, exchanging goods like gold, ivory, and slaves."),
+("culture_14",  "You are a steadfast Saka warrior, born into the nomadic tribes that traverse the expansive steppes. Your people are renowned for their mastery of horsemanship and archery, skills honed through generations of traversing the vast landscapes in pursuit of sustenance and glory. The Saka way of life revolves around herding prized animals and engaging in strategic raids, showcasing a nomadic warrior culture where the equestrian bond is sacred, and martial prowess is a revered path.^^In the spiritual realm, your people worship ancestral deities tied to the natural forces that govern the steppes. Shamanistic practices are deeply ingrained, with shamans serving as conduits between the mortal and spirit realms, guiding the tribe through the challenges of the open plains. The Saka tribes are bound by a code of conduct known as Yasak, shaping the character of warriors like yourself. Yasak emphasizes the virtues of courage, loyalty, and resilience, providing a moral compass for navigating the complexities of tribal life.^^Amidst the nomadic existence, the Saka maintain a strong sense of community and kinship. Festivals, celebrating successful hunts or celestial events, bring the tribes together, reinforcing the importance of unity and shared traditions. As a Saka warrior, your identity is woven into the rich tapestry of epic narratives and oral traditions that recount the heroic deeds of legendary leaders, ensuring that the legacy of the tribes endures through time."),
 
 ("dplmc_explain_centralization","High centralization reduces tax inefficiency for the king and raises it for vassals. Additionally, high centralization allows the king to manage every center owned by the realm. This will interfere with relations between ruler and vassals. For imperial administrations, centralization also effects the costs of empire maintenance and the maximal imperial tax rate."),
 ("dplmc_explain_aristocarcy","High aristocracy will improve the relations between the king/Emperor and his vassals/nobles. It will also increase the income of lords/nobles, and decrease the wealth generated from towns slightly."),
@@ -8910,6 +8913,7 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("face_culture_11",  "000000002c09a18b3d6c9644925a5889000000000012c51c0000000000000000"),
 ("face_culture_12",  "000000000110e1446b659f2b9e7226f200000000001e56d40000000000000000"),
 ("face_culture_13",  "000000001304700a1aac9726738e3a2500000000001f3b1c0000000000000000"),
+("face_culture_14",  "0000000036089388533d6dd64eb4969a00000000001cc0f10000000000000000"),
 
 ("background_slave","Your_parents_were_slaves_and_thus_you_were_born._Your_life_has_been_one_of_hardship_and_suffering._As_a_child,_you_watched_your_family_cruelly_punished_by_the_master_for_any_small_mistake_or_perceived_offense._Nor_did_you_receive_mercy_because_of_your_age._Your_parents_died_young,_as_slaves_usually_do._Determined_to_avoid_the_same_fate,_you_escaped,_leaving_the_place_far_behind."),
 ("background_freeman","Your_parents_were_freemen,_owners_of_a_smallholding_worked_by_serfs._As_soon_as_you_could_walk,_you_too_were_put_to_work._You_helped_gather_the_harvest,_fetched_water,_fed_the_animals._Though_life_could_be_hard,_it_was_happy:_you_played_and_fought_with_the_other_children,_made_fun_baiting_livestock_and_enjoyed_the_many_cultural_and_religious_festivities_of_your_people."),
@@ -9090,4 +9094,4 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
-] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names
+] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names

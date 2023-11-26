@@ -6547,7 +6547,8 @@ simple_triggers = [
         (party_get_template_id, ":party_template", ":party_no"),
         (this_or_next|eq, ":party_template", "pt_slave_hideout"),
         (this_or_next|eq, ":party_template", "pt_grove"),
-        (is_between, ":party_template", "pt_steppe_bandit_lair", "pt_looter_lair"),
+        (this_or_next|is_between, ":party_template", "pt_steppe_bandit_lair", "pt_looter_lair"),
+        (eq, ":party_no", "p_kurgan"),
 
         (store_distance_to_party_from_party, ":distance", "p_main_party", ":party_no"),
         (lt, ":distance", 6),

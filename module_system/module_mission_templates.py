@@ -19632,7 +19632,7 @@ mission_templates = [
       (0,mtef_attackers|mtef_team_0,0,0,0,[]),#player
       (1,mtef_defenders|mtef_team_1,0,0,0,[]),#guard
       (2,mtef_defenders|mtef_team_1,0,0,0,[]),#guard
-	  (3,mtef_defenders|mtef_team_1,0,0,0,[]),#legatus
+	    (3,mtef_defenders|mtef_team_1,0,0,0,[]),#legatus
       (4,mtef_defenders|mtef_team_1,0,0,0,[]),#legatus
 
       (5,mtef_defenders|mtef_team_1,0,0,0,[]),#unused
@@ -19683,20 +19683,16 @@ mission_templates = [
       (48,mtef_defenders|mtef_team_1,0,0,0,[]),#spectators
       (49,mtef_defenders|mtef_team_1,0,0,0,[]),#spectators
 
-     (50,mtef_defenders|mtef_team_1,0,aif_start_alarmed,0,[]),
-     (51,mtef_attackers|mtef_team_0,0,aif_start_alarmed,0,[]),
-	 (52,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
-     (53,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
-
-	 (54,mtef_defenders|mtef_team_1,0,aif_start_alarmed,11,[]),
-     (55,mtef_defenders|mtef_team_1,0,aif_start_alarmed,11,[]),
-     (56,mtef_defenders|mtef_team_1,0,aif_start_alarmed,11,[]),
-     (57,mtef_defenders|mtef_team_1,0,aif_start_alarmed,12,[]),
-
-
-     (58,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
-     (59,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
-
+      (50,mtef_defenders|mtef_team_1,0,aif_start_alarmed,0,[]),
+      (51,mtef_attackers|mtef_team_0,0,aif_start_alarmed,0,[]),
+      (52,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
+      (53,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
+      (54,mtef_defenders|mtef_team_1,0,aif_start_alarmed,11,[]),
+      (55,mtef_defenders|mtef_team_1,0,aif_start_alarmed,11,[]),
+      (56,mtef_defenders|mtef_team_1,0,aif_start_alarmed,11,[]),
+      (57,mtef_defenders|mtef_team_1,0,aif_start_alarmed,12,[]),
+      (58,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
+      (59,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
 
      ], p_wetter + storms + global_common_triggers+
     [
@@ -31778,6 +31774,51 @@ mission_templates = [
     ambient_agent_play_sound,
     ]
 ),
+
+("explore_kurgan", 0, -1,
+  "Test.",[
+    (0,mtef_scene_source,0,0,1,[]),
+    (1,mtef_visitor_source,0,0,1,[]),
+  ], global_common_triggers +
+  [
+    (0, 0, 0,[(key_clicked, key_k),
+      (tutorial_message, -1),
+    ], []),
+	  (1,0,ti_once,[
+      (neg|conversation_screen_is_active),
+    ],[
+      (tutorial_message_set_size, 19, 19),
+      (tutorial_message_set_position, 500, 650),
+      (tutorial_message_set_center_justify, 0),
+      (tutorial_message_set_background, 1),
+      (tutorial_message, "@The air .^^(press K to finish read)"),
+		]),
+
+    (0, 0, ti_once, [],[
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x4D000000, 3000),#black
+    ]),
+
+    (ti_tab_pressed, 0, 0,[],[
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+      (finish_mission, 3),
+    ]),
+
+    (ti_on_agent_spawn, 0, 0,[],[
+      (store_trigger_param_1, ":agent_no"),
+      (agent_get_troop_id, ":troop_no", ":agent_no"),
+      (eq, ":troop_no", "trp_zarinaia"),
+      (agent_ai_set_interact_with_player, ":agent_no", 0),
+      (agent_set_no_dynamics, ":agent_no"),
+      (agent_set_stand_animation, ":agent_no", "anim_stand_still"),
+    ]),
+
+    common_inventory_not_available,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+    ambient_scene_play_loop,
+    ambient_scene_play_random_sound,
+]),
 
 ("explore_secret_place", 0, -1,
   "Test.",[

@@ -17807,6 +17807,13 @@ game_menus = [
                 (eq, "$current_town", "p_town_6"),
                 (set_visitors, 48, "trp_petronius", 1),
             (try_end),
+
+            (try_begin),
+                (neg|is_currently_night),
+                (eq, "$current_town", "p_town_37"),
+                (set_visitors, 8, "trp_pamphile", 1),
+            (try_end),
+
             (try_begin),
                 (eq, "$current_town", "p_town_6"),
                 (set_visitors, 49, "trp_merchant1", 1),
@@ -44200,6 +44207,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (eq, "$g_encountered_party_faction", "fac_nabataea"),
         (set_background_mesh, "mesh_pic_towndes"),
     (else_try),
+        (eq, "$g_encountered_party_faction", "fac_dahae"),
+        (set_background_mesh, "mesh_pic_khergit"),
+    (else_try),
         (set_background_mesh, "mesh_pic_townsnow"),
     (try_end),
 
@@ -55998,6 +56008,37 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
     ]
  ),
+
+("kurgan_enter",0,
+  "You see a burial mound in the distance.",
+  "none",[
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("op3",[
+      (scene_slot_eq, "scn_kurgan_enter", slot_scene_visited, 1),
+    ],"Enter the kurgan",[
+      (set_jump_mission, "mt_explore_secret_place"),
+      (set_jump_entry, 0),
+      (try_begin),
+        (troop_slot_eq, "trp_zarinaia", slot_troop_occupation, 0),
+        (set_visitor, 1, "trp_zarinaia"),
+      (try_end),
+      (jump_to_scene, "scn_kurgan_enter"),
+      (change_screen_mission),
+      (set_passage_menu,"mnu_kurgan_enter"),
+    ],"Enter the kurgan."),
+    ("op3",[
+    ],"Explore.",[
+      (set_jump_mission, "mt_explore_secret_place"),
+      (set_jump_entry, 0),
+      (jump_to_scene, "scn_kurgan"),
+      (change_screen_mission),
+    ],"Leave the kurgan."),
+    ("op2",[
+    ],"Leave.",[
+      (change_screen_map),
+    ]),
+]),
 
 ("bacchus_entrance",0,
   "The following legend is told by village elders in the area:^^After the victory of the Achaeans over Troy, a party was celebrate at Mount Olympus. During the merriment, a drunk Dionysus mistook the shield of Zeus, Aegis, for a plate."
