@@ -6143,7 +6143,7 @@ hero_attrib,wp(300),knows_hero,0x00000006400d138775a8aab6db6db6db00000000001c067
 hero_attrib,wp(300),knows_hero,0x00000000000d100438db8836536db6db00000000001c86490000000000000000],
 
 #Pamphile of Epidaurus
-["pamphile","Pamphile of Epidaurus","Pamphile of Epidaurus",tf_female|tf_hero,0,0,fac_commoners,
+["pamphile","Pamphile","Pamphile",tf_female|tf_hero,0,0,fac_commoners,
 [itm_roman_noble_dress_1,itm_caligea],
 attrib_level_12,wp(100),knows_level_12,0x000000003f00b04549981ff8e0e978b900000000001de8dc0000000000000000],
 
