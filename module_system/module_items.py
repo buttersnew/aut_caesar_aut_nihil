@@ -6286,8 +6286,18 @@ itp_type_one_handed_wpn|itp_unique|itp_primary, itc_gladius_2|itcf_carry_dagger_
 5000 , weight(3)|abundance(100)|head_armor(30)|body_armor(0)|leg_armor(0)|difficulty(9) ,imodbits_armor ],
 
 #vitellius
-["roman_rich_vitellius", "Toga with a fat belly", [("aristocrats_cloth_vitellius",0)],itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["roman_rich_vitellius", "Toga Overweight Edition", [("aristocrats_cloth_vitellius",0)],itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 roman_rich_armor_price,roman_rich_armor,imodbits_cloth, [], [] ],
+
+["roman_noble_dress_7_fat", "Roman Noble Dress Overweight Edition", [("roman_noble_dress_pink2_fat",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (cur_item_add_mesh, "str_braclets_3"),
+    (cur_item_add_mesh, "str_braclets_4"),
+    (cur_item_add_mesh, "str_braclets_2"),
+    (call_script, "script_init_dress_arms3_fat"),
+    ]),
+], [fac_culture_7] ],
 
 ##wild animals for hunting
 ["animal_boar","Boar", [("boar",0),("boar_2",imodbit_cracked)],	itp_disable_agent_sounds, 0,

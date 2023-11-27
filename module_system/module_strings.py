@@ -7862,6 +7862,10 @@ from there the 'Game concepts' button."),
 ("woman_dress_arms3_black","woman_dress_arms3_black"),
 ("woman_dress_arms3_brown","woman_dress_arms3_brown"),
 
+("woman_dress_arms3_fat","woman_dress_arms3_fat"),
+("woman_dress_arms3_black_fat","woman_dress_arms3_black_fat"),
+("woman_dress_arms3_brown_fat","woman_dress_arms3_brown_fat"),
+
 ("woman_dress_foot_brown","woman_dress_foot_brown"),
 ("woman_dress_foot_black","woman_dress_foot_black"),
 
