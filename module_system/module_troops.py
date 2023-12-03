@@ -6157,7 +6157,7 @@ hero_attrib,wp(300),knows_hero,0x00000000000d100438db8836536db6db00000000001c864
 attrib_level_12,wp(100),knows_level_12,0x000000003f00b04549981ff8e0e978b900000000001de8dc0000000000000000],
 
 ["zarinaia","Zarinaia","Zarinaia",tf_female|tf_hero,0,0,fac_commoners,
-[itm_eastern_shoe_r, itm_saka_dress,itm_saka_crown],
+[itm_saka_dress,itm_saka_crown],
 attrib_level_12,wp(100),knows_level_12,0x00000000000c731307d106390c6606ec00000000001c45330000000000000000],
 
 

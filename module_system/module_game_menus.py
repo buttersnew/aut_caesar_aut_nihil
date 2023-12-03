@@ -55973,11 +55973,13 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ]),
 
  ("barbarus_defeated",0,
-    "You defeated the fleet. Fabius has been freed. He has an interesting deal to offer:^^\
- 'Thank you, {playername}. Barbarus Rufus kept me on his ship as little more than a slave. I suppose that's what I get for trading with outlaws.^I am getting too old for this and want to retire. I assume you sought me out to make your ships faster, so I want to offer you a deal. Most of the secret is my hull paint, and I have enough hidden away to keep your ships maintained for years. Your crew can apply it just as well as I can. Take the paint, and buy me a nice latifundium to settle down in as a rich man. What do you say?'",
-    "none",
-    [(set_background_mesh, "mesh_pic_seabattle"),
-     (str_store_party_name, s4, "p_town_10"),
+  "You defeated the fleet. Fabius has been freed. He has an interesting deal to offer:^^"
+  +"'Thank you, {playername}. Barbarus Rufus kept me on his ship as little more than a slave. I suppose that's what I get for trading with outlaws.^I am getting too old for this and want to retire."
+  +" I assume you sought me out to make your ships faster, so I want to offer you a deal. Most of the secret is my hull paint, and I have enough hidden away to keep your ships maintained for years."
+  +" Your crew can apply it just as well as I can. Take the paint, and buy me a nice latifundium to settle down in as a rich man. What do you say?'",
+  "none",[
+    (set_background_mesh, "mesh_pic_seabattle"),
+    (str_store_party_name, s4, "p_town_10"),
     (str_store_party_name, s5, "p_town_14"),
     (str_store_party_name, s6, "p_town_3"),
     (quest_get_slot, ":quest_party","qst_pirates", slot_quest_target_party),
@@ -55985,37 +55987,32 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (party_is_active, ":quest_party"),
       (remove_party, ":quest_party"),
     (try_end),
-    ],
-
-    [
-      ("op1",[(store_troop_gold, ":g", "trp_player"),(ge, ":g", 50000),],
-       "You have a deal (50,000 denari)",
-       [
-       (troop_remove_gold, "trp_player", 50000),
-       (call_script, "script_change_player_honor", 5),
-       (troop_add_item, "trp_player", "itm_anti_fooling_paint", 0),
-       (call_script, "script_end_quest", "qst_pirates"),
-       (change_screen_map),
-        ]),
-      ("op2",[],
-       "I saved your life and giving you freedom. It's a fair trade for your paint.",
-       [
-       (troop_add_item, "trp_player", "itm_anti_fooling_paint", 0),
-       (call_script, "script_end_quest", "qst_pirates"),
-       (change_screen_map),
-        ]),
-      ("op3",[],
-       "A slave of your skills is worth his weight in gold, and a torturer will get your stash location just fine.",
-       [
-       (troop_add_gold, "trp_player", 50000),
-       (call_script, "script_change_player_honor", -5),
-       (troop_add_item, "trp_player", "itm_anti_fooling_paint", 0),
-       (call_script, "script_end_quest", "qst_pirates"),
-       (change_screen_map),
-        ]),
-
-    ]
- ),
+  ],[
+      ("op1",[
+        (store_troop_gold, ":g", "trp_player"),
+        (ge, ":g", 50000),
+      ],"You have a deal (50,000 denari)",[
+        (troop_remove_gold, "trp_player", 50000),
+        (call_script, "script_change_player_honor", 5),
+        (troop_add_item, "trp_player", "itm_anti_fooling_paint", 0),
+        (call_script, "script_end_quest", "qst_pirates"),
+        (change_screen_map),
+      ]),
+      ("op2",[
+      ],"I saved your life and giving you freedom. It's a fair trade for your paint.",[
+        (troop_add_item, "trp_player", "itm_anti_fooling_paint", 0),
+        (call_script, "script_end_quest", "qst_pirates"),
+        (change_screen_map),
+      ]),
+      ("op3",[
+      ],"A slave of your skills is worth his weight in gold, and a torturer will get your stash location just fine.",[
+        (troop_add_gold, "trp_player", 50000),
+        (call_script, "script_change_player_honor", -5),
+        (troop_add_item, "trp_player", "itm_anti_fooling_paint", 0),
+        (call_script, "script_end_quest", "qst_pirates"),
+        (change_screen_map),
+      ]),
+]),
 
 ("kurgan_enter",0,
   "You see a burial mound in the distance.",
@@ -56025,6 +56022,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ("op3",[
       (scene_slot_eq, "scn_kurgan_enter", slot_scene_visited, 1),
     ],"Enter the kurgan",[
+      (assign, "$temp1", 0),
       (modify_visitors_at_site, "scn_kurgan_enter"),
       (reset_visitors),
       (set_jump_mission, "mt_explore_kurgan"),
@@ -56046,6 +56044,65 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ],"Leave the kurgan."),
     ("op2",[
     ],"Leave.",[
+      (change_screen_map),
+    ]),
+]),
+
+("kurgan_leave",0,
+  "You leave the burial mound. The expedition to the burial mound was pretty much pointless. You couldn't gather any new informations. The scrolls you took contain only the same stories you already heard from the Saka king."
+  "^^However, not far from the burial mound you are interupted by a group of Saka warriors. They look angry.",
+  "none",[
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("op2",[
+    ],"Continue.",[
+      (jump_to_menu, "mnu_kurgan_battle"),
+    ]),
+]),
+
+("kurgan_battle",0,
+  "You want to talk with them but they greet you with arrows. You must fight!",
+  "none",[
+    (set_background_mesh, "mesh_pic_khergit"),
+    (assign, "$g_enemy_party", "$g_encountered_party"),
+    (call_script, "script_party_count_fit_for_battle", "$g_encountered_party"),
+    (call_script, "script_encounter_calculate_fit"),
+    (try_begin),
+        (eq, "$g_enemy_fit_for_battle", 0),
+        (jump_to_menu, "mnu_amazones_defeated"),
+    (else_try),
+        (eq, "$g_friend_fit_for_battle", 0),
+        (assign, "$temp", 1),
+        (jump_to_menu, "mnu_death_waits"),
+    (try_end),
+  ],[
+    ("op2",[
+    ],"Continue.",[
+      (set_party_battle_mode),
+      (set_jump_mission,"mt_lead_charge"),
+      (jump_to_scene, "scn_kurgan"),
+      (assign, "$g_next_menu", "mnu_kurgan_battle"),
+      (jump_to_menu, "mnu_battle_debrief"),
+      (change_screen_mission),
+    ]),
+]),
+
+("amazones_defeated",0,
+  "You defeated the Saka warriors. They don't have much valueable loot and you decide to leave quickly, in fear of Saka reinforcements appearing."
+  +" You are unsrue if the Saka noticed what you did inside the burial mounds. Later this day you spot a patrol of Saka warriors, who greeted you friendly."
+  +" As it seems, the warband that attacked you was the only group of Saka warriors who noticed your crime. Likely that's why they attacked."
+  +" ^^Now it's time to return to Pamphile to claim your reward.",
+  "none",[
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("op2",[
+    ],"Continue.",[
+      (add_xp_as_reward, 2500),
+      (display_message, "str_quest_updated"),
+      (quest_set_slot, "qst_zarinaia", slot_quest_current_state, 6),
+      (party_set_flags, "p_kurgan", pf_disabled, 1),
+      (party_set_flags, "p_kurgan", pf_always_visible, 0),
+      (add_quest_note_from_sreg, "qst_zarinaia", 5, "@You investigated Zarinaia's burial mound. Return to Pamphile.", 0),
       (change_screen_map),
     ]),
 ]),
