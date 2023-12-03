@@ -69,7 +69,7 @@ party_templates = [
 	("slavs","Slavic Raiders",icon_khergit|carries_goods(30),0,fac_slavic,bandit_personality,[(trp_slavic_vetran,30,65),(trp_slavic_skirmisher,50,115),]),
 	("danes","Herulian Raiders",icon_khergit|carries_goods(30),0,fac_danish,bandit_personality,[(trp_danish_vetran,30,65),(trp_danish_skirmisher,50,115),]),
 	("georgians","Caucasian Raiders",icon_khergit|carries_goods(30),0,fac_georgians,bandit_personality,[(trp_georgian_noble_archer,30,65),(trp_georgian_light_archer,50,115),]),
-	("sakas","Saka Raiders",icon_khergit|carries_goods(30),0,fac_dahae,bandit_personality,[(trp_saka_heavy_cavalry,30,55),(trp_saka_horse_archer,40,65),]),
+	("sakas","Saka Raiders",icon_khergit|carries_goods(30),0,fac_dahae,bandit_personality,[(trp_saka_amazon,5,15),(trp_saka_heavy_cavalry,25,40),(trp_saka_horse_archer,35,55),]),
 
 	("furor_teutonicus","Furor Teutonics",icon_kingdom_4_soldier_b|carries_goods(2),0,fac_furor_teutonicus,bandit_personality,[(trp_germanic_berserker,5,20), (trp_germanic_skirmisher,7,68), (trp_germanic_light_clubman,10,80),(trp_germanic_light_spearman,10,80)]),
 	("pictonen","Young Warriors",icon_kingdom_2_soldier_b|carries_goods(2),0,fac_picton,bandit_personality,[(trp_celtic_naked_swordman,15,30), (trp_celtic_skirmisher,17,48), (trp_celtic_light_clubman,10,30)]),
@@ -181,6 +181,8 @@ party_templates = [
 	[(trp_georgian_noble_archer,40,40),(trp_georgian_light_archer,20,20),]),
 	("mercenary_dahae","Saka Raiders",icon_khergit|carries_goods(30),0,fac_commoners,0,
 	[(trp_saka_horse_archer,35,35),(trp_saka_heavy_cavalry,25,25),]),
+	("mercenary_saka_amazon","Saka Amazons",icon_khergit|carries_goods(30),0,fac_commoners,0,
+	[(trp_saka_amazon,50,50)]),
 	##town watch templates
 	("kingdom_1_town_watch", "Dacian Townwatch", 0, 0, fac_commoners, 0,
 	[(trp_dacian_light_spearman,25,25),(trp_dacian_light_swordman,15,15),(trp_dacian_skirmishers,10,10),(trp_dacian_archers, 25,25)] ),#75

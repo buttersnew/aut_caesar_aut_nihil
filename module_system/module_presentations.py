@@ -23060,7 +23060,7 @@ presentations = [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_player_faction"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_10"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23144,7 +23144,7 @@ presentations = [
     (ti_on_presentation_event_state_change,
       [
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_player_faction"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_10"),
 
         # (try_for_range, ":slot_no", 0, 30),
           # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
@@ -23163,7 +23163,7 @@ presentations = [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_player_supporters_faction"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_11"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23178,6 +23178,11 @@ presentations = [
         (overlay_set_area_size, reg43, pos1),
 
         (set_container_overlay, reg43),#start scroll
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 44, "trp_saka_amazon", 60, 2310),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 43, "trp_saka_horse_archer", 210, 2110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 42, "trp_saka_heavy_cavalry", 60, 2110),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 41, "trp_georgian_light_archer", 710, 2110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 40, "trp_georgian_noble_archer", 560, 2110),
@@ -23269,7 +23274,7 @@ presentations = [
     (ti_on_presentation_event_state_change,
       [
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_player_supporters_faction"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_11"),
 
         # (try_for_range, ":slot_no", 0, 30),
           # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
@@ -23288,7 +23293,7 @@ presentations = [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_kingdom_1"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_12"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23385,66 +23390,16 @@ presentations = [
     (ti_on_presentation_event_state_change,
       [
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_kingdom_1"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_10"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_12"),
       ]),
   ]),
- # ("upgrade_tree_11", 0, mesh_load_window, [
-    # (ti_on_presentation_load,
-      # [
-        # (presentation_set_duration, 999999),
-        # (set_fixed_point_multiplier, 1000),
-
-        # (call_script, "script_prsnt_upgrade_tree_ready", "fac_kingdom_1"),
-
-      # ]),
-
-    # (ti_on_presentation_mouse_enter_leave,
-      # [
-      # (store_trigger_param_1, ":object"),
-      # (store_trigger_param_2, ":enter_leave"),
-
-      # (try_begin),
-        # (this_or_next|eq, ":object", "$g_presentation_obj_1"),
-        # (eq, ":object", "$g_presentation_obj_3"),
-        # (overlay_set_display, "$g_presentation_obj_3", ":enter_leave"),
-      # (else_try),
-        # (this_or_next|eq, ":object", "$g_presentation_obj_2"),
-        # (eq, ":object", "$g_presentation_obj_4"),
-        # (overlay_set_display, "$g_presentation_obj_4", ":enter_leave"),
-      # (try_end),
-    # ]),
-
-    # (ti_on_presentation_event_state_change,
-      # [
-        # (store_trigger_param_1, ":object"),
-        # (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_kingdom_1"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_11"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      # ]),
-  # ]),
  ("upgrade_tree_13", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_kingdom_2"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_13"),
 
 
         # clear the string globals that we'll use
@@ -23592,7 +23547,7 @@ presentations = [
     (ti_on_presentation_event_state_change,
       [
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_kingdom_2"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_13"),
 
         # (try_for_range, ":slot_no", 0, 40),
           # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),

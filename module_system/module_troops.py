@@ -1068,6 +1068,15 @@ itm_saka_helmet_1,itm_saka_helmet_2,itm_saka_helmet_3,
 itm_saka_armour_1,itm_saka_armour_2,itm_saka_armour_3,itm_saka_armour_4
 ]+horse_steppe_cataphract,
 attrib_level_29_warrior, wp(180), knows_archer_elit_eastern, saka_face_1, saka_face_2 ],
+["saka_amazon", "Sakai Amazon", "Sakai Amazones", tf_mounted|tf_female|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse, no_scene, reserved, fac_culture_3,
+[itm_lance,itm_alan_long_sword,itm_alan_long_sword_ring,
+itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y,
+itm_saka_helmet_1,itm_saka_helmet_2,itm_saka_helmet_3,
+itm_saka_armour_1,itm_saka_armour_2,itm_saka_armour_3,itm_saka_armour_4,
+itm_kaftan_1,itm_kaftan_2,itm_kaftan_3,itm_sarmatian_shoes,
+itm_saka_cap_1,itm_saka_hat_1,itm_saka_cap_2,itm_saka_hat_2,itm_saka_cap_3,itm_saka_hat_3,itm_sarmatian_ringsword_1
+]+horse_steppe_cataphract + horse_steppe,
+attrib_level_29_warrior, wp(180), knows_archer_elit_eastern, saka_face_female_1, saka_face_female_2 ],
 
 #indian
 ["indian_archer", "Dhanurdhara", "Dhanurdhara", tf_guarantee_boots|tf_male_eastern|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_helmet, no_scene, reserved, fac_culture_4,

@@ -5006,6 +5006,7 @@ simple_triggers = [
         (faction_get_slot, ":template", ":fac", slot_faction_reinforcements_a),
         (party_add_template, ":party", ":template"),
         (party_set_slot, ":party", slot_center_volunteer_troop_type, 0),
+        (call_script, "script_update_volunteer_troops_in_minor_town", ":party"),
     (try_end),
 
     #refresh volunteers for lombards

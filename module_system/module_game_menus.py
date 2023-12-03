@@ -16668,7 +16668,9 @@ game_menus = [
     (troop_set_slot, "trp_global_variables", start_town_conversation, 0),#this is to store if the conversation was started from the menu or the scene
 
     (try_begin),
-        (neg|is_between, "$current_town", centers_begin,centers_end),
+        (this_or_next|is_between, "$current_town", centers_begin, centers_end),
+        (is_between, "$current_town", minor_towns_begin, minor_towns_end),
+    (else_try),
         (jump_to_menu, "mnu_auto_return_to_map"),
         (display_log_message, "@A bug occured on town menu", message_negative),
     (try_end),
@@ -44222,7 +44224,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
     (try_begin),
       (faction_slot_eq, "$g_encountered_party_faction", slot_faction_player_tributary, 1),
-      (str_store_string, s52, "@The {s51} are a tributary of you. You can recruit their troops cheaper here."),
+      (str_store_string, s52, "@The {s51} are a tributary of you."),
     (try_end),
   ],[
   ("hunt_elpehant",[
@@ -44348,12 +44350,16 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 	]),
   ("cheat_test",[
     (ge, "$cheat_mode", 1),
-	],"Test scene.",[
+	],"Cheat: Test scene.",[
     (party_get_slot, ":scene", "$g_encountered_party",slot_town_center),
     (jump_to_scene, ":scene"),
     (change_screen_mission),
 	]),
-
+  ("cheat_test",[
+    (ge, "$cheat_mode", 1),
+	],"Cheat: Improve faction relation.",[
+    (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 200),
+	]),
 	("charge_them",[
     (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_player_tributary, 1),
 	],"Attack the town.",[
@@ -44372,7 +44378,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
   ("monasterio_recruitm2",[
     (party_slot_eq,"$g_encountered_party",slot_center_volunteer_troop_type,0),#can recruit
-    (faction_slot_eq, "$g_encountered_party_faction", slot_faction_player_tributary, 1),
+    (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_player_tributary, 1),
+    (store_relation, ":relation", "fac_player_supporters_faction", "$g_encountered_party_faction"),
+    (ge, ":relation", 50),
   ],"Recruit troops.",[
     (jump_to_menu, "mnu_barracks"),
     # (store_faction_of_party, ":fac", "$g_encountered_party"),
