@@ -20178,7 +20178,7 @@ mission_templates = [
     "You will fight a match in the holmgang.",
     [
       (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
-      (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
+      (1, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head, 0, 1, []), #opponent start
       (2, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #start enemy spectators
       (3, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
       (4, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),

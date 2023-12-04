@@ -929,6 +929,9 @@ scenes = [
   ("grove", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0x00000000ba031de30008922700006a3000005c8c00003bfb",[], [], "outer_terrain_mountain"),
   ("vally_of_kings", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x0000000051ef626300095e54000024e1000072a800003ce2",[], ["bonus_chest_2"], "outer_terrain_desert"),
   ("barracks", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
+  ("barracks_eastern", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
+  ("barracks_barbarian", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
+
   ("roman_burns", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
 
   ("lucias_villa", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),

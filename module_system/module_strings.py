@@ -8655,6 +8655,9 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("mercenary_caucasia","North Caucasian Mercenaries"),
 ("mercenary_dahae","Saka Mercenaries"),
 ("mercenary_saka_amazon","Saka Amazons"),
+("custom_infantry_retinue","Infantry retinue (custom)"),
+("custom_cavalry_retinue","Cavalry retinue (custom)"),
+("custom_skirmisher_retinue","Skirmisher retinue (custom)"),
 
 ("kingdom_1_town_watch","Local Townwatch(Dacian)"),
 ("kingdom_2_town_watch","Local Townwatch (Celtic)"),
