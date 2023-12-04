@@ -6296,7 +6296,7 @@ rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
     (cur_item_add_mesh, "str_braclets_4"),
     (cur_item_add_mesh, "str_braclets_2"),
     (call_script, "script_init_dress_arms3_fat"),
-    ]),
+]),
 ], [fac_culture_7] ],
 
 ##wild animals for hunting

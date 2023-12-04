@@ -3713,7 +3713,7 @@ Troop_Tree_Tableau_Width = Troop_Tree_Tableau_Height*Screen_Undistort_Width_Num/
 ##For Player Legion
 
 # Custom Troops begin
-customizable_troops_begin="trp_custom_legionary"
+customizable_troops_begin="trp_custom_infantry"
 customizable_troops_end="trp_custom_troops_end"
 # Custom  Troops end
 

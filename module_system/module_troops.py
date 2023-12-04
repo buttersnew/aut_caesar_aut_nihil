@@ -5524,21 +5524,21 @@ attrib_level_26,wp(120),knows_level_26,roman_face1,roman_face2],
 ###########################################################################################################
 
 ### OTHER CUSTOM TROOPS NON ROMAN
-["custom_infanry","Footman (custom)","Footmen (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
+["custom_infantry","Footman (custom)","Footmen (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
 attrib_level_23, wp(140), knows_level_23,roman_face1,roman_face2],
-["custom_infanry_equip","Footman (custom)","Footmen (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
+["custom_infantry_equip","Footman (custom)","Footmen (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
 def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
 
-["custom_infanry_exp","Footman (exp) (custom)","Footmen (exp) (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
+["custom_infantry_exp","Footman (exp) (custom)","Footmen (exp) (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
 attrib_level_26,wp(160),knows_level_26,roman_face1,roman_face2],
-["custom_infanry_exp_equip","Footman (exp) (custom)","Footmen (exp) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
+["custom_infantry_exp_equip","Footman (exp) (custom)","Footmen (exp) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
 def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
 
-["custom_infanry_vet","Footman (vet) (custom)","Footmen (vet) (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
+["custom_infantry_vet","Footman (vet) (custom)","Footmen (vet) (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_29,wp(180),knows_level_29,roman_face1,roman_face2],
-["custom_infanry_vet_equip","Footman (vet) (custom)","Footmen (vet) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
+["custom_infantry_vet_equip","Footman (vet) (custom)","Footmen (vet) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
 def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
 

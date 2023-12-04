@@ -185,7 +185,7 @@ party_templates = [
 [(trp_saka_amazon,50,50)]),
 
 ("custom_infantry_retinue","Infantry retinue (custom)",icon_gray_knight,0,fac_commoners,aggressiveness_0|courage_15,
-[(trp_custom_standard_bearer,1,1),(trp_custom_hornman,1,1),(trp_custom_infanry,80,80)]),
+[(trp_custom_standard_bearer,1,1),(trp_custom_hornman,1,1),(trp_custom_infantry,80,80)]),
 ("custom_cavalry_retinue","Cavalry retinue (custom)",icon_gray_knight,0,fac_commoners,aggressiveness_0|courage_15,
 [(trp_custom_standard_bearer_cav,1,1),(trp_custom_skirmisher_cav,30,30),(trp_custom_cav_barb,30,30)]),
 ("custom_skirmisher_retinue","Skirmisher retinue (custom)",icon_gray_knight,0,fac_commoners,aggressiveness_0|courage_15,
