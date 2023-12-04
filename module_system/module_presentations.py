@@ -2514,37 +2514,38 @@ presentations = [
         (faction_set_slot, "fac_player_supporters_faction", slot_faction_banner, ":cur_banner_mesh"),
         (store_sub, ":selected_banner", ":cur_banner_mesh", banner_meshes_begin),
         (store_add, ":selected_banner_map_icon", ":selected_banner", banner_map_icons_begin),
+        (store_add, ":selected_banner_spr", ":selected_banner", banner_scene_props_begin),
+        (troop_set_slot, "$g_edit_banner_troop", slot_troop_banner_scene_prop, ":selected_banner_spr"),
+
         (try_begin),
-            (eq, "$g_edit_banner_troop", "trp_player"),
-            (party_set_banner_icon, "p_main_party", ":selected_banner_map_icon"),
-        (else_try),
+            (is_between, "$g_edit_banner_troop", active_npcs_begin, active_npcs_end),
             (troop_get_slot, ":leaded_party", "$g_edit_banner_troop", slot_troop_leaded_party),
             (gt, ":leaded_party", 0),
             (party_is_active, ":leaded_party"),
             (party_set_banner_icon, ":leaded_party", ":selected_banner_map_icon"),
-        (try_end),
-        (store_add, ":selected_banner_spr", ":selected_banner", banner_scene_props_begin),
-        (troop_set_slot, "$g_edit_banner_troop", slot_troop_banner_scene_prop, ":selected_banner_spr"),
+        (else_try), # update legate banner
+            (eq, "$g_edit_banner_troop", "trp_players_legion"),
 
-         #set player supporter faction banner too
-        (try_begin),
+        (else_try),
             (eq, "$g_edit_banner_troop", "trp_player"),#are editing the player
-            (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),#player faction is active
-            (troop_get_slot, ":banner_mesh", "trp_player", slot_troop_banner_scene_prop),
+            #player party set banner
+            (party_set_banner_icon, "p_main_party", ":selected_banner_map_icon"),
+            #player faction is active
+            (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
+
             (try_begin),
-                (gt, ":banner_mesh", 0),
-                (val_add, ":banner_mesh", banner_meshes_begin),
-                (val_sub, ":banner_mesh", banner_scene_props_begin),
-                (faction_set_slot, "fac_player_faction", slot_faction_banner, ":banner_mesh"),
-                (faction_set_slot, "fac_player_supporters_faction", slot_faction_banner, ":banner_mesh"),
+                (gt, ":cur_banner_mesh", 0),
+                (val_add, ":cur_banner_mesh", banner_meshes_begin),
+                (val_sub, ":cur_banner_mesh", banner_scene_props_begin),
+                (faction_set_slot, "fac_player_faction", slot_faction_banner, ":cur_banner_mesh"),
+                (faction_set_slot, "fac_player_supporters_faction", slot_faction_banner, ":cur_banner_mesh"),
             (else_try),#custom banner
-                (eq, ":banner_mesh", -1),
+                (eq, ":cur_banner_mesh", -1),
                 (faction_set_slot, "fac_player_faction", slot_faction_banner, -1),
                 (faction_set_slot, "fac_player_supporters_faction", slot_faction_banner, -1),
             (try_end),
+            (call_script, "script_change_faction_banner", ":cur_banner_mesh", "$players_kingdom"),
         (try_end),
-
-        (call_script, "script_change_faction_banner", ":cur_banner_mesh", "$players_kingdom"),
 
         (try_begin),
             (gt, "$g_presentation_next_presentation", 0),
@@ -20054,10 +20055,20 @@ presentations = [
     (overlay_set_size, reg0, pos1),
 
     #screen top
-    (create_text_overlay, reg1, "@Select a unit:", tf_center_justify),
-    (position_set_x, pos1, 580),
+    (create_text_overlay, reg1, "@Select a unit", tf_left_align),
+    (position_set_x, pos1, 530),
     (position_set_y, pos1, 700),
     (overlay_set_position, reg1, pos1),
+
+    # Alert that click opens detail
+    (create_text_overlay, reg1, "@(Click on the name to select a unit and click again to show unit details)", tf_left_align),
+    (position_set_x, pos1, 530),
+    (position_set_y, pos1, 670),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1750/2),
+    (position_set_y, pos1, 1750/2),
+    (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, 0x0000FF),
 
     ###on top, info about players party
     (create_text_overlay, "$g_presentation_obj_28", "@Your party information:", tf_left_align),
@@ -20187,16 +20198,6 @@ presentations = [
     (position_set_x, pos1, 920),
     (position_set_y, pos1, 920),
     (overlay_set_size, reg1, pos1),
-
-    # Alert that click opens detail
-    (create_text_overlay, reg1, "@(Click on the name to select a unit and click again to show unit details)", tf_left_align),
-    (position_set_x, pos1, 530),
-    (position_set_y, pos1, 660),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 1750/2),
-    (position_set_y, pos1, 1750/2),
-    (overlay_set_size, reg1, pos1),
-    (overlay_set_color, reg1, 0x0000FF),
 
     #(overlay_set_display, reg1, 0),
     (assign, "$troop_tree_counter", 0),
@@ -20566,7 +20567,7 @@ presentations = [
 
         #lines
         (position_set_x, pos1, 0),
-        (position_set_y, pos1, 19*30 + 11*40 + 30),	# 30 for each checkbox or gap + 40 for each other elements + 30 buffer at the end
+        (position_set_y, pos1, 19*30 + 11*40 + 30),
 
         (position_set_x, pos2, 920),
         (position_set_y, pos2, 920),
@@ -20575,6 +20576,10 @@ presentations = [
         (overlay_set_color, reg1, 0x000000), #Black se ve bien
         (overlay_set_position, reg1, pos1),
         (overlay_set_size, reg1, pos2),
+
+        (position_get_y, ":y", pos1),
+        (val_sub, ":y", 20),
+        (position_set_y, pos1, ":y"),
         #gap
         (call_script, "script_prsnt_vc_menu_helper_gap"),
 
@@ -20629,6 +20634,10 @@ presentations = [
         (overlay_set_size, reg1, pos2),
         #gap
         (call_script, "script_prsnt_vc_menu_helper_gap"),
+
+        (position_get_y, ":y", pos1),
+        (val_sub, ":y", 20),
+        (position_set_y, pos1, ":y"),
 
         (try_for_range, ":troop", "trp_sarmatian_peasant", "trp_looter"),
           (this_or_next|eq, ":troop", ":legionary"),
