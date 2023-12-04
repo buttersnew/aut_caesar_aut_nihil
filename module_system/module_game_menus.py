@@ -33265,6 +33265,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ],"Customize your legion.",[
       (assign, "$g_next_menu", "mnu_barracks"),
       (assign, "$g_player_troop", "trp_players_legion"),
+      (assign, "$temp4", 1),
       (start_presentation, "prsnt_custom_troop_tree_legion"),
     ]),
     ("rec_visit",[
@@ -46520,80 +46521,30 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ]),
 ]),
 
-  # (
-    # "hire_your_new_legion",0,
-    # "You have choosen equipment and a name for your new legion. Now, it is time to train them.\
- # This will take some days.",
-    # "none",
-    # [(set_background_mesh, "mesh_pic_recruits"),
-    # ],
-    # [
-      # ("Continue...",[],"Continue...",[
-            # (party_add_template, "p_main_party", "pt_player_cohort"),
-            # (party_add_template, "p_main_party", "pt_player_cohort"),
-            # (party_add_template, "p_main_party", "pt_player_cohort"),
-            # (party_add_template, "p_main_party", "pt_player_cohort"),
-            # (party_add_template, "p_main_party", "pt_player_legion_staff"),
-
-            # (party_add_members, "p_main_party", "trp_custom_balista", 10),
-            # # (party_add_members, "p_main_party", "trp_custom_cav_vex", 1),
-            # # (party_add_members, "p_main_party", "trp_custom_cav_of", 1),
-            # # (party_add_members, "p_main_party", "trp_custom_sagitarius", 30),
-
-            # (assign, "$auto_enter_town", "$current_town"),
-            # (assign, "$g_town_visit_after_rest", 1),
-            # (assign, "$g_last_rest_center", "$current_town"),
-            # (assign, "$g_last_rest_payment_until", -1),
-            # (rest_for_hours, 70, 6, 0),
-            # (display_message, "@You inspect the troops and make everything ready.", message_alert),
-            # (change_screen_map),
-    # ],
-  # ),
-  # ],),
-  # (
-    # "hire_your_new_aux_ala",0,
-    # "You have choosen equipment and a name for your new auxilia cohort. Now, it is time to train them.\
- # This will take a day.",
-    # "none",
-    # [(set_background_mesh, "mesh_pic_recruits"),
-    # ],
-    # [
-      # ("Continue...",[],"Continue...",[
-            # (party_add_template, "p_main_party", "pt_player_aux_cav"),
-            # (assign, "$auto_enter_town", "$current_town"),
-            # (assign, "$g_town_visit_after_rest", 1),
-            # (assign, "$g_last_rest_center", "$current_town"),
-            # (assign, "$g_last_rest_payment_until", -1),
-            # (rest_for_hours, 24, 6, 0),
-            # (display_message, "@You inspect the troops and make everything ready.", message_alert),
-            # (change_screen_map),
-    # ],
-  # ),
-  # ],),
-
-  # (
-    # "hire_your_new_aux_inf",0,
-    # "You have choosen equipment and a name for your new auxilia cohort. Now, it is time to train them.\
- # This will take a day.",
-    # "none",
-    # [(set_background_mesh, "mesh_pic_recruits"),
-    # ],
-    # [
-      # ("Continue...",[],"Continue...",[
-            # (party_add_template, "p_main_party", "pt_player_aux_inf"),
-            # (assign, "$auto_enter_town", "$current_town"),
-            # (assign, "$g_town_visit_after_rest", 1),
-            # (assign, "$g_last_rest_center", "$current_town"),
-            # (assign, "$g_last_rest_payment_until", -1),
-            # (rest_for_hours, 24, 6, 0),
-            # (display_message, "@You inspect the troops and make everything ready.", message_alert),
-            # (change_screen_map),
-    # ],
-  # ),
-  # ],),
-("custom_unit_found",0,
-  "You have choosen equipment and a name for your new custom unit.",
+("customize_unit",0,
+  "You can select the name and the equipment of your custom troops! They can be recruited in all towns and forts that are owned by your faction and have a barrack building.",
   "none",[
+  ],[
+    ("option_1", [],"Continue.",[
+      (assign, "$temp4", 0),
+      (start_presentation, "prsnt_custom_troop_tree_legion"),
+    ]),
+]),
+
+("custom_unit_found",0,
+  "You have choosen equipment and a name for your new custom unit. {s31}",
+  "none",[
+    (str_clear, s31),
+    (try_begin),
+        (this_or_next|eq, "$g_player_troop", "trp_players_infantry"),
+        (this_or_next|eq, "$g_player_troop", "trp_players_skirmisher"),
+        (eq, "$g_player_troop", "trp_players_cavalry"),
+        (str_store_troop_name, s32, "$g_player_troop"),
+        (str_store_string, s31, "@^^You are now able to recruit the {s32} in every town you own."),
+    (else_try),
+        (str_store_troop_name, s32, "$g_player_troop"),
+        (str_store_string, s31, "@^^{s32} will be at your orders soon. You can recruit it at its headquarter, if there is a barrack built (like any other Roman unit)."),
+    (try_end),
     (set_background_mesh, "mesh_pic_recruits"),
     (try_begin),
         (eq, "$g_player_troop", "trp_players_legion"),
@@ -46617,8 +46568,8 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     (assign, "$g_town_visit_after_rest", 1),
     (assign, "$g_last_rest_center", "$current_town"),
     (assign, "$g_last_rest_payment_until", -1),
-    (rest_for_hours, 24, 6, 0),
-    (display_message, "@You inspect the troops and make everything ready.", message_alert),
+    (rest_for_hours, 48, 12, 0),
+    (display_message, "@The preparations take some time...", message_alert),
     (change_screen_map),
   ]),
 ]),
@@ -60186,15 +60137,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (change_screen_map),
     ]),
 ]),
-
-("customize_unit",0,
-  "You can select the name and the equipment of your custom troops! They can be recruited in all towns and castles that are owned by your faction and have a barrack building.",
-  "none",[
-  ],[
-    ("option_1", [],"Continue.",
-    [(start_presentation, "prsnt_custom_troop_tree_legion"),]),
-]),
-
 
 ("epidemic_outbreak",0,
   "Sickness and death!^^{s10} is haunted by an outbreak of {s0}. {s1}^The people pray to the gods begging them to redeem them.^{s33}",

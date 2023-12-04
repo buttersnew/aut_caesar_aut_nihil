@@ -2468,9 +2468,22 @@ presentations = [
     (val_sub, ":y_pos", 15),
     (assign, ":x_pos", 40),
 
+    (troop_get_slot, ":current_banner_spr", "$g_edit_banner_troop", slot_troop_banner_scene_prop),
+    (assign, reg1, ":current_banner_spr"),
+    (display_message, "@current_banner_spr = {reg1}"),
+
     (assign, "$g_presentation_obj_banner_selection_1", 0),
     (try_for_range, ":cur_banner_mesh", ":try_begin", ":try_end"),
         (create_image_button_overlay, reg1, ":cur_banner_mesh", ":cur_banner_mesh"),
+
+        (try_begin),
+            (store_sub, ":cur_banner", ":cur_banner_mesh", banner_meshes_begin),
+            (val_add, ":cur_banner", banner_scene_props_begin),
+            (eq, ":current_banner_spr", ":cur_banner"),
+            (overlay_set_alpha, reg1, 0x99), # reduce visibility
+            (display_message, "@Test"),
+        (try_end),
+
         (position_set_x, pos1, ":x_pos"),
         (position_set_y, pos1, ":y_pos"),
         (overlay_set_position, reg1, pos1),
@@ -34648,9 +34661,9 @@ presentations = [
     (try_end),
 
     #choosing name:
-    (create_text_overlay, reg1, "@Name:", tf_left_align),
-    (position_set_x, pos1, 400),
-    (position_set_y, pos1, 650),
+    (create_text_overlay, reg1, "@Change Name", tf_center_justify),
+    (position_set_x, pos1, 500),
+    (position_set_y, pos1, 660),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 970),
     (position_set_y, pos1, 970),
@@ -34739,9 +34752,20 @@ presentations = [
     (try_end),
     (set_container_overlay, -1),#end scroll
 
+    (try_begin),
+        (eq, "$g_player_troop", "trp_players_legion"),
+        (eq, "$temp4", 1),
+        (create_game_button_overlay, "$g_presentation_obj_11", "@Change Banner", 0),
+        (position_set_x, pos1, 250),
+        (position_set_y, pos1, 30),
+        (overlay_set_position, "$g_presentation_obj_11", pos1),
+    (else_try),
+        (assign, "$g_presentation_obj_11", -1),
+    (try_end),
+
     (create_game_button_overlay, "$g_presentation_obj_12", "str_done", 0),
     (position_set_x, pos1, 750),
-    (position_set_y, pos1, 20),
+    (position_set_y, pos1, 30),
     (overlay_set_position, "$g_presentation_obj_12", pos1),
   ]),
 
@@ -34765,6 +34789,11 @@ presentations = [
         (eq,":object","$g_presentation_obj_12"),
         (presentation_set_duration, 0),
         (jump_to_menu, "$g_next_menu"),
+    (else_try),
+        (eq,":object","$g_presentation_obj_11"),
+        (assign, "$g_edit_banner_troop", "trp_players_legion"),
+        (assign, "$g_presentation_next_presentation", "prsnt_custom_troop_tree_legion"),
+        (start_presentation, "prsnt_banner_selection"),
     (else_try),
         (try_for_range, ":slot_no", 0, 80),
             (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
@@ -34985,8 +35014,8 @@ presentations = [
     (val_mul, ":y_name", 250),
     (assign, ":x_name", 20),
     #text size
-    (position_set_x, pos2, 900),
-    (position_set_y, pos2, 900),
+    (position_set_x, pos2, 925),
+    (position_set_y, pos2, 925),
 
     # (assign, ":slot", 0),
     (set_container_overlay, reg1),#start scroll
@@ -35024,7 +35053,7 @@ presentations = [
 
 
         (call_script, "script_get_cohort_name_to_s5", ":cohort"),
-        (create_text_overlay, reg1, "@{s5}", tf_left_align),
+        (create_text_overlay, reg1, "@{s5}", tf_vertical_align_center),
         (position_set_x, pos1, ":x_name"),
         (position_set_y, pos1, ":y_new"),
         (overlay_set_position, reg1, pos1),
