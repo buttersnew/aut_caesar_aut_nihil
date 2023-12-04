@@ -268,6 +268,7 @@ scenes = [
 
   ("wedding", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0x00000000300005000004c131000024c70000030f00000363",[], [], "outer_terrain_plain"),
   ("lair_steppe_bandits", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000000200c69ac80043d0d0000556b0000768400003ea9",[], [], "outer_terrain_steppe"),
+  ("lair_saka", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000000200c69ac80043d0d0000556b0000768400003ea9",[], [], "outer_terrain_steppe"),
   ("lair_taiga_bandits", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000004c079c3e000499280000420f0000495d000048d6",[], [], "outer_terrain_plain"),
   ("lair_desert_bandits", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000005024cd120005595400003882000037a90000673e",[], [], "outer_terrain_desert"),
   ("lair_forest_bandits", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000000b00326d90003ecfb0000657e0000213500002461",[], [], "outer_terrain_plain"),

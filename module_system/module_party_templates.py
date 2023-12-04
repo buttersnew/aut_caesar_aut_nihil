@@ -302,8 +302,9 @@ party_templates = [
 	("numidian_bandit_lair" ,"Garamantian Village",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_garamantes,bandit_personality,[(trp_sarranid_horseman,15,30)]),
 	("gaetuli_bandit_lair" ,"Gaetulian Camp",icon_gaetulian_town|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_gaetuli,bandit_personality,[(trp_gaetuli_horseman,15,30)]),
 	("forest_bandit_lair" ,"Hispanic Hideout",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_forest_bandits,bandit_personality,[(trp_forest_bandit,15,30)]),
-	("mountain_bandit_lair" ,"Judean Camp",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_mountain_bandits,bandit_personality,[(trp_mountain_bandit,15,30)]),
-	("sea_raider_lair","Sea Raider Landing",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_neutral,bandit_personality,[(trp_sea_raider,15,30)]),
+	("mountain_bandit_lair" ,"Judean Hideout",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_mountain_bandits,bandit_personality,[(trp_mountain_bandit,15,30)]),
+	("sea_raider_lair","Sea Raider Landing",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,30)]),
+	("saka_camp","Saka Camp",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_dahae,bandit_personality,[(trp_saka_horse_archer,15,30)]),
 	("looter_lair","Kidnappers' Hideout",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_neutral,bandit_personality,[(trp_looter,15,18)]),
 
 	("bandit_lair_templates_end","{!}bandit_lair_templates_end",icon_axeman|carries_goods(2)|pf_is_static,0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,30)]),

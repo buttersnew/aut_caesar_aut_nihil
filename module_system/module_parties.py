@@ -496,6 +496,7 @@ parties = [
 	("desert_bandit_spawn_point2", "Arabia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (133.45, -56.4), []), #[swycartographr] prev. coords: (36, -66) #[swycartographr] prev. coords: (40.34, -46.04)
 	("desert_bandit_spawn_point3", "Nubia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (78.84, -140.56), []), #[swycartographr] prev. coords: (36, -66) #[swycartographr] prev. coords: (1.34, -125.04) #[swycartographr] prev. coords: (6.53, -126.12)
 	("egyptian_spawn", "Aegyptus", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (64.39, -92.93), []), #[swycartographr] prev. coords: (-7, -100)
+	("saka_spawn", "Chorasmia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0,  (255, 81), []), #[swycartographr] prev. coords: (-7, -100)
 	("spawn_points_end", "{!}last spawn point", pf_disabled|pf_is_static, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (0, 0), []),
 	##whatever native shit this is
 	("reserved_1", "Vesuvius", pf_no_label|pf_hide_defenders|pf_is_static|pf_always_visible, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (-100.53, 10.9), []), #[swycartographr] prev. coords: (-105, 11.72)

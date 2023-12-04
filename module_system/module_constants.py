@@ -3301,6 +3301,10 @@ DPLMC_CULTURAL_TERM_LORD = 7#"lord"
 DPLMC_CULTURAL_TERM_LORD_PLURAL = 8#"lords"
 DPLMC_CULTURAL_TERM_SWINEHERD = 9
 DPLMC_CULTURAL_TERM_TAVERNWINE = 10#"wine" (used in tavern talk)
+DPLMC_CULTURAL_TERM_KING_PRAISE = 11
+DPLMC_CULTURAL_TERM_ARMY = 12
+DPLMC_CULTURAL_TERM_GUARD = 13
+DPLMC_CULTURAL_TERM_ARMY_PLURAL = 14
 
 ## Possible return values from "script_dplmc_get_troop_standing_in_faction"
 DPLMC_FACTION_STANDING_LEADER = 60
@@ -4016,7 +4020,8 @@ s_garamantes_parties_begin =  s_gaetuli_parties_end
 s_garamantes_parties_end   =  s_garamantes_parties_begin+5
 s_rebell_parties_begin   =  s_garamantes_parties_end
 s_rebell_parties_end   =  s_rebell_parties_begin+30
-
+s_saka_parties_begin = s_rebell_parties_end
+s_saka_parties_end = s_saka_parties_begin+5
 
 region_spain                            = 1
 region_north_africa                     = 2

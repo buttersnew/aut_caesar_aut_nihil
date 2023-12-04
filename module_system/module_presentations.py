@@ -4614,6 +4614,9 @@ presentations = [
     (val_clamp, ":num_centers_needed_for_efficiency_loss", 1, 11),
     (val_clamp, ":tax_efficiency_loss_ratio_per_center", 1, 51),
 
+    # (assign, reg1, ":num_centers_needed_for_efficiency_loss"),
+    # (display_message, "@num_centers_needed_for_efficiency_loss: {reg1}"),
+
     #calculate length of the list
     (assign, ":num_lines", 0),
     (try_begin),
@@ -4676,6 +4679,8 @@ presentations = [
             # (try_end),
         (try_end),
     (try_end),
+    # (assign, reg1, ":num_owned_center_values_for_tax_efficiency"),
+    # (display_message, "@num_owned_center_values_for_tax_efficiency: {reg1}"),
 
     (try_begin),
         (eq, "$g_presentation_credits_obj_1_alpha", 0),
