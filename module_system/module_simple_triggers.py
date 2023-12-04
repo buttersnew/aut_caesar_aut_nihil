@@ -10512,6 +10512,7 @@ simple_triggers = [
 
     (try_begin),#pigbacking
         (is_between, "$g_player_court", centers_begin, centers_end),
+        (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
         #(eq, "$g_is_emperor", 1),
         (troop_slot_eq, "trp_global_variables", g_nomad_event_triigered, 0),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_parthia),
