@@ -2525,7 +2525,10 @@ presentations = [
             (party_set_banner_icon, ":leaded_party", ":selected_banner_map_icon"),
         (else_try), # update legate banner
             (eq, "$g_edit_banner_troop", "trp_players_legion"),
-
+            (store_add, ":slot", slot_legion_commanders_begin, 13),#player legion
+            (troop_get_slot, ":legate", "trp_province_array", ":slot"),
+            (store_faction_of_troop, ":faction", ":legate"),
+            (call_script, "script_set_troop_banner_according_to_faction", ":legate", ":faction"),
         (else_try),
             (eq, "$g_edit_banner_troop", "trp_player"),#are editing the player
             #player party set banner
@@ -34699,29 +34702,38 @@ presentations = [
 
     (try_begin),
         (eq, "$g_player_troop", "trp_players_infantry"),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_custom_standard_bearer", 60, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_custom_hornman", 210, 110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_custom_infantry", 60, 110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_custom_infantry_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_custom_infantry_vet", 360, 110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_custom_infantry_exp", 560, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_custom_infantry", 710, 110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_custom_standard_bearer", 560, 110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_custom_hornman", 710, 110),
+
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 210),##45 space for x
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
     (else_try),
-        (eq, "$g_player_troop", "trp_players_skirmisher"),
+        (eq, "$g_player_troop", "trp_players_cavalry"),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_custom_standard_bearer_cav", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_custom_skirmisher_cav", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_custom_skirmisher_cav_vet", 360, 110),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_custom_cav_barb", 560, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_custom_cav_barb_vet", 710, 110),
-    (else_try),
-        (eq, "$g_player_troop", "trp_players_cavalry"),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_custom_standard_bearer_skirmisher", 60, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_custom_hornman_skirmisher", 210, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_custom_skirmisher", 360, 110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_custom_skirmisher_vet", 560, 110),
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 210),
+    (else_try),
+        (eq, "$g_player_troop", "trp_players_skirmisher"),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_custom_standard_bearer_skirmisher", 60, 110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_custom_skirmisher", 210, 110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_custom_skirmisher_vet", 360, 110),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_custom_hornman_skirmisher", 560, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_custom_archer", 710, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_custom_archer_vet", 860, 110),
+
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 765, 210),
     (else_try),
         (eq, "$g_player_troop", "trp_players_legion"),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_custom_cornicen", 560, 310),
@@ -34765,12 +34777,33 @@ presentations = [
         (eq, "$g_player_troop", "trp_players_legion"),
         (eq, "$temp4", 1),
         (create_game_button_overlay, "$g_presentation_obj_11", "@Change Banner", 0),
-        (position_set_x, pos1, 250),
-        (position_set_y, pos1, 30),
+        (position_set_x, pos1, 200),
+        (position_set_y, pos1, 615),
         (overlay_set_position, "$g_presentation_obj_11", pos1),
+
+        (troop_get_slot, ":cur_banner_mesh", "trp_players_legion", slot_troop_banner_scene_prop),
+        (gt, ":cur_banner_mesh", -1),
+        (val_sub, ":cur_banner_mesh", banner_scene_props_begin),
+        (val_add, ":cur_banner_mesh", banner_meshes_begin),
+        (create_mesh_overlay, reg1, ":cur_banner_mesh"),
+        (position_set_x, pos1, 200),
+        (position_set_y, pos1, 730),
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 70),
+        (position_set_y, pos1, 70),
+        (overlay_set_size, reg1, pos1),
     (else_try),
         (assign, "$g_presentation_obj_11", -1),
     (try_end),
+
+    # additional hints
+    (create_text_overlay, reg1, "@You can customize the equipment and name of troops by clicking on them.", tf_scrollable_style_2),
+    (position_set_x, pos1, 625),
+    (position_set_y, pos1, 275),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 300),
+    (position_set_y, pos1, 450),
+    (overlay_set_area_size, reg1, pos1),
 
     (create_game_button_overlay, "$g_presentation_obj_12", "str_done", 0),
     (position_set_x, pos1, 750),
@@ -34794,6 +34827,14 @@ presentations = [
         (troop_set_plural_name, "$g_player_troop", s7),
         (troop_set_name, "$g_player_troop", s7),
         (start_presentation, "prsnt_custom_troop_tree_legion"),
+        (store_add, ":slot", slot_legion_commanders_begin, 13),#player legion
+        (troop_get_slot, ":legate", "trp_province_array", ":slot"),
+        (try_begin),
+            (ge, ":legate", 1),
+            (troop_get_slot, ":leaded_party", ":legate", slot_troop_leaded_party),
+            (party_is_active, ":leaded_party"),
+            (party_set_extra_text, ":leaded_party", s7),
+        (try_end),
     (else_try),
         (eq,":object","$g_presentation_obj_12"),
         (presentation_set_duration, 0),
