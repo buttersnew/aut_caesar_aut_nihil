@@ -21218,7 +21218,7 @@ game_menus = [
     ]
   ),
 
-("town_trade",0,
+("town_trade",mnf_enable_hot_keys,
   "You head towards the town center. Here you can find all important merchants of the town{s50}. ^The settlement is of {s61} culture.^{s34}^^{s49}",
   "none",[
     (troop_set_slot, "trp_global_variables", start_town_conversation, 0),#this is to store if the conversation was started from the menu or the scene
@@ -33159,7 +33159,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]
   ),
 
-("barracks",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+("barracks",menu_text_color(0xFF000000)|mnf_enable_hot_keys,
   "{reg22?You enter the {s0}. This is the place where troops are recruited and trained. You can recruit cohorts and other military units or individual soldiers.^^{s1}:{s5} However, you may hire mercenary companies or you can refill your cohorts.}",
   "none",[
     (call_script, "script_get_improvement_details", slot_center_has_barracks, "$current_town"),

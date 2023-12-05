@@ -20174,82 +20174,80 @@ mission_templates = [
     ],
   ),
 
-  ("barracks",0,-1,
-    "You will fight a match in the holmgang.",
-    [
-      (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
-      (1, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head, 0, 1, []), #opponent start
-      (2, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #start enemy spectators
-      (3, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
-      (4, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
-      (5, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
-      (6, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
-      (7, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
-      (8, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
-      (9, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
-      (10, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (11, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (12, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (13, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (14, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (15, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (16, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (17, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (18, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (19, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (20, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (21, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (22, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (23, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (24, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (25, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-      (26, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+("barracks",0,-1,"You will fight a match in the holmgang.",[
+  (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
+  (1, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head, 0, 1, []), #opponent start
+  (2, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #start enemy spectators
+  (3, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
+  (4, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
+  (5, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
+  (6, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
+  (7, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
+  (8, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
+  (9, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []),
+  (10, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (11, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (12, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (13, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (14, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (15, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (16, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (17, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (18, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (19, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (20, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (21, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (22, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (23, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (24, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (25, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+  (26, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
+], p_wetter + storms + global_common_triggers+
+[
+  improved_lightning,
+  ambient_scene_play_loop,
+  ambient_scene_play_random_sound,
+  ambient_set_agents_for_sounds,
+  ambient_agent_play_sound,
+  common_inventory_not_available
 
-     ], p_wetter + storms + global_common_triggers+
-     [
-     improved_lightning,
-      ambient_scene_play_loop,
-      ambient_scene_play_random_sound,
-      ambient_set_agents_for_sounds,
-      ambient_agent_play_sound,
+  (ti_inventory_key_pressed, 0, 0,[
+    (set_trigger_result, 1),
+  ],[]),
 
-      (ti_tab_pressed, 0, 0, [
-      (try_begin),
+  (ti_tab_pressed, 0, 0, [
+    (try_begin),
         (eq, "$temp", 1),
         (display_message, "str_cannot_leave_now"),
-      (else_try),
+    (else_try),
         (finish_mission),
-      (try_end),
-      ], []),
+    (try_end),
+  ],[]),
 
-    (0,0,ti_once, [],
-    [
+  (0,0,ti_once, [],[
     (try_for_agents, ":agent_no"),
         (agent_is_active, ":agent_no"),
         (agent_is_human, ":agent_no"),
         (agent_is_alive, ":agent_no"),
         (call_script, "script_init_town_agent", ":agent_no"),
     (try_end),
-    ]),
+  ]),
 
-      (0, 0, 0,[(key_clicked, key_k),
-          (tutorial_message, -1),
-          ], []),
-	  (1,0,ti_once,[
-      (eq,"$temp",1),
-      (neg|conversation_screen_is_active),
-      ],
-		[
-        (tutorial_message_set_size, 19, 19),
-        (tutorial_message_set_position, 500, 650),
-        (tutorial_message_set_center_justify, 0),
-        (tutorial_message_set_background, 1),
-        (tutorial_message, "@ Go and talk with the troops to assign equipment to them. They are awaiting you in the courtyard. When you have finished, talk with the Praetor again.^^(press K to finish read)"),
-
-		]),
-
-    ],
-  ),
+  (0, 0, 0,[
+    (key_clicked, key_k),
+    (tutorial_message, -1),
+  ], []),
+  (1,0,ti_once,[
+    (eq,"$temp",1),
+    (neg|conversation_screen_is_active),
+  ],[
+    (tutorial_message_set_size, 19, 19),
+    (tutorial_message_set_position, 500, 650),
+    (tutorial_message_set_center_justify, 0),
+    (tutorial_message_set_background, 1),
+    (tutorial_message, "@ Go and talk with the troops to assign equipment to them. They are awaiting you in the courtyard. When you have finished, talk with the Praetor again.^^(press K to finish read)"),
+  ]),
+]),
 
   ("lucias_villa",0,-1,
     "You will fight a match in the holmgang.",
