@@ -1001,6 +1001,8 @@ game_menus = [
       (this_or_next|eq, "$g_campaign_type", g_campaign_sandbox),
       (eq, "$g_campaign_type", g_campaign_lord),
     ],"Continue.",[
+      (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
+      (call_script, "script_initialize_custom_troops", ":culture"),
       (change_screen_return),
     ]),
 

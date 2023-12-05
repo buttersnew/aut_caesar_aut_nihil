@@ -5357,6 +5357,14 @@ weight(get_shield_weight(shield_armor_t3,45,87))|hit_points(shield_hitpoints_t3)
 ["battle_standard","Battle Standard", [("roman_spear_banner",0)],itp_type_polearm|itp_cant_use_on_horseback|itp_two_handed|itp_primary|itp_wooden_parry|itp_wooden_attack,itc_pike,700,
  weight(1.5)|spd_rtng(84) |abundance(5)| weapon_length(155)|swing_damage(25,blunt) | thrust_damage(15,blunt),imodbits_polearm,
  [(ti_on_init_item, [(store_trigger_param_1, ":agent_no"),(store_trigger_param_2, ":troop_no"),(call_script, "script_shield_item_set_banner","tableau_flag_pole_new", ":agent_no", ":troop_no")])]],
+["draco_blue","Draco Standard (blue)", [("draco_standard_blue", 0)], itp_type_shield|itp_wooden_parry, itcf_carry_board_shield, 600,
+ weight(4)|abundance(100)|body_armor(6)|hit_points(900)|spd_rtng(100)|shield_height(285)|shield_width(5), imodbits_none, [], []],
+["draco_red","Draco Standard (red)", [("draco_standard_red", 0)], itp_type_shield|itp_wooden_parry, itcf_carry_board_shield, 600,
+ weight(4)|abundance(100)|body_armor(6)|hit_points(900)|spd_rtng(100)|shield_height(285)|shield_width(5), imodbits_none, [], []],
+["draco_green","Draco Standard (green)", [("draco_standard_green", 0)], itp_type_shield|itp_wooden_parry, itcf_carry_board_shield, 600,
+ weight(4)|abundance(100)|body_armor(6)|hit_points(900)|spd_rtng(100)|shield_height(285)|shield_width(5), imodbits_none, [], []],
+["draco_yellow","Draco Standard (yellow)", [("draco_standard_yellow", 0)], itp_type_shield|itp_wooden_parry, itcf_carry_board_shield, 600,
+ weight(4)|abundance(100)|body_armor(6)|hit_points(900)|spd_rtng(100)|shield_height(285)|shield_width(5), imodbits_none, [], []],
 
 
 # generic scutum
