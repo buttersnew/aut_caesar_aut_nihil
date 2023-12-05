@@ -20209,7 +20209,6 @@ mission_templates = [
   ambient_scene_play_random_sound,
   ambient_set_agents_for_sounds,
   ambient_agent_play_sound,
-  common_inventory_not_available
 
   (ti_inventory_key_pressed, 0, 0,[
     (set_trigger_result, 1),
@@ -20237,16 +20236,16 @@ mission_templates = [
     (key_clicked, key_k),
     (tutorial_message, -1),
   ], []),
-  (1,0,ti_once,[
-    (eq,"$temp",1),
-    (neg|conversation_screen_is_active),
-  ],[
-    (tutorial_message_set_size, 19, 19),
-    (tutorial_message_set_position, 500, 650),
-    (tutorial_message_set_center_justify, 0),
-    (tutorial_message_set_background, 1),
-    (tutorial_message, "@ Go and talk with the troops to assign equipment to them. They are awaiting you in the courtyard. When you have finished, talk with the Praetor again.^^(press K to finish read)"),
-  ]),
+  # (1,0,ti_once,[
+  #   (eq,"$temp",1),
+  #   (neg|conversation_screen_is_active),
+  # ],[
+  #   (tutorial_message_set_size, 19, 19),
+  #   (tutorial_message_set_position, 500, 650),
+  #   (tutorial_message_set_center_justify, 0),
+  #   (tutorial_message_set_background, 1),
+  #   (tutorial_message, "@ Go and talk with the troops to assign equipment to them. They are awaiting you in the courtyard. When you have finished, talk with the Praetor again.^^(press K to finish read)"),
+  # ]),
 ]),
 
   ("lucias_villa",0,-1,
