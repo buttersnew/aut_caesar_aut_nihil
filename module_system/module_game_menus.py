@@ -16861,6 +16861,8 @@ game_menus = [
 
     (try_begin),##governor/lord events
         (eq, ":lord", "trp_player"),
+        (store_current_day, ":day"),
+        (ge, ":day", 10), # 10 days have passed
         ####random events when player is lord - juices chief, riots, etc...
         (neg|is_currently_night),
         (try_begin),
@@ -46548,7 +46550,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
         (this_or_next|eq, "$g_player_troop", "trp_players_skirmisher"),
         (eq, "$g_player_troop", "trp_players_cavalry"),
         (str_store_troop_name, s32, "$g_player_troop"),
-        (str_store_string, s31, "@^^NO troops will be added to your party - BUT you are now able to recruit the {s32} in every town you own."),
+        (str_store_string, s31, "@^^NO troops will be added to your party - BUT you are now able to recruit the {s32} in every town or fortress you own."),
     (else_try),
         (str_store_troop_name, s32, "$g_player_troop"),
         (str_store_string, s31, "@^^NO troops will be added to your party - BUT {s32} will be at your orders soon. You can recruit units at its headquarter, if there is a barrack built (like any other Roman unit)."),
