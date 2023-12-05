@@ -2586,7 +2586,10 @@ alan_armoury_begin = "itm_alan_light_1"
 alan_armoury_end = "itm_sarmatian_light1"
 
 sarmatian_armoury_begin = "itm_sarmatian_light1"
-sarmatian_armoury_end = "itm_scythian_light1"
+sarmatian_armoury_end = "itm_saka_armour_1"
+
+saka_armoury_begin = "itm_saka_armour_1"
+saka_armoury_end = "itm_scythian_light1"
 
 scythian_armoury_begin = "itm_scythian_light1"
 scythian_armoury_end = "itm_bosporan_light1"
@@ -2660,7 +2663,10 @@ phrygian_caps_begin = "itm_phrygian_cap"
 phrygian_caps_end   = "itm_alan_light_helm"
 
 alan_helmets_begin = "itm_alan_light_helm"
-alan_helmets_end   = "itm_sarmatian_cap_1"
+alan_helmets_end   = "itm_saka_cap_1"
+
+saka_helmets_begin = "itm_saka_cap_1"
+saka_helmets_end   = "itm_sarmatian_cap_1"
 
 sarmatian_helmets_begin = "itm_sarmatian_cap_1"
 sarmatian_helmets_end   = "itm_bosporan_spangenhelm_1"

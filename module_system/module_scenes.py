@@ -931,6 +931,7 @@ scenes = [
   ("barracks", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
   ("barracks_eastern", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
   ("barracks_barbarian", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
+  ("barracks_nomadic", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
 
   ("roman_burns", sf_generate, "none", "none", (0, 0), (240, 240), -20, "0x00000002300005000004e53a0000483e0000673c0000553f",[], [], "outer_terrain_plain"),
 
