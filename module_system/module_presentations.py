@@ -33809,6 +33809,7 @@ presentations = [
             (this_or_next|is_between, ":item", parthian_armoury_begin, parthian_armoury_end),
             (this_or_next|is_between, ":item", judean_armoury_begin, judean_armoury_end),
             (this_or_next|is_between, ":item", roman_tunics_begin, roman_tunics_end),
+            (this_or_next|is_between, ":item", roman_armour_begin, roman_armour_end),
             (this_or_next|is_between, ":item", arabian_armoury_begin, arabian_armoury_end),
             (this_or_next|is_between, ":item", eastern_armoury_begin, eastern_armoury_end),
 
@@ -33821,6 +33822,7 @@ presentations = [
             (this_or_next|is_between, ":item", eastern_helmets_begin, eastern_helmets_end),
             (this_or_next|is_between, ":item", parthian_helmets_begin, parthian_helmets_end),
             (this_or_next|is_between, ":item", arabian_helmets_begin, arabian_helmets_end),
+            (this_or_next|is_between, ":item", roman_helmets_begin, roman_helmets_end),
 
             (this_or_next|is_between, ":item", roman_civilian_boots_begin, roman_civilian_boots_end),
             (this_or_next|is_between, ":item", roman_military_boots_begin, roman_military_boots_end),
