@@ -161,6 +161,6 @@ persian_names = [
 	("persian_name_160", "Vahbarz"),
 	("persian_name_161", "Vardanes"),
 	("persian_name_162", "Vologases"),
-	("persian_name_163", "Vonones16"),
+	("persian_name_163", "Vonones"),
 	("persian_name_end", "end"),
 ]
