@@ -115,6 +115,7 @@ meshes = [
   ("pic_ships", 0, "pic_ships", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_family", 0, "pic_family", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_villa", 0, "pic_villa", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_villa_sea", 0, "pic_villa_sea", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_numider", 0, "pic_numider", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_nubian", 0, "pic_nubian", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 

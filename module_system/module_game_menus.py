@@ -43178,7 +43178,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("villa",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "What do you want to do?",
   "none",[
-    (set_background_mesh, "mesh_pic_villa"),
+    (set_background_mesh, "mesh_pic_villa_sea"),
   ],[
   ("villa",[
     (eq,"$current_town","p_town_34"),
@@ -50651,7 +50651,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   "A meeting in Pandateria^^You are part of a small detachment which shall march to Rome. The praefectus urbi Tigellinus needs additional troops for a certain task Nero ordered. Before the detachment starts the march, {s22} meets the troops to explain the situation:^^"
   +"'Soldiers, in what will follow, you will find yourself in a situation in which you may hesitate. But do not hesitate, just act as ordered and don't think much about it.'",
   "none",[
-    (set_background_mesh, "mesh_pic_legion_march"),
+    (set_background_mesh, "mesh_pic_villa_sea"),
     (quest_get_slot, ":giver", "qst_freelancing", slot_quest_giver_troop),
     (str_store_troop_name, s22, ":giver"),
     (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
@@ -50673,7 +50673,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   + "On the island you receive your orders from a centurio: ^^'Soldiers, Octavia, the ex-wife of Nero, has committed crimes for which she must be punished. Princeps Nero ordered: She shall watch how her maids are tortured to death.'^^"
   + "The detachment marshes to her villa. There, the soldiers force Octavia and her maids to go into the garden.",
   "none",[
-    (set_background_mesh, "mesh_pic_legion_march"),
+    (set_background_mesh, "mesh_pic_villa_sea"),
   ],[
     ("continue",[],"Continue...",[
       (modify_visitors_at_site,"scn_pandateria"),
@@ -50779,7 +50779,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   +" Nero seems to have only two solutions: remarry Octavia or murder her. Under the influence of Poppaea Sabina and Tigellinus, he finally decides for the latter.^^The praetorian guard shall do the job."
   +" You are selected to sail with a small detachment to the island Pandateria.",
   "none",[
-    (set_background_mesh, "mesh_pic_legion_march"),
+    (set_background_mesh, "mesh_pic_villa_sea"),
     (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
     (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
     (assign, "$g_encountered_party_type", spt_kingdom_hero_party),#to fix bug in dialog
@@ -50795,7 +50795,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ("freelancer_event_pret_4_2",0,
   "The plan is as follows: You shall force her to commit suicide. The people will think she voluntarily put an end to her life.^^As you reach Octavia's villa on Pandateria she is already awaiting you in the garden.",
   "none",[
-    (set_background_mesh, "mesh_pic_palast"),
+    (set_background_mesh, "mesh_pic_villa_sea"),
   ],[
     ("continue",[],"Continue...",[
       (modify_visitors_at_site,"scn_pandateria"),
