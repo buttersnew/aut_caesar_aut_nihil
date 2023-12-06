@@ -4575,25 +4575,11 @@ presentations = [
     (set_container_overlay, "$g_presentation_obj_bugdet_report_container"),
 
     #get variables for tax inefficiency
-    (game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
     (store_skill_level, reg1, "skl_trade", "trp_player"),
     (store_sub, ":tax_efficiency_loss_ratio_per_center", 10, reg1),
-    (try_begin),
-        (eq, ":reduce_campaign_ai", 0), #hard
-        (assign, ":num_centers_needed_for_efficiency_loss", 2),
-        (val_add, ":tax_efficiency_loss_ratio_per_center", 3),
-    (else_try),
-        (eq, ":reduce_campaign_ai", 1), #medium
-        (assign, ":num_centers_needed_for_efficiency_loss", 3),
-        (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
-    (else_try),
-        (eq, ":reduce_campaign_ai", 2), #easy
-        (assign, ":num_centers_needed_for_efficiency_loss", 3),
-        (val_add, ":tax_efficiency_loss_ratio_per_center", 1),
-    (else_try),
-        (assign, ":num_centers_needed_for_efficiency_loss", 4),
-        (val_add, ":tax_efficiency_loss_ratio_per_center", 0),
-    (try_end),
+
+    (store_div, ":num_centers_needed_for_efficiency_loss", reg1, 2),
+    (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
 
     #census also helps on an induvidual level
     (try_begin),
