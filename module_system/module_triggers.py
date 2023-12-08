@@ -115,6 +115,7 @@ triggers = [
 
 (0, 0, 24*180,[
     (le, "$g_is_emperor", 0),
+    (troop_slot_eq, "trp_global_variables", g_iazyges_event, 0),
     (this_or_next|eq, "$g_campaign_type", g_campaign_king),
     (this_or_next|eq, "$g_campaign_type", g_campaign_lord),
     (eq, "$g_campaign_type", g_campaign_sandbox),
