@@ -35341,7 +35341,7 @@ presentations = [
     (store_div, ":y_name", ":num_recruitable_cohorts", 4),##get y for size of the scrollable overlay
     (assign, reg2, ":y_name"),
     (val_mul, ":y_name", 250),
-    (assign, ":x_name", 20),
+    (assign, ":x_name", 0),
     #text size
     (position_set_x, pos2, 925),
     (position_set_y, pos2, 925),
@@ -35352,7 +35352,7 @@ presentations = [
     (try_for_range_backwards, ":cohort", "pt_mercenary_guard", "pt_germans"),
         (call_script, "script_cf_can_hire_cohort", ":cohort", "$g_encountered_party"),
         (try_begin),
-            (gt, ":x_name", 920),
+            (gt, ":x_name", 690),
             (assign, ":x_name", 0),
             (val_sub, ":y_name", 220),
         (try_end),
@@ -35749,10 +35749,12 @@ presentations = [
     # (position_set_x, pos1, 0),
     (store_div, ":y_name", ":num_of_cohorts", 4),##get y for size of the scrollable overlay
     (val_mul, ":y_name", 250),
-    (assign, ":x_name", 20),
+    (assign, ":x_name", 0),
     #text size
     (position_set_x, pos2, 900),
     (position_set_y, pos2, 900),
+
+    (assign, ":counter", 1),
 
     # (assign, ":slot", 0),
     (set_container_overlay, reg1),#start scroll
@@ -35761,7 +35763,7 @@ presentations = [
         (party_get_slot, ":cohort", "p_main_party", ":cohort_dummy"),
         (ge, ":cohort", 1),
         (try_begin),
-            (gt, ":x_name", 920),
+            (gt, ":x_name", 690),
             (assign, ":x_name", 0),
             (val_sub, ":y_name", 220),
         (try_end),
@@ -35790,13 +35792,15 @@ presentations = [
 
 
         (call_script, "script_get_cohort_name_to_s5", ":cohort"),
-        (create_text_overlay, reg1, "@{s5}", tf_left_align),
+        (assign, reg0, ":counter"),
+        (create_text_overlay, reg1, "@{reg0}. cohort^{s5}", tf_left_align),
         (position_set_x, pos1, ":x_name"),
         (position_set_y, pos1, ":y_new"),
         (overlay_set_position, reg1, pos1),
         (overlay_set_size, reg1, pos2),
 
         (val_add, ":x_name", 230),
+        (val_add, ":counter", 1),
     (try_end),
     (set_container_overlay, -1),#end scroll
 
@@ -36106,11 +36110,12 @@ presentations = [
     # (position_set_x, pos1, 0),
     (store_div, ":y_name", ":num_of_cohorts", 4),##get y for size of the scrollable overlay
     (val_mul, ":y_name", 250),
-    (assign, ":x_name", 20),
+    (assign, ":x_name", 0),
     #text size
     (position_set_x, pos2, 900),
     (position_set_y, pos2, 900),
 
+    (assign, ":counter", 1),
     # (assign, ":slot", 0),
     (set_container_overlay, reg1),#start scroll
 
@@ -36118,7 +36123,7 @@ presentations = [
         (party_get_slot, ":cohort", "$g_encountered_party", ":cohort_dummy"),
         (ge, ":cohort", 1),
         (try_begin),
-            (gt, ":x_name", 920),
+            (gt, ":x_name", 690),
             (assign, ":x_name", 0),
             (val_sub, ":y_name", 220),
         (try_end),
@@ -36145,15 +36150,16 @@ presentations = [
         (overlay_set_color, reg10, 0xDDDDDD),
         (troop_set_slot, "trp_temp_array_b", ":cohort_dummy", reg10),
 
-
         (call_script, "script_get_cohort_name_to_s5", ":cohort"),
-        (create_text_overlay, reg1, "@{s5}", tf_left_align),
+        (assign, reg0, ":counter"),
+        (create_text_overlay, reg1, "@{reg0}. cohort^{s5}", tf_left_align),
         (position_set_x, pos1, ":x_name"),
         (position_set_y, pos1, ":y_new"),
         (overlay_set_position, reg1, pos1),
         (overlay_set_size, reg1, pos2),
 
         (val_add, ":x_name", 230),
+        (val_add, ":counter", 1),
     (try_end),
     (set_container_overlay, -1),#end scroll
 
