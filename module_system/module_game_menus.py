@@ -24542,12 +24542,12 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ),
 
 ("notification_decide_offensive_war",0,
-  "Your {s15} {s1} has declared war against {s2}.^^{s57}^^How do you wish to react?",
+  "Your {s20} {s1} has declared war against {s2}.^^{s57}^^How do you wish to react?",
   "none",[
-    (str_store_string, s15, "@ally"),
+    (str_store_string, s20, "@ally"),
     (try_begin),
         (faction_slot_eq, "$players_kingdom", slot_faction_tributary_of, "$g_notification_menu_var1"),
-        (str_store_string, s15, "@overlord"),
+        (str_store_string, s20, "@overlord"),
     (try_end),
     (call_script, "script_npc_decision_checklist_peace_or_war", "$g_notification_menu_var1", "$g_notification_menu_var2", -1),
     (str_store_string, s57, reg1),

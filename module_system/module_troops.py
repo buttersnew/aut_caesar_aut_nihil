@@ -3959,14 +3959,14 @@ attrib_common_lady,wp(50),knows_common_lady,0x000000003f0c509a38636d3ee92a6b2200
 
 ["kingdom_5_lady_3","Kolchian Lady","Rinu",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_22,  [itm_eastern_shoe_b], attrib_common_lady,wp(50),knows_common_lady,
 0x00000009bf002116364dd8aa5475d76400000000001db8d30000000000000000],
-["kingdom_5_lady_12","Kolchian Lady","Sisygambis",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_22,  [    itm_eastern_shoe_b], attrib_common_lady,wp(50),knows_common_lady,0x00000005bf00305a4123dae69e8e48e200000000001e08db0000000000000000],
+["kingdom_5_lady_12","Armenian Lady","Sisygambis",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5,  [    itm_eastern_shoe_b], attrib_common_lady,wp(50),knows_common_lady,0x00000005bf00305a4123dae69e8e48e200000000001e08db0000000000000000],
 
 ["kingdom_5_lady_4","Armenian Lady","Arystone",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5,  [itm_eastern_shoe_y], attrib_common_lady,wp(50),knows_common_lady,0x000000057a0000414123dae69e8e48e200000000001e08db0000000000000000],
 ["kingdom_5_lady_5","Armenian Lady","Amytis",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5, [itm_eastern_shoe_r],     attrib_common_lady,wp(50),knows_common_lady, swadian_woman_face_1],
 ["kingdom_5_lady_6","Armenian Lady","Damaspia",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5, [     itm_eastern_shoe_b],     attrib_common_lady,wp(50),knows_common_lady,0x0000000d7f0402035913aa236b4d975a00000000001eb69c0000000000000000],
 ["kingdom_5_lady_7","Armenian Lady","Vashti",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5,  [      itm_eastern_shoe_y], attrib_common_lady,wp(50),knows_common_lady,0x0000000cf9002052364dd8aa5475d76400000000001db8d30000000000000000],
 ["kingdom_5_lady_8","Armenian Lady","Rhoxane",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5,  [      itm_eastern_shoe_r], attrib_common_lady,wp(50),knows_common_lady,0x0000000b0a00020a4123dae69e8e48e200000000001e08db0000000000000000],
-["kingdom_5_lady_11","Armenian Lady","Artakama",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5,  [   itm_eastern_shoe_r], attrib_common_lady,wp(50),knows_common_lady,
+["kingdom_5_lady_11","Kolchian Lady","Artakama",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_22,  [   itm_eastern_shoe_r], attrib_common_lady,wp(50),knows_common_lady,
 0x00000005ff002051364dd8aa5475d76400000000001db8d30000000000000000],
 ["kingdom_5_lady_13","Armenian Lady","Artystone",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5, [        itm_eastern_shoe_y],     attrib_common_lady,wp(50),knows_common_lady,0x00000005ff00305816ed96e88b8d595a00000000001cb8ac0000000000000000],
 ["kingdom_5_lady_14","Armenian Lady","Parysatis",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_5, [        itm_eastern_shoe_r],     attrib_common_lady,wp(50),knows_common_lady,0x000000043009629722d432cf6d4a2ae300000000001d37a10000000000000000],
