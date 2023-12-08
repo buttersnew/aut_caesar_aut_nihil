@@ -2095,7 +2095,9 @@ logent_faction_declares_war_to_curb_power                   = 93
 logent_faction_declares_war_to_respond_to_provocation       = 94
 ##diplomacy begin
 logent_faction_declares_war_to_fulfil_pact                  = 95
-logent_war_declaration_types_end                            = 96
+logent_faction_declares_war_to_declare_independence         = 96
+logent_faction_declares_war_to_end_civil_war                = 97
+logent_war_declaration_types_end                            = 98
 ##diplomacy end
 logent_player_renamed_capital = 97 #SB : unused logged event
 

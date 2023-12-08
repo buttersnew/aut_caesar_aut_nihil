@@ -1003,3 +1003,4 @@ script_party_update_cohorts = 1001
 script_party_update_text = 1002
 script_get_priest_for_god = 1003
 script_initialize_custom_troops = 1004
+script_cf_can_kill_troop = 1005

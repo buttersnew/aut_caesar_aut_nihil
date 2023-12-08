@@ -9496,7 +9496,7 @@ simple_triggers = [
             (party_set_faction, ":rebel_party", ":faction_org"),
             (try_begin),
                 (faction_slot_eq, ":faction_org", slot_faction_state, sfs_active),
-                (call_script, "script_diplomacy_start_war_between_kingdoms", ":faction_org", ":faction", 1),
+                (call_script, "script_diplomacy_start_war_between_kingdoms", ":faction_org", ":faction", logent_faction_declares_war_to_declare_independence),
             (else_try),
                 (set_relation, ":faction", ":faction_org", -50),##they are hostile now
             (try_end),

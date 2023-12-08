@@ -5149,7 +5149,8 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("resolve_the_dispute_between_s11_and_s12", "Resolve the dispute between {s11} and {s12}"),
   ("in_doing_so_you_will_be_in_violation_of_your_truce_is_that_what_you_want", "In doing so, you will be in violation of your truce. Is that what you want?"),
   ("if_you_attack_without_provocation_some_of_your_vassals_may_consider_you_to_be_too_warlike_is_that_what_you_want", "If you attack without provocation, some of your generals and governors may consider you to be too warlike. It's better to first stage a border conflict before declaring war.^(Hint: You can order one of your companions to stage a border conflict or wait till one happen.)^^ Do you want to declare war anyway?"),
-  ("our_men_are_ready_to_ride_forth_at_your_bidding_are_you_sure_this_is_what_you_want", "Our men are ready to ride forth at your bidding... Are you sure this is what you want?"),
+  ("our_men_are_ready_to_ride_forth_at_your_bidding_are_you_sure_this_is_what_you_want", "Our men are ready to ride forth at your bidding and we have a casus belli! Are you sure this is what you want?"),
+  ("attack_on_tributary", "Declaring independence is a valid casus belli. Are you sure this is what you want?"),
   ("seek_recognition", "seek recognition"),
   ("seek_vassalhood", "seek vassalhood"),
   ("seek_a_truce", "seek a truce"),
@@ -6158,6 +6159,8 @@ An estimated 70,000 to 80,000 Romans and British were then killed in the three c
   ("dplmc_very_quality", "a very high quality"),
 
   ("dplmc_s21_the_s8_declared_war_to_fulfil_pact", "{s21}. The {s8} declared war to fulfil a pact"),
+  ("dplmc_s21_the_s8_declared_war_to_end_civil_war", "{s21}. The {s8} declared war to end the civil war in their favour"),
+  ("dplmc_s21_the_s8_declared_war_to_declare_independence", "{s21}. The {s8} declared war to gain independence from oppressive foreign rule"),
  ##diplomacy end
  ##diplomacy start+
  ("dplmc_very_laissez_faire", "very laissez-faire"),
