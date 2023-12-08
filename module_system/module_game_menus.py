@@ -26510,130 +26510,98 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 		]
 	),
 
-	("dplmc_auto_loot",
-		0,
-##diplomacy start+
-		"Your heroes will automatically grab items from the loot pool based on their pre-selected upgrade options. Heroes listed first in the party order will have first pick. Any equipment no longer needed will be dropped back into the loot pool. Any items in the loot pool will be lost when you leave.^ Are you sure you wish to do this?",
-##diplomacy end+
-		"none",
-		[],
-		[
-			("dplmc_autoloot_no",
-				[],
-				"No, I've changed my mind.",
-				[
-					(jump_to_menu, "mnu_dplmc_manage_loot_pool"),
-				]
-			),
-			("dplmc_autoloot_yes",
-				[],
-				"Yes, perform the upgrading.",
-				[
-					##diplomacy start+
-					(call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
-					(assign, "$pool_troop", "trp_temp_troop"),
-					#SB : reset variables
-					(set_player_troop, "trp_player"),
-					(assign, "$lord_selected", "trp_player"),
-					##diplomacy end+
-					(call_script, "script_dplmc_auto_loot_all", "trp_temp_troop", dplmc_loot_string),
-					(jump_to_menu, "mnu_dplmc_manage_loot_pool"),
-				]
-			),
+("dplmc_auto_loot",0,
+  "Your heroes will automatically grab items from the loot pool based on their pre-selected upgrade options. Heroes listed first in the party order will have first pick."
+  +" Any equipment no longer needed will be dropped back into the loot pool. Any items in the loot pool will be lost when you leave.^ Are you sure you wish to do this?",
+	"none",[
+  ],[
+    ("dplmc_autoloot_no",[],"No, I've changed my mind.",[
+      (jump_to_menu, "mnu_dplmc_manage_loot_pool"),
+    ]),
+    ("dplmc_autoloot_yes",[],"Yes, perform the upgrading.",[
+      ##diplomacy start+
+      (call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
+      (assign, "$pool_troop", "trp_temp_troop"),
+      #SB : reset variables
+      (set_player_troop, "trp_player"),
+      (assign, "$lord_selected", "trp_player"),
+      ##diplomacy end+
+      (call_script, "script_dplmc_auto_loot_all", "trp_temp_troop", dplmc_loot_string),
+      (jump_to_menu, "mnu_dplmc_manage_loot_pool"),
+    ]),
+		("dplmc_autoloot_personal",[
+      (is_between, "$lord_selected", companions_begin, companions_end),
+      (str_store_troop_name, s1, "$lord_selected")
+    ],"Yes, only upgrade {s1}.",[
+      ##diplomacy start+
+      (assign, "$pool_troop", "trp_temp_troop"),
+      (call_script, "script_dplmc_auto_loot_troop", "$lord_selected", "$pool_troop", dplmc_loot_string),
+      ##diplomacy end+
+      (jump_to_menu, "mnu_dplmc_manage_loot_pool"),
+    ]),
+]),
 
-            #SB : individual looting
-			("dplmc_autoloot_personal",
-				[(is_between, "$lord_selected", companions_begin, companions_end),(str_store_troop_name, s1, "$lord_selected")],
-				"Yes, only upgrade {s1}.",
-				[
-					##diplomacy start+
-					(assign, "$pool_troop", "trp_temp_troop"),
-					(call_script, "script_dplmc_auto_loot_troop", "$lord_selected", "$pool_troop", dplmc_loot_string),
-					##diplomacy end+
-					(jump_to_menu, "mnu_dplmc_manage_loot_pool"),
-				]
-			),
-		]
-	),
-
-
-  (
-    "dplmc_notification_tribute_declared",0,
-    "Tributary established^^After a long and bloody period of wars, {s1} has finally been subjugated by {s2}!^{s3} has been forced to pay a high tribute\
- and his diplomacy is now limited due to his new overlord.^{s57}",
-    "none",
-    [
-
+("dplmc_notification_tribute_declared",0,
+  "Tributary established^^After a long and bloody period of wars, {s1} has finally been subjugated by {s2}!^{s3} has been forced to pay a high tribute"
+  +" and his diplomacy is now limited due to his new overlord.^{s57}",
+  "none",[
 	  (str_clear, s57),
     (faction_get_slot, ":leader", "$g_notification_menu_var1", slot_faction_leader),
     (str_store_troop_name, s3, ":leader"),
 	  (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (store_sub, ":faction_1", "$g_notification_menu_var1", kingdoms_begin),
-      (store_sub, ":faction_2", "$g_notification_menu_var2", kingdoms_begin),
-      (val_mul, ":faction_1", 128),
-      (val_add, ":faction_1", ":faction_2"),
-      (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
-      ],
-    [
-      ("dplmc_continue",[],"Continue...",
-       [(change_screen_return),
-        ]),
-     ]
-  ),
-  (
-    "notification_tributary_offer",0,
-    "You recieve a message from {s1} of the {s2}. He offers you a tribute of 20,000 denars and to submit to you. The {s2} would be your vassal state from now on.^^\
- As vassal state they are not able to declare war or peace and will follow you into wars.",
-    "none",
-    [
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (store_sub, ":faction_1", "$g_notification_menu_var1", kingdoms_begin),
+    (store_sub, ":faction_2", "$g_notification_menu_var2", kingdoms_begin),
+    (val_mul, ":faction_1", 128),
+    (val_add, ":faction_1", ":faction_2"),
+    (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
+  ],[
+    ("dplmc_continue",[],"Continue...",[
+      (change_screen_return),
+    ]),
+]),
+
+("notification_tributary_offer",0,
+  "You recieve a message from {s1} of the {s2}. He offers you a tribute of 20,000 denars and to submit to you. The {s2} would be your vassal state from now on.^^"
+  + " As vassal state they are not able to declare war or peace and will follow you into wars.",
+  "none",[
     (str_store_faction_name, s2, "$g_notification_menu_var1"),
     (faction_get_slot, ":leader", "$g_notification_menu_var1", slot_faction_leader),
     (str_store_troop_name, s1, ":leader"),
-      ],
-    [
-      ("dplmc_continue",[],"Accept. {s2} are now my tributaries.",
-       [
-       (call_script, "script_dplmc_start_tributary_between_kingdoms", "$g_notification_menu_var1", "fac_player_supporters_faction", 1),
-       (change_screen_return),
-        ]),
+  ],[
+    ("dplmc_continue",[],"Accept. {s2} are now my tributaries.",[
+      (call_script, "script_dplmc_start_tributary_between_kingdoms", "$g_notification_menu_var1", "fac_player_supporters_faction", 1),
+      (change_screen_return),
+    ]),
+    ("dplmc_continue",[],"Reject the offer.",[
+      (change_screen_return),
+    ]),
+]),
 
-      ("dplmc_continue",[],"Reject the offer.",
-       [(change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "dplmc_notification_alliance_declared",0,
-    "Alliance Agreement^^{s1} and {s2} have formed an alliance!^{s57}",
-    "none",
-    [
-
+("dplmc_notification_alliance_declared",0,
+  "Alliance Agreement^^{s1} and {s2} have formed an alliance!^{s57}",
+  "none",[
 	  (str_clear, s57),
-
 	  (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (store_sub, ":faction_1", "$g_notification_menu_var1", kingdoms_begin),
-      (store_sub, ":faction_2", "$g_notification_menu_var2", kingdoms_begin),
-      (val_mul, ":faction_1", 128),
-      (val_add, ":faction_1", ":faction_2"),
-      (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
-      ],
-    [
-      ("dplmc_continue",[],"Continue...",
-       [(change_screen_return),
-        ]),
-     ]
-  ),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (store_sub, ":faction_1", "$g_notification_menu_var1", kingdoms_begin),
+    (store_sub, ":faction_2", "$g_notification_menu_var2", kingdoms_begin),
+    (val_mul, ":faction_1", 128),
+    (val_add, ":faction_1", ":faction_2"),
+    (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
+  ],[
+    ("dplmc_continue",[],"Continue...",[
+      (change_screen_return),
+    ]),
+]),
 
   (
     "dplmc_notification_defensive_declared",0,
