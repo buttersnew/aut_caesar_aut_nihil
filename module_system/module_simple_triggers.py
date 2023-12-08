@@ -7102,7 +7102,7 @@ simple_triggers = [
     (store_random_in_range, ":town", towns_begin,towns_end),
     (try_begin),
         (party_get_slot, ":party_no", ":town", slot_town_patrol_party),
-        (ge, ":party_no", "p_vally_of_kings"),
+        (gt, ":party_no", "p_vally_of_kings"),
         (party_is_active, ":party_no"),
         ##patrol ai
         (party_slot_eq,":party_no", slot_party_type, spt_patrol),

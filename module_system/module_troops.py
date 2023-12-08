@@ -6127,6 +6127,25 @@ attrib_level_12,wp(100),knows_level_12,0x000000003f00b04549981ff8e0e978b90000000
 [itm_saka_dress,itm_saka_crown],
 attrib_level_12,wp(100),knows_level_12,0x00000000000c731307d106390c6606ec00000000001c45330000000000000000],
 
+# wlod 4
+["turakina","Turakina","Turakina",tf_female|tf_hero,0,0,fac_commoners,
+[],
+attrib_level_12,wp(100),knows_level_12,0x00000001bf00b09a37cf9d0edb5120db00000000001c10d30000000000000000],
+["lybian","The Libyan","The Libyan",tf_male|tf_hero,0,0,fac_commoners,
+[],
+hero_attrib,wp(300),knows_hero,0x000000003f0cb5cf36db8e83b36db6db00000000001c801b0000000000000000],
+["chinese_commander","Commander Lin Lee Shen Shen","Commander Lin Lee Shen Shen",tf_male|tf_hero,0,0,fac_commoners,
+[],
+hero_attrib,wp(300),knows_hero,0x000000003f0c901036db6db6db6db6db00000000000db6db0000000000000000],
+["temur","Temur, Tuqi King of the Right","Temur, Tuqi King of the Right",tf_male|tf_hero,0,0,fac_commoners,
+[],
+hero_attrib,wp(300),knows_hero,0x000000093f0c838737df6db6db6db6db00000000001ca6db0000000000000000],
+["taichar","Taichar Khan","Taichar Khan",tf_male|tf_hero,0,0,fac_commoners,
+[],
+hero_attrib,wp(300),knows_hero,0x0000000bff0ca385315f8db6db6db6db00000000001efa120000000000000000],
+["xiao","Xiao Qiu","Xiao Qiu",tf_male|tf_hero,0,0,fac_commoners,
+[],
+hero_attrib,wp(300),knows_hero,0x000000093f0c901036db6db6db6db6db00000000000db6db0000000000000000],
 
 ["troops_end", "END", "END", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
