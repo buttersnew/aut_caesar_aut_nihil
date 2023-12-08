@@ -3476,6 +3476,8 @@ simple_triggers = [
             (call_script, "script_party_set_ai_state", ":party_no", spai_holding_center, ":center_no"),
         (else_try),
             (neg|faction_slot_eq, ":cur_faction", slot_faction_state, sfs_active),
+            (troop_get_slot, reg0, ":troop_no", slot_troop_change_to_faction),
+            (neg|is_between, reg0, kingdoms_begin, kingdoms_end),
             (try_begin),
                 (is_between, ":troop_no", kings_begin, kings_end),
                 (troop_set_slot, ":troop_no", slot_troop_change_to_faction, "fac_commoners"),
@@ -3483,6 +3485,7 @@ simple_triggers = [
                 (store_random_in_range, ":random_no", 0, 100),
                 (lt, ":random_no", 10),
                 (call_script, "script_cf_get_random_active_faction_except_player_faction_and_faction", ":cur_faction"),
+                (is_between, reg0, kingdoms_begin, kingdoms_end),
                 (troop_set_slot, ":troop_no", slot_troop_change_to_faction, reg0),
             (try_end),
         (try_end),
@@ -4908,7 +4911,6 @@ simple_triggers = [
         (try_for_range, ":cur_troop_2", active_npcs_begin, active_npcs_end),
             (troop_slot_eq,":cur_troop_2",slot_troop_original_faction,":cur_kingdom"),
             (neg|troop_slot_eq, ":cur_troop_2", slot_troop_occupation, dplmc_slto_dead),
-
             (neg|troop_slot_ge, ":cur_troop_2", slot_troop_legion, 1), #no legions or aux commanders
             (neg|troop_slot_ge, ":cur_troop_2", slot_troop_aux, 1),    #no legions or aux commanders
             (neg|troop_slot_ge, ":cur_troop_2", slot_troop_govern, 1), #no governors
@@ -4918,11 +4920,9 @@ simple_triggers = [
                 (neq, ":cur_troop_2", ":king"),
                 (store_troop_faction, ":faction_no_2", ":cur_troop_2"),
                 (neq, ":faction_no_2", ":cur_kingdom"),
-
                 (troop_get_slot, ":wealth", ":cur_troop_2", slot_troop_wealth),
                 (val_add, ":wealth", 5000),
                 (troop_set_slot, ":cur_troop_2", slot_troop_wealth, ":wealth"),
-
                 (troop_set_slot, ":cur_troop_2", slot_troop_change_to_faction, ":cur_kingdom"),
             (else_try),##exiled lords come back
                 (troop_slot_eq, ":cur_troop_2", slot_troop_occupation, dplmc_slto_exile),
@@ -6210,17 +6210,16 @@ simple_triggers = [
         (store_troop_faction, ":faction_no", ":troop_no"),
         (troop_get_slot, ":new_faction_no", ":troop_no", slot_troop_change_to_faction),
         (try_begin),
-            (this_or_next|troop_slot_ge, ":troop_no", slot_troop_legion, 1),
-            (this_or_next|troop_slot_ge, ":troop_no", slot_troop_aux, 1),
-            (troop_slot_ge, ":troop_no", slot_troop_govern, 1),
-            (str_store_troop_name, s22, ":troop_no"),
-            (str_store_faction_name, s33, ":faction_no"),
-            (str_store_faction_name, s34, ":new_faction_no"),
-            (display_log_message, "@{s22} trys to switch from {s33} to {s34}! This is not allowed."),
-        (else_try),
             (troop_get_slot, ":party_no", ":troop_no", slot_troop_leaded_party),
             (assign, ":continue", 0),
             (try_begin),
+                (this_or_next|troop_slot_ge, ":troop_no", slot_troop_legion, 1),
+                (this_or_next|troop_slot_ge, ":troop_no", slot_troop_aux, 1),
+                (troop_slot_ge, ":troop_no", slot_troop_govern, 1),
+                (faction_get_slot, ":culture", ":new_faction_no", slot_faction_culture),
+                (faction_slot_eq, ":faction_no", slot_faction_culture, ":culture"),
+                (assign, ":continue", 1),
+            (else_try),
                 (eq, ":new_faction_no", "fac_commoners"),#block it if the old faction is active again!
                 (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
                 (assign, ":continue", 0),
