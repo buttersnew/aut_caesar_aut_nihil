@@ -179,7 +179,7 @@ iwf_shoot_speed_bits        = 90
 
 iwf_max_ammo_bits           = 100 # use this for shield endurance too?
 iwf_abundance_bits          = 110
-iwf_accuracy_bits           = 16  #reuse leg_armor for accuracy  
+iwf_accuracy_bits           = 16  #reuse leg_armor for accuracy
 #iwf_horse_speed_bits        = 8
 #iwf_horse_maneuver_bits     = 16
 #iwf_horse_charge_bits       = 24
@@ -191,10 +191,10 @@ def weight(x):
   a = int(4.0 * x)
   a = ibf_armor_mask & a
   return (((bignum | a) & ibf_armor_mask) << ibf_weight_bits)
-  
+
 def get_weight(y):
   a = (y >> ibf_weight_bits) & ibf_armor_mask
-  return 0.25 * a 
+  return 0.25 * a
 
 def head_armor(x):
   return (((bignum | x) & ibf_armor_mask) << ibf_head_armor_bits)
@@ -246,10 +246,10 @@ def weapon_length(x):
 
 def shield_width(x):
   return weapon_length(x)
- 
+
 def shield_height(x):
   return shoot_speed(x)
- 
+
 def get_weapon_length(y):
   return ((y >> iwf_weapon_length_bits) & ibf_10bit_mask)
 
@@ -402,7 +402,7 @@ itc_longsword = itc_dagger | itc_parry_onehanded
 itc_scimitar  = itc_cleaver | itc_parry_onehanded
 
 itc_parry_two_handed = itcf_force_64_bits | itcf_parry_forward_twohanded | itcf_parry_up_twohanded | itcf_parry_right_twohanded | itcf_parry_left_twohanded
-itc_cut_two_handed = itcf_force_64_bits | (itcf_slashright_twohanded | itcf_slashleft_twohanded | itcf_overswing_twohanded | 
+itc_cut_two_handed = itcf_force_64_bits | (itcf_slashright_twohanded | itcf_slashleft_twohanded | itcf_overswing_twohanded |
                                            itcf_horseback_slashright_onehanded|itcf_horseback_slashleft_onehanded)
 itc_greatsword = itc_cut_two_handed |  itcf_thrust_twohanded | itc_parry_two_handed |itcf_thrust_onehanded_lance
 itc_nodachi    = itc_cut_two_handed | itc_parry_two_handed
@@ -420,9 +420,9 @@ itc_spear      = itc_parry_polearm|itcf_thrust_onehanded_lance|itcf_thrust_oneha
 
 itc_cutting_spear = itc_parry_polearm|itcf_thrust_onehanded_lance |itcf_thrust_onehanded_lance_horseback|itcf_thrust_polearm |itcf_overswing_polearm|itcf_slashright_polearm|itcf_slashleft_polearm
 
-itc_pike       = itcf_thrust_onehanded_lance|itcf_thrust_onehanded_lance_horseback|itcf_thrust_polearm|itcf_overswing_spear|itcf_overswing_musket  
+itc_pike       = itcf_thrust_onehanded_lance|itcf_thrust_onehanded_lance_horseback|itcf_thrust_polearm|itcf_overswing_spear|itcf_overswing_musket
 
-itc_guandao    = itc_parry_polearm|itcf_overswing_polearm|itcf_thrust_polearm|itcf_slashright_polearm|itcf_slashleft_polearm|itcf_horseback_slashright_onehanded|itcf_horseback_slashleft_onehanded|itcf_horseback_slash_polearm
+itc_guandao    = itc_parry_polearm|itcf_overswing_polearm|itcf_slashright_polearm|itcf_slashleft_polearm
 
 itc_greatlance = itcf_thrust_onehanded_lance |itcf_thrust_onehanded_lance_horseback| itcf_thrust_polearm
 itc_musket_melee = itc_parry_polearm|itcf_overswing_musket|itcf_thrust_musket|itcf_slashright_twohanded|itcf_slashleft_twohanded
@@ -454,14 +454,14 @@ def append_noswing_items(items):
       #Above checks that it is a weapon with thrust damage; also checks that it isn't a tournament-type weapon by checking the item ID (just to prevent not-used items)
       add_item[i_item][0] = 'noswing_'+add_item[i_item][0]                  #add noswing_ to the item's name
       add_item[i_item][6] = add_item[i_item][6] & ~(ibf_damage_mask << iwf_swing_damage_bits) #should set new item's swing damage to 0
-      add_item[i_item][4] = add_item[i_item][4] & ~itcf_overswing_polearm  #remove itcf_ capabilties to prevent swinging without damage  
-      add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashright_polearm                     
+      add_item[i_item][4] = add_item[i_item][4] & ~itcf_overswing_polearm  #remove itcf_ capabilties to prevent swinging without damage
+      add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashright_polearm
       add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashleft_polearm
-      add_item[i_item][4] = add_item[i_item][4] & ~itcf_overswing_onehanded   
-      add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashright_onehanded                     
+      add_item[i_item][4] = add_item[i_item][4] & ~itcf_overswing_onehanded
+      add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashright_onehanded
       add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashleft_onehanded
       add_item[i_item][4] = add_item[i_item][4] & ~itcf_overswing_twohanded
-      add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashright_twohanded                     
+      add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashright_twohanded
       add_item[i_item][4] = add_item[i_item][4] & ~itcf_slashleft_twohanded
       if type == itp_type_polearm and add_item[i_item][3] & itp_two_handed == 0:
         add_item[i_item][4] = add_item[i_item][4] | itcf_thrust_onehanded  #so that the polearms use 'bent elbow' with shields, but normal without
