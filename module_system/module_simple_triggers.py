@@ -4248,6 +4248,7 @@ simple_triggers = [
                 (item_set_slot, ":cur_food", slot_item_is_checked, 0),
                 (call_script, "script_cf_player_has_item_without_modifier", ":cur_food", imod_rotten),
                 (this_or_next|neq, ":cur_food", "itm_wine"),
+                (this_or_next|neq, ":cur_food", "itm_tea"),
                 (neq, ":cur_food", "itm_ale"),
                 (val_add, ":available_food", 1),
             (try_end),
@@ -6539,6 +6540,7 @@ simple_triggers = [
 
     (item_set_slot, "itm_wine", slot_item_food_bonus, 5),
     (item_set_slot, "itm_ale", slot_item_food_bonus, 4),
+    (item_set_slot, "itm_tea", slot_item_food_bonus, 3),
 ]),
 
 (1,[

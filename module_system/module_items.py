@@ -565,6 +565,8 @@ heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_7] ],
 
 ["pottery","Pottery", [("jug",0)], itp_merchandise|itp_type_goods, 0,
 200,weight(100)|abundance(90),imodbits_none],
+["laquerware","Laquerware", [("laquerware",0)], itp_type_goods, 0,
+1000,weight(200)|abundance(90),imodbits_none],
 
 ["raw_flax","Flax Bundle", [("raw_flax",0)], itp_merchandise|itp_type_goods, 0,
  300,weight(80)|abundance(90),imodbits_none],
@@ -601,6 +603,8 @@ heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_7] ],
 440,weight(60)|abundance(60)|max_ammo(60),imodbits_none],
 ["ale","Ale", [("ale_barrel",0)], itp_merchandise|itp_type_goods|itp_consumable, 0,
 240,weight(60)|abundance(70)|max_ammo(80),imodbits_none],
+["tea","Tea", [("raw_dye_green",0)], itp_type_goods|itp_consumable, 0,
+250,weight(60)|abundance(70)|food_quality(40)|max_ammo(200),imodbits_none],
 
 #foods (first one is smoked_fish)
 ["smoked_fish","Smoked Fish", [("smoked_fish",0)], itp_merchandise|itp_type_goods|itp_consumable|itp_food, 0,
