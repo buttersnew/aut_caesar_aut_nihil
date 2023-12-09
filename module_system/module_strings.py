@@ -9101,6 +9101,23 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("description_roman_rich_emperor", "Description:^^This is a lavishly decorated toga.^^Background:^^Toga picta is Latin and means 'painted toga'. Usually dyed solid purple, decorated with imagery in gold thread, and worn over a similarly-decorated tunica palmata; used by generals in their triumphs. During the Empire, it was worn by consuls and emperors. Over time, it became increasingly elaborate, and was combined with elements of the consular trabea."),
 ("description_roman_rich_emperor_2", "Description:^^This is a lavishly decorated toga.^^Background:^^Toga picta is Latin and means 'painted toga'. Usually dyed solid purple, decorated with imagery in gold thread, and worn over a similarly-decorated tunica palmata; used by generals in their triumphs. During the Empire, it was worn by consuls and emperors. Over time, it became increasingly elaborate, and was combined with elements of the consular trabea."),
 
+("description_chinese_helmet", "Description:^^This is a heavy lamellar helmet from a foreign culture.^^Background:^^This a Chinese helmet, used by troops of Han China during the 2nd AD."),
+("description_chinese_cap_1", "Description:^^This is a cap from a foreign culture.^^Background:^^This item is a Chinese military cap, used by troops of Han China during the 2nd AD."),
+("description_chinese_cap_2", "Description:^^This is a cap from a foreign culture.^^Background:^^This item is a Chinese military cap, used by troops of Han China during the 2nd AD."),
+
+("description_chinese_sword", "Description:^^This is a short sword from a foreign culture.^^Background:^^This item is a Chinese short sword (Jian), used by troops of Han China during the 2nd AD."),
+("description_chinese_sword_rich", "Description:^^This is a short sword from a foreign culture, lavishly decorated.^^Background:^^This item is a Chinese short sword (Jian), used by troops of Han China during the 2nd AD."),
+
+("description_chinese_hallbard", "Description:^^This is a weird looking polearm from a foreign culture.^^Background:^^This item is a Chinese hallbard, used by troops of Han China during the 2nd AD."),
+
+("description_chinese_shield_1", "Description:^^This is a small weird looking shield from a foreign culture.^^Background:^^This item is a Chinese shield, used by troops of Han China during the 2nd AD."),
+("description_chinese_shield_2", "Description:^^This is a small weird looking shield from a foreign culture.^^Background:^^This item is a Chinese shield, used by troops of Han China during the 2nd AD."),
+
+("description_chinese_light_1", "Description:^^This is a lamellar armour from a foreign culture.^^Background:^^This item is a typical armour used by troops of Han China during the 2nd AD."),
+("description_chinese_light_2", "Description:^^This is a lamellar armour from a foreign culture.^^Background:^^This item is a typical armour used by troops of Han China during the 2nd AD."),
+("description_chinese_heavy_1", "Description:^^This is a heavy lamellar armour from a foreign culture.^^Background:^^This item is a typical heavy armour used by troops of Han China during the 2nd AD."),
+
+
 ("event_pharaoh_emperor_description",
   "Pharaoh of Egypt^^Egyptian custom requires a god pharaoh as an intermediary between the people and divine world. Since Egypt became a province over a century ago, this role is traditionally held by Caesar Augustus, the Princeps of Rome.^^"
   +"Though the Roman people do not much care about such Egyptian customs, the fertile Nile valley is a vital grain source for the city, and they do care about that. Disruptions in grain supplies will quickly hit the popularity of any ruler.^^"

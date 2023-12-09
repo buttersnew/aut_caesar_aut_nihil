@@ -6219,7 +6219,7 @@ linothorax_armor_price,linothorax_armor,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_init_roman_simple"),]),] ],
 
 ##egypt
-["khopesh1", "Khopesh", [("Khopesh1",0)], itp_type_one_handed_wpn|itp_unique|itp_primary, itc_cleaver|itc_parry_onehanded|itcf_carry_sword_left_hip,
+["khopesh1", "Khopesh", [("khopesh1",0)], itp_type_one_handed_wpn|itp_unique|itp_primary, itc_cleaver|itc_parry_onehanded|itcf_carry_sword_left_hip,
 10000, weight(1.6)|difficulty(10)|spd_rtng(99)|weapon_length(90)|swing_damage(31 , cut)|thrust_damage(5,pierce),imodbits_sword_high ],
 
 #jerusalem
@@ -6384,11 +6384,11 @@ roman_rich_armor_price*2,roman_rich_armor,imodbits_none, [(ti_on_init_item,
 roman_rich_armor_price*2,roman_rich_armor,imodbits_none, [(ti_on_init_item,
 [(call_script, "script_init_roman_rich2"),]),], [fac_culture_7] ],
 
-["chinese_helm_heavy", "Heavy Chinese Helmet", [("chinese_helm",0),], itp_unique|itp_type_head_armor|itp_fit_to_head ,0,
+["chinese_helm_heavy", "Weird Heavy Helmet", [("chinese_helm",0),], itp_unique|itp_type_head_armor|itp_fit_to_head ,0,
 heavy_head_price,heavy_head,imodbits_plate, [], [] ],
-["chinese_cap_1", "Chinese Military Cap", [("chinese_cap_1",0),], itp_unique|itp_type_head_armor|itp_fit_to_head ,0,
+["chinese_cap_1", "Weird Military Cap", [("chinese_cap_1",0),], itp_unique|itp_type_head_armor|itp_fit_to_head ,0,
 light_head_price,light_head,imodbits_plate, [], [] ],
-["chinese_cap_2", "Chinese Military Cap", [("chinese_cap_2",0),], itp_unique|itp_type_head_armor|itp_fit_to_head ,0,
+["chinese_cap_2", "Weird Military Cap", [("chinese_cap_2",0),], itp_unique|itp_type_head_armor|itp_fit_to_head ,0,
 light_head_price,light_head,imodbits_plate, [], [] ],
 ["chinese_sword", "Jian", [("chinese_sword",0),("chinese_sword_scarb",ixmesh_carry)],
 itp_type_one_handed_wpn|itp_unique|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
@@ -6396,23 +6396,23 @@ get_w_price(50,get_w_weight(50),get_1hw_speed(50),29,15), weight(get_w_weight(50
 ["chinese_sword_rich", "Gilded Jian", [("chinese_sword_rich",0),("chinese_sword_rich_scarb",ixmesh_carry)],
 itp_type_one_handed_wpn|itp_unique|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 25000, weight(1.5)|difficulty(12)|spd_rtng(99)|weapon_length(50)|swing_damage(32,pierce)|thrust_damage(20,pierce), imodbits_sword_high, [], [] ],
-["chinese_hallbard","Chinese Polearm", [("chinese_polearm", 0)], itp_type_polearm|itp_unique|itp_wooden_parry|itp_primary|itp_secondary|itp_offset_lance|itp_no_blur|itp_cant_use_on_horseback, itc_guandao,
+["chinese_hallbard","Weird Polearm", [("chinese_polearm", 0)], itp_type_polearm|itp_unique|itp_wooden_parry|itp_primary|itp_secondary|itp_offset_lance|itp_no_blur|itp_cant_use_on_horseback, itc_guandao,
 get_polarm_price(230,get_w_weight(230),get_polew_speed(230),17,30),
 weight(get_w_weight(230))|difficulty(14)|abundance(100)|spd_rtng(get_polew_speed(230))|weapon_length(230)|thrust_damage(0, pierce)|swing_damage(32, pierce), imodbits_polearm, [], []],
 
-["chinese_shield_1", "Chinese Shield", [("chinese_shield_1",0)], itp_type_shield|itp_wooden_parry|itp_unique, itcf_carry_kite_shield,
+["chinese_shield_1", "Weird Shield", [("chinese_shield_1",0)], itp_type_shield|itp_wooden_parry|itp_unique, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t3,35,65), weight(get_shield_weight(shield_armor_t3,35,65))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(100)|shield_width(35)|shield_height(65),imodbits_shield,[],[] ],
-["chinese_shield_2", "Chinese Shield", [("chinese_shield_2",0)], itp_type_shield|itp_wooden_parry|itp_unique, itcf_carry_kite_shield,
+["chinese_shield_2", "Weird Shield", [("chinese_shield_2",0)], itp_type_shield|itp_wooden_parry|itp_unique, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t3,35,65), weight(get_shield_weight(shield_armor_t3,35,65))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(100)|shield_width(35)|shield_height(65),imodbits_shield,[],[] ],
 
-["chinese_light_1", "Chinese Light Lamellar Armour", [("chinese_light_1",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["chinese_light_1", "Weird Light Lamellar Armour", [("chinese_light_1",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_medium_armor_2_price, pants_medium_armor_2_armor,imodbits_plate,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [] ],
-["chinese_light_2", "Chinese Light Lamellar Armour", [("chinese_light_2",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["chinese_light_2", "Weird Light Lamellar Armour", [("chinese_light_2",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_medium_armor_2_price, pants_medium_armor_2_armor,imodbits_plate,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [] ],
 
-["chinese_heavy_1", "Chinese Heavy Lamellar Armour", [("chinese_heavy_1",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["chinese_heavy_1", "Weird Heavy Lamellar Armour", [("chinese_heavy_1",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 noble_mail_price, noble_mail_armor,imodbits_plate,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [] ],
 
