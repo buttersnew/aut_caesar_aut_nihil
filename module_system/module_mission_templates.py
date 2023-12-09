@@ -8920,35 +8920,34 @@ mission_templates = [
   ),
 
 ("camp_defend",mtf_battle_mode|mtf_synch_inventory,charge,
-    "You lead your men to battle.",
-    [
-     (52,mtef_ally_party|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,5,[]),#0
-     (53,mtef_ally_party|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,5,[]),#1
-     (54,mtef_ally_party|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,5,[]),#2
-     (55,mtef_ally_party|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,5,[]),#3
-     (56,mtef_ally_party|mtef_team_0|mtef_infantry_first,af_override_horse,aif_start_alarmed,16,[]),#4
-     (57,mtef_ally_party|mtef_team_0|mtef_infantry_first,af_override_horse,aif_start_alarmed,16,[]),#5
-     (58,mtef_ally_party|mtef_team_0,af_override_horse,aif_start_alarmed,0,[]),#6
-     (59,mtef_ally_party|mtef_team_0,af_override_horse,aif_start_alarmed,0,[]),#7
-     (60,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,30,[]),#8
-     (61,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),#9
-     (62,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,30,[]),#10
-     (63,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),#11
-     ], p_wetter + storms +global_common_triggers+
-    [
+  "You lead your men to battle.",[
+    (52,mtef_ally_party|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,5,[]),#0
+    (53,mtef_ally_party|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,5,[]),#1
+    (54,mtef_ally_party|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,5,[]),#2
+    (55,mtef_ally_party|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,5,[]),#3
+    (56,mtef_ally_party|mtef_team_0|mtef_infantry_first,af_override_horse,aif_start_alarmed,16,[]),#4
+    (57,mtef_ally_party|mtef_team_0|mtef_infantry_first,af_override_horse,aif_start_alarmed,16,[]),#5
+    (58,mtef_ally_party|mtef_team_0,af_override_horse,aif_start_alarmed,0,[]),#6
+    (59,mtef_ally_party|mtef_team_0,af_override_horse,aif_start_alarmed,0,[]),#7
+    (60,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,30,[]),#8
+    (61,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),#9
+    (62,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,30,[]),#10
+    (63,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),#11
+  ], p_wetter + storms +global_common_triggers+
+  [
     improved_lightning,
     common_camp_defenders_move_to_defender_position,
 
     (180, 0, 0, [],##changed to 3 min
-  [#refill ammo of defenders every 3 minutes.
-    (try_for_agents,":cur_agent"),
-        (agent_is_active, ":cur_agent"),
-        (agent_is_alive, ":cur_agent"),
-        (agent_is_human, ":cur_agent"),
-        (agent_is_ally, ":cur_agent"),
-        (agent_refill_ammo, ":cur_agent"),
-    (try_end),
-    (display_message, "@Defenders received ammunition supplies."),
+    [#refill ammo of defenders every 3 minutes.
+      (try_for_agents,":cur_agent"),
+          (agent_is_active, ":cur_agent"),
+          (agent_is_alive, ":cur_agent"),
+          (agent_is_human, ":cur_agent"),
+          (agent_is_ally, ":cur_agent"),
+          (agent_refill_ammo, ":cur_agent"),
+      (try_end),
+      (display_message, "@Defenders received ammunition supplies."),
     ]),
 
     common_battle_init_banner,
@@ -8958,199 +8957,187 @@ mission_templates = [
     common_battle_tab_press,
 
     (240, 0, 0, [],##changed to 4 min
-  [#refill ammo of defenders every two minutes.
-    (try_for_agents,":cur_agent"),
-      (agent_is_active, ":cur_agent"),
-      (agent_is_alive, ":cur_agent"),
-      (agent_is_human, ":cur_agent"),
-      (agent_is_ally, ":cur_agent"),
-      (agent_refill_ammo, ":cur_agent"),
-    (try_end),
-    (display_message, "@Received ammunition supplies."),
+    [#refill ammo of defenders every two minutes.
+      (try_for_agents,":cur_agent"),
+        (agent_is_active, ":cur_agent"),
+        (agent_is_alive, ":cur_agent"),
+        (agent_is_human, ":cur_agent"),
+        (agent_is_ally, ":cur_agent"),
+        (agent_refill_ammo, ":cur_agent"),
+      (try_end),
+      (display_message, "@Received ammunition supplies."),
     ]),
 
-    (ti_on_agent_spawn, 0, 0, [],
-    [
-    (store_trigger_param_1, ":agent_no"),
-    (agent_is_human, ":agent_no"),
-    (agent_is_alive, ":agent_no"),
-    (agent_is_non_player, ":agent_no"),
-    (try_begin),
-        (agent_is_ally, ":agent_no"),
-        (agent_set_accuracy_modifier, ":agent_no", 150),
-        (agent_get_troop_id, ":troop", ":agent_no"),
-        (troop_is_guarantee_ranged, ":troop"),
-        (assign, ":end", ek_head),
-        (try_for_range, ":slot", ek_item_0, ":end"),
-            (agent_get_item_slot, ":cur_weapon", ":agent_no", ":slot"),
-            (gt, ":cur_weapon", -1),
-            (item_get_type, ":type", ":cur_weapon"),
-            (eq, ":type", itp_type_thrown),
-            (agent_equip_item,":agent_no", ":cur_weapon"),
-            (agent_set_wielded_item, ":agent_no", ":cur_weapon"),
-            (assign, ":end", ek_item_0),
-        (try_end),
-    (else_try),
-        (agent_set_accuracy_modifier, ":agent_no", 75),
-    (try_end),
-    ]),
-
-##attacker do not stall
- (6, 0, 0, [],
-  [ #Make sure attackers do not stall...
-    (try_for_agents, ":agent_no"),
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent_no"),
       (agent_is_human, ":agent_no"),
       (agent_is_alive, ":agent_no"),
-      (neg|agent_is_ally, ":agent_no"),
-      (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
-    (try_end),
+      (agent_is_non_player, ":agent_no"),
+      (try_begin),
+          (agent_is_ally, ":agent_no"),
+          (agent_set_accuracy_modifier, ":agent_no", 150),
+          (agent_get_troop_id, ":troop", ":agent_no"),
+          (troop_is_guarantee_ranged, ":troop"),
+          (assign, ":end", ek_head),
+          (try_for_range, ":slot", ek_item_0, ":end"),
+              (agent_get_item_slot, ":cur_weapon", ":agent_no", ":slot"),
+              (gt, ":cur_weapon", -1),
+              (item_get_type, ":type", ":cur_weapon"),
+              (eq, ":type", itp_type_thrown),
+              (agent_equip_item,":agent_no", ":cur_weapon"),
+              (agent_set_wielded_item, ":agent_no", ":cur_weapon"),
+              (assign, ":end", ek_item_0),
+          (try_end),
+      (else_try),
+          (agent_set_accuracy_modifier, ":agent_no", 75),
+      (try_end),
+    ]),
+
+    ##attacker do not stall
+    (6, 0, 0, [],[ #Make sure attackers do not stall...
+      (try_for_agents, ":agent_no"),
+        (agent_is_human, ":agent_no"),
+        (agent_is_alive, ":agent_no"),
+        (neg|agent_is_ally, ":agent_no"),
+        (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
+      (try_end),
     ]),
 
 #let camp defenders hold position
-    (0, 0, ti_once,
-    [
-    (set_show_messages, 0),
+    (0, 0, ti_once,[
+      (set_show_messages, 0),
 
-    (team_give_order, "$defender_team", grc_archers, mordr_stand_ground),
-    (team_give_order, "$defender_team", grc_archers, mordr_stand_closer),
-    (team_give_order, "$defender_team", grc_archers, mordr_stand_closer),
-    (team_give_order, "$defender_team", grc_archers, mordr_stand_closer),
-    (team_give_order, "$defender_team_2", grc_archers, mordr_stand_ground),
-    (team_give_order, "$defender_team_2", grc_archers, mordr_stand_closer),
-    (team_give_order, "$defender_team_2", grc_archers, mordr_stand_closer),
-    (team_give_order, "$defender_team_2", grc_archers, mordr_stand_closer),
-    (try_for_agents, ":agent"),
-        (agent_is_ally, ":agent"),#allies, player is always defending
-        (agent_is_active, ":agent"),
-        (agent_is_alive, ":agent"),
-        (agent_is_human, ":agent"),
-        (agent_is_non_player, ":agent"),
-        (agent_set_slot, ":agent", slot_agent_is_not_reinforcement, 1),
-        (agent_get_entry_no, ":entry", ":agent"),
-        (try_begin),
-            (eq, ":entry", 4),
-            (agent_set_division,":agent", 0),
-        (else_try),
-            (eq, ":entry", 5),
-            (agent_set_division,":agent", 2),
-        (try_end),
-    (try_end),
+      (team_give_order, "$defender_team", grc_archers, mordr_stand_ground),
+      (team_give_order, "$defender_team", grc_archers, mordr_stand_closer),
+      (team_give_order, "$defender_team", grc_archers, mordr_stand_closer),
+      (team_give_order, "$defender_team", grc_archers, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", grc_archers, mordr_stand_ground),
+      (team_give_order, "$defender_team_2", grc_archers, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", grc_archers, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", grc_archers, mordr_stand_closer),
+      (try_for_agents, ":agent"),
+          (agent_is_ally, ":agent"),#allies, player is always defending
+          (agent_is_active, ":agent"),
+          (agent_is_alive, ":agent"),
+          (agent_is_human, ":agent"),
+          (agent_is_non_player, ":agent"),
+          (agent_set_slot, ":agent", slot_agent_is_not_reinforcement, 1),
+          (agent_get_entry_no, ":entry", ":agent"),
+          (try_begin),
+              (eq, ":entry", 4),
+              (agent_set_division,":agent", 0),
+          (else_try),
+              (eq, ":entry", 5),
+              (agent_set_division,":agent", 2),
+          (try_end),
+      (try_end),
 
-    (team_give_order, "$defender_team", 0, mordr_hold),
-    (team_give_order, "$defender_team", 0, mordr_stand_closer),
-    (team_give_order, "$defender_team", 0, mordr_stand_closer),
-    (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_hold),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
 
-    (entry_point_get_position, pos10, 56),
-    (team_set_order_position, "$defender_team_2", 0, pos10),
-    (team_set_order_position, "$defender_team", 0, pos10),
+      (entry_point_get_position, pos10, 56),
+      (team_set_order_position, "$defender_team_2", 0, pos10),
+      (team_set_order_position, "$defender_team", 0, pos10),
 
-    (team_give_order, "$defender_team_2", 2, mordr_hold),
-    (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
-    (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
-    (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 2, mordr_hold),
+      (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
 
-    (entry_point_get_position, pos10, 57),
-    (team_set_order_position, "$defender_team_2", 2, pos10),
-    (team_set_order_position, "$defender_team", 2, pos10),
+      (entry_point_get_position, pos10, 57),
+      (team_set_order_position, "$defender_team_2", 2, pos10),
+      (team_set_order_position, "$defender_team", 2, pos10),
 
-    (set_show_messages, 1),],
-    []),
+      (set_show_messages, 1),
+    ],[]),
 
-    (ti_question_answered, 0, 0, [],
-    [(store_trigger_param_1,":answer"),
-    (eq,":answer",0),
-    (assign, "$pin_player_fallen", 0),
-    (try_begin),
-      (store_mission_timer_a, ":elapsed_time"),
-      (gt, ":elapsed_time", 20),
-      (str_store_string, s5, "str_retreat"),
-      (call_script, "script_simulate_retreat", 10, 20, 1),
-    (try_end),
-    (call_script, "script_count_mission_casualties_from_agents"),
-    (finish_mission,0),]),
+    (ti_question_answered, 0, 0, [],[
+      (store_trigger_param_1,":answer"),
+      (eq,":answer",0),
+      (assign, "$pin_player_fallen", 0),
+      (try_begin),
+        (store_mission_timer_a, ":elapsed_time"),
+        (gt, ":elapsed_time", 20),
+        (str_store_string, s5, "str_retreat"),
+        (call_script, "script_simulate_retreat", 10, 20, 1),
+      (try_end),
+      (call_script, "script_count_mission_casualties_from_agents"),
+      (finish_mission,0),
+    ]),
 
-    (ti_before_mission_start, 0, 0, [],
-    [
-     (team_set_relation, 0, 2, 1),
-     (team_set_relation, 1, 3, 1),
-     (call_script, "script_place_player_banner_near_inventory_bms"),
+    (ti_before_mission_start, 0, 0, [],[
+      (team_set_relation, 0, 2, 1),
+      (team_set_relation, 1, 3, 1),
+      (call_script, "script_place_player_banner_near_inventory_bms"),
 
-     (party_clear, "p_routed_enemies"),
+      (party_clear, "p_routed_enemies"),
 
-     (assign, "$g_latest_order_1", 1),
-     (assign, "$g_latest_order_2", 1),
-     (assign, "$g_latest_order_3", 1),
-     (assign, "$g_latest_order_4", 1),
+      (assign, "$g_latest_order_1", 1),
+      (assign, "$g_latest_order_2", 1),
+      (assign, "$g_latest_order_3", 1),
+      (assign, "$g_latest_order_4", 1),
 
-    (assign,"$g_battle_won",0),
-    (assign,"$defender_reinforcement_stage",0),
-    (assign,"$attacker_reinforcement_stage",0),
-     ]),
-    (0, 0, ti_once, [],
-    [
-    (call_script, "script_place_player_banner_near_inventory"),
-    (call_script, "script_combat_music_set_situation_with_culture"),
-    (call_script, "script_init_death_cam"),
-     ]),
+      (assign,"$g_battle_won",0),
+      (assign,"$defender_reinforcement_stage",0),
+      (assign,"$attacker_reinforcement_stage",0),
+    ]),
+    (0, 0, ti_once, [],[
+      (call_script, "script_place_player_banner_near_inventory"),
+      (call_script, "script_combat_music_set_situation_with_culture"),
+      (call_script, "script_init_death_cam"),
+    ]),
 
     common_music_situation_update,
     common_battle_check_friendly_kills,
 
-      (1, 0, 5, [
+    (1, 0, 5, [
       (lt,"$defender_reinforcement_stage","$defender_threshold"),
       (store_mission_timer_a,":mission_time"),
       (ge,":mission_time",10),
       (store_normalized_team_count,":num_defenders", 0),
-      (lt,":num_defenders",25)],
-           [
-           (add_reinforcements_to_entry,6,20),
-           (add_reinforcements_to_entry,7,20),
-           (val_add,"$defender_reinforcement_stage",1)]),
+      (lt,":num_defenders",25)
+    ],[
+      (add_reinforcements_to_entry,6,20),
+      (add_reinforcements_to_entry,7,20),
+      (val_add,"$defender_reinforcement_stage",1)
+    ]),
 
-      (1, 0, 5, [(lt,"$attacker_reinforcement_stage","$defender_threshold"),
-                 (store_mission_timer_a,":mission_time"),
-                 (ge,":mission_time",10),
-                 (store_normalized_team_count,":num_attackers", 1),
-                 (lt,":num_attackers",18)],
-           [
+    (1, 0, 5, [
+      (lt,"$attacker_reinforcement_stage","$defender_threshold"),
+      (store_mission_timer_a,":mission_time"),
+      (ge,":mission_time",10),
+      (store_normalized_team_count,":num_attackers", 1),
+      (lt,":num_attackers",18)
+    ],[
+      (add_reinforcements_to_entry,9,19),
+      (add_reinforcements_to_entry,11,19),
+      (val_add,"$attacker_reinforcement_stage",1),
+    ]),
 
-           (add_reinforcements_to_entry,9,19),
-           (add_reinforcements_to_entry,11,19),
-           (val_add,"$attacker_reinforcement_stage",1), ]),
+    common_battle_check_victory_condition,
+    common_battle_victory_display,
 
-      common_battle_check_victory_condition,
-      common_battle_victory_display,
-
-      (1, 4,
-      ##diplomacy begin
-      0,
-      ##diplomacy end
-      [(main_hero_fallen)],
-          [
-        ##diplomacy begin
-        (try_begin),
-          (call_script, "script_cf_dplmc_battle_continuation"),
-        (else_try),
-          ##diplomacy end
-          (assign, "$pin_player_fallen", 1),
-
-
-          (str_store_string, s5, "str_retreat"),
-          (call_script, "script_simulate_retreat", 10, 20, 1),
-          (assign, "$g_battle_result", -1),
-          (set_mission_result,-1),
-          (call_script, "script_count_mission_casualties_from_agents"),
-          (finish_mission,0),
-          ##diplomacy begin
-        (try_end),
-        ##diplomacy end
-      ]),
+    (1, 4, 0,[
+      (main_hero_fallen)
+    ],[
+      (try_begin),
+        (call_script, "script_cf_dplmc_battle_continuation"),
+      (else_try),
+        (assign, "$pin_player_fallen", 1),
+        (str_store_string, s5, "str_retreat"),
+        (call_script, "script_simulate_retreat", 10, 20, 1),
+        (assign, "$g_battle_result", -1),
+        (set_mission_result,-1),
+        (call_script, "script_count_mission_casualties_from_agents"),
+        (finish_mission,0),
+      (try_end),
+    ]),
 
     common_battle_inventory,
     common_battle_order_panel_tick,
-
-    ]
+  ]
     + camera_controls
     + theoris_decapitation
     + ai_horn
