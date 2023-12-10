@@ -31093,8 +31093,7 @@ mission_templates = [
 ]),
 
 ("gardens_of_maceneas", mtf_battle_mode, -1,
-  "Test.",
-  [
+  "Test.",[
     (0,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_toga]),
     (1,mtef_visitor_source,0,0,1,[]),
     (2,mtef_visitor_source,0,0,1,[]),
@@ -31180,6 +31179,7 @@ mission_templates = [
     can_spawn_commoners,
     (0,0,0,[
       (check_quest_active, "qst_nero_special_quest"),
+      (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
       (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 2),
     ],[
       (store_mission_timer_a, ":cur_time"),
@@ -31300,6 +31300,7 @@ mission_templates = [
       (mission_cam_animate_to_screen_color, 0x00000000, 2000),
       (try_begin),
           (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 2),
       (else_try),
           (mission_enable_talk),
@@ -31311,6 +31312,7 @@ mission_templates = [
     (ti_tab_pressed, 0, 0,[],[
       (try_begin),
           (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 1),
           (assign, reg2, 0),
           (try_for_agents, ":agent"),
@@ -31328,10 +31330,12 @@ mission_templates = [
           (finish_mission, 3),
       (else_try),
           (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 1),
           (tutorial_box, "@Find and talk with Nero and Poppaea to finish the mission."),
       (else_try),
           (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 2),
           (display_message, "str_cannot_leave_now"),
       (else_try),
@@ -31344,15 +31348,21 @@ mission_templates = [
     (0, 0, ti_once, [],[
       (try_begin),
           (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 2),
           (get_player_agent_no, ":player"),
           (call_script, "script_advanced_agent_set_speed_modifier", ":player", 0),
       (try_end),
 
-      (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
-      (check_quest_active, "qst_nero_special_quest"),
-      (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 1),
-      (play_track, "track_town_roman6", 2),
+      (try_begin),
+          (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 1),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
+          (play_track, "track_town_roman6", 2),
+      (else_try),
+          (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+      (try_end),
+
       (try_for_agents, ":agent"),
           (agent_is_alive, ":agent"),
           (agent_is_human, ":agent"),
@@ -31413,6 +31423,7 @@ mission_templates = [
       (else_try),
           (eq, ":troop", "trp_kingdom_7_lord"),
           (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 2),
           (assign, ":c", 1),
           # (display_message, "@NERO ACTIVATED"),
@@ -31449,6 +31460,7 @@ mission_templates = [
     (0,0,ti_once, [],[
       (try_begin),
           (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 2),
       (else_try),
           (try_for_agents, ":agent_no"),

@@ -19428,8 +19428,15 @@ game_menus = [
     ("gardens_of_manacea",[
       (eq, 0, 1),
     ],"Visit Gardens of Maecenas.",[
+      (lt, "$sneaked_into_town", 1), #not sneaked
       (try_begin),
-          (lt, "$sneaked_into_town", 1), #not sneaked
+          (eq, "$g_encountered_party", "p_town_6"),
+          (check_quest_active, "qst_nero_special_quest"),
+          (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
+          (is_currently_night),
+          (jump_to_menu, "mnu_gardens_of_maecenas_1"),
+          (finish_mission),
+      (else_try),
           (jump_to_scene, "scn_gardens_of_manacea"),
           (change_screen_mission),
           # 0 player
@@ -31859,7 +31866,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (set_jump_mission, "mt_nero_final"),
       (jump_to_scene, "scn_imperial_dinning_room"),
       (change_screen_mission),
-  ]),
+    ]),
 ]),
 
 
@@ -60223,19 +60230,17 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 ]),
 
 ("gardens_of_maecenas_1",0,
-    "You enter the gardens of Maecenas, and are immediately overwhelmed by the grandeur and extravagance of the celebrations."
-    +" The gardens are beautifully decorated with vibrant flowers and lush greenery, and the air is filled with the sweet scent of blooming roses."
-    +"^^As you walk through the gardens, you are greeted by the sound of live music and the laughter of guests. The guests are dressed in their finest attire,"
-    +" adorned in elegant togas and sparkling jewelry.^^Then you make your way to the main area of the feast. Your eyes are drawn to Poppaea Sabina,"
-    +" Nero's wife. She is dressed in a stunning white and gold gown, with intricate embroidery adorning the bodice and sleeves. Her hair is styled in a sleek bun,"
-    +" adorned with a gold headpiece and a string of pearls. She exudes an aura of grace and elegance, the epitome of Roman nobility.^^You can't help but feel a sense"
-    +" of awe at the opulence of the scene before you, and you can't wait to indulge in the delicious food and fine wine that are sure to be served.",
-    "none", [
-      (set_background_mesh, "mesh_pic_party"),
-    ],
-    [
-    ("option_2", [],"It's party time!",
-    [
+  "You enter the gardens of Maecenas, and are immediately overwhelmed by the grandeur and extravagance of the celebrations."
+  +" The gardens are beautifully decorated with vibrant flowers and lush greenery, and the air is filled with the sweet scent of blooming roses."
+  +"^^As you walk through the gardens, you are greeted by the sound of live music and the laughter of guests. The guests are dressed in their finest attire,"
+  +" adorned in elegant togas and sparkling jewelry.^^Then you make your way to the main area of the feast. Your eyes are drawn to Poppaea Sabina,"
+  +" Nero's wife. She is dressed in a stunning white and gold gown, with intricate embroidery adorning the bodice and sleeves. Her hair is styled in a sleek bun,"
+  +" adorned with a gold headpiece and a string of pearls. She exudes an aura of grace and elegance, the epitome of Roman nobility.^^You can't help but feel a sense"
+  +" of awe at the opulence of the scene before you, and you can't wait to indulge in the delicious food and fine wine that are sure to be served.",
+  "none", [
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("option_2", [],"It's party time!",[
         (quest_set_slot, "qst_nero_special_quest", slot_quest_current_state, 1),
         # 0 player
         # 1 to 20 are walkers,
@@ -60256,10 +60261,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
             (store_random_in_range, ":sitting_low", "trp_guest", "trp_roman_priest_female"),
             (set_visitor, ":entry", ":sitting_low"),
         (try_end),
-        (try_for_range, ":entry", 50, 55),
-            (store_random_in_range, ":dancer", "trp_dancer1", "trp_orgie_male1_kissing"),
-            (set_visitor, ":entry", ":dancer"),
-        (try_end),
         (try_for_range, ":entry", 55, 60),
             (store_random_in_range, ":musician", "trp_tavern_minstrel_1", "trp_kingdom_heroes_including_player_begin"),
             (set_visitor, ":entry", ":musician"),
@@ -60268,7 +60269,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
         (set_visitor, 62, "trp_circus_2"),
         (set_visitor, 63, "trp_circus_3"),
 
-        (set_visitor, 70, "trp_dancer1"),
         (set_visitor, 71, "trp_kingdom_7_lord"),
         (set_visitor, 72, "trp_tigellinus"),
         (set_visitor, 73, "trp_kingdom_7_lady_1"),
