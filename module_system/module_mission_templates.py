@@ -4782,41 +4782,43 @@ jacobhinds_morale_triggers = [
 
 dedal_tavern_animations = (
 	ti_on_agent_spawn,1,0,[
-    (this_or_next|eq, "$can_spawn_commoners", 1),
-    (this_or_next|eq, "$talk_context", tc_tavern_talk),
-    (eq, "$talk_context", tc_court_talk),
+    (eq, "$can_spawn_commoners", 1),
+
     (store_trigger_param_1,":agent"),
     (agent_is_human, ":agent"),#only humans
     (agent_is_alive, ":agent"),#no-dead
     (agent_get_troop_id,":troop",":agent"),
-
-    (store_item_kind_count, ":item_count", "itm_lyre", ":troop"),
-    (try_begin),
-        (this_or_next|gt, ":item_count", 0),
-        (troop_has_item_equipped, ":troop", "itm_lyre"),
-        (assign, ":item_no", "itm_lyre"),
-    (else_try),
-        (store_item_kind_count, ":item_count", "itm_lute", ":troop"),
-        (this_or_next|gt, ":item_count", 0),
-        (troop_has_item_equipped, ":troop", "itm_lute"),
-        (assign, ":item_no", "itm_lute"),
-    (else_try),
-        (store_item_kind_count, ":item_count", "itm_flute", ":troop"),
-        (this_or_next|gt, ":item_count", 0),
-        (troop_has_item_equipped, ":troop", "itm_flute"),
-        (assign, ":item_no", "itm_flute"),
-    (try_end),
-    (try_begin),
-        (neq, ":item_no", -1),
-        (agent_equip_item, ":agent", ":item_no"), #equip instrument
-        (agent_set_wielded_item, ":agent", -1), #doff it
-    (try_end),
+    (neg|agent_slot_ge, ":agent", slot_agent_is_blocked, 1),
     (try_begin),
         (eq, ":troop", "trp_whore"),
         (agent_set_stand_animation, ":agent", "anim_vyrn_shieldmaiden_stand"),
         (agent_set_animation, ":agent", "anim_vyrn_shieldmaiden_stand"),
     (else_try),
         (is_between,":troop",tavern_minstrels_begin,tavern_minstrels_end),
+
+        (store_item_kind_count, ":item_count", "itm_lyre", ":troop"),
+        (assign, ":item_no", -1),
+        (try_begin),
+            (this_or_next|gt, ":item_count", 0),
+            (troop_has_item_equipped, ":troop", "itm_lyre"),
+            (assign, ":item_no", "itm_lyre"),
+        (else_try),
+            (store_item_kind_count, ":item_count", "itm_lute", ":troop"),
+            (this_or_next|gt, ":item_count", 0),
+            (troop_has_item_equipped, ":troop", "itm_lute"),
+            (assign, ":item_no", "itm_lute"),
+        (else_try),
+            (store_item_kind_count, ":item_count", "itm_flute", ":troop"),
+            (this_or_next|gt, ":item_count", 0),
+            (troop_has_item_equipped, ":troop", "itm_flute"),
+            (assign, ":item_no", "itm_flute"),
+        (try_end),
+        (try_begin),
+            (neq, ":item_no", -1),
+            (agent_equip_item, ":agent", ":item_no"), #equip instrument
+            (agent_set_wielded_item, ":agent", -1), #doff it
+        (try_end),
+
         (play_track,0,2),
         (try_begin),
             (agent_has_item_equipped,":agent","itm_lute"),
@@ -4837,6 +4839,7 @@ dedal_tavern_animations = (
         (store_random_in_range,":r",0,300),
         (agent_set_animation_progress,":agent",":r"),
     (else_try),
+        (eq, "$talk_context", tc_tavern_talk),
         (is_between,":troop",walkers_begin,walkers_end),
         (try_begin),
             (agent_has_item_equipped,":agent","itm_dedal_kufel"),
@@ -14093,83 +14096,77 @@ mission_templates = [
       ], []),
   ]),
 
-   (
-    "camp",0,-1,
-    "You start training.",
-    [
-	 (0,mtef_scene_source|mtef_team_0,af_override_horse,0,1,[]),
-	 (1,mtef_visitor_source,af_override_horse|af_override_head|af_override_gloves|af_override_weapons,0,1,[]), #special companion
-	 (2,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]), #companions
-	 (3,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (4,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (5,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (6,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (7,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
- 	 (8,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
- 	 (9,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (10,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (11,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (12,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (13,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (14,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (15,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-     (16,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (17,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (18,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (19,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (20,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (21,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-	 (22,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]), #companions
-	 (23,mtef_visitor_source,af_override_horse,0,1,[]), #guards
-     (24,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (25,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (26,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (27,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (28,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (29,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (30,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (31,mtef_visitor_source,af_override_horse,0,1,[]),
-     (32,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (33,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (34,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (35,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (36,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (37,mtef_visitor_source,af_override_horse,0,1,[]),
-	 (38,mtef_visitor_source,af_override_horse,0,1,[]),
- 	 (39,mtef_visitor_source,af_override_horse,0,1,[]), #guards
-     (40,mtef_visitor_source,af_override_everything,0,1,[]), #prisoners
-	 (41,mtef_visitor_source,af_override_everything,0,1,[]),
-	 (42,mtef_visitor_source,af_override_everything,0,1,[]),
-	 (43,mtef_visitor_source,af_override_everything,0,1,[]),
-     (44,mtef_visitor_source,af_override_everything,0,1,[]),
-	 (45,mtef_visitor_source,af_override_everything,0,1,[]),
-	 (46,mtef_visitor_source,af_override_everything,0,1,[]),
-	 (47,mtef_visitor_source,af_override_everything,0,1,[]), #prisoners
-	 (48,mtef_visitor_source,af_override_everything,0,1,[]), #punish
-	 (49,mtef_visitor_source,af_override_everything,0,1,[]), #punish
-
-     ], p_wetter + storms + global_common_triggers+
-    [
-      can_spawn_commoners,
+("camp",0,-1,
+  "You start training.",[
+    (0,mtef_scene_source|mtef_team_0,af_override_horse,0,1,[]),
+    (1,mtef_visitor_source,af_override_horse|af_override_head|af_override_gloves|af_override_weapons,0,1,[]), #special companion
+    (2,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]), #companions
+    (3,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (4,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (5,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (6,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (7,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (8,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (9,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (10,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (11,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (12,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (13,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (14,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (15,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (16,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (17,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (18,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (19,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (20,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (21,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
+    (22,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]), #companions
+    (23,mtef_visitor_source,af_override_horse,0,1,[]), #guards
+    (24,mtef_visitor_source,af_override_horse,0,1,[]),
+    (25,mtef_visitor_source,af_override_horse,0,1,[]),
+    (26,mtef_visitor_source,af_override_horse,0,1,[]),
+    (27,mtef_visitor_source,af_override_horse,0,1,[]),
+    (28,mtef_visitor_source,af_override_horse,0,1,[]),
+    (29,mtef_visitor_source,af_override_horse,0,1,[]),
+    (30,mtef_visitor_source,af_override_horse,0,1,[]),
+    (31,mtef_visitor_source,af_override_horse,0,1,[]),
+    (32,mtef_visitor_source,af_override_horse,0,1,[]),
+    (33,mtef_visitor_source,af_override_horse,0,1,[]),
+    (34,mtef_visitor_source,af_override_horse,0,1,[]),
+    (35,mtef_visitor_source,af_override_horse,0,1,[]),
+    (36,mtef_visitor_source,af_override_horse,0,1,[]),
+    (37,mtef_visitor_source,af_override_horse,0,1,[]),
+    (38,mtef_visitor_source,af_override_horse,0,1,[]),
+    (39,mtef_visitor_source,af_override_horse,0,1,[]), #guards
+    (40,mtef_visitor_source,af_override_everything,0,1,[]), #prisoners
+    (41,mtef_visitor_source,af_override_everything,0,1,[]),
+    (42,mtef_visitor_source,af_override_everything,0,1,[]),
+    (43,mtef_visitor_source,af_override_everything,0,1,[]),
+    (44,mtef_visitor_source,af_override_everything,0,1,[]),
+    (45,mtef_visitor_source,af_override_everything,0,1,[]),
+    (46,mtef_visitor_source,af_override_everything,0,1,[]),
+    (47,mtef_visitor_source,af_override_everything,0,1,[]), #prisoners
+    (48,mtef_visitor_source,af_override_everything,0,1,[]), #punish
+    (49,mtef_visitor_source,af_override_everything,0,1,[]), #punish
+  ], p_wetter + storms + global_common_triggers+
+  [
+    can_spawn_commoners,
     improved_lightning,
-      (ti_before_mission_start, 0, 0, [],
-      [
-        (play_track,0,2),
-        (call_script, "script_change_banners_and_chest"),
-        (assign, "$g_position_to_use_for_replacing_scene_items", pos8),
-        (call_script, "script_replace_scene_items_with_spawn_items_before_ms"),
-        (try_begin),
-            (troop_slot_eq, "trp_global_variables", g_player_trench, 0),
-            (call_script, "script_remove_camp_objects"),
-        (try_end),
-      ]),
+    (ti_before_mission_start, 0, 0, [],[
+      (play_track,0,2),
+      (call_script, "script_change_banners_and_chest"),
+      (assign, "$g_position_to_use_for_replacing_scene_items", pos8),
+      (call_script, "script_replace_scene_items_with_spawn_items_before_ms"),
+      (try_begin),
+          (troop_slot_eq, "trp_global_variables", g_player_trench, 0),
+          (call_script, "script_remove_camp_objects"),
+      (try_end),
+    ]),
 
-      (ti_tab_pressed, 0, 0, [],
-       [(finish_mission,0)]),
+    (ti_tab_pressed, 0, 0, [],[(finish_mission,0)]),
 
 		(1,0,ti_once,[
-            (call_script, "script_replace_scene_items_with_spawn_items_after_ms"),
-
+      (call_script, "script_replace_scene_items_with_spawn_items_after_ms"),
 			(try_for_agents,":agent"),
         (agent_is_active,":agent"),
         (agent_is_human, ":agent"),
@@ -14189,7 +14186,7 @@ mission_templates = [
 						(agent_has_item_equipped,":agent","itm_lyre"),
 						(agent_set_stand_animation, ":agent", "anim_lyre_sitting"),
 						(agent_set_animation, ":agent", "anim_lyre_sitting"),
-                        (agent_play_sound,":agent","snd_dedal_tavern_lyre"),
+            (agent_play_sound,":agent","snd_dedal_tavern_lyre"),
 					(else_try),
 						(agent_set_stand_animation, ":agent", "anim_sitting_low"),
 						(agent_set_animation, ":agent", "anim_sitting_low"),
@@ -14211,42 +14208,42 @@ mission_templates = [
 			(try_end),
 		],[]),
 
-      (ti_inventory_key_pressed, 0, 0,
-      [(set_trigger_result, 1),], []),
+    (ti_inventory_key_pressed, 0, 0,[
+      (set_trigger_result, 1),
+    ], []),
 
-      (ti_on_agent_killed_or_wounded, 0, 0, [],
-       [
-        (store_trigger_param_1, ":dead_agent_no"),
-        #(store_trigger_param_2, ":killer_agent_no"),
-        (store_trigger_param_3, ":is_wounded"),
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent_no"),
+      #(store_trigger_param_2, ":killer_agent_no"),
+      (store_trigger_param_3, ":is_wounded"),
+
+      (try_begin),
+        (ge, ":dead_agent_no", 0),
+        (neg|agent_is_ally, ":dead_agent_no"),
+        (agent_is_human, ":dead_agent_no"),
+        (agent_get_troop_id, ":dead_agent_troop_id", ":dead_agent_no"),
+
+        (agent_get_entry_no, ":entry_no", ":dead_agent_no"),
 
         (try_begin),
-          (ge, ":dead_agent_no", 0),
-          (neg|agent_is_ally, ":dead_agent_no"),
-          (agent_is_human, ":dead_agent_no"),
-          (agent_get_troop_id, ":dead_agent_troop_id", ":dead_agent_no"),
-
-          (agent_get_entry_no, ":entry_no", ":dead_agent_no"),
-
-          (try_begin),
-             (eq, ":is_wounded", 1),
-             (try_begin),
-                 (neg|is_between, ":entry_no", 40, 48),
-                 (party_wound_members, "p_main_party", ":dead_agent_troop_id", 1),
-             (try_end),
-          (else_try),
+            (eq, ":is_wounded", 1),
             (try_begin),
                 (neg|is_between, ":entry_no", 40, 48),
-                (set_trigger_result, 2),
                 (party_wound_members, "p_main_party", ":dead_agent_troop_id", 1),
-            (else_try),
-                (party_remove_prisoners, "p_main_party", ":dead_agent_troop_id", 1),
             (try_end),
+        (else_try),
+          (try_begin),
+              (neg|is_between, ":entry_no", 40, 48),
+              (set_trigger_result, 2),
+              (party_wound_members, "p_main_party", ":dead_agent_troop_id", 1),
+          (else_try),
+              (party_remove_prisoners, "p_main_party", ":dead_agent_troop_id", 1),
           (try_end),
         (try_end),
-       ]),
-    ],
-  ),
+      (try_end),
+    ]),
+]),
+
   ("ambush_riversw",mtf_battle_mode,-1,#Siege Warfare
     "Forest",
     [(0,mtef_scene_source|mtef_team_0,af_override_horse,0,1,[]), #player go
@@ -15533,7 +15530,7 @@ mission_templates = [
       (neq, "$talk_context", tc_pret_event_14),
       (store_random_in_range, ":r", 0, 100),
       (try_begin),
-          (lt, ":r", 39),
+          (lt, ":r", 45),
           (set_trigger_result,1),
       (else_try),
           (store_random_in_range, ":r2", 6, 22),
@@ -17628,17 +17625,6 @@ mission_templates = [
           (agent_set_team, ":agent_no", 7),
         (try_end),
     ]),
-    (0,0,ti_once, [],[
-      (try_for_agents, ":agent_no"),
-          (agent_is_active, ":agent_no"),
-          (agent_is_human, ":agent_no"),
-          (agent_is_alive, ":agent_no"),
-          (agent_get_troop_id,":troop",":agent_no"),
-          (neg|is_between, ":troop", tavern_minstrels_begin, tavern_minstrels_end),
-          (call_script, "script_init_town_agent", ":agent_no"),
-      (try_end),
-    ]),
-
     (1, 0, ti_once,[],[
       (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
     ]),
@@ -17672,11 +17658,12 @@ mission_templates = [
       (try_end),
     ]),
     (ti_on_agent_spawn,1,0,[
+      (troop_slot_eq, "trp_array_villa_feast", 9, 0),
       (store_trigger_param_1,":agent"),
       (agent_get_troop_id,":troop",":agent"),
       (try_begin),
         (this_or_next|eq,":troop", "trp_guest"),
-        (this_or_next|is_between,":troop", kings_begin, heroes_end),
+        (this_or_next|is_between,":troop", active_npcs_begin, kingdom_ladies_end),
         (eq,":troop", "trp_guest_female"),
         (try_begin),
           (agent_has_item_equipped,":agent","itm_dedal_kufel"),
@@ -17691,10 +17678,31 @@ mission_templates = [
         (agent_set_animation_progress,":agent",":r"),
       (try_end),
     ],[]),
-
-    (ti_tab_pressed, 0, 0, [],[
+    (ti_tab_pressed, 0, 0, [
+      (troop_slot_eq, "trp_array_villa_feast", 9, 0),
+    ], [
+      (question_box,"@Do you want to conclude the feast?"),
+    ]),
+    (ti_question_answered, 0, 0, [],[
+      (store_trigger_param_1,":answer"),
+      (eq,":answer",0),
+      (jump_to_menu, "mnu_villa"),
       (stop_all_sounds, 1),
-      (finish_mission,0)
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+      (mission_disable_talk),
+      (finish_mission, 3),
+      (try_for_range, ":slot",1,10),
+          (troop_set_slot, "trp_array_villa_feast", ":slot", -1),
+      (try_end),
+      (display_message, "@The feast concludes", message_alert),
+    ]),
+    (ti_tab_pressed, 0, 0, [
+      (neg|troop_slot_eq, "trp_array_villa_feast", 9, 0),
+    ],[
+      (stop_all_sounds, 1),
+      (finish_mission, 3),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+      (mission_disable_talk),
     ]),
   ] + bodyguard_triggers,
 ),
@@ -28299,7 +28307,6 @@ mission_templates = [
     (2,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_female_slave2,itm_flower_crown]),#
     (3,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_female_slave3,itm_flower_crown]),#
     (4,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_female_slave4,itm_flower_crown]),#
-
     (5,mtef_visitor_source,af_override_everything,0,1,[]),#unused
     (6,mtef_visitor_source,af_override_everything,0,1,[]),#unused
     (7,mtef_visitor_source,af_override_everything,0,1,[]),#unused

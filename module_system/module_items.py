@@ -6329,24 +6329,28 @@ rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
 
 ["female_slave1", "Dancers Outfit", [("slave_roba",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
-[(ti_on_init_item,[(cur_item_add_mesh, "str_braclets_2"),
-(call_script, "script_init_dress_boobs_new"),
+[(ti_on_init_item,[
+    (cur_item_add_mesh, "str_braclets_2"),
+    (call_script, "script_init_dress_boobs_new"),
 ]), ],[] ],
 
 ["female_slave2", "Dancers Outfit", [("slave_roba1",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
-[(ti_on_init_item,[(cur_item_add_mesh, "str_braclets_2"),
-(call_script, "script_init_dress_boobs_new"),
+[(ti_on_init_item,[
+    (cur_item_add_mesh, "str_braclets_2"),
+    (call_script, "script_init_dress_boobs_new"),
 ]), ],[] ],
 ["female_slave3", "Dancers Outfit", [("slave_roba2",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
-[(ti_on_init_item,[(cur_item_add_mesh, "str_braclets_2"),
-(call_script, "script_init_dress_boobs_new"),
+[(ti_on_init_item,[
+    (cur_item_add_mesh, "str_braclets_2"),
+    (call_script, "script_init_dress_boobs_new"),
 ]), ],[] ],
 ["female_slave4", "Dancers Outfit", [("slave_roba3",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
-[(ti_on_init_item,[(cur_item_add_mesh, "str_braclets_2"),
-(call_script, "script_init_dress_boobs_new"),
+[(ti_on_init_item,[
+    (cur_item_add_mesh, "str_braclets_2"),
+    (call_script, "script_init_dress_boobs_new"),
 ]), ],[] ],
 
 ##augusta dresses

@@ -272,100 +272,106 @@ comp_less_than = -1;
 comp_greater_than = 1;
 
 skins = [
-  (
-    "man", 0,
-    "malebody_u", "malefoot_l", "m_handL",
-    "male_head", man_face_keys,
-    ["man_hair_s","man_hair_m","man_hair_n","man_hair_o","man_hair_p","man_hair_r","man_hair_q","shortlayer","shoulderhair","hairmessy","slickedback","shortbob","straightshoulder", "longshoulder", "longstraight","ponytail","courthair","shortcut"], #man_hair_meshes ,"man_hair_y5","man_hair_y8",
-    ["beard_e","beard_d","beard_k","beard_l","beard_i","beard_j","beard_z","beard_m","beard_n","beard_y","beard_p","beard_o",   "beard_v", "beard_f", "beard_b", "beard_c","beard_t","beard_u","beard_r","beard_s","beard_a","beard_h","beard_g",], #beard meshes ,"beard_q"
-    ["hair_blonde", "hair_red", "hair_brunette", "hair_black", "hair_white"], #hair textures
-    ["beard_blonde","beard_red","beard_brunette","beard_black","beard_white"], #beard_materials
-    [
+("man", 0,
+  "malebody_u", "malefoot_l", "m_handL",
+  "male_head", man_face_keys,
+  ["man_hair_s","man_hair_m","man_hair_n","man_hair_o","man_hair_p","man_hair_r","man_hair_q","shortlayer","shoulderhair","hairmessy","slickedback","shortbob","straightshoulder", "longshoulder", "longstraight","ponytail","courthair","shortcut"], #man_hair_meshes ,"man_hair_y5","man_hair_y8",
+  ["beard_e","beard_d","beard_k","beard_l","beard_i","beard_j","beard_z","beard_m","beard_n","beard_y","beard_p","beard_o",   "beard_v", "beard_f", "beard_b", "beard_c","beard_t","beard_u","beard_r","beard_s","beard_a","beard_h","beard_g",], #beard meshes ,"beard_q"
+  ["hair_blonde", "hair_red", "hair_brunette", "hair_black", "hair_white"], #hair textures
+  ["beard_blonde","beard_red","beard_brunette","beard_black","beard_white"], #beard_materials
+  [
     #the numbers here are hex colors with aplha values (last to values are for alpha, first 6 for rgb)
-     ("manface_young_2",0xffcbe0e0,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19]),#0
-     ("manface_midage",0xffdfefe1,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff632e18, 0xff502a19, 0xff19100c]),#1
-     ("manface_young",0xffd0e0e0,["hair_blonde"],[0xff83301a, 0xff502a19, 0xff19100c, 0xff0c0d19]),#2
-     ("manface_young_3",0xffdceded,["hair_blonde"],[0xff2f180e, 0xff171313, 0xff007080c]),#3
-     ("manface_7",0xffdceded,["hair_blonde"],[0xff171313, 0xff007080c]),#4
-     ("manface_midage_2",0xfde4c8d8,["hair_blonde"],[0xff502a19, 0xff19100c, 0xff0c0d19]),#5
-     ("manface_rugged",0xffb0aab5,["hair_blonde"],[0xff171313, 0xff007080c]),#6
-     #0xFF22120C
-     #0xEA1F100C
-     #0xff807c8a
-     #0xB9473837
-     #0xFF442A30
-     ("manface_african",0xFF362F30,["hair_blonde"],[0xff120808, 0xff007080c]),#7
-     ("manface_asian1",0xffe3e8e1,["hair_blonde"],[0xff171313, 0xff007080c]),#8
-     ("manface_asian2",0xffe3e8e1,["hair_blonde"],[0xff171313, 0xff007080c]),#9
-     ("manface_asian3",0xffbbb6ae,["hair_blonde"],[0xff171313, 0xff007080c]),#10
-     ("manface_mideast1",0xffaeb0a6,["hair_blonde"],[0xff171313, 0xff007080c]),#11
-  	 ("manface_mideast2",0xffd0c8c1,["hair_blonde"],[0xff171313, 0xff007080c]),#12
-     ("manface_mideast3",0xffaeb0a6,["hair_blonde"],[0xff171313, 0xff007080c]),#13
-     ("manface_black1",0xff87655c,["hair_blonde"],[0xff171313, 0xff007080c]),#14
-	 ("manface_black2",0xff5a3d34,["hair_blonde"],[0xff171313, 0xff007080c]),#15
-	 ("manface_black3",0xff634d3e,["hair_blonde"],[0xff171313, 0xff007080c]),#16
-	 ("manface_white1",0xffe0e8e8,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff632e18, 0xff502a19, 0xff19100c]),#17
-	 ("manface_white2",0xffe0e8e8,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff632e18, 0xff502a19, 0xff19100c, 0xff0c0d19]),#18
-	 ("manface_white3",0xffe0e8e8,["hair_blonde"],[0xff83301a, 0xff502a19, 0xff19100c, 0xff0c0d19]),#19
+    ("manface_young_2",0xffcbe0e0,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19]),#0
+    ("manface_midage",0xffdfefe1,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff632e18, 0xff502a19, 0xff19100c]),#1
+    ("manface_young",0xffd0e0e0,["hair_blonde"],[0xff83301a, 0xff502a19, 0xff19100c, 0xff0c0d19]),#2
+    ("manface_young_3",0xffdceded,["hair_blonde"],[0xff2f180e, 0xff171313, 0xff007080c]),#3
+    ("manface_7",0xffdceded,["hair_blonde"],[0xff171313, 0xff007080c]),#4
+    ("manface_midage_2",0xfde4c8d8,["hair_blonde"],[0xff502a19, 0xff19100c, 0xff0c0d19]),#5
+    ("manface_rugged",0xffb0aab5,["hair_blonde"],[0xff171313, 0xff007080c]),#6
+    ("manface_african",0xFF362F30,["hair_blonde"],[0xff120808, 0xff007080c]),#7
+    ("manface_asian1",0xffe3e8e1,["hair_blonde"],[0xff171313, 0xff007080c]),#8
+    ("manface_asian2",0xffe3e8e1,["hair_blonde"],[0xff171313, 0xff007080c]),#9
+    ("manface_asian3",0xffbbb6ae,["hair_blonde"],[0xff171313, 0xff007080c]),#10
+    ("manface_mideast1",0xffaeb0a6,["hair_blonde"],[0xff171313, 0xff007080c]),#11
+    ("manface_mideast2",0xffd0c8c1,["hair_blonde"],[0xff171313, 0xff007080c]),#12
+    ("manface_mideast3",0xffaeb0a6,["hair_blonde"],[0xff171313, 0xff007080c]),#13
+    ("manface_black1",0xff87655c,["hair_blonde"],[0xff171313, 0xff007080c]),#14
+    ("manface_black2",0xff5a3d34,["hair_blonde"],[0xff171313, 0xff007080c]),#15
+    ("manface_black3",0xff634d3e,["hair_blonde"],[0xff171313, 0xff007080c]),#16
+    ("manface_white1",0xffe0e8e8,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff632e18, 0xff502a19, 0xff19100c]),#17
+    ("manface_white2",0xffe0e8e8,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff632e18, 0xff502a19, 0xff19100c, 0xff0c0d19]),#18
+    ("manface_white3",0xffe0e8e8,["hair_blonde"],[0xff83301a, 0xff502a19, 0xff19100c, 0xff0c0d19]),#19
+    ("manface_brown1",0xff87655c,["hair_blonde"],[0xff171313, 0xff007080c]),#20
+    ("manface_brown2",0xff87655c,["hair_blonde"],[0xff171313, 0xff007080c]),#21
 
-     ("manface_brown1",0xff87655c,["hair_blonde"],[0xff171313, 0xff007080c]),#20
-     ("manface_brown2",0xff87655c,["hair_blonde"],[0xff171313, 0xff007080c]),#21
-
-
-     ("manface_young_4",0xffdceded,["hair_blonde"],[0xff2f180e, 0xff171313, 0xff007080c]),#22
-     ("manface_young_5",0xffdceded,["hair_blonde"],[0xff2f180e, 0xff171313, 0xff007080c]),#23
-     ("manface_young_6",0xffdceded,["hair_blonde"],[0xff2f180e, 0xff171313, 0xff007080c]),#24
-     ("manface_midage_3",0xffdfefe1,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff632e18, 0xff502a19, 0xff19100c]),#25
-
-     ("manface_brown3",0xff87655c,["hair_blonde"],[0xff171313, 0xff007080c]),#26
-     ], #man_face_textures,
-    [(voice_die,"snd_man_die"),(voice_hit,"snd_man_hit"),(voice_grunt,"snd_man_grunt"),(voice_grunt_long,"snd_man_grunt_long"),(voice_yell,"snd_man_yell"),(voice_stun,"snd_man_stun"),(voice_victory,"snd_man_victory")], #voice sounds
+    ("manface_young_4",0xffdceded,["hair_blonde"],[0xff2f180e, 0xff171313, 0xff007080c]),#22
+    ("manface_young_5",0xffdceded,["hair_blonde"],[0xff2f180e, 0xff171313, 0xff007080c]),#23
+    ("manface_young_6",0xffdceded,["hair_blonde"],[0xff2f180e, 0xff171313, 0xff007080c]),#24
+    ("manface_midage_3",0xffdfefe1,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff632e18, 0xff502a19, 0xff19100c]),#25
+    ("manface_brown3",0xff87655c,["hair_blonde"],[0xff171313, 0xff007080c]),#26
+  ],[
+    (voice_die,"snd_man_die"),
+    (voice_hit,"snd_man_hit"),
+    (voice_grunt,"snd_man_grunt"),
+    (voice_grunt_long,"snd_man_grunt_long"),
+    (voice_yell,"snd_man_yell"),
+    (voice_stun,"snd_man_stun"),
+    (voice_victory,"snd_man_victory")
+  ], #voice sounds
     "skel_human", 0.95,
     psys_game_blood,psys_game_blood_2,
-	[[1.6, comp_greater_than, (1.0,eye_to_eye_dist), (1.0,temple_width)], #constraints: ex: 1.7 > (face_width + temple_width)
-     [0.6, comp_less_than, (1.0,eye_to_eye_dist), (1.0,temple_width)],
-	 [1.5, comp_greater_than, (1.0,face_ratio), (1.0,mouth_width)],  # face ratio and mouth to nose distance
-	 [0.6, comp_greater_than, (-1.0,nose_width), (1.0,mouth_width)],  # nose height and mouth to nose distance
-	 [-1.0, comp_less_than, (-1.0,nose_width), (1.0,mouth_width)],  # nose height and mouth to nose distance
-     ]
-  ),
+	[
+    [1.6, comp_greater_than, (1.0,eye_to_eye_dist), (1.0,temple_width)], #constraints: ex: 1.7 > (face_width + temple_width)
+    [0.6, comp_less_than, (1.0,eye_to_eye_dist), (1.0,temple_width)],
+    [1.5, comp_greater_than, (1.0,face_ratio), (1.0,mouth_width)],  # face ratio and mouth to nose distance
+    [0.6, comp_greater_than, (-1.0,nose_width), (1.0,mouth_width)],  # nose height and mouth to nose distance
+    [-1.0, comp_less_than, (-1.0,nose_width), (1.0,mouth_width)],  # nose height and mouth to nose distance
+  ]
+),
 
-  (
-    "woman", skf_use_morph_key_10,
-    "femalebody_u", "femalefoot_l", "f_handL",
-    "female_head", woman_face_keys,
-    ["woman_hair_01","woman_hair_02","woman_hair_03","woman_hair_04","woman_hair_05","woman_hair_06","woman_hair_07","woman_hair_08","woman_hair_09",
+("woman", skf_use_morph_key_10,
+  "femalebody_u", "femalefoot_l", "f_handL",
+  "female_head", woman_face_keys,
+  [
+    "woman_hair_01","woman_hair_02","woman_hair_03","woman_hair_04","woman_hair_05","woman_hair_06","woman_hair_07","woman_hair_08","woman_hair_09",
     "woman_hair_10","woman_hair_11","woman_hair_12","woman_hair_13","woman_hair_14","woman_hair_15","woman_hair_16","woman_hair_17","woman_hair_18",
     "woman_hair_19","woman_hair_20","woman_hair_21","woman_hair_22","woman_hair_23","woman_hair_24","woman_hair_25","woman_hair_26","woman_hair_27",
-    "woman_hair_28","woman_hair_30",], #woman_hair_meshes
-#    ["woman_hair_a","woman_hair_b","woman_hair_c","woman_hair_d","woman_hair_e","woman_hair_f","woman_hair_g"], #woman_hair_meshes
-    ["rus_eyelashes","rus_mascara","acc4","acc5","acc6","acc7","acc8","acc9","acc10","acc11","acc12","byz_earring"], #jewellery,
-    ["hair_blonde", "hair_red", "hair_brunette", "hair_black", "hair_white"], #hair textures
-    ["lucheyelashes_blonde"],
-    [
-     ("womanface_young",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #0
-     ("womanface_b",0xffdfdfdf,["hair_blonde"],[0xffa5481f, 0xff502a19, 0xff19100c, 0xff0c0d19]), #1
-     ("womanface_a",0xffe3e8ef,["hair_blonde"],[0xff502a19, 0xff19100c, 0xff0c0d19]), #2
-     ("womanface_white_1",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #3
-     ("womanface_white_2",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #4
-     ("womanface_white_3",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #5
-     ("womanface_white_4",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #6
-     ("womanface_white_5",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #7
+    "woman_hair_28","woman_hair_30",
+  ],
+  ["rus_eyelashes","rus_mascara","acc4","acc5","acc6","acc7","acc8","acc9","acc10","acc11","acc12","byz_earring"], #jewellery,
+  ["hair_blonde", "hair_red", "hair_brunette", "hair_black", "hair_white"], #hair textures
+  ["lucheyelashes_blonde"],
+  [
+    ("womanface_young",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #0
+    ("womanface_b",0xffdfdfdf,["hair_blonde"],[0xffa5481f, 0xff502a19, 0xff19100c, 0xff0c0d19]), #1
+    ("womanface_a",0xffe3e8ef,["hair_blonde"],[0xff502a19, 0xff19100c, 0xff0c0d19]), #2
+    ("womanface_white_1",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #3
+    ("womanface_white_2",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #4
+    ("womanface_white_3",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #5
+    ("womanface_white_4",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #6
+    ("womanface_white_5",0xffe3e8ef,["hair_blonde"],[0xffffffff, 0xffb04717, 0xff502a19, 0xff19100c]), #7
 
-     ("womanface_brown",0xffaf9f7e,["hair_blonde"],[0xff19100c, 0xff0c0d19, 0xff007080c]), #8
-     ("womanface_brown_1",0xffaf9f7e,["hair_blonde"],[0xff19100c, 0xff0c0d19, 0xff007080c]), #9
-     ("womanface_dark_1",0xffaf9f7e,["hair_blonde"],[0xff19100c, 0xff0c0d19, 0xff007080c]),#10
-     ("womanface_dark_2",0xffaf9f7e,["hair_blonde"],[0xff19100c, 0xff0c0d19, 0xff007080c]),#11
+    ("womanface_brown",0xffaf9f7e,["hair_blonde"],[0xff19100c, 0xff0c0d19, 0xff007080c]), #8
+    ("womanface_brown_1",0xffaf9f7e,["hair_blonde"],[0xff19100c, 0xff0c0d19, 0xff007080c]), #9
+    ("womanface_dark_1",0xffaf9f7e,["hair_blonde"],[0xff19100c, 0xff0c0d19, 0xff007080c]),#10
+    ("womanface_dark_2",0xffaf9f7e,["hair_blonde"],[0xff19100c, 0xff0c0d19, 0xff007080c]),#11
 
-     ("womanface_african",0xff797979,["hair_blonde"],[0xff120808, 0xff007080c]), #12
-     ("womanface_african_1",0xff3E3E3E,["hair_blonde"],[0xff120808, 0xff007080c]),#13
-     ("womanface_african_2",0xff3E3E3E,["hair_blonde"],[0xff120808, 0xff007080c]),#14
+    ("womanface_african",0xff797979,["hair_blonde"],[0xff120808, 0xff007080c]), #12
+    ("womanface_african_1",0xff3E3E3E,["hair_blonde"],[0xff120808, 0xff007080c]),#13
+    ("womanface_african_2",0xff3E3E3E,["hair_blonde"],[0xff120808, 0xff007080c]),#14
+  ],[
+    (voice_die,"snd_woman_die"),
+    (voice_hit,"snd_woman_hit"),
+    (voice_grunt,"snd_woman_grunt"),
+    (voice_grunt_long,"snd_woman_grunt_long"),
+    (voice_yell,"snd_woman_yell"),
+    (voice_stun,"snd_woman_stun"),
+    (voice_victory,"snd_woman_victory")
+  ],
+  "skel_human_female_old", 0.91,
+  psys_game_blood,psys_game_blood_2,
+),
 
-     ],#woman_face_textures
-    [(voice_die,"snd_woman_die"),(voice_hit,"snd_woman_hit"),(voice_grunt,"snd_woman_grunt"),(voice_grunt_long,"snd_woman_grunt_long"),(voice_yell,"snd_woman_yell"),(voice_stun,"snd_woman_stun"),(voice_victory,"snd_woman_victory")], #voice sounds
-    "skel_human_female_old", 0.91,
-    psys_game_blood,psys_game_blood_2,
-  ),
   (
     "boy", 0,
     "malebody_u", "malefoot_l", "m_handL",

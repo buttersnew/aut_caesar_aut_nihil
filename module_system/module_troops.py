@@ -5142,7 +5142,8 @@ attrib_level_23,wp(20),knows_inventory_management_10,roman_face1, roman_face2],
 [itm_caligea,itm_roman_toga,itm_roman_poor2,itm_roman_poor1,itm_roman_poor3,itm_roman_poor4,itm_roman_poor5],def_attrib|level(5),wp(30),knows_common|knows_riding_2,white_face_21,white_face_22],
 
 ["dancer1","Dancer","Dancers",tf_female|tf_guarantee_armor|tf_guarantee_boots,0,0,fac_commoners,
-[itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,dancer_face_african1,dancer_face_african2],
+[itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,
+  dancer_face_african1,dancer_face_african2],
 
 ["orgie_male1_kissing","Noble","Noble",tf_male|tf_guarantee_armor|tf_guarantee_boots,0,0,fac_commoners,
 [itm_sarranid_cloth_robe_fancy_1,itm_sarranid_cloth_robe_fancy_2,itm_sarranid_cloth_robe_fancy_3,itm_caligea],def_attrib|level(5),wp(30),knows_common|knows_riding_2,white_face_11,white_face_12],
@@ -5842,7 +5843,7 @@ def_attrib|level(5),wp(30),knows_inventory_management_10,0x0000000b1100420136db6
 def_attrib|level(4), wp(60), knows_common, roman_face1, roman_face2 ],
 ["courtier_female", "Courtier", "Courtiers", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_noble_dress_5,itm_roman_noble_dress_6,itm_roman_noble_dress_7,itm_caligea],
-def_attrib|level(4), wp(60), knows_common, woman_face_1, woman_face_2 ],
+def_attrib|level(4), wp(60), knows_common, woman_face_1, woman_face_2],
 
 ["courtier_locusta", "Locusta", "Locusta", tf_female|tf_hero, no_scene, reserved, fac_commoners,
 [itm_roman_noble_dress_5,itm_female_caligea_gold],

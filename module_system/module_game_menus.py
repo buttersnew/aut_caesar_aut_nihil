@@ -958,8 +958,7 @@ game_menus = [
 
 ("choose_skill",mnf_scale_picture|mnf_disable_all_keys,
   "{s25}",
-  "none",
-  [
+  "none",[
     (try_begin),
         (eq, "$g_campaign_type", g_campaign_story_rome),
         (set_background_mesh, "mesh_pic_yourbirth"),
@@ -994,8 +993,7 @@ game_menus = [
             (display_message, "@cheats are enabled, PILOS is watching", message_negative),
         (try_end),
     (try_end),
-  ],
-  [
+  ],[
     ("go_back_dot",[
       (this_or_next|eq, "$g_campaign_type", g_campaign_king),
       (this_or_next|eq, "$g_campaign_type", g_campaign_sandbox),
@@ -4122,61 +4120,61 @@ game_menus = [
       ]
   ),
 
-  ("camp_make_slaves",0,
-   "By selling their equipment to your men you can make your prisoners to slaves. From now on, they will lose their social status and their standing within their faction.",
-   "none",
-   [
-    ],
-    [
-      ("camp_recruit_prisoners_accept",[],"Make them to slaves!",
-       [
-    (assign, ":gold", 0),
-    (assign, ":num_non_slaves_male", 0),
-    (assign, ":num_non_slaves_female", 0),
-    (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
-    (try_for_range_backwards, ":i_stack", 0, ":num_stacks"),
-      (party_prisoner_stack_get_troop_id, ":stack_troop","p_main_party",":i_stack"),
-      (neq, ":stack_troop", "trp_slave"),
-      (neq, ":stack_troop", "trp_slave_female"),
-      (call_script, "script_game_check_prisoner_can_be_sold", ":stack_troop"),
-      (eq, reg0, 1),
-      (party_prisoner_stack_get_size,":size", "p_main_party", ":i_stack"),
-      (party_remove_prisoners, "p_main_party", ":stack_troop", ":size"),
-      (store_character_level, ":level", ":stack_troop"),
-      (try_begin),
-        (call_script, "script_cf_dplmc_troop_is_female", ":stack_troop"),
-        (val_add, ":num_non_slaves_female", ":size"),
-      (else_try),
-        (val_add, ":num_non_slaves_male", ":size"),
-        (val_mul,":level", 3),
+("camp_make_slaves",0,
+  "By selling their equipment to your men you can make your prisoners to slaves. From now on, they will lose their social status and their standing within their faction.",
+  "none",[
+    (set_background_mesh, "mesh_pic_prisoner_man"),
+  ],[
+    ("camp_recruit_prisoners_accept",[],"Make them to slaves!",[
+      (assign, ":gold", 0),
+      (assign, ":num_non_slaves_male", 0),
+      (assign, ":num_non_slaves_female", 0),
+      (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
+      (try_for_range_backwards, ":i_stack", 0, ":num_stacks"),
+        (party_prisoner_stack_get_troop_id, ":stack_troop","p_main_party",":i_stack"),
+        (call_script, "script_game_check_prisoner_can_be_sold", ":stack_troop"),
+        (eq, reg0, 1),
+        (party_prisoner_stack_get_size,":size", "p_main_party", ":i_stack"),
+        (store_character_level, ":level", ":stack_troop"),
+
+        (try_begin),
+          (call_script, "script_cf_dplmc_troop_is_female", ":stack_troop"),
+          (val_add, ":num_non_slaves_female", ":size"),
+        (else_try),
+          (val_add, ":num_non_slaves_male", ":size"),
+          (val_mul,":level", 3),
+        (try_end),
+        (try_begin),
+          (neq, ":stack_troop", "trp_slave"),
+          (neq, ":stack_troop", "trp_slave_female"),
+          (val_add, ":gold", ":level"),
+        (try_end),
+        (party_remove_prisoners, "p_main_party", ":stack_troop", ":size"),
       (try_end),
-      (val_add, ":gold", ":level"),
-    (try_end),
-    (try_begin),
-      (ge, ":num_non_slaves_male", 1),
-      (party_add_prisoners, "p_main_party","trp_slave", ":num_non_slaves_male"),
-    (try_end),
 
-    (try_begin),
-      (ge, ":num_non_slaves_female", 1),
-      (party_add_prisoners, "p_main_party","trp_slave_female", ":num_non_slaves_female"),
-    (try_end),
+      (try_begin),
+        (ge, ":num_non_slaves_male", 1),
+        (party_force_add_prisoners, "p_main_party","trp_slave", ":num_non_slaves_male"),
+      (try_end),
 
-    # (val_add, ":num_non_slaves_male", ":num_non_slaves_female"),
-    # (val_mul, ":num_non_slaves_male", 100),
-    (troop_add_gold, "trp_player", ":gold"),
-    (display_message, "@You gain some gold from the equipment you sell to your men.", color_good_news),
-    (call_script, "script_change_party_morale", "p_main_party", 5),
-        (jump_to_menu, "mnu_camp"),
-        ]
-       ),
+      (try_begin),
+        (ge, ":num_non_slaves_female", 1),
+        (party_force_add_prisoners, "p_main_party","trp_slave_female", ":num_non_slaves_female"),
+      (try_end),
+      # (val_add, ":num_non_slaves_male", ":num_non_slaves_female"),
+      # (val_mul, ":num_non_slaves_male", 100),
+      (troop_add_gold, "trp_player", ":gold"),
+      (display_message, "@You gain some gold from the equipment you sell to your men.", color_good_news),
+      (call_script, "script_change_party_morale", "p_main_party", 5),
+      (jump_to_menu, "mnu_camp"),
+    ]),
 
-      ("continue",[(le, "$g_prisoner_recruit_troop_id", 0)],"Go back.",
-       [(jump_to_menu, "mnu_camp"),
-        ]
-       ),
-      ]
-  ),
+    ("continue",[
+      (le, "$g_prisoner_recruit_troop_id", 0)
+    ],"Go back.",[
+      (jump_to_menu, "mnu_camp"),
+    ]),
+]),
 
   ("camp_no_prisoners",0,
    "You have no prisoners to recruit from.",
@@ -31849,6 +31847,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (assign, "$talk_context", tc_campaign_talk),
       (modify_visitors_at_site,"scn_imperial_dinning_room"),
       (reset_visitors, 0),
+      (str_store_string, s68, "str_female_white_face_2"),
+      (troop_set_face_keys, ":troop", s68, 0),
+      (troop_set_face_keys, ":troop", s68, 1),
       (set_visitor, 10, "trp_courtier_female"),#acte
       (set_visitor, 36, "trp_player"),
       (set_visitor, 39, "trp_quest_primus_pilus"),#soldier
@@ -39957,7 +39958,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (check_quest_active, "qst_neros_fate"),
           (quest_slot_eq, "qst_neros_fate", slot_quest_current_state, 3),
           (set_visitor, 1, "trp_kingdom_7_lord"),
-          (set_visitor, 2,"trp_dancer1"),
           (set_visitor, 6,"trp_orgie_male1"),
           (set_visitor, 5,"trp_orgie_fem3"),
           (set_visitor, 3,"trp_orgie_fem2"),
@@ -42818,8 +42818,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_villa_sea"),
   ],[
   ("villa",[
-    (eq,"$current_town","p_town_34"),
-	  (troop_slot_eq, "trp_global_variables", g_player_villa, 2),
+    (neg|troop_slot_eq, "trp_array_villa_feast", 9, 0),
   ],"Enter the villa.",[
     (set_passage_menu, "mnu_villa"),
 
@@ -42865,8 +42864,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (change_screen_mission),
   ],"Enter the villa"),
   ("villa",[
-    (eq,"$current_town","p_town_34"),
-	  (troop_slot_eq, "trp_global_variables", g_player_villa, 2),
+    (neg|troop_slot_eq, "trp_array_villa_feast", 9, 0),
   ],"Walk around.",[
     (set_passage_menu, "mnu_villa"),
     (modify_visitors_at_site, "scn_villa_player"),
@@ -42915,8 +42913,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (change_screen_mission),
   ],"Go outside."),
 	("feast",[
-    (eq,"$current_town","p_town_34"),
-    (troop_slot_eq, "trp_global_variables", g_player_villa, 2),
     (troop_slot_eq, "trp_array_villa_feast", 9, 0),
   ],"Start the feast.",[
     (assign, "$talk_context", tc_feast),
@@ -42949,11 +42945,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (else_try),
         (str_store_troop_name, s31, ":guest"),
         (display_message, "@{s31} is deceased thus won't attend to the feast."),
-    (try_end),
-
-    (try_for_range, ":slot",1,10),
-        (troop_set_slot, "trp_array_villa_feast", ":slot", -1),
-        (display_message, "@The feast concludes"),
     (try_end),
 
     (jump_to_scene, "scn_villa_player"),
@@ -55135,8 +55126,6 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
           (set_visitor, 8, "trp_bacchus"),
 
-          (set_visitor,7,"trp_dancer1"),
-
           (set_visitor,1,"trp_orgie_male1"),
           (set_visitor,2,"trp_orgie_fem3"),
           (set_visitor,3,"trp_orgie_fem2"),
@@ -57372,8 +57361,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
         #7 dancer
         #8 god
         (set_visitor, 8, "trp_bacchus"),
-
-        (set_visitor,7,"trp_dancer1"),
 
         (set_visitor,1,"trp_orgie_male1"),
         (set_visitor,2,"trp_orgie_fem3"),
