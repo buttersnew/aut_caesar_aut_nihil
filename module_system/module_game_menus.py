@@ -18994,13 +18994,6 @@ game_menus = [
         (ge, "$g_heir_of_rome", 1),
         (set_visitor,35,"$g_heir_of_rome"),
       (try_end),
-      (try_begin),
-        (eq, "$g_dancers", 1),
-        (set_visitor,11,"trp_dancer2"),
-        (set_visitor,12,"trp_dancer3"),
-        (set_visitor,13,"trp_dancer1"),
-        (set_visitor,38,"trp_dancer4"),
-      (try_end),
       (set_visitor,14,"trp_housholder"),
         (try_begin),
           (gt, "$g_player_chamberlain", 0),
@@ -19056,19 +19049,6 @@ game_menus = [
       (set_visitor,34,"trp_slave"),
 
       (set_visitor,40,"trp_plinius_elder"),
-
-      ##courtiers
-      (set_visitor, 60, "trp_courtier"),
-      (set_visitor, 61, "trp_courtier_female"),
-      (set_visitor, 62, "trp_courtier"),
-      (set_visitor, 63, "trp_courtier_female"),
-      (set_visitor, 64, "trp_courtier"),
-      (set_visitor, 65, "trp_courtier_female"),
-      (set_visitor, 66, "trp_courtier"),
-      (set_visitor, 67, "trp_courtier_female"),
-      (set_visitor, 68, "trp_courtier"),
-      (set_visitor, 69, "trp_courtier_female"),
-
 
       (try_begin),
         (gt, "$praefectus_urbani", -1),
@@ -19380,7 +19360,6 @@ game_menus = [
               (troop_slot_ge, ":spouse", slot_troop_player_relation, 5),
               (set_visitor, 1, ":spouse"),
           (try_end),
-          (set_visitor, 2, "trp_courtier_female"),
           (set_visitor, 3, "trp_courtier_crispinilla"),
           (set_visitor, 4, "trp_courtier_locusta"),
           (jump_to_scene, "scn_imperial_bed_room"),
@@ -19405,35 +19384,9 @@ game_menus = [
           (try_end),
           (set_visitor, 0, "trp_player"),
 
-          (set_visitor, 1,"trp_dancer1"),
-          (set_visitor, 2,"trp_dancer2"),
-          (set_visitor, 3,"trp_dancer3"),
-          (set_visitor, 4,"trp_dancer4"),
-
-          (set_visitor, 5,"trp_orgie_fem_kissing"),
-          (set_visitor, 6,"trp_orgie_male1_kissing"),
-
           (set_visitor, 7,"trp_tavern_minstrel_2"),
           (set_visitor, 8,"trp_tavern_minstrel_3"),
           (set_visitor, 9,"trp_tavern_minstrel_4"),
-
-          (set_visitor, 10,"trp_courtier_female"),
-          (set_visitor, 11,"trp_courtier_female"),
-          (set_visitor, 12,"trp_courtier_female"),
-          (set_visitor, 13,"trp_courtier_female"),
-
-          (set_visitor, 14,"trp_courtier_female"),
-          (set_visitor, 15,"trp_courtier_female"),
-          (set_visitor, 16,"trp_courtier_female"),
-          (set_visitor, 17,"trp_courtier_female"),
-          (set_visitor, 18,"trp_courtier_female"),
-          (set_visitor, 19,"trp_courtier_female"),
-          (set_visitor, 20,"trp_courtier_female"),
-          (set_visitor, 21,"trp_courtier_female"),
-          (set_visitor, 22,"trp_courtier_female"),
-          (set_visitor, 23,"trp_courtier_female"),
-          (set_visitor, 24,"trp_courtier_female"),
-          (set_visitor, 25,"trp_courtier_female"),
 
           (jump_to_scene, "scn_parthian_palace_garden"),
           (change_screen_mission),
@@ -19463,7 +19416,6 @@ game_menus = [
               (gt, ":spouse", -1),
               (set_visitor, 1, ":spouse"),
           (try_end),
-          (set_visitor, 2, "trp_courtier_female"),
           (jump_to_scene, "scn_imperial_palace_augusta_room"),
           (change_screen_mission),
       (else_try),
@@ -31470,10 +31422,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (modify_visitors_at_site,"scn_temple_of_bacchus"),
         (reset_visitors),
         (set_visitor,1,"trp_player"), #player
-        (set_visitor,2,"trp_dancer1"),
-        (set_visitor,3,"trp_dancer2"),
-        (set_visitor,4,"trp_dancer3"),
-        (set_visitor,5,"trp_dancer4"),
+
         (set_visitor,6,"trp_orgie_male1"),
         (set_visitor,7,"trp_orgie_male1"),
         (set_visitor,8,"trp_orgie_male1"),
@@ -31485,12 +31434,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (set_visitor,14,"trp_orgie_fem2"),
         (set_visitor,15,"trp_orgie_fem3"),
         (set_visitor,16,"trp_orgie_fem1"),
-        #kissing
-        (set_visitor,17,"trp_orgie_fem_kissing"),
-        (set_visitor,18,"trp_orgie_male1_kissing"),
-        #kissing
-        (set_visitor,19,"trp_orgie_fem_kissing"),
-        (set_visitor,20,"trp_orgie_male1_kissing"),
+
         #some music guys
         (store_random_in_range, ":music_guy", tavern_minstrels_begin, tavern_minstrels_end),
         (set_visitor,21,":music_guy"),
@@ -31879,47 +31823,43 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   # ),
   # ],),
 
-  (
-    "meeting_with_centurio_2",0,
-    "With ease your men kill the last supporters of Nero. Then you march towards the palace. You take over control of the imperial treasury.^^\
- Nero, still alive, has taken shelter in the Triclinium together with his wife and Tigellinus. It is time to confront them.",
-    "none",
-    [(set_background_mesh, "mesh_pic_palast"),
-
+("meeting_with_centurio_2",0,
+  "With ease your men kill the last supporters of Nero. Then you march towards the palace. You take over control of the imperial treasury.^^"
+  +"Nero, still alive, has taken shelter in the Triclinium together with his wife and Tigellinus. It is time to confront them.",
+  "none",[
+    (set_background_mesh, "mesh_pic_palast"),
     (display_log_message, "@You take over the imperial treasure.", color_good_news),
     (troop_get_slot, ":gold", "trp_kingdom_7_lord", slot_troop_wealth),
     (val_mul, ":gold", 2),
     (val_div, ":gold", 3),
     (troop_add_gold, "trp_player", ":gold"),
     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_wealth, 0),#set it 0
-
-    ],
-    [
-      ("Continue...",[],"Enter the Triclinium.",[
-    (display_message, "@You found Nero's lyre!", color_good_news),
-    (troop_add_item, "trp_player","itm_lyre_rich",0),
-      #36 player
-      #39 praetorian centurio
-      #11 Poppaea
-      #10 Nero
-      #40 Tigellinus
-      #6 or 7 Acte
-    (assign, "$temp4", 0),#1 Nero banished, 2 Nero killed
-    (assign, "$temp4_1", 0),#1 banish, 2 death, 3 divorce
-    (assign, "$talk_context", tc_campaign_talk),
-    (modify_visitors_at_site,"scn_imperial_dinning_room"),
-    (reset_visitors, 0),
-    (set_visitor, 10, "trp_courtier_female"),#acte
-    (set_visitor, 36, "trp_player"),
-    (set_visitor, 39, "trp_quest_primus_pilus"),#soldier
-    (set_visitor, 10, "trp_kingdom_7_lord"),
-    (set_visitor, 11, "trp_kingdom_7_lady_1"),
-    (set_visitor, 40, "trp_tigellinus"),
-    (set_jump_mission, "mt_nero_final"),
-    (jump_to_scene, "scn_imperial_dinning_room"),
-    (change_screen_mission),
-      ],),
-  ],),
+  ],[
+    ("Continue...",[],"Enter the Triclinium.",[
+      (display_message, "@You found Nero's lyre!", color_good_news),
+      (troop_add_item, "trp_player","itm_lyre_rich",0),
+        #36 player
+        #39 praetorian centurio
+        #11 Poppaea
+        #10 Nero
+        #40 Tigellinus
+        #6 or 7 Acte
+      (assign, "$temp4", 0),#1 Nero banished, 2 Nero killed
+      (assign, "$temp4_1", 0),#1 banish, 2 death, 3 divorce
+      (assign, "$talk_context", tc_campaign_talk),
+      (modify_visitors_at_site,"scn_imperial_dinning_room"),
+      (reset_visitors, 0),
+      (set_visitor, 10, "trp_courtier_female"),#acte
+      (set_visitor, 36, "trp_player"),
+      (set_visitor, 39, "trp_quest_primus_pilus"),#soldier
+      (set_visitor, 10, "trp_kingdom_7_lord"),
+      (set_visitor, 11, "trp_kingdom_7_lady_1"),
+      (set_visitor, 40, "trp_tigellinus"),
+      (set_jump_mission, "mt_nero_final"),
+      (jump_to_scene, "scn_imperial_dinning_room"),
+      (change_screen_mission),
+  ]),
+]),
 
 
   (
@@ -37271,14 +37211,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       #33 - 40 dancers
       (set_visitor, 12, "trp_fortuna"),
 
-      (set_visitor,33,"trp_dancer1"),
-      (set_visitor,34,"trp_dancer2"),
-      (set_visitor,35,"trp_dancer3"),
-      (set_visitor,36,"trp_dancer4"),
-      (set_visitor,37,"trp_dancer1"),
-      (set_visitor,38,"trp_dancer2"),
-      (set_visitor,39,"trp_dancer3"),
-      (set_visitor,40,"trp_dancer4"),
 
       (set_visitor,13,"trp_orgie_male1"),
       (set_visitor,14,"trp_orgie_male1"),
@@ -37294,15 +37226,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (set_visitor,24,"trp_orgie_fem2"),
       (set_visitor,25,"trp_orgie_fem3"),
       (set_visitor,26,"trp_orgie_male1"),
-      #kissing
-      (set_visitor,27,"trp_orgie_fem_kissing"),
-      (set_visitor,28,"trp_orgie_male1_kissing"),
-      #kissing
-      (set_visitor,29,"trp_orgie_fem_kissing"),
-      (set_visitor,30,"trp_orgie_male1_kissing"),
-      #kissing
-      (set_visitor,31,"trp_orgie_fem_kissing"),
-      (set_visitor,32,"trp_orgie_male1_kissing"),
       #some music guys
       (store_random_in_range, ":music_guy", tavern_minstrels_begin, tavern_minstrels_end),
       (set_visitor,42,":music_guy"),
@@ -43016,13 +42939,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (ge, ":musican", 1),
         (set_visitor, 22, "trp_tavern_minstrel_4"),
     (try_end),
-    (troop_get_slot, ":dancer", "trp_array_villa_feast", 8),
-    (try_begin),
-        (ge, ":dancer", 1),
-        (set_visitor, 12, "trp_dancer1"),
-        (set_visitor, 13, "trp_dancer2"),
-        (set_visitor, 14, "trp_dancer3"),
-    (try_end),
+
     (set_jump_entry, 21),
     (set_jump_mission, "mt_visit_villa"),
     (try_for_range, ":guest", 0, 100),
@@ -46773,10 +46690,6 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 			(modify_visitors_at_site,"scn_temple_of_bacchus"),
 			(reset_visitors),
 			(set_visitor,1,"trp_player"), #player
-			(set_visitor,2,"trp_dancer1"),
-			(set_visitor,3,"trp_dancer2"),
-			(set_visitor,4,"trp_dancer3"),
-			(set_visitor,5,"trp_dancer4"),
 			(set_visitor,6,"trp_bannerlord"),
 			(set_visitor,7,"trp_diggus"),
 			(set_visitor,8,"trp_orgie_male1"),
@@ -46788,12 +46701,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 			(set_visitor,14,"trp_orgie_fem2"),
 			(set_visitor,15,"trp_orgie_fem3"),
 			(set_visitor,16,"trp_orgie_fem1"),
-			#kissing
-			(set_visitor,17,"trp_orgie_fem_kissing"),
-			(set_visitor,18,"trp_orgie_male1_kissing"),
-			#kissing
-			(set_visitor,19,"trp_orgie_fem_kissing"),
-			(set_visitor,20,"trp_orgie_male1_kissing"),
+
 			#some music guys
 			(store_random_in_range, ":music_guy", tavern_minstrels_begin, tavern_minstrels_end),
 			(set_visitor,21,":music_guy"),
@@ -48530,73 +48438,65 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ]
   ),
 
-  (
-    "petition",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You start checking the petitions ...",
-    "none",
-    [(set_background_mesh, "mesh_pic_senatus"),
-
+("petition",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You start checking the petitions ...",
+  "none",[
+    (set_background_mesh, "mesh_pic_senatus"),
     (try_begin),
-      (store_random_in_range, ":center", towns_begin, towns_end),
-      (store_mul, ":chance", "$g_taxrate",  "$g_taxrate"),
+        (store_random_in_range, ":center", towns_begin, towns_end),
+        (store_mul, ":chance", "$g_taxrate",  "$g_taxrate"),
 
-      (try_begin),
-        (eq, "$control_tax", 1),  #tax control active
-        (val_mul, ":chance", 2),
-        (val_div, ":chance", 3),
-      (try_end),
-      (val_add, ":chance", "$g_unrest"),
-      (store_random_in_range, ":rand", 0, 10100),
-      (val_sub, ":rand", "$g_unrest"),
-      (lt, ":rand", ":chance"),
+        (try_begin),
+            (eq, "$control_tax", 1),  #tax control active
+            (val_mul, ":chance", 2),
+            (val_div, ":chance", 3),
+        (try_end),
+        (val_add, ":chance", "$g_unrest"),
+        (store_random_in_range, ":rand", 0, 10100),
+        (val_sub, ":rand", "$g_unrest"),
+        (lt, ":rand", ":chance"),
 
-      (store_faction_of_party, ":fac", ":center"),
-      (eq, ":fac", "$players_kingdom"),
-      (party_get_slot, ":lord", ":center", slot_town_lord),
-      (gt, ":lord", 0),
-      (neg|troop_slot_eq, ":lord", slot_troop_recently_blamed, 1),
-      (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_quarrelsome),
-      (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_cunning),
-      (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_selfrighteous),
-      (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_roguish),
-      (troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_debauched),
-      (str_store_party_name, s40, ":center"),
-      (str_store_troop_name, s44, ":lord"),
-      (setup_quest_text,"qst_blank_quest_21"),
-      (quest_set_slot, "qst_blank_quest_21", slot_quest_target_center, ":center"),
-      (quest_set_slot, "qst_blank_quest_21", slot_quest_target_troop, ":lord"),
-      (quest_set_slot, "qst_blank_quest_21", slot_quest_target_dna, 0),
-      (quest_set_slot, "qst_blank_quest_21", slot_quest_expiration_days, 40),
-      (str_store_string, s2, "@Rumors say {s44} has evaded taxes of {s40}."),
-      (call_script, "script_start_quest", "qst_blank_quest_21", "trp_player"),
-      (display_message, "@Rumors say {s44} has evaded taxes of {s40}."),
-      (troop_set_slot, ":lord", slot_troop_recently_blamed, 1),
-      (jump_to_menu, "mnu_event_corruption"),
+        (store_faction_of_party, ":fac", ":center"),
+        (eq, ":fac", "$players_kingdom"),
+        (party_get_slot, ":lord", ":center", slot_town_lord),
+        (gt, ":lord", 0),
+        (neg|troop_slot_eq, ":lord", slot_troop_recently_blamed, 1),
+        (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_quarrelsome),
+        (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_cunning),
+        (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_selfrighteous),
+        (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_roguish),
+        (troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_debauched),
+        (str_store_party_name, s40, ":center"),
+        (str_store_troop_name, s44, ":lord"),
+        (setup_quest_text,"qst_blank_quest_21"),
+        (quest_set_slot, "qst_blank_quest_21", slot_quest_target_center, ":center"),
+        (quest_set_slot, "qst_blank_quest_21", slot_quest_target_troop, ":lord"),
+        (quest_set_slot, "qst_blank_quest_21", slot_quest_target_dna, 0),
+        (quest_set_slot, "qst_blank_quest_21", slot_quest_expiration_days, 40),
+        (str_store_string, s2, "@Rumors say {s44} has evaded taxes of {s40}."),
+        (call_script, "script_start_quest", "qst_blank_quest_21", "trp_player"),
+        (display_message, "@Rumors say {s44} has evaded taxes of {s40}."),
+        (troop_set_slot, ":lord", slot_troop_recently_blamed, 1),
+        (jump_to_menu, "mnu_event_corruption"),
     (else_try),
-      (store_random_in_range, ":center", castles_begin, castles_end),
-      (store_faction_of_party, ":fac", ":center"),
-      (eq, ":fac", "$players_kingdom"),
-      (party_get_slot, ":lord", ":center", slot_town_lord),
-      (gt, ":lord", 0),
-      (neg|troop_slot_eq, ":lord", slot_troop_recently_blamed, 1),
-      (store_skill_level, ":trade","skl_trade", ":lord"),
-      (le, ":trade", 6),
-      (assign, "$temp1", ":center"),
-      (assign, "$temp2", ":lord"),
-      (jump_to_menu, "mnu_miss_managment"),
-      (troop_set_slot, ":lord", slot_troop_recently_blamed, 1),
+        (store_random_in_range, ":center", castles_begin, castles_end),
+        (store_faction_of_party, ":fac", ":center"),
+        (eq, ":fac", "$players_kingdom"),
+        (party_get_slot, ":lord", ":center", slot_town_lord),
+        (gt, ":lord", 0),
+        (neg|troop_slot_eq, ":lord", slot_troop_recently_blamed, 1),
+        (store_skill_level, ":trade","skl_trade", ":lord"),
+        (le, ":trade", 6),
+        (assign, "$temp1", ":center"),
+        (assign, "$temp2", ":lord"),
+        (jump_to_menu, "mnu_miss_managment"),
+        (troop_set_slot, ":lord", slot_troop_recently_blamed, 1),
     (try_end),
-
-    ],[
-
-
-      ("leave",[],"Continue",[
-		(change_screen_map),
-      ]),
-
-
-    ]
-  ),
+  ],[
+    ("leave",[],"Continue",[
+		  (change_screen_map),
+    ]),
+]),
 
   (
     "christian",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -51212,17 +51112,10 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (set_visitor,9,"trp_guest_female"),
       (set_visitor,10,"trp_guest_female"),
 
-      (set_visitor,11,"trp_dancer2"),
-      (set_visitor,12,"trp_dancer3"),
-      (set_visitor,13,"trp_dancer1"),
-      (set_visitor,38,"trp_dancer4"),
-
       (set_visitor, 15, "trp_invidia"),
 
       (set_visitor, 16, "trp_guest_female"),
 
-      (set_visitor,17, "trp_dancer1"),
-      (set_visitor, 18, "trp_dancer4"),
       (set_visitor,20,"trp_praetoriani_milites"),
       (set_visitor,21,"trp_praetoriani_milites"),
       (set_visitor,22,"trp_praetoriani_milites"),
@@ -51306,17 +51199,9 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (set_visitor,9,"trp_guest_female"),
       (set_visitor,10,"trp_guest_female"),
 
-      (set_visitor,11,"trp_dancer2"),
-      (set_visitor,12,"trp_dancer3"),
-      (set_visitor,13,"trp_dancer1"),
-      (set_visitor,38,"trp_dancer4"),
-
       (set_visitor, 15, "trp_kingdom_7_lady_1"),
 
       (set_visitor, 16, "trp_guest_female"),
-
-      # (set_visitor,17, "trp_dancer1"),
-      # (set_visitor,18, "trp_dancer4"),
 
       (set_visitor,20,"trp_praetoriani_milites"),
       (set_visitor,21,"trp_praetoriani_milites"),
@@ -55256,9 +55141,6 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
           (set_visitor,2,"trp_orgie_fem3"),
           (set_visitor,3,"trp_orgie_fem2"),
           (set_visitor,4,"trp_orgie_male1"),
-          #kissing
-          (set_visitor,5,"trp_orgie_fem_kissing"),
-          (set_visitor,6,"trp_orgie_male1_kissing"),
       (try_end),
       (try_begin),
           (quest_slot_eq, "qst_bacchhus_quest", slot_quest_current_state, 3),
@@ -57497,9 +57379,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
         (set_visitor,2,"trp_orgie_fem3"),
         (set_visitor,3,"trp_orgie_fem2"),
         (set_visitor,4,"trp_orgie_male1"),
-        #kissing
-        (set_visitor,5,"trp_orgie_fem_kissing"),
-        (set_visitor,6,"trp_orgie_male1_kissing"),
 
         (replace_scene_props, "spr_chest_a", "spr_empty"),
 
@@ -59223,13 +59102,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
             (ge, "$g_heir_of_rome", 1),
             (set_visitor,35,"$g_heir_of_rome"),
         (try_end),
-        (try_begin),
-            (eq, "$g_dancers", 1),
-            (set_visitor,11,"trp_dancer2"),
-            (set_visitor,12,"trp_dancer3"),
-            (set_visitor,13,"trp_dancer1"),
-            (set_visitor,38,"trp_dancer4"),
-        (try_end),
         (set_visitor,14,"trp_housholder"),
         (try_begin),
             (gt, "$g_player_chamberlain", 0),
@@ -59291,18 +59163,9 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
             (troop_slot_ge, "trp_sporus", slot_troop_betrothed, 0),
             (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_state, 17),
             (set_visitor, 60, "trp_sporus"),
-        (else_try),
-            (set_visitor, 60, "trp_courtier"),
         (try_end),
         (set_visitor, 61, "trp_courtier_locusta"),
         (set_visitor, 62, "trp_courtier_crispinilla"),
-        (set_visitor, 63, "trp_courtier_female"),
-        (set_visitor, 64, "trp_courtier"),
-        (set_visitor, 65, "trp_courtier_female"),
-        (set_visitor, 66, "trp_courtier"),
-        (set_visitor, 67, "trp_courtier_female"),
-        (set_visitor, 68, "trp_courtier"),
-        (set_visitor, 69, "trp_courtier_female"),
 
         (try_begin),
             (gt, "$praefectus_urbani", -1),
@@ -60114,13 +59977,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (try_end),
       (set_visitor, 61, "trp_courtier_crispinilla"),
       (set_visitor, 62, "trp_courtier_locusta"),
-      (set_visitor, 63, "trp_courtier_female"),
-      (set_visitor, 64, "trp_courtier"),
-      (set_visitor, 65, "trp_courtier_female"),
-      (set_visitor, 66, "trp_courtier"),
-      (set_visitor, 67, "trp_courtier_female"),
-      (set_visitor, 68, "trp_courtier"),
-      (set_visitor, 69, "trp_courtier_female"),
 
       (faction_get_slot, ":guard_troop", "$players_kingdom", slot_faction_guard_troop),
       (set_visitor, 6, ":guard_troop"),
@@ -60424,13 +60280,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
         (set_visitor, 61, "trp_circus_1"),
         (set_visitor, 62, "trp_circus_2"),
         (set_visitor, 63, "trp_circus_3"),
-
-        (set_visitor, 64, "trp_orgie_male1_kissing"),#trp_orgie_male1_kissing
-        (set_visitor, 65, "trp_orgie_fem_kissing"),#trp_orgie_fem_kissing
-        (set_visitor, 66, "trp_orgie_male1_kissing"),#trp_orgie_male1_kissing
-        (set_visitor, 67, "trp_orgie_fem_kissing"),#trp_orgie_fem_kissing
-        (set_visitor, 68, "trp_orgie_male1_kissing"),#trp_orgie_male1_kissing
-        (set_visitor, 69, "trp_orgie_fem_kissing"),#trp_orgie_fem_kissing
 
         (set_visitor, 70, "trp_dancer1"),
         (set_visitor, 71, "trp_kingdom_7_lord"),

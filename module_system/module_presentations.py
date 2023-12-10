@@ -19812,7 +19812,7 @@ presentations = [
     (overlay_set_val, "$g_presentation_obj_19", "$dead_effect_on_ally"),
 
     ##slider
-    (create_text_overlay, reg1, "@Fieldbattle reinforcement waves", 0),
+    (create_text_overlay, reg1, "@Battle reinforcement waves", 0),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos2, 900),
     (position_set_y, pos2, 900),
@@ -19939,9 +19939,9 @@ presentations = [
       (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_admin_panel_8"),
       (eq, ":object", "$g_presentation_obj_admin_panel_8"),
       (assign, reg0, "$defender_threshold"),
-      (str_store_string,s2,"@Number of reinforcement waves during fieldbattles: {reg0}"),
+      (str_store_string,s2,"@Number of reinforcement waves during battles (not sieges): {reg0}"),
       (str_store_string,s3,"@Tweak"),
-      (str_store_string,s4,"@Sets the number of reinforcement waves during field battles."),
+      (str_store_string,s4,"@Sets the number of reinforcement waves during field battles (not sieges)."),
     (else_try),
       (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_32"),
       (eq, ":object", "$g_presentation_obj_32"),

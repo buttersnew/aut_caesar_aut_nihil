@@ -120,6 +120,7 @@ slot_agent_has_commented            = 29# used for lords commenting on player
 
 slot_agent_is_poisoned              = slot_agent_has_commented
 
+slot_agent_is_blocked               = 30
 
 ########################################################
 ##  FACTION SLOTS          #############################
@@ -4061,3 +4062,17 @@ location_hall = 1
 location_center = 2
 location_center_backstreets = 3
 location_barracks = 4
+
+all_types   = 0
+white       = 1
+brown       = 2
+black       = 3
+
+white_faces_begin = "str_female_white_face_1"
+white_faces_end   = "str_female_brown_face_1"
+
+brown_faces_begin   = "str_female_brown_face_1"
+brown_faces_end     = "str_female_black_face_1"
+
+black_faces_begin   = "str_female_black_face_1"
+black_faces_end     = "str_female_faces_end"

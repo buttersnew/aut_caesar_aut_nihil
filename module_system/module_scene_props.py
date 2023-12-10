@@ -3323,4 +3323,12 @@ scene_props = [
       (call_script, "script_change_player_relation_with_troop", "trp_mathildiz", 10),
     ])
   ]),
+
+  ("z_entry_courtier",	sokf_invisible,"entry_courtier","0",[(ti_on_init_scene_prop,[(call_script,"script_cf_prop_spawn_agent")])]),
+  ("z_entry_courtier_female",	sokf_invisible,"entry_courtier","0",[(ti_on_init_scene_prop,[(call_script,"script_cf_prop_spawn_agent")])]),
+  ("z_entry_dancer_female",	sokf_invisible,"entry_dancer","0",[(ti_on_init_scene_prop,[(call_script,"script_cf_prop_spawn_agent")])]),
+  ("z_entry_female_kissing",	sokf_invisible,"entry_kissing","0",[(ti_on_init_scene_prop,[(call_script,"script_cf_prop_spawn_agent")])]),
+  ("z_entry_male_kissing",	sokf_invisible,"entry_kissing","0",[(ti_on_init_scene_prop,[(call_script,"script_cf_prop_spawn_agent")])]),
+  ("z_entry_courtier_female_lie",	sokf_invisible,"entry_courtier","0",[(ti_on_init_scene_prop,[(call_script,"script_cf_prop_spawn_agent")])]),
+
 ]

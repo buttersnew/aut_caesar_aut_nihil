@@ -5144,15 +5144,6 @@ attrib_level_23,wp(20),knows_inventory_management_10,roman_face1, roman_face2],
 ["dancer1","Dancer","Dancers",tf_female|tf_guarantee_armor|tf_guarantee_boots,0,0,fac_commoners,
 [itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,dancer_face_african1,dancer_face_african2],
 
-["dancer2","Dancer","Dancers",tf_female|tf_guarantee_armor|tf_guarantee_boots,0,0,fac_commoners,
-[itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,dancer_face1,dancer_face2],
-
-["dancer3","Dancer","Dancers",tf_female|tf_guarantee_armor|tf_guarantee_boots,0,0,fac_commoners,
-[itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,dancer_face_eastern1,dancer_face_eastern2],
-
-["dancer4","Dancer","Dancers",tf_female|tf_guarantee_armor|tf_guarantee_boots,0,0,fac_commoners,
-[itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,dancer_face1,dancer_face2],
-
 ["orgie_male1_kissing","Noble","Noble",tf_male|tf_guarantee_armor|tf_guarantee_boots,0,0,fac_commoners,
 [itm_sarranid_cloth_robe_fancy_1,itm_sarranid_cloth_robe_fancy_2,itm_sarranid_cloth_robe_fancy_3,itm_caligea],def_attrib|level(5),wp(30),knows_common|knows_riding_2,white_face_11,white_face_12],
 

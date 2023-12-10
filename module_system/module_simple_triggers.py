@@ -7437,7 +7437,7 @@ simple_triggers = [
                 (assign, ":chosen_lord", ":troop_no"),
             (try_end),
         (try_end),
-  #search is done
+        #search is done
         (try_begin),
             #no lord found
             (eq, ":chosen_lord", -1),
