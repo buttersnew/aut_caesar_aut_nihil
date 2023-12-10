@@ -31848,8 +31848,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (modify_visitors_at_site,"scn_imperial_dinning_room"),
       (reset_visitors, 0),
       (str_store_string, s68, "str_female_white_face_2"),
-      (troop_set_face_keys, ":troop", s68, 0),
-      (troop_set_face_keys, ":troop", s68, 1),
+      (troop_set_face_keys, "trp_courtier_female", s68, 0),
+      (troop_set_face_keys, "trp_courtier_female", s68, 1),
       (set_visitor, 10, "trp_courtier_female"),#acte
       (set_visitor, 36, "trp_player"),
       (set_visitor, 39, "trp_quest_primus_pilus"),#soldier
