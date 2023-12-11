@@ -3,6 +3,7 @@ from IDs.ID_quests import *
 from IDs.ID_factions import *
 from IDs.ID_parties import *
 from IDs.ID_troops import *
+from IDs.ID_strings import *
 
 #from compiler import *
 ##############################################################
@@ -4068,11 +4069,11 @@ white       = 1
 brown       = 2
 black       = 3
 
-white_faces_begin = "str_female_white_face_1"
-white_faces_end   = "str_female_brown_face_1"
+white_faces_begin = str_female_white_face_1
+white_faces_end   = str_female_white_face_end + 1
 
-brown_faces_begin   = "str_female_brown_face_1"
-brown_faces_end     = "str_female_black_face_1"
+brown_faces_begin   = str_female_brown_face_1
+brown_faces_end     = str_female_brown_face_end + 1
 
-black_faces_begin   = "str_female_black_face_1"
-black_faces_end     = "str_female_faces_end"
+black_faces_begin   = str_female_black_face_1
+black_faces_end     = str_female_black_face_end + 1
