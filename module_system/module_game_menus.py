@@ -24283,22 +24283,20 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("notification_troop_joined_players_faction",0,
-    "Good news!^^ {s1} has left {s2} and joined {s3}.",
-    "none",
-    [
-      (str_store_troop_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-      (str_store_faction_name, s3, "$players_kingdom"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 55),
-      (position_set_y, pos0, 20),
-      (position_set_z, pos0, 100),
-      (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("continue",[],"Continue...",
-       [(change_screen_return),
-        ]),
+  "Good news!^^ {s1} has left {s2} and joined {s3}.",
+  "none",[
+    (str_store_troop_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+    (str_store_faction_name, s3, "$players_kingdom"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 55),
+    (position_set_y, pos0, 20),
+    (position_set_z, pos0, 100),
+    (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", "$g_notification_menu_var1", pos0),
+  ],[
+    ("continue",[],"Continue...",[
+      (change_screen_return),
+    ]),
 ]),
 
 # for main story: if parthia or armenia declare war on player Rome
@@ -24901,18 +24899,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (display_message, "str_quest_updated"),
             (add_quest_note_from_sreg, "qst_four_emperors", 4, "@You defeated the Jewish revolt. Report back to {s42} as fast as possible.", 1),
             (add_xp_as_reward, 2000),
-        (try_end),
-    (try_end),
-
-    (try_begin),
-        (faction_slot_eq, "$g_notification_menu_var1", slot_faction_culture, "fac_culture_7"),
-        (try_for_range, ":troop", active_npcs_begin, active_npcs_end),
-            (troop_slot_eq, ":troop", slot_troop_occupation, slto_kingdom_hero),
-            (store_faction_of_troop, ":faction", ":troop"),
-            (eq, ":faction", "$g_notification_menu_var1"),
-            (call_script, "script_cf_get_random_active_faction_except_player_faction_and_faction", ":faction"),
-            (is_between, reg0, kingdoms_begin, kingdoms_end),
-            (troop_set_slot, ":troop", slot_troop_change_to_faction, reg0),
         (try_end),
     (try_end),
   ],[
@@ -25777,8 +25763,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 ("notification_player_faction_province_appointed",0,
     "The governorship of {s10} has been awared to you by {s22}. If you accept you will take over ownership of {s11} and all other settlements of the province. You may decline the honor, but it will probably mean that you will not receive other awards for a while and it will upset {s22}.^^{s21}",
-    "none",
-    [
+    "none",[
       (call_script, "script_write_economic_info_to_s0", "$g_notification_menu_var2", 0),
       (str_store_string_reg, s21, s0),
 
@@ -25894,24 +25879,18 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     [(change_screen_map)]),
 ]),
 
-  (
-    "notification_player_senatorial_province_expires",0,
-    "Your governorship of {s10} has expired and the senate appointed a new governor.",
-    "none",
-    [
+("notification_player_senatorial_province_expires",0,
+  "Your governorship of {s10} has expired and the senate appointed a new governor.",
+  "none",[
     (store_add, ":string", "$g_notification_menu_var2", str_province_begin),
     (str_store_string, s10, ":string"),
-    ],
-    [
-   ("decline",
-   [],"Continue.",
-   [
+  ],[
+  ("decline",[],"Continue.",[
     (assign, "$g_dont_give_fief_to_player_days", 45),#player has not refused a honour previously
     (call_script, "script_change_troop_renown", "trp_player", 15),
     (change_screen_map),
-    ]),
-    ]
-  ),
+  ]),
+]),
 
   (
     "notification_player_faction_fief_appointed",0,

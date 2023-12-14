@@ -2060,10 +2060,6 @@ simple_triggers = [
             (neg|troop_slot_eq, ":troop_no", slot_troop_spouse, ":faction_leader"),
             (neg|troop_slot_eq, ":faction_leader", slot_troop_spouse, ":troop_no"),
 
-            #I don't know why these are necessary, but they appear to be
-            (neg|is_between, ":troop_no", "trp_kingdom_1_lord", "trp_knight_1_1"),
-            # (neg|is_between, ":troop_no", pretenders_begin, pretenders_end),
-
             (assign, ":num_centers", 0),
             (try_for_range,":cur_center", walled_centers_begin, walled_centers_end),
                 (store_faction_of_party, ":faction_of_center", ":cur_center"),
@@ -2111,18 +2107,12 @@ simple_triggers = [
                 (neq, ":who_moves_first", 0),
                 (lt, ":random", 5),
                 (neq, ":troop_no", "trp_player"),
-                #do a defection
-                (try_begin),
-                    (neq, ":num_centers", 0),
-                    #Note that I assign the troop number instead of 1 as is done in Native
-                    (assign, "$g_give_advantage_to_original_faction", ":troop_no"),
-                (try_end),
-                #(assign, "$g_give_advantage_to_original_faction", 1),
+
 
                 (store_faction_of_troop, ":orig_faction", ":troop_no"),
                 (call_script, "script_lord_find_alternative_faction", ":troop_no"),
                 (assign, ":new_faction", reg0),
-                (assign, "$g_give_advantage_to_original_faction", 0),
+
                 (try_begin),
                     (neq, ":new_faction", ":orig_faction"),
                     (is_between, ":new_faction", kingdoms_begin, kingdoms_end),
@@ -3475,18 +3465,40 @@ simple_triggers = [
             (troop_get_slot, ":party_no", ":troop_no", slot_troop_leaded_party),
             (call_script, "script_party_set_ai_state", ":party_no", spai_holding_center, ":center_no"),
         (else_try),
-            (neg|faction_slot_eq, ":cur_faction", slot_faction_state, sfs_active),
+            # (neg|faction_slot_eq, ":cur_faction", slot_faction_state, sfs_active),
+            (faction_slot_eq, ":cur_faction", slot_faction_num_castles, 0),
+            (faction_slot_eq, ":cur_faction", slot_faction_num_towns, 0),
+
+            (str_store_troop_name_link, s10, ":troop_no"),
+            (display_log_message, "@Check lord change {s10}"),
+
             (troop_get_slot, reg0, ":troop_no", slot_troop_change_to_faction),
             (neg|is_between, reg0, kingdoms_begin, kingdoms_end),
             (try_begin),
                 (is_between, ":troop_no", kings_begin, kings_end),
                 (troop_set_slot, ":troop_no", slot_troop_change_to_faction, "fac_commoners"),
             (else_try),
-                (store_random_in_range, ":random_no", 0, 100),
-                (lt, ":random_no", 10),
-                (call_script, "script_cf_get_random_active_faction_except_player_faction_and_faction", ":cur_faction"),
+                (troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_8"), # judean rebels
+                (troop_set_slot, ":troop_no", slot_troop_change_to_faction, "fac_outlaws"),
+            (else_try),
+                (faction_slot_eq, ":cur_faction", slot_faction_leader, ":troop_no"),
+                (this_or_next|eq, ":troop_no", "trp_statthalter_9"),
+                (this_or_next|eq, ":troop_no", "trp_senator_2"),
+                (this_or_next|eq, ":troop_no", "trp_senator_1"),
+                (eq, ":troop_no", "trp_legatus_11"),
+
+                (str_store_troop_name_link, s10, ":troop_no"),
+                (display_log_message, "@Facing total defeat, {s10} committed suicide."),
+
+                (call_script, "script_kill_lord_lady", ":troop_no", ":troop_no", 0),
+            (else_try),
+                # (store_random_in_range, ":random_no", 0, 100),
+                # (lt, ":random_no", 10),
+                (call_script, "script_lord_find_alternative_faction", ":troop_no"),
                 (is_between, reg0, kingdoms_begin, kingdoms_end),
                 (troop_set_slot, ":troop_no", slot_troop_change_to_faction, reg0),
+                (str_store_faction_name_link, s10, reg0),
+                (display_log_message, "@change to {s10}"),
             (try_end),
         (try_end),
     (try_end),
