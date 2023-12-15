@@ -3815,6 +3815,17 @@ game_menus = [
     ]),
 
     ("options",[
+      (faction_slot_eq, "fac_kingdom_25", slot_faction_state, sfs_active),
+      (ge, "$cheat_mode", 1),
+    ],"CONQUER JUDEA BY VESPASIAN.",[
+      (try_for_range, ":center", walled_centers_begin, walled_centers_end),
+          (store_faction_of_party, ":fac", ":center"),
+          (eq, ":fac", "fac_kingdom_17"),
+          (call_script, "script_give_center_to_faction", ":center", "fac_kingdom_25"),
+      (try_end),
+    ]),
+
+    ("options",[
       (ge, "$cheat_mode", 1),
     ],"MORE CHEATS.",[
       (jump_to_menu, "mnu_cheat_menu2"),
@@ -11914,15 +11925,13 @@ game_menus = [
   ),
 
   ###siege warfare chief cambia
-  (
-    "castle_taken",mnf_disable_all_keys,
-    "The battle for {s60} is almost over. Your troops are eager to start plundering the {reg2?town:fort}. {s10}^" +
-    "You may decide to forbid your troops to harm the {reg2?town:fort} if you want to conquer it for your faction, but your troops may lose morale. " +
-    "You can allow some plundering and keep the {reg2?town:fort}, or you may want to just fill your purse a bit and leave the plundered place for the enemy. " +
-    "Finally, you could also decide to devastate the place completely in order to gain as much loot as possible, " +
-    "enslave the inhabitants, and make it worthless for its owner.",
-    "none",
-    [
+("castle_taken",mnf_disable_all_keys,
+  "The battle for {s60} is almost over. Your troops are eager to start plundering the {reg2?town:fort}. {s10}^" +
+  "You may decide to forbid your troops to harm the {reg2?town:fort} if you want to conquer it for your faction, but your troops may lose morale. " +
+  "You can allow some plundering and keep the {reg2?town:fort}, or you may want to just fill your purse a bit and leave the plundered place for the enemy. " +
+  "Finally, you could also decide to devastate the place completely in order to gain as much loot as possible, " +
+  "enslave the inhabitants, and make it worthless for its owner.",
+  "none",[
     (play_sound, "snd_cow_moo"), #ambient sound chief
     (set_background_mesh, "mesh_pic_victory"),
     (str_store_party_name, s60, "$g_encountered_party"),
@@ -11956,152 +11965,134 @@ game_menus = [
         (party_set_slot,"$g_encountered_party",slot_center_latrines,0),
         (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
 
-          (assign, "$g_siege_saneamiento", 0),
-          (assign, "$g_traicion_interna", 0),
-          (assign, "$g_infiltracion_interna", 0),
-          (assign, "$g_campos_cercanos", 0),
-          (assign, "$g_listos_para_asalto", 0),
-          (assign, "$g_mantlets_1", 0),
-          (assign, "$g_cabezas_dentro", 0), #event
-          (assign, "$g_siege_method", 0),
-          (assign, "$g_siege_sallied_out_once", 0),
-          (assign, "$g_days_spent_starving", 0), #siege warfare, important, we use this in dialogs
-          (assign, "$g_next_sally_at", 0), #sally more common siege warfare chief
-          #siege warfare acaba
+        (assign, "$g_siege_saneamiento", 0),
+        (assign, "$g_traicion_interna", 0),
+        (assign, "$g_infiltracion_interna", 0),
+        (assign, "$g_campos_cercanos", 0),
+        (assign, "$g_listos_para_asalto", 0),
+        (assign, "$g_mantlets_1", 0),
+        (assign, "$g_cabezas_dentro", 0), #event
+        (assign, "$g_siege_method", 0),
+        (assign, "$g_siege_sallied_out_once", 0),
+        (assign, "$g_days_spent_starving", 0), #siege warfare, important, we use this in dialogs
+        (assign, "$g_next_sally_at", 0), #sally more common siege warfare chief
+        #siege warfare acaba
 
-          #new:
-          (assign, "$plunder_battle_shown", 0),
-          (assign, "$capture_screen_shown", 0),
-          (assign, "$loot_screen_shown", 0),
-          # SETUP MORALE IMPACT
-          # JuJu70
-          (try_begin),
-            (assign, ":num_bmen", 0),
-            (assign, ":num_cmen", 0),
-            (assign, ":num_pmen", 0),
-            (party_get_num_companion_stacks, ":num_stacks","p_main_party"),
-            (try_for_range, ":i_stack", 0, ":num_stacks"),
-              (party_stack_get_size, ":stack_size","p_main_party",":i_stack"),
-              (party_stack_get_troop_id, ":stack_troop","p_main_party",":i_stack"),
-              (try_begin),#peasants not
-                (this_or_next|is_between, ":stack_troop", "trp_sarmatian_peasant", "trp_watchman"),
-                (is_between, ":stack_troop", "trp_follower_woman", "trp_kidnapped_girl"),
-                (val_add, ":num_cmen", ":stack_size"),
-              (else_try),##soldiers like looting
-                (this_or_next|is_between, ":stack_troop", "trp_mercenaries_end", "trp_sarranid_horseman"),
-                (is_between, ":stack_troop", "trp_watchman", "trp_mercenaries_end"),
-                (val_add, ":num_pmen", ":stack_size"),
-              (else_try),#bandits too
-                (is_between, ":stack_troop", bandits_begin, bandits_end),
-                (val_add, ":num_bmen", ":stack_size"),
-              (try_end),
-            (try_end),
-            (store_party_size_wo_prisoners, ":num_men", "p_main_party"),
-            # depending on the situation the player come to this menu with loot_option = -1 or he has already decided in a dialogue
-            (try_begin),
-              (eq, "$loot_option", 0),
-              (val_mul, ":num_bmen", 4),
-              (val_mul, ":num_pmen", 3),
-              (val_mul, ":num_cmen", -1),
-              (store_add, ":weighted", ":num_bmen", ":num_pmen"),
-              (val_add, ":weighted", ":num_cmen"),
-              (val_mul, ":weighted", -10),
-              (val_div, ":weighted", ":num_men"),
-              (call_script, "script_change_player_honor", 5),
-              (call_script, "script_change_player_party_morale", ":weighted"),
-              (jump_to_menu, "mnu_castle_taken_native"),
-            (else_try),
-              (eq, "$loot_option", 1),
-              (val_mul, ":num_bmen", 3),
-              (val_mul, ":num_pmen", 3),
-              (val_mul, ":num_cmen", -2),
-              (store_add, ":weighted", ":num_bmen", ":num_cmen"),
-              (val_add, ":weighted", ":num_pmen"),
-              (val_mul, ":weighted", 5),
-              (val_div, ":weighted", ":num_men"),
-              (call_script, "script_change_player_honor", -5),
-              (call_script, "script_change_player_party_morale", ":weighted"),
-              (call_script, "script_change_troop_renown", "trp_player", 2),
-              #(call_script, "script_destroy_center", "$g_encountered_party"),
-              (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -30), #center hate to player
-              (call_script, "script_objectionable_action", tmt_humanitarian, "str_loot_village"), # companion comment
-              (jump_to_menu, "mnu_castle_taken_plunder"),
-            (else_try),
-              (eq, "$loot_option", 2),	#(Scorched earth policy)
-              (val_mul, ":num_bmen", 5),
-              (val_mul, ":num_pmen", 4),
-              (val_mul, ":num_cmen", -4),
-              (store_add, ":weighted", ":num_bmen", ":num_cmen"),
-              (val_add, ":weighted", ":num_pmen"),
-              (val_mul, ":weighted", 5),
-              (val_div, ":weighted", ":num_men"),
-              (call_script, "script_change_player_honor", -15),
-              (call_script, "script_change_player_party_morale", ":weighted"),
-              (call_script, "script_change_troop_renown", "trp_player", 7),
-              (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -60), #center hate to player
-             # (call_script, "script_destroy_center", "$g_encountered_party"), #destroy the center
-              (call_script, "script_objectionable_action", tmt_humanitarian, "str_sell_slavery"), # companion comment
-              (jump_to_menu, "mnu_castle_taken_plunder"),
-            (else_try),
-              (eq, "$loot_option", 3),
-              (val_mul, ":num_bmen", 3),
-              (val_mul, ":num_pmen", 3),
-              (val_mul, ":num_cmen", -1),
-              (store_add, ":weighted", ":num_bmen", ":num_cmen"),
-              (val_add, ":weighted", ":num_pmen"),
-              (val_mul, ":weighted", 5),
-              (val_div, ":weighted", ":num_men"),
-              (call_script, "script_change_player_honor", -3),
-              (call_script, "script_change_player_party_morale", ":weighted"),
-              (call_script, "script_change_troop_renown", "trp_player", 5),
-
-              (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -20), #center hate to player
-             # (call_script, "script_destroy_center", "$g_encountered_party"),
-              (call_script, "script_objectionable_action", tmt_humanitarian, "str_loot_village"), # companion comment
-              (jump_to_menu, "mnu_castle_taken_keepplunder"),
+        #new:
+        (assign, "$plunder_battle_shown", 0),
+        (assign, "$capture_screen_shown", 0),
+        (assign, "$loot_screen_shown", 0),
+        # SETUP MORALE IMPACT
+        # JuJu70
+        (try_begin),
+          (assign, ":num_bmen", 0),
+          (assign, ":num_cmen", 0),
+          (assign, ":num_pmen", 0),
+          (party_get_num_companion_stacks, ":num_stacks","p_main_party"),
+          (try_for_range, ":i_stack", 0, ":num_stacks"),
+            (party_stack_get_size, ":stack_size","p_main_party",":i_stack"),
+            (party_stack_get_troop_id, ":stack_troop","p_main_party",":i_stack"),
+            (try_begin),#peasants not
+              (this_or_next|is_between, ":stack_troop", "trp_sarmatian_peasant", "trp_watchman"),
+              (is_between, ":stack_troop", "trp_follower_woman", "trp_kidnapped_girl"),
+              (val_add, ":num_cmen", ":stack_size"),
+            (else_try),##soldiers like looting
+              (this_or_next|is_between, ":stack_troop", "trp_mercenaries_end", "trp_sarranid_horseman"),
+              (is_between, ":stack_troop", "trp_watchman", "trp_mercenaries_end"),
+              (val_add, ":num_pmen", ":stack_size"),
+            (else_try),#bandits too
+              (is_between, ":stack_troop", bandits_begin, bandits_end),
+              (val_add, ":num_bmen", ":stack_size"),
             (try_end),
           (try_end),
-      (try_end),
-    ],
-    [
+          (store_party_size_wo_prisoners, ":num_men", "p_main_party"),
+          # depending on the situation the player come to this menu with loot_option = -1 or he has already decided in a dialogue
+          (try_begin),
+            (eq, "$loot_option", 0),
+            (val_mul, ":num_bmen", 4),
+            (val_mul, ":num_pmen", 3),
+            (val_mul, ":num_cmen", -1),
+            (store_add, ":weighted", ":num_bmen", ":num_pmen"),
+            (val_add, ":weighted", ":num_cmen"),
+            (val_mul, ":weighted", -10),
+            (val_div, ":weighted", ":num_men"),
+            (call_script, "script_change_player_honor", 5),
+            (call_script, "script_change_player_party_morale", ":weighted"),
+            (jump_to_menu, "mnu_castle_taken_native"),
+          (else_try),
+            (eq, "$loot_option", 1),
+            (val_mul, ":num_bmen", 3),
+            (val_mul, ":num_pmen", 3),
+            (val_mul, ":num_cmen", -2),
+            (store_add, ":weighted", ":num_bmen", ":num_cmen"),
+            (val_add, ":weighted", ":num_pmen"),
+            (val_mul, ":weighted", 5),
+            (val_div, ":weighted", ":num_men"),
+            (call_script, "script_change_player_honor", -5),
+            (call_script, "script_change_player_party_morale", ":weighted"),
+            (call_script, "script_change_troop_renown", "trp_player", 2),
+            #(call_script, "script_destroy_center", "$g_encountered_party"),
+            (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -30), #center hate to player
+            (call_script, "script_objectionable_action", tmt_humanitarian, "str_loot_village"), # companion comment
+            (jump_to_menu, "mnu_castle_taken_plunder"),
+          (else_try),
+            (eq, "$loot_option", 2),	#(Scorched earth policy)
+            (val_mul, ":num_bmen", 5),
+            (val_mul, ":num_pmen", 4),
+            (val_mul, ":num_cmen", -4),
+            (store_add, ":weighted", ":num_bmen", ":num_cmen"),
+            (val_add, ":weighted", ":num_pmen"),
+            (val_mul, ":weighted", 5),
+            (val_div, ":weighted", ":num_men"),
+            (call_script, "script_change_player_honor", -15),
+            (call_script, "script_change_player_party_morale", ":weighted"),
+            (call_script, "script_change_troop_renown", "trp_player", 7),
+            (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -60), #center hate to player
+            # (call_script, "script_destroy_center", "$g_encountered_party"), #destroy the center
+            (call_script, "script_objectionable_action", tmt_humanitarian, "str_sell_slavery"), # companion comment
+            (jump_to_menu, "mnu_castle_taken_plunder"),
+          (else_try),
+            (eq, "$loot_option", 3),
+            (val_mul, ":num_bmen", 3),
+            (val_mul, ":num_pmen", 3),
+            (val_mul, ":num_cmen", -1),
+            (store_add, ":weighted", ":num_bmen", ":num_cmen"),
+            (val_add, ":weighted", ":num_pmen"),
+            (val_mul, ":weighted", 5),
+            (val_div, ":weighted", ":num_men"),
+            (call_script, "script_change_player_honor", -3),
+            (call_script, "script_change_player_party_morale", ":weighted"),
+            (call_script, "script_change_troop_renown", "trp_player", 5),
 
-      ("saqueo_noallowed",[
-        ],
-        "Conquer the {reg2?town:fort}, but forbid plundering.",
-        [
-        (assign, "$loot_option", 0),
-        (assign, "$g_loot_decide", 1),
-        (jump_to_menu, "mnu_castle_taken"),
-
-      ]),
-
-      ("keep_plunder",[
-        ],
-        "Conquer and plunder the {reg2?town:fort}.",
-        [
-        (assign, "$loot_option", 3),
-        (assign, "$g_loot_decide", 1),
-        (jump_to_menu, "mnu_castle_taken"),
-      ]),
-
-      ("saqueo_normal",[],
-        "Plunder the {reg2?town:fort} and leave.",
-        [
-        (assign, "$g_loot_decide", 1),
-        (assign, "$loot_option", 1),
-        (jump_to_menu, "mnu_castle_taken"),
-      ]),
-
-      ("saqueo_total",[],
-        "Devastate the place and leave.",
-        [
-        (assign, "$g_loot_decide", 1),
-        (assign, "$loot_option", 2),
-        (jump_to_menu, "mnu_castle_taken"),
-      ]),
-
-    ],
-  ),
+            (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -20), #center hate to player
+            # (call_script, "script_destroy_center", "$g_encountered_party"),
+            (call_script, "script_objectionable_action", tmt_humanitarian, "str_loot_village"), # companion comment
+            (jump_to_menu, "mnu_castle_taken_keepplunder"),
+          (try_end),
+        (try_end),
+    (try_end),
+  ],[
+  ("saqueo_noallowed",[],"Conquer the {reg2?town:fort}, but forbid plundering.",[
+    (assign, "$loot_option", 0),
+    (assign, "$g_loot_decide", 1),
+    (jump_to_menu, "mnu_castle_taken"),
+  ]),
+  ("keep_plunder",[],"Conquer and plunder the {reg2?town:fort}.",[
+    (assign, "$loot_option", 3),
+    (assign, "$g_loot_decide", 1),
+    (jump_to_menu, "mnu_castle_taken"),
+  ]),
+  ("saqueo_normal",[],"Plunder the {reg2?town:fort} and leave.",[
+    (assign, "$g_loot_decide", 1),
+    (assign, "$loot_option", 1),
+    (jump_to_menu, "mnu_castle_taken"),
+  ]),
+  ("saqueo_total",[],"Devastate the place and leave.",[
+    (assign, "$g_loot_decide", 1),
+    (assign, "$loot_option", 2),
+    (jump_to_menu, "mnu_castle_taken"),
+  ]),
+],),
 
   (
     "castle_taken_plunder",mnf_disable_all_keys,
@@ -12432,12 +12423,10 @@ game_menus = [
     ],
   ),
 
-  (
-    "castle_taken_native",mnf_disable_all_keys,
-    "{s3} has fallen to your troops, and you now have full control of the {reg2?town:fort}. " +
-    "{reg1? You may station troops here to defend it against enemies who may try to recapture it. Also, you should select now whether you will hold the {reg2?town:fortress} yourself or give it to a faithful vassal...:}",# Only visible when castle is taken without being a vassal of a kingdom.
-    "none",
-    [
+("castle_taken_native",mnf_disable_all_keys,
+  "{s3} has fallen to your troops, and you now have full control of the {reg2?town:fort}. " +
+  "{reg1? You may station troops here to defend it against enemies who may try to recapture it. Also, you should select now whether you will hold the {reg2?town:fortress} yourself or give it to a faithful vassal...:}",# Only visible when castle is taken without being a vassal of a kingdom.
+  "none",[
     (set_background_mesh, "mesh_pic_victory"),
     (party_clear, "$g_encountered_party"),
 
@@ -12492,24 +12481,19 @@ game_menus = [
         (is_between, "$g_encountered_party", towns_begin, towns_end),
         (assign, reg2, 1),
     (try_end),
-    ],
-    [
+  ],[
+  ("continue",[],"Continue...",[
+    (assign, "$auto_enter_town", "$g_encountered_party"),
+    #(change_screen_return),
+    (change_screen_map),
+  ]),
+]),
 
-      ("continue",[],"Continue...",
-        [
-          (assign, "$auto_enter_town", "$g_encountered_party"),
-          #(change_screen_return),
-          (change_screen_map),
-      ]),
-    ],
-  ),
-  ####
-  (
-    "castle_taken_keepplunder",mnf_disable_all_keys,
-    "{s3} has fallen to your troops, and you now have full control of the {reg2?town:fort}. Your troops run through the streets getting as much stuff as they can carry. The {reg2?town:fort} is plundered. You have collected {reg7} denars. " +
-    "{reg1? You may station troops here to defend it against enemies who may try to recapture it. Also, you should select now whether you will hold the {reg2?town:fortress} yourself or give it to a faithful vassal...:}",# Only visible when castle is taken without being a vassal of a kingdom.
-    "none",
-    [
+####
+("castle_taken_keepplunder",mnf_disable_all_keys,
+  "{s3} has fallen to your troops, and you now have full control of the {reg2?town:fort}. Your troops run through the streets getting as much stuff as they can carry. The {reg2?town:fort} is plundered. You have collected {reg7} denars. " +
+  "{reg1? You may station troops here to defend it against enemies who may try to recapture it. Also, you should select now whether you will hold the {reg2?town:fortress} yourself or give it to a faithful vassal...:}",# Only visible when castle is taken without being a vassal of a kingdom.
+  "none",[
     (set_background_mesh, "mesh_pic_victory"),
     (troop_clear_inventory, "trp_temp_troop"),
     (try_begin),
@@ -12792,18 +12776,13 @@ game_menus = [
           (assign, reg2, 1),
         (try_end),
     (try_end),
-
-    ],
-    [
-
-      ("continue",[],"Continue...",
-        [
-          (assign, "$auto_enter_town", "$g_encountered_party"),
-          #       (change_screen_return),
-          (change_screen_map),
-      ]),
-    ],
-  ),
+  ],[
+  ("continue",[],"Continue...",[
+    (assign, "$auto_enter_town", "$g_encountered_party"),
+    #       (change_screen_return),
+    (change_screen_map),
+  ]),
+]),
 
 
   (

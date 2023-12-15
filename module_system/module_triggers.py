@@ -225,11 +225,11 @@ triggers = [
     (jump_to_menu, "mnu_freelancer_weekly_duty")
 ]),
 
-  (0, 0, 0, [
+(0, 0, 0, [
   (key_clicked, key_k),
   (check_quest_active, "qst_freelancing"),
   (party_is_active, "$enlisted_party"),
-  ], [
+], [
   (try_begin),
     (party_get_battle_opponent, ":commander_opponent", "$enlisted_party"),
     (lt, ":commander_opponent", 0),
@@ -240,13 +240,33 @@ triggers = [
   (else_try),
     (display_message, "@Not possible now."),
   (try_end),
-  ]),
+]),
+
+(0.0, 0, 24.0/number_of_factions,[
+],[
+    (store_random_in_range, ":kingdom_no", kingdoms_begin, kingdoms_end),
+    (try_begin),
+        (faction_slot_eq, ":kingdom_no", slot_faction_state, sfs_active),
+        (call_script, "script_faction_recalculate_strength", ":kingdom_no"),
+        (call_script, "script_evaluate_realm_stability", ":kingdom_no"),
+        (try_begin),
+            (ge, ":kingdom_no", npc_kingdoms_begin),
+            (faction_get_slot, ":faction_morale", ":kingdom_no",  slot_faction_morale_of_player_troops),
+            (store_sub, ":divisor", 140, "$player_right_to_rule"),
+            (val_div, ":divisor", 14),
+            (val_max, ":divisor", 1),
+            (store_div, ":faction_morale_div_10", ":faction_morale", ":divisor"), #10 is the base, down to 2 for 100 rtr
+            (val_sub, ":faction_morale", ":faction_morale_div_10"),
+            (faction_set_slot, ":kingdom_no",  slot_faction_morale_of_player_troops, ":faction_morale"),
+        (try_end),
+    (try_end),
+]),
 
 # Refresh Merchants
-  (0.0, 0, 168.0, [],
-  [
-    (call_script, "script_refresh_center_inventories"),
-                     ]),
+(0.0, 0, 168.0, [],
+[
+  (call_script, "script_refresh_center_inventories"),
+                    ]),
 
 # Refresh Armor sellers
   (0.0, 0, 168.0, [],

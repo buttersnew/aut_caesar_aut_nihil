@@ -242,26 +242,27 @@ simple_triggers = [
     (try_end),
 ]),
 
-(24.0/number_of_factions,
-[
-    (call_script, "script_execude_debug_message", 9),
-    (store_random_in_range, ":kingdom_no", kingdoms_begin, kingdoms_end),
-    (try_begin),
-        (faction_slot_eq, ":kingdom_no", slot_faction_state, sfs_active),
-        (call_script, "script_faction_recalculate_strength", ":kingdom_no"),
-        (call_script, "script_evaluate_realm_stability", ":kingdom_no"),
-        (try_begin),
-            (ge, ":kingdom_no", npc_kingdoms_begin),
-            (faction_get_slot, ":faction_morale", ":kingdom_no",  slot_faction_morale_of_player_troops),
-            (store_sub, ":divisor", 140, "$player_right_to_rule"),
-            (val_div, ":divisor", 14),
-            (val_max, ":divisor", 1),
-            (store_div, ":faction_morale_div_10", ":faction_morale", ":divisor"), #10 is the base, down to 2 for 100 rtr
-            (val_sub, ":faction_morale", ":faction_morale_div_10"),
-            (faction_set_slot, ":kingdom_no",  slot_faction_morale_of_player_troops, ":faction_morale"),
-        (try_end),
-    (try_end),
-]),
+# moved to triggers to have it triggered right away
+# (24.0/number_of_factions,
+# [
+#     (call_script, "script_execude_debug_message", 9),
+#     (store_random_in_range, ":kingdom_no", kingdoms_begin, kingdoms_end),
+#     (try_begin),
+#         (faction_slot_eq, ":kingdom_no", slot_faction_state, sfs_active),
+#         (call_script, "script_faction_recalculate_strength", ":kingdom_no"),
+#         (call_script, "script_evaluate_realm_stability", ":kingdom_no"),
+#         (try_begin),
+#             (ge, ":kingdom_no", npc_kingdoms_begin),
+#             (faction_get_slot, ":faction_morale", ":kingdom_no",  slot_faction_morale_of_player_troops),
+#             (store_sub, ":divisor", 140, "$player_right_to_rule"),
+#             (val_div, ":divisor", 14),
+#             (val_max, ":divisor", 1),
+#             (store_div, ":faction_morale_div_10", ":faction_morale", ":divisor"), #10 is the base, down to 2 for 100 rtr
+#             (val_sub, ":faction_morale", ":faction_morale_div_10"),
+#             (faction_set_slot, ":kingdom_no",  slot_faction_morale_of_player_troops, ":faction_morale"),
+#         (try_end),
+#     (try_end),
+# ]),
 
 (0.04,[
     (call_script, "script_execude_debug_message", 10),
@@ -3410,28 +3411,13 @@ simple_triggers = [
     (try_begin),
         ##diplomacy end+
         (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-
-        # (str_store_troop_name, s1, ":troop_no"),#why?
-
         (neg|troop_slot_ge, ":troop_no", slot_troop_prisoner_of_party, 0),
-        (neg|troop_slot_ge, ":troop_no", slot_troop_leaded_party, 1),
-
         (store_troop_faction, ":cur_faction", ":troop_no"),
         (try_begin),
-            # (eq, "$g_lord_can_spawn_out_center", 0),##lord cant spawn without centers is disabled
-            # (neg|faction_slot_ge, ":cur_faction", slot_faction_num_castles, 1), #no castles
-            # (neg|faction_slot_ge, ":cur_faction", slot_faction_num_towns, 1),   #no towns
-            # (faction_slot_eq, ":cur_faction", slot_faction_state, sfs_active),   #but is still active
-            # (try_begin),
-            # (ge, "$cheat_mode", 1),
-            # (str_store_faction_name, s55, ":cur_faction"),
-            # (str_store_troop_name, s54, ":troop_no"),
-            # (display_message, "@{s54} of {s55} can't spawn"),
-            # (try_end),
-            # (else_try),
             (this_or_next|eq, ":cur_faction", "fac_outlaws"), #Do nothing
             (eq, ":cur_faction", "fac_commoners"), #Do nothing
         (else_try),
+            (neg|troop_slot_ge, ":troop_no", slot_troop_leaded_party, 1),
             (try_begin),
                 (eq, "$cheat_mode", 2),
                 (str_store_troop_name, s4, ":troop_no"),
@@ -3465,9 +3451,20 @@ simple_triggers = [
             (troop_get_slot, ":party_no", ":troop_no", slot_troop_leaded_party),
             (call_script, "script_party_set_ai_state", ":party_no", spai_holding_center, ":center_no"),
         (else_try),
-            # (neg|faction_slot_eq, ":cur_faction", slot_faction_state, sfs_active),
-            (faction_slot_eq, ":cur_faction", slot_faction_num_castles, 0),
-            (faction_slot_eq, ":cur_faction", slot_faction_num_towns, 0),
+            (store_current_hours, ":hours"),
+            (gt, ":hours", 72),
+            (assign, ":c", 0),
+            (try_begin),
+                (ge, "$g_civil_war", 1),
+                (faction_slot_eq, ":cur_faction", slot_faction_culture, "fac_culture_7"),
+                (faction_slot_eq, ":cur_faction", slot_faction_num_castles, 0),
+                (faction_slot_eq, ":cur_faction", slot_faction_num_towns, 0),
+                (assign, ":c", 1),
+            (else_try),
+                (neg|faction_slot_eq, ":cur_faction", slot_faction_state, sfs_active),
+                (assign, ":c", 1),
+            (try_end),
+            (eq, ":c", 1),
 
             (str_store_troop_name_link, s10, ":troop_no"),
             (display_log_message, "@Check lord change {s10}"),
@@ -4821,9 +4818,9 @@ simple_triggers = [
     (try_end),
     (assign, ":num_active_factions", 0),
     (assign, ":num_roman_factions", 0),
-    (try_for_range, ":cur_party", walled_centers_begin, walled_centers_end),
-        ##(this_or_next|is_between, ":cur_party", walled_centers_begin, walled_centers_end),
-        #(party_slot_eq, ":cur_party", slot_party_type, spt_kingdom_hero_party),
+    (try_for_parties, ":cur_party"),
+        (this_or_next|is_between, ":cur_party", walled_centers_begin, walled_centers_end),
+        (party_slot_eq, ":cur_party", slot_party_type, spt_kingdom_hero_party),
         (store_faction_of_party, ":party_faction", ":cur_party"),
         (is_between, ":party_faction", kingdoms_begin, kingdoms_end),
         (faction_get_slot, ":kingdom_num_parties", ":party_faction", slot_faction_number_of_parties),
