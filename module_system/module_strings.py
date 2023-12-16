@@ -4880,6 +4880,8 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("i_am_staying_at_the_court", "I am staying at the court, attending Caesar's feasts and settling my business in {s27}."),
   ("i_am_completing_what_i_have_already_begun", "I am completing what I have already begun."),
   ("i_dont_even_have_a_home_to_which_to_return", "I don't even have a home to which to return."),
+  ("i_retreated_to_a_save_place_as_my_faction_is_defeated", "I retreated to {s11} as my faction is almost defeated."),
+  ("i_need_to_hide_and_reconsider_my_actions", "I will hide and consider my next actions. It my be time to find a new faction."),
   ("debug__s10_decides_s14_faction_ai_s15", "{!}DEBUG : {s10} decides: {s14} (faction AI: {s15})"),
   ("_i_am_acting_independently_because_no_marshal_is_appointed", " I am acting independently, because no marshal is appointed."),
   ("_i_am_acting_independently_because_our_marshal_is_currently_indisposed", " I am acting independently, because our marshal is currently indisposed."),

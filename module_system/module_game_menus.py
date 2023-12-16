@@ -3761,13 +3761,13 @@ game_menus = [
 
       (start_presentation, "prsnt_display_special_items"),
     ]),
-    ("camp_action",[
-      (ge, "$cheat_mode", 1)
-    ],"CHEAT add all legendary items.",[
-      (try_for_range, ":item", legendary_items_begin, legendary_items_end),
-          (troop_add_item, "trp_player", ":item", 0),
-      (try_end),
-    ]),
+    # ("camp_action",[
+    #   (ge, "$cheat_mode", 1)
+    # ],"CHEAT add all legendary items.",[
+    #   (try_for_range, ":item", legendary_items_begin, legendary_items_end),
+    #       (troop_add_item, "trp_player", ":item", 0),
+    #   (try_end),
+    # ]),
     # Original camp menus
     ("camp_action",[
       (ge, "$cheat_mode", 1)
@@ -3776,43 +3776,43 @@ game_menus = [
       (troop_set_slot, "trp_sporus", slot_troop_betrothed, 0),
       (change_screen_map),
     ]),
-    ("camp_action",[
-      (ge, "$cheat_mode", 1)
-    ],"Test marshal election.",[
-      (faction_set_slot, "fac_kingdom_7", slot_faction_political_issue, 1),
-      (call_script, "script_npc_decision_checklist_take_stand_on_issue", "trp_kingdom_7_lord"),
-      (change_screen_map),
-    ]),
-    ("camp_action",[
-      (ge, "$cheat_mode", 1)
-    ],"CHEAT skip wlod 1 and wlod 2.",[
-      (troop_set_slot, "trp_olivarius", slot_troop_met, 1),
-      (troop_set_slot, "trp_wlodowiecus", slot_troop_met, 1),
-      (troop_set_slot, "trp_hadrianus", slot_troop_met, 1),
-      (troop_set_slot, "trp_varus", slot_troop_met, 1),
-      (troop_set_slot, "trp_old_mercenary", slot_troop_met, 1),
-      (troop_set_slot, "trp_mancinellus", slot_troop_met, 1),
+    # ("camp_action",[
+    #   (ge, "$cheat_mode", 1)
+    # ],"Test marshal election.",[
+    #   (faction_set_slot, "fac_kingdom_7", slot_faction_political_issue, 1),
+    #   (call_script, "script_npc_decision_checklist_take_stand_on_issue", "trp_kingdom_7_lord"),
+    #   (change_screen_map),
+    # ]),
+    # ("camp_action",[
+    #   (ge, "$cheat_mode", 1)
+    # ],"CHEAT skip wlod 1 and wlod 2.",[
+    #   (troop_set_slot, "trp_olivarius", slot_troop_met, 1),
+    #   (troop_set_slot, "trp_wlodowiecus", slot_troop_met, 1),
+    #   (troop_set_slot, "trp_hadrianus", slot_troop_met, 1),
+    #   (troop_set_slot, "trp_varus", slot_troop_met, 1),
+    #   (troop_set_slot, "trp_old_mercenary", slot_troop_met, 1),
+    #   (troop_set_slot, "trp_mancinellus", slot_troop_met, 1),
 
-      (add_xp_as_reward, 10000000),
-      (call_script, "script_start_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
-      (quest_set_slot, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
-      (call_script, "script_end_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
-      (call_script, "script_start_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
-      (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 6),
-      (call_script, "script_end_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
-      (change_screen_map),
-    ]),
+    #   (add_xp_as_reward, 10000000),
+    #   (call_script, "script_start_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
+    #   (quest_set_slot, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
+    #   (call_script, "script_end_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
+    #   (call_script, "script_start_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
+    #   (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 6),
+    #   (call_script, "script_end_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
+    #   (change_screen_map),
+    # ]),
 
     ("camp_cheat",[
       (ge, "$cheat_mode", 1)
     ], "CHEATS!",[
       (jump_to_menu, "mnu_camp_cheat"),
     ]),
-    ("action_view_world_map",[
-      (ge, "$cheat_mode", 1),
-    ],"Change your culture",[
-      (jump_to_menu, "mnu_select_culture"),
-    ]),
+    # ("action_view_world_map",[
+    #   (ge, "$cheat_mode", 1),
+    # ],"Change your culture",[
+    #   (jump_to_menu, "mnu_select_culture"),
+    # ]),
 
     ("options",[
       (faction_slot_eq, "fac_kingdom_25", slot_faction_state, sfs_active),
@@ -3822,6 +3822,17 @@ game_menus = [
           (store_faction_of_party, ":fac", ":center"),
           (eq, ":fac", "fac_kingdom_17"),
           (call_script, "script_give_center_to_faction", ":center", "fac_kingdom_25"),
+      (try_end),
+    ]),
+
+    ("options",[
+      (faction_slot_eq, "fac_kingdom_27", slot_faction_state, sfs_active),
+      # (ge, "$cheat_mode", 1),
+    ],"CONQUER VITELLIUS MAN BA BY GALBA.",[
+      (try_for_range, ":center", walled_centers_begin, walled_centers_end),
+          (store_faction_of_party, ":fac", ":center"),
+          (eq, ":fac", "fac_kingdom_26"),
+          (call_script, "script_give_center_to_faction", ":center", "fac_kingdom_27"),
       (try_end),
     ]),
 

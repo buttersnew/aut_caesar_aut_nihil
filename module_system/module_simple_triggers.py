@@ -1888,18 +1888,9 @@ simple_triggers = [
 ]),
 
 # Decide vassal ai
-(7,[
+(6.6,[
     (call_script, "script_execude_debug_message", 38),
-    (call_script, "script_init_ai_calculation"),
-    #(call_script, "script_decide_kingdom_party_ais"),
-    ##diplomacy start+
-    #Also call script_calculate_troop_ai for kingdom ladies who have become slto_kingdom_heroes
-    #(try_for_range, ":troop_no", active_npcs_begin, active_npcs_end),
-    (try_for_range, ":troop_no", heroes_begin, heroes_end),
-        ##diplomacy end+
-        (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-        (call_script, "script_calculate_troop_ai", ":troop_no"),
-    (try_end),
+    # unused trigger
 ]),
 
 (24,[##reduce player controversy each day
@@ -3491,6 +3482,7 @@ simple_triggers = [
                 # (lt, ":random_no", 10),
                 (call_script, "script_lord_find_alternative_faction", ":troop_no"),
                 (is_between, reg0, kingdoms_begin, kingdoms_end),
+                (neq, reg0, ":cur_faction"),
                 (troop_set_slot, ":troop_no", slot_troop_change_to_faction, reg0),
                 (str_store_faction_name_link, s10, reg0),
                 (display_log_message, "@change to {s10}"),
@@ -12393,6 +12385,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 192),
     (try_for_range, ":slot", slot_legion_home_begin, slot_legion_home_end),
         (troop_get_slot, ":headquarter", "trp_province_array", ":slot"),
+
         (is_between, ":headquarter", walled_centers_begin, walled_centers_end),
         (store_faction_of_party, ":faction_hq", ":headquarter"),
 
@@ -12436,16 +12429,15 @@ simple_triggers = [
         #find new headquarter
         (call_script, "script_find_new_headquarter_for_legion", ":headquarter", ":faction", ":legion"),
         (assign, ":new_headquarter", reg0),
-        (troop_set_slot, "trp_province_array", ":slot", ":new_headquarter"),
 
         (is_between, ":new_headquarter", walled_centers_begin, walled_centers_end),
+        (troop_set_slot, "trp_province_array", ":slot", ":new_headquarter"),
         #give a proper message
         (str_store_party_name, s5, ":headquarter"),
         (str_store_party_name, s6, ":new_headquarter"),
         (store_add, ":string", ":legion", "str_lover_talk"),
         (str_store_string, s7, ":string"),
         (display_log_message, "@The headquarter of {s7} in {s5} has been captured. It's new headquarter is in {s6}."),
-
         #set banner too
         (call_script, "script_legion_hq_set_banner", ":new_headquarter", ":legion"),
     (try_end),
