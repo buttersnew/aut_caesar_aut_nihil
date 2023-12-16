@@ -56,7 +56,7 @@ party_templates = [
 ("taiga_bandits","Illyrian Rebels",icon_axeman|carries_goods(2),0,fac_taiga_bandits,bandit_personality,[(trp_taiga_bandit,14,58),(trp_illyrian_horseman, 3, 20), (trp_illyrian_infantry, 5, 50),]),
 ("desert_bandits","Arab Raiders",icon_khergit|carries_goods(30),0,fac_arabian_bandits,bandit_personality,[(trp_desert_bandit,14,68),(trp_arab_noble_cav, 5,20),]),
 ("forest_bandits","Iberian Rebels",icon_forest_bandit|carries_goods(2),0,fac_forest_bandits,bandit_personality,[(trp_forest_bandit,24,72), (trp_mercenary_horseman, 2, 30), (trp_hispanic_infantry, 2, 50), (trp_hispanic_heavy_infantry, 1, 30),]),
-("mountain_bandits","Judean Rebels",icon_mountain_bandit|carries_goods(2),0,fac_mountain_bandits,bandit_personality,[(trp_mountain_bandit,4,80),(trp_judean_light_spearman,0,20)]),
+("mountain_bandits","Judean Rebels",icon_mountain_bandit|carries_goods(2),0,fac_mountain_bandits,rebel_personality,[(trp_mountain_bandit,4,80),(trp_judean_light_spearman,0,20)]),
 ("sea_raiders","Sea Raiders",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,75),(trp_sailor,5,10)]),
 
 ("egyptian_rebels","Egyptian Rebels",icon_axeman|carries_goods(8),0,fac_egypt,bandit_personality,[(trp_egyptian_archers,15,40),(trp_egyptian_infantry_heavy,25,60),(trp_egyptian_infantry_light,25,60)]),

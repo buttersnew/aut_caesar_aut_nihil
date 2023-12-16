@@ -2997,7 +2997,7 @@ num_merchandise_goods = 40
 
 ##bandit spawn points, used for spawnung bandits randomly
 num_forest_bandit_spawn_points = 3
-num_mountain_bandit_spawn_points = 3
+
 num_steppe_bandit_spawn_points = 3
 num_taiga_bandit_spawn_points = 3
 num_desert_bandit_spawn_points = 3

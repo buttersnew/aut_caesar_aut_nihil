@@ -11737,6 +11737,7 @@ simple_triggers = [
                 (try_begin),
                     (eq, ":ai_bhvr", ai_bhvr_travel_to_party),
                     (set_fixed_point_multiplier, 1),
+                    (party_get_slot, ":spawn_point", ":party_no", slot_party_spawn_point),
                     (store_distance_to_party_from_party, ":distance", ":party_no", ":spawn_point"), #bandit lair?
                     (le, ":distance", 3),
                     (party_is_in_any_town, ":party_no"),

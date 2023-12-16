@@ -109,4 +109,3 @@ bandit_personality   = aggressiveness_3 | courage_8 | banditness
 rebel_personality = aggressiveness_4 | courage_15
 
 quest_personality   = aggressiveness_1|courage_15
-
