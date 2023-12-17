@@ -119,9 +119,9 @@ slot_agent_map_overlay_id           = 28
 
 slot_agent_has_commented            = 29# used for lords commenting on player
 
-slot_agent_is_poisoned              = slot_agent_has_commented
+slot_agent_is_poisoned              = 30
 
-slot_agent_is_blocked               = 30
+slot_agent_is_blocked               = 31
 
 ########################################################
 ##  FACTION SLOTS          #############################

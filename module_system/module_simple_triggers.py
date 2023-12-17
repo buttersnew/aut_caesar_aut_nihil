@@ -1557,17 +1557,25 @@ simple_triggers = [
 #let only kings decide!!
 (48.0/(number_of_factions),[
     (call_script, "script_execude_debug_message", 31),
-    (store_random_in_range, ":kingdom", npc_kingdoms_begin, kingdoms_end),
-    (faction_slot_eq, ":kingdom", slot_faction_state, sfs_active),
-    (faction_get_slot, ":king", ":kingdom", slot_faction_leader),
-    (troop_slot_eq, ":king", slot_troop_occupation, slto_kingdom_hero),
-    (faction_slot_ge, ":kingdom", slot_faction_political_issue, 1),
-    #This bit of complication is needed for savegame compatibility -- if zero is in the slot, they'll choose anyway
-    (neg|troop_slot_ge, ":king", slot_troop_stance_on_faction_issue, 1),
-    (this_or_next|troop_slot_eq, ":king", slot_troop_stance_on_faction_issue, -1),
-    (neq, "$players_kingdom", ":kingdom"),
-    (call_script, "script_npc_decision_checklist_take_stand_on_issue", ":king"),
-    (troop_set_slot, ":king", slot_troop_stance_on_faction_issue, reg0),
+    (try_begin),
+        (neg|is_between, "$g_kingdom_take_stand_on_issue", kingdoms_begin, kingdoms_end),
+        (assign, "$g_kingdom_take_stand_on_issue", kingdoms_begin),
+    (try_end),
+
+    (try_begin),
+        (faction_slot_eq, "$g_kingdom_take_stand_on_issue", slot_faction_state, sfs_active),
+        (faction_get_slot, ":king", "$g_kingdom_take_stand_on_issue", slot_faction_leader),
+        (this_or_next|troop_slot_eq, ":king", slot_troop_occupation, slto_kingdom_hero),
+        (troop_slot_eq, ":king", slot_troop_occupation, slto_kingdom_lady),
+        (faction_slot_ge, "$g_kingdom_take_stand_on_issue", slot_faction_political_issue, 1),
+        (neg|troop_slot_ge, ":king", slot_troop_stance_on_faction_issue, 1),
+        (this_or_next|troop_slot_eq, ":king", slot_troop_stance_on_faction_issue, -1),
+        (neq, "$players_kingdom", "$g_kingdom_take_stand_on_issue"),
+        (call_script, "script_npc_decision_checklist_take_stand_on_issue", ":king"),
+        (troop_set_slot, ":king", slot_troop_stance_on_faction_issue, reg0),
+    (try_end),
+
+    (val_add, "$g_kingdom_take_stand_on_issue", 1),
 ]),
 
 #diplomatic indices
