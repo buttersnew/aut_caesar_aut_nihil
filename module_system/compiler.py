@@ -154,7 +154,7 @@ class VARIABLE(object):
 		else:
 			self.value = value
 		self.is_static = static
-   
+
 	def __add__(self, other):    return VARIABLE(operands = [self, other], operation = '+')
 	def __sub__(self, other):    return VARIABLE(operands = [self, other], operation = '-')
 	def __mul__(self, other):    return VARIABLE(operands = [self, other], operation = '*')
@@ -727,6 +727,10 @@ class WRECK(object):
 	warnings = []
 	notices = []
 
+	# MISSION DUPLICATE MESSAGE TRACKING
+	mt_errors = []
+	mt_notices = []
+
 	# SUPPORT FOR GLOBAL VARIABLES
 	globals_list = []
 	deprecated = set()
@@ -738,6 +742,8 @@ class WRECK(object):
 	local_tmp_reserved = []
 	local_last_id = -1
 	local_128_vars_warning_issued = False
+
+	trigger_ID = 0 #numbering triggers in mission templates
 
 	@classmethod
 	def start_script(cls):
@@ -762,7 +768,7 @@ class WRECK(object):
 	@classmethod
 	def get_local_tmp_id(cls, script_name, index):
 		try:
-			if not cls.local_tmp_uses[index] in cls.local_tmp_reserved: 
+			if not cls.local_tmp_uses[index] in cls.local_tmp_reserved:
 				return cls.local_tmp_uses[index]
 			else:
 				return False
@@ -866,6 +872,18 @@ def internal_identifier(name):
 	#if name[0] not in 'abcdefghijklmnopqrstuvwxyz_': name = ''.join(['_', name])
 	return name
 
+def compiled_identifier(name, module, lowercase = True):
+	if 'cap' in sys.argv: lowercase = False
+	if lowercase:
+		formated_name = name.lower()
+		if name != formated_name:
+			WRECK.notices.append('Capital characters in %s identifier %r.' % (module, name))
+		# name = name.lower()
+	formated_name = name.replace(' ', '_')
+	if name != formated_name:
+		WRECK.notices.append('White spaces in %s identifier %r.' % (module, name))
+	name = name.replace(' ', '_')
+	return name
 
 def calculate_identifiers(source, uid, mask_uid = None, *argl):
 	index = -1
@@ -910,7 +928,7 @@ def allocate_quick_strings():
 		raise MSException('failed to allocate quick strings', *e.args)
 	except Exception, e:
 		raise MSException('failed to allocate quick strings', e.message)
-		
+
 def allocate_global_variables(enforce_sgc = True):
 	max_global_index = 0
 	globals_list = []
@@ -925,6 +943,10 @@ def allocate_global_variables(enforce_sgc = True):
 			raise MSException('general error reading %s/variables.txt file' % WRECK.destination, formatted_exception())
 	try:
 		for var_name in globals_list:
+			decap_name = var_name.lower()
+			if (decap_name != var_name) and not('cap' in sys.argv):
+				WRECK.notices.append('Gloval variable %r has capital characters.' % var_name)
+			var_name = decap_name
 			#print 'Variable %r has default index %d' % (var_name, max_global_index)
 			WRECK.g.__setattr__(var_name, opmask_variable|max_global_index)
 			WRECK.uninitialized.add(var_name)
@@ -968,6 +990,65 @@ def preprocess_entities_internal(glob):
 		except Exception, e:
 			raise MSException('upgrade operation failed', formatted_exception())
 
+	#dialog_states compatibility with vanilla compiler
+	for e in glob['dialogs']:
+		if not('cap' in sys.argv):
+			inp_state = e[1].lower()
+			if e[1] != inp_state:
+				WRECK.notices.append('Capital characters in dialog input state %r.' % e[1])
+			oup_state = e[4].lower()
+			if e[4] != oup_state:
+				WRECK.notices.append('Capital characters in dialog output state %r.' % e[4])
+			e[1] = inp_state
+			e[4] = oup_state
+		inp_state = e[1].replace(' ', '_')
+		if e[1] != inp_state:
+			WRECK.notices.append('White space in dialog input state %r.' % e[1])
+		oup_state = e[4].replace(' ', '_')
+		if e[4] != oup_state:
+			WRECK.notices.append('White space in dialog output state %r.' % e[4])
+		e[1] = e[1].replace(' ', '_')
+		e[4] = e[4].replace(' ', '_')
+		output_token = e[4]
+		found = 0
+		for i_t in xrange(len(WRECK.dialog_states_list)):
+			if output_token == WRECK.dialog_states_list[i_t]:
+				found = 1
+				break
+		if not found:
+			WRECK.dialog_states_dict[output_token] = len(WRECK.dialog_states_list)
+			WRECK.dialog_states_list.append(output_token)
+			WRECK.dialog_states_usage.append(0)
+
+#	#parties check
+#	for e in glob['parties']:
+#		party_id = e[0].lower()
+#		if e[0] != party_id:
+#			WRECK.notices.append('Capital characters in party_id %r.' % e[0])
+#		party_id = e[0].replace(' ', '_')
+#		if e[0] != party_id:
+#			WRECK.notices.append('White space in party_id %r.' % e[0])
+#		e[0] = e[0].lower().replace(' ', '_')
+#
+#	#troops check
+#	for e in glob['troops']:
+#		troop_id = e[0].lower()
+#		if e[0] != troop_id:
+#			WRECK.notices.append('Capital characters in troop_id %r.' % e[0])
+#		troop_id = e[0].replace(' ', '_')
+#		if e[0] != troop_id:
+#			WRECK.notices.append('White space in troop_id %r.' % e[0])
+#		e[0] = e[0].lower().replace(' ', '_')
+#
+#	for e in glob['scripts']:
+#		script_id = e[0].lower()
+#		if e[0] != script_id:
+#			WRECK.notices.append('Capital characters in script_id %r.' % e[0])
+#		script_id = e[0].replace(' ', '_')
+#		if e[0] != script_id:
+#			WRECK.notices.append('White space in script_id %r.' % e[0])
+#		e[0] = e[0].lower().replace(' ', '_')
+
 #def preprocess_entities(*argl):
 #	pass
 
@@ -977,53 +1058,69 @@ def aggregate_simple(entities):
 	return '\r\n'.join(entities)
 
 def process_animations(e, index):
-	result = [' %s %s %s  %d' % (e[0], e[1], e[2], len(e[3]))]
+	result = [' %s %s %s  %d' % (compiled_identifier(e[0], 'animation'), e[1], e[2], len(e[3]))]
 	if e[3]:
 		for se in e[3]:
-			result.append('  %f %s %s %s %s %s %f %f %f %f ' % (se[0], se[1], se[2], se[3], se[4], se[5], se[6][0], se[6][1], se[6][2], se[7]))
+			#result.append('  %f %s %s %s %s %s %f %f %f %f ' % (se[0], se[1], se[2], se[3], se[4], se[5], se[6][0], se[6][1], se[6][2], se[7]))
+			#sequence = '  %f %s %s %s %s %s %f %f %f  %f ' % (se[0], se[1], se[2], se[3], se[4], se[5], se[6][0], se[6][1], se[6][2], se[7])
+			sequence = '  %f %s %s %s %s ' % (se[0], se[1], se[2], se[3], se[4])
+			if len(se) > 5:
+				sequence += '%s ' % se[5]
+			else:
+				sequence += '0 '
+			if len(se) > 6 and se[6] != None:
+				sequence += '%f %f %f  ' % (se[6][0], se[6][1], se[6][2])
+			else:
+				sequence += '0.0 0.0 0.0 '
+			if len(se) > 7 and se[7] != None:
+				sequence += '%f ' % se[7]
+			else:
+				sequence += '0.0 '
+			result.append(sequence)
 	else:
 		result.append('  none 0 0')
 	return '\r\n'.join(result)
 
 def process_info_pages(entity, index):
-	return 'ip_%s %s %s' % (entity[0], external_string(entity[1]), external_string(entity[2]))
+	return 'ip_%s %s %s' % (compiled_identifier(entity[0], 'info_page'), external_string(entity[1]), external_string(entity[2]))
 def aggregate_info_pages(entities):
 	entities.insert(0, 'infopagesfile version 1\r\n%d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 
 def process_meshes(entity, index):
+	entity[0] = compiled_identifier(entity[0], 'mesh')
 	return 'mesh_%s %s %s %f %f %f %f %f %f %f %f %f' % tuple(entity)
 
 def process_music(entity, index):
-	return '%s %s %s' % (entity[1], entity[2], entity[2] | entity[3])
+	return '%s %s %s' % (compiled_identifier(entity[1], 'music', False), entity[2], entity[2] | entity[3])
 
 def process_postfx_params(e, index):
-	return 'pfx_%s %s %s  %f %f %f %f  %f %f %f %f  %f %f %f %f' % (e[0], e[1], e[2], e[3][0], e[3][1], e[3][2], e[3][3], e[4][0], e[4][1], e[4][2], e[4][3], e[5][0], e[5][1], e[5][2], e[5][3])
+	return 'pfx_%s %s %s  %f %f %f %f  %f %f %f %f  %f %f %f %f' % (compiled_identifier(e[0], 'post_fx'), e[1], e[2], e[3][0], e[3][1], e[3][2], e[3][3], e[4][0], e[4][1], e[4][2], e[4][3], e[5][0], e[5][1], e[5][2], e[5][3])
 def aggregate_postfx_params(entities):
 	entities.insert(0, 'postfx_paramsfile version 1\r\n%d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 
 def process_quests(e, index):
-	return 'qst_%s %s %s %s ' % (e[0], external_string(e[1]), e[2], external_string(e[3]))
+	return 'qst_%s %s %s %s ' % (compiled_identifier(e[0], 'quest'), external_string(e[1]), e[2], external_string(e[3]))
 def aggregate_quests(entities):
 	entities.insert(0, 'questsfile version 1\r\n%d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 
 def process_skills(e, index):
-	return 'skl_%s %s %s %s %s' % (e[0], external_string(e[1]), e[2], e[3], external_string(e[4]))
+	return 'skl_%s %s %s %s %s' % (compiled_identifier(e[0], 'skill'), external_string(e[1]), e[2], e[3], external_string(e[4]))
 
 def process_strings(e, index):
-	return 'str_%s %s' % (e[0].lower(), external_string(e[1]))
+	return 'str_%s %s' % (compiled_identifier(e[0], 'string'), external_string(e[1]))
 def aggregate_strings(entities):
 	entities.insert(0, 'stringsfile version 1\r\n%d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 
 def process_ui_strings(e, index):
-	return 'ui_%s|%s' % (e[0], e[1])
+	return 'ui_%s|%s' % (compiled_identifier(e[0], 'ui_string'), e[1])
 def aggregate_ui_strings(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
@@ -1032,19 +1129,33 @@ def process_user_hints(e, index):
 	return 'hint_%d|%s' % (index+1, e[0])
 
 def process_factions(e, index):
-    st = 'fac_%s %s %s %s ' % (e[0], external_string(e[1]), e[2], e[6])
-    relations = {}
-    for target, relation in e[4]:
-    	if type(target) == str: target = getattr(WRECK.fac, target)
-    	relations[parse_int(target)] = relation
-    return [st, relations, e[3]]
+	st = 'fac_%s %s %s %s ' % (compiled_identifier(e[0], 'faction'), external_string(e[1]), e[2], e[6])
+	relations = {}
+	for target, relation in e[4]:
+		if type(target) == str: target = getattr(WRECK.fac, target)
+		relations[parse_int(target)] = relation
+	return [st, relations, e[3]]
+
 def aggregate_factions(entities):
+	relations = []
+	faction_names = []
+	for i in xrange(len(entities)):
+		name = entities[i][0].split()[0]
+		faction_names.append(name)
+		r = [0.0 for j in range(len(entities))]
+		relations.append(r)
 	for index in xrange(len(entities)):
-		rels = [0.0] * len(entities)
 		for key, value in entities[index][1].iteritems():
 			key = parse_int(key)
-			rels[key] = value
-			entities[key][1][index] = value
+			stored_val = relations[index][key]
+			if (stored_val != value) and (stored_val != 0) and not('fac' in sys.argv):
+				WRECK.notices.append('Faction relations conflict: %r with %r values %f and %f.' % (faction_names[index], faction_names[key], stored_val, value))
+			relations[index][key] = value
+			relations[key][index] = value
+	for index in xrange(len(entities)):
+		rels = [0.0] * len(entities)
+		for key in xrange(len(entities)):
+			rels[key] = relations[index][key]
 		rels[index] = entities[index][2]
 		entities[index][1] = rels
 	for index in xrange(len(entities)):
@@ -1053,7 +1164,7 @@ def aggregate_factions(entities):
 	return ''.join(entities)
 
 def process_parties(e, index):
-	return ' 1 %d %d p_%s %s %d %d %d %d %d %d %d %d %d %f %f %f %f %f %f 0.0 %d %s\r\n%f' % (index, index, e[0], external_string(e[1]), parse_int(e[2]), e[3], parse_int(e[4]), parse_int(e[5]), e[6], e[6], e[7], e[8], e[8], e[9][0], e[9][1], e[9][0], e[9][1], e[9][0], e[9][1], len(e[10]), ''.join(['%d %d 0 %d ' % (parse_int(ti[0]), ti[1], ti[2]) for ti in e[10]]), 0.0174533 * float(e[11]))
+	return ' 1 %d %d p_%s %s %d %d %d %d %d %d %d %d %d %f %f %f %f %f %f 0.0 %d %s\r\n%f' % (index, index, compiled_identifier(e[0], 'party'), external_string(e[1]), parse_int(e[2]), e[3], parse_int(e[4]), parse_int(e[5]), e[6], e[6], e[7], e[8], e[8], e[9][0], e[9][1], e[9][0], e[9][1], e[9][0], e[9][1], len(e[10]), ''.join(['%d %d 0 %d ' % (parse_int(ti[0]), ti[1], ti[2]) for ti in e[10]]), (3.1415926 / 180.0) * float(e[11]))
 def aggregate_parties(entities):
 	entities.insert(0, 'partiesfile version 1\r\n%d %d' % (len(entities), len(entities)))
 	entities.append('')
@@ -1061,28 +1172,37 @@ def aggregate_parties(entities):
 
 def process_party_templates(e, index):
 	troops = ' '.join([(('%d %d %d %d' % tuple(parse_int(e[6][i]))) if i < len(e[6]) else '-1') for i in xrange(6)])
-	return 'pt_%s %s %d %d %d %d %s ' % (e[0], external_string(e[1]), parse_int(e[2]), e[3], parse_int(e[4]), e[5], troops)
+	return 'pt_%s %s %d %d %d %d %s ' % (compiled_identifier(e[0], 'party_template'), external_string(e[1]), parse_int(e[2]), e[3], parse_int(e[4]), e[5], troops)
 def aggregate_party_templates(entities):
 	entities.insert(0, 'partytemplatesfile version 1\r\n%d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 
 def process_scenes(e, index):
-	return 'scn_%s %s %s %s %s %f %f %f %f %f %s \r\n  %s %s\r\n  %s %s\r\n %s ' % (e[0], external_string(e[0]), e[1], e[2], e[3], e[4][0], e[4][1], e[5][0], e[5][1], e[6], e[7], len(e[8]), (' %d ' * len(e[8])) % tuple(parse_int(e[8])), len(e[9]), (' %d ' * len(e[9])) % tuple(parse_int(e[9])), e[10])
+	return 'scn_%s %s %s %s %s %f %f %f %f %f %s \r\n  %s %s\r\n  %s %s\r\n %s ' % (compiled_identifier(e[0], 'scene'), external_string(e[0]), e[1], e[2], e[3], e[4][0], e[4][1], e[5][0], e[5][1], e[6], e[7], len(e[8]), (' %d ' * len(e[8])) % tuple(parse_int(e[8])), len(e[9]), (' %d ' * len(e[9])) % tuple(parse_int(e[9])), e[10])
 def aggregate_scenes(entities):
 	entities.insert(0, 'scenesfile version 1\r\n %d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 
 def process_particle_systems(e, index):
-	return 'psys_%s %s %s  %s %f %f %f %f %f \r\n%f %f   %f %f\r\n%f %f   %f %f\r\n%f %f   %f %f\r\n%f %f   %f %f\r\n%f %f   %f %f\r\n%f %f %f   %f %f %f   %f \r\n%f %f ' % (e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8], e[9][0], e[9][1], e[10][0], e[10][1], e[11][0], e[11][1], e[12][0], e[12][1], e[13][0], e[13][1], e[14][0], e[14][1], e[15][0], e[15][1], e[16][0], e[16][1], e[17][0], e[17][1], e[18][0], e[18][1], e[19][0], e[19][1], e[19][2], e[20][0], e[20][1], e[20][2], e[21], e[22], e[23])
+	sequence = 'psys_%s %s %s  %s %f %f %f %f %f \r\n%f %f   %f %f\r\n%f %f   %f %f\r\n%f %f   %f %f\r\n%f %f   %f %f\r\n%f %f   %f %f\r\n%f %f %f   %f %f %f   %f \r\n' % (compiled_identifier(e[0], 'particle_sys'), e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8], e[9][0], e[9][1], e[10][0], e[10][1], e[11][0], e[11][1], e[12][0], e[12][1], e[13][0], e[13][1], e[14][0], e[14][1], e[15][0], e[15][1], e[16][0], e[16][1], e[17][0], e[17][1], e[18][0], e[18][1], e[19][0], e[19][1], e[19][2], e[20][0], e[20][1], e[20][2], e[21])
+	if e[22] != None:
+		sequence += '%f ' % e[22]
+	else:
+		sequence += '0.0 '
+	if e[23] != None:
+		sequence += '%f ' % e[23]
+	else:
+		sequence += '0.0 '
+	return sequence
 def aggregate_particle_systems(entities):
 	entities.insert(0, 'particle_systemsfile version 1\r\n%d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 
 def process_troops(e, index):
-	result = ['trp_%s %s %s %s %s %s %s %d %s %s' % (e[0], external_string(e[1]), external_string(e[2]), external_string(e[13]), e[3], e[4], e[5], parse_int(e[6]), parse_int(e[14]), parse_int(e[15]))]
+	result = ['trp_%s %s %s %s %s %s %s %d %s %s' % (compiled_identifier(e[0], 'troop'), external_string(e[1]), external_string(e[2]), external_string(e[13]), e[3], e[4], e[5], parse_int(e[6]), parse_int(e[14]), parse_int(e[15]))]
 	result.append('  ' + ''.join([('%d %d ' % ((parse_int(e[7][i][0]), e[7][i][1] << 24) if i < len(e[7]) else (-1, 0))) for i in xrange(64)]))
 	if not isinstance(e[8], AGGREGATE): e[8] = unparse_attr_aggregate(e[8])
 	if not isinstance(e[9], AGGREGATE): e[9] = unparse_wp_aggregate(e[9])
@@ -1118,10 +1238,11 @@ def aggregate_sounds(entities):
 				sound_files[f[0]] = len(files)
 				refs.append('%d %s ' % (len(files), f[1]))
 				files.append(' %s %s' % (f[0], sound[1]))
-		sounds.append('snd_%s %s %d %s' % (sound[0], sound[1], len(refs), ''.join(refs)))
+		sounds.append('snd_%s %s %d %s' % (compiled_identifier(sound[0], 'sound'), sound[1], len(refs), ''.join(refs)))
 	return 'soundsfile version 3\r\n%d\r\n%s\r\n%d\r\n%s\r\n' % (len(files), '\r\n'.join(files), len(sounds), '\r\n'.join(sounds))
 def process_skins(e, index):
 	skinkeys = [('skinkey_%s %s %s %f %f %s ' % (internal_identifier(sk[4]), sk[0], sk[1], sk[2], sk[3], external_string(sk[4]))) for sk in e[6]]
+	hairs =  (' %s ' * len(e[7])) % tuple(e[7])
 	beards = ('  %s\r\n' * len(e[8])) % tuple(e[8])
 	hair_textures = '  '.join([str(len(e[9]))] + e[9])
 	beard_textures = '  '.join([str(len(e[10]))] + e[10])
@@ -1140,14 +1261,14 @@ def process_skins(e, index):
 		constraints = '\r\n' + constraints
 	else:
 		constraints = ''
-	return '%s %s\r\n %s %s %s\r\n %s %s %s\r\n%s\r\n %s \r\n %s\r\n%s\r\n %s \r\n %s \r\n%s\r\n %s \r\n %s %f \r\n%d %d\r\n%s\r\n%s' % (e[0], e[1], e[2], e[3], e[4], e[5], len(e[6]), ''.join(skinkeys), len(e[7]), '  '.join(e[7]), len(e[8]), beards, hair_textures, beard_textures, ''.join(face_textures), voices, e[13], e[14], parse_int(e[15]), parse_int(e[16]), len(e[17]), constraints)
+	return '%s %s\r\n %s %s %s\r\n %s %s %s\r\n%s\r\n%s\r\n %s\r\n%s\r\n %s \r\n %s \r\n%s\r\n %s \r\n %s %f \r\n%d %d\r\n%s\r\n%s' % (compiled_identifier(e[0], 'skin'), e[1], e[2], e[3], e[4], e[5], len(e[6]), ''.join(skinkeys), len(e[7]), hairs, len(e[8]), beards, hair_textures, beard_textures, ''.join(face_textures), voices, e[13], e[14], parse_int(e[15]), parse_int(e[16]), len(e[17]), constraints)
 def aggregate_skins(entities):
 	entities.insert(0, 'skins_file version 1\r\n%d' % len(entities))
-	#entities.append('')
+	entities.append('')
 	return '\r\n'.join(entities)
 def process_scripts(entity, index):
 	#return entity
-	try: return '%s -1\r\n %s ' % (entity[0], parse_module_code(entity[1], 'script.%s' % entity[0], True))
+	try: return '%s -1\r\n %s ' % (compiled_identifier(entity[0], 'script'), parse_module_code(entity[1], 'script.%s' % entity[0], True))
 	except MSException, e: raise MSException('failed to compile script %s (#%d)' % (entity[0], index), *e.args)
 def aggregate_scripts(entities):
 	#return None
@@ -1155,7 +1276,7 @@ def aggregate_scripts(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_items(e, index):
-	output = [' itm_%s %s %s %d  %s  %s %s %s %s ' % (e[0], external_string(e[1]), external_string(e[1]), len(e[2]), '  '.join(['%s %s' % (imesh[0], imesh[1]) for imesh in e[2]]), e[3], e[4], e[5], e[7])]
+	output = [' itm_%s %s %s %d  %s  %s %s %s %s ' % (compiled_identifier(e[0], 'item'), external_string(e[1]), external_string(e[1]), len(e[2]), '  '.join(['%s %s' % (imesh[0], imesh[1]) for imesh in e[2]]), e[3], e[4], e[5], e[7])]
 	if not isinstance(e[6], AGGREGATE): e[6] = unparse_item_aggregate(e[6])
 	if e[6].get('abundance', 0) == 0: e[6]['abundance'] = 100
 	output.append('%f %s %s %s %s %s %s %s %s %s %s %s %s' % (e[6].get('weight', 0.0), e[6].get('abundance', 0), e[6].get('head', 0), e[6].get('body', 0), e[6].get('leg', 0), e[6].get('diff', 0), e[6].get('hp', 0), e[6].get('speed', 0), e[6].get('msspd', 0), e[6].get('size', 0), e[6].get('qty', 0), e[6].get('thrust', 0), e[6].get('swing', 0)))
@@ -1166,7 +1287,7 @@ def process_items(e, index):
 		output.append(''.join([' %d' % parse_int(faction) for faction in e[9]]))
 	output.append('\r\n%d\r\n' % len(e[8]))
 	for trigger, code_block in e[8]:
-		try: output.append('%f  %s \r\n' % (trigger, parse_module_code(code_block, 'itm.%s(#%d).%s' % (e[0], index, trigger_to_string(trigger)))))
+		try: output.append('%f  %s \r\n' % (trigger, parse_module_code(code_block, 'itm.%s(#%d).%s' % (e[0], index, simple_trigger_to_string(trigger)))))
 		except MSException, er: raise MSException('failed to compile trigger for item %s (#%d)' % (e[0], index), *er.args)
 	return ''.join(output)
 def aggregate_items(entities):
@@ -1174,9 +1295,12 @@ def aggregate_items(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_map_icons(e, index):
-	output = ['%s %s %s %f %d %f %f %f %d' % (e[0], e[1], e[2], e[3], parse_int(e[4]), e[5], e[6], e[7], len(e[8]))]
+	if (e[5] != None) and (e[6] != None) and (e[7] != None):
+		output = ['%s %s %s %f %d %f %f %f %d' % (e[0], e[1], e[2], e[3], parse_int(e[4]), e[5], e[6], e[7], len(e[8]))]
+	else:
+		output = ['%s %s %s %f %d 0 0 0 %d' % (e[0], e[1], e[2], e[3], parse_int(e[4]), len(e[8]))]
 	for trigger, code_block in e[8]:
-		try: output.append('%f  %s ' % (trigger, parse_module_code(code_block, 'icon.%s(#%d).%s' % (e[0], index, trigger_to_string(trigger)))))
+		try: output.append('%f  %s ' % (trigger, parse_module_code(code_block, 'icon.%s(#%d).%s' % (compiled_identifier(e[0], 'map_icon'), index, simple_trigger_to_string(trigger)))))
 		except MSException, er: raise MSException('failed to compile trigger for map icon %s (#%d)' % (e[0], index), *er.args)
 	output.append('\r\n')
 	return '\r\n'.join(output)
@@ -1185,9 +1309,9 @@ def aggregate_map_icons(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_scene_props(e, index):
-	output = ['spr_%s %s %s %s %s %d' % (e[0], e[1], get_spr_hit_points(e[1]), e[2], e[3], len(e[4]))]
+	output = ['spr_%s %s %s %s %s %d' % (compiled_identifier(e[0], 'scene_prop'), e[1], get_spr_hit_points(e[1]), e[2], e[3], len(e[4]))]
 	for trigger, code_block in e[4]:
-		try: output.append('%f  %s ' % (trigger, parse_module_code(code_block, 'spr.%s(#%d).%s' % (e[0], index, trigger_to_string(trigger)))))
+		try: output.append('%f  %s ' % (trigger, parse_module_code(code_block, 'spr.%s(#%d).%s' % (e[0], index, simple_trigger_to_string(trigger)))))
 		except MSException, er: raise MSException('failed to compile trigger for scene prop %s (#%d)' % (e[0], index), *er.args)
 	output.append('\r\n')
 	return '\r\n'.join(output)
@@ -1196,26 +1320,26 @@ def aggregate_scene_props(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_simple_triggers(e, index):
-	try: return '%f  %s ' % (e[0], parse_module_code(e[1], 'simple_trigger(#%d).%s' % (index, trigger_to_string(e[0]))))
+	try: return '%f  %s ' % (e[0], parse_module_code(e[1], '%s(#%d)' % (simple_trigger_to_string(e[0]), index)))
 	except MSException, er: raise MSException('failed to compile simple trigger #%d' % (index), *er.args)
 def aggregate_simple_triggers(entities):
 	entities.insert(0, 'simple_triggers_file version 1\r\n%d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_tableaus(e, index):
-	try: return 'tab_%s %s %s %s %s %s %s %s %s %s ' % (e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8], parse_module_code(e[9], 'tableau.%s(#%d)' % (e[0], index)))
+	try: return 'tab_%s %s %s %s %s %s %s %s %s %s ' % (compiled_identifier(e[0], 'tableu'), e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8], parse_module_code(e[9], 'tableau.%s(#%d)' % (e[0], index)))
 	except MSException, er: raise MSException('failed to compile tableau %s (#%d)' % (e[0], index), *er.args)
 def process_triggers(e, index):
-	try: return '%f %f %f  %s  %s ' % (e[0], e[1], e[2], parse_module_code(e[3], 'trigger(#%d).%s.condition' % (index, trigger_to_string(e[0]))), parse_module_code(e[4], 'trigger(#%d).%s.body' % (index, trigger_to_string(e[0]))))
+	try: return '%f %f %f  %s  %s ' % (e[0], e[1], e[2], parse_module_code(e[3], '%s(#%d).condition' % (trigger_to_string(e[0], e[1], e[2]), index)), parse_module_code(e[4], '%s(#%d).consequence' % (trigger_to_string(e[0], e[1], e[2]), index)))
 	except MSException, er: raise MSException('failed to compile trigger #d' % (index), *er.args)
 def aggregate_triggers(entities):
 	entities.insert(0, 'triggersfile version 1\r\n%d' % len(entities))
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_presentations(e, index):
-	output = ['prsnt_%s %s %s %d' % (e[0], e[1], parse_int(e[2]), len(e[3]))]
+	output = ['prsnt_%s %s %s %d' % (compiled_identifier(e[0], 'presentation'), e[1], parse_int(e[2]), len(e[3]))]
 	for trigger, code_block in e[3]:
-		try: output.append('%f  %s ' % (trigger, parse_module_code(code_block, 'prsnt.%s(#%d).%s' % (e[0], index, trigger_to_string(trigger)))))
+		try: output.append('%f  %s ' % (trigger, parse_module_code(code_block, 'prsnt.%s(#%d).%s' % (e[0], index, simple_trigger_to_string(trigger)))))
 		except MSException, er: raise MSException('failed to compile trigger for presentation %s (#%d)' % (e[0], index), *er.args)
 	output.append('\r\n')
 	return '\r\n'.join(output)
@@ -1224,14 +1348,16 @@ def aggregate_presentations(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_mission_templates(e, index):
-	output = ['mst_%s %s %s  %s\r\n%s \r\n\r\n%d ' % (e[0], e[0], e[1], e[2], external_string(e[3]), len(e[4]))]
+	output = ['mst_%s %s %s  %s\r\n%s \r\n\r\n%d ' % (compiled_identifier(e[0], 'mission_template'), e[0], e[1], e[2], external_string(e[3]), len(e[4]))]
 	for epd in e[4]:
 		output.append('%s %s %s %s %s %d %s \r\n' % (epd[0], epd[1], epd[2], epd[3], epd[4], len(epd[5]), (' %s' * len(epd[5])) % tuple(parse_int(epd[5]))))
 	output.append(str(len(e[5])))
 	output = [''.join(output)]
+	WRECK.trigger_ID = 0
 	for t0, t1, t2, script1, script2 in e[5]:
-		try: output.append('%f %f %f  %s  %s ' % (t0, t1, t2, parse_module_code(script1, 'mt.%s(#%d).%s.condition' % (e[0], index, trigger_to_string(t0))), parse_module_code(script2, 'mt.%s(#%d).%s.body' % (e[0], index, trigger_to_string(t0)))))
+		try: output.append('%f %f %f  %s  %s ' % (t0, t1, t2, parse_module_code(script1, 'mt.%s(#%d).%s(#%d).condition' % (e[0], index, trigger_to_string(t0, t1, t2), WRECK.trigger_ID)), parse_module_code(script2, 'mt.%s(#%d).%s(#%d).consequence' % (e[0], index, trigger_to_string(t0, t1, t2), WRECK.trigger_ID))))
 		except MSException, er: raise MSException('failed to compile trigger for mission template %s (#%d)' % (e[0], index), *er.args)
+		WRECK.trigger_ID += 1
 	output.append('\r\n')
 	return '\r\n'.join(output)
 def aggregate_mission_templates(entities):
@@ -1239,7 +1365,7 @@ def aggregate_mission_templates(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_game_menus(e, index):
-	try: output = ['menu_%s %s %s none %s %d\r\n' % (e[0], e[1], external_string(e[2]), parse_module_code(e[4], 'mnu.%s(#%d)'%(e[0],index)), len(e[5]))]
+	try: output = ['menu_%s %s %s none %s %d\r\n' % (compiled_identifier(e[0], 'game_menu'), e[1], external_string(e[2]), parse_module_code(e[4], 'mnu.%s(#%d)'%(e[0],index)), len(e[5]))]
 	except MSException, er: raise MSException('failed to compile entry code for menu %s (#%d)' % (e[0], index), *er.args)
 	for mno in e[5]:
 		last_text = mno[4]
@@ -1271,7 +1397,7 @@ def process_dialogs(e, index):
 	if (dialog_uid in WRECK.dialog_uids) and (WRECK.dialog_uids[dialog_uid] != e[3]):
 		new_uid = dialog_uid
 		iterator = 0
-		while (new_uid in WRECK.dialog_uids) and (WRECK.dialog_uids[new_uid] != e[3]):
+		while new_uid in WRECK.dialog_uids:
 			iterator += 1
 			new_uid = '%s.%d' % (dialog_uid, iterator)
 		dialog_uid = new_uid
@@ -1285,7 +1411,7 @@ def aggregate_dialogs(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_item_modifiers(e, index):
-	return 'imod_%s %s %.06f %.06f' % (e[0], external_string(e[1]), e[2], e[3])
+	return 'imod_%s %s %.06f %.06f' % (compiled_identifier(e[0], 'item_modifier'), external_string(e[1]), e[2], e[3])
 def aggregate_item_modifiers(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
@@ -1321,17 +1447,17 @@ def OPTIONAL(check, fallback = None): return { 'check': check, 'default': fallba
 TRIGGER = (float, float, float, SCRIPT, SCRIPT)
 
 parsers = {
-	'animations':        { 'parser': (id, int, int, REPEATABLE, (float, id, int, int, int, OPTIONAL(int, 0), OPTIONAL((float, float, float), (0, 0, 0)), OPTIONAL(float, 0))), 'processor': process_animations, 'aggregator': aggregate_simple },
+	'animations':        { 'parser': (id, int, int, REPEATABLE, (float, id, int, int, int, OPTIONAL(int, 0), OPTIONAL((float, float, float), None), OPTIONAL(float, None))), 'processor': process_animations, 'aggregator': aggregate_simple },
 	'dialogs':           { 'parser': (int, id, SCRIPT, str, id, SCRIPT, OPTIONAL(str, 'NO_VOICEOVER')), 'processor': process_dialogs, 'aggregator': aggregate_dialogs, 'uid': 1 },
 	'factions':          { 'parser': (id, str, int, float, [(WRECK.fac, float)], [str], OPTIONAL(int, 0xAAAAAA)), 'processor': process_factions, 'aggregator': aggregate_factions },
 	'game_menus':        { 'parser': (id, int, str, 'none', SCRIPT, [(id, SCRIPT, str, SCRIPT, OPTIONAL(str, ''))]), 'processor': process_game_menus, 'aggregator': aggregate_game_menus },
 	'info_pages':        { 'parser': (id, str, str), 'processor': process_info_pages, 'aggregator': aggregate_info_pages },
 	'items':             { 'parser': (id, str, [(id, int)], int, int, int, AGGREGATE, int, OPTIONAL([(float, SCRIPT)], []), OPTIONAL([int], [])), 'processor': process_items, 'aggregator': aggregate_items },
-	'map_icons':         { 'parser': (id, int, id, float, int, OPTIONAL(float, 0), OPTIONAL(float, 0), OPTIONAL(float, 0), OPTIONAL([(float, SCRIPT)], []) ), 'processor': process_map_icons, 'aggregator': aggregate_map_icons },
+	'map_icons':         { 'parser': (id, int, id, float, int, OPTIONAL(float, None), OPTIONAL(float, None), OPTIONAL(float, None), OPTIONAL([(float, SCRIPT)], []) ), 'processor': process_map_icons, 'aggregator': aggregate_map_icons },
 	'meshes':            { 'parser': (id, int, id, float, float, float, float, float, float, float, float, float), 'processor': process_meshes, 'aggregator': aggregate_simple },
 	'mission_templates': { 'parser': (id, int, int, str, [(int, int, int, int, int, [int])], [TRIGGER]), 'processor': process_mission_templates, 'aggregator': aggregate_mission_templates },
 	'tracks':            { 'parser': (id, file, int, int), 'processor': process_music, 'aggregator': aggregate_simple },
-	'particle_systems':  { 'parser': (id, int, id, int, float, float, float, float, float, (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float, float), (float, float, float), float, OPTIONAL(float, 0), OPTIONAL(float, 0)), 'processor': process_particle_systems, 'aggregator': aggregate_particle_systems },
+	'particle_systems':  { 'parser': (id, int, id, int, float, float, float, float, float, (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float), (float, float, float), (float, float, float), float, OPTIONAL(float, None), OPTIONAL(float, None)), 'processor': process_particle_systems, 'aggregator': aggregate_particle_systems },
 	'parties':           { 'parser': (id, str, int, int, int, int, int, int, int, (float, float), [(int, int, int)], OPTIONAL(float, 0)), 'processor': process_parties, 'aggregator': aggregate_parties },
 	'party_templates':   { 'parser': (id, str, int, int, int, int, [(int, int, int, OPTIONAL(int, 0))]), 'processor': process_party_templates, 'aggregator': aggregate_party_templates },
 	'postfx_params':     { 'parser': (id, int, int, (float, float, float, float), (float, float, float, float), (float, float, float, float)), 'processor': process_postfx_params, 'aggregator': aggregate_postfx_params },
@@ -1422,10 +1548,15 @@ def opcode_to_string(opcode):
 			break
 	return '|'.join(result)
 
-def trigger_to_string(trigger):
+def simple_trigger_to_string(trigger):
 	for key, value in TRLIST.__dict__.iteritems():
 		if (key[0:3] == 'ti_') and (value == trigger): return key
-	return 'repeat_trigger(%.01f)' % trigger
+	return 'simple_trigger(%.01f)' % trigger
+
+def trigger_to_string(t0, t1, t2):
+	for key, value in TRLIST.__dict__.iteritems():
+		if (key[0:3] == 'ti_') and (value == t0): return key
+	return 'trigger(%.01f %.01f %.01f)' % (t0, t1, t2)
 
 def parse_variable_from_int(value):
 	tag = value >> op_num_value_bits
@@ -1475,6 +1606,11 @@ def parse_module_code(code_block, script_name, check_can_fail = False):
 	total_commands = len(code_block)
 	current_depth = 0
 	can_fail = False
+	tag = script_name.split('.')[0]
+	if tag == 'mt':
+		trigger = script_name.split('.', 2)[2].rsplit('(', 1)[0]
+		block = script_name.rsplit('.', 1)[1]
+		num = len(code_block)
 	for index in xrange(len(code_block)):
 		operation = code_block[index]
 		is_assign = False
@@ -1551,7 +1687,12 @@ def parse_module_code(code_block, script_name, check_can_fail = False):
 						#print('Operand %r for operation %s in %s on line %d depth %d' % (operand, opcode_to_string(command[0]), script_name, index+1, local_tmp_depth))
 					elif operand.module == WRECK.l:
 						if (operand.name not in locals_def) and (not(is_assign) or (opindex > 2)):
-							WRECK.errors.append('unassigned local variable %r used by operation %s in %s on line %d' % (operand, opcode_to_string(command[0]), script_name, index + 1))
+							if tag == 'mt':
+								if not (operand.name, trigger, block, num) in WRECK.mt_errors:
+									WRECK.errors.append('unassigned local variable %r used by operation %s in %s on line %d' % (operand, opcode_to_string(command[0]), script_name, index + 1))
+									WRECK.mt_errors.append((operand.name, trigger, block, num))
+							else:
+								WRECK.errors.append('unassigned local variable %r used by operation %s in %s on line %d' % (operand, opcode_to_string(command[0]), script_name, index + 1))
 						if not(is_assign) or (command[0] == try_for_range) or (command[0] == try_for_range_backwards) or (opindex > 2) or (operand.name.find('unused') != -1): locals_use.add(operand.name) # If local was used in non-assigned position, remember it (used to track declared but never used locals)
 						operand.value = opmask_local_variable | WRECK.get_local_id(script_name, operand.name)
 		except MSException, e:
@@ -1581,11 +1722,25 @@ def parse_module_code(code_block, script_name, check_can_fail = False):
 			raise
 	if current_depth != 0:
 		explanation = 'missing' if (current_depth > 0) else 'extra'
-		WRECK.errors.append('try/end operations do not match in %s: %d try_end(s) %s' % (script_name, abs(current_depth), explanation))
+		if tag == 'mt':
+			if not (explanation, trigger, block, num) in WRECK.mt_errors:
+				WRECK.errors.append('try/end operations do not match in %s: %d try_end(s) %s' % (script_name, abs(current_depth), explanation))
+				WRECK.mt_errors.append((explanation, trigger, block, num))
+		else:
+			WRECK.errors.append('try/end operations do not match in %s: %d try_end(s) %s' % (script_name, abs(current_depth), explanation))
 	if check_can_fail and can_fail and (script_name[7:10] != 'cf_'):
 		WRECK.warnings.append('%s can fail but it\'s name does not start with "cf_"' % script_name)
 	for unused_local in locals_def - locals_use:
-		WRECK.notices.append('local l.%s declared but never used in %s' % (unused_local, script_name))
+		if tag == 'mt':
+			if not (unused_local, trigger, block, num) in WRECK.mt_notices:
+				WRECK.notices.append('local l.%s declared but never used in %s' % (unused_local, script_name))
+				WRECK.mt_notices.append((unused_local, trigger, block, num))
+		else:
+			WRECK.notices.append('local l.%s declared but never used in %s' % (unused_local, script_name))
+	##Adding triggers ID in mission templates
+	if script_name.split('.')[0] == 'mt' and script_name.rsplit('.', 1)[1] == 'consequence':
+		export.append(' 2147483678 2 -1 %d' % (WRECK.trigger_ID))
+		total_commands += 1
 	export[0] = '%d' % total_commands
 	return ''.join(export)
 
@@ -1679,7 +1834,7 @@ def check_syntax(entity, parser, uid = 0):
 		if type(entity) == list:
 			return check_syntax(entity, (file, WRECK.fac), uid)
 		else:
-			return [check_syntax(entity, file, uid), 0]		
+			return [check_syntax(entity, file, uid), 0]
 	elif parser == int:
 		if type(entity) == str: entity = convert_string_id_to_variable(entity)
 		if isinstance(entity, VARIABLE):

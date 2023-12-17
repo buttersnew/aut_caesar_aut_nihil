@@ -1357,7 +1357,7 @@ dedal_shield_bash = (0, 0.35, 1,[
 dedal_shield_bash_AI = (2, 0, 0,[
   (eq, "$g_schield_bash", 1),
 ],[
-    (call_script,"script_shield_bash_AI_trigger")])
+    (call_script,"script_shield_bash_ai_trigger")])
 
 bodyguard_triggers = [
  (ti_after_mission_start, 0, ti_once, [(neq, "$g_mt_mode", tcm_disguised)], #condition for not sneaking in; to exclude prison-breaks, etc change to (eq, "$g_mt_mode", tcm_default")
@@ -2983,7 +2983,7 @@ extended_battle_menu = [  #15 triggers
       (try_begin),
         (eq, "$gk_order", 0),
         (try_begin),
-          (eq, "$FormAI_off", 0),
+          (eq, "$form_ai_off", 0),
           (assign, "$gk_order", gk_order_4),
           (try_begin),
             (is_presentation_active, "prsnt_battle"),
@@ -3481,12 +3481,12 @@ real_deployment = [ #3 triggers
             (team_set_order_listener, "$fplayer_team_no", ":division"),	#pick one division to listen; otherwise player agent gets moved as if part of infantry
             (store_add, ":slot", slot_team_d0_type, ":division"),
 
-            (eq, "$FormAI_off", 0),
+            (eq, "$form_ai_off", 0),
             (team_slot_eq, "$fplayer_team_no", ":slot", sdt_cavalry),
             (call_script, "script_player_attempt_formation", ":division", formation_wedge, 2),
 
           (else_try),
-            (eq, "$FormAI_off", 0),
+            (eq, "$form_ai_off", 0),
             (neg|team_slot_eq, "$fplayer_team_no", ":slot", sdt_archer),
             (neg|team_slot_eq, "$fplayer_team_no", ":slot", sdt_harcher),
             (call_script, "script_get_default_formation", "$fplayer_team_no"),	#defined only for infantry

@@ -1,4 +1,4 @@
-WRECK_VERSION = '1.0.3'
+WRECK_VERSION = '1.0.6'
 
 import sys
 if (sys.version_info[0] != 2) or (sys.version_info[1] < 6):
@@ -141,6 +141,8 @@ try:
 			exc_type, exc_value, exc_traceback = sys.exc_info()
 			error_info = extract_tb(exc_traceback)[-1]
 			print '{6}  Compiler hint: this error is typically caused by a missing comma.\n  Please check that tuples are followed by commas in `{path!s}` above line {line}:\n\n    {5}{code!s}{0}'.format(*COLORAMA, path = path_split(error_info[0])[1], line = error_info[1], code = error_info[3])
+		if isinstance(e, SyntaxError):
+			print '{6}  Compiler hint: this error is typically caused by a missing or exceeding brackets, quotes, and commas inside a tuple.{0}'.format(*COLORAMA)
 		WRECK.time_loaded = gettime()
 		raise MSException()
 	print '{2}DONE.{0}'.format(*COLORAMA)

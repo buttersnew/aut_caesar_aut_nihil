@@ -8112,7 +8112,7 @@ presentations = [
     (position_set_x, pos1, 500),
         (position_set_y, pos1, 23),
         (overlay_set_position, reg1, pos1),
-        (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+        (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # Set Headlines
     (assign, ":x_poshl", 215),
@@ -8618,7 +8618,7 @@ presentations = [
     [
         (store_trigger_param_1, ":button_pressed_id"),
         (try_begin),
-             (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+             (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
     (try_end),
     ]),
@@ -8667,7 +8667,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
 
     # clear the string globals that we'll use
@@ -8942,7 +8942,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
     (try_end),
     ]),
@@ -9010,7 +9010,7 @@ presentations = [
 #     (position_set_x, pos1, 500),
 #     (position_set_y, pos1, 23),
 #     (overlay_set_position, reg1, pos1),
-#     (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+#     (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
 
 #     # clear the string globals that we'll use
@@ -9253,7 +9253,7 @@ presentations = [
   #   [
   #       (store_trigger_param_1, ":button_pressed_id"),
   #       (try_begin),
-  #            (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+  #            (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
   #       (presentation_set_duration, 0),
   #   (try_end),
   #   ]),
@@ -9909,7 +9909,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
   ]),
    ## END on load trigger
 
@@ -9918,7 +9918,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (assign,"$temp",6),
         (presentation_set_duration, 0),
         (jump_to_menu, "mnu_reports"),
@@ -10938,7 +10938,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
   ]),
   ## END on load trigger
 
@@ -10946,7 +10946,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-      (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+      (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
       (assign,"$temp",6),
       (presentation_set_duration, 0),
       (jump_to_menu, "mnu_camp"),
@@ -11382,7 +11382,7 @@ presentations = [
     (position_set_x, pos1, 800),
     (position_set_y, pos1, 25),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
 ###container for buildings
    #5. CONTAINER for buildings and decres
@@ -12458,7 +12458,7 @@ presentations = [
     (store_trigger_param_1, ":button_pressed_id"),
     (store_trigger_param_2, ":value"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
         (jump_to_menu, "$g_next_menu"),
         (finish_mission),
@@ -18915,17 +18915,17 @@ presentations = [
         (overlay_add_item, reg2, s7),
       (try_end),
     (try_end),
-    (overlay_set_val, reg2, "$FormAI_player_in_division"),
+    (overlay_set_val, reg2, "$form_ai_player_in_division"),
     (assign, "$form_options_overlay_1", reg2),
 
     (create_text_overlay, reg1, "str_disable_complex_formations", 0),
     (call_script, "script_prsnt_vc_menu_helper"),
-    (overlay_set_val, reg2, "$FormAI_off"),
+    (overlay_set_val, reg2, "$form_ai_off"),
     (assign, "$g_presentation_obj_21", reg2),
 
     (create_text_overlay, reg1, "str_have_formations_face_enemy", 0),
     (call_script, "script_prsnt_vc_menu_helper"),
-    (overlay_set_val, reg2, "$FormAI_autorotate"),
+    (overlay_set_val, reg2, "$form_ai_autorotate"),
     (assign, "$g_presentation_obj_22", reg2),
 
     # (create_text_overlay, reg1, "str_players_enemies_only_attack", 0),
@@ -19513,10 +19513,10 @@ presentations = [
       (assign, "$g_autoloot_active", ":value"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_21"),
-      (assign, "$FormAI_off", ":value"),
+      (assign, "$form_ai_off", ":value"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_22"),
-      (assign, "$FormAI_autorotate", ":value"),
+      (assign, "$form_ai_autorotate", ":value"),
     # (else_try),
       # (eq, ":object", "$g_presentation_obj_23"),
       # (assign, "$FormAI_AI_no_defense", ":value"),
@@ -19568,7 +19568,7 @@ presentations = [
       # (assign, "$bandit_quantity_option", ":value"),
     (else_try),
       (eq, ":object", "$form_options_overlay_1"),
-      (assign, "$FormAI_player_in_division", ":value"),
+      (assign, "$form_ai_player_in_division", ":value"),
     (else_try),
       (eq, ":object", "$form_options_overlay_2"),
       (assign, "$show_raid_messages", ":value"),
@@ -23883,7 +23883,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
 
     # clear the string globals that we'll use
@@ -24158,7 +24158,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
         (jump_to_menu, "mnu_return_fief_management"),
     (else_try),
@@ -24263,7 +24263,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # #switch to map view
     # (create_game_button_overlay, reg1, "@World Map"),
@@ -24423,7 +24423,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (try_begin),
             (is_between, "$temp1", "pt_cohors_aux", "pt_ala_preat"),
             (store_sub, ":slot", "$temp1", "pt_cohors_aux"),
@@ -24593,7 +24593,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # #switch to map view
     # (create_game_button_overlay, reg1, "@World Map"),
@@ -24694,7 +24694,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (try_begin),
             (is_between, "$temp1", 1, 12),
 
@@ -24849,7 +24849,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # #switch to map view
     # (create_game_button_overlay, reg1, "@World Map"),
@@ -25400,7 +25400,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
         (show_object_details_overlay, 1),
     (else_try),
@@ -25836,7 +25836,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     ##creat a lines
     (create_mesh_overlay, reg1, "mesh_white_plane"),
@@ -26001,7 +26001,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (troop_set_slot, "trp_global_variables", g_show_troop_banner, 0),
         (start_presentation, "prsnt_legion_management"),
     (else_try),
@@ -26466,7 +26466,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     ##creat a lines
     (create_mesh_overlay, reg1, "mesh_white_plane"),
@@ -26630,7 +26630,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (troop_set_slot, "trp_global_variables", g_show_troop_banner, 0),
         (start_presentation, "prsnt_legion_management"),
     (else_try),
@@ -27301,7 +27301,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     #switch to map view
     # (create_game_button_overlay, reg1, "@World Map"),
@@ -27531,7 +27531,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
         (show_object_details_overlay, 1),
     (else_try),
@@ -27603,7 +27603,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     #switch to map view
     # (create_game_button_overlay, reg1, "@World Map"),
@@ -27833,7 +27833,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
         (jump_to_menu, "mnu_senatus"),
     (else_try),
@@ -27905,7 +27905,7 @@ presentations = [
     (position_set_x, pos1, 400),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     #switch to map view
     (create_game_button_overlay, reg1, "@World Map"),
@@ -28137,7 +28137,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
         (show_object_details_overlay, 1),
     (else_try),
@@ -28332,7 +28332,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     ##creat a lines
     (create_mesh_overlay, reg1, "mesh_white_plane"),
@@ -28477,7 +28477,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (troop_set_slot, "trp_global_variables", g_show_troop_banner, 0),
         (try_begin),
             (eq, "$g_presentation_credits_obj_9_alpha", 1),
@@ -28639,7 +28639,7 @@ presentations = [
     (position_set_x, pos1, 250),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     (create_game_button_overlay, reg1, "@Accept"),
     (position_set_x, pos1, 750),
@@ -28651,7 +28651,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (start_presentation, "prsnt_governor_selection"),
     (else_try),
         (eq, ":button_pressed_id", "$g_presentation_credits_obj_1"), # pressed  (Return to menu)
@@ -28893,7 +28893,7 @@ presentations = [
     (position_set_x, pos1, 250),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     (create_game_button_overlay, reg1, "@Accept"),
     (position_set_x, pos1, 750),
@@ -28906,7 +28906,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (start_presentation, "prsnt_province_management"),
     (else_try),
         (eq, ":button_pressed_id", "$g_presentation_credits_obj_1"), # pressed  (Return to menu)
@@ -29058,7 +29058,7 @@ presentations = [
     (position_set_x, pos1, 450),
     (position_set_y, pos1, 20),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # (create_game_button_overlay, reg1, "@Accept"),
     # (position_set_x, pos1, 750),
@@ -29204,7 +29204,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (troop_get_slot, ":old_governor", "trp_province_array", "$g_notification_menu_var2"),
         (try_begin),
             (gt, ":old_governor", -1),
@@ -29433,7 +29433,7 @@ presentations = [
     (position_set_x, pos1, 450),
     (position_set_y, pos1, 20),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # (create_game_button_overlay, reg1, "@Accept"),
     # (position_set_x, pos1, 750),
@@ -29579,7 +29579,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (start_presentation, "prsnt_influence_nero"),
     (else_try),
         (store_add, ":slot", "$g_notification_menu_var2", slot_province_senatorial_begin),
@@ -29794,7 +29794,7 @@ presentations = [
     (position_set_x, pos1, 450),
     (position_set_y, pos1, 20),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # (create_game_button_overlay, reg1, "@Accept"),
     # (position_set_x, pos1, 750),
@@ -29940,7 +29940,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (start_presentation, "prsnt_influence_senate"),
     (else_try),
         (store_add, ":slot", "$g_notification_menu_var2", slot_province_senatorial_begin),
@@ -30123,16 +30123,16 @@ presentations = [
         (position_set_y, pos2, ":color_block_size"),
 
         #count lords
-        (assign, "$N_Lords", 1),#player
+        (assign, "$n_lords", 1),#player
         (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
             (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_dead),
             (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_exile),
             (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_heir),
-            (val_add, "$N_Lords", 1),
+            (val_add, "$n_lords", 1),
         (try_end),
 
-        (store_sub, "$N_Centers", walled_centers_end, walled_centers_begin),
-        (val_add, "$N_Centers", 1),
+        (store_sub, "$n_centers", walled_centers_end, walled_centers_begin),
+        (val_add, "$n_centers", 1),
 
         (try_for_range, ":i", 0, 1000),
             (troop_set_slot, "trp_temp_array_a", ":i", -1),
@@ -30896,7 +30896,7 @@ presentations = [
         #Click show all toggle
             (eq, ":object", "$g_btn_show_toggle"),
             #update centers
-            (try_for_range, ":i", 0, "$N_Centers"),
+            (try_for_range, ":i", 0, "$n_centers"),
                 (store_mul, ":indx0", ":i", 6),
                 (troop_get_slot, ":center_overlay", "trp_temp_array_a", ":indx0"),
                 (gt, ":center_overlay", -1),
@@ -30956,7 +30956,7 @@ presentations = [
             #paint centers of chosen faction
             (store_add, ":fac_id", "fac_player_supporters_faction", ":value"),
 
-            (try_for_range, ":i", 0, "$N_Centers"),
+            (try_for_range, ":i", 0, "$n_centers"),
                 (store_mul, ":indx0", ":i", 6),
                 (troop_get_slot, ":center_overlay", "trp_temp_array_a", ":indx0"),
                 (gt, ":center_overlay", -1),
@@ -35253,7 +35253,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     (create_game_button_overlay, reg1, "@Manage your cohorts"),
     (position_set_x, pos1, 750),
@@ -35396,7 +35396,7 @@ presentations = [
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
     (else_try),
         (eq, ":button_pressed_id", "$g_presentation_obj_2"),
@@ -35631,7 +35631,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     (assign, "$g_presentation_obj_3", -1),
     (assign, "$g_presentation_obj_4", -1),
@@ -35810,7 +35810,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (assign, "$temp", -1),
         (start_presentation, "$temp4_1"),
     (else_try),
@@ -36006,7 +36006,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # Back to menu - graphical button
     (create_game_button_overlay, reg1, "@Manage your Cohorts"),
@@ -36169,7 +36169,7 @@ presentations = [
     [
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (assign, "$temp", -1),
         (assign, "$temp2", -1),
         (presentation_set_duration, 0),
@@ -37316,7 +37316,7 @@ presentations = [
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     (try_begin),
         (eq, "$g_apply_budget_report_to_gold", 1),
@@ -37330,7 +37330,7 @@ presentations = [
     [
       (store_trigger_param_1, ":button_pressed_id"),
       (try_begin),
-          (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+          (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
           (assign, "$temp", -1),
           (assign, "$temp2", -1),
           (presentation_set_duration, 0),
@@ -37539,7 +37539,7 @@ presentations = [
     (position_set_x, pos1, 300),
     (position_set_y, pos1, 10),
     (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_Return_to_menu", reg1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # Back to menu - graphical button
     (create_game_button_overlay, reg1, "@Continue"),
@@ -37694,7 +37694,7 @@ presentations = [
         (try_end),
         (start_presentation, "prsnt_select_kingdom"),
     (else_try),
-        (eq, ":button_pressed_id", "$g_jrider_faction_report_Return_to_menu"), # pressed  (Return to menu)
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (jump_to_menu, "mnu_start_game_0"),
         (presentation_set_duration, 0),
     (else_try),

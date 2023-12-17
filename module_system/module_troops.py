@@ -3042,28 +3042,28 @@ def_attrib|level(2), wp(40), knows_common, woman_face_1, woman_face_2 ],
 ["tournament_master","Spywalkers END","Spywalkers END",tf_hero, no_scene,reserved,  fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000000008414401e28f534c8a2d09],
 
 #special slave trader
-["Ramun_the_slave_trader","Ramun","Ramun",tf_hero, no_scene,reserved, fac_commoners,[itm_roman_rich3, itm_caligea],def_attrib|level(5),wp(20),knows_common,0x0000000fd5105592385281c55b8e44eb00000000001d9b220000000000000000],
+["ramun_the_slave_trader","Ramun","Ramun",tf_hero, no_scene,reserved, fac_commoners,[itm_roman_rich3, itm_caligea],def_attrib|level(5),wp(20),knows_common,0x0000000fd5105592385281c55b8e44eb00000000001d9b220000000000000000],
 
 #special gladiators for Roman tournaments
-["Xerina","Tetraites ","Tetraites ",tf_hero, no_scene,reserved,  fac_commoners,
+["xerina","Tetraites ","Tetraites ",tf_hero, no_scene,reserved,  fac_commoners,
 [itm_roman_poor1,itm_caligea],
 def_attrib|str_15|agi_15|level(39),wp(312),knows_power_strike_5|knows_ironflesh_5|knows_riding_10|knows_power_draw_4|knows_athletics_8|knows_shield_3,0x0000000b3d01300925528eb8da4c06db00000000001ec62a0000000000000000],
-["Dranton","Spiculus","Spiculus",tf_hero, no_scene,reserved,  fac_commoners,
+["dranton","Spiculus","Spiculus",tf_hero, no_scene,reserved,  fac_commoners,
 [itm_roman_poor2,itm_caligea],
 def_attrib|str_15|agi_14|level(42),wp(324),knows_power_strike_5|knows_ironflesh_7|knows_riding_10|knows_power_draw_4|knows_athletics_4|knows_shield_3,0x0000000bbf10d012588c55bada6506db00000000001d24e20000000000000000],
-["Kradus","Hermes","Hermes",tf_hero, no_scene,reserved,  fac_commoners,
+["kradus","Hermes","Hermes",tf_hero, no_scene,reserved,  fac_commoners,
 [itm_roman_poor3,itm_caligea],
 def_attrib|str_15|agi_14|level(43),wp(270),knows_power_strike_5|knows_ironflesh_7|knows_riding_10|knows_power_draw_4|knows_athletics_4|knows_shield_3,0x0000000f5b1112c61ce06b7a1db137d200000000001cd31b0000000000000000],
-["Flamma","Flamma","Flamma",tf_hero, no_scene,reserved,  fac_commoners
+["flamma","Flamma","Flamma",tf_hero, no_scene,reserved,  fac_commoners
 ,[itm_roman_poor1,itm_caligea],
 def_attrib|str_15|agi_14|level(43),wp(270),knows_power_strike_5|knows_ironflesh_7|knows_riding_10|knows_power_draw_4|knows_athletics_4|knows_shield_3,0x0000000b3f10b20b294c735ed97a24e400000000001c8a6b0000000000000000],
-["Marcus_Attilius","Marcus Attilius","Marcus Attilius",tf_hero, no_scene,reserved,  fac_commoners,
+["marcus_attilius","Marcus Attilius","Marcus Attilius",tf_hero, no_scene,reserved,  fac_commoners,
 [itm_roman_poor1,itm_caligea],
 def_attrib|str_15|agi_14|level(43),wp(270),knows_power_strike_5|knows_ironflesh_7|knows_riding_10|knows_power_draw_4|knows_athletics_4|knows_shield_3,0x000000002d05300445596ef85b6c06db00000000001d26d80000000000000000],
-["Diocles","Appuleius Diocles","Appuleius Diocles",tf_hero, no_scene,reserved,  fac_commoners,
+["diocles","Appuleius Diocles","Appuleius Diocles",tf_hero, no_scene,reserved,  fac_commoners,
 [itm_roman_poor1,itm_caligea],
 def_attrib|str_15|agi_20|level(43),wp(270),knows_power_strike_5|knows_ironflesh_7|knows_riding_10|knows_power_draw_4|knows_athletics_4|knows_shield_3,0x000000062e01200b491acdbce29658f400000000001d475c0000000000000000],
-["Scorpius","Scorpus","Scorpus",tf_hero, no_scene,reserved,  fac_commoners,
+["scorpius","Scorpus","Scorpus",tf_hero, no_scene,reserved,  fac_commoners,
 [itm_roman_poor1,itm_caligea],
 def_attrib|str_15|agi_20|level(43),wp(270),knows_power_strike_5|knows_ironflesh_7|knows_riding_10|knows_power_draw_4|knows_athletics_4|knows_shield_3,0x00000007ee11100a571b75d8ab6c96db00000000001d38930000000000000000],
 ["tutorial_trainer","Tournament Champions END","Tournament Champions END",tf_hero, 0, 0, fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000000008414401e28f534c8a2d09],
@@ -3084,7 +3084,7 @@ str_21|agi_21|int_6|cha_6|level(25),wp(240),knows_power_strike_10|knows_ironfles
 
 
 #special slave trader
-["Galeas","Galeas","Galeas",tf_hero, 0, reserved, fac_commoners,[itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x00000004718201c073191a9bb10c44eb00000000001d9b220000000000000000],
+["galeas","Galeas","Galeas",tf_hero, 0, reserved, fac_commoners,[itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x00000004718201c073191a9bb10c44eb00000000001d9b220000000000000000],
 
 #SB : semi-random arena training rewards
 ["trainer_1","Trainer","Trainer",tf_hero, scn_training_ground_ranged_melee_1|entry(6),reserved,  fac_commoners,
