@@ -1146,7 +1146,7 @@ attrib_level_23, wp(140), knows_level_23, eastern_man_face_middle_1, eastern_man
 ["arab_spearmen", "Muqrabe", "Muqrabe", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_helmet, no_scene, reserved, fac_nabataea,
 [itm_throwing_spears_east,itm_throwing_spears_east, itm_war_spear,itm_caligea,itm_arabian_tunic_1,itm_arabian_tunic_2,itm_arabian_tunic_3,
 itm_arabian_oval_shield_1,itm_arabian_oval_shield_2,itm_arabian_oval_shield_3,itm_arabian_oval_shield_4,itm_arabian_armor_b,itm_skirmisher_armor,
-itm_sarranid_leather_armor,itm_centurio_east_graves]+desert_turbans_1,
+itm_sarranid_leather_armor]+desert_turbans_1,
 attrib_level_23, wp(140), knows_level_23, eastern_man_face_middle_1, eastern_man_face_old_2 ],
 
 ["desert_bandit", "Farasin", "Farasin",  tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_nabataea,
