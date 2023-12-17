@@ -37349,9 +37349,7 @@ presentations = [
           (display_message, "@X: {reg31} | Y: {reg32}"),
       (try_end),
     ]),
-
 ]),
-
 
 ("select_kingdom", 0, 0, [
   (ti_on_presentation_load,[
