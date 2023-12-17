@@ -38,51 +38,44 @@ from module_constants import *
 ####################################################################################################################
 
 game_menus = [
-  ("start_game_0",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "Welcome to Aut Caesar aut nihil",
-  "none",
-    [
-        (allow_ironman,0),#no save without quite
-        (assign, "$difficulty_type", camp_d2),	#beginner
-        (assign, "$g_gore_on", 0), # gore
-        (assign, "$g_charge_on", 0), # charge animation
-        (assign, "$use_player_auxiliary", 1), # player respawn after death
-        (assign, "$g_autoloot_active", 1), # autoloot
-        (assign, "$g_realistic_wounding", 0), # troops get wounded during battle instead of dead
-        (assign, "$vc_wounds_on", 0), # player may get wounded
-        (assign, "$moralep_on", 0), # resting moral effect
-        (assign, "$g_body_guard_on", 1), # body guards
-        (assign, "$g_allow_curb_power", 0), # curb power war goal
-        (assign, "$g_schield_bash", 0), # AI uses shieldbash
-        (assign, "$g_lord_can_spawn_out_center", 1), # message governor/lord gets a center notification
-        (assign, "$show_truce_expired", 0), # message truce expired
-        (assign, "$show_raid_messages", 0), # message raid
-        (assign, "$g_love_messages_on", 1), # message love affair
-        (assign, "$g_show_senate_meeting", 1), # message senate meeting
-        (assign, "$g_report_enemies", 0), # message enemy spotted
-        (assign, "$g_display_gift", 0), # message lord recieves gift
-        (options_set_damage_to_player, 0),	#0 = 1/4, 1 = 1/2, 2 = 1/1
-        (options_set_damage_to_friends, 0),	#0 = 1/2, 1 = 3/4, 2 = 1/1
-        (options_set_combat_ai, 2),		#0 = good, 1 = average, 2 = poor
-        (options_set_campaign_ai, 2),	#0 = good, 1 = average, 2 = poor
-        (options_set_combat_speed, 0),	#0 = slowest, 1 = slower, 2 = normal, 3 = faster, 4 = fastest
-        (assign, reg60, 1),
-        (start_presentation, "prsnt_vc_options"),
-
-        # (play_sound, "snd_message_negative_sound", 1),
-    ],
-    [
-      ("go_back",[],"Go back",
-       [
-         (change_screen_quit),
-       ]),
-    ]
-  ),
+("start_game_0",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Welcome to Aut Caesar aut nihil",
+  "none",[
+    (allow_ironman,0),#no save without quite
+    (assign, "$difficulty_type", camp_d2),	#beginner
+    (assign, "$g_gore_on", 0), # gore
+    (assign, "$g_charge_on", 0), # charge animation
+    (assign, "$use_player_auxiliary", 1), # player respawn after death
+    (assign, "$g_autoloot_active", 1), # autoloot
+    (assign, "$g_realistic_wounding", 0), # troops get wounded during battle instead of dead
+    (assign, "$vc_wounds_on", 0), # player may get wounded
+    (assign, "$moralep_on", 0), # resting moral effect
+    (assign, "$g_body_guard_on", 1), # body guards
+    (assign, "$g_allow_curb_power", 0), # curb power war goal
+    (assign, "$g_schield_bash", 0), # AI uses shieldbash
+    (assign, "$g_lord_can_spawn_out_center", 1), # message governor/lord gets a center notification
+    (assign, "$show_truce_expired", 0), # message truce expired
+    (assign, "$show_raid_messages", 0), # message raid
+    (assign, "$g_love_messages_on", 1), # message love affair
+    (assign, "$g_show_senate_meeting", 1), # message senate meeting
+    (assign, "$g_report_enemies", 0), # message enemy spotted
+    (assign, "$g_display_gift", 0), # message lord recieves gift
+    (options_set_damage_to_player, 0),	#0 = 1/4, 1 = 1/2, 2 = 1/1
+    (options_set_damage_to_friends, 0),	#0 = 1/2, 1 = 3/4, 2 = 1/1
+    (options_set_combat_ai, 2),		#0 = good, 1 = average, 2 = poor
+    (options_set_campaign_ai, 2),	#0 = good, 1 = average, 2 = poor
+    (options_set_combat_speed, 0),	#0 = slowest, 1 = slower, 2 = normal, 3 = faster, 4 = fastest
+    (assign, reg60, 1),
+    (start_presentation, "prsnt_vc_options"),
+  ],[
+  ("go_back",[],"Go back",[
+    (change_screen_quit),
+  ]),
+]),
 
 ("start_phase_2",mnf_disable_all_keys,
-    "{s30}",
-    "none",
-  [
+  "{s30}",
+  "none",[
     (try_begin),
         (this_or_next|eq, "$g_campaign_type", g_campaign_king),
         (this_or_next|eq, "$g_campaign_type", g_campaign_lord),
@@ -102,438 +95,163 @@ game_menus = [
         (troop_set_slot, "trp_senator_dummy", slot_senate_next_meeting, 4),##in 4 days
         (troop_set_slot, "trp_senator_dummy", slot_senate_support, 0),##support
 	  (try_end),
-  ],
-  [##diplomacy start+ Replace "join" with "Join" in the following
-
+],[
   ("beggar",[
     (eq, "$g_campaign_type", g_campaign_story_rome),
 	  (is_between, "$guard_god", 1, 7),
 	  (neq, "$g_is_emperor", 1),
-	  (eq, "$current_startup_quest_phase", 0),],"Continue.",
-    [
-      (assign, "$current_town", "p_town_6"),
-      (assign, "$g_starting_town", "$current_town"),
-      (troop_set_slot, "trp_player", slot_troop_renown, 20),
+	  (eq, "$current_startup_quest_phase", 0),
+  ],"Continue.",[
+    (assign, "$current_town", "p_town_6"),
+    (assign, "$g_starting_town", "$current_town"),
+    (troop_set_slot, "trp_player", slot_troop_renown, 20),
 
-      (set_show_messages, 0),
-      (troop_add_item, "trp_player", "itm_club"),
-      (troop_add_item, "trp_player", "itm_roman_poor2"),
-      (troop_add_item, "trp_player", "itm_graves_simple_2"),
-      # (troop_add_item, "trp_player", "itm_stones"),
-      (troop_equip_items, "trp_player"),
-      (set_show_messages, 1),
-      #0 player
-      #1-12 other slaves
-      #13, 14, 15, 18 guards
-      #16 master, 17 daughter of master
-      #19, 20, 21 servants/other civilians
-      #(jump_to_menu, "mnu_start_phase_3"),
-      (assign, "$temp", 0),
-      (assign, "$talk_context",tc_mission_1_talk),
-      (set_jump_mission,"mt_starting_mission"),
-      (modify_visitors_at_site,"scn_starting_villa"),
-      (reset_visitors, 0),
-      (set_visitor,0,"trp_player"), #player
-      (try_for_range, ":entry", 1, 13),
-          (store_random_in_range, ":number", 1, 4),
-          (set_visitors, ":entry", "trp_slave", ":number"),
-      (try_end),
-      (set_visitors, 13, "trp_vigilia",1),
-      (set_visitors, 14, "trp_vigilia",1),
-      (set_visitors, 15, "trp_vigilia", 2),
-      (set_visitors, 18, "trp_vigilia",2),
-      (set_visitors, 16, "trp_guest",1),
-      (set_visitors, 17, "trp_guest_female",1),
-      (set_visitors, 19, "trp_roman_town_walker",3),
-      (set_visitors, 20, "trp_roman_town_walker_female",2),
-      (set_visitors, 21, "trp_roman_town_walker_female",1),
-      (jump_to_scene,"scn_starting_villa"),
-      (change_screen_mission),
+    (set_show_messages, 0),
+    (troop_add_item, "trp_player", "itm_club"),
+    (troop_add_item, "trp_player", "itm_roman_poor2"),
+    (troop_add_item, "trp_player", "itm_graves_simple_2"),
+    # (troop_add_item, "trp_player", "itm_stones"),
+    (troop_equip_items, "trp_player"),
+    (set_show_messages, 1),
+    #0 player
+    #1-12 other slaves
+    #13, 14, 15, 18 guards
+    #16 master, 17 daughter of master
+    #19, 20, 21 servants/other civilians
+    #(jump_to_menu, "mnu_start_phase_3"),
+    (assign, "$temp", 0),
+    (assign, "$talk_context",tc_mission_1_talk),
+    (set_jump_mission,"mt_starting_mission"),
+    (modify_visitors_at_site,"scn_starting_villa"),
+    (reset_visitors, 0),
+    (set_visitor,0,"trp_player"), #player
+    (try_for_range, ":entry", 1, 13),
+        (store_random_in_range, ":number", 1, 4),
+        (set_visitors, ":entry", "trp_slave", ":number"),
+    (try_end),
+    (set_visitors, 13, "trp_vigilia",1),
+    (set_visitors, 14, "trp_vigilia",1),
+    (set_visitors, 15, "trp_vigilia", 2),
+    (set_visitors, 18, "trp_vigilia",2),
+    (set_visitors, 16, "trp_guest",1),
+    (set_visitors, 17, "trp_guest_female",1),
+    (set_visitors, 19, "trp_roman_town_walker",3),
+    (set_visitors, 20, "trp_roman_town_walker_female",2),
+    (set_visitors, 21, "trp_roman_town_walker_female",1),
+    (jump_to_scene,"scn_starting_villa"),
+    (change_screen_mission),
   ]),
-
-  # ("tribune",[
-  #     (eq, "$g_campaign_type", g_campaign_story_rome),
-  #     (neg|is_between, "$guard_god", 1, 7),
-  #     (neq, "$g_is_emperor", 1),
-  #     (eq, "$current_startup_quest_phase", 0),],"Continue",
-  #   [
-  #     (assign, "$current_town", "p_town_6"),
-  #     (assign, "$g_starting_town", "$current_town"),
-  #     (party_set_morale, "p_main_party", 100),
-  #     (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
-  #     (jump_to_menu, "mnu_promotion"),
-  # ]),
-
-  # ("emperor",[
-  #     (eq, "$g_campaign_type", g_campaign_story_rome),
-  #     (eq, "$g_is_emperor", 1),
-  #     (eq, "$current_startup_quest_phase", 0),
-  # ],"Continue",
-  # [
-  #     (assign, "$current_town", "p_town_6"),
-  #     (assign, "$g_starting_town", "$current_town"),
-  #     (party_set_morale, "p_main_party", 100),
-  #     (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
-  #     (party_add_template, "p_main_party", "pt_ala_preat"),
-  #     (party_add_template, "p_main_party", "pt_praetoriani_cohors"),
-
-  #     (party_set_slot, "p_main_party", slot_cohort_1, "pt_ala_preat"),
-  #     (party_set_slot, "p_main_party", slot_cohort_2, "pt_praetoriani_cohors"),
-
-  #     # (call_script, "script_give_center_to_lord", "p_village_199",  "trp_aux_commander_7", 0),
-  #     # (call_script, "script_give_center_to_lord", "p_village_51",  "trp_aux_commander_8", 0),
-  #     # (call_script, "script_give_center_to_lord", "p_village_163",  "trp_aux_commander_9", 0),
-  #     # (call_script, "script_give_center_to_lord", "p_village_17",  "trp_aux_commander_10", 0),
-  #     # (call_script, "script_give_center_to_lord", "p_village_84",  "trp_aux_commander_11", 0),
-  #     # (call_script, "script_give_center_to_lord", "p_village_10",  "trp_aux_commander_12", 0),
-  #     # (call_script, "script_give_center_to_lord", "p_village_158",  "trp_aux_commander_13", 0),
-  #     # (call_script, "script_give_center_to_lord", "p_village_43",  "trp_aux_commander_14", 0),
-  #     # (call_script, "script_give_center_to_lord", "p_village_109",  "trp_aux_commander_15", 0),
-
-  #     (troop_set_slot, "trp_npc17", slot_troop_met, 1),
-  #     (troop_set_slot, "trp_npc18", slot_troop_met, 1),
-  #     (troop_set_slot, "trp_npc19", slot_troop_met, 1),
-  #     (troop_set_slot, "trp_npc20", slot_troop_met, 1),
-  #     (troop_set_slot, "trp_npc21", slot_troop_met, 1),
-  #     (troop_set_slot, "trp_npc22", slot_troop_met, 1),
-  #     (troop_set_slot, "trp_npc23", slot_troop_met, 1),
-
-  #     (call_script, "script_recruit_troop_as_companion", "trp_npc17"),
-  #     (call_script, "script_recruit_troop_as_companion", "trp_npc18"),
-  #     (call_script, "script_recruit_troop_as_companion", "trp_npc19"),
-  #     (call_script, "script_recruit_troop_as_companion", "trp_npc20"),
-  #     (call_script, "script_recruit_troop_as_companion", "trp_npc21"),
-  #     (call_script, "script_recruit_troop_as_companion", "trp_npc22"),
-  #     (call_script, "script_recruit_troop_as_companion", "trp_npc23"),
-  #     (change_screen_map),
-  # ]),
-
 ]),
 
+("start_game_3",mnf_disable_all_keys,
+  "Choose your scenario:",
+  "none",[
+    (assign, "$g_custom_battle_scenario", 0),
+    (assign, "$g_custom_battle_scenario", "$g_custom_battle_scenario"),
+  ],[
+  ("go_back",[],"Go back",[
+    (change_screen_quit),
+  ]),
+]),
 
+("tutorial",mnf_disable_all_keys,
+  "Disabled feature.",
+   "none",[
+  ],[
+  ("go_back_dot",[
+  ],"Go back.",[
+    (change_screen_quit),
+  ]),
+]),
 
+("reports",mnf_enable_hot_keys,
+  "Nothing",
+  "none",[
+    (try_begin),
+      (eq,"$temp",6), #waiting, building, exit
+      (assign,"$temp",0), #waiting, building, exit
+      (change_screen_map),
+    (else_try),
+      (start_presentation, "prsnt_character_report"),
+    (try_end),
+  ],[
+  ("resume_travelling",[
+  ],"Resume travelling.",[
+    (change_screen_return),
+  ]),
+]),
 
-  (
-    "start_game_3",mnf_disable_all_keys,
-    "Choose your scenario:",
-    "none",
-    [
-      (assign, "$g_custom_battle_scenario", 0),
-      (assign, "$g_custom_battle_scenario", "$g_custom_battle_scenario"),
+("custom_battle_scene",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "(NO_TRANS)",
+  "none",[
+  ],[
+  ("quick_battle_scene_1",[],"{!}quick_battle_scene_1",[
+    (set_jump_mission,"mt_ai_training"),
+    (jump_to_scene,"scn_quick_battle_scene_1"),(change_screen_mission)
+  ]),
+  ("quick_battle_scene_2",[],"{!}quick_battle_scene_2",[
+    (set_jump_mission,"mt_ai_training"),
+    (jump_to_scene,"scn_quick_battle_scene_2"),(change_screen_mission)
+  ]),
+  ("quick_battle_scene_3",[],"{!}quick_battle_scene_3",[
+    (set_jump_mission,"mt_ai_training"),
+    (jump_to_scene,"scn_quick_battle_scene_3"),(change_screen_mission)
+  ]),
+  ("quick_battle_scene_4",[],"{!}quick_battle_scene_4",[
+    (set_jump_mission,"mt_ai_training"),
+    (jump_to_scene,"scn_quick_battle_scene_4"),(change_screen_mission)
+  ]),
+  ("quick_battle_scene_5",[],"{!}quick_battle_scene_5",[
+    (set_jump_mission,"mt_ai_training"),
+    (jump_to_scene,"scn_quick_battle_scene_5"),(change_screen_mission)
+  ]),
+  ("go_back",[],"{!}Go back",[
+    (change_screen_quit),
+  ]),
+]),
 
-      ],
-    [
-      ("go_back",[],"Go back",
-       [(change_screen_quit),
-        ]
-		),
-    ]
-  ),
+("custom_battle_end",mnf_disable_all_keys,
+  "The battle is over. {s1} Your side killed {reg5} enemies and lost {reg6} troops over the battle. You personally slew {reg7} men in the fighting.",
+  "none",[
+    (music_set_situation, 0),
+    (assign, reg5, "$g_custom_battle_team2_death_count"),
+    (assign, reg6, "$g_custom_battle_team1_death_count"),
+    (get_player_agent_kill_count, ":kill_count"),
+    (get_player_agent_kill_count, ":wound_count", 1),
+    (store_add, reg7, ":kill_count", ":wound_count"),
+    (try_begin),
+      (eq, "$g_battle_result", 1),
+      (str_store_string, s1, "str_battle_won"),
+      (set_background_mesh, "mesh_pic_defeat"),
+    (else_try),
+      (str_store_string, s1, "str_battle_lost"),
+      (set_background_mesh, "mesh_pic_victory"),
+    (try_end),
+  ],[
+  ("continue",[],"Continue...",[
+    (change_screen_quit),
+  ]),
+]),
 
-  (
-    "tutorial",mnf_disable_all_keys,
-    "Disabled feature.",
-    "none",
-    [
-    ],
-    [
-
-      ("go_back_dot",
-      [],
-      "Go back.",
-       [
-         (change_screen_quit),
-       ]),
-    ]
-  ),
-
-  ("reports",mnf_enable_hot_keys,
-   "Nothing",
-   "none",
-   [
-      (try_begin),
-        (eq,"$temp",6), #waiting, building, exit
-        (assign,"$temp",0), #waiting, building, exit
-        (change_screen_map),
-      (else_try),
-        (start_presentation, "prsnt_character_report"),
-      (try_end),
-
-
-   ],
-    [
-
-
-       # ("troop_tree",[
-      # ],"View troop tree",
-       # [
-       # (start_presentation, "prsnt_upgrade_tree_1"),
-        # ]
-       # ),
-
-       # ("action_view_world_map",[],"World map.",
-       # [
-        # (start_presentation, "prsnt_world_map"),
-        # ]
-       # ),
-      # ("cheat_faction_orders",[(ge,"$cheat_mode",1)],"{!}Cheat: Faction orders.",
-       # [(jump_to_menu, "mnu_faction_orders"),
-        # ]
-       # ),
-      # ("view_character_report",[],"Character report.",
-       # [(jump_to_menu, "mnu_character_report"),
-        # ]
-       # ),
-      # ("view_party_size_report",[],"Party size report.",
-       # [(jump_to_menu, "mnu_party_size_report"),
-        # ]
-       # ),
-
-      # ("view_npc_mission_report",[],"Companion mission report.",
-       # [(jump_to_menu, "mnu_companion_report"),
-        # #SB : we modified this, reset the global to the player so it shows up first
-        # (assign, "$g_player_troop", "trp_player"),
-        # #could also jump to presentation directly
-        # ]
-       # ),
-
-      # ("view_weekly_budget_report",[],"Weekly budget report.",
-       # [
-         # (assign, "$g_apply_budget_report_to_gold", 0),
-         # (start_presentation, "prsnt_budget_report"),
-        # ]
-       # ),
-
-      # ("view_morale_report",[],"Party morale report.",
-       # [(jump_to_menu, "mnu_morale_report"),
-        # ]
-       # ),
-      # ("view_edicts",[],"Edicts and laws of the Roman Empire.",
-       # [(jump_to_menu, "mnu_edicts"),
-        # ]
-       # ),
-     # ("view_edicts",[],"Report of the Roman Empire",
-       # [(start_presentation, "prsnt_roman_empire_report"),
-        # ]
-       # ),
-	   # ("view_legions",[],"Legions of the Roman Empire.",
-       # [(jump_to_menu, "mnu_legions"),
-        # ]
-       # ),
-
-#NPC companion changes begin
-##diplomacy start
-      # ("lord_relations",[],"List of known lords by relation.",
-       # [
-         # #(jump_to_menu, "mnu_lord_relations"),
-         # (assign, "$g_jrider_pres_called_from_menu", 1),
-         # (assign, "$g_character_presentation_type", 1),
-         # (start_presentation, "prsnt_jrider_character_relation_report"),
-        # ]
-       # ),
-# ##diplomacy end
-
-	# ##diplomacy start+ see dplmc_affiliated_family_report
-     # ("view_affiliated_family_report",[
-		# #(this_or_next|troop_slot_ge, "trp_player", slot_troop_spouse, 1),
-       # # (this_or_next|ge,"$cheat_mode",1),
-		# (is_between, "$g_player_affiliated_troop", kingdoms_begin, kingdoms_end),
-		# ], "View affiliated family member / spouse report.",
-       # [
-           # (jump_to_menu, "mnu_dplmc_affiliated_family_report"),
-        # ]
-       # ),
-	# ##diplomacy end+
-
-      # ("courtship_relations",[],"Courtship relations.",
-       # [
-		# #(jump_to_menu, "mnu_courtship_relations"),
-         # (assign, "$g_jrider_pres_called_from_menu", 1),
-         # (assign, "$g_character_presentation_type", 0),
-         # (start_presentation, "prsnt_jrider_character_relation_report"),
-
-        # ]
-       # ),
-
-      # ("status_check",[(eq,"$cheat_mode",1)],"{!}NPC status check.",
-       # [
-        # (try_for_range, ":npc", companions_begin, companions_end),
-            # (main_party_has_troop, ":npc"),
-            # (str_store_troop_name, 4, ":npc"),
-            # (troop_get_slot, reg3, ":npc", slot_troop_morality_state),
-            # (troop_get_slot, reg4, ":npc", slot_troop_2ary_morality_state),
-            # (troop_get_slot, reg5, ":npc", slot_troop_personalityclash_state),
-            # (troop_get_slot, reg6, ":npc", slot_troop_personalityclash2_state),
-            # (troop_get_slot, reg7, ":npc", slot_troop_personalitymatch_state),
-            # (display_message, "@{!}{s4}: M{reg3}, 2M{reg4}, PC{reg5}, 2PC{reg6}, PM{reg7}"),
-        # (try_end),
-        # ]
-       # ),
-
-#NPC companion changes end
-
-	   # ##diplomacy begin
-     # ("view_faction_relations_report",[],"Faction relations report.",
-       # [
-           # # Jrider + REPORTS PRESENTATIONS 1.2, comment to hook faction report presentation
-           # ##(jump_to_menu, "mnu_faction_relations_report"),
-           # (start_presentation, "prsnt_jrider_faction_relations_report"),
-           # # Jrider -
-        # ]
-       # ),
-
-      # ("view_vassal_report",[(eq, "$g_is_emperor", 1),],"Commanders report.",
-       # [
-           # # Jrider + REPORTS PRESENTATIONS 1.2, comment to hook faction report presentation
-           # ##(jump_to_menu, "mnu_faction_relations_report"),
-           # (start_presentation, "prsnt_vassal_report"),
-           # # Jrider -
-        # ]
-       # ),
-
-     # ("dplmc_show_economic_report",[(ge, "$cheat_mode", 1)],"Prosperity report.",
-       # [
-           # (jump_to_menu, "mnu_dplmc_economic_report"),
-        # ]
-       # ),
-       ##diplomacy end
-
-      ("resume_travelling",[],"Resume travelling.",
-       [(change_screen_return),
-        ]
-       ),
-      ]
-  ),
-
-  (
-    "custom_battle_scene",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "(NO_TRANS)",
-
-    "none",
-    [],
-    [
-
-      ("quick_battle_scene_1",[],"{!}quick_battle_scene_1",
-       [
-           (set_jump_mission,"mt_ai_training"),
-           (jump_to_scene,"scn_quick_battle_scene_1"),(change_screen_mission)
-		]
-       ),
-      ("quick_battle_scene_2",[],"{!}quick_battle_scene_2",
-       [
-           (set_jump_mission,"mt_ai_training"),
-           (jump_to_scene,"scn_quick_battle_scene_2"),(change_screen_mission)
-		]
-       ),
-      ("quick_battle_scene_3",[],"{!}quick_battle_scene_3",
-       [
-           (set_jump_mission,"mt_ai_training"),
-           (jump_to_scene,"scn_quick_battle_scene_3"),(change_screen_mission)
-		]
-       ),
-      ("quick_battle_scene_4",[],"{!}quick_battle_scene_4",
-       [
-           (set_jump_mission,"mt_ai_training"),
-           (jump_to_scene,"scn_quick_battle_scene_4"),(change_screen_mission)
-		]
-       ),
-      ("quick_battle_scene_5",[],"{!}quick_battle_scene_5",
-       [
-           (set_jump_mission,"mt_ai_training"),
-           (jump_to_scene,"scn_quick_battle_scene_5"),(change_screen_mission)
-		]
-       ),
-
-      ("go_back",[],"{!}Go back",
-       [(change_screen_quit),
-        ]
-       ),
-      ]
-  ),
-
-
-  (
-    "custom_battle_end",mnf_disable_all_keys,
-    "The battle is over. {s1} Your side killed {reg5} enemies and lost {reg6} troops over the battle. You personally slew {reg7} men in the fighting.",
-    "none",
-    [(music_set_situation, 0),
-     (assign, reg5, "$g_custom_battle_team2_death_count"),
-     (assign, reg6, "$g_custom_battle_team1_death_count"),
-     (get_player_agent_kill_count, ":kill_count"),
-     (get_player_agent_kill_count, ":wound_count", 1),
-     (store_add, reg7, ":kill_count", ":wound_count"),
-     (try_begin),
-       (eq, "$g_battle_result", 1),
-       (str_store_string, s1, "str_battle_won"),
-       (set_background_mesh, "mesh_pic_defeat"),
-     (else_try),
-       (str_store_string, s1, "str_battle_lost"),
-       (set_background_mesh, "mesh_pic_victory"),
-     (try_end),
-     ],
-    [
-      ("continue",[],"Continue...",
-       [(change_screen_quit),
-        ]
-       ),
-    ]
-  ),
-
-    ("start_game_01",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  ##diplomacy begin
-    "Roman, remember that you shall rule the nations by your authority, for this is to be your skill, to make peace the custom, to spare the conquered,^"
-    +"and to wage war until the haughty are brought low.^ Virgil, Aeneid^^"+
-    "Fortuna offers you three different clothes: a purple robe, a simple toga or an old and smelly tunic. You take the tunic.",
-  ##diplomacy end
-  "none",
-    [
-
-	],
-    [
-    #   ("emperor_cheat",[],"Prelude",
-    #    [
-    #     (start_presentation, "prsnt_intro"),
-    #    ]
-	  #  ),
-
-    #    ("emperor_cheat",[],"Try the purple toga",
-    #    [
-    #     (assign, "$g_next_menu", "mnu_start_as_emperor_1"),
-    #     (jump_to_menu, "mnu_start_game_1"),
-	  #  #(jump_to_menu, "mnu_game_difficulty"),
-    #    ]
-	  #  ),
-
-
-    #    ("start_as_tribune",[],"I want the toga",
-    #    [
-    #    (assign, "$g_next_menu", "mnu_start_as_tribune_1"),
-    #    (jump_to_menu, "mnu_start_game_1"),
-    # # (jump_to_menu, "mnu_game_difficulty"),
-    #    ]
-	  #  ),
-
-     ("continue",[],"Fortes fortuna adiuvat!",
-       [
-          (start_presentation, "prsnt_intro"),
-          #  (assign, "$g_next_menu", "mnu_choose_attribute_1"),
-          #  (jump_to_menu, "mnu_start_game_1"),
-        ]
-       ),
-
-      ("go_back",[],"Go back",
-       [
-         # (assign, "$difficulty_type", camp_d4),
-         (assign, reg60, 1),
-         (start_presentation, "prsnt_vc_options"),
-       ]),
-    ]
-    ),
+("start_game_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Roman, remember that you shall rule the nations by your authority, for this is to be your skill, to make peace the custom, to spare the conquered,^"
+  +"and to wage war until the haughty are brought low.^ Virgil, Aeneid^^"+
+  "Fortuna offers you three different clothes: a purple robe, a simple toga or an old and smelly tunic. You take the tunic.",
+  "none",[
+    (set_background_mesh, "mesh_pic_elysium"),
+  ],[
+  ("continue",[],"Fortes fortuna adiuvat!",[
+    (start_presentation, "prsnt_intro"),
+  ]),
+  ("go_back",[],"Go back",[
+    (assign, reg60, 1),
+    (start_presentation, "prsnt_vc_options"),
+  ]),
+]),
 
 ("start_game_sandbox",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "This service is currently not available.",
-  "none",
-  [
+  "This service is currently not available.",
+  "none",[
     (try_begin),
         (this_or_next|eq, "$g_campaign_type", g_campaign_lord),
         (eq, "$g_campaign_type", g_campaign_king),
@@ -544,416 +262,60 @@ game_menus = [
         (assign, "$background_answer_4", "fac_culture_1"),
         (start_presentation, "prsnt_mcc_character_creation"),
     (try_end),
-  ],
-  [
-    # ("emperor_cheat",[],"Germanic",
-    # [
-    # (call_script, "script_player_is_king", "fac_kingdom_4"),
-    #  (jump_to_menu, "mnu_auto_return"),
-    #  (start_presentation, "prsnt_banner_selection"),
-    #    ]),
-    # ("emperor_cheat",[],"Celtic",
-    # [(call_script, "script_player_is_king", "fac_kingdom_2"),
-    #  (jump_to_menu, "mnu_auto_return"),
-    #  (start_presentation, "prsnt_banner_selection"),
-    #    ]),
-    # ("emperor_cheat",[],"Sarmatian",
-    # [(call_script, "script_player_is_king", "fac_kingdom_11"),
-    #  (jump_to_menu, "mnu_auto_return"),
-    #  (start_presentation, "prsnt_banner_selection"),
-    #    ]),
-    # ("emperor_cheat",[],"Parthian",
-    # [(call_script, "script_player_is_king", "fac_kingdom_6"),
-    #  (jump_to_menu, "mnu_auto_return"),
-    #  (start_presentation, "prsnt_banner_selection"),
-    #    ]),
-    # ("emperor_cheat",[],"Dacian",
-    # [(call_script, "script_player_is_king", "fac_kingdom_1"),
-    #  (jump_to_menu, "mnu_auto_return"),
-    #  (start_presentation, "prsnt_banner_selection"),
-    #    ]),
-    # ("emperor_cheat",[],"Bosporan",
-    # [(call_script, "script_player_is_king", "fac_kingdom_3"),
-    #  (jump_to_menu, "mnu_auto_return"),
-    #  (start_presentation, "prsnt_banner_selection"),
-    #    ]),
-   ("emperor_cheat",[],"Go back",
-    [
-      (change_screen_quit),
+  ],[
+  ("emperor_cheat",[],"Go back",[
+    (change_screen_quit),
   ]),
 ]),
 
+("start_game_11",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Exit?",
+  "none",[
+    (change_screen_quit),
+  ],[
+]),
 
-  ("start_game_11",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "Exit?",
-    "none",
-    [
-      (change_screen_quit),
-    ],
-    [
-    ]
-  ),
-
-#   ("start_as_tribune_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-#     "Being the {reg11?daughter:son} of a senator, you had a pleasant childhood. You enjoyed Roman education in its whole,\
-#  but your main interest was ...",
-#     "none",
-# ##diplomacy start+ Reset prejudice preferences
-#     [
-
-# 	(set_background_mesh, "mesh_pic_emperor"),
-#     ],
-# ##diplomacy end+
-#     [
-#       ("start_married",[
-#       (try_begin),
-#         (eq, "$character_gender", tf_female),
-#         (str_store_string, s1, "@women"),
-#       (else_try),
-#         (str_store_string, s1, "@men"),
-#       (try_end),
-
-# 	  ],"... mathematic and science.",
-#        [
-#        (assign, "$temp", 1),
-#        (jump_to_menu,"mnu_start_as_tribune_2"),
-#         ]
-#        ),
-
-#        ("start_married",[
-
-# 	  ],"... rethoric and the various ways to persuade people.",
-#        [
-#        (assign, "$temp", 2),
-#        (jump_to_menu,"mnu_start_as_tribune_2"),
-
-#         ]
-#        ),
-
-#        ("start_married",[
-#          (neq, "$character_gender", tf_female),
-# 	  ],"... the military, especially weapons and their usage.",
-#        [
-#        (assign, "$temp", 3),
-#        (jump_to_menu,"mnu_start_as_tribune_2"),
-#         ]
-#        ),
-
-
-# 	  ("go_back",[],"Go back",
-#        [
-# 	     (jump_to_menu,"mnu_start_game_1"),
-#        ]),
-#     ]
-#   ),
-
-
-#   ("start_as_tribune_2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-#     "Soon after you reached adulthood, your father died. You never found out if he was murdered by\
-#  political enemies or if he was simply robbed by some night bandits. Nevertheless, soon after your father's death\
-#  your mother followed him into the underworld. You felt like it would be the time to change your life and\
-#  enlist in military service as a tribunus militaris.",
-#  "none",
-# ##diplomacy start+ Reset prejudice preferences
-#     [
-
-#     (set_background_mesh, "mesh_pic_family"),
-#     ],
-# ##diplomacy end+
-#     [
-#        ("start_single",[],"Continue.",
-#        [
-#         (call_script, "script_start_as_tribune"),
-#         (change_screen_return),
-# 	   # (jump_to_menu, "mnu_auto_return"),
-#         #(start_presentation, "prsnt_banner_selection"),
-#         ]
-#        ),
-
-# 	  ("go_back",[],"Go back",
-#        [
-# 	     (jump_to_menu,"mnu_start_as_tribune_1"),
-#        ]),
-#     ]
-#   ),
-
-#   ("start_as_emperor_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-#     "You are known ...",
-#     "none",
-# ##diplomacy start+ Reset prejudice preferences
-#     [
-
-# 	(set_background_mesh, "mesh_pic_girls"),
-#     ],
-# ##diplomacy end+
-#     [
-#       ("start_married",[
-#       (try_begin),
-#         (eq, "$character_gender", tf_female),
-#         (str_store_string, s1, "@women"),
-#       (else_try),
-#         (str_store_string, s1, "@men"),
-#       (try_end),
-
-# 	  ],"... as one of the most intelligent {s1} in Rome",
-#        [
-#        (assign, "$temp", 1),
-#        (str_store_string, s23, "@most intelligent {s1} in Rome"),
-#        (jump_to_menu,"mnu_start_as_emperor"),
-#         ]
-#        ),
-
-#        ("start_married",[
-
-# 	  ],"... as one of the most charismatic orators in Rome",
-#        [
-#        (assign, "$temp", 2),
-#        (str_store_string, s23, "@most charismatic orator in Rome"),
-#        (jump_to_menu,"mnu_start_as_emperor"),
-
-#         ]
-#        ),
-
-#        ("start_married",[
-#          (neq, "$character_gender", tf_female),
-# 	  ],"... as one of the strongest and most fearsome officers in Rome",
-#        [
-#        (assign, "$temp", 3),
-#       (str_store_string, s23, "@strongest, most fearsome and renowned officer in Rome"),
-#        (jump_to_menu,"mnu_start_as_emperor"),
-#         ]
-#        ),
-#        ("start_married",[
-#          (eq, "$character_gender", tf_female),
-# 	  ],"... as the most beautiful woman in Rome",
-#        [
-#        (assign, "$temp", 3),
-#       (str_store_string, s23, "@the most beautiful woman in Rome"),
-#        (jump_to_menu,"mnu_start_as_emperor"),
-#         ]
-#        ),
-
-# 	  ("go_back",[],"Go back",
-#        [
-# 	     (jump_to_menu,"mnu_start_game_0"),
-#        ]),
-#     ]
-#   ),
-# ("start_as_emperor",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-#     "You are {s1}, the 22 year old {s2} of Caesar Augustus Tiberius Claudius Germanicus and Valeria Messalina. \
-#     You were considered as your father's heir, but then your father met Agrippina and her son Lucius Domitius Ahenobarbus.\
-#     He started to like Domitius and his mother more than you and your mother. But Valeria managed to drive Agrippina from Claudius by initiating a fake coup for which she framed Agrippina as responsible.\
-#   After the coup was exposed, Agrippina and some other 'conspirators' were put to the sword. None would challenge your succession any more.^^\
-#     Yesterday Claudius died. Some say an illness took him, while others whisper you had your hands involved. Either way, now you are Caesar Augustus, Princeps of Rome, and all with a wicked tongue fall silent in your presence.",
-#     "none",
-# ##diplomacy start+ Reset prejudice preferences
-#     [
-#     (try_begin),
-#       (neq, "$character_gender", tf_female),
-#       (str_store_string, s1, "@Tiberius Claudius Britannicus"),
-#     (else_try),
-#       (str_store_string, s1, "@Julia Britannica"),
-#     (try_end),
-#     (troop_set_name, "trp_player", s1),
-#     (troop_set_plural_name, "trp_player", s1),
-#     (try_begin),
-#       (eq, "$character_gender", tf_female),
-#       (str_store_string, s2, "@daughter"),
-#     (else_try),
-#       (str_store_string, s2, "@son"),
-#     (try_end),
-#     (set_background_mesh, "mesh_pic_palast"),
-#     ],
-# ##diplomacy end+
-#     [
-#       ("start_married",[
-#     #(neq, "$character_gender", tf_female),
-# 	  (str_store_troop_name_plural, s30, "trp_kingdom_7_lady_1"),
-# 	  ],"You married {s30}",
-#        [
-#        (call_script, "script_start_emperor"),
-
-# 	    (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_spouse, "trp_player"),
-# 	    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_spouse, -1),
-# 	  	(troop_set_slot, "trp_player", slot_troop_spouse, "trp_kingdom_7_lady_1"),
-# 	  	(call_script, "script_troop_set_title_according_to_faction", "trp_kingdom_7_lady_1", "$players_kingdom"),
-
-# 	  	(jump_to_menu, "mnu_auto_return"),
-#         (start_presentation, "prsnt_banner_selection"),
-#         ]
-#        ),
-# 	  ("start_single",[
-#    # (neq, "$character_gender", tf_female),
-#     ],"You haven't married yet",
-#        [
-#          (call_script, "script_start_emperor"),
-
-#          (jump_to_menu, "mnu_auto_return"),
-#          (start_presentation, "prsnt_banner_selection"),
-#         ]
-#        ),
-
-#        # ("start_single",[(eq, "$character_gender", tf_female),],"Continue",
-#        # [
-#         # (call_script, "script_start_emperor"),
-
-# 	         # (jump_to_menu, "mnu_auto_return"),
-#              # (start_presentation, "prsnt_banner_selection"),
-#         # ]
-#        # ),
-
-# 	  ("go_back",[],"Go back",
-#        [
-# 	     (jump_to_menu,"mnu_start_as_emperor_1"),
-#        ]),
-#     ]
-#   ),
-
-("start_game_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "Select your character's gender:",
-    "none",
-##diplomacy start+ Reset prejudice preferences
-    [
-        (set_background_mesh, "mesh_pic_family"),
-        (assign, "$g_disable_condescending_comments", 0),
-    ],
-##diplomacy end+
-    [
-      ("start_male",[],"Male",
-       [
-         (troop_set_type,"trp_player", 0),
-         (assign,"$character_gender", tf_male),
-         (troop_set_slot, "trp_player", slot_troop_age, 18),
-         (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_7"),
-         (assign, "$g_player_culture", "fac_kingdom_7"),
-         (jump_to_menu,"$g_next_menu"),
-
-        ]
-       ),
-      ("start_female",[],"Female",
-       [
-         (troop_set_type, "trp_player", 1),
-         (assign, "$character_gender", tf_female),
-         (troop_set_slot, "trp_player", slot_troop_age, 18),
-         (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_7"),
-         (assign, "$g_player_culture", "fac_kingdom_7"),
-##diplomacy start+
-         (jump_to_menu, "mnu_dplmc_start_select_prejudice"),
-##diplomacy end+
-       ]
-       ),
-	  ("go_back",[],"Go back",
-       [
-	     (jump_to_menu,"mnu_start_game_0"),
-       ]),
-    ]
-),
-
-  # ("game_difficulty",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    # "How difficult do you want to have the game?",
-    # "none",
-
-    # [
-
-    # ],
-
-    # [
-      # ("hard",[],"Hard.",
-       # [
-    # (options_set_campaign_ai, 0), # es soll schwerer sein
-    # (options_set_combat_speed, 4), # langsamere schlachten
-    # (options_set_combat_ai, 0),  ##
-    # (options_set_damage_to_player, 2), #es soll schwer sein
-    # (options_set_damage_to_friends, 2),
-    # (jump_to_menu,"mnu_start_game_1"),
-        # ]
-       # ),
-
-      # ("normal",[],"Normal.",
-       # [
-    # (options_set_campaign_ai, 1), # es soll schwerer sein
-    # (options_set_combat_speed, 2), # langsamere schlachten
-    # (options_set_combat_ai, 1),  ##
-    # (options_set_damage_to_player, 1), #es soll schwer sein
-    # (options_set_damage_to_friends, 1),
-    # (jump_to_menu, "mnu_start_game_1"),
-
-       # ]
-       # ),
-
-       # ("easy",[],"Easy.",
-       # [
-    # (options_set_campaign_ai, 2), # es soll schwerer sein
-    # (options_set_combat_speed, 2), # langsamere schlachten
-    # (options_set_combat_ai, 2),  ##
-    # (options_set_damage_to_player, 0), #es soll schwer sein
-    # (options_set_damage_to_friends, 0),
-
-         # (jump_to_menu, "mnu_start_game_1"),
-
-       # ]
-       # ),
-
-
-	  # ("go_back",[],"Go back",
-       # [
-	     # (jump_to_menu,"mnu_start_game_0"),
-       # ]),
-    # ]
-  # ),
-
-  (
-    "choose_attribute_1",mnf_disable_all_keys,
-    "At your birth, the gods blessed you:",
-    "none",
-    [
+("choose_attribute_1",mnf_disable_all_keys,
+  "At your birth, the gods blessed you ...",
+  "none",[
     (set_background_mesh, "mesh_pic_girls"),
     (assign, reg11, "$character_gender"), #SB : every string now uses reg11 for daughter/son boy/girl etc
-    ],
-    [
-    ("agility",[],"Ceres gave you (sexual) potency.",[
-		(assign, "$guard_god", cb_ceres),
-
-		(display_message, "@Ceres guards you!", color_good_news),
-        (jump_to_menu,"mnu_choose_skill"),
+  ],[
+    ("agility",[],"... Ceres gave you (sexual) potency.",[
+      (assign, "$guard_god", cb_ceres),
+      (display_message, "@Ceres guards you!", color_good_news),
+      (jump_to_menu,"mnu_choose_skill"),
     ]),
-    ("agility",[],"Diana gave you agility.",[
-
-		(assign, "$guard_god", cb_diana),
-
-		(display_message, "@Diana guards you!", color_good_news),
-        (jump_to_menu,"mnu_choose_skill"),
+    ("agility",[],"... Diana gave you agility.",[
+      (assign, "$guard_god", cb_diana),
+      (display_message, "@Diana guards you!", color_good_news),
+      (jump_to_menu,"mnu_choose_skill"),
     ]),
-    ("mind",[],"Minerva gave you a sharp mind.",[
-		(assign, "$guard_god", cb_minerva),
-
-		(display_message, "@Minerva guards you!", color_good_news),
-        (jump_to_menu,"mnu_choose_skill"),
+    ("mind",[],"... Minerva gave you a sharp mind.",[
+      (assign, "$guard_god", cb_minerva),
+      (display_message, "@Minerva guards you!", color_good_news),
+      (jump_to_menu,"mnu_choose_skill"),
     ]),
-    ("strength",[],"Mars gave you strength.",[
-		(assign, "$guard_god", cb_mars),
-
-		(display_message, "@Mars guards you!", color_good_news),
-        (jump_to_menu,"mnu_choose_skill"),
+    ("strength",[],"... Mars gave you strength.",[
+      (assign, "$guard_god", cb_mars),
+      (display_message, "@Mars guards you!", color_good_news),
+      (jump_to_menu,"mnu_choose_skill"),
     ]),
-    ("knowledge",[],"Mercurius gave you knowledge.",[
-		(assign, "$guard_god", cb_mercurius),
-
-		(display_message, "@Mercurius guards you!", color_good_news),
-        (jump_to_menu,"mnu_choose_skill"),
+    ("knowledge",[],"... Mercurius gave you knowledge.",[
+      (assign, "$guard_god", cb_mercurius),
+      (display_message, "@Mercurius guards you!", color_good_news),
+      (jump_to_menu,"mnu_choose_skill"),
     ]),
-	("charisma",[],"Jupiter gave you the will to power.",[
-		(assign, "$guard_god", cb_jupiter),
-
-		(display_message, "@Jupiter guards you!", color_good_news),
-        (jump_to_menu,"mnu_choose_skill"),
+    ("charisma",[],"... Jupiter gave you the will to power.",[
+      (assign, "$guard_god", cb_jupiter),
+      (display_message, "@Jupiter guards you!", color_good_news),
+      (jump_to_menu,"mnu_choose_skill"),
     ]),
 
-    ("go_back",[],"Go back.",
-     [(jump_to_menu,"mnu_start_game_1"),
+    ("go_back",[],"Go back.",[
+      (jump_to_menu,"mnu_start_game_1"),
     ]),
-    ]
-  ),
+]),
 
 
 ("choose_skill",mnf_scale_picture|mnf_disable_all_keys,
@@ -27614,44 +26976,16 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       ]
 ),
 
-("dplmc_start_select_prejudice",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "In some of the traditional societies depicted in the game, war and politics are usually dominated by male members of the nobility. "+
- "Because of this, a female character can face initial prejudice, and some opportunities open to men will not be available (although a woman will also have some "+
- "opportunities a man will not).  Some players might find distasteful, so if you want you can ignore that aspect of Ancient society."+
- "^^You can later change your mind through the options in the Camp menu.",
-    "none",
-    [],
-    [
-      ("dplmc_start_prejudice_yes",[],"I do not mind encountering sexism.",
-       [
-         (assign, "$g_disable_condescending_comments", 0),#Default value
-         (jump_to_menu,"$g_next_menu"),
-        ]
-       ),
-      ("dplmc_start_prejudice_no",[],"I would prefer not to encounter as much sexism.",
-       [
-         (assign, "$g_disable_condescending_comments", 2),#Any value 2 or higher shuts off sexist setting elements
-         (jump_to_menu, "$g_next_menu"),
-       ]
-       ),
-	  ("go_back",[],"Go back",
-       [
-	     (jump_to_menu,"mnu_start_game_1"),
-       ]),
-    ]
-),
-
   ##Economic report, currently just for debugging purposes
 ("dplmc_economic_report",0,
-   "Number of consumption outbreaks: {reg50}^Number of slow fever outbreaks: {reg51}^Number of camp fever outbreaks: {reg52}^\
-   Number of measles outbreaks: {reg53}^Number of plague outbreaks: {reg54}^Number of smallpox outbreaks: {reg55}^\
-   Number of greatpox outbreaks: {reg56}^Number of fire event: {reg57}^Number of drought event: {reg58}^\
-   Number of earthquake events: {reg59}^Number of Beetle invasions: {reg60}^\
-   Number of good harvests: {reg49}^Number of bad harvests: {reg48}^\
-   Number of mild winters: {reg47}^Number of harsh winters: {reg46}^\
-   Richest lord in the world: {s33} (wealth: {reg33} denars)^Poorest lord in the world: {s34} (wealth: {reg34})^^{s0}",
-   "none",
-   [
+  "Number of consumption outbreaks: {reg50}^Number of slow fever outbreaks: {reg51}^Number of camp fever outbreaks: {reg52}^\
+  Number of measles outbreaks: {reg53}^Number of plague outbreaks: {reg54}^Number of smallpox outbreaks: {reg55}^\
+  Number of greatpox outbreaks: {reg56}^Number of fire event: {reg57}^Number of drought event: {reg58}^\
+  Number of earthquake events: {reg59}^Number of Beetle invasions: {reg60}^\
+  Number of good harvests: {reg49}^Number of bad harvests: {reg48}^\
+  Number of mild winters: {reg47}^Number of harsh winters: {reg46}^\
+  Richest lord in the world: {s33} (wealth: {reg33} denars)^Poorest lord in the world: {s34} (wealth: {reg34})^^{s0}",
+  "none",[
     (troop_get_slot, reg46, "trp_global_variables", g_number_harsh_winters),
     (troop_get_slot, reg47, "trp_global_variables", g_number_mild_winters),
     (troop_get_slot, reg48, "trp_global_variables", g_number_poor_harvest),
@@ -27668,40 +27002,40 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (troop_get_slot, reg59, "trp_global_variables", g_number_earthquake),
     (troop_get_slot, reg60, "trp_global_variables", g_number_insects),
 
-   (assign, ":score_rich", 1000),
-   (assign, ":rich", 0),
-   (assign, ":poor", 0),
-   (assign, ":score_poor", 50000),
-   (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
-    (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero),
-    (troop_get_slot, ":w", ":npc", slot_troop_wealth),
-    (try_begin),
-      (gt, ":w", ":score_rich"),
-      (assign, ":rich", ":npc"),
-      (assign, ":score_rich", ":w"),
+    (assign, ":score_rich", 1000),
+    (assign, ":rich", 0),
+    (assign, ":poor", 0),
+    (assign, ":score_poor", 50000),
+    (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
+      (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero),
+      (troop_get_slot, ":w", ":npc", slot_troop_wealth),
+      (try_begin),
+        (gt, ":w", ":score_rich"),
+        (assign, ":rich", ":npc"),
+        (assign, ":score_rich", ":w"),
+      (try_end),
+      (try_begin),
+        (lt, ":w", ":score_poor"),
+        (assign, ":poor", ":npc"),
+        (assign, ":score_poor", ":w"),
+      (try_end),
     (try_end),
     (try_begin),
-      (lt, ":w", ":score_poor"),
-      (assign, ":poor", ":npc"),
-      (assign, ":score_poor", ":w"),
+      (gt, ":rich", 0),
+      (str_store_troop_name, s33, ":rich"),
+      (assign, reg33, ":score_rich"),
+    (else_try),
+      (str_store_string, s33, "@none"),
+      (assign, reg33, 0),
     (try_end),
-   (try_end),
-   (try_begin),
-    (gt, ":rich", 0),
-    (str_store_troop_name, s33, ":rich"),
-    (assign, reg33, ":score_rich"),
-   (else_try),
-    (str_store_string, s33, "@none"),
-    (assign, reg33, 0),
-   (try_end),
-   (try_begin),
-    (gt, ":poor", 0),
-    (str_store_troop_name, s34, ":poor"),
-    (assign, reg34, ":score_poor"),
-   (else_try),
-    (str_store_string, s34, "@none"),
-    (assign, reg34, 0),
-   (try_end),
+    (try_begin),
+      (gt, ":poor", 0),
+      (str_store_troop_name, s34, ":poor"),
+      (assign, reg34, ":score_poor"),
+    (else_try),
+      (str_store_string, s34, "@none"),
+      (assign, reg34, 0),
+    (try_end),
 
 
     (str_clear, s0),
@@ -27711,188 +27045,184 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
     #Show average prosperity for each faction
     (try_for_range, ":faction", 0, kingdoms_end),
-       (this_or_next|eq, ":faction", 0),
-       (is_between, ":faction", kingdoms_begin, kingdoms_end),
+        (this_or_next|eq, ":faction", 0),
+        (is_between, ":faction", kingdoms_begin, kingdoms_end),
 
-       (this_or_next|eq, ":faction", 0),
-       (faction_slot_eq, ":faction", slot_faction_state, sfs_active),
+        (this_or_next|eq, ":faction", 0),
+        (faction_slot_eq, ":faction", slot_faction_state, sfs_active),
 
-       (try_begin),
-          (eq, ":faction", 0),
-          (str_store_string, s1, "@Total"),
-       (else_try),
-          (faction_get_slot, reg0, ":faction", slot_faction_adjective),
-          (gt, reg0, 0),
-          (str_store_string, s1, reg0),
-       (else_try),
-          (str_store_faction_name, s1, ":faction"),
-       (try_end),
+        (try_begin),
+            (eq, ":faction", 0),
+            (str_store_string, s1, "@Total"),
+        (else_try),
+            (faction_get_slot, reg0, ":faction", slot_faction_adjective),
+            (gt, reg0, 0),
+            (str_store_string, s1, reg0),
+        (else_try),
+            (str_store_faction_name, s1, ":faction"),
+        (try_end),
 
-       ##(1) Faction Prosperity, towns
-       (assign, ":sum", 0),
-       (assign, ":q_5", 0),
-       (assign, ":q_4", 0),
-       (assign, ":q_3", 0),
-       (assign, ":q_2", 0),
-       (assign, ":q_1", 0),
-       (assign, ":num", 0),
+        ##(1) Faction Prosperity, towns
+        (assign, ":sum", 0),
+        (assign, ":q_5", 0),
+        (assign, ":q_4", 0),
+        (assign, ":q_3", 0),
+        (assign, ":q_2", 0),
+        (assign, ":q_1", 0),
+        (assign, ":num", 0),
 
-       (try_for_range, ":center_no", towns_begin, towns_end),
-          (store_faction_of_party, reg0, ":center_no"),
-          (this_or_next|eq, ":faction", 0),
-          (eq, reg0, ":faction"),
-          (val_add, ":num", 1),
-          (party_get_slot, reg0, ":center_no", slot_town_prosperity),
-          (val_add, ":sum", reg0),
-          (try_begin),
-             (lt, reg0, 20),
-             (val_add, ":q_1", 1),
-          (else_try),
-             (lt, reg0, 40),
-             (val_add, ":q_2", 1),
-          (else_try),
-             (lt, reg0, 60),
-             (val_add, ":q_3", 1),
-          (else_try),
-             (lt, reg0, 80),
-             (val_add, ":q_4", 1),
-          (else_try),
-             (val_add, ":q_5", 1),
-          (try_end),
-       (try_end),
+        (try_for_range, ":center_no", towns_begin, towns_end),
+            (store_faction_of_party, reg0, ":center_no"),
+            (this_or_next|eq, ":faction", 0),
+            (eq, reg0, ":faction"),
+            (val_add, ":num", 1),
+            (party_get_slot, reg0, ":center_no", slot_town_prosperity),
+            (val_add, ":sum", reg0),
+            (try_begin),
+              (lt, reg0, 20),
+              (val_add, ":q_1", 1),
+            (else_try),
+              (lt, reg0, 40),
+              (val_add, ":q_2", 1),
+            (else_try),
+              (lt, reg0, 60),
+              (val_add, ":q_3", 1),
+            (else_try),
+              (lt, reg0, 80),
+              (val_add, ":q_4", 1),
+            (else_try),
+              (val_add, ":q_5", 1),
+            (try_end),
+        (try_end),
 
-       (assign, reg0, ":num"),
-       (val_max, reg0, 1),
-       (store_div, reg0, ":sum", reg0),
-       (str_store_string, s0, "@{s0}^{s1} Average Town Prosperity: {reg0}"),
-       (assign, reg0, ":q_5"),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, reg0, 0),
-          (str_store_string, s0, "@{s0}^{s1} towns with prosperity 80-100: {reg0}"),
-       (try_end),
-       (assign, reg0, ":q_4"),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, reg0, 0),
-          (str_store_string, s0, "@{s0}^{s1} towns with prosperity 60-79: {reg0}"),
-       (try_end),
-       (assign, reg0, ":q_3"),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, reg0, 0),
-          (str_store_string, s0, "@{s0}^{s1} towns with prosperity 40-59: {reg0}"),
-       (try_end),
-       (assign, reg0, ":q_2"),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, reg0, 0),
-          (str_store_string, s0, "@{s0}^{s1} towns with prosperity 20-39: {reg0}"),
-       (try_end),
-       (assign, reg0, ":q_1"),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, reg0, 0),
-          (str_store_string, s0, "@{s0}^{s1} towns with prosperity 0-19: {reg0}"),
-       (try_end),
+        (assign, reg0, ":num"),
+        (val_max, reg0, 1),
+        (store_div, reg0, ":sum", reg0),
+        (str_store_string, s0, "@{s0}^{s1} Average Town Prosperity: {reg0}"),
+        (assign, reg0, ":q_5"),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, reg0, 0),
+            (str_store_string, s0, "@{s0}^{s1} towns with prosperity 80-100: {reg0}"),
+        (try_end),
+        (assign, reg0, ":q_4"),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, reg0, 0),
+            (str_store_string, s0, "@{s0}^{s1} towns with prosperity 60-79: {reg0}"),
+        (try_end),
+        (assign, reg0, ":q_3"),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, reg0, 0),
+            (str_store_string, s0, "@{s0}^{s1} towns with prosperity 40-59: {reg0}"),
+        (try_end),
+        (assign, reg0, ":q_2"),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, reg0, 0),
+            (str_store_string, s0, "@{s0}^{s1} towns with prosperity 20-39: {reg0}"),
+        (try_end),
+        (assign, reg0, ":q_1"),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, reg0, 0),
+            (str_store_string, s0, "@{s0}^{s1} towns with prosperity 0-19: {reg0}"),
+        (try_end),
 
-       (str_store_string, s0, "@{!}{s0}^"),
+        (str_store_string, s0, "@{!}{s0}^"),
 
-       ##(2) Faction Prosperity, villages
-       (assign, ":sum", 0),
-       (assign, ":q_5", 0),
-       (assign, ":q_4", 0),
-       (assign, ":q_3", 0),
-       (assign, ":q_2", 0),
-       (assign, ":q_1", 0),
-       (assign, ":num", 0),
+        ##(2) Faction Prosperity, villages
+        (assign, ":sum", 0),
+        (assign, ":q_5", 0),
+        (assign, ":q_4", 0),
+        (assign, ":q_3", 0),
+        (assign, ":q_2", 0),
+        (assign, ":q_1", 0),
+        (assign, ":num", 0),
 
-       (try_for_range, ":center_no", villages_begin, villages_end),
-          (store_faction_of_party, reg0, ":center_no"),
-          (this_or_next|eq, ":faction", 0),
-          (eq, reg0, ":faction"),
-          (val_add, ":num", 1),
-          (party_get_slot, reg0, ":center_no", slot_town_prosperity),
-          (val_add, ":sum", reg0),
-          (try_begin),
-             (lt, reg0, 20),
-             (val_add, ":q_1", 1),
-          (else_try),
-             (lt, reg0, 40),
-             (val_add, ":q_2", 1),
-          (else_try),
-             (lt, reg0, 60),
-             (val_add, ":q_3", 1),
-          (else_try),
-             (lt, reg0, 80),
-             (val_add, ":q_4", 1),
-          (else_try),
-             (val_add, ":q_5", 1),
-          (try_end),
-       (try_end),
+        (try_for_range, ":center_no", villages_begin, villages_end),
+            (store_faction_of_party, reg0, ":center_no"),
+            (this_or_next|eq, ":faction", 0),
+            (eq, reg0, ":faction"),
+            (val_add, ":num", 1),
+            (party_get_slot, reg0, ":center_no", slot_town_prosperity),
+            (val_add, ":sum", reg0),
+            (try_begin),
+              (lt, reg0, 20),
+              (val_add, ":q_1", 1),
+            (else_try),
+              (lt, reg0, 40),
+              (val_add, ":q_2", 1),
+            (else_try),
+              (lt, reg0, 60),
+              (val_add, ":q_3", 1),
+            (else_try),
+              (lt, reg0, 80),
+              (val_add, ":q_4", 1),
+            (else_try),
+              (val_add, ":q_5", 1),
+            (try_end),
+        (try_end),
 
-       (assign, reg0, ":num"),
-       (val_max, reg0, 1),
-       (store_div, reg0, ":sum", reg0),
-       (str_store_string, s0, "@{s0}^{s1} Average Village Prosperity: {reg0}"),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, ":q_5", 0),
-          (assign, reg0, ":q_5"),
-          (str_store_string, s0, "@{s0}^{s1} villages with prosperity 80-100: {reg0}"),
-       (try_end),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, ":q_4", 0),
-          (assign, reg0, ":q_4"),
-          (str_store_string, s0, "@{s0}^{s1} villages with prosperity 60-79: {reg0}"),
-       (try_end),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, ":q_3", 0),
-          (assign, reg0, ":q_3"),
-          (str_store_string, s0, "@{s0}^{s1} villages with prosperity 40-59: {reg0}"),
-       (try_end),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, ":q_2", 0),
-          (assign, reg0, ":q_2"),
-          (str_store_string, s0, "@{s0}^{s1} villages with prosperity 20-39: {reg0}"),
-       (try_end),
-       (try_begin),
-          (this_or_next|eq, ":faction", 0),
-          (gt, ":q_1", 0),
-          (assign, reg0, ":q_1"),
-          (str_store_string, s0, "@{s0}^{s1} villages with prosperity 0-19: {reg0}"),
-       (try_end),
-       (str_store_string, s0, "@{!}{s0}^"),
+        (assign, reg0, ":num"),
+        (val_max, reg0, 1),
+        (store_div, reg0, ":sum", reg0),
+        (str_store_string, s0, "@{s0}^{s1} Average Village Prosperity: {reg0}"),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, ":q_5", 0),
+            (assign, reg0, ":q_5"),
+            (str_store_string, s0, "@{s0}^{s1} villages with prosperity 80-100: {reg0}"),
+        (try_end),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, ":q_4", 0),
+            (assign, reg0, ":q_4"),
+            (str_store_string, s0, "@{s0}^{s1} villages with prosperity 60-79: {reg0}"),
+        (try_end),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, ":q_3", 0),
+            (assign, reg0, ":q_3"),
+            (str_store_string, s0, "@{s0}^{s1} villages with prosperity 40-59: {reg0}"),
+        (try_end),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, ":q_2", 0),
+            (assign, reg0, ":q_2"),
+            (str_store_string, s0, "@{s0}^{s1} villages with prosperity 20-39: {reg0}"),
+        (try_end),
+        (try_begin),
+            (this_or_next|eq, ":faction", 0),
+            (gt, ":q_1", 0),
+            (assign, reg0, ":q_1"),
+            (str_store_string, s0, "@{s0}^{s1} villages with prosperity 0-19: {reg0}"),
+        (try_end),
+        (str_store_string, s0, "@{!}{s0}^"),
     (try_end),
-		(assign, reg4, "$newglob_total_prosperity_from_bandits"),
-		(assign, reg5, "$newglob_total_prosperity_from_caravan_trade"),
-	    (assign, reg7, "$newglob_total_prosperity_from_villageloot"),
-	    (assign, reg8, "$newglob_total_prosperity_from_townloot"),
-	    (assign, reg9, "$newglob_total_prosperity_from_village_trade"),
-	    (assign, reg10, "$newglob_total_prosperity_from_convergence"),
-	    (assign, reg11, "$newglob_total_prosperity_losses"),
-	    (assign, reg12, "$newglob_total_prosperity_gains"),
-		 (display_message, "@Total prosperity actual losses: {reg11}"),
-		 (display_message, "@Total prosperity actual gains: {reg12}"),
+    (assign, reg4, "$newglob_total_prosperity_from_bandits"),
+    (assign, reg5, "$newglob_total_prosperity_from_caravan_trade"),
+    (assign, reg7, "$newglob_total_prosperity_from_villageloot"),
+    (assign, reg8, "$newglob_total_prosperity_from_townloot"),
+    (assign, reg9, "$newglob_total_prosperity_from_village_trade"),
+    (assign, reg10, "$newglob_total_prosperity_from_convergence"),
+    (assign, reg11, "$newglob_total_prosperity_losses"),
+    (assign, reg12, "$newglob_total_prosperity_gains"),
+    (display_message, "@Total prosperity actual losses: {reg11}"),
+    (display_message, "@Total prosperity actual gains: {reg12}"),
 
-		 (display_message, "@Prosperity changes from random bandits: {reg4}"),
-		 (display_message, "@Prosperity changes from caravan trades: {reg5}"),
-		 (display_message, "@Prosperity changes from farmer trades: {reg9}"),
-		 (display_message, "@Prosperity changes from looted villages: {reg7}"),
-		 (display_message, "@Prosperity changes from sieges: {reg8}"),
-		 (display_message, "@Theoretical prosperity changes from convergence: {reg10}"),
-
-    ],
-    [
-      ("dplmc_back",[],"Continue...",
-       [
-           (jump_to_menu, "mnu_reports"),
-        ]),
-      ]
-),
+    (display_message, "@Prosperity changes from random bandits: {reg4}"),
+    (display_message, "@Prosperity changes from caravan trades: {reg5}"),
+    (display_message, "@Prosperity changes from farmer trades: {reg9}"),
+    (display_message, "@Prosperity changes from looted villages: {reg7}"),
+    (display_message, "@Prosperity changes from sieges: {reg8}"),
+    (display_message, "@Theoretical prosperity changes from convergence: {reg10}"),
+  ],[
+  ("dplmc_back",[],"Continue...",[
+    (jump_to_menu, "mnu_reports"),
+  ]),
+]),
 ##diplomacy end+
 
 #SB : secondary cheat menu
@@ -28934,12 +28264,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]
   ),
 
-
-  ( #helper menu to show all troop slots
-    "display_troop_slots", menu_text_color(0xFF009900),
-    "{s1}^{s2}",
-    "none",
-    [
+#helper menu to show all troop slots
+( "display_troop_slots", menu_text_color(0xFF009900),
+  "{s1}^{s2}",
+  "none",[
     # (set_background_mesh, "mesh_pic_cattle"),
     (assign, reg1, "$g_talk_troop"),
     (str_store_troop_name, s1, "$g_talk_troop"),
@@ -29022,214 +28350,170 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_end),
     (store_mul, ":troop_no", "$g_talk_troop", 2),
     (set_game_menu_tableau_mesh, "tableau_game_party_window", ":troop_no", pos0),
-    ],
-    [
-
-      ("next",
-      [
-        (lt, "$g_talk_troop", "trp_troops_end"), #last troop apparently
-        (store_add, ":troop_no", "$g_talk_troop", 1),
-        (str_store_troop_name, s2, ":troop_no"),
-      ],
-      "Next Troop ({s2}).",
-      [
-        (val_add, "$g_talk_troop", 1),
-        (jump_to_menu, "mnu_display_troop_slots"),
-      ]),
-
-      ("prev",
-      [
-        (gt, "$g_talk_troop", "trp_player"),
-        (store_sub, ":troop_no", "$g_talk_troop", 1),
-        (str_store_troop_name, s2, ":troop_no"),
-      ],
-      "Previous Troop ({s2}).",
-      [
-        (val_sub, "$g_talk_troop", 1),
-        (jump_to_menu, "mnu_display_troop_slots"),
-      ]),
+  ],[
+    ("next",[
+      (lt, "$g_talk_troop", "trp_troops_end"), #last troop apparently
+      (store_add, ":troop_no", "$g_talk_troop", 1),
+      (str_store_troop_name, s2, ":troop_no"),
+    ],"Next Troop ({s2}).",[
+      (val_add, "$g_talk_troop", 1),
+      (jump_to_menu, "mnu_display_troop_slots"),
+    ]),
+    ("prev",[
+      (gt, "$g_talk_troop", "trp_player"),
+      (store_sub, ":troop_no", "$g_talk_troop", 1),
+      (str_store_troop_name, s2, ":troop_no"),
+    ],"Previous Troop ({s2}).",[
+      (val_sub, "$g_talk_troop", 1),
+      (jump_to_menu, "mnu_display_troop_slots"),
+    ]),
     #So apparently this one needs to re-jump to the menu
-      ("notes",
-      [(is_between, "$g_talk_troop", heroes_begin, kingdom_ladies_end),],
-      "View Notes.",
-      [
-        (change_screen_notes, 1, "$g_talk_troop"),
-      ]),
+    ("notes",[
+      (is_between, "$g_talk_troop", heroes_begin, kingdom_ladies_end),
+    ],"View Notes.",[
+      (change_screen_notes, 1, "$g_talk_troop"),
+    ]),
+    ("prev_range",[
+      (gt, "$g_talk_troop", "trp_player"),
+      (call_script, "script_cf_troop_debug_range", "$g_talk_troop", s3, -1),
+      (str_store_troop_name, s3, reg0),
+    ],"Head ({s3}).",[
+      (call_script, "script_cf_troop_debug_range", "$g_talk_troop", s0, -1),
+      (assign, "$g_talk_troop", reg0),
+      (jump_to_menu, "mnu_display_troop_slots"),
+    ]),
+    ("next_range",[
+      (call_script, "script_cf_troop_debug_range", "$g_talk_troop", s3, 1),
+      (str_store_troop_name, s3, reg0),
+    ],"Tail ({s3}).",[
+      (call_script, "script_cf_troop_debug_range", "$g_talk_troop", s0, 1),
+      (assign, "$g_talk_troop", reg0),
+      (jump_to_menu, "mnu_display_troop_slots"),
+    ]),
+    ("end",[
+      (str_store_troop_name, s2, "trp_fiducia"),
+    ],"Jump to the last Troop ({s2}).",[
+      (assign, "$g_talk_troop", "trp_fiducia"),
+      (jump_to_menu, "mnu_display_troop_slots"),
+    ]),
+    ("first",[
+      (str_store_troop_name, s2, 0),
+    ],"Jump to the first Troop ({s2}).",[
+      (assign, "$g_talk_troop",0),
+      (jump_to_menu, "mnu_display_troop_slots"),
+    ]),
+    ("rename",[
+    ],"Rename.",[
+      (assign, "$g_player_troop", "$g_talk_troop"),
+      (assign, "$g_presentation_state", rename_companion),
+      (start_presentation, "prsnt_name_kingdom"),
+    ]),
+    ("change",[
+      (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
+    ],"Modify slots.",[
+      (assign, "$g_presentation_state", 0), #start off at first slot
+      (assign, "$g_presentation_input", rename_companion),
+      (start_presentation, "prsnt_modify_slots"),
+    ]),
+    ("inventory",[
+    ],"Modify inventory.",[
+      (change_screen_loot, "$g_talk_troop"),
+    ]),
+    ("gender",[
+      (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
+    ], "Toggle gender.",[
+      (try_begin),
+        (eq, "$g_talk_troop", "trp_player"),
+        (store_sub, "$character_gender", tf_female, "$character_gender"),
+        (troop_set_type, "trp_player", "$character_gender"),
+      (else_try),
+        (troop_get_type, ":gender", "$g_talk_troop"),
+        (store_sub, ":gender", tf_female, ":gender"),
+        (troop_set_type, "$g_talk_troop", ":gender"),
+      (try_end),
+    ]),
+    ("continue",[
+    ],"Continue.",[
+      (change_screen_map),
+    ]),
+]),
 
-      ("prev_range",
-      [
-        (gt, "$g_talk_troop", "trp_player"),
-        (call_script, "script_cf_troop_debug_range", "$g_talk_troop", s3, -1),
-        (str_store_troop_name, s3, reg0),
-      ],
-      "Head ({s3}).",
-      [
-        (call_script, "script_cf_troop_debug_range", "$g_talk_troop", s0, -1),
-        (assign, "$g_talk_troop", reg0),
-        (jump_to_menu, "mnu_display_troop_slots"),
-      ]),
+("dplmc_choose_disguise", 0,
+  "You are about to sneak into {s1}. Make sure you don't bring suspicious items or excess denars that might be confiscated. {s2}",
+  "none",[
+    (troop_get_inventory_capacity, ":inv_cap", "trp_random_town_sequence"),
+    (assign, ":count", 0),
+    (try_for_range, ":i_slot", ek_food + 1, ":inv_cap"),
+      (troop_get_inventory_slot, ":cur_item", "trp_random_town_sequence", ":i_slot"),
+      (gt, ":cur_item", -1),
+      #(assign, reg3, ":cur_item"),
+      #(display_message, "@{reg3}"),
+      (val_add, ":count", 1),
+    (try_end),
+    # (assign, reg0, ":count"),
+    # (assign, reg1, "$temp"),
+    # (display_message, "@{reg0} , {reg1}"),
+    (try_begin),
+      (gt, ":count", "$temp"),
+      #put stuff back
+      (set_show_messages, 0), #move all gold
+      (call_script, "script_move_inventory_and_gold", "trp_random_town_sequence", "trp_player", -1),
+      (set_show_messages, 1),
+      (display_message, "@You cannot bring that many items with you. Your items have been returned to your inventory."),
+    (try_end),
 
-      ("next_range",
-      [
-        (call_script, "script_cf_troop_debug_range", "$g_talk_troop", s3, 1),
-        (str_store_troop_name, s3, reg0),
-      ],
-      "Tail ({s3}).",
-      [
-        (call_script, "script_cf_troop_debug_range", "$g_talk_troop", s0, 1),
-        (assign, "$g_talk_troop", reg0),
-        (jump_to_menu, "mnu_display_troop_slots"),
-      ]),
-
-
-      ("end",
-      [
-        (str_store_troop_name, s2, "trp_fiducia"),
-      ],
-      "Jump to the last Troop ({s2}).",
-      [
-        (assign, "$g_talk_troop", "trp_fiducia"),
-        (jump_to_menu, "mnu_display_troop_slots"),
-      ]),
-      ("first",
-      [
-        (str_store_troop_name, s2, 0),
-      ],
-      "Jump to the first Troop ({s2}).",
-      [
-        (assign, "$g_talk_troop",0),
-        (jump_to_menu, "mnu_display_troop_slots"),
-      ]),
-
-      ("rename",
-      [],
-      "Rename.",
-      [
-        (assign, "$g_player_troop", "$g_talk_troop"),
-        (assign, "$g_presentation_state", rename_companion),
-        (start_presentation, "prsnt_name_kingdom"),
-      ]),
-
-      ("change",
-      [(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],
-      "Modify slots.",
-      [
-        (assign, "$g_presentation_state", 0), #start off at first slot
-        (assign, "$g_presentation_input", rename_companion),
-        (start_presentation, "prsnt_modify_slots"),
-      ]),
-
-      ("inventory",
-      [],
-      "Modify inventory.",
-      [
-        (change_screen_loot, "$g_talk_troop"),
-      ]),
-
-       ("gender",[(troop_slot_eq, "trp_global_variables", g_is_dev, 1),], "Toggle gender.",
-         [
-           (try_begin),
-             (eq, "$g_talk_troop", "trp_player"),
-             (store_sub, "$character_gender", tf_female, "$character_gender"),
-             (troop_set_type, "trp_player", "$character_gender"),
-           (else_try),
-             (troop_get_type, ":gender", "$g_talk_troop"),
-             (store_sub, ":gender", tf_female, ":gender"),
-             (troop_set_type, "$g_talk_troop", ":gender"),
-           (try_end),
-         ]
-       ),
-
-      ("continue",
-      [],
-      "Continue.",
-      [
-        (change_screen_map),
-      ]),
-    ]
-  ),
-
-  (
-    "dplmc_choose_disguise", 0,
-    "You are about to sneak into {s1}. Make sure you don't bring suspicious items or excess denars that might be confiscated. {s2}",
-    "none",
-    [
-
-         (troop_get_inventory_capacity, ":inv_cap", "trp_random_town_sequence"),
-         (assign, ":count", 0),
-         (try_for_range, ":i_slot", ek_food + 1, ":inv_cap"),
-           (troop_get_inventory_slot, ":cur_item", "trp_random_town_sequence", ":i_slot"),
-           (gt, ":cur_item", -1),
-           #(assign, reg3, ":cur_item"),
-           #(display_message, "@{reg3}"),
-           (val_add, ":count", 1),
-         (try_end),
-         # (assign, reg0, ":count"),
-         # (assign, reg1, "$temp"),
-         # (display_message, "@{reg0} , {reg1}"),
-         (try_begin),
-            (gt, ":count", "$temp"),
-            #put stuff back
-            (set_show_messages, 0), #move all gold
-            (call_script, "script_move_inventory_and_gold", "trp_random_town_sequence", "trp_player", -1),
-            (set_show_messages, 1),
-            (display_message, "@You cannot bring that many items with you. Your items have been returned to your inventory."),
-         (try_end),
-
-        (str_store_party_name, s1, "$current_town"),
-        #build text
-        (try_begin),
-          (eq, "$sneaked_into_town", disguise_none),
-          (str_store_string, s2, "@Select a suitable disguise for this occasion."),
-          (assign, "$temp", 0),
-        (else_try),
-          (eq, "$sneaked_into_town", disguise_pilgrim),
-          (str_store_string, s2, "@As a poor priest with a stout stick and a few tricks up your sleeve, you will be able to blend in with the crowds but not bring much of value with you."),
-          (assign, "$temp", 6),
-        (else_try),
-          (eq, "$sneaked_into_town", disguise_farmer),
-          (str_store_string, s2, "@As a poor roman farmer, you will be able to a wrangle livestock and smuggle articles of food through."),
-          (assign, "$temp", 15),
-        (else_try),
-          (eq, "$sneaked_into_town", disguise_hunter),
-          (str_store_string, s2, "@As a eastern trader, provisions and raw goods are expected as well as horseflesh."),
-          (assign, "$temp", 12),
-        (else_try),
-          (eq, "$sneaked_into_town", disguise_guard),
-          (str_store_string, s2, "@As a germanic warrior, you will be able to bear weapons but bring only a few personal belongings."),
-          (assign, "$temp", 6),
-        (else_try),
-          (eq, "$sneaked_into_town", disguise_merchant),
-          (str_store_string, s2, "@As a roman merchant, you will be able to bring any assortment of goods."),
-          (assign, "$temp", 32),
-        (else_try),
-          (eq, "$sneaked_into_town", disguise_bard),
-          (str_store_string, s2, "@As a bard, you will be allowed some personal possessions and your instrument."),
-          (assign, "$temp", 9),
-        (try_end),
-        (set_fixed_point_multiplier, 100),
-        (init_position, pos0),
-        (try_begin),
-          (str_is_empty, s2),
-          (position_set_x, pos0, 17),
-          (position_set_y, pos0, 30),
-          (position_set_z, pos0, 100),
-        (else_try),
-          (position_set_x, pos0, 60),
-          (position_set_y, pos0, 20),
-          (position_set_z, pos0, 100),
-        (try_end),
-        (set_game_menu_tableau_mesh, "tableau_game_inventory_window", "trp_player", pos0),
-        (troop_get_slot, "$temp_2", "trp_player", slot_troop_player_disguise_sets),
-    ],
-    [
-      ("continue",
-      [(gt, "$temp", 0),
-       (assign, reg1, "$temp"),],
-      "Choose up to {reg1} items to bring.",
-      [
-        (change_screen_loot, "trp_random_town_sequence"),
-      ]),
+    (str_store_party_name, s1, "$current_town"),
+    #build text
+    (try_begin),
+      (eq, "$sneaked_into_town", disguise_none),
+      (str_store_string, s2, "@Select a suitable disguise for this occasion."),
+      (assign, "$temp", 0),
+    (else_try),
+      (eq, "$sneaked_into_town", disguise_pilgrim),
+      (str_store_string, s2, "@As a poor priest with a stout stick and a few tricks up your sleeve, you will be able to blend in with the crowds but not bring much of value with you."),
+      (assign, "$temp", 6),
+    (else_try),
+      (eq, "$sneaked_into_town", disguise_farmer),
+      (str_store_string, s2, "@As a poor roman farmer, you will be able to a wrangle livestock and smuggle articles of food through."),
+      (assign, "$temp", 15),
+    (else_try),
+      (eq, "$sneaked_into_town", disguise_hunter),
+      (str_store_string, s2, "@As a eastern trader, provisions and raw goods are expected as well as horseflesh."),
+      (assign, "$temp", 12),
+    (else_try),
+      (eq, "$sneaked_into_town", disguise_guard),
+      (str_store_string, s2, "@As a germanic warrior, you will be able to bear weapons but bring only a few personal belongings."),
+      (assign, "$temp", 6),
+    (else_try),
+      (eq, "$sneaked_into_town", disguise_merchant),
+      (str_store_string, s2, "@As a roman merchant, you will be able to bring any assortment of goods."),
+      (assign, "$temp", 32),
+    (else_try),
+      (eq, "$sneaked_into_town", disguise_bard),
+      (str_store_string, s2, "@As a bard, you will be allowed some personal possessions and your instrument."),
+      (assign, "$temp", 9),
+    (try_end),
+    (set_fixed_point_multiplier, 100),
+    (init_position, pos0),
+    (try_begin),
+      (str_is_empty, s2),
+      (position_set_x, pos0, 17),
+      (position_set_y, pos0, 30),
+      (position_set_z, pos0, 100),
+    (else_try),
+      (position_set_x, pos0, 60),
+      (position_set_y, pos0, 20),
+      (position_set_z, pos0, 100),
+    (try_end),
+    (set_game_menu_tableau_mesh, "tableau_game_inventory_window", "trp_player", pos0),
+    (troop_get_slot, "$temp_2", "trp_player", slot_troop_player_disguise_sets),
+  ],[
+    ("continue",[
+      (gt, "$temp", 0),
+      (assign, reg1, "$temp"),
+    ],"Choose up to {reg1} items to bring.",[
+      (change_screen_loot, "trp_random_town_sequence"),
+    ]),
 
       ("continue",
       [(neq, "$sneaked_into_town", disguise_none)],
@@ -29345,8 +28629,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         #(jump_to_menu, "mnu_castle_outside"),
         (jump_to_menu, "$temp4_1"),
       ]),
-    ]
-  ),
+]),
 
 ("honorary_title_granted",0,
   "{s22} granted you the honorary title of {s23}.",
