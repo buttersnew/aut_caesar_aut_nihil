@@ -5681,7 +5681,7 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("bandit_lair_quest_description", "Find and destroy the {s9}, and report back to {s11}."),
 
   ("bandit_hideout_preattack", "You approach the hideout. The {s4} don't appear to have spotted you yet, and you could still sneak away unnoticed. The difficult approach to the site -- {s5} -- means that only a handful of troops in your party will be able to join the attack, and they will be unable to bring their horses. If your initial attack fails, the {s4} will easily be able to make their escape and disperse. Do you wish to attack the hideout, or wait for another occasion?"),
-  ("bandit_hideout_failure", "The {s4} beat back your attack. You regroup, and advance again to find that they have dispersed and vanished into the surrounding countryside, where no doubt they will continue to threaten travellers."),
+  ("bandit_hideout_failure", "The {s4} beat back your attack. You need to regroup and reconsider your actions."),
   ("bandit_hideout_success", "With their retreat cut off, the {s4} fall one by one to your determined attack. Their hideout, and their ill-gotten gains, as now yours."),
 
   ("bandit_approach_desert", "through a desert"),
