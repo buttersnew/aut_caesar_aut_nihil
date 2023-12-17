@@ -75,7 +75,7 @@ arabian_names = [
 ("arabian_female_name_01", "Adiyya"),
 ("arabian_female_name_02", "Baslu"),
 ("arabian_female_name_03", "Dhabibat"),
-("arabian_female_name_ß4", "Dharqa"),
+("arabian_female_name_04", "Dharqa"),
 ("arabian_female_name_05", "Gamilath"),
 ("arabian_female_name_06", "Hind"),
 ("arabian_female_name_07", "Huldu"),
