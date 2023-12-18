@@ -41,5 +41,5 @@ caucasian_names = [
 ("caucasian_female_name_13", "Zenobia"),
 ("caucasian_female_name_14", "Satenik"),
 
-("caucasian_female_end", "end"),
+("caucasian_female_name_end", "end"),
 ]

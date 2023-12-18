@@ -874,10 +874,10 @@ def internal_identifier(name):
 
 def compiled_identifier(name, module, lowercase = True):
 	if 'cap' in sys.argv: lowercase = False
-	if lowercase:
-		formated_name = name.lower()
-		if name != formated_name:
-			WRECK.notices.append('Capital characters in %s identifier %r.' % (module, name))
+	# if lowercase:
+	# 	formated_name = name.lower()
+	# 	if name != formated_name:
+	# 		WRECK.notices.append('Capital characters in %s identifier %r.' % (module, name))
 		# name = name.lower()
 	formated_name = name.replace(' ', '_')
 	if name != formated_name:

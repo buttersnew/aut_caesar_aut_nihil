@@ -4077,3 +4077,84 @@ brown_faces_end     = str_female_brown_face_end + 1
 
 black_faces_begin   = str_female_black_face_1
 black_faces_end     = str_female_black_face_end + 1
+
+# names
+
+male_britannic_names_begin = "str_britannic_name_01"
+male_britannic_names_end   = "str_britannic_name_end"
+
+male_dacian_names_begin = "str_dacian_name_01"
+male_dacian_names_end   = "str_dacian_name_end"
+
+male_sarmatian_names_begin = "str_sarmatian_name_01"
+male_sarmatian_names_end   = "str_sarmatian_name_end"
+
+male_germanic_names_begin = "str_germanic_name_01"
+male_germanic_names_end   = "str_germanic_name_end"
+
+male_caucasian_names_begin = "str_caucasian_name_01"
+male_caucasian_names_end   = "str_caucasian_name_end"
+
+male_persian_names_begin = "str_persian_name_01"
+male_persian_names_end   = "str_persian_name_end"
+
+male_arabian_names_begin = "str_arabian_name_01"
+male_arabian_names_end   = "str_arabian_name_end"
+
+male_hebrew_names_begin = "str_hebrew_name_01"
+male_hebrew_names_end   = "str_hebrew_name_end"
+
+male_north_african_names_begin = "str_north_african_name_01"
+male_north_african_names_end   = "str_north_african_name_end"
+
+male_nubian_names_begin = "str_nubian_name_01"
+male_nubian_names_end   = "str_nubian_name_end"
+
+male_saka_names_begin = "str_saka_name_01"
+male_saka_names_end   = "str_saka_name_end"
+
+male_roman_names_begin = "str_roman_name_01"
+male_roman_names_end   = "str_roman_name_end"
+
+male_roman_cognomens_begin = "str_roman_cognomen_1"
+male_roman_cognomens_end   = "str_roman_cognomen_end"
+
+# female
+female_britannic_names_begin = "str_britannic_female_name_01"
+female_britannic_names_end   = "str_britannic_female_name_end"
+
+female_dacian_names_begin = "str_dacian_female_name_01"
+female_dacian_names_end   = "str_dacian_female_name_end"
+
+female_sarmatian_names_begin = "str_sarmatian_female_name_01"
+female_sarmatian_names_end   = "str_sarmatian_female_name_end"
+
+female_germanic_names_begin = "str_germanic_female_name_01"
+female_germanic_names_end   = "str_germanic_female_name_end"
+
+female_caucasian_names_begin = "str_caucasian_female_name_01"
+female_caucasian_names_end   = "str_caucasian_female_name_end"
+
+female_persian_names_begin = "str_persian_female_name_01"
+female_persian_names_end   = "str_persian_female_name_end"
+
+female_arabian_names_begin = "str_arabian_female_name_01"
+female_arabian_names_end   = "str_arabian_female_name_end"
+
+female_hebrew_names_begin = "str_hebrew_female_name_01"
+female_hebrew_names_end   = "str_hebrew_female_name_end"
+
+female_north_african_names_begin = "str_north_african_female_name_01"
+female_north_african_names_end   = "str_north_african_female_name_end"
+
+female_nubian_names_begin = "str_nubian_female_name_01"
+female_nubian_names_end   = "str_nubian_female_name_end"
+
+female_saka_names_begin = "str_saka_female_name_01"
+female_saka_names_end   = "str_saka_female_name_end"
+
+female_roman_names_begin = "str_roman_female_name_01"
+female_roman_names_end   = "str_roman_female_name_end"
+
+female_roman_cognomens_begin = "str_roman_female_cognomen_1"
+female_roman_cognomens_end   = "str_roman_female_cognomen_end"

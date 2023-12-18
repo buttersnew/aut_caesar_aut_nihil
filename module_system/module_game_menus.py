@@ -326,7 +326,7 @@ game_menus = [
         (set_background_mesh, "mesh_pic_yourbirth"),
         (try_begin),
             (eq, "$character_gender", tf_male),
-            (call_script, "script_get_character_name_for_culture", "fac_culture_7"),
+            (call_script, "script_get_character_name_for_troop", "$character_gender", "fac_culture_7"),
             (troop_set_name, "trp_player", s12),
             (troop_set_plural_name, "trp_player", s12),
         (else_try),
@@ -43771,14 +43771,16 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("event_13_juicio",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Aunt and her nehpew^^You receive a petition of an influential woman: 'To {playername}, Prefect of {s4}. I ask you, my Lord, to give me as guardian {s35}, my nephew, in accordance with the Lex Julia et Titia."
-  +" Dated in the consulship of Philippus Augustus and Philippus Caesar.' It seems that she wants to be the guardian of a little boy. Currently the father of the boy, a rich landowner, is the guardian."
+  +" Dated in the consulship of Philippus Augustus and Philippus Caesar. Yours sincerely {s36}!' It seems that she wants to be the guardian of a little boy. Currently the father of the boy, a rich landowner, is the guardian."
   +" The slave who brought you the letter also informs you, that his Lady would offer you a 'gift' of 7,500 denars if you act in her favor.",
   "none",[
     (set_background_mesh, "mesh_pic_governor_judgment"),
     (str_store_party_name, s4, "$current_town"),
     (troop_get_slot, ":player_culture", "trp_player", slot_troop_culture),
-    (call_script, "script_get_character_name_for_culture", ":player_culture"),
+    (call_script, "script_get_character_name_for_troop", tf_male, ":player_culture"),
     (str_store_string, s35, "@{s12}"),
+    (call_script, "script_get_character_name_for_troop", tf_female, ":player_culture"),
+    (str_store_string, s36, "@{s12}"),
   ],[
     ("choice_13_1nj",[],"Agree to this petition. But don't accept the gift",[
       (call_script, "script_change_player_relation_with_center", "$current_town", -5),
