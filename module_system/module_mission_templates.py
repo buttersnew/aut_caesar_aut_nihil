@@ -13560,274 +13560,243 @@ mission_templates = [
 ]+ battle_panel_triggers+ dplmc_battle_mode_triggers
 ),
 
-  (
-	"alley_fight", mtf_battle_mode,charge,
-    "Alley fight",
-    [
-      (0,mtef_team_0|mtef_use_exact_number,af_override_horse,aif_start_alarmed,7,[]),
-      (1,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
-      (2,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
-      (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
-    ], p_wetter + storms + global_common_triggers+
-    [
-      cannot_spawn_commoners,
+("alley_fight", mtf_battle_mode,charge,
+  "Alley fight",[
+    (0,mtef_team_0|mtef_use_exact_number,af_override_horse,aif_start_alarmed,7,[]),
+    (1,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
+    (2,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
+    (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
+  ], p_wetter + storms + global_common_triggers+
+  [
+    cannot_spawn_commoners,
     improved_lightning,
-      common_battle_init_banner,
+    common_battle_init_banner,
+    common_inventory_not_available,
 
-      common_inventory_not_available,
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent_no"),
+      (get_player_agent_no, ":player_agent"),
+      (neq, ":agent_no", ":player_agent"),
+      (assign, "$g_main_attacker_agent", ":agent_no"),
+      (agent_ai_set_aggressiveness, ":agent_no", 199),
 
-      (ti_on_agent_spawn, 0, 0, [],
-      [
-        (store_trigger_param_1, ":agent_no"),
-        (get_player_agent_no, ":player_agent"),
-        (neq, ":agent_no", ":player_agent"),
-        (assign, "$g_main_attacker_agent", ":agent_no"),
-        (agent_ai_set_aggressiveness, ":agent_no", 199),
-
-        (try_begin),
-          (agent_get_troop_id, ":troop_no", ":agent_no"),
-          (eq, ":troop_no", "trp_roman_start_merchant"),
-          (agent_set_team, ":agent_no", 7),
-          (team_set_relation, 0, 7, 0),
-        (try_end),
-      ]),
-
-	   (0, 0, 0,
-	   [
-	     (eq, "$talked_with_merchant", 0),
-	   ],
-	   [
-        (get_player_agent_no, ":player_agent"),
-        (agent_get_position, pos0, ":player_agent"),
-
-        (try_for_agents, ":agent_no"),
-          (agent_get_troop_id, ":troop_no", ":agent_no"),
-          (eq, ":troop_no", "trp_roman_start_merchant"),
-          (agent_set_scripted_destination, ":agent_no", pos0),
-          (agent_get_position, pos1, ":agent_no"),
-          (get_distance_between_positions, ":dist", pos0, pos1),
-          (le, ":dist", 200),
-          (assign, "$talk_context", tc_back_alley),
-          (start_mission_conversation, ":troop_no"),
-        (try_end),
-	   ]),
-
-      (1, 0, 0, [],
-      [
-        (get_player_agent_no, ":player_agent"),
-        (ge, "$g_main_attacker_agent", 0),
-        (ge, ":player_agent", 0),
-        (agent_is_active, "$g_main_attacker_agent"),
-        (agent_is_active, ":player_agent"),
-        (agent_get_position, pos0, ":player_agent"),
-        (agent_get_position, pos1, "$g_main_attacker_agent"),
-        (get_distance_between_positions, ":dist", pos0, pos1),
-        (ge, ":dist", 5),
-        (agent_set_scripted_destination, "$g_main_attacker_agent", pos0),
-      ]),
-
-      (ti_tab_pressed, 0, 0, [],
-      [
-        (display_message, "str_cannot_leave_now"),
-      ]),
-
-      (0, 0, ti_once, [],
-       [
-         (call_script, "script_music_set_situation_with_culture", mtf_sit_ambushed),
-         (set_party_battle_mode),
-        ]),
-
-      (0, 0, ti_once,
-       [
-         (neg|main_hero_fallen),
-         (num_active_teams_le, 1),
-       ],
-       [
-         (add_visitors_to_current_scene, 3, "trp_roman_start_merchant", 1, 0),
-       ]),
-
-      (1, 0, ti_once,
-       [
-         (eq, "$talked_with_merchant", 1),
-       ],
-       [
-         (try_begin),
-           (main_hero_fallen),
-           (assign, "$g_killed_first_bandit", 0),
-         (else_try),
-           (assign, "$g_killed_first_bandit", 1),
-         (try_end),
-
-         (finish_mission),
-         (assign, "$g_main_attacker_agent", 0),
-         (assign, "$talked_with_merchant", 1),
-
-         (assign, "$current_startup_quest_phase", 1),
-
-         (change_screen_return),
-         (set_trigger_result, 1),
-
-         (get_player_agent_no, ":player_agent"),
-         (store_agent_hit_points, ":hit_points", ":player_agent"),
-
-         (try_begin),
-           (lt, ":hit_points", 90),
-           (agent_set_hit_points, ":player_agent", 90),
-         (try_end),
-       ]),
-
-      (1, 3, ti_once,
-       [
-         (main_hero_fallen),
-       ],
-       [
-         (try_begin),
-           (main_hero_fallen),
-           (assign, "$g_killed_first_bandit", 0),
-         (else_try),
-           (assign, "$g_killed_first_bandit", 1),
-         (try_end),
-
-         (finish_mission),
-         (assign, "$g_main_attacker_agent", 0),
-         (assign, "$talked_with_merchant", 1),
-
-         (assign, "$current_startup_quest_phase", 1),
-
-         (change_screen_return),
-         (set_trigger_result, 1),
-
-         (get_player_agent_no, ":player_agent"),
-         (store_agent_hit_points, ":hit_points", ":player_agent"),
-
-         (try_begin),
-           (lt, ":hit_points", 90),
-           (agent_set_hit_points, ":player_agent", 90),
-         (try_end),
-       ]),
-     ]),
-
-  (
-    "meeting_merchant",mtf_battle_mode,0,
-    "Meeting with the merchant",
-    [
-      (0,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (1,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (2,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (3,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (4,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (5,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (6,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (7,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (8,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-      (9,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-    ], p_wetter + global_common_triggers+
-    [
-      can_spawn_commoners,
-      (ti_on_agent_spawn, 0, 0, [],
-      [
-        (store_trigger_param_1, ":agent_no"),
-
-        (try_begin),
-          (agent_get_troop_id, ":troop_no", ":agent_no"),
-          (eq, ":troop_no", "trp_roman_start_merchant"),
-          (agent_set_team, ":agent_no", 7),
-          (team_set_relation, 0, 7, 0),
-        (try_end),
-      ]),
-
-      (1, 0, ti_once, [],
-      [
-        (mission_enable_talk),
-
-        (assign, "$dialog_with_merchant_ended", 0),
-        (store_current_scene, ":cur_scene"),
-        (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
-        (try_begin),
-          (gt, "$sneaked_into_town", disguise_none),
-          (call_script, "script_music_set_situation_with_culture", mtf_sit_town_infiltrate),
-        (else_try),
-          (eq, "$talk_context", tc_tavern_talk),
-          (call_script, "script_music_set_situation_with_culture", mtf_sit_tavern),
-        (else_try),
-          (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
-        (try_end),
-      ]),
-
-      (1, 0, 0,
-      [
-        (assign, ":continue", 0),
-        (try_begin),
-          (ge, "$dialog_with_merchant_ended", 6),
-          (assign, ":continue", 1),
-        (else_try),
-          (ge, "$dialog_with_merchant_ended", 1),
-		      (neg|conversation_screen_is_active),
-
-          (try_begin),
-            (eq, "$dialog_with_merchant_ended", 1),
-            (check_quest_active, "qst_collect_men"),
-            (tutorial_box, "str_start_up_first_quest", "@Tutorial"),
-          (try_end),
-
-          (val_add, "$dialog_with_merchant_ended", 1),
-          (assign, ":continue", 0),
-        (try_end),
-
-        (try_begin),
-          (conversation_screen_is_active),
-          (tutorial_message, -1),
-          (assign, ":continue", 0),
-        (try_end),
-
-        (eq, ":continue", 1),
-      ],
-      [
-        (tutorial_message_set_size, 17, 17),
-        (tutorial_message_set_position, 500, 650),
-        (tutorial_message_set_center_justify, 0),
-        (tutorial_message_set_background, 1),
-        (tutorial_message, "str_press_tab_to_exit_from_town"),
-      ]),
-
-      (ti_before_mission_start, 0, 0, [],
-      [
-        #(call_script, "script_change_banners_and_chest"),
-	  ]),
-
-      (ti_inventory_key_pressed, 0, 0,
-      [
-        (set_trigger_result, 1),
-      ], []),
-
-      (ti_tab_pressed, 0, 0,
-      [
-        (try_begin),
-          (gt, "$dialog_with_merchant_ended", 0),
-
-          (party_relocate_near_party, "p_main_party", "$current_town", 1),
-          (finish_mission),
-
-          (assign, "$current_startup_quest_phase", 2),
-          (tutorial_message, -1),
-          (tutorial_message_set_background, 0),
-          (try_begin),
-            (check_quest_finished, "qst_save_town_from_bandits"),
-            (assign, "$g_do_one_more_meeting_with_merchant", 1),
-          (else_try),
-            #will do this at first spawning in the map
-            (set_spawn_radius, 50),
-            (try_for_range, ":unused", 0, 20),
-              (spawn_around_party, "p_main_party", "pt_looters"),
-            (try_end),
-          (try_end),
-          (jump_to_menu, "mnu_town"),
-          (set_trigger_result, 1),
-        (else_try),
-          (display_message, "str_cannot_leave_now"),
-        (try_end),
-      ], []),
+      (try_begin),
+        (agent_get_troop_id, ":troop_no", ":agent_no"),
+        (eq, ":troop_no", "trp_roman_start_merchant"),
+        (agent_set_team, ":agent_no", 7),
+        (team_set_relation, 0, 7, 0),
+      (try_end),
     ]),
+
+	  (0, 0, 0,[
+	    (eq, "$talked_with_merchant", 0),
+	  ],[
+      (get_player_agent_no, ":player_agent"),
+      (agent_get_position, pos0, ":player_agent"),
+
+      (try_for_agents, ":agent_no"),
+        (agent_get_troop_id, ":troop_no", ":agent_no"),
+        (eq, ":troop_no", "trp_roman_start_merchant"),
+        (agent_set_scripted_destination, ":agent_no", pos0),
+        (agent_get_position, pos1, ":agent_no"),
+        (get_distance_between_positions, ":dist", pos0, pos1),
+        (le, ":dist", 200),
+        (assign, "$talk_context", tc_back_alley),
+        (start_mission_conversation, ":troop_no"),
+      (try_end),
+    ]),
+    (1, 0, 0, [],[
+      (get_player_agent_no, ":player_agent"),
+      (ge, "$g_main_attacker_agent", 0),
+      (ge, ":player_agent", 0),
+      (agent_is_active, "$g_main_attacker_agent"),
+      (agent_is_active, ":player_agent"),
+      (agent_get_position, pos0, ":player_agent"),
+      (agent_get_position, pos1, "$g_main_attacker_agent"),
+      (get_distance_between_positions, ":dist", pos0, pos1),
+      (ge, ":dist", 5),
+      (agent_set_scripted_destination, "$g_main_attacker_agent", pos0),
+    ]),
+    (ti_tab_pressed, 0, 0, [],[
+      (display_message, "str_cannot_leave_now"),
+    ]),
+
+    (0, 0, ti_once, [],[
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_ambushed),
+      (set_party_battle_mode),
+    ]),
+
+    (0, 0, ti_once,[
+      (neg|main_hero_fallen),
+      (num_active_teams_le, 1),
+    ],[
+      (add_visitors_to_current_scene, 3, "trp_roman_start_merchant", 1, 0),
+    ]),
+
+    (1, 0, ti_once,[
+      (eq, "$talked_with_merchant", 1),
+    ],[
+      (try_begin),
+        (main_hero_fallen),
+        (assign, "$g_killed_first_bandit", 0),
+      (else_try),
+        (assign, "$g_killed_first_bandit", 1),
+      (try_end),
+
+      (finish_mission),
+      (assign, "$g_main_attacker_agent", 0),
+      (assign, "$talked_with_merchant", 1),
+
+      (assign, "$current_startup_quest_phase", 1),
+
+      (change_screen_return),
+      (set_trigger_result, 1),
+
+      (get_player_agent_no, ":player_agent"),
+      (store_agent_hit_points, ":hit_points", ":player_agent"),
+
+      (try_begin),
+        (lt, ":hit_points", 90),
+        (agent_set_hit_points, ":player_agent", 90),
+      (try_end),
+    ]),
+
+    (1, 3, ti_once,[
+      (main_hero_fallen),
+    ],[
+      (try_begin),
+        (main_hero_fallen),
+        (assign, "$g_killed_first_bandit", 0),
+      (else_try),
+        (assign, "$g_killed_first_bandit", 1),
+      (try_end),
+
+      (finish_mission),
+      (assign, "$g_main_attacker_agent", 0),
+      (assign, "$talked_with_merchant", 1),
+
+      (assign, "$current_startup_quest_phase", 1),
+
+      (change_screen_return),
+      (set_trigger_result, 1),
+
+      (get_player_agent_no, ":player_agent"),
+      (store_agent_hit_points, ":hit_points", ":player_agent"),
+
+      (try_begin),
+        (lt, ":hit_points", 90),
+        (agent_set_hit_points, ":player_agent", 90),
+      (try_end),
+    ]),
+]),
+
+("meeting_merchant",mtf_battle_mode,0,
+  "Meeting with the merchant",[
+    (0,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (1,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (2,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (3,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (4,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (5,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (6,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (7,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (8,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (9,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+  ], p_wetter + global_common_triggers+
+  [
+    can_spawn_commoners,
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent_no"),
+      (try_begin),
+        (agent_get_troop_id, ":troop_no", ":agent_no"),
+        (eq, ":troop_no", "trp_roman_start_merchant"),
+        (agent_set_team, ":agent_no", 7),
+        (team_set_relation, 0, 7, 0),
+      (try_end),
+    ]),
+
+    (1, 0, ti_once, [],[
+      (mission_enable_talk),
+
+      (assign, "$dialog_with_merchant_ended", 0),
+      (store_current_scene, ":cur_scene"),
+      (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
+      (try_begin),
+        (gt, "$sneaked_into_town", disguise_none),
+        (call_script, "script_music_set_situation_with_culture", mtf_sit_town_infiltrate),
+      (else_try),
+        (eq, "$talk_context", tc_tavern_talk),
+        (call_script, "script_music_set_situation_with_culture", mtf_sit_tavern),
+      (else_try),
+        (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+      (try_end),
+    ]),
+
+    (1, 0, 0,[
+      (assign, ":continue", 0),
+      (try_begin),
+        (ge, "$dialog_with_merchant_ended", 6),
+        (assign, ":continue", 1),
+      (else_try),
+        (ge, "$dialog_with_merchant_ended", 1),
+        (neg|conversation_screen_is_active),
+
+        (try_begin),
+          (eq, "$dialog_with_merchant_ended", 1),
+          (check_quest_active, "qst_collect_men"),
+          (tutorial_box, "str_start_up_first_quest", "@Tutorial"),
+        (try_end),
+
+        (val_add, "$dialog_with_merchant_ended", 1),
+        (assign, ":continue", 0),
+      (try_end),
+
+      (try_begin),
+        (conversation_screen_is_active),
+        (tutorial_message, -1),
+        (assign, ":continue", 0),
+      (try_end),
+
+      (eq, ":continue", 1),
+    ],[
+      (tutorial_message_set_size, 17, 17),
+      (tutorial_message_set_position, 500, 650),
+      (tutorial_message_set_center_justify, 0),
+      (tutorial_message_set_background, 1),
+      (tutorial_message, "str_press_tab_to_exit_from_town"),
+    ]),
+
+    (ti_inventory_key_pressed, 0, 0,[
+      (set_trigger_result, 1),
+    ], []),
+
+    (ti_tab_pressed, 0, 0,[
+      (try_begin),
+        (gt, "$dialog_with_merchant_ended", 0),
+
+        (party_relocate_near_party, "p_main_party", "$current_town", 1),
+        (finish_mission),
+
+        (assign, "$current_startup_quest_phase", 2),
+        (tutorial_message, -1),
+        (tutorial_message_set_background, 0),
+        (try_begin),
+          (check_quest_finished, "qst_save_town_from_bandits"),
+          (assign, "$g_do_one_more_meeting_with_merchant", 1),
+        (else_try),
+          #will do this at first spawning in the map
+          (set_spawn_radius, 50),
+          (try_for_range, ":unused", 0, 20),
+            (spawn_around_party, "p_main_party", "pt_looters"),
+          (try_end),
+        (try_end),
+        (jump_to_menu, "mnu_town"),
+        (set_trigger_result, 1),
+      (else_try),
+        (display_message, "str_cannot_leave_now"),
+      (try_end),
+    ], []),
+]),
 
   (
     "town_fight",0,-1,
