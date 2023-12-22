@@ -10524,7 +10524,13 @@ presentations = [
     (overlay_set_position, reg0, pos1),
     (val_sub, ":cur_y", 25),
 
-    (create_text_overlay, reg0, "@This includes Vexilarius, Aquilifer, Tribunus and Primus Pilus; and all kinds of Standard bearers.", 0),
+    (try_begin),
+        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        (str_store_string, s1, "@This includes Vexilarius, Aquilifer, Tribunus and Primus Pilus."),
+    (else_try),
+        (str_store_string, s1, "@This includes all kinds of Standard Bearer."),
+    (try_end),
+    (create_text_overlay, reg0, "@{s1}", 0),
     (overlay_set_size, reg0, pos2),
     (position_set_x, pos1, 0),
     (position_set_y, pos1, ":cur_y"),
@@ -28900,10 +28906,8 @@ presentations = [
     (position_set_y, pos1, 23),
     (overlay_set_position, reg1, pos1),
     (assign, "$g_presentation_credits_obj_1", reg1),
-    ]),
-   ## Check for buttonpress
-    (ti_on_presentation_event_state_change,
-    [
+  ]),
+  (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
         (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
@@ -28917,9 +28921,8 @@ presentations = [
         (troop_set_slot, "trp_province_array", ":slot", 84),#
         (start_presentation, "prsnt_province_management"),
     (try_end),
-    ]),
-
-    (ti_on_presentation_run, [
+  ]),
+  (ti_on_presentation_run, [
     (try_begin),
         (key_clicked, key_space),
         (set_fixed_point_multiplier, 1000),
@@ -28930,9 +28933,8 @@ presentations = [
 
         (display_message, "@X: {reg31} | Y: {reg32}"),
     (try_end),
-    ]),
-
   ]),
+]),
 
 ("province_notifiction_player", 0, 0, [
   (ti_on_presentation_load,[
@@ -28980,14 +28982,36 @@ presentations = [
     (str_store_string, s22, ":string"),
     (str_store_troop_name, s40, "$g_notification_menu_var1"),
     (call_script, "script_write_economic_info_to_s0", "$g_notification_menu_var2", 0),
-    (create_text_overlay, reg1, "@_{s23} decided that {s40} shall recieve governorship of {s22}. You may use your influence to change the decision. Just press on the portrait of a character to select him as new governor. Your influence will be reduced accordingly. You can also select yourself for the honor, if you have no governorship already. {s0}_", tf_center_justify),
-    (position_set_x, pos1, 530), # Higher, means more toward the right
-    (position_set_y, pos1, 690), # Higher, means more toward the top
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 1000),
-    (position_set_y, pos1, 1000),
-    (overlay_set_size, reg1, pos1),
+    (str_clear, s1),
+    (try_begin),
+        (le, "$g_is_emperor", 0),
+        (str_store_string, s1, "@ You can also select yourself for the honor, if you have no governorship already. "),
+    (try_end),
 
+    (create_text_overlay, reg1, "@{s23} decided that {s40} shall recieve governorship of {s22}. You may use your influence to change the decision. Just press on the portrait of a character to select him as new governor. Your influence will be reduced accordingly.{s1}{s0}", tf_scrollable_style_2|tf_center_justify),
+    (position_set_x, pos1, 950),
+    (position_set_y, pos1, 950),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 225),
+    (position_set_y, pos1, 650),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 700),
+    (position_set_y, pos1, 80),
+    (overlay_set_area_size, reg1, pos1),
+
+    #get additional information about the province
+    (call_script, "script_get_province_relation_modifier", "$g_notification_menu_var2", -1),#the text here is for emperor
+    (create_text_overlay, reg1, "str_s0", tf_scrollable_style_2|tf_center_justify),
+    (position_set_x, pos1, 950),
+    (position_set_y, pos1, 950),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 225),
+    (position_set_y, pos1, 590),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 700),
+    (position_set_y, pos1, 60),
+    (overlay_set_area_size, reg1, pos1),
+    (overlay_set_color, reg1, 0x0000FF),
 
     (try_begin),
         (ge, ":is_senatorial", 1),
@@ -28998,8 +29022,8 @@ presentations = [
         (str_store_string, s23, "@Influence: {reg22}"),
     (try_end),
     (create_text_overlay, reg1, "@{s23}", tf_center_justify),
-    (position_set_x, pos1, 530), # Higher, means more toward the right
-    (position_set_y, pos1, 700-100), # Higher, means more toward the top
+    (position_set_x, pos1, 560), # Higher, means more toward the right
+    (position_set_y, pos1, 570), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1000),
     (position_set_y, pos1, 1000),
@@ -29007,11 +29031,11 @@ presentations = [
 
     (troop_set_slot, "trp_global_variables", g_show_troop_banner, 1),
     (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", "$g_notification_menu_var1"),
-    (position_set_x, pos1, 20),
-    (position_set_y, pos1, 540),
+    (position_set_x, pos1, 40),
+    (position_set_y, pos1, 580),
     (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 500),
-    (position_set_y, pos1, 500),
+    (position_set_x, pos1, 450),
+    (position_set_y, pos1, 450),
     (overlay_set_size, reg0, pos1),
 
     (troop_get_slot, ":personality", "$g_notification_menu_var1", slot_lord_reputation_type),
@@ -29020,38 +29044,13 @@ presentations = [
     (troop_get_slot, reg20, "$g_notification_menu_var1", slot_troop_player_relation),
     (str_store_troop_name_plural, s30, "$g_notification_menu_var1"),
     (create_text_overlay, reg1, "@Canditate: {s30}.^Relation: {reg20}.^Personality: {s22}", tf_center_justify),
-    (position_set_x, pos1, 90), # Higher, means more toward the right
-    (position_set_y, pos1, 470), # Higher, means more toward the top
+    (position_set_x, pos1, 110), # Higher, means more toward the right
+    (position_set_y, pos1, 515), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 1100),
-    (position_set_y, pos1, 1100),
+    (position_set_x, pos1, 950),
+    (position_set_y, pos1, 950),
     (overlay_set_size, reg1, pos1),
 
-
-    #get additional information about the province
-    (call_script, "script_get_province_relation_modifier", "$g_notification_menu_var2", -1),#the text here is for emperor
-    # (assign,":easy_to_rule",reg0),
-    # (try_begin),
-        # (eq, ":easy_to_rule", -1),
-        # (str_store_string, s0, "@The provine of {s1} is considered to be unruly. Whom ever you support with your influence will lose some relation with you."),
-    # (else_try),
-        # (eq, ":easy_to_rule", -2),
-        # (str_store_string, s0, "@The provine of {s1} is considered to be unruly and rebellious. Whom ever you support with your influence will lose relation with you."),
-    # (else_try),
-        # (eq, ":easy_to_rule", 1),
-        # (str_store_string, s0, "@The provine of {s1} is considered to be easy to rule. Whom ever you support with your influence will some gain relation with you."),
-    # (else_try),
-        # (eq, ":easy_to_rule", 2),
-        # (str_store_string, s0, "@The provine of {s1} is considered to be easy to rule and prestigious. Whom ever you support with your influence will gain relation with you."),
-    # (try_end),
-    (create_text_overlay, reg1, "str_s0", tf_center_justify),
-    (position_set_x, pos1, 550), # Higher, means more toward the right
-    (position_set_y, pos1, 650), # Higher, means more toward the top
-    (overlay_set_position, reg1, pos1),
-    (overlay_set_color, reg1, 0x00007F),
-    (position_set_x, pos1, 1000),
-    (position_set_y, pos1, 1000),
-    (overlay_set_size, reg1, pos1),
 
     # Back to menu - graphical button
     (create_game_button_overlay, reg1, "str_return"),
@@ -29094,12 +29093,13 @@ presentations = [
         (neq, ":active_npc", "$g_notification_menu_var1"),
         (try_begin),
             (eq, ":active_npc", active_npcs_including_player_begin),
+            (le, "$g_is_emperor", 0),
             (assign, ":active_npc", "trp_player"),
             (assign, ":npc_faction", "$players_kingdom"),
         (else_try),
             (store_troop_faction, ":npc_faction", ":active_npc"),
         (try_end),
-
+        (neq, ":active_npc", active_npcs_including_player_begin),
         (eq, ":npc_faction", "$players_kingdom"),
         (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
         (neg|troop_slot_ge, ":active_npc", slot_troop_legion, 1),
@@ -29116,8 +29116,8 @@ presentations = [
         (position_set_x, pos1, ":x_name"),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg0, pos1),
-        (position_set_x, pos3, 500),
-        (position_set_y, pos3, 500),
+        (position_set_x, pos3, 450),
+        (position_set_y, pos3, 450),
         (overlay_set_size, reg0, pos3),
 
         # #creat button
@@ -31680,6 +31680,10 @@ presentations = [
                 (str_store_string, s0, "@You have this item in inventory."),
                 (assign, ":colour", 0x00AA00),
             (else_try),
+                (troop_has_item_equipped, "trp_pseudo_troop_end", "$selected_item"),
+                (str_store_string, s0, "@You have this item on your second outfit."),
+                (assign, ":colour", 0x00AA00),
+            (else_try),
                 (troop_has_item_equipped, "trp_player",  "$selected_item"),
                 (str_store_string, s0, "@You are currently wearing this item."),
                 (assign, ":colour", 0x00AA00),
@@ -31785,6 +31789,7 @@ presentations = [
 
             (try_begin),
                 (this_or_next|player_has_item, ":item_no"),
+                (this_or_next|troop_has_item_equipped, "trp_pseudo_troop_end",  ":item_no"),
                 (troop_has_item_equipped, "trp_player",  ":item_no"),
                 (overlay_set_color, "$g_presentation_obj_1", 0x00AA00),
             (else_try),
