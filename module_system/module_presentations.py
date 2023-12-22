@@ -27817,6 +27817,7 @@ presentations = [
             (ge, ":is_senatorial", 1),
             (val_add, ":x_name", 100),
             (create_text_overlay, reg0, "@Change Governor (senate support)", tf_left_align),
+            (overlay_set_color, reg0, 0x0000FF),
             (position_set_x, pos1, ":x_name"),
             (position_set_y, pos1, ":y_name"),
             (overlay_set_position, reg0, pos1),
@@ -28120,7 +28121,14 @@ presentations = [
             (troop_set_slot, "trp_temp_array_b", ":province", reg10),
 
             (val_add, ":x_name", 100),
-            (create_text_overlay, reg0, "@Assign Governor", tf_left_align),
+            (try_begin),
+                (gt, ":governor", 0),
+                (str_store_string, s0, "@Change Governor"),
+            (else_try),
+                (str_store_string, s0, "@Assign Governor"),
+            (try_end),
+            (create_text_overlay, reg0, "str_s0", tf_left_align),
+            (overlay_set_color, reg0, 0x0000FF),
             (position_set_x, pos1, ":x_name"),
             (position_set_y, pos1, ":y_name"),
             (overlay_set_position, reg0, pos1),
@@ -29675,7 +29683,7 @@ presentations = [
     (try_end),
   ]),
 ]),
-( "influence_governor_change_senate", 0, 0, [
+("influence_governor_change_senate", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -29721,20 +29729,36 @@ presentations = [
     (str_store_string, s22, ":string"),
     (str_store_troop_name, s40, "$g_notification_menu_var1"),
     (call_script, "script_write_economic_info_to_s0", "$g_notification_menu_var2", 0),
-    (create_text_overlay, reg1, "@_{s40} is currently governor of {s22}. You may use your senate support to assign a new governor. Economic information: {s0}_", tf_center_justify),
-    (position_set_x, pos1, 530), # Higher, means more toward the right
-    (position_set_y, pos1, 690), # Higher, means more toward the top
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 1000),
-    (position_set_y, pos1, 1000),
+    (create_text_overlay, reg1, "@{s40} is currently governor of {s22}. You may use your senate support to assign a new governor. Economic information: {s0}", tf_scrollable_style_2|tf_center_justify),
+    (position_set_x, pos1, 950),
+    (position_set_y, pos1, 950),
     (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 225),
+    (position_set_y, pos1, 650),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 700),
+    (position_set_y, pos1, 80),
+    (overlay_set_area_size, reg1, pos1),
 
+    #get additional information about the province
+    (call_script, "script_get_province_relation_modifier", "$g_notification_menu_var2", -1),#the text here is for emperor
+    (create_text_overlay, reg1, "str_s0", tf_scrollable_style_2|tf_center_justify),
+    (position_set_x, pos1, 950),
+    (position_set_y, pos1, 950),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 225),
+    (position_set_y, pos1, 590),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 700),
+    (position_set_y, pos1, 60),
+    (overlay_set_area_size, reg1, pos1),
+    (overlay_set_color, reg1, 0x0000FF),
 
     (troop_get_slot, reg22, "trp_senator_dummy", slot_senate_support),
     (str_store_string, s23, "@Your senate support: {reg22}"),
     (create_text_overlay, reg1, "@{s23}", tf_center_justify),
-    (position_set_x, pos1, 530), # Higher, means more toward the right
-    (position_set_y, pos1, 700-100), # Higher, means more toward the top
+    (position_set_x, pos1, 560), # Higher, means more toward the right
+    (position_set_y, pos1, 570), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1000),
     (position_set_y, pos1, 1000),
@@ -29742,11 +29766,11 @@ presentations = [
 
     (troop_set_slot, "trp_global_variables", g_show_troop_banner, 1),
     (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", "$g_notification_menu_var1"),
-    (position_set_x, pos1, 20),
-    (position_set_y, pos1, 540),
+    (position_set_x, pos1, 40),
+    (position_set_y, pos1, 580),
     (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 500),
-    (position_set_y, pos1, 500),
+    (position_set_x, pos1, 450),
+    (position_set_y, pos1, 450),
     (overlay_set_size, reg0, pos1),
 
     (troop_get_slot, ":personality", "$g_notification_menu_var1", slot_lord_reputation_type),
@@ -29755,38 +29779,11 @@ presentations = [
     (troop_get_slot, reg20, "$g_notification_menu_var1", slot_troop_player_relation),
     (str_store_troop_name_plural, s30, "$g_notification_menu_var1"),
     (create_text_overlay, reg1, "@{s30}.^Relation: {reg20}.^Personality: {s22}", tf_center_justify),
-    (position_set_x, pos1, 90), # Higher, means more toward the right
-    (position_set_y, pos1, 470), # Higher, means more toward the top
+    (position_set_x, pos1, 110), # Higher, means more toward the right
+    (position_set_y, pos1, 515), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 1100),
-    (position_set_y, pos1, 1100),
-    (overlay_set_size, reg1, pos1),
-
-
-    #get additional information about the province
-    (call_script, "script_get_province_relation_modifier", "$g_notification_menu_var2", -1),#the text here is for emperor
-    # (assign,":easy_to_rule",reg0),
-    # (try_begin),
-        # (eq, ":easy_to_rule", -1),
-        # (str_store_string, s0, "@The provine of {s1} is considered to be unruly. Whom ever you support with your senate support will lose some relation with you."),
-    # (else_try),
-        # (eq, ":easy_to_rule", -2),
-        # (str_store_string, s0, "@The provine of {s1} is considered to be unruly and rebellious. Whom ever you support with your senate support will lose relation with you."),
-    # (else_try),
-        # (eq, ":easy_to_rule", 1),
-        # (str_store_string, s0, "@The provine of {s1} is considered to be easy to rule. Whom ever you support with your senate support will some gain relation with you."),
-    # (else_try),
-        # (eq, ":easy_to_rule", 2),
-        # (str_store_string, s0, "@The provine of {s1} is considered to be easy to rule and prestigious. Whom ever you support with your senate support will gain relation with you."),
-    # (try_end),
-
-    (create_text_overlay, reg1, "str_s0", tf_center_justify),
-    (position_set_x, pos1, 550), # Higher, means more toward the right
-    (position_set_y, pos1, 650), # Higher, means more toward the top
-    (overlay_set_position, reg1, pos1),
-    (overlay_set_color, reg1, 0x00007F),
-    (position_set_x, pos1, 1000),
-    (position_set_y, pos1, 1000),
+    (position_set_x, pos1, 950),
+    (position_set_y, pos1, 950),
     (overlay_set_size, reg1, pos1),
 
     # Back to menu - graphical button
@@ -29830,12 +29827,13 @@ presentations = [
         (neq, ":active_npc", "$g_notification_menu_var1"),
         (try_begin),
             (eq, ":active_npc", active_npcs_including_player_begin),
+            (lt, "$g_is_emperor", 1),
             (assign, ":active_npc", "trp_player"),
             (assign, ":npc_faction", "$players_kingdom"),
         (else_try),
             (store_troop_faction, ":npc_faction", ":active_npc"),
         (try_end),
-
+        (neq, ":active_npc", active_npcs_including_player_begin),
         (eq, ":npc_faction", "$players_kingdom"),
         (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
         (neg|troop_slot_ge, ":active_npc", slot_troop_legion, 1),
@@ -29852,8 +29850,8 @@ presentations = [
         (position_set_x, pos1, ":x_name"),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg0, pos1),
-        (position_set_x, pos3, 500),
-        (position_set_y, pos3, 500),
+        (position_set_x, pos3, 450),
+        (position_set_y, pos3, 450),
         (overlay_set_size, reg0, pos3),
 
         # #creat button

@@ -15414,28 +15414,14 @@ mission_templates = [
 
     (0, 0, ti_once, [],[
       (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
-      (assign, ":found", 0),
       (try_for_agents, ":agent"),
           (agent_is_alive, ":agent"),
           (agent_is_human, ":agent"),
           (agent_get_troop_id, ":troop", ":agent"),
-          (try_begin),
-              (troop_slot_eq, ":troop", slot_troop_spouse, "trp_player"),
-              (is_between, ":troop", active_npcs_begin, kingdom_ladies_end),
-              (agent_get_entry_no, ":entry", ":agent"),
-              (eq, ":entry", 36),
-              (assign, ":found", 1),
-          (else_try),
-              (eq, ":troop", "$g_heir_of_rome"),
-              (neq, "$g_heir_of_rome", "trp_player"),
-              (agent_set_stand_animation, ":agent", "anim_vyrn_sleeping_on_tree"),
-              (agent_set_animation, ":agent", "anim_vyrn_sleeping_on_tree"),
-          (try_end),
-      (try_end),
-
-      (try_begin),
-          (eq, ":found", 1),
-          (tutorial_box, "@A slave informs you that your spouse is currently dressing for lunch. If you want to talk to her go to the dressing-room next to the triclinium.", "@Information"),
+          (eq, ":troop", "$g_heir_of_rome"),
+          (neq, "$g_heir_of_rome", "trp_player"),
+          (agent_set_stand_animation, ":agent", "anim_vyrn_sleeping_on_tree"),
+          (agent_set_animation, ":agent", "anim_vyrn_sleeping_on_tree"),
       (try_end),
     ]),
 
@@ -15443,7 +15429,6 @@ mission_templates = [
       (store_mission_timer_a, ":timer"),
       (ge, ":timer", 3)
     ],[
-      (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
       (assign, ":found", 0),
       (try_for_agents, ":agent"),
           (eq, ":found", 0),
