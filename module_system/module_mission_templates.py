@@ -12881,172 +12881,170 @@ mission_templates = [
   + auxiliary_player
  ),
 
-  (
-    "quick_battle_siege", mtf_battle_mode,-1,
-    "You lead your men to battle.",
-    [
-      (0,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (2,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (3,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (4,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (5,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (6,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (7,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+("quick_battle_siege", mtf_battle_mode,-1,
+  "You lead your men to battle.",[
+    (0,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (2,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (3,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (4,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (5,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (6,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (7,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
 
-      (8,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (9,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (10,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (11,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (12,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (13,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (14,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (15,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (8,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (9,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (10,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (11,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (12,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (13,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (14,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (15,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
 
-      (16,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (17,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (18,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (19,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (20,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (21,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (22,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (23,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (16,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (17,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (18,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (19,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (20,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (21,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (22,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (23,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
 
-      (24,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (25,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (26,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (27,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (28,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (29,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (30,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (31,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (24,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (25,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (26,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (27,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (28,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (29,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (30,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (31,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
 
-      (32,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (33,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (34,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (35,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (36,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (37,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (38,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (39,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (40,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (41,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (42,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (43,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (44,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (45,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (46,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (47,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (48,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (49,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (50,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (51,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (52,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (53,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (54,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (55,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (56,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (57,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (61,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (62,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (63,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (64,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (65,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (66,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (67,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (68,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (69,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (70,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (71,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (72,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (73,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (74,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (75,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (76,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (77,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (78,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (79,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (80,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (81,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (82,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (83,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (84,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (85,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (86,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (87,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (88,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (89,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (90,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (91,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (92,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (93,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (94,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (95,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (96,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (97,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (98,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (99,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (100,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (101,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (102,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (103,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (104,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (105,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (106,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (107,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (108,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (109,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (110,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (111,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (112,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (113,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (114,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (115,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (116,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (117,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (118,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (119,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (120,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (121,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (122,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (123,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (124,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (125,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (126,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (127,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-     ], p_wetter + global_common_triggers+
-    [
-      cannot_spawn_commoners,
+    (32,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (33,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (34,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (35,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (36,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (37,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (38,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (39,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (40,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (41,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (42,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (43,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (44,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (45,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (46,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (47,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (48,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (49,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (50,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (51,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (52,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (53,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (54,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (55,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (56,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (57,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (61,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (62,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (63,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (64,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (65,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (66,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (67,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (68,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (69,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (70,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (71,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (72,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (73,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (74,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (75,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (76,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (77,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (78,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (79,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (80,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (81,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (82,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (83,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (84,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (85,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (86,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (87,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (88,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (89,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (90,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (91,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (92,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (93,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (94,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (95,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (96,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (97,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (98,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (99,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (100,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (101,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (102,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (103,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (104,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (105,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (106,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (107,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (108,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (109,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (110,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (111,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (112,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (113,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (114,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (115,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (116,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (117,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (118,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (119,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (120,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (121,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (122,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (123,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (124,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (125,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (126,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (127,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+  ], p_wetter + global_common_triggers+
+  [
+    cannot_spawn_commoners,
     improved_lightning,
-  (ti_on_agent_spawn,1,0, [],
-   [
-	(try_for_agents, ":agent"),
-		(agent_is_alive, ":agent"),
-		(agent_is_human, ":agent"),
-		(agent_get_troop_id, ":troop", ":agent"),
-			(try_begin),
-				(this_or_next|eq, ":troop", "trp_guest"),
-				(this_or_next|eq, ":troop", "trp_slave"),
-				(this_or_next|eq, ":troop", "trp_slave_female"),
-				(eq, ":troop", "trp_guest_female"),
-				(agent_set_stand_animation, ":agent", "anim_arena_stand_idle"),
-				(agent_set_animation, ":agent", "anim_arena_stand_idle"),
-				(store_random_in_range,":r",0,300),
-			(try_end),
-		(agent_set_animation_progress,":agent",":r"),
-	(try_end),
-   ]),
+    (ti_on_agent_spawn,1,0, [],[
+      (try_for_agents, ":agent"),
+        (agent_is_alive, ":agent"),
+        (agent_is_human, ":agent"),
+        (agent_get_troop_id, ":troop", ":agent"),
+          (try_begin),
+            (this_or_next|eq, ":troop", "trp_guest"),
+            (this_or_next|eq, ":troop", "trp_slave"),
+            (this_or_next|eq, ":troop", "trp_slave_female"),
+            (eq, ":troop", "trp_guest_female"),
+            (agent_set_stand_animation, ":agent", "anim_arena_stand_idle"),
+            (agent_set_animation, ":agent", "anim_arena_stand_idle"),
+            (store_random_in_range,":r",0,300),
+          (try_end),
+        (agent_set_animation_progress,":agent",":r"),
+      (try_end),
+    ]),
 
-(ti_on_agent_hit, 0, 0, [], [ (store_trigger_param_1, ":inflicted_agent"),
+    (ti_on_agent_hit, 0, 0, [], [
+      (store_trigger_param_1, ":inflicted_agent"),
       (store_trigger_param_2, ":dealer_agent"),
       (store_trigger_param_3, ":inflicted_damage"),
 
-	  (set_trigger_result, -1),
-	  (gt, ":inflicted_damage", 0),
-	  (set_trigger_result, ":inflicted_damage"),
+      (set_trigger_result, -1),
+      (gt, ":inflicted_damage", 0),
+      (set_trigger_result, ":inflicted_damage"),
       (get_player_agent_no, ":player_agent"),
       (try_begin),
         (agent_is_human, ":dealer_agent"),
@@ -13086,112 +13084,99 @@ mission_templates = [
               (agent_set_animation, ":inflicted_agent","anim_strike_fall_back_rise"),
             (try_end),
           (try_end),
-         (try_end),
-      (try_end),]),
+        (try_end),
+      (try_end),
+    ]),
 
-    (1, 0, ti_once, [],[(mission_disable_talk),
-    (play_sound, "snd_arena_ambiance", sf_looping),
+    (1, 0, ti_once, [],[
+      (mission_disable_talk),
+      (play_sound, "snd_arena_ambiance", sf_looping),
+      # 90 bis 95
+      (entry_point_get_position, pos10, 90),
+      (set_spawn_position, pos10),
+      (spawn_item, "itm_stones_siege",0,0),
+      (entry_point_get_position, pos10, 91),
+      (set_spawn_position, pos10),
+      (spawn_item, "itm_greek_fire",0,0),
+      (entry_point_get_position, pos10, 92),
+      (set_spawn_position, pos10),
+      (spawn_item, "itm_greek_fire",0,0),
+      (entry_point_get_position, pos10, 93),
+      (set_spawn_position, pos10),
+      (spawn_item, "itm_stones_siege",0,0),
+      (entry_point_get_position, pos10, 94),
+      (set_spawn_position, pos10),
+      (spawn_item, "itm_greek_fire",0,0),
+      (entry_point_get_position, pos10, 95),
+      (set_spawn_position, pos10),
+      (spawn_item, "itm_greek_fire",0,0),
+		]),
 
-		# 90 bis 95
-    (entry_point_get_position, pos10, 90),
-    (set_spawn_position, pos10),
-    (spawn_item, "itm_stones_siege",0,0),
-    (entry_point_get_position, pos10, 91),
-    (set_spawn_position, pos10),
-    (spawn_item, "itm_greek_fire",0,0),
-    (entry_point_get_position, pos10, 92),
-    (set_spawn_position, pos10),
-    (spawn_item, "itm_greek_fire",0,0),
-    (entry_point_get_position, pos10, 93),
-    (set_spawn_position, pos10),
-    (spawn_item, "itm_stones_siege",0,0),
-    (entry_point_get_position, pos10, 94),
-    (set_spawn_position, pos10),
-    (spawn_item, "itm_greek_fire",0,0),
-    (entry_point_get_position, pos10, 95),
-    (set_spawn_position, pos10),
-    (spawn_item, "itm_greek_fire",0,0),
-		 ]),
+	  (2, 0, ti_once,[],[
+      (tutorial_box, "@Some hints:^ You can make a shield taunt by pressing 'K', you can perform a war cry by pressing 'T' and you can change battle speed by pressing 'J'. You and the AI can also perform a shield bash.", "@Ave Caesar, morituri te salutant"),
+		]),
 
-	  (2, 0, ti_once,[],
-	   [(tutorial_box, "@Some hints:^ You can make a shield taunt by pressing 'K', you can perform a war cry by pressing 'T' and you can change battle speed by pressing 'J'.\
-	    You and the AI can also perform a shield bash.", "@Ave Caesar, morituri te salutant"),
-		 ]),
-
-  (0, 0, 3,
-    [
+    (0, 0, 3,[
       (key_clicked, key_t),
-    ],
-    [
-    (get_player_agent_no, ":player"),
-    (agent_is_alive, ":player"),
-    # (assign, reg40, "$battle_ratio"),
-    # (display_message, "@Battle ratio: {reg40}"),
-    (le, "$warcry_loading", 0),
-    (try_for_agents, ":cur_agent"),#effect
-        (agent_is_human, ":cur_agent"),
-        (agent_is_alive, ":cur_agent"),
-        (agent_is_active,":cur_agent"),
-        (agent_is_ally, ":cur_agent"),
-        (neq, ":cur_agent", ":player"),
-        #(agent_set_damage_modifier, ":cur_agent", 105),
-        (assign, "$warcry_loading", 30),
-        (store_random_in_range, ":rand", 0, 100),
-        (ge, ":rand", 50),
-        (call_script,"script_agent_perform_warcry", ":cur_agent"),
-    (try_end),
-    (display_message, "str_war_cry",message_positive),
-    (call_script, "script_agent_perform_warcry", ":player"),
-    (call_script, "script_change_courage_around_agent", 10, ":player"),
-    (call_script, "script_change_courage_around_agent_for_routed_agents", 10, ":player"),
-  ]),
-    (0, 0, 1,[(gt, "$warcry_loading", 0), ],[(val_sub, "$warcry_loading", 1),]),
+    ],[
+      (get_player_agent_no, ":player"),
+      (agent_is_alive, ":player"),
+      # (assign, reg40, "$battle_ratio"),
+      # (display_message, "@Battle ratio: {reg40}"),
+      (le, "$warcry_loading", 0),
+      (try_for_agents, ":cur_agent"),#effect
+          (agent_is_human, ":cur_agent"),
+          (agent_is_alive, ":cur_agent"),
+          (agent_is_active,":cur_agent"),
+          (agent_is_ally, ":cur_agent"),
+          (neq, ":cur_agent", ":player"),
+          #(agent_set_damage_modifier, ":cur_agent", 105),
+          (assign, "$warcry_loading", 30),
+          (store_random_in_range, ":rand", 0, 100),
+          (ge, ":rand", 50),
+          (call_script,"script_agent_perform_warcry", ":cur_agent"),
+      (try_end),
+      (display_message, "str_war_cry",message_positive),
+      (call_script, "script_agent_perform_warcry", ":player"),
+      (call_script, "script_change_courage_around_agent", 10, ":player"),
+      (call_script, "script_change_courage_around_agent_for_routed_agents", 10, ":player"),
+    ]),
+    (0, 0, 1,[
+      (gt, "$warcry_loading", 0),
+    ],[
+      (val_sub, "$warcry_loading", 1),
+    ]),
+    common_battle_mission_start,
+    common_battle_init_banner,
 
-      common_battle_mission_start,
-      common_battle_init_banner,
-
-      (0, 0, ti_once,
-       [
-         (assign, "$defender_team", 0),
-         (assign, "$attacker_team", 1),
-         (assign, "$defender_team_2", 2),
-         (assign, "$attacker_team_2", 3),
-         ], [
+    (0, 0, ti_once,[
+      (assign, "$defender_team", 0),
+      (assign, "$attacker_team", 1),
+      (assign, "$defender_team_2", 2),
+      (assign, "$attacker_team_2", 3),
+    ],[
 		  (call_script, "script_init_death_cam"), #SB : add camera
-		 ]),
+    ]),
 
-      (ti_before_mission_start, 0, 0, [],
-       [
-         (scene_set_day_time, 15),
-         ]),
+    (ti_before_mission_start, 0, 0, [],[
+      (scene_set_day_time, 15),
+    ]),
 
-      common_custom_battle_tab_press,
-      common_custom_battle_question_answered,
-      common_inventory_not_available,
-      # common_custom_siege_init,
-      common_music_situation_update,
-      custom_battle_check_victory_condition,
-      common_battle_victory_display,
-      custom_battle_check_defeat_condition,
-      # common_siege_attacker_do_not_stall,
-      # common_siege_refill_ammo,
-      # common_siege_init_ai_and_belfry,
-      # common_siege_move_belfry,
-      # common_siege_rotate_belfry,
-      # common_siege_assign_men_to_belfry,
-      # common_siege_ai_trigger_init_2,
-
-      common_battle_order_panel_tick,
-
-      ]
+    common_custom_battle_tab_press,
+    common_custom_battle_question_answered,
+    common_inventory_not_available,
+    common_music_situation_update,
+    custom_battle_check_victory_condition,
+    common_battle_victory_display,
+    custom_battle_check_defeat_condition,
+    common_battle_order_panel_tick,
+  ]
     + theoris_decapitation
     + utility_triggers
 	  + dplmc_battle_mode_triggers
     + auxiliary_player
-	  #+ battle_panel_triggers
-	  #+ extended_battle_menu
-	  #+ common_division_data + division_order_processing + real_deployment + formations_triggers
-    ),
+),
+
 ("bandit_lair",mtf_battle_mode|mtf_synch_inventory,charge,
   "Ambushing a bandit lair",[
     (0,mtef_team_0|mtef_use_exact_number,af_override_horse, aif_start_alarmed, 40,[]),
@@ -13475,17 +13460,20 @@ mission_templates = [
           (eq, ":template", "pt_forest_bandit_lair"),
           (assign, ":bandit_troop", "trp_forest_bandit"),
         (else_try),
-          (eq, ":template", "pt_desert_bandit_lair"),
-          (assign, ":bandit_troop", "trp_desert_bandit"),
-        (else_try),
-          (eq, ":template", "pt_nabatean_lair"),
-          (assign, ":bandit_troop", "trp_arab_noble_archers"),
-        (else_try),
           (eq, ":template", "pt_gaetuli_bandit_lair"),
           (assign, ":bandit_troop", "trp_gaetuli_horseman"),
         (else_try),
           (eq, ":template", "pt_numidian_bandit_lair"),
           (assign, ":bandit_troop", "trp_sarranid_horseman"),
+        (else_try),
+          (eq, ":template", "pt_nubian_lair"),
+          (assign, ":bandit_troop", "trp_meroe_archers"),
+        (else_try),
+          (eq, ":template", "pt_desert_bandit_lair"),
+          (assign, ":bandit_troop", "trp_desert_bandit"),
+        (else_try),
+          (eq, ":template", "pt_nabatean_lair"),
+          (assign, ":bandit_troop", "trp_arab_noble_archers"),
         (else_try),
           (eq, ":template", "pt_mountain_bandit_lair"),
           (assign, ":bandit_troop", "trp_mountain_bandit"),
