@@ -47983,21 +47983,16 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
     ]
   ),
-  (
-    "senate_decide_bacchus3",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "The law is revoked and you leave the Curia Julia. It is time to claim your reward!^^You make your way towards the Eastern gate of Rome, but on the way you are stopped by a horde of drunken party-goers. All around you, dancers and musicians appear. Slaves run around and distribute delicious and expensive foods and wine to the people of Rome. This must be the surprise, he mentioned before: drunkards and party-goers from all over the Empire seem to storm Rome. In all the sudden chaos, you see him riding on a golden chariot through the streets, surrounded by thousands of naked dancers. You follow the procession. After a while, you manage to reach him at the Forum Romanum.",
-    "none",
-    [(set_background_mesh, "mesh_pic_orgie"),
-    ],[
 
-
-      ("leave",[],"Continue.",[
-      (call_script, "script_setup_troop_meeting", "trp_bacchus", -1, "scn_temple_of_concordia"),
-      ]),
-
-    ]
-  ),
-
+("senate_decide_bacchus3",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "The law is revoked and you leave the Curia Julia. It is time to claim your reward!^^You make your way towards the Eastern gate of Rome, but on the way you are stopped by a horde of drunken party-goers. All around you, dancers and musicians appear. Slaves run around and distribute delicious and expensive foods and wine to the people of Rome. This must be the surprise, he mentioned before: drunkards and party-goers from all over the Empire seem to storm Rome. In all the sudden chaos, you see him riding on a golden chariot through the streets, surrounded by thousands of naked dancers. You follow the procession. After a while, you manage to reach him at the Forum Romanum.",
+  "none",[
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+  ("leave",[],"Continue.",[
+    (call_script, "script_setup_troop_meeting", "trp_bacchus", -1, "scn_temple_of_concordia"),
+  ]),
+]),
 
   (
     "horse_race",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -54416,9 +54411,8 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   "The following legend is told by village elders in the area:^^After the victory of the Achaeans over Troy, a party was celebrate at Mount Olympus. During the merriment, a drunk Dionysus mistook the shield of Zeus, Aegis, for a plate."
   +" When the festivities came to a close, Dionysus simply departed with the device, as he was still unaware of what it truly was. Zeus was quickly angered upon discovering that his shield was missing, and he was adamant in finding the culprit."
   +" Fearing the wrath of Zeus, Dionysus hid the shield deep within this cave.^^It is said that Aegis was never found by Zeus, and remains in this cave to this day.",
-  "none",
-  [
-    (set_background_mesh, "mesh_pic_deserters"),
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
   ],[
     ("op3",[
     ],"Explore.",[
@@ -54471,7 +54465,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   "You spot an old abandoned mine in the distance.",
   "none",
   [
-    (set_background_mesh, "mesh_pic_deserters"),
+    (set_background_mesh, "mesh_pic_cave"),
   ],[
     ("op3",[],
       "Explore.",
@@ -54526,13 +54520,10 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
 ("wixnix_won",0,
   "You defeated the enemy. Among the dead you find a man fitting the description of Wixnix. You loot his body and find among his valuables a small mirror. The mirror is made out of gold and silver, richly decorated with gemstones. On the back is a picture of a beautiful blond woman. You recognise her. It is Poppaea. This must be the 'important artefact' the tavernkeeper mentioned.",
-  "none",
-  [
-
+  "none",[
+    (set_background_mesh, "mesh_pic_victory"),
   ],[
-    ("continue",[],
-      "Continue.",
-    [
+    ("continue",[],"Continue.",[
       (troop_add_item, "trp_player", "itm_mirror_poppaea"),
       (quest_set_slot, "qst_four_emperors", slot_quest_target_state, 3),
       (str_store_party_name_link, s22, "p_town_3"),
@@ -54546,7 +54537,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   "You ignite a torch and follow Antonia inside the tomb. All sorts of pictures of people, animals and landscapes can still be seen very faintly on the walls. Once upon a time the tomb must have been richly decorated.",
   "none",
   [
-    (set_background_mesh, "mesh_pic_deserters"),
+    (set_background_mesh, "mesh_pic_cave"),
   ],[
     ("enter",[],
         "Continue.",
@@ -56661,41 +56652,28 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ],
   ),
 
-  ("bacchus_feast",0,
-    "You witness as extravagant dishes are brought onto the table: They consist of various exotic animal meats, fruits and spices from far-away lands. These delicious plates were unlike anything you've seen or eaten before. After having a lavish meal, copious amounts of wine is served for everyone in the party. Not even in Nero's palace would people eat and drink such delicacies as the ones being served right now. While you continued eating, you noticed that one of the plates on which the food was served is not an ordinary plate, but a shield. The shield looks strong and of high quality. Why would someone use such a beautiful shield as plate? You think about it for a few minutes but you are then distracted by a beautiful dancer who catches your attention. ^As the feast progresses, you get more and more drunk. Due to the darkness of the cave and your inebriated state, the people around you start to slowly blur. You can only see colorful silhouettes dancing, kissing and making love under the dim light of the torches. The music and the conversations become a gentle whisper in your ears. ^You are touched, but you don't know by whom. You touch, but you don't know who and what you actually touched. You feel things you never experienced before. ^You smell the smoke of the torches mixed with the intoxicating perfumes and the sweet sweat of the people. ^Slowly everything becomes black.^^Hours later, you awake with a terrible headache.",
-    "none", [
-    (set_background_mesh, "mesh_pic_orgie"),
-    ],
-
-    [("option_1",[],"Continue.",
-        [
-        (quest_set_slot, "qst_bacchhus_quest", slot_quest_current_state, 1),
-        (add_xp_as_reward, 1500),
-
-        (modify_visitors_at_site, "scn_cave"),
-        (reset_visitors),
-        (set_visitor, 9, "trp_player"),
-
-        ##1-4 sitting
-        #5 6 kissing
-        #7 dancer
-        #8 god
-        (set_visitor, 8, "trp_bacchus"),
-
-        (set_visitor,1,"trp_orgie_male1"),
-        (set_visitor,2,"trp_orgie_fem3"),
-        (set_visitor,3,"trp_orgie_fem2"),
-        (set_visitor,4,"trp_orgie_male1"),
-
-        (replace_scene_props, "spr_chest_a", "spr_empty"),
-
-        (set_jump_mission, "mt_caves_of_bacchus"),
-        (jump_to_scene, "scn_cave"),
-        (change_screen_mission),
-
-      ]),
-    ],
-  ),
+("bacchus_feast",0,
+  "You witness as extravagant dishes are brought onto the table: They consist of various exotic animal meats, fruits and spices from far-away lands. These delicious plates were unlike anything you've seen or eaten before. After having a lavish meal, copious amounts of wine is served for everyone in the party. Not even in Nero's palace would people eat and drink such delicacies as the ones being served right now. While you continued eating, you noticed that one of the plates on which the food was served is not an ordinary plate, but a shield. The shield looks strong and of high quality. Why would someone use such a beautiful shield as plate? You think about it for a few minutes but you are then distracted by a beautiful dancer who catches your attention. ^As the feast progresses, you get more and more drunk. Due to the darkness of the cave and your inebriated state, the people around you start to slowly blur. You can only see colorful silhouettes dancing, kissing and making love under the dim light of the torches. The music and the conversations become a gentle whisper in your ears. ^You are touched, but you don't know by whom. You touch, but you don't know who and what you actually touched. You feel things you never experienced before. ^You smell the smoke of the torches mixed with the intoxicating perfumes and the sweet sweat of the people. ^Slowly everything becomes black.^^Hours later, you awake with a terrible headache.",
+  "none", [
+    (set_background_mesh, "mesh_pic_bacchus_feast_cave"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (quest_set_slot, "qst_bacchhus_quest", slot_quest_current_state, 1),
+      (add_xp_as_reward, 1500),
+      (modify_visitors_at_site, "scn_cave"),
+      (reset_visitors),
+      (set_visitor, 9, "trp_player"),
+      (set_visitor, 8, "trp_bacchus"),
+      (set_visitor,1,"trp_orgie_male1"),
+      (set_visitor,2,"trp_orgie_fem3"),
+      (set_visitor,3,"trp_orgie_fem2"),
+      (set_visitor,4,"trp_orgie_male1"),
+      (replace_scene_props, "spr_chest_a", "spr_empty"),
+      (set_jump_mission, "mt_caves_of_bacchus"),
+      (jump_to_scene, "scn_cave"),
+      (change_screen_mission),
+    ]),
+]),
 
   ("bacchus_feast_rome",0,
     "You try your best to search for Dionysus.^^Meanwhile the party continues: The streets of Rome are crowded by millions of people partying. You see people vomiting and urinating next to temples, statues and other public buildings with little regard for it's sanctity or importance. Soon enough, various members of the debauched horde start making love with each other. The streets are now a cacophony of decadence, with melodious moans mixed with delirious laughter. Some drunkards and other degenerates start forcing themselves onto animals. You witness a senator riding donkey upside down. You see various noble women getting groped and engaging in lascivious orgies in the backstreets like common whores. The most devious of people are using this opportunity and start raping and killing their enemies and looting their houses. The chaos is getting worse and worse by the minute. Luckily, some of the senators that dodn't participate in the orgy or are sober through it pass an emergency law that prohibits this party and gives the order to the Praetorian Guard to stop this chaos immediately. It takes four days for this mess to be cleared. Thousands of people have died either due to murder or alcohol abuse.^^However, you were not able to find Dionysus. It appears that he fled back to the cave.",
@@ -58563,14 +58541,11 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 ],),
 
 ("langobard_defeat",0,
-    "You fall and everything turns black.^^You are walking over flower meadows. Shiny figures approach who put wreaths of flowers around your head. The sun is touching you. The sun is stroking your cheeks.^You are drinking wine, served in golden cups, eating food, served on golden plates.^An old cat is sitting in front of you, she comes closer and strokes you with her soft pelt. Then she strokes your face with her left paw, while she is giving you water with her right paw. You slowly drink. While days pass the cat comes, strokes you, gives you to drink and disappears in light.^^Suddenly you awake. Your head hurts terrible. You are lying on a bed in the middle of a longhouse. You stand up and walk towards the door. You open it. You enter a room where an old woman and two men are standing.",
-    "none", [
+  "You fall and everything turns black.^^You are walking over flower meadows. Shiny figures approach who put wreaths of flowers around your head. The sun is touching you. The sun is stroking your cheeks.^You are drinking wine, served in golden cups, eating food, served on golden plates.^An old cat is sitting in front of you, she comes closer and strokes you with her soft pelt. Then she strokes your face with her left paw, while she is giving you water with her right paw. You slowly drink. While days pass the cat comes, strokes you, gives you to drink and disappears in light.^^Suddenly you awake. Your head hurts terrible. You are lying on a bed in the middle of a longhouse. You stand up and walk towards the door. You open it. You enter a room where an old woman and two men are standing.",
+  "none", [
     (set_background_mesh, "mesh_pic_girls"),
-
-    ],
-    [
-      ("continue",[],"Continue...",
-    [
+  ],[
+    ("continue",[],"Continue...",[
       (party_set_name, "p_langobard_landing", "@Scoringa"),
       (party_set_icon, "p_langobard_landing", "icon_castle_c"),
       #scn_town_germanic_east_castle
@@ -58598,7 +58573,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (jump_to_scene, "scn_town_germanic_east_castle"),
       (change_screen_mission),
     ]),
-],),
+]),
 
 ("longbard_leave",0,
     "You say farewell, gather your belongings, and leave the settlement. You make your way through the woods, but soon you are lost. All the trees look the same! You run around and finally find a path. You follow the path, but after a while, you see the settlement of the Longbeards in the distance! ^^You wander around all day, but you always end up in the settlement of the Longbeards. It is becoming night and you are too tired to move on. You decide to stay at the settlement.^^Gambara and her sons are already awaiting you. They have already prepared a room for you.",

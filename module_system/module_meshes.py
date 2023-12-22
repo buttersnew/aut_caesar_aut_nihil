@@ -118,7 +118,8 @@ meshes = [
   ("pic_villa_sea", 0, "pic_villa_sea", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_numider", 0, "pic_numider", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_nubian", 0, "pic_nubian", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-
+  ("pic_cave", 0, "pic_cave", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_bacchus_feast_cave", 0, "pic_bacchus_feast_cave", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   #minor factions
   ("pic_arms_gaetuli", 0, "pic_arms_gaetuli", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_garamantes", 0, "pic_arms_garamantes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
