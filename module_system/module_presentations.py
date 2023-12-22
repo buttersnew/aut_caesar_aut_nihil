@@ -37430,7 +37430,7 @@ presentations = [
             (eq, ":troop_is_female", 0), #<- dplmc+ altered
             (val_add, ":title_index", "str_faction_leader_title_male_player"),
         (else_try),
-            (assign, ":title_index", "str_faction_leader_title_female_player"), #unmarried or unlanded ladies should just be Lady
+            (val_add, ":title_index", "str_faction_leader_title_female_player"), #unmarried or unlanded ladies should just be Lady
         (try_end),
         (str_store_string, s1, ":title_index"),
         (create_text_overlay, reg1, "@Selected: {s1}", 0),
@@ -37659,7 +37659,7 @@ presentations = [
             (eq, ":troop_is_female", 0), #<- dplmc+ altered
             (val_add, ":title_index", "str_faction_leader_title_male_player"),
         (else_try),
-            (assign, ":title_index", "str_faction_leader_title_female_player"), #unmarried or unlanded ladies should just be Lady
+            (val_add, ":title_index", "str_faction_leader_title_female_player"), #unmarried or unlanded ladies should just be Lady
         (try_end),
         (str_store_string, s1, ":title_index"),
 

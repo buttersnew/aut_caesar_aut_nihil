@@ -24905,7 +24905,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 0), #used in place of global variable
     ],"Attack the hideout...",[
       (try_begin),
-        (troop_is_wounded, "trp_player"),
+        (neg|troop_is_wounded, "trp_player"),
         (party_set_slot, "$g_encountered_party", slot_party_ai_substate, 1),
         (party_get_template_id, ":template", "$g_encountered_party"),
         (assign, "$g_enemy_party", "$g_encountered_party"),
@@ -28716,23 +28716,18 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ("faction_found_select_banner",0,
   "You need to choose a banner for your new faction. You can either choose between the preset banners or design a custom banner."
   +" You can later change the banner at any time in the 'camp menu' under 'take an action'.",
-  "none",
-  [
+  "none",[
     (assign, "$g_edit_banner_troop", "trp_player"),
     (assign, "$g_presentation_next_presentation", -1),
-  ],
-  [
-    ("select_preset_banner",[],"Choose from preset banners.",
-      [
-        (jump_to_menu, "mnu_auto_return"),
-        (start_presentation, "prsnt_banner_selection"),
-      ]
-      ),
-    ("select_custom_banner",[],"Create a custom banner.",
-      [
-        (jump_to_menu, "mnu_auto_return"),
-        (start_presentation, "prsnt_custom_banner"),
-      ]),
+  ],[
+  ("select_preset_banner",[],"Choose from preset banners.",[
+    (jump_to_menu, "mnu_auto_return"),
+    (start_presentation, "prsnt_banner_selection"),
+  ]),
+  ("select_custom_banner",[],"Create a custom banner.",[
+    (jump_to_menu, "mnu_auto_return"),
+    (start_presentation, "prsnt_custom_banner"),
+  ]),
 ]),
 
 ("choose_banner",0,
