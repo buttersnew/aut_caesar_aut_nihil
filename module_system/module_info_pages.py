@@ -180,6 +180,35 @@ info_pages = [
  PR - Persia and Media"
 ),
 
+("provinces_abbreviations", "Settlement naming settings", "At the start of the game, player can choose between three different naming schemes for the centers:\
+ ^^Normal: The normal name is displayed, like in native.\
+ ^^Accurate: The accurate province name which is also displayed in the center notes, will also be displayed in the center name.\
+ ^^Simple: A simplified province name will be displayed in the center name.^^^\
+ Note, that the simplified province names are more general than the accurate ones. Here is a list of all abbreviations used:^^\
+ HS - Hispania^\
+ GL - Gallia^\
+ BR - Britannia^\
+ MG - Magna Germania^\
+ IT - Italia^\
+ IL - Illyria^\
+ GR - Graecia ^\
+ DA - Dacia^\
+ TH - Thracia^\
+ AN - Anatolia^\
+ AR - Armenia^\
+ MS - Mesopotamia^\
+ SY - Syria^\
+ JD - Judea^\
+ EG - Aegyptus^\
+ AF - Africa^\
+ SM - Sarmatia^\
+ CA - Caucasus^\
+ RN - Reatia et Noricum^\
+ CY - Cyprus^\
+ CS - Corsica et Sardinia\
+ PR - Persia and Media"
+),
+
 ("q_and_q", "Important informations", "Battle field fortifications: ^As Roman you can fortify your camp. It requires a set of tools inside your inventory and an engineer skill higher than 5. Once fortified you can no longer move. It is also possible during sieges.\
 ^^Lending out money: Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denars. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report.\
  This can take a while. Depending on when you issued the loan and depending on when your next budget report will show it can take between one or two weeks until your receive the interests.\
