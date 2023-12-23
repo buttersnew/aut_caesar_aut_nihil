@@ -61,38 +61,38 @@ man_face_keys = [
 ]
 
 woman_face_keys = [
-  (230,0,0.8,-1.0, "Chin Size"),
-  (220,0,-1.0,1.0, "Chin Shape"),
-  (10,0,-1.2,1.0, "Chin Forward"),
-  (20,0, -0.6, 1.2, "Jaw Width"),
-  (40,0,-0.7,1.0, "Jaw Position"),
-  (270,0,0.9,-0.9, "Mouth-Nose Distance"),
-  (30,0,-0.5,1.0, "Mouth Width"),
-  (50,0, -0.5,1.0, "Cheeks"),
+  (230,0,0.8,-1.0, "Chin Size"),#0
+  (220,0,-1.0,1.0, "Chin Shape"),#1
+  (10,0,-1.2,1.0, "Chin Forward"),#2
+  (20,0, -0.6, 1.2, "Jaw Width"),#3
+  (40,0,-0.7,1.0, "Jaw Position"),#4
+  (270,0,0.9,-0.9, "Mouth-Nose Distance"),#5
+  (30,0,-0.5,1.0, "Mouth Width"),#6
+  (50,0, -0.5,1.0, "Cheeks"),#7
 
-  (60,0,-0.5,1.0, "Nose Height"),
-  (70,0,-0.6,1.0, "Nose Width"),
-  (80,0,-1.5,0.3, "Nose Size"),
-  (240,0,-1.0,0.8, "Nose Shape"),
-  (90,0, 0.0,1.1, "Nose Bridge"),
+  (60,0,-0.5,1.0, "Nose Height"),#8
+  (70,0,-0.6,1.0, "Nose Width"),#9
+  (80,0,-1.5,0.3, "Nose Size"),#10
+  (240,0,-1.0,0.8, "Nose Shape"),#11
+  (90,0, 0.0,1.1, "Nose Bridge"),#12
 
-  (100,0,-0.5,1.5, "Cheek Bones"),
-  (150,0,-0.4,1.0, "Eye Width"),
-  (110,0,1.0,0.0, "Eye to Eye Dist"),
-  (120,0,-0.2,1.0, "Eye Shape"),
-  (130,0,-0.1,1.6, "Eye Depth"),
-  (140,0,-0.2,1.0, "Eyelids"),
+  (100,0,-0.5,1.5, "Cheek Bones"),#13
+  (150,0,-0.4,1.0, "Eye Width"),#14
+  (110,0,1.0,0.0, "Eye to Eye Dist"),#15
+  (120,0,-0.2,1.0, "Eye Shape"),#16
+  (130,0,-0.1,1.6, "Eye Depth"),#17
+  (140,0,-0.2,1.0, "Eyelids"),#18
 
 
-  (160,0,-0.2,1.2, "Eyebrow Position"),
-  (170,0,-0.2,0.7, "Eyebrow Height"),
-  (250,0,-0.4,0.9, "Eyebrow Depth"),
-  (180,0,-1.5,1.2, "Eyebrow Shape"),
-  (260,0,1.0,-0.7, "Temple Width"),
+  (160,0,-0.2,1.2, "Eyebrow Position"),#19
+  (170,0,-0.2,0.7, "Eyebrow Height"),#20
+  (250,0,-0.4,0.9, "Eyebrow Depth"),#21
+  (180,0,-1.5,1.2, "Eyebrow Shape"),#22
+  (260,0,1.0,-0.7, "Temple Width"),#23
 
-  (200,0,-0.5,1.0, "Face Depth"),
-  (210,0,-0.5,0.9, "Face Ratio"),
-  (190,0,-0.4,0.8, "Face Width"),
+  (200,0,-0.5,1.0, "Face Depth"),#24
+  (210,0,-0.5,0.9, "Face Ratio"),#25
+  (190,0,-0.4,0.8, "Face Width"),#26
 
   (280,0,0.0,1.0, "Post-Edit"),
 ]

@@ -1010,3 +1010,4 @@ script_cf_can_kill_troop = 1008
 script_spawn_agent_unique_face = 1009
 script_cf_prop_spawn_agent = 1010
 script_event_player_takes_money_imperial_treasury = 1011
+script_change_agent_face = 1012

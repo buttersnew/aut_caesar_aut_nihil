@@ -30877,6 +30877,23 @@ mission_templates = [
   ], global_common_triggers +
   [
     cannot_spawn_commoners,
+
+    # add some facial animations by changing the face key
+    (0, 0, 0,[
+      (try_begin),
+        (eq, "$temp2", 1),
+        (call_script, "script_change_agent_face", "$temp3", "trp_zarinaia", "str_zarinaia_face_normal"),
+        (display_message, "@normal"),
+        (assign, "$temp2", 0),
+      (else_try),
+        (eq, "$temp2", 2),
+        (call_script, "script_change_agent_face", "$temp3", "trp_zarinaia", "str_zarinaia_face_surprized"),
+        (display_message, "@surprized"),
+        (assign, "$temp2", 0),
+      (try_end),
+    ],[]),
+
+
     (0, 0, 0,[(key_clicked, key_k),
       (tutorial_message, -1),
     ], []),
@@ -30910,6 +30927,7 @@ mission_templates = [
         (agent_ai_set_interact_with_player, ":agent_no", 0),
         (agent_set_no_dynamics, ":agent_no"),
         (agent_set_stand_animation, ":agent_no", "anim_stand_still"),
+        (assign, "$temp3", ":agent_no"),
       (try_end),
     ]),
 

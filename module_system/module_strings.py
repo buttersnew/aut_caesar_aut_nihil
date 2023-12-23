@@ -9161,6 +9161,9 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("emissary_intro_garamantes", "I am an emissary from the kingdom of the Garamantes. I have ivory as a present for you and as a sign of our goodwill."),
 ("emissary_intro_kushan", "I am an emissary from the Kushan Empire, located near the river of Indus. I have come from fare away to represent my king. I bring you spices as a present and as sign of the goodwill of our people."),
 
+("zarinaia_face_normal", "00000000000c731307d106390c6606ec00000000001c45330000000000000000"),
+("zarinaia_face_surprized", "00000000000c7313001106390c6606ec00000000001c45030000000000000000"),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

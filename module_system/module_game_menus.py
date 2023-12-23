@@ -54389,6 +54389,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (scene_slot_eq, "scn_kurgan_enter", slot_scene_visited, 1),
     ],"Enter the kurgan",[
       (assign, "$temp1", 0),
+      (assign, "$temp2", 0),
       (modify_visitors_at_site, "scn_kurgan_enter"),
       (reset_visitors),
       (set_jump_mission, "mt_explore_kurgan"),
@@ -54438,7 +54439,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
         (jump_to_menu, "mnu_amazones_defeated"),
     (else_try),
         (eq, "$g_friend_fit_for_battle", 0),
-        (assign, "$temp", 1),
+        (assign, "$temp", 0),
         (jump_to_menu, "mnu_death_waits"),
     (try_end),
   ],[
