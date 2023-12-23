@@ -45511,7 +45511,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   "Are taxes too high?^^Roman nobles are recently complaining about the high taxes. They say, that it hurts their business either directly,"
   +" by lowering their revenues and also indirectly due to riots. They all agree that your tax policy is harmfull and demand lower taxes.",
   "none",[
-    (set_background_mesh, "mesh_pic_payment"),
+    (set_background_mesh, "mesh_pic_senators"),
   ],[
     ("Continue...",[],"Continue...",[
       (store_div, ":relation_reduction", "$g_taxrate", -5),
