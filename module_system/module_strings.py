@@ -7555,7 +7555,7 @@ Lead me in battle to victory!"),
 
 ("yes_s0", "Yes, {s0}?"),
 ("gardens_conventional", "Yes, {s0}. I am still overwhelmed by all this beauty. Though I heard many tales about the beauty of the imperial palace I couldn't believe that it looks and smells so good. And know I am leaving here as Augusta and still can't believe it."),
-("gardens_adventurous", "Oh {s0}, you want to join us in our small dinner here in the pavilion? we were philosophing about life and death. I had much fun watching the recent gladiator fights. Unfortunately my favorite died. Now we are talking about what may have happened to his eternal soul..."),
+("gardens_adventurous", "Oh {s0}, you want to join us in our small dinner here in the pavilion? We were philosophing about life and death. I had much fun watching the recent gladiator fights. Unfortunately my favorite died. Now we are talking about what may have happened to his eternal soul..."),
 ("gardens_otherworldly", "Ach {s0}, I spend so much time here with the followers. I sometimes watch the bees and think that I am like a queen bee. I life her in the middle of all those diligent bees and I am like their queen."),
 ("gardens_ambitious", "Yes, {s0}, a pleasure to see you. I decided to eat dinner in the gardens today. You may want to join our conversation about politics?"),
 ("gardens_moralist", "Oh {s0}, there are many temptations in the palace but here in the garden I feel a little bit save. I still try the best not to corrupt like a Poppaea or Crispinilla!"),
@@ -9154,6 +9154,12 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
   +"Though your people do not much care about such Egyptian customs, the fertile Nile valley is a vital grain source and they do care about that.^^"
   +"An elaborate ceremony involving a whole ancient kingdom worshiping you as a god would not hurt a new king's credibility either. Once you control Thebae, it is time to be officially recognized as Pharaoh."
 ),
+
+("emissary_intro_parthia", "I am an emissary from the Shahan Shah. Here take some expensive velvet as present and as sign of our benevolence."),
+("emissary_intro_kush", "I am an emissary from the kingdom of Kush, located at the confluences of the Blue Nile, White Nile and the Atbarah River. I have gold as a present for you and as a sign of our goodwill."),
+("emissary_intro_garamantes", "I am an emissary from the kingdom of the Garamantes. I have ivory as a present for you and as a sign of our goodwill."),
+("emissary_intro_kushan", "I am an emissary from the Kushan Empire, located near the river of Indus. I have come from fare away to represent my king. I bring you spices as a present and as sign of the goodwill of our people."),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

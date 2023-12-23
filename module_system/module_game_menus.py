@@ -42069,9 +42069,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
   (
     "debate_in_senat_3",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You have {reg1} denars with you. To bribe someone you should have at least 3000 denars, you can use two-fifths of your money for bribes.^^\
-	What do you want to do?\
-	",
+    "You can talk with the senators and try to convince them or bribe them. You have {reg1} denars with you."
+    +"^You can also threaten them with the Praetorian guard. But this will decrease your relation with Rome!"
+    +"^^What do you want to do?",
     "none",
     [
     (set_background_mesh, "mesh_pic_senatus"),

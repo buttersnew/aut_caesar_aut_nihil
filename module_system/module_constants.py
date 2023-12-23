@@ -4158,3 +4158,16 @@ female_roman_names_end   = "str_roman_female_name_end"
 
 female_roman_cognomens_begin = "str_roman_female_cognomen_1"
 female_roman_cognomens_end   = "str_roman_female_cognomen_end"
+
+# edict costs
+cost_edict1         = 0
+cost_edict2         = 0
+cost_edict3         = 0
+cost_edict4         = 1000
+cost_edict5         = 0
+cost_edict6         = 0
+cost_edict7         = 500
+cost_edict8         = 0
+cost_edict9         = 500
+cost_edict10        = 0
+cost_libelli_office = 250
