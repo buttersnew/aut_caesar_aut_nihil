@@ -18533,7 +18533,7 @@ presentations = [
       #3.1 Welcome message at game start
       (create_text_overlay, reg1, "@Welcome to Aut Caesar aut nihil. ^Before you start the game, choose various options.^Note that realistic savings are always disabled!", tf_center_justify),
       (position_set_x, pos1, 250),
-      (position_set_y, pos1, 675),
+      (position_set_y, pos1, 670),
       (overlay_set_position, reg1, pos1),
       (position_set_x, pos1, 1200),
       (position_set_y, pos1, 1200),
@@ -18543,7 +18543,7 @@ presentations = [
     #2. province names
     (create_text_overlay, reg1, "@Settlement names", tf_center_justify),
     (position_set_x, pos1, 250),
-    (position_set_y, pos1, 650),
+    (position_set_y, pos1, 645),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1200),
     (position_set_y, pos1, 1200),
@@ -18551,7 +18551,7 @@ presentations = [
 
     (create_combo_button_overlay, "$g_presentation_obj_admin_panel_6"),
     (position_set_x, pos1, 250),
-    (position_set_y, pos1, 610),
+    (position_set_y, pos1, 605),
     (overlay_set_position, "$g_presentation_obj_admin_panel_6", pos1),
     (try_begin),
       (eq, reg60, 0),	#no start game
@@ -18585,7 +18585,7 @@ presentations = [
         (troop_slot_ge, "trp_global_variables", g_is_dev, 1),
         (create_text_overlay, reg1, "@Campaign type", tf_center_justify),
         (position_set_x, pos1, 250),
-        (position_set_y, pos1, 560),
+        (position_set_y, pos1, 555),
         (overlay_set_position, reg1, pos1),
         (position_set_x, pos1, 1200),
         (position_set_y, pos1, 1200),
@@ -18593,7 +18593,7 @@ presentations = [
 
         (create_combo_button_overlay, "$g_presentation_obj_admin_panel_9"),
         (position_set_x, pos1, 250),
-        (position_set_y, pos1, 520),
+        (position_set_y, pos1, 515),
         (overlay_set_position, "$g_presentation_obj_admin_panel_9", pos1),
         (try_begin),
           (eq, reg60, 0),	#no start game
@@ -18642,7 +18642,7 @@ presentations = [
     #3. DIFFICULTY
     (create_text_overlay, reg1, "@Difficulty Type", tf_center_justify),
     (position_set_x, pos1, 250),
-    (position_set_y, pos1, 470),
+    (position_set_y, pos1, 465),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1200),
     (position_set_y, pos1, 1200),
@@ -18650,7 +18650,7 @@ presentations = [
 
     (create_combo_button_overlay, "$g_presentation_obj_6"),
     (position_set_x, pos1, 250),
-    (position_set_y, pos1, 430),
+    (position_set_y, pos1, 425),
     (overlay_set_position, "$g_presentation_obj_6", pos1),
     (overlay_add_item, "$g_presentation_obj_6", "@ACAN Giga Chad"),
     (overlay_add_item, "$g_presentation_obj_6", "@ACAN Chad"),

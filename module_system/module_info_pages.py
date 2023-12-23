@@ -508,8 +508,10 @@ The more they spend, the more their renown increases."),
  CA - Caucasus^\
  RN - Reatia et Noricum^\
  CY - Cyprus^\
- CS - Corsica et Sardinia"),
- ("mythology", "Gods and Religion", "The player can worship different gods. For this, player must talk with a priest of the respective god and vow to worship the god.\
+ CS - Corsica et Sardinia\
+ PR - Persia and Media"
+),
+("mythology", "Gods and Religion", "The player can worship different gods. For this, player must talk with a priest of the respective god and vow to worship the god.\
  A list of all gods and where to find their priests is below. Once the player worships a god, he can pray under the camp menu. For polytheistic gods, the player must fight against ancient heroes.\
  For Christus and YHWH, the reputation of the player is considered, both demand high reputation. If the player succeeds in the challenge, he gains artifacts or improves his attribute points.^\
  Worshiping Christus and YHWH offers additional unique features: As Christian, the player can always visit the undergroud chapel in Rome via the 'visit the sights of Rome' option and pray there.\

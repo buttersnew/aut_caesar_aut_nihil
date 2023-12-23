@@ -25,6 +25,12 @@ from module_constants import *
 
 triggers = [
 
+#initialization of certain start options
+(0,0,ti_once,[
+],[
+    (call_script, "script_set_settlement_names"), # province names
+]),
+
 #death of poppaea through assassination
 (24,0,ti_once,[
     (check_quest_active, "qst_blank_quest_19"),

@@ -45539,7 +45539,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ("customize_unit",0,
   "You can select the name and the equipment of your custom troops! They can be recruited in all towns and forts that are owned by your faction and have a barrack building.",
   "none",[
-    (set_background_mesh, "new_pic_mb_warrior_2"),
+    (set_background_mesh, "mesh_pic_mb_warrior_2"),
   ],[
     ("option_1", [],"Continue.",[
       (assign, "$temp4", 0),

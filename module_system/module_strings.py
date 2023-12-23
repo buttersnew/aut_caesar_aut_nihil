@@ -7295,6 +7295,7 @@ Lead me in battle to victory!"),
   ("reatia_noricum_simple","RN"),
   ("sadinia_simple","CS"),
   ("cyprus_simple","CY"),
+  ("persia_simple","PR"),
 
   ("qual_life_feature", "Quality of life feature"),
   ("immersion_feature", "Immersion Feature"),
