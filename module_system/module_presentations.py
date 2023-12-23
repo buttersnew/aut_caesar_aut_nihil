@@ -4852,7 +4852,7 @@ presentations = [
 	      (eq, "$g_player_rent", 1),
         (val_add, ":num_lines", 1), #
     (try_end),
-    (try_begin),#emperors bockets
+    (try_begin),#emperors pocket
         (eq, "$g_is_emperor", 1),
         (faction_get_slot, reg0, "$players_kingdom", slot_faction_emperors_bocket),
         (gt, reg0, 1),
@@ -5903,7 +5903,7 @@ presentations = [
         (val_mul, ":emperors_pocket", -1),
         (val_add, ":net_change", ":emperors_pocket"),
 
-        (create_text_overlay, reg1, "@Emperor's bockets:", 0),
+        (create_text_overlay, reg1, "@Emperor's pocket:", 0),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
         (overlay_set_size, reg1, pos1),
