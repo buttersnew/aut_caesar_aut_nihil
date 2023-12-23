@@ -48706,41 +48706,41 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ]),
 
 ("inspect_treasury",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "As censor you are allowed to oversee the whole imperial bureaucracy: Everything from the imperial taxes Alexandria paid to the bills of Nero.^^^\
- You are surrounded by other officials. After some time they leave you alone, a good moment to make some changes...",
-    "none",
-    [
-      (set_background_mesh, "mesh_pic_payment"),
-    ],[
-    ("visit",[(troop_slot_ge, "trp_kingdom_7_lord", slot_troop_wealth, 10000),],
-    "The townwatch ordered 10,000 denars for new spears, I am sure it was 20,000 (embezzle 10,000 denars)",[
-      (assign, "$temp", 10000),
-      (jump_to_menu, "mnu_reaction_embezzle"),
-    ]),
-    ("visit",[(troop_slot_ge, "trp_kingdom_7_lord", slot_troop_wealth, 50000),],
-    "Alexandria paid 100,000 denars taxes in the last months. I am sure it was only 50,000 denars (embezzle 50,000 denars)",[
-      (assign, "$temp", 50000),
-      (jump_to_menu, "mnu_reaction_embezzle"),
-    ]),
-    ("visit",[(troop_slot_ge, "trp_kingdom_7_lord", slot_troop_wealth, 90000),],
-    "The Augusta is known to be piggish, I am sure she has spend 100,000 denars not 10,000 denars for her last meal... (embezzle 90,000 denars)",[
-      (assign, "$temp", 90000),
-      (jump_to_menu, "mnu_reaction_embezzle"),
-    ]),
-    ("visit",[(troop_slot_ge, "trp_kingdom_7_lord", slot_troop_wealth, 130000),],
-    "The Princeps likes parties, I am sure for last one he spend 250,000 denars not 120,000... (embezzle 130,000 denars)",[
-      (assign, "$temp", 130000),
-      (jump_to_menu, "mnu_reaction_embezzle"),
-    ]),
-    ("leave",[],"Go back.",[
-		  (jump_to_menu, "mnu_senatus"),
-    ]),
+  "As censor you are allowed to oversee the whole imperial budget: Everything from the imperial taxes Alexandria paid to the bills of Nero.^^^"
+  +"You are surrounded by other officials. After some time they leave you alone, a good moment to make some changes...",
+    "none",[
+    (set_background_mesh, "mesh_pic_payment"),
+  ],[
+  ("visit",[
+  ],
+  "The townwatch ordered 10,000 denars for new spears, I am sure it was 20,000 (embezzle 10,000 denars)",[
+    (assign, "$temp", 10000),
+    (jump_to_menu, "mnu_reaction_embezzle"),
+  ]),
+  ("visit",[
+  ],"Alexandria paid 100,000 denars taxes in the last months. I am sure it was only 50,000 denars (embezzle 50,000 denars)",[
+    (assign, "$temp", 50000),
+    (jump_to_menu, "mnu_reaction_embezzle"),
+  ]),
+  ("visit",[
+  ],"The Augusta is known to be piggish, I am sure she has spend 100,000 denars not 10,000 denars for her last meal... (embezzle 90,000 denars)",[
+    (assign, "$temp", 90000),
+    (jump_to_menu, "mnu_reaction_embezzle"),
+  ]),
+  ("visit",[
+  ],"The Princeps likes parties, I am sure for last one he spend 250,000 denars not 120,000... (embezzle 130,000 denars)",[
+    (assign, "$temp", 130000),
+    (jump_to_menu, "mnu_reaction_embezzle"),
+  ]),
+  ("leave",[],"Go back.",[
+    (jump_to_menu, "mnu_senatus"),
+  ]),
 ]),
 
 ("reaction_embezzle",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "{s1}",
-  "none",
-  [
+  "none",[
+    (set_background_mesh, "mesh_pic_payment"),
     (troop_get_slot, ":embezzled_founds_amount", "trp_player", slot_player_embezzeled_founds),
     (store_div, ":change", "$temp", 1000),
     (val_add, ":embezzled_founds_amount", ":change"),
@@ -48755,17 +48755,19 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
        (str_store_string, s1, "@You successfully embezzled founds worth {reg33} denars without anybody noting."),
     (try_end),
   ],[
-    ("leave",[ (neq, reg33, "$temp"),],"Damn it.",[
+    ("leave",[
+      (neq, reg33, "$temp"),
+    ],"Damn it.",[
       (add_xp_as_reward, 50),
       (call_script, "script_change_player_honor", -3),
       (jump_to_menu, "mnu_caught_embezzle"),
     ]),
-
-    ("leave",[(eq, reg33, "$temp"),],"Very good.",[
+    ("leave",[
+      (eq, reg33, "$temp"),
+    ],"Very good.",[
       (add_xp_as_reward, 250),
       (call_script, "script_change_player_honor", -1),
       (troop_add_gold, "trp_player", "$temp"),
-
       (store_div, ":imperial_debts", "$temp", 2),
       (call_script, "script_add_to_faction_bugdet", slot_faction_debts, "fac_kingdom_7", ":imperial_debts"),
 
