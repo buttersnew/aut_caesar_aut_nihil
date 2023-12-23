@@ -12132,10 +12132,12 @@ simple_triggers = [
         (neq, "$can_sacrific", 1),##for sacrificing temples
         (assign, "$can_sacrific", 1),
     (try_end),
-    # (try_begin),
-      # (troop_slot_ge, "trp_kingdom_7_lord", slot_troop_bachus, 1),
-      # (troop_set_slot, "trp_kingdom_7_lord", slot_troop_bachus, 0),
-    # (try_end),
+
+    # ask nero about influence
+    (try_begin),
+        (troop_slot_ge, "trp_kingdom_7_lord", slot_troop_bachus, 1),
+        (troop_set_slot, "trp_kingdom_7_lord", slot_troop_bachus, 0),
+    (try_end),
     # (try_begin),
       # (check_quest_active, "qst_gain_renown"),
       # (troop_slot_ge, "trp_player", slot_troop_renown, 200),

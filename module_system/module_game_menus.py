@@ -27045,12 +27045,12 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
   ##Economic report, currently just for debugging purposes
 ("dplmc_economic_report",0,
-  "Number of consumption outbreaks: {reg50}^Number of slow fever outbreaks: {reg51}^Number of camp fever outbreaks: {reg52}^\
+  "Events:^^Number of consumption outbreaks: {reg50}^Number of slow fever outbreaks: {reg51}^Number of camp fever outbreaks: {reg52}^\
   Number of measles outbreaks: {reg53}^Number of plague outbreaks: {reg54}^Number of smallpox outbreaks: {reg55}^\
   Number of greatpox outbreaks: {reg56}^Number of fire event: {reg57}^Number of drought event: {reg58}^\
   Number of earthquake events: {reg59}^Number of Beetle invasions: {reg60}^\
   Number of good harvests: {reg49}^Number of bad harvests: {reg48}^\
-  Number of mild winters: {reg47}^Number of harsh winters: {reg46}^\
+  Number of mild winters: {reg47}^Number of harsh winters: {reg46}^^\
   Richest lord in the world: {s33} (wealth: {reg33} denars)^Poorest lord in the world: {s34} (wealth: {reg34})^^{s0}",
   "none",[
     (troop_get_slot, reg46, "trp_global_variables", g_number_harsh_winters),
@@ -49057,13 +49057,10 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ]),
 ]),
 
-  (
-    "cheat_menu2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "More cheats",
-    "none",
-    [
-
-    ],[
+("cheat_menu2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "More cheats",
+  "none",[
+  ],[
 
       ("options",[(ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Show all bandits lairs",[
         (try_for_parties, ":party_no"),
@@ -49371,6 +49368,10 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
         ]
       ),
 
+      ("options",[(ge, "$cheat_mode", 1)],"Add 10,000 influence.",[
+        (call_script, "script_change_influence", "trp_player", 10000),
+      ]),
+
       ("options",[(ge, "$cheat_mode", 1)],"Add 50,000 denars.",
         [
 
@@ -49390,8 +49391,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     (jump_to_menu, "mnu_camp"),
       ]),
 
-    ]
-  ),
+]),
 
   (
     "player_attach",menu_text_color(0xFF000000)|mnf_disable_all_keys,
