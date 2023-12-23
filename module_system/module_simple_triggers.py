@@ -9768,6 +9768,7 @@ simple_triggers = [
         (troop_set_slot, ":lord", slot_troop_recently_blamed, 1),
     (try_end),
 ]),
+
 ###when player makes provincial tax to high, govenors will raise taxes too, which leads to unrest
 (24*7,[
     (call_script, "script_execude_debug_message", 153),
@@ -12654,5 +12655,21 @@ simple_triggers = [
     (try_end),
 ]),
 ###END TRIGGER PROVINCE SYSTEM
+
+(24*7,[
+    (call_script, "script_execude_debug_message", 195),
+    (party_slot_eq, "p_main_party", slot_party_on_water, 0),
+    (neq, "$g_player_is_captive", 1),
+    (eq, "$g_is_emperor", 1),
+    (eq, "$g_civil_war", -1),
+    (store_mul, ":chance", "$g_taxrate",  "$g_taxrate"),
+    (val_add, ":chance", "$g_unrest"),
+
+    (store_random_in_range, ":rand", 0, 10000),
+    (val_sub, ":rand", "$g_unrest"),
+    (lt, ":rand", ":chance"),
+
+    (jump_to_menu, "mnu_nobility_tax_protests"),
+]),
 
 ]##END OF FILE

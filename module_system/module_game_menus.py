@@ -45507,6 +45507,35 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ]),
 ]),
 
+("nobility_tax_protests",0,
+  "Are taxes too high?^^Roman nobles are recently complaining about the high taxes. They say, that it hurts their business either directly,"
+  +" by lowering their revenues and also indirectly due to riots. They all agree that your tax policy is harmfull and demand lower taxes.",
+  "none",[
+    (set_background_mesh, "mesh_pic_payment"),
+  ],[
+    ("Continue...",[],"Continue...",[
+      (store_div, ":relation_reduction", "$g_taxrate", -5),
+      (set_show_messages, 0),
+      (try_for_range, ":roman", active_npcs_begin, active_npcs_end),
+          (troop_slot_eq, ":roman", slot_troop_occupation, slto_kingdom_hero),
+          (store_faction_of_troop, ":roman_fac", ":roman"),
+          (eq, ":roman_fac", "$players_kingdom"),
+          (assign, ":relation_change", ":relation_reduction"),
+          (try_begin),
+              (this_or_next|troop_slot_eq, ":roman", slot_lord_reputation_type, lrep_quarrelsome),
+              (troop_slot_eq, ":roman", slot_lord_reputation_type, lrep_debauched),
+              (val_mul, ":relation_change", 3),
+              (val_div, ":relation_change", 2),
+          (try_end),
+          (call_script, "script_change_player_relation_with_troop", ":roman", ":relation_reduction"),
+      (try_end),
+      (set_show_messages, 1),
+      (call_script, "script_change_player_honor", ":relation_reduction"),
+      (display_message, "@Your relation with Lords of your faction decreases.", message_negative),
+      (change_screen_map),
+    ]),
+]),
+
 ("customize_unit",0,
   "You can select the name and the equipment of your custom troops! They can be recruited in all towns and forts that are owned by your faction and have a barrack building.",
   "none",[
