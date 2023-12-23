@@ -10,7 +10,96 @@ from module_constants import DPLMC_DIPLOMACY_VERSION_STRING
 ##diplomacy end+
 
 info_pages = [
-("hoty_keys", " HOT KEYS", "Here is a list of all keys and where they are used:^\
+("overview", " Overview", "Overview"),
+
+## diplomacy
+("dplmc_autoloot", "Diplomacy Feature: Autoloot", "Autoloot settings are managed through the camp menu. It allows you to have your companions (named heroes, not ordinary soldiers) automatically select equipment from the loot after a battle.\
+^^ In order for this feature to be enabled, one of the following must be true: someone in your party must have a Looting score of 2 or better, someone in your party must have an Inventory Management score of 3 or better, or the player {him/her}self must have an Inventory Management score of 2 or better.\
+^^ The desired primary damage types (the higher of any swing/thrust damage) for melee and throwing weapons can be set up here. In addition, players can fine-tune weapon selection for two-handed/one-handed weapons, pikes, lances, and bladed polearms.^^This setting is currently:"),
+("dplmc_autosell", "Diplomacy Feature: Autosell", "The Autosell feature allows you  to sell many items to a merchant all at once, instead of selling them one at a time. Autosell settings are managed through the Town menu, where you can specify which types of items you want to be able to sell (e.g. you might not want to automatically sell horses) and a price limit (for example, you might not want to automatically sell any items that cost more than 200 denars).^^ There are two primary ways to use autosell.  If you speak to a Horse Merchant, Armorer, or Weapon Merchant in a town, there is a conversation option to sell items of a particular type.  Also, when visiting a town there will be an option in the Marketplace section of the menu to automatically sell your items throughout the town.^^ For people who used Autosell in other mods, note that this sells from your own inventory, according to certain rules.  Items you have equipped will never be sold, and neither will the first three items in your inventory.  After that, autosell also skips anything that it thinks might be your personal equipment (since people often have more than one set).  Regardless of whether you have them equipped, it won't sell your best bow, crossbow, armor, helmet, boots, or gloves. If you have a bow you can use, it won't sell your best three packs of arrows, and if you have a crossbow it won't sell your best three packs of bolts. For shields, one-handed weapons, two-handed weapons, polearms, and horses, it won't sell your best or second-best item. Your best three throwing weapons also will not be sold. However, items that your character is unable to use are considered fair game."),
+("dplmc_policy", "Diplomacy Feature: Policy", "Centralization/Decentralization:\
+^+3 - very centralized. Tax inefficiency for the ruler is reduced by 15%, and increased by 15% to his vassals. Ruler's relations with his vassals should suffer a -3 hit every month. King's army get 30% percent increase, lords' armies get 9% decrease. Imperial administration: +1500 denars maintenance costs for towns, +150 for fortresses. Imperial tax: maximal tax rate is 90%\
+^+2 - quite centralized. Tax inefficiency for the ruler is reduced by 10%,and increased by 10% to his vassals. Ruler's relations with his vassals fiefs should suffer a -2 hit every month. King's army get 20% percent increase, lords' armies get 6% decrease. Imperial administration: +1000 denars maintenance costs for towns, +100 for fortresses. Imperial tax: maximal tax rate is 60%\
+^+1 - slightly centralized. Tax inefficiency for the ruler is reduced by 5%, and increased by 5% to his vassals. Ruler's relations with his vassals fiefs should suffer a -1 hit every month. King's army get 10% percent increase, lords' armies get 3% decrease. Imperial administration: +500 denars maintenance costs for towns, +50 for fortresses. Imperial tax: maximal tax rate is 50%\
+^ 0 - neither decentralized nor centralized. Imperial administration: no additional costs. Imperial tax: maximal tax rate is 40%\
+^-1 - slightly decentralized. Tax inefficiency for the ruler is increased by 5%. Ruler's relations with his vassals increase by +1 every month. King's army get 10% percent decrease, lords' armies get 3% increase. Imperial administration: -500 denars maintenance costs for towns, -50 for fortresses. Imperial tax: maximal tax rate is 30%\
+^-2 - quite decentralized. Tax inefficiency for the ruler is increased by 10%. Ruler's relations with his vassals increase by +2 every month. King's army get 20% percent decrease, lords' armies get 6% increase. Imperial administration: -1000 denars maintenance costs for towns, -100 for fortresses. Imperial tax: maximal tax rate is 25%\
+^-3 - very decentralized. Tax inefficiency for the ruler is increased by 15%. Ruler's relations with his vassals increase by +3 every month. King's army get 30% percent decrease, lords' armies get 9% increase. Imperial administration: -1500 denars maintenance costs for towns, -150 for fortresses. Imperial tax: maximal tax rate is 20%\
+^^Noble rights vs Citizen rights:\
+^+3 - very aristocratic.  Trade decreased by 15%. Kings relations with their lords increased by 3 every month. Vassals armies increased by 9%.\
+^+2 - quite aristocratic. Trade decreased by 10%. Kings relations with their lords increased by 2 every month. Vassals armies increased by 6%.\
+^+1 - somewhat aristocratic. Trade decreased by 5%. Kings relations with their lords increased by 1 every month. Vassals armies increased by 3%.\
+^-1 - somewhat plutocratic. Trade increased by 10%. Kings relations with their lords decreased by 1 every month. Vassals armies decreased by 3%.\
+^-2 - quite plutocratic. Trade increased by 15%. Kings relations with their lords decreased by 2 every month. Vassals armies decreased by 6%.\
+^-3 - very plutocratic. Trade increased by 20%. Kings relations with their lords decreased by 3 every month. Vassals armies decreased by 9%.\
+^^Slave laws:\
+^+3 - almost all serfs.  Tax inefficiency decreased by 9% for both king and his vassals. Troops of the faction suffer a 6% strength malus in AI fights, kingdom army size increased by 6%.\
+^+2 - mostly serfs.  Tax inefficiency decreased by 6% for both king and his vassals. Troops of the faction suffer a 4% strength malus in AI fights, kingdom army size increased by 4%.\
+^+1 - usually serfs.  Tax inefficiency decreased by 3% for both king and his vassals. Troops of the faction suffer a 2% strength malus in AI fights, kingdom army size increased by 2%.\
+^-1 - usually free subjects.  Tax inefficiency increased by 3% for both king and his vassals. Troops of the faction get a 2% strength bonus in AI fights, kingdom army size decreased by 2%.\
+^-2 - mostly free subjects.  Tax inefficiency increased by 6% for both king and his vassals. Troops of the faction get a 4% strength bonus in AI fights, kingdom army size decreased by 4%.\
+^-3 - all free subjects.  Tax inefficiency increased by 9% for both king and his vassals. Troops of the faction get a 6% strength bonus in AI fights, kingdom army size decreased by 6%.\
+^^Quality/Quantity:\
+^+3 - of legendary quality. AI strength of troops increased by 12%, lords' armies decreased by 12%.\
+^+2 - of great quality. AI strength of troops increased by 8%, lords' armies decreased by 8%.\
+^+1 - of good quality. AI strength of troops increased by 4%, lords' armies decreased by 4%.\
+^-1 - of good quanity. AI strength of troops decreased by 4%, lords' armies increased by 4%.\
+^-2 - of great quantity. AI strength of troops decreased by 8%, lords' armies increased by 8%.\
+^-3 - of legendary quantity. AI strength of troops decreased by 12%, lords' armies increased by 12%."),
+
+("dplmc_deathcamera", "Diplomacy Feature: Battle Continuation", "Post-battle continuation allow you to watch the battle unfold after being knocked unconscious. Camera key bindings are available from the Diplomacy preference menus. In general numpad keys are used to rotate while movement keys are used to pan the camera. There are three camera modes available."),
+
+("dplmc_disguise", "Diplomacy Feature: Player Disguise", "The player disguise system allows the player to take on the role of various commoners while attempting to sneak into a town. In addition to the original pilgrim robes, players are able to acquire new sets of equipment from merchants and their chamberlains.\
+^ In Native, the chance to be caught depends on the number of men in the party. The new system calculates the chance to be caught based on the player's chosen role instead, but limits what the player can bring in and out of towns in terms of gold and items. The player's inventory will be merged after leaving the town."),
+
+("dplmc_ai_changes", "Diplomacy Option: Campaign AI", "Low:^\
+^- Center points for fief allocation are calculated (villages 1 / fortresses 2 / towns 3) instead of (villages 1 / fortresses 1 / towns 2).\
+^- For the rescue prisoner and offer gift quests, the relatives that can be a target of the quest have been extended to include uncles and aunts and in-laws.\
+^- Alterations to claimant quest calculation for center scores.\
+^- When picking a new faction, lords are more likely to return to their original faction (except when that's the faction they're being exiled from), if the ordinary conditions for rejoining are met. A lord's decision may also be influenced by his relations with  other lords in the various factions, instead of just his relations with the faction leaders.\
+^^Medium:^\
+^- Some changes for lord relation gains/losses when fiefs are allocated.\
+^- Kings overrule lords slightly less frequently on faction issues.\
+^- In deciding who to support for a fief, minor parameter changes for certain personalities. Some lords will still give priority to fiefless lords or to the lord who conquered the center if they have a slightly negative relation (normally the cutoff is 0 for all personalities).\
+^- When a lord can't find any good candidates for a fief under the normal rules, instead of automatically supporting himself he uses a weighted scoring scheme.\
+^- In various places where average renown * 3/2 appears, an alternate calculation is sometimes used.\
+^- Lords will perform additional upgrades and hiring of mercenaries in towns depending on personality.\
+^^High:^\
+^- The renown factor when an NPC lord or the player courts and NPC lady is adjusted by the prestige of the lady's guardian.\
+^- When a faction has fiefless lords and no free fiefs left, under some circumstances the king will redistribute a village he owns.\
+^- When villages are looted any volunteers that were in the village will be killed for both player and NPC.^^Current setting:"),
+
+("dplmc_gold_changes", "Diplomacy Option: Economic AI", "Low:^\
+^- Caravan trade benefits both the source and the destination.\
+^- When the player surrenders, there is a chance his personal equipment will not be looted, based on who accepted the surrender and the difficulty setting.  (This is meant to address a gameplay issue. In the first 700 days or so, there is no possible benefit to surrendering rather than fighting to the last man.)  Also, a bug that made it possible for books etc. to be looted was corrected.\
+^- AI caravans take into consideration distance when choosing their next destination and will be slightly more like to visit their own faction. This strategy is mixed with the Native one, so the trade pattern will differ but not wildly.\
+^- Scale town merchant gold by prosperity (up to a maximum 40% change).\
+^- Food prices increase in towns that have been under siege for at least 48 hours.\
+^- In towns the trade penalty script has been tweaked to make it more efficient to sell goods to merchants specializing in them.\
+^- Food has a chance of not spoiling depending on inventory management.\
+^- Villages being raided now delays construction projects.\
+^- Trading parties will drop off prisoners at walled centers.\
+^^Medium:^\
+^- Food consumption increases in towns as prosperity increases. Consumption also increases with garrison sizes.\
+^- Lords' looting skill affects how much gold they take from the player when they defeat him.\
+^- Lords' leadership skill modifies their troop wage costs the same way it does for the player.\
+^- The player can lose gold when his fiefs are looted, like lords.\
+^- The same way that lord party sizes increase as the player progresses, mercenary party sizes also increase to maintain their relevance. (The rate is the same as for lords: a 1.25% increase per level.)\
+^- If the player has a kingdom of his own, his spouse will receive part of the bonus that ordinarily would be due a liege. The extent of this bonus depends on the number of fiefs the players holds. This bonus is non-cumulative with the marshall bonus.\
+^- Attrition is inflicted on NPC-owned centers if they can't pay wages, but only above a certain threshold.\
+^- Strangers cannot acquire enterprises (enforced at 1 instead of at 0, so you have to do something).\
+^- Village prosperity has an impact on bandit infestation (chance of death spiral).\
+^- Village elder now receives the gold when you buy cattle.\
+^- Village farmer parties carry off extraneous items in the town elder's inventory to sell at market towns.\
+^^High:^\
+^- The total amount of weekly bonus gold awarded to kings in Europe remains constant: as kings go into exile, their bonuses are divided among the remaining kings.\
+^- If any lords run a personal gold surplus after party wages, the extra is divided among the lord and his garrisons budgets (each fortress and town has its own pool of funds to pay for soldiers) on the basis of whether the lord is low on gold or any of his fortresses are. (If none are low on gold, the lord takes everything, like before).\
+^- The honor loss from an offense depends in part on the player's honor at the time. The purer the reputation, the greater the effect of a single disgrace.\
+^- Raiding change: village gold lost is removed from uncollected taxes before the balance (if any) is removed from the lord.\
+^- Cash for prisoners.\
+^- Allows canceling improvements (cash goes back to local economy, but relations suffer).^^Current setting:"),
+
+("hoty_keys", "HOT KEYS", "Here is a list of all keys and where they are used:^\
 ^^SHIFT - KEY: ^^*) Player can right away start a conversation with any town merchant by pressing 'shift' while clicking on 'trade with the XY'. ^*) By pressing 'shift' while clicking on 'visit the Domus Augusti' player will spawn next to advisors. ^*) After the player has visited a Roman temple for the first time he can spawn right next to the priest by pressing shift while clicking on 'visit the temple of XY'. ^*) The administrator of the latifundium can be quickly accessed by pressing 'shift' while clicking on 'visit the villa'.\
 ^^ENTER - KEY: ^^*) During battle player can open strategic view.\
 ^^H - KEY:^^*) Allows you to call your horse during battle (if it is still alive) \
@@ -19,7 +108,79 @@ info_pages = [
 ^^J - KEY: ^^*) Player can change the movement speed of troops during battles by pressing J ^*) Player's horse will start to sprint during horse races by pressing J\
 ^^Z - KEY: ^^*) Pressing Z allows player to crouch (For German keyboards it is the Y key). Though it can be changed under game options -> controls.\
 ^^^The keys for the death-camera can be changed under the Diplomacy preference menu."),
-("q_and_q", " Important informations", "Battle field fortifications: ^As Roman you can fortify your camp. It requires a set of tools inside your inventory and an engineer skill higher than 5. Once fortified you can no longer move. It is also possible during sieges.\
+
+("companions", "Companions", "Companions do no longer spawn randomly in taverns. They all have fixed locations or quests which enable them. Here is a complete list of all companions:^^"
++"^*)  Pravare Ytarim               Location: Chersonesos, location in town: stables."
++"^*)  Marius Gaius                 Location: Antiocha, location in town: market."
++"^*)  Pulchra                      Location: Nicomedia, location in town: tavern."
++"^*)  Abadutiker                   Location: Truso, location in town: Castle Courtyard (next to gate)."
++"^*)  Satibarzanes                 Location: Ectabana, location in town: stable."
++"^*)  Firentrix                    Location: Corduba, location in town: tavern."
++"^*)  Lavia                        Location: Alexadria, location in town: streets."
++"^*)  Hildr                        Location: Uburzis, location in town: tavern."
++"^*)  Aturius Spurus               Location: Lugdunum, location in town: tavern."
++"^*)  Attaklos                     Location: Athenai, location in town: tavern."
++"^*)  Dionysia                     Location: Thessalonica, location in town: marketplace."
++"^*)  Jeremus                      Location: Lutetia, location in town: tavern."
++"^*)  Chanakya                     Location: Ctesiphon, location in town: center."
++"^*)  Titus                        Location: Mediolanum, location in town: tavern."
++"^*)  Artimenus                    Location: Vindobona, location in town: castle hall."
++"^*)  Titocuna                     Location: Deva, location in town: tavern."
++"^*)  Anicetus                     Location: Phasis, location in town: tavern."
++"^*)  Arminius                     Location: Palmyra, location in town: center."
++"^*)  Tertius Maior                Location: Palmyra, location in town: tavern."
++"^*)  Secundus Minor               Location: Dura Europos, location in town: center."
++"^*)  Drusus                       Location: Dyrrachium, location in town: tavern."
++"^*)  Libertus Tiro                Location: Tarraco, location in town: tavern."
++"^*)  Marcus Tullius               Location: Augusta Emerita, location in town: center."
++"^*)  Sidonius Apollinaris         Location: Hierosolyma, location in town: tavern."
++"^*)  Sollius Modestus             Location: Thebae, location in town: center."
++"^*)  Albinus Basilius             Location: Mtskheta, location in town: tavern."
++"^*)  Lucullus Caepio              Location: Carthago, location in town: center."
++"^*)  Anicius                      Location: Massilia, location in town: tavern."
++"^*)  Fabianus                     Location: Augusta, location in town: tavern."
++"^*)  Rombus                       Location: Ancyra, location in town: tavern."
++"^*)  Gaius Lemonius               Location: Neapolis, location in town: center."
++"^*)  Lucius Modius minor          Location: Tarentum, location in town: center."
++"^*)  Ra Karak                     Location: None, joins when doing the 'blossom in the desert' quest."
++"^*)  Ligia (and Ursus)            Location: Rome, location in town: side street (where Olivarius is)."
++"^*)  Marcus Vinicius              Location: Rome, location in town: tavern."
++"^*)  Josephus                     Location: Masada, location in town: center."
++"^*)  Elazar Bar Yochai            Location: Leptis Magna, location in town: center."
+),
+
+("provinces", "Provinces", "Every town, fortress and village is part of a province. The respective province can be seen under the center notes.\
+ But it is also possible to display the province name in the center name. The option is only available at game start.^\
+ One can choose between three different naming schemes for the centers:\
+ ^^Normal: The normal name is displayed, like in native.\
+ ^^Accurate: The accurate province name which is also displayed in the center notes, will also be displayed in the center name.\
+ ^^Simple: A simplified province name will be displayed in the center name.^^^\
+ Note, that the simplified province names are more general than the accurate ones. Here is a list of the abbreviations used:^^\
+ HS - Hispania^\
+ GL - Gallia^\
+ BR - Britannia^\
+ MG - Magna Germania^\
+ IT - Italia^\
+ IL - Illyria^\
+ GR - Graecia ^\
+ DA - Dacia^\
+ TH - Thracia^\
+ AN - Anatolia^\
+ AR - Armenia^\
+ MS - Mesopotamia^\
+ SY - Syria^\
+ JD - Judea^\
+ EG - Aegyptus^\
+ AF - Africa^\
+ SM - Sarmatia^\
+ CA - Caucasus^\
+ RN - Reatia et Noricum^\
+ CY - Cyprus^\
+ CS - Corsica et Sardinia\
+ PR - Persia and Media"
+),
+
+("q_and_q", "Important informations", "Battle field fortifications: ^As Roman you can fortify your camp. It requires a set of tools inside your inventory and an engineer skill higher than 5. Once fortified you can no longer move. It is also possible during sieges.\
 ^^Lending out money: Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denars. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report.\
  This can take a while. Depending on when you issued the loan and depending on when your next budget report will show it can take between one or two weeks until your receive the interests.\
  For your loan you have two options. Either you order the argentarius to reinvest the money again, or you order him to send you back all the money. In the first case,\
@@ -64,6 +225,7 @@ Sailors can be found as mercenaries in taverns of port towns. Each sailor in the
 Commander panel: With an army large than 40 men you have access to the commander panel before a battle starts. It allows you to make sacrifices to the gods (improves moral, depends on a dice role, is a good choice if you have a low oratory skill), \
 give a speech (depending on your oratory, persuasion and leadership skill it is either a success or fail) or to send skirmishers to attack the enemy (success depends on your tactics skill).^^\
 Currently the escape change for a hero after battle is: 37%. Note that this also effect the player."),
+
 ("names", "Families and Relations", "Every faction consists of lords, who have different relations with other lords.\
  This relations will have also effects on your actions in the game. An example: If you execute a Lord (or Lady) your relationship with all his family members, but also with all his friends will decrease.\
  On the other hand you may even gain relation with enemies of this Lord. Such a system is often used when the player stands before the decision to either support someone or not.\
@@ -73,6 +235,7 @@ Currently the escape change for a hero after battle is: 37%. Note that this also
  ^^Another note on families: The Roman Empire has the following major families: Sulpicius, Vitellius, Cornelius, Fabius, Salvius Otho, Flavius. One can recognize them via the names of the Lords and Ladies.\
  A Lord from the Flavius family usually names X Flavius, while a woman usually names Flavia Y, where X stands for a generic Roman male name and Y for a generic Roman female name.\
  This may helps you to recognize which Lords/Ladis belong together."),
+
 ("roman_empire", "Roman Empire", "Roman Administration:^\
  The Roman Empire is not a feudal state. It has a huge and complex imperial administration.\
  In this mod the Roman administration is represented by governors. Governors only command a little army, a 'bodyguard', which allows them to case bandits.\
@@ -128,96 +291,8 @@ which the enemy has laid. Additionally, on the battlefield you will encounter bu
 # ("christendom", "Christendom", "Early Christendom was quite similar to communism. The ideas that, after death, all people are treated equal, fell on fertile ground among the poor population of the Roman Empire.^\
 # In contrast to the 'old' polytheist religions, Christendom was quite intolerant towards other Religions. This leaded to religious conflicts in every city, where Christendom dominated.^\
 # That, and the fact, that Christendom does not accept the Imperial state cult, caused the Roman Emperors to pursue Christians and outlaw Christendom."),
-##diplomacy start+
-("dplmc_info", "Diplomacy Mod", "The Diplomacy mod adds some features to the game. Most of them are accessed via your minister and several new potential employees: a chamberlain, a constable, and a chancellor. \
-You gain the opportunity to hire a chamberlain when you get your first village, a constable when you gain your first fortress, and a chancellor when you gain your first town.  \
-If you dismiss one of your employees, you may be able to rehire them through a well-connected spouse or one of the travellers who frequent the taverns of Europe.^^\
-Aside from these the mod has other features as well, which can be accessed from the Camp menu.^^This mod uses Diplomacy Version "+DPLMC_DIPLOMACY_VERSION_STRING+"."),
-#SB : new parameters
-("dplmc_autoloot", "Diplomacy Feature: Autoloot", "Autoloot settings are managed through the camp menu. It allows you to have your companions (named heroes, not ordinary soldiers) automatically select equipment from the loot after a battle.\
-^^ In order for this feature to be enabled, one of the following must be true: someone in your party must have a Looting score of 2 or better, someone in your party must have an Inventory Management score of 3 or better, or the player {him/her}self must have an Inventory Management score of 2 or better.\
-^^ The desired primary damage types (the higher of any swing/thrust damage) for melee and throwing weapons can be set up here. In addition, players can fine-tune weapon selection for two-handed/one-handed weapons, pikes, lances, and bladed polearms.^^This setting is currently:"),
-("dplmc_autosell", "Diplomacy Feature: Autosell", "The Autosell feature allows you  to sell many items to a merchant all at once, instead of selling them one at a time. Autosell settings are managed through the Town menu, where you can specify which types of items you want to be able to sell (e.g. you might not want to automatically sell horses) and a price limit (for example, you might not want to automatically sell any items that cost more than 200 denars).^^ There are two primary ways to use autosell.  If you speak to a Horse Merchant, Armorer, or Weapon Merchant in a town, there is a conversation option to sell items of a particular type.  Also, when visiting a town there will be an option in the Marketplace section of the menu to automatically sell your items throughout the town.^^ For people who used Autosell in other mods, note that this sells from your own inventory, according to certain rules.  Items you have equipped will never be sold, and neither will the first three items in your inventory.  After that, autosell also skips anything that it thinks might be your personal equipment (since people often have more than one set).  Regardless of whether you have them equipped, it won't sell your best bow, crossbow, armor, helmet, boots, or gloves. If you have a bow you can use, it won't sell your best three packs of arrows, and if you have a crossbow it won't sell your best three packs of bolts. For shields, one-handed weapons, two-handed weapons, polearms, and horses, it won't sell your best or second-best item. Your best three throwing weapons also will not be sold. However, items that your character is unable to use are considered fair game."),
-("dplmc_policy", "Diplomacy Feature: Policy", "Centralization/Decentralization:\
-^+3 - very centralized. Tax inefficiency for the ruler is reduced by 15%, and increased by 15% to his vassals. Ruler's relations with his vassals should suffer a -3 hit every month. King's army get 30% percent increase, lords' armies get 9% decrease. Imperial administration: +1500 denars maintenance costs for towns, +150 for fortresses. Imperial tax: maximal tax rate is 90%\
-^+2 - quite centralized. Tax inefficiency for the ruler is reduced by 10%,and increased by 10% to his vassals. Ruler's relations with his vassals fiefs should suffer a -2 hit every month. King's army get 20% percent increase, lords' armies get 6% decrease. Imperial administration: +1000 denars maintenance costs for towns, +100 for fortresses. Imperial tax: maximal tax rate is 60%\
-^+1 - slightly centralized. Tax inefficiency for the ruler is reduced by 5%, and increased by 5% to his vassals. Ruler's relations with his vassals fiefs should suffer a -1 hit every month. King's army get 10% percent increase, lords' armies get 3% decrease. Imperial administration: +500 denars maintenance costs for towns, +50 for fortresses. Imperial tax: maximal tax rate is 50%\
-^ 0 - neither decentralized nor centralized. Imperial administration: no additional costs. Imperial tax: maximal tax rate is 40%\
-^-1 - slightly decentralized. Tax inefficiency for the ruler is increased by 5%. Ruler's relations with his vassals increase by +1 every month. King's army get 10% percent decrease, lords' armies get 3% increase. Imperial administration: -500 denars maintenance costs for towns, -50 for fortresses. Imperial tax: maximal tax rate is 30%\
-^-2 - quite decentralized. Tax inefficiency for the ruler is increased by 10%. Ruler's relations with his vassals increase by +2 every month. King's army get 20% percent decrease, lords' armies get 6% increase. Imperial administration: -1000 denars maintenance costs for towns, -100 for fortresses. Imperial tax: maximal tax rate is 25%\
-^-3 - very decentralized. Tax inefficiency for the ruler is increased by 15%. Ruler's relations with his vassals increase by +3 every month. King's army get 30% percent decrease, lords' armies get 9% increase. Imperial administration: -1500 denars maintenance costs for towns, -150 for fortresses. Imperial tax: maximal tax rate is 20%\
-^^Noble rights vs Citizen rights:\
-^+3 - very aristocratic.  Trade decreased by 15%. Kings relations with their lords increased by 3 every month. Vassals armies increased by 9%.\
-^+2 - quite aristocratic. Trade decreased by 10%. Kings relations with their lords increased by 2 every month. Vassals armies increased by 6%.\
-^+1 - somewhat aristocratic. Trade decreased by 5%. Kings relations with their lords increased by 1 every month. Vassals armies increased by 3%.\
-^-1 - somewhat plutocratic. Trade increased by 10%. Kings relations with their lords decreased by 1 every month. Vassals armies decreased by 3%.\
-^-2 - quite plutocratic. Trade increased by 15%. Kings relations with their lords decreased by 2 every month. Vassals armies decreased by 6%.\
-^-3 - very plutocratic. Trade increased by 20%. Kings relations with their lords decreased by 3 every month. Vassals armies decreased by 9%.\
-^^Slave laws:\
-^+3 - almost all serfs.  Tax inefficiency decreased by 9% for both king and his vassals. Troops of the faction suffer a 6% strength malus in AI fights, kingdom army size increased by 6%.\
-^+2 - mostly serfs.  Tax inefficiency decreased by 6% for both king and his vassals. Troops of the faction suffer a 4% strength malus in AI fights, kingdom army size increased by 4%.\
-^+1 - usually serfs.  Tax inefficiency decreased by 3% for both king and his vassals. Troops of the faction suffer a 2% strength malus in AI fights, kingdom army size increased by 2%.\
-^-1 - usually free subjects.  Tax inefficiency increased by 3% for both king and his vassals. Troops of the faction get a 2% strength bonus in AI fights, kingdom army size decreased by 2%.\
-^-2 - mostly free subjects.  Tax inefficiency increased by 6% for both king and his vassals. Troops of the faction get a 4% strength bonus in AI fights, kingdom army size decreased by 4%.\
-^-3 - all free subjects.  Tax inefficiency increased by 9% for both king and his vassals. Troops of the faction get a 6% strength bonus in AI fights, kingdom army size decreased by 6%.\
-^^Quality/Quantity:\
-^+3 - of legendary quality. AI strength of troops increased by 12%, lords' armies decreased by 12%.\
-^+2 - of great quality. AI strength of troops increased by 8%, lords' armies decreased by 8%.\
-^+1 - of good quality. AI strength of troops increased by 4%, lords' armies decreased by 4%.\
-^-1 - of good quanity. AI strength of troops decreased by 4%, lords' armies increased by 4%.\
-^-2 - of great quantity. AI strength of troops decreased by 8%, lords' armies increased by 8%.\
-^-3 - of legendary quantity. AI strength of troops decreased by 12%, lords' armies increased by 12%."),
-#SB : camera mode & disguise blurbs
-("dplmc_deathcamera", "Diplomacy Feature: Battle Continuation", "Post-battle continuation allow you to watch the battle unfold after being knocked unconscious. Camera key bindings are available from the Diplomacy preference menus. In general numpad keys are used to rotate while movement keys are used to pan the camera. There are three camera modes available."),
-("dplmc_disguise", "Diplomacy Feature: Player Disguise", "The player disguise system allows the player to take on the role of various commoners while attempting to sneak into a town. In addition to the original pilgrim robes, players are able to acquire new sets of equipment from merchants and their chamberlains.\
-^ In Native, the chance to be caught depends on the number of men in the party. The new system calculates the chance to be caught based on the player's chosen role instead, but limits what the player can bring in and out of towns in terms of gold and items. The player's inventory will be merged after leaving the town."),
 
-("dplmc_ai_changes", "Diplomacy Option: Campaign AI", "Low:^\
-^- Center points for fief allocation are calculated (villages 1 / fortresses 2 / towns 3) instead of (villages 1 / fortresses 1 / towns 2).\
-^- For the rescue prisoner and offer gift quests, the relatives that can be a target of the quest have been extended to include uncles and aunts and in-laws.\
-^- Alterations to claimant quest calculation for center scores.\
-^- When picking a new faction, lords are more likely to return to their original faction (except when that's the faction they're being exiled from), if the ordinary conditions for rejoining are met. A lord's decision may also be influenced by his relations with  other lords in the various factions, instead of just his relations with the faction leaders.\
-^^Medium:^\
-^- Some changes for lord relation gains/losses when fiefs are allocated.\
-^- Kings overrule lords slightly less frequently on faction issues.\
-^- In deciding who to support for a fief, minor parameter changes for certain personalities. Some lords will still give priority to fiefless lords or to the lord who conquered the center if they have a slightly negative relation (normally the cutoff is 0 for all personalities).\
-^- When a lord can't find any good candidates for a fief under the normal rules, instead of automatically supporting himself he uses a weighted scoring scheme.\
-^- In various places where average renown * 3/2 appears, an alternate calculation is sometimes used.\
-^- Lords will perform additional upgrades and hiring of mercenaries in towns depending on personality.\
-^^High:^\
-^- The renown factor when an NPC lord or the player courts and NPC lady is adjusted by the prestige of the lady's guardian.\
-^- When a faction has fiefless lords and no free fiefs left, under some circumstances the king will redistribute a village he owns.\
-^- When villages are looted any volunteers that were in the village will be killed for both player and NPC.^^Current setting:"),
 
-("dplmc_gold_changes", "Diplomacy Option: Economic AI", "Low:^\
-^- Caravan trade benefits both the source and the destination.\
-^- When the player surrenders, there is a chance his personal equipment will not be looted, based on who accepted the surrender and the difficulty setting.  (This is meant to address a gameplay issue. In the first 700 days or so, there is no possible benefit to surrendering rather than fighting to the last man.)  Also, a bug that made it possible for books etc. to be looted was corrected.\
-^- AI caravans take into consideration distance when choosing their next destination and will be slightly more like to visit their own faction. This strategy is mixed with the Native one, so the trade pattern will differ but not wildly.\
-^- Scale town merchant gold by prosperity (up to a maximum 40% change).\
-^- Food prices increase in towns that have been under siege for at least 48 hours.\
-^- In towns the trade penalty script has been tweaked to make it more efficient to sell goods to merchants specializing in them.\
-^- Food has a chance of not spoiling depending on inventory management.\
-^- Villages being raided now delays construction projects.\
-^- Trading parties will drop off prisoners at walled centers.\
-^^Medium:^\
-^- Food consumption increases in towns as prosperity increases. Consumption also increases with garrison sizes.\
-^- Lords' looting skill affects how much gold they take from the player when they defeat him.\
-^- Lords' leadership skill modifies their troop wage costs the same way it does for the player.\
-^- The player can lose gold when his fiefs are looted, like lords.\
-^- The same way that lord party sizes increase as the player progresses, mercenary party sizes also increase to maintain their relevance. (The rate is the same as for lords: a 1.25% increase per level.)\
-^- If the player has a kingdom of his own, his spouse will receive part of the bonus that ordinarily would be due a liege. The extent of this bonus depends on the number of fiefs the players holds. This bonus is non-cumulative with the marshall bonus.\
-^- Attrition is inflicted on NPC-owned centers if they can't pay wages, but only above a certain threshold.\
-^- Strangers cannot acquire enterprises (enforced at 1 instead of at 0, so you have to do something).\
-^- Village prosperity has an impact on bandit infestation (chance of death spiral).\
-^- Village elder now receives the gold when you buy cattle.\
-^- Village farmer parties carry off extraneous items in the town elder's inventory to sell at market towns.\
-^^High:^\
-^- The total amount of weekly bonus gold awarded to kings in Europe remains constant: as kings go into exile, their bonuses are divided among the remaining kings.\
-^- If any lords run a personal gold surplus after party wages, the extra is divided among the lord and his garrisons budgets (each fortress and town has its own pool of funds to pay for soldiers) on the basis of whether the lord is low on gold or any of his fortresses are. (If none are low on gold, the lord takes everything, like before).\
-^- The honor loss from an offense depends in part on the player's honor at the time. The purer the reputation, the greater the effect of a single disgrace.\
-^- Raiding change: village gold lost is removed from uncollected taxes before the balance (if any) is removed from the lord.\
-^- Cash for prisoners.\
-^- Allows canceling improvements (cash goes back to local economy, but relations suffer).^^Current setting:"),
 ##diplomacy end+
   # ("morale1", "Morale I", "Morale represents the ability and willingness of the troops in a party to summon up the endurance, quality, and discipline they need to face the stresses \
  # of battle and the march. It is not the same thing as the troops' happiness. Elite troops may grumble and whine about the hardships of campaigning -- but then stand together as one when the arrows \
@@ -317,7 +392,6 @@ The AI will sell prisoners from towns, fortresses and villages over time. The ne
  # for a short while. However, unless he is soundly beating his enemy. he may soon start looking for a way out of the conflict, lest he leave himself vulnerable to an attack by a third party. \
  # Europe's rulers are keenly aware that today's ally may be tomorrow's enemy, and vice versa."),
 
-
 ("follower_party", "Follower party", "For creating a follower party you need to have at least 60 men in your main party, have 10 non-wounded women and 2,500 denars for hiring a physician and mules.\
  Once created, the follower party will automatically disband if you either get defeated or your party size goes below 40 men.^^\
  You can manage the follower party over the camp menu. There you can add more women to the party, store items on the mules or use the physician to treat major wounds. You can also add sailors to the follower party which will grant you a speed bonus when on water. But the troops in the follower party wont fight during battles. You can also manually disband the follower party.^^\
@@ -328,7 +402,7 @@ The AI will sell prisoners from towns, fortresses and villages over time. The ne
  Women in your follower party won't fight on the battlefield and you don't have to pay wages.^^\
  As a disadvantage, a follower party will significantly slow down your army."),
 
-("aor", " AOR Recruitment", "All Auxiliary cohorts are listed here:^^\
+("aor", "AOR Recruitment", "All Auxiliary cohorts are listed here:^^\
 Cohors Alporum: recruitable in barracks in: Augusta Vindelicorum, Vindobona, Mediolanum, Genua^\
 Cohors Maurorum: recruitable in barracks in: Cirta, Carthago, Leptis Magna, Utika^\
 Cohors Hispanorum: recruitable in barracks in: Augusta, Tarraco, Tolosa, Carthago Nova, Cordoba, Gades, Augusta Emerita^\
@@ -345,46 +419,6 @@ Ala Ituraeorum: recruitable in barracks in: Antiochia, Jotapata, Tarsus^\
 Ala Auxiliarum: can be recruited in every barrack^\
 Cohors Auxiliarum: can be recruited in every barrack^\
 Ala Praetoriani: can be recruited in every barrack"),
-
-("companions", " Companions", "Companions do no longer spawn randomly in taverns. They all have fixed locations or quests which enable them. Here is a complete list of all companions:^^"
-+"^*)  Pravare Ytarim               Location: Chersonesos, location in town: stables."
-+"^*)  Marius Gaius                 Location: Antiocha, location in town: market."
-+"^*)  Pulchra                      Location: Nicomedia, location in town: tavern."
-+"^*)  Abadutiker                   Location: Truso, location in town: Castle Courtyard (next to gate)."
-+"^*)  Satibarzanes                 Location: Ectabana, location in town: stable."
-+"^*)  Firentrix                    Location: Corduba, location in town: tavern."
-+"^*)  Lavia                        Location: Alexadria, location in town: streets."
-+"^*)  Hildr                        Location: Uburzis, location in town: tavern."
-+"^*)  Aturius Spurus               Location: Lugdunum, location in town: tavern."
-+"^*)  Attaklos                     Location: Athenai, location in town: tavern."
-+"^*)  Dionysia                     Location: Thessalonica, location in town: marketplace."
-+"^*)  Jeremus                      Location: Lutetia, location in town: tavern."
-+"^*)  Chanakya                     Location: Ctesiphon, location in town: center."
-+"^*)  Titus                        Location: Mediolanum, location in town: tavern."
-+"^*)  Artimenus                    Location: Vindobona, location in town: castle hall."
-+"^*)  Titocuna                     Location: Deva, location in town: tavern."
-+"^*)  Anicetus                     Location: Phasis, location in town: tavern."
-+"^*)  Arminius                     Location: Palmyra, location in town: center."
-+"^*)  Tertius Maior                Location: Palmyra, location in town: tavern."
-+"^*)  Secundus Minor               Location: Dura Europos, location in town: center."
-+"^*)  Drusus                       Location: Dyrrachium, location in town: tavern."
-+"^*)  Libertus Tiro                Location: Tarraco, location in town: tavern."
-+"^*)  Marcus Tullius               Location: Augusta Emerita, location in town: center."
-+"^*)  Sidonius Apollinaris         Location: Hierosolyma, location in town: tavern."
-+"^*)  Sollius Modestus             Location: Thebae, location in town: center."
-+"^*)  Albinus Basilius             Location: Mtskheta, location in town: tavern."
-+"^*)  Lucullus Caepio              Location: Carthago, location in town: center."
-+"^*)  Anicius                      Location: Massilia, location in town: tavern."
-+"^*)  Fabianus                     Location: Augusta, location in town: tavern."
-+"^*)  Rombus                       Location: Ancyra, location in town: tavern."
-+"^*)  Gaius Lemonius               Location: Neapolis, location in town: center."
-+"^*)  Lucius Modius minor          Location: Tarentum, location in town: center."
-+"^*)  Ra Karak                     Location: None, joins when doing the 'blossom in the desert' quest."
-+"^*)  Ligia (and Ursus)            Location: Rome, location in town: side street (where Olivarius is)."
-+"^*)  Marcus Vinicius              Location: Rome, location in town: tavern."
-+"^*)  Josephus                     Location: Masada, location in town: center."
-+"^*)  Elazar Bar Yochai            Location: Leptis Magna, location in town: center."
-),
 
 
 # ("battle_speed", "Special Battle Features", "Once all enemies are routing, the battle won't automatically end to give the player a chance to kill routing soldiers. But by pressing the tab key you still can end the battle successfully.^^\
@@ -481,36 +515,7 @@ also conspicuous magnificence, beneficence and feminine delicacy, as a self-rein
 propaganda concepts in the Ptolemaic dynasty.^^\
 In game, lords will spend a certain fraction of their wealth to various things, e.g. his court, his family etc. \
 The more they spend, the more their renown increases."),
-("provinces", "Provinces", "Every town, fortress and village is part of a province. The respective province can be seen under the center notes.\
- But it is also possible to display the province name in the center name. The option is only available at game start.^\
- One can choose between three different naming schemes for the centers:\
- ^^Normal: The normal name is displayed, like in native.\
- ^^Accurate: The accurate province name which is also displayed in the center notes, will also be displayed in the center name.\
- ^^Simple: A simplified province name will be displayed in the center name.^^^\
- Note, that the simplified province names are more general than the accurate ones. Here is a list of the abbreviations used:^^\
- HS - Hispania^\
- GL - Gallia^\
- BR - Britannia^\
- MG - Magna Germania^\
- IT - Italia^\
- IL - Illyria^\
- GR - Graecia ^\
- DA - Dacia^\
- TH - Thracia^\
- AN - Anatolia^\
- AR - Armenia^\
- MS - Mesopotamia^\
- SY - Syria^\
- JD - Judea^\
- EG - Aegyptus^\
- AF - Africa^\
- SM - Sarmatia^\
- CA - Caucasus^\
- RN - Reatia et Noricum^\
- CY - Cyprus^\
- CS - Corsica et Sardinia\
- PR - Persia and Media"
-),
+
 ("mythology", "Gods and Religion", "The player can worship different gods. For this, player must talk with a priest of the respective god and vow to worship the god.\
  A list of all gods and where to find their priests is below. Once the player worships a god, he can pray under the camp menu. For polytheistic gods, the player must fight against ancient heroes.\
  For Christus and YHWH, the reputation of the player is considered, both demand high reputation. If the player succeeds in the challenge, he gains artifacts or improves his attribute points.^\
@@ -543,4 +548,5 @@ The more they spend, the more their renown increases."),
  An ordered item will take some time till it is crafted and you will have to pay for the materials too. Once the item has finished talk with the merchant to get it.\
  The merchant will send the finished item to you if you haven't collected it by yourself. Though this takes much longer than collecting it yourself (by talking with the respective merchant).^^\
  Similarly you can import horses from any horse merchant or your latifundia breeder."),
- ]
+
+]#end of file

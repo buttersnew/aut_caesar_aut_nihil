@@ -75,7 +75,7 @@ triggers = [
     (call_script, "script_add_notification_menu", "mnu_civil_war_start",0,0),
 ]),
 
-# Tutorial:
+# raise to nobility
 (24,0,ti_once,[
     (store_troop_gold, ":g", "trp_player"),
     (ge, ":g", 200000),
