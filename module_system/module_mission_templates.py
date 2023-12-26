@@ -5288,13 +5288,11 @@ deathcam_cycle_backwards = (0, 0.5, 1,[(this_or_next|key_clicked, key_mouse_scro
 
 #default keyboard camera
 dplmc_death_camera = (
-  0, 0, 0,
-  [
+  0, 0, 0,[
    (neq, "$enable_deahtcam", 0),
    (eq, "$g_dplmc_battle_continuation", 0),
    (eq, "$g_dplmc_cam_activated", camera_keyboard),
-  ],
-  [
+  ],[
     #(agent_get_look_position, pos47, ":player_agent"),
 
     # (get_player_agent_no, ":player_agent"),
@@ -5440,45 +5438,38 @@ gods_trigger = (3,0,ti_once,[
 
 ##SB : new camera triggers
 dplmc_battle_mode_triggers = [
-    voice_order_sounds,
-    #VC-1729 call horse begins
-    (0, 0, ti_once,
-    [],
-    [
-      (assign, "$player_horse_agent_no", -1),
-      (store_skill_level, ":skill", "skl_riding", "trp_player"),
-      (ge, ":skill", 4),	#need riding skill 4 to call horse
+  voice_order_sounds,
+  #VC-1729 call horse begins
+  (0, 0, ti_once,[],[
+    (assign, "$player_horse_agent_no", -1),
+    (store_skill_level, ":skill", "skl_riding", "trp_player"),
+    (ge, ":skill", 4),	#need riding skill 4 to call horse
+    (get_player_agent_no, ":player_agent"),
+    (gt, ":player_agent", -1),
+    (agent_is_alive, ":player_agent"),
+    (agent_get_horse, "$player_horse_agent_no", ":player_agent"),
+    (gt, "$player_horse_agent_no", -1),
+  ]),
+
+  (0, 0, 0,[
+    (key_clicked, key_h),
+    (gt, "$player_horse_agent_no", -1),
+    (neg|main_hero_fallen),
+  ],[
+    (try_begin),
+      (neg|agent_is_alive, "$player_horse_agent_no"),
+    (else_try),
+      (display_message, "@You call your horse..."),
       (get_player_agent_no, ":player_agent"),
-      (gt, ":player_agent", -1),
-      (agent_is_alive, ":player_agent"),
-      (agent_get_horse, "$player_horse_agent_no", ":player_agent"),
-      (gt, "$player_horse_agent_no", -1),
-    ]),
-
-    (0, 0, 0,
-    [
-      (key_clicked, key_h),
-      (gt, "$player_horse_agent_no", -1),
-      (neg|main_hero_fallen),
-    ],
-    [
-      (try_begin),
-        (neg|agent_is_alive, "$player_horse_agent_no"),
-      (else_try),
-        (display_message, "@You call your horse..."),
-        (get_player_agent_no, ":player_agent"),
-        (agent_get_rider, ":rider", "$player_horse_agent_no"),
-        (neq, ":rider", ":player_agent"),
-        (agent_get_position, pos1, ":player_agent"),
-        (agent_set_scripted_destination, "$player_horse_agent_no", pos1),
-      (try_end),
-    ]),
-    #VC-1729 ends
-
+      (agent_get_rider, ":rider", "$player_horse_agent_no"),
+      (neq, ":rider", ":player_agent"),
+      (agent_get_position, pos1, ":player_agent"),
+      (agent_set_scripted_destination, "$player_horse_agent_no", pos1),
+    (try_end),
+  ]),
 
   #Weapon, Armor and helm randomization
-  (ti_on_agent_spawn, 0, 0, [],
-    [
+  (ti_on_agent_spawn, 0, 0, [],[
     (store_trigger_param_1, ":agent_no"),
     (agent_is_active, ":agent_no"),
     (agent_is_human, ":agent_no"),
@@ -5808,9 +5799,8 @@ dplmc_battle_mode_triggers = [
     (try_end),
   ]),
 
-
-  (1,0,2,[],
-    [(try_for_agents, ":agent_no"),
+  (1,0,2,[],[
+    (try_for_agents, ":agent_no"),
         (agent_is_non_player, ":agent_no"),
         (agent_is_human, ":agent_no"),
         (agent_is_alive, ":agent_no"),
@@ -5847,115 +5837,117 @@ dplmc_battle_mode_triggers = [
                 (display_message, "@{s33} unequip shield as too large"),
             (try_end),
         (try_end),
-    (try_end),]),
-
-##make dismounted cavalry to infantry
-    (1.5, 0, 1, [],
-    [
-
-	(try_for_agents, ":rider"),
-        (agent_is_active, ":rider"),
-        (agent_is_alive, ":rider"),
-        (agent_is_non_player, ":rider"),
-        (agent_slot_eq, ":rider", slot_agent_is_cavalry, 1),
-        (agent_get_horse, ":horse", ":rider"),
-        (le, ":horse", 0),
-
-        (agent_set_slot, ":rider", slot_agent_is_cavalry, 0),
-        (try_begin),
-            (agent_get_wielded_item, ":wielded_item", ":rider", 0),
-            (gt, ":wielded_item", 0),
-            (is_between, ":wielded_item", "itm_light_lance", "itm_hasta1"),
-            (agent_unequip_item, ":rider", ":wielded_item"),
-            (call_script, "script_equip_best_melee_weapon", ":rider", 0, 0, 1),#check for best melee weapon
-        (try_end),
-
-        (agent_get_team, ":team", ":rider"),#change division
-        (agent_get_division, reg34, ":rider"),
-        (store_add, ":slot", slot_team_d0_formation, reg34),
-
-        (agent_set_division, ":rider", grc_infantry),
-        (agent_set_slot, ":rider", slot_agent_new_division, grc_infantry),
-
-        (neg|team_slot_eq, ":team", ":slot", formation_none),
-        (agent_clear_scripted_mode, ":rider"),
-        (agent_set_slot, ":rider", slot_agent_formation_rank, 0),
-        (agent_set_slot, ":rider", slot_agent_inside_formation, 0),
     (try_end),
-    ]),
+  ]),
+  ##make dismounted cavalry to infantry
+  (ti_on_agent_dismount, 0, 0, [],[
+    (store_trigger_param_1, ":rider"),
+    # (store_trigger_param_2, ":horse"),
+    (agent_is_active, ":rider"),
+    (agent_is_alive, ":rider"),
+    (agent_is_non_player, ":rider"),
 
-###horse scull BEGIN
-    #sets up the spawn timer
-    (ti_on_agent_spawn, 0, 0,[(gt, "$g_horses_are_avaliable", 0), ],
-      [
-        (store_trigger_param_1, ":horse_no"),
-
-        (neg|agent_is_human, ":horse_no"), #horse agent
-        (agent_get_rider, ":agent_no", ":horse_no"),
-        (try_begin),
-            (agent_is_non_player, ":agent_no"), #default period for npcs
-            (agent_set_slot, ":horse_no", slot_agent_bought_horse, 0), #default duration
-        (else_try),
-            (agent_set_slot, ":horse_no", slot_agent_bought_horse, 210),
-        (try_end),
-      ]),
-
-    (0, 0, ti_once,[],
-    [
-    (try_for_agents, ":agent_no"),
-        (agent_is_non_player, ":agent_no"),
-        (agent_get_horse, ":horse", ":agent_no"),
-        (gt, ":horse", 0),
-        (agent_set_slot, ":agent_no", slot_agent_is_cavalry, 1),
+    (try_begin),
+        (agent_get_wielded_item, ":wielded_item", ":rider", 0),
+        (gt, ":wielded_item", 0),
+        (is_between, ":wielded_item", "itm_light_lance", "itm_hasta1"), # remove contos
+        (agent_unequip_item, ":rider", ":wielded_item"),
+        (call_script, "script_equip_best_melee_weapon", ":rider", 0, 0, 1),#check for best melee weapon
     (try_end),
-    ]),
 
-    #restart it when horses are mounted again
-    (ti_on_agent_mount, 0, 0, [ (gt, "$g_horses_are_avaliable", 0),],
-      [
+    (agent_get_team, ":team", ":rider"),#change division
+    (agent_get_division, reg34, ":rider"),
+    (store_add, ":slot", slot_team_d0_formation, reg34),
 
-        (store_trigger_param_1, ":agent_no"),
-        (store_trigger_param_2, ":horse_no"),
+    (agent_set_division, ":rider", grc_infantry),
+    (agent_set_slot, ":rider", slot_agent_new_division, grc_infantry),
+    (neg|team_slot_eq, ":team", ":slot", formation_none),
+    (agent_clear_scripted_mode, ":rider"),
+    (agent_set_slot, ":rider", slot_agent_formation_rank, 0),
+    (agent_set_slot, ":rider", slot_agent_inside_formation, 0),
+  ]),
 
-        (try_begin),
-          (agent_is_non_player, ":agent_no"), #default period for npcs
-          (agent_set_slot, ":horse_no", slot_agent_bought_horse, 0), #reset the timer
-        (else_try),
-          (agent_set_slot, ":horse_no", slot_agent_bought_horse, 210), #couple minutes longer for players
-        (try_end),
-      ]),
-    #the main "workhorse" of the trigger, set to intervals of 5/10/30 or have a server setting
-    (10, 0, 0, [
+  ###horse scull BEGIN
+  #sets up the spawn timer
+  (ti_on_agent_spawn, 0, 0,[
     (gt, "$g_horses_are_avaliable", 0),
-    ],
-      [
+  ],[
+    (store_trigger_param_1, ":horse_no"),
 
-        (set_fixed_point_multiplier, 1000),
-        (try_for_agents, ":horse_no"),
-          (agent_is_alive, ":horse_no"),
-          (neg|agent_is_human, ":horse_no"),
-          (agent_get_rider, ":rider_no", ":horse_no"),
-          (lt, ":rider_no", 0),
-          (agent_get_slot, ":horse_timer", ":horse_no", slot_agent_bought_horse),
-          (try_begin),
-            (le, ":horse_timer", -90), #a minute and a half
-            (agent_get_position, pos1, ":horse_no"),
-            (get_player_agent_no, ":player_agent"),
-            (agent_get_position, pos2, ":player_agent"),
-            (get_distance_between_positions, ":dist", pos1, pos2),#in centimeters
-            (lt, ":dist", 600), #nobody (important) nearby
-            (agent_fade_out, ":horse_no"),
-          (else_try),
-            (val_sub, ":horse_timer", "$g_horses_are_avaliable"),
-            (agent_set_slot, ":horse_no", slot_agent_bought_horse, ":horse_timer"),
-            (try_begin), #force runaway half-way through
-              (le, ":horse_timer", -60),
-              (agent_start_running_away, ":horse_no"),
-            (try_end),
-          (try_end),
+    (neg|agent_is_human, ":horse_no"), #horse agent
+    (agent_get_rider, ":agent_no", ":horse_no"),
+    (try_begin),
+        (agent_is_non_player, ":agent_no"), #default period for npcs
+        (agent_set_slot, ":horse_no", slot_agent_bought_horse, 0), #default duration
+    (else_try),
+        (agent_set_slot, ":horse_no", slot_agent_bought_horse, 210),
+    (try_end),
+  ]),
+
+  #restart it when horses are mounted again
+  (ti_on_agent_mount, 0, 0, [
+    (gt, "$g_horses_are_avaliable", 0),
+  ],[
+    (store_trigger_param_1, ":agent_no"),
+    (store_trigger_param_2, ":horse_no"),
+    (try_begin),
+      (agent_is_non_player, ":agent_no"), #default period for npcs
+      (agent_set_slot, ":horse_no", slot_agent_bought_horse, 0), #reset the timer
+    (else_try),
+      (agent_set_slot, ":horse_no", slot_agent_bought_horse, 210), #couple minutes longer for players
+    (try_end),
+  ]),
+
+  #restart it when horses are mounted again
+  (ti_on_agent_mount, 0, 0, [
+  ],[
+    (store_trigger_param_1, ":agent_no"),
+    (store_trigger_param_2, ":horse_no"),
+    (agent_is_active, ":horse_no"),
+    (agent_is_non_player, ":agent_no"),
+
+    (agent_get_team, ":team", ":agent_no"),#change division
+    (agent_get_division, reg34, ":agent_no"),
+    (store_add, ":slot", slot_team_d0_formation, reg34),
+
+    (agent_set_division, ":agent_no", grc_cavalry),
+    (agent_set_slot, ":agent_no", slot_agent_new_division, grc_cavalry),
+    (neg|team_slot_eq, ":team", ":slot", formation_none),
+    (agent_clear_scripted_mode, ":agent_no"),
+    (agent_set_slot, ":agent_no", slot_agent_formation_rank, 0),
+    (agent_set_slot, ":agent_no", slot_agent_inside_formation, 0),
+  ]),
+
+  #the main "workhorse" of the trigger, set to intervals of 5/10/30 or have a server setting
+  (10, 0, 0, [
+    (gt, "$g_horses_are_avaliable", 0),
+  ],[
+    (set_fixed_point_multiplier, 1000),
+    (try_for_agents, ":horse_no"),
+      (agent_is_alive, ":horse_no"),
+      (neg|agent_is_human, ":horse_no"),
+      (agent_get_rider, ":rider_no", ":horse_no"),
+      (lt, ":rider_no", 0),
+      (agent_get_slot, ":horse_timer", ":horse_no", slot_agent_bought_horse),
+      (try_begin),
+        (le, ":horse_timer", -90), #a minute and a half
+        (agent_get_position, pos1, ":horse_no"),
+        (get_player_agent_no, ":player_agent"),
+        (agent_get_position, pos2, ":player_agent"),
+        (get_distance_between_positions, ":dist", pos1, pos2),#in centimeters
+        (lt, ":dist", 600), #nobody (important) nearby
+        (agent_fade_out, ":horse_no"),
+      (else_try),
+        (val_sub, ":horse_timer", "$g_horses_are_avaliable"),
+        (agent_set_slot, ":horse_no", slot_agent_bought_horse, ":horse_timer"),
+        (try_begin), #force runaway half-way through
+          (le, ":horse_timer", -60),
+          (agent_start_running_away, ":horse_no"),
         (try_end),
-      ]),
-###horse scull END
+      (try_end),
+    (try_end),
+  ]),
+
   change_battle_speed_trigger,
   dedal_shield_bash_AI,
   dedal_shield_bash,
@@ -5968,8 +5960,7 @@ dplmc_battle_mode_triggers = [
   common_move_deathcam, common_rotate_deathcam,
   custom_commander_camera, deathcam_cycle_forwards, deathcam_cycle_backwards,
   dplmc_death_camera,
-
-  ]
+]
 ##diplomacy end
 
 common_battle_mission_start = (
@@ -13557,7 +13548,7 @@ mission_templates = [
       (try_end),
       (finish_mission),
     ]),
-]+ battle_panel_triggers+ dplmc_battle_mode_triggers
+] + battle_panel_triggers + dplmc_battle_mode_triggers
 ),
 
 ("alley_fight", mtf_battle_mode,charge,
@@ -19955,12 +19946,8 @@ mission_templates = [
           (eq, ":rand", 1),
           (agent_play_sound, ":inflicted_agent_id", "snd_panic_hit"),
       ]),
-
-
-###companion support in some events
-      (ti_after_mission_start, 0, ti_once, [],  #after player has spawned
-        [
-
+      ###companion support in some events
+      (ti_after_mission_start, 0, ti_once, [],[
           #player companions
           (assign, ":companions_count", 0),
           (party_get_num_companion_stacks, ":num_of_stacks", "p_main_party"),
@@ -19982,8 +19969,7 @@ mission_templates = [
           (mission_disable_talk),
       ]),
 
-      (ti_on_agent_spawn, 0, 0, [],
-        [
+      (ti_on_agent_spawn, 0, 0, [],[
         (store_trigger_param_1, ":agent"),
         (agent_get_troop_id, ":troop", ":agent"),
         (neq, ":troop", "trp_player"),
@@ -22105,16 +22091,15 @@ mission_templates = [
     (try_end),
     ]),
 
-    (ti_on_agent_dismount, 0, 0, [],
-   [
-	(store_trigger_param_2, ":horse"),
-	(neg|agent_is_alive, ":horse"),
-	(store_trigger_param_1, ":rider"),
-	(agent_is_alive, ":rider"),
-    (agent_deliver_damage_to_agent, ":rider", ":rider", 1000, "itm_club"),
-    (agent_get_troop_id, ":troop", ":rider"),
-    (str_store_troop_name, s35, ":troop"),
-    (display_message, "@{s35}'s horse stumbled and fall.", color_terrible_news),
+    (ti_on_agent_dismount, 0, 0, [],[
+      (store_trigger_param_2, ":horse"),
+      (neg|agent_is_alive, ":horse"),
+      (store_trigger_param_1, ":rider"),
+      (agent_is_alive, ":rider"),
+      (agent_deliver_damage_to_agent, ":rider", ":rider", 1000, "itm_club"),
+      (agent_get_troop_id, ":troop", ":rider"),
+      (str_store_troop_name, s35, ":troop"),
+      (display_message, "@{s35}'s horse stumbled and fall.", color_terrible_news),
     ]),
     (0.3, 0, 0,
     [

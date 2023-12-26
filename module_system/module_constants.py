@@ -96,8 +96,6 @@ slot_agent_rank_closeness		    = 14
 #tournament slots
 slot_agent_tournament_point       = 15
 
-slot_agent_is_cavalry = slot_agent_tournament_point
-
 slot_agent_arena_team_set         = 16
 slot_agent_cur_animation          = 17
 slot_agent_walker_occupation      = 18

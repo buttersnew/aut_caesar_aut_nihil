@@ -3463,8 +3463,8 @@ simple_triggers = [
             (try_end),
             (eq, ":c", 1),
 
-            (str_store_troop_name_link, s10, ":troop_no"),
-            (display_log_message, "@Check lord change {s10}"),
+            # (str_store_troop_name_link, s10, ":troop_no"),
+            # (display_log_message, "@Check lord change {s10}"),
 
             (troop_get_slot, reg0, ":troop_no", slot_troop_change_to_faction),
             (neg|is_between, reg0, kingdoms_begin, kingdoms_end),

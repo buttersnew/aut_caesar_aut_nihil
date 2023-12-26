@@ -3337,7 +3337,7 @@ str_17|agi_15|int_16|cha_17|level(24), wp(180), knows_veteran_npc|knows_trainer_
 ["npc37", "Josephus", "Josephus", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_dagger,itm_judean_tunic_1],
 str_10|agi_10|int_12|cha_16|level(8), wp(100), knows_merchant_npc|knows_surgery_2|knows_wound_treatment_2|knows_first_aid_2, 0x00000000ef05308446e277435d3749ad00000000001eb89e0000000000000000 ],
-["npc38", " Elazar Bar Yochai", " Elazar Bar Yochai", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
+["npc38", "Elazar Bar Yochai", "Elazar Bar Yochai", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_dagger,itm_judean_tunic_3],
 str_16|agi_14|int_10|cha_12|level(10), wp(125), knows_warrior_npc|knows_trade_4|knows_wound_treatment_2|knows_first_aid_2|knows_riding_5|knows_persuasion_4, 0x000000014310c00836dd6d48e497258100000000001dd7010000000000000000 ],
 

@@ -32357,29 +32357,19 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ("grave_anatolia",0,    #modified motomataru chief
   "Its said that the grave of the legendary Lycus of Athens is located somewhere in this mountains."
   +" He once was exiled from Athen and settled here. After him the land has the name Lycia.",
-  "none",
-    [
-        (set_background_mesh, "mesh_pic_deserters"),
-    ],
-    [
-
-    ("continue",[
-    ],
-        "Walk around.",
-    [
-        (set_jump_mission, "mt_explore_secret_place"),
-        (set_jump_entry, 0),
-        (jump_to_scene, "scn_grave_anatolia"),
-        (change_screen_mission),
-    ],"Leave."),
-
-    ("continue",[],
-    "Leave.",
-    [
-       (change_screen_map),
-    ]),
-   ]
-),
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+  ],[
+  ("continue",[],"Walk around.",[
+    (set_jump_mission, "mt_explore_secret_place"),
+    (set_jump_entry, 0),
+    (jump_to_scene, "scn_grave_anatolia"),
+    (change_screen_mission),
+  ],"Leave."),
+  ("continue",[],"Leave.",[
+    (change_screen_map),
+  ]),
+]),
 
 ("underworld",0,    #modified motomataru chief
   "{s40}",
@@ -51696,45 +51686,40 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   ),
 
 ("last_promotion",0,
-    "A soldier informs you that {s6} wants to speak you. You follow him to the commander tent, where {s6} awaits you.",
-    "none",
-    [
-        (try_begin),
-            (eq, "$g_rank", 0),
-            (set_background_mesh, "mesh_pic_camp"),
-            (party_stack_get_troop_id, ":lord", "$enlisted_party", 0),
-            (str_store_troop_name, s6, ":lord"),
-        (else_try),
-            (ge, "$g_rank", 1),
-            (change_screen_map),
-        (try_end),
-    ],
-    [
-      ("continue",[],
-       "Continue...",
-       [
-        (set_show_messages, 0),
-        (try_for_range, ":slot", 0, 10),##to avoid duplication of items
-            (troop_get_inventory_slot, ":item", "trp_player", ":slot"),
-            (ge, ":item", 1),
-            (troop_get_inventory_slot_modifier,":modifier", "trp_player", ":slot"),
-            (troop_remove_item, "trp_player", ":item"),
-            (troop_set_inventory_slot, "trp_player", ":slot", -1),
-            (troop_add_item, "trp_player", ":item", ":modifier"),
-        (try_end),
-        (add_xp_as_reward, 150),
-        (troop_set_inventory_slot, "trp_player", ek_head, "itm_roman_legatus_helm"),
-        (troop_set_inventory_slot, "trp_player", ek_body, "itm_musculata_legatus_6"),
-        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_graves_simple_2"),
-        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_horse_3"),
-        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_officer_shield"),
-        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_roman_spatha"),
-        (set_show_messages, 1),
-        (assign, "$talk_context", tc_last_promotion),
-		(call_script, "script_setup_party_meeting", "$g_encountered_party"),
-        ]),
-    ]
-),
+  "A soldier informs you that {s6} wants to speak you. You follow him to the commander tent, where {s6} awaits you.",
+  "none",[
+    (try_begin),
+        (eq, "$g_rank", 0),
+        (set_background_mesh, "mesh_pic_camp"),
+        (party_stack_get_troop_id, ":lord", "$enlisted_party", 0),
+        (str_store_troop_name, s6, ":lord"),
+    (else_try),
+        (ge, "$g_rank", 1),
+        (change_screen_map),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (set_show_messages, 0),
+      (try_for_range, ":slot", 0, 10),##to avoid duplication of items
+          (troop_get_inventory_slot, ":item", "trp_player", ":slot"),
+          (ge, ":item", 1),
+          (troop_get_inventory_slot_modifier,":modifier", "trp_player", ":slot"),
+          (troop_remove_item, "trp_player", ":item"),
+          (troop_set_inventory_slot, "trp_player", ":slot", -1),
+          (troop_add_item, "trp_player", ":item", ":modifier"),
+      (try_end),
+      (add_xp_as_reward, 1500),
+      (troop_set_inventory_slot, "trp_player", ek_head, "itm_roman_legatus_helm"),
+      (troop_set_inventory_slot, "trp_player", ek_body, "itm_musculata_legatus_6"),
+      (troop_set_inventory_slot, "trp_player", ek_foot, "itm_graves_simple_2"),
+      (troop_set_inventory_slot, "trp_player", ek_horse, "itm_horse_3"),
+      (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_officer_shield"),
+      (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_roman_spatha"),
+      (set_show_messages, 1),
+      (assign, "$talk_context", tc_last_promotion),
+		  (call_script, "script_setup_party_meeting", "$g_encountered_party"),
+    ]),
+]),
   (
     "deliver_bribe",0,
     "After a while of searching you find the villa on one of the seven hills of Rome.^^You are standing in front of the entrance. Shall you enter it or simply keep the money for yourself?",
@@ -54515,8 +54500,8 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (str_store_party_name, s10, "p_town_20"),
       (try_begin),
           (eq, "$temp", "trp_legatus_11"),
-          (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Increase your wealth and influence as preparation for the upcoming events. You will be informed when the time has come to strike. (Hint: Have 500,000 denars and 1,500 influence.)", 1),
-          (add_quest_note_from_sreg, "qst_blank_quest_19", 7, "@You allied with {s22}. Now you have to increase your wealth as preparation for the upcoming events. (Hint: An event will happen after 25 days have passed.)", 1),
+          (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Increase your wealth and influence as preparation for the upcoming events. You will be informed when the time has come to strike.^(Hint: 10 days must have past, you have 500,000 denars and 1,500 influence.)", 1),
+          (add_quest_note_from_sreg, "qst_blank_quest_19", 7, "@You allied with {s22}. Now you have to increase your wealth as preparation for the upcoming events.^(Hint: 10 days must have past, you have 500,000 denars and 1,500 influence.)", 1),
           (store_current_day, reg1),
           (quest_set_slot, "qst_four_emperors", slot_quest_timer, reg1),
       (else_try),
@@ -55013,8 +54998,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
 ("antonia_fate",0,
   "{s5}",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_palast"),
     (str_clear, s5),
     (try_begin),
@@ -55030,9 +55014,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
         (call_script, "script_kill_lord_lady", "trp_antonia", "trp_player", 0),
     (try_end),
   ],[
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
       (rest_for_hours, 72, 20, 0),
       (change_screen_map),
     ]),
@@ -55042,14 +55024,11 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   "You leave the circus with Antonia, celebrated by the people. Fragrant rose petals are scattered, incense is burned, and hymns of praise are sung in your name."
   +" People speak of the prophecy that a great ruler will appear in the East, which is fulfilled today. Especially among the poor, these rumors have gained significant popularity, as it is said that the great leader is a humanitarian who takes from the rich and gives to the poor."
   +"^^Your retinue reaches the Domus Augustus. You and Antonia enter. The Praefectus Urbi is awaiting you.",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_palast"),
     (call_script, "script_kill_lord_lady", "trp_senator_2", "trp_player", 0),
   ],[
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
       (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 6),
       (str_store_troop_name_link, s20, "trp_senator_2"),
       (str_store_troop_name_link, s21, "trp_antonia"),
@@ -55216,7 +55195,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   "Somewhere in this forest one can find the tombs of the Macedonian kings.",
   "none",
   [
-    (set_background_mesh, "mesh_pic_deserters"),
+    (set_background_mesh, "mesh_pic_cave"),
   ],[
     ("enter",[
         (eq, 0, 1),
@@ -59655,8 +59634,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (play_sound, "snd_message_negative_sound"),
   ],[
     ("option_1", [
-    ],"Continue.",
-    [
+    ],"Continue.",[
       (try_for_range, ":faction_1", kingdoms_begin, kingdoms_end),
           (faction_slot_eq, ":faction_1", slot_faction_state, sfs_active),
           (faction_slot_eq, ":faction_1", slot_faction_culture, "fac_culture_7"),
