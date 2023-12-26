@@ -2538,15 +2538,6 @@ presentations = [
                 (eq, "$players_kingdom", "fac_player_supporters_faction"),
                 (call_script, "script_change_faction_banner", ":cur_banner_mesh", "$players_kingdom"),
             (try_end),
-            (try_begin),
-                (gt, ":cur_banner_mesh", 0),
-                (faction_set_slot, "fac_player_faction", slot_faction_banner, ":selected_banner_spr"),
-                (faction_set_slot, "fac_player_supporters_faction", slot_faction_banner, ":selected_banner_spr"),
-            (else_try),#custom banner
-                (eq, ":cur_banner_mesh", -1),
-                (faction_set_slot, "fac_player_faction", slot_faction_banner, -1),
-                (faction_set_slot, "fac_player_supporters_faction", slot_faction_banner, -1),
-            (try_end),
         (try_end),
 
         (try_begin),

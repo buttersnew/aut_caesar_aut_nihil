@@ -38,7 +38,7 @@ triggers = [
     (troop_slot_eq, "trp_kingdom_7_lady_1", slot_troop_occupation, slto_kingdom_lady),
     (troop_slot_eq, "trp_antonia", slot_troop_occupation, slto_kingdom_lady),
     (quest_get_slot, ":day", "qst_blank_quest_19", slot_quest_main_poppaea_timer),
-    (neq, ":day", -1),
+    (gt, ":day", -1),
     (store_current_day, ":cur_day"),
     (val_sub, ":cur_day", ":day"),
     (ge, ":cUr_day", 14),

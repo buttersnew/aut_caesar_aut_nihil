@@ -9164,6 +9164,33 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("zarinaia_face_normal", "00000000000c731307d106390c6606ec00000000001c45330000000000000000"),
 ("zarinaia_face_surprized", "00000000000c7313001106390c6606ec00000000001c45030000000000000000"),
 
+("poppaea_assassination_1",
+  "News reach you that {s25} died yesterday, right after she ate her meal."
+  +" She feared being murdered by Antonia and lived with great caution, only eating food she cooked herself."
+  +" Rumors say she was posioned, while others say she suffocated while eating an apple."
+  +" Though, most people believe {s26} was involved into her dead."
+),
+("poppaea_assassination_2",
+  "{s25} died yesterday. She was found dead in her bedroom with her veins open."
+  +" They also found a pugio next to her dead body. The evidence points to suicide."
+  +" However, rumours say she was murdered. This is supported by the fact that traces of violence were found on her flawless body.."
+  +" Most people believe {s26} was involved into her dead."
+),
+("poppaea_assassination_3",
+  "{s25} died yesterday. She stumbled on wet ground and fell down the stairs."
+  +" Wet marble is very slippery, however people wonder why the stairs were wet at all."
+  +" Rumours say a murderer polished the marble to make it as slippery as possible others say it was just an accident."
+  +" However, most people believe {s26} was involved into her dead."
+),
+("poppaea_assassination_4",
+  "{s25} died yesterday while visiting the local governor. She leaned against a window, it broke and she fell out of the window."
+  +" Later it was discovered that the window was made out of rotten wood."
+  +" People who claim to have witnessed the accident say that she was pushed from behind by the governor and therefore fell through the window."
+  +" Most people believe {s26} was involved into her dead."
+),
+
+("poppaea_assassination_end", "poppaea_assassination_end"),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

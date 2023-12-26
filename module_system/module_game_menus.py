@@ -45251,6 +45251,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (change_screen_map),
     ]),
 ]),
+
 ("funny_nights",0,
   "Time passes, and you forget the rigors and fatigue from the journey that had lingered upon your body and soul."
   +" For a few hours, your armor and sword, the fear of dying in any skirmish, the punishment of the rain and wind, and the dust of the roads are all shoved under a small patch of happiness."
@@ -45270,6 +45271,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
         (change_screen_map),
     ]),
 ]),
+
 ("groupy",0,
   "Someone is knocking at the door of your room. As you open a woman stands before you, dressed in a coat. "
   +"For a moment you aren't sure who she is, but then she opens her coat under which she is completely naked. "
@@ -54788,14 +54790,11 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
 # Coordinates: x=-106916 y=37857 z=1771.
 ("the_fleet_travels",0,
-  "And the journey continues....",
-  "none",
-  [
+  "And the journey continues...",
+  "none",[
     (set_background_mesh, "mesh_pic_seabattle"),
   ],[
-    ("Continue",[],
-      "Continue....",
-    [
+    ("Continue",[],"Continue...",[
       # detache player party
       (try_begin),
           (party_get_attached_to, ":cur_town", "p_main_party"),
@@ -54835,24 +54834,19 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ("the_fleet_embarks",0,
   "Antonia takes on a red cloak and walks on the platform towards the bow. She raises her arms towards the skies, invoking their help and gaining the attention of the legionaries. She waits for the right moment."
   +" Suddenly, a thunder roams in the distance.",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_seabattle"),
     # declare war
     (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_7", "fac_player_supporters_faction", logent_faction_declares_war_to_end_civil_war),
   ],[
     ("Continue",[
       (ge, "$cheat_mode", 1)
-    ],
-      "Test scene.",
-    [
+    ],"Test scene.",[
       (jump_to_scene, "scn_cutscene_fleet"),
       (change_screen_mission),
     ]),
 
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
       (play_track, "track_cutscene_fleet", 2),
 
       (add_xp_as_reward, 1500),
@@ -54890,14 +54884,11 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ("the_fleet_message",0,
   "A messenger approaches brings a letter from Antonia, it states:"
   +"^^'Time has come, {playername}. Travel to Alexandria as fast as possible and bring as many soldiers as possible. {s12} has assembled a fleet and many troops. We will embark as soon as you arrive.'",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_messenger"),
     (str_store_troop_name_plural, s12, "trp_legatus_11"),
   ],[
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
       (str_store_party_name, s10, "p_town_20"),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@Travel to {s10} as fast as possible.", 1),
       (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Travel to {s10} as fast as possible.", 1),
@@ -54909,19 +54900,15 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ]),
 
 ("assassination_of_antonia",0,
-  "News reach you that {s25} died yesterday, right after she ate her meal."
-  +" She feared being murdered by Antonia and lived with great caution, only eating food she cooked herself."
-  +" Rumors say she was posioned, while others say she suffocated while eating an apple."
-  +" Though, most people belive {s26} was involved into her dead.",
-  "none",
-  [
+  "{s24}",
+  "none",[
+    (store_random_in_range, ":string", "str_poppaea_assassination_1", "str_poppaea_assassination_end"),
+    (str_store_string, s24, ":string"),
     (str_store_troop_name, s25, "trp_kingdom_7_lady_1"),
     (str_store_troop_name, s26, "trp_antonia"),
     (set_background_mesh, "mesh_pic_woman"),
   ],[
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
       (call_script, "script_kill_lord_lady", "trp_kingdom_7_lady_1", "trp_antonia", 0),
       (str_store_troop_name_link, s25, "trp_kingdom_7_lady_1"),
       (str_store_troop_name_link, s26, "trp_antonia"),
@@ -54954,7 +54941,10 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
         (else_try),
             (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On your orders, {s20} was banished from Rome.", 1),
         (try_end),
-        (troop_clear_inventory, "trp_kingdom_7_lady_1"),
+        (troop_remove_item, "trp_kingdom_7_lady_1", "itm_female_caligea_gold"),
+        (troop_remove_item, "trp_kingdom_7_lady_1", "itm_female_crown"),
+        (troop_remove_item, "trp_kingdom_7_lady_1", "itm_roman_female_augusta"),
+
         (troop_add_item, "trp_kingdom_7_lady_1", "itm_caligea"),
         (troop_add_item, "trp_kingdom_7_lady_1", "itm_roman_noble_dress_2"),
         (troop_equip_items, "trp_kingdom_7_lady_1"),
