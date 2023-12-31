@@ -54902,10 +54902,10 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ("assassination_of_antonia",0,
   "{s24}",
   "none",[
-    (store_random_in_range, ":string", "str_poppaea_assassination_1", "str_poppaea_assassination_end"),
-    (str_store_string, s24, ":string"),
     (str_store_troop_name, s25, "trp_kingdom_7_lady_1"),
     (str_store_troop_name, s26, "trp_antonia"),
+    (store_random_in_range, ":string", "str_poppaea_assassination_1", "str_poppaea_assassination_end"),
+    (str_store_string, s24, ":string"),
     (set_background_mesh, "mesh_pic_woman"),
   ],[
     ("Continue",[],"Continue.",[
