@@ -303,7 +303,7 @@ party_templates = [
 
 ("steppe_bandit_lair" ,"Alan Camp",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_alans,bandit_personality,[(trp_steppe_bandit,15,30)]),
 ("taiga_bandit_lair","Illyrian Lair",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_taiga_bandits,bandit_personality,[(trp_taiga_bandit,15,30)]),
-("desert_bandit_lair" ,"Arabic Camp",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_arabian_bandits,bandit_personality,[(trp_desert_bandit,15,30)]),
+("desert_bandit_lair" ,"Arabian Camp",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_arabian_bandits,bandit_personality,[(trp_desert_bandit,15,30)]),
 ("egyptian_bandit_lair" ,"Old Egyptian Fortress",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_egypt,bandit_personality,[(trp_egyptian_infantry_light,5,10),(trp_egyptian_archers,5,10),(trp_egyptian_infantry_heavy,5,10)]),
 ("nabatean_lair" ,"Nabataean Camp",icon_gaetulian_town|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_nabataea,bandit_personality,[(trp_desert_bandit,15,30)]),
 ("nubian_lair" ,"Nubian Village",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_kush,bandit_personality,[(trp_meroe_archers,5,10),(trp_meroe_infantry,10,20)]),
