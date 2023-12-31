@@ -499,8 +499,8 @@ parties = [
 ("saka_spawn", "Chorasmia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0,  (255, 81), []), #[swycartographr] prev. coords: (-7, -100)
 ("spawn_points_end", "{!}last spawn point", pf_disabled|pf_is_static, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (0, 0), []),
 ##whatever native shit this is
-("reserved_1", "Vesuvius", pf_no_label|pf_hide_defenders|pf_is_static|pf_always_visible, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (-100.53, 10.9), []), #[swycartographr] prev. coords: (-105, 11.72)
-("reserved_2", "Aetna",    pf_no_label|pf_hide_defenders|pf_is_static|pf_always_visible, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (-99.72, -20.86), []), #[swycartographr] prev. coords: (-105, 11.72)
+("reserved_1", "Vesuvius", icon_landing_point|pf_no_label|pf_hide_defenders|pf_is_static|pf_always_visible, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (-100.53, 10.9), []), #[swycartographr] prev. coords: (-105, 11.72)
+("reserved_2", "Aetna", icon_landing_point|pf_no_label|pf_hide_defenders|pf_is_static|pf_always_visible, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (-99.72, -20.86), []), #[swycartographr] prev. coords: (-105, 11.72)
 ("reserved_3", "{!}last spawn point", pf_disabled|pf_is_static, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (0, 0), []),
 ("reserved_4", "{!}last spawn point", pf_disabled|pf_is_static, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (0, 0), []),
 ("reserved_5", "{!}last spawn point", pf_disabled|pf_is_static, no_menu, pt_none, fac_commoners, 0, ai_bhvr_hold, 0, (0, 0), []),
