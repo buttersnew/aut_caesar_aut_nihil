@@ -31528,13 +31528,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 #     ]
 # ),
 
-  (
-    "senatus",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "{s60}",
-    "none",
-    [
-
-
+("senatus",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "{s60}",
+  "none",[
     (troop_get_slot, reg38, "trp_senator_dummy", slot_senate_support),
     (troop_get_slot, reg39, "trp_senator_dummy", slot_senate_next_meeting),
 
@@ -31561,33 +31557,34 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (str_store_string, s43,"@The senate is empty, as there is currently no meeting taking place. It is unknown when the next meeting will be hold."),
     (try_end),
 
-	(str_clear, s35),
-	(try_begin),
-        (check_quest_active, "qst_blank_quest_4"),
-        (call_script, "script_get_max_skill_of_player_party", "skl_trade"),
-        (assign, ":max_skill", reg0),
-        (assign, reg2, reg0),
-        (assign, ":max_skill_owner", reg1),
-        (try_begin),
-            (eq, ":max_skill_owner", "trp_player"),
-            (assign, reg3, 1),
-        (else_try),
-            (assign, reg3, 0),
-            (str_store_troop_name, s1, ":max_skill_owner"),
-        (try_end),
-        (val_mul, ":max_skill", 2),
-        (store_sub, ":hours", 96, ":max_skill"),
-        (assign, reg40, ":hours"),
-        (str_store_string, s35, "@As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to answere all the petitions."),
-	(try_end),
-	(set_background_mesh, "mesh_pic_senatus"),
+    (str_clear, s35),
+    (try_begin),
+          (check_quest_active, "qst_blank_quest_4"),
+          (call_script, "script_get_max_skill_of_player_party", "skl_trade"),
+          (assign, ":max_skill", reg0),
+          (assign, reg2, reg0),
+          (assign, ":max_skill_owner", reg1),
+          (try_begin),
+              (eq, ":max_skill_owner", "trp_player"),
+              (assign, reg3, 1),
+          (else_try),
+              (assign, reg3, 0),
+              (str_store_troop_name, s1, ":max_skill_owner"),
+          (try_end),
+          (val_mul, ":max_skill", 2),
+          (store_sub, ":hours", 96, ":max_skill"),
+          (assign, reg40, ":hours"),
+          (str_store_string, s35, "@As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to answere all the petitions."),
+    (try_end),
+    (set_background_mesh, "mesh_pic_senatus"),
 
-    (str_store_string, s60, "@You enter the Curia Julia at the Forum Romanum. It is the Senate house. {s43}^\
-	From the senators, {reg38}% support you.^{s51}\
-  ^During a senate meeting, you have various opportunities to improve your standing in the Empire:^^\
-	You can give a speech (lower controversy, improve renown and honor, depends on charisma and oratory skill)^\
-	You can bribe senators (lower controversy, loss of honor)^^\
-	{s35}"),
+    (str_store_string, s60,
+      "@You enter the Curia Julia at the Forum Romanum. It is the Senate house. {s43}^"
+      +" From the senators, {reg38}% support you.^{s51}"
+      +" ^During a senate meeting, you have various opportunities to improve your standing in the Empire:^^"
+      +" You can give a speech (lower controversy, improve renown and honor, depends on charisma and oratory skill)^"
+      +" You can bribe senators (lower controversy, loss of honor)^^{s35}"
+    ),
 
     (try_begin),
         (eq, reg39, 0),
@@ -31638,18 +31635,15 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (jump_to_scene, "scn_senate"),
         (change_screen_mission),
     (try_end),
-    ],
-    [
-     ("leg",[
-    (check_quest_active, "qst_water_dispute"),
-    (neg|check_quest_failed, "qst_water_dispute"),
-    (neg|check_quest_succeeded, "qst_water_dispute"),
-    (quest_slot_eq, "qst_water_dispute", slot_quest_current_state, 0),
-     ],"Lobby for water rights",
-        [
-        (jump_to_menu, "mnu_looby_for_water_rights"),
-        ]
-      ),
+  ],[
+    ("leg",[
+      (check_quest_active, "qst_water_dispute"),
+      (neg|check_quest_failed, "qst_water_dispute"),
+      (neg|check_quest_succeeded, "qst_water_dispute"),
+      (quest_slot_eq, "qst_water_dispute", slot_quest_current_state, 0),
+    ],"Lobby for water rights",[
+      (jump_to_menu, "mnu_looby_for_water_rights"),
+    ]),
    ("leg",[
     (troop_slot_eq, "trp_player", slot_troop_honorary_title, ht_censor),
      ],"Inspect the imperial treasury.",
@@ -31684,21 +31678,20 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ]
       ),
 
-      ("leg",[
+    ("leg",[
       (eq, "$g_is_emperor", 1),
-      (eq, "$g_civil_war", -1),
+      (le, "$g_civil_war", 0),
       (eq, reg39, 0),
       (eq, "$edict10", 0),
-     ],"Propose to rename a month after you.",
-        [
+    ],"Propose to rename a month after you.",[
       (try_begin),
         (troop_slot_ge, "trp_player", slot_troop_renown, 900),
         (jump_to_menu, "mnu_rename_month"),
       (else_try),
         (display_message, "@You need more renown! (at least 900 renown)"),
       (try_end),
-        ]
-      ),
+    ]),
+
     ("leg",[
     (check_quest_active, "qst_usurp_province"),
     (quest_slot_eq, "qst_usurp_province", slot_quest_target_dna, -1),	##means senate
@@ -31737,53 +31730,50 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (jump_to_menu, "mnu_senate_discussion"),
         ]
       ),
-      ("leg",[
-    (neq, "$g_player_is_captive", 1),#not captive
-    (neq, "$g_civil_war", 1),
-    (neq, "$g_civil_war", -1),
-    (assign, ":c", 0),
-    (try_begin),
-      (troop_get_slot, ":party", "$g_civil_war", slot_troop_prisoner_of_party),
-      (eq, ":party", "p_main_party"),
-      (assign, ":c", 1),
-    (else_try),
-      (faction_slot_eq, "fac_kingdom_7", slot_faction_state, sfs_defeated),
-      (assign, ":c", 1),
-    (else_try),
-      (party_count_prisoners_of_type, ":number", "p_main_party", "$g_civil_war"),
-      (ge, ":number", 1),
-      (assign, ":c", 1),
-    (try_end),
-    (eq, ":c", 1),
-     ],"End the civil war and declare yourself victor!",
-        [
+    ("leg",[
+      (neq, "$g_player_is_captive", 1),#not captive
+      (neq, "$g_civil_war", 1),
+      (neq, "$g_civil_war", -1),
+      (assign, ":c", 0),
+      (try_begin),
+        (troop_get_slot, ":party", "$g_civil_war", slot_troop_prisoner_of_party),
+        (eq, ":party", "p_main_party"),
+        (assign, ":c", 1),
+      (else_try),
+        (faction_slot_eq, "fac_kingdom_7", slot_faction_state, sfs_defeated),
+        (assign, ":c", 1),
+      (else_try),
+        (party_count_prisoners_of_type, ":number", "p_main_party", "$g_civil_war"),
+        (ge, ":number", 1),
+        (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
+    ],"End the civil war and declare yourself victor!",[
+      (try_begin),
+        (neg|faction_slot_eq, "fac_kingdom_7", slot_faction_state, sfs_defeated),
+        (store_add, ":slot_war_damage_inflicted", "fac_kingdom_7", slot_faction_war_damage_inflicted_on_factions_begin),
+        (val_sub, ":slot_war_damage_inflicted", kingdoms_begin),
+        (faction_get_slot, ":war_damage_inflicted", "$players_kingdom", ":slot_war_damage_inflicted"),
+
+        (store_add, ":slot_war_damage_suffered", "$players_kingdom", slot_faction_war_damage_inflicted_on_factions_begin),
+        (val_sub, ":slot_war_damage_suffered", kingdoms_begin),
+        (faction_get_slot, ":war_damage_suffered", "fac_kingdom_7", ":slot_war_damage_suffered"),
+
+        (assign, reg45, ":war_damage_suffered"),
+        (assign, reg44, ":war_damage_inflicted"),
         (try_begin),
-          (neg|faction_slot_eq, "fac_kingdom_7", slot_faction_state, sfs_defeated),
-          (store_add, ":slot_war_damage_inflicted", "fac_kingdom_7", slot_faction_war_damage_inflicted_on_factions_begin),
-          (val_sub, ":slot_war_damage_inflicted", kingdoms_begin),
-          (faction_get_slot, ":war_damage_inflicted", "$players_kingdom", ":slot_war_damage_inflicted"),
-
-          (store_add, ":slot_war_damage_suffered", "$players_kingdom", slot_faction_war_damage_inflicted_on_factions_begin),
-          (val_sub, ":slot_war_damage_suffered", kingdoms_begin),
-          (faction_get_slot, ":war_damage_suffered", "fac_kingdom_7", ":slot_war_damage_suffered"),
-
-          (assign, reg45, ":war_damage_suffered"),
-          (assign, reg44, ":war_damage_inflicted"),
-          (try_begin),
-            (val_add, ":war_damage_suffered", 30),
-            (gt, ":war_damage_inflicted", ":war_damage_suffered"),
-            (jump_to_menu, "mnu_end_civil_war"),
-          (else_try),
-            (display_message, "@You must be winning the war to end it! Conquere more enemy twons, raid more villages and defeat more enemies!"),
-            (display_message, "@War damage inflicted: {reg44}, war damage suffered: {reg45}."),
-            (display_message, "@The war damage inflicted must be 30 points greater than the war damage suffered!"),
-          (try_end),
-        (else_try),
+          (val_add, ":war_damage_suffered", 30),
+          (gt, ":war_damage_inflicted", ":war_damage_suffered"),
           (jump_to_menu, "mnu_end_civil_war"),
+        (else_try),
+          (display_message, "@You must be winning the war to end it! Conquere more enemy twons, raid more villages and defeat more enemies!"),
+          (display_message, "@War damage inflicted: {reg44}, war damage suffered: {reg45}."),
+          (display_message, "@The war damage inflicted must be 30 points greater than the war damage suffered!"),
         (try_end),
-
-        ]
-      ),
+      (else_try),
+        (jump_to_menu, "mnu_end_civil_war"),
+      (try_end),
+    ]),
      ("leg",[(neq, reg39, 0),
      (this_or_next|eq, "$g_is_emperor", 1),
      (this_or_next|troop_slot_ge, "trp_player", slot_troop_honorary_title, 1),
@@ -31946,62 +31936,50 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	  ("leave",[],"Go back.",[
     (jump_to_menu,"mnu_town"),
     ]),
-    ]
-  ),
+]),
 
-  (
-    "legitim_rule",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "To Legitimize your rule you need a two thirds majority in the senate.\
- Currently, you have {reg50}% of the senators supporting you.",
-    "none",
-    [
+("legitim_rule",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+    "To Legitimize your rule you need a two thirds majority in the senate.^^ Currently, you have {reg50}% of the senators supporting you.",
+    "none",[
     (troop_get_slot, reg50, "trp_senator_dummy", slot_senate_support),
     (set_background_mesh, "mesh_pic_senatus"),
-
-    ],
-    [
-      ("leg_rule",[(eq, "$g_has_senat_sup", 0),
-	  (troop_slot_ge, "trp_senator_dummy", slot_senate_support, 66),
-	  ],"Legitimize your rule.",
-        [
-    (assign, "$g_has_senat_sup", 1),
-    (try_for_range,":npc","trp_legatus_1","trp_knight_1_1_wife"),
-        (store_random_in_range,":new_relation",5,10),
-        (call_script, "script_troop_change_relation_with_troop", "trp_player", ":npc", ":new_relation"),
-    (try_end),
-    (call_script, "script_change_player_right_to_rule", 70),
-    (call_script, "script_change_troop_controversy", "trp_player", -100),
-    (assign,"$temp",0),
-    (assign,"$temp2",0),
-    (assign, "$temp3", 0),
-    (set_jump_mission,"mt_senate_cuttscene"),
-    (modify_visitors_at_site, "scn_senate"),
-    (reset_visitors),
-    (set_visitor,1, "trp_praetoriani_milites"),
-    (set_visitor,2, "trp_praetoriani_milites"),
-    (set_visitor,3, "trp_praetoriani_milites"),
-    (set_visitor,4, "trp_praetoriani_milites"),
-    (try_for_range, ":entry", 5, 45),
-    (set_visitor,":entry", "trp_senator"),
-    (try_end),
-    (set_visitor,50, "trp_senator_dummy"),
-    (set_visitor, 49, "trp_player"),
-    (call_script, "script_copy_player_troop"),
-    (set_visitor, 0, "trp_pseudo_troop_end"),
-    (assign, "$tutorial_state", 0),
-    (jump_to_scene, "scn_senate"),
-    (change_screen_mission),
-
-	#	(jump_to_menu,"mnu_senatus"),
-        ]
-      ),
-      ("leave",[],"Go back.",
-        [
-          (jump_to_menu,"mnu_senatus"),
-        ]
-      ),
-    ]
-  ),
+  ],[
+    ("leg_rule",[
+      (eq, "$g_has_senat_sup", 0),
+	    (troop_slot_ge, "trp_senator_dummy", slot_senate_support, 66),
+	  ],"Legitimize your rule.",[
+      (assign, "$g_has_senat_sup", 1),
+      (try_for_range,":npc","trp_legatus_1","trp_knight_1_1_wife"),
+          (store_random_in_range,":new_relation",5,10),
+          (call_script, "script_troop_change_relation_with_troop", "trp_player", ":npc", ":new_relation"),
+      (try_end),
+      (call_script, "script_change_player_right_to_rule", 70),
+      (call_script, "script_change_troop_controversy", "trp_player", -100),
+      (assign,"$temp",0),
+      (assign,"$temp2",0),
+      (assign, "$temp3", 0),
+      (set_jump_mission,"mt_senate_cuttscene"),
+      (modify_visitors_at_site, "scn_senate"),
+      (reset_visitors),
+      (set_visitor,1, "trp_praetoriani_milites"),
+      (set_visitor,2, "trp_praetoriani_milites"),
+      (set_visitor,3, "trp_praetoriani_milites"),
+      (set_visitor,4, "trp_praetoriani_milites"),
+      (try_for_range, ":entry", 5, 45),
+      (set_visitor,":entry", "trp_senator"),
+      (try_end),
+      (set_visitor,50, "trp_senator_dummy"),
+      (set_visitor, 49, "trp_player"),
+      (call_script, "script_copy_player_troop"),
+      (set_visitor, 0, "trp_pseudo_troop_end"),
+      (assign, "$tutorial_state", 0),
+      (jump_to_scene, "scn_senate"),
+      (change_screen_mission),
+    ]),
+    ("leave",[],"Go back.",[
+      (jump_to_menu,"mnu_senatus"),
+    ]),
+]),
 
 ("barracks",menu_text_color(0xFF000000)|mnf_enable_hot_keys,
   "{reg22?You enter the {s0}. This is the place where troops are recruited and trained. You can recruit cohorts and other military units or individual soldiers.^^{s1}:{s5} However, you may hire mercenary companies or you can refill your cohorts.}",
@@ -53806,7 +53784,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ("answere_1",[],"Protect the {s24} subjects.",[
       (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -50),
       (call_script, "script_change_troop_renown", "trp_player", 25),
-      (call_script, "script_change_player_relation_with_center", "$players_court", 2),
+      (call_script, "script_change_player_relation_with_center", "$g_player_court", 2),
       (str_store_string, s1, "@You refuse the outrageous demands and explain that the full might of your forces will come crashing down on the {s11} camps if they choose to attack your subjects."
       +" The leader leaves solemn, forced to choose between two very bad outcomes."),
       (assign, "$temp", "mesh_pic_desert"),
@@ -53816,7 +53794,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", 60),
       (call_script, "script_change_troop_renown", "trp_player", -50),
       (call_script, "script_change_player_honor", -25),
-      (call_script, "script_change_player_relation_with_center", "$players_court", -15),
+      (call_script, "script_change_player_relation_with_center", "$g_player_court", -15),
       (str_store_string, s1, "@Your decision is met with disbelief all over {s25}. The choice to surrender {s24} villagers to a minor tribe is seen as a great humiliation and a sign of your weakness. The nomad leader appreciates your understanding, however."),
       (assign, "$temp", "mesh_pic_desert"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
@@ -53824,7 +53802,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ("answere_3",[],"Execute the {s11}'s leaders.",[
       (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -200),
       (call_script, "script_change_troop_renown", "trp_player", 75),
-      (call_script, "script_change_player_relation_with_center", "$players_court", 4),
+      (call_script, "script_change_player_relation_with_center", "$g_player_court", 4),
       (str_store_string, s1, "@No minor tribe gets to dictate such outrageous demands to a {s26}! The leader and his party are rounded up and killed on your command in front of the cheering crowd in {s25}. This means war."),
       (assign, "$temp", "mesh_pic_desert"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
@@ -53960,7 +53938,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ("answere_3",[],"Accept and send your own gifts.",[
       (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", 30),
       (call_script, "script_change_troop_renown", "trp_player", 10),
-      (call_script, "script_change_player_relation_with_center", "$players_court", -5),
+      (call_script, "script_change_player_relation_with_center", "$g_player_court", -5),
       (str_store_string, s1, "@The {s11} ambassador is delighted at your friendly gesture. Relations with these nomads are sure to improve, but some in {s25} question the appearance of putting yourself on the same level as their tribal leaders."),
       (assign, "$temp", "mesh_pic_desert"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
@@ -53985,7 +53963,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   ],[
     ("answere_1",[],"Divert the grain to save {s11}",[
       (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", 100),
-      (call_script, "script_change_player_relation_with_center", "$players_court", -15),
+      (call_script, "script_change_player_relation_with_center", "$g_player_court", -15),
       (call_script, "script_change_senate_support", -5, 0),
 
       (str_store_string, s1, "str_nomad_event_outcome_10"),
@@ -54018,14 +53996,14 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   ],[
     ("answere_1",[],"Kill the ambassador of {s11}",[
       (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -50),
-      (call_script, "script_change_player_relation_with_center", "$players_court", 5),
+      (call_script, "script_change_player_relation_with_center", "$g_player_court", 5),
       (str_store_string, s1, "str_nomad_event_outcome_12"),
       (assign, "$temp", "mesh_pic_desert"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
     ("answere_2",[],"Expel the ambassador.",[
       (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", 5),
-      (call_script, "script_change_player_relation_with_center", "$players_court", -10),
+      (call_script, "script_change_player_relation_with_center", "$g_player_court", -10),
       (str_store_string, s1, "str_nomad_event_outcome_13"),
       (assign, "$temp", "mesh_pic_desert"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
@@ -54576,8 +54554,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 ("second_battle_of_bedriacum",0,
   "Your forces reach Bedriacum. Vitellius has noticed your advances. Being attack from two directions he performs a tactical retreat."
   +" Your forces join the Danubian legions. One the next day, Vitellius dispatches Aulus Caecina together with the legions {s14}, to meet your forces. Your side has the legions {s15}.",
-  "none",
-  [
+  "none",[
     # switch side of danube legions 1 and 3:
     (call_script, "script_switch_legion_to_faction", 1, "$players_kingdom"),
     (call_script, "script_switch_legion_to_faction", 3, "$players_kingdom"),

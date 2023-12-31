@@ -3722,7 +3722,7 @@ knight_attrib_3,wp(190),knight_skills_3|knows_power_draw_4, 0x000000001c0c501062
 [itm_cav_decurio_helm_3,itm_roman_spatha,itm_horse_1,itm_musculata_legatus_5,itm_legio_armored_caligea,itm_officer_shield_3,itm_calceus_3,itm_roman_toga],  knight_attrib_5,wp(300),knight_skills_5, 0x000000000a0193cd329571b71b6da72a00000000001e33630000000000000000, ],
 
 ###legatus legionis
-["legatus_1", "Legatus Lucius Calpurnius Licinianus", "	Lucius Calpurnius Licinianus", tf_hero, no_scene, reserved, fac_kingdom_7,
+["legatus_1", "Legatus Lucius Calpurnius Licinianus", "Lucius Calpurnius Licinianus", tf_hero, no_scene, reserved, fac_kingdom_7,
 [itm_legatus_legionis_helm_2,itm_roman_spatha_rich,itm_horse_1,itm_musculata_legatus_1,itm_centurio_west_graves,itm_officer_shield,itm_calceus_3,itm_roman_rich1], knight_attrib_5, wp(240), knight_skills_5, 0x000000003301300862127002a231b8db00000000001cd2810000000000000000,  ],
 ["legatus_2", "Legatus Q. Sulpicius Camerinus", "Q. Sulpicius Camerinus", tf_hero, 0, reserved,  fac_kingdom_7,
 [itm_legatus_legionis_helm_3,itm_roman_spatha_rich_2,itm_horse_2,itm_musculata_legatus_2,itm_legio_armored_caligea_2,itm_officer_shield_2,itm_calceus_2,itm_roman_rich2],  knight_attrib_4,wp(220),knight_skills_4, 0x000000002801200c629197eae94db36100000000001ed4150000000000000000, ],

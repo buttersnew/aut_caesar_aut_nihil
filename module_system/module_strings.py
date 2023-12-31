@@ -8843,6 +8843,10 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
   +"(related to the Lezgian word 'zunṭu', meaning 'mountain'), inhabit the mountain canton of Didoëthi, which contains the headwaters of the Andean Qoi-su or Sulaq rivers. The word Didi means 'large' "
   +"in Georgian, with the adjective suffix '-uri' similar to Chewsuri, which means 'valley dweller'. "
 ),
+("minor_faction_description_saka",
+  "The Dahae were a tribal confederation who lived in the steppes of Central Asia. The name 'Dahae' is derived from Saka language name meaning 'man'."
+ +" Dahae warriors participated in the battle of Gaugamela on side of Persia. "
+),
 
 
 ("faction_taxes_govern", "Land taxes"),
@@ -9190,6 +9194,13 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ),
 
 ("poppaea_assassination_end", "poppaea_assassination_end"),
+
+("roman_advisor_hints_1", "A century ago the Senate and the people of Rome ruled offer the world. But after Gaius Julius Caesar now you, the divine Caesar rules the world with absolute power. But do not forget that the old families still excists."),
+("roman_advisor_hints_2", "We are all waiting for our death. I mean, sooner or later we will all die. So do not grieve over deads. It is useless, soon you will be also one. Death is the only constant in our life. Even you divine {playername} will die sometime, when the gods want it."),
+("roman_advisor_hints_3", "Mens sana in corpore sano. A healthy mind in a healthy body. It is important to life healthy and strengthen as well you body as your mind. A Caesar with a weak body is as useless as a Caesar with a weak mind. You must have both to guard Rome."),
+("roman_advisor_hints_4", "Quod licet iovi, non licet bovi. Not all have the same rights. Some are born to rule, other to beg. Only the gods can change this! Remeber it when you see beggars or poor people. They have no other choice. Only if a god orders to give them wealth they can get out of their dirt."),
+("roman_advisor_hints_5", "Always watch carefully the Christian religion. This christians are like a plague. Christendom spreads through the Empire faster then the death! And people like what christ preacher talk. They hang on their lips. Nobody has seen something like this before. You should do something to stop it."),
+("roman_advisor_hints_end", "roman_advisor_hints_end"),
 
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
