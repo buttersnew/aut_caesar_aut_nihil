@@ -256,44 +256,36 @@ triggers = [
 ]),
 
 # Refresh Merchants
-(0.0, 0, 168.0, [],
-[
+(0.0, 0, 168.0, [],[
   (call_script, "script_refresh_center_inventories"),
-                    ]),
+]),
 
 # Refresh Armor sellers
-  (0.0, 0, 168.0, [],
-  [
-    (call_script, "script_refresh_center_armories"),
-                     ]),
+(0.0, 0, 168.0, [],[
+  (call_script, "script_refresh_center_armories"),
+]),
 
 # Refresh Weapon sellers
-  (0.0, 0, 168.0, [],
-  [
-    (call_script, "script_refresh_center_weaponsmiths"),
-                     ]),
+(0.0, 0, 168.0, [],[
+  (call_script, "script_refresh_center_weaponsmiths"),
+]),
 
 # Refresh Horse sellers
-  (0.0, 0, 168.0, [],
-  [
-    (call_script, "script_refresh_center_stables"),
-                     ]),
+(0.0, 0, 168.0, [],[
+  (call_script, "script_refresh_center_stables"),
+]),
 
 # Refresh special merchants
-  (0.0, 0, 168.0, [],
-  [
-    (call_script, "script_refresh_special_merchants"),
-                     ]),
+(0.0, 0, 168.0, [],[
+  (call_script, "script_refresh_special_merchants"),
+]),
 
-
-  (1.0, 0.0, 0.0, [
+(1.0, 0.0, 0.0, [
   (check_quest_active, "qst_track_down_bandits"),
   (neg|check_quest_failed, "qst_track_down_bandits"),
   (neg|check_quest_succeeded, "qst_track_down_bandits"),
-
-  ],
-   [
-    (quest_get_slot, ":bandit_party", "qst_track_down_bandits", slot_quest_target_party),
+],[
+  (quest_get_slot, ":bandit_party", "qst_track_down_bandits", slot_quest_target_party),
 	(try_begin),
 		(party_is_active, ":bandit_party"),
 		(store_faction_of_party, ":bandit_party_faction", ":bandit_party"),
@@ -328,67 +320,61 @@ triggers = [
 		(try_end),
 	(else_try), #Party not found
 		(display_message, "str_bandits_eliminated_by_another"),
-        (call_script, "script_abort_quest", "qst_track_down_bandits", 0),
+    (call_script, "script_abort_quest", "qst_track_down_bandits", 0),
 	(try_end),
-   ]),
-##freelancer
+]),
 
+#freelancer menu
+(0.0, 0, 0, [
+  (ge, "$enlisted_party", 1),
+],[
+  (try_begin),# IF LEFT MOUSE CLICK GO TO SOLDIER'S MENU
+    (party_is_active, "$enlisted_party"),
+    (key_clicked, key_left_mouse_button),
+    (set_fixed_point_multiplier, 1000),
+    (mouse_get_position, pos0),
+    (position_get_y, ":y", pos0),
+    (gt, ":y", 50), #allows the camp, reports, quests, etc. buttons to be clicked
+    (jump_to_menu, "mnu_world_map_soldier"),
+    (rest_for_hours_interactive, 9999, 4, 0),
+  (else_try),#commander defeated
+    (neg|party_is_active, "$enlisted_party"),
+    (jump_to_menu, "mnu_freelancer_defeated"),
+  (try_end),
+]),
 
-    (0.0, 0, 0, [#freelancer menu
-      (ge, "$enlisted_party", 1),
-    ],
-    [
-      (try_begin),# IF LEFT MOUSE CLICK GO TO SOLDIER'S MENU
-        (party_is_active, "$enlisted_party"),
-        (key_clicked, key_left_mouse_button),
+(4.0, 0, 0.0,[
+  (eq, "$caravan_escort_state", 1), #cancel caravan_escort_state if caravan leaves the destination
+  (assign, ":continue", 0),
+  (try_begin),
+    (neg|party_is_active, "$caravan_escort_party_id"),
+    (assign, ":continue", 1),
+  (else_try),
+    (get_party_ai_object, ":ai_object", "$caravan_escort_party_id"),
+    (neq, ":ai_object", "$caravan_escort_destination_town"),
+    (assign, ":continue", 1),
+  (try_end),
+  (eq, ":continue", 1),
+],[
+  (assign, "$caravan_escort_state", 0),
+]),
 
-        (set_fixed_point_multiplier, 1000),
-        (mouse_get_position, pos0),
-        (position_get_y, ":y", pos0),
-        (gt, ":y", 50), #allows the camp, reports, quests, etc. buttons to be clicked
-        (jump_to_menu, "mnu_world_map_soldier"),
-        (rest_for_hours_interactive, 9999, 4, 0),
-      (else_try),#commander defeated
-        (neg|party_is_active, "$enlisted_party"),
-        (jump_to_menu, "mnu_freelancer_defeated"),
-      (try_end),
-
-    ]),
-
-  (4.0, 0, 0.0,
-   [
-     (eq, "$caravan_escort_state", 1), #cancel caravan_escort_state if caravan leaves the destination
-     (assign, ":continue", 0),
-     (try_begin),
-       (neg|party_is_active, "$caravan_escort_party_id"),
-       (assign, ":continue", 1),
-     (else_try),
-       (get_party_ai_object, ":ai_object", "$caravan_escort_party_id"),
-       (neq, ":ai_object", "$caravan_escort_destination_town"),
-       (assign, ":continue", 1),
-     (try_end),
-     (eq, ":continue", 1),
-     ],
-   [
-     (assign, "$caravan_escort_state", 0),
-     ]),
-
-#Kingdom Parties
-  (1.0, 0, 0.0, [],
-   [(try_for_range, ":cur_kingdom", kingdoms_begin, kingdoms_end),
-      (faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_active),
-      (try_begin),
-        (store_random_in_range, ":random_no", 0, 100),
-        (lt, ":random_no", 10),
-        (call_script, "script_create_kingdom_party_if_below_limit", ":cur_kingdom", spt_kingdom_caravan),
-      (try_end),
-     (try_begin),                        #SEATRADE
-         (store_random_in_range, ":random_no", 0, 100),       #Disable these for faster testing
-         (lt, ":random_no", 30),                              #Disable these for faster testing
-        (call_script, "script_create_kingdom_party_if_below_limit", ":cur_kingdom", spt_merchant_caravan),
-      (try_end),
+#Kingdom Parties: caravans
+(1.0, 0, 0.0, [],[
+  (try_for_range, ":cur_kingdom", kingdoms_begin, kingdoms_end),
+    (faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_active),
+    (try_begin),
+      (store_random_in_range, ":random_no", 0, 100),
+      (lt, ":random_no", 10),
+      (call_script, "script_create_kingdom_party_if_below_limit", ":cur_kingdom", spt_kingdom_caravan),
     (try_end),
-    ]),
+    (try_begin),                        #SEATRADE
+      (store_random_in_range, ":random_no", 0, 100),       #Disable these for faster testing
+      (lt, ":random_no", 30),                              #Disable these for faster testing
+      (call_script, "script_create_kingdom_party_if_below_limit", ":cur_kingdom", spt_merchant_caravan),
+    (try_end),
+  (try_end),
+]),
 ##### TODO: QUESTS COMMENT OUT BEGIN
 
 ###########################################################################

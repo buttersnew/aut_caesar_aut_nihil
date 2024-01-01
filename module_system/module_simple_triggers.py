@@ -3684,7 +3684,7 @@ simple_triggers = [
             (party_slot_eq, ":party_no", slot_party_type, spt_merchant_caravan),
             (try_begin),
                 (ge, "$cheat_mode", 1),
-                (display_message, "@ist spt_merchant_caravan"),
+                (display_message, "@is spt_merchant_caravan"),
             (try_end),
             (get_party_ai_object, ":object_town", ":party_no"),
             (is_between, ":object_town", towns_begin, towns_end),#check it is valid
@@ -7089,6 +7089,7 @@ simple_triggers = [
         (remove_party, ":party_no"),
     (try_end),##patrol ai
 ]),
+
 ##Remove rebellions
 (3,[
     (call_script, "script_execude_debug_message", 121),
@@ -7102,6 +7103,7 @@ simple_triggers = [
         (eq, ":faction1", ":faction2"),
         (party_slot_eq, ":target", slot_center_ongoing_rebellion, 0),
         (remove_party, ":party_no"),
+        (faction_set_slot, ":faction1", slot_faction_rebelling_against, 0), # rebellion has end
     (try_end),##patrol ai
 ]),
 
@@ -9520,6 +9522,8 @@ simple_triggers = [
             # (party_set_ai_object, ":rebel_party", ":center"),
             (call_script, "script_party_set_ai_state", ":rebel_party", spai_besieging_center, ":center"),
 
+            (faction_set_slot, ":faction_org", slot_faction_rebelling_against, ":faction"),
+
             (party_set_ai_behavior, ":rebel_party", ai_bhvr_attack_party),
             (party_set_ai_object, ":rebel_party", ":center"),
             (party_set_flags, ":rebel_party", pf_default_behavior, 1),
@@ -9535,9 +9539,9 @@ simple_triggers = [
 
             (try_begin),
                 (eq, ":faction", "$players_kingdom"),
-                (dialog_box, "@A messenger inform you that a rebellion has started in {s67}", "@Rebellion"),
+                (dialog_box, "@A messenger informs you that a rebellion has started in {s67}", "@Rebellion"),
             (else_try),
-                (display_message, "@The people of {s67} rise up against their overlords from {s66}!", message_negative),
+                (display_log_message, "@The people of {s67} rise up against their overlords from {s66}!", message_negative),
             (try_end),
         (try_end),
     (try_end),
@@ -10204,8 +10208,14 @@ simple_triggers = [
             (call_script, "script_add_notification_menu", "mnu_disaster_event", ":center", 0),
         (try_end),
         (str_store_party_name, s22, ":center"),
+        # (try_begin),
+        #     (ge, reg1, 0),
+        #     (assign, ":colour", color_good_news),
+        # (else_try),
+        #     (assign, ":colour", color_bad_news),
+        # (try_end),
         # (call_script, "script_get_event_details", ":season_event"),
-        # (display_log_message, "@In {s22} has started a {s0}.", color_bad_news),
+        # (display_log_message, "@In {s22} has started a {s0}.", ":colour"),
         (try_begin),
             (eq, ":season_event", event_mild_winter),
             (troop_get_slot,":number","trp_global_variables", g_number_mild_winters),
@@ -10265,7 +10275,13 @@ simple_triggers = [
         (try_end),
         (str_store_party_name, s22, ":center"),
         (call_script, "script_get_event_details", ":harvest_event"),
-        (display_log_message, "@In {s22} has started a {s0}.", color_bad_news),
+        (try_begin),
+            (ge, reg1, 0),
+            (assign, ":colour", color_good_news),
+        (else_try),
+            (assign, ":colour", color_bad_news),
+        (try_end),
+        (display_log_message, "@In {s22} has started a {s0}.", ":colour"),
         (try_begin),
             (eq, ":harvest_event", event_good_harvest),
             (troop_get_slot,":number","trp_global_variables", g_number_good_harvest),
@@ -10678,8 +10694,8 @@ simple_triggers = [
     (try_begin),
         (party_slot_eq, "p_main_party", slot_party_on_water, 0),
         (neq, "$g_player_is_captive", 1),
+        (eq, "$g_is_emperor", 1),
         (try_begin),
-            (eq, "$g_is_emperor", 1),
             (eq, "$g_libelli", 0),
             (le, "$g_civil_war", 0),
             (eq, "$edict1", 0),
@@ -12234,6 +12250,7 @@ simple_triggers = [
     #(try_for_range, ":faction_a", npc_kingdoms_begin, npc_kingdoms_end),
     (store_random_in_range, ":faction_a", npc_kingdoms_begin, npc_kingdoms_end),
     (try_begin),
+        (faction_slot_eq, ":faction_a", slot_faction_rebelling_against, 0), # is not rebelling
         (faction_slot_eq, ":faction_a", slot_faction_state, sfs_active),#active
         #barbarian
         (neg|faction_slot_eq, ":faction_a", slot_faction_culture, "fac_culture_7"),#not Roman

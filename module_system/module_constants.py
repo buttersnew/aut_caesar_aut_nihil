@@ -209,6 +209,7 @@ slot_faction_last_safe_hours         = 55
 
 slot_faction_num_routed_agents       = 56
 
+slot_faction_rebelling_against       = 57 # stores if a faction has active rebellion against other faction
 #useful for competitive consumption
 # slot_faction_biggest_feast_score      = 57
 # slot_faction_biggest_feast_time       = 58
@@ -351,8 +352,7 @@ slot_town_claimed_by_player    = 9
 
 slot_cattle_driven_by_player = slot_town_lord #hack
 
-#this slots here are all only used by towns:
-
+# slots used by parties which are not centers:
 slot_cohort_1   =10
 slot_cohort_2   =11
 slot_cohort_3   =12
@@ -372,7 +372,7 @@ slot_cohort_15  =24
 slot_cohort_begin   = slot_cohort_1
 slot_cohort_end     = slot_cohort_15 +1
 
-
+#this slots here are all only used by towns:
 slot_town_center            = 10
 slot_town_castle            = 11
 slot_town_prison            = 12
@@ -863,6 +863,9 @@ event_harsh_winter        =   224#
 
 slot_center_current_improvement_builder = 326
 slot_center_current_improvement_2_builder = 327
+
+slot_center_caravan_visits      = 328
+slot_center_trader_visits       = 329
 
 slot_town_trade_route_1           = 330
 slot_town_trade_route_2           = 331
@@ -2258,8 +2261,11 @@ companions_end = kings_begin
 seneschal_begin = "trp_town_1_seneschal"
 seneschal_end = "trp_town_1_arena_master"
 
-special_merchants_begin = "trp_merchant5"
-special_merchants_end = "trp_prisoner"
+special_roman_merchants_begin = "trp_merchant1"
+special_roman_merchants_end = "trp_merchant5"
+
+special_eastern_merchants_begin = "trp_merchant5"
+special_eastern_merchants_end = "trp_prisoner"
 
 active_npcs_begin = "trp_npc1"
 active_npcs_end = kingdom_ladies_begin
@@ -4049,6 +4055,39 @@ region_mountain_europe_alps             =14
 region_mountain_europe_spain_france     =15
 region_mountain_europe_romania          =16
 region_mountain_europe_bohemia          =17
+
+color_region_spain                            = 0xB6FF00
+color_region_north_africa                     = 0xFFD800
+color_region_southitaly                       = 0xA5FF7F
+color_region_nile                             = 0x548241
+color_region_syria_palestine                  = 0x52B757
+color_region_anatolia_central                 = 0xB0B534
+color_region_anatolia_coastal                 = 0xA0FF77
+color_region_mesopotamia                      = 0x519E00
+color_region_persianhill_green                = 0x0C9B00
+color_region_persianhill_desert               = 0x939900
+color_region_caucasus                         = 0x499979
+color_region_greece                           = 0x51995A
+color_region_nile_delta                       = 0x00994C
+color_region_mountain_europe_alps             = 0x009399
+color_region_mountain_europe_spain_france     = 0x287776
+color_region_mountain_europe_romania          = 0x296850
+color_region_mountain_europe_bohemia          = 0x486660
+
+color_rt_water 		        = 0x0000FF
+color_rt_mountain 		    = 0x646464
+color_rt_steppe 		    = 0x649632
+color_rt_plain 		        = 0x96C864
+color_rt_snow 		        = 0x14A81E
+color_rt_desert		        = 0xFFE97F
+color_rt_deep_water 		= 0x0026FF
+color_rt_bridge 		    = 0x0094FF
+color_rt_river  		    = 0x6465FF
+color_rt_mountain_forest   	= 0x9EA848
+color_rt_steppe_forest     	= 0x789714
+color_rt_forest            	= 0x3C6632
+color_rt_snow_forest       	= 0x00AA21
+color_rt_desert_forest     	= 0xB6FF00
 
 salary_legate = 6000
 salary_aux_2 = 4000

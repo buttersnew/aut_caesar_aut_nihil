@@ -13781,12 +13781,12 @@ mission_templates = [
             (spawn_around_party, "p_main_party", "pt_looters"),
           (try_end),
         (try_end),
-        (jump_to_menu, "mnu_town"),
+        (jump_to_menu, "mnu_auto_return_map"),
         (set_trigger_result, 1),
       (else_try),
         (display_message, "str_cannot_leave_now"),
       (try_end),
-    ], []),
+    ],[]),
 ]),
 
   (
