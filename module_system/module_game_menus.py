@@ -32676,7 +32676,15 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ###fire of rome
 ("fire_of_rome",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "The great fire of Rome^^"
-  +" Fires are common in Rome, but today the greatest fire in history struck the eternal city. This disaster lasted for six days and destroyed nearly the entire city, killing thousands and thousands of people.",
++"Sing, Muse, of the fiery tempest's rage,"
++"^That swept through Rome in a relentless blaze."
++"^The Great Fire, a dragon's wrath unbound,"
++"^Consuming the heart of the ancient town."
++"^^^"
++"^As flames danced high in the midnight air,"
++"^A city's dreams turned to smoke and despair."
++"^Rome, once grand and proud,"
++"^Reduced to ashes beneath a fiery shroud.",
   "none",[
     (set_background_mesh, "mesh_pic_fire_of_rome"),
     (try_begin),
