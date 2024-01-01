@@ -11387,7 +11387,7 @@ presentations = [
     (try_begin),#economic information
         (eq, "$g_presentation_next_presentation", 4),
         (create_text_overlay, reg1, "@Economic Information", tf_center_justify),
-        (position_set_x, pos1, 700),
+        (position_set_x, pos1, 625),
         (position_set_y, pos1, 690),
         (overlay_set_position, reg1, pos1),
         (position_set_x, pos1, 1500),
@@ -11737,8 +11737,13 @@ presentations = [
         (position_set_x, pos2, 900),
         (position_set_y, pos2, 900),
 
-
-
+        (create_text_overlay, reg1, "@Modifiers:", 0),
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_size, reg1, pos2),
+        (val_sub, ":y_name", 20),
+        (call_script, "script_prsnt_vc_menu_helper_gap"),##line
 
         (faction_get_slot, reg22, "$g_encountered_party_faction", dplmc_slot_faction_aristocracy),
         (val_mul, reg22, -1),
@@ -11759,7 +11764,6 @@ presentations = [
             (overlay_set_color, reg1, 0xFF0000),
         (try_end),
         (val_sub, ":y_name", 20),
-        (call_script, "script_prsnt_vc_menu_helper_gap"),##line
 
 
         (party_get_slot, reg22, "$g_encountered_party", slot_town_prosperity),
@@ -11777,7 +11781,7 @@ presentations = [
             (overlay_set_color, reg1, 0xFF0000),
         (try_end),
         (val_sub, ":y_name", 20),
-        (call_script, "script_prsnt_vc_menu_helper_gap"),##line
+        # (call_script, "script_prsnt_vc_menu_helper_gap"),##line
 
         (party_get_slot, reg2, "$g_encountered_party", dplmc_slot_center_taxation),
         (val_add, reg2, 100),

@@ -8390,7 +8390,7 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("prison_tower_description_rome", "A prison reduces the chance of captives held here running away successfully. A prisoner tower also allows you to torture your prisoners."),
 
 ("rome_rebuild", "Amphitheatrum Maximum"),
-("rome_rebuild_description", "The great fire of Rome destroy most of Rome and the work to rebuilt it is still not finished. Yet, there is plenty of free space that could be used for maginificant buildings. The people love games, why not building a amphitheatre fitting for a metropolis like Rome?"),
+("rome_rebuild_description", "The great fire destroy most of Rome and the work to rebuilt it is still not finished. Yet, there is plenty of free space that could be used for maginificant buildings. The people love games! Why not building an amphitheatre fitting for a metropolis like Rome?"),
 
 ("forum_name_rome", "Forum"),
 ("forum_description_rome", "Your own forum, the Forum {playername}, is a sign of power. It will increase your renown, your relation with this center and tariff income. It will also increase your reputation and gain you experience."),

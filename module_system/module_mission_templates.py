@@ -20837,6 +20837,10 @@ mission_templates = [
             (party_slot_eq, "p_town_6", slot_center_rome_rebuild, 0),
             (party_set_icon, "p_town_6", "icon_town_rome_after_fire"),
         (try_end),
+
+        (call_script, "script_get_event_details", event_fire_of_rome),
+        (call_script, "script_change_center_prosperity", "p_town_6", reg1),
+        (party_set_slot, "p_town_6", slot_center_event, event_fire_of_rome),
     ],[]),
 
     (ti_before_mission_start, 0, 0, [],

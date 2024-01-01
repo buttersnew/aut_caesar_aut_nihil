@@ -10433,7 +10433,7 @@ simple_triggers = [
     (troop_get_slot,":number","trp_global_variables", g_number_earthquake),
     (val_add, ":number", 1),
     (troop_set_slot,"trp_global_variables", g_number_earthquake, ":number"),
-    ]),
+]),
 
 ##FIRES
 (24.0*2.0*7.0/(number_of_walled_centers),[

@@ -847,19 +847,19 @@ event_conquered_timer     =   138
 event_conquered           =   140
 
 event_fire_of_rome_timer  =   165#
-event_fire_of_rome        =   200#
+event_fire_of_rome        =   340#175 days, more than 2 years
 
-event_good_harvest_timer  =   206#
-event_good_harvest        =   209#
+event_good_harvest_timer  =   346#
+event_good_harvest        =   349#
 
-event_poor_harvest_timer  =   211#
-event_poor_harvest        =   214#
+event_poor_harvest_timer  =   351#
+event_poor_harvest        =   354#
 
-event_mild_winter_timer  =   216#
-event_mild_winter        =   219#
+event_mild_winter_timer  =   356#
+event_mild_winter        =   359#
 
-event_harsh_winter_timer  =   221#
-event_harsh_winter        =   224#
+event_harsh_winter_timer  =   361#
+event_harsh_winter        =   364#
 
 slot_center_current_improvement_builder = 326
 slot_center_current_improvement_2_builder = 327
