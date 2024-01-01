@@ -301,19 +301,19 @@ party_templates = [
 [(trp_germanic_noble_spearman,25,25),(trp_germanic_noble_swordsman,25,25),(trp_germanic_hornman,1,1),(trp_germanic_standard_bearer,1,1)] ),
 
 
-("steppe_bandit_lair" ,"Alan Camp",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_alans,bandit_personality,[(trp_steppe_bandit,15,30)]),
-("taiga_bandit_lair","Illyrian Lair",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_taiga_bandits,bandit_personality,[(trp_taiga_bandit,15,30)]),
-("desert_bandit_lair" ,"Arabic Camp",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_arabian_bandits,bandit_personality,[(trp_desert_bandit,15,30)]),
-("egyptian_bandit_lair" ,"Old Egyptian Fortress",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_egypt,bandit_personality,[(trp_egyptian_infantry_light,5,10),(trp_egyptian_archers,5,10),(trp_egyptian_infantry_heavy,5,10)]),
+("steppe_bandit_lair" ,"Alan Camp",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_alans,bandit_personality,[(trp_steppe_bandit,15,30)]),
+("taiga_bandit_lair","Illyrian Lair",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_taiga_bandits,bandit_personality,[(trp_taiga_bandit,15,30)]),
+("desert_bandit_lair" ,"Arabic Camp",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_arabian_bandits,bandit_personality,[(trp_desert_bandit,15,30)]),
+("egyptian_bandit_lair" ,"Old Egyptian Fortress",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_egypt,bandit_personality,[(trp_egyptian_infantry_light,5,10),(trp_egyptian_archers,5,10),(trp_egyptian_infantry_heavy,5,10)]),
 ("nabatean_lair" ,"Nabataean Camp",icon_gaetulian_town|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_nabataea,bandit_personality,[(trp_desert_bandit,15,30)]),
 ("nubian_lair" ,"Nubian Village",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_kush,bandit_personality,[(trp_meroe_archers,5,10),(trp_meroe_infantry,10,20)]),
 ("numidian_bandit_lair" ,"Garamantian Village",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_garamantes,bandit_personality,[(trp_sarranid_horseman,15,30)]),
 ("gaetuli_bandit_lair" ,"Gaetulian Camp",icon_gaetulian_town|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_gaetuli,bandit_personality,[(trp_gaetuli_horseman,15,30)]),
-("forest_bandit_lair" ,"Hispanic Hideout",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_forest_bandits,bandit_personality,[(trp_forest_bandit,15,30)]),
-("mountain_bandit_lair" ,"Judean Hideout",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_mountain_bandits,bandit_personality,[(trp_mountain_bandit,15,30)]),
-("sea_raider_lair","Sea Raider Landing",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,30)]),
-("saka_camp","Saka Camp",icon_village_a|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_dahae,bandit_personality,[(trp_saka_horse_archer,15,30)]),
-("looter_lair","Kidnappers' Hideout",icon_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_neutral,bandit_personality,[(trp_looter,15,18)]),
+("forest_bandit_lair" ,"Hispanic Hideout",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_forest_bandits,bandit_personality,[(trp_forest_bandit,15,30)]),
+("mountain_bandit_lair" ,"Judean Hideout",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_mountain_bandits,bandit_personality,[(trp_mountain_bandit,15,30)]),
+("sea_raider_lair","Sea Raider Landing",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,30)]),
+("saka_camp","Saka Camp",icon_village_barbarian|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_dahae,bandit_personality,[(trp_saka_horse_archer,15,30)]),
+("looter_lair","Kidnappers' Hideout",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_neutral,bandit_personality,[(trp_looter,15,18)]),
 
 ("bandit_lair_templates_end","{!}bandit_lair_templates_end",icon_axeman|carries_goods(2)|pf_is_static,0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,30)]),
 
@@ -468,7 +468,7 @@ party_templates = [
 ("dacians","Dacian Revolt",icon_dac1|carries_goods(50)|pf_show_faction,0,fac_commoners,rebel_personality,[(trp_dacian_noble_inf, 250, 350),(trp_dacian_light_spearman, 350, 450),(trp_dacian_light_swordman, 350, 450),(trp_dacian_noble_cav, 150, 250),(trp_dacian_skirmishers, 200, 300),(trp_dacian_archers, 100, 200)]),
 #end
 ("jewish_revolt","Great Jewish Revolt",icon_mountain_bandit|carries_goods(2),0,fac_mountain_bandits,bandit_personality,[(trp_mountain_bandit,550,650),(trp_kreta_archer,30,50),(trp_mercenary_swordsman, 30,50),(trp_judean_skirmisher,100,200),(trp_judean_light_clubman,100,200)]),
-("slave_hideout" ,"Hideout",icon_bandit_lair|pf_is_static|pf_hide_defenders,0,fac_neutral,bandit_personality,[]),	#VC-1883
+("slave_hideout" ,"Hideout",icon_map_bandit_lair|pf_is_static|pf_hide_defenders,0,fac_neutral,bandit_personality,[]),	#VC-1883
 ("player_camp","Camp",icon_camp|pf_always_visible|pf_limit_members,0,fac_player_faction,courage_15,[]),
 ("port","port",icon_landing_point|pf_is_static|pf_always_visible|pf_show_faction|pf_label_large|pf_hide_defenders,0, 0, 0,[]),
 ("ferry_port","port",icon_landing_point|pf_no_label|pf_is_static|pf_hide_defenders,0, 0, 0,[]),
@@ -477,7 +477,7 @@ party_templates = [
 ("traveller_ship","Traveller",icon_peasant|carries_goods(4)|pf_civilian,0,fac_commoners,merchant_personality,[(trp_mercenary_crossbowman,6,20),(trp_watchman, 5, 20), (trp_peasant_woman, 2, 15),]),
 ("slave_trader_ship","Slave Trader",icon_ship_merchant|carries_goods(3)|pf_civilian,0,fac_commoners,merchant_personality,[(trp_caravan_master,1,2), (trp_mercenary_crossbowman,0,12), (trp_mercenary_swordsman,0,24), (trp_mercenary_horseman,4,48),]),
 ("sea_traders", "Traders",icon_ship_merchant|pf_is_ship|carries_goods(25)|pf_show_faction,0,fac_commoners,merchant_personality,[(trp_caravan_master,1,1),(trp_mercenary_swordsman,20,30),(trp_caravan_guard,5,20),(trp_hired_blade,5,10),(trp_mercenary_crossbowman,5,10),(trp_package_slave,3,10)]),
-#("mine","Mine",icon_bandit_lair|pf_is_static|pf_hide_defenders|pf_always_visible|pf_label_small,0,fac_neutral,courage_15,[]),
+#("mine","Mine",icon_map_bandit_lair|pf_is_static|pf_hide_defenders|pf_always_visible|pf_label_small,0,fac_neutral,courage_15,[]),
 
 ("rebels","Rebels",icon_axeman|carries_goods(2),0,fac_black_khergits,bandit_personality,[(trp_watchman,15,55),(trp_brigand, 12, 24),(trp_slave_rebel, 30, 70),(trp_slave_warrior, 30, 70),(trp_slave_warrior_2, 20, 40),(trp_slave_warrior_3, 10, 20),]),
 ("hord_siraken","Horde",icon_hord|carries_goods(2),0,fac_kingdom_12,merchant_personality,[(trp_sarmatian_light_horsearcher,150,200),(trp_sarmatian_light_horseman,46,117),(trp_sarmatian_heavy_horsearcher,10,23),(trp_sarmatian_noble_horseman,2,4),(trp_sarmatian_heavy_horseman, 7, 12),]),

@@ -8122,6 +8122,8 @@ from there the 'Game concepts' button."),
 ("pic_settlement_temple_barbarian",  "pic_settlement_temple_barbarian"),
 ("pic_settlement_temple_eastern",  "pic_settlement_temple_eastern"),
 
+("pic_settlement_amphitheatre", "pic_settlement_amphitheatre"),
+
 ("war_cry",  "You encourage your troops with a fearsome cry!"),
 
 # ("roman_focale_red",  "roman_focale_red"),

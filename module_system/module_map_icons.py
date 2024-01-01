@@ -40,27 +40,38 @@ map_icons = [
   ("axeman",0,"bandit", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
   ("woman",0,"woman_a", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
   ("hord",0,"horde", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-  ("town",mcn_no_shadow,"alexandria", 0.35,0),
-  ("town_steppe",mcn_no_shadow,"alexandria_lighthouse", 0.5,0),
-  ("town_desert",mcn_no_shadow,"pyramid_icon", 0.50,0),
-  ("village_a",mcn_no_shadow,"town_icon2", 0.47, 0),
-  ("village_burnt_a",mcn_no_shadow,"town_icon2_burned", 0.47, 0),
-  ("village_deserted_a",mcn_no_shadow,"town_icon2", 0.47, 0),
-  ("camp",mcn_no_shadow,"castrum_n", 0.13, 0),
-  ("camp_fort",mcn_no_shadow,"castrum", 0.13, 0),
+
+  ("wonder_pyramids_egy",mcn_no_shadow,"wonder_pyramids_egy", 0.50,0),
+  ("wonder_parthenon",mcn_no_shadow,"wonder_parthenon", 0.16,0),
+  ("wonder_artemis",mcn_no_shadow,"wonder_artemis", 0.4,0),
+
+  ("village_barbarian",mcn_no_shadow,"village_barbarian", 0.47, 0),
+  ("village_barbarian_burned",mcn_no_shadow,"village_barbarian_burned", 0.47, 0),
+  ("village_barbarian_deserted",mcn_no_shadow,"village_barbarian_burned", 0.47, 0),
+  ("village_roman",mcn_no_shadow,"village_roman", 0.35,0),
+  ("village_roman_burned",mcn_no_shadow,"village_roman_burned", 0.35,0),
+  ("village_roman_deserted",mcn_no_shadow,"village_roman_burned", 0.35,0),
+  ("village_greek",mcn_no_shadow, "village_greek", 0.35,0),
+  ("village_greek_burned",mcn_no_shadow, "village_greek_burned", 0.35,0),
+  ("village_greek_deserted",mcn_no_shadow, "village_greek_burned", 0.35,0),
+
+  ("camp",mcn_no_shadow,"camp", 0.13, 0),
+  ("camp_fort",mcn_no_shadow,"camp_fort", 0.13, 0),
   ("ship",mcn_no_shadow,"boat_sail", 0.23, snd_footstep_grass, 0.0, 0.05, 0),
   ("ship_on_land",mcn_no_shadow,"boat_sail_0", 0.23, 0),
 
   ("castle_a",mcn_no_shadow,"horde_camp", 0.15,0),
   ("castle_c",mcn_no_shadow,"farmstead", 0.42,0),
-  ("castle_d",mcn_no_shadow,"sacred_forest", 0.35,0),
 
-  ("castle_snow_a",mcn_no_shadow,"parthenon_icon", 0.16,0),
-  ("castle_snow_b",mcn_no_shadow,"map_temple", 0.37,0),
-  ("persian_temple",mcn_no_shadow,"persian_temple", 0.37,0),
+  ("map_island",mcn_no_shadow,"map_island", 0.5,0),
+  ("map_stone_circle",mcn_no_shadow,"map_stone_circle", 0.35,0),
+  ("map_temple",mcn_no_shadow,"map_temple", 0.37,0),
+  ("map_persian_temple",mcn_no_shadow,"map_persian_temple", 0.37,0),
+  ("map_bandit_lair",mcn_no_shadow,"map_bandit_lair", 0.45, 0),
+  ("map_ludus",mcn_no_shadow,"map_ludus", 0.35,0),
+
   ("mule",0,"icon_mule", 0.2,snd_footstep_grass, 0.16, 0.173, 0),
   ("cattle",0,"icon_cow", 0.2,snd_footstep_grass, 0.16, 0.173, 0),
-  ("training_ground",mcn_no_shadow,"ludus", 0.35,0),
 
   ##free mapicons
   ("crucified_slave",mcn_no_shadow,"crucified_slave", 0.35,0),
@@ -71,7 +82,6 @@ map_icons = [
   ("village_desert",mcn_no_shadow,"icon_village_desert",  0.30,0),
   ("nubian_town",mcn_no_shadow,"icon_nubia",  0.33,0),
 
-  ("bandit_lair",mcn_no_shadow,"map_bandit_lair", 0.45, 0),
   ("mine",mcn_no_shadow,"mine", 0.45, 0),
   ("kingdom_1_soldier_b",0,"dac1_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
   ("kingdom_2_soldier_b",0,"brit2_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
@@ -96,18 +106,30 @@ map_icons = [
   ("legat",0,"legat", avatar_scale,snd_gallop, 0.16, 0.173, 0),
   ("aux2",0,"aux2", avatar_scale,snd_gallop, 0.16, 0.173, 0),
 
-  ("persian_castle",mcn_no_shadow,"persian_castle", 0.35,0),
-  ("persian_city",mcn_no_shadow,"persian_city", 0.35,0),
-  ("gr_city_Reduced",mcn_no_shadow,"gr_city_Reduced", 0.35,0),
-  ("gr_city2_Reduced",mcn_no_shadow,"gr_city2_Reduced", 0.35,0),
-  ("gr_fort_Reduced",mcn_no_shadow,"gr_fort_Reduced", 0.35,0),
+
   ("opidumn_rock_Reduced",mcn_no_shadow,"opidumn_rock_Reduced", 0.30,0),
   ("opidumn_rock1_Reduced",mcn_no_shadow,"opidumn_rock1_Reduced", 0.30,0),
   ("opidumn_wood_gl1_Reduced",mcn_no_shadow,"opidumn_wood_gl1_Reduced", 0.30,0),
   ("opidumn_wood_gl_Reduced",mcn_no_shadow,"opidumn_wood_gl_Reduced", 0.30,0),
-  ("r_city_Reduced",mcn_no_shadow,"r_city_Reduced", 0.35,0),
-  ("r_city1_Reduced",mcn_no_shadow,"r_city1_Reduced", 0.35,0),
-  ("r_fort_Reduced",mcn_no_shadow,"r_fort_Reduced", 0.35,0),
+
+  ("fort_roman",mcn_no_shadow,"fort_roman", 0.35,0),
+  ("fort_greek",mcn_no_shadow,"fort_greek", 0.35,0),
+  ("fort_persian",mcn_no_shadow,"fort_persian", 0.35,0),
+
+  ("town_roman",mcn_no_shadow,"town_roman", 0.35,0),
+  ("town_greek",mcn_no_shadow,"town_greek", 0.35,0),
+  ("town_persian",mcn_no_shadow,"town_persian", 0.35,0),
+
+  ("town_rome",mcn_no_shadow,"town_rome", 0.35,0),
+  ("town_rome_after_fire",mcn_no_shadow,"town_rome_after_fire", 0.35,0),
+  ("town_rome_before_fire",mcn_no_shadow,"town_rome_before_fire", 0.35,0),
+
+  ("town_athen",mcn_no_shadow, "town_athen", 0.35,0),
+  ("town_jerusalem_temple",mcn_no_shadow, "town_jerusalem_temple", 0.35,0),
+  ("town_jerusalem_without_temple",mcn_no_shadow, "town_jerusalem_without_temple", 0.35,0),
+  ("town_alexandria",mcn_no_shadow,"town_alexandria", 0.35,0),
+  ("town_alexandria_lighthouse",mcn_no_shadow,"town_alexandria_lighthouse", 0.5,0),
+
   ("opidumn_wood_br_Reduced",mcn_no_shadow,"opidumn_wood_br_Reduced", 0.30,0),
   ("opidumn_wood_br1_Reduced",mcn_no_shadow,"opidumn_wood_br1_Reduced", 0.30,0),
   ("opidumn_wood_dc1_Reduced",mcn_no_shadow,"opidumn_wood_dc1_Reduced", 0.30,0),
@@ -116,9 +138,7 @@ map_icons = [
   ("opidumn_rock_dc1_Reduced",mcn_no_shadow,"opidumn_rock_dc1_Reduced", 0.30,0),
   ("ferry_station",mcn_no_shadow,"ferry_station", 1.0,0),
   ("grain_fields",mcn_no_shadow,"grain_fields", 0.35,0),
-  ("roman_village",mcn_no_shadow,"roman_village_a", 0.35,0),
- # ("villa",mcn_no_shadow,"villa", 0.35,0),
-  ("greek_village",mcn_no_shadow, "greek_village", 0.35,0),
+
   ("camp_siege",mcn_no_shadow,"camp_siege", 0.13, 0),
   ("ship_merchant",mcn_no_shadow,"boat_sail_on7_Reduced", 0.23, snd_footstep_grass, 0.0, 0.05, 0),
   ("boat_simple",mcn_no_shadow,"boat_sail_on71", 0.23, snd_footstep_grass, 0.0, 0.05, 0),
@@ -135,8 +155,7 @@ map_icons = [
   ("villa_icon",mcn_no_shadow,"villa_icon", 0.35,0),
   ("sartemis_icon",mcn_no_shadow,"hanging_gardens_icon", 0.95,0),
   ("valley_of_kings_combined",mcn_no_shadow,"valley_of_kings_combined", 0.95,0),
-  ("artemis_temple",mcn_no_shadow,"artemis_temple_icon", 0.4,0),
-  ("map_island",mcn_no_shadow,"map_island", 0.5,0),
+
   ("roman_house",mcn_no_shadow,"icon_roman_house", 0.5,0),
   ("barbarian_estate",mcn_no_shadow,"barbarian_estate", 0.5,0),
 

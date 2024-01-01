@@ -20802,8 +20802,8 @@ mission_templates = [
   ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
-    (ti_tab_pressed, 0, 0,
-    [
+
+    (ti_tab_pressed, 0, 0,[
         (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
         (finish_mission, 4),
         (jump_to_menu, "mnu_auto_return_map"),
@@ -20832,8 +20832,12 @@ mission_templates = [
             (call_script, "script_change_player_relation_with_center", "p_town_6", -200),
             (call_script, "script_change_senate_support", -100, 0),
         (try_end),
-    ],
-    []),
+
+        (try_begin),
+            (party_slot_eq, "p_town_6", slot_center_rome_rebuild, 0),
+            (party_set_icon, "p_town_6", "icon_town_rome_after_fire"),
+        (try_end),
+    ],[]),
 
     (ti_before_mission_start, 0, 0, [],
     [

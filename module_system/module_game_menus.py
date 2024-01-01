@@ -18838,6 +18838,7 @@ game_menus = [
 
     ("visit_jerusalem_temple",[
       (eq, "$current_town", "p_town_19"),
+      (eq, "$templelooted", 0),
     ],"Visit the great jewish temple.",[
       (try_begin),
           (check_quest_active, "qst_poking_the_lion"),
@@ -32674,10 +32675,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 ###fire of rome
 ("fire_of_rome",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "The great fire of Rome"
-  +" Fires are common in Rome, but today the greatest fire in history struck the eternal city. This disaster lasted for six days and destroyed nearly the entire city, killing thousands and thousands of people."
-  +"^Rumors spread Nero has ordered to set the fire! Other say the gods have rage aiganst Rome. Still others accuse the Christians of setting the fire."
-  +"^^To counter the rumors, Nero also accuses the Christians of arson and issues a new decree, which bans the Christian faith.",
+  "The great fire of Rome^^"
+  +" Fires are common in Rome, but today the greatest fire in history struck the eternal city. This disaster lasted for six days and destroyed nearly the entire city, killing thousands and thousands of people.",
   "none",[
     (set_background_mesh, "mesh_pic_fire_of_rome"),
     (try_begin),
@@ -35746,58 +35745,46 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 
 ("temple_jerusalem_story_loot_1",0,
-    "Your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out. You order some of your men to guard the entrance. You and your other men storm into the inner court and imprison the priests. Then your men break up the door into the sanctum and start looting. All the treasuries are carried out of the temple. ^After half an hour one of your men reports that there is nothing left to loot. You order to leave the temple. But you are soon stopped by an angry mob, shouting insults, moving in your direction. Now you must fight!",
-    "none",
-    [
-	    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
-    ],
-    [
-      ("answere_1",[],
-	    "Continue.",
-      [
-        (modify_visitors_at_site, "scn_temple_jerusalem"),
-        (reset_visitors),
-        (assign, ":num_monks", 50),
-        (store_character_level, ":level", "trp_player"),
-        (val_div, ":level", 5),
-        (val_add, ":num_monks", ":level"),
-        (set_visitors, 1, "trp_mountain_bandit", ":num_monks"),
-        (set_visitors, 1, "trp_judean_village_walker", ":num_monks"),
-        #(set_visitors, 1, "trp_abad", 1),
-        (set_jump_mission,"mt_temple_raid"),
-        (jump_to_scene, "scn_temple_jerusalem"),
-        (change_screen_mission),
-        #
-        (party_clear, "p_total_enemy_casualties"),
-      ]),
-	],
-),
+  "Your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out. You order some of your men to guard the entrance. You and your other men storm into the inner court and imprison the priests. Then your men break up the door into the sanctum and start looting. All the treasuries are carried out of the temple. ^After half an hour one of your men reports that there is nothing left to loot. You order to leave the temple. But you are soon stopped by an angry mob, shouting insults, moving in your direction. Now you must fight!",
+  "none",[
+    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
+  ],[
+  ("answere_1",[],"Continue.",[
+    (modify_visitors_at_site, "scn_temple_jerusalem"),
+    (reset_visitors),
+    (assign, ":num_monks", 50),
+    (store_character_level, ":level", "trp_player"),
+    (val_div, ":level", 5),
+    (val_add, ":num_monks", ":level"),
+    (set_visitors, 1, "trp_mountain_bandit", ":num_monks"),
+    (set_visitors, 1, "trp_judean_village_walker", ":num_monks"),
+    (set_jump_mission,"mt_temple_raid"),
+    (jump_to_scene, "scn_temple_jerusalem"),
+    (change_screen_mission),
+    (party_clear, "p_total_enemy_casualties"),
+  ]),
+]),
 
 ("temple_jerusalem_story_loot_2",0,
-    "You defeat the mob and leave the city. You reach a mountain, not far from Jerusalem, where you make a rest to oversee the looted treasures: A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'. A huge golden  menorah, gold and silver ingots, jewelry, velvet cloths and nice carpeting. Additionally, you looted valuables worth 150,000 denars.^^A soldier interrupts you and informs you that a woman is waiting for you. It must be Antonia.",
-    "none",
-    [
-	    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
-      (add_xp_as_reward, 5000),
-      (quest_set_slot, "qst_poking_the_lion", slot_quest_current_state, 5),
-    ],
-    [
-      ("answere_1",[],
-	    "Continue.",
-      [
-        (assign, "$temp2", "trp_antonia"),
-        (assign, "$temp1", 1),
-        (assign, "$talk_context", 0),
-        (set_jump_mission,"mt_event2_talk"),
-        (modify_visitors_at_site,"scn_mount_golgotha"),
-        (reset_visitors),
-        (set_visitor,1,"trp_player"),
-        (set_visitor,2,"trp_antonia"),
-        (jump_to_scene, "scn_mount_golgotha"),
-        (change_screen_mission),
-      ]),
-	],
-),
+  "You defeat the mob and leave the city. You reach a mountain, not far from Jerusalem, where you make a rest to oversee the looted treasures: A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'. A huge golden  menorah, gold and silver ingots, jewelry, velvet cloths and nice carpeting. Additionally, you looted valuables worth 150,000 denars.^^A soldier interrupts you and informs you that a woman is waiting for you. It must be Antonia.",
+  "none",[
+    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
+    (add_xp_as_reward, 5000),
+    (quest_set_slot, "qst_poking_the_lion", slot_quest_current_state, 5),
+  ],[
+    ("answere_1",[],"Continue.",[
+      (assign, "$temp2", "trp_antonia"),
+      (assign, "$temp1", 1),
+      (assign, "$talk_context", 0),
+      (set_jump_mission,"mt_event2_talk"),
+      (modify_visitors_at_site,"scn_mount_golgotha"),
+      (reset_visitors),
+      (set_visitor,1,"trp_player"),
+      (set_visitor,2,"trp_antonia"),
+      (jump_to_scene, "scn_mount_golgotha"),
+      (change_screen_mission),
+    ]),
+]),
 
 ("temple_jerusalem_story_loot_end",0,
     "You gather the loot and marsh on.^^Now it is time to gain the trust of either Otho, Vitellius, Galba or Vespasian.",
@@ -35847,19 +35834,17 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("temple_jerusalem",0,
-    "You see the Great Temple, the Jews call it Beit HaMikdash HaSheni. It is their second temple. The first was destroyed centuries ago. ^^\
-	Walking around you see many people who seek truth and security through religion in times of need.^\
-	But you also see traders praising their goods.^^\
-	The forecourt is open for pilgrims and the inner court for priests. Only at Jom Kippur highpriests are allowed to enter the sanctum.",
-    "none",
-    [
-	    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
-    ],
-    [
+  "You see the Great Temple, the Jews call it Beit HaMikdash HaSheni. It is their second temple. The first was destroyed centuries ago. ^^"
+  +" Walking around you see many people who seek truth and security through religion in times of need.^"
+  +" But you also see traders praising their goods.^^"
+  +" The forecourt is open for pilgrims and the inner court for priests. Only at Jom Kippur highpriests are allowed to enter the sanctum.",
+  "none",[
+	  (set_background_mesh, "mesh_pic_jerusalem_tempel"),
+  ],[
     ("answere_steal",[
       (neq, "$g_campaign_type", g_campaign_story_rome),
       (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_yhwhe),
-      (neq, "$templelooted", 1),
+      (eq, "$templelooted", 0),
 	  ],
 	  "Loot the temple",
 	  [
@@ -36030,15 +36015,16 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_end),
   ]),
 ]),
+
 ("loot_final2",0,
-  "Now lets see what your men have looted:^^\
-	A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'^^\
-	A golden menorah^^\
-    Gold, gold coins^^\
-	Jewellery^^\
-	Velvet cloths and nice carpeting^^\
-	Silver ingots^^\
-	Additionally you looted expensive artifacts worth 150,000 denars.",
+  "Now lets see what your men have looted:^^"
+  +"A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'^^"
+  +"A golden menorah^^"
+  +"  Gold, gold coins^^"
+  +"Jewellery^^"
+  +"Velvet cloths and nice carpeting^^"
+  +"Silver ingots^^"
+  +"Additionally you looted expensive artifacts worth 150,000 denars.",
   "none",[
     (troop_add_gold, "trp_player", 150000),
     (troop_add_item, "trp_player", "itm_menorah"),
@@ -36054,6 +36040,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (troop_add_item, "trp_player", "itm_velvet"),
     (troop_add_item, "trp_player", "itm_velvet"),
     (assign, "$templelooted", 1),
+    (party_set_icon, "p_town_19", "icon_town_jerusalem_without_temple"),
   ],[
   ("answere_1",[],"Well done.",[
     (try_begin),
@@ -46440,13 +46427,12 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
   ],),
 
-  ( "found_rebells",0,
-    "By supporting the Judean people with money cou can improve your relation with them and cause unrest in the Roman Empire!",
-    "none",
-    [(set_background_mesh, "mesh_pic_townriot")],
-    [
-
-      ("large",[],"Found one large rebell party. (5000 denars)",[
+("found_rebells",0,
+  "By supporting the Judean people with money you can improve your relation with them and cause unrest in the Roman Empire!",
+  "none",[
+    (set_background_mesh, "mesh_pic_townriot")
+  ],[
+  ("large",[],"Found one large rebell party. (5000 denars)",[
     (store_troop_gold, reg55, "trp_player"),
     (try_begin),
         (store_num_parties_of_template, reg54, "pt_mountain_bandits"),
@@ -46470,8 +46456,8 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
         (party_add_members, ":party", "trp_judean_archer", 15),
         (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 4),
     (try_end),
-      ],),
-      ("small",[],"Found one rebell party. (2500 denars)",[
+  ]),
+  ("small",[],"Found one rebell party. (2500 denars)",[
     (store_troop_gold, reg55, "trp_player"),
     (try_begin),
         (store_num_parties_of_template, reg54, "pt_mountain_bandits"),
@@ -46491,30 +46477,30 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
         (call_script, "script_spawn_party", "p_town_19", "pt_mountain_bandits"),
         (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 2),
     (try_end),
-      ],),
-      ("leave",[],"Go back.",[(jump_to_menu, "mnu_temple_jerusalem")],),     ],),
-
-  (
-    "select_culture",0,
-    "Select your culture:",
-    "none",
-    [],
-    [
-
-      ("event04",[],"Roman.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_7"),
-        (assign, "$g_player_culture", "fac_kingdom_7"),
-      ],),
-      ("event04",[(ge, "$cheat_mode", 1)],"Dacian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_1"),],),
-      ("event04",[(ge, "$cheat_mode", 1)],"Germanic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_4"),],),
-      ("event04",[(ge, "$cheat_mode", 1)],"Nomads.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_3"),],),
-      ("event04",[],"Jewish.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"), (assign, "$g_player_culture", "fac_kingdom_17"),],),
-      ("event04",[(ge, "$cheat_mode", 1)],"Parhtian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_6"),],),
-      ("event04",[(ge, "$cheat_mode", 1)],"Armenian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_5"),],),
-      ("event04",[(ge, "$cheat_mode", 1)],"Celtic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2"),],),
-      ("event04",[(ge, "$cheat_mode", 1)],"Caledonian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2_1"),],),
-      ("event04",[(ge, "$cheat_mode", 1)],"Bosphoran.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_9"),],),
-
+  ]),
+  ("leave",[],"Go back.",[
+    (jump_to_menu, "mnu_temple_jerusalem")
   ],),
+]),
+
+("select_culture",0,
+  "Select your culture:",
+  "none",[
+  ],[
+    ("event04",[],"Roman.",[
+      (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_7"),
+      (assign, "$g_player_culture", "fac_kingdom_7"),
+    ],),
+    ("event04",[(ge, "$cheat_mode", 1)],"Dacian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_1"),],),
+    ("event04",[(ge, "$cheat_mode", 1)],"Germanic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_4"),],),
+    ("event04",[(ge, "$cheat_mode", 1)],"Nomads.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_3"),],),
+    ("event04",[],"Jewish.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"), (assign, "$g_player_culture", "fac_kingdom_17"),],),
+    ("event04",[(ge, "$cheat_mode", 1)],"Parhtian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_6"),],),
+    ("event04",[(ge, "$cheat_mode", 1)],"Armenian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_5"),],),
+    ("event04",[(ge, "$cheat_mode", 1)],"Celtic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2"),],),
+    ("event04",[(ge, "$cheat_mode", 1)],"Caledonian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2_1"),],),
+    ("event04",[(ge, "$cheat_mode", 1)],"Bosphoran.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_9"),],),
+]),
 
   (
     "host_games",0,
