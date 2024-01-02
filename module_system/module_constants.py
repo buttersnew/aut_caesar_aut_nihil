@@ -692,8 +692,7 @@ slot_center_ongoing_rebellion               = 254
 slot_center_auxilia 	                    = 255
 slot_center_has_recently_rebelled 	        = 256
 
-slot_town_is_coastal 			            = 257 #63  (any other new or unused slot can ofc be used as well)
-
+# 257 is free
 
 slot_center_can_rebell                  = 258
 slot_rebellion_target                   = 259

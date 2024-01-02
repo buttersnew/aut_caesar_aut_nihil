@@ -13637,13 +13637,12 @@ game_menus = [
         (assign, "$g_mt_mode", vba_normal),
         (change_screen_mission),
         ]),
-#TEMPERED chief ADDED REST OPTION FOR HIGH COMMONER RELATION
-      ("village_guest_wait",
-       [
-                        (neg|party_slot_eq, "$current_town", slot_village_state, svs_looted),
-                         (neg|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
-                        (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-           (assign,":continue",0),
+
+    ("village_guest_wait",[
+      (neg|party_slot_eq, "$current_town", slot_village_state, svs_looted),
+      (neg|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (assign,":continue",0),
 			(try_begin),
 				(party_get_slot, ":center_relation", "$current_town", slot_center_player_relation),
 				(ge, ":center_relation", 50),
@@ -13655,15 +13654,13 @@ game_menus = [
 				(assign,":continue",0),
 			(try_end),
 			(eq,":continue",1),
-        ],
-         "The villagers invite you to rest here as their honored guest.",
-         [
-           (assign,"$auto_enter_town","$current_town"),
-           (assign, "$g_last_rest_center", "$current_town"),
-           (rest_for_hours_interactive, 24 * 7, 5, 1), #rest while attackable
-           (change_screen_return),
-          ]),
-#tempered chief acaba
+    ],"The villagers invite you to rest here as their honored guest.",[
+      (assign,"$auto_enter_town","$current_town"),
+      (assign, "$g_last_rest_center", "$current_town"),
+      (rest_for_hours_interactive, 24 * 86, 12, 0), #rest while not attackable
+      (change_screen_return),
+    ]),
+
       ("village_perform_basic_work",
       [
       (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
@@ -18088,7 +18085,7 @@ game_menus = [
       (assign, "$g_town_visit_after_rest", 1),
       (assign, "$g_last_rest_center", "$current_town"),
       (assign, "$g_last_rest_payment_until", -1),
-      (rest_for_hours_interactive, 24 * 7, 5, 0), #rest while not attackable
+      (rest_for_hours_interactive, 24 * 86, 12, 0), #rest while not attackable
       (change_screen_return),
     ]),
 
@@ -48599,7 +48596,7 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     (assign, "$g_town_visit_after_rest", 1),
     (assign, "$g_last_rest_center", "$g_encountered_party"),
     (assign, "$g_last_rest_payment_until", -1),
-    (rest_for_hours_interactive, 24 * 7, 5, 0), #rest while not attackable
+    (rest_for_hours_interactive, 24 * 86, 12, 0), #rest while not attackable
     (change_screen_return),
   ]),
   ("leave",[],"Leave.",[
