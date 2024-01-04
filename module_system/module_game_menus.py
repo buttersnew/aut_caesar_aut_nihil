@@ -54154,12 +54154,12 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     (set_background_mesh, "mesh_pic_ships"),
     (str_store_party_name, s4, "p_town_10"),
     (str_store_party_name, s5, "p_town_14"),
-    (str_store_party_name, s6, "p_town_3"),
+    (str_store_party_name, s6, "p_town_13"),
   ],[
     ("op1",[],"We will get him.",[
       (str_store_party_name_link, s1, "p_town_10"),
       (str_store_party_name_link, s2, "p_town_14"),
-      (str_store_party_name_link, s3, "p_town_3"),
+      (str_store_party_name_link, s3, "p_town_13"),
       (str_store_string, s2, "@Ask about legendary craftsman Farbius in taverns of {s1}, {s2} and {s3}."),
       (display_message, "str_quest_updated"),
       (call_script, "script_start_quest", "qst_pirates", "trp_fortuna"),
@@ -54175,9 +54175,6 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
   +" Your crew can apply it just as well as I can. Take the paint, and buy me a nice latifundium to settle down in as a rich man. What do you say?'",
   "none",[
     (set_background_mesh, "mesh_pic_seabattle"),
-    (str_store_party_name, s4, "p_town_10"),
-    (str_store_party_name, s5, "p_town_14"),
-    (str_store_party_name, s6, "p_town_3"),
     (quest_get_slot, ":quest_party","qst_pirates", slot_quest_target_party),
     (try_begin),
       (party_is_active, ":quest_party"),
