@@ -4891,8 +4891,6 @@ presentations = [
             (gt, ":enterprise_output", 1),
             (neg|party_slot_ge, ":center_no", slot_center_player_enterprise_days_until_complete, 1),
 
-            (str_store_party_name, s0, ":center_no"),
-
             (call_script, "script_process_player_enterprise", ":enterprise_output", ":center_no"),
             (assign, ":net_profit", reg0),
             (assign, ":price_of_single_output", reg4),
@@ -5022,11 +5020,11 @@ presentations = [
                 (try_end),
             (try_end),
 
-            (call_script, "script_get_enterprise_name", ":enterprise_output"),
-            (str_store_string, s5, reg0),
-
             (try_begin),
                 (eq, "$g_presentation_credits_obj_3_alpha", 1),
+                (call_script, "script_get_enterprise_name", ":enterprise_output"),
+                (str_store_string, s5, reg0),
+                (str_store_party_name, s0, ":center_no"),
                 (create_text_overlay, reg1, "str_enterprise_s5_at_s0", 0),
                 (position_set_x, pos1, 900),
                 (position_set_y, pos1, 900),
