@@ -20166,35 +20166,33 @@ mission_templates = [
     ]
   ),
 
-  ("starting_mission", mtf_battle_mode,charge,
-    "monasterio",
-    [
-      (0,mtef_scene_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (1,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_butchering_knife]),
-      (2,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed, 1,[itm_wooden_stick]),
-      (3,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_pickaxe]),
-      (4,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_warhammer]),
-      (5,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_hammer]),
-      (6,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_warhammer]),
-      (7,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_pitch_fork]),
-      (8,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_scythe]),
-      (9,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_mace_1]),
-      (10,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_butchering_knife]),
-      (11,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_hammer]),
-      (12,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_pitch_fork]),
-      (13,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-      (14,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-      (15,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-      (16,mtef_visitor_source|mtef_team_0,af_override_everything,0,1,[itm_roman_gladius,itm_roman_toga,itm_caligea]),
-      (17,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
-      (18,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-      (19,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
-      (20,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
-      (21,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
-      (22,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[]),
-    ], p_wetter + global_common_triggers+
-    [
-      cannot_spawn_commoners,
+  ("starting_mission", mtf_battle_mode,charge,"monasterio",[
+    (0,mtef_scene_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (1,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_butchering_knife]),
+    (2,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed, 1,[itm_wooden_stick]),
+    (3,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_pickaxe]),
+    (4,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_warhammer]),
+    (5,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_hammer]),
+    (6,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_warhammer]),
+    (7,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_pitch_fork]),
+    (8,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_scythe]),
+    (9,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_mace_1]),
+    (10,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_butchering_knife]),
+    (11,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_hammer]),
+    (12,mtef_visitor_source|mtef_team_1,af_override_weapons,aif_start_alarmed,1,[itm_pitch_fork]),
+    (13,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (14,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (15,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (16,mtef_visitor_source|mtef_team_0,af_override_everything,0,1,[itm_roman_gladius,itm_roman_toga,itm_caligea]),
+    (17,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
+    (18,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (19,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
+    (20,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
+    (21,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
+    (22,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[]),
+  ], p_wetter + global_common_triggers+
+  [
+    cannot_spawn_commoners,
     improved_lightning,
     (ti_before_mission_start, 0, 0, [(eq, "$temp", 0),],[
       (team_set_relation, 0, 1, 1),
@@ -20275,37 +20273,35 @@ mission_templates = [
       wounds_vc,
       (ti_tab_pressed, 0, 0, [(display_message,"str_cannot_leave_now")], []),
 
-      (3, 0, ti_once, #normal mode
-        [ (this_or_next|main_hero_fallen),
-          (num_active_teams_le, 1),
-        ],
-        [
-#keep looted items
-    (get_player_agent_no, ":player"),
-    (try_for_range, ":item_slot", ek_item_0, ek_horse),
-        (agent_get_item_slot, ":slot_item", ":player", ":item_slot"),
-        (troop_set_inventory_slot, "trp_player", ":item_slot", ":slot_item"),
-    (try_end),
-    (jump_to_menu, "mnu_starting_mission_finished"),
-    (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
-    (finish_mission,4),
-      ]),
-    ]+dplmc_battle_mode_triggers,
-    ),
+    (3, 0, ti_once,[
+      (this_or_next|main_hero_fallen),
+      (num_active_teams_le, 1),
+    ],[
+      #keep looted items
+      (get_player_agent_no, ":player"),
+      (try_for_range, ":item_slot", ek_item_0, ek_horse),
+          (agent_get_item_slot, ":slot_item", ":player", ":item_slot"),
+          (troop_set_inventory_slot, "trp_player", ":item_slot", ":slot_item"),
+      (try_end),
+      (jump_to_menu, "mnu_starting_mission_finished"),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+      (finish_mission, 4),
+    ]),
+  ]+dplmc_battle_mode_triggers,
+),
 
 ("roman_intro_1", mtf_battle_mode,charge,
-    "monasterio",
-    [
-      (0,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-      (1,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-      (2,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-      (3,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-      (4,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-      (5,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-      (6,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-    ], p_wetter + global_common_triggers +
-    [
-      cannot_spawn_commoners,
+  "monasterio",[
+    (0,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
+    (1,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
+    (2,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
+    (3,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
+    (4,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
+    (5,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
+    (6,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
+  ], p_wetter + global_common_triggers +
+  [
+    cannot_spawn_commoners,
     improved_lightning,
     common_inventory_not_available,
     wounds_vc,
@@ -20338,9 +20334,8 @@ mission_templates = [
       (try_end),
       (eq,":continue",1),
       (mission_enable_talk),
-    ],
-    [
-    (start_mission_conversation, "trp_old_man"),
+    ],[
+      (start_mission_conversation, "trp_old_man"),
     ]),
 
     (0,0,ti_once,[],
