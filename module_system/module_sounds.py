@@ -118,7 +118,7 @@ sounds = [
    ("man_hit",sf_priority_7|sf_vol_7, ["man_hit_5.wav","man_hit_6.wav","man_hit_7.wav","man_hit_8.wav","man_hit_9.wav","man_hit_10.wav","man_hit_11.wav","man_hit_12.wav","man_hit_13.wav","man_hit_14.wav","man_hit_15.wav","man_hit_17.wav","man_hit_18.wav","man_hit_19.wav","man_hit_22.wav","man_hit_29.wav","man_hit_32.wav","man_hit_47.wav","man_hit_57.wav","man_hit_59.wav"]),
    ("man_die",sf_priority_10|sf_vol_8,  ["man_death_1.wav","man_death_8.wav","man_death_8b.wav","man_death_11.wav","man_death_14.wav","man_death_16.wav","man_death_18.wav","man_death_21.wav","man_death_29.wav","man_death_40.wav","man_death_44.wav","man_death_46.wav","man_death_48.wav","man_death_64.wav"]),# ["man_fall_1.wav","man_fall_2.wav","man_fall_3.wav","man_fall_4.wav"]),
    ("woman_hit",sf_priority_7, ["woman_hit_2.wav","woman_hit_3.wav","woman_hit_b_2.wav","woman_hit_b_4.wav","woman_hit_b_6.wav","woman_hit_b_7.wav","woman_hit_b_8.wav","woman_hit_b_11.wav","woman_hit_b_14.wav","woman_hit_b_16.wav"]),
-   ("woman_die",sf_priority_10|sf_vol_9, ["woman_fall_1.wav","woman_hit_b_5.wav"]),
+   ("woman_die",sf_priority_10|sf_vol_9, ["woman_death_3.wav","woman_death_4.wav","woman_death_5.wav","woman_death_6.wav","woman_death_7.wav","woman_death_8.wav","woman_death_9.wav","woman_death_10.wav","woman_death_11.wav","woman_death_12.wav","woman_death_13.wav","woman_death_14.wav","woman_death_15.wav"]),
    ("woman_yell",sf_priority_8|sf_vol_9, ["woman_yell_1.wav","woman_yell_2.wav"]),
    ("hide",sf_stream_from_hd, ["s_hide.wav"]),
    ("unhide",sf_stream_from_hd, ["s_unhide.wav"]),
