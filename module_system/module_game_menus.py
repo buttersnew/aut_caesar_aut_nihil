@@ -17335,9 +17335,8 @@ game_menus = [
           (try_begin),
               (neg|check_quest_active, "qst_elysium"),
               (quest_slot_eq, "qst_elysium", slot_quest_current_state,0),
-              (this_or_next|eq, "$current_town", "p_town_6"),
-              (this_or_next|eq, "$current_town", "p_town_34"),
-              (eq, "$current_town", "p_town_28"),
+              (this_or_next|eq, "$current_town", "p_town_37"),
+              (eq, "$current_town", "p_town_13"),
               (neq, "$g_is_emperor", 1),
               (set_visitor, 42, "trp_drunken_sailor"),
           (else_try),
@@ -37026,27 +37025,20 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (assign, "$g_tournament_bet_win_amount", 1),#for remove of opponents
       ]),                         ]),
 
-
-
-    (
-    "olympia_give_up",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "Are you sure you want to give up? You would lose the Olympic games.",
-    "none",
-    [
+("olympia_give_up",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
+  "Are you sure you want to give up? You would lose the Olympic games.",
+  "none",[
     (str_store_troop_name, s11, "$g_notification_menu_var1"),
     (set_background_mesh, "mesh_pic_orgie"),
-    ],
-
-    [
-    ("leave",[],"Yes, it is pointless.",[
+  ],[
+  ("leave",[],"Yes, it is pointless.",[
     (change_screen_map),
     (call_script, "script_games_over"),
-      ]),
-    ("leave",[],"No, I will continue fighting.",[
+  ]),
+  ("leave",[],"No, I will continue fighting.",[
     (jump_to_menu, "$g_next_menu"),
-      ]),
-
-    ]),
+  ]),
+]),
 
     (
     "games_over",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
@@ -39068,21 +39060,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (try_end),
     ]),
 
-    ("answere_2",[],"Visit the Mount Olymp.",[
-      (modify_visitors_at_site, "scn_mount_olymp"),
-      (reset_visitors),
-      (set_jump_mission, "mt_mount_olymp"),
-      (set_visitor, 0, "trp_player"),
-
-      (try_begin),
-          (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
-          (assign, "$g_start_belligerent_drunk_fight", 0),
-          (set_visitor, 1, "trp_wild_cat"),
-      (try_end),
-
-      (jump_to_scene, "scn_mount_olymp"),
-      (change_screen_mission),
-    ], "Leave."),
     ("answere_2",[],"Visit this place.",[
       (modify_visitors_at_site, "scn_olympia"),
       (reset_visitors),
@@ -39137,6 +39114,37 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (change_screen_return),
       ]
     ),
+
+    ("answere_1",[],"Leave.",
+      [
+	      (change_screen_map),
+      ]
+    ),
+]),
+
+("mount_olymp",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
+  "Ascending through the ancient forest, you emerge onto a hilltop, greeted by a panoramic view that unveils the majestic Mount Olympus."
+  +" Bathed in the warm hues of the setting sun, the snow-capped peaks stand proudly against the sky, a beacon of mythical allure."
+  +" The landscape below teems with ancient ruins and lush valleys, enticing you to embark on an adventure steeped in legend."
+  +" With a surge of determination, you're drawn towards this iconic mountain, ready to unravel the mysteries that await on its storied slopes.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+	],[
+    ("answere_1",[],"Explore the place.",[
+      (modify_visitors_at_site, "scn_mount_olymp"),
+      (reset_visitors),
+      (set_jump_mission, "mt_mount_olymp"),
+      (set_visitor, 0, "trp_player"),
+
+      (try_begin),
+          (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
+          (assign, "$g_start_belligerent_drunk_fight", 0),
+          (set_visitor, 1, "trp_wild_cat"),
+      (try_end),
+
+      (jump_to_scene, "scn_mount_olymp"),
+      (change_screen_mission),
+    ], "Leave."),
     ("monasterio_recruitm",[
       (eq, 0, 1),
     ],"Enter the cave",[
@@ -56230,55 +56238,50 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
 ("aslan_end",0,
   "{s15}",
-    "none", [
-      (try_begin),
-          (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
-          (str_store_string,s15, "str_aslan_fight"),
-          (troop_add_item, "trp_player", "itm_aslans_fur"),
-      (else_try),
-          (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, 1),
-          (str_store_string,s15, "str_aslan_help"),
-      (try_end),
-      (set_background_mesh, "mesh_pic_deserters"),
-      (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 6),
-      (str_store_party_name_link, s23, "p_village_71"),
-      (add_quest_note_from_sreg, "qst_amor_quest", 2, "@Return to the local leader of {s23} to obtain the arrow of Cupid.", 0),
-      (display_message, "str_quest_updated"),
-      (play_sound, "snd_quest_concluded"),
+  "none", [
+    (try_begin),
+        (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
+        (str_store_string,s15, "str_aslan_fight"),
+        (troop_add_item, "trp_player", "itm_aslans_fur"),
+    (else_try),
+        (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, 1),
+        (str_store_string,s15, "str_aslan_help"),
+    (try_end),
+    (set_background_mesh, "mesh_pic_deserters"),
+    (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 6),
+    (str_store_party_name_link, s23, "p_village_155"),
+    (add_quest_note_from_sreg, "qst_amor_quest", 2, "@Return to the local leader of {s23} to obtain the arrow of Cupid.", 0),
+    (display_message, "str_quest_updated"),
+    (play_sound, "snd_quest_concluded"),
   ],[
-    ("option_1",[],"Continue.",[
-      (add_xp_as_reward, 1500),
-      (change_screen_map),
-    ]),
+  ("option_1",[],"Continue.",[
+    (add_xp_as_reward, 5000),
+    (change_screen_map),
+  ]),
 ]),
 
 ("tristitia_watching",0,
-    "Tristitia prepares the meal, with the help of two slaves. The slaves work with pleasure and without compulsion. She never uses a stick or threatens the whip, as is customary with others. Obviously, the slaves like their masters.^Then she collects flowers and sets up a table in the garden. A little later her husband arrives. He has a flower with him that he sticks in her hair. Then they take seat and start their meal. You continue to observe until they finished their dinner.^^They seem to love each other very much. For you, a man who has seen all kinds of cruelty their relationship seems to be perfect: They live in a peaceful village, have a decent amount of wealth, love each other and treat their slaves well. The horrors of poverty, violence and war are as remote as anywhere else in the Roman Empire.^You could find nothing that hints to what Desperatius claimed. Overall, they seem to be happy together."+
-"^^To proceed with Desperatius plan would mean to destroy this peaceful place. After a while of thinking you come to the following conclusions:^"+
-"If you should refuse to help Desperatius, he will for sure destroy their relationship on his own, and on top of that you wont see any reward.^"+
-"On the other hand, the only way to claim your reward would be to destroy their relationship.^A possible third way would be to find another woman for Desperatius, but he seems to be too stubborn.^^In any case, it is the best to return to him and explain the situation.",
-    "none", [
+  "Tristitia prepares the meal, with the help of two slaves. The slaves work with pleasure and without compulsion. She never uses a stick or threatens the whip, as is customary with others. Obviously, the slaves like their masters.^Then she collects flowers and sets up a table in the garden. A little later her husband arrives. He has a flower with him that he sticks in her hair. Then they take seat and start their meal. You continue to observe until they finished their dinner.^^They seem to love each other very much. For you, a man who has seen all kinds of cruelty their relationship seems to be perfect: They live in a peaceful village, have a decent amount of wealth, love each other and treat their slaves well. The horrors of poverty, violence and war are as remote as anywhere else in the Roman Empire.^You could find nothing that hints to what Desperatius claimed. Overall, they seem to be happy together."+
+  "^^To proceed with Desperatius plan would mean to destroy this peaceful place. After a while of thinking you come to the following conclusions:^"+
+  "If you should refuse to help Desperatius, he will for sure destroy their relationship on his own, and on top of that you wont see any reward.^"+
+  "On the other hand, the only way to claim your reward would be to destroy their relationship.^A possible third way would be to find another woman for Desperatius, but he seems to be too stubborn.^^In any case, it is the best to return to him and explain the situation.",
+  "none", [
     (set_background_mesh, "mesh_pic_woman"),
-
     (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 9),
     (str_store_party_name_link, s23, "p_town_3"),
     (add_quest_note_from_sreg, "qst_amor_quest", 2, "@Return to {s23} and confront Desperatius with the information you collected.", 0),
     (display_message, "str_quest_updated"),
     (play_sound, "snd_quest_concluded"),
+  ],[
+    ("option_1",[],"Continue...",[
+      (add_xp_as_reward, 500),
+      (change_screen_map),
+    ]),
+]),
 
-    ],
-
-    [("option_1",[],"Continue...",
-        [
-        (add_xp_as_reward, 500),
-        (change_screen_map),
-      ]),
-    ],
-  ),
-
-  ("amor_quest_fin",0,
-    "You should now travel to Patrae and inform Tristitia about Desperatius scheme. Otherwise misfortune will happen.",
-    "none", [
+("amor_quest_fin",0,
+  "You should now travel to Patrae and inform Tristitia about Desperatius scheme. Otherwise misfortune will happen.",
+  "none", [
     (set_background_mesh, "mesh_pic_villa"),
 
     (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 10),
@@ -56290,16 +56293,12 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     (add_quest_note_from_sreg, "qst_amor_quest", 7, "@You have {reg0} days to finish this quest.", 0),
     (display_message, "str_quest_updated"),
     (play_sound, "snd_quest_concluded"),
-
-    ],
-
-    [("option_1",[],"Continue...",
-        [
-        (add_xp_as_reward, 500),
-        (change_screen_map),
-      ]),
-    ],
-  ),
+  ],[
+  ("option_1",[],"Continue...",[
+    (add_xp_as_reward, 500),
+    (change_screen_map),
+  ]),
+]),
 
   ("tristitia_goat",0,
     "You hear the following rumors about a woman living in the village of Patrae in Greece:\

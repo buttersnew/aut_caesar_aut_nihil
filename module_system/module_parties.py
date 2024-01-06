@@ -575,7 +575,9 @@ parties = [
 ("caves_of_bacchus", "Caves of Dionysus", icon_map_bandit_lair|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-92.95, 20.74), [], 269), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-135.47, 17.83)
 ("sacred_grove", "Old grave", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-240.74, -15.01), [], 269), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-256.03, -7.23)
 ("sacred_grove_2", "Sacred forest", icon_forest|pf_village|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-137.03, 107.23), [], 180), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83)
-("royal_tombs", "Royal Macedonian tombs", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-38.38, 7.96), [], 180), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
+("royal_tombs", "Royal Macedonian tombs", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-43.48, 13.68), [], 180), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
+("mount_olymp", "Mount Olymp", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-38.38, 7.96), [], 180), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
+
 ("old_mine", "Old mine", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-275.72, 45.67), [(trp_mercenary_swordsman, 50, 0),(trp_hispanic_infantry, 50, 0), (trp_hispanic_heavy_infantry, 50, 0)], 180), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
 
 #special places
@@ -590,7 +592,13 @@ parties = [
 ("dahae_town_1", "Kath", icon_village_barbarian|pf_town, no_menu, pt_none, fac_dahae, 0, ai_bhvr_hold, 0,  (233,87), []),               #[swycartographr] prev. coords: (-12.09, -149.44) rot: 0 #[swycartographr] prev. coords: (-13.18, -149.1) #[swycartographr] prev. coords: (-247, 147) #[swycartographr] prev. coords: (-249.3, 150.16) #[swycartographr] prev. coords: (-87.54, 130.86) #[swycartographr] prev. coords: (-28.63, 143.37) #[swycartographr] prev. coords: (-27.04, 131.27) #[swycartographr] prev. coords: (-38.38, 138.39) #[swycartographr] prev. coords: (-41.63, 145.65)
 
 ("sartemis", "Hanging Gardens of Babylon", icon_sartemis_icon|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (164.16, -24.18), [], 90), #[swycartographr] prev. coords: (75.642, -22.953) #[swycartographr] prev. coords: (128.39, -29.25) #[swycartographr] prev. coords: (153.95, -17.22)
-("island", "Cythnus", icon_map_island|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-107, -4.08), [], 90),                #[swycartographr] prev. coords: (-156, -6)
+
+# old location
+# ("island", "Cythnus", icon_map_island|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-107, -4.08), [], 90),                #[swycartographr] prev. coords: (-156, -6)
+
+("island", "Cythnus", icon_map_island|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-16.55, -17.71), [], 90),                #[swycartographr] prev. coords: (-156, -6)
+
+
 ("langobard_landing", "Lugian Camp", icon_forest|pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-80.5,150.9), [], 90),
 ("kurgan", "Old burial mound", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (276.077, 90.409), [(trp_saka_amazon, 100, 0)], 135), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
 
