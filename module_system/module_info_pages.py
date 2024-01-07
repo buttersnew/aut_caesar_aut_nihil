@@ -17,40 +17,42 @@ info_pages = [
 ^^ In order for this feature to be enabled, one of the following must be true: someone in your party must have a Looting score of 2 or better, someone in your party must have an Inventory Management score of 3 or better, or the player {him/her}self must have an Inventory Management score of 2 or better.\
 ^^ The desired primary damage types (the higher of any swing/thrust damage) for melee and throwing weapons can be set up here. In addition, players can fine-tune weapon selection for two-handed/one-handed weapons, pikes, lances, and bladed polearms.^^This setting is currently:"),
 ("dplmc_autosell", "Diplomacy Feature: Autosell", "The Autosell feature allows you  to sell many items to a merchant all at once, instead of selling them one at a time. Autosell settings are managed through the Town menu, where you can specify which types of items you want to be able to sell (e.g. you might not want to automatically sell horses) and a price limit (for example, you might not want to automatically sell any items that cost more than 200 denars).^^ There are two primary ways to use autosell.  If you speak to a Horse Merchant, Armorer, or Weapon Merchant in a town, there is a conversation option to sell items of a particular type.  Also, when visiting a town there will be an option in the Marketplace section of the menu to automatically sell your items throughout the town.^^ For people who used Autosell in other mods, note that this sells from your own inventory, according to certain rules.  Items you have equipped will never be sold, and neither will the first three items in your inventory.  After that, autosell also skips anything that it thinks might be your personal equipment (since people often have more than one set).  Regardless of whether you have them equipped, it won't sell your best bow, crossbow, armor, helmet, boots, or gloves. If you have a bow you can use, it won't sell your best three packs of arrows, and if you have a crossbow it won't sell your best three packs of bolts. For shields, one-handed weapons, two-handed weapons, polearms, and horses, it won't sell your best or second-best item. Your best three throwing weapons also will not be sold. However, items that your character is unable to use are considered fair game."),
-("dplmc_policy", "Diplomacy Feature: Policy", "Centralization/Decentralization:\
-^+3 - very centralized. Tax inefficiency for the ruler is reduced by 15%, and increased by 15% to his vassals. Ruler's relations with his vassals should suffer a -3 hit every month. King's army get 30% percent increase, lords' armies get 9% decrease. Imperial administration: +1500 denars maintenance costs for towns, +150 for fortresses. Imperial tax: maximal tax rate is 90%\
-^+2 - quite centralized. Tax inefficiency for the ruler is reduced by 10%,and increased by 10% to his vassals. Ruler's relations with his vassals fiefs should suffer a -2 hit every month. King's army get 20% percent increase, lords' armies get 6% decrease. Imperial administration: +1000 denars maintenance costs for towns, +100 for fortresses. Imperial tax: maximal tax rate is 60%\
-^+1 - slightly centralized. Tax inefficiency for the ruler is reduced by 5%, and increased by 5% to his vassals. Ruler's relations with his vassals fiefs should suffer a -1 hit every month. King's army get 10% percent increase, lords' armies get 3% decrease. Imperial administration: +500 denars maintenance costs for towns, +50 for fortresses. Imperial tax: maximal tax rate is 50%\
-^ 0 - neither decentralized nor centralized. Imperial administration: no additional costs. Imperial tax: maximal tax rate is 40%\
-^-1 - slightly decentralized. Tax inefficiency for the ruler is increased by 5%. Ruler's relations with his vassals increase by +1 every month. King's army get 10% percent decrease, lords' armies get 3% increase. Imperial administration: -500 denars maintenance costs for towns, -50 for fortresses. Imperial tax: maximal tax rate is 30%\
-^-2 - quite decentralized. Tax inefficiency for the ruler is increased by 10%. Ruler's relations with his vassals increase by +2 every month. King's army get 20% percent decrease, lords' armies get 6% increase. Imperial administration: -1000 denars maintenance costs for towns, -100 for fortresses. Imperial tax: maximal tax rate is 25%\
-^-3 - very decentralized. Tax inefficiency for the ruler is increased by 15%. Ruler's relations with his vassals increase by +3 every month. King's army get 30% percent decrease, lords' armies get 9% increase. Imperial administration: -1500 denars maintenance costs for towns, -150 for fortresses. Imperial tax: maximal tax rate is 20%\
-^^Noble rights vs Citizen rights:\
-^+3 - very aristocratic.  Trade decreased by 15%. Kings relations with their lords increased by 3 every month. Vassals armies increased by 9%.\
-^+2 - quite aristocratic. Trade decreased by 10%. Kings relations with their lords increased by 2 every month. Vassals armies increased by 6%.\
-^+1 - somewhat aristocratic. Trade decreased by 5%. Kings relations with their lords increased by 1 every month. Vassals armies increased by 3%.\
-^-1 - somewhat plutocratic. Trade increased by 10%. Kings relations with their lords decreased by 1 every month. Vassals armies decreased by 3%.\
-^-2 - quite plutocratic. Trade increased by 15%. Kings relations with their lords decreased by 2 every month. Vassals armies decreased by 6%.\
-^-3 - very plutocratic. Trade increased by 20%. Kings relations with their lords decreased by 3 every month. Vassals armies decreased by 9%.\
-^^Slave laws:\
-^+3 - almost all serfs.  Tax inefficiency decreased by 9% for both king and his vassals. Troops of the faction suffer a 6% strength malus in AI fights, kingdom army size increased by 6%.\
-^+2 - mostly serfs.  Tax inefficiency decreased by 6% for both king and his vassals. Troops of the faction suffer a 4% strength malus in AI fights, kingdom army size increased by 4%.\
-^+1 - usually serfs.  Tax inefficiency decreased by 3% for both king and his vassals. Troops of the faction suffer a 2% strength malus in AI fights, kingdom army size increased by 2%.\
-^-1 - usually free subjects.  Tax inefficiency increased by 3% for both king and his vassals. Troops of the faction get a 2% strength bonus in AI fights, kingdom army size decreased by 2%.\
-^-2 - mostly free subjects.  Tax inefficiency increased by 6% for both king and his vassals. Troops of the faction get a 4% strength bonus in AI fights, kingdom army size decreased by 4%.\
-^-3 - all free subjects.  Tax inefficiency increased by 9% for both king and his vassals. Troops of the faction get a 6% strength bonus in AI fights, kingdom army size decreased by 6%.\
-^^Quality/Quantity:\
-^+3 - of legendary quality. AI strength of troops increased by 12%, lords' armies decreased by 12%.\
-^+2 - of great quality. AI strength of troops increased by 8%, lords' armies decreased by 8%.\
-^+1 - of good quality. AI strength of troops increased by 4%, lords' armies decreased by 4%.\
-^-1 - of good quanity. AI strength of troops decreased by 4%, lords' armies increased by 4%.\
-^-2 - of great quantity. AI strength of troops decreased by 8%, lords' armies increased by 8%.\
-^-3 - of legendary quantity. AI strength of troops decreased by 12%, lords' armies increased by 12%."),
+# ("dplmc_policy", "Diplomacy Feature: Policy", "Centralization/Decentralization:\
+# ^+3 - very centralized. Tax inefficiency for the ruler is reduced by 15%, and increased by 15% to his vassals. Ruler's relations with his vassals should suffer a -3 hit every month. King's army get 30% percent increase, lords' armies get 9% decrease. Imperial administration: +1500 denars maintenance costs for towns, +150 for fortresses. Imperial tax: maximal tax rate is 90%\
+# ^+2 - quite centralized. Tax inefficiency for the ruler is reduced by 10%,and increased by 10% to his vassals. Ruler's relations with his vassals fiefs should suffer a -2 hit every month. King's army get 20% percent increase, lords' armies get 6% decrease. Imperial administration: +1000 denars maintenance costs for towns, +100 for fortresses. Imperial tax: maximal tax rate is 60%\
+# ^+1 - slightly centralized. Tax inefficiency for the ruler is reduced by 5%, and increased by 5% to his vassals. Ruler's relations with his vassals fiefs should suffer a -1 hit every month. King's army get 10% percent increase, lords' armies get 3% decrease. Imperial administration: +500 denars maintenance costs for towns, +50 for fortresses. Imperial tax: maximal tax rate is 50%\
+# ^ 0 - neither decentralized nor centralized. Imperial administration: no additional costs. Imperial tax: maximal tax rate is 40%\
+# ^-1 - slightly decentralized. Tax inefficiency for the ruler is increased by 5%. Ruler's relations with his vassals increase by +1 every month. King's army get 10% percent decrease, lords' armies get 3% increase. Imperial administration: -500 denars maintenance costs for towns, -50 for fortresses. Imperial tax: maximal tax rate is 30%\
+# ^-2 - quite decentralized. Tax inefficiency for the ruler is increased by 10%. Ruler's relations with his vassals increase by +2 every month. King's army get 20% percent decrease, lords' armies get 6% increase. Imperial administration: -1000 denars maintenance costs for towns, -100 for fortresses. Imperial tax: maximal tax rate is 25%\
+# ^-3 - very decentralized. Tax inefficiency for the ruler is increased by 15%. Ruler's relations with his vassals increase by +3 every month. King's army get 30% percent decrease, lords' armies get 9% increase. Imperial administration: -1500 denars maintenance costs for towns, -150 for fortresses. Imperial tax: maximal tax rate is 20%\
+# ^^Noble rights vs Citizen rights:\
+# ^+3 - very aristocratic.  Trade decreased by 15%. Kings relations with their lords increased by 3 every month. Vassals armies increased by 9%.\
+# ^+2 - quite aristocratic. Trade decreased by 10%. Kings relations with their lords increased by 2 every month. Vassals armies increased by 6%.\
+# ^+1 - somewhat aristocratic. Trade decreased by 5%. Kings relations with their lords increased by 1 every month. Vassals armies increased by 3%.\
+# ^-1 - somewhat plutocratic. Trade increased by 10%. Kings relations with their lords decreased by 1 every month. Vassals armies decreased by 3%.\
+# ^-2 - quite plutocratic. Trade increased by 15%. Kings relations with their lords decreased by 2 every month. Vassals armies decreased by 6%.\
+# ^-3 - very plutocratic. Trade increased by 20%. Kings relations with their lords decreased by 3 every month. Vassals armies decreased by 9%.\
+# ^^Slave laws:\
+# ^+3 - almost all serfs.  Tax inefficiency decreased by 9% for both king and his vassals. Troops of the faction suffer a 6% strength malus in AI fights, kingdom army size increased by 6%.\
+# ^+2 - mostly serfs.  Tax inefficiency decreased by 6% for both king and his vassals. Troops of the faction suffer a 4% strength malus in AI fights, kingdom army size increased by 4%.\
+# ^+1 - usually serfs.  Tax inefficiency decreased by 3% for both king and his vassals. Troops of the faction suffer a 2% strength malus in AI fights, kingdom army size increased by 2%.\
+# ^-1 - usually free subjects.  Tax inefficiency increased by 3% for both king and his vassals. Troops of the faction get a 2% strength bonus in AI fights, kingdom army size decreased by 2%.\
+# ^-2 - mostly free subjects.  Tax inefficiency increased by 6% for both king and his vassals. Troops of the faction get a 4% strength bonus in AI fights, kingdom army size decreased by 4%.\
+# ^-3 - all free subjects.  Tax inefficiency increased by 9% for both king and his vassals. Troops of the faction get a 6% strength bonus in AI fights, kingdom army size decreased by 6%.\
+# ^^Quality/Quantity:\
+# ^+3 - of legendary quality. AI strength of troops increased by 12%, lords' armies decreased by 12%.\
+# ^+2 - of great quality. AI strength of troops increased by 8%, lords' armies decreased by 8%.\
+# ^+1 - of good quality. AI strength of troops increased by 4%, lords' armies decreased by 4%.\
+# ^-1 - of good quanity. AI strength of troops decreased by 4%, lords' armies increased by 4%.\
+# ^-2 - of great quantity. AI strength of troops decreased by 8%, lords' armies increased by 8%.\
+# ^-3 - of legendary quantity. AI strength of troops decreased by 12%, lords' armies increased by 12%."),
 
 ("dplmc_deathcamera", "Diplomacy Feature: Battle Continuation", "Post-battle continuation allow you to watch the battle unfold after being knocked unconscious. Camera key bindings are available from the Diplomacy preference menus. In general numpad keys are used to rotate while movement keys are used to pan the camera. There are three camera modes available."),
 
-("dplmc_disguise", "Diplomacy Feature: Player Disguise", "The player disguise system allows the player to take on the role of various commoners while attempting to sneak into a town. In addition to the original pilgrim robes, players are able to acquire new sets of equipment from merchants and their chamberlains.\
-^ In Native, the chance to be caught depends on the number of men in the party. The new system calculates the chance to be caught based on the player's chosen role instead, but limits what the player can bring in and out of towns in terms of gold and items. The player's inventory will be merged after leaving the town."),
+("dplmc_disguise", "Diplomacy Feature: Player Disguise",
+"The player disguise system allows the player to take on the role of various commoners while attempting to sneak into a town. In addition to the original pilgrim robes, players are able to acquire new sets of equipment from merchants and their chamberlains."
++"^In Native, the chance to be caught depends on the number of men in the party. The new system calculates the chance to be caught based on the player's chosen role instead, but limits what the player can bring in and out of towns in terms of gold and items."
++" The player's inventory will be merged after leaving the town."),
 
 ("dplmc_ai_changes", "Diplomacy Option: Campaign AI", "Low:^\
 ^- Center points for fief allocation are calculated (villages 1 / fortresses 2 / towns 3) instead of (villages 1 / fortresses 1 / towns 2).\
@@ -255,60 +257,61 @@ Commander panel: With an army large than 40 men you have access to the commander
 give a speech (depending on your oratory, persuasion and leadership skill it is either a success or fail) or to send skirmishers to attack the enemy (success depends on your tactics skill).^^\
 Currently the escape change for a hero after battle is: 37%. Note that this also effect the player."),
 
-("names", "Families and Relations", "Every faction consists of lords, who have different relations with other lords.\
- This relations will have also effects on your actions in the game. An example: If you execute a Lord (or Lady) your relationship with all his family members, but also with all his friends will decrease.\
- On the other hand you may even gain relation with enemies of this Lord. Such a system is often used when the player stands before the decision to either support someone or not.\
- In general you can keep the following in mind: If you somehow harm someone (e.g. offending the Emperor in an event), his enemies will like you more, his friends and family members will like you less.\
- On the other hand, if you help someone, his enemies will like you less, while his friends and family members will like you more. Note also that the relations between Lords change during the campaign.\
- But there is something one should keep in mind: Lords with bad personalities, like quarrelsome, will most likely gain many enemies over time.\
- ^^Another note on families: The Roman Empire has the following major families: Sulpicius, Vitellius, Cornelius, Fabius, Salvius Otho, Flavius. One can recognize them via the names of the Lords and Ladies.\
- A Lord from the Flavius family usually names X Flavius, while a woman usually names Flavia Y, where X stands for a generic Roman male name and Y for a generic Roman female name.\
- This may helps you to recognize which Lords/Ladis belong together."),
+# ("names", "Families and Relations", "Every faction consists of lords, who have different relations with other lords.\
+#  This relations will have also effects on your actions in the game. An example: If you execute a Lord (or Lady) your relationship with all his family members, but also with all his friends will decrease.\
+#  On the other hand you may even gain relation with enemies of this Lord. Such a system is often used when the player stands before the decision to either support someone or not.\
+#  In general you can keep the following in mind: If you somehow harm someone (e.g. offending the Emperor in an event), his enemies will like you more, his friends and family members will like you less.\
+#  On the other hand, if you help someone, his enemies will like you less, while his friends and family members will like you more. Note also that the relations between Lords change during the campaign.\
+#  But there is something one should keep in mind: Lords with bad personalities, like quarrelsome, will most likely gain many enemies over time.\
+#  ^^Another note on families: The Roman Empire has the following major families: Sulpicius, Vitellius, Cornelius, Fabius, Salvius Otho, Flavius. One can recognize them via the names of the Lords and Ladies.\
+#  A Lord from the Flavius family usually names X Flavius, while a woman usually names Flavia Y, where X stands for a generic Roman male name and Y for a generic Roman female name.\
+#  This may helps you to recognize which Lords/Ladis belong together."),
 
-("roman_empire", "Roman Empire", "Roman Administration:^\
- The Roman Empire is not a feudal state. It has a huge and complex imperial administration.\
- In this mod the Roman administration is represented by governors. Governors only command a little army, a 'bodyguard', which allows them to case bandits.\
- They rule and manage most of the Roman provinces and must pay a part of their income to the Emperor. the Emperor then distributes those funds to the Empire\
- (or buy some nice clothes or host parties etc.).^^\
- Roman military:^\
- The legions and Auxiliary troops fight the wars of Rome. Only a Auxiliary commander or a legatus legionis (commander of a legion) will join military campaigns.\
- There are 11 legions and the Praetorian guard. The Praetorian guard is the 'bodyguard' of the Emperor. The Praefect of the Praetorian guard has an important position. \
- He can decide who becomes Emperor and who not. In fact he could make any poor, smelly peasant Emperor of Rome.^^\
- Military Ranks:^\
- There are two ways for the player to join the Roman faction: Either through raising from a common soldier to a officer position or by bribing officials.\
- Here are all ranks listed, in parenthesis the respective ranks of the Praetorian guard are displayed:^\
- ^Soldier ranks:\
- ^Tiro  (Probatus), requirement: 100 progress points\
- ^Miles  (Immunes), requirement: 200 progress points\
- ^Low officer ranks:\
- ^Optio  (Optio), can command 30 men in battle, requirement: 300 progress points\
- ^Centurio  (Centurio), can command 60 men in battle,, requirement: 400 progress points\
- ^Centurio primi ordinis  (Centurio primi ordinis), can command 70 men in battle,, requirement: 500 progress points\
- ^Centurio primus pilus  (Centurio primus pilus), can command 80 men in battle,, requirement: 600 progress points\
- ^Tribunus laticlavius  (Tribunus urbanae), can command 90 men in battle,, requirement: 700 progress points\
- ^High officer ranks:\
- ^Tribunus militaris, minimum party limit of 100 soldiers (further adjusted by player leadership skill and marshal bonus), requirement: either ask any Roman lord 'I want to join the army of Rome as officer.' or work your way through the lower ranks.\
- ^Praefectus cohortis, minimum party limit of 200 soldiers (further adjusted by player leadership skill and marshal bonus), requirement: 300 renown, at least 10 relation with Emperor, level 10\
- ^Legatus Legionis, minimum party limit of 500 soldiers (further adjusted by player leadership skill and marshal bonus),, requirement: 450 renown, at least 25 relation with Emperor, level 20^^\
- How does promotion work?^\
- As soldier serving in one of the legions you will get an event which informs you about the promotion. As high-rank officer once the requirements are met there is a chance of 35% percent that you get promoted every three days. Alternatively you can also talk with Princeps Nero and ask him for promotion.^^\
-  Becoming Emperor^\
- Also you, the player, have the possibility to become Emperor of Rome. You must simply control the city of Rome, then you can claim the title.\
-^There is also another way, if you have important friends, like the Praefect of the Praetorian guard, you may get the possibility to take advantage of certain crises and kill\
- the Emperor. If you want to be Emperor of Rome, it is always a good idea to have the Praetorian guard on your side.^^\
- Cursus honorum and Honrary titles:^\
- The offices of the republic still exists during imperial time although they lost most of its influence and became mainly honorary titles. In the game, the titles are assigned by the Emperor (speak with your minister once you are Emperor to assign them).^\
- There are four different titles with different effects:^\
- 1. Quaestor: renown wont go below 250, can start senate meetings, can steal taxes of Rome (talk with Praefectus in Rome, who can be found in the Scriptorium and say: 'The Emperor has send me to collect a special tax...', can be used once every week)^\
- 2. Aedile: renown wont go below 300, can start senate meetings, can steal taxes, can host games in towns^\
- 3. Consul: renown wont go below 350, can start senate meetings, can hold triumph march, can host games in towns^\
- 4. Censor: renown wont go below 400, can start senate meetings, can steal imperial taxes (visit the senate and use: 'Inspect the imperial treasury.' high penalty if you are caught), can host games^^\
- Titles are awarded by the Emperor. The following ways to obtain a title are possible for the player:^\
- -) Player can get awarded a title, if an AI lord holding a title loses it. (AI lords will lose their title if their relation with Nero drops down. The Nero decides to revoke the title if he finds someone suitable to give the title. The new candidate must have high relation with Nero, high renown, low controversy)^\
- -) As a reward for special quests.^\
- -) By asking the Emperor for a reward.^\
- -) By bribing a high renown lord who has good relations with the Emperor.^\
-"),
+# ("roman_empire", "Roman Empire", "Roman Administration:^\
+#  The Roman Empire is not a feudal state. It has a huge and complex imperial administration.\
+#  In this mod the Roman administration is represented by governors. Governors only command a little army, a 'bodyguard', which allows them to case bandits.\
+#  They rule and manage most of the Roman provinces and must pay a part of their income to the Emperor. the Emperor then distributes those funds to the Empire\
+#  (or buy some nice clothes or host parties etc.).^^\
+#  Roman military:^\
+#  The legions and Auxiliary troops fight the wars of Rome. Only a Auxiliary commander or a legatus legionis (commander of a legion) will join military campaigns.\
+#  There are 11 legions and the Praetorian guard. The Praetorian guard is the 'bodyguard' of the Emperor. The Praefect of the Praetorian guard has an important position. \
+#  He can decide who becomes Emperor and who not. In fact he could make any poor, smelly peasant Emperor of Rome.^^\
+#  Military Ranks:^\
+#  There are two ways for the player to join the Roman faction: Either through raising from a common soldier to a officer position or by bribing officials.\
+#  Here are all ranks listed, in parenthesis the respective ranks of the Praetorian guard are displayed:^\
+#  ^Soldier ranks:\
+#  ^Tiro  (Probatus), requirement: 100 progress points\
+#  ^Miles  (Immunes), requirement: 200 progress points\
+#  ^Low officer ranks:\
+#  ^Optio  (Optio), can command 30 men in battle, requirement: 300 progress points\
+#  ^Centurio  (Centurio), can command 60 men in battle,, requirement: 400 progress points\
+#  ^Centurio primi ordinis  (Centurio primi ordinis), can command 70 men in battle,, requirement: 500 progress points\
+#  ^Centurio primus pilus  (Centurio primus pilus), can command 80 men in battle,, requirement: 600 progress points\
+#  ^Tribunus laticlavius  (Tribunus urbanae), can command 90 men in battle,, requirement: 700 progress points\
+#  ^High officer ranks:\
+#  ^Tribunus militaris, minimum party limit of 100 soldiers (further adjusted by player leadership skill and marshal bonus), requirement: either ask any Roman lord 'I want to join the army of Rome as officer.' or work your way through the lower ranks.\
+#  ^Praefectus cohortis, minimum party limit of 200 soldiers (further adjusted by player leadership skill and marshal bonus), requirement: 300 renown, at least 10 relation with Emperor, level 10\
+#  ^Legatus Legionis, minimum party limit of 500 soldiers (further adjusted by player leadership skill and marshal bonus),, requirement: 450 renown, at least 25 relation with Emperor, level 20^^\
+#  How does promotion work?^\
+#  As soldier serving in one of the legions you will get an event which informs you about the promotion. As high-rank officer once the requirements are met there is a chance of 35% percent that you get promoted every three days. Alternatively you can also talk with Princeps Nero and ask him for promotion.^^\
+#   Becoming Emperor^\
+#  Also you, the player, have the possibility to become Emperor of Rome. You must simply control the city of Rome, then you can claim the title.\
+# ^There is also another way, if you have important friends, like the Praefect of the Praetorian guard, you may get the possibility to take advantage of certain crises and kill\
+#  the Emperor. If you want to be Emperor of Rome, it is always a good idea to have the Praetorian guard on your side.^^\
+#  Cursus honorum and Honrary titles:^\
+#  The offices of the republic still exists during imperial time although they lost most of its influence and became mainly honorary titles. In the game, the titles are assigned by the Emperor (speak with your minister once you are Emperor to assign them).^\
+#  There are four different titles with different effects:^\
+#  1. Quaestor: renown wont go below 250, can start senate meetings, can steal taxes of Rome (talk with Praefectus in Rome, who can be found in the Scriptorium and say: 'The Emperor has send me to collect a special tax...', can be used once every week)^\
+#  2. Aedile: renown wont go below 300, can start senate meetings, can steal taxes, can host games in towns^\
+#  3. Consul: renown wont go below 350, can start senate meetings, can hold triumph march, can host games in towns^\
+#  4. Censor: renown wont go below 400, can start senate meetings, can steal imperial taxes (visit the senate and use: 'Inspect the imperial treasury.' high penalty if you are caught), can host games^^\
+#  Titles are awarded by the Emperor. The following ways to obtain a title are possible for the player:^\
+#  -) Player can get awarded a title, if an AI lord holding a title loses it. (AI lords will lose their title if their relation with Nero drops down. The Nero decides to revoke the title if he finds someone suitable to give the title. The new candidate must have high relation with Nero, high renown, low controversy)^\
+#  -) As a reward for special quests.^\
+#  -) By asking the Emperor for a reward.^\
+#  -) By bribing a high renown lord who has good relations with the Emperor.^\
+# "),
+
 ("army_stances", "Party stances and Ambushes", "Quite similar to games from the Total War series you can order your party a stance. There are three different stances:^^\
 - Default: No effects^\
 - Screening: Your party will march more careful and try to avoid ambushes (probability reduced by 50%), but this will decrease movement speed by 30%^\
@@ -343,57 +346,57 @@ which the enemy has laid. Additionally, on the battlefield you will encounter bu
  the maximum is 10 moral points)^You can also improve your party moral with the help of priests\
  ^The Roman Army offers other ways to improve moral through disciplinary action, talk to your officers to get access to them.^Resting at towns and forts regularly also improves moral. If you don't rest regularly your party will accumulate a moral penalty. (this feature can be disabled in options)"),
 
- ("economy", "Changes to Economy", "Rents ^\
-Rents are calculated in a much different way than native. Firstly, on a weekly average the wealth of a center is calculated (its \
-not the same as prosperity rating). The wealth formula takes into account the various things a village or town or fortress produces. \
-(this information can be found in the town or village or fortress menu)\
-It also takes into account the season, i.e. villages with many acres of grain will generate more wealth during harvest. \
-The wealth is then taxed, using a certain taxrate. The player can choose between 5 different tax rates: very low (20%), low (30%), \
-normal (40%), high (50%), very high (60%) (like in diplomacy), the AI chooses also a taxrate, depending on how much money the AI has \
-(the less the AI has, the more the AI will tax). \
-High tax rates are usually problematic, and the player should avoid it if possible. (or riots can occur like in diplomacy) \
-There are two different random events which can lower the rents and prosperity (and also inflict damage to the garrison) of a village/town/fortress: diseases and fires. \
-(if you enact the garbage collection law and build a fire fighters building you can lower the damage those events have and \
-lower the probability that they occur) \
-Of course, if a village gets raided it won't generate any wealth nor any rents. \
-Harvest time is in July, August and September.\
-^^\
-Imperial taxation^\
-Every governor (so lords who dont command a legion nor a auxiliary unit) must pay some fraction of their wealth to the Emperor. \
-The taxrate can be set by the player, if he is the Emperor. The AI emperor Nero wont change the taxrate (its 20%). \
-If the player owns a village or fortress or town, he must pay taxes too (but note, that only the rents of the village or fortresses or towns you \
-own are taxed, for enterprises or other sources of income you don't have to pay a tax). \
-^^\
-Empire maintenance^\
-The emperor must pay empire maintenance. For every fortress, you must pay either 1100 denars (hard campaign difficulty), 1000 denars (medium campaign difficulty) or 900 denars (poor campaign difficulty), and for every town 5000 denars (hard campaign difficulty), 4000 denars (medium campaign difficulty) or 3000 denars (poor campaign difficulty), which are owned by \
-the Empire. The lex julia et papia increases the costs by 1000 denars per town and the lex frumentaria by 500 denars per town \
-and per fortress. The edictum securitas publicas also increases the maintenance costs by 400 denars per town and per fortress. The Lex Alimenta adds another 300 denars per walled center. Additionally, the centralization level effects maintenance costs too (see 'Diplomacy Feature: Policy')\
-^^\
-Tax inefficiency^\
-At some point, tax  inefficiency will become the main reason why you have a negative income and there are ways to lower it. \
-First of all, how is tax inefficiency calculated: \
-Tax inefficiency only occurs, if you own more centers (if you are Emperor, all centers of your faction are taken into account, \
-if you are a common lord, only the ones you really own) than a certain threshold. The threshold depends on campaign difficulty, \
-your relation with your prime minister (roughly speaking higher relation, less tax loses), and if you have hired the additional \
-tax collectors. It is possible to gain a certain percentage of lost taxes back (if you have a quaestor (=chamberlain) the percentage \
-is shown in brackets in the weekly budget report). The percentage is effected by: You gain 10% points for having a quaestor or chamberlain, \
-12% points for having the additional tax collectors and 3% points for having the census conducted. \
-To sum up, if you want to lower tax inefficiency increase your minister relation (higher than 50 is optimal), higher a chamberlain, \
-hire additional tax collectors and conduct a census (if you are emperor). \
-^^\
-Note, that lords may build buildings too, if they have enough funds. The construction time and costs are modified by: \
-faction serfdom: the higher the faster it will be build, engineer skill of the town lord. Additionally, building time will be reduced by prisoners in the town. (this applies for AI lords and player) \
-^^\
-Note, that whenever a town or fortress is sacked, there is a probability of 60 percent that a building will be destroyed. \
-Forums, Theatres, Triumphal arches, baths and barracks can't be destroyed at all. \
-^^\
-An additional way of income is through slaves: You can let your slaves work in villages you own. Each slave will generate between \
-60 and 100 denars additional rents. If the village has iron or silver deposits, additional 40 denars will be added, if it has iron \
-or silver mine building constructed, additional 40 denars will be added. To place your slaves in the mine, you must own the village, \
-and you must construct a manor first. Then you can manage the prisoners and garrison. Place the slaves simply as prisoners \
-in your village. You shouldn't add more than 100 slaves, otherwise, there is a certain probability that they escape and spawn \
-as bandits next to your village. Also, if the village is raided, slaves can escape.^^\
-The AI will sell prisoners from towns, fortresses and villages over time. The new money will be distributed between the lord and his fiefs."),
+#  ("economy", "Changes to Economy", "Rents ^\
+# Rents are calculated in a much different way than native. Firstly, on a weekly average the wealth of a center is calculated (its \
+# not the same as prosperity rating). The wealth formula takes into account the various things a village or town or fortress produces. \
+# (this information can be found in the town or village or fortress menu)\
+# It also takes into account the season, i.e. villages with many acres of grain will generate more wealth during harvest. \
+# The wealth is then taxed, using a certain taxrate. The player can choose between 5 different tax rates: very low (20%), low (30%), \
+# normal (40%), high (50%), very high (60%) (like in diplomacy), the AI chooses also a taxrate, depending on how much money the AI has \
+# (the less the AI has, the more the AI will tax). \
+# High tax rates are usually problematic, and the player should avoid it if possible. (or riots can occur like in diplomacy) \
+# There are two different random events which can lower the rents and prosperity (and also inflict damage to the garrison) of a village/town/fortress: diseases and fires. \
+# (if you enact the garbage collection law and build a fire fighters building you can lower the damage those events have and \
+# lower the probability that they occur) \
+# Of course, if a village gets raided it won't generate any wealth nor any rents. \
+# Harvest time is in July, August and September.\
+# ^^\
+# Imperial taxation^\
+# Every governor (so lords who dont command a legion nor a auxiliary unit) must pay some fraction of their wealth to the Emperor. \
+# The taxrate can be set by the player, if he is the Emperor. The AI emperor Nero wont change the taxrate (its 20%). \
+# If the player owns a village or fortress or town, he must pay taxes too (but note, that only the rents of the village or fortresses or towns you \
+# own are taxed, for enterprises or other sources of income you don't have to pay a tax). \
+# ^^\
+# Empire maintenance^\
+# The emperor must pay empire maintenance. For every fortress, you must pay either 1100 denars (hard campaign difficulty), 1000 denars (medium campaign difficulty) or 900 denars (poor campaign difficulty), and for every town 5000 denars (hard campaign difficulty), 4000 denars (medium campaign difficulty) or 3000 denars (poor campaign difficulty), which are owned by \
+# the Empire. The lex julia et papia increases the costs by 1000 denars per town and the lex frumentaria by 500 denars per town \
+# and per fortress. The edictum securitas publicas also increases the maintenance costs by 400 denars per town and per fortress. The Lex Alimenta adds another 300 denars per walled center. Additionally, the centralization level effects maintenance costs too (see 'Diplomacy Feature: Policy')\
+# ^^\
+# Tax inefficiency^\
+# At some point, tax  inefficiency will become the main reason why you have a negative income and there are ways to lower it. \
+# First of all, how is tax inefficiency calculated: \
+# Tax inefficiency only occurs, if you own more centers (if you are Emperor, all centers of your faction are taken into account, \
+# if you are a common lord, only the ones you really own) than a certain threshold. The threshold depends on campaign difficulty, \
+# your relation with your prime minister (roughly speaking higher relation, less tax loses), and if you have hired the additional \
+# tax collectors. It is possible to gain a certain percentage of lost taxes back (if you have a quaestor (=chamberlain) the percentage \
+# is shown in brackets in the weekly budget report). The percentage is effected by: You gain 10% points for having a quaestor or chamberlain, \
+# 12% points for having the additional tax collectors and 3% points for having the census conducted. \
+# To sum up, if you want to lower tax inefficiency increase your minister relation (higher than 50 is optimal), higher a chamberlain, \
+# hire additional tax collectors and conduct a census (if you are emperor). \
+# ^^\
+# Note, that lords may build buildings too, if they have enough funds. The construction time and costs are modified by: \
+# faction serfdom: the higher the faster it will be build, engineer skill of the town lord. Additionally, building time will be reduced by prisoners in the town. (this applies for AI lords and player) \
+# ^^\
+# Note, that whenever a town or fortress is sacked, there is a probability of 60 percent that a building will be destroyed. \
+# Forums, Theatres, Triumphal arches, baths and barracks can't be destroyed at all. \
+# ^^\
+# An additional way of income is through slaves: You can let your slaves work in villages you own. Each slave will generate between \
+# 60 and 100 denars additional rents. If the village has iron or silver deposits, additional 40 denars will be added, if it has iron \
+# or silver mine building constructed, additional 40 denars will be added. To place your slaves in the mine, you must own the village, \
+# and you must construct a manor first. Then you can manage the prisoners and garrison. Place the slaves simply as prisoners \
+# in your village. You shouldn't add more than 100 slaves, otherwise, there is a certain probability that they escape and spawn \
+# as bandits next to your village. Also, if the village is raided, slaves can escape.^^\
+# The AI will sell prisoners from towns, fortresses and villages over time. The new money will be distributed between the lord and his fiefs."),
 
  # ("courtship", "Changes to courtship", "Additional to the native features, courtship got much more flavour now.^^\
  # There are now additional ways to conquer the heart of a lady: You can now bring her presents (jewellery, ivory or other treasures), do quests for her or simply flirt with her.\
@@ -509,70 +512,70 @@ Use F1-F4 to order selected divisions. Keep the F1 key down to place selected di
 # ^Those slingers are recruited among the shepherds of the Balearic Islands, which train with a sling from childhood, \
 # and are some of the most deadly slingers in the world."),
 
-("latifundium", "Latifunidum", "In the game you can buy land next to the village. Talk with the local leader. You need to have more than 10 relation with the owning faction and at least 250 renown.^^\
-The land you buy will only have one building on it: a grain field.\
-There are buildings which will only produce rents during harvest. Harvest is during Julius, Augustus and September.\
-Those buildings are: grain fields, vineyards, fruit gardens and olive groves. But you can build production sides which will use the goods produced, those are:^^\
--bakery (needs the grain field, when build, the grain field no longer gives you money during harvest, as the grain will be used for the bakery, but the bakery will produce \
-during all months money, additionally, the total yearly income is more than the total yearly income of the grain field),^\
--winepress (needs vineyard, works like the bakery)^\
--oilpress (needs olive grove, works like the bakery)^^\
-There are other buildings which will either add rents or increase the efficiency of the productions.^^\
-Another thing you must consider is your slave population: You need slaves to work on certain buildings and if you don't have enough the efficiency will be lowered. If you have more slaves than needed the efficiency will be increased (every 5 slaves over the limit will make a difference)^\
-You can place 100 slaves to your estate, but you can increase this number if you build a barracks building. Then you can add 200 slaves.\
-^The slave population can grow, but only if you build a wall around your estate, and/or if you build barracks for guards.\
-^^You can also change how your slaves are treated and if manumission happen. The harsher you treat them, the more money you get, but your reputation will decrease. But if you treat them too harsh, and if you allow manumissions to happen very frequently, your slave population will decrease. \
-(Since, once the slaves are free, they will move to another place.)^Also note: The way you treat your slaves will also effect the slaves working in your villages! \
-You can also change the slave treatment by taking with a local leader of a village you own, if you have a manor build there."),
+# ("latifundium", "Latifunidum", "In the game you can buy land next to the village. Talk with the local leader. You need to have more than 10 relation with the owning faction and at least 250 renown.^^\
+# The land you buy will only have one building on it: a grain field.\
+# There are buildings which will only produce rents during harvest. Harvest is during Julius, Augustus and September.\
+# Those buildings are: grain fields, vineyards, fruit gardens and olive groves. But you can build production sides which will use the goods produced, those are:^^\
+# -bakery (needs the grain field, when build, the grain field no longer gives you money during harvest, as the grain will be used for the bakery, but the bakery will produce \
+# during all months money, additionally, the total yearly income is more than the total yearly income of the grain field),^\
+# -winepress (needs vineyard, works like the bakery)^\
+# -oilpress (needs olive grove, works like the bakery)^^\
+# There are other buildings which will either add rents or increase the efficiency of the productions.^^\
+# Another thing you must consider is your slave population: You need slaves to work on certain buildings and if you don't have enough the efficiency will be lowered. If you have more slaves than needed the efficiency will be increased (every 5 slaves over the limit will make a difference)^\
+# You can place 100 slaves to your estate, but you can increase this number if you build a barracks building. Then you can add 200 slaves.\
+# ^The slave population can grow, but only if you build a wall around your estate, and/or if you build barracks for guards.\
+# ^^You can also change how your slaves are treated and if manumission happen. The harsher you treat them, the more money you get, but your reputation will decrease. But if you treat them too harsh, and if you allow manumissions to happen very frequently, your slave population will decrease. \
+# (Since, once the slaves are free, they will move to another place.)^Also note: The way you treat your slaves will also effect the slaves working in your villages! \
+# You can also change the slave treatment by taking with a local leader of a village you own, if you have a manor build there."),
 
-("roman_society", "Roman Society", "The status of a Roman was established by:^\
-Ancestry: patrician or plebeian^\
-Census: rank based on wealth and political privilege, with the senatorial and equestrian ranks elevated above the ordinary citizen^\
-Attainment of honors: the novus homo or self-made man established his family as nobilis (noble) and thus there were noble plebeians^\
-citizenship: of which there were grades with varying rights and privileges.^^\
-In the game this is mostly simulated by renown. If you reach a certain level of renown you are considered as citizen of the Roman Empire."),
+# ("roman_society", "Roman Society", "The status of a Roman was established by:^\
+# Ancestry: patrician or plebeian^\
+# Census: rank based on wealth and political privilege, with the senatorial and equestrian ranks elevated above the ordinary citizen^\
+# Attainment of honors: the novus homo or self-made man established his family as nobilis (noble) and thus there were noble plebeians^\
+# citizenship: of which there were grades with varying rights and privileges.^^\
+# In the game this is mostly simulated by renown. If you reach a certain level of renown you are considered as citizen of the Roman Empire."),
 
-("custom_player_legion", "Custom Player Legion", "You can found your own legion and equip it with Roman weapons and armours.^\
-To do that, you must either have the rank of a legatus legionis, or be Emperor of Rome. Then, visit a barrack in a town or fortress you own and talk with the praetor. He will demand \
-125000 denars. When you have paid you can equip your new troops in the courtyard, by talking with them. You can always change their equipment by talking to the soldiers from the party screen. Finally, \
-you must choose a name for your legion. Now you can recruit your own legion in all your towns or fortresses with a barrack building constructed."),  #copied from str_tactical_controls
-("tryphe", "Tryphe", "Tryphe is a concept that drew attention and severe criticism in Roman antiquity when it became a significant factor in the reign of the Ptolemaic dynasty. \
-Classical authors such as Aeshines and Plutarch condemned the tryphe of Romans such as Crassus and Lucullus, which included lavish dinner parties and ostentatious buildings. But there was more to \
-Ptolemaic tryphe than dissipative excess, which after all can be pursued in residential or geographical seclusion, and for purely private purposes. It was a component of a calculated political strategy, \
-in that it deployed not just conspicuous consumption but \
-also conspicuous magnificence, beneficence and feminine delicacy, as a self-reinforcing cluster of signal \
-propaganda concepts in the Ptolemaic dynasty.^^\
-In game, lords will spend a certain fraction of their wealth to various things, e.g. his court, his family etc. \
-The more they spend, the more their renown increases."),
+# ("custom_player_legion", "Custom Player Legion", "You can found your own legion and equip it with Roman weapons and armours.^\
+# To do that, you must either have the rank of a legatus legionis, or be Emperor of Rome. Then, visit a barrack in a town or fortress you own and talk with the praetor. He will demand \
+# 125000 denars. When you have paid you can equip your new troops in the courtyard, by talking with them. You can always change their equipment by talking to the soldiers from the party screen. Finally, \
+# you must choose a name for your legion. Now you can recruit your own legion in all your towns or fortresses with a barrack building constructed."),  #copied from str_tactical_controls
+# ("tryphe", "Tryphe", "Tryphe is a concept that drew attention and severe criticism in Roman antiquity when it became a significant factor in the reign of the Ptolemaic dynasty. \
+# Classical authors such as Aeshines and Plutarch condemned the tryphe of Romans such as Crassus and Lucullus, which included lavish dinner parties and ostentatious buildings. But there was more to \
+# Ptolemaic tryphe than dissipative excess, which after all can be pursued in residential or geographical seclusion, and for purely private purposes. It was a component of a calculated political strategy, \
+# in that it deployed not just conspicuous consumption but \
+# also conspicuous magnificence, beneficence and feminine delicacy, as a self-reinforcing cluster of signal \
+# propaganda concepts in the Ptolemaic dynasty.^^\
+# In game, lords will spend a certain fraction of their wealth to various things, e.g. his court, his family etc. \
+# The more they spend, the more their renown increases."),
 
-("mythology", "Gods and Religion", "The player can worship different gods. For this, player must talk with a priest of the respective god and vow to worship the god.\
- A list of all gods and where to find their priests is below. Once the player worships a god, he can pray under the camp menu. For polytheistic gods, the player must fight against ancient heroes.\
- For Christus and YHWH, the reputation of the player is considered, both demand high reputation. If the player succeeds in the challenge, he gains artifacts or improves his attribute points.^\
- Worshiping Christus and YHWH offers additional unique features: As Christian, the player can always visit the undergroud chapel in Rome via the 'visit the sights of Rome' option and pray there.\
- Being Christian also allows you to visit Golgotha in Hierosolyma. As a Jew, the player can fund Judean rebels in the temple of Hierosolyma and even start the Jewish revolt if he is powerful enough.^^\
- Temples can be build at towns and your latifundium. You can consecrate the temple to a god of your choice. Non-Roman gods are only available if the player worships them.\
- ^^The mod features the following deities to worship:\
- ^^\
- ^Baduhenna: Germanic goddess, can be worshiped at Baduhenna sanctuary, sacrifices at her temple can improve strength attribute\
- ^Dunraz: Germanic god, can be worshiped at Dunraz sanctuary, sacrifices at his temple can improve charisma attribute\
- ^Frijo: Germanic goddess, can be worshiped at Frijo sanctuary, sacrifices at her temple can improve intelligence attribute\
- ^Alcis: Germanic gods, can be worshiped at Sleza, sacrifices at their temple can improve agility attribute\
- ^Mars: Roman god, can be worshiped at Rome, sacrifices at his temple can improve strength attribute\
- ^Vesta: Roman goddess, can be worshiped at Rome, sacrifices at her temple can improve ironflesh skill\
- ^Saturn: Roman god, can be worshiped at Rome, sacrifices at his temple can improve intelligence attribute\
- ^Aphrodite: Roman god, can be worshiped at Rome, sacrifices at her temple can improve players health\
- ^Jupiter: Roman god, can be worshiped at Rome, sacrifices at his temple can improve charisma attribute\
- ^Castor et Pollux: Roman gods, can be worshiped at Roma, sacrifices at their temple can improve agility attribute\
- ^Christus: the god of the Christians, no sacrifices possible, instead the player can pray together with a priest, which can heal your whole party. Converting to Christianity is possible after the fire of Rome has happened (under camp menu -> take an action), or by talking with Memercius at the underground chapel in Roma.\
- ^YHWH: god of the Jews, can be worshiped at Hierosolyma, sacrifices at his temple can either improve intelligence, charisma, agility or strength.\
- ^^Other effects of worshiping a god:^\
- Before the battle starts, there is a random chance that the god helps the player in the fight either, by healing the player, increasing the strength of the player, increasing the moral of the player troops.\
- ^^A side note on monotheism:^\
- Religion is portrayed from a polytheistic point of view.\
- Thus being a Christ or being a Jew is more related to worshiping the Christian god (Christus) or the Jewish god (YHWH).\
- From a modern point of view this may be wrong, but from the point of view of a polytheist it is the natural way.^^\
- Other holy sides:^\
- In Delphi, the player can question the oracle. In Olympia, the player can visit the great statue of Zeus. At Stonehenge, the player can make sacrifices to the Celtic gods."),
+# ("mythology", "Gods and Religion", "The player can worship different gods. For this, player must talk with a priest of the respective god and vow to worship the god.\
+#  A list of all gods and where to find their priests is below. Once the player worships a god, he can pray under the camp menu. For polytheistic gods, the player must fight against ancient heroes.\
+#  For Christus and YHWH, the reputation of the player is considered, both demand high reputation. If the player succeeds in the challenge, he gains artifacts or improves his attribute points.^\
+#  Worshiping Christus and YHWH offers additional unique features: As Christian, the player can always visit the undergroud chapel in Rome via the 'visit the sights of Rome' option and pray there.\
+#  Being Christian also allows you to visit Golgotha in Hierosolyma. As a Jew, the player can fund Judean rebels in the temple of Hierosolyma and even start the Jewish revolt if he is powerful enough.^^\
+#  Temples can be build at towns and your latifundium. You can consecrate the temple to a god of your choice. Non-Roman gods are only available if the player worships them.\
+#  ^^The mod features the following deities to worship:\
+#  ^^\
+#  ^Baduhenna: Germanic goddess, can be worshiped at Baduhenna sanctuary, sacrifices at her temple can improve strength attribute\
+#  ^Dunraz: Germanic god, can be worshiped at Dunraz sanctuary, sacrifices at his temple can improve charisma attribute\
+#  ^Frijo: Germanic goddess, can be worshiped at Frijo sanctuary, sacrifices at her temple can improve intelligence attribute\
+#  ^Alcis: Germanic gods, can be worshiped at Sleza, sacrifices at their temple can improve agility attribute\
+#  ^Mars: Roman god, can be worshiped at Rome, sacrifices at his temple can improve strength attribute\
+#  ^Vesta: Roman goddess, can be worshiped at Rome, sacrifices at her temple can improve ironflesh skill\
+#  ^Saturn: Roman god, can be worshiped at Rome, sacrifices at his temple can improve intelligence attribute\
+#  ^Aphrodite: Roman god, can be worshiped at Rome, sacrifices at her temple can improve players health\
+#  ^Jupiter: Roman god, can be worshiped at Rome, sacrifices at his temple can improve charisma attribute\
+#  ^Castor et Pollux: Roman gods, can be worshiped at Roma, sacrifices at their temple can improve agility attribute\
+#  ^Christus: the god of the Christians, no sacrifices possible, instead the player can pray together with a priest, which can heal your whole party. Converting to Christianity is possible after the fire of Rome has happened (under camp menu -> take an action), or by talking with Memercius at the underground chapel in Roma.\
+#  ^YHWH: god of the Jews, can be worshiped at Hierosolyma, sacrifices at his temple can either improve intelligence, charisma, agility or strength.\
+#  ^^Other effects of worshiping a god:^\
+#  Before the battle starts, there is a random chance that the god helps the player in the fight either, by healing the player, increasing the strength of the player, increasing the moral of the player troops.\
+#  ^^A side note on monotheism:^\
+#  Religion is portrayed from a polytheistic point of view.\
+#  Thus being a Christ or being a Jew is more related to worshiping the Christian god (Christus) or the Jewish god (YHWH).\
+#  From a modern point of view this may be wrong, but from the point of view of a polytheist it is the natural way.^^\
+#  Other holy sides:^\
+#  In Delphi, the player can question the oracle. In Olympia, the player can visit the great statue of Zeus. At Stonehenge, the player can make sacrifices to the Celtic gods."),
  ("crafting_orders", "Crafting orders", "You can order any weapon, shields, armour, boots et cetera from weapon or armour merchants or you latifundia smith via a dialogue option.\
  An ordered item will take some time till it is crafted and you will have to pay for the materials too. Once the item has finished talk with the merchant to get it.\
  The merchant will send the finished item to you if you haven't collected it by yourself. Though this takes much longer than collecting it yourself (by talking with the respective merchant).^^\

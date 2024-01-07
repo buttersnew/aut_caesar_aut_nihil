@@ -17822,760 +17822,553 @@ presentations = [
     ]),
 ]),
 
+# diplomacy options
+("adv_diplomacy_preferences", 0, mesh_load_window,[
+  (ti_on_presentation_load,[
+    (set_fixed_point_multiplier, 1000),
+    (presentation_set_duration, 999999),
+    (str_clear, s0),
+
+    ## OPTIONS CONTAINER
+    (create_text_overlay, ":container", s0, tf_scrollable),
+    (position_set_x, pos1, 25),
+    (position_set_y, pos1, 50),
+    (overlay_set_position, ":container", pos1),
+    (position_set_x, pos1, 550),
+    (position_set_y, pos1, 630),
+    (overlay_set_area_size, ":container", pos1),
+    (set_container_overlay, ":container"),
+
+    ## VARIABLE VERTICAL POSITIONS AND INCREMENTS
+    (assign, ":y_increment", 50),
+    (store_mul, ":texts_y", ":y_increment", DPLMC_NUM_PREFERENCE_OPTIONS),
+    (store_sub, ":inputs_y", ":texts_y", 8),
+
+    (try_for_range, ":slot_no", 0, DPLMC_NUM_PREFERENCE_OPTIONS),
+      (troop_set_slot, "trp_temp_array_a", ":slot_no", 0), #label
+      (troop_set_slot, "trp_temp_array_b", ":slot_no", 0), #field
+      (troop_set_slot, "trp_temp_array_c", ":slot_no", 0), #pictures
+    (try_end),
+    (assign, ":num_options", 0), #index
+    ## TEXTS & INPUTS
+    (position_set_x, pos1, 50),
+    (position_set_x, pos2, 450),
+
+    #picture location
+    (position_set_x, pos3, 500),
+    (position_set_y, pos3, 100),
+    #picture size
+    (position_set_x, pos4, 480),
+    (position_set_y, pos4, 640),
+    #picture downscaled size
+    (position_set_x, pos6, 375),
+    (position_set_y, pos6, 500),
+    #dropdown size
+    (position_set_x, pos5, 700),
+    (position_set_y, pos5, 800),
+
+    ## HORSE SPEED
+    (create_text_overlay, reg0, "@Horse Speed Fix:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (val_sub, ":texts_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+
+    (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (store_sub, ":actual_input_value", 1, "$g_dplmc_horse_speed"),
+    (overlay_set_val, reg0, ":actual_input_value"),
+
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_charge"),
+    (overlay_set_size, reg0, pos4),
+    (overlay_set_position, reg0, pos3),
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+    (set_container_overlay, ":container"),
+
+    ## HORSE CULL
+    (create_text_overlay, reg0, "@Horse Culling:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (val_sub, ":texts_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+
+    (create_number_box_overlay, reg0, 0, 31),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (try_begin),
+    (neg|is_between, "$g_horses_are_avaliable", 0, 31),
+    (assign, "$g_horses_are_avaliable", 10),
+    (try_end),
+    (overlay_set_val, reg0, "$g_horses_are_avaliable"),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_defeat"),
+    (set_container_overlay, ":container"),
+    (overlay_set_size, reg0, pos4),
+    (overlay_set_position, reg0, pos3),
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
+    ## BATTLE CONTINUATION
+    (create_text_overlay, reg0, "@Battle Continuation:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (val_sub, ":texts_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+
+    (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+
+    (try_begin),
+      (eq, "$g_dplmc_battle_continuation", 0),
+      (assign, ":actual_input_value", 1),
+    (else_try),
+      (assign, ":actual_input_value", 0),
+    (try_end),
+    (overlay_set_val, reg0, ":actual_input_value"),
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_wounded"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos4),
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+    (set_container_overlay, ":container"),
+
+    (val_add, ":num_options", 1), #skip index regardless
+
+    ## TERRAIN ADVANTAGE
+    (create_text_overlay, reg0, "@Terrain Advantages:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (val_sub, ":texts_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+
+    (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (try_begin),
+      (eq, "$g_dplmc_terrain_advantage", 0),
+      (assign, ":actual_input_value", 1),
+    (else_try),
+      (assign, ":actual_input_value", 0),
+    (try_end),
+    (overlay_set_val, reg0, ":actual_input_value"),
+
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_camp"),
+    (set_container_overlay, ":container"),
+    (overlay_set_size, reg0, pos4),
+    (overlay_set_position, reg0, pos3),
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
+    ## LORDS RETURNING FROM EXILE
+    (create_text_overlay, reg0, "@Lords Returning From Exile:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+    (val_sub, ":texts_y", ":y_increment"),
+
+    (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_x, pos2, 450),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+
+    (try_begin),
+      (eq, "$g_dplmc_lord_recycling", 1),
+      (assign, ":actual_input_value", 1),
+    (else_try),
+      (assign, ":actual_input_value", 0),
+    (try_end),
+
+    (overlay_set_val, reg0, ":actual_input_value"),
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_messenger"),
+    (set_container_overlay, ":container"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos4),
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
+    ## AI CHANGES
+    (create_text_overlay, reg0, "@AI Changes:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (val_sub, ":texts_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+
+    (create_combo_button_overlay, reg0),
+    (position_set_x, pos2, 485),
+    (val_sub, ":inputs_y", 8),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (overlay_set_size, reg0, pos5),
+    (try_for_range, ":string", "str_dplmc_setting_2", "str_dplmc_setting_on"),
+      (overlay_add_item, reg0, ":string"),
+    (try_end),
+    (position_set_x, pos2, 450),
+    (val_add, ":inputs_y", 8),
+    (val_sub, ":inputs_y", ":y_increment"),
+
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (store_sub, ":actual_input_value", DPLMC_AI_CHANGES_HIGH, "$g_dplmc_ai_changes"),
+    (overlay_set_val, reg0, ":actual_input_value"),
+
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_sally_out"),
+    (set_container_overlay, ":container"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos6), #
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
+    ## ECONOMICS & BEHAVIORAL
+    (create_text_overlay, reg0, "@Economics & Behavioral:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (val_sub, ":texts_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+
+    (create_combo_button_overlay, reg0),
+    (position_set_x, pos2, 485),
+    (val_sub, ":inputs_y", 8),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (overlay_set_size, reg0, pos5),
+    (try_for_range, ":string", "str_dplmc_setting_2", "str_dplmc_setting_on"),
+      (overlay_add_item, reg0, ":string"),
+    (try_end),
+    (position_set_x, pos2, 450),
+    (val_add, ":inputs_y", 8),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (store_sub, ":actual_input_value", DPLMC_GOLD_CHANGES_HIGH, "$g_dplmc_gold_changes"),
+    (overlay_set_val, reg0, ":actual_input_value"),
+
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_payment"),
+    (set_container_overlay, ":container"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos4),
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
+    ## PREJUDICE LEVEL
+    (create_text_overlay, reg0, "@Prejudice Level:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+    (val_sub, ":texts_y", ":y_increment"),
+
+    (create_combo_button_overlay, reg0),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (position_set_x, pos2, 485),
+    (val_sub, ":inputs_y", 8),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (overlay_set_size, reg0, pos5),
+    (overlay_add_item, reg0, "str_randomize"),
+    (overlay_add_item, reg0, "str_dplmc_setting_2"),
+    (overlay_add_item, reg0, "str_dplmc_setting_off"),
+    (overlay_add_item, reg0, "str_default"),
+    (position_set_x, pos2, 450),
+    (val_add, ":inputs_y", 8),
+    (val_sub, ":inputs_y", ":y_increment"),
+
+    (store_div, ":actual_input_value", "$g_disable_condescending_comments", 2),
+    (try_begin), #both gender in battles
+      (eq, ":actual_input_value", 2),
+      (overlay_set_val, reg0, 0),
+    (else_try), #high
+      (lt, ":actual_input_value", 0),
+      (overlay_set_val, reg0, 1),
+    (else_try), #disabled
+      (eq, ":actual_input_value", 1),
+      (overlay_set_val, reg0, 2),
+    (else_try), #default
+      (overlay_set_val, reg0, 3),
+    (try_end),
+
+    (assign, reg1, "$g_disable_condescending_comments"),
+    (display_message, "@prejudice is {reg1}"),
+
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_siege_sighted"),
+    (set_container_overlay, ":container"),
+    (overlay_set_size, reg0, pos4),
+    (overlay_set_position, reg0, pos3),
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
+      ## NPC Complaints
+    (create_text_overlay, reg0, "@Disable Companion Complaints:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+    (val_sub, ":texts_y", ":y_increment"),
+
+    (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (overlay_set_val, reg0, "$disable_npc_complaints"),
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_recruits"),
+    (set_container_overlay, ":container"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos6), #
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
+    ## Disguises
+    (create_text_overlay, reg0, "@Disguise System:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+    (val_sub, ":texts_y", ":y_increment"),
+
+    (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (overlay_set_val, reg0, "$g_dplmc_player_disguise"),
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_townriot"),
+    (set_container_overlay, ":container"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos4),
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
+    ## CHEAT MENU
+    # (create_text_overlay, reg0, "@Cheat Mode:", tf_vertical_align_center),
+    # (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+    # (position_set_y, pos1, ":texts_y"),
+    # (overlay_set_position, reg0, pos1),
+    # (val_sub, ":texts_y", ":y_increment"),
+
+    # (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    # (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    # (position_set_y, pos2, ":inputs_y"),
+    # (overlay_set_position, reg0, pos2),
+    # (val_sub, ":inputs_y", ":y_increment"),
 
-#### JART ####
-	("adv_diplomacy_preferences", 0, mesh_load_window,
-		[
-			(ti_on_presentation_load,
-				[
-					(set_fixed_point_multiplier, 1000),
-					(presentation_set_duration, 999999),
-					(str_clear, s0),
-
-					## OPTIONS CONTAINER
-					##(create_text_overlay, reg0, s0, tf_scrollable),
-					(create_text_overlay, ":container", s0, tf_scrollable),
-					(position_set_x, pos1, 25),
-					(position_set_y, pos1, 50),
-					(overlay_set_position, ":container", pos1),
-					(position_set_x, pos1, 550),
-					(position_set_y, pos1, 630),
-					(overlay_set_area_size, ":container", pos1),
-					(set_container_overlay, ":container"),
-
-					## VARIABLE VERTICAL POSITIONS AND INCREMENTS
-					# (assign, ":num_options", 15),
-					(assign, ":y_increment", 50),
-					(store_mul, ":texts_y", ":y_increment", DPLMC_NUM_PREFERENCE_OPTIONS),
-					(store_sub, ":inputs_y", ":texts_y", 8),
-
-                    (try_for_range, ":slot_no", 0, DPLMC_NUM_PREFERENCE_OPTIONS),
-                      (troop_set_slot, "trp_temp_array_a", ":slot_no", 0), #label
-                      (troop_set_slot, "trp_temp_array_b", ":slot_no", 0), #field
-                      (troop_set_slot, "trp_temp_array_c", ":slot_no", 0), #pictures
-                    (try_end),
-                    (assign, ":num_options", 0), #index
-					## TEXTS & INPUTS
-					(position_set_x, pos1, 50),
-					(position_set_x, pos2, 450),
-
-                    #picture location
-					(position_set_x, pos3, 500),
-					(position_set_y, pos3, 125),
-                    #picture size
-					(position_set_x, pos4, 480),
-					(position_set_y, pos4, 640),
-                    #picture downscaled size
-					(position_set_x, pos6, 375),
-					(position_set_y, pos6, 500),
-                    #dropdown size
-					(position_set_x, pos5, 700),
-					(position_set_y, pos5, 800),
-
-					## HORSE SPEED
-					(create_text_overlay, reg0, "@Horse Speed Fix:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-					(val_sub, ":texts_y", ":y_increment"),
-                    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-					# (assign, "$adv_diplomacy_texts_horse_speed", reg0),
-
-					(create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(val_sub, ":inputs_y", ":y_increment"),
-					# (assign, "$g_presentation_obj_admin_panel_1", reg0),
-                    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-                    (store_sub, ":actual_input_value", 1, "$g_dplmc_horse_speed"),
-					(overlay_set_val, reg0, ":actual_input_value"),
-					# (try_begin),
-						# (eq, "$g_dplmc_horse_speed", 0),
-						# (assign, ":actual_input_value", 1),
-					# (else_try),
-						# (assign, ":actual_input_value", 0),
-					# (try_end),
-
-                    (set_container_overlay, -1),
-                    (create_mesh_overlay, reg0, "mesh_pic_charge"),
-                    (overlay_set_size, reg0, pos4),
-                    (overlay_set_position, reg0, pos3),
-#                    (overlay_set_alpha, reg0, 0),
-                    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-                    (val_add, ":num_options", 1),
-                    (set_container_overlay, ":container"),
-
-                    ## HORSE CULL
-                    (create_text_overlay, reg0, "@Horse Culling:", tf_vertical_align_center),
-                    (position_set_y, pos1, ":texts_y"),
-                    (overlay_set_position, reg0, pos1),
-                    (val_sub, ":texts_y", ":y_increment"),
-                    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-
-                    (create_number_box_overlay, reg0, 0, 31),
-                    (position_set_y, pos2, ":inputs_y"),
-                    (overlay_set_position, reg0, pos2),
-                    (try_begin),
-                      (neg|is_between, "$g_horses_are_avaliable", 0, 31),
-                      (assign, "$g_horses_are_avaliable", 10),
-                    (try_end),
-                    (overlay_set_val, reg0, "$g_horses_are_avaliable"),
-                    (val_sub, ":inputs_y", ":y_increment"),
-                    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-
-                    (set_container_overlay, -1),
-                    (create_mesh_overlay, reg0, "mesh_pic_defeat"),
-                    (set_container_overlay, ":container"),
-                    (overlay_set_size, reg0, pos4),
-                    (overlay_set_position, reg0, pos3),
-#                    (overlay_set_alpha, reg0, 0),
-                    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-                    (val_add, ":num_options", 1),
-
-					## BATTLE CONTINUATION
-					(create_text_overlay, reg0, "@Battle Continuation:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-					(val_sub, ":texts_y", ":y_increment"),
-					# (assign, "$adv_diplomacy_texts_battle_continuation", reg0),
-                    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-
-					(create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(val_sub, ":inputs_y", ":y_increment"),
-                    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					# (assign, "$g_presentation_obj_admin_panel_2", reg0),
-
-					(try_begin),
-						(eq, "$g_dplmc_battle_continuation", 0),
-						(assign, ":actual_input_value", 1),
-					(else_try),
-						(assign, ":actual_input_value", 0),
-					(try_end),
-					(overlay_set_val, reg0, ":actual_input_value"),
-                    (set_container_overlay, -1),
-                    (create_mesh_overlay, reg0, "mesh_pic_wounded"),
-                    (overlay_set_position, reg0, pos3),
-                    (overlay_set_size, reg0, pos4),
-#                    (overlay_set_alpha, reg0, 0),
-                    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-                    (val_add, ":num_options", 1),
-                    (set_container_overlay, ":container"),
-
-    #                 (try_begin), #sub-options
-    #                     (eq, "$g_dplmc_battle_continuation", 0),
-    #                     ## Charge When Dead
-    #                     (create_text_overlay, reg0, "@Charge When Dead:", tf_vertical_align_center),
-    #                     (position_set_y, pos1, ":texts_y"),
-    #                     (overlay_set_position, reg0, pos1),
-    #                     (val_sub, ":texts_y", ":y_increment"),
-    #                     (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-    #                     # (assign, "$adv_diplomacy_texts_terrain_advantage", reg0),
-
-    #                     (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-    #                     (position_set_y, pos2, ":inputs_y"),
-    #                     (overlay_set_position, reg0, pos2),
-    #                     (val_sub, ":inputs_y", ":y_increment"),
-    #                     # (assign, "$g_presentation_obj_admin_panel_3", reg0),
-    #                     (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-
-    #                     (overlay_set_val, reg0, "$g_dplmc_charge_when_dead"),
-    #                     (set_container_overlay, -1),
-    #                     (create_mesh_overlay, reg0, "mesh_pic_victory"),
-    #                     (overlay_set_position, reg0, pos3),
-    #                     (overlay_set_size, reg0, pos4),
-    # #                    (overlay_set_alpha, reg0, 0),
-    #                     (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-    #                     # (val_add, ":num_options", 1),
-    #                     (set_container_overlay, ":container"),
-
-    #                     # ## Deathcam Mode
-    #                     # (create_text_overlay, reg0, "@Deathcam Mode:", tf_vertical_align_center),
-    #                     # (position_set_y, pos1, ":texts_y"),
-    #                     # (overlay_set_position, reg0, pos1),
-    #                     # (val_sub, ":texts_y", ":y_increment"),
-    #                     # (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-    #                     # # (assign, "$adv_diplomacy_texts_terrain_advantage", reg0),
-
-    #                     # (create_combo_button_overlay, reg0),
-    #                     # (position_set_x, pos2, 485),
-    #                     # (val_sub, ":inputs_y", 8),
-    #                     # (position_set_y, pos2, ":inputs_y"),
-    #                     # (overlay_set_position, reg0, pos2),
-    #                     # (overlay_set_size, reg0, pos5),
-    #                     # (overlay_add_item, reg0, "@Keyboard"),
-    #                     # (overlay_add_item, reg0, "@Mouse"),
-    #                     # (overlay_add_item, reg0, "@Follower"),
-    #                     # (position_set_x, pos2, 450),
-    #                     # (val_add, ":inputs_y", 8),
-    #                     # (val_sub, ":inputs_y", ":y_increment"),
-    #                     # (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-
-    #                     # (store_sub, ":actual_input_value", "$g_dplmc_cam_default", 1),
-    #                     # (overlay_set_val, reg0, ":actual_input_value"),
-
-    #                     # (set_container_overlay, -1),
-    #                     # (create_mesh_overlay, reg0, "mesh_pic_defeat"),
-    #                     # (set_container_overlay, ":container"),
-    #                     # (overlay_set_size, reg0, pos4),
-    #                     # (overlay_set_position, reg0, pos3),
-    # # #                    (overlay_set_alpha, reg0, 0),
-    #                     # (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-    #                     # (val_add, ":num_options", 1),
-    #                 (try_end),
-                    (val_add, ":num_options", 1), #skip index regardless
-
-					## TERRAIN ADVANTAGE
-					(create_text_overlay, reg0, "@Terrain Advantages:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-					(val_sub, ":texts_y", ":y_increment"),
-                    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-					# (assign, "$adv_diplomacy_texts_terrain_advantage", reg0),
-
-					(create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(val_sub, ":inputs_y", ":y_increment"),
-					# (assign, "$g_presentation_obj_admin_panel_3", reg0),
-                    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					(try_begin),
-						(eq, "$g_dplmc_terrain_advantage", 0),
-						(assign, ":actual_input_value", 1),
-					(else_try),
-						(assign, ":actual_input_value", 0),
-					(try_end),
-                    (overlay_set_val, reg0, ":actual_input_value"),
-
-                    (set_container_overlay, -1),
-                    (create_mesh_overlay, reg0, "mesh_pic_camp"),
-                    (set_container_overlay, ":container"),
-                    (overlay_set_size, reg0, pos4),
-                    (overlay_set_position, reg0, pos3),
-#                    (overlay_set_alpha, reg0, 0),
-                    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-                    (val_add, ":num_options", 1),
-
-						## LORDS RETURNING FROM EXILE
-					(create_text_overlay, reg0, "@Lords Returning From Exile:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-          (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-					(val_sub, ":texts_y", ":y_increment"),
-					# (assign, "$adv_diplomacy_texts_lords_returning", reg0),
-
-					(create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-					# (create_combo_button_overlay, reg0),
-					# (overlay_add_item, reg0, "str_dplmc_setting_off"),
-					# (overlay_add_item, reg0, "str_dplmc_setting_on"),
-					# (overlay_add_item, reg0, "str_dplmc_setting_freq"),
-					(position_set_x, pos2, 450),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(val_sub, ":inputs_y", ":y_increment"),
-					# (assign, "$g_presentation_obj_admin_panel_4", reg0),
-                    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-
-					(try_begin),
-						(eq, "$g_dplmc_lord_recycling", 1),
-						(assign, ":actual_input_value", 1),
-					(else_try),
-						(assign, ":actual_input_value", 0),
-					(try_end),
-					# (overlay_set_val, "$g_presentation_obj_admin_panel_4", ":actual_input_value"),
-					(overlay_set_val, reg0, ":actual_input_value"),
-                    (set_container_overlay, -1),
-                    (create_mesh_overlay, reg0, "mesh_pic_messenger"),
-                    (set_container_overlay, ":container"),
-                    (overlay_set_position, reg0, pos3),
-                    (overlay_set_size, reg0, pos4),
-#                    (overlay_set_alpha, reg0, 0),
-                    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-                    (val_add, ":num_options", 1),
-
-						## AI CHANGES
-					(create_text_overlay, reg0, "@AI Changes:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-					(val_sub, ":texts_y", ":y_increment"),
-          (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-					# (assign, "$adv_diplomacy_texts_ai_changes", reg0),
-
-					(create_combo_button_overlay, reg0),
-					(position_set_x, pos2, 485),
-					(val_sub, ":inputs_y", 8),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(overlay_set_size, reg0, pos5),
-                    (try_for_range, ":string", "str_dplmc_setting_2", "str_dplmc_setting_on"),
-                      (overlay_add_item, reg0, ":string"),
-                    (try_end),
-					(position_set_x, pos2, 450),
-					(val_add, ":inputs_y", 8),
-					(val_sub, ":inputs_y", ":y_increment"),
-					# (assign, "$g_presentation_obj_admin_panel_5", reg0),
-                    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					(store_sub, ":actual_input_value", DPLMC_AI_CHANGES_HIGH, "$g_dplmc_ai_changes"),
-					(overlay_set_val, reg0, ":actual_input_value"),
-
-                    (set_container_overlay, -1),
-                    (create_mesh_overlay, reg0, "mesh_pic_sally_out"),
-                    (set_container_overlay, ":container"),
-                    (overlay_set_position, reg0, pos3),
-                    (overlay_set_size, reg0, pos6), #
-#                    (overlay_set_alpha, reg0, 0),
-                    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-                    (val_add, ":num_options", 1),
-					# (try_begin),
-						# (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_DISABLE),
-						# (assign, ":actual_input_value", 0),
-					# (try_end),
-					# (try_begin),
-						# (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
-						# (assign, ":actual_input_value", 1),
-					# (try_end),
-					# (try_begin),
-						# (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_MEDIUM),
-						# (assign, ":actual_input_value",2),
-					# (try_end),
-					# (try_begin),
-						# (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_HIGH),
-						# (assign, ":actual_input_value", 3),
-					# (try_end),
-
-
-						## ECONOMICS & BEHAVIORAL
-					(create_text_overlay, reg0, "@Economics & Behavioral:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-					(val_sub, ":texts_y", ":y_increment"),
-                    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-					# (assign, "$adv_diplomacy_texts_economics_behavioral", reg0),
-
-					(create_combo_button_overlay, reg0),
-					(position_set_x, pos2, 485),
-					(val_sub, ":inputs_y", 8),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(overlay_set_size, reg0, pos5),
-					(try_for_range, ":string", "str_dplmc_setting_2", "str_dplmc_setting_on"),
-						(overlay_add_item, reg0, ":string"),
-					(try_end),
-					(position_set_x, pos2, 450),
-					(val_add, ":inputs_y", 8),
-					(val_sub, ":inputs_y", ":y_increment"),
-                    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					(store_sub, ":actual_input_value", DPLMC_GOLD_CHANGES_HIGH, "$g_dplmc_gold_changes"),
-					(overlay_set_val, reg0, ":actual_input_value"),
-
-          (set_container_overlay, -1),
-          (create_mesh_overlay, reg0, "mesh_pic_payment"),
-          (set_container_overlay, ":container"),
-          (overlay_set_position, reg0, pos3),
-          (overlay_set_size, reg0, pos4),
-#                    (overlay_set_alpha, reg0, 0),
-          (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-          (val_add, ":num_options", 1),
-
-						## PREJUDICE LEVEL
-					(create_text_overlay, reg0, "@Prejudice Level:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-          (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-					(val_sub, ":texts_y", ":y_increment"),
-					# (assign, "$adv_diplomacy_texts_prejudice_level", reg0),
-
-					(create_combo_button_overlay, reg0),
-          (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					(position_set_x, pos2, 485),
-					(val_sub, ":inputs_y", 8),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(overlay_set_size, reg0, pos5),
-					# (overlay_add_item, reg0, "@{!} High "),
-					# (overlay_add_item, reg0, "@{!} Off "),
-					# (overlay_add_item, reg0, "@{!} Default "),
-                    (overlay_add_item, reg0, "str_randomize"),
-                    (overlay_add_item, reg0, "str_dplmc_setting_2"),
-                    (overlay_add_item, reg0, "str_dplmc_setting_off"),
-                    (overlay_add_item, reg0, "str_default"),
-					(position_set_x, pos2, 450),
-					(val_add, ":inputs_y", 8),
-					(val_sub, ":inputs_y", ":y_increment"),
-					# (assign, "$g_presentation_obj_admin_panel_7", reg0),
-
-          (store_div, ":actual_input_value", "$g_disable_condescending_comments", 2),
-          (try_begin), #both gender in battles
-            (eq, ":actual_input_value", 2),
-            (overlay_set_val, reg0, 0),
-          (else_try), #high
-            (lt, ":actual_input_value", 0),
-            (overlay_set_val, reg0, 1),
-          (else_try), #disabled
-            (eq, ":actual_input_value", 1),
-            (overlay_set_val, reg0, 2),
-          (else_try), #default
-            (overlay_set_val, reg0, 3),
-          (try_end),
-
-          (assign, reg1, "$g_disable_condescending_comments"),
-          (display_message, "@prejudice is {reg1}"),
-
-          (set_container_overlay, -1),
-          (create_mesh_overlay, reg0, "mesh_pic_siege_sighted"),
-          (set_container_overlay, ":container"),
-          (overlay_set_size, reg0, pos4),
-          (overlay_set_position, reg0, pos3),
-#                    (overlay_set_alpha, reg0, 0),
-          (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-          (val_add, ":num_options", 1),
-
-                    ## NPC Complaints
-					(create_text_overlay, reg0, "@Disable Companion Complaints:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-          (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-					(val_sub, ":texts_y", ":y_increment"),
-
-					(create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(val_sub, ":inputs_y", ":y_increment"),
-          (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					(overlay_set_val, reg0, "$disable_npc_complaints"),
-          (set_container_overlay, -1),
-          (create_mesh_overlay, reg0, "mesh_pic_recruits"),
-          (set_container_overlay, ":container"),
-          (overlay_set_position, reg0, pos3),
-          (overlay_set_size, reg0, pos6), #
-#                    (overlay_set_alpha, reg0, 0),
-          (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-          (val_add, ":num_options", 1),
-
-                    ## Disguises
-					(create_text_overlay, reg0, "@Disguise System:", tf_vertical_align_center),
-					(position_set_y, pos1, ":texts_y"),
-					(overlay_set_position, reg0, pos1),
-          (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-					(val_sub, ":texts_y", ":y_increment"),
-
-					(create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(val_sub, ":inputs_y", ":y_increment"),
-          (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					(overlay_set_val, reg0, "$g_dplmc_player_disguise"),
-          (set_container_overlay, -1),
-          (create_mesh_overlay, reg0, "mesh_pic_townriot"),
-          (set_container_overlay, ":container"),
-          (overlay_set_position, reg0, pos3),
-          (overlay_set_size, reg0, pos4),
-#                    (overlay_set_alpha, reg0, 0),
-          (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-          (val_add, ":num_options", 1),
-
-						## CHEAT MENU
-                (create_text_overlay, reg0, "@Cheat Mode:", tf_vertical_align_center),
-                (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-                (position_set_y, pos1, ":texts_y"),
-                (overlay_set_position, reg0, pos1),
-                (val_sub, ":texts_y", ":y_increment"),
-					# (assign, "$adv_diplomacy_texts_cheat_menu", reg0),
-
-					# (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-                    # (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					# (position_set_y, pos2, ":inputs_y"),
-					# (overlay_set_position, reg0, pos2),
-					# (val_sub, ":inputs_y", ":y_increment"),
-					# (assign, "$g_presentation_obj_admin_panel_8", reg0),
-
-                    #Native has bunch of message modes (up to 4) but they're not useful
-					(create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-          (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-					(position_set_y, pos2, ":inputs_y"),
-					(overlay_set_position, reg0, pos2),
-					(val_sub, ":inputs_y", ":y_increment"),
-					# (assign, "$g_presentation_obj_admin_panel_8", reg0),
-
-          (try_begin),
-            (gt, "$cheat_mode", 0),
-            (assign, ":actual_input_value", 1),
-          (else_try),
-            (assign, ":actual_input_value", 0),
-          (try_end),
-          (overlay_set_val, reg0, ":actual_input_value"),
-          (set_container_overlay, -1),
-          (create_mesh_overlay, reg0, "mesh_pic_cattle"),
-          (set_container_overlay, ":container"),
-          (overlay_set_position, reg0, pos3),
-          (overlay_set_size, reg0, pos4),
-#                    (overlay_set_alpha, reg0, 0),
-          (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-          (val_add, ":num_options", 1),
-
-					(set_container_overlay, -1),
-
-					## MOUSE-OVER TIPS
-					(create_text_overlay, reg0, "@DIPLOMACY^" + DPLMC_DIPLOMACY_VERSION_STRING+ "^Preferences", tf_center_justify|tf_with_outline),
-					(overlay_set_color, reg0, 0xFFFFFFFF),
-					(position_set_x, pos1, 800),
-					(position_set_y, pos1, 600),
-					(overlay_set_position, reg0, pos1),
-					(position_set_x, pos1, 2000),
-					(position_set_y, pos1, 2000),
-					(overlay_set_size, reg0, pos1),
-
-					(str_store_string, s0, "str_dplmc_setting_tt0"),
-					(create_text_overlay, reg0, s0, tf_double_space|tf_scrollable),
-					(position_set_x, pos1, 650),
-					(position_set_y, pos1, 400),
-					(overlay_set_position, reg0, pos1),
-					(position_set_x, pos1, 800),
-					(position_set_y, pos1, 800),
-					(overlay_set_size, reg0, pos1),
-					(position_set_x, pos1, 300),
-					(position_set_y, pos1, 150),
-					(overlay_set_area_size, reg0, pos1),
-					(assign, "$g_presentation_obj_admin_panel_container", reg0),
-
-					## BUTTONS
-
-
-                    (position_set_x, pos1, 900),
-                    (try_begin),
-                      (eq, "$g_dplmc_battle_continuation", 0),
-					  (position_set_y, pos1, 125),
-					  (create_game_button_overlay, reg0, "str_spectator_camera", tf_center_justify),
-					  (overlay_set_position, reg0, pos1),
-					  (assign, "$g_dplmc_cam_activated", reg0),
-                    (else_try),
-					  (assign, "$g_dplmc_cam_activated", -1),
-                    (try_end),
-
-					# (position_set_x, pos1, 900),
-					(position_set_y, pos1, 75),
-					(create_game_button_overlay, reg0, "str_reset_to_default", tf_center_justify),
-					(overlay_set_position, reg0, pos1),
-					(assign, "$g_presentation_obj_profile_banner_selection_1", reg0),
-
-					(position_set_y, pos1, 25),
-					# (position_set_x, pos1, 740),
-					# (create_game_button_overlay, reg0, "@Discard Changes", tf_center_justify),
-					# (overlay_set_position, reg0, pos1),
-					# (assign, "$adv_diplomacy_button_cancel", reg0),
-
-					# (position_set_x, pos1, 900),
-					(create_game_button_overlay, reg0, "str_done", tf_center_justify),
-					(overlay_set_position, reg0, pos1),
-					(assign, "$g_presentation_obj_profile_banner_selection_2", reg0),
-
-                    ## Hide Pictures
-                    (try_for_range, ":slot_no", 0, ":num_options"),
-                      (troop_get_slot, ":overlay", "trp_temp_array_c", ":slot_no"),
-                      (gt, ":overlay", 0),
-                      (overlay_set_display, ":overlay", 0),
-                      # (troop_get_slot, reg0, "trp_temp_array_b", ":slot_no"),
-                      # (display_message, "str_reg0"),
-                    (try_end),
-                    # ## add a default one
-                    # (create_mesh_overlay, reg0, "mesh_pic_mb_warrior_1"),
-                    # (overlay_set_position, reg0, pos3),
-                    # (overlay_set_size, reg0, pos4),
-
-				]
-			 ),
-			(ti_on_presentation_event_state_change,
-				[
-					(store_trigger_param_1, ":object"),
-					(store_trigger_param_2, ":value"),
-                    # (assign, reg1, ":object"),
-                    # (assign, reg2, ":value"),
-                    # (display_message, "@{reg1} set to {reg2}"),
-
-					## "RESET" BUTTON KILL THE PRESENTATION AND START ANOTHER ONE
-        (try_begin),
-            (eq, ":object", "$g_presentation_obj_profile_banner_selection_1"),
-            (assign, "$cheat_mode", 0),
-            (assign, "$g_dplmc_horse_speed", 0),
-            (assign, "$g_dplmc_battle_continuation", 0),
-            (assign, "$g_horses_are_avaliable", 10),
-            (assign, "$g_dplmc_cam_default", camera_keyboard),
-            (assign, "$g_dplmc_player_disguise", disguise_pilgrim),
-            (assign, "$sneaked_into_town", disguise_none), #associated with above
-            # (assign, "$g_dplmc_charge_when_dead", 1),
-            (assign, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
-            (assign, "$g_dplmc_lord_recycling", 1),
-            (assign, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
-            (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
-            (assign, "$g_disable_condescending_comments", 0),
-            (assign, "$disable_npc_complaints", 0),
-            # (call_script, "script_dplmc_update_info_settings"),
-            (start_presentation, "prsnt_adv_diplomacy_preferences"),
-        (else_try),
-
-					# ## "CANCEL" BUTTON JUST KILL THE PRESENTATION
-					# (try_begin),
-						# (eq, ":object", "$adv_diplomacy_button_cancel"),
-						# (presentation_set_duration, 0),
-					# (try_end),
-
-					## "SAVE AND EXIT" BUTTON GETS THE OPTION VALUES AND GIVE THEM TO PROPER VARIABLES.
-					## THEN IT KILLS THE PRESENTATION.
-            (eq, ":object", "$g_presentation_obj_profile_banner_selection_2"),
-            (call_script, "script_dplmc_update_info_settings"),
-            #(presentation_set_duration, 0),
-            (assign, "$g_presentation_next_presentation", -1),
-            (start_presentation, "prsnt_vc_options"),
-          (else_try), #deathcam launch new presentation
-            (eq, ":object", "$g_dplmc_cam_activated"),
-            (assign, "$g_presentation_next_presentation", "prsnt_redefine_keys"),
-            (start_presentation, "prsnt_redefine_keys"),
-        (else_try), ## HORSE SPEED
-            (troop_slot_eq, "trp_temp_array_b", 0, ":object"),
-            (store_sub, "$g_dplmc_horse_speed", 1, ":value"),
-            # (try_begin),
-                # (eq, ":value", 0),
-                # (assign, "$adv_diplomacy_var_horse_speed", 1),
-            # (else_try),
-                # (assign, "$adv_diplomacy_var_horse_speed", 0),
-            # (try_end),
-        (else_try), ## HORSE SPEED
-            (troop_slot_eq, "trp_temp_array_b", 1, ":object"),
-            (assign, "$g_horses_are_avaliable", ":value"),
-
-        (else_try), ## BATTLE CONTINUATION
-            # (eq, ":object", "$g_presentation_obj_admin_panel_2"),
-            (troop_slot_eq, "trp_temp_array_b", 2, ":object"),
-            (store_sub, "$g_dplmc_battle_continuation", 1, ":value"),
-            #refresh presentation to show new options
-            # (presentation_set_duration, 0),
-            (start_presentation, "prsnt_adv_diplomacy_preferences"),
-            # (try_begin),
-                # (eq, ":value", 0),
-                # (assign, "$adv_diplomacy_var_battle_continuation", 1),
-            # (else_try),
-                # (assign, "$adv_diplomacy_var_battle_continuation", 0),
-            # (try_end),
-        # (else_try), ## Charge after death
-        #     # (eq, ":object", "$g_presentation_obj_admin_panel_3"),
-        #     (troop_slot_eq, "trp_temp_array_b", 3, ":object"),
-        #     (assign, "$g_dplmc_charge_when_dead", ":value"),
-        (else_try), ## TERRAIN ADVANTAGE
-            # (eq, ":object", "$g_presentation_obj_admin_panel_3"),
-            (troop_slot_eq, "trp_temp_array_b", 4, ":object"),
-            (store_sub, "$g_dplmc_terrain_advantage", ":value", 1),
-
-        (else_try), ## LORDS RETURNING FROM EXILE
-  # (eq, ":object", "$g_presentation_obj_admin_panel_4"),
-            (troop_slot_eq, "trp_temp_array_b", 5, ":object"),
-            (store_sub, "$g_dplmc_lord_recycling", ":value", 1),
-
-          (else_try), #AI
-              (troop_slot_eq, "trp_temp_array_b", 6, ":object"),
-              (store_sub, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_HIGH, ":value"),
-          (else_try), #ECO
-              (troop_slot_eq, "trp_temp_array_b", 7, ":object"),
-              (store_sub, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_HIGH, ":value"),
-          (else_try), #Prejudice
-              (troop_slot_eq, "trp_temp_array_b", 8, ":object"),
-              (assign, reg0, ":value"),
-              (assign, reg1, "$g_disable_condescending_comments"),
-              (display_message, "@option {reg0}: was {reg1}"),
-              (try_begin), #default
-                (eq, ":value", 3),
-                (assign, "$g_disable_condescending_comments", 0),
-              (else_try), #off
-                (eq, ":value", 2),
-                (assign, "$g_disable_condescending_comments", 2),
-              (else_try), #high
-                (eq, ":value", 1),
-                (assign, "$g_disable_condescending_comments", -2),
-              (else_try), #randomize
-                (eq, ":value", 0),
-                (assign, "$g_disable_condescending_comments", 4),
-              (try_end),
-              #(call_script, "script_dplmc_init_faction_gender_ratio", 1),
-          (else_try), ## Complaints
-              (troop_slot_eq, "trp_temp_array_b", 9, ":object"),
-              (assign, "$disable_npc_complaints", ":value"),
-              (assign, "$personality_clash_after_24_hrs", 0),
-          (else_try), ## Disguise
-              (troop_slot_eq, "trp_temp_array_b", 10, ":object"),
-              # (eq, ":object", "$g_presentation_obj_admin_panel_5"),
-              (assign, "$g_dplmc_player_disguise", ":value"),
-              (assign, "$sneaked_into_town", disguise_none), #so as to not proc trigger
-          (else_try), ## CHEATS MENU
-              (troop_slot_eq, "trp_temp_array_b", 11, ":object"),
-              (assign, "$cheat_mode", ":value"),
-                (try_begin),
-                    (troop_get_slot, ":cheats", "trp_global_variables", g_used_cheats),
-                    (val_add, ":cheats", 1),
-                    (troop_set_slot, "trp_global_variables", g_used_cheats, ":cheats"),
-                    (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
-                    (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
-                    (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
-                (try_end),
-          (try_end),
-                ]
-            ),
-    (ti_on_presentation_mouse_enter_leave, #Mouse-Over Pref-Tips
-      [
-      (store_trigger_param_1, ":object"),
-      (store_trigger_param_2, ":enter_leave"), #0 if mouse enters, 1 if mouse leaves
-      ##IF THE EVENT IS "ENTER", WE CHOOSE THE TEXT THAT WILL BE SHOWED
-      (try_begin),
-          (eq, ":enter_leave", 0),
-          (gt, ":object", 0), #not the overlay
-          #could use overlay_set_material but stretching
-          (assign, ":num_options", DPLMC_NUM_PREFERENCE_OPTIONS),
-          (assign, ":selected_option", -1),
-
-          (try_for_range, ":slot_no", 0, ":num_options"),
-            (this_or_next|troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-            (troop_slot_eq, "trp_temp_array_b", ":slot_no", ":object"),
-            (store_add, ":string", "str_dplmc_setting_tt1", ":slot_no"),
-            # (display_message, ":string"),
-            (overlay_set_text, "$g_presentation_obj_admin_panel_container", ":string"),
-            (assign, ":num_options", -1),
-            (assign, ":selected_option", ":slot_no"),
-          (try_end),
-
-          (try_begin),
-            (eq, ":selected_option", -1),
-            (overlay_set_text, "$g_presentation_obj_admin_panel_container", "str_dplmc_setting_tt0"),
-          (else_try),
-            (try_for_range, ":slot_no", 0, DPLMC_NUM_PREFERENCE_OPTIONS),
-              (troop_get_slot, ":overlay_no", "trp_temp_array_c", ":slot_no"),
-              (gt, ":overlay_no", 0),
-              (try_begin),
-                (eq, ":slot_no", ":selected_option"),
-                # (overlay_animate_to_alpha, ":overlay_no", 250, 0xFFFFFFFF),
-                (overlay_set_display, ":overlay_no", 1),
-              (else_try),
-                (overlay_set_display, ":overlay_no", 0),
-              (try_end),
-            (try_end),
-          (try_end),
-      (try_end),
-				]
-			),
- # ## SETS A LISTENER TO SOME KEY_CLICKS TO TERMINATE THE PRESENTATION
- # ## VERY USEFUL FOR MODDING
-# (ti_on_presentation_run,
-  # [
     # (try_begin),
-      # (this_or_next|key_clicked, key_space),
-      # (this_or_next|key_clicked, key_enter),
-      # (this_or_next|key_clicked, key_escape),
-      # # (this_or_next|key_clicked, key_back_space), #needed for number box
-      # (this_or_next|key_clicked, key_xbox_ltrigger),
-      # (key_clicked, key_xbox_rtrigger),
-      # (presentation_set_duration, 0),
+    #   (gt, "$cheat_mode", 0),
+    #   (assign, ":actual_input_value", 1),
+    # (else_try),
+    #   (assign, ":actual_input_value", 0),
     # (try_end),
-  # ]
- # ),
-		]
-	 ),
+    # (overlay_set_val, reg0, ":actual_input_value"),
+    # (set_container_overlay, -1),
+    # (create_mesh_overlay, reg0, "mesh_pic_cattle"),
+    # (set_container_overlay, ":container"),
+    # (overlay_set_position, reg0, pos3),
+    # (overlay_set_size, reg0, pos4),
+    # (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    # (val_add, ":num_options", 1),
+
+    (set_container_overlay, -1),
+
+    ## MOUSE-OVER TIPS
+    (create_text_overlay, reg0, "@DIPLOMACY^" + DPLMC_DIPLOMACY_VERSION_STRING+ "^Preferences", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg0, 0xFFFFFFFF),
+    (position_set_x, pos1, 800),
+    (position_set_y, pos1, 600),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 2000),
+    (position_set_y, pos1, 2000),
+    (overlay_set_size, reg0, pos1),
+
+    (str_store_string, s0, "str_dplmc_setting_tt0"),
+    (create_text_overlay, reg0, s0, tf_double_space|tf_scrollable),
+    (position_set_x, pos1, 650),
+    (position_set_y, pos1, 400),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 800),
+    (position_set_y, pos1, 800),
+    (overlay_set_size, reg0, pos1),
+    (position_set_x, pos1, 300),
+    (position_set_y, pos1, 150),
+    (overlay_set_area_size, reg0, pos1),
+    (assign, "$g_presentation_obj_admin_panel_container", reg0),
+
+    ## BUTTONS
+    (position_set_x, pos1, 900),
+    (try_begin),
+      (eq, "$g_dplmc_battle_continuation", 0),
+      (position_set_y, pos1, 125),
+      (create_game_button_overlay, reg0, "str_spectator_camera", tf_center_justify),
+      (overlay_set_position, reg0, pos1),
+      (assign, "$g_dplmc_cam_activated", reg0),
+    (else_try),
+      (assign, "$g_dplmc_cam_activated", -1),
+    (try_end),
+
+    # (position_set_x, pos1, 900),
+    (position_set_y, pos1, 75),
+    (create_game_button_overlay, reg0, "str_reset_to_default", tf_center_justify),
+    (overlay_set_position, reg0, pos1),
+    (assign, "$g_presentation_obj_profile_banner_selection_1", reg0),
+
+    (position_set_y, pos1, 25),
+    (create_game_button_overlay, reg0, "str_done", tf_center_justify),
+    (overlay_set_position, reg0, pos1),
+    (assign, "$g_presentation_obj_profile_banner_selection_2", reg0),
+
+    ## Hide Pictures
+    (try_for_range, ":slot_no", 0, ":num_options"),
+      (troop_get_slot, ":overlay", "trp_temp_array_c", ":slot_no"),
+      (gt, ":overlay", 0),
+      (overlay_set_display, ":overlay", 0),
+    (try_end),
+	]),
+	(ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":object"),
+    (store_trigger_param_2, ":value"),
+    (try_begin),
+      (eq, ":object", "$g_presentation_obj_profile_banner_selection_1"),
+      (assign, "$cheat_mode", 0),
+      (assign, "$g_dplmc_horse_speed", 0),
+      (assign, "$g_dplmc_battle_continuation", 0),
+      (assign, "$g_horses_are_avaliable", 10),
+      (assign, "$g_dplmc_cam_default", camera_keyboard),
+      (assign, "$g_dplmc_player_disguise", disguise_pilgrim),
+      (assign, "$sneaked_into_town", disguise_none), #associated with above
+      # (assign, "$g_dplmc_charge_when_dead", 1),
+      (assign, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
+      (assign, "$g_dplmc_lord_recycling", 1),
+      (assign, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
+      (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
+      (assign, "$g_disable_condescending_comments", 0),
+      (assign, "$disable_npc_complaints", 0),
+      # (call_script, "script_dplmc_update_info_settings"),
+      (start_presentation, "prsnt_adv_diplomacy_preferences"),
+    (else_try),
+      (eq, ":object", "$g_presentation_obj_profile_banner_selection_2"),
+      (call_script, "script_dplmc_update_info_settings"),
+      #(presentation_set_duration, 0),
+      (assign, "$g_presentation_next_presentation", -1),
+      (start_presentation, "prsnt_vc_options"),
+    (else_try), #deathcam launch new presentation
+      (eq, ":object", "$g_dplmc_cam_activated"),
+      (assign, "$g_presentation_next_presentation", "prsnt_redefine_keys"),
+      (start_presentation, "prsnt_redefine_keys"),
+    (else_try), ## HORSE SPEED
+      (troop_slot_eq, "trp_temp_array_b", 0, ":object"),
+      (store_sub, "$g_dplmc_horse_speed", 1, ":value"),
+    (else_try), ## HORSE SPEED
+      (troop_slot_eq, "trp_temp_array_b", 1, ":object"),
+      (assign, "$g_horses_are_avaliable", ":value"),
+    (else_try), ## BATTLE CONTINUATION
+      (troop_slot_eq, "trp_temp_array_b", 2, ":object"),
+      (store_sub, "$g_dplmc_battle_continuation", 1, ":value"),
+      (start_presentation, "prsnt_adv_diplomacy_preferences"),
+    (else_try), ## TERRAIN ADVANTAGE
+      (troop_slot_eq, "trp_temp_array_b", 4, ":object"),
+      (store_sub, "$g_dplmc_terrain_advantage", ":value", 1),
+    (else_try), ## LORDS RETURNING FROM EXILE
+      (troop_slot_eq, "trp_temp_array_b", 5, ":object"),
+      (store_sub, "$g_dplmc_lord_recycling", ":value", 1),
+    (else_try), #AI
+      (troop_slot_eq, "trp_temp_array_b", 6, ":object"),
+      (store_sub, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_HIGH, ":value"),
+    (else_try), #ECO
+      (troop_slot_eq, "trp_temp_array_b", 7, ":object"),
+      (store_sub, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_HIGH, ":value"),
+    (else_try), #Prejudice
+      (troop_slot_eq, "trp_temp_array_b", 8, ":object"),
+      (assign, reg0, ":value"),
+      (assign, reg1, "$g_disable_condescending_comments"),
+      (display_message, "@option {reg0}: was {reg1}"),
+      (try_begin), #default
+        (eq, ":value", 3),
+        (assign, "$g_disable_condescending_comments", 0),
+      (else_try), #off
+        (eq, ":value", 2),
+        (assign, "$g_disable_condescending_comments", 2),
+      (else_try), #high
+        (eq, ":value", 1),
+        (assign, "$g_disable_condescending_comments", -2),
+      (else_try), #randomize
+        (eq, ":value", 0),
+        (assign, "$g_disable_condescending_comments", 4),
+      (try_end),
+    (else_try), ## Complaints
+      (troop_slot_eq, "trp_temp_array_b", 9, ":object"),
+      (assign, "$disable_npc_complaints", ":value"),
+      (assign, "$personality_clash_after_24_hrs", 0),
+    (else_try), ## Disguise
+      (troop_slot_eq, "trp_temp_array_b", 10, ":object"),
+      (assign, "$g_dplmc_player_disguise", ":value"),
+      (assign, "$sneaked_into_town", disguise_none), #so as to not proc trigger
+    # (else_try), ## CHEATS MENU
+    #   (troop_slot_eq, "trp_temp_array_b", 11, ":object"),
+    #   (assign, "$cheat_mode", ":value"),
+    #   (try_begin),
+    #       (troop_get_slot, ":cheats", "trp_global_variables", g_used_cheats),
+    #       (val_add, ":cheats", 1),
+    #       (troop_set_slot, "trp_global_variables", g_used_cheats, ":cheats"),
+    #       (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
+    #       (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
+    #       (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
+    #   (try_end),
+    (try_end),
+  ]),
+  (ti_on_presentation_mouse_enter_leave,[
+    (store_trigger_param_1, ":object"),
+    (store_trigger_param_2, ":enter_leave"), #0 if mouse enters, 1 if mouse leaves
+    ##IF THE EVENT IS "ENTER", WE CHOOSE THE TEXT THAT WILL BE SHOWED
+    (try_begin),
+      (eq, ":enter_leave", 0),
+      (gt, ":object", 0), #not the overlay
+      #could use overlay_set_material but stretching
+      (assign, ":num_options", DPLMC_NUM_PREFERENCE_OPTIONS),
+      (assign, ":selected_option", -1),
+
+      (try_for_range, ":slot_no", 0, ":num_options"),
+        (this_or_next|troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
+        (troop_slot_eq, "trp_temp_array_b", ":slot_no", ":object"),
+        (store_add, ":string", "str_dplmc_setting_tt1", ":slot_no"),
+        (overlay_set_text, "$g_presentation_obj_admin_panel_container", ":string"),
+        (assign, ":num_options", -1),
+        (assign, ":selected_option", ":slot_no"),
+      (try_end),
+
+      (try_begin),
+        (eq, ":selected_option", -1),
+        (overlay_set_text, "$g_presentation_obj_admin_panel_container", "str_dplmc_setting_tt0"),
+      (else_try),
+        (try_for_range, ":slot_no", 0, DPLMC_NUM_PREFERENCE_OPTIONS),
+          (troop_get_slot, ":overlay_no", "trp_temp_array_c", ":slot_no"),
+          (gt, ":overlay_no", 0),
+          (try_begin),
+            (eq, ":slot_no", ":selected_option"),
+            (overlay_set_display, ":overlay_no", 1),
+          (else_try),
+            (overlay_set_display, ":overlay_no", 0),
+          (try_end),
+        (try_end),
+      (try_end),
+    (try_end),
+  ]),
+]),
 
 ###VC-2198 begin
 ("vc_options", 0, mesh_load_window, [
@@ -18933,7 +18726,7 @@ presentations = [
 
     (create_text_overlay, reg1, "@Governor/lord appointment notification", 0),
     (call_script, "script_prsnt_vc_menu_helper"),
-    (overlay_set_val, reg2, "$g_lord_can_spawn_out_center"),
+    (overlay_set_val, reg2, "$g_governor_appointment_message"),
     (assign, "$g_presentation_obj_admin_panel_7", reg2),
 
     (create_text_overlay, reg1, "@Truce notification menus", 0),
@@ -19424,7 +19217,7 @@ presentations = [
         (assign, "$g_body_guard_on", 0), # body guards
         (assign, "$g_allow_curb_power", 1), # curb power war goal
         (assign, "$g_schield_bash", 1), # AI uses shieldbash
-        (assign, "$g_lord_can_spawn_out_center", 1), # message governor/lord gets a center notification
+        (assign, "$g_governor_appointment_message", 1), # message governor/lord gets a center notification
         (assign, "$show_truce_expired", 1), # message truce expired
         (assign, "$show_raid_messages", 1), # message raid
         (assign, "$g_love_messages_on", 1), # message love affair
@@ -19449,7 +19242,7 @@ presentations = [
         (assign, "$g_body_guard_on", 1), # body guards
         (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 1), # AI uses shieldbash
-        (assign, "$g_lord_can_spawn_out_center", 1), # message governor/lord gets a center notification
+        (assign, "$g_governor_appointment_message", 1), # message governor/lord gets a center notification
         (assign, "$show_truce_expired", 0), # message truce expired
         (assign, "$show_raid_messages", 1), # message raid
         (assign, "$g_love_messages_on", 1), # message love affair
@@ -19474,7 +19267,7 @@ presentations = [
         (assign, "$g_body_guard_on", 1), # body guards
         (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 0), # AI uses shieldbash
-        (assign, "$g_lord_can_spawn_out_center", 1), # message governor/lord gets a center notification
+        (assign, "$g_governor_appointment_message", 1), # message governor/lord gets a center notification
         (assign, "$show_truce_expired", 0), # message truce expired
         (assign, "$show_raid_messages", 0), # message raid
         (assign, "$g_love_messages_on", 1), # message love affair
@@ -19499,7 +19292,7 @@ presentations = [
         (assign, "$g_body_guard_on", 1), # body guards
         (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 0), # AI uses shieldbash
-        (assign, "$g_lord_can_spawn_out_center", 1), # message governor/lord gets a center notification
+        (assign, "$g_governor_appointment_message", 1), # message governor/lord gets a center notification
         (assign, "$show_truce_expired", 0), # message truce expired
         (assign, "$show_raid_messages", 0), # message raid
         (assign, "$g_love_messages_on", 1), # message love affair
@@ -19571,7 +19364,7 @@ presentations = [
       (overlay_set_val, "$g_presentation_obj_24", "$g_display_gift"),
       (overlay_set_val, "$g_presentation_obj_admin_panel_4", "$g_report_enemies"),
       (overlay_set_val, "$g_presentation_obj_9", "$g_show_senate_meeting"),
-      (overlay_set_val, "$g_presentation_obj_admin_panel_7", "$g_lord_can_spawn_out_center"),
+      (overlay_set_val, "$g_presentation_obj_admin_panel_7", "$g_governor_appointment_message"),
       (overlay_set_val, "$form_options_overlay_2", "$show_raid_messages"),
       (overlay_set_val, "$g_presentation_obj_11", "$g_love_messages_on"),
 
@@ -19680,7 +19473,7 @@ presentations = [
       (assign, "$g_body_guard_on", ":value"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_admin_panel_7"),
-      (assign, "$g_lord_can_spawn_out_center", ":value"),
+      (assign, "$g_governor_appointment_message", ":value"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_admin_panel_5"),
       (assign, "$g_allow_curb_power", ":value"),
