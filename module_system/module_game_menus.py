@@ -44807,101 +44807,92 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
   ),
 
-  (
-    "prisoners",mnf_disable_all_keys,
-    "Your guards take him prisoner and his troops are disbanded.",
-    "none",
-    [
- 	(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -60),
+("prisoners",mnf_disable_all_keys,
+  "Your guards take him prisoner and his troops are disbanded.",
+  "none",[
+    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -60),
 
-		# (try_for_range, ":parties", towns_begin, towns_end),
-			# (store_faction_of_party, ":fac", ":parties"),
-			# (eq, ":fac", "$players_kingdom"),
-			# (store_random_in_range, ":r", 0, 100),
-			# (lt, ":r", 40),
-			# (call_script, "script_change_player_relation_with_center", ":parties", -2),
-		# (try_end),
-	(display_message, "@Rumors spread through the Empire that you are a tyrant.", message_negative),
-	(try_begin),
-		(lt, "$g_unrest", 110),
-		(val_add, "$g_unrest", 5),
-        (display_message, "@Stability of the Empire decreases", color_bad_news),
-	(try_end),
+    # (try_for_range, ":parties", towns_begin, towns_end),
+      # (store_faction_of_party, ":fac", ":parties"),
+      # (eq, ":fac", "$players_kingdom"),
+      # (store_random_in_range, ":r", 0, 100),
+      # (lt, ":r", 40),
+      # (call_script, "script_change_player_relation_with_center", ":parties", -2),
+    # (try_end),
+    (display_message, "@Rumors spread through the Empire that you are a tyrant.", message_negative),
+    (try_begin),
+      (lt, "$g_unrest", 110),
+      (val_add, "$g_unrest", 5),
+      (display_message, "@Stability of the Empire decreases", color_bad_news),
+    (try_end),
 
 
-  (call_script, "script_change_relation_with_family_friends_enemies", "$g_talk_troop", -1, 15, "trp_player"),
+    (call_script, "script_change_relation_with_family_friends_enemies", "$g_talk_troop", -1, 15, "trp_player"),
       # # # reduce the player's relationship with every hero, companion, lady, and daughter
       # (try_for_range, ":troop", heroes_begin, kingdom_ladies_end),
-		# (store_faction_of_troop, ":fac", ":troop"),
-		# (eq, ":fac", "$players_kingdom"),
-		# (try_begin),
-			# # don't make the dead any angrier than they already are!
-			# (neg|troop_slot_eq, ":troop", slot_troop_occupation, dplmc_slto_dead),
-			# #only for family members a relation drop
-			# (this_or_next|troop_slot_eq, ":troop", slot_troop_guardian, "$g_talk_troop"),
-			# (this_or_next|troop_slot_eq, ":troop", slot_troop_spouse, "$g_talk_troop"),
-			# (this_or_next|troop_slot_eq, ":troop", slot_troop_father, "$g_talk_troop"),
-			# (this_or_next|troop_slot_eq, ":troop", slot_troop_mother, "$g_talk_troop"),
-			# (troop_slot_eq, ":troop", slot_troop_betrothed, "$g_talk_troop"),
+    # (store_faction_of_troop, ":fac", ":troop"),
+    # (eq, ":fac", "$players_kingdom"),
+    # (try_begin),
+      # # don't make the dead any angrier than they already are!
+      # (neg|troop_slot_eq, ":troop", slot_troop_occupation, dplmc_slto_dead),
+      # #only for family members a relation drop
+      # (this_or_next|troop_slot_eq, ":troop", slot_troop_guardian, "$g_talk_troop"),
+      # (this_or_next|troop_slot_eq, ":troop", slot_troop_spouse, "$g_talk_troop"),
+      # (this_or_next|troop_slot_eq, ":troop", slot_troop_father, "$g_talk_troop"),
+      # (this_or_next|troop_slot_eq, ":troop", slot_troop_mother, "$g_talk_troop"),
+      # (troop_slot_eq, ":troop", slot_troop_betrothed, "$g_talk_troop"),
 
-			# (try_begin),
-			  # (store_random_in_range, ":impact", 25, 45),
-			  # (val_mul, ":impact", -1),
-			  # (call_script, "script_change_player_relation_with_troop", ":troop", ":impact"),
-			# (try_end),
-		   # (else_try),#and friends
-			# (call_script, "script_troop_get_relation_with_troop", ":troop", "$g_talk_troop"),
-			# (try_begin),
-				# (ge, reg0, 20),
-				# (store_div, ":relation_lose", reg0, 2),
-				# (val_mul, ":relation_lose", 3),
-				# (val_sub, ":relation_lose", 5),
-				# (val_clamp, ":relation_lose", 1, 70),
-				# (val_mul, ":relation_lose", -1),
-				# (call_script, "script_change_player_relation_with_troop", ":troop", ":relation_lose"),
-			  # (else_try),
-				# (store_random_in_range, ":r", 1, 8),
-				# (val_mul, ":r", -1),
-				# (call_script, "script_change_player_relation_with_troop", ":troop", ":r"),
-			# (try_end),
-		 # (try_end),
-	  # (try_end),
+      # (try_begin),
+        # (store_random_in_range, ":impact", 25, 45),
+        # (val_mul, ":impact", -1),
+        # (call_script, "script_change_player_relation_with_troop", ":troop", ":impact"),
+      # (try_end),
+        # (else_try),#and friends
+      # (call_script, "script_troop_get_relation_with_troop", ":troop", "$g_talk_troop"),
+      # (try_begin),
+        # (ge, reg0, 20),
+        # (store_div, ":relation_lose", reg0, 2),
+        # (val_mul, ":relation_lose", 3),
+        # (val_sub, ":relation_lose", 5),
+        # (val_clamp, ":relation_lose", 1, 70),
+        # (val_mul, ":relation_lose", -1),
+        # (call_script, "script_change_player_relation_with_troop", ":troop", ":relation_lose"),
+        # (else_try),
+        # (store_random_in_range, ":r", 1, 8),
+        # (val_mul, ":r", -1),
+        # (call_script, "script_change_player_relation_with_troop", ":troop", ":r"),
+      # (try_end),
+      # (try_end),
+    # (try_end),
 
-	(display_message, "@You are despised for your tyranny", message_negative),
-	(call_script, "script_change_player_honor", -20),
-	(troop_set_slot, "$g_talk_troop", slot_troop_prisoner_of_party, "p_main_party"),
-	(party_force_add_prisoners, "p_main_party", "$g_talk_troop", 1),
-	#(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -30),
-	#(call_script, "script_change_player_relation_with_faction_ex", "$g_talk_troop_faction", -2),
-	(call_script, "script_event_hero_taken_prisoner_by_player", "$g_talk_troop"),
-	#(remove_party, "$g_talk_troop_party"),
-	(troop_get_slot, ":king_party", "$g_talk_troop", slot_troop_leaded_party),
-	(try_begin),
-		(party_is_active,":king_party"),
-		(remove_party,":king_party"),
-	(try_end),
-	(troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
-
-
-	(assign, "$cant_leave_encounter", 0),
-	(assign, "$g_leave_encounter", 1),
-    ],
-    [
+    (display_message, "@You are despised for your tyranny", message_negative),
+    (call_script, "script_change_player_honor", -20),
+    (troop_set_slot, "$g_talk_troop", slot_troop_prisoner_of_party, "p_main_party"),
+    (party_force_add_prisoners, "p_main_party", "$g_talk_troop", 1),
+    #(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -30),
+    #(call_script, "script_change_player_relation_with_faction_ex", "$g_talk_troop_faction", -2),
+    (call_script, "script_event_hero_taken_prisoner_by_player", "$g_talk_troop"),
+    #(remove_party, "$g_talk_troop_party"),
+    (troop_get_slot, ":king_party", "$g_talk_troop", slot_troop_leaded_party),
+    (try_begin),
+      (party_is_active,":king_party"),
+      (remove_party,":king_party"),
+    (try_end),
+    (troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
 
 
-      ("continue",[],"Continue...",
-        [
+    (assign, "$cant_leave_encounter", 0),
+    (assign, "$g_leave_encounter", 1),
+  ],[
+    ("continue",[],"Continue...",[
+      (change_screen_map),
+    ]),
+]),
 
-          (change_screen_map),
-      ]),
-    ],
-  ),
-  (
-    "prisoners_legal",mnf_disable_all_keys,
-    "Your guards take him prisoner and his troops are disbanded.",
-    "none",
-    [
- 	(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -60),
+("prisoners_legal",mnf_disable_all_keys,
+  "Your guards take him prisoner and his troops are disbanded.",
+  "none",[
+  	(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -60),
     (call_script, "script_change_relation_with_family_friends_enemies", "$g_talk_troop", -1, 15, "trp_player"),
 		# (try_for_range, ":parties", towns_begin, towns_end),
 			# (store_faction_of_party, ":fac", ":parties"),
@@ -44952,91 +44943,75 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 		 # (try_end),
 	  # (try_end),
 
-	(call_script, "script_change_player_honor", 15),
-	(troop_set_slot, "$g_talk_troop", slot_troop_prisoner_of_party, "p_main_party"),
-	(party_force_add_prisoners, "p_main_party", "$g_talk_troop", 1),
-	#(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -30),
-	#(call_script, "script_change_player_relation_with_faction_ex", "$g_talk_troop_faction", -2),
-	(call_script, "script_event_hero_taken_prisoner_by_player", "$g_talk_troop"),
-	#(remove_party, "$g_talk_troop_party"),
-	(troop_get_slot, ":king_party", "$g_talk_troop", slot_troop_leaded_party),
-	(try_begin),
-		(party_is_active,":king_party"),
-		(remove_party,":king_party"),
-	(try_end),
-	(troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
+    (call_script, "script_change_player_honor", 15),
+    (troop_set_slot, "$g_talk_troop", slot_troop_prisoner_of_party, "p_main_party"),
+    (party_force_add_prisoners, "p_main_party", "$g_talk_troop", 1),
+    #(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -30),
+    #(call_script, "script_change_player_relation_with_faction_ex", "$g_talk_troop_faction", -2),
+    (call_script, "script_event_hero_taken_prisoner_by_player", "$g_talk_troop"),
+    #(remove_party, "$g_talk_troop_party"),
+    (troop_get_slot, ":king_party", "$g_talk_troop", slot_troop_leaded_party),
+    (try_begin),
+      (party_is_active,":king_party"),
+      (remove_party,":king_party"),
+    (try_end),
+    (troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
 
-	(assign, "$cant_leave_encounter", 0),
-	(assign, "$g_leave_encounter", 1),
-    ],
-    [
+    (assign, "$cant_leave_encounter", 0),
+    (assign, "$g_leave_encounter", 1),
+  ],[
+    ("continue",[],"Continue...",[
+      (change_screen_map),
+    ]),
+]),
 
-
-      ("continue",[],"Continue...",
-        [
-
-          (change_screen_map),
-      ]),
-    ],
-  ),
-  (
-    "gods_judgment",mnf_disable_all_keys,
-    "You start to pray: ^{s20}\
-^^All is silent, then you hear a thunder in the distance. All of a sudden, \
-you a voice whispers: '{playername}, come to the grove. It is in the south, not a mile away.'",
-    "none",
-    [(set_background_mesh, "mesh_pic_deserters"),
-        (troop_get_slot,":god", "trp_player", slot_troop_religion),
+("gods_judgment",mnf_disable_all_keys,
+  "You start to pray: ^{s20}"
+  +"^^All is silent, then you hear a thunder in the distance. All of a sudden, "
+  +"you a voice whispers: '{playername}, come to the grove. It is in the south, not a mile away.'",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+    (troop_get_slot,":god", "trp_player", slot_troop_religion),
     (store_add, ":string", ":god", "str_paryers_begin"),
     (str_store_string, s20, ":string"),
-    ],
-    [
+  ],[
+    ("continue",[],"I think I had too much wine ...",[
+      (change_screen_map),
+    ]),
+    ("continue",[],"I will go to this grove ...",[
+      (set_jump_mission,"mt_gods_judgment"),
+      # (quest_get_slot, ":num" ,"qst_blank_quest_19",slot_quest_object_state),
+      (modify_visitors_at_site,"scn_grove"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+      (try_begin),
+        (eq, "$gods_judgment", 0),
+        (set_visitor, 1, "trp_odysseus"),
+        (troop_set_health, "trp_odysseus", 100),
+      (else_try),
+        (eq, "$gods_judgment", 1),
+        (set_visitor, 1, "trp_agamemnon"),
+        (troop_set_health, "trp_agamemnon", 100),
+      (else_try),
+        (eq, "$gods_judgment", 2),
+        (set_visitor, 1, "trp_herakles"),
+        (troop_set_health, "trp_herakles", 100),
+      (else_try),
+        (eq, "$gods_judgment", 3),
+        (troop_set_health, "trp_achilleus", 100),
+        (set_visitor, 1, "trp_achilleus"),
+      (try_end),
 
+      # (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, ":num"),
+      (jump_to_scene,"scn_grove"),
 
-      ("continue",[],"I think I had too much wine ...",
-        [
+      (change_screen_mission),
+    ]),
+]),
 
-          (change_screen_map),
-      ]),
-      ("continue",[],"I will go to this grove ...",
-        [
-          (set_jump_mission,"mt_gods_judgment"),
-          # (quest_get_slot, ":num" ,"qst_blank_quest_19",slot_quest_object_state),
-          (modify_visitors_at_site,"scn_grove"),
-          (reset_visitors),
-          (set_visitor, 0, "trp_player"),
-          (try_begin),
-            (eq, "$gods_judgment", 0),
-            (set_visitor, 1, "trp_odysseus"),
-            (troop_set_health, "trp_odysseus", 100),
-          (else_try),
-            (eq, "$gods_judgment", 1),
-            (set_visitor, 1, "trp_agamemnon"),
-            (troop_set_health, "trp_agamemnon", 100),
-          (else_try),
-            (eq, "$gods_judgment", 2),
-            (set_visitor, 1, "trp_herakles"),
-            (troop_set_health, "trp_herakles", 100),
-          (else_try),
-            (eq, "$gods_judgment", 3),
-            (troop_set_health, "trp_achilleus", 100),
-            (set_visitor, 1, "trp_achilleus"),
-          (try_end),
-
-         # (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, ":num"),
-          (jump_to_scene,"scn_grove"),
-
-          (change_screen_mission),
-      ]),
-    ],
-  ),
-
-  (
-    "gods_judgment_yhwh",mnf_disable_all_keys,
-    "While praying and singing holy songs you make a sacrifice.\
-^^After you finished, {s20}",
-    "none",
-    [
+("gods_judgment_yhwh",mnf_disable_all_keys,
+  "While praying and singing holy songs you make a sacrifice.^^After you finished, {s20}",
+  "none",[
     (try_begin),
       (ge, "$player_honor", 100),
       (assign, "$temp2", 100),
@@ -45083,9 +45058,11 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     (store_random_in_range, reg40, 0, 200),
     (try_begin),
       (le, reg40, "$temp2"),
-      (str_store_string, s20, "@you see a bush burning. Then you hear a voice.\
- It seems that the bush speaks to you, but you can't understand a single word. Suddenly, the world starts to rotate and everything becomes black.\
- After an hour you awak. It seems some of your skills have improved."),
+      (str_store_string, s20,
+        "@you see a bush burning. Then you hear a voice."
+        +" It seems that the bush speaks to you, but you can't understand a single word. Suddenly, the world starts to rotate and everything becomes black."
+        +" After an hour you awak. It seems some of your skills have improved."
+      ),
        (set_background_mesh, "mesh_pic_bush"),
       (assign, "$temp", 1),
     (else_try),
@@ -45093,17 +45070,11 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (set_background_mesh, "mesh_pic_deserters"),
       (assign, "$temp", 0),
     (try_end),
-    ],
-    [
-
-
-      ("continue",[(neq, "$temp", 1),],"Continue.",
-        [
-
-          (change_screen_map),
-      ]),
-      ("continue",[(eq, "$temp", 1),],"YHWH has spoken to me.",
-        [
+  ],[
+    ("continue",[(neq, "$temp", 1),],"Continue.",[
+      (change_screen_map),
+    ]),
+    ("continue",[(eq, "$temp", 1),],"YHWH has spoken to me.",[
       (troop_raise_attribute, "trp_player", ca_agility, 1),
       (troop_raise_attribute, "trp_player", ca_strength, 1),
       (troop_raise_attribute, "trp_player", ca_charisma, 1),
@@ -45114,10 +45085,9 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (troop_add_item, "trp_player", "itm_temple_gold", 0),
       (troop_add_item, "trp_player", "itm_temple_gold", 0),
       (display_message, "@Wealth for the people who worship YHWH",color_good_news),
-       (change_screen_map),
-      ]),
-    ],
-  ),
+      (change_screen_map),
+    ]),
+]),
 
 ("gods_judgment_christus",mnf_disable_all_keys,
   "You start praying:^^{s44}.^^After you finished, {s20}",
@@ -45273,8 +45243,9 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
       (change_screen_map),
     ]),
 ]),
+
 ("gold_losses",0,
-  "Worng calculation?^^You check a current report about your private treasury and notice, that there are some funds missing."
+  "Wrong calculation?^^You check a current report about your private treasury and notice, that there are some funds missing."
   +" You recalculate everything, but then you come to a different conclusion. It must have been a mistake by yourself.",
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
@@ -47482,179 +47453,201 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
 
     ]
   ),
-  (
-    "rename_month",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You propose an edict, edictum mensum, to rename a month after you. You need a simple majority for this edict to be justified. {reg33}% of the senators voted for your proposal.^^\
- Additionally, it will cost you 250,000 denars to rename everything. The money will be taken from your treasury. (You have currently {reg34} denars)^^\
- But careful, you can't change the name later on.",
-    "none",
-    [(troop_get_slot, reg33, "trp_senator_dummy", slot_senate_support),
+
+("rename_month",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You propose an edict, edictum mensum, to rename a month after you. You need a simple majority for this edict to be justified. {reg33}% of the senators voted for your proposal.^^"
+  +" Additionally, it will cost you 250,000 denars to rename everything. The money will be taken from your treasury. (You have currently {reg34} denars)^^"
+  +" But careful, you can't change the name later on.",
+  "none",[
+    (troop_get_slot, reg33, "trp_senator_dummy", slot_senate_support),
     (store_troop_gold, reg34, "trp_household_possessions"),
+    (store_troop_gold, ":g", "trp_player"),
+    (val_add, reg34, ":g"),
     (try_begin),
       (ge, "$edict10", 1),
       (jump_to_menu, "mnu_senatus"),
     (try_end),
-    ],[
-
-     ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"Ianuarius",[
-     (assign, "$edict10", 1),
-     (display_log_message, "@You decided to rename the Ianuarius."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"Februarius",[
-     (assign, "$edict10", 2),
-     (display_log_message, "@You decided to rename the Februarius."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"Martius",[
-     (assign, "$edict10", 3),
-     (display_log_message, "@You decided to rename the Martius."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"Aprilis",[
-     (assign, "$edict10", 4),
-     (display_log_message, "@You decided to rename the Aprilis."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"Maius",[
-     (assign, "$edict10", 5),
-     (display_log_message, "@You decided to rename the Maius."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"Iunius",[
-     (assign, "$edict10", 6),
-     (display_log_message, "@You decided to rename the Iunius."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"Iulius",[
-     (assign, "$edict10", 7),
-     (display_log_message, "@You decided to rename the Iulius."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"Augustus",[
-     (assign, "$edict10", 8),
-     (display_log_message, "@You decided to rename the Augustus."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"September",[
-     (assign, "$edict10", 9),
-     (display_log_message, "@You decided to rename the September."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"October",[
-     (assign, "$edict10", 10),
-     (display_log_message, "@You decided to rename the October."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"November",[
-     (assign, "$edict10", 11),
-     (display_log_message, "@You decided to rename the November."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-      ("month",[(ge, reg33, 51),
-     (ge, reg34, 250000),
-     ],"December",[
-     (assign, "$edict10", 12),
-     (display_log_message, "@You decided to rename the December."),
-     (call_script, "script_dplmc_withdraw_from_treasury", 250000),
-     (call_script, "script_change_troop_renown", "trp_player", 50),
-     (assign, "$g_presentation_state", rename_month),
-     (assign, "$g_player_troop", "trp_bard_end"),
-     (start_presentation, "prsnt_name_kingdom"),
-      ]),
-
-      ("leave",[],"Forget it.",[ (jump_to_menu, "mnu_senatus"),
-      ]),
+  ],
+   [
+      ("month_"+str(month),[
+        (ge, reg33, 51),
+        (ge, reg34, 250000),
+        (store_add, ":string", "str_january", month),
+        (str_store_string, s5, ":string"),
+      ],"Rename {s5}.",[
+        (store_add, "$edict10", month, 1),
+        (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 250000,"trp_player"),
+        (call_script, "script_change_troop_renown", "trp_player", 50),
+        (assign, "$g_presentation_state", rename_month),
+        (assign, "$g_player_troop", "trp_bard_end"),
+        (start_presentation, "prsnt_name_kingdom"),
+      ])
+      for month in range(0, 12)
+  ] + [
 
 
-    ]
-  ),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"Ianuarius",[
+    #   (assign, "$edict10", 1),
+    #   (display_log_message, "@You decided to rename the Ianuarius."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"Februarius",[
+    #   (assign, "$edict10", 2),
+    #   (display_log_message, "@You decided to rename the Februarius."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"Martius",[
+    #   (assign, "$edict10", 3),
+    #   (display_log_message, "@You decided to rename the Martius."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"Aprilis",[
+    #   (assign, "$edict10", 4),
+    #   (display_log_message, "@You decided to rename the Aprilis."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"Maius",[
+    #   (assign, "$edict10", 5),
+    #   (display_log_message, "@You decided to rename the Maius."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"Iunius",[
+    #   (assign, "$edict10", 6),
+    #   (display_log_message, "@You decided to rename the Iunius."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"Iulius",[
+    #   (assign, "$edict10", 7),
+    #   (display_log_message, "@You decided to rename the Iulius."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"Augustus",[
+    #   (assign, "$edict10", 8),
+    #   (display_log_message, "@You decided to rename the Augustus."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"September",[
+    #   (assign, "$edict10", 9),
+    #   (display_log_message, "@You decided to rename the September."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"October",[
+    #   (assign, "$edict10", 10),
+    #   (display_log_message, "@You decided to rename the October."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    # ],"November",[
+    #   (assign, "$edict10", 11),
+    #   (display_log_message, "@You decided to rename the November."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    # ("month",[
+    #   (ge, reg33, 51),
+    #   (ge, reg34, 250000),
+    #  ],"December",[
+    #   (assign, "$edict10", 12),
+    #   (display_log_message, "@You decided to rename the December."),
+    #   (call_script, "script_dplmc_withdraw_from_treasury", 250000),
+    #   (call_script, "script_change_troop_renown", "trp_player", 50),
+    #   (assign, "$g_presentation_state", rename_month),
+    #   (assign, "$g_player_troop", "trp_bard_end"),
+    #   (start_presentation, "prsnt_name_kingdom"),
+    # ]),
+    ("leave",[],"Forget it.",[
+      (jump_to_menu, "mnu_senatus"),
+    ]),
+]),
 
-  (
-    "golgotha",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You climb on the hill called Golgotha where decades ago Christus was crucified. It is very hot and as you reach the top you have an impressive view over the town of Hierosolyma.\
- You let your gaze wander over the city. After a while you start to pray ... but you are interrupted buy a voice. As you look around the only thing you see is a burning bush.\
- In front of the bush, a lance stucks in the ground. A voice says: 'Take this lance and victory will always be on your side!'",
-    "none",
-    [(set_background_mesh, "mesh_pic_bush"),
-    ],[
-
-
-      ("leave",[],"Take the lance. Glory to God!",[
+("golgotha",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You climb on the hill called Golgotha where decades ago Christus was crucified. It is very hot and as you reach the top you have an impressive view over the town of Hierosolyma."
+  +" You let your gaze wander over the city. After a while you start to pray ... but you are interrupted buy a voice. As you look around the only thing you see is a burning bush."
+  +" In front of the bush, a lance stucks in the ground. A voice says: 'Take this lance and victory will always be on your side!'",
+  "none",[
+    (set_background_mesh, "mesh_pic_bush"),
+  ],[
+    ("leave",[],"Take the lance. Glory to God!",[
       (troop_add_item, "trp_player", "itm_holy_lance"),
       (troop_set_slot, "trp_global_variables", g_player_visit_golgotha, 1),
       (jump_to_menu, "mnu_town"),
-      ]),
-
-
-    ]
-  ),
+    ]),
+]),
 
 ("petition",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "You start checking the petitions ...",
@@ -47716,180 +47709,153 @@ you a voice whispers: '{playername}, come to the grove. It is in the south, not 
     ]),
 ]),
 
-  (
-    "christian",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "Since the first time you heard about Christus, you were not sure what to think about it. But you start to feel quite confortable with the believes\
- the Christians have. Maybe it is time to worship their God? Maybe this God is the really true God!",
-    "none",
-    [(set_background_mesh, "mesh_pic_bush"),
-
-
-    ],[
-
-
-      ("leave",[],"I believe! I am a Christ now.",[
-  (display_log_message, "@You worship the Christian god now!"),
-  (troop_set_slot, "trp_player", slot_troop_religion, worships_christus),
+("christian",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Since the first time you heard about Christus and Christians, you were not sure what to think about it. However, you started feeling quite comfortable with the beliefs the Christians have."
+  +"Maybe it is time to worship their God? Maybe this God is the really true God!",
+  "none",[
+    (set_background_mesh, "mesh_pic_bush"),
+  ],[
+  ("leave",[],"I believe! I believe in the resurrection of Christ!",[
+    (display_log_message, "@You worship the Christian god now!"),
+    (troop_set_slot, "trp_player", slot_troop_religion, worships_christus),
 		(change_screen_map),
-      ]),
-      ("leave",[],"Forget it.",[
+  ]),
+  ("leave",[],"Forget it.",[
 		(jump_to_menu, "mnu_camp_action"),
-      ]),
-
-
-    ]
-  ),
-
-("senate_decide",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You bring the petition to remove {s22} before the senate. You supporters immediately demand, that you should be nominated as new governor.\
- You need a two-thirds majority to pass this important decision. You are currently supported by {reg20}% of the senators.",
-    "none",
-    [
-      (set_background_mesh, "mesh_pic_senators"),
-      (troop_get_slot, reg20, "trp_senator_dummy", slot_senate_support),
-    ],[
-      ("leave",[],"Start the vote.",[
-            (assign, "$temp3", "mesh_pic_senators"),
-            (store_random_in_range, reg26, -3, 2),
-
-            (quest_get_slot, ":governor", "qst_usurp_province", slot_quest_target_troop),
-            (quest_get_slot, ":town", "qst_usurp_province", slot_quest_target_center),
-            (str_store_party_name, s57, ":town"),
-            (call_script, "script_change_senate_support", reg26, 0),
-            (try_begin),
-              (eq, reg26, -2),
-              (str_store_string, s41, "@two senators changed to the opposite side."),
-            (else_try),
-              (eq, reg26, -1),
-              (str_store_string, s41, "@one senator changed to the opposite side."),
-            (else_try),
-              (eq, reg26, 0),
-              (str_store_string, s41, "@no senator changed side."),
-            (else_try),
-              (eq, reg26, 1),
-              (str_store_string, s41, "@one senator changed to your side."),
-            # (else_try),
-              # (eq, reg26, 2),
-              # (str_store_string, s41, "@two senators changed to your side."),
-            (try_end),
-            (troop_get_slot, reg27, "trp_senator_dummy", slot_senate_support),
-            (try_begin),
-              (ge, reg27, 67),
-              (str_store_string, s49, "@You won the vote! {reg27}% of the senators voted for your proposal. Now you are the new governor of {s57}."),
-
-              (call_script, "script_change_player_honor", -10),
-              (display_message, "@Intrigues and plots are a dishonorable business."),
-
-              (call_script, "script_change_troop_controversy", "trp_player", 80),
-              (party_get_slot, ":province", ":town", slot_center_province),
-              (try_for_range, ":fiefs", walled_centers_begin, walled_centers_end),
-                  (store_faction_of_party, ":fac", ":fiefs"),
-                  (eq, ":fac", "$players_kingdom"),
-                  (party_slot_eq, ":fiefs", slot_center_province, ":province"),
-                  (call_script, "script_give_center_to_lord2", ":fiefs", "trp_player", 0),
-              (try_end),
-
-              #set all slots properly
-              (call_script, "script_troop_set_rank", ":governor",slot_troop_govern, 0),
-              (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, 1),
-              (assign, "$g_dont_give_fief_to_player_days", 30),
-              (troop_set_slot, "trp_province_array", ":province", "trp_player"),
-
-              #update his party
-              (call_script, "script_change_lord_party_to_fit_rank", ":governor"),
-
-              #update timer
-              (store_current_day, ":day"),
-              (val_add, ":day", 84),
-              (store_add, ":slot", slot_province_senatorial_begin, ":province"),
-              (troop_set_slot, "trp_province_array", ":slot", ":day"),
-
-              (call_script, "script_change_relation_with_family_friends_enemies", ":governor", -1, 11, "trp_player"),
-
-              (call_script, "script_end_quest", "qst_usurp_province"),
-              (call_script, "script_change_player_relation_with_center", ":town", 10),
-              (call_script, "script_change_troop_renown", "trp_player", 5),
-            (else_try),
-              (str_store_string, s49, "@You lost the vote! {reg27}% of the senators voted for your proposal. The people of {s57} don't seem happy about the outcome."),
-              (call_script, "script_cancel_quest", "qst_usurp_province"),
-              (call_script, "script_change_player_relation_with_center", ":town", -5),
-            (try_end),
-        (str_store_string, s44, "@During the discussion, {s41}.^{s49}"),
-        (jump_to_menu, "mnu_event_senate_end"),
-
-      ]),
-      ("leave",[],"Forget it.",[
-		(jump_to_menu, "mnu_senatus"),
-      ]),
+  ]),
 ]),
 
-  (
-    "senate_decide_bacchus",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You bring the petition to revoke the law 'Senatus consultum de Bacchanalibus' before the senate.\
- You need a simple majority to revoke the law. You are currently supported by {reg20}% of the senators.",
-    "none",
-    [(set_background_mesh, "mesh_pic_senators"),
+("senate_decide",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You bring the petition to remove {s22} before the senate. You supporters immediately demand, that you should be nominated as new governor."
+  +" You need a two-thirds majority to pass this important decision. You are currently supported by {reg20}% of the senators.",
+  "none",[
+    (set_background_mesh, "mesh_pic_senators"),
     (troop_get_slot, reg20, "trp_senator_dummy", slot_senate_support),
+  ],[
+    ("leave",[],"Start the vote.",[
+      (assign, "$temp3", "mesh_pic_senators"),
+      (store_random_in_range, reg26, -3, 2),
 
-    ],[
+      (quest_get_slot, ":governor", "qst_usurp_province", slot_quest_target_troop),
+      (quest_get_slot, ":town", "qst_usurp_province", slot_quest_target_center),
+      (str_store_party_name, s57, ":town"),
+      (call_script, "script_change_senate_support", reg26, 0),
+      (try_begin),
+        (eq, reg26, -2),
+        (str_store_string, s41, "@two senators changed to the opposite side."),
+      (else_try),
+        (eq, reg26, -1),
+        (str_store_string, s41, "@one senator changed to the opposite side."),
+      (else_try),
+        (eq, reg26, 0),
+        (str_store_string, s41, "@no senator changed side."),
+      (else_try),
+        (eq, reg26, 1),
+        (str_store_string, s41, "@one senator changed to your side."),
+      # (else_try),
+        # (eq, reg26, 2),
+        # (str_store_string, s41, "@two senators changed to your side."),
+      (try_end),
+      (troop_get_slot, reg27, "trp_senator_dummy", slot_senate_support),
+      (try_begin),
+        (ge, reg27, 67),
+        (str_store_string, s49, "@You won the vote! {reg27}% of the senators voted for your proposal. Now you are the new governor of {s57}."),
 
+        (call_script, "script_change_player_honor", -10),
+        (display_message, "@Intrigues and plots are a dishonorable business."),
 
-      ("leave",[],"Start the vote.",[
-            (assign, "$temp3", "mesh_pic_senators"),
-            (store_random_in_range, reg26, -3, 2),
+        (call_script, "script_change_troop_controversy", "trp_player", 80),
+        (party_get_slot, ":province", ":town", slot_center_province),
+        (try_for_range, ":fiefs", walled_centers_begin, walled_centers_end),
+            (store_faction_of_party, ":fac", ":fiefs"),
+            (eq, ":fac", "$players_kingdom"),
+            (party_slot_eq, ":fiefs", slot_center_province, ":province"),
+            (call_script, "script_give_center_to_lord2", ":fiefs", "trp_player", 0),
+        (try_end),
+        #set all slots properly
+        (call_script, "script_troop_set_rank", ":governor",slot_troop_govern, 0),
+        (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, 1),
+        (assign, "$g_dont_give_fief_to_player_days", 30),
+        (troop_set_slot, "trp_province_array", ":province", "trp_player"),
+        #update his party
+        (call_script, "script_change_lord_party_to_fit_rank", ":governor"),
+        #update timer
+        (store_current_day, ":day"),
+        (val_add, ":day", 84),
+        (store_add, ":slot", slot_province_senatorial_begin, ":province"),
+        (troop_set_slot, "trp_province_array", ":slot", ":day"),
+        (call_script, "script_change_relation_with_family_friends_enemies", ":governor", -1, 11, "trp_player"),
+        (call_script, "script_end_quest", "qst_usurp_province"),
+        (call_script, "script_change_player_relation_with_center", ":town", 10),
+        (call_script, "script_change_troop_renown", "trp_player", 5),
+      (else_try),
+        (str_store_string, s49, "@You lost the vote! {reg27}% of the senators voted for your proposal. The people of {s57} don't seem happy about the outcome."),
+        (call_script, "script_cancel_quest", "qst_usurp_province"),
+        (call_script, "script_change_player_relation_with_center", ":town", -5),
+      (try_end),
+      (str_store_string, s44, "@During the discussion, {s41}.^{s49}"),
+      (jump_to_menu, "mnu_event_senate_end"),
+    ]),
+    ("leave",[],"Forget it.",[
+      (jump_to_menu, "mnu_senatus"),
+    ]),
+]),
 
-            (call_script, "script_change_senate_support", reg26, 0),
-            (try_begin),
-              (eq, reg26, -2),
-              (str_store_string, s41, "@two senators changed to the opposite side."),
-            (else_try),
-              (eq, reg26, -1),
-              (str_store_string, s41, "@one senator changed to the opposite side."),
-            (else_try),
-              (eq, reg26, 0),
-              (str_store_string, s41, "@no senator changed side."),
-            (else_try),
-              (eq, reg26, 1),
-              (str_store_string, s41, "@one senator changed to your side."),
-            (try_end),
-            (troop_get_slot, reg27, "trp_senator_dummy", slot_senate_support),
+("senate_decide_bacchus",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You bring the petition to revoke the law 'Senatus consultum de Bacchanalibus' before the senate."
+  +" You need a simple majority to revoke the law. You are currently supported by {reg20}% of the senators.",
+  "none",[
+    (set_background_mesh, "mesh_pic_senators"),
+    (troop_get_slot, reg20, "trp_senator_dummy", slot_senate_support),
+  ],[
+    ("leave",[],"Start the vote.",[
+      (assign, "$temp3", "mesh_pic_senators"),
+      (store_random_in_range, reg26, -3, 2),
 
-            (try_begin),
-              (ge, reg27, 51),
-              (str_store_string, s49, "@You won the vote! The law 'Senatus consultum de Bacchanalibus' has been revoked."),
-            (else_try),
-              (str_store_string, s49, "@You lost the vote! {reg27}% of the senators voted for you."),
-            (try_end),
-           (str_store_string, s44, "@During the discussion, {s41}.^{s49}"),
-          (jump_to_menu, "mnu_senate_decide_bacchus2"),
+      (call_script, "script_change_senate_support", reg26, 0),
+      (try_begin),
+        (eq, reg26, -2),
+        (str_store_string, s41, "@two senators changed to the opposite side."),
+      (else_try),
+        (eq, reg26, -1),
+        (str_store_string, s41, "@one senator changed to the opposite side."),
+      (else_try),
+        (eq, reg26, 0),
+        (str_store_string, s41, "@no senator changed side."),
+      (else_try),
+        (eq, reg26, 1),
+        (str_store_string, s41, "@one senator changed to your side."),
+      (try_end),
+      (troop_get_slot, reg27, "trp_senator_dummy", slot_senate_support),
 
-      ]),
-      ("leave",[],"Forget it.",[
-		(jump_to_menu, "mnu_senatus"),
-      ]),
+      (try_begin),
+        (ge, reg27, 51),
+        (str_store_string, s49, "@You won the vote! The law 'Senatus consultum de Bacchanalibus' has been revoked."),
+      (else_try),
+        (str_store_string, s49, "@You lost the vote! {reg27}% of the senators voted for you."),
+      (try_end),
+      (str_store_string, s44, "@During the discussion, {s41}.^{s49}"),
+      (jump_to_menu, "mnu_senate_decide_bacchus2"),
+    ]),
+    ("leave",[],"Forget it.",[
+      (jump_to_menu, "mnu_senatus"),
+    ]),
+]),
 
-    ]
-  ),
-
-  (
-    "senate_decide_bacchus2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "{s44}",
-    "none",
-    [(set_background_mesh, "mesh_pic_senators"),
-    ],[
-
-
-      ("leave",[],"Continue.",[
+("senate_decide_bacchus2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "{s44}",
+  "none",[
+    (set_background_mesh, "mesh_pic_senators"),
+  ],[
+    ("leave",[],"Continue.",[
       (try_begin),
         (ge, reg27, 51),
         (jump_to_menu, "mnu_senate_decide_bacchus3"),
       (else_try),
         (jump_to_menu, "mnu_senatus"),
       (try_end),
-      ]),
-
-    ]
-  ),
+    ]),
+]),
 
 ("senate_decide_bacchus3",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "The law is revoked and you leave the Curia Julia. It is time to claim your reward!^^You make your way towards the Eastern gate of Rome, but on the way you are stopped by a horde of drunken party-goers. All around you, dancers and musicians appear. Slaves run around and distribute delicious and expensive foods and wine to the people of Rome. This must be the surprise, he mentioned before: drunkards and party-goers from all over the Empire seem to storm Rome. In all the sudden chaos, you see him riding on a golden chariot through the streets, surrounded by thousands of naked dancers. You follow the procession. After a while, you manage to reach him at the Forum Romanum.",
@@ -59416,36 +59382,31 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
   ],[
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Join Vitellius.",
-    [
+    ],"Join Vitellius.",[
       (call_script, "script_start_year_of_four", "fac_kingdom_26"),
       (jump_to_menu, "mnu_auto_return_to_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Join Galba.",
-    [
+    ],"Join Galba.",[
       (call_script, "script_start_year_of_four", "fac_kingdom_27"),
       (jump_to_menu, "mnu_auto_return_to_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Join Otho.",
-    [
+    ],"Join Otho.",[
       (call_script, "script_start_year_of_four", "fac_kingdom_24"),
       (jump_to_menu, "mnu_auto_return_to_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Join Vespasian.",
-    [
+    ],"Join Vespasian.",[
       (call_script, "script_start_year_of_four", "fac_kingdom_25"),
       (jump_to_menu, "mnu_auto_return_to_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Remain neutral.",
-    [
+    ],"Remain neutral.",[
       (call_script, "script_start_year_of_four", -1),
       (jump_to_menu, "mnu_auto_return_to_map"),
     ]),
@@ -59515,30 +59476,27 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 ]),
 
 ("slave_revlot_failed",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "You have failed your task to defeat the slave revolt. Albus and his slaves raided Italy for months until they were killed by the local town watch.",
-  "none",
-    [
-      (set_background_mesh, "mesh_pic_deserters"),
-    ],
-    [
-      ("answere_1",[],"Continue.",[
-          (try_for_parties, ":party"),
-              (party_is_active, ":party"),
-              (gt, ":party", "p_vally_of_kings"),
-              (party_stack_get_troop_id, ":party_leader", ":party", 0),
-              (eq, ":party_leader", "trp_albus"),
-              (remove_party, ":party"),
-          (try_end),
-          (call_script, "script_change_player_honor", -15),
-          (call_script, "script_change_troop_renown", "trp_player", -50),
-          (change_screen_map),
-		  ]),
+  "You have failed your task to defeat the slave revolt. Albus and his slaves raided Italy for months until they were killed by local troops.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("answere_1",[],"Continue.",[
+      (try_for_parties, ":party"),
+        (party_is_active, ":party"),
+        (gt, ":party", "p_vally_of_kings"),
+        (party_stack_get_troop_id, ":party_leader", ":party", 0),
+        (eq, ":party_leader", "trp_albus"),
+        (remove_party, ":party"),
+      (try_end),
+      (call_script, "script_change_player_honor", -15),
+      (call_script, "script_change_troop_renown", "trp_player", -50),
+      (change_screen_map),
+    ]),
 ]),
 
 ("treason",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Praetorian guards approach.^^They take you prisoner. The indictment is read and you are found guilty. You are sentenced to death by crucifixion.",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_kreuzigung"),
   ],[
     ("answere_1",[],"Death waits...",[
@@ -59554,8 +59512,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
   +" He invested heavily in the empire's infrastructure, enhancing trade and communication routes to foster economic prosperity."
   +" Vitellius' administration was marked by justice and fairness, and he surrounded himself with wise counselors, seeking to bridge the divides that had plagued Rome in the past."
   "^^Historians discuss until today whether it is true or Vitellian propaganda.",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_kreuzigung"),
   ],[
     ("answere_1",[],"Death waits...",[
