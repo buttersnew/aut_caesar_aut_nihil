@@ -945,9 +945,9 @@ triggers = [
     (party_get_position, pos1, "p_main_party"),
     (party_get_position, pos2, "p_landing_point"),
     (get_distance_between_positions, ":distance", pos1, pos2),
-    (gt, ":distance", 400),
+    (gt, ":distance", 200),
     #
-    (map_get_land_position_around_position, pos2, pos1, 4),
+    (map_get_land_position_around_position, pos2, pos1, 1),
     (party_set_position, "p_temp_party", pos2),
     (party_get_current_terrain, ":terrain_type", "p_temp_party"),
     (neq, ":terrain_type", 0),

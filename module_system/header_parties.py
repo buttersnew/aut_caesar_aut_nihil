@@ -102,10 +102,10 @@ aggressiveness_15 = 0x00F0
 
 banditness        = 0x0100
 
-soldier_personality = aggressiveness_8 | courage_9
+soldier_personality = aggressiveness_9 | courage_10
 merchant_personality = aggressiveness_0 | courage_7
 escorted_merchant_personality = aggressiveness_0 | courage_11
-bandit_personality   = aggressiveness_3 | courage_8 | banditness
+bandit_personality   = aggressiveness_6 | courage_8 | banditness
 rebel_personality = aggressiveness_4 | courage_15
 
 judean_rebel_personality = aggressiveness_5 | courage_15

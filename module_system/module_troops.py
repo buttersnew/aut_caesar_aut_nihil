@@ -2748,6 +2748,15 @@ attrib_level_23_warrior, wpe(130,130,130,180), knows_level_23, barbarian_man_fac
 itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,itm_hide_covered_round_shield_3,itm_ad_mixed_round_shields_05,itm_ad_mixed_round_shields_06
 ],
 attrib_level_23_warrior, wp(130), knows_level_23_warrior, mercenary_face_1, mercenary_face_2 ],
+["black_sea_priate", "Pirata Mare Euxinum", "Piratae Mare Euxinum", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_outlaws,
+[
+  itm_nomad_bow,itm_sarmatian_bow,itm_arrows,itm_kopis,itm_kopfband,
+  itm_scythian_light1,itm_scythian_light2,itm_scythian_light3,itm_scythian_light4,itm_scythian_light5,itm_leather_boots,
+  itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,itm_sarmatian_cap_1,itm_sarmatian_cap_2,itm_sarmatian_cap_3,itm_sarmatian_cap_4,
+  itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,itm_hide_covered_round_shield_3,
+  itm_ad_mixed_round_shields_05,itm_ad_mixed_round_shields_06
+],
+attrib_level_26_warrior, wp(160), knows_level_26_warrior, scythian_face_11, scythian_face_12 ],
 
 #steppe bandits are now Alan raiders
 ["steppe_bandit", "Alanna Baragatae", "Alan Baragatae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_outlaws,

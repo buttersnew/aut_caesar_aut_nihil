@@ -23588,7 +23588,7 @@ presentations = [
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_steppe_bandit", 60, 1910),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_taiga_bandit", 210, 1910),
 
-      # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_hornman", 560, 1910),#+200
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_black_sea_priate", 560, 1910),#+200
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_judean_hornman", 710, 1910),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_slave_female", 60, 1710),

@@ -58,6 +58,7 @@ party_templates = [
 ("forest_bandits","Iberian Rebels",icon_forest_bandit|carries_goods(2),0,fac_forest_bandits,bandit_personality,[(trp_forest_bandit,24,72), (trp_mercenary_horseman, 2, 30), (trp_hispanic_infantry, 2, 50), (trp_hispanic_heavy_infantry, 1, 30),]),
 ("mountain_bandits","Judean Rebels",icon_mountain_bandit|carries_goods(2),0,fac_mountain_bandits,judean_rebel_personality,[(trp_mountain_bandit,4,80),(trp_judean_light_spearman,0,20)]),
 ("sea_raiders","Sea Raiders",icon_axeman|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,75),(trp_sailor,5,10)]),
+("black_sea_pirates","Pirates",icon_ship|pf_is_ship|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_black_sea_priate,75,110),(trp_sailor,10,25)]),
 
 ("egyptian_rebels","Egyptian Rebels",icon_axeman|carries_goods(8),0,fac_egypt,bandit_personality,[(trp_egyptian_archers,15,40),(trp_egyptian_infantry_heavy,25,60),(trp_egyptian_infantry_light,25,60)]),
 
@@ -312,6 +313,8 @@ party_templates = [
 ("forest_bandit_lair" ,"Hispanic Hideout",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_forest_bandits,bandit_personality,[(trp_forest_bandit,15,30)]),
 ("mountain_bandit_lair" ,"Judean Hideout",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_mountain_bandits,bandit_personality,[(trp_mountain_bandit,15,30)]),
 ("sea_raider_lair","Sea Raider Landing",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,30)]),
+("black_sea_pirates_lair","Pirate hideout",icon_map_island|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_outlaws,bandit_personality,[(trp_black_sea_priate,30,60)]),
+
 ("saka_camp","Saka Camp",icon_village_barbarian|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_dahae,bandit_personality,[(trp_saka_horse_archer,15,30)]),
 ("looter_lair","Kidnappers' Hideout",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_neutral,bandit_personality,[(trp_looter,15,18)]),
 
