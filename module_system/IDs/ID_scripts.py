@@ -1015,3 +1015,5 @@ script_event_player_takes_money_imperial_treasury = 1013
 script_change_agent_face = 1014
 script_print_region_color_to_reg2 = 1015
 script_print_terrain_color_to_reg2 = 1016
+script_cf_can_perform_miracle = 1017
+script_perform_miracle = 1018

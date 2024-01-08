@@ -4208,3 +4208,7 @@ cost_edict8         = 0
 cost_edict9         = 500
 cost_edict10        = 0
 cost_libelli_office = 250
+
+miracle_battle_heal     = 1
+miracle_battle_strength = 2
+miracle_battle_morale   = 3

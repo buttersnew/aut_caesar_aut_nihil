@@ -2004,126 +2004,123 @@ thunder_storm =	[		# 4 trigger
 p_wetter = weather
 storms = thunder_storm + sand_storm
 
-custom_commander_critical_strike =(
-  ti_on_agent_hit, 0, 0, [
-],
-    [
-      (store_trigger_param_1, ":inflicted_agent"),
-      (store_trigger_param_2, ":dealer_agent"),
-      (store_trigger_param_3, ":inflicted_damage"),
+custom_commander_critical_strike =(ti_on_agent_hit, 0, 0, [],[
+    (store_trigger_param_1, ":inflicted_agent"),
+    (store_trigger_param_2, ":dealer_agent"),
+    (store_trigger_param_3, ":inflicted_damage"),
 
-	  (set_trigger_result, -1),
-	  (gt, ":inflicted_damage", 0),
-	  (set_trigger_result, ":inflicted_damage"),
+    (set_trigger_result, -1),
+    (gt, ":inflicted_damage", 0),
+    (set_trigger_result, ":inflicted_damage"),
+    (try_begin),
+      (agent_is_human, ":dealer_agent"),
+      (assign, ":dealer_item_id", reg0),
+      (is_between, ":dealer_item_id", all_items_begin, all_items_end),
       (try_begin),
-        (agent_is_human, ":dealer_agent"),
-        (assign, ":dealer_item_id", reg0),
-        (is_between, ":dealer_item_id", all_items_begin, all_items_end),
+        ## knock_back between humans with melee weapons
+        (agent_is_human, ":inflicted_agent"),
+        (agent_get_position, pos1, ":inflicted_agent"),
+        (agent_get_position, pos2, ":dealer_agent"),
         (try_begin),
-          ## knock_back between humans with melee weapons
-          (agent_is_human, ":inflicted_agent"),
-          (agent_get_position, pos1, ":inflicted_agent"),
-          (agent_get_position, pos2, ":dealer_agent"),
-          (try_begin),
-            (position_is_behind_position, pos2, pos1),
-            (item_get_type, ":item_type", ":dealer_item_id"),
-            (this_or_next|eq, ":item_type", itp_type_one_handed_wpn),
-            (this_or_next|eq, ":item_type", itp_type_two_handed_wpn),
-            (eq, ":item_type", itp_type_polearm),
-            # dest damage ratio is 1/2
-            (assign, ":dest_damage", ":inflicted_damage"),
-            (val_div, ":dest_damage", 2),
-            (store_agent_hit_points, ":inflicted_agent_hp", ":inflicted_agent", 1),
-            (val_sub, ":inflicted_agent_hp", ":dest_damage"),
-            (val_max, ":inflicted_agent_hp", 0),
-            (agent_set_hit_points, ":inflicted_agent", ":inflicted_agent_hp", 1),
-			#(call_script, "script_change_courage_around_agent", -8, ":inflicted_agent"),##hab ich hinzugefugt,
-            # (try_begin),
-              # (neq, ":inflicted_agent", ":player_agent"),
-              # (agent_get_slot, ":agent_courage_score", ":inflicted_agent", slot_agent_courage_score),
-              # (val_sub, ":agent_courage_score", 100),
-              # (agent_set_slot, ":inflicted_agent", slot_agent_courage_score, ":agent_courage_score"),
-            # (try_end),
-            # (try_begin),
-              # (neq, ":dealer_agent", ":player_agent"),
-              # (agent_get_slot, ":agent_courage_score", ":dealer_agent", slot_agent_courage_score),
-              # (val_add, ":agent_courage_score", 100),
-              # (agent_set_slot, ":dealer_agent", slot_agent_courage_score, ":agent_courage_score"),
-            # (try_end),
-            # messages for player
-            (get_player_agent_no, ":player_agent"),
-            (try_begin),
-              (eq, ":dealer_agent", ":player_agent"),
-              (assign, reg1, ":dest_damage"),
-              (display_message, "@Delivered {reg1} extra damage from behind!", 0xFF0000),
-            (else_try),
-              (eq, ":inflicted_agent", ":player_agent"),
-              (assign, reg1, ":dest_damage"),
-              (display_message, "@Received {reg1} extra damage from behind!", 0xFF0000),
-            (try_end),
-            (try_begin),
-              (agent_get_horse, ":horse_yes_no", ":inflicted_agent"),
-              (eq, ":horse_yes_no", -1),
-              (agent_set_animation, ":inflicted_agent","anim_strike_fall_back_rise"),
-            (try_end),
-          (try_end),
-        (else_try),
-          # inflicted_agent is horse, dealer_troop is on foot and uses polearm or thrust
-          (neg|agent_is_human, ":inflicted_agent"),
-          (agent_get_horse, ":dealer_agent_horse_id", ":dealer_agent"),
-          (eq, ":dealer_agent_horse_id", -1),
-          (agent_get_action_dir, ":action_dir", ":dealer_agent"),
+          (position_is_behind_position, pos2, pos1),
           (item_get_type, ":item_type", ":dealer_item_id"),
-
-          (assign, ":extra_damage_rate", 0),
-          (try_begin),
-            (eq, ":item_type", itp_type_polearm),
-            (try_begin),
-              (eq, ":action_dir", 0),
-              (assign, ":extra_damage_rate", 180), #chief incrementa
-              (store_random_in_range, ":random_no", 1, 100),
-              (try_begin), #el caballo retrocede chief
-                (le, ":random_no", 50),
-                (agent_set_animation, ":inflicted_agent","anim_horse_rear"),
-              (try_end),
-            (else_try),
-              (assign, ":extra_damage_rate", 120), #chief incrementa
-            (try_end),
-          (else_try),
-            (this_or_next|eq, ":item_type", itp_type_one_handed_wpn),
-            (eq, ":item_type", itp_type_two_handed_wpn),
-            (eq, ":action_dir", 0),
-            (assign, ":extra_damage_rate", 75),
-          (try_end),
-          (gt, ":extra_damage_rate", 0),
-          (store_mul, ":extra_damage", ":inflicted_damage", ":extra_damage_rate"),
-          (val_div, ":extra_damage", 100),
+          (this_or_next|eq, ":item_type", itp_type_one_handed_wpn),
+          (this_or_next|eq, ":item_type", itp_type_two_handed_wpn),
+          (eq, ":item_type", itp_type_polearm),
+          # dest damage ratio is 1/2
+          (assign, ":dest_damage", ":inflicted_damage"),
+          (val_div, ":dest_damage", 2),
           (store_agent_hit_points, ":inflicted_agent_hp", ":inflicted_agent", 1),
-          (val_sub, ":inflicted_agent_hp", ":extra_damage"),
+          (val_sub, ":inflicted_agent_hp", ":dest_damage"),
           (val_max, ":inflicted_agent_hp", 0),
           (agent_set_hit_points, ":inflicted_agent", ":inflicted_agent_hp", 1),
+          #(call_script, "script_change_courage_around_agent", -8, ":inflicted_agent"),##hab ich hinzugefugt,
+          # (try_begin),
+            # (neq, ":inflicted_agent", ":player_agent"),
+            # (agent_get_slot, ":agent_courage_score", ":inflicted_agent", slot_agent_courage_score),
+            # (val_sub, ":agent_courage_score", 100),
+            # (agent_set_slot, ":inflicted_agent", slot_agent_courage_score, ":agent_courage_score"),
+          # (try_end),
+          # (try_begin),
+            # (neq, ":dealer_agent", ":player_agent"),
+            # (agent_get_slot, ":agent_courage_score", ":dealer_agent", slot_agent_courage_score),
+            # (val_add, ":agent_courage_score", 100),
+            # (agent_set_slot, ":dealer_agent", slot_agent_courage_score, ":agent_courage_score"),
+          # (try_end),
           # messages for player
           (get_player_agent_no, ":player_agent"),
           (try_begin),
             (eq, ":dealer_agent", ":player_agent"),
-            (assign, reg1, ":extra_damage"),
-            (try_begin),
-              (agent_get_rider, ":rider_agent", ":inflicted_agent"),
-              (gt, ":rider_agent", -1),
-              (display_message, "@Delivered {reg1} extra damage to horse."),
-            (else_try),
-              (display_message, "@Delivered {reg1} extra damage."),
-            (try_end),
+            (assign, reg1, ":dest_damage"),
+            (display_message, "@Delivered {reg1} extra damage from behind!", 0xFF0000),
+          (else_try),
+            (eq, ":inflicted_agent", ":player_agent"),
+            (assign, reg1, ":dest_damage"),
+            (display_message, "@Received {reg1} extra damage from behind!", 0xFF0000),
           (try_end),
           (try_begin),
-            (agent_get_horse, ":player_horse_id", ":player_agent"),
-            (eq, ":player_horse_id", ":inflicted_agent"),
-            (assign, reg1, ":extra_damage"),
-            (display_message, "@Horse received {reg1} extra damage."),
+            (agent_get_horse, ":horse_yes_no", ":inflicted_agent"),
+            (eq, ":horse_yes_no", -1),
+            (agent_set_animation, ":inflicted_agent","anim_strike_fall_back_rise"),
           (try_end),
-         (try_end),
+        (try_end),
+      (else_try),
+        # inflicted_agent is horse, dealer_troop is on foot and uses polearm or thrust
+        (neg|agent_is_human, ":inflicted_agent"),
+        (agent_get_horse, ":dealer_agent_horse_id", ":dealer_agent"),
+        (eq, ":dealer_agent_horse_id", -1),
+        (agent_get_action_dir, ":action_dir", ":dealer_agent"),
+        (item_get_type, ":item_type", ":dealer_item_id"),
+
+        (assign, ":extra_damage_rate", 0),
+        (try_begin),
+          (eq, ":item_type", itp_type_polearm),
+          (try_begin),
+            (eq, ":action_dir", 0),
+            (assign, ":extra_damage_rate", 180), #chief incrementa
+            (store_random_in_range, ":random_no", 1, 100),
+            (try_begin), #el caballo retrocede chief
+              (le, ":random_no", 50),
+              (agent_set_animation, ":inflicted_agent","anim_horse_rear"),
+            (try_end),
+          (else_try),
+            (assign, ":extra_damage_rate", 120), #chief incrementa
+          (try_end),
+        (else_try),
+          (this_or_next|eq, ":item_type", itp_type_one_handed_wpn),
+          (eq, ":item_type", itp_type_two_handed_wpn),
+          (eq, ":action_dir", 0),
+          (assign, ":extra_damage_rate", 75),
+        (try_end),
+        (gt, ":extra_damage_rate", 0),
+        (store_mul, ":extra_damage", ":inflicted_damage", ":extra_damage_rate"),
+        (val_div, ":extra_damage", 100),
+        (store_agent_hit_points, ":inflicted_agent_hp", ":inflicted_agent", 1),
+        (val_sub, ":inflicted_agent_hp", ":extra_damage"),
+        (val_max, ":inflicted_agent_hp", 0),
+        (agent_set_hit_points, ":inflicted_agent", ":inflicted_agent_hp", 1),
+        # messages for player
+        (get_player_agent_no, ":player_agent"),
+        (try_begin),
+          (eq, ":dealer_agent", ":player_agent"),
+          (assign, reg1, ":extra_damage"),
+          (try_begin),
+            (agent_get_rider, ":rider_agent", ":inflicted_agent"),
+            (gt, ":rider_agent", -1),
+            (display_message, "@Delivered {reg1} extra damage to horse."),
+          (else_try),
+            (display_message, "@Delivered {reg1} extra damage."),
+          (try_end),
+        (try_end),
+        (try_begin),
+          (agent_get_horse, ":player_horse_id", ":player_agent"),
+          (eq, ":player_horse_id", ":inflicted_agent"),
+          (assign, reg1, ":extra_damage"),
+          (display_message, "@Horse received {reg1} extra damage."),
+        (try_end),
       (try_end),
-    ])
+    (try_end),
+  ])
 
 #decapitation
 theoris_decapitation = [ (ti_on_agent_hit, 0, 0, [
@@ -5400,42 +5397,17 @@ realistic_wounding = (ti_on_agent_hit, 0, 0, [], [
       (agent_set_slot, ":inflicted_agent_id", slot_agent_last_damage, ":inflicted_damage"),
   ])
 
-gods_trigger = (3,0,ti_once,[
-    ],[
-    (troop_slot_ge, "trp_player", slot_troop_religion, 1),
-    (store_random_in_range, ":r",0,100),
-    (lt, ":r", 50),
-    (call_script, "script_troop_get_relation_with_troop", "trp_player", "trp_fortuna"),
-    (ge, reg0, -20),
-    (store_random_in_range, ":r2", 0, 11),
-    (get_player_agent_no, ":player_agent"),
-    (troop_get_slot,":god", "trp_player", slot_troop_religion),
-    (store_add, ":string", ":god", "str_gods_begin"),
-    (str_store_string, s20, ":string"),
-    (try_begin),
-      (is_between, ":r2", 0,4),
-      (display_message, "@{s20} increases your strength!", color_good_news),
-      (agent_set_damage_modifier, ":player_agent", 250),
-    (else_try),
-      (is_between, ":r2", 4,7),
-      (store_party_size_wo_prisoners, ":men", "p_main_party"),
-      (ge, ":men", 10),
-      (display_message, "@{s20} gives your troops courage!", color_good_news),
-      (try_for_agents, ":cur_agent"),#effect
-        (agent_is_human, ":cur_agent"),
-        (agent_is_alive, ":cur_agent"),
-        (agent_is_active,":cur_agent"),
-        (agent_is_ally, ":cur_agent"),
-        (agent_set_slot, ":cur_agent", slot_agent_courage_score, max_morale),
-      (try_end),
-    (else_try),
-      (store_troop_health, ":h", "trp_player"),
-      (le, ":h", 90),
-      (display_message, "@{s20} heals you!", color_good_news),
-      (agent_set_hit_points, ":player_agent", 100),
-      (troop_set_health, "trp_player", 100),
-    (try_end),
-    ])
+miracle_arena_trigger = (3,0,ti_once,[],[
+    (call_script, "script_cf_can_perform_miracle"),
+    (store_random_in_range, ":miracle", miracle_battle_heal, miracle_battle_morale),
+    (call_script, "script_perform_miracle", ":miracle"),
+  ])
+
+miracle_battle_trigger = (3,0,ti_once,[],[
+    (call_script, "script_cf_can_perform_miracle"),
+    (store_random_in_range, ":miracle", miracle_battle_heal, miracle_battle_morale + 1),
+    (call_script, "script_perform_miracle", ":miracle"),
+  ])
 
 ##SB : new camera triggers
 dplmc_battle_mode_triggers = [
@@ -5953,7 +5925,7 @@ dplmc_battle_mode_triggers = [
   dedal_shield_bash_AI,
   dedal_shield_bash,
   custom_commander_critical_strike,
-  gods_trigger,
+  miracle_battle_trigger,
   more_difficult_damage,
   realistic_wounding,
 
@@ -6031,14 +6003,16 @@ common_battle_tab_press = (
     (try_end),
     ])
 
-common_battle_init_banner = (
-  ti_on_agent_spawn, 0, 0, [],
-  [
+common_battle_init_banner = (ti_on_agent_spawn, 0, 0, [],[
     (store_trigger_param_1, ":agent_no"),
     (agent_get_troop_id, ":troop_no", ":agent_no"),
     (call_script, "script_troop_agent_set_banner", "tableau_game_troop_label_banner", ":agent_no", ":troop_no"),
   ])
 
+common_arena_init_banner = (ti_on_agent_spawn, 0, 0, [],[
+    (store_trigger_param_1, ":agent_no"),
+    (call_script, "script_troop_agent_set_banner", "tableau_game_troop_label_banner", ":agent_no", -1),
+  ])
 
 common_arena_fight_tab_press = (
   ti_tab_pressed, 0, 0, [],
@@ -6468,184 +6442,61 @@ common_inventory_not_available = (
     ], [])
 
 tournament_triggers = [
+
+  custom_commander_critical_strike,
   cannot_spawn_commoners,
   improved_lightning,
-  (1,0,2,[],
-    [(try_for_agents, ":agent_no"),
-        (agent_is_non_player, ":agent_no"),
-        (agent_is_human, ":agent_no"),
-        (agent_is_alive, ":agent_no"),
-        (agent_get_troop_id, ":troop", ":agent_no"),
-        (troop_is_guarantee_horse, ":troop"),
-        (agent_get_horse, ":horse", ":agent_no"),
-        (le, ":horse", 0),
-        (agent_get_wielded_item, ":wielded_item", ":agent_no", 0),
-        (gt, ":wielded_item", 0),
-        (is_between, ":wielded_item", "itm_light_lance", "itm_hasta1"),
-        (agent_unequip_item, ":agent_no", ":wielded_item"),
-        (call_script, "script_equip_best_melee_weapon", ":agent_no", 0, 0, 1),
-        (try_begin),
-          (eq, "$cheat_mode", 1),
-          (str_store_troop_name, s33, ":troop"),
-          (display_message, "@{s33} changes weapons"),
-        (try_end),
+  miracle_arena_trigger,
+  common_arena_init_banner,
+
+  (1,0,2,[],[
+    (try_for_agents, ":agent_no"),
+      (agent_is_non_player, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (agent_get_troop_id, ":troop", ":agent_no"),
+      (troop_is_guarantee_horse, ":troop"),
+      (agent_get_horse, ":horse", ":agent_no"),
+      (le, ":horse", 0),
+      (agent_get_wielded_item, ":wielded_item", ":agent_no", 0),
+      (gt, ":wielded_item", 0),
+      (is_between, ":wielded_item", "itm_light_lance", "itm_hasta1"),
+      (agent_unequip_item, ":agent_no", ":wielded_item"),
+      (call_script, "script_equip_best_melee_weapon", ":agent_no", 0, 0, 1),
+      (try_begin),
+        (eq, "$cheat_mode", 1),
+        (str_store_troop_name, s33, ":troop"),
+        (display_message, "@{s33} changes weapons"),
       (try_end),
+    (try_end),
   ]),
 
   (0, 0, 3,[
-      (key_clicked, key_t),
+    (key_clicked, key_t),
   ],[
     (get_player_agent_no, ":player_agent"),
     (call_script,"script_agent_perform_warcry", ":player_agent"),
 		(display_message, "@You unleash a fearsome cry!",message_positive),
   ]),
 
-(
-  ti_on_agent_hit, 0, 0, [
-],
-    [
-      (store_trigger_param_1, ":inflicted_agent"),
-      (store_trigger_param_2, ":dealer_agent"),
-      (store_trigger_param_3, ":inflicted_damage"),
+  (ti_before_mission_start, 0, 0, [],[
+    (call_script, "script_change_banners_and_chest"),
+    (assign, "$g_arena_training_num_agents_spawned", 0)
+  ]),
+  (ti_inventory_key_pressed, 0, 0, [
+    (display_message,"str_cant_use_inventory_arena")
+  ],[]),
 
-	  (set_trigger_result, -1),
-	  (gt, ":inflicted_damage", 0),
-	  (set_trigger_result, ":inflicted_damage"),
-      (get_player_agent_no, ":player_agent"),
-      (try_begin),
-        (agent_is_human, ":dealer_agent"),
-        (assign, ":dealer_item_id", reg0),
-        (is_between, ":dealer_item_id", all_items_begin, all_items_end),
-
-        (try_begin),
-          ## knock_back between humans with melee weapons
-          (agent_is_human, ":inflicted_agent"),
-          (agent_get_position, pos1, ":inflicted_agent"),
-          (agent_get_position, pos2, ":dealer_agent"),
-          (try_begin),
-            (position_is_behind_position, pos2, pos1),
-            (item_get_type, ":item_type", ":dealer_item_id"),
-            (this_or_next|eq, ":item_type", itp_type_one_handed_wpn),
-            (this_or_next|eq, ":item_type", itp_type_two_handed_wpn),
-            (eq, ":item_type", itp_type_polearm),
-            # dest damage ratio is 1/2
-            (assign, ":dest_damage", ":inflicted_damage"),
-            (val_div, ":dest_damage", 2),
-            (store_agent_hit_points, ":inflicted_agent_hp", ":inflicted_agent", 1),
-            (val_sub, ":inflicted_agent_hp", ":dest_damage"),
-            (val_max, ":inflicted_agent_hp", 0),
-            (agent_set_hit_points, ":inflicted_agent", ":inflicted_agent_hp", 1),
-
-            # messages for player
-            (assign, reg1, ":dest_damage"),
-            (try_begin),
-              (eq, ":dealer_agent", ":player_agent"),
-              (display_message, "@Delivered {reg1} extra damage from behind!", 0xFF0000),
-            (else_try),
-              (eq, ":inflicted_agent", ":player_agent"),
-              (display_message, "@Received {reg1} extra damage from behind!", 0xFF0000),
-            (try_end),
-            (try_begin),
-              (agent_get_horse, ":horse_yes_no", ":inflicted_agent"),
-              (eq, ":horse_yes_no", -1),
-              (agent_set_animation, ":inflicted_agent","anim_strike_fall_back_rise"),
-            (try_end),
-          (try_end),
-        # (else_try),
-          # # inflicted_agent is horse, dealer_troop is on foot and uses polearm or thrust
-          # (neg|agent_is_human, ":inflicted_agent"),
-          # (agent_get_horse, ":dealer_agent_horse_id", ":dealer_agent"),
-          # (eq, ":dealer_agent_horse_id", -1),
-          # (agent_get_action_dir, ":action_dir", ":dealer_agent"),
-          # (item_get_type, ":item_type", ":dealer_item_id"),
-
-          # (assign, ":extra_damage_rate", 0),
-          # (try_begin),
-            # (eq, ":item_type", itp_type_polearm),
-            # (try_begin),
-              # (eq, ":action_dir", 0),
-              # (assign, ":extra_damage_rate", 180), #chief incrementa
-                # (store_random_in_range, ":random_no", 1, 100),
-                # (try_begin), #el caballo retrocede chief
-                    # (le, ":random_no", 50),
-                    # (agent_set_animation, ":inflicted_agent","anim_horse_rear"),
-                # (try_end),
-            # (else_try),
-              # (assign, ":extra_damage_rate", 120), #chief incrementa
-            # (try_end),
-          # (else_try),
-            # (this_or_next|eq, ":item_type", itp_type_one_handed_wpn),
-            # (eq, ":item_type", itp_type_two_handed_wpn),
-            # (eq, ":action_dir", 0),
-            # (assign, ":extra_damage_rate", 75),
-          # (try_end),
-          # (gt, ":extra_damage_rate", 0),
-          # (store_mul, ":extra_damage", ":inflicted_damage", ":extra_damage_rate"),
-          # (val_div, ":extra_damage", 100),
-          # (store_agent_hit_points, ":inflicted_agent_hp", ":inflicted_agent", 1),
-          # (val_sub, ":inflicted_agent_hp", ":extra_damage"),
-          # (val_max, ":inflicted_agent_hp", 0),
-          # (agent_set_hit_points, ":inflicted_agent", ":inflicted_agent_hp", 1),
-          # # messages for player
-          # (assign, reg1, ":extra_damage"),
-          # (try_begin),
-            # (eq, ":dealer_agent", ":player_agent"),
-            # (try_begin),
-              # (agent_get_rider, ":rider_agent", ":inflicted_agent"),
-              # (gt, ":rider_agent", -1),
-              # (display_message, "@Delivered {reg1} extra damage to horse."),
-            # (else_try),
-              # (display_message, "@Delivered {reg1} extra damage."),
-            # (try_end),
-          # (try_end),
-          # (try_begin),
-            # (agent_get_horse, ":player_horse_id", ":player_agent"),
-            # (eq, ":player_horse_id", ":inflicted_agent"),
-            # (display_message, "@Horse received {reg1} extra damage."),
-          # (try_end),
-         (try_end),
-      (try_end),
-    ]),
-
-(3,0,ti_once,[
-    ],[
-    (troop_slot_ge, "trp_player", slot_troop_religion, 1),
-    (store_random_in_range, ":r",0,100),
-    (lt, ":r", 35),
-    (call_script, "script_troop_get_relation_with_troop", "trp_player", "trp_fortuna"),
-    (ge, reg0, -20),
-    (store_random_in_range, ":r2", 0, 10),
-    (get_player_agent_no, ":player_agent"),
-    (troop_get_slot,":god", "trp_player", slot_troop_religion),
-    (store_add, ":string", ":god", "str_gods_begin"),
-    (str_store_string, s20, ":string"),
+  (ti_tab_pressed, 0, 0, [],[
     (try_begin),
-        (is_between, ":r2", 0,6),
-        (display_message, "@{s20} increases your strength!", color_good_news),
-        (agent_set_damage_modifier, ":player_agent", 250),
-    (else_try),
-        (store_troop_health, ":h", "trp_player"),
-        (le, ":h", 90),
-         (display_message, "@{s20} heals you!", color_good_news),
-         (agent_set_hit_points, ":player_agent", 100),
-         (troop_set_health, "trp_player", 100),
-    (try_end),
-    ]),
-
-
-  (ti_before_mission_start, 0, 0, [], [(call_script, "script_change_banners_and_chest"),
-                                       (assign, "$g_arena_training_num_agents_spawned", 0)]),
-  (ti_inventory_key_pressed, 0, 0, [(display_message,"str_cant_use_inventory_arena")], []),
-  (ti_tab_pressed, 0, 0, [],
-   [(try_begin),
       (eq, "$g_mt_mode", abm_visit),
       (set_trigger_result, 1),
     (else_try),
       (question_box,"str_give_up_fight"),
     (try_end),
-    ]),
-  (ti_question_answered, 0, 0, [],
-   [(store_trigger_param_1,":answer"),
+  ]),
+  (ti_question_answered, 0, 0, [],[
+    (store_trigger_param_1,":answer"),
     (eq,":answer",0),
     (try_begin),
       (eq, "$g_mt_mode", abm_tournament),
@@ -6658,286 +6509,250 @@ tournament_triggers = [
       (call_script, "script_agent_apply_training_health", ":player_agent"),
     (try_end),
     (finish_mission,0),
-    ]),
+  ]),
 
-  (ti_on_agent_spawn,1,0, [],
-   [
-       (store_trigger_param_1, ":agent"),
-        (agent_get_troop_id, ":troop", ":agent"),
-        (this_or_next|eq, ":troop", "trp_guest"),
-        (eq, ":troop", "trp_guest_female"),
-        (agent_set_stand_animation, ":agent", "anim_arena_stand_idle"),
-        (agent_set_animation, ":agent", "anim_arena_stand_idle"),
-        (store_random_in_range,":r",0,300),
-        (agent_set_animation_progress,":agent",":r"),
+  (ti_on_agent_spawn,1,0, [],[
+    (store_trigger_param_1, ":agent"),
+    (agent_get_troop_id, ":troop", ":agent"),
+    (this_or_next|eq, ":troop", "trp_guest"),
+    (eq, ":troop", "trp_guest_female"),
+    (agent_set_stand_animation, ":agent", "anim_arena_stand_idle"),
+    (agent_set_animation, ":agent", "anim_arena_stand_idle"),
+    (store_random_in_range,":r",0,300),
+    (agent_set_animation_progress,":agent",":r"),
    ]),
 
   (1, 0, ti_once, [], [
-      (eq, "$g_mt_mode", abm_visit),
-      (call_script, "script_music_set_situation_with_culture", mtf_sit_travel),
-      (store_current_scene, reg(1)),
-      (scene_set_slot, reg(1), slot_scene_visited, 1),
-      (mission_enable_talk),
-      (get_player_agent_no, ":player_agent"),
-      (assign, ":team_set", 0),
-      (try_for_agents, ":agent_no"),
+    (eq, "$g_mt_mode", abm_visit),
+    (call_script, "script_music_set_situation_with_culture", mtf_sit_travel),
+    (store_current_scene, reg(1)),
+    (scene_set_slot, reg(1), slot_scene_visited, 1),
+    (mission_enable_talk),
+    (get_player_agent_no, ":player_agent"),
+    (assign, ":team_set", 0),
+    (try_for_agents, ":agent_no"),
+      (neq, ":agent_no", ":player_agent"),
+      (agent_get_troop_id, ":troop_id", ":agent_no"),
+      (is_between, ":troop_id", regular_troops_begin, regular_troops_end),
+      (eq, ":team_set", 0),
+      (agent_set_team, ":agent_no", 1),
+      (assign, ":team_set", 1),
+    (try_end),
+  ]),
+
+  #even though $disable_npc_complaints should really only apply for companions
+  (ti_on_agent_killed_or_wounded, 0, 0, [
+    (eq, "$g_mt_mode", abm_tournament),
+  ],[
+    (store_trigger_param_1, ":dead_agent_no"),
+    (store_trigger_param_2, ":killer_agent_no"),
+
+    # (get_player_agent_no, ":player_agent"),
+    # (eq, ":killer_agent_no", ":player_agent"),
+    (agent_get_troop_id, ":killer_troop", ":killer_agent_no"),
+    (troop_is_hero, ":killer_troop"),
+
+    (agent_is_human, ":dead_agent_no"),
+    (agent_get_troop_id, ":wounded_troop", ":dead_agent_no"),
+    (troop_is_hero, ":wounded_troop"),
+    (is_between, ":wounded_troop", heroes_begin, heroes_end), #exclude common tournament fighters
+    (troop_slot_ge, ":wounded_troop", slot_troop_renown, 200), #no point in being mad if you're nobody
+    (try_begin), #calculate relation loss
+      (troop_get_slot, ":lrep", ":wounded_troop", slot_lord_reputation_type),
+      (eq, ":lrep", lrep_quarrelsome),
+      #(troop_slot_eq, ":killer_troop", slot_lord_reputation_type, lrep_quarrelsome), why would a quarrelsome lord be mad that he won?
+      (assign, ":relation_loss", -1),
+    (else_try),
+      (assign, ":relation_loss", 0),
+    (try_end),
+    (try_begin), #friendly fire, it happens
+      (eq, ":killer_troop", "trp_player"),
+      (agent_is_ally, ":dead_agent_no"),
+      (call_script, "script_change_player_relation_with_troop", ":wounded_troop", -3),
+    (else_try),
+      (call_script, "script_troop_change_relation_with_troop", ":killer_troop", ":wounded_troop", ":relation_loss"),
+    (try_end),
+    (call_script, "script_change_troop_renown", ":killer_troop", 1), #Static amount
+  ]),
+
+  (0, 0, ti_once, [
+    (eq, "$g_mt_mode", abm_tournament),
+  ],[
+    (play_sound, "snd_arena_ambiance", sf_looping),
+    (call_script, "script_music_set_situation_with_culture", mtf_sit_arena),
+  ]),
+
+  (1, 4, ti_once, [
+    (eq, "$g_mt_mode", abm_tournament),
+    (this_or_next|main_hero_fallen),
+    (num_active_teams_le, 1)
+  ],[
+    (try_begin),
+      (neg|main_hero_fallen),
+      (call_script, "script_end_tournament_fight", 1),
+      (call_script, "script_play_victorious_sound"),
+      (finish_mission),
+    (else_try),
+      (call_script, "script_end_tournament_fight", 0),
+      (finish_mission),
+    (try_end),
+  ]),
+
+  (ti_battle_window_opened, 0, 0, [],[
+    (eq, "$g_mt_mode", abm_training),
+    (start_presentation, "prsnt_arena_training")
+  ]),
+
+  (0, 0, ti_once, [], [
+    (eq, "$g_mt_mode", abm_training),
+    (assign, "$g_arena_training_max_opponents", 40),
+    (assign, "$g_arena_training_num_agents_spawned", 0),
+    (assign, "$g_arena_training_kills", 0),
+    (assign, "$g_arena_training_won", 0),
+    (call_script, "script_music_set_situation_with_culture", mtf_sit_arena),
+  ]),
+
+  (1, 4, ti_once, [
+    (eq, "$g_mt_mode", abm_training),
+    (store_mission_timer_a, ":cur_time"),
+    (gt, ":cur_time", 3),
+    (assign, ":win_cond", 0),
+    (try_begin),
+      (ge, "$g_arena_training_num_agents_spawned", "$g_arena_training_max_opponents"),#spawn at most 40 agents
+      (num_active_teams_le, 1),
+      (assign, ":win_cond", 1),
+    (try_end),
+    (this_or_next|eq, ":win_cond", 1),
+    (main_hero_fallen)
+  ],[
+    (get_player_agent_no, ":player_agent"),
+    (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),#use this for conversation
+    (assign, "$g_arena_training_won", 0),
+    (try_begin),
+      (neg|main_hero_fallen),
+      (assign, "$g_arena_training_won", 1),#use this for conversation
+    (try_end),
+    (assign, "$g_mt_mode", abm_visit),
+    (set_jump_mission, "mt_arena_melee_fight"),
+    (party_get_slot, ":arena_scene", "$current_town", slot_town_arena),
+    (modify_visitors_at_site, ":arena_scene"),
+    (reset_visitors),
+    (set_visitor, 35, "trp_veteran_fighter"),
+    (set_visitor, 36, "trp_hired_blade"),
+    ##nero claudis, bug where is no auctor in arena after fight
+    (store_sub, ":town_id", "$current_town", towns_begin),
+    (store_add, ":auctor", ":town_id", arena_masters_begin),
+    (set_visitor, 52, ":auctor"),
+
+    (call_script, "script_spawn_specators"),
+
+    (set_jump_entry, 50),
+    (jump_to_scene, ":arena_scene"),
+
+    #SB : deduct health here
+    (call_script, "script_agent_apply_training_health", ":player_agent"),
+  ]),
+
+  (0.2, 0, 0,[
+    (eq, "$g_mt_mode", abm_training),
+    (assign, ":num_active_fighters", 0),
+    (try_for_agents, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (agent_get_team, ":team_no", ":agent_no"),
+      (is_between, ":team_no", 0 ,7),
+      (val_add, ":num_active_fighters", 1),
+    (try_end),
+    (lt, ":num_active_fighters", 7),
+    (neg|main_hero_fallen),
+    (store_mission_timer_a, ":cur_time"),
+    (this_or_next|ge, ":cur_time", "$g_arena_training_next_spawn_time"),
+    (this_or_next|lt, "$g_arena_training_num_agents_spawned", 6),
+    (num_active_teams_le, 1),
+    (lt, "$g_arena_training_num_agents_spawned", "$g_arena_training_max_opponents"),
+  ],[
+    (assign, ":added_troop", "$g_arena_training_num_agents_spawned"),
+    (store_div,  ":added_troop", "$g_arena_training_num_agents_spawned", 6),
+    (assign, ":added_troop_sequence", "$g_arena_training_num_agents_spawned"),
+    (val_mod, ":added_troop_sequence", 6),
+    (val_add, ":added_troop", ":added_troop_sequence"),
+    (val_min, ":added_troop", 9),
+    (val_add, ":added_troop", "trp_arena_training_fighter_1"),
+    (assign, ":end_cond", 10000),
+    (get_player_agent_no, ":player_agent"),
+    (agent_get_position, pos5, ":player_agent"),
+    (try_for_range, ":unused", 0, ":end_cond"),
+      (store_random_in_range, ":random_entry_point", 32, 40),
+      #SB : now we use this to prevent duplicate
+      (neq, ":random_entry_point", "$g_player_entry_point"), # make sure we don't overwrite player
+      (entry_point_get_position, pos1, ":random_entry_point"),
+      (get_distance_between_positions, ":dist", pos5, pos1),
+      (gt, ":dist", 1200), #must be at least 12 meters away from the player
+      (assign, ":end_cond", 0),
+    (try_end),
+    (add_visitors_to_current_scene, ":random_entry_point", ":added_troop", 1),
+    #SB : set this as last spawnpoint
+    (assign, "$g_player_entry_point", ":random_entry_point"),
+    (store_add, ":new_spawned_count", "$g_arena_training_num_agents_spawned", 1),
+    (store_mission_timer_a, ":cur_time"),
+    (store_add, "$g_arena_training_next_spawn_time", ":cur_time", 14),
+    (store_div, ":time_reduction", ":new_spawned_count", 3),
+    (val_sub, "$g_arena_training_next_spawn_time", ":time_reduction"),
+  ]),
+
+  (0, 0, 0,[
+    (eq, "$g_mt_mode", abm_training),
+  ],[
+    (assign, ":max_teams", 6),
+    (val_max, ":max_teams", 1),
+    (get_player_agent_no, ":player_agent"),
+    (try_for_agents, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (agent_slot_eq, ":agent_no", slot_agent_arena_team_set, 0),
+      (agent_get_team, ":team_no", ":agent_no"),
+      (is_between, ":team_no", 0 ,7),
+      (try_begin),
+        (eq, ":agent_no", ":player_agent"),
+        (agent_set_team, ":agent_no", 6), #player is always team 6.
+      (else_try),
+        (store_random_in_range, ":selected_team", 0, ":max_teams"),
+      # find strongest team
+        (try_for_range, ":t", 0, 6),
+          (troop_set_slot, "trp_temp_array_a", ":t", 0),
+        (try_end),
+        (try_for_agents, ":other_agent_no"),
+          (agent_is_human, ":other_agent_no"),
+          (agent_is_alive, ":other_agent_no"),
+          (neq, ":agent_no", ":player_agent"),
+          (agent_slot_eq, ":other_agent_no", slot_agent_arena_team_set, 1),
+          (agent_get_team, ":other_agent_team", ":other_agent_no"),
+          (troop_get_slot, ":count", "trp_temp_array_a", ":other_agent_team"),
+          (val_add, ":count", 1),
+          (troop_set_slot, "trp_temp_array_a", ":other_agent_team", ":count"),
+        (try_end),
+        (assign, ":strongest_team", 0),
+        (troop_get_slot, ":strongest_team_count", "trp_temp_array_a", 0),
+        (try_for_range, ":t", 1, 6),
+          (troop_slot_ge, "trp_temp_array_a", ":t", ":strongest_team_count"),
+          (troop_get_slot, ":strongest_team_count", "trp_temp_array_a", ":t"),
+          (assign, ":strongest_team", ":t"),
+        (try_end),
+        (store_random_in_range, ":rand", 5, 100),
+        (try_begin),
+          (lt, ":rand", "$g_arena_training_num_agents_spawned"),
+          (assign, ":selected_team", ":strongest_team"),
+        (try_end),
+        (agent_set_team, ":agent_no", ":selected_team"),
+      (try_end),
+      (agent_set_slot, ":agent_no", slot_agent_arena_team_set, 1),
+      (try_begin),
         (neq, ":agent_no", ":player_agent"),
-        (agent_get_troop_id, ":troop_id", ":agent_no"),
-        (is_between, ":troop_id", regular_troops_begin, regular_troops_end),
-        (eq, ":team_set", 0),
-        (agent_set_team, ":agent_no", 1),
-        (assign, ":team_set", 1),
+        (val_add, "$g_arena_training_num_agents_spawned", 1),
       (try_end),
-    ]),
-
-# #SB : tournament preferred weapons
-  # (ti_on_agent_spawn, 0, ti_once, [
-    # (eq, "$g_mt_mode", abm_tournament),
-    # (store_trigger_param_1, ":agent_no"),
-    # (agent_get_troop_id, ":troop_no", ":agent_no"),
-    # (eq, ":troop_no", "trp_player"),
-    # (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$g_encountered_party_faction"),
-    # (this_or_next|ge, reg0, DPLMC_FACTION_STANDING_MEMBER),
-    # (party_slot_ge, "$current_town", slot_center_player_relation, 15),
-    # ],
-    # [
-    # (store_trigger_param_1, ":agent_no"),
-    # ]),
-#even though $disable_npc_complaints should really only apply for companions
- (ti_on_agent_killed_or_wounded, 0, 0, [
-        # (ge, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
-      (eq, "$g_mt_mode", abm_tournament),
-    ],
-    [
-      (store_trigger_param_1, ":dead_agent_no"),
-      (store_trigger_param_2, ":killer_agent_no"),
-
-      # (get_player_agent_no, ":player_agent"),
-      # (eq, ":killer_agent_no", ":player_agent"),
-      (agent_get_troop_id, ":killer_troop", ":killer_agent_no"),
-      (troop_is_hero, ":killer_troop"),
-
-      (agent_is_human, ":dead_agent_no"),
-      (agent_get_troop_id, ":wounded_troop", ":dead_agent_no"),
-      (troop_is_hero, ":wounded_troop"),
-      (is_between, ":wounded_troop", heroes_begin, heroes_end), #exclude common tournament fighters
-      (troop_slot_ge, ":wounded_troop", slot_troop_renown, 200), #no point in being mad if you're nobody
-      (try_begin), #calculate relation loss
-        (troop_get_slot, ":lrep", ":wounded_troop", slot_lord_reputation_type),
-        (eq, ":lrep", lrep_quarrelsome),
-        #(troop_slot_eq, ":killer_troop", slot_lord_reputation_type, lrep_quarrelsome), why would a quarrelsome lord be mad that he won?
-        (assign, ":relation_loss", -1),
-      # (else_try),
-        # (neq, ":lrep", lrep_martial), #martial lords don't mind losing fights
-        # (neq, ":lrep", lrep_goodnatured), #goodnature ones don't care
-        # (neq, ":lrep", lrep_none), #don't reduce king/pretender relations
-        # (assign, ":relation_loss", -1),
-      (else_try),
-        (assign, ":relation_loss", 0),
-      (try_end),
-
-      # (agent_get_position, pos1, ":killer_agent_no"),
-      # (agent_get_position, pos2, ":dead_agent_no"),
-      # (get_distance_between_positions, ":dist", pos1, pos2),
-      # (lt, ":dist", 200),
-      # (try_begin), #backstabbed
-        # (position_is_behind_position, pos1, pos2),
-        # (call_script, "script_troop_change_relation_with_troop", "$g_player_troop", ":wounded_troop", -1),
-        # # (eq, "$g_player_troop", "trp_player"),
-        # # (call_script, "script_change_player_honor", -1),
-      # (try_end),
-      (try_begin), #friendly fire, it happens
-        (eq, ":killer_troop", "trp_player"),
-        (agent_is_ally, ":dead_agent_no"),
-        (call_script, "script_change_player_relation_with_troop", ":wounded_troop", -3),
-      (else_try),
-        (call_script, "script_troop_change_relation_with_troop", ":killer_troop", ":wounded_troop", ":relation_loss"),
-      (try_end),
-      (call_script, "script_change_troop_renown", ":killer_troop", 1), #Static amount
-
-	  # (try_begin),
-	  	# (store_faction_of_troop, ":faction", ":wounded_troop"),
-		# (faction_slot_eq, ":faction", slot_faction_leader, ":wounded_troop"),
-	    # (call_script, "script_change_player_relation_with_faction_ex", ":faction", -1),
-	  # (try_end),
-    ]),
-
-  (0, 0, ti_once, [(eq, "$g_mt_mode", abm_tournament),],
-   [
-     (play_sound, "snd_arena_ambiance", sf_looping),
-     (call_script, "script_music_set_situation_with_culture", mtf_sit_arena),
-     ]),
-
-  (1, 4, ti_once, [(eq, "$g_mt_mode", abm_tournament),
-                   (this_or_next|main_hero_fallen),
-                   (num_active_teams_le, 1)],
-   [
-       (try_begin),
-         (neg|main_hero_fallen),
-         (call_script, "script_end_tournament_fight", 1),
-         (call_script, "script_play_victorious_sound"),
-         (finish_mission),
-       (else_try),
-         (call_script, "script_end_tournament_fight", 0),
-         (finish_mission),
-       (try_end),
-       ]),
-
-  (ti_battle_window_opened, 0, 0, [], [(eq, "$g_mt_mode", abm_training),(start_presentation, "prsnt_arena_training")]),
-
-  (0, 0, ti_once, [], [(eq, "$g_mt_mode", abm_training),
-                       (assign, "$g_arena_training_max_opponents", 40),
-                       (assign, "$g_arena_training_num_agents_spawned", 0),
-                       (assign, "$g_arena_training_kills", 0),
-                       (assign, "$g_arena_training_won", 0),
-                       (call_script, "script_music_set_situation_with_culture", mtf_sit_arena),
-                       ]),
-
-  (1, 4, ti_once, [(eq, "$g_mt_mode", abm_training),
-                   (store_mission_timer_a, ":cur_time"),
-                   (gt, ":cur_time", 3),
-                   (assign, ":win_cond", 0),
-                   (try_begin),
-                     (ge, "$g_arena_training_num_agents_spawned", "$g_arena_training_max_opponents"),#spawn at most 40 agents
-                     (num_active_teams_le, 1),
-                     (assign, ":win_cond", 1),
-                   (try_end),
-                   (this_or_next|eq, ":win_cond", 1),
-                   (main_hero_fallen)],
-   [
-       (get_player_agent_no, ":player_agent"),
-       (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),#use this for conversation
-       (assign, "$g_arena_training_won", 0),
-       (try_begin),
-         (neg|main_hero_fallen),
-         (assign, "$g_arena_training_won", 1),#use this for conversation
-       (try_end),
-       (assign, "$g_mt_mode", abm_visit),
-       (set_jump_mission, "mt_arena_melee_fight"),
-       (party_get_slot, ":arena_scene", "$current_town", slot_town_arena),
-       (modify_visitors_at_site, ":arena_scene"),
-       (reset_visitors),
-       (set_visitor, 35, "trp_veteran_fighter"),
-       (set_visitor, 36, "trp_hired_blade"),
-	   ##nero claudis, bug where is no auctor in arena after fight
-	   (store_sub, ":town_id", "$current_town", towns_begin),
-	   (store_add, ":auctor", ":town_id", arena_masters_begin),
-	   (set_visitor, 52, ":auctor"),
-
-       (call_script, "script_spawn_specators"),
-
-       (set_jump_entry, 50),
-       (jump_to_scene, ":arena_scene"),
-
-       #SB : deduct health here
-       (call_script, "script_agent_apply_training_health", ":player_agent"),
-       ]),
-
-
-  (0.2, 0, 0,
-   [
-       (eq, "$g_mt_mode", abm_training),
-       (assign, ":num_active_fighters", 0),
-       (try_for_agents, ":agent_no"),
-         (agent_is_human, ":agent_no"),
-         (agent_is_alive, ":agent_no"),
-         (agent_get_team, ":team_no", ":agent_no"),
-         (is_between, ":team_no", 0 ,7),
-         (val_add, ":num_active_fighters", 1),
-       (try_end),
-       (lt, ":num_active_fighters", 7),
-       (neg|main_hero_fallen),
-       (store_mission_timer_a, ":cur_time"),
-       (this_or_next|ge, ":cur_time", "$g_arena_training_next_spawn_time"),
-       (this_or_next|lt, "$g_arena_training_num_agents_spawned", 6),
-       (num_active_teams_le, 1),
-       (lt, "$g_arena_training_num_agents_spawned", "$g_arena_training_max_opponents"),
-      ],
-    [
-       (assign, ":added_troop", "$g_arena_training_num_agents_spawned"),
-       (store_div,  ":added_troop", "$g_arena_training_num_agents_spawned", 6),
-       (assign, ":added_troop_sequence", "$g_arena_training_num_agents_spawned"),
-       (val_mod, ":added_troop_sequence", 6),
-       (val_add, ":added_troop", ":added_troop_sequence"),
-       (val_min, ":added_troop", 9),
-       (val_add, ":added_troop", "trp_arena_training_fighter_1"),
-       (assign, ":end_cond", 10000),
-       (get_player_agent_no, ":player_agent"),
-       (agent_get_position, pos5, ":player_agent"),
-       (try_for_range, ":unused", 0, ":end_cond"),
-         (store_random_in_range, ":random_entry_point", 32, 40),
-         #SB : now we use this to prevent duplicate
-         (neq, ":random_entry_point", "$g_player_entry_point"), # make sure we don't overwrite player
-         (entry_point_get_position, pos1, ":random_entry_point"),
-         (get_distance_between_positions, ":dist", pos5, pos1),
-         (gt, ":dist", 1200), #must be at least 12 meters away from the player
-         (assign, ":end_cond", 0),
-       (try_end),
-       (add_visitors_to_current_scene, ":random_entry_point", ":added_troop", 1),
-       #SB : set this as last spawnpoint
-       (assign, "$g_player_entry_point", ":random_entry_point"),
-       (store_add, ":new_spawned_count", "$g_arena_training_num_agents_spawned", 1),
-       (store_mission_timer_a, ":cur_time"),
-       (store_add, "$g_arena_training_next_spawn_time", ":cur_time", 14),
-       (store_div, ":time_reduction", ":new_spawned_count", 3),
-       (val_sub, "$g_arena_training_next_spawn_time", ":time_reduction"),
-       ]),
-
-  (0, 0, 0,
-   [
-       (eq, "$g_mt_mode", abm_training),
-       ],
-    [
-       (assign, ":max_teams", 6),
-       (val_max, ":max_teams", 1),
-       (get_player_agent_no, ":player_agent"),
-       (try_for_agents, ":agent_no"),
-         (agent_is_human, ":agent_no"),
-         (agent_is_alive, ":agent_no"),
-         (agent_slot_eq, ":agent_no", slot_agent_arena_team_set, 0),
-         (agent_get_team, ":team_no", ":agent_no"),
-         (is_between, ":team_no", 0 ,7),
-         (try_begin),
-           (eq, ":agent_no", ":player_agent"),
-           (agent_set_team, ":agent_no", 6), #player is always team 6.
-         (else_try),
-           (store_random_in_range, ":selected_team", 0, ":max_teams"),
-          # find strongest team
-           (try_for_range, ":t", 0, 6),
-             (troop_set_slot, "trp_temp_array_a", ":t", 0),
-           (try_end),
-           (try_for_agents, ":other_agent_no"),
-             (agent_is_human, ":other_agent_no"),
-             (agent_is_alive, ":other_agent_no"),
-             (neq, ":agent_no", ":player_agent"),
-             (agent_slot_eq, ":other_agent_no", slot_agent_arena_team_set, 1),
-             (agent_get_team, ":other_agent_team", ":other_agent_no"),
-             (troop_get_slot, ":count", "trp_temp_array_a", ":other_agent_team"),
-             (val_add, ":count", 1),
-             (troop_set_slot, "trp_temp_array_a", ":other_agent_team", ":count"),
-           (try_end),
-           (assign, ":strongest_team", 0),
-           (troop_get_slot, ":strongest_team_count", "trp_temp_array_a", 0),
-           (try_for_range, ":t", 1, 6),
-             (troop_slot_ge, "trp_temp_array_a", ":t", ":strongest_team_count"),
-             (troop_get_slot, ":strongest_team_count", "trp_temp_array_a", ":t"),
-             (assign, ":strongest_team", ":t"),
-           (try_end),
-           (store_random_in_range, ":rand", 5, 100),
-           (try_begin),
-             (lt, ":rand", "$g_arena_training_num_agents_spawned"),
-             (assign, ":selected_team", ":strongest_team"),
-           (try_end),
-           (agent_set_team, ":agent_no", ":selected_team"),
-         (try_end),
-         (agent_set_slot, ":agent_no", slot_agent_arena_team_set, 1),
-         (try_begin),
-           (neq, ":agent_no", ":player_agent"),
-           (val_add, "$g_arena_training_num_agents_spawned", 1),
-         (try_end),
-       (try_end),
-       ]),
-  ] + improved_horse_archer_ai
+    (try_end),
+  ]),
+] + improved_horse_archer_ai
 
 mission_templates = [
 ("town_default",0,-1,
@@ -12070,166 +11885,161 @@ mission_templates = [
     ],
   ),
 
-  (
-    "arena_melee_fight",mtf_arena_fight,-1,
-    "You enter a melee fight in the arena.",
-    [
-      (0,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse]),
-      (1,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (2,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
-      (3,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
-      (4,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows, itm_practice_dagger]),
-      (5,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield]),
-      (6,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
-      (7,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
+("arena_melee_fight",mtf_arena_fight,-1, "You enter a melee fight in the arena.",[
+    (0,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse]),
+    (1,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
+    (2,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
+    (3,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
+    (4,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows, itm_practice_dagger]),
+    (5,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield]),
+    (6,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
+    (7,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
 
-      (8,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger]),
-      (9,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield]),
-      (10,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (11,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield,]),
-      (12,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows]),
-      (13,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield]),
-      (14,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (15,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield]),
+    (8,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger]),
+    (9,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield]),
+    (10,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
+    (11,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield,]),
+    (12,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows]),
+    (13,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield]),
+    (14,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
+    (15,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield]),
 
-      (16,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse]),
-      (17,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (18,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
-      (19,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
-      (20,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger,]),
-      (21,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield]),
-      (22,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
-      (23,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
+    (16,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse]),
+    (17,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
+    (18,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
+    (19,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
+    (20,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger,]),
+    (21,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield]),
+    (22,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
+    (23,mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
 
-      (24,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse]),
-      (25,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (26,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
-      (27,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
-      (28,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger]),
-      (29,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield]),
-      (30,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
-      (31,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
-#32
-      (32,mtef_visitor_source|mtef_team_1,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (33,mtef_visitor_source|mtef_team_2,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_staff]),
-      (34,mtef_visitor_source|mtef_team_3,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_sword, itm_practice_shield]),
-      (35,mtef_visitor_source|mtef_team_4,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_staff]),
-      (36,mtef_visitor_source|mtef_team_1,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows_10_amount, itm_practice_dagger]), #SB : change this to lower ammo amount
-      (37,mtef_visitor_source|mtef_team_2,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_sword, itm_practice_shield]),
-      (38,mtef_visitor_source|mtef_team_3,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_heavy_practice_sword]),
-      (39,mtef_visitor_source|mtef_team_4,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_staff]),
-#40-49 used for spectators
-      (40,mtef_visitor_source,af_override_horse,0,1,[]),
-      (41,mtef_visitor_source,af_override_horse,0,1,[]),
-	  (42,mtef_visitor_source,af_override_horse,0,1,[]),
+    (24,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_horse]),
+    (25,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
+    (26,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
+    (27,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
+    (28,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows,itm_practice_dagger]),
+    (29,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_sword,itm_practice_shield]),
+    (30,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword,itm_practice_horse]),
+    (31,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_practice_lance,itm_practice_shield,itm_practice_horse]),
+    #32
+    (32,mtef_visitor_source|mtef_team_1,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_heavy_practice_sword]),
+    (33,mtef_visitor_source|mtef_team_2,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_staff]),
+    (34,mtef_visitor_source|mtef_team_3,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_sword, itm_practice_shield]),
+    (35,mtef_visitor_source|mtef_team_4,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_staff]),
+    (36,mtef_visitor_source|mtef_team_1,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_bow,itm_practice_arrows_10_amount, itm_practice_dagger]), #SB : change this to lower ammo amount
+    (37,mtef_visitor_source|mtef_team_2,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_sword, itm_practice_shield]),
+    (38,mtef_visitor_source|mtef_team_3,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_heavy_practice_sword]),
+    (39,mtef_visitor_source|mtef_team_4,af_override_everything|af_override_foot,aif_start_alarmed,1,[itm_practice_staff]),
+    #40-49 used for spectators
+    (40,mtef_visitor_source,af_override_horse,0,1,[]),
+    (41,mtef_visitor_source,af_override_horse,0,1,[]),
+    (42,mtef_visitor_source,af_override_horse,0,1,[]),
 
-      (43,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_dagger,itm_practice_shield, itm_arena_armor_blue, itm_tourney_helm_blue,itm_graves_simple]),
-      (44,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_dreizack2, itm_arena_armor_red, itm_tourney_helm_red,itm_graves_simple]),
+    (43,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_dagger,itm_practice_shield, itm_arena_armor_blue, itm_tourney_helm_blue,itm_graves_simple]),
+    (44,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_dreizack2, itm_arena_armor_red, itm_tourney_helm_red,itm_graves_simple]),
 
-      (45,mtef_visitor_source,af_override_horse,0,1,[]),
-      (46,mtef_visitor_source,af_override_horse,0,1,[]),
-      (47,mtef_visitor_source,af_override_horse,0,1,[]),
-      (48,mtef_visitor_source,af_override_horse,0,1,[]),
-      (49,mtef_visitor_source,af_override_horse,0,1,[]),
+    (45,mtef_visitor_source,af_override_horse,0,1,[]),
+    (46,mtef_visitor_source,af_override_horse,0,1,[]),
+    (47,mtef_visitor_source,af_override_horse,0,1,[]),
+    (48,mtef_visitor_source,af_override_horse,0,1,[]),
+    (49,mtef_visitor_source,af_override_horse,0,1,[]),
 
-      (50, mtef_scene_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
-      (51, mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
-      (52, mtef_visitor_source,af_override_horse,0,1,[]),
-#not used yet:
-     (53, mtef_scene_source,af_override_horse,0,1,[]),
-     (54, mtef_scene_source,af_override_horse,0,1,[]),
-     (55, mtef_scene_source,af_override_horse,0,1,[]),
-  #used for tournament master scene
-     (54,mtef_visitor_source,af_override_horse,0,1,[]),
-     (55,mtef_visitor_source,af_override_horse,0,1,[]),
-     (56,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
-     (57,mtef_visitor_source,af_override_horse,0,1,[]),
-     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
-     (59,mtef_visitor_source,af_override_horse,0,1,[]),
-     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
-    tournament_triggers
-  ),
-  (
-    "arena_melee_fight_barbarian",mtf_arena_fight,-1,
-    "You enter a melee fight in the arena.",
-    [
-      (0,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-      (1,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-      (2,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-      (3,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-      (4,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-      (5,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-      (6,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-      (7,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (50, mtef_scene_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
+    (51, mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
+    (52, mtef_visitor_source,af_override_horse,0,1,[]),
+    #not used yet:
+    (53, mtef_scene_source,af_override_horse,0,1,[]),
+    (54, mtef_scene_source,af_override_horse,0,1,[]),
+    (55, mtef_scene_source,af_override_horse,0,1,[]),
+    #used for tournament master scene
+    (54,mtef_visitor_source,af_override_horse,0,1,[]),
+    (55,mtef_visitor_source,af_override_horse,0,1,[]),
+    (56,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
+    (57,mtef_visitor_source,af_override_horse,0,1,[]),
+    (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
+    (59,mtef_visitor_source,af_override_horse,0,1,[]),
+    (60,mtef_visitor_source,af_override_horse,0,1,[]),
+  ], p_wetter + storms + global_common_triggers+
+  tournament_triggers
+),
 
-      (8,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (10,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (11,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (12,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (13,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (14,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (15,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+("arena_melee_fight_barbarian",mtf_arena_fight,-1, "You enter a melee fight in the arena.",[
+    (0,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (1,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (2,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (3,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (4,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (5,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (6,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (7,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
 
-      (16,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
-      (17,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
-      (18,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
-      (19,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
-      (20,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
-      (21,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
-      (22,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
-      (23,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
+    (8,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (10,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (11,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (12,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (13,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (14,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (15,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
 
-      (24,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-      (25,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-      (26,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-      (27,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-      (28,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-      (29,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-      (30,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-      (31,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-#32
-      (32,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
-      (33,mtef_visitor_source|mtef_team_2,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
-      (34,mtef_visitor_source|mtef_team_3,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
-      (35,mtef_visitor_source|mtef_team_4,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
-      (36,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_foot,aif_start_alarmed,1,[]), #SB : change this to lower ammo amount
-      (37,mtef_visitor_source|mtef_team_2,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
-      (38,mtef_visitor_source|mtef_team_3,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
-      (39,mtef_visitor_source|mtef_team_4,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
-#40-49 used for spectators
-      (40,mtef_visitor_source,af_override_horse,0,1,[]),
-      (41,mtef_visitor_source,af_override_horse,0,1,[]),
-	  (42,mtef_visitor_source,af_override_horse,0,1,[]),
+    (16,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
+    (17,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
+    (18,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
+    (19,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
+    (20,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
+    (21,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
+    (22,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
+    (23,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
 
-      (43,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
-      (44,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (24,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (25,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (26,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (27,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (28,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (29,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (30,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (31,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    #32
+    (32,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
+    (33,mtef_visitor_source|mtef_team_2,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
+    (34,mtef_visitor_source|mtef_team_3,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
+    (35,mtef_visitor_source|mtef_team_4,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
+    (36,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_foot,aif_start_alarmed,1,[]), #SB : change this to lower ammo amount
+    (37,mtef_visitor_source|mtef_team_2,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
+    (38,mtef_visitor_source|mtef_team_3,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
+    (39,mtef_visitor_source|mtef_team_4,af_override_horse|af_override_foot,aif_start_alarmed,1,[]),
+    #40-49 used for spectators
+    (40,mtef_visitor_source,af_override_horse,0,1,[]),
+    (41,mtef_visitor_source,af_override_horse,0,1,[]),
+    (42,mtef_visitor_source,af_override_horse,0,1,[]),
 
-      (45,mtef_visitor_source,af_override_horse,0,1,[]),
-      (46,mtef_visitor_source,af_override_horse,0,1,[]),
-      (47,mtef_visitor_source,af_override_horse,0,1,[]),
-      (48,mtef_visitor_source,af_override_horse,0,1,[]),
-      (49,mtef_visitor_source,af_override_horse,0,1,[]),
+    (43,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
+    (44,mtef_visitor_source|mtef_team_3,af_override_horse,aif_start_alarmed,1,[]),
 
-      (50, mtef_scene_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
-      (51, mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
-      (52, mtef_visitor_source,af_override_horse,0,1,[]),
-#not used yet:
-     (53, mtef_scene_source,af_override_horse,0,1,[]),
-     (54, mtef_scene_source,af_override_horse,0,1,[]),
-     (55, mtef_scene_source,af_override_horse,0,1,[]),
-  #used for tournament master scene
-     (54,mtef_visitor_source,af_override_horse,0,1,[]),
-     (55,mtef_visitor_source,af_override_horse,0,1,[]),
-     (56,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
-     (57,mtef_visitor_source,af_override_horse,0,1,[]),
-     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
-     (59,mtef_visitor_source,af_override_horse,0,1,[]),
-     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
-    tournament_triggers
-  ),
+    (45,mtef_visitor_source,af_override_horse,0,1,[]),
+    (46,mtef_visitor_source,af_override_horse,0,1,[]),
+    (47,mtef_visitor_source,af_override_horse,0,1,[]),
+    (48,mtef_visitor_source,af_override_horse,0,1,[]),
+    (49,mtef_visitor_source,af_override_horse,0,1,[]),
+
+    (50, mtef_scene_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
+    (51, mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
+    (52, mtef_visitor_source,af_override_horse,0,1,[]),
+    #not used yet:
+    (53, mtef_scene_source,af_override_horse,0,1,[]),
+    (54, mtef_scene_source,af_override_horse,0,1,[]),
+    (55, mtef_scene_source,af_override_horse,0,1,[]),
+    #used for tournament master scene
+    (54,mtef_visitor_source,af_override_horse,0,1,[]),
+    (55,mtef_visitor_source,af_override_horse,0,1,[]),
+    (56,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
+    (57,mtef_visitor_source,af_override_horse,0,1,[]),
+    (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
+    (59,mtef_visitor_source,af_override_horse,0,1,[]),
+    (60,mtef_visitor_source,af_override_horse,0,1,[]),
+  ], p_wetter + storms + global_common_triggers+
+  tournament_triggers
+),
 
   (
     "arena_challenge_fight",mtf_arena_fight|mtf_commit_casualties,-1,
@@ -12713,165 +12523,145 @@ mission_templates = [
   ],[
 ]),
 
-  (
-    "quick_battle_battle",mtf_battle_mode,-1,
-    "You lead your men to battle.",
-    [
-      (0,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (2,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (3,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (4,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (5,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (6,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (7,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+("quick_battle_battle",mtf_battle_mode,-1,"You lead your men to battle.",[
+    (0,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (2,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (3,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (4,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (5,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (6,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (7,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
 
-      (8,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (9,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (10,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (11,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (12,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (13,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (14,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-      (15,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (8,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (9,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (10,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (11,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (12,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (13,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (14,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+    (15,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
 
-      (16,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (17,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (18,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (19,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (20,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (21,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (22,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (23,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (16,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (17,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (18,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (19,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (20,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (21,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (22,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (23,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
 
-      (24,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (25,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (26,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (27,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (28,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (29,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (30,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-      (31,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-     ], p_wetter + global_common_triggers+
-    [
-      cannot_spawn_commoners,
+    (24,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (25,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (26,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (27,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (28,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (29,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (30,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (31,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+  ], p_wetter + global_common_triggers+
+  [
+    cannot_spawn_commoners,
     improved_lightning,
-    	  (2, 0, ti_once,[],
-	   [(tutorial_box, "@Some hints:^ You can make a shield taunt by pressing 'K', you can perform a war cry by pressing 'T' and you can change battle speed by pressing 'J'.", "@Ave, Commander!"),
-		 ]),
 
-  (0, 0, 3,
-    [
+    (2, 0, ti_once,[],[
+      (tutorial_box, "@Some hints:^ You can make a shield taunt by pressing 'K', you can perform a war cry by pressing 'T' and you can change battle speed by pressing 'J'.", "@Ave, Commander!"),
+    ]),
+
+    (0, 0, 3,[
       (key_clicked, key_t),
-    ],
-    [
-        (get_player_agent_no, ":player"),
-        (agent_is_alive, ":player"),
-        (le, "$warcry_loading", 0),
-        (try_for_agents, ":cur_agent"),#effect
-            (agent_is_human, ":cur_agent"),
-            (agent_is_alive, ":cur_agent"),
-            (agent_is_active,":cur_agent"),
-            (agent_is_ally, ":cur_agent"),
-            (neq, ":cur_agent", ":player"),
-            (agent_set_damage_modifier, ":cur_agent", 105),
-            (assign, "$warcry_loading", 30),
-            (store_random_in_range, ":rand", 0, 100),
-            (ge, ":rand", 50),
-            (call_script,"script_agent_perform_warcry", ":cur_agent"),
-        (try_end),
-        (display_message, "str_war_cry",message_positive),
-        (call_script, "script_change_courage_around_agent", 5, ":player"),
-        (call_script, "script_change_courage_around_agent_for_routed_agents", 5, ":player"),]),
-    (0, 0, 1,[(gt, "$warcry_loading", 0), ],[(val_sub, "$warcry_loading", 1),]),
+    ],[
+      (get_player_agent_no, ":player"),
+      (agent_is_alive, ":player"),
+      (le, "$warcry_loading", 0),
+      (try_for_agents, ":cur_agent"),#effect
+          (agent_is_human, ":cur_agent"),
+          (agent_is_alive, ":cur_agent"),
+          (agent_is_active,":cur_agent"),
+          (agent_is_ally, ":cur_agent"),
+          (neq, ":cur_agent", ":player"),
+          (agent_set_damage_modifier, ":cur_agent", 105),
+          (assign, "$warcry_loading", 30),
+          (store_random_in_range, ":rand", 0, 100),
+          (ge, ":rand", 50),
+          (call_script,"script_agent_perform_warcry", ":cur_agent"),
+      (try_end),
+      (display_message, "str_war_cry",message_positive),
+      (call_script, "script_change_courage_around_agent", 5, ":player"),
+      (call_script, "script_change_courage_around_agent_for_routed_agents", 5, ":player"),
+    ]),
+
+    (0, 0, 1,[
+      (gt, "$warcry_loading", 0),
+    ],[
+      (val_sub, "$warcry_loading", 1),
+    ]),
+
     common_custom_battle_tab_press,
     common_custom_battle_question_answered,
     common_inventory_not_available,
 
-    (ti_before_mission_start, 0, 0, [],
-    [
-     (scene_set_day_time, 15),
-     ]),
+    (ti_before_mission_start, 0, 0, [],[
+      (scene_set_day_time, 15),
+    ]),
 
-      common_battle_init_banner,
+    common_battle_init_banner,
 
-      (0, 0, ti_once, [],
-        [
-          (assign, "$g_battle_result", 0),
-          (call_script, "script_init_death_cam"), #SB : add camera
-         ]),
+    (0, 0, ti_once, [],[
+      (assign, "$g_battle_result", 0),
+      (call_script, "script_init_death_cam"), #SB : add camera
+    ]),
 
-      common_music_situation_update,
-      custom_battle_check_victory_condition,
-      common_battle_victory_display,
-      custom_battle_check_defeat_condition,
-
-	# (0, 0, 0, [(key_clicked, key_t)],
-       # [(try_begin),
-         # (eq,"$alt_diffuse_on",1),
-         # (assign,"$alt_diffuse_on",0),
-        # (display_message,"@OFF"),
-        # (else_try),
-         # (eq,"$alt_diffuse_on",0),
-         # (assign,"$alt_diffuse_on",1),
-        # (display_message,"@ON"),
-        # (try_end),
-        # (set_fixed_point_multiplier, 1),
-         # (set_shader_param_float, "@vAltDiffuse","$alt_diffuse_on"),
-
-         # (assign,reg1,"$alt_diffuse_on"),
-         # (display_message,"@{reg1}"),
-           # ]),
+    common_music_situation_update,
+    custom_battle_check_victory_condition,
+    common_battle_victory_display,
+    custom_battle_check_defeat_condition,
 
     moral_trigger_decide_to_run_or_not,
 
-      (ti_on_agent_spawn, 0, 0, [],
-       [
-         (store_trigger_param_1, ":agent_no"),
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent_no"),
 
-         (assign, ":initial_courage_score", 5000),
+      (assign, ":initial_courage_score", 5000),
 
-         (agent_get_troop_id, ":troop_id", ":agent_no"),
-         (store_character_level, ":troop_level", ":troop_id"),
-         (val_mul, ":troop_level", 100), #was 35
-         (val_add, ":initial_courage_score", ":troop_level"), #average : 20 * 35 = 700
+      (agent_get_troop_id, ":troop_id", ":agent_no"),
+      (store_character_level, ":troop_level", ":troop_id"),
+      (val_mul, ":troop_level", 100), #was 35
+      (val_add, ":initial_courage_score", ":troop_level"), #average : 20 * 35 = 700
 
-         (store_random_in_range, ":randomized_addition_courage", 0, 3000), #average : 1500
-         (val_add, ":initial_courage_score", ":randomized_addition_courage"),
+      (store_random_in_range, ":randomized_addition_courage", 0, 3000), #average : 1500
+      (val_add, ":initial_courage_score", ":randomized_addition_courage"),
 
-         (assign, ":cur_morale", 100),
+      (assign, ":cur_morale", 100),
 
-         (store_sub, ":morale_effect_on_courage", ":cur_morale", 70),
-         (val_mul, ":morale_effect_on_courage", 30), #this can effect morale with -2100..900
-         (val_add, ":initial_courage_score", ":morale_effect_on_courage"),
+      (store_sub, ":morale_effect_on_courage", ":cur_morale", 70),
+      (val_mul, ":morale_effect_on_courage", 30), #this can effect morale with -2100..900
+      (val_add, ":initial_courage_score", ":morale_effect_on_courage"),
 
-         #average = 5000 + 700 + 1500 = 7200; min : 5700, max : 8700
-         #morale effect = min : -2100(party morale is 0), average : 0(party morale is 70), max : 900(party morale is 100)
-         #min starting : 3600, max starting  : 9600, average starting : 7200
-         (agent_set_slot, ":agent_no", slot_agent_courage_score, ":initial_courage_score"),
-         ]),
+      #average = 5000 + 700 + 1500 = 7200; min : 5700, max : 8700
+      #morale effect = min : -2100(party morale is 0), average : 0(party morale is 70), max : 900(party morale is 100)
+      #min starting : 3600, max starting  : 9600, average starting : 7200
+      (agent_set_slot, ":agent_no", slot_agent_courage_score, ":initial_courage_score"),
+    ]),
 
-      (ti_on_agent_killed_or_wounded, 0, 0, [],
-       [
-        (store_trigger_param_1, ":dead_agent_no"),
-        (store_trigger_param_2, ":killer_agent_no"),
-        #(store_trigger_param_3, ":is_wounded"),
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent_no"),
+      (store_trigger_param_2, ":killer_agent_no"),
+      #(store_trigger_param_3, ":is_wounded"),
 
-        (call_script, "script_apply_death_effect_on_courage_scores", ":dead_agent_no", ":killer_agent_no"),
-       ]),
-
-       common_battle_order_panel_tick,
-
-    ]
-    + improved_horse_archer_ai
-    + jacobhinds_morale_triggers
-	  + ai_horn
-    + utility_triggers + battle_panel_triggers + extended_battle_menu + common_division_data + division_order_processing + real_deployment + formations_triggers + AI_triggers
-	##diplomacy begin
-	+ dplmc_battle_mode_triggers
-	##diplomacy end
+      (call_script, "script_apply_death_effect_on_courage_scores", ":dead_agent_no", ":killer_agent_no"),
+    ]),
+    common_battle_order_panel_tick,
+  ]
+  + improved_horse_archer_ai
+  + jacobhinds_morale_triggers
+  + ai_horn
+  + utility_triggers + battle_panel_triggers + extended_battle_menu + common_division_data + division_order_processing + real_deployment + formations_triggers + AI_triggers
+  ##diplomacy begin
+  + dplmc_battle_mode_triggers
+  ##diplomacy end
   + auxiliary_player
- ),
+),
 
 ("quick_battle_siege", mtf_battle_mode,-1,
   "You lead your men to battle.",[
@@ -16131,7 +15921,7 @@ mission_templates = [
   dedal_shield_bash_AI,
   dedal_shield_bash,
   custom_commander_critical_strike,
-  gods_trigger,
+  miracle_battle_trigger,
   more_difficult_damage,
   realistic_wounding,
       (ti_on_agent_spawn, 0, 0, [],
@@ -24018,9 +23808,9 @@ mission_templates = [
       (18,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_knife,itm_wooden_stick,itm_pitch_fork]),
       (19,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_old_gladius_1,itm_knife,itm_wooden_stick,itm_pitch_fork]),
       (20,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_old_gladius_1,itm_knife,itm_wooden_stick,itm_pitch_fork]),
-    ],p_wetter+ global_common_triggers+
-    [
-      cannot_spawn_commoners,
+  ],p_wetter+ global_common_triggers+
+  [
+    cannot_spawn_commoners,
     remove_banners,
     improved_lightning,
        (ti_before_mission_start, 0, 0, [],[
