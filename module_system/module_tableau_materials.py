@@ -135,7 +135,6 @@ tableaus = [
         (troop_slot_eq, ":banner_troop", slot_troop_banner_scene_prop, -1),
         (call_script, "script_draw_banner_to_region", ":banner_troop", 0, 0, 5120, 5120, 10000, 10000, 10000, 10000, 0),
     (else_try),
-
         (call_script, "script_agent_troop_get_banner_mesh", ":banner_troop"),
         (assign, ":banner_mesh", reg0),
         (init_position, pos1),
