@@ -18036,36 +18036,36 @@ presentations = [
     (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
     (val_add, ":num_options", 1),
 
-    ## ECONOMICS & BEHAVIORAL
-    (create_text_overlay, reg0, "@Economics & Behavioral:", tf_vertical_align_center),
-    (position_set_y, pos1, ":texts_y"),
-    (overlay_set_position, reg0, pos1),
-    (val_sub, ":texts_y", ":y_increment"),
-    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+    # ## ECONOMICS & BEHAVIORAL
+    # (create_text_overlay, reg0, "@Economics & Behavioral:", tf_vertical_align_center),
+    # (position_set_y, pos1, ":texts_y"),
+    # (overlay_set_position, reg0, pos1),
+    # (val_sub, ":texts_y", ":y_increment"),
+    # (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
 
-    (create_combo_button_overlay, reg0),
-    (position_set_x, pos2, 485),
-    (val_sub, ":inputs_y", 8),
-    (position_set_y, pos2, ":inputs_y"),
-    (overlay_set_position, reg0, pos2),
-    (overlay_set_size, reg0, pos5),
-    (try_for_range, ":string", "str_dplmc_setting_2", "str_dplmc_setting_on"),
-      (overlay_add_item, reg0, ":string"),
-    (try_end),
-    (position_set_x, pos2, 450),
-    (val_add, ":inputs_y", 8),
-    (val_sub, ":inputs_y", ":y_increment"),
-    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-    (store_sub, ":actual_input_value", DPLMC_GOLD_CHANGES_HIGH, "$g_dplmc_gold_changes"),
-    (overlay_set_val, reg0, ":actual_input_value"),
+    # (create_combo_button_overlay, reg0),
+    # (position_set_x, pos2, 485),
+    # (val_sub, ":inputs_y", 8),
+    # (position_set_y, pos2, ":inputs_y"),
+    # (overlay_set_position, reg0, pos2),
+    # (overlay_set_size, reg0, pos5),
+    # (try_for_range, ":string", "str_dplmc_setting_2", "str_dplmc_setting_on"),
+    #   (overlay_add_item, reg0, ":string"),
+    # (try_end),
+    # (position_set_x, pos2, 450),
+    # (val_add, ":inputs_y", 8),
+    # (val_sub, ":inputs_y", ":y_increment"),
+    # (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    # (store_sub, ":actual_input_value", DPLMC_GOLD_CHANGES_HIGH, "$g_dplmc_gold_changes"),
+    # (overlay_set_val, reg0, ":actual_input_value"),
 
-    (set_container_overlay, -1),
-    (create_mesh_overlay, reg0, "mesh_pic_payment"),
-    (set_container_overlay, ":container"),
-    (overlay_set_position, reg0, pos3),
-    (overlay_set_size, reg0, pos4),
-    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-    (val_add, ":num_options", 1),
+    # (set_container_overlay, -1),
+    # (create_mesh_overlay, reg0, "mesh_pic_payment"),
+    # (set_container_overlay, ":container"),
+    # (overlay_set_position, reg0, pos3),
+    # (overlay_set_size, reg0, pos4),
+    # (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    # (val_add, ":num_options", 1),
 
     ## PREJUDICE LEVEL
     (create_text_overlay, reg0, "@Prejudice Level:", tf_vertical_align_center),
@@ -18255,7 +18255,7 @@ presentations = [
       (assign, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
       (assign, "$g_dplmc_lord_recycling", 1),
       (assign, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
-      (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
+      # (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
       (assign, "$g_disable_condescending_comments", 0),
       (assign, "$disable_npc_complaints", 0),
       # (call_script, "script_dplmc_update_info_settings"),
@@ -18289,9 +18289,9 @@ presentations = [
     (else_try), #AI
       (troop_slot_eq, "trp_temp_array_b", 6, ":object"),
       (store_sub, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_HIGH, ":value"),
-    (else_try), #ECO
-      (troop_slot_eq, "trp_temp_array_b", 7, ":object"),
-      (store_sub, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_HIGH, ":value"),
+    # (else_try), #ECO
+    #   (troop_slot_eq, "trp_temp_array_b", 7, ":object"),
+    #   (store_sub, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_HIGH, ":value"),
     (else_try), #Prejudice
       (troop_slot_eq, "trp_temp_array_b", 8, ":object"),
       (assign, reg0, ":value"),
@@ -26100,18 +26100,15 @@ presentations = [
             (troop_get_slot, ":initial_wealth", ":choice", slot_troop_wealth),
             (store_troop_gold, ":initial_gold", ":choice"), #SB : account actual abstracted wealth
             (val_add, ":initial_gold", ":initial_wealth"),
-            (try_begin),
-                #Changes must be enabled
-                (ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
-                #initial gold is 2500 * (10 + trade + looting) / 10, rounded.
-                (store_skill_level, ":modifier", "skl_trade", ":choice"),
-                (store_skill_level, ":skill_level", "skl_looting", ":choice"),
-                (val_add, ":modifier", ":skill_level"),
-                (val_add, ":modifier", 10),
-                (val_mul, ":initial_gold", ":modifier"),
-                (val_add, ":initial_gold", 5),
-                (val_div, ":initial_gold", 10),
-            (try_end),
+
+            (store_skill_level, ":modifier", "skl_trade", ":choice"),
+            (store_skill_level, ":skill_level", "skl_looting", ":choice"),
+            (val_add, ":modifier", ":skill_level"),
+            (val_add, ":modifier", 10),
+            (val_mul, ":initial_gold", ":modifier"),
+            (val_add, ":initial_gold", 5),
+            (val_div, ":initial_gold", 10),
+
             (troop_set_slot, ":choice", slot_troop_wealth, ":initial_gold"), #represents accumulated loot
             ##diplomacy end+
 
@@ -26705,18 +26702,15 @@ presentations = [
             (troop_get_slot, ":initial_wealth", ":choice", slot_troop_wealth),
             (store_troop_gold, ":initial_gold", ":choice"), #SB : account actual abstracted wealth
             (val_add, ":initial_gold", ":initial_wealth"),
-            (try_begin),
-                #Changes must be enabled
-                (ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
-                #initial gold is 2500 * (10 + trade + looting) / 10, rounded.
-                (store_skill_level, ":modifier", "skl_trade", ":choice"),
-                (store_skill_level, ":skill_level", "skl_looting", ":choice"),
-                (val_add, ":modifier", ":skill_level"),
-                (val_add, ":modifier", 10),
-                (val_mul, ":initial_gold", ":modifier"),
-                (val_add, ":initial_gold", 5),
-                (val_div, ":initial_gold", 10),
-            (try_end),
+
+            (store_skill_level, ":modifier", "skl_trade", ":choice"),
+            (store_skill_level, ":skill_level", "skl_looting", ":choice"),
+            (val_add, ":modifier", ":skill_level"),
+            (val_add, ":modifier", 10),
+            (val_mul, ":initial_gold", ":modifier"),
+            (val_add, ":initial_gold", 5),
+            (val_div, ":initial_gold", 10),
+
             (troop_set_slot, ":choice", slot_troop_wealth, ":initial_gold"), #represents accumulated loot
             ##diplomacy end+
 
@@ -28587,18 +28581,15 @@ presentations = [
             (troop_get_slot, ":initial_wealth", "$temp2", slot_troop_wealth),
             (store_troop_gold, ":initial_gold", "$temp2"), #SB : account actual abstracted wealth
             (val_add, ":initial_gold", ":initial_wealth"),
-            (try_begin),
-                #Changes must be enabled
-                (ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
-                #initial gold is 2500 * (10 + trade + looting) / 10, rounded.
-                (store_skill_level, ":modifier", "skl_trade", "$temp2"),
-                (store_skill_level, ":skill_level", "skl_looting", "$temp2"),
-                (val_add, ":modifier", ":skill_level"),
-                (val_add, ":modifier", 10),
-                (val_mul, ":initial_gold", ":modifier"),
-                (val_add, ":initial_gold", 5),
-                (val_div, ":initial_gold", 10),
-            (try_end),
+
+            (store_skill_level, ":modifier", "skl_trade", "$temp2"),
+            (store_skill_level, ":skill_level", "skl_looting", "$temp2"),
+            (val_add, ":modifier", ":skill_level"),
+            (val_add, ":modifier", 10),
+            (val_mul, ":initial_gold", ":modifier"),
+            (val_add, ":initial_gold", 5),
+            (val_div, ":initial_gold", 10),
+
             (troop_set_slot, "$temp2", slot_troop_wealth, ":initial_gold"), #represents accumulated loot
             ##diplomacy end+
 

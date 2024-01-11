@@ -1383,18 +1383,6 @@ simple_triggers = [
         ##diplomacy start+ Save register
         (assign, ":save_reg0", reg0),
 
-        # ##diplomacy start+
-        # (store_current_hours, ":two_weeks_ago"),
-        # (val_sub, ":two_weeks_ago", 24 * 14),
-        # ##diplomacy end+
-
-        # ##diplomacy start+
-        # #Defer the ownership check so attrition can still occur for unowned centers.
-        # #Give a slight grace period first, though.
-        # #(neg|party_slot_eq, "$g_center_wealth", slot_town_lord, 0),
-        # (this_or_next|party_slot_ge, "$g_center_wealth", dplmc_slot_center_last_transfer_time, ":two_weeks_ago"),
-        # (ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
-
         ##diplomacy end+
         (party_get_slot, ":cur_wealth", "$g_center_wealth", slot_town_wealth),
         (party_get_slot, ":added_wealth", "$g_center_wealth", slot_town_prosperity),
@@ -1492,7 +1480,6 @@ simple_triggers = [
                     (display_message, "@{s33} donates money to the townwatch of {s34}."),
                 (try_end),
                 (lt, ":cur_wealth", 0),
-                (ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
 
                 # (store_party_size_wo_prisoners, ":garrison_size", "$g_center_wealth"),
                 # (call_script, "script_party_get_ideal_size", "$g_center_wealth"),#This script has been modified to support this use
@@ -3675,9 +3662,10 @@ simple_triggers = [
                 (neg|party_slot_ge, ":cur_center", slot_party_looted_left_days, 1),#trade only if the center is not looted
                 (str_store_party_name, s7, ":cur_center"),
                 (call_script, "script_do_merchant_town_trade", ":party_no", ":cur_center"),
-                ##drop of prisoners
-                (call_script, "script_party_add_party_prisoners", ":cur_center", ":party_no"),
-                (call_script, "script_party_remove_all_prisoners", ":party_no"),
+
+                ##drop of prisoners, already done in town_trade
+                # (call_script, "script_party_add_party_prisoners", ":cur_center", ":party_no"),
+                # (call_script, "script_party_remove_all_prisoners", ":party_no"),
                 ##refill troops
                 (party_get_slot, ":party_template", ":party_no", slot_cohort_1),
                 (call_script, "script_cohort_describe_strength_to_s5_and_refil", ":party_no", ":party_template", slot_cohort_1, -1, -1, 1),
@@ -3749,9 +3737,8 @@ simple_triggers = [
             (party_set_slot, ":party_no", slot_party_ai_state, spai_trading_with_town),
             (party_set_ai_behavior, ":party_no", ai_bhvr_travel_to_party),
             (party_set_ai_object, ":party_no", ":market_town"),
-            #SB : pick up up to 5 spare items in elder's inventory
-            (try_begin), #technically we can just sell from the inventory directly and skip all this work
-                (ge, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
+            #pick up up to 5 spare items in elder's inventory
+            (try_begin),
                 (party_get_slot, ":town_elder", ":home_center", slot_town_elder),
                 (try_begin), #reaccumulate wealth, since we can't store the party's gold use a slot
                     (party_get_slot, ":cur_wealth", ":party_no", slot_town_wealth),

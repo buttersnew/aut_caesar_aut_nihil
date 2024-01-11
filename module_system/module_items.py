@@ -1363,7 +1363,7 @@ tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 pants_price, pants_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),]),], [] ],
 
-["numidian_armor", "Nubian Loincloth", [("nubian_shirtless",0)], itp_unique|itp_type_body_armor|itp_force_show_body|itp_attach_armature|itp_civilian,0,
+["numidian_armor", "Berber Loincloth", [("nubian_shirtless",0)], itp_unique|itp_type_body_armor|itp_force_show_body|itp_attach_armature|itp_civilian,0,
 1500, weight(1)|head_armor(0)|body_armor(5)|leg_armor(24)|difficulty(0) ,imodbits_cloth, [], [] ],
 ["numidian_armor_1", "Berber Tunic", [("berber_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[

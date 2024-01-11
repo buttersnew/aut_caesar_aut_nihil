@@ -2822,7 +2822,7 @@ def_attrib|level(1),wp(40), knows_common, refugee_face1, refugee_face2 ],
 
 ["caravan_master","Caravan Master","Caravan Masters",tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse,0,0,fac_commoners,
 [itm_roman_spatha, itm_roman_tunic_2, itm_caligea,itm_horse_1],
-attrib_level_20,wp(100),knows_level_20,mercenary_face_1,mercenary_face_2],
+attrib_level_20,wp(100),knows_level_20|knows_trade_5,mercenary_face_1,mercenary_face_2],
 
 ["package_slave", "Slave", "Slaves", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife,itm_mule_package], def_attrib|level(25), wp(30), knows_common|knows_riding_2, white_face_11, white_face_12 ],

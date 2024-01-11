@@ -26596,295 +26596,58 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ),
 
 ("dplmc_affiliate_end",0,
-    "You recieve a message from {s10}, the head of the family you are affiliated with. The message reads:^^{s63}",
-    "none",
-    [
-        (set_background_mesh, "mesh_pic_messenger"),
-        (str_store_troop_name, s10, "$g_notification_menu_var1"),
-        (try_begin),
-            ##nested diplomacy start+ (1) Fix a bug from the Diplomacy 3.3.2 version of this menu by getting your ex-affiliate
-            #from "$g_notification_menu_var2" instead of "$g_player_affiliated_troop".
-            ##OLD: #(eq, "$g_player_affiliated_troop", "$g_notification_menu_var1"),
-            (eq, "$g_notification_menu_var2", "$g_notification_menu_var1"),
-            ##nested diplomacy end+
-            (str_store_string, s63, "@{playername}, ^^I always knew you were a bad egg, since the day you have pledged allegiance to my clan. ^Did you really think you could set my family against me? You've dropped your mask, you snake! You are an infliction, and I will not bear it anymore. ^Hereby, I disown and ban you from my house. I have urged my family to fight you, and I will warn other lords about your infamy. ^Tremble with fear, you have a deadly enemy! ^^{s10}."),
-        (else_try),
-            ##nested diplomacy start+ (2) Fix a bug from the Diplomacy 3.3.2 version of this menu by getting your ex-affiliate
-            #from "$g_notification_menu_var2" instead of "$g_player_affiliated_troop".
-            ##OLD:
-            #(is_between, "$g_player_affiliated_troop", lords_begin, kingdom_ladies_end),
-            #(str_store_troop_name, s10, "$g_player_affiliated_troop"),
-            ##NEW:
-            (ge, "$g_notification_menu_var1", walkers_end),
-            (troop_is_hero, "$g_notification_menu_var1"),
+  "You recieve a message from {s10}, the head of the family you are affiliated with. The message reads:^^{s63}",
+  "none",[
+    (set_background_mesh, "mesh_pic_messenger"),
+    (str_store_troop_name, s10, "$g_notification_menu_var1"),
+    (try_begin),
+      ##nested diplomacy start+ (1) Fix a bug from the Diplomacy 3.3.2 version of this menu by getting your ex-affiliate
+      #from "$g_notification_menu_var2" instead of "$g_player_affiliated_troop".
+      ##OLD: #(eq, "$g_player_affiliated_troop", "$g_notification_menu_var1"),
+      (eq, "$g_notification_menu_var2", "$g_notification_menu_var1"),
+      ##nested diplomacy end+
+      (str_store_string, s63, "@{playername}, ^^I always knew you were a bad egg, since the day you have pledged allegiance to my clan. ^Did you really think you could set my family against me? You've dropped your mask, you snake! You are an infliction, and I will not bear it anymore. ^Hereby, I disown and ban you from my house. I have urged my family to fight you, and I will warn other lords about your infamy. ^Tremble with fear, you have a deadly enemy! ^^{s10}."),
+    (else_try),
+      ##nested diplomacy start+ (2) Fix a bug from the Diplomacy 3.3.2 version of this menu by getting your ex-affiliate
+      #from "$g_notification_menu_var2" instead of "$g_player_affiliated_troop".
+      ##OLD:
+      #(is_between, "$g_player_affiliated_troop", lords_begin, kingdom_ladies_end),
+      #(str_store_troop_name, s10, "$g_player_affiliated_troop"),
+      ##NEW:
+      (ge, "$g_notification_menu_var1", walkers_end),
+      (troop_is_hero, "$g_notification_menu_var1"),
 
-            ##### (3) Make the next line use correct pronouns, and correct term for king/queen.  TODO: Change some of the funny wording.
-            ##OLD:
-            #(str_store_string, s63, "@{playername},^^ I've received a letter from {s9}, telling me about your disgracefull jiggery-pokery. In the present circumstances, {s9} could not provide evidence. But unlike you, {he/she} is a distinguished member of my family; and since all these years, I never had any reason to distrust {him/her}. I take {his/her} charges for granted. ^Hopefully, you failed to breakup my family unit. Hereby I reject your pledge : you are no longer related to my house. Each membership will retaliate against you in all conscience... ^I would be ashamed to confess how you maliciously fooled me, so I will not challenge you, to not be accountable for your death to my King. However I'm not used to report him every rat I crush while in wilderness, someday I may find you there ! ^^{s10}"),
-            ##NEW:
-            (call_script, "script_dplmc_store_troop_is_female", "$g_notification_menu_var1"),
-            (assign, reg1, reg0),#Move to reg1, because reg0 will be overwritten below
-            (store_faction_of_troop, ":faction_var", "$g_notification_menu_var1"),
-            (try_begin),
-                (gt, ":faction_var", 0),
-                (faction_get_slot, ":faction_var", ":faction_var", slot_faction_leader),
-                (gt, ":faction_var", 0),
-                (call_script, "script_dplmc_store_troop_is_female", ":faction_var"),
-                (eq, reg0, 1),
-                (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_notification_menu_var1", DPLMC_CULTURAL_TERM_KING_FEMALE, s11),
-                (assign, reg1, 1),#make sure the above didn't do anything funny with the register
-            (else_try),
-                (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_notification_menu_var1", DPLMC_CULTURAL_TERM_KING, s11),
-                (assign, reg1, 0),#if there was no faction leader, reg0 might not have been initialized in the first place
-            (try_end),
-            #Aside from making the next line use the correct gender for the pronoun,
-            #I made the wording a tiny bit less strange (although I left in "jiggery-pokery").
-            (str_store_string, s63, "@{playername},^^ I've received a letter from {s9}, telling me about your disgraceful jiggery-pokery. In the present circumstances, {s9} could not provide evidence. But unlike you, {reg1?she:he} is a distinguished member of my family; and since all these years, I never had any reason to distrust {reg1?her:him}. I take {reg1?her:him} charges for granted. ^Hopefully, you failed to breakup my family unit. Hereby I reject your pledge : you are no longer related to my house. Each membership will retaliate against you in all conscience... ^I would be ashamed to confess how you maliciously fooled me, so I will not challenge you, to not be accountable for your death to my {s11}. However I'm not used to telling {reg0?her:him} about every rat I crush in the wilderness, and someday I may find you there ! ^^{s10}"),
-            ##nested diplomacy end+
-        (else_try),
-            (str_store_string, s63, "@This is a diplomacy bug! Complain at the diplomacy forum."),
-        (try_end),
-    ],
-    [
-
-    ("dplmc_continue",[],"Continue...",
-    [
-        (change_screen_return),
+      ##### (3) Make the next line use correct pronouns, and correct term for king/queen.  TODO: Change some of the funny wording.
+      ##OLD:
+      #(str_store_string, s63, "@{playername},^^ I've received a letter from {s9}, telling me about your disgracefull jiggery-pokery. In the present circumstances, {s9} could not provide evidence. But unlike you, {he/she} is a distinguished member of my family; and since all these years, I never had any reason to distrust {him/her}. I take {his/her} charges for granted. ^Hopefully, you failed to breakup my family unit. Hereby I reject your pledge : you are no longer related to my house. Each membership will retaliate against you in all conscience... ^I would be ashamed to confess how you maliciously fooled me, so I will not challenge you, to not be accountable for your death to my King. However I'm not used to report him every rat I crush while in wilderness, someday I may find you there ! ^^{s10}"),
+      ##NEW:
+      (call_script, "script_dplmc_store_troop_is_female", "$g_notification_menu_var1"),
+      (assign, reg1, reg0),#Move to reg1, because reg0 will be overwritten below
+      (store_faction_of_troop, ":faction_var", "$g_notification_menu_var1"),
+      (try_begin),
+          (gt, ":faction_var", 0),
+          (faction_get_slot, ":faction_var", ":faction_var", slot_faction_leader),
+          (gt, ":faction_var", 0),
+          (call_script, "script_dplmc_store_troop_is_female", ":faction_var"),
+          (eq, reg0, 1),
+          (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_notification_menu_var1", DPLMC_CULTURAL_TERM_KING_FEMALE, s11),
+          (assign, reg1, 1),#make sure the above didn't do anything funny with the register
+      (else_try),
+          (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_notification_menu_var1", DPLMC_CULTURAL_TERM_KING, s11),
+          (assign, reg1, 0),#if there was no faction leader, reg0 might not have been initialized in the first place
+      (try_end),
+      #Aside from making the next line use the correct gender for the pronoun,
+      #I made the wording a tiny bit less strange (although I left in "jiggery-pokery").
+      (str_store_string, s63, "@{playername},^^ I've received a letter from {s9}, telling me about your disgraceful jiggery-pokery. In the present circumstances, {s9} could not provide evidence. But unlike you, {reg1?she:he} is a distinguished member of my family; and since all these years, I never had any reason to distrust {reg1?her:him}. I take {reg1?her:him} charges for granted. ^Hopefully, you failed to breakup my family unit. Hereby I reject your pledge : you are no longer related to my house. Each membership will retaliate against you in all conscience... ^I would be ashamed to confess how you maliciously fooled me, so I will not challenge you, to not be accountable for your death to my {s11}. However I'm not used to telling {reg0?her:him} about every rat I crush in the wilderness, and someday I may find you there ! ^^{s10}"),
+      ##nested diplomacy end+
+    (else_try),
+      (str_store_string, s63, "@This is a diplomacy bug! Complain at the diplomacy forum."),
+    (try_end),
+  ],[
+    ("dplmc_continue",[],"Continue...",[
+      (change_screen_return),
     ]),
-
-    ]
-),
-
-  # (
-    # "dplmc_preferences",0,
-	# ##diplomacy start+ alter for PBOD
-    # "Diplomacy "+DPLMC_DIPLOMACY_VERSION_STRING+" Preferences{s0}",##"Diplomacy preferences",
-	# ##diplomacy end+
-    # "none",
-    # [
-	# ##diplomacy start+
-	# (troop_get_slot, reg0, "trp_dplmc_chamberlain", dplmc_slot_troop_affiliated),
-	# (str_clear, s0),
-	# (try_begin),
-		# #Print a warning message for bad version numbers
-		# (neq, reg0, 0),
-		# (store_mod, ":verify", reg0, 128),
-		# (this_or_next|lt, reg0, 0),
-			# (neq, ":verify", DPLMC_VERSION_LOW_7_BITS),
-		# (str_store_string, s0, "@{!}{s0}^^ WARNING: Unexpected version value in slot dplmc_slot_troop_affiliated in trp_dplmc_chamberlain: {reg0}"),
-	# (else_try),
-		# #In cheat mode, print the diplomacy+ version
-		# (ge, "$cheat_mode", 1),
-		# (val_div, reg0, 128),
-		# (str_store_string, s0, "@{!}{s0}^^ DEBUG: Internal update code for current saved game is {reg0}.  Update code for the current release is "+str(DPLMC_CURRENT_VERSION_CODE)+"."),
-	# (try_end),
-	# ##diplomacy end+
-
-    # ##SB : enable presentation to be launched again
-    # (try_begin),
-      # (eq, "$g_presentation_next_presentation", "prsnt_redefine_keys"),
-      # (start_presentation, "$g_presentation_next_presentation"),
-    # (try_end),
-    # ],
-    # [
-    # #SB : adjust menu options
-      # ("dplmc_cheat_mode",[(assign, reg0, "$cheat_mode")],"{reg0?Dis:En}able cheat mode.",
-       # [
-           # (val_clamp, "$cheat_mode", 0, 2), #in case of other values
-           # (store_sub, "$cheat_mode", 1, "$cheat_mode"),
-           # # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-
-      # ("dplmc_horse_speed",[(assign, reg0, "$g_dplmc_horse_speed"),],"{reg0?En:Dis}able Diplomacy horse speed.",
-       # [
-           # (val_clamp, "$g_dplmc_horse_speed", 0, 2), #in case of other values
-           # (store_sub, "$g_dplmc_horse_speed", 1, "$g_dplmc_horse_speed"),
-           # # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-      # # ("dplmc_enable_horse_speed",[(eq, "$g_dplmc_horse_speed", 1),],"Enable Diplomacy horse speed.",
-       # # [
-           # # (assign, "$g_dplmc_horse_speed", 0),
-           # # (jump_to_menu, "mnu_dplmc_preferences"),
-        # # ]),
-        # #value = 0 is on by default
-      # ("dplmc_battle_continuation",[(assign, reg0, "$g_dplmc_battle_continuation"),],"{reg0?En:Dis}able Diplomacy battle continuation.",
-       # [
-           # (val_clamp, "$g_dplmc_battle_continuation", 0, 2), #in case of other values
-           # (store_sub, "$g_dplmc_battle_continuation", 1, "$g_dplmc_battle_continuation"),
-           # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-      # #SB : new option
-      # ("dplmc_player_disguise",[(assign, reg0, "$g_dplmc_player_disguise"),],"{reg0?Dis:En}able disguise system.",
-       # [
-           # (val_clamp, "$g_dplmc_player_disguise", 0, 2), #rare bug where disguise has strange values
-           # (store_sub, "$g_dplmc_player_disguise", 1, "$g_dplmc_player_disguise"),
-           # # (assign, reg1, "$g_dplmc_player_disguise"),
-           # # (display_message,"@{reg1}"),
-           # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-
-      # ## sb : charge + deathcam
-      # ("dplmc_charge_when_dead",[ (eq, "$g_dplmc_battle_continuation", 0),(assign, reg0, "$g_dplmc_charge_when_dead"),],
-        # "{reg0?Dis:En}able troops charging upon battle continuation.",
-       # [
-           # (val_clamp, "$g_dplmc_charge_when_dead", 0, 2), #in case of other values
-           # (store_sub, "$g_dplmc_charge_when_dead", 1, "$g_dplmc_charge_when_dead"),
-           # # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-
-      # ("dplmc_deathcam_keys",[ (eq, "$g_dplmc_battle_continuation", 0),],"Redefine camera keys.",
-       # [
-           # (assign, "$g_presentation_next_presentation", "prsnt_redefine_keys"),
-           # (start_presentation, "prsnt_redefine_keys"),
-        # ]),
-
-      # ##diplomacy start+
-      # #toggle terrain advantage
-      # ("dplmc_disable_terrain_advantage",[(eq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),],"Disable terrain advantage in Autocalc battles (currently this feature is Enabled).",
-       # [
-           # (assign, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_DISABLE),
-           # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-      # ("dplmc_enable_terrain_advantage",[
-		# (eq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_DISABLE),],"Enable terrain advantage in Autocalc battles (currently this feature is Disabled).",
-       # [
-           # (assign, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
-           # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-      # ("dplmc_reset_terrain_advantage",[
-		# (neq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_DISABLE),
-		# (neq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
-		# (assign, reg0, "$g_dplmc_terrain_advantage")
-		# ],"You used a saved game from another mod: g_dplmc_terrain_advantage = {reg0} (click to reset)",
-       # [
-           # (assign, "$g_dplmc_terrain_advantage", 0),
-           # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-	# #toggle lord recycling
-	  # ("dplmc_toggle_lord_recycling_a",[
-		# (eq, "$g_dplmc_lord_recycling", DPLMC_LORD_RECYCLING_DISABLE),
-		# ],"Enable lords returning from exile and spawning without homes (currently disabled)",
-       # [
-           # (assign, "$g_dplmc_lord_recycling", DPLMC_LORD_RECYCLING_ENABLE),
-        # ]),
-	  # ("dplmc_toggle_lord_recycling_b",[
-		# (this_or_next|eq, "$g_dplmc_lord_recycling", DPLMC_LORD_RECYCLING_FREQUENT),#currently this setting is not distinct
-		# (eq, "$g_dplmc_lord_recycling", DPLMC_LORD_RECYCLING_ENABLE),
-		# ],"Disable lords returning from exile and spawning without homes (currently enabled)",
-       # [
-	 	   # (assign, "$g_dplmc_lord_recycling", DPLMC_LORD_RECYCLING_DISABLE),
-        # ]),
-      # ("dplmc_toggle_lord_recycling_reset",
-		# [(neq, "$g_dplmc_lord_recycling", DPLMC_LORD_RECYCLING_DISABLE), #SB : fix const
- 		 # (neq, "$g_dplmc_lord_recycling", DPLMC_LORD_RECYCLING_ENABLE),
-		 # (neq, "$g_dplmc_lord_recycling", DPLMC_LORD_RECYCLING_FREQUENT),
-		 # (assign, reg0, "$g_dplmc_lord_recycling"),],
-			# "You used a saved game from another mod: g_dplmc_lord_recycling = {reg0} (click to reset)",
-       # [
-           # (assign, "$g_dplmc_lord_recycling", 0),
-           # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-	# #toggle AI changes
-	  # ("dplmc_toggle_ai_changes_a",[
-		# (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_DISABLE),
-		# ],"Enable AI changes (currently disabled)",
-       # [
-           # (assign, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
-        # ]),
-	  # ("dplmc_toggle_ai_changes_b",[
-		# (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
-		# ],"Increase AI changes (currently low)",
-       # [
-	 	   # (assign, "$g_dplmc_ai_changes",DPLMC_AI_CHANGES_MEDIUM),
-        # ]),
-
-	  # ("dplmc_toggle_ai_changes_c",[
-		# (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_MEDIUM),
-		# ],"Increase AI changes (currently medium)",
-       # [
-	 	   # (assign, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_HIGH),
-        # ]),
-	  # ("dplmc_toggle_ai_changes_d",[
-		# (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_HIGH),
-		# ],"Disable AI changes (currently high/experimental)",
-       # [
-	 	   # (assign, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_DISABLE),
-        # ]),
-      # ("dplmc_reset_ai_changes",
-		# [(neq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_DISABLE),
- 		 # (neq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
-		 # (neq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_MEDIUM),
-		 # (neq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_HIGH),
-		 # (assign, reg0, "$g_dplmc_ai_changes"),],
-			# "You used a saved game from another mod: g_dplmc_ai_changes = {reg0} (click to reset)",
-       # [
-           # (assign, "$g_dplmc_ai_changes", 0),
-           # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-	# #toggle economics changes
-	  # ("dplmc_toggle_gold_changes_a",[
-		# (eq, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_DISABLE),
-		# ],"Set economic & behavioral changes to low (current mode: disabled)",
-       # [
-           # (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
-        # ]),
-	  # ("dplmc_toggle_gold_changes_b",[
-		# (eq, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
-		# ],"Set economic & behavioral changes to medium (current mode: low)",
-       # [
-	 	   # (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
-        # ]),
-	  # ("dplmc_toggle_gold_changes_c",[
-		# (eq, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
-		# ],"Set economic & behavioral changes to high/experimental (current mode: medium)",
-       # [
-	 	   # (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_HIGH),
-        # ]),
-	  # ("dplmc_toggle_gold_changes_d",[
-		# (eq, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_HIGH),
-		# ],"Disable economic & behavioral changes (current mode: high/experimental)",
-       # [
-	 	   # (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_DISABLE),
-        # ]),
-      # ("dplmc_reset_gold_changes",
-		# [(neq, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_DISABLE),
- 		 # (neq, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
-		 # (neq, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_MEDIUM),
-		 # (neq, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_HIGH),
-		 # (assign, reg0, "$g_dplmc_gold_changes"),],
-			# "You used a saved game from another mod: g_dplmc_gold_changes = {reg0} (click to reset)",
-       # [
-           # (assign, "$g_dplmc_gold_changes", 0),
-           # (jump_to_menu, "mnu_dplmc_preferences"),
-        # ]),
-	# #Toggle the default anti-woman prejudice.  This uses the already-existing
-	# #global variable "$g_disable_condescending_comments", and gives it additional
-	# #meaning.
-		# ("dplmc_switch_woman_prejudice_1", [
-			# (this_or_next|eq, "$g_disable_condescending_comments", 0),
-			# (eq, "$g_disable_condescending_comments", 1)],
-			# "Change prejudice level (current level is default)",
-			# [(val_add, "$g_disable_condescending_comments", 2),
-			# (jump_to_menu, "mnu_dplmc_preferences"),]),
-		# ("dplmc_switch_woman_prejudice_2", [
-			# (this_or_next|eq, "$g_disable_condescending_comments", 2),
-			# (eq, "$g_disable_condescending_comments", 3)],
-			# "Change prejudice level (current level is off)",
-			# [(val_sub, "$g_disable_condescending_comments", 4),
-			# (jump_to_menu, "mnu_dplmc_preferences"),]),
-		# ("dplmc_switch_woman_prejudice_3", [
-			# (this_or_next|eq, "$g_disable_condescending_comments", -1),
-			# (eq, "$g_disable_condescending_comments", -2)],
-			# "Change prejudice level (current level is high)",
-			# [(val_add, "$g_disable_condescending_comments", 2),
-			# (jump_to_menu, "mnu_dplmc_preferences"),]),
-# ##diplomacy end+
-      # ("dplmc_back",[],"Back...",
-       # [
-           # (jump_to_menu, "mnu_camp"),
-        # ]),
-     # ]
-  # ),
+]),
 
   ##diplomacy end
 ##diplomacy start+
