@@ -4325,10 +4325,10 @@ weight(get_axe_weight(55))|abundance(50)|difficulty(10)|spd_rtng(get_1haxe_speed
 
 ["numidian_spear_2",         "Numidian War Spear", [("numidian_spear_2",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
 get_polarm_price(167,get_w_weight(167),get_polew_speed(167),17,30),
-weight(get_w_weight(167))|difficulty(7)|spd_rtng(get_polew_speed(167)) | weapon_length(167)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm ],
+weight(get_w_weight(167))|difficulty(7)|spd_rtng(get_polew_speed(167)) | weapon_length(167)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_5] ],
 ["numidian_spear_1",         "Numidian Spear", [("numidian_spear_1",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
 get_polarm_price(142,get_w_weight(142),get_polew_speed(142),17,28),
-weight(get_w_weight(142))|difficulty(7)|spd_rtng(get_polew_speed(142)) | weapon_length(142)|swing_damage(28 , pierce) | thrust_damage(28 ,  pierce),imodbits_polearm ],
+weight(get_w_weight(142))|difficulty(7)|spd_rtng(get_polew_speed(142)) | weapon_length(142)|swing_damage(28 , pierce) | thrust_damage(28 ,  pierce),imodbits_polearm, [], [fac_culture_5] ],
 #End nubian
 
 #Caucasian

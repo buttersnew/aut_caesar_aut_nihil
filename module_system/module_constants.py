@@ -3191,45 +3191,11 @@ DPLMC_TERRAIN_ADVANTAGE_ENABLE      =  0   #So I don't have to keep track of whe
 # DPLMC_LORD_RECYCLING_FREQUENT          =  1
 
 #For $g_dplmc_ai_changes
-DPLMC_AI_CHANGES_DISABLE        =  -1
-DPLMC_AI_CHANGES_LOW            =   0
-DPLMC_AI_CHANGES_MEDIUM         =   1
-DPLMC_AI_CHANGES_HIGH           =   2
-# Low:
-#  - Center points for fief allocation are calculated (villages 1 / castles 2 / towns 3)
-#    instead of (villages 1 / castles 1 / towns 2).
-#  - For qst_rescue_prisoner and qst_offer_gift, the relatives that can be a target of the
-#    quest have been extended to include uncles and aunts and in-laws.
-#  - Alterations to script_calculate_troop_score_for_center (these changes currently are
-#    only relevant during claimant quests).
-#  - When picking a new faction, lords are more likely to return to their original faction
-#    (except when that's the faction they're being exiled from), if the ordinary conditions
-#    for rejoining are met.  A lord's decision may also be influenced by his relations with
-#    other lords in the various factions, instead of just his relations with the faction
-#    leaders.
-# Medium:
-#  - Some changes for lord relation gains/losses when fiefs are allocated.
-#  - Kings overrule lords slightly less frequently on faction issues.
-#  - In deciding who to support for a fief, minor parameter changes for certain personalities.
-#    Some lords will still give priority to fiefless lords or to the lord who conquered the
-#    center if they have a slightly negative relation (normally the cutoff is 0 for all
-#    personalities).
-#  - When a lord can't find any good candidates for a fief under the normal rules,
-#    instead of automatically supporting himself he uses a weighted scoring scheme.
-#  - In various places where "average renown * 3/2" appears, an alternate calculation is
-#    sometimes used.
-#  - Additional upgrades & hiring mercenaries in script_troop_does_business_in_center
-# High:
-#  - The "renown factor" when an NPC lord or the player courts and NPC lady is adjusted by
-#    the prestige of the lady's guardian.
-#  - When a faction has fiefless lords and no free fiefs left, under some circumstances
-#    the king will redistribute a village he owns.
-#For $g_dplmc_gold_changes
-DPLMC_GOLD_CHANGES_DISABLE = -1
-DPLMC_GOLD_CHANGES_LOW     =  0
-DPLMC_GOLD_CHANGES_MEDIUM  =  1
-DPLMC_GOLD_CHANGES_HIGH    =  2
-#
+# DPLMC_AI_CHANGES_DISABLE        =  -1
+# DPLMC_AI_CHANGES_LOW            =   0
+# DPLMC_AI_CHANGES_MEDIUM         =   1
+# DPLMC_AI_CHANGES_HIGH           =   2
+
 #Mercantilism
 # - Your caravans generate more revenue for your towns, but your benefit
 #   from the caravans of other kingdoms is diminished.

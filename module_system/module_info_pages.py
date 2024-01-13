@@ -54,52 +54,52 @@ info_pages = [
 +"^In Native, the chance to be caught depends on the number of men in the party. The new system calculates the chance to be caught based on the player's chosen role instead, but limits what the player can bring in and out of towns in terms of gold and items."
 +" The player's inventory will be merged after leaving the town."),
 
-("dplmc_ai_changes", "Diplomacy Option: Campaign AI", "Low:^\
-^- Center points for fief allocation are calculated (villages 1 / fortresses 2 / towns 3) instead of (villages 1 / fortresses 1 / towns 2).\
-^- For the rescue prisoner and offer gift quests, the relatives that can be a target of the quest have been extended to include uncles and aunts and in-laws.\
-^- Alterations to claimant quest calculation for center scores.\
-^- When picking a new faction, lords are more likely to return to their original faction (except when that's the faction they're being exiled from), if the ordinary conditions for rejoining are met. A lord's decision may also be influenced by his relations with  other lords in the various factions, instead of just his relations with the faction leaders.\
-^^Medium:^\
-^- Some changes for lord relation gains/losses when fiefs are allocated.\
-^- Kings overrule lords slightly less frequently on faction issues.\
-^- In deciding who to support for a fief, minor parameter changes for certain personalities. Some lords will still give priority to fiefless lords or to the lord who conquered the center if they have a slightly negative relation (normally the cutoff is 0 for all personalities).\
-^- When a lord can't find any good candidates for a fief under the normal rules, instead of automatically supporting himself he uses a weighted scoring scheme.\
-^- In various places where average renown * 3/2 appears, an alternate calculation is sometimes used.\
-^- Lords will perform additional upgrades and hiring of mercenaries in towns depending on personality.\
-^^High:^\
-^- The renown factor when an NPC lord or the player courts and NPC lady is adjusted by the prestige of the lady's guardian.\
-^- When a faction has fiefless lords and no free fiefs left, under some circumstances the king will redistribute a village he owns.\
-^- When villages are looted any volunteers that were in the village will be killed for both player and NPC.^^Current setting:"),
+# ("dplmc_ai_changes", "Diplomacy Option: Campaign AI", "Low:^\
+# ^- Center points for fief allocation are calculated (villages 1 / fortresses 2 / towns 3) instead of (villages 1 / fortresses 1 / towns 2).\
+# ^- For the rescue prisoner and offer gift quests, the relatives that can be a target of the quest have been extended to include uncles and aunts and in-laws.\
+# ^- Alterations to claimant quest calculation for center scores.\
+# ^- When picking a new faction, lords are more likely to return to their original faction (except when that's the faction they're being exiled from), if the ordinary conditions for rejoining are met. A lord's decision may also be influenced by his relations with  other lords in the various factions, instead of just his relations with the faction leaders.\
+# ^^Medium:^\
+# ^- Some changes for lord relation gains/losses when fiefs are allocated.\
+# ^- Kings overrule lords slightly less frequently on faction issues.\
+# ^- In deciding who to support for a fief, minor parameter changes for certain personalities. Some lords will still give priority to fiefless lords or to the lord who conquered the center if they have a slightly negative relation (normally the cutoff is 0 for all personalities).\
+# ^- When a lord can't find any good candidates for a fief under the normal rules, instead of automatically supporting himself he uses a weighted scoring scheme.\
+# ^- In various places where average renown * 3/2 appears, an alternate calculation is sometimes used.\
+# ^- Lords will perform additional upgrades and hiring of mercenaries in towns depending on personality.\
+# ^^High:^\
+# ^- The renown factor when an NPC lord or the player courts and NPC lady is adjusted by the prestige of the lady's guardian.\
+# ^- When a faction has fiefless lords and no free fiefs left, under some circumstances the king will redistribute a village he owns.\
+# ^- When villages are looted any volunteers that were in the village will be killed for both player and NPC.^^Current setting:"),
 
-("dplmc_gold_changes", "Diplomacy Option: Economic AI", "Low:^\
-^- Caravan trade benefits both the source and the destination.\
-^- When the player surrenders, there is a chance his personal equipment will not be looted, based on who accepted the surrender and the difficulty setting.  (This is meant to address a gameplay issue. In the first 700 days or so, there is no possible benefit to surrendering rather than fighting to the last man.)  Also, a bug that made it possible for books etc. to be looted was corrected.\
-^- AI caravans take into consideration distance when choosing their next destination and will be slightly more like to visit their own faction. This strategy is mixed with the Native one, so the trade pattern will differ but not wildly.\
-^- Scale town merchant gold by prosperity (up to a maximum 40% change).\
-^- Food prices increase in towns that have been under siege for at least 48 hours.\
-^- In towns the trade penalty script has been tweaked to make it more efficient to sell goods to merchants specializing in them.\
-^- Food has a chance of not spoiling depending on inventory management.\
-^- Villages being raided now delays construction projects.\
-^- Trading parties will drop off prisoners at walled centers.\
-^^Medium:^\
-^- Food consumption increases in towns as prosperity increases. Consumption also increases with garrison sizes.\
-^- Lords' looting skill affects how much gold they take from the player when they defeat him.\
-^- Lords' leadership skill modifies their troop wage costs the same way it does for the player.\
-^- The player can lose gold when his fiefs are looted, like lords.\
-^- The same way that lord party sizes increase as the player progresses, mercenary party sizes also increase to maintain their relevance. (The rate is the same as for lords: a 1.25% increase per level.)\
-^- If the player has a kingdom of his own, his spouse will receive part of the bonus that ordinarily would be due a liege. The extent of this bonus depends on the number of fiefs the players holds. This bonus is non-cumulative with the marshall bonus.\
-^- Attrition is inflicted on NPC-owned centers if they can't pay wages, but only above a certain threshold.\
-^- Strangers cannot acquire enterprises (enforced at 1 instead of at 0, so you have to do something).\
-^- Village prosperity has an impact on bandit infestation (chance of death spiral).\
-^- Village elder now receives the gold when you buy cattle.\
-^- Village farmer parties carry off extraneous items in the town elder's inventory to sell at market towns.\
-^^High:^\
-^- The total amount of weekly bonus gold awarded to kings in Europe remains constant: as kings go into exile, their bonuses are divided among the remaining kings.\
-^- If any lords run a personal gold surplus after party wages, the extra is divided among the lord and his garrisons budgets (each fortress and town has its own pool of funds to pay for soldiers) on the basis of whether the lord is low on gold or any of his fortresses are. (If none are low on gold, the lord takes everything, like before).\
-^- The honor loss from an offense depends in part on the player's honor at the time. The purer the reputation, the greater the effect of a single disgrace.\
-^- Raiding change: village gold lost is removed from uncollected taxes before the balance (if any) is removed from the lord.\
-^- Cash for prisoners.\
-^- Allows canceling improvements (cash goes back to local economy, but relations suffer).^^Current setting:"),
+# ("dplmc_gold_changes", "Diplomacy Option: Economic AI", "Low:^\
+# ^- Caravan trade benefits both the source and the destination.\
+# ^- When the player surrenders, there is a chance his personal equipment will not be looted, based on who accepted the surrender and the difficulty setting.  (This is meant to address a gameplay issue. In the first 700 days or so, there is no possible benefit to surrendering rather than fighting to the last man.)  Also, a bug that made it possible for books etc. to be looted was corrected.\
+# ^- AI caravans take into consideration distance when choosing their next destination and will be slightly more like to visit their own faction. This strategy is mixed with the Native one, so the trade pattern will differ but not wildly.\
+# ^- Scale town merchant gold by prosperity (up to a maximum 40% change).\
+# ^- Food prices increase in towns that have been under siege for at least 48 hours.\
+# ^- In towns the trade penalty script has been tweaked to make it more efficient to sell goods to merchants specializing in them.\
+# ^- Food has a chance of not spoiling depending on inventory management.\
+# ^- Villages being raided now delays construction projects.\
+# ^- Trading parties will drop off prisoners at walled centers.\
+# ^^Medium:^\
+# ^- Food consumption increases in towns as prosperity increases. Consumption also increases with garrison sizes.\
+# ^- Lords' looting skill affects how much gold they take from the player when they defeat him.\
+# ^- Lords' leadership skill modifies their troop wage costs the same way it does for the player.\
+# ^- The player can lose gold when his fiefs are looted, like lords.\
+# ^- The same way that lord party sizes increase as the player progresses, mercenary party sizes also increase to maintain their relevance. (The rate is the same as for lords: a 1.25% increase per level.)\
+# ^- If the player has a kingdom of his own, his spouse will receive part of the bonus that ordinarily would be due a liege. The extent of this bonus depends on the number of fiefs the players holds. This bonus is non-cumulative with the marshall bonus.\
+# ^- Attrition is inflicted on NPC-owned centers if they can't pay wages, but only above a certain threshold.\
+# ^- Strangers cannot acquire enterprises (enforced at 1 instead of at 0, so you have to do something).\
+# ^- Village prosperity has an impact on bandit infestation (chance of death spiral).\
+# ^- Village elder now receives the gold when you buy cattle.\
+# ^- Village farmer parties carry off extraneous items in the town elder's inventory to sell at market towns.\
+# ^^High:^\
+# ^- The total amount of weekly bonus gold awarded to kings in Europe remains constant: as kings go into exile, their bonuses are divided among the remaining kings.\
+# ^- If any lords run a personal gold surplus after party wages, the extra is divided among the lord and his garrisons budgets (each fortress and town has its own pool of funds to pay for soldiers) on the basis of whether the lord is low on gold or any of his fortresses are. (If none are low on gold, the lord takes everything, like before).\
+# ^- The honor loss from an offense depends in part on the player's honor at the time. The purer the reputation, the greater the effect of a single disgrace.\
+# ^- Raiding change: village gold lost is removed from uncollected taxes before the balance (if any) is removed from the lord.\
+# ^- Cash for prisoners.\
+# ^- Allows canceling improvements (cash goes back to local economy, but relations suffer).^^Current setting:"),
 
 ("hoty_keys", "HOT KEYS", "Here is a list of all keys and where they are used:^\
 ^^SHIFT - KEY: ^^*) Player can right away start a conversation with any town merchant by pressing 'shift' while clicking on 'trade with the XY'. ^*) By pressing 'shift' while clicking on 'visit the Domus Augusti' player will spawn next to advisors. ^*) After the player has visited a Roman temple for the first time he can spawn right next to the priest by pressing shift while clicking on 'visit the temple of XY'. ^*) The administrator of the latifundium can be quickly accessed by pressing 'shift' while clicking on 'visit the villa'.\

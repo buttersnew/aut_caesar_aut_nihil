@@ -6128,7 +6128,7 @@ common_siege_calculate_reinforcement_waves = (
     (val_mul, "$siege_threshold_defender", "$reduce_factor"),
     (assign, reg1, "$siege_threshold_attacker"),
     (assign, reg2, "$siege_threshold_defender"),
-    (display_message, "@Reinforcement waves for attacker: {reg1} and for defender: {reg2}."),
+    (display_message, "@Reinforcements for attacker: {reg1} and for defender: {reg2}."),
     ])
 
 common_custom_battle_question_answered = (
