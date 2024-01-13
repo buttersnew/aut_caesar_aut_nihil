@@ -3151,6 +3151,20 @@ game_menus = [
       (jump_to_menu, "mnu_cheat_menu2"),
     ]),
 
+    ("options",[
+    ],"Show level boundaries.",[
+      (assign, ":previous_level_boundary", 0),
+      (try_for_range, ":level", 0, 63),
+          (assign, reg20, ":level"),
+
+          (get_level_boundary, reg21, reg20),
+
+          (store_sub, reg22, reg21, ":previous_level_boundary"),
+          (display_message, "@level {reg20} requires {reg21} exp. Diff to previous: {reg22}"),
+          (assign, ":previous_level_boundary", reg21),
+      (try_end),
+    ]),
+
     # ("back_to_camp_menu",[],"Check for invalid parties",[
     #   (assign, reg22, 0),
     #   (assign, reg23, 0),
