@@ -16004,7 +16004,7 @@ game_menus = [
 ]),
 
 ("town",mnf_enable_hot_keys|mnf_scale_picture,
-  "{s10} {s14}^{s11}{s12}{s13}^{s16}^{s44}^{s43}",
+  "{s10} {s14}^{s11}{s12}{s13}^{s16}^^{s44}^{s43}^",
   "none",[
     ##set variables
     (store_encountered_party, "$current_town"),#set variable properly

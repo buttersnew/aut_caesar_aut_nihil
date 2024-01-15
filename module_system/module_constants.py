@@ -828,7 +828,7 @@ disease_greatpoxpox_timer     = 32
 disease_greatpoxpox           = 35
 
 slot_center_event                 = 325
-
+# event constants
 #effects of catastrophic events will stay for two weeks, decrease tax revenue
 event_earthquake_timer    =   97
 event_earthquake          =   100
@@ -846,20 +846,21 @@ event_conquered_timer     =   138
 event_conquered           =   140
 
 event_fire_of_rome_timer  =   165#
-event_fire_of_rome        =   340#175 days, more than 2 years
+event_fire_of_rome        =   191#182 days, more than 2 years, 26 weeks in-game
 
-event_good_harvest_timer  =   346#
-event_good_harvest        =   349#
+event_good_harvest_timer  =   206#
+event_good_harvest        =   209#
 
-event_poor_harvest_timer  =   351#
-event_poor_harvest        =   354#
+event_poor_harvest_timer  =   211#
+event_poor_harvest        =   214#
 
-event_mild_winter_timer  =   356#
-event_mild_winter        =   359#
+event_mild_winter_timer  =   216#
+event_mild_winter        =   219#
 
-event_harsh_winter_timer  =   361#
-event_harsh_winter        =   364#
+event_harsh_winter_timer  =   211#
+event_harsh_winter        =   214#
 
+# slots continue
 slot_center_current_improvement_builder = 326
 slot_center_current_improvement_2_builder = 327
 
