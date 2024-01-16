@@ -13520,7 +13520,7 @@ game_menus = [
           (try_begin),
             (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
             (try_for_range, ":entry", 0, 2),
-              (call_script, "script_init_second_outfit", "mt_village_center", ":entry"),
+              (call_script, "script_init_second_outfit", "mt_village_center", ":entry", 1),
             (try_end),
             (mission_tpl_entry_set_override_flags, "mt_village_center", 0, af_override_outfit_1),
             (mission_tpl_entry_set_override_flags, "mt_village_center", 1, af_override_outfit_1 | af_override_horse),
@@ -16174,8 +16174,8 @@ game_menus = [
         (troop_set_slot, "trp_global_variables", g_controlled, 1),
     (try_end),
 
-### all special events end, now come more generic repetative evens:
-##emperor events
+    ### all special events end, now come more generic repetative evens:
+    ##emperor events
     (party_get_slot, ":lord", "$current_town", slot_town_lord),
     (try_begin),###events for tournaments = games
         (eq, "$g_encountered_party_faction", "$players_kingdom"),
@@ -16665,18 +16665,18 @@ game_menus = [
         (position_set_z,pos0,80),			#in/out movement  (0 = no image, higher #'s make it larger)
         (set_game_menu_tableau_mesh,"tableau_troop_note_mesh",":center_lord",pos0),
     (try_end),
-#		(str_clear, s5), #alert player that there are new rumors
-#		(try_begin),
-#			(eq, 1, 0),
-#			(neg|is_currently_night),
-#			(str_store_string, s5, "@^The buzz of excited voices as you come near the gate suggests to you that news of some import is circulating among the townsfolk."),
-#			(lt, "$last_town_log_entry_checked", "$num_log_entries"),
-#			(assign, "$g_town_rumor_log_entry", 0),
-#			(try_for_range, ":log_entry", "$last_town_log_entry_checked", "$num_log_entries"),
-#				(eq, ":log_entry", 4123), #placeholder to avoid having unused variable error message
-#			(try_end),
-#			(assign, "$last_town_log_entry_checked", "$num_log_entries"),
-#		(try_end),
+    #		(str_clear, s5), #alert player that there are new rumors
+    #		(try_begin),
+    #			(eq, 1, 0),
+    #			(neg|is_currently_night),
+    #			(str_store_string, s5, "@^The buzz of excited voices as you come near the gate suggests to you that news of some import is circulating among the townsfolk."),
+    #			(lt, "$last_town_log_entry_checked", "$num_log_entries"),
+    #			(assign, "$g_town_rumor_log_entry", 0),
+    #			(try_for_range, ":log_entry", "$last_town_log_entry_checked", "$num_log_entries"),
+    #				(eq, ":log_entry", 4123), #placeholder to avoid having unused variable error message
+    #			(try_end),
+    #			(assign, "$last_town_log_entry_checked", "$num_log_entries"),
+    #		(try_end),
     (try_begin),
         (neg|check_quest_active, "qst_usurp_province"),
         (troop_slot_eq, "trp_player", slot_troop_govern, "trp_player", 0),
@@ -17202,8 +17202,8 @@ game_menus = [
               (lt, "$sneaked_into_town", 1), #not sneaked
               (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
               (try_for_range, ":entry", 0, 9),
-                  (call_script, "script_init_second_outfit", "mt_town_center", ":entry"),
-                  (mission_tpl_entry_set_override_flags, "mt_town_center", ":entry", af_override_outfit_1),
+                  (call_script, "script_init_second_outfit", "mt_town_center", ":entry", 1),
+                  (mission_tpl_entry_set_override_flags, "mt_town_center", ":entry", af_override_outfit_1 | af_override_horse),
               (try_end),
           (try_end),
 
@@ -17246,7 +17246,7 @@ game_menus = [
           (else_try),
             #VC-2404
               (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-              (call_script, "script_init_second_outfit", "mt_town_default", 0),
+              (call_script, "script_init_second_outfit", "mt_town_default", 0, 0),
               (mission_tpl_entry_set_override_flags, "mt_town_default", 0, af_override_outfit_1 | af_override_horse),
           (try_end),
           (party_get_slot, ":cur_scene", "$current_town", slot_town_tavern),
@@ -17643,7 +17643,7 @@ game_menus = [
           (else_try),
               #VC-2404
               (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-              (call_script, "script_init_second_outfit", "mt_town_default", 0),
+              (call_script, "script_init_second_outfit", "mt_town_default", 0, 0),
               (mission_tpl_entry_set_override_flags, "mt_town_default", 0, af_override_outfit_1 | af_override_horse),
           (try_end),
           (party_get_slot, ":cur_scene", "$current_town", slot_town_store),
@@ -17699,7 +17699,7 @@ game_menus = [
         #VC-2404
         (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_arena_melee_fight", 50),
+          (call_script, "script_init_second_outfit", "mt_arena_melee_fight", 50, 0),
           (mission_tpl_entry_set_override_flags, "mt_arena_melee_fight", 50, af_override_outfit_1 | af_override_horse),
         (try_end),
 
@@ -17804,7 +17804,7 @@ game_menus = [
               (lt, "$sneaked_into_town", 1), #not sneaked
               (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
               (try_for_range, ":entry", 0, 8),
-                  (call_script, "script_init_second_outfit", "mt_castle_visit", ":entry"),
+                  (call_script, "script_init_second_outfit", "mt_castle_visit", ":entry", 0),
                   (mission_tpl_entry_set_override_flags, "mt_castle_visit", ":entry", af_override_outfit_1 | af_override_horse),
               (try_end),
           (try_end),
@@ -18295,14 +18295,14 @@ game_menus = [
         (key_is_down, key_right_shift),
         (try_begin),#second outift
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_palace", 0),
+          (call_script, "script_init_second_outfit", "mt_palace", 0, 0),
           (mission_tpl_entry_set_override_flags, "mt_palace", 0, af_override_outfit_1|af_override_horse),
         (try_end),
         (set_visitor,0,"trp_player"),
       (else_try),
         (try_begin),#second outift
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_palace", 1),
+          (call_script, "script_init_second_outfit", "mt_palace", 1, 0),
           (mission_tpl_entry_set_override_flags, "mt_palace", 1, af_override_outfit_1|af_override_horse),
         (try_end),
         (set_visitor,1,"trp_player"),
@@ -18558,9 +18558,9 @@ game_menus = [
       (try_begin),
         (lt, "$sneaked_into_town", 1), #not sneaked
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_town_center", 13),
+        (call_script, "script_init_second_outfit", "mt_town_center", 13, 1),
         (mission_tpl_entry_set_override_flags, "mt_town_center", 13, af_override_outfit_1 | af_override_horse),
-        (mission_tpl_entry_set_override_flags, "mt_town_center", 1, af_override_outfit_1),
+        (mission_tpl_entry_set_override_flags, "mt_town_center", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
       (jump_to_scene, ":town_scene"),
       (change_screen_mission),
@@ -18668,9 +18668,8 @@ game_menus = [
       (try_begin),
           (lt, "$sneaked_into_town", 1), #not sneaked
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_town_center", 1),
+          (call_script, "script_init_second_outfit", "mt_town_center", 1, 1),
           (mission_tpl_entry_set_override_flags, "mt_town_center", 1, af_override_outfit_1 | af_override_horse),
-          (mission_tpl_entry_set_override_flags, "mt_town_center", 1, af_override_outfit_1),
       (try_end),
       (jump_to_scene, "scn_town_romewalls"),
       (change_screen_mission),
@@ -18688,7 +18687,7 @@ game_menus = [
           (set_jump_mission, "mt_visit_bedroom"),
           (try_begin),#second outift
               (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-              (call_script, "script_init_second_outfit", "mt_visit_bedroom", 0),
+              (call_script, "script_init_second_outfit", "mt_visit_bedroom", 0, 0),
               (mission_tpl_entry_set_override_flags, "mt_visit_bedroom", 0, af_override_outfit_1|af_override_horse),
           (try_end),
           (set_visitor, 0, "trp_player"),
@@ -18717,7 +18716,7 @@ game_menus = [
 
           (try_begin),#second outift
               (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-              (call_script, "script_init_second_outfit", "mt_parthian_palace_garden", 0),
+              (call_script, "script_init_second_outfit", "mt_parthian_palace_garden", 0, 0),
               (mission_tpl_entry_set_override_flags, "mt_parthian_palace_garden", 0, af_override_outfit_1|af_override_horse),
           (try_end),
           (set_visitor, 0, "trp_player"),
@@ -18745,7 +18744,7 @@ game_menus = [
           (set_jump_mission, "mt_visit_bedroom_augusta"),
           (try_begin),#second outift
               (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-              (call_script, "script_init_second_outfit", "mt_visit_bedroom_augusta", 0),
+              (call_script, "script_init_second_outfit", "mt_visit_bedroom_augusta", 0, 0),
               (mission_tpl_entry_set_override_flags, "mt_visit_bedroom_augusta", 0, af_override_outfit_1|af_override_horse),
           (try_end),
           (set_visitor, 0, "trp_player"),
@@ -18832,14 +18831,14 @@ game_menus = [
           (scene_slot_eq, "scn_akademia", slot_scene_visited, 0),
           (try_begin),#second outift
             (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-            (call_script, "script_init_second_outfit", "mt_library", 1),
+            (call_script, "script_init_second_outfit", "mt_library", 1, 0),
             (mission_tpl_entry_set_override_flags, "mt_library", 1, af_override_outfit_1|af_override_horse),
           (try_end),
           (set_visitor, 1, "trp_player"),
         (else_try),
           (try_begin),#second outift
             (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-            (call_script, "script_init_second_outfit", "mt_library", 2),
+            (call_script, "script_init_second_outfit", "mt_library", 2, 0),
             (mission_tpl_entry_set_override_flags, "mt_library", 2, af_override_outfit_1|af_override_horse),
           (try_end),
           (set_visitor, 2, "trp_player"),
@@ -18956,7 +18955,7 @@ game_menus = [
       (try_end),
     ]),
 
-    ("visit_golgotha",[
+    ("visit_alexanders_tomb",[
       (eq, "$current_town", "p_town_20"),
     ],"Visit the tomb of Alexander the Great.",[
       (set_jump_mission, "mt_explore_secret_place"),
@@ -18983,6 +18982,14 @@ game_menus = [
       (jump_to_scene, "scn_alexanders_tomb"),
       (change_screen_mission),
     ]),
+
+    ("visit_latrina",[
+      # (eq, 0, 1),
+      (eq, "$current_town", "p_town_6"),
+    ],"Enter the Latrinae.",[
+      (jump_to_scene, "scn_roman_latrina"),
+      (change_screen_mission),
+    ], "Enter the Latrinae."),
 
     ("visit_temples",[
       (eq, "$current_town", "p_town_6"),
@@ -30323,7 +30330,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (set_jump_mission,"mt_lucillus_peaceful"),
       (try_begin),#second outift
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_lucillus_peaceful", 1),
+        (call_script, "script_init_second_outfit", "mt_lucillus_peaceful", 1, 0),
         (mission_tpl_entry_set_override_flags, "mt_lucillus_peaceful", 1, af_override_outfit_1|af_override_horse),
       (try_end),
       (set_visitor, 1, "trp_player"),
@@ -30356,7 +30363,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (set_jump_mission,"mt_lucillus_peaceful"),
       (try_begin),#second outift
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_lucillus_peaceful", 1),
+        (call_script, "script_init_second_outfit", "mt_lucillus_peaceful", 1, 0),
         (mission_tpl_entry_set_override_flags, "mt_lucillus_peaceful", 1, af_override_outfit_1|af_override_horse),
       (try_end),
       (set_visitor, 1, "trp_player"),
@@ -30373,7 +30380,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (set_jump_mission,"mt_lucillus_peaceful"),
       (try_begin),#second outift
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_lucillus_peaceful", 1),
+        (call_script, "script_init_second_outfit", "mt_lucillus_peaceful", 1, 0),
         (mission_tpl_entry_set_override_flags, "mt_lucillus_peaceful", 1, af_override_outfit_1|af_override_horse),
       (try_end),
       (set_visitor, 1, "trp_player"),
@@ -31431,7 +31438,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
         (try_begin),#second outift
             (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-            (call_script, "script_init_second_outfit", "mt_senate_meeting", 0),
+            (call_script, "script_init_second_outfit", "mt_senate_meeting", 0, 0),
             (mission_tpl_entry_set_override_flags, "mt_senate_meeting", 0, af_override_outfit_1|af_override_horse),
         (try_end),
         (set_jump_entry, 0),
@@ -31451,7 +31458,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
         (try_begin),#second outift
             (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-            (call_script, "script_init_second_outfit", "mt_senate_meeting", 0),
+            (call_script, "script_init_second_outfit", "mt_senate_meeting", 0, 0),
             (mission_tpl_entry_set_override_flags, "mt_senate_meeting", 0, af_override_outfit_1|af_override_horse),
         (try_end),
 
@@ -31634,7 +31641,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
         (try_begin),#second outift
             (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-            (call_script, "script_init_second_outfit", "mt_senate_meeting", 0),
+            (call_script, "script_init_second_outfit", "mt_senate_meeting", 0, 0),
             (mission_tpl_entry_set_override_flags, "mt_senate_meeting", 0, af_override_outfit_1|af_override_horse),
         (try_end),
 
@@ -31665,7 +31672,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
     (try_begin),#second outift
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_senate_meeting", 0),
+        (call_script, "script_init_second_outfit", "mt_senate_meeting", 0, 0),
         (mission_tpl_entry_set_override_flags, "mt_senate_meeting", 0, af_override_outfit_1|af_override_horse),
     (try_end),
     (set_jump_entry, 0),
@@ -35525,7 +35532,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
     (try_begin),#second outift
       (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-      (call_script, "script_init_second_outfit", "mt_library", 0),
+      (call_script, "script_init_second_outfit", "mt_library", 0, 0),
       (mission_tpl_entry_set_override_flags, "mt_library", 0, af_override_outfit_1|af_override_horse),
     (try_end),
 	  (set_visitor, 0, "trp_player"),
@@ -36216,7 +36223,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (quest_slot_ge, "qst_gardens_of_pleasure", slot_quest_current_state, 7),
       (try_begin),
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_visit_sartemis", 7),
+        (call_script, "script_init_second_outfit", "mt_visit_sartemis", 7, 0),
         (mission_tpl_entry_set_override_flags, "mt_visit_sartemis", 7, af_override_outfit_1|af_override_horse),
       (try_end),
       (set_visitor, 7, "trp_player"),
@@ -41765,7 +41772,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     (try_begin),#second outift
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_visit_villa", 21),
+        (call_script, "script_init_second_outfit", "mt_visit_villa", 21, 0),
         (mission_tpl_entry_set_override_flags, "mt_visit_villa", 21, af_override_outfit_1|af_override_horse),
     (try_end),
     (set_jump_entry, 21),
@@ -41840,7 +41847,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
     (try_begin),#second outift
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_visit_villa", 0),
+        (call_script, "script_init_second_outfit", "mt_visit_villa", 0, 1),
         (mission_tpl_entry_set_override_flags, "mt_visit_villa", 0, af_override_outfit_1|af_override_horse),
     (try_end),
     (set_jump_entry, 0),
@@ -47837,7 +47844,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_cutscene_start", ":entry"),
+          (call_script, "script_init_second_outfit", "mt_cutscene_start", ":entry", 0),
           (mission_tpl_entry_set_override_flags, "mt_cutscene_start", ":entry", af_override_outfit_1 | af_override_horse),
       (try_end),
       (set_visitor, ":entry", "trp_player"),
@@ -47999,16 +48006,16 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (scene_slot_ge, ":scene", slot_scene_visited, 1),
       (try_begin),#second outift
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_latifundium", 1),
+        (call_script, "script_init_second_outfit", "mt_latifundium", 1, 0),
         (mission_tpl_entry_set_override_flags, "mt_latifundium", 1, af_override_outfit_1|af_override_horse),
       (try_end),
       (set_visitor,1,"trp_player"),
     (else_try),
-      # (try_begin),#second outift
-        # (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        # (call_script, "script_init_second_outfit", "mt_latifundium", 0),
-        # (mission_tpl_entry_set_override_flags, "mt_latifundium", 0, af_override_outfit_1|af_override_horse),
-      # (try_end),
+      (try_begin),#second outift
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_latifundium", 0, 1),
+        (mission_tpl_entry_set_override_flags, "mt_latifundium", 0, af_override_outfit_1|af_override_horse),
+      (try_end),
       (set_visitor,0,"trp_player"),
     (try_end),
     (try_begin),
@@ -55213,7 +55220,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (modify_visitors_at_site,"scn_antiochia_castle"),
     (try_begin),
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_visit_town_castle", 0),
+        (call_script, "script_init_second_outfit", "mt_visit_town_castle", 0, 0),
         (mission_tpl_entry_set_override_flags, "mt_visit_town_castle", 0, af_override_outfit_1|af_override_horse),
     (try_end),
     (set_visitor, 0, "trp_player"),
@@ -56613,7 +56620,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1),
+          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
           (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
       (set_visitor, 1, "trp_player"),
@@ -56668,7 +56675,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1),
+          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
           (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
 
@@ -56846,7 +56853,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1),
+          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
           (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
       (set_visitor, 1, "trp_player"),
@@ -56906,7 +56913,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1),
+          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
           (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
 
@@ -56952,7 +56959,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1),
+          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
           (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
       (set_visitor, 1, "trp_player"),
@@ -57333,7 +57340,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1),
+          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
           (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
       (set_visitor, 1, "trp_player"),
@@ -57410,7 +57417,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1),
+          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
           (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
       (set_visitor, 1, "trp_player"),
@@ -57850,7 +57857,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
         (try_begin),#second outift
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_palace", 0),
+          (call_script, "script_init_second_outfit", "mt_palace", 0, 0),
           (mission_tpl_entry_set_override_flags, "mt_palace", 0, af_override_outfit_1|af_override_horse),
         (try_end),
         (set_visitor,0,"trp_player"),
@@ -59131,7 +59138,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (set_jump_mission, "mt_special_mission_poppaea_1"),
       (try_begin),#second outift
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-          (call_script, "script_init_second_outfit", "mt_special_mission_poppaea_1", 2),
+          (call_script, "script_init_second_outfit", "mt_special_mission_poppaea_1", 2, 0),
           (mission_tpl_entry_set_override_flags, "mt_special_mission_poppaea_1", 2, af_override_outfit_1|af_override_horse),
       (try_end),
       (set_visitor, 0, "trp_player"),

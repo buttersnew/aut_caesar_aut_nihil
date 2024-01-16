@@ -1058,5 +1058,7 @@ scenes = [
   ("kurgan", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000220600500000afebf000002bc000075c0000003db",[], [], "outer_terrain_steppe"),
   ("kurgan_enter", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], ["bonus_chest_16"]),
 
+  ("roman_latrina", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], ["bonus_chest_19"]),
+
 ]#end of file
 #

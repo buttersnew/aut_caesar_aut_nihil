@@ -818,4 +818,5 @@ scn_scene_camp_forest = 815
 scn_baltic_town = 816
 scn_kurgan = 817
 scn_kurgan_enter = 818
+scn_roman_latrina = 819
 scn_exit = 100000

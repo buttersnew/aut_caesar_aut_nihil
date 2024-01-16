@@ -6327,6 +6327,11 @@ rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
 10, abundance(10)|body_armor(25)|difficulty(1)|hit_points(250)|horse_maneuver(65)|horse_speed(50)|horse_charge(40)|horse_scale(96), imodbits_horse_basic, []],
 ##wild animals for hunting end
 
+["xylospongium",         "Xylospongium", [("xylospongium",0)], itp_type_one_handed_wpn|itp_merchandise| itp_primary|itp_wooden_parry|itp_wooden_attack, itc_scimitar,
+get_w_price(80, get_mace_weight(80), get_1hmace_speed(80), 1, 0),
+weight(get_mace_weight(80))|difficulty(1)|spd_rtng(get_1hmace_speed(80))|weapon_length(80)|swing_damage(1,blunt)|thrust_damage(0,pierce),imodbits_none ],
+
+
 ["female_slave1", "Dancers Outfit", [("slave_roba",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
 [(ti_on_init_item,[

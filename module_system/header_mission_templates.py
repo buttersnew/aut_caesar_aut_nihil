@@ -103,7 +103,7 @@ mtef_team_member_2       = 0x00008000
 mtef_infantry_first      = 0x00010000
 mtef_archers_first       = 0x00020000
 mtef_cavalry_first       = 0x00040000
-mtef_no_auto_reset       = 0x00080000 
+mtef_no_auto_reset       = 0x00080000
 mtef_reverse_order       = 0x01000000
 mtef_use_exact_number    = 0x02000000
 
@@ -159,5 +159,3 @@ def ysize(n):
 #Mission result flags. also in mission.h
 mc_loot                 = 0x0001
 mc_imprison_unconscious = 0x0002
-
-
