@@ -94,6 +94,8 @@ tracks = [
   ("tavern_3", "tavern_3.ogg", mtf_sit_tavern|mtf_sit_feast, 0),
   ("tavern_roman_1", "roman_tavern_1.ogg", mtf_culture_6|mtf_sit_tavern|mtf_sit_feast, 0),
 
+  ("roman_feast_1", "roman_feast_1.ogg", mtf_sit_feast, mtf_culture_6),
+
   ("town_neutral_0", "wolf_1.ogg", mtf_culture_all|mtf_sit_town|mtf_sit_travel|mtf_sit_siege|mtf_sit_fight|mtf_sit_ambushed|mtf_sit_night, mtf_culture_all),
   ("town_neutral_1", "birds_1.ogg", mtf_culture_all|mtf_sit_town|mtf_sit_travel|mtf_sit_siege|mtf_sit_fight|mtf_sit_ambushed, mtf_culture_all),
   ("town_neutral_2", "birds_2.ogg", mtf_culture_all|mtf_sit_town|mtf_sit_travel|mtf_sit_siege|mtf_sit_fight|mtf_sit_ambushed, mtf_culture_all),
