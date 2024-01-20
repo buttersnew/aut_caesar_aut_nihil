@@ -1589,3 +1589,4 @@ spr_roof_floor_stone = 1587
 spr_roof_floor_marble = 1588
 spr_roof_floor_wood_2 = 1589
 spr_roof_floor_wood = 1590
+spr_roman_toilet_use = 1591

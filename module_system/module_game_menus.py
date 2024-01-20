@@ -11465,7 +11465,7 @@ game_menus = [
     (assign, "$loot_option", 2),
     (jump_to_menu, "mnu_castle_taken"),
   ]),
-],),
+]),
 
   (
     "castle_taken_plunder",mnf_disable_all_keys,
@@ -14391,7 +14391,7 @@ game_menus = [
     (set_jump_mission, "mt_center_management"),
     (jump_to_scene, "scn_meeting_scene_plain"),
     (change_screen_mission),
-	],[],),
+	],[]),
 
 ("repopulate",0,
   "You can order your soldiers to kill and enslave the local population. Then you would grante the acquired land to the families of your soldiers and to the veterans."
@@ -14659,7 +14659,7 @@ game_menus = [
     (try_end),
     (change_screen_map),
   ]),
-],),
+]),
 
  # (
     # "center_decrees",0,
@@ -18991,6 +18991,18 @@ game_menus = [
       (change_screen_mission),
     ], "Enter the Latrinae."),
 
+    ("visit_christian_chapel",[
+      (eq, 0, 1),
+    ],"Door to the chapel.",[
+      (set_passage_menu,"mnu_town"),
+      (try_begin),
+        (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_christus),
+        (display_message, "str_door_locked"),
+      (else_try),
+        (call_script, "script_enter_secret_christian_church", 1),
+      (try_end),
+    ], "Door."),
+
     ("visit_temples",[
       (eq, "$current_town", "p_town_6"),
     ],"Visit the sights of Rome.",[
@@ -20321,26 +20333,8 @@ game_menus = [
           (is_currently_night),
           (display_message, "str_door_locked"),
       (else_try),
-          (modify_visitors_at_site,"scn_temple_your"),
-          (reset_visitors),
-          (set_visitor,0,"trp_player"), #player
-
           (party_get_slot, ":god", "$current_town", slot_center_has_temple_god),
-          (call_script, "script_get_priest_for_god", ":god"),
-          (set_visitor,1, reg0),
-
-          (set_visitor,2,"trp_guest_female"),
-          (set_visitor,3,"trp_guest"),
-          (set_visitor,4,"trp_guest_female"),
-          (set_visitor,5,"trp_guest"),
-          (set_visitor,6,"trp_guest_female"),
-          (set_visitor,7,"trp_guest_female"),
-          (set_visitor,8,"trp_guest"),
-          (set_visitor,9,"trp_guest_female"),
-          (set_visitor,10,"trp_guest_female"),
-          (set_jump_mission,"mt_visit_temple"),
-          (jump_to_scene, "scn_temple_your"),
-          (change_screen_mission),
+          (call_script, "script_enter_temple", ":god"),
       (try_end),
     ]),
     ("baths",[
@@ -28865,7 +28859,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (leave_encounter),
       (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
     ]),
-],),
+]),
 ("enfermedad3_siege",0,
   "Death governs your camp. Many of your men are sick and dying. Perhaps your god has saved some lives.^^Your casualties: {s8}",
   "none", [
@@ -29121,7 +29115,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (leave_encounter),
       (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
     ]),
-],),
+]),
 ("event_siege_07",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Poisoned water!^^Our scouts have found that the defenders have poisoned the water with dead animals. Do you want to buy water and ask the merchants to bring it via our supply route?",
   "none",[
@@ -30415,19 +30409,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
     ("bacchus",[
       (troop_slot_eq, "trp_player", slot_troop_religion, worships_christus),
-    ],"Visit the Christian underground chapel.",[
-      (set_jump_mission,"mt_church"),
-      (modify_visitors_at_site, "scn_church"),
-      (reset_visitors),
-      (set_visitor, 1, "trp_memercius"),
-      (set_visitor, 2, "trp_muscullus"),
-      (set_visitor, 3, "trp_christ_fem"),
-      (set_visitor, 4, "trp_christ"),
-      (set_visitor, 5, "trp_christ_fem"),
-      (set_visitor, 6, "trp_christ"),
-      (set_visitor, 7, "trp_player"),
-      (jump_to_scene, "scn_church"),
-      (change_screen_mission),
+    ],"Visit the Christian underground temple.",[
+      (call_script, "script_enter_secret_christian_church"),
     ]),
     ("bacchus",[
       (eq, 0, 1),
@@ -30838,7 +30821,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       # # (change_screen_map_conversation, "trp_kingdom_7_lady_1"),
     # ],
   # ),
-  # ],),
+  # ]),
 
 ("meeting_with_centurio_2",0,
   "With ease your men kill the last supporters of Nero. Then you march towards the palace. You take over control of the imperial treasury.^^"
@@ -30970,8 +30953,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ],
     [
       ("Continue...",[],"Continue...",[
-       (change_screen_map),],),
-  ],),
+       (change_screen_map),]),
+  ]),
 
 # ("become_emperor",menu_text_color(0xFF000000)|mnf_disable_all_keys,
 #   "After Rome has fallen to you, the Praetorian Guard calls you the new Caesar Augustus. As you march through the streets of Rome, people cheer. ^^"
@@ -33783,7 +33766,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (troop_add_items, "trp_player", "itm_wine", 3),
       (val_add, "$g_player_unhealth", 75),
       (change_screen_map),
-    ],),
+    ]),
     ("answere_3",[],"Hm, I will take the most beautiful woman and... bang bang",[
       (add_xp_as_reward, 1500),
       (call_script, "script_change_player_honor", -1),
@@ -34200,7 +34183,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (str_store_string,s1,"@All day and night long the praetorian guards follow and watch him. All day and night long they stay before his house and talk about the various ways he could be punished if they find out at least one crime he has committed in the past. After a few days, he can no longer stand the pressure and takes his own life. The problem is gone, and nobody can blame you!"),
       (display_message, "@{s1}"),
       (jump_to_menu, "mnu_random_juice_events"),
-    ],),
+    ]),
     ("answere_3",[],"Order the praetorian guard to get ride of him",[
       (call_script, "script_change_player_honor", -10),
       # (call_script, "script_change_troop_renown", "trp_player", -25),
@@ -34498,7 +34481,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (val_sub, "$g_unrest", 2),
       (display_message, "@Stability of the Empire decreases", color_bad_news),
       (change_screen_map),
-    ],),
+    ]),
 ]),
 ("event_jerusalem_4",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "The great Jewish revolt!^^The governor {s40} of Jerusalem suspected, that most of the Jewish population do not pay their taxes. It seems more plausible that {s40} has taken the missing taxes for himself. However, the governor ordered to"
@@ -34512,7 +34495,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("answere_1",[],"Continue ...",[
       (call_script, "script_cf_start_jewish_revolt"),
       (change_screen_map),
-    ],),
+    ]),
 ]),
 ##end jerusalem events
 ##begin events with empire provincial taxation
@@ -34629,7 +34612,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_player_relation_with_troop", "$temp2", 2),
       (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -20000),
       (change_screen_map),
-    ],),
+    ]),
     ("answere_1",[
 	  ],"Send a letter, summoning {s44}. And they'd better have all the papers.",[
       (jump_to_menu, "mnu_corruption_2_result"),
@@ -36522,7 +36505,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (change_screen_return),
       ]
     ),
-],),
+]),
 
 ("gwenny_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Scared ravens!^^Your men take a small break to eat and refresh, while you take a walk. After some time of enjoying the beauty of nature you come to a grove."
@@ -45207,8 +45190,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (change_screen_mission),
 
         (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 7),
-    ],),
-],),
+    ]),
+]),
 
 ("meeting_with_antonia",0,
     "A soldier enters your tent while you are eating a meal. It is about an urgent matter.",
@@ -45234,8 +45217,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (set_visitor, 3, "trp_antonia"),
         (jump_to_scene, "scn_players_tent"),
         (change_screen_mission),
-    ],),
-],),
+    ]),
+]),
 
 ("meeting_with_antonia_final_good",0,
     "Your little play starts out quite conventionally, downright boringly normal."
@@ -45255,8 +45238,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
         (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 1),
         (change_screen_map),
-    ],),
-],),
+    ]),
+]),
 
 
 ("meeting_with_antonia_final_angry",0,
@@ -45272,8 +45255,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
         (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 1),
         (change_screen_map),
-    ],),
-],),
+    ]),
+]),
 
 ("thoughts_2",0,
     "As you ride on the road, you think about what {s20} has told you. It seems Kaeso Flavius is worried about something related to the fire of Rome."
@@ -45289,8 +45272,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (add_quest_note_from_sreg, "qst_important_friends", 3, "@Finally, you know his secret: Kaeso Flavius is a Christ and it seems he is concerned about the recent persecution of Christians. Time to talk with him!", 0),
       (quest_set_slot, "qst_important_friends", slot_quest_current_state, 2),
       (change_screen_map),
-    ],),
-],),
+    ]),
+]),
 
 #   (
 #     "rom_burns",0,
@@ -45312,7 +45295,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 #       (set_jump_mission, "mt_kill_christs"),
 #       (jump_to_scene, "scn_roman_burns"),
 #       (change_screen_mission),
-#       ],),
+#       ]),
 #   ]),
 
 ("rom_burns_2",0,
@@ -45324,8 +45307,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
       (jump_to_menu, "mnu_fire_of_rome"),
 
-    ],),
-],),
+    ]),
+]),
 
 ("cutscene_1",0,
     "Execution of traitors^^You are swept away by crowds of people streaming towards the arena. ''Lions! Lions! To the lions with the traitors!'', the people shout. A grand spectacle will be held in the arena. Out of curiosity you follow the crowd.",
@@ -45336,97 +45319,75 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     [
       ("Continue...",[],"Continue...",[
         (call_script, "script_cutscene_1"),
-      ],),
-],),
+      ]),
+]),
 
 ("cutscene_2",0,
-    "The spectacle ends with a riot. People shout insults and throw stones at Nero. The Praetorians appear to disperse the mob. Some people die others are wounded. Finally the mob scatters. You wander through the streets, still dazed by the events, as a shady person appears.",
-    "none",
-    [(set_background_mesh, "mesh_pic_roma"),
-
-    ],
-    [
-    ("Continue...",[],"Continue...",[
-      (add_xp_as_reward, 250),
-      (assign, "$talk_context", tc_campaign_talk),
-      (call_script, "script_setup_troop_meeting", "trp_petronius", -1, "scn_temple_of_concordia"),
-    ],),
-],),
+  "The spectacle ends with a riot. People shout insults and throw stones at Nero. The Praetorians appear to disperse the mob. Some people die others are wounded. Finally the mob scatters. You wander through the streets, still dazed by the events, as a shady person appears.",
+  "none",[
+    (set_background_mesh, "mesh_pic_roma"),
+  ],[
+  ("Continue...",[],"Continue...",[
+    (add_xp_as_reward, 250),
+    (assign, "$talk_context", tc_campaign_talk),
+    (call_script, "script_setup_troop_meeting", "trp_petronius", -1, "scn_temple_of_concordia"),
+  ]),
+]),
 
 ("continue",0,
-  "Nothing",
+  "You slip through the narrow passages of Rome's hidden tunnels, shadows embracing your every step. Guided by the mysterious man, you trace the ancient labyrinth, a clandestine journey leading to a concealed chapel."
+  +" The flickering candlelight reveals sacred murals on stone walls, echoing hushed prayers. As you approach, the clandestine chapel unveils itself - a sanctum where faith thrives in secrecy."
+  +" The air is charged with reverence, and you, an unwitting adventurer, become a witness to the clandestine devotion hidden beneath the heart of Rome's intricate tapestry.",
   "none",[
-    (setup_quest_text,"qst_blank_quest_8"),
-    (str_store_string, s2, "@Those strangers look interesting. Maybe they are usefull to get some money. (To visit them, talk with Petronius, who can be found in the streets of Rome.)"),
-    (call_script, "script_start_quest", "qst_blank_quest_8", "$g_talk_troop"),
-    (quest_set_slot, "qst_blank_quest_8", slot_quest_temp_slot, 1),
-    (set_jump_mission,"mt_church"),
-    (modify_visitors_at_site, "scn_church"),
-    (reset_visitors),
-    (set_visitor, 1, "trp_memercius"),
-    (set_visitor, 2, "trp_muscullus"),
-    (set_visitor, 3, "trp_christ_fem"),
-    (set_visitor, 4, "trp_christ"),
-    (set_visitor, 5, "trp_christ_fem"),
-    (set_visitor, 6, "trp_christ"),
-    (set_visitor, 7, "trp_player"),
-    (jump_to_scene, "scn_church"),
-    (change_screen_mission),
+    (set_background_mesh, "mesh_pic_roma"),
   ],[
-],),
+  ("Continue...",[], "Conntinue...",[
+    (call_script, "script_enter_secret_christian_church", 0),
+  ]),
+]),
 
-  (
-    "lucias_house",0,
-    "As you approach the villa, you see a man of young age leaving it. It seems he has noticed you and is now walking in your direction.",
-    "none",
-    [  (set_background_mesh, "mesh_pic_villa"),
-    ],
-    [
-      ("Continue...",[],"Talk with him",[
- 		  (assign, "$talk_context", tc_campaign_talk),
-		  (call_script, "script_setup_troop_meeting", "trp_amorus", -1, "scn_temple_of_concordia"),
-      ],),
+("lucias_house",0,
+  "As you approach the villa, you see a man of young age leaving it. It seems he has noticed you and is now walking in your direction.",
+  "none",[
+    (set_background_mesh, "mesh_pic_villa"),
+  ],[
+  ("Continue...",[],"Talk with him",[
+    (assign, "$talk_context", tc_campaign_talk),
+    (call_script, "script_setup_troop_meeting", "trp_amorus", -1, "scn_temple_of_concordia"),
+  ]),
+]),
 
+("lucias_house_2",0,
+  "After Amorus ran away, you walk towards the villa of Lucia Sabina. You knock at the door, but nothing happens, you knock again, still nothing."
+  +" After a while, a slave opens. You tell him, you want to see Lucia Sabina. He says, she is currently sitting in the garden as usual.",
+  "none",[
+    (set_background_mesh, "mesh_pic_villa"),
+  ],[
+    ("Continue...",[],"Continue...",[
+      (assign, "$temp", 1),
+      (modify_visitors_at_site,"scn_lucias_villa"),
+      (reset_visitors),
+      (set_visitor,0,"trp_player"), #player
+      (set_visitor,1,"trp_lucia"), #player
 
-  ],),
+      (set_jump_mission,"mt_lucias_villa"),
+      (jump_to_scene, "scn_lucias_villa"),
+      (change_screen_mission),
+    ]),
+]),
 
-  (
-    "lucias_house_2",0,
-    "After Amorus ran away, you walk towards the villa of Lucia Sabina. You knock at the door, but nothing happens, you knock again, still nothing.\
- After a while, a slave opens. You tell him, you want to see Lucia Sabina. He says, she is currently sitting in the garden as usual.",
-    "none",
-    [  (set_background_mesh, "mesh_pic_villa"),
-    ],
-    [
-      ("Continue...",[],"Continue...",[
-       (assign, "$temp", 1),
-			 (modify_visitors_at_site,"scn_lucias_villa"),
-			 (reset_visitors),
-			 (set_visitor,0,"trp_player"), #player
-			 (set_visitor,1,"trp_lucia"), #player
-
-			 (set_jump_mission,"mt_lucias_villa"),
-			 (jump_to_scene, "scn_lucias_villa"),
-			 (change_screen_mission),
-      ],),
-
-
-  ],),
-
-  (
-    "lucias_death",0,
-    "For a brief moment, you stare at the headless body and the pool of blood that slowly spreads towards you. Before it can stain your feet you leave and enter her chambers. After a thorough inspection you find a locked chest. The key fits and inside you find the 100,000 denars you were promised."+
-    " Now you need to make sure not to be suspected as her murderer. After taking the money you rush to the vigilia. ",
-    "none",
-    [  (set_background_mesh, "mesh_pic_woman"),
-    ],
-    [
-      ("Continue...",[],"Tell she was murdered by her slaves. According to Roman law, all her slaves will be crucified then.",[
+("lucias_death",0,
+  "For a brief moment, you stare at the headless body and the pool of blood that slowly spreads towards you. Before it can stain your feet you leave and enter her chambers. After a thorough inspection you find a locked chest. The key fits and inside you find the 100,000 denars you were promised."+
+  " Now you need to make sure not to be suspected as her murderer. After taking the money you rush to the vigilia. ",
+  "none",[
+    (set_background_mesh, "mesh_pic_woman"),
+  ],[
+  ("Continue...",[],"Tell she was murdered by her slaves. According to Roman law, all her slaves will be crucified then.",[
     (troop_add_gold, "trp_player", 100000),
     (call_script, "script_end_quest", "qst_widow"),
     (jump_to_menu, "mnu_lucia_slaves_killed"),
-      ],),
-      ("Continue...",[],"Tell it was some paid murderer, who escaped.",[
+  ]),
+  ("Continue...",[],"Tell it was some paid murderer, who escaped.",[
     (store_random_in_range, ":r", 0, 2),
     (try_begin),
         (eq, ":r",0),
@@ -45437,8 +45398,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (else_try),
         (jump_to_menu, "mnu_lucia_arrested"),
     (try_end),
-      ],),
-  ],),
+  ]),
+]),
 
   (
     "lucia_arrested",0,
@@ -45458,8 +45419,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (assign,"$auto_menu", "mnu_captivity_castle_check"),
         (val_add, "$g_player_unhealth", 5),
         (change_screen_return),
-      ],),
-  ],),
+      ]),
+  ]),
 
   (
     "lucia_slaves_killed",0,
@@ -45472,8 +45433,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ("Continue...",[],"Continue.",[
       (jump_to_menu, "mnu_auto_return_to_map"),
       (add_xp_as_reward, 250),
-      ],),
-  ],),
+      ]),
+  ]),
 
 ("slave_message",0,
   "While you walk towards the town center you are interrupted by a slave. He greets you and says he was sent by his master to bring you a message."
@@ -45492,11 +45453,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_start_quest", "qst_town_trade", "trp_town_6_merchant"),
       (quest_set_slot, "qst_town_trade", slot_quest_menu_1, 1),
       (jump_to_menu, "mnu_town_trade"),
-    ],),
+    ]),
     ("Continue...",[],"Tell your master I am not interested at all.",[
       (quest_set_slot, "qst_town_trade", slot_quest_menu_1, 1),
       (jump_to_menu, "mnu_town_trade"),
-    ],),
+    ]),
 ]),
 
   (
@@ -45511,7 +45472,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (display_message, "@You start collecting the herbs"),
         (quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 3),
         (change_screen_map),
-      ],),
+      ]),
 
       ("Continue...",[],"Visit the hut.",[
 
@@ -45523,15 +45484,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 			 (set_jump_mission,"mt_witch"),
 			 (jump_to_scene, "scn_grove_witch"),
 			 (change_screen_mission),
-      ],),
+      ]),
 
 
       ("Continue...",[],"Leave.",[
     (change_screen_map),
-      ],),
+      ]),
 
 
-  ],),
+  ]),
   (
     "grove_2",0,
     "You discover a dark forest.",
@@ -45549,14 +45510,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_jump_mission,"mt_arminius_grove"),
     (jump_to_scene, "scn_arminius_tomb"),
     (change_screen_mission),
-      ],),
+      ]),
 
       ("Continue...",[],"Leave.",[
     (change_screen_map),
-      ],),
+      ]),
 
 
-  ],),
+  ]),
   (
     "scandia",0,
     "You follow the witch to a hill, not far away from her hut. As you walk through the forest, fog appears.\
@@ -45578,12 +45539,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 			 (set_jump_mission,"mt_witch_2"),
 			 (jump_to_scene, "scn_grove_witch_2"),
 			 (change_screen_mission),
-      ],),
+      ]),
 
 
 
 
-  ],),
+  ]),
 
   (
     "won_witch",0,
@@ -45598,12 +45559,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 5),
         (add_quest_note_from_sreg, "qst_the_eagle", 4, "@You have defeated the warrior. Bring Hunna his head.", 0),
         (change_screen_map),
-      ],),
+      ]),
 
 
 
 
-  ],),
+  ]),
 
   (
     "lucillus",0,
@@ -45627,10 +45588,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
          (set_jump_entry, 0),
          (jump_to_scene, "scn_house_1"),
          (change_screen_mission),
-      ],),
+      ]),
 
 
-  ],),
+  ]),
 
   (
     "party_with_mamertinus",0,
@@ -45680,11 +45641,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 			(jump_to_scene, "scn_temple_of_bacchus"),
 			(change_screen_mission),
 
-      ],),
+      ]),
 
 
 
-  ],),
+  ]),
   (
     "end_party",0,
     "You awake with a terrible headache, lying in a haystack. In front of you lies an empty bottle of wine. You can't remember how you came here,\
@@ -45705,11 +45666,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         # (rest_for_hours, 12, 4, 0),
       (change_screen_map)
 
-      ],),
+      ]),
 
 
 
-  ],),
+  ]),
 
   (
     "lucillus_villa",0,
@@ -45739,14 +45700,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
          (set_jump_entry, 0),
          (jump_to_scene, "scn_house_2"),
          (change_screen_mission),
-      ],),
+      ]),
 
       ("Continue...",[],"Go back.",[
         (jump_to_menu, "mnu_temples"),
-      ],),
+      ]),
 
 
-  ],),
+  ]),
 
   (
     "luc_vic_2",0,
@@ -45764,10 +45725,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (troop_add_gold, "trp_player", 10000),
         (quest_set_slot, "qst_town_trade_2", slot_quest_current_state, 2),
         (change_screen_map),
-      ],),
+      ]),
 
 
-  ],),
+  ]),
 
   (
     "luc_vic",0,
@@ -45782,10 +45743,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (add_quest_note_from_sreg, "qst_town_trade_2", 3, "@It seems Lucillus was informed about the plan. Report back to Mamertinus.", 0),
         (add_xp_as_reward, 1000),
         (change_screen_map),
-      ],),
+      ]),
 
 
-  ],),
+  ]),
   (
     "luc_def",0,
     "You fall to the ground and everything becomes black...^^After some hours you awake with a terrible headache. It seems you are alive.",
@@ -45800,10 +45761,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (add_xp_as_reward, 1000),
         (troop_remove_gold, "trp_player", 500),
         (jump_to_menu, "mnu_town"),
-      ],),
+      ]),
 
 
-  ],),
+  ]),
 
   (
     "siege_event_test",0,
@@ -45813,53 +45774,53 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     ],
     [
-      ("event04",[],"Event04",[ (jump_to_menu,"mnu_event_siege_04"),],),
-      ("event04",[],"Event05",[ (jump_to_menu,"mnu_event_siege_05"),],),
-      ("event04",[],"Event06",[ (jump_to_menu,"mnu_event_siege_06"),],),
-      ("event04",[],"Event07",[ (jump_to_menu,"mnu_event_siege_07"),],),
-      ("event04",[],"Event08",[ (jump_to_menu,"mnu_event_siege_08"),],),
-      ("event04",[],"Event09",[ (jump_to_menu,"mnu_event_siege_09"),],),
-      ("event04",[],"Event10",[ (jump_to_menu,"mnu_event_siege_10"),],),
-      ("event04",[],"Event11",[ (jump_to_menu,"mnu_event_siege_11"),],),
-      ("event04",[],"Event12",[ (jump_to_menu,"mnu_event_siege_12"),],),
-      ("event04",[],"Event13",[ (jump_to_menu,"mnu_event_siege_13"),],),
-      ("event04",[],"next page",[ (jump_to_menu,"mnu_siege_event_test2"),],),
+      ("event04",[],"Event04",[ (jump_to_menu,"mnu_event_siege_04"),]),
+      ("event04",[],"Event05",[ (jump_to_menu,"mnu_event_siege_05"),]),
+      ("event04",[],"Event06",[ (jump_to_menu,"mnu_event_siege_06"),]),
+      ("event04",[],"Event07",[ (jump_to_menu,"mnu_event_siege_07"),]),
+      ("event04",[],"Event08",[ (jump_to_menu,"mnu_event_siege_08"),]),
+      ("event04",[],"Event09",[ (jump_to_menu,"mnu_event_siege_09"),]),
+      ("event04",[],"Event10",[ (jump_to_menu,"mnu_event_siege_10"),]),
+      ("event04",[],"Event11",[ (jump_to_menu,"mnu_event_siege_11"),]),
+      ("event04",[],"Event12",[ (jump_to_menu,"mnu_event_siege_12"),]),
+      ("event04",[],"Event13",[ (jump_to_menu,"mnu_event_siege_13"),]),
+      ("event04",[],"next page",[ (jump_to_menu,"mnu_siege_event_test2"),]),
 
 
-  ],),
+  ]),
   (
     "siege_event_test2",0,
     "Select an event",
     "none",
     [    ],
     [
-      ("event04",[],"Event14",[ (jump_to_menu,"mnu_event_siege_14"),],),
-      ("event04",[],"Event15",[ (jump_to_menu,"mnu_event_siege_15"),],),
-      ("event04",[],"Event16",[ (jump_to_menu,"mnu_event_siege_16"),],),
-      ("event04",[],"Event17",[ (jump_to_menu,"mnu_event_siege_17"),],),
-      ("event04",[],"Event18",[ (jump_to_menu,"mnu_event_siege_18"),],),
-      ("event04",[],"Event19",[ (jump_to_menu,"mnu_event_siege_19"),],),
-      ("event04",[],"Event20",[ (jump_to_menu,"mnu_event_siege_20"),],),
-      ("event04",[],"Event21",[ (jump_to_menu,"mnu_event_siege_21"),],),
-      ("event04",[],"Event22",[ (jump_to_menu,"mnu_event_siege_22"),],),
-      ("event04",[],"Event23",[ (jump_to_menu,"mnu_event_siege_23"),],),
-      ("event04",[],"next page",[ (jump_to_menu,"mnu_siege_event_test3"),],),
+      ("event04",[],"Event14",[ (jump_to_menu,"mnu_event_siege_14"),]),
+      ("event04",[],"Event15",[ (jump_to_menu,"mnu_event_siege_15"),]),
+      ("event04",[],"Event16",[ (jump_to_menu,"mnu_event_siege_16"),]),
+      ("event04",[],"Event17",[ (jump_to_menu,"mnu_event_siege_17"),]),
+      ("event04",[],"Event18",[ (jump_to_menu,"mnu_event_siege_18"),]),
+      ("event04",[],"Event19",[ (jump_to_menu,"mnu_event_siege_19"),]),
+      ("event04",[],"Event20",[ (jump_to_menu,"mnu_event_siege_20"),]),
+      ("event04",[],"Event21",[ (jump_to_menu,"mnu_event_siege_21"),]),
+      ("event04",[],"Event22",[ (jump_to_menu,"mnu_event_siege_22"),]),
+      ("event04",[],"Event23",[ (jump_to_menu,"mnu_event_siege_23"),]),
+      ("event04",[],"next page",[ (jump_to_menu,"mnu_siege_event_test3"),]),
 
 
-  ],),
+  ]),
   (
     "siege_event_test3",0,
     "Select an event",
     "none",
     [],
     [
-      ("event04",[],"Event24",[ (jump_to_menu,"mnu_event_siege_24"),],),
-      ("event04",[],"Event25",[ (jump_to_menu,"mnu_event_siege_25"),],),
-      ("event04",[],"Event26",[ (jump_to_menu,"mnu_event_siege_26"),],),
-      ("event04",[],"Event27",[ (jump_to_menu,"mnu_event_siege_27"),],),
-      ("event04",[],"Event28",[ (jump_to_menu,"mnu_event_siege_28"),],),
-      ("event04",[],"Event29",[ (jump_to_menu,"mnu_event_siege_29"),],),
-  ],),
+      ("event04",[],"Event24",[ (jump_to_menu,"mnu_event_siege_24"),]),
+      ("event04",[],"Event25",[ (jump_to_menu,"mnu_event_siege_25"),]),
+      ("event04",[],"Event26",[ (jump_to_menu,"mnu_event_siege_26"),]),
+      ("event04",[],"Event27",[ (jump_to_menu,"mnu_event_siege_27"),]),
+      ("event04",[],"Event28",[ (jump_to_menu,"mnu_event_siege_28"),]),
+      ("event04",[],"Event29",[ (jump_to_menu,"mnu_event_siege_29"),]),
+  ]),
 
   (
     "duel_2",0,
@@ -45910,9 +45871,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (change_screen_mission),
 
 
-      ],),
+      ]),
 
-  ],),
+  ]),
   (
     "duel",0,
     "You prepare for the duel and sharpen your weapons. You will have to fight for your life.",
@@ -45937,9 +45898,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (change_screen_mission),
 
 
-      ],),
+      ]),
 
-  ],),
+  ]),
 
   (
     "duel_win",0,
@@ -45954,9 +45915,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_succeed_quest", "qst_slave_revolt"),
       (change_screen_map),
 
-      ],),
+      ]),
 
-  ],),
+  ]),
 
   (
     "ywhe",0,
@@ -45969,9 +45930,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (rest_for_hours, 24, 8, 0),
       (change_screen_map),
 
-      ],),
+      ]),
 
-  ],),
+  ]),
 
   (
     "revolt_start",0,
@@ -45983,14 +45944,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     [
       ("event04",[],"Romani ite domum!",[
       (jump_to_menu, "mnu_players_revolt"),
-      ],),
+      ]),
       ("event04",[],"Apologize for the misunderstanding.",[
        (call_script, "script_change_player_relation_with_center", "$current_town", -5),
       (jump_to_menu, "mnu_town"),
 
-      ],),
+      ]),
 
-  ],),
+  ]),
 
   (
     "players_revolt",0,
@@ -46119,7 +46080,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "fac_kingdom_7", 0),
 
       (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 200),
-      (change_screen_map), ],),
+      (change_screen_map), ]),
 
   ("event04",[],"Continue. (as lord)",[
     (display_log_message, "@You take over the jewish culture"),
@@ -46185,9 +46146,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
       (change_screen_map),
 
-      ],),
+      ]),
 
-  ],),
+  ]),
 
 ("found_rebells",0,
   "By supporting the Judean people with money you can improve your relation with them and cause unrest in the Roman Empire!",
@@ -46242,7 +46203,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ]),
   ("leave",[],"Go back.",[
     (jump_to_menu, "mnu_temple_jerusalem")
-  ],),
+  ]),
 ]),
 
 ("select_culture",0,
@@ -46252,16 +46213,16 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("event04",[],"Roman.",[
       (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_7"),
       (assign, "$g_player_culture", "fac_kingdom_7"),
-    ],),
-    ("event04",[(ge, "$cheat_mode", 1)],"Dacian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_1"),],),
-    ("event04",[(ge, "$cheat_mode", 1)],"Germanic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_4"),],),
-    ("event04",[(ge, "$cheat_mode", 1)],"Nomads.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_3"),],),
-    ("event04",[],"Jewish.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"), (assign, "$g_player_culture", "fac_kingdom_17"),],),
-    ("event04",[(ge, "$cheat_mode", 1)],"Parhtian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_6"),],),
-    ("event04",[(ge, "$cheat_mode", 1)],"Armenian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_5"),],),
-    ("event04",[(ge, "$cheat_mode", 1)],"Celtic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2"),],),
-    ("event04",[(ge, "$cheat_mode", 1)],"Caledonian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2_1"),],),
-    ("event04",[(ge, "$cheat_mode", 1)],"Bosphoran.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_9"),],),
+    ]),
+    ("event04",[(ge, "$cheat_mode", 1)],"Dacian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_1"),]),
+    ("event04",[(ge, "$cheat_mode", 1)],"Germanic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_4"),]),
+    ("event04",[(ge, "$cheat_mode", 1)],"Nomads.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_3"),]),
+    ("event04",[],"Jewish.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"), (assign, "$g_player_culture", "fac_kingdom_17"),]),
+    ("event04",[(ge, "$cheat_mode", 1)],"Parhtian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_6"),]),
+    ("event04",[(ge, "$cheat_mode", 1)],"Armenian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_5"),]),
+    ("event04",[(ge, "$cheat_mode", 1)],"Celtic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2"),]),
+    ("event04",[(ge, "$cheat_mode", 1)],"Caledonian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2_1"),]),
+    ("event04",[(ge, "$cheat_mode", 1)],"Bosphoran.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_9"),]),
 ]),
 
   (
@@ -46302,7 +46263,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        (try_end),
 
 		(try_end),
-      ],),
+      ]),
 
     ("event04",[],"An extravagante Game, with free food and drinks (100,000 denars)",[
     (store_troop_gold, ":gold", "trp_player"),
@@ -46332,7 +46293,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        (try_end),
 
 		(try_end),
-      ],),
+      ]),
 
      ("event04",[],"Normal Games, with free food and drinks (50,000 denars)",[
     (store_troop_gold, ":gold", "trp_player"),
@@ -46362,7 +46323,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        (try_end),
 
 		(try_end),
-      ],),
+      ]),
     ("event04",[],"Normal Games, without any addition (25,000 denars)",[
     (store_troop_gold, ":gold", "trp_player"),
 	  (assign, "$g_triumph", 1),
@@ -46388,8 +46349,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu, "mnu_town_tournament"),
        (try_end),
 		(try_end),
-      ],),
-      ("event04",[],"Go back.",[ (jump_to_menu, "mnu_town")],),
+      ]),
+      ("event04",[],"Go back.",[ (jump_to_menu, "mnu_town")]),
   ]),
 
 ### events for the senate
@@ -55782,7 +55743,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (assign, "$temp", "mesh_pic_deserters"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
-],),
+]),
 ("event_witch",0,
   "Witch?^^In the middle of the forest stands an anciet moss-covered hut, its dark half-rotten logs held together by nothing short of a miracle. Around it grows a large orchard of trees with slightly unusual-looking, but undoubtedly juicy yellow pears. Your foragers immediately detach to start collecting the fruit, when they are interrupted by an old woman's voice, sounding like the crunch of broken glass."+
   "^^--'I wouldn't eat that if I were you', the hag drops as she peeks out of the hut's window. She is even more ancient than the hut, with a single remaining tooth.",
@@ -56377,7 +56338,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (display_message, "@You gain experience", message_positive),
       (change_screen_map),
     ]),
-],),
+]),
 
 
   ("wait_storm",0,
@@ -58034,7 +57995,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (quest_set_slot, "qst_langobard_arrive", slot_quest_temp_slot, 1),
       (call_script, "script_setup_troop_meeting", "trp_kingdom_13_lord", -1, -1),
         ]),
-],),
+]),
 
 ("langobard_defeat",0,
   "You fall and everything turns black.^^You are walking over flower meadows. Shiny figures approach who put wreaths of flowers around your head. The sun is touching you. The sun is stroking your cheeks.^You are drinking wine, served in golden cups, eating food, served on golden plates.^An old cat is sitting in front of you, she comes closer and strokes you with her soft pelt. Then she strokes your face with her left paw, while she is giving you water with her right paw. You slowly drink. While days pass the cat comes, strokes you, gives you to drink and disappears in light.^^Suddenly you awake. Your head hurts terrible. You are lying on a bed in the middle of a longhouse. You stand up and walk towards the door. You open it. You enter a room where an old woman and two men are standing.",
@@ -58087,7 +58048,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 30, 10, 0),
     (change_screen_map),
     ]),
-],),
+]),
 
  ("longbard_stay",0,
     "After the meal is finished, you want to take a walk around the village. However, Gambara advises you to go to bed instead. She says you are still too weak. You follow her advice.^^You slowly fall asleep. You are dreaming about a raven who is watching you from a tree. He is following you while you are walking through the woods. You stop, as there is a cat sitting in the middle of the road. The cat looks at you...",
@@ -58104,7 +58065,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 30, 10, 0),
     (change_screen_map),
     ]),
-],),
+]),
 
  ("longbard_1",0,
     "You awaken on the next day. Gambara brings you breakfast. Then, you decide to take that walk around the village. The men all have long beards, while the women look healthy and strong. You remember that the Lugians thought the Winnili women would be ten feet high and have beards. You speak with Gambara about it and she tells you how she fooled the Lugians: The Winnili only had some hundreds of soldiers while the Lugians assembled an army of thousands, coming from all parts of Germania. Thus, she ordered the women to hide in the forests. When the Lugian army arrived, they spread their hair in front of their faces so as to look bearded and present themselves as warriors. The Lugians thought they were encircled and panicked. Their king Assis was captured. They negotiated a treaty with his brother: Assis shall be set free while the Winnili, now known as Longobardae, the Longbeards, shall obtain the lands at the mouth of the river Suebos.",
@@ -58125,7 +58086,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 30, 10, 0),
     (change_screen_map),
     ]),
-],),
+]),
 
 ("longbard_2",0,
     "You dreamed again about ravens and cats.^^After breakfast, you take a walk through the village. You find Ybor sharpening a sword. You look at the sword: its handle is decorated with bronze and it has a long, broad blade perfectly made for cutting. You ask him if it is his sword. He says it is the sword of his father. He is still maintaining it, though nobody uses it. It usually hangs on the wall of the main hall.^^You continue your walk. You come across a woman carrying water. She stumbles, falls, and accidentally spills all the water on your clothes.",
@@ -58160,7 +58121,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 30, 10, 0),
     (change_screen_map),
     ]),
-],),
+]),
 
  ("longbard_2_helped",0,
     "You help her get up. Then, you help her carry the water to her house. She thanks you many times.^^You spend the rest of the day at the beach, watching how the waves hit the coast. When it gets dark, you walk back to the village. The woman whom you helped approaches you and gives you a loaf of bread which she baked today using the water you carried. You thank her.",    "none", [
@@ -58179,7 +58140,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 35, 10, 0),
     (change_screen_map),
     ]),
-],),
+]),
 
 ("longbard_3",0,
     "On the next day, you decide to walk along the river.^^The sky is clear and the sun makes the water gleam. You come across some women who are doing laundy right at the mouth of the river. They seem to be exhausted.^^You notice that if you would continue walking upstream, you would reach another village sooner or later. That way, you wouldn't get lost in the forests.",
@@ -58210,7 +58171,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     [
     (jump_to_menu, "mnu_longbard_3_launder"),
     ]),
-],),
+]),
 
 
 ("longbard_3_launder",0,
@@ -58233,7 +58194,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 35, 10, 0),
     (change_screen_map),
     ]),
-],),
+]),
 
 ("longbard_3_leave",0,
     "You continue walking upstream. After hours of exhausting walking, you feel the pain from your old wounds. The pain soon becomes unbearable. You want to sit down next to the river, but you stumble and fall into the water. You try to save yourself by getting back on land but you have no chance in your state. Luckily, Ybor spots you! He was sailing on the river to catch some fish. He helps you out of the water and brings you back to the village.",
@@ -58250,7 +58211,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 35, 10, 0),
     (change_screen_map),
     ]),
-],),
+]),
 
 
 ("longbard_4",0,
@@ -58280,7 +58241,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (jump_to_menu, "mnu_longbard_4_slaves"),
     ]),
 
-],),
+]),
 
 ("longbard_4_slaves",0,
     "At first, the slaves think you are joking, but as you grab a hoe they see that you are serious.^^You help them, but soon you feel exhausted and take a break. The other slaves notice and say it's best you stop. They are slaves, after all, and used to this work, while you aren't. But you continue anyway. The more hours pass, the easier it gets. It becomes evening and you return with the slaves to the village. The other people are making some jokes about you, the strange foreigner, who helped slaves doing slave work. But you don't care. It felt good to do something strenuous after all that forced inactivity.^Later that evening, a small child approaches; his father is one of the slaves whom you helped. He gives you a small amulet he crafted.",
@@ -58301,7 +58262,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 35, 10, 0),
     (change_screen_map),
     ]),
-],),
+]),
 
  ("longbard_finale",0,
     "Today, Agio approaches. He says Gambara wants to speak to you. Both she and her brother Ybor are awaiting you in the hall.",
@@ -58337,7 +58298,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (jump_to_scene, "scn_town_germanic_east_castle"),
     (change_screen_mission),
     ]),
-],),
+]),
 
 ("longbard_finale_2",0,
   "You leave the village of the Longbeards. After a while, you find your troops who set up camp upstream near the river. You ask them what happened and why they didn't search for you. They answer that, after the Lugian army was defeated, they retreated to a safe position. Only then did they start to search for you, but they didn't search the territory of the Winnili as they feared the Winnili. Your men think they are humans with wolf heads!",
@@ -58353,7 +58314,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (rest_for_hours, 0,0,0),
     (change_screen_map),
   ]),
-],),
+]),
 
 ("langobard_village",0,
     "You arrive at the village of the Longbeards.",
@@ -58437,7 +58398,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ("continue",[],"Go Back.",[
       (change_screen_map),
     ]),
-],),
+]),
 
 
  ("investment",0,
@@ -58636,7 +58597,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (assign, "$g_leave_encounter",1),
       (jump_to_menu, "mnu_auto_return_to_map"),
     ]),
-],),
+]),
 
 ("recieve_money",0,
     "You find the moneylender and obtain the requested money. Additionally you recieve 2,500 denars as a gift from {s22}.^^As it seems, your intrigue generated minor rumours.",
@@ -58663,7 +58624,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (add_xp_as_reward, 250),
     (jump_to_menu, "mnu_town"),]),
 
-],),
+]),
 
 ("recieve_senate",0,
   "You find the senator friends of {s22} and discuss everything with them during a small feast.^^As it seems, your intrigue generated minor rumours.",
@@ -58690,7 +58651,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (add_xp_as_reward, 250),
     (jump_to_menu, "mnu_town"),
   ]),
-],),
+]),
 
 ("recieve_influence",0,
   "After entering the town, a messenger informs you where you can find the friends of {s22}. You head towards the meeting point. After several discussions you finish the deal.^^As it seems, your intrigue generated minor rumours.",
@@ -58843,7 +58804,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (quest_set_slot, "qst_rags_to_riches", slot_quest_current_state, 1),
     (jump_to_menu, "mnu_town"),
     ]),
-],),
+]),
 
 ("rags_to_riches_2",0,
     "A lightning doesn't strike at the same place twice she said.  However, right after you and Sittius Afer left the tavern, the whole place bursts into flames. Surprised, you turn around and want "+
@@ -58863,7 +58824,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (change_screen_map),
     ]),
 
-    ],),
+    ]),
     ("death_of_joseph_arimatrea",0,
     "Then a young man appears with a judge of water in his hands. He notices you are sweating heavily due to the heat and without asking, he takes your cup and fills it with clear water, then he hands it over to you. You say that Joseph of Arimathea has died, just a moment ago. He says, that he already knew he would die today and that he knew you would come and drink out of his cup. You are confused by his words and without thinking you take a sip from the cup. You taste wine! You look at the cup and you see that the water has turned into wine! You want to ask the young man how he made his trick but he has already disappeared.^^A moment later, women and men arrive to prepare Joseph for his funeral. You are still standing there and think how the wine could turn into water.",
     "none", [
@@ -58876,7 +58837,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (troop_add_item, "trp_player", "itm_holy_grail"),
     (jump_to_menu, "mnu_town"),
     ]),
-],),
+]),
 
 ("lose_of_the_gral",0,
     "Lose of the grail^^The bright sun dazzles your light, the stench coming from the Tiber hurts your nose and crowds of people are blocking your path. You never have felt more disgusted by Rome than today. ^^You decide to sit town under a tree. A woman appears with a large judge of wine in her hands. She offers you some. You remember the cup you have been gifted by Joseph of Arimathea. You tell her to fill the cup. Then you drink. You don't know why, but the wine tastes like ordinary water. Either she fooled you or the wine is of bad quality.^^ The people around you spot the fish symbol and the name Chrestos on the cup. People start whispering. And in no time a large crowd has gathered. 'Can it be? It has to be! Chrestos! It is the cup of the Master himself! The Master has shown us a sign!' And while they talk more people gather. ^^The excitement of the crowd accelerates. Some woman start falling on the ground and scream and shout words in foreign languages. Some man raise there arms to the sky and start singing chants praising the name of their Lord. Some start dancing, others fall on their knees and cry. The mania of the crowd increases more and suddenly people start attacking you and try to grab the cup. Wine spills onto your cloths. You cannot keep them back, they are too many. You stumble and fall, and with you the cup falls. You lose sight of the cup. Finally, the vigilia appears and the chaos reaches its peak. People start to through stones at the troops and a riot starts. The riot lasts for one day, bringing death and suffering to many people.^^You check your pockets and find the cup gone.",
@@ -58891,7 +58852,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (jump_to_menu, "mnu_town"),
     ]),
 
-    ],),
+    ]),
 
     ("influence_senate",0,
     "As it seems we have a bug here. HAHA!",
@@ -58905,7 +58866,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (jump_to_menu, "mnu_town"),
     ]),
 
-],),
+]),
 
 ("save_file_corrupted",0,
     "Your save file has been corrupted. You can try to restore the save:^^Go to the folder Documents -> Mount&Blade Warband Savegames."

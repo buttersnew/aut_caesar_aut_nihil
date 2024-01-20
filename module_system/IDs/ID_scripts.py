@@ -1017,3 +1017,5 @@ script_print_region_color_to_reg2 = 1015
 script_print_terrain_color_to_reg2 = 1016
 script_cf_can_perform_miracle = 1017
 script_perform_miracle = 1018
+script_enter_temple = 1019
+script_enter_secret_christian_church = 1020

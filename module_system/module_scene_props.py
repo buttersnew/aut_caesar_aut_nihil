@@ -3351,4 +3351,30 @@ scene_props = [
   ("roof_floor_marble",0,"roof_floor_marble","bo_roof_floor_concrete", []),
   ("roof_floor_wood_2",0,"roof_floor_wood_2","bo_roof_floor_concrete", []),
   ("roof_floor_wood",0,"roof_floor_wood","bo_roof_floor_concrete", []),
+
+  ("roman_toilet_use",	0,"roman_toilet","bo_roman_toilet",[
+    (ti_on_scene_prop_use,[
+      (get_player_agent_no, ":player"),
+      (agent_is_active, ":player"),
+      (try_begin),
+        (neg|agent_has_item_equipped, ":player", "itm_xylospongium"),
+        (dialog_box, "@With a Xylospongium equipped you can clean the toilet. But be aware, that cleaning the toilet has a significant negative impact on your health!"),
+      (else_try),
+        (store_random_in_range, ":rand", 0, 10),
+        (try_begin),
+          (le, ":rand", 1),
+          (dialog_box, "@You begrudgingly wield the Xylospongium, scrubbing a neglected toilet. Amidst the grime, a glint catches your eye."
+          +" Astonished, you discover 50 denars concealed in the filth - an unexpected reward for your unsavory task. In the echoes of history,"
+          +" the humble toilet becomes an unlikely treasure trove, a testament to the unpredictability of your journey through the ancient Roman world."
+          +" ^Despite your efforts, the toilet is still dirty...."),
+          (val_add, "$g_player_unhealth", 50),
+          (troop_add_gold, "trp_player", 50),
+        (else_try),
+          (dialog_box, "@Armed with a Xylospongium, you tackle the task of toilet cleaning. Crafted from a stick and sponge, you diligently scrub away the remnants of digested food."
+          +" The soft, water-soaked sponge brings a touch of comfort to this unglamorous chore, connecting you to the everyday lives of Romans."
+          +" ^Despite your efforts, the toilet is still dirty...."),
+        (try_end),
+      (try_end),
+    ])
+  ]),
 ]
