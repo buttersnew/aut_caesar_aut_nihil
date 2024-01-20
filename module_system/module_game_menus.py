@@ -18984,9 +18984,24 @@ game_menus = [
     ]),
 
     ("visit_latrina",[
-      # (eq, 0, 1),
+      (eq, 0, 1),
       (eq, "$current_town", "p_town_6"),
     ],"Enter the Latrinae.",[
+      (set_jump_mission, "mt_toiletboys"),
+      (modify_visitors_at_site, "scn_roman_latrina"),
+      (reset_visitors),
+
+      (try_begin),#second outift
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_toiletboys", 0, 0),
+        (mission_tpl_entry_set_override_flags, "mt_toiletboys", 0, af_override_outfit_1|af_override_horse),
+      (try_end),
+      (set_jump_entry, 0),
+
+      (set_visitor, 1, "trp_romanian"),
+      (set_visitor, 2, "trp_spaniard"),
+      (set_visitor, 3, "trp_dominican"),
+
       (jump_to_scene, "scn_roman_latrina"),
       (change_screen_mission),
     ], "Enter the Latrinae."),
@@ -59259,4 +59274,154 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (jump_to_menu, "mnu_death_waits"),
     ]),
 ]),
+##############################
+
+("toilet_talk_tavern",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Laughter spills through the narrow streets as you navigate the bustling city together. The camaraderie grows with each step, forging unexpected bonds in the unlikeliest of places."
+  +" Through winding alleys and animated chatter, the tavern's glow beckons. The shared adventure, born from a toilet encounter, transforms into a memorable night."
+  +" Amidst clinking cups and shared tales, you realize that the most vibrant connections can arise from the most peculiar beginnings.",
+  "none",[
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (add_xp_as_reward, 1000),
+      (set_jump_mission, "mt_toiletboys"),
+      (modify_visitors_at_site, "scn_shitty_tavern"),
+      (reset_visitors),
+
+      (try_begin),#second outift
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_toiletboys", 0, 0),
+        (mission_tpl_entry_set_override_flags, "mt_toiletboys", 0, af_override_outfit_1|af_override_horse),
+      (try_end),
+      (set_jump_entry, 0),
+      (set_jump_entry, 0),
+
+      (set_visitor, 1, "trp_romanian"),
+      (set_visitor, 2, "trp_spaniard"),
+      (set_visitor, 3, "trp_dominican"),
+
+      (jump_to_scene, "scn_shitty_tavern"),
+      (change_screen_mission),
+    ]),
+]),
+
+("toilet_tavern_escape",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "In the dim-lit tavern, Tiganu Tate, Heidus, and Pyromaniacus share a boisterous evening with you. As laughter echoes, the realization dawns - empty pockets all around."
+  +" A mischievous plan forms, and the trio bolts, leaving you to grapple with unpaid bills. Caught in their wake, you reluctantly settle the debt, watching the escapade unfold with a mix of annoyance and bemusement."
+  +" The misadventure becomes a testament to the unpredictability of camaraderie, where shared moments blend mischief and exasperation, forever etched in the tavern's memories and your wallet's dwindling contents.",
+  "none",[
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (troop_remove_gold, "trp_player", 2000),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("toilet_tavern_leave",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Amidst raucous laughter and empty tankards, Tiganu Tate, Heidus, and Pyromaniacus find themselves penniless in the tavern."
+  +" Reluctantly, you shoulder the burden, settling their bills. Tiganu Tate, ever the provocateur, suggests a visit to a brothel, but you refuse."
+  +" With a shake of the head, you part ways, the camaraderie tinged with the realization that shared revelry doesn't always mean shared responsibility."
+  +" As the tavern's warmth fades behind you, the night unfolds into separate paths, leaving echoes of camaraderie and a slightly lighter coin purse in your wake.",
+  "none",[
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (troop_remove_gold, "trp_player", 2000),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("toilet_tavern_go",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Amidst the flickering tavern lights, pockets lighter than spirits, Tiganu Tate, Heidus, and Pyromaniacus face unpaid bills. As coins change hands, you shoulder the cost of revelry."
+  +" In the ensuing dilemma, Tiganu Tate, ever mischievous, suggests a diversion to a brothel. A shared glance and a smirk later, you find yourselves navigating the labyrinthine streets toward a different kind of indulgence."
+  +" The night unfolds with laughter and whispers, the tavern's financial shadow eclipsed by the fleeting allure of clandestine encounters. You walk under the moonlit through streets."
+  +" Finally, you find a suitable location. ",
+  "none",[
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (add_xp_as_reward, 1000),
+      (set_jump_mission, "mt_toiletboys"),
+      (modify_visitors_at_site, "scn_shitty_tavern"),
+      (reset_visitors),
+
+      (try_begin),#second outift
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_toiletboys", 5, 0),
+        (mission_tpl_entry_set_override_flags, "mt_toiletboys", 5, af_override_outfit_1|af_override_horse),
+      (try_end),
+      (set_jump_entry, 0),
+      (set_visitor, 5, "trp_player"),
+
+      (set_visitor, 6, "trp_romanian"),
+      (set_visitor, 7, "trp_spaniard"),
+      (set_visitor, 8, "trp_dominican"),
+
+      (set_visitor, 9, "trp_whore"),
+
+      (jump_to_scene, "scn_shitty_tavern"),
+      (change_screen_mission),
+    ]),
+]),
+
+("toilet_tavern_victory",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "In the dim-lit tavern, laughter intertwines with the scent of ale, but your merriment is short-lived as the realization dawns - empty pockets all around."
+  +" Tiganu Tate, Heidus, and Pyromaniacus eye the exit, hatching a plan to escape unpaid bills. Your conscience intervenes, and with a firm fist, you halt their retreat."
+  +" You leave the tavern, while the tavernkeeper squeezes out the unpaid bills.",
+  "none",[
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (add_xp_as_reward, 1000),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("toilet_brothel_escape",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Instinctively, you decide to leave the prostitute behind and quickly find an escape route. Amidst the chaos, you slip away, the echoing sounds of the scuffle fading behind."
+  +" The narrow alleys provide a fleeting refuge as you navigate the labyrinthine streets, leaving behind the unsettling scene in the brothel."
+  +" The night, which started with shared camaraderie, now lingers as a haunting memory, the shadows of betrayal staining the unexpected escapade in the city's clandestine quarters."
+  +"^^The fate of the prostitute is unknown to you.",
+  "none",[
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("toilet_brothel_victory",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Amidst the dimly lit haze of the brothel, the night takes a dark turn as Tiganu Tate, Heidus, and Pyromaniacus descend into chaos, their wild revelry turning into a violent storm."
+  +" The air crackles with aggression, and in a sudden surge of chaos, they target you and the vulnerable prostitute. Fueled by instinct and a surge of protective empathy, you face the aggressors head-on."
+  +" The brawl ensues, a collision of fists and desperation in the confined space.^^As the dust settles, Tiganu Tate, Heidus, and Pyromaniacus lie defeated, subdued by your defense."
+  +" In the quiet aftermath, your attention turns to the prostitute, who bears witness to a lifetime of hardship etched in her eyes. Unused to kindness, she gazes at you with a mix of surprise and gratitude."
+  +" For the first time, someone has intervened, offering protection in a world that had only shown cruelty. The brothel's dim corners witness a fleeting alliance, a moment where an unexpected defender emerges in the midst of shadows,"
+  +" breaking the cycle of a harsh and unyielding life. But only for a brief moment. Soon the next drunken 'customer' will appear...",
+  "none",[
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (add_xp_as_reward, 1000),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("toilet_brothel_defeat",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "In the shadowy realm of the brothel, the night spirals into chaos as Tiganu Tate, Heidus, and Pyromaniacus succumb to a frenzy, their revelry turning into violent madness."
+  +" You stand as the defender of the vulnerable prostitute, determined to shield her from the storm. However, the odds tip against you, and the three assailants overwhelm your defense."
+  +" Fists fly, desperation reigns, and despite your best efforts, you and the downtrodden companion succumb to the onslaught.^^As the tumult settles, the dim-lit room bears witness to a disheartening scene"
+  +" - you defeated, the prostitute battered, and the atmosphere tainted by the brutality of the encounter. The aftermath hangs heavy in the air, a reminder of the vulnerability that sometimes accompanies"
+  +" defiance in the unforgiving corners of Rome's shady quarters.",
+  "none",[
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (add_xp_as_reward, 500),
+      (jump_to_menu, "mnu_town"),
+      (troop_remove_gold, "trp_player", 2000),
+    ]),
+]),
+
 ]#end of file

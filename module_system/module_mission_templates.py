@@ -30723,12 +30723,78 @@ mission_templates = [
     ambient_scene_play_random_sound,
 ]),
 
+("toiletboys", 0, -1,
+  "Test.",[
+    (0,mtef_scene_source|mtef_team_0,af_override_horse|af_override_weapons,0,1,[]),
+    (1,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (2,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (3,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (4,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (5,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (6,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (7,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (8,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+  ], global_common_triggers +
+  [
+    (0, 0, ti_once, [],[
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 2000),
+
+    ]),
+
+    (0, 0, ti_once, [
+      (main_hero_fallen),
+    ],[
+      (try_begin),
+        (troop_slot_eq, "trp_global_variables", g_toilet_talk, -6),
+        (jump_to_menu, "mnu_toilet_brothel_defeat"),
+      (else_try),
+        (troop_slot_eq, "trp_global_variables", g_toilet_talk, -5),
+        (jump_to_menu, "mnu_toilet_tavern_escape"),
+      (try_end),
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 2000),
+      (finish_mission, 3),
+    ]),
+
+    (ti_tab_pressed, 0, 0,[
+    ],[
+      (try_begin),
+        (neg|troop_slot_eq, "trp_global_variables", g_toilet_talk, -5),
+        (neg|troop_slot_eq, "trp_global_variables", g_toilet_talk, -6),
+        (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+        (finish_mission, 3),
+      (else_try),
+        (neg|main_hero_fallen),
+        (num_active_teams_le, 1),
+        (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+        (finish_mission, 3),
+        (try_begin),
+          (troop_slot_eq, "trp_global_variables", g_toilet_talk, -6),
+          (jump_to_menu, "mnu_toilet_brothel_victory"),
+        (else_try),
+          (troop_slot_eq, "trp_global_variables", g_toilet_talk, -5),
+          (jump_to_menu, "mnu_toilet_tavern_victory"),
+        (try_end),
+      (else_try),
+        (display_message, "str_cannot_leave_now"),
+      (try_end),
+    ]),
+
+    common_inventory_not_available,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+]),
+
 ("explore_secret_place", 0, -1,
   "Test.",[
     (0,mtef_scene_source,0,0,1,[]),
     (1,mtef_visitor_source,af_override_horse,0,1,[]),
     (2,mtef_visitor_source,af_override_horse,0,1,[]),
     (3,mtef_visitor_source,af_override_horse,0,1,[]),
+    (4,mtef_visitor_source,af_override_horse,0,1,[]),
+    (5,mtef_visitor_source,af_override_horse,0,1,[]),
   ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,

@@ -819,4 +819,5 @@ scn_baltic_town = 816
 scn_kurgan = 817
 scn_kurgan_enter = 818
 scn_roman_latrina = 819
+scn_shitty_tavern = 820
 scn_exit = 100000

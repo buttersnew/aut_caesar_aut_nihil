@@ -1060,5 +1060,7 @@ scenes = [
 
   ("roman_latrina", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], ["bonus_chest_19"]),
 
+  ("shitty_tavern", sf_indoors, "thirsty_lion", "bo_thirsty_lion", (-100, -100), (100, 100), -100, "0",[], []),
+
 ]#end of file
 #

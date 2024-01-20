@@ -3857,6 +3857,8 @@ g_civil_war_timer = 73
 g_galba_intro   = 74
 g_germanicus_intro = 75
 
+g_toilet_talk = 76
+
 #Spain
 p_hisp_tarraco = 1
 p_hisp_baetica = 2

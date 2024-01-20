@@ -6159,6 +6159,16 @@ hero_attrib,wp(300),knows_hero,0x0000000bff0ca385315f8db6db6db6db00000000001efa1
 [itm_leather_boots, itm_alan_light_2],
 hero_attrib,wp(300),knows_hero,0x000000093f0c901036db6db6db6db6db00000000000db6db0000000000000000],
 
+["romanian","Tiganu Tate","Tiganu Tate",tf_male|tf_hero,0,0,fac_commoners,
+[itm_caligea, itm_roman_poor1],
+attrib_level_12,wp(50),knows_level_12,0x000000000804d08356a4cd4b6195a7cc000000000010d0d60000000000000000],
+["spaniard","Heidus Knightus", "Heidus Knightus",tf_male|tf_hero,0,0,fac_commoners,
+[itm_caligea, itm_roman_poor2],
+attrib_level_12,wp(50),knows_level_12,0x000000002611314602da0e0edf69b3d800000000001db71b0000000000000000],
+["dominican","Pyromaniacus","Pyromaniacus",tf_male|tf_hero,0,0,fac_commoners,
+[itm_caligea, itm_roman_poor3],
+attrib_level_12,wp(50),knows_level_12,0x000000003f0404843951d1ed2cb138e400000000001e368c0000000000000000],
+
 ["troops_end", "END", "END", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
 ]#end of file
