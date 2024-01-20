@@ -30644,7 +30644,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	# Number of hunters (fur): {reg25}^\
 	# Number of soapstone deposits: {reg26}^\
 	# Number of amber deposits: {reg27}^\
-	# Number of elefant hunters (ivory): {reg28}^\
+	# Number of elephant hunters (ivory): {reg28}^\
 	# Number of silver deposits: {reg29}^\
 	# Number of forests: {reg30}\
 	# ",
