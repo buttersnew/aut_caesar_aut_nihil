@@ -1021,3 +1021,4 @@ script_enter_temple = 1019
 script_enter_secret_christian_church = 1020
 script_cf_start_love_affair = 1021
 script_raise_level = 1022
+script_cf_is_no_goy = 1023
