@@ -30725,7 +30725,7 @@ mission_templates = [
 
 ("toiletboys", 0, -1,
   "Test.",[
-    (0,mtef_scene_source|mtef_team_0,af_override_horse|af_override_weapons,0,1,[]),
+    (0,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_weapons,0,1,[]),
     (1,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (2,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (3,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),

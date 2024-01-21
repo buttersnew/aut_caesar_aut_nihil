@@ -19005,7 +19005,7 @@ game_menus = [
         (call_script, "script_init_second_outfit", "mt_toiletboys", 0, 0),
         (mission_tpl_entry_set_override_flags, "mt_toiletboys", 0, af_override_outfit_1|af_override_horse),
       (try_end),
-      (set_jump_entry, 0),
+      (set_visitor, 0, "trp_player"),
 
       (set_visitor, 1, "trp_romanian"),
       (set_visitor, 2, "trp_spaniard"),
@@ -59264,8 +59264,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
         (call_script, "script_init_second_outfit", "mt_toiletboys", 0, 0),
         (mission_tpl_entry_set_override_flags, "mt_toiletboys", 0, af_override_outfit_1|af_override_horse),
       (try_end),
-      (set_jump_entry, 0),
-      (set_jump_entry, 0),
+      (set_visitor, 0, "trp_player"),
 
       (set_visitor, 1, "trp_romanian"),
       (set_visitor, 2, "trp_spaniard"),
@@ -59322,7 +59321,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
         (call_script, "script_init_second_outfit", "mt_toiletboys", 5, 0),
         (mission_tpl_entry_set_override_flags, "mt_toiletboys", 5, af_override_outfit_1|af_override_horse),
       (try_end),
-      (set_jump_entry, 0),
+
       (set_visitor, 5, "trp_player"),
 
       (set_visitor, 6, "trp_romanian"),
