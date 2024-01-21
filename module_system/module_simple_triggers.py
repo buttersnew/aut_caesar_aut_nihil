@@ -3058,7 +3058,16 @@ simple_triggers = [
             (party_is_active, ":lord_party"),
             (party_get_battle_opponent, ":enemy", ":lord_party"),#not in battle
             (lt, ":enemy", 0),     #not in battle
-            (jump_to_menu, "mnu_event_corruption_2"),
+
+            (party_get_slot, ":province", "$g_center_trigger_taxes", slot_center_province),
+            (store_add, ":slot", ":province", slot_province_senatorial_begin),
+            (troop_get_slot, ":is_senatorial", "trp_province_array", ":slot"),
+            (try_begin),
+                (le, ":is_senatorial", 0),
+                (jump_to_menu, "mnu_event_corruption_2"),
+            (else_try),
+                (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -30000),
+            (try_end),
         (try_end),
 
         # #check for diseases
@@ -9618,7 +9627,7 @@ simple_triggers = [
         (troop_slot_eq, "trp_kingdom_7_lord", slot_troop_occupation, slto_kingdom_hero),
         (faction_slot_eq, "fac_kingdom_7", slot_faction_leader, "trp_kingdom_7_lord"),
         (neq, "$g_is_emperor", 1),
-        (eq, "$g_players_kingdom", "fac_kingdom_7"),
+        (eq, "$players_kingdom", "fac_kingdom_7"),
         (store_random_in_range, ":rand", 0, 100),
         (gt, ":rand", 58),
         (store_random_in_range, reg37, 1, 8),

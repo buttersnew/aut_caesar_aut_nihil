@@ -27497,7 +27497,13 @@ presentations = [
     (position_set_y, pos1, 1300),
     (overlay_set_size, reg1, pos1),
 
-    (create_text_overlay, reg1, "@Hint: Only senatorial provinces are displayed as imperial provinces are under control of the Princeps.", tf_center_justify),
+    (str_clear, s0),
+    (try_begin),
+        (ge, "$g_is_emperor", 1),
+        (str_store_string, s0, "@Click on the province name to change its typ to imperial."),
+    (try_end),
+
+    (create_text_overlay, reg1, "@Hint: Only senatorial provinces are displayed as imperial provinces are under control of the Princeps. {s0}", tf_center_justify),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 680), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
@@ -27580,6 +27586,7 @@ presentations = [
     (assign, ":num_lines", 0),
     (try_for_range_backwards, ":province", slot_province_governor_begin, p_provinces_end),
         (troop_set_slot, "trp_temp_array_a", ":province", 0),
+        (troop_set_slot, "trp_temp_array_b", ":province", 0),
         (store_add, ":slot", ":province", slot_province_senatorial_begin),
         (troop_get_slot, ":is_senatorial", "trp_province_array", ":slot"),
         (ge, ":is_senatorial", 1),
@@ -27642,6 +27649,13 @@ presentations = [
         (overlay_set_position, reg0, pos1),
         (overlay_set_color, reg0, 0xcc8400),
         (overlay_set_size, reg0, pos2),
+
+        (create_image_button_overlay, reg10, "mesh_longer_button", "mesh_longer_button"),
+        (overlay_set_position, reg10, pos1),
+        (overlay_set_size, reg10, pos2),
+        (overlay_set_alpha, reg10, 0),
+        (overlay_set_color, reg10, 0xDDDDDD),
+        (troop_set_slot, "trp_temp_array_b", ":province", reg10),
 
         (val_add, ":x_name", 170),
 
@@ -27755,6 +27769,16 @@ presentations = [
         (eq, ":end", -1),
         (troop_get_slot, "$g_notification_menu_var1", "trp_province_array", "$g_notification_menu_var2"),
         (start_presentation, "prsnt_influence_governor_change_senate"),
+    (else_try),
+        (ge, "$g_is_emperor", 1),
+        (assign, ":end", p_provinces_end),
+        (try_for_range, ":slot", slot_province_governor_begin, ":end"),
+            (troop_slot_eq, "trp_temp_array_b", ":slot", ":button_pressed_id"),
+            (assign, "$temp4_1", ":slot"),
+            (assign, ":end", -1),
+        (try_end),
+        (eq, ":end", -1),
+        (start_presentation, "prsnt_make_province_imperial"),
     (try_end),
   ]),
   (ti_on_presentation_run, [
@@ -28069,12 +28093,7 @@ presentations = [
         (try_end),
         (eq, ":end", -1),
 
-        (try_begin),
-            (eq, "$g_player_court", "$fief_selected"),
-            (display_message, "@Can't change capital!"),
-        (else_try),
-            (start_presentation, "prsnt_make_province_senatorial"),
-        (try_end),
+        (start_presentation, "prsnt_make_province_senatorial"),
     (else_try),
         (assign, ":end", p_provinces_end),
         (try_for_range, ":slot", slot_province_governor_begin, ":end"),
@@ -28700,7 +28719,7 @@ presentations = [
   ]),
 ]),
 
-("make_province_senatorial", 0, 0, [
+("make_province_senatorial", 0, 0,[
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -28717,7 +28736,7 @@ presentations = [
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
     (str_store_troop_name, s40, "$temp2"),
-    (create_text_overlay, reg1, "@_Are you sure you want to make {s22} a senatorial province?", tf_center_justify),
+    (create_text_overlay, reg1, "@Are you sure you want to make {s22} a senatorial province?", tf_center_justify),
     (position_set_x, pos1, 550), # Higher, means more toward the right
     (position_set_y, pos1, 710), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
@@ -28732,11 +28751,11 @@ presentations = [
         (str_store_string, s21, "@Currently the province is governed by {s20}. The current governor will continue governing the province for one year and then the senate will elect a new one."),
     (else_try),
         (eq, "$temp_troop", 0),
-        (str_store_string, s21, "@Currently the province is governed by you. The current governor will continue governing the province for one year and then the senate will elect a new one."),
+        (str_store_string, s21, "@Currently the province is governed by you. You will continue governing the province for one year and then the senate will elect a new one."),
     (else_try),
         (str_store_string, s21, "@The province has no governor at all."),
     (try_end),
-    (create_text_overlay, reg1, "@_{s21}_", tf_center_justify),
+    (create_text_overlay, reg1, "@{s21}", tf_center_justify),
     (position_set_x, pos1, 550), # Higher, means more toward the right
     (position_set_y, pos1, 680), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
@@ -28827,6 +28846,157 @@ presentations = [
         (store_add, ":slot", slot_province_senatorial_begin, "$temp4_1"),
         (troop_set_slot, "trp_province_array", ":slot", 84),#
         (start_presentation, "prsnt_province_management"),
+    (try_end),
+  ]),
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_space),
+        (set_fixed_point_multiplier, 1000),
+        (mouse_get_position, pos31),
+
+        (position_get_x, reg31, pos31),
+        (position_get_y, reg32, pos31),
+
+        (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+]),
+
+("make_province_imperial", 0, 0, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
+
+    (store_add, ":string", "$temp4_1", "str_province_begin"),
+    (str_store_string, s22, ":string"),
+    (str_store_troop_name, s40, "$temp2"),
+    (troop_get_slot, reg10, "trp_senator_dummy", slot_senate_support),
+    (create_text_overlay, reg1, "@Are you sure you want to make {s22} an imperial province?^Required senate support: 66%. Current senate support: {reg10}.", tf_center_justify),
+    (position_set_x, pos1, 550), # Higher, means more toward the right
+    (position_set_y, pos1, 680), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1100),
+    (position_set_y, pos1, 1100),
+    (overlay_set_size, reg1, pos1),
+
+    (troop_get_slot, "$temp_troop", "trp_province_array", "$temp4_1"),
+    (try_begin),
+        (gt, "$temp_troop", 0),
+        (str_store_troop_name, s20, "$temp_troop"),
+        (str_store_string, s21, "@Currently the province is governed by {s20}. The current governor will continue governing the province until you change him."),
+    (else_try),
+        (eq, "$temp_troop", 0),
+        (str_store_string, s21, "@Currently the province is governed by you. You will continue governing the province until you change him."),
+    (else_try),
+        (str_store_string, s21, "@The province has no governor at all. You will have to elect one."),
+    (try_end),
+    (create_text_overlay, reg1, "@_{s21}_", tf_center_justify),
+    (position_set_x, pos1, 550), # Higher, means more toward the right
+    (position_set_y, pos1, 650), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg1, pos1),
+
+    (try_begin),
+        (gt, "$temp_troop", -1),
+        (troop_get_slot, ":personality", "$temp_troop", slot_lord_reputation_type),
+        (store_add, ":string", ":personality", "str_personality_archetypes"),
+        (str_store_string, s22, ":string"),
+        (troop_get_slot, reg20, "$temp_troop", slot_troop_player_relation),
+        (str_store_troop_name_plural, s30, "$temp_troop"),
+        (try_begin),
+            (neq, "$temp_troop", "trp_player"),
+            (create_text_overlay, reg1, "@Current governor: {s30}.^Relation: {reg20}.^Personality: {s22}", tf_center_justify),
+        (else_try),
+            (create_text_overlay, reg1, "@Current governor: {s30} (You).", tf_center_justify),
+        (try_end),
+        (position_set_x, pos1, 160), # Higher, means more toward the right
+        (position_set_y, pos1, 470-100), # Higher, means more toward the top
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 1100),
+        (position_set_y, pos1, 1100),
+        (overlay_set_size, reg1, pos1),
+    (try_end),
+
+    (try_begin),
+        (gt, "$temp_troop", -1),
+        # (store_mul, ":troop", "$temp_troop", 2),
+        (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", "$temp_troop"),
+        (position_set_x, pos1, 90),
+        (position_set_y, pos1, 540-100),
+        (overlay_set_position, reg0, pos1),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 500),
+        (overlay_set_size, reg0, pos1),
+    (try_end),
+
+    #get additional information about the province
+    (call_script, "script_get_province_relation_modifier", "$temp4_1", -1),
+    (create_text_overlay, reg1, "str_s0", tf_center_justify),
+    (position_set_x, pos1, 550), # Higher, means more toward the right
+    (position_set_y, pos1, 620), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (overlay_set_color, reg1, 0x00007F),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg1, pos1),
+
+    (create_text_overlay, reg1, "@A hint from your advisors: Senatorial provinces are known to be more corrupt as imperial provinces, as there is no way to inspect them via procurators. Also during events the possible choices will be limited.", tf_scrollable_style_2),
+    (position_set_x, pos1, 475), # Higher, means more toward the right
+    (position_set_y, pos1, 200), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (overlay_set_color, reg1, 0x00007F),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 400),
+    (position_set_y, pos1, 300),
+    (overlay_set_area_size, reg1, pos1),
+
+
+    # Back to menu - graphical button
+    (create_game_button_overlay, reg1, "str_return"),
+    (position_set_x, pos1, 250),
+    (position_set_y, pos1, 23),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
+
+    (create_game_button_overlay, reg1, "@Accept"),
+    (position_set_x, pos1, 750),
+    (position_set_y, pos1, 23),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_presentation_credits_obj_1", reg1),
+  ]),
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":button_pressed_id"),
+    (try_begin),
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
+        (start_presentation, "prsnt_influence_senate"),
+    (else_try),
+        (eq, ":button_pressed_id", "$g_presentation_credits_obj_1"), # pressed  (Return to menu)
+
+        (try_begin),
+            (troop_slot_ge, "trp_senator_dummy", slot_senate_support, 66),
+            (call_script, "script_change_player_relation_with_center", "p_town_6", -35),
+            (store_mul, ":support_lost", number_of_senators, -1),
+            (val_div, ":support_lost", 2),
+            (call_script, "script_change_senate_support", ":support_lost", 0),
+            (store_add, ":slot", slot_province_senatorial_begin, "$temp4_1"),
+            (troop_set_slot, "trp_province_array", ":slot", 0),#
+            (start_presentation, "prsnt_influence_senate"),
+        (else_try),
+            (display_message, "@You need more senate support!", message_alert),
+        (try_end),
     (try_end),
   ]),
   (ti_on_presentation_run, [

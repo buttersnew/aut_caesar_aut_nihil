@@ -34574,7 +34574,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 ("event_corruption",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "The governor, {s44}, of {s40} has been blamed to evade taxes, exploit the population with high tributes and abuse of office. The list of crimes he has done against {s40} is long, and the local population is against him.^^"
+  "{s44}, governor of {s40}, has been blamed to evade taxes, exploit the population with high tributes and abuse of office. The list of crimes he has done against {s40} is long, and the local population is against him.^^"
   +" A local lawer has taken the opportunity and wrote a petition to ask the Princeps for help in this case. ^^"
   +" If you do not response accordingly revolts and peasant uprisings are expected.",
   "none",
@@ -34621,8 +34621,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   "Irreguar finances^^An adviser informs you of an irregularity in imperial finances. It seems {s44} of {s45} has been sending significantly less coin to Rome than your advisers think is owed."
   +" Such disputes are routine and an imperial inspection of the settlement's finances can often establish facts. In this case, however, much of the original documents were said to be in {s44}'s"
   +" personal possession and were conveniently inaccessible while traveling on campaign.^^Current relation with {s44}: {reg44}",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_senatus"),
     (str_store_troop_name, s44, "$temp2"),
     (str_store_party_name, s45, "$temp1"),
@@ -34648,75 +34647,63 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("corruption_2_result",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "{s1}",
-    "none",
-    [(set_background_mesh, "mesh_pic_senatus"),
+  "{s1}",
+  "none",[
+    (set_background_mesh, "mesh_pic_senatus"),
     (store_random_in_range, "$temp", 0, 100),
     (try_begin),
       (ge, "$temp", 20),
       (str_store_string, s1, "str_corruption_event_text_1"),
     (else_try),
       (lt, "$temp", 20),
-  	  (setup_quest_text,"qst_governor_corruption"),
+      (setup_quest_text,"qst_governor_corruption"),
       (str_store_troop_name_link, s44, "$temp2"),
       (quest_set_slot, "qst_governor_corruption", slot_quest_expiration_days, 7),
       (quest_set_slot, "qst_governor_corruption", slot_quest_target_troop, "$temp2"),
-	    (str_store_string, s2, "@Find and confront {s44} about corruption without warning. You will need to move fast, however. No matter how well you keep your intentions secret, rumors will spread and {s44} will surely destroy any evidence if given time."),
-	    (call_script, "script_start_quest", "qst_governor_corruption", "trp_fortuna"),
+      (str_store_string, s2, "@Find and confront {s44} about corruption without warning. You will need to move fast, however. No matter how well you keep your intentions secret, rumors will spread and {s44} will surely destroy any evidence if given time."),
+      (call_script, "script_start_quest", "qst_governor_corruption", "trp_fortuna"),
       (str_store_string, s1, "str_corruption_event_text_2"),
     (try_end),
-	],
-    [
-     ("answere_0",[
-
-	 ],"Continue..",
-       [
-        (try_begin),
-          (ge, "$temp", 20),
-          (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -20000),
-          # (val_sub, "$g_taxes", 20000),
-          # (val_max, "$g_taxes", 0),
-          (change_screen_map),
-        (else_try),
-          (lt, "$temp", 20),
-          #Fake that it is a party encounter when enlisted party in a town (lines taken from script_game_event_party_encounter)
-          (troop_get_slot, ":lord_party", "$temp2", slot_troop_leaded_party),
-            (assign, "$g_encountered_party", ":lord_party"),
-            (store_faction_of_party, "$g_encountered_party_faction","$g_encountered_party"),
-            (store_relation, "$g_encountered_party_relation", "$g_encountered_party_faction", "fac_player_faction"),
-            (party_get_slot, "$g_encountered_party_type", "$g_encountered_party", slot_party_type),
-            (party_get_template_id,"$g_encountered_party_template","$g_encountered_party"),
-            (assign, "$talk_context", tc_party_encounter),
-            (call_script, "script_setup_party_meeting", "$g_encountered_party"),
-        (try_end),
-        ],
-       ),
+  ],[
+  ("answere_0",[
+	],"Continue..",[
+    (try_begin),
+      (ge, "$temp", 20),
+      (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -20000),
+      # (val_sub, "$g_taxes", 20000),
+      # (val_max, "$g_taxes", 0),
+      (change_screen_map),
+    (else_try),
+      (lt, "$temp", 20),
+      #Fake that it is a party encounter when enlisted party in a town (lines taken from script_game_event_party_encounter)
+      (troop_get_slot, ":lord_party", "$temp2", slot_troop_leaded_party),
+        (assign, "$g_encountered_party", ":lord_party"),
+        (store_faction_of_party, "$g_encountered_party_faction","$g_encountered_party"),
+        (store_relation, "$g_encountered_party_relation", "$g_encountered_party_faction", "fac_player_faction"),
+        (party_get_slot, "$g_encountered_party_type", "$g_encountered_party", slot_party_type),
+        (party_get_template_id,"$g_encountered_party_template","$g_encountered_party"),
+        (assign, "$talk_context", tc_party_encounter),
+        (call_script, "script_setup_party_meeting", "$g_encountered_party"),
+    (try_end),
+  ]),
 ]),
 
 ("corruption_2_result2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You dismiss the advisers, but make a note to seek out {s44} in your travels and demand the papers without warning. You will need to move fast, however. No matter how well you keep your intentions secret, rumors will spread and any evidence will surely disappear given time",
-    "none",
-    [(set_background_mesh, "mesh_pic_senatus"),
-
-	],
-    [
-     ("answere_0",[
-
-	 ],"Continue..",
-       [
-  	  (setup_quest_text,"qst_governor_corruption"),
-      (str_store_troop_name_link, s44, "$temp2"),
-      (quest_set_slot, "qst_governor_corruption", slot_quest_expiration_days, 7),
-      (quest_set_slot, "qst_governor_corruption", slot_quest_target_troop, "$temp2"),
-	    (str_store_string, s2, "@Find and confront {s44} about corruption without warning. You will need to move fast, however. No matter how well you keep your intentions secret, rumors will spread and {s44} will surely destroy any evidence if given time."),
-	    (call_script, "script_start_quest", "qst_governor_corruption", "trp_fortuna"),
-      (change_screen_map),
-        ],
-       ),
-
-
-    ]
-),
+  "You dismiss the advisers, but make a note to seek out {s44} in your travels and demand the papers without warning. You will need to move fast, however. No matter how well you keep your intentions secret, rumors will spread and any evidence will surely disappear given time",
+  "none",[
+    (set_background_mesh, "mesh_pic_senatus"),
+	],[
+  ("answere_0",[
+  ],"Continue..",[
+    (setup_quest_text,"qst_governor_corruption"),
+    (str_store_troop_name_link, s44, "$temp2"),
+    (quest_set_slot, "qst_governor_corruption", slot_quest_expiration_days, 7),
+    (quest_set_slot, "qst_governor_corruption", slot_quest_target_troop, "$temp2"),
+    (str_store_string, s2, "@Find and confront {s44} about corruption without warning. You will need to move fast, however. No matter how well you keep your intentions secret, rumors will spread and {s44} will surely destroy any evidence if given time."),
+    (call_script, "script_start_quest", "qst_governor_corruption", "trp_fortuna"),
+    (change_screen_map),
+  ]),
+]),
 
 ("miss_managment",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Mismanagement^^"
