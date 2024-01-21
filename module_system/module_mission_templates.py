@@ -9609,10 +9609,7 @@ mission_templates = [
   + auxiliary_player
 ),
 
-
-
-  (
-    "village_raid",mtf_battle_mode|mtf_synch_inventory,charge,
+("village_raid",mtf_battle_mode|mtf_synch_inventory,charge,
     "You lead your men to battle.",
     [
      (3,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,35,[]),
@@ -9748,9 +9745,7 @@ mission_templates = [
     ##diplomacy end
     + auxiliary_player
    # + freelancer_fest_teams
-    ),
-
-
+),
 
   (
     "besiege_inner_battle_castle",mtf_battle_mode,-1,

@@ -16688,9 +16688,9 @@ game_menus = [
     #		(try_end),
     (try_begin),
         (neg|check_quest_active, "qst_usurp_province"),
-        (troop_slot_eq, "trp_player", slot_troop_govern, "trp_player", 0),
-        (troop_slot_eq, "trp_player", slot_troop_aux, "trp_player", 0),
-        (troop_slot_eq, "trp_player", slot_troop_legion, "trp_player", 0),
+        (troop_slot_eq, "trp_player", slot_troop_govern, "trp_player", -1),
+        (troop_slot_eq, "trp_player", slot_troop_aux, "trp_player", -1),
+        (troop_slot_eq, "trp_player", slot_troop_legion, "trp_player", -1),
         (neg|party_slot_ge, "$current_town", slot_party_time_service, 1),
         (neg|party_slot_eq, "$current_town", slot_center_pursue, 1),
         (neg|party_slot_ge, "$current_town", slot_party_looted_left_days, 1),
@@ -25222,7 +25222,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, 1),
 
     #remove old governor
-    (call_script, "script_troop_set_rank", ":governor", slot_troop_govern, 0),
+    (call_script, "script_troop_set_rank", ":governor", slot_troop_govern, -1),
     (call_script, "script_change_lord_party_to_fit_rank", ":governor"),
 
     (change_screen_map),
@@ -31252,10 +31252,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 
 ("civil_war",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "An Empire divided^^\
-	Not all Roman generals accept you as new Caesar Augustus. {s44}, this traitor, has called himself Caesar Augustus too!^^Civil war starts!",
-    "none",
-    [(set_background_mesh, "mesh_pic_emperor"),
+  "An Empire divided^^Not all Roman generals accept you as new Caesar Augustus. {s44}, this traitor, has called himself Caesar Augustus too!^^Civil war starts!",
+  "none",[
+    (set_background_mesh, "mesh_pic_emperor"),
          # find best candidate to become king
         (assign, ":best_troop", -1),
         (assign, ":best_renown", -1),
@@ -37934,7 +37933,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ###############END
 ###5th throwing discus
     ("competition_throwing_2",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "The fiveth competition is Discus throw. Two rounds will take place: The winners of the first round will battle each other in the second and final round."+
+    "The fifth competition is Discus throw. Two rounds will take place: The winners of the first round will battle each other in the second and final round."+
     " ^^You are at round {reg21} and {reg22} opponents are remaining.",
     "none",
     [(set_background_mesh, "mesh_pic_orgie"),
@@ -47536,7 +47535,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
             (call_script, "script_give_center_to_lord2", ":fiefs", "trp_player", 0),
         (try_end),
         #set all slots properly
-        (call_script, "script_troop_set_rank", ":governor",slot_troop_govern, 0),
+        (call_script, "script_troop_set_rank", ":governor",slot_troop_govern, -1),
         (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, 1),
         (assign, "$g_dont_give_fief_to_player_days", 30),
         (troop_set_slot, "trp_province_array", ":province", "trp_player"),
@@ -54132,9 +54131,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (add_quest_note_from_sreg, "qst_blank_quest_19", 10, "@{s12} was declared Caesar Augustus by the Rhine legions and marched towards Rome. He defeated {s13} in the battle of Bedriacum.", 1),
     (try_end),
   ],[
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
       #  # kill NERO and usurp Rome
       (call_script, "script_usurp_faction", "$g_notification_menu_var1", "fac_kingdom_7"),
       (change_screen_map),
@@ -58825,32 +58822,25 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 ]),
 
 ("lose_of_the_gral",0,
-    "Lose of the grail^^The bright sun dazzles your light, the stench coming from the Tiber hurts your nose and crowds of people are blocking your path. You never have felt more disgusted by Rome than today. ^^You decide to sit town under a tree. A woman appears with a large judge of wine in her hands. She offers you some. You remember the cup you have been gifted by Joseph of Arimathea. You tell her to fill the cup. Then you drink. You don't know why, but the wine tastes like ordinary water. Either she fooled you or the wine is of bad quality.^^ The people around you spot the fish symbol and the name Chrestos on the cup. People start whispering. And in no time a large crowd has gathered. 'Can it be? It has to be! Chrestos! It is the cup of the Master himself! The Master has shown us a sign!' And while they talk more people gather. ^^The excitement of the crowd accelerates. Some woman start falling on the ground and scream and shout words in foreign languages. Some man raise there arms to the sky and start singing chants praising the name of their Lord. Some start dancing, others fall on their knees and cry. The mania of the crowd increases more and suddenly people start attacking you and try to grab the cup. Wine spills onto your cloths. You cannot keep them back, they are too many. You stumble and fall, and with you the cup falls. You lose sight of the cup. Finally, the vigilia appears and the chaos reaches its peak. People start to through stones at the troops and a riot starts. The riot lasts for one day, bringing death and suffering to many people.^^You check your pockets and find the cup gone.",
-    "none", [
-    ],
-    [
-
-    ("option_1", [],"The cup is lost...",
-    [
+  "Lose of the grail^^The bright sun dazzles your light, the stench coming from the Tiber hurts your nose and crowds of people are blocking your path. You never have felt more disgusted by Rome than today. ^^You decide to sit town under a tree. A woman appears with a large judge of wine in her hands. She offers you some. You remember the cup you have been gifted by Joseph of Arimathea. You tell her to fill the cup. Then you drink. You don't know why, but the wine tastes like ordinary water. Either she fooled you or the wine is of bad quality.^^ The people around you spot the fish symbol and the name Chrestos on the cup. People start whispering. And in no time a large crowd has gathered. 'Can it be? It has to be! Chrestos! It is the cup of the Master himself! The Master has shown us a sign!' And while they talk more people gather. ^^The excitement of the crowd accelerates. Some woman start falling on the ground and scream and shout words in foreign languages. Some man raise there arms to the sky and start singing chants praising the name of their Lord. Some start dancing, others fall on their knees and cry. The mania of the crowd increases more and suddenly people start attacking you and try to grab the cup. Wine spills onto your cloths. You cannot keep them back, they are too many. You stumble and fall, and with you the cup falls. You lose sight of the cup. Finally, the vigilia appears and the chaos reaches its peak. People start to through stones at the troops and a riot starts. The riot lasts for one day, bringing death and suffering to many people.^^You check your pockets and find the cup gone.",
+  "none", [
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+  ("option_1", [],"The cup is lost...",[
     (add_xp_as_reward, 2500),
     (troop_remove_item, "trp_player", "itm_holy_grail"),
     (jump_to_menu, "mnu_town"),
-    ]),
+  ]),
+]),
 
-    ]),
-
-    ("influence_senate",0,
-    "As it seems we have a bug here. HAHA!",
-    "none", [
+("influence_senate",0,
+  "As it seems we have a bug here. HAHA!",
+  "none", [
     (start_presentation, "prsnt_influence_senate"),
-    ],
-    [
-
-    ("option_1", [],"Flee...",
-    [
+  ],[
+  ("option_1", [],"Flee...",[
     (jump_to_menu, "mnu_town"),
-    ]),
-
+  ]),
 ]),
 
 ("save_file_corrupted",0,
