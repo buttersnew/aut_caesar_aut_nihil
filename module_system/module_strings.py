@@ -9285,6 +9285,15 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("spouse_divorce_otherworldly", "-- She cries. --^^I thought what we had was profound. I love you so much, and I am sorry for what I have done. But please, I don't want to be divorced from you."),
 ("spouse_divorce_default", "-- Tears run down her face. --^^Please, no divorce. I couldn't bear it. I love you, truly..."),
 
+("lady_time_spend_married", "The rest of my time I spend managing the household, a boring but important task."),
+("lady_time_spend_single", "The rest of my time I spend with nothing special at all. The life of a lady can be very boring."),
+("lady_time_spend_ambitious", "About me? Normally, men don't ask what a woman does all day long. But if you want, I can tell you. I spend my free time painting and sewing, like every good woman. And I read a lot, mostly philosophical treatises. {s42}"),
+("lady_time_spend_moralist", "Well, I don't know if it is suitable for a lady to talk with a man about things like that, but I can't imagine what would be wrong with that. So most of the time, I spend sewing or painting. Sometimes I read, of course, only books that are suitable for women. {s42}"),
+("lady_time_spend_conventional", "Oh, I never met a man who wanted to know that. Well, most of the time, I spend sewing or painting. Sometimes I read, of course, only books that are suitable for women. {s42}"),
+("lady_time_spend_adventurous", "About me? Normally, men don't ask what a woman does all day long. But if you want, I can tell you. I spend a lot of time thinking about how it would be to ride out and experience adventures like you men do. {s42}"),
+("lady_time_spend_otherworldly", "Oh, how nice that you ask. I spend my free time reading and writing poems; it is a great pleasure, I think. I also sew a lot and sometimes paint. {s42}"),
+("lady_time_spend_default", "Oh, I never met a man who wanted to know that. Well, most of the time, I spend sewing or painting. Sometimes I read, of course, only books that are suitable for women. {s42}"),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black
