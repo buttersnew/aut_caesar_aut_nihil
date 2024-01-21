@@ -9519,105 +9519,95 @@ mission_templates = [
   # + freelancer_fest_teams
 ),
 
-  (
-    "village_attack_bandits",mtf_battle_mode|mtf_synch_inventory,charge,
-    "You lead your men to battle.",
-    [
-     (3,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-     (1,mtef_team_0|mtef_use_exact_number,0,aif_start_alarmed, 7,[]),
-     (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-     ], p_wetter + storms +global_common_triggers+
-    [
-      cannot_spawn_commoners,
+("village_attack_bandits",mtf_battle_mode|mtf_synch_inventory,charge,
+  "You lead your men to battle.",[
+    (3,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
+    (1,mtef_team_0|mtef_use_exact_number,0,aif_start_alarmed, 7,[]),
+    (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
+  ], p_wetter + storms +global_common_triggers+
+  [
+    cannot_spawn_commoners,
     improved_lightning,
-      (ti_before_mission_start, 0, 0, [],
-       [
-        (team_set_relation, 0, 2, 1),#since we reassigne teams, must also make sure they dont kill each other
-        (team_set_relation, 1, 3, 1),
-         (party_clear, "p_routed_enemies"),
-         (assign, "$g_latest_order_1", 1),
-         (assign, "$g_latest_order_2", 1),
-         (assign, "$g_latest_order_3", 1),
-         (assign, "$g_latest_order_4", 1),
+    (ti_before_mission_start, 0, 0, [],[
+      (team_set_relation, 0, 2, 1),#since we reassigne teams, must also make sure they dont kill each other
+      (team_set_relation, 1, 3, 1),
+      (party_clear, "p_routed_enemies"),
+      (assign, "$g_latest_order_1", 1),
+      (assign, "$g_latest_order_2", 1),
+      (assign, "$g_latest_order_3", 1),
+      (assign, "$g_latest_order_4", 1),
 
-        (assign,"$g_battle_won",0),
-        (assign,"$defender_reinforcement_stage",0),
-        (assign,"$attacker_reinforcement_stage",0),
-         ]),
+      (assign,"$g_battle_won",0),
+      (assign,"$defender_reinforcement_stage",0),
+      (assign,"$attacker_reinforcement_stage",0),
+    ]),
 
-      common_battle_tab_press,
-      common_battle_init_banner,
+    common_battle_tab_press,
+    common_battle_init_banner,
 
-      (ti_question_answered, 0, 0, [],
-       [(store_trigger_param_1,":answer"),
-        (eq,":answer",0),
-        (assign, "$pin_player_fallen", 0),
+    (ti_question_answered, 0, 0, [],[
+      (store_trigger_param_1,":answer"),
+      (eq,":answer",0),
+      (assign, "$pin_player_fallen", 0),
+      (str_store_string, s5, "str_retreat"),
+      (call_script, "script_simulate_retreat", 10, 20, 1),
+      (assign, "$g_battle_result", -1),
+      (call_script, "script_count_mission_casualties_from_agents"),
+      (finish_mission,0),
+    ]),
+
+    (0, 0, ti_once, [], [
+      (assign, "$g_battle_won", 0),
+      (assign, "$defender_reinforcement_stage", 0),
+      (assign, "$attacker_reinforcement_stage", 0),
+      (try_begin),
+        (eq, "$g_mt_mode", vba_after_training),
+        (add_reinforcements_to_entry, 1, 6),
+      (else_try),
+        (add_reinforcements_to_entry, 1, 29),
+      (try_end),
+      #SB : deathcam
+      (call_script, "script_init_death_cam"),
+      (call_script, "script_combat_music_set_situation_with_culture"),
+    ]),
+
+    common_music_situation_update,
+    common_battle_check_friendly_kills,
+    common_battle_check_victory_condition,
+    common_battle_victory_display,
+    wounds_vc,
+
+    (1, 4, 0,[
+      (main_hero_fallen)
+    ],[
+      (try_begin),
+        (call_script, "script_cf_dplmc_battle_continuation"),
+      (else_try),
+        (assign, "$pin_player_fallen", 1),
+
+
         (str_store_string, s5, "str_retreat"),
         (call_script, "script_simulate_retreat", 10, 20, 1),
         (assign, "$g_battle_result", -1),
+        (set_mission_result, -1),
         (call_script, "script_count_mission_casualties_from_agents"),
-        (finish_mission,0),]),
+        (finish_mission, 0),
+      (try_end),
+    ]),
 
-      (0, 0, ti_once, [], [(assign, "$g_battle_won", 0),
-                           (assign, "$defender_reinforcement_stage", 0),
-                           (assign, "$attacker_reinforcement_stage", 0),
-                           (try_begin),
-                             (eq, "$g_mt_mode", vba_after_training),
-                             (add_reinforcements_to_entry, 1, 6),
-                           (else_try),
-                             (add_reinforcements_to_entry, 1, 29),
-                           (try_end),
-                           #SB : deathcam
-                           (call_script, "script_init_death_cam"),
-                           (call_script, "script_combat_music_set_situation_with_culture"),
-                           ]),
-
-      common_music_situation_update,
-      common_battle_check_friendly_kills,
-      common_battle_check_victory_condition,
-      common_battle_victory_display,
-		  wounds_vc,
-      (1, 4,
-      ##diplomacy begin
-      0,
-      ##diplomacy end
-      [(main_hero_fallen)],
-          [
-              ##diplomacy begin
-              (try_begin),
-                (call_script, "script_cf_dplmc_battle_continuation"),
-              (else_try),
-                ##diplomacy end
-                (assign, "$pin_player_fallen", 1),
-
-
-                (str_store_string, s5, "str_retreat"),
-                (call_script, "script_simulate_retreat", 10, 20, 1),
-                (assign, "$g_battle_result", -1),
-                (set_mission_result, -1),
-                (call_script, "script_count_mission_casualties_from_agents"),
-                (finish_mission, 0),
-                ##diplomacy begin
-              (try_end),
-              ##diplomacy end
-              ]),
-
-      common_battle_inventory,
-      common_battle_order_panel_tick,
-    ]
-    + improved_horse_archer_ai
-    + camera_controls
-    + theoris_decapitation
-    + jacobhinds_morale_triggers
+    common_battle_inventory,
+    common_battle_order_panel_tick,
+  ]
+  + improved_horse_archer_ai
+  + camera_controls
+  + theoris_decapitation
+  + jacobhinds_morale_triggers
 	+ morale_triggers
 	+ ai_horn
-    + utility_triggers + battle_panel_triggers + extended_battle_menu + common_division_data + division_order_processing + real_deployment + formations_triggers + AI_triggers
-    ##diplomacy begin
-    + dplmc_battle_mode_triggers
-    ##diplomacy end
-    + auxiliary_player
-  #  + freelancer_fest_teams
- ),
+  + utility_triggers + battle_panel_triggers + extended_battle_menu + common_division_data + division_order_processing + real_deployment + formations_triggers + AI_triggers
+  + dplmc_battle_mode_triggers
+  + auxiliary_player
+),
 
 
 

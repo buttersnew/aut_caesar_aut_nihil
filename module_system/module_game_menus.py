@@ -30782,7 +30782,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
   ("assassination",menu_text_color(0xFF000000)|mnf_disable_all_keys,
     "The eternal City!^^\
-	Eyerthing goes as planned. The guards open the gates and you march into the town with your troops. People look at your soldiers. Some run into their houses, others remain watching.\
+	everything goes as planned. The guards open the gates and you march into the town with your troops. People look at your soldiers. Some run into their houses, others remain watching.\
  As you reach the imperial palace, you are informed supporters of Nero have locked themselves in the Curia Julia. Together with some soldiers you march towards the Curia.",
     "none",
     [
