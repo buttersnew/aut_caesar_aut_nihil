@@ -6666,7 +6666,13 @@ One may memorize the placement of selected divisions relative to the player by p
 - SQUARE in no particular order^\
 - NO FORMATION^^\
 Even in the last case, the player can make formations up to four lines by ordering Stand Closer enough times."),
- ("lover_talk", "Because you are my firend I can tell you that. (She looks around to see that nobody listen, then she wispers) I have heard something really interesting. {s30} and {s31} have a love affair with each other. {s30} said it to me in secret during the last feast. But you haven' heard that from me. (She winks.)"),
+
+("lover_talk_spouse", "My dear friend, I must confide in you as a trusted companion.^^-- She glances around discreetly and lowers her voice --^^ I've come across some unsettling information."
++" It appears that {s30}'s heart has strayed, and rumors are circulating about an affair. Whispers at social gatherings and clandestine meetings suggest an involvement with {s31}. You didn't hear it from me.^^-- She sighs. --"),
+
+("lover_talk", "Because you are my friend, I can tell you this.^^-- She looks around to make sure nobody is listening, then she whispers --^^I have heard something really interesting."
++" {s30} and {s31} are having a love affair with each other. {s30} told me in secret during the last feast. But you haven't heard that from me, right?^^-- She winks. --"),
+
 ("legio_1", "Legio I Adiutrix"),#
 ("legio_2", "Legio III Augusta"),#
 ("legio_3", "Legio V Alaudae"),#
@@ -9243,6 +9249,41 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("roman_merchant_trade_5",  "Ah very good I have various things to over."),
 ("roman_merchant_trade_end","roman_merchant_trade_end"),
 
+("rumor_string_1", "-- She smiles. --^^So, you are interested in hearing rumors and what people are saying? Well, I heard the weather last week was quite strange. We had much more rain than is seasonal. I also heard that the music piece by the famous Livius Occulus was a disaster."),
+("rumor_string_2", "Well. I recently read the cookbook De re coquinaria from Marcus Gavius Apicius. He lived under the rule of Caesar Augustus Tiberius. It is said that he has spent 25 million denarii for food! Unbelievable! Not even I spend so much on food, and you must know I really like a good, delicious meal!"),
+("rumor_string_3", "You should read Satyrikon from Petronius Arbiter. A friend of mine has recommended it and it was funny. I had to laugh throughout the book. Otherwise, there is nothing interesting to talk about."),
+("rumor_string_4", "Have you heard the story about Catull? He is a poet and in love with Clodia, the wife of Metellus Celer. He was Consul some years ago. Well, Catull wrote so many love poems. All of Rome is talking about it. Poor Clodia, it can be really annoying to have such a lavish lover."),
+("rumor_string_5", "Recently I was in the theatre. It was a play from Sophocles, a really old one. But I forgot its name... Ah, and I heard that there was a fire in the suburbs of Rome. Hopefully, nobody was injured."),
+("rumor_string_6", "I haven't heard anything interesting recently. The life of a lady can be really boring. I can't go around and do whatever I want like you men do."),
+("rumor_string_7", "-- She whispers mysteriously. --^^Did you hear about the secretive meeting at the Senate? Rumor has it that a plot to change some law, but ... I forgot which one."),
+("rumor_string_8", "I attended a feast hosted by Senator Lucius Aurelius. The food was exquisite, and the entertainment was splendid. I overheard a servant saying that the guest of honor was none other than the renowned orator Sextus Chadus. It seems the gathering was more than just a celebration of fine cuisine."),
+
+("spy_on_spouse_failure", "I am sorry, but {s31} has seen me during my mission. I am sure she has found out that I was watching her. And I am also sure she will now suspect you behind my scheming. And I must say I have found out nothing."),
+("spy_on_spouse_no_lover", "I found out that she has no lover. I am sure! I watched every action of hers and even bribed her maid. There is no lover."),
+("spy_on_spouse_no_result", "I must say that I have found out nothing. I tried to spy here, but I was almost caught. So I stopped my scheming. I don't know if she has a lover or not."),
+("spy_on_spouse_lover", "I found out that she has a lover. I am sure! I watched every action of hers and even bribed her maid. His name is {s32}. I want to remind you that this gives you a valid reason to divorce from your spouse."),
+("spy_on_spouse_maybe", "The only thing I found out is that she probably has a lover. I am not sure, but it is the most likely case. I bribed her maiden, and she told me that {s31} is always gone for one hour every weekend."),
+
+("spouse_break_love_affair_very_low", "If it must be ..."),
+("spouse_break_love_affair_low", "Of course, I will, and I swear that I will never cheat on you again."),
+("spouse_break_love_affair_medium", "-- Tears run down her face. --^^I will, of course. I am so sorry..."),
+("spouse_break_love_affair_high", "-- She cries. --^^I love you so much, and I am sorry for what I have done. I will never cheat on you again."),
+("spouse_break_love_affair_very_high", "-- Tears are running down her face like a waterfall. --^^I love you, really. And I will do what you want..."),
+
+("spouse_lover_ambitious", "I aimed to enhance our standing in the realm. Having lovers is crucial; I can manipulate them to achieve our goals. It was something I did for us."),
+("spouse_lover_moralist", "-- She cries. --^^I am deeply sorry. I've committed the gravest crime: adultery. May the gods not cast me into Tartarus after my death."),
+("spouse_lover_conventional", "-- She cries. --^^Please forgive me, please. I am truly sorry. I didn't know. I fell in love with him. You were always away, and he was so sweet to me..."),
+("spouse_lover_adventurous", "Because you were always out. You neglected me. You were never here to talk with me. I needed someone to fill that void."),
+("spouse_lover_otherworldly", "-- She cries. --^^I believed our relationship was meaningful and deep. But then you neglected me, and you were always away..."),
+("spouse_lover_default", "-- She cries. --^^Please forgive me, please. I am truly sorry. I didn't know. I fell in love with him. You were always away, and he was so sweet to me..."),
+
+("spouse_divorce_low_rel", "If that's what you want! I also think it would be better if we divorce..."),
+("spouse_divorce_ambitious", "Yes, I know. But it would break your alliance with my family. I believe you wouldn't want that."),
+("spouse_divorce_moralist", "I understand that adultery is a valid reason for divorce. But please, I don't want it! I still love you!"),
+("spouse_divorce_conventional", "-- Tears run down her face. -- ^^Please, no divorce. I couldn't bear it. I love you, truly. You are my only true love."),
+("spouse_divorce_adventurous", "If this is what you want! But remember, don't come crawling back. Think twice; you can't mend it once it's broken."),
+("spouse_divorce_otherworldly", "-- She cries. --^^I thought what we had was profound. I love you so much, and I am sorry for what I have done. But please, I don't want to be divorced from you."),
+("spouse_divorce_default", "-- Tears run down her face. --^^Please, no divorce. I couldn't bear it. I love you, truly..."),
 
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))

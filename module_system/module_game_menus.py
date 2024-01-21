@@ -59374,7 +59374,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (set_background_mesh, "mesh_pic_party"),
   ],[
     ("answere_1",[],"Continue...",[
-      (add_xp_as_reward, 1000),
       (jump_to_menu, "mnu_town"),
     ]),
 ]),
@@ -59388,6 +59387,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (set_background_mesh, "mesh_pic_party"),
   ],[
     ("answere_1",[],"Continue...",[
+      (add_xp_as_reward, 500),
       (jump_to_menu, "mnu_town"),
     ]),
 ]),
@@ -59403,7 +59403,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (set_background_mesh, "mesh_pic_party"),
   ],[
     ("answere_1",[],"Continue...",[
-      (add_xp_as_reward, 1000),
+      (add_xp_as_reward, 2500),
       (jump_to_menu, "mnu_town"),
     ]),
 ]),
@@ -59418,7 +59418,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (set_background_mesh, "mesh_pic_party"),
   ],[
     ("answere_1",[],"Continue...",[
-      (add_xp_as_reward, 500),
+      (add_xp_as_reward, 1250),
       (jump_to_menu, "mnu_town"),
       (troop_remove_gold, "trp_player", 2000),
     ]),

@@ -571,5 +571,6 @@ quests = [
   ("zarinaia", "Special Quest: Zarinaia, the golden one", 0,
   "{!}placeholder."
   ),
+
   ("quests_end", "Quests End", 0, "{!}."),
 ]

@@ -1662,7 +1662,7 @@ slot_troop_flirted_with           	        = 173
 slot_troop_tortured 					    = 174
 
 slot_troop_assassin_attempt				    = 175
-slot_troop_player_knows					    = 176
+# slot_troop_player_knows					    = 176
 
 ##these slots are used for romans only
 slot_troop_govern                 = 177

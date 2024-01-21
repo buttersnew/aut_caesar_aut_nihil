@@ -30767,7 +30767,7 @@ mission_templates = [
         (finish_mission, 3),
       (else_try),
         (neg|main_hero_fallen),
-        (num_active_teams_le, 1),
+        (num_active_teams_le, 2),
         (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
         (finish_mission, 3),
         (try_begin),
