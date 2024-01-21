@@ -2835,8 +2835,7 @@ game_menus = [
          # (heal_party, "p_main_party"),
         # ]
        # ),
-      ("camp_cheat_xp",[(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Add xp to party.",
-       [
+      ("camp_cheat_xp",[(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Add xp to party.",[
          (set_show_messages, 0),
          (party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
          (try_for_range, ":stack", 0, ":num_stacks"), #include player if too lazy to ctrl+x
@@ -3151,19 +3150,29 @@ game_menus = [
       (jump_to_menu, "mnu_cheat_menu2"),
     ]),
 
-    ("options",[
-    ],"Show level boundaries.",[
-      (assign, ":previous_level_boundary", 0),
-      (try_for_range, ":level", 0, 63),
-          (assign, reg20, ":level"),
+    # ("options",[
+    # ],"Increase level by 2.",[
+    #   (call_script, "script_raise_level", "trp_player", 2),
+    # ]),
 
-          (get_level_boundary, reg21, reg20),
+    # ("options",[
+    # ],"Increase level by 3.",[
+    #   (call_script, "script_raise_level", "trp_player", 3),
+    # ]),
 
-          (store_sub, reg22, reg21, ":previous_level_boundary"),
-          (display_message, "@level {reg20} requires {reg21} exp. Diff to previous: {reg22}"),
-          (assign, ":previous_level_boundary", reg21),
-      (try_end),
-    ]),
+    # ("options",[
+    # ],"Show level boundaries.",[
+    #   (assign, ":previous_level_boundary", 0),
+    #   (try_for_range, ":level", 0, 63),
+    #       (assign, reg20, ":level"),
+
+    #       (get_level_boundary, reg21, reg20),
+
+    #       (store_sub, reg22, reg21, ":previous_level_boundary"),
+    #       (display_message, "@level {reg20} requires {reg21} exp. Diff to previous: {reg22}"),
+    #       (assign, ":previous_level_boundary", reg21),
+    #   (try_end),
+    # ]),
 
     # ("back_to_camp_menu",[],"Check for invalid parties",[
     #   (assign, reg22, 0),
@@ -56279,126 +56288,87 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 ),
 
 ("fake_nero_defeated",0,
-    "You defeated the false Nero!^^You gain all the unlawfully taken items back. Among them is the decorated breastplate of Augustus and a decorated spatha. Fake-Nero probably found it while raiding his Mausoleum.",
-    "none", [
+  "You defeated the false Nero!^^You gain all the unlawfully taken items back. Among them is the decorated breastplate of Augustus and a decorated spatha. Fake-Nero probably found it while raiding his Mausoleum.",
+  "none", [
     (set_background_mesh, "mesh_pic_deserters"),
-    ],
-
-    [
-
-    ("option_1",[],"Leave.",
-        [
-    (add_xp_as_reward, 1000),
-    (troop_add_item, "trp_player", "itm_augustus_armor"),
-    (troop_add_item, "trp_player", "itm_ancient_spatha"),
-    (call_script, "script_succeed_quest", "qst_nero_reborn"),
-    (call_script, "script_end_quest", "qst_nero_reborn"),
-    (change_screen_map),
-      ]),
-    ],
-),
-
-
-("greek_game_defeat",0,
-    "The game is over. You have been defeated. Talk to the Greek philosopher if you want to try it again.",
-    "none", [
-    ],
-
-    [
-
-    ("option_1",[],"Continue.",
-        [
-    (change_screen_map),
-      ]),
-    ],
-),
-
-  ("greek_game_no",0,
-    "The game is over. You decided not to ascend to the final floor. Your modesty shows humility, but you are denied a look at the secrets of the world.",
-    "none", [
-    ],
-
-    [
-
-    ("option_1",[],"Continue.",
-        [
-    (troop_set_slot, "$g_talk_troop", slot_troop_party_template,1),
-    (store_character_level, ":level", "trp_player"),
-    #(get_level_boundary,":bound_lower", ":level"),
-    (val_add,":level", 2),
-    (get_level_boundary,":bound_upper", ":level"),
-   # (val_sub, ":bound_upper", ":bound_lower"),
-    (add_xp_as_reward, "trp_player", ":bound_upper"),
-    (assign, reg1, ":bound_upper"),
-    (display_message, "@You gain {reg1} experience", message_alert),
-    (change_screen_map),
-      ]),
-    ],
-  ),
-
-("greek_game_won",0,
-    "You ascended to the final floor. Your new knowledge will hopefully help you being a better ruler.",
-    "none", [
-
   ],[
-    ("option_1",[],"Continue.",[
-      (troop_set_slot, "$g_talk_troop", slot_troop_party_template,1),
-      (store_character_level, ":level", "trp_player"),
-
-      #(get_level_boundary,":bound_lower", ":level"),
-      (val_add,":level", 3),
-      (val_min, ":level", 60),
-      (get_level_boundary,":bound_upper", ":level"),
-      (add_xp_as_reward, "trp_player", ":bound_upper"),
-      (display_message, "@You gain experience", message_positive),
+    ("option_1",[],"Leave.",[
+      (add_xp_as_reward, 1000),
+      (troop_add_item, "trp_player", "itm_augustus_armor"),
+      (troop_add_item, "trp_player", "itm_ancient_spatha"),
+      (call_script, "script_succeed_quest", "qst_nero_reborn"),
+      (call_script, "script_end_quest", "qst_nero_reborn"),
       (change_screen_map),
     ]),
 ]),
 
+("greek_game_defeat",0,
+  "The game is over. You have been defeated. Talk to the Greek philosopher if you want to try it again.",
+  "none", [
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+  ("option_1",[],"Continue.",[
+    (change_screen_map),
+  ]),
+]),
 
-  ("wait_storm",0,
-    "You order your ships to hold. A small boat is let into the water. You enter it and order your other ships to travel to Ostia.^^The hours pass and the sun is burning you. In the distance you spot clouds. The wind is getting stronger. As evening falls, a strong storm starts. A large wave capsizes your boat. With effort you try to stay afloat, but you fail. You lose consciousness.",
-    "none", [
+("greek_game_no",0,
+  "The game is over. You decided not to ascend to the final floor. Your modesty shows humility, but you are denied a look at the secrets of the world.",
+  "none", [
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+  ("option_1",[],"Continue.",[
+    (troop_set_slot, "$g_talk_troop", slot_troop_party_template,1),
+    (call_script, "script_raise_level", "trp_player", 2),
+    (change_screen_map),
+  ]),
+]),
+
+("greek_game_won",0,
+  "You ascended to the final floor. Your new knowledge will hopefully help you being a better ruler.",
+  "none", [
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+  ("option_1",[],"Continue.",[
+    (troop_set_slot, "$g_talk_troop", slot_troop_party_template,1),
+    (call_script, "script_raise_level", "trp_player", 3),
+    (change_screen_map),
+  ]),
+]),
+
+("wait_storm",0,
+  "You order your ships to hold. A small boat is let into the water. You enter it and order your other ships to travel to Ostia.^^The hours pass and the sun is burning you. In the distance you spot clouds. The wind is getting stronger. As evening falls, a strong storm starts. A large wave capsizes your boat. With effort you try to stay afloat, but you fail. You lose consciousness.",
+  "none", [
     (set_background_mesh, "mesh_pic_seabattle"),
-    ],
+  ],[
+    ("option_1",[],"Continue.",[
+      (modify_visitors_at_site, "scn_elysium"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
 
-    [
+      (set_visitor, 1, "trp_desiderius"),
+      (set_visitor, 2, "trp_odius"),
+      (set_visitor, 3, "trp_amalia"),
+      (set_visitor, 4, "trp_fiducia"),
+      (set_visitor, 5, "trp_herakles"),
+      (set_visitor, 6, "trp_aeneas"),
 
-    ("option_1",[],"Continue.",
-        [
-    (modify_visitors_at_site, "scn_elysium"),
-    (reset_visitors),
-    (set_visitor, 0, "trp_player"),
+      (set_jump_mission, "mt_elysium"),
+      (jump_to_scene, "scn_elysium"),
+      (change_screen_mission),
+    ]),
+]),
 
-    (set_visitor, 1, "trp_desiderius"),
-    (set_visitor, 2, "trp_odius"),
-    (set_visitor, 3, "trp_amalia"),
-    (set_visitor, 4, "trp_fiducia"),
-    (set_visitor, 5, "trp_herakles"),
-    (set_visitor, 6, "trp_aeneas"),
-
-    (set_jump_mission, "mt_elysium"),
-    (jump_to_scene, "scn_elysium"),
-    (change_screen_mission),
-      ]),
-    ],
-  ),
-
-  ("elysium_reached",mnf_scale_picture,
-    "'He who binds to himself a joy^Does the winged life destroy^He who kisses the joy as it flies^Lives in eternity's sunrise '^^^^Days, weeks, years pass by and you do not notice. Empires rise and fall, mankind fades away. Yet, you found joy and happiness. You found Elysium. ",
-    "none", [
+("elysium_reached",mnf_scale_picture,
+  "'He who binds to himself a joy^Does the winged life destroy^He who kisses the joy as it flies^Lives in eternity's sunrise '^^^^Days, weeks, years pass by and you do not notice. Empires rise and fall, mankind fades away. Yet, you found joy and happiness. You found Elysium. ",
+  "none", [
     (set_background_mesh, "mesh_pic_elysium"),
-    ],
-
-    [
-
-    ("option_1",[],"Continue.",
-        [
+  ],[
+  ("option_1",[],"Continue.",[
     (call_script, "script_end_quest", "qst_elysium"),
     (change_screen_quit),
-      ]),
-    ],
-  ),
+  ]),
+]),
 
   ("elysium_refused",mnf_scale_picture,
     "You wake up on a beach not far from Ostia. Your head hurts. Soon your soldiers, who have been searching for you for days, spot you.^^Now you know Elysium exist, a place where neither hunger nor winter, neither wolves nor lions, neither war nor death exist. Alas you will never be able to return.",

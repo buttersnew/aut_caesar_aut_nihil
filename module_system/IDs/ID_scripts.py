@@ -1020,3 +1020,4 @@ script_perform_miracle = 1018
 script_enter_temple = 1019
 script_enter_secret_christian_church = 1020
 script_cf_start_love_affair = 1021
+script_raise_level = 1022
