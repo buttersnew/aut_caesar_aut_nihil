@@ -3859,6 +3859,8 @@ g_germanicus_intro = 75
 
 g_toilet_talk = 76
 
+g_rumours_lover = 77
+
 #Spain
 p_hisp_tarraco = 1
 p_hisp_baetica = 2
