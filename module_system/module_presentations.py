@@ -25795,6 +25795,9 @@ presentations = [
     # (assign, ":slot", 0),
     (set_container_overlay, reg1),#start scroll
     (try_for_range, ":active_npc", ":limit_npcs", active_npcs_end),
+
+        (call_script, "script_cf_is_no_goy", ":active_npc"), # block goys for roman main story
+
         (try_begin),
             (eq, ":active_npc", active_npcs_including_player_begin),
             (assign, ":active_npc", "trp_player"),
@@ -29222,6 +29225,7 @@ presentations = [
     (try_end),
   ]),
 ]),
+
 ("influence_governor_change", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
@@ -29370,6 +29374,9 @@ presentations = [
 
     (set_container_overlay, reg1),#start scroll
     (try_for_range, ":active_npc", active_npcs_including_player_begin, active_npcs_end),
+
+        (call_script, "script_cf_is_no_goy", ":active_npc"), # block goys for roman main story
+
         (neq, ":active_npc", "$g_notification_menu_var1"),
         (try_begin),
             (eq, ":active_npc", active_npcs_including_player_begin),
@@ -29720,6 +29727,9 @@ presentations = [
 
     (set_container_overlay, reg1),#start scroll
     (try_for_range, ":active_npc", ":begin_loop", active_npcs_end),
+
+        (call_script, "script_cf_is_no_goy", ":active_npc"), # block goys for roman main story
+
         (neq, ":active_npc", "$g_notification_menu_var1"),
         (try_begin),
             (eq, ":active_npc", active_npcs_including_player_begin),
@@ -30938,7 +30948,7 @@ presentations = [
                     (display_message, "@Due to the civil war the province is in turmoil.", message_alert),
                     (display_message, "@It is not possible to change the governor now.", message_alert),
                 (else_try),
-                            (assign, "$g_presentation_credits_obj_9_alpha", 0),
+                    (assign, "$g_presentation_credits_obj_9_alpha", 0),
                     (start_presentation, "prsnt_governor_selection"),
                 (try_end),
             (else_try),

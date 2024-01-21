@@ -30434,7 +30434,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("bacchus",[
       (troop_slot_eq, "trp_player", slot_troop_religion, worships_christus),
     ],"Visit the Christian underground temple.",[
-      (call_script, "script_enter_secret_christian_church"),
+      (call_script, "script_enter_secret_christian_church", 1),
     ]),
     ("bacchus",[
       (eq, 0, 1),
