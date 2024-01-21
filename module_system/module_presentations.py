@@ -4881,6 +4881,7 @@ presentations = [
 
     (assign, ":workshops_total", 0),
     (assign, ":latifundia_total", 0),
+    (assign, ":expierence_gain"),
 ##############center loop
 ##calculate rents from centers
     (try_for_range, ":center_no", centers_begin, centers_end),
@@ -5075,6 +5076,11 @@ presentations = [
                 (overlay_set_color, reg1, 0xFF0000),
             (try_end),
 
+            (try_begin), ## add xp based on enterprice income
+                (gt, ":net_profit", 0),
+                (val_add, ":expierence_gain", 50),
+            (try_end),
+
             (val_add, ":all_centers_accumulated_total", ":net_profit"),
             (val_add, ":workshops_total", ":net_profit"),
             (val_add, ":net_change", ":net_profit"),
@@ -5174,6 +5180,11 @@ presentations = [
                     (party_set_slot, ":latifundium", slot_center_accumulated_rents, 0),
                 (try_end),
                 (val_add, ":net_change", reg13),
+                (try_begin), ## add xp based on enterprice income
+                    (gt, ":net_change", 0),
+                    (val_add, ":expierence_gain", 50),
+                (try_end),
+
                 (val_add, ":latifundia_total", reg13),
                 (try_begin),
                     (eq, "$g_presentation_credits_obj_2_alpha", 1),
@@ -6763,6 +6774,14 @@ presentations = [
 
     (try_begin),
         (eq, "$g_apply_budget_report_to_gold", 1),
+
+        (try_begin),
+            (gt, ":expierence_gain", 0),
+            (assign, reg0, ":expierence_gain"),
+            (display_message, "@You gain {reg0} xp from your successful business.", message_positive),
+            (add_xp_as_reward, ":expierence_gain"),
+        (try_end),
+
         (assign, "$g_player_debt_to_party_members", ":player_new_debt_to_party_members"),
         (try_begin),
             (gt, ":player_wealth_dif", 0),

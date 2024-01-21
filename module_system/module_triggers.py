@@ -171,7 +171,7 @@ triggers = [
     (quest_slot_ge, "qst_wlodowiecus_adventure", slot_quest_current_state, 1),
     (quest_slot_eq, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 0),
     (store_character_level, ":level", "trp_player"),
-    (ge, ":level", 20),
+    (ge, ":level", 16),
 ],[
     (jump_to_menu, "mnu_wlodowiecus_adventure_2_intro"),
 ]),
@@ -183,7 +183,7 @@ triggers = [
     (quest_slot_ge, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 1),
     (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 0),
     (store_character_level, ":level", "trp_player"),
-    (ge, ":level", 30),
+    (ge, ":level", 21),
 ],[
     (jump_to_menu, "mnu_wlodowiecus_adventure_3_intro"),
 ]),
