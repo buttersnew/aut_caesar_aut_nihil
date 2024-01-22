@@ -34722,9 +34722,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (str_store_string, s40, ":province"),
 	],[
     ("answere_1",[
-      (le, "$temp", 0),
+      (gt, "$temp", 0),
     ],"The province is senatorial and the governor elected by the senate. There is nothing I can do about it!",[
       (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -20000),
+      (jump_to_menu, "mnu_auto_return_to_map"),
     ]),
     ("answere_1",[
       (le, "$temp", 0),

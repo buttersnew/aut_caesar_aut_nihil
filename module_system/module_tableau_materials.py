@@ -122,8 +122,7 @@ tableaus = [
 
        ]),
 
-  ("game_troop_label_banner", 0, "tableau_with_transparency", 256, 256, -128, 0, 128, 256,
-   [
+  ("game_troop_label_banner", 0, "tableau_with_transparency", 256, 256, -128, 0, 128, 256,[
     (assign, "$tableau_active", 1),
     #(store_script_param, ":banner_mesh", 1),
     (store_script_param, ":banner_troop", 1),
