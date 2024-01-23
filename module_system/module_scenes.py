@@ -626,6 +626,12 @@ scenes = [
   ("roman_african_castle_prison",sf_indoors,"interior_prison_n", "bo_interior_prison_n", (-100,-100),(100,100),-100,"0",
     [],[]),
 
+  ("salona_ex",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000004fd3f0000315e0000201a0000697b",
+    [],[],"outer_terrain_beach"),
+  ("salona_prison",sf_indoors,"interior_prison_n", "bo_interior_prison_n", (-100,-100),(100,100),-100,"0",
+    [],[]),
+  ("salona_in", sf_indoors, "interior_castle_j", "bo_interior_castle_j", (-100, -100), (100, 100), -100, "0",["exit"], []),
+
   ("castle_caledonian_ex", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000230029cb2000709c200003c9500004b9b00002f4d",[], [], "outer_terrain_plain"),
   ("castle_caledonian_in", sf_indoors, "none", "none", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("castle_caledonian_prison", sf_indoors, "interior_prison_d", "bo_interior_prison_d", (-100, -100), (100, 100), -100, "0",[], []),

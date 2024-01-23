@@ -49301,7 +49301,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_background_mesh, "mesh_pic_punishment_roman"),
     (else_try),
       (eq, "$temp4_1", 2),
-      (str_store_string, s23, "@You managed to stay awake. You yawned here and there but nobody noticed. As the performance is over you cheer and applause as laud as you can. Hopefully, this waste of time helps you in your progress towards promotion."),
+      (str_store_string, s23, "@You managed to stay awake. You yawned here and there but nobody noticed. As the performance is over you cheer and applause as loud as you can. Hopefully, this waste of time helps you in your progress towards promotion."),
       (call_script, "script_freelancer_add_progress", 15),
       (set_background_mesh, "mesh_pic_roma"),
     (try_end),

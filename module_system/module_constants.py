@@ -4008,6 +4008,10 @@ s_rebell_parties_end   =  s_rebell_parties_begin+30
 s_saka_parties_begin = s_rebell_parties_end
 s_saka_parties_end = s_saka_parties_begin+5
 
+p_port_centers_begin = s_saka_parties_end
+p_port_centers_end = p_port_centers_begin + 50 # reserve 50
+
+
 region_spain                            = 1
 region_north_africa                     = 2
 region_southitaly                       = 3
