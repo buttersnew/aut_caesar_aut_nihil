@@ -6530,7 +6530,7 @@ presentations = [
 
         (try_begin),
             (le, ":random", ":fail_chance"),
-            (create_text_overlay, reg1, "@Deal has failed. You recieve no money back.", tf_right_align|tf_single_line),
+            (create_text_overlay, reg1, "@Deal has failed. You receive no money back.", tf_right_align|tf_single_line),
             (overlay_set_color, reg1, 0xFF2C2C),
         (else_try),
             (val_add, ":interest_rate", 100),

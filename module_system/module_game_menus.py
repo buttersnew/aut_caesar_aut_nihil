@@ -31102,7 +31102,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 #         (call_script, "script_troop_get_player_relation", ":npc"),
 #         (assign, ":player_relation", reg0),
 #         (try_begin),
-#           (gt, ":player_relation", 15), # and at least more then 15 relation
+#           (gt, ":player_relation", 15), # and at least more than 15 relation
 #           (troop_get_slot, ":renown_player", "trp_player", slot_troop_renown), ##player must have more renown
 #           (troop_get_slot, ":renown_npc", ":npc", slot_troop_renown),
 #           (troop_get_slot, ":support", "trp_senator_dummy", slot_senate_support),
@@ -33736,11 +33736,11 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 ("emperor_event_06",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Alexander the Great!^^You spend time with a beautiful courtier."
-  +" She says that you are great but Alexander the Great was even greater, because he had conquered the whole world!^You answere:",
+  +" She says that you are great, but Alexander the Great was even greater because he had conquered the whole world!^You answer:"
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("answere_1",[],"What? I am a god. I will build an army like Alxeander had and conquer more! (150,000 denars)",[
+    ("answere_1",[],"What? I am a god. I will build an army like Alxeander and conquer even more! (150,000 denars)",[
       (store_troop_gold, ":gold", "trp_player"),
       (add_xp_as_reward, 150),
       (try_begin),
@@ -33759,11 +33759,11 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (try_end),
       (change_screen_map),
     ]),
-    ("answere_2",[],"Hm, up with her head.",[
+    ("answere_2",[],"Up with her head!",[
       (call_script, "script_change_player_honor", -2),
       (change_screen_map),
     ]),
-    ("answere_3",[],"No, your breats are much greater then anything in this world!",[
+    ("answere_3",[],"No. Your breasts are much greater then anything in this world!",[
       (add_xp_as_reward, 1500),
       (val_add,"$g_player_unhealth", 50),
       (display_message, "@She follows you into a room and you have some funny hours with her.", message_positive),
@@ -39629,7 +39629,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
             # (eq, reg0, 1),
             # (display_message, "@Can't merge both fleets because your sea-king skill isn't high enough."),
           # (else_try),
-            # # more then 7 ships (player shouldn't see this in theory)
+            # # more than 7 ships (player shouldn't see this in theory)
             # (eq, reg0, 2),
             # (display_message, "@Can't merge both fleets because this would exceed the fleet limit of seven ships."),
           # (else_try),

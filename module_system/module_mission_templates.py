@@ -14208,7 +14208,7 @@ mission_templates = [
           (assign, reg3, 0),
           (assign, ":counter", 0),
           (try_for_prop_instances, ":curr_instance", -1, somt_object),
-             (lt, ":counter", 15),	#not more then 60 part sys, now 25 since people get performance issues
+             (lt, ":counter", 15),	#not more than 60 part sys, now 25 since people get performance issues
              (prop_instance_get_scene_prop_kind, ":scene_prop_kind", ":curr_instance"),
              (this_or_next|eq, ":scene_prop_kind", "spr_roman_house_a"),
              (this_or_next|eq, ":scene_prop_kind", "spr_roman_house_b"),
