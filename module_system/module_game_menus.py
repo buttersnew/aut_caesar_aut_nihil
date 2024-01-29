@@ -38912,7 +38912,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (jump_to_scene, "scn_mount_olymp"),
       (change_screen_mission),
     ], "Leave."),
-    ("monasterio_recruitm",[
+    ("answere_2",[
       (eq, 0, 1),
     ],"Enter the cave",[
       (modify_visitors_at_site, "scn_cave_olympia"),
@@ -38934,12 +38934,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (change_screen_mission),
       (set_passage_menu,"mnu_mount_olymp"),
     ],"Enter the cave"),
-
-    ("answere_1",[],"Leave.",
-      [
+    ("answere_3",[],"Leave.",[
 	      (change_screen_map),
-      ]
-    ),
+    ]),
 ]),
 
 ("delphi",menu_text_color(0xFF000000)|mnf_disable_all_keys,
