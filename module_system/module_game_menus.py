@@ -19435,7 +19435,7 @@ game_menus = [
 
       ##either fight as gladiators or use the own equipment
       (try_begin),
-          (faction_slot_eq, "$g_encountered_party_faction", slot_center_culture, "fac_culture_7"),
+          (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
           (set_jump_mission, "mt_arena_melee_fight"),
           (call_script, "script_set_items_for_tournament"),
       (else_try),
