@@ -33704,8 +33704,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 ("emperor_event_06",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Alexander the Great!^^You spend time with a beautiful courtier."
-  +" She says that you are great, but Alexander the Great was even greater because he had conquered the whole world!^You answer:"
+  "Alexander the Great!^^You spend time with a beautiful courtier. She says that you are great, but Alexander the Great was even greater because he had conquered the whole world!^You answer:",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
@@ -33738,7 +33737,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (display_message, "@She follows you into a room and you have some funny hours with her.", message_positive),
       (change_screen_map),
     ]),
-    ("answere_3",[],"Yes. Alexander was greater than me! And?",[
+    ("answere_4",[],"Yes. Alexander was greater than me! And?",[
       (add_xp_as_reward, 250),
       (change_screen_map),
     ]),
