@@ -19149,51 +19149,46 @@ game_menus = [
 	),
 
 
-  (
-    "town_tournament_lost",0,
-    "You have been eliminated from the games.{s8}",
-    "none",
-    [
-	(str_clear, s8),
-	(try_begin),
-		(this_or_next|neq, "$players_kingdom", "$g_encountered_party_faction"),
-			(neg|troop_slot_ge, "trp_player", slot_troop_renown, 50),
-		(neg|troop_slot_ge, "trp_player", slot_troop_renown, 125),
-		(gt, "$g_player_tournament_placement", 4),
-		(faction_slot_eq, "$g_encountered_party_faction", slot_faction_ai_state, sfai_feast),
-		(faction_slot_eq, "$g_encountered_party_faction", slot_faction_ai_object, "$g_encountered_party"),
-		(str_store_string, s8, "str__however_you_have_sufficiently_distinguished_yourself_to_be_invited_to_attend_the_ongoing_feast_in_the_lords_castle"),
-	(try_end),
+(
+  "town_tournament_lost",0,
+  "You have been eliminated from the games.{s8}",
+  "none",[
+    (set_background_mesh, "mesh_pic_gladiator"),
+    (str_clear, s8),
+    (try_begin),
+      (this_or_next|neq, "$players_kingdom", "$g_encountered_party_faction"),
+      (neg|troop_slot_ge, "trp_player", slot_troop_renown, 50),
+      (neg|troop_slot_ge, "trp_player", slot_troop_renown, 125),
+      (gt, "$g_player_tournament_placement", 4),
+      (faction_slot_eq, "$g_encountered_party_faction", slot_faction_ai_state, sfai_feast),
+      (faction_slot_eq, "$g_encountered_party_faction", slot_faction_ai_object, "$g_encountered_party"),
+      (str_store_string, s8, "str__however_you_have_sufficiently_distinguished_yourself_to_be_invited_to_attend_the_ongoing_feast_in_the_lords_castle"),
+    (try_end),
+  ],[
+    ("continue", [], "Continue...",[
+      (jump_to_menu, "mnu_town_tournament_won_by_another"),
+    ]),
+]),
 
-        ],
-    [
-      ("continue", [], "Continue...",
-       [(jump_to_menu, "mnu_town_tournament_won_by_another"),
-        ]),
-    ]
-  ),
-
-  (
-    "town_tournament_won",mnf_disable_all_keys,
-    "You have won the great game of {s3}! You are filled with pride as the crowd cheers your name.\
- In addition to honour, fame and glory, you earn a prize of {reg9} denars, as well as one mystery prize. {s8}",
-    "none",
-    [
-        (str_store_party_name, s3, "$current_town"),
-        (call_script, "script_change_troop_renown", "trp_player", 20),
-        (call_script, "script_change_player_relation_with_center", "$current_town", 1),
-        # (assign, reg9, 200),
-        # (add_xp_to_troop, 250, "trp_player"),
-        (assign, reg9, 1000),
-        (add_xp_to_troop, 250, "trp_player"),
-        (troop_add_gold, "trp_player", reg9),
-        (str_clear, s8),
-        (store_add, ":total_win", "$g_tournament_bet_placed", "$g_tournament_bet_win_amount"),
-        (try_begin),
-          (gt, "$g_tournament_bet_win_amount", 0),
-          (assign, reg8, ":total_win"),
-          (str_store_string, s8, "@Moreover, you earn {reg8} denars from the clever bets you placed on yourself..."),
-        (try_end),
+("town_tournament_won",mnf_disable_all_keys,
+  "You have won the great game of {s3}! You are filled with pride as the crowd cheers your name."
+  +" In addition to honour, fame and glory, you earn a prize of {reg9} denars, as well as one mystery prize. {s8}",
+  "none",[
+    (str_store_party_name, s3, "$current_town"),
+    (call_script, "script_change_troop_renown", "trp_player", 20),
+    (call_script, "script_change_player_relation_with_center", "$current_town", 1),
+    # (assign, reg9, 200),
+    # (add_xp_to_troop, 250, "trp_player"),
+    (assign, reg9, 1000),
+    (add_xp_to_troop, 250, "trp_player"),
+    (troop_add_gold, "trp_player", reg9),
+    (str_clear, s8),
+    (store_add, ":total_win", "$g_tournament_bet_placed", "$g_tournament_bet_win_amount"),
+    (try_begin),
+      (gt, "$g_tournament_bet_win_amount", 0),
+      (assign, reg8, ":total_win"),
+      (str_store_string, s8, "@Moreover, you earn {reg8} denars from the clever bets you placed on yourself..."),
+    (try_end),
 		(try_begin),
 			(this_or_next|neq, "$players_kingdom", "$g_encountered_party_faction"),
             (neg|troop_slot_ge, "trp_player", slot_troop_renown, 70),
@@ -19203,69 +19198,63 @@ game_menus = [
 			(faction_slot_eq, "$g_encountered_party_faction", slot_faction_ai_object, "$g_encountered_party"),
 			(str_store_string, s8, "str_s8_you_are_also_invited_to_attend_the_ongoing_feast_in_the_castle"),
 		(try_end),
-        (troop_add_gold, "trp_player", ":total_win"),
-        (assign, ":player_odds_sub", 0),
-        (store_div, ":player_odds_sub", "$g_tournament_bet_win_amount", 5),
-        (party_get_slot, ":player_odds", "$current_town", slot_town_player_odds),
-        (val_sub, ":player_odds", ":player_odds_sub"),
-        (val_max, ":player_odds", 250),
+    (troop_add_gold, "trp_player", ":total_win"),
+    (assign, ":player_odds_sub", 0),
+    (store_div, ":player_odds_sub", "$g_tournament_bet_win_amount", 5),
+    (party_get_slot, ":player_odds", "$current_town", slot_town_player_odds),
+    (val_sub, ":player_odds", ":player_odds_sub"),
+    (val_max, ":player_odds", 250),
 
-        (party_set_slot, "$current_town", slot_town_player_odds, ":player_odds"),
-        (call_script, "script_play_victorious_sound"),
-        #SB : stop arena loop sound if it leaks here
-        (stop_all_sounds, 1),
-        #also add background
-        (set_background_mesh, "mesh_pic_payment"),
-        #also gives bonus faction morale
-        (call_script, "script_change_faction_troop_morale", "$g_encountered_party_faction", ":player_odds", 1),
-        ],
-    [
-      ("continue", [], "Collect your prize...",
-       [(jump_to_menu, "mnu_town"),
-       (call_script, "script_get_random_tournament_prize"),
-       (change_screen_loot, "trp_temp_troop"),
-        ]),
-    ]
-  ),
+    (party_set_slot, "$current_town", slot_town_player_odds, ":player_odds"),
+    (call_script, "script_play_victorious_sound"),
+    #SB : stop arena loop sound if it leaks here
+    (stop_all_sounds, 1),
+    #also add background
+    (set_background_mesh, "mesh_pic_payment"),
+    #also gives bonus faction morale
+    (call_script, "script_change_faction_troop_morale", "$g_encountered_party_faction", ":player_odds", 1),
+  ],[
+    ("continue", [], "Collect your prize...",[
+      (jump_to_menu, "mnu_town"),
+      (call_script, "script_get_random_tournament_prize"),
+      (change_screen_loot, "trp_temp_troop"),
+    ]),
+]),
 
-  (
-    "town_tournament_won_by_another",mnf_disable_all_keys,
-    "As the only {reg3?fighter:man} to remain undefeated this day, {s1} wins the lists and the glory of this game.",
-    "none",
-    [
-      (call_script, "script_get_num_tournament_participants"),
-      (store_sub, ":needed_to_remove_randomly", reg0, 1),
-      (try_begin),
-        (troop_slot_eq, "trp_tournament_participants", 0, 0), #delete player from the participants
-        (troop_set_slot, "trp_tournament_participants", 0, -1),
-        (val_sub, ":needed_to_remove_randomly", 1),
-      (try_end),
-        (call_script, "script_remove_tournament_participants_randomly", ":needed_to_remove_randomly"),
-        (call_script, "script_sort_tournament_participant_troops"),
-        (troop_get_slot, ":winner_troop", "trp_tournament_participants", 0),
-        (str_store_troop_name, s1, ":winner_troop"),
-        (try_begin),
-          (troop_is_hero, ":winner_troop"),
-          (call_script, "script_change_troop_renown", ":winner_troop", 20),
-        (try_end),
-		  ##diplomacy start+ use script for gender
-        #(troop_get_type, reg3, ":winner_troop"),#<- OLD
+("town_tournament_won_by_another",mnf_disable_all_keys,
+  "As the only {reg3?fighter:man} to remain undefeated this day, {s1} wins the lists and the glory of this game.",
+  "none",[
+    (call_script, "script_get_num_tournament_participants"),
+    (store_sub, ":needed_to_remove_randomly", reg0, 1),
+    (try_begin),
+      (troop_slot_eq, "trp_tournament_participants", 0, 0), #delete player from the participants
+      (troop_set_slot, "trp_tournament_participants", 0, -1),
+      (val_sub, ":needed_to_remove_randomly", 1),
+    (try_end),
+    (call_script, "script_remove_tournament_participants_randomly", ":needed_to_remove_randomly"),
+    (call_script, "script_sort_tournament_participant_troops"),
+    (troop_get_slot, ":winner_troop", "trp_tournament_participants", 0),
+    (str_store_troop_name, s1, ":winner_troop"),
+    (try_begin),
+      (troop_is_hero, ":winner_troop"),
+      (call_script, "script_change_troop_renown", ":winner_troop", 20),
+    (try_end),
+    ##diplomacy start+ use script for gender
+    #(troop_get_type, reg3, ":winner_troop"),#<- OLD
 		(call_script, "script_dplmc_store_troop_is_female_reg", ":winner_troop", 3),
-		  ##diplomacy end+
-        #SB : stop arena sound if it leaks here
-        (stop_all_sounds, 0),
-        (set_background_mesh, "mesh_pic_girls"),
-        ],
-    [
-      ("continue", [], "Continue...",
-       [(jump_to_menu, "mnu_town"),
-        ]),
-    ]
-  ),
-  (
-    "town_race_won_by_another",mnf_disable_all_keys,
-    "As the only {reg3?fighter:man} to remain undefeated this day, {s1} wins the race.",
-    "none",
+    ##diplomacy end+
+    #SB : stop arena sound if it leaks here
+    (stop_all_sounds, 0),
+    (set_background_mesh, "mesh_pic_girls"),
+  ],[
+    ("continue", [], "Continue...",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("town_race_won_by_another",mnf_disable_all_keys,
+  "As the only {reg3?fighter:man} to remain undefeated this day, {s1} wins the race.",
+  "none",
     [
       # (call_script, "script_get_num_tournament_participants"),
       # (store_sub, ":needed_to_remove_randomly", reg0, 1),
@@ -31482,39 +31471,35 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ],"Lobby for water rights",[
       (jump_to_menu, "mnu_looby_for_water_rights"),
     ]),
-   ("leg",[
-    (troop_slot_eq, "trp_player", slot_troop_honorary_title, ht_censor),
-     ],"Inspect the imperial treasury.",
-        [
-        (jump_to_menu, "mnu_inspect_treasury"),
-        ]
-      ),
+    ("leg",[
+      (troop_slot_eq, "trp_player", slot_troop_honorary_title, ht_censor),
+    ],"Inspect the imperial treasury.",[
+      (jump_to_menu, "mnu_inspect_treasury"),
+    ]),
 
-      ("leg",[
-    (check_quest_active, "qst_grain_supply"),
-    (quest_get_slot, ":target", "qst_grain_supply",slot_quest_target_party),
-    (gt, ":target", 1),
-    (try_begin),
-      (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
-      (ge, ":num_attached_parties", 1),
-      (try_for_range_backwards, ":attached_party_rank", 0, ":num_attached_parties"),
-        (party_get_attached_party_with_rank, ":attached_party", "p_main_party", ":attached_party_rank"),
-        (eq, ":attached_party", ":target"),
-        (party_detach, ":attached_party"),
-        (party_relocate_near_party, ":attached_party", "p_main_party", 1),
-        (party_set_slot,":attached_party",slot_party_time_service, -1),
-        (str_store_party_name, s22, ":attached_party"),
-        (display_message, "@{s22} has left your force."),
+    ("leg",[
+      (check_quest_active, "qst_grain_supply"),
+      (quest_get_slot, ":target", "qst_grain_supply",slot_quest_target_party),
+      (gt, ":target", 1),
+      (try_begin),
+        (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
+        (ge, ":num_attached_parties", 1),
+        (try_for_range_backwards, ":attached_party_rank", 0, ":num_attached_parties"),
+          (party_get_attached_party_with_rank, ":attached_party", "p_main_party", ":attached_party_rank"),
+          (eq, ":attached_party", ":target"),
+          (party_detach, ":attached_party"),
+          (party_relocate_near_party, ":attached_party", "p_main_party", 1),
+          (party_set_slot,":attached_party",slot_party_time_service, -1),
+          (str_store_party_name, s22, ":attached_party"),
+          (display_message, "@{s22} has left your force."),
+        (try_end),
       (try_end),
-    (try_end),
 
       (store_distance_to_party_from_party,":distance", ":target", "p_town_6"),
       (le, ":distance", 5),
-     ],"Proclaim you have the promised amount of grain.",
-        [
-        (jump_to_menu, "mnu_finish_grain"),
-        ]
-      ),
+     ],"Proclaim you have the promised amount of grain.",[
+      (jump_to_menu, "mnu_finish_grain"),
+    ]),
 
     ("leg",[
       (eq, "$g_is_emperor", 1),
@@ -31531,43 +31516,37 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 
     ("leg",[
-    (check_quest_active, "qst_usurp_province"),
-    (quest_slot_eq, "qst_usurp_province", slot_quest_target_dna, -1),	##means senate
-    (quest_get_slot, ":town", "qst_usurp_province", slot_quest_target_center),
-    (str_store_party_name, s20, ":town"),
-     ],"Bring the petition from {s22} before the senate.",
-        [
-        (try_begin),
-          (eq, reg39, 0),
-          (jump_to_menu, "mnu_senate_decide"),
-        (else_try),
-          (display_message, "@There must be a meeting in progress to make your proposal!", message_alert),
-        (try_end),
-        ]
-      ),
+      (check_quest_active, "qst_usurp_province"),
+      (quest_slot_eq, "qst_usurp_province", slot_quest_target_dna, -1),	##means senate
+      (quest_get_slot, ":town", "qst_usurp_province", slot_quest_target_center),
+      (str_store_party_name, s20, ":town"),
+    ],"Bring the petition from {s22} before the senate.",[
+      (try_begin),
+        (eq, reg39, 0),
+        (jump_to_menu, "mnu_senate_decide"),
+      (else_try),
+        (display_message, "@There must be a meeting in progress to make your proposal!", message_alert),
+      (try_end),
+    ]),
 
-      ("leg",[
-    (check_quest_active, "qst_bacchhus_quest"),
-    (quest_slot_eq, "qst_bacchhus_quest", slot_quest_current_state, 2),
-     ],"Propose to revoke the 'Senatus consultum de Bacchanalibus'",
-        [
-        (try_begin),
-          (eq, reg39, 0),
-          (jump_to_menu, "mnu_senate_decide_bacchus"),
-        (else_try),
-          (display_message, "@There must be a meeting in progress to make your proposal!", message_alert),
-        (try_end),
-        ]
-      ),
+    ("leg",[
+      (check_quest_active, "qst_bacchhus_quest"),
+      (quest_slot_eq, "qst_bacchhus_quest", slot_quest_current_state, 2),
+    ],"Propose to revoke the 'Senatus consultum de Bacchanalibus'",[
+      (try_begin),
+        (eq, reg39, 0),
+        (jump_to_menu, "mnu_senate_decide_bacchus"),
+      (else_try),
+        (display_message, "@There must be a meeting in progress to make your proposal!", message_alert),
+      (try_end),
+    ]),
 
-     ("leg",[
-     (eq, reg39, 0),
-     (ge, "$g_rank", 1),
-     ],"Join the discussion",
-        [
-        (jump_to_menu, "mnu_senate_discussion"),
-        ]
-      ),
+    ("leg",[
+      (eq, reg39, 0),
+      (ge, "$g_rank", 1),
+    ],"Join the discussion",[
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
     ("leg",[
       (neq, "$g_player_is_captive", 1),#not captive
       (neq, "$g_civil_war", 1),
@@ -31612,12 +31591,12 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (jump_to_menu, "mnu_end_civil_war"),
       (try_end),
     ]),
-     ("leg",[(neq, reg39, 0),
-     (this_or_next|eq, "$g_is_emperor", 1),
-     (this_or_next|troop_slot_ge, "trp_player", slot_troop_honorary_title, 1),
-     (ge, "$g_rank", 2),
-     ],"Issue a compulsory order to start a meeting. (costs: 4000 gold, lowers senate support)",
-        [
+    ("leg",[
+      (neq, reg39, 0),
+      (this_or_next|eq, "$g_is_emperor", 1),
+      (this_or_next|troop_slot_ge, "trp_player", slot_troop_honorary_title, 1),
+      (ge, "$g_rank", 2),
+    ],"Issue a compulsory order to start a meeting. (costs: 4000 gold, lowers senate support)",[
       (try_begin),
         (store_troop_gold, ":g", "trp_player"),
         (lt, ":g", 4000),
@@ -31630,81 +31609,73 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (troop_remove_gold, "trp_player",4000),
         (call_script, "script_change_senate_support", -2, 0),
       (try_end),
-        ]
-      ),
+    ]),
+    ("leg",[
+      (neq, reg39, 0),
+    ],"Walk around.",[
+      (assign,"$temp",0),
+      (assign, "$temp4", 0),
+      (set_jump_mission,"mt_senate_meeting"),
+      (modify_visitors_at_site, "scn_senate"),
+      (reset_visitors),
+      (set_visitor,1, "trp_praetoriani_milites"),
+      (set_visitor,2, "trp_praetoriani_milites"),
+      (set_visitor,3, "trp_praetoriani_milites"),
+      (set_visitor,4, "trp_praetoriani_milites"),
 
-      ("leg",[(neq, reg39, 0),],"Walk around.",
-        [
-        (assign,"$temp",0),
-        (assign, "$temp4", 0),
-        (set_jump_mission,"mt_senate_meeting"),
-        (modify_visitors_at_site, "scn_senate"),
-        (reset_visitors),
-        (set_visitor,1, "trp_praetoriani_milites"),
-        (set_visitor,2, "trp_praetoriani_milites"),
-        (set_visitor,3, "trp_praetoriani_milites"),
-        (set_visitor,4, "trp_praetoriani_milites"),
+      (try_begin),#second outift
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (call_script, "script_init_second_outfit", "mt_senate_meeting", 0, 0),
+          (mission_tpl_entry_set_override_flags, "mt_senate_meeting", 0, af_override_outfit_1|af_override_horse),
+      (try_end),
 
-        (try_begin),#second outift
-            (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-            (call_script, "script_init_second_outfit", "mt_senate_meeting", 0, 0),
-            (mission_tpl_entry_set_override_flags, "mt_senate_meeting", 0, af_override_outfit_1|af_override_horse),
-        (try_end),
+      (set_jump_entry, 0),
+      (jump_to_scene, "scn_senate"),
+      (change_screen_mission),
+    ]),
 
-        (set_jump_entry, 0),
-        (jump_to_scene, "scn_senate"),
-        (change_screen_mission),
-        ]
-      ),
+    ("leg",[
+      (eq, reg39, 0),
+    ],"Attend to the meeting.",[
+      (assign,"$temp",1),
+      (assign,"$temp2",0),
+      (assign, "$temp3", 0),
+      (assign, "$temp4", 0),
+      (set_jump_mission,"mt_senate_meeting"),
+      (modify_visitors_at_site, "scn_senate"),
+      (reset_visitors),
+      (set_visitor,1, "trp_praetoriani_milites"),
+      (set_visitor,2, "trp_praetoriani_milites"),
+      (set_visitor,3, "trp_praetoriani_milites"),
+      (set_visitor,4, "trp_praetoriani_milites"),
+      (try_for_range, ":entry", 5, 45),
+          (set_visitor,":entry", "trp_senator"),
+      (try_end),
+      (set_visitor,50, "trp_senator_dummy"),
 
-      ("leg",[(eq, reg39, 0),],"Attend to the meeting.",
-        [
-
-    (assign,"$temp",1),
-    (assign,"$temp2",0),
-    (assign, "$temp3", 0),
-    (assign, "$temp4", 0),
-    (set_jump_mission,"mt_senate_meeting"),
-    (modify_visitors_at_site, "scn_senate"),
-    (reset_visitors),
-    (set_visitor,1, "trp_praetoriani_milites"),
-    (set_visitor,2, "trp_praetoriani_milites"),
-    (set_visitor,3, "trp_praetoriani_milites"),
-    (set_visitor,4, "trp_praetoriani_milites"),
-    (try_for_range, ":entry", 5, 45),
-        (set_visitor,":entry", "trp_senator"),
-    (try_end),
-    (set_visitor,50, "trp_senator_dummy"),
-
-    (try_begin),#second outift
-        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_senate_meeting", 0, 0),
-        (mission_tpl_entry_set_override_flags, "mt_senate_meeting", 0, af_override_outfit_1|af_override_horse),
-    (try_end),
-    (set_jump_entry, 0),
-    (jump_to_scene, "scn_senate"),
-    (change_screen_mission),
-        ]
-      ),
-
-      ("leg",[
-
+      (try_begin),#second outift
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (call_script, "script_init_second_outfit", "mt_senate_meeting", 0, 0),
+          (mission_tpl_entry_set_override_flags, "mt_senate_meeting", 0, af_override_outfit_1|af_override_horse),
+      (try_end),
+      (set_jump_entry, 0),
+      (jump_to_scene, "scn_senate"),
+      (change_screen_mission),
+    ]),
+    ("leg",[
       (eq, "$g_has_senat_sup", 0),
       (eq, "$g_is_emperor", 1),
       (eq, reg39, 0),
-      ],"Legitimize your rule with the senate.",
-        [
-		   (play_sound, "snd_senatus_sound_2"),
-		  (jump_to_menu, "mnu_legitim_rule"),
-        ]
-      ),
-      ("speech",[(eq, "$g_speech", 0),
+    ],"Legitimize your rule with the senate.",[
+      (play_sound, "snd_senatus_sound_2"),
+      (jump_to_menu, "mnu_legitim_rule"),
+    ]),
+    ("speech",[
+      (eq, "$g_speech", 0),
       (eq, reg39, 0),
-      ],"Give a speech.",
-        [
+    ],"Give a speech.",[
       (call_script, "script_give_a_speech", "$current_town"),
-        ]
-      ),
+    ]),
       # ("con",[(eq, "$g_bribe", 0),],"Try to bribe (15000 denars)",
         # [
 		# (store_troop_gold, ":g", "trp_player"),
@@ -31742,37 +31713,35 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             # (change_screen_map),
 		# (try_end),        ]
       # ),
-      ("petitions",[(check_quest_active, "qst_blank_quest_4"),
-	 (call_script, "script_get_max_skill_of_player_party", "skl_trade"),
-     (assign, ":max_skill", reg0),
-     (assign, reg2, reg0),
-     (assign, ":max_skill_owner", reg1),
-     (try_begin),
-       (eq, ":max_skill_owner", "trp_player"),
-       (assign, reg3, 1),
-     (else_try),
-       (assign, reg3, 0),
-       (str_store_troop_name, s1, ":max_skill_owner"),
-     (try_end),
-	 (val_mul, ":max_skill", 2),
-	 (store_sub, ":hours", 96, ":max_skill"),
-	 (assign, reg41, ":hours"),
-	  ],"Handle Petitions. ({reg41} hours)",
-        [
-    (call_script, "script_end_quest", "qst_blank_quest_4"),
-    (assign, "$auto_enter_town", "$current_town"),
-    (assign, "$g_town_visit_after_rest", 1),
-    (assign, "$g_last_rest_center", "$current_town"),
-    (assign, "$g_last_rest_payment_until", -1),
-    (play_sound, "snd_senatus_sound_2"),
+    ("petitions",[
+      (check_quest_active, "qst_blank_quest_4"),
+      (call_script, "script_get_max_skill_of_player_party", "skl_trade"),
+      (assign, ":max_skill", reg0),
+      (assign, reg2, reg0),
+      (assign, ":max_skill_owner", reg1),
+      (try_begin),
+        (eq, ":max_skill_owner", "trp_player"),
+        (assign, reg3, 1),
+      (else_try),
+        (assign, reg3, 0),
+        (str_store_troop_name, s1, ":max_skill_owner"),
+      (try_end),
+      (val_mul, ":max_skill", 2),
+      (store_sub, ":hours", 96, ":max_skill"),
+      (assign, reg41, ":hours"),
+	  ],"Handle Petitions. ({reg41} hours)",[
+      (call_script, "script_end_quest", "qst_blank_quest_4"),
+      (assign, "$auto_enter_town", "$current_town"),
+      (assign, "$g_town_visit_after_rest", 1),
+      (assign, "$g_last_rest_center", "$current_town"),
+      (assign, "$g_last_rest_payment_until", -1),
+      (play_sound, "snd_senatus_sound_2"),
 
-    (jump_to_menu, "mnu_petition"),
-    (rest_for_hours, reg41, 10, 0),
-        ]
-      ),
-
+      (jump_to_menu, "mnu_petition"),
+      (rest_for_hours, reg41, 10, 0),
+    ]),
 	  ("leave",[],"Go back.",[
-    (jump_to_menu,"mnu_town"),
+      (jump_to_menu,"mnu_town"),
     ]),
 ]),
 
@@ -33769,7 +33738,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (display_message, "@She follows you into a room and you have some funny hours with her.", message_positive),
       (change_screen_map),
     ]),
-    ("answere_3",[],"Yes Alexander was greater than me! And?",[
+    ("answere_3",[],"Yes. Alexander was greater than me! And?",[
       (add_xp_as_reward, 250),
       (change_screen_map),
     ]),
@@ -38964,7 +38933,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (set_jump_mission, "mt_caves_of_olymp"),
       (jump_to_scene, "scn_cave_olympia"),
       (change_screen_mission),
-      (set_passage_menu,"mnu_olympia"),
+      (set_passage_menu,"mnu_mount_olymp"),
     ],"Enter the cave"),
 
     ("answere_1",[],"Leave.",
