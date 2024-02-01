@@ -6120,7 +6120,7 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
 50000,weight(10)|difficulty(20)|spd_rtng(70)|weapon_length(55)|swing_damage(20 , blunt) | thrust_damage(0 ,  pierce),imodbits_none ],
 ["celtic_carnyx","Golden Carnyx", [("celtic_carnyx",0)], itp_unique, 0,
 50000,weight(5.0)|abundance(0)|max_ammo(1),imodbits_none],
-["dacian_treasure","Treasure of the Gaete", [("dacian_treasure",0)], itp_unique, 0,
+["dacian_treasure","Treasure of the Getae", [("dacian_treasure",0)], itp_unique, 0,
 100000,weight(20)|abundance(0)|max_ammo(1),imodbits_none],
 ["menorah","Golden Menorah", [("menorah",0)], itp_unique, 0,
 50000,weight(15)|abundance(0)|max_ammo(1),imodbits_none],

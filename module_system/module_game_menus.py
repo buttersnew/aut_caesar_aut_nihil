@@ -34957,7 +34957,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
    ]
  ),
   ("dacia_conquered",0,    #modified motomataru chief
-  "You have conquered Dacia! This land now belongs to the Roman Empire. You gain the cognomen 'Dacicus'. You obtain the trasure of the Gaete.^^Go to Rome to hold a triumph!",
+  "You have conquered Dacia! This land now belongs to the Roman Empire. You gain the cognomen 'Dacicus'. You obtain the trasure of the Getae.^^Go to Rome to hold a triumph!",
   "none",
   [
 	(set_background_mesh, "mesh_pic_triumph"),
@@ -40144,7 +40144,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 		  (str_store_string,s2,"@A peasant stands before you on the road. He points his finger accusingly at one of your soldiers and says that he has stolen his ox.^The soldiers respons to the accusations, that he had just confiscated the ox as law allows it."),
 	  (else_try),
 		  (eq, ":r", 2),
-		  (str_store_string,s2,"@A gardner stands before you on the road and says that one of your soldiers has stolen fruits and vegetables from his garden.^The soldiers respons to the accusations, that he had just confiscated the fruits as law allows it."),
+		  (str_store_string,s2,"@A gardener stands before you on the road and says that one of your soldiers has stolen fruits and vegetables from his garden.^The soldiers respons to the accusations, that he had just confiscated the fruits as law allows it."),
 	  (try_end),
   ],[
     ("choice_13_1nor",[],"Punish the soldier.",[
@@ -40178,7 +40178,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_string,s2,"@One of your soldiers accuses a local peasant to have offended and attacked him with a wooden stick. The soldier is known to be a trustworthy man."),
 	  (else_try),
       (eq, ":r", 2),
-      (str_store_string,s2,"@An officer you sent to buy some supplies of daily need has accused a local gardner to have offended him. The officer said to the gardner he should go out of his way due to the peasant standing in his way. But instead of making room, the gardner throw stones at the officer and attacked him with a wooden stick."),
+      (str_store_string,s2,"@An officer you sent to buy some supplies of daily need has accused a local gardener to have offended him. The officer said to the gardener he should go out of his way due to the peasant standing in his way. But instead of making room, the gardener throw stones at the officer and attacked him with a wooden stick."),
 	  (try_end),
   ],[
     ("choice_13_1nor",[],"Punish the soldier, he is lying and an idiot.",[
