@@ -41604,7 +41604,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
         (faction_get_slot, ":aristocraty", "fac_player_supporters_faction", dplmc_slot_faction_aristocracy),
         (val_add, ":aristocraty", 1),
-        (faction_set_slot, "fac_player_supporters_faction", dplmc_slot_faction_aristocracy ,":serfdom"),
+        (faction_set_slot, "fac_player_supporters_faction", dplmc_slot_faction_aristocracy ,":aristocraty"),
 
         # (val_sub, "$g_unrest", 2),
         # (display_message, "@Stability of the Empire increases", color_good_news),
@@ -41626,7 +41626,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
         (faction_get_slot, ":aristocraty", "fac_player_supporters_faction", dplmc_slot_faction_aristocracy),
         (val_sub, ":aristocraty", 1),
-        (faction_set_slot, "fac_player_supporters_faction", dplmc_slot_faction_aristocracy ,":serfdom"),
+        (faction_set_slot, "fac_player_supporters_faction", dplmc_slot_faction_aristocracy ,":aristocraty"),
 
         (val_sub, "$g_unrest", 1),
         (display_message, "@Stability of the Empire increases", color_good_news),

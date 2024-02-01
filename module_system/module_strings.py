@@ -6137,6 +6137,7 @@ An estimated 70,000 to 80,000 Romans and British were then killed in the three c
   ("dplmc_medium","medium"),
   ("dplmc_big","big"),
   ("dplmc_elite","elite"),
+
   ("dplmc_very_decentralized", "very decentralized"),
   ("dplmc_quite_decentralized", "quite decentralized"),
   ("dplmc_little_decentralized", "a little decentralized"),
@@ -6144,6 +6145,7 @@ An estimated 70,000 to 80,000 Romans and British were then killed in the three c
   ("dplmc_little_centralized", "a little centralized"),
   ("dplmc_quite_centralized", "quite centralized"),
   ("dplmc_very_centralized", "very centralized"),
+
   ("dplmc_very_plutocratic", "very plutocratic"),
   ("dplmc_quite_plutocratic", "quite plutocratic"),
   ("dplmc_little_plutocratic", "a little plutocratic"),
@@ -6151,6 +6153,7 @@ An estimated 70,000 to 80,000 Romans and British were then killed in the three c
   ("dplmc_little_aristocratic", "a little aristocratic"),
   ("dplmc_quite_aristocratic", "quite aristocratic"),
   ("dplmc_very_aristocratic", "very aristocratic"),
+
   ("dplmc_all_free", "almost all free"),
   ("dplmc_mostly_free", "mostly free"),
   ("dplmc_usually_free", "usually free"),
