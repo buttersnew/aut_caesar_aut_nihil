@@ -1322,6 +1322,7 @@ slot_lord_granted_courtship_permission      = 38
 
 slot_troop_betrothal_time                   = 39 #used in scheduling the wedding
 
+
 ##trainer slots
 slot_troop_trainer_met                       = 30
 slot_troop_trainer_waiting_for_result        = 31

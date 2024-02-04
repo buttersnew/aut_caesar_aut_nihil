@@ -4803,8 +4803,7 @@ game_menus = [
 ("simple_encounter",mnf_enable_hot_keys|mnf_scale_picture,
   "{s2} You have {reg10} troops fit for battle against their {reg11}.^^"
   +"Press 'I' to access inventory, press 'P' to access the party screen, press 'C' to access character screen^^{s47}",
-  "none",
-  [
+  "none",[
     (str_clear, s47),
     (try_begin),
         (gt, "$enlisted_party", -1),
@@ -4952,7 +4951,7 @@ game_menus = [
             (try_end),
         (try_end),
 
-        (assign,"$player_ambushed",1),
+        # (assign,"$player_ambushed",1),
 
         #(call_script, "script_let_nearby_parties_join_current_battle", 0, 0),
         (call_script, "script_encounter_init_variables"),
