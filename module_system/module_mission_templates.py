@@ -9165,6 +9165,21 @@ mission_templates = [
       (try_end),
     ]),
 
+    # hold position
+    (0, 0, ti_once, [],[
+      (team_give_order, "$defender_team", 0, mordr_hold),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_hold),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (entry_point_get_position, pos10, 7),
+      (team_set_order_position, "$defender_team_2", 0, pos10),
+      (team_set_order_position, "$defender_team", 0, pos10),
+    ]),
+
     ####ambush chief effect to player and allies
     (0, 0, ti_once, [(eq,"$player_ambushed",3),],[
       (try_for_agents, ":agent_no"),
@@ -9271,6 +9286,7 @@ mission_templates = [
       (try_end),
       ##diplomacy end
     ]),
+
     common_battle_victory_display,
     common_battle_check_victory_condition,
     common_battle_inventory,
@@ -9338,6 +9354,21 @@ mission_templates = [
     (28,mtef_ally_party|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
   ], p_wetter + fireball_trigger + storms +global_common_triggers+
   [
+    # hold position
+    (0, 0, ti_once, [],[
+      (team_give_order, "$defender_team", 0, mordr_hold),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_hold),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (entry_point_get_position, pos10, 7),
+      (team_set_order_position, "$defender_team_2", 0, pos10),
+      (team_set_order_position, "$defender_team", 0, pos10),
+    ]),
+
     (ti_before_mission_start, 0, ti_once,[],[
       (try_begin),
           (ge, "$cheat_mode", 1),

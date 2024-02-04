@@ -4951,6 +4951,9 @@ game_menus = [
                 (assign,"$player_ambushed",2), #ambush check only once per battle
             (try_end),
         (try_end),
+
+        (assign,"$player_ambushed",1),
+
         #(call_script, "script_let_nearby_parties_join_current_battle", 0, 0),
         (call_script, "script_encounter_init_variables"),
         (assign, "$encountered_party_hostile", 0),
@@ -5295,7 +5298,7 @@ game_menus = [
       (assign,"$player_ambushed",4),
       (assign, "$g_battle_result", 0),
       (assign, "$g_engaged_enemy", 1),
-      (party_get_current_terrain, ":terrain_type", "p_main_party"),
+
     #	(assign, "$player_deploy_troops", 1),
       #(assign,"$player_ambushed",1),
       (call_script, "script_calculate_renown_value"),
@@ -5324,59 +5327,12 @@ game_menus = [
       (call_script, "script_calculate_battle_advantage"),
       (set_battle_advantage, reg0),
       (set_party_battle_mode),
-      (set_fixed_point_multiplier, 1000),
-      (party_get_position, pos4, "p_main_party"),
-      (assign, ":scene_to_use", "scn_random_scene"),
-      (position_get_z, ":elevation", pos4),
-      (try_begin),
-					(neq, ":terrain_type", rt_desert),
-					(neq, ":terrain_type", rt_desert_forest),
-					(gt, ":elevation", 1800),
-					(assign, ":scene_to_use", "scn_ambushed_mountains"),
-      (else_try),
-					(gt, ":elevation", 1500),
-					(this_or_next|eq, ":terrain_type", rt_desert),
-					(eq, ":terrain_type", rt_desert_forest),
-          (assign, ":scene_to_use", "scn_ambushed_mountains_desert"),
-      (else_try),
-					(eq, ":terrain_type", rt_snow),
-					(assign, ":scene_to_use", "scn_ambushed_mediterran"),
-      (else_try),
-					(eq, ":terrain_type", rt_steppe_forest),
-					(assign, ":scene_to_use", "scn_ambushed_forest"),
-      (else_try),
-					(eq, ":terrain_type", rt_forest),
-					(assign, ":scene_to_use", "scn_ambushed_forest"),
-      (else_try),
-					(eq, ":terrain_type", rt_snow_forest),
-					(assign, ":scene_to_use", "scn_ambushed_mediterran_forest"),
-      (else_try),
-					(eq, ":terrain_type", rt_desert),
-					(store_random_in_range, ":r",0,12),
-					(try_begin),
-              (is_between, ":r", 3,6),
-              (assign, ":scene_to_use", "scn_ambushed_mountains_desert"),
-					(else_try),
-              (assign, ":scene_to_use", "scn_ambushed_desert"),
-					(try_end),
-      (else_try),
-					(eq, ":terrain_type", rt_desert_forest),
-					(assign, ":scene_to_use", "scn_ambushed_desert"),
-      (else_try),
-          (neq, ":terrain_type", rt_steppe),
-					(store_random_in_range, ":r",0,12),
-					(try_begin),
-              (is_between, ":r", 3,6),
-              (assign, ":scene_to_use", "scn_ambushed_mountains"),
-					(else_try),
-						  (assign, ":scene_to_use", "scn_ambushed_plain"),
-					(try_end),
-      (else_try),
-          (assign, ":scene_to_use", "scn_ambushed_plain"),
-      (try_end),
+
       (display_message, "@You have ambushed the enemy!", message_positive),
       (set_jump_mission,"mt_lead_charge_ambush_attack"),
-      (jump_to_scene, ":scene_to_use"),
+      (party_get_current_terrain, ":terrain_type", "p_main_party"),
+      (call_script, "script_setup_random_scene_ambush", ":terrain_type"),
+      (jump_to_scene, reg0),
       (assign, "$g_next_menu", "mnu_simple_encounter"),
       (jump_to_menu, "mnu_battle_debrief"),
       (change_screen_mission),
@@ -5389,7 +5345,6 @@ game_menus = [
       (assign,"$player_ambushed",3),
       (assign, "$g_battle_result", 0),
       (assign, "$g_engaged_enemy", 1),
-      (party_get_current_terrain, ":terrain_type", "p_main_party"),
       (call_script, "script_calculate_renown_value"),
       ##diplomacy start+
       (try_begin),
@@ -5416,60 +5371,14 @@ game_menus = [
       (call_script, "script_calculate_battle_advantage"),
       (set_battle_advantage, reg0),
       (set_party_battle_mode),
-      (set_fixed_point_multiplier, 1000),
-      (party_get_position, pos4, "p_main_party"),
-      (assign, ":scene_to_use", "scn_random_scene"),
-      (position_get_z, ":elevation", pos4),
-      (try_begin),
-          (neq, ":terrain_type", rt_desert),
-          (neq, ":terrain_type", rt_desert_forest),
-          (gt, ":elevation", 1800),
-          (assign, ":scene_to_use", "scn_ambushed_mountains"),
-      (else_try),
-          (gt, ":elevation", 1500),
-          (this_or_next|eq, ":terrain_type", rt_desert),
-          (eq, ":terrain_type", rt_desert_forest),
-          (assign, ":scene_to_use", "scn_ambushed_mountains_desert"),
-      (else_try),
-          (eq, ":terrain_type", rt_snow),
-          (assign, ":scene_to_use", "scn_ambushed_mediterran"),
-      (else_try),
-          (eq, ":terrain_type", rt_steppe_forest),
-          (assign, ":scene_to_use", "scn_ambushed_forest"),
-      (else_try),
-          (eq, ":terrain_type", rt_forest),
-          (assign, ":scene_to_use", "scn_ambushed_forest"),
-      (else_try),
-          (eq, ":terrain_type", rt_snow_forest),
-          (assign, ":scene_to_use", "scn_ambushed_mediterran_forest"),
-      (else_try),
-          (eq, ":terrain_type", rt_desert),
-          (store_random_in_range, ":r",0,12),
-          (try_begin),
-              (is_between, ":r", 3,6),
-              (assign, ":scene_to_use", "scn_ambushed_mountains_desert"),
-          (else_try),
-              (assign, ":scene_to_use", "scn_ambushed_desert"),
-          (try_end),
-      (else_try),
-          (eq, ":terrain_type", rt_desert_forest),
-          (assign, ":scene_to_use", "scn_ambushed_desert"),
-      (else_try),
-          (neq, ":terrain_type", rt_steppe),
-          (store_random_in_range, ":r",0,12),
-          (try_begin),
-              (is_between, ":r", 3,6),
-              (assign, ":scene_to_use", "scn_ambushed_mountains"),
-          (else_try),
-              (assign, ":scene_to_use", "scn_ambushed_plain"),
-          (try_end),
-      (else_try),
-          (assign, ":scene_to_use", "scn_ambushed_plain"),
-      (try_end),
-            ###
+
       (display_message, "@You have been ambushed!", message_negative),
       (set_jump_mission,"mt_lead_charge_ambush"),
-      (jump_to_scene, ":scene_to_use"),
+
+      (party_get_current_terrain, ":terrain_type", "p_main_party"),
+      (call_script, "script_setup_random_scene_ambush", ":terrain_type"),
+      (jump_to_scene, reg0),
+
       (assign, "$g_next_menu", "mnu_simple_encounter"),
       (jump_to_menu, "mnu_battle_debrief"),
       (change_screen_mission),
@@ -29886,60 +29795,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 ####siege warfare acaba chief random event
 ###soldado problematico
-("testviech",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "Test scenes.",
-    "none",
-    [
-    ],
-    [
-      ("test1",[],"Ambush mountains",
-        [
-          (jump_to_scene, "scn_ambushed_mountains"),#phaiak
-		  (change_screen_mission),
-        ]
-      ),
-      ("test2",[],"Ambush mountains desert",
-        [
-          (jump_to_scene, "scn_ambushed_mountains_desert"),#phaiak
-		  (change_screen_mission),
-        ]
-      ),
-      ("test3",[],"Ambush forest",
-        [
-          (jump_to_scene, "scn_ambushed_forest"),#phaiak
-		  (change_screen_mission),
-        ]
-      ),
-      ("test3",[],"Ambush snow",
-        [
-          (jump_to_scene, "scn_ambushed_snow"),#phaiak
-		  (change_screen_mission),
-        ]
-      ),
-      ("test3",[],"Ambush plain",
-        [
-          (jump_to_scene, "scn_ambushed_plain"),#phaiak
-		  (change_screen_mission),
-        ]
-      ),
-      ("test3",[],"Ambush coast",
-        [
-          (jump_to_scene, "scn_ambushed_coast"),#phaiak
-		  (change_screen_mission),
-        ]
-      ),
-      ("test3",[],"Ambush desert",
-        [
-          (jump_to_scene, "scn_ambushed_desert"),#phaiak
-		  (change_screen_mission),
-        ]
-      ),
-      ("test3",[],"End",
-        [
-		  (change_screen_map),
-        ]
-      ),
-]),
+
 ####siege warfare acaba chief random event
   #####
   #panel comandante chief

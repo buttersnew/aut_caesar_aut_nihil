@@ -317,13 +317,31 @@ scenes = [
   ("river_ambush_1", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000003001ce100006097d0000134c000016d8000042a2",[], [], "outer_terrain_plain"),
   ("river_ambush_2", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x00000004300005008005b57000004e31800017d80000754b",[], [], "outer_terrain_plain"),
   ("river_ambush_3", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_plain"),
-  ("ambushed_mountains", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_plain"),
-  ("ambushed_mountains_desert", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_desert"),
-  ("ambushed_coast", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_plain"),
+
+  ("ambushed_mountains", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_mountain"),
+  ("ambushed_mountains_2", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x00000003300005000008f642000004c900005f7f0000071c",[], [], "outer_terrain_mountain_2"),
+
+  ("ambushed_mountains_desert", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_desert_mountain"),
+  ("ambushed_mountains_desert_2", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x00000003200005000008f642000041ae000050c30000695a",[], [], "outer_terrain_desert_mountain"),
+
   ("ambushed_desert", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_desert"),
-  ("ambushed_snow", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_plain"),
+  ("ambushed_desert_2", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x00000003d2a005000008f642000064a50000561600005c6b",[], [], "outer_terrain_desert"),
+
+  ##ambsuch med
+  ("ambushed_mediterran_forest", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002cc62a45a0005f17c00006c5a00004529000034f8",[], [], "outer_terrain_plain"),
+  ("ambushed_mediterran_forest_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000003c2a005000008f642000064a50000561600005c6b",[], [], "outer_terrain_plain"),
+
+  ("ambushed_mediterran", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000004b4354940005f17900003c3c0000439900003972",[], [], "outer_terrain_plain"),
+  ("ambushed_mediterran_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000003400005000008f642000064a50000561600005c6b",[], [], "outer_terrain_plain"),
+
   ("ambushed_forest", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x00000002bc6261630006799d000025a700000eac000014c1",[], [], "outer_terrain_plain"),
+  ("ambushed_forest_2", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x00000003b28005000008f6420000084f0000561600003f43",[], [], "outer_terrain_plain"),
+
   ("ambushed_plain", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_plain"),
+  ("ambushed_plain_2", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x00000003300005000008f642000041ae000050c30000695a",[], [], "outer_terrain_plain"),
+
+  ("ambush_scenes_end", sf_generate, "none", "none", (0, 0), (240, 240), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_plain"),
+
   #special scenes
   ("temple_of_bacchus", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
   ("temple_of_mars", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
@@ -896,9 +914,6 @@ scenes = [
   ("sea_barbarian", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x0000000030000000c00d2348000000008000000000000000",[], [], "outer_terrain_beach"),
   ("sea_roman", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x0000000030000000c00d2348000000008000000000000000",[], [], "outer_terrain_beach"),
   ("meeting_scene_water", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x0000000030000000c00d2348000000008000000000000000",[], [], "sea_outer_terrain_2"),
-  ##ambsuch med
-  ("ambushed_mediterran_forest", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002cc62a45a0005f17c00006c5a00004529000034f8",[], [], "outer_terrain_plain"),
-  ("ambushed_mediterran", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000004b4354940005f17900003c3c0000439900003972",[], [], "outer_terrain_plain"),
 
   ("lugdunum_center",sf_generate,"none", "none",(0,0),(100,100),-100,"0x00000000300005000005695d00007fbc00005de100006275", [],[],"outer_terrain_plain"),
   ("lugdunum_castle",sf_indoors, "interior_castle_d", "bo_interior_castle_d", (-100, -100), (100, 100), -100, "0",["exit"], []),
