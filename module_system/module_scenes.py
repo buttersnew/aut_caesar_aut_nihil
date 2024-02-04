@@ -1068,5 +1068,6 @@ scenes = [
 
   ("shitty_tavern", sf_indoors, "thirsty_lion", "bo_thirsty_lion", (-100, -100), (100, 100), -100, "0",[], []),
 
+  ("holy_lance_cave",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000500007630005a56b00006e200000319300002f0b", [],[], "outer_terrain_desert_mountain"),
 ]#end of file
 #

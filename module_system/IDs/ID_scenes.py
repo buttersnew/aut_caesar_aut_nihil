@@ -823,4 +823,5 @@ scn_kurgan = 820
 scn_kurgan_enter = 821
 scn_roman_latrina = 822
 scn_shitty_tavern = 823
+scn_holy_lance_cave = 824
 scn_exit = 100000

@@ -36762,35 +36762,33 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]
   ),
 
-  (
-    "pygmachia_won",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "You defeated {s1}!  The crowd celebrates your victory.",
-    "none",
-    [
+("pygmachia_won",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
+  "You defeated {s1}!  The crowd celebrates your victory.",
+  "none",[
     (set_background_mesh, "mesh_pic_orgie"),
     (str_store_troop_name, s1, "$g_tournament_player_team_won"),
-    ],[
-      ("leave",[],"Continue.",[
+  ],[
+  ("leave",[],"Continue.",[
     (call_script, "script_change_troop_renown", "trp_player", 2),
     (add_xp_as_reward, 100),
     (jump_to_menu, "$g_next_menu"),
     (val_add, "$g_tournament_num_participants_for_fight", 1),#count player victories
     (assign, "$g_tournament_bet_placed", 1),#has player won?
     (assign, "$g_tournament_bet_win_amount", 1),#for remove of opponents
-      ]),                         ]),
-    (
-    "pygmachia_defeat",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "You lost the fight. {s1} won. The crowd is celebrating with your opponent while your wounds are treated by a physician.",
-    "none",
-    [
+  ]),
+]),
+("pygmachia_defeat",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
+  "You lost the fight. {s1} won. The crowd is celebrating with your opponent while your wounds are treated by a physician.",
+  "none",[
     (set_background_mesh, "mesh_pic_orgie"),
     (str_store_troop_name, s1, "$g_tournament_player_team_won"),
-    ],[
-      ("leave",[],"Continue.",[
+  ],[
+  ("leave",[],"Continue.",[
     (jump_to_menu, "$g_next_menu"),
     (assign, "$g_tournament_bet_placed", 0),#has player won?
     (assign, "$g_tournament_bet_win_amount", 1),#for remove of opponents
-      ]),                         ]),
+  ]),
+]),
 
 ("olympia_give_up",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
   "Are you sure you want to give up? You would lose the Olympic games.",
@@ -36807,26 +36805,20 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ]),
 ]),
 
-    (
-    "games_over",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "The Olympic games are over!^^{s11} is declared victor!",
-    "none",
-    [
+("games_over",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
+  "The Olympic games are over!^^{s11} is declared victor!",
+  "none",[
     (str_store_troop_name, s11, "$g_notification_menu_var1"),
     (set_background_mesh, "mesh_pic_orgie"),
-    ],
-
-    [
-    ("leave",[],"Continue.",[
+  ],[
+  ("leave",[],"Continue.",[
     (change_screen_map),
-      ]),
-
-    ]),
+  ]),
+]),
 
 ("olympic_games",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
   "Olympic games!^^Soon the Olympic games will take place in Olympia. Hurry up, if you want to participate!",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
     ("leave",[],"Continue.",[
@@ -38887,6 +38879,25 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	      (change_screen_map),
       ]
     ),
+]),
+
+("holy_lance_caves",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
+  "The Sinahi is a mountainous and rough area. It gives additional challenges for fighting battles.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+	],[
+    ("answere_1",[],"Explore the place.",[
+      (modify_visitors_at_site, "scn_holy_lance_cave"),
+      (reset_visitors),
+      (set_jump_mission, "mt_explore_secret_place"),
+      (set_visitor, 0, "trp_player"),
+
+      (jump_to_scene, "scn_holy_lance_cave"),
+      (change_screen_mission),
+    ], "Leave."),
+    ("answere_3",[],"Leave.",[
+	      (change_screen_map),
+    ]),
 ]),
 
 ("mount_olymp",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
@@ -43349,7 +43360,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (display_message, "@{s1}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("choice_10_2nj",[],"Nonesens. Forbid the sacrifice and take the girl into your party for safety.",[
+    ("choice_10_2nj",[],"Nonsense. Forbid the sacrifice and take the girl into your party for safety.",[
       (call_script, "script_change_player_relation_with_center", "$current_town", -20),
       (call_script, "script_change_player_honor", -5),
       (call_script, "script_change_troop_renown", "trp_player", -50),
@@ -50613,7 +50624,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 ("freelancer_event_10_victory",0,
   "With a heavy blow you knock down your opponent. He lies on the ground with broken ribs and a bleeding nose.^The other soldiers cheer and celebrate your victory.^^You walk towards him, grab him by his head and shout:^^"
-  +" 'Silents!'^^"
+  +" 'Silence!'^^"
   +" All fall silent. You continue:^^"
   +" 'See soldiers, what happens with those, who, out of sheer boredom and stupidity, disturb the peace by bullying others."
   +" You will get punished. Rome punishes those who disturb peace. Rome brings order and peace!'",

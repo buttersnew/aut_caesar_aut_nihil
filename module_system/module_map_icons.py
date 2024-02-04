@@ -76,6 +76,7 @@ map_icons = [
   ##free mapicons
   ("crucified_slave",mcn_no_shadow,"crucified_slave", 0.35,0),
   ("forest",mcn_no_shadow,"forest", 0.9,0),
+  ("forest_palms",mcn_no_shadow,"forest_palms", 0.9,0),
   ("gaetulian_town",mcn_no_shadow,"icon_gaetulian",  0.34,0),
   ("arab_town",mcn_no_shadow,"icon_arab",  0.34,0),
   ("garamantian_town",mcn_no_shadow,"icon_garama",  0.28,0),

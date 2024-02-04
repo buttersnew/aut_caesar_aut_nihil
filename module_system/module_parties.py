@@ -581,6 +581,7 @@ parties = [
 ("mount_olymp", "Mount Olymp", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-38.38, 7.96), [], 180), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
 
 ("old_mine", "Old mine", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-275.72, 45.67), [(trp_mercenary_swordsman, 50, 0),(trp_hispanic_infantry, 50, 0), (trp_hispanic_heavy_infantry, 50, 0)], 180), #[swycartographr] prev. coords: (-26.88, -71.63) rot: 135 #[swycartographr] prev. coords: (-256.47, -7.83) #[swycartographr] prev. coords: (-137.03, 107.23)
+("holy_lance_cave","Caves", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(78.77, -77.54),[]),
 
 #special places
 ("gaetulian_town_1", "Larbas", icon_gaetulian_town|pf_town, no_menu, pt_none, fac_gaetuli, 0, ai_bhvr_hold, 0, (-230.63, -62.98), []),      #[swycartographr] prev. coords: (-242.92, -55.69) #[swycartographr] prev. coords: (-242.92, -55.69) #[swycartographr] prev. coords: (-211.94, -58.37)

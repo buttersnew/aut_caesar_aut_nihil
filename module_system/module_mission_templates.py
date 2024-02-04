@@ -2614,6 +2614,11 @@ AI_triggers = [
         (call_script, "script_cf_any_fighting"),
         (call_script, "script_cf_count_casualties"),
         (assign, "$battle_phase", BP_Fight),
+      (else_try),
+        (eq, "$clock_reset", 0),
+        (store_current_scene, ":scene"),
+        (eq, ":scene", "scn_holy_lance_cave"), # nero: special scene make them attack!
+        (assign, "$battle_phase", BP_Fight),
       (try_end),
 
       (set_fixed_point_multiplier, 100),
