@@ -403,6 +403,9 @@ scenes = [
   ("battle_persian_hills_desert_3", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002d8c0050000099263000045140000011d000072c7 ",[], [], "outer_terrain_desert"),
   ("battle_persian_hills_desert_4", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002d8c00500000992630000794800007da900001d87 ",[], [], "outer_terrain_desert"),
   ("battle_persian_hills_desert_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002d8c005000009926300000ace00007da900000096 ",[], [], "outer_terrain_desert"),
+  ("battle_persian_hills_desert_6", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000005a024714000d23480000076300004ce100002de9 ",[], [], "outer_terrain_desert_mountain"),
+  ("battle_persian_hills_desert_7", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000005a191e00000d234800003cce0000047a00005bc2 ",[], [], "outer_terrain_desert_mountain"),
+  ("battle_persian_hills_desert_8", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000005a024714000d23480000076300004ce100002de9 ",[], [], "outer_terrain_desert_mountain"),
 
   #done
   ("battle_spain", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000022000098000092a4a00007aec000020060000135c ",[], [], "outer_terrain_plain_2"),
@@ -424,7 +427,6 @@ scenes = [
   ("battle_syria_3", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000024a000f810008fe42000027970000714600000586 ",[], [], "outer_terrain_steppe_3"),
   ("battle_syria_4", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000230000f810008fe420000724200006717000034ca ",[], [], "outer_terrain_steppe_3"),
   ("battle_syria_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000230000f810008fe4200002ae1000002cb00006f0c ",[], [], "outer_terrain_steppe_3"),
-
   #done
   ("battle_nile", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000024000050000092a4a000073b600002e1d00006385 ",[], [], "outer_terrain_beach_desert_flat"),
   ("battle_nile_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002300005010009124400006d24000064da000056e5 ",[], [], "outer_terrain_beach_desert_flat"),
@@ -452,6 +454,9 @@ scenes = [
   ("battle_caucasian_mountains_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002b3a789630009364e0000697200005efa00003e36",[], [], "outer_terrain_mountain"),
   ("battle_caucasian_mountains_6", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000230000500000329e400005cce00003f9200002e90",[], [], "outer_terrain_mountain"),
   ("battle_caucasian_mountains_7", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000002bc60138000089e2900003837000010160000044c",[], [], "outer_terrain_mountain_2"),
+  ("battle_caucasian_mountains_8", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x0000000030000913400d2348000030c40000600500006b66",[], [], "outer_terrain_mountain_2"),
+  ("battle_caucasian_mountains_9", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x0000000030000913400d2348000030c40000600500006b66",[], [], "outer_terrain_mountain_2"),
+  ("battle_caucasian_mountains_10", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x0000000030000500000d2348000030c4000053ae00001d83",[], [], "outer_terrain_mountain_2"),
 
   ("battle_central_anatolia", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002206006e30008be27000060d50000026e000003de",[], [], "outer_terrain_steppe_3"),
   ("battle_central_anatolia_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000000200012e30009725e000024bc000066590000127e",[], [], "outer_terrain_steppe_3"),
@@ -464,6 +469,9 @@ scenes = [
   ("battle_europe_mountains_3", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000238c005000009926300003fed0000064d00006e9d",[], [], "outer_terrain_mountain_2"),
   ("battle_europe_mountains_4", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000238c00500000992630000763b000033b800000501",[], [], "outer_terrain_mountain_2"),
   ("battle_europe_mountains_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000238c00500000992630000267800006700000071b3",[], [], "outer_terrain_mountain_2"),
+  ("battle_europe_mountains_6", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000500000d2348000030c4000053ae00001d83",[], [], "outer_terrain_mountain_2"),
+  ("battle_europe_mountains_7", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000500000d2348000030c4000053ae00001d83",[], [], "outer_terrain_mountain_2"),
+  ("battle_europe_mountains_8", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000913400d2348000030c40000600500006b66",[], [], "outer_terrain_mountain_2"),
 
   ("battle_persian_hills_green", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000022000160000089e2b00006f7200002a3400003b51",[], [], "outer_terrain_steppe_3"),
   ("battle_persian_hills_green_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000012201907e300599a64000009bd00002031000076c1",[], [], "outer_terrain_steppe_3"),
