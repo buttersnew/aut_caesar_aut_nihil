@@ -160,3 +160,4 @@ mt_gardens_of_maceneas = 158
 mt_fleet_cutscene = 159
 mt_cutscene_rome_triumph = 160
 mt_vespasian_final_dialogue = 161
+mt_werdheri_battle_lair = 162

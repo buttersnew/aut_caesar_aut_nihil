@@ -2239,4 +2239,5 @@ trp_xiao = 2237
 trp_romanian = 2238
 trp_spaniard = 2239
 trp_dominican = 2240
-trp_troops_end = 2241
+trp_werdheri = 2241
+trp_troops_end = 2242

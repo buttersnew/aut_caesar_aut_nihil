@@ -6167,6 +6167,10 @@ attrib_level_12,wp(50),knows_level_12,0x000000002611314602da0e0edf69b3d800000000
 [itm_caligea, itm_roman_poor3],
 attrib_level_12,wp(50),knows_level_12,0x000000003f0404843951d1ed2cb138e400000000001e368c0000000000000000],
 
+["werdheri", "Werdheri", "Werdheri", tf_hero, no_scene, reserved, fac_commoners,[
+  itm_germanic_noble_3,itm_germanic_helm1,itm_sword_viking_4,itm_germanic_shield_hex_large4,itm_graves_simple_2
+], hero_attrib, wp(800), knows_hero, 0x000000000001714b36db6db6db6db6db00000000001db6db0000000000000000, ],
+
 ["troops_end", "END", "END", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
 ]#end of file

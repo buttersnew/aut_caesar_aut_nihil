@@ -17079,6 +17079,14 @@ game_menus = [
               (eq, "$current_town", "p_town_27"),
               (set_visitors, 49, "trp_merchant8", 1),
           (try_end),
+          (try_begin),
+              (neg|is_currently_night),
+              (check_quest_active, "qst_werdheri"),
+              (this_or_next|quest_slot_eq, "qst_werdheri", slot_quest_current_state, 1),
+              (quest_slot_eq, "qst_werdheri", slot_quest_current_state, 5),
+              (eq, "$current_town", "p_town_49"),
+              (set_visitors, 49, "trp_werdheri", 1),
+          (try_end),
 
           (try_begin),
               (eq, "$current_town", "p_town_19"),
@@ -45729,84 +45737,65 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ]),
 
   ]),
-  (
-    "duel",0,
-    "You prepare for the duel and sharpen your weapons. You will have to fight for your life.",
-    "none",
-    [(set_background_mesh, "mesh_pic_deserters")],
-    [
-      ("event04",[],"Continue...",[
-       (quest_set_slot,"qst_slave_revolt",slot_quest_current_state, 2),#orm quest
-          (try_begin),
-            (store_troop_health, ":health", "trp_player", 0), #get relative health in 1-100 range and put it into the ":health" variable
-            (lt, ":health", 30),
-            (val_add, ":health", 35),               #add to it the 5%
-            (troop_set_health,   "trp_player", ":health"),   #set it
-          (try_end),
 
-          (call_script, "script_change_player_party_morale", 1),
+("duel",0,
+  "You prepare for the duel and sharpen your weapons. You will have to fight for your life.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("event04",[],"Continue...",[
+      (try_begin),
+        (store_troop_health, ":health", "trp_player", 0), #get relative health in 1-100 range and put it into the ":health" variable
+        (lt, ":health", 30),
+        (val_add, ":health", 35),               #add to it the 5%
+        (troop_set_health,   "trp_player", ":health"),   #set it
+      (try_end),
+      (call_script, "script_change_player_party_morale", 1),
+      (set_jump_mission,"mt_viking_duel_normal"),
+      (call_script, "script_duel_init_system", "scn_duel_plain_forest", "$g_talk_troop"),
+      (change_screen_mission),
+    ]),
+]),
 
-          (set_jump_mission,"mt_viking_duel_normal"),
-
-          (call_script, "script_duel_init_system", "scn_duel_plain_forest", "$g_talk_troop"),
-
-          (change_screen_mission),
-
-
-      ]),
-
+("duel_win",0,
+  "You defeat your opponent. As Albus men see their chief falling to the ground, they start running away. Your men try to capture them, but without success. Nevertheless, you have captured Albus.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters")
+  ],[
+  ("event04",[],"Continue...",[
+    (remove_party, "$g_encountered_party"),
+    (troop_join_as_prisoner, "$g_talk_troop"),
+    (call_script, "script_succeed_quest", "qst_slave_revolt"),
+    (change_screen_map),
   ]),
+]),
 
-  (
-    "duel_win",0,
-    "You defeat your opponent. As Albus men see their chief falling to the ground, they start running away. Your men try to capture them, but without success.\
- Nevertheless, you have captured Albus.",
-    "none",
-    [(set_background_mesh, "mesh_pic_deserters")],
-    [
-      ("event04",[],"Continue...",[
-      (remove_party, "$g_encountered_party"),
-      (troop_join_as_prisoner, "$g_talk_troop"),
-      (call_script, "script_succeed_quest", "qst_slave_revolt"),
-      (change_screen_map),
-
-      ]),
-
+("ywhe",0,
+  "You undergo the rituals and you learn quickly about the jewish faith.",
+  "none",[
+    (set_background_mesh, "mesh_pic_jerusalem_tempel")
+  ],[
+  ("event04",[],"Continue...",[
+    (troop_set_slot, "trp_player", slot_troop_religion, worships_yhwhe),
+    (rest_for_hours, 24, 8, 0),
+    (change_screen_map),
   ]),
+]),
 
-  (
-    "ywhe",0,
-    "You undergo the rituals and you learn quickly about the jewish faith.",
-    "none",
-    [(set_background_mesh, "mesh_pic_jerusalem_tempel")],
-    [
-      ("event04",[],"Continue...",[
-      (troop_set_slot, "trp_player", slot_troop_religion, worships_yhwhe),
-      (rest_for_hours, 24, 8, 0),
-      (change_screen_map),
-
-      ]),
-
+("revolt_start",0,
+  "You climb on box and start to speak:^^'Brothers and Sisters of faith, we have tolerated foreign occupation for decades now and I must say: I can't stand it any longer."
+  +" We should end our suppression today! Brothers and sisters, let us fight today for the glory of Judea!'",
+  "none",[
+    (set_background_mesh, "mesh_pic_townriot")
+  ],[
+  ("event04",[],"Romani ite domum!",[
+    (jump_to_menu, "mnu_players_revolt"),
   ]),
-
-  (
-    "revolt_start",0,
-    "You climb on box and start to speak:^^\
- 'Brothers and Sisters of faith, we have tolerated foreign occupation for decades now and I must say: I can't stand it any longer\
- We should end our suppression today! Brothers and sisters, let us fight today for the glory of Judea!'",
-    "none",
-    [(set_background_mesh, "mesh_pic_townriot")],
-    [
-      ("event04",[],"Romani ite domum!",[
-      (jump_to_menu, "mnu_players_revolt"),
-      ]),
-      ("event04",[],"Apologize for the misunderstanding.",[
-       (call_script, "script_change_player_relation_with_center", "$current_town", -5),
-      (jump_to_menu, "mnu_town"),
-
-      ]),
-
+  ("event04",[],"Apologize for the misunderstanding.",[
+    (call_script, "script_change_player_relation_with_center", "$current_town", -5),
+    (jump_to_menu, "mnu_town"),
   ]),
+]),
 
   (
     "players_revolt",0,
@@ -51367,65 +51356,66 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]
   ),
 
-  (
-    "town_action",0,
-    "Choose an action:",
-    "none",
-    [(call_script, "script_set_town_picture"),
-     ],
-    [
-
-      ("town_donation",[
-          (eq,"$entry_to_town_forbidden",0),
-          (troop_slot_ge, "trp_player", slot_troop_renown, 200), #beggars do not donate money
-          (neg|party_slot_eq, "$current_town", slot_village_state, svs_under_siege),
-          (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
-                    ],"Donate 10,000 denars to town officials.",
-           [
-        (party_get_slot, ":prosperity", "$current_town", slot_town_prosperity),
-        (store_troop_gold, ":gold", "trp_player"),
+("town_action",0,
+  "Choose an action:",
+  "none",[
+    (call_script, "script_set_town_picture"),
+  ],[
+    ("werdheri_quest",[
+      (check_quest_active, "qst_werdheri"),
+      (quest_slot_eq, "qst_werdheri", slot_quest_current_state, 5),
+    ],"Meet Werdheri.",[
+      (jump_to_menu,"mnu_werdheri_fight"),
+    ]),
+    ("town_donation",[
+      (eq,"$entry_to_town_forbidden",0),
+      (troop_slot_ge, "trp_player", slot_troop_renown, 200), #beggars do not donate money
+      (neg|party_slot_eq, "$current_town", slot_village_state, svs_under_siege),
+      (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
+    ],"Donate 10,000 denars to town officials.",[
+      (party_get_slot, ":prosperity", "$current_town", slot_town_prosperity),
+      (store_troop_gold, ":gold", "trp_player"),
+      (try_begin),
+        (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
         (try_begin),
-          (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
+          (ge, ":gold", 10000),
+          (troop_remove_gold, "trp_player", 10000),
+          (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 2),
+          (display_message,"@You donated 10000 denars.",color_good_news),
           (try_begin),
-            (ge, ":gold", 10000),
-            (troop_remove_gold, "trp_player", 10000),
-            (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 2),
-            (display_message,"@You donated 10000 denars.",color_good_news),
-            (try_begin),
-              (is_between, ":prosperity", 0, 20),
-              (call_script, "script_change_player_relation_with_center", "$current_town", 15),
-              (call_script, "script_change_center_prosperity", "$current_town", 6),
-              (display_message,"@Due to the low prosperity of the town, the people are very happy."),
-            (else_try),
-              (is_between, ":prosperity", 20, 40),
-              (call_script, "script_change_player_relation_with_center", "$current_town", 8),
-              (call_script, "script_change_center_prosperity", "$current_town", 4),
-              (display_message,"@Due to the low prosperity of the town, the people are very happy."),
-            (else_try),
-              (is_between, ":prosperity", 40, 60),
-              (call_script, "script_change_player_relation_with_center", "$current_town", 4),
-              (call_script, "script_change_center_prosperity", "$current_town", 2),
-            (else_try),
-              (is_between, ":prosperity", 60, 80),
-              (call_script, "script_change_player_relation_with_center", "$current_town", 3),
-              (call_script, "script_change_center_prosperity", "$current_town", 1),
-              (display_message,"@Due to the high prosperity of the town, your relation improves only small."),
-            (else_try),
-              (call_script, "script_change_player_relation_with_center", "$current_town", 1),
-              (display_message,"@Due to the high prosperity of the town, your relation improves only small."),
-            (try_end),
-            (party_set_slot, "$current_town", slot_donate_party, 1),
-            (call_script, "script_change_troop_renown", "trp_player", 10),
+            (is_between, ":prosperity", 0, 20),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 15),
+            (call_script, "script_change_center_prosperity", "$current_town", 6),
+            (display_message,"@Due to the low prosperity of the town, the people are very happy."),
           (else_try),
-            (display_message,"str_not_enough_gold",0x888888), # Gray. You can change the colour what you want.
-            (call_script, "script_change_troop_renown", "trp_player", -20),
+            (is_between, ":prosperity", 20, 40),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 8),
+            (call_script, "script_change_center_prosperity", "$current_town", 4),
+            (display_message,"@Due to the low prosperity of the town, the people are very happy."),
+          (else_try),
+            (is_between, ":prosperity", 40, 60),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 4),
+            (call_script, "script_change_center_prosperity", "$current_town", 2),
+          (else_try),
+            (is_between, ":prosperity", 60, 80),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 3),
+            (call_script, "script_change_center_prosperity", "$current_town", 1),
+            (display_message,"@Due to the high prosperity of the town, your relation improves only small."),
+          (else_try),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 1),
+            (display_message,"@Due to the high prosperity of the town, your relation improves only small."),
           (try_end),
+          (party_set_slot, "$current_town", slot_donate_party, 1),
+          (call_script, "script_change_troop_renown", "trp_player", 10),
         (else_try),
-          (display_message,"@They didn't accept your donation. You can ask them after some days again.",0xAA0000), #I said "one week". This is controlling by a simple trigger. You must match words with digits. Simple trigger has given at bottom of codes. # Dark red. You can change the colour what you want.
+          (display_message,"str_not_enough_gold",0x888888), # Gray. You can change the colour what you want.
           (call_script, "script_change_troop_renown", "trp_player", -20),
         (try_end),
-      ]),
-
+      (else_try),
+        (display_message,"@They didn't accept your donation. You can ask them after some days again.",0xAA0000), #I said "one week". This is controlling by a simple trigger. You must match words with digits. Simple trigger has given at bottom of codes. # Dark red. You can change the colour what you want.
+        (call_script, "script_change_troop_renown", "trp_player", -20),
+      (try_end),
+    ]),
     ("triumph_1",[
       (neg|is_currently_night),
       (this_or_next|eq, "$g_is_emperor", 1),
@@ -51464,107 +51454,81 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 	  ],"Host games.",[
       (jump_to_menu, "mnu_host_games"),
     ]),
+    ##diplomacy begin
+    ("dplmc_guild_master_meeting",[
+      (party_slot_eq,"$current_town",slot_party_type, spt_town),
+        #nested diplomacy start+
+      #rubik had a good idea: only enable this after meeting the guild master
+      (assign, ":can_meet_guild_master", 0),
+      (try_begin),
+        #Always can jump to guild master in cheat mode.
+        (eq, "$cheat_mode", 1),
+        (assign, ":can_meet_guild_master", 1),
+      (else_try),
+        #SB : can jump when part of faction
+        (eq, "$players_kingdom", "$g_encountered_party_faction"),
+        (assign, ":can_meet_guild_master", 1),
+      (else_try),
+        #Can jump to guild master after meeting him once.
+        (party_get_slot, ":guild_master_troop", "$current_town",slot_town_elder),
+        (ge, ":guild_master_troop", 1),
+        (neg|troop_slot_eq, ":guild_master_troop", slot_troop_met, 0),
+        (assign, ":can_meet_guild_master", 1),
+      (else_try),
+        #Always enable this in Praven for the sake of playability, since
+        #the guild master there is weirdly hard to find.
+        (this_or_next|eq, "$current_town", "p_town_6"),
+        #Also enable in the starting town, to avoid confusing players into
+        #thinking the menu item doesn't exist.
+        (eq, "$g_starting_town", "$current_town"),
+        (assign, ":can_meet_guild_master", 1),
+      (try_end),
+      (neq, ":can_meet_guild_master", 0),
+      #nested diplomacy end+
+      (this_or_next|eq,"$entry_to_town_forbidden",0),
+      (gt, "$sneaked_into_town", disguise_none),
+    ],"Meet the Magister civium.",[
+      (try_begin),
+        (call_script, "script_cf_enter_center_location_bandit_check"),
+      (else_try), #SB : unified script call
+        (call_script, "script_start_town_conversation", slot_town_elder, 11),
+      (try_end),
+    ]),
+    ("dplmc_guild_master_meeting_denied",[
+      #Only show this when the player would get the rest of the town menu
+      (party_slot_eq,"$current_town",slot_party_type, spt_town),
+      (this_or_next|eq,"$entry_to_town_forbidden",0),
+          (gt, "$sneaked_into_town", disguise_none),
+        #There is a valid guild master, and you haven't met him,
+      #and there isn't another condition that enables the jump.
+      (party_get_slot, ":guild_master_troop", "$current_town",slot_town_elder),
+      (gt, ":guild_master_troop", 0),
+      (eq, "$cheat_mode", 0),
+      (neq, "$g_starting_town", "$current_town"),
+      (neq, "$current_town", "p_town_6"),
+      (troop_slot_eq, ":guild_master_troop", slot_troop_met, 0),
+      (neq, "$players_kingdom", "$g_encountered_party_faction"),
+      (disable_menu_option),
+    ],"You have not met the Magister civium yet.",[
+    ]),
+    ("auto_buy_food",[
+      (neg|party_slot_eq,"$current_town",slot_party_type, spt_castle),
+    ],"Buy food automatically.",[
+      (assign, "$g_next_menu", "mnu_town"),
+      (jump_to_menu,"mnu_dplmc_trade_auto_buy_food_begin"),
+    ]),
+    ("auto_sell",[
+      (neg|party_slot_eq,"$current_town",slot_party_type, spt_castle),
+    ],"Sell items automatically.",[
+      (assign, "$g_next_menu", "mnu_town"),
+      (jump_to_menu,"mnu_dplmc_trade_auto_sell_begin"),
+    ]),
+    ("continue",[
+    ],"Go back.",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
-      ##diplomacy begin
-      ("dplmc_guild_master_meeting",
-       [(party_slot_eq,"$current_town",slot_party_type, spt_town),
-          #nested diplomacy start+
-        #rubik had a good idea: only enable this after meeting the guild master
-        (assign, ":can_meet_guild_master", 0),
-        (try_begin),
-          #Always can jump to guild master in cheat mode.
-          (eq, "$cheat_mode", 1),
-          (assign, ":can_meet_guild_master", 1),
-        (else_try),
-          #SB : can jump when part of faction
-          (eq, "$players_kingdom", "$g_encountered_party_faction"),
-          (assign, ":can_meet_guild_master", 1),
-        (else_try),
-          #Can jump to guild master after meeting him once.
-          (party_get_slot, ":guild_master_troop", "$current_town",slot_town_elder),
-          (ge, ":guild_master_troop", 1),
-          (neg|troop_slot_eq, ":guild_master_troop", slot_troop_met, 0),
-          (assign, ":can_meet_guild_master", 1),
-        (else_try),
-          #Always enable this in Praven for the sake of playability, since
-          #the guild master there is weirdly hard to find.
-          (this_or_next|eq, "$current_town", "p_town_6"),
-          #Also enable in the starting town, to avoid confusing players into
-          #thinking the menu item doesn't exist.
-          (eq, "$g_starting_town", "$current_town"),
-          (assign, ":can_meet_guild_master", 1),
-        (try_end),
-        (neq, ":can_meet_guild_master", 0),
-        #nested diplomacy end+
-        (this_or_next|eq,"$entry_to_town_forbidden",0),
-        (gt, "$sneaked_into_town", disguise_none),
-		],
-       "Meet the Magister civium.",
-        [
-          (try_begin),
-            (call_script, "script_cf_enter_center_location_bandit_check"),
-          (else_try), #SB : unified script call
-            (call_script, "script_start_town_conversation", slot_town_elder, 11),
-           # (party_get_slot, ":town_scene", "$current_town", slot_town_center),
-           # (modify_visitors_at_site, ":town_scene"),
-           # (reset_visitors),
-
-           # (party_get_slot, ":guild_master_troop", "$current_town",slot_town_elder),
-           # (set_visitor,11,":guild_master_troop"),
-
-           # (set_jump_mission,"mt_town_center"),
-           # (jump_to_scene, ":town_scene"),
-           # (change_screen_map_conversation, ":guild_master_troop"),
-          (try_end),
-     ]),
-	#nested diplomacy start+
-	#If you can't jump to the guild master, explain why
-    ("dplmc_guild_master_meeting_denied",
-	[
-		#Only show this when the player would get the rest of the town menu
-		(party_slot_eq,"$current_town",slot_party_type, spt_town),
-		(this_or_next|eq,"$entry_to_town_forbidden",0),
-        (gt, "$sneaked_into_town", disguise_none),
-	    #There is a valid guild master, and you haven't met him,
-		#and there isn't another condition that enables the jump.
-		(party_get_slot, ":guild_master_troop", "$current_town",slot_town_elder),
-		(gt, ":guild_master_troop", 0),
-		(eq, "$cheat_mode", 0),
-		(neq, "$g_starting_town", "$current_town"),
-		(neq, "$current_town", "p_town_6"),
-		(troop_slot_eq, ":guild_master_troop", slot_troop_met, 0),
-		(neq, "$players_kingdom", "$g_encountered_party_faction"),
-		(disable_menu_option),
-		],
-       "You have not met the Magister civium yet.",
-       [
-     ]),
-
-      ("auto_buy_food",[(neg|party_slot_eq,"$current_town",slot_party_type, spt_castle),],
-       "Buy food automatically.",
-       [
-          (assign, "$g_next_menu", "mnu_town"),
-          (jump_to_menu,"mnu_dplmc_trade_auto_buy_food_begin"),
-        ]),
-      #SB : re-order dialog options for consistency, add talk instead of trade option
-		##diplomacy start+
-		#Begin auto-sell, credit rubik (Custom Commander)
-      ## CC
-      ("auto_sell",[(neg|party_slot_eq,"$current_town",slot_party_type, spt_castle),],
-       "Sell items automatically.",
-       [
-          (assign, "$g_next_menu", "mnu_town"),
-          (jump_to_menu,"mnu_dplmc_trade_auto_sell_begin"),
-        ]),
-
-        ("continue",[],
-       "Go back.",
-       [
-        (jump_to_menu, "mnu_town"),
-        ]),
-
-    ]
-  ),
 ###event chain regarding Avaritia and Superbus
   (
     "avaritia_end",0,
@@ -59212,6 +59176,162 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (add_xp_as_reward, 1250),
       (jump_to_menu, "mnu_town"),
       (troop_remove_gold, "trp_player", 2000),
+    ]),
+]),
+
+("werdheri_fight",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You wait until evening.^^Under the looming gates of Kalissia, you and Werdheri stride purposefully into the shadowed forest. The moonlit path unfolds as you venture towards the imminent clash. The rustling leaves amplify the anticipation. With each step, Werdheri's silent assurance fuels your resolve. The distant murmur of 200 bandits awaits, yet your alliance is an unyielding force against the impending threat. The town behind, the destiny ahead, you and Werdheri vanish into the depths, the pulse of valour echoing in the night.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      # 0, 1 player, werdheri
+      # 2 to 43 enemies
+      (add_xp_as_reward, 1000),
+      (set_jump_mission, "mt_werdheri_battle_lair"),
+      (modify_visitors_at_site, "scn_werdheri_bandit_lair"),
+      (reset_visitors),
+
+      (set_visitor, 44, "trp_player"),
+      (set_visitor, 1, "trp_werdheri"),
+
+      (set_visitors, 2, "trp_looter", 3),
+      (set_visitors, 3, "trp_looter", 3),
+      (set_visitors, 4, "trp_bandit", 2),
+      (set_visitors, 5, "trp_looter", 3),
+      (set_visitors, 6, "trp_looter", 3),
+      (set_visitors, 7, "trp_looter", 2),
+      (set_visitors, 8, "trp_germanic_hunter", 3),
+      (set_visitors, 9, "trp_looter", 2),
+      (set_visitors, 10, "trp_bandit", 2),
+      (set_visitors, 11, "trp_looter", 2),
+      (set_visitors, 12, "trp_looter", 2),
+      (set_visitors, 13, "trp_germanic_hunter", 3),
+      (set_visitors, 14, "trp_looter", 2),
+      (set_visitors, 15, "trp_bandit", 3),
+      (set_visitors, 16, "trp_looter", 3),
+      (set_visitors, 17, "trp_bandit", 2),
+      (set_visitors, 18, "trp_bandit", 2),
+      (set_visitors, 19, "trp_looter", 2),
+      (set_visitors, 20, "trp_germanic_hunter", 2),
+      (set_visitors, 21, "trp_looter", 2),
+      (set_visitors, 22, "trp_looter", 3),
+      (set_visitors, 23, "trp_bandit", 2),
+      (set_visitors, 24, "trp_looter", 2),
+      (set_visitors, 25, "trp_germanic_hunter", 2),
+      (set_visitors, 26, "trp_looter", 2),
+      (set_visitors, 27, "trp_looter", 3),
+      (set_visitors, 28, "trp_bandit", 2),
+      (set_visitors, 29, "trp_brigand", 2),
+      (set_visitors, 30, "trp_looter", 3),
+      (set_visitors, 31, "trp_looter", 3),
+      (set_visitors, 32, "trp_bandit", 2),
+      (set_visitors, 33, "trp_looter", 3),
+      (set_visitors, 34, "trp_brigand", 2),
+      (set_visitors, 35, "trp_looter", 3),
+      (set_visitors, 36, "trp_looter", 3),
+      (set_visitors, 37, "trp_germanic_nightwarrior", 2),
+      (set_visitors, 38, "trp_looter", 3),
+      (set_visitors, 39, "trp_brigand", 2),
+      (set_visitors, 40, "trp_germanic_nightwarrior", 2),
+      (set_visitors, 41, "trp_germanic_nightwarrior", 2),
+      (set_visitors, 42, "trp_looter", 2),
+      (set_visitors, 43, "trp_germanic_nightwarrior", 2),
+
+      (jump_to_scene, "scn_werdheri_bandit_lair"),
+      (change_screen_mission),
+    ]),
+]),
+
+("werdheri_fight_alone",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Werdheri, the Germanic warrior, a solitary tempest, storms into the bandit's lair with an aura of unyielding determination. His eyes ablaze, a reflection of ancient valor, he moves with calculated grace through the shadows."
+  +" The air crackles as his sword clashes against the lawless horde. A lone wolf amidst the chaos, Werdheri's strength and skill weave through the bandit ranks."
+  +" The cavern echoes with the symphony of battle, his every strike a testament to the indomitable spirit of a warrior facing insurmountable odds."
+  +" Against the backdrop of flickering torchlight, Werdheri stands resolute, an unyielding force against the tide of bandits, carving his legacy into the heart of the lair.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("werdheri_duel",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You have now the choice to either run away or take the challenge.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("answere_1",[],"Wait until evening.",[
+      (quest_set_slot, "qst_werdheri", slot_quest_current_state, 2),#orm quest
+      (jump_to_menu, "mnu_duel"),
+    ]),
+    ("answere_1",[],"Leave.",[
+      (jump_to_menu, "mnu_town"),
+      (call_script, "script_fail_quest", "qst_werdheri"),
+      (call_script, "script_end_quest", "qst_werdheri"),
+      (call_script, "script_change_player_honor", -25),
+      (call_script, "script_change_troop_renown", "trp_player", -100),
+    ]),
+]),
+
+("werdheri_duel_lost",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "As the battle unfolded, you faced Werdheri, a formidable Germanic warrior with a fierce determination in his eyes. The clash of steel resonated in the air as you engaged in a duel, skill against skill, strength against strength. Werdheri's movements were swift and calculated, his blade dancing with lethal precision. Despite your best efforts, the tide turned against you. A powerful swing of Werdheri's sword caught you off guard, and the impact resonated through your body. Stumbling backward, you tried to regain your composure, but Werdheri seized the opportunity. With a swift, decisive strike, his blade found its mark, and you fell to the ground, defeated. The world blurs.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("answere_1",[],"Death waits.",[
+      (call_script, "script_fail_quest", "qst_werdheri"),
+      (call_script, "script_end_quest", "qst_werdheri"),
+      (add_xp_as_reward, 1000),
+      (assign, "$temp", 0),
+      (jump_to_menu, "mnu_death_waits"),
+    ]),
+]),
+
+("werdheri_duel_won",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "With a swift and calculated strike, your sword clashes against Werdheri's, the clash echoing through the ancient forest. Werdheri, the formidable Germanic warrior, fights with ferocity and skill, but you anticipate his moves, finding openings in his defense. The duel is a dance of blades under the canopy of ancient trees.^^In a moment of decisive action, you feint to one side and swiftly change your attack angle. Werdheri, caught off guard, attempts to parry, but your blade finds its mark. The clash resonates one final time as Werdheri's weapon is knocked from his grasp and you blade penetrates his chest. Victory is yours, and the forest bears witness to your triumph.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (jump_to_menu, "mnu_auto_return_to_map"),
+      (call_script, "script_change_troop_renown", "trp_player", 25),
+      (add_xp_as_reward, 5000),
+      (call_script, "script_end_quest", "qst_werdheri"),
+      (troop_add_gold, "trp_player", 2500),
+    ]),
+]),
+
+("werdheri_lost",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "In the bandit-infested lair, the clash unfolds like a tempest. You and Werdheri, outnumbered but resolute, face the relentless tide."
+  +" The echo of clashing steel fills the cavern as you fight valiantly side by side. Despite your fierce defense, overwhelming numbers prevail."
+  +" Exhaustion sets in, and with Werdheri at your side, you succumb to the relentless onslaught. The bandits, victorious, claim the darkness."
+  +" In the final moments, you find solace in the shared courage, a fleeting echo in the cavern's depths.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (call_script, "script_fail_quest", "qst_werdheri"),
+      (call_script, "script_end_quest", "qst_werdheri"),
+      (add_xp_as_reward, 1000),
+      (assign, "$temp", 0),
+      (jump_to_menu, "mnu_death_waits"),
+    ]),
+]),
+
+("werdheri_won",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "In the heart of the bandit's lair, a symphony of battle ensues. With Werdheri by your side, an indomitable force, you both dance amidst chaos."
+  +" The clash of steel resonates against the cavern walls as unity prevails over the marauding horde. Strategic prowess and unwavering resolve turn the tide."
+  +" Together, you and Werdheri carve a path through the bandits, their defeat echoing in the lair's depths."
+  +" Amidst the fading tumult, victorious breaths are drawn, the lair now silent, marked by the valor of two against the many.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (call_script, "script_end_quest", "qst_werdheri"),
+      (quest_set_slot, "qst_werdheri", slot_quest_current_state, 6),
+      (add_xp_as_reward, 5000),
+      (call_script, "script_setup_troop_meeting", "trp_werdheri", -1, "scn_werdheri_bandit_lair"),
     ]),
 ]),
 

@@ -143,4 +143,5 @@ qst_four_emperors = 141
 qst_player_treason = 142
 qst_neros_fate = 143
 qst_zarinaia = 144
-qst_quests_end = 145
+qst_werdheri = 145
+qst_quests_end = 146
