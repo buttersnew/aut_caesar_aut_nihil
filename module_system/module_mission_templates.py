@@ -31978,6 +31978,7 @@ mission_templates = [
       (team_give_order, 2, grc_everyone, mordr_stand_ground),
       (team_give_order, 1, grc_everyone, mordr_follow),
       (set_cheer_at_no_enemy, 0),
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_siege),
     ]),
     (ti_before_mission_start, 0, 0, [],[ # set it night with fog and no rain
       (scene_set_day_time, 24),
@@ -32035,7 +32036,6 @@ mission_templates = [
       (try_end),
     ],[
     ]),
-
     (4,0,ti_once,[
       (main_hero_fallen),
     ],[
