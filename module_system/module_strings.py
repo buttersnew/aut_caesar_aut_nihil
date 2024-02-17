@@ -811,6 +811,7 @@ strings = [
   ("npc37_intro", "Ave Dominus, are you in need of a chronicler for your victories in this world?"),
   ("npc38_intro", "Ave good dominus, seem you're eager to leave this town, can I ask for some of your time?"),
   ("npc39_intro", "{!}"),
+  ("npc40_intro", "Hey my friend. Are you by chance hiring men? I am looking for work."),
 
   ("npc1_intro_response_1", "Perhaps. What's the urgency?"),
   ("npc2_intro_response_1", "Your last five denars? What happened to you?"),
@@ -851,6 +852,7 @@ strings = [
   ("npc37_intro_response_1", "A chronicler, interesting, tell me more about you and maybe you can convince me"),
   ("npc38_intro_response_1", "Perhaps I do, what's the matter?"),
   ("npc39_intro_response_1", "{!}"),
+  ("npc40_intro_response_1", "Perhaps. What's your skills?"),
 
   ("npc1_intro_response_2", "Step back, sir, and keep your hand away from my purse."),
   ("npc2_intro_response_2", "I have better things to do."),
@@ -891,6 +893,8 @@ strings = [
   ("npc37_intro_response_2", "No interested, go write your filthy books somewhere else, only strong warriors have a place in my party."),
   ("npc38_intro_response_2", "You seem like the mixture of a runaway and a beggar, I don't have time for any of those now."),
   ("npc39_intro_response_2", "{!}"),
+  ("npc40_intro_response_2", "I don't want any business with Egyptian scum."),
+
 #backstory intro
   ("npc1_backstory_a", "Well, {sir/madame}, it's a long story..."),
   ("npc2_backstory_a", "It's a tragic tale, Dominus."),
@@ -939,7 +943,7 @@ strings = [
   ("npc37_backstory_a", "Well, Dominus, you see my name is Yosef but the Romans know me as Iosephus; my father was a priest at the Jerusalem's Temple in Iudea and educated me well enough but I decided to be a priest was not my vocation and pursued my true passion as a historian. Now I'm travelling around the world and observing it to write as much as possible; unfortunately it seems the cost for my necessities only keeps rising and my money is short, so I decided to try my luck in selling my work to some adventurer who wants history to know his glory. Can that adventurer be your excellency maybe?"),
   ("npc38_backstory_a", "Well, {dominus/domina}, it's a long and bittersweet story..."),
   ("npc39_backstory_a", "{!}"),
-
+  ("npc40_backstory_a", "Good, {Dominus/Domina}, I am a skilled at almost everything! For instance, let me think, I am good at cooking food. In particular high protein food which is healthy for warriors! What else I can do? Let me think ... I am also a great warrior. I killed a thief who stole my purse last day. Some claim it was just a street urchin, but that is not true. I am not a child-murderer. It was an eight foot giant!"),
 #backstory main body
   ("npc1_backstory_b", "I had a bit of a misunderstanding {s19}in {s20} about a horse that I found tied up outside the inn.\
  It was the spitting image of a beast that threw me a few days back and ran off. Naturally I untied it for a closer look.\
@@ -1030,6 +1034,7 @@ strings = [
   ("npc37_backstory_b", "Thank you Dominus, the only thing I ask you aside from feeding me and paying is that we do not attack the innocents, after all I don't want to be know by the next generations as a chronicler of bandits and looters."),
   ("npc38_backstory_b", "You see good sir, I'm being hunted by men sent from my father or better the man I used to call like that. My birth name is Ulysses, named due to my parents were fond of the Greek myths. My life was a somewhat decent one if you ask me, as the son of a retired Centurion in Carthage, I had a good time at my parent's villa; until one day I met a man who changed my views of this world.  "),
   ("npc39_backstory_b", "{!}"),
+  ("npc40_backstory_b", "In particular, I learned a lot from my father. I learned reading, writing and calculating numbers. That helped me a lot in my life so far. I worked at the library of {s20} for one year. Then I worked at a small shop and helped with accounting. I worked at the port of {s20} too, again for accounting. And I also worked for a rich landowner, managing his slaves. My father also the art of peotry."),
 
 #backstory recruit pitch
   ("npc1_backstory_c", "But if I was with a larger group who could vouch for me, they might let it pass. I'd be very grateful to you."),
@@ -1083,6 +1088,7 @@ strings = [
   ("npc37_backstory_c", "I am sure I can be valuable for you."),
   ("npc38_backstory_c", "That man was a rabbi who taught me the most important lesson of all: 'Shma Yisrael, Adonai Elohenu, Adonai Ehad. Hear o Israel, the Lord is the only G-D, the Lord is unique.', those lines and everything that came after them, made me questioned all the life I had before, for months I got out of my house in secret to study with him and the other Jews, I knew if my parents discovered problems would rise and well, it happened unfortunately. You see, my father did not shared the same opinion as mine about Judaism and my master died soon after due to a fever, I suspect my father poisoned him, also he tried to force me unto the service of the local Jupiter's temple, so I took all the money and food I could, bought a horse and fled from home. The thing dominus is my father is not exactly the most generous of men, he is cheapskate and decided to put a bounty onto me, can you imagine? His own son! That man values money more than even his own family! So that's how it is right now, I'm going from town to town, my aim is to go to the Holy Land of Israel, I was always amazed about the stories I heard during the studies so going with you is a good chance for some security, so what do you say, want to accept me in your company?"),
   ("npc39_backstory_c", "{!}"),
+  ("npc40_backstory_c", "Thus, I am a famous poet too and composed various songs. You may want to hear one? Maybe later ... what else I can do? I am a fast runner and I know how to ride. I can be useful as messenger. I am famous for those skills in {s20}. I would be a great addition for you, {Dominus/Domina}."),
 
 ### use these if there is a short period of time between the last meeting
   ("npc1_backstory_later", "I've been here and about, you know, doing my best to keep out of trouble. I'm desperately in need of work, however."),
@@ -1138,6 +1144,7 @@ strings = [
   ("npc37_backstory_later", "I've been here and there sightseeing the countryside but my money is getting short and there still so much out there to see, so dominus still in need of a chronicler?"),
   ("npc38_backstory_later", "I've been travelling from place to place, if the city has a Jewish community I ask for shelter but do not stay long as to not put my hosts in danger. If not I try to sleep wherever I can, sometimes in an inn or even in abandoned buildings, this life is too harsh, pleas dominus reconsider and let me serve in your company of soldiers."),
   ("npc39_backstory_later", "{!}"),
+  ("npc40_backstory_later", "I've been at {s20} and trying too find work. I got a job, but now .... you know I got fired again..."),
 
   ("npc1_backstory_response_1", "Perhaps. But how do I know that there won't be a 'misunderstanding' about one of my horses?"),
   ("npc2_backstory_response_1", "Well, perhaps I could offer you work. Can you fight?"),
@@ -1178,6 +1185,7 @@ strings = [
   ("npc37_backstory_response_1", "Maybe I do need someone to register all my exploits, so that future generations will learn to appreciate my mighty in the battlefield."),
   ("npc38_backstory_response_1", "Maybe, tell me, why should I take the risk? What's in for me?"),
   ("npc39_backstory_response_1", "{!}"),
+  ("npc40_backstory_response_1", "Why are you looking for work at all? Why you left your previous jobs?"),
 
   ("npc1_backstory_response_2", "I'll do no such thing. I have better things to do then to help thieves avoid justice."),
   ("npc2_backstory_response_2", "Hard luck, friend. Good day to you."),
@@ -1218,6 +1226,7 @@ strings = [
   ("npc37_backstory_response_2", "Go back to your desert and leave me alone."),
   ("npc38_backstory_response_2", "Sorry, your problems are not mine responsiblity lad, good luck anyway.."),
   ("npc39_backstory_response_2", "{!}"),
+  ("npc40_backstory_response_2", "That sounds too fishy for my taste. Farewell."),
 
   ("npc1_signup", "Master, I'm offended that you would even think such a thing. I'd be most indebted to you,\
  and you'll see that I show my gratitude."),
@@ -1264,6 +1273,7 @@ strings = [
   ("npc37_signup", "Yes my noble commander, I will be sure to register your victories and although I'm not inclined to lie but only for you I can let's say ‘turn into even glorious' your feats. Well if Herodotus did so with the Persian-Greek Wars why can't I do the same right?"),
   ("npc38_signup", "Well Dominus despite how I look right now my father used to train me, I'm very good with a sword and deadly with the spear, also I know how to ride horses. I learned about military history and also how to read and to write, for certain I can always be useful."),
   ("npc39_signup", "{!}"),
+  ("npc40_signup", "Good question... Firstly, I am looking for work because I have no work at all. My last job was at a shop, but the shop keepers husband somehow hated me... She is pretty and I guess she liked me more than she should have..."),
 
   ("npc1_signup_2", "I've ridden over a fair amount of rough country in my time, more often than not in a hurry.\
  I'm a good tracker and I've got a good eye for terrain. So what do you say?"),
@@ -1325,6 +1335,7 @@ strings = [
   ("npc37_signup_2", "Also I'm well versed in diplomatic aspects and politics due to my father's teachings, so I can be a very good asset for you and can handle myself in battle as long as you don't put me into a deathtrap."),
   ("npc38_signup_2", "And you see I will work for you immediately, no need to pay me anything in advance, just make sure I'm safe ok?"),
   ("npc39_signup_2", "{!}"),
+  ("npc40_signup_2", "And that is basically the reason why I get constantly fired. Either people start to hate me say I am weird because .... you know ... or something happens with some woman, you know ...."),
 
   ("npc1_signup_response_1", "Good. You can be useful to us."),
   ("npc2_signup_response_1", "That will do."),
@@ -1365,6 +1376,7 @@ strings = [
   ("npc37_signup_response_1", "Good. I might have use for you."),
   ("npc38_signup_response_1", "Good, welcome onboard.."),
   ("npc39_signup_response_1", "{!}"),
+  ("npc40_signup_response_1", "Very well. I can use you."),
 #11
   ("npc1_signup_response_2", "I'd prefer not to take the risk. Good day, sir."),
   ("npc2_signup_response_2", "I'm afraid I'm only looking for men with some experience. Good day to you."),
@@ -1405,6 +1417,7 @@ strings = [
   ("npc37_signup_response_2", "Sorry your skills are not what I'm after right now.."),
   ("npc38_signup_response_2", "Sorry but you still sound too much risky, goodbye."),
   ("npc39_signup_response_2", "{!}"),
+  ("npc40_signup_response_2", "Hm, that's too much risk for me. Farewell."),
 
   ("npc1_payment", "I will be very useful to you, master, you can bet on that. Just one more thing before we leave,\
  would you mind lending me {reg3} denars? I am ashamed to say it, but I have made myself a bit of debt here,\
@@ -1462,6 +1475,7 @@ strings = [
   ("npc37_payment", "I will be very valuable to you, commander, that I promise. Just one more thing before we leave, would you mind lending me {reg3} denars? I need to buy more papyrus, ink and some more materials for the travels."),
   ("npc38_payment", "I will be very useful to you, master, you can bet on that. Just one more thing before we leave, would you mind lending me {reg3} denars? I am ashamed to say it, but I have made myself a bit of debt here, staying in this tavern over the last few weeks and the tavern owners no longer believe that I am loaded with gold as I used to tell them. You know, things could get ugly here if they see me leaving with you before paying them."),
   ("npc39_payment", "{!}"),
+  ("npc40_payment", "Just one more thing before we leave, would you mind lending me {reg3} denars? I am ashamed, but I have made myself a bit of debt in {s20} as I was workless for half a year.... But I still had to pay all the bills and buy food. So I had to take a loan ..."),
 
   ("npc1_payment_response", "Very well, here's {reg3} denars. Now, fall in with the rest."),
   ("npc2_payment_response", "{!}."),
@@ -1502,6 +1516,7 @@ strings = [
   ("npc37_payment_response", "Very well, here's {reg3} denars. Now, go buy your stuff, we leave at dawn."),
   ("npc38_payment_response", "Very well, here's {reg3} denars. Now, fall in with the rest."),
   ("npc39_payment_response", "{!}"),
+  ("npc40_payment_response", "Here's {reg3} denars. Now, fall in with the rest."),
 
   ("npc1_morality_speech", "Oy -- master. Please don't take this the wrong way, but it's a hard life and it's a bit much that we {s21}.\
  Take a little more care in the future, captain, if you don't mind my saying."),
@@ -1559,6 +1574,7 @@ strings = [
   ("npc37_morality_speech", "Commander I hope you do not get offended by what I will say but please refrain from running from battles, if you do then what would I write about?"),
   ("npc38_morality_speech", "To win is always an objective but to lose so many men pursuing it is a waste of resources, try to not repeat the mistakes of the late Pyrrhus. Dominus, remember what he said: if he won in that fashion one more time, he would be ruined."),
   ("npc39_morality_speech", "{!}"),
+  ("npc40_morality_speech", "{Dominus/Domina}, I have to criticize your last decision. It's just dishonorable to {s21}. That should not happen again!"),
 
   ("npc1_2ary_morality_speech", "Master -- just so you know, I've got no problem if we {s21}.\
  Living to fight another day makes good sense to me."),
@@ -1610,6 +1626,7 @@ strings = [
   ("npc37_2ary_morality_speech", "Commander -- just so you know, to run from battle is not how a conqueror like you should behave."),
   ("npc38_2ary_morality_speech", "I fled from my father in order to be free, it would be hypocrite for me to criticize you."),
   ("npc39_2ary_morality_speech", "{!}"),
+  ("npc40_2ary_morality_speech", "{Dominus/Domina}, I am happy to serve you. But you should take care that we don't {s21}. That's really all I wanted to say. It really bothers me."),
 
   ("npc1_personalityclash_speech", "Master -- no offense, but I'm a bit tired of {s11}, who puts on airs like she's something better than\
  me."),
@@ -1654,18 +1671,19 @@ strings = [
   ("npc25_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
   ("npc26_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
   ("npc27_personalityclash_speech", "Dominus, I just wanted to tell you that I find {s11} very suspicious. After battles, he always perform those strange rituals and he doesn't seem to have any respect for the aquila. I just wanted to say you: If I were you I would dismiss this monkey."),
-  ("npc28_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
+  ("npc28_personalityclash_speech", "{Dominus/Domina}, {s11} is weird ..."),
   ("npc29_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
   ("npc30_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
   ("npc31_personalityclash_speech", "Chief, I must say {s11} is a suspicious man. He always talks about the sea, fish and sailing. He is not a good warrior, he is just a simple fisher."),
   ("npc32_personalityclash_speech", "Dominus, you are a great Roman, but why do you insist on sheltering this snake {s11}? The Lemonia would really like to nail him and every other Modius to a cross and send it floating down the river. The Modia have been traitors for generations, seeking to harm good Romans and damage the Empire! Their family has attacked us in court, set fire to our businesses, murdered us for over a century, all because they are dishonorable scum!"),
   ("npc33_personalityclash_speech", "Dominus, forgive me if I speak out of turn, but I'm sure you don't know what vile snakes the Lemonia are, to have one of them in your employ. They have been traitors for generations, seeking to harm good Romans and damage the Empire! Their family has attacked us in court, set fire to our businesses, murdered us for over a century, all because they are dishonorable scum!"),
   ("npc34_personalityclash_speech", "I don't want to bother you, Dominus, but there is something I want to mention."),
-  ("npc35_personalityclash_speech", "{!}"),
+  ("npc35_personalityclash_speech", "{Dominus/Domina}, I don't talk much, but ... this guy {s11} is annoying..."),
   ("npc36_personalityclash_speech", "I have to speak about {s11} with you, Dominus."),
   ("npc37_personalityclash_speech", "Commander -- no offense, but I'm a bit tired of {s11}, who always try to interrupt my prayers and provokes me, I did not joined this company to be harmed due to my beliefs."),
   ("npc38_personalityclash_speech", "Dominus, I try to keep a cool head but the Christian Marcus Vinicius really get under my skin."),
   ("npc39_personalityclash_speech", "{!}"),
+  ("npc40_personalityclash_speech", "{Dominus/Domina}, I'm tired of {s11}. He is spreading false rumors about me."),
 
   ("npc1_personalityclash_speech_b", "She's a common bandit, just like myself, and she has no right to tell me to keep my distance from her,\
  as she did just now."),
@@ -1711,18 +1729,19 @@ strings = [
   ("npc25_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
   ("npc26_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
   ("npc27_personalityclash_speech_b", "I will try to get along with this monkey, but Dominus, as I said, you should consider to dismiss him. Rome doesn't need such a creature under his ranks."),
-  ("npc28_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
+  ("npc28_personalityclash_speech_b", "To be honest, I believe he is a pervert. I noticed that he is always starring at women while they are pooping. It's even worse... last day, after a follower woman finished her poopy business, he walked towards the poop and touched it, put some of it on his hands and held it in front of his nose! I just want to warn you. Men who do such things are retarded!"),
   ("npc29_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
   ("npc30_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
   ("npc31_personalityclash_speech_b", "I only want to tell you, that he is not a good soldier. A great Chief like you shouldn't have fishermen in his warband, but good warriors and fighters who know how to use the spear and the shield."),
   ("npc32_personalityclash_speech_b", "I will try to get along with {s11} for you if you find him useful, but don't ask me to be nice to that waste of space."),
   ("npc33_personalityclash_speech_b", "Dominus, you have taught me so much, and I am forever grateful for giving me a chance! I think I have learned enough now. I need to build my own career in service of the Empire and bring glory to my family name. If you ever need my support, Dominus, you know you have it!"),
   ("npc34_personalityclash_speech_b", "Dominus that man {s11} did well in refusing the Roman false gods but he refuses to leave the old law. Nothing of that makes sense anymore, we are under the faith of Christus. He refuses to acknowledge the savior that has come to the world and instead prefer to dwell in old books written by even older men."),
-  ("npc35_personalityclash_speech_b", "{!}"),
+  ("npc35_personalityclash_speech_b", "He is constantly staring at Ligia and also writing weird poems about her ..."),
   ("npc36_personalityclash_speech_b", "You see Dominus, this man is like all the others like him, they are stubborn, can't face the fact they are not the privileged anymore. They rejected the son of God and refuse to amend their ways."),
   ("npc37_personalityclash_speech_b", "He's an idolater, yet I do not say anything and never mess up with anyone's business in this company, I even make my own food so you do not have the trouble to prepare it according to my diet so why does he always try to provoke me? Yesterday {s11} tried to fed me with pork even when I said that I do not eat this impure meat, then he went to call me many things as result. I expect you to take no offense in this but I did not joined this company for people to admonish me due to my different faith."),
   ("npc38_personalityclash_speech_b", "He does not know anything about the Scriptures, the so called Jesus he follows was no Messiah, he was a liar who is now burning in excrements. His works were a curse, his followers mix the true monotheism of Judaism with idolatry and attribute to him the figure of a god, there is only a unique and only G-D, Hashem and the Temple to worship the Lord is in Jerusalem!"),
   ("npc39_personalityclash_speech_b", "{!}"),
+  ("npc40_personalityclash_speech_b", "He constantly claims I would stare at the follower women while they are pooping. But that is not true! I don't star at pooping women! Why would I care about someone pooping? That's not my kink. He is the one starring at them constantly! It's his kink! I stare at their poops, but only sometimes... But they are follower women, right? Aren't they not here for our pleasure?"),
 
 ### set off by behavior after victorious battle
   ("npc1_personalityclash2_speech", "Oy -- master, I don't fancy myself a sensitive soul, but I don't particularly like how {s11} went about\
@@ -1774,12 +1793,13 @@ strings = [
   ("npc31_personalityclash2_speech", "{!}."),
   ("npc32_personalityclash2_speech", "{!}."),
   ("npc33_personalityclash2_speech", "{!}."),
-  ("npc34_personalityclash2_speech", "{!}."),
+  ("npc34_personalityclash2_speech", "{Dominus/Domina}, {s11} is ... Christus forgive me, a pervert!"),
   ("npc35_personalityclash2_speech", "{!}."),
   ("npc36_personalityclash2_speech", "{!}."),
   ("npc37_personalityclash2_speech", "Commander I don't fancy myself to be irritating but I don't particularly like how {s11} looks and talks with me, always on the defensive seems that person always despises me."),
   ("npc38_personalityclash2_speech", "Dominus, seems not only one person here annoys me but now there is double trouble, Lidia and her guardian Ursus, the two do not stop trying to convince me the so called Jesus is a man I must follow and consider as my Messiah."),
   ("npc39_personalityclash2_speech", "{!}"),
+  ("npc40_personalityclash2_speech", "{Dominus/Domina}, {s11} is constantly overreacting. She does not tolerate the old gods and her new god is weird..."),
 
   ("npc1_personalityclash2_speech_b", "The way she whistles cheerfully as she does it\
  -- it puts a chill down my spine, it does."),#Pravare Ytarim - Titocuna
@@ -1842,12 +1862,13 @@ strings = [
   ("npc31_personalityclash2_speech_b", "{!}."),
   ("npc32_personalityclash2_speech_b", "{!}."),
   ("npc33_personalityclash2_speech_b", "{!}."),
-  ("npc34_personalityclash2_speech_b", "{!}."),
+  ("npc34_personalityclash2_speech_b", "Yesterday I was cutting vegetables for the meal when he appeared, recited a very embarrassing and disgusting poem he wrote! Thank god, Ursus was near and helped me ... But not only that, sometimes, when I relieve myself he is staring at me ..."),
   ("npc35_personalityclash2_speech_b", "{!}."),
   ("npc36_personalityclash2_speech_b", "{!}."),
   ("npc37_personalityclash2_speech_b", "The way he always glare and always answer with hostility towards me is not normal, seems the fact I'm Jewish turns him into a bad mood..."),
   ("npc38_personalityclash2_speech_b", "The thing those two don't get is that they were openly following idolatry before becoming Christians and now they're doing it again but blindly, Jesus was a liar, what his followers do is no monotheism, it's idolatry tainting the belief in the unique and only G-D."),
   ("npc39_personalityclash2_speech_b", "{!}"),
+  ("npc40_personalityclash2_speech_b", "Yesterday I was preparing a meal. I occasionally looked at her direction. Just to capture a brief glance of her beautiful breasts. But she went completely wild, screaming that I would bring shame on her and that I would violet the laws of her god Chrestos. Her friend Ursus appeared and nearly killed me! That guy is completely insane. He never talks, but if you dare to look at Ligia for a second he immediately appears and wants to beat the fuck out of you!"),
 
   ("npc1_personalitymatch_speech", "Master. {s11} back there didn't do badly in that last fight at all. He's a good man, too."),
   ("npc2_personalitymatch_speech", "{Dominus/Domina}. I just wanted to tell you that {s11} may be a rough sort, and I'll venture\
@@ -1877,7 +1898,7 @@ strings = [
  bodies after our last little scrap."),
   ("npc17_personalitymatch_speech", "{!}."),
   ("npc18_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
-  ("npc19_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
+  ("npc19_personalitymatch_speech", "{Domins/Domina}, {s11} is a good soldier."),
   ("npc20_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
   ("npc21_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
   ("npc22_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
@@ -1898,6 +1919,7 @@ strings = [
   ("npc37_personalitymatch_speech", "Commander {s11} back there fought against the enemy with bravery, a good warrior to have by your side in a time of need."),
   ("npc38_personalitymatch_speech", "Dominus, that man Iosephus is a good man, he saved my hide when an enemy attacked me from behind. He also is very well versed in the Scriptures and happens to be a Kohen from the lineage of Aharom."),
   ("npc39_personalitymatch_speech", "{!}"),
+  ("npc40_personalitymatch_speech", "{Domins/Domina}, {s11} is a good fellow."),
 
   ("npc1_personalitymatch_speech_b", "Without good honest souls like him to bring silver into the Empire, scoundrels\
  like me would have a hard time in life, I'll warrant. I'm glad to have him with us."),
@@ -1938,7 +1960,7 @@ strings = [
  if we ever run into them in our travels."),
   ("npc17_personalitymatch_speech_b", "{!}."),
   ("npc18_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
-  ("npc19_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc19_personalitymatch_speech_b", "He told me he had worked mainly as scribe at the library and port administration, but despite his background is useful and a good solider. He knows how to cook, he helps with searching for firewood, he helps setting up the camp and he never complains! A nice addition to the cohort."),
   ("npc20_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
   ("npc21_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
   ("npc22_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
@@ -1959,6 +1981,7 @@ strings = [
   ("npc37_personalitymatch_speech_b", "You see Commander Jews and Persians have a relative good history together, there were even cases of Jews serving the ancient Persian kings on high positions, as the Parthians are their sucessors I must say to thank you for hiring a valiant one like {s11}, despite our differences we have good talks and I can trust my behind to him in a battle ."),
   ("npc38_personalitymatch_speech_b", "He remembers me a little of my deceased master, blessed be his memory. Well anyway a good friend to talk with and a reliable companion to hold the line on battle."),
   ("npc39_personalitymatch_speech_b", "{!}"),
+  ("npc40_personalitymatch_speech_b", "He is not even helpful when making meals for our troops, but he also knows what is good about women... the boobs of course. Really a nice lad and a good choice as companion."),
 
   ("npc1_retirement_speech", "I'm a bit tired of marching up and down the land, shedding my blood for someone else's cause.\
  The loot is good, but I think I've got enough of that, now. I'm going to head back to my village, take a wife, settle down,\
@@ -2023,6 +2046,7 @@ strings = [
   ("npc37_retirement_speech", "Commander I'm thankful for all you did for me but now I'm thinking that I should go back to my hometown and begin to write, for now I've had enough experiences to comment about."),
   ("npc38_retirement_speech", "Thanks to you Dominus I accumulated a small fortune and my father's men lost my track long ago. For now I think it's time to settle down, maybe buy a nice plot of land near Jerusalem, grow apples, find a wife and retire. Thank you for everything, if my orchard gives any fruits be sure you're always welcome at my home to taste them. Aleichem Shalom my friend."),
   ("npc39_retirement_speech", "{!}"),
+  ("npc40_retirement_speech", "I good tired of marching up and down the land ... The loot and salary is good, but I had enough battles for now. I'm going to head back to my town and maybe try my luck again as scribe at the library... maybe I will also find a wife."),
 
   ("npc1_rehire_speech", "Master -- it's good to see you again. I know we had our differences in the past, but to tell you the truth,\
  those were some of the best days I've known. And, to tell you the truth, I've had a bit of difficulty finding work.\
@@ -2113,6 +2137,7 @@ strings = [
   ("npc37_rehire_speech", "Dominus -- it's good to see you again. I scrapped enough lines out of my memories but still I'm stuck at some parts and think it's a good idea to travel again, so the 'creativity bloc' goes away, so what do you say, can I go fall into line again?"),
   ("npc38_rehire_speech", "Dominus how happy I'm to see you, well things unfortunately did not got as I expected. I was going to have a dinner, after a day of work in the field, then two men tried to stab me with daggers, fortunately I managed to kill one and hurt the other but he fled. It seems my father still did not gave up... so here I'm again, from town to town until that horrible man dies and finally leaves me alone... so are you in need for more men? I'm not rusted at all as per the two assassins can confirm it"),
   ("npc39_rehire_speech", "{!}"),
+  ("npc40_rehire_speech", "{Domins/Domina}, I am happy to see you again. It turned out that I am looking for work again... working as scribe was too boring after I enjoyed all those nice battles with you ... maybe you are hiring again?"),
 
 #local color strings
   ("npc1_home_intro", "Master -- did you know that I was born around here, in the high steppes of Cimmeria? This is where I got my eye for horseflesh,\
@@ -2164,6 +2189,7 @@ strings = [
   ("npc37_home_intro", "Ah Jerusalem... For us Jews you see this is the most sacred city on Earth, so you can imagine how many of us travel to it, you can easily spot many on the streets, so want to know it's history?"),
   ("npc38_home_intro", "Ah see Dominus, we're near Carthage, I used to like very much the sea near here, it always brought me some peace, the harbor has a very beautiful view of the sunset. As you probably know here is one of the richest cities of the Empire, ships from all over come to trade."),
   ("npc39_home_intro", "{!}"),
+  ("npc40_home_intro", "{Domins/Domina}, we are close to the delta. I can feel its fresh air!"),
 
   ("npc1_home_description", "Well, Scythians have not always lived  here. It is said that the wandering Scythians once dwelt in Asia,\
  and there warred with the Massagetae, but with ill success;\
@@ -2246,6 +2272,7 @@ strings = [
   ("npc37_home_description", "Well this city was build thousands of years ago by the Jebbusites, it was called Jebbus back in the days, after King David conquered it he chose it to be the capital of the Kingdom of Israel. There his son Solomon built a Temple in honor to our G-D which due to the sins of the people was destroyed centuries after by the Babylonians, damned be them!"),
   ("npc38_home_description", "Well, as you can imagine Romans not always ruled this area, before Rome conquered it, this land used to be the center of an important Phoenician Thalassocracy. Eventually the maritime empire of Carthage entered in conflict with the growing power of Rome, many battles were fought for a hundred of years but eventually Carthage began losing more and more, then Scipio Aemelianus managed to siege and conquer the city, thus ending the Punic Wars."),
   ("npc39_home_description", "{!}"),
+  ("npc40_home_description", "The Nihle Delta, nestled in our vibrant homeland, is a breathtaking tapestry of winding waterways and lush greenery. It's our lifeblood, a sanctuary where nature's rhythm orchestrates a dance of diverse wildlife. The delta mirrors our spirit, resilient and interconnected, embodying the heart and soul of our cherished community."),
 
   ("npc1_home_description_2", "The war didn't last long, the Scythian horde was defeated and they retreated back into the steppe.\
  It is an old tradition that Scythians loot and pillage their neighbours. Thus Scythia is often target of punitive expeditions.\
@@ -2315,6 +2342,7 @@ strings = [
   ("npc37_home_description_2", "Well we build another Temple at the same site during the time of the Achaemenid's domain, it's the same that still standing now and which my father is one of the priests at, you can visit there if you want, the atmosphere is great and all sorts of merchandise are sold in the plaza nearby so you can always find something to do there even if not to pray."),
   ("npc38_home_description_2", "Well Dominus you see, I understand you may have business in this place but for me to enter with you is very risky, I don't want to need killing more of my father's envoys so if you excuse me I'm going to stay at the camp and wait for your return outside the walls, have a safe trip, I will pray for your safe return."),
   ("npc39_home_description_2", "{!}"),
+  ("npc40_home_description_2", "I was born in a small hamlet, not far from Alexandria, directly in the delta! It was beautiful! How I miss my youth .... things were much easier back then ..."),
 
   ("npc1_home_recap", "I'm from the high steppes of Cimmeria, near {s21}."),
   ("npc2_home_recap", "I was born in Hispania, my father was a Roman merchant, my mother a hispanic woman.\
@@ -2360,6 +2388,7 @@ strings = [
   ("npc37_home_recap", "I'm from Iudea, {s21}."),
   ("npc38_home_recap", "I'm from Africa Proconsularis, specifically from {s21}."),
   ("npc39_home_recap", "{!}"),
+  ("npc40_home_recap", "I am from a small hamlet near {s21}."),
 
   ("npc1_honorific", "master"), #Pravare Ytarim
   ("npc2_honorific", "{Dominus/Domina}"), #Marius Gaius
@@ -2400,6 +2429,7 @@ strings = [
   ("npc37_honorific", "Commander, Dominus"),
   ("npc38_honorific", "Dominus"),
   ("npc39_honorific", "Chief"),
+  ("npc40_honorific", "{Dominus/Domina}"),
 
   ("npc1_kingsupport_1", "That's a great idea, Master. All these kings and landed nobles who rule now, with their prisons and\
  gibbets and scaffolds, the whippings, brandings, hangings and the crucifixions, for any man who might be driven by the crying\
@@ -2459,6 +2489,7 @@ strings = [
   ("npc37_kingsupport_1", "You have my full support Dominus, you see from my point of view you seen like a wise leader, similar to how our great king Solomon was. Exactly what this world does need, a ruler who would be a fair judge and would use it's knowledge to turn the lives of the people to better."),
   ("npc38_kingsupport_1", "I think you would be a very good ruler Dominus, I just ask you for two things, give an edict of tolerance in your empire and also spread citizenship to all individuals, you see how things are right now is impossible to maintain, eventually many will revolt, no one wants to follow a ruthless tyrant. Be like Alexander or King Cyrus, blessed be both, the two knew it and always treated fairly subjects from all groups."),
   ("npc39_kingsupport_1", "{!}"),
+  ("npc40_kingsupport_1", "Excellent idea, {Dominus/Domina}. The world and the people deserve something better! And you would be the best they can get!"),
 
   ("npc1_kingsupport_2", "Sure would, Master. But let me tell you what might bring others to your cause --\
  particularly us poor folk. If you would, as new Princeps, who took the throne, issue a great amnesty\
@@ -2539,6 +2570,7 @@ strings = [
   ("npc37_kingsupport_2", "As you command sir, well then let me tell you my ideas, first as I said you will for sure be a wise ruler so we should spread the news to the common folk, the gentry and even nobles that despite everything you will deal with all with wisdom so to not be injust to them, different from many tyrants who ruled in the past and let their emotions take over them and act recklessly. Also I ask you Dominus to please enact a tolerance of religion act, so that the many different faiths and nations that inhabit the Empire would know that their rule does not want to retrieve their identity but merely to improve their lives and all that you ask is their loyalty in return..."),
   ("npc38_kingsupport_2", "Remember Dominus that a fortress whose soldiers are divided can't defend against any invasor but a unified and high spirited garrison is the most scary of things to face. Lead by example, give men their basic freedoms and soon thousands will follow your orders. I'm an example, you offered me a chance to survive and be free, so here I'm now repaying your kindness."),
   ("npc39_kingsupport_2", "{!}"),
+  ("npc40_kingsupport_2", "Of course I would, {Dominus/Domina}. I could help gain support among the common folk. I know what they want, as I am part of them! Hahaha! If the common people would rally under your banner, you could become the most powerful man in the world! There are rumors in the East that a new king has come, send by the gods."),
 
   ("npc1_kingsupport_2a", "Please go on..."), #Pravare Ytarim
   ("npc2_kingsupport_2a", "Please continue..."), #Marius Gaius
@@ -2579,6 +2611,7 @@ strings = [
   ("npc37_kingsupport_2a", "Please go on..."),
   ("npc38_kingsupport_2a", "Let's say I do it, tell me what you can do to spread my claim using those edicts."),
   ("npc39_kingsupport_2a", "{!}"),
+  ("npc40_kingsupport_2a", "Please continue..."),
 
   ("npc1_kingsupport_2b", "Well. We saw how that turned out..."), #Pravare Ytarim
   ("npc2_kingsupport_2b", "I do not ask for their support, as they would no doubt wish to make a profit on the transaction."), #Marius Gaius
@@ -2619,6 +2652,7 @@ strings = [
   ("npc37_kingsupport_2b", "Well. We see how that turns out..."),
   ("npc38_kingsupport_2b", "People will do and follow what I say them to do."),
   ("npc39_kingsupport_2b", "{!}"),
+  ("npc40_kingsupport_2b", "Enough!"),
 
   ("npc1_kingsupport_3", "If I could go about this land for a few weeks, telling the common folk that you were going to amnesty their\
  kinfolk -- well, they would start talking of you as a Caesar, and that would pave your way to the throne. Shall I do that, Master?"), #Pravare Ytarim
@@ -2698,6 +2732,7 @@ strings = [
   ("npc37_kingsupport_3", "So may I take my leave to spread the word about you Commander? As you see I can talk with the many Jewish representatives in the communities along the Empire so they can help me spread the word, there is nothing better to spread your fame as to let the people to talk about your virtues between themselves."),
   ("npc38_kingsupport_3", "During my days of travel I met a Jewish merchant whose son-in-law is a priest at the Jerusalem's Temple, I can talk with him to convince the Priests for an audience, if you promise them autonomy regarding the religious affairs, they can convince all the Jews in the Empire to raly for your cause. So, can I take some days of leave to spread the word Dominus?"),
   ("npc39_kingsupport_3", "{!}"),
+  ("npc40_kingsupport_3", "If I could go about this land for a few weeks, telling the people that you were this king, coming from the East to help them and to rule them. Then that you would help you gain right to rule among the people. I am sure."),
 
   ("npc1_kingsupport_objection", "Master -- you've given leave to Aturius Spurus to go tell the nobles that they will have rights over pasture,\
  market, and forest? I can't say I like that. Give him his way, and he'll set up gibbets in every village in the land, where there\
@@ -2774,12 +2809,13 @@ strings = [
   ("npc31_kingsupport_objection", "{!}."), #Titocuna
   ("npc32_kingsupport_objection", "Dominus, this has to be slander! Did you really promise the vile Modia to take their side against my ancient family?! Dominus, I told you, they are evil and decietful. They have no love for the Empire and will betray you first chance they get. How could you, Dominus?"),
   ("npc33_kingsupport_objection", "Dominus, this has to be slander! Did you really promise the vile Lemonia to take their side against my family?! Dominus, I told you, they are evil and decietful. They have no love for the Empire and will betray you first chance they get. How could you, Dominus?"),
-  ("npc34_kingsupport_objection", "{!}"),
+  ("npc34_kingsupport_objection", "{Dominus/Domina}, I just want to mention that it bothers me that you send Kara Boga on a mission to spread false rumors that you are the Messiah. Christus was the Messiah, its a sine to claim it!"),
   ("npc35_kingsupport_objection", "{!}"),
   ("npc36_kingsupport_objection", "{!}"),
   ("npc37_kingsupport_objection", "Commander -- you've given leave to Dyonisia so she can spread about that supposed 'mark of the gods', let me tell you one thing, there is only one G-D, you shall not base your legacy in useless superstitions about 'lines in hands' or whatever."),
   ("npc38_kingsupport_objection", "Dominus you've given leave to Abadutiker to spread lies about a fake ancestry of yours, please reconsider doing things like that. Falsehood is not something you must base your legacy on what's solid not on lies, remember that tongues that spread falsehoods are one of the things the Lord Despises."),
   ("npc39_kingsupport_objection", "{!}"),
+  ("npc40_kingsupport_objection", "Why you told Ligia to run around and raise support for those Chrestos fanatics? They hate us and our life style. Don't you see how she treats me? I never did anything against her, but she is constantly telling her lover Ursus to beat me ... I tell you, {playername}, you can't trust her. She may looks beautiful, with nicely round breasts and a nice petite belly ... but she is just a snake!"),
 
   ("npc1_intel_mission", "Well, Master, as it happens, I have a few cousins over in {s17}, and unlike some in my family,\
  they can still stand the sight of me. They deal in horses --- I've even been able to supply them with stock from time to time --\
@@ -2861,6 +2897,7 @@ strings = [
   ("npc37_intel_mission", "Well, Commander if you want I can go visit my family in {s17}, my father hear many things from the priests who assist the travelers so I can found some information to you about the current affairs of the{s18}. I could go over there for a couple of days and return as soon as possible to give you my report."),
   ("npc38_intel_mission", "Well Dominus you see, I have connections to {s17}. I may could go there and see what I can find out."),
   ("npc39_intel_mission", "{!}"),
+  ("npc40_intel_mission", "I have some friends in {s17}. They may know something about the latest rumors in Egypt, which is part of {s18} as you know. I could go over there for a few days and tell you what I find out."),
 
   ("npc1_fief_acceptance", "You'd make me lord of {s17}, Master? Well, that would be the kindest thing that anyone has ever\
  done for me in a long time. Heh. I'll make the most of it -- you can count on that. I have to say, though -- I'm not sure how the other\
@@ -2925,6 +2962,7 @@ strings = [
   ("npc37_fief_acceptance", "You want to make me a governor Commander? Wow I'm speechless, count on me good sir, I will go everything in my new position's reach of power to help you and rest assured that despite the new status for me you're still my commander so your orders shall be done sir."),
   ("npc38_fief_acceptance", "You'd make me governor of {s17}, Dominus? Well that's the second best thing to ever happened to me, the first being know the word of G-D. Gladly I will do my best to assist you, also now I'm sure, my father won't be able to do anything again. Maybe I will send him some money so that old cheapskate will cease his complaints. Thank you sir, I will begin my preparations and organize the garrison you entrusted to me."),
   ("npc39_fief_acceptance", "{!}"),
+  ("npc40_fief_acceptance", "You'd make me governor of {s17} and grant me nobility! Well, that would be the kindest thing that anyone has ever done for me in a long time! I would be a perfect choice, as I am literate and know how to deal with numbers!"),
 
   ("npc1_woman_to_woman", "{!}."), #Pravare Ytarim
   ("npc2_woman_to_woman", "{!}."), #Marius Gaius
@@ -2967,6 +3005,7 @@ strings = [
   ("npc37_woman_to_woman", "{!}."),
   ("npc38_woman_to_woman", "{!}."),
   ("npc39_woman_to_woman", "I just wanted to tell you, from woman to woman, how I appreciate your afforts!"),
+  ("npc40_woman_to_woman", "{!}."),
 
   ("npc1_turn_against", "I'm sorry that we meet like this, Master. There's no question that I owe my rise in life to you.\
  You doubtless think me ungrateful. However, one has to follow one's destiny -- isn't that correct?"), #Pravare Ytarim
@@ -3029,6 +3068,7 @@ strings = [
   ("npc37_turn_against", "I'm truly unhappy that we met again on opposing sides in the battlefield Dominus, yet I will do my duty as it's needed, I only hope that one day we can reconcile and be on good terms again."),
   ("npc38_turn_against", "I'm very saddened for us to meet like this Dominus, yet I trust this to be necessary, you went astray of the right path and I'm here to correct it. So please bear no ill against me when all this ends for I'm merely doing what needs to be done."),
   ("npc39_turn_against", "{!}"),
+  ("npc40_turn_against", "I am sorry to find you as opponent on the field of battle ... But fate must go as it does."),
  #NPC companion changes end
 
 #Troop Commentaries begin

@@ -3355,6 +3355,10 @@ str_16|agi_14|int_10|cha_12|level(10), wp(125), knows_warrior_npc|knows_trade_4|
 [itm_celtic_boots, itm_female_3_barb],
 attrib_common_lady,wp(100),knows_common_lady,0x000000018000405a0b9b6ca6db4ab6dd00000000001c65ca0000000000000000],
 
+["npc40", "Kara Boga", "Kara Boga", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
+[itm_graves_simple_2,itm_roman_hammer,itm_judean_tunic_6],
+str_16|agi_14|int_10|cha_12|level(10), wp(125), knows_warrior_npc|knows_trade_3|knows_riding_3|knows_persuasion_2, 0x000000003f00c1806dcb3503dd492ea500000000001f27180000000000000000 ],
+
 #NPC system changes end
 
 
