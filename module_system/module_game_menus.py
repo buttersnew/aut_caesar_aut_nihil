@@ -6070,9 +6070,9 @@ game_menus = [
     ## CC
     (str_clear, s10),
     (try_begin),
-      (eq, "$any_allies_at_the_last_battle", 1),
-      (call_script, "script_print_casualties_to_s0", "p_ally_casualties", 0),
-      (str_store_string, s10, "@^^Ally Casualties:{s0}"),
+        (eq, "$any_allies_at_the_last_battle", 1),
+        (call_script, "script_print_casualties_to_s0", "p_ally_casualties", 0),
+        (str_store_string, s10, "@^^Ally Casualties:{s0}"),
     (try_end),
   ],[
   ("continue",[],"Continue...",[
