@@ -31510,7 +31510,7 @@ presentations = [
         (val_add, "$g_presentation_state", 1),
         (play_track, "track_final_glory", 1),
 
-        (overlay_set_text, "$g_presentation_obj_20", "@Augustus brought and end to the turmoil and restored the order and principles which are the fundament of Roman authority. The conquests continued under him and his successors. From Britannia to Egypt and from Hispania to Asia marched the eagle of Rome."),
+        (overlay_set_text, "$g_presentation_obj_20", "@Augustus brought an end to the turmoil and restored the order and principles which are the fundament of Roman authority. The conquests continued under him and his successors. From Britannia to Egypt and from Hispania to Asia marched the eagle of Rome."),
     (else_try),
         (gt, ":cur_time", 88000+15000),
         (eq, "$g_presentation_state", 8),

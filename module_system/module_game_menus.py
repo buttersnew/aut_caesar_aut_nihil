@@ -53796,8 +53796,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("ambush_wixnix",0,
   "You make your way towards the road through a long forest. Always watching out, in fear of ambushes. Suddenly an arrow hits the ground next to you. Indeed, an ambush!",
-  "none",
-  [
+  "none",[
     (assign, "$g_enemy_party", "$g_encountered_party"),
     (call_script, "script_party_count_fit_for_battle", "$g_encountered_party"),
     (call_script, "script_encounter_calculate_fit"),

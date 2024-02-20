@@ -2491,8 +2491,8 @@ itm_celtic_light1,itm_celtic_light12,itm_celtic_light10],
 attrib_level_18,wpe(105,150,150,150), knows_archer_basic, barbarian_man_face_younger_1, barbarian_man_face_young_2 ],
 
 #thracia
-["aux_inf_thracum", "Miles Thracum", "Milites Thracum", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
-[itm_hasta3,itm_roman_spatha_3,itm_javelin,itm_roman_aux_helm_6, itm_graves_simple_2,itm_cetratus_aux_20,
+["aux_inf_thracum", "Miles Thracum", "Milites Thracum", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_7,
+[itm_hasta3,itm_javelin,itm_roman_aux_helm_6, itm_graves_simple_2,itm_cetratus_aux_20,
 itm_legion_squamata_cape_pants_long_1,itm_legion_squamata_cape_pants_long_2,itm_legion_squamata_pants_long_1,itm_legion_squamata_pants_long_2],
 attrib_level_23, wp(150), knows_level_23, mercenary_face_greek_1, mercenary_face_greek_2 ],
 ["aux_archer_thracum", "Sagittarius Thracum", "Sagittarii Thracum", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
