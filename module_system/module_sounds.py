@@ -251,4 +251,11 @@ sounds = [
    ("order_stand_closer", sf_priority_15|sf_vol_8|sf_stream_from_hd, ["order_stand_closer.wav",]),
    ("order_spread", sf_priority_15|sf_vol_8|sf_stream_from_hd, ["order_spread.wav",]),
    ("order_retreat", sf_priority_15|sf_vol_8|sf_stream_from_hd, ["order_retreat.wav",]),
+
+   ("intro_1", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_1.wav",]),
+   ("intro_2", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_2.wav",]),
+   ("intro_3", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_3.wav",]),
+   ("intro_4", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_4.wav",]),
+   ("intro_5", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_5.wav",]),
+   ("intro_6", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_6.wav",]),
 ]

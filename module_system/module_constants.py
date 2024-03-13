@@ -1814,6 +1814,7 @@ slot_quest_object_faction           = 15
 
 slot_quest_main_poppaea_fate        = slot_quest_target_item
 slot_quest_main_poppaea_timer       = slot_quest_object_faction
+slot_quest_main_antonia_or_poppaea = slot_quest_giver_center
 
 slot_quest_freelancer_payment        = 8
 slot_quest_freelancer_agent_spawned  = 9

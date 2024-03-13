@@ -3069,6 +3069,17 @@ game_menus = [
 
       (start_presentation, "prsnt_display_special_items"),
     ]),
+
+    # ("camp_action",[
+    # ],"Test scene.",[
+    #   #1,2 player antonia,
+    #   #3-10: guards
+    #   #11-36 people
+    #   #37 camera
+    #   (jump_to_scene, "scn_cutscene_rome_victory_2"),
+    #   (change_screen_mission),
+    # ]),
+
     # ("camp_action",[
     #   (ge, "$cheat_mode", 1)
     # ],"CHEAT add all legendary items.",[
@@ -10851,7 +10862,7 @@ game_menus = [
         (str_store_string,s17,"@^^Long time ago Carthage was as mighty as Rome and the center of mediterranean trade. But the Romans do not like rivals. They burned it to the ground and built a new Roman Carthage next to it."),
     (else_try),
         (eq, "$current_town", "p_town_20"),
-        (str_store_string,s17,"@^^Alexandria was found by Alexander the Great and became the pearl of Aegypt."),
+        (str_store_string,s17,"@^^Alexandria was found by Megas Alexandros and became the pearl of Aegypt."),
     (else_try),
         (eq, "$current_town", "p_town_19"),
         (str_store_string,s17,"@^^Hierosolyma! It is the center of the jewish faith. You feel that great trouble lies here."),
@@ -16028,11 +16039,11 @@ game_menus = [
     (else_try),##if center is looted/ destroyed
         (party_slot_ge, "$current_town", slot_party_looted_left_days, 1),
         (jump_to_menu, "mnu_center_looted"),
-    (else_try),##event caesar
-        (eq, "$g_fire", 2),
-        (eq, "$current_town", "p_town_6"),
-        (eq, "$sneaked_into_town", 0),#Skip if sneaked
-        (jump_to_menu, "mnu_assassination"),
+    # (else_try),##event caesar
+    #     (eq, "$g_fire", 2),
+    #     (eq, "$current_town", "p_town_6"),
+    #     (eq, "$sneaked_into_town", 0),#Skip if sneaked
+    #     (jump_to_menu, "mnu_assassination"),
     (else_try),##special freelancer event
         (this_or_next|troop_slot_eq, "trp_avaritia", slot_troop_spouse, 2),
         (troop_slot_eq, "trp_avaritia", slot_troop_spouse, 1),
@@ -17066,6 +17077,26 @@ game_menus = [
               (neg|is_currently_night),
               (eq, "$current_town", "p_town_37"),
               (set_visitors, 8, "trp_pamphile", 1),
+          (try_end),
+
+          # main story: otho/vitellius choice
+          (try_begin),
+              (check_quest_active, "qst_four_emperors"),
+              (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7),
+              (eq, "$current_town", "p_town_6"),
+              (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+              (this_or_next|eq, ":goy", "trp_senator_2"),# otho
+              (eq, ":goy", "trp_statthalter_9"), #vitellius
+              (try_begin),
+                  (troop_get_slot, ":leaded_party", ":goy", slot_troop_leaded_party),
+                  (gt, ":leaded_party", -1),
+                  (party_is_in_town, ":leaded_party", "p_town_6"),
+                  (set_visitors, 56, ":goy", 1),
+              (else_try),
+                  (str_store_troop_name, s10, ":goy"),
+                  (display_message, "@{s10} has not reached Roma yet!", message_alert),
+              (try_end),
+              (set_visitors, 55, "trp_antonia", 1),
           (try_end),
 
           (try_begin),
@@ -18882,7 +18913,7 @@ game_menus = [
 
     ("visit_alexanders_tomb",[
       (eq, "$current_town", "p_town_20"),
-    ],"Visit the tomb of Alexander the Great.",[
+    ],"Visit the tomb of Megas Alexandros.",[
       (set_jump_mission, "mt_explore_secret_place"),
       (modify_visitors_at_site, "scn_alexanders_tomb"),
       (reset_visitors),
@@ -30632,94 +30663,24 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     # ]
   # ),
 
-  ("assassination",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "The eternal City!^^\
-	everything goes as planned. The guards open the gates and you march into the town with your troops. People look at your soldiers. Some run into their houses, others remain watching.\
- As you reach the imperial palace, you are informed supporters of Nero have locked themselves in the Curia Julia. Together with some soldiers you march towards the Curia.",
-    "none",
-    [
-  (set_background_mesh, "mesh_pic_emperor"),
-	],
-    [
-     ("continue",[],"Continue.",
-       [
-      # (assign, "$temp4", 0),
-      # (assign, "$temp4_1", 0),
-		  # (assign, "$talk_context", tc_campaign_talk),
-		  # (call_script, "script_setup_troop_meeting", "trp_centurio_preatoriani", -1, -1),
-      # # (call_script, "script_get_meeting_scene"),
-      # # (assign, ":meeting_scene", reg0),
-      # # (modify_visitors_at_site,":meeting_scene"),
-      # # (reset_visitors),
-      # # (set_visitor,0,"trp_player"),
-      # # (set_visitor,17,"trp_centurio_preatoriani"),
-      # # (set_jump_mission,"mt_conversation_encounter"),
-      # # (jump_to_scene,":meeting_scene"),
-      # # (assign, "$talk_context", tc_campaign_talk), #SB : move this up here
-      # # (change_screen_map_conversation, "trp_centurio_preatoriani"),
-    (modify_visitors_at_site,"scn_senate"),
-    (reset_visitors, 0),
-    (set_jump_entry,0),
-    (set_visitors, 1, "trp_praetoriani_milites", 4),
-    (set_visitors, 2, "trp_praetoriani_milites", 4),
-    (set_visitors, 16, "trp_senator", 2),
-    (set_visitors, 17, "trp_senator", 2),
-    (set_visitors, 18, "trp_senator", 2),
-    (set_visitors, 19, "trp_senator", 2),
-    (set_visitors, 20, "trp_praetoriani_milites", 3),
-    (set_jump_mission, "mt_kill_supporters"),
-    (jump_to_scene, "scn_senate"),
-    (change_screen_mission),
-        ]
-       ),
-    ]
- ),
-
-  # (
-    # "meet_popea",0,
-    # "Some minutes later, the centurio appears together with {s2}.",
-    # "none",
-    # [(set_background_mesh, "mesh_pic_palast"),
-    # ],
-    # [
-      # ("Continue...",[],"Talk with her",[
-		  # (assign, "$talk_context", tc_campaign_talk),
-		  # (call_script, "script_setup_troop_meeting", "trp_kingdom_7_lady_1", -1, -1),
-      # # (call_script, "script_get_meeting_scene"),
-      # # (assign, ":meeting_scene", reg0),
-      # # (modify_visitors_at_site,":meeting_scene"),
-      # # (reset_visitors),
-      # # (set_visitor,0,"trp_player"),
-      # # (set_visitor,17,"trp_kingdom_7_lady_1"),
-      # # (set_jump_mission,"mt_conversation_encounter"),
-      # # (jump_to_scene,":meeting_scene"),
-      # # (assign, "$talk_context", tc_campaign_talk), #SB : move this up here
-      # # (change_screen_map_conversation, "trp_kingdom_7_lady_1"),
-    # ],
-  # ),
-  # ]),
-
-("meeting_with_centurio_2",0,
-  "With ease your men kill the last supporters of Nero. Then you march towards the palace. You take over control of the imperial treasury.^^"
-  +"Nero, still alive, has taken shelter in the Triclinium together with his wife and Tigellinus. It is time to confront them.",
+("goy_enter_domus_augusti",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "The Praetorians open the doors and greet you as Caesar Augustus. A golden wreath of laurel is placed on your head, and another on the head of Antonia."
+  +" {s10} receives a silver wreath of laurel. Meanwhile, guards are eliminating Nero's most loyal courtiers. Antonia seeks information about Nero and Poppaea Sabina, but none of the guards can provide any details."
+  +" She orders a search for them. You, Antonia, and {s10} wander through the palace, eventually spotting Nero. You attempt to apprehend him, successfully trapping him inside the dining room.",
   "none",[
-    (set_background_mesh, "mesh_pic_palast"),
-    (display_log_message, "@You take over the imperial treasure.", color_good_news),
-    (troop_get_slot, ":gold", "trp_kingdom_7_lord", slot_troop_wealth),
-    (val_mul, ":gold", 2),
-    (val_div, ":gold", 3),
-    (troop_add_gold, "trp_player", ":gold"),
-    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_wealth, 0),#set it 0
-  ],[
-    ("Continue...",[],"Enter the Triclinium.",[
+    (set_background_mesh, "mesh_pic_emperor"),
+    (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+    (str_store_troop_name, s10, ":goy"),
+	],[
+    ("continue",[],"Continue.",[
       (display_message, "@You found Nero's lyre!", color_good_news),
       (troop_add_item, "trp_player","itm_lyre_rich",0),
-        #36 player
-        #39 praetorian centurio
-        #11 Poppaea
-        #10 Nero
-        #40 Tigellinus
-        #6 or 7 Acte
+      #36 player
+      #39 praetorian centurio
+      #11 Poppaea
+      #10 Nero
+      #40 Tigellinus
+      #6 or 7 Acte
       (assign, "$temp4", 0),#1 Nero banished, 2 Nero killed
       (assign, "$temp4_1", 0),#1 banish, 2 death, 3 divorce
       (assign, "$talk_context", tc_campaign_talk),
@@ -30730,6 +30691,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (troop_set_face_keys, "trp_courtier_female", s68, 1),
       (set_visitor, 10, "trp_courtier_female"),#acte
       (set_visitor, 36, "trp_player"),
+      (set_visitor, 17, "trp_antonia"),
+      (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+      (set_visitor, 67, ":goy"),
       (set_visitor, 39, "trp_quest_primus_pilus"),#soldier
       (set_visitor, 10, "trp_kingdom_7_lord"),
       (set_visitor, 11, "trp_kingdom_7_lady_1"),
@@ -30740,97 +30704,197 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
+("meeting_in_senate",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "After concluding your speech, you receive word that {s25} awaits you at the Senate. He has meticulously drafted a bill for the senators, seeking to officially declare you Princeps."
+  +" Your presence is urgently requested, as the wheels of political destiny turn in the hallowed halls of the Senate, poised to shape the future of your imperial ascension.",
+  "none",[
+    (set_background_mesh, "mesh_pic_emperor"),
+    (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+    (str_store_troop_name_link, s25, ":goy"),
+    (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+    (try_begin),
+      (this_or_next|eq, ":pop_or_antonia", "trp_antonia"),
+      (eq, ":pop_or_antonia", "trp_kingdom_7_lady_1"),
+      (str_store_troop_name, s11, ":pop_or_antonia"),
+      (str_store_string, s20, "@You and {s11} walk to the Curia Julia."),
+    (else_try),
+      (str_store_string, s20, "@You walk to the Curia Julia."),
+    (try_end),
+	],[
+    ("continue",[],"Continue.",[
+      (modify_visitors_at_site,"scn_senate"),
+      (reset_visitors, 0),
+      (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+      (set_visitors, 0, ":pop_or_antonia", 1),
+      (set_visitors, 0, "trp_player", 1),
+      (set_visitors, 1, "trp_aux_cav_praetoriani_2", 4),
+      (set_visitors, 2, "trp_aux_cav_praetoriani_2", 4),
 
-  (
-    "meeting_with_centurio_3",0,
-    "Today the Roman population sees a rare spectacle: At first, the former praefectus urbi, who was well known for his cruelty,\
- is burned alive. Then the people can watch how {s34}. {s33}^^The citizens of Rome look to the future with hope, but a storm is brewing on the horizon. Black clouds darken the sun.",
-    "none",
-    [(set_background_mesh, "mesh_pic_palast"),
-     #first kill Tigellinus
-      (troop_set_slot, "trp_tigellinus", slot_troop_occupation, dplmc_slto_dead),
-      (assign, "$praefectus_urbani", -1),
-      ##apply decisions
-      (try_begin),#Poppaea
-        (eq, "$temp4_1", 2),#death
-        (display_log_message, "@Poppaea has been executed on your orders!"),
-        (str_store_string, s33, "str_poppaea_dead"),
-      (else_try),
-        (eq, "$temp4_1", 1),#banish
-        (display_log_message, "@Poppaea was murdered by the mob of Rome."),
-        (str_store_string, s33, "str_poppaea_banished"),
-      (else_try),
-        (display_log_message, "@Poppaea returns to her family."),
-        (str_store_string, s33, "str_poppaea_divorced"),
-      (try_end),
+      (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+      (set_visitors, 3, "trp_praetoriani_milites", 1),
+      (set_visitors, 4, "trp_praetoriani_milites", 1),
+      (set_visitors, 50, ":goy", 1),
+      (set_visitors, 51, "trp_praetoriani_milites", 1),
+      (set_visitors, 51, "trp_praetoriani_milites", 1),
+      (set_jump_mission, "mt_kill_supporters"),
+      (jump_to_scene, "scn_senate"),
+      (change_screen_mission),
+    ]),
+]),
 
+("meeting_with_centurio_2",0,
+  "HO.",
+  "none",[
+    (set_background_mesh, "mesh_pic_emperor"),
+
+  ],[
+    ("Continue...",[],"Continue.",[
+      (jump_to_menu, "mnu_auto_return_to_map"),
+    ]),
+]),
+
+
+("meeting_with_centurio_3",0,
+  "Today the Roman population sees a rare spectacle: At first, the former praefectus urbi, who was well known for his cruelty, is burned alive."
+  +" Then the people can watch how {s34}. {s33}^^{s20}",
+  "none",[
+
+    (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+    (try_begin),
+      (this_or_next|eq, ":pop_or_antonia", "trp_antonia"),
+      (eq, ":pop_or_antonia", "trp_kingdom_7_lady_1"),
+      (str_store_troop_name, s11, ":pop_or_antonia"),
+      (str_store_string, s20, "@{s11} has prepared a short speech which you will hold in front of the people of Rome."),
+    (else_try),
+      (str_store_string, s20, "@You prepare a short speech and make yourself ready to hold a speech to the people of Rome."),
+    (try_end),
+
+    (set_background_mesh, "mesh_pic_palast"),
+    #first kill Tigellinus
+    (troop_set_slot, "trp_tigellinus", slot_troop_occupation, dplmc_slto_dead),
+    (assign, "$praefectus_urbani", -1),
+    ##apply decisions
+    (try_begin),#Poppaea
+      (eq, "$temp4_1", 2),#death
+      (display_log_message, "@Poppaea has been executed on your orders!"),
+      (str_store_string, s33, "str_poppaea_dead"),
+    (else_try),
+      (eq, "$temp4_1", 1),#banish
+      (display_log_message, "@Poppaea was murdered by the mob of Rome."),
+      (str_store_string, s33, "str_poppaea_banished"),
+    (else_try),
+      (display_log_message, "@Poppaea returns to her family."),
+      (str_store_string, s33, "str_poppaea_divorced"),
+    (try_end),
+
+    (try_begin),
+      (this_or_next|eq, "$temp4_1", 1),
+      (eq, "$temp4_1", 2),
+      (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_occupation, dplmc_slto_dead),
+      (call_script, "script_change_relation_with_family_friends_enemies", "trp_kingdom_7_lady_1", -1, 30, "trp_player"),
+    (try_end),
+
+    (try_begin),##Nero
+      (eq, "$temp4", 2),#death
+      (display_log_message, "@Nero has been executed on your orders!"),
+      (str_store_string, s34, "str_nero_dead"),
+    (else_try),
+      (eq, "$temp4", 1),#banish
+      (str_store_string, s34, "str_nero_banished"),
+    (try_end),
+
+    #####Remove Neros party
+    (troop_get_slot, ":king_party", "trp_kingdom_7_lord", slot_troop_leaded_party),
+    (try_begin),
+      (party_is_active, ":king_party"),
+      (ge, ":king_party", 0),
+      (remove_party,":king_party"),
+    (try_end),
+    ##he dies either way
+    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_occupation, dplmc_slto_dead),
+
+    #divorce them
+    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_leaded_party, -1),
+    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_spouse, -1),
+    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_cur_center, -1),
+    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_home, -1),
+
+    (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_cur_center, -1),
+    (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_home, -1),
+    (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_spouse, -1),
+
+    (call_script, "script_troop_set_title_according_to_faction", "trp_kingdom_7_lady_1", "fac_kingdom_7"),
+
+    # (complete_quest, "qst_blank_quest_2"),
+    # (call_script, "script_give_center_to_lord", "p_town_6", "trp_player", 0),
+
+    # (assign, "$g_player_court", "p_town_6"),
+    #(call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, "$g_talk_troop", "$g_talk_troop_faction"),
+    # (call_script, "script_player_leave_faction", 0), #"1" would mean give back fiefs
+    # (call_script, "script_activate_player_faction", "trp_player"), #Activating player faction should now work
+    # #					(call_script, "script_appoint_faction_marshall", "$players_kingdom", "trp_player"), #Keep commented. May be unnecessary.
+    # (call_script, "script_change_player_honor", -25),
+    # (assign, "$g_fire", 3),
+    # (try_begin),
+    # (eq, "$temp4", 1),
+    # (call_script,"script_change_troop_faction","trp_aux_commander_12","$players_kingdom"),
+    # (troop_set_slot, "trp_aux_commander_12", slot_troop_occupation, slto_kingdom_hero),
+    # (display_message, "@Germanicus, the brother of Poppaea Sabina, recieved the letter and is not very happy about it. It seems, he accepts your demand."),
+    # (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_12", -30),
+    # (display_message, "@Poppaea Sabina is not very amused as she hears from your shameful demands."),
+    # (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", -30),
+    # (call_script, "script_change_player_honor", -5),
+    # (try_end),
+    (call_script, "script_update_all_notes"),
+  ],[
+
+    ("Continue...",[],"Continue...",[
+      #1,2 player antonia,
+      #3-10: guards
+      #11-36 people
+      #37 camera
+      (play_track, "track_trailer_2", 2),
+
+      (set_jump_mission, "mt_cutscene_rome_speech"),
+      (modify_visitors_at_site, "scn_cutscene_rome_victory_2"),
+      (reset_visitors),
+
+      (set_visitor, 0, "trp_player"),
       (try_begin),
-        (this_or_next|eq, "$temp4_1", 1),
-        (eq, "$temp4_1", 2),
-        (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_occupation, dplmc_slto_dead),
-        (call_script, "script_change_relation_with_family_friends_enemies", "trp_kingdom_7_lady_1", -1, 30, "trp_player"),
-      (try_end),
-
-      (try_begin),##Nero
-        (eq, "$temp4", 2),#death
-        (display_log_message, "@Nero has been executed on your orders!"),
-        (str_store_string, s34, "str_nero_dead"),
+          (eq,"$character_gender", tf_female),
+          (troop_set_type,"trp_multiplayer_profile_troop_male", tf_female),
       (else_try),
-        (eq, "$temp4", 1),#banish
-        (display_log_message, "@Nero was murdered by the mob of Rome."),
-        (str_store_string, s34, "str_nero_banished"),
+          (troop_set_type,"trp_multiplayer_profile_troop_male", tf_male),
+      (try_end),
+      (str_store_troop_face_keys, s1, "trp_player"),
+      (troop_set_face_keys, "trp_multiplayer_profile_troop_male", s1),
+      (call_script, "script_dplmc_copy_inventory", "trp_player", "trp_multiplayer_profile_troop_male"),
+
+      (set_visitor, 1, "trp_multiplayer_profile_troop_male"),
+
+      (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+      (set_visitor, 2, ":pop_or_antonia"),
+      (set_visitor, 3, "trp_aux_cav_praetoriani_2"),
+      (set_visitor, 4, "trp_aux_cav_praetoriani_2"),
+      (set_visitor, 5, "trp_aux_cav_praetoriani_2"),
+      (set_visitor, 6, "trp_aux_cav_praetoriani_2"),
+      (set_visitor, 7, "trp_aux_cav_praetoriani_2"),
+      (set_visitor, 8, "trp_aux_cav_praetoriani_2"),
+      (set_visitor, 9, "trp_aux_cav_praetoriani_2"),
+      (set_visitor, 10, "trp_aux_cav_praetoriani_2"),
+
+      (try_for_range, ":entry", 11, 36),
+          (set_visitors, ":entry", "trp_roman_town_walker_female", 5),
+          (set_visitors, ":entry", "trp_roman_town_walker", 5),
       (try_end),
 
-     #####Remove Neros party
-     (troop_get_slot, ":king_party", "trp_kingdom_7_lord", slot_troop_leaded_party),
-     (try_begin),
-       (party_is_active, ":king_party"),
-       (ge, ":king_party", 0),
-       (remove_party,":king_party"),
-     (try_end),
-     ##he dies either way
-     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_occupation, dplmc_slto_dead),
+      (assign, "$tutorial_state", 0),
+      (assign, "$g_next_menu", "mnu_meeting_in_senate"),
 
-     #divorce them
-     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_leaded_party, -1),
-
-     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_spouse, -1),
-     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_cur_center, -1),
-     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_home, -1),
-
-     (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_cur_center, -1),
-     (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_home, -1),
-     (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_spouse, -1),
-
-     (call_script, "script_troop_set_title_according_to_faction", "trp_kingdom_7_lady_1", "fac_kingdom_7"),
-
-      (complete_quest, "qst_blank_quest_2"),
-      (call_script, "script_give_center_to_lord", "p_town_6", "trp_player", 0),
-
-      (assign, "$g_player_court", "p_town_6"),
-      #(call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, "$g_talk_troop", "$g_talk_troop_faction"),
-      (call_script, "script_player_leave_faction", 0), #"1" would mean give back fiefs
-      (call_script, "script_activate_player_faction", "trp_player"), #Activating player faction should now work
-      #					(call_script, "script_appoint_faction_marshall", "$players_kingdom", "trp_player"), #Keep commented. May be unnecessary.
-      (call_script, "script_change_player_honor", -25),
-      (assign, "$g_fire", 3),
-      # (try_begin),
-      # (eq, "$temp4", 1),
-      # (call_script,"script_change_troop_faction","trp_aux_commander_12","$players_kingdom"),
-      # (troop_set_slot, "trp_aux_commander_12", slot_troop_occupation, slto_kingdom_hero),
-      # (display_message, "@Germanicus, the brother of Poppaea Sabina, recieved the letter and is not very happy about it. It seems, he accepts your demand."),
-      # (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_12", -30),
-      # (display_message, "@Poppaea Sabina is not very amused as she hears from your shameful demands."),
-      # (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", -30),
-      # (call_script, "script_change_player_honor", -5),
-      # (try_end),
-      (call_script, "script_update_all_notes"),
-
-    ],
-    [
-      ("Continue...",[],"Continue...",[
-       (change_screen_map),]),
-  ]),
+      (jump_to_scene, "scn_cutscene_rome_victory_2"),
+      (change_screen_mission),
+    ]),
+]),
 
 # ("become_emperor",menu_text_color(0xFF000000)|mnf_disable_all_keys,
 #   "After Rome has fallen to you, the Praetorian Guard calls you the new Caesar Augustus. As you march through the streets of Rome, people cheer. ^^"
@@ -33567,7 +33631,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 ("emperor_event_06",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Alexander the Great!^^You spend time with a beautiful courtier. She says that you are great, but Alexander the Great was even greater because he had conquered the whole world!^You answer:",
+  "Megas Alexandros!^^You spend time with a beautiful courtier. She says that you are great, but Megas Alexandros was even greater because he had conquered the whole world!^You answer:",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
@@ -45106,36 +45170,33 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 
 ("meeting_with_antonia_final_angry",0,
-    "As suddenly as she came she leaves your camp. Shouting around insults at you and your soldiers. A soldier standing next to notes: ^'This woman has indeed the spirit and temperament of a she-wolf.'",
-    "none",
-    [
-        (set_background_mesh, "mesh_pic_deserters"),
-    ],
-    [
-    ("Continue...",[],"Continue.",[
-        (call_script, "script_change_player_relation_with_troop", "trp_antonia", -5),
-        (display_message, "str_quest_updated"),
-        (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
-        (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 1),
-        (change_screen_map),
-    ]),
+  "As suddenly as she came she leaves your camp. Shouting around insults at you and your soldiers. A soldier standing next to notes: ^'This woman has indeed the spirit and temperament of a she-wolf.'",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+  ("Continue...",[],"Continue.",[
+    (call_script, "script_change_player_relation_with_troop", "trp_antonia", -5),
+    (display_message, "str_quest_updated"),
+    (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
+    (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 1),
+    (change_screen_map),
+  ]),
 ]),
 
 ("thoughts_2",0,
-    "As you ride on the road, you think about what {s20} has told you. It seems Kaeso Flavius is worried about something related to the fire of Rome."
-    +" After the fire, the Princeps issued a decree to persecute the Christs... Maybe he is a Christ too, and that's why he is worried. He fears to be crucified, like all the other Christs.",
-    "none",
-    [
-      (play_sound, "snd_message_negative_sound"),
-      (set_background_mesh, "mesh_pic_deserters"),
-      (quest_get_slot,  ":lady", "qst_important_friends", slot_quest_object_troop),
-      (str_store_troop_name, s20, ":lady"),
-    ],[
-    ("Continue...",[],"I should talk with him...",[
-      (add_quest_note_from_sreg, "qst_important_friends", 3, "@Finally, you know his secret: Kaeso Flavius is a Christ and it seems he is concerned about the recent persecution of Christians. Time to talk with him!", 0),
-      (quest_set_slot, "qst_important_friends", slot_quest_current_state, 2),
-      (change_screen_map),
-    ]),
+  "As you ride on the road, you think about what {s20} has told you. It seems Kaeso Flavius is worried about something related to the fire of Rome."
+  +" After the fire, the Princeps issued a decree to persecute the Christs... Maybe he is a Christ too, and that's why he is worried. He fears to be crucified, like all the other Christs.",
+  "none",[
+    (play_sound, "snd_message_negative_sound"),
+    (set_background_mesh, "mesh_pic_deserters"),
+    (quest_get_slot,  ":lady", "qst_important_friends", slot_quest_object_troop),
+    (str_store_troop_name, s20, ":lady"),
+  ],[
+  ("Continue...",[],"Continue...",[
+    (add_quest_note_from_sreg, "qst_important_friends", 3, "@Finally, you know his secret: Kaeso Flavius is a Christ and it seems he is concerned about the recent persecution of Christians. Time to talk with him!", 0),
+    (quest_set_slot, "qst_important_friends", slot_quest_current_state, 2),
+    (change_screen_map),
+  ]),
 ]),
 
 #   (
@@ -51010,11 +51071,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         ]),
     ]
   ),
-  (
-    "promotion_freelancer",0,
-    "Congratulations, you have been promoted to {s21}. {reg0?With this rank you will command {reg4} soldiers during battle.:You will not command any troops during battle.}^^{s50}",
-    "none",
-    [
+
+("promotion_freelancer",0,
+  "Congratulations, you have been promoted to {s21}. {reg0?With this rank you will command {reg4} soldiers during battle.:You will not command any troops during battle.}^^{s50}",
+  "none",[
     (add_xp_as_reward, 500),
     (assign, "$g_encountered_party", "$enlisted_party"),
     (assign, "$temp4_1", 0),
@@ -51046,9 +51106,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_troop_renown", "trp_player", 7),
       (set_background_mesh, "mesh_pic_centurio"),
       (assign, "$temp4_1", 1),
-      (str_store_string, s50, "@As Centurio, you now receive your own whip. You have now to decide how you will use it? Will you act lawful and just?\
- ^You also encounter many new faces. As Optio, it was easy to recognise and remember your soldiers and lads, but now there are so many. Does it even matter\
- to recognise their names? Most of them will probably be dead soon anyways."),
+      (str_store_string, s50, "@As Centurio, you now receive your own whip. You have now to decide how you will use it? Will you act lawful and just?"
+      +" ^You also encounter many new faces. As Optio, it was easy to recognise and remember your soldiers and lads, but now there are so many. Does it even matter"
+      +" to recognise their names? Most of them will probably be dead soon anyways."),
     (else_try),
       (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_rank, 5),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_progress_limit, 500),
@@ -51066,7 +51126,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":rank", 8),
       (jump_to_menu, "mnu_last_promotion"),
     (try_end),
-
     (call_script, "script_get_current_rank_to_s21"),
     (quest_get_slot, reg4, "qst_freelancing", slot_quest_freelancer_agent_limit),
     (assign, reg0, 0),
@@ -51074,28 +51133,25 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (gt, reg4, 1),
       (assign, reg0, 1),
     (try_end),
-    ],
-    [
-      ("continue",[(eq, "$temp4_1", 0),],
-       "Continue...",
-       [      (change_screen_map),
-
-        ]),
-
-      ("continue",[(eq, "$temp4_1", 1),],
-       "I will lead by example and try to remember every name and to use the whip only if necessary...",
-       [
-       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_treatment, 1),
-       (change_screen_map),
-
-        ]),
-      ("continue",[(eq, "$temp4_1", 1),],
-       "They will die anyways. I will do it like the other officers...",
-       [      (change_screen_map),
-        (quest_set_slot, "qst_freelancing", slot_quest_freelancer_treatment, -1),
-        ]),
-    ]
-  ),
+  ],[
+    ("continue",[
+      (eq, "$temp4_1", 0),
+    ],"Continue...",[
+      (change_screen_map),
+    ]),
+    ("continue",[
+      (eq, "$temp4_1", 1),
+    ],"I will lead by example and try to remember every name and to use the whip only if necessary...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_treatment, 1),
+      (change_screen_map),
+    ]),
+    ("continue",[
+      (eq, "$temp4_1", 1),
+    ],"They will die anyways. I will do it like the other officers...",[
+      (change_screen_map),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_treatment, -1),
+    ]),
+]),
 
 ("last_promotion",0,
   "A soldier informs you that {s6} wants to speak you. You follow him to the commander tent, where {s6} awaits you.",
@@ -51132,66 +51188,55 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 		  (call_script, "script_setup_party_meeting", "$g_encountered_party"),
     ]),
 ]),
-  (
-    "deliver_bribe",0,
-    "After a while of searching you find the villa on one of the seven hills of Rome.^^You are standing in front of the entrance. Shall you enter it or simply keep the money for yourself?",
-    "none",
-    [(set_background_mesh, "mesh_pic_villa"),
 
-    ],
-    [
-      ("continue",[],
-       "Deliver the bribe.",
-       [
-        (quest_get_slot, ":bribe", "qst_deliver_bribe", slot_quest_target_amount),
-        (troop_remove_gold, "trp_player", ":bribe"),
-        (call_script, "script_finish_quest", "qst_deliver_bribe", 100),
-        (display_message, "@You deliver the 'gift' and receive your reward from the senator."),
-        (jump_to_menu, "mnu_town"),
-        ]),
-       ("continue",[],
-       "Go back.",
-       [
-        (jump_to_menu, "mnu_town"),
-        ]),
-    ]
-  ),
+("deliver_bribe",0,
+  "After a while of searching you find the villa on one of the seven hills of Rome.^^You are standing in front of the entrance. Shall you enter it or simply keep the money for yourself?",
+  "none",[
+    (set_background_mesh, "mesh_pic_villa"),
+  ],[
+    ("continue",[
+    ],"Deliver the bribe.",[
+      (quest_get_slot, ":bribe", "qst_deliver_bribe", slot_quest_target_amount),
+      (troop_remove_gold, "trp_player", ":bribe"),
+      (call_script, "script_finish_quest", "qst_deliver_bribe", 100),
+      (display_message, "@You deliver the 'gift' and receive your reward from the senator."),
+      (jump_to_menu, "mnu_town"),
+    ]),
+    ("continue",[
+    ],"Go back.",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
+("attack_thunder_god",0,
+  "After a short travel you reach your destination: The camp of the Thundergod cultists! The Parthian spy says he wait here while you attack the cultists camp.",
+  "none",[
+    (set_background_mesh, "mesh_pic_desert"),
+  ],[
+    ("continue",[
+    ],"Smash the bastards!",[
+      #0 player, 1 troops of player, 2 - 5 guards, 5-9 peasants/guards
+      (set_jump_mission,"mt_thunder_god_fight"),
+      (modify_visitors_at_site,"scn_attack_thundergod"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+      #(set_visitor, 0, "trp_agent_parthian"),#the parthian is helping the player
+      (set_visitors, 2, "trp_mercenary_crossbowman",5),
+      (set_visitors, 3, "trp_mercenary_crossbowman",5),
+      (set_visitors, 4, "trp_mercenary_crossbowman",5),
+      (set_visitors, 5, "trp_mercenary_crossbowman",5),
+      (set_visitors, 6, "trp_mercenary_swordsman",5),
+      (set_visitors, 7, "trp_peasant_woman",5),
+      (set_visitors, 7, "trp_roman_village_walker",5),
+      (set_visitors, 8, "trp_peasant_woman",5),
+      (set_visitors, 8, "trp_roman_village_walker",5),
+      (set_visitors, 9, "trp_mercenary_swordsman",5),
+      (assign, "$temp_3", 1),
+      (jump_to_scene, "scn_attack_thundergod"),
+      (change_screen_mission),
+    ]),
+]),
 
-  (
-    "attack_thunder_god",0,
-    "After a short travel you reach your destination: The camp of the Thundergod cultists! The Parthian spy says he wait here while you attack the cultists camp.",
-    "none",
-    [(set_background_mesh, "mesh_pic_desert"),
-
-    ],
-    [
-      ("continue",[],
-       "Smash the bastards!",
-       [
-#0 player, 1 troops of player, 2 - 5 guards, 5-9 peasants/guards
-        (set_jump_mission,"mt_thunder_god_fight"),
-        (modify_visitors_at_site,"scn_attack_thundergod"),
-        (reset_visitors),
-        (set_visitor, 0, "trp_player"),
-        #(set_visitor, 0, "trp_agent_parthian"),#the parthian is helping the player
-        (set_visitors, 2, "trp_mercenary_crossbowman",5),
-        (set_visitors, 3, "trp_mercenary_crossbowman",5),
-        (set_visitors, 4, "trp_mercenary_crossbowman",5),
-        (set_visitors, 5, "trp_mercenary_crossbowman",5),
-        (set_visitors, 6, "trp_mercenary_swordsman",5),
-        (set_visitors, 7, "trp_peasant_woman",5),
-        (set_visitors, 7, "trp_roman_village_walker",5),
-        (set_visitors, 8, "trp_peasant_woman",5),
-        (set_visitors, 8, "trp_roman_village_walker",5),
-        (set_visitors, 9, "trp_mercenary_swordsman",5),
-        (assign, "$temp_3", 1),
-        (jump_to_scene, "scn_attack_thundergod"),
-        (change_screen_mission),
-        ]),
-
-    ]
-  ),
   (
     "attack_thunder_god_win",0,
     "{s12}^^{s11}",
@@ -53891,10 +53936,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (str_store_troop_name_link, s32, "trp_legatus_12"),
           (str_store_troop_name_link, s13, "trp_kingdom_7_lady_12"),# mother
           (str_store_troop_name_link, s12, "trp_kingdom_7_lady_25"),# sister
-          (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Gain the support of {s32}, the commander of the Praetorian guard. Once you finished meet Antonia at the tomb of Alexander the Great near {s10}.", 1),
-          (add_quest_note_from_sreg, "qst_blank_quest_19", 7, "@You allied with {s22}. Now you have to find out the secret of {s32} in order to gain support from the Praetorian guard. Either improve your relation or win the favor of his sister {s12} or mother {s13}. Once you found the secret, blackmail {s32}. Once you finished meet Antonia at the tomb of Alexander the Great near {s10}.", 1),
+          (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Gain the support of {s32}, the commander of the Praetorian guard. Once you finished meet Antonia at the tomb of Megas Alexandros near {s10}.", 1),
+          (add_quest_note_from_sreg, "qst_blank_quest_19", 7, "@You allied with {s22}. Now you have to find out the secret of {s32} in order to gain support from the Praetorian guard. Either improve your relation or win the favor of his sister {s12} or mother {s13}. Once you found the secret, blackmail {s32}. Once you finished meet Antonia at the tomb of Megas Alexandros near {s10}.", 1),
 
-          (str_store_string, s2, "@Find out the secret of {s32} in order to gain support from the Praetorian guard. Either improve your relation or win the favor of his sister {s12} or mother {s13}. Once you found the secret, blackmail {s32}."),
+          (str_store_string, s2, "@Find out the secret of {s32} in order to gain support from the Praetorian guard. Either improve your relation or win the favor of his sister {s12} or mother {s13}. Once you found the secret, blackmail {s32} by talking with him."),
           (quest_set_slot, "qst_important_friends", slot_quest_current_state, 0),
           (quest_set_slot, "qst_important_friends", slot_quest_object_troop, -1),
           (call_script, "script_start_quest", "qst_important_friends", "trp_fortuna"),

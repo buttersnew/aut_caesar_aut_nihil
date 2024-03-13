@@ -499,7 +499,7 @@ heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_7] ],
 4000,weight(2)|abundance(100),imodbits_none],
 ["book_persuasion","Rhetorica ad Herennium", [("scroll_1",0)], itp_type_book, 0,
 5000,weight(2)|abundance(100),imodbits_none],
-["book_leadership","The Life of Alexander the Great", [("scroll_2",0)], itp_type_book, 0,
+["book_leadership","The Life of Megas Alexandros", [("scroll_2",0)], itp_type_book, 0,
 4200,weight(2)|abundance(100),imodbits_none], #cambiar chief
 ["book_intelligence","Paedeia", [("scroll_3",0)], itp_type_book, 0,
 6900,weight(2)|abundance(100),imodbits_none],
@@ -6055,7 +6055,7 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
 ##stuff for wedding end
 
 ##special siege weapons
-["greek_fire", "Vulcani ignis", [("oil_greek_fire",0)], itp_merchandise|itp_type_thrown|itp_can_penetrate_shield|itp_can_knock_down|itp_bonus_against_shield|itp_crush_through|itp_no_pick_up_from_ground|itp_primary|itp_remove_item_on_use ,itcf_throw_axe,
+["greek_fire", "Vulcani ignis", [("oil_greek_fire",0)], itp_type_thrown|itp_can_penetrate_shield|itp_can_knock_down|itp_bonus_against_shield|itp_crush_through|itp_no_pick_up_from_ground|itp_primary|itp_remove_item_on_use ,itcf_throw_axe,
 7000 , weight(5.0)|difficulty(3)|spd_rtng(70)|shoot_speed(14)|thrust_damage(65 ,  blunt)|max_ammo(1)|weapon_length(0),imodbits_missile,
 [
 (ti_on_missile_hit, # when missile hits

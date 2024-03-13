@@ -7659,11 +7659,11 @@ Lead me in battle to victory!"),
 ("praefectus", "Praefectus cohortis"),
 ("tribunus", "Tribunus militaris"),
 
-("poppaea_divorced", "Finally, it has been announced that Poppaea is getting divorced from Nero and must leave the palace to return to her family in Pompeii."),
+("poppaea_divorced", "Finally, it has been announced that Poppaea is getting divorced from Nero and must leave the palace to return to her family."),
 ("poppaea_dead", "Finally, Poppaea has been executed. As with Nero, her opponents erupt in joy. People openly celebrate the death of the woman they most hate."),
-("poppaea_banished", "Finally, Poppaea has been forced out of Rome. Though the guards try their best, the mob manages to take revenge on the woman they hate. She is stoned to death by an angry mob."),
+("poppaea_banished", "She is banned together with Nero and accompanies him on his journy."),
 ("nero_dead", "Caesar Augustus Nero, the former Princeps, was executed on your orders. The mob, who had begun to hate Nero since the fire, screamed and exulted at the scene. Nero died a shameful and agonizing death. Nero's mistress Acte regretfully buried her imperial lover's body in proper Roman style."),
-("nero_banished", "Caesar Augustus Nero has been banished from the Roman Empire. He is led out of Rome in chains. The mob takes joy at the pathetic sight of him and begins to throw stones. His popularity steadily declined since the fire, and people are now taking revenge. The guards do their best, but Nero is stoned to death. Nero's mistress Acte survives and regretfully buries her imperial lover's body in proper Roman style."),
+("nero_banished", "Caesar Augustus Nero, having been banished from the Roman Empire, is escorted out of Rome in chains alongside Acte. Together, they embark on a journey towards distant lands, leaving behind the grandeur of the empire that once held their presence. The expanse of their exile unfolds before them, a path leading to unknown territories far removed from the hallowed streets of Rome."),
 
 ("lecture_1_1", "In the following lectures, I will talk about the Platonian notion of justice, and how Platon describes the ideal state. I will begin with justice in Platonian philosophy. ^^What is justice? One could say: Justice is to help and support your friends and to harm your enemies. Or equivalently, one could say: Everyone shall get what he deserves. But what if you misjudge people: If you view a just and good person as an enemy; then you harm him and you view this as just. But it can't be just, to harm an innocent person. And what about people who are befriended with bad ones and enemies to good ones? They would have to support bad people and harm good people. That can't be just."),
 ("lecture_1_2", "What if one defines justice as the following: Justice is what is advantageous to the stronger, while injustice is to one's own profit and advantage. For example, rulers of states make laws to their advantage and define what is just with these laws. But also rulers make mistakes. It could be that a ruler issues a law to their disadvantage. If now the subordinate obeys the law, he will harm the ruler. Thus it can happen that it is just to harm the ruler. But this contradicts the definition: Just is what gives advantages to the stronger."),
@@ -9095,6 +9095,9 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("antonia_speech_5", "Onward, brave warriors! Let the winds of destiny guide you to glory. With the spirit of Aeneas burning within you, you shall triumph!^^For Rome! For Victory!"),
 
 # main story troop action explanation
+("other_goy_preparing_rome","I am waiting in Roma to execute our plan. We should meet us in front of the Domus Augusti together with Claudia Antonia."),
+("other_praetorioan_preparing_rome","I am waiting in Roma to execute our plan. I will prepare the Praetorian guard and wait until you and Claudia Antonia give the sign."),
+
 ("vespasian_preparing_alexandria","I am mustering troops and preparing the fleet with which we will sail towards Italy soon."),
 ("others_preparing_alexandria","I am joinng our forces at Alexandria as we will sail towards Italy soon."),
 ("others_fight_rebellion","I am joining our forces in Italy, to defend against the rebellion of the Danube legions."),
@@ -9139,8 +9142,8 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("description_african_longbow", "Description:^^Mighty bow blessed by the god Nyame.^^Background:^^Nyame is a North African deity worshipped by the Akan people of Ghana. However, this bow is purely fictional."),
 ("description_dragon_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'dragon'.^^Background:^^This arrows are purely fictional."),
 ("description_thunder_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'thunder'.^^Background:^^This arrows are purely fictional."),
-("description_linothorax_alexander", "Description:^^This is the armour worn by Alexander the Great.^^Background:^^This model is based on common depictions of Alexander the Great."),
-("description_alexanders_helm", "Description:^^This is the helmet worn by Alexander the Great.^^Background:^^This model is based on common depictions of Alexander the Great."),
+("description_linothorax_alexander", "Description:^^This is the armour worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
+("description_alexanders_helm", "Description:^^This is the helmet worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
 ("description_armor_of_african_gods", "Description:^^A strong hamata over a tunic together with a lionskin. Somehow it offers much more protection than one would expect.^^Background:^^This armour set is purely fictional."),
 ("description_khopesh1", "Description:^^An Ancient Egyptian sword, called kopesh. It is made out of bronze.^^Background:^^The khopesh was an Egyptian sickle-shaped sword that developed from battle axes, used during the bronze age."),
 ("description_holy_lance", "Description:^^This lance belonged to Longinius, who pierced Christus side with it.^^Background:^^Longinus is the name given to the unnamed Roman soldier who pierced the side of Christus with a lance. This lance is called the 'Holy Lance'."),
@@ -9336,6 +9339,13 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("lady_time_spend_adventurous", "About me? Normally, men don't ask what a woman does all day long. But if you want, I can tell you. I spend a lot of time thinking about how it would be to ride out and experience adventures like you men do. {s42}"),
 ("lady_time_spend_otherworldly", "Oh, how nice that you ask. I spend my free time reading and writing poems; it is a great pleasure, I think. I also sew a lot and sometimes paint. {s42}"),
 ("lady_time_spend_default", "Oh, I never met a man who wanted to know that. Well, most of the time, I spend sewing or painting. Sometimes I read, of course, only books that are suitable for women. {s42}"),
+
+("intro_01", "Rome was founded the twin brothers, Romulus and Remus who were raised by a she-wolf and eventually returned to their birthplace to reclaim their rightful place as rulers. Under the rule of the seven kings, Rome grew into a powerful city-state. The kings became too arrogant, debauched and greedy. Thus the people of Rome drive them out and established the Republic. The senate and the people of Rome conquered and subjugated neighboring tribes and city states. The Romans reflected on their divine origin, that they shall rule the world with their authority."),
+("intro_02", "Constant wars slowly brought order to the world. The city states and tribes of Southern Italy were subjugated. Other powers noted the conquests and tried to defeat Rome, but the march of the eagles could not be stopped."),
+("intro_03", "The Greek city states, who were so proud about their independence, were subjugated. The successors of Megas Alexandros were conquered. Roman eagles marched as far as Egypt."),
+("intro_04", "The expansion reached its peak with the conquest of Gaul and the subjugation of the provinces of Asia minor. The sheer amount of power had to corrupt. Civil wars shaked the Republic. At first it looked as if the republic could be saved, but it was rotten in its foundation. The destruction of the republic was unavoidable."),
+("intro_05", "Augustus brought an end to the turmoil and restored order and principles which are the fundament of Roman authority. The conquests continued under him and his successors. From Britannia to Egypt and from Hispania to Asia marched the eagles of Rome."),
+("intro_06", "Time has passed and great turmoil lies ahead. Voices whispers of doom and destruction, yet others call them fools. The Pax Romana brought light of civilisation. Some say Rome has no enemies anymore, which is not true, as Rome has become its own enemy."),
 
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))

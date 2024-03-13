@@ -1023,3 +1023,4 @@ script_enter_secret_christian_church = 1021
 script_cf_start_love_affair = 1022
 script_raise_level = 1023
 script_cf_is_no_goy = 1024
+script_persuade_antonia_prop_reg49_teg47_reg45_reg46 = 1025
