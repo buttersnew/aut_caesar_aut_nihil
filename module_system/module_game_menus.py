@@ -30673,6 +30673,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (str_store_troop_name, s10, ":goy"),
 	],[
     ("continue",[],"Continue.",[
+      (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+      (call_script, "script_activate_main_story_civil_war", ":goy"),
+
       (display_message, "@You found Nero's lyre!", color_good_news),
       (troop_add_item, "trp_player","itm_lyre_rich",0),
       #36 player
@@ -30692,7 +30695,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (set_visitor, 10, "trp_courtier_female"),#acte
       (set_visitor, 36, "trp_player"),
       (set_visitor, 17, "trp_antonia"),
-      (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+
       (set_visitor, 67, ":goy"),
       (set_visitor, 39, "trp_quest_primus_pilus"),#soldier
       (set_visitor, 10, "trp_kingdom_7_lord"),
@@ -30742,14 +30745,36 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-("meeting_with_centurio_2",0,
-  "HO.",
+("meeting_with_centurio_2", 0,
+  "The traitor met his demise amidst the clash. Now, you've directed the Praetorian guard to intensify their efforts in rooting out any remaining traitors and loyalists to {s22}."
+  +" However, a fresh challenge looms from the North: {s23}, seizing upon the unrest in Roma, has been proclaimed Caesar by the Rhine legions. His march towards Roma is imminent."
+  +" Preparations for battle are imperative. It would be prudent to swiftly bolster our forces by recruiting a new legion.",
   "none",[
+    (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+    (str_store_troop_name, s22, ":goy"),
+    (try_begin),
+      (eq, ":goy", "trp_senator_2"),
+      (assign, ":other_goy", "trp_statthalter_9"),
+    (else_try),
+      (eq, ":goy", "trp_statthalter_9"),
+      (assign, ":other_goy", "trp_senator_2"),
+    (try_end),
+    (str_store_troop_name, s22, ":other_goy"),
     (set_background_mesh, "mesh_pic_emperor"),
-
   ],[
     ("Continue...",[],"Continue.",[
+      (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+      (try_begin),
+        (eq, ":goy", "trp_senator_2"),
+        (assign, ":other_goy", "trp_statthalter_9"),
+      (else_try),
+        (eq, ":goy", "trp_statthalter_9"),
+        (assign, ":other_goy", "trp_senator_2"),
+      (try_end),
+      (call_script, "script_usurp_faction", ":other_goy", "fac_kingdom_7"),
+      (call_script, "script_kill_lord_lady", ":goy", "trp_player", 0),
       (jump_to_menu, "mnu_auto_return_to_map"),
+      (rest_for_hours, 48, 12, 0),
     ]),
 ]),
 

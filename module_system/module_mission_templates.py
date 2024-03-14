@@ -19611,7 +19611,8 @@ mission_templates = [
         (jump_to_menu, "mnu_meeting_with_centurio_2"),
       (try_end),
       (stop_all_sounds, 1),
-      (finish_mission),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+      (finish_mission, 3),
     ]),
 ]),
 
