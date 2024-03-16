@@ -4083,6 +4083,20 @@ simple_triggers = [
         (try_end),
     (try_end),
 
+    #event: preparations done for battle against vitellius/otho
+    (try_begin),
+        (check_quest_active, "qst_four_emperors"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11),
+        (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+        (quest_get_slot, ":timer", "qst_four_emperors", slot_quest_timer),
+        (neq, ":timer", -1),
+        (store_current_day, ":cur_day"),
+        (val_sub, ":cur_day", ":timer"),
+        (ge, ":cur_day", 30), ## 10 days
+        (call_script, "script_add_notification_menu", "mnu_message_travel_to_rome", "trp_statthalter_9", "trp_senator_1"),
+    (try_end),
+
     # event about death of Galba
     (try_begin),
         (check_quest_active, "qst_four_emperors"),

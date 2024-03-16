@@ -4544,238 +4544,222 @@ game_menus = [
          ),
         ]
     ),
-  ("cattle_herd_kill",0,
-   "How many animals do you want to slaughter?",
-   "none",
-   [(party_get_num_companions, reg5, "$g_encountered_party")],
-    [
-      ("cattle_kill_1",[(ge, reg5, 1),],"One.",
-       [(call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 1),
-        (jump_to_menu, "mnu_cattle_herd_kill_end"),
-        (change_screen_loot, "trp_temp_troop"),
-        (play_sound, "snd_cow_slaughter"),
-        ]
-       ),
-      ("cattle_kill_2",[(ge, reg5, 2),],"Two.",
-       [(call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 2),
-        (jump_to_menu, "mnu_cattle_herd_kill_end"),
-        (change_screen_loot, "trp_temp_troop"),
-        (play_sound, "snd_cow_slaughter"),
-        ]
-       ),
-      ("cattle_kill_3",[(ge, reg5, 3),],"Three.",
-       [(call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 3),
-        (jump_to_menu, "mnu_cattle_herd_kill_end"),
-        (change_screen_loot, "trp_temp_troop"),
-        (play_sound, "snd_cow_slaughter"),
-        ]
-       ),
-      ("cattle_kill_4",[(ge, reg5, 4),],"Four.",
-       [(call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 4),
-        (jump_to_menu, "mnu_cattle_herd_kill_end"),
-        (change_screen_loot, "trp_temp_troop"),
-        (play_sound, "snd_cow_slaughter"),
-        ]
-       ),
-      ("cattle_kill_5",[(ge, reg5, 5),],"Five.",
-       [(call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 5),
-        (jump_to_menu, "mnu_cattle_herd_kill_end"),
-        (change_screen_loot, "trp_temp_troop"),
-        (play_sound, "snd_cow_slaughter"),
-        ]
-       ),
-      ("cattle_kill_5",[(ge, reg5, 10),],"Ten.",
-       [(call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 10),
-        (jump_to_menu, "mnu_cattle_herd_kill_end"),
-        (change_screen_loot, "trp_temp_troop"),
-        (play_sound, "snd_cow_slaughter"),
-        ]
-       ),
-      ("go_back_dot",[],"Go back.",
-       [(jump_to_menu, "mnu_cattle_herd"),
-        ]
-       ),
-      ]
-  ),
 
-  ("cattle_herd_kill_end",0,
-   "{!}You shouldn't be reading this.",
-   "none",
-   [(change_screen_return)],
-    [
-      ]
-  ),
+("cattle_herd_kill",0,
+  "How many animals do you want to slaughter?",
+  "none",[
+    (party_get_num_companions, reg5, "$g_encountered_party"),
+    (set_background_mesh, "mesh_pic_cattle"),
+  ],[
+  ("cattle_kill_1",[(ge, reg5, 1),],"One.",[
+    (call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 1),
+    (jump_to_menu, "mnu_cattle_herd_kill_end"),
+    (change_screen_loot, "trp_temp_troop"),
+    (play_sound, "snd_cow_slaughter"),
+  ]),
+  ("cattle_kill_2",[(ge, reg5, 2),],"Two.",[
+    (call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 2),
+    (jump_to_menu, "mnu_cattle_herd_kill_end"),
+    (change_screen_loot, "trp_temp_troop"),
+    (play_sound, "snd_cow_slaughter"),
+  ]),
+  ("cattle_kill_3",[(ge, reg5, 3),],"Three.",[
+    (call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 3),
+    (jump_to_menu, "mnu_cattle_herd_kill_end"),
+    (change_screen_loot, "trp_temp_troop"),
+    (play_sound, "snd_cow_slaughter"),
+  ]),
+  ("cattle_kill_4",[(ge, reg5, 4),],"Four.",[
+    (call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 4),
+    (jump_to_menu, "mnu_cattle_herd_kill_end"),
+    (change_screen_loot, "trp_temp_troop"),
+    (play_sound, "snd_cow_slaughter"),
+  ]),
+  ("cattle_kill_5",[(ge, reg5, 5),],"Five.",[
+    (call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 5),
+    (jump_to_menu, "mnu_cattle_herd_kill_end"),
+    (change_screen_loot, "trp_temp_troop"),
+    (play_sound, "snd_cow_slaughter"),
+  ]),
+  ("cattle_kill_5",[(ge, reg5, 10),],"Ten.",[
+    (call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 10),
+    (jump_to_menu, "mnu_cattle_herd_kill_end"),
+    (change_screen_loot, "trp_temp_troop"),
+    (play_sound, "snd_cow_slaughter"),
+  ]),
+  ("go_back_dot",[],"Go back.",[
+    (jump_to_menu, "mnu_cattle_herd"),
+  ]),
+]),
 
+("cattle_herd_kill_end",0,
+  "{!}You shouldn't be reading this.",
+  "none",[
+    (change_screen_return)
+  ],[
+]),
 
 ("arena_duel_fight",0,
-   "You and your opponent prepare to duel.",
-   "none",
-   [
-      (troop_get_slot, ":leader_troop_faction", "$g_duel_troop", slot_troop_original_faction),
-      (try_begin),
-        (eq, ":leader_troop_faction", fac_kingdom_1),
-        (set_background_mesh, "mesh_pic_swad"),
-      (else_try),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_2),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_8),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_9),
-        (eq, ":leader_troop_faction", fac_kingdom_10),
-        (set_background_mesh, "mesh_pic_vaegir"),
-      (else_try),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_3),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_11),
-        (eq, ":leader_troop_faction", fac_kingdom_12),
-        (set_background_mesh, "mesh_pic_khergit"),
-      (else_try),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_4),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_13),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_14),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_15),
-        (eq, ":leader_troop_faction", fac_kingdom_16),
-        (set_background_mesh, "mesh_pic_nord"),
-      (else_try),
-        (this_or_next|eq, ":leader_troop_faction", fac_kingdom_5),
-        (eq, ":leader_troop_faction", fac_kingdom_6),
-        (set_background_mesh, "mesh_pic_rhodock"),
-      (else_try),
-        (eq, ":leader_troop_faction", fac_kingdom_17),
-        (set_background_mesh, "mesh_pic_mountain_bandits"),
-      (try_end),
-   ],
-   [
-     ("continue",[],"Continue...",
-      [
-        (assign, "$g_leave_encounter", 0),
-        (assign, ":closest_town", "$g_encountered_party"),
-
-        #restructure this to take into account $g_start_arena_fight_at_nearest_town
-        (try_begin), #check if the parameter is necessary
-          (neg|is_between, ":closest_town", walled_centers_begin, walled_centers_end),
-          (is_between, "$g_start_arena_fight_at_nearest_town", walled_centers_begin, walled_centers_end),
-          (assign, ":closest_town", "$g_start_arena_fight_at_nearest_town"),
-          (assign, "$g_start_arena_fight_at_nearest_town", 0),
-        (try_end),
-
-        (try_begin),
-          (is_between, ":closest_town", towns_begin, towns_end),
-          (party_get_slot, ":duel_scene", ":closest_town", slot_town_arena),
-        # (else_try), #SB : duels at castle arena
-          # (is_between, ":closest_town", castles_begin, castles_end),
-          # (party_get_slot, ":duel_scene", ":closest_town", slot_castle_exterior),
-        (else_try),
-          (party_get_current_terrain, ":terrain", "p_main_party"),
-          (eq, ":terrain", rt_snow),
-          (assign, ":duel_scene", "scn_training_ground_ranged_melee_3"),
-        (else_try),
-          (this_or_next|eq, ":terrain", rt_desert),
-          (eq, ":terrain", rt_steppe), #this is the actual steppe scene
-          (assign, ":duel_scene", "scn_training_ground_ranged_melee_4"),
-        (else_try),
-          (assign, ":duel_scene", "scn_training_ground_ranged_melee_1"),
-        (try_end),
-        (modify_visitors_at_site, ":duel_scene"),
-        (reset_visitors),
-        # (set_visitor, 0, "trp_player"),
-        # (set_visitor, 1, "$g_duel_troop"),
-        (troop_set_slot, "trp_tournament_participants", 0, "trp_player"),
-        (troop_set_slot, "trp_tournament_participants", 1, "$g_duel_troop"),
-        (set_jump_mission, "mt_duel_with_lord"),
-        #SB : check relative standing, 0 = (higher renown)
-        (try_begin),
-          (troop_is_hero, "$g_duel_troop"),
-          (troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
-          (troop_slot_ge, "$g_duel_troop", slot_troop_renown, ":player_renown"),
-          #swap positions
-          (troop_set_slot, "trp_tournament_participants", 1, "trp_player"),
-          (troop_set_slot, "trp_tournament_participants", 0, "$g_duel_troop"),
-        (try_end),
-        #SB : set up additional equipment, do not always use sword_medieval_a
-        (troop_get_slot, ":faction", "$g_duel_troop", slot_troop_original_faction),
-		(faction_get_slot, ":faction1", ":faction", slot_faction_culture),
-        (try_begin),
-          (eq, ":faction1", "fac_culture_1"),
-          (assign, ":weapon", "itm_dacian_sword"),
-        (else_try),
-          (this_or_next|eq, ":faction1", "fac_culture_9"),
-          (eq, ":faction1", "fac_culture_3"),
-          (assign, ":weapon", "itm_sarmatian_ringsword_4"),
-        (else_try),
-          (eq, ":faction1", "fac_culture_2"),
-          (assign, ":weapon", "itm_celtic_axe2"),
-        (else_try),
-          (eq, ":faction1", "fac_culture_2_1"),
-          (assign, ":weapon", "itm_celtic_axe2"),
-        (else_try),
-          (eq, ":faction1", "fac_culture_4"),
-          (assign, ":weapon", "itm_germanic_axe1"),
-        # (else_try),
-          # (eq, ":faction", "fac_kingdom_5"), #no requirement
-          # (assign, ":weapon", "itm_military_cleaver_b"),
-        (else_try),
-          (this_or_next|eq, ":faction1", "fac_culture_5"),
-          (eq, ":faction1", "fac_culture_6"),
-          (assign, ":weapon", "itm_eastern_sowrd1"),
-        (else_try),
-          (this_or_next|eq, ":faction1", "fac_culture_8"),
-          (eq, ":faction1", "fac_culture_7"),
-          (assign, ":weapon", "itm_roman_spatha"),
-        (else_try),
-          (assign, ":weapon", "itm_arena_sword"),
-        (try_end),
-
-        (try_for_range, ":cur_entry_point", 0, 2),
-          (troop_get_slot, ":cur_troop", "trp_tournament_participants", ":cur_entry_point"),
-          (try_begin), #within the courtyard, 23/24 is guard entry
-            (is_between, ":closest_town", castles_begin, castles_end),
-            (val_add, ":cur_entry_point", 2), #to use the new mission template entries 3 & 4
-          (try_end),
-
-          (mission_tpl_entry_clear_override_items, "mt_duel_with_lord", ":cur_entry_point"),
-          #weapon, make sure they have no difficulty requirement
-          (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", ":weapon"),
-          # (item_get_type, ":type", ":weapon"),
-          # (try_begin),
-            # (is_between, ":type", itp_type_pistol, itp_type_bullets),
-            # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_cartridges2"),
-            # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_dagger"),#backup
-          # (else_try),
-            # (eq, ":type", itp_type_crossbow),
-            # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_practice_bolts_9_amount"),
-            # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_estoc"),#backup
-          # (else_try),
-            # (eq, ":type", itp_type_bow),
-            # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_practice_arrows_10_amount"),
-            # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", ":backup"),#backup
-          # (try_end),
-
-          #armor, they're statistically almost the same
-          # (troop_get_slot, ":renown", ":cur_troop", slot_troop_renown),
-          # (val_min, ":renown", 2000),
-          # (store_div, ":armor", ":renown", 500),#0 to 3
-          # (val_add, ":armor", "itm_heraldic_mail_with_surcoat"),
-          # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", ":armor"),
-
-          (set_visitor, ":cur_entry_point", ":cur_troop"),
-        (try_end),
-
-        (jump_to_scene, ":duel_scene"),
-        (jump_to_menu, "mnu_arena_duel_conclusion"),
-        (change_screen_mission),
-      ]),
-    ]
-),
-
-
-  ("arena_duel_conclusion",0,
-   "{!}{s11}",
-   "none",
-   [
-
+  "You and your opponent prepare to duel.",
+  "none",[
+    (troop_get_slot, ":leader_troop_faction", "$g_duel_troop", slot_troop_original_faction),
     (try_begin),
-		(eq, "$g_leave_encounter", 1),
-		(change_screen_return),
-	(try_end),
+      (eq, ":leader_troop_faction", fac_kingdom_1),
+      (set_background_mesh, "mesh_pic_swad"),
+    (else_try),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_2),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_8),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_9),
+      (eq, ":leader_troop_faction", fac_kingdom_10),
+      (set_background_mesh, "mesh_pic_vaegir"),
+    (else_try),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_3),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_11),
+      (eq, ":leader_troop_faction", fac_kingdom_12),
+      (set_background_mesh, "mesh_pic_khergit"),
+    (else_try),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_4),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_13),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_14),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_15),
+      (eq, ":leader_troop_faction", fac_kingdom_16),
+      (set_background_mesh, "mesh_pic_nord"),
+    (else_try),
+      (this_or_next|eq, ":leader_troop_faction", fac_kingdom_5),
+      (eq, ":leader_troop_faction", fac_kingdom_6),
+      (set_background_mesh, "mesh_pic_rhodock"),
+    (else_try),
+      (eq, ":leader_troop_faction", fac_kingdom_17),
+      (set_background_mesh, "mesh_pic_mountain_bandits"),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (assign, "$g_leave_encounter", 0),
+      (assign, ":closest_town", "$g_encountered_party"),
 
+      #restructure this to take into account $g_start_arena_fight_at_nearest_town
+      (try_begin), #check if the parameter is necessary
+        (neg|is_between, ":closest_town", walled_centers_begin, walled_centers_end),
+        (is_between, "$g_start_arena_fight_at_nearest_town", walled_centers_begin, walled_centers_end),
+        (assign, ":closest_town", "$g_start_arena_fight_at_nearest_town"),
+        (assign, "$g_start_arena_fight_at_nearest_town", 0),
+      (try_end),
+
+      (try_begin),
+        (is_between, ":closest_town", towns_begin, towns_end),
+        (party_get_slot, ":duel_scene", ":closest_town", slot_town_arena),
+      # (else_try), #SB : duels at castle arena
+        # (is_between, ":closest_town", castles_begin, castles_end),
+        # (party_get_slot, ":duel_scene", ":closest_town", slot_castle_exterior),
+      (else_try),
+        (party_get_current_terrain, ":terrain", "p_main_party"),
+        (eq, ":terrain", rt_snow),
+        (assign, ":duel_scene", "scn_training_ground_ranged_melee_3"),
+      (else_try),
+        (this_or_next|eq, ":terrain", rt_desert),
+        (eq, ":terrain", rt_steppe), #this is the actual steppe scene
+        (assign, ":duel_scene", "scn_training_ground_ranged_melee_4"),
+      (else_try),
+        (assign, ":duel_scene", "scn_training_ground_ranged_melee_1"),
+      (try_end),
+      (modify_visitors_at_site, ":duel_scene"),
+      (reset_visitors),
+      # (set_visitor, 0, "trp_player"),
+      # (set_visitor, 1, "$g_duel_troop"),
+      (troop_set_slot, "trp_tournament_participants", 0, "trp_player"),
+      (troop_set_slot, "trp_tournament_participants", 1, "$g_duel_troop"),
+      (set_jump_mission, "mt_duel_with_lord"),
+      #SB : check relative standing, 0 = (higher renown)
+      (try_begin),
+        (troop_is_hero, "$g_duel_troop"),
+        (troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+        (troop_slot_ge, "$g_duel_troop", slot_troop_renown, ":player_renown"),
+        #swap positions
+        (troop_set_slot, "trp_tournament_participants", 1, "trp_player"),
+        (troop_set_slot, "trp_tournament_participants", 0, "$g_duel_troop"),
+      (try_end),
+      #SB : set up additional equipment, do not always use sword_medieval_a
+      (troop_get_slot, ":faction", "$g_duel_troop", slot_troop_original_faction),
+      (faction_get_slot, ":faction1", ":faction", slot_faction_culture),
+      (try_begin),
+        (eq, ":faction1", "fac_culture_1"),
+        (assign, ":weapon", "itm_dacian_sword"),
+      (else_try),
+        (this_or_next|eq, ":faction1", "fac_culture_9"),
+        (eq, ":faction1", "fac_culture_3"),
+        (assign, ":weapon", "itm_sarmatian_ringsword_4"),
+      (else_try),
+        (eq, ":faction1", "fac_culture_2"),
+        (assign, ":weapon", "itm_celtic_axe2"),
+      (else_try),
+        (eq, ":faction1", "fac_culture_2_1"),
+        (assign, ":weapon", "itm_celtic_axe2"),
+      (else_try),
+        (eq, ":faction1", "fac_culture_4"),
+        (assign, ":weapon", "itm_germanic_axe1"),
+      # (else_try),
+        # (eq, ":faction", "fac_kingdom_5"), #no requirement
+        # (assign, ":weapon", "itm_military_cleaver_b"),
+      (else_try),
+        (this_or_next|eq, ":faction1", "fac_culture_5"),
+        (eq, ":faction1", "fac_culture_6"),
+        (assign, ":weapon", "itm_eastern_sowrd1"),
+      (else_try),
+        (this_or_next|eq, ":faction1", "fac_culture_8"),
+        (eq, ":faction1", "fac_culture_7"),
+        (assign, ":weapon", "itm_roman_spatha"),
+      (else_try),
+        (assign, ":weapon", "itm_arena_sword"),
+      (try_end),
+
+      (try_for_range, ":cur_entry_point", 0, 2),
+        (troop_get_slot, ":cur_troop", "trp_tournament_participants", ":cur_entry_point"),
+        (try_begin), #within the courtyard, 23/24 is guard entry
+          (is_between, ":closest_town", castles_begin, castles_end),
+          (val_add, ":cur_entry_point", 2), #to use the new mission template entries 3 & 4
+        (try_end),
+
+        (mission_tpl_entry_clear_override_items, "mt_duel_with_lord", ":cur_entry_point"),
+        #weapon, make sure they have no difficulty requirement
+        (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", ":weapon"),
+        # (item_get_type, ":type", ":weapon"),
+        # (try_begin),
+          # (is_between, ":type", itp_type_pistol, itp_type_bullets),
+          # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_cartridges2"),
+          # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_dagger"),#backup
+        # (else_try),
+          # (eq, ":type", itp_type_crossbow),
+          # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_practice_bolts_9_amount"),
+          # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_estoc"),#backup
+        # (else_try),
+          # (eq, ":type", itp_type_bow),
+          # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", "itm_practice_arrows_10_amount"),
+          # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", ":backup"),#backup
+        # (try_end),
+
+        #armor, they're statistically almost the same
+        # (troop_get_slot, ":renown", ":cur_troop", slot_troop_renown),
+        # (val_min, ":renown", 2000),
+        # (store_div, ":armor", ":renown", 500),#0 to 3
+        # (val_add, ":armor", "itm_heraldic_mail_with_surcoat"),
+        # (mission_tpl_entry_add_override_item, "mt_duel_with_lord", ":cur_entry_point", ":armor"),
+
+        (set_visitor, ":cur_entry_point", ":cur_troop"),
+      (try_end),
+
+      (jump_to_scene, ":duel_scene"),
+      (jump_to_menu, "mnu_arena_duel_conclusion"),
+      (change_screen_mission),
+    ]),
+]),
+
+("arena_duel_conclusion",0,
+  "{!}{s11}",
+  "none",[
+    (try_begin),
+      (eq, "$g_leave_encounter", 1),
+      (change_screen_return),
+    (try_end),
     (str_store_troop_name, s10, "$g_duel_troop"),
     #SB : change to loop
     (store_add, ":end", lady_quests_end, 2),
@@ -4788,28 +4772,24 @@ game_menus = [
       (try_begin),
         (check_quest_succeeded, ":quest"),
         (str_store_string, s11, "str_s10_lies_in_the_arenas_dust_for_several_minutes_then_staggers_to_his_feet_you_have_won_the_duel"),
-        #(set_background_mesh, "mesh_pic_victory"),
+        (set_background_mesh, "mesh_pic_victory"),
       (else_try),
         (check_quest_failed, ":quest"),
         (str_store_string, s11, "str_you_lie_stunned_for_several_minutes_then_stagger_to_your_feet_to_find_your_s10_standing_over_you_you_have_lost_the_duel"),
-        #(set_background_mesh, "mesh_pic_defeat"),
+        (set_background_mesh, "mesh_pic_defeat"),
       (try_end),
     (try_end),
-   ],
-   [
-     ("continue",[],"Continue...",
-      [
-        (assign, "$talk_context", tc_after_duel),
-        (try_begin), #SB : use the appropriate script calls
-          (is_between, "$g_encountered_party", centers_begin, centers_end),
-          (call_script, "script_start_court_conversation", "$g_duel_troop", "$g_encountered_party"), #SB : script call
-        (else_try),
-          (call_script, "script_setup_troop_meeting", "$g_duel_troop", -1, -1), #SB : script call
-        (try_end),
-        ]),
-      ]
-  ),
-
+  ],[
+  ("continue",[],"Continue...",[
+    (assign, "$talk_context", tc_after_duel),
+    (try_begin), #SB : use the appropriate script calls
+      (is_between, "$g_encountered_party", centers_begin, centers_end),
+      (call_script, "script_start_court_conversation", "$g_duel_troop", "$g_encountered_party"), #SB : script call
+    (else_try),
+      (call_script, "script_setup_troop_meeting", "$g_duel_troop", -1, -1), #SB : script call
+    (try_end),
+  ]),
+]),
 
 ("simple_encounter",mnf_enable_hot_keys|mnf_scale_picture,
   "{s2} You have {reg10} troops fit for battle against their {reg11}.^^"
@@ -23024,7 +23004,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	  ##diplomacy start+
 	  #Make compatible with polygamy
   ("appoint_spouse",[
+    (neg|check_quest_active, "qst_four_emperors"),
     (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
+    (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # not main story
 
 	  (troop_slot_ge, "trp_player", slot_troop_spouse, 1),
 	  (troop_get_slot, ":player_spouse", "trp_player", slot_troop_spouse),
@@ -23043,7 +23025,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (jump_to_menu, "mnu_minister_confirm"),
   ]),
   ("dplmc_appoint_spouse_plus_1",[
+    (neg|check_quest_active, "qst_four_emperors"),
     (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
+    (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # not main story
 
 	  (troop_slot_ge, "trp_player", slot_troop_spouse, 1),
 	  (assign, ":player_spouse", -1),
@@ -23078,7 +23062,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ]), ##diplomacy end+
 ]+[
   ("appoint_npc"+str(x), [
+    (neg|check_quest_active, "qst_four_emperors"),
     (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
+    (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # not main story
     (main_party_has_troop, "trp_npc"+str(x)),
     (str_store_troop_name, s10, "trp_npc"+str(x)),
   ],"Appoint {s10}", [
@@ -23087,7 +23073,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ]) for x in range (1, 17)
 ]+[
   ("appoint_default",[
+    (neg|check_quest_active, "qst_four_emperors"),
     (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
+    (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # not main story
   ],"Appoint a prominent citizen from the area...",
   [
     (assign, "$g_player_minister", "trp_temporary_minister"),
@@ -23095,7 +23083,17 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (jump_to_menu, "mnu_minister_confirm"),
   ]),
   ("appoint_default",[
-    (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
+    (check_quest_active, "qst_four_emperors"),
+    (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # main story vespasian
+  ],"Appoint Antonia.",
+  [
+    (assign, "$g_player_minister", "trp_antonia"),
+    (troop_set_faction, "trp_antonia", "fac_player_supporters_faction"),
+    (jump_to_menu, "mnu_minister_confirm"),
+  ]),
+  ("appoint_default",[
+    (check_quest_active, "qst_four_emperors"),
+    (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # main story other goy
   ],"Appoint Antonia.",
   [
     (assign, "$g_player_minister", "trp_antonia"),
@@ -30747,9 +30745,12 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 ("meeting_with_centurio_2", 0,
   "The traitor met his demise amidst the clash. Now, you've directed the Praetorian guard to intensify their efforts in rooting out any remaining traitors and loyalists to {s22}."
-  +" However, a fresh challenge looms from the North: {s23}, seizing upon the unrest in Roma, has been proclaimed Caesar by the Rhine legions. His march towards Roma is imminent."
-  +" Preparations for battle are imperative. It would be prudent to swiftly bolster our forces by recruiting a new legion.",
+  +" However, a fresh challenge looms from the North: {s21}, seizing upon the unrest in Roma, has been proclaimed Caesar by the Rhine legions. His march towards Roma is imminent."
+  +" Preparations for battle are imperative. It would be prudent to swiftly bolster our forces by recruiting a new legion.^^You have 30 days to prepare yourself.",
   "none",[
+    (store_current_day, reg1),
+    (quest_set_slot, "qst_four_emperors", slot_quest_timer, reg1),
+
     (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
     (str_store_troop_name, s22, ":goy"),
     (try_begin),
@@ -30759,8 +30760,14 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (eq, ":goy", "trp_statthalter_9"),
       (assign, ":other_goy", "trp_senator_2"),
     (try_end),
-    (str_store_troop_name, s22, ":other_goy"),
+    (str_store_troop_name, s21, ":other_goy"),
     (set_background_mesh, "mesh_pic_emperor"),
+
+    (display_message, "str_quest_updated"),
+    (str_store_troop_name_link, s24, ":other_goy"),
+    (add_quest_note_from_sreg, "qst_blank_quest_19", 9, "@You have been declared Caesar Augustus by the Praetorian guard. However, {s24} is challenging your claim. Prepare yourself for battle.", 1),
+    (add_quest_note_from_sreg, "qst_four_emperors", 5, "@{s24} will march with the Rhine legions towards Rome. Prepare yourself for battle.", 0),
+    (add_xp_as_reward, 2500),
   ],[
     ("Continue...",[],"Continue.",[
       (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
@@ -30777,7 +30784,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (rest_for_hours, 48, 12, 0),
     ]),
 ]),
-
 
 ("meeting_with_centurio_3",0,
   "Today the Roman population sees a rare spectacle: At first, the former praefectus urbi, who was well known for his cruelty, is burned alive."
@@ -30919,6 +30925,36 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (jump_to_scene, "scn_cutscene_rome_victory_2"),
       (change_screen_mission),
     ]),
+]),
+
+("message_travel_to_rome", mnf_disable_all_keys,
+  "You recieve message from Antonia:"
+  +"^^Dear {playername}, travel to Roma as fast as possible. {s22} has crossed the Alps and is marching towards Roma! Battle awaits us.",
+  "none",[
+    (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+    (try_begin),
+      (eq, ":goy", "trp_senator_2"),
+      (assign, ":other_goy", "trp_statthalter_9"),
+    (else_try),
+      (eq, ":goy", "trp_statthalter_9"),
+      (assign, ":other_goy", "trp_senator_2"),
+    (try_end),
+    (str_store_troop_name, s22, ":other_goy"),
+    (set_background_mesh, "mesh_pic_emperor"),
+
+    (display_message, "str_quest_updated"),
+    (str_store_party_name_link, s10, "p_town_6"),
+    (str_store_troop_name_link, s24, ":other_goy"),
+    (add_quest_note_from_sreg, "qst_blank_quest_19", 9, "@You have been declared Caesar Augustus by the Praetorian guard. However, {s24} is challenging your claim and marching towards {s10}. Travel to {s10} as fast as possible.", 1),
+    (add_quest_note_from_sreg, "qst_four_emperors", 5, "@{s24} is marching with the Rhine legions towards Rome. Travel to {s10} as fast as possible to meet them in battle.", 1),
+    (add_xp_as_reward, 2500),
+    (set_background_mesh, "mesh_pic_emperor"),
+  ],[
+  ("Continue...",[],"Continue...",[
+    (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
+    (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 12),
+    (jump_to_menu, "mnu_auto_return_to_map"),
+  ]),
 ]),
 
 # ("become_emperor",menu_text_color(0xFF000000)|mnf_disable_all_keys,
