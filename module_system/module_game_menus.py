@@ -5217,6 +5217,12 @@ game_menus = [
         (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11),
         (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
         (assign, "$cant_leave_encounter", 1),
+    (else_try),
+        (check_quest_active, "qst_four_emperors"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 13),
+        (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+        (assign, "$cant_leave_encounter", 1),
     (try_end),
   ],[
     ("battle_size",[
@@ -5484,6 +5490,13 @@ game_menus = [
           (check_quest_active, "qst_four_emperors"),
           (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11),
           (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
+          (set_jump_mission,"mt_lead_charge"),
+          (jump_to_scene, "scn_second_battle_of_bedriacum"),
+      (else_try),
+          (check_quest_active, "qst_four_emperors"),
+          (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+          (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+          (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 13),
           (set_jump_mission,"mt_lead_charge"),
           (jump_to_scene, "scn_second_battle_of_bedriacum"),
       (else_try),
@@ -15904,11 +15917,79 @@ game_menus = [
       (assign, "$capture_screen_shown", 0),
       (assign, "$loot_screen_shown", 0),
     ]),
-
     ("defend", [], "Forget it.", [
       (jump_to_menu, "mnu_paganholysites_visit"),
     ]),
+]),
 
+("first_battle_of_bedriacum_decide",mnf_enable_hot_keys|mnf_scale_picture,
+  "The troops are assembled and ready. It's best to march North defeat the enemy at the field of battle before they reach Roma.",
+  "none",[
+    (set_background_mesh, "mesh_pic_charge"),
+   ],
+  [
+    ("attack", [], "Give orders to march North.", [
+      #(leave_encounter), # leave any encounter
+      (set_fixed_point_multiplier, 1),
+      (init_position, pos32),
+      (position_set_x, pos32, -133),
+      (position_set_y, pos32, 49),
+
+      # detach legion parties and start battle
+      (try_for_range, ":lord", active_npcs_begin, active_npcs_end),
+          (troop_slot_eq, ":lord", slot_troop_occupation, slto_kingdom_hero),
+          (this_or_next|troop_slot_ge, ":lord", slot_troop_aux, 1),
+          (troop_slot_ge, ":lord", slot_troop_legion, 1),
+          (store_faction_of_troop, ":lord_faction", ":lord"),
+          (this_or_next|eq, ":lord_faction", "fac_kingdom_7"),
+          (eq, ":lord_faction", "$players_kingdom"),
+          (troop_get_slot, ":lord_party", ":lord", slot_troop_leaded_party),
+          (party_is_active, ":lord_party"),
+          (party_get_attached_to, ":cur_town", ":lord_party"),
+          (this_or_next|eq, ":cur_town", "p_town_6"),# troops gathered in Rome
+          (eq, ":cur_town", "p_town_5"),# troops gathered in Mediolanum
+          (party_detach, ":lord_party"),
+          (party_set_position, ":lord_party", pos32),
+          # # start battle
+          # (try_begin),
+          #     (eq, ":lord_faction", "fac_kingdom_7"),
+          #     (party_quick_attach_to_current_battle, ":lord_party", 1),
+          # (else_try),
+          #     (party_quick_attach_to_current_battle, ":lord_party", 0),
+          # (try_end),
+      (try_end),
+
+      (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+      (try_begin),
+          (eq, ":goy", "trp_senator_2"),
+          (assign, ":other_goy", "trp_statthalter_9"),
+      (else_try),
+          (eq, ":goy", "trp_statthalter_9"),
+          (assign, ":other_goy", "trp_senator_2"),
+      (try_end),
+
+      (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 13),
+
+      (troop_get_slot, ":other_goy_party", ":other_goy", slot_troop_leaded_party),
+
+      (try_begin),
+          (party_get_attached_to, ":cur_town", "p_main_party"),
+          (gt, ":cur_town", 1),
+          (party_detach, "p_main_party"),
+      (try_end),
+      (party_set_position, "p_main_party", pos32),
+      # (party_is_active, ":vitellius"),
+      (try_begin),
+          (party_get_attached_to, ":cur_town", ":other_goy_party"),
+          (gt, ":cur_town", 1),
+          (party_detach, ":other_goy_party"),
+      (try_end),
+      (party_set_position, ":other_goy_party", pos32),
+      (jump_to_menu, "mnu_first_battle_of_bedriacum"),
+    ]),
+    ("defend", [], "Go back.", [
+      (jump_to_menu, "mnu_auto_return_to_map"),
+    ]),
 ]),
 
 ("town",mnf_enable_hot_keys|mnf_scale_picture,
@@ -15961,7 +16042,21 @@ game_menus = [
     #Who's in the hall? - Dj_FRedy
 
     ##first do all special events in correct order
-    (try_begin), # main story fleet in alexandria
+    (try_begin), # main story other goy battle of bedriacum
+        (eq, "$current_town", "p_town_6"),
+        (check_quest_active, "qst_four_emperors"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 12),
+        (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_timer, -1),
+        (jump_to_menu, "mnu_first_battle_of_bedriacum_decide"),
+    (else_try), # main story fleet in alexandria
+        (eq, "$current_town", "p_town_20"),
+        (check_quest_active, "qst_four_emperors"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 8),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
+        (jump_to_menu, "mnu_the_fleet_decide"),
+    (else_try),
         (eq, "$current_town", "p_town_6"),
         (neq, "$g_is_emperor", 1),
         (neg|check_quest_active, "qst_blank_quest_5"),
@@ -15974,12 +16069,6 @@ game_menus = [
         (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 2),
         (eq, "$current_town", "p_castle_12"),
         (jump_to_menu, "mnu_wlodowiecus_adventure_3_start_1"),
-    (else_try),
-        (check_quest_active, "qst_four_emperors"),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 8),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
-        (eq, "$current_town", "p_town_20"),
-        (jump_to_menu, "mnu_the_fleet_decide"),
     (else_try),
         (eq, "$current_town", "p_town_6"),
         (player_has_item, "itm_holy_grail"),
@@ -30928,9 +31017,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("message_travel_to_rome", mnf_disable_all_keys,
-  "You recieve message from Antonia:"
+  "You recieve message from {s25}:"
   +"^^Dear {playername}, travel to Roma as fast as possible. {s22} has crossed the Alps and is marching towards Roma! Battle awaits us.",
   "none",[
+    (str_store_troop_name, s25, "$g_player_minister"),
     (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
     (try_begin),
       (eq, ":goy", "trp_senator_2"),
@@ -30953,6 +31043,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ("Continue...",[],"Continue...",[
     (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
     (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 12),
+    (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "fac_kingdom_7", logent_faction_declares_war_to_end_civil_war),
     (jump_to_menu, "mnu_auto_return_to_map"),
   ]),
 ]),
@@ -50885,14 +50976,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (try_begin),
       (troop_slot_eq, "trp_player", slot_player_battle_event, 1),
-      (str_store_string, s46, "@After the battle you are filled with elegy. You wander around the battlefield and observe the corpses of the fallen men."
-      +" ^Death is not unfamiliar to you, but you have never encountered it on this scale. At this very moment your life seems so senseless."
-      +" What if you will die in the next skirmish? Will you be remembered? Perhaps you will one day be forgotten like the ill-fated figures who died today..."),
+      (str_store_string, s46, "@After the battle, a somber elegy envelops you. Amidst the silent expanse of the battlefield, you traverse, bearing witness to the fallen warriors, their bodies a testament to the harsh toll of war. Death, a familiar companion, now looms larger than ever before, casting a shadow over your existence. In this moment, life's purpose feels fleeting and insubstantial. What if the next skirmish claims your life? Will your deeds be etched into the annals of memory, or shall you fade into oblivion like the countless souls who met their demise this day?"),
     (else_try),
       (troop_slot_eq, "trp_player", slot_player_battle_event, 2),
-      (str_store_string, s46, "@After the battle you wander around and observe the corpses lying around.^"
-      +" Killing people has somehow become a significant part of your life. You feel pity for the fallen men, but is it your fault that the world is dangerous? That even women and men from high society must fear being murdered.^"
-      +" You just know you won't die anytime soon."),
+      (str_store_string, s46, "@After the battle's fury wanes, you roam the desolate field, bearing witness to the fallen strewn across the earth. The weight of taking lives now burdens your soul, a grim reminder of the path fate has laid before you. Amidst the carnage, empathy for the fallen stirs within, yet questions gnaw at your conscience. Are you culpable for the perilous state of the world, where even the privileged must face the specter of death? The uncertainty of existence lingers, yet amidst it all, a steadfast conviction emerges: the certainty that your own mortality remains distant, for now."),
     (try_end),
     (set_background_mesh, "mesh_pic_battle_aftermath"),
   ],[
@@ -54058,10 +54145,60 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     # ]),
 ]),
 
+("first_battle_of_bedriacum",0,
+  "Your forces reach Bedriacum. {s20} has noticed your advances and ordered to attack."
+  +" {s20} has the legions {s14}. Your side has the legions {s15}."
+  +"^^{s21}",
+  "none",[
+
+    (str_store_string, s21, "str_bedriacum_description"),
+
+    (set_background_mesh, "mesh_pic_camp"),
+    (call_script, "script_get_list_of_legions_s1", "$players_kingdom"),
+    (str_store_string_reg, s15, s1),
+    (call_script, "script_get_list_of_legions_s1", "fac_kingdom_7"),
+    (str_store_string_reg, s14, s1),
+
+    (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+    (try_begin),
+      (eq, ":goy", "trp_senator_2"),
+      (assign, ":other_goy", "trp_statthalter_9"),
+    (else_try),
+      (eq, ":goy", "trp_statthalter_9"),
+      (assign, ":other_goy", "trp_senator_2"),
+    (try_end),
+    (str_store_troop_name, s20, ":other_goy"),
+
+  ],[
+    # ("Continue",[],
+    #   "Battle Scene.",
+    # [
+    #   (set_global_haze_amount, 0),
+    #   (set_global_cloud_amount, 0),
+    #   (jump_to_scene, "scn_camp_second_battle_of_bedriacum"),
+    #   (change_screen_mission),
+    # ]),
+    ("Continue",[],"Continue.",[
+      (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+      (try_begin),
+          (eq, ":goy", "trp_senator_2"),
+          (assign, ":other_goy", "trp_statthalter_9"),
+      (else_try),
+          (eq, ":goy", "trp_statthalter_9"),
+          (assign, ":other_goy", "trp_senator_2"),
+      (try_end),
+      (troop_get_slot, ":other_goy_party", ":other_goy", slot_troop_leaded_party),
+      (start_encounter, ":other_goy_party"),
+      (change_screen_map),
+    ]),
+]),
+
 ("second_battle_of_bedriacum",0,
   "Your forces reach Bedriacum. Vitellius has noticed your advances. Being attack from two directions he performs a tactical retreat."
-  +" Your forces join the Danubian legions. One the next day, Vitellius dispatches Aulus Caecina together with the legions {s14}, to meet your forces. Your side has the legions {s15}.",
+  +" Your forces join the Danubian legions. One the next day, Vitellius dispatches Aulus Caecina together with the legions {s14}, to meet your forces. Your side has the legions {s15}.^^{s21}",
   "none",[
+
+    (str_store_string, s21, "str_bedriacum_description"),
     # switch side of danube legions 1 and 3:
     (call_script, "script_switch_legion_to_faction", 1, "$players_kingdom"),
     (call_script, "script_switch_legion_to_faction", 3, "$players_kingdom"),
@@ -54151,14 +54288,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("the_final_speech",0,
   "Wrapped into a red cloak and dressed in a white tunic, Antonia approaches to give a final speech before the battle starts.",
-  "none",
-  [
+  "none",[
     (str_store_troop_name_plural, s15, "trp_legatus_11"),
     (set_background_mesh, "mesh_pic_mb_warrior_3"),
   ],[
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
       (play_track, "track_cutscene_battle", 2),
       # legions on player side:
       # Danube: Alaudae (1), Adiutrix (3), all other legions of player realm

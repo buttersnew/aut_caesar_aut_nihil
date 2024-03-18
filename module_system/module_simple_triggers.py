@@ -4093,8 +4093,8 @@ simple_triggers = [
         (neq, ":timer", -1),
         (store_current_day, ":cur_day"),
         (val_sub, ":cur_day", ":timer"),
-        (ge, ":cur_day", 30), ## 10 days
-        (call_script, "script_add_notification_menu", "mnu_message_travel_to_rome", "trp_statthalter_9", "trp_senator_1"),
+        (ge, ":cur_day", 5), ## 10 days
+        (call_script, "script_add_notification_menu", "mnu_message_travel_to_rome", -1, -1),
     (try_end),
 
     # event about death of Galba
