@@ -25650,10 +25650,28 @@ mission_templates = [
     ]),
 
     (ti_tab_pressed, 0, 0, [],[
+      (assign, "$temp", 2),
+      (assign, ":menu", "mnu_death_waits"),
+      (try_begin),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 10),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
+        (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 11),
+        (assign, ":menu", "mnu_simple_encounter"),
+      (else_try),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 14),
+        (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+        (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 15),
+        (assign, ":menu", "mnu_simple_encounter"),
+      (else_try),
+        (display_message, "@BUG BUG BUG"),
+        (display_message, "@YOU DIE NOW BECAUSE OF A BUG"),
+        (display_message, "@BUG BUG BUG"),
+      (try_end),
+
       (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
-      (finish_mission,3),
-      (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 11),
-      (jump_to_menu,"mnu_simple_encounter"),
+      (finish_mission, 3),
+      (jump_to_menu, ":menu"),
     ]),
 
     (0, 0, ti_once, [], [
