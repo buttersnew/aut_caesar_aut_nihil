@@ -30807,7 +30807,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-("meeting_with_centurio_2", 0,
+("meeting_with_centurio_2", mnf_disable_all_keys,
   "The traitor met his demise amidst the clash. Now, you've directed the Praetorian guard to intensify their efforts in rooting out any remaining traitors and loyalists to {s22}."
   +" However, a fresh challenge looms from the North: {s21}, seizing upon the unrest in Roma, has been proclaimed Caesar by the Rhine legions. His march towards Roma is imminent."
   +" Preparations for battle are imperative. It would be prudent to swiftly bolster our forces by recruiting a new legion.^^You have 30 days to prepare yourself.",
@@ -30829,27 +30829,20 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
     (display_message, "str_quest_updated"),
     (str_store_troop_name_link, s24, ":other_goy"),
-    (add_quest_note_from_sreg, "qst_blank_quest_19", 9, "@You have been declared Caesar Augustus by the Praetorian guard. However, {s24} is challenging your claim. Prepare yourself for battle.", 1),
+    (add_quest_note_from_sreg, "qst_blank_quest_19", 9, "@You have been declared Caesar Augustus by the Praetorian guard.", 1),
+    (add_quest_note_from_sreg, "qst_blank_quest_19", 10, "@{s24} is challenging your claim and has been declared Caesar by the Rhine legions.", 1),
     (add_quest_note_from_sreg, "qst_four_emperors", 5, "@{s24} will march with the Rhine legions towards Rome. Prepare yourself for battle.", 0),
     (add_xp_as_reward, 2500),
   ],[
     ("Continue...",[],"Continue.",[
       (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
-      (try_begin),
-        (eq, ":goy", "trp_senator_2"),
-        (assign, ":other_goy", "trp_statthalter_9"),
-      (else_try),
-        (eq, ":goy", "trp_statthalter_9"),
-        (assign, ":other_goy", "trp_senator_2"),
-      (try_end),
-      (call_script, "script_usurp_faction", ":other_goy", "fac_kingdom_7"),
       (call_script, "script_kill_lord_lady", ":goy", "trp_player", 0),
       (jump_to_menu, "mnu_auto_return_to_map"),
       (rest_for_hours, 48, 12, 0),
     ]),
 ]),
 
-("meeting_with_centurio_3",0,
+("meeting_with_centurio_3", mnf_disable_all_keys,
   "Today the Roman population sees a rare spectacle: At first, the former praefectus urbi, who was well known for his cruelty, is burned alive."
   +" Then the people can watch how {s34}. {s33}^^{s20}",
   "none",[
@@ -30861,7 +30854,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (str_store_troop_name, s11, ":pop_or_antonia"),
       (str_store_string, s20, "@{s11} has prepared a short speech which you will hold in front of the people of Rome."),
     (else_try),
-      (str_store_string, s20, "@You prepare a short speech and make yourself ready to hold a speech to the people of Rome."),
+      (str_store_string, s20, "@You prepare a short speech and make yourself ready to hold it in front of the people of Rome."),
     (try_end),
 
     (set_background_mesh, "mesh_pic_palast"),
@@ -30871,16 +30864,51 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ##apply decisions
     (try_begin),#Poppaea
       (eq, "$temp4_1", 2),#death
-      (display_log_message, "@Poppaea has been executed on your orders!"),
       (str_store_string, s33, "str_poppaea_dead"),
+      (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 1),
+      (str_store_troop_name_link, s21, "trp_kingdom_7_lady_1"),
+      (display_log_message, "@{s21} has been executed on your orders!"),
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s21} was executed.", 1),
+      (call_script, "script_kill_lord_lady", "trp_kingdom_7_lady_1", "trp_player", 0),
     (else_try),
       (eq, "$temp4_1", 1),#banish
-      (display_log_message, "@Poppaea was murdered by the mob of Rome."),
       (str_store_string, s33, "str_poppaea_banished"),
+      (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 2),
+      (str_store_troop_name_link, s21, "trp_kingdom_7_lady_1"),
+      (display_log_message, "@{s21} was banned from the Roman Empire."),
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s21} was banished from the Roman Empire.", 1),
+      (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_occupation, dplmc_slto_exile),
+      (call_script, "script_change_troop_faction", "trp_kingdom_7_lady_1", "fac_outlaws"),
     (else_try),
-      (display_log_message, "@Poppaea returns to her family."),
       (str_store_string, s33, "str_poppaea_divorced"),
+      (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 3),
+      (str_store_troop_name_link, s21, "trp_kingdom_7_lady_1"),
+      (display_log_message, "@{s21} returns to her family."),
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s21} was banished from Rome.", 1),
+
+      (troop_remove_item, "trp_kingdom_7_lady_1", "itm_female_caligea_gold"),
+      (troop_remove_item, "trp_kingdom_7_lady_1", "itm_female_crown"),
+      (troop_remove_item, "trp_kingdom_7_lady_1", "itm_roman_female_augusta"),
+
+      (troop_add_item, "trp_kingdom_7_lady_1", "itm_caligea"),
+      (troop_add_item, "trp_kingdom_7_lady_1", "itm_roman_noble_dress_2"),
+      (troop_equip_items, "trp_kingdom_7_lady_1"),
+
+      (store_current_day, ":day"),
+      (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_timer, ":day"),
     (try_end),
+
+    (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
+    (try_begin),
+      (eq, ":goy", "trp_senator_2"),
+      (assign, ":other_goy", "trp_statthalter_9"),
+    (else_try),
+      (eq, ":goy", "trp_statthalter_9"),
+      (assign, ":other_goy", "trp_senator_2"),
+    (try_end),
+    (call_script, "script_usurp_faction", ":other_goy", "fac_kingdom_7"),
+
+    (call_script, "script_troop_set_title_according_to_faction", "trp_kingdom_7_lady_1", "fac_kingdom_7"),
 
     (try_begin),
       (this_or_next|eq, "$temp4_1", 1),
@@ -30896,29 +30924,31 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (else_try),
       (eq, "$temp4", 1),#banish
       (str_store_string, s34, "str_nero_banished"),
+      (troop_set_slot, "trp_kingdom_7_lord", slot_troop_occupation, dplmc_slto_exile),
+      (call_script, "script_change_troop_faction", "trp_kingdom_7_lord", "fac_outlaws"),
     (try_end),
 
-    #####Remove Neros party
-    (troop_get_slot, ":king_party", "trp_kingdom_7_lord", slot_troop_leaded_party),
-    (try_begin),
-      (party_is_active, ":king_party"),
-      (ge, ":king_party", 0),
-      (remove_party,":king_party"),
-    (try_end),
-    ##he dies either way
-    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_occupation, dplmc_slto_dead),
+    # #####Remove Neros party
+    # (troop_get_slot, ":king_party", "trp_kingdom_7_lord", slot_troop_leaded_party),
+    # (try_begin),
+    #   (party_is_active, ":king_party"),
+    #   (ge, ":king_party", 0),
+    #   (remove_party,":king_party"),
+    # (try_end),
+    # ##he dies either way
+    # (troop_set_slot, "trp_kingdom_7_lord", slot_troop_occupation, dplmc_slto_dead),
 
-    #divorce them
-    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_leaded_party, -1),
-    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_spouse, -1),
-    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_cur_center, -1),
-    (troop_set_slot, "trp_kingdom_7_lord", slot_troop_home, -1),
+    # #divorce them
+    # (troop_set_slot, "trp_kingdom_7_lord", slot_troop_leaded_party, -1),
+    # (troop_set_slot, "trp_kingdom_7_lord", slot_troop_spouse, -1),
+    # (troop_set_slot, "trp_kingdom_7_lord", slot_troop_cur_center, -1),
+    # (troop_set_slot, "trp_kingdom_7_lord", slot_troop_home, -1),
 
-    (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_cur_center, -1),
-    (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_home, -1),
-    (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_spouse, -1),
+    # (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_cur_center, -1),
+    # (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_home, -1),
+    # (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_spouse, -1),
 
-    (call_script, "script_troop_set_title_according_to_faction", "trp_kingdom_7_lady_1", "fac_kingdom_7"),
+    # (call_script, "script_troop_set_title_according_to_faction", "trp_kingdom_7_lady_1", "fac_kingdom_7"),
 
     # (complete_quest, "qst_blank_quest_2"),
     # (call_script, "script_give_center_to_lord", "p_town_6", "trp_player", 0),
@@ -38797,7 +38827,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("leave",[],"Continue",[
       (str_store_troop_name_link, s13, "trp_kingdom_7_lord"),
-      (add_quest_note_from_sreg, "qst_blank_quest_19", 13, "@You found {s13} hidding in a cave near mount Olymp. You decided to spare his life. He and his followers disappeared. There is no trace of them anymore.", 1),
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 14, "@You found {s13} hidding in a cave near mount Olymp. You decided to spare his life. He and his followers disappeared. There is no trace of them anymore.", 1),
       (add_xp_as_reward, 1000),
       (change_screen_map),
     ]),
@@ -38810,7 +38840,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("leave",[],"Continue",[
       (str_store_troop_name_link, s13, "trp_kingdom_7_lord"),
-      (add_quest_note_from_sreg, "qst_blank_quest_19", 13, "@You found {s13} hidding in a cave near mount Olymp. You decided to kill him.", 1),
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 14, "@You found {s13} hidding in a cave near mount Olymp. You decided to kill him.", 1),
       (display_message, "@You found Nero's lyre!", color_good_news),
       (troop_add_item, "trp_player", "itm_lyre_rich", 0),
       (add_xp_as_reward, 2000),
@@ -54591,7 +54621,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (eq, "$g_notification_menu_var1", 4),
         (str_store_string, s5, "str_poppaea_killed"),
         (str_store_troop_name_link, s20, "trp_kingdom_7_lady_1"),
-        (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@You killed {s20} with your gladius.", 1),
+        (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@You killed {s20} with your gladius.", 1),
         (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 4),
     (else_try),
         (eq, "$g_notification_menu_var1", 3),
@@ -54600,9 +54630,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (str_store_troop_name_link, s21, "trp_antonia"),
         (try_begin),
             (eq, "$g_notification_menu_var2", 1),
-            (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On your orders, {s20} was banished from Rome.", 1),
+            (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s20} was banished from Rome.", 1),
         (else_try),
-            (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On your orders, {s20} was banished from Rome.", 1),
+            (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s20} was banished from Rome.", 1),
         (try_end),
         (troop_remove_item, "trp_kingdom_7_lady_1", "itm_female_caligea_gold"),
         (troop_remove_item, "trp_kingdom_7_lady_1", "itm_female_crown"),
@@ -54622,9 +54652,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (str_store_troop_name_link, s21, "trp_antonia"),
         (try_begin),
             (eq, "$g_notification_menu_var2", 1),
-            (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On your orders, {s20} was forced to commit suicide.", 1),
+            (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s20} was forced to commit suicide.", 1),
         (else_try),
-            (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On orders of {s21}, {s20} was forced to commit suicide.", 1),
+            (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On orders of {s21}, {s20} was forced to commit suicide.", 1),
         (try_end),
         (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 2),
     (else_try),
@@ -54634,9 +54664,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (str_store_troop_name_link, s21, "trp_antonia"),
         (try_begin),
             (eq, "$g_notification_menu_var2", 1),
-            (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On your orders, {s20} was killed by the beasts.", 1),
+            (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s20} was killed by the beasts.", 1),
         (else_try),
-            (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On orders of {s21}, {s20} was killed by the beasts.", 1),
+            (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On orders of {s21}, {s20} was killed by the beasts.", 1),
         (try_end),
         (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 1),
     (try_end),
@@ -54685,7 +54715,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 6),
       (str_store_troop_name_link, s20, "trp_senator_2"),
       (str_store_troop_name_link, s21, "trp_antonia"),
-      (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On orders of {s21}, {s20} was roasted alive and eaten by the lions.", 1),
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 13, "@On orders of {s21}, {s20} was roasted alive and eaten by the lions.", 1),
 
       (assign, "$temp1", 0), # antonias fate
       (assign, "$temp2", 0), # poppaeas fate
@@ -54762,7 +54792,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (call_script, "script_kill_lord_lady", ":enemy_goy", "trp_player", 0),
     (str_store_troop_name_link, s21, "trp_player"),
     (str_store_troop_name_link, s11, ":enemy_goy"),
-    (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@On orders of {s21}, {s11} was {s22}.", 1),
+    (add_quest_note_from_sreg, "qst_blank_quest_19", 13, "@On orders of {s21}, {s11} was {s22}.", 1),
   ],[
     ("Continue",[],"Continue.",[
       (call_script, "script_add_notification_menu", "mnu_end_civil_war", "$players_kingdom", -1),
