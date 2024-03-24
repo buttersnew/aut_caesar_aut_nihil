@@ -6332,7 +6332,7 @@ game_menus = [
             (assign, ":block", 0),
             (try_begin),
                 (check_quest_active, "qst_blank_quest_19"),
-                (quest_slot_eq,"qst_blank_quest_19",slot_quest_object_state, 5),
+                (quest_slot_eq,"qst_blank_quest_19", slot_quest_object_state, 5),
                 (assign, ":block", 1),
             (try_end),
             (eq, ":block", 0),
@@ -6481,7 +6481,7 @@ game_menus = [
             (assign, ":block", 0),
             (try_begin),
                 (check_quest_active, "qst_blank_quest_19"),
-                (quest_slot_eq,"qst_blank_quest_19",slot_quest_object_state, 5),
+                (quest_slot_eq,"qst_blank_quest_19", slot_quest_object_state, 5),
                 (assign, ":block", 1),
             (try_end),
             (eq, ":block", 0),
@@ -6537,7 +6537,7 @@ game_menus = [
             (assign, ":block", 0),
             (try_begin),
                 (check_quest_active, "qst_blank_quest_19"),
-                (quest_slot_eq,"qst_blank_quest_19",slot_quest_object_state, 5),
+                (quest_slot_eq,"qst_blank_quest_19", slot_quest_object_state, 5),
                 (assign, ":block", 1),
             (try_end),
             (eq, ":block", 0),
@@ -30810,8 +30810,19 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ("meeting_with_centurio_2", mnf_disable_all_keys,
   "The traitor met his demise amidst the clash. Now, you've directed the Praetorian guard to intensify their efforts in rooting out any remaining traitors and loyalists to {s22}."
   +" However, a fresh challenge looms from the North: {s21}, seizing upon the unrest in Roma, has been proclaimed Caesar by the Rhine legions. His march towards Roma is imminent."
-  +" Preparations for battle are imperative. It would be prudent to swiftly bolster our forces by recruiting a new legion.^^You have 30 days to prepare yourself.",
+  +" Preparations for battle are imperative. It would be prudent to swiftly bolster your forces by recruiting a new legion.^^You have 30 days to prepare yourself."
+  +"^^{s23}",
   "none",[
+    (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+    (try_begin),
+      (this_or_next|eq, ":pop_or_antonia", "trp_antonia"),
+      (eq, ":pop_or_antonia", "trp_kingdom_7_lady_1"),
+      (str_store_troop_name, s24, ":pop_or_antonia"),
+      (str_store_string, s23, "@Nevertheless, amidst the tumult, a moment of respite beckons. {s24} eagerly anticipates your presence in the Domus Augusti, where discussions regarding your marriage await."),
+    (else_try),
+      (str_clear, s23),
+    (try_end),
+
     (store_current_day, reg1),
     (quest_set_slot, "qst_four_emperors", slot_quest_timer, reg1),
 
@@ -30837,8 +30848,27 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("Continue...",[],"Continue.",[
       (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
       (call_script, "script_kill_lord_lady", ":goy", "trp_player", 0),
-      (jump_to_menu, "mnu_auto_return_to_map"),
-      (rest_for_hours, 48, 12, 0),
+
+      (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+
+      (try_begin),
+        (gt, ":pop_or_antonia", 0),
+        (assign, "$temp4", 0), # state of situation: 0 start of conversation,
+        (assign, "$temp3", -1), # poppaea agent number
+
+        (set_jump_mission, "mt_vespasian_final_dialogue"),
+        (modify_visitors_at_site,"scn_imperial_palace"),
+        (reset_visitors),
+
+        (set_visitor, 17, "trp_quest_primus_pilus"),
+        (set_visitor, 18, "trp_player"),
+        (set_visitor, 19, ":pop_or_antonia"),
+
+        (jump_to_scene, "scn_imperial_palace"),
+        (change_screen_mission),
+      (else_try),
+        (jump_to_menu, "mnu_auto_return_to_map"),
+      (try_end),
     ]),
 ]),
 
@@ -32116,112 +32146,84 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   "She kisses you goodbye and leaves. You remain in the tomb for a short while, thinking about what happened. You look at the paintings and for a moment you hear crowds of people chanting and celebrating your name."
   +" And all of a sudden the voices are gone. A soldiers interrupts you by asking if everything is fine. Your men were worried when they see only Antonia leaving the tomb but not you."
   +"^^Next step is to travel to Rome and talk with Nero, or as Antonia would say, with piggy.",
-  "none",
-    [
+  "none",[
         (set_background_mesh, "mesh_pic_deserters"),
-    ],
-    [
-
-
+    ],[
     ("continue",[
-    ],
-        "Continue.",
-    [
-        (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@You met Antonia again at Tarquinii and discussed the future goals of the plan. Now you have to stage a revolt in Judea!", 1),
+    ],"Continue.",[
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@You met Antonia again at Tarquinii and discussed the future goals of the plan. Now you have to stage a revolt in Judea!", 1),
 
-        (setup_quest_text,"qst_poking_the_lion"),
-        (str_store_string, s2, "@Your goal is to stage a revolt in Judea."),
-        (call_script, "script_start_quest", "qst_poking_the_lion", "trp_fortuna"),
-        (str_store_party_name, s22, "p_town_6"),
-        (add_quest_note_from_sreg, "qst_poking_the_lion", 4, "@Travel to {s22} to convince Nero to confiscate the temple treasury of Jerusalem.", 1),
+      (setup_quest_text,"qst_poking_the_lion"),
+      (str_store_string, s2, "@Your goal is to stage a revolt in Judea."),
+      (call_script, "script_start_quest", "qst_poking_the_lion", "trp_fortuna"),
+      (str_store_party_name, s22, "p_town_6"),
+      (add_quest_note_from_sreg, "qst_poking_the_lion", 4, "@Travel to {s22} to convince Nero to confiscate the temple treasury of Jerusalem.", 1),
 
-        (quest_set_slot,"qst_poking_the_lion",slot_quest_current_state, 1),
-        (display_message, "str_quest_updated"),
+      (quest_set_slot,"qst_poking_the_lion",slot_quest_current_state, 1),
+      (display_message, "str_quest_updated"),
 
-        (change_screen_map),
+      (change_screen_map),
     ],"Leave."),
-
-   ]
-),
+]),
 
 ("tarquinii",0,    #modified motomataru chief
   "Near the town of Tarquinii is one of the largest Etruscan burial sites."
   +" One can find tomb next to tomb just like a real city.",
-  "none",
-    [
+  "none",[
         (set_background_mesh, "mesh_pic_deserters"),
-    ],
-    [
-
+  ],[
     ("enter",[
-        (eq, 0, 1),
-    ],
-        "Enter the tomb.",
-    [
-        (set_jump_mission, "mt_visit_tarquinii"),
-        (modify_visitors_at_site,"scn_tarquinii_tomb_1"),
-        (reset_visitors, 0),
-        (try_begin),
-            (check_quest_active, "qst_blank_quest_19"),
-            (quest_slot_eq,"qst_blank_quest_19",slot_quest_object_state, 1),
-            (set_visitor, 1, "trp_antonia"),
-        (try_end),
-        (set_visitor, 0, "trp_player"),
-        (jump_to_scene, "scn_tarquinii_tomb_1"),
-        (change_screen_mission),
+      (eq, 0, 1),
+    ],"Enter the tomb.",[
+      (set_jump_mission, "mt_visit_tarquinii"),
+      (modify_visitors_at_site,"scn_tarquinii_tomb_1"),
+      (reset_visitors, 0),
+      (try_begin),
+          (check_quest_active, "qst_blank_quest_19"),
+          (quest_slot_eq,"qst_blank_quest_19", slot_quest_object_state, 1),
+          (set_visitor, 1, "trp_antonia"),
+      (try_end),
+      (set_visitor, 0, "trp_player"),
+      (jump_to_scene, "scn_tarquinii_tomb_1"),
+      (change_screen_mission),
     ], "Enter the tomb."),
-
     ("continue",[
-    ],
-        "Walk around.",
-    [
-        (set_jump_mission, "mt_visit_tarquinii"),
-        (modify_visitors_at_site,"scn_tarquinii"),
-        (reset_visitors, 0),
-        (try_begin),
-            (check_quest_active, "qst_blank_quest_19"),
-            (quest_slot_eq,"qst_blank_quest_19",slot_quest_object_state, 1),
-            (set_visitor, 1, "trp_antonia"),
-        (try_end),
-        (set_visitor, 0, "trp_player"),
-        (jump_to_scene, "scn_tarquinii"),
-        (change_screen_mission),
+    ],"Walk around.",[
+      (set_jump_mission, "mt_visit_tarquinii"),
+      (modify_visitors_at_site,"scn_tarquinii"),
+      (reset_visitors, 0),
+      (try_begin),
+          (check_quest_active, "qst_blank_quest_19"),
+          (quest_slot_eq,"qst_blank_quest_19", slot_quest_object_state, 1),
+          (set_visitor, 1, "trp_antonia"),
+      (try_end),
+      (set_visitor, 0, "trp_player"),
+      (jump_to_scene, "scn_tarquinii"),
+      (change_screen_mission),
     ],"Leave."),
-
-    ("continue",[],
-    "Leave.",
-    [
-       (change_screen_map),
+    ("continue",[],"Leave.",[
+      (change_screen_map),
     ]),
-   ]
-),
+]),
 
 ("pillars",0,    #modified motomataru chief
   "When Heracles had to perform twelve labours, one of them (the tenth) was to fetch the Cattle of Geryon of the far West and bring them to Eurystheus."
   +" The pillars of Heracles marked the westward extent of his travels.",
-  "none",
-    [
-        (set_background_mesh, "mesh_pic_deserters"),
-    ],
-    [
-
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
     ("continue",[
-    ],
-        "Walk around.",
-    [
-        (set_jump_mission, "mt_explore_secret_place"),
-        (set_jump_entry, 0),
-        (jump_to_scene, "scn_pillars"),
-        (change_screen_mission),
+    ],"Walk around.",[
+      (set_jump_mission, "mt_explore_secret_place"),
+      (set_jump_entry, 0),
+      (jump_to_scene, "scn_pillars"),
+      (change_screen_mission),
     ],"Leave."),
 
-    ("continue",[],
-    "Leave.",
-    [
-       (change_screen_map),
+    ("continue",[],"Leave.",[
+      (change_screen_map),
     ]),
-   ]
-),
+]),
 
 ("grave_anatolia",0,    #modified motomataru chief
   "Its said that the grave of the legendary Lycus of Athens is located somewhere in this mountains."
@@ -44825,7 +44827,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
     ("continue",[],"I will go to this grove ...",[
       (set_jump_mission,"mt_gods_judgment"),
-      # (quest_get_slot, ":num" ,"qst_blank_quest_19",slot_quest_object_state),
+      # (quest_get_slot, ":num" ,"qst_blank_quest_19", slot_quest_object_state),
       (modify_visitors_at_site,"scn_grove"),
       (reset_visitors),
       (set_visitor, 0, "trp_player"),
@@ -44847,7 +44849,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (set_visitor, 1, "trp_achilleus"),
       (try_end),
 
-      # (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, ":num"),
+      # (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, ":num"),
       (jump_to_scene,"scn_grove"),
 
       (change_screen_mission),
@@ -45016,7 +45018,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (troop_raise_attribute, "trp_player", ca_charisma, 1),
     (troop_raise_attribute, "trp_player", ca_intelligence, 1),
     (str_store_string, s30, "@'You have proven yourself. Wait some days and heal your wounds, then we will test you again.'"),
-    # (quest_get_slot, ":num" ,"qst_blank_quest_19",slot_quest_object_state),
+    # (quest_get_slot, ":num" ,"qst_blank_quest_19", slot_quest_object_state),
     (val_add, "$gods_judgment", 1),
     (try_begin),
       (eq, "$gods_judgment", 1),
@@ -45320,7 +45322,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (add_xp_as_reward, 2500),
         (display_message, "str_quest_updated"),
         (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
-        (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 1),
+        (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 1),
         (change_screen_map),
     ]),
 ]),
@@ -45335,7 +45337,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (call_script, "script_change_player_relation_with_troop", "trp_antonia", -5),
     (display_message, "str_quest_updated"),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
-    (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 1),
+    (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 1),
     (change_screen_map),
   ]),
 ]),
@@ -54712,7 +54714,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (call_script, "script_kill_lord_lady", "trp_senator_2", "trp_player", 0),
   ],[
     ("Continue",[],"Continue.",[
-      (quest_set_slot,"qst_blank_quest_19",slot_quest_object_state, 6),
+      (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 6),
       (str_store_troop_name_link, s20, "trp_senator_2"),
       (str_store_troop_name_link, s21, "trp_antonia"),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 13, "@On orders of {s21}, {s20} was roasted alive and eaten by the lions.", 1),
@@ -54721,6 +54723,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (assign, "$temp2", 0), # poppaeas fate
       (assign, "$temp4", 0), # state of situation
       (assign, "$temp3", -1), # poppaea agent number
+
+      (assign, "$praefectus_urbani", -1), # he is killed during fight
+
       (set_jump_mission, "mt_vespasian_final_dialogue"),
       (modify_visitors_at_site, "scn_imperial_palace"),
       (reset_visitors),

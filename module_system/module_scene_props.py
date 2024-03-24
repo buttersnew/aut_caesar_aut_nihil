@@ -3377,4 +3377,5 @@ scene_props = [
       (try_end),
     ])
   ]),
+  ("box_a_open",0,"box_a_open","bo_box_a", []),
 ]

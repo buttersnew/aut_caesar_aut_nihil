@@ -19477,7 +19477,7 @@ mission_templates = [
 ],),
 
 ("kill_supporters", mtf_battle_mode,-1,"monasterio",[
-    (0,mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head,aif_start_alarmed,1,[itm_laurel_gold]),
+    (0,mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head|af_override_weapons,aif_start_alarmed,1,[itm_laurel_gold, itm_roman_gladius_rich_3]),
     (1,mtef_visitor_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[]),
     (2,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed, 1,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
@@ -30518,15 +30518,15 @@ mission_templates = [
         [
             (try_begin),
                 (check_quest_active, "qst_blank_quest_19"),
-                (quest_slot_eq,"qst_blank_quest_19",slot_quest_object_state, 1),
+                (quest_slot_eq,"qst_blank_quest_19", slot_quest_object_state, 1),
                 (play_track, "track_cutscene_to_hades",2),
             (else_try),
                 (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
             (try_end),
 
             (try_begin),
-                (neg|quest_slot_eq, "qst_blank_quest_19",slot_quest_object_state, 2),
-                (neg|quest_slot_eq, "qst_blank_quest_19",slot_quest_object_state, 3),
+                (neg|quest_slot_eq, "qst_blank_quest_19", slot_quest_object_state, 2),
+                (neg|quest_slot_eq, "qst_blank_quest_19", slot_quest_object_state, 3),
                 (mission_enable_talk),
             (try_end),
             (mission_cam_set_screen_color, 0xFF000000),
@@ -30546,8 +30546,8 @@ mission_templates = [
         ]),
 
         (ti_on_agent_spawn,1,0, [
-            (this_or_next|quest_slot_eq, "qst_blank_quest_19",slot_quest_object_state, 2),
-            (quest_slot_eq, "qst_blank_quest_19",slot_quest_object_state, 3),
+            (this_or_next|quest_slot_eq, "qst_blank_quest_19", slot_quest_object_state, 2),
+            (quest_slot_eq, "qst_blank_quest_19", slot_quest_object_state, 3),
         ],
         [
             (try_for_agents, ":agent"),
@@ -30564,9 +30564,9 @@ mission_templates = [
         [
           (try_begin),
               (check_quest_active, "qst_blank_quest_19"),
-              (this_or_next|quest_slot_eq, "qst_blank_quest_19",slot_quest_object_state, 1),
-              (this_or_next|quest_slot_eq, "qst_blank_quest_19",slot_quest_object_state, 2),
-              (quest_slot_eq, "qst_blank_quest_19",slot_quest_object_state, 3),
+              (this_or_next|quest_slot_eq, "qst_blank_quest_19", slot_quest_object_state, 1),
+              (this_or_next|quest_slot_eq, "qst_blank_quest_19", slot_quest_object_state, 2),
+              (quest_slot_eq, "qst_blank_quest_19", slot_quest_object_state, 3),
               (display_message, "str_cannot_leave_now"),
           (else_try),
               (stop_all_sounds, 1),
@@ -31735,8 +31735,8 @@ mission_templates = [
 
 ("cutscene_rome_speech",mtf_battle_mode,-1, "triumph",[
     (0,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-    (1,mtef_visitor_source,af_override_head|af_override_horse|af_override_weapons,0,1,[itm_laurel_gold]),
-    (2,mtef_visitor_source,af_override_head|af_override_horse|af_override_weapons,0,1,[itm_laurel_gold]),
+    (1,mtef_visitor_source,af_override_head|af_override_horse,0,1,[itm_laurel_gold, itm_roman_gladius_rich_3]),
+    (2,mtef_visitor_source,af_override_head|af_override_horse,0,1,[itm_laurel_gold]),
     (3,mtef_visitor_source,af_override_fullhelm|af_override_horse,0,1,[]),
     (4,mtef_visitor_source,af_override_fullhelm|af_override_horse,0,1,[]),
     (5,mtef_visitor_source,af_override_fullhelm|af_override_horse,0,1,[]),
@@ -32006,9 +32006,9 @@ mission_templates = [
     (14,mtef_visitor_source,af_override_horse,0,1,[]),
     (15,mtef_visitor_source,af_override_horse,0,1,[]),
     (16,mtef_visitor_source,af_override_horse,0,1,[]),
-    (17,mtef_visitor_source,af_override_horse,0,1,[]),
-    (18,mtef_visitor_source,af_override_horse,0,1,[]),
-    (19,mtef_visitor_source,af_override_horse,0,1,[]),
+    (17,mtef_visitor_source,af_override_horse|mtef_team_2,0,1,[]),
+    (18,mtef_visitor_source,af_override_head|af_override_horse|af_override_weapons|mtef_team_1,0,1,[itm_laurel_gold, itm_roman_gladius_rich_3]),
+    (19,mtef_visitor_source,af_override_head|af_override_horse|af_override_weapons|mtef_team_1,0,1,[itm_laurel_gold]),
     (20,mtef_visitor_source,af_override_horse,0,1,[]),
     (21,mtef_visitor_source,af_override_horse,0,1,[]),
     (22,mtef_visitor_source,af_override_horse,0,1,[]),
@@ -32068,7 +32068,8 @@ mission_templates = [
       (neg|conversation_screen_is_active),
       (eq, "$temp4", 0),
     ], [
-      (start_mission_conversation, "trp_antonia"),
+      (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+      (start_mission_conversation, ":pop_or_antonia"),
     ]),
     (0, 0, ti_once, [
       (neg|conversation_screen_is_active),
@@ -32076,8 +32077,8 @@ mission_templates = [
       (all_enemies_defeated, 2),
     ], [
       # (show_object_details_overlay, 1),
-      (start_mission_conversation, "trp_antonia"),
-      (assign, "$praefectus_urbani", -1),
+      (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+      (start_mission_conversation, ":pop_or_antonia"),
     ]),
     (4,0,ti_once,[
       (main_hero_fallen),
@@ -32101,6 +32102,10 @@ mission_templates = [
           (agent_set_no_death_knock_down_only, ":agent_no", 1),
       (else_try),
           (eq, ":troop_id", "trp_tigellinus"),
+          (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 0),
+          (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
+      (else_try),
+          (eq, ":troop_id", "trp_quest_primus_pilus"),
           (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 0),
           (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
       (try_end),
