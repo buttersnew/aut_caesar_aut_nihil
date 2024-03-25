@@ -19593,6 +19593,7 @@ mission_templates = [
       (team_set_relation, 0, 1, 1),
       (team_set_relation, 1, 0, 1),
       (assign,"$g_battle_result",0),
+      (set_cheer_at_no_enemy, 0), # no cheer
     ]),
 
     (ti_tab_pressed, 0, 0, [
