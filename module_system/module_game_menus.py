@@ -23127,9 +23127,16 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ]), ##diplomacy end+
 ]+[
   ("appoint_npc"+str(x), [
-    (neg|check_quest_active, "qst_four_emperors"),
-    (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
-    (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # not main story
+    (assign, ":block", 0),
+    (try_begin),
+      (neg|troop_slot_ge, "trp_antonia", slot_troop_occupation, dplmc_slto_exile),
+      (check_quest_active, "qst_four_emperors"),
+      (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
+      (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # not main story
+      (assign, ":block", 1),
+    (try_end),
+    (eq, ":block", 0),
+
     (main_party_has_troop, "trp_npc"+str(x)),
     (str_store_troop_name, s10, "trp_npc"+str(x)),
   ],"Appoint {s10}", [
@@ -23138,16 +23145,24 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ]) for x in range (1, 17)
 ]+[
   ("appoint_default",[
-    (neg|check_quest_active, "qst_four_emperors"),
-    (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
-    (neg|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # not main story
+    (assign, ":block", 0),
+    (try_begin),
+      (neg|troop_slot_ge, "trp_antonia", slot_troop_occupation, dplmc_slto_exile),
+      (check_quest_active, "qst_four_emperors"),
+      (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # not main story
+      (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # not main story
+      (assign, ":block", 1),
+    (try_end),
+    (eq, ":block", 0),
   ],"Appoint a prominent citizen from the area...",
   [
     (assign, "$g_player_minister", "trp_temporary_minister"),
     (troop_set_faction, "trp_temporary_minister", "fac_player_supporters_faction"),
     (jump_to_menu, "mnu_minister_confirm"),
   ]),
+
   ("appoint_default",[
+    (neg|troop_slot_ge, "trp_antonia", slot_troop_occupation, dplmc_slto_exile),
     (check_quest_active, "qst_four_emperors"),
     (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # main story vespasian
   ],"Appoint Antonia.",
@@ -23156,7 +23171,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (troop_set_faction, "trp_antonia", "fac_player_supporters_faction"),
     (jump_to_menu, "mnu_minister_confirm"),
   ]),
+
   ("appoint_default",[
+    (neg|troop_slot_ge, "trp_antonia", slot_troop_occupation, dplmc_slto_exile),
     (check_quest_active, "qst_four_emperors"),
     (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # main story other goy
   ],"Appoint Antonia.",
@@ -30855,6 +30872,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (gt, ":pop_or_antonia", 0),
         (assign, "$temp4", 0), # state of situation: 0 start of conversation,
         (assign, "$temp3", -1), # poppaea agent number
+        (assign, "$temp1", 0), # fate of antonia
 
         (set_jump_mission, "mt_vespasian_final_dialogue"),
         (modify_visitors_at_site,"scn_imperial_palace"),
@@ -30874,7 +30892,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 ("meeting_with_centurio_3", mnf_disable_all_keys,
   "Today the Roman population sees a rare spectacle: At first, the former praefectus urbi, who was well known for his cruelty, is burned alive."
-  +" Then the people can watch how {s34}. {s33}^^{s20}",
+  +" Then the people can watch how {s34} {s33}^^{s20}",
   "none",[
 
     (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
@@ -30894,23 +30912,22 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ##apply decisions
     (try_begin),#Poppaea
       (eq, "$temp4_1", 2),#death
-      (str_store_string, s33, "str_poppaea_dead"),
       (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 1),
       (str_store_troop_name_link, s21, "trp_kingdom_7_lady_1"),
       (display_log_message, "@{s21} has been executed on your orders!"),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s21} was executed.", 1),
       (call_script, "script_kill_lord_lady", "trp_kingdom_7_lady_1", "trp_player", 0),
+      (str_store_string, s33, "str_poppaea_dead"),
     (else_try),
       (eq, "$temp4_1", 1),#banish
-      (str_store_string, s33, "str_poppaea_banished"),
       (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 2),
       (str_store_troop_name_link, s21, "trp_kingdom_7_lady_1"),
       (display_log_message, "@{s21} was banned from the Roman Empire."),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s21} was banished from the Roman Empire.", 1),
       (troop_set_slot, "trp_kingdom_7_lady_1", slot_troop_occupation, dplmc_slto_exile),
       (call_script, "script_change_troop_faction", "trp_kingdom_7_lady_1", "fac_outlaws"),
+      (str_store_string, s33, "str_poppaea_banished"),
     (else_try),
-      (str_store_string, s33, "str_poppaea_divorced"),
       (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 3),
       (str_store_troop_name_link, s21, "trp_kingdom_7_lady_1"),
       (display_log_message, "@{s21} returns to her family."),
@@ -30926,6 +30943,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
       (store_current_day, ":day"),
       (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_timer, ":day"),
+      (str_store_string, s33, "str_poppaea_divorced"),
     (try_end),
 
     (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
@@ -54700,6 +54718,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
   ],[
     ("Continue",[],"Continue.",[
+      (try_begin),# clear slot if its antonia
+        (quest_slot_eq, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, "trp_antonia"),
+        (quest_set_slot, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, -1),
+      (try_end),
       (rest_for_hours, 72, 20, 0),
       (change_screen_map),
     ]),

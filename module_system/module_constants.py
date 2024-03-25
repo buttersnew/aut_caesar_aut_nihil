@@ -4189,3 +4189,6 @@ cost_libelli_office = 250
 miracle_battle_heal     = 1
 miracle_battle_strength = 2
 miracle_battle_morale   = 3
+
+# main story:
+antonia_relation_threshold = 50
