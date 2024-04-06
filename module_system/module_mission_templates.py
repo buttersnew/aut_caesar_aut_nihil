@@ -30722,12 +30722,12 @@ mission_templates = [
       (try_begin),
         (eq, "$temp2", 1),
         (call_script, "script_change_agent_face", "$temp3", "trp_zarinaia", "str_zarinaia_face_normal"),
-        (display_message, "@normal"),
+        # (display_message, "@normal"),
         (assign, "$temp2", 0),
       (else_try),
         (eq, "$temp2", 2),
         (call_script, "script_change_agent_face", "$temp3", "trp_zarinaia", "str_zarinaia_face_surprized"),
-        (display_message, "@surprized"),
+        # (display_message, "@surprized"),
         (assign, "$temp2", 0),
       (try_end),
     ],[]),
@@ -30743,7 +30743,7 @@ mission_templates = [
       (tutorial_message_set_position, 500, 650),
       (tutorial_message_set_center_justify, 0),
       (tutorial_message_set_background, 1),
-      (tutorial_message, "@The air is stale. The tomb has not been accessed for probably hundreds of years. Hardly able to breathe.^^(press K to finish read)"),
+      (tutorial_message, "@The air is stale. The tomb has not been accessed for hundreds of years. You are hardly able to breathe.^^(press K to finish read)"),
 		]),
 
     (0, 0, ti_once, [],[

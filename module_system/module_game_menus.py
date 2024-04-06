@@ -23676,36 +23676,41 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 # for main story: if parthia or armenia declare war on player Rome
 ("armenia_parthia_declare_war",0,
-    "War avoided^^{s1} wanted to declare war against your faction! On orders of Antonia, messenagers have been send and a treaty negotiated."
-    +"^{reg22} denars had to be paid to avoid war.",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
+  "War avoided^^{s1} wanted to declare war against you! However, as the civil war continues, your minister {s25} negotiated a treaty to avoid a second front.^{reg22} denars had to be paid to avoid war.",
+  "none",[
+    (try_begin),
+        (gt, "$g_player_minister", 0),
+        (str_store_troop_name, s25, "$g_player_minister"),
+    (else_try),
+        (str_store_string, s25, "@Dickus Biggus"),
+    (try_end),
 
-      (try_begin),
-          (eq, "$g_notification_menu_var1", "fac_kingdom_6"),
-          (assign, reg22, 500000),
-      (else_try),
-          (assign, reg22, 100000),
-      (try_end),
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
 
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (store_sub, ":faction_1", "$g_notification_menu_var1", kingdoms_begin),
-      (store_sub, ":faction_2", "$g_notification_menu_var2", kingdoms_begin),
-      (val_mul, ":faction_1", 128),
-      (val_add, ":faction_1", ":faction_2"),
-      (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
-      (play_sound, "snd_message_negative_sound"),
-    ],[
-      ("continue",[],"Continue...",[
-        (call_script, "script_dplmc_start_nonaggression_between_kingdoms", "$players_kingdom", "$g_notification_menu_var1", 1),
-        (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", reg22),
-        (change_screen_return),
-      ]),
+    (try_begin),
+        (eq, "$g_notification_menu_var1", "fac_kingdom_6"),
+        (assign, reg22, 500000),
+    (else_try),
+        (assign, reg22, 100000),
+    (try_end),
+
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (store_sub, ":faction_1", "$g_notification_menu_var1", kingdoms_begin),
+    (store_sub, ":faction_2", "$g_notification_menu_var2", kingdoms_begin),
+    (val_mul, ":faction_1", 128),
+    (val_add, ":faction_1", ":faction_2"),
+    (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
+    (play_sound, "snd_message_negative_sound"),
+  ],[
+    ("continue",[],"Continue...",[
+      (call_script, "script_dplmc_start_nonaggression_between_kingdoms", "$players_kingdom", "$g_notification_menu_var1", 1),
+      (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", reg22),
+      (change_screen_return),
+    ]),
 ]),
 
 #chief sot cambia texto abajo, y motomataru cambia texto y codigo

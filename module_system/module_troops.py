@@ -4039,7 +4039,7 @@ attrib_common_lady,wp(50),knows_common_lady,0x000000003f0c509a38636d3ee92a6b2200
 
 ["kingdom_7_lady_2","Statilia Messalina","Statilia Messalina",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x0000000a4604b2cc495d91c60a8747ec00000000001e1c9c0000000000000000],
 ##die alten (12)
-["kingdom_7_lady_3","Aemilia Lepida","	Aemilia Lepida",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7,  [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x0000000d2700530449f04c7f492a156500000000001c61d20000000000000000],
+["kingdom_7_lady_3","Aemilia Lepida","Aemilia Lepida",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7,  [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x0000000d2700530449f04c7f492a156500000000001c61d20000000000000000],
 ["kingdom_7_lady_4","Sulpicia Drusilla","Sulpicia Drusilla",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7,  [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x0000000d7300304501c01dffe806726a00000000001c51f00000000000000000],
 ["kingdom_7_lady_5","Galeria Fundana","Galeria Fundana",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x0000000fe70402033b5bda574690269d00000000001d985a0000000000000000],
 ["kingdom_7_lady_6","Vitellia Aula","Vitellia Aula",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x0000000ab308214433a47248e971b46100000000001eb5190000000000000000],
