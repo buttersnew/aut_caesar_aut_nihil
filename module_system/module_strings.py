@@ -9360,6 +9360,16 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("goy_crucified", "The crowds gather in front of the Circus to watch the crucification of {s10}. He will be nailed to the cross.^^{s10}, carrying the cross, is led into the Circus by gladiators. Afterwards, the gladiators nail him on the cross."
  +" While {s10} is screaming, the gladiators fight. It's a great spectacle and the plebs enjoy it."),
 ("goy_suicide", "{s10} is accompanied by the Praetorian guards to his villa in Rome. He is allowed to eat a final meal. Then {s10} opens his veins. Slowly, life escapes from his body. After his death, his dead body is handed over to his family."),
+
+
+("drunken_event_1", "He was already drunk when I arrived here. Then he puked in the middle of a table. Terribly embarrassing, this person."),
+("drunken_event_2", "He took a lot of wine during the meal. I have not seen such a devoured guy for a long time."),
+("drunken_event_3", "He has already drunk a liter of wine. He will puke up this hall soon, I am sure."),
+("drunken_event_4", "Unbelievable how he behaves towards the slaves. I'm sure he wants to fuck the fat ones."),
+("drunken_event_5", "First, he pukes in the corner just so he can take something to eat again. Disgusting!"),
+("drunken_event_6", "I have never met a bigger idiot. When I talked to him, he did not even know who Heracles was."),
+("drunken_event_end", "end"),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

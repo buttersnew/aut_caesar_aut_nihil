@@ -30757,6 +30757,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (str_store_troop_name, s10, ":goy"),
 	],[
     ("continue",[],"Continue.",[
+      (play_track, "track_cutscene_to_hades",2),
       (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
       (call_script, "script_activate_main_story_civil_war", ":goy"),
 
@@ -30878,6 +30879,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (assign, "$temp4", 0), # state of situation: 0 start of conversation,
         (assign, "$temp3", -1), # poppaea agent number
         (assign, "$temp1", 0), # fate of antonia
+        (assign, "$temp2", 0), # player stab
 
         (set_jump_mission, "mt_vespasian_final_dialogue"),
         (modify_visitors_at_site,"scn_imperial_palace"),
@@ -30899,7 +30901,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   "Today the Roman population sees a rare spectacle: At first, the former praefectus urbi, who was well known for his cruelty, is burned alive."
   +" Then the people can watch how {s34} {s33}^^{s20}",
   "none",[
-
     (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
     (try_begin),
       (this_or_next|eq, ":pop_or_antonia", "trp_antonia"),
@@ -31099,6 +31100,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_background_mesh, "mesh_pic_emperor"),
   ],[
   ("Continue...",[],"Continue...",[
+    (play_track, "track_cutscene_to_hades",2),
     (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
     (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 12),
     (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "fac_kingdom_7", logent_faction_declares_war_to_end_civil_war),
