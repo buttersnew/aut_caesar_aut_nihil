@@ -6095,14 +6095,13 @@ game_menus = [
   "none",[
     (try_begin), # main story final victory
         (assign, ":legatus", -1),
-        (assign, ":bitch", -1),
+        (quest_get_slot, ":bitch", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
         (assign, ":enemy_goy", -1),
         (try_begin),
             (check_quest_active, "qst_four_emperors"),
             (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11),
             (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
             (assign, ":legatus", "trp_legatus_11"),
-            (assign, ":bitch", "trp_antonia"),
             (assign, ":enemy_goy", "trp_senator_2"),
             (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 12),
         (else_try),
@@ -6111,7 +6110,6 @@ game_menus = [
             (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
             (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
             (assign, ":legatus", "trp_legatus_12"),
-            (assign, ":bitch", "trp_antonia"),
             (try_begin),
                 (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
                 (assign, ":enemy_goy", "trp_statthalter_9"),
@@ -6174,7 +6172,7 @@ game_menus = [
         (set_visitor, 19, "trp_vexilarius_x"),
 
         (jump_to_scene, "scn_speech_second_battle_of_bedriacum"),
-        (change_screen_map_conversation, "trp_antonia"),
+        (change_screen_map_conversation, ":bitch"),
     (else_try), #special battle event 1
         (troop_slot_eq, "trp_global_variables", g_lord_event_possible, 0),
 
@@ -30815,8 +30813,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (quest_get_slot, ":pop_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
       (set_visitors, 0, ":pop_or_antonia", 1),
       (set_visitors, 0, "trp_player", 1),
-      (set_visitors, 1, "trp_aux_cav_praetoriani_2", 4),
-      (set_visitors, 2, "trp_aux_cav_praetoriani_2", 4),
+      (set_visitors, 1, "trp_aux_cav_praetoriani_2", 3),
+      (set_visitors, 2, "trp_aux_cav_praetoriani_2", 3),
 
       (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
       (set_visitors, 3, "trp_praetoriani_milites", 1),
@@ -30885,7 +30883,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (modify_visitors_at_site,"scn_imperial_palace"),
         (reset_visitors),
 
-        (set_visitor, 17, "trp_quest_primus_pilus"),
+        (try_begin),
+          (eq, ":pop_or_antonia", "trp_antonia"),
+          (set_visitor, 17, "trp_quest_primus_pilus"),
+        (try_end),
         (set_visitor, 18, "trp_player"),
         (set_visitor, 19, ":pop_or_antonia"),
 
@@ -30916,7 +30917,14 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (troop_set_slot, "trp_tigellinus", slot_troop_occupation, dplmc_slto_dead),
     (assign, "$praefectus_urbani", -1),
     ##apply decisions
-    (try_begin),#Poppaea
+    (try_begin), # antonia
+      (eq, "$temp4_1", -1),
+      (str_store_troop_name_link, s21, "trp_antonia"),
+      (display_log_message, "@{s21} has been killed by you!"),
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@You killed {s21} with your gladius.", 1),
+      (call_script, "script_kill_lord_lady", "trp_antonia", "trp_player", 0),
+      (str_store_string, s33, "str_antonia_dead"),
+    (else_try),#Poppaea
       (eq, "$temp4_1", 2),#death
       (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 1),
       (str_store_troop_name_link, s21, "trp_kingdom_7_lady_1"),
@@ -54389,9 +54397,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("the_final_speech",0,
-  "Wrapped into a red cloak and dressed in a white tunic, Antonia approaches to give a final speech before the battle starts.",
+  "Wrapped into a red cloak and dressed in a white tunic, {s16} approaches to give a final speech before the battle starts.",
   "none",[
-    (str_store_troop_name_plural, s15, "trp_legatus_11"),
+    (quest_get_slot, ":poppaea_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+    (str_store_troop_name, s16, ":poppaea_or_antonia"),
     (set_background_mesh, "mesh_pic_mb_warrior_3"),
   ],[
     ("Continue",[],"Continue.",[
@@ -54411,8 +54420,17 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
       # 1-3 player, antonia, vespasian
       (set_visitor, 1, "trp_player"),
-      (set_visitor, 2, "trp_antonia"),
-      (set_visitor, 3, "trp_legatus_11"),
+      (quest_get_slot, ":poppaea_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+      (set_visitor, 2, ":poppaea_or_antonia"),
+
+
+      (try_begin),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
+        (assign, ":commander", "trp_legatus_11"),
+      (else_try),
+        (assign, ":commander", "trp_legatus_12"),
+      (try_end),
+      (set_visitor, 3, ":commander"),
 
       # 4 to 11 troops
       (troop_set_slot, "trp_temp_array_c", 4, 1),
@@ -54445,7 +54463,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_visitor, 17, "trp_vexilarius_xi"),
       (set_visitor, 18, "trp_aquilifer_x"),
       (set_visitor, 19, "trp_vexilarius_x"),
-
 
       (assign, "$g_empieza_discurso", 1),
       (jump_to_scene, "scn_speech_second_battle_of_bedriacum"),

@@ -7659,10 +7659,12 @@ Lead me in battle to victory!"),
 ("praefectus", "Praefectus cohortis"),
 ("tribunus", "Tribunus militaris"),
 
-("poppaea_divorced", "Finally, it has been announced that Poppaea is getting divorced from Nero and must leave the palace to return to her family."),
-("poppaea_dead", "Finally, Poppaea has been executed. As with Nero, her opponents erupt in joy. People openly celebrate the death of the woman they most hate."),
-("poppaea_banished", "She is banned together with Nero and accompanies him on his journy."),
-("nero_dead", "Caesar Augustus Nero, the former Princeps, was executed on your orders. The mob, who had begun to hate Nero since the fire, screamed and exulted at the scene. Nero died a shameful and agonizing death. Nero's mistress Acte regretfully buried her imperial lover's body in proper Roman style."),
+("antonia_dead", "Claudia Antonia's lifeless form is tenderly carried from the triclinium nestled within the garden's verdant embrace. An altar, adorned with a profusion of fragrant blooms, stands ready to receive her. With gentle reverence, her body is laid upon the sacred stone, surrounded by the sweet scent of blossoms. As a final tribute, she is bestowed with an opolus, an offering to guide her spirit on its journey beyond mortal realms. The flickering flames of the funeral pyre engulf her form, a solemn pyre ablaze with memories and the fragrance of remembrance."),
+
+("poppaea_divorced", "At last, it has been declared that Poppaea is divorcing Nero and must depart from Rome to reunite with her family."),
+("poppaea_dead", "At last, Poppaea meets her end by decapitation. Much like Nero, her adversaries rejoice in triumph. The populace openly revels in the demise of the woman they most despise."),
+("poppaea_banished", "Poppaea is banned from the Roman Empire together with Nero and accompanies him on his journy."),
+("nero_dead", "Caesar Augustus Nero, the former Princeps, is executed on your orders. The mob, who had begun to hate Nero since the fire, screamed and exulted at the scene. Nero died a shameful and agonizing death. Nero's mistress Acte regretfully buried her imperial lover's body in proper Roman style."),
 ("nero_banished", "Caesar Augustus Nero, having been banished from the Roman Empire, is escorted out of Rome in chains alongside Acte. Together, they embark on a journey towards distant lands, leaving behind the grandeur of the empire that once held their presence. The expanse of their exile unfolds before them, a path leading to unknown territories far removed from the hallowed streets of Rome."),
 
 ("lecture_1_1", "In the following lectures, I will talk about the Platonian notion of justice, and how Platon describes the ideal state. I will begin with justice in Platonian philosophy. ^^What is justice? One could say: Justice is to help and support your friends and to harm your enemies. Or equivalently, one could say: Everyone shall get what he deserves. But what if you misjudge people: If you view a just and good person as an enemy; then you harm him and you view this as just. But it can't be just, to harm an innocent person. And what about people who are befriended with bad ones and enemies to good ones? They would have to support bad people and harm good people. That can't be just."),
@@ -9369,6 +9371,25 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("drunken_event_5", "First, he pukes in the corner just so he can take something to eat again. Disgusting!"),
 ("drunken_event_6", "I have never met a bigger idiot. When I talked to him, he did not even know who Heracles was."),
 ("drunken_event_end", "end"),
+
+("african_rumor_00", "It is said that the wife of the king never cuts her hair. It must be several feet long."),
+("african_rumor_01", "A farmer told me a nice little story yesterday. But I forgot it."),
+("african_rumor_02", "This year the lions are angry, I am sure. They killed my daughter last week."),
+("african_rumor_03", "The priests have warned us of disasters. They say we must make more sacrifices to the gods."),
+("african_rumor_04", "The lion hunt is a dangerous business. Yesterday a hunting group consisting of 12 strong men was killed by a single lion!"),
+("african_rumor_05", "Yesterday there was a burglary in a shop next to my tavern! Hopefully, the thieves won't come to me too."),
+("african_rumor_06", "Yesterday I had a strange guest. He is a merchant from faraway lands and spoke a language I have never heard. Today he was bitten by a snake and died."),
+("african_rumor_07", "The only news I have is that the son of my sister's daughter has broken his leg."),
+("african_rumor_08", "I heard rumors that a lion attacked farmers in a nearby village. You should be careful while traveling through the desert. The lions are hungry!"),
+("african_rumor_09", "Some merchants from Greece stayed here last night. They pay fair prices for our goods."),
+("african_rumor_10", "I heard from a traveler who was attacked by a group of bandits. He defeated 20 of them alone with his bare hands. A true champion."),
+("african_rumor_end", "I haven't heard anything interesting recently."),
+
+("african_taverkeeper_welcome_0", "Welcome, my friend."),
+("african_taverkeeper_welcome_1", "You are welcome. Here ^--He hands you a cup full of wine over.-- ^The first drink is free."),
+("african_taverkeeper_welcome_2", "You look thirsty and hungry, my friend. I have the best wine and the best food."),
+("african_taverkeeper_welcome_3", "Welcome in my humble tent. How can I serve?"),
+("african_taverkeeper_welcome_end", "I am sure you want something to drink, don't you?")
 
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))

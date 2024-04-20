@@ -32097,6 +32097,7 @@ mission_templates = [
       (agent_is_active, ":agent_no"),
       (agent_get_troop_id, ":troop_id", ":agent_no"),
       (try_begin),
+          (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
           (eq, ":troop_id", "trp_kingdom_7_lady_1"),
           (agent_set_visibility, ":agent_no", 0),
           (assign, "$temp3", ":agent_no"),
