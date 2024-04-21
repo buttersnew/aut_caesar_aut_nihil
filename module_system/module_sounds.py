@@ -258,4 +258,19 @@ sounds = [
    ("intro_4", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_4.wav",]),
    ("intro_5", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_5.wav",]),
    ("intro_6", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["intro_6.wav",]),
+
+   # speech player, voice lucas, clarity 0.75, variability 0.95
+   ("player_speech_rome_other_goy", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["player_speech_rome_other_goy.wav",]),
+
+   ("battle_speech_1", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_1.wav",]),
+   ("battle_speech_2", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_2.wav",]),
+   ("battle_speech_3", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_3.wav",]),
+   ("battle_speech_4", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_4.wav",]),
+   ("battle_speech_5", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_5.wav",]),
+   ("battle_speech_6", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_6.wav",]),
+   ("battle_speech_7", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_7.wav",]),
+   ("battle_speech_8", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_8.wav",]),
+   ("battle_speech_9", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_9.wav",]),
+   ("battle_speech_10", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_10.wav",]),
+   ("battle_speech_11", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["battle_speech_11.wav",]),
 ]

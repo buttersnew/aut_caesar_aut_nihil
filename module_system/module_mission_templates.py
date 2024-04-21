@@ -43,35 +43,24 @@ merchant_disguise = [itm_roman_toga,itm_caligea,itm_dagger]
 guard_disguise = [itm_germanic_light9,itm_germanic_helm2,itm_celtic_boots,itm_germanic_shield_large1,itm_war_spear]
 bard_disguise = [itm_leather_boots,itm_lyre,itm_linen_tunic,itm_dagger]
 #note that these are usually male clothing, especially farmer_disguise, need some female ones as well
+
 nothing = [itm_nothing_legs,itm_nothing_head,itm_nothing_body,itm_nothing_hands]
 
 af_castle_lord = af_override_horse | af_override_weapons| af_require_civilian
 
-# common_move_troops_to_center = (0, 0, ti_once,[
-
-# (try_for_agents, ":agent_no"),
-   # (agent_is_alive, ":agent_no"),
-   # (agent_is_active, ":agent_no"),
-# ##code to move the agents
-    # #get the position of the agent
-    # #move the position forward
-    # #set the position of the agent
-# (try_end),
-    # ],[
-# ])
 can_spawn_commoners = (ti_before_mission_start,0,0,[],[(assign,"$can_spawn_commoners",1)])
 cannot_spawn_commoners = (ti_before_mission_start,0,0,[],[(assign,"$can_spawn_commoners",0)])
 
-remove_banners = (ti_before_mission_start, 0, 0, [],
-    [
-        (try_for_range, ":prop", banner_scene_props_begin, banner_scene_props_end_minus_one),
-            (replace_scene_props, ":prop", "spr_empty"),
-        (try_end),
-    ])
+remove_banners = (ti_before_mission_start, 0, 0, [],[
+  (try_for_range, ":prop", banner_scene_props_begin, banner_scene_props_end_minus_one),
+      (replace_scene_props, ":prop", "spr_empty"),
+  (try_end),
+])
 
 vc_menu = [
-  (0, 0, ti_once, [(neq, "$vc_menu_active", 0),],	# This is starting the presentation
-  [
+  (0, 0, ti_once, [
+    (neq, "$vc_menu_active", 0),# This is starting the presentation
+  ],[
     (start_presentation, "$vc_menu_active"),
     (set_fixed_point_multiplier, 100),
     (entry_point_get_position, pos8, 70),
@@ -84,8 +73,9 @@ vc_menu = [
     (mission_disable_talk),
   ]),
 
-  (0, 0, 0.5, [(neq, "$vc_menu_active", 0),],
-  [
+  (0, 0, 0.5, [
+    (neq, "$vc_menu_active", 0),
+  ],[
     (try_begin),
         # RESTART MENU
         (store_mission_timer_a,":mission_time"),
@@ -107,158 +97,122 @@ vc_menu = [
 ]
 
 poisoned_arrows_hit = (ti_on_agent_hit, 0, 0, [], [
-        (store_trigger_param, ":victim", 1),
-        (store_trigger_param, ":attacker", 2),
-        (store_trigger_param, ":missile", 5),
+    (store_trigger_param, ":victim", 1),
+    (store_trigger_param, ":attacker", 2),
+    (store_trigger_param, ":missile", 5),
 
-        (eq, ":missile", "itm_poisoned_arrows"),
-        # (try_begin),
-            # (agent_get_slot, ":is_poisoned", ":victim", slot_agent_is_poisoned),
-        (get_player_agent_no, ":player"),
-        (agent_get_horse, ":p_horse", ":player"),
+    (eq, ":missile", "itm_poisoned_arrows"),
+    # (try_begin),
+        # (agent_get_slot, ":is_poisoned", ":victim", slot_agent_is_poisoned),
+    (get_player_agent_no, ":player"),
+    (agent_get_horse, ":p_horse", ":player"),
+    (try_begin),
+        (eq, ":attacker", ":player"),
+        # (neq, ":is_poisoned", 1),
         (try_begin),
-            (eq, ":attacker", ":player"),
-            # (neq, ":is_poisoned", 1),
-            (try_begin),
-                (neg|agent_is_human, ":victim"),
-                (display_message, "@You have poisoned a horse!", 0x3F8000),
-                (agent_set_slot, ":victim", slot_agent_is_poisoned, 3),
-            (else_try),
-                (display_message, "@You have poisoned the enemy!", 0x3F8000),
-                (agent_set_slot, ":victim", slot_agent_is_poisoned, 3),
-            (try_end),
-        (else_try),
-            (eq, ":victim", ":player"),
-            # (neq, ":is_poisoned", 1),
-            (display_message, "@You are poisoned!", 0x3F8000),
-            (mission_cam_set_screen_color, 0xFF000000),
-            (mission_cam_animate_to_screen_color, 0x4D000000, 2000),
+            (neg|agent_is_human, ":victim"),
+            (display_message, "@You have poisoned a horse!", 0x3F8000),
             (agent_set_slot, ":victim", slot_agent_is_poisoned, 3),
         (else_try),
-            (eq, ":victim", ":p_horse"),
-            # (neq, ":is_poisoned", 1),
-            (display_message, "@Your horse is poisoned!", 0x3F8000),
-            (agent_set_slot, ":victim", slot_agent_is_poisoned, 3),
-        (else_try),
-            # (neq, ":is_poisoned", 1),
+            (display_message, "@You have poisoned the enemy!", 0x3F8000),
             (agent_set_slot, ":victim", slot_agent_is_poisoned, 3),
         (try_end),
-        # (try_end),
-     ])
-poisoned_arrows_damage = (6, 0, 0, [], [
-    (try_for_agents,":cur_agent"),
-        (agent_is_alive, ":cur_agent"),
-        (agent_get_slot, ":is_poisoned", ":cur_agent", slot_agent_is_poisoned),
-        (ge, ":is_poisoned", 1),
-        (val_sub, ":is_poisoned", 1),
-        (try_begin),
-            (store_agent_hit_points,reg22,":cur_agent", 0),
-            (val_sub,reg22, 7),
-            (agent_set_hit_points,":cur_agent",reg22, 0),
-
-            #debug message
-            # (str_store_agent_name, s1, ":cur_agent"),
-            # (display_message, "@{s1} has {reg22} hp"),
-
-            (le,reg22, 1),
-            (remove_agent,":cur_agent"),
-        (try_end),
-        (try_begin),
-            (neg|agent_is_non_player, ":cur_agent"),
-            (mission_cam_set_screen_color, 0xFF000000),
-            (mission_cam_animate_to_screen_color, 0x4D000000, 2000),
-            (display_message, "@The poison decreases your health!", 0x3F8000),
-        #debug message
-        # (else_try),
-            # (str_store_agent_name, s1, ":cur_agent"),
-            # (display_message, "@The poison decreases {s1} health!"),
-        (try_end),
-
-        (try_begin),
-            (eq, ":is_poisoned", 0),
-            (try_begin),
-                (neg|agent_is_non_player, ":cur_agent"),
-                (display_message, "@You are no longer poisoned", color_good_news),
-            #debug message
-            # (else_try),
-                # (str_store_agent_name, s1, ":cur_agent"),
-                # (display_message, "@{s1} is no longer poisoned", color_good_news),
-            (try_end),
-        (try_end),
-        (agent_set_slot, ":cur_agent", slot_agent_is_poisoned, ":is_poisoned"),
+    (else_try),
+        (eq, ":victim", ":player"),
+        # (neq, ":is_poisoned", 1),
+        (display_message, "@You are poisoned!", 0x3F8000),
+        (mission_cam_set_screen_color, 0xFF000000),
+        (mission_cam_animate_to_screen_color, 0x4D000000, 2000),
+        (agent_set_slot, ":victim", slot_agent_is_poisoned, 3),
+    (else_try),
+        (eq, ":victim", ":p_horse"),
+        # (neq, ":is_poisoned", 1),
+        (display_message, "@Your horse is poisoned!", 0x3F8000),
+        (agent_set_slot, ":victim", slot_agent_is_poisoned, 3),
+    (else_try),
+        # (neq, ":is_poisoned", 1),
+        (agent_set_slot, ":victim", slot_agent_is_poisoned, 3),
     (try_end),
-     ])
+    # (try_end),
+])
+
+poisoned_arrows_damage = (6, 0, 0, [], [
+  (try_for_agents,":cur_agent"),
+      (agent_is_alive, ":cur_agent"),
+      (agent_get_slot, ":is_poisoned", ":cur_agent", slot_agent_is_poisoned),
+      (ge, ":is_poisoned", 1),
+      (val_sub, ":is_poisoned", 1),
+      (try_begin),
+          (store_agent_hit_points,reg22,":cur_agent", 0),
+          (val_sub,reg22, 7),
+          (agent_set_hit_points,":cur_agent",reg22, 0),
+
+          #debug message
+          # (str_store_agent_name, s1, ":cur_agent"),
+          # (display_message, "@{s1} has {reg22} hp"),
+
+          (le,reg22, 1),
+          (remove_agent,":cur_agent"),
+      (try_end),
+      (try_begin),
+          (neg|agent_is_non_player, ":cur_agent"),
+          (mission_cam_set_screen_color, 0xFF000000),
+          (mission_cam_animate_to_screen_color, 0x4D000000, 2000),
+          (display_message, "@The poison decreases your health!", 0x3F8000),
+      #debug message
+      # (else_try),
+          # (str_store_agent_name, s1, ":cur_agent"),
+          # (display_message, "@The poison decreases {s1} health!"),
+      (try_end),
+
+      (try_begin),
+          (eq, ":is_poisoned", 0),
+          (try_begin),
+              (neg|agent_is_non_player, ":cur_agent"),
+              (display_message, "@You are no longer poisoned", color_good_news),
+          #debug message
+          # (else_try),
+              # (str_store_agent_name, s1, ":cur_agent"),
+              # (display_message, "@{s1} is no longer poisoned", color_good_news),
+          (try_end),
+      (try_end),
+      (agent_set_slot, ":cur_agent", slot_agent_is_poisoned, ":is_poisoned"),
+  (try_end),
+])
 
 
 global_common_triggers = [
-    poisoned_arrows_hit,
-    poisoned_arrows_damage,
+  poisoned_arrows_hit,
+  poisoned_arrows_damage,
 
-    ###um kaempfe langsamer zu machen
-    (ti_on_agent_spawn, 0, 0, [ ],[
-      (store_trigger_param_1, ":agent_no"),
-      (agent_is_active, ":agent_no"),
-      (agent_is_human, ":agent_no"),
-      (agent_is_alive, ":agent_no"),
+  ###um kaempfe langsamer zu machen
+  (ti_on_agent_spawn, 0, 0, [ ],[
+    (store_trigger_param_1, ":agent_no"),
+    (agent_is_active, ":agent_no"),
+    (agent_is_human, ":agent_no"),
+    (agent_is_alive, ":agent_no"),
 
-      ## modify damage accoriding to weapon quality
-      (try_begin),
-          (agent_get_party_id, ":agent_party", ":agent_no"),
-          (party_is_active, ":agent_party"),
-          (store_faction_of_party, ":faction_party", ":agent_party"),
-          (faction_get_slot, ":quality", ":faction_party", dplmc_slot_faction_quality),
-          (neq, ":quality", 0),
-          (assign, ":damage_mod", 100),
-          (agent_get_damage_modifier, ":damage_mod", ":agent_no"),
-          (val_add, ":quality", 100),
-          (val_mul, ":damage_mod", ":quality"),
-          (val_div, ":damage_mod", 100),
-          (agent_set_damage_modifier, ":agent_no", ":damage_mod"),
-      (try_end),
+    ## modify damage accoriding to weapon quality
+    (try_begin),
+        (agent_get_party_id, ":agent_party", ":agent_no"),
+        (party_is_active, ":agent_party"),
+        (store_faction_of_party, ":faction_party", ":agent_party"),
+        (faction_get_slot, ":quality", ":faction_party", dplmc_slot_faction_quality),
+        (neq, ":quality", 0),
+        (assign, ":damage_mod", 100),
+        (agent_get_damage_modifier, ":damage_mod", ":agent_no"),
+        (val_add, ":quality", 100),
+        (val_mul, ":damage_mod", ":quality"),
+        (val_div, ":damage_mod", 100),
+        (agent_set_damage_modifier, ":agent_no", ":damage_mod"),
+    (try_end),
 
-      (call_script, "script_advanced_agent_set_speed_modifier",":agent_no", 100),
+    (call_script, "script_advanced_agent_set_speed_modifier",":agent_no", 100),
 
-      ####this code is to set Roman armors according to climate
-      #switch to winter version for roman boots
-      (try_begin),
-          (call_script, "script_cf_snow_on_scene", "p_main_party"),
-          (agent_get_item_slot, ":body", ":agent_no", ek_body),
-          (is_between, ":body", "itm_aquilifer_legion_squamata_1", "itm_aux_slinger"),#wears Roman military equipment
-          (agent_get_item_slot, ":item", ":agent_no", ek_foot),
-          (try_begin),
-              (this_or_next|eq, ":item", "itm_legio_armored_caligea_2"),
-              (this_or_next|eq, ":item", "itm_legio_armored_caligea"),
-              (this_or_next|eq, ":item", "itm_centurio_west_graves"),
-              (this_or_next|eq, ":item", "itm_centurio_east_graves"),
-              (this_or_next|eq, ":item", "itm_centurio_praetorian_graves"),
-              (this_or_next|eq, ":item", "itm_aux_centurio_graves"),
-              (this_or_next|eq, ":item", "itm_graves_simple"),
-              (eq, ":item", "itm_graves_simple_2"),
-              (agent_unequip_item, ":agent_no",":item"),
-              (val_add, ":item", 1),
-          (else_try),
-              (this_or_next|is_between, ":item", "itm_eastern_shoe", "itm_cataphract_boots"),
-              (is_between, ":item", "itm_female_caligea_gold", "itm_legio_armored_caligea_2"),
-              (agent_unequip_item, ":agent_no",":item"),
-              (assign, ":item", "itm_graves_simple_winter"),
-          (else_try),
-              (agent_is_non_player, ":agent_no"),
-              (assign, ":item", "itm_graves_simple_winter"),
-          (try_end),
-          (gt, ":item", -1),
-          (agent_equip_item, ":agent_no",":item", ek_foot),
-          # (agent_set_slot, ":agent_no", slot_agent_tournament_point, 1),
-      (try_end),
-    ]),
-
-    (ti_battle_window_opened,0,0, [
-        # (this_or_next|game_key_clicked, gk_inventory_window),
-        # (game_key_is_down, gk_inventory_window),
+    ####this code is to set Roman armors according to climate
+    #switch to winter version for roman boots
+    (try_begin),
         (call_script, "script_cf_snow_on_scene", "p_main_party"),
-    ],[
-        (get_player_agent_no, ":agent_no"),
-        (agent_is_active, ":agent_no"),
-        (agent_is_alive, ":agent_no"),
         (agent_get_item_slot, ":body", ":agent_no", ek_body),
         (is_between, ":body", "itm_aquilifer_legion_squamata_1", "itm_aux_slinger"),#wears Roman military equipment
         (agent_get_item_slot, ":item", ":agent_no", ek_foot),
@@ -278,99 +232,135 @@ global_common_triggers = [
             (is_between, ":item", "itm_female_caligea_gold", "itm_legio_armored_caligea_2"),
             (agent_unequip_item, ":agent_no",":item"),
             (assign, ":item", "itm_graves_simple_winter"),
+        (else_try),
+            (agent_is_non_player, ":agent_no"),
+            (assign, ":item", "itm_graves_simple_winter"),
         (try_end),
         (gt, ":item", -1),
-        (agent_equip_item, ":agent_no",":item",ek_foot),
-    ]),
+        (agent_equip_item, ":agent_no",":item", ek_foot),
+        # (agent_set_slot, ":agent_no", slot_agent_tournament_point, 1),
+    (try_end),
+  ]),
+
+  (ti_battle_window_opened,0,0, [
+      # (this_or_next|game_key_clicked, gk_inventory_window),
+      # (game_key_is_down, gk_inventory_window),
+      (call_script, "script_cf_snow_on_scene", "p_main_party"),
+  ],[
+      (get_player_agent_no, ":agent_no"),
+      (agent_is_active, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (agent_get_item_slot, ":body", ":agent_no", ek_body),
+      (is_between, ":body", "itm_aquilifer_legion_squamata_1", "itm_aux_slinger"),#wears Roman military equipment
+      (agent_get_item_slot, ":item", ":agent_no", ek_foot),
+      (try_begin),
+          (this_or_next|eq, ":item", "itm_legio_armored_caligea_2"),
+          (this_or_next|eq, ":item", "itm_legio_armored_caligea"),
+          (this_or_next|eq, ":item", "itm_centurio_west_graves"),
+          (this_or_next|eq, ":item", "itm_centurio_east_graves"),
+          (this_or_next|eq, ":item", "itm_centurio_praetorian_graves"),
+          (this_or_next|eq, ":item", "itm_aux_centurio_graves"),
+          (this_or_next|eq, ":item", "itm_graves_simple"),
+          (eq, ":item", "itm_graves_simple_2"),
+          (agent_unequip_item, ":agent_no",":item"),
+          (val_add, ":item", 1),
+      (else_try),
+          (this_or_next|is_between, ":item", "itm_eastern_shoe", "itm_cataphract_boots"),
+          (is_between, ":item", "itm_female_caligea_gold", "itm_legio_armored_caligea_2"),
+          (agent_unequip_item, ":agent_no",":item"),
+          (assign, ":item", "itm_graves_simple_winter"),
+      (try_end),
+      (gt, ":item", -1),
+      (agent_equip_item, ":agent_no",":item",ek_foot),
+  ]),
 ]
 
-small_battle_check = (ti_on_agent_spawn, 0, 0,
-    [
-        (store_add, ":total_size", "$g_friend_fit_for_battle", "$g_enemy_fit_for_battle"),
-        (le, ":total_size", 100),
-    ],
-    [
-        (store_trigger_param_1, ":agent_to_move"),
-        (agent_is_active, ":agent_to_move"),
+small_battle_check = (ti_on_agent_spawn, 0, 0,[
+    (store_add, ":total_size", "$g_friend_fit_for_battle", "$g_enemy_fit_for_battle"),
+    (le, ":total_size", 100),
+  ],[
+    (store_trigger_param_1, ":agent_to_move"),
+    (agent_is_active, ":agent_to_move"),
 
-        (get_scene_boundaries, pos10, pos11),
-        (set_fixed_point_multiplier, 100),
-        (position_get_x, ":scene_max_x", pos11),
-        (position_get_y, ":scene_max_y", pos11),
-        (val_add, ":scene_max_x", 2400), # 2400 has been subtracted automatically because of barriers from outer terrain
-        (val_add, ":scene_max_y", 2400),
-        (val_div, ":scene_max_x", 2),
-        (val_div, ":scene_max_y", 2),
-        (position_set_x, pos11, ":scene_max_x"),
-        (position_set_y, pos11, ":scene_max_y"),
+    (get_scene_boundaries, pos10, pos11),
+    (set_fixed_point_multiplier, 100),
+    (position_get_x, ":scene_max_x", pos11),
+    (position_get_y, ":scene_max_y", pos11),
+    (val_add, ":scene_max_x", 2400), # 2400 has been subtracted automatically because of barriers from outer terrain
+    (val_add, ":scene_max_y", 2400),
+    (val_div, ":scene_max_x", 2),
+    (val_div, ":scene_max_y", 2),
+    (position_set_x, pos11, ":scene_max_x"),
+    (position_set_y, pos11, ":scene_max_y"),
 
-        (agent_get_position, pos10, ":agent_to_move"),
-        (call_script, "script_point_y_toward_position", pos10, pos11),
+    (agent_get_position, pos10, ":agent_to_move"),
+    (call_script, "script_point_y_toward_position", pos10, pos11),
 
-        (position_get_x, ":x", pos10),
-        (store_random_in_range, ":x_addition", -150, 150),
-        (val_add, ":x", ":x_addition"),
-        (position_set_x, pos10, ":x"),
+    (position_get_x, ":x", pos10),
+    (store_random_in_range, ":x_addition", -150, 150),
+    (val_add, ":x", ":x_addition"),
+    (position_set_x, pos10, ":x"),
 
-        (get_distance_between_positions, ":y_to_move", pos10, pos11),
-        (val_div, ":y_to_move", 7),
-        (val_mul, ":y_to_move", 5),
-        (position_move_y, pos10, ":y_to_move"),
+    (get_distance_between_positions, ":y_to_move", pos10, pos11),
+    (val_div, ":y_to_move", 7),
+    (val_mul, ":y_to_move", 5),
+    (position_move_y, pos10, ":y_to_move"),
 
-        (agent_set_position, ":agent_to_move", pos10),
+    (agent_set_position, ":agent_to_move", pos10),
 ])
 
-voice_order_sounds = (ti_on_order_issued, 0, 1, [],
-  [
-    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
-    (store_trigger_param_1,":order"),
-    (store_trigger_param_2,":agent_id"),
-    (agent_is_active, ":agent_id"),
-    (agent_is_alive, ":agent_id"),
-    (call_script, "script_dplmc_store_troop_is_female", "trp_player"),
-    (eq, reg0, 0),
-    (try_begin),
-        (eq,":order", mordr_hold), #mantener la posicion
-        (agent_play_sound, ":agent_id", "snd_order_hold"),
-    # (else_try),
-        # (eq,":order", mordr_follow), #seguidme
-        # (agent_play_sound, ":agent_id", "snd_orden_seguidme"),
-    (else_try),
-        (eq,":order", mordr_charge), #carga
-        (agent_play_sound, ":agent_id", "snd_order_charge"),
-    (else_try),
-        (eq,":order", mordr_stand_closer), #densa
-        (agent_play_sound, ":agent_id", "snd_order_stand_closer"),
-    (else_try),
-        (eq,":order", mordr_spread_out), #dispersa
-        (agent_play_sound, ":agent_id", "snd_order_spread"),
-    (else_try),
-        (eq,":order", mordr_advance), #dispersa
-        (agent_play_sound, ":agent_id", "snd_order_hold"),
-    (else_try),
-        (eq,":order", mordr_follow), #dispersa
-        (agent_play_sound, ":agent_id", "snd_order_hold"),
-    (else_try),
-        (eq,":order", mordr_fall_back), #dispersa
-        (agent_play_sound, ":agent_id", "snd_order_retreat"),
-    (else_try),
-        (eq,":order", mordr_stand_ground), #alto
-        (agent_play_sound, ":agent_id", "snd_order_hold"),
-    (else_try),
-        (eq,":order", mordr_fire_at_will), #disparo
-        (agent_play_sound, ":agent_id", "snd_order_fire"),
-    (else_try),
-        (eq,":order", mordr_hold_fire),  #alto disparo
-        (agent_play_sound, ":agent_id", "snd_order_hold_fire"),
-    (try_end),
- ])
+voice_order_sounds = (ti_on_order_issued, 0, 1, [],[
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+  (store_trigger_param_1,":order"),
+  (store_trigger_param_2,":agent_id"),
+  (agent_is_active, ":agent_id"),
+  (agent_is_alive, ":agent_id"),
+  (call_script, "script_dplmc_store_troop_is_female", "trp_player"),
+  (eq, reg0, 0),
+  (try_begin),
+      (eq,":order", mordr_hold), #mantener la posicion
+      (agent_play_sound, ":agent_id", "snd_order_hold"),
+  # (else_try),
+      # (eq,":order", mordr_follow), #seguidme
+      # (agent_play_sound, ":agent_id", "snd_orden_seguidme"),
+  (else_try),
+      (eq,":order", mordr_charge), #carga
+      (agent_play_sound, ":agent_id", "snd_order_charge"),
+  (else_try),
+      (eq,":order", mordr_stand_closer), #densa
+      (agent_play_sound, ":agent_id", "snd_order_stand_closer"),
+  (else_try),
+      (eq,":order", mordr_spread_out), #dispersa
+      (agent_play_sound, ":agent_id", "snd_order_spread"),
+  (else_try),
+      (eq,":order", mordr_advance), #dispersa
+      (agent_play_sound, ":agent_id", "snd_order_hold"),
+  (else_try),
+      (eq,":order", mordr_follow), #dispersa
+      (agent_play_sound, ":agent_id", "snd_order_hold"),
+  (else_try),
+      (eq,":order", mordr_fall_back), #dispersa
+      (agent_play_sound, ":agent_id", "snd_order_retreat"),
+  (else_try),
+      (eq,":order", mordr_stand_ground), #alto
+      (agent_play_sound, ":agent_id", "snd_order_hold"),
+  (else_try),
+      (eq,":order", mordr_fire_at_will), #disparo
+      (agent_play_sound, ":agent_id", "snd_order_fire"),
+  (else_try),
+      (eq,":order", mordr_hold_fire),  #alto disparo
+      (agent_play_sound, ":agent_id", "snd_order_hold_fire"),
+  (try_end),
+])
 
 camera_controls = [ #7 triggers
   (ti_before_mission_start, 0, 0, [], [
-  (assign, "$cam_mode", 0),
+    (assign, "$cam_mode", 0),
   ]),
 
-  (ti_battle_window_opened, 0, 0, [], [(assign, "$cam_seeking_mouse", Far_Away)]),
+  (ti_battle_window_opened, 0, 0, [], [
+    (assign, "$cam_seeking_mouse", Far_Away)
+  ]),
 
   (0, 0, 0, [
     (neq, "$cam_mode", 0),
@@ -381,635 +371,635 @@ camera_controls = [ #7 triggers
     (store_mission_timer_c_msec, reg0),
     (store_sub, ":elapsed", reg0, "$cam_last_called"),
     (gt, ":elapsed", ":interval"),
-      ],[
+  ],[
 
-      (assign, "$cam_last_called", reg0),
-      (assign, ":change_pitch", 0),
-      (assign, ":change_yaw", 0),
-      (assign, ":change_zoom", 0),
-      (assign, ":pan_back_forth", 0),
-      (assign, ":pan_right_left", 0),
-      (assign, ":pan_up_down", 0),
-      (assign, ":has_rotated", 0),
+    (assign, "$cam_last_called", reg0),
+    (assign, ":change_pitch", 0),
+    (assign, ":change_yaw", 0),
+    (assign, ":change_zoom", 0),
+    (assign, ":pan_back_forth", 0),
+    (assign, ":pan_right_left", 0),
+    (assign, ":pan_up_down", 0),
+    (assign, ":has_rotated", 0),
 
-      #check zoom keys
+    #check zoom keys
+    (try_begin),
+      (key_is_down, key_numpad_plus),
+      (store_div, reg0, "$cam_speed", 30),
+      (val_add, reg0, 1),
+      (val_sub, reg0, "$cam_zoom"),
+      (val_mul, reg0, -1),
       (try_begin),
-        (key_is_down, key_numpad_plus),
-        (store_div, reg0, "$cam_speed", 30),
-        (val_add, reg0, 1),
-        (val_sub, reg0, "$cam_zoom"),
-        (val_mul, reg0, -1),
+        (gt, reg0, camera_effective_min_zoom),
+        (assign, "$cam_zoom", reg0),
+        (assign, ":change_zoom", 1),
+      (try_end),
+
+    (else_try),
+      (key_is_down, key_numpad_minus),
+      (store_div, reg0, "$cam_speed", 30),
+      (val_add, reg0, 1),
+      (val_add, reg0, "$cam_zoom"),
+      (try_begin),
+        (le, reg0, 75),  #although it will zoom out to around 150 or so, it starts looking distorted past this point
+        (assign, "$cam_zoom", reg0),
+        (assign, ":change_zoom", 1),
+      (try_end),
+    (try_end),
+
+    #check pan back and forth keys
+    (store_and, reg0, "$cam_mode", camera_pan_back_forth),
+    (try_begin),
+      (gt, reg0, 0),
+      (try_begin),
+        (game_key_is_down, gk_move_forward),
+        (store_mul, ":pan_back_forth", "$cam_speed", 1),
+      (else_try),
+        (game_key_is_down, gk_move_backward),
+        (store_mul, ":pan_back_forth", "$cam_speed", -1),
+      (try_end),
+    (try_end),
+
+    #check pan right and left keys
+    (store_and, reg0, "$cam_mode", camera_pan_right_left),
+    (try_begin),
+      (gt, reg0, 0),
+      (try_begin),
+        (game_key_is_down, gk_move_right),
+        (store_mul, ":pan_right_left", "$cam_speed", 1),
+      (else_try),
+        (game_key_is_down, gk_move_left),
+        (store_mul, ":pan_right_left", "$cam_speed", -1),
+      (try_end),
+    (try_end),
+
+    #check pan up and down keys
+    (store_and, reg0, "$cam_mode", camera_pan_up_down),
+    (try_begin),
+      (gt, reg0, 0),
+      (try_begin),
+        (key_is_down, key_f),
+        (store_mul, ":pan_up_down", "$cam_speed", 1),
+      (else_try),
+        (key_is_down, key_c),
+        (store_mul, ":pan_up_down", "$cam_speed", -1),
+      (else_try),
+        (key_is_down, key_v), #c is character report
+        (store_mul, ":pan_up_down", "$cam_speed", -1),
+      (try_end),
+    (try_end),
+
+    #handle diagonals
+    (try_begin),
+      (neq, ":pan_back_forth", 0),
+      (neq, ":pan_right_left", 0),
+      (neq, ":pan_up_down", 0),
+      (val_mul, ":pan_back_forth", 1000),
+      (val_div, ":pan_back_forth", 1732),
+      (val_mul, ":pan_right_left", 1000),
+      (val_div, ":pan_right_left", 1732),
+      (val_mul, ":pan_up_down", 1000),
+      (val_div, ":pan_up_down", 1732),
+    (else_try),
+      (neq, ":pan_back_forth", 0),
+      (neq, ":pan_right_left", 0),
+      (val_mul, ":pan_back_forth", 1000),
+      (val_div, ":pan_back_forth", 1414),
+      (val_mul, ":pan_right_left", 1000),
+      (val_div, ":pan_right_left", 1414),
+    (else_try),
+      (neq, ":pan_up_down", 0),
+      (neq, ":pan_right_left", 0),
+      (val_mul, ":pan_up_down", 1000),
+      (val_div, ":pan_up_down", 1414),
+      (val_mul, ":pan_right_left", 1000),
+      (val_div, ":pan_right_left", 1414),
+    (else_try),
+      (neq, ":pan_back_forth", 0),
+      (neq, ":pan_up_down", 0),
+      (val_mul, ":pan_back_forth", 1000),
+      (val_div, ":pan_back_forth", 1414),
+      (val_mul, ":pan_up_down", 1000),
+      (val_div, ":pan_up_down", 1414),
+    (try_end),
+
+    #check rotation
+    (store_and, reg0, "$cam_mode", camera_rotate),
+    (try_begin),
+      (gt, reg0, 0),
+      #check pitch keys
+      (assign, ":min_one", "$cam_speed"),
+      (convert_to_fixed_point, ":min_one"),
+      (store_sqrt, reg0, ":min_one"),
+      (convert_from_fixed_point, reg0),
+      (store_add, ":min_one", reg0, camera_key_rotate_attenuator),
+      (store_and, ":rev_y", "$cam_mode", camera_reverse_y),
+      (try_begin),
+        (key_is_down, key_up),
         (try_begin),
-          (gt, reg0, camera_effective_min_zoom),
-          (assign, "$cam_zoom", reg0),
-          (assign, ":change_zoom", 1),
+          (eq, ":rev_y", 0),
+          (store_div, ":change_pitch", ":min_one", camera_key_rotate_attenuator),
+        (else_try),
+          (store_div, ":change_pitch", ":min_one", -1 * camera_key_rotate_attenuator),
         (try_end),
 
       (else_try),
-        (key_is_down, key_numpad_minus),
-        (store_div, reg0, "$cam_speed", 30),
-        (val_add, reg0, 1),
-        (val_add, reg0, "$cam_zoom"),
+        (key_is_down, key_down),
         (try_begin),
-          (le, reg0, 75),  #although it will zoom out to around 150 or so, it starts looking distorted past this point
-          (assign, "$cam_zoom", reg0),
-          (assign, ":change_zoom", 1),
+          (eq, ":rev_y", 0),
+          (store_div, ":change_pitch", ":min_one", -1 * camera_key_rotate_attenuator),
+        (else_try),
+          (store_div, ":change_pitch", ":min_one", camera_key_rotate_attenuator),
         (try_end),
       (try_end),
 
-      #check pan back and forth keys
-      (store_and, reg0, "$cam_mode", camera_pan_back_forth),
+      #check yaw keys
       (try_begin),
-        (gt, reg0, 0),
-        (try_begin),
-          (game_key_is_down, gk_move_forward),
-          (store_mul, ":pan_back_forth", "$cam_speed", 1),
-        (else_try),
-          (game_key_is_down, gk_move_backward),
-          (store_mul, ":pan_back_forth", "$cam_speed", -1),
-        (try_end),
-      (try_end),
-
-      #check pan right and left keys
-      (store_and, reg0, "$cam_mode", camera_pan_right_left),
-      (try_begin),
-        (gt, reg0, 0),
-        (try_begin),
-          (game_key_is_down, gk_move_right),
-          (store_mul, ":pan_right_left", "$cam_speed", 1),
-        (else_try),
-          (game_key_is_down, gk_move_left),
-          (store_mul, ":pan_right_left", "$cam_speed", -1),
-        (try_end),
-      (try_end),
-
-      #check pan up and down keys
-      (store_and, reg0, "$cam_mode", camera_pan_up_down),
-      (try_begin),
-        (gt, reg0, 0),
-        (try_begin),
-          (key_is_down, key_f),
-          (store_mul, ":pan_up_down", "$cam_speed", 1),
-        (else_try),
-          (key_is_down, key_c),
-          (store_mul, ":pan_up_down", "$cam_speed", -1),
-        (else_try),
-          (key_is_down, key_v), #c is character report
-          (store_mul, ":pan_up_down", "$cam_speed", -1),
-        (try_end),
-      (try_end),
-
-      #handle diagonals
-      (try_begin),
-        (neq, ":pan_back_forth", 0),
-        (neq, ":pan_right_left", 0),
-        (neq, ":pan_up_down", 0),
-        (val_mul, ":pan_back_forth", 1000),
-        (val_div, ":pan_back_forth", 1732),
-        (val_mul, ":pan_right_left", 1000),
-        (val_div, ":pan_right_left", 1732),
-        (val_mul, ":pan_up_down", 1000),
-        (val_div, ":pan_up_down", 1732),
+        (key_is_down, key_right),
+        (store_div, ":change_yaw", ":min_one", -1 * camera_key_rotate_attenuator),
       (else_try),
-        (neq, ":pan_back_forth", 0),
-        (neq, ":pan_right_left", 0),
-        (val_mul, ":pan_back_forth", 1000),
-        (val_div, ":pan_back_forth", 1414),
-        (val_mul, ":pan_right_left", 1000),
-        (val_div, ":pan_right_left", 1414),
-      (else_try),
-        (neq, ":pan_up_down", 0),
-        (neq, ":pan_right_left", 0),
-        (val_mul, ":pan_up_down", 1000),
-        (val_div, ":pan_up_down", 1414),
-        (val_mul, ":pan_right_left", 1000),
-        (val_div, ":pan_right_left", 1414),
-      (else_try),
-        (neq, ":pan_back_forth", 0),
-        (neq, ":pan_up_down", 0),
-        (val_mul, ":pan_back_forth", 1000),
-        (val_div, ":pan_back_forth", 1414),
-        (val_mul, ":pan_up_down", 1000),
-        (val_div, ":pan_up_down", 1414),
+        (key_is_down, key_left),
+        (store_div, ":change_yaw", ":min_one", camera_key_rotate_attenuator),
       (try_end),
 
-      #check rotation
-      (store_and, reg0, "$cam_mode", camera_rotate),
+      #handle diagonal
       (try_begin),
-        (gt, reg0, 0),
-        #check pitch keys
-        (assign, ":min_one", "$cam_speed"),
-        (convert_to_fixed_point, ":min_one"),
-        (store_sqrt, reg0, ":min_one"),
-        (convert_from_fixed_point, reg0),
-        (store_add, ":min_one", reg0, camera_key_rotate_attenuator),
-        (store_and, ":rev_y", "$cam_mode", camera_reverse_y),
+        (neq, ":change_yaw", 0),
         (try_begin),
-          (key_is_down, key_up),
-          (try_begin),
-            (eq, ":rev_y", 0),
-            (store_div, ":change_pitch", ":min_one", camera_key_rotate_attenuator),
-          (else_try),
-            (store_div, ":change_pitch", ":min_one", -1 * camera_key_rotate_attenuator),
-          (try_end),
-
-        (else_try),
-          (key_is_down, key_down),
-          (try_begin),
-            (eq, ":rev_y", 0),
-            (store_div, ":change_pitch", ":min_one", -1 * camera_key_rotate_attenuator),
-          (else_try),
-            (store_div, ":change_pitch", ":min_one", camera_key_rotate_attenuator),
-          (try_end),
+          (neq, ":change_pitch", 0),
+          (val_mul, ":change_yaw", 1000),
+          (val_div, ":change_yaw", 1414),
+          (val_mul, ":change_pitch", 1000),
+          (val_div, ":change_pitch", 1414),
         (try_end),
+        (val_add, "$cam_yaw", ":change_yaw"),
+      (try_end),
 
-        #check yaw keys
-        (try_begin),
-          (key_is_down, key_right),
-          (store_div, ":change_yaw", ":min_one", -1 * camera_key_rotate_attenuator),
-        (else_try),
-          (key_is_down, key_left),
-          (store_div, ":change_yaw", ":min_one", camera_key_rotate_attenuator),
-        (try_end),
-
-        #handle diagonal
-        (try_begin),
-          (neq, ":change_yaw", 0),
-          (try_begin),
-            (neq, ":change_pitch", 0),
-            (val_mul, ":change_yaw", 1000),
-            (val_div, ":change_yaw", 1414),
-            (val_mul, ":change_pitch", 1000),
-            (val_div, ":change_pitch", 1414),
-          (try_end),
-          (val_add, "$cam_yaw", ":change_yaw"),
-        (try_end),
-
-        #check mouse rotation
-        (try_begin),
-          (eq, ":change_pitch", 0),
-          (eq, ":change_yaw", 0),
-          (gt, "$cam_displacements", 0),
-
-          (store_div, ":change_yaw", "$cam_displace_x", "$cam_displacements"),
-          (val_mul, ":change_yaw", -1),
-          (store_div, ":change_pitch", "$cam_displace_y", "$cam_displacements"),
-
-          (store_and, reg0, "$cam_mode", camera_reverse_y),
-          (try_begin),
-            (neq, reg0, 0),
-            (val_mul, ":change_pitch", -1),
-          (try_end),
-
-          (val_clamp, ":change_yaw", -179, 180),
-          (val_add, "$cam_yaw", ":change_yaw"),
-        (try_end),
-
-        #pitch ceiling/floor
-        (neq, ":change_pitch", 0),
-        (store_add, reg0, "$cam_pitch", ":change_pitch"),
-
-        (try_begin),
-          (is_between, reg0, camera_minimum_pitch, camera_maximum_pitch),
-          (assign, "$cam_pitch", reg0),
-        (else_try),
-          (assign, ":change_pitch", 0),
-        (try_end),
-      (try_end),  #rotation
-      (assign, "$cam_displace_x", 0),
-      (assign, "$cam_displace_y", 0),
-      (assign, "$cam_displacements", 0),
-
-      #check for camera targets
-      (mission_cam_get_position, pos0),
-      (set_fixed_point_multiplier, 100),
-      (store_and, ":target", "$cam_mode", camera_target_agent|camera_target_prop),
+      #check mouse rotation
       (try_begin),
-        (neq, ":target", 0),
-        (store_and, reg0, "$cam_mode", camera_target_agent),
+        (eq, ":change_pitch", 0),
+        (eq, ":change_yaw", 0),
+        (gt, "$cam_displacements", 0),
 
-        #we're following an agent
+        (store_div, ":change_yaw", "$cam_displace_x", "$cam_displacements"),
+        (val_mul, ":change_yaw", -1),
+        (store_div, ":change_pitch", "$cam_displace_y", "$cam_displacements"),
+
+        (store_and, reg0, "$cam_mode", camera_reverse_y),
         (try_begin),
           (neq, reg0, 0),
-          (try_begin),
-            (agent_is_active, "$cam_target_instance"),
-            (agent_get_position, pos1, "$cam_target_instance"),
-            (position_move_z, pos1, camera_minimum_z),
-          (else_try),
-            (assign, "$cam_target_instance", 0),
-          (try_end),
+          (val_mul, ":change_pitch", -1),
+        (try_end),
 
-          #we're following a prop
-        (else_try),
-          (prop_instance_is_valid, "$cam_target_instance"),
-          (prop_instance_get_position, pos1, "$cam_target_instance"),
+        (val_clamp, ":change_yaw", -179, 180),
+        (val_add, "$cam_yaw", ":change_yaw"),
+      (try_end),
+
+      #pitch ceiling/floor
+      (neq, ":change_pitch", 0),
+      (store_add, reg0, "$cam_pitch", ":change_pitch"),
+
+      (try_begin),
+        (is_between, reg0, camera_minimum_pitch, camera_maximum_pitch),
+        (assign, "$cam_pitch", reg0),
+      (else_try),
+        (assign, ":change_pitch", 0),
+      (try_end),
+    (try_end),  #rotation
+    (assign, "$cam_displace_x", 0),
+    (assign, "$cam_displace_y", 0),
+    (assign, "$cam_displacements", 0),
+
+    #check for camera targets
+    (mission_cam_get_position, pos0),
+    (set_fixed_point_multiplier, 100),
+    (store_and, ":target", "$cam_mode", camera_target_agent|camera_target_prop),
+    (try_begin),
+      (neq, ":target", 0),
+      (store_and, reg0, "$cam_mode", camera_target_agent),
+
+      #we're following an agent
+      (try_begin),
+        (neq, reg0, 0),
+        (try_begin),
+          (agent_is_active, "$cam_target_instance"),
+          (agent_get_position, pos1, "$cam_target_instance"),
+          (position_move_z, pos1, camera_minimum_z),
         (else_try),
           (assign, "$cam_target_instance", 0),
         (try_end),
 
-        #have the camera "follow" the target
-        (gt, "$cam_target_instance", 0),
-        (copy_position, pos2, pos0), #not going to move the camera now, as we need to pass the various tests, etc., so we do it by ordering pans
-        (position_get_z, ":from_z", pos1),
-        (position_set_z, pos2, ":from_z"),  #set on same plane as target as we'll be breaking down horizontal and vertical distance to move
-        (call_script, "script_point_y_toward_position", pos1, pos2),
-
-        (assign, ":old_horizontal_dist", reg0),
-        (position_get_z, reg0, pos0),
-        (store_sub, ":old_vertical_dist", reg0, ":from_z"),
-
-        #find new camera location
-        (val_add, "$cam_above_target", ":pan_up_down"),
-        (val_max, "$cam_above_target", 50), #avoid overrunning target
-
-        (copy_position, pos2, pos1),
-        (store_mul, ":horizontal_dist", camera_fixed_angle_h, "$cam_above_target"),
-        (val_div, ":horizontal_dist", camera_fixed_angle_v),
-        (position_move_y, pos2, ":horizontal_dist"),
-
-        #capture yaw
-        (position_get_rotation_around_z, ":has_rotated", pos0),
-        (call_script, "script_point_y_toward_position", pos2, pos1),
-        (position_copy_rotation, pos0, pos2),
-        (position_get_rotation_around_z, reg0, pos0),
-        (val_sub, ":has_rotated", reg0),
-
-        #prep for various checks
-        (store_sub, ":pan_back_forth", ":old_horizontal_dist", ":horizontal_dist"),
-        (store_sub, ":pan_up_down", "$cam_above_target", ":old_vertical_dist"),
-
-        #rotate default properly
+        #we're following a prop
       (else_try),
-        (position_get_x, ":from_x", pos0),
-        (position_get_y, ":from_y", pos0),
-        (position_get_z, ":from_z", pos0),
-        (init_position, pos0),
-        (position_set_x, pos0, ":from_x"),
-        (position_set_y, pos0, ":from_y"),
-        (position_set_z, pos0, ":from_z"),
-      (try_end),
-
-      (position_rotate_z, pos0, "$cam_yaw"),
-
-      #handle rotating camera first
-      (store_and, ":rotate_first", "$cam_mode", camera_pan_to_rotation),
-      (try_begin),
-        (neq, ":rotate_first", 0),
-        (eq, ":target", 0), #targets have special panning
-        (position_rotate_x, pos0, "$cam_pitch"),
-
-        (assign, reg0, "$cam_pitch"),
-        (convert_to_fixed_point, reg0),
-        (store_sin, ":sine_pitch", reg0),
-        (store_cos, ":cosine_pitch", reg0),
-
-        (store_mul, ":x_proj_x", ":pan_back_forth", ":cosine_pitch"),
-        (store_mul, ":x_proj_y", ":pan_up_down", ":sine_pitch"),
-        (store_mul, ":y_proj_x", ":pan_back_forth", ":sine_pitch"),
-        (store_mul, ":y_proj_y", ":pan_up_down", ":cosine_pitch"),
-
-        (store_add, ":pan_back_forth", ":x_proj_x", ":x_proj_y"),
-        (convert_from_fixed_point, ":pan_back_forth"),
-        (store_add, ":pan_up_down", ":y_proj_x", ":y_proj_y"),
-        (convert_from_fixed_point, ":pan_up_down"),
-      (try_end),
-
-      #check boundaries
-      (try_begin),
-        (this_or_next|neq, ":pan_back_forth", 0),
-        (neq, ":pan_right_left", 0),
-
-        (copy_position, pos1, pos0),
-        (position_move_x, pos1, ":pan_right_left"),
-        (position_move_y, pos1, ":pan_back_forth"),
-
-        (position_get_x, ":from_x", pos1),
-        (is_between, ":from_x", "$g_bound_left", "$g_bound_right"),
-        (position_get_y, ":from_y", pos1),
-        (is_between, ":from_y", "$g_bound_bottom", "$g_bound_top"),
-        (copy_position, pos0, pos1),
-
-        #check terrain
-        (call_script, "script_get_distance_to_terrain_or_water", pos0),
-        (assign, ":dist_to_terrain", reg0),
-        (store_and, reg0, "$cam_mode", camera_follow_terrain),
-        (try_begin),
-          (gt, reg0, 0),  #follow terrain
-          (store_sub, reg0, "$cam_to_terrain", ":dist_to_terrain"),
-          (val_add, "$cam_z", reg0),
-          (position_set_z, pos0, "$cam_z"),
-
-        (else_try),
-          (store_sub, reg0, camera_minimum_z, ":dist_to_terrain"),
-          (gt, reg0, 0),
-          (assign, "$cam_to_terrain", camera_minimum_z),
-          (val_add, "$cam_z", reg0),
-          (position_set_z, pos0, "$cam_z"),
-
-        (else_try),
-          (assign, "$cam_to_terrain", ":dist_to_terrain"),
-        (try_end),
-
-        #out of bounds
+        (prop_instance_is_valid, "$cam_target_instance"),
+        (prop_instance_get_position, pos1, "$cam_target_instance"),
       (else_try),
-        (assign, ":pan_back_forth", 0),
-        (assign, ":pan_right_left", 0),
+        (assign, "$cam_target_instance", 0),
       (try_end),
 
-      #check ground
-      (try_begin),
-        (lt, ":pan_up_down", 0),
-        (val_mul, ":pan_up_down", -1),
-        (call_script, "script_get_distance_to_terrain_or_water", pos0),
-        (val_sub, reg0, camera_minimum_z),
-        (val_max, reg0, 0),
-        (val_min, ":pan_up_down", reg0),
-        (try_begin),
-          (gt, ":pan_up_down", 0),
-          (val_sub, "$cam_to_terrain", ":pan_up_down"),
-          (val_sub, "$cam_z", ":pan_up_down"),
-          (position_set_z, pos0, "$cam_z"),
-        (try_end),
+      #have the camera "follow" the target
+      (gt, "$cam_target_instance", 0),
+      (copy_position, pos2, pos0), #not going to move the camera now, as we need to pass the various tests, etc., so we do it by ordering pans
+      (position_get_z, ":from_z", pos1),
+      (position_set_z, pos2, ":from_z"),  #set on same plane as target as we'll be breaking down horizontal and vertical distance to move
+      (call_script, "script_point_y_toward_position", pos1, pos2),
 
-        #check ceiling
-      (else_try),
-        (gt, ":pan_up_down", 0),
-        (call_script, "script_get_distance_to_terrain_or_water", pos0),
-        (val_add, reg0, ":pan_up_down"),
-        (try_begin),
-          (gt, reg0, 5000),  #50m
-          (val_sub, "$cam_above_target", ":pan_up_down"),
-          (assign, ":pan_up_down", 0),
-        (else_try),
-          (val_add, "$cam_to_terrain", ":pan_up_down"),
-          (val_add, "$cam_z", ":pan_up_down"),
-          (position_set_z, pos0, "$cam_z"),
-        (try_end),
-      (try_end),
+      (assign, ":old_horizontal_dist", reg0),
+      (position_get_z, reg0, pos0),
+      (store_sub, ":old_vertical_dist", reg0, ":from_z"),
 
-      #apply change
-      (this_or_next|neq, ":change_pitch", 0),
-      (this_or_next|neq, ":change_yaw", 0),
-      (this_or_next|neq, ":change_zoom", 0),
+      #find new camera location
+      (val_add, "$cam_above_target", ":pan_up_down"),
+      (val_max, "$cam_above_target", 50), #avoid overrunning target
+
+      (copy_position, pos2, pos1),
+      (store_mul, ":horizontal_dist", camera_fixed_angle_h, "$cam_above_target"),
+      (val_div, ":horizontal_dist", camera_fixed_angle_v),
+      (position_move_y, pos2, ":horizontal_dist"),
+
+      #capture yaw
+      (position_get_rotation_around_z, ":has_rotated", pos0),
+      (call_script, "script_point_y_toward_position", pos2, pos1),
+      (position_copy_rotation, pos0, pos2),
+      (position_get_rotation_around_z, reg0, pos0),
+      (val_sub, ":has_rotated", reg0),
+
+      #prep for various checks
+      (store_sub, ":pan_back_forth", ":old_horizontal_dist", ":horizontal_dist"),
+      (store_sub, ":pan_up_down", "$cam_above_target", ":old_vertical_dist"),
+
+      #rotate default properly
+    (else_try),
+      (position_get_x, ":from_x", pos0),
+      (position_get_y, ":from_y", pos0),
+      (position_get_z, ":from_z", pos0),
+      (init_position, pos0),
+      (position_set_x, pos0, ":from_x"),
+      (position_set_y, pos0, ":from_y"),
+      (position_set_z, pos0, ":from_z"),
+    (try_end),
+
+    (position_rotate_z, pos0, "$cam_yaw"),
+
+    #handle rotating camera first
+    (store_and, ":rotate_first", "$cam_mode", camera_pan_to_rotation),
+    (try_begin),
+      (neq, ":rotate_first", 0),
+      (eq, ":target", 0), #targets have special panning
+      (position_rotate_x, pos0, "$cam_pitch"),
+
+      (assign, reg0, "$cam_pitch"),
+      (convert_to_fixed_point, reg0),
+      (store_sin, ":sine_pitch", reg0),
+      (store_cos, ":cosine_pitch", reg0),
+
+      (store_mul, ":x_proj_x", ":pan_back_forth", ":cosine_pitch"),
+      (store_mul, ":x_proj_y", ":pan_up_down", ":sine_pitch"),
+      (store_mul, ":y_proj_x", ":pan_back_forth", ":sine_pitch"),
+      (store_mul, ":y_proj_y", ":pan_up_down", ":cosine_pitch"),
+
+      (store_add, ":pan_back_forth", ":x_proj_x", ":x_proj_y"),
+      (convert_from_fixed_point, ":pan_back_forth"),
+      (store_add, ":pan_up_down", ":y_proj_x", ":y_proj_y"),
+      (convert_from_fixed_point, ":pan_up_down"),
+    (try_end),
+
+    #check boundaries
+    (try_begin),
       (this_or_next|neq, ":pan_back_forth", 0),
-      (this_or_next|neq, ":pan_right_left", 0),
-      (this_or_next|neq, ":pan_up_down", 0),
-      (neq, ":has_rotated", 0),
+      (neq, ":pan_right_left", 0),
 
+      (copy_position, pos1, pos0),
+      (position_move_x, pos1, ":pan_right_left"),
+      (position_move_y, pos1, ":pan_back_forth"),
+
+      (position_get_x, ":from_x", pos1),
+      (is_between, ":from_x", "$g_bound_left", "$g_bound_right"),
+      (position_get_y, ":from_y", pos1),
+      (is_between, ":from_y", "$g_bound_bottom", "$g_bound_top"),
+      (copy_position, pos0, pos1),
+
+      #check terrain
+      (call_script, "script_get_distance_to_terrain_or_water", pos0),
+      (assign, ":dist_to_terrain", reg0),
+      (store_and, reg0, "$cam_mode", camera_follow_terrain),
       (try_begin),
-        (eq, ":rotate_first", 0),
-        (position_rotate_x, pos0, "$cam_pitch"),
+        (gt, reg0, 0),  #follow terrain
+        (store_sub, reg0, "$cam_to_terrain", ":dist_to_terrain"),
+        (val_add, "$cam_z", reg0),
+        (position_set_z, pos0, "$cam_z"),
+
+      (else_try),
+        (store_sub, reg0, camera_minimum_z, ":dist_to_terrain"),
+        (gt, reg0, 0),
+        (assign, "$cam_to_terrain", camera_minimum_z),
+        (val_add, "$cam_z", reg0),
+        (position_set_z, pos0, "$cam_z"),
+
+      (else_try),
+        (assign, "$cam_to_terrain", ":dist_to_terrain"),
       (try_end),
 
-      (set_fixed_point_multiplier, 1000),
-      (mission_get_time_speed, ":interval"),
-      (val_mul, ":interval", camera_animation_time),
-      (val_div, ":interval", 1000),
-      (mission_cam_animate_to_position_and_aperture, pos0, "$cam_zoom", ":interval"),
+      #out of bounds
+    (else_try),
+      (assign, ":pan_back_forth", 0),
+      (assign, ":pan_right_left", 0),
+    (try_end),
+
+    #check ground
+    (try_begin),
+      (lt, ":pan_up_down", 0),
+      (val_mul, ":pan_up_down", -1),
+      (call_script, "script_get_distance_to_terrain_or_water", pos0),
+      (val_sub, reg0, camera_minimum_z),
+      (val_max, reg0, 0),
+      (val_min, ":pan_up_down", reg0),
+      (try_begin),
+        (gt, ":pan_up_down", 0),
+        (val_sub, "$cam_to_terrain", ":pan_up_down"),
+        (val_sub, "$cam_z", ":pan_up_down"),
+        (position_set_z, pos0, "$cam_z"),
+      (try_end),
+
+      #check ceiling
+    (else_try),
+      (gt, ":pan_up_down", 0),
+      (call_script, "script_get_distance_to_terrain_or_water", pos0),
+      (val_add, reg0, ":pan_up_down"),
+      (try_begin),
+        (gt, reg0, 5000),  #50m
+        (val_sub, "$cam_above_target", ":pan_up_down"),
+        (assign, ":pan_up_down", 0),
+      (else_try),
+        (val_add, "$cam_to_terrain", ":pan_up_down"),
+        (val_add, "$cam_z", ":pan_up_down"),
+        (position_set_z, pos0, "$cam_z"),
+      (try_end),
+    (try_end),
+
+    #apply change
+    (this_or_next|neq, ":change_pitch", 0),
+    (this_or_next|neq, ":change_yaw", 0),
+    (this_or_next|neq, ":change_zoom", 0),
+    (this_or_next|neq, ":pan_back_forth", 0),
+    (this_or_next|neq, ":pan_right_left", 0),
+    (this_or_next|neq, ":pan_up_down", 0),
+    (neq, ":has_rotated", 0),
+
+    (try_begin),
+      (eq, ":rotate_first", 0),
+      (position_rotate_x, pos0, "$cam_pitch"),
+    (try_end),
+
+    (set_fixed_point_multiplier, 1000),
+    (mission_get_time_speed, ":interval"),
+    (val_mul, ":interval", camera_animation_time),
+    (val_div, ":interval", 1000),
+    (mission_cam_animate_to_position_and_aperture, pos0, "$cam_zoom", ":interval"),
   ]),
 
   (0, 0, 0, [
     (neq, "$cam_mode", 0),
-      ],[
-      #toggle camera_follow_terrain
+  ],[
+    #toggle camera_follow_terrain
+    (try_begin),
+      (key_clicked, key_q),
+      (store_and, reg0, "$cam_mode", camera_follow_terrain),
       (try_begin),
-        (key_clicked, key_q),
-        (store_and, reg0, "$cam_mode", camera_follow_terrain),
+        (eq, reg0, 0),
+        (val_or, "$cam_mode", camera_follow_terrain),
+        (display_message, "@Camera follow terrain mode ON."),
+      (else_try),
+        (val_sub, "$cam_mode", camera_follow_terrain),
+        (display_message, "@Camera follow terrain mode OFF."),
+      (try_end),
+    (try_end),
+
+    #toggle flip y
+    (try_begin),
+      (key_clicked, key_y),
+      (store_and, reg0, "$cam_mode", camera_reverse_y),
+      (try_begin),
+        (eq, reg0, 0),
+        (val_or, "$cam_mode", camera_reverse_y),
+      (else_try),
+        (val_sub, "$cam_mode", camera_reverse_y),
+      (try_end),
+    (try_end),
+
+    #toggle pan to rotation
+    (try_begin),
+      (key_clicked, key_r),
+      (store_and, reg0, "$cam_mode", camera_pan_to_rotation),
+      (try_begin),
+        (eq, reg0, 0),
+        (val_or, "$cam_mode", camera_pan_to_rotation),
+        (display_message, "@Camera rotate before pan ON."),
+      (else_try),
+        (val_sub, "$cam_mode", camera_pan_to_rotation),
+        (display_message, "@Camera rotate before pan OFF."),
+      (try_end),
+    (try_end),
+
+    #pan velocity
+    (try_begin),
+      (key_clicked, key_mouse_scroll_up),
+      (val_mul, "$cam_speed", 2),
+    (try_end),
+
+    (try_begin),
+      (key_clicked, key_mouse_scroll_down),
+      (val_add, "$cam_speed", 1),
+      (val_div, "$cam_speed", 2),
+    (try_end),
+
+    #game speed
+    (try_begin),
+      (store_and, reg0, "$cam_mode", camera_game_slow),
+      (gt, reg0, 0),
+
+      (set_fixed_point_multiplier, 1000),
+      (try_begin),
+        (key_clicked, key_numpad_0),
+        (mission_set_time_speed, 8), #lowest speed we can animate well at 1 millisecond
+      (else_try),
+        (key_clicked, key_numpad_1),
+        (mission_set_time_speed, 118),
+      (else_try),
+        (key_clicked, key_numpad_2),
+        (mission_set_time_speed, 228),
+      (else_try),
+        (key_clicked, key_numpad_3),
+        (mission_set_time_speed, 338),
+      (else_try),
+        (key_clicked, key_numpad_4),
+        (mission_set_time_speed, 448),
+      (else_try),
+        (key_clicked, key_numpad_5),
+        (mission_set_time_speed, 559),
+      (else_try),
+        (key_clicked, key_numpad_6),
+        (mission_set_time_speed, 669),
+      (else_try),
+        (key_clicked, key_numpad_7),
+        (mission_set_time_speed, 779),
+      (else_try),
+        (key_clicked, key_numpad_8),
+        (mission_set_time_speed, 889),
+      (else_try),
+        (key_clicked, key_numpad_9),
+        (mission_set_time_speed, 1000),
+      (else_try),
+        (assign, reg0, 0),
+      (try_end),
+
+      # (gt, reg0, 0),
+      # (eq, "$cheat_mode", 0), not set in CB
+      # (mission_set_time_speed, 1000),
+      # (display_message, "@Set cheat mode to change game speed.", color_bad_news),
+    (try_end),
+
+    #rotation by mouse
+    (try_begin),
+      (store_and, reg0, "$cam_mode", camera_rotate),
+      (gt, reg0, 0),
+
+      (mouse_get_position, pos0),
+      (set_fixed_point_multiplier, 1000),
+      (position_get_x, reg0, pos0),
+      (position_get_y, reg1, pos0),
+
+      #mouse hasn't moved
+      (try_begin),
+        (eq, "$cam_mouse_x", reg0),
+        (eq, "$cam_mouse_y", reg1),
+
+        #reassign center
         (try_begin),
-          (eq, reg0, 0),
-          (val_or, "$cam_mode", camera_follow_terrain),
-          (display_message, "@Camera follow terrain mode ON."),
-        (else_try),
-          (val_sub, "$cam_mode", camera_follow_terrain),
-          (display_message, "@Camera follow terrain mode OFF."),
-        (try_end),
-      (try_end),
+          (is_between, reg0, 485, 501), #observed values for centered mouse
+          (is_between, reg1, 375, 501),
+          (val_add, "$cam_clock", 1),
 
-      #toggle flip y
-      (try_begin),
-        (key_clicked, key_y),
-        (store_and, reg0, "$cam_mode", camera_reverse_y),
+          (eq, "$cam_clock", 3),
+          (assign, "$cam_mouse_center_x", reg0),
+          (assign, "$cam_mouse_center_y", reg1),
+        (try_end),
+
+      (else_try),
+        (assign, "$cam_mouse_x", reg0),
+        (assign, "$cam_mouse_y", reg1),
+        (store_sub, reg0, "$cam_mouse_x", "$cam_mouse_center_x"),
+        (store_sub, reg1, "$cam_mouse_y", "$cam_mouse_center_y"),
+
+        #mouse recovering from a button somewhere?
+        (neq, "$cam_seeking_mouse", 0),
+        (assign, reg2, reg0),
+        (val_abs, reg2),
+
         (try_begin),
-          (eq, reg0, 0),
-          (val_or, "$cam_mode", camera_reverse_y),
+          (ge, "$cam_seeking_mouse", reg2),  #mouse still coming in from wherever it was?
+          (assign, "$cam_seeking_mouse", reg2),
         (else_try),
-          (val_sub, "$cam_mode", camera_reverse_y),
-        (try_end),
-      (try_end),
-
-      #toggle pan to rotation
-      (try_begin),
-        (key_clicked, key_r),
-        (store_and, reg0, "$cam_mode", camera_pan_to_rotation),
-        (try_begin),
-          (eq, reg0, 0),
-          (val_or, "$cam_mode", camera_pan_to_rotation),
-          (display_message, "@Camera rotate before pan ON."),
-        (else_try),
-          (val_sub, "$cam_mode", camera_pan_to_rotation),
-          (display_message, "@Camera rotate before pan OFF."),
-        (try_end),
-      (try_end),
-
-      #pan velocity
-      (try_begin),
-        (key_clicked, key_mouse_scroll_up),
-        (val_mul, "$cam_speed", 2),
-      (try_end),
-
-      (try_begin),
-        (key_clicked, key_mouse_scroll_down),
-        (val_add, "$cam_speed", 1),
-        (val_div, "$cam_speed", 2),
-      (try_end),
-
-      #game speed
-      (try_begin),
-        (store_and, reg0, "$cam_mode", camera_game_slow),
-        (gt, reg0, 0),
-
-        (set_fixed_point_multiplier, 1000),
-        (try_begin),
-          (key_clicked, key_numpad_0),
-          (mission_set_time_speed, 8), #lowest speed we can animate well at 1 millisecond
-        (else_try),
-          (key_clicked, key_numpad_1),
-          (mission_set_time_speed, 118),
-        (else_try),
-          (key_clicked, key_numpad_2),
-          (mission_set_time_speed, 228),
-        (else_try),
-          (key_clicked, key_numpad_3),
-          (mission_set_time_speed, 338),
-        (else_try),
-          (key_clicked, key_numpad_4),
-          (mission_set_time_speed, 448),
-        (else_try),
-          (key_clicked, key_numpad_5),
-          (mission_set_time_speed, 559),
-        (else_try),
-          (key_clicked, key_numpad_6),
-          (mission_set_time_speed, 669),
-        (else_try),
-          (key_clicked, key_numpad_7),
-          (mission_set_time_speed, 779),
-        (else_try),
-          (key_clicked, key_numpad_8),
-          (mission_set_time_speed, 889),
-        (else_try),
-          (key_clicked, key_numpad_9),
-          (mission_set_time_speed, 1000),
-        (else_try),
-          (assign, reg0, 0),
+          (assign, "$cam_seeking_mouse", 0),
         (try_end),
 
-        # (gt, reg0, 0),
-        # (eq, "$cheat_mode", 0), not set in CB
-        # (mission_set_time_speed, 1000),
-        # (display_message, "@Set cheat mode to change game speed.", color_bad_news),
+        #track mouse move
+      (else_try),
+        (assign, "$cam_clock", 0),
+        (val_add, "$cam_displace_x", reg0),
+        (val_add, "$cam_displace_y", reg1),
+        (val_add, "$cam_displacements", 1),
       (try_end),
-
-      #rotation by mouse
-      (try_begin),
-        (store_and, reg0, "$cam_mode", camera_rotate),
-        (gt, reg0, 0),
-
-        (mouse_get_position, pos0),
-        (set_fixed_point_multiplier, 1000),
-        (position_get_x, reg0, pos0),
-        (position_get_y, reg1, pos0),
-
-        #mouse hasn't moved
-        (try_begin),
-          (eq, "$cam_mouse_x", reg0),
-          (eq, "$cam_mouse_y", reg1),
-
-          #reassign center
-          (try_begin),
-            (is_between, reg0, 485, 501), #observed values for centered mouse
-            (is_between, reg1, 375, 501),
-            (val_add, "$cam_clock", 1),
-
-            (eq, "$cam_clock", 3),
-            (assign, "$cam_mouse_center_x", reg0),
-            (assign, "$cam_mouse_center_y", reg1),
-          (try_end),
-
-        (else_try),
-          (assign, "$cam_mouse_x", reg0),
-          (assign, "$cam_mouse_y", reg1),
-          (store_sub, reg0, "$cam_mouse_x", "$cam_mouse_center_x"),
-          (store_sub, reg1, "$cam_mouse_y", "$cam_mouse_center_y"),
-
-          #mouse recovering from a button somewhere?
-          (neq, "$cam_seeking_mouse", 0),
-          (assign, reg2, reg0),
-          (val_abs, reg2),
-
-          (try_begin),
-            (ge, "$cam_seeking_mouse", reg2),  #mouse still coming in from wherever it was?
-            (assign, "$cam_seeking_mouse", reg2),
-          (else_try),
-            (assign, "$cam_seeking_mouse", 0),
-          (try_end),
-
-          #track mouse move
-        (else_try),
-          (assign, "$cam_clock", 0),
-          (val_add, "$cam_displace_x", reg0),
-          (val_add, "$cam_displace_y", reg1),
-          (val_add, "$cam_displacements", 1),
-        (try_end),
-      (try_end),
+    (try_end),
   ]),
 
   (0, 0, 0, [
-      (key_clicked, key_enter),
-      (neg|main_hero_fallen), #and not the death cam
-      # (scene_prop_get_num_instances, reg0, "spr_dyn_ship_substrate"),
-      # (le, reg0, 0),  #avoid conflict with naval strategy camera
-      (assign,":pass",0),
-      (try_begin),
-        (neq, "$cam_mode", 0),
-        (try_begin),#VC-2097
-          (eq, "$cam_first_person_mode", 0),
-          (mission_cam_set_mode, 0, 500, 0),
-        (else_try),
-          (mission_cam_set_mode, 0, 0, 0),
-          (set_camera_in_first_person, "$cam_first_person_mode"),
-        (try_end),
-        (mission_cam_set_aperture,75),
-        (assign, "$cam_mode", 0),
+    (key_clicked, key_enter),
+    (neg|main_hero_fallen), #and not the death cam
+    # (scene_prop_get_num_instances, reg0, "spr_dyn_ship_substrate"),
+    # (le, reg0, 0),  #avoid conflict with naval strategy camera
+    (assign,":pass",0),
+    (try_begin),
+      (neq, "$cam_mode", 0),
+      (try_begin),#VC-2097
+        (eq, "$cam_first_person_mode", 0),
+        (mission_cam_set_mode, 0, 500, 0),
       (else_try),
-        (eq, "$cam_mode", 0),
-        # (ge, "$cheat_mode", 1),
-        (assign,":pass",1),
-        (call_script, "script_save_cam_first_person_mode"),
-        (mission_cam_set_mode, 1),
-        (set_camera_in_first_person, 0),
-        (mission_cam_get_position, pos0),
-        (set_fixed_point_multiplier, 100),
-        (agent_get_position, pos1, "$fplayer_agent_no"),
-        (position_move_z, pos1, camera_minimum_z),
-        (position_get_z, reg0, pos1),
-        (position_set_z, pos0, reg0), #for some reason, camera position starts 10m above player agent
-        (call_script, "script_point_y_toward_position", pos0, pos1),
-        (position_move_y, pos0, camera_fixed_angle_h * -1000 / camera_fixed_angle_v),
-        (assign, "$cam_above_target", 1000),
-        (position_move_z, pos0, "$cam_above_target"),
-        (position_get_z, "$cam_z", pos0),
-        (call_script, "script_get_distance_to_terrain_or_water", pos0),
-        (assign, "$cam_to_terrain", reg0),
-        (assign, "$cam_pitch", 330),
-        (assign, "$cam_yaw", 0),
-        (position_rotate_x, pos0, "$cam_pitch"),
-        (mission_cam_animate_to_position, pos0, 500),
-
-        (store_and, reg0, "$first_time", first_time_strategy_camera),
-        (try_begin),
-          (eq, reg0, 0),
-          (val_or, "$first_time", first_time_strategy_camera),
-          (eq, "$g_is_quick_battle", 0),
-          (str_store_string, s0, "str_strategy_cam"),
-          (try_begin),
-            (neg|is_presentation_active, "prsnt_battle"),
-            (game_key_get_mapped_key_name, s1, gk_view_orders),
-            (str_store_string, s0, "@{s0}^^A Battle Command Display is often available by pressing the {s1} key."),
-          (try_end),
-          (dialog_box, "str_s0", "@Strategy Camera"),
-        (try_end),
+        (mission_cam_set_mode, 0, 0, 0),
+        (set_camera_in_first_person, "$cam_first_person_mode"),
       (try_end),
-      (eq,":pass",1),
-      ],[
-      (eq, "$cam_mode", 0), #test here in case naval battle camera has activated
-      (assign, "$cam_mode", camera_pan_up_down|camera_target_agent|camera_game_slow), #R/L and B/F pans not recommended, as the keys also move player agent
-      (assign, "$cam_target_instance", "$fplayer_agent_no"),
-      (assign, "$cam_speed", 100), #10 m/s
-      (assign, "$cam_last_called", 0),
-      (mouse_get_position, pos0),
-      (set_fixed_point_multiplier, 1000),
-      (position_get_x, "$cam_mouse_center_x", pos0),
-      (position_get_y, "$cam_mouse_center_y", pos0),
-      (assign, "$cam_seeking_mouse", 0),
-      (mission_cam_get_aperture, "$cam_zoom"),
+      (mission_cam_set_aperture,75),
+      (assign, "$cam_mode", 0),
+    (else_try),
+      (eq, "$cam_mode", 0),
+      # (ge, "$cheat_mode", 1),
+      (assign,":pass",1),
+      (call_script, "script_save_cam_first_person_mode"),
+      (mission_cam_set_mode, 1),
+      (set_camera_in_first_person, 0),
+      (mission_cam_get_position, pos0),
+      (set_fixed_point_multiplier, 100),
+      (agent_get_position, pos1, "$fplayer_agent_no"),
+      (position_move_z, pos1, camera_minimum_z),
+      (position_get_z, reg0, pos1),
+      (position_set_z, pos0, reg0), #for some reason, camera position starts 10m above player agent
+      (call_script, "script_point_y_toward_position", pos0, pos1),
+      (position_move_y, pos0, camera_fixed_angle_h * -1000 / camera_fixed_angle_v),
+      (assign, "$cam_above_target", 1000),
+      (position_move_z, pos0, "$cam_above_target"),
+      (position_get_z, "$cam_z", pos0),
+      (call_script, "script_get_distance_to_terrain_or_water", pos0),
+      (assign, "$cam_to_terrain", reg0),
+      (assign, "$cam_pitch", 330),
+      (assign, "$cam_yaw", 0),
+      (position_rotate_x, pos0, "$cam_pitch"),
+      (mission_cam_animate_to_position, pos0, 500),
+
+      (store_and, reg0, "$first_time", first_time_strategy_camera),
+      (try_begin),
+        (eq, reg0, 0),
+        (val_or, "$first_time", first_time_strategy_camera),
+        (eq, "$g_is_quick_battle", 0),
+        (str_store_string, s0, "str_strategy_cam"),
+        (try_begin),
+          (neg|is_presentation_active, "prsnt_battle"),
+          (game_key_get_mapped_key_name, s1, gk_view_orders),
+          (str_store_string, s0, "@{s0}^^A Battle Command Display is often available by pressing the {s1} key."),
+        (try_end),
+        (dialog_box, "str_s0", "@Strategy Camera"),
+      (try_end),
+    (try_end),
+    (eq,":pass",1),
+  ],[
+    (eq, "$cam_mode", 0), #test here in case naval battle camera has activated
+    (assign, "$cam_mode", camera_pan_up_down|camera_target_agent|camera_game_slow), #R/L and B/F pans not recommended, as the keys also move player agent
+    (assign, "$cam_target_instance", "$fplayer_agent_no"),
+    (assign, "$cam_speed", 100), #10 m/s
+    (assign, "$cam_last_called", 0),
+    (mouse_get_position, pos0),
+    (set_fixed_point_multiplier, 1000),
+    (position_get_x, "$cam_mouse_center_x", pos0),
+    (position_get_y, "$cam_mouse_center_y", pos0),
+    (assign, "$cam_seeking_mouse", 0),
+    (mission_cam_get_aperture, "$cam_zoom"),
   ]),
 
   #turn on camera if no player agent
   (0, 3, ti_once, [
-      (eq, "$cam_mode", 0),
-      ], [
-      (try_begin),
-        (store_and, reg0, "$first_time", first_time_cam_battle),
-        (eq, reg0, 0),
-        (val_or, "$first_time", first_time_cam_battle),
-        (eq, "$g_is_quick_battle", 0),
-        (dialog_box, "str_tactical_controls", "@Tactical Controls"),
-      (try_end),
+    (eq, "$cam_mode", 0),
+  ], [
+    (try_begin),
+      (store_and, reg0, "$first_time", first_time_cam_battle),
+      (eq, reg0, 0),
+      (val_or, "$first_time", first_time_cam_battle),
+      (eq, "$g_is_quick_battle", 0),
+      (dialog_box, "str_tactical_controls", "@Tactical Controls"),
+    (try_end),
   ]),
 ] #end camera controls
 
 creeping = [  #4 triggers; requires common_controller_keys*, init $player_functions
- (ti_before_mission_start, 0, 0, [], [
+  (ti_before_mission_start, 0, 0, [], [
     (assign, "$player_is_creeping", 0),
   ]),
 
@@ -1092,100 +1082,97 @@ creeping = [  #4 triggers; requires common_controller_keys*, init $player_functi
         (agent_set_crouch_mode, ":player_agent", 1),
       (try_end),
   ]),
-
 ]
 
-elephant_attack =     (2, 0, 0,
-       [
-        (try_for_agents, ":stepper"),
-          (agent_is_alive, ":stepper"),
-          (agent_get_troop_id, ":troop", ":stepper"),
-          (eq, ":troop", "trp_elephant"),
-          (agent_get_position,pos1,":stepper"),
-          (try_for_agents,":agent"),
-            (agent_is_alive,":agent"),
-            (agent_is_human,":agent"),
-            (agent_get_team, ":grenadiers_team", ":stepper"),
-            (agent_get_team, ":targets_team", ":agent"),
-            (teams_are_enemies, ":grenadiers_team", ":targets_team"),
-            (agent_get_position,pos3,":agent"),
-            (get_distance_between_positions,":dist",pos1,pos3),
-            (le,":dist",300),
+elephant_attack = (2, 0, 0,[
+    (try_for_agents, ":stepper"),
+      (agent_is_alive, ":stepper"),
+      (agent_get_troop_id, ":troop", ":stepper"),
+      (eq, ":troop", "trp_elephant"),
+      (agent_get_position,pos1,":stepper"),
+      (try_for_agents,":agent"),
+        (agent_is_alive,":agent"),
+        (agent_is_human,":agent"),
+        (agent_get_team, ":grenadiers_team", ":stepper"),
+        (agent_get_team, ":targets_team", ":agent"),
+        (teams_are_enemies, ":grenadiers_team", ":targets_team"),
+        (agent_get_position,pos3,":agent"),
+        (get_distance_between_positions,":dist",pos1,pos3),
+        (le,":dist",300),
+        (agent_set_animation, ":agent", "anim_rider_fall_roll"),
+
+        (store_agent_hit_points, ":cur_hit_points",":agent",1),
+        (val_sub,":cur_hit_points",20),
+        (agent_set_hit_points,":agent",":cur_hit_points",1),
+        (agent_deliver_damage_to_agent, ":stepper", ":agent", 0),
+      (try_end),
+    (try_end),
+],[])
+
+wild_cat_attack =(2, 0, 0,[
+    (try_for_agents, ":tigger"),
+      (agent_is_alive, ":tigger"),
+      (agent_get_troop_id, ":troop", ":tigger"),
+      (this_or_next|eq, ":troop", "trp_wolf"),
+      (this_or_next|eq, ":troop", "trp_wild_cat_2"),
+      (eq, ":troop", "trp_wild_cat"),
+      (agent_get_position,pos1,":tigger"),
+      (assign, ":attack", 0),
+      (try_for_agents,":agent"),
+        (agent_is_alive,":agent"),
+        (agent_is_human,":agent"),
+        (agent_get_team, ":grenadiers_team", ":tigger"),
+        (agent_get_team, ":targets_team", ":agent"),
+        (teams_are_enemies, ":grenadiers_team", ":targets_team"),
+        (agent_get_position,pos3,":agent"),
+        (get_distance_between_positions,":dist",pos1,pos3),
+        (le,":dist",250),
+        (try_begin),
+            (agent_slot_eq, ":agent", slot_agent_walker_occupation, 0),
             (agent_set_animation, ":agent", "anim_rider_fall_roll"),
-
-            (store_agent_hit_points, ":cur_hit_points",":agent",1),
-            (val_sub,":cur_hit_points",20),
-            (agent_set_hit_points,":agent",":cur_hit_points",1),
-            (agent_deliver_damage_to_agent, ":stepper", ":agent", 0),
-          (try_end),
-        (try_end),
-       ],[])
-wild_cat_attack =     (2, 0, 0,
-       [
-        (try_for_agents, ":tigger"),
-          (agent_is_alive, ":tigger"),
-          (agent_get_troop_id, ":troop", ":tigger"),
-          (this_or_next|eq, ":troop", "trp_wolf"),
-          (this_or_next|eq, ":troop", "trp_wild_cat_2"),
-          (eq, ":troop", "trp_wild_cat"),
-          (agent_get_position,pos1,":tigger"),
-          (assign, ":attack", 0),
-          (try_for_agents,":agent"),
-            (agent_is_alive,":agent"),
-            (agent_is_human,":agent"),
-            (agent_get_team, ":grenadiers_team", ":tigger"),
-            (agent_get_team, ":targets_team", ":agent"),
-            (teams_are_enemies, ":grenadiers_team", ":targets_team"),
-            (agent_get_position,pos3,":agent"),
-            (get_distance_between_positions,":dist",pos1,pos3),
-            (le,":dist",250),
-            (try_begin),
-                (agent_slot_eq, ":agent", slot_agent_walker_occupation, 0),
-                (agent_set_animation, ":agent", "anim_rider_fall_roll"),
-                (agent_set_slot, ":agent", slot_agent_walker_occupation, 2),
-            (else_try),
-                (agent_get_slot, ":timer1", ":agent", slot_agent_walker_occupation),
-                (val_sub, ":timer1", 1),
-                (val_max, ":timer1", 0),
-                (agent_set_slot, ":agent", slot_agent_walker_occupation, ":timer1"),
-            (try_end),
-
-            (store_agent_hit_points, ":cur_hit_points",":agent",1),
-            (try_begin),
-                (eq, ":troop", "trp_wolf"),
-                (val_sub,":cur_hit_points",8),
-            (else_try),
-                (val_sub,":cur_hit_points",20),
-            (try_end),
-            (agent_set_hit_points,":agent",":cur_hit_points",1),
-            (agent_deliver_damage_to_agent, ":tigger", ":agent", 0),
-			(assign, ":attack", 1),
-          (try_end),
-          (try_begin),
-            (eq, ":attack", 1),
-            (agent_slot_eq, ":tigger", slot_agent_walker_occupation, 0),
-            (agent_get_horse,":animal",":tigger"),
-            (agent_is_alive, ":animal"),
-            (agent_set_animation, ":animal", "anim_wild_cat_attack"),
-            (try_begin),
-                (eq, ":troop", "trp_wolf"),
-                (agent_play_sound, ":tigger", "snd_wolf"),
-            (else_try),
-                (agent_play_sound, ":tigger", "snd_wild_cat"),
-            (try_end),
-            (agent_set_slot, ":tigger", slot_agent_walker_occupation, 4),
-          (else_try),
-            (agent_get_slot, ":timer1", ":tigger", slot_agent_walker_occupation),
+            (agent_set_slot, ":agent", slot_agent_walker_occupation, 2),
+        (else_try),
+            (agent_get_slot, ":timer1", ":agent", slot_agent_walker_occupation),
             (val_sub, ":timer1", 1),
             (val_max, ":timer1", 0),
-            (agent_set_slot, ":tigger", slot_agent_walker_occupation, ":timer1"),
-          (try_end),
-        (try_end),],[])
+            (agent_set_slot, ":agent", slot_agent_walker_occupation, ":timer1"),
+        (try_end),
 
-initialise_auxiliary_player = (ti_before_mission_start, 0, 0,
-[
-],
-[
+        (store_agent_hit_points, ":cur_hit_points",":agent",1),
+        (try_begin),
+            (eq, ":troop", "trp_wolf"),
+            (val_sub,":cur_hit_points",8),
+        (else_try),
+            (val_sub,":cur_hit_points",20),
+        (try_end),
+        (agent_set_hit_points,":agent",":cur_hit_points",1),
+        (agent_deliver_damage_to_agent, ":tigger", ":agent", 0),
+        (assign, ":attack", 1),
+      (try_end),
+      (try_begin),
+        (eq, ":attack", 1),
+        (agent_slot_eq, ":tigger", slot_agent_walker_occupation, 0),
+        (agent_get_horse,":animal",":tigger"),
+        (agent_is_alive, ":animal"),
+        (agent_set_animation, ":animal", "anim_wild_cat_attack"),
+        (try_begin),
+            (eq, ":troop", "trp_wolf"),
+            (agent_play_sound, ":tigger", "snd_wolf"),
+        (else_try),
+            (agent_play_sound, ":tigger", "snd_wild_cat"),
+        (try_end),
+        (agent_set_slot, ":tigger", slot_agent_walker_occupation, 4),
+      (else_try),
+        (agent_get_slot, ":timer1", ":tigger", slot_agent_walker_occupation),
+        (val_sub, ":timer1", 1),
+        (val_max, ":timer1", 0),
+        (agent_set_slot, ":tigger", slot_agent_walker_occupation, ":timer1"),
+      (try_end),
+    (try_end),
+],[])
+
+initialise_auxiliary_player = (ti_before_mission_start, 0, 0,[
+],[
     (assign, "$auxilary_player_active", 0), #variable for player party after party rebalancing
     (try_begin),
         (eq, "$use_player_auxiliary", 1),  #is active player enabled?
@@ -1198,24 +1185,22 @@ initialise_auxiliary_player = (ti_before_mission_start, 0, 0,
     (else_try),
         (assign, "$enable_deahtcam", 1),
     (try_end),
-    ])
+])
 
-auxiliary_player_check = (5, 0, 0,
-	  [
+auxiliary_player_check = (5, 0, 0,[
     (eq, "$use_player_auxiliary", 1),
     (eq, "$enable_deahtcam", 0), #if deatcham is activated, no longer spawn as an auxiliary. TODO: reset camera settings and spawn anyway?
     (get_player_agent_no,":agent"),
     (neg|agent_is_alive, ":agent"),
-	  ],
-	  [
-        (set_fixed_point_multiplier, 100),
+	],[
+    (set_fixed_point_multiplier, 100),
 		(get_player_agent_no, ":p_agent"),
 		(agent_get_team, ":player_team", ":p_agent"),
 		(agent_get_division, ":player_division", ":p_agent"),
 		(assign, ":spawned", 0),
 
-        (init_position, pos10),
-        (init_position, pos11),
+    (init_position, pos10),
+    (init_position, pos11),
 
 		(try_for_agents, ":agent"),
 		  (eq, ":spawned", 0),
@@ -1277,7 +1262,7 @@ auxiliary_player_check = (5, 0, 0,
 
 auxiliary_player = [
 	initialise_auxiliary_player,
-	auxiliary_player_check,
+	auxiliary_player_check
 ]
 
 more_difficult_damage = ( #player less damnage, opponent more damage
@@ -25942,39 +25927,15 @@ mission_templates = [
 
 ("give_speech",mtf_battle_mode|mtf_synch_inventory,charge,
   "You lead your men to battle.",[
-    (0,mtef_ally_party,0,aif_start_alarmed,0,[]),
-    (1,mtef_ally_party,0,aif_start_alarmed,8,[]),
-    (2,mtef_team_2,0,aif_start_alarmed,0,[]), #not used
-    (3,mtef_visitor_source,0,aif_start_alarmed,0,[]),
-    (4,mtef_visitor_source,0,aif_start_alarmed,8,[]),
-    (5,mtef_visitor_source,0,aif_start_alarmed,5,[]),  #
-    (6,mtef_visitor_source,0,aif_start_alarmed,5,[]),
-    (7,mtef_visitor_source,0,aif_start_alarmed,5,[]),
-    (8,mtef_visitor_source,0,aif_start_alarmed,5,[]),  #
-    (9,mtef_visitor_source,0,aif_start_alarmed,5,[]),  #
-    (10,mtef_visitor_source,0,aif_start_alarmed,5,[]),  #
-    (11,mtef_visitor_source,0,aif_start_alarmed,5,[]),
-    (12,mtef_visitor_source,0,aif_start_alarmed,5,[]),
-    (13,mtef_visitor_source,0,aif_start_alarmed,5,[]),
-    (14,mtef_visitor_source,0,aif_start_alarmed,5,[]),  #
-    (15,mtef_visitor_source,0,aif_start_alarmed,5,[]),
-    (16,mtef_visitor_source,0,aif_start_alarmed,5,[]),
-    (17,mtef_ally_party|mtef_infantry_first,0,aif_start_alarmed,9,[]),
-    (18,mtef_ally_party|mtef_infantry_first,0,aif_start_alarmed,9,[]),
-    (19,mtef_ally_party|mtef_infantry_first,0,aif_start_alarmed,9,[]),
-    (20,mtef_ally_party|mtef_infantry_first,0,aif_start_alarmed,9,[]),
-    (21,mtef_ally_party|mtef_cavalry_first,0,aif_start_alarmed,7,[]),
-    (22,mtef_ally_party|mtef_cavalry_first,0,aif_start_alarmed,7,[]),
-    (23,mtef_ally_party|mtef_cavalry_first,0,aif_start_alarmed,7,[]),
-    (24,mtef_ally_party|mtef_cavalry_first,0,aif_start_alarmed,7,[]),
-    (25,mtef_ally_party|mtef_archers_first,0,aif_start_alarmed,7,[]),
-    (26,mtef_ally_party|mtef_archers_first,0,aif_start_alarmed,7,[]),
-    (27,mtef_ally_party|mtef_archers_first,0,aif_start_alarmed,7,[]),
-    (28,mtef_ally_party|mtef_archers_first,0,aif_start_alarmed,7,[]),
+    (1,mtef_ally_party|mtef_team_0,0,aif_start_alarmed,65,[]),
+    (0,mtef_ally_party|mtef_team_0,0,aif_start_alarmed,0,[]),
+    (4,mtef_visitor_source,0,aif_start_alarmed,65,[]),
+    (4,mtef_visitor_source,0,aif_start_alarmed,0,[]),
   ], p_wetter + storms + global_common_triggers+
   [
     cannot_spawn_commoners,
     improved_lightning,
+
     (ti_before_mission_start, 0, 0, [ ],[
       (call_script, "script_music_set_situation_with_culture", mtf_sit_fight),
       (assign, "$tutorial_state", 0),
@@ -25998,7 +25959,11 @@ mission_templates = [
       (try_end),
     ]),
 
-    (ti_tab_pressed, 0, 0, [],[(finish_mission,0)]),
+    (ti_tab_pressed, 0, 0, [],[
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+      (finish_mission,3),
+      (stop_all_sounds, 1),
+    ]),
 
     (0, 0, ti_once, [], [
       (tutorial_message_set_size, 15, 15),
@@ -26011,13 +25976,13 @@ mission_templates = [
       (store_mission_timer_a, ":cur_time"),
       (set_fixed_point_multiplier, 100),
       (try_begin),
-          (ge, ":cur_time", 37),
+          (ge, ":cur_time", 37+10),
           (tutorial_message, -1),
           (tutorial_message_set_background, 0),
           (eq, "$tutorial_state", 13),
           (val_add, "$tutorial_state", 1),
       (else_try),
-          (ge, ":cur_time", 35),
+          (ge, ":cur_time", 35+10),
           (eq, "$tutorial_state", 12),
           (val_add, "$tutorial_state", 1),
           (try_for_agents, ":agent"),
@@ -26034,7 +25999,7 @@ mission_templates = [
           (try_end),
           (val_add, "$tutorial_state", 1),
       (else_try),
-          (ge, ":cur_time", 33),
+          (ge, ":cur_time", 33+10),
           (eq, "$tutorial_state", 11),
           # (tutorial_message, -1),
           # (tutorial_message_set_background, 0),
@@ -26052,7 +26017,7 @@ mission_templates = [
               (try_end),
           (try_end),
       (else_try),
-          (ge, ":cur_time", 30),
+          (ge, ":cur_time", 30+10),
           (eq, "$tutorial_state", 10),
           (val_add, "$tutorial_state", 1),
           (try_for_agents, ":agent"),
@@ -26066,7 +26031,7 @@ mission_templates = [
               (try_end),
           (try_end),
       (else_try),
-          (ge, ":cur_time", 26),
+          (ge, ":cur_time", 26+10),
           (eq, "$tutorial_state", 9),
           (val_add, "$tutorial_state", 1),
           (try_for_agents, ":agent"),
@@ -26082,7 +26047,7 @@ mission_templates = [
               (try_end),
           (try_end),
       (else_try),
-          (ge, ":cur_time", 22),
+          (ge, ":cur_time", 22+10),
           (eq, "$tutorial_state", 8),
           (val_add, "$tutorial_state", 1),
           (try_for_agents, ":agent"),
@@ -26095,7 +26060,7 @@ mission_templates = [
               (try_end),
           (try_end),
       (else_try),
-          (ge, ":cur_time", 18),
+          (ge, ":cur_time", 18+10),
           (eq, "$tutorial_state", 7),
           # (tutorial_message_set_background, 1),
           # (tutorial_message, "@Blabla3"),
@@ -26113,7 +26078,7 @@ mission_templates = [
           (try_end),
           (val_add, "$tutorial_state", 1),
       (else_try),
-          (ge, ":cur_time", 14),
+          (ge, ":cur_time", 14+10),
           (eq, "$tutorial_state", 6),
           # (tutorial_message_set_background, 0),
           # (tutorial_message, -1),
@@ -26129,7 +26094,7 @@ mission_templates = [
               (try_end),
           (try_end),
       (else_try),
-          (ge, ":cur_time", 12),
+          (ge, ":cur_time", 12+10),
           (eq, "$tutorial_state", 5),
           # (tutorial_message_set_background, 0),
           # (tutorial_message, -1),
@@ -26145,7 +26110,7 @@ mission_templates = [
               (try_end),
           (try_end),
       (else_try),
-          (ge, ":cur_time", 10),
+          (ge, ":cur_time", 10+10),
           (eq, "$tutorial_state", 4),
           # (tutorial_message_set_background, 1),
           # (tutorial_message, "@{s1}"),
@@ -26163,7 +26128,7 @@ mission_templates = [
           (try_end),
           (val_add, "$tutorial_state", 1),
       (else_try),
-          (ge, ":cur_time", 8),
+          (ge, ":cur_time", 8+10),
           (eq, "$tutorial_state", 3),
           (val_add, "$tutorial_state", 1),
           (try_for_agents, ":agent"),
@@ -26179,10 +26144,15 @@ mission_templates = [
               (try_end),
           (try_end),
       (else_try),
-          (ge, ":cur_time", 3),
+          (ge, ":cur_time", 3+10),
           (eq, "$tutorial_state", 2),
           (store_random_in_range, ":string", "str_string_speech_1_1", "str_string_speech_1_end"),
           (str_store_string, s1, ":string"),
+
+          (store_sub, ":sound", ":string", "str_string_speech_1_1"),
+          (val_add, ":sound", "snd_battle_speech_1"),
+          (get_player_agent_no, ":player"),
+          (agent_play_sound, ":player", ":sound"),
           (tutorial_message_set_background, 1),
           (tutorial_message, "@{s1}"),
           (val_add, "$tutorial_state", 1),
@@ -26196,12 +26166,13 @@ mission_templates = [
       (try_end),
     ]),
 
-    (0.5, 0, 0,[(ge, "$tutorial_state", 12),],[
-      (get_player_agent_no, ":player"),
+    (0.5, 0, 0,[
+      (ge, "$tutorial_state", 12),
+    ],[
       (try_for_agents, ":agent"),
+          (agent_is_non_player, ":agent"),
           (agent_is_human, ":agent"),
           (agent_is_alive, ":agent"),
-          (neq, ":agent", ":player"),
           (try_begin),
               (store_random_in_range, ":taunt", 1, 100),
               (gt, ":taunt", 50),
@@ -26230,8 +26201,9 @@ mission_templates = [
 
     (6, 0, 0,[(ge, "$tutorial_state", 12),],[(display_message, "str_string_speech_1_end"),]),
 
-    (0, 0, 3,[(key_clicked, key_t),],
-    [
+    (0, 0, 3,[
+      (key_clicked, key_t),
+    ],[
       (get_player_agent_no, ":agent"),
       (try_begin),
           (ge, "$tutorial_state", 12),
@@ -31785,7 +31757,9 @@ mission_templates = [
     (ti_tab_pressed,0,0,[],[
       (show_object_details_overlay, 1),
       (jump_to_menu, "$g_next_menu"),
-      (finish_mission),
+      (finish_mission, 3),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+      # (stop_all_sounds, 1),
     ]),
 
     (ti_after_mission_start,0,0,[],[
@@ -31811,25 +31785,27 @@ mission_templates = [
       (set_fixed_point_multiplier, 100),
       (try_begin),
           (eq, "$tutorial_state", 3),
-          (ge, ":cur_time", 30),
+          (ge, ":cur_time", 35),
           (jump_to_menu, "$g_next_menu"),
           (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
           (show_object_details_overlay,1),
           (finish_mission, 3),
           (val_add, "$tutorial_state", 1),
+          # (stop_all_sounds, 1),
       (else_try),
-          (ge, ":cur_time", 27),
+          (ge, ":cur_time", 33),
           (eq, "$tutorial_state", 2),
           (val_add, "$tutorial_state", 1),
           (tutorial_message_set_background, 1),
           (tutorial_message, -1),
       (else_try),
-          (ge, ":cur_time", 5),
+          (ge, ":cur_time", 4),
           (eq, "$tutorial_state", 1),
           (val_add, "$tutorial_state", 1),
-
           (tutorial_message_set_background, 1),
-          (tutorial_message, "@{playername}:^^People of Rome, noble citizens, I stand before you as your newly declared Princeps, first among equals. With gratitude and humility, I accept this sacred responsibility. Together, we shall forge a path of prosperity, unity, and glory for our beloved empire. Let the spirit of Rome guide our endeavors, and let justice and fairness prevail. I pledge to lead with unwavering dedication, ensuring the welfare of every citizen. As we embark on this journey, may the legacy of our ancestors inspire our actions. With your support, we shall build a Rome that stands strong for generations to come. Ave Roma!"),
+          (tutorial_message, "@You:^^People of Rome! Noble citizens! I stand before you as your newly declared Princeps, first among equals. With humility, I accept this sacred responsibility. We shall forge a path of prosperity, unity, and glory for Rome. Let the spirit of Rome guide our endeavors, and let justice prevail. I pledge to lead with unwavering dedication, ensuring the welfare of every citizen. May the legacy of our ancestors inspire our actions. We shall build a Rome that stands strong for generations. Roma Invicta!"),
+          (get_player_agent_no, ":player"),
+          (agent_play_sound, ":player", "snd_player_speech_rome_other_goy"),
       (else_try),
           (eq, "$tutorial_state", 0),
           (val_add, "$tutorial_state", 1),

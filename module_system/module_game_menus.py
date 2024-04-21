@@ -29919,60 +29919,46 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ####siege warfare acaba chief random event
   #####
   #panel comandante chief
-  (
-    "panel_comandante",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "Before the battle begins...",
-    "none",
-    [
-    ],
-    [
-      # ("choice_1comm",[
-        # ],"Test speech",
-        # [
-         # (set_jump_mission, "mt_give_speech"),
-         # (call_script, "script_setup_random_scene"),
-         # (change_screen_mission),
+("panel_comandante",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Before the battle begins...",
+  "none",[
+    (set_background_mesh, "mesh_pic_mb_warrior_3"),
+  ],[
+      ("choice_1comm",[
+        (eq, "$g_empieza_discurso", 0),
+      ],"Impassion your men with a rousing speech.",[
+        (party_get_skill_level, ":leadership", "p_main_party", "skl_leadership"),
+        (val_div, ":leadership", 2),
+        (store_skill_level, ":persuasion", "skl_persuasion", "trp_player"),
+        (val_div, ":persuasion", 2),
+        (store_skill_level, ":oratory", "skl_oratory", "trp_player"),
 
-        # ]
-      # ),
-     ("choice_1comm",[
-
-          (eq, "$g_empieza_discurso", 0),
-        ],"Impassion your men with a rousing speech.",
-        [
-          (party_get_skill_level, ":leadership", "p_main_party", "skl_leadership"),
-          (val_div, ":leadership", 2),
-          (store_skill_level, ":persuasion", "skl_persuasion", "trp_player"),
-          (val_div, ":persuasion", 2),
-          (store_skill_level, ":oratory", "skl_oratory", "trp_player"),
-
-          (store_add, ":slider", ":oratory", ":persuasion"),
-          (val_add, ":slider", ":leadership"),
-          (store_attribute_level, ":charisma","trp_player", ca_charisma),
-          (val_div, ":charisma", 3),#charisma of 12 -> 4
-          (store_random_in_range, ":r", 0, ":charisma"),
-          (val_add, ":slider", ":r"),
-          (val_add, ":slider", 1),
-          # (assign, reg2, ":slider"),
-          # (display_message, ":@slider: {reg2}"),
-          (store_random_in_range, ":r", 0, 21),
-          # (assign, reg2, ":r"),
-          # (display_message, ":@r: {reg2}"),
-          (try_begin),
-            (lt, ":r", ":slider"),
-            (store_div, ":moral_boost", ":oratory", 2),
-            (val_add, ":moral_boost", ":persuasion"),
-            (store_random_in_range, reg1, -3, 2),
-            (display_message, "@{reg1}"),
-            (val_add, ":moral_boost", reg1),
-            (val_clamp, ":moral_boost", 1, 11),
-            (call_script, "script_change_player_party_morale", ":moral_boost"),
-            (jump_to_menu,"mnu_discurso_1"),
-          (else_try),
-            (jump_to_menu,"mnu_discurso_off"),
-          (try_end),
-        ]
-      ),
+        (store_add, ":slider", ":oratory", ":persuasion"),
+        (val_add, ":slider", ":leadership"),
+        (store_attribute_level, ":charisma","trp_player", ca_charisma),
+        (val_div, ":charisma", 3),#charisma of 12 -> 4
+        (store_random_in_range, ":r", 0, ":charisma"),
+        (val_add, ":slider", ":r"),
+        (val_add, ":slider", 1),
+        # (assign, reg2, ":slider"),
+        # (display_message, ":@slider: {reg2}"),
+        (store_random_in_range, ":r", 0, 21),
+        # (assign, reg2, ":r"),
+        # (display_message, ":@r: {reg2}"),
+        (try_begin),
+          (lt, ":r", ":slider"),
+          (store_div, ":moral_boost", ":oratory", 2),
+          (val_add, ":moral_boost", ":persuasion"),
+          (store_random_in_range, reg1, -3, 2),
+          (display_message, "@{reg1}"),
+          (val_add, ":moral_boost", reg1),
+          (val_clamp, ":moral_boost", 1, 11),
+          (call_script, "script_change_player_party_morale", ":moral_boost"),
+          (jump_to_menu,"mnu_discurso_1"),
+        (else_try),
+          (jump_to_menu,"mnu_discurso_off"),
+        (try_end),
+      ]),
 
       ("choice_3comm",[
           (eq, "$g_empieza_campeon", 0),
@@ -30863,7 +30849,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (str_store_troop_name_link, s24, ":other_goy"),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 9, "@You have been declared Caesar Augustus by the Praetorian guard.", 1),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 10, "@{s24} is challenging your claim and has been declared Caesar by the Rhine legions.", 1),
-    (add_quest_note_from_sreg, "qst_four_emperors", 5, "@{s24} will march with the Rhine legions towards Rome. Prepare yourself for battle.", 0),
+    (add_quest_note_from_sreg, "qst_four_emperors", 5, "@{s24} will march with the Rhine legions towards Rome. You have 30 days to prepare yourself for battle.", 1),
     (add_xp_as_reward, 2500),
   ],[
     ("Continue...",[],"Continue.",[

@@ -578,24 +578,11 @@ strings = [
   ("war_report_plus_4",   "we are about to win the war"),
 
 
-  ("persuasion_summary_very_bad", "You try your best to persuade {s50},\
- but none of your arguments seem to come out right. Every time you start to make sense,\
- you seem to say something entirely wrong that puts you off track.\
- By the time you finish speaking you've failed to form a single coherent point in your own favor,\
- and you realise that all you've done was dig yourself deeper into a hole.\
- Unsurprisingly, {s50} does not look impressed."),
-  ("persuasion_summary_bad",      "You try to persuade {s50}, but {reg51?she:he} outmanoeuvres you from the very start.\
- Even your best arguments sound hollow to your own ears. {s50}, likewise,\
- has not formed a very high opinion of what you had to say."),
-  ("persuasion_summary_average",  "{s50} turns out to be a skilled speaker with a keen mind,\
- and you can't seem to bring forth anything concrete that {reg51?she:he} cannot counter with a rational point.\
- In the end, neither of you manage to gain any ground in this discussion."),
-  ("persuasion_summary_good",     "Through quick thinking and smooth argumentation, you manage to state your case well,\
- forcing {s50} to concede on several points. However, {reg51?she:he} still expresses doubts about your request."),
-  ("persuasion_summary_very_good","You deliver an impassioned speech that echoes through all listening ears like poetry.\
- The world itself seems to quiet down in order to hear you better .\
- The inspiring words have moved {s50} deeply, and {reg51?she:he} looks much more well-disposed towards helping you."),
-
+  ("persuasion_summary_very_bad", "You try your best to persuade {s50}, but none of your arguments seem to come out right. Every time you start to make sense, you seem to say something entirely wrong that puts you off track. By the time you finish speaking you've failed to form a single coherent point in your own favor, and you realise that all you've done was dig yourself deeper into a hole. Unsurprisingly, {s50} does not look impressed."),
+  ("persuasion_summary_bad",      "You try to persuade {s50}, but {reg51?she:he} outmanoeuvres you from the very start. Even your best arguments sound hollow to your own ears. {s50}, likewise, has not formed a very high opinion of what you had to say."),
+  ("persuasion_summary_average",  "{s50} turns out to be a skilled speaker with a keen mind, and you can't seem to bring forth anything concrete that {reg51?she:he} cannot counter with a rational point. In the end, neither of you manage to gain any ground in this discussion."),
+  ("persuasion_summary_good",     "Through quick thinking and smooth argumentation, you manage to state your case well, forcing {s50} to concede on several points. However, {reg51?she:he} still expresses doubts about your request."),
+  ("persuasion_summary_very_good","You deliver an impassioned speech that echoes through all listening ears like poetry. The world itself seems to quiet down in order to hear you better . The inspiring words have moved {s50} deeply, and {reg51?she:he} looks much more well-disposed towards helping you."),
 
 # meet_spy_in_enemy_town quest secret sentences
   ("secret_sign_1",  "The armoire dances at midnight..."),
@@ -7561,18 +7548,20 @@ Lead me in battle to victory!"),
 ("fake_rumor_7", "It is said that {s32} has begun stirring up the population, either to challenge your rule or due to plain incompetence."),
 ("fake_rumor_8", "Rumors say that {s32} has murdered a wealthy merchant with whom he had some depts. But at the date when the incident happened, {s32} was visiting one of your parties in the imperial palace..."),
 ("fake_rumor_end", "end"),
-("string_speech_1_1", "When the young men and beautiful women of your hometown ask you where you got your battle scars, you can tell them, 'under arms in the greatest army, with the greatest general that the world have ever seen!'"),
+
+("string_speech_1_1", "When the young men and beautiful women of your hometown ask you where you got your battle scars, you can tell them, 'under arms in the greatest army, with the greatest general that the world has ever seen!'"),
 ("string_speech_1_2", "Think that right now, across the Empire, cowards and old men are herding their goats, tending their crops, toiling and sweating for nothing! Yet here we soldiers stand. Our own toil is about to begin. Our own sweat and blood are poised to run. For what? For honor! For glory! For Victory!"),
 ("string_speech_1_3", "From all across this land we have travelled to meet our destinies on this field of battle, at this moment in time. Long after we have all expired, men will sing our names in their songs. They will sing of the greatness we shall find here in these fields!"),
 ("string_speech_1_4", "Brothers! Once you were born; later, you grew into men. Yesterday we marched; today we fight! Today we spill the blood of our enemies and bring them to ruin. Today we smash their shields. All the days of your lives have led to this. Today we conquer together as brothers. Tonight we feast at the table of the enemy!"),
 ("string_speech_1_5", "Friends! Hear me! Now is the day when the songs of our hearths are written with the blood of our foes! You are free men! None can assault our lands and stand to tell the tale. The host before us is great. They do not fight to defend their homes but to plunder yours. They will fall! Ready yourself! Hold fast, and never yield! No man will yield his land or his glory to the rabble before us. Fight! Die, but never yield! Never, never, never!"),
-("string_speech_1_6", "Men, we stand before our enemy. Ready your weapons! This army is our home, so let us welcome our enemy! Let him come! Let the armies strive one against the other! All that is needed is your own arm and your own heart. Within this army you shall stand, my brothers. I know that within the breast of each man here is a fire so bright that I say these walls protect our foes and not us! Our fate is glory! No man can take that unless you give it to him."),
+("string_speech_1_6", "Men, we stand before our enemy. Ready your weapons! This army is our home, so let us welcome our enemy! Let him come! Let the armies strive one against the other! All that is needed is your own arm and your own heart. Within this army you shall stand, my brothers. I know that within the breast of each man here is a fire so bright that I say your armours protect our foes and not us! Our fate is glory! No man can take that unless you give it to him."),
 ("string_speech_1_7", "Come, men! Let us go forth and face our foe on the field of battle! With men like you, our army will never break or fall to those craven dogs who come against us here! Like the heroes of old, let us go and make a slaughter, every man a hero, every man a true man! This day, we will make gluttons of the ravens!"),
 ("string_speech_1_8", "Remember your children and your wives. Remember your homes and your ancestors. Remember your gods and everything for which we fight today. We are here to build a better world! These men facing us know it, and fear our determination. They are so afraid, they piss their pants and shake like leaves, unable to hold their spears.  Men! I am with you, bleeding and sweating, proud to stand shoulder to shoulder with such titans. Men, our fate awaits us. It's time for us to seize it!"),
 ("string_speech_1_9", "The sun will set on our enemy this evening, but we shall shine as the rays of the sun on a spring day. You may be nervous and trembling now, but your shaking hands are nothing compared to theirs. They are but autumn leaves in the wind; we are the howling storm that will scatter them across the meadows, never to be seen again. Brandish your arms. Be the thunder that topples their tree. This land is ours - these woods, these hills, these fields - and so shall it be season after season, year after year, forever and ever!"),
-("string_speech_1_10", "Let us go out from this burning place into the open and stand up to our enemies. He who dies shall be with the Gods. He who dies not, his name will be honoured. I go first, and what I do, you do. May the Gods be with us today. I will never leave you, my brothers!"),
-("string_speech_1_11", "Men! My brothers! We have marched these many days together. Your prize yet waits! The prize, glory, spoils and victory, comes from the groans of your enemy! Now go! Go to your destiny! Take your prize! Fight! Fight! And let nobody survive!"),
+("string_speech_1_10", "Soldiers! Today, we stand on the threshold of glory, facing our enemies with hearts unyielding and spirits unbroken. Know this: Those who fall in battle shall ascend to the halls of the gods, their valor celebrated for eternity! But for those who emerge from this crucible of conflict, your names will echo through the annals of history, revered and honored by generations to come."),
+("string_speech_1_11", "Men! My brothers! We have marched these many days together. Your prize yet waits! The prize: Glory, spoils and victory, comes from the groans of your enemy! Now go! Go to your destiny! Take your prize! Fight! Fight! And let nobody survive!"),
 ("string_speech_1_end", "Press tab key to finish mission."),
+
 ("cave_leave", "Trace back your steps and go back in the open now?"),
 ("it_is_time_for_the_feast_to_conclude_2", "We have to conclude the feast because the center where it took place has been burned down."),
 ("return", "_Return_"),
