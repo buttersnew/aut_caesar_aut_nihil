@@ -29925,7 +29925,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_background_mesh, "mesh_pic_mb_warrior_3"),
   ],[
       ("choice_1comm",[
-        (eq, "$g_empieza_discurso", 0),
+        # (eq, "$g_empieza_discurso", 0),
       ],"Impassion your men with a rousing speech.",[
         (party_get_skill_level, ":leadership", "p_main_party", "skl_leadership"),
         (val_div, ":leadership", 2),

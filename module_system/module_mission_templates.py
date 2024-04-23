@@ -25941,6 +25941,61 @@ mission_templates = [
       (assign, "$tutorial_state", 0),
     ]),
 
+    (0, 1, ti_once, [
+      (mission_tpl_are_all_agents_spawned),
+    ],[
+      #get scene boundaries
+      (set_fixed_point_multiplier, 100),
+      (init_position, pos11),
+      (get_scene_boundaries, pos10, pos11),
+      (position_get_x, ":scene_max_x", pos11),
+      (position_get_y, ":scene_max_y", pos11),
+      #get center of map
+      (val_div, ":scene_max_x", 2),
+      (val_div, ":scene_max_y", 2),
+
+      # (assign, reg10, ":scene_max_x"),
+      # (assign, reg11, ":scene_max_y"),
+      # (display_message, "@scene_max_x {reg10}, scene_max_y {reg11}"),
+
+      # (position_get_x, ":scene_min_x", pos10),
+      # (position_get_y, ":scene_min_y", pos10),
+      # (assign, reg10, ":scene_min_x"),
+      # (assign, reg11, ":scene_min_y"),
+      # (display_message, "@scene_min_x {reg10}, scene_min_y {reg11}"),
+
+      (position_set_x, pos11, ":scene_max_x"),
+      (position_set_y, pos11, ":scene_max_y"),
+      (assign, ":total_agents", 0),
+      (try_for_agents, ":agent"),
+        (agent_is_active, ":agent"),
+        (agent_is_alive, ":agent"),
+        (val_add, ":total_agents", 1),
+      (try_end),
+      (gt, ":total_agents", 0),
+      (store_div, ":x_step", 3000, ":total_agents"),
+      (assign, ":x_addition", ":x_step"),
+      (try_for_agents, ":agent"),
+        (agent_is_active, ":agent"),
+        (agent_is_alive, ":agent"),
+        (agent_get_position, pos10, ":agent"),
+
+        (call_script, "script_point_y_toward_position", pos10, pos11),
+        (position_get_x, ":x", pos10),
+        (val_add, ":x", ":x_addition"),
+        (position_set_x, pos10, ":x"),
+        (try_begin),
+          (agent_is_non_player, ":agent"),
+          (position_move_y, pos10, 2500),
+        (else_try),
+          (position_move_y, pos10, 4000),
+        (try_end),
+
+        (agent_set_position, ":agent", pos10),
+        (val_add, ":x_addition", ":x_step"),
+      (try_end),
+    ]),
+
     (ti_on_agent_spawn, 0, 0, [],[
       (store_trigger_param, ":agent", 1),
       (agent_is_alive, ":agent"),
@@ -25971,8 +26026,7 @@ mission_templates = [
       (tutorial_message_set_center_justify, 0),
     ]),
 
-    (0,0,0,[],
-    [
+    (0,0,0,[],[
       (store_mission_timer_a, ":cur_time"),
       (set_fixed_point_multiplier, 100),
       (try_begin),
