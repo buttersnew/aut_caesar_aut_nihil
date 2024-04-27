@@ -16934,12 +16934,25 @@ game_menus = [
           (else_try),
               (eq, "$current_town", "p_town_6"),
               (eq, "$players_kingdom", "fac_kingdom_7"),
+              (neg|troop_slot_eq, "trp_kingdom_7_lady_1", slot_troop_spouse, "trp_player"),
               (troop_slot_eq, "trp_kingdom_7_lord", slot_troop_occupation, slto_kingdom_hero),#Nero still alive
               (troop_slot_eq, "trp_global_variables", g_poppaea_event_chain, 0),
               (troop_slot_ge, "trp_kingdom_7_lady_1", slot_troop_met, 1),
               (troop_slot_ge, "trp_kingdom_7_lady_1", slot_troop_player_relation, 15),
               (troop_slot_ge, "trp_player", slot_troop_renown, 300),
               (jump_to_menu, "mnu_poppaea_event_chain_1"),
+          (else_try),
+              (eq, "$current_town", "p_town_6"),
+              (eq, "$players_kingdom", "fac_kingdom_7"),
+              (neg|troop_slot_eq, "trp_kingdom_7_lady_1", slot_troop_spouse, "trp_player"),
+              (troop_slot_eq, "trp_kingdom_7_lord", slot_troop_occupation, slto_kingdom_hero),#Nero still alive
+              (troop_slot_eq, "trp_global_variables", g_poppaea_event_chain, 2),
+              (troop_slot_ge, "trp_kingdom_7_lady_1", slot_troop_met, 1),
+              (troop_slot_ge, "trp_kingdom_7_lady_1", slot_troop_player_relation, 30),
+              (troop_slot_ge, "trp_player", slot_troop_renown, 300),
+              (check_quest_active, "qst_four_emperors"),
+              (quest_slot_ge, "qst_four_emperors", slot_quest_current_state, 5),
+              (jump_to_menu, "mnu_poppaea_event_chain_final"),
           (else_try),
               (call_script, "script_enter_court", "$current_town"),
           (try_end),
@@ -59255,9 +59268,9 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ]),
 ]),
 
-
 ("poppaea_event_chain_1",0,
-  "You haven't even put off your helmet and handed your sword to the guards as you are stopped by one of Augusta's servants. She heard of your arrival in Rome and wants to speak with you now.",
+  "You haven't even put off your helmet and handed your sword to the guards as you are stopped by one of Augusta's servants."
+  +" She heard of your arrival in Rome and wants to speak with you immediately.",
   "none", [
   (set_background_mesh, "mesh_pic_palast"),
   ],[
@@ -59279,6 +59292,35 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ("option_2", [],"Tell the servent you have no time.",[
       (troop_set_slot, "trp_global_variables", g_poppaea_event_chain, 2),
       (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", -20),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("poppaea_event_chain_final",0,
+  "You haven't even put off your helmet and handed your sword to the guards as you are stopped by one of Augusta's servants."
+  +" She heard of your arrival in Rome and wants to speak with you immediately.",
+  "none", [
+  (set_background_mesh, "mesh_pic_palast"),
+  ],[
+    ("option_1", [],"Follow the servant.",[
+      (assign, "$temp1", "itm_roman_noble_dress_2"),
+      (troop_set_slot, "trp_global_variables", g_poppaea_event_chain, 3),
+      (modify_visitors_at_site, "scn_imperial_palace_augusta_room"),
+      (reset_visitors),
+      (set_jump_mission, "mt_special_mission_poppaea_1"),
+      (try_begin),#second outift
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (call_script, "script_init_second_outfit", "mt_special_mission_poppaea_1", 2, 0),
+          (mission_tpl_entry_set_override_flags, "mt_special_mission_poppaea_1", 2, af_override_outfit_1|af_override_horse),
+      (try_end),
+      (set_visitor, 0, "trp_player"),
+      (set_visitor, 3, "trp_kingdom_7_lady_1"),
+      (jump_to_scene, "scn_imperial_palace_augusta_room"),
+      (change_screen_mission),
+    ]),
+    ("option_2", [],"Tell the servent you have no time.",[
+      (troop_set_slot, "trp_global_variables", g_poppaea_event_chain, 4),
+      (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", -50),
       (jump_to_menu, "mnu_town"),
     ]),
 ]),
