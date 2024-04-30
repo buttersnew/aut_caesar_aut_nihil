@@ -1812,10 +1812,6 @@ slot_quest_target_item              = 14
 
 slot_quest_object_faction           = 15
 
-slot_quest_main_poppaea_fate        = slot_quest_target_item
-slot_quest_main_poppaea_timer       = slot_quest_object_faction
-slot_quest_main_antonia_or_poppaea = slot_quest_giver_center
-
 slot_quest_freelancer_payment        = 8
 slot_quest_freelancer_agent_spawned  = 9
 slot_quest_freelancer_agent_limit    = 10
@@ -1850,6 +1846,16 @@ slot_quest_failure_consequence      = 26
 slot_quest_temp_slot      			= 27
 
 slot_quest_timer                    = 28
+
+slot_quest_main_poppaea_knows       = slot_quest_gold_reward
+
+main_story_poppaea_knows_nothing = 0
+main_story_poppaea_knows_all = 1
+main_story_poppaea_knows_little = 2
+
+slot_quest_main_poppaea_fate        = slot_quest_target_item
+slot_quest_main_poppaea_timer       = slot_quest_object_faction
+slot_quest_main_antonia_or_poppaea  = slot_quest_giver_center
 
 # Phaiak begin
 slot_quest_menu_1					= 31

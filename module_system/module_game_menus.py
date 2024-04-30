@@ -30767,6 +30767,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       #10 Nero
       #40 Tigellinus
       #6 or 7 Acte
+      (assign, "$temp3", 0),# used for poppaea
       (assign, "$temp4", 0),#1 Nero banished, 2 Nero killed
       (assign, "$temp4_1", 0),#1 banish, 2 death, 3 divorce
       (assign, "$talk_context", tc_campaign_talk),
