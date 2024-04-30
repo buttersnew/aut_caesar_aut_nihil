@@ -30873,7 +30873,16 @@ mission_templates = [
       (try_end),
     ]),
 
-    common_inventory_not_available,
+    (ti_inventory_key_pressed, 0, 0, [],[
+      (try_begin),
+        (neg|troop_slot_eq, "trp_global_variables", g_toilet_talk, -5),
+        (neg|troop_slot_eq, "trp_global_variables", g_toilet_talk, -6),
+        (set_trigger_result, 1),
+      (else_try),
+        (display_message, "str_cant_use_inventory_now"),
+      (try_end),
+    ]),
+
     ambient_set_agents_for_sounds,
     ambient_agent_play_sound,
 ]),

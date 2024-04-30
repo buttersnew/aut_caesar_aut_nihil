@@ -19004,6 +19004,7 @@ game_menus = [
       (modify_visitors_at_site, "scn_roman_latrina"),
       (reset_visitors),
 
+      (mission_tpl_entry_set_override_flags, "mt_toiletboys", 0, af_override_horse),
       (try_begin),#second outift
         (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
         (call_script, "script_init_second_outfit", "mt_toiletboys", 0, 0),
