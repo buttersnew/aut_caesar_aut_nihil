@@ -28,12 +28,12 @@ import math
 simple_triggers = [
 #1
 # This trigger is deprecated. Use "script_game_event_party_encounter" in module_scripts.py instead
-  (ti_on_party_encounter,
-   []),
+(ti_on_party_encounter,
+[]),
 #2
 # This trigger is deprecated. Use "script_game_event_simulate_battle" in module_scripts.py instead
-  (ti_simulate_battle,
-   []),
+(ti_simulate_battle,
+[]),
 
 (1,[
     (call_script, "script_execude_debug_message", 3),
@@ -10686,10 +10686,8 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 168),
     (neq, "$g_is_emperor", 1),
     (store_current_day, ":day"),
-    (ge, ":day", 70),
+    (ge, ":day", 75),
     (eq, "$g_fire", 0),
-    (store_random_in_range, ":r", 0, 100),
-    (lt, ":r", 20),
     (call_script, "script_add_notification_menu", "mnu_fire_of_rome", 0, 0),
 ]),
 ###civil war triggers in rome

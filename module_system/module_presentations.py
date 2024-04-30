@@ -5118,7 +5118,6 @@ presentations = [
 
             (party_get_slot, ":latifund_rent", ":latifundium", slot_center_accumulated_rents),
             (store_faction_of_party,":faction", ":center_no"),
-            (str_clear, s63),
             (try_begin),
                 (store_relation, ":rel", ":faction", "fac_player_faction"),
                 (lt, ":rel", 0),
@@ -5171,22 +5170,24 @@ presentations = [
                         (eq, "$g_apply_budget_report_to_gold", 1),
                         (call_script, "script_add_to_troop_wealth",":lord", ":netto_rent"),
                     (try_end),
-                    (display_message, "@(brutto: {reg12}, {reg10}% taxrate, tax paid: {reg11})"),
+                    # (display_message, "@(brutto: {reg12}, {reg10}% taxrate, tax paid: {reg11})"),
                     (str_store_string, s63, "@(taxrate {reg10}%)"),
                     (assign, reg13, ":lord_tax"),
                 (try_end),
-                (try_begin),
+
+                (try_begin), # clear if collected
                     (eq, "$g_apply_budget_report_to_gold", 1),
                     (party_set_slot, ":latifundium", slot_center_accumulated_rents, 0),
                 (try_end),
-                (val_add, ":net_change", reg13),
+
+                (val_add, ":net_change", reg13), # add to total
                 (try_begin), ## add xp based on enterprice income
                     (gt, ":net_change", 0),
                     (val_add, ":expierence_gain", 50),
                 (try_end),
 
-                (val_add, ":latifundia_total", reg13),
-                (try_begin),
+                (val_add, ":latifundia_total", reg13), #  add to sub total
+                (try_begin), # display if not sub total is displayed
                     (eq, "$g_presentation_credits_obj_2_alpha", 1),
                     (create_text_overlay, reg1, "@{!}{reg13} {s63}", tf_right_align|tf_single_line),
                     (overlay_set_color, reg1, 0x00AA00),

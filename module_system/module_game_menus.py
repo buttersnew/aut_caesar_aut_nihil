@@ -3384,10 +3384,10 @@ game_menus = [
     ]),
 ]),
 
-  ("camp_recruit_prisoners",0,
-   "You offer your prisoners freedom if they agree to join you as soldiers. {s18}",
-   "none",
-   [(assign, ":num_regular_prisoner_slots", 0),
+("camp_recruit_prisoners",0,
+  "You offer your prisoners freedom if they agree to join you as soldiers. {s18}",
+  "none",[
+    (assign, ":num_regular_prisoner_slots", 0),
     (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
     (try_for_range, ":cur_stack", 0, ":num_stacks"),
       (party_prisoner_stack_get_troop_id, ":cur_troop_id", "p_main_party", ":cur_stack"),
@@ -3449,79 +3449,80 @@ game_menus = [
         (str_store_string, s18, "@No one accepts the offer."),
       (try_end),
     (try_end),
-    ],
-    [
-      ("camp_recruit_prisoners_accept",[(gt, "$g_prisoner_recruit_troop_id", 0)],"Take them.",
-       [(remove_troops_from_prisoners, "$g_prisoner_recruit_troop_id", "$g_prisoner_recruit_size"),
-        (party_add_members, "p_main_party", "$g_prisoner_recruit_troop_id", "$g_prisoner_recruit_size"),
-        #SB : change base morale reduction by difficulty
-        (game_get_reduce_campaign_ai, ":reduce"), #0 to 2
-        (val_sub, ":reduce", 4), #-4 to -2
-        (store_mul, ":morale_change", ":reduce", "$g_prisoner_recruit_size"),
-        (store_troop_faction, ":troop_faction", "$g_prisoner_recruit_troop_id"),
-        (store_character_level, ":troop_level", "$g_prisoner_recruit_troop_id"),
+  ],[
+    ("camp_recruit_prisoners_accept",[
+      (gt, "$g_prisoner_recruit_troop_id", 0),
+    ],"Take them.",[
+      (remove_troops_from_prisoners, "$g_prisoner_recruit_troop_id", "$g_prisoner_recruit_size"),
+      (party_add_members, "p_main_party", "$g_prisoner_recruit_troop_id", "$g_prisoner_recruit_size"),
+      #SB : change base morale reduction by difficulty
+      (game_get_reduce_campaign_ai, ":reduce"), #0 to 2
+      (val_sub, ":reduce", 4), #-4 to -2
+      (store_mul, ":morale_change", ":reduce", "$g_prisoner_recruit_size"),
+      (store_troop_faction, ":troop_faction", "$g_prisoner_recruit_troop_id"),
+      (store_character_level, ":troop_level", "$g_prisoner_recruit_troop_id"),
 
-        (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
-          (faction_set_slot, ":faction", slot_faction_temp_slot, 0),
+      (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
+        (faction_set_slot, ":faction", slot_faction_temp_slot, 0),
+      (try_end),
+      (try_begin), #give extra penalty to faction morale if we recruit high-level enemy troops
+        (this_or_next|eq, ":troop_faction", "fac_outlaws"),
+        (eq, ":troop_faction", "fac_deserters"),
+        (call_script, "script_objectionable_action", tmt_aristocratic, "str_hire_deserters"),
+      (else_try),
+        (is_between, ":troop_faction", npc_kingdoms_begin, npc_kingdoms_end),
+        # (store_character_level, ":relation", "$g_prisoner_recruit_troop_id"),
+        (try_begin), #check culture
+          (eq, "$players_kingdom", "fac_player_supporters_faction"),
+          (is_between, "$g_player_culture", npc_kingdoms_begin, npc_kingdoms_end),
+          (eq, "$g_player_culture", ":troop_faction"),
+          (assign, ":troop_faction", "$players_kingdom"),
         (try_end),
-        (try_begin), #give extra penalty to faction morale if we recruit high-level enemy troops
-          (this_or_next|eq, ":troop_faction", "fac_outlaws"),
-          (eq, ":troop_faction", "fac_deserters"),
-          (call_script, "script_objectionable_action", tmt_aristocratic, "str_hire_deserters"),
-        (else_try),
-          (is_between, ":troop_faction", npc_kingdoms_begin, npc_kingdoms_end),
-          # (store_character_level, ":relation", "$g_prisoner_recruit_troop_id"),
-          (try_begin), #check culture
-            (eq, "$players_kingdom", "fac_player_supporters_faction"),
-            (is_between, "$g_player_culture", npc_kingdoms_begin, npc_kingdoms_end),
-            (eq, "$g_player_culture", ":troop_faction"),
-            (assign, ":troop_faction", "$players_kingdom"),
+        (try_begin), #no penalty for same faction
+          (eq, ":troop_faction", "$players_kingdom"),
+          # (val_sub, ":relation", ":morale_change"), #bonus
+          (assign, ":morale_change", 0),
+          (assign, "$g_prisoner_recruit_troop_id", 0),
+          (assign, "$g_prisoner_recruit_size", 0),
+        (else_try), #one point per offended party
+          (party_get_num_companion_stacks, ":cap", "p_main_party"),
+          (try_for_range, ":stack", 1, ":cap"),
+            (party_stack_get_troop_id, ":troop", "p_main_party", ":stack"),
+            # (neg|troop_is_hero, ":troop"),
+            # (neq, ":troop", "$g_prisoner_recruit_troop_id"), #not just recruited
+            (store_faction_of_troop, ":stack_faction", ":troop"),
+            # (neq, ":stack_faction", ":troop_faction"),
+            (store_relation, ":faction_relation", ":troop_faction", ":stack_faction"),
+            (lt, ":faction_relation", 0),
+            (faction_get_slot, ":amount", ":stack_faction", slot_faction_temp_slot),
+            (party_stack_get_size, ":reduce", "p_main_party", ":stack"),
+            (val_sub, ":amount", ":reduce"),
+            (faction_set_slot, ":stack_faction", slot_faction_temp_slot, ":amount"),
           (try_end),
-          (try_begin), #no penalty for same faction
-            (eq, ":troop_faction", "$players_kingdom"),
-            # (val_sub, ":relation", ":morale_change"), #bonus
-            (assign, ":morale_change", 0),
-            (assign, "$g_prisoner_recruit_troop_id", 0),
-            (assign, "$g_prisoner_recruit_size", 0),
-          (else_try), #one point per offended party
-            (party_get_num_companion_stacks, ":cap", "p_main_party"),
-            (try_for_range, ":stack", 1, ":cap"),
-              (party_stack_get_troop_id, ":troop", "p_main_party", ":stack"),
-              # (neg|troop_is_hero, ":troop"),
-              # (neq, ":troop", "$g_prisoner_recruit_troop_id"), #not just recruited
-              (store_faction_of_troop, ":stack_faction", ":troop"),
-              # (neq, ":stack_faction", ":troop_faction"),
-              (store_relation, ":faction_relation", ":troop_faction", ":stack_faction"),
-              (lt, ":faction_relation", 0),
-              (faction_get_slot, ":amount", ":stack_faction", slot_faction_temp_slot),
-              (party_stack_get_size, ":reduce", "p_main_party", ":stack"),
-              (val_sub, ":amount", ":reduce"),
-              (faction_set_slot, ":stack_faction", slot_faction_temp_slot, ":amount"),
-            (try_end),
-          (try_end),
         (try_end),
-        (call_script, "script_change_player_party_morale", ":morale_change"),
-        (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
-          (faction_get_slot, ":relation", ":faction", slot_faction_temp_slot),
-          (neq, ":relation", 0),
-          (val_sub, ":relation", ":troop_level"),
-          (call_script, "script_change_faction_troop_morale", ":faction", ":relation", 1),
-        (try_end),
-        (jump_to_menu, "mnu_camp"),
-        ]
-       ),
-      ("camp_recruit_prisoners_reject",[(gt, "$g_prisoner_recruit_troop_id", 0)],"Reject them.",
-       [(jump_to_menu, "mnu_camp"),
-        (assign, "$g_prisoner_recruit_troop_id", 0),
-        (assign, "$g_prisoner_recruit_size", 0),
-        ]
-       ),
-      ("continue",[(le, "$g_prisoner_recruit_troop_id", 0)],"Go back.",
-       [(jump_to_menu, "mnu_camp"),
-        ]
-       ),
-      ]
-  ),
+      (try_end),
+      (call_script, "script_change_player_party_morale", ":morale_change"),
+      (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
+        (faction_get_slot, ":relation", ":faction", slot_faction_temp_slot),
+        (neq, ":relation", 0),
+        (val_sub, ":relation", ":troop_level"),
+        (call_script, "script_change_faction_troop_morale", ":faction", ":relation", 1),
+      (try_end),
+      (jump_to_menu, "mnu_camp"),
+    ]),
+    ("camp_recruit_prisoners_reject",[
+      (gt, "$g_prisoner_recruit_troop_id", 0),
+    ],"Reject them.",[
+      (jump_to_menu, "mnu_camp"),
+      (assign, "$g_prisoner_recruit_troop_id", 0),
+      (assign, "$g_prisoner_recruit_size", 0),
+    ]),
+    ("continue",[
+      (le, "$g_prisoner_recruit_troop_id", 0),
+    ],"Go back.",[
+      (jump_to_menu, "mnu_camp"),
+    ]),
+]),
 
 ("camp_make_slaves",0,
   "By selling their equipment to your men you can make your prisoners to slaves. From now on, they will lose their social status and their standing within their faction.",
@@ -45089,8 +45090,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("funny_nights",0,
-  "Time passes, and you forget the rigors and fatigue from the journey that had lingered upon your body and soul."
-  +" For a few hours, your armor and sword, the fear of dying in any skirmish, the punishment of the rain and wind, and the dust of the roads are all shoved under a small patch of happiness."
+  "Time passes, and you forget the rigors and fatigue from life that had lingered upon your body and soul."
+  +" For a few hours, your armor and weapons, the fear of dying in any skirmish, the punishment of the rain and wind, and the dust of the roads are all shoved under a small patch of happiness."
   +" But, in the end, it's all over too soon ...",
   "none",[
     (set_background_mesh, "mesh_pic_hexe_party"),
