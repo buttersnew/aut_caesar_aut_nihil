@@ -2780,9 +2780,9 @@ clubs_begin  = "itm_club"
 clubs_end    = "itm_spiked_mace"
 
 maces_begin  = "itm_spiked_mace"
-maces_end    = "itm_celtic_sowrd1"
+maces_end    = "itm_celtic_sword1"
 
-celtic_weapons_begin  = "itm_celtic_sowrd1"
+celtic_weapons_begin  = "itm_celtic_sword1"
 celtic_weapons_end    = "itm_sword_akinakes"
 
 greek_weapons_begin  = "itm_sword_akinakes"
@@ -2792,9 +2792,9 @@ special_begin  = "itm_kopis"
 special_end    = "itm_dagger_parthian_1"
 
 parthian_weapons_begin  = "itm_dagger_parthian_1"
-parthian_weapons_end    = "itm_eastern_sowrd1"
+parthian_weapons_end    = "itm_eastern_sword1"
 
-eastern_weapons_begin  = "itm_eastern_sowrd1"
+eastern_weapons_begin  = "itm_eastern_sword1"
 eastern_weapons_end    = "itm_dacian_noble_sword"
 
 dacian_weapons_begin  = "itm_dacian_noble_sword"

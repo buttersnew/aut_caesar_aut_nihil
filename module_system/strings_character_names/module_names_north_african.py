@@ -75,7 +75,7 @@ north_african_names = [
 ("north_african_name_81", "Micipsa"),
 ("north_african_name_82", "Nabdalsa"),
 ("north_african_name_83", "Naravas"),
-("north_african_name_84", "Oxyntas"),
+("north_african_name_84", "Oxynt"),
 ("north_african_name_85", "Sypax"),
 ("north_african_name_86", "Syphax"),
 ("north_african_name_87", "Tacfarinas"),
