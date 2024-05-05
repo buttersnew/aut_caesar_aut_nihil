@@ -46205,13 +46205,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ]),
 ]),
 
-  (
-    "players_revolt",0,
-    "You hold a fiery speech. More and more people gather to listen to your words. As you end, the crowd cheers!\
- The angry mob massacres the garrison. The high priests overtake\
- the command of the rebel forces.^^The great Jewish revolt has started!^^{s44}",
-    "none",
-    [(set_background_mesh, "mesh_pic_townriot"),
+("players_revolt",0,
+  "You hold a fiery speech. More and more people gather to listen to your words. As you end, the crowd cheers!"
+  +" The angry mob massacres the garrison. The high priests overtake"
+  +" the command of the rebel forces.^^The great Jewish revolt has started!^^{s44}",
+  "none",[
+    (set_background_mesh, "mesh_pic_townriot"),
     (str_clear, s44),
     (try_begin),
       (faction_slot_eq, "fac_kingdom_6", slot_faction_state, sfs_active),
@@ -46231,11 +46230,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_set_slot, "qst_new_hope", slot_quest_expiration_days, 60),
       (quest_set_slot, "qst_new_hope", slot_quest_target_troop, ":king"),
     (try_end),
-    ],
-    [
-
-      ("event04",[],"Continue. (as king)",[
-
+  ],[
+    ("event04",[],"Continue. (as king)",[
       (display_message, "@One of the high priests gift you a beautiful bow and some gold from the temple!"),
       (troop_add_item, "trp_player", "itm_menorah"),
       (troop_add_item, "trp_player", "itm_thunder_arrows"),
@@ -46262,77 +46258,78 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_give_center_to_lord", "p_town_19", "trp_player", 0),
       (assign, "$g_player_court", "p_town_19"),
 
-     (troop_get_slot, ":king_party", "trp_kingdom_17_lord", slot_troop_leaded_party),
-     (remove_party,":king_party"),
-     (troop_set_slot, "trp_kingdom_17_lord", slot_troop_leaded_party, -1),
-     (troop_set_slot, "trp_kingdom_17_lord", slot_troop_occupation, slto_inactive),
-     (troop_set_faction,"trp_kingdom_17_lord","fac_outlaws"),
-     (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"),
-     (assign, "$g_player_culture", "fac_kingdom_17"),
+      (troop_get_slot, ":king_party", "trp_kingdom_17_lord", slot_troop_leaded_party),
+      (remove_party,":king_party"),
+      (troop_set_slot, "trp_kingdom_17_lord", slot_troop_leaded_party, -1),
+      (troop_set_slot, "trp_kingdom_17_lord", slot_troop_occupation, slto_inactive),
+      (troop_set_faction,"trp_kingdom_17_lord","fac_outlaws"),
+      (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"),
+      (assign, "$g_player_culture", "fac_kingdom_17"),
 
-    (faction_set_slot, "fac_player_supporters_faction",  slot_faction_culture, "fac_culture_8"),
-    (faction_set_slot, "fac_player_faction",  slot_faction_culture, "fac_culture_8"),
+      (faction_set_slot, "fac_player_supporters_faction",  slot_faction_culture, "fac_culture_8"),
+      (faction_set_slot, "fac_player_faction",  slot_faction_culture, "fac_culture_8"),
 
-    (call_script, "script_initialize_faction_troop_types"),
+      (call_script, "script_initialize_faction_troop_types"),
 
-    (try_for_range,":npc",active_npcs_begin,active_npcs_end),
-        (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_dead),#alive
-        (store_faction_of_troop, ":fac", ":npc"),
-        (eq, ":fac", "fac_kingdom_17"),
-        (call_script,"script_change_troop_faction",":npc","$players_kingdom"),
-        (troop_set_slot, ":npc", slot_troop_occupation, slto_kingdom_hero),
-        (store_random_in_range,":new_relation",15,35),
-        (call_script, "script_troop_change_relation_with_troop", "trp_player", ":npc", ":new_relation"),
-    (try_end),
+      (try_for_range,":npc",active_npcs_begin,active_npcs_end),
+          (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_dead),#alive
+          (store_faction_of_troop, ":fac", ":npc"),
+          (eq, ":fac", "fac_kingdom_17"),
+          (call_script,"script_change_troop_faction",":npc","$players_kingdom"),
+          (troop_set_slot, ":npc", slot_troop_occupation, slto_kingdom_hero),
+          (store_random_in_range,":new_relation",15,35),
+          (call_script, "script_troop_change_relation_with_troop", "trp_player", ":npc", ":new_relation"),
+      (try_end),
 
       (call_script, "script_update_faction_notes","$players_kingdom"),
       (call_script, "script_change_player_right_to_rule", 50),
       (call_script, "script_update_all_notes"),
 
-     # (call_script, "script_troop_set_title_according_to_faction", "trp_player", "$players_kingdom"),
+      # (call_script, "script_troop_set_title_according_to_faction", "trp_player", "$players_kingdom"),
 
-       (try_begin),
-         (is_between, "$players_oath_renounced_against_kingdom", kingdoms_begin, kingdoms_end),
-         (neq, "$players_oath_renounced_against_kingdom", "fac_kingdom_17"),
-         (store_relation, ":relation", "fac_player_supporters_faction", "$players_oath_renounced_against_kingdom"),
-         (val_min, ":relation", -40),
-         (call_script, "script_set_player_relation_with_faction", "$players_oath_renounced_against_kingdom", ":relation"),
-         (call_script, "script_update_all_notes"),
-         (assign, "$g_recalculate_ais", 1),
-       (try_end),
+      (try_begin),
+        (is_between, "$players_oath_renounced_against_kingdom", kingdoms_begin, kingdoms_end),
+        (neq, "$players_oath_renounced_against_kingdom", "fac_kingdom_17"),
+        (store_relation, ":relation", "fac_player_supporters_faction", "$players_oath_renounced_against_kingdom"),
+        (val_min, ":relation", -40),
+        (call_script, "script_set_player_relation_with_faction", "$players_oath_renounced_against_kingdom", ":relation"),
+        (call_script, "script_update_all_notes"),
+        (assign, "$g_recalculate_ais", 1),
+      (try_end),
 
-       (try_begin),
-         (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
-         (neq, "$players_kingdom", "fac_player_supporters_faction"),
-         (neq, "$players_kingdom", "fac_kingdom_17"), #ie, don't leave faction if the player is already part of the same kingdom
+      (try_begin),
+        (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
+        (neq, "$players_kingdom", "fac_player_supporters_faction"),
+        (neq, "$players_kingdom", "fac_kingdom_17"), #ie, don't leave faction if the player is already part of the same kingdom
 
-         (faction_get_slot, ":old_leader", "$players_kingdom", slot_faction_leader),
-         (call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, ":old_leader", "$players_kingdom"),
-         (call_script, "script_player_leave_faction", 0),
-       (try_end),
+        (faction_get_slot, ":old_leader", "$players_kingdom", slot_faction_leader),
+        (call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, ":old_leader", "$players_kingdom"),
+        (call_script, "script_player_leave_faction", 0),
+      (try_end),
 
       # (call_script, "script_player_join_faction", "fac_kingdom_17"),
 
       # (call_script, "script_add_log_entry", logent_,   "trp_player",  -1, "trp_kingdom_17_lord", "fac_kingdom_17"),
 
-       (try_begin),
-         # (check_quest_active, "qst_join_faction"),
-         # (eq, "$g_invite_faction_lord", "fac_kingdom_17_lord"),
-         # (call_script, "script_end_quest", "qst_join_faction"),
-       # (else_try),
-         (check_quest_active, "qst_join_faction"),
-         (call_script, "script_abort_quest", "qst_join_faction", 0),
-       (try_end),
-       (assign, "$player_has_homage" ,1),
-       (assign, "$g_player_banner_granted", 1),
-       (assign, "$g_invite_faction", 0),
-       (assign, "$g_invite_faction_lord", 0),
-       (assign, "$g_invite_offered_center", 0),
-       #(assign, "$g_leave_encounter",1),
-       (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "fac_kingdom_7", 0),
+      (try_begin),
+        # (check_quest_active, "qst_join_faction"),
+        # (eq, "$g_invite_faction_lord", "fac_kingdom_17_lord"),
+        # (call_script, "script_end_quest", "qst_join_faction"),
+      # (else_try),
+        (check_quest_active, "qst_join_faction"),
+        (call_script, "script_abort_quest", "qst_join_faction", 0),
+      (try_end),
+      (assign, "$player_has_homage" ,1),
+      (assign, "$g_player_banner_granted", 1),
+      (assign, "$g_invite_faction", 0),
+      (assign, "$g_invite_faction_lord", 0),
+      (assign, "$g_invite_offered_center", 0),
+      #(assign, "$g_leave_encounter",1),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "fac_kingdom_7", 0),
 
       (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 200),
-      (change_screen_map), ]),
+      (change_screen_map),
+    ]),
 
   ("event04",[],"Continue. (as lord)",[
     (display_log_message, "@You take over the jewish culture"),
@@ -46340,67 +46337,64 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_player_culture", "fac_kingdom_17"),
     (call_script, "script_cf_start_jewish_revolt"),
 
+    (try_begin),
+        (eq, "$players_kingdom", "fac_player_supporters_faction"),
+        (call_script, "script_deactivate_player_faction"),
+        (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
+          (store_faction_of_troop, ":npc_faction", ":npc"),
+          (eq, ":npc_faction", "fac_kingdom_7"),
+          (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero),
+          (call_script, "script_change_troop_faction", ":npc", "fac_kingdom_17"),
+        (try_end),
+    (try_end),
+
       (try_begin),
-         (eq, "$players_kingdom", "fac_player_supporters_faction"),
-         (call_script, "script_deactivate_player_faction"),
-         (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
-            (store_faction_of_troop, ":npc_faction", ":npc"),
-            (eq, ":npc_faction", "fac_kingdom_7"),
-            (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero),
-            (call_script, "script_change_troop_faction", ":npc", "fac_kingdom_17"),
-         (try_end),
+        (is_between, "$players_oath_renounced_against_kingdom", kingdoms_begin, kingdoms_end),
+        (neq, "$players_oath_renounced_against_kingdom", "fac_kingdom_17"),
+        (store_relation, ":relation", "fac_player_supporters_faction", "$players_oath_renounced_against_kingdom"),
+        (val_min, ":relation", -40),
+        (call_script, "script_set_player_relation_with_faction", "$players_oath_renounced_against_kingdom", ":relation"),
+        (call_script, "script_update_all_notes"),
+        (assign, "$g_recalculate_ais", 1),
       (try_end),
 
-       (try_begin),
-         (is_between, "$players_oath_renounced_against_kingdom", kingdoms_begin, kingdoms_end),
-         (neq, "$players_oath_renounced_against_kingdom", "fac_kingdom_17"),
-         (store_relation, ":relation", "fac_player_supporters_faction", "$players_oath_renounced_against_kingdom"),
-         (val_min, ":relation", -40),
-         (call_script, "script_set_player_relation_with_faction", "$players_oath_renounced_against_kingdom", ":relation"),
-         (call_script, "script_update_all_notes"),
-         (assign, "$g_recalculate_ais", 1),
-       (try_end),
-
-       (try_begin),
-         (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
-         (neq, "$players_kingdom", "fac_player_supporters_faction"),
-         (neq, "$players_kingdom", "fac_kingdom_17"), #ie, don't leave faction if the player is already part of the same kingdom
-
-         (faction_get_slot, ":old_leader", "$players_kingdom", slot_faction_leader),
-         (call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, ":old_leader", "$players_kingdom"),
-         (call_script, "script_player_leave_faction", 0),
-       (try_end),
-
-       (call_script, "script_player_join_faction", "fac_kingdom_17"),
-
-       (call_script, "script_add_log_entry", logent_pledged_allegiance,   "trp_player",  -1, "trp_kingdom_17_lord", "fac_kingdom_17"),
-
       (try_begin),
-         # (check_quest_active, "qst_join_faction"),
-         # (eq, "$g_invite_faction_lord", "fac_kingdom_17_lord"),
-         # (call_script, "script_end_quest", "qst_join_faction"),
-       # (else_try),
-         (check_quest_active, "qst_join_faction"),
-         (call_script, "script_abort_quest", "qst_join_faction", 0),
-       (try_end),
-       (assign, "$player_has_homage" ,1),
-       (assign, "$g_player_banner_granted", 1),
-       (assign, "$g_invite_faction", 0),
-       (assign, "$g_invite_faction_lord", 0),
-       (assign, "$g_invite_offered_center", 0),
-       #(assign, "$g_leave_encounter",1),
-      (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 200),
+        (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
+        (neq, "$players_kingdom", "fac_player_supporters_faction"),
+        (neq, "$players_kingdom", "fac_kingdom_17"), #ie, don't leave faction if the player is already part of the same kingdom
+
+        (faction_get_slot, ":old_leader", "$players_kingdom", slot_faction_leader),
+        (call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, ":old_leader", "$players_kingdom"),
+        (call_script, "script_player_leave_faction", 0),
+      (try_end),
+
+      (call_script, "script_player_join_faction", "fac_kingdom_17"),
+
+      (call_script, "script_add_log_entry", logent_pledged_allegiance,   "trp_player",  -1, "trp_kingdom_17_lord", "fac_kingdom_17"),
+
+    (try_begin),
+        # (check_quest_active, "qst_join_faction"),
+        # (eq, "$g_invite_faction_lord", "fac_kingdom_17_lord"),
+        # (call_script, "script_end_quest", "qst_join_faction"),
+      # (else_try),
+        (check_quest_active, "qst_join_faction"),
+        (call_script, "script_abort_quest", "qst_join_faction", 0),
+      (try_end),
+      (assign, "$player_has_homage" ,1),
+      (assign, "$g_player_banner_granted", 1),
+      (assign, "$g_invite_faction", 0),
+      (assign, "$g_invite_faction_lord", 0),
+      (assign, "$g_invite_offered_center", 0),
+      #(assign, "$g_leave_encounter",1),
+    (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 200),
 
     (faction_set_slot, "fac_player_supporters_faction",  slot_faction_culture, "fac_culture_8"),
     (faction_set_slot, "fac_player_faction",  slot_faction_culture, "fac_culture_8"),
 
     (call_script, "script_initialize_faction_troop_types"),
-
-      (change_screen_map),
-
-      ]),
-
+    (change_screen_map),
   ]),
+]),
 
 ("found_rebells",0,
   "By supporting the Judean people with money you can improve your relation with them and cause unrest in the Roman Empire!",
