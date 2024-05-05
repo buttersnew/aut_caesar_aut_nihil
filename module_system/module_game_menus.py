@@ -46407,7 +46407,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_townriot")
   ],[
-  ("large",[],"Found one large rebell party. (5000 denars)",[
+  ("large",[],"Found one large rebell party. (5,000 denars)",[
     (store_troop_gold, reg55, "trp_player"),
     (try_begin),
         (store_num_parties_of_template, reg54, "pt_mountain_bandits"),
@@ -46419,7 +46419,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (else_try),
         (troop_remove_gold, "trp_player", 5000),
         (try_begin),
-            (lt, "$g_unrest", 60),
+            (lt, "$g_unrest", 75),
             (val_add, "$g_unrest", 2),
         (try_end),
         (set_spawn_radius, 3),
@@ -46432,19 +46432,19 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 4),
     (try_end),
   ]),
-  ("small",[],"Found one rebell party. (2500 denars)",[
+  ("small",[],"Found one rebell party. (2,500 denars)",[
     (store_troop_gold, reg55, "trp_player"),
     (try_begin),
         (store_num_parties_of_template, reg54, "pt_mountain_bandits"),
         (gt, reg54, 20),
         (display_message, "@There are already to many existing rebell parties!"),
     (else_try),
-        (lt, reg55, 5000),
+        (lt, reg55, 2500),
         (display_message, "str_not_enough_gold"),
     (else_try),
-        (troop_remove_gold, "trp_player", 5000),
+        (troop_remove_gold, "trp_player", 2500),
         (try_begin),
-            (lt, "$g_unrest", 50),
+            (lt, "$g_unrest", 75),
             (val_add, "$g_unrest", 1),
         (try_end),
 
