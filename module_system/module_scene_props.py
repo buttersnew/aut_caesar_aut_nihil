@@ -3377,5 +3377,13 @@ scene_props = [
       (try_end),
     ])
   ]),
-  ("box_a_open",0,"box_a_open","bo_box_a", []),
+  ("roman_baths_1",0,"roman_baths_1","bo_baths", []),
+  ("roman_baths_2",0,"roman_baths_2","bo_baths", []),
+
+  ("roman_bath_pool_spring_1",0,"roman_bath_pool_spring_1","bo_bath_pool_spring", []),
+  ("roman_bath_pool_spring_2",0,"roman_bath_pool_spring_2","bo_bath_pool_spring", []),
+
+  ("roman_bath_pool_1",0,"roman_bath_pool_1","bo_bath_pool", []),
+  ("roman_bath_pool_2",0,"roman_bath_pool_2","bo_bath_pool", []),
+  ("roman_bath_pool_3",0,"roman_bath_pool_3","bo_bath_pool", []),
 ]

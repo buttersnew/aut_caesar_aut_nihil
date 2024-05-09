@@ -1490,10 +1490,10 @@ nero_lyre_playing =  (0, 0, 0,[
     (try_end),
 ])
 
-improved_lightning =  (ti_before_mission_start, 0, 0,
-    [],
-    [
+improved_lightning =  (ti_before_mission_start, 0, 0,[],[
     (party_get_current_terrain, ":terrain", "p_main_party"),
+    (call_script, "script_get_region_of_pos22", "p_main_party"),
+    (assign, ":cur_region", reg1),
     (get_global_cloud_amount, ":clouds"),
 
     (try_begin),
@@ -1504,15 +1504,15 @@ improved_lightning =  (ti_before_mission_start, 0, 0,
             (this_or_next|eq, "$g_cur_month", 2),
             (this_or_next|eq, "$g_cur_month", 11),
             (eq, "$g_cur_month", 12),
-            (call_script, "script_change_scene_fog", 300, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 300, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#sommer
             (this_or_next|eq, "$g_cur_month", 5),
             (this_or_next|eq, "$g_cur_month", 6),
             (this_or_next|eq, "$g_cur_month", 7),
             (eq, "$g_cur_month", 8),
-            (call_script, "script_change_scene_fog", 600, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 600, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#else
-            (call_script, "script_change_scene_fog", 450, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 450, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (try_end),
     (else_try),
         (this_or_next|eq, ":terrain", rt_water),
@@ -1523,15 +1523,15 @@ improved_lightning =  (ti_before_mission_start, 0, 0,
             (this_or_next|eq, "$g_cur_month", 2),
             (this_or_next|eq, "$g_cur_month", 11),
             (eq, "$g_cur_month", 12),
-            (call_script, "script_change_scene_fog", 400, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 400, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#sommer
             (this_or_next|eq, "$g_cur_month", 5),
             (this_or_next|eq, "$g_cur_month", 6),
             (this_or_next|eq, "$g_cur_month", 7),
             (eq, "$g_cur_month", 8),
-            (call_script, "script_change_scene_fog", 700, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 700, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#else
-            (call_script, "script_change_scene_fog", 550, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 550, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (try_end),
     (else_try),
         (this_or_next|eq, ":terrain", rt_snow),
@@ -1541,15 +1541,15 @@ improved_lightning =  (ti_before_mission_start, 0, 0,
             (this_or_next|eq, "$g_cur_month", 2),
             (this_or_next|eq, "$g_cur_month", 11),
             (eq, "$g_cur_month", 12),
-            (call_script, "script_change_scene_fog", 350, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 350, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#sommer
             (this_or_next|eq, "$g_cur_month", 5),
             (this_or_next|eq, "$g_cur_month", 6),
             (this_or_next|eq, "$g_cur_month", 7),
             (eq, "$g_cur_month", 8),
-            (call_script, "script_change_scene_fog", 650, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 650, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#else
-            (call_script, "script_change_scene_fog", 500, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 500, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (try_end),
     (else_try),
         (this_or_next|eq, ":terrain", rt_desert),
@@ -1559,15 +1559,15 @@ improved_lightning =  (ti_before_mission_start, 0, 0,
             (this_or_next|eq, "$g_cur_month", 2),
             (this_or_next|eq, "$g_cur_month", 11),
             (eq, "$g_cur_month", 12),
-            (call_script, "script_change_scene_fog", 375, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 375, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#sommer
             (this_or_next|eq, "$g_cur_month", 5),
             (this_or_next|eq, "$g_cur_month", 6),
             (this_or_next|eq, "$g_cur_month", 7),
             (eq, "$g_cur_month", 8),
-            (call_script, "script_change_scene_fog", 675, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 675, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#else
-            (call_script, "script_change_scene_fog", 525, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 525, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (try_end),
     (else_try),
         (try_begin),#winter
@@ -1575,18 +1575,18 @@ improved_lightning =  (ti_before_mission_start, 0, 0,
             (this_or_next|eq, "$g_cur_month", 2),
             (this_or_next|eq, "$g_cur_month", 11),
             (eq, "$g_cur_month", 12),
-            (call_script, "script_change_scene_fog", 365, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 365, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#sommer
             (this_or_next|eq, "$g_cur_month", 5),
             (this_or_next|eq, "$g_cur_month", 6),
             (this_or_next|eq, "$g_cur_month", 7),
             (eq, "$g_cur_month", 8),
-            (call_script, "script_change_scene_fog", 665, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 665, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (else_try),#else
-            (call_script, "script_change_scene_fog", 515, ":clouds", 0xA6A6A6),
+            (call_script, "script_change_scene_fog", 515, ":clouds", 0xA6A6A6, ":terrain", ":cur_region"),
         (try_end),
     (try_end),
-    ])
+])
 
 weather = [
   #ti_battle_window_opened seems to be called whenever a window is opened during mission (inventory, game options etc)
