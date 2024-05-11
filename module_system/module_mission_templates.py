@@ -30813,6 +30813,65 @@ mission_templates = [
     ambient_scene_play_random_sound,
 ]),
 
+("baths", 0, -1,
+  "Test.",[
+    (0,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_weapons,0,1,[]),
+    (1,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (2,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (3,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (4,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (5,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (6,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (7,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (8,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (9,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (10,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (11,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (12,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (13,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (14,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (15,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (16,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (17,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (18,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (19,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (20,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (21,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (22,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (23,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (24,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (25,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (26,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (27,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (28,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+    (29,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
+  ], global_common_triggers +
+  [
+    (0, 0, ti_once, [],[
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_thermae),
+    ]),
+    (0, 0, ti_once, [],[
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 2000),
+    ]),
+    (ti_tab_pressed, 0, 0,[
+    ],[
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+      (finish_mission, 3),
+    ]),
+    (ti_inventory_key_pressed, 0, 0, [],[
+      (try_begin),
+        (neg|troop_slot_eq, "trp_global_variables", g_toilet_talk, -5),
+        (neg|troop_slot_eq, "trp_global_variables", g_toilet_talk, -6),
+        (set_trigger_result, 1),
+      (else_try),
+        (display_message, "str_cant_use_inventory_now"),
+      (try_end),
+    ]),
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+]),
+
 ("toiletboys", 0, -1,
   "Test.",[
     (0,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_weapons,0,1,[]),
@@ -30830,7 +30889,6 @@ mission_templates = [
     (0, 0, ti_once, [],[
       (mission_cam_set_screen_color, 0xFF000000),
       (mission_cam_animate_to_screen_color, 0x00000000, 2000),
-
     ]),
 
     (0, 0, ti_once, [

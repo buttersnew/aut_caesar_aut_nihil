@@ -1657,7 +1657,7 @@ scene_props = [
   ("bread_slice_a",0,"bread_slice_a","0", []),
   ("fish_a",0,"fish_a","0", []),
   ("fish_roasted_a",0,"fish_roasted_a","0", []),
-  ("chicken_roasted",0,"chicken","0", []),
+  ("chicken_roasted",0,"chicken_roasted","0", []),
   ("food_steam",0,"0","0",
    [
    (ti_on_scene_prop_init,
@@ -2778,7 +2778,12 @@ scene_props = [
 ( "forum_column_blue"                          ,0,"forum_column_blue","bo_forum_column_blue",[]),
 ( "forum_column_red"                           ,0,"forum_column_red","bo_forum_column_blue",[]),
 ( "forum_statyi"                               ,0,"forum_statyi","bo_forum_statyi",[]),
-( "fountain_roman"                             ,0,"fountain_roman","bo_fountain_roman",[]),
+( "fountain_roman"                             ,0,"fountain_roman","bo_fountain_roman",[
+  (ti_on_init_scene_prop,[
+    (store_trigger_param_1, ":instance_no"),
+    (prop_instance_play_sound, ":instance_no", "snd_baths_spring", sf_looping),
+  ]),
+]),
 ( "greek_castle1"                              ,0,"greek_castle1","bo_greek_castle1",[]),
 ( "inn_diff"                                   ,0,"question_mark","0",[]),
 ( "lampa_philosopher"                          ,0,"lampa_philosopher","0",[]),
@@ -3380,10 +3385,49 @@ scene_props = [
   ("roman_baths_1",0,"roman_baths_1","bo_baths", []),
   ("roman_baths_2",0,"roman_baths_2","bo_baths", []),
 
-  ("roman_bath_pool_spring_1",0,"roman_bath_pool_spring_1","bo_bath_pool_spring", []),
-  ("roman_bath_pool_spring_2",0,"roman_bath_pool_spring_2","bo_bath_pool_spring", []),
+  ("roman_bath_pool_spring_1",0,"roman_bath_pool_spring_1","bo_bath_pool_spring", [
+    (ti_on_init_scene_prop,[
+      (store_trigger_param_1, ":instance_no"),
+      (prop_instance_play_sound, ":instance_no", "snd_baths_spring", sf_looping),
+    ]),
+  ]),
+  ("roman_bath_pool_spring_2",0,"roman_bath_pool_spring_2","bo_bath_pool_spring", [
+    (ti_on_init_scene_prop,[
+      (store_trigger_param_1, ":instance_no"),
+      (prop_instance_play_sound, ":instance_no", "snd_baths_spring", sf_looping),
+    ]),
+  ]),
 
   ("roman_bath_pool_1",0,"roman_bath_pool_1","bo_bath_pool", []),
   ("roman_bath_pool_2",0,"roman_bath_pool_2","bo_bath_pool", []),
   ("roman_bath_pool_3",0,"roman_bath_pool_3","bo_bath_pool", []),
+
+  ("roman_undress",spr_use_time(1),"chest_gothic_2","bochest_gothic", [
+    (ti_on_scene_prop_use,[
+      (get_player_agent_no, ":player"),
+      (agent_is_active, ":player"),
+      (assign, ":removed_item", 0),
+      (try_for_range, ":slot", ek_item_0, ek_horse),
+        (agent_get_item_slot, ":cur_item", ":player", ":slot"),
+        (gt, ":cur_item", -1),
+        (agent_unequip_item, ":player", ":cur_item"),
+        (val_add, ":removed_item", 1),
+      (try_end),
+      (try_begin),
+        (eq, ":removed_item", 0),
+        (try_begin),
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (assign, ":troop", "trp_pseudo_troop_end"),
+        (else_try),
+          (assign, ":troop", "trp_player"),
+        (try_end),
+        (try_for_range, ":slot", ek_item_0, ek_horse),
+          (troop_get_inventory_slot, ":cur_item", ":troop", ":slot"),
+          (gt, ":cur_item", -1),
+          (agent_equip_item, ":player", ":cur_item"),
+        (try_end),
+      (try_end),
+    ])
+  ]),
+  ("box_a_open",0,"box_a_open","bo_box_a", []),
 ]

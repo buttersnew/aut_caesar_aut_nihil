@@ -1597,3 +1597,5 @@ spr_roman_bath_pool_spring_2 = 1595
 spr_roman_bath_pool_1 = 1596
 spr_roman_bath_pool_2 = 1597
 spr_roman_bath_pool_3 = 1598
+spr_roman_undress = 1599
+spr_box_a_open = 1600

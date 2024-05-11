@@ -279,4 +279,6 @@ sounds = [
    ("antonia_speech_3", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["antonia_speech_3.wav",]),
    ("antonia_speech_4", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["antonia_speech_4.wav",]),
    ("antonia_speech_5", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["antonia_speech_5.wav",]),
+
+   ("baths_spring", sf_priority_5|sf_vol_15|sf_stream_from_hd, ["baths_spring.wav",]),
 ]

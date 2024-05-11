@@ -260,3 +260,4 @@ snd_antonia_speech_2 = 258
 snd_antonia_speech_3 = 259
 snd_antonia_speech_4 = 260
 snd_antonia_speech_5 = 261
+snd_baths_spring = 262

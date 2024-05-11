@@ -20356,6 +20356,9 @@ game_menus = [
       (try_end),
     ]),
     ("baths",[
+      (this_or_next|party_slot_eq, "$current_town", slot_party_type, spt_town),
+      (party_slot_ge, "$current_town", slot_center_has_water, 1),
+
       (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),#judean
       (le, "$sneaked_into_town", disguise_none),
       (eq, "$enlisted_party", -1),#no freelancer
@@ -20363,6 +20366,9 @@ game_menus = [
 		  (jump_to_menu, "mnu_baths"),
     ]),
     ("baths",[
+      (this_or_next|party_slot_eq, "$current_town", slot_party_type, spt_town),
+      (party_slot_ge, "$current_town", slot_center_has_water, 1),
+
       (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
       (le, "$sneaked_into_town", disguise_none),
       (eq, "$enlisted_party", -1),#no freelancer
@@ -32482,8 +32488,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("bath",[
       (store_troop_gold, ":gold", "trp_player"),
-      (ge, ":gold", 40),
-    ],"Buy a one day ticket (40 denars).",[
+      (ge, ":gold", 100),
+    ],"Buy ticket for one day (100 denars).",[
       (try_begin),
         (lt, "$g_player_unhealth", 300),
         (store_random_in_range, ":r", 1, 10),
@@ -32496,7 +32502,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (store_random_in_range, ":r", 140, 350),
         (val_sub, "$g_player_unhealth", ":r"),
       (try_end),
-      (troop_remove_gold, "trp_player", 40),
+      (troop_remove_gold, "trp_player", 100),
       (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
       (try_begin),
       # (eq, "$g_meet_someone", 0),
@@ -32540,7 +32546,42 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 
     ("visit_latrina",[
-    ],"Enter the Thermae.",[
+      (try_begin),
+        (eq, "$g_encountered_party", "p_town_6"),
+        (str_store_string, s10, "@Thermae Agrippae"),
+      (else_try),
+        (str_store_string, s10, "@Thermae"),
+      (try_begin),
+    ],"Enter the {s10}.",[
+      (set_jump_mission, "mt_baths"),
+      (modify_visitors_at_site, "scn_public_baths"),
+      (reset_visitors),
+      (mission_tpl_entry_set_override_flags, "mt_baths", 0, af_override_horse),
+      (try_begin),#second outift
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_baths", 0, 0),
+        (mission_tpl_entry_set_override_flags, "mt_baths", 0, af_override_outfit_1|af_override_horse),
+      (try_end),
+      (set_visitor, 0, "trp_player"),
+      (assign, ":entry", 1),
+      (try_begin),
+        (party_get_num_attached_parties, ":num_attached_parties", "$current_town"),
+        (ge, ":num_attached_parties", 1),
+        (try_for_range, ":attached_party_rank", 0, ":num_attached_parties"),
+          (party_get_attached_party_with_rank, ":attached_party", "$current_town", ":attached_party_rank"),
+          (party_get_num_companion_stacks, ":num_stacks",":attached_party"),
+          (try_for_range, ":i_stack", 0, ":num_stacks"),
+            (party_stack_get_troop_id, ":stack_troop",":attached_party",":i_stack"),
+            (troop_is_hero, ":stack_troop"),
+            (store_random_in_range, ":rand", 0, 100),
+            (is_between, ":rand", 20, 65),
+            (set_visitor, ":entry", ":stack_troop"),
+            (val_add, ":entry", 1),
+            (gt, ":entry", 15),
+            (assign, ":num_attached_parties", -1),
+          (try_end),
+        (try_end),
+      (try_end),
       (jump_to_scene, "scn_public_baths"),
       (change_screen_mission),
     ], "Enter the thermae."),
