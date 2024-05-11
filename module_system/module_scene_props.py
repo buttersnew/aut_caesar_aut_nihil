@@ -3384,6 +3384,7 @@ scene_props = [
   ]),
   ("roman_baths_1",0,"roman_baths_1","bo_baths", []),
   ("roman_baths_2",0,"roman_baths_2","bo_baths", []),
+  ("roman_baths_3",0,"roman_baths_2","bo_baths", []),
 
   ("roman_bath_pool_spring_1",0,"roman_bath_pool_spring_1","bo_bath_pool_spring", [
     (ti_on_init_scene_prop,[

@@ -1100,5 +1100,7 @@ scenes = [
 
   ("public_baths", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], []),
 
+  ("villa_baths", sf_indoors, "roman_baths_3", "bo_baths", (-100, -100), (100, 100), -100, "0",["exit"], []),
+
 ]#end of file
 #
