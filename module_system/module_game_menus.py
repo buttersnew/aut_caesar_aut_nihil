@@ -32285,47 +32285,45 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 ("underworld",0,    #modified motomataru chief
   "{s40}",
-  "none",
-    [
+  "none",[
+    (try_begin),
+        (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 1),
+        #player 0
+        #camera: 60, 61, 62
+        #first spawn: 1,2, raget 3,4
+        #then relocate to 5,6 -> start conversation
+        (play_track, "track_cutscene_to_hades",2),
+        (modify_visitors_at_site, "scn_roman_intro_2"),
+        (reset_visitors),
+        (set_jump_mission, "mt_roman_intro_2"),
+        (set_visitor, 0, "trp_player"),
+        # (set_visitor, 1, "trp_claudia"),
+        # (set_visitor, 2, "trp_amokos"),
+
+        (set_visitor, 5, "trp_claudia"),
+        (set_visitor, 6, "trp_amokos"),
+        (jump_to_scene, "scn_roman_intro_2"),
+        (change_screen_mission),
+    (else_try),
+        (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 2),
+        (set_background_mesh, "mesh_pic_underworld"),
         (try_begin),
-            (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 1),
-            #player 0
-            #camera: 60, 61, 62
-            #first spawn: 1,2, raget 3,4
-            #then relocate to 5,6 -> start conversation
-            (play_track, "track_cutscene_to_hades",2),
-            (modify_visitors_at_site, "scn_roman_intro_2"),
-            (reset_visitors),
-            (set_jump_mission, "mt_roman_intro_2"),
-            (set_visitor, 0, "trp_player"),
-            # (set_visitor, 1, "trp_claudia"),
-            # (set_visitor, 2, "trp_amokos"),
-
-            (set_visitor, 5, "trp_claudia"),
-            (set_visitor, 6, "trp_amokos"),
-            (jump_to_scene, "scn_roman_intro_2"),
-            (change_screen_mission),
+            (store_time_of_day,reg12),
+            (ge,reg12,5),
+            (lt,reg12,21),
+            (assign,"$town_nighttime",0),
         (else_try),
-            (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 2),
-            (set_background_mesh, "mesh_pic_underworld"),
-            (try_begin),
-                (store_time_of_day,reg12),
-                (ge,reg12,5),
-                (lt,reg12,21),
-                (assign,"$town_nighttime",0),
-            (else_try),
-                (assign,"$town_nighttime",1),
-            (try_end),
-            (str_store_string, s40, "@A shimmering light appears in the distance. The gates of the underworld open before you. There emerges a quiet commotion from the long dark passage behind the gates. The underworld is awakening."),
-
-            (display_message, "str_quest_updated"),
-            (add_quest_note_from_sreg, "qst_blank_quest_5", 3, "@While you performed your task you have fallen into the entrance! You need to find a way out.", 0),
-        (else_try),
-            (set_background_mesh, "mesh_pic_deserters"),
-            (str_store_string, s40, "@You see a crater in the distance, a lot of smoke and nothing special at all."),
+            (assign,"$town_nighttime",1),
         (try_end),
-    ],
-    [
+        (str_store_string, s40, "@A shimmering light appears in the distance. The gates of the underworld open before you. There emerges a quiet commotion from the long dark passage behind the gates. The underworld is awakening."),
+
+        (display_message, "str_quest_updated"),
+        (add_quest_note_from_sreg, "qst_blank_quest_5", 3, "@While you performed your task you have fallen into the entrance! You need to find a way out.", 0),
+    (else_try),
+        (set_background_mesh, "mesh_pic_deserters"),
+        (str_store_string, s40, "@You see a crater in the distance, a lot of smoke and nothing special at all."),
+    (try_end),
+  ],[
     # ("continue2",[
         # (check_quest_active, "qst_blank_quest_5"),
         # (eq,"$town_nighttime",0),
@@ -32335,35 +32333,33 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         # (change_screen_map),
     # ]),
     ("continue",[
-        (check_quest_active, "qst_blank_quest_5"),
-        (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 2),
-    ],
-        "Descend into the underworld...",
-    [
-    ##entry 0 = player
-    ##entry 1 = sisyphus (sitzend)
-    ##entry 2 = wahrsagertyp
-    ##entry 3 = herakles (sitzend)
-    ##entry 4 = achilleus
-    ##entry 5 = agamemnon
-    ##entry 6 = odysseus
-    ##entry 7 = alexander
-    ##entry 8 = caesar
-        (set_jump_mission, "mt_underworld"),
-        (modify_visitors_at_site,"scn_underworld"),
-        (reset_visitors),
-        (set_visitor, 0, "trp_player"),
-        (set_visitor, 1, "trp_sisyphus"),
-        (set_visitor, 2, "trp_wahrsager"),
-        # (set_visitor, 3, "trp_herakles"),
-        (set_visitor, 4, "trp_achilleus"),
-        (set_visitor, 5, "trp_agamemnon"),
-        (set_visitor, 6, "trp_odysseus"),
-        (set_visitor, 7, "trp_alexander"),
-        (set_visitor, 8, "trp_caesar"),
-        (set_visitor, 9, "trp_whore", 3249304392),
-        (jump_to_scene, "scn_underworld"),
-        (change_screen_mission),
+      (check_quest_active, "qst_blank_quest_5"),
+      (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 2),
+    ],"Descend into the underworld...",[
+      ##entry 0 = player
+      ##entry 1 = sisyphus (sitzend)
+      ##entry 2 = wahrsagertyp
+      ##entry 3 = herakles (sitzend)
+      ##entry 4 = achilleus
+      ##entry 5 = agamemnon
+      ##entry 6 = odysseus
+      ##entry 7 = alexander
+      ##entry 8 = caesar
+      (set_jump_mission, "mt_underworld"),
+      (modify_visitors_at_site,"scn_underworld"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+      (set_visitor, 1, "trp_sisyphus"),
+      (set_visitor, 2, "trp_wahrsager"),
+      # (set_visitor, 3, "trp_herakles"),
+      (set_visitor, 4, "trp_achilleus"),
+      (set_visitor, 5, "trp_agamemnon"),
+      (set_visitor, 6, "trp_odysseus"),
+      (set_visitor, 7, "trp_alexander"),
+      (set_visitor, 8, "trp_caesar"),
+      (set_visitor, 9, "trp_whore", 3249304392),
+      (jump_to_scene, "scn_underworld"),
+      (change_screen_mission),
     ]),
     # ("continue",[(neg|check_quest_active, "qst_blank_quest_5"),],"Walk around",
     # [
@@ -32373,12 +32369,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("continue",[
         (neg|check_quest_active, "qst_blank_quest_5"),
         (neg|quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 2),
-    ],"Leave...",
-    [
+    ],"Leave...",[
        (change_screen_map),
     ]),
-   ]
-),
+]),
 
 ("journey_underworld",0,    #modified motomataru chief
   "Claudia walks towards the house while you follow Amokos. He leads you on a steep and rocky path. "+
@@ -32400,93 +32394,82 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   " She notices that you have awaken and smiles. Then she gives you a tunic and tells you to dress."+
   " You stand up, put on the tunic and then follow her. She walks through her small but elegant house towards the dinning room. She tells you to take a seat."+
   " Then she walks away. After a while she returns with food which she serves. As it seems she doesn't have any slaves. The thunders are still roaring in the distance.",
-  "none",
-    [
+  "none",[
     (set_background_mesh, "mesh_pic_deserters"),
     (call_script, "script_end_quest", "qst_blank_quest_5"),
     (add_xp_as_reward, 1500),
-    ],
-    [
-    ("continue",[],"Continue...",
-    [
-        (set_jump_mission, "mt_roman_intro_3"),
-        (modify_visitors_at_site,"scn_antonias_house"),
-        (reset_visitors),
-        (set_visitor, 1, "trp_player"),
-        (set_visitor, 2, "trp_antonia"),
-        (jump_to_scene, "scn_antonias_house"),
-        ##remove spr_draw_bridge_a if needed
-        (change_screen_mission),
+  ],[
+    ("continue",[],"Continue...",[
+      (set_jump_mission, "mt_roman_intro_3"),
+      (modify_visitors_at_site,"scn_antonias_house"),
+      (reset_visitors),
+      (set_visitor, 1, "trp_player"),
+      (set_visitor, 2, "trp_antonia"),
+      (jump_to_scene, "scn_antonias_house"),
+      ##remove spr_draw_bridge_a if needed
+      (change_screen_mission),
     ]),
-    ]
-),
+]),
 
 ("slave_hideout",0,
-    "You have encountered a hideout. What do you want to do?",
-    "none",
-    [
-      (try_begin),
-        (check_quest_active, "qst_blank_quest_7"),
-        (neg|check_quest_succeeded,"qst_blank_quest_7"),
-        (neg|check_quest_failed,"qst_blank_quest_7"),
-        (quest_slot_eq, "qst_blank_quest_7", slot_quest_target_party, "$g_encountered_party"),
-        (quest_get_slot,":stage","qst_blank_quest_7",slot_quest_current_state),
-        (is_between, ":stage", 0,3),
-        (quest_set_slot, "qst_blank_quest_7", slot_quest_current_state, 2),
-        (set_jump_mission,"mt_slave_hideout"),
-        (set_jump_entry, 0),
-        (jump_to_scene, "scn_random_scene_plain_forest"),
-        (change_screen_mission),
-      (else_try),
-        (change_screen_map),
-        (remove_party, "$g_encountered_party"),
-      (else_try),
-        (set_background_mesh, "mesh_pic_deserters"),
-      (try_end),
-    ],
-    [
-      ("leave",[],"Leave.",
-        [
-          (change_screen_map),
-          (remove_party, "$g_encountered_party"),
-        ]
-      ),
-    ]
-),
+  "You have encountered a hideout. What do you want to do?",
+  "none",[
+    (try_begin),
+      (check_quest_active, "qst_blank_quest_7"),
+      (neg|check_quest_succeeded,"qst_blank_quest_7"),
+      (neg|check_quest_failed,"qst_blank_quest_7"),
+      (quest_slot_eq, "qst_blank_quest_7", slot_quest_target_party, "$g_encountered_party"),
+      (quest_get_slot,":stage","qst_blank_quest_7",slot_quest_current_state),
+      (is_between, ":stage", 0,3),
+      (quest_set_slot, "qst_blank_quest_7", slot_quest_current_state, 2),
+      (set_jump_mission,"mt_slave_hideout"),
+      (set_jump_entry, 0),
+      (jump_to_scene, "scn_random_scene_plain_forest"),
+      (change_screen_mission),
+    (else_try),
+      (change_screen_map),
+      (remove_party, "$g_encountered_party"),
+    (else_try),
+      (set_background_mesh, "mesh_pic_deserters"),
+    (try_end),
+  ],[
+    ("leave",[],"Leave.",[
+      (change_screen_map),
+      (remove_party, "$g_encountered_party"),
+    ]),
+]),
 
-(
-    "village_hunt_music_defeated",0,
-    "A heavy blow from the rogue guard sends you to the ground, and your vision spins and goes dark. " +
-    "Time passes. When you open your eyes again, you find yourself battered and bloody, " +
-    "but luckily none of the wounds appear to be lethal.",
-    "none",
-    [(set_background_mesh, "mesh_pic_deserters"),
-    ],
-    [
-      ("continue",[],"Continue...",[
-	  (val_add, "$g_player_unhealth", 5),
-	  (jump_to_menu, "mnu_village"),]),
-    ],
-),
-(
-    "village_hunt_lover_defeated",0,
-    "A heavy blow from the ghost sends you to the ground, and your vision spins and goes dark. " +
-    "Time passes. When you open your eyes again, you find yourself battered and bloody, " +
-    "but luckily none of the wounds appear to be lethal.",
-    "none",
-    [(set_background_mesh, "mesh_pic_deserters"),
-    ],
-    [
-      ("continue",[],"Continue...",[(jump_to_menu, "mnu_village"),]),
-    ],
-),
+("village_hunt_music_defeated",0,
+  "A heavy blow from the rogue guard sends you to the ground, and your vision spins and goes dark. " +
+  "Time passes. When you open your eyes again, you find yourself battered and bloody, " +
+  "but luckily none of the wounds appear to be lethal.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("continue",[],"Continue...",[
+      (val_add, "$g_player_unhealth", 5),
+      (jump_to_menu, "mnu_village"),
+    ]),
+]),
+
+("village_hunt_lover_defeated",0,
+  "A heavy blow from the ghost sends you to the ground, and your vision spins and goes dark. " +
+  "Time passes. When you open your eyes again, you find yourself battered and bloody, " +
+  "but luckily none of the wounds appear to be lethal.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("continue",[],"Continue...",[
+      (jump_to_menu, "mnu_village"),
+    ]),
+]),
 
 ("baths",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "You enter the local thermae. You see people enjoying the roman lifestyle. It is a place of pleasure.",
   "none",[
     (set_background_mesh, "mesh_pic_baths"),
   ],[
-    ("bath",[
+    ("use_bath",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 100),
     ],"Buy ticket for one day (100 denars). [Improves health]",[
@@ -32544,7 +32527,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (rest_for_hours, 6, 4, 0),
       (change_screen_map),
     ]),
-
     ("visit_thermae",[
       (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
       (try_begin),
