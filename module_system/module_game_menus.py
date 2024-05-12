@@ -32489,7 +32489,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("bath",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 100),
-    ],"Buy ticket for one day (100 denars).",[
+    ],"Buy ticket for one day (100 denars). [Improves health]",[
       (try_begin),
         (lt, "$g_player_unhealth", 300),
         (store_random_in_range, ":r", 1, 10),
@@ -41922,7 +41922,30 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
     (set_background_mesh, "mesh_pic_villa_sea"),
   ],[
-    ("visit_latrina",[
+    ("bath",[
+      (neg|troop_slot_eq, "trp_array_villa_feast", 9, 0),
+      (troop_slot_eq, "trp_household_villa", slot_troop_father, 1),
+    ],"StaySpend a day in the bath. [Improves health]",[
+      (try_begin),
+        (lt, "$g_player_unhealth", 300),
+        (store_random_in_range, ":r", 1, 10),
+        (val_sub, "$g_player_unhealth", ":r"),
+      (else_try),
+        (lt, "$g_player_unhealth", 600),
+        (store_random_in_range, ":r", 50, 140),
+        (val_sub, "$g_player_unhealth", ":r"),
+      (else_try),
+        (store_random_in_range, ":r", 140, 350),
+        (val_sub, "$g_player_unhealth", ":r"),
+      (try_end),
+      (assign, "$auto_enter_town", "$current_town"),
+      (assign, "$g_town_visit_after_rest", 1),
+      (assign, "$g_last_rest_center", "$current_town"),
+      (assign, "$g_last_rest_payment_until", -1),
+      (rest_for_hours, 6, 4, 0),
+      (change_screen_map),
+    ]),
+    ("villa_bath",[
       (neg|troop_slot_eq, "trp_array_villa_feast", 9, 0),
       (troop_slot_eq, "trp_household_villa", slot_troop_father, 1),
     ],"Enter the bath.",[
