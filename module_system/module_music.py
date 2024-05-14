@@ -17,7 +17,7 @@ tracks = [
   ("main_theme_1", "main_theme_1.ogg", mtf_sit_main_title|mtf_start_immediately, 0),
   ("main_theme_2", "main_theme_2.ogg", mtf_sit_main_title|mtf_start_immediately, 0),
   ("main_theme_3", "farya_hymn_of_legion.ogg", mtf_sit_main_title|mtf_start_immediately, 0),#
-
+  ("thermae_romanae_main_theme", "thermae_romanae_main_theme.ogg", mtf_sit_main_title|mtf_start_immediately, 0),
   ("ambushed_neutral", "middle_eastern_action.ogg", mtf_sit_ambushed|mtf_sit_siege, mtf_sit_fight|mtf_culture_all),
 
   ("ambushed_by_nord1",    "germ_war_1.ogg", mtf_culture_4|mtf_sit_ambushed|mtf_sit_siege, mtf_sit_fight|mtf_culture_all),
