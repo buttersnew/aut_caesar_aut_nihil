@@ -51,55 +51,55 @@ from IDs.ID_scenes import *
 # Some constant and function declarations to be used below...
 # wp_one_handed () | wp_two_handed () | wp_polearm () | wp_archery () | wp_crossbow () | wp_throwing ()
 def wp(x):
-n = 0
-r = 10 + int(x / 10)
-#n |= wp_one_handed(x + random.randrange(r))
-#n |= wp_two_handed(x + random.randrange(r))
-#n |= wp_polearm(x + random.randrange(r))
-#n |= wp_archery(x + random.randrange(r))
-#n |= wp_crossbow(x + random.randrange(r))
-#n |= wp_throwing(x + random.randrange(r))
-n |= wp_one_handed(x)
-n |= wp_two_handed(x)
-n |= wp_polearm(x)
-n |= wp_archery(x)
-n |= wp_crossbow(x)
-n |= wp_throwing(x)
-n |= wp_firearm(x)#slings
-return n
+  n = 0
+  r = 10 + int(x / 10)
+  #n |= wp_one_handed(x + random.randrange(r))
+  #n |= wp_two_handed(x + random.randrange(r))
+  #n |= wp_polearm(x + random.randrange(r))
+  #n |= wp_archery(x + random.randrange(r))
+  #n |= wp_crossbow(x + random.randrange(r))
+  #n |= wp_throwing(x + random.randrange(r))
+  n |= wp_one_handed(x)
+  n |= wp_two_handed(x)
+  n |= wp_polearm(x)
+  n |= wp_archery(x)
+  n |= wp_crossbow(x)
+  n |= wp_throwing(x)
+  n |= wp_firearm(x)#slings
+  return n
 
 def wpe(m,a,c,t):
-n = 0
-n |= wp_one_handed(m)
-n |= wp_two_handed(m)
-n |= wp_polearm(m)
-n |= wp_archery(a)
-n |= wp_crossbow(c)
-n |= wp_throwing(t)
-n |= wp_firearm(a)#slings
-return n
+  n = 0
+  n |= wp_one_handed(m)
+  n |= wp_two_handed(m)
+  n |= wp_polearm(m)
+  n |= wp_archery(a)
+  n |= wp_crossbow(c)
+  n |= wp_throwing(t)
+  n |= wp_firearm(a)#slings
+  return n
 
 def wpex(o,w,p,a,c,t):
-n = 0
-n |= wp_one_handed(o)
-n |= wp_two_handed(w)
-n |= wp_polearm(p)
-n |= wp_archery(a)
-n |= wp_crossbow(c)
-n |= wp_throwing(t)
-return n
+  n = 0
+  n |= wp_one_handed(o)
+  n |= wp_two_handed(w)
+  n |= wp_polearm(p)
+  n |= wp_archery(a)
+  n |= wp_crossbow(c)
+  n |= wp_throwing(t)
+  return n
 
 def wp_melee(x):
-n = 0
-r = 10 + int(x / 10)
-#n |= wp_one_handed(x + random.randrange(r))
-#n |= wp_two_handed(x + random.randrange(r))
-#n |= wp_polearm(x + random.randrange(r))
-n |= wp_one_handed(x)
-n |= wp_two_handed(x - 20)
-n |= wp_polearm(x + 10)
-n |= wp_throwing(x - 10)
-return n
+  n = 0
+  r = 10 + int(x / 10)
+  #n |= wp_one_handed(x + random.randrange(r))
+  #n |= wp_two_handed(x + random.randrange(r))
+  #n |= wp_polearm(x + random.randrange(r))
+  n |= wp_one_handed(x)
+  n |= wp_two_handed(x - 20)
+  n |= wp_polearm(x + 10)
+  n |= wp_throwing(x - 10)
+  return n
 
 #Skills
 knows_common = knows_riding_1|knows_trade_2|knows_inventory_management_2|knows_prisoner_management_1|knows_leadership_1
