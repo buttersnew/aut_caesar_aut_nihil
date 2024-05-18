@@ -5066,14 +5066,14 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("gathering_support", "Gathering support"),
   ("expected_back_imminently", "Expected back imminently"),
   ("expected_back_in_approximately_reg3_days", "Expected back in approximately {reg3} days"),
-  ("gathering_intelligence", "Gathering intelligence in {s9}"), #SB : in {s9}
-  ("diplomatic_embassy_to_s9", "Diplomatic embassy to {s9}"),
+  ("gathering_intelligence", "Spy ({s9})"), #SB : in {s9}
+  ("diplomatic_embassy_to_s9", "Ambassador ({s9})"),
   ("serving_as_minister", "Serving as minister"),
-  ("serving_as_praefect", "Serving as Praefectus urbi"),
-  ("in_your_court_at_s9", "In your court at {s9}"),
+  ("serving_as_praefect", "Serving as Praefectus Urbi"),
+  ("in_your_court_at_s9", "In {s9} (court)"),
   ("in_your_rome", "In Rome"),
   ("under_arms", "Under arms"),
-  ("in_your_party", "In your party"),
+  ("in_your_party", "Your party"),
   ("s4_s8_s5", "{!}{s4}: {s8} ({s5})"),
   ("s2_s3", "{!}{s2}^{s3}"),
   ("attacking_enemy_army_near_s11", "Attacking enemy army near {s11}"),
@@ -8815,18 +8815,6 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("diplo_casus_expired_reparations_accepted","In order to avoid war they decide to accept the demand. A sum of {reg40} denars has been paid as tribute."),
 ("diplo_casus_expired_reparations_refused_war","They refuse the demand and declare war!"),
 
-("minor_faction_description_gaetuli",
-  "The Gaetuli were an ancient Berber tribe in North Africa. They originally inhabited a region that covered the desert area south of the Atlas Mountains and the Sahara, "
-  +"but there is evidence they also lived along the Mediterranean coasts of what is now Algeria and Tunisia. During Roman times, the Autololes Gaetuli established themselves "
-  +"in modern-day Morocco. They were known for their skills in horse rearing and the production of purple dye from shellfish.^^ "
-  +"Roman perceptions of the Gaetuli varied, with some early accounts portraying them as uncivilized, while later accounts acknowledged ethnic diversity among Berber tribes. "
-  +"Roman records show that the Gaetuli played a role in the Jugurthine War and the Bellum Octavianum, and they later engaged in the Gaetulian War. They also provided "
-  +"the Roman Empire with exotic animals and purple dye through trade.^^ "
-  +"The Gaetuli had a diverse lifestyle due to the region's varying climates. They lived in huts in mountainous areas but some were also nomads in the deserts. "
-  +"They were known for their warlike tendencies and frequent invasions, targeting both Roman territories and other Numidian tribes. The Gaetuli often intermarried with other tribes.^^ "
-  +"Economically self-sufficient due to their nomadic nature, the Gaetuli relied on hunting and farming for sustenance. They traded with Roman colonies for goods such as murex for purple dye and "
-  +"exotic animals like lions, gazelles, and tigers.^^Religiously, Iarbas, a figure from Roman mythology, was said to be the first king of the Gaetuli "
-),
 ("minor_faction_description_garamantes",
   "The Garamantes were an ancient civilization based in the southern region of Libya. They were descended from Berber tribes and Saharan pastoralists, and their civilization emerged around 1000 BC, "
   +"lasting until the late 7th century AD. The Garamantes were known for their innovative agricultural practices, particularly their extensive qanat irrigation system. Their kingdom covered a vast area in "
@@ -8838,6 +8826,18 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
   +"systems. The Tichitt culture may have contributed to Garamantian culture in areas such as domestic architecture and ceramics. "
   +"^^There is speculation regarding the Garamantes involvement in slave raiding, as Herodotus mentioned them hunting Troglodyte Ethiopians on chariots, potentially for purposes of enslavement "
   +"or trade in ancient times. "
+),
+("minor_faction_description_gaetuli",
+  "The Gaetuli were an ancient Berber tribe in North Africa. They originally inhabited a region that covered the desert area south of the Atlas Mountains and the Sahara, "
+  +"but there is evidence they also lived along the Mediterranean coasts of what is now Algeria and Tunisia. During Roman times, the Autololes Gaetuli established themselves "
+  +"in modern-day Morocco. They were known for their skills in horse rearing and the production of purple dye from shellfish.^^ "
+  +"Roman perceptions of the Gaetuli varied, with some early accounts portraying them as uncivilized, while later accounts acknowledged ethnic diversity among Berber tribes. "
+  +"Roman records show that the Gaetuli played a role in the Jugurthine War and the Bellum Octavianum, and they later engaged in the Gaetulian War. They also provided "
+  +"the Roman Empire with exotic animals and purple dye through trade.^^ "
+  +"The Gaetuli had a diverse lifestyle due to the region's varying climates. They lived in huts in mountainous areas but some were also nomads in the deserts. "
+  +"They were known for their warlike tendencies and frequent invasions, targeting both Roman territories and other Numidian tribes. The Gaetuli often intermarried with other tribes.^^ "
+  +"Economically self-sufficient due to their nomadic nature, the Gaetuli relied on hunting and farming for sustenance. They traded with Roman colonies for goods such as murex for purple dye and "
+  +"exotic animals like lions, gazelles, and tigers.^^Religiously, Iarbas, a figure from Roman mythology, was said to be the first king of the Gaetuli "
 ),
 ("minor_faction_description_nabataea",
   "The Nabataeans were an ancient Arab people who inhabited northern Arabia and the southern Levant. They emerged as a distinct civilization between the 4th and 2nd centuries BCE, "
@@ -8871,17 +8871,6 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
   +"Ptolemy also noted a town called Eblana situated between the estuaries of the rivers Buvinda and Oboca. There's speculation about their tribal name possibly surviving in the toponym "
   +"Edmann in County Louth, but this idea is not strongly supported. "
 ),
-("minor_faction_description_slavic",
-  "The Gelonians, also known as the Geloni, were an ancient Scythian people who lived alongside the Budini in the valley of the Vorskla River. They were likely descendants of the Scythians and, "
-  +"like the Agathyrsi, lived independently outside of the Scythian kingdom. "
-  +"^^During the 6th century BC, the Gelonians established the city of Gelonus. Gelonus became an important industrial, commercial, and political center. "
-  +"When the Persian king Darius I attacked the Scythians in 513 BC, the Gelonians, along with the Budini and Sarmatians, supported the Scythians in defense against the invasion. "
-  +"^^The Gelonians had a sedentary lifestyle, engaged in agriculture, and lived in a city made entirely of wood, "
-  +"which was protected by defensive earthworks and ramparts. "
-  +"^^Herodotus mentioned that the Gelonians held Bacchic-type festivals every three years, which he interpreted dedicated to the Greek god Dionysos. They also built sanctuaries to their gods, which Herodotus again interpreted "
-  +"to be Greek gods, distinguishing them from the Scythians who did not build shrines to their gods. The Gelonians were involved in the smelting of iron and copper in the city of Gelonus, where ores "
-  +"were brought from outside sources. "
-),
 ("minor_faction_description_danish",
   "The Heruli were an early Germanic people whose origins are thought to be in north-central Europe, possibly Scandinavia. They then migrated during Late Antique to the Black sea region. They first appeared in records as one of the 'Scythian' groups raiding Roman provinces "
   +"in the Balkans and the Aegean Sea, both by land and sea, during the late Roman period. "
@@ -8894,6 +8883,17 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
   +"They also had initiation rites for slaves wanting to become warriors. Their material culture and the tumuli they built were similar to contemporary ones in southern Sweden, indicating close trade relations with "
   +"Baltic Sea peoples. "
   +"^^In terms of appearance, the Heruli claimed to be the tallest people in Scandza (Scandinavia) and were noted to have blue-grey eyes. "
+),
+("minor_faction_description_slavic",
+  "The Gelonians, also known as the Geloni, were an ancient Scythian people who lived alongside the Budini in the valley of the Vorskla River. They were likely descendants of the Scythians and, "
+  +"like the Agathyrsi, lived independently outside of the Scythian kingdom. "
+  +"^^During the 6th century BC, the Gelonians established the city of Gelonus. Gelonus became an important industrial, commercial, and political center. "
+  +"When the Persian king Darius I attacked the Scythians in 513 BC, the Gelonians, along with the Budini and Sarmatians, supported the Scythians in defense against the invasion. "
+  +"^^The Gelonians had a sedentary lifestyle, engaged in agriculture, and lived in a city made entirely of wood, "
+  +"which was protected by defensive earthworks and ramparts. "
+  +"^^Herodotus mentioned that the Gelonians held Bacchic-type festivals every three years, which he interpreted dedicated to the Greek god Dionysos. They also built sanctuaries to their gods, which Herodotus again interpreted "
+  +"to be Greek gods, distinguishing them from the Scythians who did not build shrines to their gods. The Gelonians were involved in the smelting of iron and copper in the city of Gelonus, where ores "
+  +"were brought from outside sources. "
 ),
 ("minor_faction_description_georgians",
   "The Diduroi were a Caucasian mountain people located to the east of the Tuskoi (Thusi) and north of the Albanian Pylai, as mentioned by Ptolemy. According to Plinius, the Dido, who call themselves Zunṭa "
