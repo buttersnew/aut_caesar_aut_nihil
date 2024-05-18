@@ -9923,8 +9923,7 @@ presentations = [
    ## END on load trigger
 
    ## Check for buttonpress
-   (ti_on_presentation_event_state_change,
-    [
+   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
         (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
@@ -9972,9 +9971,14 @@ presentations = [
     (else_try),
         (eq, ":button_pressed_id", "$g_presentation_obj_8"),
         (assign, "$temp", 0),
-        (jump_to_menu, "mnu_companion_report"),
-        #SB : we modified this, reset the global to the player so it shows up first
-        (assign, "$g_player_troop", "trp_player"),
+
+        (assign, "$temp_troop", "trp_player"),
+        #clear troop's temp slots for presentation
+        (try_for_range, ":stack_troop", active_npcs_including_player_begin, companions_end),
+          (troop_set_slot, ":stack_troop", dplmc_slot_troop_temp_slot, 0),
+        (try_end),
+        (troop_set_slot, "trp_player", dplmc_slot_troop_temp_slot, 0),
+        (start_presentation, "prsnt_companion_overview"),
     (else_try),
         (eq, ":button_pressed_id", "$g_presentation_obj_9"),
         (assign, "$temp", 0),
@@ -14153,6 +14157,19 @@ presentations = [
     (overlay_set_position, "$g_presentation_obj_2", pos1),
     (overlay_set_color, "$g_presentation_obj_2", 0xFFFFFF),
 
+    (assign, "$g_presentation_obj_4", -1),
+    (try_begin),
+      (is_between, "$temp_troop", companions_begin, companions_end),
+      (troop_get_slot, ":party", "$temp_troop", slot_troop_leaded_party),
+      (party_is_active, ":party"),
+      (create_game_button_overlay, "$g_presentation_obj_4", "@Send a message"),
+      (position_set_x, pos1, 430),
+      (position_set_y, pos1, 10),
+      (overlay_set_position, "$g_presentation_obj_4", pos1),
+      (overlay_set_color, "$g_presentation_obj_4", 0xFFFFFF),
+    (try_end),
+
+    (assign, "$g_presentation_obj_3", -1),
     (try_begin),
       (neq, "$temp_troop", "trp_player"),
       (create_game_button_overlay, "$g_presentation_obj_3", "@Export/Import"),
@@ -14160,8 +14177,6 @@ presentations = [
       (position_set_y, pos1, 10),
       (overlay_set_position, "$g_presentation_obj_3", pos1),
       (overlay_set_color, "$g_presentation_obj_3", 0xFFFFFF),
-    (else_try),
-      (assign, "$g_presentation_obj_3", 0),
     (try_end),
 
     (assign, ":pos_x", 150),
@@ -14705,21 +14720,19 @@ presentations = [
     (try_begin), #tableau clicked
       (eq, ":object", "$g_presentation_obj_1"),
       (change_screen_notes, 1, "$temp_troop"),
-      # (presentation_set_duration, 0),
+    (else_try),
+      (eq, ":object", "$g_presentation_obj_4"),
+      (jump_to_menu, "mnu_send_message_to_companion"),
+      (presentation_set_duration, 0),
     (else_try), #done
       (eq, ":object", "$g_presentation_obj_2"),
       (presentation_set_duration, 0),
+      (jump_to_menu, "mnu_reports"),
     (else_try), #export/import
       (eq, ":object", "$g_presentation_obj_3"),
-      (assign, "$g_next_menu", "mnu_companion_report"),
-      # (assign, "$auto_menu", "mnu_companion_report"),
-      # (jump_to_menu, "mnu_auto_return_to_map"),
       (jump_to_menu, "mnu_export_import"),
-      # (assign, "$talk_context", tc_town_talk),
-      # (start_map_conversation, "$temp_troop"),
       (set_player_troop, "$temp_troop"),
       (presentation_set_duration, 0),
-      # (change_screen_return),
     (try_end),
 
     (try_for_range, ":stack_troop", active_npcs_including_player_begin, kingdom_ladies_end),

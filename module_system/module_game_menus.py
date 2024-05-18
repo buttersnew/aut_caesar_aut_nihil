@@ -710,116 +710,9 @@ game_menus = [
       ]
   ),
 
-("companion_report",0,
-  "{s7}{s2}",
+("faction_orders",0,
+  "{!}{s9}",
   "none",[
-    (set_background_mesh, "mesh_pic_messenger"),
-    (str_clear, s1),
-    (str_clear, s2),
-    (str_store_string, s7, "str_no_companions_in_service"),
-    (try_begin),
-      (troop_get_slot, ":spouse_or_betrothed", "trp_player", slot_troop_spouse),
-      (try_begin),
-        ##diplomacy start+ Test gender with script
-        #(troop_get_type, ":is_female", "trp_player"),#<- replaced
-        (call_script, "script_cf_dplmc_troop_is_female", "trp_player"),
-        #(eq, ":is_female", 1),#<- replaced
-        ##diplomacy end+
-        (str_store_string, s8, "str_husband"),
-      (else_try),
-        (str_store_string, s8, "str_wife"),
-      (try_end),
-      (try_begin),
-        (le, ":spouse_or_betrothed", 0),
-        (troop_get_slot, ":spouse_or_betrothed", "trp_player", slot_troop_betrothed),
-        (str_store_string, s8, "str_betrothed"),
-      (try_end),
-      (gt, ":spouse_or_betrothed", 0),
-      (str_store_troop_name, s4, ":spouse_or_betrothed"),
-      (troop_get_slot, ":cur_center", ":spouse_or_betrothed", slot_troop_cur_center),
-      (try_begin),
-        (is_between, ":cur_center", centers_begin, centers_end),
-        (str_store_party_name, s5, ":cur_center"),
-      (else_try),
-        (troop_slot_eq, ":spouse_or_betrothed", slot_troop_occupation, slto_kingdom_hero),
-        (str_store_string, s5, "str_leading_party"),
-      (else_try),
-        (str_store_string, s5, "str_whereabouts_unknown"),
-      (try_end),
-      (str_store_string, s3, "str_s4_s8_s5"),
-      # (str_store_string, s2, s1),
-      (str_store_string, s2, "str_s2_s3"),
-    (try_end),
-    (try_begin),
-      (ge, "$cheat_mode", 1),
-      (ge, "$npc_to_rejoin_party", 0),
-      (str_store_troop_name, s5, "$npc_to_rejoin_party"),
-      (str_store_string, s1, s2),
-      (str_store_string, s2, "@{!}DEBUG -- {s1}^NPC in rejoin queue: {s5}^"),
-    (try_end),
-    (try_for_range, ":companion", companions_begin, companions_end),
-      # (str_clear, s2),
-      (str_clear, s3),
-      (try_begin),
-        (troop_slot_eq, ":companion", slot_troop_occupation, slto_player_companion),
-        #SB : replace the call
-        (call_script, "script_companion_get_mission_string", ":companion"),
-        (try_begin),
-          (ge, "$cheat_mode", 1),
-          (troop_get_slot, reg2, ":companion", slot_troop_current_mission),
-          (troop_get_slot, reg3, ":companion", slot_troop_days_on_mission),
-          (troop_get_slot, reg4, ":companion", slot_troop_prisoner_of_party),
-          (troop_get_slot, reg4, ":companion", slot_troop_playerparty_history),
-
-          (display_message, "@{!}DEBUG: {s4} current mission: {reg2}, days on mission: {reg3}, prisoner: {reg4}, pphistory: {reg5}"),
-        (try_end),
-        (str_store_string_reg, s3, s0),
-        (str_store_string, s2, "str_s2_s3"),
-
-        (str_clear, s7), #"no companions in service"
-      (try_end),
-    (try_end),
-    (assign, "$num_castle_meeting_troops", 0),
-    (party_clear, "p_temp_party"),
-    (try_for_range, ":companion", companions_begin, companions_end),
-      (troop_get_slot, ":party", ":companion", slot_troop_leaded_party),
-      (party_is_active, ":party"),
-      (party_slot_eq, ":party", slot_party_type, spt_companion_raider),
-      (val_add, "$num_castle_meeting_troops", 1),
-      (party_add_members, "p_temp_party", ":companion", 1),
-    (try_end),
-  ],[
-    ("guard_meet_"+str(x),[
-      (gt, "$num_castle_meeting_troops", x),#test this out
-      (party_stack_get_troop_id, ":troop_no", "p_temp_party", x),
-      (is_between, ":troop_no", active_npcs_begin, active_npcs_end),
-      (str_store_troop_name, s5, ":troop_no")
-    ],"Send a message to {s5}.",[
-      (party_stack_get_troop_id, "$castle_meeting_selected_troop", "p_temp_party", x),
-      (troop_get_slot, "$temp4", "$castle_meeting_selected_troop", slot_troop_leaded_party),
-      (jump_to_menu,"mnu_send_message_to_companion")
-    ])
-      for x in range(0, 8)
-  ]+[
-    ("start",[],"View Details.",[
-      (assign, "$temp_troop", "trp_player"),
-      #clear troop's temp slots for presentation
-      (try_for_range, ":stack_troop", active_npcs_including_player_begin, companions_end),
-        (troop_set_slot, ":stack_troop", dplmc_slot_troop_temp_slot, 0),
-      (try_end),
-      (troop_set_slot, "trp_player", dplmc_slot_troop_temp_slot, 0),
-      (start_presentation, "prsnt_companion_overview"),
-    ]),
-
-    ("continue",[],"Go Back.",[
-      (jump_to_menu, "mnu_reports"),
-    ]),
-]),
-
-  ("faction_orders",0,
-   "{!}{s9}",
-   "none",
-   [
     (str_clear, s9),
     (store_current_hours, ":cur_hours"),
     (try_for_range, ":faction_no", kingdoms_begin, kingdoms_end),
@@ -828,19 +721,19 @@ game_menus = [
 
         (faction_get_slot, ":old_faction_ai_state", ":faction_no", slot_faction_ai_state),
 
-	    (try_begin),
-			(faction_get_slot, ":faction_marshal", ":faction_no", slot_faction_marshall),
-			(gt, ":faction_marshal", -1),
-			(assign, ":faction_ai_decider", ":faction_marshal"),
-	    (else_try),
-			(faction_get_slot, ":faction_ai_decider", ":faction_no", slot_faction_leader),
-	    (try_end),
+      (try_begin),
+      (faction_get_slot, ":faction_marshal", ":faction_no", slot_faction_marshall),
+      (gt, ":faction_marshal", -1),
+      (assign, ":faction_ai_decider", ":faction_marshal"),
+      (else_try),
+      (faction_get_slot, ":faction_ai_decider", ":faction_no", slot_faction_leader),
+      (try_end),
 
 
         #(*1) these two lines moved to here from (*2)
         (call_script, "script_npc_decision_checklist_faction_ai_alt", ":faction_ai_decider"),
-	    (assign, ":new_strategy", reg0),
-	    (str_store_string, s26, s14),
+      (assign, ":new_strategy", reg0),
+      (str_store_string, s26, s14),
 
         #(3*) these three lines moved to here from (*4)
         (faction_get_slot, ":faction_ai_state", ":faction_no", slot_faction_ai_state),
@@ -850,110 +743,110 @@ game_menus = [
         (faction_get_slot, ":faction_ai_offensive_max_followers", ":faction_no", slot_faction_ai_offensive_max_followers),
         (str_store_faction_name, s10, ":faction_no"),
 
-	   (try_begin),
-			(faction_get_slot, ":faction_issue", ":faction_no", slot_faction_political_issue),
+    (try_begin),
+      (faction_get_slot, ":faction_issue", ":faction_no", slot_faction_political_issue),
 
-			(try_begin),
-				(eq, ":faction_issue", 1),
-				(str_store_string, s11, "@Appoint next marshal"),
-			(else_try),
-				(is_between, ":faction_issue", centers_begin, centers_end),
-				(str_store_party_name, s12, ":faction_issue"),
-				(str_store_string, s11, "@Award {s12} as fief"),
-			(else_try),
-				(eq, ":faction_issue", 0),
-				(str_store_string, s11, "str_dplmc_none"),
-			(else_try),
-				(assign, reg3, ":faction_issue"),
-				(str_store_string, s11, "@{!}Error ({reg3})"),
-			(try_end),
-
-			(store_current_hours, reg4),
-			(faction_get_slot, ":faction_issue_put_on_agenda", ":faction_no", slot_faction_political_issue_time),
-			(val_sub, reg4, ":faction_issue_put_on_agenda"),
-
-	        (str_store_string, s10, "@{!}{s10}^Faction political issue: {s11}"),
-			(try_begin),
-				(faction_slot_ge, ":faction_no", slot_faction_political_issue, 1),
-				(str_store_string, s10, "@{!}{s10} (on agenda {reg4} hours)"),
-			(try_end),
-	   (try_end),
-
-
-       (assign, reg2, ":faction_ai_offensive_max_followers"),
-       (try_begin),
-         (eq, ":faction_ai_state", sfai_default),
-         (str_store_string, s11, "@{!}Defending"),
-       (else_try),
-         (eq, ":faction_ai_state", sfai_gathering_army),
-         (str_store_string, s11, "@{!}Gathering army"),
-       (else_try),
-         (eq, ":faction_ai_state", sfai_attacking_center),
-         (str_store_party_name, s11, ":faction_ai_object"),
-         (str_store_string, s11, "@{!}Besieging {s11}"),
-       (else_try),
-         (eq, ":faction_ai_state", sfai_raiding_village),
-         (str_store_party_name, s11, ":faction_ai_object"),
-         (str_store_string, s11, "@{!}Raiding {s11}"),
-       (else_try),
-         (eq, ":faction_ai_state", sfai_attacking_enemy_army),
-         (str_store_party_name, s11, ":faction_ai_object"),
-         (str_store_string, s11, "str_attacking_enemy_army_near_s11"),
-       (else_try),
-         (eq, ":faction_ai_state", sfai_feast),
-         (str_store_party_name, s11, ":faction_ai_object"),
-         (str_store_string, s11, "str_holding_feast_at_s11"),
-	   (else_try),
-         (eq, ":faction_ai_state", sfai_attacking_enemies_around_center),
-         (str_store_party_name, s11, ":faction_ai_object"),
-         (str_store_string, s11, "@{!}Attacking enemies around {s11}"),
-       (else_try),
-	     (assign, reg4, ":faction_ai_state"),
-		 (str_store_string, s11, "str_sfai_reg4"),
-	   (try_end),
-
-       (try_begin),
-         (lt, ":faction_marshall", 0),
-         (str_store_string, s12, "@No one"),
-       (else_try),
-         (str_store_troop_name, s12, ":faction_marshall"),
-         (troop_get_slot, reg21, ":faction_marshall", slot_troop_controversy),
-         (str_store_string, s12, "@{!}{s12} (controversy: {reg21})"),
-       (try_end),
-
-	   (try_for_parties, ":screen_party"),
-			(party_slot_eq, ":screen_party", slot_party_ai_state, spai_screening_army),
-			(store_faction_of_party, ":screen_party_faction", ":screen_party"),
-			(eq, ":screen_party_faction", ":faction_no"),
-
-			(str_store_party_name, s38, ":screen_party"),
-			(str_store_string, s12, "@{!}{s12}^Screening party: {s38}"),
-	   (try_end),
-
-       #(*2) these two lines moved to up (look *1)
-	   #(call_script, "script_npc_decision_checklist_faction_ai", ":faction_no"),
-	   #(assign, ":new_strategy", reg0),
-
-       #(try_begin),
-       #  (this_or_next|eq, ":new_strategy", sfai_default),
-       #  (eq, ":new_strategy", sfai_feast),
-	   #
-	   #  (store_current_hours, ":hours"),
-	   #  (faction_set_slot, ":faction_no", slot_faction_ai_last_rest_time, ":hours"),
-	   #(try_end),
       (try_begin),
-         #new condition to rest, (a faction's new strategy should be feast or default) and (":hours_at_current_state" > 20)
-         (this_or_next|eq, ":new_strategy", sfai_default),
-         (eq, ":new_strategy", sfai_feast),
+        (eq, ":faction_issue", 1),
+        (str_store_string, s11, "@Appoint next marshal"),
+      (else_try),
+        (is_between, ":faction_issue", centers_begin, centers_end),
+        (str_store_party_name, s12, ":faction_issue"),
+        (str_store_string, s11, "@Award {s12} as fief"),
+      (else_try),
+        (eq, ":faction_issue", 0),
+        (str_store_string, s11, "str_dplmc_none"),
+      (else_try),
+        (assign, reg3, ":faction_issue"),
+        (str_store_string, s11, "@{!}Error ({reg3})"),
+      (try_end),
 
-         (store_current_hours, ":hours_at_current_state"),
-         (faction_get_slot, ":current_state_started", ":faction_no", slot_faction_ai_current_state_started),
-         (val_sub, ":hours_at_current_state", ":current_state_started"),
-         (ge, ":hours_at_current_state", 18),
+      (store_current_hours, reg4),
+      (faction_get_slot, ":faction_issue_put_on_agenda", ":faction_no", slot_faction_political_issue_time),
+      (val_sub, reg4, ":faction_issue_put_on_agenda"),
 
-         (store_current_hours, ":hours"),
-         (faction_set_slot, ":faction_no", slot_faction_ai_last_rest_time, ":hours"),
-       (try_end),
+          (str_store_string, s10, "@{!}{s10}^Faction political issue: {s11}"),
+      (try_begin),
+        (faction_slot_ge, ":faction_no", slot_faction_political_issue, 1),
+        (str_store_string, s10, "@{!}{s10} (on agenda {reg4} hours)"),
+      (try_end),
+    (try_end),
+
+
+      (assign, reg2, ":faction_ai_offensive_max_followers"),
+      (try_begin),
+        (eq, ":faction_ai_state", sfai_default),
+        (str_store_string, s11, "@{!}Defending"),
+      (else_try),
+        (eq, ":faction_ai_state", sfai_gathering_army),
+        (str_store_string, s11, "@{!}Gathering army"),
+      (else_try),
+        (eq, ":faction_ai_state", sfai_attacking_center),
+        (str_store_party_name, s11, ":faction_ai_object"),
+        (str_store_string, s11, "@{!}Besieging {s11}"),
+      (else_try),
+        (eq, ":faction_ai_state", sfai_raiding_village),
+        (str_store_party_name, s11, ":faction_ai_object"),
+        (str_store_string, s11, "@{!}Raiding {s11}"),
+      (else_try),
+        (eq, ":faction_ai_state", sfai_attacking_enemy_army),
+        (str_store_party_name, s11, ":faction_ai_object"),
+        (str_store_string, s11, "str_attacking_enemy_army_near_s11"),
+      (else_try),
+        (eq, ":faction_ai_state", sfai_feast),
+        (str_store_party_name, s11, ":faction_ai_object"),
+        (str_store_string, s11, "str_holding_feast_at_s11"),
+    (else_try),
+        (eq, ":faction_ai_state", sfai_attacking_enemies_around_center),
+        (str_store_party_name, s11, ":faction_ai_object"),
+        (str_store_string, s11, "@{!}Attacking enemies around {s11}"),
+      (else_try),
+      (assign, reg4, ":faction_ai_state"),
+    (str_store_string, s11, "str_sfai_reg4"),
+    (try_end),
+
+      (try_begin),
+        (lt, ":faction_marshall", 0),
+        (str_store_string, s12, "@No one"),
+      (else_try),
+        (str_store_troop_name, s12, ":faction_marshall"),
+        (troop_get_slot, reg21, ":faction_marshall", slot_troop_controversy),
+        (str_store_string, s12, "@{!}{s12} (controversy: {reg21})"),
+      (try_end),
+
+    (try_for_parties, ":screen_party"),
+      (party_slot_eq, ":screen_party", slot_party_ai_state, spai_screening_army),
+      (store_faction_of_party, ":screen_party_faction", ":screen_party"),
+      (eq, ":screen_party_faction", ":faction_no"),
+
+      (str_store_party_name, s38, ":screen_party"),
+      (str_store_string, s12, "@{!}{s12}^Screening party: {s38}"),
+    (try_end),
+
+      #(*2) these two lines moved to up (look *1)
+    #(call_script, "script_npc_decision_checklist_faction_ai", ":faction_no"),
+    #(assign, ":new_strategy", reg0),
+
+      #(try_begin),
+      #  (this_or_next|eq, ":new_strategy", sfai_default),
+      #  (eq, ":new_strategy", sfai_feast),
+    #
+    #  (store_current_hours, ":hours"),
+    #  (faction_set_slot, ":faction_no", slot_faction_ai_last_rest_time, ":hours"),
+    #(try_end),
+      (try_begin),
+        #new condition to rest, (a faction's new strategy should be feast or default) and (":hours_at_current_state" > 20)
+        (this_or_next|eq, ":new_strategy", sfai_default),
+        (eq, ":new_strategy", sfai_feast),
+
+        (store_current_hours, ":hours_at_current_state"),
+        (faction_get_slot, ":current_state_started", ":faction_no", slot_faction_ai_current_state_started),
+        (val_sub, ":hours_at_current_state", ":current_state_started"),
+        (ge, ":hours_at_current_state", 18),
+
+        (store_current_hours, ":hours"),
+        (faction_set_slot, ":faction_no", slot_faction_ai_last_rest_time, ":hours"),
+      (try_end),
 
         #Change of strategy
         (try_begin),
@@ -963,232 +856,135 @@ game_menus = [
           (faction_set_slot, ":faction_no", slot_faction_ai_current_state_started, ":hours"),
         (try_end),
 
-	   (call_script, "script_evaluate_realm_stability", ":faction_no"),
-	   (assign, ":disgruntled_lords", reg0),
-	   (assign, ":restless_lords", reg1),
+    (call_script, "script_evaluate_realm_stability", ":faction_no"),
+    (assign, ":disgruntled_lords", reg0),
+    (assign, ":restless_lords", reg1),
 
-	   (faction_get_slot, ":last_feast_ended", ":faction_no", slot_faction_last_feast_start_time),
-	   (store_sub, ":hours_since_last_feast", ":cur_hours", ":last_feast_ended"),
-	   (val_sub, ":hours_since_last_feast", 72),
+    (faction_get_slot, ":last_feast_ended", ":faction_no", slot_faction_last_feast_start_time),
+    (store_sub, ":hours_since_last_feast", ":cur_hours", ":last_feast_ended"),
+    (val_sub, ":hours_since_last_feast", 72),
 
-	   (faction_get_slot, ":current_state_started", ":faction_no", slot_faction_ai_current_state_started),
-	   (store_sub, ":hours_at_current_state", ":cur_hours", ":current_state_started"),
+    (faction_get_slot, ":current_state_started", ":faction_no", slot_faction_ai_current_state_started),
+    (store_sub, ":hours_at_current_state", ":cur_hours", ":current_state_started"),
 
-       (faction_get_slot, ":faction_ai_last_offensive_time", ":faction_no", slot_faction_last_offensive_concluded),
-       (store_sub, ":hours_since_last_offensive", ":cur_hours", ":faction_ai_last_offensive_time"),
+      (faction_get_slot, ":faction_ai_last_offensive_time", ":faction_no", slot_faction_last_offensive_concluded),
+      (store_sub, ":hours_since_last_offensive", ":cur_hours", ":faction_ai_last_offensive_time"),
 
-       (faction_get_slot, ":faction_ai_last_rest", ":faction_no", slot_faction_ai_last_rest_time),
-       (store_sub, ":hours_since_last_rest", ":cur_hours", ":faction_ai_last_rest"),
+      (faction_get_slot, ":faction_ai_last_rest", ":faction_no", slot_faction_ai_last_rest_time),
+      (store_sub, ":hours_since_last_rest", ":cur_hours", ":faction_ai_last_rest"),
 
-       (faction_get_slot, ":faction_ai_last_decisive_event", ":faction_no", slot_faction_ai_last_decisive_event),
-       (store_sub, ":hours_since_last_decisive_event", ":cur_hours", ":faction_ai_last_decisive_event"),
+      (faction_get_slot, ":faction_ai_last_decisive_event", ":faction_no", slot_faction_ai_last_decisive_event),
+      (store_sub, ":hours_since_last_decisive_event", ":cur_hours", ":faction_ai_last_decisive_event"),
 
-	   (assign, reg3, ":hours_at_current_state"),
-	   (assign, reg4, ":hours_since_last_offensive"),
-	   (assign, reg5, ":hours_since_last_feast"),
+    (assign, reg3, ":hours_at_current_state"),
+    (assign, reg4, ":hours_since_last_offensive"),
+    (assign, reg5, ":hours_since_last_feast"),
 
-	   (assign, reg7, ":disgruntled_lords"),
-	   (assign, reg8, ":restless_lords"),
-	   (assign, reg9, ":hours_since_last_rest"),
-	   (assign, reg10, ":hours_since_last_decisive_event"),
-	   (str_store_string, s14, s26),
+    (assign, reg7, ":disgruntled_lords"),
+    (assign, reg8, ":restless_lords"),
+    (assign, reg9, ":hours_since_last_rest"),
+    (assign, reg10, ":hours_since_last_decisive_event"),
+    (str_store_string, s14, s26),
 
-       (str_store_string, s9, "str_s9s10_current_state_s11_hours_at_current_state_reg3_current_strategic_thinking_s14_marshall_s12_since_the_last_offensive_ended_reg4_hours_since_the_decisive_event_reg10_hours_since_the_last_rest_reg9_hours_since_the_last_feast_ended_reg5_hours_percent_disgruntled_lords_reg7_percent_restless_lords_reg8__"),
-     (try_end),
+      (str_store_string, s9, "str_s9s10_current_state_s11_hours_at_current_state_reg3_current_strategic_thinking_s14_marshall_s12_since_the_last_offensive_ended_reg4_hours_since_the_decisive_event_reg10_hours_since_the_last_rest_reg9_hours_since_the_last_feast_ended_reg5_hours_percent_disgruntled_lords_reg7_percent_restless_lords_reg8__"),
+    (try_end),
 
-     (try_begin),
-       (neg|is_between, "$g_cheat_selected_faction", kingdoms_begin, kingdoms_end),
-       (call_script, "script_get_next_active_kingdom", kingdoms_end),
-       (assign, "$g_cheat_selected_faction", reg0),
-     (try_end),
-     (str_store_faction_name, s10, "$g_cheat_selected_faction"),
-     (str_store_string, s9, "@Selected faction is: {s10}^^{s9}"),
-    ],
-    [
-      ("faction_orders_next_faction", [],"{!}Select next faction.",
-       [
-         (call_script, "script_get_next_active_kingdom", "$g_cheat_selected_faction"),
-         (assign, "$g_cheat_selected_faction", reg0),
-         (jump_to_menu, "mnu_faction_orders"),
-        ]
-       ),
+    (try_begin),
+      (neg|is_between, "$g_cheat_selected_faction", kingdoms_begin, kingdoms_end),
+      (call_script, "script_get_next_active_kingdom", kingdoms_end),
+      (assign, "$g_cheat_selected_faction", reg0),
+    (try_end),
+    (str_store_faction_name, s10, "$g_cheat_selected_faction"),
+    (str_store_string, s9, "@Selected faction is: {s10}^^{s9}"),
+  ],[
+    ("faction_orders_next_faction", [],"{!}Select next faction.",[
+      (call_script, "script_get_next_active_kingdom", "$g_cheat_selected_faction"),
+      (assign, "$g_cheat_selected_faction", reg0),
+      (jump_to_menu, "mnu_faction_orders"),
+    ]),
 
-       #SB : debug slots
-      ("faction_orders_slots", [],"{!}Debug slots.",
-       [
-         (assign, "$g_presentation_input", rename_kingdom),
-         (assign, "$g_presentation_state", 0),
-         (start_presentation, "prsnt_modify_slots"),
-        ]
-       ),
+    #SB : debug slots
+    ("faction_orders_slots", [],"{!}Debug slots.",[
+      (assign, "$g_presentation_input", rename_kingdom),
+      (assign, "$g_presentation_state", 0),
+      (start_presentation, "prsnt_modify_slots"),
+    ]),
 
-      ("faction_orders_political_collapse", [],"{!}CHEAT - Cause all lords in faction to fall out with their liege.",
-       [
-	   (try_for_range, ":lord", active_npcs_begin, active_npcs_end),
-			(troop_slot_eq, ":lord", slot_troop_occupation, slto_kingdom_hero),
-			(store_faction_of_troop, ":troop_faction", ":lord"),
-			(eq, ":troop_faction", "$g_cheat_selected_faction"),
-			(faction_get_slot, ":faction_liege", ":troop_faction", slot_faction_leader),
-			(call_script, "script_troop_change_relation_with_troop", ":lord", ":faction_liege", -200),
-	   (try_end),
+    ("faction_orders_political_collapse", [],"{!}CHEAT - Cause all lords in faction to fall out with their liege.",[
+      (try_for_range, ":lord", active_npcs_begin, active_npcs_end),
+        (troop_slot_eq, ":lord", slot_troop_occupation, slto_kingdom_hero),
+        (store_faction_of_troop, ":troop_faction", ":lord"),
+        (eq, ":troop_faction", "$g_cheat_selected_faction"),
+        (faction_get_slot, ":faction_liege", ":troop_faction", slot_faction_leader),
+        (call_script, "script_troop_change_relation_with_troop", ":lord", ":faction_liege", -200),
+      (try_end),
+    ]),
 
-	   ]
-       ),
+    ("faction_orders_defend", [],"{!}Force defend.",[
+      (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_state, sfai_default),
+      (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_object, -1),
+      (jump_to_menu, "mnu_faction_orders"),
+    ]),
+    ("faction_orders_feast", [],"{!}Force feast.",[
+      (assign, ":location_high_score", 0),
+      (try_for_range, ":location", walled_centers_begin, walled_centers_end),
+        (neg|party_slot_ge, ":location", slot_center_is_besieged_by, 1),
+        (store_faction_of_party, ":location_faction", ":location"),
+        (eq, ":location_faction", "$g_cheat_selected_faction"),
+        (party_get_slot, ":location_lord", ":location", slot_town_lord),
+        (troop_get_slot, ":location_score", ":location_lord", slot_troop_renown),
+        (store_random_in_range, ":random", 0, 1000), #will probably be king or senior lord
+        (val_add, ":location_score", ":random"),
+        (gt, ":location_score", ":location_high_score"),
+        (assign, ":location_high_score", ":location_score"),
+        (assign, ":location_feast", ":location"),
+      (try_end),
 
-      ("faction_orders_defend", [],"{!}Force defend.",
-       [
-         (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_state, sfai_default),
-         (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_object, -1),
-         (jump_to_menu, "mnu_faction_orders"),
-        ]
-       ),
-      ("faction_orders_feast", [],"{!}Force feast.",
-       [
+      (try_begin),
+        (gt, ":location_feast", centers_begin),
+        (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_state, sfai_feast),
+        (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_object, ":location_feast"),
+        (try_begin),
+          (eq, "$g_player_eligible_feast_center_no", ":location_feast"),
+          (assign, "$g_player_eligible_feast_center_no", -1),
+        (try_end),
 
-		 (assign, ":location_high_score", 0),
-		 (try_for_range, ":location", walled_centers_begin, walled_centers_end),
-			(neg|party_slot_ge, ":location", slot_center_is_besieged_by, 1),
-			(store_faction_of_party, ":location_faction", ":location"),
-			(eq, ":location_faction", "$g_cheat_selected_faction"),
-			(party_get_slot, ":location_lord", ":location", slot_town_lord),
-			(troop_get_slot, ":location_score", ":location_lord", slot_troop_renown),
-			(store_random_in_range, ":random", 0, 1000), #will probably be king or senior lord
-			(val_add, ":location_score", ":random"),
-			(gt, ":location_score", ":location_high_score"),
-			(assign, ":location_high_score", ":location_score"),
-			(assign, ":location_feast", ":location"),
-		 (try_end),
-
-		 (try_begin),
-			(gt, ":location_feast", centers_begin),
-			(faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_state, sfai_feast),
-			(faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_object, ":location_feast"),
-			(try_begin),
-			  (eq, "$g_player_eligible_feast_center_no", ":location_feast"),
-			  (assign, "$g_player_eligible_feast_center_no", -1),
-			(try_end),
-
-			(store_current_hours, ":hours"),
-			(faction_set_slot, "$g_cheat_selected_faction", slot_faction_last_feast_start_time, ":hours"),
-		 (try_end),
-
-	     (jump_to_menu, "mnu_faction_orders"),
-        ]
-       ),
-
-
-      ("faction_orders_gather", [],"{!}Force gather army.",
-       [
-         (store_current_hours, ":cur_hours"),
-         (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_state, sfai_gathering_army),
-         (faction_set_slot, "$g_cheat_selected_faction", slot_faction_last_offensive_concluded, ":cur_hours"),
-         (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_offensive_max_followers, 1),
-         (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_object, -1),
-         (jump_to_menu, "mnu_faction_orders"),
-        ]
-       ),
-      ("faction_orders_increase_time", [],"{!}Increase last offensive time by 24 hours.",
-       [
-         (faction_get_slot, ":faction_ai_last_offensive_time", "$g_cheat_selected_faction", slot_faction_last_offensive_concluded),
-         (val_sub, ":faction_ai_last_offensive_time", 24),
-         (faction_set_slot, "$g_cheat_selected_faction", slot_faction_last_offensive_concluded, ":faction_ai_last_offensive_time"),
-         (jump_to_menu, "mnu_faction_orders"),
-        ]
-       ),
-      ("faction_orders_rethink", [],"{!}Force rethink.",
-       [
-         (call_script, "script_init_ai_calculation"),
-         (call_script, "script_decide_faction_ai", "$g_cheat_selected_faction"),
-         (jump_to_menu, "mnu_faction_orders"),
-        ]
-       ),
-      ("faction_orders_rethink_all", [],"{!}Force rethink for all factions.",
-       [
-        # (call_script, "script_recalculate_ais"),
-         (jump_to_menu, "mnu_faction_orders"),
-        ]
-       ),
-
-	   # ("enable_alt_ai",[(eq, "$g_use_alternative_ai", 2),],"{!}CHEAT! - enable alternative ai",
-       # [
-	   # (assign, "$g_use_alternative_ai", 1),
-	   # (jump_to_menu, "mnu_faction_orders"),
-       # ]
-       # ),
-
-	   # ("disable_alt_ai",[(eq, "$g_use_alternative_ai", 2)],"{!}CHEAT! - disable alternative ai",
-       # [
-	   # (assign, "$g_use_alternative_ai", 0),
-	   # (jump_to_menu, "mnu_faction_orders"),
-       # ]
-       # ),
-
-       # #SB : see if this works
-     # ("faction_orders_pretend", [],"{!}Restore pretender.",
-       # [
-         # # (call_script, "script_recalculate_ais"),
-         # (store_sub, "$supported_pretender", "$g_cheat_selected_faction", npc_kingdoms_begin),
-         # (val_add, "$supported_pretender", pretenders_begin),
-         # (assign, "$g_talk_troop", "$supported_pretender"),
-         # (party_add_members, "p_main_party", "$supported_pretender", 1),
-         # # (troop_get_slot, "$supported_pretender_old_faction", "$supported_pretender", slot_troop_original_faction),
-         # (assign, "$supported_pretender_old_faction", "$g_cheat_selected_faction"),
-         # (troop_set_faction, "$g_talk_troop", "fac_player_supporters_faction"),
-         # (faction_set_slot, "fac_player_supporters_faction", slot_faction_leader, "$supported_pretender"),
-         # (assign, "$g_talk_troop_faction", "fac_player_supporters_faction"),
-
-         # (quest_set_slot, "qst_rebel_against_kingdom", slot_quest_giver_troop, "$supported_pretender"),
-         # (quest_set_slot, "qst_rebel_against_kingdom", slot_quest_target_faction, "$supported_pretender_old_faction"),
-
-         # (str_store_faction_name_link, s14, "$supported_pretender_old_faction"),
-         # (str_store_troop_name_link, s13, "$supported_pretender"),
-         # (setup_quest_text,"qst_rebel_against_kingdom"),
-         # (str_store_string, s2, "@You promised to help {s13} claim the throne of {s14}."),
-         # (call_script, "script_start_quest", "qst_rebel_against_kingdom", "$supported_pretender"),
-
-         # #merge lords
-         # (try_begin),
-           # (eq, "$players_kingdom", "fac_player_supporters_faction"),
-           # (call_script, "script_deactivate_player_faction"),
-           # (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
-              # (store_faction_of_troop, ":npc_faction", ":npc"),
-              # (eq, ":npc_faction", "fac_player_supporters_faction"),
-              # (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero),
-              # (call_script, "script_change_troop_faction", ":npc", "$g_talk_troop_faction"),
-           # (try_end),
-         # (try_end),
-
-         # (try_begin),
-           # (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
-           # (neq, "$players_kingdom", "fac_player_supporters_faction"),
-           # (neq, "$players_kingdom", "$g_talk_troop_faction"), #ie, don't leave faction if the player is already part of the same kingdom
-
-           # (faction_get_slot, ":old_leader", "$players_kingdom", slot_faction_leader),
-           # (call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, ":old_leader", "$players_kingdom"),
-           # (call_script, "script_activate_player_faction", "$g_talk_troop"),
-         # (try_end),
-
-         # (call_script, "script_player_join_faction", "$g_talk_troop_faction"),
-
-         # (call_script, "script_add_notification_menu", "mnu_notification_faction_defeated", "$g_cheat_selected_faction", 0),
-         # (change_screen_return),
-        # ]
-       # ),
-      ("faction_orders_init_econ", [],"{!}Initialize economic stats.",
-       [
-         (call_script, "script_initialize_economic_information"),
-         (jump_to_menu, "mnu_faction_orders"),
-        ]
-       ),
-
-
-
-      ("go_back_dot",[],"{!}Go back.",
-       [(jump_to_menu, "mnu_reports"),
-        ]
-       ),
-      ]
-  ),
+        (store_current_hours, ":hours"),
+        (faction_set_slot, "$g_cheat_selected_faction", slot_faction_last_feast_start_time, ":hours"),
+      (try_end),
+      (jump_to_menu, "mnu_faction_orders"),
+    ]),
+    ("faction_orders_gather", [],"{!}Force gather army.",[
+      (store_current_hours, ":cur_hours"),
+      (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_state, sfai_gathering_army),
+      (faction_set_slot, "$g_cheat_selected_faction", slot_faction_last_offensive_concluded, ":cur_hours"),
+      (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_offensive_max_followers, 1),
+      (faction_set_slot, "$g_cheat_selected_faction", slot_faction_ai_object, -1),
+      (jump_to_menu, "mnu_faction_orders"),
+    ]),
+    ("faction_orders_increase_time", [],"{!}Increase last offensive time by 24 hours.",[
+      (faction_get_slot, ":faction_ai_last_offensive_time", "$g_cheat_selected_faction", slot_faction_last_offensive_concluded),
+      (val_sub, ":faction_ai_last_offensive_time", 24),
+      (faction_set_slot, "$g_cheat_selected_faction", slot_faction_last_offensive_concluded, ":faction_ai_last_offensive_time"),
+      (jump_to_menu, "mnu_faction_orders"),
+    ]),
+    ("faction_orders_rethink", [],"{!}Force rethink.",[
+      (call_script, "script_init_ai_calculation"),
+      (call_script, "script_decide_faction_ai", "$g_cheat_selected_faction"),
+      (jump_to_menu, "mnu_faction_orders"),
+    ]),
+    ("faction_orders_rethink_all", [],"{!}Force rethink for all factions.",[
+      # (call_script, "script_recalculate_ais"),
+      (jump_to_menu, "mnu_faction_orders"),
+    ]),
+    ("faction_orders_init_econ", [],"{!}Initialize economic stats.",[
+      (call_script, "script_initialize_economic_information"),
+      (jump_to_menu, "mnu_faction_orders"),
+    ]),
+    ("go_back_dot",[],"{!}Go back.",[
+      (jump_to_menu, "mnu_reports"),
+    ]),
+]),
 
 # ("party_size_report",0,
 #    "{s1}",
@@ -27428,31 +27224,28 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   (start_presentation, "prsnt_name_kingdom"),
 ],[]),
 
-( #export/import from prsnt_companion_overview
-  "export_import", mnf_enable_hot_keys,
+ #export/import from prsnt_companion_overview
+("export_import", mnf_enable_hot_keys,
   "Press C to access {s1}'s character screen and then the statistics button on the bottom left. This allows you to export a characters stats/skills, then modify them and then reimport them.",
   "none",[
     (set_background_mesh, "mesh_pic_mb_warrior_1"),
-    # # (set_player_troop, "trp_player"),
-    # (change_screen_view_character),
-    # # (change_screen_return),
-    # (assign, "$talk_context", tc_town_talk),
-    # (start_map_conversation, "$g_player_troop"),
-    (set_player_troop, "$g_player_troop"),
-    (str_store_troop_name_plural, s1, "$g_player_troop"),
+    (set_player_troop, "$temp_troop"),
+    (str_store_troop_name_plural, s1, "$temp_troop"),
   ],[
-    ("rename",[],"I never liked the name {s1}...",[
+    ("rename",[],"Rename the companion.",[
       (assign, "$g_presentation_state", rename_companion),
       (start_presentation, "prsnt_name_kingdom"),
     ]),
 
-    ("display_slots",[(ge, "$cheat_mode", 1)], "Show me all your secrets...",[
-      (assign, "$g_talk_troop", "$g_player_troop"),
+    ("display_slots",[
+      (ge, "$cheat_mode", 1)
+    ], "Show me all your secrets...",[
+      (assign, "$g_talk_troop", "$temp_troop"),
       (jump_to_menu, "mnu_display_troop_slots"),
     ]),
-    ("continue",[],"Continue...",[
+    ("continue",[],"Go back.",[
       (set_player_troop, "trp_player"),
-      (jump_to_menu, "$g_next_menu"),
+      (start_presentation, "prsnt_companion_overview"),
     ]),
 ]),
 
@@ -42748,108 +42541,89 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
   ),
 
-  (
-    "conspiracy_2",mnf_disable_all_keys,
-    "Soon after you overwhelm the conspirators your guards appear and arrest them.^^\
-	Why hasn't the praetorian guard helped you? Who else is part of this conspiracy?",
-    "none",
-    [
-    #(set_background_mesh, "mesh_pic_palast"),
-    ],
-    [
-
-
-      ("continue",[],"All are Traitors!",
-        [
+("conspiracy_2",mnf_disable_all_keys,
+  "Soon after you overwhelm the conspirators your guards appear and arrest them.^^Why hasn't the praetorian guard helped you? Who else is part of this conspiracy?",
+  "none",[
+    (set_background_mesh, "mesh_pic_palast"),
+  ],[
+  ("continue",[],"All are Traitors!",[
 	  (assign, reg45, 0),
 	  (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
-		(troop_slot_eq, ":npc", slot_troop_legion, 12),
-		(assign, reg45, 1),
-		(str_store_troop_name_link, s20, ":npc"),
+      (troop_slot_eq, ":npc", slot_troop_legion, 12),
+      (assign, reg45, 1),
+      (str_store_troop_name_link, s20, ":npc"),
 	  (try_end),
 	  (try_begin),
-		(eq, reg45, 1),
-		(setup_quest_text,  "qst_conspiracy"),
-		(str_store_string, s2, "@The attempt of your enemies to murder you failed. Now you should talk with the commander of the praetorian guard {s20}. You may also ask some questions to the leader of the conspiracy you captured.^\
-		(Hint: To question the traitor you must talk to him while he is prisoner of your party.)"),
-		(call_script, "script_start_quest", "qst_conspiracy", "trp_fortuna"),
-		(call_script, "script_update_all_notes"),
-		(quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 1),
-
+      (eq, reg45, 1),
+      (setup_quest_text,  "qst_conspiracy"),
+      (str_store_string, s2, "@The attempt of your enemies to murder you failed. Now you should talk with the commander of the praetorian guard {s20}. You may also ask some questions to the leader of the conspiracy you captured.^\
+      (Hint: To question the traitor you must talk to him while he is prisoner of your party.)"),
+      (call_script, "script_start_quest", "qst_conspiracy", "trp_fortuna"),
+      (call_script, "script_update_all_notes"),
+      (quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 1),
 	  (else_try),
-		(setup_quest_text,  "qst_conspiracy"),
-		(str_store_string, s2, "@The attempt of your enemies to murder you failed. You haven't assigned a commander for the praetorian guard. That could have prevented the assassination. You may also ask some questions to the leader of the conspiracy you captured.^\
-		(Hint: To question the traitor you must talk to him while he is prisoner of your party.)"),
-		(call_script, "script_start_quest", "qst_conspiracy", "trp_fortuna"),
-		(call_script, "script_update_all_notes"),
-		(quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 1),
+      (setup_quest_text,  "qst_conspiracy"),
+      (str_store_string, s2, "@The attempt of your enemies to murder you failed. You haven't assigned a commander for the praetorian guard. That could have prevented the assassination. You may also ask some questions to the leader of the conspiracy you captured.^\
+      (Hint: To question the traitor you must talk to him while he is prisoner of your party.)"),
+      (call_script, "script_start_quest", "qst_conspiracy", "trp_fortuna"),
+      (call_script, "script_update_all_notes"),
+      (quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 1),
 	  (try_end),
-      (change_screen_map),
-
 	  (try_for_range, ":slot", 20, 500),
-		(troop_get_slot, ":enemy", "trp_array_villa_feast", ":slot"),
-		(ge, ":enemy", active_npcs_begin),
-		(try_begin),
-			(troop_get_slot, ":party_no", ":enemy", slot_troop_leaded_party),
-			(ge, ":party_no", 1),
-			(remove_party, ":party_no"),
-			(troop_set_slot, ":enemy", slot_troop_leaded_party, -1),
-		(try_end),
-		(troop_join_as_prisoner, ":enemy"),
-
-        (troop_set_slot, ":enemy", slot_troop_prisoner_of_party, "p_main_party"),
-        (party_force_add_prisoners, "p_main_party", ":enemy", 1),
-        (call_script, "script_event_hero_taken_prisoner_by_player", ":enemy"),
-
-		(try_begin),
-			(neg|quest_slot_ge, "qst_conspiracy", slot_quest_target_troop, active_npcs_begin),
-			(quest_set_slot, "qst_conspiracy", slot_quest_target_troop, ":enemy"),
-			(str_store_troop_name, s20, ":enemy"),
-			(add_quest_note_from_sreg, "qst_conspiracy", 3, "@After the interrogation of your guards {s20} was exposed as leader of the conspiracy. Now it is time to ask him some questions.", 0),
-
-		(try_end),
-		(troop_set_slot, "trp_array_villa_feast", ":slot", -1),
+      (troop_get_slot, ":enemy", "trp_array_villa_feast", ":slot"),
+      (ge, ":enemy", active_npcs_begin),
+      (try_begin),
+        (troop_get_slot, ":party_no", ":enemy", slot_troop_leaded_party),
+        (ge, ":party_no", 1),
+        (remove_party, ":party_no"),
+        (troop_set_slot, ":enemy", slot_troop_leaded_party, -1),
+      (try_end),
+      (troop_join_as_prisoner, ":enemy"),
+      (troop_set_slot, ":enemy", slot_troop_prisoner_of_party, "p_main_party"),
+      (party_force_add_prisoners, "p_main_party", ":enemy", 1),
+      (call_script, "script_event_hero_taken_prisoner_by_player", ":enemy"),
+		  (try_begin),
+        (neg|quest_slot_ge, "qst_conspiracy", slot_quest_target_troop, active_npcs_begin),
+        (quest_set_slot, "qst_conspiracy", slot_quest_target_troop, ":enemy"),
+        (str_store_troop_name, s20, ":enemy"),
+        (add_quest_note_from_sreg, "qst_conspiracy", 3, "@After the interrogation of your guards {s20} was exposed as leader of the conspiracy. Now it is time to ask him some questions.", 0),
+      (try_end),
+      (troop_set_slot, "trp_array_villa_feast", ":slot", -1),
 	  (try_end),
 	  (add_quest_note_from_sreg, "qst_conspiracy", 4, "@It is up to you what happens to the other traitors. You may execute them.", 0),
-      ]),
-    ],
-  ),
+
+    (change_screen_map),
+  ]),
+],),
 
 
-  (
-    "send_message_to_companion",0,
-    "Which message do you want to send to {s6}.",
-    "none",
-    [
-	(set_background_mesh, "mesh_pic_messenger"),
-    (str_store_troop_name, s6, "$castle_meeting_selected_troop")],
-    [
-      ("follow_me",[(str_store_troop_name, s6, "$castle_meeting_selected_troop")],
-       "{s6} shall return to me with his whole host as fast as possible",
-       [(party_set_ai_object,"$temp4","p_main_party"),
-		(party_set_ai_behavior,"$temp4",ai_bhvr_escort_party),
-		(party_set_helpfulness, "$temp4", 10),
-     	(jump_to_menu, "mnu_companion_report"),
-		(display_message, "@A runner is dispatched."),
+("send_message_to_companion",0,
+  "Which message do you want to send to {s6}.",
+  "none",[
+    (set_background_mesh, "mesh_pic_messenger"),
+    (str_store_troop_name, s6, "$temp_troop")
+  ],[
+    ("follow_me",[
+      (str_store_troop_name, s6, "$temp_troop")
+    ],"{s6} shall return to me with his whole host as fast as possible",[
+      (party_set_ai_object,"$temp4","p_main_party"),
+      (party_set_ai_behavior,"$temp4",ai_bhvr_escort_party),
+      (party_set_helpfulness, "$temp4", 10),
+     	(start_presentation, "prsnt_companion_overview"),
+		  (display_message, "@A messanger is sent."),
 		]),
-	  ("follow_me",[(str_store_troop_name, s6, "$castle_meeting_selected_troop")],
-       "{s6} shall dismiss all troops and join me as fast as possible",
-       [
-
-	    (troop_set_slot, "$castle_meeting_selected_troop", slot_troop_leaded_party, -1),
-		(remove_party, "$temp4"),
-		(jump_to_menu, "mnu_companion_report"),
-     	(display_message, "@A runner is dispatched."),
+	  ("follow_me",[
+      (str_store_troop_name, s6, "$temp_troop")
+    ],"{s6} shall dismiss all troops and join me as fast as possible",[
+	    (troop_set_slot, "$temp_troop", slot_troop_leaded_party, -1),
+      (remove_party, "$temp4"),
+      (start_presentation, "prsnt_companion_overview"),
+     	(display_message, "@A runner is sent."),
 		]),
-
-	  ("nevermind",[],
-       "Go back",
-       [
-		(jump_to_menu, "mnu_companion_report"),
-
+	  ("nevermind",[],"Go back",[
+		  (start_presentation, "prsnt_companion_overview"),
 		]),
-    ]
-  ),
+]),
 
 ("financial_crisis",0,
   "Signs of a crisis!^^You receive a message from the Quaestor. He seems worried about the state of the treasure. He suggest to raise taxes or try to lower costs by disbanding troops."
