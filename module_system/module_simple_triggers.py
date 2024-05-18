@@ -6069,6 +6069,7 @@ simple_triggers = [
   # Here do NPC that is quitting
     (else_try),
         (gt, "$npc_is_quitting", 0),
+        (neq, "$npc_is_quitting", "trp_npc35"), # not ursus
         (eq, "$g_infinite_camping", 0),
         (try_begin),
             (main_party_has_troop, "$npc_is_quitting"),
