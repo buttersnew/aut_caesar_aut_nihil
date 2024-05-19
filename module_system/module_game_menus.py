@@ -16867,8 +16867,6 @@ game_menus = [
               (try_end),
           (try_end),
           #SB : override disguise and set flags for entries
-
-
           (try_begin),
               (eq, "$town_entered", 0),
               (assign, "$town_entered", 1),
