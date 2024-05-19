@@ -16880,7 +16880,7 @@ game_menus = [
           (try_begin),
               (lt, "$sneaked_into_town", 1), #not sneaked
               (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-              (try_for_range, ":entry", 0, 9),
+              (try_for_range, ":entry", 0, 8),
                   (call_script, "script_init_second_outfit", "mt_town_center", ":entry", 1),
                   (mission_tpl_entry_set_override_flags, "mt_town_center", ":entry", af_override_outfit_1 | af_override_horse),
               (try_end),

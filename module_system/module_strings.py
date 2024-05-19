@@ -9390,6 +9390,20 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("wpt_throwing", "Throwing"),
 ("wpt_firearm", "Slings"),
 
+("minor_faction_merchant_intro_0", "Come, my friend. I have many nice goods to offer you."),
+("minor_faction_merchant_intro_1", "Here, take some bread and water, my friend. ^^-- He offers you smelly water and old bread. --^^ I have many goods from all over the world."),
+("minor_faction_merchant_intro_2", "You look thirsty, my friend. Here, take some water.^^-- He offers you smelly water. --^^ Now let me show you my wares."),
+("minor_faction_merchant_intro_3", "Do you want to buy something, my friend?"),
+("minor_faction_merchant_intro_4", "I have the finest goods around here. Come, take a look."),
+("minor_faction_merchant_intro_end", "end"),
+
+("minor_faction_merchant_talk_0", "I have many nice things for you, my friend."),
+("minor_faction_merchant_talk_1", "Nice! Today I have received goods from faraway lands."),
+("minor_faction_merchant_talk_2", "You won't be disappointed."),
+("minor_faction_merchant_talk_3", "Very good! I have the freshest goods."),
+("minor_faction_merchant_talk_4", "Ah, very good. I have various things to offer."),
+("minor_faction_merchant_talk_end", "end"),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black
