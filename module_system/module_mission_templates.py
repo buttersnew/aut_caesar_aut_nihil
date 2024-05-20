@@ -5390,6 +5390,25 @@ miracle_battle_trigger = (3,0,ti_once,[],[
 
 ##SB : new camera triggers
 dplmc_battle_mode_triggers = [
+  # torches for night battles?
+  # (ti_on_agent_spawn, 0.5, 0, [
+  #   (is_currently_night),
+  # ],[
+  #   (store_random_in_range, ":rand", 0, 10),
+  #   (ge, ":rand", 8),
+  #   (store_trigger_param_1, ":agent_no"),
+  #   (agent_is_active, ":agent_no"),
+  #   (agent_is_alive, ":agent_no"),
+  #   (agent_is_human, ":agent_no"),
+  #   (agent_get_wielded_item, ":old_item" , ":agent_no", 1),
+  #   (try_begin),
+  #     (gt, ":old_item" , 0),
+  #     (agent_unequip_item, ":agent_no", ":old_item"),
+  #   (end_try),
+  #   (agent_equip_item, ":agent_no", "itm_torch"),
+  #   (agent_set_wielded_item, ":agent_no", "itm_torch"),
+  # ]),
+
   voice_order_sounds,
   #VC-1729 call horse begins
   (0, 0, ti_once,[],[

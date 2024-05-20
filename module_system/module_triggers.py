@@ -753,8 +753,14 @@ triggers = [
 
             #Reduce grievance over time (or augment, if party is overcrowded
             (troop_get_slot, ":grievance", ":npc", slot_troop_personalityclash_penalties),
+            (try_begin),
+                (str_store_troop_name, s0, ":npc"),
+                (assign, reg1, ":grievance"),
+                (display_message, "@{s0}: {reg1} grievance"),
+            (try_end),
             (val_mul, ":grievance", 90),
             (val_div, ":grievance", ":grievance_divisor"),
+            (val_clamp, ":grievance", -10000, 10000),
             (troop_set_slot, ":npc", slot_troop_personalityclash_penalties, ":grievance"),
 
             (troop_get_slot, ":grievance", ":npc", slot_troop_morality_penalties),
@@ -784,6 +790,7 @@ triggers = [
                 (troop_get_slot, ":grievance", ":npc", slot_troop_personalityclash_penalties),
                 (val_mul, ":grievance", 9),
                 (val_div, ":grievance", 10),
+                (val_clamp, ":grievance", -10000, 10000),
                 (troop_set_slot, ":npc", slot_troop_personalityclash_penalties, ":grievance"),
             (try_end),
             #Check for new personality clashes
