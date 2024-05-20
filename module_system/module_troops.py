@@ -3420,7 +3420,7 @@ itm_sarmatian_heavy_helm6,itm_mail_mittens,itm_caucasian_longsword,itm_caucasian
 itm_sarranid_cloth_robe_fancy_2,itm_ring_2,itm_eastern_shoe_r],
 knight_attrib_5, wp(270), knight_skills_5, 0x000000000005318d251b89d69d71d96c00000000001da8d30000000000000000, ],
 
-["kingdom_21_lord", "ShahOroezes", "Oroezes", tf_hero, no_scene, reserved, fac_kingdom_21,
+["kingdom_21_lord", "Shah Oroezes", "Oroezes", tf_hero, no_scene, reserved, fac_kingdom_21,
 [itm_cataphract_boots,itm_cataphract_eastern,
 itm_cataphract_sallet_1,itm_mail_mittens,itm_parthian_cataphract_axe,itm_lance,itm_cataphract_horse_parthian_3,
 itm_sarranid_cloth_robe_fancy_2,itm_ring_2,itm_eastern_shoe_r],

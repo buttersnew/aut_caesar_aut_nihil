@@ -753,11 +753,12 @@ triggers = [
 
             #Reduce grievance over time (or augment, if party is overcrowded
             (troop_get_slot, ":grievance", ":npc", slot_troop_personalityclash_penalties),
-            (try_begin),
-                (str_store_troop_name, s0, ":npc"),
-                (assign, reg1, ":grievance"),
-                (display_message, "@{s0}: {reg1} grievance"),
-            (try_end),
+            # (try_begin),
+            #     (ge, "$cheat_mode", 1),
+            #     (str_store_troop_name, s0, ":npc"),
+            #     (assign, reg1, ":grievance"),
+            #     (display_message, "@{s0}: {reg1} grievance"),
+            # (try_end),
             (val_mul, ":grievance", 90),
             (val_div, ":grievance", ":grievance_divisor"),
             (val_clamp, ":grievance", -10000, 10000),
