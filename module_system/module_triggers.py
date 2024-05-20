@@ -611,13 +611,12 @@ triggers = [
    ),
 
   (0.3, 0, 1.1, [
-                 (check_quest_active, "qst_escort_merchant_caravan"),
-                 (quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
-                 (neg|party_is_active,":quest_target_party"),
-                ],
-                [
-                 (call_script, "script_abort_quest", "qst_escort_merchant_caravan", 2),
-                ]),
+    (check_quest_active, "qst_escort_merchant_caravan"),
+    (quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
+    (neg|party_is_active,":quest_target_party"),
+  ],[
+    (call_script, "script_abort_quest", "qst_escort_merchant_caravan", 2),
+  ]),
 
 # Troublesome bandits
   (0.3, 0.0, 1.1, [(check_quest_active, "qst_troublesome_bandits"),

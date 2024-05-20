@@ -182,6 +182,14 @@ poisoned_arrows_damage = (6, 0, 0, [],[
 
 
 global_common_triggers = [
+  #crouching should only be available while hunting
+  (ti_on_agent_spawn, 0, 0, [ ],[
+    (store_trigger_param_1, ":agent_no"),
+    # (agent_get_troop_id, ":troop", ":agent_no"),
+    # (neq, ":troop", "trp_phalanx"),
+    (agent_ai_set_can_crouch, ":agent_no", 0),
+  ]),
+
   poisoned_arrows_hit,
   poisoned_arrows_damage,
 
@@ -1748,111 +1756,110 @@ weather = [
     (try_end),
   ]),
 ]
-wounds_vc =     (
-  ti_on_agent_hit, 0, 0, [],
-  [
-    (neq, "$auxilary_player_active", 1),
 
-    (assign, ":reg0_backup", reg0),
-    (store_trigger_param, ":inflicted_agent_id", 1),
-    (get_player_agent_no, ":player_agent"),
-    (eq, ":inflicted_agent_id", ":player_agent"),
-    #(store_trigger_param, ":dealer_agent_id", 2),
-    (store_trigger_param, ":inflicted_damage", 3),
-    (store_trigger_param, ":hit_bone", 4),
-    #(store_trigger_param, ":missile_item_kind_no", 5),
+wounds_vc = (ti_on_agent_hit, 0, 0, [],[
+  (neq, "$auxilary_player_active", 1),
 
-    (options_get_damage_to_player, ":damage_to_player_option"), #0 = 1/4, 1 = 1/2, 2 = 1/1
-    (try_begin),
-      (val_sub, ":damage_to_player_option", 2),
-      (val_mul, ":damage_to_player_option", -2),
-      (gt, ":damage_to_player_option", 0),
-      (val_mul, ":inflicted_damage", ":damage_to_player_option"),
+  (assign, ":reg0_backup", reg0),
+  (store_trigger_param, ":inflicted_agent_id", 1),
+  (get_player_agent_no, ":player_agent"),
+  (eq, ":inflicted_agent_id", ":player_agent"),
+  #(store_trigger_param, ":dealer_agent_id", 2),
+  (store_trigger_param, ":inflicted_damage", 3),
+  (store_trigger_param, ":hit_bone", 4),
+  #(store_trigger_param, ":missile_item_kind_no", 5),
+
+  (options_get_damage_to_player, ":damage_to_player_option"), #0 = 1/4, 1 = 1/2, 2 = 1/1
+  (try_begin),
+    (val_sub, ":damage_to_player_option", 2),
+    (val_mul, ":damage_to_player_option", -2),
+    (gt, ":damage_to_player_option", 0),
+    (val_mul, ":inflicted_damage", ":damage_to_player_option"),
+  (try_end),
+
+  (try_begin),
+    (eq, "$vc_wounds_on", 1),
+
+    (ge, ":inflicted_damage", 20),
+    (store_random_in_range, ":rand", 1, 101),
+    (le, ":rand", 20),				#20% chance for hits high damage hits (was 30)
+
+    # GET NUMBER OF CURRENT WOUNDS
+    (assign, ":num_current_wounds", 0),
+    (try_for_range, ":curr_slot", slot_quest_int_penalty_fluid_points, slot_quest_end_penalty_fluid_points),
+      (quest_get_slot, ":fluid_points", "qst_vc_wounds", ":curr_slot"),
+      (try_begin),
+        (lt, ":fluid_points", 0),
+        (val_mul, ":fluid_points", -1),
+      (try_end),
+      (gt, ":fluid_points", 0),
+      (val_add, ":num_current_wounds", ":fluid_points"),
     (try_end),
 
+    # PASS 2
+    (store_random_in_range, ":rand", 0, 10),
+    (store_mul, ":quad_current_wounds", ":num_current_wounds", ":num_current_wounds"),	#0-0, 1-1, 2-4, 3-9 and rest is greater
+    (ge, ":rand", ":quad_current_wounds"),	#0-100%, 1-90%, 2-60%, 3-10%
+
+    # PASS 3
+    (store_character_level, ":level", "trp_player"),
+    (store_mul, ":current_wounds_mul_10", ":num_current_wounds", 10),	#0-0, 1-10, 2-20, 3-30
+    (ge, ":level", ":current_wounds_mul_10"),
+
+    (val_add, "$wounded_today", 1),
+    # (val_add, "$total_wounds_ever", 1),
+
+    # 1. Penalty
     (try_begin),
-      (eq, "$vc_wounds_on", 1),
-
-      (ge, ":inflicted_damage", 20),
-      (store_random_in_range, ":rand", 1, 101),
-      (le, ":rand", 20),				#20% chance for hits high damage hits (was 30)
-
-      # GET NUMBER OF CURRENT WOUNDS
-      (assign, ":num_current_wounds", 0),
-      (try_for_range, ":curr_slot", slot_quest_int_penalty_fluid_points, slot_quest_end_penalty_fluid_points),
-        (quest_get_slot, ":fluid_points", "qst_vc_wounds", ":curr_slot"),
-        (try_begin),
-          (lt, ":fluid_points", 0),
-          (val_mul, ":fluid_points", -1),
-        (try_end),
-        (gt, ":fluid_points", 0),
-        (val_add, ":num_current_wounds", ":fluid_points"),
-      (try_end),
-
-      # PASS 2
-      (store_random_in_range, ":rand", 0, 10),
-      (store_mul, ":quad_current_wounds", ":num_current_wounds", ":num_current_wounds"),	#0-0, 1-1, 2-4, 3-9 and rest is greater
-      (ge, ":rand", ":quad_current_wounds"),	#0-100%, 1-90%, 2-60%, 3-10%
-
-      # PASS 3
-      (store_character_level, ":level", "trp_player"),
-      (store_mul, ":current_wounds_mul_10", ":num_current_wounds", 10),	#0-0, 1-10, 2-20, 3-30
-      (ge, ":level", ":current_wounds_mul_10"),
-
-      (val_add, "$wounded_today", 1),
-     # (val_add, "$total_wounds_ever", 1),
-
-      # 1. Penalty
-      (try_begin),
-        # (eq, ":hit_bone", hb_head),	#head		#head injuries disabled for VC-2776
-        # (store_random_in_range, ":rand", 0, 2),
-        # (le, ":rand", 0),
-        # (assign, ":attribute", ca_charisma),
-        # (assign, ":days_slot", slot_quest_int_penalty_left_days),
-        # (str_store_string, s1, "@You suffer a serious injury to your head. (-1 intelligence)"),
-        # (else_try),
-        (eq, ":hit_bone", hb_head),	#head 2
-        (assign, ":attribute", ca_charisma),
-        (assign, ":days_slot", slot_quest_cha_penalty_left_days),
-        (str_store_string, s1, "@You suffer a serious injury to your face. (-1 charisma)"),
-        (val_add, "$g_player_unhealth", 15),
-      (else_try),
-        (this_or_next|is_between, ":hit_bone", hb_shoulder_l, hb_hand_r + 1),	# arms
-        (is_between, ":hit_bone", hb_thigh_l, hb_foot_r + 1),					# legs
-        (assign, ":attribute", ca_agility),
-        (assign, ":days_slot", slot_quest_agi_penalty_left_days),
-        (str_store_string, s1, "@You suffer a serious injury to one of your limbs. (-1 agility)"),
-        (val_add, "$g_player_unhealth", 2),
-      (else_try),
-        (assign, ":attribute", ca_strength),	# body/rest
-        (assign, ":days_slot", slot_quest_str_penalty_left_days),
-        (str_store_string, s1, "@You suffer a serious injury to your body. (-1 strength)"),
-        (val_add, "$g_player_unhealth", 10),
-      (try_end),
-      (store_attribute_level, ":level", "trp_player", ":attribute"),
-      (gt,":level", 3),
-      (display_message, s1, message_negative),
-      (troop_raise_attribute, "trp_player", ":attribute", -1),
-      (try_begin),
-        (quest_get_slot, ":left_days", "qst_vc_wounds", ":days_slot"),
-        (le, ":left_days", 0),
-        (quest_set_slot, "qst_vc_wounds", ":days_slot", 5),
-      (try_end),
-      (store_add, ":points_slot", ":days_slot", 10),
-      (quest_get_slot, ":points", "qst_vc_wounds", ":points_slot"),
-      (val_add, ":points", 1),
-      (quest_set_slot, "qst_vc_wounds", ":points_slot", ":points"),
-
-      # 2. Screen color
-      (mission_cam_set_screen_color, 0x99660000),
-      (store_mul, ":time", ":inflicted_damage", 5),
-      (mission_cam_animate_to_screen_color, 0x00000000, ":time"),
-
-      # 3. Sound
-      # (play_sound, "snd_corazon_late"),
+      # (eq, ":hit_bone", hb_head),	#head		#head injuries disabled for VC-2776
+      # (store_random_in_range, ":rand", 0, 2),
+      # (le, ":rand", 0),
+      # (assign, ":attribute", ca_charisma),
+      # (assign, ":days_slot", slot_quest_int_penalty_left_days),
+      # (str_store_string, s1, "@You suffer a serious injury to your head. (-1 intelligence)"),
+      # (else_try),
+      (eq, ":hit_bone", hb_head),	#head 2
+      (assign, ":attribute", ca_charisma),
+      (assign, ":days_slot", slot_quest_cha_penalty_left_days),
+      (str_store_string, s1, "@You suffer a serious injury to your face. (-1 charisma)"),
+      (val_add, "$g_player_unhealth", 15),
+    (else_try),
+      (this_or_next|is_between, ":hit_bone", hb_shoulder_l, hb_hand_r + 1),	# arms
+      (is_between, ":hit_bone", hb_thigh_l, hb_foot_r + 1),					# legs
+      (assign, ":attribute", ca_agility),
+      (assign, ":days_slot", slot_quest_agi_penalty_left_days),
+      (str_store_string, s1, "@You suffer a serious injury to one of your limbs. (-1 agility)"),
+      (val_add, "$g_player_unhealth", 2),
+    (else_try),
+      (assign, ":attribute", ca_strength),	# body/rest
+      (assign, ":days_slot", slot_quest_str_penalty_left_days),
+      (str_store_string, s1, "@You suffer a serious injury to your body. (-1 strength)"),
+      (val_add, "$g_player_unhealth", 10),
     (try_end),
-    (assign, reg0, ":reg0_backup"),
-	])
+    (store_attribute_level, ":level", "trp_player", ":attribute"),
+    (gt,":level", 3),
+    (display_message, s1, message_negative),
+    (troop_raise_attribute, "trp_player", ":attribute", -1),
+    (try_begin),
+      (quest_get_slot, ":left_days", "qst_vc_wounds", ":days_slot"),
+      (le, ":left_days", 0),
+      (quest_set_slot, "qst_vc_wounds", ":days_slot", 5),
+    (try_end),
+    (store_add, ":points_slot", ":days_slot", 10),
+    (quest_get_slot, ":points", "qst_vc_wounds", ":points_slot"),
+    (val_add, ":points", 1),
+    (quest_set_slot, "qst_vc_wounds", ":points_slot", ":points"),
+
+    # 2. Screen color
+    (mission_cam_set_screen_color, 0x99660000),
+    (store_mul, ":time", ":inflicted_damage", 5),
+    (mission_cam_animate_to_screen_color, 0x00000000, ":time"),
+
+    # 3. Sound
+    # (play_sound, "snd_corazon_late"),
+  (try_end),
+  (assign, reg0, ":reg0_backup"),
+])
 
 ambient_scene_play_loop = (ti_after_mission_start, 0, 0,[],[
     (neg|game_in_multiplayer_mode),
@@ -1873,9 +1880,7 @@ ambient_agent_play_sound = (4, 0, 0, [],[
     (call_script,"script_sp_agent_play_sound")])
 
 sand_storm = [
-
-(1, 0, 0, [(eq,"$lightning_cycle",3),],
-  [
+  (1, 0, 0, [(eq,"$lightning_cycle",3),],[
     (get_player_agent_no, ":player"),
     (agent_is_active, ":player"),
     (agent_get_position, pos0, ":player"),
@@ -1883,10 +1888,9 @@ sand_storm = [
     (val_add, ":z", 400),
     (position_set_z, pos0, ":z"),
     (particle_system_burst, "psys_desert_storm", pos0,90),
-]),
+  ]),
 
-(0, 0, ti_once, [],
-  [
+  (0, 0, ti_once, [],[
     (party_get_current_terrain, ":terrain","p_main_party"),
     (this_or_next|eq, ":terrain", rt_desert_forest),
     (eq, ":terrain", rt_desert),
@@ -1894,16 +1898,15 @@ sand_storm = [
     (le, ":r", 1),
     (assign,"$lightning_cycle",3),
     (display_message, "@Sandstorm!"),
-]),
+  ]),
 ]
 
 thunder_storm =	[		# 4 trigger
 
-  (0, 0, ti_once, #preparations 2
-    [
-      (assign, "$lightning_cycle", -1),
-    ],
-    [
+  (0, 0, ti_once, [#preparations 2
+  ],[
+    (display_message, "@Thunderstorm. Check I"),
+    (assign, "$lightning_cycle", -1),
     (try_begin),
         (party_get_current_terrain, ":terrain","p_main_party"),
         (neq, ":terrain", rt_desert_forest),
@@ -1912,22 +1915,17 @@ thunder_storm =	[		# 4 trigger
         (neg|is_between, ":day_time", 4, 20),
         (get_global_cloud_amount, ":clouds"),
         (ge, ":clouds", 65),
-        (try_for_range, ":rand", 1, 11),
+        (store_random_in_range, ":rand", 1, 11),
+        (try_begin),
             (le, ":rand", 4),	# 20% chance
             (assign, "$lightning_cycle", 0),
-            (try_begin),
-                (neq, ":terrain", rt_desert_forest),
-                (neq, ":terrain", rt_desert),
-                (neq, ":terrain", rt_snow),
-                (neq, ":terrain", rt_snow_forest),
-                (set_rain, 1, 250),
-            (try_end),
+            (set_global_cloud_amount, 100),
+            (set_rain, 1, 250),
         (try_end),
     (try_end),
-
     (eq, "$lightning_cycle", 0),
-
-    (set_fixed_point_multiplier, 100),
+    (display_message, "@A Thunderstorm approaches!", color_bad_news),
+    (set_fixed_point_multiplier, 1000),
     (get_startup_sun_light, pos1),
     (position_get_x, "$sun_r", pos1),	# r
     (position_get_y, "$sun_g", pos1), # g
@@ -1938,54 +1936,43 @@ thunder_storm =	[		# 4 trigger
     (position_get_z, "$amb_b", pos1),	# b
   ]),
 
-  (3, 0.2, 6, 			#lightning 1
-    [
-      (eq,"$lightning_cycle",0),
-      (store_random_in_range,":chance",1,5),
-      (eq,":chance",1),
-      (play_sound,"snd_thunder_close"),
-      (set_startup_sun_light, 1000, 1000, 1000),
-      (set_startup_ambient_light, 1000, 1000, 1000),
-    ],
-    [
-      (set_startup_sun_light, 0, 0, 0),
-      (set_startup_ambient_light, 0, 0, 0),
-      (assign, "$lightning_cycle",1),
+  (3, 0.2, 6,[#lightning 1
+    (eq,"$lightning_cycle",0),
+    (store_random_in_range,":chance",1,5),
+    (eq,":chance",1),
+    (play_sound,"snd_thunder_close"),
+    (set_fixed_point_multiplier, 1),
+    (set_startup_sun_light, 1000, 1000, 1000),
+    (set_startup_ambient_light, 1000, 1000, 1000),
+  ],[
+    (set_startup_sun_light, 0, 0, 0),
+    (set_startup_ambient_light, 0, 0, 0),
+    (assign, "$lightning_cycle",1),
   ]),
 
-  (0.4,0.1, 6,			#lightning 2
-    [
-      (eq,"$lightning_cycle",1),
-
-      (set_startup_sun_light, 220, 220, 220),
-      (set_startup_ambient_light, 220, 220, 220),
-    ],
-    [
-      (set_startup_sun_light, 1, 1, 1),
-      (set_startup_ambient_light, 1, 1, 1),
-      (assign,"$lightning_cycle",2),
+  (0.4,0.1, 6,		[	#lightning 2
+    (eq,"$lightning_cycle",1),
+    (set_fixed_point_multiplier, 1),
+    (set_startup_sun_light, 220, 220, 220),
+    (set_startup_ambient_light, 220, 220, 220),
+  ],[
+    (set_fixed_point_multiplier, 1),
+    (set_startup_sun_light, 1, 1, 1),
+    (set_startup_ambient_light, 1, 1, 1),
+    (assign,"$lightning_cycle",2),
   ]),
 
-  (0.5,0.1, 6,			#lightning 3
-    [
-      (eq,"$lightning_cycle",2),
-      (set_startup_sun_light, 150, 150, 150),
-      (set_startup_ambient_light, 150, 150, 150),
-    ],
-    [
-      (set_startup_sun_light, "$sun_r", "$sun_g", "$sun_b"),
-      (set_startup_ambient_light, "$amb_r", "$amb_g", "$amb_b"),
-      (assign,"$lightning_cycle", 0),
+  (0.5,0.1, 6,			[#lightning 3
+    (eq,"$lightning_cycle",2),
+    (set_fixed_point_multiplier, 1),
+    (set_startup_sun_light, 150, 150, 150),
+    (set_startup_ambient_light, 150, 150, 150),
+  ],[
+    (set_fixed_point_multiplier, 1000),
+    (set_startup_sun_light, "$sun_r", "$sun_g", "$sun_b"),
+    (set_startup_ambient_light, "$amb_r", "$amb_g", "$amb_b"),
+    (assign,"$lightning_cycle", 0),
   ]),
-  #pigbagging this, crouching should only be available while hunting
-  (
-  ti_on_agent_spawn, 0, 0, [ ],
-  [
-    (store_trigger_param_1, ":agent_no"),
-    # (agent_get_troop_id, ":troop", ":agent_no"),
-    # (neq, ":troop", "trp_phalanx"),
-    (agent_ai_set_can_crouch, ":agent_no", 0),
-    ]),
 ]
 
 p_wetter = weather

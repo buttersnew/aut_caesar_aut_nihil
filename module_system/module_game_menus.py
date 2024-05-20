@@ -22117,11 +22117,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      # ]
   # ),
 
-  (
-    "crafted_item_finished",0,
-    "Because you haven't collected your ordered {s24} yet, the {s22} from {s23} sends it to you. Though, now the messanger demands a payment. It seems the merchant hasn't paid him.",
-    "none",
-    [
+("crafted_item_finished",0,
+  "Because you haven't collected your ordered {s24} yet, the {s22} from {s23} sends it to you. Though, now the messanger demands a payment. It seems the merchant hasn't paid him.",
+  "none",[
     (set_background_mesh, "mesh_pic_messenger"),
     (str_store_troop_name, s22, "$g_notification_menu_var1"),
     (str_store_party_name, s23, "$g_notification_menu_var2"),
@@ -22136,60 +22134,51 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (troop_set_slot, "$g_notification_menu_var1", slot_crafting_order_item, 0),
     (troop_set_slot, "$g_notification_menu_var1", slot_crafting_order_time, 0),
     (troop_set_slot, "$g_notification_menu_var1", slot_crafting_order_time_modifier, 0),
-      ],
-    [
-      ("continue",[],"Pay him. (100 denars)",
-       [
-        (troop_remove_gold, "trp_player", 100),
-        (change_screen_map),
-        ]),
-        ("continue",[],"{s24} is mine, but I will not pay the messanger!",
-       [
-        (call_script, "script_change_player_honor", -1),
-        (change_screen_map),
-        ]),
-     ]
-  ),
+  ],[
+    ("continue",[],"Pay him. [100 denars.]",[
+      (troop_remove_gold, "trp_player", 100),
+      (change_screen_map),
+    ]),
+    ("continue",[],"{s24} is mine, but I will not pay the messanger!",[
+      (call_script, "script_change_player_honor", -1),
+      (change_screen_map),
+    ]),
+]),
 
-  (
-    "question_peace_offer",0,
-    "You receive a peace offer^^The {s1} offers you a peace agreement. What is your answer?",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+("question_peace_offer",0,
+  "You receive a peace offer!^^The {s1} offers you a peace agreement. What is your answer?",
+  "none",[
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
 
+    ##diplomacy begin
+    (store_relation,  ":relation", "fac_player_supporters_faction", "$g_notification_menu_var1"),
+    (try_begin),
+      (this_or_next|faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
+      (ge, ":relation", 0),
+      (change_screen_return),
+      (display_log_message, "@Peace offer refected.", message_alert),
+    (try_end),
+    ##diplomacy end
+  ],[
+    ("peace_offer_accept",[],"Accept",[
+      (call_script, "script_diplomacy_start_peace_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
+      (change_screen_return),
+    ]),
       ##diplomacy begin
-      (store_relation,  ":relation", "fac_player_supporters_faction", "$g_notification_menu_var1"),
-      (try_begin),
-        (ge, ":relation", 0),
-        (change_screen_return),
-      (try_end),
+    ("dplmc_peace_offer_terms",[],"Dictate the peace terms",[
+      (start_presentation, "prsnt_dplmc_peace_terms"),
+    ]),
       ##diplomacy end
-      ],
-    [
-      ("peace_offer_accept",[],"Accept",
-       [
-         (call_script, "script_diplomacy_start_peace_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
-         (change_screen_return),
-        ]),
-        ##diplomacy begin
-      ("dplmc_peace_offer_terms",[],"Dictate the peace terms",
-       [
-        (start_presentation, "prsnt_dplmc_peace_terms"),
-        ]),
-        ##diplomacy end
-      ("peace_offer_reject",[],"Reject",
-       [
-         (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -5),
-         (change_screen_return),
-        ]),
-     ]
-  ),
+    ("peace_offer_reject",[],"Reject",[
+      (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -5),
+      (change_screen_return),
+    ]),
+]),
 
   (
     "notification_truce_expired",0,
@@ -41554,7 +41543,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("bath",[
       (neg|troop_slot_eq, "trp_array_villa_feast", 9, 0),
       (troop_slot_eq, "trp_household_villa", slot_troop_father, 1),
-    ],"StaySpend a day in the bath. [Improves health]",[
+    ],"Spend a day in the bath. [Improves health]",[
       (try_begin),
         (lt, "$g_player_unhealth", 300),
         (store_random_in_range, ":r", 1, 10),
@@ -41745,90 +41734,66 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-  (
-    "horde",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "In the distance you see sheep and cattle grazing in the meadows. Not far away from you some nomads have build up their camp.",
-    "none",
-    [
-    ],
-    [
-	("attack_the_hord",
-	[], "Attack them",
-	[
+("horde",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "In the distance you see sheep and cattle grazing in the meadows. Not far away from you some nomads have build up their camp.",
+  "none",[
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("attack_the_hord",
+    [], "Attack them",[
+      (try_begin),
+        (call_script, "script_party_count_members_with_full_health", "p_main_party"),
+        (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -50),
+        (gt, reg0, 200),
+        (party_set_morale, "$g_encountered_party", 100),##enemy has high morale
+        (assign, "$g_battle_result", 0),
+        (assign, "$g_engaged_enemy", 1),
+        (call_script, "script_calculate_battle_advantage"),
+        (set_battle_advantage, reg0),
+        (set_party_battle_mode),
+        (set_jump_mission,"mt_lead_charge"),
+        (call_script, "script_setup_random_scene"),
+        (assign, "$g_next_menu", "mnu_simple_encounter"),
+        (jump_to_menu, "mnu_battle_debrief"),
+        (change_screen_mission),
+      (else_try),
+        (display_message,"@You need to have at least 200 men."),
+      (try_end),
+	  ]),
 
-	      (try_begin),
-            (call_script, "script_party_count_members_with_full_health", "p_main_party"),
-			(call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -50),
-            (gt, reg0, 200),
-			(party_set_morale, "$g_encountered_party", 100),##enemy has high morale
-			(assign, "$g_battle_result", 0),
-			(assign, "$g_engaged_enemy", 1),
-			(call_script, "script_calculate_battle_advantage"),
-			(set_battle_advantage, reg0),
-			(set_party_battle_mode),
-
-
-
-            (set_jump_mission,"mt_lead_charge"),
-            (call_script, "script_setup_random_scene"),
-            (assign, "$g_next_menu", "mnu_simple_encounter"),
-            (jump_to_menu, "mnu_battle_debrief"),
-            (change_screen_mission),
-          (else_try),
-            (display_message,"@You need to have at least 200 men."),
-          (try_end),
-
-	]
-	),
-
-     ("horde_horde",
-       [
-           ],
-       "Visit the camp.",
-       [
+    ("horde_horde",[],"Visit the camp.",[
 			(assign, ":closest_town", -1),
 			(assign, ":score_to_beat", 99999),
-
 			(try_for_range, ":town_no", towns_begin, towns_end),
 				(store_distance_to_party_from_party, ":distance", "$g_encountered_party", ":town_no"),
 				(lt, ":distance", ":score_to_beat"),
 				(assign, ":closest_town", ":town_no"),
 				(assign, ":score_to_beat", ":distance"),
 			(try_end),
-	   (assign, "$current_town", ":closest_town"),
-	  (modify_visitors_at_site, "scn_hord"),
-	  (reset_visitors),
-	  (set_visitor, 1, "trp_sarmatian_village_walker_female"),
-	  (set_visitor, 2, "trp_sarmatian_light_horsearcher"),
-	  (set_visitor, 3, "trp_sarmatian_village_walker_female"),
-	  (set_visitors, 4, "trp_sarmatian_light_horsearcher",2),
-	  (set_visitors, 5, "trp_sarmatian_light_horsearcher",2),
-	  (set_visitor, 6, "trp_sarmatian_light_horsearcher"),
-	  (set_visitors, 7, "trp_sarmatian_village_walker_female",2),
-	  (set_visitors, 8, "trp_sarmatian_light_horseman",2),
-	  (set_visitors, 9, "trp_sarmatian_village_walker_female",3),
-	  (set_visitor, 10, "trp_sarmatian_light_horseman"),
-	  (set_visitors, 11, "trp_sarmatian_village_walker_female",2),
-	  (set_visitors, 12, "trp_sarmatian_village_walker_female",2),
-
-	  (set_jump_entry, 0),
-
-
-	   (set_jump_mission, "mt_horde"),
-
-		(jump_to_scene, "scn_hord"),
-		(change_screen_mission),
-        ]),
-
-
-
-      ("leave",[],"Leave.",
-        [
-		(change_screen_map),
-        ]
-      ),
-    ]
-  ),
+      (assign, "$current_town", ":closest_town"),
+      (modify_visitors_at_site, "scn_hord"),
+      (reset_visitors),
+      (set_visitor, 1, "trp_sarmatian_village_walker_female"),
+      (set_visitor, 2, "trp_sarmatian_light_horsearcher"),
+      (set_visitor, 3, "trp_sarmatian_village_walker_female"),
+      (set_visitors, 4, "trp_sarmatian_light_horsearcher",2),
+      (set_visitors, 5, "trp_sarmatian_light_horsearcher",2),
+      (set_visitor, 6, "trp_sarmatian_light_horsearcher"),
+      (set_visitors, 7, "trp_sarmatian_village_walker_female",2),
+      (set_visitors, 8, "trp_sarmatian_light_horseman",2),
+      (set_visitors, 9, "trp_sarmatian_village_walker_female",3),
+      (set_visitor, 10, "trp_sarmatian_light_horseman"),
+      (set_visitors, 11, "trp_sarmatian_village_walker_female",2),
+      (set_visitors, 12, "trp_sarmatian_village_walker_female",2),
+      (set_jump_entry, 0),
+      (set_jump_mission, "mt_horde"),
+      (jump_to_scene, "scn_hord"),
+      (change_screen_mission),
+    ]),
+    ("leave",[],"Leave.",[
+		  (change_screen_map),
+    ]),
+]),
 
 ("desert_victory",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "You have fought your way out of Garama before the enemy could mobilize more warriors.^But you have achieved nothing. Darta is still in the hands of the Garamantian king.^Attacking Garama would be a bad idea. During the slaughter Darta could be killed. You must find another way to get her.",
