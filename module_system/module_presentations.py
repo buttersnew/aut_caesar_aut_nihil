@@ -18895,10 +18895,10 @@ presentations = [
     (overlay_set_val, reg2, "$g_body_guard_on"),
     (assign, "$g_presentation_obj_admin_panel_8", reg2),
 
-    (create_text_overlay, reg1, "@Curb power wargoal", 0),
-    (call_script, "script_prsnt_vc_menu_helper"),
-    (overlay_set_val, reg2, "$g_allow_curb_power"),
-    (assign, "$g_presentation_obj_admin_panel_5", reg2),
+    # (create_text_overlay, reg1, "@Curb power wargoal", 0),
+    # (call_script, "script_prsnt_vc_menu_helper"),
+    # (overlay_set_val, reg2, "$g_allow_curb_power"),
+    # (assign, "$g_presentation_obj_admin_panel_5", reg2),
 
     # (create_text_overlay, reg1, "@Tributary mechanic", 0),
     # (call_script, "script_prsnt_vc_menu_helper"),
@@ -19257,13 +19257,13 @@ presentations = [
       (str_store_string,s3,"str_qual_life_feature"),
       (str_store_string,s4,"@If enabled you will receive messages about the appointment of governors/lords for empty provinces/fiefs. The menu has options for you to use your influence to change the outcome to your liking."),
       (overlay_set_display, "$g_presentation_obj_4", 0),
-    (else_try),
-      (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_admin_panel_5"),
-      (eq, ":object", "$g_presentation_obj_admin_panel_5"),
-      (str_store_string,s2,"@Curb the other realms power"),
-      (str_store_string,s3,"@Native feature"),
-      (str_store_string,s4,"@If enabled, the Campaign AI can use the war goal to 'curb the other realms power' against the strongest faction. This will usually lead to more wars against Rome."),
-      (overlay_set_display, "$g_presentation_obj_4", 0),
+    # (else_try),
+    #   (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_admin_panel_5"),
+    #   (eq, ":object", "$g_presentation_obj_admin_panel_5"),
+    #   (str_store_string,s2,"@Curb the other realms power"),
+    #   (str_store_string,s3,"@Native feature"),
+    #   (str_store_string,s4,"@If enabled, the Campaign AI can use the war goal to 'curb the other realms power' against the strongest faction. This will usually lead to more wars against Rome."),
+    #   (overlay_set_display, "$g_presentation_obj_4", 0),
     (else_try),
       (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_admin_panel_4"),
       (eq, ":object", "$g_presentation_obj_admin_panel_4"),
@@ -19404,7 +19404,7 @@ presentations = [
         (assign, "$vc_wounds_on", 1), # player may get wounded
         (assign, "$moralep_on", 1), # resting moral effect
         (assign, "$g_body_guard_on", 0), # body guards
-        (assign, "$g_allow_curb_power", 1), # curb power war goal
+        # (assign, "$g_allow_curb_power", 1), # curb power war goal
         (assign, "$g_schield_bash", 1), # AI uses shieldbash
         (assign, "$g_governor_appointment_message", 1), # message governor/lord gets a center notification
         (assign, "$show_truce_expired", 1), # message truce expired
@@ -19429,7 +19429,7 @@ presentations = [
         (assign, "$vc_wounds_on", 1), # player may get wounded
         (assign, "$moralep_on", 1), # resting moral effect
         (assign, "$g_body_guard_on", 1), # body guards
-        (assign, "$g_allow_curb_power", 0), # curb power war goal
+        # (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 1), # AI uses shieldbash
         (assign, "$g_governor_appointment_message", 1), # message governor/lord gets a center notification
         (assign, "$show_truce_expired", 0), # message truce expired
@@ -19454,7 +19454,7 @@ presentations = [
         (assign, "$vc_wounds_on", 0), # player may get wounded
         (assign, "$moralep_on", 1), # resting moral effect
         (assign, "$g_body_guard_on", 1), # body guards
-        (assign, "$g_allow_curb_power", 0), # curb power war goal
+        # (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 0), # AI uses shieldbash
         (assign, "$g_governor_appointment_message", 1), # message governor/lord gets a center notification
         (assign, "$show_truce_expired", 0), # message truce expired
@@ -19479,7 +19479,7 @@ presentations = [
         (assign, "$vc_wounds_on", 0), # player may get wounded
         (assign, "$moralep_on", 0), # resting moral effect
         (assign, "$g_body_guard_on", 1), # body guards
-        (assign, "$g_allow_curb_power", 0), # curb power war goal
+        # (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 0), # AI uses shieldbash
         (assign, "$g_governor_appointment_message", 1), # message governor/lord gets a center notification
         (assign, "$show_truce_expired", 0), # message truce expired
@@ -19548,7 +19548,7 @@ presentations = [
 
       (overlay_set_val, "$g_presentation_obj_17", "$insanedamage_on"),
       (overlay_set_val, "$g_presentation_obj_18", "$g_gore_on"),
-      (overlay_set_val, "$g_presentation_obj_admin_panel_5", "$g_allow_curb_power"),
+      # (overlay_set_val, "$g_presentation_obj_admin_panel_5", "$g_allow_curb_power"),
       (overlay_set_val, "$g_presentation_obj_admin_panel_2", "$g_schield_bash"),
       (overlay_set_val, "$g_presentation_obj_24", "$g_display_gift"),
       (overlay_set_val, "$g_presentation_obj_admin_panel_4", "$g_report_enemies"),
@@ -19663,9 +19663,9 @@ presentations = [
     (else_try),
       (eq, ":object", "$g_presentation_obj_admin_panel_7"),
       (assign, "$g_governor_appointment_message", ":value"),
-    (else_try),
-      (eq, ":object", "$g_presentation_obj_admin_panel_5"),
-      (assign, "$g_allow_curb_power", ":value"),
+    # (else_try),
+    #   (eq, ":object", "$g_presentation_obj_admin_panel_5"),
+    #   (assign, "$g_allow_curb_power", ":value"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_admin_panel_4"),
       (assign, "$g_report_enemies", ":value"),

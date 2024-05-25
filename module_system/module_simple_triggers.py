@@ -9427,7 +9427,7 @@ simple_triggers = [
     (try_end),
     ###end decrees
     (gt, ":chance", 0),
-    (store_random_in_range, ":rand", 0, 100),
+    (store_random_in_range, ":rand", 0, 105),
     (try_begin),
         (le, ":rand", ":chance"),
         (try_begin),

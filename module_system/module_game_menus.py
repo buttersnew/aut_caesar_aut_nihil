@@ -58424,11 +58424,11 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
   "Investment opportunity^^A prominent merchant from {s40} has reached out through your client looking for a loan to finance a potentially profitable business venture in the {s41} sector. They are looking for {reg41} denars and will repay with interest in your next weekly budget. If the venture goes well they will share some profits on top of the original sum, otherwise you will lose the investment. Your client thinks it's a good deal.",
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
-    (call_script, "script_get_random_town_of_culture", "fac_culture_7"),
+    (call_script, "script_cf_get_random_town_of_culture", "fac_culture_7"),
     (assign, reg40, reg0),
     (quest_set_slot, "qst_investment", slot_quest_dont_give_again_remaining_days, 28),
     (try_begin),
-        (gt, reg40, -1),
+        (is_between, reg40, towns_begin, towns_end),
         (str_store_party_name, s40, reg40),
         (store_random_in_range, ":string", "str_investment_request_text1", "str_investment_request_end"),
         (str_store_string, s41, ":string"),
