@@ -3372,12 +3372,13 @@ scene_props = [
           +" Astonished, you discover 50 denars concealed in the filth - an unexpected reward for your unsavory task. In the echoes of history,"
           +" the humble toilet becomes an unlikely treasure trove, a testament to the unpredictability of your journey through the ancient Roman world."
           +" ^Despite your efforts, the toilet is still dirty...."),
-          (val_add, "$g_player_unhealth", 50),
+          (call_script, "script_change_troop_health", "trp_player", 25),
           (troop_add_gold, "trp_player", 50),
         (else_try),
           (dialog_box, "@Armed with a Xylospongium, you tackle the task of toilet cleaning. Crafted from a stick and sponge, you diligently scrub away the remnants of digested food."
           +" The soft, water-soaked sponge brings a touch of comfort to this unglamorous chore, connecting you to the everyday lives of Romans."
           +" ^Despite your efforts, the toilet is still dirty...."),
+          (call_script, "script_change_troop_health", "trp_player", 25),
         (try_end),
       (try_end),
     ])

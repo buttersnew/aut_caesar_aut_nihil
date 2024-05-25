@@ -1185,7 +1185,9 @@ slot_troop_player_order_object  = 17 #Deprecated
 
 #Post 0907 changes begin
 slot_troop_age                 =  18
-slot_troop_age_appearance      =  19
+slot_troop_age_appearance      =  19 # Nero: seems to be unused
+
+slot_troop_unhealth              =  20
 
 #used for player crafting items
 slot_crafting_order_time            = slot_troop_age

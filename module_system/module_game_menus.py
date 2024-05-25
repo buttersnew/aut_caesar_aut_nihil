@@ -6576,82 +6576,78 @@ game_menus = [
 
 ("permanent_damage",mnf_disable_all_keys,
   "{s0}",
-  "none",
-  [
-      (assign, ":end_cond", 1),
-      (try_for_range, ":unused", 0, ":end_cond"),
-        (store_random_in_range, ":random_attribute", 0, 4),
-        (store_attribute_level, ":attr_level", "trp_player", ":random_attribute"),
-        (try_begin),
-          (gt, ":attr_level", 3),
-          (try_begin),
-            (eq, ":random_attribute", ca_strength),
-            (str_store_string, s0, "@Some of your tendons have been damaged in the battle. You lose 1 strength."),
-          (else_try),
-            (eq, ":random_attribute", ca_agility),
-            (str_store_string, s0, "@You took a nasty wound which will cause you to limp slightly even after it heals. You lose 1 agility."),
-          (else_try),
-            (eq, ":random_attribute", ca_charisma),
-            (str_store_string, s0, "@After the battle you are aghast to find that one of the terrible blows you suffered has left a deep, disfiguring scar on your face, horrifying those around you. Your charisma is reduced by 1."),
-          (else_try),
-            (eq, ":random_attribute", ca_intelligence),
-            (str_store_string, s0, "@You have trouble thinking straight after the battle, perhaps from a particularly hard hit to your head, and frequent headaches now plague your existence. Your intelligence is reduced by 1."),
-          (try_end),
-        (else_try),
-          (lt, ":end_cond", 200),
-          (val_add, ":end_cond", 1),
-        (try_end),
-      (try_end),
+  "none",[
+    (assign, ":end_cond", 1),
+    (try_for_range, ":unused", 0, ":end_cond"),
+      (store_random_in_range, ":random_attribute", 0, 4),
+      (store_attribute_level, ":attr_level", "trp_player", ":random_attribute"),
       (try_begin),
-        (eq, ":end_cond", 200),
+        (gt, ":attr_level", 3),
         (try_begin),
-          (eq, "$g_next_menu", -1),
-          (leave_encounter),
-          (change_screen_return),
+          (eq, ":random_attribute", ca_strength),
+          (str_store_string, s0, "@Some of your tendons have been damaged in the battle. You lose 1 strength."),
         (else_try),
-          (jump_to_menu, "$g_next_menu"),
+          (eq, ":random_attribute", ca_agility),
+          (str_store_string, s0, "@You took a nasty wound which will cause you to limp slightly even after it heals. You lose 1 agility."),
+        (else_try),
+          (eq, ":random_attribute", ca_charisma),
+          (str_store_string, s0, "@After the battle you are aghast to find that one of the terrible blows you suffered has left a deep, disfiguring scar on your face, horrifying those around you. Your charisma is reduced by 1."),
+        (else_try),
+          (eq, ":random_attribute", ca_intelligence),
+          (str_store_string, s0, "@You have trouble thinking straight after the battle, perhaps from a particularly hard hit to your head, and frequent headaches now plague your existence. Your intelligence is reduced by 1."),
         (try_end),
       (else_try),
-        (troop_raise_attribute, "trp_player", ":random_attribute", -1),
+        (lt, ":end_cond", 200),
+        (val_add, ":end_cond", 1),
       (try_end),
+    (try_end),
+    (try_begin),
+      (eq, ":end_cond", 200),
+      (try_begin),
+        (eq, "$g_next_menu", -1),
+        (leave_encounter),
+        (change_screen_return),
+      (else_try),
+        (jump_to_menu, "$g_next_menu"),
+      (try_end),
+    (else_try),
+      (troop_raise_attribute, "trp_player", ":random_attribute", -1),
+    (try_end),
   ],[
-      ("s0",
-       [
-         (store_random_in_range, ":random_no", 0, 4),
-         (try_begin),
-           (eq, ":random_no", 0),
-           (str_store_string, s0, "@Perhaps I'm getting unlucky..."),
-         (else_try),
-           (eq, ":random_no", 1),
-           (str_store_string, s0, "@Retirement is starting to sound better and better."),
-         (else_try),
-           (eq, ":random_no", 2),
-           (str_store_string, s0, "@No matter! I will persevere!"),
-         (else_try),
-           (eq, ":random_no", 3),
-			  ##diplomacy start+ Don't use troop_get_type for gender
-			  #(troop_get_type, ":is_female", "trp_player"),#<- replaced
-           (try_begin),
-             #(eq, ":is_female", 1),#<- replaced
-             (eq, "$character_gender", tf_female),#<- added
-             (str_store_string, s0, "@What did I do to deserve this?"),
-           (else_try),
-             (str_store_string, s0, "@I suppose it'll make for a good story, at least..."),
-           (try_end),
-			  ##diplomacy end+
-         (try_end),
-         ],
-       "{s0}",
-       [
-	     (val_add, "$g_player_unhealth", 25),
-         (try_begin),
-           (eq, "$g_next_menu", -1),
-           (leave_encounter),
-           (change_screen_return),
-         (else_try),
-           (jump_to_menu, "$g_next_menu"),
-         (try_end),
-         ]),
+    ("s0",[
+      (store_random_in_range, ":random_no", 0, 4),
+      (try_begin),
+        (eq, ":random_no", 0),
+        (str_store_string, s0, "@Perhaps I'm getting unlucky..."),
+      (else_try),
+        (eq, ":random_no", 1),
+        (str_store_string, s0, "@Retirement is starting to sound better and better."),
+      (else_try),
+        (eq, ":random_no", 2),
+        (str_store_string, s0, "@No matter! I will persevere!"),
+      (else_try),
+        (eq, ":random_no", 3),
+      ##diplomacy start+ Don't use troop_get_type for gender
+      #(troop_get_type, ":is_female", "trp_player"),#<- replaced
+        (try_begin),
+          #(eq, ":is_female", 1),#<- replaced
+          (eq, "$character_gender", tf_female),#<- added
+          (str_store_string, s0, "@What did I do to deserve this?"),
+        (else_try),
+          (str_store_string, s0, "@I suppose it'll make for a good story, at least..."),
+        (try_end),
+      ##diplomacy end+
+      (try_end),
+    ],"{s0}",[
+      (call_script, "script_change_troop_health", "trp_player", 25),
+      (try_begin),
+        (eq, "$g_next_menu", -1),
+        (leave_encounter),
+        (change_screen_return),
+      (else_try),
+        (jump_to_menu, "$g_next_menu"),
+      (try_end),
+    ]),
 ]),
 
   (
@@ -21567,7 +21563,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_end),
   ],[
     ("continue",[],"Continue...",[
-      (val_add, "$g_player_unhealth", 5),
+      (call_script, "script_change_troop_health", "trp_player", 5),
       (assign, "$talk_context", tc_player_defeated),
       (try_begin),
           (party_slot_eq, "p_main_party", slot_party_on_water, 1),
@@ -21615,215 +21611,191 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-  (
-    "captivity_castle_taken_prisoner",0,
-    "You are quickly surrounded by guards who take away your weapons. With curses and insults, they throw you into the dungeon where you must while away the miserable days of your captivity.",
-    "none",
-    [
-          ##diplomacy start+ test gender with script
-        #(troop_get_type, ":is_female", "trp_player"),#<- replaced
-          (set_background_mesh, "mesh_pic_prisoner_man"),
-          ##diplomacy end+
-        #SB : deduct relation here, probably
-        (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -1),
-    ],
-    [
-      ("continue",[],"Continue...",
-       [
+("captivity_castle_taken_prisoner",0,
+  "You are quickly surrounded by guards who take away your weapons. With curses and insults, they throw you into the dungeon where you must while away the miserable days of your captivity.",
+  "none",[
+      ##diplomacy start+ test gender with script
+      #(troop_get_type, ":is_female", "trp_player"),#<- replaced
+      (set_background_mesh, "mesh_pic_prisoner_man"),
+      ##diplomacy end+
+      #SB : deduct relation here, probably
+      (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -1),
+    ],[
+      ("continue",[],"Continue...",[
         (assign, "$g_player_is_captive", 1),
         (store_random_in_range, ":random_hours", 16, 22),
         (call_script, "script_event_player_captured_as_prisoner"),
         (call_script, "script_stay_captive_for_hours", ":random_hours"),
         (assign,"$auto_menu", "mnu_captivity_castle_check"),
-        (val_add, "$g_player_unhealth", 4),
+        (call_script, "script_change_troop_health", "trp_player", 4),
         (change_screen_return)
-        ]),
-    ]
-  ),
-  (
-    "captivity_rescue_lord_taken_prisoner",0,
-    "You remain in disguise for as long as possible before revealing yourself.\
- The guards are outraged and beat you savagely before throwing you back into the cell for God knows how long...",
-    "none",
-    [
-		  ##diplomacy start+ test gender with script
-        #(troop_get_type, ":is_female", "trp_player"),#<-replaced
-          (set_background_mesh, "mesh_pic_prisoner_man"),
-		  ##diplomacy end+
-   ],
-    [
-      ("continue",[],"Continue...",
-       [
-           (assign, "$g_player_is_captive", 1),
-           (store_random_in_range, ":random_hours", 16, 22),
-           (call_script, "script_event_player_captured_as_prisoner"),
-           (call_script, "script_stay_captive_for_hours", ":random_hours"),
-           (assign,"$auto_menu", "mnu_captivity_castle_check"),
-           (val_add, "$g_player_unhealth", 4),
-           (change_screen_return),
-        ]),
-    ]
-  ),
-  (
-    "captivity_castle_check",0,
-    "stub",
-    "none",
-    [
-        (store_random_in_range, reg(7), 0, 100),
-        (try_begin),
+      ]),
+]),
+
+("captivity_rescue_lord_taken_prisoner",0,
+  "You remain in disguise for as long as possible before revealing yourself."
+  +" The guards are outraged and beat you savagely before throwing you back into the cell for God knows how long...",
+  "none",[
+    ##diplomacy start+ test gender with script
+    #(troop_get_type, ":is_female", "trp_player"),#<-replaced
+    (set_background_mesh, "mesh_pic_prisoner_man"),
+    ##diplomacy end+
+  ],[
+    ("continue",[],"Continue...",[
+      (assign, "$g_player_is_captive", 1),
+      (store_random_in_range, ":random_hours", 16, 22),
+      (call_script, "script_event_player_captured_as_prisoner"),
+      (call_script, "script_stay_captive_for_hours", ":random_hours"),
+      (assign,"$auto_menu", "mnu_captivity_castle_check"),
+      (call_script, "script_change_troop_health", "trp_player", 4),
+      (change_screen_return),
+    ]),
+]),
+
+("captivity_castle_check",0,
+  "stub",
+  "none",[
+    (store_random_in_range, reg(7), 0, 100),
+    (try_begin),
 		  (party_is_active, "$capturer_party"),
 		  (store_faction_of_party, ":capturer_faction", "$capturer_party"),
 		  (is_between, ":capturer_faction", kingdoms_begin, kingdoms_end),
 		  (store_relation, ":relation_w_player_faction", ":capturer_faction", "fac_player_faction"),
 		  (ge, ":relation_w_player_faction", 0),
-          #SB : this doesn't make much sense when the player is unaffiliated
-          (jump_to_menu,"mnu_captivity_end_exchanged_with_prisoner"),
-		(else_try),
-          (lt, reg(7), 40),
-          (troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
-          (val_mul, ":player_renown", 2),
-          (store_character_level, ":player_level", "trp_player"),
-          (store_mul, "$player_ransom_amount", ":player_level", 50),
-          (val_add, "$player_ransom_amount", 100),
-          (val_add, "$player_ransom_amount", ":player_renown"),
-          (store_troop_gold, reg3, "trp_player"),
-          (store_div, ":player_gold_div_20", reg3, 20),
-          (val_add, "$player_ransom_amount", ":player_gold_div_20"),
+      #SB : this doesn't make much sense when the player is unaffiliated
+      (jump_to_menu,"mnu_captivity_end_exchanged_with_prisoner"),
+    (else_try),
+      (lt, reg(7), 40),
+      (troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+      (val_mul, ":player_renown", 2),
+      (store_character_level, ":player_level", "trp_player"),
+      (store_mul, "$player_ransom_amount", ":player_level", 50),
+      (val_add, "$player_ransom_amount", 100),
+      (val_add, "$player_ransom_amount", ":player_renown"),
+      (store_troop_gold, reg3, "trp_player"),
+      (store_div, ":player_gold_div_20", reg3, 20),
+      (val_add, "$player_ransom_amount", ":player_gold_div_20"),
 		  (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
 		  (ge, ":renown", 200),
-          #(gt, reg3, 100),
-          (jump_to_menu,"mnu_captivity_end_propose_ransom"),
-        (else_try),
-          (lt, reg(7), 50), #10% chance to be set free
-		 # (store_troop_gold, reg3, "trp_player"),
+      #(gt, reg3, 100),
+      (jump_to_menu,"mnu_captivity_end_propose_ransom"),
+    (else_try),
+      (lt, reg(7), 50), #10% chance to be set free
+		  # (store_troop_gold, reg3, "trp_player"),
 		  #(lt, reg3, 100),
-          (jump_to_menu,"mnu_captivity_end_exchanged_with_prisoner"),
-        (else_try),
-          (jump_to_menu,"mnu_captivity_castle_remain"),
-        (try_end),
-    ],
-    []
-  ),
-  (
-    "captivity_end_exchanged_with_prisoner",0,
-    "After days of imprisonment, you are finally set free {s0}",
-    "none",
-    [
-      (play_cue_track, "track_escape"),
+      (jump_to_menu,"mnu_captivity_end_exchanged_with_prisoner"),
+    (else_try),
+      (jump_to_menu,"mnu_captivity_castle_remain"),
+    (try_end),
+],[]),
 
+("captivity_end_exchanged_with_prisoner",0,
+  "After days of imprisonment, you are finally set free {s0}",
+  "none",[
+    (play_cue_track, "track_escape"),
+    (try_begin),
+        (party_is_active, "$capturer_party"),
+        (store_faction_of_party, ":capturer_faction", "$capturer_party"),
+        (is_between, ":capturer_faction", kingdoms_begin, kingdoms_end),
+        (store_relation, ":relation_w_player_faction", ":capturer_faction", "fac_player_faction"),
+        (ge, ":relation_w_player_faction", 0),
+        (str_store_party_name, s13, "$capturer_party"),
+        (str_store_string, s0, "@as {s13} is no longer held by your enemies."),
+    (else_try),
+        (str_store_string, s0, "@when your captors exchange you with another prisoner."),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (assign, "$g_player_is_captive", 0),
       (try_begin),
-		  (party_is_active, "$capturer_party"),
-		  (store_faction_of_party, ":capturer_faction", "$capturer_party"),
-		  (is_between, ":capturer_faction", kingdoms_begin, kingdoms_end),
-		  (store_relation, ":relation_w_player_faction", ":capturer_faction", "fac_player_faction"),
-		  (ge, ":relation_w_player_faction", 0),
-          (str_store_party_name, s13, "$capturer_party"),
-          (str_store_string, s0, "@as {s13} is no longer held by your enemies."),
-      (else_try),
-          (str_store_string, s0, "@when your captors exchange you with another prisoner."),
+        (party_is_active, "$capturer_party"),
+        (party_relocate_near_party, "p_main_party", "$capturer_party", 2),
       (try_end),
-      ],
-    [
-      ("continue",[],"Continue...",
-       [
-           (assign, "$g_player_is_captive", 0),
-           (try_begin),
-             (party_is_active, "$capturer_party"),
-             (party_relocate_near_party, "p_main_party", "$capturer_party", 2),
-           (try_end),
-           (call_script, "script_set_parties_around_player_ignore_player", 15, 24), #it was radius:2 and hours:12, but players make lots of complains about consequent battle losses after releases from captivity then I changed this.
-           (assign, "$g_player_icon_state", pis_normal),
-           (set_camera_follow_party, "p_main_party"),
-           (rest_for_hours, 0, 0, 0), #stop resting
-           (change_screen_return),
-        ]),
-    ]
-  ),
+      (call_script, "script_set_parties_around_player_ignore_player", 15, 24), #it was radius:2 and hours:12, but players make lots of complains about consequent battle losses after releases from captivity then I changed this.
+      (assign, "$g_player_icon_state", pis_normal),
+      (set_camera_follow_party, "p_main_party"),
+      (rest_for_hours, 0, 0, 0), #stop resting
+      (change_screen_return),
+    ]),
+]),
 
 ("captivity_end_propose_ransom",0,
-    "You spend long hours in the sunless dank of the dungeon, more than you can count.\
- Suddenly one of your captors enters your cell with an offer;\
- he proposes to free you in return for {reg5} denars of your hidden wealth. You decide to...",
-    "none",
-    [
-      (assign, reg5, "$player_ransom_amount"),
-    ],
-    [
-      ("captivity_end_ransom_accept",
-      [
-        (store_troop_gold,":player_gold", "trp_player"),
-        (ge, ":player_gold","$player_ransom_amount")
-      ],"Accept the offer.",
-      [
-        (play_cue_track, "track_escape"),
-        (assign, "$g_player_is_captive", 0),
-        (troop_remove_gold, "trp_player", "$player_ransom_amount"),
-        (try_begin),
-          (party_is_active, "$capturer_party"),
-          (party_relocate_near_party, "p_main_party", "$capturer_party", 1),
-        (try_end),
-        (call_script, "script_set_parties_around_player_ignore_player", 15, 24), #it was radius:2 and hours:6, but players make lots of complains about consequent battle losses after releases from captivity then I changed this.
-        (assign, "$g_player_icon_state", pis_normal),
-        (set_camera_follow_party, "p_main_party"),
-        (rest_for_hours, 0, 0, 0), #stop resting
-        (change_screen_return),
-      ]),
-      ("captivity_end_ransom_accept_2",
-      [
-        (store_troop_gold,":player_gold", "trp_player"),
-        (lt, ":player_gold","$player_ransom_amount"),
+  "You spend long hours in the sunless dank of the dungeon, more than you can count."
+  +" Suddenly one of your captors enters your cell with an offer;"
+  +" he proposes to free you in return for {reg5} denars of your hidden wealth. You decide to...",
+  "none",[
+    (assign, reg5, "$player_ransom_amount"),
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("captivity_end_ransom_accept",[
+      (store_troop_gold,":player_gold", "trp_player"),
+      (ge, ":player_gold","$player_ransom_amount")
+    ],"Accept the offer.",[
+      (play_cue_track, "track_escape"),
+      (assign, "$g_player_is_captive", 0),
+      (troop_remove_gold, "trp_player", "$player_ransom_amount"),
+      (try_begin),
+        (party_is_active, "$capturer_party"),
+        (party_relocate_near_party, "p_main_party", "$capturer_party", 1),
+      (try_end),
+      (call_script, "script_set_parties_around_player_ignore_player", 15, 24), #it was radius:2 and hours:6, but players make lots of complains about consequent battle losses after releases from captivity then I changed this.
+      (assign, "$g_player_icon_state", pis_normal),
+      (set_camera_follow_party, "p_main_party"),
+      (rest_for_hours, 0, 0, 0), #stop resting
+      (change_screen_return),
+    ]),
+    ("captivity_end_ransom_accept_2",[
+      (store_troop_gold,":player_gold", "trp_player"),
+      (lt, ":player_gold","$player_ransom_amount"),
 
-        (try_begin),
-          (store_troop_gold, ":player_gold", "trp_player"),
-          (assign, reg6, ":player_gold"),
-        (try_end),
-      ],"Pay him {reg6} denars, promising to pay the rest when you are free.",
-      [
-        (play_cue_track, "track_escape"),
-        (assign, "$g_player_is_captive", 0),
+      (try_begin),
+        (store_troop_gold, ":player_gold", "trp_player"),
+        (assign, reg6, ":player_gold"),
+      (try_end),
+    ],"Pay him {reg6} denars, promising to pay the rest when you are free.",[
+      (play_cue_track, "track_escape"),
+      (assign, "$g_player_is_captive", 0),
 
-        (party_get_slot, ":town_lord", "$current_town", slot_town_lord),
-        (party_get_slot, ":guild_master_troop", "$current_town",slot_town_elder),
+      (party_get_slot, ":town_lord", "$current_town", slot_town_lord),
+      (party_get_slot, ":guild_master_troop", "$current_town",slot_town_elder),
 
-        (store_troop_gold,":player_gold", "trp_player"),
-        (troop_remove_gold, "trp_player", ":player_gold"),
-        (store_sub, ":new_debts", "$player_ransom_amount", ":player_gold"),
-        (try_begin),
-            (gt, ":town_lord", -1),
-            (call_script, "script_change_debt_to_troop", ":town_lord", ":new_debts"),
-        (else_try),
-            (gt, ":guild_master_troop", -1),
-            (call_script, "script_change_debt_to_troop", ":guild_master_troop", ":new_debts"),
-        (try_end),
+      (store_troop_gold,":player_gold", "trp_player"),
+      (troop_remove_gold, "trp_player", ":player_gold"),
+      (store_sub, ":new_debts", "$player_ransom_amount", ":player_gold"),
+      (try_begin),
+          (gt, ":town_lord", -1),
+          (call_script, "script_change_debt_to_troop", ":town_lord", ":new_debts"),
+      (else_try),
+          (gt, ":guild_master_troop", -1),
+          (call_script, "script_change_debt_to_troop", ":guild_master_troop", ":new_debts"),
+      (try_end),
 
-        (val_max, ":new_debts", 1),
-        (val_div, ":new_debts", 200),
-        (try_begin),
-            (gt, ":new_debts", 0),
-            (val_mul, ":new_debts", -1),
-            (call_script, "script_change_troop_renown", "trp_player", ":new_debts"),
-        (try_end),
+      (val_max, ":new_debts", 1),
+      (val_div, ":new_debts", 200),
+      (try_begin),
+          (gt, ":new_debts", 0),
+          (val_mul, ":new_debts", -1),
+          (call_script, "script_change_troop_renown", "trp_player", ":new_debts"),
+      (try_end),
 
-        (try_begin),
-          (party_is_active, "$capturer_party"),
-          (party_relocate_near_party, "p_main_party", "$capturer_party", 1),
-        (try_end),
-        (call_script, "script_set_parties_around_player_ignore_player", 15, 24), #it was radius:2 and hours:6, but players make lots of complains about consequent battle losses after releases from captivity then I changed this.
-        (assign, "$g_player_icon_state", pis_normal),
-        (set_camera_follow_party, "p_main_party"),
-        (rest_for_hours, 0, 0, 0), #stop resting
-        (change_screen_return),
-      ]),
-      ("captivity_end_ransom_deny",
-      [
-      ],"Refuse him, wait for something better.",
-      [
+      (try_begin),
+        (party_is_active, "$capturer_party"),
+        (party_relocate_near_party, "p_main_party", "$capturer_party", 1),
+      (try_end),
+      (call_script, "script_set_parties_around_player_ignore_player", 15, 24), #it was radius:2 and hours:6, but players make lots of complains about consequent battle losses after releases from captivity then I changed this.
+      (assign, "$g_player_icon_state", pis_normal),
+      (set_camera_follow_party, "p_main_party"),
+      (rest_for_hours, 0, 0, 0), #stop resting
+      (change_screen_return),
+    ]),
+    ("captivity_end_ransom_deny",[
+    ],"Refuse him, wait for something better.",[
       (assign, "$g_player_is_captive", 1),
       (store_random_in_range, reg(8), 16, 22),
       (call_script, "script_stay_captive_for_hours", reg8),
       (assign,"$auto_menu", "mnu_captivity_castle_check"),
       (change_screen_return),
-      ]),
+    ]),
 ]),
 
 ("captivity_castle_remain",mnf_scale_picture|mnf_disable_all_keys,
@@ -25133,7 +25105,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (try_begin),
             (lt, "$g_player_luck", ":r"),
             (str_store_string, s11, "str_lost_tavern_duel_assassin"),
-            (val_add, "$g_player_unhealth", 100),
+            (call_script, "script_change_troop_health", "trp_player", 50),
         (else_try),
             (assign, "$temp", 0),
             (jump_to_menu, "mnu_death_waits"),
@@ -29037,7 +29009,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_player_honor", -5),
       (call_script, "script_change_player_party_morale", 5),
       (party_add_members, "p_main_party", "trp_refugee", 6),
-      (val_add, "$g_player_unhealth", 25),
+      (call_script, "script_change_troop_health", "trp_player", 25),
       (jump_to_menu,"mnu_no_paymentandkill"),
     ]),
     ("choice_18_2b",[],"Order the release of the women and punish the kidnappers.",[
@@ -29384,7 +29356,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (add_xp_as_reward,100),
         (display_message, "@You feel happy."),
         (call_script, "script_change_player_party_morale", -4),
-        (val_add, "$g_player_unhealth", 25),
+        (call_script, "script_change_troop_health", "trp_player", 25),
       (else_try),
         (display_message, "str_not_enough_gold"),
         (call_script, "script_change_troop_renown", "trp_player", -5),
@@ -32083,7 +32055,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
     ("continue",[],"Continue...",[
-      (val_add, "$g_player_unhealth", 5),
+      (call_script, "script_change_troop_health", "trp_player", 5),
       (jump_to_menu, "mnu_village"),
     ]),
 ]),
@@ -32110,17 +32082,15 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (ge, ":gold", 100),
     ],"Buy ticket for one day (100 denars). [Improves health]",[
       (try_begin),
-        (lt, "$g_player_unhealth", 300),
+        (neg|troop_slot_ge, "trp_player", slot_troop_unhealth, 300),
         (store_random_in_range, ":r", 1, 10),
-        (val_sub, "$g_player_unhealth", ":r"),
       (else_try),
-        (lt, "$g_player_unhealth", 600),
+        (neg|troop_slot_ge, "trp_player", slot_troop_unhealth, 600),
         (store_random_in_range, ":r", 50, 140),
-        (val_sub, "$g_player_unhealth", ":r"),
       (else_try),
         (store_random_in_range, ":r", 140, 350),
-        (val_sub, "$g_player_unhealth", ":r"),
       (try_end),
+      (call_script, "script_change_troop_health", "trp_player", ":r"),
       (troop_remove_gold, "trp_player", 100),
       (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
       (try_begin),
@@ -33514,9 +33484,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_player_honor", -2),
       (change_screen_map),
     ]),
-    ("answere_3",[],"No. Your breasts are much greater then anything in this world!",[
+    ("answere_3",[],"No. Your breasts are much greater! Now come to my bed...",[
       (add_xp_as_reward, 1500),
-      (val_add,"$g_player_unhealth", 50),
+      (call_script, "script_change_troop_health", "trp_player", 25),
       (display_message, "@She follows you into a room and you have some funny hours with her.", message_positive),
       (change_screen_map),
     ]),
@@ -33538,13 +33508,13 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("answere_2",[],"Wine, I want wine!",[
       (call_script, "script_change_player_honor", -2),
       (troop_add_items, "trp_player", "itm_wine", 3),
-      (val_add, "$g_player_unhealth", 75),
+      (call_script, "script_change_troop_health", "trp_player", 100),
       (change_screen_map),
     ]),
-    ("answere_3",[],"Hm, I will take the most beautiful woman and... bang bang",[
+    ("answere_3",[],"Hm, I will take the most beautiful woman and... BANG BANG BANG",[
       (add_xp_as_reward, 1500),
       (call_script, "script_change_player_honor", -1),
-      (val_add, "$g_player_unhealth", 50),
+      (call_script, "script_change_troop_health", "trp_player", 50),
       (change_screen_map),
     ]),
 ]),
@@ -33594,10 +33564,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (add_xp_as_reward, 125),
 	    (change_screen_map),
     ]),
-    ("fuck",[],"You will come with me, girl, into my room.",[
+    ("fuck",[],"You will come with me, girl, into my room. And we have fun!",[
       (add_xp_as_reward, 250),
       (play_sound,"snd_female_laugh"),
-      (val_add, "$g_player_unhealth", 25),
+      (call_script, "script_change_troop_health", "trp_player", 25),
       (display_message, "@She follows you into a room and you have some funny hours with her.", message_positive),
       (change_screen_map),
     ]),
@@ -33699,17 +33669,17 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (troop_raise_attribute, "trp_player", ca_strength, 1),
       (try_end),
       (display_message, "@You train speer throwing.", message_positive),
-      (val_sub, "$g_player_unhealth", 50),
+      (call_script, "script_change_troop_health", "trp_player", -50),
       (change_screen_map),
     ]),
     ("answere_3",[],"Bring me wine and something to eat!",[
-      (val_add, "$g_player_unhealth", 40),
+      (call_script, "script_change_troop_health", "trp_player", 50),
       (display_message, "@You enjoy your meal.", message_positive),
       (change_screen_map),
     ]),
     ("answere_3",[],"Order your guard to bring you the most beautiful girl of Rome and tell her: She has won a night with Caesar himself!",[
       (add_xp_as_reward, 250),
-      (val_add, "$g_player_unhealth", 25),
+      (call_script, "script_change_troop_health", "trp_player", 25),
       (call_script, "script_change_player_honor", -5),
       (display_message, "@The girl shows up. You have some good hours with her.", message_positive),
       (change_screen_map),
@@ -33807,7 +33777,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (gt, ":ag", 13),
           (troop_raise_attribute, "trp_player", ca_agility, -2),
       (try_end),
-      (val_add, "$g_player_unhealth", 50),
+      (call_script, "script_change_troop_health", "trp_player", 50),
       (change_screen_return),
     ]),
     ("choice_05_2n",[],"Go to the Agrippa-Therma, to enjoy the water baths there whilst exercising regularly.",[
@@ -33816,11 +33786,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (try_begin),
           (ge, ":gold", 300),
           (troop_remove_gold, "trp_player", 300),
-          (val_sub, "$g_player_unhealth", 20),
+          (call_script, "script_change_troop_health", "trp_player", -25),
       (else_try),
           (display_message, "str_not_enough_gold"),
-          (call_script, "script_change_troop_renown", "trp_player", -7),
-          (val_add, "$g_player_unhealth", 10),
+          (call_script, "script_change_troop_renown", "trp_player", -25),
       (try_end),
       (change_screen_return),
     ]),
@@ -33828,7 +33797,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (add_xp_as_reward, 250),
       (display_message, "@You develop a foul temper and often execute men who comment on your weight."),
       (call_script, "script_change_player_party_morale", -7),
-      (val_add, "$g_player_unhealth", 10),
+      (call_script, "script_change_troop_health", "trp_player", 10),
       (change_screen_return),
     ]),
 ]),
@@ -33848,7 +33817,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (display_message, "@ The tunic isn't important, but the girl..."),
           (call_script, "script_change_troop_renown", "trp_player", 5),
           (troop_add_item, "trp_player","itm_roman_poor2",0),
-          (val_add, "$g_player_unhealth", 50),
+          (call_script, "script_change_troop_health", "trp_player", 25),
           (call_script, "script_change_player_relation_with_center", "$g_ecnountered_party", 2),
       (else_try),
           (display_message, "str_not_enough_gold"),
@@ -35668,7 +35637,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (eq, "$temp", 1),
     ],"Go away, demon! Away with you!",[
       (display_log_message, "@You awake from a strange dream. You have high fever.", message_negative),
-      (val_add, "$g_player_unhealth", 100),
+      (call_script, "script_change_troop_health", "trp_player", 25),
       (change_screen_map),
     ]),
     ("answere_2",[
@@ -40541,7 +40510,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_10_1",[],"Continue.",[
       (add_xp_as_reward, 250),
       (troop_set_health, "trp_player", 100),
-      (val_sub, "$g_player_unhealth", 500),
+      (call_script, "script_change_troop_health", "trp_player", -500),
       (change_screen_return),
     ]),
 ]),
@@ -41545,17 +41514,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (troop_slot_eq, "trp_household_villa", slot_troop_father, 1),
     ],"Spend a day in the bath. [Improves health]",[
       (try_begin),
-        (lt, "$g_player_unhealth", 300),
+        (neg|troop_slot_ge, "trp_player", slot_troop_unhealth, 300),
         (store_random_in_range, ":r", 1, 10),
-        (val_sub, "$g_player_unhealth", ":r"),
       (else_try),
-        (lt, "$g_player_unhealth", 600),
+        (neg|troop_slot_ge, "trp_player", slot_troop_unhealth, 600),
         (store_random_in_range, ":r", 50, 140),
-        (val_sub, "$g_player_unhealth", ":r"),
       (else_try),
         (store_random_in_range, ":r", 140, 350),
-        (val_sub, "$g_player_unhealth", ":r"),
       (try_end),
+      (call_script, "script_change_troop_health", "trp_player", ":r"),
       (assign, "$auto_enter_town", "$current_town"),
       (assign, "$g_town_visit_after_rest", 1),
       (assign, "$g_last_rest_center", "$current_town"),
@@ -44933,7 +44900,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
       ("Continue...",[],"Continue...",[
         (add_xp_as_reward, 100),
-        (val_add, "$g_player_unhealth", 25),
+        (store_random_in_range, ":r", -25, 25),
+        (val_max, ":r", 0),
+        (call_script, "script_change_troop_health", "trp_player", ":r"),
         (display_message, "@You enjoy the time", color_good_news),
         (troop_set_health, "trp_player", 100),
         (try_begin),##only if you are not freelancing, i.e. if you are part of an army
@@ -45352,40 +45321,33 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ]),
 ]),
 
-  (
-    "lucia_arrested",0,
-    "Due to several mistakes in your story the vigilia distrust your word. Some witnesses are found who claim to have seen you climbing over the walls of her villa. "+
-    "As a consequence you are arrested and the money you took from Lucia's villa is confiscated.",
-    "none",
-    [  (set_background_mesh, "mesh_pic_roma"),
-    ],
-    [ #qst_town_trade
+("lucia_arrested",0,
+  "Due to several mistakes in your story the vigilia distrust your word. Some witnesses are found who claim to have seen you climbing over the walls of her villa. "+
+  "As a consequence you are arrested and the money you took from Lucia's villa is confiscated.",
+  "none",[
+    (set_background_mesh, "mesh_pic_roma"),
+  ],[ #qst_town_trade
+    ("Continue...",[],"Damn.",[
+      (add_xp_as_reward, 500),
+      (assign, "$g_player_is_captive", 1),
+      (store_random_in_range, ":random_hours", 60, 80),
+      (call_script, "script_event_player_captured_as_prisoner"),
+      (call_script, "script_stay_captive_for_hours", ":random_hours"),
+      (assign,"$auto_menu", "mnu_captivity_castle_check"),
+      (change_screen_return),
+    ]),
+]),
 
-      ("Continue...",[],"Damn.",[
-        (add_xp_as_reward, 500),
-        (assign, "$g_player_is_captive", 1),
-        (store_random_in_range, ":random_hours", 60, 80),
-        (call_script, "script_event_player_captured_as_prisoner"),
-        (call_script, "script_stay_captive_for_hours", ":random_hours"),
-        (assign,"$auto_menu", "mnu_captivity_castle_check"),
-        (val_add, "$g_player_unhealth", 5),
-        (change_screen_return),
-      ]),
+("lucia_slaves_killed",0,
+  "Since slave revolts are common the vigilia trust your word. All of her dozen slaves are crucified, though no one suspects you.",
+  "none",[
+    (set_background_mesh, "mesh_pic_kreuzigung"),
+  ],[ #qst_town_trade
+  ("Continue...",[],"Continue.",[
+    (jump_to_menu, "mnu_auto_return_to_map"),
+    (add_xp_as_reward, 250),
   ]),
-
-  (
-    "lucia_slaves_killed",0,
-    "Since slave revolts are common the vigilia trust your word. All of her dozen slaves are crucified, though no one suspects you.",
-    "none",
-    [  (set_background_mesh, "mesh_pic_kreuzigung"),
-    ],
-    [ #qst_town_trade
-
-      ("Continue...",[],"Continue.",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
-      (add_xp_as_reward, 250),
-      ]),
-  ]),
+]),
 
 ("slave_message",0,
   "While you walk towards the town center you are interrupted by a slave. He greets you and says he was sent by his master to bring you a message."
@@ -55308,85 +55270,76 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        ]),
  ]),
 
- ("feast_nero_end",0,
-    "Slaves bring new courses, and fill the goblets unceasingly with wine. Before the table appear two athletes to give the guests a spectacle of wrestling. Then, beautiful dancers give an excellent performance. More courses are brought by slaves, dressed as Satyrs, mythological creatures and animals.^^\
- The feast progresses and you can take the chance to improve your relation with other guests.",
-    "none",
-    [(set_background_mesh, "mesh_pic_party"),
-    ],
-    [
-      ("op1",[],
-       "Focus on the male guests...",
-       [
-    (add_xp_as_reward, 150),
-    (store_attribute_level, ":charisma", "trp_player", ca_charisma),
-    (val_div, ":charisma", 5),
-    (try_begin),
-      (ge, ":charisma", 1),
-      (call_script, "script_change_player_relation_with_troop", "trp_senator_2", ":charisma"),
-      (call_script, "script_change_player_relation_with_troop", "trp_senator_7", ":charisma"),
-      (call_script, "script_change_player_relation_with_troop", "trp_senator_4", ":charisma"),
-      (call_script, "script_change_player_relation_with_troop", "trp_senator_3", ":charisma"),
-      (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_15", ":charisma"),
-      (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_10", ":charisma"),
-      (call_script, "script_change_player_relation_with_troop", "trp_statthalter_11", ":charisma"),
-      (call_script, "script_change_player_relation_with_troop", "trp_statthalter_6", ":charisma"),
-      (call_script, "script_change_player_relation_with_troop", "trp_tigellinus", ":charisma"),
-    (try_end),
-    (change_screen_map),
-       ]),
+("feast_nero_end",0,
+  "Slaves bring new courses, and fill the goblets unceasingly with wine. Before the table appear two athletes to give the guests a spectacle of wrestling. Then, beautiful dancers give an excellent performance. More courses are brought by slaves, dressed as Satyrs, mythological creatures and animals.^^"
+  +"The feast progresses and you can take the chance to improve your relation with other guests.",
+  "none",[
+      (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("op1",[],"Focus on the male guests...",[
+      (add_xp_as_reward, 150),
+      (store_attribute_level, ":charisma", "trp_player", ca_charisma),
+      (val_div, ":charisma", 5),
+      (try_begin),
+        (ge, ":charisma", 1),
+        (call_script, "script_change_player_relation_with_troop", "trp_senator_2", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_senator_7", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_senator_4", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_senator_3", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_15", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_10", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_statthalter_11", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_statthalter_6", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_tigellinus", ":charisma"),
+      (try_end),
+      (change_screen_map),
+    ]),
 
-      ("op2",[],
-       "Focus on the female guests...",
-       [
-        (add_xp_as_reward, 150),
-        (store_attribute_level, ":charisma", "trp_player", ca_charisma),
-        (val_div, ":charisma", 5),
-        (try_begin),
-          (ge, ":charisma", 1),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_2", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_24", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_13", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_6", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_19", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_18", ":charisma"),
-        (try_end),
-        (change_screen_map),
-       ]),
+    ("op2",[],"Focus on the female guests...",[
+      (add_xp_as_reward, 150),
+      (store_attribute_level, ":charisma", "trp_player", ca_charisma),
+      (val_div, ":charisma", 5),
+      (try_begin),
+        (ge, ":charisma", 1),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_2", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_24", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_13", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_6", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_19", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_18", ":charisma"),
+      (try_end),
+      (change_screen_map),
+    ]),
 
-     ("op3",[],
-       "Try to speak with everyone...",
-       [
-        (add_xp_as_reward, 150),
-        (store_attribute_level, ":charisma", "trp_player", ca_charisma),
-        (val_div, ":charisma", 8),
-        (try_begin),
-          (ge, ":charisma", 1),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_2", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_24", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_13", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_6", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_19", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_18", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_senator_2", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_senator_7", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_senator_4", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_senator_3", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_15", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_10", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_statthalter_11", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_statthalter_6", ":charisma"),
-          (call_script, "script_change_player_relation_with_troop", "trp_tigellinus", ":charisma"),
-        (try_end),
-        (change_screen_map),
-       ]),
-       ("op4",[],
-       "Just enjoy yourself and get drunk...",
-       [
-        (val_add, "$g_player_unhealth", 50),
-        (add_xp_as_reward, 500),
-        (change_screen_map),
-       ]),
+     ("op3",[],"Try to speak with everyone...",[
+      (add_xp_as_reward, 150),
+      (store_attribute_level, ":charisma", "trp_player", ca_charisma),
+      (val_div, ":charisma", 8),
+      (try_begin),
+        (ge, ":charisma", 1),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_2", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_24", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_13", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_6", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_19", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_18", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_senator_2", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_senator_7", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_senator_4", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_senator_3", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_15", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_aux_commander_10", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_statthalter_11", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_statthalter_6", ":charisma"),
+        (call_script, "script_change_player_relation_with_troop", "trp_tigellinus", ":charisma"),
+      (try_end),
+      (change_screen_map),
+    ]),
+    ("op4",[],"Just enjoy yourself and get drunk...",[
+      (call_script, "script_change_troop_health", "trp_player", 25),
+      (add_xp_as_reward, 500),
+      (change_screen_map),
+    ]),
  ]),
 
  ("poppaea_event_1",0,

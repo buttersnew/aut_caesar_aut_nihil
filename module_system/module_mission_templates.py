@@ -1822,19 +1822,19 @@ wounds_vc = (ti_on_agent_hit, 0, 0, [],[
       (assign, ":attribute", ca_charisma),
       (assign, ":days_slot", slot_quest_cha_penalty_left_days),
       (str_store_string, s1, "@You suffer a serious injury to your face. (-1 charisma)"),
-      (val_add, "$g_player_unhealth", 15),
+      (call_script, "script_change_troop_health", "trp_player", 15),
     (else_try),
       (this_or_next|is_between, ":hit_bone", hb_shoulder_l, hb_hand_r + 1),	# arms
       (is_between, ":hit_bone", hb_thigh_l, hb_foot_r + 1),					# legs
       (assign, ":attribute", ca_agility),
       (assign, ":days_slot", slot_quest_agi_penalty_left_days),
       (str_store_string, s1, "@You suffer a serious injury to one of your limbs. (-1 agility)"),
-      (val_add, "$g_player_unhealth", 2),
+      (call_script, "script_change_troop_health", "trp_player", 5),
     (else_try),
       (assign, ":attribute", ca_strength),	# body/rest
       (assign, ":days_slot", slot_quest_str_penalty_left_days),
       (str_store_string, s1, "@You suffer a serious injury to your body. (-1 strength)"),
-      (val_add, "$g_player_unhealth", 10),
+      (call_script, "script_change_troop_health", "trp_player", 10),
     (try_end),
     (store_attribute_level, ":level", "trp_player", ":attribute"),
     (gt,":level", 3),

@@ -4218,7 +4218,7 @@ simple_triggers = [
                     (eq, "$enlisted_party", -1),#freelancer, if player has no food he gets one from his lord
                     (display_message, "@Party has nothing to eat!", message_defeated), #SB : same colour const
                     (call_script, "script_change_player_party_morale", -8),
-                    (val_add, "$g_player_unhealth", 5),
+                    (call_script, "script_change_troop_health", "trp_player", 5),
                     (assign, ":no_food_displayed", 1),
                     (try_begin),
                         (gt, ":num_men", 1), #SB : easier check
@@ -10749,19 +10749,19 @@ simple_triggers = [
         (val_add,":pos",1),
         (eq,":pos",":curr_event"), # this first line is same for all events
         (display_message, "@During today's training, you were accidently injured. While the wounds aren't severe, it may take some time for them to heal."),
-        (call_script, "script_change_troop_health", "trp_player", -20),
+        (call_script, "script_change_troop_hp", "trp_player", -20),
         (add_xp_as_reward, 100),
     (else_try),
         (val_add,":pos",1),
         (eq,":pos",":curr_event"),   # this first line is same for all events
         (display_message, "@Today, you awoke with a horrible toothache and now you can no longer hide the pain."),
-        (call_script, "script_change_troop_health", "trp_player", -5),
-        (val_add, "$g_player_unhealth", 1),
+        (call_script, "script_change_troop_hp", "trp_player", -5),
+        (call_script, "script_change_troop_health", "trp_player", 5),
     (else_try),
         (val_add,":pos",1),
         (eq,":pos",":curr_event"),   # this first line is same for all events
         (display_message, "@You slipped on wet ground, and you were injured."),
-        (call_script, "script_change_troop_health", "trp_player", -5),
+        (call_script, "script_change_troop_hp", "trp_player", -5),
     (else_try),
         (val_add,":pos",1),
         (eq,":pos",":curr_event"),   # this first line is same for all events
@@ -10776,7 +10776,7 @@ simple_triggers = [
         (val_add,":pos",1),
         (eq,":pos",":curr_event"),   # this first line is same for all events
         (display_message, "@The adventure, life in the field, the constant training makes you feel strong and well, you are ready to face any challenge."),
-        (call_script, "script_change_troop_health", "trp_player", 40),
+        (call_script, "script_change_troop_hp", "trp_player", 40),
         (add_xp_as_reward, 250),
     (else_try),
         (val_add,":pos",1),
@@ -10800,7 +10800,7 @@ simple_triggers = [
             (store_party_size_wo_prisoners, ":size", "p_main_party"),
             (ge, ":size", 5),
             (display_message, "@The water reserves have been contaminated and it must be rationed until you reach the next town."),
-            (call_script, "script_change_troop_health", "trp_player", -15),
+            (call_script, "script_change_troop_hp", "trp_player", -15),
             (call_script, "script_change_player_party_morale", -15),
         (try_end),
     (else_try),
@@ -11868,10 +11868,11 @@ simple_triggers = [
     (try_begin),
         (map_free), #on map, some triggers fire, even if a screen is open, e.g. battle
         (neq, "$g_player_is_captive", 1),
-        (gt, "$g_player_unhealth", 500),
-        (store_sub, ":chance", "$g_player_unhealth", 500),
-        (store_random_in_range, ":bad_luck", 0, 3000),
-        (lt, ":bad_luck", ":chance"),
+        (troop_get_slot, ":unhealth", "trp_player", slot_troop_unhealth),
+        (ge, ":unhealth", 625),
+        (val_sub, ":unhealth", 600),
+        (store_random_in_range, ":bad_luck", 0, 3050),
+        (lt, ":bad_luck", ":unhealth"),
         (assign, "$temp", 1),
         (jump_to_menu, "mnu_death_waits"),
     (try_end),
