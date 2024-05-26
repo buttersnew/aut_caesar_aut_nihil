@@ -4957,6 +4957,7 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("civil_war_do_not_declare_war", "{s12}{s15} is currently facing a civil war and tries to avoid any hostilities with {s16}."),
   ("civil_war_do_not_declare_peace", "{s12}{s15} is currently facing a civil war and will try everthing to defeat {s16}."),
 
+  ("s12s15_suffered_high_casualities", "{s12}{s15} has suffered high casualities in the war with {s16} and sees no reason to continue any longer."),
   ("s12s15_considers_s16_to_be_dangerous_and_untrustworthy_and_shehe_wants_to_bring_s16_down", "{s12}{s15} considers {s16} to be dangerous and untrustworthy, and {reg4?she:he} wants to bring {s16} down."),
   ("s12s15_is_anxious_to_reclaim_old_lands_such_as_s18_now_held_by_s16", "{s12}{s15} is anxious to reclaim old lands such as {s18}, now held by {s16}."),
   ("s12s15_is_anxious_to_reclaim_old_lands_such_as_s18_now_held_by_s16_imperial", "{s12}{s15} is anxious to conquer the province of {s19}, in particular {s18}, now held by {s16}."),
@@ -6201,9 +6202,9 @@ An estimated 70,000 to 80,000 Romans and British were then killed in the three c
   ("dplmc_great_quality", "a great quality"),
   ("dplmc_very_quality", "a very high quality"),
 
-  ("dplmc_s21_the_s8_declared_war_to_fulfil_pact", "{s21}. The {s8} declared war to fulfil a pact"),
-  ("dplmc_s21_the_s8_declared_war_to_end_civil_war", "{s21}. The {s8} declared war to end the civil war in their favour"),
-  ("dplmc_s21_the_s8_declared_war_to_declare_independence", "{s21}. The {s8} declared war to gain independence from oppressive foreign rule"),
+  ("dplmc_s21_the_s8_declared_war_to_fulfil_pact", "{s21}. The {s8} declared war to fulfil a pact."),
+  ("dplmc_s21_the_s8_declared_war_to_end_civil_war", "{s21}. The {s8} declared war to end the civil war in their favour."),
+  ("dplmc_s21_the_s8_declared_war_to_declare_independence", "{s21}. The {s8} declared war to gain independence from oppressive foreign rule."),
  ##diplomacy end
  ##diplomacy start+
  ("dplmc_very_laissez_faire", "very laissez-faire"),
