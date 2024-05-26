@@ -13912,10 +13912,7 @@ mission_templates = [
     can_spawn_commoners,
     improved_lightning,
     (ti_before_mission_start, 0, 0, [],[
-      (play_track,0,2),
       (call_script, "script_change_banners_and_chest"),
-      (assign, "$g_position_to_use_for_replacing_scene_items", pos8),
-      (call_script, "script_replace_scene_items_with_spawn_items_before_ms"),
       (try_begin),
           (troop_slot_eq, "trp_global_variables", g_player_trench, 0),
           (call_script, "script_remove_camp_objects"),
@@ -13925,7 +13922,6 @@ mission_templates = [
     (ti_tab_pressed, 0, 0, [],[(finish_mission,0)]),
 
 		(1,0,ti_once,[
-      (call_script, "script_replace_scene_items_with_spawn_items_after_ms"),
 			(try_for_agents,":agent"),
         (agent_is_active,":agent"),
         (agent_is_human, ":agent"),
@@ -18414,12 +18410,12 @@ mission_templates = [
     ], p_wetter + storms + global_common_triggers+
     [
       can_spawn_commoners,
-    improved_lightning,
+      improved_lightning,
       (ti_before_mission_start, 0, 0, [],
       [
         (assign, "$g_main_attacker_agent", 0),
       ]),
- common_inventory_not_available,
+      common_inventory_not_available,
 
     (3, 0, 0,
    [

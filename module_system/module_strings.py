@@ -4296,7 +4296,7 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("allies_", "Allies "),
   ("enemies_", "Enemies "),
   #("routed", "Routed"),
-  ("weekly_budget", "Weekly Budget"),
+  ("weekly_budget", "Budget Report"),
   ("income_from_s0", "Income from {s0}:"),
   ("mercenary_payment_from_s0", "Mercenary payment from {s0}:"),
   ("s0s_party", "{s0}'s Party"),
