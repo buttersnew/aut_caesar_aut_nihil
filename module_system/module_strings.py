@@ -6673,7 +6673,7 @@ An estimated 70,000 to 80,000 Romans and British were then killed in the three c
   # ("date_string", "789  Ab urbe condita (36 AD)"),
 # screen write ends
   ("s12s15_dominates_its_weaker_neighbor_s16", "{s12}{s15} attempts to dominate his weaker neighbor {s16}."),	#MOTO for new diplomatic result
-  ("s12s15_acts_to_drive_the_people_of_s16_and_their_like_out_of_the_Isles", "{s12}{s15} acts to kill the people of {s16}, because they are barbarians"),	#MOTO for new diplomatic result
+  ("s12s15_acts_to_drive_the_people_of_s16_and_their_like_out_of_the_Isles", "{s12}{s15} acts to kill the people of {s16}, because they are barbarians."),	#MOTO for new diplomatic result
   ("deliver_message_improve_relation", "Delivering a message to the ruler (Improving relation)."),
   ("deliver_message_send_troops", "Delivering a message to the ruler (Asking for reinforcements)."),
   ("deliver_message_leave_faction", "Delivering a message to the ruler (Releasing oath of loyalty)."),
