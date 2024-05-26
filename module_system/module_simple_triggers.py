@@ -7004,6 +7004,12 @@ simple_triggers = [
         (assign, ":patrol", 0),
         (party_set_slot, ":center", slot_town_patrol_party, 0),
     (try_end),
+    (try_begin),
+        (ge, ":patrol", 1),
+        (le, ":patrol", "p_vally_of_kings"),
+        (assign, ":patrol", 0),
+        (party_set_slot, ":center", slot_town_patrol_party, 0),
+    (try_end),
     (eq, ":patrol", 0),
     (assign, ":size", -1),
     (try_begin),
@@ -7064,16 +7070,17 @@ simple_triggers = [
         (party_get_slot, ":party_no", ":town", slot_town_patrol_party),
         (gt, ":party_no", "p_vally_of_kings"),
         (party_is_active, ":party_no"),
-        ##patrol ai
-        (party_slot_eq,":party_no", slot_party_type, spt_patrol),
 
+        (party_slot_eq,":party_no", slot_party_type, spt_patrol),
         # (call_script, "script_party_remove_all_prisoners", ":party_no"), #SB : retain prisoners
         (party_get_slot, ":target_party", ":party_no", slot_party_ai_object),
-        (gt, ":target_party", 0),
-        (this_or_next|party_is_active, ":target_party"),
-        (is_between, ":target_party", centers_begin, centers_end),
-
         (party_get_slot, ":home_town", ":party_no", slot_party_home_center),
+        (try_begin),
+            (neg|party_is_active, ":target_party"),
+            (assign, ":target_party", ":home_town"),
+            (party_set_slot, ":party_no", slot_party_ai_object, ":target_party"),
+        (try_end),
+
         (try_begin),
             (is_between, ":home_town", centers_begin,centers_end),
             (try_begin),#stuck in port
@@ -7100,14 +7107,9 @@ simple_triggers = [
                 # (display_message, "@{s1} is travelling to port although its on land"),
                 # (else_try),
                 (get_party_ai_behavior, ":ai_behavior", ":party_no"),
-
-                (store_distance_to_party_from_party, ":distance_to_target", ":party_no", ":target_party"),
                 (eq, ":ai_behavior", ai_bhvr_patrol_location),
-                (try_begin),#if slot got corrupted somehow
-                    (neg|party_is_active, ":target_party"),
-                    (assign, ":target_party", ":town"),
-                    (party_set_slot, ":party_no", slot_party_ai_object, ":target_party"),
-                (else_try),#if they wandered onto water let them return to their target
+
+                (try_begin),#if they wandered onto water let them return to their target
                     (party_slot_eq, ":party_no", slot_party_on_water, 1),
                     (party_set_ai_behavior, ":party_no", ai_bhvr_travel_to_party),
                     (party_set_ai_object, ":party_no", ":target_party"),
@@ -7115,6 +7117,7 @@ simple_triggers = [
                 (else_try),
                     (party_get_num_prisoners, ":prisoners", ":party_no"),
                     (store_party_size_wo_prisoners,":size", ":party_no"),
+                    (store_distance_to_party_from_party, ":distance_to_target", ":party_no", ":target_party"),
 
                     (this_or_next|gt, ":prisoners", 30),##drop prisoners
                     (this_or_next|is_between, ":size", 0, 10),##too small
@@ -7138,9 +7141,9 @@ simple_triggers = [
                 (try_end),
             (else_try),
                 (eq, ":ai_behavior", ai_bhvr_travel_to_party),
-                (le, ":distance_to_target", 5),
+                (store_distance_to_party_from_party, ":distance_to_target", ":party_no", ":target_party"),
+                (le, ":distance_to_target", 3),
                 (try_begin), #SB : drop off prisoners
-                    (le, ":distance_to_target", 3),
                     (is_between, ":target_party", walled_centers_begin, walled_centers_end),
                     (call_script, "script_party_add_party_prisoners", ":target_party", ":party_no"),
                     (call_script, "script_party_remove_all_prisoners", ":party_no"),
@@ -8881,6 +8884,9 @@ simple_triggers = [
             # (store_faction_of_party, ":faction", ":curr_center"),#there is still this towns switching faction bug
             # (str_store_faction_name, s1, ":faction"),
             (display_log_message, "@{s0} has recovered from being raided."),
+
+            (store_faction_of_party, ":fac_curr_center", ":curr_center"),
+            (call_script, "script_faction_recalculate_strength", ":fac_curr_center"),
         (try_end),
     (try_end),
     #temples

@@ -22133,7 +22133,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (this_or_next|faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
       (ge, ":relation", 0),
       (change_screen_return),
-      (display_log_message, "@Peace offer refected.", message_alert),
+      (str_store_faction_name, s1, "$g_notification_menu_var1"),
+      (assign, reg0, ":relation"),
+      (faction_get_slot, reg1, "fac_player_supporters_faction", slot_faction_state),
+      (display_log_message, "@DANGER: Invalid Peace Offer from {s1}. Automatically blog scam! Relation: {reg0}. State: {reg1}", message_alert),
     (try_end),
     ##diplomacy end
   ],[

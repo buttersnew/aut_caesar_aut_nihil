@@ -20715,7 +20715,7 @@ mission_templates = [
     ],[]),
 
     (ti_before_mission_start, 0, 0, [],[
-        (scene_set_day_time, 13),
+        (scene_set_day_time, 0),
         (set_global_cloud_amount, 20),
         (store_random_in_range, ":fog_distance", 300, 315),
         (store_random_in_range, ":haze_power", 30, 35),
