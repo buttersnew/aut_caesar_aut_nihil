@@ -24915,65 +24915,65 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        ]),
     ]
   ),
-  ("start_phase_3",mnf_disable_all_keys,
-    "The farmer was driving to Rome. When you awake, you witness the eternal city for the first time in your life and become overwhelmed by its splendor. You are awestruck.\
- The streets are crowded with hundreds of people. Plebeians from all rungs of society can be seen. Farmers, bakers, merchants, craftsmen, and more are doing their daily business, with a few patricians mingling among them. As you are taking in the view, the carriage suddenly halts. You decide to jump from the carriage and give a short prayer of thanks.\
- ^^As you have not even a single denar, you stray around the streets thinking about a\
- good way to obtain some coins. Suddenly, you hear something ...",
-    "none",
-    [
-     (set_background_mesh, "mesh_pic_roma"),
-      (assign, ":continue", 1),
+
+("start_phase_3",mnf_disable_all_keys,
+  "The farmer was driving to Rome. When you awake, you witness the eternal city for the first time in your life and become overwhelmed by its splendor. You are awestruck."
+  +" The streets are crowded with hundreds of people. Plebeians from all rungs of society can be seen. Farmers, bakers, merchants, craftsmen, and more are doing their daily business, with a few patricians mingling among them. As you are taking in the view, the carriage suddenly halts. You decide to jump from the carriage and give a short prayer of thanks."
+  +" ^^As you have not even a single denar, you stray around the streets thinking about a"
+  +" good way to obtain some coins. Suddenly, you hear something ...",
+    "none",[
+    (set_background_mesh, "mesh_pic_roma"),
+    (assign, ":continue", 1),
+    (try_begin),
+      (eq, "$current_startup_quest_phase", 1),
       (try_begin),
-        (eq, "$current_startup_quest_phase", 1),
-        (try_begin),
-          (eq, "$g_killed_first_bandit", 1),
-          (str_store_string, s11, "str_killed_bandit_at_alley_fight"),
-        (else_try),
-          (str_store_string, s11, "str_wounded_by_bandit_at_alley_fight"),
-        (try_end),
-        (jump_to_menu, "mnu_start_phase_4"),
-        (assign, ":continue", 0),
+        (eq, "$g_killed_first_bandit", 1),
+        (str_store_string, s11, "str_killed_bandit_at_alley_fight"),
       (else_try),
-        (eq, "$current_startup_quest_phase", 3),
-        (try_begin),
-          (eq, "$g_killed_first_bandit", 1),
-          (str_store_string, s11, "str_killed_bandit_at_alley_fight"),
-        (else_try),
-          (str_store_string, s11, "str_wounded_by_bandit_at_alley_fight"),
-        (try_end),
-        (jump_to_menu, "mnu_start_phase_4"),
-        (assign, ":continue", 0),
+        (str_store_string, s11, "str_wounded_by_bandit_at_alley_fight"),
       (try_end),
-      (str_clear, s16),
-      (eq, ":continue", 1),
-    ],
-    [
+      (jump_to_menu, "mnu_start_phase_4"),
+      (assign, ":continue", 0),
+    (else_try),
+      (eq, "$current_startup_quest_phase", 3),
+      (try_begin),
+        (eq, "$g_killed_first_bandit", 1),
+        (str_store_string, s11, "str_killed_bandit_at_alley_fight"),
+      (else_try),
+        (str_store_string, s11, "str_wounded_by_bandit_at_alley_fight"),
+      (try_end),
+      (jump_to_menu, "mnu_start_phase_4"),
+      (assign, ":continue", 0),
+    (try_end),
+    (str_clear, s16),
+    (eq, ":continue", 1),
+  ],[
 
-      ("continue",[], "By the gods!",
-       [
-     (party_set_name, "p_main_party", "@{playername}'s party"),
-     (assign, "$g_starting_town", "$current_town"),
-     (call_script, "script_player_arrived"),
-     # (party_set_morale, "p_main_party", 100), #SB : roll this into previous script
-     (set_encountered_party, "$current_town"),
-     #SB : play sound
-     (play_sound, "snd_draw_sword"),
-     (modify_visitors_at_site, "scn_town_1_alley"),
+    ("continue",[], "By the gods!",[
+      (party_set_name, "p_main_party", "@{playername}'s party"),
+      (assign, "$g_starting_town", "$current_town"),
 
-     (reset_visitors),
-     (set_visitor, 0, "trp_player"),
+      (party_relocate_near_party, "p_main_party", "$g_starting_town", 2),
+      (party_set_morale, "p_main_party", 100),
 
-     #(set_visitor, 3, ":bandit_troop"),
-     (set_visitor, 3, "trp_bandit"),
+      # (party_set_morale, "p_main_party", 100), #SB : roll this into previous script
+      (set_encountered_party, "$current_town"),
+      #SB : play sound
+      (play_sound, "snd_draw_sword"),
+      (modify_visitors_at_site, "scn_town_1_alley"),
 
-     (assign, "$talked_with_merchant", 0),
-     (set_jump_mission, "mt_alley_fight"),
-     (jump_to_scene, "scn_town_1_alley"),
-     (change_screen_mission),
-       ]),
-    ]
-  ),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+
+      #(set_visitor, 3, ":bandit_troop"),
+      (set_visitor, 3, "trp_bandit"),
+
+      (assign, "$talked_with_merchant", 0),
+      (set_jump_mission, "mt_alley_fight"),
+      (jump_to_scene, "scn_town_1_alley"),
+      (change_screen_mission),
+    ]),
+]),
 
   ("start_phase_4",mnf_disable_all_keys,
     "{s11}",

@@ -348,7 +348,7 @@ slot_party_ai_rationale        = 6 #Currently unused, but can be used to save a 
 
 slot_town_lord                 = 7
 slot_party_ai_substate         = 8
-slot_town_claimed_by_player    = 9
+# slot_town_claimed_by_player    = 9 # this slot number is free
 
 slot_cattle_driven_by_player = slot_town_lord #hack
 

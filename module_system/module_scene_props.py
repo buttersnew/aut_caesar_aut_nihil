@@ -1629,20 +1629,6 @@ scene_props = [
   ("winch",sokf_moveable,"winch","bo_winch", []),
 
   ("winch_b",sokf_moveable|spr_use_time(5),"winch_b","bo_winch", [
-   (ti_on_scene_prop_use,
-    [
-      (store_trigger_param_1, ":agent_id"),
-      (store_trigger_param_2, ":instance_id"),
-
-      #for only server itself-----------------------------------------------------------------------------------------------
-      (call_script, "script_use_item", ":instance_id", ":agent_id"),
-      #for only server itself-----------------------------------------------------------------------------------------------
-      (get_max_players, ":num_players"),
-      (try_for_range, ":player_no", 1, ":num_players"), #0 is server so starting from 1
-        (player_is_active, ":player_no"),
-        (multiplayer_send_2_int_to_player, ":player_no", multiplayer_event_use_item, ":instance_id", ":agent_id"),
-      (try_end),
-    ]),
   ]),
 
   ("drawbridge",0,"drawbridge","bo_drawbridge", []),
