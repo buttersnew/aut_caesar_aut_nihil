@@ -5079,7 +5079,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["temporary_minister","Minister Septimus Homunculus","Minister Septimus Homunculus",
 tf_hero,0,reserved,fac_commoners,[itm_roman_toga,itm_caligea],def_attrib|level(4),wp(60),knows_common,0x0000000ffe012009072b2dd2b3aa371d00000000001de95d0000000000000000],
 
-["quick_battle_6_player", "{!}quick_battle_6_player", "{!}quick_battle_6_player", tf_hero, 0, reserved,fac_player_faction, [],knight_attrib_1,wp(130),knight_skills_1, 0x000000000008010b01f041a9249f65fd],
+["quick_battle_6_player", "Drop items (will be lost)", "Drop items (will be lost)", tf_hero, 0, reserved,fac_player_faction, [],knight_attrib_1,wp(130),knight_skills_1, 0x000000000008010b01f041a9249f65fd],
 
 # ["multiplayer_end","{!}multiplayer_end","{!}multiplayer_end", 0, 0, 0, fac_kingdom_5, [], 0, 0, 0, 0, 0],
 

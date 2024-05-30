@@ -94,3 +94,4 @@ prsnt_senate = 92
 prsnt_imperial_budget_report = 93
 prsnt_select_kingdom = 94
 prsnt_mcc_character_creation = 95
+prsnt_simple_encounter = 96

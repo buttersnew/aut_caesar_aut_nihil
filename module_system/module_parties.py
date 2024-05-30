@@ -462,7 +462,7 @@ parties = [
 ("training_ground_5", "Ludus", icon_map_ludus|pf_village|pf_label_medium, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-40.81, -18.73), [], 100),
 ("bridge_1", "Training Field", icon_landing_point|pf_village|pf_disabled|pf_label_medium, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-125.800003, 12.5), [], 100),
 
-("looter_spawn_point", "{!}looter sp", pf_disabled|pf_is_static, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-40.85, -49.71), [(trp_celtic_naked_swordman_vet, 15, 0)]),
+("looter_spawn_point", "Disband troops (by placing them on left screen)", pf_disabled|pf_is_static, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-40.85, -49.71), [(trp_celtic_naked_swordman_vet, 15, 0)]),
 ("steppe_bandit_spawn_point", "Sarmatia Europaea", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (38.89, 123.08), []),
 ("steppe_bandit_spawn_point1", "Scythia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-34.19, 120.45), []),
 ("steppe_bandit_spawn_point2", "Sarmatia Asiatica", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (91.45, 102), []),

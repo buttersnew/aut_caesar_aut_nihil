@@ -1024,3 +1024,6 @@ script_cf_is_no_goy = 1022
 script_persuade_antonia_prop_reg49_teg47_reg45_reg46 = 1023
 script_change_troop_health = 1024
 script_print_health_text_to_s0 = 1025
+script_get_background_pic_for_battle = 1026
+script_generate_party_list_for_battle = 1027
+script_generate_list_of_party_members = 1028

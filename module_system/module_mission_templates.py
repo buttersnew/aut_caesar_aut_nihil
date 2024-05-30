@@ -18339,231 +18339,212 @@ mission_templates = [
     ],
   ),
 
-  ("visit_desert_town",0,-1,
-    "plundering a settlement",
-    [
-      (0,mtef_scene_source|mtef_team_0,0,0,1,[]),#player
-      (1,mtef_visitor_source,af_override_horse,0,1,[]),#guard
-      (2,mtef_visitor_source,af_override_horse,0,1,[]),#guard
-      (3,mtef_visitor_source,af_override_horse,0,1,[]),#legatus
-      (4,mtef_visitor_source,af_override_horse,0,1,[]),#legatus
+("visit_desert_town",0,-1,"plundering a settlement",[
+    (0,mtef_scene_source|mtef_team_0,0,0,1,[]),#player
+    (1,mtef_visitor_source,af_override_horse,0,1,[]),#guard
+    (2,mtef_visitor_source,af_override_horse,0,1,[]),#guard
+    (3,mtef_visitor_source,af_override_horse,0,1,[]),#legatus
+    (4,mtef_visitor_source,af_override_horse,0,1,[]),#legatus
 
-      (5,mtef_visitor_source,af_override_horse,0,1,[]),#unused
-      (6,mtef_visitor_source,af_override_horse,0,1,[]),#unused
-      (7,mtef_visitor_source,af_override_horse,0,1,[]),#unused
-		#spectators begin
-		#69 bis 73 sind mindestens 5 pro spawn
-      (8,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (9,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (10,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (11,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (12,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (13,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (14,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (15,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (16,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (17,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (18,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (19,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (20,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (21,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (22,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (23,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (24,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (25,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
-      (26,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (27,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (28,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (29,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (30,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (31,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (32,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (33,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (34,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (35,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (36,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (37,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (38,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (39,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (40,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (41,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (42,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (43,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (44,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (45,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
-      (46,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (47,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (48,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (49,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (50,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (51,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (52,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (53,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (54,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (55,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (56,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (57,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (5,mtef_visitor_source,af_override_horse,0,1,[]),#unused
+    (6,mtef_visitor_source,af_override_horse,0,1,[]),#unused
+    (7,mtef_visitor_source,af_override_horse,0,1,[]),#unused
+    #spectators begin
+    #69 bis 73 sind mindestens 5 pro spawn
+    (8,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (9,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (10,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (11,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (12,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (13,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (14,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (15,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (16,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (17,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (18,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (19,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (20,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (21,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (22,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (23,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (24,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (25,mtef_visitor_source,af_override_horse|af_override_gloves|af_override_weapons,0,1,[]),#spectators
+    (26,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (27,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (28,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (29,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (30,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (31,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (32,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (33,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (34,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (35,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (36,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (37,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (38,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (39,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (40,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (41,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (42,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (43,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (44,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (45,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#spectators
+    (46,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (47,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (48,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (49,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (50,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (51,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (52,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (53,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (54,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (55,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (56,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (57,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+  ], p_wetter + storms + global_common_triggers +
+  [
+    can_spawn_commoners,
+    improved_lightning,
+    (ti_before_mission_start, 0, 0, [],[
+      (assign, "$g_main_attacker_agent", 0),
+    ]),
+    common_inventory_not_available,
 
-    ], p_wetter + storms + global_common_triggers+
-    [
-      can_spawn_commoners,
-      improved_lightning,
-      (ti_before_mission_start, 0, 0, [],
-      [
-        (assign, "$g_main_attacker_agent", 0),
-      ]),
-      common_inventory_not_available,
+    (3, 0, 0,[
+      (eq, "$talk_context", tc_escape),
+      (neg|main_hero_fallen,0),
+      (store_mission_timer_a, ":time"),
+      (ge, ":time", 10),
+      (all_enemies_defeated, 1), #1 is default enemy team for in-town battles
+    ],[
+      (call_script, "script_deduct_casualties_from_garrison"),
+      (jump_to_menu,"mnu_desert_victory"),
 
-    (3, 0, 0,
-   [
-     (eq, "$talk_context", tc_escape),
-	 (neg|main_hero_fallen,0),
-     (store_mission_timer_a, ":time"),
-     (ge, ":time", 10),
-
-     (all_enemies_defeated, 1), #1 is default enemy team for in-town battles
-   ],
-   [
-     (call_script, "script_deduct_casualties_from_garrison"),
-     (jump_to_menu,"mnu_desert_victory"),
-
-     (mission_enable_talk),
-     (finish_mission,0)
-   ]),
-    (3, 0, 0,
-   [
-     (eq, "$talk_context", tc_escape),
-	 (main_hero_fallen,0),
-     (store_mission_timer_a, ":time"),
-     (ge, ":time", 10),
-   ],
-   [
-	(assign, "$temp", 1),
-     (jump_to_menu,"mnu_death_waits"),
-
-     (mission_enable_talk),
-     (finish_mission,0)
-   ]),
-
-
-
- (0,0,ti_once,[
-  (try_for_agents, ":agent"),
-	  (agent_get_entry_no, ":entry", ":agent"),
-		(try_begin),
-      (is_between, ":entry", 13,26),
-			(try_begin),
-				(agent_has_item_equipped,":agent","itm_dedal_kufel"),
-				(agent_set_stand_animation, ":agent", "anim_sitting_drinking_low"),
-				(agent_set_animation, ":agent", "anim_sitting_drinking_low"),
-				(store_random_in_range,":r",0,300),
-			(else_try),
-				(agent_set_stand_animation, ":agent", "anim_sitting_low"),
-				(agent_set_animation, ":agent", "anim_sitting_low"),
-				(store_random_in_range,":r",0,300),
-			(try_end),
-			(agent_set_animation_progress,":agent",":r"),
-		(try_end),
-  (try_end),
-	],[]),
-
-      (3, 0, 0, [(eq, "$talk_context", tc_escape),],	# keep them fleeing
-        [
-          (assign, ":sound_played", 0),
-          (try_for_agents, ":agent_no"),
-            (agent_slot_ge, ":agent_no",  slot_agent_is_running_away, 1),
-            # (neg|agent_is_ally, ":agent_no"),
-            (store_random_in_range, ":rand", 32, 40),
-            (entry_point_get_position, pos2, ":rand"),
-            (agent_start_running_away, ":agent_no", pos2),
-            (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 125),	#make them run around
-            #sound:
-            (eq, ":sound_played", 0),
-            (assign, ":sound_played", 1),
-            (store_random_in_range, ":rand", 1, 4),
-            (eq, ":rand", 1),
-            (agent_play_sound, ":agent_no", "snd_panic_cry"),
+      (mission_enable_talk),
+      (finish_mission,0)
+    ]),
+    (3, 0, 0,[
+      (eq, "$talk_context", tc_escape),
+      (main_hero_fallen,0),
+      (store_mission_timer_a, ":time"),
+      (ge, ":time", 10),
+    ],[
+      (assign, "$temp", 1),
+      (jump_to_menu,"mnu_death_waits"),
+      (mission_enable_talk),
+      (finish_mission,0)
+    ]),
+    (0,0,ti_once,[
+      (try_for_agents, ":agent"),
+        (agent_get_entry_no, ":entry", ":agent"),
+        (try_begin),
+          (is_between, ":entry", 13,26),
+          (try_begin),
+            (agent_has_item_equipped,":agent","itm_dedal_kufel"),
+            (agent_set_stand_animation, ":agent", "anim_sitting_drinking_low"),
+            (agent_set_animation, ":agent", "anim_sitting_drinking_low"),
+            (store_random_in_range,":r",0,300),
+          (else_try),
+            (agent_set_stand_animation, ":agent", "anim_sitting_low"),
+            (agent_set_animation, ":agent", "anim_sitting_low"),
+            (store_random_in_range,":r",0,300),
           (try_end),
-      ]),
+          (agent_set_animation_progress,":agent",":r"),
+        (try_end),
+      (try_end),
+    ],[]),
 
-      (0,8,0,[(neq, "$talk_context", tc_escape),],
-        [
-          (try_for_agents,":agent_no"),
-            (agent_is_alive,":agent_no"),
-            (agent_is_human,":agent_no"),
-            (agent_get_entry_no, ":entry", ":agent_no"),
-            (is_between, ":entry", 26,46),
-            (assign, ":continue_walk", 0),
-            (store_random_in_range, ":continue_walk", 1, 100),
-            (try_begin),
-              (le, ":continue_walk", 38),
-              (agent_set_stand_animation, ":agent_no", "anim_stand_man"),
-              (agent_set_walk_forward_animation, ":agent_no", "anim_walk_forward"),
-              (agent_set_animation, ":agent_no", "anim_stand_man"),
-              (agent_set_animation_progress, ":agent_no", 10),
-
-              (agent_get_position, pos1, ":agent_no"),
-              (store_random_in_range, ":points", 25, 46),
-              (entry_point_get_position, pos2, ":points"),
-              (agent_set_speed_limit, ":agent_no", 1),
-              (agent_set_scripted_destination, ":agent_no", pos2),
-            (try_end),
-          (try_end),
-      ]),
-
-    (0, 0, 0, [],
-    [
-    (call_script, "script_music_set_situation_with_culture", mtf_sit_ambushed),
+    (3, 0, 0, [
+      (eq, "$talk_context", tc_escape),
+    ],[
+      (assign, ":sound_played", 0),
+      (try_for_agents, ":agent_no"),
+        (agent_slot_ge, ":agent_no",  slot_agent_is_running_away, 1),
+        # (neg|agent_is_ally, ":agent_no"),
+        (store_random_in_range, ":rand", 32, 40),
+        (entry_point_get_position, pos2, ":rand"),
+        (agent_start_running_away, ":agent_no", pos2),
+        (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 125),	#make them run around
+        #sound:
+        (eq, ":sound_played", 0),
+        (assign, ":sound_played", 1),
+        (store_random_in_range, ":rand", 1, 4),
+        (eq, ":rand", 1),
+        (agent_play_sound, ":agent_no", "snd_panic_cry"),
+      (try_end),
     ]),
 
-    (1, 0, ti_once,
-    [],
-    [
-    (try_begin),
-        (eq, "$g_mt_mode", tcm_default),
-        (store_current_scene, ":cur_scene"),
-        (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
-    (try_end),
+    (0,8,0,[
+      (neq, "$talk_context", tc_escape),
+    ],[
+      (try_for_agents,":agent_no"),
+        (agent_is_alive,":agent_no"),
+        (agent_is_human,":agent_no"),
+        (agent_get_entry_no, ":entry", ":agent_no"),
+        (is_between, ":entry", 26,46),
+        (assign, ":continue_walk", 0),
+        (store_random_in_range, ":continue_walk", 1, 100),
+        (try_begin),
+          (le, ":continue_walk", 38),
+          (agent_set_stand_animation, ":agent_no", "anim_stand_man"),
+          (agent_set_walk_forward_animation, ":agent_no", "anim_walk_forward"),
+          (agent_set_animation, ":agent_no", "anim_stand_man"),
+          (agent_set_animation_progress, ":agent_no", 10),
+
+          (agent_get_position, pos1, ":agent_no"),
+          (store_random_in_range, ":points", 25, 46),
+          (entry_point_get_position, pos2, ":points"),
+          (agent_set_speed_limit, ":agent_no", 1),
+          (agent_set_scripted_destination, ":agent_no", pos2),
+        (try_end),
+      (try_end),
     ]),
 
-    (0,0,ti_once, [],
-    [
-    (try_for_agents, ":agent_no"),
-        (agent_is_active, ":agent_no"),
-        (agent_is_human, ":agent_no"),
-        (agent_is_alive, ":agent_no"),
-        (call_script, "script_init_town_agent", ":agent_no"),
-    (try_end),
+    (0, 0, 0, [],[
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_ambushed),
     ]),
 
-    (ti_tab_pressed, 0, 0,
-    [
-    (try_begin),
-        (this_or_next|eq, "$talk_context", tc_escape),
-        (eq, "$talk_context", tc_prison_break),
-        (display_message, "str_cannot_leave_now"),
-    (else_try),
-        (stop_all_sounds, 1),
-        (finish_mission,0),
-    (try_end),
-    ],
-    []),
+    (1, 0, ti_once,[],[
+      (try_begin),
+          (eq, "$g_mt_mode", tcm_default),
+          (store_current_scene, ":cur_scene"),
+          (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
+      (try_end),
+    ]),
 
-	ambient_set_agents_for_sounds,
-	ambient_agent_play_sound,
-	ambient_scene_play_loop,
-	ambient_scene_play_random_sound,
-	wounds_vc,
-    ] + bodyguard_triggers
-  ),
+    (0,0,ti_once, [],[
+      (try_for_agents, ":agent_no"),
+          (agent_is_active, ":agent_no"),
+          (agent_is_human, ":agent_no"),
+          (agent_is_alive, ":agent_no"),
+          (call_script, "script_init_town_agent", ":agent_no"),
+      (try_end),
+    ]),
 
+    (ti_tab_pressed, 0, 0,[
+      (try_begin),
+          (this_or_next|eq, "$talk_context", tc_escape),
+          (eq, "$talk_context", tc_prison_break),
+          (display_message, "str_cannot_leave_now"),
+      (else_try),
+          (stop_all_sounds, 1),
+          (finish_mission,0),
+      (try_end),
+    ],[]),
 
-   (
-    "charge_desert_town",mtf_battle_mode|mtf_synch_inventory,charge,
-    "You lead your men to battle.",
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+    ambient_scene_play_loop,
+    ambient_scene_play_random_sound,
+    wounds_vc,
+  ] + bodyguard_triggers
+),
+
+("charge_desert_town",mtf_battle_mode|mtf_synch_inventory,charge,
+  "You lead your men to battle.",
     [
       (0,mtef_attackers|mtef_team_0,0,0,0,[]),#player
       (1,mtef_defenders|mtef_team_1,0,0,0,[]),#guard
@@ -28618,188 +28599,202 @@ mission_templates = [
           (try_end),
       ]),
     ],
-  ),#cueva de odin chief acaba
+  ),
 
 
 ("center_management",0,-1,
-    "dungeon",
-    [ (0,mtef_visitor_source,af_override_all,0,1,[]),
-    ],
-    [
-      cannot_spawn_commoners,
-    (0, 0, 0, [(neg|is_presentation_active, "prsnt_center_management"),],
-        [
-    (start_presentation, "prsnt_center_management"),
+  "dungeon",[
+    (0,mtef_visitor_source,af_override_all,0,1,[]),
+  ],[
+    cannot_spawn_commoners,
+    (0, 0, 0, [
+      (neg|is_presentation_active, "prsnt_center_management"),
+    ],[
+      (start_presentation, "prsnt_center_management"),
     ]),
 
     (ti_after_mission_start, 0, ti_once, [],[
-    (mission_cam_set_screen_color, 0xFF000000),
-    # (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+      (mission_cam_set_screen_color, 0xFF000000),
+      # (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
     ]),
 
-    (0, 0, ti_once, [],
-        [
-    (set_rain, 2, 0),
-    (set_rain, 1, 0),
-    (set_rain, 0, 100),
-
-    (assign, "$g_improvement_type", -1),
+    (0, 0, ti_once, [],[
+      (set_rain, 2, 0),
+      (set_rain, 1, 0),
+      (set_rain, 0, 100),
+      (assign, "$g_improvement_type", -1),
     ]),
 
-    (ti_on_agent_spawn, 0, 0, [],
-        [
-    (store_trigger_param_1, ":agent"),
-    (agent_set_speed_modifier, ":agent",0),
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent"),
+      (agent_set_speed_modifier, ":agent",0),
     ]),
 
     (ti_question_answered, 0, 0, [],[
-        (store_trigger_param_1, ":answer"),
-        (try_begin),
-            (eq, ":answer", 0),
-            (try_begin),#extort
-                (eq, "$g_presentation_next_presentation", 3),
-                (jump_to_menu, "mnu_center_extort_reaction"),
-                (finish_mission),
-            (else_try), #decrees
-                (eq, "$g_presentation_next_presentation", 2),
-                (try_begin),
-                    (eq, "$temp", 1),#revoke decree
-                    (try_begin),
-                        (gt, "$g_player_chamberlain", 0),
-                        (store_troop_gold, ":cur_gold", "trp_household_possessions"),
-                        (ge, ":cur_gold", decree_cost),
-                        (call_script, "script_dplmc_withdraw_from_treasury", decree_cost),
-                        (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
-                    (else_try),
-                        (store_troop_gold, ":cur_gold", "trp_player"),
-                        (ge, ":cur_gold", decree_cost),
-                        (troop_remove_gold, "trp_player", decree_cost),
-                        (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
-                    (else_try),
-                        (display_message, "@Insufficient funds", message_alert),
-                    (try_end),
-                    #clear variables
-                    (assign, "$g_improvement_type", -1),
-                    (assign, "$temp", 0),
-                (else_try),
-                    (eq, "$temp", 2),#issue it!
-                    (try_begin),
-                        (gt, "$g_player_chamberlain", 0),
-                        (store_troop_gold, ":cur_gold", "trp_household_possessions"),
-                        (ge, ":cur_gold", decree_cost),
-                        (call_script, "script_dplmc_withdraw_from_treasury", decree_cost),
-                        (party_set_slot, "$g_encountered_party", "$g_improvement_type", 1),
-                    (else_try),
-                        (store_troop_gold, ":cur_gold", "trp_player"),
-                        (ge, ":cur_gold", decree_cost),
-                        (troop_remove_gold, "trp_player", decree_cost),
-                        (party_set_slot, "$g_encountered_party", "$g_improvement_type", 1),
-                    (else_try),
-                        (display_message, "@Insufficient funds", message_alert),
-                    (try_end),
-                    #clear variables
-                    (assign, "$g_improvement_type", -1),
-                    (assign, "$temp", 0),
-                (try_end),
-            (else_try), #buildings
-                (eq, "$g_presentation_next_presentation", 1),
-                (try_begin),
-                    (eq, "$temp", 1),#destroy a building
-                    (call_script, "script_get_improvement_details", "$g_improvement_type", "$g_encountered_party"),
-                    (val_mul, reg0, 3),
-                    (val_div, reg0, 5),
-                    (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
-                    (troop_add_gold, "trp_player", reg0),
-                    (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
+      (store_trigger_param_1, ":answer"),
+      (try_begin),
+          (eq, ":answer", 0),
+          (try_begin),#extort
+              (eq, "$g_presentation_next_presentation", 3),
+              (jump_to_menu, "mnu_center_extort_reaction"),
+              (finish_mission),
+          (else_try), #decrees
+              (eq, "$g_presentation_next_presentation", 2),
+              (try_begin),
+                  (eq, "$temp", 1),#revoke decree
+                  (try_begin),
+                      (gt, "$g_player_chamberlain", 0),
+                      (store_troop_gold, ":cur_gold", "trp_household_possessions"),
+                      (ge, ":cur_gold", decree_cost),
+                      (call_script, "script_dplmc_withdraw_from_treasury", decree_cost),
+                      (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
+                  (else_try),
+                      (store_troop_gold, ":cur_gold", "trp_player"),
+                      (ge, ":cur_gold", decree_cost),
+                      (troop_remove_gold, "trp_player", decree_cost),
+                      (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
+                  (else_try),
+                      (display_message, "@Insufficient funds", message_alert),
+                  (try_end),
+                  #clear variables
+                  (assign, "$g_improvement_type", -1),
+                  (assign, "$temp", 0),
+              (else_try),
+                  (eq, "$temp", 2),#issue it!
+                  (try_begin),
+                      (gt, "$g_player_chamberlain", 0),
+                      (store_troop_gold, ":cur_gold", "trp_household_possessions"),
+                      (ge, ":cur_gold", decree_cost),
+                      (call_script, "script_dplmc_withdraw_from_treasury", decree_cost),
+                      (party_set_slot, "$g_encountered_party", "$g_improvement_type", 1),
+                  (else_try),
+                      (store_troop_gold, ":cur_gold", "trp_player"),
+                      (ge, ":cur_gold", decree_cost),
+                      (troop_remove_gold, "trp_player", decree_cost),
+                      (party_set_slot, "$g_encountered_party", "$g_improvement_type", 1),
+                  (else_try),
+                      (display_message, "@Insufficient funds", message_alert),
+                  (try_end),
+                  #clear variables
+                  (assign, "$g_improvement_type", -1),
+                  (assign, "$temp", 0),
+              (try_end),
+          (else_try), #buildings
+              (eq, "$g_presentation_next_presentation", 1),
+              (try_begin),
+                  (eq, "$temp", 1),#destroy a building
+                  (call_script, "script_get_improvement_details", "$g_improvement_type", "$g_encountered_party"),
+                  (val_mul, reg0, 3),
+                  (val_div, reg0, 5),
+                  (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
+                  (troop_add_gold, "trp_player", reg0),
+                  (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
 
-                    (try_begin),#clear also for temple god
-                        (eq, "$g_improvement_type", slot_center_has_temple),
-                        (party_set_slot, "$g_encountered_party", slot_center_has_temple_god, 0),
-                    (try_end),
-                    #clear variables
-                    (assign, "$g_improvement_type", -1),
-                    (assign, "$temp", 0),
-                    (call_script, "script_change_center_prosperity", "$g_encountered_party", -4),
-                    (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -2),
-                (else_try),
-                    (eq, "$temp", 3),#cancle a building
-                    (party_set_slot, "$g_encountered_party", slot_center_current_improvement, 0),
-                    (party_get_slot, ":hours_left", "$g_encountered_party", slot_center_improvement_end_hour),
-                    #player gets some money back
-                    (store_current_hours, ":cur_hours"),
-                    (val_sub, ":hours_left", ":cur_hours"),
-                    (val_mul, ":hours_left", 10), #a paltry sum
-                    (troop_add_gold, "trp_player", ":hours_left"),
+                  (try_begin),#clear also for temple god
+                      (eq, "$g_improvement_type", slot_center_has_temple),
+                      (party_set_slot, "$g_encountered_party", slot_center_has_temple_god, 0),
+                  (try_end),
+                  #clear variables
+                  (assign, "$g_improvement_type", -1),
+                  (assign, "$temp", 0),
+                  (call_script, "script_change_center_prosperity", "$g_encountered_party", -4),
+                  (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -2),
+              (else_try),
+                  (eq, "$temp", 3),#cancle a building
+                  (party_set_slot, "$g_encountered_party", slot_center_current_improvement, 0),
+                  (party_get_slot, ":hours_left", "$g_encountered_party", slot_center_improvement_end_hour),
+                  #player gets some money back
+                  (store_current_hours, ":cur_hours"),
+                  (val_sub, ":hours_left", ":cur_hours"),
+                  (val_mul, ":hours_left", 10), #a paltry sum
+                  (troop_add_gold, "trp_player", ":hours_left"),
 
-                    #clear variables
-                    (try_begin),#clear also for temple god
-                        (eq, "$g_improvement_type", slot_center_has_temple),
-                        (party_set_slot, "$g_encountered_party", slot_center_has_temple_god, 0),
-                    (try_end),
-                    (assign, "$g_improvement_type", -1),
-                    (assign, "$temp", 0),
-                    (call_script, "script_change_center_prosperity", "$g_encountered_party", -4),
-                    (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -2),
-                (else_try),
-                    (eq, "$temp", 4),#cancle a building
-                    (party_set_slot, "$g_encountered_party", slot_center_current_improvement_2, 0),
-                    (party_get_slot, ":hours_left", "$g_encountered_party", slot_center_improvement_2_end_hour),
-                    #player gets some money back
-                    (store_current_hours, ":cur_hours"),
-                    (val_sub, ":hours_left", ":cur_hours"),
-                    (val_mul, ":hours_left", 10), #a paltry sum
-                    (troop_add_gold, "trp_player", ":hours_left"),
-                    #clear variables
-                    (try_begin),#clear also for temple god
-                        (eq, "$g_improvement_type", slot_center_has_temple),
-                        (party_set_slot, "$g_encountered_party", slot_center_has_temple_god, 0),
-                    (try_end),
-                    (assign, "$g_improvement_type", -1),
-                    (assign, "$temp", 0),
-                    (call_script, "script_change_center_prosperity", "$g_encountered_party", -4),
-                    (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -2),
-                (else_try),
-                    (eq, "$temp", 2),#build it!
-                    (try_begin), #fast build
-                        (ge, "$cheat_mode", 1),
-                        (assign, "$diplomacy_var2", 0),
-                        (call_script, "script_improve_center", "$g_encountered_party", "$lord_selected", "$diplomacy_var2"),
-                    (else_try),
-                        (try_begin),
-                            (gt, "$g_player_chamberlain", 0),
-                            (store_troop_gold, ":cur_gold", "trp_household_possessions"),
-                            (ge, ":cur_gold", "$diplomacy_var"),
-                            (call_script, "script_dplmc_withdraw_from_treasury", "$diplomacy_var"),
-                            (call_script, "script_improve_center", "$g_encountered_party", "$lord_selected", "$diplomacy_var2"),
-                        (else_try),
-                            (store_troop_gold, ":cur_gold", "trp_player"),
-                            (ge, ":cur_gold", "$diplomacy_var"),
-                            (troop_remove_gold, "trp_player", "$diplomacy_var"),
-                            (call_script, "script_improve_center", "$g_encountered_party", "$lord_selected", "$diplomacy_var2"),
-                        (else_try),
-                            (display_message, "@Insufficient funds", message_alert),
-                        (try_end),
-                    (try_end),
-                    #clear variables
-                    (assign, "$g_improvement_type", -1),
-                    (assign, "$temp", 0),
-                (try_end),
-            (try_end),
-        (else_try),
-            (assign, "$g_improvement_type", -1),
-            (assign, "$temp", 0),
-            # (start_presentation, "prsnt_center_management"),
-        (try_end),
-      ]),
-    ],
-  ),#cueva de odin chief acaba
+                  #clear variables
+                  (try_begin),#clear also for temple god
+                      (eq, "$g_improvement_type", slot_center_has_temple),
+                      (party_set_slot, "$g_encountered_party", slot_center_has_temple_god, 0),
+                  (try_end),
+                  (assign, "$g_improvement_type", -1),
+                  (assign, "$temp", 0),
+                  (call_script, "script_change_center_prosperity", "$g_encountered_party", -4),
+                  (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -2),
+              (else_try),
+                  (eq, "$temp", 4),#cancle a building
+                  (party_set_slot, "$g_encountered_party", slot_center_current_improvement_2, 0),
+                  (party_get_slot, ":hours_left", "$g_encountered_party", slot_center_improvement_2_end_hour),
+                  #player gets some money back
+                  (store_current_hours, ":cur_hours"),
+                  (val_sub, ":hours_left", ":cur_hours"),
+                  (val_mul, ":hours_left", 10), #a paltry sum
+                  (troop_add_gold, "trp_player", ":hours_left"),
+                  #clear variables
+                  (try_begin),#clear also for temple god
+                      (eq, "$g_improvement_type", slot_center_has_temple),
+                      (party_set_slot, "$g_encountered_party", slot_center_has_temple_god, 0),
+                  (try_end),
+                  (assign, "$g_improvement_type", -1),
+                  (assign, "$temp", 0),
+                  (call_script, "script_change_center_prosperity", "$g_encountered_party", -4),
+                  (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -2),
+              (else_try),
+                  (eq, "$temp", 2),#build it!
+                  (try_begin), #fast build
+                      (ge, "$cheat_mode", 1),
+                      (assign, "$diplomacy_var2", 0),
+                      (call_script, "script_improve_center", "$g_encountered_party", "$lord_selected", "$diplomacy_var2"),
+                  (else_try),
+                      (try_begin),
+                          (gt, "$g_player_chamberlain", 0),
+                          (store_troop_gold, ":cur_gold", "trp_household_possessions"),
+                          (ge, ":cur_gold", "$diplomacy_var"),
+                          (call_script, "script_dplmc_withdraw_from_treasury", "$diplomacy_var"),
+                          (call_script, "script_improve_center", "$g_encountered_party", "$lord_selected", "$diplomacy_var2"),
+                      (else_try),
+                          (store_troop_gold, ":cur_gold", "trp_player"),
+                          (ge, ":cur_gold", "$diplomacy_var"),
+                          (troop_remove_gold, "trp_player", "$diplomacy_var"),
+                          (call_script, "script_improve_center", "$g_encountered_party", "$lord_selected", "$diplomacy_var2"),
+                      (else_try),
+                          (display_message, "@Insufficient funds", message_alert),
+                      (try_end),
+                  (try_end),
+                  #clear variables
+                  (assign, "$g_improvement_type", -1),
+                  (assign, "$temp", 0),
+              (try_end),
+          (try_end),
+      (else_try),
+          (assign, "$g_improvement_type", -1),
+          (assign, "$temp", 0),
+          # (start_presentation, "prsnt_center_management"),
+      (try_end),
+    ]),
+]),
 
+("return_to_game_options",0,-1,
+  "dungeon",[
+    (0,mtef_visitor_source,af_override_all,0,1,[]),
+  ],[
+    cannot_spawn_commoners,
+    (0, 0, 0, [
+    ],[
+      (try_begin),
+        (eq, "$temp", 2),
+        (jump_to_menu, "mnu_simple_encounter"),
+        (finish_mission),
+      (else_try),
+        (eq, "$temp", 1),
+        (change_screen_options),
+        (assign, "$temp", 2),
+      (try_end),
+    ]),
+    (ti_after_mission_start, 0, ti_once, [],[
+      (mission_cam_set_screen_color, 0xFF000000),
+    ]),
+]),
 
-
- ("greek_game",mtf_battle_mode,-1,#cueva odin chief mainquest #cueva de odin chief
-    "dungeon",
-    [
-
+("greek_game",mtf_battle_mode,-1,#cueva odin chief mainquest #cueva de odin chief
+  "dungeon",[
     (0,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (1,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
     (2,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
@@ -28837,8 +28832,8 @@ mission_templates = [
     (34,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
     (35,mtef_visitor_source|mtef_team_2,af_override_everything|af_override_foot,0,1,[itm_female_caligea_gold,itm_roman_femal_rich3_new,itm_flower_crown]),
     (36,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
-    ], p_wetter + global_common_triggers+
-    [
+  ], p_wetter + global_common_triggers+
+  [
       cannot_spawn_commoners,
     change_battle_speed_trigger,
     dedal_shield_bash,
@@ -29146,10 +29141,7 @@ mission_templates = [
     (agent_is_non_player, ":agent"),
     (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 0),
     ]),
-
-
-    ],
-  ),#cueva de odin chief acaba
+]),
 
 ("elysium",mtf_battle_mode,-1,#cueva odin chief mainquest #cueva de odin chief
   "dungeon",
@@ -30391,7 +30383,7 @@ mission_templates = [
       ]),
 
     ],
-),#cueva de odin chief acaba
+),
 
 ("rags_to_riches",mtf_battle_mode,-1,#cueva odin chief mainquest #cueva de odin chief
     "dungeon",
@@ -30482,7 +30474,7 @@ mission_templates = [
       wounds_vc,
 
     ],
-),#cueva de odin chief acaba
+),
 
 ("visit_royal_tombs",mtf_battle_mode,-1,
     "plundering a settlement",

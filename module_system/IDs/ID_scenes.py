@@ -843,4 +843,5 @@ scn_werdheri_bandit_lair = 840
 scn_cutscene_rome_victory_2 = 841
 scn_public_baths = 842
 scn_villa_baths = 843
+scn_presentation_scene = 844
 scn_exit = 100000

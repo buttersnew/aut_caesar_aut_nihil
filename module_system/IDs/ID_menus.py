@@ -1131,3 +1131,5 @@ mnu_werdheri_duel_lost = 1129
 mnu_werdheri_duel_won = 1130
 mnu_werdheri_lost = 1131
 mnu_werdheri_won = 1132
+mnu_return_to_party_screen = 1133
+mnu_return_to_game_options = 1134
