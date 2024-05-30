@@ -10160,8 +10160,7 @@ mission_templates = [
     ),
 
 ("castle_attack_walls_ladder",mtf_battle_mode|mtf_synch_inventory,-1,
-  "You attack the walls of the castle...",
-  [
+  "You attack the walls of the castle...",[
     #defender spawns
     (16,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,11,[]),#0
     (17,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,11,[]),#1
@@ -10247,7 +10246,6 @@ mission_templates = [
     ]),
 
     (ti_before_mission_start, 0, 0, [
-      (call_script, "script_save_class_name"),
       (call_script, "script_rename_class_siege"),
 
       (assign, reg40, 0),
@@ -10266,7 +10264,6 @@ mission_templates = [
       (replace_scene_props, "spr_siege_large_shield_a", "spr_empty"),
     ]),
 
-    (ti_tab_pressed, 0,0, [],[(call_script, "script_recover_class_name"),]),
     #check for retreats
     (30, 0, 0, [
       (eq, "$temp4", 2),# player is defender

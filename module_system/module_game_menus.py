@@ -5553,6 +5553,7 @@ game_menus = [
 ("battle_debrief",mnf_scale_picture|mnf_disable_all_keys,
   "{s11}^^Your Casualties:{s8}{s10}^^Enemy Casualties:{s9}^^Kill count:{s12}",
   "none",[
+    (call_script, "script_recover_class_name"),
     # (try_begin),
       # (gt, "$enlisted_party", -1),##freelancing
       # (quest_get_slot, ":progress", "qst_freelancing", slot_quest_freelancer_progress),
