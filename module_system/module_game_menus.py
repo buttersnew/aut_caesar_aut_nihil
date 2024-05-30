@@ -81,7 +81,7 @@ game_menus = [
         (this_or_next|eq, "$g_campaign_type", g_campaign_king),
         (this_or_next|eq, "$g_campaign_type", g_campaign_lord),
         (eq, "$g_campaign_type", g_campaign_sandbox),
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
     (else_try),
         (eq, "$g_is_emperor", 1),
         (str_store_string, s30, "str_start_emperor_1"),
@@ -380,128 +380,85 @@ game_menus = [
   ]),
 ]),
 
-  (
-    "past_life_explanation",mnf_disable_all_keys,
-    "{s3}",
-    "none",
-    [
-     (try_begin),
-       (gt,"$current_string_reg",14),
-       (assign,"$current_string_reg",10),
-     (try_end),
-     (str_store_string_reg,s3,"$current_string_reg"),
-     (try_begin),
-       (ge,"$current_string_reg",14),
-       (str_store_string,s5,"@Back to the beginning..."),
-     (else_try),
-       (str_store_string,s5,"@View next segment..."),
-     (try_end),
-     ],
-    [
-      ("view_next",[],"{s5}",[
-        (val_add,"$current_string_reg",1),
-        (jump_to_menu, "mnu_past_life_explanation"),
-        ]),
-      ("continue",[],"Continue...",
-       [
-        ]),
-      ("go_back_dot",[],"Go back.",[
-        (jump_to_menu, "mnu_choose_skill"),
-        ]),
-    ]
-  ),
+("past_life_explanation",mnf_disable_all_keys,
+  "{s3}",
+  "none",[
+    (try_begin),
+      (gt,"$current_string_reg",14),
+      (assign,"$current_string_reg",10),
+    (try_end),
+    (str_store_string_reg,s3,"$current_string_reg"),
+    (try_begin),
+      (ge,"$current_string_reg",14),
+      (str_store_string,s5,"@Back to the beginning..."),
+    (else_try),
+      (str_store_string,s5,"@View next segment..."),
+    (try_end),
+  ],[
+    ("view_next",[],"{s5}",[
+      (val_add,"$current_string_reg",1),
+      (jump_to_menu, "mnu_past_life_explanation"),
+    ]),
+    ("continue",[],"Continue...",[
+    ]),
+    ("go_back_dot",[],"Go back.",[
+      (jump_to_menu, "mnu_choose_skill"),
+    ]),
+]),
 
-  (
-    "auto_return",0,
-    "{!}This menu automatically returns to caller.",
-    "none",
-    [(change_screen_return, 0)],
-    [
-    ]
-  ),
-  (
-    "auto_return_map",0,
-    "{!}This menu automatically returns to world map.",
-    "none",
-    [(change_screen_map)],
-    [
-    ]
-  ),
-  # ("morale_report",0,
-   # "{s1}",
-   # "none",
-   # [
-     # (call_script, "script_get_player_party_morale_values"),
+("auto_return",0,
+  "{!}This menu automatically returns to caller.",
+  "none",[
+    (change_screen_return, 0)
+],[
+]),
 
-     # (assign, ":target_morale", reg0),
-     # (assign, reg1, "$g_player_party_morale_modifier_party_size"),
-     # (try_begin),
-       # (gt, reg1, 0),
-       # (str_store_string, s2, "@{!} -"),
-     # (else_try),
-       # (str_store_string, s2, "str_space"),
-     # (try_end),
+("auto_return_map",0,
+  "{!}This menu automatically returns to world map.",
+  "none",[
+    (change_screen_map)
+],[
+]),
 
-     # (assign, reg2, "$g_player_party_morale_modifier_leadership"),
-     # (try_begin),
-       # (gt, reg2, 0),
-       # (str_store_string, s3, "@{!} +"),
-     # (else_try),
-       # (str_store_string, s3, "str_space"),
-     # (try_end),
+("auto_presentation",0,
+  "stub",
+  "none",[
+    (start_presentation, "$g_presentation_next_presentation"),
+  ],[
+]),
 
-     # (try_begin),
-       # (gt, "$g_player_party_morale_modifier_no_food", 0),
-       # (assign, reg7, "$g_player_party_morale_modifier_no_food"),
-       # (str_store_string, s5, "@^No food:  -{reg7}"),
-     # (else_try),
-       # (str_store_string, s5, "str_space"),
-     # (try_end),
-     # (assign, reg3, "$g_player_party_morale_modifier_food"),
-     # (try_begin),
-       # (gt, reg3, 0),
-       # (str_store_string, s4, "@{!} +"),
-     # (else_try),
-       # (str_store_string, s4, "str_space"),
-     # (try_end),
+("return_to_party_screen",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "If you see this you are fucked.",
+  "none",[
+    (party_clear, "p_looter_spawn_point"),
+    (change_screen_exchange_members, 1, "p_looter_spawn_point"),
+    (try_begin),
+      (eq, "$temp", 2),
+      (jump_to_menu, "mnu_simple_encounter"),
+    (else_try),
+      (eq, "$temp", 1),
+      (assign, "$temp", 2),
+    (try_end),
+  ],[
+]),
 
-     # (try_begin),
-       # (gt, "$g_player_party_morale_modifier_debt", 0),
-       # (assign, reg6, "$g_player_party_morale_modifier_debt"),
-       # (str_store_string, s6, "@^Wage debt:  -{reg6}"),
-     # (else_try),
-       # (str_store_string, s6, "str_space"),
-     # (try_end),
+("return_to_game_options",0,
+  "You should not be seeing this.",
+  "none",[
+    (try_begin),
+      (eq, "$temp", 1),
+      (modify_visitors_at_site, "scn_presentation_scene"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+      (assign, "$tem"),
+      (set_jump_mission, "mt_return_to_game_options"),
+      (jump_to_scene, "scn_presentation_scene"),
+      (change_screen_mission),
+    (else_try),
+      (jump_to_menu, "mnu_simple_encounter"),
+    (try_end),
+],[]),
 
-     # (party_get_morale, reg5, "p_main_party"),
-     # (store_sub, reg4, reg5, ":target_morale"),
-     # (try_begin),
-       # (gt, reg4, 0),
-       # (str_store_string, s7, "@{!} +"),
-     # (else_try),
-       # (str_store_string, s7, "str_space"),
-     # (try_end),
-
-     # (assign, reg6, 50),
-
-     # (str_store_string, s1, "str_current_party_morale_is_reg5_current_party_morale_modifiers_are__base_morale__50_party_size_s2reg1_leadership_s3reg2_food_variety_s4reg3s5s6_recent_events_s7reg4_total__reg5___"),
-
-     # (try_for_range, ":kingdom_no", npc_kingdoms_begin, npc_kingdoms_end),
-       # (faction_get_slot, ":faction_morale", ":kingdom_no",  slot_faction_morale_of_player_troops),
-       # (val_div, ":faction_morale", 100),
-       # (neq, ":faction_morale", 0),
-       # (assign, reg6, ":faction_morale"),
-       # (str_store_faction_name, s9, ":kingdom_no"),
-       # (str_store_string, s1, "str_s1extra_morale_for_s9_troops__reg6_"),
-     # (try_end),
-    # ],
-    # [
-      # ("continue",[],"Continue...",
-      # [
-        # (jump_to_menu, "mnu_reports"),
-      # ]),
-    # ]
-  # ),
  ("morale_report",0,    #modified motomataru chief
   "You can lead up to {reg23} troops. You can manage {reg22} troops without a party moral penalty. {s1}",
   "none",
@@ -597,77 +554,65 @@ game_menus = [
    ]
  ),
 
-  ("courtship_relations",0,
-   "{s1}",
-   "none",
-   [(str_store_string, s1, "str_courtships_in_progress_"),
+("courtship_relations",0,
+  "{s1}",
+  "none",[
+    (str_store_string, s1, "str_courtships_in_progress_"),
     (try_for_range, ":lady", kingdom_ladies_begin, kingdom_ladies_end),
-		(troop_slot_eq, ":lady", slot_troop_met, 2),
-		(call_script, "script_troop_get_relation_with_troop", "trp_player", ":lady"),
-		(gt, reg0, 0),
-		(assign, reg3, reg0),
+      (troop_slot_eq, ":lady", slot_troop_met, 2),
+      (call_script, "script_troop_get_relation_with_troop", "trp_player", ":lady"),
+      (gt, reg0, 0),
+      (assign, reg3, reg0),
 
-		(str_store_troop_name, s2, ":lady"),
+      (str_store_troop_name, s2, ":lady"),
 
-		(store_current_hours, ":hours_since_last_visit"),
-		(troop_get_slot, ":last_visit_hour", ":lady", slot_troop_last_talk_time),
-		(val_sub, ":hours_since_last_visit", ":last_visit_hour"),
-		(store_div, ":days_since_last_visit", ":hours_since_last_visit", 24),
-		(assign, reg4, ":days_since_last_visit"),
+      (store_current_hours, ":hours_since_last_visit"),
+      (troop_get_slot, ":last_visit_hour", ":lady", slot_troop_last_talk_time),
+      (val_sub, ":hours_since_last_visit", ":last_visit_hour"),
+      (store_div, ":days_since_last_visit", ":hours_since_last_visit", 24),
+      (assign, reg4, ":days_since_last_visit"),
 
-		(str_store_string, s1, "str_s1_s2_relation_reg3_last_visit_reg4_days_ago"),
-	(try_end),
+      (str_store_string, s1, "str_s1_s2_relation_reg3_last_visit_reg4_days_ago"),
+    (try_end),
 
-	(str_store_string, s1, "str_s1__poems_known"),
-	(try_begin),
-		 (gt, "$allegoric_poem_recitations", 0),
-		 (str_store_string, s1, "str_s1_storming_the_castle_of_love_allegoric"),
-	(try_end),
-	(try_begin),
-		 (gt, "$tragic_poem_recitations", 0),
-		 (str_store_string, s1, "str_s1_kais_and_layali_tragic"),
-	(try_end),
-	(try_begin),
-		 (gt, "$comic_poem_recitations", 0),
-		 (str_store_string, s1, "str_s1_a_conversation_in_the_garden_comic"),
-	(try_end),
-	(try_begin),
-		 (gt, "$heroic_poem_recitations", 0),
-		 (str_store_string, s1, "str_s1_helgered_and_kara_epic"),
-	(try_end),
-	(try_begin),
-		 (gt, "$mystic_poem_recitations", 0),
-		 (str_store_string, s1, "str_s1_a_hearts_desire_mystic"),
-	(try_end),
+    (str_store_string, s1, "str_s1__poems_known"),
+    (try_begin),
+      (gt, "$allegoric_poem_recitations", 0),
+      (str_store_string, s1, "str_s1_storming_the_castle_of_love_allegoric"),
+    (try_end),
+    (try_begin),
+      (gt, "$tragic_poem_recitations", 0),
+      (str_store_string, s1, "str_s1_kais_and_layali_tragic"),
+    (try_end),
+    (try_begin),
+      (gt, "$comic_poem_recitations", 0),
+      (str_store_string, s1, "str_s1_a_conversation_in_the_garden_comic"),
+    (try_end),
+    (try_begin),
+      (gt, "$heroic_poem_recitations", 0),
+      (str_store_string, s1, "str_s1_helgered_and_kara_epic"),
+    (try_end),
+    (try_begin),
+      (gt, "$mystic_poem_recitations", 0),
+      (str_store_string, s1, "str_s1_a_hearts_desire_mystic"),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (jump_to_menu, "mnu_reports"),
+    ]),
+]),
 
-    ],
-    [
-      ("continue",[],"Continue...",
-       [(jump_to_menu, "mnu_reports"),
-        ]
-       ),
-      ]
-  ),
-
-
-  ("lord_relations",0,
-   "{s1}",
-   "none",
-   [
-    ##diplomacy start+
-	 #Avoid unnecessary iterations, since below we only use slto_kingdom_hero troops.
+("lord_relations",0,
+  "{s1}",
+  "none",[
     (assign, ":met_lord_count", 0),
-    #Add support for promoted kingdom ladies.
-    #(try_for_range, ":active_npc", active_npcs_begin, active_npcs_end),
     (try_for_range, ":active_npc", heroes_begin, kingdom_ladies_end),
       (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
       (troop_slot_ge, ":active_npc", slot_troop_met, 1),
       (val_add, ":met_lord_count", 1),
-    ##diplomacy end+
-		(troop_set_slot, ":active_npc", slot_troop_temp_slot, 0),
-	(try_end),
-
-	(str_clear, s1),
+      (troop_set_slot, ":active_npc", slot_troop_temp_slot, 0),
+    (try_end),
+    (str_clear, s1),
     ##diplomacy start+
     #Add support for promoted kingdom ladies.
     #(try_for_range, ":unused", active_npcs_begin, active_npcs_end),#<- changed
@@ -675,40 +620,34 @@ game_menus = [
     #iterations (since expanding this from active_npcs to heroes means that
     #a lot of them will not be lords).
     (try_for_range, ":unused", 0, ":met_lord_count"),#<- added
-		(assign, ":score_to_beat", -100),
-		(assign, ":best_relation_remaining_npc", -1),
-		#Add support for promoted kingdom ladies
-		#(try_for_range, ":active_npc", active_npcs_begin, active_npcs_end),#<-changed
-		(try_for_range, ":active_npc", heroes_begin, kingdom_ladies_end),#<-added
-	##diplomacy end+
-			(troop_slot_eq, ":active_npc", slot_troop_temp_slot, 0),
-			(troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
-			(troop_slot_ge, ":active_npc", slot_troop_met, 1),
+      (assign, ":score_to_beat", -100),
+      (assign, ":best_relation_remaining_npc", -1),
+      #Add support for promoted kingdom ladies
+      #(try_for_range, ":active_npc", active_npcs_begin, active_npcs_end),#<-changed
+      (try_for_range, ":active_npc", heroes_begin, kingdom_ladies_end),#<-added
+        (troop_slot_eq, ":active_npc", slot_troop_temp_slot, 0),
+        (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
+        (troop_slot_ge, ":active_npc", slot_troop_met, 1),
 
-			(call_script, "script_troop_get_player_relation", ":active_npc"),
-			(assign, ":relation_with_player", reg0),
-			(ge, ":relation_with_player", ":score_to_beat"),
+        (call_script, "script_troop_get_player_relation", ":active_npc"),
+        (assign, ":relation_with_player", reg0),
+        (ge, ":relation_with_player", ":score_to_beat"),
 
-			(assign, ":score_to_beat", ":relation_with_player"),
-			(assign, ":best_relation_remaining_npc", ":active_npc"),
-		(try_end),
-		(gt, ":best_relation_remaining_npc", -1),
+        (assign, ":score_to_beat", ":relation_with_player"),
+        (assign, ":best_relation_remaining_npc", ":active_npc"),
+      (try_end),
+      (gt, ":best_relation_remaining_npc", -1),
 
-		(str_store_troop_name_link, s4, ":best_relation_remaining_npc"),
-		(assign, reg4, ":score_to_beat"),
-		(str_store_string, s1, "@{!}{s1}^{s4}: {reg4}"),
-		(troop_set_slot, ":best_relation_remaining_npc", slot_troop_temp_slot, 1),
-	(try_end),
-
-
-    ],
-    [
-      ("continue",[],"Continue...",
-       [(jump_to_menu, "mnu_reports"),
-        ]
-       ),
-      ]
-  ),
+      (str_store_troop_name_link, s4, ":best_relation_remaining_npc"),
+      (assign, reg4, ":score_to_beat"),
+      (str_store_string, s1, "@{!}{s1}^{s4}: {reg4}"),
+      (troop_set_slot, ":best_relation_remaining_npc", slot_troop_temp_slot, 1),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (jump_to_menu, "mnu_reports"),
+    ]),
+]),
 
 ("faction_orders",0,
   "{!}{s9}",
@@ -716,63 +655,57 @@ game_menus = [
     (str_clear, s9),
     (store_current_hours, ":cur_hours"),
     (try_for_range, ":faction_no", kingdoms_begin, kingdoms_end),
-        (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
-        (neq, ":faction_no", "fac_player_supporters_faction"),
-
-        (faction_get_slot, ":old_faction_ai_state", ":faction_no", slot_faction_ai_state),
-
+      (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
+      (neq, ":faction_no", "fac_player_supporters_faction"),
+      (faction_get_slot, ":old_faction_ai_state", ":faction_no", slot_faction_ai_state),
       (try_begin),
-      (faction_get_slot, ":faction_marshal", ":faction_no", slot_faction_marshall),
-      (gt, ":faction_marshal", -1),
-      (assign, ":faction_ai_decider", ":faction_marshal"),
+        (faction_get_slot, ":faction_marshal", ":faction_no", slot_faction_marshall),
+        (gt, ":faction_marshal", -1),
+        (assign, ":faction_ai_decider", ":faction_marshal"),
       (else_try),
-      (faction_get_slot, ":faction_ai_decider", ":faction_no", slot_faction_leader),
+        (faction_get_slot, ":faction_ai_decider", ":faction_no", slot_faction_leader),
       (try_end),
 
-
-        #(*1) these two lines moved to here from (*2)
-        (call_script, "script_npc_decision_checklist_faction_ai_alt", ":faction_ai_decider"),
+      (call_script, "script_npc_decision_checklist_faction_ai_alt", ":faction_ai_decider"),
       (assign, ":new_strategy", reg0),
       (str_store_string, s26, s14),
 
-        #(3*) these three lines moved to here from (*4)
-        (faction_get_slot, ":faction_ai_state", ":faction_no", slot_faction_ai_state),
-        (faction_get_slot, ":faction_ai_object", ":faction_no", slot_faction_ai_object),
-        (faction_get_slot, ":faction_marshall", ":faction_no", slot_faction_marshall),
+      #(3*) these three lines moved to here from (*4)
+      (faction_get_slot, ":faction_ai_state", ":faction_no", slot_faction_ai_state),
+      (faction_get_slot, ":faction_ai_object", ":faction_no", slot_faction_ai_object),
+      (faction_get_slot, ":faction_marshall", ":faction_no", slot_faction_marshall),
 
-        (faction_get_slot, ":faction_ai_offensive_max_followers", ":faction_no", slot_faction_ai_offensive_max_followers),
-        (str_store_faction_name, s10, ":faction_no"),
-
-    (try_begin),
-      (faction_get_slot, ":faction_issue", ":faction_no", slot_faction_political_issue),
+      (faction_get_slot, ":faction_ai_offensive_max_followers", ":faction_no", slot_faction_ai_offensive_max_followers),
+      (str_store_faction_name, s10, ":faction_no"),
 
       (try_begin),
-        (eq, ":faction_issue", 1),
-        (str_store_string, s11, "@Appoint next marshal"),
-      (else_try),
-        (is_between, ":faction_issue", centers_begin, centers_end),
-        (str_store_party_name, s12, ":faction_issue"),
-        (str_store_string, s11, "@Award {s12} as fief"),
-      (else_try),
-        (eq, ":faction_issue", 0),
-        (str_store_string, s11, "str_dplmc_none"),
-      (else_try),
-        (assign, reg3, ":faction_issue"),
-        (str_store_string, s11, "@{!}Error ({reg3})"),
+        (faction_get_slot, ":faction_issue", ":faction_no", slot_faction_political_issue),
+
+        (try_begin),
+          (eq, ":faction_issue", 1),
+          (str_store_string, s11, "@Appoint next marshal"),
+        (else_try),
+          (is_between, ":faction_issue", centers_begin, centers_end),
+          (str_store_party_name, s12, ":faction_issue"),
+          (str_store_string, s11, "@Award {s12} as fief"),
+        (else_try),
+          (eq, ":faction_issue", 0),
+          (str_store_string, s11, "str_dplmc_none"),
+        (else_try),
+          (assign, reg3, ":faction_issue"),
+          (str_store_string, s11, "@{!}Error ({reg3})"),
+        (try_end),
+
+        (store_current_hours, reg4),
+        (faction_get_slot, ":faction_issue_put_on_agenda", ":faction_no", slot_faction_political_issue_time),
+        (val_sub, reg4, ":faction_issue_put_on_agenda"),
+
+            (str_store_string, s10, "@{!}{s10}^Faction political issue: {s11}"),
+        (try_begin),
+          (faction_slot_ge, ":faction_no", slot_faction_political_issue, 1),
+          (str_store_string, s10, "@{!}{s10} (on agenda {reg4} hours)"),
+        (try_end),
       (try_end),
-
-      (store_current_hours, reg4),
-      (faction_get_slot, ":faction_issue_put_on_agenda", ":faction_no", slot_faction_political_issue_time),
-      (val_sub, reg4, ":faction_issue_put_on_agenda"),
-
-          (str_store_string, s10, "@{!}{s10}^Faction political issue: {s11}"),
-      (try_begin),
-        (faction_slot_ge, ":faction_no", slot_faction_political_issue, 1),
-        (str_store_string, s10, "@{!}{s10} (on agenda {reg4} hours)"),
-      (try_end),
-    (try_end),
-
-
       (assign, reg2, ":faction_ai_offensive_max_followers"),
       (try_begin),
         (eq, ":faction_ai_state", sfai_default),
@@ -796,14 +729,14 @@ game_menus = [
         (eq, ":faction_ai_state", sfai_feast),
         (str_store_party_name, s11, ":faction_ai_object"),
         (str_store_string, s11, "str_holding_feast_at_s11"),
-    (else_try),
+      (else_try),
         (eq, ":faction_ai_state", sfai_attacking_enemies_around_center),
         (str_store_party_name, s11, ":faction_ai_object"),
         (str_store_string, s11, "@{!}Attacking enemies around {s11}"),
       (else_try),
-      (assign, reg4, ":faction_ai_state"),
-    (str_store_string, s11, "str_sfai_reg4"),
-    (try_end),
+        (assign, reg4, ":faction_ai_state"),
+        (str_store_string, s11, "str_sfai_reg4"),
+      (try_end),
 
       (try_begin),
         (lt, ":faction_marshall", 0),
@@ -814,26 +747,15 @@ game_menus = [
         (str_store_string, s12, "@{!}{s12} (controversy: {reg21})"),
       (try_end),
 
-    (try_for_parties, ":screen_party"),
-      (party_slot_eq, ":screen_party", slot_party_ai_state, spai_screening_army),
-      (store_faction_of_party, ":screen_party_faction", ":screen_party"),
-      (eq, ":screen_party_faction", ":faction_no"),
+      (try_for_parties, ":screen_party"),
+        (party_slot_eq, ":screen_party", slot_party_ai_state, spai_screening_army),
+        (store_faction_of_party, ":screen_party_faction", ":screen_party"),
+        (eq, ":screen_party_faction", ":faction_no"),
 
-      (str_store_party_name, s38, ":screen_party"),
-      (str_store_string, s12, "@{!}{s12}^Screening party: {s38}"),
-    (try_end),
+        (str_store_party_name, s38, ":screen_party"),
+        (str_store_string, s12, "@{!}{s12}^Screening party: {s38}"),
+      (try_end),
 
-      #(*2) these two lines moved to up (look *1)
-    #(call_script, "script_npc_decision_checklist_faction_ai", ":faction_no"),
-    #(assign, ":new_strategy", reg0),
-
-      #(try_begin),
-      #  (this_or_next|eq, ":new_strategy", sfai_default),
-      #  (eq, ":new_strategy", sfai_feast),
-    #
-    #  (store_current_hours, ":hours"),
-    #  (faction_set_slot, ":faction_no", slot_faction_ai_last_rest_time, ":hours"),
-    #(try_end),
       (try_begin),
         #new condition to rest, (a faction's new strategy should be feast or default) and (":hours_at_current_state" > 20)
         (this_or_next|eq, ":new_strategy", sfai_default),
@@ -848,24 +770,24 @@ game_menus = [
         (faction_set_slot, ":faction_no", slot_faction_ai_last_rest_time, ":hours"),
       (try_end),
 
-        #Change of strategy
-        (try_begin),
-          (neq, ":new_strategy", ":old_faction_ai_state"),
+      #Change of strategy
+      (try_begin),
+        (neq, ":new_strategy", ":old_faction_ai_state"),
 
-          (store_current_hours, ":hours"),
-          (faction_set_slot, ":faction_no", slot_faction_ai_current_state_started, ":hours"),
-        (try_end),
+        (store_current_hours, ":hours"),
+        (faction_set_slot, ":faction_no", slot_faction_ai_current_state_started, ":hours"),
+      (try_end),
 
-    (call_script, "script_evaluate_realm_stability", ":faction_no"),
-    (assign, ":disgruntled_lords", reg0),
-    (assign, ":restless_lords", reg1),
+      (call_script, "script_evaluate_realm_stability", ":faction_no"),
+      (assign, ":disgruntled_lords", reg0),
+      (assign, ":restless_lords", reg1),
 
-    (faction_get_slot, ":last_feast_ended", ":faction_no", slot_faction_last_feast_start_time),
-    (store_sub, ":hours_since_last_feast", ":cur_hours", ":last_feast_ended"),
-    (val_sub, ":hours_since_last_feast", 72),
+      (faction_get_slot, ":last_feast_ended", ":faction_no", slot_faction_last_feast_start_time),
+      (store_sub, ":hours_since_last_feast", ":cur_hours", ":last_feast_ended"),
+      (val_sub, ":hours_since_last_feast", 72),
 
-    (faction_get_slot, ":current_state_started", ":faction_no", slot_faction_ai_current_state_started),
-    (store_sub, ":hours_at_current_state", ":cur_hours", ":current_state_started"),
+      (faction_get_slot, ":current_state_started", ":faction_no", slot_faction_ai_current_state_started),
+      (store_sub, ":hours_at_current_state", ":cur_hours", ":current_state_started"),
 
       (faction_get_slot, ":faction_ai_last_offensive_time", ":faction_no", slot_faction_last_offensive_concluded),
       (store_sub, ":hours_since_last_offensive", ":cur_hours", ":faction_ai_last_offensive_time"),
@@ -876,15 +798,15 @@ game_menus = [
       (faction_get_slot, ":faction_ai_last_decisive_event", ":faction_no", slot_faction_ai_last_decisive_event),
       (store_sub, ":hours_since_last_decisive_event", ":cur_hours", ":faction_ai_last_decisive_event"),
 
-    (assign, reg3, ":hours_at_current_state"),
-    (assign, reg4, ":hours_since_last_offensive"),
-    (assign, reg5, ":hours_since_last_feast"),
+      (assign, reg3, ":hours_at_current_state"),
+      (assign, reg4, ":hours_since_last_offensive"),
+      (assign, reg5, ":hours_since_last_feast"),
 
-    (assign, reg7, ":disgruntled_lords"),
-    (assign, reg8, ":restless_lords"),
-    (assign, reg9, ":hours_since_last_rest"),
-    (assign, reg10, ":hours_since_last_decisive_event"),
-    (str_store_string, s14, s26),
+      (assign, reg7, ":disgruntled_lords"),
+      (assign, reg8, ":restless_lords"),
+      (assign, reg9, ":hours_since_last_rest"),
+      (assign, reg10, ":hours_since_last_decisive_event"),
+      (str_store_string, s14, s26),
 
       (str_store_string, s9, "str_s9s10_current_state_s11_hours_at_current_state_reg3_current_strategic_thinking_s14_marshall_s12_since_the_last_offensive_ended_reg4_hours_since_the_decisive_event_reg10_hours_since_the_last_rest_reg9_hours_since_the_last_feast_ended_reg5_hours_percent_disgruntled_lords_reg7_percent_restless_lords_reg8__"),
     (try_end),
@@ -986,534 +908,59 @@ game_menus = [
     ]),
 ]),
 
-# ("party_size_report",0,
-#    "{s1}",
-#    "none",
-#    [(call_script, "script_game_get_party_companion_limit", "p_main_party"),
-#     (assign, ":party_size_limit", reg0),
-#     (try_begin),
-#         (eq, "$g_rank",0),
-#         (neq, "$g_is_emperor",1),
-#         (store_skill_level, ":leadership", "skl_leadership", "trp_player"),
-#         (val_mul, ":leadership", 10),
-#         (store_attribute_level, ":charisma", "trp_player", ca_charisma),
-
-#         (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
-#         (val_div, ":renown", 9),
-#         (try_begin),
-#           (gt, ":leadership", 0),
-#           (str_store_string, s2, "@{!} +"),
-#         (else_try),
-#           (str_store_string, s2, "str_space"),
-#         (try_end),
-#         (try_begin),
-#           (gt, ":charisma", 0),
-#           (str_store_string, s3, "@{!} +"),
-#         (else_try),
-#           (str_store_string, s3, "str_space"),
-#         (try_end),
-#         (try_begin),
-#           (gt, ":renown", 0),
-#           (str_store_string, s4, "@{!} +"),
-#         (else_try),
-#           (str_store_string, s4, "str_space"),
-#         (try_end),
-
-
-#         #SB : other modifiers from party_get_ideal_size, listed in order of precedence
-#         (try_for_range, ":sreg", s6, s10),
-#           (str_clear, ":sreg"),
-#         (try_end),
-
-#         (try_begin),
-#           (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
-#           # (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-#           # the above script doesn't exactly work for pretender
-#           (try_begin),
-#             # (ge, reg0, DPLMC_FACTION_STANDING_LEADER), #exclude spouse
-#             (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
-#             (store_mul, ":king_bonus", 5, "$player_right_to_rule"), #20 is "legit" ruler
-#             (val_clamp, ":king_bonus", dplmc_marshal_party_bonus, dplmc_monarch_party_bonus + 1),
-#             (assign, reg6, ":king_bonus"),
-#             (str_store_string, s8, "@Monarch: +{reg6}^"),
-#           (else_try),
-#             (assign, ":king_bonus", 0),
-#           (try_end),
-
-#           (try_begin),
-#             (faction_slot_eq, "$players_kingdom", slot_faction_marshall, "trp_player"),
-#             (assign, ":marshal_bonus", dplmc_marshal_party_bonus),
-#             (assign, reg6, ":marshal_bonus"),
-#             (str_store_string, s7, "@Marshal: +{reg6}^"),
-#           (else_try),
-#             (assign, ":marshal_bonus", 0),
-#           (try_end),
-#           #percentage calculation follows
-#           (assign, ":faction_id", "$players_kingdom"),
-#           (assign, ":percent", 100),
-#           #Limit effects of policies for nascent kingdoms.
-#           (assign, ":policy_min", -3),
-#           (assign, ":policy_max", 4),#one greater than the maximum
-#           (try_begin),
-#               (this_or_next|eq, ":faction_id", "fac_player_supporters_faction"),
-#               (faction_slot_eq, ":faction_id", slot_faction_leader, "trp_player"),
-#               (faction_get_slot, ":policy_max", ":faction_id", slot_faction_num_towns),
-#               (faction_get_slot, reg0, ":faction_id", slot_faction_num_castles),
-#               (val_add, ":policy_max", reg0),
-#               (val_clamp, ":policy_max", 0, 4),#0, 1, 2, 3
-#               (store_mul, ":policy_min", ":policy_max", -1),
-#               (val_add, ":policy_max", 1),#one greater than the maximum
-#           (try_end),
-#           (try_begin), #we detecting rulership using king_bonus to determine which percent to apply
-#             (gt, ":king_bonus", 0),
-#             (try_begin),
-#               (faction_get_slot, ":centralization", ":faction_id", dplmc_slot_faction_centralization),
-#               (val_clamp, ":centralization", ":policy_min", ":policy_max"),
-#               (val_mul, ":centralization", 10),
-#               (val_add, ":percent", ":centralization"),
-#             (try_end),
-#           (else_try), #player is a regular vassal
-#             (try_begin),
-#               (faction_get_slot, ":centralization", ":faction_id", dplmc_slot_faction_centralization),
-#               (val_clamp, ":centralization", ":policy_min", ":policy_max"),
-#               (val_mul, ":centralization", -3),
-#               (val_add, ":percent", ":centralization"),
-#             (try_end),
-#             (try_begin),
-#               (faction_get_slot, ":aristocracy", ":faction_id", dplmc_slot_faction_aristocracy),
-#               (val_clamp, ":aristocracy", ":policy_min", ":policy_max"),
-#               (val_mul, ":aristocracy", 3),
-#               (val_add, ":percent", ":aristocracy"),
-#             (try_end),
-#             (try_begin),
-#               (faction_get_slot, ":quality", ":faction_id", dplmc_slot_faction_quality),
-#               (val_clamp, ":quality", ":policy_min", ":policy_max"),
-#               (val_mul, ":quality", -4),
-#               (val_add, ":percent", ":quality"),
-#             (try_end),
-#             ##diplomacy end
-#           (try_end),
-#           (try_begin),
-#             (faction_get_slot, ":serfdom", ":faction_id", dplmc_slot_faction_serfdom),
-#             (val_clamp, ":serfdom", ":policy_min", ":policy_max"),
-#             (val_mul, ":serfdom", 2), #SB : no multiplier as per description
-#             (val_add, ":percent", ":serfdom"),
-#           (try_end),
-#           #if no change from default, do not display
-#           (try_begin),
-#             (eq, ":percent", 100),
-#             (assign, ":percent", 0),
-#           (else_try), #last new string
-#             (assign, reg6, ":percent"),
-#             (str_store_string, s9, "@Policy: {reg6}%^"),
-#           (try_end),
-#         (else_try), #not affiliated, do not show position-based bonus
-#           (assign, ":king_bonus", 0),
-#           (assign, ":marshal_bonus", 0),
-#           (assign, ":percent", 0),
-#         (try_end),
-#         ## CC
-#         (assign, ":center_bonus", 0),
-#         (try_for_range, ":cur_center", castles_begin, castles_end),
-#           (party_slot_eq, ":cur_center", slot_town_lord, "trp_player"),
-#           (val_add, ":center_bonus", dplmc_castle_party_bonus),
-#         (try_end),
-#         (try_for_range, ":cur_center", towns_begin, towns_end),
-#           (party_slot_eq, ":cur_center", slot_town_lord, "trp_player"),
-#           (val_add, ":center_bonus", dplmc_town_party_bonus),
-#         (try_end),
-#         (try_for_range, ":cur_center", villages_begin, villages_end),
-#           (party_slot_eq, ":cur_center", slot_town_lord, "trp_player"),
-#           (val_add, ":center_bonus", dplmc_village_party_bonus),
-#         (try_end),
-#         (try_begin),
-#           (gt, ":center_bonus", 0),
-#           (assign, reg6, ":center_bonus"),
-#           (str_store_string, s6, "@Owned Settlements: +{reg6}^"),
-#         (try_end),
-#         ## CC
-
-#         # (assign, reg9, ":percent"),
-#         # (assign, reg8, ":king_bonus"),
-#         # (assign, reg7, ":marshal_bonus"),
-#         # (assign, reg6, ":center_bonus"),
-#         (assign, reg5, ":party_size_limit"),
-#         (assign, reg1, ":leadership"),
-#         (assign, reg2, ":charisma"),
-#         (assign, reg3, ":renown"),
-#         #SB : might as well show player party size
-#         (party_get_num_companions, reg10, "p_main_party"),
-#         (str_store_string, s1, "@Current party size is {reg10}/{reg5}.^\
-#     Current party size modifiers are:^^\
-#     Base size:  +30^\
-#     Leadership: {s2}{reg1}^\
-#     Charisma: {s3}{reg2}^\
-#     Renown: {s4}{reg3}^^\
-#     {s8}{s7}{s6}{s9}\
-#     TOTAL:  {reg5}"),
-#     (else_try),
-#         (eq, "$g_rank",1),
-#         (store_skill_level, reg20, "skl_leadership", "trp_player"),
-#         (store_mul, reg21, reg20, 20),
-#       (str_clear, s7),
-#       (try_begin),
-#         (faction_slot_eq, "$players_kingdom", slot_faction_marshall, "trp_player"),
-#         (assign, reg6, dplmc_marshal_party_bonus),
-#         (str_store_string, s7, "@Marshal: +{reg6}"),
-#       (try_end),
-#         (str_store_string, s1,"@As tribunus militaris you can command 100 men.^\
-#         From your leadership skill {reg20}: +{reg21}^{s7}"),
-#     (else_try),
-#         (eq, "$g_rank",2),
-#         (store_skill_level, reg20, "skl_leadership", "trp_player"),
-#         (store_mul, reg21, reg20, 20),
-#       (str_clear, s7),
-#       (try_begin),
-#         (faction_slot_eq, "$players_kingdom", slot_faction_marshall, "trp_player"),
-#         (assign, reg6, dplmc_marshal_party_bonus),
-#         (str_store_string, s7, "@Marshal: +{reg6}"),
-#       (try_end),
-#         (str_store_string, s1,"@As praefectus cohortis you can command 200 men.^\
-#         From your leadership skill {reg20}: +{reg21}^{s7}"),
-#     (else_try),
-#         (eq, "$g_rank",3),
-#         (store_skill_level, reg20, "skl_leadership", "trp_player"),
-#         (store_mul, reg21, reg20, 20),
-#       (str_clear, s7),
-#       (try_begin),
-#         (faction_slot_eq, "$players_kingdom", slot_faction_marshall, "trp_player"),
-#         (assign, reg6, dplmc_marshal_party_bonus),
-#         (str_store_string, s7, "@Marshal: +{reg6}"),
-#       (try_end),
-#         (str_store_string, s1,"@As legatus legionis you can command 500 men.^\
-#         From your leadership skill {reg20}: +{reg21}^{s7}"),
-#     (else_try),
-#         (eq, "$g_is_emperor",1),
-#         (store_skill_level, reg20, "skl_leadership", "trp_player"),
-#         (store_mul, reg21, reg20, 20),
-#       (str_clear, s7),
-#       (try_begin),
-#         (faction_slot_eq, "$players_kingdom", slot_faction_marshall, "trp_player"),
-#         (assign, reg6, dplmc_marshal_party_bonus),
-#         (str_store_string, s7, "@Marshal: +{reg6}"),
-#       (try_end),
-#         (str_store_string, s1,"@As divine Imperator you can command 600 men.^\
-#         From your leadership skill {reg20}: +{reg21}^{s7}"),
-#     (try_end),
-#     ],
-#     [
-#       ("continue",[],"Continue...",
-#        [(jump_to_menu, "mnu_reports"),
-#         ]
-#        ),
-# ]),
-
-  # ("faction_relations_report",0,
-   # "{s1}",
-   # "none",
-   # [(str_clear, s2),
-    # (try_for_range, ":cur_kingdom", kingdoms_begin, kingdoms_end),
-      # (faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_active),
-      # (neq, ":cur_kingdom", "fac_player_supporters_faction"),
-      # (store_relation, ":cur_relation", "fac_player_supporters_faction", ":cur_kingdom"),
-      # (try_begin),
-        # (ge, ":cur_relation", 90),
-        # (str_store_string, s3, "@Loyal"),
-      # (else_try),
-        # (ge, ":cur_relation", 80),
-        # (str_store_string, s3, "@Devoted"),
-      # (else_try),
-        # (ge, ":cur_relation", 70),
-        # (str_store_string, s3, "@Fond"),
-      # (else_try),
-        # (ge, ":cur_relation", 60),
-        # (str_store_string, s3, "@Gracious"),
-      # (else_try),
-        # (ge, ":cur_relation", 50),
-        # (str_store_string, s3, "@Friendly"),
-      # (else_try),
-        # (ge, ":cur_relation", 40),
-        # (str_store_string, s3, "@Supportive"),
-      # (else_try),
-        # (ge, ":cur_relation", 30),
-        # (str_store_string, s3, "@Favorable"),
-      # (else_try),
-        # (ge, ":cur_relation", 20),
-        # (str_store_string, s3, "@Cooperative"),
-      # (else_try),
-        # (ge, ":cur_relation", 10),
-        # (str_store_string, s3, "@Accepting"),
-      # (else_try),
-        # (ge, ":cur_relation", 0),
-        # (str_store_string, s3, "@Indifferent"),
-      # (else_try),
-        # (ge, ":cur_relation", -10),
-        # (str_store_string, s3, "@Suspicious"),
-      # (else_try),
-        # (ge, ":cur_relation", -20),
-        # (str_store_string, s3, "@Grumbling"),
-      # (else_try),
-        # (ge, ":cur_relation", -30),
-        # (str_store_string, s3, "@Hostile"),
-      # (else_try),
-        # (ge, ":cur_relation", -40),
-        # (str_store_string, s3, "@Resentful"),
-      # (else_try),
-        # (ge, ":cur_relation", -50),
-        # (str_store_string, s3, "@Angry"),
-      # (else_try),
-        # (ge, ":cur_relation", -60),
-        # (str_store_string, s3, "@Hateful"),
-      # (else_try),
-        # (ge, ":cur_relation", -70),
-        # (str_store_string, s3, "@Revengeful"),
-      # (else_try),
-        # (str_store_string, s3, "@Vengeful"),
-      # (try_end),
-      # (str_store_faction_name, s4, ":cur_kingdom"),
-      # (assign, reg1, ":cur_relation"),
-      # (str_store_string, s2, "@{!}{s2}^{s4}: {reg1} ({s3})"),
-    # (try_end),
-    # (str_store_string, s1, "@Your relation with the factions are:^{s2}"),
-
-
-
-    # ],
-    # [
-      # ("continue",[],"Continue...",
-       # [(jump_to_menu, "mnu_reports"),
-        # ]
-       # ),
-      # ]
-  # ),
-
-  ("camp",mnf_scale_picture|mnf_enable_hot_keys,
-   "{s23}^^{s37}^^Current party stance: {s36}^^{s60}",
-   "none",
-   [
-
+("camp",mnf_scale_picture|mnf_enable_hot_keys,
+  "{s23}^^{s37}^^Current party stance: {s36}^^{s60}",
+  "none",[
     (call_script, "script_get_region_of_pos22", "p_main_party"),
-
-	  (try_begin),
-        (check_quest_active, "qst_elysium"),
-        (quest_slot_eq, "qst_elysium", slot_quest_current_state, 2),
-        (store_distance_to_party_from_party, ":distance", "p_main_party", "p_island"),
-        (lt, ":distance", 5),
-        (jump_to_menu, "mnu_wait_storm"),
+    (try_begin),
+      (check_quest_active, "qst_elysium"),
+      (quest_slot_eq, "qst_elysium", slot_quest_current_state, 2),
+      (store_distance_to_party_from_party, ":distance", "p_main_party", "p_island"),
+      (lt, ":distance", 5),
+      (jump_to_menu, "mnu_wait_storm"),
     (else_try),
-		# We get here when original camp submenus return back to top level
-		(eq, "$g_encountered_party_template", "pt_player_camp"),
-		(jump_to_menu, "mnu_player_camp"),
-	(else_try),
-		# If Camp is pressed just near a camp, switch to it
-		(call_script, "script_find_closest_player_camp", "p_main_party"),
-		(gt, reg0, 0), # camp party
-		(eq, reg1, 0), # distance
-		(assign, "$auto_enter_town", reg0),
-		(change_screen_return),
+      # We get here when original camp submenus return back to top level
+      (eq, "$g_encountered_party_template", "pt_player_camp"),
+      (jump_to_menu, "mnu_player_camp"),
     (else_try),
-        (eq,"$temp",6), #waiting, building, exit
-        (assign,"$temp",0), #waiting, building, exit
-        (try_begin),
-            (troop_slot_ge, "trp_global_variables", g_player_trench, 1),
-            (troop_set_slot, "trp_global_variables", g_player_trench, 0),
-            (display_message, "@Fortifications are destroyed.", message_alert), #SB : colorize
-        (try_end),
-        (change_screen_map),
+      # If Camp is pressed just near a camp, switch to it
+      (call_script, "script_find_closest_player_camp", "p_main_party"),
+      (gt, reg0, 0), # camp party
+      (eq, reg1, 0), # distance
+      (assign, "$auto_enter_town", reg0),
+      (change_screen_return),
     (else_try),
-        (start_presentation,"prsnt_camp_menu"),
-        (party_slot_eq, "p_main_party", slot_party_on_water, 0),
-        (assign, "$g_player_icon_state", pis_normal),
+      (eq,"$temp",6), #waiting, building, exit
+      (assign,"$temp",0), #waiting, building, exit
+      (try_begin),
+        (troop_slot_ge, "trp_global_variables", g_player_trench, 1),
+        (troop_set_slot, "trp_global_variables", g_player_trench, 0),
+        (display_message, "@Fortifications are destroyed.", message_alert), #SB : colorize
+      (try_end),
+      (change_screen_map),
+    (else_try),
+      (start_presentation,"prsnt_camp_menu"),
+      (party_slot_eq, "p_main_party", slot_party_on_water, 0),
+      (assign, "$g_player_icon_state", pis_normal),
     (try_end),
 
     (str_clear, s60),
     (try_begin),
-        (ge, "$cheat_mode", 1),
-        (set_fixed_point_multiplier, 1000),
-        (party_get_position, pos1, "p_main_party"),
-        (position_get_x, reg44, pos1),
-        (position_get_y, reg45, pos1),
-        (position_get_z, reg46, pos1),
-        (str_store_string, s60, "@Coordinates: x={reg44} y={reg45} z={reg46}."),
-        (display_message, "@{s60}"),
+      (ge, "$cheat_mode", 1),
+      (set_fixed_point_multiplier, 1000),
+      (party_get_position, pos1, "p_main_party"),
+      (position_get_x, reg44, pos1),
+      (position_get_y, reg45, pos1),
+      (position_get_z, reg46, pos1),
+      (str_store_string, s60, "@Coordinates: x={reg44} y={reg45} z={reg46}."),
+      (display_message, "@{s60}"),
     (try_end),
     (set_background_mesh, "mesh_pic_camp"),
-    ],
-    [
-
-       # ("options",[
-      # ],"Mod Options.",
-        # [
-    # (assign, reg60, 0),
-		# (start_presentation, "prsnt_vc_options"),
-        # ]
-      # ),
-
-      # ("options",[(eq, "$enlisted_party", -1),#freelancer
-      # ],"Change stance (currently: {s36})",
-        # [
-        # (val_add, "$g_stance", 1),
-        # (try_begin),
-          # (ge, "$g_stance", 3),
-          # (assign, "$g_stance", 0),
-        # (try_end),
-        # (call_script, "script_game_get_party_speed_multiplier", "p_main_party"),
-        # (jump_to_menu, "mnu_camp"),
-        # ]
-      # ),
-
-
-	  # ("army_manage",[
-   # (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
-   # (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
-   # (ge, ":num_attached_parties", 1),
-   # ],"Detach parties.",
-        # [
-   # (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
-   # (ge, ":num_attached_parties", 1),
-   # (try_for_range_backwards, ":attached_party_rank", 0, ":num_attached_parties"),
-		# (party_get_attached_party_with_rank, ":attached_party", "p_main_party", ":attached_party_rank"),
-		# (party_detach, ":attached_party"),
-		# (party_relocate_near_party, ":attached_party", "p_main_party", 1),
-		# (party_set_slot,":attached_party",slot_party_time_service, -1),
-		# (str_store_party_name, s22, ":attached_party"),
-		# (display_message, "@{s22} has left your force."),
-   # (try_end),
-        # ]
-      # ),
-
-	  # ("army_manage_2",[
-   # (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
-   # (ge, ":num_attached_parties", 1),
-   # (eq, "$enlisted_party", -1),#freelancer
-   # ],"Talk with one of your commanders.",
-        # [
-		# (jump_to_menu, "mnu_talk_with_commanders"),
-        # ]
-      # ),
-	# ("action_create_pcamp",
-		# [
-		# (neg|eq, "$g_encountered_party_template", "pt_player_camp"),
-		# (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
-    # (eq, "$enlisted_party", -1),#freelancer
-		# ],
-		# "Create a permanent camp.",
-		# [(jump_to_menu, "mnu_create_pcamp")]),
-
-      # ("camp_action_1",[(neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
-      # (eq, "$enlisted_party", -1),#freelancer
-	  # ],"Walk around the campsite.", #dckplmc
-       # [(set_jump_mission,"mt_camp"),
-        # (call_script, "script_setup_camp_scene"),
-        # (change_screen_mission),
-        # ]
-       # ),
-
-      # ("camp_action_1",[(party_slot_eq, "p_main_party", slot_party_on_water, 1),
-      # (eq, "$enlisted_party", -1),#freelancer
-	  # ],"Walk around your ship", #dckplmc
-       # [(set_jump_mission,"mt_camp"),
-        # (call_script, "script_setup_camp_scene"),
-        # (change_screen_mission),
-        # ]
-       # ),
-       # ("extra_wages",[
-       # (eq, "$enlisted_party", -1),#freelancer
-	   # (store_party_size_wo_prisoners, ":men", "p_main_party"),
-	  # (ge, ":men", 2),],"Reward your troops with gold.", #dckplmc
-        # [
-         # (jump_to_menu, "mnu_extra_wage")
-         # ]
-        # ),
-	# ("send_foragers",
-		# [(eq, "$enlisted_party", -1),#freelancer
-		# (eq, "$foragers_a", 1), #foragers ok
-		# ],
-		# "Stop foraging.",
-		# [(assign, "$foragers_a", 0),]),
-	# ("send_foragers2",
-		# [ (eq, "$enlisted_party", -1),#freelancer
-		# (eq, "$foragers_a", 0), #foragers ok
-		# ],
-		# "Send foragers",
-		# [
-		# (store_party_size_wo_prisoners, ":men", "p_main_party"),
-		# (try_begin),
-			# (gt, ":men", 40),
-			# (assign, "$foragers_a", 1),
-		# (else_try),
-			# (display_message, "@You need more men"),
-		# (try_end),
-		# ]),
-
-
-       ##diplomacy begin
-###################################################################################
-# Autoloot: Allow item management from camp
-###################################################################################
-##nested diplomacy start+
-#Made some changes to autoloot conditions
-	# ("dplmc_camp_manage_inventory",
-		# [
-	  #OLD:
-	  #(eq, "$g_autoloot", 1),
-      #(store_skill_level, ":inv_skill", "skl_inventory_management", "trp_player"),
-      #(gt, "$g_player_chamberlain", 0),
-      #(ge, ":inv_skill", 3),
-	  #NEW:
-	  #1. Must have companions
-	  # #2. Either a hero in the party must have inventory management 3 or higher, or the player must have inventory management of 2 or higher, or the player or a hero in the party must have a looting skill of 2 or higher
-	  # (call_script, "script_cf_dplmc_player_party_meets_autoloot_conditions"),
-	    # ],
-	  # #"Manage your party's inventory.",
-	  # "Manage auto-loot settings.",
-		# [
-			# (try_begin),
-				# #dplmc+ Add check if autoloot has not been initialized yet
-				# (call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
-			# (try_end),
-			# (troop_clear_inventory, "trp_temp_troop"),
-			# ##diplomacy start+
-			# (assign, "$pool_troop", "trp_temp_troop"),
-			# (assign, "$dplmc_return_menu", "mnu_camp"),
-			# ##diplomacy end+
-			# (assign, "$inventory_menu_offset", 0),
-            # #SB : variable resets
-			# (assign, "$lord_selected", "trp_player"),
-      # (str_clear, dplmc_loot_string),
-			# (jump_to_menu, "mnu_dplmc_manage_loot_pool")
-		# ]
-	# ),
-
-# #Alternate display: make it clear why autoloot isn't appearing
-	# ("dplmc_camp_manage_inventory_disabled",
-		# [
-	  # #Print this when the player has companions but doesn't meet
-	  # #the minimum skill levels.
-		# (try_begin),
-			# (call_script, "script_cf_dplmc_player_party_meets_autoloot_conditions"),
-		# (try_end),
-		# (eq, reg0, 0),
-		# (disable_menu_option),
-	    # ],
-	  # "Auto-loot requires Inventory Management or Looting at rank 2.",
-		# [
-		# ]
-	# ),
-##nested diplomacy end+ Finished changes to autoloot conditions
-###################################################################################
-# End Autoloot
-###################################################################################
-
-##diplomacy end
-
-      ("resume_travelling",[],"Resume travelling.",
-       [
-           (change_screen_return),
-        ]
-       ),
-      ]
-  ),
+  ],[
+      ("resume_travelling",[],"Resume travelling.",[
+        (change_screen_return),
+      ]),
+]),
 
 #######camp follower party management
 ("hire_follower_party",0,
@@ -1709,7 +1156,7 @@ game_menus = [
     (call_script, "script_change_player_party_morale", -10),
     (party_clear, "p_follower_party"), #
     (troop_clear_inventory, "trp_follower_party_mules"), #player lose mules
-    (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+    (jump_to_menu, "mnu_auto_return_map"),#phaiak
   ]),
 ]),
 
@@ -1733,7 +1180,7 @@ game_menus = [
     (rest_for_hours_interactive, 24 * 365, 5, 1), #rest while attackable
     (leave_encounter),
     #(change_screen_map),
-    (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+    (jump_to_menu, "mnu_auto_return_map"),#phaiak
     (troop_set_slot, "trp_global_variables", g_player_trench, 1),
   ]),
   ("resume_travelling",[],"Back.",[
@@ -1752,7 +1199,7 @@ game_menus = [
     (store_item_kind_count, ":tools", "itm_tools", "trp_player"),
     (ge, ":tools", 1),
   ],"Build fortifications.",[
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
     (troop_set_slot, "trp_global_variables", g_player_trench, 1),
   ]),
   ("resume_travelling",[],"Back.",[
@@ -1774,7 +1221,7 @@ game_menus = [
     (rest_for_hours_interactive, 24 * 365, 5, 1), #rest while attackable
     (leave_encounter),
     #(change_screen_map),
-    (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+    (jump_to_menu, "mnu_auto_return_map"),#phaiak
   ]),
   ("resume_travelling",[],"Back.",[
     (change_screen_return),
@@ -9969,7 +9416,7 @@ game_menus = [
       ("emboscada_playerok",[],"Victory!",
         [
         (leave_encounter),
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
       ]),
     ],
   ),
@@ -11370,7 +10817,7 @@ game_menus = [
           # (assign, "$auto_enter_town", "$g_encountered_party"),
           # (change_screen_return),
           (change_screen_map),
-          #(jump_to_menu, "mnu_auto_return_to_map"),
+          #(jump_to_menu, "mnu_auto_return_map"),
       ]),
     ],
   ),
@@ -15584,7 +15031,7 @@ game_menus = [
         (this_or_next|is_between, "$current_town", centers_begin, centers_end),
         (is_between, "$current_town", minor_towns_begin, minor_towns_end),
     (else_try),
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
         (display_log_message, "@A bug occured on town menu", message_negative),
     (try_end),
 
@@ -15680,7 +15127,7 @@ game_menus = [
         (this_or_next|quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 2),
         (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 3),
         (leave_encounter),
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
     (else_try),
         (eq, "$current_town", "p_town_27"),
         (check_quest_active, "qst_philosopher"),
@@ -19733,7 +19180,7 @@ game_menus = [
      #(set_background_mesh, "mesh_pic_mb_warrior_3"), #SB : background mesh
     ],
     [
-      ("village_bandits_defeated_accept",[],"Take it as your just due.",[(jump_to_menu, "mnu_auto_return_to_map"),
+      ("village_bandits_defeated_accept",[],"Take it as your just due.",[(jump_to_menu, "mnu_auto_return_map"),
                                                                          (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
                                                                          (troop_sort_inventory, ":merchant_troop"),
                                                                          (change_screen_loot, ":merchant_troop"),
@@ -22229,7 +21676,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ("war",[],"Declare war!",
         [
             (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", 1),
-            (jump_to_menu, "mnu_auto_return_to_map"),
+            (jump_to_menu, "mnu_auto_return_map"),
         ]),
 
         ("ignore",[],"Ignore the situation",
@@ -22266,7 +21713,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         [
             (store_mul, ":gold_lost", reg40, -1),
             (troop_remove_gold, "trp_player",  ":gold_lost"),
-            (jump_to_menu, "mnu_auto_return_to_map"),
+            (jump_to_menu, "mnu_auto_return_map"),
 
             (faction_get_slot, ":leader_1", "$g_notification_menu_var1", slot_faction_leader),
             (try_begin),
@@ -22282,7 +21729,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ],"Pay the tribute.",
         [
             (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", reg40),
-            (jump_to_menu, "mnu_auto_return_to_map"),
+            (jump_to_menu, "mnu_auto_return_map"),
 
             (faction_get_slot, ":leader_1", "$g_notification_menu_var1", slot_faction_leader),
             (try_begin),
@@ -22297,7 +21744,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ("continue",[],"Refuse.",
         [
             (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", 0),
-            (jump_to_menu, "mnu_auto_return_to_map"),
+            (jump_to_menu, "mnu_auto_return_map"),
         ]),
     ]
 ),
@@ -22356,7 +21803,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     [
         ("continue",[],"Continue",
         [
-            (jump_to_menu, "mnu_auto_return_to_map"),
+            (jump_to_menu, "mnu_auto_return_map"),
         ]),
     ]
 ),
@@ -22394,7 +21841,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (lt,  ":faction_1_to_2", 0),
         (le, ":rand_normal", 50),
         (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", 1),
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
     (else_try),
         (le,  ":faction_1_to_2", 0),
         (le, ":rand_normal", 75),
@@ -22448,7 +21895,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
   ],[
       ("continue",[],"Continue",[
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
       ]),
 ]),
 
@@ -23594,7 +23041,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_notification_menu_var2", "$g_notification_menu_var1", 0),
       (faction_get_slot, ":leader", "$g_notification_menu_var1", slot_faction_leader),
       (call_script, "script_change_player_relation_with_troop", ":leader", -10),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("continue",[(eq, "$temp1", -1),],"Do not join this war and break your alliance!",[
       (call_script, "script_change_player_honor", -25),
@@ -23622,11 +23069,11 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
       (str_store_faction_name, s4, "$players_kingdom"),
       (display_log_message, "@{s4} broke its agreement with {s1}"),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("continue",[(eq, "$temp1", -1),],"Help your ally by declaring war.",[
       (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "$g_notification_menu_var2", logent_faction_declares_war_to_fulfil_pact),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -23793,7 +23240,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (faction_get_slot, ":leader", "$g_notification_menu_var2", slot_faction_leader),
             (call_script, "script_change_player_relation_with_troop", ":leader", -10),
         (try_end),
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
        ]),
     ]
 ),
@@ -24230,36 +23677,16 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
   ),
 
+("debug_alert_from_s65",0,
+  "DEBUG ALERT: {s65}",
+  "none",[
+  ],[
+    ("continue",[],"Continue...",[
+      # (assign, "$debug_message_in_queue", 0),
+      (change_screen_return),
+    ]),
+]),
 
-    (
-    "debug_alert_from_s65",0,
-    "DEBUG ALERT: {s65}",
-    "none",
-    [
-    ],
-    [
-      ("continue",[],"Continue...",
-       [
-        # (assign, "$debug_message_in_queue", 0),
-        (change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "auto_return_to_map",0,
-    "stub",
-    "none",
-    [(change_screen_map)],
-    []
-  ),
-  (
-    "auto_presentation",0,
-    "stub",
-    "none",
-    [(start_presentation, "$g_presentation_next_presentation")],
-    []
-  ),
 
 ("bandit_lair",0,
   "{s3}",
@@ -27122,7 +26549,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   (display_message, "@{reg0}"),
   (try_begin),
       #(eq, "$temp", 1), #avoid menus getting stuck
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
   (try_end),
   (assign, "$g_presentation_state", rename_center),
   (call_script, "script_add_log_entry", logent_player_renamed_capital, "trp_player", "$g_player_court", -1, -1),
@@ -28415,7 +27842,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("back_to_siegea",[],"Done.",[
       (call_script, "script_change_player_party_morale", -5),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 #matar ratas acaba
@@ -28460,7 +27887,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_troop_renown", "trp_player", -10),
       (call_script, "script_change_player_honor", -5),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("enfermedad2_siege",0,
@@ -28475,7 +27902,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_troop_renown", "trp_player", 5),
       (call_script, "script_change_player_honor", 1),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("enfermedad3_siege",0,
@@ -28488,7 +27915,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_player_party_morale", -5),
       (call_script, "script_change_troop_renown", "trp_player", -15),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("enfermedad4_siege",0,
@@ -28500,7 +27927,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("back_to_siegees",[],"Back to siege.",[
       (call_script, "script_change_player_honor", 1),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("event_siege_03",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -28670,7 +28097,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("back_to_siegeg2",[],"Well done.",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("encuentro_avituallamiento2",0,
@@ -28731,7 +28158,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("back_to_siegeg3",[],"Very well.",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("event_siege_07",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -28771,7 +28198,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_player_party_morale", -5),
       (call_script, "script_change_troop_renown", "trp_player", -15),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
   ####sed acaba
@@ -28975,7 +28402,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("choice_nppayment_2j",[],"Damn!",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 
@@ -29018,7 +28445,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("defendiendo_1bnd",[],"We must build the blockade again.",[
       (party_set_slot,"$g_encountered_party",slot_center_blockaded,0),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("defendiendo_circunvallation",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -29029,7 +28456,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("defendiendo_1dcir",[],"Well done.",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("defendiendo_mal",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -29041,7 +28468,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("defendiendo_1mal",[],"Damn!",[
       (party_set_slot,"$g_encountered_party",slot_center_blockaded,0),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 #####ataque a circunvallation acaba
@@ -29089,7 +28516,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (assign, "$g_siege_method", 0),
       (assign, "$g_mantlets_1", 0),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("defendiendo_equip",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -29100,7 +28527,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("defendiendo_1heq",[],"Well done.",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("defendiendo_mal_equip",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -29112,7 +28539,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("defendiendo_1vmal",[],"Damn!",[
       (assign, "$g_siege_method", 0),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 #####ataque a equipamiento acaba
@@ -29217,7 +28644,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("defendiendo_1lovej",[],"Perfect!",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("derrota_ovejas",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -29228,7 +28655,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("defendiendo_1poveja",[],"That is terrible.",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ("tablas_ovejas",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -29238,7 +28665,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("defendiendo_1oveja2",[],"Well, next time.",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ###atacar ovejas acaba
@@ -29282,7 +28709,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_troop_renown", "trp_player", 5),
       (display_message,"@Your men think you're heartless and fear you!"),
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ###cabezas acaba
@@ -29486,7 +28913,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ],[
     ("defendiendo_1z",[],"That is terrible.",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 ####siege warfare acaba chief random event
@@ -30456,7 +29883,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (jump_to_scene, "scn_imperial_palace"),
         (change_screen_mission),
       (else_try),
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
       (try_end),
     ]),
 ]),
@@ -30675,7 +30102,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
     (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 12),
     (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "fac_kingdom_7", logent_faction_declares_war_to_end_civil_war),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
   ]),
 ]),
 
@@ -34392,7 +33819,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (gt, "$temp", 0),
     ],"The province is senatorial and the governor elected by the senate. There is nothing I can do about it!",[
       (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -20000),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("answere_1",[
       (le, "$temp", 0),
@@ -34882,7 +34309,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
             # Switch the encounter target
             (assign, "$auto_enter_town", ":camp_party"),
-            (jump_to_menu, "mnu_auto_return_to_map"),
+            (jump_to_menu, "mnu_auto_return_map"),
         ]),
 
         ("camp_cancel", [],
@@ -36823,7 +36250,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (store_current_hours, ":hours"),
     (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
     (troop_set_slot, "trp_organiser", olympia_auto_menu, "mnu_competition_fist_fighting"),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
 
     (set_jump_entry, 40),
     #41-50 are gropies
@@ -37077,7 +36504,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (store_current_hours, ":hours"),
     (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
     (troop_set_slot, "trp_organiser", olympia_auto_menu, "mnu_competition_diaulos"),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
 
     (jump_to_scene, "scn_olympia"),
     (change_screen_mission),
@@ -37327,7 +36754,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (store_current_hours, ":hours"),
     (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
     (troop_set_slot, "trp_organiser", olympia_auto_menu, "mnu_competition_hoplite"),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
 
 	(set_jump_mission, "mt_visit_olympia"),
     (jump_to_scene, "scn_olympia"),
@@ -37576,7 +37003,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (store_current_hours, ":hours"),
     (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
     (troop_set_slot, "trp_organiser", olympia_auto_menu, "mnu_competition_throwing"),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
 
 	(set_jump_mission, "mt_visit_olympia"),
     (jump_to_scene, "scn_olympia"),
@@ -37826,7 +37253,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (store_current_hours, ":hours"),
     (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
     (troop_set_slot, "trp_organiser", olympia_auto_menu, "mnu_competition_throwing_2"),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
 
 	(set_jump_mission, "mt_visit_olympia"),
     (jump_to_scene, "scn_olympia"),
@@ -38063,7 +37490,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (store_current_hours, ":hours"),
     (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
     (troop_set_slot, "trp_organiser", olympia_auto_menu, "mnu_competition_horse"),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
 
 	(set_jump_mission, "mt_visit_olympia"),
     (jump_to_scene, "scn_olympia"),
@@ -38315,7 +37742,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (store_current_hours, ":hours"),
     (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
     (troop_set_slot, "trp_organiser", olympia_auto_menu, "mnu_competition_mule"),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
 
 	(set_jump_mission, "mt_visit_olympia"),
     (jump_to_scene, "scn_olympia"),
@@ -42360,7 +41787,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           # (assign, "$auto_enter_town", "$g_encountered_party"),
           # (change_screen_return),
           (change_screen_map),
-          #(jump_to_menu, "mnu_auto_return_to_map"),
+          #(jump_to_menu, "mnu_auto_return_map"),
       ]),
     ],
   ),
@@ -43909,7 +43336,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("leave_jui",[],"Leave.",[
       (leave_encounter),
-      (jump_to_menu, "mnu_auto_return_to_map"),#phaiak
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
     ]),
 ]),
 
@@ -45291,7 +44718,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_kreuzigung"),
   ],[ #qst_town_trade
   ("Continue...",[],"Continue.",[
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
     (add_xp_as_reward, 250),
   ]),
 ]),
@@ -53927,10 +53354,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   [
     ("attack", [], "Give orders to march North.", [
       (assign, "$auto_menu", "mnu_first_battle_of_bedriacum_1"),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("defend", [], "Go back.", [
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -54586,7 +54013,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_add_notification_menu", "mnu_end_civil_war", "$players_kingdom", -1),
       (party_relocate_near_party, "p_main_party", "p_town_6"),
       (add_xp_as_reward, 5000),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
       (rest_for_hours, 72, 16, 0),
     ]),
 ]),
@@ -56062,7 +55489,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (play_sound, "snd_quest_concluded"),
     (troop_add_items, "trp_player", "itm_spice", 10),
     (assign, "$auto_menu", -1),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
       ]),
     ],
   ),
@@ -56452,7 +55879,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (set_background_mesh, "mesh_pic_party"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -56581,7 +56008,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ]),
 
     ("option_1",[],"I am not ready yet.",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -57321,7 +56748,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ("option_1",[],"Continue.",[
       (add_xp_as_reward, 10000),
       (call_script, "script_end_quest", "qst_wlodowiecus_adventure_3"),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
       (rest_for_hours, 72, 16, 0),
     ]),
 ]),
@@ -58399,7 +57826,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ("option_1", [
       (party_slot_eq, "$g_notification_menu_var1", slot_town_lord, "trp_player"),
     ],"Order a quarantine.",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
       (party_get_slot, ":disease", "$g_notification_menu_var1", slot_center_disease),
       (val_sub, ":disease", 1),
       (party_set_slot, "$g_notification_menu_var1", slot_center_disease, ":disease"),
@@ -58408,12 +57835,12 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ("option_2", [
       (party_slot_eq, "$g_notification_menu_var1", slot_town_lord, "trp_player"),
     ],"Do nothing.",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_3", [
       (neg|party_slot_eq, "$g_notification_menu_var1", slot_town_lord, "trp_player"),
     ],"Continue.",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -58433,7 +57860,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
   ],[
     ("option_1", [
     ],"Continue.",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -58513,7 +57940,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (assign, "$g_invite_faction_lord", 0),
       # (assign, "$g_invite_offered_center", 0),
       (assign, "$g_leave_encounter",1),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -58842,7 +58269,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ("option_1", [],"Continue.",
     [
         (disable_party, "p_underworld"),
-        (jump_to_menu, "mnu_auto_return_to_map"),
+        (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -59063,38 +58490,38 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (eq, "$players_kingdom", "fac_kingdom_7"),
     ],"Join Vitellius.",[
       (call_script, "script_start_year_of_four", "fac_kingdom_26"),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
     ],"Join Galba.",[
       (call_script, "script_start_year_of_four", "fac_kingdom_27"),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
     ],"Join Otho.",[
       (call_script, "script_start_year_of_four", "fac_kingdom_24"),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
     ],"Join Vespasian.",[
       (call_script, "script_start_year_of_four", "fac_kingdom_25"),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
     ],"Remain neutral.",[
       (call_script, "script_start_year_of_four", -1),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_1", [
       (neq, "$players_kingdom", "fac_kingdom_7"),
     ],"Continue.",
     [
       (call_script, "script_start_year_of_four", -1),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -59124,7 +58551,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
               (call_script, "script_diplomacy_start_war_between_kingdoms", ":faction_1", ":faction_2", logent_faction_declares_war_to_end_civil_war),
           (try_end),
       (try_end),
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -59479,7 +58906,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
     ("answere_1",[],"Continue...",[
-      (jump_to_menu, "mnu_auto_return_to_map"),
+      (jump_to_menu, "mnu_auto_return_map"),
       (call_script, "script_change_troop_renown", "trp_player", 25),
       (add_xp_as_reward, 5000),
       (call_script, "script_end_quest", "qst_werdheri"),
@@ -59519,37 +58946,5 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (call_script, "script_setup_troop_meeting", "trp_werdheri", -1, "scn_werdheri_bandit_lair"),
     ]),
 ]),
-
-("return_to_party_screen",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "If you see this you are fucked.",
-  "none",[
-    (party_clear, "p_looter_spawn_point"),
-    (change_screen_exchange_members, 1, "p_looter_spawn_point"),
-    (try_begin),
-      (eq, "$temp", 2),
-      (jump_to_menu, "mnu_simple_encounter"),
-    (else_try),
-      (eq, "$temp", 1),
-      (assign, "$temp", 2),
-    (try_end),
-  ],[
-]),
-
-("return_to_game_options",0,
-  "You should not be seeing this.",
-  "none",[
-    (try_begin),
-      (eq, "$temp", 1),
-      (modify_visitors_at_site, "scn_presentation_scene"),
-      (reset_visitors),
-      (set_visitor, 0, "trp_player"),
-      (assign, "$tem"),
-      (set_jump_mission, "mt_return_to_game_options"),
-      (jump_to_scene, "scn_presentation_scene"),
-      (change_screen_mission),
-    (else_try),
-      (jump_to_menu, "mnu_simple_encounter"),
-    (try_end),
-],[]),
 
 ]#end of file

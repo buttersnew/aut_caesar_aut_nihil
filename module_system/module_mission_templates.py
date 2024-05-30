@@ -21008,7 +21008,7 @@ mission_templates = [
     (store_current_hours, ":hours"),
     (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
     (troop_set_slot, "trp_organiser", olympia_auto_menu, "mnu_pygmachia_defeat"),
-    (jump_to_menu, "mnu_auto_return_to_map"),
+    (jump_to_menu, "mnu_auto_return_map"),
     (finish_mission),
     ]),
 
@@ -21040,7 +21040,7 @@ mission_templates = [
             (store_current_hours, ":hours"),
             (troop_set_slot, "trp_organiser", rest_olympia, ":hours"),
             (troop_set_slot, "trp_organiser", olympia_auto_menu, ":menu"),
-            (jump_to_menu, "mnu_auto_return_to_map"),
+            (jump_to_menu, "mnu_auto_return_map"),
 
           (stop_all_sounds),
           (mission_cam_animate_to_screen_color, 0xFF000000, 1000),
