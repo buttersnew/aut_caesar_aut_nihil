@@ -21858,16 +21858,6 @@ presentations = [
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_celtic_skirmisher", 855, 100),
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_celtic_skirmisher_exp", 715, 300),
 
-        ## cost
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_recruit", 195, 360),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_militia", 320, 360),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_infantry", 470, 510),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_man_at_arms", 645, 610),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_footman", 495, 210),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_skirmisher", 795, 210),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_sergeant", 645, 410),
-        ## cost
-
         ##### - lines
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 810),##45 space for x
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 810),
@@ -22018,16 +22008,6 @@ presentations = [
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_caledonian_naked_swordman_vet", 715, 100),
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_caledonian_skirmisher", 855, 100),
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_caledonian_skirmisher_exp", 715, 300),
-
-        ## cost
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_recruit", 195, 360),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_militia", 320, 360),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_infantry", 470, 510),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_man_at_arms", 645, 610),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_footman", 495, 210),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_skirmisher", 795, 210),
-        # (call_script, "script_prsnt_upgrade_tree_troop_cost", "trp_swadian_sergeant", 645, 410),
-        ## cost
 
         ##### - lines
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 810),##45 space for x
