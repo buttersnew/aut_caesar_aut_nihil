@@ -1,3 +1,4 @@
+# -*- coding: cp1254 -*-
 from header_game_menus import *
 from header_parties import *
 from header_items import *
@@ -317,7 +318,6 @@ game_menus = [
       (jump_to_menu,"mnu_start_game_1"),
     ]),
 ]),
-
 
 ("choose_skill",mnf_scale_picture|mnf_disable_all_keys,
   "{s25}",
@@ -4638,7 +4638,6 @@ game_menus = [
     #   (jump_to_menu, "mnu_order_attack_begin"),
     # ]),
 
-
     # ("encounter_leave",[
     #   (neq, "$player_ambushed",1),
     #   (eq,"$cant_leave_encounter", 0),
@@ -6260,7 +6259,6 @@ game_menus = [
       (call_script, "script_let_nearby_parties_join_current_battle", 0, 0),
     (try_end),
 
-
     (try_begin),
       (party_slot_eq, "p_main_party", slot_party_on_water, 1),
       (party_get_current_terrain, ":terrain_type", "p_main_party"),
@@ -6285,7 +6283,6 @@ game_menus = [
     (try_begin),
         (ge, "$num_routed_enemies", 15),
     (try_end),
-
 
     (try_begin),
       (call_script, "script_party_count_members_with_full_health", "p_collective_enemy"),
@@ -6376,7 +6373,6 @@ game_menus = [
     (jump_to_menu, "mnu_battle_debrief"),
     (change_screen_mission),
                       ]),
-
 
       ("encounter_attack",
       [
@@ -7069,7 +7065,6 @@ game_menus = [
          (assign, "$g_siege_final_menu", "mnu_besiegers_camp_with_allies"),
          (jump_to_menu,"mnu_castle_attack_walls_with_allies_simulate")]),
 
-
       ("join_siege_skipp_freelancer", [
       (gt, "$enlisted_party", 0),#is freelancing
                                 ],
@@ -7117,7 +7112,6 @@ game_menus = [
         #(assign, "$talk_context", tc_siege_commander),
         (change_screen_map_conversation, "trp_healer_2")
         ]),
-
 
       ("leave",[],"Leave.",[(leave_encounter),(change_screen_return)]),
     ]
@@ -7679,7 +7673,6 @@ game_menus = [
          (call_script, "script_update_all_notes"),
          (jump_to_menu, "mnu_castle_besiege"),
 
-
          ]),
 
       ("cheat_castle_start_siege",
@@ -7701,7 +7694,6 @@ game_menus = [
            ],
        "{!}CHEAT: Besiege the {reg6?town:fortress}...",
        [
-
 
 	             #siege warfare chief We repit this here for advoid issues.
           (assign, "$g_empieza_asedio", 1), #variable to begin siege
@@ -7757,7 +7749,6 @@ game_menus = [
         (try_end),
       (try_end),
       ###chief acaba
-
 
         (call_script, "script_set_town_picture"),
     ],
@@ -7843,52 +7834,47 @@ game_menus = [
 
     +[("forget_it",[], "Forget it.", [(jump_to_menu,"mnu_castle_guard")]),]
   ),
-  (
-    "talk_with_commanders",mnf_scale_picture,
-    "With whom do you want to talk?",
-    "none",
-    [   (party_clear, "p_temp_party"),
-        (call_script, "script_get_heroes_attached_to_party_aux", "p_main_party", "p_temp_party"),#recursive call
-        (party_get_num_companion_stacks, "$num_castle_meeting_troops", "p_temp_party"),
 
-    ],
-    [ ("guard_meet_"+str(x),[
-        (gt, "$num_castle_meeting_troops", x),#test this out
-        (party_stack_get_troop_id, ":troop_no", "p_temp_party", x),
-        (is_between, ":troop_no", active_npcs_begin, active_npcs_end),
-        (str_store_troop_name, s5, ":troop_no")],
-       "{s5}.",[(party_stack_get_troop_id, "$castle_meeting_selected_troop", "p_temp_party", x),
-       # (party_stack_get_troop_dna, "$temp_2", "p_temp_party", x),
-       (jump_to_menu,"mnu_talk_with_commanders_selected")])
-       for x in range(0, 8)
-      ]
-
-    +[("forget_it",[], "Forget it.", [(jump_to_menu,"mnu_camp")]),]
-  ),
-  (
-    "talk_with_commanders_selected",0,
-    "You dispatch a runner. After some time {s6} appears to speak with you.",
-    "none",
-    [
+("talk_with_commanders",mnf_scale_picture,
+  "With whom do you want to talk?",
+  "none",[
+    (party_clear, "p_temp_party"),
+    (call_script, "script_get_heroes_attached_to_party_aux", "p_main_party", "p_temp_party"),#recursive call
+    (party_get_num_companion_stacks, "$num_castle_meeting_troops", "p_temp_party"),
+  ],[
+    ("guard_meet_"+str(x),[
+      (gt, "$num_castle_meeting_troops", x),#test this out
+      (party_stack_get_troop_id, ":troop_no", "p_temp_party", x),
+      (is_between, ":troop_no", active_npcs_begin, active_npcs_end),
+      (str_store_troop_name, s5, ":troop_no")],
+      "{s5}.",[(party_stack_get_troop_id, "$castle_meeting_selected_troop", "p_temp_party", x),
+      # (party_stack_get_troop_dna, "$temp_2", "p_temp_party", x),
+      (jump_to_menu,"mnu_talk_with_commanders_selected")])
+      for x in range(0, 8)
+    ]+[
+    ("forget_it",[], "Forget it.", [
+      (jump_to_menu,"mnu_camp")
+    ]),
+]),
+("talk_with_commanders_selected",0,
+  "You dispatch a runner. After some time {s6} appears to speak with you.",
+  "none",[
     (try_begin),
-		(eq, "$g_leave_encounter", 1),
-		(change_screen_return),
-	(try_end),
+      (eq, "$g_leave_encounter", 1),
+      (change_screen_return),
+    (try_end),
+    (str_store_troop_name, s6, "$castle_meeting_selected_troop")
+  ],[
+    ("continue",[],"Continue...",[
+    (troop_get_slot, "$g_encountered_party", "$castle_meeting_selected_troop", slot_troop_leaded_party),
+    (store_faction_of_party, "$g_encountered_party_faction","$g_encountered_party"),
+    (store_relation, "$g_encountered_party_relation", "$g_encountered_party_faction", "fac_player_faction"),
 
-    (str_store_troop_name, s6, "$castle_meeting_selected_troop")],
-    [
-      ("continue",[],
-       "Continue...",
-       [
-	   (troop_get_slot, "$g_encountered_party", "$castle_meeting_selected_troop", slot_troop_leaded_party),
-       (store_faction_of_party, "$g_encountered_party_faction","$g_encountered_party"),
-       (store_relation, "$g_encountered_party_relation", "$g_encountered_party_faction", "fac_player_faction"),
+    (party_get_slot, "$g_encountered_party_type", "$g_encountered_party", slot_party_type),
+    (party_get_template_id,"$g_encountered_party_template","$g_encountered_party"),
 
-       (party_get_slot, "$g_encountered_party_type", "$g_encountered_party", slot_party_type),
-       (party_get_template_id,"$g_encountered_party_template","$g_encountered_party"),
-
-	    (jump_to_menu, "mnu_camp"),
-	    (call_script, "script_get_meeting_scene"),
+    (jump_to_menu, "mnu_camp"),
+    (call_script, "script_get_meeting_scene"),
 		(assign, ":meeting_scene", reg0),
 		(modify_visitors_at_site,":meeting_scene"),
 		(reset_visitors),
@@ -7898,10 +7884,8 @@ game_menus = [
 		(jump_to_scene,":meeting_scene"),
 		(assign, "$talk_context", tc_town_talk), #SB : move this up here
 		(change_screen_map_conversation, "$castle_meeting_selected_troop"),
-
-		]),
-    ]
-  ),
+	]),
+]),
   (
     "castle_meeting_selected",0,
     "Your request for a meeting is relayed inside, and finally {s6} appears in the courtyard to speak with you.",
@@ -8179,7 +8163,6 @@ game_menus = [
       (assign, reg11, "$g_enemy_fit_for_battle"),
       (assign, reg10, "$g_friend_fit_for_battle"),
 
-
       (try_begin),
         (eq, "$g_leave_encounter",1),
         (change_screen_return),
@@ -8369,10 +8352,8 @@ game_menus = [
         #siege warfare acaba
         (change_screen_return)]),
 
-
     ]
   ),
-
 
   ######Siege warfare Chief
   (
@@ -8562,7 +8543,6 @@ game_menus = [
           (try_end),
         (try_end),
 
-
       ]),
 
       #traicion interna
@@ -8742,7 +8722,6 @@ game_menus = [
           (try_end),
       ]),
 
-
       ("go_back",[],
         "Go back.", [(jump_to_menu,"mnu_castle_besiege")]),
 
@@ -8849,7 +8828,6 @@ game_menus = [
 
       (assign, reg11, "$g_enemy_fit_for_battle"),
       (assign, reg10, "$g_friend_fit_for_battle"),
-
 
       (try_begin),
         (eq, "$g_leave_encounter",1),
@@ -9073,7 +9051,6 @@ game_menus = [
 
   #########
 
-
   (
     "siege_attack_meets_sally",0,
     "The defenders sally out to meet your assault.",
@@ -9166,8 +9143,6 @@ game_menus = [
       ("continue",[],"Continue...",[(jump_to_menu,"mnu_siege_assault")]),
     ]
   ),
-
-
 
   (
     "sneak_into_town_suceeded2",0,
@@ -9347,7 +9322,6 @@ game_menus = [
             (val_add, ":health", 35),               #add to it the 5%
             (troop_set_health,   "trp_player", ":health"),   #set it
           (try_end),
-
 
           (store_random_in_range, ":scene_a_usar", 0,3),
           (try_begin),
@@ -9604,7 +9578,6 @@ game_menus = [
     ],
   ),
 
-
   ("infiltracion_resultado4",0,
     "Your men have returned. They said that some warriors are dissatisfied, and some were persuaded to switch to your side. If you agree, they will leave the city at night and join your army. Before they leave, they promise to cause unrest to facilitate the surrender of the place.",
     "none", [ ],
@@ -9732,7 +9705,6 @@ game_menus = [
     ],
   ),
   ###infiltracion interna acaba
-
 
   ###recogida y siembra de cosechas
   ("campos_cercanos1",0,
@@ -10056,7 +10028,6 @@ game_menus = [
     ]),
 ]),
 
-
   ####siege warfare
   (
     "build_mantles2",0,
@@ -10139,7 +10110,6 @@ game_menus = [
     ],
   ),
 
-
   (
     "construct_siege_tower",0,
     "As the party member with the highest Engineer skill, ({reg2}), {reg3?you estimate:{s3} estimates} that building a siege tower and other equipment for assault will take " +
@@ -10179,7 +10149,6 @@ game_menus = [
         "Go back.", [(jump_to_menu,"mnu_castle_besiege")]),
     ],
   ),
-
 
   (
     "castle_attack_walls_simulate",mnf_disable_all_keys,
@@ -10811,7 +10780,6 @@ game_menus = [
     ],
     [
 
-
       ("continue",[],"Continue...",
         [
           # (assign, "$auto_enter_town", "$g_encountered_party"),
@@ -10968,7 +10936,6 @@ game_menus = [
         (eq, "$loot_screen_shown", 0),
         (assign, "$loot_screen_shown", 1),
         (assign, ":merchant_troop", 0),
-
 
         (try_begin),
           (is_between, "$g_encountered_party", towns_begin, towns_end),
@@ -11183,7 +11150,6 @@ game_menus = [
   ]),
 ]),
 
-
   (
     "castle_taken_2",mnf_disable_all_keys,
     "{s3} has fallen to your troops, and you now have full control of the place. " +
@@ -11314,7 +11280,6 @@ game_menus = [
     ],
   ),
 
-
 (
     "requested_castle_granted_to_player",mnf_scale_picture,
     "You receive a message from {s40}, {s3}.^^\
@@ -11355,8 +11320,6 @@ game_menus = [
 		),
 	]
 ),
-
-
 
 (
     "requested_castle_granted_to_player_husband", mnf_scale_picture,
@@ -11455,7 +11418,6 @@ game_menus = [
      ],
   ),
 
-
 (
     "requested_castle_granted_to_another_female",mnf_scale_picture,
 ##diplomacy start+ make gender correct
@@ -11487,9 +11449,6 @@ game_menus = [
         ]),
     ],
 ),
-
-
-
 
   (
     "leave_faction",0,
@@ -11593,7 +11552,6 @@ game_menus = [
         ]),
     ],
   ),
-
 
   (
     "oath_fulfilled",0,
@@ -12505,7 +12463,6 @@ game_menus = [
           (try_end),
           ##diplomacy end
 
-
           (call_script, "script_init_town_walkers"),
         (try_begin),
           (check_quest_active, "qst_blank_quest_10"),
@@ -12672,7 +12629,6 @@ game_menus = [
         (reset_visitors),
         (set_visitors, 0, ":bandit_troop", "$qst_eliminate_bandits_infesting_village_num_bandits"),
 
-
         (try_begin),
           (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_1"),
           (assign, ":rebel_troop", "trp_dacian_village_walker"),
@@ -12706,7 +12662,6 @@ game_menus = [
         (try_end),
 
         (set_visitors, 2, ":rebel_troop", "$qst_eliminate_bandits_infesting_village_num_villagers"),
-
 
         (set_party_battle_mode),
         (set_battle_advantage, 0),
@@ -12912,7 +12867,6 @@ game_menus = [
 		(try_end),
 ]),
 
-
       # ("village_reports",[(eq, "$cheat_mode", 1),], "{!}CHEAT! Show reports.",
        # [(jump_to_menu,"mnu_center_reports"),
            # ]),
@@ -13104,7 +13058,6 @@ game_menus = [
     ],
     [
 
-
       ("continue",
       [
         (eq, reg7, 0),
@@ -13213,7 +13166,6 @@ game_menus = [
   ]),
 ]),
 
-
   (
     "village_hunt_down_fugitive_defeated",0,
     "A heavy blow from the fugitive sends you to the ground, and your vision spins and goes dark.\
@@ -13316,7 +13268,6 @@ game_menus = [
         (jump_to_menu, "mnu_village"),]),
     ],
   ),
-
 
 ("village_infestation_removed",mnf_disable_all_keys,
   "In a battle worthy of song, you and your men drive the bandits out of the village, making it safe once more."
@@ -13495,7 +13446,6 @@ game_menus = [
 	# (set_background_mesh, "mesh_pic_payment"),
     # ],
     # [
-
 
       # ("special_tax",[],"Raise special tax.",[(jump_to_menu, "mnu_extort_commoners")]),
 
@@ -13776,7 +13726,6 @@ game_menus = [
     # ],
   # ),
 
-
   # (
     # "center_assign_decree",0,
     # "{s30}^^{s31}^^Are you sure you want to {s32} this decree.",
@@ -13804,7 +13753,6 @@ game_menus = [
           # (call_script, "script_dplmc_withdraw_from_treasury", decree_cost),
 
 		# (party_set_slot, "$current_town", "$g_improvement_type", "$temp"),
-
 
           # (jump_to_menu,"mnu_center_manage_2"),
          # ]
@@ -14128,7 +14076,6 @@ game_menus = [
     ],
   ),
 
-
    (
     "village_steal_cattle_confirm",0,
     "As the party member with the highest looting skill ({reg2}), {reg3?you reckon:{s1} reckons} that you can steal as many as {reg4} heads of village's cattle.",
@@ -14204,7 +14151,6 @@ game_menus = [
          ]),
     ],
   ),
-
 
    (
     "village_take_food_confirm",0,
@@ -14286,7 +14232,6 @@ game_menus = [
       ("let_them_keep_it",[],"Let them keep it.",[(jump_to_menu, "mnu_village")]),
     ],
   ),
-
 
   ( #SB : added fugitive related strings
     "village_start_attack",mnf_disable_all_keys|mnf_scale_picture,
@@ -14711,7 +14656,6 @@ game_menus = [
     (change_screen_loot, "trp_temp_troop"),
   ]),
 ]),
-
 
 ("village_enslave_complete",mnf_disable_all_keys,
   "On your orders your troops rampage through the village, dragging peasants from their hovels and stripping them of all possessions. In the span of a few hours you've rounded up {reg1} prisoners, leaving the infirm and the younglings behind. As you march the trussed-up villagers away from the cooling ember of their broken hearths, you hear a distant howl...",
@@ -16455,7 +16399,6 @@ game_menus = [
               (val_add, ":cur_entry", 1),
           (try_end),
 
-
           (call_script, "script_spawn_companion", "$current_town", location_tavern),
           (assign, ":companion", reg0),
           (try_begin),
@@ -17043,7 +16986,6 @@ game_menus = [
 
         (troop_slot_eq, ":lady_no", slot_troop_spouse, -1),
         (ge, ":lady_guardian", 0), #not sure when this would not be the case
-
 
         #must have spoken to either father or lady
         (this_or_next|troop_slot_ge, ":lady_no", slot_troop_met, 2),
@@ -17658,7 +17600,6 @@ game_menus = [
           (faction_get_slot, ":tier_3_troop", ":town_original_faction", slot_faction_tier_3_troop),
       (try_end),
 
-
       (try_begin),
           (gt,":tier_2_troop", 0),
           (assign,reg0,":tier_3_troop"),
@@ -18161,8 +18102,6 @@ game_menus = [
         (jump_to_menu, "mnu_garden"),
       ]),
 
-
-
 	("visit_lady_2", [
 	(gt, "$love_interest_in_town_2", 0),
 	(str_store_troop_name, s12, "$love_interest_in_town_2"),
@@ -18182,7 +18121,6 @@ game_menus = [
 	    (assign, "$love_interest_in_town", "$love_interest_in_town_3"),
         (jump_to_menu, "mnu_garden")], "Door to the garden."),
 
-
 	("visit_lady_4", [(gt, "$love_interest_in_town_4", 0),(str_store_troop_name, s12, "$love_interest_in_town_4"),],
 	"Visit {s12}",[(assign, "$love_interest_in_town", "$love_interest_in_town_4"),(jump_to_menu, "mnu_garden"),]),
 
@@ -18198,12 +18136,10 @@ game_menus = [
 	("visit_lady_8",[(gt, "$love_interest_in_town_8", 0),(str_store_troop_name, s12, "$love_interest_in_town_8"),],
 	"Visit {s12}",[(assign, "$love_interest_in_town", "$love_interest_in_town_8"),(jump_to_menu, "mnu_garden"),]),
 
-
 	("leave",[], "Leave",[(jump_to_menu, "mnu_town")]),
 
     ]
 	),
-
 
 (
   "town_tournament_lost",0,
@@ -18445,7 +18381,6 @@ game_menus = [
       (try_end),
       (call_script, "script_shuffle_troop_slots", "trp_temp_array_a", 0, "$g_tournament_num_participants_for_fight"),
 
-
       (try_for_range, ":slot_no", 0, 4),#shuffle teams
           (troop_set_slot, "trp_temp_array_b", ":slot_no", ":slot_no"),
       (try_end),
@@ -18662,7 +18597,6 @@ game_menus = [
     ]
   ),
 
-
   (
     "collect_taxes",mnf_disable_all_keys,
     "As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} that collecting taxes from here will take {reg4} days...",
@@ -18700,7 +18634,6 @@ game_menus = [
        (val_add, reg0, 20),
        (val_mul, "$qst_collect_taxes_total_hours", 20),
        (val_div, "$qst_collect_taxes_total_hours", reg0),
-
 
        (quest_set_slot, "qst_collect_taxes", slot_quest_target_amount, "$qst_collect_taxes_total_hours"),
        (store_div, ":menu_begin_time", "$qst_collect_taxes_total_hours", 20),#between %5-%25
@@ -19247,8 +19180,6 @@ game_menus = [
 	 (val_div, ":calradian_average_rural_hardship", 110),
 	 (val_div, ":calradian_average_urban_hardship", 22),
 
-
-
 	 (call_script, "script_center_get_goods_availability", "$g_encountered_party"),
 
 	 (assign, reg1, ":calradian_average_urban_hardship"),
@@ -19259,7 +19190,6 @@ game_menus = [
 		(str_store_string, s1, "str___hardship_index_reg0_avg_towns_reg1_avg_villages_reg2__"),
 		(display_message, "@{!}DEBUG - {s1}"),
 	 (try_end),
-
 
      (try_for_range, ":cur_good", trade_goods_begin, trade_goods_end),
 	   (neq, ":cur_good", "itm_pork"), #tied to price of grain
@@ -19308,7 +19238,6 @@ game_menus = [
 	   (val_div, ":calradian_average_production", ":total_centers"),
 	   (val_div, ":calradian_average_consumption", ":total_centers"),
 
-
        (str_store_item_name, s3, ":cur_good"),
 
        (assign, reg1, ":base_production"),
@@ -19336,7 +19265,6 @@ game_menus = [
 
        (str_store_string, s1, "str___s3_price_=_reg4_calradian_average_reg6_capital_reg11_s4_base_reg1modified_by_raw_material_reg2modified_by_prosperity_reg3_calradian_average_production_base_reg5_total_reg12_consumed_reg7used_as_raw_material_reg8modified_total_reg9_calradian_consumption_base_reg10_total_reg13s1_"),
      (try_end),
-
 
      ],
     [
@@ -19943,9 +19871,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]
   ),
 
-
-
-
   #SB : flavour text
   (
     "sneak_into_town_suceeded",0,
@@ -20031,7 +19956,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
            #(set_visitor,4,reg2),
            #(set_visitor,5,reg3),
 
-
            #(set_jump_mission, "mt_sneak_caught_fight"),
            (set_passage_menu, "mnu_town"),
            (jump_to_scene,":sneak_scene"),
@@ -20114,7 +20038,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
     ]
 ),
-
 
 ("enemy_offer_ransom_for_prisoner",0,
   "The family of {s1}, from {s2}, offers you a sum of {reg12} denars in silver if you are willing to sell him.",
@@ -20374,7 +20297,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ]),
 ]),
 
-
   (
     "training_ground",0,
     "You approach a training field where you can practice your martial skills. What kind of training do you want to do?",
@@ -20395,7 +20317,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (party_set_slot, "$g_encountered_party", slot_grounds_melee, ":scene_no"),
       (try_end),
       (assign, "$g_training_ground_melee_training_scene", ":scene_no"),
-
 
       #SB : modify this interval
       (party_get_skill_level, ":training", "p_main_party", "skl_trainer"), #from 0 to 10
@@ -20556,8 +20477,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        for x in range(1, 20)]
   ),
 
-
-
   ("training_ground_selection_details_mounted",0,
    "What kind of weapon do you want to train with?",
    "none",
@@ -20588,7 +20507,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        ),
       ]
   ),
-
 
   ("training_ground_selection_details_ranged_1",0,
    "What kind of ranged weapon do you want to train with?",
@@ -20621,7 +20539,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        ),
       ]
   ),
-
 
   ("training_ground_selection_details_ranged_2",0,
    "What range do you want to practice at?",
@@ -20664,7 +20581,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        ),
       ]
   ),
-
 
   ("training_ground_description",0,
    "{s0}",
@@ -21324,7 +21240,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
   ),
 
-
   # (
     # "invite_player_to_faction_without_center",mnf_scale_picture,
 # ##diplomacy start+ fix gender of pronouns
@@ -21358,7 +21273,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
  # {reg4?She:He} will surely be offended if you do not take the offer... "),
 		# (try_end),
 
-
       # ],
     # [
       # ("faction_accept",[],"Accept!",
@@ -21387,7 +21301,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         # ]),
      # ]
   # ),
-
 
   # (
     # "invite_player_to_faction",mnf_scale_picture,
@@ -21422,7 +21335,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
  # offering you the fief of {s2} for your loyal service.\
  # {reg4?She:He} will surely be offended if you do not take the offer..."),
 		# (try_end),
-
 
       # ],
     # [
@@ -21470,7 +21382,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 			# (str_store_string, s32, "@In order to become a vassal, you must swear an oath of homage to {s3}.\
  # You shall have to find {reg4?her:him} and give {reg4?her:him} your oath in person. {s5}"),
 		# (try_end),
-
 
       # ],
     # [
@@ -21609,9 +21520,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-
-
-
 ("notification_casus_belli_expired",0,
     "Kingdom Fails to Respond^^The {s1} has not responded to the {s2}'s provocations, and {s3} suffers a loss of face among {reg4?her:his} more bellicose subjects...^",
     "none",
@@ -21659,7 +21567,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (val_mul, ":faction_1", 128),
         (val_add, ":faction_1", ":faction_2"),
         (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
-
 
         (call_script, "script_count_parties_of_faction_and_party_type", "$g_notification_menu_var2", spt_town),
         (store_mul, reg40, reg0, 8000),
@@ -21925,7 +21832,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
 ),
 
-
   (
     "notification_treason_indictment",0,
     "Treason Indictment^^{s9}",
@@ -21960,7 +21866,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 			(str_store_string, s9, "str_by_order_of_s6_s4_of_the_s5_has_been_indicted_for_treason_the_lord_has_been_stripped_of_all_reg4herhis_properties_and_has_fled_for_reg4herhis_life_he_is_rumored_to_have_gone_into_exile_s11"),
 		(try_end),
 
-
 	],
     [
       ("continue",[],"Continue",
@@ -21969,8 +21874,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ]),
      ]
 	),
-
-
 
 ("notification_border_incident",0,
     "Border incident^^Word reaches you that {s9}. Though you don't know whether or not the rumors are true, you do know one thing -- this seemingly minor incident has raised passions among the {s4}, making it easier for them to go to war against the {s3}, if they want it...",
@@ -21999,7 +21902,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 			(display_log_message, "@There has been an alleged border incident: {s9}"),
 
 			(call_script, "script_add_log_entry", logent_border_incident_subjects_mistreated, ":acting_village", -1, -1, ":acting_faction"),
-
 
         (else_try),
 			(store_faction_of_party, ":target_faction", ":target_village"),
@@ -22058,9 +21960,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ]),
      ]
   ),
-
-
-
 
 ("notification_player_faction_active",0,
   "You now possess land in your name, without being tied to any realm. This makes you a monarch in your own right, with your court temporarily located at {s12}. However, the other kings and rulers in the known world will at first consider you a threat, for if any upstart warlord can grab a throne, then their own legitimacy is called into question.^^Your first priority should be to establish an independent right to rule. You can establish your right to rule through several means -- marrying into a high-born family, recruiting new lords, governing your lands, treating with other kings, or dispatching your companions on missions.^^At any rate, your first step should be to appoint a chief minister from among your companions, to handle affairs of state. Different companions have different capabilities.^You may appoint new ministers from time to time. You may also change the location of your court, by speaking to the minister.",
@@ -22262,8 +22161,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-
-
   (
   "notification_court_lost",0,
   "{s12}",
@@ -22386,8 +22283,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ],
   ),
 
-
-
   (
     "notification_player_faction_deactive",0,
     "Your kingdom no longer holds any land.",
@@ -22408,11 +22303,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
   ),
 
-
-
-
-
-
   (
     "notification_player_wedding_day",mnf_scale_picture,
     "{s8} wishes to inform you that preparations for your wedding at {s10} have been complete, and that your presence is expected imminently .",
@@ -22428,7 +22318,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ]),
      ]
   ),
-
 
   (
     "notification_player_kingdom_holds_feast",mnf_scale_picture,
@@ -22453,8 +22342,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 			(str_store_string, s12, "str_feast_wedding_opportunity"),
 		(try_end),
 
-
-
 		(str_store_string, s11, "str_s8_wishes_to_inform_you_that_the_lords_of_s9_will_be_gathering_for_a_feast_at_his_great_hall_in_s10_and_invites_you_to_be_part_of_this_august_assembly"),
 		(try_begin),
 			(eq, "$g_notification_menu_var1", 0),
@@ -22478,7 +22365,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ]),
      ]
   ),
-
 
   (
     "notification_center_under_siege",0,
@@ -23325,7 +23211,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-
   (
     "notification_rebels_switched_to_faction",0,
     "Rebellion Success^^ Your rebellion is victorious! Your faction now has the sole claim to the title of {s11}, with {s12} as the single ruler.",
@@ -23353,7 +23238,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ]),
      ]
   ),
-
 
   (
     "notification_player_should_consult",0,
@@ -23394,12 +23278,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
   ),
 
-
-
-
-
-
-
   (
     "notification_player_feast_in_progress",0,
 ##diplomacy start+ make gender correct
@@ -23415,7 +23293,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ]),
      ]
   ),
-
 
   (
     "notification_lady_requests_visit",0, #add this once around seven days after the last visit, or three weeks, or three months
@@ -23529,8 +23406,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
   ),
 
-
-
   ( #pre lady visit
     "garden",0,
     "{s12}",
@@ -23633,7 +23508,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	]
 	),
 
-
 	("nurse",
 	[
     (eq, "$temp4_1", 2),
@@ -23651,9 +23525,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
     ]
 
-
   ),
-
 
     (
     "kill_local_merchant_begin",0,
@@ -23686,7 +23558,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (change_screen_return),
     ]),
 ]),
-
 
 ("bandit_lair",0,
   "{s3}",
@@ -24461,7 +24332,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]
   ),
 
-
 ("lost_tavern_duel",mnf_disable_all_keys,
   "{s11}{s12}",
   "none",[
@@ -24514,7 +24384,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-
   ("establish_court",mnf_disable_all_keys,
     "To establish {s4} as your court will require a small refurbishment. In particular, you will need a set of tools and a bolt of velvet. it may also take a short while for some of your followers to relocate here. Do you wish to proceed?",
     "none",
@@ -24545,7 +24414,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        [
      ]),
 
-
       ("continue",[],"Hold off...",
        [
          (jump_to_menu, "mnu_town"),
@@ -24558,8 +24426,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     "none",
     [
 	(assign, reg4, "$g_player_days_as_marshal"),
-
-
 
 	(store_div, ":renown_gain", "$g_player_days_as_marshal",4),
 	(val_min, ":renown_gain", 20),
@@ -24590,7 +24456,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        ]),
     ]
   ),
-
 
   ##diplomacy begin
 ########################################################
@@ -25201,7 +25066,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
   ),
 
-
   (
     "dplmc_notification_trade_expired",0,
     "Trade Agreement Has Expired^^The trade agreement between {s1} and {s2} has expired and was degraded to a non-aggression treaty.",
@@ -25564,7 +25428,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
   ),
 
-
   (
     "dplmc_messenger",0,
 ##nested diplomacy start+ "His" to "{reg4?Her:His}"
@@ -25858,7 +25721,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (assign, reg34, 0),
     (try_end),
 
-
     (str_clear, s0),
     (str_clear, s1),
     (assign, reg0, 0),
@@ -26146,7 +26008,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (troop_set_slot, "trp_belligerent_drunk", slot_troop_cur_center, "$current_town"),
         (try_end),
       ]),
-
 
       ("summon_ass",
       [(party_slot_eq, "$current_town", slot_party_type, spt_town),
@@ -26523,7 +26384,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           # (change_screen_return),
         # ]),
 
-
         ("go_back",
         [(neg|party_slot_eq,"$current_town",slot_party_type, spt_village),],
         "Go Back.",
@@ -26624,7 +26484,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (val_clamp, "$diplomacy_var", 0, 52),
         (jump_to_menu, "mnu_display_faction_slots"),
       ]),
-
 
       ("continue",
       [],
@@ -26735,7 +26594,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       [
         (assign, "$g_encountered_party", "$diplomacy_var2"),
       ]),
-
 
       ("change",
       [],
@@ -26927,7 +26785,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       [ #g_encountered_party is the input
         (jump_to_menu, "mnu_display_party_slots"),
       ]),
-
 
       ("reinf",
       [],
@@ -27350,7 +27207,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (troop_add_gold, "trp_random_town_sequence", ":cur_gold"),
 
         (set_show_messages, 1),
-
 
         (faction_get_slot, ":player_alarm", "$g_encountered_party_faction", slot_faction_player_alarm),
         (party_get_num_companions, ":num_men", "p_main_party"),
@@ -29715,14 +29571,12 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 			# # (val_add, ":base_production", ":prosperity"),
 		# # (try_end),
 
-
 		# # (assign, reg33, ":modified_production"),
 		# # (assign, reg34, ":base_production_modded_by_raw_materials"),
 		# # (assign, reg35, ":base_production"),
 		# # (display_message, "@total modified_production: {reg33}"),
 		# # (display_message, "@total base_production_modded_by_raw_materials: {reg34}"),
 		# # (display_message, "@total base_production: {reg35}"),
-
 
 		# ],
     # [
@@ -30376,7 +30230,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 #     ]),
 # ]),
 
-
 ("civil_war",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "An Empire divided^^Not all Roman generals accept you as new Caesar Augustus. {s44}, this traitor, has called himself Caesar Augustus too!^^Civil war starts!",
   "none",[
@@ -30466,7 +30319,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 # 		(faction_set_slot, "fac_kingdom_7", slot_faction_state, sfs_inactive),
 # 		(call_script, "script_update_all_notes"),
 # 		(display_log_message, "@The civil war ends. Hopefully the Imperium Romanum will become peaceful again."),
-
 
 #     ##if a rebellion happens in roman land and meanwhile the player wins the civil war, player faction is then probably not at war with the rebel faction
 #     (try_for_parties, ":party"),
@@ -33569,7 +33421,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (party_add_template, ":party", "pt_mountain_bandits"),
       (party_add_template, ":party", "pt_mountain_bandits"),
 
-
       (call_script, "script_spawn_looters", "p_town_19", 5),
       (val_add, "$g_unrest", 2),
       (display_message, "@Stability of the Empire decreases", color_bad_news),
@@ -34678,7 +34529,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	],
 ),
 
-
 ("temple_jerusalem_story_loot_1",0,
   "Your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out. You order some of your men to guard the entrance. You and your other men storm into the inner court and imprison the priests. Then your men break up the door into the sanctum and start looting. All the treasuries are carried out of the temple. ^After half an hour one of your men reports that there is nothing left to loot. You order to leave the temple. But you are soon stopped by an angry mob, shouting insults, moving in your direction. Now you must fight!",
   "none",[
@@ -34754,7 +34604,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (str_store_troop_name_link, s25, "trp_senator_2"),
 
       (add_quest_note_from_sreg, "qst_blank_quest_19", 6, "@You staged a revolt in Judea! Now you need to find allies among {s22}, {s23}, {s24} or {s25}.", 1),
-
 
       (str_store_string, s2, "@Antonia ordered you to gain the trust of either {s22}, {s23}, {s24} or {s25}. Antonia favors {s23}, but you can choose whomever you like.^(Hint: Improve your relation to be at least 50 and have 750 influence points, then in the influence-dialogue-menu a new dialogue option will appear.)"),
       (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 1),
@@ -35121,8 +34970,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 #       ]),
 # ]),
 
-
-
   (
     "forest",0,
     "A dark, dark forest.",
@@ -35293,7 +35140,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       #27-32 kissing
       #33 - 40 dancers
       (set_visitor, 12, "trp_fortuna"),
-
 
       (set_visitor,13,"trp_orgie_male1"),
       (set_visitor,14,"trp_orgie_male1"),
@@ -35564,7 +35410,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (val_div, ":max_loot", 10),
         (try_end),
 
-
         (store_random_in_range, ":random", 500, ":max_loot"),
         (val_div, ":random", 10),
         (val_mul, ":random", 30),
@@ -35793,7 +35638,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
         (set_jump_entry, 0),
 
-
         (set_jump_mission, "mt_visit_mine"),
         (jump_to_scene, ":scene_to_use"),
         (change_screen_mission),
@@ -35819,7 +35663,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     [(set_background_mesh, "mesh_pic_orgie"),
     ],[
 
-
       ("leave",[],"Continue.",[
     (jump_to_menu, "$g_next_menu"),
     (val_add, "$g_tournament_num_participants_for_fight", 1),#count player victories
@@ -35841,7 +35684,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (str_store_troop_name, s1, "$g_tournament_player_team_won"),
     ],[
 
-
       ("leave",[],"Continue.",[
     (jump_to_menu, "$g_next_menu"),
     (assign, "$g_tournament_bet_placed", 0),#has player won?
@@ -35856,7 +35698,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     [
     (set_background_mesh, "mesh_pic_orgie"),
     ],[
-
 
       ("leave",[],"Continue.",[
     (call_script, "script_change_troop_renown", "trp_player", 2),
@@ -35877,7 +35718,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_background_mesh, "mesh_pic_orgie"),
     (str_store_troop_name, s1, "$g_tournament_player_team_won"),
     ],[
-
 
       ("leave",[],"Continue.",[
     (jump_to_menu, "$g_next_menu"),
@@ -36027,7 +35867,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       ]),
 
     ]),
-
 
 ##generic competiion won menu
     (
@@ -36927,7 +36766,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (set_visitor, ":entry", ":opponent"),
         (try_end),
 
-
         (set_visitors, 1, "trp_guest", 10),
         (set_visitors, 2, "trp_guest_female", 10),
         (set_visitors, 3, "trp_guest", 10),
@@ -37010,7 +36848,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_passage_menu,"mnu_olympia"),
     (change_screen_mission),
       ]),
-
 
     ("leave",[],"Give up.",[
     (assign, "$g_next_menu", "mnu_competition_throwing"),
@@ -37176,7 +37013,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (troop_get_slot, ":opponent", "trp_temp_array_olympia_b", ":slot"),
             (set_visitor, ":entry", ":opponent"),
         (try_end),
-
 
         (set_visitors, 1, "trp_guest", 10),
         (set_visitors, 2, "trp_guest_female", 10),
@@ -37498,7 +37334,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (change_screen_mission),
       ]),
 
-
     ("leave",[],"Give up.",[
     (assign, "$g_next_menu", "mnu_competition_horse"),
     (jump_to_menu, "mnu_olympia_give_up"),
@@ -37750,14 +37585,12 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (change_screen_mission),
       ]),
 
-
      ("leave",[],"Give up.",[
     (assign, "$g_next_menu", "mnu_competition_mule"),
     (jump_to_menu, "mnu_olympia_give_up"),
       ]),
     ]),
 ###############END
-
 
 #generic remaining opponents for a competition
     ("olympia_remainging_opponents",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
@@ -37807,7 +37640,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_for_range, ":slot_3", 0, 9),
         (troop_set_slot, "trp_temp_array_olympia_b", ":slot_3", 0),
     (try_end),
-
 
     (try_for_range, ":competition", won_horse, current_opponent_1),
         (troop_get_slot, ":winer", "trp_organiser", ":competition"),
@@ -38145,7 +37977,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 	  (set_jump_entry, 0),
 
-
 	   (set_jump_mission, "mt_visit_delphi"),
 		(jump_to_scene, "scn_delphi"),
 	    (change_screen_mission),
@@ -38207,7 +38038,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (change_screen_return),
         ]
       ),
-
 
       ("camp_wait_hereho",[],"Wait here for some time.",
         [
@@ -38271,7 +38101,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     "none",
     [(set_background_mesh, "mesh_pic_pythia"),
 
-
 	],
     [
 
@@ -38305,7 +38134,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        ),
     ]
  ),
-
 
 ("hire_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Who will be successor?^^{s20}",
@@ -38520,7 +38348,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-
   (
     "town_port",0,
     "You visit the port of {s1}.\
@@ -38611,7 +38438,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     [
       (set_background_mesh, "mesh_pic_ships"),
 
-
     ],
     [
 
@@ -38622,7 +38448,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ),
 
   ]),
-
 
   (
     "port_encounter",0,
@@ -38660,7 +38485,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
 
-
       ("continue",[],"Leave.",
         [
           (change_screen_return),
@@ -38668,10 +38492,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ),
 
   ]),
-
-
-
-
 
   (
     "landing_point_encounter",0,
@@ -41254,7 +41074,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
             (change_screen_mission),
         ]),
 
-
     ]
   ),
 
@@ -41719,7 +41538,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (val_max, ":cur_probability", 5),
         (set_item_probability_in_merchandise,":cur_goods",":cur_probability"),
 
-
       (party_get_slot, ":prosperity", "$current_town", slot_town_prosperity),
       (val_min, ":prosperity", 40),
       (val_div, ":prosperity", 2),
@@ -41781,7 +41599,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
 
-
       ("continue",[],"Continue...",
         [
           # (assign, "$auto_enter_town", "$g_encountered_party"),
@@ -41803,7 +41620,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_palast"),
     ],
     [
-
 
       ("continue",[],"... What the hell ...",
         [
@@ -41899,7 +41715,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (change_screen_map),
   ]),
 ],),
-
 
 ("send_message_to_companion",0,
   "Which message do you want to send to {s6}.",
@@ -43702,7 +43517,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
 
-
       ("continue",[],"Well done...",
         [
           (change_screen_map),
@@ -43728,7 +43542,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (val_add, "$g_unrest", 5),
       (display_message, "@Stability of the Empire decreases", color_bad_news),
     (try_end),
-
 
     (call_script, "script_change_relation_with_family_friends_enemies", "$g_talk_troop", -1, 15, "trp_player"),
       # # # reduce the player's relationship with every hero, companion, lady, and daughter
@@ -43782,7 +43595,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (remove_party,":king_party"),
     (try_end),
     (troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
-
 
     (assign, "$cant_leave_encounter", 0),
     (assign, "$g_leave_encounter", 1),
@@ -44538,7 +44350,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-
 ("meeting_with_antonia_final_angry",0,
   "As suddenly as she came she leaves your camp. Shouting around insults at you and your soldiers. A soldier standing next to notes: ^'This woman has indeed the spirit and temperament of a she-wolf.'",
   "none",[
@@ -44773,11 +44584,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 			 (change_screen_mission),
       ]),
 
-
       ("Continue...",[],"Leave.",[
     (change_screen_map),
       ]),
-
 
   ]),
   (
@@ -44803,7 +44612,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (change_screen_map),
       ]),
 
-
   ]),
   (
     "scandia",0,
@@ -44816,7 +44624,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [ #qst_town_trade
 
-
       ("Continue...",[],"Defend yourself",[
  			 (modify_visitors_at_site,"scn_grove_witch_2"),
 			 (reset_visitors),
@@ -44828,9 +44635,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 			 (change_screen_mission),
       ]),
 
-
-
-
   ]),
 
   (
@@ -44841,15 +44645,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [ #qst_town_trade
 
-
       ("Continue...",[],"Continue",[
         (quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 5),
         (add_quest_note_from_sreg, "qst_the_eagle", 4, "@You have defeated the warrior. Bring Hunna his head.", 0),
         (change_screen_map),
       ]),
-
-
-
 
   ]),
 
@@ -44863,7 +44663,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [ #qst_town_trade
 
-
       ("Continue...",[],"A trap...",[
          (set_jump_mission,"mt_lucillus_1"),
          (modify_visitors_at_site, "scn_house_1"),
@@ -44876,7 +44675,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
          (jump_to_scene, "scn_house_1"),
          (change_screen_mission),
       ]),
-
 
   ]),
 
@@ -44892,7 +44690,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [ #qst_town_trade
 
-
       ("Continue...",[],"It's party time! Let's get drunk!",[
         # (call_script, "script_change_troop_renown", "trp_player", 25),
         # (assign, "$auto_enter_town", "$current_town"),
@@ -44900,7 +44697,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         # (assign, "$g_last_rest_center", "$current_town"),
         # (assign, "$g_last_rest_payment_until", -1),
         # (rest_for_hours, 12, 4, 0),
-
 
       # (change_screen_map)
 			(modify_visitors_at_site,"scn_temple_of_bacchus"),
@@ -44930,8 +44726,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
       ]),
 
-
-
   ]),
   (
     "end_party",0,
@@ -44941,7 +44735,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     [  (set_background_mesh, "mesh_pic_party"),
     ],
     [ #qst_town_trade
-
 
       ("Continue...",[],"I shouldn't drink so much ...",[
       (call_script, "script_change_troop_renown", "trp_player", 25),
@@ -44955,8 +44748,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
       ]),
 
-
-
   ]),
 
   (
@@ -44969,7 +44760,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     [  (set_background_mesh, "mesh_pic_roma"),
     ],
     [ #qst_town_trade
-
 
       ("Continue...",[],"Climb over the wall.",[
          (set_jump_mission,"mt_lucillus_2"),
@@ -44993,7 +44783,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu, "mnu_temples"),
       ]),
 
-
   ]),
 
   (
@@ -45005,7 +44794,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [ #qst_town_trade
 
-
       ("Continue...",[],"Continue...",[
         (add_quest_note_from_sreg, "qst_town_trade_2", 4, "@Finally you have killed Lucillus. Claim your reward!", 0),
         (add_xp_as_reward, 2000),
@@ -45013,7 +44801,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (quest_set_slot, "qst_town_trade_2", slot_quest_current_state, 2),
         (change_screen_map),
       ]),
-
 
   ]),
 
@@ -45025,13 +44812,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [ #qst_town_trade
 
-
       ("Continue...",[],"Continue...",[
         (add_quest_note_from_sreg, "qst_town_trade_2", 3, "@It seems Lucillus was informed about the plan. Report back to Mamertinus.", 0),
         (add_xp_as_reward, 1000),
         (change_screen_map),
       ]),
-
 
   ]),
   (
@@ -45042,14 +44827,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [ #qst_town_trade
 
-
       ("Continue...",[],"Continue...",[
         (add_quest_note_from_sreg, "qst_town_trade_2", 3, "@It seems Lucillus was informed about the plan. Report back to Mamertinus.", 0),
         (add_xp_as_reward, 1000),
         (troop_remove_gold, "trp_player", 500),
         (jump_to_menu, "mnu_town"),
       ]),
-
 
   ]),
 
@@ -45073,7 +44856,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ("event04",[],"Event13",[ (jump_to_menu,"mnu_event_siege_13"),]),
       ("event04",[],"next page",[ (jump_to_menu,"mnu_siege_event_test2"),]),
 
-
   ]),
   (
     "siege_event_test2",0,
@@ -45092,7 +44874,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ("event04",[],"Event22",[ (jump_to_menu,"mnu_event_siege_22"),]),
       ("event04",[],"Event23",[ (jump_to_menu,"mnu_event_siege_23"),]),
       ("event04",[],"next page",[ (jump_to_menu,"mnu_siege_event_test3"),]),
-
 
   ]),
   (
@@ -45156,7 +44937,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (jump_to_scene, "scn_duel_plain_forest"),
 
           (change_screen_mission),
-
 
       ]),
 
@@ -46419,7 +46199,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
           (str_store_string,s1,"@The magister civium and the praefectus, fearing also to get punished, blame the artists for this failure. Shocked by your order, the people of {s20} see you as a selfish tyrant."),
 
-
           (jump_to_menu, "mnu_random_juice_events"),
       ]),
       ("leave_jui",[],"Those statues are ugly as hell! Destroy them!",[
@@ -46485,7 +46264,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ])
       for month in range(0, 12)
   ] + [
-
 
     # ("month",[
     #   (ge, reg33, 51),
@@ -47048,7 +46826,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (set_visitors, ":entry", "trp_guest", 8),
       (try_end),
 
-
       (assign, ":entry", 0),
       (try_begin),
           (eq, "$g_is_emperor", 1),
@@ -47063,7 +46840,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (set_visitor, 1, "trp_kingdom_7_lady_1"),
           (set_visitor, 2, "trp_kingdom_7_lord"),
       (try_end),
-
 
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
@@ -47553,7 +47329,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_caught_embezzle_punished"),
     ]),
 ]),
-
 
 ("caught_embezzle_bribed",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "The official seems to be happy about your 'gift' and the case goes ad acta.",
@@ -48054,7 +47829,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     # (party_add_members, "p_main_party", "trp_slinger_rhodos", 250),
     # ]),
 
-
       # ("options",[],"Debug slot_center_pursue and slot_crucified_slave_icon",
         # [
         # (try_for_range, ":towns", centers_begin, centers_end),
@@ -48430,7 +48204,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("continue",[],"Here we go again...",[
       (modify_visitors_at_site,"scn_town_riot_rome"),
       (reset_visitors),
-
 
       (set_visitors, 1, "trp_praetoriani_milites", 9),
       (set_visitors, 2, "trp_praetoriani_milites", 9),
@@ -50238,7 +50011,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 0, "itm_legion_segmentata_1"),
       (set_visitor,0,"trp_healer_2"),
 
-
       (jump_to_scene,":meeting_scene"),
       #(assign, "$talk_context", tc_siege_commander),
       (change_screen_map_conversation, "trp_healer_2")
@@ -50943,7 +50715,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
      ],
     [
-
 
         ("continue",[],
        "Continue.",
@@ -53587,7 +53358,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_get_slot, ":poppaea_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
       (set_visitor, 2, ":poppaea_or_antonia"),
 
-
       (try_begin),
         (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
         (assign, ":commander", "trp_legatus_11"),
@@ -53817,7 +53587,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_map),
     ]),
 ]),
-
 
 ("poppaea_fate",0,
   "{s5}",
@@ -54601,7 +54370,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     ]),
 
-
  ("nero_performance",0,
     "You are invited to the palace. There you are told Caesar will be performing his Troyad, a play about the destruction of Troy. You have to attend.^^\
  Beautiful slaves are dressing you in a fine toga. You are perfumed and beautifully prepared.^^Then you are called to the Triclinium, were the feast will progress.\
@@ -54835,7 +54603,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        ]),
 
  ]),
-
 
  ("akademeia",0,
     "The Akademia of Athenae was founded by Plato centuries ago. Unfortunately, the dictator Sulla ordered it's destruction. The place has been abandoned ever since. Rebuilding it would cost you 150,000 denars.",
@@ -55168,7 +54935,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
   ],
 ),
-
 
 ("aslan_end",0,
   "{s15}",
@@ -57024,7 +56790,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (assign, "$temp1", "mnu_wlodowiecus_adventure_2_continue_2"),
     (assign, "$temp2", "mnu_wlodowiecus_adventure_2_raid_2_died"),
 
-
     (set_jump_mission, "mt_wlods_advantures_fight"),
     (modify_visitors_at_site, "scn_random_scene_desert_custom_2"),
     (reset_visitors),
@@ -57518,7 +57283,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     ]),
 ]),
 
-
 ("longbard_3_launder",0,
     "You approach the women and offer to help them. They giggle, as doing the laundry is women's work, but they are so exhausted that they accept your help anyway. ^^After you finish, you return to the village. The other men are making jokes about you, the strange foreigner, who helped women doing women's work. But, you don't care.^^That the evening, the women you helped approach, bringing you a roasted haunch of meat with vegetables and honey. One of them also gifts you some amber she found at the beach.",
     "none", [
@@ -57557,7 +57321,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     (change_screen_map),
     ]),
 ]),
-
 
 ("longbard_4",0,
     "The days pass and your strength slowly comes back. You go on your walk through the village again.^^This time, you are walking through the fields the people have cultivated. You spot some slaves working on them. They look tired and are struggling under the burning sun.^^A little cat runs past you. You could swear it's the same one you've dreamed of. She stops in front of a slave for a moment then continues walking.",
@@ -57744,7 +57507,6 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (change_screen_map),
     ]),
 ]),
-
 
  ("investment",0,
   "Investment opportunity^^A prominent merchant from {s40} has reached out through your client looking for a loan to finance a potentially profitable business venture in the {s41} sector. They are looking for {reg41} denars and will repay with interest in your next weekly budget. If the venture goes well they will share some profits on top of the original sum, otherwise you will lose the investment. Your client thinks it's a good deal.",

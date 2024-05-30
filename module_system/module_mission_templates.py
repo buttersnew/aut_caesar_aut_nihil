@@ -25631,11 +25631,10 @@ mission_templates = [
         (display_message, "@YOU DIE NOW BECAUSE OF A BUG"),
         (display_message, "@BUG BUG BUG"),
       (try_end),
-
+      (stop_all_sounds, 1),
+      (jump_to_menu, ":menu"),
       (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
       (finish_mission, 3),
-      (jump_to_menu, ":menu"),
-      (stop_all_sounds, 1),
     ]),
 
     (0, 0, ti_once, [],[

@@ -1,3 +1,4 @@
+# -*- coding: cp1254 -*-
 import string
 from header_common import *
 from header_presentations import *
