@@ -38982,7 +38982,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "{s4}",
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
-    (assign, ":continue", 0),
 
     (str_clear, s4),
     (store_random_in_range, ":random", 0, 9),
@@ -38994,7 +38993,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (assign, ":relation", reg0),
       #                       (troop_get_slot, ":relation", ":active_npc", slot_troop_player_relation),
       (gt, ":relation", 15), #good relation = send gift
-      (assign, ":continue", 1),
+
       (str_store_troop_name, s12, ":active_npc"),
       (str_store_string, s4, "@Friendly message^^A messenger sent from {s12} arrives and gives you a present of silver and jewelry in appreciation of your friendship."),
       (troop_add_gold, "trp_player", 1000),
@@ -39005,17 +39004,13 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (assign, ":relation", reg0),
       #                         (troop_get_slot, ":relation", ":active_npc", slot_troop_player_relation),
       (lt, ":relation", -15), #bad relation = send insult
-      (assign, ":continue", 1),
+
       (str_store_troop_name, s12, ":active_npc"),
       (str_store_string, s4, "@Unfriendly message^^A messenger sent from {s12} arrives and gives you a message with all kinds of insults and profanities, {s12} invites you to go and look for him if you have guts which {s12} believes you don't, as you're a notorious coward."),
       (call_script, "script_change_troop_renown", "trp_player", -6),
-    (try_end),
-
-    (try_begin),
-      (eq, ":continue", 0),
+    (else_try),
       (change_screen_return),
     (try_end),
-    (eq, ":continue", 1),
   ],[
     ("choice_11_msgnor",[],"Continue.",[
       (change_screen_return, 0),
