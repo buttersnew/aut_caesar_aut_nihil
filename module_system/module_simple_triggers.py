@@ -12139,7 +12139,7 @@ simple_triggers = [
         (store_party_size, ":size", "p_main_party"),
         (le, ":size", 50),
         (set_spawn_radius, 2),
-        (display_message, "@The bandits approach"),
+        (tutorial_box, "@Danger!", "@The bandits approach."),
         (call_script, "script_spawn_party", "p_main_party", "pt_raider_party"),
         (assign, ":bandit_party", reg0),
 

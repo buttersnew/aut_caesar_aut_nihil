@@ -327,7 +327,7 @@ party_templates = [
 # ("dplmc_recruiter","Recruiter",icon_flagbearer_b|pf_show_faction,0,fac_neutral,merchant_personality,[(trp_dplmc_recruiter,1,1)]),
 # #recruiter kit end
 ##diplomacy end
-("refugees","Refugees",icon_woman,0,fac_innocents,merchant_personality,[(trp_refugee,19,48)]),
+("refugees","Refugees",icon_woman|pf_auto_remove_in_town|pf_civilian,0,fac_innocents,merchant_personality,[(trp_refugee,19,48)]),
 
 ("women","Peasant Women",icon_woman,0,fac_innocents,merchant_personality,[(trp_peasant_woman,8,15)]),
 ("sarranid_women","Peasant Women",icon_woman,0,fac_innocents,merchant_personality,[(trp_peasant_woman,3,8)]),
