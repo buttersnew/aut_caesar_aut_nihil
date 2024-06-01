@@ -6,19 +6,15 @@ from header_mission_templates import *
 from IDs.ID_meshes import *
 from header_operations import *
 from header_triggers import *
-#SB: import skills from IDs.ID_skills import *
 from module_constants import *
-##diplomacy start+ Import for use with terrain advantage
 from header_terrain_types import *
 from module_items import *
 from header_skills import *
 from module_info_pages import *
-#SB : import colors
 from module_factions import *
 from IDs.ID_postfx_params import *
 from IDs.ID_factions import *
 
-##diplomacy end
 #from compiler import *
 ####################################################################################################################
 #  Each presentation record contains the following fields:
@@ -27,13 +23,6 @@ from IDs.ID_factions import *
 #  3) Presentation background mesh: See module_meshes.py for a list of available background meshes
 #  4) Triggers: Simple triggers that are associated with the presentation
 ####################################################################################################################
-##some definitions from VC
-load = ti_on_presentation_load
-run = ti_on_presentation_run
-event = ti_on_presentation_event_state_change
-hover = ti_on_presentation_mouse_enter_leave
-click = ti_on_presentation_mouse_press
-
 
 presentations = [
 ## mainmenu
@@ -21604,7 +21593,7 @@ presentations = [
 # Description: from the troop tree you can click on any troop
 #              to see its details: stats, inventory, etc
 ("troop_detail", 0, mesh_load_window, [
-  (load,[
+  (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
@@ -21647,7 +21636,7 @@ presentations = [
     (try_end),
   ]),
 
-  (event,[
+  (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":object"),
     (store_trigger_param_2, ":value"),
 
@@ -21677,17 +21666,17 @@ presentations = [
     # (try_end),
   ]),
 
-  (hover,[
+  (ti_on_presentation_mouse_enter_leave,[
     (call_script, "script_troop_detail_inventory_tooltip"),
   ]),
 
-  (click,[
+  (ti_on_presentation_mouse_press,[
     (eq, "$temp", 2),
     (store_trigger_param_1, ":object_id"),
     (call_script, "script_troop_detail_update_dummy", "$temp_troop", ":object_id"),
   ]),
 
-  (run,[
+  (ti_on_presentation_run,[
     (try_begin),
       (key_clicked, key_escape),
       (presentation_set_duration, 0),
