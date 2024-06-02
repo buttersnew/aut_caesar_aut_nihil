@@ -2117,6 +2117,7 @@ logent_player_renamed_capital = 97 #SB : unused logged event
 
 logent_player_attacked_buisness = 98
 logent_player_helped_buisness   = 99
+logent_battle_of_bedriacum      = 100
 # logent_executed_prisoners = 97
 # logent_rejected_bodyguards = 98
 

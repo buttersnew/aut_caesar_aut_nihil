@@ -7799,12 +7799,21 @@ Lead me in battle to victory!"),
 
 ("governor_asks_governor_help_fugitive", "{s24}'s personal political enemy who tirelessly worked against the governor in {s23} has fled into exile and is believed to be hiding within your province. It is difficult for {s24}'s agents to operate in your lands and they may risk offending you if they operate at scale needed for a thorough search. Instead, {s24} is asking you to find and deliver the fugitive to him."),
 
+# battle of bedriacum
+("battle_of_bedriacum_benevolent", "The news about the battle of Bedriacum warms my heart. Now peace can be restored."),
+("battle_of_bedriacum_spiteful_enemy", "The large battle near Bedriacum likely brought an end to the struggle that erupted in Rome... and it also opened many opportunities. But Pandora's box should not be left open for too long."),
+("battle_of_bedriacum_coldblooded", "Now with the battle of Bedriacum, all pretenders are dead. May your reign be long and blessed by the gods!"),
+("battle_of_bedriacum_enemy", "The news about the battle of Bedriacum spread to every corner of the Empire. Though it was not a great victory... I understand that it was necessary."),
+("battle_of_bedriacum_spiteful", "The large battle near Bedriacum has hopefully brought an end to the struggle that erupted in Rome. It opened many opportunities. But Pandora's box should not be left open for too long."),
+("battle_of_bedriacum_friendly", "My friend, I am very happy about the victory at the battle of Bedriacum. If anyone deserves to be called Princeps - first among equals - then it is you, {playername}! You truly deserve the title Augustus."),
+("battle_of_bedriacum_default", "The news of your victory at the battle of Bedriacum echoes through each corner of the Empire. This bloodshed will surely end the struggle. May your reign be long and blessed by the gods!"),
+
 ##buisness
-("comment_you_attacked_buisness_enemy_benevolent",    "You have interfered my business  and caused me a lot of trouble and denars. I will not forget this!"),
-("comment_you_attacked_buisness_enemy_spiteful",      "You have attacked my business  and caused much trouble. You will pay for that one day."),
-("comment_you_attacked_buisness_enemy_coldblooded",   "You have interfered my business  and caused much trouble. I lost a large sum. I will make you think twice before you disrupt my revenues like that again."),
-("comment_you_attacked_buisness_enemy",               "You interfered my business , caused trouble and costs. You will pay that back in one way or the other I will make sure!"),
-("comment_you_attacked_buisness_unfriendly_spiteful", "Because of your interference into my business  I lost large sums. I will make sure you will pay for that one day."),
+("comment_you_attacked_buisness_enemy_benevolent",    "You have interfered my business and caused me a lot of trouble and denars. I will not forget this!"),
+("comment_you_attacked_buisness_enemy_spiteful",      "You have attacked my business and caused much trouble. You will pay for that one day."),
+("comment_you_attacked_buisness_enemy_coldblooded",   "You have interfered my business and caused much trouble. I lost a large sum. I will make you think twice before you disrupt my revenues like that again."),
+("comment_you_attacked_buisness_enemy",               "You interfered my business, caused trouble and costs. You will pay that back in one way or the other I will make sure!"),
+("comment_you_attacked_buisness_unfriendly_spiteful", "Because of your interference into my business I lost large sums. I will make sure you will pay for that one day."),
 ("comment_you_attacked_buisness_friendly",            "You interfered my business and I made large losses. This will place a grave strain on our friendship."),
 ("comment_you_attacked_buisness_default",             "You interfered my business and I made large losses. If you continue to behave this way, we may soon come to blows."),
 
