@@ -12363,133 +12363,86 @@ game_menus = [
         (assign, "$town_nighttime", 1),
     (try_end),
   ],[
-      # ("village_garrison",[
-        # (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
-        # (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
-        # (party_slot_eq, "$current_town", slot_center_has_manor, 1),
-        # (call_script,"script_cf_fix_party_size_village","$current_town",1),
-      # ],
-          # "Manage the garrison and prisoners",[
-              # (change_screen_exchange_members,1),
-              # (call_script,"script_cf_fix_party_size_village","$current_town",1),
-              # ]),
+    ("visit_mine",[
+      (this_or_next|party_slot_ge, "$current_town", slot_center_iron_deposits, 1),
+      (party_slot_ge, "$current_town", slot_center_silver_deposits, 1),
+      (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
+    ],"Visit the local mine.",[
+      (jump_to_menu, "mnu_mine"),
+    ]),
+    ("village_manage",[
+      (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
+      (assign, reg0, 0),
+      (try_begin),
+        (store_faction_of_party, ":fac", "$current_town"),
+        (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
+        (faction_slot_ge, ":fac", dplmc_slot_faction_centralization, 1),
+        (assign, reg0, 1),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+        (assign, reg0, 1),
+      (try_end),
+      (eq, reg0, 1),
+    ],"Manage this village.",[
+      (assign, "$g_next_menu", "mnu_village"),
+      (assign, reg63, 1),
+      (jump_to_menu, "mnu_center_manage_2"),
+    ]),
+    ("recruit_volunteers",[
+      (call_script, "script_cf_village_recruit_volunteers_cond"),
+    ],"Recruit Volunteers.",[
+      (try_begin),
+        (call_script, "script_cf_enter_center_location_bandit_check"),
+      (else_try),
+        (jump_to_menu, "mnu_recruit_volunteers"),
+      (try_end),
+    ]),
 
-      ("visit_mine",
-      [
-        (this_or_next|party_slot_ge, "$current_town", slot_center_iron_deposits, 1),
-        (party_slot_ge, "$current_town", slot_center_silver_deposits, 1),
-        (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
-        ]
-       ,"Visit the local mine.",
-       [
-           (jump_to_menu, "mnu_mine"),
-        ]),
-      ("village_manage",[
-        (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
-        (assign, reg0, 0),
+    ("recruit_volunteers",[
+      (check_quest_active, "qst_amor_quest"),
+      (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 11),
+      (eq, "$current_town", "p_village_162"),
+    ],"Raid some houses and kill Tristitias husband.",[
+      (store_party_size_wo_prisoners, ":size", "p_main_party"),
+      (try_begin),
+        (ge, ":size", 15),
+        (jump_to_menu, "mnu_tristitia_kill"),
+      (else_try),
+        (display_message, "@You need at least 15 men."),
+      (try_end),
+    ]),
+
+    ("village_center",[
+      (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
+    ],"Go to the village center.",[
+      (try_begin),
+        (call_script, "script_cf_enter_center_location_bandit_check"),
+      (else_try),
+        (party_get_slot, ":village_scene", "$current_town", slot_castle_exterior),
+        (modify_visitors_at_site,":village_scene"),
+        (reset_visitors),
+        (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
+        (set_visitor, 11, ":village_elder_troop"),
+
         (try_begin),
-          (store_faction_of_party, ":fac", "$current_town"),
-          (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
-          (faction_slot_ge, ":fac", dplmc_slot_faction_centralization, 1),
-          (assign, reg0, 1),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
-          (assign, reg0, 1),
+            (check_quest_active, "qst_amor_quest"),
+            (eq, "$current_town", "p_village_162"),
+            (this_or_next|quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 8),
+            (this_or_next|quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 11),
+            (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 10),
+            (set_visitor, 25, "trp_tristitia"),
         (try_end),
-        (eq, reg0, 1),
-      ],"Manage this village.",[
-        (assign, "$g_next_menu", "mnu_village"),
-        (assign, reg63, 1),
-        (jump_to_menu, "mnu_center_manage_2"),
-      ]),
-      # ("village_slave",
-      # [
-        # (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
-        # (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
-		# (party_get_num_prisoners, ":slaves", "p_main_party"),
-		# (ge, ":slaves", 6),
-        # ]
-       # ,"Let you prisoners work as slaves in your village. (removes all non-hero prisoners)",
-       # [
-	   	# (party_get_num_prisoners, ":slaves", "p_main_party"),
-		# (val_div, ":slaves", 5),
-		# (call_script, "script_change_center_prosperity", "$current_town", ":slaves"),
-		# (assign, ":store", "$g_move_heroes"),
-		# (assign, "$g_move_heroes", 0),
-		# (call_script, "script_party_remove_all_prisoners", "$current_town"),
-		# (assign, "$g_move_heroes", ":store"),
-		# #(display_message, "@Your prisoners are now all slaves!"),
-        # ]),
-	# ("economic_info",
-      # [ (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
-        # ]
-       # ,"Show economic information.",
-       # [
-           # (jump_to_menu, "mnu_economic"),
-		   # (assign, "$g_next_menu", "mnu_village"),
-        # ]),
-      ("recruit_volunteers",
-      [
-        (call_script, "script_cf_village_recruit_volunteers_cond"),
-       ]
-       ,"Recruit Volunteers.",
-       [
-         (try_begin),
-           (call_script, "script_cf_enter_center_location_bandit_check"),
-         (else_try),
-           (jump_to_menu, "mnu_recruit_volunteers"),
-         (try_end),
-        ]),
-
-        ("recruit_volunteers",
-      [
-        (check_quest_active, "qst_amor_quest"),
-        (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 11),
-        (eq, "$current_town", "p_village_162"),
-
-       ]
-       ,"Raid some houses and kill Tristitias husband.",
-       [
-        (store_party_size_wo_prisoners, ":size", "p_main_party"),
+        ##diplomacy begin
         (try_begin),
-            (ge, ":size", 15),
-            (jump_to_menu, "mnu_tristitia_kill"),
-        (else_try),
-            (display_message, "@You need at least 15 men."),
+          (gt, "$g_player_chamberlain", 0),
+          (call_script, "script_dplmc_appoint_chamberlain"),  #fix for wrong troops after update
+          (party_get_slot, ":town_lord", "$current_town", slot_town_lord),
+          (eq, ":town_lord", "trp_player"),
+          (set_visitor, 9, "$g_player_chamberlain"),
         (try_end),
+        ##diplomacy end
 
-        ]),
-      ("village_center",[
-        (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
-      ],"Go to the village center.",[
-        (try_begin),
-          (call_script, "script_cf_enter_center_location_bandit_check"),
-        (else_try),
-          (party_get_slot, ":village_scene", "$current_town", slot_castle_exterior),
-          (modify_visitors_at_site,":village_scene"),
-          (reset_visitors),
-          (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
-          (set_visitor, 11, ":village_elder_troop"),
-
-          (try_begin),
-              (check_quest_active, "qst_amor_quest"),
-              (eq, "$current_town", "p_village_162"),
-              (this_or_next|quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 8),
-              (this_or_next|quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 11),
-              (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 10),
-              (set_visitor, 25, "trp_tristitia"),
-          (try_end),
-          ##diplomacy begin
-          (try_begin),
-            (gt, "$g_player_chamberlain", 0),
-            (call_script, "script_dplmc_appoint_chamberlain"),  #fix for wrong troops after update
-            (party_get_slot, ":town_lord", "$current_town", slot_town_lord),
-            (eq, ":town_lord", "trp_player"),
-            (set_visitor, 9, "$g_player_chamberlain"),
-          (try_end),
-          ##diplomacy end
-
-          (call_script, "script_init_town_walkers"),
+        (call_script, "script_init_town_walkers"),
         (try_begin),
           (check_quest_active, "qst_blank_quest_10"),
           (neg | is_currently_night),
@@ -12514,191 +12467,162 @@ game_menus = [
           #			  (shuffle_range, 1, 4),
           (set_visitor, ":pos", ":target_troop"),
         (try_end),
-          (try_begin),
-            (check_quest_active, "qst_hunt_down_fugitive"),
-            (neg|is_currently_night),
-            (quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_target_center, "$current_town"),
-            (neg|check_quest_concluded, "qst_hunt_down_fugitive"), #SB : other condition
-            (neg|check_quest_succeeded, "qst_hunt_down_fugitive"),
-            (neg|check_quest_failed, "qst_hunt_down_fugitive"),
-            (set_visitor, 45, "trp_fugitive"),
-          (try_end),
-
-          (set_jump_mission,"mt_village_center"),
-          #VC-2404
-          (try_begin),
-            (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-            (try_for_range, ":entry", 0, 2),
-              (call_script, "script_init_second_outfit", "mt_village_center", ":entry", 1),
-            (try_end),
-            (mission_tpl_entry_set_override_flags, "mt_village_center", 0, af_override_outfit_1),
-            (mission_tpl_entry_set_override_flags, "mt_village_center", 1, af_override_outfit_1 | af_override_horse),
-          (try_end),
-          (jump_to_scene,":village_scene"),
-          (change_screen_mission),
-        (try_end),
-      ],"Door to the village center."),
-
-       ##diplomacy begin
-      ("dplmc_village_elder_meeting",[
-        (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : conditional check
-        ##diplomacy start+
-        #rubik had a good idea: only enable this after having met the village elder
-        (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
-        (gt, ":village_elder_troop", 0),
-        (this_or_next|eq, "$cheat_mode", 1),#Always can jump to village elder in cheat mode
-        (this_or_next|eq, "$players_kingdom", "$g_encountered_party_faction"), #allow when member
-        (troop_slot_ge,":village_elder_troop", slot_troop_met, 1),
-        ##diplomacy end+
-        (str_store_troop_name, s50, ":village_elder_troop"),
-      ],"Meet the {s50}.",[
-         (try_begin),
-           (call_script, "script_cf_enter_center_location_bandit_check"),
-         (else_try),
-           (party_get_slot, ":village_scene", "$current_town", slot_castle_exterior),
-           (modify_visitors_at_site,":village_scene"),
-           (reset_visitors),
-           (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
-           (set_visitor, 11, ":village_elder_troop"),
-           (try_begin), #SB : supporting village_elder_found_chamberlain dialog option
-              (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
-              (eq, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
-              (set_visitor, 9, "$g_player_chamberlain"),
-           (try_end),
-
-           (set_jump_mission,"mt_village_center"),
-           (jump_to_scene,":village_scene"),
-           (change_screen_map_conversation, ":village_elder_troop"),
-         (try_end),
-      ]),
-      ##diplomacy end
-      ##diplomacy start+
-      #If you can't jump to the village elder, explain why
-      ("dplmc_village_elder_meeting_denied",[
-      #Only show this when the player would get the rest of the village menus
-        (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
-        #There is a valid village elder, and you haven't met him,
-        #and there isn't another condition that enables the jump.
-        (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
-        (gt, ":village_elder_troop", 0),
-        (eq, "$cheat_mode", 0),
-        (troop_slot_eq, ":village_elder_troop", slot_troop_met, 0),
-        (str_store_troop_name, s50, ":village_elder_troop"),
-        (disable_menu_option),
-      ],"You have not met the {s50} yet.",[
-      ]),
-	 ##diplomacy end+
-      ("village_buy_food",[(party_slot_eq, "$current_town", slot_village_state, svs_normal),
-                           (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-                           ],"Buy supplies from the peasants.",
-       [
-         (try_begin),
-           (call_script, "script_cf_enter_center_location_bandit_check"),
-         (else_try),
-           (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
-
-      #(try_for_range, ":cur_goods", trade_goods_begin, trade_goods_end),
-        #(store_sub, ":cur_good_price_slot", ":cur_goods", trade_goods_begin),
-        #(val_add, ":cur_good_price_slot", slot_town_trade_good_prices_begin),
-		#(party_get_slot, ":cur_price", "$current_town", ":cur_good_price_slot"),
-	    #(call_script, "script_center_get_production", "$current_town", ":cur_goods"),
-        #(assign, reg13, reg0),
-	    #(call_script, "script_center_get_consumption", "$current_town", ":cur_goods"),
-        #(str_store_party_name, s1, "$current_town"),
-        #(str_store_item_name, s2, ":cur_goods"),
-		#(assign, reg16, ":cur_price"),
-        #(display_log_message, "@DEBUG:{s1}-{s2}, prd: {reg13}, con: {reg0}, raw: {reg1}, cns: {reg2}, fee: {reg16}"),
-	  #(try_end),
-
-           (change_screen_trade, ":merchant_troop"),
-
-         (try_end),
-         ]),
-##diplomacy start+
-#Import rubik's Auto-Sell options from Custom Commander
-      ("dplmc_village_auto_sell",
-        [
-        (party_slot_eq, "$current_town", slot_village_state, svs_normal),
-        (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-        (party_get_slot, ":village_elder_troop", "$current_town", slot_town_elder),
-        (ge, ":village_elder_troop", 0),
-        ],
-       "Sell items automatically.",
-       [
-          (assign, "$g_next_menu", "mnu_village"),
-          (jump_to_menu,"mnu_dplmc_trade_auto_sell_begin"),
-        ]),
-
-      ("dplmc_village_auto_buy_food",
-        [
-        (party_slot_eq, "$current_town", slot_village_state, svs_normal),
-        (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-        (party_get_slot, ":village_elder_troop", "$current_town", slot_town_elder),
-        (ge, ":village_elder_troop", 0),
-        ],
-       "Buy food automatically.",
-       [
-          (assign, "$g_next_menu", "mnu_village"),
-          (jump_to_menu,"mnu_dplmc_trade_auto_buy_food_begin"),
-        ]),
-##diplomacy end+
-      ("village_attack_bandits",[
-        (party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-        ##diplomacy begin
-        (neg|party_slot_eq, "$current_town", slot_village_infested_by_bandits, "trp_peasant_woman"),
-        ##diplmacy end
-        ],
-       "Attack the bandits.",
-       [(party_get_slot, ":bandit_troop", "$current_town", slot_village_infested_by_bandits),
-        (party_get_slot, ":scene_to_use", "$current_town", slot_castle_exterior),
-        (modify_visitors_at_site,":scene_to_use"),
-        (reset_visitors),
-        (set_visitors, 0, ":bandit_troop", "$qst_eliminate_bandits_infesting_village_num_bandits"),
-
         (try_begin),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_1"),
-          (assign, ":rebel_troop", "trp_dacian_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2"),
-          (assign, ":rebel_troop", "trp_celtic_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2_1"),
-          (assign, ":rebel_troop", "trp_celtic_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_3"),
-          (assign, ":rebel_troop", "trp_sarmatian_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_4"),
-          (assign, ":rebel_troop", "trp_germanic_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_5"),
-          (assign, ":rebel_troop", "trp_armenian_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_6"),
-          (assign, ":rebel_troop", "trp_parthian_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
-          (assign, ":rebel_troop", "trp_roman_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_9"),
-          (assign, ":rebel_troop", "trp_bosporan_village_walker"),
-        (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),
-          (assign, ":rebel_troop", "trp_judean_village_walker"),
+          (check_quest_active, "qst_hunt_down_fugitive"),
+          (neg|is_currently_night),
+          (quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_target_center, "$current_town"),
+          (neg|check_quest_concluded, "qst_hunt_down_fugitive"), #SB : other condition
+          (neg|check_quest_succeeded, "qst_hunt_down_fugitive"),
+          (neg|check_quest_failed, "qst_hunt_down_fugitive"),
+          (set_visitor, 45, "trp_fugitive"),
         (try_end),
 
-        (set_visitors, 2, ":rebel_troop", "$qst_eliminate_bandits_infesting_village_num_villagers"),
-
-        (set_party_battle_mode),
-        (set_battle_advantage, 0),
-        (assign, "$g_battle_result", 0),
-        (set_jump_mission,"mt_village_attack_bandits"),
-        (jump_to_scene, ":scene_to_use"),
-        (assign, "$g_next_menu", "mnu_village_infest_bandits_result"),
-        (jump_to_menu, "mnu_battle_debrief"),
-        (assign, "$g_mt_mode", vba_normal),
+        (set_jump_mission,"mt_village_center"),
+        #VC-2404
+        (try_begin),
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (try_for_range, ":entry", 0, 2),
+            (call_script, "script_init_second_outfit", "mt_village_center", ":entry", 1),
+          (try_end),
+          (mission_tpl_entry_set_override_flags, "mt_village_center", 0, af_override_outfit_1),
+          (mission_tpl_entry_set_override_flags, "mt_village_center", 1, af_override_outfit_1 | af_override_horse),
+        (try_end),
+        (jump_to_scene,":village_scene"),
         (change_screen_mission),
-        ]),
+      (try_end),
+    ],"Door to the village center."),
+
+      ##diplomacy begin
+    ("dplmc_village_elder_meeting",[
+      (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : conditional check
+      ##diplomacy start+
+      #rubik had a good idea: only enable this after having met the village elder
+      (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
+      (gt, ":village_elder_troop", 0),
+      (this_or_next|eq, "$cheat_mode", 1),#Always can jump to village elder in cheat mode
+      (this_or_next|eq, "$players_kingdom", "$g_encountered_party_faction"), #allow when member
+      (troop_slot_ge,":village_elder_troop", slot_troop_met, 1),
+      ##diplomacy end+
+      (str_store_troop_name, s50, ":village_elder_troop"),
+    ],"Meet the {s50}.",[
+      (try_begin),
+        (call_script, "script_cf_enter_center_location_bandit_check"),
+      (else_try),
+        (party_get_slot, ":village_scene", "$current_town", slot_castle_exterior),
+        (modify_visitors_at_site,":village_scene"),
+        (reset_visitors),
+        (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
+        (set_visitor, 11, ":village_elder_troop"),
+        (try_begin), #SB : supporting village_elder_found_chamberlain dialog option
+            (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+            (eq, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
+            (set_visitor, 9, "$g_player_chamberlain"),
+        (try_end),
+
+        (set_jump_mission,"mt_village_center"),
+        (jump_to_scene,":village_scene"),
+        (change_screen_map_conversation, ":village_elder_troop"),
+      (try_end),
+    ]),
+
+    ("dplmc_village_elder_meeting_denied",[
+    #Only show this when the player would get the rest of the village menus
+      (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
+      #There is a valid village elder, and you haven't met him,
+      #and there isn't another condition that enables the jump.
+      (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
+      (gt, ":village_elder_troop", 0),
+      (eq, "$cheat_mode", 0),
+      (troop_slot_eq, ":village_elder_troop", slot_troop_met, 0),
+      (str_store_troop_name, s50, ":village_elder_troop"),
+      (disable_menu_option),
+    ],"You have not met the {s50} yet.",[
+    ]),
+
+    ("village_buy_food",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+    ],"Buy supplies from the peasants.",[
+      (try_begin),
+        (call_script, "script_cf_enter_center_location_bandit_check"),
+      (else_try),
+        (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
+        (change_screen_trade, ":merchant_troop"),
+      (try_end),
+    ]),
+    ("dplmc_village_auto_sell",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (party_get_slot, ":village_elder_troop", "$current_town", slot_town_elder),
+      (ge, ":village_elder_troop", 0),
+    ],"Sell items automatically.",[
+      (assign, "$g_next_menu", "mnu_village"),
+      (jump_to_menu,"mnu_dplmc_trade_auto_sell_begin"),
+    ]),
+
+    ("dplmc_village_auto_buy_food",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (party_get_slot, ":village_elder_troop", "$current_town", slot_town_elder),
+      (ge, ":village_elder_troop", 0),
+    ],"Buy food automatically.",[
+      (assign, "$g_next_menu", "mnu_village"),
+      (jump_to_menu,"mnu_dplmc_trade_auto_buy_food_begin"),
+    ]),
+    ("village_attack_bandits",[
+      (party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (neg|party_slot_eq, "$current_town", slot_village_infested_by_bandits, "trp_peasant_woman"),
+    ],"Attack the bandits.",[
+      (party_get_slot, ":bandit_troop", "$current_town", slot_village_infested_by_bandits),
+      (party_get_slot, ":scene_to_use", "$current_town", slot_castle_exterior),
+      (modify_visitors_at_site,":scene_to_use"),
+      (reset_visitors),
+      (set_visitors, 0, ":bandit_troop", "$qst_eliminate_bandits_infesting_village_num_bandits"),
+
+      (try_begin),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_1"),
+        (assign, ":rebel_troop", "trp_dacian_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2"),
+        (assign, ":rebel_troop", "trp_celtic_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2_1"),
+        (assign, ":rebel_troop", "trp_celtic_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_3"),
+        (assign, ":rebel_troop", "trp_sarmatian_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_4"),
+        (assign, ":rebel_troop", "trp_germanic_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_5"),
+        (assign, ":rebel_troop", "trp_armenian_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_6"),
+        (assign, ":rebel_troop", "trp_parthian_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
+        (assign, ":rebel_troop", "trp_roman_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_9"),
+        (assign, ":rebel_troop", "trp_bosporan_village_walker"),
+      (else_try),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),
+        (assign, ":rebel_troop", "trp_judean_village_walker"),
+      (try_end),
+
+      (set_visitors, 2, ":rebel_troop", "$qst_eliminate_bandits_infesting_village_num_villagers"),
+
+      (set_party_battle_mode),
+      (set_battle_advantage, 0),
+      (assign, "$g_battle_result", 0),
+      (set_jump_mission,"mt_village_attack_bandits"),
+      (jump_to_scene, ":scene_to_use"),
+      (assign, "$g_next_menu", "mnu_village_infest_bandits_result"),
+      (jump_to_menu, "mnu_battle_debrief"),
+      (assign, "$g_mt_mode", vba_normal),
+      (change_screen_mission),
+    ]),
 
     ("village_guest_wait",[
       (neg|party_slot_eq, "$current_town", slot_village_state, svs_looted),
@@ -12723,12 +12647,9 @@ game_menus = [
       (change_screen_return),
     ]),
 
-      ("village_perform_basic_work",
-      [
+    ("village_perform_basic_work",[
       (call_script, "script_cf_village_normal_cond", "$current_town"), #SB : script condition
-
-      ],"Perform some very basic work for the village (be farmer).",
-      [
+    ],"Perform some very basic work for the village (be farmer).",[
       (try_begin),
         (display_message,"@ You start performing these hard peasantry basic work.",0xFF0000),
         (try_begin),
@@ -12740,195 +12661,180 @@ game_menus = [
         (change_screen_map),
         (assign,"$g_work_for_village_ongoing",24),
       (try_end),#rigale
-      ]),
+    ]),
 
-      ("village_wait",
-       [(party_slot_ge, "$current_town", slot_center_has_manor, 1),
-        (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
-        ],
-         "Wait here for some time.",
-         [
-           (assign,"$auto_enter_town","$current_town"),
-           (assign, "$g_last_rest_center", "$current_town"),
+    ("village_wait",[
+      (party_slot_ge, "$current_town", slot_center_has_manor, 1),
+      (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+    ],"Wait here for some time.",[
+      (assign,"$auto_enter_town","$current_town"),
+      (assign, "$g_last_rest_center", "$current_town"),
+      (rest_for_hours_interactive, 24 * 7, 5, 1),
+      (change_screen_return),
+    ]),
 
-           (rest_for_hours_interactive, 24 * 7, 5, 1), #rest while attackable
+    ("dplmc_village_counter_insurgency",[
+      (party_slot_eq, "$current_town", slot_village_infested_by_bandits, "trp_peasant_woman"),
+    ],"Counter the insurgency.",[
+      (store_random_in_range, ":enmity", -10, -5),
+      (call_script, "script_change_player_relation_with_center", "$current_town", ":enmity"),
+      (call_script, "script_calculate_battle_advantage"),
+      (set_battle_advantage, reg0),
+      (set_party_battle_mode),
+      (assign, "$g_battle_result", 0),
+      (set_jump_mission,"mt_village_raid"),
+      (party_get_slot, ":scene_to_use", "$current_town", slot_castle_exterior),
+      (jump_to_scene, ":scene_to_use"),
+      (assign, "$g_next_menu", "mnu_dplmc_village_riot_result"),
 
-           (change_screen_return),
-          ]),
+      # (call_script, "script_objectionable_action", tmt_humanitarian, "str_loot_village"),
+      #SB : more appropriate message for tax rebels
+      (call_script, "script_objectionable_action", tmt_humanitarian, "str_repress_farmers"),
+      (jump_to_menu, "mnu_battle_debrief"),
+      (change_screen_mission),
+    ]),
 
-       ##diplomacy begin
-      ("dplmc_village_counter_insurgency",[
-        (party_slot_eq, "$current_town", slot_village_infested_by_bandits, "trp_peasant_woman"),
-        ],
-       "Counter the insurgency.",
-       [
-          (store_random_in_range, ":enmity", -10, -5),
-          (call_script, "script_change_player_relation_with_center", "$current_town", ":enmity"),
-          (call_script, "script_calculate_battle_advantage"),
-          (set_battle_advantage, reg0),
-          (set_party_battle_mode),
-          (assign, "$g_battle_result", 0),
-          (set_jump_mission,"mt_village_raid"),
-          (party_get_slot, ":scene_to_use", "$current_town", slot_castle_exterior),
-          (jump_to_scene, ":scene_to_use"),
-          (assign, "$g_next_menu", "mnu_dplmc_village_riot_result"),
+    ("dplmc_village_negotiate",[
+      (party_slot_eq, "$current_town", slot_village_infested_by_bandits, "trp_peasant_woman"),
+    ],"Begin negotiations.",[
+      (jump_to_menu, "mnu_dplmc_riot_negotiate"),
+    ]),
 
-          # (call_script, "script_objectionable_action", tmt_humanitarian, "str_loot_village"),
-          #SB : more appropriate message for tax rebels
-          (call_script, "script_objectionable_action", tmt_humanitarian, "str_repress_farmers"),
-          (jump_to_menu, "mnu_battle_debrief"),
-          (change_screen_mission),
-        ]),
+    ("collect_taxes_qst",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (check_quest_active, "qst_collect_taxes"),
+      (quest_get_slot, ":quest_giver_troop", "qst_collect_taxes", slot_quest_giver_troop),
+      (quest_slot_eq, "qst_collect_taxes", slot_quest_target_center, "$current_town"),
+      (neg|quest_slot_eq, "qst_collect_taxes", slot_quest_current_state, 4),
+      (str_store_troop_name, s1, ":quest_giver_troop"),
+      (quest_get_slot, reg5, "qst_collect_taxes", slot_quest_current_state),
+    ], "{reg5?Continue collecting taxes:Collect taxes} due to {s1}.",[
+      (jump_to_menu, "mnu_collect_taxes"),
+    ]),
 
-      ("dplmc_village_negotiate",[
-        (party_slot_eq, "$current_town", slot_village_infested_by_bandits, "trp_peasant_woman"),
-        ],
-       "Begin negotiations.",
-       [
-          (jump_to_menu, "mnu_dplmc_riot_negotiate"),
-        ]),
-        ##diplomacy end
+    ("train_peasants_against_bandits_qst",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (check_quest_active, "qst_train_peasants_against_bandits"),
+      (neg|check_quest_concluded, "qst_train_peasants_against_bandits"),
+      (quest_slot_eq, "qst_train_peasants_against_bandits", slot_quest_target_center, "$current_town"),
+    ], "Train the peasants.",[
+      (jump_to_menu, "mnu_train_peasants_against_bandits"),
+    ]),
 
-      ("collect_taxes_qst",[(party_slot_eq, "$current_town", slot_village_state, svs_normal),
-                            (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-                            (check_quest_active, "qst_collect_taxes"),
-                            (quest_get_slot, ":quest_giver_troop", "qst_collect_taxes", slot_quest_giver_troop),
-                            (quest_slot_eq, "qst_collect_taxes", slot_quest_target_center, "$current_town"),
-                            (neg|quest_slot_eq, "qst_collect_taxes", slot_quest_current_state, 4),
-                            (str_store_troop_name, s1, ":quest_giver_troop"),
-                            (quest_get_slot, reg5, "qst_collect_taxes", slot_quest_current_state),
-                            ], "{reg5?Continue collecting taxes:Collect taxes} due to {s1}.",
-       [(jump_to_menu, "mnu_collect_taxes"),]),
+    ("village_hostile_action",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (party_slot_ge, "$current_town", slot_center_player_relation, -1), #relationship check, non-negative
+      (check_quest_active, "qst_hunt_down_fugitive"),
+      (quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_target_center, "$current_town"),
+      (neg|check_quest_concluded, "qst_hunt_down_fugitive"), #SB : other condition
+      (neg|check_quest_succeeded, "qst_hunt_down_fugitive"),
+      (neg|check_quest_failed, "qst_hunt_down_fugitive"),
+      (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
+      (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
+    ],"Demand to meet the family of {s50}.",[
+      (call_script, "script_get_max_skill_of_player_party", "skl_persuasion"),
+      (store_random_in_range, ":random_no", reg0, 100),
+      #persuasion instead of straight out murdering everyone
+      (call_script, "script_party_count_members_with_full_health","p_main_party"),
+      (assign, ":player_party_size", reg0),
+      (call_script, "script_party_count_members_with_full_health","$current_town"),
+      (store_mul, ":villagers_party_size", reg0, 2), #twice the effective size
+      (try_begin),
+        (this_or_next|gt, ":random_no", 40),
+        (gt, ":player_party_size", ":villagers_party_size"),
+        (jump_to_menu, "mnu_village_hunt_down_fugitive_persuaded"),
+      (else_try),
+        (jump_to_menu,"mnu_village_start_attack"),
+      (try_end),
+    ]),
 
-      ("train_peasants_against_bandits_qst",
-       [
-         (party_slot_eq, "$current_town", slot_village_state, svs_normal),
-         (check_quest_active, "qst_train_peasants_against_bandits"),
-         (neg|check_quest_concluded, "qst_train_peasants_against_bandits"),
-         (quest_slot_eq, "qst_train_peasants_against_bandits", slot_quest_target_center, "$current_town"),
-         ], "Train the peasants.",
-       [(jump_to_menu, "mnu_train_peasants_against_bandits"),]),
+    ("village_hostile_action",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (neq, "$players_kingdom", "$g_encountered_party_faction"),
+    ], "Take a hostile action.",[
+      (jump_to_menu,"mnu_village_hostile_action"),
+    ]),
 
-      ("village_hostile_action",[(party_slot_eq, "$current_town", slot_village_state, svs_normal),
-                                 (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-                                 (party_slot_ge, "$current_town", slot_center_player_relation, -1), #relationship check, non-negative
-                                 (check_quest_active, "qst_hunt_down_fugitive"),
-                                 (quest_slot_eq, "qst_hunt_down_fugitive", slot_quest_target_center, "$current_town"),
-                                 (neg|check_quest_concluded, "qst_hunt_down_fugitive"), #SB : other condition
-                                 (neg|check_quest_succeeded, "qst_hunt_down_fugitive"),
-                                 (neg|check_quest_failed, "qst_hunt_down_fugitive"),
-                                 (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
-                                 (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
-								 ], "Demand to meet the family of {s50}.",
-       [
-       (call_script, "script_get_max_skill_of_player_party", "skl_persuasion"),
-       (store_random_in_range, ":random_no", reg0, 100),
-       #persuasion instead of straight out murdering everyone
-       (call_script, "script_party_count_members_with_full_health","p_main_party"),
-       (assign, ":player_party_size", reg0),
-       (call_script, "script_party_count_members_with_full_health","$current_town"),
-       (store_mul, ":villagers_party_size", reg0, 2), #twice the effective size
-       (try_begin),
-         (this_or_next|gt, ":random_no", 40),
-         (gt, ":player_party_size", ":villagers_party_size"),
-         (jump_to_menu, "mnu_village_hunt_down_fugitive_persuaded"),
-       (else_try),
-         (jump_to_menu,"mnu_village_start_attack"),
-       (try_end),
-           ]),
+    ("village_donation",[
+      (troop_slot_ge, "trp_player", slot_troop_renown, 200), #beggars do not donate money
+      (party_slot_eq, "$current_town", slot_village_state, 0),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
+    ],"Make a donation of 2000 denars.",[
+      (party_get_slot, ":prosperity", "$current_town", slot_town_prosperity),
+      (store_troop_gold, ":gold", "trp_player"),
+      (try_begin),
+        (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
+        (try_begin),
+          (ge, ":gold", 2000), ## donation is 2000 Thaler, you can easily change this.
+          (troop_remove_gold, "trp_player", 2000),
+          (display_message,"@You donated 2000 denars.",color_good_news),
+          (try_begin),
+            (is_between, ":prosperity", 0, 20),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 15),
+            (call_script, "script_change_center_prosperity", "$current_town", 8),
+            (display_message,"@Due to the low prosperity of the village, the people are very happy."),
+          (else_try),
+            (is_between, ":prosperity", 20, 40),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 8),
+            (call_script, "script_change_center_prosperity", "$current_town", 6),
+            (display_message,"@Due to the low prosperity of the village, the people are very happy."),
+          (else_try),
+            (is_between, ":prosperity", 40, 60),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 4),
+            (call_script, "script_change_center_prosperity", "$current_town", 3),
+          (else_try),
+            (is_between, ":prosperity", 60, 80),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 2),
+            (call_script, "script_change_center_prosperity", "$current_town", 2),
+            (display_message,"@Due to the high prosperity of the village, your relation improves only small."),
+          (else_try),
+            (call_script, "script_change_player_relation_with_center", "$current_town", 1),
+            (display_message,"@Due to the high prosperity of the village, your relation improves only small."),
+          (try_end),
+          (party_set_slot, "$current_town", slot_donate_party, 1),
+          (call_script, "script_change_troop_renown", "trp_player", 5),
+        (else_try),
+          (display_message,"str_not_enough_gold",0x888888),#grey
+          (call_script, "script_change_troop_renown", "trp_player", -20),
+        (try_end),
+      (else_try),
+        (display_message,"@They didn't accept your donation. You can ask them after some days again.",0xAA0000), #I said "one week". This is controlling by a simple trigger. You must match words with digits. Simple trigger has given at bottom of codes. # Dark red. You can change the colour what you want.
+        (call_script, "script_change_troop_renown", "trp_player", -20),
+      (try_end),
+    ]),
 
-      ("village_hostile_action",[(party_slot_eq, "$current_town", slot_village_state, svs_normal),
-                                 (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-								 (neq, "$players_kingdom", "$g_encountered_party_faction"),
-								 ], "Take a hostile action.",
-       [(jump_to_menu,"mnu_village_hostile_action"),
-           ]),
-
- ("village_donation",[   (troop_slot_ge, "trp_player", slot_troop_renown, 200), #beggars do not donate money
-								(party_slot_eq, "$current_town", slot_village_state, 0),
-                                (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-								(neg|party_slot_eq, "$current_town", slot_donate_party, 1),
-								],"Make a donation of 2000 denars.",
-       [
-        (party_get_slot, ":prosperity", "$current_town", slot_town_prosperity),
-		(store_troop_gold, ":gold", "trp_player"),
-		(try_begin),
-			(neg|party_slot_eq, "$current_town", slot_donate_party, 1),
-			(try_begin),
-				(ge, ":gold", 2000), ## donation is 2000 Thaler, you can easily change this.
-				(troop_remove_gold, "trp_player", 2000),
-        (display_message,"@You donated 2000 denars.",color_good_news),
-				(try_begin),
-					(is_between, ":prosperity", 0, 20),
-					(call_script, "script_change_player_relation_with_center", "$current_town", 15),
-					(call_script, "script_change_center_prosperity", "$current_town", 8),
-          (display_message,"@Due to the low prosperity of the village, the people are very happy."),
-				(else_try),
-					(is_between, ":prosperity", 20, 40),
-					(call_script, "script_change_player_relation_with_center", "$current_town", 8),
-				  (call_script, "script_change_center_prosperity", "$current_town", 6),
-          (display_message,"@Due to the low prosperity of the village, the people are very happy."),
-				(else_try),
-					(is_between, ":prosperity", 40, 60),
-					(call_script, "script_change_player_relation_with_center", "$current_town", 4),
-					(call_script, "script_change_center_prosperity", "$current_town", 3),
-				(else_try),
-					(is_between, ":prosperity", 60, 80),
-					(call_script, "script_change_player_relation_with_center", "$current_town", 2),
-					(call_script, "script_change_center_prosperity", "$current_town", 2),
-          (display_message,"@Due to the high prosperity of the village, your relation improves only small."),
-				(else_try),
-					(call_script, "script_change_player_relation_with_center", "$current_town", 1),
-          (display_message,"@Due to the high prosperity of the village, your relation improves only small."),
-			  (try_end),
-				(party_set_slot, "$current_town", slot_donate_party, 1),
-				(call_script, "script_change_troop_renown", "trp_player", 5),
-			(else_try),
-				(display_message,"str_not_enough_gold",0x888888),#grey
-				(call_script, "script_change_troop_renown", "trp_player", -20),
-			(try_end),
-		(else_try),
-			(display_message,"@They didn't accept your donation. You can ask them after some days again.",0xAA0000), #I said "one week". This is controlling by a simple trigger. You must match words with digits. Simple trigger has given at bottom of codes. # Dark red. You can change the colour what you want.
-			(call_script, "script_change_troop_renown", "trp_player", -20),
-		(try_end),
+    ("village_leave",[],"Leave...",[
+      (try_begin),
+        (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+        (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+        (party_get_slot, ":merchant_troop", "$current_town",slot_town_elder),
+        (gt, ":merchant_troop", 0),
+        (call_script, "script_dplmc_initialize_autoloot", 0),
+        (try_begin),
+          (eq, "$g_dplmc_buy_food_when_leaving", 1),
+          (call_script, "script_dplmc_auto_buy_food", "trp_player", ":merchant_troop"),
+        (try_end),
+        (try_begin),
+          (eq, "$g_dplmc_sell_items_when_leaving", 1),
+          (call_script, "script_dplmc_auto_sell", "trp_player", ":merchant_troop", "$g_dplmc_auto_sell_price_limit", all_items_begin, all_items_end, 2),
+        (try_end),
+      (try_end),
+      (change_screen_return,0),
+	  ]),
+    ("village_cheat",[
+      (ge, "$cheat_mode", 1),
+    ],"Use cheats.",[
+      (jump_to_menu, "mnu_town_cheats"),
+    ]),
 ]),
 
-      # ("village_reports",[(eq, "$cheat_mode", 1),], "{!}CHEAT! Show reports.",
-       # [(jump_to_menu,"mnu_center_reports"),
-           # ]),
-      ("village_leave",[],"Leave...",[(change_screen_return,0),
-	  ##diplomacy start+
-	  ##Importing auto-purchase of food from rubik's Custom Commander
-	  (try_begin),
-		 (party_slot_eq, "$current_town", slot_village_state, svs_normal),
-		 (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-		 (party_get_slot, ":merchant_troop", "$current_town",slot_town_elder),
-		 (gt, ":merchant_troop", 0),
-		 (call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
-		 (try_begin),
-			(eq, "$g_dplmc_buy_food_when_leaving", 1),
-			(call_script, "script_dplmc_auto_buy_food", "trp_player", ":merchant_troop"),
-		 (try_end),
-		 (try_begin),
-			(eq, "$g_dplmc_sell_items_when_leaving", 1),
-			(call_script, "script_dplmc_auto_sell", "trp_player", ":merchant_troop", "$g_dplmc_auto_sell_price_limit", all_items_begin, all_items_end, 2),
-		 (try_end),
-	  (try_end),
-	  ##diplomacy end+
-	  ]),
-      #SB : consolidated cheats
-      ("village_cheat", [(ge, "$cheat_mode", 1),],
-      "Use cheats.",
-      [(jump_to_menu, "mnu_town_cheats"),
-      ]),
-    ],
-  ),
-###rigale chief village work
-  (
-    "village_basic_work",0,
-    "{s3}",
-    "none",
-    [
+("village_basic_work",0,
+  "{s3}",
+  "none",[
 		(str_clear,s1),
 		(str_clear,s3),
 		(try_begin),
@@ -12979,157 +12885,126 @@ game_menus = [
 			(troop_add_items,"trp_player",":item_to_give",1),
 			(str_store_string,s3,"@Here are the results of your hard work: You exhaust yourself, You gain {reg36} xps, you receive some {s1}. You improve your relation with this village. Peasant life is hard, but you feel good."),
 		(try_end),
-	],
-    [
-      ("continue",[],
-      "Continue",[
-        (try_begin),
-          (this_or_next|eq, "$g_player_is_captive", 1),
-          (this_or_next|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
-          (party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-          (change_screen_return),
-        (else_try),
-          (jump_to_menu,"mnu_village"),
-        (try_end),
-            ]),
-      ],
-  ),
-
-  (
-    "village_hostile_action",0,
-    "What hostile action do you have in mind?",
-    "none",
-    [],
-    [
-      ("village_take_food",[
-          (party_slot_eq, "$current_town", slot_village_state, svs_normal),
-          (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-          (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
-          #SB : loop break
-          (assign, ":town_stores_not_empty", max_inventory_items + num_equipment_kinds),
-          (try_for_range, ":slot_no", num_equipment_kinds, ":town_stores_not_empty"),
-            (troop_get_inventory_slot, ":slot_item", ":merchant_troop", ":slot_no"),
-            (ge, ":slot_item", 0),
-            (assign, ":town_stores_not_empty", -1),
-          (try_end),
-          (eq, ":town_stores_not_empty", -1),
-          ],"Force the peasants to give you supplies.",
-       [
-           (jump_to_menu, "mnu_village_take_food_confirm")
-        ]),
-      ("village_steal_cattle",
-       [
-          (party_slot_eq, "$current_town", slot_village_state, svs_normal),
-          (party_slot_eq, "$current_town", slot_village_player_can_not_steal_cattle, 0),
-          (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-          (party_get_slot, ":num_cattle", "$current_town", slot_village_number_of_cattle),
-          (neg|party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
-          (gt, ":num_cattle", 0),
-          ],"Steal cattle.",
-       [
-           (jump_to_menu, "mnu_village_steal_cattle_confirm")
-        ]),
-      ("village_loot",[(party_slot_eq, "$current_town", slot_village_state, svs_normal),
-                       (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-                       (store_faction_of_party, ":center_faction", "$current_town"),
-                       (store_relation, ":reln", "fac_player_supporters_faction", ":center_faction"),
-                       (lt, ":reln", 0),
-                       ],
-       "Loot and burn this village.",
-       [
-#           (party_clear, "$current_town"),
-#           (party_add_template, "$current_town", "pt_villagers_in_raid"),
-           (jump_to_menu, "mnu_village_start_attack"),
-           ]),
-      ("forget_it",[],
-      "Forget it.",[(jump_to_menu,"mnu_village")]),
-    ],
-  ),
-
-  (
-    "recruit_volunteers",0,
-    "{s18}",
-    "none",
-    [(party_get_slot, ":volunteer_troop", "$current_town", slot_center_volunteer_troop_type),
-     (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
-     (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-     (store_troop_gold, ":gold", "trp_player"),
-     (store_div, ":gold_capacity", ":gold", 100),#100 denars per man
-     (assign, ":party_capacity", ":free_capacity"),
-     (val_min, ":party_capacity", ":gold_capacity"),
-     (try_begin),
-       (gt, ":party_capacity", 0),
-       (val_min, ":volunteer_amount", ":party_capacity"),
-     (try_end),
-     (assign, reg5, ":volunteer_amount"),
-     (assign, reg7, 0),
-     (try_begin),
-       (gt, ":volunteer_amount", ":gold_capacity"),
-       (assign, reg7, 1), #not enough money
-     (try_end),
-     (try_begin),
-       (eq, ":volunteer_amount", 0),
-       (str_store_string, s18, "@No one here seems to be willing to join your party."),
-     (else_try),
-       (store_mul, reg6, ":volunteer_amount", 100),#100 denars per man
-       (str_store_troop_name_by_count, s3, ":volunteer_troop", ":volunteer_amount"),
-       (try_begin),
-         (eq, reg5, 1),
-         (str_store_string, s18, "@One {s3} volunteers to follow you."),
-       (else_try),
-         (str_store_string, s18, "@{reg5} {s3} volunteer to follow you."),
-       (try_end),
-       (set_background_mesh, "mesh_pic_recruits"),
-     (try_end),
-    ],
-    [
-
-      ("continue",
-      [
-        (eq, reg7, 0),
-        (eq, reg5, 0),
-      ], #noone willing to join
-      "Continue...",
-      [
-        (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
+	],[
+    ("continue",[],"Continue",[
+      (try_begin),
+        (this_or_next|eq, "$g_player_is_captive", 1),
+        (this_or_next|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
+        (party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+        (change_screen_return),
+      (else_try),
         (jump_to_menu,"mnu_village"),
-      ]),
+      (try_end),
+    ]),
+]),
 
-      ("recruit_them",
-      [
-        (eq, reg7, 0),
-        (gt, reg5, 0),
-      ],
-      "Recruit them ({reg6} denars).",
-      [
-        (call_script, "script_village_recruit_volunteers_recruit"),
+("village_hostile_action",0,
+  "What hostile action do you have in mind?",
+  "none",[
+    (set_background_mesh, "mesh_pic_looted_village"),
+  ],[
+    ("village_take_food",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
+      #SB : loop break
+      (assign, ":town_stores_not_empty", max_inventory_items + num_equipment_kinds),
+      (try_for_range, ":slot_no", num_equipment_kinds, ":town_stores_not_empty"),
+        (troop_get_inventory_slot, ":slot_item", ":merchant_troop", ":slot_no"),
+        (ge, ":slot_item", 0),
+        (assign, ":town_stores_not_empty", -1),
+      (try_end),
+      (eq, ":town_stores_not_empty", -1),
+    ],"Force the peasants to give you supplies.",[
+      (jump_to_menu, "mnu_village_take_food_confirm")
+    ]),
+    ("village_steal_cattle",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (party_slot_eq, "$current_town", slot_village_player_can_not_steal_cattle, 0),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (party_get_slot, ":num_cattle", "$current_town", slot_village_number_of_cattle),
+      (neg|party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+      (gt, ":num_cattle", 0),
+    ],"Steal cattle.",[
+      (jump_to_menu, "mnu_village_steal_cattle_confirm")
+    ]),
+    ("village_loot",[
+      (party_slot_eq, "$current_town", slot_village_state, svs_normal),
+      (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+      (store_faction_of_party, ":center_faction", "$current_town"),
+      (store_relation, ":reln", "fac_player_supporters_faction", ":center_faction"),
+      (lt, ":reln", 0),
+    ],"Loot and burn this village.",[
+      (jump_to_menu, "mnu_village_start_attack"),
+    ]),
+    ("forget_it",[],"Forget it.",[
+      (jump_to_menu,"mnu_village"),
+    ]),
+]),
 
-        (jump_to_menu,"mnu_village"),
-      ]),
+("recruit_volunteers",0,
+  "{s18}",
+  "none",[
+    (party_get_slot, ":volunteer_troop", "$current_town", slot_center_volunteer_troop_type),
+    (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
+    (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
+    (store_troop_gold, ":gold", "trp_player"),
+    (store_div, ":gold_capacity", ":gold", 100),#100 denars per man
+    (assign, ":party_capacity", ":free_capacity"),
+    (val_min, ":party_capacity", ":gold_capacity"),
+    (try_begin),
+      (gt, ":party_capacity", 0),
+      (val_min, ":volunteer_amount", ":party_capacity"),
+    (try_end),
+    (assign, reg5, ":volunteer_amount"),
+    (assign, reg7, 0),
+    (try_begin),
+      (gt, ":volunteer_amount", ":gold_capacity"),
+      (assign, reg7, 1), #not enough money
+    (try_end),
+    (try_begin),
+      (eq, ":volunteer_amount", 0),
+      (str_store_string, s18, "@No one here seems to be willing to join your party."),
+    (else_try),
+      (store_mul, reg6, ":volunteer_amount", 100),#100 denars per man
+      (str_store_troop_name_by_count, s3, ":volunteer_troop", ":volunteer_amount"),
+      (try_begin),
+        (eq, reg5, 1),
+        (str_store_string, s18, "@One {s3} volunteers to follow you."),
+      (else_try),
+        (str_store_string, s18, "@{reg5} {s3} volunteer to follow you."),
+      (try_end),
+      (set_background_mesh, "mesh_pic_recruits"),
+    (try_end),
+  ],[
+    ("continue",[
+      (eq, reg7, 0),
+      (eq, reg5, 0),
+    ],"Continue...",[
+      (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
+      (jump_to_menu,"mnu_village"),
+    ]),
 
-      #SB : disable_menu_option
-      ("continue_not_enough_gold",
-      [
-        (eq, reg7, 1),
-        (disable_menu_option),
-      ],
-      "I don't have enough money...",
-      [
-        (jump_to_menu,"mnu_village"),
-      ]),
+    ("recruit_them",[
+      (eq, reg7, 0),
+      (gt, reg5, 0),
+    ],"Recruit them ({reg6} denars).",[
+      (call_script, "script_village_recruit_volunteers_recruit"),
+      (jump_to_menu,"mnu_village"),
+    ]),
 
-      ("forget_it",
-      [
-      #SB : conditions now not applied
-        # (eq, reg7, 0),
-        # (gt, reg5, 0),
-      ],
-      "Forget it.",
-      [
-        (jump_to_menu,"mnu_village"),
-      ]),
-    ],
-  ),
+    ("continue_not_enough_gold",[
+      (eq, reg7, 1),
+      (disable_menu_option),
+    ],"I don't have enough money...",[
+      (jump_to_menu,"mnu_village"),
+    ]),
+
+    ("forget_it",[
+    ],"Forget it.",[
+      (jump_to_menu,"mnu_village"),
+    ]),
+]),
 
 ("recruit_volunteers_castle",0,
   "{s18}",
@@ -13192,108 +13067,91 @@ game_menus = [
   ]),
 ]),
 
-  (
-    "village_hunt_down_fugitive_defeated",0,
-    "A heavy blow from the fugitive sends you to the ground, and your vision spins and goes dark.\
- Time passes. When you open your eyes again you find yourself battered and bloody,\
- but luckily none of the wounds appear to be lethal.",
-    "none",
-    [
-      (call_script, "script_fail_quest", "qst_hunt_down_fugitive"),
-    ],
-    [
-      ("continue",[],"Continue...",[(jump_to_menu, "mnu_village"),
-      #SB : renown loss for single target
+("village_hunt_down_fugitive_defeated",0,
+  "A heavy blow from the fugitive sends you to the ground, and your vision spins and goes dark. Time passes. When you open your eyes again you find yourself battered and bloody, but luckily none of the wounds appear to be lethal.",
+  "none",[
+    (call_script, "script_fail_quest", "qst_hunt_down_fugitive"),
+  ],[
+    ("continue",[],"Continue...",[
+      (jump_to_menu, "mnu_village"),
       (call_script, "script_change_troop_renown", "trp_player", -2),
-      # (party_remove_members, "$current_town", "trp_fugitive", 1),
-      ]),
-    ],
-  ),
+    ]),
+]),
 
-  (
-    "village_hunt_down_fugitive_persuaded",0,
- "As the party member with the highest persuasion, {reg3?you:{s3}} managed to cajole the location of {s50} from his tight-lipped relatives. Backed with superior force of arms, your just argument seemed to take effect and the villagers grudgingly participate in the manhunt for the fugitive.\
- {reg4?But word of you arrival has reached the fugitive and he appears to have taken his own life:Within the hour, you've secured the fugitive on behalf of {s4}}.",
-    "none",
-    [   (call_script, "script_get_max_skill_of_player_party", "skl_persuasion"),
-        (assign, ":max_skill_owner", reg1),
-        (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
-        (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
+("village_hunt_down_fugitive_persuaded",0,
+ "As the party member with the highest persuasion, {reg3?you:{s3}} managed to cajole the location of {s50} from his tight-lipped relatives. Backed with superior force of arms, your just argument seemed to take effect and the villagers grudgingly participate in the manhunt for the fugitive. {reg4?But word of you arrival has reached the fugitive and he appears to have taken his own life:Within the hour, you've secured the fugitive on behalf of {s4}}.",
+  "none",[
+    (call_script, "script_get_max_skill_of_player_party", "skl_persuasion"),
+    (assign, ":max_skill_owner", reg1),
+    (quest_get_slot, ":quest_target_dna", "qst_hunt_down_fugitive", slot_quest_target_dna),
+    (call_script, "script_get_name_from_dna_to_s50", ":quest_target_dna"),
 
-         #SB : tableau at bottom
-         (try_begin),
-           (eq, ":max_skill_owner", "trp_player"),
-           (assign, reg3, 1),
-         (else_try),
-           (assign, reg3, 0),
-           (str_store_troop_name, s3, ":max_skill_owner"),
-           (call_script, "script_change_troop_renown", ":max_skill_owner", dplmc_companion_skill_renown),
-         (try_end),
+      #SB : tableau at bottom
+      (try_begin),
+        (eq, ":max_skill_owner", "trp_player"),
+        (assign, reg3, 1),
+      (else_try),
+        (assign, reg3, 0),
+        (str_store_troop_name, s3, ":max_skill_owner"),
+        (call_script, "script_change_troop_renown", ":max_skill_owner", dplmc_companion_skill_renown),
+      (try_end),
 
-        (set_fixed_point_multiplier, 100),
-        (position_set_x, pos0, 70),
-        (position_set_y, pos0, 5),
-        (position_set_z, pos0, 75),
-        (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", ":max_skill_owner", pos0),
-        (store_random_in_range, reg4, 0, 2), #TODO add some conditions, renown, time of day, etc
-        (try_begin),
-          (eq, reg4, 0),
-          (party_force_add_prisoners, "p_main_party", "trp_fugitive", 1),
-          (quest_get_slot, ":quest_giver_troop", "qst_hunt_down_fugitive", slot_quest_giver_troop),
-          (str_store_troop_name, s4, ":quest_giver_troop"),
-          (quest_set_slot, "qst_hunt_down_fugitive", slot_quest_current_state, 2),
-        (else_try), #killed, player can claim credit
-          (quest_set_slot, "qst_hunt_down_fugitive", slot_quest_current_state, 1),
-        (try_end),
-    ],
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 70),
+    (position_set_y, pos0, 5),
+    (position_set_z, pos0, 75),
+    (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", ":max_skill_owner", pos0),
+    (store_random_in_range, reg4, 0, 2), #TODO add some conditions, renown, time of day, etc
+    (try_begin),
+      (eq, reg4, 0),
+      (party_force_add_prisoners, "p_main_party", "trp_fugitive", 1),
+      (quest_get_slot, ":quest_giver_troop", "qst_hunt_down_fugitive", slot_quest_giver_troop),
+      (str_store_troop_name, s4, ":quest_giver_troop"),
+      (quest_set_slot, "qst_hunt_down_fugitive", slot_quest_current_state, 2),
+    (else_try), #killed, player can claim credit
+      (quest_set_slot, "qst_hunt_down_fugitive", slot_quest_current_state, 1),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (call_script, "script_succeed_quest", "qst_hunt_down_fugitive"),
+      (jump_to_menu, "mnu_village"),
+    ]),
+]),
 
-    [
-      ("continue",[],"Continue...",[
-        (call_script, "script_succeed_quest", "qst_hunt_down_fugitive"),
-        (jump_to_menu, "mnu_village"),
-
-      ]),
-    ],
-  ),
-
-  (
-    "village_infest_bandits_result",mnf_scale_picture,
-    "{s9}",
-    "none",
-    [(try_begin),
-       (eq, "$g_battle_result", 1),
-       (jump_to_menu, "mnu_village_infestation_removed"),
-     (else_try),
-       (str_store_string, s9, "@Try as you might, you could not defeat the bandits.\
- Infuriated, they raze the village to the ground to punish the peasants,\
- and then leave the burning wasteland behind to find greener pastures to plunder."),
-       (set_background_mesh, "mesh_pic_looted_village"),
-     (try_end),
-    ],
-    [
-      ("continue",[],"Continue...",
-       [(party_set_slot, "$g_encountered_party", slot_village_infested_by_bandits, 0),
-        (call_script, "script_village_set_state",  "$current_town", svs_looted),
-        (party_set_slot, "$current_town", slot_village_raid_progress, 0),
-        (party_set_slot, "$current_town", slot_village_recover_progress, 0),
-        (try_begin),
-          (check_quest_active, "qst_eliminate_bandits_infesting_village"),
-          (quest_slot_eq, "qst_eliminate_bandits_infesting_village", slot_quest_target_center, "$g_encountered_party"),
-          (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -5),
-          (call_script, "script_fail_quest", "qst_eliminate_bandits_infesting_village"),
-          (call_script, "script_end_quest", "qst_eliminate_bandits_infesting_village"),
-        (else_try),
-          (check_quest_active, "qst_deal_with_bandits_at_lords_village"),
-          (quest_slot_eq, "qst_deal_with_bandits_at_lords_village", slot_quest_target_center, "$g_encountered_party"),
-          (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -4),
-          (call_script, "script_fail_quest", "qst_deal_with_bandits_at_lords_village"),
-          (call_script, "script_end_quest", "qst_deal_with_bandits_at_lords_village"),
-        (else_try),
-          (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -3),
-        (try_end),
-        (jump_to_menu, "mnu_village"),]),
-    ],
-  ),
+("village_infest_bandits_result",mnf_scale_picture,
+  "{s9}",
+  "none",[
+    (try_begin),
+      (eq, "$g_battle_result", 1),
+      (jump_to_menu, "mnu_village_infestation_removed"),
+    (else_try),
+      (str_store_string, s9, "@Try as you might, you could not defeat the bandits. Infuriated, they raze the village to the ground to punish the peasants, and then leave the burning wasteland behind to find greener pastures to plunder."),
+      (set_background_mesh, "mesh_pic_looted_village"),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (party_set_slot, "$g_encountered_party", slot_village_infested_by_bandits, 0),
+      (call_script, "script_village_set_state",  "$current_town", svs_looted),
+      (party_set_slot, "$current_town", slot_village_raid_progress, 0),
+      (party_set_slot, "$current_town", slot_village_recover_progress, 0),
+      (try_begin),
+        (check_quest_active, "qst_eliminate_bandits_infesting_village"),
+        (quest_slot_eq, "qst_eliminate_bandits_infesting_village", slot_quest_target_center, "$g_encountered_party"),
+        (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -5),
+        (call_script, "script_fail_quest", "qst_eliminate_bandits_infesting_village"),
+        (call_script, "script_end_quest", "qst_eliminate_bandits_infesting_village"),
+      (else_try),
+        (check_quest_active, "qst_deal_with_bandits_at_lords_village"),
+        (quest_slot_eq, "qst_deal_with_bandits_at_lords_village", slot_quest_target_center, "$g_encountered_party"),
+        (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -4),
+        (call_script, "script_fail_quest", "qst_deal_with_bandits_at_lords_village"),
+        (call_script, "script_end_quest", "qst_deal_with_bandits_at_lords_village"),
+      (else_try),
+        (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -3),
+      (try_end),
+      (jump_to_menu, "mnu_village"),
+    ]),
+]),
 
 ("village_infestation_removed",mnf_disable_all_keys,
   "In a battle worthy of song, you and your men drive the bandits out of the village, making it safe once more."
@@ -39022,10 +38880,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_messenger"),
     (try_begin),
       (lt, "$player_honor", 10),
-      (str_store_string, s22, "@Parody^^You've heard that a famous poet has composed an epigram about your life. It parodies your dishonorable life."),
+      (store_random_in_range, ":string", "str_event_01_normal_1", "str_event_01_normal_end"),
+      (str_store_string, s22, ":string"),
       (assign, "$temp", 1),
 	  (else_try),
-      (str_store_string, s22, "@Song of praise^^You've heard that a famous poet has composed a song about your noble deeds."),
+      (store_random_in_range, ":string", "str_event_01_normal_1_1", "str_event_01_normal_1_end"),
+      (str_store_string, s22, ":string"),
       (assign, "$temp", 2),
 	  (try_end),
   ],[
@@ -39046,13 +38906,25 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
     ("choice_03_2nor",[
       (store_troop_gold, ":gold", "trp_player"),
-      (ge, ":gold", 300),
+      (ge, ":gold", 1000),
       (eq, "$temp", 2),
-    ],"Reward him with 300 denars. Let this song be played across the land.",[
-      (troop_remove_gold, "trp_player", 300),
+    ],"Reward him with 1,000 denars. Let this song be played across the land.",[
+      (troop_remove_gold, "trp_player", 1000),
       (call_script, "script_change_troop_renown", "trp_player", 9),
       (str_clear,s1),
       (str_store_string,s1,"@Your fame grows higher."),
+      (display_message, "@{s1}",message_positive),
+      (change_screen_map),
+    ]),
+    ("choice_03_2nor",[
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge, ":gold", 1000),
+      (eq, "$temp", 1),
+    ],"Bribe him with 1,000 denars to stop writing about you.",[
+      (troop_remove_gold, "trp_player", 1000),
+      (call_script, "script_change_troop_renown", "trp_player", -10),
+      (str_clear,s1),
+      (str_store_string,s1,"@He takes the money, but continues writing."),
       (display_message, "@{s1}",message_positive),
       (change_screen_map),
     ]),
@@ -39113,17 +38985,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_family"),
     (str_clear,s2),
-	  (store_random_in_range, ":r", 0, 3),
-	  (try_begin),
-		  (eq, ":r", 0),
-		  (str_store_string,s2,"@A country farmer stands before you on the road with a weeping girl behind him. He points his finger accusingly at one of your soldiers, saying that he raped his daughter and must be punished.^The soldiers respons to the accusations, that he had just taken his daughter because the farmer attacked him while he tried to confiscate goods for the army."),
-	  (else_try),
-		  (eq, ":r", 1),
-		  (str_store_string,s2,"@A peasant stands before you on the road. He points his finger accusingly at one of your soldiers and says that he has stolen his ox.^The soldiers respons to the accusations, that he had just confiscated the ox as law allows it."),
-	  (else_try),
-		  (eq, ":r", 2),
-		  (str_store_string,s2,"@A gardener stands before you on the road and says that one of your soldiers has stolen fruits and vegetables from his garden.^The soldiers respons to the accusations, that he had just confiscated the fruits as law allows it."),
-	  (try_end),
+	  (store_random_in_range, ":string", "str_event_05_normal_1", "str_event_05_normal_end"),
+    (str_store_string, s2, ":string"),
   ],[
     ("choice_13_1nor",[],"Punish the soldier.",[
       (call_script, "script_change_player_party_morale", -5),
@@ -39147,17 +39010,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_family"),
     (str_clear,s2),
-	  (store_random_in_range, ":r", 0, 3),
-	  (try_begin),
-      (eq, ":r", 0),
-      (str_store_string,s2,"@A soldiers returns from his mission to fill the water reserves wounded and without any water. He says that a country farmer has attacked him and prevented him to complete the mission. The soldier known to be a liar and heavy drinker."),
-	  (else_try),
-      (eq, ":r", 1),
-      (str_store_string,s2,"@One of your soldiers accuses a local peasant to have offended and attacked him with a wooden stick. The soldier is known to be a trustworthy man."),
-	  (else_try),
-      (eq, ":r", 2),
-      (str_store_string,s2,"@An officer you sent to buy some supplies of daily need has accused a local gardener to have offended him. The officer said to the gardener he should go out of his way due to the peasant standing in his way. But instead of making room, the gardener throw stones at the officer and attacked him with a wooden stick."),
-	  (try_end),
+	  (store_random_in_range, ":string", "str_event_05_normal_1_1", "str_event_05_normal_1_end"),
+    (str_store_string, s2, ":string"),
   ],[
     ("choice_13_1nor",[],"Punish the soldier, he is lying and an idiot.",[
       (call_script, "script_change_player_party_morale", -5),

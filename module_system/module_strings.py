@@ -9407,6 +9407,31 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("minor_faction_merchant_talk_4", "Ah, very good. I have various things to offer."),
 ("minor_faction_merchant_talk_end", "end"),
 
+
+("event_01_normal_1", "Parody^^You've heard that a famous poet has composed an epigram about your life. It parodies your dishonorable life."),
+("event_01_normal_2", "Satire^^A renowned poet has written a satirical epigram about your life, mocking your dishonorable actions."),
+("event_01_normal_3", "Lampoon^^You've discovered that a celebrated poet has crafted an epigram about your life, lampooning your disgraceful behavior."),
+("event_01_normal_4", "Mockery^^A famous poet has created an epigram about your life, ridiculing your shameful past."),
+("event_01_normal_5", "Ridicule^^You've been told that a well-known poet has penned an epigram about your life, ridiculing your dishonorable actions."),
+("event_01_normal_end", "end"),
+
+("event_01_normal_1_1", "Song of praise^^You've heard that a famous poet has composed a song about your noble deeds."),
+("event_01_normal_1_2", "Ode^^A renowned poet has written an ode celebrating your noble actions."),
+("event_01_normal_1_3", "Tribute^^You've discovered that a celebrated poet has crafted a tribute in song, honoring your honorable deeds."),
+("event_01_normal_1_4", "Eulogy^^A famous poet has created a eulogy in your name, praising your virtuous past."),
+("event_01_normal_1_5", "Homage^^You've been told that a well-known poet has penned a song paying homage to your noble achievements."),
+("event_01_normal_1_end", "end"),
+
+("event_05_normal_1", "A country farmer stands before you on the road with a weeping girl behind him. He points his finger accusingly at one of your soldiers, saying that he raped his daughter and must be punished.^The soldier responds to the accusations, saying that he had just taken his daughter because the farmer attacked him while he tried to confiscate goods for the army."),
+("event_05_normal_2", "A peasant stands before you on the road. He points his finger accusingly at one of your soldiers and says that he has stolen his ox.^The soldier responds to the accusations, saying that he had just confiscated the ox as law allows it."),
+("event_05_normal_3", "A gardener stands before you on the road and says that one of your soldiers has stolen fruits and vegetables from his garden.^The soldier responds to the accusations, saying that he had just confiscated the fruits as law allows it."),
+("event_05_normal_end", "end"),
+
+("event_05_normal_1_1", "A soldier returns from his mission to fill the water reserves wounded and without any water. He says that a country farmer attacked him and prevented him from completing the mission. The soldier is known to be a liar and heavy drinker."),
+("event_05_normal_1_2", "One of your soldiers accuses a local peasant of having offended and attacked him with a wooden stick. The soldier is known to be a trustworthy man."),
+("event_05_normal_1_3", "An officer you sent to buy some supplies of daily need has accused a local gardener of having offended him. The officer said to the gardener he should go out of his way due to the peasant standing in his way. But instead of making room, the gardener threw stones at the officer and attacked him with a wooden stick."),
+("event_05_normal_1_end", "end"),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

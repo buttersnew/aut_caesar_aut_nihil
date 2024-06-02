@@ -12424,7 +12424,7 @@ simple_triggers = [
     (troop_slot_ge, "trp_argentarius", slot_troop_met, 1),
     (quest_slot_eq, "qst_investment", slot_quest_dont_give_again_remaining_days, 0),
     (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
-    (troop_slot_ge, "trp_player", slot_troop_renown, 199),
+    (troop_slot_ge, "trp_player", slot_troop_renown, 200),
     (store_relation, ":relation", "fac_kingdom_7", "fac_player_faction"),
     (this_or_next|ge, ":relation", 0),
     (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
