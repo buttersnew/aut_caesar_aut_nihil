@@ -6352,9 +6352,10 @@ common_battle_victory_display = (
     ])
 
 common_fieldbattle_refill_ammo = (##changed to 8 min
-  60*8, 0, 0, [(store_mission_timer_a, ":time"),
-  (gt, ":time", 240),],#let some time pass
-  [
+  60*6, 0, 0, [
+    (store_mission_timer_a, ":time"),
+    (gt, ":time", 240),#let some time pass
+  ],[
     (try_for_agents,":cur_agent"),
         (agent_is_active, ":cur_agent"),
         (agent_is_alive, ":cur_agent"),
@@ -6364,8 +6365,8 @@ common_fieldbattle_refill_ammo = (##changed to 8 min
         (eq, ":action", 0), #not fighting with weapon
         (agent_refill_ammo, ":cur_agent"),
     (try_end),
-    (display_message, "@Soldiers are picking up missles from the ground."),
-    ])
+    (display_message, "@Soldiers are picking up missles from the ground.", message_alert),
+  ])
 
 common_siege_check_defeat_condition = (
   1, 4,
@@ -8882,179 +8883,173 @@ mission_templates = [
 ),
 
 ("lead_charge_large",mtf_battle_mode|mtf_synch_inventory,charge,
-    "You lead your men to battle.",
-    [
-     (0,mtef_defenders|mtef_team_0,0,aif_start_alarmed,0,[]),
-     (1,mtef_defenders|mtef_team_0,0,aif_start_alarmed,5,[]),
-     (2,mtef_team_2,0,aif_start_alarmed,0,[]), #not used
-     (3,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
-     (4,mtef_attackers|mtef_team_1,0,aif_start_alarmed,5,[]),
- #4 spawn points for infantry and 4 for cav and 4 for archers, one spawn is for everyone
-	 ##65/13 = 5, so 13 entries for every team
-     (5,mtef_attackers|mtef_team_1|mtef_infantry_first,0,aif_start_alarmed,5,[]),  #
-     (6,mtef_attackers|mtef_team_1|mtef_infantry_first,0,aif_start_alarmed,5,[]),
-     (7,mtef_attackers|mtef_team_1|mtef_infantry_first,0,aif_start_alarmed,5,[]),
-     (8,mtef_attackers|mtef_team_1|mtef_infantry_first,0,aif_start_alarmed,5,[]),  #
+  "You lead your men to battle.",[
+    (0,mtef_defenders|mtef_team_0,0,aif_start_alarmed,0,[]),
+    (1,mtef_defenders|mtef_team_0,0,aif_start_alarmed,5,[]),
+    (2,mtef_team_2,0,aif_start_alarmed,0,[]), #not used
+    (3,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
+    (4,mtef_attackers|mtef_team_1,0,aif_start_alarmed,5,[]),
+    #4 spawn points for infantry and 4 for cav and 4 for archers, one spawn is for everyone
+    ##65/13 = 5, so 13 entries for every team
+    (5,mtef_attackers|mtef_team_1|mtef_infantry_first,0,aif_start_alarmed,5,[]),  #
+    (6,mtef_attackers|mtef_team_1|mtef_infantry_first,0,aif_start_alarmed,5,[]),
+    (7,mtef_attackers|mtef_team_1|mtef_infantry_first,0,aif_start_alarmed,5,[]),
+    (8,mtef_attackers|mtef_team_1|mtef_infantry_first,0,aif_start_alarmed,5,[]),  #
 
-     (9,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed, 5,[]),  #
-     (10,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,5,[]),  #
-     (11,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
-     (12,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
-	 #
-     (13,mtef_attackers|mtef_team_1|mtef_archers_first,0,aif_start_alarmed,5,[]),
-     (14,mtef_attackers|mtef_team_1|mtef_archers_first,0,aif_start_alarmed,5,[]),  #
-     (15,mtef_attackers|mtef_team_1|mtef_archers_first,0,aif_start_alarmed,5,[]),
-     (16,mtef_attackers|mtef_team_1|mtef_archers_first,0,aif_start_alarmed,5,[]),
+    (9,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed, 5,[]),  #
+    (10,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,5,[]),  #
+    (11,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
+    (12,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
+    #
+    (13,mtef_attackers|mtef_team_1|mtef_archers_first,0,aif_start_alarmed,5,[]),
+    (14,mtef_attackers|mtef_team_1|mtef_archers_first,0,aif_start_alarmed,5,[]),  #
+    (15,mtef_attackers|mtef_team_1|mtef_archers_first,0,aif_start_alarmed,5,[]),
+    (16,mtef_attackers|mtef_team_1|mtef_archers_first,0,aif_start_alarmed,5,[]),
 
-     (17,mtef_defenders|mtef_team_0|mtef_infantry_first,0,aif_start_alarmed,5,[]),
-     (18,mtef_defenders|mtef_team_0|mtef_infantry_first,0,aif_start_alarmed,5,[]),
-     (19,mtef_defenders|mtef_team_0|mtef_infantry_first,0,aif_start_alarmed,5,[]),
-     (20,mtef_defenders|mtef_team_0|mtef_infantry_first,0,aif_start_alarmed,5,[]),
+    (17,mtef_defenders|mtef_team_0|mtef_infantry_first,0,aif_start_alarmed,5,[]),
+    (18,mtef_defenders|mtef_team_0|mtef_infantry_first,0,aif_start_alarmed,5,[]),
+    (19,mtef_defenders|mtef_team_0|mtef_infantry_first,0,aif_start_alarmed,5,[]),
+    (20,mtef_defenders|mtef_team_0|mtef_infantry_first,0,aif_start_alarmed,5,[]),
 
-     (21,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
-     (22,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
-     (23,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
-     (24,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
+    (21,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
+    (22,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
+    (23,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
+    (24,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,5,[]),
 
-     (25,mtef_defenders|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
-     (26,mtef_defenders|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
-     (27,mtef_defenders|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
-     (28,mtef_defenders|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
-##I now remove those additional reinforcements spawn points as AI is having problems with it
-	 	 ##additional cav reinforcement spawnpoints
-     # (29,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
-     # (30,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
-     ], p_wetter + storms +global_common_triggers+
-    [
-      cannot_spawn_commoners,
+    (25,mtef_defenders|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
+    (26,mtef_defenders|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
+    (27,mtef_defenders|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
+    (28,mtef_defenders|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
+    ##I now remove those additional reinforcements spawn points as AI is having problems with it
+    ##additional cav reinforcement spawnpoints
+    # (29,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
+    # (30,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
+  ], p_wetter + storms + global_common_triggers +
+  [
+    cannot_spawn_commoners,
+
     (ti_before_mission_start, 0, ti_once,
     [],[
-    (try_begin),
-        (ge, "$cheat_mode", 1),
-        (display_message, "@Set screen colour."),
-    (try_end),
-    (mission_cam_set_screen_color, 0xFF000000),
-    (mission_cam_animate_to_screen_color, 0x00000000, 2000),#25% alpha
+      (try_begin),
+          (ge, "$cheat_mode", 1),
+          (display_message, "@Set screen colour."),
+      (try_end),
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 2000),#25% alpha
     ]),
+
     improved_lightning,
-      common_battle_init_banner,
-	  wounds_vc,
-      common_battle_player_fallen_renown_lose,
-      common_fieldbattle_refill_ammo,
-        #####hopefull fix dismounting cav
-      (2, 0, ti_once,
-        [
-       (store_mission_timer_a, reg1),
-       (gt, reg1, 2),],[
-       (set_show_messages, 0),
-       (try_for_range, ":team", 0, 4),
-         (team_give_order, ":team", grc_cavalry, mordr_mount),
-          (team_give_order, ":team", sdt_harcher, mordr_mount),
-       (try_end),
-       (set_show_messages, 1),
-        ]),
+    common_battle_init_banner,
+    wounds_vc,
+    common_battle_player_fallen_renown_lose,
+    common_fieldbattle_refill_ammo,
 
-      common_battle_tab_press,
+    (2, 0, ti_once,[#####hopefull fix dismounting cav
+      (store_mission_timer_a, reg1),
+      (gt, reg1, 2),],[
+      (set_show_messages, 0),
+      (try_for_range, ":team", 0, 4),
+        (team_give_order, ":team", grc_cavalry, mordr_mount),
+        (team_give_order, ":team", sdt_harcher, mordr_mount),
+      (try_end),
+      (set_show_messages, 1),
+    ]),
 
-      (ti_question_answered, 0, 0, [],
-       [(store_trigger_param_1,":answer"),
-        (eq,":answer",0),
-        (assign, "$pin_player_fallen", 0),
-        (try_begin),
-          (store_mission_timer_a, ":elapsed_time"),
-          (gt, ":elapsed_time", 20),
-          (str_store_string, s5, "str_retreat"),
-          (call_script, "script_simulate_retreat", 10, 20, 1),
-        (try_end),
+    common_battle_tab_press,
+
+    (ti_question_answered, 0, 0, [],[
+      (store_trigger_param_1,":answer"),
+      (eq,":answer",0),
+      (assign, "$pin_player_fallen", 0),
+      (try_begin),
+        (store_mission_timer_a, ":elapsed_time"),
+        (gt, ":elapsed_time", 20),
+        (str_store_string, s5, "str_retreat"),
+        (call_script, "script_simulate_retreat", 10, 20, 1),
+      (try_end),
+      (call_script, "script_count_mission_casualties_from_agents"),
+      (finish_mission,0),
+    ]),
+
+    (ti_before_mission_start, 0, 0, [],[
+      (team_set_relation, 0, 2, 1),
+      (team_set_relation, 1, 3, 1),
+      (call_script, "script_place_player_banner_near_inventory_bms"),
+
+      (party_clear, "p_routed_enemies"),
+
+      (assign, "$g_latest_order_1", 1),
+      (assign, "$g_latest_order_2", 1),
+      (assign, "$g_latest_order_3", 1),
+      (assign, "$g_latest_order_4", 1),
+
+      (assign,"$g_battle_won",0),
+      (assign,"$defender_reinforcement_stage",0),
+      (assign,"$attacker_reinforcement_stage",0),
+    ]),
+
+    (0, 0, ti_once, [],[
+      (call_script, "script_place_player_banner_near_inventory"),
+      (call_script, "script_combat_music_set_situation_with_culture"),
+      ##diplomacy begin
+      (call_script, "script_init_death_cam"),
+      # (assign, "$g_dplmc_charge_when_dead", 0),
+      ##diplomacy end
+    ]),
+    common_music_situation_update,
+    common_battle_check_friendly_kills,
+    (1, 0, 5, [
+      (lt,"$defender_reinforcement_stage","$defender_threshold"),
+      (store_mission_timer_a,":mission_time"),
+      (ge,":mission_time",10),
+      (store_normalized_team_count,":num_defenders", 0),
+      (lt,":num_defenders",51)
+    ],[
+      (add_reinforcements_to_entry,0,29),#less reinforcements
+      (val_add,"$defender_reinforcement_stage",1),
+    ]),
+
+    (1, 0, 5, [
+      (lt,"$attacker_reinforcement_stage","$defender_threshold"),
+      (store_mission_timer_a,":mission_time"),
+      (ge,":mission_time",10),
+      (store_normalized_team_count,":num_attackers", 1),
+      (lt,":num_attackers",51),
+    ],[
+      (add_reinforcements_to_entry,3,29),#less reinforcements
+      (val_add,"$attacker_reinforcement_stage",1),
+    ]),
+
+    (1, 4, 0,[
+      (main_hero_fallen),
+    ],[
+      (try_begin),
+        (call_script, "script_cf_dplmc_battle_continuation"),
+      (else_try),
+        (assign, "$pin_player_fallen", 1),
+        (str_store_string, s5, "str_retreat"),
+        (call_script, "script_simulate_retreat", 10, 20, 1),
+        (assign, "$g_battle_result", -1),
+        (set_mission_result,-1),
         (call_script, "script_count_mission_casualties_from_agents"),
-        (finish_mission,0),]),
+        (finish_mission,0),
+      (try_end),
+    ]),
 
-      (ti_before_mission_start, 0, 0, [],
-       [
-         (team_set_relation, 0, 2, 1),
-         (team_set_relation, 1, 3, 1),
-         (call_script, "script_place_player_banner_near_inventory_bms"),
-
-         (party_clear, "p_routed_enemies"),
-
-         (assign, "$g_latest_order_1", 1),
-         (assign, "$g_latest_order_2", 1),
-         (assign, "$g_latest_order_3", 1),
-         (assign, "$g_latest_order_4", 1),
-
-        (assign,"$g_battle_won",0),
-        (assign,"$defender_reinforcement_stage",0),
-        (assign,"$attacker_reinforcement_stage",0),
-         ]),
-
-         (0, 0, ti_once, [],
-       [
-        (call_script, "script_place_player_banner_near_inventory"),
-        (call_script, "script_combat_music_set_situation_with_culture"),
-        ##diplomacy begin
-        (call_script, "script_init_death_cam"),
-        # (assign, "$g_dplmc_charge_when_dead", 0),
-        ##diplomacy end
-         ]),
-      common_music_situation_update,
-      common_battle_check_friendly_kills,
-      (1, 0, 5, [
-        (lt,"$defender_reinforcement_stage","$defender_threshold"),
-        (store_mission_timer_a,":mission_time"),
-        (ge,":mission_time",10),
-        (store_normalized_team_count,":num_defenders", 0),
-        (lt,":num_defenders",51)],
-           [
-		   (add_reinforcements_to_entry,0,29),#less reinforcements
-		   (val_add,"$defender_reinforcement_stage",1)]),
-
-      (1, 0, 5, [(lt,"$attacker_reinforcement_stage","$defender_threshold"),
-                 (store_mission_timer_a,":mission_time"),
-                 (ge,":mission_time",10),
-                 (store_normalized_team_count,":num_attackers", 1),
-                 (lt,":num_attackers",51)],
-           [
-		   (add_reinforcements_to_entry,3,29),#less reinforcements
-		   (val_add,"$attacker_reinforcement_stage",1)]),
-
-
-      (1, 4, 0,
-      [(main_hero_fallen)],
-          [ ##diplomacy begin
-              (try_begin),
-                (call_script, "script_cf_dplmc_battle_continuation"),
-              (else_try),
-                ##diplomacy end
-                (assign, "$pin_player_fallen", 1),
-
-
-                (str_store_string, s5, "str_retreat"),
-                (call_script, "script_simulate_retreat", 10, 20, 1),
-                (assign, "$g_battle_result", -1),
-                (set_mission_result,-1),
-                (call_script, "script_count_mission_casualties_from_agents"),
-                (finish_mission,0),
-                ##diplomacy begin
-              (try_end),
-              ##diplomacy end
-            ]),
-      common_battle_victory_display,
-      common_battle_check_victory_condition,
-      common_battle_inventory,
-      common_battle_order_panel_tick,
-      #skirmish_archer_ai,
-    ]
-    + improved_horse_archer_ai
-    + theoris_decapitation
-    + jacobhinds_morale_triggers
-    + ai_horn
-    + camera_controls
-    + utility_triggers + battle_panel_triggers + extended_battle_menu + common_division_data + division_order_processing + real_deployment + formations_triggers + AI_triggers + morale_triggers
-    ##diplomacy begin
-    + dplmc_battle_mode_triggers
-    ##diplomacy end
-    + auxiliary_player
-  #  + freelancer_fest_teams
+    common_battle_victory_display,
+    common_battle_check_victory_condition,
+    common_battle_inventory,
+    common_battle_order_panel_tick,
+    #skirmish_archer_ai,
+  ]
+  + improved_horse_archer_ai
+  + theoris_decapitation
+  + jacobhinds_morale_triggers
+  + ai_horn
+  + camera_controls
+  + utility_triggers + battle_panel_triggers + extended_battle_menu + common_division_data + division_order_processing + real_deployment + formations_triggers + AI_triggers + morale_triggers
+  + dplmc_battle_mode_triggers
+  + auxiliary_player
 ),
 
 ("lead_charge_ambush",mtf_battle_mode|mtf_synch_inventory,charge,
