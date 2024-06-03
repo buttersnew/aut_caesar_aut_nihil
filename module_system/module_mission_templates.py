@@ -1905,7 +1905,7 @@ thunder_storm =	[		# 4 trigger
 
   (0, 0, ti_once, [#preparations 2
   ],[
-    (display_message, "@Thunderstorm. Check I"),
+    # (display_message, "@Thunderstorm. Check I"),
     (assign, "$lightning_cycle", -1),
     (try_begin),
         (party_get_current_terrain, ":terrain","p_main_party"),
@@ -6012,15 +6012,11 @@ common_arena_init_banner = (ti_on_agent_spawn, 0, 0, [],[
     (call_script, "script_troop_agent_set_banner", "tableau_game_troop_label_banner", ":agent_no", -1),
   ])
 
-common_arena_fight_tab_press = (
-  ti_tab_pressed, 0, 0, [],
-  [
+common_arena_fight_tab_press = (ti_tab_pressed, 0, 0, [],[
     (question_box,"str_give_up_fight"),
-    ])
+  ])
 
-common_custom_battle_tab_press = (
-  ti_tab_pressed, 0, 0, [],
-  [
+common_custom_battle_tab_press = (ti_tab_pressed, 0, 0, [],[
     (try_begin),
       (neq, "$g_battle_result", 0),
       (call_script, "script_custom_battle_end"),
@@ -6028,11 +6024,9 @@ common_custom_battle_tab_press = (
     (else_try),
       (question_box,"str_give_up_fight"),
     (try_end),
-    ])
+  ])
 
-custom_battle_check_victory_condition = (
-  1, 60, ti_once,
-  [
+custom_battle_check_victory_condition = (1, 60, ti_once,[
     (store_mission_timer_a,reg(1)),
     (ge,reg(1),10),
     (all_enemies_defeated, 2),
@@ -6044,18 +6038,12 @@ custom_battle_check_victory_condition = (
     (display_message,"str_msg_battle_won"),
     (assign, "$g_battle_won",1),
     (assign, "$g_battle_result", 1),
-    ],
-  [
+  ],[
     (call_script, "script_custom_battle_end"),
     (finish_mission, 1),
-    ])
+  ])
 
-custom_battle_check_defeat_condition = (
-  1, 4,
-##diplomacy begin
-0,
-##diplomacy end
-  [
+custom_battle_check_defeat_condition = (1, 4, 0,[
     (main_hero_fallen),
     ##diplomacy begin
     (try_begin),
@@ -6067,43 +6055,36 @@ custom_battle_check_defeat_condition = (
     (try_end),
     ##diplomacy end
     (eq,"$g_battle_result",-1),
-    ],
-  [
+  ],[
     (call_script, "script_custom_battle_end"),
     (finish_mission),
-    ])
+  ])
 
-common_battle_victory_display = (
-  10, 0, 0, [],
-  [
+common_battle_victory_display = (10, 0, 0, [],[
     (eq,"$g_battle_won",1),
     (display_message,"str_msg_battle_won"),
-    ])
+  ])
 
-common_siege_question_answered = (
-  ti_question_answered, 0, 0, [],
-   [
-     (store_trigger_param_1,":answer"),
-     (eq,":answer",0),
-     (assign, "$pin_player_fallen", 0),
-     (get_player_agent_no, ":player_agent"),
-     (agent_get_team, ":agent_team", ":player_agent"),
-     (try_begin),
-       (neq, "$attacker_team", ":agent_team"),
-       (neq, "$attacker_team_2", ":agent_team"),
-       (str_store_string, s5, "str_siege_continues"),
-       (call_script, "script_simulate_retreat", 8, 15, 0),
-     (else_try),
-       (str_store_string, s5, "str_retreat"),
-       (call_script, "script_simulate_retreat", 5, 20, 0),
-     (try_end),
-     (call_script, "script_count_mission_casualties_from_agents"),
-     (finish_mission,0),
-     ])
+common_siege_question_answered = (ti_question_answered, 0, 0, [],[
+    (store_trigger_param_1,":answer"),
+    (eq,":answer",0),
+    (assign, "$pin_player_fallen", 0),
+    (get_player_agent_no, ":player_agent"),
+    (agent_get_team, ":agent_team", ":player_agent"),
+    (try_begin),
+      (neq, "$attacker_team", ":agent_team"),
+      (neq, "$attacker_team_2", ":agent_team"),
+      (str_store_string, s5, "str_siege_continues"),
+      (call_script, "script_simulate_retreat", 8, 15, 0),
+    (else_try),
+      (str_store_string, s5, "str_retreat"),
+      (call_script, "script_simulate_retreat", 5, 20, 0),
+    (try_end),
+    (call_script, "script_count_mission_casualties_from_agents"),
+    (finish_mission,0),
+  ])
 
-common_siege_calculate_reinforcement_waves = (
-    ti_before_mission_start, 0, 0, [],
-  [
+common_siege_calculate_reinforcement_waves = (ti_before_mission_start, 0, 0, [],[
     # (options_get_battle_size, ":value"),
     # (val_div, ":value", 10),
     # (try_begin),
@@ -6127,51 +6108,32 @@ common_siege_calculate_reinforcement_waves = (
     (assign, reg1, "$siege_threshold_attacker"),
     (assign, reg2, "$siege_threshold_defender"),
     (display_message, "@Reinforcements for attacker: {reg1} and for defender: {reg2}."),
-    ])
+  ])
 
-common_custom_battle_question_answered = (
-   ti_question_answered, 0, 0, [],
-   [
-     (store_trigger_param_1,":answer"),
-     (eq,":answer",0),
-     (assign, "$g_battle_result", -1),
-     (call_script, "script_custom_battle_end"),
-     (finish_mission),
-     ])
-
-# common_custom_siege_init = (
-  # 0, 0, ti_once, [],
-  # [
-    # (assign, "$g_battle_result", 0),
-    # (call_script, "script_music_set_situation_with_culture", mtf_sit_siege),
-    # ])
-
-common_siege_init = (
-  0, 0, ti_once, [],
-  [
+common_custom_battle_question_answered = (ti_question_answered, 0, 0, [],[
+    (store_trigger_param_1,":answer"),
+    (eq,":answer",0),
+    (assign, "$g_battle_result", -1),
+    (call_script, "script_custom_battle_end"),
+    (finish_mission),
+  ])
+common_siege_init = (0, 0, ti_once, [],[
     (assign,"$g_battle_won",0),
     (assign,"$defender_reinforcement_stage",0),
     (assign,"$attacker_reinforcement_stage",0),
     (call_script, "script_music_set_situation_with_culture", mtf_sit_siege),
     (call_script, "script_init_death_cam"), #SB : initialize this here
-    ])
+  ])
 
-common_music_situation_update = (
-  30, 0, 0, [],
-  [
+common_music_situation_update = (30, 0, 0, [],[
     (call_script, "script_combat_music_set_situation_with_culture"),
-    ])
+  ])
 
-common_siege_defender_reinforcement_archer_reposition = (
-  2, 0, 0,
-  [
-    #(gt, "$defender_reinforcement_stage", 0),
-    ],
-  [
+common_siege_defender_reinforcement_archer_reposition = (2, 0, 0,[
+  ],[
     (call_script, "script_siege_move_archers_to_archer_positions"),
-    ])
-common_siege_refill_ammo = (
-  240, 0, 0, [],##changed to 4 min
+  ])
+common_siege_refill_ammo = (240, 0, 0, [],##changed to 4 min
   [#refill ammo of defenders every two minutes.
     (try_for_agents,":cur_agent"),
       (agent_is_active, ":cur_agent"),
@@ -6180,176 +6142,74 @@ common_siege_refill_ammo = (
       (agent_refill_ammo, ":cur_agent"),
     (try_end),
     (display_message, "@Received ammunition supplies."),
-    ])
-# common_siege_attacker_reinforcement_check = (
-  # 1, 0, 5,
-  # [
-    # (lt,"$attacker_reinforcement_stage","$defender_threshold"),
-    # (store_mission_timer_a,":mission_time"),
-    # (ge,":mission_time",10),
-    # (store_normalized_team_count,":num_attackers",1),
-    # (lt,":num_attackers",30)
-    # ],
-  # [
-    # (add_reinforcements_to_entry, 1, 40),
-    # (val_add,"$attacker_reinforcement_stage", 1),
-    # ])
-# common_siege_defender_reinforcement_check = (
-  # 3, 0, 5, [],
-  # [(lt, "$defender_reinforcement_stage", "$siege_threshold_defender"),
-   # (store_mission_timer_a,":mission_time"),
-   # (ge,":mission_time",10),
-   # (store_normalized_team_count,":num_defenders",0),
-   # (lt,":num_defenders",30),
-   # (add_reinforcements_to_entry,4, 40),
-   # (val_add,"$defender_reinforcement_stage",1),
-   # (try_begin),
-     # (gt, ":mission_time", 300), #5 minutes, don't let small armies charge
-     # (get_player_agent_no, ":player_agent"),
-     # (agent_get_team, ":player_team", ":player_agent"),
-     # (neq, ":player_team", "$defender_team"), #player should be the attacker
-     # (neq, ":player_team", "$defender_team_2"), #player should be the attacker
-     # (ge, "$defender_reinforcement_stage", 6),
-     # (set_show_messages, 0),
-     # (team_give_order, "$defender_team", grc_infantry, mordr_charge), #AI desperate charge:infantry!!!
-     # (team_give_order, "$defender_team_2", grc_infantry, mordr_charge), #AI desperate charge:infantry!!!
-     # (team_give_order, "$defender_team", grc_cavalry, mordr_charge), #AI desperate charge:cavalry!!!
-     # (team_give_order, "$defender_team_2", grc_cavalry, mordr_charge), #AI desperate charge:cavalry!!!
-     # (set_show_messages, 1),
-     # (ge, "$defender_reinforcement_stage", 8),
-     # (set_show_messages, 0),
-     # (team_give_order, "$defender_team", grc_everyone, mordr_charge), #AI desperate charge: everyone!!!
-     # (team_give_order, "$defender_team_2", grc_everyone, mordr_charge), #AI desperate charge: everyone!!!
-     # (set_show_messages, 1),
-   # (try_end),
-   # ])
+  ])
 
-# common_siege_ai_trigger_init_2 = (
-  # 0, 0, ti_once,
-  # [
-    # (set_show_messages, 0),
-    # (entry_point_get_position, pos10, 10),
-    # (try_for_range, ":cur_group", 0, grc_everyone),
-      # (neq, ":cur_group", grc_archers),
-      # (team_give_order, "$defender_team", ":cur_group", mordr_hold),
-      # (team_give_order, "$defender_team", ":cur_group", mordr_stand_closer),
-      # (team_give_order, "$defender_team", ":cur_group", mordr_stand_closer),
-      # (team_give_order, "$defender_team_2", ":cur_group", mordr_hold),
-      # (team_give_order, "$defender_team_2", ":cur_group", mordr_stand_closer),
-      # (team_give_order, "$defender_team_2", ":cur_group", mordr_stand_closer),
-    # (try_end),
-    # (team_give_order, "$defender_team", grc_archers, mordr_stand_ground),
-    # (team_set_order_position, "$defender_team", grc_everyone, pos10),
-    # (team_give_order, "$defender_team_2", grc_archers, mordr_stand_ground),
-    # (team_set_order_position, "$defender_team_2", grc_everyone, pos10),
-    # (set_show_messages, 1),
-    # ],[])
-
-common_camp_defenders_move_to_defender_position = (
-  2, 0, 0,
-  [ ],
-  [
+common_camp_defenders_move_to_defender_position = (2, 0, 0,[
+  ],[
     (call_script, "script_camp_defenders_move_to_defender_position"),
-    ])
-# common_siege_ai_trigger_init = (
-  # 0, 0, ti_once,
-  # [
-    # (assign, "$defender_team", 0),
-    # (assign, "$attacker_team", 1),
-    # (assign, "$defender_team_2", 2),
-    # (assign, "$attacker_team_2", 3),
-    # ],[])
-# common_siege_ai_trigger_init_after_2_secs = (
-  # 1, 0, ti_once, [],
-  # [
-    # (try_for_agents, ":agent_no"),
-        # (agent_get_entry_no, ":entry", ":agent_no"),
-        # (eq, ":entry", 3),
-        # (agent_set_division, ":agent_no", grc_infantry),
-        # (agent_set_slot, ":agent_no", slot_agent_is_not_reinforcement, 1),
-    # (else_try),
-        # (is_between, ":entry", 5, 12),#40,41,42,43,44,45,46
-        # (agent_set_slot, ":agent_no", slot_agent_is_not_reinforcement, 1),
-    # (try_end),
-    # ])
-
-# common_siege_attacker_reinforcement_check = (
-  # 1, 0, 5,
-  # [
-    # (lt,"$attacker_reinforcement_stage","$siege_threshold_attacker"),
-    # (store_mission_timer_a,":mission_time"),
-    # (ge,":mission_time",10),
-    # (store_normalized_team_count,":num_attackers",1),
-    # (lt,":num_attackers",30)
-    # ],
-  # [
-    # (add_reinforcements_to_entry, 1, 40),
-    # (val_add,"$attacker_reinforcement_stage", 1),
-    # ])
+  ])
 
 common_siege_attacker_do_not_stall = (5, 0, 0, [],[ #Make sure attackers do not stall on the ladders...
-  (try_for_agents, ":agent_no"),
-    (agent_is_human, ":agent_no"),
-    (agent_is_alive, ":agent_no"),
-    (agent_get_team, ":agent_team", ":agent_no"),
-    (this_or_next|eq, ":agent_team", "$attacker_team"),
-    (eq, ":agent_team", "$attacker_team_2"),
-    (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
-  (try_end),
-])
+    (try_for_agents, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (agent_get_team, ":agent_team", ":agent_no"),
+      (this_or_next|eq, ":agent_team", "$attacker_team"),
+      (eq, ":agent_team", "$attacker_team_2"),
+      (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
+    (try_end),
+  ])
 
 common_battle_check_friendly_kills = (ti_on_agent_killed_or_wounded, 0, 0, [],[
-  (store_trigger_param_1, ":dead_agent_no"),
-  (store_trigger_param_2, ":killer_agent_no"),
-  (agent_is_active, ":dead_agent_no"),
-  (agent_is_active, ":killer_agent_no"),
-  (neg|agent_is_non_player, ":killer_agent_no"),#player
-  (agent_is_ally, ":dead_agent_no"),#ally
-  (call_script, "script_change_player_party_morale", -5),
-  (try_begin),
-      (check_quest_active, "qst_freelancing"),
-      (quest_get_slot, ":progress", "qst_freelancing", slot_quest_freelancer_progress),
-      (val_sub, ":progress", 10),
-      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_progress, ":progress"),
-      (assign, reg3, 10),
-      (val_mul, reg3, -1),
-      (display_message, "@You lost {reg3} progress points due to killing friendly troops!", color_terrible_news),
-  (try_end),
-])
+    (store_trigger_param_1, ":dead_agent_no"),
+    (store_trigger_param_2, ":killer_agent_no"),
+    (agent_is_active, ":dead_agent_no"),
+    (agent_is_active, ":killer_agent_no"),
+    (neg|agent_is_non_player, ":killer_agent_no"),#player
+    (agent_is_ally, ":dead_agent_no"),#ally
+    (call_script, "script_change_player_party_morale", -5),
+    (try_begin),
+        (check_quest_active, "qst_freelancing"),
+        (quest_get_slot, ":progress", "qst_freelancing", slot_quest_freelancer_progress),
+        (val_sub, ":progress", 10),
+        (quest_set_slot, "qst_freelancing", slot_quest_freelancer_progress, ":progress"),
+        (assign, reg3, 10),
+        (val_mul, reg3, -1),
+        (display_message, "@You lost {reg3} progress points due to killing friendly troops!", color_terrible_news),
+    (try_end),
+  ])
 
 common_battle_check_victory_condition = (1, 60, ti_once,[
-  (store_mission_timer_a,reg(1)),
-  (ge,reg(1),10),
-  (all_enemies_defeated, 5),
-  #(all_enemies_defeated, 5),
-  # (call_script, "script_all_enemies_routed"),
-  # (eq, reg10, 0),
-  ##diplomacy begin
-  (this_or_next|eq, "$g_dplmc_battle_continuation", 0),
-  (neg|main_hero_fallen),
-  ##diplomacy end
-  (set_mission_result,1),
-  (display_message,"str_msg_battle_won"),
-  (assign,"$g_battle_won",1),
-  (assign, "$g_battle_result", 1),
-  (call_script, "script_play_victorious_sound"),
-],[
-  (call_script, "script_count_mission_casualties_from_agents"),
-  (finish_mission, 1),
-])
-
-common_battle_victory_display = (
-  10, 0, 0, [],
-  [
-  (try_begin),
-    (eq,"$g_battle_won",1),
+    (store_mission_timer_a,reg(1)),
+    (ge,reg(1),10),
+    (all_enemies_defeated, 5),
+    #(all_enemies_defeated, 5),
+    # (call_script, "script_all_enemies_routed"),
+    # (eq, reg10, 0),
+    ##diplomacy begin
+    (this_or_next|eq, "$g_dplmc_battle_continuation", 0),
+    (neg|main_hero_fallen),
+    ##diplomacy end
+    (set_mission_result,1),
     (display_message,"str_msg_battle_won"),
-  (else_try),
-    (call_script, "script_all_enemies_routed"),
-    (eq, reg10, 0),
-    (display_message,"str_all_enemies_routed"),
-  (try_end),
-    ])
+    (assign,"$g_battle_won",1),
+    (assign, "$g_battle_result", 1),
+    (call_script, "script_play_victorious_sound"),
+  ],[
+    (call_script, "script_count_mission_casualties_from_agents"),
+    (finish_mission, 1),
+  ])
+
+common_battle_victory_display = (10, 0, 0, [],[
+    (try_begin),
+      (eq,"$g_battle_won",1),
+      (display_message,"str_msg_battle_won"),
+    (else_try),
+      (call_script, "script_all_enemies_routed"),
+      (eq, reg10, 0),
+      (display_message,"str_all_enemies_routed"),
+    (try_end),
+  ])
 
 common_fieldbattle_refill_ammo = (##changed to 8 min
   60*6, 0, 0, [
@@ -6368,70 +6228,52 @@ common_fieldbattle_refill_ammo = (##changed to 8 min
     (display_message, "@Soldiers are picking up missles from the ground.", message_alert),
   ])
 
-common_siege_check_defeat_condition = (
-  1, 4,
-##diplomacy begin
-0,
-##diplomacy end
-  [
-    (main_hero_fallen)
-    ],
-  [
-    ##diplomacy begin
+common_siege_check_defeat_condition = (1, 4, 0,[
+    (main_hero_fallen),
+  ],[
+    (try_begin),
+      (call_script, "script_cf_dplmc_battle_continuation"),
+    (else_try),
+      (assign, "$pin_player_fallen", 1),
+      (get_player_agent_no, ":player_agent"),
+      (agent_get_team, ":agent_team", ":player_agent"),
       (try_begin),
-        (call_script, "script_cf_dplmc_battle_continuation"),
+        (neq, "$attacker_team", ":agent_team"),
+        (neq, "$attacker_team_2", ":agent_team"),
+        (str_store_string, s5, "str_siege_continues"),
+        (call_script, "script_simulate_retreat", 8, 15, 0),
       (else_try),
-        ##diplomacy end
-        (assign, "$pin_player_fallen", 1),
-
-        (get_player_agent_no, ":player_agent"),
-        (agent_get_team, ":agent_team", ":player_agent"),
-        (try_begin),
-          (neq, "$attacker_team", ":agent_team"),
-          (neq, "$attacker_team_2", ":agent_team"),
-          (str_store_string, s5, "str_siege_continues"),
-          (call_script, "script_simulate_retreat", 8, 15, 0),
-        (else_try),
-          (str_store_string, s5, "str_retreat"),
-          (call_script, "script_simulate_retreat", 5, 20, 0),
-        (try_end),
-        (assign, "$g_battle_result", -1),
-        (set_mission_result,-1),
-        (call_script, "script_count_mission_casualties_from_agents"),
-        (finish_mission,0),
-        ##diplomacy begin
+        (str_store_string, s5, "str_retreat"),
+        (call_script, "script_simulate_retreat", 5, 20, 0),
       (try_end),
-    ##diplomacy end
-    ])
+      (assign, "$g_battle_result", -1),
+      (set_mission_result,-1),
+      (call_script, "script_count_mission_casualties_from_agents"),
+      (finish_mission,0),
+    (try_end),
+  ])
 
 common_battle_order_panel = (
   0, 0, 0, [
     (game_key_clicked, gk_view_orders),
     (neg|is_presentation_active, "prsnt_battle"),
-  ],
-  [
+  ],[
     (start_presentation, "prsnt_battle"),
-    ])
+  ])
 
-common_battle_order_panel_tick = (
-  0.1, 0, 0, [
-  (is_presentation_active, "prsnt_battle"),
-  ],
-  [
+common_battle_order_panel_tick = (0.1, 0, 0, [
+    (is_presentation_active, "prsnt_battle"),
+  ],[
     (call_script, "script_update_order_panel_statistics_and_map"),
-    ])
+  ])
 
-common_battle_inventory = (
-  ti_inventory_key_pressed, 0, 0, [],
-  [
+common_battle_inventory = (ti_inventory_key_pressed, 0, 0, [],[
     (display_message,"str_use_baggage_for_inventory"),
-    ])
+  ])
 
-common_inventory_not_available = (
-  ti_inventory_key_pressed, 0, 0,
-  [
+common_inventory_not_available = (ti_inventory_key_pressed, 0, 0,[
     (display_message, "str_cant_use_inventory_now"),
-    ],[])
+  ],[])
 
 tournament_triggers = [
 

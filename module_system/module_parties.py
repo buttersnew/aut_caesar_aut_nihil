@@ -145,7 +145,7 @@ parties = [
 ("castle_34", "Augusta Raurica", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-145.54, 83.51), [], 260),
 ("castle_35", "Salona", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-82.381, 39.014), [], 260),
 ("castle_36", "Treva", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-145.17, 147.06), [], 260),
-("castle_37", "Troesmis", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-7.04, 62.66), [], 260),
+("castle_37", "Troesmis", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-0.850, 63.50), [], 260),
 ("castle_38", "Arsamosata", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (111.46, 38.77), [], 260),
 ("castle_39", "Singidunum", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-82.59, 59.75), [], 280),
 ("castle_40", "Edessa", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (116.59, -6.88), [], 260),

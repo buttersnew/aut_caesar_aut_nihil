@@ -17308,8 +17308,13 @@ game_menus = [
       (eq, 0, 1),
     ],"Door to the catacombs.",[
       (set_passage_menu,"mnu_town"),
+      (set_jump_mission, "mt_explore_secret_place"),
+      (mission_tpl_entry_set_override_flags, "mt_explore_secret_place", 0, af_override_weapons|af_override_horse),
+      (mission_tpl_entry_clear_override_items, "mt_explore_secret_place", 0),
+      (mission_tpl_entry_add_override_item, "mt_explore_secret_place", 0, "itm_torch"),
+      (set_jump_entry, 0),
       (jump_to_scene, "scn_church"),
-      (finish_mission),
+      (change_screen_mission),
     ], "Door to the catacombs"),
 
     ("visit_garden_secret",[
