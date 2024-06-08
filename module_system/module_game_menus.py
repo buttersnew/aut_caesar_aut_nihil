@@ -12657,7 +12657,7 @@ game_menus = [
           (display_message,"@ Like farmer, you lose renown",0xFF0000),
           (call_script, "script_change_troop_renown", "trp_player", -2),
         (try_end),
-        (rest_for_hours_interactive, 2, 5, 1),
+        (rest_for_hours_interactive, 2, 12, 1),
         (change_screen_map),
         (assign,"$g_work_for_village_ongoing",24),
       (try_end),#rigale
@@ -12880,10 +12880,10 @@ game_menus = [
       (else_try),
 				(assign,":item_to_give","itm_chicken",1),
 			(try_end),
-			(str_store_item_name,s1,":item_to_give"),
 		  (call_script, "script_change_player_relation_with_center", "$current_town", 1),
 			(troop_add_items,"trp_player",":item_to_give",1),
-			(str_store_string,s3,"@Here are the results of your hard work: You exhaust yourself, You gain {reg36} xps, you receive some {s1}. You improve your relation with this village. Peasant life is hard, but you feel good."),
+      (str_store_item_name, s22, ":item_to_give"),
+			(str_store_string,s3,"@Here are the results of your hard work: You exhaust yourself, You gain {reg36} xps, you receive some {s22}. You improve your relation with this village. Peasant life is hard, but you feel good."),
 		(try_end),
 	],[
     ("continue",[],"Continue",[
@@ -16484,7 +16484,7 @@ game_menus = [
               (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
               (troop_slot_eq, "trp_global_variables", g_flavor_event_2, 0),
               (set_visitor, 43, "trp_arab_poormerchant"),
-              (set_visitor, 44, "trp_judean_village_walker"),
+              (set_visitor, 44, "trp_arab_richmerchant"),
           (try_end),
 
           (try_begin),
@@ -31209,6 +31209,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (else_try),
         (store_random_in_range, ":r", 140, 350),
       (try_end),
+      (val_mul, ":r", -1),
       (call_script, "script_change_troop_health", "trp_player", ":r"),
       (troop_remove_gold, "trp_player", 100),
       (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
