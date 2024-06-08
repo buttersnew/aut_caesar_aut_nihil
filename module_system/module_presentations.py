@@ -9402,17 +9402,27 @@ presentations = [
     (overlay_set_position, reg1, pos1),
     (assign, "$g_presentation_obj_10", reg1),
 
-    (create_game_button_overlay, reg1, "@Concepts"),
-    (position_set_x, pos1, 860),
-    (position_set_y, pos1, 190),
-    (overlay_set_position, reg1, pos1),
-    (assign, "$g_presentation_obj_11", reg1),
+    (assign, "$g_presentation_obj_15", -1),
+    (try_begin),
+        (ge, "$g_is_emperor", 1),
+        (create_game_button_overlay, reg1, "@Legion Report"),
+        (position_set_x, pos1, 700),
+        (position_set_y, pos1, 140),
+        (overlay_set_position, reg1, pos1),
+        (assign, "$g_presentation_obj_15", reg1),
+    (try_end),
 
     (create_game_button_overlay, reg1, "@Estate Report"),
     (position_set_x, pos1, 860),
     (position_set_y, pos1, 240),
     (overlay_set_position, reg1, pos1),
     (assign, "$g_presentation_obj_14", reg1),
+
+    (create_game_button_overlay, reg1, "@Concepts"),
+    (position_set_x, pos1, 860),
+    (position_set_y, pos1, 190),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_presentation_obj_11", reg1),
 
     ##Party info:
     (try_begin),
@@ -9966,6 +9976,11 @@ presentations = [
     (else_try),
         (eq, ":button_pressed_id", "$g_presentation_obj_11"),
         (change_screen_notes, 5, 0),
+    (else_try),
+        (eq, ":button_pressed_id", "$g_presentation_obj_15"),
+        (assign, "$g_notification_menu_var1", 0),#is emperor
+        (assign, "$g_notification_menu_var2", 0),#can change legates
+        (start_presentation, "prsnt_legion_management"),
         # (assign, "$temp", 0),
         # (try_begin),
         #   (this_or_next|eq, "$players_kingdom", "fac_kingdom_7"),
@@ -24820,6 +24835,7 @@ presentations = [
 
     (try_begin),
         (eq, "$g_notification_menu_var1", 1),#is not emperor
+        (eq, "$g_notification_menu_var2", 1),#can change legates
         (create_text_overlay, reg1, "@Hint: You can suggest to change the legate of a legion. Though you cannot suggest to change the commander of the preatorian guard. Just press on the name of a legate whom you wish to change.", tf_center_justify),
         (overlay_set_color, reg1, 0x00007F),
         (position_set_x, pos1, 500), # Higher, means more toward the right
@@ -24832,7 +24848,21 @@ presentations = [
 
     (try_begin),
         (eq, "$g_notification_menu_var1", 0),#is emperor
+        (eq, "$g_notification_menu_var2", 1),#can change legates
         (create_text_overlay, reg1, "@Hint: You can change the legate of a legion by pressing on the name of the respective legate. You can change the headquarter of the legion by pressing on the respective down name. You can also disband existing legions.", tf_center_justify),
+        (overlay_set_color, reg1, 0x00007F),
+        (position_set_x, pos1, 500), # Higher, means more toward the right
+        (position_set_y, pos1, 645), # Higher, means more toward the top
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+    (try_end),
+
+    (try_begin),
+        (eq, "$g_notification_menu_var1", 0),#is emperor
+        (eq, "$g_notification_menu_var2", 0),#can change legates
+        (create_text_overlay, reg1, "@Hint: You can only change the legate of a legion or disband it while talking with our military advicor (who can be found in the Domus Augusti).", tf_center_justify),
         (overlay_set_color, reg1, 0x00007F),
         (position_set_x, pos1, 500), # Higher, means more toward the right
         (position_set_y, pos1, 645), # Higher, means more toward the top
@@ -25400,17 +25430,17 @@ presentations = [
         (try_end),
     (try_end),
     (set_container_overlay, -1),#end scroll
-    ]),
+  ]),
 
-   ## Check for buttonpress
-    (ti_on_presentation_event_state_change,
-    [
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
         (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
         (presentation_set_duration, 0),
         (show_object_details_overlay, 1),
     (else_try),
+        (eq, "$g_notification_menu_var2", 1),#can change legates
         (assign, ":end", slot_legion_commanders_end),
 
         (try_begin),
@@ -25572,6 +25602,7 @@ presentations = [
             (start_presentation, "prsnt_legion_selection"),
         (try_end),
     (else_try),
+        (eq, "$g_notification_menu_var2", 1),#can change legates
         (assign, ":end", slot_aux_commander_end),
 
         (try_begin),
