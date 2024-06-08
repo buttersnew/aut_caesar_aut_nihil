@@ -7054,7 +7054,7 @@ Lead me in battle to victory!"),
 ("building_3", "theatre"),
 ("building_4", "small temple"),
 ("building_5", "large temple"),
-("building_6", "baths"),
+("building_6", "public bath"),
 ("building_7", "public toilet"),
 ("building_end", "ende"),
 
