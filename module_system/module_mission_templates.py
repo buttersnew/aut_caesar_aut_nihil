@@ -17216,6 +17216,29 @@ mission_templates = [
     (36,mtef_scene_source,af_override_horse,0,1,[]),
   ], p_wetter + global_common_triggers+
   [
+    (ti_on_agent_spawn,0,0,[
+      (store_current_scene, ":scn"),
+      (this_or_next|eq, ":scn", "scn_domus_mare_interior"),
+      (eq, ":scn", "scn_domus_mare_interior_2"),
+      (store_trigger_param_1, ":agent"),
+      (agent_is_active, ":agent"),
+      (agent_get_troop_id, ":troop", ":agent"),
+      (this_or_next|eq, ":troop", "trp_guest"),
+      (eq, ":troop", "trp_guest_female"),
+      (agent_is_non_player, ":agent"),
+      (agent_set_no_dynamics, ":agent", 1),
+      (agent_set_stand_animation, ":agent", "anim_female_lie_sexy"),
+      (agent_set_animation, ":agent", "anim_female_lie_sexy"),
+      (store_random_in_range,":r",0,300),
+      (agent_set_animation_progress,":agent",":r"),
+
+      (set_fixed_point_multiplier, 1),
+      (agent_get_position, pos1, ":agent"),
+      (agent_set_no_dynamics, ":agent", 1),
+      (position_move_z, pos1, -100),
+      (agent_set_position, ":agent", pos1),
+    ],[]),
+
     can_spawn_commoners,
     improved_lightning,
     common_inventory_not_available,

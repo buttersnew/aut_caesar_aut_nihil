@@ -6169,7 +6169,7 @@ medium_head_price,medium_head,imodbits_plate, [], [] ],
 ["mithras","Mithras Statue", [("mithras_final",0),("mithras_final_inv",ixmesh_inventory)], itp_unique, 0,
 100000,weight(150)|abundance(0)|max_ammo(1),imodbits_none],
 
-["mirror_poppaea","Mirror", [("nothing",0),("mirror_poppaea",ixmesh_inventory)], itp_unique, 0,
+["mirror_poppaea","Mirror", [("nothing_L",0),("mirror_poppaea",ixmesh_inventory)], itp_unique, 0,
 100000,weight(150)|abundance(0)|max_ammo(1),imodbits_none],
 
 
@@ -6437,7 +6437,7 @@ noble_mail_price, noble_mail_armor,imodbits_plate,
 1 , weight(0.5)|abundance(100)|head_armor(4)|body_armor(0)|leg_armor(0)|difficulty(0) ,imodbits_cloth ],
 ["nothing_legs", "nothing", [("nothing_rig",0)], itp_type_foot_armor |itp_civilian | itp_attach_armature ,0,
 30 , weight(1)|abundance(100)|head_armor(0)|body_armor(0)|leg_armor(8)|difficulty(0) ,imodbits_cloth ],
-["nothing_hands","nothing",[("nothing",0)],	itp_type_hand_armor,0,0,weight(1),0],
+["nothing_hands","nothing",[("nothing_L",0)],	itp_type_hand_armor,0,0,weight(1),0],
 ##invisible items end
 ["banner_background1","Banner", [("background_banner_01",0)],itp_type_polearm|itp_offset_lance|itp_primary|itp_penalty_with_shield|itp_wooden_parry|itp_wooden_attack,itc_parry_polearm|itcf_carry_sword_back,9, weight(3.5)|spd_rtng(120) | weapon_length(115)|swing_damage(0,blunt) | thrust_damage(0,blunt),imodbits_none, [
 (ti_on_init_item, [(store_trigger_param_1, ":agent_no"),

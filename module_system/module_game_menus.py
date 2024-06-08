@@ -40601,6 +40601,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (else_try),
         (store_random_in_range, ":r", 140, 350),
       (try_end),
+      (val_mul, ":r", -1),
       (call_script, "script_change_troop_health", "trp_player", ":r"),
       (assign, "$auto_enter_town", "$current_town"),
       (assign, "$g_town_visit_after_rest", 1),
@@ -40648,8 +40649,22 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (call_script, "script_init_second_outfit", "mt_visit_villa", 21, 0),
           (mission_tpl_entry_set_override_flags, "mt_visit_villa", 21, af_override_outfit_1|af_override_horse),
       (try_end),
+
+      (try_begin),#second outift
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (call_script, "script_init_second_outfit", "mt_visit_villa", 36, 0),
+          (mission_tpl_entry_set_override_flags, "mt_visit_villa", 36, af_override_outfit_1|af_override_horse),
+      (try_end),
+
+      (try_begin),#second outift
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (call_script, "script_init_second_outfit", "mt_visit_villa", 0, 0),
+          (mission_tpl_entry_set_override_flags, "mt_visit_villa", 0, af_override_outfit_1|af_override_horse),
+      (else_try),
+          (mission_tpl_entry_set_override_flags, "mt_visit_villa", 0, af_override_horse|af_override_weapons|af_override_head),
+      (try_end),
       # (set_jump_entry, 21),
-      (mission_tpl_entry_set_override_flags, "mt_visit_villa", 0, af_override_horse|af_override_weapons|af_override_head),
+
       (try_begin),
           (eq, "$g_player_rent", 1),
           (set_visitor, 30, "trp_guest"),
@@ -47616,12 +47631,17 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       # (try_end),
         # ]
       # ),
-
+      ("camp_cheat_find_item",[], "Add unhealth..",
+       [
+         (call_script, "script_change_troop_health", "trp_player", 200),
+	   ]
+       ),
       ("camp_cheat_find_item",[], "Change weather..",
        [
          (jump_to_menu, "mnu_cheat_change_weather"),
 	   ]
        ),
+
       # ("options",[],"Set Civil war variable -1",
         # [
       # (assign, "$g_civil_war", -1),##set it -1, otherwise features wont be available
