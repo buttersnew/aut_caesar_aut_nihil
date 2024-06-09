@@ -9566,7 +9566,7 @@ simple_triggers = [
     (else_try),
         (neq, "$g_player_is_captive", 1),
         (eq, "$g_is_emperor", 1),
-        (troop_slot_eq, "trp_kingdom_7_lord", slot_troop_occupation, dplmc_slto_dead), # is dead
+        (troop_slot_ge, "trp_kingdom_7_lord", slot_troop_occupation, dplmc_slto_exile), # is dead or exile
         (neq, "$g_campaign_type", g_campaign_king),
         (quest_slot_eq, "qst_nero_reborn", slot_quest_current_state, 0),
         (jump_to_menu, "mnu_emperor_event_fake_nero"),#new

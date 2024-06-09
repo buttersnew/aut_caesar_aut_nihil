@@ -44845,57 +44845,54 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ("event04",[],"Event29",[ (jump_to_menu,"mnu_event_siege_29"),]),
   ]),
 
-  (
-    "duel_2",0,
-    "You shout at the troublemaker: 'I will show you a lesson. Such childish shit must be punished.' ^^\
- Troublemaker: 'I will beat you to the ground.'^^^\
- Other soldiers who have noticed your dispute, surround you and start to cheer and shout. Now there is no way back, you must fight.",
-    "none",
-    [(set_background_mesh, "mesh_pic_deserters")],
-    [
-      ("event04",[],"Fight!",[
-          (try_begin),
-            (store_troop_health, ":health", "trp_player", 0), #get relative health in 1-100 range and put it into the ":health" variable
-            (lt, ":health", 30),
-            (val_add, ":health", 35),               #add to it the 5%
-            (troop_set_health,   "trp_player", ":health"),   #set it
-          (try_end),
-          (assign, "$g_encountered_party", "$enlisted_party"),
-          (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
-          (troop_get_slot, ":legion", ":lord", slot_troop_legion),
-          (store_add, ":troop", ":legion", "trp_eastern_elite_infantry_vet"),
+("duel_2",0,
+  "You shout at the troublemaker: 'I will show you a lesson. Such childish shit must be punished.' ^^"
+  +"Troublemaker: 'I will beat you to the ground.'^^^"
+  +"Other soldiers who have noticed your dispute, surround you and start to cheer and shout. Now there is no way back, you must fight.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("event04",[],"Fight!",[
+      (try_begin),
+        (store_troop_health, ":health", "trp_player", 0), #get relative health in 1-100 range and put it into the ":health" variable
+        (lt, ":health", 30),
+        (val_add, ":health", 35),               #add to it the 5%
+        (troop_set_health,   "trp_player", ":health"),   #set it
+      (try_end),
+      (assign, "$g_encountered_party", "$enlisted_party"),
+      (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
+      (troop_get_slot, ":legion", ":lord", slot_troop_legion),
+      (store_add, ":troop", ":legion", "trp_eastern_elite_infantry_vet"),
 
-          (assign, "$g_duel_troop", "trp_quest_miles"),
-          (set_jump_mission,"mt_viking_duel_normal"),
-          (modify_visitors_at_site, "scn_duel_plain_forest"),
-          (reset_visitors),
+      (assign, "$g_duel_troop", "trp_quest_miles"),
+      (set_jump_mission,"mt_viking_duel_normal"),
+      (modify_visitors_at_site, "scn_duel_plain_forest"),
+      (reset_visitors),
 
-          (mission_tpl_entry_set_override_flags, "mt_viking_duel_normal",0, af_override_all),
-          (mission_tpl_entry_clear_override_items, "mt_viking_duel_normal", 0),
-          (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", 0, "itm_roman_poor1"),
-          (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", 0, "itm_graves_simple_2"),
-          (set_visitor, 0, "trp_player"),
-          (mission_tpl_entry_set_override_flags, "mt_viking_duel_normal",1, af_override_all),
-          (mission_tpl_entry_clear_override_items, "mt_viking_duel_normal", 1),
-          (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", 1, "itm_roman_poor1"),
-          (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", 1, "itm_graves_simple_2"),
-          (set_visitor, 1, "$g_duel_troop"),
+      (mission_tpl_entry_set_override_flags, "mt_viking_duel_normal",0, af_override_all),
+      (mission_tpl_entry_clear_override_items, "mt_viking_duel_normal", 0),
+      (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", 0, "itm_roman_poor1"),
+      (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", 0, "itm_graves_simple_2"),
+      (set_visitor, 0, "trp_player"),
+      (mission_tpl_entry_set_override_flags, "mt_viking_duel_normal",1, af_override_all),
+      (mission_tpl_entry_clear_override_items, "mt_viking_duel_normal", 1),
+      (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", 1, "itm_roman_poor1"),
+      (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", 1, "itm_graves_simple_2"),
+      (set_visitor, 1, "$g_duel_troop"),
 
-          (try_for_range,":position",2,22),
-            (mission_tpl_entry_set_override_flags, "mt_viking_duel_normal",":position", af_override_all),
-            (mission_tpl_entry_clear_override_items, "mt_viking_duel_normal", ":position"),
-            (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", ":position", "itm_roman_poor2"),
-            (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", ":position", "itm_graves_simple_2"),
-            (set_visitor, ":position", ":troop"),
-          (try_end),
+      (try_for_range,":position",2,22),
+        (mission_tpl_entry_set_override_flags, "mt_viking_duel_normal",":position", af_override_all),
+        (mission_tpl_entry_clear_override_items, "mt_viking_duel_normal", ":position"),
+        (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", ":position", "itm_roman_poor2"),
+        (mission_tpl_entry_add_override_item, "mt_viking_duel_normal", ":position", "itm_graves_simple_2"),
+        (set_visitor, ":position", ":troop"),
+      (try_end),
 
-          (jump_to_scene, "scn_duel_plain_forest"),
+      (jump_to_scene, "scn_duel_plain_forest"),
 
-          (change_screen_mission),
-
-      ]),
-
-  ]),
+      (change_screen_mission),
+    ]),
+]),
 
 ("duel",0,
   "You prepare for the duel and sharpen your weapons. You will have to fight for your life.",
@@ -47570,6 +47567,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (change_screen_mission),
         ]
       ),
+    # ("cheat_slots",[
+    #   (check_quest_active, "qst_important_friends"),
+    # ],"{!}CHEAT! - End Important friends quest",[
+    #   (jump_to_menu, "mnu_emperor_event_fake_nero"),
+    #   (call_script, "script_succeed_quest", "qst_important_friends"),
+    #   (call_script, "script_end_quest", "qst_important_friends"),
+    # ]),
+
+
     # ("options",[(ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Randomly start wars",[
     #   (try_for_range, ":unused", 0, 100),
     #       (call_script, "script_randomly_start_war_peace_new", 1),
@@ -57060,7 +57066,39 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 ]),
 
 ("langobard_defeat",0,
-  "You fall and everything turns black.^^You are walking over flower meadows. Shiny figures approach who put wreaths of flowers around your head. The sun is touching you. The sun is stroking your cheeks.^You are drinking wine, served in golden cups, eating food, served on golden plates.^An old cat is sitting in front of you, she comes closer and strokes you with her soft pelt. Then she strokes your face with her left paw, while she is giving you water with her right paw. You slowly drink. While days pass the cat comes, strokes you, gives you to drink and disappears in light.^^Suddenly you awake. Your head hurts terrible. You are lying on a bed in the middle of a longhouse. You stand up and walk towards the door. You open it. You enter a room where an old woman and two men are standing.",
+  "You fall and everything turns black.^^You are walking over flower meadows. Shiny figures approach who put wreaths of flowers around your head. The sun is touching you."
+  +" The sun is stroking your cheeks.^You are drinking wine, served in golden cups, eating food, served on golden plates."
+  +"^An old cat is sitting in front of you, she comes closer and strokes you with her soft pelt. Then she strokes your face with her left paw, while she is giving you water with her right paw."
+  +" You slowly drink. While days pass the cat comes, strokes you, gives you to drink and disappears in light."
+  +" ^^Days pass. All of a sudden you find yourself lost in a foggy forest - fear and darkness seem to devour you.",
+  "none", [
+    (set_background_mesh, "mesh_pic_girls"),
+  ],[
+    ("continue",[],"I must find a way out...",[
+      (set_jump_mission, "mt_walhalla"),
+      (modify_visitors_at_site, "scn_walhalla_outdoor"),
+      (reset_visitors),
+      # (set_jump_entry, 0),
+      (jump_to_scene, "scn_walhalla_outdoor"),
+      (change_screen_mission),
+    ], "Go outside."),
+    ("continue",[(eq, 1, 0),],"Enter the longhouse.",[
+      (set_jump_mission, "mt_walhalla_indoor"),
+      (modify_visitors_at_site, "scn_walhalla_indoors"),
+      (reset_visitors),
+      (set_jump_entry, 0),
+      (set_visitor, 1, "trp_germanic_myth_hero_1"),
+      (set_visitor, 2, "trp_germanic_myth_hero_2"),
+      (set_visitor, 3, "trp_germanic_myth_hero_3"),
+      (set_visitor, 4, "trp_germanic_myth_hero_4"),
+      (jump_to_scene, "scn_walhalla_indoors"),
+      (change_screen_mission),
+    ], "Enter the longhouse."),
+]),
+
+("langobard_defeat_2",0,
+  "Suddenly you awake. Your head hurts terrible. You are lying on a bed in the middle of a longhouse. You stand up and walk towards the door. You open it."
+  +" You enter a room where an old woman and two men are standing.",
   "none", [
     (set_background_mesh, "mesh_pic_girls"),
   ],[

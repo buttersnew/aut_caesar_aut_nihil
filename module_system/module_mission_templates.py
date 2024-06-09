@@ -20710,10 +20710,10 @@ mission_templates = [
         (try_end),
       (try_end),
     ]),
-    (14, 0, ti_once, [],[
-      (get_player_agent_no, ":player"),
-      (agent_set_damage_modifier,":player",50),
-    ]),
+    # (14, 0, ti_once, [],[
+    #   (get_player_agent_no, ":player"),
+    #   (agent_set_damage_modifier,":player",50),
+    # ]),
     (ti_tab_pressed, 0, 0, [
       (display_message, "str_cannot_leave_now"),
     ],[]),
@@ -23043,8 +23043,7 @@ mission_templates = [
     ]),
 
 ("event1_talk", mtf_battle_mode, -1,
-  "lala",
-  [
+  "lala",[
     (0, mtef_team_1|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_4]),
     (1, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
     (2, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
@@ -23091,76 +23090,69 @@ mission_templates = [
   ], p_wetter + global_common_triggers+
   [
     cannot_spawn_commoners,
-  remove_banners,
-  improved_lightning,
-  (0,0,ti_once, [],[
-    (team_set_relation, 1, 2, 1), # -1 for enemy, 1 for friend, 0 for neutral
-    (team_set_relation,2,1,1),
-    (team_set_relation,0,1,1),
-    (team_set_relation,0,2,1),
-    (team_set_relation,2,0,1),
-    (team_set_relation,1,0,1),
-  ]),
-    (1, 0.5, ti_once,
-    [],
-    [
-    (start_mission_conversation, "trp_avaritia"),
+    remove_banners,
+    improved_lightning,
+    (0,0,ti_once, [],[
+      (team_set_relation, 1, 2, 1), # -1 for enemy, 1 for friend, 0 for neutral
+      (team_set_relation,2,1,1),
+      (team_set_relation,0,1,1),
+      (team_set_relation,0,2,1),
+      (team_set_relation,2,0,1),
+      (team_set_relation,1,0,1),
     ]),
-    (ti_on_agent_spawn, 0, 0, [], #its training time
-   [
-    (store_trigger_param_1, ":agent"),
-    (agent_set_no_death_knock_down_only, ":agent", 1),
-    (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 80),
-   ]),
-
-    (ti_on_agent_knocked_down, 0, 0, [],
-      [
-        (store_trigger_param_1, ":dead_agent"),
-        (agent_get_troop_id, ":troop", ":dead_agent"),
-        (eq, ":troop", "trp_quest_miles"),
-        (assign, "$temp2", 2),
+    (1, 0.5, ti_once,[],[
+      (start_mission_conversation, "trp_avaritia"),
+    ]),
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent"),
+      (agent_set_no_death_knock_down_only, ":agent", 1),
+      (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 80),
     ]),
 
-    (3, 0, 0,
-    [
-    (eq, "$temp1", 1),
-    (neq, "$temp2", 3),
-    ],
-    [
-    (finish_mission),
-    (jump_to_menu, "mnu_auto_return_map"),
-    ]),
-    (0.5, 0, 0,
-    [(eq, "$temp2", 1),],
-    [(team_set_relation, 1, 2, -1), # -1 for enemy, 1 for friend, 0 for neutral
-    (team_set_relation,2,1,-1),
-    (team_set_relation,0,1,1),
-    (team_set_relation,0,2,1),
-    (team_set_relation,2,0,1),
-    (team_set_relation,1,0,1),
-    (set_party_battle_mode),
-    (try_for_agents, ":agent"),
-      (agent_is_alive, ":agent"),
-      (agent_is_active, ":agent"),
-      (agent_is_human, ":agent"),
-      (agent_get_troop_id, ":troop", ":agent"),
+    (ti_on_agent_knocked_down, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent"),
+      (agent_get_troop_id, ":troop", ":dead_agent"),
       (eq, ":troop", "trp_quest_miles"),
-      (agent_ai_set_aggressiveness, ":agent", 1000),
-      (agent_force_rethink, ":agent"),
-    (try_end),
-    (mission_disable_talk),
+      (assign, "$temp2", 2),
     ]),
-    (1, 0, 0,
-    [(eq, "$temp2", 2),],
-    [(team_set_relation, 1, 2,1), # -1 for enemy, 1 for friend, 0 for neutral
-    (team_set_relation,2,1,1),
-    (team_set_relation,0,1,1),
-    (team_set_relation,0,2,1),
-    (team_set_relation,2,0,1),
-    (team_set_relation,1,0,1),
-    (finish_party_battle_mode),
-    (mission_enable_talk),
-    (start_mission_conversation, "trp_quest_miles"),
+
+    (3, 0, 0,[
+      (eq, "$temp1", 1),
+      (neq, "$temp2", 3),
+    ],[
+      (finish_mission, 2),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 1500),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+    (0.5, 0, 0,[(eq, "$temp2", 1),],[
+      (team_set_relation, 1, 2, -1), # -1 for enemy, 1 for friend, 0 for neutral
+      (team_set_relation,2,1,-1),
+      (team_set_relation,0,1,1),
+      (team_set_relation,0,2,1),
+      (team_set_relation,2,0,1),
+      (team_set_relation,1,0,1),
+      (set_party_battle_mode),
+      (try_for_agents, ":agent"),
+        (agent_is_alive, ":agent"),
+        (agent_is_active, ":agent"),
+        (agent_is_human, ":agent"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (eq, ":troop", "trp_quest_miles"),
+        (agent_ai_set_aggressiveness, ":agent", 10000),
+        (agent_force_rethink, ":agent"),
+      (try_end),
+      (mission_disable_talk),
+    ]),
+    (1, 0, 0,[(eq, "$temp2", 2),],[
+      (team_set_relation, 1, 2,1), # -1 for enemy, 1 for friend, 0 for neutral
+      (team_set_relation,2,1,1),
+      (team_set_relation,0,1,1),
+      (team_set_relation,0,2,1),
+      (team_set_relation,2,0,1),
+      (team_set_relation,1,0,1),
+      (finish_party_battle_mode),
+      (mission_enable_talk),
+      (start_mission_conversation, "trp_quest_miles"),
     ]),
     # (2, 0, 0,
     # [(eq, "$temp2", 3),  (neq, "$temp1", 1),],
@@ -30819,6 +30811,63 @@ mission_templates = [
     common_inventory_not_available,
     ambient_set_agents_for_sounds,
     ambient_agent_play_sound,
+    ambient_scene_play_loop,
+    ambient_scene_play_random_sound,
+]),
+
+("walhalla_indoor", 0, -1,
+  "Test.",[
+    (0,mtef_scene_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (1,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (2,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (3,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (4,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+    (5,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
+  ], global_common_triggers +
+  [
+    cannot_spawn_commoners,
+    (0, 0, ti_once, [],[
+      (mission_cam_set_screen_color, 0xFF736252), #roughly the colour of the menu bg
+      (mission_cam_animate_to_screen_color, 0x00736252, 1500),
+    ]),
+
+    (ti_tab_pressed, 0, 0,[],[
+      (display_message, "str_cannot_leave_now"),
+    ]),
+
+    common_inventory_not_available,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+]),
+
+("walhalla", 0, -1,
+  "Test.",[
+    (0,mtef_scene_source,0,0,1,[]),
+    (1,mtef_scene_source,0,0,1,[]),
+  ], global_common_triggers +
+  [
+    cannot_spawn_commoners,
+    (ti_before_mission_start, 0, 0, [],[
+      (scene_set_day_time, 0),
+      (set_global_cloud_amount, 100),
+      (set_global_haze_amount, 100),
+    ]),
+    (ti_after_mission_start, 0, 0, [],[
+      (set_fog_distance, 75, 0x808080),
+    ]),
+
+    (0, 0, ti_once, [],[
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 2000),
+    ]),
+
+    (ti_tab_pressed, 0, 0,[],[
+      (tutorial_box, "@Hint: Enter the longhouse.", "str_cannot_leave_now"),
+      # (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+      # (finish_mission, 3),
+    ]),
+
+    common_inventory_not_available,
     ambient_scene_play_loop,
     ambient_scene_play_random_sound,
 ]),
