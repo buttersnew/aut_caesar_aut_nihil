@@ -25,21 +25,7 @@ quests = [
   ("escort_lady", "Generic Quest: Escort {s13} to {s14}", qf_random_quest,
   "{!}None"
   ),
-  ## ("rescue_lady_under_siege", "Rescue {s3} from {s4}", qf_random_quest,
-  ##  "{s1} asked you to rescue his {s7} {s3} from {s4} and return her back to him."
-  ##  ),
-  ## ("deliver_message_to_lover", "Deliver Message to {s3}", qf_random_quest,
-  ##  "{s1} asked you to take a message to his lover {s3} at {s4}."
-  ##  ),
-  ## ("bring_prisoners_to_enemy", "Bring Prisoners to {s4}", qf_random_quest,
-  ##  "{s1} asked you to bring {reg1} {s3} as prisoners to the guards at {s4}."
-  ##  ),
-  ## ("bring_reinforcements_to_siege", "Bring Reinforcements to the Siege of {s5}", qf_random_quest,
-  ##  "{s1} asked you to bring {reg1} {s3} to {s4} at the siege of {s5}."
-  ##  ),
-  ## ("deliver_supply_to_center_under_siege", "Deliver Supplies to {s5}", qf_random_quest,
-  ##  "TODO: Take {reg1} cartloads of supplies from constable {s3} and deliver them to constable {s4} at {s5}."
-  ##  ),
+
   ("deal_with_bandits_at_lords_village", "Generic Quest: Save the village of {s15} from bandits", qf_random_quest,
   "{!}{s13} asked you to deal with the bandits who took refuge in his village of {s15} and then report back to him."
   ),
