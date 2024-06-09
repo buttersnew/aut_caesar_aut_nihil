@@ -1697,7 +1697,7 @@ scene_props = [
    [
    (ti_on_scene_prop_init,
     [
-     (particle_system_add_new, "psys_moon_beam_1"),
+    #  (particle_system_add_new, "psys_moon_beam_1"),
      (particle_system_add_new, "psys_moon_beam_paricle_1"),
     ]),
    ]),
@@ -1945,8 +1945,7 @@ scene_props = [
  ("viking_house_b_destroy",0,"viking_house_b_destroy","bo_viking_house_b_destroy", []),
 
  ("harbour_a",0,"harbour_a","bo_harbour_a", []),
- ("sea_foam_a",0,"0","0",
-   [
+ ("sea_foam_a",0,"0","0",[
    (ti_on_scene_prop_init,
     [
      (particle_system_add_new, "psys_sea_foam_a"),
