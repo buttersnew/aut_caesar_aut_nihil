@@ -136,6 +136,8 @@ tracks = [
   ("travel_khergit4", "nomad_peace_4.ogg", mtf_culture_3|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("travel_khergit5", "travel_caoyuan_01.ogg", mtf_culture_3|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
 
+  ("travel_khergit6", "beautiful_steppe.ogg", mtf_culture_3|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
+
   ("travel_neutral0", "generic_1.ogg", mtf_culture_all|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night),
   ("travel_neutral2", "generic_2.ogg", mtf_culture_all|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night),
   ("travel_neutral3", "generic_3.ogg", mtf_culture_all|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night),
