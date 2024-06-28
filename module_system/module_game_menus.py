@@ -2234,6 +2234,12 @@ game_menus = [
       (troop_set_slot, "trp_sporus", slot_troop_betrothed, 0),
       (change_screen_map),
     ]),
+
+    # ("camp_action",[
+    # ],"Test event",[
+    #   (jump_to_menu, "mnu_emperor_event_26"),
+    # ]),
+
     # ("camp_action",[
     #   (ge, "$cheat_mode", 1)
     # ],"Test marshal election.",[
@@ -15186,6 +15192,10 @@ game_menus = [
             (else_try),
                 (eq, "$event_oneuse", 28),
                 (assign, ":event_juice", "mnu_event_28_juicio"),
+                (val_add, "$event_oneuse", 1),
+            (else_try),
+                (eq, "$event_oneuse", 29),
+                (assign, ":event_juice", "mnu_event_29_juicio"),
                 (val_add, "$event_oneuse", 1),
             (else_try),
                 #(ge, "$event_oneuse", 21),
@@ -33234,6 +33244,179 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
+("emperor_event_24",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Vestal virgin^^After thirty years of devoted service, the Vestal Virgin {s19}, a distance cousin of {s21}, completes her sacred duties and is now free to leave the temple."
+  +" As Caesar, you must decide her fate. Will you honor her with a generous dowry for her years of unwavering commitment,"
+  +" or will you deny her this gift and return her to the world with nothing?",
+  "none",[
+    (try_begin),
+        (call_script, "script_cf_get_random_lord_of_faction", "$players_kingdom"),
+        (assign, "$temp", reg0),
+        (str_store_troop_name_plural, s21, "$temp"),
+        (set_background_mesh, "mesh_pic_woman"),
+
+        (store_random_in_range, ":name_1", "str_roman_female_name_01", "str_roman_female_name_end"),
+        (store_random_in_range, ":name_2", "str_roman_female_cognomen_1", "str_roman_female_cognomen_end"),
+        (str_store_string, s19, ":name_1"),
+        (str_store_string, s20, ":name_2"),
+        (str_store_string, s19, "@{s19} {s20}"),
+
+    (else_try),
+        (jump_to_menu, "mnu_auto_return_map"),
+    (try_end),
+	],[
+    ("choice_01",[
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 1000000),
+    ],"Give her a huge dowry of 1,000,000 denars.",[
+      (add_xp_as_reward, 1000),
+      (troop_remove_gold, "trp_player", 1000000),
+      (call_script, "script_change_player_relation_with_troop", "$temp", 40),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", 25),
+      (call_script, "script_change_player_honor", 20),
+      (call_script, "script_change_troop_renown", "trp_player", 50),
+      (str_store_string, s1, "@You bestow upon the former Vestal Virgin a substantial dowry, acknowledging her three decades of loyalty and sacrifice. Upon making your decision, the temple priests and the people of Rome take note of your choice. They praise your generosity"),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("choice_02",[
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 500000),
+    ],"Give her a dowry of 500,000 denars.",[
+      (troop_remove_gold, "trp_player", 500000),
+      (add_xp_as_reward, 500),
+      (call_script, "script_change_player_relation_with_troop", "$temp", 20),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", 12),
+      (call_script, "script_change_player_honor", 10),
+      (call_script, "script_change_troop_renown", "trp_player", 25),
+      (str_store_string, s1, "@You bestow upon the former Vestal Virgin a substantial dowry, acknowledging her three decades of loyalty and sacrifice. Upon making your decision, the temple priests and the people of Rome take note of your choice. They praise your generosity."),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("choice_03",[
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 250000),
+    ],"Give her a dowry of 250,000 denars.",[
+      (troop_remove_gold, "trp_player", 250000),
+      (add_xp_as_reward, 250),
+      (call_script, "script_change_player_relation_with_troop", "$temp", 5),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", 6),
+      (call_script, "script_change_player_honor", 5),
+      (call_script, "script_change_troop_renown", "trp_player", 10),
+      (str_store_string, s1, "@You bestow upon the former Vestal Virgin a substantial dowry, acknowledging her three decades of loyalty and sacrifice. Upon making your decision, the temple priests and the people of Rome take note of your choice. They praise your generosity."),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("choice_04",[],"Give her no dowry.",[
+      (call_script, "script_change_player_relation_with_center", "p_town_6", -5),
+      (call_script, "script_change_player_honor", -10),
+      (call_script, "script_change_troop_renown", "trp_player", -25),
+      (str_store_string, s1, "@You send the former Vestal Virgin away without a dowry. Upon making your decision, the temple priests and the people of Rome take note of your choice. Rumours spread that you are greedy!"),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+]),
+
+("emperor_event_25",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Downfall of a family^^A once-prosperous family, the gens Pupii, has fallen on hard times and can no longer afford the wealth required to maintain their status among the equites."
+  +" Their fall from grace is imminent. As Caesar, you hold the power to intervene. Will you choose to provide them with the funds necessary to retain their standing,"
+  +" or will you let them face their fate unaided? They need at least 250,000 denars to maintain their status.",
+  "none",[
+    (set_background_mesh, "mesh_pic_palast"),
+	],[
+    ("choice_01",[
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 1000000),
+    ],"Gift them 1,000,000 denars.",[
+      (add_xp_as_reward, 1000),
+      (troop_remove_gold, "trp_player", 1000000),
+      (call_script, "script_change_player_relation_with_troop", "$temp", 40),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", 25),
+      (call_script, "script_change_player_honor", 20),
+      (call_script, "script_change_troop_renown", "trp_player", 50),
+      (str_store_string, s1, "@You offer the struggling family a substantial sum to help them regain their position among the equites. This act of generosity strengthens your reputation"),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("choice_02",[
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 500000),
+    ],"Gift them 500,000 denars.",[
+      (troop_remove_gold, "trp_player", 500000),
+      (add_xp_as_reward, 500),
+      (call_script, "script_change_player_relation_with_troop", "$temp", 20),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", 12),
+      (call_script, "script_change_player_honor", 10),
+      (call_script, "script_change_troop_renown", "trp_player", 25),
+      (str_store_string, s1, "@You offer the struggling family a substantial sum to help them regain their position among the equites. This act of generosity strengthens your reputation"),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("choice_03",[
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 250000),
+    ],"Gift them 250,000 denars.",[
+      (troop_remove_gold, "trp_player", 250000),
+      (add_xp_as_reward, 250),
+      (call_script, "script_change_player_relation_with_troop", "$temp", 5),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", 6),
+      (call_script, "script_change_player_honor", 5),
+      (call_script, "script_change_troop_renown", "trp_player", 10),
+      (str_store_string, s1, "@You offer the struggling family a substantial sum to help them regain their position among the equites. This act of generosity strengthens your reputation"),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("choice_04",[],"Gift them nothing.",[
+      (call_script, "script_change_player_relation_with_center", "p_town_6", -2),
+      (call_script, "script_change_troop_renown", "trp_player", -25),
+      (str_store_string, s1, "@You refuse to aid the family, allowing them to lose their equestrian status. The family tries everything to smear your reputation, though most people think it's their own fault."),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+]),
+
+("emperor_event_26",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "The state is greedy^^A wealthy woman named {s19}, living in a town in Asia minor, died without a will."
+  +" This situation prompted a legal question about what should happen to her substantial estate, worth 200,000 denars."
+  +" Given the significant wealth involved and the lack of clear heirs, the decision fell to the Roman senate."
+  +" The senate decided, that the wealth should go to the state according to law."
+  +" Though {s21} asked you to intervene and donate the money to his family. {s19} was a freed slave of his family.",
+  "none",[
+    (try_begin),
+        (call_script, "script_cf_get_random_lord_of_faction", "$players_kingdom"),
+        (assign, "$temp", reg0),
+        (str_store_troop_name_plural, s21, "$temp"),
+        (set_background_mesh, "mesh_pic_woman"),
+        (store_random_in_range, ":name_1", "str_roman_female_name_01", "str_roman_female_name_end"),
+        (store_random_in_range, ":name_2", "str_roman_female_cognomen_1", "str_roman_female_cognomen_end"),
+        (str_store_string, s19, ":name_1"),
+        (str_store_string, s20, ":name_2"),
+        (str_store_string, s19, "@{s19} {s20}"),
+    (else_try),
+        (jump_to_menu, "mnu_auto_return_map"),
+    (try_end),
+	],[
+    ("choice_01",[],"Allow {s21}'s family to inherit her assets.",[
+      (call_script, "script_change_player_honor", 5),
+      (call_script, "script_change_player_relation_with_troop", "$temp", 25),
+      (call_script, "script_change_relation_with_family_friends_enemies", "$temp", 1, 10, "trp_player"),
+      (str_store_troop_name_plural, s21, "$temp"),
+      (str_store_string, s1, "@{s21} is very happy about your support. Though, the senate is upset as you used your veto and acted againest their decision."),
+
+      (call_script, "script_change_senate_support", -5, 0),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("choice_02",[],"The estate shall be auctioned and the funds go to the Roman state!",[
+      (call_script, "script_add_to_faction_treasury", 200000, "$players_kingdom"),
+      (str_store_troop_name_plural, s21, "$temp"),
+      (call_script, "script_change_player_relation_with_troop", "$temp", -50),
+      (call_script, "script_change_relation_with_family_friends_enemies", "$temp", -1, 30, "trp_player"),
+      (str_store_string, s1, "@Dura lex, sed lex! The law is harsh, but it is the law. Though {s21} is upset about your decision."),
+      (assign, "$temp", "mesh_pic_family"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+]),
   #####
  ### provincial events
  #####
@@ -42981,6 +43164,43 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
+("event_29_juicio", menu_text_color(0xFF000000) | mnf_disable_all_keys,
+  "Renovating a temple^^The college of priests is asking for 50,000 denars to renovate an old temple, which has been build several centuries ago."
+  +" The temple was once a great side of the town, but has been neglected by time.",
+  "none", [
+    (set_background_mesh, "mesh_pic_girls"),
+  ], [
+    ("option_1", [
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 50000),
+    ], "Donate 50,000 denars.", [
+      (str_clear, s1),
+      (call_script, "script_change_player_relation_with_center", "$current_town", 5),
+      (troop_remove_gold, "trp_player", 50000),
+      (str_store_string, s1, "@The priests are happy about your donation and spread word of your wisdom and wealth."),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+    ("option_2", [
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 25000),
+    ], "Donate only 25,000 denars.", [
+      (str_clear, s1),
+      (call_script, "script_change_player_relation_with_center", "$current_town", 2),
+      (troop_remove_gold, "trp_player", 50000),
+      (str_store_string, s1, "@The priests are happy about your donation, although its less than the expected sum. They spread word of your wisdom and wealth."),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+    ("option_3", [
+    ], "Donate nothing.", [
+      (str_clear, s1),
+      (call_script, "script_change_player_relation_with_center", "$current_town", -5),
+      (str_store_string, s1, "@The priests are angry and spread word about your greed."),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+]),
 
 ("event_juicio_end",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "{s1}",
