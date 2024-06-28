@@ -5223,7 +5223,7 @@ attrib_level_12,wp(100),knows_level_12,barbarian_man_face_old_1,barbarian_man_fa
 ["dacian_priest","Dacian Priest","Dacian Priest",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 [itm_celtic_boots, itm_dacian_light11, itm_dacian_light10,itm_dacian_light5, itm_dacian_light3, itm_dacian_sword],
 attrib_level_12,wp(100),knows_level_12,barbarian_man_face_old_1,barbarian_man_face_older_2],
-["sarmatian_priest","Sky-Priest","Sky-Priest",tf_male|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["sarmatian_priest","Enaree","Enarei",tf_male|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 [itm_sarmatian_shoes, itm_kaftan_1, itm_kaftan_2,itm_kaftan_3, itm_sarmatian_cap_2, itm_sarmatian_cap_1, itm_sarmatian_ringsword_1],
 attrib_level_12,wp(100),knows_level_12,scythian_face_11,scythian_face_12],
 ["caucasian_priest","Kadagi","Kadagi",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
