@@ -57078,6 +57078,8 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (troop_add_item, "trp_player", "itm_rice", 0),
       (rest_for_hours, 72, 16, 0),
       (call_script, "script_end_quest", "qst_wlodowiecus_adventure_2"),
+      (store_current_day, ":day"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_timer, ":day"),
       (change_screen_map),
     ]),
 ]),

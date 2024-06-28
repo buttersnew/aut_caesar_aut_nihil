@@ -169,6 +169,13 @@ triggers = [
     (neq, "$g_player_is_captive", 1),
     (neg|check_quest_active, "qst_wlodowiecus_adventure"),
     (quest_slot_ge, "qst_wlodowiecus_adventure", slot_quest_current_state, 1),
+
+    (quest_get_slot, ":timer", "qst_wlodowiecus_adventure", slot_quest_timer),
+    (neq, ":timer", 0),
+    (store_current_day, ":cur_day"),
+    (val_sub, ":cur_day", ":timer"),
+    (ge, ":cur_day", 14), ## 14 days
+
     (quest_slot_eq, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 0),
     (store_character_level, ":level", "trp_player"),
     (ge, ":level", 16),
@@ -181,6 +188,13 @@ triggers = [
     (neg|check_quest_active, "qst_wlodowiecus_adventure"),
     (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
     (quest_slot_ge, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 1),
+
+    (quest_get_slot, ":timer", "qst_wlodowiecus_adventure_2", slot_quest_timer),
+    (neq, ":timer", 0),
+    (store_current_day, ":cur_day"),
+    (val_sub, ":cur_day", ":timer"),
+    (ge, ":cur_day", 14), ## 14 days
+
     (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 0),
     (store_character_level, ":level", "trp_player"),
     (ge, ":level", 21),
