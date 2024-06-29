@@ -12731,7 +12731,7 @@ simple_triggers = [
     (neq, "$g_player_is_captive", 1),
     (eq, "$g_is_emperor", 1),
     (le, "$g_civil_war", 0),
-    (store_mul, ":chance", "$g_taxrate",  "$g_taxrate"),
+    (store_mul, ":chance", "$g_taxrate_business",  "$g_taxrate_business"),
     (val_add, ":chance", "$g_unrest"),
 
     (store_random_in_range, ":rand", 0, 10000),
