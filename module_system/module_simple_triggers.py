@@ -2031,143 +2031,143 @@ simple_triggers = [
             (try_end),
         (try_end),
 
-        #Auto-indictment or defection
-        (try_begin),
-            (assign, ":block", 0),
-            (try_begin),
-                (neq, ":troop_no", "trp_player"),
-                (faction_slot_eq, ":faction", slot_faction_government_type, gov_imperial),
-                (assign, ":block", 1),
-            (try_end),
-            (eq, ":block", 0),
-            (try_begin),
-                (check_quest_active, "qst_player_treason"),
-                (eq, ":troop_no", "trp_player"),
-                (assign, ":block", 1),
-            (try_end),
-            (eq, ":block", 0),
-            (this_or_next|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-            (eq, ":troop_no", "trp_player"),
+        # #Auto-indictment or defection
+        # (try_begin),
+        #     (assign, ":block", 0),
+        #     (try_begin),
+        #         (neq, ":troop_no", "trp_player"),
+        #         (faction_slot_eq, ":faction", slot_faction_government_type, gov_imperial),
+        #         (assign, ":block", 1),
+        #     (try_end),
+        #     (eq, ":block", 0),
+        #     (try_begin),
+        #         (check_quest_active, "qst_player_treason"),
+        #         (eq, ":troop_no", "trp_player"),
+        #         (assign, ":block", 1),
+        #     (try_end),
+        #     (eq, ":block", 0),
+        #     (this_or_next|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+        #     (eq, ":troop_no", "trp_player"),
 
-            #There must be a valid faction leader.  The faction leader won't defect from his own kingdom.
-            #To avoid certain potential complications, also skip the defection/indictment check for the
-            #spouse of the faction leader.  (Code to make that possible can be added elsewhere if
-            #necessary.)
-            (faction_get_slot, ":faction_leader", ":faction", slot_faction_leader),
-            (gt, ":faction_leader", -1),
-            (neq, ":troop_no", ":faction_leader"),
-            (neg|troop_slot_eq, ":troop_no", slot_troop_spouse, ":faction_leader"),
-            (neg|troop_slot_eq, ":faction_leader", slot_troop_spouse, ":troop_no"),
+        #     #There must be a valid faction leader.  The faction leader won't defect from his own kingdom.
+        #     #To avoid certain potential complications, also skip the defection/indictment check for the
+        #     #spouse of the faction leader.  (Code to make that possible can be added elsewhere if
+        #     #necessary.)
+        #     (faction_get_slot, ":faction_leader", ":faction", slot_faction_leader),
+        #     (gt, ":faction_leader", -1),
+        #     (neq, ":troop_no", ":faction_leader"),
+        #     (neg|troop_slot_eq, ":troop_no", slot_troop_spouse, ":faction_leader"),
+        #     (neg|troop_slot_eq, ":faction_leader", slot_troop_spouse, ":troop_no"),
 
-            (assign, ":num_centers", 0),
-            (try_for_range,":cur_center", walled_centers_begin, walled_centers_end),
-                (store_faction_of_party, ":faction_of_center", ":cur_center"),
-                (eq, ":faction_of_center", ":faction"),
-                (val_add, ":num_centers", 1),
-            (try_end),
+        #     (assign, ":num_centers", 0),
+        #     (try_for_range,":cur_center", walled_centers_begin, walled_centers_end),
+        #         (store_faction_of_party, ":faction_of_center", ":cur_center"),
+        #         (eq, ":faction_of_center", ":faction"),
+        #         (val_add, ":num_centers", 1),
+        #     (try_end),
 
-            #we are counting num_centers to allow defection although there is high relation between faction leader and troop.
-            #but this rule should not applied for player's faction and player_supporters_faction so thats why here 1 is added to num_centers in that case.
-            (try_begin),
-                (this_or_next|eq, ":faction", "$players_kingdom"),
-                (eq, ":faction", "fac_player_supporters_faction"),
-                (val_add, ":num_centers", 1),
-            (try_end),
+        #     #we are counting num_centers to allow defection although there is high relation between faction leader and troop.
+        #     #but this rule should not applied for player's faction and player_supporters_faction so thats why here 1 is added to num_centers in that case.
+        #     (try_begin),
+        #         (this_or_next|eq, ":faction", "$players_kingdom"),
+        #         (eq, ":faction", "fac_player_supporters_faction"),
+        #         (val_add, ":num_centers", 1),
+        #     (try_end),
 
-            (call_script, "script_troop_get_relation_with_troop", ":troop_no", ":faction_leader"),
+        #     (call_script, "script_troop_get_relation_with_troop", ":troop_no", ":faction_leader"),
 
-            (this_or_next|le, reg0, -75), #was -50
-            (eq, ":num_centers", 0), #if there is no walled centers that faction has defection happens 100%.
+        #     (this_or_next|le, reg0, -75), #was -50
+        #     (eq, ":num_centers", 0), #if there is no walled centers that faction has defection happens 100%.
 
-            #(this_or_next|eq, ":troop_no", "trp_player"),
-            (assign, ":c", 0),
-            (try_begin),
-                (neq, ":troop_no", "trp_player"),
-                (call_script, "script_cf_troop_can_intrigue", ":troop_no", 0), #Should include battle, prisoner, in a castle with others
-                (assign, ":c", 1),
-            (else_try),
-                (eq, ":troop_no", "trp_player"),
-                (eq, "$g_player_is_captive", 0),
-                (assign, ":c", 1),
-            (try_end),
-            (eq, ":c", 1),
-            (store_random_in_range, ":who_moves_first", 0, 2),
-            #The more centralized the faction, the greater the chance the liege will indict
-            #the lord before he defects.
-            (faction_get_slot, reg0, ":faction", dplmc_slot_faction_centralization),
-            (val_clamp, reg0, -3, 4),
-            (val_add, reg0, 10),#7 minimum, 13 maximum
-            (store_random_in_range, ":random", 0, reg0),
-            #Random  < 5: The lord defects
-            #Random >= 5: The liege indicts the lord for treason
+        #     #(this_or_next|eq, ":troop_no", "trp_player"),
+        #     (assign, ":c", 0),
+        #     (try_begin),
+        #         (neq, ":troop_no", "trp_player"),
+        #         (call_script, "script_cf_troop_can_intrigue", ":troop_no", 0), #Should include battle, prisoner, in a castle with others
+        #         (assign, ":c", 1),
+        #     (else_try),
+        #         (eq, ":troop_no", "trp_player"),
+        #         (eq, "$g_player_is_captive", 0),
+        #         (assign, ":c", 1),
+        #     (try_end),
+        #     (eq, ":c", 1),
+        #     (store_random_in_range, ":who_moves_first", 0, 2),
+        #     #The more centralized the faction, the greater the chance the liege will indict
+        #     #the lord before he defects.
+        #     (faction_get_slot, reg0, ":faction", dplmc_slot_faction_centralization),
+        #     (val_clamp, reg0, -3, 4),
+        #     (val_add, reg0, 10),#7 minimum, 13 maximum
+        #     (store_random_in_range, ":random", 0, reg0),
+        #     #Random  < 5: The lord defects
+        #     #Random >= 5: The liege indicts the lord for treason
 
-            (try_begin),
-                (this_or_next|eq, ":num_centers", 0), #Thanks Caba`drin & Osviux
-                (neq, ":who_moves_first", 0),
-                (lt, ":random", 5),
-                (neq, ":troop_no", "trp_player"),
+        #     (try_begin),
+        #         (this_or_next|eq, ":num_centers", 0), #Thanks Caba`drin & Osviux
+        #         (neq, ":who_moves_first", 0),
+        #         (lt, ":random", 5),
+        #         (neq, ":troop_no", "trp_player"),
 
 
-                (store_faction_of_troop, ":orig_faction", ":troop_no"),
-                (call_script, "script_lord_find_alternative_faction", ":troop_no"),
-                (assign, ":new_faction", reg0),
+        #         (store_faction_of_troop, ":orig_faction", ":troop_no"),
+        #         (call_script, "script_lord_find_alternative_faction", ":troop_no"),
+        #         (assign, ":new_faction", reg0),
 
-                (try_begin),
-                    (neq, ":new_faction", ":orig_faction"),
-                    (is_between, ":new_faction", kingdoms_begin, kingdoms_end),
-                    (call_script, "script_change_troop_faction", ":troop_no", ":new_faction"),
-                    (str_store_troop_name_link, s1, ":troop_no"),
-                    (str_store_faction_name_link, s2, ":new_faction"),
-                    (str_store_faction_name_link, s3, ":faction"),
-                    (try_begin),
-                        (ge, "$cheat_mode", 1),
-                        (str_store_troop_name, s4, ":troop_no"),
-                        (display_message, "@{!}DEBUG - {s4} faction changed in defection"),
-                    (try_end),
-                    (call_script, "script_dplmc_store_troop_is_female", ":troop_no"),
-                    (assign, reg4, reg0),
-                    #SB : factionalize colors
-                    (str_store_string, s4, "str_lord_defects_ordinary"),
-                    (faction_get_color, ":color", ":new_faction"),
-                    (display_log_message, s4, ":color"),
-                    (try_begin),
-                        (eq, "$cheat_mode", 1),
-                        (this_or_next|eq, ":new_faction", "$players_kingdom"),
-                        (eq, ":faction", "$players_kingdom"),
-                        (call_script, "script_add_notification_menu", "mnu_notification_lord_defects", ":troop_no", ":faction"),
-                    (try_end),
-                (try_end),
-            (else_try),
-                (neq, ":faction_leader", "trp_player"),
-                (call_script, "script_troop_get_relation_with_troop", ":troop_no", ":faction_leader"),
-                (le, reg0, -75), #was -50
-                (try_begin),
-                    (eq, ":troop_no", "trp_player"),
-                    (faction_slot_eq, ":faction", slot_faction_government_type, gov_imperial),
-                    (str_store_troop_name, s22, ":faction_leader"),
-                    (dialog_box, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship.", "@Treason"),
-                    (call_script, "script_change_player_relation_with_troop", ":faction_leader", -5),
-                    (str_store_string, s2, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship."),
-                    (call_script, "script_start_quest", "qst_player_treason", ":faction_leader"),
-                    (quest_set_slot, "qst_player_treason", slot_quest_current_state, 1),
-                    (store_current_day, ":day"),
-                    (quest_set_slot, "qst_player_treason", slot_quest_timer, ":day"),
-                (else_try),
-                    (neq, ":troop_no", "trp_player"),
-                    (call_script, "script_indict_lord_for_treason", ":troop_no", ":faction"),
-                (try_end),
-            (try_end),
+        #         (try_begin),
+        #             (neq, ":new_faction", ":orig_faction"),
+        #             (is_between, ":new_faction", kingdoms_begin, kingdoms_end),
+        #             (call_script, "script_change_troop_faction", ":troop_no", ":new_faction"),
+        #             (str_store_troop_name_link, s1, ":troop_no"),
+        #             (str_store_faction_name_link, s2, ":new_faction"),
+        #             (str_store_faction_name_link, s3, ":faction"),
+        #             (try_begin),
+        #                 (ge, "$cheat_mode", 1),
+        #                 (str_store_troop_name, s4, ":troop_no"),
+        #                 (display_message, "@{!}DEBUG - {s4} faction changed in defection"),
+        #             (try_end),
+        #             (call_script, "script_dplmc_store_troop_is_female", ":troop_no"),
+        #             (assign, reg4, reg0),
+        #             #SB : factionalize colors
+        #             (str_store_string, s4, "str_lord_defects_ordinary"),
+        #             (faction_get_color, ":color", ":new_faction"),
+        #             (display_log_message, s4, ":color"),
+        #             (try_begin),
+        #                 (eq, "$cheat_mode", 1),
+        #                 (this_or_next|eq, ":new_faction", "$players_kingdom"),
+        #                 (eq, ":faction", "$players_kingdom"),
+        #                 (call_script, "script_add_notification_menu", "mnu_notification_lord_defects", ":troop_no", ":faction"),
+        #             (try_end),
+        #         (try_end),
+        #     (else_try),
+        #         (neq, ":faction_leader", "trp_player"),
+        #         (call_script, "script_troop_get_relation_with_troop", ":troop_no", ":faction_leader"),
+        #         (le, reg0, -75), #was -50
+        #         (try_begin),
+        #             (eq, ":troop_no", "trp_player"),
+        #             (faction_slot_eq, ":faction", slot_faction_government_type, gov_imperial),
+        #             (str_store_troop_name, s22, ":faction_leader"),
+        #             (dialog_box, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship.", "@Treason"),
+        #             (call_script, "script_change_player_relation_with_troop", ":faction_leader", -5),
+        #             (str_store_string, s2, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship."),
+        #             (call_script, "script_start_quest", "qst_player_treason", ":faction_leader"),
+        #             (quest_set_slot, "qst_player_treason", slot_quest_current_state, 1),
+        #             (store_current_day, ":day"),
+        #             (quest_set_slot, "qst_player_treason", slot_quest_timer, ":day"),
+        #         (else_try),
+        #             (neq, ":troop_no", "trp_player"),
+        #             (call_script, "script_indict_lord_for_treason", ":troop_no", ":faction"),
+        #         (try_end),
+        #     (try_end),
 
-            #Update :faction if it has changed
-            (try_begin),
-                (eq, ":troop_no", "trp_player"),
-                (assign, reg0, "$players_kingdom"),
-            (else_try),
-                (store_faction_of_troop, reg0, ":troop_no"),
-            (try_end),
-            (neq, reg0, ":faction"),#Fall through if indictment/defection didn't happen
-            (assign, ":faction", reg0),
-        (try_end),
+        #     #Update :faction if it has changed
+        #     (try_begin),
+        #         (eq, ":troop_no", "trp_player"),
+        #         (assign, reg0, "$players_kingdom"),
+        #     (else_try),
+        #         (store_faction_of_troop, reg0, ":troop_no"),
+        #     (try_end),
+        #     (neq, reg0, ":faction"),#Fall through if indictment/defection didn't happen
+        #     (assign, ":faction", reg0),
+        # (try_end),
 
         #Reduce grudges over time
         (try_begin),
@@ -5009,6 +5009,46 @@ simple_triggers = [
             (try_end),
             (call_script, "script_game_get_party_speed_multiplier", ":scythen_horde"),
         (try_end),
+    (try_end),
+
+    #indictment for player
+    (try_begin),
+        #There must be a valid faction leader.  The faction leader won't defect from his own kingdom.
+        #To avoid certain potential complications, also skip the defection/indictment check for the
+        #spouse of the faction leader.  (Code to make that possible can be added elsewhere if
+        #necessary.)
+        (eq, "$g_player_is_captive", 0),
+        (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
+        (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+        (gt, ":faction_leader", -1),
+        (neq, "trp_player", ":faction_leader"),
+        (neg|troop_slot_eq, "trp_player", slot_troop_spouse, ":faction_leader"),
+        (neg|troop_slot_eq, ":faction_leader", slot_troop_spouse, "trp_player"),
+
+        (call_script, "script_troop_get_relation_with_troop", "trp_player", ":faction_leader"),
+        (le, reg0, -75), #was -50
+
+        #The more centralized the faction, the greater the chance the liege will indict
+        #the lord before he defects.
+        (faction_get_slot, reg0, "$players_kingdom", dplmc_slot_faction_centralization),
+        (val_clamp, reg0, -3, 4),
+        (val_add, reg0, 10),#7 minimum, 13 maximum
+        (store_random_in_range, ":random", 0, reg0),
+        #Random  < 5: The lord defects
+        #Random >= 5: The liege indicts the lord for treason
+
+
+        (lt, ":random", 5),
+        # (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+        (str_store_troop_name, s22, ":faction_leader"),
+        (dialog_box, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship.", "@Treason"),
+        (call_script, "script_change_player_relation_with_troop", ":faction_leader", -5),
+        (str_store_string, s2, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship."),
+        (call_script, "script_start_quest", "qst_player_treason", ":faction_leader"),
+        (quest_set_slot, "qst_player_treason", slot_quest_current_state, 1),
+        (store_current_day, ":day"),
+        (quest_set_slot, "qst_player_treason", slot_quest_timer, ":day"),
+
     (try_end),
 ]),
 

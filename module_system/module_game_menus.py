@@ -58573,9 +58573,15 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 ]),
 
 ("treason",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Praetorian guards approach.^^They take you prisoner. The indictment is read and you are found guilty. You are sentenced to death by crucifixion.",
+  "{s7}",
   "none",[
     (set_background_mesh, "mesh_pic_kreuzigung"),
+    (try_begin),
+        (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+        (str_store_string, s7, "@Praetorian guards approach.^^They take you prisoner. The indictment is read and you are found guilty. You are sentenced to death by crucifixion."),
+    (else_try),
+        (str_store_string, s7, "@Guards of the king approach.^^They take you prisoner. The indictment is read and you are found guilty. You are sentenced to death by cutting of your head with a sword."),
+    (try_end),
   ],[
     ("answere_1",[],"Death waits...",[
       (assign, "$temp", 0),
