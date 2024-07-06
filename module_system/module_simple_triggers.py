@@ -12731,14 +12731,26 @@ simple_triggers = [
     (neq, "$g_player_is_captive", 1),
     (eq, "$g_is_emperor", 1),
     (le, "$g_civil_war", 0),
-    (store_mul, ":chance", "$g_taxrate_business",  "$g_taxrate_business"),
-    (val_add, ":chance", "$g_unrest"),
 
-    (store_random_in_range, ":rand", 0, 10000),
-    (val_sub, ":rand", "$g_unrest"),
-    (lt, ":rand", ":chance"),
+    (try_begin),
+        (store_mul, ":chance", "$g_taxrate_business",  "$g_taxrate_business"),
+        (val_add, ":chance", "$g_unrest"),
 
-    (jump_to_menu, "mnu_nobility_tax_protests"),
+        (store_random_in_range, ":rand", 0, 10000),
+        (val_sub, ":rand", "$g_unrest"),
+        (lt, ":rand", ":chance"),
+
+        (jump_to_menu, "mnu_nobility_tax_protests"),
+    (else_try),
+        (eq, "$edict7", 0),
+        (store_random_in_range, ":rand", 0, 500),
+        (le, ":rand", 50),
+        (store_faction_of_party, ":fac_rome", "p_town_6"),
+        (eq, ":fac_rome", "$players_kingdom"),
+        (jump_to_menu, "mnu_grain_protests"),
+    (try_end),
+
+
 ]),
 
 ]##END OF FILE

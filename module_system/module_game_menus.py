@@ -1252,27 +1252,27 @@ game_menus = [
       (display_message, "@You get money to buy yourself a new ship"),
     ]),
 
-    ("camp_cheat_weather",[
-      (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
-    ],"Party Details.",[
-      (store_num_parties_of_template, reg10, "pt_refugees"),
-      (display_message, "@Curr number of refugees: {reg10}"),
-      (assign, reg10, 0),
-      (display_message, "@number; name; closest center"),
-      (try_for_parties, ":ship"),
-        (try_begin),
-          (party_is_active, ":ship"),
-          (call_script, "script_get_closest_center", ":ship"),
-          (assign, ":closest_center", reg0),
-          (str_store_party_name, s10, ":ship"),
-          (str_store_party_name, s11, ":closest_center"),
-          (display_message, "@{reg10}; {s10}; {s11}"),
-        (else_try),
-          (display_message, "@{reg10}; inactive; none"),
-        (try_end),
-        (val_add, reg10, 1),
-      (try_end),
-    ]),
+    # ("camp_cheat_weather",[
+    #   (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
+    # ],"Party Details.",[
+    #   (store_num_parties_of_template, reg10, "pt_refugees"),
+    #   (display_message, "@Curr number of refugees: {reg10}"),
+    #   (assign, reg10, 0),
+    #   (display_message, "@number; name; closest center"),
+    #   (try_for_parties, ":ship"),
+    #     (try_begin),
+    #       (party_is_active, ":ship"),
+    #       (call_script, "script_get_closest_center", ":ship"),
+    #       (assign, ":closest_center", reg0),
+    #       (str_store_party_name, s10, ":ship"),
+    #       (str_store_party_name, s11, ":closest_center"),
+    #       (display_message, "@{reg10}; {s10}; {s11}"),
+    #     (else_try),
+    #       (display_message, "@{reg10}; inactive; none"),
+    #     (try_end),
+    #     (val_add, reg10, 1),
+    #   (try_end),
+    # ]),
 
     # ("camp_cheat_weather",[(troop_slot_ge, "trp_global_variables", g_is_dev, 1),],
     #     "Set names to grain.",
@@ -1974,66 +1974,67 @@ game_menus = [
          # (heal_party, "p_main_party"),
         # ]
        # ),
-      ("camp_cheat_xp",[(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Add xp to party.",[
-         (set_show_messages, 0),
-         (party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
-         (try_for_range, ":stack", 0, ":num_stacks"), #include player if too lazy to ctrl+x
-            (party_stack_get_troop_id, ":id", "p_main_party", ":stack"),
-            (try_begin),
-                # (troop_is_hero, ":id"),
-                # (store_character_level, ":level", ":id"),
-                # (get_level_boundary, ":xp", ":level"),
+    ("camp_cheat_xp",[
+      (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
+    ],"Add xp to party.",[
+      (set_show_messages, 0),
+      (party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
+      (try_for_range, ":stack", 0, ":num_stacks"), #include player if too lazy to ctrl+x
+          (party_stack_get_troop_id, ":id", "p_main_party", ":stack"),
+          (try_begin),
+              # (troop_is_hero, ":id"),
+              # (store_character_level, ":level", ":id"),
+              # (get_level_boundary, ":xp", ":level"),
+              # (troop_get_xp, ":cur_exp", ":id"),
+              # (val_sub, ":xp", ":cur_exp"),
+              # (add_xp_to_troop, ":xp", ":id"),
+          # (else_try),
+              (party_stack_get_size, ":size", "p_main_party", ":stack"),
+              (call_script, "script_game_get_upgrade_xp", ":id"),
+              (store_mul, ":xp", reg0, ":size"),
+              (try_begin),
+                (troop_is_hero, ":id"),
                 # (troop_get_xp, ":cur_exp", ":id"),
                 # (val_sub, ":xp", ":cur_exp"),
-                # (add_xp_to_troop, ":xp", ":id"),
-            # (else_try),
-                (party_stack_get_size, ":size", "p_main_party", ":stack"),
-                (call_script, "script_game_get_upgrade_xp", ":id"),
-                (store_mul, ":xp", reg0, ":size"),
-                (try_begin),
-                  (troop_is_hero, ":id"),
-                  # (troop_get_xp, ":cur_exp", ":id"),
-                  # (val_sub, ":xp", ":cur_exp"),
-                  (store_character_level, ":level", ":id"),
-                  ##this is so stupid but it works (probably), but add_xp_to_troop caps out at 29999
-                  (assign, ":end", 100),
-                  (try_begin), #assign block of exp
-                    (le, ":level", 10),
-                    (assign, ":xp", 100),
-                  (else_try),
-                    (le, ":level", 25),
-                    (assign, ":xp", 1000),
-                  (else_try), #most people stop before level 30
-                    (le, ":level", 35),
-                    (assign, ":xp", 10000),
-                  (else_try),
-                    (le, ":level", 50),
-                    (assign, ":xp", 30000),
-                  (else_try),
-                    (le, ":level", 60),
-                    (assign, ":xp", 1000000),
-                  (else_try), #good luck, level caps at 63
-                    (assign, ":xp", 10000000),
-                  (try_end),
-                  # (val_mul, ":xp", ":level"),
-                  (try_for_range, ":unused", 0, ":end"),
-                    (party_add_xp_to_stack, "p_main_party", ":stack", ":xp"),
-                    (add_xp_to_troop, 1, ":id"), #this actually upgrades the level
-                    # (add_xp_as_reward, ":xp"),
-                    (store_character_level, ":cur_level", ":id"),
-                    (lt, ":level", ":cur_level"), #done
-                    (assign, ":end", 0),
-                  (try_end),
+                (store_character_level, ":level", ":id"),
+                ##this is so stupid but it works (probably), but add_xp_to_troop caps out at 29999
+                (assign, ":end", 100),
+                (try_begin), #assign block of exp
+                  (le, ":level", 10),
+                  (assign, ":xp", 100),
                 (else_try),
-                  (party_add_xp_to_stack, "p_main_party", ":stack", ":xp"),
+                  (le, ":level", 25),
+                  (assign, ":xp", 1000),
+                (else_try), #most people stop before level 30
+                  (le, ":level", 35),
+                  (assign, ":xp", 10000),
+                (else_try),
+                  (le, ":level", 50),
+                  (assign, ":xp", 30000),
+                (else_try),
+                  (le, ":level", 60),
+                  (assign, ":xp", 1000000),
+                (else_try), #good luck, level caps at 63
+                  (assign, ":xp", 10000000),
                 (try_end),
-            (try_end),
-         (try_end),
-         (set_show_messages, 1),
-         # (party_upgrade_with_xp, "p_main_party", 1, 0), #random upgrade - disabled
-         # (jump_to_menu, "mnu_camp_cheat"),
-        ]
-       ),
+                # (val_mul, ":xp", ":level"),
+                (try_for_range, ":unused", 0, ":end"),
+                  (party_add_xp_to_stack, "p_main_party", ":stack", ":xp"),
+                  (add_xp_to_troop, 1, ":id"), #this actually upgrades the level
+                  # (add_xp_as_reward, ":xp"),
+                  (store_character_level, ":cur_level", ":id"),
+                  (lt, ":level", ":cur_level"), #done
+                  (assign, ":end", 0),
+                (try_end),
+              (else_try),
+                (party_add_xp_to_stack, "p_main_party", ":stack", ":xp"),
+              (try_end),
+          (try_end),
+      (try_end),
+      (set_show_messages, 1),
+      # (party_upgrade_with_xp, "p_main_party", 1, 0), #random upgrade - disabled
+      # (jump_to_menu, "mnu_camp_cheat"),
+    ]),
       # ("camp_cheat_prisoner",[
           # (party_get_num_prisoner_stacks, ":stack", "p_main_party"),
           # (gt, ":stack", 0),
@@ -2059,14 +2060,24 @@ game_menus = [
         # ]
        # ),
        #do not add more cheat options, no more room in one menu
+    ("back_to_camp_menu",[],"Grain prices.",[
+      (try_for_range, ":center", centers_begin, centers_end),
+          (store_sub, ":item_slot_no", "itm_grain", trade_goods_begin),
+          (val_add, ":item_slot_no", slot_town_trade_good_prices_begin),
+          (party_get_slot, ":price_factor", ":center", ":item_slot_no"),
+          (val_mul, ":price_factor", 100), #normalize price factor to range 0..100
+          (val_div, ":price_factor", average_price_factor),
+          (assign, reg1, ":price_factor"),
+          (str_store_party_name, s1, ":center"),
+          (display_message, "@{s1}: grain price: {reg1}"),
+      (try_end),
+    ]),
 
-      ("back_to_camp_menu",[],"{!}Back to camp menu.",
-       [
-         (jump_to_menu, "mnu_camp"),
-        ]
-       ),
-      ]
-  ),
+
+    ("back_to_camp_menu",[],"{!}Back to camp menu.",[
+      (jump_to_menu, "mnu_camp"),
+    ]),
+]),
 
   ("cheat_find_item",0,
    "{!}Current item range: {reg5} to {reg6}",
@@ -40477,7 +40488,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (else_try),
         (str_store_string, s23, "@The majority has voted for your proposal, to revoke the Lex frumentaria et agraria."),
         (assign, "$edict7", 0),
-        (call_script, "script_change_player_relation_with_center", "p_town_6", -15),
+        (call_script, "script_change_player_relation_with_center", "p_town_6", -50),
         (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
           (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_dead),#alive
           (store_faction_of_troop, ":fac", ":npc"),
@@ -44394,6 +44405,23 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_show_messages, 1),
       (call_script, "script_change_player_honor", ":relation_reduction"),
       (display_message, "@Your relation with Lords of your faction decreases.", message_negative),
+      (change_screen_map),
+    ]),
+]),
+
+("grain_protests",0,
+  "Grain protests!^^The streets of Rome are in turmoil. Your recent decision to revoke the Lex Frumentaria et Agraria - the law that guaranteed subsidized grain to the urban poor—has sparked widespread outrage. Thousands of plebs, now facing hunger and insecurity, have taken to the streets in protest.",
+  "none",[
+    (set_background_mesh, "mesh_pic_townriot"),
+  ],[
+    ("Continue...",[],"Continue...",[
+      (try_begin),
+          (store_num_parties_of_template, ":num_parties", "pt_rebels"),
+          (lt, ":num_parties", 30),
+          (call_script, "script_spawn_party","p_town_6","pt_rebels"),
+      (try_end),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", -25),
+      (call_script, "script_change_troop_renown", "trp_player", -100),
       (change_screen_map),
     ]),
 ]),
