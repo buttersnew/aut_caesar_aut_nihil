@@ -16394,6 +16394,7 @@ game_menus = [
               (neg|check_quest_active, "qst_deal_with_bandits_at_lords_village"),
               (assign, ":end_cond", villages_end),
               (try_for_range, ":cur_village", villages_begin, ":end_cond"),
+                  (eq, ":end_cond", villages_end),
                   (party_slot_eq, ":cur_village", slot_village_bound_center, "$current_town"),
                   (party_slot_ge, ":cur_village", slot_village_infested_by_bandits, 1),
                   (neg|party_slot_eq, ":cur_village", slot_town_lord, "trp_player"),
@@ -16429,10 +16430,9 @@ game_menus = [
                       (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),
                       (assign, ":rebel_troop", "trp_judean_village_walker"),
                   (try_end),
-
                   (set_visitor, ":cur_entry", ":rebel_troop"),
                   (val_add, ":cur_entry", 1),
-                  (assign, ":end_cond", 0),
+                  (assign, ":end_cond", -1),
               (try_end),
           (try_end),
 
@@ -28696,7 +28696,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_background_mesh, "mesh_pic_mb_warrior_3"),
   ],[
       ("choice_1comm",[
-        # (eq, "$g_empieza_discurso", 0),
+        (eq, "$g_empieza_discurso", 0),
       ],"Impassion your men with a rousing speech.",[
         (party_get_skill_level, ":leadership", "p_main_party", "skl_leadership"),
         (val_div, ":leadership", 2),

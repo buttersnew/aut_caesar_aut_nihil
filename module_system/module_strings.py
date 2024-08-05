@@ -7998,9 +7998,9 @@ from there the 'Game concepts' button."),
 ("sporus_6", "Fancy clothes, o Caesar!"),
 ("sporus_end", "end"),
 ("aslan_fight", "Everything turns black. You wake up lying in a meadow with an incredible headache. Your head feels like you've drunk an entire wine cellar on your own.\
- Nevertheless, you can remember that you defeated Aslan. The lion will no longer terrorize the village of Sparta. Additionally, you now have a strong armor made from the lions fur.^^Time to report back to the local leader."),
+ Nevertheless, you can remember that you defeated Aslan. The lion will no longer terrorize Larissa. Additionally, you now have a strong armor made from the lions fur.^^Time to report back to the local leader."),
 ("aslan_help", "Everything turns black. You wake up lying in a meadow with an incredible headache. Your head feels like you've drunk an entire wine cellar on your own.\
- However, you can remember that Aslan promised to no longer hunt cattle and sheep of the village of Sparta.^^Time to report back to the local leader."),
+ However, you can remember that Aslan promised to no longer hunt cattle and sheep of Larissa.^^Time to report back to the local leader."),
 ("oliver_rumor", "I heard about a man who recently sent out an expedition to India to find marble but they haven't returned for awhile. He lives in Rome and is currently searching for an adventurer to help him."),
 ("bacchus_rumor", "It is said that wild orgies are celebrated in an extensive cave system somewhere in Italy. People say Dyonisus himself host those feasts."),
 ("solus_rumor", "I heard that the philosopher Solus Monachus is holding lectures in the library of Alexandria."),

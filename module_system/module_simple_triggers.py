@@ -1262,7 +1262,7 @@ simple_triggers = [
         (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
         (faction_slot_ge, "$players_kingdom", slot_faction_debts, 750000),
         # (ge, "$g_player_debt_to_party_members", 100000),
-        # (eq, "$g_is_emperor", 1),
+        (eq, "$g_is_emperor", 1),
         (lt, "$g_unrest", 100),
         (display_message, "@Due your debts unrest rises. Stability decreases.", color_bad_news),
         (val_add, "$g_unrest", 1),

@@ -26965,7 +26965,13 @@ presentations = [
         (position_set_y, pos1, 1002),
         (overlay_set_size, reg0, pos1),
 
-        (store_add, ":string", "$temp4_1", "str_lover_talk"),
+        (try_begin),
+            (eq, "$temp4_1", 13),#player
+            (str_store_troop_name_plural, s20, "trp_players_legion"),#handle player legion
+        (else_try),
+            (store_add, ":string", "$temp4_1", "str_lover_talk"),
+            (str_store_string, s20, ":string"),
+        (try_end),
         (str_store_string, s1, ":string"),
         (str_store_party_name, s2, "$temp4"),
         (create_text_overlay, reg1, "@You can change the headquarter of the {s1} by pressing on the respective town. Currently it is in {s2} and marked with an eagle.", tf_center_justify|tf_scrollable),
