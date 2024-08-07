@@ -12468,7 +12468,7 @@ simple_triggers = [
     (try_end),
 ]),
 
-(72,[
+(48,[
     (call_script, "script_execude_debug_message", 191),
     (eq, "$g_player_is_captive", 0),#not captive
     (eq, "$enlisted_party", -1),#no freelance

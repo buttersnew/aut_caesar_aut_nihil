@@ -7669,7 +7669,7 @@ game_menus = [
       (else_try),
         (assign, reg6, 0),
       (try_end),
-      (call_script, "script_can_besiege_castle", "$g_players_kingdom", "$g_encountered_party_faction", 1),
+      (call_script, "script_can_besiege_castle", "$players_kingdom", "$g_encountered_party_faction", 1),
       (eq, reg0, 0),
     ],"Besiege the {reg6?town:fortress}.",[
       #siege warfare chief We repit this here for advoid issues.
