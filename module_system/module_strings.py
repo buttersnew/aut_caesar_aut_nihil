@@ -5807,6 +5807,7 @@ An estimated 70,000 to 80,000 Romans and British were then killed in the three c
   ("center_party_looted", "has been looted recently."),
   ("center_is_friendly", "is not our enemy."),
   ("center_is_already_besieged", "is already under siege."),
+  ("center_is_not_the_right_time_to_attack", "is not a good target. It is not the right time to strike."),
   ("center_is_looted_or_raided_already", "is already been laid waste."),
   ("center_marshal_does_not_want_to_attack_innocents", "is inhabited by common folk, who would suffer the most if the land is laid waste."),
   ("center_we_have_already_committed_too_much_time_to_our_present_siege_to_move_elsewhere", "is already under siege, so it would be a mistake to move elsewhere."),

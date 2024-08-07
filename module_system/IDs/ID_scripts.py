@@ -988,3 +988,4 @@ script_print_health_text_to_s0 = 986
 script_get_background_pic_for_battle = 987
 script_generate_party_list_for_battle = 988
 script_generate_list_of_party_members = 989
+script_can_besiege_castle = 990

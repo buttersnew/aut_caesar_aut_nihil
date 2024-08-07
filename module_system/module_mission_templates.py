@@ -15399,7 +15399,7 @@ mission_templates = [
     (8,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
     (9,mtef_visitor_source,0,0,1,[]),
     (10,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], global_common_triggers +
   [
     cannot_spawn_commoners,
     (ti_after_mission_start, 0, ti_once, [],[
@@ -15433,12 +15433,13 @@ mission_templates = [
       (try_end),
     ],[]),
 
-    (ti_before_mission_start, 0, ti_once,[
+    (ti_before_mission_start, 0, 0,[
       (check_quest_active, "qst_blank_quest_5"),],[
       (store_random_in_range, ":fog_distance", 50, 75),
       (store_random_in_range, ":haze_power", 25, 65),
       (set_global_haze_amount, ":haze_power"),
       (set_fog_distance, ":fog_distance", 0x333333),
+      (scene_set_day_time, 1),
     ]),
 
     (0, 0, ti_once, [],[(mission_enable_talk),]),

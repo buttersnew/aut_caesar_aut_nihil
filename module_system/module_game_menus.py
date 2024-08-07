@@ -7160,11 +7160,9 @@ game_menus = [
     ]
   ),
 
-(
-    "castle_outside",mnf_scale_picture,
-    "You are outside {s2}.{s11} {s3} {s4}",
-    "none",
-    [
+("castle_outside",mnf_scale_picture,
+  "You are outside {s2}.{s11} {s3} {s4}",
+  "none",[
     (assign, "$g_enemy_party", "$g_encountered_party"),
     (assign, "$g_ally_party", -1),
     (str_store_party_name, s2,"$g_encountered_party"),
@@ -7536,242 +7534,224 @@ game_menus = [
         ##diplomacy begin
     (try_end),
     ##diplomacy end
-        ],
-    [
+  ],[
     ("approach_gates",[
-    (this_or_next|eq,"$entry_to_town_forbidden",1),
-    (party_slot_eq,"$g_encountered_party", slot_party_type,spt_castle),
-    #SB : not infested by peasants, they'd just kick you out
-    (neg|party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
-                          ],
-    "Approach the gates and hail the guard.",[
-    (jump_to_menu, "mnu_castle_guard"),
+      (this_or_next|eq,"$entry_to_town_forbidden",1),
+      (party_slot_eq,"$g_encountered_party", slot_party_type,spt_castle),
+      #SB : not infested by peasants, they'd just kick you out
+      (neg|party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
+    ],"Approach the gates and hail the guard.",[
+      (jump_to_menu, "mnu_castle_guard"),
     ]),
 
-      ("town_sneak",
-        [
-          (try_begin),
-            (party_slot_eq, "$g_encountered_party", slot_party_type,spt_town),
-            (str_store_string, s7, "str_town"),
-          (else_try),
-            (str_store_string, s7, "str_castle"),
-          (try_end),
+    ("town_sneak",[
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_party_type,spt_town),
+        (str_store_string, s7, "str_town"),
+      (else_try),
+        (str_store_string, s7, "str_castle"),
+      (try_end),
 
-          (eq, "$entry_to_town_forbidden", 1),
-          (eq, "$cant_sneak_into_town", 0),
-          #SB : do not let player in at all, because the garrison can be managed
-          (neg|party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
-        ],
-       "Disguise yourself and try to sneak into the {s7}",
-       [
+      (eq, "$entry_to_town_forbidden", 1),
+      (eq, "$cant_sneak_into_town", 0),
+      #SB : do not let player in at all, because the garrison can be managed
+      (neg|party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
+    ],"Disguise yourself and try to sneak into the {s7}",[
+      #SB : apply different disguises in new system, with outcomes
+      (try_begin),
+        (eq, "$g_dplmc_player_disguise", 1),
+        (troop_get_slot, ":player_disguise", "trp_player", slot_troop_player_disguise_sets),
+        (val_max, ":player_disguise", disguise_pilgrim),
+        (troop_set_slot, "trp_player", slot_troop_player_disguise_sets, ":player_disguise"),
+        # (assign, "$sneaked_into_town", disguise_none), #set no disguise
+        (troop_clear_inventory, "trp_random_town_sequence"), # clear items to bring
 
-         #SB : apply different disguises in new system, with outcomes
-        (try_begin),
-          (eq, "$g_dplmc_player_disguise", 1),
-          (troop_get_slot, ":player_disguise", "trp_player", slot_troop_player_disguise_sets),
-          (val_max, ":player_disguise", disguise_pilgrim),
-          (troop_set_slot, "trp_player", slot_troop_player_disguise_sets, ":player_disguise"),
-          # (assign, "$sneaked_into_town", disguise_none), #set no disguise
-          (troop_clear_inventory, "trp_random_town_sequence"), # clear items to bring
-
-          (try_for_range, ":i_slot", 0, ek_food + 1), #dckplmc: bugfix - clear equipped items
-            (troop_set_inventory_slot, "trp_random_town_sequence", ":i_slot", -1),
-          (try_end),
-
-          (store_troop_gold, ":cur_amount", "trp_random_town_sequence"),
-          (troop_remove_gold, "trp_random_town_sequence", ":cur_amount"),#clear gold
-          (assign, "$temp", 0),
-          (assign, "$temp4_1", "mnu_castle_outside"),
-          (jump_to_menu, "mnu_dplmc_choose_disguise"),
-        (else_try),
-          (faction_get_slot, ":player_alarm", "$g_encountered_party_faction", slot_faction_player_alarm),
-          (party_get_num_companions, ":num_men", "p_main_party"),
-          (party_get_num_prisoners, ":num_prisoners", "p_main_party"),
-          (val_add, ":num_men", ":num_prisoners"),
-          (val_mul, ":num_men", 2),
-          (val_div, ":num_men", 3),
-          (store_add, ":get_caught_chance", ":player_alarm", ":num_men"),
-          (store_random_in_range, ":random_chance", 0, 100),
-          (try_begin),
-            (this_or_next|ge, "$cheat_mode", 1),
-            (this_or_next|ge, ":random_chance", ":get_caught_chance"),
-            (eq, "$g_last_defeated_bandits_town", "$g_encountered_party"),
-            (assign, "$g_last_defeated_bandits_town", 0),
-            (assign, "$sneaked_into_town", disguise_pilgrim),
-            (assign, "$town_entered", 1),
-            (jump_to_menu,"mnu_sneak_into_town_suceeded"),
-            (assign, "$g_mt_mode", tcm_disguised),
-          (else_try),
-            (jump_to_menu,"mnu_sneak_into_town_caught"),
-          (try_end),
+        (try_for_range, ":i_slot", 0, ek_food + 1), #dckplmc: bugfix - clear equipped items
+          (troop_set_inventory_slot, "trp_random_town_sequence", ":i_slot", -1),
         (try_end),
-        ]),
+
+        (store_troop_gold, ":cur_amount", "trp_random_town_sequence"),
+        (troop_remove_gold, "trp_random_town_sequence", ":cur_amount"),#clear gold
+        (assign, "$temp", 0),
+        (assign, "$temp4_1", "mnu_castle_outside"),
+        (jump_to_menu, "mnu_dplmc_choose_disguise"),
+      (else_try),
+        (faction_get_slot, ":player_alarm", "$g_encountered_party_faction", slot_faction_player_alarm),
+        (party_get_num_companions, ":num_men", "p_main_party"),
+        (party_get_num_prisoners, ":num_prisoners", "p_main_party"),
+        (val_add, ":num_men", ":num_prisoners"),
+        (val_mul, ":num_men", 2),
+        (val_div, ":num_men", 3),
+        (store_add, ":get_caught_chance", ":player_alarm", ":num_men"),
+        (store_random_in_range, ":random_chance", 0, 100),
+        (try_begin),
+          (this_or_next|ge, "$cheat_mode", 1),
+          (this_or_next|ge, ":random_chance", ":get_caught_chance"),
+          (eq, "$g_last_defeated_bandits_town", "$g_encountered_party"),
+          (assign, "$g_last_defeated_bandits_town", 0),
+          (assign, "$sneaked_into_town", disguise_pilgrim),
+          (assign, "$town_entered", 1),
+          (jump_to_menu,"mnu_sneak_into_town_suceeded"),
+          (assign, "$g_mt_mode", tcm_disguised),
+        (else_try),
+          (jump_to_menu,"mnu_sneak_into_town_caught"),
+        (try_end),
+      (try_end),
+    ]),
+    ##diplomacy begin
+    ("dplmc_riot_start_siege",[
+      (party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
+      (party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
+      (lt, "$g_encountered_party_2", 1),
+      (call_script, "script_party_count_fit_for_battle","p_main_party"),
+      (gt, reg0, 5),
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+        (assign, reg6, 1),
+      (else_try),
+        (assign, reg6, 0),
+      (try_end),
+    ],"Besiege the {reg6?town:fortress} to counter the insurgency.",[
+      #siege warfare chief We repit this here for advoid issues.
+      (assign, "$g_empieza_asedio", 1), #variable to begin siege
+      (party_set_slot,"$g_encountered_party",slot_center_blockaded,0),
+      (party_set_slot,"$g_encountered_party",slot_center_blockaded_time,0),
+      (party_set_slot, "$g_encountered_party", slot_center_mantlets_placed, 0),
+      (party_set_slot,"$g_encountered_party",slot_center_ladder_time,0),
+      (party_set_slot,"$g_encountered_party",slot_center_latrines,0),
+      (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
+      (assign, "$g_siege_saneamiento", 0),
+      (assign, "$g_traicion_interna", 0),
+      (assign, "$g_infiltracion_interna", 0),
+      (assign, "$g_campos_cercanos", 0),
+      (assign, "$g_listos_para_asalto", 0),
+      (assign, "$g_mantlets_1", 0),
+      (assign, "$g_cabezas_dentro", 0), #event
+      (assign, "$g_siege_method", 0),
+      (assign, "$g_siege_sallied_out_once", 0),
+      (assign, "$g_days_spent_starving", 0), #siege warfare, important, we use this in dialogs
+      (assign, "$g_next_sally_at", 0), #sally more common siege warfare chief
+      #siege warfare acaba
+      (assign,"$g_player_besiege_town","$g_encountered_party"),
+      (jump_to_menu, "mnu_castle_besiege"),
+    ]),
+    ("dplmc_riot_negotiate",[
+      (party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
+      (party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
+      (lt, "$g_encountered_party_2", 1),
+      (call_script, "script_party_count_fit_for_battle","p_main_party"),
+      (gt, reg0, 5),
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+        (assign, reg6, 1),
+      (else_try),
+        (assign, reg6, 0),
+      (try_end),
+    ],"Begin negotiations.",[
+      (jump_to_menu, "mnu_dplmc_riot_negotiate"),
+    ]),
+
+    ##diplomacy end
+    ("castle_start_siege",[
       ##diplomacy begin
-      ("dplmc_riot_start_siege",
-       [
-           (party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
-           (party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
-           (lt, "$g_encountered_party_2", 1),
-           (call_script, "script_party_count_fit_for_battle","p_main_party"),
-           (gt, reg0, 5),
-           (try_begin),
-             (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
-             (assign, reg6, 1),
-           (else_try),
-             (assign, reg6, 0),
-           (try_end),
-           ],
-       "Besiege the {reg6?town:fortress} to counter the insurgency.",
-       [
-          #siege warfare chief We repit this here for advoid issues.
-          (assign, "$g_empieza_asedio", 1), #variable to begin siege
-          (party_set_slot,"$g_encountered_party",slot_center_blockaded,0),
-          (party_set_slot,"$g_encountered_party",slot_center_blockaded_time,0),
-          (party_set_slot, "$g_encountered_party", slot_center_mantlets_placed, 0),
-          (party_set_slot,"$g_encountered_party",slot_center_ladder_time,0),
-          (party_set_slot,"$g_encountered_party",slot_center_latrines,0),
-          (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
-          (assign, "$g_siege_saneamiento", 0),
-          (assign, "$g_traicion_interna", 0),
-          (assign, "$g_infiltracion_interna", 0),
-          (assign, "$g_campos_cercanos", 0),
-          (assign, "$g_listos_para_asalto", 0),
-          (assign, "$g_mantlets_1", 0),
-          (assign, "$g_cabezas_dentro", 0), #event
-          (assign, "$g_siege_method", 0),
-          (assign, "$g_siege_sallied_out_once", 0),
-          (assign, "$g_days_spent_starving", 0), #siege warfare, important, we use this in dialogs
-          (assign, "$g_next_sally_at", 0), #sally more common siege warfare chief
-          #siege warfare acaba
-         (assign,"$g_player_besiege_town","$g_encountered_party"),
-         (jump_to_menu, "mnu_castle_besiege"),
-         ]),
-       ("dplmc_riot_negotiate",
-       [
-           (party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
-           (party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
-           (lt, "$g_encountered_party_2", 1),
-           (call_script, "script_party_count_fit_for_battle","p_main_party"),
-           (gt, reg0, 5),
-           (try_begin),
-             (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
-             (assign, reg6, 1),
-           (else_try),
-             (assign, reg6, 0),
-           (try_end),
-           ],
-       "Begin negotiations.",
-       [
-          (jump_to_menu, "mnu_dplmc_riot_negotiate"),
-        ]),
+      (neg|party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
+      ##diplomacy end
+      (this_or_next|party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
+      (             party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, "p_main_party"),
+      (store_relation, ":reln", "$g_encountered_party_faction", "fac_player_supporters_faction"),
+      (lt, ":reln", 0),
+      (lt, "$g_encountered_party_2", 1),
+      (call_script, "script_party_count_fit_for_battle","p_main_party"),
+      (gt, reg(0), 5),
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+        (assign, reg6, 1),
+      (else_try),
+        (assign, reg6, 0),
+      (try_end),
+      (call_script, "script_can_besiege_castle", "$g_players_kingdom", "$g_encountered_party_faction", 1),
+      (eq, reg0, 0),
+    ],"Besiege the {reg6?town:fortress}.",[
+      #siege warfare chief We repit this here for advoid issues.
+      (assign, "$g_empieza_asedio", 1), #variable to begin siege
+      (party_set_slot,"$g_encountered_party",slot_center_blockaded,0),
+      (party_set_slot,"$g_encountered_party",slot_center_blockaded_time,0),
+      (party_set_slot, "$g_encountered_party", slot_center_mantlets_placed, 0),
+      (party_set_slot,"$g_encountered_party",slot_center_ladder_time,0),
+      (party_set_slot,"$g_encountered_party",slot_center_latrines,0),
+      (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
+      (assign, "$g_siege_saneamiento", 0),
+      (assign, "$g_traicion_interna", 0),
+      (assign, "$g_infiltracion_interna", 0),
+      (assign, "$g_campos_cercanos", 0),
+      (assign, "$g_listos_para_asalto", 0),
+      (assign, "$g_mantlets_1", 0),
+      (assign, "$g_cabezas_dentro", 0), #event
+      (assign, "$g_siege_method", 0),
+      (assign, "$g_siege_sallied_out_once", 0),
+      (assign, "$g_days_spent_starving", 0), #siege warfare, important, we use this in dialogs
+      (assign, "$g_next_sally_at", 0), #sally more common siege warfare chief
+      #siege warfare acaba
 
-     ##diplomacy end
-      ("castle_start_siege",
-       [
-           ##diplomacy begin
-           (neg|party_slot_eq, "$g_encountered_party", slot_village_infested_by_bandits, "trp_peasant_woman"),
-           ##diplomacy end
-           (this_or_next|party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
-           (             party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, "p_main_party"),
-           (store_relation, ":reln", "$g_encountered_party_faction", "fac_player_supporters_faction"),
-           (lt, ":reln", 0),
-           (lt, "$g_encountered_party_2", 1),
-           (call_script, "script_party_count_fit_for_battle","p_main_party"),
-           (gt, reg(0), 5),
-           (try_begin),
-             (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
-             (assign, reg6, 1),
-           (else_try),
-             (assign, reg6, 0),
-           (try_end),
-           ],
-       "Besiege the {reg6?town:fortress}.",
-       [
-
-          #siege warfare chief We repit this here for advoid issues.
-          (assign, "$g_empieza_asedio", 1), #variable to begin siege
-          (party_set_slot,"$g_encountered_party",slot_center_blockaded,0),
-          (party_set_slot,"$g_encountered_party",slot_center_blockaded_time,0),
-          (party_set_slot, "$g_encountered_party", slot_center_mantlets_placed, 0),
-          (party_set_slot,"$g_encountered_party",slot_center_ladder_time,0),
-          (party_set_slot,"$g_encountered_party",slot_center_latrines,0),
-          (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
-          (assign, "$g_siege_saneamiento", 0),
-          (assign, "$g_traicion_interna", 0),
-          (assign, "$g_infiltracion_interna", 0),
-          (assign, "$g_campos_cercanos", 0),
-          (assign, "$g_listos_para_asalto", 0),
-          (assign, "$g_mantlets_1", 0),
-          (assign, "$g_cabezas_dentro", 0), #event
-          (assign, "$g_siege_method", 0),
-          (assign, "$g_siege_sallied_out_once", 0),
-          (assign, "$g_days_spent_starving", 0), #siege warfare, important, we use this in dialogs
-          (assign, "$g_next_sally_at", 0), #sally more common siege warfare chief
-          #siege warfare acaba
-
-         (assign,"$g_player_besiege_town","$g_encountered_party"),
-         (store_relation, ":relation", "fac_player_supporters_faction", "$g_encountered_party_faction"),
-         (val_min, ":relation", -40),
-         (call_script, "script_set_player_relation_with_faction", "$g_encountered_party_faction", ":relation"),
-         (call_script, "script_update_all_notes"),
-         (jump_to_menu, "mnu_castle_besiege"),
-
-         ]),
-
-      ("cheat_castle_start_siege",
-       [
-         (eq, "$cheat_mode", 1),
-         (this_or_next|party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
-         (             party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, "p_main_party"),
-         (store_relation, ":reln", "$g_encountered_party_faction", "fac_player_supporters_faction"),
-         (ge, ":reln", 0),
-         (lt, "$g_encountered_party_2", 1),
-         (call_script, "script_party_count_fit_for_battle","p_main_party"),
-         (gt, reg(0), 1),
-         (try_begin),
-           (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
-           (assign, reg6, 1),
-         (else_try),
-           (assign, reg6, 0),
-         (try_end),
-           ],
-       "{!}CHEAT: Besiege the {reg6?town:fortress}...",
-       [
-
-	             #siege warfare chief We repit this here for advoid issues.
-          (assign, "$g_empieza_asedio", 1), #variable to begin siege
-          (party_set_slot,"$g_encountered_party",slot_center_blockaded,0),
-          (party_set_slot,"$g_encountered_party",slot_center_blockaded_time,0),
-          (party_set_slot, "$g_encountered_party", slot_center_mantlets_placed, 0),
-          (party_set_slot,"$g_encountered_party",slot_center_ladder_time,0),
-          (party_set_slot,"$g_encountered_party",slot_center_latrines,0),
-          (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
-          (assign, "$g_siege_saneamiento", 0),
-          (assign, "$g_traicion_interna", 0),
-          (assign, "$g_infiltracion_interna", 0),
-          (assign, "$g_campos_cercanos", 0),
-          (assign, "$g_listos_para_asalto", 0),
-          (assign, "$g_mantlets_1", 0),
-          (assign, "$g_cabezas_dentro", 0), #event
-          (assign, "$g_siege_method", 0),
-          (assign, "$g_siege_sallied_out_once", 0),
-          (assign, "$g_days_spent_starving", 0), #siege warfare, important, we use this in dialogs
-          (assign, "$g_next_sally_at", 0), #sally more common siege warfare chief
-          #siege warfare acaba
-           (assign,"$g_player_besiege_town","$g_encountered_party"),
-           (jump_to_menu, "mnu_castle_besiege"),
-           ]),
-
-      ("castle_leave",[],"Leave.",[(change_screen_return,0)]),
-      #SB : the three options below are covered in cheats
-      ("castle_cheat", [(ge, "$cheat_mode", 1)], "{!}Use Cheats", [
-        # (assign, "$sneaked_into_town", disguise_pilgrim),
-        (assign, "$town_entered", 1),
-        # (assign, "$g_mt_mode", tcm_disguised),
-        (jump_to_menu, "mnu_town_cheats"),
-      ]),
-    ]
-),
+      (assign,"$g_player_besiege_town","$g_encountered_party"),
+      (store_relation, ":relation", "fac_player_supporters_faction", "$g_encountered_party_faction"),
+      (val_min, ":relation", -40),
+      (call_script, "script_set_player_relation_with_faction", "$g_encountered_party_faction", ":relation"),
+      (call_script, "script_update_all_notes"),
+      (jump_to_menu, "mnu_castle_besiege"),
+    ]),
+    ("cheat_castle_start_siege",[
+      (eq, "$cheat_mode", 1),
+      (this_or_next|party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
+      (party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, "p_main_party"),
+      (store_relation, ":reln", "$g_encountered_party_faction", "fac_player_supporters_faction"),
+      (ge, ":reln", 0),
+      (lt, "$g_encountered_party_2", 1),
+      (call_script, "script_party_count_fit_for_battle","p_main_party"),
+      (gt, reg(0), 1),
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+        (assign, reg6, 1),
+      (else_try),
+        (assign, reg6, 0),
+      (try_end),
+    ],"{!}CHEAT: Besiege the {reg6?town:fortress}...",[
+      #siege warfare chief We repit this here for advoid issues.
+      (assign, "$g_empieza_asedio", 1), #variable to begin siege
+      (party_set_slot,"$g_encountered_party",slot_center_blockaded,0),
+      (party_set_slot,"$g_encountered_party",slot_center_blockaded_time,0),
+      (party_set_slot, "$g_encountered_party", slot_center_mantlets_placed, 0),
+      (party_set_slot,"$g_encountered_party",slot_center_ladder_time,0),
+      (party_set_slot,"$g_encountered_party",slot_center_latrines,0),
+      (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
+      (assign, "$g_siege_saneamiento", 0),
+      (assign, "$g_traicion_interna", 0),
+      (assign, "$g_infiltracion_interna", 0),
+      (assign, "$g_campos_cercanos", 0),
+      (assign, "$g_listos_para_asalto", 0),
+      (assign, "$g_mantlets_1", 0),
+      (assign, "$g_cabezas_dentro", 0), #event
+      (assign, "$g_siege_method", 0),
+      (assign, "$g_siege_sallied_out_once", 0),
+      (assign, "$g_days_spent_starving", 0), #siege warfare, important, we use this in dialogs
+      (assign, "$g_next_sally_at", 0), #sally more common siege warfare chief
+      #siege warfare acaba
+      (assign,"$g_player_besiege_town","$g_encountered_party"),
+      (jump_to_menu, "mnu_castle_besiege"),
+    ]),
+    ("castle_leave",[
+    ],"Leave.",[
+      (change_screen_return,0)
+    ]),
+    ("castle_cheat", [
+      (ge, "$cheat_mode", 1)
+    ], "{!}Use Cheats", [
+      # (assign, "$sneaked_into_town", disguise_pilgrim),
+      (assign, "$town_entered", 1),
+      # (assign, "$g_mt_mode", tcm_disguised),
+      (jump_to_menu, "mnu_town_cheats"),
+    ]),
+]),
 
 (
     "castle_guard",mnf_scale_picture,
@@ -17810,7 +17790,7 @@ game_menus = [
       (try_begin),
           (check_quest_active, "qst_poking_the_lion"),
           (quest_slot_eq, "qst_poking_the_lion", slot_quest_current_state, 3),
-          (jump_to_menu, "mnu_temple_jerusalem_story"),
+          (jump_to_menu, "mnu_temple_jerusalem_story_decide"),
       (else_try),
           (jump_to_menu, "mnu_temple_jerusalem"),
       (try_end),
@@ -34587,10 +34567,27 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	],
 ),
 
+("temple_jerusalem_story_decide",0,
+    "Do you want to collect the tribute? You need at least 50 non-wounded men in your party and you should be not wounded!",
+    "none",[
+	    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
+    ],[
+      ("answere_1",[
+          (call_script, "script_party_count_members_with_full_health", "p_main_party"),
+          (gt, reg0, 50), #it is very dangerous you need enough men to protect yourself from angry jews
+          (neg|troop_is_wounded, "trp_player"),
+      ],"Continue.",[
+        (jump_to_menu, "mnu_temple_jerusalem_story"),
+      ]),
+      ("answere_1",[],"Go back.",[
+        (jump_to_menu, "mnu_town"),
+      ]),
+	],
+),
+
 ("temple_jerusalem_story",0,
     "You enter the Court of the Gentiles together with your troops. It is the main yard of the temple and open to people of all religions. You see merchants selling all kind of goods, from food to expensive souvenirs. Then you spot the money-changer. They make a fine living by exchanging currencies of the pilgrims who flood the temple every day. Judging by the high amount of foreign languages you hear, the pilgrims seem to come from all corners of the Empire. You spot everything, from poor, raggedly dressed beggars to magnificently adorned noble ladies. Yet, what they all have in common is their fervent faith.^^Finally, you inform a priest about your audience. You tell him that you are send by Caesar Nero to discuss important matters of politics with the high priests. He bows and informs you to wait a moment, he will arrange an audience. While you wait you let your glance again wander over the crowd. The sun is burning and the air in the yard slowly turns into a stench of a variety of smells. Rotten fish mixes with spices, the stinking sweat of the poor mingles with the perfume of the noble ladies.^^The priest comes back and tells you to follow him. The high priests await the legate of the Princeps. You enter the hall together with two of your soldiers.",
-    "none",
-    [
+    "none",[
 	    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
     ],
     [
@@ -34658,9 +34655,12 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("temple_jerusalem_story_loot_end",0,
-    "You gather the loot and marsh on.^^Now it is time to gain the trust of either Otho, Vitellius, Galba or Vespasian.",
+    "You gather the loot and retreat twoards {s22}. A large Judean army is gathering near {s23}, you better avoid it for now.^^Now it is time to gain the trust of either Otho, Vitellius, Galba or Vespasian.",
     "none",
     [
+      (str_store_party_name, s22, "p_village_109"),
+      (str_store_party_name, s23, "p_town_19"),
+      (party_relocate_near_party, "p_main_party", "p_village_109", 1),
       (troop_add_gold, "trp_player", 150000),
       (try_begin),
           (eq, "$templelooted", 1),
