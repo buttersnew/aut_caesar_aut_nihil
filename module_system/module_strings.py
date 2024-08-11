@@ -3181,6 +3181,11 @@ strings = [
 ##(end dplmc+ changes to include female-to-male versions)
 ##diplomacy end+
 
+("raid_delphi_other", "I heard news about your raid of the Oracle of Delphi. How could you commit such an atrocity? Have you no respect for the sacred? The treasures you took are not mere objects; they are offerings to the gods, symbols of our devotion and piety."),
+("raid_delphi_goodnatured", "I heard news about your raid of the Oracle of Delphi. Are you out of your mind? Do you have any idea what you've done? You've defiled the holy site where our ancestors have sought the wisdom of the gods for centuries! This is sacrilege of the highest order!"),
+("raid_delphi_cunning", "I heard news about your raid of the Oracle of Delphi. It was certainly brave of you, and I think the Greeks deserve punishment. But I fear that the gods will not let this go unpunished. It could be that Apollo himself will seek vengeance for this blasphemy."),
+("raid_delphi_debauched", "I heard news about your raid of the Oracle of Delphi. Those Greeks deserve a punishment. But desecrating a holy side is pure madness! Apollon will not let this go unpunished."),
+
 #Actions vis-a-vis civilians
   ("comment_you_raided_my_village_enemy_benevolent",    "You have attacked innocent farmers under my protection in the village of {s51}. I will punish you for your misdeeds!"),
   ("comment_you_raided_my_village_enemy_spiteful",      "You have raided my village of {s51}, destroying my property and killing the tenants. I will take my compensation in blood!"),

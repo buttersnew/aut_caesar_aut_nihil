@@ -15943,15 +15943,14 @@ mission_templates = [
     ], p_wetter + storms + global_common_triggers+
     [
       can_spawn_commoners,
-      (ti_before_mission_start, 0, 0,
-      [ (eq, "$g_encountered_party", "p_arabian_holy_side_1"),
+      (ti_before_mission_start, 0, 0,[
+        (eq, "$g_encountered_party", "p_arabian_holy_side_1"),
         (party_slot_eq, "$g_encountered_party", slot_holy_side_event, 1),
-      ],
-      [
+      ],[
         (replace_scene_props, "spr_x_goddess_of_fertility", "spr_empty"),
       ]),
 
-    improved_lightning,
+      improved_lightning,
       #can_spawn_commoners,
       (ti_before_mission_start, 0, 0, [],[(call_script, "script_change_banners_and_chest")]),
       (ti_inventory_key_pressed, 0, 0, [(set_trigger_result,1)],[]),
@@ -16074,90 +16073,85 @@ mission_templates = [
     ]+ bodyguard_triggers,
 ),
 
-  ("paganholysites_atacado", mtf_battle_mode,-1,
-    "monasterio",
-    [ (1,mtef_team_0,af_override_horse,aif_start_alarmed,60,[]),
-      (30,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed, 12,[]),
-      (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
-      (1,mtef_team_0,af_override_horse,aif_start_alarmed,60,[]),
-    ], p_wetter + storms + global_common_triggers+
-    [
-      cannot_spawn_commoners,
-      (0.5, 0, ti_once, [],[
-          (set_show_messages, 0),
+("paganholysites_atacado", mtf_battle_mode,-1,"monasterio",[
+    (1,mtef_team_0,af_override_horse,aif_start_alarmed,60,[]),
+    (30,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed, 12,[]),
+    (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
+    (1,mtef_team_0,af_override_horse,aif_start_alarmed,60,[]),
+  ], p_wetter + storms + global_common_triggers+
+  [
+    cannot_spawn_commoners,
+    (0.5, 0, ti_once, [],[
+      (set_show_messages, 0),
 
-          (try_for_range, ":cur_group", 0, grc_everyone),
-            (team_give_order, 1, ":cur_group", mordr_hold),
-            (team_give_order, 1, ":cur_group", mordr_stand_closer),
-            (team_give_order, 1, ":cur_group", mordr_stand_closer),
-            (team_give_order, 1, ":cur_group", mordr_hold),
-            (team_give_order, 1, ":cur_group", mordr_stand_closer),
-            (team_give_order, 1, ":cur_group", mordr_stand_closer),
-          (try_end),
-          (set_show_messages, 1),
-      ]),
+      (try_for_range, ":cur_group", 0, grc_everyone),
+        (team_give_order, 1, ":cur_group", mordr_hold),
+        (team_give_order, 1, ":cur_group", mordr_stand_closer),
+        (team_give_order, 1, ":cur_group", mordr_stand_closer),
+        (team_give_order, 1, ":cur_group", mordr_hold),
+        (team_give_order, 1, ":cur_group", mordr_stand_closer),
+        (team_give_order, 1, ":cur_group", mordr_stand_closer),
+      (try_end),
+      (set_show_messages, 1),
+    ]),
 
     improved_lightning,
-      #cannot_spawn_commoners,
-      common_inventory_not_available,
-      common_battle_init_banner,
-      #common_realistic_casualties, 		#!
-      wounds_vc,
-      dedal_shield_bash,
-      dedal_shield_bash_AI,
-      (ti_before_mission_start, 0,
-       0, [],
-        [
-          (assign,"$g_battle_result",0),
-          (call_script, "script_change_banners_and_chest")
-        ]
-      ),
-     (ti_after_mission_start, 0, 0, [],[(call_script, "script_music_set_situation_with_culture", mtf_sit_fight)]),
+    #cannot_spawn_commoners,
+    common_inventory_not_available,
+    common_battle_init_banner,
+    #common_realistic_casualties, 		#!
+    wounds_vc,
+    dedal_shield_bash,
+    dedal_shield_bash_AI,
 
-      (ti_on_agent_hit, 0, 0, [],		# make damaged agents flee
-        [
-          (store_trigger_param, ":inflicted_agent_id", 1),
-          #(store_trigger_param, ":dealer_agent_id", 2),
-          #(store_trigger_param, ":inflicted_damage", 3),
-          #(get_player_agent_no, ":player_agent"),
-          #(eq, ":dealer_agent_id", ":player_agent"),
-          (agent_is_active, ":inflicted_agent_id"),
-          (agent_is_human, ":inflicted_agent_id"),
-          (agent_is_alive, ":inflicted_agent_id"),
-          (neg|agent_is_ally, ":inflicted_agent_id"),
-          #sound:
-          (store_random_in_range, ":rand", 1, 8),
-          (eq, ":rand", 1),
-          (agent_play_sound, ":inflicted_agent_id", "snd_panic_hit"),
-      ]),
+    (ti_before_mission_start, 0,0, [],[
+      (assign,"$g_battle_result",0),
+      (call_script, "script_change_banners_and_chest"),
+    ]),
 
-      (ti_on_agent_killed_or_wounded, 0, 0, [],
-        [
-          (store_trigger_param_1, ":dead_agent_no"),
-          (store_trigger_param_3, ":is_wounded"),
-          #(store_trigger_param_2, ":killer_agent_no"),
-          (get_player_agent_no, ":player"),
-          (neq, ":dead_agent_no", ":player"),
-          (try_begin),
-            (ge, ":dead_agent_no", 0),
-            (agent_is_ally, ":dead_agent_no"),
-            (agent_is_human, ":dead_agent_no"),
-            (agent_get_troop_id, ":dead_agent_troop_id", ":dead_agent_no"),
-            (try_begin),
-                (eq, ":is_wounded", 1),
-                (party_wound_members, "p_main_party", ":dead_agent_troop_id", 1),
-            (else_try),
-                (party_remove_members, "p_main_party", ":dead_agent_troop_id", 1),
-            (try_end),
-            #(party_add_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1), #addition_to_p_total_enemy_casualties
-            #(agent_slot_eq, ":dead_agent_no", slot_agent_vc_wounded, 1),	#new
-            #(party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
-          (try_end),
-          #(call_script, "script_apply_death_effect_on_courage_scores", ":dead_agent_no", ":killer_agent_no"),
-      ]),
+    (ti_after_mission_start, 0, 0, [],[(call_script, "script_music_set_situation_with_culture", mtf_sit_fight)]),
 
-    (ti_tab_pressed, 0, 0,
-    [
+    (ti_on_agent_hit, 0, 0, [],[
+      (store_trigger_param, ":inflicted_agent_id", 1),
+      #(store_trigger_param, ":dealer_agent_id", 2),
+      #(store_trigger_param, ":inflicted_damage", 3),
+      #(get_player_agent_no, ":player_agent"),
+      #(eq, ":dealer_agent_id", ":player_agent"),
+      (agent_is_active, ":inflicted_agent_id"),
+      (agent_is_human, ":inflicted_agent_id"),
+      (agent_is_alive, ":inflicted_agent_id"),
+      (neg|agent_is_ally, ":inflicted_agent_id"),
+      #sound:
+      (store_random_in_range, ":rand", 1, 8),
+      (eq, ":rand", 1),
+      (agent_play_sound, ":inflicted_agent_id", "snd_panic_hit"),
+    ]),
+
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent_no"),
+      (store_trigger_param_3, ":is_wounded"),
+      #(store_trigger_param_2, ":killer_agent_no"),
+      (get_player_agent_no, ":player"),
+      (neq, ":dead_agent_no", ":player"),
+      (try_begin),
+        (ge, ":dead_agent_no", 0),
+        (agent_is_ally, ":dead_agent_no"),
+        (agent_is_human, ":dead_agent_no"),
+        (agent_get_troop_id, ":dead_agent_troop_id", ":dead_agent_no"),
+        (try_begin),
+            (eq, ":is_wounded", 1),
+            (party_wound_members, "p_main_party", ":dead_agent_troop_id", 1),
+        (else_try),
+            (party_remove_members, "p_main_party", ":dead_agent_troop_id", 1),
+        (try_end),
+        #(party_add_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1), #addition_to_p_total_enemy_casualties
+        #(agent_slot_eq, ":dead_agent_no", slot_agent_vc_wounded, 1),	#new
+        #(party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+      (try_end),
+      #(call_script, "script_apply_death_effect_on_courage_scores", ":dead_agent_no", ":killer_agent_no"),
+    ]),
+
+    (ti_tab_pressed, 0, 0,[
       (try_begin),
         (neg|main_hero_fallen),
         (num_active_teams_le,1),
@@ -16165,12 +16159,9 @@ mission_templates = [
       (else_try),
         (question_box, "@Do you wish to retreat?"),
       (try_end),
-    ],
-    []),
-##leave2
-    (ti_question_answered, 0, 0,
-    [],
-    [
+    ],[]),
+
+    (ti_question_answered, 0, 0,[],[
       (store_trigger_param_1, ":number"),
       (eq, ":number", 0),
       (stop_all_sounds),
@@ -16179,36 +16170,37 @@ mission_templates = [
     ]),
 
 
-      # (ti_tab_pressed, 0, 0, [ ],[
-      # (try_begin),
-        # (num_active_teams_le,1),
-        # (jump_to_menu, "mnu_saquear_paganholysite"),
-      # (else_try),
-        # (jump_to_menu, "mnu_saquear_paganholysite_lost"),
-      # (try_end),
-      # (stop_all_sounds, 1),
-      # (finish_mission),
-      # ]),
+    # (ti_tab_pressed, 0, 0, [ ],[
+    # (try_begin),
+      # (num_active_teams_le,1),
+      # (jump_to_menu, "mnu_saquear_paganholysite"),
+    # (else_try),
+      # (jump_to_menu, "mnu_saquear_paganholysite_lost"),
+    # (try_end),
+    # (stop_all_sounds, 1),
+    # (finish_mission),
+    # ]),
 
-      (1, 4, ti_once, [(num_active_teams_le,1)],
-        [
-          (try_begin),
-            (main_hero_fallen),
-            (jump_to_menu, "mnu_saquear_paganholysite_lost"),
-          (else_try),
-            (jump_to_menu, "mnu_saquear_paganholysite"),
-          (try_end),
-          (stop_all_sounds, 1),
-          (finish_mission),
-      ]),
+    (1, 4, ti_once, [
+      (num_active_teams_le,1),
+    ],[
+      (try_begin),
+        (main_hero_fallen),
+        (jump_to_menu, "mnu_saquear_paganholysite_lost"),
+      (else_try),
+        (jump_to_menu, "mnu_saquear_paganholysite"),
+      (try_end),
+      (stop_all_sounds, 1),
+      (finish_mission),
+    ]),
 
-    (0, 0, ti_once, [],
-      [
-          (call_script, "script_init_death_cam"), #SB : add camera
-          (call_script, "script_combat_music_set_situation_with_culture"),
-       ]),
-    ] + auxiliary_player + dplmc_battle_mode_triggers
-  ),
+    (0, 0, ti_once, [],[
+      (call_script, "script_init_death_cam"), #SB : add camera
+      (call_script, "script_combat_music_set_situation_with_culture"),
+    ]),
+  ] + auxiliary_player + dplmc_battle_mode_triggers
+),
+
   ("visit_pyramid",0,-1,
     "visit pyramid",
     [

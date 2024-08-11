@@ -14799,23 +14799,50 @@ game_menus = [
       ]
     ),
 
-    ("pillage_hofho",
-      [
-      ],"Raid the sanctuary.",
-      [
-        (jump_to_menu, "mnu_are_you_sure"),
-      ]
-    ),
+    ("pillage_hofho",[
+    ],"Raid the sanctuary.",[
+      (jump_to_menu, "mnu_are_you_sure"),
+    ]),
+
     ("leaveho",[],"Leave.",[ (change_screen_map), ]),
 ]),
 
-("are_you_sure",mnf_enable_hot_keys|mnf_scale_picture,
-  "You assembly your troops. Everybody waits for your orders to attack.",
-  "none",
-  [
+("raid_delphi",mnf_enable_hot_keys|mnf_scale_picture,
+  "You assembly your troops. Everybody waits for your orders to attack.^^Keep in mind that raiding a sacred place will anger the local population and lower your relation with nearby factions."
+  +"^^Keep also in mind that raiding Delphi will destroy it forever! Unlike other sacred places, Delphi will not be rebuild after raiding.",
+  "none",[
     (set_background_mesh, "mesh_pic_charge"),
-   ],
-  [
+  ],[
+    ("attack", [], "Give order to attack!", [
+      (party_clear, "$g_encountered_party"),
+      (modify_visitors_at_site, "scn_delphi"),
+      (reset_visitors),
+      (assign, ":num_priest", 5),
+      (store_character_level, ":level", "trp_player"),
+      (val_div, ":level", 5),
+      (val_max, ":level", 1),
+      (val_add, ":num_priest", ":level"),
+
+      (set_visitors, 1, "trp_roman_peasant", ":num_priest"),
+      (set_visitors, 1, "trp_roman_peasant", ":num_priest"),
+      (set_visitors, 1, "trp_mercenary_swordsman", ":num_priest"),
+      (set_jump_mission,"mt_paganholysites_atacado"),
+      (jump_to_scene, "scn_delphi"),
+      (change_screen_mission),
+      (party_clear, "p_total_enemy_casualties"),
+      (assign, "$capture_screen_shown", 0),
+      (assign, "$loot_screen_shown", 0),
+    ]),
+    ("defend", [], "Forget it.", [
+      (jump_to_menu, "mnu_paganholysites_visit"),
+    ]),
+]),
+
+("are_you_sure",mnf_enable_hot_keys|mnf_scale_picture,
+  "You assembly your troops. Everybody waits for your orders to attack.^^Keep in mind that raiding a sacred place will anger the local population and lower your relation with nearby factions.",
+  "none",[
+    (set_background_mesh, "mesh_pic_charge"),
+  ],[
     ("attack", [], "Give order to attack!", [
       (party_clear, "$g_encountered_party"),
       (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_castle_exterior),
@@ -35405,32 +35432,25 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ),
 
 ("saquear_paganholysite_lost",mnf_disable_all_keys,
-    "You have lost the battle and your men retreat. Your gods doesn't favor you!",
-    "none",
-    [
+  "You have lost the battle and your men retreat. Your gods doesn't favor you!",
+  "none",[
     (set_background_mesh, "mesh_pic_defeat"),
-        (try_begin),
-          (check_quest_active, "qst_raid_german_temple"),
-          (neg|check_quest_succeeded,"qst_raid_german_temple"),
-          (neg|check_quest_failed,"qst_raid_german_temple"),
-          (quest_slot_eq, "qst_raid_german_temple", slot_quest_target_center, "$g_encountered_party"),
-          (call_script, "script_fail_quest", "qst_raid_german_temple"),
-        (try_end),
-
-    ],
-    [
-
-      ("backpa",[],"Continue.",
-        [
-          (change_screen_map),
-        ]
-      ),
+    (try_begin),
+      (check_quest_active, "qst_raid_german_temple"),
+      (neg|check_quest_succeeded,"qst_raid_german_temple"),
+      (neg|check_quest_failed,"qst_raid_german_temple"),
+      (quest_slot_eq, "qst_raid_german_temple", slot_quest_target_center, "$g_encountered_party"),
+      (call_script, "script_fail_quest", "qst_raid_german_temple"),
+    (try_end),
+  ],[
+    ("backpa",[],"Continue.",[
+      (change_screen_map),
+    ]),
 ]),
 
 ("saquear_paganholysite",mnf_disable_all_keys,
   "Blood and treasure. Those of your men with fewer scruples proceed towards {s3}, killing anyone in their path and plundering its riches. The fire and death sweeping the place are rampant. You plunder spoils of war are worth {reg3} denars.",
-  "none",
-  [
+  "none",[
     (try_begin),
         (eq, "$capture_screen_shown", 0),
         (assign, "$capture_screen_shown", 1),
@@ -35454,19 +35474,29 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (troop_add_item, "trp_temp_troop", "itm_allat"),
             (party_set_slot, "$g_encountered_party", slot_holy_side_event, 1),
         (try_end),
-        (set_item_probability_in_merchandise, "itm_amber", 30), #was 40 #/4,5
-        (set_item_probability_in_merchandise, "itm_silver", 30),	#was 15 #/3
-        (set_item_probability_in_merchandise, "itm_furs", 40),
-        (set_item_probability_in_merchandise, "itm_ale", 50),
-        (try_for_range, ":curr_item", "itm_smoked_fish", "itm_raw_olives"),
-            (store_random_in_range, ":rand", 0, 4),
-            (val_mul, ":rand", 13),
-            (set_item_probability_in_merchandise, ":curr_item", ":rand"),
-        (try_end),
         (store_random_in_range, ":loot_amount", 5, 10),
         (party_get_skill_level, ":player_party_looting", "p_main_party", "skl_looting"),
         (val_add, ":loot_amount", ":player_party_looting"),
         (val_max, ":loot_amount", 2),
+        (try_begin),
+            (eq, "$g_encountered_party", "p_delphi"),
+            (set_item_probability_in_merchandise, "itm_temple_gold", 30), #was 40 #/4,5
+            (set_item_probability_in_merchandise, "itm_silver", 30),	#was 15 #/3
+            (set_item_probability_in_merchandise, "itm_jewelry", 40),
+            (set_item_probability_in_merchandise, "itm_ivory", 15),
+            (set_item_probability_in_merchandise, "itm_wine", 50),
+            (val_add, ":loot_amount", 2),
+        (else_try),
+            (set_item_probability_in_merchandise, "itm_amber", 30), #was 40 #/4,5
+            (set_item_probability_in_merchandise, "itm_silver", 30),	#was 15 #/3
+            (set_item_probability_in_merchandise, "itm_furs", 40),
+            (set_item_probability_in_merchandise, "itm_ale", 50),
+            (try_for_range, ":curr_item", "itm_smoked_fish", "itm_raw_olives"),
+                (store_random_in_range, ":rand", 0, 4),
+                (val_mul, ":rand", 13),
+                (set_item_probability_in_merchandise, ":curr_item", ":rand"),
+            (try_end),
+        (try_end),
         (troop_add_merchandise,"trp_temp_troop", itp_type_goods, ":loot_amount"),
         (troop_sort_inventory, "trp_temp_troop"),
         (change_screen_loot, "trp_temp_troop"),
@@ -35497,8 +35527,14 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (try_end),
 
         (store_random_in_range, ":random", 500, ":max_loot"),
-        (val_div, ":random", 10),
-        (val_mul, ":random", 30),
+
+        (try_begin),
+            (eq, "$g_encountered_party", "p_delphi"),
+            (val_mul, ":random", 5),
+        (else_try),
+            (val_div, ":random", 10),
+            (val_mul, ":random", 30),
+        (try_end),
 
         (try_begin),
             (check_quest_active, "qst_raid_german_temple"),
@@ -35515,32 +35551,54 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (assign, reg3, ":random"),
         # 2.ICON
         #(call_script, "script_change_party_icon_loot_state", "$g_encountered_party", 1),
-        (party_add_particle_system, "$g_encountered_party", "psys_map_village_fire"),
-        (party_add_particle_system, "$g_encountered_party", "psys_map_village_fire_smoke"),
-        (party_set_slot, "$g_encountered_party", slot_village_smoke_added, 1),
+        (try_begin),
+            (neq, "$g_encountered_party", "p_delphi"),
+            (party_add_particle_system, "$g_encountered_party", "psys_map_village_fire"),
+            (party_add_particle_system, "$g_encountered_party", "psys_map_village_fire_smoke"),
+            (party_set_slot, "$g_encountered_party", slot_village_smoke_added, 1),
+        (try_end),
         # 3.DEVASTATED TIME
         (party_set_slot,"$g_encountered_party", slot_party_looted_left_days, 14), #two weeks
         # 6. Reduce relations with nearby faction
-        (party_get_slot, ":culture_side", "$g_encountered_party", slot_center_culture),
-        (set_fixed_point_multiplier, 100),
-        (try_for_range, ":cur_village", villages_begin, villages_end),
-            (store_distance_to_party_from_party, ":cur_dist", ":cur_village", "$g_encountered_party"),
-            (lt, ":cur_dist", 25),
-            (store_faction_of_party, ":village_faction", ":cur_village"),
-            (is_between, ":village_faction", npc_kingdoms_begin, npc_kingdoms_end),
-            (faction_get_slot, ":village_culture", ":village_faction", slot_faction_culture),
-            (eq, ":village_culture", ":culture_side"),
-            (call_script, "script_change_player_relation_with_faction", ":village_faction", -5),
+
+        (try_begin),
+            (eq, "$g_encountered_party", "p_delphi"),
+
+            (call_script, "script_add_log_entry", logent_raided_delphi,   "trp_player",  -1, -1, -1),
+
+            (try_for_range, ":cur_center", centers_begin, centers_end),
+                (this_or_next|party_slot_eq, ":cur_center", slot_center_province, p_balk_acha),
+                (this_or_next|party_slot_eq, ":cur_center", slot_center_province, p_balk_epir),
+                (this_or_next|party_slot_eq, ":cur_center", slot_center_province, p_balk_mac),
+                (this_or_next|party_slot_eq, ":cur_center", slot_center_province, p_balk_dalm),
+                (this_or_next|party_slot_eq, ":cur_center", slot_center_province, p_balk_thrac),
+                (this_or_next|party_slot_eq, ":cur_center", slot_center_province, p_ita_magna),
+                (party_slot_eq, ":cur_center", slot_center_province, p_ita_sici),
+                (call_script, "script_change_player_relation_with_center", ":cur_center", -50),
+            (try_end),
+        (else_try),
+            (party_get_slot, ":culture_side", "$g_encountered_party", slot_center_culture),
+            (set_fixed_point_multiplier, 100),
+            (try_for_range, ":cur_village", villages_begin, villages_end),
+                (store_distance_to_party_from_party, ":cur_dist", ":cur_village", "$g_encountered_party"),
+                (lt, ":cur_dist", 25),
+                (store_faction_of_party, ":village_faction", ":cur_village"),
+                (is_between, ":village_faction", npc_kingdoms_begin, npc_kingdoms_end),
+                (faction_get_slot, ":village_culture", ":village_faction", slot_faction_culture),
+                (eq, ":village_culture", ":culture_side"),
+                (call_script, "script_change_player_relation_with_faction", ":village_faction", -5),
+            (try_end),
+            (try_for_range, ":center", centers_begin, centers_end),
+                (party_slot_eq, ":center", slot_center_culture, ":culture_side"),
+                (store_distance_to_party_from_party, ":cur_distance", "p_main_party", ":center"),
+                (lt,":cur_distance", 25),
+                (call_script, "script_change_player_relation_with_center", ":center", -25),
+            (try_end),
         (try_end),
         # 7. PENALTYS (moved from the mno)
         (call_script, "script_change_player_honor", -5),
         (call_script, "script_change_troop_renown", "trp_player", 5),
-        (try_for_range, ":center", centers_begin, centers_end),
-            (party_slot_eq, ":center", slot_center_culture, ":culture_side"),
-            (store_distance_to_party_from_party, ":cur_distance", "p_main_party", ":center"),
-            (lt,":cur_distance", 25),
-            (call_script, "script_change_player_relation_with_center", ":center", -5),
-        (try_end),
+
         # 8. REST
         (set_background_mesh, "mesh_pic_looted_village"),
         (play_sound, "snd_cow_moo"),
@@ -35548,12 +35606,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (str_store_party_name, s3, "$g_encountered_party"),
     (try_end),
   ],[
-
-    ("backpa",[],"Leave the place.",
-      [  (rest_for_hours_interactive, 3, 5, 1), #rest while attackable
-        (change_screen_return),
-      ]
-    ),
+    ("backpa",[],"Leave the place.",[
+      (rest_for_hours_interactive, 3, 5, 1), #rest while attackable
+      (change_screen_return),
+    ]),
 ]),
 
 ("gwenny_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -37999,147 +38055,133 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   "none",
   [
     (set_background_mesh, "mesh_pic_palast"),
+    (try_begin),
+        (party_slot_ge, "$g_encountered_party", slot_party_looted_left_days, 1),
+        (jump_to_menu, "mnu_center_looted"),
+    (try_end),
   ],[
-      ("monasterio_recruitm",
-        [
-          (party_slot_eq,"$g_encountered_party",slot_center_volunteer_troop_type,0),#can recruit
-          (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-          (ge, ":free_capacity", 4),
-        ],
-        "Ask if somebody wants to join you.",
-        [
-          (store_random_in_range, ":rand", 0, 8),
-          (try_begin),
-            (eq, ":rand", 0),
-            (jump_to_menu,"mnu_refugee_recruit_troops12"),
-          (else_try),
-            (eq, ":rand", 1),
-            (jump_to_menu,"mnu_refugee_recruit_troops32"),
-          (else_try),
-            (eq, ":rand", 2),
-            (jump_to_menu,"mnu_refugee_recruit_troops12"),
-          (else_try),
-            (eq, ":rand", 3),
-            (jump_to_menu,"mnu_refugee_recruit_troops22"),
-          (else_try),
-            (eq, ":rand", 4),
-            (jump_to_menu,"mnu_refugee_recruit_troops22"),
-          (else_try),
-            (eq, ":rand", 5),
-            (jump_to_menu,"mnu_refugee_recruit_troops22"),
-          (else_try),
-            (eq, ":rand", 6),
-            (jump_to_menu,"mnu_refugee_recruit_troops42"),
-          (else_try),
-            (eq, ":rand", 7),
-            (jump_to_menu,"mnu_refugee_recruit_troops32"),
-          (try_end),
-      ]),
-
-     ("answere_2",[],"Visit this place.",
-       [
-	  (modify_visitors_at_site, "scn_delphi"),
-	  (reset_visitors),
-	  (set_visitor, 1, "trp_lykos"),
-	  (set_visitor, 2, "trp_guest"),
-	  (set_visitor, 3, "trp_guest_female"),
-	  (set_visitor, 4, "trp_guest"),
-	  (set_visitor, 5, "trp_guest_female"),
-	  (set_visitors, 6, "trp_guest_female",3),
-	  (set_visitors, 7, "trp_guest",2),
-	  (set_visitors, 8, "trp_guest_female",2),
-	  (set_visitor, 9, "trp_guest"),
-	  (set_visitor, 10, "trp_guest_female"),
-	  (set_visitor, 11, "trp_guest_female"),
-	  (set_visitor, 12, "trp_guest"),
-	  (set_visitor, 13, "trp_guest"),
-	  (set_visitor, 14, "trp_guest_female"),
-	  (set_visitors, 15, "trp_guest",3),
-	  (set_visitors, 16, "trp_guest_female",3),
-	  (set_visitor, 17, "trp_guest_female"),
-	  (set_visitor, 18, "trp_guest"),
-	  (set_visitor, 19, "trp_guest"),
-	  (set_visitor, 20, "trp_guest_female"),
-
-	  (set_jump_entry, 0),
-
-	   (set_jump_mission, "mt_visit_delphi"),
-		(jump_to_scene, "scn_delphi"),
-	    (change_screen_mission),
-        ]
-       ),
-
-      ("doante",[
-          (eq, "$can_sacrific", 1),
-          ],"Make a donation to Delphi (1000 denars).",
-        [
-          (store_troop_gold, ":gold", "trp_player"),
-          (try_begin),
-            (ge, ":gold", 1000),
-            (troop_remove_gold, "trp_player", 1000),
-            (display_message, "@The priets have sacrificed animals to appease the gods on your behalf."),
-            (call_script, "script_change_player_honor",  1),
-          (else_try),
-            (display_message, "str_not_enough_gold"),
-            (call_script, "script_change_troop_renown", "trp_player", -2),
-          (try_end),
-          (assign, "$can_sacrific", 0),
-          (change_screen_return),
-        ]
-      ),
-      ("doante",[
-          (eq, "$can_sacrific", 1),
-          ],"Make a medium donation to Delphi (5000 denars).",
-        [
-          (store_troop_gold, ":gold", "trp_player"),
-          (try_begin),
-            (ge, ":gold", 5000),
-            (troop_remove_gold, "trp_player", 5000),
-            (display_message, "@The priets have sacrificed animals to appease the gods on your behalf."),
-            (call_script, "script_change_player_honor",  4),
-          (else_try),
-            (display_message, "str_not_enough_gold"),
-            (call_script, "script_change_troop_renown", "trp_player", -6),
-          (try_end),
-          (assign, "$can_sacrific", 0),
-          (change_screen_return),
-        ]
-      ),
-
-      ("doante",[
-          (eq, "$can_sacrific", 1),
-          ],"Make a huge donation to Delphi (10000 denars).",
-        [
-          (store_troop_gold, ":gold", "trp_player"),
-          (try_begin),
-            (ge, ":gold", 10000),
-            (troop_remove_gold, "trp_player", 10000),
-            (display_message, "@The priets have sacrificed animals to appease the gods on your behalf."),
-            (call_script, "script_change_player_honor",  9),
-          (else_try),
-            (display_message, "str_not_enough_gold"),
-            (call_script, "script_change_troop_renown", "trp_player", -10),
-          (try_end),
-          (assign, "$can_sacrific", 0),
-          (change_screen_return),
-        ]
-      ),
-
-      ("camp_wait_hereho",[],"Wait here for some time.",
-        [
-          (assign,"$g_camp_mode", 1),
-          (assign, "$g_infinite_camping", 0),
-          (assign, "$g_player_icon_state", pis_camping),
-          (rest_for_hours_interactive, 24 * 365, 5, 0), #rest while no attackable
-          (change_screen_return),
-        ]
-      ),
-
-	   ("answere_1",[],"Leave.",
-       [
+    ("pillage_hofho",[
+    ],"Raid the sanctuary.",[
+      (jump_to_menu, "mnu_raid_delphi"),
+    ]),
+    ("monasterio_recruitm",[
+      (party_slot_eq,"$g_encountered_party",slot_center_volunteer_troop_type,0),#can recruit
+      (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
+      (ge, ":free_capacity", 4),
+    ],"Ask if somebody wants to join you.",[
+      (store_random_in_range, ":rand", 0, 8),
+      (try_begin),
+        (eq, ":rand", 0),
+        (jump_to_menu,"mnu_refugee_recruit_troops12"),
+      (else_try),
+        (eq, ":rand", 1),
+        (jump_to_menu,"mnu_refugee_recruit_troops32"),
+      (else_try),
+        (eq, ":rand", 2),
+        (jump_to_menu,"mnu_refugee_recruit_troops12"),
+      (else_try),
+        (eq, ":rand", 3),
+        (jump_to_menu,"mnu_refugee_recruit_troops22"),
+      (else_try),
+        (eq, ":rand", 4),
+        (jump_to_menu,"mnu_refugee_recruit_troops22"),
+      (else_try),
+        (eq, ":rand", 5),
+        (jump_to_menu,"mnu_refugee_recruit_troops22"),
+      (else_try),
+        (eq, ":rand", 6),
+        (jump_to_menu,"mnu_refugee_recruit_troops42"),
+      (else_try),
+        (eq, ":rand", 7),
+        (jump_to_menu,"mnu_refugee_recruit_troops32"),
+      (try_end),
+    ]),
+    ("answere_2",[],"Visit this place.",[
+      (modify_visitors_at_site, "scn_delphi"),
+      (reset_visitors),
+      (set_visitor, 1, "trp_lykos"),
+      (set_visitor, 2, "trp_guest"),
+      (set_visitor, 3, "trp_guest_female"),
+      (set_visitor, 4, "trp_guest"),
+      (set_visitor, 5, "trp_guest_female"),
+      (set_visitors, 6, "trp_guest_female",3),
+      (set_visitors, 7, "trp_guest",2),
+      (set_visitors, 8, "trp_guest_female",2),
+      (set_visitor, 9, "trp_guest"),
+      (set_visitor, 10, "trp_guest_female"),
+      (set_visitor, 11, "trp_guest_female"),
+      (set_visitor, 12, "trp_guest"),
+      (set_visitor, 13, "trp_guest"),
+      (set_visitor, 14, "trp_guest_female"),
+      (set_visitors, 15, "trp_guest",3),
+      (set_visitors, 16, "trp_guest_female",3),
+      (set_visitor, 17, "trp_guest_female"),
+      (set_visitor, 18, "trp_guest"),
+      (set_visitor, 19, "trp_guest"),
+      (set_visitor, 20, "trp_guest_female"),
+      (set_jump_entry, 0),
+      (set_jump_mission, "mt_visit_delphi"),
+      (jump_to_scene, "scn_delphi"),
+      (change_screen_mission),
+    ]),
+    ("doante",[
+      (eq, "$can_sacrific", 1),
+    ],"Make a donation to Delphi (1000 denars).",[
+      (store_troop_gold, ":gold", "trp_player"),
+      (try_begin),
+        (ge, ":gold", 1000),
+        (troop_remove_gold, "trp_player", 1000),
+        (display_message, "@The priets have sacrificed animals to appease the gods on your behalf."),
+        (call_script, "script_change_player_honor",  1),
+      (else_try),
+        (display_message, "str_not_enough_gold"),
+        (call_script, "script_change_troop_renown", "trp_player", -2),
+      (try_end),
+      (assign, "$can_sacrific", 0),
+      (change_screen_return),
+    ]),
+    ("doante",[
+      (eq, "$can_sacrific", 1),
+    ],"Make a medium donation to Delphi (5000 denars).",[
+      (store_troop_gold, ":gold", "trp_player"),
+      (try_begin),
+        (ge, ":gold", 5000),
+        (troop_remove_gold, "trp_player", 5000),
+        (display_message, "@The priets have sacrificed animals to appease the gods on your behalf."),
+        (call_script, "script_change_player_honor",  4),
+      (else_try),
+        (display_message, "str_not_enough_gold"),
+        (call_script, "script_change_troop_renown", "trp_player", -6),
+      (try_end),
+      (assign, "$can_sacrific", 0),
+      (change_screen_return),
+    ]),
+    ("doante",[
+      (eq, "$can_sacrific", 1),
+    ],"Make a huge donation to Delphi (10000 denars).",[
+      (store_troop_gold, ":gold", "trp_player"),
+      (try_begin),
+        (ge, ":gold", 10000),
+        (troop_remove_gold, "trp_player", 10000),
+        (display_message, "@The priets have sacrificed animals to appease the gods on your behalf."),
+        (call_script, "script_change_player_honor",  9),
+      (else_try),
+        (display_message, "str_not_enough_gold"),
+        (call_script, "script_change_troop_renown", "trp_player", -10),
+      (try_end),
+      (assign, "$can_sacrific", 0),
+      (change_screen_return),
+    ]),
+    ("camp_wait_hereho",[],"Wait here for some time.",[
+      (assign,"$g_camp_mode", 1),
+      (assign, "$g_infinite_camping", 0),
+      (assign, "$g_player_icon_state", pis_camping),
+      (rest_for_hours_interactive, 24 * 365, 5, 0), #rest while no attackable
+      (change_screen_return),
+    ]),
+	  ("answere_1",[],"Leave.",[
 	    (change_screen_map),
-        ]
-       ),
+    ]),
 ]),
 
 ("pythia",menu_text_color(0xFF000000)|mnf_disable_all_keys,
