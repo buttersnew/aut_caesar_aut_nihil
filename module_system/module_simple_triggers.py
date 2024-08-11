@@ -12753,8 +12753,39 @@ simple_triggers = [
         (eq, ":fac_rome", "$players_kingdom"),
         (jump_to_menu, "mnu_grain_protests"),
     (try_end),
-
-
 ]),
 
+(0.15,[
+    (call_script, "script_execude_debug_message", 196),
+    (try_for_parties, ":party_no"),
+        (gt, ":party_no", "p_vally_of_kings"),
+        (party_is_active, ":party_no"),
+        (try_begin),
+            (party_get_current_terrain, ":cur_terrain", ":party_no"),
+            (this_or_next|eq,":cur_terrain",rt_bridge),
+            (this_or_next|eq,":cur_terrain",rt_river),
+            (eq,":cur_terrain",rt_water),
+            (try_begin),
+                (this_or_next|eq,":cur_terrain",rt_bridge),
+                (this_or_next|eq,":cur_terrain",rt_river),
+                (eq,":cur_terrain",rt_water),
+                (party_slot_eq, ":party_no", slot_party_on_water, 0),	#PARTY IS SWITCHING FROM LAND TO WATER
+                (party_set_slot, ":party_no", slot_party_on_water, 1),
+                (party_set_flags, ":party_no", pf_is_ship, 1),
+                (try_begin),	#free player if he is captive
+                    (eq, "$g_player_is_captive", 1),
+                    (eq, "$travel_town", 0),	#VC-2283
+                    (eq, ":party_no", "$capturer_party"),
+                    (jump_to_menu,"mnu_captivity_end_wilderness_escape"),
+                (try_end),
+                (call_script, "script_update_party_icon", ":party_no"),#update icon
+            (try_end),
+        (else_try),
+            (party_slot_eq, ":party_no", slot_party_on_water, 1),	#PARTY IS SWITCHING FROM WATER TO LAND
+            (party_set_slot, ":party_no", slot_party_on_water, 0),
+            (party_set_flags, ":party_no", pf_is_ship, 0),#I think this should still be necessary
+            (call_script, "script_update_party_icon", ":party_no"),#update icon
+        (try_end),
+    (try_end),
+]),
 ]##END OF FILE
