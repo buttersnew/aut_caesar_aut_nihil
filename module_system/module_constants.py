@@ -3875,6 +3875,8 @@ g_toilet_talk = 76
 
 g_rumours_lover = 77
 
+g_antonia_talk = 78
+
 #Spain
 p_hisp_tarraco = 1
 p_hisp_baetica = 2
