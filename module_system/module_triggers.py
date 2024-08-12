@@ -993,7 +993,7 @@ triggers = [
 ],[
     (try_begin),
         (party_get_position, pos1, "p_temp_party"),
-        (call_script, "script_get_next_water_position", 0),
+        (call_script, "script_get_next_water_position", 0, "p_temp_party"),
         (party_set_position, "p_landing_point", pos2),
     (try_end),
 ]),
