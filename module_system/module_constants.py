@@ -1602,8 +1602,8 @@ dplmc_slot_troop_temp_slot                    = 163 #replaces dplmc_slot_troop_p
 ##diplomacy end+
 dplmc_slot_troop_affiliated                   = 164 ##notes: 0 is default, 1 is asked; on newer games 3 is affiliated and 4 is betrayed
 
-slot_troop_marriage_time 				      = 165
-
+# slot_troop_marriage_time 				      = 165
+slot_troop_triumph_points                = 165
 #CONTROVERSY
 #This is used to create a more "rational choice" model of faction politics, in which lords pick fights with other lords for gain, rather than simply because of clashing personalities
 #It is intended to be a limiting factor for players and lords in their ability to intrigue against each other. It represents the embroilment of a lord in internal factional disputes. In contemporary media English, a lord with high "controversy" would be described as "embattled."

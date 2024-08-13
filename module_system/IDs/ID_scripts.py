@@ -988,3 +988,4 @@ script_get_background_pic_for_battle = 986
 script_generate_party_list_for_battle = 987
 script_generate_list_of_party_members = 988
 script_can_besiege_castle = 989
+script_troop_change_triumph_points = 990

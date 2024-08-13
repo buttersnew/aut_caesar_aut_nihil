@@ -13789,11 +13789,9 @@ game_menus = [
     # ],
   # ),
 
-  (
-    "garrison_management",mnf_disable_all_keys,
-    "You can exchange troops with the garrison. Size of the garrison: {reg31}. Number of prisoners: {reg30}^^{s22}^^You can also buy slaves from local slave traders which will be added to the prisoners of the settlement, but it is very expensive. Prisoners in the garrison will decrease construction time upon building something.",
-    "none",
-    [
+("garrison_management",mnf_disable_all_keys,
+  "You can exchange troops with the garrison. Size of the garrison: {reg31}. Number of prisoners: {reg30}^^{s22}^^You can also buy slaves from local slave traders which will be added to the prisoners of the settlement, but it is very expensive. Prisoners in the garrison will decrease construction time upon building something.",
+  "none",[
     (party_set_flags, "$g_encountered_party", pf_limit_members, 0),#clear flag later on
     (assign, reg62, 0),
 
@@ -13805,88 +13803,100 @@ game_menus = [
         (call_script,"script_cf_fix_party_size_village","$g_encountered_party",1),
         (str_store_string, s22, "@If you place prisoners in your village they will work on the fields and in the mines and generate additional rents."),
     (try_end),
-    ],
-    [
-      ("exchange",[(eq, reg63, 1),],"Manage cohorts.",[
-    (start_presentation, "prsnt_manage_cohorts_town"),
-      ]),
-
-      ("exchange",[(eq, reg63, 1),],"Exchange.",[
-
-    (change_screen_exchange_members,1),
-      ]),
-
-    ("exchange",[ (eq, reg63, 0),],"Review garrison and prisoners.",[
-    (call_script, "script_view_party_members","$g_encountered_party"),]),
-
-      ("add_prisoners",[
-    (eq, reg63, 1),
-    (party_get_num_prisoners, ":prisoners", "p_main_party"),
-    (ge, ":prisoners", 1),],"Drop off all non-hero prisoners.",[
-    (assign, "$g_move_heroes", 0),
-    (call_script, "script_party_prisoners_add_party_prisoners", "$g_encountered_party", "p_main_party"),
-    (call_script, "script_party_remove_all_prisoners", "p_main_party"),
-      ]),
-
-      ("add_members",[
-    (eq, reg63, 1),
-    (store_party_size_wo_prisoners, ":men", "p_main_party"),
-    (ge, ":men", 1),],"Drop off all your  non-hero party members.",[
-    (assign, "$g_move_heroes", 0),
-    (call_script, "script_party_add_party_companions", "$g_encountered_party", "p_main_party"),
-    (call_script, "script_party_remove_all_companions", "p_main_party"),
-      ]),
-      ("slaves_0",[
-    (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
-      ],"Buy 25 slaves. (25,000 denars)",[
-    (try_begin),
-        (store_troop_gold, ":gold", "trp_household_possessions"),
-        (ge, ":gold", 25000),
-        (party_add_prisoners, "$g_encountered_party", "trp_slave", 25),
-        (call_script, "script_dplmc_withdraw_from_treasury", 25000),
-    (else_try),
-        (store_troop_gold, ":gold", "trp_player"),
-        (ge, ":gold", 25000),
-        (party_add_prisoners, "$g_encountered_party", "trp_slave", 25),
-        (troop_remove_gold, "trp_player", 25000),
-    (try_end),
-      ]),
-      ("slaves_1",[
-    (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
-      ],"Buy 50 slaves. (50,000 denars)",[
-    (try_begin),
-        (store_troop_gold, ":gold", "trp_household_possessions"),
-        (ge, ":gold", 50000),
-        (party_add_prisoners, "$g_encountered_party", "trp_slave", 50),
-        (call_script, "script_dplmc_withdraw_from_treasury", 50000),
-    (else_try),
-        (store_troop_gold, ":gold", "trp_player"),
-        (ge, ":gold", 50000),
-        (party_add_prisoners, "$g_encountered_party", "trp_slave", 50),
-        (troop_remove_gold, "trp_player", 50000),
-    (try_end),
-      ]),
+  ],[
+    ("exchange",[
+      (this_or_next|eq, reg63, 1),
+      (eq, reg63, 2),
+    ],"Manage cohorts.",[
+      (start_presentation, "prsnt_manage_cohorts_town"),
+    ]),
+    ("exchange",[
+      (this_or_next|eq, reg63, 1),
+      (eq, reg63, 2),
+    ],"Exchange.",[
+      (change_screen_exchange_members,1),
+    ]),
+    ("exchange",[
+      (eq, reg63, 0),
+    ],"Review garrison and prisoners.",[
+      (call_script, "script_view_party_members","$g_encountered_party"),
+    ]),
+    ("add_prisoners",[
+      (this_or_next|eq, reg63, 1),
+      (eq, reg63, 2),
+      (party_get_num_prisoners, ":prisoners", "p_main_party"),
+      (ge, ":prisoners", 1),
+    ],"Drop off all non-hero prisoners.",[
+      (assign, "$g_move_heroes", 0),
+      (call_script, "script_party_prisoners_add_party_prisoners", "$g_encountered_party", "p_main_party"),
+      (call_script, "script_party_remove_all_prisoners", "p_main_party"),
+    ]),
+    ("add_members",[
+      (this_or_next|eq, reg63, 1),
+      (eq, reg63, 2),
+      (store_party_size_wo_prisoners, ":men", "p_main_party"),
+      (ge, ":men", 1),
+    ],"Drop off all your  non-hero party members.",[
+      (assign, "$g_move_heroes", 0),
+      (call_script, "script_party_add_party_companions", "$g_encountered_party", "p_main_party"),
+      (call_script, "script_party_remove_all_companions", "p_main_party"),
+    ]),
+    ("slaves_0",[
+      (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
+    ],"Buy 25 slaves. (25,000 denars)",[
+      (try_begin),
+          (store_troop_gold, ":gold", "trp_household_possessions"),
+          (ge, ":gold", 25000),
+          (party_add_prisoners, "$g_encountered_party", "trp_slave", 25),
+          (call_script, "script_dplmc_withdraw_from_treasury", 25000),
+      (else_try),
+          (store_troop_gold, ":gold", "trp_player"),
+          (ge, ":gold", 25000),
+          (party_add_prisoners, "$g_encountered_party", "trp_slave", 25),
+          (troop_remove_gold, "trp_player", 25000),
+      (try_end),
+    ]),
+    ("slaves_1",[
+      (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
+    ],"Buy 50 slaves. (50,000 denars)",[
+      (try_begin),
+          (store_troop_gold, ":gold", "trp_household_possessions"),
+          (ge, ":gold", 50000),
+          (party_add_prisoners, "$g_encountered_party", "trp_slave", 50),
+          (call_script, "script_dplmc_withdraw_from_treasury", 50000),
+      (else_try),
+          (store_troop_gold, ":gold", "trp_player"),
+          (ge, ":gold", 50000),
+          (party_add_prisoners, "$g_encountered_party", "trp_slave", 50),
+          (troop_remove_gold, "trp_player", 50000),
+      (try_end),
+    ]),
     ("slaves_2",[
-    (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
-      ],"Buy 100 slaves. (100,000 denars)",[
-    (try_begin),
-        (store_troop_gold, ":gold", "trp_household_possessions"),
-        (ge, ":gold", 100000),
-        (party_add_prisoners, "$g_encountered_party", "trp_slave", 100),
-        (call_script, "script_dplmc_withdraw_from_treasury", 100000),
-    (else_try),
-        (store_troop_gold, ":gold", "trp_player"),
-        (ge, ":gold", 100000),
-        (party_add_prisoners, "$g_encountered_party", "trp_slave", 100),
-        (troop_remove_gold, "trp_player", 100000),
-    (try_end),
-      ]),
-
-      ("continue",[],"Go back.",[
-    (jump_to_menu, "mnu_center_manage_2"),
-      ]),
-    ],
-  ),
+      (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
+    ],"Buy 100 slaves. (100,000 denars)",[
+      (try_begin),
+          (store_troop_gold, ":gold", "trp_household_possessions"),
+          (ge, ":gold", 100000),
+          (party_add_prisoners, "$g_encountered_party", "trp_slave", 100),
+          (call_script, "script_dplmc_withdraw_from_treasury", 100000),
+      (else_try),
+          (store_troop_gold, ":gold", "trp_player"),
+          (ge, ":gold", 100000),
+          (party_add_prisoners, "$g_encountered_party", "trp_slave", 100),
+          (troop_remove_gold, "trp_player", 100000),
+      (try_end),
+    ]),
+    ("continue",[
+      (neq, reg63, 2),
+    ],"Go back.",[
+      (jump_to_menu, "mnu_center_manage_2"),
+    ]),
+    ("continue",[
+      (eq, reg63, 2),
+    ],"Go back.",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
  (
     "town_bandits_failed",mnf_disable_all_keys,
@@ -17020,6 +17030,23 @@ game_menus = [
       (call_script, "script_cf_can_donate_to_garrision", "$g_encountered_party"),
     ],"Donate troops to the garrison (Cannot remove)",[
       (start_presentation, "prsnt_manage_cohorts_town"),
+    ]),
+
+    ("manage_troops_marshal_legate",[
+      (assign, ":player_can_draw_from_garrison", 0),
+      (try_begin),
+          (faction_slot_eq, "$g_encountered_party_faction", slot_faction_marshal, "trp_player"),
+          (assign, ":player_can_draw_from_garrison", 1),
+      (else_try),
+          (troop_get_slot, ":legion", "trp_player", slot_troop_legion),
+          (store_add, ":legion_hq", ":legion", slot_legion_home_begin),
+          (troop_slot_eq, "trp_province_array", ":legion_hq", "$g_encountered_party"),
+          (assign, ":player_can_draw_from_garrison", 1),
+      (try_end),
+      (eq, ":player_can_draw_from_garrison", 1),
+    ],"Manage the garison",[
+      (assign, reg63, 2),
+      (jump_to_menu, "mnu_garrison_management"),
     ]),
 
 	  ##diplomacy start+
@@ -33546,7 +33573,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 ("event_jerusalem_4",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "The great Jewish revolt!^^The governor {s40} of Jerusalem suspected, that most of the Jewish population do not pay their taxes. It seems more plausible that {s40} has taken the missing taxes for himself. However, the governor ordered to"
-  +" confiscate silber and gold from the treasuries of the temple as compensation for the missing taxes.^ This action had fatale consequences:^ Most jews seized their weapons. This is not a simple town riot it is open rebellion!^"
+  +" confiscate silver and gold from the treasuries of the temple as compensation for the missing taxes.^ This action had fatale consequences:^ Most jews seized their weapons. This is not a simple town riot it is open rebellion!^"
   +" Without problems they killed the garrison of Jerusalem! ^^The great jewish rebellion has started.",
   "none",[
     (set_background_mesh, "mesh_pic_villageriot"),
