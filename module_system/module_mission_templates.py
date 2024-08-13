@@ -138,6 +138,7 @@ poisoned_arrows_hit = (ti_on_agent_hit, 0, 0, [],[
 
 poisoned_arrows_damage = (6, 0, 0, [],[
   (try_for_agents,":cur_agent"),
+      (agent_is_active, ":cur_agent"),
       (agent_is_alive, ":cur_agent"),
       (agent_get_slot, ":is_poisoned", ":cur_agent", slot_agent_is_poisoned),
       (ge, ":is_poisoned", 1),
@@ -3178,6 +3179,7 @@ common_division_data = [  #4 triggers
   # Trigger file: common_division_data_ti_after_mission_start
   (0, .2, ti_once, [(mission_tpl_are_all_agents_spawned)],[	#only 300 or so agents are spawned by ti_after_mission_start
       (try_for_agents, ":agent"),
+        (agent_is_active, ":agent"),
         (agent_is_human, ":agent"),
         (try_begin),
           (multiplayer_get_my_player, ":player"),
@@ -3970,8 +3972,8 @@ morale_triggers = [
 
 
  (ti_on_order_issued, 0, 0, [
-	(store_trigger_param_1, ":order_no"),
-	(store_trigger_param_2, ":order_agent"),
+    (store_trigger_param_1, ":order_no"),
+    (store_trigger_param_2, ":order_agent"),
 
     (try_begin),
         (neg|agent_is_non_player, ":order_agent"),
@@ -5781,9 +5783,10 @@ dplmc_battle_mode_triggers = [
 
   (1,0,2,[],[
     (try_for_agents, ":agent_no"),
-        (agent_is_non_player, ":agent_no"),
+        (agent_is_active, ":agent_no"),
         (agent_is_human, ":agent_no"),
         (agent_is_alive, ":agent_no"),
+        (agent_is_non_player, ":agent_no"),
         (agent_get_wielded_item, ":wielded_item", ":agent_no", 0),
         (gt, ":wielded_item", 0),
         (try_begin),#remove kontos for dismounted units
@@ -5857,6 +5860,7 @@ dplmc_battle_mode_triggers = [
     (neg|agent_is_human, ":horse_no"), #horse agent
     (agent_get_rider, ":agent_no", ":horse_no"),
     (try_begin),
+        (agent_is_active, ":agent_no"),
         (agent_is_non_player, ":agent_no"), #default period for npcs
         (agent_set_slot, ":horse_no", slot_agent_bought_horse, 0), #default duration
     (else_try),
@@ -5871,6 +5875,7 @@ dplmc_battle_mode_triggers = [
     (store_trigger_param_1, ":agent_no"),
     (store_trigger_param_2, ":horse_no"),
     (try_begin),
+      (agent_is_active, ":agent_no"),
       (agent_is_non_player, ":agent_no"), #default period for npcs
       (agent_set_slot, ":horse_no", slot_agent_bought_horse, 0), #reset the timer
     (else_try),
@@ -6294,9 +6299,10 @@ tournament_triggers = [
 
   (1,0,2,[],[
     (try_for_agents, ":agent_no"),
-      (agent_is_non_player, ":agent_no"),
+      (agent_is_active, ":agent_no"),
       (agent_is_human, ":agent_no"),
       (agent_is_alive, ":agent_no"),
+      (agent_is_non_player, ":agent_no"),
       (agent_get_troop_id, ":troop", ":agent_no"),
       (troop_is_guarantee_horse, ":troop"),
       (agent_get_horse, ":horse", ":agent_no"),
@@ -8420,6 +8426,7 @@ mission_templates = [
 
     (ti_on_agent_spawn, 0, 0, [],[
       (store_trigger_param_1, ":agent_no"),
+      (agent_is_active, ":agent_no"),
       (agent_is_human, ":agent_no"),
       (agent_is_alive, ":agent_no"),
       (agent_is_non_player, ":agent_no"),
@@ -9233,6 +9240,7 @@ mission_templates = [
     common_battle_player_fallen_renown_lose,
     (ti_on_agent_spawn, 0, 0, [],[
       (store_trigger_param_1, ":agent_no"),
+      (agent_is_active, ":agent_no"),
       (agent_is_human, ":agent_no"),
       (agent_is_alive, ":agent_no"),
       (agent_is_non_player, ":agent_no"),
@@ -10045,6 +10053,7 @@ mission_templates = [
     cannot_spawn_commoners,
     (ti_on_agent_spawn, 0, 0, [],[
       (store_trigger_param_1, ":agent_no"),
+      (agent_is_active, ":agent_no"),
       (agent_is_human, ":agent_no"),
       (agent_is_alive, ":agent_no"),
       (try_begin),#spawn player horse
@@ -10576,11 +10585,10 @@ mission_templates = [
       (ge, "$defender_reinforcement_stage", 5),
     ],[
       (store_trigger_param_1, ":agent_no"),
-      (agent_is_non_player, ":agent_no"),
-
       (agent_is_human, ":agent_no"),
       (agent_is_alive, ":agent_no"),
       (agent_is_active, ":agent_no"),
+      (agent_is_non_player, ":agent_no"),
       (agent_get_team, ":agent_team", ":agent_no"),
       (this_or_next|eq, ":agent_team", "$defender_team"),
       (eq, ":agent_team", "$defender_team_2"),
@@ -10599,10 +10607,10 @@ mission_templates = [
     ]),
     (0, 1, ti_once, [],[
       (try_for_agents, ":agent_no"),
-          (agent_is_non_player, ":agent_no"),
           (agent_is_human, ":agent_no"),
           (agent_is_alive, ":agent_no"),
           (agent_is_active, ":agent_no"),
+          (agent_is_non_player, ":agent_no"),
           (agent_get_team, ":agent_team", ":agent_no"),
           (this_or_next|eq, ":agent_team", "$defender_team"),
           (eq, ":agent_team", "$defender_team_2"),
@@ -13074,9 +13082,10 @@ mission_templates = [
       (try_end),
       (assign, ":number_of_enemies", 0),
       (try_for_agents, ":cur_agent"),
-        (agent_is_non_player, ":cur_agent"),
+        (agent_is_active, ":cur_agent"),
         (agent_is_human, ":cur_agent"),
         (agent_is_alive, ":cur_agent"),
+        (agent_is_non_player, ":cur_agent"),
         (neg|agent_is_ally, ":cur_agent"),
         (val_add, ":number_of_enemies", 1),
       (try_end),
@@ -16970,9 +16979,10 @@ mission_templates = [
       (0, 1, ti_once, [],
         [
           (try_for_agents, ":agent_no"),
-            (agent_is_non_player, ":agent_no"),
+            (agent_is_active, ":agent_no"),
             (agent_is_human, ":agent_no"),
             (agent_is_alive, ":agent_no"),
+            (agent_is_non_player, ":agent_no"),
             # (agent_get_team, ":agent_team", ":agent_no"),
             # (this_or_next|eq, ":agent_team", "$defender_team"),
             # (eq, ":agent_team", "$defender_team_2"),
@@ -26065,9 +26075,10 @@ mission_templates = [
       (ge, "$tutorial_state", 12),
     ],[
       (try_for_agents, ":agent"),
-          (agent_is_non_player, ":agent"),
+          (agent_is_active, ":agent"),
           (agent_is_human, ":agent"),
           (agent_is_alive, ":agent"),
+          (agent_is_non_player, ":agent"),
           (try_begin),
               (store_random_in_range, ":taunt", 1, 100),
               (gt, ":taunt", 50),
@@ -26302,7 +26313,7 @@ mission_templates = [
 
     (ti_on_agent_spawn,1,0,[
       (store_trigger_param_1,":agent"),
-
+      (agent_is_active, ":agent"),
       (agent_is_non_player, ":agent"),
       (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 0),
 
@@ -28282,24 +28293,21 @@ mission_templates = [
             (try_end),
       ]),
 
-      (ti_on_agent_killed_or_wounded, 0, 0, [],
-        [
-          (store_trigger_param_1, ":dead_agent"),
-
-          (agent_get_troop_id, ":troop", ":dead_agent"),
-          (neq, ":troop", "trp_player"),
-          (troop_is_hero, ":troop"),
-          (main_party_has_troop, ":troop"),
-          (party_wound_members, "p_main_party", ":troop", 1),
+      (ti_on_agent_killed_or_wounded, 0, 0, [],[
+        (store_trigger_param_1, ":dead_agent"),
+        (agent_get_troop_id, ":troop", ":dead_agent"),
+        (neq, ":troop", "trp_player"),
+        (troop_is_hero, ":troop"),
+        (main_party_has_troop, ":troop"),
+        (party_wound_members, "p_main_party", ":troop", 1),
       ]),
       #################
-    change_battle_speed_trigger,
-    dedal_shield_bash,
-    dedal_shield_bash_AI,
-    custom_commander_critical_strike,
-    wounds_vc,
-      (ti_before_mission_start, 0, 0, [],
-        [
+      change_battle_speed_trigger,
+      dedal_shield_bash,
+      dedal_shield_bash_AI,
+      custom_commander_critical_strike,
+      wounds_vc,
+      (ti_before_mission_start, 0, 0, [],[
         (assign,"$g_battle_result",0),
         (assign, "$attacker_team", 0),
         (assign, "$defender_team_2", 2),
@@ -28308,145 +28316,135 @@ mission_templates = [
         (team_set_relation,0,1,0),
       ]),
 
-      (3, 0, ti_once,
-        [
-          (set_show_messages, 0),
-          (team_give_order, "$defender_team_2", grc_everyone, mordr_stand_ground),
-          (set_show_messages, 1),
-          # (try_for_agents, ":agent"),
-            # (agent_is_active, ":agent"),
-            # (agent_get_team, ":team", ":agent"),
-            # (eq, ":team", "$defender_team_2"),
-            # (agent_get_position, pos1, ":agent"),
-            # (agent_set_scripted_destination, ":agent",pos1),
-          # (try_end),
-          (set_party_battle_mode),
-          ],[]
-      ),
+      (3, 0, ti_once,[
+        (set_show_messages, 0),
+        (team_give_order, "$defender_team_2", grc_everyone, mordr_stand_ground),
+        (set_show_messages, 1),
+        # (try_for_agents, ":agent"),
+          # (agent_is_active, ":agent"),
+          # (agent_get_team, ":team", ":agent"),
+          # (eq, ":team", "$defender_team_2"),
+          # (agent_get_position, pos1, ":agent"),
+          # (agent_set_scripted_destination, ":agent",pos1),
+        # (try_end),
+        (set_party_battle_mode),
+      ],[]),
       (1, 0, 0, [
-          (store_skill_level,":player_sneaking_skill","skl_athletics","trp_player"),
-          (assign,":sneak_distance",30000),
-          (val_mul, ":player_sneaking_skill", 1000),
-          (val_sub, ":sneak_distance", ":player_sneaking_skill"),
-          (val_clamp, ":sneak_distance", 2000, 30000),
-          (assign,":continue",0),
-          (get_player_agent_no, ":player"),
-          (agent_get_position,pos23,":player"),
+        (store_skill_level,":player_sneaking_skill","skl_athletics","trp_player"),
+        (assign,":sneak_distance",30000),
+        (val_mul, ":player_sneaking_skill", 1000),
+        (val_sub, ":sneak_distance", ":player_sneaking_skill"),
+        (val_clamp, ":sneak_distance", 2000, 30000),
+        (assign,":continue",0),
+        (get_player_agent_no, ":player"),
+        (agent_get_position,pos23,":player"),
 
-          (try_for_agents, ":cur_agent"),
-            (neq, ":cur_agent", ":player"),
-            (agent_get_troop_id, ":troop", ":cur_agent"),
-            (neg|main_party_has_troop, ":troop"),
-            ##                 (agent_get_team, ":team", ":cur_agent"),
-            ##		(eq, ":team", 2),
-            (agent_get_position,pos22,":cur_agent"),
-            (get_distance_between_positions,":distance",pos23,pos22),
-            (lt,":distance",":sneak_distance"),
-            (agent_set_team, ":cur_agent", 2),
-            (assign,":continue",1),
-          (try_end),
-          (eq,":continue",1),
-          (set_party_battle_mode),
-        ],
-        [
+        (try_for_agents, ":cur_agent"),
+          (neq, ":cur_agent", ":player"),
+          (agent_get_troop_id, ":troop", ":cur_agent"),
+          (neg|main_party_has_troop, ":troop"),
+          ##                 (agent_get_team, ":team", ":cur_agent"),
+          ##		(eq, ":team", 2),
+          (agent_get_position,pos22,":cur_agent"),
+          (get_distance_between_positions,":distance",pos23,pos22),
+          (lt,":distance",":sneak_distance"),
+          (agent_set_team, ":cur_agent", 2),
+          (assign,":continue",1),
+        (try_end),
+        (eq,":continue",1),
+        (set_party_battle_mode),
+      ],[
       ]),
 
-      (5, 3, ti_once, #normal mode
-        [ (main_hero_fallen),
-          (assign,"$g_battle_result",-1),
-          (assign,"$g_encountered_party",-1),
-          (call_script, "script_change_troop_renown", "trp_player", -5),
-          (display_message, "@Bandits strike at you furiously, and you fall in a puddle of blood. They think you're dead...",color_good_news),
-          (store_troop_gold, ":gold", "trp_player"),
-          (try_begin),
-            (ge, ":gold", 500),
-            (troop_remove_gold, "trp_player", 500),
-          (else_try),
-            (call_script, "script_change_troop_renown", "trp_player", -25),
-          (try_end),
-        ],
-        [
-          (finish_mission),
+      (5, 3, ti_once,[
+        (main_hero_fallen),
+        (assign,"$g_battle_result",-1),
+        (assign,"$g_encountered_party",-1),
+        (call_script, "script_change_troop_renown", "trp_player", -5),
+        (display_message, "@Bandits strike at you furiously, and you fall in a puddle of blood. They think you're dead...",color_good_news),
+        (store_troop_gold, ":gold", "trp_player"),
+        (try_begin),
+          (ge, ":gold", 500),
+          (troop_remove_gold, "trp_player", 500),
+        (else_try),
+          (call_script, "script_change_troop_renown", "trp_player", -25),
+        (try_end),
+      ],[
+        (finish_mission),
       ]),
 
       #Victory normal
-      ( 1, 1, ti_once,
-        [
+      ( 1, 1, ti_once,[
         (num_active_teams_le, 1),
         (neg|main_hero_fallen),
-        ],
-        [
-          (assign, "$g_battle_result", 1),
-          (assign,"$g_encountered_party",-1),
-          (tutorial_message_set_background, 1),
-          (tutorial_message,"@The bandits have been dealt with.^^" +
-          "When you want to leave, press TAB."),
+       ],[
+        (assign, "$g_battle_result", 1),
+        (assign,"$g_encountered_party",-1),
+        (tutorial_message_set_background, 1),
+        (tutorial_message,"@The bandits have been dealt with.^^" +
+        "When you want to leave, press TAB."),
       ]),
 
       common_inventory_not_available,
-      (ti_tab_pressed, 0, 0, [(eq, "$g_battle_result", 0),],
-        [
-          (display_message, "str_cannot_leave_now"),
+      (ti_tab_pressed, 0, 0, [(eq, "$g_battle_result", 0),],[
+        (display_message, "str_cannot_leave_now"),
       ]),
-      (ti_tab_pressed, 0, 0, [(eq, "$g_battle_result", 1),],
-        [
-          (jump_to_menu, "mnu_fake_nero_defeated"),
-          (finish_mission),
+      (ti_tab_pressed, 0, 0, [(eq, "$g_battle_result", 1),],[
+        (jump_to_menu, "mnu_fake_nero_defeated"),
+        (finish_mission),
       ]),
 
-      (0, 0, ti_once, [],
-        [
-          (call_script, "script_music_set_situation_with_culture", 0),
+      (0, 0, ti_once, [],[
+        (call_script, "script_music_set_situation_with_culture", 0),
       ]),
 
- (ti_on_agent_killed_or_wounded, 0, 0, [],
-    [
-    (store_trigger_param_1, ":dead_agent"),
-    (store_trigger_param_2, ":killer"),
-    (agent_get_troop_id,":cur_troop_id",":dead_agent"),
-    (eq,":cur_troop_id","trp_fake_nero"),
-    (neg|agent_is_non_player, ":killer"),
-    (display_message,"@You have just killed Nero reborn. Rummaging through his things, you find some treasures. You still need to defeat the other enemies before you can collect your reward.",color_good_news),
-    (call_script, "script_change_player_honor", 2),
-    (call_script, "script_change_troop_renown", "trp_player", 15),
-    (add_xp_as_reward, 150),
-    (val_sub, "$g_unrest", 5),
-    (display_message, "@Stability of the Empire increases", color_good_news),
-    ]),
+      (ti_on_agent_killed_or_wounded, 0, 0, [],[
+        (store_trigger_param_1, ":dead_agent"),
+        (store_trigger_param_2, ":killer"),
+        (agent_get_troop_id,":cur_troop_id",":dead_agent"),
+        (eq,":cur_troop_id","trp_fake_nero"),
+        (neg|agent_is_non_player, ":killer"),
+        (display_message,"@You have just killed Nero reborn. Rummaging through his things, you find some treasures. You still need to defeat the other enemies before you can collect your reward.",color_good_news),
+        (call_script, "script_change_player_honor", 2),
+        (call_script, "script_change_troop_renown", "trp_player", 15),
+        (add_xp_as_reward, 150),
+        (val_sub, "$g_unrest", 5),
+        (display_message, "@Stability of the Empire increases", color_good_news),
+      ]),
       (0, 0, ti_once, [
-          (tutorial_message_set_size, 15, 15),
-          (tutorial_message_set_position, 500, 650), #650 for tutorial or mission msg, 450 for dialogs
-          (tutorial_message_set_center_justify, 0),
-          ],[]),
+        (tutorial_message_set_size, 15, 15),
+        (tutorial_message_set_position, 500, 650), #650 for tutorial or mission msg, 450 for dialogs
+        (tutorial_message_set_center_justify, 0),
+      ],[]),
 
-      (2,0,0,[                        (neg|conversation_screen_is_active),
+      (2,0,0,[
+        (neg|conversation_screen_is_active),
         (neg|is_presentation_active, "prsnt_battle"),
         (eq, "$g_battle_result", 0),
-        ],
-        [
-          (store_mission_timer_a, ":cur_time"),
-          (try_begin),
-            (ge, ":cur_time", 140),
-            (tutorial_message, -1),
-          (else_try),
-            (ge, ":cur_time", 100),
-            (tutorial_message_set_background, 1),
-            (tutorial_message, "@You spot the false Nero in the distance. He's hiding in the ruins."),
-          (else_try),
-            (ge, ":cur_time", 60),
-            (tutorial_message, -1),
-          (else_try),
-            (ge, ":cur_time", 40),
-            (tutorial_message_set_background, 1),
-            (tutorial_message, "@Follow the path to find the false Nero."),
-          (else_try),
-            (ge, ":cur_time", 16),
-            (tutorial_message, -1),
-          (else_try),
-            (ge, ":cur_time", 6),
-            (tutorial_message_set_background, 1),
-            (tutorial_message, "@The enemies spotted your ships and prepared an ambush. Defend!"),
-          (try_end),
+      ],[
+        (store_mission_timer_a, ":cur_time"),
+        (try_begin),
+          (ge, ":cur_time", 140),
+          (tutorial_message, -1),
+        (else_try),
+          (ge, ":cur_time", 100),
+          (tutorial_message_set_background, 1),
+          (tutorial_message, "@You spot the false Nero in the distance. He's hiding in the ruins."),
+        (else_try),
+          (ge, ":cur_time", 60),
+          (tutorial_message, -1),
+        (else_try),
+          (ge, ":cur_time", 40),
+          (tutorial_message_set_background, 1),
+          (tutorial_message, "@Follow the path to find the false Nero."),
+        (else_try),
+          (ge, ":cur_time", 16),
+          (tutorial_message, -1),
+        (else_try),
+          (ge, ":cur_time", 6),
+          (tutorial_message_set_background, 1),
+          (tutorial_message, "@The enemies spotted your ships and prepared an ambush. Defend!"),
+        (try_end),
       ]),
     ],
   ),

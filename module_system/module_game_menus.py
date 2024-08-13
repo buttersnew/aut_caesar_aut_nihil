@@ -5678,9 +5678,9 @@ game_menus = [
             (try_begin),
                 (party_is_active, "$g_ally_party"),
                 (call_script, "script_battle_political_consequences", "$g_enemy_party", "$g_ally_party"),
-            (else_try),
-                (call_script, "script_battle_political_consequences", "$g_enemy_party", "p_main_party"),
             (try_end),
+            (call_script, "script_battle_political_consequences", "$g_enemy_party", "p_main_party"),
+
             (call_script, "script_event_player_defeated_enemy_party", "$g_enemy_party"),
             (call_script, "script_clear_party_group", "$g_enemy_party"),
             (try_begin),
@@ -5962,9 +5962,8 @@ game_menus = [
         (try_begin),
             (party_is_active, "$g_ally_party"),
             (call_script, "script_battle_political_consequences", "$g_ally_party", "$g_enemy_party"),
-        (else_try),
-            (call_script, "script_battle_political_consequences", "p_main_party", "$g_enemy_party"),
         (try_end),
+        (call_script, "script_battle_political_consequences", "p_main_party", "$g_enemy_party"),
 
         (call_script, "script_loot_player_items", "$g_enemy_party"),
 
