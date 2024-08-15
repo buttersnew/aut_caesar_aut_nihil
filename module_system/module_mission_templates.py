@@ -17511,501 +17511,479 @@ mission_templates = [
     ]
   ),
 
-  ("triumph",0,-1,
-    "plundering a settlement",
-    [
-      (0,mtef_scene_source,af_override_horse,0,1,[]),#player
-      (1,mtef_visitor_source,af_override_horse,0,1,[]),#guard
-      (2,mtef_visitor_source,af_override_horse,0,1,[]),#guard
+("triumph",0,-1,
+  "Memento mori. Respice post te. Hominem te esse memento.",[
+    (0,mtef_scene_source,af_override_everything,0,1,[itm_caligea, itm_laurel_gold, itm_roman_rich_emperor_2]),#player
+    (1,mtef_visitor_source,af_override_horse,0,1,[]),#guard
+    (2,mtef_visitor_source,af_override_horse,0,1,[]),#guard
 	  (3,mtef_visitor_source,af_override_horse,0,1,[]),#legatus
-      (4,mtef_visitor_source,af_override_horse,0,1,[]),#legatus
+    (4,mtef_visitor_source,af_override_horse,0,1,[]),#legatus
 
-      (5,mtef_visitor_source,af_override_horse,0,1,[]),#unused
-      (6,mtef_visitor_source,af_override_horse,0,1,[]),#unused
-      (7,mtef_visitor_source,af_override_horse,0,1,[]),#unused
+    (5,mtef_visitor_source,af_override_horse,0,1,[]),#unused
+    (6,mtef_visitor_source,af_override_horse,0,1,[]),#unused
+    (7,mtef_visitor_source,af_override_horse,0,1,[]),#unused
 		#spectators begin
 		#69 bis 73 sind mindestens 5 pro spawn
-      (8,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (9,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (10,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (11,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (12,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (13,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (14,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (15,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (16,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (17,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (18,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (19,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (20,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (21,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (22,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (23,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (24,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (25,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (26,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (27,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (28,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (29,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (30,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (31,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (32,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (33,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (34,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (35,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (36,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (37,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (38,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (39,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (40,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (41,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (42,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (43,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (44,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (45,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (46,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (47,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (48,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (49,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (50,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (51,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (52,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (53,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (54,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (55,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (56,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (57,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (61,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (62,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (63,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (64,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (65,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (66,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (67,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (68,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (69,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (70,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (71,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (72,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (73,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (74,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (75,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (76,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (77,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (78,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (79,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (80,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (81,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (82,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (83,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (84,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (85,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (86,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (87,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (88,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (89,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (90,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (91,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (92,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (93,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (94,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (95,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (96,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (97,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (98,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (99,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (100,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (101,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (102,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (103,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (104,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (105,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (106,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (107,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (108,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (109,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (110,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (111,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (112,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (113,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (114,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (115,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (116,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (117,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (118,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (119,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (120,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (121,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (122,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (123,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (124,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (125,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (126,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-      (127,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-##spawn agent waere besser gewessen, das braucht all die dinger da oben nicht!
-    ], global_common_triggers+
-    [
-      cannot_spawn_commoners,
+    (8,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (9,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (10,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (11,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (12,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (13,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (14,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (15,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (16,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (17,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (18,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (19,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (20,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (21,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (22,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (23,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (24,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (25,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (26,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (27,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (28,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (29,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (30,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (31,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (32,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (33,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (34,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (35,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (36,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (37,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (38,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (39,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (40,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (41,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (42,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (43,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (44,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (45,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (46,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (47,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (48,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (49,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (50,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (51,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (52,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (53,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (54,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (55,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (56,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (57,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (61,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (62,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (63,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (64,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (65,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (66,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (67,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (68,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (69,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (70,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (71,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (72,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (73,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (74,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (75,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (76,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (77,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (78,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (79,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (80,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (81,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (82,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (83,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (84,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (85,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (86,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (87,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (88,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (89,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (90,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (91,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (92,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (93,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (94,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (95,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (96,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (97,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (98,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (99,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (100,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (101,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (102,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (103,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (104,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (105,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (106,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (107,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (108,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (109,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (110,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (111,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (112,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (113,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (114,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (115,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (116,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (117,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (118,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (119,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (120,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (121,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (122,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (123,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (124,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (125,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (126,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+    (127,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
+  ], global_common_triggers +
+  [
+    (ti_before_mission_start, 0, 0, [],[
+      (scene_set_day_time, 12),
+    ]),
+
+    cannot_spawn_commoners,
     improved_lightning,
-		(1,0,0,[],[(val_add, reg50, 1),
-		#(display_message, "@{reg50}"),
-		(try_begin),
-			(eq, reg50, 95),
-			#(start_presentation, "prsnt_screen_out"),
-			(jump_to_menu, "$g_next_menu"),
-			(finish_mission),
-		(try_end),
+		(1,0,0,[],[
+      (val_add, reg50, 1),
+      (try_begin),
+        (eq, reg50, 95),
+        #(start_presentation, "prsnt_screen_out"),
+        (jump_to_menu, "$g_next_menu"),
+        (finish_mission),
+      (try_end),
 		]),
-# screen write
-		  (ti_after_mission_start, 0, ti_once, [],
-		  [(start_presentation, "prsnt_screen_write2"),]),
+    (ti_after_mission_start, 0, ti_once, [],[
+      (start_presentation, "prsnt_screen_write2"),
+    ]),
 
     (0,0,0,[],[
-	(entry_point_get_position, pos0, 122),
-	(try_for_agents,":cur_agent"),
+      (entry_point_get_position, pos0, 122),
+      (try_for_agents,":cur_agent"),
+          (agent_get_position, pos1, ":cur_agent"),
+          (get_distance_between_positions, ":dist", pos0, pos1),
+          (le, ":dist", 400),
+          (agent_fade_out, ":cur_agent"),
+          #(display_message, "@agent leaves scene"),
+      (try_end),
+	  ]),
 
-        (agent_get_position, pos1, ":cur_agent"),
-        (get_distance_between_positions, ":dist", pos0, pos1),
-        (le, ":dist", 400),
-		(agent_fade_out, ":cur_agent"),
-		#(display_message, "@agent leaves scene"),
-	(try_end),
-	]),
-
-	##spanw troops
-      (0, 0, ti_once,
-       [
-       ],[
-		(assign, reg50,0),##primitive zeitmessung
-
-        #spawn a standard bearer and ranks of soldiers
-        (set_fixed_point_multiplier, 100),
-        (init_position, pos1),
-		(entry_point_get_position, pos1, 123),
-
-        (set_spawn_position, pos1),
-        (spawn_agent, "trp_aux_archer_praetoriana"),
-        (try_for_range, ":unused", 0, 30), #ranks
-            (set_spawn_position, pos1),
-            (spawn_agent, "trp_aux_archer_praetoriana"),
-            (position_move_x, pos1, -160), #1.5m between columns
-        (try_end),
-	   ]),
-
-##spawn triumph marsh
-###praetoriani
-      (1, 0, 0,
-       [(eq, reg50, 9),],[
-        #spawn a standard bearer and ranks of soldiers
-        (set_fixed_point_multiplier, 100),
-        (init_position, pos1),
-
-  (entry_point_get_position, pos1, 121),
-
-  (set_spawn_position, pos1),
-  (spawn_agent, "trp_legatus_legionis"),
-
-  (agent_set_speed_modifier,reg0, 500),
-  (agent_set_horse_speed_factor, reg0, 500),
-  (agent_set_speed_limit, reg0, 9),
-
-  (position_move_x, pos1, -225), #1.5x column width
-  (position_move_y, pos1, -200), # bearer ahead of troops
-  (try_for_range, ":unused", 0, 20), #ranks
-    (try_for_range, ":unused2", 0, 4), #columns
+	  ##spanw troops
+    (0, 0, ti_once,[
+    ],[
+		  (assign, reg50,0),##primitive zeitmessung
+      #spawn a standard bearer and ranks of soldiers
+      (set_fixed_point_multiplier, 100),
+      (init_position, pos1),
+		  (entry_point_get_position, pos1, 123),
       (set_spawn_position, pos1),
-			(try_begin),
-				(eq, ":unused", 0),
-				(try_begin),
-					(eq, ":unused2", 0),
-					(spawn_agent, "trp_centurio_preatoriani"),
-					(agent_set_speed_modifier,reg0, 500),
-					(agent_set_horse_speed_factor, reg0, 500),
-					(agent_set_speed_limit, reg0, 3),
+      (spawn_agent, "trp_aux_archer_praetoriana"),
+      (try_for_range, ":unused", 0, 30), #ranks
+          (set_spawn_position, pos1),
+          (spawn_agent, "trp_aux_archer_praetoriana"),
+          (position_move_x, pos1, -160), #1.5m between columns
+      (try_end),
+    ]),
 
+    ##spawn triumph marsh
+    ###praetoriani
+    (1, 0, 0,[
+      (eq, reg50, 9),
+    ],[
+      #spawn a standard bearer and ranks of soldiers
+      (set_fixed_point_multiplier, 100),
+      (init_position, pos1),
 
-				(else_try),
-					(eq, ":unused2", 1),
-					(spawn_agent, "trp_vexilarius_praetoriani"),
+      (entry_point_get_position, pos1, 121),
+      (set_spawn_position, pos1),
+      (spawn_agent, "trp_legatus_legionis"),
 
-					(agent_set_speed_modifier,reg0, 500),
-					(agent_set_horse_speed_factor, reg0, 500),
-					(agent_set_speed_limit, reg0, 3),
-				(else_try),
-					(eq, ":unused2", 2),
-					(spawn_agent, "trp_aquilifer_praetoriani"),
+      (agent_set_speed_modifier,reg0, 500),
+      (agent_set_horse_speed_factor, reg0, 500),
+      (agent_set_speed_limit, reg0, 9),
 
-					(agent_set_speed_modifier,reg0, 500),
-					(agent_set_horse_speed_factor, reg0, 500),
-					(agent_set_speed_limit, reg0, 3),
-				(else_try),
-					(eq, ":unused2", 3),
-					(spawn_agent, "trp_signifer"),
-
-					(agent_set_speed_modifier,reg0, 500),
-					(agent_set_horse_speed_factor, reg0, 500),
-					(agent_set_speed_limit, reg0, 3),
-				(try_end),
-			(else_try),
-				# (troop_remove_item, "trp_praetoriani_milites","itm_pilum"),
-				# (troop_remove_item, "trp_praetoriani_milites","itm_pilum"),
-				(spawn_agent, "trp_praetoriani_milites"),
-
-				(agent_set_speed_modifier,reg0, 500),
-				(agent_set_horse_speed_factor, reg0, 500),
-				(agent_set_speed_limit, reg0, 3),
-			(try_end),
-            (position_move_x, pos1, 150), #1.5m between columns
-          (try_end),
-          # get back to first column of previous rank
-          (position_move_x, pos1, -600), #4x1.5m
-          (position_move_y, pos1, -150), #next rank 1.5m behind
-       (try_end),
-	   # (troop_add_item, "trp_praetoriani_milites","itm_pilum"),
-	   # (troop_add_item, "trp_praetoriani_milites","itm_pilum"),
-	   ]),
-(1,0,0,[
-(eq, reg50, 10),
-#(key_is_down,key_k),
-],[
-           # march the troops down the bridge
-           (try_for_agents, ":agent_no"), # find everyone and march them off
-             (agent_get_troop_id, ":agent_troop", ":agent_no"),
-             (this_or_next|eq, ":agent_troop", "trp_signifer"),
-             (this_or_next|eq, ":agent_troop", "trp_legatus_legionis"),
-             (this_or_next|eq, ":agent_troop", "trp_aquilifer_praetoriani"),
-             (this_or_next|eq, ":agent_troop", "trp_vexilarius_praetoriani"),
-             (this_or_next|eq, ":agent_troop", "trp_centurio_preatoriani"),
-             (eq, ":agent_troop", "trp_praetoriani_milites"),
-             (agent_get_position, pos1, ":agent_no"),
-             (position_move_x, pos1, -105), # correction for angle numerical loss
-             (position_move_y, pos1, 26000),
-             (agent_set_scripted_destination, ":agent_no", pos1, 1),
-           (try_end),
-]),
-
-
-##spawn triumph marsh
-##auxilia
-      (0, 31, ti_once,
-       [
-
-       ],[
-        #spawn a standard bearer and ranks of soldiers
-        (set_fixed_point_multiplier, 100),
-        (init_position, pos1),
-
-        (entry_point_get_position, pos1, 121),
-
-        (set_spawn_position, pos1),
-        (spawn_agent, "trp_aux_centurio"), #has to be in a condition block, or it will crash
-        #(set_fixed_point_multiplier, 1),
-        (agent_set_speed_modifier,reg0, 500),
-        (agent_set_horse_speed_factor, reg0, 500),
-        (agent_set_speed_limit, reg0, 3),
-        (position_move_x, pos1, -225), #1.5x column width
-        (position_move_y, pos1, -200), # bearer ahead of troops
-        (try_for_range, ":unused", 0, 20), #ranks
-          (try_for_range, ":unused2", 0, 4), #columns
-            (set_spawn_position, pos1),
+      (position_move_x, pos1, -225), #1.5x column width
+      (position_move_y, pos1, -200), # bearer ahead of troops
+      (try_for_range, ":unused", 0, 20), #ranks
+        (try_for_range, ":unused2", 0, 4), #columns
+          (set_spawn_position, pos1),
+          (try_begin),
+            (eq, ":unused", 0),
             (try_begin),
-              (eq, ":unused", 0),
-              (try_begin),
-                (eq, ":unused2", 0),
-                (spawn_agent, "trp_aux_signifer"),
+              (eq, ":unused2", 0),
+              (spawn_agent, "trp_centurio_preatoriani"),
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
 
-                (agent_set_speed_modifier,reg0, 500),
-                (agent_set_horse_speed_factor, reg0, 500),
-                (agent_set_speed_limit, reg0, 3),
-              (else_try),
-                (eq, ":unused2", 1),
-                (spawn_agent, "trp_aux_inf_batavorum"),
-                (agent_set_speed_modifier,reg0, 500),
-                (agent_set_horse_speed_factor, reg0, 500),
-                (agent_set_speed_limit, reg0, 3),
-              (else_try),
-                (eq, ":unused2", 2),
-                (spawn_agent, "trp_aux_inf_batavorum"),
-                (agent_set_speed_modifier,reg0, 500),
-                (agent_set_horse_speed_factor, reg0, 500),
-                (agent_set_speed_limit, reg0, 3),
-              (else_try),
-                (eq, ":unused2", 3),
-                (spawn_agent, "trp_aux_inf_batavorum"),
-                (agent_set_speed_modifier,reg0, 500),
-                (agent_set_horse_speed_factor, reg0, 500),
-                (agent_set_speed_limit, reg0, 3),
-              (try_end),
+
             (else_try),
-              (spawn_agent, "trp_aux_inf_tungrorum"),
+              (eq, ":unused2", 1),
+              (spawn_agent, "trp_vexilarius_praetoriani"),
+
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (else_try),
+              (eq, ":unused2", 2),
+              (spawn_agent, "trp_aquilifer_praetoriani"),
+
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (else_try),
+              (eq, ":unused2", 3),
+              (spawn_agent, "trp_signifer"),
+
               (agent_set_speed_modifier,reg0, 500),
               (agent_set_horse_speed_factor, reg0, 500),
               (agent_set_speed_limit, reg0, 3),
             (try_end),
-            (position_move_x, pos1, 150), #1.5m between columns
+          (else_try),
+            # (troop_remove_item, "trp_praetoriani_milites","itm_pilum"),
+            # (troop_remove_item, "trp_praetoriani_milites","itm_pilum"),
+            (spawn_agent, "trp_praetoriani_milites"),
+
+            (agent_set_speed_modifier,reg0, 500),
+            (agent_set_horse_speed_factor, reg0, 500),
+            (agent_set_speed_limit, reg0, 3),
           (try_end),
-          # get back to first column of previous rank
-          (position_move_x, pos1, -600), #4x1.5m
-          (position_move_y, pos1, -150), #next rank 1.5m behind
+          (position_move_x, pos1, 150), #1.5m between columns
         (try_end),
+        # get back to first column of previous rank
+        (position_move_x, pos1, -600), #4x1.5m
+        (position_move_y, pos1, -150), #next rank 1.5m behind
+      (try_end),
+      # (troop_add_item, "trp_praetoriani_milites","itm_pilum"),
+      # (troop_add_item, "trp_praetoriani_milites","itm_pilum"),
+    ]),
+    (1,0,0,[
+    (eq, reg50, 10),
+    #(key_is_down,key_k),
+    ],[
+      # march the troops down the bridge
+      (try_for_agents, ":agent_no"), # find everyone and march them off
+        (agent_get_troop_id, ":agent_troop", ":agent_no"),
+        (this_or_next|eq, ":agent_troop", "trp_signifer"),
+        (this_or_next|eq, ":agent_troop", "trp_legatus_legionis"),
+        (this_or_next|eq, ":agent_troop", "trp_aquilifer_praetoriani"),
+        (this_or_next|eq, ":agent_troop", "trp_vexilarius_praetoriani"),
+        (this_or_next|eq, ":agent_troop", "trp_centurio_preatoriani"),
+        (eq, ":agent_troop", "trp_praetoriani_milites"),
+        (agent_get_position, pos1, ":agent_no"),
+        (position_move_x, pos1, -105), # correction for angle numerical loss
+        (position_move_y, pos1, 26000),
+        (agent_set_scripted_destination, ":agent_no", pos1, 1),
+      (try_end),
+    ]),
+    ##spawn triumph marsh
+    ##auxilia
+    (0, 31, ti_once,[
+    ],[
+      #spawn a standard bearer and ranks of soldiers
+      (set_fixed_point_multiplier, 100),
+      (init_position, pos1),
 
-           # march the troops down the bridge
-           (try_for_agents, ":agent_no"), # find everyone and march them off
-             (agent_get_troop_id, ":agent_troop", ":agent_no"),
-             (this_or_next|eq, ":agent_troop", "trp_aux_centurio"),
-             (this_or_next|eq, ":agent_troop", "trp_aux_signifer"),
-             (this_or_next|eq, ":agent_troop", "trp_aux_inf_batavorum"),
-             (eq, ":agent_troop", "trp_aux_inf_tungrorum"),
-             (agent_get_position, pos1, ":agent_no"),
-             (position_move_x, pos1, -105), # correction for angle numerical loss
-             (position_move_y, pos1, 30000),
-             (agent_set_scripted_destination, ":agent_no", pos1, 1),
-           (try_end),
+      (entry_point_get_position, pos1, 121),
 
+      (set_spawn_position, pos1),
+      (spawn_agent, "trp_aux_centurio"), #has to be in a condition block, or it will crash
+      #(set_fixed_point_multiplier, 1),
+      (agent_set_speed_modifier,reg0, 500),
+      (agent_set_horse_speed_factor, reg0, 500),
+      (agent_set_speed_limit, reg0, 3),
+      (position_move_x, pos1, -225), #1.5x column width
+      (position_move_y, pos1, -200), # bearer ahead of troops
+      (try_for_range, ":unused", 0, 20), #ranks
+        (try_for_range, ":unused2", 0, 4), #columns
+          (set_spawn_position, pos1),
+          (try_begin),
+            (eq, ":unused", 0),
+            (try_begin),
+              (eq, ":unused2", 0),
+              (spawn_agent, "trp_aux_signifer"),
 
-	   ]),
-
-
-      (0, 55, ti_once,
-       [
-
-       ],[
-        #spawn a standard bearer and ranks of soldiers
-        (set_fixed_point_multiplier, 100),
-        (init_position, pos1),
-
-		(entry_point_get_position, pos1, 121),
-
-        (set_spawn_position, pos1),
-        #(spawn_agent, "trp_aux_centurio"), #has to be in a condition block, or it will crash
-		#(set_fixed_point_multiplier, 1),
-		#(agent_set_speed_modifier,reg0, 500),
-		#(agent_set_horse_speed_factor, reg0, 500),
-		#(agent_set_speed_limit, reg0, 3),
-        (position_move_x, pos1, -225), #1.5x column width
-        (position_move_y, pos1, -200), # bearer ahead of troops
-        (try_for_range, ":unused", 0, 20), #ranks
-          (try_for_range, ":unused2", 0, 4), #columns
-            (set_spawn_position, pos1),
-			(try_begin),
-				(eq, ":unused", 0),
-				(try_begin),
-					(eq, ":unused2", 0),
-					(spawn_agent, "trp_aux_archer_sryrorum"),
-
-					(agent_set_speed_modifier,reg0, 500),
-					(agent_set_horse_speed_factor, reg0, 500),
-					(agent_set_speed_limit, reg0, 3),
-				(else_try),
-					(eq, ":unused2", 1),
-					(spawn_agent, "trp_aux_archer_sryrorum"),
-					(agent_set_speed_modifier,reg0, 500),
-					(agent_set_horse_speed_factor, reg0, 500),
-					(agent_set_speed_limit, reg0, 3),
-				(else_try),
-					(eq, ":unused2", 2),
-					(spawn_agent, "trp_aux_archer_sryrorum"),
-					(agent_set_speed_modifier,reg0, 500),
-					(agent_set_horse_speed_factor, reg0, 500),
-					(agent_set_speed_limit, reg0, 3),
-				(else_try),
-					(eq, ":unused2", 3),
-					(spawn_agent, "trp_aux_archer_sryrorum"),
-					(agent_set_speed_modifier,reg0, 500),
-					(agent_set_horse_speed_factor, reg0, 500),
-					(agent_set_speed_limit, reg0, 3),
-				(try_end),
-			(else_try),
-				(spawn_agent, "trp_aux_archer"),
-				(agent_set_speed_modifier,reg0, 500),
-				(agent_set_horse_speed_factor, reg0, 500),
-				(agent_set_speed_limit, reg0, 3),
-			(try_end),
-            (position_move_x, pos1, 150), #1.5m between columns
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (else_try),
+              (eq, ":unused2", 1),
+              (spawn_agent, "trp_aux_inf_batavorum"),
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (else_try),
+              (eq, ":unused2", 2),
+              (spawn_agent, "trp_aux_inf_batavorum"),
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (else_try),
+              (eq, ":unused2", 3),
+              (spawn_agent, "trp_aux_inf_batavorum"),
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (try_end),
+          (else_try),
+            (spawn_agent, "trp_aux_inf_tungrorum"),
+            (agent_set_speed_modifier,reg0, 500),
+            (agent_set_horse_speed_factor, reg0, 500),
+            (agent_set_speed_limit, reg0, 3),
           (try_end),
-          # get back to first column of previous rank
-          (position_move_x, pos1, -600), #4x1.5m
-          (position_move_y, pos1, -150), #next rank 1.5m behind
+          (position_move_x, pos1, 150), #1.5m between columns
         (try_end),
+        # get back to first column of previous rank
+        (position_move_x, pos1, -600), #4x1.5m
+        (position_move_y, pos1, -150), #next rank 1.5m behind
+      (try_end),
+      # march the troops down the bridge
+      (try_for_agents, ":agent_no"), # find everyone and march them off
+        (agent_get_troop_id, ":agent_troop", ":agent_no"),
+        (this_or_next|eq, ":agent_troop", "trp_aux_centurio"),
+        (this_or_next|eq, ":agent_troop", "trp_aux_signifer"),
+        (this_or_next|eq, ":agent_troop", "trp_aux_inf_batavorum"),
+        (eq, ":agent_troop", "trp_aux_inf_tungrorum"),
+        (agent_get_position, pos1, ":agent_no"),
+        (position_move_x, pos1, -105), # correction for angle numerical loss
+        (position_move_y, pos1, 30000),
+        (agent_set_scripted_destination, ":agent_no", pos1, 1),
+      (try_end),
+    ]),
 
-           # march the troops down the bridge
-           (try_for_agents, ":agent_no"), # find everyone and march them off
-             (agent_get_troop_id, ":agent_troop", ":agent_no"),
-             (this_or_next|eq, ":agent_troop", "trp_aux_archer_sryrorum"),
-             (eq, ":agent_troop", "trp_aux_archer"),
-             (agent_get_position, pos1, ":agent_no"),
-             (position_move_x, pos1, -105), # correction for angle numerical loss
-             (position_move_y, pos1, 30000),
-             (agent_set_scripted_destination, ":agent_no", pos1, 1),
-           (try_end),
-	   ]),
+    (0, 55, ti_once,[
+    ],[
+      #spawn a standard bearer and ranks of soldiers
+      (set_fixed_point_multiplier, 100),
+      (init_position, pos1),
+		  (entry_point_get_position, pos1, 121),
+      (set_spawn_position, pos1),
+      #(spawn_agent, "trp_aux_centurio"), #has to be in a condition block, or it will crash
+      #(set_fixed_point_multiplier, 1),
+      #(agent_set_speed_modifier,reg0, 500),
+      #(agent_set_horse_speed_factor, reg0, 500),
+      #(agent_set_speed_limit, reg0, 3),
+      (position_move_x, pos1, -225), #1.5x column width
+      (position_move_y, pos1, -200), # bearer ahead of troops
+      (try_for_range, ":unused", 0, 20), #ranks
+        (try_for_range, ":unused2", 0, 4), #columns
+          (set_spawn_position, pos1),
+          (try_begin),
+            (eq, ":unused", 0),
+            (try_begin),
+              (eq, ":unused2", 0),
+              (spawn_agent, "trp_aux_archer_sryrorum"),
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (else_try),
+              (eq, ":unused2", 1),
+              (spawn_agent, "trp_aux_archer_sryrorum"),
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (else_try),
+              (eq, ":unused2", 2),
+              (spawn_agent, "trp_aux_archer_sryrorum"),
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (else_try),
+              (eq, ":unused2", 3),
+              (spawn_agent, "trp_aux_archer_sryrorum"),
+              (agent_set_speed_modifier,reg0, 500),
+              (agent_set_horse_speed_factor, reg0, 500),
+              (agent_set_speed_limit, reg0, 3),
+            (try_end),
+          (else_try),
+            (spawn_agent, "trp_aux_archer"),
+            (agent_set_speed_modifier,reg0, 500),
+            (agent_set_horse_speed_factor, reg0, 500),
+            (agent_set_speed_limit, reg0, 3),
+			    (try_end),
+          (position_move_x, pos1, 150), #1.5m between columns
+        (try_end),
+        # get back to first column of previous rank
+        (position_move_x, pos1, -600), #4x1.5m
+        (position_move_y, pos1, -150), #next rank 1.5m behind
+      (try_end),
+      # march the troops down the bridge
+      (try_for_agents, ":agent_no"), # find everyone and march them off
+        (agent_get_troop_id, ":agent_troop", ":agent_no"),
+        (this_or_next|eq, ":agent_troop", "trp_aux_archer_sryrorum"),
+        (eq, ":agent_troop", "trp_aux_archer"),
+        (agent_get_position, pos1, ":agent_no"),
+        (position_move_x, pos1, -105), # correction for angle numerical loss
+        (position_move_y, pos1, 30000),
+        (agent_set_scripted_destination, ":agent_no", pos1, 1),
+      (try_end),
+    ]),
+    (ti_tab_pressed, 0, 0, [],[
+      (display_message, "@You cann't leave now!")
+    ]),
+    (1, 0, ti_once,[],[
+      (mission_disable_talk),
+      (play_sound, "snd_arena_ambiance", sf_looping),
+    ]),
+    (ti_on_agent_spawn,1,0, [],[
+      (try_for_agents, ":agent"),
+        (agent_is_alive, ":agent"),
+        (agent_is_human, ":agent"),
+        (agent_get_troop_id, ":troop", ":agent"),
+          (try_begin),
+            (eq, ":troop", "trp_guest"),
+            (agent_set_stand_animation, ":agent", "anim_wedding_guest"),
+            (agent_set_animation, ":agent", "anim_wedding_guest"),
+            (store_random_in_range,":r",0,100),
+          (else_try),
+            (eq, ":troop", "trp_guest_female"),
+            (agent_set_stand_animation, ":agent", "anim_wedding_guest_woman"),
+            (agent_set_animation, ":agent", "anim_wedding_guest_woman"),
+            (store_random_in_range,":r",0,100),
+          (else_try),
+            (eq, ":troop", "trp_slave"),
+            (agent_set_stand_animation, ":agent", "anim_cheer_loop"),
+            (agent_set_animation, ":agent", "anim_cheer_loop"),
+            (store_random_in_range,":r",0,100),
+          (else_try),
+            (eq, ":troop", "trp_slave_female"),
+            (agent_set_stand_animation, ":agent", "anim_cheer_loop"),
+            (agent_set_animation, ":agent", "anim_cheer_loop"),
+            (store_random_in_range,":r",0,100),
+          (try_end),
+        (agent_set_animation_progress,":agent",":r"),
+      (try_end),
+    ]),
 
-	(ti_tab_pressed, 0, 0, [],
-       [(display_message, "@You cann't leave now!")]),
-
-      (1, 0, ti_once,
-      [],
-      [
-
-		 (mission_disable_talk),
-		 (play_sound, "snd_arena_ambiance", sf_looping),
-      ]),
-
-  (ti_on_agent_spawn,1,0, [],
-   [
-	(try_for_agents, ":agent"),
-		(agent_is_alive, ":agent"),
-		(agent_is_human, ":agent"),
-		(agent_get_troop_id, ":troop", ":agent"),
-			(try_begin),
-				(eq, ":troop", "trp_guest"),
-				(agent_set_stand_animation, ":agent", "anim_wedding_guest"),
-				(agent_set_animation, ":agent", "anim_wedding_guest"),
-				(store_random_in_range,":r",0,100),
-			(else_try),
-				(eq, ":troop", "trp_guest_female"),
-				(agent_set_stand_animation, ":agent", "anim_wedding_guest_woman"),
-				(agent_set_animation, ":agent", "anim_wedding_guest_woman"),
-				(store_random_in_range,":r",0,100),
-			(else_try),
-				(eq, ":troop", "trp_slave"),
-				(agent_set_stand_animation, ":agent", "anim_cheer_loop"),
-				(agent_set_animation, ":agent", "anim_cheer_loop"),
-				(store_random_in_range,":r",0,100),
-			(else_try),
-				(eq, ":troop", "trp_slave_female"),
-				(agent_set_stand_animation, ":agent", "anim_cheer_loop"),
-				(agent_set_animation, ":agent", "anim_cheer_loop"),
-				(store_random_in_range,":r",0,100),
-			(try_end),
-		(agent_set_animation_progress,":agent",":r"),
-	(try_end),
-   ]),
-
- (8, 0, 0, [
-  (try_for_agents, ":agent_no"),
-	(agent_is_human, ":agent_no"),
-	(agent_is_alive, ":agent_no"),
-	(agent_get_troop_id, ":id", ":agent_no"),
-	#(display_message, "@Launch trigger."),
-	(try_begin),
-	    (eq, ":id", "trp_cornicen"),
-			(try_begin),
-				(agent_has_item_equipped, ":agent_no", "itm_f_cornu"),
-			(else_try),
-				(agent_equip_item, ":agent_no", "itm_f_cornu"),
-			(try_end),
-      (agent_set_wielded_item, ":agent_no", "itm_f_cornu"),
-      (agent_set_animation, ":agent_no", "anim_cornu_play", 1),
-      (agent_play_sound, ":agent_no", "snd_cornu"),
-     (try_end),
-   (try_end),
-	],[]),
-
- common_inventory_not_available,]),
+    (8, 0, 0, [
+      (try_for_agents, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (agent_get_troop_id, ":id", ":agent_no"),
+      #(display_message, "@Launch trigger."),
+      (try_begin),
+          (eq, ":id", "trp_cornicen"),
+          (try_begin),
+            (agent_has_item_equipped, ":agent_no", "itm_f_cornu"),
+          (else_try),
+            (agent_equip_item, ":agent_no", "itm_f_cornu"),
+          (try_end),
+          (agent_set_wielded_item, ":agent_no", "itm_f_cornu"),
+          (agent_set_animation, ":agent_no", "anim_cornu_play", 1),
+          (agent_play_sound, ":agent_no", "snd_cornu"),
+        (try_end),
+      (try_end),
+    ],[]),
+    common_inventory_not_available,
+]),
 
 ("ceremony_pharaoh",0,-1,
     "plundering a settlement",
@@ -18077,11 +18055,11 @@ mission_templates = [
     ],p_wetter + global_common_triggers+
     [
       cannot_spawn_commoners,
-        improved_lightning,
-   (ti_before_mission_start, 0, 0, [],[
-    (scene_set_day_time, 12),
-    (call_script, "script_change_banners_and_chest"),
-    ]),
+      improved_lightning,
+      (ti_before_mission_start, 0, 0, [],[
+        (scene_set_day_time, 12),
+        (call_script, "script_change_banners_and_chest"),
+      ]),
 
 		(1,0,0,[],[(val_add, reg50, 1),
 		(try_begin),
@@ -18639,82 +18617,77 @@ mission_templates = [
     + auxiliary_player
   ),
 
-  ("conspiracy_fight", mtf_battle_mode,-1,
-    "monasterio",
-    [
-      (0,mtef_scene_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[]),
-      (1,mtef_scene_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[]),
-      (2,mtef_scene_source|mtef_team_0,af_override_horse, 0, 1,[]),
-      (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (4,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (5,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (6,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (7,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (8,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (10,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (11,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (12,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (13,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (14,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (15,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (16,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (17,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (18,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (19,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (20,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (21,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (22,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (23,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (24,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (25,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (26,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (27,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (28,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (29,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (30,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (31,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (32,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (33,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (34,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-      (35,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-    ], p_wetter + global_common_triggers+
-    [
-      cannot_spawn_commoners,
+("conspiracy_fight", mtf_battle_mode,-1,"monasterio",[
+    (0,mtef_scene_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[]),
+    (1,mtef_scene_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[]),
+    (2,mtef_scene_source|mtef_team_0,af_override_horse, 0, 1,[]),
+    (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (4,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (5,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (6,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (7,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (8,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (10,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (11,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (12,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (13,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (14,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (15,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (16,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (17,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (18,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (19,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (20,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (21,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (22,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (23,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (24,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (25,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (26,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (27,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (28,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (29,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (30,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (31,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (32,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (33,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (34,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (35,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+  ], p_wetter + global_common_triggers +
+  [
+    cannot_spawn_commoners,
     improved_lightning,
-      common_inventory_not_available,
-      common_battle_init_banner,
+    common_inventory_not_available,
+    common_battle_init_banner,
 		wounds_vc,
-
-      (ti_before_mission_start, 0, 0, [],
-        [
-		 (team_set_relation, 0, 1, -1),
-          (assign,"$g_battle_result",0),
-          (call_script, "script_change_banners_and_chest"),
+    (ti_before_mission_start, 0, 0, [],[
+		  (team_set_relation, 0, 1, -1),
+      (assign,"$g_battle_result",0),
+      (call_script, "script_change_banners_and_chest"),
 		  (set_party_battle_mode),
-        ]
-      ),
-      (ti_after_mission_start, 0, 0, [],[
-	  (play_track, "track_travel_neutral2", 1),
+    ]),
+    (ti_after_mission_start, 0, 0, [],[
+	    (play_track, "track_travel_neutral2", 1),
 	  ]),
-
-      (ti_tab_pressed, 0, 0, [(display_message,"str_cannot_leave_now")],[]),
-
-      (1, 4, ti_once, [(this_or_next|main_hero_fallen),(num_active_teams_le,1)],
-        [
-          (try_begin),
-            (main_hero_fallen),
-			(assign, "$temp", 0),
-            (jump_to_menu, "mnu_death_waits"),
-          (else_try),
-            (jump_to_menu, "mnu_conspiracy_2"),
-          (try_end),
-          (stop_all_sounds, 1),
-          (finish_mission),
-      ]),
-
-    ]
-  ),
+    (ti_tab_pressed, 0, 0, [
+      (display_message,"str_cannot_leave_now")
+    ],[]),
+    (1, 4, ti_once, [
+      (this_or_next|main_hero_fallen),
+      (num_active_teams_le,1)
+    ],[
+      (try_begin),
+        (main_hero_fallen),
+        (assign, "$temp", 0),
+        (jump_to_menu, "mnu_death_waits"),
+      (else_try),
+        (jump_to_menu, "mnu_conspiracy_2"),
+      (try_end),
+      (stop_all_sounds, 1),
+      (finish_mission),
+    ]),
+]),
 
   ("slave_market",0,-1, #Pagan holy site
     "Nordic Place",

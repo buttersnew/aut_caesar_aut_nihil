@@ -6,7 +6,7 @@
 #
 ####################################################################################################################
 ##diplomacy start+
-from module_constants import DPLMC_DIPLOMACY_VERSION_STRING
+from module_constants import DPLMC_DIPLOMACY_VERSION_STRING, triumph_threshold
 ##diplomacy end+
 
 info_pages = [
@@ -211,51 +211,53 @@ info_pages = [
  PR - Persia and Media"
 ),
 
-("q_and_q", "Important informations", "Battle field fortifications: ^As Roman you can fortify your camp. It requires a set of tools inside your inventory and an engineer skill higher than 5. Once fortified you can no longer move. It is also possible during sieges.\
-^^Lending out money: Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denars. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report.\
- This can take a while. Depending on when you issued the loan and depending on when your next budget report will show it can take between one or two weeks until your receive the interests.\
- For your loan you have two options. Either you order the argentarius to reinvest the money again, or you order him to send you back all the money. In the first case,\
- you will only receive the interests of your loan and a new loan will be lend out right away after recieving the interests. In the later case you will receive all the money back. Sometimes the interests can be negative. That shall simulate the case\
- when the debtor is not able to repay the loan you offered him.\
-^^Diplomacy feature: You can become part of a family. To do this you must talk with a lord, depending the character of the lord you must either be honorable, or dishonorable, \
-famous, have a good relation or own a fief or wealth.^^\
-You need at least 200 renown to be considered as a full citizen of Rome. With 200 renown you can: Enter the great hall of towns and fortresses and you must pay the punitive tax (Lex Julia et Papia).\
-If you are Emperor or have a military rank in the Roman Army your renown won't go beyond: 450 if emperor, 200 if common military rank.^^\
-If you own a fief and you are part of the Roman Empire you must pay taxes to the Emperor, taxrate depends on circumstances. (usually 20%)^\
-If you are part of the Roman Army (not as mercenary!) you won't have to pay wages for your troops in your party. But you must still pay for garrisons.^^\
-Be aware: after some years the great Jewish revolt will start (if not triggered by player)^^\
-Player can convert to Judaism (at the great temple in Hierosolyma), this enables the following features: Player can fund Judean rebels at the great temple in Hierosolyma, player can start the Jewish revolt and fight for Judea: Only possible if player hasn't joined any other faction yet.^^\
-You can usurp towns from other governors (=Lords) with bad reputation type (quarrelsome, selfrighteous, sadisitic (debauched), cunning): You need more than 25 relation with the town, at least 300 renown and must be in the same faction,\
-then you will receive an event when you visit the town. Nero will only give you the town if you don't already own one, and if you have a higher relation with him than the old governor. If your attempt fail, you will gain a new chance after 50 days.^^\
-You can become the lover of a married woman. Firstly you must improve your relation with her. Then, depending on your charisma, her personality and luck she may says yes to you.\
-But if your relation with her becomes to low (beyond 10) then she will break with you. There is also some random chance that she breaks, because she finds someone more interesting.^\
-If you have high enough relation (and a good persuasion skill) with a lady, she may tell you the latest rumor about a love affair. You can use this information to your advantage.^\
-Your spouse can have a love affair too. If you think she has one, you can send one of your companions to spy her. \
-Depending on the intelligence skill of the companion he may find out if she has a love affair or not. If she has a lover and your companion has found it out you can talk with her and divorce.^^\
-As Emperor you should always watch your enemies in your own faction, if they grow too many, they may assassinate you.^^\
-As Emperor you can imprison any person you want (town or village walkers and your generals/lords)^^\
-If you have a prisoner tower in a town or fort, you can torture your enemies. Simply visit the prison and talk with the torturer.^^\
-You can deposit money in Roman towns. Simply talk with the praefectus of the city, who can be found in the scriptorium.^^\
-You can buy all Roman weapons, armors, helmets and shields from the merchant Gaius Marius, who can be found in the streets of Rome.^^\
-There are some drinking 'mini games' ingame: You can toast with Lords during feasts and you can make a drinking competition with tavern shoppers. A high strength attribute is needed if you want to win.^^\
-The players health can decrease over time (see characters report for information about your current status). You will become more unhealthy, if you get knocked down during battle, and due to various other stuff (drinking competitions for example).\
-To increase your health visit the baths frequently.^^\
-As Emperor, you must answer petitions regularly. If you don't want to do this, talk with your political advisor, who can be found in the Domus Augustus in Rome.^^\
-The gold item can used to hire warbands from the Nabateans, Garmantians and Gaetulians, by talking with their respective kings.^^\
-You can order your companions to establish permanent camps (option in the camp menu) and to create their own parties (by talking with them via the party screen):^\
-The maximal amount of troops you can give depends on the following: base is 100 men + additional two men per charisma attribute and additional 10 men per leadership skill.\
-You can also store items and prisoners in the camp. But be aware, the camp can be attacked by enemy parties and if it is destroyed all items and prisoners will be lost.^^\
-You can get honorary titles if you ask Emperor Nero for a reward. You need high relation with him for this dialogue option to become available.^^\
-Freelancing is only available for Roman legions, talk either with a legate commanding a legion directly or with a Praefectus Castrorum or Praefectus, who can be found in the scriptorium.^^\
-For freelancing in the Praetorian guard you need a letter of recommendation, this you can obtain once you reached the rank of Optio, while freelancing in a normal legion.^^\
-You can go hunting via the camp menu.^^\
-Roman officers provide a skill bonus: High rank officers, like Vexilarius, Aquilifer, Primus Pilus and Tribunus provide a bonus to leadership skill.\
-For each 100 men in your party you need two officers (centurio, signifer etc.), otherwise you will get a malus on tactics skill. The only non-Roman 'officer' is currently the hornman.\
-The idea behind this is the following: Larger armies are more difficult to lead during battles. The orders you give must reach the soldiers. Officers and musicians can help with that.^^\
-Sailors can be found as mercenaries in taverns of port towns. Each sailor in the party increases party speed on water by 1% up to a maximum of 40%. (Also sea raiders in your party will increase speed on water)^^\
-Commander panel: With an army large than 40 men you have access to the commander panel before a battle starts. It allows you to make sacrifices to the gods (improves moral, depends on a dice role, is a good choice if you have a low oratory skill), \
-give a speech (depending on your oratory, persuasion and leadership skill it is either a success or fail) or to send skirmishers to attack the enemy (success depends on your tactics skill).^^\
-Currently the escape change for a hero after battle is: 37%. Note that this also effect the player."),
+("q_and_q", "Important informations",
+"Triumphs:^As Roman player may gets a triumph awarded. For this you need at least " + str(triumph_threshold) + " gravitas. You obtain gravitas by winning battles as marshal. Gravitas will decline over time though. You can see your current gravitas in the character notes. As Emperor you can also hold a triumph with less gravitas but this will upset the Romans."
++"^^Battle field fortifications: ^As Roman you can fortify your camp. It requires a set of tools inside your inventory and an engineer skill higher than 5. Once fortified you can no longer move. It is also possible during sieges."
++"^^Lending out money: Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denars. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report."
++" This can take a while. Depending on when you issued the loan and depending on when your next budget report will show it can take between one or two weeks until your receive the interests."
++" For your loan you have two options. Either you order the argentarius to reinvest the money again, or you order him to send you back all the money. In the first case,"
++" you will only receive the interests of your loan and a new loan will be lend out right away after recieving the interests. In the later case you will receive all the money back. Sometimes the interests can be negative. That shall simulate the case"
++" when the debtor is not able to repay the loan you offered him."
++"^^Diplomacy feature: You can become part of a family. To do this you must talk with a lord, depending the character of the lord you must either be honorable, or dishonorable, "
++"famous, have a good relation or own a fief or wealth.^^"
++"You need at least 200 renown to be considered as a full citizen of Rome. With 200 renown you can: Enter the great hall of towns and fortresses and you must pay the punitive tax (Lex Julia et Papia)."
++"If you are Emperor or have a military rank in the Roman Army your renown won't go beyond: 450 if emperor, 200 if common military rank.^^"
++"If you own a fief and you are part of the Roman Empire you must pay taxes to the Emperor, taxrate depends on circumstances. (usually 20%)^"
++"If you are part of the Roman Army (not as mercenary!) you won't have to pay wages for your troops in your party. But you must still pay for garrisons.^^"
++"Be aware: after some years the great Jewish revolt will start (if not triggered by player)^^"
++"Player can convert to Judaism (at the great temple in Hierosolyma), this enables the following features: Player can fund Judean rebels at the great temple in Hierosolyma, player can start the Jewish revolt and fight for Judea: Only possible if player hasn't joined any other faction yet.^^"
++"You can usurp towns from other governors (=Lords) with bad reputation type (quarrelsome, selfrighteous, sadisitic (debauched), cunning): You need more than 25 relation with the town, at least 300 renown and must be in the same faction,"
++"then you will receive an event when you visit the town. Nero will only give you the town if you don't already own one, and if you have a higher relation with him than the old governor. If your attempt fail, you will gain a new chance after 50 days.^^"
++"You can become the lover of a married woman. Firstly you must improve your relation with her. Then, depending on your charisma, her personality and luck she may says yes to you."
++"But if your relation with her becomes to low (beyond 10) then she will break with you. There is also some random chance that she breaks, because she finds someone more interesting.^"
++"If you have high enough relation (and a good persuasion skill) with a lady, she may tell you the latest rumor about a love affair. You can use this information to your advantage.^"
++"Your spouse can have a love affair too. If you think she has one, you can send one of your companions to spy her. "
++"Depending on the intelligence skill of the companion he may find out if she has a love affair or not. If she has a lover and your companion has found it out you can talk with her and divorce.^^"
++"As Emperor you should always watch your enemies in your own faction, if they grow too many, they may assassinate you.^^"
++"As Emperor you can imprison any person you want (town or village walkers and your generals/lords)^^"
++"If you have a prisoner tower in a town or fort, you can torture your enemies. Simply visit the prison and talk with the torturer.^^"
++"You can deposit money in Roman towns. Simply talk with the praefectus of the city, who can be found in the scriptorium.^^"
++"You can buy all Roman weapons, armors, helmets and shields from the merchant Gaius Marius, who can be found in the streets of Rome.^^"
++"There are some drinking 'mini games' ingame: You can toast with Lords during feasts and you can make a drinking competition with tavern shoppers. A high strength attribute is needed if you want to win.^^"
++"The players health can decrease over time (see characters report for information about your current status). You will become more unhealthy, if you get knocked down during battle, and due to various other stuff (drinking competitions for example)."
++"To increase your health visit the baths frequently.^^"
++"As Emperor, you must answer petitions regularly. If you don't want to do this, talk with your political advisor, who can be found in the Domus Augustus in Rome.^^"
++"The gold item can used to hire warbands from the Nabateans, Garmantians and Gaetulians, by talking with their respective kings.^^"
++"You can order your companions to establish permanent camps (option in the camp menu) and to create their own parties (by talking with them via the party screen):^"
++"The maximal amount of troops you can give depends on the following: base is 100 men + additional two men per charisma attribute and additional 10 men per leadership skill."
++"You can also store items and prisoners in the camp. But be aware, the camp can be attacked by enemy parties and if it is destroyed all items and prisoners will be lost.^^"
++"You can get honorary titles if you ask Emperor Nero for a reward. You need high relation with him for this dialogue option to become available.^^"
++"Freelancing is only available for Roman legions, talk either with a legate commanding a legion directly or with a Praefectus Castrorum or Praefectus, who can be found in the scriptorium.^^"
++"For freelancing in the Praetorian guard you need a letter of recommendation, this you can obtain once you reached the rank of Optio, while freelancing in a normal legion.^^"
++"You can go hunting via the camp menu.^^"
++"Roman officers provide a skill bonus: High rank officers, like Vexilarius, Aquilifer, Primus Pilus and Tribunus provide a bonus to leadership skill."
++"For each 100 men in your party you need two officers (centurio, signifer etc.), otherwise you will get a malus on tactics skill. The only non-Roman 'officer' is currently the hornman."
++"The idea behind this is the following: Larger armies are more difficult to lead during battles. The orders you give must reach the soldiers. Officers and musicians can help with that.^^"
++"Sailors can be found as mercenaries in taverns of port towns. Each sailor in the party increases party speed on water by 1% up to a maximum of 40%. (Also sea raiders in your party will increase speed on water)^^"
++"Commander panel: With an army large than 40 men you have access to the commander panel before a battle starts. It allows you to make sacrifices to the gods (improves moral, depends on a dice role, is a good choice if you have a low oratory skill), "
++"give a speech (depending on your oratory, persuasion and leadership skill it is either a success or fail) or to send skirmishers to attack the enemy (success depends on your tactics skill).^^"
++"Currently the escape change for a hero after battle is: 37%. Note that this also effect the player."),
 
 # ("names", "Families and Relations", "Every faction consists of lords, who have different relations with other lords.\
 #  This relations will have also effects on your actions in the game. An example: If you execute a Lord (or Lady) your relationship with all his family members, but also with all his friends will decrease.\

@@ -14931,7 +14931,12 @@ game_menus = [
     #Who's in the hall? - Dj_FRedy
 
     ##first do all special events in correct order
-    (try_begin), # main story other goy battle of bedriacum
+    (try_begin),
+        (eq, "$current_town", "p_town_6"),
+        (check_quest_active, "qst_triumph"),
+        (eq, "$g_encountered_party_faction", "$players_kingdom"),
+        (call_script, "script_troop_holds_triumph", "trp_player"),
+    (else_try), # main story other goy battle of bedriacum
         (eq, "$current_town", "p_town_6"),
         (check_quest_active, "qst_four_emperors"),
         (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 12),
@@ -20000,7 +20005,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", "$g_ransom_offer_troop", pos0),
   ],[
   ("ransom_accept",[],"Accept the offer.",[
-    (troop_set_slot, "$g_ransom_offer_troop", slot_troop_courtesan, -1),
     (try_begin),
       (gt, "$g_player_chamberlain", 0),
       (call_script, "script_dplmc_pay_into_treasury", reg12),
@@ -21518,10 +21522,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (call_script, "script_count_parties_of_faction_and_party_type", "$g_notification_menu_var2", spt_castle),
         (val_mul, reg0, 4000),
         (val_add, reg40, reg0),
-      ],
+    ],
     [
-        ("tribute",[],"Demand a tribute of {reg40} denars",
-        [
+        ("tribute",[],"Demand a tribute of {reg40} denars",[
             (jump_to_menu, "mnu_decide_ai_tribute"),
         ]),
 
@@ -31352,52 +31355,72 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
+("triumph_hold",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Gravitas is a measure of your military fame among the people of Rome. You need at least {reg11} garvitas to have a triumph granted to you by the senate."
+  +" However, as Princeps you can just by-pass the senate. Though this will upset the people of Rome.^^Currently, you have {reg10} gravitas.",
+  "none",[
+    (str_store_troop_name_plural, s15, "trp_player"),
+    (set_background_mesh, "mesh_pic_triumph"),
+    (troop_get_slot, reg10, "trp_player", slot_troop_triumph_points),
+    (assign, reg11, triumph_threshold),
+	],[
+    ("continue",[],"Hold a triumph!",[
+      (assign, "$g_triumph", 1),
+      (try_begin),
+          (troop_slot_ge, "trp_player", slot_troop_triumph_points, triumph_threshold),
+          (call_script, "script_troop_holds_triumph", "trp_player"),
+      (else_try),
+          (call_script, "script_triumph_marsh_start", "mnu_town","$temp", 1),
+          (call_script, "script_change_senate_support", -15, 0),
+          (call_script, "script_change_player_relation_with_center", "p_town_6", -25),
+      (try_end),
+    ]),
+    ("continue",[],"Go back.",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
 ("triumph",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "A triumph is hold to honor you.^\
-	{s40}",
-    "none",
-    [(set_background_mesh, "mesh_pic_triumph"),
-	(party_get_slot, ":player_relation", "$current_town", slot_center_player_relation),
-	(try_begin),
-		(is_between, ":player_relation", 0, 20),
-		(str_store_string, s40, "@Some People stay in the streets and cheer as you parade."),
-		(assign, "$temp",1),
-	(else_try),
-		(is_between, ":player_relation", 20, 60),
-		(str_store_string, s40, "@A lot of People stay in the streets and cheer as you parade."),
-		(assign, "$temp",2),
-	(else_try),
-		(is_between, ":player_relation", 60, 101),
-		(str_store_string, s40, "@The people of Rome praise you like a god as you march on."),
-		(assign, "$temp",3),
-	(else_try),
-		(lt, ":player_relation", -20),
-		(str_store_string, s40, "@The people of Rome throw with stones on you. You can feel their hate against you."),
-		(assign, "$temp",1),
-	(else_try),
-		(str_store_string, s40, "@The people of Rome ignore you."),
-		(assign, "$temp",1),
-	(try_end),
-	],
-    [
-     ("continue",[],"Glory to me! (with trumpeter)",
-       [
-		(call_script, "script_change_player_honor", 5),
-		(call_script, "script_change_troop_renown", "trp_player", 5),
-		(assign, "$g_triumph", 1),
-		(call_script, "script_triumph_marsh_start", "mnu_town","$temp",1),
-        ]
-       ),
-       ("continue",[],"Glory to me! (without trumpeter)",
-       [
-		(call_script, "script_change_player_honor", 5),
-		(call_script, "script_change_troop_renown", "trp_player", 5),
-		(assign, "$g_triumph", 1),
-		(call_script, "script_triumph_marsh_start", "mnu_town","$temp",0),
-        ]
-       ),
-    ]
- ),
+  "The following decree is declared by the senate and Princeps:^^Citizens of Rome,"
+  +"^We are honored to announce that {s15} has been awarded a triumph for his exceptional valor and leadership in recent military campaigns."
+  +" This prestigious recognition is a testament to {s15}'s unwavering dedication and outstanding achievements in service to Rome."
+  +" ^The Senate and the People of Rome have decreed that a grand procession shall be held to celebrate this momentous occasion."
+  +" Join us in the festivities as we pay tribute to {s15} for his contributions to the glory and honor of Rome."
+  +"^Ave Imperator!^^^A triumph is held to honor you.^^{s40}",
+  "none",[
+    (str_store_troop_name_plural, s15, "trp_player"),
+    (set_background_mesh, "mesh_pic_triumph"),
+    (party_get_slot, ":player_relation", "$current_town", slot_center_player_relation),
+    (try_begin),
+      (is_between, ":player_relation", 0, 20),
+      (str_store_string, s40, "@Some People stay in the streets and cheer as you parade."),
+      (assign, "$temp",1),
+    (else_try),
+      (is_between, ":player_relation", 20, 60),
+      (str_store_string, s40, "@A lot of People stay in the streets and cheer as you parade."),
+      (assign, "$temp",2),
+    (else_try),
+      (is_between, ":player_relation", 60, 101),
+      (str_store_string, s40, "@The people of Rome praise you like a god as you march on."),
+      (assign, "$temp",3),
+    (else_try),
+      (lt, ":player_relation", -20),
+      (str_store_string, s40, "@The people of Rome throw with stones on you. You can feel their hate against you."),
+      (assign, "$temp",1),
+    (else_try),
+      (str_store_string, s40, "@The people of Rome ignore you."),
+      (assign, "$temp",1),
+    (try_end),
+	],[
+    ("continue",[],"Glory to me! (with trumpeter)",[
+      (assign, "$g_triumph", 1),
+      (call_script, "script_triumph_marsh_start", "mnu_town","$temp", 1),
+    ]),
+    ("continue",[],"Glory to me! (without trumpeter)",[
+      (assign, "$g_triumph", 1),
+      (call_script, "script_triumph_marsh_start", "mnu_town","$temp", 0),
+    ]),
+]),
 
 ###fire of rome
 ("fire_of_rome",menu_text_color(0xFF000000)|mnf_disable_all_keys,
@@ -35589,8 +35612,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
         (try_begin),
             (eq, "$g_encountered_party", "p_delphi"),
-
-            (call_script, "script_add_log_entry", logent_raided_delphi,   "trp_player",  -1, -1, -1),
+            (call_script, "script_add_log_entry", logent_raided_delphi, "trp_player", -1, -1, -1),
 
             (try_for_range, ":cur_center", centers_begin, centers_end),
                 (this_or_next|party_slot_eq, ":cur_center", slot_center_province, p_balk_acha),
@@ -41769,57 +41791,51 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
   ),
 
-  (
-    "conspiracy",mnf_disable_all_keys,
-    "You enter the palace. The first thing you notice is this beautiful girl standing next to the flowers. Then a fly tickles your ear.^\
-	You look around and realize that nobody is there anymore. Suddenly you hear shouts: ^^\
-	'Your tyranny will end today!'^^\
-	'You will burn in hell!'",
-    "none",
-    [
+("conspiracy",mnf_disable_all_keys,
+  "You enter the palace. The first thing you notice is this beautiful girl standing next to the flowers. Then a fly tickles your ear.^"
+  +" You look around and realize that nobody is there anymore. Suddenly you hear shouts: ^^"
+  +" 'Your tyranny will end today!'^^"
+  +" 'You will burn in hell!'",
+  "none",[
     (set_background_mesh, "mesh_pic_palast"),
-    ],
-    [
-
-      ("continue",[],"... What the hell ...",
-        [
-
-    (try_begin),
-      (eq, "$temp4_1", 1),
-      (assign,":scene", "scn_imperial_palace"),
-    (else_try),
-      (party_get_slot, ":scene", "$current_town", slot_town_castle),
-    (try_end),
-    # (assign, "$talk_context", tc_feast),
-    (modify_visitors_at_site, ":scene"),
-    (reset_visitors),
-    (assign, ":entry", 16),
-    (try_for_range, ":slot", 20, 35),
-        (troop_get_slot, ":enemy", "trp_array_villa_feast", ":slot"),
-        (gt, ":enemy", active_npcs_begin),
-        (set_visitor, ":entry", ":enemy"),
-        (val_add, ":entry", 1),
-    (try_end),
-#entry points:
-# 1 player
-# 2 - 6 berater
-# 7 - 10 berater in sitz position
-# 11 - 13 dancers
-# 14 so ein typ der sich um die hofhaltung sorgt
-# 15 - 17 die typen von diplomacy
-# 18 minister
-# 19 die eigene ehefrau, in sitzposition
-#20 - 29 guards
-#30,31 minstrels
-#32 - 34 slaves
-#35 heir, if player has one
-	   (set_jump_entry, 0),
-	   (set_jump_mission, "mt_conspiracy_fight"),
-     (jump_to_scene, ":scene"),
-	   (change_screen_mission),
-      ]),
-    ],
-  ),
+  ],[
+    ("continue",[],"... What the hell ...",[
+      (assign, "$talk_context", 0),
+      (try_begin),
+        (eq, "$temp4_1", 1),
+        (assign,":scene", "scn_imperial_palace"),
+      (else_try),
+        (party_get_slot, ":scene", "$current_town", slot_town_castle),
+      (try_end),
+      # (assign, "$talk_context", tc_feast),
+      (modify_visitors_at_site, ":scene"),
+      (reset_visitors),
+      (assign, ":entry", 16),
+      (try_for_range, ":slot", 20, 35),
+          (troop_get_slot, ":enemy", "trp_array_villa_feast", ":slot"),
+          (gt, ":enemy", active_npcs_begin),
+          (set_visitor, ":entry", ":enemy"),
+          (val_add, ":entry", 1),
+      (try_end),
+      #entry points:
+      # 1 player
+      # 2 - 6 berater
+      # 7 - 10 berater in sitz position
+      # 11 - 13 dancers
+      # 14 so ein typ der sich um die hofhaltung sorgt
+      # 15 - 17 die typen von diplomacy
+      # 18 minister
+      # 19 die eigene ehefrau, in sitzposition
+      #20 - 29 guards
+      #30,31 minstrels
+      #32 - 34 slaves
+      #35 heir, if player has one
+      (set_jump_entry, 0),
+      (set_jump_mission, "mt_conspiracy_fight"),
+      (jump_to_scene, ":scene"),
+      (change_screen_mission),
+    ]),
+]),
 
 ("conspiracy_2",mnf_disable_all_keys,
   "Soon after you overwhelm the conspirators your guards appear and arrest them.^^Why hasn't the praetorian guard helped you? Who else is part of this conspiracy?",
@@ -50858,22 +50874,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
     ]),
     ("triumph_1",[
-      (neg|is_currently_night),
-      (this_or_next|eq, "$g_is_emperor", 1),
-      (troop_slot_eq, "trp_player", slot_troop_honorary_title, ht_consul),
+      # (neg|is_currently_night),
+      (eq, "$g_is_emperor", 1),
+      # (troop_slot_eq, "trp_player", slot_troop_honorary_title, ht_consul),
       (eq, "$current_town", "p_town_6"),
       (eq, "$g_triumph", 0),
       (store_faction_of_party, ":fac", "$current_town"),
       (eq, ":fac", "$players_kingdom"),
-    ],"Hold a triumph (10,000 denars).",[
-      (store_troop_gold, ":gold", "trp_player"),
-      (try_begin),
-        (ge, ":gold", 10000),
-        (troop_remove_gold, "trp_player", 10000),
-        (jump_to_menu, "mnu_triumph"),
-      (else_try),
-        (display_message, "@You need more money!"),
-      (try_end),
+    ],"Hold a triumph.",[
+      (jump_to_menu, "mnu_triumph_hold"),
     ]),
     ("host_tournament",[
       (neg|is_currently_night),
@@ -59018,6 +59027,54 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (quest_set_slot, "qst_werdheri", slot_quest_current_state, 6),
       (add_xp_as_reward, 5000),
       (call_script, "script_setup_troop_meeting", "trp_werdheri", -1, "scn_werdheri_bandit_lair"),
+    ]),
+]),
+
+("triumph_awared_emperor",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Triumph!^^{s15} has earned his name while leading campaigns and the senate wants to grant him a triumph. You can, however, veto it using your consular authority.",
+  "none",[
+    (str_store_troop_name_plural, s15, "$g_notification_menu_var1"),
+    (set_background_mesh, "mesh_pic_triumph"),
+  ],[
+    ("answere_1",[],"Let {s15} have his triumph!",[
+      (jump_to_menu, "mnu_triumph_awared_ai"),
+    ]),
+    ("answere_1",[],"Veto!",[
+      (call_script, "script_change_player_relation_with_troop", "$g_notification_menu_var1", -75),
+      (call_script, "script_change_relation_with_family_friends_enemies", "$g_notification_menu_var1", -1, 10, "trp_player"),
+      (troop_set_slot, "$g_notification_menu_var1", slot_troop_triumph_points, 0),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", -5),
+      (jump_to_menu, "mnu_triumph_awared_ai"),
+    ]),
+]),
+
+("triumph_awared_ai",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Triumph!^^^A messenger informs you about following decree issued by the senate and the Princeps:"
+  +"^^Citizens of Rome,^We are honored to announce that {s15} has been awarded a triumph for his exceptional valor and leadership in recent military campaigns."
+  +" This prestigious recognition is a testament to {s15}'s unwavering dedication and outstanding achievements in service to Rome."
+  +" The Senate and the People of Rome have decreed that a grand procession shall be held to celebrate this momentous occasion."
+  +"^Ave Imperator!",
+  "none",[
+    (str_store_troop_name_plural, s15, "$g_notification_menu_var1"),
+    (set_background_mesh, "mesh_pic_triumph"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (call_script, "script_troop_holds_triumph", "$g_notification_menu_var1"),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
+
+("triumph_awared_player",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Triumph!^^A messenger informs you that a triumph is awarded to you in your name. Travel to Rome at your earliest convenience to claim your triumph",
+  "none",[
+    (set_background_mesh, "mesh_pic_messenger"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (setup_quest_text, "qst_triumph"),
+      (str_store_party_name_link, s25, "p_town_6"),
+      (str_store_string, s2, "@A triumph has been awarded to you. Travel to {s25}."),
+      (call_script, "script_start_quest", "qst_triumph", "trp_fortuna"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 

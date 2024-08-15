@@ -35397,8 +35397,6 @@ presentations = [
 ]),
 ###end presentation to customize legion and auxiliar unit ##################################################################################################################################
 
-
-
 ("recruit_cohorts", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
@@ -35423,18 +35421,19 @@ presentations = [
     (overlay_set_size, reg0, pos1),
 
 
-    (create_text_overlay, reg1, "@Select a military unit by pressing on its name.", tf_center_justify),
+    (create_text_overlay, reg1, "@Select a military unit by pressing on its name.", tf_center_justify|tf_with_outline),
     (position_set_x, pos1, 1200),
     (position_set_y, pos1, 1200),
     (overlay_set_size, reg1, pos1),
     (position_set_x, pos1, 500), # Higher, means more toward the right
-    (position_set_y, pos1, 700), # Higher, means more toward the top
+    (position_set_y, pos1, 710), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
+    (overlay_set_color, reg1, 0x00007F),
 
 
      ###on top, info about players party
     (create_text_overlay, "$g_presentation_obj_28", "@Your party information", tf_left_align),
-    (position_set_x, pos1, 780),
+    (position_set_x, pos1, 785),
     (position_set_y, pos1, 710),
     (overlay_set_position, "$g_presentation_obj_28", pos1),
     (position_set_x, pos1, 1000),
@@ -35455,115 +35454,21 @@ presentations = [
     (store_sub, reg5, reg0, slot_cohort_1),
 
     (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denars.^Party limit: {reg3} men.^Your gold: {reg4} denars.^Cohort limit: {reg5} cohorts.", tf_left_align),
-    (position_set_x, pos1, 780),
+    (position_set_x, pos1, 785),
     (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
     (position_set_x, pos1, 920),
     (position_set_y, pos1, 920),
     (overlay_set_size, "$g_presentation_obj_27", pos1),
 
-    # # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
-    (str_clear, s0),
-    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
-    (position_set_x, pos1, 490),
-    (position_set_y, pos1, 540),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 265),
-    (position_set_y, pos1, 140),
-    (overlay_set_area_size, reg1, pos1),
-
-    (position_set_x, pos2, 920),
-    (position_set_y, pos2, 920),
-
-    (set_container_overlay, reg1),#start scroll
-
-    (assign, ":cur_y", 0),
-
-    (assign, ":number_nobles", 0),
-    (assign, ":number_peasants", 0),
-    (assign, ":number_mercenaries", 0),
-    (party_get_slot, ":province", "$current_town", slot_center_province),
-    (try_for_range, ":center", centers_begin, centers_end),
-        (party_slot_eq, ":center", slot_center_province, ":province"),
-        (store_faction_of_party, ":center_faction", ":center"),
-        (eq, ":center_faction", "$g_encountered_party_faction"),
-        (try_begin),
-            (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
-            (str_store_string, s12, "@Officers"),
-        (else_try),
-            (str_store_string, s12, "@Nobles"),
-        (try_end),
-        (party_get_slot, ":cur_number_nobles", ":center", slot_center_volunteer_noble_troop_amount),
-        (val_add, ":number_nobles", ":cur_number_nobles"),
-        (assign, reg2, ":cur_number_nobles"),
-        (str_store_party_name, s10, ":center"),
-        (create_text_overlay, reg1, "@{s12} ({s10}): {reg2}.", tf_left_align),
-        (position_set_x, pos1, 0),
-        (position_set_y, pos1, ":cur_y"),
-        (overlay_set_position, reg1, pos1),
-        (overlay_set_size, reg1, pos2),
-        (val_add, ":cur_y", 15),
-
-        (party_get_slot, ":cur_number_peasants", ":center", slot_center_volunteer_troop_amount),
-        (val_add, ":number_peasants", ":cur_number_peasants"),
-        (str_store_party_name, s10, ":center"),
-        (assign, reg2, ":cur_number_peasants"),
-        (create_text_overlay, reg1, "@Recruits ({s10}): {reg2}.", tf_left_align),
-        (position_set_x, pos1, 0),
-        (position_set_y, pos1, ":cur_y"),
-        (overlay_set_position, reg1, pos1),
-        (overlay_set_size, reg1, pos2),
-        (val_add, ":cur_y", 15),
-
-        (party_get_slot, ":cur_number_mercenaries", ":center", slot_center_mercenary_troop_amount_2),
-        (val_add, ":number_mercenaries", ":cur_number_mercenaries"),
-        (str_store_party_name, s10, ":center"),
-        (assign, reg2, ":cur_number_mercenaries"),
-        (create_text_overlay, reg1, "@Mercenaries ({s10}): {reg2}.", tf_left_align),
-        (position_set_x, pos1, 0),
-        (position_set_y, pos1, ":cur_y"),
-        (overlay_set_position, reg1, pos1),
-        (overlay_set_size, reg1, pos2),
-        (val_add, ":cur_y", 15),
-    (try_end),
-    (set_container_overlay, -1),
-
-    (position_set_x, pos2, 1000),
-    (position_set_y, pos2, 1000),
-
-    (try_begin),
-        (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
-        (str_store_string, s12, "@officers"),
-    (else_try),
-        (str_store_string, s12, "@nobles"),
-    (try_end),
-    (assign, reg2, ":number_nobles"),
-    (create_text_overlay, reg1, "@Total {s12}: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 330),
-    (position_set_y, pos1, 675),
-    (overlay_set_position, reg1, pos1),
-    (overlay_set_size, reg1, pos2),
-
-    (assign, reg2, ":number_peasants"),
-    (create_text_overlay, reg1, "@Total recruits: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 330),
-    (position_set_y, pos1, 658),
-    (overlay_set_position, reg1, pos1),
-    (overlay_set_size, reg1, pos2),
-
-    (assign, reg2, ":number_mercenaries"),
-    (create_text_overlay, reg1, "@Total mercenaries: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 330),
-    (position_set_y, pos1, 641),
-    (overlay_set_position, reg1, pos1),
-    (overlay_set_size, reg1, pos2),
+    (call_script, "script_display_available_recruits", "$g_encountered_party"),
 
     (try_begin),
         (ge, "$g_rank", 1),
         (troop_get_slot, ":money_limit", "trp_global_variables", g_player_recruitement_limit),
         (assign, reg2, ":money_limit", ),
         (create_text_overlay, reg1, "@Imperial treasury funds: {reg2}.", tf_left_align),
-        (position_set_x, pos1, 780),
+        (position_set_x, pos1, 785),
         (position_set_y, pos1, 540),
 
         (overlay_set_position, reg1, pos1),
@@ -35796,43 +35701,7 @@ presentations = [
                 # (party_set_slot, "$g_encountered_party", slot_center_volunteer_noble_troop_amount, ":nobles"),
                 # (party_set_slot, "$g_encountered_party", slot_center_volunteer_troop_amount, ":peasants"),
 
-                (try_for_range, ":center", centers_begin, centers_end),
-                    (party_slot_eq, ":center", slot_center_province, ":province"),
-                    (store_faction_of_party, ":center_faction", ":center"),
-                    (eq, ":center_faction", "$g_encountered_party_faction"),
-                    (party_get_slot, ":cur_number_nobles", ":center", slot_center_volunteer_noble_troop_amount),
-                    (val_sub, ":cur_number_nobles", reg3),
-                    (try_begin),
-                        (lt, ":cur_number_nobles", 0),
-                        (store_mul, reg3, ":cur_number_nobles", -1),
-                        (assign, ":cur_number_nobles", 0),
-                    (else_try),
-                        (assign, reg3, 0),
-                    (try_end),
-                    (party_set_slot, ":center", slot_center_volunteer_noble_troop_amount, ":cur_number_nobles"),
-
-                    (party_get_slot, ":cur_number_peasants", ":center", slot_center_volunteer_troop_amount),
-                    (val_sub, ":cur_number_peasants", reg4),
-                    (try_begin),
-                        (lt, ":cur_number_peasants", 0),
-                        (store_mul, reg3, ":cur_number_peasants", -1),
-                        (assign, ":cur_number_peasants", 0),
-                    (else_try),
-                        (assign, reg3, 0),
-                    (try_end),
-                    (party_set_slot, ":center", slot_center_volunteer_troop_amount, ":cur_number_peasants"),
-
-                    (party_get_slot, ":cur_number_mercenaries", ":center", slot_center_mercenary_troop_amount_2),
-                    (val_sub, ":cur_number_mercenaries", reg7),
-                    (try_begin),
-                        (lt, ":cur_number_mercenaries", 0),
-                        (store_mul, reg3, ":cur_number_mercenaries", -1),
-                        (assign, ":cur_number_mercenaries", 0),
-                    (else_try),
-                        (assign, reg3, 0),
-                    (try_end),
-                    (party_set_slot, ":center", slot_center_mercenary_troop_amount_2, ":cur_number_mercenaries"),
-                (try_end),
+                (call_script, "script_take_recruits_from_province", "$g_encountered_party", "$g_encountered_party_faction", reg3, reg4, reg7),
 
                 (try_begin),
                     (ge, "$g_is_emperor", 1),
@@ -35917,23 +35786,24 @@ presentations = [
     (assign, reg22, ":num_of_cohorts"),
     (store_mul, reg0, reg22, -1),
     (val_add, reg0, reg22, 2),
-    (create_text_overlay, reg1, "@You have {reg22} {reg0?cohort:cohorts} in your party.", tf_center_justify),
+    (create_text_overlay, reg1, "@You have {reg22} {reg0?cohort:cohorts} in your party.", tf_center_justify|tf_with_outline),
     (position_set_x, pos1, 1200),
     (position_set_y, pos1, 1200),
     (overlay_set_size, reg1, pos1),
     (position_set_x, pos1, 500), # Higher, means more toward the right
-    (position_set_y, pos1, 700), # Higher, means more toward the top
+    (position_set_y, pos1, 710), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
-
+    (overlay_set_color, reg1, 0x00007F),
 
      ###on top, info about players party
-    (create_text_overlay, "$g_presentation_obj_28", "@Your party information:", tf_left_align),
-    (position_set_x, pos1, 720),
+    (create_text_overlay, "$g_presentation_obj_28", "@Your party information", tf_left_align),
+    (position_set_x, pos1, 785),
     (position_set_y, pos1, 710),
     (overlay_set_position, "$g_presentation_obj_28", pos1),
     (position_set_x, pos1, 1000),
     (position_set_y, pos1, 1000),
     (overlay_set_size, "$g_presentation_obj_28", pos1),
+    (overlay_set_color, "$g_presentation_obj_28", 0x00007F),
 
     (store_party_size_wo_prisoners, reg1, "p_main_party"),
     (call_script, "script_calculate_weekly_party_wage", "p_main_party"),
@@ -35947,56 +35817,22 @@ presentations = [
     (call_script, "script_get_cohort_limit", "p_main_party"),
     (store_sub, reg5, reg0, slot_cohort_1),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men, Wage: {reg2} denars, ^Party limit: {reg3} men. Your gold: {reg4} denars.^Cohort limit: {reg5} cohorts.", tf_left_align),
-    (position_set_x, pos1, 720),
-    (position_set_y, pos1, 650),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denars.^Party limit: {reg3} men.^Your gold: {reg4} denars.^Cohort limit: {reg5} cohorts.", tf_left_align),
+    (position_set_x, pos1, 785),
+    (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
     (position_set_x, pos1, 920),
     (position_set_y, pos1, 920),
     (overlay_set_size, "$g_presentation_obj_27", pos1),
 
-    (try_begin),
-        (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
-        (str_store_string, s12, "@officers"),
-    (else_try),
-        (str_store_string, s12, "@nobles"),
-    (try_end),
-    (party_get_slot, ":number_nobles", "$current_town", slot_center_volunteer_noble_troop_amount),
-    (assign, reg2, ":number_nobles"),
-    (create_text_overlay, reg1, "@Available {s12}: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 740),
-    (position_set_y, pos1, 625),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 920),
-    (position_set_y, pos1, 920),
-    (overlay_set_size, reg1, pos1),
-
-    (party_get_slot, ":number_peasants", "$current_town", slot_center_volunteer_troop_amount),
-    (assign, reg2, ":number_peasants"),
-    (create_text_overlay, reg1, "@Available recruits: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 740),
-    (position_set_y, pos1, 610),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 920),
-    (position_set_y, pos1, 920),
-    (overlay_set_size, reg1, pos1),
-
-    (party_get_slot, ":number_mercenaries", "$current_town", slot_center_mercenary_troop_amount_2),
-    (assign, reg2, ":number_mercenaries"),
-    (create_text_overlay, reg1, "@Available Mercenaries: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 740),
-    (position_set_y, pos1, 595),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 920),
-    (position_set_y, pos1, 920),
-    (overlay_set_size, reg1, pos1),
+    (call_script, "script_display_available_recruits", "$g_encountered_party"),
 
     (try_begin),
         (ge, "$g_rank", 1),
         (troop_get_slot, ":money_limit", "trp_global_variables", g_player_recruitement_limit),
         (assign, reg2, ":money_limit", ),
         (create_text_overlay, reg1, "@Imperial treasury funds: {reg2}.", tf_left_align),
-        (position_set_x, pos1, 740),
+        (position_set_x, pos1, 785),
         (position_set_y, pos1, 580),
         (overlay_set_position, reg1, pos1),
         (position_set_x, pos1, 920),
@@ -36038,7 +35874,6 @@ presentations = [
     (position_set_y, pos3, 530),
     (overlay_set_position, reg1, pos3),
 
-
     (assign, "$g_presentation_obj_1", -1),
     (assign, "$g_presentation_obj_2", -1),
     (assign, "$g_presentation_obj_5", -1),
@@ -36048,7 +35883,7 @@ presentations = [
         (call_script, "script_get_cohort_name_to_s5", "$temp"),
         (create_text_overlay, reg1, "@Selected unit: {s5}", tf_left_align),
         (position_set_x, pos1, 25), # Higher, means more toward the right
-        (position_set_y, pos1, 710), # Higher, means more toward the top
+        (position_set_y, pos1, 715), # Higher, means more toward the top
         (overlay_set_position, reg1, pos1),
         (overlay_set_color, reg1, 0x00007F),
         (position_set_x, pos1, 900),
@@ -36067,39 +35902,51 @@ presentations = [
 
         (call_script, "script_cohort_describe_strength_to_s5_and_refil", "p_main_party", "$temp", "$temp2", "$g_encountered_party", -1, 0),
         (create_text_overlay, reg1, s5, tf_scrollable_style_2),
-        (position_set_x, pos1, 125),
-        (position_set_y, pos1, 300),
+        (position_set_x, pos1, 140),
+        (position_set_y, pos1, 535),
         (overlay_set_position, reg1, pos1),
-        (position_set_x, pos1, 400),
-        (position_set_y, pos1, 350),
+        (position_set_x, pos1, 330),
+        (position_set_y, pos1, 90),
         (overlay_set_area_size, reg1, pos1),
 
         (try_begin),
             (call_script, "script_cf_can_manage_garrision", "$g_encountered_party"),
             (create_game_button_overlay, reg1, "@Add to Garrison"),
-            (position_set_x, pos1, 630),
-            (position_set_y, pos1, 625),
+            (position_set_x, pos1, 250),
+            (position_set_y, pos1, 685),
             (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 115),
+            (position_set_y, pos1, 25),
+            (overlay_set_size, reg1, pos1),
             (assign, "$g_presentation_obj_5", reg1),
         (else_try),
             (call_script, "script_cf_can_donate_to_garrision", "$g_encountered_party"),
             (create_game_button_overlay, reg1, "@Add to Garrison"),
-            (position_set_x, pos1, 630),
-            (position_set_y, pos1, 625),
+            (position_set_x, pos1, 250),
+            (position_set_y, pos1, 685),
             (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 115),
+            (position_set_y, pos1, 25),
+            (overlay_set_size, reg1, pos1),
             (assign, "$g_presentation_obj_5", reg1),
         (try_end),
 
         (create_game_button_overlay, reg1, "@Refresh"),
-        (position_set_x, pos1, 630),
-        (position_set_y, pos1, 580),
+        (position_set_x, pos1, 250),
+        (position_set_y, pos1, 658),
         (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 115),
+        (position_set_y, pos1, 25),
+        (overlay_set_size, reg1, pos1),
         (assign, "$g_presentation_obj_1", reg1),
 
         (create_game_button_overlay, reg1, "@Disband"),
-        (position_set_x, pos1, 630),
-        (position_set_y, pos1, 535),
+        (position_set_x, pos1, 250),
+        (position_set_y, pos1, 631),
         (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 115),
+        (position_set_y, pos1, 25),
+        (overlay_set_size, reg1, pos1),
         (assign, "$g_presentation_obj_2", reg1),
     (try_end),
 
@@ -36116,11 +35963,11 @@ presentations = [
     (str_clear, s0),
     # # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
     (create_text_overlay, reg1, s0, tf_scrollable_style_2),
-    (position_set_x, pos1, 50),
-    (position_set_y, pos1, 50),
+    (position_set_x, pos1, 70),
+    (position_set_y, pos1, 70),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 900),
-    (position_set_y, pos1, 450),
+    (position_set_y, pos1, 430),
     (overlay_set_area_size, reg1, pos1),
 
 
@@ -36181,11 +36028,9 @@ presentations = [
         (val_add, ":counter", 1),
     (try_end),
     (set_container_overlay, -1),#end scroll
-
-       ]),
-   ## Check for buttonpress
-   (ti_on_presentation_event_state_change,
-    [
+  ]),
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
         (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
@@ -36244,9 +36089,9 @@ presentations = [
         (assign, "$temp2", ":cohort_dummy"),
         (start_presentation, "prsnt_manage_cohorts"),
     (try_end),
-    ]),
+  ]),
 
-    (ti_on_presentation_run, [
+  (ti_on_presentation_run, [
     (try_begin),
         (key_clicked, key_space),
         (set_fixed_point_multiplier, 1000),
@@ -36257,13 +36102,11 @@ presentations = [
 
         (display_message, "@X: {reg31} | Y: {reg32}"),
     (try_end),
-    ]),
-
   ]),
+]),
 
 ("manage_cohorts_town", 0, 0, [
-    (ti_on_presentation_load,
-    [
+  (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
@@ -36288,23 +36131,24 @@ presentations = [
     (assign, reg22, ":num_of_cohorts"),
     (store_mul, reg0, reg22, -1),
     (val_add, reg0, reg22, 2),
-    (create_text_overlay, reg1, "@There are {reg22} {reg0?cohort:cohorts} stationed in town.", tf_center_justify),
+    (create_text_overlay, reg1, "@There are {reg22} {reg0?cohort:cohorts} stationed in town.", tf_center_justify|tf_with_outline),
     (position_set_x, pos1, 1200),
     (position_set_y, pos1, 1200),
     (overlay_set_size, reg1, pos1),
     (position_set_x, pos1, 500), # Higher, means more toward the right
-    (position_set_y, pos1, 700), # Higher, means more toward the top
+    (position_set_y, pos1, 710), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
-
+    (overlay_set_color, reg1, 0x00007F),
 
      ###on top, info about players party
-    (create_text_overlay, "$g_presentation_obj_28", "@Town information:", tf_left_align),
-    (position_set_x, pos1, 740),
-    (position_set_y, pos1, 700),
+    (create_text_overlay, "$g_presentation_obj_28", "@Town information", tf_left_align),
+    (position_set_x, pos1, 785),
+    (position_set_y, pos1, 710),
     (overlay_set_position, "$g_presentation_obj_28", pos1),
     (position_set_x, pos1, 1000),
     (position_set_y, pos1, 1000),
     (overlay_set_size, "$g_presentation_obj_28", pos1),
+    (overlay_set_color, "$g_presentation_obj_28", 0x00007F),
 
     (store_party_size_wo_prisoners, reg1, "$g_encountered_party"),
     (call_script, "script_calculate_weekly_party_wage", "$g_encountered_party"),
@@ -36312,57 +36156,24 @@ presentations = [
 
     (party_get_slot, reg4, "$g_encountered_party", slot_town_wealth),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men, Party wage: {reg2} denars.^Budget of the town watch: {reg4} denars.", tf_left_align),
-    (position_set_x, pos1, 740),
-    (position_set_y, pos1, 660),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Party wage: {reg2} denars.^Budget of the town watch: {reg4} denars.", tf_left_align),
+    (position_set_x, pos1, 785),
+    (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
     (position_set_x, pos1, 920),
     (position_set_y, pos1, 920),
     (overlay_set_size, "$g_presentation_obj_27", pos1),
 
-    (try_begin),
-        (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
-        (str_store_string, s12, "@officers"),
-    (else_try),
-        (str_store_string, s12, "@nobles"),
-    (try_end),
-    (party_get_slot, ":number_nobles", "$current_town", slot_center_volunteer_noble_troop_amount),
-    (assign, reg2, ":number_nobles"),
-    (create_text_overlay, reg1, "@Available {s12}: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 740),
-    (position_set_y, pos1, 625),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 920),
-    (position_set_y, pos1, 920),
-    (overlay_set_size, reg1, pos1),
-
-    (party_get_slot, ":number_peasants", "$current_town", slot_center_volunteer_troop_amount),
-    (assign, reg2, ":number_peasants"),
-    (create_text_overlay, reg1, "@Available recruits: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 740),
-    (position_set_y, pos1, 610),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 920),
-    (position_set_y, pos1, 920),
-    (overlay_set_size, reg1, pos1),
-
-    (party_get_slot, ":number_mercenaries", "$current_town", slot_center_mercenary_troop_amount_2),
-    (assign, reg2, ":number_mercenaries"),
-    (create_text_overlay, reg1, "@Available Mercenaries: {reg2}.", tf_left_align),
-    (position_set_x, pos1, 740),
-    (position_set_y, pos1, 595),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 920),
-    (position_set_y, pos1, 920),
-    (overlay_set_size, reg1, pos1),
+    (call_script, "script_display_available_recruits", "$current_town"),
 
     (try_begin),
         (ge, "$g_rank", 1),
         (troop_get_slot, ":money_limit", "trp_global_variables", g_player_recruitement_limit),
         (assign, reg2, ":money_limit", ),
         (create_text_overlay, reg1, "@Imperial treasury funds: {reg2}.", tf_left_align),
-        (position_set_x, pos1, 740),
-        (position_set_y, pos1, 580),
+        (position_set_x, pos1, 785),
+        (position_set_y, pos1, 540),
+
         (overlay_set_position, reg1, pos1),
         (position_set_x, pos1, 920),
         (position_set_y, pos1, 920),
@@ -36413,7 +36224,7 @@ presentations = [
         (call_script, "script_get_cohort_name_to_s5", "$temp"),
         (create_text_overlay, reg1, "@Selected unit: {s5}", tf_left_align),
         (position_set_x, pos1, 25), # Higher, means more toward the right
-        (position_set_y, pos1, 710), # Higher, means more toward the top
+        (position_set_y, pos1, 715), # Higher, means more toward the top
         (overlay_set_position, reg1, pos1),
         (overlay_set_color, reg1, 0x00007F),
         (position_set_x, pos1, 900),
@@ -36432,34 +36243,43 @@ presentations = [
 
         (call_script, "script_cohort_describe_strength_to_s5_and_refil", "$g_encountered_party", "$temp", "$temp2", "$g_encountered_party", -1, 0),
         (create_text_overlay, reg1, s5, tf_scrollable_style_2),
-        (position_set_x, pos1, 125),
-        (position_set_y, pos1, 300),
+        (position_set_x, pos1, 140),
+        (position_set_y, pos1, 535),
         (overlay_set_position, reg1, pos1),
-        (position_set_x, pos1, 400),
-        (position_set_y, pos1, 350),
+        (position_set_x, pos1, 330),
+        (position_set_y, pos1, 90),
         (overlay_set_area_size, reg1, pos1),
 
         (try_begin),
             (call_script, "script_cf_can_manage_garrision", "$g_encountered_party"),
             (create_game_button_overlay, reg1, "@Add to Main Party"),
-            (position_set_x, pos1, 630),
-            (position_set_y, pos1, 625),
+            (position_set_x, pos1, 250),
+            (position_set_y, pos1, 685),
             (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 115),
+            (position_set_y, pos1, 25),
+            (overlay_set_size, reg1, pos1),
             (assign, "$g_presentation_obj_4", reg1),
         (try_end),
 
         (create_game_button_overlay, reg1, "@Refresh"),
-        (position_set_x, pos1, 630),
-        (position_set_y, pos1, 580),
+        (position_set_x, pos1, 250),
+        (position_set_y, pos1, 658),
         (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 115),
+        (position_set_y, pos1, 25),
+        (overlay_set_size, reg1, pos1),
         (assign, "$g_presentation_obj_1", reg1),
 
         (try_begin),
             (call_script, "script_cf_can_manage_garrision", "$g_encountered_party"),
             (create_game_button_overlay, reg1, "@Disband"),
-            (position_set_x, pos1, 630),
-            (position_set_y, pos1, 535),
+            (position_set_x, pos1, 250),
+            (position_set_y, pos1, 631),
             (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 115),
+            (position_set_y, pos1, 25),
+            (overlay_set_size, reg1, pos1),
             (assign, "$g_presentation_obj_2", reg1),
         (try_end),
     (try_end),
@@ -36477,11 +36297,11 @@ presentations = [
     (str_clear, s0),
     # # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
     (create_text_overlay, reg1, s0, tf_scrollable_style_2),
-    (position_set_x, pos1, 50),
-    (position_set_y, pos1, 50),
+    (position_set_x, pos1, 70),
+    (position_set_y, pos1, 70),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 900),
-    (position_set_y, pos1, 450),
+    (position_set_y, pos1, 430),
     (overlay_set_area_size, reg1, pos1),
 
 
@@ -36540,11 +36360,8 @@ presentations = [
         (val_add, ":counter", 1),
     (try_end),
     (set_container_overlay, -1),#end scroll
-
-       ]),
-   ## Check for buttonpress
-   (ti_on_presentation_event_state_change,
-    [
+  ]),
+  (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
         (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
@@ -36607,9 +36424,8 @@ presentations = [
         (assign, "$temp2", ":cohort_dummy"),
         (start_presentation, "prsnt_manage_cohorts_town"),
     (try_end),
-    ]),
-
-    (ti_on_presentation_run, [
+  ]),
+  (ti_on_presentation_run, [
     (try_begin),
         (key_clicked, key_space),
         (set_fixed_point_multiplier, 1000),
@@ -36620,84 +36436,74 @@ presentations = [
 
         (display_message, "@X: {reg31} | Y: {reg32}"),
     (try_end),
-    ]),
-
+  ]),
 ]),
 
-("senate", 0, 0,
-  [
-    (ti_on_presentation_load,
-      [
-        (presentation_set_duration, 999999),
-        (set_fixed_point_multiplier, 1000),
+("senate", 0, 0,[
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+    # BOARD
+    (create_mesh_overlay, reg1, "mesh_vc_menu_board"),
+    (position_set_x, pos1, 700),
+    (position_set_y, pos1, 0),
+    (overlay_set_position, reg1, pos1),
+    # LOCATION INFO TEXT
+    #(create_mesh_overlay, reg2, "mesh_mp_score_b"),
+    (create_mesh_overlay, reg2, "mesh_white_plane"),
+    (overlay_set_color, reg2, 0x000000),
+    (overlay_set_alpha, reg2, 0xB0),
 
+    (create_text_overlay, reg1, s60, tf_scrollable|tf_double_space|tf_center_justify),	#tf_with_outline|
+    (position_set_x, pos1, 850),
+    (position_set_y, pos1, 850),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 660 * 50),
+    #(position_set_y, pos1, 250 * 50),
+    (position_set_y, pos1, 137 * 50),
+    (overlay_set_size, reg2, pos1),
+    (position_set_x, pos1, 660),
+    #(position_set_y, pos1, 250),
+    (position_set_y, pos1, 132),
+    (overlay_set_area_size, reg1, pos1),
+    (position_set_x, pos1, 20),
+    #(position_set_y, pos1, 470),
+    (position_set_y, pos1, 600),
+    (overlay_set_position, reg2, pos1),
+    (overlay_set_position, reg1, pos1),
+    (overlay_set_color, reg1, 0xDDDDDD),
 
-        # BOARD
-        (create_mesh_overlay, reg1, "mesh_vc_menu_board"),
-        (position_set_x, pos1, 700),
-        (position_set_y, pos1, 0),
-        (overlay_set_position, reg1, pos1),
+    # VC-1746:
+    (assign, ":button_distance", 40),
+    (assign, ":no_of_mno", 0),
+    (try_for_range, ":menu_slot", 0, 30),
+        (troop_set_slot, "trp_temp_array_a", ":menu_slot", -1),
+        (call_script, "script_cf_menu_condition_senate", ":menu_slot", 0),
+        (val_add, ":no_of_mno", 1),
+        (ge, ":no_of_mno", 15),
+        (val_sub, ":button_distance", 1),
+    (try_end),
 
-
-        # LOCATION INFO TEXT
-        #(create_mesh_overlay, reg2, "mesh_mp_score_b"),
-        (create_mesh_overlay, reg2, "mesh_white_plane"),
-        (overlay_set_color, reg2, 0x000000),
-        (overlay_set_alpha, reg2, 0xB0),
-
-        (create_text_overlay, reg1, s60, tf_scrollable|tf_double_space|tf_center_justify),	#tf_with_outline|
+    # BUTTONS:
+    (assign, ":button_y_position", 600),
+    (try_for_range, ":menu_slot", 0, 30),
+        (call_script, "script_cf_menu_condition_senate", ":menu_slot", 0),
+        (create_button_overlay, reg1, s1, tf_center_justify),
+        (troop_set_slot, "trp_temp_array_a", ":menu_slot", reg1),
         (position_set_x, pos1, 850),
-        (position_set_y, pos1, 850),
-        (overlay_set_size, reg1, pos1),
-        (position_set_x, pos1, 660 * 50),
-        #(position_set_y, pos1, 250 * 50),
-        (position_set_y, pos1, 137 * 50),
-        (overlay_set_size, reg2, pos1),
-        (position_set_x, pos1, 660),
-        #(position_set_y, pos1, 250),
-        (position_set_y, pos1, 132),
-        (overlay_set_area_size, reg1, pos1),
-        (position_set_x, pos1, 20),
-        #(position_set_y, pos1, 470),
-        (position_set_y, pos1, 600),
-        (overlay_set_position, reg2, pos1),
+        (position_set_y, pos1, ":button_y_position"),
+        (val_sub, ":button_y_position", ":button_distance"),
         (overlay_set_position, reg1, pos1),
-        (overlay_set_color, reg1, 0xDDDDDD),
+    (try_end),
+  ]),
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":object"),
 
-
-        # VC-1746:
-        (assign, ":button_distance", 40),
-        (assign, ":no_of_mno", 0),
-        (try_for_range, ":menu_slot", 0, 30),
-            (troop_set_slot, "trp_temp_array_a", ":menu_slot", -1),
-            (call_script, "script_cf_menu_condition_senate", ":menu_slot", 0),
-            (val_add, ":no_of_mno", 1),
-            (ge, ":no_of_mno", 15),
-            (val_sub, ":button_distance", 1),
-        (try_end),
-
-        # BUTTONS:
-        (assign, ":button_y_position", 600),
-        (try_for_range, ":menu_slot", 0, 30),
-            (call_script, "script_cf_menu_condition_senate", ":menu_slot", 0),
-            (create_button_overlay, reg1, s1, tf_center_justify),
-            (troop_set_slot, "trp_temp_array_a", ":menu_slot", reg1),
-            (position_set_x, pos1, 850),
-            (position_set_y, pos1, ":button_y_position"),
-            (val_sub, ":button_y_position", ":button_distance"),
-            (overlay_set_position, reg1, pos1),
-        (try_end),
-    ]),
-
-    (ti_on_presentation_event_state_change,
-      [
-        (store_trigger_param_1, ":object"),
-
-        (try_for_range, ":menu_slot", 0, 30),
-            (troop_slot_eq, "trp_temp_array_a", ":menu_slot", ":object"),
-            (call_script, "script_cf_menu_condition_senate", ":menu_slot", 1),
-        (try_end),
-    ]),
+    (try_for_range, ":menu_slot", 0, 30),
+        (troop_slot_eq, "trp_temp_array_a", ":menu_slot", ":object"),
+        (call_script, "script_cf_menu_condition_senate", ":menu_slot", 1),
+    (try_end),
+  ]),
 ]),
 
 ("imperial_budget_report", 0, 0, [

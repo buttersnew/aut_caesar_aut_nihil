@@ -560,6 +560,8 @@ quests = [
   ("werdheri", "Special Quest: The suffering of Werdheri", 0,
   "{!}placeholder."
   ),
-
+  ("triumph", "Special Quest: Triumph", 0,
+  "{!}placeholder."
+  ),
   ("quests_end", "Quests End", 0, "{!}."),
 ]

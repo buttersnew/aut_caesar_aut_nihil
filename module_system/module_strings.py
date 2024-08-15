@@ -3186,6 +3186,11 @@ strings = [
 ("raid_delphi_cunning", "I heard news about your raid of the Oracle of Delphi. It was certainly brave of you, and I think the Greeks deserve punishment. But I fear that the gods will not let this go unpunished. It could be that Apollo himself will seek vengeance for this blasphemy."),
 ("raid_delphi_debauched", "I heard news about your raid of the Oracle of Delphi. Those Greeks deserve a punishment. But desecrating a holy side is pure madness! Apollon will not let this go unpunished."),
 
+("triumph_other", "Well done, {playername}! Your triumph was a sight to behold. The entire city is talking about your achievements. It's not every day we get to witness such a grand celebration. Enjoy the accolades; they are well-deserved."),
+("triumph_goodnatured", "Your triumph was truly magnificent! It is an honor to see Rome celebrate such a noble and valiant hero. Your courage inspires us all. May the gods continue to bless you with strength and wisdom!"),
+("triumph_cunning", "Congratulations on your triumph, {playername}. Truly impressive. Opportunities often present themselves to those who know how to seize them. Some day, perhaps, we can discuss some... mutually beneficial arrangements."),
+("triumph_debauched", "Ah, {playername}, so the mighty conqueror returns in glory. The entire city is fawning over you, it seems. I must admit, your triumph was quite the spectacle. Enjoy it while it lasts; fame is a fickle mistress."),
+("triumph_leader", "Ah, {s15}, basking in the glory of your triumph, are you? Remember that it is I who allowed this celebration. Do not let the cheers of the crowd inflate your sense of importance. Loyalty to Rome must remain your foremost concern."),
 #Actions vis-a-vis civilians
   ("comment_you_raided_my_village_enemy_benevolent",    "You have attacked innocent farmers under my protection in the village of {s51}. I will punish you for your misdeeds!"),
   ("comment_you_raided_my_village_enemy_spiteful",      "You have raided my village of {s51}, destroying my property and killing the tenants. I will take my compensation in blood!"),
@@ -4348,7 +4353,7 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("system_error", "SYSTEM ERROR!"),
   ("prisoner_granted_parole", "Prisoner granted parole"),
   ("prisoner_not_offered_parole", "Prisoner not offered parole"),
-  ("_age_reg1_family_", "^Age: {reg1}^Family:"),
+  ("_age_reg1", "{s49}Age: {reg1}"),
   ("s49_s12_s11_rel_reg0", "{s49} {s12} ({s11}, rel: {reg0}),"),
   ("s49_s12_s11", "{s49} {s12} ({s11}),"),
   #SB : add wealth, remove later, also add marshal indicator

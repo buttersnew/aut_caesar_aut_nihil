@@ -2172,6 +2172,32 @@ simple_triggers = [
         #     (assign, ":faction", reg0),
         # (try_end),
 
+        (try_begin),
+            (le, "$g_civil_war", 0),#no civil war
+            (faction_slot_eq, ":faction", slot_faction_government_type, gov_imperial),
+            (try_begin),
+                (troop_slot_ge, ":troop_no", slot_troop_triumph_points, triumph_threshold),
+                (store_faction_of_party, ":fac_rome", "p_town_6"),
+                (eq, ":fac_rome", ":faction"),
+                (try_begin),
+                    (neg|check_quest_active, "qst_triumph"),
+                    (eq, ":troop_no", "trp_player"),
+                    (call_script, "script_add_notification_menu", "mnu_triumph_awared_player", 0, 0),
+                (else_try),
+                    (neq, ":troop_no", "trp_player"),
+                    (try_begin),
+                        (faction_slot_eq, ":faction", slot_faction_leader, "trp_player"),
+                        (call_script, "script_add_notification_menu", "mnu_triumph_awared_emperor", ":troop_no", 0),
+                    (else_try),
+                        (call_script, "script_add_notification_menu", "mnu_triumph_awared_ai", ":troop_no", 0),
+                    (try_end),
+                (try_end),
+            (else_try),
+                (troop_slot_ge, ":troop_no", slot_troop_triumph_points, 1),#decrease over time
+                (call_script, "script_troop_change_triumph_points", ":troop_no", -1),
+            (try_end),
+        (try_end),
+
         #Reduce grudges over time
         (try_begin),
             #Skip this for the dead
@@ -7897,6 +7923,7 @@ simple_triggers = [
         (val_sub, "$g_unrest", 1),
         (val_max, "$g_unrest", 0),
         (display_message, "@Stability of the Empire increases, due to your support in the senate.", color_good_news),
+        (call_script, "script_change_player_right_to_rule", 1),
     (try_end),
 ]),
 
@@ -12778,14 +12805,13 @@ simple_triggers = [
                     (eq, ":party_no", "$capturer_party"),
                     (jump_to_menu,"mnu_captivity_end_wilderness_escape"),
                 (try_end),
-                (call_script, "script_update_party_icon", ":party_no"),#update icon
             (try_end),
         (else_try),
             (party_slot_eq, ":party_no", slot_party_on_water, 1),	#PARTY IS SWITCHING FROM WATER TO LAND
             (party_set_slot, ":party_no", slot_party_on_water, 0),
             (party_set_flags, ":party_no", pf_is_ship, 0),#I think this should still be necessary
-            (call_script, "script_update_party_icon", ":party_no"),#update icon
         (try_end),
+        (call_script, "script_update_party_icon", ":party_no"),#update icon
     (try_end),
 ]),
 ]##END OF FILE

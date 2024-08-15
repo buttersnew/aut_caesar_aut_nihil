@@ -1604,6 +1604,9 @@ dplmc_slot_troop_affiliated                   = 164 ##notes: 0 is default, 1 is 
 
 # slot_troop_marriage_time 				      = 165
 slot_troop_triumph_points                = 165
+
+triumph_threshold = 1000
+
 #CONTROVERSY
 #This is used to create a more "rational choice" model of faction politics, in which lords pick fights with other lords for gain, rather than simply because of clashing personalities
 #It is intended to be a limiting factor for players and lords in their ability to intrigue against each other. It represents the embroilment of a lord in internal factional disputes. In contemporary media English, a lord with high "controversy" would be described as "embattled."
@@ -1672,7 +1675,10 @@ slot_troop_govern                 = 177
 slot_troop_legion                 = 178
 slot_troop_aux                    = 179
 
-slot_troop_courtesan              = 180
+# slot_troop_courtesan              = 180
+slot_troop_traits                   = 180
+
+trait_triumphator = 1
 
 slot_troop_tortured_by 					= 181
 
@@ -2120,6 +2126,8 @@ logent_player_helped_buisness   = 99
 logent_battle_of_bedriacum      = 100
 
 logent_raided_delphi            = 101
+
+logent_triumph                  = 102
 
 # logent_executed_prisoners = 97
 # logent_rejected_bodyguards = 98
