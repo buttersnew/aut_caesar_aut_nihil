@@ -21543,7 +21543,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 ("notification_tribute_demanded",0,
     "Due to recent provocations from your subjects, the {s1} demand reparations and tributes of {reg40} denars from you. How do you react?"
-    " Refusing the demand will lead to war!",
+    " Refusing the demand will most likely lead to war!",
     "none",
     [
         (play_sound, "snd_message_negative_sound"),
@@ -21598,7 +21598,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
         ("continue",[],"Refuse.",
         [
-            (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", 0),
+            (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", logent_faction_declares_war_to_respond_to_provocation),
             (jump_to_menu, "mnu_auto_return_map"),
         ]),
     ]
@@ -21645,7 +21645,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (assign, ":explain_string", "str_diplo_casus_expired_reparations_accepted"),
         (else_try),
             (assign, ":explain_string", "str_diplo_casus_expired_reparations_refused_war"),
-            (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", 0),
+            (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", logent_faction_declares_war_to_respond_to_provocation),
         (try_end),
 
         (str_store_string, s4, ":explain_string"),
@@ -21695,7 +21695,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_begin),
         (lt,  ":faction_1_to_2", 0),
         (le, ":rand_normal", 50),
-        (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", 1),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", logent_faction_declares_war_to_respond_to_provocation),
         (jump_to_menu, "mnu_auto_return_map"),
     (else_try),
         (le,  ":faction_1_to_2", 0),
@@ -21728,7 +21728,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (assign, ":explain_string", "str_diplo_casus_expired_reparations_accepted"),
         (else_try),
             (assign, ":explain_string", "str_diplo_casus_expired_reparations_refused_war"),
-            (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", 0),
+            (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", logent_faction_declares_war_to_respond_to_provocation),
         (try_end),
     (else_try),
         (jump_to_menu, "mnu_notification_casus_belli_expired"),
@@ -22654,7 +22654,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (call_script, "script_change_player_relation_with_troop", ":leader", 10),
 
         (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "$g_notification_menu_var2", logent_faction_declares_war_to_fulfil_pact),
-        (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", 1),
+        (call_script, "script_diplomacy_start_war_between_kingdoms", "$g_notification_menu_var1", "$g_notification_menu_var2", logent_faction_declares_war_to_respond_to_provocation),
         (change_screen_return),
        ]),
     ]
@@ -41800,7 +41800,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_palast"),
   ],[
     ("continue",[],"... What the hell ...",[
-      (assign, "$talk_context", 0),
+      (assign, "$talk_context", -1),
       (try_begin),
         (eq, "$temp4_1", 1),
         (assign,":scene", "scn_imperial_palace"),
@@ -45403,7 +45403,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (assign, "$g_invite_faction_lord", 0),
       (assign, "$g_invite_offered_center", 0),
       #(assign, "$g_leave_encounter",1),
-      (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "fac_kingdom_7", 0),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "fac_kingdom_7", logent_faction_declares_war_to_declare_independence),
 
       (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 200),
       (change_screen_map),
