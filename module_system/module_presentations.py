@@ -5668,7 +5668,7 @@ presentations = [
             (try_begin),
                 (eq, ":garrison_troop", 1),
                 (assign, reg0, 1),
-            (else_try),#this are basically players own troops and thus are booked from his bocket, only if player is emperor it goes to the imperial treasury
+            (else_try),#this are basically players own troops and thus are booked from his pocket, only if player is emperor it goes to the imperial treasury
                 (eq, "$g_is_emperor", 1),
                 (eq, ":patrol_troop", 1),
             (else_try),
@@ -5703,7 +5703,7 @@ presentations = [
             (try_begin),
                 (eq, ":garrison_troop", 1),
                 (assign, reg0, 1),
-            (else_try),#this are basically players own troops and thus are booked from his bocket, only if player is emperor it goes to the imperial treasury
+            (else_try),#this are basically players own troops and thus are booked from his pocket, only if player is emperor it goes to the imperial treasury
                 (eq, "$g_is_emperor", 1),
                 (eq, ":patrol_troop", 1),
             (else_try),
@@ -5886,7 +5886,7 @@ presentations = [
     # (try_end),
 ##end tributes
 
-    #emperors bocket
+    #emperors pocket
     (try_begin),
         (eq, "$g_is_emperor", 1),
         (faction_get_slot, ":emperors_pocket", "$players_kingdom", slot_faction_emperors_bocket),
@@ -18673,9 +18673,9 @@ presentations = [
           (try_begin),
             (eq, "$g_campaign_type", g_campaign_story_rome),
             (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@STORY: SON OF ROME"),
-          (else_try),
-            (eq, "$g_campaign_type", g_campaign_story_judea),
-            (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@STORY: LION OF JUDAH"),
+          # (else_try),
+          #   (eq, "$g_campaign_type", g_campaign_story_judea),
+          #   (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@STORY: LION OF JUDAH"),
           (else_try),
             (eq, "$g_campaign_type", g_campaign_king),
             (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@ROYAL SANDBOX"),
@@ -18691,7 +18691,7 @@ presentations = [
           (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@LORDLY SANDBOX"),
           (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@SANDBOX"),
           (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@STORY: SON OF ROME"),
-          (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@STORY: LION OF JUDA"),
+          # (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@STORY: LION OF JUDA"),
           (try_begin),
             (eq, "$g_campaign_type", g_campaign_king),
             (overlay_set_val, "$g_presentation_obj_admin_panel_9", 0),
@@ -18704,9 +18704,9 @@ presentations = [
           (else_try),
             (eq, "$g_campaign_type", g_campaign_story_rome),
             (overlay_set_val, "$g_presentation_obj_admin_panel_9", 3),
-          (else_try),
-            (eq, "$g_campaign_type", g_campaign_story_judea),
-            (overlay_set_val, "$g_presentation_obj_admin_panel_9", 4),
+          # (else_try),
+          #   (eq, "$g_campaign_type", g_campaign_story_judea),
+          #   (overlay_set_val, "$g_presentation_obj_admin_panel_9", 4),
           (try_end),
         (try_end),
     (try_end),
