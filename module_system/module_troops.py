@@ -4059,7 +4059,7 @@ attrib_common_lady,wp(50),knows_common_lady,0x00000000100c004536e9a720567644b200
 #manci face: 0x0000000000007316725d560d10a1b6db00000000001eb49a0000000000000000
 ["kingdom_7_lady_1","Poppaea Sabina","Poppaea Sabina",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7, [itm_female_crown,itm_female_caligea_gold], attrib_common_lady,wp(50),knows_common_lady,0x0000000780007316701b540553e9bb2e00000000001e45d80000000000000000],
 
-["kingdom_7_lady_2","Statilia Messalina","Statilia Messalina",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x00000005bf0452cc495d90461b4346ec00000000001e1c9c0000000000000000],
+["kingdom_7_lady_2","Statilia Messalina","Statilia Messalina",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x000000000d04509939f190c76287955b00000000001c11ea0000000000000000],
 ##die alten (12)
 ["kingdom_7_lady_3","Aemilia Lepida","Aemilia Lepida",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7,[itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x0000000d2700530449f04c7f492a156500000000001c61d20000000000000000],
 ["kingdom_7_lady_4","Sulpicia Drusilla","Sulpicia Drusilla",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_7,[itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x0000000d7300304501c01dffe806726a00000000001c51f00000000000000000],

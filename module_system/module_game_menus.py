@@ -11607,9 +11607,9 @@ game_menus = [
   ),
 
 ("siege_started_defender",mnf_enable_hot_keys,
-  "{s1} is launching an assault against the walls of {s2}. You have {reg10} troops fit for battle against the enemy's {reg11}. You decide to...",
-  "none",
-  [
+  "{s1} is launching an assault against the walls of {s2}."
+  +" You have {reg10} troops fit for battle against the enemy's {reg11}.^^{s31}^^You decide to...",
+  "none",[
     (select_enemy,1),
     (assign, "$g_enemy_party", "$g_encountered_party_2"),
     (assign, "$g_ally_party", "$g_encountered_party"),
@@ -11716,8 +11716,27 @@ game_menus = [
         (try_end),
       (try_end),
     (try_end),
-    # (assign, "$g_siege_first_encounter", 0), #dckplmc - moved this down
-    # (assign, "$new_encounter", 0),
+
+    (party_get_slot, ":town_food_store", "$g_encountered_party", slot_party_food_store),
+    (call_script, "script_center_get_food_consumption", "$g_encountered_party"),
+    (assign, ":food_consumption", reg0),
+    (assign, reg7, ":food_consumption"),
+    (assign, reg8, ":town_food_store"),
+    (store_div, reg3, ":town_food_store", ":food_consumption"),
+
+    (try_begin),
+      (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+      (assign, reg6, 1),
+    (else_try),
+      (assign, reg6, 0),
+    (try_end),
+
+    (try_begin),
+      (gt, reg3, 0),
+      (str_store_string, s31, "@The {reg6?town's:fort's} food stores should last for {reg3} more days."),
+    (else_try),
+      (str_store_string, s31, "@The {reg6?town's:fort's} food stores have run out and the defenders are starving."),
+    (try_end),
   ],[
     ("siege_defender_castle",[
       #SB : some gender string tweaks
@@ -22654,90 +22673,77 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	),
 
 ("notification_border_incident",0,
-    "Border incident^^Word reaches you that {s9}. Though you don't know whether or not the rumors are true, you do know one thing -- this seemingly minor incident has raised passions among the {s4}, making it easier for them to go to war against the {s3}, if they want it...",
-    "none",
-    [
-        (assign, ":acting_village", "$g_notification_menu_var1"),
-        (assign, ":target_village", "$g_notification_menu_var2"),
-        (store_faction_of_party, ":acting_faction", ":acting_village"),
+  "Border incident^^Word reaches you that {s9}. Though you don't know whether or not the rumors are true, you do know one thing -- this seemingly minor incident has raised tensions between the {s4} and {s3}.",
+  "none",[
+    (assign, ":acting_village", "$g_notification_menu_var1"),
+    (assign, ":target_village", "$g_notification_menu_var2"),
+    (store_faction_of_party, ":acting_faction", ":acting_village"),
 
+    (try_begin),
+        (eq, ":target_village", -1),
+        (party_get_slot, ":target_faction", ":acting_village", slot_center_original_faction),
         (try_begin),
-			(eq, ":target_village", -1),
-			(party_get_slot, ":target_faction", ":acting_village", slot_center_original_faction),
-			(try_begin),
-				(this_or_next|eq, ":target_faction", ":acting_faction"),
-                (neg|faction_slot_eq, ":target_faction", slot_faction_state, sfs_active),
-				(party_get_slot, ":target_faction", ":acting_village", slot_center_ex_faction),
-			(try_end),
+            (this_or_next|eq, ":target_faction", ":acting_faction"),
+            (neg|faction_slot_eq, ":target_faction", slot_faction_state, sfs_active),
+            (party_get_slot, ":target_faction", ":acting_village", slot_center_ex_faction),
+        (try_end),
 
 		    (str_store_party_name, s1, ":acting_village"),
 		    (str_store_faction_name, s3, ":acting_faction"),
 		    (str_store_faction_name, s4, ":target_faction"),
-			(faction_get_slot, ":target_leader", ":target_faction", slot_faction_leader),
+			  (faction_get_slot, ":target_leader", ":target_faction", slot_faction_leader),
 		    (str_store_troop_name, s5, ":target_leader"),
 
-			(str_store_string, s9, "str_local_notables_from_s1_a_village_claimed_by_the_s4_have_been_mistreated_by_their_overlords_from_the_s3_and_petition_s5_for_protection"),
-			(display_log_message, "@There has been an alleged border incident: {s9}"),
+        (str_store_string, s9, "str_local_notables_from_s1_a_village_claimed_by_the_s4_have_been_mistreated_by_their_overlords_from_the_s3_and_petition_s5_for_protection"),
+        (display_log_message, "@There has been an alleged border incident: {s9}"),
 
-			(call_script, "script_add_log_entry", logent_border_incident_subjects_mistreated, ":acting_village", -1, -1, ":acting_faction"),
+        (call_script, "script_add_log_entry", logent_border_incident_subjects_mistreated, ":acting_village", -1, -1, ":acting_faction"),
 
-        (else_try),
-			(store_faction_of_party, ":target_faction", ":target_village"),
-
+    (else_try),
+			  (store_faction_of_party, ":target_faction", ":target_village"),
 		    (str_store_party_name, s1, ":acting_village"),
 		    (str_store_party_name, s2, ":target_village"),
-
-			(store_random_in_range, ":random", 0, 3),
-			(try_begin),
-				(eq, ":random", 0),
-
-				(str_store_string, s9, "str_villagers_from_s1_stole_some_cattle_from_s2"),
-				(display_log_message, "@There has been an alleged border incident: {s9}"),
-
-				(call_script, "script_add_log_entry", logent_border_incident_cattle_stolen, ":acting_village", ":target_village", -1,":acting_faction"),
-
-			(else_try),
-				(eq, ":random", 1),
-
-				(str_store_string, s9, "str_villagers_from_s1_abducted_a_woman_from_a_prominent_family_in_s2_to_marry_one_of_their_boys"),
-				(display_log_message, "@There has been an alleged border incident: {s9}"),
-
-				(call_script, "script_add_log_entry", logent_border_incident_bride_abducted, ":acting_village", ":target_village", -1, ":acting_faction"),
-			(else_try),
-				(eq, ":random", 2),
-
-				(str_store_string, s9, "str_villagers_from_s1_killed_some_farmers_from_s2_in_a_fight_over_the_diversion_of_a_stream"),
-				(display_log_message, "@There has been an alleged border incident: {s9}"),
-
-			    (call_script, "script_add_log_entry", logent_border_incident_villagers_killed, ":acting_village", ":target_village", -1,":acting_faction"),
-			(try_end),
-
+        (store_random_in_range, ":random", 0, 3),
+        (try_begin),
+            (eq, ":random", 0),
+            (str_store_string, s9, "str_villagers_from_s1_stole_some_cattle_from_s2"),
+            (display_log_message, "@There has been an alleged border incident: {s9}"),
+            (call_script, "script_add_log_entry", logent_border_incident_cattle_stolen, ":acting_village", ":target_village", -1,":acting_faction"),
+        (else_try),
+            (eq, ":random", 1),
+            (str_store_string, s9, "str_villagers_from_s1_abducted_a_woman_from_a_prominent_family_in_s2_to_marry_one_of_their_boys"),
+            (display_log_message, "@There has been an alleged border incident: {s9}"),
+            (call_script, "script_add_log_entry", logent_border_incident_bride_abducted, ":acting_village", ":target_village", -1, ":acting_faction"),
+        (else_try),
+            (eq, ":random", 2),
+            (str_store_string, s9, "str_villagers_from_s1_killed_some_farmers_from_s2_in_a_fight_over_the_diversion_of_a_stream"),
+            (display_log_message, "@There has been an alleged border incident: {s9}"),
+            (call_script, "script_add_log_entry", logent_border_incident_villagers_killed, ":acting_village", ":target_village", -1,":acting_faction"),
         (try_end),
 
-        (str_store_faction_name, s3, ":acting_faction"),
-        (str_store_faction_name, s4, ":target_faction"),
+    (try_end),
 
-        (store_add, ":slot_provocation_days", ":acting_faction", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, ":target_faction", ":slot_provocation_days", 30),
+    (str_store_faction_name, s3, ":acting_faction"),
+    (str_store_faction_name, s4, ":target_faction"),
 
-        (set_fixed_point_multiplier, 100),
-        (position_set_x, pos0, 65),
-        (position_set_y, pos0, 30),
-        (position_set_z, pos0, 170),
-        (store_sub, ":faction_1", ":acting_faction", kingdoms_begin),
-        (store_sub, ":faction_2", ":target_faction", kingdoms_begin),
-        (val_mul, ":faction_1", 128),
-        (val_add, ":faction_1", ":faction_2"),
-        (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
-      ],
-    [
-      ("continue",[],"Continue",
-       [
-	   (change_screen_return),
-        ]),
-     ]
-  ),
+    (store_add, ":slot_provocation_days", ":acting_faction", slot_faction_provocation_days_with_factions_begin),
+    (val_sub, ":slot_provocation_days", kingdoms_begin),
+    (faction_set_slot, ":target_faction", ":slot_provocation_days", 30),
+
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (store_sub, ":faction_1", ":acting_faction", kingdoms_begin),
+    (store_sub, ":faction_2", ":target_faction", kingdoms_begin),
+    (val_mul, ":faction_1", 128),
+    (val_add, ":faction_1", ":faction_2"),
+    (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
+  ],[
+  ("continue",[],"Continue",[
+	  (change_screen_return),
+  ]),
+]),
 
 ("notification_player_faction_active",0,
   "You now possess land in your name, without being tied to any realm. This makes you a monarch in your own right, with your court temporarily located at {s12}. However, the other kings and rulers in the known world will at first consider you a threat, for if any upstart warlord can grab a throne, then their own legitimacy is called into question.^^Your first priority should be to establish an independent right to rule. You can establish your right to rule through several means -- marrying into a high-born family, recruiting new lords, governing your lands, treating with other kings, or dispatching your companions on missions.^^At any rate, your first step should be to appoint a chief minister from among your companions, to handle affairs of state. Different companions have different capabilities.^You may appoint new ministers from time to time. You may also change the location of your court, by speaking to the minister.",
@@ -25523,8 +25529,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("dplmc_notification_tribute_declared",0,
-  "Tributary established^^After a long and bloody period of wars, {s1} has finally been subjugated by {s2}!^{s3} has been forced to pay a high tribute"
-  +" and his diplomacy is now limited due to his new overlord.^{s57}",
+  "Tributary established^^The {s1} have been subjugated by {s2}!^{s3} diplomacy is now limited by his new overlord.^{s57}",
   "none",[
 	  (str_clear, s57),
     (faction_get_slot, ":leader", "$g_notification_menu_var1", slot_faction_leader),
@@ -25650,251 +25655,283 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         ]),
      ]
   ),
-
-  (
-    "dplmc_question_alliance_offer",0,
-    "You Receive an Alliance Offer^^The {s1} wants to form an alliance with you. What is your answer?",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_alliance_offer_accept",[],"Accept",
-       [
-         (call_script, "script_dplmc_start_alliance_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
-         (change_screen_return),
-        ]),
-      ("dplmc_alliance_offer_reject",[],"Reject",
-       [
-         (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -2),
-         (change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "dplmc_question_defensive_offer",0,
-    "You Receive a Pact Offer^^The {s1} offers you a defensive pact. What is your answer?",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_defensive_offer_accept",[],"Accept",
-       [
-         (call_script, "script_dplmc_start_defensive_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
-         (change_screen_return),
-        ]),
-      ("dplmc_defensive_offer_reject",[],"Reject",
-       [
-         (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -2),
-         (change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "dplmc_question_trade_offer",0,
-    "You Receive a Pact Offer^^The {s1} offers you a trade pact. What is your answer?",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_trade_offer_accept",[],"Accept",
-       [
-         (call_script, "script_dplmc_start_trade_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
-         (change_screen_return),
-        ]),
-      ("dplmc_trade_offer_reject",[],"Reject",
-       [
-         (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -2),
-         (change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "dplmc_question_nonaggression_offer",0,
-    "You Receive a Pact Offer^^The {s1} offers you a non-aggression treaty. What is your answer?",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_nonaggression_offer_accept",[],"Accept",
-       [
-         (call_script, "script_dplmc_start_nonaggression_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
-         (change_screen_return),
-        ]),
-      ("dplmc_nonaggression_offer_reject",[],"Reject",
-       [
-         (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -2),
-         (change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "dplmc_notification_tribute_expired_2_tribute_of_1",0,
-    "A tribute treaty Has Expired^^The {s2} are no longer a tributary vassal of {s1}. The treaty has expired and was degraded to an alliance.",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_continue",[],"Continue",
-       [
-	   (change_screen_return),
-        ]),
-     ]
-  ),
-  (
-    "dplmc_notification_tribute_expired_1_tribute_of_2",0,
-    "A tribute treaty Has Expired^^The {s1} are no longer a tributary vassal of {s2}. The treaty has expired and was degraded to an alliance.",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_continue",[],"Continue",
-       [
-	   (change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "dplmc_notification_alliance_expired",0,
-    "Alliance Has Expired^^The alliance between {s1} and {s2} has expired and was degraded to a defensive pact.",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_continue",[],"Continue",
-       [
-	   (change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "dplmc_notification_defensive_expired",0,
-    "Defensive Pact Has Expired^^The defensive pact between {s1} and {s2} has expired and was degraded to a trade agreement.",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_continue",[],"Continue",
-       [
-	   (change_screen_return),
-        ]),
-     ]
-  ),
-
-  (
-    "dplmc_notification_trade_expired",0,
-    "Trade Agreement Has Expired^^The trade agreement between {s1} and {s2} has expired and was degraded to a non-aggression treaty.",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("dplmc_continue",[],"Continue",
-       [
-	   (change_screen_return),
-        ]),
-     ]
-  ),
-
-  ("dplmc_deny_terms",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "The {s1} refuses your terms.^^{s45}",
-    "none",
-    [(set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),],
-    [
-	  ("dplmc_continue",[],"Continue",
-       [
-       (jump_to_menu, "mnu_question_peace_offer"),
-       ]),
+(
+  "dplmc_question_alliance_offer",0,
+  "You Receive an Alliance Offer^^The {s1} wants to form an alliance with you. What is your answer?",
+  "none",
+  [
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+    ],
+  [
+    ("dplmc_alliance_offer_accept",[],"Accept",
+      [
+        (call_script, "script_dplmc_start_alliance_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
+        (change_screen_return),
+      ]),
+    ("dplmc_alliance_offer_reject",[],"Reject",
+      [
+        (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -2),
+        (change_screen_return),
+      ]),
     ]
-  ),
+),
+(
+  "dplmc_question_defensive_offer",0,
+  "You Receive a Pact Offer^^The {s1} offers you a defensive pact. What is your answer?",
+  "none",
+  [
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+    ],
+  [
+    ("dplmc_defensive_offer_accept",[],"Accept",
+      [
+        (call_script, "script_dplmc_start_defensive_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
+        (change_screen_return),
+      ]),
+    ("dplmc_defensive_offer_reject",[],"Reject",
+      [
+        (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -2),
+        (change_screen_return),
+      ]),
+    ]
+),
+(
+  "dplmc_question_trade_offer",0,
+  "You Receive a Pact Offer^^The {s1} offers you a trade pact. What is your answer?",
+  "none",
+  [
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+    ],
+  [
+    ("dplmc_trade_offer_accept",[],"Accept",
+      [
+        (call_script, "script_dplmc_start_trade_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
+        (change_screen_return),
+      ]),
+    ("dplmc_trade_offer_reject",[],"Reject",
+      [
+        (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -2),
+        (change_screen_return),
+      ]),
+    ]
+),
+("dplmc_question_nonaggression_offer",0,
+  "You Receive a Pact Offer^^The {s1} offers you a non-aggression treaty. What is your answer?",
+  "none",[
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+  ],[
+    ("dplmc_nonaggression_offer_accept",[],"Accept",[
+      (call_script, "script_dplmc_start_nonaggression_between_kingdoms", "fac_player_supporters_faction", "$g_notification_menu_var1", 1),
+      (change_screen_return),
+    ]),
+    ("dplmc_nonaggression_offer_reject",[],"Reject",[
+      (call_script, "script_change_player_relation_with_faction", "$g_notification_menu_var1", -2),
+      (change_screen_return),
+    ]),
+]),
+("dplmc_notification_tribute_expired",0,
+  "Tributary treaty has expired^^{s30}",
+  "none",[
+    (str_store_faction_name, s11, "$g_notification_menu_var1"),
+    (str_store_faction_name, s12, "$g_notification_menu_var2"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+    (faction_get_slot, ":leader_1", "$g_notification_menu_var1", slot_faction_leader),
+    (faction_get_slot, ":leader_2", "$g_notification_menu_var2", slot_faction_leader),
+    (try_begin),
+        (neq, ":leader_1", "trp_player"),
+        (neq, ":leader_2", "trp_player"),
+        (this_or_next|eq, "$g_notification_menu_var2", "fac_kingdom_6"),
+        (this_or_next|eq, "$g_notification_menu_var2", "fac_kingdom_5"),
+        (faction_slot_eq, "$g_notification_menu_var2", slot_faction_government_type, gov_imperial),
+        (call_script, "script_troop_get_relation_with_troop", ":leader_1", ":leader_2"),
+        (assign, ":relation", reg0),
+        (store_random_in_range, ":rand", 0, 750),
+        (val_add, ":relation", 100),
+        (try_for_range, ":possible_mutual_enemy", kingdoms_begin, kingdoms_end),
+            (neq, ":possible_mutual_enemy", "$g_notification_menu_var1"),
+            (neq, ":possible_mutual_enemy", "$g_notification_menu_var2"),
+            (faction_slot_eq, ":possible_mutual_enemy", slot_faction_state, sfs_active),
+            (store_relation, ":fac_relation", ":possible_mutual_enemy", "$g_notification_menu_var2"),
+            (lt, ":fac_relation", 0),
+            (val_add, ":relation", 500),
+        (try_end),
+        (le, ":rand", ":relation"),
+        (str_store_string, s30, "@The tributary treaty between {s11} and {s12} expired. However, a prolongation of the treaty was negotiated."),
+        (faction_set_slot, "$g_notification_menu_var1", slot_faction_tributary_of, "$g_notification_menu_var2"),
 
-  (
-    "dplmc_village_riot_result",mnf_scale_picture,
-    "{s9}",
-    "none",
-    [(try_begin),
+        (store_add, ":truce_slot", "$g_notification_menu_var1", slot_faction_truce_days_with_factions_begin),
+        (val_sub, ":truce_slot", kingdoms_begin),
+        (faction_set_slot, "$g_notification_menu_var2", ":truce_slot", dplmc_treaty_tributary_days_initial),
+
+        (store_add, ":truce_slot", "$g_notification_menu_var2", slot_faction_truce_days_with_factions_begin),
+        (val_sub, ":truce_slot", kingdoms_begin),
+        (faction_set_slot, "$g_notification_menu_var1", ":truce_slot", dplmc_treaty_tributary_days_initial),
+    (else_try),
+        (faction_slot_eq, "$g_notification_menu_var2", slot_faction_leader, "trp_player"),
+        (str_store_troop_name, s13, ":leader_1"),
+        (str_store_string, s30, "@The tributary treaty between {s11} and {s12} expired. Though you may negotiate to prolong the treaty. The success will depend on your relation with {s13}."),
+    (else_try),
+        (str_store_string, s30, "@The {s11} are no longer a tributary vassal of {s12}. The treaty has expired and was degraded to an alliance."),
+    (try_end),
+  ],[
+    ("prolong",[
+      (faction_slot_eq, "$g_notification_menu_var2", slot_faction_leader, "trp_player"),
+    ],"Try to persuade them to prolong the treaty",[
+      (faction_get_slot, ":leader_1", "$g_notification_menu_var1", slot_faction_leader),
+      (call_script, "script_troop_get_player_relation", ":leader_1"),
+      (assign, ":relation", reg0),
+      (try_begin),
+          (store_random_in_range, ":rand", 0, 750),
+          (val_add, ":relation", 100),
+          (try_for_range, ":possible_mutual_enemy", kingdoms_begin, kingdoms_end),
+              (neq, ":possible_mutual_enemy", "$g_notification_menu_var1"),
+              (neq, ":possible_mutual_enemy", "$g_notification_menu_var2"),
+              (faction_slot_eq, ":possible_mutual_enemy", slot_faction_state, sfs_active),
+              (store_relation, ":fac_relation", ":possible_mutual_enemy", "$g_notification_menu_var2"),
+              (lt, ":fac_relation", 0),
+              (val_add, ":relation", 500),
+          (try_end),
+          (le, ":rand", ":relation"),
+          (str_store_troop_name, s13, ":leader_1"),
+          (str_store_string, s1, "@You manage to instill so much fear in {s13} about the negative consequences of ending the treaty that {s13} agrees to extend the tributary agreement."),
+          (faction_set_slot, "$g_notification_menu_var1", slot_faction_tributary_of, "$g_notification_menu_var2"),
+          (store_add, ":truce_slot", "$g_notification_menu_var1", slot_faction_truce_days_with_factions_begin),
+          (val_sub, ":truce_slot", kingdoms_begin),
+          (faction_set_slot, "$g_notification_menu_var2", ":truce_slot", dplmc_treaty_tributary_days_initial),
+          (store_add, ":truce_slot", "$g_notification_menu_var2", slot_faction_truce_days_with_factions_begin),
+          (val_sub, ":truce_slot", kingdoms_begin),
+          (faction_set_slot, "$g_notification_menu_var1", ":truce_slot", dplmc_treaty_tributary_days_initial),
+      (else_try),
+          (str_store_troop_name, s13, ":leader_1"),
+          (str_store_string, s1, "@Although you do your best to warn {s13} about the negative consequences of rejecting your proposal, {s13} still refuses."),
+      (try_end),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+    ("no_prolong",[
+      (faction_slot_eq, "$g_notification_menu_var2", slot_faction_leader, "trp_player"),
+    ],"Do not prolong the treaty",[
+      (change_screen_return),
+    ]),
+    ("dplmc_continue",[
+      (neg|faction_slot_eq, "$g_notification_menu_var2", slot_faction_leader, "trp_player"),
+    ],"Continue",[
+      (change_screen_return),
+    ]),
+]),
+("dplmc_notification_alliance_expired",0,
+  "Alliance Has Expired^^The alliance between {s1} and {s2} has expired and was degraded to a defensive pact.",
+  "none",[
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+  ],[
+    ("dplmc_continue",[],"Continue",[
+      (change_screen_return),
+    ]),
+]),
+(
+  "dplmc_notification_defensive_expired",0,
+  "Defensive Pact Has Expired^^The defensive pact between {s1} and {s2} has expired and was degraded to a trade agreement.",
+  "none",
+  [
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+    ],
+  [
+    ("dplmc_continue",[],"Continue",
+      [
+    (change_screen_return),
+      ]),
+    ]
+),
+
+(
+  "dplmc_notification_trade_expired",0,
+  "Trade Agreement Has Expired^^The trade agreement between {s1} and {s2} has expired and was degraded to a non-aggression treaty.",
+  "none",
+  [
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+    ],
+  [
+    ("dplmc_continue",[],"Continue",
+      [
+    (change_screen_return),
+      ]),
+    ]
+),
+
+("dplmc_deny_terms",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "The {s1} refuses your terms.^^{s45}",
+  "none",
+  [(set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),],
+  [
+  ("dplmc_continue",[],"Continue",
+      [
+      (jump_to_menu, "mnu_question_peace_offer"),
+      ]),
+  ]
+),
+
+("dplmc_village_riot_result",mnf_scale_picture,
+  "{s9}",
+  "none",[
+    (try_begin),
        (eq, "$g_battle_result", 1),
        (jump_to_menu, "mnu_dplmc_village_riot_removed"),
      (else_try),
        (set_background_mesh, "mesh_pic_villageriot"),
        (str_store_string, s9, "@Try as you might, you could not defeat the rebelling village."),
      (try_end),
-    ],
-    [
-      ("dplmc_continue",[],"Continue...",
-       [(call_script, "script_change_player_relation_with_center", "$g_encountered_party", -3),
+  ],[
+      ("dplmc_continue",[],"Continue...",[
+        (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -3),
         (call_script, "script_change_troop_renown", "trp_player", -5), #SB : renown loss highest here
-        (jump_to_menu, "mnu_village"),]),
-    ],
-  ),
+        (jump_to_menu, "mnu_village"),
+      ]),
+]),
 
 ("dplmc_village_riot_removed",mnf_disable_all_keys,
   "In bloody battle you and your men slaughter the rebels and regain control over the village. You relation with the village improves as the main troublemakers are now dead.",
@@ -32195,7 +32232,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (troop_slot_ge, "trp_player", slot_troop_triumph_points, triumph_threshold),
           (call_script, "script_troop_holds_triumph", "trp_player"),
       (else_try),
-          (call_script, "script_triumph_marsh_start", "mnu_town","$temp", 1),
+          (call_script, "script_triumph_marsh_start", "mnu_town", 1, 1),
           (call_script, "script_change_senate_support", -15, 0),
           (call_script, "script_change_player_relation_with_center", "p_town_6", -25),
       (try_end),
@@ -48701,72 +48738,84 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #       (party_set_flags, ":party_no", pf_always_visible, 1),
       #   (try_end),
       # ]),
-      ("options",[
-      ],"war Rome Parthia",[
-        (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_7", "fac_kingdom_6", logent_faction_declares_war_to_respond_to_provocation),#to make britannia more active
-        (change_screen_map),
-      ]),
-      ("options",[
-      ],"Rome provokes osrohne",[
-        (store_add, ":slot_provocation_days", "$players_kingdom", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, "fac_kingdom_23", ":slot_provocation_days", 1),
+      # ("options",[
+      # ],"war Rome Parthia",[
+      #   (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_7", "fac_kingdom_6", logent_faction_declares_war_to_respond_to_provocation),#to make britannia more active
+      #   (change_screen_map),
+      # ]),
+      # ("options",[
+      # ],"Rome provokes osrohne",[
+      #   (store_add, ":slot_provocation_days", "$players_kingdom", slot_faction_provocation_days_with_factions_begin),
+      #   (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   (faction_set_slot, "fac_kingdom_23", ":slot_provocation_days", 1),
 
-        (store_add, ":slot_provocation_days", "fac_kingdom_7", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, "fac_kingdom_23", ":slot_provocation_days", 1),
+      #   (store_add, ":slot_provocation_days", "fac_kingdom_7", slot_faction_provocation_days_with_factions_begin),
+      #   (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   (faction_set_slot, "fac_kingdom_23", ":slot_provocation_days", 1),
 
-        (change_screen_map),
-      ]),
+      #   (change_screen_map),
+      # ]),
 
-      ("options",[
-      ],"Parthia provokes Armenia",[
+      # ("options",[
+      # ],"Parthia provokes Armenia",[
 
-        (store_add, ":slot_provocation_days", "fac_kingdom_6", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, "fac_kingdom_5", ":slot_provocation_days", 1),
+      #   (store_add, ":slot_provocation_days", "fac_kingdom_6", slot_faction_provocation_days_with_factions_begin),
+      #   (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   (faction_set_slot, "fac_kingdom_5", ":slot_provocation_days", 1),
 
-        (change_screen_map),
-      ]),
+      #   (change_screen_map),
+      # ]),
 
-      ("options",[
-      ],"Osrohne provokes Rome",[
-        (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, "$players_kingdom", ":slot_provocation_days", 1),
+      # ("options",[
+      # ],"Osrohne provokes Rome",[
+      #   (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
+      #   (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   (faction_set_slot, "$players_kingdom", ":slot_provocation_days", 1),
 
-        (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, "fac_kingdom_7", ":slot_provocation_days", 1),
+      #   (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
+      #   (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   (faction_set_slot, "fac_kingdom_7", ":slot_provocation_days", 1),
 
-        (change_screen_map),
-      ]),
+      #   (change_screen_map),
+      # ]),
 
-      ("options",[
-      ],"player provokes Rome",[
-        # (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
-        # (val_sub, ":slot_provocation_days", kingdoms_begin),
-        # (faction_set_slot, "$players_kingdom", ":slot_provocation_days", 1),
+      # ("options",[
+      # ],"player provokes Rome",[
+      #   # (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
+      #   # (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   # (faction_set_slot, "$players_kingdom", ":slot_provocation_days", 1),
 
-        (store_add, ":slot_provocation_days", "$players_kingdom", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, "fac_kingdom_7", ":slot_provocation_days", 1),
+      #   (store_add, ":slot_provocation_days", "$players_kingdom", slot_faction_provocation_days_with_factions_begin),
+      #   (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   (faction_set_slot, "fac_kingdom_7", ":slot_provocation_days", 1),
 
-        (change_screen_map),
-      ]),
+      #   (change_screen_map),
+      # ]),
 
-      ("options",[
-      ],"Rome provokes player",[
-        # (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
-        # (val_sub, ":slot_provocation_days", kingdoms_begin),
-        # (faction_set_slot, "$players_kingdom", ":slot_provocation_days", 1),
+      # ("options",[
+      # ],"Rome provokes player",[
+      #   # (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
+      #   # (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   # (faction_set_slot, "$players_kingdom", ":slot_provocation_days", 1),
 
-        (store_add, ":slot_provocation_days", "fac_kingdom_7", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, "$players_kingdom", ":slot_provocation_days", 1),
+      #   (store_add, ":slot_provocation_days", "fac_kingdom_7", slot_faction_provocation_days_with_factions_begin),
+      #   (val_sub, ":slot_provocation_days", kingdoms_begin),
+      #   (faction_set_slot, "$players_kingdom", ":slot_provocation_days", 1),
 
-        (change_screen_map),
-      ]),
+      #   (change_screen_map),
+      # ]),
+
+      # ("options",[
+      # ],"Transform",[
+      #   (store_add, ":truce_slot", "fac_kingdom_23", slot_faction_truce_days_with_factions_begin),
+      #   (val_sub, ":truce_slot", kingdoms_begin),
+      #   (faction_set_slot, "$players_kingdom", ":truce_slot", 86),
+
+
+      #   (store_add, ":truce_slot", "$players_kingdom", slot_faction_truce_days_with_factions_begin),
+      #   (val_sub, ":truce_slot", kingdoms_begin),
+      #   (faction_set_slot, "fac_kingdom_23", ":truce_slot", 86),
+      # ]),
 
       ("options",[(ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Scene testing (talk with fortuna)",
         [
@@ -55214,12 +55263,27 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
     ("op2",[
-      (store_troop_gold, ":g", "trp_player"),
-      (ge, ":g", 15000),
+      (assign, ":c", 0),
+      (try_begin),
+          (store_troop_gold, ":g", "trp_player"),
+          (ge, ":g", 25000),
+          (assign, ":c", 1),
+      (else_try),
+          (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
+          (neg|faction_slot_ge, "$players_kingdom", slot_faction_debts, 500000),
+          (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
     ],
     "Play similar tricks to punish the town while technically following the law. (cost: 15,000 denars)",[
       (add_xp_as_reward, 100),
-      (call_script, "script_troop_add_gold", "trp_player", -15000),
+      (try_begin),
+          (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
+          (neg|faction_slot_ge, "$players_kingdom", slot_faction_debts, 500000),
+          (call_script, "script_add_to_faction_bugdet", slot_faction_spending_admin, "$players_kingdom", 15000),
+      (else_try),
+          (call_script, "script_troop_add_gold", "trp_player", -15000),
+      (try_end),
       (call_script, "script_change_player_relation_with_troop", "$g_notification_menu_var2", 15),
       (str_store_string, s1, "str_collective_punishment_opt2"),
       (jump_to_menu, "mnu_event_juicio_end"),
@@ -55245,12 +55309,27 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_party_name, s13, "$g_notification_menu_var1"),
   ],[
     ("op1",[
-      (store_troop_gold, ":g", "trp_player"),
-      (ge, ":g", 25000),
+      (assign, ":c", 0),
+      (try_begin),
+          (store_troop_gold, ":g", "trp_player"),
+          (ge, ":g", 25000),
+          (assign, ":c", 1),
+      (else_try),
+          (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
+          (neg|faction_slot_ge, "$players_kingdom", slot_faction_debts, 500000),
+          (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
     ],
       "Establish an imperial inquisition to destroy the cult in {s13}. (cost: 25,000 denars)",[
       (add_xp_as_reward, 100),
-      (troop_remove_gold, "trp_player", 25000),
+      (try_begin),
+          (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
+          (neg|faction_slot_ge, "$players_kingdom", slot_faction_debts, 500000),
+          (call_script, "script_add_to_faction_bugdet", slot_faction_spending_admin, "$players_kingdom", 25000),
+      (else_try),
+          (call_script, "script_troop_add_gold", "trp_player", -25000),
+      (try_end),
       (call_script, "script_change_troop_renown", "trp_player", 5),
       (call_script, "script_change_player_relation_with_troop", "$g_notification_menu_var2", 8),
       (call_script, "script_change_player_relation_with_center", "$g_notification_menu_var1", 8),
@@ -55321,8 +55400,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("girl_fire_talk",0,
-    "Lamentations of a girl^^While riding towards the Forum Romanum you spot a beautiful girl, dressed in rags,\
- who cries terribly. You don't know why, but this poor creatures excites your pity.",
+    "Lamentations of a girl^^As you ride toward the Forum Romanum, your gaze falls upon a beautiful girl, clothed in tattered rags, weeping bitterly. Though you cannot fathom the reason for her sorrow, something in this fragile creature stirs a deep well of pity within you.",
     "none",
     [(set_background_mesh, "mesh_pic_roma"),],
     [
@@ -55804,10 +55882,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
  ]),
 
 ("financial_event",0,
-    "Through careful monitoring of rumors and other sources, you find yourself in possession of valuable information regarding the financial interests of "+
- "{s24} who is known to be {s63} towards you. How will you use it?",
- "none",
-  [
+  "Through careful monitoring of rumors and other sources, you find yourself in possession of valuable information regarding the financial interests of "+
+  "{s24} who is known to be {s63} towards you. How will you use it?",
+  "none",[
     (try_begin),
         (troop_slot_eq, "trp_global_variables",g_province_event,0),
         #check is player is governor
@@ -55946,9 +56023,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("provincial_event",0,
-    "{s24}, governor of {s23}, who is said to be {s63} towards you is requesting your assistance in the following matter.^^{s25}",
- "none",
-    [
+  "{s24}, governor of {s23}, who is said to be {s63} towards you is requesting your assistance in the following matter.^^{s25}",
+  "none",[
     (str_store_party_name, s23, "$temp4_1"),
     (str_store_troop_name, s24, "$g_notification_menu_var1"),
     (troop_get_slot, ":string", "trp_global_variables",g_province_event),
@@ -55958,26 +56034,40 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     (call_script, "script_troop_get_player_relation", "$g_notification_menu_var1"),
     (call_script, "script_describe_relation_to_s63", reg0),
-    ],
-    [
-      ("op1",[],
-       "Assist {s24}. [costs: 10,000 denars]",
-       [
-    (add_xp_as_reward, 150),
-    (troop_remove_gold, "trp_player", 10000),
-    (call_script, "script_change_player_relation_with_center","$temp4_1",1),
-    (call_script, "script_change_player_relation_with_troop", "$g_notification_menu_var1", 3),
-    (call_script, "script_add_to_troop_wealth", "$g_notification_menu_var1", 5000),
-    (str_store_string, s1, "@{s24} appreciates your help. A well-worded letter arrives to thank for your contribution and assure that it will not be forgotten."),
-    (jump_to_menu, "mnu_event_juicio_end"),  ]),
-      ("op2",[],
-       "Decline the request",
-       [
-  (call_script, "script_change_player_relation_with_troop", "$g_notification_menu_var1", -2),
-  (str_store_string, s1, "@{s24} is not happy with your response and will remember your refusal to help in time of need."),
-  (jump_to_menu, "mnu_event_juicio_end"),]),
-
- ]),
+  ],[
+    ("op1",[
+      (assign, ":c", 0),
+      (try_begin),
+          (store_troop_gold, ":g", "trp_player"),
+          (ge, ":g", 25000),
+          (assign, ":c", 1),
+      (else_try),
+          (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
+          (neg|faction_slot_ge, "$players_kingdom", slot_faction_debts, 500000),
+          (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
+    ],"Assist {s24}. [costs: 10,000 denars]",[
+      (add_xp_as_reward, 150),
+      (try_begin),
+          (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
+          (neg|faction_slot_ge, "$players_kingdom", slot_faction_debts, 500000),
+          (call_script, "script_add_to_faction_bugdet", slot_faction_spending_admin, "$players_kingdom", 10000),
+      (else_try),
+          (call_script, "script_troop_add_gold", "trp_player", -10000),
+      (try_end),
+      (call_script, "script_change_player_relation_with_center","$temp4_1",1),
+      (call_script, "script_change_player_relation_with_troop", "$g_notification_menu_var1", 3),
+      (call_script, "script_add_to_troop_wealth", "$g_notification_menu_var1", 5000),
+      (str_store_string, s1, "@{s24} appreciates your help. A well-worded letter arrives to thank for your contribution and assure that it will not be forgotten."),
+      (jump_to_menu, "mnu_event_juicio_end"),
+    ]),
+    ("op2",[],"Decline the request",[
+      (call_script, "script_change_player_relation_with_troop", "$g_notification_menu_var1", -2),
+      (str_store_string, s1, "@{s24} is not happy with your response and will remember your refusal to help in time of need."),
+      (jump_to_menu, "mnu_event_juicio_end"),
+    ]),
+]),
 
  ("recruit_refugees",0,
     "Because you are not renowned enough the local leader doesn't allow you to hire skilled men.^^(You need more than 100 renown for access to such troops.)^^^^Nevertheless, you can ask around if some shepherds or poor farmers volunteer to join your party.",
