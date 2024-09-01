@@ -15249,6 +15249,10 @@ game_menus = [
                 (assign, ":event_juice", "mnu_event_29_juicio"),
                 (val_add, "$event_oneuse", 1),
             (else_try),
+                (eq, "$event_oneuse", 30),
+                (assign, ":event_juice", "mnu_event_30_juicio"),
+                (val_add, "$event_oneuse", 1),
+            (else_try),
                 #(ge, "$event_oneuse", 21),
                 (store_random_in_range, ":event_juice", "mnu_event_01_juicio", "mnu_event_juicio_end"),
 				    (try_end),
@@ -25203,299 +25207,241 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]
   ),
 
-  ("notification_relieved_as_marshal", mnf_disable_all_keys,
-    "{s4} wishes to inform you that your services as marshal are no longer required. In honor of valiant efforts on behalf of the realm over the last {reg4} days, however, {reg8?she:he} offers you a purse of {reg5} denars.",
-    "none",
-    [
-	(assign, reg4, "$g_player_days_as_marshal"),
+("notification_relieved_as_marshal", mnf_disable_all_keys,
+  "{s4} wishes to inform you that your services as marshal are no longer required. In honor of valiant efforts on behalf of the realm over the last {reg4} days, however, {reg8?she:he} offers you a purse of {reg5} denars.",
+  "none",[
+    (assign, reg4, "$g_player_days_as_marshal"),
 
-	(store_div, ":renown_gain", "$g_player_days_as_marshal",4),
-	(val_min, ":renown_gain", 20),
-	(store_mul, ":denar_gain", "$g_player_days_as_marshal", 50),
-	(val_max, ":denar_gain", 200),
-	(val_min, ":denar_gain", 4000),
-	(troop_add_gold, "trp_player", ":denar_gain"),
-	(call_script, "script_change_troop_renown", "trp_player", ":renown_gain"),
-	(assign, "$g_player_days_as_marshal", 0),
-	(assign, "$g_dont_give_marshalship_to_player_days", 15),
-	(assign, reg5, ":denar_gain"),
+    (store_div, ":renown_gain", "$g_player_days_as_marshal",4),
+    (val_min, ":renown_gain", 20),
+    (store_mul, ":denar_gain", "$g_player_days_as_marshal", 50),
+    (val_max, ":denar_gain", 200),
+    (val_min, ":denar_gain", 4000),
+    (troop_add_gold, "trp_player", ":denar_gain"),
+    (call_script, "script_change_troop_renown", "trp_player", ":renown_gain"),
+    (assign, "$g_player_days_as_marshal", 0),
+    (assign, "$g_dont_give_marshalship_to_player_days", 15),
+    (assign, reg5, ":denar_gain"),
 
-	(faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
-	(str_store_troop_name, s4, ":faction_leader"),
-	##diplomacy start+ get gender with script
-	#(troop_get_type, reg8, ":faction_leader"),#<- OLD
-	(assign, ":save_reg0", reg0),
-	(call_script, "script_dplmc_store_troop_is_female", ":faction_leader"),
-	(assign, reg8, reg0),
-	(assign, reg0, ":save_reg0"),
-	##diplomacy end+
-	],
+    (store_div, ":gravitas", ":denar_gain", 100),
+    (call_script, "script_troop_change_triumph_points", "trp_player", ":gravitas"),
 
-	 [
-      ("continue",[],"Continue",
-       [
-         (change_screen_return),
-       ]),
-    ]
-  ),
+    (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+    (str_store_troop_name, s4, ":faction_leader"),
+    ##diplomacy start+ get gender with script
+    #(troop_get_type, reg8, ":faction_leader"),#<- OLD
+    (assign, ":save_reg0", reg0),
+    (call_script, "script_dplmc_store_troop_is_female", ":faction_leader"),
+    (assign, reg8, reg0),
+    (assign, reg0, ":save_reg0"),
+    ##diplomacy end+
+	],[
+    ("continue",[],"Continue",[
+      (change_screen_return),
+    ]),
+]),
 
-  ##diplomacy begin
 ########################################################
 # Autoloot Game Menus Begin
 ########################################################
 
-	##########################################################
-	# Inventory allocation / Loot allocation Game Menu  -  by Fisheye
-	# Parameters:
-	# $return_menu : return to this menu after managing loot.  0 if this menu is called via random encounter
-	##diplomacy start+
-	#Added "return_menu", renaming it to "$dplmc_return_menu"
-	##diplomacy end+
-	("dplmc_manage_loot_pool", mnf_enable_hot_keys,
-		"{s10}",
-		"none",
-		[
+##########################################################
+# Inventory allocation / Loot allocation Game Menu  -  by Fisheye
+# Parameters:
+# $return_menu : return to this menu after managing loot.  0 if this menu is called via random encounter
+# diplomacy start+
+# Added "return_menu", renaming it to "$dplmc_return_menu"
+# diplomacy end+
+("dplmc_manage_loot_pool", mnf_enable_hot_keys,
+  "{s10}",
+  "none",[
+    ##diplomacy start+
+    #Use a different troop!
+    #(assign, "$pool_troop", "trp_dplmc_chamberlain"),
+    (assign, "$pool_troop", "trp_temp_troop"),
+    #Make sure things are initialized
+    (call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
+    ##diplomacy end+
+    (assign, reg20,0),
+    (troop_get_inventory_capacity, ":inv_cap", "$pool_troop"),
+    (try_for_range, ":i_slot", 0, ":inv_cap"),
+      (troop_get_inventory_slot, ":item_id", "$pool_troop", ":i_slot"),
+      (ge, ":item_id", 0),
+      (neg|troop_has_item_equipped, "$pool_troop", ":item_id"),
+      (val_add, reg20, 1),
+    (try_end),
+    # reg20 now contains number of items in loot pool
+    (try_begin),
+      (eq, reg20, 0),
+      (str_store_string, s10, "str_dplmc_item_pool_no_items"),
+      (str_store_string, s20, "str_dplmc_item_pool_leave"),
+    (else_try),
+      (eq, reg20, 1),
+      (str_store_string, s10, "str_dplmc_item_pool_one_item"),
+      (str_store_string, s20, "str_dplmc_item_pool_abandon"),
+    (else_try),
+      (str_store_string, s10, "str_dplmc_item_pool_many_items"),
+      (str_store_string, s20, "str_dplmc_item_pool_abandon"),
+    (try_end),
+    ## CC
+    (try_begin), #only show when we don't have equipment logs
+            (str_is_empty, dplmc_loot_string),
+      (set_fixed_point_multiplier, 100),
+            (position_set_x, pos0, 20),
+            (position_set_y, pos0, 30),
+            (position_set_z, pos0, 80),
+      (set_game_menu_tableau_mesh, "tableau_game_character_sheet", "$lord_selected", pos0),
+    (try_end),
+    ## CC
+    #SB : str30 shows items looted after script_dplmc_auto_loot_troop was called
+    # (try_begin),
+      # (neg|str_is_empty, dplmc_loot_string),
+      # (str_store_string, s10, "@{s10}^^{s30}"),
+    # (try_end),
+  ],[
+	  ("dplmc_auto_loot",[
+      (eq, "$inventory_menu_offset",0),
+      (store_free_inventory_capacity, ":space", "$pool_troop"),
+      (ge, ":space", 10),
+      (gt, reg20, 0),
+    ],"Let your heroes select gear from the items on the ground.",[
+      # (set_player_troop, "trp_player"),
+      # (assign, "$lord_selected", "trp_player"),
+      ##diplomacy start+
+      (call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
+      ##diplomacy end+
+      (jump_to_menu, "mnu_dplmc_auto_loot")
+    ]),
+		("dplmc_auto_loot_no",[
+      (eq, "$inventory_menu_offset",0),
+      (store_free_inventory_capacity, ":space", "$pool_troop"),
+      (lt, ":space", 10),
+      (disable_menu_option)
+    ],"Insufficient item pool space for auto-upgrade.",[]),
+		("dplmc_loot",[],"Access the items on the ground.",[
+      (change_screen_loot, "$pool_troop"),
+    ]),
+    ("dplmc_loot_player",[
+      (is_between, "$lord_selected", companions_begin, companions_end),
+    ],"Access the captain's inventory.",[
+      (set_player_troop, "trp_player"),
+      (change_screen_equip_other, "$lord_selected"),
+      (assign, "$lord_selected", "trp_player"),
+    ]),
+    ("dplmc_auto_loot_upgrade_management", [],"Update management of NPCs' equipment.",[
+      (party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
+      ##nested diplomcy start+ Add error check.
 
-			##diplomacy start+
-			#Use a different troop!
-			#(assign, "$pool_troop", "trp_dplmc_chamberlain"),
-			(assign, "$pool_troop", "trp_temp_troop"),
-			#Make sure things are initialized
-			(call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
-			##diplomacy end+
-			(assign, reg20,0),
-			(troop_get_inventory_capacity, ":inv_cap", "$pool_troop"),
-			(try_for_range, ":i_slot", 0, ":inv_cap"),
-				(troop_get_inventory_slot, ":item_id", "$pool_troop", ":i_slot"),
-				(ge, ":item_id", 0),
-				(neg|troop_has_item_equipped, "$pool_troop", ":item_id"),
-				(val_add, reg20, 1),
-			(try_end),
-			# reg20 now contains number of items in loot pool
-			(try_begin),
-				(eq, reg20, 0),
-				(str_store_string, s10, "str_dplmc_item_pool_no_items"),
-				(str_store_string, s20, "str_dplmc_item_pool_leave"),
-			(else_try),
-				(eq, reg20, 1),
-				(str_store_string, s10, "str_dplmc_item_pool_one_item"),
-				(str_store_string, s20, "str_dplmc_item_pool_abandon"),
-			(else_try),
-				(str_store_string, s10, "str_dplmc_item_pool_many_items"),
-				(str_store_string, s20, "str_dplmc_item_pool_abandon"),
-			(try_end),
-		  ## CC
-			(try_begin), #only show when we don't have equipment logs
-              (str_is_empty, dplmc_loot_string),
-			  (set_fixed_point_multiplier, 100),
-              (position_set_x, pos0, 20),
-              (position_set_y, pos0, 30),
-              (position_set_z, pos0, 80),
-			  (set_game_menu_tableau_mesh, "tableau_game_character_sheet", "$lord_selected", pos0),
-			(try_end),
-		  ## CC
+      ##nested diplomacy end+
+      (try_begin),
+        (is_between, "$lord_selected", companions_begin, companions_end),
+        (assign, "$temp", "$lord_selected"),
+      (else_try),
+        (assign, "$temp", -1),
+        (try_for_range, ":stack_no", 0, ":num_stacks"),
+          (party_stack_get_troop_id,   ":stack_troop", "p_main_party", ":stack_no"),
+          (is_between, ":stack_troop", companions_begin, companions_end),
+          (assign, "$temp", ":stack_troop"),
+          (assign, ":num_stacks", 0),
+        (try_end),
+      (try_end),
+      ##nested diplomacy start+   Add error check.
+      (call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
+      (try_begin),#<- dplmc+ added
+        (ge, "$temp", 1),#<- dplmc+ added
+        (assign, "$temp_2", -1), #SB : other globals
+        (try_for_range, ":item_slot", ek_item_0, ek_food),
+          (troop_set_slot, "trp_stack_selection_ids", ":item_slot", 0),
+        (try_end),
+        (str_clear, dplmc_loot_string),
+        (start_presentation, "prsnt_dplmc_autoloot_upgrade_management"),
+      (try_end),
+      ##nested diplomacy end+
+    ]),
+    ("dplmc_auto_loot_reset_player",[
+      (neq, "$lord_selected", "trp_player")
+    ],"Reset current troop to the player",[
+      (assign, "$lord_selected", "trp_player"),
+      (set_player_troop, "$lord_selected"),
+    ]),
+		("dplmc_leave",[],"{s20}",[
+      ##diplomacy start+
+      #Actually abandon the lost loot
+      (troop_get_inventory_capacity, ":inv_cap", "$pool_troop"),
+      (try_for_range, ":i_slot", 10, ":inv_cap"),
+        (troop_get_inventory_slot, ":item_id", "$pool_troop", ":i_slot"),
+        (ge, ":item_id", 0),
+        (neg|troop_has_item_equipped, "$pool_troop", ":item_id"),
+        (troop_set_inventory_slot, "$pool_troop", ":i_slot", -1), #delete it
+        (troop_inventory_slot_set_item_amount, "$pool_troop", ":i_slot", 0),
+      (try_end),
 
-          #SB : str30 shows items looted after script_dplmc_auto_loot_troop was called
-          # (try_begin),
-            # (neg|str_is_empty, dplmc_loot_string),
-            # (str_store_string, s10, "@{s10}^^{s30}"),
-          # (try_end),
-		],
-		[
-			("dplmc_auto_loot",
-				[
-					(eq, "$inventory_menu_offset",0),
-					(store_free_inventory_capacity, ":space", "$pool_troop"),
-					(ge, ":space", 10),
-					(gt, reg20, 0),
-				],
-				##diplomacy start+
-				#"Let your heroes select gear from the item pool.",
-				"Let your heroes select gear from the items on the ground.",
-				##diplomacy end+
-				[
-					# (set_player_troop, "trp_player"),
-					# (assign, "$lord_selected", "trp_player"),
-					##diplomacy start+
-					(call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
-					##diplomacy end+
-					(jump_to_menu, "mnu_dplmc_auto_loot")
-				]
-			),
-			("dplmc_auto_loot_no",
-				[
-					(eq, "$inventory_menu_offset",0),
-					(store_free_inventory_capacity, ":space", "$pool_troop"),
-					(lt, ":space", 10),
-					(disable_menu_option)
-				],
-				"Insufficient item pool space for auto-upgrade.",
-				[]
-			),
-			("dplmc_loot",
-				[],
-				##diplomacy start+
-				#"Access the item pool.",
-				"Access the items on the ground.",
-				##diplomacy end+
-				[
-					(change_screen_loot, "$pool_troop"),
-				]
-			),
-
-            #SB : improve usability, if only change_screen_loot worked with the player
-			("dplmc_loot_player",
-				[(is_between, "$lord_selected", companions_begin, companions_end),],
-				"Access the captain's inventory.",
-                #can't use honorific, since the player troop is the companion and strings will be malformed
-				[
-					(set_player_troop, "trp_player"),
-					(change_screen_equip_other, "$lord_selected"),
-					(assign, "$lord_selected", "trp_player"),
-				]
-			),
-      ("dplmc_auto_loot_upgrade_management", [],
-##diplomacy start+
-#        "Upgrade management of the NPC's equipments.",
-         "Update management of NPCs' equipment.",
-##diplomacy end+
-        [
-          (party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
-          ##nested diplomcy start+ Add error check.
-
-          ##nested diplomacy end+
-          (try_begin),
-            (is_between, "$lord_selected", companions_begin, companions_end),
-            (assign, "$temp", "$lord_selected"),
-          (else_try),
-            (assign, "$temp", -1),
-            (try_for_range, ":stack_no", 0, ":num_stacks"),
-              (party_stack_get_troop_id,   ":stack_troop", "p_main_party", ":stack_no"),
-              (is_between, ":stack_troop", companions_begin, companions_end),
-              (assign, "$temp", ":stack_troop"),
-              (assign, ":num_stacks", 0),
-            (try_end),
-          (try_end),
-          ##nested diplomacy start+   Add error check.
-          (call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
-          (try_begin),#<- dplmc+ added
-            (ge, "$temp", 1),#<- dplmc+ added
-            (assign, "$temp_2", -1), #SB : other globals
-            (try_for_range, ":item_slot", ek_item_0, ek_food),
-              (troop_set_slot, "trp_stack_selection_ids", ":item_slot", 0),
-            (try_end),
-            (str_clear, dplmc_loot_string),
-            (start_presentation, "prsnt_dplmc_autoloot_upgrade_management"),
-          (try_end),
-          ##nested diplomacy end+
-        ]
-      ),
-
-      #all other options will reset player eventually, this is for convenience
-      ("dplmc_auto_loot_reset_player", [(neq, "$lord_selected", "trp_player")],
-         "Reset current troop to the player",
-        [
-          (assign, "$lord_selected", "trp_player"),
-          (set_player_troop, "$lord_selected"),
-        ]
-      ),
-			("dplmc_leave",
-				[],
-				"{s20}",
-				[
-				##diplomacy start+
-				#Actually abandon the lost loot
-				(troop_get_inventory_capacity, ":inv_cap", "$pool_troop"),
-				(try_for_range, ":i_slot", 10, ":inv_cap"),
-					(troop_get_inventory_slot, ":item_id", "$pool_troop", ":i_slot"),
-					(ge, ":item_id", 0),
-					(neg|troop_has_item_equipped, "$pool_troop", ":item_id"),
-					(troop_set_inventory_slot, "$pool_troop", ":i_slot", -1), #delete it
-					(troop_inventory_slot_set_item_amount, "$pool_troop", ":i_slot", 0),
-				(try_end),
-
-				#(jump_to_menu, "mnu_camp"),
-				(set_player_troop, "trp_player"),
-				(jump_to_menu, "$dplmc_return_menu"),
-				(assign, "$pool_troop", -1), #mark ending
-				##diplomacy end+
-				]
-			),
-			##nested diplomacy start+
-			#Leave & take everything you can
-			("dplmc_leave_and_take_a",
-				[
-				(store_free_inventory_capacity, ":space", "trp_player"),
-				(lt, ":space", reg20),
-				(gt, reg20, 0),
-				(gt, ":space", 0),
-				(assign, reg0, ":space"),
-				],
-				"Gather {reg0} of the {reg20} items on the ground and leave.",
-				[
-					(store_free_inventory_capacity, ":space", "trp_player"),
-					#Take remaining items for player
-					(troop_get_inventory_capacity, ":inv_cap", "$pool_troop"),
-					(troop_sort_inventory, "$pool_troop"),
-					(try_for_range, ":i_slot", 10, ":inv_cap"),
-					    (gt, ":space", 0),
-					    (troop_get_inventory_slot, ":item_id", "$pool_troop", ":i_slot"),
-					    (ge, ":item_id", 0),
-					    (neg|troop_has_item_equipped, "$pool_troop", ":item_id"),
-					    (troop_get_inventory_slot_modifier, ":imod", "$pool_troop", ":i_slot"),
-					    (troop_add_item, "trp_player", ":item_id", ":imod"),#give item to player
-					    (val_sub, ":space", 1),
-					    (troop_set_inventory_slot, "$pool_troop", ":i_slot", -1), #remove item from pool
-					    (troop_inventory_slot_set_item_amount, "$pool_troop", ":i_slot", 0),
-					(try_end),
-					#(jump_to_menu, "mnu_camp"),
-					(set_player_troop, "trp_player"),
-					(jump_to_menu, "$dplmc_return_menu"),
-					(assign, "$pool_troop", -1), #mark ending
-				]
-			),
-			("dplmc_leave_and_take_b",
-				[
-				(store_free_inventory_capacity, ":space", "trp_player"),
-				(ge, ":space", reg20),
-				(gt, reg20, 0),#don't show if nothing is on the ground
-				(store_sub, reg0, reg20, 1),
-				],
-				"Gather the remaining {reg20} {reg0?items:item} on the ground and leave.",
-				[
-					(store_free_inventory_capacity, ":space", "trp_player"),
-					#Take remaining items for player
-					(troop_get_inventory_capacity, ":inv_cap", "$pool_troop"),
-					(try_for_range, ":i_slot", 10, ":inv_cap"),
-					    (gt, ":space", 0),
-					    (troop_get_inventory_slot, ":item_id", "$pool_troop", ":i_slot"),
-					    (ge, ":item_id", 0),
-					    (neg|troop_has_item_equipped, "$pool_troop", ":item_id"),
-					    (troop_get_inventory_slot_modifier, ":imod", "$pool_troop", ":i_slot"),
-					    (troop_add_item, "trp_player", ":item_id", ":imod"),#give item to player
-					    (val_sub, ":space", 1),
-					    (troop_set_inventory_slot, "$pool_troop", ":i_slot", -1), #remove item frlom pool
-					    (troop_inventory_slot_set_item_amount, "$pool_troop", ":i_slot", 0),
-					(try_end),
-					(set_player_troop, "trp_player"),
-					(jump_to_menu, "$dplmc_return_menu"),
-					(assign, "$pool_troop", -1), #mark ending
-				]
-			),
-			("dplmc_leave_and_take_c",
-				[
-				(store_free_inventory_capacity, ":space", "trp_player"),
-				(eq, ":space", 0),
-				(gt, reg20, 0),#don't show if nothing is on the ground
-				(disable_menu_option),
-				],
-				"There is no space left in your bags.",
-				[
-				]
-			),
-			##nested diplomacy end+
-		]
-	),
+      #(jump_to_menu, "mnu_camp"),
+      (set_player_troop, "trp_player"),
+      (jump_to_menu, "$dplmc_return_menu"),
+      (assign, "$pool_troop", -1), #mark ending
+      ##diplomacy end+
+    ]),
+    ##nested diplomacy start+
+    #Leave & take everything you can
+    ("dplmc_leave_and_take_a",[
+      (store_free_inventory_capacity, ":space", "trp_player"),
+      (lt, ":space", reg20),
+      (gt, reg20, 0),
+      (gt, ":space", 0),
+      (assign, reg0, ":space"),
+    ],"Gather {reg0} of the {reg20} items on the ground and leave.",[
+      (store_free_inventory_capacity, ":space", "trp_player"),
+      #Take remaining items for player
+      (troop_get_inventory_capacity, ":inv_cap", "$pool_troop"),
+      (troop_sort_inventory, "$pool_troop"),
+      (try_for_range, ":i_slot", 10, ":inv_cap"),
+          (gt, ":space", 0),
+          (troop_get_inventory_slot, ":item_id", "$pool_troop", ":i_slot"),
+          (ge, ":item_id", 0),
+          (neg|troop_has_item_equipped, "$pool_troop", ":item_id"),
+          (troop_get_inventory_slot_modifier, ":imod", "$pool_troop", ":i_slot"),
+          (troop_add_item, "trp_player", ":item_id", ":imod"),#give item to player
+          (val_sub, ":space", 1),
+          (troop_set_inventory_slot, "$pool_troop", ":i_slot", -1), #remove item from pool
+          (troop_inventory_slot_set_item_amount, "$pool_troop", ":i_slot", 0),
+      (try_end),
+      #(jump_to_menu, "mnu_camp"),
+      (set_player_troop, "trp_player"),
+      (jump_to_menu, "$dplmc_return_menu"),
+      (assign, "$pool_troop", -1), #mark ending
+    ]),
+		("dplmc_leave_and_take_b",[
+      (store_free_inventory_capacity, ":space", "trp_player"),
+      (ge, ":space", reg20),
+      (gt, reg20, 0),#don't show if nothing is on the ground
+      (store_sub, reg0, reg20, 1),
+    ],"Gather the remaining {reg20} {reg0?items:item} on the ground and leave.",[
+      (store_free_inventory_capacity, ":space", "trp_player"),
+      #Take remaining items for player
+      (troop_get_inventory_capacity, ":inv_cap", "$pool_troop"),
+      (try_for_range, ":i_slot", 10, ":inv_cap"),
+          (gt, ":space", 0),
+          (troop_get_inventory_slot, ":item_id", "$pool_troop", ":i_slot"),
+          (ge, ":item_id", 0),
+          (neg|troop_has_item_equipped, "$pool_troop", ":item_id"),
+          (troop_get_inventory_slot_modifier, ":imod", "$pool_troop", ":i_slot"),
+          (troop_add_item, "trp_player", ":item_id", ":imod"),#give item to player
+          (val_sub, ":space", 1),
+          (troop_set_inventory_slot, "$pool_troop", ":i_slot", -1), #remove item frlom pool
+          (troop_inventory_slot_set_item_amount, "$pool_troop", ":i_slot", 0),
+      (try_end),
+      (set_player_troop, "trp_player"),
+      (jump_to_menu, "$dplmc_return_menu"),
+      (assign, "$pool_troop", -1), #mark ending
+    ]),
+		("dplmc_leave_and_take_c",[
+      (store_free_inventory_capacity, ":space", "trp_player"),
+      (eq, ":space", 0),
+      (gt, reg20, 0),#don't show if nothing is on the ground
+      (disable_menu_option),
+		],"There is no space left in your bags.",[]),
+]),
 
 ("dplmc_auto_loot",0,
   "Your heroes will automatically grab items from the loot pool based on their pre-selected upgrade options. Heroes listed first in the party order will have first pick."
@@ -25631,30 +25577,26 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-  ("dplmc_notification_nonaggression_declared",0,
-    "Non-aggression Treaty^^{s1} and {s2} have concluded a non-aggression treaty!^{s57}",
-    "none",
-    [
-	  (str_clear, s57),
-
-	  (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (store_sub, ":faction_1", "$g_notification_menu_var1", kingdoms_begin),
-      (store_sub, ":faction_2", "$g_notification_menu_var2", kingdoms_begin),
-      (val_mul, ":faction_1", 128),
-      (val_add, ":faction_1", ":faction_2"),
-      (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
-      ],
-    [
-      ("dplmc_continue",[],"Continue...",
-       [(change_screen_return),
-        ]),
-     ]
-  ),
+("dplmc_notification_nonaggression_declared",0,
+  "Non-aggression Treaty^^{s1} and {s2} have concluded a non-aggression treaty!^{s57}",
+  "none",[
+    (str_clear, s57),
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (store_sub, ":faction_1", "$g_notification_menu_var1", kingdoms_begin),
+    (store_sub, ":faction_2", "$g_notification_menu_var2", kingdoms_begin),
+    (val_mul, ":faction_1", 128),
+    (val_add, ":faction_1", ":faction_2"),
+    (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
+  ],[
+    ("dplmc_continue",[],"Continue...",[
+      (change_screen_return),
+    ]),
+]),
 (
   "dplmc_question_alliance_offer",0,
   "You Receive an Alliance Offer^^The {s1} wants to form an alliance with you. What is your answer?",
@@ -44136,7 +44078,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ], "Donate only 25,000 denars.", [
       (str_clear, s1),
       (call_script, "script_change_player_relation_with_center", "$current_town", 2),
-      (troop_remove_gold, "trp_player", 50000),
+      (troop_remove_gold, "trp_player", 25000),
       (str_store_string, s1, "@The priests are happy about your donation, although its less than the expected sum. They spread word of your wisdom and wealth."),
       (display_message, "@{s1}"),
       (jump_to_menu, "mnu_random_juice_events"),
@@ -44146,6 +44088,69 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_clear, s1),
       (call_script, "script_change_player_relation_with_center", "$current_town", -5),
       (str_store_string, s1, "@The priests are angry and spread word about your greed."),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+]),
+
+("event_30_juicio", menu_text_color(0xFF000000) | mnf_disable_all_keys,
+  "The collapse of the spectacle^^The sun blazed down on the arena, where thousands of citizens had gathered to witness the grand spectacle of gladiatorial combat. The roar of the crowd echoed through the amphitheatre as fierce warriors clashed below. It was supposed to be a day of glory, a day to honor the gods and entertain the masses. Instead, it became a day of horror."
+  +"^Amidst the brutal fights, a deep rumble resonated through the structure. Before anyone could react, the stone seating along the eastern side of the amphitheatre began to crack and crumble. In a matter of seconds, the entire section gave way, collapsing in a deafening roar. Hundreds of spectators were crushed under the falling debris, their screams of excitement turning into cries of terror. The dust and chaos engulfed the arena, transforming the grand celebration into a nightmare."
+  +"^As the governor of the town, you are immediately summoned to assess the catastrophe.",
+  "none", [
+    (set_background_mesh, "mesh_pic_building_project"),
+  ], [
+    ("option_1", [
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 50000),
+    ], "Make sacrifices to appease the gods and compensate the victims. [50,000 denars]", [
+      (str_clear, s1),
+      (call_script, "script_change_player_relation_with_center", "$current_town", 5),
+      (call_script, "script_change_player_honor", 5),
+      (troop_remove_gold, "trp_player", 50000),
+      (str_store_string, s1, "@The priesthood is pleased with the influx of additional funds, while the people commend your generosity. Your swift and decisive actions help to overshadow the tragedy, restoring a sense of stability and hope in the aftermath."),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+    ("option_2", [
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 25000),
+    ], "Make sacrifices only. [25,000 denars]", [
+      (str_clear, s1),
+      (call_script, "script_change_player_relation_with_center", "$current_town", 2),
+      (call_script, "script_change_player_honor", 1),
+      (troop_remove_gold, "trp_player", 25000),
+      (str_store_string, s1, "@The priesthood is pleased with the additional funds, but the people had hoped for more recognition of their losses. Despite this, your actions have managed to somewhat overshadow the tragedy, bringing a measure of stability and hope in the aftermath."),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+    ("option_3", [
+      (store_troop_gold, ":g", "trp_player"),
+      (ge, ":g", 25000),
+    ], "Compensate the victims only. [25,000 denars]", [
+      (str_clear, s1),
+      (call_script, "script_change_player_relation_with_center", "$current_town", 1),
+      (call_script, "script_change_player_honor", 2),
+      (troop_remove_gold, "trp_player", 25000),
+      (str_store_string, s1, "@The people commend your generosity, but the priesthood is discontented by the perceived lack of piety. Nonetheless, your actions manage to somewhat overshadow the tragedy, bringing a degree of stability and hope in the aftermath."),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+    ("option_4", [
+    ], "Order a deep investigation.", [
+      (str_clear, s1),
+      (call_script, "script_change_player_relation_with_center", "$current_town", -5),
+      (call_script, "script_change_player_honor", -2),
+      (str_store_string, s1, "@Your investigation quickly spirals into a chaotic blame game, with officials pointing fingers at one another. In the end, the exact cause of the tragedy remains unclear. Worse yet, your inquiry backfires, as suspicions of corruption begin to circle around you."),
+      (display_message, "@{s1}"),
+      (jump_to_menu, "mnu_random_juice_events"),
+    ]),
+    ("option_5", [
+    ], "Do nothing.", [
+      (str_clear, s1),
+      (call_script, "script_change_player_relation_with_center", "$current_town", -25),
+      (call_script, "script_change_player_honor", -15),
+      (str_store_string, s1, "@Your decision to remain inactive sends shockwaves through the town. The lack of leadership fuels anger and unrest among the populace, who begin to see you as indifferent to their suffering. Rumors of negligence and corruption spread rapidly, undermining your authority. The tragedy that could have been managed now threatens to spiral into full-blown chaos."),
       (display_message, "@{s1}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
