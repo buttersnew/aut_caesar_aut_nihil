@@ -23744,14 +23744,14 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("continue",[(eq, "$temp1", -1),],"Help your ally by declaring war.",[
-      (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "$g_notification_menu_var2", logent_faction_declares_war_to_fulfil_pact),
+      (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "$g_notification_menu_var2", logent_faction_declares_war_to_curb_power),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
 ("threat_war_reaction",0,
-    "{s57}",
-    "none",[
+  "{s57}",
+  "none",[
     (assign, ":player_strength", 0),
     (assign, ":enemy_strength", 10),
 	  (try_for_parties, ":party_no"),
@@ -23859,7 +23859,19 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_begin),
         (lt, ":relation", -75),
         (val_mul, ":enemy_strength", 2),
+    (else_try),
+        (lt, ":relation", -50),
+        (val_mul, ":enemy_strength", 5),
+        (val_div, ":enemy_strength", 3),
+    (else_try),
+        (lt, ":relation", 0),
+        (val_mul, ":enemy_strength", 3),
+        (val_div, ":enemy_strength", 2),
     (try_end),
+
+    (store_random_in_range, ":rand_factor", 90, 151),
+    (val_mul, ":enemy_strength", ":rand_factor"),
+    (val_div, ":enemy_strength", 100),
 
     (val_div, ":relation", 10),
     (val_add, ":player_strength", ":relation"),
@@ -23878,44 +23890,40 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (gt, ":player_strength", ":enemy_strength"),
 
         (store_mul, reg40, ":enemy_strength", 1000),
-        (val_clamp, reg40, 5000, 750001),
+        (val_clamp, reg40, 5000, 100001),
 
-        (str_store_string, s57, "@Messengers are send and soon you recieve news that {s3} of {s1} has re-thought his actions. He send you a gift of {reg40} denars and will not future attack the {s2}"),
+        (str_store_string, s57, "@Messengers are sent, and soon you receive word that {s3} of {s1} has reconsidered his actions. He has sent you a gift of {reg40} denars and will not attack the {s2} in the future."),
         (assign, "$temp1", 1),
     (else_try),
-        (str_store_string, s57, "@Messengers are send and soon you recieve news that {s3} of {s1} will attack the {s2} nevertheless. You are now forced to join the war."),
+        (str_store_string, s57, "@Messengers are sent, and soon you receive word that {s3} of {s1} will attack the {s2} regardless. You are now compelled to join the war."),
         (assign, "$temp1", -1),
     (try_end),
-    ],
+  ],[
+    ("continue",[],"Continue",[
+      (try_begin),
+          (eq, "$temp1", -1),
+          (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "$g_notification_menu_var1", logent_faction_declares_war_to_curb_power),
+      (else_try),
+          (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_notification_menu_var2", "$g_notification_menu_var1", 0),
 
-    [
-      ("continue",[],"Continue",
-       [
-        (try_begin),
-            (eq, "$temp1", -1),
-            (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "$g_notification_menu_var1", logent_faction_declares_war_to_fulfil_pact),
-        (else_try),
-            (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_notification_menu_var2", "$g_notification_menu_var1", 0),
+          (try_begin),
+              (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+              (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_diplomacy, "$players_kingdom", reg40),
+          (else_try),
+              (try_begin),
+                  (gt, "$g_player_chamberlain", 0),
+                  (call_script, "script_dplmc_pay_into_treasury", reg40),
+              (else_try),
+                  (troop_add_gold, "trp_player", reg40),
+              (try_end),
+          (try_end),
 
-            (try_begin),
-                (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
-                (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_diplomacy, "$players_kingdom", reg40),
-            (else_try),
-                (try_begin),
-                    (gt, "$g_player_chamberlain", 0),
-                    (call_script, "script_dplmc_pay_into_treasury", reg40),
-                (else_try),
-                    (troop_add_gold, "trp_player", reg40),
-                (try_end),
-            (try_end),
-
-            (faction_get_slot, ":leader", "$g_notification_menu_var2", slot_faction_leader),
-            (call_script, "script_change_player_relation_with_troop", ":leader", -10),
-        (try_end),
-        (jump_to_menu, "mnu_auto_return_map"),
-       ]),
-    ]
-),
+          (faction_get_slot, ":leader", "$g_notification_menu_var2", slot_faction_leader),
+          (call_script, "script_change_player_relation_with_troop", ":leader", -10),
+      (try_end),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
 
 #chief sot cambia texto abajo, motomataru cambia codigo
 ("notification_peace_declared",0,
@@ -34471,13 +34479,13 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   "none",[
     (set_background_mesh, "mesh_pic_senatus"),
     (assign, "$temp2", -1),
-    (assign, ":score_to_beat", 0),
+    (assign, ":score_to_beat", 5),
     (try_for_range, ":walled_center", walled_centers_begin, walled_centers_end),
         (store_faction_of_party, ":faction_center", ":walled_center"),
         (eq, ":faction_center", "$players_kingdom"),
         (neg|party_slot_eq, ":walled_center", slot_town_lord, "trp_player"),
         (party_get_slot, ":score", ":walled_center", slot_center_player_relation),
-        (store_random_in_range, ":rand", -25, 25),
+        (store_random_in_range, ":rand", -35, 25),
         (val_add, ":score", ":rand"),
         (ge, ":score", ":score_to_beat"),
         (assign, ":score_to_beat", ":score"),
@@ -48805,15 +48813,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #   (change_screen_map),
       # ]),
 
-      # ("options",[
-      # ],"Parthia provokes Armenia",[
+      ("options",[
+      ],"Osrohne provokes Parthia",[
 
-      #   (store_add, ":slot_provocation_days", "fac_kingdom_6", slot_faction_provocation_days_with_factions_begin),
-      #   (val_sub, ":slot_provocation_days", kingdoms_begin),
-      #   (faction_set_slot, "fac_kingdom_5", ":slot_provocation_days", 1),
+        (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
+        (val_sub, ":slot_provocation_days", kingdoms_begin),
+        (faction_set_slot, "fac_kingdom_6", ":slot_provocation_days", 1),
 
-      #   (change_screen_map),
-      # ]),
+        (change_screen_map),
+      ]),
 
       # ("options",[
       # ],"Osrohne provokes Rome",[
