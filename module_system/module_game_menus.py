@@ -34464,6 +34464,48 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 	    (change_screen_map),
     ]),
 ]),
+
+("event_temple",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Temple your honor^^The people of {s25} have sent an envoy requesting permission to build a temple in your honor."
+  +" You may choose to either accept or decline this request. If you accept, there will be no additional costs for you, as they will use their own wealth to fund the construction.",
+  "none",[
+    (set_background_mesh, "mesh_pic_senatus"),
+    (assign, "$temp2", -1),
+    (assign, ":score_to_beat", 0),
+    (try_for_range, ":walled_center", walled_centers_begin, walled_centers_end),
+        (store_faction_of_party, ":faction_center", ":walled_center"),
+        (eq, ":faction_center", "$players_kingdom"),
+        (neg|party_slot_eq, ":walled_center", slot_town_lord, "trp_player"),
+        (party_get_slot, ":score", ":walled_center", slot_center_player_relation),
+        (store_random_in_range, ":rand", -25, 25),
+        (val_add, ":score", ":rand"),
+        (ge, ":score", ":score_to_beat"),
+        (assign, ":score_to_beat", ":score"),
+        (assign, "$temp2", ":walled_center"),
+    (try_end),
+    (str_clear, s25),
+    (try_begin),
+        (eq, "$temp2", -1),
+        (jump_to_menu, "mnu_auto_return_map"),
+    (else_try),
+        (str_store_party_name, s25, "$temp2"),
+    (try_end),
+	],[
+    ("answere_1",[
+    ],"Grant the request",[
+      (call_script, "script_change_player_relation_with_center", "$temp2", 5),
+      (call_script, "script_change_troop_renown", "trp_player", 10),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+    ("answere_2",[
+      (quest_get_slot, ":lord", "qst_blank_quest_21",slot_quest_target_troop),
+      (str_store_troop_name, s44, ":lord"),
+    ],"Refuse the request",[
+      (call_script, "script_change_player_relation_with_center", "$temp2", -5),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
+
 ("event_corruption",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "{s44}, governor of {s40}, has been blamed to evade taxes, exploit the population with high tributes and abuse of office. The list of crimes he has done against {s40} is long, and the local population is against him.^^"
   +" A local lawer has taken the opportunity and wrote a petition to ask the Princeps for help in this case. ^^"
@@ -47622,6 +47664,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (assign, "$g_notification_menu_var2", ":lord"),
         (jump_to_menu, "mnu_miss_managment"),
         (troop_set_slot, ":lord", slot_troop_recently_blamed, 1),
+    (else_try),
+        (jump_to_menu, "mnu_event_temple"),
     (try_end),
   ],[
     ("leave",[],"Continue",[
