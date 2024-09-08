@@ -15920,6 +15920,7 @@ game_menus = [
           (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 1),
           (jump_to_menu, "mnu_wlodowiecus_adventure_3_visit_manc"),
       (else_try),
+          (eq, "$current_town", "p_town_6"),
           (check_quest_active, "qst_wlodowiecus_adventure_2"),
           (quest_slot_eq, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 1),
           (jump_to_menu, "mnu_wlodowiecus_adventure_2_visit_manc"),
@@ -22578,6 +22579,16 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (else_try),
                 (call_script, "script_add_to_troop_wealth", ":leader_1", reg40),
             (try_end),
+
+            #add truce
+            (store_add, ":truce_slot", "$g_notification_menu_var1", slot_faction_truce_days_with_factions_begin),
+            (val_sub, ":truce_slot", kingdoms_begin),
+            (faction_set_slot, "$g_notification_menu_var2", ":truce_slot", dplmc_treaty_truce_days_initial),
+
+            (store_add, ":truce_slot", "$g_notification_menu_var1", slot_faction_truce_days_with_factions_begin),
+            (val_sub, ":truce_slot", kingdoms_begin),
+            (faction_set_slot, "$g_notification_menu_var2", ":truce_slot", dplmc_treaty_truce_days_initial),
+
             (assign, ":explain_string", "str_diplo_casus_expired_reparations_accepted"),
         (else_try),
             (assign, ":explain_string", "str_diplo_casus_expired_reparations_refused_war"),
@@ -52321,7 +52332,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         ]),
      ]
 ),
- (
+
+(
     "freelancer_task_tribute_no",0,
     "You return to the legion camp without any tribute. You and your men are punished as you failed your task. On the next day another group leaves the camp and visits the village again. "+
     "This time they force the villagers to pay the tribute, enslave some of their women and children and force them to kiss the eagle.",

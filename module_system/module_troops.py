@@ -5029,6 +5029,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["bonus_chest_17","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry, itm_parthian_female_hat],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_18","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_female_slave1,itm_female_slave2,itm_female_slave3,itm_female_slave4],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_19","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_xylospongium],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+# ["bonus_chest_20","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 
 ["household_possessions","{!}household_possessions","{!}household_possessions",tf_hero|tf_inactive|tf_is_merchant, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 

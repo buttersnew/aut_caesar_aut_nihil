@@ -9560,6 +9560,12 @@ presentations = [
 
     #ship
     (try_begin),
+        (party_get_current_terrain, ":cur_terrain", "p_main_party"),
+        (this_or_next|eq,":cur_terrain",rt_bridge),
+        (this_or_next|eq,":cur_terrain",rt_river),
+        (eq,":cur_terrain",rt_water),
+        (str_store_string, s22, "@You are sailing with your ship."),
+    (else_try),
         (eq, "$players_ship", -1),
         (str_store_string, s22, "@You don't own a ship."),
     (else_try),
@@ -18127,8 +18133,6 @@ presentations = [
     (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
     (val_add, ":num_options", 1),
     (set_container_overlay, ":container"),
-
-    (val_add, ":num_options", 1), #skip index regardless
 
     ## TERRAIN ADVANTAGE
     (create_text_overlay, reg0, "@Terrain Advantages:", tf_vertical_align_center),

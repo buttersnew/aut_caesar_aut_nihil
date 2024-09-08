@@ -7873,7 +7873,13 @@ mission_templates = [
     wounds_vc,
     dedal_shield_bash,
     dedal_shield_bash_AI,
-] + bodyguard_triggers + dplmc_battle_mode_triggers),
+
+    change_battle_speed_trigger,
+    custom_commander_critical_strike,
+    miracle_battle_trigger,
+    more_difficult_damage,
+
+] + bodyguard_triggers),
 
   (
     "village_training", mtf_arena_fight, -1,
@@ -18914,6 +18920,7 @@ mission_templates = [
     ]),
 
     (1, 4, ti_once, [
+      (neg|main_hero_fallen),
       (num_active_teams_le, 1),
     ],[
       (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
