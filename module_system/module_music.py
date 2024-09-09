@@ -130,6 +130,8 @@ tracks = [
   ("town_roman6", "roman_peace_5.ogg", mtf_culture_6|mtf_sit_town|mtf_sit_travel|mtf_sit_thermae, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("town_roman7", "roman_peace_6.ogg", mtf_culture_6|mtf_sit_town|mtf_sit_travel|mtf_sit_thermae, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
 
+  ("gas_gas_gas_latin", "gas_gas_gas_latin.ogg", mtf_culture_6|mtf_sit_town|mtf_sit_tavern|mtf_sit_thermae, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
+
   ("travel_khergit1", "nomad_peace_1.ogg", mtf_culture_3|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("travel_khergit2", "nomad_peace_2.ogg", mtf_culture_3|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("travel_khergit3", "nomad_peace_3.ogg", mtf_culture_3|mtf_sit_travel, mtf_sit_town|mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
