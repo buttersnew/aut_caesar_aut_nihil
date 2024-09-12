@@ -4893,7 +4893,6 @@ game_menus = [
       (party_collect_attachments_to_party, "p_main_party", "p_collective_ally"),
       (call_script, "script_party_calculate_strength", "p_collective_ally", 1), #exclude player
       (assign, ":total_player_and_followers_strength", reg0),
-
       (try_begin),
         (le, ":total_player_and_followers_strength", ":enemy_party_strength"),
         (assign, ":minimum_power", ":total_player_and_followers_strength"),
@@ -4969,7 +4968,7 @@ game_menus = [
 
       (try_begin),
           (ge, "$cheat_mode", 1),
-          (val_mul, ":total_player_and_followers_strength", 50),
+          (val_mul, ":total_player_and_followers_strength", 500),
       (try_end),
       (inflict_casualties_to_party_group, "$g_encountered_party", ":total_player_and_followers_strength", "p_temp_casualties"),
 
@@ -55075,10 +55074,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   +" Their outburst of joy heralds your imminent entry into the heart of the empire.",
   "none",[
     (set_background_mesh, "mesh_pic_triumph"),
+    (party_relocate_near_party, "p_main_party", "p_town_6", 1),
   ],[
     ("Continue",[],"Continue.",[
-      (party_relocate_near_party, "p_main_party", "p_town_6", 1),
-
       (play_track, "track_trailer_2", 2),
 
       (set_jump_mission, "mt_cutscene_rome_triumph"),
@@ -55107,36 +55105,36 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_visitor, 9, "trp_aux_cav_praetoriani_2"),
       (set_visitor, 10, "trp_aux_cav_praetoriani_2"),
       (try_for_range, ":entry", 11, 25),
-          (set_visitors, ":entry", "trp_roman_town_walker_female", 8),
-          (set_visitors, ":entry", "trp_roman_town_walker", 8),
+          (set_visitors, ":entry", "trp_roman_town_walker_female", 6),
+          (set_visitors, ":entry", "trp_roman_town_walker", 7),
       (try_end),
 
       (try_for_range, ":entry", 28, 32),
-          (set_visitors, ":entry", "trp_roman_town_walker_female", 8),
-          (set_visitors, ":entry", "trp_roman_town_walker", 8),
+          (set_visitors, ":entry", "trp_roman_town_walker_female", 6),
+          (set_visitors, ":entry", "trp_roman_town_walker", 7),
       (try_end),
 
       (troop_raise_skill, "trp_antonia", skl_riding, 10),
 
       (assign, "$tutorial_state", 0),
       (try_begin),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
-        (assign, "$g_next_menu", "mnu_vespasian_death_of_vitellius"),
+          (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
+          (assign, "$g_next_menu", "mnu_vespasian_death_of_vitellius"),
       (else_try),
-        (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
-        (assign, "$g_next_menu", "mnu_death_of_other_goy"),
+          (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+          (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+          (assign, "$g_next_menu", "mnu_death_of_other_goy"),
       (else_try),
-        (display_message, "@BUG HAPPENS, you die!"),
-        (assign, "$temp", 2),
-        (assign, "$g_next_menu", "mnu_death_waits"),
+          (display_message, "@BUG HAPPENS, you die!"),
+          (assign, "$temp", 2),
+          (assign, "$g_next_menu", "mnu_death_waits"),
       (try_end),
-      # 0 original player
-      # 1 fake player
-      # 2 antonia
-      # 3 - 10 player troops
-      # 11 to 24 spectators
-      # 25 target entry
+      # # 0 original player
+      # # 1 fake player
+      # # 2 antonia
+      # # 3 - 10 player troops
+      # # 11 to 24 spectators
+      # # 25 target entry
       (jump_to_scene, "scn_cutscene_rome_victory"),
       (change_screen_mission),
     ]),
