@@ -17394,7 +17394,7 @@ game_menus = [
     ], "Enter the Triclinium."),
     ("visit_temple_jerusalem",[
 		  (eq, 0, 1),
-    ],"Visit the Temple of Jerusalem.",[
+    ],"Visit the Temple of Hierosolyma.",[
       (set_passage_menu,"mnu_town"),
       (jump_to_menu, "mnu_temple_jerusalem"),
       (finish_mission),
@@ -31802,7 +31802,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (str_store_string, s2, "@Your goal is to stage a revolt in Judea."),
       (call_script, "script_start_quest", "qst_poking_the_lion", "trp_fortuna"),
       (str_store_party_name, s22, "p_town_6"),
-      (add_quest_note_from_sreg, "qst_poking_the_lion", 4, "@Travel to {s22} to convince Nero to confiscate the temple treasury of Jerusalem.", 1),
+      (add_quest_note_from_sreg, "qst_poking_the_lion", 4, "@Travel to {s22} to convince Nero to confiscate the temple treasury of Hierosolyma.", 1),
 
       (quest_set_slot,"qst_poking_the_lion",slot_quest_current_state, 1),
       (display_message, "str_quest_updated"),
@@ -34311,8 +34311,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
  #####
 ###events for jerusalem
 ("event_jerusalem_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Pilgrim jams^^The great temple of Jerusalem is center of the jewish faith, where they come from all corners of Judea to pray.^"+
-  " The governer of Jerusalem {s40} has issued a decree to limit the amount of pilgrims entering the city to avoid traffic jams.^"+
+  "Pilgrim jams^^The great temple of Hierosolyma is center of the jewish faith, where they come from all corners of Judea to pray.^"+
+  " The governer of Hierosolyma {s40} has issued a decree to limit the amount of pilgrims entering the city to avoid traffic jams.^"+
   " Many jewish people are angered about this action and seized weapons against the local garrison.",
   "none",[
     (set_background_mesh, "mesh_pic_villageriot"),
@@ -34347,8 +34347,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
 ("event_jerusalem_2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Another Messiah^^Centuries ago Jewish prophets said, that a savior will come and bring eternal peace to this world.^"
-  +" Most jews believe that this savior is a king who liberates Jerusalem and the people of Israel from their foreign occupation.^"
-  +" As a result dozens of small warlords ran around Judea and claim to be the true king over Jerusalem.",
+  +" Most jews believe that this savior is a king who liberates Hierosolyma and the people of Israel from their foreign occupation.^"
+  +" As a result dozens of small warlords ran around Judea and claim to be the true king over Hierosolyma.",
   "none",[
     (set_background_mesh, "mesh_pic_villageriot"),
 	],[
@@ -34395,7 +34395,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("event_jerusalem_3",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Corrupt priests^^Due to the unstable situation in Judea, the governor {s40} of Jerusalem has asked the high priests to support him.^"
+  "Corrupt priests^^Due to the unstable situation in Judea, the governor {s40} of Hierosolyma has asked the high priests to support him.^"
   +" Some accepted the offer and started to support the foreign rule in their sermons.^"
   +" There are Judeans who are upset with this and call the high priests traitors. However there are also others who may reconsider to join rebel groups. Hopefully this will stabilize the region.",
   "none",[
@@ -34416,9 +34416,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 ("event_jerusalem_4",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "The great Jewish revolt!^^The governor {s40} of Jerusalem suspected, that most of the Jewish population do not pay their taxes. It seems more plausible that {s40} has taken the missing taxes for himself. However, the governor ordered to"
+  "The great Jewish revolt!^^The governor {s40} of Hierosolyma suspected, that most of the Jewish population do not pay their taxes. It seems more plausible that {s40} has taken the missing taxes for himself. However, the governor ordered to"
   +" confiscate silver and gold from the treasuries of the temple as compensation for the missing taxes.^ This action had fatale consequences:^ Most jews seized their weapons. This is not a simple town riot it is open rebellion!^"
-  +" Without problems they killed the garrison of Jerusalem! ^^The great jewish rebellion has started.",
+  +" Without problems they killed the garrison of Hierosolyma! ^^The great jewish rebellion has started.",
   "none",[
     (set_background_mesh, "mesh_pic_villageriot"),
     (party_get_slot, ":lord", "p_town_19", slot_town_lord),
@@ -35574,7 +35574,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("temple_jerusalem_story_loot_2",0,
-  "You defeat the mob and leave the city. You reach a mountain, not far from Jerusalem, where you make a rest to oversee the looted treasures: A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'. A huge golden  menorah, gold and silver ingots, jewelry, velvet cloths and nice carpeting. Additionally, you looted valuables worth 150,000 denars.^^A soldier interrupts you and informs you that a woman is waiting for you. It must be Antonia.",
+  "You defeat the mob and leave the city. You reach a mountain, not far from Hierosolyma, where you make a rest to oversee the looted treasures: A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'. A huge golden  menorah, gold and silver ingots, jewelry, velvet cloths and nice carpeting. Additionally, you looted valuables worth 150,000 denars.^^A soldier interrupts you and informs you that a woman is waiting for you. It must be Antonia.",
   "none",[
     (set_background_mesh, "mesh_pic_jerusalem_tempel"),
     (add_xp_as_reward, 5000),
@@ -35750,7 +35750,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ),
 
 ("temple_looted",0,
-    "You bring some carts before the temple and order some men to guard them. Then you give order to the rest of your men to follow you. The plan is to go into the temple, kill all priests, bring the loot out of the temple to the carts and then leave Jerusalem as fast as possible!",
+    "You bring some carts before the temple and order some men to guard them. Then you give order to the rest of your men to follow you. The plan is to go into the temple, kill all priests, bring the loot out of the temple to the carts and then leave Hierosolyma as fast as possible!",
     "none",
     [
 	(set_background_mesh, "mesh_pic_jerusalem_tempel"),
@@ -35773,7 +35773,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   "Your men wear pligrim cloths over their armors to get not suspicious. Then you pass through the streams of pilgrim into the forecourt. Then you and your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out.^\
 	You order that some of your men guard the entrance into the inner court. You and your other men storm into the inner court and kill every priests you see. Then your men break up the door into the sanctum and start looting every thing.^^\
 	You and your men carry all the treasuries out of the temple to the carts.^^\
-	After half an hour one of your men reports that there is nothing left to loot. You order that the men with the carts shall leave Jerusalem dressed as pilgrims. As the carts leave the temple hill over the main entrance, you see an angry mob, shouting insults, moving in your direction.^\
+	After half an hour one of your men reports that there is nothing left to loot. You order that the men with the carts shall leave Hierosolyma dressed as pilgrims. As the carts leave the temple hill over the main entrance, you see an angry mob, shouting insults, moving in your direction.^\
 	Now you must fight or you will die!",
   "none",[
 	  (set_background_mesh, "mesh_pic_jerusalem_tempel"),
@@ -35797,14 +35797,14 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("great_jewish_reolt_start",0,
-  "After you defeated the mob you quickly leave the temple hill. You must get out of Jerusalem, as fast as possible. {s20}",
+  "After you defeated the mob you quickly leave the temple hill. You must get out of Hierosolyma, as fast as possible. {s20}",
   "none",[
     (set_background_mesh, "mesh_pic_victory"),
     (try_begin),
       (eq, "$jewish_revolt", 0),
-      (str_store_string, s20, "@As your run through Jerusalem you see no Roman troops. That is strange. You run and run. Finally you manage to get out of the city. You meet the other men with the loot. Then you look to the city, you see fire in some parts of Jerusalem. Strange."),
+      (str_store_string, s20, "@As your run through Hierosolyma you see no Roman troops. That is strange. You run and run. Finally you manage to get out of the city. You meet the other men with the loot. Then you look to the city, you see fire in some parts of Hierosolyma. Strange."),
     (else_try),
-      (str_store_string, s20, "@You run and run. Finally you get out of the city. You meet the other men with the loot on the agreed point on a hill near Jerusalem."),
+      (str_store_string, s20, "@You run and run. Finally you get out of the city. You meet the other men with the loot on the agreed point on a hill near Hierosolyma."),
     (try_end),
   ],[
   ("answere_1",[],"Luckily alive!",[
@@ -35858,7 +35858,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (gt, ":lord", 1),
       (call_script, "script_change_player_relation_with_troop", ":lord", -30),
       (str_store_troop_name, s21, ":lord"),
-      (display_message, "@ The governer of Jerusalem, {s21}, is not very amused about your action."),
+      (display_message, "@ The governer of Hierosolyma, {s21}, is not very amused about your action."),
     (try_end),
     (change_screen_map),
   ]),
