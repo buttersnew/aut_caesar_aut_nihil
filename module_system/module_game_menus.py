@@ -51457,31 +51457,26 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]
   ),
 
-  (
-    "freelancer_defeated",0,
-    "After the battle the enemies loot and enslave every survivor. Luckily, they hold you for dead.\
- Several hours later, they stop looting and move on. Finally, you can get up.",
-    "none",
-    [(set_background_mesh, "mesh_pic_escape_1"),],
-    [
-      ("continue",[],
-       "Gather some left overs and continue...",
-       [
-        (call_script, "script_end_freelancing"),
-        (call_script, "script_update_troop_location_notes", "trp_player", 1),
-        (change_screen_map),
-        (add_xp_as_reward, 50),
-        (try_begin),#work around to avoid companions disappearing
-          (store_party_size, ":size", "p_underworld"),
-          (gt, ":size",0),
-          (assign, "$g_move_heroes", 1),
-          (call_script, "script_party_add_party_companions","p_main_party", "p_underworld"),
-          (assign, "$g_move_heroes", 0),
-          (party_clear, "p_underworld"),
-        (try_end),
-        ]),
-    ]
-  ),
+("freelancer_defeated",0,
+  "After the battle the enemies loot and enslave every survivor. Luckily, they hold you for dead. Several hours later, they stop looting and move on. Finally, you can get up.",
+  "none",[
+    (set_background_mesh, "mesh_pic_escape_1"),
+  ],[
+    ("continue",[],"Gather some left overs and continue...",[
+      (call_script, "script_end_freelancing"),
+      (call_script, "script_update_troop_location_notes", "trp_player", 1),
+      (change_screen_map),
+      (add_xp_as_reward, 50),
+      (try_begin),#work around to avoid companions disappearing
+        (store_party_size, ":size", "p_underworld"),
+        (gt, ":size",0),
+        (assign, "$g_move_heroes", 1),
+        (call_script, "script_party_add_party_companions","p_main_party", "p_underworld"),
+        (assign, "$g_move_heroes", 0),
+        (party_clear, "p_underworld"),
+      (try_end),
+    ]),
+]),
 
 ("promotion_freelancer",0,
   "Congratulations, you have been promoted to {s21}. {reg0?With this rank you will command {reg4} soldiers during battle.:You will not command any troops during battle.}^^{s50}",
