@@ -10769,6 +10769,15 @@ mission_templates = [
           (agent_is_alive, ":agent_no"),
           (call_script, "script_init_town_agent", ":agent_no"),
       (try_end),
+      # spawn castle guard at entry 2
+      (try_begin),
+          (is_between, "$g_encountered_party_faction", kingdoms_begin, kingdoms_end),
+          (faction_get_slot, ":troop_castle_guard", "$g_encountered_party_faction", slot_faction_castle_guard_troop),
+          (gt, ":troop_castle_guard", 1),
+          (entry_point_get_position, pos18, 2),
+          (set_spawn_position, pos18),
+          (spawn_agent, ":troop_castle_guard"),
+      (try_end),
     ]),
     (ti_on_agent_spawn, 0, 0, [],[
       (store_trigger_param_1, ":agent_no"),
