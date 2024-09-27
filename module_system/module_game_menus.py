@@ -57418,7 +57418,7 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
 
 ("wlodowiecus_adventure_3_continue_8",mnf_scale_picture,
   "The marching resumes, mostly in silence at first. The death of Varus has still shaken the party. He was a survivor of many battles, and yet one ambush took him out as well as several Winnili mercenaries who accompanied them."
-  +" The men burn another who collapsed from malnutrition and exhaustion. After a while, Mancinellus and (playername) start making japes and telling stories to pass the time and lift the men's spirits."
+  +" The men burn another who collapsed from malnutrition and exhaustion. After a while, Mancinellus and {playername} start making japes and telling stories to pass the time and lift the men's spirits."
   +" The party then arrives at a frozen lake. Hadrianus, who usually is calm and stoic, curses their luck. They will now have to either circumvent the lake or cross it without the ice breaking under them."
   +" He seems to be suffering from the cold, as does Wlodowiecus. Just as things seem hopeless, they spot a couple of hunters who take them to the settlement inhabited by the Sciri tribe."
   +" The men huddle near the hearth of the main hall and are offered warm mushroom soup which they greedily and quickly consume. Furs are wrapped around their shoulders and backs. {playername} falls asleep as is snoring loudly."
