@@ -1028,7 +1028,7 @@ simple_triggers = [
         (assign, ":lady_not_visited_longest_time", -1),
         (assign, ":longest_time_without_visit", 96), #4 days
         (try_for_range, ":troop_id", kingdom_ladies_begin, kingdom_ladies_end),
-                  ##diplomacy start not dead, exiled, etc.
+            ##diplomacy start not dead, exiled, etc.
             (neg|troop_slot_ge, ":troop_id", slot_troop_occupation, slto_retirement),
             #not already betrothed
             (neg|troop_slot_eq, "trp_player", slot_troop_betrothed, ":troop_id"),
@@ -2858,7 +2858,7 @@ simple_triggers = [
                     (else_try),
                         (str_store_party_name, s11, ":latifundium"),
                         (troop_remove_gold, "trp_player", 50000),
-                        (dialog_box, "@Unfortunately, you are informed that {s11} has been damaged by wildfires. You need to pay 50,000 denars for repair works.", "@Wildfires threaten {s11}"),
+                        (dialog_box, "@You are informed that {s11} has sustained damage due to recent wildfires. The estimated cost for repair is 50,000 denars.", "@Wildfires threaten {s11}"),
                     (try_end),
                 (else_try),
                     (party_slot_ge, "$g_center_trigger_taxes", slot_town_lord, 1),#not player
@@ -4531,9 +4531,9 @@ simple_triggers = [
             (call_script, "script_remove_troop_from_prison", ":stack_troop"),
 
             (store_troop_faction, ":troop_faction", ":stack_troop"),
-            (str_store_troop_name, s1, ":stack_troop"),
-            (str_store_faction_name, s2, ":faction_no"),
-            (str_store_faction_name, s3, ":troop_faction"),
+            (str_store_troop_name_link, s1, ":stack_troop"),
+            (str_store_faction_name_link, s2, ":faction_no"),
+            (str_store_faction_name_link, s3, ":troop_faction"),
             #SB : colorize faction, add s2 for imprisoning faction
             (faction_get_color, ":color", ":troop_faction"),
             (display_log_message, "@{s1} of {s3} has been released from captivity by {s2}.", ":color"),
@@ -5344,6 +5344,10 @@ simple_triggers = [
         (eq, "$g_player_reading_book", "itm_book_odysseus"),
         (troop_raise_attribute, "trp_player", ca_intelligence, 1),
         (str_store_string, s2, "@ Your intelligence has increased by 1."),
+    (else_try),
+        (eq, "$g_player_reading_book", "itm_book_poop"),
+        (add_xp_as_reward, 10000),
+        (str_store_string, s2, "@ The art of poop increases your experience."),
     (else_try),
         (eq, "$g_player_reading_book", "itm_book_trade"),
         (troop_raise_skill, "trp_player", "skl_trade", 1),
@@ -8652,6 +8656,9 @@ simple_triggers = [
     (try_begin),
         (neq, "$g_corruption_check", ACAN_CORRUPT_SAVE_CHECK),
         (jump_to_menu, "mnu_save_file_corrupted"),
+    # (else_try),
+    #     (neg|troop_slot_eq, "trp_global_variables", g_corruption_check, ACAN_CORRUPT_SAVE_CHECK),
+    #     (jump_to_menu, "mnu_save_file_corrupted"),
     (try_end),
     (try_begin),
         (neq, "$players_kingdom", "fac_kingdom_7"),

@@ -1079,7 +1079,7 @@ scenes = [
 
   ("cutscene_rome_victory", sf_generate, "none", "none", (0, 0), (100, 100), -200, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
 
-  ("cave_olympia", sf_indoors, "cave-p01", "bo_cave-p01", (-100, -100), (100, 100), -100, "0",[], []),
+  ("cave_olympia", sf_indoors, "cave-p01", "bo_cave-p01", (-100, -100), (100, 100), -100, "0",[], ["bonus_chest_20"]),
 
   ("scene_camp_forest", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000003c600563000d2348000052d4000067d5000029c1",[], [], "outer_terrain_forest"),
   ("baltic_town", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000000300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_forest"),

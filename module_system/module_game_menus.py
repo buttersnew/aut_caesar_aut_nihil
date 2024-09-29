@@ -2851,6 +2851,14 @@ game_menus = [
         (jump_to_menu, "mnu_camp_action_read_book_start"),
         ]
        ),
+       ("action_read_book_12",[(player_has_item, "itm_book_poop"),
+                             (item_slot_eq, "itm_book_poop", slot_item_book_read, 0),
+                             (str_store_item_name, s1, "itm_book_poop"),
+                             ],"{s1}.",
+       [(assign, "$temp", "itm_book_poop"),
+        (jump_to_menu, "mnu_camp_action_read_book_start"),
+        ]
+       ),
       ("camp_action_4",[],"Back to camp menu.",
        [(jump_to_menu, "mnu_camp"),
         ]
@@ -6088,174 +6096,170 @@ game_menus = [
     ]),
 ]),
 
-  (
-    "pre_join",0,
-    "You come across a battle between {s2} and {s1}. You decide to...",
-    "none",
-    [
-      (str_store_party_name, 1,"$g_encountered_party"),
-      (str_store_party_name, 2,"$g_encountered_party_2"),
-      (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-      (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
-      (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-      (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
-		  (assign, reg35, ":attacker_relation"),
-		  (assign, reg36, ":defender_relation"),
-      ],
-    [
+("pre_join",0,
+  "You come across a battle between {s2} and {s1}. You decide to...",
+  "none",[
+    (str_store_party_name, 1,"$g_encountered_party"),
+    (str_store_party_name, 2,"$g_encountered_party_2"),
+    (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
+    (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
+    (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
+    (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
+    (assign, reg35, ":attacker_relation"),
+    (assign, reg36, ":defender_relation"),
+  ],[
 
-      ##freelancer attack
-      ("pre_join_help_attackers_freelancer",[
-          (ge, "$enlisted_party", 1),
-          # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-          # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
-          # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-          # (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
-          # (ge, ":attacker_relation", 0),
-          # (lt, ":defender_relation", 0),
-        ],
-        "Follow your commander into battle.",[
-        (store_faction_of_party, ":lord_faction", "$enlisted_party"),##use enlisted party faction instead of player faction to prevent issues
-        (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-        (store_relation, ":attacker_relation", ":attacker_faction", ":lord_faction"),
-        (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-        (store_relation, ":defender_relation", ":defender_faction", ":lord_faction"),
-        (try_begin),
-          (ge, ":attacker_relation", 0),
-          (lt, ":defender_relation", 0),
-          (select_enemy,0),
-          (assign,"$g_enemy_party","$g_encountered_party"),
-          (assign,"$g_ally_party","$g_encountered_party_2"),
-          (jump_to_menu,"mnu_join_battle"),
-        (else_try),
-          (ge, ":defender_relation", 0),
-          (lt, ":attacker_relation", 0),
-          (select_enemy,1),
-          (assign,"$g_enemy_party","$g_encountered_party_2"),
-          (assign,"$g_ally_party","$g_encountered_party"),
-          (jump_to_menu,"mnu_join_battle"),
-        (else_try),
-          (select_enemy,1),
-          (assign,"$g_enemy_party","$g_encountered_party_2"),
-          (assign,"$g_ally_party","$g_encountered_party"),
-          (jump_to_menu,"mnu_join_battle"),
-        (try_end),
-          ]),
-        # ##freelancer defend
-        # ("pre_join_help_defenders_freelancer",[
-          # (ge, "$enlisted_party", 1),
-          # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-          # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
-          # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-          # (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
-          # (ge, ":defender_relation", 0),
-          # (lt, ":attacker_relation", 0),
-        # ],
-        # "Follow your commander into battle. [Defend]",[
+    ##freelancer attack
+    ("pre_join_help_attackers_freelancer",[
+        (ge, "$enlisted_party", 1),
         # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-        # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_faction"),
+        # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
         # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-        # (store_relation, ":defender_relation", ":defender_faction", "fac_player_faction"),
-        # (try_begin),
-          # (ge, ":attacker_relation", 0),
-          # (lt, ":defender_relation", 0),
-          # (select_enemy,0),
-          # (assign,"$g_enemy_party","$g_encountered_party"),
-          # (assign,"$g_ally_party","$g_encountered_party_2"),
-          # (jump_to_menu,"mnu_join_battle"),
-        # (else_try),
-          # (ge, ":defender_relation", 0),
-          # (lt, ":attacker_relation", 0),
-          # (select_enemy,1),
-          # (assign,"$g_enemy_party","$g_encountered_party_2"),
-          # (assign,"$g_ally_party","$g_encountered_party"),
-          # (jump_to_menu,"mnu_join_battle"),
-        # (else_try),
-          # (select_enemy,1),
-          # (assign,"$g_enemy_party","$g_encountered_party_2"),
-          # (assign,"$g_ally_party","$g_encountered_party"),
-          # (jump_to_menu,"mnu_join_battle"),
-        # (try_end),
-          # ]),
-
-          ("pre_join_help_attackers",[
-            (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-            (neq, ":defender_faction", "$players_kingdom"),
-          (eq, "$enlisted_party", -1),
-          ],
-          "Move in to help the {s2} (relation: {reg35}).",[
+        # (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
+        # (ge, ":attacker_relation", 0),
+        # (lt, ":defender_relation", 0),
+    ],"Follow your commander into battle.",[
+      (store_faction_of_party, ":lord_faction", "$enlisted_party"),##use enlisted party faction instead of player faction to prevent issues
+      (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
+      (store_relation, ":attacker_relation", ":attacker_faction", ":lord_faction"),
+      (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
+      (store_relation, ":defender_relation", ":defender_faction", ":lord_faction"),
+      (try_begin),
+        (ge, ":attacker_relation", 0),
+        (lt, ":defender_relation", 0),
         (select_enemy,0),
         (assign,"$g_enemy_party","$g_encountered_party"),
         (assign,"$g_ally_party","$g_encountered_party_2"),
-        ## WINDYPLAINS+ ## - Join any side - relation changes
-        (try_begin),
-            (store_faction_of_party, ":faction_no", "$g_enemy_party"),
-            (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
-            (ge, ":relation", -10),
-            # Improve relation with ally lords.
-            (party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
-            (try_for_range, ":stack_no", 0, ":stack_count"),
-                (party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
-                (troop_is_hero, ":troop_no"),
-                (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-                (call_script,"script_change_player_relation_with_troop", ":troop_no", 1),
-            (try_end),
-            # Reduce relation with enemy lords.
-            (party_get_num_companion_stacks, ":stack_count", "$g_enemy_party"),
-            (try_for_range, ":stack_no", 0, ":stack_count"),
-                (party_stack_get_troop_id, ":troop_no", "$g_enemy_party", ":stack_no"),
-                (troop_is_hero, ":troop_no"),
-                (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-                (call_script,"script_change_player_relation_with_troop", ":troop_no", -1),
-            (try_end),
-            # Improve relation with ally faction.
-            (store_faction_of_party, ":faction_no", "$g_ally_party"),
-            (call_script, "script_change_player_relation_with_faction", ":faction_no", 2),
-            # Reduce relation with enemy faction.
-            (store_faction_of_party, ":faction_no", "$g_enemy_party"),
-            (call_script, "script_change_player_relation_with_faction", ":faction_no", -2),
-        (try_end),
-        ## WINDYPLAINS- ##
-        (jump_to_menu,"mnu_join_battle")]),
-      ("pre_join_help_defenders",[(eq, "$enlisted_party", -1),
+        (jump_to_menu,"mnu_join_battle"),
+      (else_try),
+        (ge, ":defender_relation", 0),
+        (lt, ":attacker_relation", 0),
+        (select_enemy,1),
+        (assign,"$g_enemy_party","$g_encountered_party_2"),
+        (assign,"$g_ally_party","$g_encountered_party"),
+        (jump_to_menu,"mnu_join_battle"),
+      (else_try),
+        (select_enemy,1),
+        (assign,"$g_enemy_party","$g_encountered_party_2"),
+        (assign,"$g_ally_party","$g_encountered_party"),
+        (jump_to_menu,"mnu_join_battle"),
+      (try_end),
+    ]),
+      # ##freelancer defend
+      # ("pre_join_help_defenders_freelancer",[
+        # (ge, "$enlisted_party", 1),
+        # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
+        # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
+        # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
+        # (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
+        # (ge, ":defender_relation", 0),
+        # (lt, ":attacker_relation", 0),
+      # ],
+      # "Follow your commander into battle. [Defend]",[
+      # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
+      # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_faction"),
+      # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
+      # (store_relation, ":defender_relation", ":defender_faction", "fac_player_faction"),
+      # (try_begin),
+        # (ge, ":attacker_relation", 0),
+        # (lt, ":defender_relation", 0),
+        # (select_enemy,0),
+        # (assign,"$g_enemy_party","$g_encountered_party"),
+        # (assign,"$g_ally_party","$g_encountered_party_2"),
+        # (jump_to_menu,"mnu_join_battle"),
+      # (else_try),
+        # (ge, ":defender_relation", 0),
+        # (lt, ":attacker_relation", 0),
+        # (select_enemy,1),
+        # (assign,"$g_enemy_party","$g_encountered_party_2"),
+        # (assign,"$g_ally_party","$g_encountered_party"),
+        # (jump_to_menu,"mnu_join_battle"),
+      # (else_try),
+        # (select_enemy,1),
+        # (assign,"$g_enemy_party","$g_encountered_party_2"),
+        # (assign,"$g_ally_party","$g_encountered_party"),
+        # (jump_to_menu,"mnu_join_battle"),
+      # (try_end),
+    # ]),
+    ("pre_join_help_attackers",[
+      (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
+      (neq, ":defender_faction", "$players_kingdom"),
+      (eq, "$enlisted_party", -1),
+    ],"Move in to help the {s2} (relation: {reg35}).",[
+      (select_enemy,0),
+      (assign,"$g_enemy_party","$g_encountered_party"),
+      (assign,"$g_ally_party","$g_encountered_party_2"),
+      ## WINDYPLAINS+ ## - Join any side - relation changes
+      (try_begin),
+          (store_faction_of_party, ":faction_no", "$g_enemy_party"),
+          (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
+          (ge, ":relation", -10),
+          # Improve relation with ally lords.
+          (party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
+          (try_for_range, ":stack_no", 0, ":stack_count"),
+              (party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
+              (troop_is_hero, ":troop_no"),
+              (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+              (call_script,"script_change_player_relation_with_troop", ":troop_no", 1),
+          (try_end),
+          # Reduce relation with enemy lords.
+          (party_get_num_companion_stacks, ":stack_count", "$g_enemy_party"),
+          (try_for_range, ":stack_no", 0, ":stack_count"),
+              (party_stack_get_troop_id, ":troop_no", "$g_enemy_party", ":stack_no"),
+              (troop_is_hero, ":troop_no"),
+              (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+              (call_script,"script_change_player_relation_with_troop", ":troop_no", -1),
+          (try_end),
+          # Improve relation with ally faction.
+          (store_faction_of_party, ":faction_no", "$g_ally_party"),
+          (call_script, "script_change_player_relation_with_faction", ":faction_no", 2),
+          # Reduce relation with enemy faction.
+          (store_faction_of_party, ":faction_no", "$g_enemy_party"),
+          (call_script, "script_change_player_relation_with_faction", ":faction_no", -2),
+      (try_end),
+      ## WINDYPLAINS- ##
+      (jump_to_menu,"mnu_join_battle")
+    ]),
+    ("pre_join_help_defenders",[
+      (eq, "$enlisted_party", -1),
       (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
       (neq, ":attacker_faction", "$players_kingdom"),
-          ],
-          "Rush to the aid of the {s1} (relation: {reg36}).",[
-              (select_enemy,1),
-              (assign,"$g_enemy_party","$g_encountered_party_2"),
-              (assign,"$g_ally_party","$g_encountered_party"),
+    ],"Rush to the aid of the {s1} (relation: {reg36}).",[
+      (select_enemy,1),
+      (assign,"$g_enemy_party","$g_encountered_party_2"),
+      (assign,"$g_ally_party","$g_encountered_party"),
 
-			  ## WINDYPLAINS+ ## - Join any side - relation changes
-			  (try_begin),
-				(store_faction_of_party, ":faction_no", "$g_enemy_party"),
-				(store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
-				(ge, ":relation", -10),
-					# Improve relation with ally lords.
-					(party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
-					(try_for_range, ":stack_no", 0, ":stack_count"),
-						(party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
-						(troop_is_hero, ":troop_no"),
-						(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-						(call_script,"script_change_player_relation_with_troop", ":troop_no", 1),
-					(try_end),
-					# Reduce relation with enemy lords.
-					(party_get_num_companion_stacks, ":stack_count", "$g_enemy_party"),
-					(try_for_range, ":stack_no", 0, ":stack_count"),
-						(party_stack_get_troop_id, ":troop_no", "$g_enemy_party", ":stack_no"),
-						(troop_is_hero, ":troop_no"),
-						(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-						(call_script,"script_change_player_relation_with_troop", ":troop_no", -1),
-					(try_end),
-					# Improve relation with ally faction.
-					(store_faction_of_party, ":faction_no", "$g_ally_party"),
-					(call_script, "script_change_player_relation_with_faction", ":faction_no", 2),
-					# Reduce relation with enemy faction.
-					(store_faction_of_party, ":faction_no", "$g_enemy_party"),
-					(call_script, "script_change_player_relation_with_faction", ":faction_no", -2),
-				(try_end),
-			  ## WINDYPLAINS- ##
-              (jump_to_menu,"mnu_join_battle")]),
+      ## WINDYPLAINS+ ## - Join any side - relation changes
+      (try_begin),
+        (store_faction_of_party, ":faction_no", "$g_enemy_party"),
+        (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
+        (ge, ":relation", -10),
+        # Improve relation with ally lords.
+        (party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
+        (try_for_range, ":stack_no", 0, ":stack_count"),
+          (party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
+          (troop_is_hero, ":troop_no"),
+          (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+          (call_script,"script_change_player_relation_with_troop", ":troop_no", 1),
+        (try_end),
+        # Reduce relation with enemy lords.
+        (party_get_num_companion_stacks, ":stack_count", "$g_enemy_party"),
+        (try_for_range, ":stack_no", 0, ":stack_count"),
+          (party_stack_get_troop_id, ":troop_no", "$g_enemy_party", ":stack_no"),
+          (troop_is_hero, ":troop_no"),
+          (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+          (call_script,"script_change_player_relation_with_troop", ":troop_no", -1),
+        (try_end),
+        # Improve relation with ally faction.
+        (store_faction_of_party, ":faction_no", "$g_ally_party"),
+        (call_script, "script_change_player_relation_with_faction", ":faction_no", 2),
+        # Reduce relation with enemy faction.
+        (store_faction_of_party, ":faction_no", "$g_enemy_party"),
+        (call_script, "script_change_player_relation_with_faction", ":faction_no", -2),
+      (try_end),
+      ## WINDYPLAINS- ##
+      (jump_to_menu,"mnu_join_battle"),
+    ]),
 
       # ("pre_join_help_attackers",[
           # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
@@ -6283,9 +6287,13 @@ game_menus = [
               # (assign,"$g_enemy_party","$g_encountered_party_2"),
               # (assign,"$g_ally_party","$g_encountered_party"),
               # (jump_to_menu,"mnu_join_battle")]),
-      ("pre_join_leave",[ (eq, "$enlisted_party", -1),],"Don't get involved.",[(leave_encounter),(change_screen_return)]),
-    ]
-  ),
+      ("pre_join_leave",[
+        (eq, "$enlisted_party", -1),
+      ],"Don't get involved.",[
+        (leave_encounter),
+        (change_screen_return)
+      ]),
+]),
 
   (#SB : pic hotkeys
     "join_battle",mnf_enable_hot_keys,
@@ -9599,94 +9607,79 @@ game_menus = [
     ],
   ),
 
-  ("infiltracion_resultado4",0,
-    "Your men have returned. They said that some warriors are dissatisfied, and some were persuaded to switch to your side. If you agree, they will leave the city at night and join your army. Before they leave, they promise to cause unrest to facilitate the surrender of the place.",
-    "none", [ ],
+("infiltracion_resultado4",0,
+  "Your men have returned. They said that some warriors are dissatisfied, and some were persuaded to switch to your side. If you agree, they will leave the city at night and join your army. Before they leave, they promise to cause unrest to facilitate the surrender of the place.",
+  "none", [
+  ],[
+    ("aceptar_si",[],"They are welcome.",[
+      (store_random_in_range, ":p_leave", 4, 12),
+      (assign, ":num_troops", ":p_leave"),
+      (try_for_range, ":unused", 0, ":num_troops"),
+        (call_script, "script_cf_party_remove_random_regular_troop", "$g_encountered_party"),
+        (assign, ":lost_troop", reg0),
+        (party_add_members, "p_main_party", ":lost_troop", 1),
+      (try_end),
 
-    [("aceptar_si",[],"They are welcome.",
-        [
-          (store_random_in_range, ":p_leave", 4, 12),
-          (assign, ":num_troops", ":p_leave"),
-          (try_for_range, ":unused", 0, ":num_troops"),
-            (call_script, "script_cf_party_remove_random_regular_troop", "$g_encountered_party"),
-            (assign, ":lost_troop", reg0),
-            (party_add_members, "p_main_party", ":lost_troop", 1),
-          (try_end),
+      (party_get_slot,":cur_food","$g_encountered_party",slot_party_food_store),
+      (try_begin),
+        (ge,":cur_food",4),
+        (store_random_in_range,":burned",10,20),
+        (val_mul,":cur_food",100),
+        (val_add,":burned",100),
+        (val_div,":cur_food",":burned"),
+        (party_set_slot,"$g_encountered_party",slot_party_food_store,":cur_food"),
+        (str_store_party_name,s4,"$g_encountered_party"),
+        (display_message, "@{s4} lost between 10 and 20% of its food reserves.", 0xFF0000),
+      (try_end),
+      (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
+      (assign, "$g_infiltracion_interna", 4),
+      (jump_to_menu,"mnu_siege_plan"),
+    ]),
+    ("leave_men1",[],"It makes me uneasy. Forget about it.",[
+      (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
+      (assign, "$g_infiltracion_interna", 0),
+      (jump_to_menu,"mnu_siege_plan"),
+    ]),
+  ]),
 
-          (party_get_slot,":cur_food","$g_encountered_party",slot_party_food_store),
-          (try_begin),
-            (ge,":cur_food",4),
-            (store_random_in_range,":burned",10,20),
-            (val_mul,":cur_food",100),
-            (val_add,":burned",100),
-            (val_div,":cur_food",":burned"),
-            (party_set_slot,"$g_encountered_party",slot_party_food_store,":cur_food"),
-            (str_store_party_name,s4,"$g_encountered_party"),
-            (display_message, "@{s4} lost between 10 and 20% of its food reserves.", 0xFF0000),
-          (try_end),
-
-          (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
-          (assign, "$g_infiltracion_interna", 4),
-          (jump_to_menu,"mnu_siege_plan"),
-      ]),
-      ("leave_men1",[],"It makes me uneasy. Forget about it.",
-        [
-          (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
-          (assign, "$g_infiltracion_interna", 0),
-          (jump_to_menu,"mnu_siege_plan"),
-      ]),
-    ],
-  ),
-
-  ("infiltracion_resultado4_c",0,
-    "Your men have returned. They said that they poisoned the water of some wells and nearby streams. This should sicken many in the garrison.",
-    "none", [ ],
-
-    [("aceptar_oki",[],"That's good news. It will leave fewer men to defend the wall.",
-        [
-
-          (assign,":party_no","$g_encountered_party"),
-          (party_get_num_companion_stacks, ":num_stacks",":party_no"),
-          (party_get_slot,":party_type",":party_no",slot_party_type),
-          # (assign,":max_no",60),
-          (assign,":start_troop",0),
-          (try_begin),
-            (eq,":party_type",3), #town
-            (assign,":max_no",30), #30%
-            (call_script, "script_change_center_prosperity", ":party_no", -5),
-          (else_try),
-            #(eq,":party_type",2), #fort
-            (assign,":max_no",20), #20%
-            (call_script, "script_change_center_prosperity", ":party_no", -3),
-          (try_end),
-          (party_get_slot, ":food_stores", ":party_no", slot_party_food_store),
-          (call_script, "script_center_get_food_store_limit", ":party_no"),
-          (val_min, ":food_stores", reg0),
-          (party_set_slot, ":party_no", slot_party_food_store, ":food_stores"),
-          (try_for_range, ":stack_no", ":start_troop", ":num_stacks"),
-            (party_stack_get_troop_id,":cur_troop_id",":party_no",":stack_no"),
-            (party_stack_get_size,":num_troops",":party_no",":stack_no"),
-            (val_mul,":num_troops",100),
-            (store_random_in_range,":wounds",10,":max_no"), #10% wounds - 10 to 20 0 30 depend on center type
-            (val_add,":wounds",100),
-            (store_div,":damage",":num_troops",":wounds"),
-            (party_wound_members,":party_no",":cur_troop_id",":damage"),
-            (str_store_party_name,s4,"$g_encountered_party"),
-            (display_message, "@{s4} have between 10 and 30% of its garrison sick for a few days.", 0xFF0000),
-          (try_end),
-
-          (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
-          (assign, "$g_infiltracion_interna", 4),
-          (jump_to_menu,"mnu_siege_plan"),
-      ]),
-      ##        ("leave_men",[],"It makes me uneasy. Forget about it.",
-      ##       [
-      ##                          (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
-      ##                        (assign, "$g_infiltracion_interna", 0),
-      ##                        (jump_to_menu,"mnu_siege_plan"),
-      ##        ]),
-    ],
-  ),
+("infiltracion_resultado4_c",0,
+  "Your men have returned. They said that they poisoned the water of some wells and nearby streams. This should sicken many in the garrison.",
+  "none", [
+  ],[
+    ("aceptar_oki",[],"That's good news. It will leave fewer men to defend the wall.",[
+      (assign,":party_no","$g_encountered_party"),
+      (party_get_num_companion_stacks, ":num_stacks",":party_no"),
+      (party_get_slot,":party_type",":party_no",slot_party_type),
+      # (assign,":max_no",60),
+      (assign,":start_troop",0),
+      (try_begin),
+        (eq,":party_type",3), #town
+        (assign,":max_no",300), #30%
+        (call_script, "script_change_center_prosperity", ":party_no", -5),
+      (else_try),
+        #(eq,":party_type",2), #fort
+        (assign,":max_no",200), #20%
+        (call_script, "script_change_center_prosperity", ":party_no", -3),
+      (try_end),
+      (party_get_slot, ":food_stores", ":party_no", slot_party_food_store),
+      (call_script, "script_center_get_food_store_limit", ":party_no"),
+      (val_min, ":food_stores", reg0),
+      (party_set_slot, ":party_no", slot_party_food_store, ":food_stores"),
+      (try_for_range, ":stack_no", ":start_troop", ":num_stacks"),
+        (party_stack_get_troop_id,":cur_troop_id",":party_no",":stack_no"),
+        (party_stack_get_size,":num_troops",":party_no",":stack_no"),
+        (store_random_in_range,":percentage_wounded",100,":max_no"), #10% wounds - 10 to 20 0 30 depend on center type
+        (store_mul,":damage",":num_troops",":percentage_wounded"),
+        (val_div, ":damage", 1000),
+        (party_wound_members,":party_no",":cur_troop_id",":damage"),
+      (try_end),
+      (str_store_party_name,s4,"$g_encountered_party"),
+      (display_message, "@{s4} have between 10 and 30% of its garrison sick for a few days.", 0xFF0000),
+      (party_set_slot,"$g_encountered_party",slot_center_infiltration_type,0),
+      (assign, "$g_infiltracion_interna", 4),
+      (jump_to_menu,"mnu_siege_plan"),
+    ]),
+]),
 
   ("infiltracion_resultado5",0,
     "Oh, sir. The enemy has sent a bag with the heads of your men. Some of our soldiers have seen it, and fear runs through the camp.",
@@ -16922,57 +16915,9 @@ game_menus = [
     ],"Door to your enterprise."),
 
     ("visit_lady",[
-      (assign, "$love_interest_in_town", 0),
-      (assign, "$love_interest_in_town_2", 0),
-      (assign, "$love_interest_in_town_3", 0),
-      (assign, "$love_interest_in_town_4", 0),
-      (assign, "$love_interest_in_town_5", 0),
-      (assign, "$love_interest_in_town_6", 0),
-      (assign, "$love_interest_in_town_7", 0),
-      (assign, "$love_interest_in_town_8", 0),
-      (try_for_range, ":lady_no", kingdom_ladies_begin, kingdom_ladies_end),
-        (troop_slot_eq, ":lady_no", slot_troop_cur_center, "$current_town"),
-        (call_script, "script_get_kingdom_lady_social_determinants", ":lady_no"),
-        (assign, ":lady_guardian", reg0),
-
-        (troop_slot_eq, ":lady_no", slot_troop_spouse, -1),
-        (ge, ":lady_guardian", 0), #not sure when this would not be the case
-
-        #must have spoken to either father or lady
-        (this_or_next|troop_slot_ge, ":lady_no", slot_troop_met, 2),
-        (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 1),
-
-        (neg|troop_slot_eq, ":lady_no", slot_troop_met, 4),
-        (try_begin),
-          (eq, "$love_interest_in_town", 0),
-          (assign, "$love_interest_in_town", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_2", 0),
-          (assign, "$love_interest_in_town_2", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_3", 0),
-          (assign, "$love_interest_in_town_3", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_4", 0),
-          (assign, "$love_interest_in_town_4", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_5", 0),
-          (assign, "$love_interest_in_town_5", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_6", 0),
-          (assign, "$love_interest_in_town_6", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_7", 0),
-          (assign, "$love_interest_in_town_7", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_8", 0),
-          (assign, "$love_interest_in_town_8", ":lady_no"),
-        (try_end),
-      (try_end),
-      (gt, "$love_interest_in_town", 0),
-    ],"Attempt to visit a lady",[
-      (jump_to_menu, "mnu_lady_visit"),
-    ], "Door to the garden."),
+      (eq, 0, 1),
+    ],"Unused",[
+    ], "Unused."),
 
     ("trade_with_merchants",[
       (party_slot_eq,"$current_town",slot_party_type, spt_town)
@@ -17399,7 +17344,6 @@ game_menus = [
       (jump_to_menu, "mnu_temple_jerusalem"),
       (finish_mission),
     ], "Door to the Temple"),
-
     ("visit_dungen",[
       (eq, 0, 1),
     ],"Door to the catacombs.",[
@@ -17412,7 +17356,6 @@ game_menus = [
       (jump_to_scene, "scn_church"),
       (change_screen_mission),
     ], "Door to the catacombs"),
-
     ("visit_garden_secret",[
       (eq, 0, 1),
     ],"Door to the stream.",[
@@ -17431,14 +17374,12 @@ game_menus = [
           (display_message, "str_door_locked"),
       (try_end),
     ], "Door"),
-
     ("visit_labyrinth",[
 		  (eq, 0, 1),
     ],"Enter the labyrinth.",[
       (set_passage_menu,"mnu_town"),
       (modify_visitors_at_site, "scn_labyrinth"),
       (reset_visitors),
-
       (set_jump_mission, "mt_minotau"),
       (display_message, "@Your companions are too scared and refuse to enter the cave."),
       (try_begin),
@@ -17446,7 +17387,6 @@ game_menus = [
         (scene_slot_eq, "scn_labyrinth", slot_scene_visited, 0),
         (set_visitor, 1, "trp_minotau"),
       (try_end),
-
       (try_begin),
         (scene_slot_ge, "scn_labyrinth", slot_scene_visited, 1),
         (set_visitor, 2, "trp_player"),
@@ -17556,7 +17496,6 @@ game_menus = [
       (jump_to_scene, ":town_scene"),
       (change_screen_mission),
     ],"Visit the light house."),
-
     ("rest_of_rome",[
       (eq, 0, 1),
     ],"Back street.",[
@@ -17753,7 +17692,6 @@ game_menus = [
           (display_message, "str_door_locked"),
       (try_end),
     ], "Visit Augusta's bedroom."),
-
     ("gardens_of_manacea",[
       (eq, 0, 1),
     ],"Visit Gardens of Maecenas.",[
@@ -17789,7 +17727,6 @@ game_menus = [
           (change_screen_mission),
       (try_end),
     ], "Visit the gardens of Maecenas."),
-
     ("visit_akademia",[
       (eq, "$current_town", "p_town_37"),
       (lt, "$sneaked_into_town", 1), #not sneaked
@@ -17838,44 +17775,30 @@ game_menus = [
         (change_screen_mission),
       (try_end),
     ]),
-
     ("collect_taxes_qst",[
-      (check_quest_active, "qst_collect_taxes"),
-      (quest_slot_eq, "qst_collect_taxes", slot_quest_target_center, "$current_town"),
-      (neg|quest_slot_eq, "qst_collect_taxes", slot_quest_current_state, 4),
-      (quest_get_slot, ":quest_giver_troop", "qst_collect_taxes", slot_quest_giver_troop),
-      (str_store_troop_name, s1, ":quest_giver_troop"),
-      (quest_get_slot, reg5, "qst_collect_taxes", slot_quest_current_state),
-    ],"{reg5?Continue collecting taxes:Collect taxes} due to {s1}.",[
-      (jump_to_menu, "mnu_collect_taxes"),
-    ]),
-
+      (eq, 0, 1),
+    ],"Unused",[
+    ], "Unused"),
     ("villa",[
       (eq,"$current_town","p_town_34"),
 	    (troop_slot_eq, "trp_global_variables", g_player_villa, 2),
     ],"Visit the 'Domus Mare'.",[
 		  (jump_to_menu, "mnu_villa")
     ]),
-
     ("recruit_volunteers_castle",[
       (eq, 1, 0),
-    ],"Recruit Volunteers.",[
-    ]),
-
+    ],"Unused",[
+    ],"Unused"),
     ("recruit_legions", [
       (ge, "$g_encountered_party_relation", 0),
       (eq, "$players_kingdom", "$g_encountered_party_faction"),
     ],"Recruit troops.",[
       (jump_to_menu, "mnu_barracks"),
     ]),
-
 		("set_sail",[
-      (party_slot_eq, "$current_town", slot_town_port, 1),
-      (eq, "$enlisted_party", -1),#not freelancing
-    ],"Visit the port",[
-		  (jump_to_menu, "mnu_town_port"),
-		]),
-
+      (eq, 1, 0),
+    ],"Unused",[
+		],"Unused"),
     ("visit_jerusalem_temple",[
       (eq, "$current_town", "p_town_19"),
       (eq, "$templelooted", 0),
@@ -17888,7 +17811,6 @@ game_menus = [
           (jump_to_menu, "mnu_temple_jerusalem"),
       (try_end),
     ]),
-
     ("visit_gaius_villae",[
       (check_quest_active, "qst_nero_special_quest"),
       (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 2),
@@ -17921,7 +17843,6 @@ game_menus = [
         (jump_to_menu, "mnu_desperatius_villa"),
       (try_end),
     ]),
-
     ("visit_library_alexandria",[
       (lt, "$sneaked_into_town", 1), #not sneaked
       (eq, "$enlisted_party", -1),#not freelancing
@@ -17929,7 +17850,6 @@ game_menus = [
     ],"Visit the Mouseion.",[
       (jump_to_menu, "mnu_library_alexandria"),
     ]),
-
     ("visit_golgotha",[
       (eq, "$current_town", "p_town_19"),
     ],"Visit Golgotha.",[
@@ -17944,7 +17864,6 @@ game_menus = [
           (change_screen_mission),
       (try_end),
     ]),
-
     ("visit_alexanders_tomb",[
       (eq, "$current_town", "p_town_20"),
     ],"Visit the tomb of Megas Alexandros.",[
@@ -17972,7 +17891,6 @@ game_menus = [
       (jump_to_scene, "scn_alexanders_tomb"),
       (change_screen_mission),
     ]),
-
     ("visit_latrina",[
       (eq, 0, 1),
       (eq, "$current_town", "p_town_6"),
@@ -17996,7 +17914,6 @@ game_menus = [
       (jump_to_scene, "scn_roman_latrina"),
       (change_screen_mission),
     ], "Enter the Latrinae."),
-
     ("visit_christian_chapel",[
       (eq, 0, 1),
     ],"Door to the chapel.",[
@@ -18008,17 +17925,14 @@ game_menus = [
         (call_script, "script_enter_secret_christian_church", 1),
       (try_end),
     ], "Door."),
-
     ("visit_temples",[
       (eq, "$current_town", "p_town_6"),
     ],"Visit the sights of Rome.",[
       (jump_to_menu, "mnu_temples"),
     ]),
-
     ("town_action",[],"Take an action.",[
       (jump_to_menu, "mnu_town_action"),
     ]),
-
     ("town_leave",[],"Leave...",[
       (assign, "$g_permitted_to_center",0),
       (try_begin),
@@ -24098,117 +24012,104 @@ goods, and books will never be sold. ^^You can change some settings here freely.
      ]
   ),
 
-  (
-    "notification_lady_requests_visit",0, #add this once around seven days after the last visit, or three weeks, or three months
-    "An elderly woman approaches your party and passes one of your men a letter, sealed in plain wax. It is addressed to you. When you break the seal, you see it is from {s15}. It reads, 'I so enjoyed your last visit. {s14} I am currently in {s10}.{s12}'",
-    "none",
-    [
+("notification_lady_requests_visit",0, #add this once around seven days after the last visit, or three weeks, or three months
+  "An elderly woman approaches your party and passes one of your men a letter, sealed in plain wax. It is addressed to you. When you break the seal, you see it is from {s15}. It reads, 'I so enjoyed your last visit. {s14} I am currently in {s10}.{s12}'",
+  "none",[
+    (assign, ":lady_no", "$g_notification_menu_var1"),
+    (assign, ":center_no", "$g_notification_menu_var2"),
+    (str_store_troop_name, s15, ":lady_no"),
+    (str_store_party_name, s10, ":center_no"),
+    (store_current_hours, ":hours_since_last_visit"),
+    (troop_get_slot, ":last_visit_hours", ":lady_no", slot_troop_last_talk_time),
+    (val_sub, ":hours_since_last_visit", ":last_visit_hours"),
 
-      (assign, ":lady_no", "$g_notification_menu_var1"),
-      (assign, ":center_no", "$g_notification_menu_var2"),
+    (call_script, "script_get_kingdom_lady_social_determinants", ":lady_no"),
+    (assign, ":lady_guardian", reg0),
 
-      (str_store_troop_name, s15, ":lady_no"),
-      (str_store_party_name, s10, ":center_no"),
+    (str_store_troop_name, s16, ":lady_guardian"),
+    (call_script, "script_troop_get_family_relation_to_troop", ":lady_guardian", ":lady_no"),
 
-      (store_current_hours, ":hours_since_last_visit"),
-      (troop_get_slot, ":last_visit_hours", ":lady_no", slot_troop_last_talk_time),
-      (val_sub, ":hours_since_last_visit", ":last_visit_hours"),
-
-      (call_script, "script_get_kingdom_lady_social_determinants", ":lady_no"),
-      (assign, ":lady_guardian", reg0),
-
-      (str_store_troop_name, s16, ":lady_guardian"),
-      (call_script, "script_troop_get_family_relation_to_troop", ":lady_guardian", ":lady_no"),
-
-      (str_clear, s14),
+    (str_clear, s14),
+    (try_begin),
+      (lt, ":hours_since_last_visit", 336),
       (try_begin),
-        (lt, ":hours_since_last_visit", 336),
-        (try_begin),
-            (troop_slot_eq, ":lady_no", slot_lord_reputation_type, lrep_otherworldly),
-            (str_store_string, s14, "str_as_brief_as_our_separation_has_been_the_longing_in_my_heart_to_see_you_has_made_it_seem_as_many_years"),
-        (else_try),
-            (str_store_string, s14, "str_although_it_has_only_been_a_short_time_since_your_departure_but_i_would_be_most_pleased_to_see_you_again"),
-        (try_end),
+          (troop_slot_eq, ":lady_no", slot_lord_reputation_type, lrep_otherworldly),
+          (str_store_string, s14, "str_as_brief_as_our_separation_has_been_the_longing_in_my_heart_to_see_you_has_made_it_seem_as_many_years"),
       (else_try),
-        (ge, ":hours_since_last_visit", 336),
+          (str_store_string, s14, "str_although_it_has_only_been_a_short_time_since_your_departure_but_i_would_be_most_pleased_to_see_you_again"),
+      (try_end),
+    (else_try),
+      (ge, ":hours_since_last_visit", 336),
+      (try_begin),
+          (troop_slot_eq, ":lady_no", slot_lord_reputation_type, lrep_ambitious),
+          (str_store_string, s14, "str_although_i_have_received_no_word_from_you_for_quite_some_time_i_am_sure_that_you_must_have_been_very_busy_and_that_your_failure_to_come_see_me_in_no_way_indicates_that_your_attentions_to_me_were_insincere_"),
+      (else_try),
+          (troop_slot_eq, ":lady_no", slot_lord_reputation_type, lrep_moralist),
+          (str_store_string, s14, "str_i_trust_that_you_have_comported_yourself_in_a_manner_becoming_a_gentleman_during_our_long_separation_"),
+      (else_try),
+          (str_store_string, s14, "str_it_has_been_many_days_since_you_came_and_i_would_very_much_like_to_see_you_again"),
+      (try_end),
+    (try_end),
+
+    (str_clear, s12),
+    (str_clear, s18),
+    ##diplomacy start+ Store gender in register for use below
+    (assign, ":save_reg4", reg4),
+    (call_script, "script_dplmc_store_troop_is_female_reg", ":lady_guardian", 4),
+    ##diplomacy end+
+    (try_begin),
+      (troop_slot_eq, ":lady_no", slot_troop_lover, "trp_player"),#
+      (troop_slot_ge, ":lady_no", slot_troop_spouse, 1),#is married
+      (str_store_string, s12, "str_lover_1"),
+    (else_try),
+      (neq, ":lady_guardian", ":lady_no"),#she is not her own guardian
         (try_begin),
-            (troop_slot_eq, ":lady_no", slot_lord_reputation_type, lrep_ambitious),
-            (str_store_string, s14, "str_although_i_have_received_no_word_from_you_for_quite_some_time_i_am_sure_that_you_must_have_been_very_busy_and_that_your_failure_to_come_see_me_in_no_way_indicates_that_your_attentions_to_me_were_insincere_"),
+          (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 0),
+          (str_store_string, s12, "str__you_should_ask_my_s11_s16s_permission_but_i_have_no_reason_to_believe_that_he_will_prevent_you_from_coming_to_see_me"),
+          (str_store_string, s18, "str__you_should_first_ask_her_s11_s16s_permission"),
         (else_try),
-            (troop_slot_eq, ":lady_no", slot_lord_reputation_type, lrep_moralist),
-            (str_store_string, s14, "str_i_trust_that_you_have_comported_yourself_in_a_manner_becoming_a_gentleman_during_our_long_separation_"),
+          (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, -1),
+          (str_store_string, s12, "str__alas_as_we_know_my_s11_s16_will_not_permit_me_to_see_you_however_i_believe_that_i_can_arrange_away_for_you_to_enter_undetected"),
         (else_try),
-            (str_store_string, s14, "str_it_has_been_many_days_since_you_came_and_i_would_very_much_like_to_see_you_again"),
+          (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 1),
+          (str_store_string, s12, "str__as_my_s11_s16_has_already_granted_permission_for_you_to_see_me_i_shall_expect_your_imminent_arrival"),
         (try_end),
+    (try_end),
+    ##diplomacy start+ Revert register
+    (assign, reg4, ":save_reg4"),
+    ##diplomacy end+
+    #SB : add tableau for lady
+    (set_fixed_point_multiplier, 100),
+    (init_position, pos0),
+    (position_set_x, pos0, 60),
+    (position_set_y, pos0, 20),
+    (position_set_z, pos0, 100),
+    (set_game_menu_tableau_mesh, "tableau_dplmc_lord_profile", ":lady_no", pos0),
+  ],[
+    ("continue",[],"Tell the woman to inform her mistress that you will come shortly",[
+      (assign, ":lady_to_visit", "$g_notification_menu_var1"),
+      (str_store_troop_name_link, s3, ":lady_to_visit"),
+      (str_store_party_name_link, s4, "$g_notification_menu_var2"),
+
+      (str_store_string, s2, "str_visit_s3_who_was_last_at_s4s18"),
+      (call_script, "script_start_quest", "qst_visit_lady", ":lady_to_visit"),
+      (quest_set_slot, "qst_visit_lady", slot_quest_giver_troop, ":lady_to_visit"), #don't know why this is necessary
+
+      (try_begin),
+          (eq, "$cheat_mode", 1),
+          (quest_get_slot, ":giver_troop", "qst_visit_lady", slot_quest_giver_troop),
+          (str_store_troop_name, s2, ":giver_troop"),
+          (display_message, "str_giver_troop_=_s2"),
       (try_end),
 
-      (str_clear, s12),
-      (str_clear, s18),
-      ##diplomacy start+ Store gender in register for use below
-      (assign, ":save_reg4", reg4),
-      (call_script, "script_dplmc_store_troop_is_female_reg", ":lady_guardian", 4),
-      ##diplomacy end+
-      (try_begin),
-        (troop_slot_eq, ":lady_no", slot_troop_lover, "trp_player"),#
-        (troop_slot_ge, ":lady_no", slot_troop_spouse, 1),#is married
-        (str_store_string, s12, "str_lover_1"),
-      (else_try),
-        (neq, ":lady_guardian", ":lady_no"),#she is not her own guardian
-          (try_begin),
-            (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 0),
-            (str_store_string, s12, "str__you_should_ask_my_s11_s16s_permission_but_i_have_no_reason_to_believe_that_he_will_prevent_you_from_coming_to_see_me"),
-            (str_store_string, s18, "str__you_should_first_ask_her_s11_s16s_permission"),
-          (else_try),
-            (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, -1),
-            (str_store_string, s12, "str__alas_as_we_know_my_s11_s16_will_not_permit_me_to_see_you_however_i_believe_that_i_can_arrange_away_for_you_to_enter_undetected"),
-          (else_try),
-            (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 1),
-            (str_store_string, s12, "str__as_my_s11_s16_has_already_granted_permission_for_you_to_see_me_i_shall_expect_your_imminent_arrival"),
-          (try_end),
-      (try_end),
-      ##diplomacy start+ Revert register
-      (assign, reg4, ":save_reg4"),
-      ##diplomacy end+
-
-      #SB : add tableau for lady
-      (set_fixed_point_multiplier, 100),
-      (init_position, pos0),
-      (position_set_x, pos0, 60),
-      (position_set_y, pos0, 20),
-      (position_set_z, pos0, 100),
-      (set_game_menu_tableau_mesh, "tableau_dplmc_lord_profile", ":lady_no", pos0),
-      ],
-    [
-
-      ("continue",[],"Tell the woman to inform her mistress that you will come shortly",
-       [
-
-        (assign, ":lady_to_visit", "$g_notification_menu_var1"),
-        (str_store_troop_name_link, s3, ":lady_to_visit"),
-        (str_store_party_name_link, s4, "$g_notification_menu_var2"),
-
-        (str_store_string, s2, "str_visit_s3_who_was_last_at_s4s18"),
-        (call_script, "script_start_quest", "qst_visit_lady", ":lady_to_visit"),
-        (quest_set_slot, "qst_visit_lady", slot_quest_giver_troop, ":lady_to_visit"), #don't know why this is necessary
-
-        (try_begin),
-            (eq, "$cheat_mode", 1),
-            (quest_get_slot, ":giver_troop", "qst_visit_lady", slot_quest_giver_troop),
-            (str_store_troop_name, s2, ":giver_troop"),
-            (display_message, "str_giver_troop_=_s2"),
-        (try_end),
-
-        (quest_set_slot, "qst_visit_lady", slot_quest_expiration_days, 30),
-        (change_screen_return),
-        ]),
-
-      ("continue",[],"Tell the woman to inform her mistress that you are indisposed",
-       [
-        (troop_set_slot, "$g_notification_menu_var1", slot_lady_no_messages, 1),
-        (change_screen_return),
-        ]),
-     ]
-  ),
+      (quest_set_slot, "qst_visit_lady", slot_quest_expiration_days, 30),
+      (change_screen_return),
+    ]),
+    ("continue",[],"Tell the woman to inform her mistress that you are indisposed",[
+      (troop_set_slot, "$g_notification_menu_var1", slot_lady_no_messages, 1),
+      (change_screen_return),
+    ]),
+]),
 
   ( #pre lady visit
     "garden",0,
@@ -35430,127 +35331,108 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ),
 
 ("library_alexandria",0,
-    "The knowledge of the whole world can be found here. Safely guarded by walls.^^\
-	You may buy copies of books from the library.",
-    "none",
-    [
-	(set_background_mesh, "mesh_pic_library"),
-
-      ],
-    [
-
-      ("answere_2",[],
-	  "Trade books.",
-	  [
-    (try_begin),
-      (this_or_next|party_slot_ge, "$current_town", slot_center_player_relation, 20),
-      (eq, "$g_is_emperor",1),#is Emperor
-      (try_for_range, ":books", books_begin, books_end),
-        (store_item_kind_count, ":number", ":books", "trp_alexandrian_library"),
-        (lt, ":number", 1),
-        (troop_add_item,"trp_alexandrian_library",":books"),
+  "The knowledge of the whole world can be found here. Safely guarded by walls.^^"
+  +"You may buy copies of books from the library.",
+  "none",[
+	  (set_background_mesh, "mesh_pic_library"),
+  ],[
+    ("answere_2",[],"Trade books.",[
+      (try_begin),
+        (this_or_next|party_slot_ge, "$current_town", slot_center_player_relation, 20),
+        (eq, "$g_is_emperor",1),#is Emperor
+        (try_for_range, ":books", books_begin, books_end),
+          (neq, ":books", "itm_book_poop"),
+          (store_item_kind_count, ":number", ":books", "trp_alexandrian_library"),
+          (lt, ":number", 1),
+          (troop_add_item,"trp_alexandrian_library",":books"),
+        (try_end),
+        (change_screen_trade, "trp_alexandrian_library"),
+      (else_try),
+        (display_message, "@The scholars don't trust you enough. (Improve your relation with Alexandria.)"),
       (try_end),
-      (change_screen_trade, "trp_alexandrian_library"),
+    ]),
+    ("answere_2",[],"Walk around.",[
+      #0 player
+      #1-20 sitting
+      #21-32 standing
+      #33 head of library
+      #40,41 special next to each other
+      #42 special
+      (modify_visitors_at_site, "scn_library"),
+      (set_jump_mission, "mt_library"),
+      (reset_visitors),
+      (try_for_range, ":index", 1, 21),
+        (set_visitor, ":index", "trp_guest_sitting"),
+      (try_end),
 
-    (else_try),
-      (display_message, "@The scholars don't trust you enough. (Improve your relation with Alexandria.)"),
-    (try_end),
-      ]),
+      (try_for_range, ":index", 21, 33),
+        (set_visitor, ":index", "trp_guest"),
+      (try_end),
+      (set_visitor, 33, "trp_alexandrian_library"),
+      (try_begin),
+        (quest_slot_eq, "qst_philosopher", slot_quest_current_state, 0),
+        (set_visitor, 40, "trp_solus"),
+      (try_end),
 
-     ("answere_2",[],
-	  "Walk around.",
-	  [
-    #0 player
-    #1-20 sitting
-    #21-32 standing
-    #33 head of library
-    #40,41 special next to each other
-    #42 special
-	  (modify_visitors_at_site, "scn_library"),
-    (set_jump_mission, "mt_library"),
-	  (reset_visitors),
-    (try_for_range, ":index", 1, 21),
-      (set_visitor, ":index", "trp_guest_sitting"),
-    (try_end),
+      (try_begin),
+        (lt, "$g_is_emperor", 1),
+        (set_visitor, 36, "trp_greek_philosopher"),
+        (set_visitor, 37, "trp_roman_philosopher"),
+      (try_end),
 
-    (try_for_range, ":index", 21, 33),
-      (set_visitor, ":index", "trp_guest"),
-    (try_end),
-	  (set_visitor, 33, "trp_alexandrian_library"),
-    (try_begin),
-      (quest_slot_eq, "qst_philosopher", slot_quest_current_state, 0),
-      (set_visitor, 40, "trp_solus"),
-    (try_end),
-
-    (try_begin),
-      (lt, "$g_is_emperor", 1),
-      (set_visitor, 36, "trp_greek_philosopher"),
-      (set_visitor, 37, "trp_roman_philosopher"),
-    (try_end),
-
-    (try_begin),#second outift
-      (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-      (call_script, "script_init_second_outfit", "mt_library", 0, 0),
-      (mission_tpl_entry_set_override_flags, "mt_library", 0, af_override_outfit_1|af_override_horse),
-    (try_end),
-	  (set_visitor, 0, "trp_player"),
-    (jump_to_scene, "scn_library"),
-    (change_screen_mission),
-      ]),
-
-	  ("answere_1",[],
-	  "Go back",
-	  [
-
-	  (jump_to_menu, "mnu_town"),
-      ]),
-	],
-),
+      (try_begin),#second outift
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_library", 0, 0),
+        (mission_tpl_entry_set_override_flags, "mt_library", 0, af_override_outfit_1|af_override_horse),
+      (try_end),
+      (set_visitor, 0, "trp_player"),
+      (jump_to_scene, "scn_library"),
+      (change_screen_mission),
+    ]),
+	  ("answere_1",[],"Go back",[
+	    (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
 ("temple_jerusalem_story_decide",0,
-    "Do you want to collect the tribute? You need at least 50 non-wounded men in your party and you should be not wounded!",
-    "none",[
-	    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
-    ],[
-      ("answere_1",[
-          (call_script, "script_party_count_members_with_full_health", "p_main_party"),
-          (gt, reg0, 50), #it is very dangerous you need enough men to protect yourself from angry jews
-          (neg|troop_is_wounded, "trp_player"),
-      ],"Continue.",[
-        (jump_to_menu, "mnu_temple_jerusalem_story"),
-      ]),
-      ("answere_1",[],"Go back.",[
-        (jump_to_menu, "mnu_town"),
-      ]),
-	],
-),
+  "Do you want to collect the tribute? You need at least 50 non-wounded men in your party and you should be not wounded!",
+  "none",[
+    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
+  ],[
+    ("answere_1",[
+      (call_script, "script_party_count_members_with_full_health", "p_main_party"),
+      (gt, reg0, 50), #it is very dangerous you need enough men to protect yourself from angry jews
+      (neg|troop_is_wounded, "trp_player"),
+    ],"Continue.",[
+      (jump_to_menu, "mnu_temple_jerusalem_story"),
+    ]),
+    ("answere_1",[],"Go back.",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
 ("temple_jerusalem_story",0,
-    "You enter the Court of the Gentiles together with your troops. It is the main yard of the temple and open to people of all religions. You see merchants selling all kind of goods, from food to expensive souvenirs. Then you spot the money-changer. They make a fine living by exchanging currencies of the pilgrims who flood the temple every day. Judging by the high amount of foreign languages you hear, the pilgrims seem to come from all corners of the Empire. You spot everything, from poor, raggedly dressed beggars to magnificently adorned noble ladies. Yet, what they all have in common is their fervent faith.^^Finally, you inform a priest about your audience. You tell him that you are send by Caesar Nero to discuss important matters of politics with the high priests. He bows and informs you to wait a moment, he will arrange an audience. While you wait you let your glance again wander over the crowd. The sun is burning and the air in the yard slowly turns into a stench of a variety of smells. Rotten fish mixes with spices, the stinking sweat of the poor mingles with the perfume of the noble ladies.^^The priest comes back and tells you to follow him. The high priests await the legate of the Princeps. You enter the hall together with two of your soldiers.",
-    "none",[
-	    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
-    ],
-    [
-      ("answere_1",[],
-	    "Continue.",
-      [
-        (assign, "$temp2", "trp_kingdom_17_lord"),
-        (assign, "$temp1", 1),
-        (assign, "$talk_context", 0),
-        (modify_visitors_at_site,"scn_castle_masada_in"),
-        (reset_visitors),
-        (set_visitor,0,"trp_player"),
-        (set_visitor,6,"trp_aux_cav_decurio"),
-        (set_visitor,16,"trp_kingdom_17_lord"),
-        (set_visitor,17,"trp_jewish_priest"),
-        (set_visitor,18,"trp_jewish_priest"),
-        (set_visitor,19,"trp_jewish_priest"),
-        (set_jump_mission,"mt_event2_talk"),
-        (jump_to_scene, "scn_castle_masada_in"),
-        (change_screen_mission),
-      ]),
-	],
-),
+  "You enter the Court of the Gentiles together with your troops. It is the main yard of the temple and open to people of all religions. You see merchants selling all kind of goods, from food to expensive souvenirs. Then you spot the money-changer. They make a fine living by exchanging currencies of the pilgrims who flood the temple every day. Judging by the high amount of foreign languages you hear, the pilgrims seem to come from all corners of the Empire. You spot everything, from poor, raggedly dressed beggars to magnificently adorned noble ladies. Yet, what they all have in common is their fervent faith.^^Finally, you inform a priest about your audience. You tell him that you are send by Caesar Nero to discuss important matters of politics with the high priests. He bows and informs you to wait a moment, he will arrange an audience. While you wait you let your glance again wander over the crowd. The sun is burning and the air in the yard slowly turns into a stench of a variety of smells. Rotten fish mixes with spices, the stinking sweat of the poor mingles with the perfume of the noble ladies.^^The priest comes back and tells you to follow him. The high priests await the legate of the Princeps. You enter the hall together with two of your soldiers.",
+  "none",[
+    (set_background_mesh, "mesh_pic_jerusalem_tempel"),
+  ],[
+    ("answere_1",[],"Continue.",[
+      (assign, "$temp2", "trp_kingdom_17_lord"),
+      (assign, "$temp1", 1),
+      (assign, "$talk_context", 0),
+      (modify_visitors_at_site,"scn_castle_masada_in"),
+      (reset_visitors),
+      (set_visitor,0,"trp_player"),
+      (set_visitor,6,"trp_aux_cav_decurio"),
+      (set_visitor,16,"trp_kingdom_17_lord"),
+      (set_visitor,17,"trp_jewish_priest"),
+      (set_visitor,18,"trp_jewish_priest"),
+      (set_visitor,19,"trp_jewish_priest"),
+      (set_jump_mission,"mt_event2_talk"),
+      (jump_to_scene, "scn_castle_masada_in"),
+      (change_screen_mission),
+    ]),
+]),
 
 ("temple_jerusalem_story_loot_1",0,
   "Your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out. You order some of your men to guard the entrance. You and your other men storm into the inner court and imprison the priests. Then your men break up the door into the sanctum and start looting. All the treasuries are carried out of the temple. ^After half an hour one of your men reports that there is nothing left to loot. You order to leave the temple. But you are soon stopped by an angry mob, shouting insults, moving in your direction. Now you must fight!",
@@ -51812,6 +51694,74 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (call_script, "script_set_town_picture"),
   ],[
+    ("visit_lady",[
+      (assign, "$love_interest_in_town", 0),
+      (assign, "$love_interest_in_town_2", 0),
+      (assign, "$love_interest_in_town_3", 0),
+      (assign, "$love_interest_in_town_4", 0),
+      (assign, "$love_interest_in_town_5", 0),
+      (assign, "$love_interest_in_town_6", 0),
+      (assign, "$love_interest_in_town_7", 0),
+      (assign, "$love_interest_in_town_8", 0),
+      (try_for_range, ":lady_no", kingdom_ladies_begin, kingdom_ladies_end),
+        (troop_slot_eq, ":lady_no", slot_troop_cur_center, "$current_town"),
+        (call_script, "script_get_kingdom_lady_social_determinants", ":lady_no"),
+        (assign, ":lady_guardian", reg0),
+
+        (troop_slot_eq, ":lady_no", slot_troop_spouse, -1),
+        (ge, ":lady_guardian", 0), #not sure when this would not be the case
+
+        #must have spoken to either father or lady
+        (this_or_next|troop_slot_ge, ":lady_no", slot_troop_met, 2),
+        (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 1),
+
+        (neg|troop_slot_eq, ":lady_no", slot_troop_met, 4),
+        (try_begin),
+          (eq, "$love_interest_in_town", 0),
+          (assign, "$love_interest_in_town", ":lady_no"),
+        (else_try),
+          (eq, "$love_interest_in_town_2", 0),
+          (assign, "$love_interest_in_town_2", ":lady_no"),
+        (else_try),
+          (eq, "$love_interest_in_town_3", 0),
+          (assign, "$love_interest_in_town_3", ":lady_no"),
+        (else_try),
+          (eq, "$love_interest_in_town_4", 0),
+          (assign, "$love_interest_in_town_4", ":lady_no"),
+        (else_try),
+          (eq, "$love_interest_in_town_5", 0),
+          (assign, "$love_interest_in_town_5", ":lady_no"),
+        (else_try),
+          (eq, "$love_interest_in_town_6", 0),
+          (assign, "$love_interest_in_town_6", ":lady_no"),
+        (else_try),
+          (eq, "$love_interest_in_town_7", 0),
+          (assign, "$love_interest_in_town_7", ":lady_no"),
+        (else_try),
+          (eq, "$love_interest_in_town_8", 0),
+          (assign, "$love_interest_in_town_8", ":lady_no"),
+        (try_end),
+      (try_end),
+      (gt, "$love_interest_in_town", 0),
+    ],"Attempt to visit a lady",[
+      (jump_to_menu, "mnu_lady_visit"),
+    ], "Door to the garden."),
+		("set_sail",[
+      (party_slot_eq, "$current_town", slot_town_port, 1),
+      (eq, "$enlisted_party", -1),#not freelancing
+    ],"Visit the port",[
+		  (jump_to_menu, "mnu_town_port"),
+		]),
+    ("collect_taxes_qst",[
+      (check_quest_active, "qst_collect_taxes"),
+      (quest_slot_eq, "qst_collect_taxes", slot_quest_target_center, "$current_town"),
+      (neg|quest_slot_eq, "qst_collect_taxes", slot_quest_current_state, 4),
+      (quest_get_slot, ":quest_giver_troop", "qst_collect_taxes", slot_quest_giver_troop),
+      (str_store_troop_name, s1, ":quest_giver_troop"),
+      (quest_get_slot, reg5, "qst_collect_taxes", slot_quest_current_state),
+    ],"{reg5?Continue collecting taxes:Collect taxes} due to {s1}.",[
+      (jump_to_menu, "mnu_collect_taxes"),
+    ]),
     ("werdheri_quest",[
       (check_quest_active, "qst_werdheri"),
       (quest_slot_eq, "qst_werdheri", slot_quest_current_state, 5),
@@ -54876,6 +54826,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (str_store_troop_name_link, s20, "trp_kingdom_7_lady_1"),
         (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@You killed {s20} with your gladius.", 1),
         (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 4),
+        (call_script, "script_kill_lord_lady", "trp_kingdom_7_lady_1", "trp_player", 0),
     (else_try),
         (eq, "$g_notification_menu_var1", 3),
         (str_store_string, s5, "str_poppaea_banned"),
@@ -59323,12 +59274,12 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
     +"^There open the Aut Caesar aut nihil folder. Copy the file last_savegame_backup.sav and rename it to sg00.sav (or sg01.sav or whatever empty savegame slot you have). Then you can try loading this savegame.",
     "none", [
     (assign, reg0, "$g_corruption_check"),
-    (display_message, "@{reg0}"),
-    ],
-    [
-    ("option_1", [],"Exit to main menu.",
-    [
-        (change_screen_quit),
+    (display_message, "@global variable g_corruption_check = {reg0}"),
+    (troop_get_slot, reg0, "trp_global_variables", g_corruption_check),
+    (display_message, "@slot g_corruption_check = {reg0}"),
+  ],[
+    ("option_1", [],"Exit to main menu.",[
+      (change_screen_quit),
     ]),
 ]),
 

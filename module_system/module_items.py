@@ -519,6 +519,8 @@ heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_7] ],
 5000,weight(2)|abundance(100),imodbits_none],
 ["book_odysseus","Odusia", [("scroll_1",0)], itp_type_book, 0,
 4200,weight(2)|abundance(100),imodbits_none],
+["book_poop","The art of Poop, by Poopianus", [("scroll_2",0)], itp_type_book, 0,
+8200,weight(2)|abundance(100),imodbits_none],
 
 #Reference books
 #This book must be at the beginning of reference books
@@ -2942,22 +2944,26 @@ rich_dress_b_armor_price,rich_dress_b_armor,imodbits_none,
 [(ti_on_init_item,[  (call_script, "script_init_dress_arms"),]), ], ],
 
 ##lupa dresses
-["roman_lupa_dress", "Dress", [("commoner_dress",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+["roman_lupa_dress", "Green Dress", [("commoner_dress",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
 dress_armor_price,dress_armor,imodbits_none, [
 (ti_on_init_item,[
     (call_script, "script_init_dress_arms2"), ]),
 ], [fac_culture_7] ],
-["roman_lupa_dress_2", "Dress", [("commoner_dress_2",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+["roman_lupa_dress_2", "Yellow Dress", [("commoner_dress_2",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
 dress_armor_price,dress_armor,imodbits_none, [
 (ti_on_init_item,[
     (call_script, "script_init_dress_arms2"), ]),
 ], [fac_culture_7] ],
-["roman_lupa_dress_3", "Dress", [("commoner_dress_3",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+["roman_lupa_dress_3", "Blue Dress", [("commoner_dress_3",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
 dress_armor_price,dress_armor,imodbits_none, [
 (ti_on_init_item,[
     (call_script, "script_init_dress_arms2"), ]),
 ], [fac_culture_7] ],
-
+["roman_lupa_dress_4", "White Dress", [("commoner_dress_4",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+dress_armor_price,dress_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms2"), ]),
+], [fac_culture_7] ],
 #generic barbarian dresses
 ["female_1", "Dress", [("womans_chiton",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 dress_armor_price,dress_armor,imodbits_none,

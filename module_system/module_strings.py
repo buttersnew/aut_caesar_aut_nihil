@@ -4543,7 +4543,8 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("shuffling_companion_locations", "{!}Shuffling companion locations"),
   ("s4_is_at_s5", "{s4} is at {s5}"), #SB : translate string
   ("instability_reg0_of_lords_are_disgruntled_reg1_are_restless", "Instability: {reg0}% of lords are disgruntled, {reg1}% are restless"),
-  ("reg1shehe_is_prisoner_of_s1", "{reg1?She:He} is prisoner of {s1}."),
+  ("reg1shehe_is_prisoner_of_s1", "You heard rumors that {reg1?she:he} is prisoner of {s1}."),
+  ("reg1shehe_removed_prisoner", "You heard rumors that {reg1?she:he} was released from captivity."),
   ("s39_rival", "{s39} (rival)"),
   ("s40", "{!}{s40}"),
   ("s41_s39_rival", "{s41}, {s39} (rival)"),
