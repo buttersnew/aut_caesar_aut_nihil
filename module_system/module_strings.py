@@ -9239,6 +9239,7 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("description_chinese_light_2", "Description:^^This is a lamellar armour from a foreign culture.^^Background:^^This item is a typical armour used by troops of Han China during the 2nd AD."),
 ("description_chinese_heavy_1", "Description:^^This is a heavy lamellar armour from a foreign culture.^^Background:^^This item is a typical heavy armour used by troops of Han China during the 2nd AD."),
 
+("book_poop", "Description:^^A book about the 'art of poop'. It answers questions like: Is it a good idea to do a handstand while pooping? How does poop taste? How does it smell?^^Background:^^This book is written by the famous Poopianus, the true master of all poop."),
 
 ("event_pharaoh_emperor_description",
   "Pharaoh of Egypt^^Egyptian custom requires a god pharaoh as an intermediary between the people and divine world. Since Egypt became a province over a century ago, this role is traditionally held by Caesar Augustus, the Princeps of Rome.^^"

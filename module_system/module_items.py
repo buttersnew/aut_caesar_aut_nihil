@@ -519,8 +519,6 @@ heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_7] ],
 5000,weight(2)|abundance(100),imodbits_none],
 ["book_odysseus","Odusia", [("scroll_1",0)], itp_type_book, 0,
 4200,weight(2)|abundance(100),imodbits_none],
-["book_poop","The art of Poop, by Poopianus", [("scroll_2",0)], itp_type_book, 0,
-8200,weight(2)|abundance(100),imodbits_none],
 
 #Reference books
 #This book must be at the beginning of reference books
@@ -6431,6 +6429,8 @@ pants_medium_armor_2_price, pants_medium_armor_2_armor,imodbits_plate,
 noble_mail_price, noble_mail_armor,imodbits_plate,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [] ],
 
+["book_poop","The art of Poop, by Poopianus", [("scroll_2",0)], itp_type_book, 0,
+8200,weight(2)|abundance(100),imodbits_none],
 
 ##item for tavern goers
 ["dedal_kufel","Cup",[("dedal_kufelL",0)],	itp_type_hand_armor|itp_force_show_left_hand|itp_force_show_right_hand|itp_civilian,0,

@@ -303,7 +303,7 @@ parties = [
 ("village_110", "Emesa", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (88.27, -20.36), [], 40),
 ("village_111", "Arsonium", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-61.81, 123.87), [], 35),
 ("village_112", "Vidrium", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-88.6, 156.66), [], 60),
-("village_113", "Amizia", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-104.28, 148.83), [], 55),
+("village_113", "Bunitium", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-104.28, 148.83), [], 55),
 ("village_114", "Talavium", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-100.28, 137.83), [], 15),
 ("village_115", "Tava", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-224.26, 196.2), [], 10),
 
@@ -415,7 +415,7 @@ parties = [
 ("village_222", "Ascaullis", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-84.11, 135.73), [], 90),
 ("village_223", "Bez", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-46.9, 131.31), [], 180),
 ("village_224", "Carrodunum", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-67.2, 112.42), [], 130),
-("village_225", "Setidava", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-117.32, 148.61), [], 136),
+("village_225", "Altera", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-117.32, 148.61), [], 136),
 ("village_226", "Aleria", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-142.7, 19.38), [], 136),
 ("village_227", "Rhodos", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (14.17, -25.25), [], 136),
 ("village_228", "Rusaddir", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-245.96, -46.62), [], 136),
