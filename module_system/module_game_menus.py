@@ -22873,29 +22873,28 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-  (
-  "notification_court_lost",0,
+("notification_court_lost",0,
   "{s12}",
-  "none",
-  [ (play_sound, "snd_message_negative_sound"),
+  "none",[
+    (play_sound, "snd_message_negative_sound"),
     (try_begin),
-		(is_between, "$g_player_court", centers_begin, centers_end),
-		(str_store_party_name, s10, "$g_player_court"),
-		(str_store_party_name, s11, "$g_player_court"),
-	(else_try),
-		(str_store_string, s10, "str_your_previous_court_some_time_ago"),
-		(str_store_string, s11, "str_your_previous_court_some_time_ago"),
-	(try_end),
+      (is_between, "$g_player_court", centers_begin, centers_end),
+      (str_store_party_name, s10, "$g_player_court"),
+      (str_store_party_name, s11, "$g_player_court"),
+    (else_try),
+      (str_store_string, s10, "str_your_previous_court_some_time_ago"),
+      (str_store_string, s11, "str_your_previous_court_some_time_ago"),
+    (try_end),
 
-	##diplomacy start+ Handle player is co-ruler of NPC kingdom
-	(assign, ":alt_faction", "fac_player_supporters_faction"),
-	(try_begin),
-		(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-		(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-		(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-		(assign, ":alt_faction", "$players_kingdom"),
-	(try_end),
-	##diplomacy end+
+    ##diplomacy start+ Handle player is co-ruler of NPC kingdom
+    (assign, ":alt_faction", "fac_player_supporters_faction"),
+    (try_begin),
+      (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
+      (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
+      (ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
+      (assign, ":alt_faction", "$players_kingdom"),
+    (try_end),
+    ##diplomacy end+
 
     (try_begin), #SB : loss of court = loss of right to rule
       (store_and, ":name_set", "$players_kingdom_name_set", rename_center),
@@ -22909,91 +22908,89 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_change_player_right_to_rule", -5),
     (try_end),
     (assign, "$g_player_court", -1),
-	(str_store_string, s14, "str_after_to_the_fall_of_s11_your_court_has_nowhere_to_go"),
-	(try_begin),
-		##diplomacy start+  Handle player is co-ruler of NPC kingdom
-		(this_or_next|neg|is_between, ":alt_faction", npc_kingdoms_begin, npc_kingdoms_end),
-			(neg|faction_slot_eq, ":alt_faction", slot_faction_state, sfs_active),
-		##diplomacy end+
-		(faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
-		(str_store_string, s14, "str_as_you_no_longer_maintain_an_independent_kingdom_you_no_longer_maintain_a_court"),
-	(try_end),
+    (str_store_string, s14, "str_after_to_the_fall_of_s11_your_court_has_nowhere_to_go"),
+    (try_begin),
+      ##diplomacy start+  Handle player is co-ruler of NPC kingdom
+      (this_or_next|neg|is_between, ":alt_faction", npc_kingdoms_begin, npc_kingdoms_end),
+      (neg|faction_slot_eq, ":alt_faction", slot_faction_state, sfs_active),
+      ##diplomacy end+
+      (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
+      (str_store_string, s14, "str_as_you_no_longer_maintain_an_independent_kingdom_you_no_longer_maintain_a_court"),
+    (try_end),
 
-	(try_for_range, ":walled_center", walled_centers_begin, walled_centers_end),
-		(eq, "$g_player_court", -1),
-    ##diplomacy begin
-    (neg|party_slot_eq, ":walled_center", slot_village_infested_by_bandits, "trp_peasant_woman"),
-    ##diplomacy end
-		(store_faction_of_party, ":walled_center_faction", ":walled_center"),
-		##diplomacy start+ Handle player is co-ruler of NPC kingdom
-		(this_or_next|eq, ":alt_faction", ":walled_center_faction"),
-		##diplomacy end+
-		(eq, ":walled_center_faction", "fac_player_supporters_faction"),
-		(neg|party_slot_ge, ":walled_center", slot_town_lord, active_npcs_begin),
+    (try_for_range, ":walled_center", walled_centers_begin, walled_centers_end),
+      (eq, "$g_player_court", -1),
+      ##diplomacy begin
+      (neg|party_slot_eq, ":walled_center", slot_village_infested_by_bandits, "trp_peasant_woman"),
+      ##diplomacy end
+      (store_faction_of_party, ":walled_center_faction", ":walled_center"),
+      ##diplomacy start+ Handle player is co-ruler of NPC kingdom
+      (this_or_next|eq, ":alt_faction", ":walled_center_faction"),
+      ##diplomacy end+
+      (eq, ":walled_center_faction", "fac_player_supporters_faction"),
+      (neg|party_slot_ge, ":walled_center", slot_town_lord, active_npcs_begin),
 
-		(assign, "$g_player_court", ":walled_center"),
-		(try_begin),
-			(troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
-			(is_between, ":spouse", kingdom_ladies_begin, kingdom_ladies_end),
-			##diplomacy start+ Check that the spouse is not a hero, imprisoned (except by the player), or exiled/dead/etc.
-            (try_begin),
-                (neg|troop_slot_eq, ":spouse", slot_troop_occupation, slto_kingdom_hero),
-                (neg|troop_slot_ge, ":spouse", slot_troop_occupation, slto_retirement),
-                (neg|troop_slot_ge, ":spouse", slot_troop_prisoner_of_party, 1),
-                ##diplomacy end+
-                (neg|main_party_has_troop,":spouse"),
-                (troop_set_slot, ":spouse", slot_troop_cur_center, "$g_player_court"),
-            (try_end),
-			(str_store_party_name, s11, "$g_player_court"),
-		(try_end),
+      (assign, "$g_player_court", ":walled_center"),
+      (try_begin),
+        (troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
+        (is_between, ":spouse", kingdom_ladies_begin, kingdom_ladies_end),
+        ##diplomacy start+ Check that the spouse is not a hero, imprisoned (except by the player), or exiled/dead/etc.
+              (try_begin),
+                  (neg|troop_slot_eq, ":spouse", slot_troop_occupation, slto_kingdom_hero),
+                  (neg|troop_slot_ge, ":spouse", slot_troop_occupation, slto_retirement),
+                  (neg|troop_slot_ge, ":spouse", slot_troop_prisoner_of_party, 1),
+                  ##diplomacy end+
+                  (neg|main_party_has_troop,":spouse"),
+                  (troop_set_slot, ":spouse", slot_troop_cur_center, "$g_player_court"),
+              (try_end),
+        (str_store_party_name, s11, "$g_player_court"),
+      (try_end),
 
-		(str_store_string, s14, "str_due_to_the_fall_of_s10_your_court_has_been_relocated_to_s12"), #actually s11
-	(try_end),
+      (str_store_string, s14, "str_due_to_the_fall_of_s10_your_court_has_been_relocated_to_s12"), #actually s11
+    (try_end),
 
-	(try_for_range, ":walled_center", walled_centers_begin, walled_centers_end),
-		(eq, "$g_player_court", -1),
+    (try_for_range, ":walled_center", walled_centers_begin, walled_centers_end),
+      (eq, "$g_player_court", -1),
 
-		(store_faction_of_party, ":walled_center_faction", ":walled_center"),
-		##diplomacy start+ Handle player is co-ruler of NPC kingdom
-		(this_or_next|eq, ":alt_faction", ":walled_center_faction"),
-		##diplomacy end+
-		(eq, ":walled_center_faction", "fac_player_supporters_faction"),
+      (store_faction_of_party, ":walled_center_faction", ":walled_center"),
+      ##diplomacy start+ Handle player is co-ruler of NPC kingdom
+      (this_or_next|eq, ":alt_faction", ":walled_center_faction"),
+      ##diplomacy end+
+      (eq, ":walled_center_faction", "fac_player_supporters_faction"),
 
-		(assign, "$g_player_court", ":walled_center"),
+      (assign, "$g_player_court", ":walled_center"),
 
-		(try_begin),
-			(troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
-			(is_between, ":spouse", kingdom_ladies_begin, kingdom_ladies_end),
-			##diplomacy start+ Check that the spouse is not a hero, imprisoned (except by the player), or exiled/dead/etc.
-			(neg|troop_slot_eq, ":spouse", slot_troop_occupation, slto_kingdom_hero),
-			(neg|troop_slot_ge, ":spouse", slot_troop_occupation, slto_retirement),
-			(neg|troop_slot_ge, ":spouse", slot_troop_prisoner_of_party, 1),
-			##diplomacy end+
-			(troop_set_slot, ":spouse", slot_troop_cur_center, "$g_player_court"),
-		(try_end),
+      (try_begin),
+        (troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
+        (is_between, ":spouse", kingdom_ladies_begin, kingdom_ladies_end),
+        ##diplomacy start+ Check that the spouse is not a hero, imprisoned (except by the player), or exiled/dead/etc.
+        (neg|troop_slot_eq, ":spouse", slot_troop_occupation, slto_kingdom_hero),
+        (neg|troop_slot_ge, ":spouse", slot_troop_occupation, slto_retirement),
+        (neg|troop_slot_ge, ":spouse", slot_troop_prisoner_of_party, 1),
+        ##diplomacy end+
+        (troop_set_slot, ":spouse", slot_troop_cur_center, "$g_player_court"),
+      (try_end),
 
-		(party_get_slot, ":town_lord", ":walled_center", slot_town_lord),
-		(str_store_party_name, s11, "$g_player_court"),
-		(str_store_troop_name, s9, ":town_lord"),
-		(str_store_string, s14, "str_after_to_the_fall_of_s10_your_faithful_vassal_s9_has_invited_your_court_to_s11_"),
-	(try_end),
+      (party_get_slot, ":town_lord", ":walled_center", slot_town_lord),
+      (str_store_party_name, s11, "$g_player_court"),
+      (str_store_troop_name, s9, ":town_lord"),
+      (str_store_string, s14, "str_after_to_the_fall_of_s10_your_faithful_vassal_s9_has_invited_your_court_to_s11_"),
+    (try_end),
 
-	(try_begin),
-		##diplomacy start+  Handle player is co-ruler of NPC kingdom
-		(this_or_next|neg|is_between, ":alt_faction", npc_kingdoms_begin, npc_kingdoms_end),
-			(neg|faction_slot_eq, ":alt_faction", slot_faction_state, sfs_active),
-		##diplomacy end+
-		(faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
-		(str_store_string, s14, "str_as_you_no_longer_maintain_an_independent_kingdom_you_no_longer_maintain_a_court"),
-	(try_end),
-	(str_store_string, s12, s14),
-  ],
-  [
-      ("continue",[],"Continue...",[
-	  (change_screen_return),
+    (try_begin),
+      ##diplomacy start+  Handle player is co-ruler of NPC kingdom
+      (this_or_next|neg|is_between, ":alt_faction", npc_kingdoms_begin, npc_kingdoms_end),
+      (neg|faction_slot_eq, ":alt_faction", slot_faction_state, sfs_active),
+      ##diplomacy end+
+      (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_inactive),
+      (str_store_string, s14, "str_as_you_no_longer_maintain_an_independent_kingdom_you_no_longer_maintain_a_court"),
+    (try_end),
+    (str_store_string, s12, s14),
+  ],[
+    ("continue",[],"Continue...",[
+	    (change_screen_return),
 	  ]),
-     ],
-  ),
+]),
 
   (
     "notification_player_faction_deactive",0,
@@ -25911,7 +25908,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 ("dplmc_notification_appoint_chamberlain",0,
-  "You can appoint a Quaestor who resides at you court for a weekly salary of 1,500 denars. He will handle all financial affairs like collecting and determining taxes, paying wages and managing your estate. In addition he supervises money transfers between kingdoms giving you more diplomatic options.",
+  "You can appoint a Quaestor who resides at your court for a weekly salary of 1,500 denars."
+  +" ^^A Quaestor manages your private treasury, which can be used to savely store money. The money is then used to pay wages for troops or can be also used for construction projects."
+  +" ^^If you govern a town, fortress or village, he will handle all financial affairs like collecting and determining taxes, paying wages and managing your estates."
+  +" ^^If you are the leader of a faction, he supervises money transfers between kingdoms giving you more diplomatic options.",
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
   ],[
@@ -25926,7 +25926,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("dplmc_chamberlain_confirm",0,
-  "Your Quaestor can be found at your court. You should consult him if you want to give him any financial advice or you need greater amounts of money. You should always make sure that there is enough money in the treasury to pay for political affairs.",
+  "Your Quaestor can be found at your court and your estates. You should consult him if you want to give him any financial advice or you need greater amounts of money. You should always make sure that there is enough money in the treasury to pay for your budget.",
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
   ],[
@@ -48146,6 +48146,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (mission_tpl_entry_clear_override_items, "mt_pret_event_12", 2),
       (mission_tpl_entry_add_override_item, "mt_town_default",2, "itm_persian_tunic_3"),
       (mission_tpl_entry_add_override_item, "mt_town_default",2, "itm_eastern_shoe"),
+    (try_end),
+    (try_begin),
+      (gt, "$g_player_chamberlain", 0),
+      (call_script, "script_dplmc_appoint_chamberlain"),  #fix for wrong troops after update
+      (set_visitor, 2, "$g_player_chamberlain"),
     (try_end),
     (set_visitor,2,"trp_administrator"),
     (try_begin),

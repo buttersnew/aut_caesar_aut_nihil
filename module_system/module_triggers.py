@@ -891,11 +891,19 @@ triggers = [
 ]),
 # Appoint chamberlain
 (0, 0, 24 * 14,[],[
+    (neq, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", centers_begin, centers_end),
-        (party_get_slot,  ":lord_troop_id", ":center_no", slot_town_lord),
-        (eq, ":lord_troop_id", "trp_player"),
-        (assign, ":has_fief", 1),
+        (eq, ":has_fief", 0),
+        (try_begin),
+            (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+            (assign, ":has_fief", 1),
+        (else_try),
+            (party_get_slot, ":latifundium", ":center_no",slot_center_has_latifundium),
+            (gt, ":latifundium", 0),
+            (party_is_active, ":latifundium"),
+            (assign, ":has_fief", 1),
+        (try_end),
     (try_end),
     (eq, ":has_fief", 1),
 
@@ -904,50 +912,43 @@ triggers = [
         (assign, reg0, "$g_player_chamberlain"),
         (display_message, "@{!}DEBUG : chamberlain: {reg0}"),
     (try_end),
-
-    (neq, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
-
     (call_script, "script_add_notification_menu", "mnu_dplmc_notification_appoint_chamberlain", 0, 0),
 ]),
 # Appoint constable
 (0, 0, 24 * 14,[],[
+    (neq, "$g_player_constable", "trp_dplmc_constable"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
+        (eq, ":has_fief", 0),
         (party_get_slot,  ":lord_troop_id", ":center_no", slot_town_lord),
         (eq, ":lord_troop_id", "trp_player"),
         (assign, ":has_fief", 1),
     (try_end),
     (eq, ":has_fief", 1),
-
     (try_begin), #debug
         (eq, "$cheat_mode", 1),
         (assign, reg0, "$g_player_constable"),
         (display_message, "@{!}DEBUG : constable: {reg0}"),
     (try_end),
-
-    (neq, "$g_player_constable", "trp_dplmc_constable"),
-
     (call_script, "script_add_notification_menu", "mnu_dplmc_notification_appoint_constable", 0, 0),
 ]),
 
 # Appoint chancellor
 (0, 0, 24 * 14,[],[
+    (neq, "$g_player_chancellor", "trp_dplmc_chancellor"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", towns_begin, towns_end),
+        (eq, ":has_fief", 0),
         (party_get_slot,  ":lord_troop_id", ":center_no", slot_town_lord),
         (eq, ":lord_troop_id", "trp_player"),
         (assign, ":has_fief", 1),
     (try_end),
     (eq, ":has_fief", 1),
-
     (try_begin), #debug
         (eq, "$cheat_mode", 1),
         (assign, reg0, "$g_player_chancellor"),
         (display_message, "@{!}DEBUG : chancellor: {reg0}"),
     (try_end),
-
-    (neq, "$g_player_chancellor", "trp_dplmc_chancellor"),
-
     (call_script, "script_add_notification_menu", "mnu_dplmc_notification_appoint_chancellor", 0, 0),
 ]),
 
