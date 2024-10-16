@@ -846,4 +846,5 @@ scn_villa_baths = 843
 scn_presentation_scene = 844
 scn_walhalla_outdoor = 845
 scn_walhalla_indoors = 846
+scn_lybian_villa = 847
 scn_exit = 100000

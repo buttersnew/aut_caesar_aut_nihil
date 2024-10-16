@@ -6188,6 +6188,11 @@ hero_attrib,wp(300),knows_hero,0x0000000bff0ca385315f8db6db6db6db00000000001efa1
 [itm_leather_boots, itm_alan_light_2],
 hero_attrib,wp(300),knows_hero,0x000000093f0c901036db6db6db6db6db00000000000db6db0000000000000000],
 
+["ali", "Ali Al-Nabatai", "Ali Al-Nabatai", tf_hero, no_scene, reserved, fac_commoners,[
+itm_eastern_shoe_r, itm_arabian_bow_1, itm_arrows,
+itm_arabian_oval_shield_4, itm_arabian_armor_b, itm_arabian_sword_d, itm_eastern_helm6
+],knight_attrib_5, wp(300), knight_skills_5|knows_inventory_management_10, 0x000000007f04c15134db8db6db6e351b00000000001c349b0000000000000000],
+
 ["romanian","Tiganu Tate","Tiganu Tate",tf_male|tf_hero,0,0,fac_commoners,
 [itm_caligea, itm_roman_poor1],
 attrib_level_12,wp(50),knows_level_12,0x000000000804d08356a4cd4b6195a7cc000000000010d0d60000000000000000],

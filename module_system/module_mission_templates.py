@@ -29098,37 +29098,80 @@ mission_templates = [
   [
     cannot_spawn_commoners,
     improved_lightning,
-    (ti_after_mission_start, 0, 0, [
-			 ],
-    [(mission_enable_talk),]),
 
-    (0, 0, ti_once,
-    [
+    (0, 0, ti_once,[
+      (check_quest_active, "qst_wlodowiecus_adventure_4"),
+      (this_or_next|eq, "$temp1", 9),
+      (this_or_next|eq, "$temp1", 8),
+      (eq, "$temp1", 7),
+    ],[
+      (try_for_agents, ":agent_no"),
+          (call_script, "script_init_town_agent", ":agent_no"),
+      (try_end),
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_feast),
+    ]),
+
+    (ti_after_mission_start, 0, 0, [],[(mission_enable_talk),]),
+
+    (0, 0, ti_once,[
       (this_or_next|eq, "$temp1", 1),
       (this_or_next|eq, "$temp1", 4),
       (eq, "$temp1", 2),
       (neg|conversation_screen_is_active),
-    ],
-    [
-    (start_mission_conversation, "$temp2"),]),
+    ],[
+      (start_mission_conversation, "$temp2"),
+    ]),
 
-    (ti_before_mission_start, 0, 0, [],
-    [
+    (0, 0, ti_once,[
+      (eq, "$temp1", 9),
+      (check_quest_active, "qst_wlodowiecus_adventure_4"),
+      (neg|conversation_screen_is_active),
+    ],[
+      (try_for_agents, ":agent"),
+          (agent_is_active, ":agent"),
+          (agent_get_troop_id,":troop",":agent"),
+          (this_or_next|eq, ":troop", "trp_hadrianus"),
+          (eq, ":troop", "trp_diggus"),
+          (agent_fade_out, ":agent"),
+      (try_end),
+    ]),
+
+    (ti_before_mission_start, 0, 0, [],[
       (try_begin),
           (check_quest_active, "qst_wlodowiecus_adventure_2"),
           (this_or_next|eq, "$temp1", 3),
           (eq, "$temp1", 2),
           (scene_set_day_time, 19),
           (set_global_cloud_amount, 0),
+      (else_try),
+          (check_quest_active, "qst_wlodowiecus_adventure_4"),
+          (eq, "$temp1", 7),
+          (scene_set_day_time, 16),
+          (set_global_cloud_amount, 0),
+      (else_try),
+          (check_quest_active, "qst_wlodowiecus_adventure_4"),
+          (eq, "$temp1", 8),
+          (scene_set_day_time, 20),
+          (set_global_cloud_amount, 0),
       (try_end),
     ]),
+
     (ti_tab_pressed, 0, 0, [
       (try_begin),
         (eq, "$temp1", 3),
-        (display_message,"@Speak with Mancinellus!"),
+        (tutorial_box,"@Speak with Mancinellus!"),
       (else_try),
         (eq, "$temp1", 5),
-        (display_message,"@Speak with Hludwig!"),
+        (tutorial_box,"@Speak with Hludwig!"),
+      (else_try),
+        (eq, "$temp1", 7),
+        (tutorial_box,"@Speak with The Lybian!"),
+      (else_try),
+        (eq, "$temp1", 8),
+        (tutorial_box,"@Speak with other guests to conclude the feast!^^[Hint: Either help Hadrianus or flirt with a Roman Noble Lady.]"),
+      (else_try),
+        (eq, "$temp1", 9),
+        (tutorial_box,"@Speak with other guests to conclude the feast!^^[Hint: Hadrian is gone now. Flirt with a Roman Noble Lady to escape.]"),
       (try_end),
     ],[]),
 ]),

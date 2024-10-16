@@ -505,6 +505,9 @@ quests = [
   ("wlodowiecus_adventure_3", "Special Quest: The Adventure of Wlodowiecus (III)", qf_random_quest,
   "{!}placeholder"
   ),
+  ("wlodowiecus_adventure_4", "Special Quest: The Adventure of Wlodowiecus (IV)", qf_random_quest,
+  "{!}placeholder"
+  ),
   ("bacchhus_quest", "Special Quest: Dionysus rege!", qf_random_quest,
   "{!}placeholder"
   ),

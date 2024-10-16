@@ -1108,5 +1108,7 @@ scenes = [
   ("walhalla_outdoor", sf_generate, "none", "none", (0, 0), (100, 100), -200, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain_2"),
   ("walhalla_indoors", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], []),
 
+  ("lybian_villa", sf_generate, "none", "none", (0, 0), (100, 100), -200, "0x000000003000050000051142000015bc000023e200007a41",[], [], "outer_terrain_desert"),
+
 ]#end of file
 #

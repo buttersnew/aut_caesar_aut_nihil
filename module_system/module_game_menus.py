@@ -51700,6 +51700,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (call_script, "script_set_town_picture"),
   ],[
     ("visit_lady",[
+      (eq, "$current_town", "p_town_20"),
+      (check_quest_active, "qst_wlodowiecus_adventure_4"),
+      (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 1),
+    ],"Visit the villa of The Lybian.",[
+      (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_feast"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 2),
+    ]),
+    ("visit_lady",[
       (assign, "$love_interest_in_town", 0),
       (assign, "$love_interest_in_town_2", 0),
       (assign, "$love_interest_in_town_3", 0),
@@ -56480,8 +56488,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
   # ),
 
   ("escaped_sagala",0,
-    "The guards soon give up on chasing you and return to their town. You managed to escape from Sagala with Hadrianus and Wlodowiecus.^^You wander through thick forests until you come across a cave next to a waterfall. You decide to set up camp there and try to find a way back west. But eventually, several days pass and you can't find a way out of the jungle. If no divine miracle happens, you will probably die out starvation. Out of despair Hadrianus starts to pray to Christus, while Wlodowiecus makes small sacrifices to his Germanic gods. You are also making prayers and sacrifices to the deities you believe in.^^\
-One day, something rustles in the bushes outside the cave, fearing the wrath of Sagala's army or worse, a hungry beast, you and your friends prepare for a fight until a man dressed in Roman arms enters the cave, giving you all a sly smile.",
+    "The guards soon give up on chasing you and return to their town. You managed to escape from Sagala with Hadrianus and Wlodowiecus."
+    +"^^You wander through thick forests until you come across a cave next to a waterfall. You decide to set up camp there and try to find a way back west. But eventually,"
+    +" several days pass and you can't find a way out of the jungle. If no divine miracle happens, you will probably die out starvation. Out of despair Hadrianus starts to pray to Christus,"
+    +" while Wlodowiecus makes small sacrifices to his Germanic gods. You are also making prayers and sacrifices to the deities you believe in.^^"
+    +"One day, something rustles in the bushes outside the cave, fearing the wrath of Sagala's army or worse, a hungry beast, you and your friends prepare for a fight until a man dressed in Roman arms enters the cave, giving you all a sly smile.",
     "none", [
     (set_background_mesh, "mesh_pic_deserters"),
     ],
@@ -56822,59 +56833,76 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       ]),
     ],
   ),
-  ("flavor_event_4",mnf_scale_picture,
-    "Everyone runs out of the tavern into the street to see what happened. Women are screaming, the street is full of blood. You see a dead body laying under a cart. "+
-    "It is {s2}! Witnesses say that he stormed out of the tavern and was caught by a passing cart. He died immediately.^The tavernkeeper, standing next to you notes:^"+
-    "'I am very happy that I never sacrificed to Sol, as it seems he is killing his followers.'^The vigilia appears to remove the dead body. You want to take a last look at him but"+
-    " the sun is blinding you.",
-    "none", [
+
+("flavor_event_4",mnf_scale_picture,
+  "Everyone runs out of the tavern into the street to see what happened. Women are screaming, the street is full of blood. You see a dead body laying under a cart. "+
+  "It is {s2}! Witnesses say that he stormed out of the tavern and was caught by a passing cart. He died immediately.^The tavernkeeper, standing next to you notes:^"+
+  "'I am very happy that I never sacrificed to Sol, as it seems he is killing his followers.'^The vigilia appears to remove the dead body. You want to take a last look at him but"+
+  " the sun is blinding you.",
+  "none", [
     (set_background_mesh, "mesh_pic_roma"),
     (str_store_troop_name, s2, "trp_random_idiot"),
-    ],
+  ],[
+    ("option_1",[],"Continue.",[
+      (add_xp_as_reward, 1000),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
-    [
+("flavor_event_5",mnf_scale_picture,
+  "The man turns around and looks at Kashamir. He has the build of a true Herakles! He grabs Kashamir at his throat and throws him onto the floor. "+
+  "Then he beats into his face several times. You think it will be over quickly but the man doesn't stop. He keeps beating his face. The tavernkeeper "+
+  "and other guests try to stop him, but its too late ... Kashamir has already died. The man quickly escapes through the door before the guard can catch him.",
+  "none", [
+    (set_background_mesh, "mesh_pic_roma"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (troop_set_slot, "trp_global_variables", g_flavor_event_4, 3),
+      (add_xp_as_reward, 1000),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
-    ("option_1",[],"Continue.",
-        [
-    (add_xp_as_reward, 1000),
-    (jump_to_menu, "mnu_town"),
-      ]),
-    ],
-  ),
-  ("flavor_event_5",mnf_scale_picture,
-    "The man turns around and looks at Kashamir. He has the build of a true Herakles! He grabs Kashamir at his throat and throws him onto the floor. "+
-    "Then he beats into his face several times. You think it will be over quickly but the man doesn't stop. He keeps beating his face. The tavernkeeper "+
-    "and other guests try to stop him, but its too late ... Kashamir has already died. The man quickly escapes through the door before the guard can catch him.",
-    "none", [
+("flavor_event_5_2",mnf_scale_picture,
+  "The tavernkeeper noticed Kashamir and told him he has many unpaid bills. He says he will call the guard to make sure his bills get paid! "+
+  "Kashamir quickly pushes you away and runs in direction of the door. "+
+  "The man turns around and looks at Kashamir. He has the build of a true Herakles! He grabs Kashamir at his throat and throws him onto the floor. "+
+  "Then he beats into his face several times. You think it will be over quickly but the man doesn't stop. He keeps beating his face. You, the tavernkeeper "+
+  "and other guests try to stop him, but its too late ... Kashamir has already died. The man quickly escapes through the door before the guard can catch him. ",
+  "none", [
     (set_background_mesh, "mesh_pic_roma"),
-    ],
-    [
-    ("option_1",[],"Continue.",
-        [
-    (troop_set_slot, "trp_global_variables", g_flavor_event_4, 3),
-    (add_xp_as_reward, 1000),
-    (jump_to_menu, "mnu_town"),
-      ]),
-    ],
-  ),
-  ("flavor_event_5_2",mnf_scale_picture,
-    "The tavernkeeper noticed Kashamir and told him he has many unpaid bills. He says he will call the guard to make sure his bills get paid! "+
-    "Kashamir quickly pushes you away and runs in direction of the door. "+
-    "The man turns around and looks at Kashamir. He has the build of a true Herakles! He grabs Kashamir at his throat and throws him onto the floor. "+
-    "Then he beats into his face several times. You think it will be over quickly but the man doesn't stop. He keeps beating his face. You, the tavernkeeper "+
-    "and other guests try to stop him, but its too late ... Kashamir has already died. The man quickly escapes through the door before the guard can catch him. ",
-    "none", [
-    (set_background_mesh, "mesh_pic_roma"),
-    ],
-    [
-    ("option_1",[],"Continue.",
-        [
-    (troop_set_slot, "trp_global_variables", g_flavor_event_4, 3),
-    (add_xp_as_reward, 1000),
-    (jump_to_menu, "mnu_town"),
-      ]),
-    ],
-  ),
+  ],[
+    ("option_1",[],"Continue.",[
+      (troop_set_slot, "trp_global_variables", g_flavor_event_4, 3),
+      (add_xp_as_reward, 1000),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+
+("wlodowiecus_adventure_4_intro",mnf_scale_picture,
+  "While on your travels, you met a courier with a missive from Olivarius. After paying a coin to a young man for his job as a sign of gratitude, you thank him, take a note from him and read it."
+  +"^The missive goes as follows:"
+  +"^^To our friend {playername}, I hope to find you in good health. A lot of things changed since our last, unfortunate expedition to the northern lands of the Barbaricum."
+  +" To be brief, the famous merchant magnate Caius Antonius Geta, also known by his cognomen Libycus or The Libyan, is organizing a grand convivium or private party, in his villa near Alexandria."
+  +" He sent a missive to me inviting you and other members of Wlodowiecus' crew to this banquet. Apparently he has some expedition to the East in mind and since your fame as explorers grew beyond Rome, he seeks to employ you to do his one."
+  +" I have to warn you though. The Libyan is a very powerful, wealthy and influential man. I strive for ties to him, to expand my own trade venues to Egypt and Africa in general."
+  +" For that reason, I urge you to ensure that members of the company won't annoy the host and that he will get the impression of a rather professional host of explorers."
+  +" For this reason, I urge you and Wlodowiecus to keep an eye on others, Mancilleus in particular, as we can't allow that meeting to go naught."
+  +" Likewise, the expedition also has to succeed in its goals, whatever The Libyan wishes it to achieve."
+  +"^^Sincerely,"
+  +"^Olivarius",
+  "none", [
+    (set_background_mesh, "mesh_pic_messenger"),
+  ],[
+    ("option_1",[],"To Alexandria! New adventures await!",[
+      (setup_quest_text,"qst_wlodowiecus_adventure_4"),
+      (str_store_party_name, s22, "p_town_20"),
+      (str_store_string, s2, "@You received a letter from Olivarius about another assignment for Wlodowiecus and his party. Apparently, a merchant magnate known as The Libyan wishes to see us at his villa in {s22}. You should hurry up to {s22} as soon as possible."),
+      (call_script, "script_start_quest", "qst_wlodowiecus_adventure_4", "trp_fortuna"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 1),
+      (change_screen_map),
+    ]),
+]),
 
 ("wlodowiecus_adventure_3_intro",mnf_scale_picture,
   "A young courier approached you this morning carrying a message for you. It's from Oliverius, the famous sculptor that sent you to India and funded an expedition to Africa."
@@ -56907,6 +56935,322 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (call_script, "script_start_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
       (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 1),
       (change_screen_map),
+    ]),
+]),
+
+("wlodowiecus_adventure_4_lybicus_feast",mnf_scale_picture,
+  "As you step through the grand entrance of the villa you are given fine toga, which you are supposed to wear. Then you enter the garden and you are wonderstruck by the opulence of The Lybian's residence."
+  +" Rich tapestries line the walls, and the air is filled with the scent of exotic spices. The chatter of influential guests fills the halls—merchants, scholars, and nobles alike."
+  +" Hadrianus, ever poised, exchanges words with Wlodowiecus, whose stoic demeanor reveals little."
+  +" Mancinellus gestures animatedly by a marble column, deep in debate with Old Briton, who listens with a knowing smirk."
+  +" All eyes occasionally flicker toward The Lybian, the host of the evening, whose reputation precedes him.",
+  "none", [
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("option_1",[],"Continue.",[
+      # player
+      # 1 lybian
+      # 2 wlod
+      # 3 manci
+      # 4 old briton
+      # 5 hadrian
+      # 6 ali
+      # 7- 20 other guests
+      (assign, "$temp1", 7),
+      (assign, "$temp2", "trp_lybian"),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, "scn_lybian_villa"),
+      (reset_visitors),
+      (try_for_range, ":entry", 0, 8),
+          (neq, ":entry", 1),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_everything),
+          (mission_tpl_entry_clear_override_items, "mt_conversation_generic", ":entry"),
+          (mission_tpl_entry_add_override_item, "mt_conversation_generic", ":entry", "itm_roman_toga"),
+          (mission_tpl_entry_add_override_item, "mt_conversation_generic", ":entry", "itm_female_caligea_gold"),
+      (try_end),
+      (try_for_range, ":entry", 8, 21),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_horse|af_override_weapons|af_require_civilian),
+      (try_end),
+      (set_visitor, 0, "trp_player"),
+      (set_visitor, 1, "trp_lybian"),
+      (set_visitor, 2, "trp_wlodowiecus"),
+      (set_visitor, 3, "trp_mancinellus"),
+      (set_visitor, 4, "trp_old_mercenary"),
+      (set_visitor, 5, "trp_hadrianus"),
+      (set_visitor, 6, "trp_ali"),
+      (set_visitor, 7, "trp_olivarius"),
+      (try_begin),
+          (this_or_next|eq, "$praefectus_urbani", "trp_tigellinus"),
+          (is_between, "$praefectus_urbani", active_npcs_begin,active_npcs_end),
+          (set_visitor, 8, "$praefectus_urbani"),
+      (try_end),
+      (assign, ":entry", 0),
+      (try_for_range, ":entry", 0, 5),
+          (troop_set_slot, "trp_temp_troop", ":entry", -1),
+      (try_end),
+      (try_for_range, ":entry", 0, 5),
+          (assign, ":score_to_beat", 9999),
+          (try_for_range, ":lady", kingdom_ladies_begin, kingdom_ladies_end),
+              (neq, ":lady", "trp_kingdom_7_lady_1"),
+              (store_faction_of_troop, ":lady_fac", ":lady"),
+              (faction_slot_eq, ":lady_fac", slot_faction_culture, "fac_culture_7"),
+              (assign, ":break", 5),
+              (try_for_range, ":slot", 0, ":break"),
+                  (troop_slot_eq, "trp_temp_troop", ":slot", ":lady"),
+                  (assign, ":break", -1),
+              (try_end),
+              (eq, ":break", 5),
+              (neg|troop_slot_ge, ":lady", slot_troop_occupation, dplmc_slto_exile),
+              (neg|troop_slot_eq, ":lady", slot_troop_spouse, "trp_player"),
+              (neg|troop_slot_eq, ":lady", slot_troop_mother, "trp_player"),
+              (neg|troop_slot_eq, ":lady", slot_troop_father, "trp_player"),
+              (neg|troop_slot_eq, ":lady", slot_troop_lover, "trp_player"),
+              (troop_get_slot, ":score", ":lady", slot_troop_age),
+              (try_begin),
+                  (troop_slot_eq, ":lady", slot_troop_met, 1),
+                  (val_mul, ":score", 2),
+              (try_end),
+              (try_begin),
+                  (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+                  (val_mul, ":score", 2),
+                  (val_div, ":score", 3),
+              (else_try),
+                  (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+                  (val_div, ":score", 4),
+              (else_try),
+                  (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+                  (val_mul, ":score", 3),
+                  (val_div, ":score", 2),
+              (else_try),
+                  (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+                  (val_mul, ":score", 3),
+                  (val_div, ":score", 2),
+              (try_end),
+              (lt, ":score", ":score_to_beat"),
+              (assign, ":score_to_beat", ":score"),
+              (troop_set_slot, "trp_temp_troop", ":entry", ":lady"),
+          (try_end),
+          (troop_get_slot, ":lady", "trp_temp_troop", ":entry"),
+          (gt, ":lady", -1),
+          (try_begin),
+              (eq, ":entry", 0),
+              (set_visitor, 15, ":lady"),
+          (else_try),
+              (eq, ":entry", 1),
+              (set_visitor, 10, ":lady"),
+          (else_try),
+              (eq, ":entry", 2),
+              (set_visitor, 17, ":lady"),
+          (else_try),
+              (eq, ":entry", 3),
+              (set_visitor, 12, ":lady"),
+          (else_try),
+              (eq, ":entry", 4),
+              (set_visitor, 19, ":lady"),
+          (try_end),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_statthalter_1", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 14, "trp_statthalter_1"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_statthalter_11", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 9, "trp_statthalter_11"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_senator_4", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 16, "trp_senator_4"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_senator_6", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 11, "trp_senator_6"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_senator_1", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 18, "trp_senator_1"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_senator_2", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 13, "trp_senator_2"),#vitellius
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_statthalter_new_1", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 20, "trp_statthalter_new_1"),
+      (try_end),
+      (set_visitor, 21, "trp_diggus"),
+      (set_visitor, 22, "trp_orgie_fem4"),
+      (jump_to_scene, "scn_lybian_villa"),
+      (change_screen_mission),
+    ]),
+]),
+
+("wlodowiecus_adventure_4_lybicus_feast_2",mnf_scale_picture,
+  "Servants glide through the crowd, offering golden, bejeweled cups brimming with rich, spiced wine. The air fills with the aroma of roasted meats, honeyed fruits,"
+  +" and exotic spices as dishes are presented on gleaming silver platters. Plates shimmer under the warm glow of lanterns, piled high with delicacies—stuffed quails, figs drizzled with honey,"
+  +" and fragrant cheeses. One by one, the guests indulge, their laughter growing louder and movements looser. Faces flush, and conversations grow more fervent as the intoxicating effects of the wine and"
+  +" the decadent feast begin to take hold, drawing everyone into a haze of pleasure and indulgence.",
+  "none", [
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("option_1",[],"Continue.",[
+      # player
+      # 1 lybian
+      # 2 wlod
+      # 3 manci
+      # 4 old briton
+      # 5 hadrian
+      # 6 ali
+      # 7- 20 other guests
+      (assign, "$temp1", 8),
+      (assign, "$temp2", "trp_lybian"),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, "scn_lybian_villa"),
+      (reset_visitors),
+      (try_for_range, ":entry", 0, 8),
+          (neq, ":entry", 1),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_everything),
+          (mission_tpl_entry_clear_override_items, "mt_conversation_generic", ":entry"),
+          (mission_tpl_entry_add_override_item, "mt_conversation_generic", ":entry", "itm_roman_toga"),
+          (mission_tpl_entry_add_override_item, "mt_conversation_generic", ":entry", "itm_female_caligea_gold"),
+      (try_end),
+      (try_for_range, ":entry", 8, 21),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_horse|af_override_weapons|af_require_civilian),
+      (try_end),
+      (set_visitor, 0, "trp_player"),
+      (set_visitor, 1, "trp_lybian"),
+      (set_visitor, 2, "trp_wlodowiecus"),
+      (set_visitor, 3, "trp_mancinellus"),
+      (set_visitor, 4, "trp_old_mercenary"),
+      (set_visitor, 5, "trp_hadrianus"),
+      (set_visitor, 6, "trp_ali"),
+      (set_visitor, 7, "trp_olivarius"),
+      (try_begin),
+          (this_or_next|eq, "$praefectus_urbani", "trp_tigellinus"),
+          (is_between, "$praefectus_urbani", active_npcs_begin,active_npcs_end),
+          (set_visitor, 8, "$praefectus_urbani"),
+      (try_end),
+      (assign, ":entry", 0),
+      (try_for_range, ":entry", 0, 5),
+          (troop_set_slot, "trp_temp_troop", ":entry", -1),
+      (try_end),
+      (try_for_range, ":entry", 0, 5),
+          (assign, ":score_to_beat", 9999),
+          (try_for_range, ":lady", kingdom_ladies_begin, kingdom_ladies_end),
+              (neq, ":lady", "trp_kingdom_7_lady_1"),
+              (store_faction_of_troop, ":lady_fac", ":lady"),
+              (faction_slot_eq, ":lady_fac", slot_faction_culture, "fac_culture_7"),
+              (assign, ":break", 5),
+              (try_for_range, ":slot", 0, ":break"),
+                  (troop_slot_eq, "trp_temp_troop", ":slot", ":lady"),
+                  (assign, ":break", -1),
+              (try_end),
+              (eq, ":break", 5),
+              (neg|troop_slot_ge, ":lady", slot_troop_occupation, dplmc_slto_exile),
+              (neg|troop_slot_eq, ":lady", slot_troop_spouse, "trp_player"),
+              (neg|troop_slot_eq, ":lady", slot_troop_mother, "trp_player"),
+              (neg|troop_slot_eq, ":lady", slot_troop_father, "trp_player"),
+              (neg|troop_slot_eq, ":lady", slot_troop_lover, "trp_player"),
+              (troop_get_slot, ":score", ":lady", slot_troop_age),
+              (try_begin),
+                  (troop_slot_eq, ":lady", slot_troop_met, 1),
+                  (val_mul, ":score", 2),
+              (try_end),
+              (lt, ":score", ":score_to_beat"),
+              (assign, ":score_to_beat", ":score"),
+              (troop_set_slot, "trp_temp_troop", ":entry", ":lady"),
+          (try_end),
+          (troop_get_slot, ":lady", "trp_temp_troop", ":entry"),
+          (gt, ":lady", -1),
+          (try_begin),
+              (eq, ":entry", 0),
+              (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 15, af_override_everything),
+              (mission_tpl_entry_clear_override_items, "mt_conversation_generic", 15),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 15, "itm_female_caligea_gold"),
+              (store_random_in_range, ":dress", "itm_new_dress_1","itm_german_femal_rich_1"),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 15, ":dress"),
+              (set_visitor, 15, ":lady"),
+          (else_try),
+              (eq, ":entry", 1),
+              (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 10, af_override_everything),
+              (mission_tpl_entry_clear_override_items, "mt_conversation_generic", 10),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 10, "itm_female_caligea_gold"),
+              (store_random_in_range, ":dress", "itm_new_dress_1","itm_german_femal_rich_1"),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 10, ":dress"),
+              (set_visitor, 10, ":lady"),
+          (else_try),
+              (eq, ":entry", 2),
+              (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 17, af_override_everything),
+              (mission_tpl_entry_clear_override_items, "mt_conversation_generic", 17),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 17, "itm_female_caligea_gold"),
+              (store_random_in_range, ":dress", "itm_new_dress_1","itm_german_femal_rich_1"),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 17, ":dress"),
+              (set_visitor, 17, ":lady"),
+          (else_try),
+              (eq, ":entry", 3),
+              (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 12, af_override_everything),
+              (mission_tpl_entry_clear_override_items, "mt_conversation_generic", 12),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 12, "itm_female_caligea_gold"),
+              (store_random_in_range, ":dress", "itm_new_dress_1","itm_german_femal_rich_1"),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 12, ":dress"),
+              (set_visitor, 12, ":lady"),
+          (else_try),
+              (eq, ":entry", 4),
+              (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 19, af_override_everything),
+              (mission_tpl_entry_clear_override_items, "mt_conversation_generic", 19),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 19, "itm_female_caligea_gold"),
+              (store_random_in_range, ":dress", "itm_new_dress_1","itm_german_femal_rich_1"),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", 19, ":dress"),
+              (set_visitor, 19, ":lady"),
+          (try_end),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_statthalter_1", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 14, "trp_statthalter_1"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_statthalter_11", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 9, "trp_statthalter_11"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_senator_4", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 16, "trp_senator_4"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_senator_6", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 11, "trp_senator_6"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_senator_1", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 18, "trp_senator_1"),
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_senator_2", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 13, "trp_senator_2"),#vitellius
+      (try_end),
+      (try_begin),
+          (neg|troop_slot_ge, "trp_statthalter_new_1", slot_troop_occupation, dplmc_slto_exile),
+          (set_visitor, 20, "trp_statthalter_new_1"),
+      (try_end),
+      (set_visitor, 21, "trp_diggus"),
+      (set_visitor, 22, "trp_orgie_fem4"),
+      (jump_to_scene, "scn_lybian_villa"),
+      (change_screen_mission),
+    ]),
+]),
+
+("wlodowiecus_adventure_4_lybicus_feast_lady",mnf_scale_picture,
+  "You run with her, as fast as you can, leaving behind the guests and the noise. Away from Hadrianus, who's still desperately avoiding Incontinentia."
+  +" Away from The Lybian, caught in conversation with an overly drunken Mancinellus. She whispers, 'Love is a fragile little flame, it could burn out."
+  +" But I know places where they won't find us.' You follow her through the bustling streets of Alexandria, her hand firmly in yours as she weaves through the crowd, making you both disappear in the sea of faces."
+  +"^^Finally, you arrive at a secluded garden, with a statue of Alexander the Great at its center. Her cheeks are flushed as she says, 'This garden is rarely visited. Let's nurture this fragile flame of love."
+  +" Even if the flowers we grow soon wither, they will forever live in our memories.'^^Under the watchful gaze of Alexander, you come together."
+  +" For a moment, time stands still, and the world fades into a timeless eternity.",
+  "none", [
+    (set_background_mesh, "mesh_pic_hexe_party"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (add_xp_as_reward, 1500),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_feast_end_2"),
     ]),
 ]),
 
@@ -57135,6 +57479,41 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (set_visitors, 4, "trp_germanic_light_clubman", 20),
       (jump_to_scene, "scn_random_scene_plain_forest_custom_12"),
       (change_screen_mission),
+    ]),
+]),
+
+("wlodowiecus_adventure_4_lybicus_feast_end_1",mnf_scale_picture,
+  "The lechery of the party guests was kept hidden until it erupted into an orgy of ignominy, when, with all shame and fear removed by Bacchus sweat wine, they simply followed their own inclinations."
+  +"^^It seems that a woman named Incontinentia Buttocks was caught in a passionate embrace with you on a sofa. Meanwhile, a man called Biggus Dickus rallied the other guests, and they left The Lybian's villa,"
+  +" parading through the streets of Alexandria while carrying the sofa - with you and Incontinentia still upon it - like a trophy. Leading the chaotic procession were a nude, drunken Hispanic and a nude,"
+  +" drunken Germanic man.^^The spectacle drew the attention of the townspeople, and the crowd swelled, turning the streets into a scene reminiscent of a wild Bacchanal. Suddenly, an elderly, nude Celt appeared,"
+  +" riding a lion - an animal said to belong to The Lybian. The lion knocked over several braziers, igniting the villa and triggering mass panic. Amidst the chaos, you and Incontinentia remained undisturbed,"
+  +" lost in each other's embrace, as the vigiles frantically tried to capture the lion, quell the rioters, and put out the spreading fire.",
+  "none", [
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (jump_to_menu, "mnu_auto_return_map"),
+      (add_xp_as_reward, 3000),
+      (rest_for_hours, 24, 16, 0),
+    ]),
+]),
+
+("wlodowiecus_adventure_4_lybicus_feast_end_2",mnf_scale_picture,
+  "It's all over too soon. She departs swiftly, giving you one last kiss and whispering: 'Don't forget your promise. Remember me, at least in your wildest dreams!'"
+  +"^^As you make your way back to The Lybian's villa, the scent of smoke fills the air, and the distant sound of shouting grows louder. You soon see the cause: a fire has broken out at the villa."
+  +" People are running wildly, looting nearby shops and homes. It's complete chaos - a full-scale riot. Feeling the effects of the wine, you decide it's best to retreat to your tavern, safely located in a different quarter, unaffected by the turmoil."
+  +"^^The next day, the innkeeper recounts the cause of the riot. It seems that a woman named Incontinentia Buttocks was caught in a passionate embrace with a man dressed in Ancient Greek fashion on a sofa."
+  +" Meanwhile, a man called Biggus Dickus rallied other guests, and they left The Lybian's villa, parading through the streets of Alexandria while carrying the sofa, with the lovers on it, like a trophy. Leading the chaotic procession were a nude, drunken Hispanic and a nude, drunken Germanic man."
+  +"^^The spectacle drew the attention of the townspeople, and the crowd grew, resembling a wild Bacchanal. Suddenly, an elderly, nude Celt appeared riding a lion - an animal said to belong to The Lybian."
+  +" The lion knocked over several braziers, setting the villa ablaze and sparking mass panic. Amidst the chaos, the lovers on the sofa remained undisturbed, continuing their affair as the vigiles struggled to capture the lion, control the rioters, and extinguish the flames.",
+  "none", [
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (jump_to_menu, "mnu_auto_return_map"),
+      (add_xp_as_reward, 1500),
+      (rest_for_hours, 24, 16, 0),
     ]),
 ]),
 
@@ -57714,7 +58093,10 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
       (display_message, "str_quest_updated"),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_3", 6, "@The trade deal failed. You defeated the Sciri and decide to spare the lives of the survivors.", 0),
 
-      (call_script, "script_recruit_troop_as_companion", "trp_mathildiz"),
+      (try_begin),
+          (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_object_center, 1),
+          (call_script, "script_recruit_troop_as_companion", "trp_mathildiz"),
+      (try_end),
 
       (troop_add_item, "trp_player", "itm_amber", 0),
       (troop_add_item, "trp_player", "itm_amber", 0),
@@ -57785,6 +58167,8 @@ One day, something rustles in the bushes outside the cave, fearing the wrath of 
   ],[
     ("option_1",[],"Continue.",[
       (add_xp_as_reward, 10000),
+      (store_current_day, ":day"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_timer, ":day"),
       (call_script, "script_end_quest", "qst_wlodowiecus_adventure_3"),
       (jump_to_menu, "mnu_auto_return_map"),
       (rest_for_hours, 72, 16, 0),
