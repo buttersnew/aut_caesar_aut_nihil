@@ -6648,8 +6648,8 @@ mission_templates = [
     (8,mtef_visitor_source,af_override_horse|af_override_gloves,0,1,[]),#39
     (10,mtef_visitor_source,af_override_horse|af_override_gloves,0,1,[]),#40
 
-    (41,mtef_visitor_source,0,0,1,[]),
-    (42,mtef_visitor_source,0,0,1,[]),
+    (41,mtef_visitor_source,af_override_horse,0,1,[]),
+    (42,mtef_visitor_source,af_override_horse,0,1,[]),
     (43,mtef_visitor_source,af_override_weapons|af_override_head|af_override_horse,0,1,[]),
     (44,mtef_visitor_source,af_override_weapons|af_override_head|af_override_horse,0,1,[]),
     (45,mtef_visitor_source,af_override_weapons|af_override_head|af_override_horse,0,1,[]),
@@ -29520,6 +29520,9 @@ mission_templates = [
       (else_try),
           (eq, ":scene", "scn_cutscene_parthia"),
           (play_track, "track_cutscene_3_track",2),
+      (else_try),
+          (eq, ":scene", "scn_cutscene_steppe"),
+          (play_track, "track_cutscene_6_track",2),
       (else_try),
           (eq, ":scene", "scn_scene_camp_forest"),
           (play_track, "track_cutscene_5_track",2),

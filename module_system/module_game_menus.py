@@ -16302,6 +16302,10 @@ game_menus = [
           (try_end),
 
           (try_begin),
+              (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state,3),
+              (eq, "$current_town", "p_town_13"),
+              (set_visitor, 42, "trp_alan_guide"),
+          (else_try),
               (neg|check_quest_active, "qst_elysium"),
               (quest_slot_eq, "qst_elysium", slot_quest_current_state,0),
               (this_or_next|eq, "$current_town", "p_town_37"),
@@ -56879,6 +56883,128 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
+("wlodowiecus_adventure_4_journey_starts",mnf_scale_picture,
+  "After meeting with the Alanic guide recommended by The Lybian, you gather with the rest of the caravan before setting off for Chersonesus."
+  +" You’re struck by the diversity of the group: Winnili mercenaries, some familiar faces from your journey through the Barbaricum and others new;"
+  +" Garamantian horsemen, including members of the same tribe that led you to the Gao River in the Sahara; and Alan warriors assembled by Wlodowiecus,"
+  +" including the guide you hired in Byzantion. The journey by ship is calm and uneventful.",
+  "none", [
+    (set_background_mesh, "mesh_pic_ships"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_1")
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_1",mnf_scale_picture,
+  "You arrive in the city of Chersonesus. The Alanic guide quickly reunites with his tribesmen at a local tavern, where they eagerly gather,"
+  +" likely drawn by the promise of coin as they join your caravan as guards. With their ranks bolstered, you depart the Bosporan city and"
+  +" begin your journey eastward.",
+  "none", [
+    (set_background_mesh, "mesh_pic_deserters"),
+    (troop_set_inventory_slot, "trp_wlodowiecus", ek_horse, "itm_horse_3"),
+    (troop_set_inventory_slot, "trp_hadrianus",  ek_horse, "itm_horse_3"),
+    (troop_set_inventory_slot, "trp_mancinellus",  ek_horse, "itm_horse_3"),
+    (troop_set_inventory_slot, "trp_ali",  ek_horse, "itm_horse_3"),
+    (troop_set_inventory_slot, "trp_old_mercenary",  ek_horse, "itm_horse_3"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (add_xp_as_reward, 2000),
+
+      (assign, "$g_next_menu", "mnu_wlodowiecus_adventure_4_journey_temple"),
+      (assign, "$tutorial_state", 0),
+      (assign, "$temp3", 1),
+      (set_jump_mission, "mt_desert_cutscene"),
+      (modify_visitors_at_site, "scn_cutscene_steppe"),
+      (reset_visitors),
+
+      (set_visitor, 1, "trp_player"),
+      (troop_set_slot, "trp_temp_array_a", 1, "trp_mancinellus"),
+      (troop_set_slot, "trp_temp_array_a", 2, "trp_wlodowiecus"),
+      (troop_set_slot, "trp_temp_array_a", 3, "trp_hadrianus"),
+      (troop_set_slot, "trp_temp_array_a", 4, "trp_old_mercenary"),
+      (troop_set_slot, "trp_temp_array_a", 5, "trp_ali"),
+      (troop_set_slot, "trp_temp_array_a", 6, "trp_alan_horse_archer"),
+
+      (try_begin),
+          (eq,"$character_gender", tf_female),
+          (troop_set_type,"trp_multiplayer_profile_troop_male", tf_female),
+      (else_try),
+          (troop_set_type,"trp_multiplayer_profile_troop_male", tf_male),
+      (try_end),
+      (str_store_troop_face_keys, s1, "trp_player"),
+      (troop_set_face_keys, "trp_multiplayer_profile_troop_male", s1),
+      (call_script, "script_dplmc_copy_inventory", "trp_player", "trp_multiplayer_profile_troop_male"),
+
+      (troop_set_slot, "trp_temp_array_a", 7, "trp_multiplayer_profile_troop_male"),
+
+      # have them walking
+      # (troop_set_inventory_slot, "trp_wlodowiecus", ek_horse, -1),
+      # (troop_set_inventory_slot, "trp_hadrianus",  ek_horse, -1),
+      # (troop_set_inventory_slot, "trp_mancinellus",  ek_horse, -1),
+      # (troop_set_inventory_slot, "trp_ali",  ek_horse, -1),
+      # (troop_set_inventory_slot, "trp_old_mercenary",  ek_horse, -1),
+      # (troop_set_inventory_slot, "trp_multiplayer_profile_troop_male",  ek_horse, -1),
+
+      (jump_to_scene, "scn_cutscene_steppe"),
+      (change_screen_mission),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_temple",mnf_scale_picture,
+  "After several days of travel, you come across a temple dedicated to the Scythian goddess Artimpasa."
+  +" With the help of your Alanic guide, you manage to communicate with one of the Enaree, male priests who dress and live as women, serving alongside the female priestesses."
+  +" The Enaree explains that this temple belongs to one of the last significant Scythian tribes and warns you to show proper respect to the temple and its people, or face severe consequences."
+  +" Just then, your conversation is interrupted as Mancilleus turns abruptly and speaks to you.",
+  "none", [
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("option_1",[],"Talk with Mancinellus.",[
+      (call_script, "script_setup_troop_meeting", "trp_mancinellus", -1, -1),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_temple_a",mnf_scale_picture,
+  "You and Mancinellus enter the shrine of Artimpasa, and are welcomed by several androgynous Enarei, who seemed to be charmed by the two of you."
+  +" You enjoy your time, that is until a Scythian chieftain enters the tent, hoping to receive a blessing by the Enarei, only to find you and Mancinellus despoiling them."
+  +" You are chased out of the shrine, and together with your friend run back to your allies, since the two of you were shirtless, Wlodowiecus put two and two together and punches the both of you, then he launches himself at Mancinellus,"
+  +" almost choking him to death but is stopped by you and a few others. You then quickly pack up before leading the caravan out of immediate danger."
+  +" However, the Scythian chieftain quickly gathered a host of warriors, who began to pursue you for a couple of days, until you ran across an Alannic horde."
+  +" Your guide quickly tells you that this tribe is not known to him, and soon arrows start to fly in your direction. It appears you are trapped between two armies."
+  +" The good thing is, both the Scythians and the Alans despise each other!",
+  "none", [
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("option_1",[],"Fight your way out!",[
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_temple_b",mnf_scale_picture,
+  "Mancinellus enters the shrine of Artimpasa, despite your warnings. The despoiling of the Enarei made the Scythians furious."
+  +" Though, your own personal refusal to participate earned you some respect among the Scythians, despite being disobeyed by whom they define as your subordinate."
+  +" They demand Wlodowiecus and the caravan to leave the temple immediately and never come back again. Wlodowiecus gathers the group and heads east, giving a very grim look of disapproval"
+  +" at Mancinellus who seems to not notice that his disrespectful behavior again brought you trouble and screwed relations with locals."
+  +" In a fit of rage, Wlodowiecus launches himself as Mancinellus, almost choking him to death but is pulled off him by you and some others."
+  +" In your mind you wonder whether every time you enter some settlement, Mancinellus should be put under house arrest, watched by the Old Mercenary and Hadrianus to prevent him from following"
+  +" his unhealthy urges and stupidity. Your internal thought debate is suddenly disturbed, as you see Alanic scouts shouting, warning about an Alan host which is about to attack you.",
+  "none", [
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("option_1",[],"Fight your way out!",[
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_temple_c",mnf_scale_picture,
+  "You and Mancinellus enter the shrine of Artimpasa, and are welcomed by several androgynous Enarei, who seemed to be charmed by the two of you."
+  +" You look for the priestess and enjoy your time with her, while Mancinellus is enjoying the Enarei nearby."
+  +" Suddenly, a Scythian chieftain enters the tent, hoping to receive a blessing from the Enarei, only to find you and Mancinellus despoiling them."
+  +" You are chased out of the shrine, and together with your friend run back to your allies, since the two of you were shirtless, Wlodowiecus put two and two together and punches the both of you,"
+  +" launching himself at Mancinellus and almost chokes him to death but is stopped by you and a few others."
+  +" You then quickly pack up before leading the caravan out of immediate danger. However, the Scythian chieftain quickly gathered a host of warriors,"
+  +" who began to pursue you for a couple of days, until you ran across an Alannic horde. Your guide quickly tells you that this tribe is not known to him,"
+  +" and soon arrows start to fly in your direction. It appears you are trapped between two armies. The good thing is, both the Scythians and the Alans despise each other!",
+  "none", [
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("option_1",[],"Fight your way out!",[
+    ]),
+]),
+
 ("wlodowiecus_adventure_4_intro",mnf_scale_picture,
   "While on your travels, you met a courier with a missive from Olivarius. After paying a coin to a young man for his job as a sign of gratitude, you thank him, take a note from him and read it."
   +"^The missive goes as follows:"
@@ -58703,8 +58829,8 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 
 ############langobard quest
 ("langobard_landing",0,
-    "You arrive at the camp and see hundreds of tents. It seems the Lugians have assembled an army of more than two thousand men! Some warriors approach and inform you their king is awaiting you.",
-    "none", [
+  "You arrive at the camp and see hundreds of tents. It seems the Lugians have assembled an army of more than two thousand men! Some warriors approach and inform you their king is awaiting you.",
+  "none", [
     (set_background_mesh, "mesh_pic_deserters"),
     (try_begin),
         (quest_slot_eq, "qst_langobard_arrive", slot_quest_temp_slot, 2),
@@ -58756,13 +58882,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
         (jump_to_scene, "scn_langobard_landing"),
         (change_screen_mission),
     (try_end),
-    ],
-    [
-      ("continue",[],"Continue...",
-      [
+  ],[
+    ("continue",[],"Continue...",[
       (quest_set_slot, "qst_langobard_arrive", slot_quest_temp_slot, 1),
       (call_script, "script_setup_troop_meeting", "trp_kingdom_13_lord", -1, -1),
-        ]),
+    ]),
 ]),
 
 ("langobard_defeat",0,

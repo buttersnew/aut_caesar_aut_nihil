@@ -6187,6 +6187,12 @@ hero_attrib,wp(300),knows_hero,0x0000000bff0ca385315f8db6db6db6db00000000001efa1
 ["xiao","Xiao Qiu","Xiao Qiu",tf_male|tf_hero,0,0,fac_commoners,
 [itm_leather_boots, itm_alan_light_2],
 hero_attrib,wp(300),knows_hero,0x000000093f0c901036db6db6db6db6db00000000000db6db0000000000000000],
+["alan_guide", "Ugly Alan", "Ugly Alan", tf_male|tf_hero|tf_randomize_face, no_scene, reserved, fac_culture_3,
+[itm_heavy_lance,itm_khergit_bow_2,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_alan_long_sword_ring,itm_alan_medium_3,
+itm_sarmatian_shoes,itm_alan_helm_4,itm_steppe_horse_2
+],
+attrib_level_26_warrior, wp(250), knows_archer_exp_eastern, scythian_face_11, scythian_face_12],
+
 
 ["ali", "Ali Al-Nabatai", "Ali Al-Nabatai", tf_hero, no_scene, reserved, fac_commoners,[
 itm_eastern_shoe_r, itm_arabian_bow_1, itm_arrows,

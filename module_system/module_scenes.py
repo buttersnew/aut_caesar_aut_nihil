@@ -1110,5 +1110,7 @@ scenes = [
 
   ("lybian_villa", sf_generate, "none", "none", (0, 0), (100, 100), -200, "0x000000003000050000051142000015bc000023e200007a41",[], [], "outer_terrain_desert"),
 
+  ("cutscene_steppe", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000220200500000afebf0000381400001e040000112d",[], [], "outer_terrain_steppe"),
+
 ]#end of file
 #

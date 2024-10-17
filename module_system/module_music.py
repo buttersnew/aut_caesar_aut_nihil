@@ -178,6 +178,7 @@ tracks = [
   ("cutscene_3_track", "eastern_battle_new.ogg", mtf_persist_until_finished, 0),
   ("cutscene_4_track", "dacian_war_2.ogg", mtf_persist_until_finished, 0),
   ("cutscene_5_track", "germ_war_4.ogg", mtf_persist_until_finished, 0),
+  ("cutscene_6_track", "travel_caoyuan_01.ogg", mtf_persist_until_finished, 0),
   ("cutscene_fire_track", "generic_4.ogg", mtf_persist_until_finished, 0),
   ("cutscene_intro_1", "generic_2.ogg", mtf_persist_until_finished, 0),
   ("cutscene_to_hades", "to_hades.ogg", mtf_persist_until_finished, 0),
