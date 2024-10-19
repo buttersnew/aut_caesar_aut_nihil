@@ -1112,5 +1112,7 @@ scenes = [
 
   ("cutscene_steppe", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000220200500000afebf0000381400001e040000112d",[], [], "outer_terrain_steppe"),
 
+  ("sogdian_town", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000012002a0b20004992700006e54000007fe00001fd2",[], [], "outer_terrain_mountain_2"),
+
 ]#end of file
 #

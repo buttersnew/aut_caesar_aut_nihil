@@ -6187,17 +6187,28 @@ hero_attrib,wp(300),knows_hero,0x0000000bff0ca385315f8db6db6db6db00000000001efa1
 ["xiao","Xiao Qiu","Xiao Qiu",tf_male|tf_hero,0,0,fac_commoners,
 [itm_leather_boots, itm_alan_light_2],
 hero_attrib,wp(300),knows_hero,0x000000093f0c901036db6db6db6db6db00000000000db6db0000000000000000],
-["alan_guide", "Ugly Alan", "Ugly Alan", tf_male|tf_hero|tf_randomize_face, no_scene, reserved, fac_culture_3,
+["alan_guide", "Ugly Alani Warrior", "Ugly Alani Warrior", tf_male|tf_hero|tf_randomize_face, no_scene, reserved, fac_culture_3,
 [itm_heavy_lance,itm_khergit_bow_2,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_alan_long_sword_ring,itm_alan_medium_3,
 itm_sarmatian_shoes,itm_alan_helm_4,itm_steppe_horse_2
 ],
 attrib_level_26_warrior, wp(250), knows_archer_exp_eastern, scythian_face_11, scythian_face_12],
 
-
 ["ali", "Ali Al-Nabatai", "Ali Al-Nabatai", tf_hero, no_scene, reserved, fac_commoners,[
 itm_eastern_shoe_r, itm_arabian_bow_1, itm_arrows,
 itm_arabian_oval_shield_4, itm_arabian_armor_b, itm_arabian_sword_d, itm_eastern_helm6
 ],knight_attrib_5, wp(300), knight_skills_5|knows_inventory_management_10, 0x000000007f04c15134db8db6db6e351b00000000001c349b0000000000000000],
+
+["xingnu_barbarian", "Xiongnu Warrior", "Xiongnu Warrior", tf_male|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
+[ itm_leather_boots,
+  itm_sarmatian_cap_1, itm_sarmatian_cap_2, itm_sarmatian_cap_3, itm_sarmatian_cap_4, itm_kopfband, itm_nomad_cap,
+  itm_steppe_horse_1, itm_steppe_horse_2, itm_steppe_horse_3,
+  itm_khergit_bow_2, itm_khergit_arrows,
+  itm_shortened_spear,
+  itm_saka_armour_4, itm_saka_armour_3,
+  itm_rawhide_coat, itm_pelt_coat, itm_alan_long_sword, itm_sarmatian_ringsword_2,
+  itm_javelin
+],
+attrib_level_29, wp(190), knows_level_29, saka_face_1, saka_face_2],
 
 ["romanian","Tiganu Tate","Tiganu Tate",tf_male|tf_hero,0,0,fac_commoners,
 [itm_caligea, itm_roman_poor1],

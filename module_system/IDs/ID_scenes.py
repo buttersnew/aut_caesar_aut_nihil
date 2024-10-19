@@ -848,4 +848,5 @@ scn_walhalla_outdoor = 845
 scn_walhalla_indoors = 846
 scn_lybian_villa = 847
 scn_cutscene_steppe = 848
+scn_sogdian_town = 849
 scn_exit = 100000

@@ -5399,7 +5399,15 @@ miracle_battle_trigger = (3,0,ti_once,[],[
   ])
 
 ##SB : new camera triggers
-dplmc_battle_mode_triggers = [
+dplmc_death_came_triggers = [
+  common_move_deathcam,
+  common_rotate_deathcam,
+  custom_commander_camera,
+  deathcam_cycle_forwards,
+  deathcam_cycle_backwards,
+  dplmc_death_camera
+]
+dplmc_battle_mode_triggers_no_deathcam = [
   # torches for night battles?
   # (ti_on_agent_spawn, 0.5, 0, [
   #   (is_currently_night),
@@ -5941,10 +5949,8 @@ dplmc_battle_mode_triggers = [
   realistic_wounding,
 
   dplmc_horse_speed,
-  common_move_deathcam, common_rotate_deathcam,
-  custom_commander_camera, deathcam_cycle_forwards, deathcam_cycle_backwards,
-  dplmc_death_camera,
 ]
+dplmc_battle_mode_triggers = dplmc_death_came_triggers + dplmc_battle_mode_triggers_no_deathcam
 ##diplomacy end
 
 common_battle_mission_start = (
@@ -29145,6 +29151,11 @@ mission_templates = [
           (set_global_cloud_amount, 0),
       (else_try),
           (check_quest_active, "qst_wlodowiecus_adventure_4"),
+          (eq, "$temp1", 1),
+          (scene_set_day_time, 19),
+          (set_global_cloud_amount, 0),
+      (else_try),
+          (check_quest_active, "qst_wlodowiecus_adventure_4"),
           (eq, "$temp1", 7),
           (scene_set_day_time, 16),
           (set_global_cloud_amount, 0),
@@ -29212,6 +29223,9 @@ mission_templates = [
           (else_try),
               (check_quest_active, "qst_wlodowiecus_adventure_3"),
               (scene_set_day_time, 10),
+          (else_try),
+              (check_quest_active, "qst_wlodowiecus_adventure_4"),
+              (scene_set_day_time, 14),
           (try_end),
       (else_try),
           (eq, "$temp3", 2),
@@ -29225,8 +29239,6 @@ mission_templates = [
     common_inventory_not_available,
     common_battle_init_banner,
     wounds_vc,
-    dedal_shield_bash,
-    dedal_shield_bash_AI,
 
     (ti_after_mission_start, 0, 0, [],[(call_script, "script_music_set_situation_with_culture", mtf_sit_fight)]),
 
@@ -29288,7 +29300,383 @@ mission_templates = [
       (try_end),
       (set_show_messages, 1),
     ]),
-] + utility_triggers + battle_panel_triggers + improved_horse_archer_ai),
+] + utility_triggers + battle_panel_triggers + improved_horse_archer_ai + dplmc_battle_mode_triggers_no_deathcam + theoris_decapitation),
+
+("wlods_advantures_sogdia_siege", mtf_battle_mode,-1,
+  "monasterio",[
+    #attacker spawn + reinforcements
+    (0,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (1,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (2,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (4,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (5,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (6,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (7,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (8,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+    (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
+
+    #defender spawns
+    (10,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (11,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (12,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (13,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (14,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (15,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (16,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (17,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (18,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (19,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+
+    (20,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (21,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (22,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (23,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (24,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (25,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (26,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (27,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (28,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (29,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (30,mtef_visitor_source|mtef_team_4,af_override_horse,aif_start_alarmed,1,[]),
+
+    (31,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (32,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (33,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (34,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (35,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (36,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (37,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (38,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (39,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+
+    #defender archer positions
+    (40,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (41,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (42,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (43,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (44,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (45,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (46,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+    (47,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
+  ], p_wetter + storms + global_common_triggers+
+  [
+    common_siege_attacker_do_not_stall,
+    cannot_spawn_commoners,
+    improved_lightning,
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent"),
+      (agent_is_human, ":agent"),
+      (agent_is_ally, ":agent"),
+      (agent_get_troop_id, ":troop", ":agent"),
+      (neq, ":troop", "trp_player"),
+      (try_begin),
+          (troop_is_hero, ":troop"),
+          (agent_set_damage_modifier,  ":agent", 250),
+          (agent_set_accuracy_modifier,  ":agent", 500),
+          (agent_set_no_death_knock_down_only, ":agent", 1),
+          (try_begin),
+              (eq, ":troop", "$temp4"),
+              (agent_set_slot, ":agent", slot_agent_is_in_scripted_mode, 1),
+              (agent_get_position, pos10, ":agent"),
+              (agent_set_scripted_destination, ":agent", pos10, 0, 0),
+          (else_try),
+              (agent_set_division, ":agent", sdt_bodyguard),
+          (try_end),
+      (else_try),
+          (agent_set_damage_modifier,  ":agent", 125),
+          (agent_set_accuracy_modifier,  ":agent", 500),
+      (try_end),
+    ]),
+    (ti_before_mission_start, 0, 0, [],[
+      (try_begin),
+          (check_quest_active, "qst_wlodowiecus_adventure_4"),
+          (scene_set_day_time, 12),
+          (set_global_cloud_amount, 40),
+      (try_end),
+    ]),
+
+    common_inventory_not_available,
+    common_battle_init_banner,
+    wounds_vc,
+
+    (ti_after_mission_start, 0, 0, [],[(call_script, "script_music_set_situation_with_culture", mtf_sit_siege)]),
+
+    (ti_tab_pressed, 0, 0, [(display_message,"str_cannot_leave_now")],[]),
+
+    (1, 10, ti_once, [
+      (neg|main_hero_fallen),
+      (ge, "$attacker_reinforcement_stage", 4),#after the third wave
+      (neg|conversation_screen_is_active),
+    ],[
+      (start_mission_conversation, "$temp1"),
+    ]),
+    (1, 5, ti_once, [
+      (neg|main_hero_fallen),
+      (neg|conversation_screen_is_active),
+      (eq, "$temp3", 2),
+    ],[
+      (tutorial_box, "@New objective: Find the ugly Alani warrior and escape through the hidden entrance."),
+      (assign, "$temp3", 3),
+      (set_fixed_point_multiplier, 100),
+      (init_position, pos10),
+      (entry_point_get_position, pos10, 30),
+      (try_for_agents, ":agent_no"),
+          (agent_is_active, ":agent_no"),
+          (agent_is_alive, ":agent_no"),
+          (agent_is_non_player, ":agent_no"),
+          (agent_get_division, ":agent_division", ":agent_no"),
+          (eq, ":agent_division", sdt_bodyguard),
+          (agent_set_scripted_destination, ":agent_no", pos10, 0),
+          (agent_ai_set_aggressiveness, ":agent_no", 0),
+          (agent_set_slot, ":agent_no", slot_agent_is_in_scripted_mode, 1),
+      (try_end),
+    ]),
+    (1, 0, ti_once,[
+      (neg|main_hero_fallen),
+      (neg|conversation_screen_is_active),
+      (eq, "$temp3", 3),
+      (get_player_agent_no, ":player_agent"),
+      (agent_get_position, pos12, ":player_agent"),
+      (entry_point_get_position, pos13, 30),
+      (get_distance_between_positions_in_meters, ":distance", pos13, pos12),
+      (le, ":distance", 4),
+    ],[
+      (start_mission_conversation, "$temp4"),
+    ]),
+
+    (1, 10, ti_once, [
+      (main_hero_fallen),
+    ],[
+      (jump_to_menu, "$temp2"),
+      (stop_all_sounds, 1),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+      (finish_mission, 4),
+    ]),
+
+    (0, 0, ti_once, [
+      (store_mission_timer_a, ":time"),
+      (gt, ":time", 50),
+    ],[
+      (set_show_messages, 0),
+      (try_for_range, ":cur_group", 0, grc_everyone),
+        (team_give_order, "$attacker_team", ":cur_group", mordr_charge),
+        (team_give_order, "$attacker_team_2", ":cur_group", mordr_charge),
+      (try_end),
+      (set_show_messages, 1),
+    ]),
+
+    (1, 0, 0,[
+      (store_normalized_team_count, ":counter", "$defender_team"),
+      (le, ":counter", 25),
+      (store_normalized_team_count, ":counter", "$defender_team_2"),
+      (le, ":counter", 25),
+    ],[
+      (try_for_range, ":entry", 12, 16),
+        (add_visitors_to_current_scene, ":entry", "trp_saka_horse_archer", 10),
+      (try_end),
+      (val_add, "$defender_reinforcement_stage", 1),
+      (display_message, "@New reinforcements arrive!", message_positive),
+    ]),
+
+    (1, 0, 0,[
+      (store_normalized_team_count, ":counter", "$attacker_team"),
+      (le, ":counter", 25),
+      (store_normalized_team_count, ":counter", "$attacker_team_2"),
+      (le, ":counter", 25),
+    ],[
+      (try_for_range, ":entry", 5, 9),
+        (add_visitors_to_current_scene, ":entry", "trp_xingnu_barbarian", 15),
+      (try_end),
+      (val_add, "$attacker_reinforcement_stage", 1),
+      (display_message, "@New enemies arrive!", message_negative),
+    ]),
+
+    common_siege_defender_reinforcement_archer_reposition,
+    #let defenders hold position
+    (0, 0, ti_once,[
+      #set variables
+      (assign, "$defender_team", 0),
+      (assign, "$attacker_team", 1),
+      (assign, "$defender_team_2", 2),
+      (assign, "$attacker_team_2", 3),
+
+      (team_set_relation, "$defender_team", 4, 1),
+      (team_set_relation, "$attacker_team", 4, 1),
+      (team_set_relation, "$defender_team_2", 4, 1),
+      (team_set_relation, "$attacker_team_2", 4, 1),
+
+      (assign,"$defender_reinforcement_stage",0),
+      (assign,"$attacker_reinforcement_stage",0),
+
+
+      (set_show_messages, 0),
+
+      #give orders!
+      (team_give_order, "$defender_team", grc_archers, mordr_stand_ground),
+      (team_give_order, "$defender_team", grc_archers, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", grc_archers, mordr_stand_ground),
+      (team_give_order, "$defender_team_2", grc_archers, mordr_stand_closer),
+      (try_for_agents, ":agent_no"),
+          (agent_is_active, ":agent_no"),
+          (agent_is_alive, ":agent_no"),
+          (agent_is_non_player, ":agent_no"),
+          (agent_get_team, ":agent_team", ":agent_no"),#is a defender
+          (try_begin),
+              (this_or_next|eq, ":agent_team", "$defender_team"),
+              (eq, ":agent_team", "$defender_team_2"),
+              (agent_set_slot, ":agent_no", slot_agent_is_not_reinforcement, 1),
+              (agent_get_entry_no, ":entry", ":agent_no"),
+              (try_begin),
+                  (eq, ":entry", 16),
+                  (agent_set_division,":agent_no", 0),
+              (else_try),
+                  (eq, ":entry", 17),
+                  (agent_set_division,":agent_no", 2),
+              (else_try),
+                  (eq, ":entry", 18),
+                  (agent_set_division,":agent_no", 3),
+              (else_try),
+                  (eq, ":entry", 19),
+                  (agent_set_division,":agent_no", 4),
+              (try_end),
+          (else_try),
+              (try_begin),
+                  #has a bow
+                  (call_script, "script_cf_has_bow", ":agent_no"),
+                  #(agent_get_troop_id, ":troop", ":agent_no"),
+                  #(troop_is_guarantee_ranged, ":troop"),#archers go to archer point
+                  # (agent_get_entry_no, ":entry", ":agent_no"),
+                  # (try_begin),
+                      # (eq, ":entry", 4),
+                      # (agent_set_division,":agent_no", 5),
+                  # (else_try),
+                      # (eq, ":entry", 6),
+                      # (agent_set_division,":agent_no", 6),
+                  # (else_try),
+                      # (eq, ":entry", 8),
+                      # (agent_set_division,":agent_no", 7),
+                  # (else_try),
+                      # (eq, ":entry", 10),
+                      # (agent_set_division,":agent_no", 8),
+                  # (try_end),
+                  (store_mod, ":division", ":agent_no", 4),
+                  (val_add, ":division", 5),
+                  (agent_set_division,":agent_no", ":division"),
+                  # (assign, reg1, ":division"),
+                  # (assign, reg2, ":agent_no"),
+                  # (agent_get_troop_id, ":troop", ":agent_no"),
+                  # (str_store_troop_name, s1, ":troop"),
+                  # (display_message, "@{s1}: id {reg2}, division {reg1}"),
+              (else_try),
+                  (agent_get_entry_no, ":entry", ":agent_no"),
+                  (try_begin),
+                      (eq, ":entry", 5),
+                      (agent_set_division,":agent_no", 0),
+                  (else_try),
+                      (eq, ":entry", 6),
+                      (agent_set_division,":agent_no", 1),
+                  (else_try),
+                      (eq, ":entry", 7),
+                      (agent_set_division,":agent_no", 2),
+                  (else_try),
+                      (eq, ":entry", 8),
+                      (agent_set_division,":agent_no", 3),
+                  (try_end),
+              (try_end),
+          (try_end),
+      (try_end),
+
+      (team_give_order, "$defender_team", 0, mordr_hold),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_hold),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 0, mordr_stand_closer),
+      (entry_point_get_position, pos10, 16),
+      (team_set_order_position, "$defender_team_2", 0, pos10),
+      (team_set_order_position, "$defender_team", 0, pos10),
+
+      (team_give_order, "$defender_team", 2, mordr_hold),
+      (team_give_order, "$defender_team", 2, mordr_stand_closer),
+      (team_give_order, "$defender_team", 2, mordr_stand_closer),
+      (team_give_order, "$defender_team", 2, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 2, mordr_hold),
+      (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 2, mordr_stand_closer),
+      (entry_point_get_position, pos10, 17),
+      (team_set_order_position, "$defender_team_2", 2, pos10),
+      (team_set_order_position, "$defender_team", 2, pos10),
+
+      (team_give_order, "$defender_team", 3, mordr_hold),
+      (team_give_order, "$defender_team", 3, mordr_stand_closer),
+      (team_give_order, "$defender_team", 3, mordr_stand_closer),
+      (team_give_order, "$defender_team", 3, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 3, mordr_hold),
+      (team_give_order, "$defender_team_2", 3, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 3, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 3, mordr_stand_closer),
+      (entry_point_get_position, pos10, 18),
+      (team_set_order_position, "$defender_team_2", 3, pos10),
+      (team_set_order_position, "$defender_team", 3, pos10),
+
+      (team_give_order, "$defender_team", 4, mordr_hold),
+      (team_give_order, "$defender_team", 4, mordr_stand_closer),
+      (team_give_order, "$defender_team", 4, mordr_stand_closer),
+      (team_give_order, "$defender_team", 4, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 4, mordr_hold),
+      (team_give_order, "$defender_team_2", 4, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 4, mordr_stand_closer),
+      (team_give_order, "$defender_team_2", 4, mordr_stand_closer),
+      (entry_point_get_position, pos10, 19),
+      (team_set_order_position, "$defender_team_2", 4, pos10),
+      (team_set_order_position, "$defender_team", 4, pos10),
+
+      # have companions follow player
+      (team_give_order, "$defender_team", sdt_bodyguard, mordr_follow),
+      (team_give_order, "$defender_team_2", sdt_bodyguard, mordr_follow),
+
+      (team_give_order, "$attacker_team", 5, mordr_hold),
+      (team_give_order, "$attacker_team_2", 5, mordr_hold),
+      (entry_point_get_position, pos10, 1),
+      (team_set_order_position, "$attacker_team_2", 5, pos10),
+      (team_set_order_position, "$attacker_team", 5, pos10),
+
+      (team_give_order, "$attacker_team", 6, mordr_hold),
+      (team_give_order, "$attacker_team_2", 6, mordr_hold),
+      (entry_point_get_position, pos10, 2),
+      (team_set_order_position, "$attacker_team_2", 6, pos10),
+      (team_set_order_position, "$attacker_team", 6, pos10),
+
+      (team_give_order, "$attacker_team", 7, mordr_hold),
+      (team_give_order, "$attacker_team_2", 7, mordr_hold),
+      (entry_point_get_position, pos10, 3),
+      (team_set_order_position, "$attacker_team_2", 7, pos10),
+      (team_set_order_position, "$attacker_team", 7, pos10),
+
+      (team_give_order, "$attacker_team", 8, mordr_hold),
+      (team_give_order, "$attacker_team_2", 8, mordr_hold),
+      (entry_point_get_position, pos10, 4),
+      (team_set_order_position, "$attacker_team_2", 8, pos10),
+      (team_set_order_position, "$attacker_team", 8, pos10),
+
+      (set_show_messages, 1),
+    ],[]),
+    (150, 0, 0, [],[##changed to 2 min, 30sec
+      (try_for_agents,":cur_agent"),
+          (agent_is_active, ":cur_agent"),
+          (agent_is_alive, ":cur_agent"),
+          (agent_is_human, ":cur_agent"),
+          (agent_is_ally, ":cur_agent"),
+          (agent_refill_ammo, ":cur_agent"),
+      (try_end),
+      (display_message, "@Defenders received ammunition supplies."),
+    ]),
+] + utility_triggers + battle_panel_triggers + dplmc_battle_mode_triggers_no_deathcam + theoris_decapitation),
+
 
 ("wlods_advantures_3_sciri_battle", mtf_battle_mode,-1,
   "monasterio",[
@@ -29443,7 +29831,7 @@ mission_templates = [
       (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
       (finish_mission, 4),
     ]),
-] + utility_triggers + battle_panel_triggers),
+] + utility_triggers + battle_panel_triggers + theoris_decapitation + dplmc_battle_mode_triggers_no_deathcam),
 
 
 ("desert_cutscene",mtf_battle_mode,-1,
@@ -29756,18 +30144,17 @@ mission_templates = [
     (play_track, "track_cutscene_4_track",2),
 	   ]),
 
-    (1, 1, 1,
-       [(quest_slot_eq, "qst_langobard_arrive", slot_quest_current_state, 3),
-       (num_active_teams_le, 1),
-       (neg|main_hero_fallen),
-       ],
-       [
-    (store_current_scene, ":cur_scene"),
-    (modify_visitors_at_site, ":cur_scene"),
-    (try_for_range, ":entry", 12, 21),
-        (store_random_in_range, ":warriors", "trp_lombard_skirmisher", "trp_slavic_skirmisher"),
-        (add_visitors_to_current_scene, ":entry", ":warriors", 10),
-    (try_end),
+    (1, 1, 1,[
+      (quest_slot_eq, "qst_langobard_arrive", slot_quest_current_state, 3),
+      (num_active_teams_le, 1),
+      (neg|main_hero_fallen),
+    ],[
+      (store_current_scene, ":cur_scene"),
+      (modify_visitors_at_site, ":cur_scene"),
+      (try_for_range, ":entry", 12, 21),
+          (store_random_in_range, ":warriors", "trp_lombard_skirmisher", "trp_slavic_skirmisher"),
+          (add_visitors_to_current_scene, ":entry", ":warriors", 10),
+      (try_end),
     ]),
 
     (0,0,0,[],

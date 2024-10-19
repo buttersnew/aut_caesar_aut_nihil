@@ -9461,6 +9461,32 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("lord_intro_lybian_feast_1", "Welcome {playername}. What a wonderful party! Back in Rome, such gatherings are far more... formal in my opinion. Here, there's a certain freedom, a looseness to the air. It's refreshing. I dare say, some of these Alexandrians live a little too freely, but perhaps that's part of the charm... Let's toast on the charm of Alexandria!"),
 ("lord_intro_lybian_feast_2", "Welcome to The Lybian's grand feast, {playername}! Alexandria never disappoints, and neither does our esteemed host. Have you seen the size of his trade network? No wonder the man holds such influence. Though, I must say, it's the wine that has my attention tonight - Greek, of course, only the finest."),
 ("lord_intro_lybian_feast_3", "Now, where did I leave my cup? Care to join me for another drink?"),
+
+("wlod_4_temple_1", "You and Mancinellus enter the shrine of Artimpasa, and are welcomed by several androgynous Enarei, who seemed to be charmed by the two of you."
+  +" You enjoy your time, that is until a Scythian chieftain enters the tent, hoping to receive a blessing by the Enarei, only to find you and Mancinellus despoiling them."
+  +" You are chased out of the shrine, and together with your friend run back to your allies, since the two of you were shirtless, Wlodowiecus put two and two together and punches the both of you, then he launches himself at Mancinellus,"
+  +" almost choking him to death but is stopped by you and a few others. You then quickly pack up before leading the caravan out of immediate danger."
+  +" However, the Scythian chieftain quickly gathered a host of warriors, who began to pursue you for a couple of days, until you ran across an Alannic horde."
+  +" Your guide quickly tells you that this tribe is not known to him, and soon arrows start to fly in your direction. It appears you are trapped between two armies."
+  +" The good thing is, both the Scythians and the Alans despise each other!"
+),
+("wlod_4_temple_2",  "Mancinellus enters the shrine of Artimpasa, despite your warnings. The despoiling of the Enarei made the Scythians furious."
+  +" Though, your own personal refusal to participate earned you some respect among the Scythians, despite being disobeyed by whom they define as your subordinate."
+  +" They demand Wlodowiecus and the caravan to leave the temple immediately and never come back again. Wlodowiecus gathers the group and heads east, giving a very grim look of disapproval"
+  +" at Mancinellus who seems to not notice that his disrespectful behavior again brought you trouble and screwed relations with locals."
+  +" In a fit of rage, Wlodowiecus launches himself as Mancinellus, almost choking him to death but is pulled off him by you and some others."
+  +" In your mind you wonder whether every time you enter some settlement, Mancinellus should be put under house arrest, watched by the Old Mercenary and Hadrianus to prevent him from following"
+  +" his unhealthy urges and stupidity. Your internal thought debate is suddenly disturbed, as you see Alanic scouts shouting, warning about an Alan host which is about to attack you."
+),
+("wlod_4_temple_3", "You and Mancinellus enter the shrine of Artimpasa, and are welcomed by several androgynous Enarei, who seemed to be charmed by the two of you."
+  +" You look for the priestess and enjoy your time with her, while Mancinellus is enjoying the Enarei nearby."
+  +" Suddenly, a Scythian chieftain enters the tent, hoping to receive a blessing from the Enarei, only to find you and Mancinellus despoiling them."
+  +" You are chased out of the shrine, and together with your friend run back to your allies, since the two of you were shirtless, Wlodowiecus put two and two together and punches the both of you,"
+  +" launching himself at Mancinellus and almost chokes him to death but is stopped by you and a few others."
+  +" You then quickly pack up before leading the caravan out of immediate danger. However, the Scythian chieftain quickly gathered a host of warriors,"
+  +" who began to pursue you for a couple of days, until you ran across an Alannic horde. Your guide quickly tells you that this tribe is not known to him,"
+  +" and soon arrows start to fly in your direction. It appears you are trapped between two armies. The good thing is, both the Scythians and the Alans despise each other!"
+),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

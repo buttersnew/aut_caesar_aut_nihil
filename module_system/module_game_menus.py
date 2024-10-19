@@ -56885,7 +56885,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 
 ("wlodowiecus_adventure_4_journey_starts",mnf_scale_picture,
   "After meeting with the Alanic guide recommended by The Lybian, you gather with the rest of the caravan before setting off for Chersonesus."
-  +" You’re struck by the diversity of the group: Winnili mercenaries, some familiar faces from your journey through the Barbaricum and others new;"
+  +" You're struck by the diversity of the group: Winnili mercenaries, some familiar faces from your journey through the Barbaricum and others new;"
   +" Garamantian horsemen, including members of the same tribe that led you to the Gao River in the Sahara; and Alan warriors assembled by Wlodowiecus,"
   +" including the guide you hired in Byzantion. The journey by ship is calm and uneventful.",
   "none", [
@@ -56961,47 +56961,195 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (call_script, "script_setup_troop_meeting", "trp_mancinellus", -1, -1),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_temple_a",mnf_scale_picture,
-  "You and Mancinellus enter the shrine of Artimpasa, and are welcomed by several androgynous Enarei, who seemed to be charmed by the two of you."
-  +" You enjoy your time, that is until a Scythian chieftain enters the tent, hoping to receive a blessing by the Enarei, only to find you and Mancinellus despoiling them."
-  +" You are chased out of the shrine, and together with your friend run back to your allies, since the two of you were shirtless, Wlodowiecus put two and two together and punches the both of you, then he launches himself at Mancinellus,"
-  +" almost choking him to death but is stopped by you and a few others. You then quickly pack up before leading the caravan out of immediate danger."
-  +" However, the Scythian chieftain quickly gathered a host of warriors, who began to pursue you for a couple of days, until you ran across an Alannic horde."
-  +" Your guide quickly tells you that this tribe is not known to him, and soon arrows start to fly in your direction. It appears you are trapped between two armies."
-  +" The good thing is, both the Scythians and the Alans despise each other!",
+("wlodowiecus_adventure_4_journey_temple_outcome",mnf_scale_picture,
+  "{s15}",
   "none", [
+    (str_clear, s15),
+    (try_begin),
+        (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_target_dna, 1),
+        (str_store_string, s15, "str_wlod_4_temple_1"),
+    (else_try),
+        (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_target_dna, 2),
+        (str_store_string, s15, "str_wlod_4_temple_2"),
+    (else_try),
+        (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_target_dna, 3),
+        (str_store_string, s15, "str_wlod_4_temple_3"),
+    (try_end),
     (set_background_mesh, "mesh_pic_khergit"),
   ],[
     ("option_1",[],"Fight your way out!",[
+      (assign, "$temp3", 1),
+      (assign, "$temp1", "mnu_wlodowiecus_adventure_4_fight_1_victory"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_4_fight_1_die"),
+
+      (set_jump_mission, "mt_wlods_advantures_fight"),
+      (modify_visitors_at_site, "scn_random_scene_new_steppe_custom_10"),
+      (reset_visitors),
+
+      (set_visitor, 1, "trp_player"),
+      (set_visitors, 1, "trp_lombard_vetran", 20),
+      (set_visitors, 1, "trp_alan_horse_archer", 30),
+      (set_visitors, 1, "trp_gaetuli_horseman", 20),
+
+      (set_visitor, 1, "trp_wlodowiecus"),
+      (set_visitor, 1, "trp_hadrianus"),
+      (set_visitor, 1, "trp_mancinellus"),
+      (set_visitor, 1, "trp_varus"),
+      (set_visitor, 1, "trp_old_mercenary"),
+
+      (set_visitors, 4, "trp_steppe_bandit", 20),
+      (set_visitors, 4, "trp_alan_horse_archer", 20),
+      (set_visitors, 4, "trp_alan_heavy_horse_archer", 20),
+      (jump_to_scene, "scn_random_scene_new_steppe_custom_10"),
+      (change_screen_mission),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_temple_b",mnf_scale_picture,
-  "Mancinellus enters the shrine of Artimpasa, despite your warnings. The despoiling of the Enarei made the Scythians furious."
-  +" Though, your own personal refusal to participate earned you some respect among the Scythians, despite being disobeyed by whom they define as your subordinate."
-  +" They demand Wlodowiecus and the caravan to leave the temple immediately and never come back again. Wlodowiecus gathers the group and heads east, giving a very grim look of disapproval"
-  +" at Mancinellus who seems to not notice that his disrespectful behavior again brought you trouble and screwed relations with locals."
-  +" In a fit of rage, Wlodowiecus launches himself as Mancinellus, almost choking him to death but is pulled off him by you and some others."
-  +" In your mind you wonder whether every time you enter some settlement, Mancinellus should be put under house arrest, watched by the Old Mercenary and Hadrianus to prevent him from following"
-  +" his unhealthy urges and stupidity. Your internal thought debate is suddenly disturbed, as you see Alanic scouts shouting, warning about an Alan host which is about to attack you.",
+("wlodowiecus_adventure_4_fight_1_die",mnf_scale_picture,
+  "The battle is lost. The realization hits you like a cold blade—raiders swarm, chaos echoes, and the steppe feels endless, empty. Bodies—your comrades—lie strewn,"
+  +" faces you know turned to lifeless masks. Mancilleus falls clutching the golden bracelet he never claimed, the Old Man's sword drops, his strength gone."
+  +" Wlodowiecus's shouts fade to silence, Ali's mocking grin is no more. And Hadrianus—his eyes, once burning, now stare blankly at the sky."
+  +"^^You're alone. The weight of it all settles—defeat, death, and the emptiness of the steppe swallowing everything.",
   "none", [
-    (set_background_mesh, "mesh_pic_khergit"),
+    (set_background_mesh, "mesh_pic_defeat"),
   ],[
-    ("option_1",[],"Fight your way out!",[
+    ("option_1",[],"Epiphany...",[
+      (assign, "$temp", 0),
+      (jump_to_menu, "mnu_death_waits"),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_temple_c",mnf_scale_picture,
-  "You and Mancinellus enter the shrine of Artimpasa, and are welcomed by several androgynous Enarei, who seemed to be charmed by the two of you."
-  +" You look for the priestess and enjoy your time with her, while Mancinellus is enjoying the Enarei nearby."
-  +" Suddenly, a Scythian chieftain enters the tent, hoping to receive a blessing from the Enarei, only to find you and Mancinellus despoiling them."
-  +" You are chased out of the shrine, and together with your friend run back to your allies, since the two of you were shirtless, Wlodowiecus put two and two together and punches the both of you,"
-  +" launching himself at Mancinellus and almost chokes him to death but is stopped by you and a few others."
-  +" You then quickly pack up before leading the caravan out of immediate danger. However, the Scythian chieftain quickly gathered a host of warriors,"
-  +" who began to pursue you for a couple of days, until you ran across an Alannic horde. Your guide quickly tells you that this tribe is not known to him,"
-  +" and soon arrows start to fly in your direction. It appears you are trapped between two armies. The good thing is, both the Scythians and the Alans despise each other!",
+("wlodowiecus_adventure_4_fight_1_victory",mnf_scale_picture,
+  "With great effort, you fend off the attackers. Some of the surviving raiders, gripped by panic, scatter in all directions, desperately trying to lose themselves in the vast, open steppe surrounding you."
+  +" You spot Mancilleus looting a fallen chieftain, prying a golden bracelet from his arm, while the Old Man wipes sweat from his brow, finishing off one of the raiders with grim efficiency."
+  +" Wlodowiecus, distraught and furious, is shouting like a madman, while Ali, sauntering arrogantly across the battlefield, makes snarky remarks about the fallen enemies."
+  +" Curiously, there is a dark, grim expression in Hadrianus's eyes as he seems to struggle with suppressed anger."
+  +"^^Taking a moment to catch your breath, you join in the looting, pocketing some golden jewelry from the dead—valuables worth a hefty sum of denarii."
+  +" Once the spoils are gathered, Wlodowiecus, in a commanding voice, orders everyone to regroup and set up camp. You instruct the others to tend to the wounded and bury the dead,"
+  +" and Hadrianus, eager to keep himself occupied, volunteers for the task.",
+  "none", [
+    (set_background_mesh, "mesh_pic_victory"),
+  ],[
+    ("option_1",[],"Set camp and wait for the next day.",[
+      (troop_add_gold, "trp_player", 10000),
+      (troop_add_item, "trp_player", "itm_jewelry", 0),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_camp"),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_camp",mnf_scale_picture,
+  "The camp took most of the afternoon to set up, but it was completed just before sunset."
+  +" Several fires flicker around the camp, with small groups of warriors gathered around, murmuring and exchanging quiet words."
+  +" You and your companions, along with the Alan guide, settle around the central fire. In the distance, some of the Alani play an unfamiliar instrument, their voices rising in a song sung in a tongue different from their own."
+  +" You cast a weary gaze at the group. You have survived this battle, but as you look into each of their eyes, you sense a shared, unspoken understanding: there will be more battles to come.",
+  "none", [
+    (set_background_mesh, "mesh_pic_camp"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (assign, "$temp1", 1),
+      (assign, "$temp2", "trp_wlodowiecus"),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, "scn_cutscene_steppe"),
+      (reset_visitors),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_weapons|af_override_horse),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 2, af_override_weapons|af_override_horse),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 3, af_override_weapons|af_override_horse),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 4, af_override_weapons|af_override_horse),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 5, af_override_weapons|af_override_horse),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 6, af_override_weapons|af_override_horse),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 7, af_override_weapons|af_override_horse),
+
+      (try_begin),
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1 | af_override_horse),
+      (try_end),
+      (set_visitor, 1, "trp_player"),
+      (set_visitor, 2, "trp_wlodowiecus"),
+      (set_visitor, 3, "trp_alan_guide"),
+      (set_visitor, 4, "trp_hadrianus"),
+      (set_visitor, 5, "trp_mancinellus"),
+      (set_visitor, 6, "trp_ali"),
+      (set_visitor, 7, "trp_old_mercenary"),
+      (jump_to_scene, "scn_cutscene_steppe"),
+      (change_screen_mission),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_wide",mnf_scale_picture,
+  "The next day you pack your camp on your horses — including the ones captured from raiders — and gather your caravan through endless steppe."
+  +" At one point, your guide leads you southwest, now traveling through the desert towards the nearby sea, which locals call the Aral Sea."
+  +" Then you turn southeast again, traveling around the river which flows into it and which Hadrianus recognizes as Oxus river."
+  +" You pass by the city of Gurganj and the Alan guides lead you northeast, crossing the Oxus river, going into Sogdiana.",
+  "none", [
+    (set_background_mesh, "mesh_pic_desert"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_sogdia"),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_sogdia",mnf_scale_picture,
+  "You arrive at the nearest Sogdian town and secure lodging at a tavern, allowing you and your companions a much-needed rest."
+  +" However, the next morning, chaos erupts as panic spreads throughout the city. Word quickly reaches you: a horde, said to be the distant Xiongnu — though"
+  +" the locals aren't certain — has encircled the town, led by an unknown chieftain. The city's inhabitants, including their own king, plead for your assistance,"
+  +" fearing that without your aid, everyone within the walls—yourselves included—will be slaughtered. Without hesitation, you rally your men to the town walls,"
+  +" preparing to defend against the oncoming assault.",
   "none", [
     (set_background_mesh, "mesh_pic_khergit"),
   ],[
-    ("option_1",[],"Fight your way out!",[
+    ("option_1",[],"Continue.",[
+      (assign, "$temp3", 1),#used for current mission state
+      (assign, "$temp1", "trp_wlodowiecus"),# starts conversation during battle
+      (assign, "$temp4", "trp_alan_guide"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_4_fight_1_die"),
+      (assign, "$temp4_1", "mnu_wlodowiecus_adventure_4_journey_sogdia_end"),
+      (set_jump_mission, "mt_wlods_advantures_sogdia_siege"),
+      (modify_visitors_at_site, "scn_sogdian_town"),
+      (reset_visitors),
+      #1,2,3,4 enemy archer positions
+      #5,6,7,8 enemy spawns
+      (set_visitors, 5, "trp_xingnu_barbarian", 38),
+      (set_visitors, 6, "trp_xingnu_barbarian", 38),
+      (set_visitors, 7, "trp_xingnu_barbarian", 38),
+      (set_visitors, 8, "trp_xingnu_barbarian", 38),
+      #10 player
+      (set_visitor, 10, "trp_player"),
+      #11 companion spawn
+      (set_visitor, 11, "trp_wlodowiecus"),
+      # (set_visitor, 11, "trp_alan_guide"),
+      (set_visitor, 11, "trp_hadrianus"),
+      (set_visitor, 11, "trp_mancinellus"),
+      (set_visitor, 11, "trp_ali"),
+      (set_visitor, 11, "trp_old_mercenary"),
+      #12, 13,14,15 defenders reinforcements
+      #16, 17, 18, 19, defender gathering points
+      (set_visitors, 16, "trp_lombard_vetran", 15),
+      (set_visitors, 17, "trp_alan_horse_archer", 20),
+      (set_visitors, 18, "trp_gaetuli_horseman", 15),
+      (set_visitors, 19, "trp_saka_heavy_cavalry", 10),
+
+      (set_visitor, 30, "$temp4"),#neutral spawn for alan guide
+      #40-47 defender archer positions, 35 troops
+      (set_visitors, 40, "trp_saka_horse_archer", 10),
+      (set_visitors, 41, "trp_saka_horse_archer", 10),
+      (set_visitors, 42, "trp_saka_horse_archer", 10),
+      (set_visitors, 43, "trp_saka_horse_archer", 5),
+      (set_visitors, 44, "trp_saka_horse_archer", 5),
+      (set_visitors, 45, "trp_saka_horse_archer", 5),
+      (set_visitors, 46, "trp_saka_horse_archer", 5),
+      (set_visitors, 47, "trp_saka_horse_archer", 5),
+      (jump_to_scene, "scn_sogdian_town"),
+      (change_screen_mission),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_sogdia_end",mnf_scale_picture,
+  "You finally lead your group to what you hope is safety. Ensuring everyone—Mancilleus, Hadrianus, the Old Mercenary, Ali, Wlodowiecus, and any others who joined you—has made it inside,"
+  +" you push forward through a dim cellar where the Sogdians once stored salt and meat. The air is thick with fear, and the scent of it is palpable as you hurry,"
+  +" panting with each step. Above, the sounds of slaughter echo—agonized screams, the clash of steel, and the triumphant shouts and cruel laughter of the Xiongnu warriors."
+  +"^^Pressing onward, you discover a small door that opens into what appears to be a cave system, moonlight filtering faintly through an opening ahead."
+  +" You barricade the cellar door behind you, and then follow Wlodowiecus into the narrow passage. The cave leads deeper until Wlodo spots an exit—a sizable hole"
+  +" that opens to the outside of the city. You gather your strength and climb out, relief flooding you for a brief moment—until you see the spears and arrows aimed directly at you."
+  +" Fear grips you, and your stomach knots as realization sets in: the Xiongnu knew about the cave entrance all along. They had been waiting for you to emerge.",
+  "none", [
+    (set_background_mesh, "mesh_pic_prisoner_man"),
+  ],[
+    ("option_1",[],"Continue.",[
     ]),
 ]),
 

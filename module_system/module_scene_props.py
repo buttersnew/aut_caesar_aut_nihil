@@ -3417,4 +3417,17 @@ scene_props = [
     ])
   ]),
   ("box_a_open",0,"box_a_open","bo_box_a", []),
+
+  ("western_wall_stone_1",0,"western_wall_stone_1","bo_western_wall_stone_1", []),
+  ("western_wall_stone_2",0,"western_wall_stone_2","bo_western_wall_stone_2", []),
+  ("western_wall_stone_3",0,"western_wall_stone_3","bo_western_wall_stone_3", []),
+  ("western_wall_stone_4",0,"western_wall_stone_4","bo_western_wall_stone_4", []),
+  ("western_wall_stone_5",0,"western_wall_stone_5","bo_western_wall_stone_5", []),
+  ("western_wall_stone_6",0,"western_wall_stone_6","bo_western_wall_stone_6", []),
+  ("western_wall_stone2_1",0,"western_wall_stone2_1","bo_western_wall_stone_1", []),
+  ("western_wall_stone2_2",0,"western_wall_stone2_2","bo_western_wall_stone_2", []),
+  ("western_wall_stone2_3",0,"western_wall_stone2_3","bo_western_wall_stone_3", []),
+  ("western_wall_stone2_4",0,"western_wall_stone2_4","bo_western_wall_stone_4", []),
+  ("western_wall_stone2_5",0,"western_wall_stone2_5","bo_western_wall_stone_5", []),
+  ("western_wall_stone2_6",0,"western_wall_stone2_6","bo_western_wall_stone_6", []),
 ]
