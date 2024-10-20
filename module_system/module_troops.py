@@ -6159,8 +6159,9 @@ attrib_level_12,wp(100),knows_level_12,0x000000003f00b04549981ff8e0e978b90000000
 attrib_level_12,wp(100),knows_level_12,0x00000000000c731307d106390c6606ec00000000001c45330000000000000000],
 
 # wlod 4
-["han_footman", "Han Footman", "Han Footmen", tf_male|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
-[itm_chinese_cap_1,itm_chinese_cap_2, itm_chinese_shield_1, itm_chinese_shield_2, itm_chinese_sword, itm_chinese_light_1,itm_chinese_light_2, itm_leather_boots],
+["han_footman", "Han Archer", "Han Archer", tf_male|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[itm_chinese_cap_1,itm_chinese_cap_2, itm_chinese_shield_1, itm_chinese_shield_2, itm_chinese_sword, itm_chinese_light_1,itm_chinese_light_2, itm_leather_boots,
+itm_bodkin_arrows, itm_khergit_bow],
 attrib_level_26, wp(160), knows_level_26, saka_face_1, saka_face_2],
 ["han_hallbard_man", "Han Spearman", "Han Spearmen", tf_male|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
 [itm_chinese_cap_1,itm_chinese_cap_2, itm_chinese_hallbard, itm_chinese_light_1,itm_chinese_light_2, itm_leather_boots],
@@ -6205,7 +6206,8 @@ itm_arabian_oval_shield_4, itm_arabian_armor_b, itm_arabian_sword_d, itm_eastern
   itm_khergit_bow_2, itm_khergit_arrows,
   itm_shortened_spear,
   itm_saka_armour_4, itm_saka_armour_3,
-  itm_rawhide_coat, itm_pelt_coat, itm_alan_long_sword, itm_sarmatian_ringsword_2,
+  itm_rawhide_coat, itm_pelt_coat, itm_sarmatian_light5, itm_kaftan_3,
+  itm_alan_long_sword, itm_sarmatian_ringsword_2, itm_tutorial_battle_axe,
   itm_javelin
 ],
 attrib_level_29, wp(190), knows_level_29, saka_face_1, saka_face_2],

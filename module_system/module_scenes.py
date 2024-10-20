@@ -1111,8 +1111,11 @@ scenes = [
   ("lybian_villa", sf_generate, "none", "none", (0, 0), (100, 100), -200, "0x000000003000050000051142000015bc000023e200007a41",[], [], "outer_terrain_desert"),
 
   ("cutscene_steppe", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000220200500000afebf0000381400001e040000112d",[], [], "outer_terrain_steppe"),
+  ("xiongnu_camp", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000220200500000afebf0000381400001e040000112d",[], [], "outer_terrain_steppe_mountain"),
 
-  ("sogdian_town", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000012002a0b20004992700006e54000007fe00001fd2",[], [], "outer_terrain_mountain_2"),
+  ("sogdian_town", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000012002a0b20004992700006e54000007fe00001fd2",[], [], "outer_terrain_steppe_mountain"),
+
+  ("jilu_fortress", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000120000500000a0e87000000000000000000000000",[], [], "outer_terrain_steppe_mountain"),
 
 ]#end of file
 #

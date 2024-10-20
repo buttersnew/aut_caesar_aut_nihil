@@ -56961,7 +56961,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (call_script, "script_setup_troop_meeting", "trp_mancinellus", -1, -1),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_temple_outcome",mnf_scale_picture,
+("wlodowiecus_adventure_4_journey_temple_outcome",mnf_scale_picture|mnf_enable_hot_keys,
   "{s15}",
   "none", [
     (str_clear, s15),
@@ -56994,7 +56994,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (set_visitor, 1, "trp_wlodowiecus"),
       (set_visitor, 1, "trp_hadrianus"),
       (set_visitor, 1, "trp_mancinellus"),
-      (set_visitor, 1, "trp_varus"),
+      (set_visitor, 1, "trp_ali"),
       (set_visitor, 1, "trp_old_mercenary"),
 
       (set_visitors, 4, "trp_steppe_bandit", 20),
@@ -57048,14 +57048,9 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (set_jump_mission, "mt_conversation_generic"),
       (modify_visitors_at_site, "scn_cutscene_steppe"),
       (reset_visitors),
-      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_weapons|af_override_horse),
-      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 2, af_override_weapons|af_override_horse),
-      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 3, af_override_weapons|af_override_horse),
-      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 4, af_override_weapons|af_override_horse),
-      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 5, af_override_weapons|af_override_horse),
-      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 6, af_override_weapons|af_override_horse),
-      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 7, af_override_weapons|af_override_horse),
-
+      (try_for_range, ":entry", 1, 21),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_weapons|af_override_horse|af_override_head),
+      (try_end),
       (try_begin),
           (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
           (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
@@ -57068,6 +57063,20 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (set_visitor, 5, "trp_mancinellus"),
       (set_visitor, 6, "trp_ali"),
       (set_visitor, 7, "trp_old_mercenary"),
+
+      (set_visitor, 8, "trp_lombard_vetran"),
+      (set_visitor, 9, "trp_gaetuli_horseman"),
+      (set_visitor, 10, "trp_alan_horse_archer"),
+      (set_visitor, 11, "trp_alan_horse_archer"),
+      (set_visitor, 12, "trp_alan_horse_archer"),
+      (set_visitor, 13, "trp_alan_horse_archer"),
+      (set_visitor, 14, "trp_alan_horse_archer"),
+      (set_visitor, 15, "trp_gaetuli_horseman"),
+      (set_visitor, 16, "trp_lombard_vetran"),
+      (set_visitor, 17, "trp_gaetuli_horseman"),
+      (set_visitor, 18, "trp_lombard_vetran"),
+      (set_visitor, 19, "trp_alan_horse_archer"),
+      (set_visitor, 20, "trp_alan_horse_archer"),
       (jump_to_scene, "scn_cutscene_steppe"),
       (change_screen_mission),
     ]),
@@ -57084,7 +57093,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_sogdia"),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_sogdia",mnf_scale_picture,
+("wlodowiecus_adventure_4_journey_sogdia",mnf_scale_picture|mnf_enable_hot_keys,
   "You arrive at the nearest Sogdian town and secure lodging at a tavern, allowing you and your companions a much-needed rest."
   +" However, the next morning, chaos erupts as panic spreads throughout the city. Word quickly reaches you: a horde, said to be the distant Xiongnu — though"
   +" the locals aren't certain — has encircled the town, led by an unknown chieftain. The city's inhabitants, including their own king, plead for your assistance,"
@@ -57099,6 +57108,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (assign, "$temp4", "trp_alan_guide"),
       (assign, "$temp2", "mnu_wlodowiecus_adventure_4_fight_1_die"),
       (assign, "$temp4_1", "mnu_wlodowiecus_adventure_4_journey_sogdia_end"),
+      (assign, "$tutorial_state", 0),
       (set_jump_mission, "mt_wlods_advantures_sogdia_siege"),
       (modify_visitors_at_site, "scn_sogdian_town"),
       (reset_visitors),
@@ -57150,6 +57160,167 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_prisoner_man"),
   ],[
     ("option_1",[],"Continue.",[
+      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_xongnu_prisoner"),
+      (add_xp_as_reward, 5000),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_xongnu_prisoner",mnf_scale_picture,
+  "You are herded into a holding pen, destined either for slavery or some other grim fate at the hands of the horde."
+  +" Just as hope begins to slip away, you notice a figure who appears to be the leader—the Khan of the horde."
+  +" You watch as Mancilleus steps forward, attempting to speak with him. To your surprise, the Khan, looking amused, engages him in conversation.",
+  "none", [
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("text_scene",[
+      (ge, "$cheat_mode", 1),
+    ],"Test Scene.",[
+      (jump_to_scene, "scn_xiongnu_camp"),
+      (change_screen_mission),
+    ]),
+    ("option_1",[],"Continue.",[
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 7),
+      (assign, "$temp1", 2),
+      (assign, "$temp2", "trp_temur"),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, "scn_xiongnu_camp"),
+      (reset_visitors),
+      (try_for_range, ":entry", 1, 9),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_everything),
+      (try_end),
+      (try_for_range, ":entry", 9, 38),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_horse),
+      (try_end),
+      (set_visitor, 1, "trp_player"),
+      (set_visitor, 2, "trp_wlodowiecus"),
+      (set_visitor, 3, "trp_old_mercenary"),
+      (set_visitor, 4, "trp_hadrianus"),
+      (set_visitor, 5, "trp_mancinellus"),
+      (set_visitor, 6, "trp_ali"),
+      (set_visitor, 7, "trp_alan_guide"),
+
+      (set_visitor, 8, "trp_lombard_vetran"),
+      (set_visitor, 9, "trp_temur"),
+      (set_visitor, 10, "trp_xingnu_barbarian"),
+      (set_visitor, 11, "trp_xingnu_barbarian"),
+      (set_visitor, 12, "trp_xingnu_barbarian"),
+      (set_visitor, 13, "trp_xingnu_barbarian"),
+      (set_visitor, 14, "trp_xingnu_barbarian"),
+      (set_visitor, 15, "trp_xingnu_barbarian"),
+      (set_visitor, 16, "trp_xingnu_barbarian"),
+      (set_visitor, 17, "trp_xingnu_barbarian"),
+      (set_visitor, 18, "trp_xingnu_barbarian"),
+      (set_visitor, 19, "trp_xingnu_barbarian"),
+      (set_visitor, 20, "trp_xingnu_barbarian"),
+      (set_visitor, 21, "trp_xingnu_barbarian"),
+      (set_visitor, 22, "trp_xingnu_barbarian"),
+      (set_visitor, 23, "trp_xingnu_barbarian"),
+      (set_visitor, 24, "trp_xingnu_barbarian"),
+      (set_visitor, 25, "trp_xingnu_barbarian"),
+      (set_visitor, 26, "trp_xingnu_barbarian"),
+      (set_visitor, 27, "trp_xingnu_barbarian"),
+      (set_visitor, 28, "trp_xingnu_barbarian"),
+      (set_visitor, 29, "trp_xingnu_barbarian"),
+      (set_visitor, 30, "trp_xingnu_barbarian"),
+      (set_visitor, 31, "trp_xingnu_barbarian"),
+      (set_visitor, 32, "trp_xingnu_barbarian"),
+      (set_visitor, 33, "trp_xingnu_barbarian"),
+      (set_visitor, 34, "trp_xingnu_barbarian"),
+      (set_visitor, 35, "trp_xingnu_barbarian"),
+      (set_visitor, 36, "trp_xingnu_barbarian"),
+      (set_visitor, 37, "trp_xingnu_barbarian"),
+      (jump_to_scene, "scn_xiongnu_camp"),
+      (change_screen_mission),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_great_wall_1",mnf_scale_picture,
+  "You and the rest of the caravan are freed from your bindings and invited to stay in a yurt prepared for you."
+  +" A few hours later, several of your men who had been trapped inside the city are dragged out—some did not survive, but the remaining ones are allowed to join you."
+  +" The Sogdian citizens and warriors, on the other hand, are enslaved. That night, a grand feast is held to celebrate the victory, and the Tuqi King requests Mancinellus’s presence."
+  +" He is escorted away while you are ordered to remain inside the yurt for the night."
+  +"^^As you sit alone, memories of India flood back. Why does he always manage to impress leaders? He causes trouble for everyone, yet somehow manages to save the group every time."
+  +" Why him? Why not you? But as you think further, you realize that each person here is unique in their own way; Mancinellus is no exception."
+  +"^^The following morning, Mancinellus returns, grinning from ear to ear with two Xiongnu standing behind him. Apparently,"
+  +" his stories and jokes had such an effect on the Tuqi King that he now wants to keep in contact with Mancinellus."
+  +" The King even offered him a share of gold, silver, and other luxuries, along with assigning him Xiongnu bodyguards and guides.",
+  "none", [
+    (set_background_mesh, "mesh_pic_orgie"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_great_wall_2"),
+      (add_xp_as_reward, 1500),
+      (troop_add_items, "trp_player", "itm_silver", 2),
+      (troop_add_items, "trp_player", "itm_temple_gold", 2),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_great_wall_2",mnf_scale_picture|mnf_enable_hot_keys,
+  "Reassured and back on track, you follow your new Xiongnu guides northeast, journeying into the mysterious Ferghana Valley."
+  +" You pass a large town that Hadrianus identifies as Alexandria Eschate, or Alexandria Ultima as it is known in Rome, still displaying traces of the Greek character left by the settlers of Alexander the Great."
+  +" You continue through the lands of the Dayuan, the local name for the Ferghana Valley given by the Ionian Greeks. Here, Hadrianus exchanges news with the locals about events from across the world."
+  +" Your guides eventually lead you to the city of Shule, the gateway to the enigmatic Tarim Basin, which you must traverse to reach the mysterious realm of Seres."
+  +"^^The journey stretches on for weeks, possibly even months. As you begin to lose track of time, you carve a primitive calendar into a wooden club, counting each day and night as they blur together."
+  +" The passage of time feels slow, each day marked by the rhythm of travel and survival. Finally, after countless days, you reach the outskirts of a a fortress, guarded by soldiers."
+  +" Your Xiongnu guides say, that this fortress is the Western part of a system of fortifications to protect what they call the Han Empire from raids from the North."
+  +" If you want to pass into the Han lands, you have to ask the guards for permission to enter. The guards have already spotted you. You signal your intent to communicate, relying on your Xiongnu companions as translators to speak with them.",
+  "none", [
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("text_scene",[
+      (ge, "$cheat_mode", 1),
+    ],"Test Scene.",[
+      (jump_to_scene, "scn_jilu_fortress"),
+      (change_screen_mission),
+    ]),
+    ("option_1",[],"Continue.",[
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 9),
+      #1-15 player and companions
+      #16 enemy commander
+      #17 to 30 enemy troops
+      (assign, "$temp1", "trp_chinese_commander"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_4_fight_1_die"),
+      (assign, "$temp3", 1),
+      (set_jump_mission, "mt_wlods_advantures_jilu_siege"),
+      (modify_visitors_at_site, "scn_jilu_fortress"),
+      (reset_visitors),
+      #1,2,3,4 enemy archer positions
+      #5,6,7,8 enemy spawns
+      #10 player
+      (set_visitor, 1, "trp_player"),
+      #11 companion spawn
+      (set_visitor, 2, "trp_wlodowiecus"),
+      # (set_visitor, 11, "trp_alan_guide"),
+      (set_visitor, 3, "trp_hadrianus"),
+      (set_visitor, 4, "trp_mancinellus"),
+      (set_visitor, 5, "trp_ali"),
+      (set_visitor, 6, "trp_old_mercenary"),
+      #12, 13,14,15 defenders reinforcements
+      #16, 17, 18, 19, defender gathering points
+      (set_visitors, 7, "trp_lombard_vetran", 5),
+      (set_visitors, 8, "trp_alan_horse_archer", 10),
+      (set_visitors, 9, "trp_gaetuli_horseman", 5),
+      (set_visitors, 10, "trp_xingnu_barbarian", 10),
+      (set_visitors, 11, "trp_xingnu_barbarian", 10),
+      (set_visitors, 12, "trp_xingnu_barbarian", 10),
+      (set_visitors, 13, "trp_xingnu_barbarian", 10),
+      (set_visitors, 14, "trp_xingnu_barbarian", 10),
+      (set_visitors, 15, "trp_xingnu_barbarian", 10),
+
+      (set_visitor, 16, "trp_chinese_commander"),
+      (set_visitors, 17, "trp_han_footman", 5),
+      (set_visitors, 18, "trp_han_footman", 5),
+      (set_visitors, 19, "trp_han_footman", 5),
+      (set_visitors, 20, "trp_han_footman", 5),
+      (set_visitors, 21, "trp_han_footman", 5),
+      (set_visitors, 22, "trp_han_hallbard_man", 10),
+      (set_visitors, 23, "trp_han_hallbard_man", 10),
+      (set_visitors, 24, "trp_han_hallbard_man", 10),
+      (set_visitors, 25, "trp_han_heavy_hallbard_man", 10),
+      (set_visitors, 26, "trp_han_heavy_hallbard_man", 10),
+      (set_visitors, 27, "trp_han_hallbard_man", 10),
+      (set_visitors, 28, "trp_han_hallbard_man", 10),
+      (set_visitors, 29, "trp_han_heavy_hallbard_man", 10),
+      (set_visitors, 30, "trp_han_footman", 5),
+      (jump_to_scene, "scn_jilu_fortress"),
+      (change_screen_mission),
     ]),
 ]),
 
@@ -58740,70 +58911,63 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ],
   ),
 
-  ("wlodowiecus_adventure_2_continue_2",mnf_scale_picture,
-    "Against all odds, you and the caravan manage to fend off the rampaging Gaetuli who run away back to the desert. You and your companions celebrate, but you were not alone, as the inhabitants of Djenne Djanno start to celebrate your victory and treat you as heroes! You are then lead to the chief's house, the biggest and certainly the best equipped building for taking care of important and esteemed guests such as yourselves. For the distinction of saving Djenne Djanno, the chief rewards you with various pieces of gold. While not the grand amount you were hoping for, it was certainly a handsome reward. You and the caravan are then invited to stay in the city and celebrate your victory!",
-    "none", [
-    (set_background_mesh, "mesh_pic_desert"),],
-    [
+("wlodowiecus_adventure_2_continue_2",mnf_scale_picture,
+  "Against all odds, you and the caravan manage to fend off the rampaging Gaetuli who run away back to the desert. You and your companions celebrate, but you were not alone, as the inhabitants of Djenne Djanno start to celebrate your victory and treat you as heroes! You are then lead to the chief's house, the biggest and certainly the best equipped building for taking care of important and esteemed guests such as yourselves. For the distinction of saving Djenne Djanno, the chief rewards you with various pieces of gold. While not the grand amount you were hoping for, it was certainly a handsome reward. You and the caravan are then invited to stay in the city and celebrate your victory!",
+  "none", [
+    (set_background_mesh, "mesh_pic_desert"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (troop_add_items, "trp_player", "itm_temple_gold", 3),
+      (troop_add_gold, "trp_player", 10000),
+      (add_xp_as_reward, 500),
+      # player
+      #1-8 heros
+      # #9-30 rest
+      (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 5),
+      (assign, "$temp1", 3),
+      (assign, "$talk_context", 0),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, "scn_scene_town_desert"),
+      (reset_visitors),
 
-    ("option_1",[],"Continue.",
-        [
+      (try_for_range, ":entry", 1, 31),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_horse),
+      (try_end),
+      (set_visitor, 1, "trp_player"),
+      (set_visitor, 2, "trp_wlodowiecus"),
+      (set_visitor, 3, "trp_hadrianus"),
+      (set_visitor, 5, "trp_varus"),
+      (set_visitor, 6, "trp_old_mercenary"),
+      (set_visitor, 7, "trp_yaaba"),
+      (set_visitor, 8, "trp_mancinellus"),
 
-    (troop_add_items, "trp_player", "itm_temple_gold", 3),
-    (troop_add_gold, "trp_player", 10000),
-    (add_xp_as_reward, 500),
+      (set_visitor, 9, "trp_sarranid_horseman"),
+      (set_visitor, 10, "trp_sarranid_horseman"),
+      (set_visitor, 11, "trp_sarranid_horseman"),
+      (set_visitor, 12, "trp_sarranid_horseman"),
+      (set_visitor, 13, "trp_sarranid_horseman"),
+      (set_visitor, 14, "trp_sarranid_horseman"),
+      (set_visitor, 15, "trp_african_man"),
+      (set_visitor, 16, "trp_african_woman"),
+      (set_visitor, 17, "trp_african_man"),
+      (set_visitor, 18, "trp_african_woman"),
+      (set_visitor, 19, "trp_african_woman"),
+      (set_visitor, 20, "trp_african_woman"),
+      (set_visitor, 21, "trp_african_woman"),
+      (set_visitor, 22, "trp_african_man"),
+      (set_visitor, 23, "trp_african_woman"),
+      (set_visitor, 24, "trp_african_man"),
+      (set_visitor, 25, "trp_african_woman"),
+      (set_visitor, 26, "trp_african_woman"),
+      (set_visitor, 27, "trp_african_woman"),
+      (set_visitor, 28, "trp_african_woman"),
+      (set_visitor, 29, "trp_african_man"),
+      (set_visitor, 30, "trp_african_woman"),
 
-    # player
-    #1-8 heros
-    # #9-30 rest
-
-    (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 5),
-    (assign, "$temp1", 3),
-    (assign, "$talk_context", 0),
-    (set_jump_mission, "mt_conversation_generic"),
-    (modify_visitors_at_site, "scn_scene_town_desert"),
-    (reset_visitors),
-
-    (try_for_range, ":entry", 1, 31),
-        (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_horse),
-    (try_end),
-    (set_visitor, 1, "trp_player"),
-    (set_visitor, 2, "trp_wlodowiecus"),
-    (set_visitor, 3, "trp_hadrianus"),
-    (set_visitor, 5, "trp_varus"),
-    (set_visitor, 6, "trp_old_mercenary"),
-    (set_visitor, 7, "trp_yaaba"),
-    (set_visitor, 8, "trp_mancinellus"),
-
-    (set_visitor, 9, "trp_sarranid_horseman"),
-    (set_visitor, 10, "trp_sarranid_horseman"),
-    (set_visitor, 11, "trp_sarranid_horseman"),
-    (set_visitor, 12, "trp_sarranid_horseman"),
-    (set_visitor, 13, "trp_sarranid_horseman"),
-    (set_visitor, 14, "trp_sarranid_horseman"),
-    (set_visitor, 15, "trp_african_man"),
-    (set_visitor, 16, "trp_african_woman"),
-    (set_visitor, 17, "trp_african_man"),
-    (set_visitor, 18, "trp_african_woman"),
-    (set_visitor, 19, "trp_african_woman"),
-    (set_visitor, 20, "trp_african_woman"),
-    (set_visitor, 21, "trp_african_woman"),
-    (set_visitor, 22, "trp_african_man"),
-    (set_visitor, 23, "trp_african_woman"),
-    (set_visitor, 24, "trp_african_man"),
-    (set_visitor, 25, "trp_african_woman"),
-    (set_visitor, 26, "trp_african_woman"),
-    (set_visitor, 27, "trp_african_woman"),
-    (set_visitor, 28, "trp_african_woman"),
-    (set_visitor, 29, "trp_african_man"),
-    (set_visitor, 30, "trp_african_woman"),
-
-    (jump_to_scene, "scn_scene_town_desert"),
-    (change_screen_mission),
-
-      ]),
-    ],
-  ),
+      (jump_to_scene, "scn_scene_town_desert"),
+      (change_screen_mission),
+    ]),
+]),
 
 ("wlodowiecus_adventure_2_raid_2_died",mnf_scale_picture,
   "You don't know how it happened; you were knocked out by one of the Berber bandits alongside the rest of the caravan. You watched as the raiders kidnapped the women and enslaved some of the healthier men before stripping the dead from any riches. You watched as they killed the wounded mercilessly, and you were next, after taking away your belongings, you felt a Gaetuli spear sink into your chest. Everything went dark after that.",
