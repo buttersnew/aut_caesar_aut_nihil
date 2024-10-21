@@ -29433,21 +29433,19 @@ mission_templates = [
       (neq, ":troop", "trp_player"),
       (try_begin),
           (troop_is_hero, ":troop"),
+          (agent_set_no_death_knock_down_only, ":agent", 1),
           (try_begin),
               (eq, ":troop", "trp_hadrianus"),
-              (agent_set_damage_modifier,  ":agent", 300),
+              (agent_set_damage_modifier,  ":agent", 500),
               (agent_set_accuracy_modifier,  ":agent", 500),
               (agent_ai_set_aggressiveness, ":agent", 10000),
               (agent_ai_set_always_attack_in_melee, ":agent", 1),
               (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 250),
-              (agent_set_no_death_knock_down_only, ":agent", 1),
           (else_try),
-              (agent_set_damage_modifier,  ":agent", 130),
-              (agent_set_accuracy_modifier,  ":agent", 500),
+              (agent_set_damage_modifier,  ":agent", 120),
           (try_end),
       (else_try),
-          (agent_set_damage_modifier,  ":agent", 125),
-          (agent_set_accuracy_modifier,  ":agent", 500),
+          (agent_set_damage_modifier,  ":agent", 115),
       (try_end),
     ]),
     (ti_before_mission_start, 0, 0, [],[
@@ -29480,7 +29478,7 @@ mission_templates = [
       (neg|conversation_screen_is_active),
       (eq, "$temp3", 2),
     ],[
-      (tutorial_box, "@New objective: Follow Hadrian to battle and conquer the fortress!"),
+      (tutorial_box, "@New objective: Follow Hadrianus to battle and conquer the fortress!"),
       (play_sound, "snd_horn"),
     ]),
     (1, 0, ti_once,[
@@ -29552,7 +29550,6 @@ mission_templates = [
     common_battle_order_panel,
     common_battle_order_panel_tick,
 ] + utility_triggers + battle_panel_triggers + dplmc_battle_mode_triggers_no_deathcam + theoris_decapitation),
-
 
 ("wlods_advantures_sogdia_siege", mtf_battle_mode,-1,
   "monasterio",[
@@ -29692,7 +29689,7 @@ mission_templates = [
     ],[
       (start_mission_conversation, "$temp1"),
     ]),
-    (1, 5, ti_once, [
+    (1, 2, ti_once, [
       (neg|main_hero_fallen),
       (neg|conversation_screen_is_active),
       (eq, "$temp3", 2),
@@ -29751,7 +29748,7 @@ mission_templates = [
 
     (1, 0, 0,[
       (mission_tpl_are_all_agents_spawned),
-      (le, "$defender_reinforcement_stage", 20),
+      (le, "$defender_reinforcement_stage", 32),
     ],[
       (try_for_range, ":entry", 12, 16),
         (add_visitors_to_current_scene, ":entry", "trp_saka_horse_archer", 10),
@@ -29763,7 +29760,7 @@ mission_templates = [
 
     (1, 0, 0,[
       (mission_tpl_are_all_agents_spawned),
-      (le, "$attacker_reinforcement_stage", 20),
+      (le, "$attacker_reinforcement_stage", 25),
     ],[
       (try_for_range, ":entry", 5, 9),
         (add_visitors_to_current_scene, ":entry", "trp_xingnu_barbarian", 16),

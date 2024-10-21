@@ -9487,6 +9487,8 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
   +" who began to pursue you for a couple of days, until you ran across an Alannic horde. Your guide quickly tells you that this tribe is not known to him,"
   +" and soon arrows start to fly in your direction. It appears you are trapped between two armies. The good thing is, both the Scythians and the Alans despise each other!"
 ),
+("fortress_jilu_looted", "The fortress is thoroughly looted and razed to the ground, though only a few valuables are discovered. The remaining guards are captured and imprisoned, left behind in the dungeons where Han reinforcements will undoubtedly find them. Later, a Xiongnu scout reports that a host of cavalry is approaching. You swiftly order a retreat."),
+("fortress_jilu_retreat", "You immediately order a retreat to a nearby hill, where you set up camp to tend to wounds and rest. However, a Xiongnu scout soon reports that a host of Han cavalry is approaching."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

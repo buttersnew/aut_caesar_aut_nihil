@@ -57107,7 +57107,6 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (assign, "$temp1", "trp_wlodowiecus"),# starts conversation during battle
       (assign, "$temp4", "trp_alan_guide"),
       (assign, "$temp2", "mnu_wlodowiecus_adventure_4_fight_1_die"),
-      (assign, "$temp4_1", "mnu_wlodowiecus_adventure_4_journey_sogdia_end"),
       (assign, "$tutorial_state", 0),
       (set_jump_mission, "mt_wlods_advantures_sogdia_siege"),
       (modify_visitors_at_site, "scn_sogdian_town"),
@@ -57270,7 +57269,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (jump_to_scene, "scn_jilu_fortress"),
       (change_screen_mission),
     ]),
-    ("option_1",[],"Continue.",[
+    ("option_1",[],"Start negotations.",[
       (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 9),
       #1-15 player and companions
       #16 enemy commander
@@ -57321,6 +57320,25 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (set_visitors, 30, "trp_han_footman", 5),
       (jump_to_scene, "scn_jilu_fortress"),
       (change_screen_mission),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_end_1",mnf_scale_picture|mnf_enable_hot_keys,
+  "{s25}^^You travel for a few weeks back through Tarim Basin and then the Ferghana Valley before turning southeast until you enter the city of Karsahr.",
+  "none", [
+    (try_begin),
+      (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_target_faction, 1),
+      (set_background_mesh, "mesh_pic_looted_village"),
+      (str_store_string, s25, "str_fortress_jilu_looted"),
+      (troop_add_gold, "trp_player", 500),
+    (else_try),
+      (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_target_faction, 2),
+      (set_background_mesh, "mesh_pic_defeat"),
+      (str_store_string, s25, "str_fortress_jilu_retreat"),
+    (try_end),
+    (add_xp_as_reward, 5000),
+  ],[
+    ("option_1",[],"Walk around Karsahr.",[
+
     ]),
 ]),
 
