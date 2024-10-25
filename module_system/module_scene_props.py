@@ -2581,7 +2581,7 @@ scene_props = [
 ( "palisade_wood"                              ,0,"palisade_wood","bo_palisade_wood",[]),
 ( "iceflake"                                   ,0,"question_mark","0",[]),
 ( "iceflake_small"                             ,0,"question_mark","0",[]),
-( "mp_battlement_framework"                    ,0,"mp_battlement_framework","0",[]),
+( "mp_battlement_framework"                    ,0,"mp_battlement_framework","bo_mp_battlement_framework",[]),
 ( "mp_battlement_way"                          ,0,"mp_battlement_way","bo_mp_battlement_way",[]),
 ( "mp_burgh_wall"                              ,0,"mp_burgh_wall","bo_mp_burgh_wall",[]),
 ( "mp_burgh_wall_part_a"                       ,0,"mp_burgh_wall_part_a","bo_mp_burgh_wall_part_a",[]),
@@ -3430,4 +3430,11 @@ scene_props = [
   ("western_wall_stone2_4",0,"western_wall_stone2_4","bo_western_wall_stone_4", []),
   ("western_wall_stone2_5",0,"western_wall_stone2_5","bo_western_wall_stone_5", []),
   ("western_wall_stone2_6",0,"western_wall_stone2_6","bo_western_wall_stone_6", []),
+
+  ("3_western_wall_stucco_1",0,"western_wall_stucco_1","bo_western_wall_stone_1", []),
+  ("3_western_wall_stucco_2",0,"western_wall_stucco_2","bo_western_wall_stone_2", []),
+  ("3_western_wall_stucco_3",0,"western_wall_stucco_3","bo_western_wall_stone_3", []),
+  ("3_western_wall_stucco_4",0,"western_wall_stucco_4","bo_western_wall_stone_4", []),
+  ("3_western_wall_stucco_5",0,"western_wall_stucco_5","bo_western_wall_stone_5", []),
+  ("3_western_wall_stucco_6",0,"western_wall_stucco_6","bo_western_wall_stone_6", []),
 ]

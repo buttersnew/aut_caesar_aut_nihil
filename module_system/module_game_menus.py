@@ -57338,7 +57338,17 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (add_xp_as_reward, 5000),
   ],[
     ("option_1",[],"Walk around Karsahr.",[
-
+      # player
+      #1-6 merchants
+      #7 manci
+      # 8-12 xiongnu, 13 berber, 14 winnili
+      # 15 old mercenar, 16 ali
+      # 17 hadrian, 18 wlodowiecus
+      # 19 chinese merchant, 20 chinese whore
+      #21-26 guards
+      #27-42 town walkers
+      (jump_to_scene, "scn_kashar"),
+      (change_screen_mission),
     ]),
 ]),
 

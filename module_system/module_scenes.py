@@ -1116,6 +1116,7 @@ scenes = [
   ("sogdian_town", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000012002a0b20004992700006e54000007fe00001fd2",[], [], "outer_terrain_steppe_mountain"),
 
   ("jilu_fortress", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000120000500000a0e87000000000000000000000000",[], [], "outer_terrain_steppe_mountain"),
+  ("kashar", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000001200005000009023c00001ad500007e3f00001828",[], [], "outer_terrain_desert_mountain"),
 
 ]#end of file
 #
