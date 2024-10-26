@@ -3359,6 +3359,9 @@ attrib_common_lady,wp(100),knows_common_lady,0x000000018000405a0b9b6ca6db4ab6dd0
 [itm_graves_simple_2,itm_roman_hammer,itm_judean_tunic_6],
 str_16|agi_14|int_10|cha_12|level(10), wp(125), knows_warrior_npc|knows_trade_3|knows_riding_3|knows_persuasion_2, 0x000000003f00c1806dcb3503dd492ea500000000001f27180000000000000000 ],
 
+["turakina","Eamane Turakina","Emane Turakina",tf_female|tf_hero,0,0,fac_commoners,
+[itm_leather_boots, itm_alan_light_1, itm_war_spear,itm_sarmatian_bow, itm_sarmatian_arrows_2],
+attrib_level_16_warrior,wp(150),knows_level_16_warrior,0x00000001bf00b09a37cf9d0edb5120db00000000001c10d30000000000000000],
 #NPC system changes end
 
 
@@ -6170,9 +6173,6 @@ attrib_level_26, wp(160), knows_level_26, saka_face_1, saka_face_2],
 [itm_chinese_cap_1,itm_chinese_cap_2, itm_chinese_helm_heavy,itm_chinese_heavy_1, itm_chinese_hallbard, itm_leather_boots],
 attrib_level_29, wp(190), knows_level_29, saka_face_1, saka_face_2],
 
-["turakina","Turakina","Turakina",tf_female|tf_hero,0,0,fac_commoners,
-[itm_leather_boots, itm_alan_light_1, itm_war_spear,itm_sarmatian_bow, itm_sarmatian_arrows_2],
-attrib_level_16_warrior,wp(150),knows_level_16_warrior,0x00000001bf00b09a37cf9d0edb5120db00000000001c10d30000000000000000],
 ["lybian","The Libyan","The Libyan",tf_male|tf_hero,0,0,fac_commoners,
 [itm_caligea, itm_roman_toga_2],
 hero_attrib,wp(300),knows_hero,0x000000003f0cb5cf36db8e83b36db6db00000000001c801b0000000000000000],
@@ -6185,7 +6185,7 @@ hero_attrib,wp(300),knows_hero,0x000000093f0c838737df6db6db6db6db00000000001ca6d
 ["taichar","Taichar Khan","Taichar Khan",tf_male|tf_hero,0,0,fac_commoners,
 [itm_leather_boots, itm_kaftan_1, itm_sarmatian_bow, itm_sarmatian_arrows_2, itm_sarmatian_ringsword_2],
 hero_attrib,wp(300),knows_hero,0x0000000bff0ca385315f8db6db6db6db00000000001efa120000000000000000],
-["xiao","Xiao Qiu","Xiao Qiu",tf_male|tf_hero,0,0,fac_commoners,
+["xiao","Lei Li Xiao Qiu","Lei Li Xiao Qiu",tf_male|tf_hero,0,0,fac_commoners,
 [itm_leather_boots, itm_alan_light_2],
 hero_attrib,wp(300),knows_hero,0x000000093f0c901036db6db6db6db6db00000000000db6db0000000000000000],
 ["alan_guide", "Ugly Alani Warrior", "Ugly Alani Warrior", tf_male|tf_hero|tf_randomize_face, no_scene, reserved, fac_culture_3,
@@ -6198,6 +6198,11 @@ attrib_level_26_warrior, wp(250), knows_archer_exp_eastern, scythian_face_11, sc
 itm_eastern_shoe_r, itm_arabian_bow_1, itm_arrows,
 itm_arabian_oval_shield_4, itm_arabian_armor_b, itm_arabian_sword_d, itm_eastern_helm6
 ],knight_attrib_5, wp(300), knight_skills_5|knows_inventory_management_10, 0x000000007f04c15134db8db6db6e351b00000000001c349b0000000000000000],
+
+["phamanus", "Phamanus", "Phamanus", tf_male|tf_hero, no_scene, reserved, fac_culture_6,
+[itm_eastern_shoe_b, itm_sarranid_cloth_robe_fancy_3
+],
+attrib_level_26_warrior, wp(250), knows_archer_exp_eastern, 0x00000007e301a1c41792575894daa76400000000001dc4a50000000000000000],
 
 ["xingnu_barbarian", "Xiongnu Warrior", "Xiongnu Warrior", tf_male|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
 [ itm_leather_boots,

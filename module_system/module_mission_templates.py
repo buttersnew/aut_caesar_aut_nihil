@@ -29102,11 +29102,38 @@ mission_templates = [
     (38,mtef_visitor_source,0,0,1,[]),
     (39,mtef_visitor_source,0,0,1,[]),
     (40,mtef_visitor_source,0,0,1,[]),
+    (41,mtef_visitor_source,0,0,1,[]),
+    (42,mtef_visitor_source,0,0,1,[]),
   ], p_wetter + global_common_triggers +
   [
+    (0,8,0,[
+      (check_quest_active, "qst_wlodowiecus_adventure_4"),
+      (eq, "$temp1", 10),
+    ],[
+      (try_for_agents,":agent_no"),
+        (agent_is_alive,":agent_no"),
+        (agent_is_human,":agent_no"),
+        (agent_get_entry_no, ":entry", ":agent_no"),
+        (is_between, ":entry", 26,43),
+        (assign, ":continue_walk", 0),
+        (store_random_in_range, ":continue_walk", 1, 100),
+        (try_begin),
+          (le, ":continue_walk", 38),
+          (agent_set_stand_animation, ":agent_no", "anim_stand_man"),
+          (agent_set_walk_forward_animation, ":agent_no", "anim_walk_forward"),
+          (agent_set_animation, ":agent_no", "anim_stand_man"),
+          (agent_set_animation_progress, ":agent_no", 10),
+
+          (agent_get_position, pos1, ":agent_no"),
+          (store_random_in_range, ":points", 25, 46),
+          (entry_point_get_position, pos2, ":points"),
+          (agent_set_speed_limit, ":agent_no", 1),
+          (agent_set_scripted_destination, ":agent_no", pos2),
+        (try_end),
+      (try_end),
+    ]),
     cannot_spawn_commoners,
     improved_lightning,
-
     (0, 0, ti_once,[
       (check_quest_active, "qst_wlodowiecus_adventure_4"),
       (this_or_next|eq, "$temp1", 9),
@@ -29123,18 +29150,16 @@ mission_templates = [
           (call_script, "script_music_set_situation_with_culture", mtf_sit_feast),
       (try_end),
     ]),
-
     (ti_after_mission_start, 0, 0, [],[(mission_enable_talk),]),
-
     (0, 0, ti_once,[
       (this_or_next|eq, "$temp1", 1),
       (this_or_next|eq, "$temp1", 4),
       (eq, "$temp1", 2),
       (neg|conversation_screen_is_active),
+      (gt, "$temp2", 0),
     ],[
       (start_mission_conversation, "$temp2"),
     ]),
-
     (0, 0, ti_once,[
       (eq, "$temp1", 9),
       (check_quest_active, "qst_wlodowiecus_adventure_4"),
@@ -29148,7 +29173,6 @@ mission_templates = [
           (agent_fade_out, ":agent"),
       (try_end),
     ]),
-
     (1, 1, ti_once,[
       (eq, "$temp1", 3),
       (check_quest_active, "qst_wlodowiecus_adventure_4"),
@@ -29197,7 +29221,6 @@ mission_templates = [
       (mission_enable_talk),
       (start_mission_conversation, "$temp2"),
     ]),
-
     (ti_before_mission_start, 0, 0, [],[
       (try_begin),
           (check_quest_active, "qst_wlodowiecus_adventure_2"),
@@ -29225,9 +29248,13 @@ mission_templates = [
           (eq, "$temp1", 8),
           (scene_set_day_time, 20),
           (set_global_cloud_amount, 0),
+      (else_try),
+          (check_quest_active, "qst_wlodowiecus_adventure_4"),
+          (eq, "$temp1", 10),
+          (scene_set_day_time, 12),
+          (set_global_cloud_amount, 0),
       (try_end),
     ]),
-
     (ti_tab_pressed, 0, 0, [
       (try_begin),
         (check_quest_active, "qst_wlodowiecus_adventure_4"),
@@ -29248,6 +29275,9 @@ mission_templates = [
       (else_try),
         (eq, "$temp1", 9),
         (tutorial_box,"@Speak with other guests to conclude the feast!^^[Hint: Hadrian is gone now. Flirt with a Roman Noble Lady to escape.]"),
+      (else_try),
+        (eq, "$temp1", 10),
+        (tutorial_box,"@Speak with Wlodowiecus"),
       (try_end),
     ],[]),
 ]),

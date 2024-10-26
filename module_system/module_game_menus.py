@@ -56892,6 +56892,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_ships"),
   ],[
     ("option_1",[],"Continue.",[
+      (assign, "$talk_context", tc_town_talk),
       (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_1")
     ]),
 ]),
@@ -57234,7 +57235,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 ("wlodowiecus_adventure_4_journey_great_wall_1",mnf_scale_picture,
   "You and the rest of the caravan are freed from your bindings and invited to stay in a yurt prepared for you."
   +" A few hours later, several of your men who had been trapped inside the city are dragged out—some did not survive, but the remaining ones are allowed to join you."
-  +" The Sogdian citizens and warriors, on the other hand, are enslaved. That night, a grand feast is held to celebrate the victory, and the Tuqi King requests Mancinellus’s presence."
+  +" The Sogdian citizens and warriors, on the other hand, are enslaved. That night, a grand feast is held to celebrate the victory, and the Tuqi King requests Mancinellus's presence."
   +" He is escorted away while you are ordered to remain inside the yurt for the night."
   +"^^As you sit alone, memories of India flood back. Why does he always manage to impress leaders? He causes trouble for everyone, yet somehow manages to save the group every time."
   +" Why him? Why not you? But as you think further, you realize that each person here is unique in their own way; Mancinellus is no exception."
@@ -57338,8 +57339,8 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (add_xp_as_reward, 5000),
   ],[
     ("option_1",[],"Walk around Karsahr.",[
-      # player
-      #1-6 merchants
+      #1 player
+      #2-6 merchants
       #7 manci
       # 8-12 xiongnu, 13 berber, 14 winnili
       # 15 old mercenar, 16 ali
@@ -57347,8 +57348,89 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       # 19 chinese merchant, 20 chinese whore
       #21-26 guards
       #27-42 town walkers
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 10),
+      (assign, "$temp1", 10),
+      (assign, "$temp2", -1),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, "scn_kashar"),
+      (reset_visitors),
+      (try_for_range, ":entry", 1, 43),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_horse),
+      (try_end),
+      (set_visitor, 1, "trp_player"),
+      (set_visitor, 2, "trp_saka_richmerchant"),
+      (set_visitor, 3, "trp_saka_poormerchant"),
+      (set_visitor, 4, "trp_merchant8"),
+      (set_visitor, 5, "trp_merchant5"),
+      (set_visitor, 6, "trp_merchant6"),
+      (set_visitor, 7, "trp_mancinellus"),
+      (set_visitor, 8, "trp_xingnu_barbarian"),
+      (set_visitor, 9, "trp_xingnu_barbarian"),
+      (set_visitor, 10, "trp_xingnu_barbarian"),
+      (set_visitor, 11, "trp_xingnu_barbarian"),
+      (set_visitor, 12, "trp_xingnu_barbarian"),
+      (set_visitor, 13, "trp_gaetuli_horseman"),
+      (set_visitor, 14, "trp_lombard_vetran"),
+      (set_visitor, 15, "trp_old_mercenary"),
+      (set_visitor, 16, "trp_ali"),
+      (set_visitor, 17, "trp_hadrianus"),
+      (set_visitor, 18, "trp_wlodowiecus"),
+      (set_visitor, 19, "trp_xiao"),
+      (set_visitor, 20, "trp_turakina"),
+      (set_visitor, 21, "trp_saka_horse_archer"),
+      (set_visitor, 22, "trp_saka_horse_archer"),
+      (set_visitor, 23, "trp_saka_horse_archer"),
+      (set_visitor, 24, "trp_saka_horse_archer"),
+      (set_visitor, 25, "trp_saka_horse_archer"),
+      (set_visitor, 26, "trp_saka_horse_archer"),
+      (set_visitor, 27, "trp_judean_village_walker_female"),
+      (set_visitor, 28, "trp_judean_village_walker_female"),
+      (set_visitor, 29, "trp_judean_village_walker"),
+      (set_visitors, 30, "trp_judean_village_walker", 2),
+      (set_visitors, 31, "trp_judean_village_walker_female", 2),
+      (set_visitors, 32, "trp_judean_village_walker", 2),
+      (set_visitors, 33, "trp_judean_village_walker_female", 2),
+      (set_visitors, 34, "trp_saka_man", 2),
+      (set_visitors, 35, "trp_saka_woman", 2),
+      (set_visitors, 36, "trp_saka_man", 2),
+      (set_visitors, 37, "trp_saka_woman", 2),
+      (set_visitors, 38, "trp_saka_man", 2),
+      (set_visitors, 39, "trp_saka_woman", 2),
+      (set_visitors, 40, "trp_saka_man", 2),
+      (set_visitors, 41, "trp_saka_woman", 2),
+      (set_visitors, 42, "trp_saka_man", 2),
       (jump_to_scene, "scn_kashar"),
       (change_screen_mission),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_end_2",mnf_scale_picture|mnf_enable_hot_keys,
+  "Led by Lei Li, you and your group reunite with Phamanus, the Parthian caravan master from your journey to India."
+  +" Phamanus greets you with genuine enthusiasm and agrees to guide you back to Alexandria. In return, he requests to accompany you when you meet with The Lybian,"
+  +" as he has a personal proposal he believes will interest both of you."
+  +"^^During the journey, you spend time conversing with Eamaneand Lei Li. Eamaneshares her story, explaining how she came under Lei Li's care."
+  +" You exchange tales of your homelands and adventures, and she listens with fascination. As you introduce her to the rest of the group, you primarily speak in Greek,"
+  +" though you soon realize that both Lei Li and Eamanehave a solid understanding of Latin. Though they speak it hesitantly, they comprehend much more than they let on.",
+  "none", [
+    (set_background_mesh, "mesh_pic_khergit"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (call_script, "script_recruit_troop_as_companion", "trp_turakina"),
+      (troop_add_item, "trp_player", "itm_chinese_sword_rich", 0),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_end_3"),
+    ]),
+]),
+("wlodowiecus_adventure_4_journey_end_3",mnf_scale_picture|mnf_enable_hot_keys,
+  "After several weeks of uneventful yet exhausting travel, you finally arrive in Alexandria. The long journey, though tiring, passed without any significant incidents."
+  +" Now, it's time to meet with The Lybian once more and deliver the long-awaited news about the expedition.",
+  "none", [
+    (set_background_mesh, "mesh_pic_alexandria"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 11),
+      (party_relocate_near_party, "p_main_party", "p_town_20", 1),
+      (jump_to_menu, "mnu_auto_return_map"),
+      (str_store_party_name_link, s20, "p_town_20"),
+      (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_4", 4, "@After several weeks of tiring travel, you finally reach {s20}. Now it’s time to meet The Libyan again, bring him news about the expedition.", 0),
     ]),
 ]),
 
