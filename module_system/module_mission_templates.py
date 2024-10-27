@@ -7181,8 +7181,8 @@ mission_templates = [
     (39,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]),#town walker point
     (40,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]), #in towns, can be used for guard reinforcements
     (41,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]), #special merchant in rome
-    (42,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]), #special merchant in rome
-    (43,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]), #special merchant in rome
+    (42,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]), #special merchant in rome
+    (43,mtef_visitor_source,af_override_horse|af_override_weapons,0,1,[]), #special merchant in rome
     (44,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]), #special merchant in rome
     (45,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     (46,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
@@ -12858,7 +12858,7 @@ mission_templates = [
     (8,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
     (9,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
     (10,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     common_battle_init_banner,
@@ -13176,7 +13176,6 @@ mission_templates = [
       (call_script, "script_music_set_situation_with_culture", mtf_sit_ambushed),
       (set_party_battle_mode),
     ]),
-
     (2, 0, ti_once,[
       (neg|main_hero_fallen),
       (num_active_teams_le, 1),
@@ -13201,9 +13200,7 @@ mission_templates = [
         (add_visitors_to_current_scene, ":nearest_entry_point", "trp_relative_of_merchant", 1, 0),
       (try_end),
     ]),
-
     common_battle_order_panel_tick,
-
     (1, 4, ti_once,[
       (assign, ":continue", 0),
       (party_get_template_id, ":template", "$g_encountered_party"),
@@ -29253,6 +29250,11 @@ mission_templates = [
           (eq, "$temp1", 10),
           (scene_set_day_time, 12),
           (set_global_cloud_amount, 0),
+      (else_try),
+          (check_quest_active, "qst_wlodowiecus_adventure_4"),
+          (eq, "$temp1", 11),
+          (scene_set_day_time, 12),
+          (set_global_cloud_amount, 0),
       (try_end),
     ]),
     (ti_tab_pressed, 0, 0, [
@@ -29278,6 +29280,9 @@ mission_templates = [
       (else_try),
         (eq, "$temp1", 10),
         (tutorial_box,"@Speak with Wlodowiecus"),
+      (else_try),
+        (eq, "$temp1", 11),
+        (display_message, "str_cannot_leave_now"),
       (try_end),
     ],[]),
 ]),

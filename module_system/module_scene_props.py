@@ -3437,4 +3437,6 @@ scene_props = [
   ("3_western_wall_stucco_4",0,"western_wall_stucco_4","bo_western_wall_stone_4", []),
   ("3_western_wall_stucco_5",0,"western_wall_stucco_5","bo_western_wall_stone_5", []),
   ("3_western_wall_stucco_6",0,"western_wall_stucco_6","bo_western_wall_stone_6", []),
+
+  ("roof_floor_marble_3",0,"roof_floor_marble_3","bo_roof_floor_concrete", []),
 ]

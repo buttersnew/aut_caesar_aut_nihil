@@ -2258,25 +2258,28 @@ game_menus = [
     #   (call_script, "script_npc_decision_checklist_take_stand_on_issue", "trp_kingdom_7_lord"),
     #   (change_screen_map),
     # ]),
-    # ("camp_action",[
-    #   (ge, "$cheat_mode", 1)
-    # ],"CHEAT skip wlod 1 and wlod 2.",[
-    #   (troop_set_slot, "trp_olivarius", slot_troop_met, 1),
-    #   (troop_set_slot, "trp_wlodowiecus", slot_troop_met, 1),
-    #   (troop_set_slot, "trp_hadrianus", slot_troop_met, 1),
-    #   (troop_set_slot, "trp_varus", slot_troop_met, 1),
-    #   (troop_set_slot, "trp_old_mercenary", slot_troop_met, 1),
-    #   (troop_set_slot, "trp_mancinellus", slot_troop_met, 1),
+    ("camp_action",[
+      (ge, "$cheat_mode", 1),
+    ],"CHEAT skip wlod 1 and wlod 2 and wlod 3.",[
+      (troop_set_slot, "trp_olivarius", slot_troop_met, 1),
+      (troop_set_slot, "trp_wlodowiecus", slot_troop_met, 1),
+      (troop_set_slot, "trp_hadrianus", slot_troop_met, 1),
+      (troop_set_slot, "trp_varus", slot_troop_met, 1),
+      (troop_set_slot, "trp_old_mercenary", slot_troop_met, 1),
+      (troop_set_slot, "trp_mancinellus", slot_troop_met, 1),
 
-    #   (add_xp_as_reward, 10000000),
-    #   (call_script, "script_start_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
-    #   (quest_set_slot, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
-    #   (call_script, "script_end_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
-    #   (call_script, "script_start_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
-    #   (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 6),
-    #   (call_script, "script_end_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
-    #   (change_screen_map),
-    # ]),
+      (add_xp_as_reward, 10000000),
+      (call_script, "script_start_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
+      (quest_set_slot, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
+      (call_script, "script_end_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
+      (call_script, "script_start_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 6),
+      (call_script, "script_end_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
+      (call_script, "script_start_quest", "qst_wlodowiecus_adventure_3", "trp_fortuna"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 12),
+      (call_script, "script_end_quest", "qst_wlodowiecus_adventure_3", "trp_fortuna"),
+      (change_screen_map),
+    ]),
 
     ("camp_cheat",[
       (ge, "$cheat_mode", 1)
@@ -6295,11 +6298,9 @@ game_menus = [
       ]),
 ]),
 
-  (#SB : pic hotkeys
-    "join_battle",mnf_enable_hot_keys,
-    "You are helping the {s51} against the {s50}. You have {reg10} troops fit for battle against the enemy's {reg11}.",
-    "none",
-    [
+("join_battle",mnf_enable_hot_keys,
+  "You are helping the {s51} against the {s50}. You have {reg10} troops fit for battle against the enemy's {reg11}.",
+  "none",[
     (str_store_party_name, s50,"$g_enemy_party"),
     (str_store_party_name, s51,"$g_ally_party"),
 
@@ -6373,30 +6374,95 @@ game_menus = [
       (leave_encounter),
       (change_screen_return),
     (try_end),
+  ],[
+    ("join_attack",[
+      (neg|troop_is_wounded, "trp_player"),
+      (try_begin),
+          (check_quest_active, "qst_freelancing"),
+          (assign, ":party_selected", "$enlisted_party"),
+      (else_try),
+          (assign, ":party_selected", "p_main_party"),
+      (try_end),
+      (party_slot_eq, ":party_selected", slot_party_on_water, 1),
+      (party_get_current_terrain, ":terrain_type", ":party_selected"),
+      (this_or_next|eq,":terrain_type",0),
+      (this_or_next|eq,":terrain_type",7),
+      (this_or_next|eq,":terrain_type",8),
+      (eq,":terrain_type",6),
+        ],   "Close in and board the enemy.",[
+    (assign, "$g_battle_result", 0),
+    (assign, "$g_engaged_enemy", 1),
+    (call_script, "script_calculate_renown_value"),
+    (call_script, "script_calculate_battle_advantage"),
+    (set_battle_advantage, reg0),
+    (set_party_battle_mode),
+    (try_begin),
+      (eq, "$g_encounter_type", enctype_fighting_against_village_raid),
+      (set_jump_mission,"mt_village_raid"),
+      (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+      (jump_to_scene, ":scene_to_use"),
+    (else_try),
+      (eq, "$g_encounter_type", enctype_catched_during_village_raid),
+      (set_jump_mission,"mt_village_raid"),
+      (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+      (jump_to_scene, ":scene_to_use"),
+    (else_try),
+    #Wulf
+      (set_jump_mission,"mt_ship_battle"),
+      # (try_begin),
+      # (store_faction_of_party, ":fac","$g_enemy_party"),
+      # (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
+      (jump_to_scene, "scn_sea_roman"),
+      # (else_try),
+      # (jump_to_scene, "scn_sea_barbarian"),
+      # (try_end),
+    (try_end),
+    (assign, "$g_next_menu", "mnu_join_battle"),
+    (jump_to_menu, "mnu_battle_debrief"),
+    (change_screen_mission),
+  ]),
 
-      ],
-    [
-      ("join_attack",[
-        (neg|troop_is_wounded, "trp_player"),
-        (try_begin),
-            (check_quest_active, "qst_freelancing"),
-            (assign, ":party_selected", "$enlisted_party"),
-        (else_try),
-            (assign, ":party_selected", "p_main_party"),
-        (try_end),
-        (party_slot_eq, ":party_selected", slot_party_on_water, 1),
-        (party_get_current_terrain, ":terrain_type", ":party_selected"),
-        (this_or_next|eq,":terrain_type",0),
-        (this_or_next|eq,":terrain_type",7),
-        (this_or_next|eq,":terrain_type",8),
-        (eq,":terrain_type",6),
-          ],   "Close in and board the enemy.",[
+    ("encounter_attack",[
+      (party_get_current_terrain, ":terrain_type", "p_main_party"),
+      (neq,":terrain_type",0),
+      (neq,":terrain_type",7),
+      (neq,":terrain_type",8),
+      (neq,":terrain_type",6),
+      (neg|troop_is_wounded, "trp_player"),
+    ],"Charge the enemy.",[
+      (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
       (assign, "$g_battle_result", 0),
-      (assign, "$g_engaged_enemy", 1),
+
+      (assign, "$player_deploy_troops", 1),
+      # (party_get_template_id, ":encountered_party_template", "$g_encountered_party"),
+
       (call_script, "script_calculate_renown_value"),
+      ##diplomacy start+
+      (try_begin),
+        #Call this to properly set cached values for strength
+        (eq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
+        (assign, ":terrain_code", dplmc_terrain_code_none),#defined in header_terrain_types.py
+        (try_begin),
+          (this_or_next|eq, "$g_encounter_type", enctype_fighting_against_village_raid),
+            (eq, "$g_encounter_type", enctype_catched_during_village_raid),
+          (assign, ":terrain_code", dplmc_terrain_code_village),#defined in header_terrain_types.py
+        (else_try),
+          (encountered_party_is_attacker),
+          (call_script, "script_dplmc_get_terrain_code_for_battle", "$g_encountered_party", "p_main_party"),
+          (assign, ":terrain_code", reg0),
+        (else_try),
+          (call_script, "script_dplmc_get_terrain_code_for_battle", "p_main_party", "$g_encountered_party"),
+          (assign, ":terrain_code", reg0),
+        (try_end),
+        (neq, ":terrain_code", dplmc_terrain_code_none),
+        (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
+        (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
+      (try_end),
+      ##diplomacy end+
       (call_script, "script_calculate_battle_advantage"),
       (set_battle_advantage, reg0),
       (set_party_battle_mode),
+      # (party_get_current_terrain, ":terrain_type", "p_main_party"),
       (try_begin),
         (eq, "$g_encounter_type", enctype_fighting_against_village_raid),
         (set_jump_mission,"mt_village_raid"),
@@ -6407,198 +6473,124 @@ game_menus = [
         (set_jump_mission,"mt_village_raid"),
         (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
         (jump_to_scene, ":scene_to_use"),
+      # (else_try),
+        # (this_or_next|eq, ":terrain_type", rt_desert),
+        # (eq, ":terrain_type", rt_desert_forest),
+        # (eq, ":encountered_party_template", "pt_kingdom_caravan_party"),
+        # (assign, ":scene_to_use", "scn_caravan_ambush_desert"),
+        # (jump_to_scene, ":scene_to_use"),
+        # (set_jump_mission,"mt_lead_charge"),
+      # (else_try),
+        # (this_or_next|eq, ":terrain_type", rt_snow),
+        # (eq, ":terrain_type", rt_snow_forest),
+        # (eq, ":encountered_party_template", "pt_kingdom_caravan_party"),
+        # (assign, ":scene_to_use", "scn_caravan_ambush_med"),
+        # (jump_to_scene, ":scene_to_use"),
+        # (set_jump_mission,"mt_lead_charge"),
+      # (else_try),
+        # (eq, ":encountered_party_template", "pt_kingdom_caravan_party"),
+        # (assign, ":scene_to_use", "scn_caravan_ambush"),
+        # (jump_to_scene, ":scene_to_use"),
+        # (set_jump_mission,"mt_lead_charge"),
       (else_try),
-      #Wulf
-       (set_jump_mission,"mt_ship_battle"),
-       # (try_begin),
-        # (store_faction_of_party, ":fac","$g_enemy_party"),
-        # (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
-        (jump_to_scene, "scn_sea_roman"),
-       # (else_try),
-        # (jump_to_scene, "scn_sea_barbarian"),
-       # (try_end),
-    (try_end),
-    (assign, "$g_next_menu", "mnu_join_battle"),
-    (jump_to_menu, "mnu_battle_debrief"),
-    (change_screen_mission),
-                      ]),
+        # (call_script, "script_encounter_calculate_fit"),
+        # (try_begin),
+          # (this_or_next|ge, reg10, 100),
+          # (ge, reg11, 100),
+          # (set_jump_mission,"mt_lead_charge_large"),
+          # (call_script, "script_setup_random_scene"),
+        # (else_try),
+          (set_jump_mission,"mt_lead_charge"),
+          (call_script, "script_setup_random_scene"),
+        # (try_end),
+      (try_end),
+      (assign, "$g_next_menu", "mnu_join_battle"),
+      (jump_to_menu, "mnu_battle_debrief"),
+      (change_screen_mission),
+    ]),
 
-      ("encounter_attack",
-      [
-	  		(party_get_current_terrain, ":terrain_type", "p_main_party"),
-        (neq,":terrain_type",0),
-        (neq,":terrain_type",7),
-        (neq,":terrain_type",8),
-        (neq,":terrain_type",6),
-        (neg|troop_is_wounded, "trp_player"),
-      ],
-      "Charge the enemy.",
-      [
-        (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
-        (assign, "$g_battle_result", 0),
+    ("join_order_attack",[
+      (eq, "$enlisted_party", -1),
+      (call_script, "script_party_count_members_with_full_health", "p_main_party"),
+      (ge, reg0, 3),
+    ],"Order your troops to attack with your allies while you stay back.",[
+      (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
+      (jump_to_menu,"mnu_join_order_attack"),
+    ]),
 
-        (assign, "$player_deploy_troops", 1),
-        # (party_get_template_id, ":encountered_party_template", "$g_encountered_party"),
+    ("join_skipp_freelancer",[
+      (gt, "$enlisted_party", 0),
+    ],"Stay back and let the others fight.",[
+      (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
+      (jump_to_menu,"mnu_join_order_attack_freelancer"),
+    ]),
 
-        (call_script, "script_calculate_renown_value"),
-        ##diplomacy start+
-        (try_begin),
-          #Call this to properly set cached values for strength
-          (eq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
-          (assign, ":terrain_code", dplmc_terrain_code_none),#defined in header_terrain_types.py
-          (try_begin),
-            (this_or_next|eq, "$g_encounter_type", enctype_fighting_against_village_raid),
-              (eq, "$g_encounter_type", enctype_catched_during_village_raid),
-            (assign, ":terrain_code", dplmc_terrain_code_village),#defined in header_terrain_types.py
-          (else_try),
-            (encountered_party_is_attacker),
-            (call_script, "script_dplmc_get_terrain_code_for_battle", "$g_encountered_party", "p_main_party"),
-            (assign, ":terrain_code", reg0),
-          (else_try),
-            (call_script, "script_dplmc_get_terrain_code_for_battle", "p_main_party", "$g_encountered_party"),
-            (assign, ":terrain_code", reg0),
+    ("join_leave",[
+      (eq, "$enlisted_party",-1),
+    ],"Leave.",[
+      (try_begin),
+          (neg|troop_is_wounded, "trp_player"),
+          (call_script, "script_objectionable_action", tmt_aristocratic, "str_flee_battle"),
+          (party_stack_get_troop_id, ":enemy_leader","$g_enemy_party",0),
+          (is_between, ":enemy_leader", active_npcs_begin, active_npcs_end),
+          (call_script, "script_add_log_entry", logent_player_retreated_from_lord, "trp_player",  -1, ":enemy_leader", -1),
+      (try_end),
+      (leave_encounter),
+      (change_screen_return),
+    ]),
+
+    ("encounter_leave",[
+      (neq, "$player_ambushed",1),
+      (gt, "$enlisted_party",-1),
+      (call_script, "script_party_count_fit_for_battle", "$g_enemy_party"),
+      (gt, reg0, 0),
+    ],"Leave. [Try to end current battle.]",[
+      (try_begin),
+          (eq, "$encountered_party_friendly", 0),
+          (encountered_party_is_attacker),
+          (call_script, "script_objectionable_action", tmt_aristocratic, "str_flee_battle"),
+      (try_end),
+      (try_begin),
+          (eq, "$encountered_party_friendly", 0),
+          (party_get_num_companion_stacks, ":num_stacks", "p_encountered_party_backup"),
+          (try_for_range, ":stack_no", 0, ":num_stacks"),
+            (party_stack_get_troop_id,   ":stack_troop","p_encountered_party_backup",":stack_no"),
+            (is_between, ":stack_troop", active_npcs_begin, active_npcs_end),
+            (troop_slot_eq, ":stack_troop", slot_troop_occupation, slto_kingdom_hero),
+            (store_troop_faction, ":victorious_faction", ":stack_troop"),
+            (call_script, "script_add_log_entry", logent_player_retreated_from_lord, "trp_player",  -1, ":stack_troop", ":victorious_faction"),
           (try_end),
-          (neq, ":terrain_code", dplmc_terrain_code_none),
-          (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
-          (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
-        (try_end),
-        ##diplomacy end+
-        (call_script, "script_calculate_battle_advantage"),
-        (set_battle_advantage, reg0),
-        (set_party_battle_mode),
-        # (party_get_current_terrain, ":terrain_type", "p_main_party"),
-        (try_begin),
-          (eq, "$g_encounter_type", enctype_fighting_against_village_raid),
-          (set_jump_mission,"mt_village_raid"),
-          (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
-          (jump_to_scene, ":scene_to_use"),
-        (else_try),
-          (eq, "$g_encounter_type", enctype_catched_during_village_raid),
-          (set_jump_mission,"mt_village_raid"),
-          (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
-          (jump_to_scene, ":scene_to_use"),
-        # (else_try),
-          # (this_or_next|eq, ":terrain_type", rt_desert),
-          # (eq, ":terrain_type", rt_desert_forest),
-          # (eq, ":encountered_party_template", "pt_kingdom_caravan_party"),
-          # (assign, ":scene_to_use", "scn_caravan_ambush_desert"),
-          # (jump_to_scene, ":scene_to_use"),
-          # (set_jump_mission,"mt_lead_charge"),
-        # (else_try),
-          # (this_or_next|eq, ":terrain_type", rt_snow),
-          # (eq, ":terrain_type", rt_snow_forest),
-          # (eq, ":encountered_party_template", "pt_kingdom_caravan_party"),
-          # (assign, ":scene_to_use", "scn_caravan_ambush_med"),
-          # (jump_to_scene, ":scene_to_use"),
-          # (set_jump_mission,"mt_lead_charge"),
-        # (else_try),
-          # (eq, ":encountered_party_template", "pt_kingdom_caravan_party"),
-          # (assign, ":scene_to_use", "scn_caravan_ambush"),
-          # (jump_to_scene, ":scene_to_use"),
-          # (set_jump_mission,"mt_lead_charge"),
-        (else_try),
-          # (call_script, "script_encounter_calculate_fit"),
-          # (try_begin),
-           # (this_or_next|ge, reg10, 100),
-           # (ge, reg11, 100),
-           # (set_jump_mission,"mt_lead_charge_large"),
-           # (call_script, "script_setup_random_scene"),
-          # (else_try),
-           (set_jump_mission,"mt_lead_charge"),
-           (call_script, "script_setup_random_scene"),
-          # (try_end),
-        (try_end),
-        (assign, "$g_next_menu", "mnu_join_battle"),
-        (jump_to_menu, "mnu_battle_debrief"),
-        (change_screen_mission),
-      ]),
-
-      ("join_order_attack",
-      [
-        (eq, "$enlisted_party", -1),
-        (call_script, "script_party_count_members_with_full_health", "p_main_party"),
-        (ge, reg0, 3),
-      ],
-      "Order your troops to attack with your allies while you stay back.",
-      [
-        (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
-        (jump_to_menu,"mnu_join_order_attack"),
-      ]),
-
-      ("join_skipp_freelancer",
-      [
-        (gt, "$enlisted_party", 0),
-      ],
-      "Stay back and let the others fight.",
-      [
-        (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
-        (jump_to_menu,"mnu_join_order_attack_freelancer"),
-      ]),
-
-      ("join_leave",[(eq, "$enlisted_party",-1),],"Leave.",
-      [
-        (try_begin),
-           (neg|troop_is_wounded, "trp_player"),
-           (call_script, "script_objectionable_action", tmt_aristocratic, "str_flee_battle"),
-           (party_stack_get_troop_id, ":enemy_leader","$g_enemy_party",0),
-		   (is_between, ":enemy_leader", active_npcs_begin, active_npcs_end),
-           (call_script, "script_add_log_entry", logent_player_retreated_from_lord, "trp_player",  -1, ":enemy_leader", -1),
-        (try_end),
-
-        (leave_encounter),(change_screen_return)]),
-
-         ("encounter_leave",[
-	      (neq, "$player_ambushed",1),
-          (gt, "$enlisted_party",-1),
-          (call_script, "script_party_count_fit_for_battle", "$g_enemy_party"),
-          (gt, reg0, 0),
-          ],"Leave. [Try to end current battle.]",[
-              (try_begin),
-                  (eq, "$encountered_party_friendly", 0),
-                  (encountered_party_is_attacker),
-                  (call_script, "script_objectionable_action", tmt_aristocratic, "str_flee_battle"),
-              (try_end),
-              (try_begin),
-                  (eq, "$encountered_party_friendly", 0),
-                  (party_get_num_companion_stacks, ":num_stacks", "p_encountered_party_backup"),
-                  (try_for_range, ":stack_no", 0, ":num_stacks"),
-                    (party_stack_get_troop_id,   ":stack_troop","p_encountered_party_backup",":stack_no"),
-                    (is_between, ":stack_troop", active_npcs_begin, active_npcs_end),
-                    (troop_slot_eq, ":stack_troop", slot_troop_occupation, slto_kingdom_hero),
-                    (store_troop_faction, ":victorious_faction", ":stack_troop"),
-                    (call_script, "script_add_log_entry", logent_player_retreated_from_lord, "trp_player",  -1, ":stack_troop", ":victorious_faction"),
-                  (try_end),
-              (try_end),
-          	(leave_encounter),
-            (change_screen_return),
-            (party_end_battle, "$enlisted_party"),
-            ]),
-        ("encounter_leave",[
-	      (neq, "$player_ambushed",1),
-          (gt, "$enlisted_party",-1),
-          (call_script, "script_party_count_fit_for_battle", "$g_enemy_party"),
-          (le, reg0, 0),
-          ],"Leave.",[
-              (try_begin),
-                  (eq, "$encountered_party_friendly", 0),
-                  (encountered_party_is_attacker),
-                  (call_script, "script_objectionable_action", tmt_aristocratic, "str_flee_battle"),
-              (try_end),
-              (try_begin),
-                  (eq, "$encountered_party_friendly", 0),
-                  (party_get_num_companion_stacks, ":num_stacks", "p_encountered_party_backup"),
-                  (try_for_range, ":stack_no", 0, ":num_stacks"),
-                    (party_stack_get_troop_id,   ":stack_troop","p_encountered_party_backup",":stack_no"),
-                    (is_between, ":stack_troop", active_npcs_begin, active_npcs_end),
-                    (troop_slot_eq, ":stack_troop", slot_troop_occupation, slto_kingdom_hero),
-                    (store_troop_faction, ":victorious_faction", ":stack_troop"),
-                    (call_script, "script_add_log_entry", logent_player_retreated_from_lord, "trp_player",  -1, ":stack_troop", ":victorious_faction"),
-                  (try_end),
-              (try_end),
-          	(leave_encounter),
-            (change_screen_return),
-            ]),
-      ]),
+      (try_end),
+      (leave_encounter),
+      (change_screen_return),
+      (party_end_battle, "$enlisted_party"),
+    ]),
+    ("encounter_leave",[
+      (neq, "$player_ambushed",1),
+      (gt, "$enlisted_party",-1),
+      (call_script, "script_party_count_fit_for_battle", "$g_enemy_party"),
+      (le, reg0, 0),
+    ],"Leave.",[
+      (try_begin),
+          (eq, "$encountered_party_friendly", 0),
+          (encountered_party_is_attacker),
+          (call_script, "script_objectionable_action", tmt_aristocratic, "str_flee_battle"),
+      (try_end),
+      (try_begin),
+          (eq, "$encountered_party_friendly", 0),
+          (party_get_num_companion_stacks, ":num_stacks", "p_encountered_party_backup"),
+          (try_for_range, ":stack_no", 0, ":num_stacks"),
+            (party_stack_get_troop_id,   ":stack_troop","p_encountered_party_backup",":stack_no"),
+            (is_between, ":stack_troop", active_npcs_begin, active_npcs_end),
+            (troop_slot_eq, ":stack_troop", slot_troop_occupation, slto_kingdom_hero),
+            (store_troop_faction, ":victorious_faction", ":stack_troop"),
+            (call_script, "script_add_log_entry", logent_player_retreated_from_lord, "trp_player",  -1, ":stack_troop", ":victorious_faction"),
+          (try_end),
+      (try_end),
+      (leave_encounter),
+      (change_screen_return),
+    ]),
+]),
 
   (
     "join_order_attack",mnf_disable_all_keys,
@@ -17549,6 +17541,7 @@ game_menus = [
 
       (set_visitor,16,"trp_olivarius"),
       (try_begin),
+          (neg|check_quest_active, "qst_wlodowiecus_adventure_4"),
           (neg|check_quest_active, "qst_wlodowiecus_adventure_3"),
           (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
           (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
@@ -17559,12 +17552,18 @@ game_menus = [
               (quest_slot_ge, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 10),
               (set_visitor, 41, "trp_alwisus"),
           (try_end),
+          (try_begin),
+              (quest_slot_ge, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 13),
+              (set_visitor, 42, "trp_xiao"),
+              (set_visitor, 43, "trp_phamanus"),
+          (try_end),
       (try_end),
 
       (try_begin),
           (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
           (quest_slot_ge, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 6),
           (set_visitor,20,"trp_yaaba"),
+          (neg|check_quest_active, "qst_wlodowiecus_adventure_4"),
           (neg|check_quest_active, "qst_wlodowiecus_adventure_3"),
           (set_visitor,21,"trp_old_mercenary"),
           (try_begin),
@@ -36590,7 +36589,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 #############################################
   (
     "running_race_one",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "You won the race! A wearth of laurel is placed on your head.",
+    "You won the race! A wreath of laurel is placed on your head.",
     "none",
     [(set_background_mesh, "mesh_pic_orgie"),
     ],[
@@ -36609,7 +36608,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ),
   (
     "running_race_one_by_another",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "The race was one by {s1}! A wearth of laurel is placed on his head.",
+    "The race was one by {s1}! A wreath of laurel is placed on his head.",
     "none",
     [
     (set_background_mesh, "mesh_pic_orgie"),
@@ -36625,7 +36624,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ),
   (
     "throwing_one",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "You won! A wearth of laurel is placed on your head.",
+    "You won! A wreath of laurel is placed on your head.",
     "none",
     [
     (set_background_mesh, "mesh_pic_orgie"),
@@ -36644,7 +36643,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   ),
   (
     "throwing_one_by_another",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "You lost. {s1} has won! A wearth of laurel is placed on his head.",
+    "You lost. {s1} has won! A wreath of laurel is placed on his head.",
     "none",
     [
     (set_background_mesh, "mesh_pic_orgie"),
@@ -38608,7 +38607,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 
     (try_begin),
         (eq, ":total_winer", "trp_player"),
-        (troop_add_item, "trp_player", "itm_laurel_wearth", 0),
+        (troop_add_item, "trp_player", "itm_laurel_wreath", 0),
         (add_xp_as_reward, 5000),
         (call_script, "script_change_troop_renown", "trp_player", 100),
         (try_for_range, ":center", centers_begin, centers_end),
@@ -48714,15 +48713,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #   (change_screen_map),
       # ]),
 
-      ("options",[
-      ],"Osrohne provokes Parthia",[
+    ("options",[
+    ],"Osrohne provokes Parthia",[
 
-        (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
-        (val_sub, ":slot_provocation_days", kingdoms_begin),
-        (faction_set_slot, "fac_kingdom_6", ":slot_provocation_days", 1),
+      (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
+      (val_sub, ":slot_provocation_days", kingdoms_begin),
+      (faction_set_slot, "fac_kingdom_6", ":slot_provocation_days", 1),
 
-        (change_screen_map),
-      ]),
+      (change_screen_map),
+    ]),
 
       # ("options",[
       # ],"Osrohne provokes Rome",[
@@ -48775,18 +48774,20 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #   (faction_set_slot, "fac_kingdom_23", ":truce_slot", 86),
       # ]),
 
-      ("options",[(ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Scene testing (talk with fortuna)",
-        [
-        (assign, "$talk_context", 0),
-        (modify_visitors_at_site, "scn_camp_scene_plain"),
-        (reset_visitors),
-        (set_jump_entry, 0),
-        (set_visitor, 1, "trp_fortuna"),
-        (jump_to_scene, "scn_camp_scene_plain"),
-        (set_jump_mission, "mt_fortuna_scene_testing2"),
-        (change_screen_mission),
-        ]
-      ),
+    ("options",[
+      (ge, "$cheat_mode", 1),
+      (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
+    ],"Scene testing (talk with fortuna)",[
+      (assign, "$talk_context", 0),
+      (modify_visitors_at_site, "scn_camp_scene_plain"),
+      (reset_visitors),
+      (set_jump_entry, 0),
+      (set_visitor, 1, "trp_fortuna"),
+      (jump_to_scene, "scn_camp_scene_plain"),
+      (set_jump_mission, "mt_fortuna_scene_testing2"),
+      (change_screen_mission),
+      ]
+    ),
     # ("cheat_slots",[
     #   (check_quest_active, "qst_important_friends"),
     # ],"{!}CHEAT! - End Important friends quest",[
@@ -48805,7 +48806,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, "$g_talk_troop", 0),
     ],"{!}CHEAT! - Access slots, modify inventory and rename all troops",[
 	   # (assign, "$g_talk_troop", "trp_player"),
-	   (jump_to_menu, "mnu_display_troop_slots"),
+	    (jump_to_menu, "mnu_display_troop_slots"),
     ]),
 
      # ("options",[
@@ -49033,28 +49034,28 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #   (try_end),
       # ]),
 
-      ("options",[],"Randomly improve relation with Roman lords by 10 to 80 points.",[
-        (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
-          (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_dead),#alive
-          (troop_slot_eq, ":npc", slot_troop_culture, "fac_culture_7"),#Roman
-          (store_random_in_range, ":r", 0, 20),
-          (le, ":r", 5),
-          (store_random_in_range, ":r", 10, 81),
-          (call_script, "script_change_player_relation_with_troop", ":npc", ":r"),
-        (try_end),
-      ]),
+    ("options",[],"Randomly improve relation with Roman lords by 10 to 80 points.",[
+      (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
+        (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_dead),#alive
+        (troop_slot_eq, ":npc", slot_troop_culture, "fac_culture_7"),#Roman
+        (store_random_in_range, ":r", 0, 20),
+        (le, ":r", 5),
+        (store_random_in_range, ":r", 10, 81),
+        (call_script, "script_change_player_relation_with_troop", ":npc", ":r"),
+      (try_end),
+    ]),
 
-      ("options",[
-        (check_quest_active, "qst_freelancing")
-      ],"Add 100 promotion points.",[
-        (call_script, "script_freelancer_add_progress", 100),
-      ]),
+    ("options",[
+      (check_quest_active, "qst_freelancing")
+    ],"Add 100 promotion points.",[
+      (call_script, "script_freelancer_add_progress", 100),
+    ]),
 
-      ("options",[
-        (check_quest_active, "qst_freelancing")
-      ],"Remove 50 promotion points.",[
-        (call_script, "script_freelancer_add_progress", -50),
-      ]),
+    ("options",[
+      (check_quest_active, "qst_freelancing")
+    ],"Remove 50 promotion points.",[
+      (call_script, "script_freelancer_add_progress", -50),
+    ]),
 
       # ("options",[ (ge, "$cheat_mode", 1),
 
@@ -49067,37 +49068,30 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       # (try_end),
         # ]
       # ),
-
-      ("options",[(ge, "$cheat_mode", 1)],"Add 100 slaves.",
-        [
-
-    (party_force_add_prisoners, "p_main_party", "trp_slave", 100),
-        ]
-      ),
-
-      ("options",[(ge, "$cheat_mode", 1)],"Add 10,000 influence.",[
-        (call_script, "script_change_influence", "trp_player", 10000),
-      ]),
-
-      ("options",[(ge, "$cheat_mode", 1)],"Add 50,000 denars.",
-        [
-
-    (troop_add_gold, "trp_player", 50000),
-        ]
-      ),
-    ("faction_debug", [(ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],
-    "Debug faction slots",
-    [
-    (assign, "$diplomacy_var"),
-    (jump_to_menu, "mnu_display_faction_slots"),
-    ]
-    ),
-      ("continue",[
-      ],"Go back.",[
-
-    (jump_to_menu, "mnu_camp"),
-      ]),
-
+    ("options",[
+      (ge, "$cheat_mode", 1)
+    ],"Add 100 slaves.",[
+      (party_force_add_prisoners, "p_main_party", "trp_slave", 100),
+    ]),
+    ("options",[
+      (ge, "$cheat_mode", 1),
+    ],"Add 10,000 influence.",[
+      (call_script, "script_change_influence", "trp_player", 10000),
+    ]),
+    ("options",[
+      (ge, "$cheat_mode", 1),
+    ],"Add 50,000 denars.",[
+      (troop_add_gold, "trp_player", 50000),
+    ]),
+    ("faction_debug", [
+      (ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),
+    ],"Debug faction slots",[
+      (assign, "$diplomacy_var"),
+      (jump_to_menu, "mnu_display_faction_slots"),
+    ]),
+    ("continue",[],"Go back.",[
+      (jump_to_menu, "mnu_camp"),
+    ]),
 ]),
 
   (
@@ -51706,10 +51700,20 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("visit_lady",[
       (eq, "$current_town", "p_town_20"),
       (check_quest_active, "qst_wlodowiecus_adventure_4"),
-      (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 1),
+      (this_or_next|quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 1),
+      (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 11),
     ],"Visit the villa of The Lybian.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_feast"),
-      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 2),
+      (try_begin),
+        (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 11),
+        (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_final"),
+        (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 12),
+      (else_try),
+        (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 1),
+        (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_feast"),
+        (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 2),
+      (else_try),
+        (display_message, "str_door_locked"),
+      (try_end),
     ]),
     ("visit_lady",[
       (assign, "$love_interest_in_town", 0),
@@ -57426,11 +57430,12 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_alexandria"),
   ],[
     ("option_1",[],"Continue.",[
+      (rest_for_hours, 72, 16, 0),
       (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 11),
       (party_relocate_near_party, "p_main_party", "p_town_20", 1),
       (jump_to_menu, "mnu_auto_return_map"),
       (str_store_party_name_link, s20, "p_town_20"),
-      (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_4", 4, "@After several weeks of tiring travel, you finally reach {s20}. Now it’s time to meet The Libyan again, bring him news about the expedition.", 0),
+      (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_4", 4, "@After several weeks of tiring travel, you finally reach {s20}. Now it's time to meet The Libyan again, bring him news about the expedition.", 0),
     ]),
 ]),
 
@@ -57490,6 +57495,70 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (call_script, "script_start_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
       (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 1),
       (change_screen_map),
+    ]),
+]),
+
+("wlodowiecus_adventure_4_lybicus_final",mnf_scale_picture,
+  "The first thing you notice is that all traces of the fire have been meticulously repaired. Not a single mark of damage remains."
+  +" You are greeted by attentive slaves, who present you with a finely woven toga and assist you in donning it."
+  +" Once properly dressed, they inform you that a meal will be served in the villa's garden."
+  +"^^Upon entering the garden, you find a lavish banquet laid out, the air fragrant with the scent of freshly prepared dishes."
+  +" Pharmanus, the old mercenary, Ali, Hadrianus, Wlodowiecus, Lei Li, and Eamane are all gathered around the table, waiting for you to join them."
+  +" After you take your seat, the meal begins—a feast accompanied by quiet conversation and the occasional clink of cups."
+  +"^^As the meal comes to an end, the air grows quieter, and the anticipation for what comes next lingers in the garden's evening stillness. It is agreed to take a leisurely stroll through the garden.",
+  "none", [
+    (set_background_mesh, "mesh_pic_villa"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (assign, "$temp1", 11),
+      (assign, "$temp2", -1),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, "scn_lybian_villa"),
+      (reset_visitors),
+      (try_for_range, ":entry", 30, 45),
+          (neq, ":entry", 30),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_everything),
+          (mission_tpl_entry_clear_override_items, "mt_conversation_generic", ":entry"),
+          (try_begin),
+              (eq, ":entry", 38),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", ":entry", "itm_new_dress_3"),
+          (else_try),
+              (mission_tpl_entry_add_override_item, "mt_conversation_generic", ":entry", "itm_roman_toga"),
+          (try_end),
+          (mission_tpl_entry_add_override_item, "mt_conversation_generic", ":entry", "itm_female_caligea_gold"),
+      (try_end),
+      (set_visitor, 30, "trp_lybian"),
+      (set_visitor, 31, "trp_player"),
+      (set_visitor, 32, "trp_wlodowiecus"),
+      (set_visitor, 33, "trp_mancinellus"),
+      (set_visitor, 34, "trp_old_mercenary"),
+      (set_visitor, 35, "trp_hadrianus"),
+      (set_visitor, 36, "trp_ali"),
+      (set_visitor, 37, "trp_phamanus"),
+      (set_visitor, 38, "trp_turakina"),
+      (set_visitor, 39, "trp_xiao"),
+      (jump_to_scene, "scn_lybian_villa"),
+      (change_screen_mission),
+    ]),
+]),
+
+("wlodowiecus_adventure_4_end",mnf_scale_picture,
+  "The evening concludes with wine and music, though it remains far more subdued than the last chaotic orgy with Biggus Dickus."
+  +"^^With a sense of satisfaction, you leave The Libyan's villa, expressing your thanks for his hospitality."
+  +" Hadrianus, Lei Li, and Phamanus set off for Rome, eager to establish their shops and organize the caravan guild."
+  +" Meanwhile, you are left to pursue your own path, carrying with you a hefty reward—The Libyan's generous token of gratitude.",
+  "none", [
+    (set_background_mesh, "mesh_pic_villa"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (add_xp_as_reward, 10000),
+      (troop_add_gold, "trp_player", 20000),
+      (store_current_day, ":day"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_timer, ":day"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 13),
+      (call_script, "script_end_quest", "qst_wlodowiecus_adventure_4"),
+      (jump_to_menu, "mnu_auto_return_map"),
+      (rest_for_hours, 24, 16, 0),
     ]),
 ]),
 

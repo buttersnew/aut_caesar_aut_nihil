@@ -476,10 +476,10 @@ simple_triggers = [
             (try_begin),
                 (troop_slot_eq, ":troop", slot_troop_current_mission, npc_mission_improve_influence),
                 (troop_get_slot, ":mission_object", ":troop", slot_troop_mission_object),
-                (troop_slot_eq, ":mission_object", slot_troop_occupation, slto_kingdom_lady), # alive
+                (gt, ":mission_object", 0),
+                (neg|troop_slot_ge, ":mission_object", slot_troop_occupation, dplmc_slto_exile), # alive
                 (str_store_troop_name, s21, ":troop"),
                 (str_store_troop_name, s31, ":mission_object"),
-
                 (troop_get_slot, ":amount", ":troop", slot_troop_mission_amount),
                 (store_div, ":probability", ":amount", 10),#250,500,750
                 (val_mul, ":probability", -1),
@@ -518,19 +518,19 @@ simple_triggers = [
                 (display_message, "@{s33}"),
                 (try_begin),
                     (eq, "$g_infinite_camping", 0),
-                    (tutorial_box, "@{s33}", "@Letter"),
+                    (tutorial_box, "@{s33}", "@You recieve a letter"),
                 (try_end),
 
             (else_try),
                 (troop_slot_eq, ":troop", slot_troop_current_mission, npc_mission_improve_relations),
                 (troop_get_slot, ":mission_object", ":troop", slot_troop_mission_object),
-                (troop_slot_eq, ":mission_object", slot_troop_occupation, slto_kingdom_lady), # alive
+                (gt, ":mission_object", 0),
+                (neg|troop_slot_ge, ":mission_object", slot_troop_occupation, dplmc_slto_exile), # alive
                 (str_store_troop_name, s32, ":mission_object"),
-                #				(display_message, "@Mission object is {s32}"),
                 (troop_get_slot, ":target", ":troop", slot_troop_mission_target),
+                (gt, ":target", 0),
                 (str_store_troop_name, s31, ":target"),
                 (troop_get_slot, ":amount", ":troop", slot_troop_mission_amount),
-                (gt, ":mission_object", 0),
                 (try_begin),
                     (eq, ":amount", 120),
                     (store_random_in_range, ":random", 0,100),
