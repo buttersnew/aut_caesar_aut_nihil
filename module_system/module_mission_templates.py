@@ -21731,7 +21731,7 @@ mission_templates = [
     ],[
       (get_player_agent_no, ":player"),
       (agent_get_horse, ":horse", ":player"),
-      (agent_is_active, ":horse")
+      (agent_is_active, ":horse"),
       (agent_is_alive, ":horse"),
       (agent_get_slot, ":timer2", ":player", slot_horse_sprinting),
       (try_begin),
