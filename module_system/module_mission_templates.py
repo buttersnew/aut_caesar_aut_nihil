@@ -21730,10 +21730,13 @@ mission_templates = [
       (neq, "$temp", -1),
     ],[
       (get_player_agent_no, ":player"),
+      (agent_get_horse, ":horse", ":player"),
+      (agent_is_active, ":horse")
+      (agent_is_alive, ":horse"),
       (agent_get_slot, ":timer2", ":player", slot_horse_sprinting),
       (try_begin),
           (eq, ":timer2", 0),
-          (display_message, "@You encourage your horse to sprint!", message_alert),
+          (display_message, "@You urge your horse into a swift, thunderous sprint!", message_alert),
           (agent_set_slot, ":player", slot_horse_sprinting, 1),
           (call_script, "script_advanced_agent_set_speed_modifier", ":player", 115),
       (else_try),
