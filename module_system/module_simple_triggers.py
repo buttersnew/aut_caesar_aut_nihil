@@ -5103,8 +5103,8 @@ simple_triggers = [
         (call_script, "script_start_quest", "qst_player_treason", ":faction_leader"),
         (quest_set_slot, "qst_player_treason", slot_quest_current_state, 1),
         (store_current_day, ":day"),
+        (val_max, ":day", 1),
         (quest_set_slot, "qst_player_treason", slot_quest_timer, ":day"),
-
     (try_end),
 ]),
 

@@ -30363,6 +30363,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_end),
 
     (store_current_day, reg1),
+    (val_max, reg1, 1),
     (quest_set_slot, "qst_four_emperors", slot_quest_timer, reg1),
 
     (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
@@ -54301,6 +54302,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Increase your wealth and influence as preparation for the upcoming events. You will be informed when the time has come to strike.^(Hint: 10 days must have past, you have 500,000 denars and 1,500 influence.)", 1),
           (add_quest_note_from_sreg, "qst_blank_quest_19", 7, "@You allied with {s22}. Now you have to increase your wealth as preparation for the upcoming events.^(Hint: 10 days must have past, you have 500,000 denars and 1,500 influence.)", 1),
           (store_current_day, reg1),
+          (val_max, reg1, 1),
           (quest_set_slot, "qst_four_emperors", slot_quest_timer, reg1),
       (else_try),
           (str_store_troop_name_link, s32, "trp_legatus_12"),
@@ -57554,6 +57556,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (add_xp_as_reward, 10000),
       (troop_add_gold, "trp_player", 20000),
       (store_current_day, ":day"),
+      (val_max, ":day", 1),
       (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_timer, ":day"),
       (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 13),
       (call_script, "script_end_quest", "qst_wlodowiecus_adventure_4"),
@@ -58792,6 +58795,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",[
       (add_xp_as_reward, 10000),
       (store_current_day, ":day"),
+      (val_max, ":day", 1),
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_timer, ":day"),
       (call_script, "script_end_quest", "qst_wlodowiecus_adventure_3"),
       (jump_to_menu, "mnu_auto_return_map"),
@@ -59176,6 +59180,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (rest_for_hours, 72, 16, 0),
       (call_script, "script_end_quest", "qst_wlodowiecus_adventure_2"),
       (store_current_day, ":day"),
+      (val_max, ":day", 1),
       (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_timer, ":day"),
       (change_screen_map),
     ]),
