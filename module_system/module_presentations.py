@@ -10197,7 +10197,7 @@ presentations = [
 
     (create_text_overlay, reg1, "@Party Size", tf_left_align),
     (position_set_x, pos1, 490),
-    (position_set_y, pos1, 450),
+    (position_set_y, pos1, 430),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1200),
     (position_set_y, pos1, 1200),
@@ -10617,16 +10617,16 @@ presentations = [
     (str_clear, s0),
     (create_text_overlay, reg1, s0, tf_double_space|tf_scrollable|tf_left_align),
     (position_set_x, pos1, 450),
-    (position_set_y, pos1, 490),
+    (position_set_y, pos1, 470),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 200),
-    (position_set_y, pos1, 200),
+    (position_set_y, pos1, 225),
     (overlay_set_area_size, reg1, pos1),
     (set_container_overlay, reg1),
 
     #get number of lines
     (position_set_x, pos1, 0),
-    (assign, ":cur_y", 7*25),
+    (assign, ":cur_y", 8*25),
     #290,660
     ##You can lead up to {reg23} troops. You can manage {reg22} troops without a party moral penalty. {s1}
     # (create_text_overlay, reg0, "@Party size limit:", 0),
@@ -10784,6 +10784,25 @@ presentations = [
     (overlay_set_size, reg0, pos2),
     (val_sub, ":cur_y", 25),
 
+    (assign, reg1, "$g_player_party_morale_modifier_special_items"),
+    (val_add, ":sum_modifiers", reg1),
+    (create_text_overlay, reg0, "@Special items:", 0),
+    (position_set_y, pos1, ":cur_y"),
+    (overlay_set_position, reg0, pos1),
+    (overlay_set_size, reg0, pos2),
+
+    (create_text_overlay, reg0, "@{!}{reg1}", 0),
+    (try_begin),
+        (gt, reg1, 0),
+        (overlay_set_color, reg0, 0x228B22),
+    (try_end),
+    (overlay_set_size, reg0, pos2),
+    (position_set_x, pos3, 100),
+    (position_set_y, pos3, ":cur_y"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos2),
+    (val_sub, ":cur_y", 25),
+
     (party_get_morale, reg5, "p_main_party"),
     (store_sub, reg4, reg5, ":sum_modifiers"),
 
@@ -10804,7 +10823,7 @@ presentations = [
     (position_set_y, pos3, ":cur_y"),
     (overlay_set_position, reg0, pos3),
     (overlay_set_size, reg0, pos2),
-    (val_sub, ":cur_y", 2),
+    (val_sub, ":cur_y", 4),
 
     ##creat some lines
     (create_mesh_overlay, reg0, "mesh_white_plane"),
@@ -10838,7 +10857,7 @@ presentations = [
 
     (set_container_overlay, -1),
 
-   #party size report
+    #party size report
 
     #size of the text
     (position_set_x, pos2, 900),
@@ -10847,7 +10866,7 @@ presentations = [
     (str_clear, s0),
     (create_text_overlay, reg1, s0, tf_double_space|tf_scrollable|tf_left_align),
     (position_set_x, pos1, 450),
-    (position_set_y, pos1, 290),
+    (position_set_y, pos1, 270),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 200),
     (position_set_y, pos1, 150),

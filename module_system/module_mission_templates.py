@@ -2103,6 +2103,7 @@ theoris_decapitation = [
       (neq, "$g_gore_on", 0),
     ],[
       (store_trigger_param_1, ":agent"),
+      (agent_is_active, ":agent"),
       (agent_is_human, ":agent"),
       (agent_is_non_player, ":agent"),
       (agent_get_troop_id, ":troop_no", ":agent"),
@@ -3737,9 +3738,10 @@ formations_triggers = [ #4 triggers
 jacobhinds_morale_recover = (
 	6, 0, 0, [
     (eq, "$moral_recovery", 1),
-    (neq, "$g_battle_won", 1)], #no recovery once battle is over
-	[
+    (neq, "$g_battle_won", 1)
+  ],[
 		(try_for_agents, ":agent"),
+      (agent_is_active, ":agent"),
 			(agent_is_alive, ":agent"),
 			(agent_is_human, ":agent"),
 			(gt, ":agent", 1),
@@ -3775,8 +3777,7 @@ jacobhinds_morale_recover = (
 			(val_add, ":courage", ":strength"),
 			(agent_set_slot, ":agent", slot_agent_courage_score, ":courage"),
 		(try_end),
-	],
-		)
+])
 
 jacobhinds_ranged_melee_morale_penalty = (
 #ranged units get morale penalties for being in melee, eventually routing
@@ -3859,35 +3860,32 @@ jacobhinds_ranged_melee_morale_penalty = (
 
 jacobhinds_battle_ratio_init = (
 #proportionalises battle ratio by adding ABS of ratio to both sides when they spawn
-   0, 0, ti_once, [],
-   [
-      (call_script, "script_cf_calculate_battle_ratio"),
-   ],
-                  )
+   0, 0, ti_once, [],[
+    (call_script, "script_cf_calculate_battle_ratio"),
+])
 
 jacobhinds_battle_ratio_spawn_bonus = (
 #proportionalises battle ratio by adding absolute value of ratio to both sides when they spawn
-	ti_on_agent_spawn, 0.1, 0, [],
-	[
+	ti_on_agent_spawn, 0.1, 0, [],[
 		(store_trigger_param_1, ":agent"),
+    (agent_is_active, ":agent"),
+    (agent_is_human, ":agent"),
 		(agent_get_slot, ":courage", ":agent", slot_agent_courage_score),
 		(try_begin),
 			(ge, "$battle_ratio", 0),
 			(val_add, ":courage", "$battle_ratio"),
 		(else_try),
-	    	(val_sub, ":courage", "$battle_ratio"),
+      (val_sub, ":courage", "$battle_ratio"),
 		(try_end),
 		(agent_set_slot, ":agent", slot_agent_courage_score, ":courage"),
-	],
-			)
+])
 jacobhinds_battle_ratio_calculate = (
-   10, 0, 0, [],
-   [
-      (call_script, "script_cf_calculate_battle_ratio"),
-   ], )
-change_battle_speed_trigger = 	(0, 0, 2,
-	[(key_clicked, key_j),],
-	[
+  10, 0, 0, [],[
+    (call_script, "script_cf_calculate_battle_ratio"),
+ ])
+change_battle_speed_trigger = (0, 0, 2,[
+    (key_clicked, key_j),
+  ],[
 		(options_get_combat_speed, ":speed"),
 		(try_begin),
 			(eq, ":speed", 0),
@@ -3910,14 +3908,13 @@ change_battle_speed_trigger = 	(0, 0, 2,
 			(options_set_combat_speed, 0),
 			(display_message, "@Changed combat speed from: fastest to slowest",message_alert),
 		(try_end),
-
-	(try_for_agents, ":agent_no"),
-	  (agent_is_human, ":agent_no"),
-		(agent_is_active, ":agent_no"),
-		(agent_is_alive, ":agent_no"),
-		(call_script, "script_advanced_agent_set_speed_modifier",":agent_no", 100),
-	(try_end),
-	])
+    (try_for_agents, ":agent_no"),
+      (agent_is_active, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (call_script, "script_advanced_agent_set_speed_modifier",":agent_no", 100),
+    (try_end),
+])
 
 moral_trigger_decide_to_run_or_not = 		(3, 0, 0, [
     (store_mission_timer_a,":mission_time"),
@@ -4607,8 +4604,7 @@ ai_horn = [ #3 triggers
 
 ]
 immersive_troops = ( #inmersive troops gestos y sonidos
-  5, 0, 0,
-  [
+  5, 0, 0,[
     (store_mission_timer_a, ":cur_time"),
     (gt, ":cur_time", 1),#
     (lt, ":cur_time", 180),#No more specials after 180 seconds
@@ -4619,12 +4615,11 @@ immersive_troops = ( #inmersive troops gestos y sonidos
     (neg|conversation_screen_is_active),
     (neg|is_presentation_active, "prsnt_battle"),
     (neg|is_presentation_active, "prsnt_order_display"),
-  ],
-  [
+  ],[
     (try_for_agents, ":agent"),
+      (agent_is_active,":agent"),
       (agent_is_human, ":agent"),
       (agent_is_alive, ":agent"),
-      (agent_is_active,":agent"),
       (agent_get_horse,":agent_mounted",":agent"),
       (eq,":agent_mounted",-1), #no mounted
       #  (agent_is_ally, ":agent"), #only allies.
@@ -4705,11 +4700,11 @@ immersive_troops = ( #inmersive troops gestos y sonidos
 ])
 
 agent_assign_rank_closeness = (ti_on_order_issued, 0, 0, [],[
-
   (store_trigger_param_1,":order"),
   (store_trigger_param_2,":agent"),
   (agent_is_active, ":agent"),
   (agent_is_alive, ":agent"),
+  (agent_is_human, ":agent"),
 	(agent_get_slot, ":closeness", ":agent", slot_agent_is_running_away),
 	(try_begin),
 		(eq, ":order", mordr_stand_closer),
@@ -4721,40 +4716,39 @@ agent_assign_rank_closeness = (ti_on_order_issued, 0, 0, [],[
 
 	(val_clamp, ":closeness", -1, 3), #just an assumption based on observation; the loosest formation is only 1 below the defualt
 	(agent_set_slot, ":agent", slot_agent_rank_closeness, ":closeness"),
-
-	])
+])
 
 jacobhinds_rout_check = (
-   0, 0, 0, [(eq, "$debug_moral", 1),
-   (key_is_down,key_k),
-   ],
-   [
-      (try_for_agents, ":agent"),
-         (agent_is_alive, ":agent"),
-         (agent_is_human, ":agent"),
-         (agent_get_slot, ":courage", ":agent", slot_agent_courage_score),
-         (agent_get_slot, ":routing", ":agent", slot_agent_is_running_away),
-         (assign, reg0, ":courage"),
-         (assign, reg1, "$battle_ratio"),
-         (assign, reg2, ":routing"),
-         (str_store_string, s1, "@{reg2?routing:steady}"),
-         (agent_get_troop_id, ":troop", ":agent"),
-         (str_store_troop_name, s0, ":troop"),
-         (display_message, "@Fear = {reg0} {s0} ({s1})"),
-      (try_end),
-   ],
-                  )
+   0, 0, 0, [
+    (eq, "$debug_moral", 1),
+    (key_is_down,key_k),
+  ],[
+    (try_for_agents, ":agent"),
+        (agent_is_active, ":agent"),
+        (agent_is_alive, ":agent"),
+        (agent_is_human, ":agent"),
+        (agent_get_slot, ":courage", ":agent", slot_agent_courage_score),
+        (agent_get_slot, ":routing", ":agent", slot_agent_is_running_away),
+        (assign, reg0, ":courage"),
+        (assign, reg1, "$battle_ratio"),
+        (assign, reg2, ":routing"),
+        (str_store_string, s1, "@{reg2?routing:steady}"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (str_store_troop_name, s0, ":troop"),
+        (display_message, "@Fear = {reg0} {s0} ({s1})"),
+    (try_end),
+])
 
 jacobhinds_morale_triggers = [
-    jacobhinds_battle_ratio_init,
-    jacobhinds_battle_ratio_spawn_bonus,
-    jacobhinds_battle_ratio_calculate,
-    jacobhinds_morale_recover,
-    immersive_troops,
-    jacobhinds_ranged_melee_morale_penalty,
-    agent_assign_rank_closeness,
-    jacobhinds_rout_check,
-  ]
+  jacobhinds_battle_ratio_init,
+  jacobhinds_battle_ratio_spawn_bonus,
+  jacobhinds_battle_ratio_calculate,
+  jacobhinds_morale_recover,
+  immersive_troops,
+  jacobhinds_ranged_melee_morale_penalty,
+  agent_assign_rank_closeness,
+  jacobhinds_rout_check
+]
 
 #jacobhinds Morale Code END
 
@@ -5865,7 +5859,7 @@ dplmc_battle_mode_triggers_no_deathcam = [
     (gt, "$g_horses_are_avaliable", 0),
   ],[
     (store_trigger_param_1, ":horse_no"),
-
+    (agent_is_active, ":horse_no"),
     (neg|agent_is_human, ":horse_no"), #horse agent
     (agent_get_rider, ":agent_no", ":horse_no"),
     (try_begin),
@@ -5883,6 +5877,7 @@ dplmc_battle_mode_triggers_no_deathcam = [
   ],[
     (store_trigger_param_1, ":agent_no"),
     (store_trigger_param_2, ":horse_no"),
+    (agent_is_active, ":horse_no"),
     (try_begin),
       (agent_is_active, ":agent_no"),
       (agent_is_non_player, ":agent_no"), #default period for npcs
@@ -5898,6 +5893,7 @@ dplmc_battle_mode_triggers_no_deathcam = [
     (store_trigger_param_1, ":agent_no"),
     (store_trigger_param_2, ":horse_no"),
     (agent_is_active, ":horse_no"),
+    (agent_is_active, ":agent_no"),
     (agent_is_non_player, ":agent_no"),
 
     (agent_get_team, ":team", ":agent_no"),#change division
@@ -5918,6 +5914,7 @@ dplmc_battle_mode_triggers_no_deathcam = [
   ],[
     (set_fixed_point_multiplier, 1000),
     (try_for_agents, ":horse_no"),
+      (agent_is_active, ":horse_no"),
       (agent_is_alive, ":horse_no"),
       (neg|agent_is_human, ":horse_no"),
       (agent_get_rider, ":rider_no", ":horse_no"),
@@ -5956,12 +5953,11 @@ dplmc_battle_mode_triggers = dplmc_death_came_triggers + dplmc_battle_mode_trigg
 ##diplomacy end
 
 common_battle_mission_start = (
-  ti_before_mission_start, 0, 0, [],
-  [
+  ti_before_mission_start, 0, 0, [],[
     (team_set_relation, 0, 2, 1),
     (team_set_relation, 1, 3, 1),
     (call_script, "script_change_banners_and_chest"),
-    ])
+])
 
 common_battle_player_fallen_renown_lose = (
   1, 4, ti_once, [(main_hero_fallen)],[
@@ -8017,7 +8013,8 @@ mission_templates = [
     can_spawn_commoners,
     # improved_lightning,
     (0, 0, 0.5,[
-      (eq, "$current_town", "p_town_6"),(eq, "$g_is_emperor", 1),
+      (eq, "$current_town", "p_town_6"),
+      (eq, "$g_is_emperor", 1),
     ],[
       (get_player_agent_no, ":player"),
       (try_for_agents, ":agent"),
@@ -8028,12 +8025,10 @@ mission_templates = [
           (agent_set_look_target_agent, ":agent", ":player"),
       (try_end),
     ]),
-
     (0, 0, 0,[
       (key_clicked, key_k),
       (tutorial_message, -1),
     ],[]),
-
 	  (1,0,ti_once,[
       (troop_slot_eq,"trp_global_variables", g_nero_intro_feast, 0),
       (eq, "$current_town", "p_town_6"),
@@ -8049,14 +8044,12 @@ mission_templates = [
       (tutorial_message, "@Feasts in Rome take place in the triclinium (dining room) of the Domus Augusti, the palace of Ceasar.^^(press K to finish read)"),
       (troop_set_slot,"trp_global_variables", g_nero_intro_feast, 1),
 		]),
-
     (0, 0, 3,[
       (key_clicked, key_t),
     ],[
       (get_player_agent_no, ":agent_no"),
       (agent_set_animation, ":agent_no", "anim_blow_kiss", 1),
     ]),
-
     (4,1,ti_once,[],[
       (eq, "$talk_context", tc_court_talk),
       (eq, "$current_town", "p_town_6"),
@@ -8190,8 +8183,7 @@ mission_templates = [
       (neg|position_is_behind_position, pos1, pos2),
       (neg|is_presentation_active, "prsnt_deposit_withdraw_money"),
       (neg|conversation_screen_is_active),
-      ],
-      [
+    ],[
       (tutorial_message_set_size, 17, 17),
       (tutorial_message_set_position, 500, 500),
       (tutorial_message_set_center_justify, 1),
@@ -9039,8 +9031,11 @@ mission_templates = [
     ]),
 
     ####ambush chief effect to player and allies
-    (0, 0, ti_once, [(eq,"$player_ambushed",3),],[
+    (0, 0, ti_once, [
+      (eq,"$player_ambushed",3),
+    ],[
       (try_for_agents, ":agent_no"),
+          (agent_is_active, ":agent_no"),
           (agent_is_alive,":agent_no"),
           (agent_is_human,":agent_no"),
           (agent_is_ally, ":agent_no"),
@@ -9052,14 +9047,17 @@ mission_templates = [
       (try_end),
     ]),
   ##there is for 30 sec disorder
-    (30, 0, ti_once, [(eq,"$player_ambushed",3),],[
+    (30, 0, ti_once, [
+      (eq,"$player_ambushed",3),
+    ],[
       (try_for_agents, ":agent_no"),
-        (agent_is_alive,":agent_no"),
-        (agent_is_human,":agent_no"),
-        (agent_is_ally, ":agent_no"),
-        (agent_slot_eq, ":agent_no",  slot_agent_is_running_away, 1),
-        (agent_set_slot, ":agent_no",  slot_agent_is_running_away, 0),
-        (agent_stop_running_away, ":agent_no"),
+          (agent_is_active, ":agent_no"),
+          (agent_is_alive,":agent_no"),
+          (agent_is_human,":agent_no"),
+          (agent_is_ally, ":agent_no"),
+          (agent_slot_eq, ":agent_no",  slot_agent_is_running_away, 1),
+          (agent_set_slot, ":agent_no",  slot_agent_is_running_away, 0),
+          (agent_stop_running_away, ":agent_no"),
       (try_end),
     ]),
     common_battle_tab_press,
@@ -9126,7 +9124,9 @@ mission_templates = [
       (val_add,"$attacker_reinforcement_stage",1),
     ]),
 
-    (1, 4, 0,[(main_hero_fallen)],[
+    (1, 4, 0,[
+      (main_hero_fallen),
+    ],[
       ##diplomacy begin
       (try_begin),
           (call_script, "script_cf_dplmc_battle_continuation"),
@@ -9280,8 +9280,11 @@ mission_templates = [
       (try_end),
     ]),
     ##### Ambush player part, to enemy effect
-    (0, 0, ti_once, [(eq,"$player_ambushed",4),],[
+    (0, 0, ti_once, [
+      (eq,"$player_ambushed",4),
+    ],[
       (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
         (agent_is_alive,":agent_no"),
         (agent_is_human,":agent_no"),
         (neg|agent_is_ally, ":agent_no"),
@@ -9291,8 +9294,11 @@ mission_templates = [
         (agent_start_running_away, ":agent_no", 0),
       (try_end),
     ]),
-    (30, 0, ti_once, [(eq,"$player_ambushed",4),],[
+    (30, 0, ti_once, [
+      (eq,"$player_ambushed",4),
+    ],[
       (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
         (agent_is_alive,":agent_no"),
         (agent_is_human,":agent_no"),
         (neg|agent_is_ally, ":agent_no"),
@@ -14847,106 +14853,100 @@ mission_templates = [
     ]),
 ]),
 
-  ("visit_temple_jerusalem",0,-1,
-    "plundering a settlement",
-    [
-      (0,mtef_visitor_source,af_override_horse,0,1,[]),
-      (1,mtef_visitor_source,af_override_horse,0,1,[]),
-      (2,mtef_visitor_source,af_override_horse,0,1,[]),
-	  (3,mtef_visitor_source,af_override_horse,0,1,[]),
-      (4,mtef_visitor_source,af_override_horse,0,1,[]),
-      (5,mtef_visitor_source,af_override_horse,0,1,[]),
-      (6,mtef_visitor_source,af_override_horse,0,1,[]),
-      (7,mtef_visitor_source,af_override_horse,0,1,[]),
-      (8,mtef_visitor_source,af_override_horse,0,1,[]),
-      (9,mtef_visitor_source,af_override_horse,0,1,[]),
-      (10,mtef_visitor_source,af_override_horse,0,1,[]),
-      (11,mtef_visitor_source,af_override_horse,0,1,[]),
-      (12,mtef_visitor_source,af_override_horse,0,1,[]),
-      (13,mtef_visitor_source,af_override_horse,0,1,[]),
-      (14,mtef_visitor_source,af_override_horse,0,1,[]),
-      (15,mtef_visitor_source,af_override_horse,0,1,[]),
-      (16,mtef_visitor_source,af_override_horse,0,1,[]),
-      (17,mtef_visitor_source,af_override_horse,0,1,[]),
-      (18,mtef_visitor_source,af_override_horse,0,1,[]),
-      (19,mtef_visitor_source,af_override_horse,0,1,[]),
-      (20,mtef_visitor_source,af_override_horse,0,1,[]),
-      (21,mtef_visitor_source,af_override_horse,0,1,[]),
-      (22,mtef_visitor_source,af_override_horse,0,1,[]),
-      (23,mtef_visitor_source,af_override_horse,0,1,[]),
-      (24,mtef_visitor_source,af_override_horse,0,1,[]),
-      (25,mtef_visitor_source,af_override_horse,0,1,[]),
-      (26,mtef_visitor_source,af_override_horse,0,1,[]),
-      (27,mtef_visitor_source,af_override_horse,0,1,[]),
-      (28,mtef_visitor_source,af_override_horse,0,1,[]),
-      (29,mtef_visitor_source,af_override_horse,0,1,[]),
-      (30,mtef_visitor_source,af_override_horse,0,1,[]),
-      (31,mtef_visitor_source,af_override_horse,0,1,[]),
-     (32,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-     (33,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-     (34,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-     (35,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-	 (36,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-	 (37,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-     (38,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
-     (39,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
-     (40,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
-
-    ], p_wetter + storms + global_common_triggers+
-    [
-      can_spawn_commoners,
+("visit_temple_jerusalem",0,-1,"plundering a settlement",[
+    (0,mtef_visitor_source,af_override_horse,0,1,[]),
+    (1,mtef_visitor_source,af_override_horse,0,1,[]),
+    (2,mtef_visitor_source,af_override_horse,0,1,[]),
+    (3,mtef_visitor_source,af_override_horse,0,1,[]),
+    (4,mtef_visitor_source,af_override_horse,0,1,[]),
+    (5,mtef_visitor_source,af_override_horse,0,1,[]),
+    (6,mtef_visitor_source,af_override_horse,0,1,[]),
+    (7,mtef_visitor_source,af_override_horse,0,1,[]),
+    (8,mtef_visitor_source,af_override_horse,0,1,[]),
+    (9,mtef_visitor_source,af_override_horse,0,1,[]),
+    (10,mtef_visitor_source,af_override_horse,0,1,[]),
+    (11,mtef_visitor_source,af_override_horse,0,1,[]),
+    (12,mtef_visitor_source,af_override_horse,0,1,[]),
+    (13,mtef_visitor_source,af_override_horse,0,1,[]),
+    (14,mtef_visitor_source,af_override_horse,0,1,[]),
+    (15,mtef_visitor_source,af_override_horse,0,1,[]),
+    (16,mtef_visitor_source,af_override_horse,0,1,[]),
+    (17,mtef_visitor_source,af_override_horse,0,1,[]),
+    (18,mtef_visitor_source,af_override_horse,0,1,[]),
+    (19,mtef_visitor_source,af_override_horse,0,1,[]),
+    (20,mtef_visitor_source,af_override_horse,0,1,[]),
+    (21,mtef_visitor_source,af_override_horse,0,1,[]),
+    (22,mtef_visitor_source,af_override_horse,0,1,[]),
+    (23,mtef_visitor_source,af_override_horse,0,1,[]),
+    (24,mtef_visitor_source,af_override_horse,0,1,[]),
+    (25,mtef_visitor_source,af_override_horse,0,1,[]),
+    (26,mtef_visitor_source,af_override_horse,0,1,[]),
+    (27,mtef_visitor_source,af_override_horse,0,1,[]),
+    (28,mtef_visitor_source,af_override_horse,0,1,[]),
+    (29,mtef_visitor_source,af_override_horse,0,1,[]),
+    (30,mtef_visitor_source,af_override_horse,0,1,[]),
+    (31,mtef_visitor_source,af_override_horse,0,1,[]),
+    (32,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
+    (33,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
+    (34,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
+    (35,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
+    (36,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
+    (37,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
+    (38,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
+    (39,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
+    (40,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
+  ], p_wetter + storms + global_common_triggers +
+  [
+    can_spawn_commoners,
     improved_lightning,
-      ambient_set_agents_for_sounds,
-      ambient_agent_play_sound,
-      ambient_scene_play_loop,
-      ambient_scene_play_random_sound,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+    ambient_scene_play_loop,
+    ambient_scene_play_random_sound,
+    common_inventory_not_available,
 
-      common_inventory_not_available,
-
-  (0, 0, 0, [],
-   [
-    (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
-	(mission_enable_talk),
-   ]),
-    (0, 0, 0,[(key_clicked, key_k),
-          (tutorial_message, -1),
-          ],[]),
-	  (10,0,ti_once,[],
-		[
-        (tutorial_message_set_size, 19, 19),
-        (tutorial_message_set_position, 500, 650),
-        (tutorial_message_set_center_justify, 0),
-        (tutorial_message_set_background, 1),
-        (tutorial_message, "@ It is not allowed to enter the inner courtyard.^^(press K to finish read)"),
+    (0, 0, 0, [],[
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+      (mission_enable_talk),
+    ]),
+    (0, 0, 0,[
+      (key_clicked, key_k),
+      (tutorial_message, -1),
+    ],[]),
+	  (10,0,ti_once,[],[
+      (tutorial_message_set_size, 19, 19),
+      (tutorial_message_set_position, 500, 650),
+      (tutorial_message_set_center_justify, 0),
+      (tutorial_message_set_background, 1),
+      (tutorial_message, "@ It is not allowed to enter the inner courtyard.^^(press K to finish read)"),
 		]),
-   ###chief walkers
-      (1, 0, ti_once,
-      [],
-      [
-        (try_begin),
-          (eq, "$g_mt_mode", tcm_default),
-          (store_current_scene, ":cur_scene"),
-          (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
-        (try_end),
-        (call_script, "script_init_town_walker_agents"),
-        (try_begin),
-          (eq, "$sneaked_into_town", 1),
-          (call_script, "script_music_set_situation_with_culture", mtf_sit_town_infiltrate),
-        (else_try),
-          (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
-        (try_end),
-      ]),
-#chief walkers acaba
+    ###chief walkers
+    (1, 0, ti_once,[],[
+      (try_begin),
+        (eq, "$g_mt_mode", tcm_default),
+        (store_current_scene, ":cur_scene"),
+        (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
+      (try_end),
+      (call_script, "script_init_town_walker_agents"),
+      (try_begin),
+        (eq, "$sneaked_into_town", 1),
+        (call_script, "script_music_set_situation_with_culture", mtf_sit_town_infiltrate),
+      (else_try),
+        (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+      (try_end),
+    ]),
+    #chief walkers acaba
 
-#chief walkers en castillos
-      (3, 0, 0, [(call_script, "script_tick_town_walkers")],[]),
-      (2, 0, 0, [(call_script, "script_center_ambiance_sounds")],[]),
-#chief walkers en castillo acaba
+    #chief walkers en castillos
+    (3, 0, 0, [(call_script, "script_tick_town_walkers")],[]),
+    (2, 0, 0, [(call_script, "script_center_ambiance_sounds")],[]),
+    #chief walkers en castillo acaba
 
-      (ti_tab_pressed, 0, 0, [],
-       [(stop_all_sounds, 1),(finish_mission,0)]),
-    ]
-  ),
+    (ti_tab_pressed, 0, 0, [],[
+      (stop_all_sounds, 1),
+      (finish_mission,0),
+    ]),
+]),
 
 ("palace", mtf_battle_mode, -1,"You visit the imperial palace.",[
 	  (0,mtef_visitor_source,af_override_horse,0,1,[]),
@@ -15023,6 +15023,9 @@ mission_templates = [
   ],
     p_wetter + global_common_triggers +
   [
+    (ti_before_mission_start, 0, 0, [],[
+      (call_script, "script_change_banners_and_chest"),
+    ]),
     can_spawn_commoners,
     improved_lightning,
     (0, 0, 0,[
