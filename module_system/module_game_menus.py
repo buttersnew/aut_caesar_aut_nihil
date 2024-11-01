@@ -33569,7 +33569,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 ("emperor_event_12",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Divine freetime^^Being a Caesar can be very stressful. Dozends of people ask you every day either for a favor, or for a order... Finally, you have some free time.^	What will you do?",
+  "Divine freetime^^Being a Caesar can be very stressful. Dozens of people ask you every day either for a favor, or for a order... Finally, you have some free time.^	What will you do?",
   "none",[
     (set_background_mesh, "mesh_pic_palast"),
   ],[
@@ -43526,7 +43526,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_18_2nj",[],"Let her be. There are no witches.",[
       (str_clear,s1),
       (call_script, "script_change_player_relation_with_center", "$current_town", -5),
-      (str_store_string,s1,"@The woman thanks you, you have safed her life. But as she leaves the court, she is attacked and killed by the mob. The mob blames you, not to be able to protect them properly!"),
+      (str_store_string,s1,"@The woman thanks you, you have saved her life. But as she leaves the court, she is attacked and killed by the mob. The mob blames you, not to be able to protect them properly!"),
       (display_message, "@{s1}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
