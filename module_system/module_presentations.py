@@ -35444,7 +35444,7 @@ presentations = [
         (overlay_set_position, "$g_presentation_obj_11", pos1),
 
         (troop_get_slot, ":cur_banner_mesh", "trp_players_legion", slot_troop_banner_scene_prop),
-        (ge, ":cur_banner_mesh", 0),
+        (gt, ":cur_banner_mesh", 0),
         (val_sub, ":cur_banner_mesh", banner_scene_props_begin),
         (val_add, ":cur_banner_mesh", banner_meshes_begin),
         (create_mesh_overlay, reg1, ":cur_banner_mesh"),
