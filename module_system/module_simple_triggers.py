@@ -12739,7 +12739,11 @@ simple_triggers = [
                     (assign, ":score", ":score_1"),
                     (assign, ":candiate", ":active_npc"),
                 (try_end),
-                #governor found?
+                #is no governor found use old governor
+                (try_begin),
+                    (gt, ":candiate", -1),
+                    (assign, ":candiate", ":governor"),
+                (try_end),
                 (gt, ":candiate", -1),
                 # (str_store_party_name, s24, "$g_center_trigger_taxes"),
                 # (display_message, "@Check for {s24}, candiate found"),
