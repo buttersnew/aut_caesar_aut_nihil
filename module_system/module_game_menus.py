@@ -6794,52 +6794,52 @@ game_menus = [
     ]
   ),
 
-  (#SB : pic hotkeys
-    "join_siege_outside",mnf_scale_picture|mnf_enable_hot_keys,
-    "{s1} has come under siege by {s2}.",
-    "none",
-    [
-        (str_store_party_name, s1, "$g_encountered_party"),
-        (str_store_party_name, s2, "$g_encountered_party_2"),
-        (set_background_mesh, "mesh_pic_siege_sighted"),
-    ],
-    [
-      ("approach_besiegers",[(store_faction_of_party, ":faction_no", "$g_encountered_party_2"),
-                             (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
-                             (ge, ":relation", 0),
-                             (store_faction_of_party, ":faction_no", "$g_encountered_party"),
-                             (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
-                             (lt, ":relation", 0),
-                             ],"Approach the siege camp.",[
-          (jump_to_menu, "mnu_besiegers_camp_with_allies"),
-                                ]),
-      ("pass_through_siege",[(store_faction_of_party, ":faction_no", "$g_encountered_party"),
-                             (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
-                             (ge, ":relation", 0),
-                             ],"Pass through the siege lines and enter {s1}.",
-       [
-            (jump_to_menu,"mnu_cut_siege_without_fight"),
-          ]),
-      ("leave",[],"Leave.",[(leave_encounter),
-                            (change_screen_return)]),
-    ]
-  ),
-  (
-    "cut_siege_without_fight",0,
-    "The besiegers let you approach the gates without challenge.",
-    "none",
-    [],
-    [
-      ("continue",[],"Continue...",[
-                                (try_begin),
-                                   (this_or_next|eq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
-                                   (eq, "$g_encountered_party_faction", "$players_kingdom"),
-                                   (jump_to_menu, "mnu_town"),
-                                (else_try),
-                                   (jump_to_menu, "mnu_castle_outside"),
-                                (try_end)]),
-      ]
-  ),
+(#SB : pic hotkeys
+  "join_siege_outside",mnf_scale_picture|mnf_enable_hot_keys,
+  "{s1} has come under siege by {s2}.",
+  "none",[
+    (str_store_party_name, s1, "$g_encountered_party"),
+    (str_store_party_name, s2, "$g_encountered_party_2"),
+    (set_background_mesh, "mesh_pic_siege_sighted"),
+  ],[
+    ("approach_besiegers",[
+      (store_faction_of_party, ":faction_no", "$g_encountered_party_2"),
+      (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
+      (ge, ":relation", 0),
+      (store_faction_of_party, ":faction_no", "$g_encountered_party"),
+      (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
+      (lt, ":relation", 0),
+    ],"Approach the siege camp.",[
+      (jump_to_menu, "mnu_besiegers_camp_with_allies"),
+    ]),
+    ("pass_through_siege",[
+      (store_faction_of_party, ":faction_no", "$g_encountered_party"),
+      (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
+      (ge, ":relation", 0),
+    ],"Pass through the siege lines and enter {s1}.",[
+      (jump_to_menu,"mnu_cut_siege_without_fight"),
+    ]),
+    ("leave",[],"Leave.",[
+      (leave_encounter),
+      (change_screen_return),
+    ]),
+]),
+
+("cut_siege_without_fight",0,
+  "The besiegers let you approach the gates without challenge.",
+  "none",
+  [],[
+    ("continue",[],"Continue...",[
+      (try_begin),
+          (this_or_next|eq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
+          (eq, "$g_encountered_party_faction", "$players_kingdom"),
+          (jump_to_menu, "mnu_town"),
+      (else_try),
+          (jump_to_menu, "mnu_castle_outside"),
+      (try_end),
+    ]),
+]),
+
   ( #SB : pic hotkeys
     "besiegers_camp_with_allies",mnf_enable_hot_keys,
     "{s1} remains under siege. {s2} is the commander of the siege assault.\
@@ -8284,8 +8284,9 @@ game_menus = [
       ]),
 
       #########Siege Warfare chief
-      ("siege_warfare_p",[],
-        "Siege Warfare (Planning Siege).", [(jump_to_menu,"mnu_siege_plan"),]),
+      ("siege_warfare_p",[],"Siege Warfare (Planning Siege).", [
+        (jump_to_menu,"mnu_siege_plan"),
+      ]),
       ("siege_assault_p",[],
         "Siege Warfare (Preparing Assault).", [(jump_to_menu,"mnu_siege_assault")]),
       ("siege_assault_camp",[(troop_slot_eq, "trp_global_variables", g_player_trench, 0),],
@@ -9637,6 +9638,7 @@ game_menus = [
 ("infiltracion_resultado4_c",0,
   "Your men have returned. They said that they poisoned the water of some wells and nearby streams. This should sicken many in the garrison.",
   "none", [
+    (set_background_mesh, "mesh_pic_siege_sighted"),
   ],[
     ("aceptar_oki",[],"That's good news. It will leave fewer men to defend the wall.",[
       (assign,":party_no","$g_encountered_party"),
@@ -16080,7 +16082,8 @@ game_menus = [
               (try_begin),
                   (troop_get_slot, ":leaded_party", ":goy", slot_troop_leaded_party),
                   (gt, ":leaded_party", -1),
-                  (party_is_in_town, ":leaded_party", "p_town_6"),
+                  (party_get_attached_to, ":attached_party_no", ":leaded_party"),
+                  (eq, ":attached_party_no", "p_town_6"),
                   (set_visitors, 56, ":goy", 1),
               (else_try),
                   (str_store_troop_name, s10, ":goy"),
@@ -31566,7 +31569,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ],"Customize your legion.",[
       (assign, "$g_next_menu", "mnu_barracks"),
       (assign, "$g_player_troop", "trp_players_legion"),
-      (assign, "$temp4", 1),
+      # (assign, "$temp4", 1),
       (start_presentation, "prsnt_custom_troop_tree_legion"),
     ]),
     ("rec_visit",[
@@ -45321,7 +45324,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_mb_warrior_2"),
   ],[
     ("option_1", [],"Continue.",[
-      (assign, "$temp4", 0),
+      # (assign, "$temp4", 0),
       (start_presentation, "prsnt_custom_troop_tree_legion"),
     ]),
 ]),
@@ -45343,7 +45346,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_recruits"),
     (try_begin),
         (eq, "$g_player_troop", "trp_players_legion"),
-        (troop_slot_eq, "trp_players_legion", slot_troop_banner_scene_prop, 0),
+        (neg|troop_slot_ge, "trp_players_legion", slot_troop_banner_scene_prop, 0),
         (assign, "$g_edit_banner_troop", "trp_players_legion"),
         (assign, "$g_presentation_next_presentation", -1),
         (start_presentation, "prsnt_banner_selection"),
@@ -45536,7 +45539,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-  ("Continue...",[], "Conntinue...",[
+  ("Continue...",[], "Continue...",[
     (call_script, "script_enter_secret_christian_church", 0),
   ]),
 ]),
@@ -58380,10 +58383,10 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 
 ("wlodowiecus_adventure_3_continue_8",mnf_scale_picture,
   "The marching resumes, mostly in silence at first. The death of Varus has still shaken the party. He was a survivor of many battles, and yet one ambush took him out as well as several Winnili mercenaries who accompanied them."
-  +" The men burn another who collapsed from malnutrition and exhaustion. After a while, Mancinellus and {playername} start making japes and telling stories to pass the time and lift the men's spirits."
+  +" The men burn another who collapsed from malnutrition and exhaustion. After a while, Mancinellus and you start making japes and telling stories to pass the time and lift the men's spirits."
   +" The party then arrives at a frozen lake. Hadrianus, who usually is calm and stoic, curses their luck. They will now have to either circumvent the lake or cross it without the ice breaking under them."
-  +" He seems to be suffering from the cold, as does Wlodowiecus. Just as things seem hopeless, they spot a couple of hunters who take them to the settlement inhabited by the Sciri tribe."
-  +" The men huddle near the hearth of the main hall and are offered warm mushroom soup which they greedily and quickly consume. Furs are wrapped around their shoulders and backs. {playername} falls asleep as is snoring loudly."
+  +" He seems to be suffering from the cold, as does Wlodowiecus.^^Just as things seem hopeless, they spot a couple of hunters who take them to the settlement inhabited by the Sciri tribe."
+  +" The men huddle near the hearth of the main hall and are offered warm mushroom soup which they greedily and quickly consume. Furs are wrapped around their shoulders and backs."
   +" A few hours pass, and the door to the main hall is opened. The chief of the Sciri alongside his sons and bodyguards arrive, welcoming the men and asking what brought them here.",
   "none", [
     (set_background_mesh, "mesh_pic_castlesnow"),

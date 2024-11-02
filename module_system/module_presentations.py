@@ -35399,14 +35399,14 @@ presentations = [
 
     (try_begin),
         (eq, "$g_player_troop", "trp_players_legion"),
-        (eq, "$temp4", 1),
+        # (eq, "$temp4", 1),
         (create_game_button_overlay, "$g_presentation_obj_11", "@Change Banner", 0),
         (position_set_x, pos1, 200),
         (position_set_y, pos1, 615),
         (overlay_set_position, "$g_presentation_obj_11", pos1),
 
         (troop_get_slot, ":cur_banner_mesh", "trp_players_legion", slot_troop_banner_scene_prop),
-        (gt, ":cur_banner_mesh", -1),
+        (ge, ":cur_banner_mesh", 0),
         (val_sub, ":cur_banner_mesh", banner_scene_props_begin),
         (val_add, ":cur_banner_mesh", banner_meshes_begin),
         (create_mesh_overlay, reg1, ":cur_banner_mesh"),

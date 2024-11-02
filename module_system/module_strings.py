@@ -7877,10 +7877,10 @@ Lead me in battle to victory!"),
 ("comment_you_helped_buisness_spiteful","I value gold much and thus I will help you when you need it. Though be careful, as I don't like it to get tricked by merchants whom I own something."),
 
   #tutorial
-("game_concepts_tutorial", "^^By now, you have some experience with Aut Caesar aut nihil. If this is your first game, \
-it is recommended making yourself familiar with some of the game concepts. You will be directed to a page that \
-presents them now.^^You can always come back to this page on the campaign map. Simply click the 'Notes' button and \
-from there the 'Game concepts' button."),
+("game_concepts_tutorial", "^^By now, you have some experience with Aut Caesar aut nihil. If this is your first game,"
++" it is recommended to make yourself familiar with some of the game concepts. You will be directed to a page that"
++" presents them now.^^You can always come back to this page on the campaign map. Simply click the 'Notes' button and"
++" from there the 'Game concepts' button."),
 
 ("citizen", "adventurer and gentleman"),
 
