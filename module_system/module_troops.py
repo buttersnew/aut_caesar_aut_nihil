@@ -3763,7 +3763,7 @@ knight_attrib_3,wp(190),knight_skills_3|knows_power_draw_4, 0x000000001c0c501062
 ["legatus_12", "Legatus Kaeso Flavius", "Kaeso Flavius", tf_hero, 0, reserved,fac_kingdom_7,
 [itm_legatus_legionis_helm_3,itm_roman_spatha_rich,itm_leopard_horse_2,itm_musculata_legatus_2,itm_centurio_praetorian_graves,itm_officer_shield_3,itm_calceus_3,itm_roman_rich3],knight_attrib_5,wp(240),knight_skills_5, 0x0000000031042009271a894d1c4e9ad200000000000837640000000000000000, ],
 
-["aux_commander_1", "Kaeso Sentius", "Kaeso Sentius", tf_hero, 0, reserved,fac_kingdom_7,
+["aux_commander_1", "P. Verginius Ibericus", "P. Verginius Ibericus", tf_hero, 0, reserved,fac_kingdom_7,
 [itm_cav_decurio_helm,itm_roman_spatha_rich,itm_parthian_horse_a,itm_musculata_legatus_3,itm_centurio_east_graves,itm_officer_shield,itm_caligea,itm_roman_toga],knight_attrib_4,wp(220),knight_skills_4, 0x000000001300108f46dc5650d275a4e200000000001165240000000000000000, ],
 ["aux_commander_2", "Marcus Pontius", "Marcus Pontius", tf_hero, 0, reserved,fac_kingdom_7,
 [itm_cav_decurio_helm_2,itm_roman_spatha_rich_2,itm_parthian_horse_b,itm_musculata_legatus_4,itm_legio_armored_caligea_2,itm_officer_shield,itm_caligea,itm_roman_toga_2],knight_attrib_5,wp(240),knight_skills_5, 0x00000000371065d1170c984514d1acb400000000001e2d230000000000000000, ],
