@@ -31499,6 +31499,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       # (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
     ],"Walk around.",[
       (party_get_slot, ":builder", "$current_town", slot_center_has_barracks),
+      (try_begin),
+        (eq, ":builder", 1),
+        (assign, ":builder", "trp_player"),
+      (try_end),
       (troop_get_slot, ":culture", ":builder", slot_troop_culture),
       (try_begin),
         (eq, ":culture", "fac_culture_7"),
