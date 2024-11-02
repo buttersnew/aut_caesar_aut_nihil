@@ -289,8 +289,12 @@ roman_mail_armor = weight(get_armor_weight(53))|abundance(80)|head_armor(0)|body
 roman_mail_heavy_armor_price = get_barmour_price(48,11)
 roman_mail_heavy_armor = weight(get_armor_weight(59))|abundance(75)|head_armor(0)|body_armor(48)|leg_armor(11)|difficulty(9)
 #roman light
-roman_light_armor_price = get_barmour_price(30,9)
-roman_light_armor = weight(get_armor_weight(39))|abundance(80)|head_armor(0)|body_armor(30)|leg_armor(9)|difficulty(6)
+roman_light_armor_price = get_barmour_price(25,9)
+roman_light_armor = weight(get_armor_weight(38))|abundance(80)|head_armor(0)|body_armor(25)|leg_armor(9)|difficulty(6)
+
+roman_very_light_armor_price = get_barmour_price(15,9)
+roman_very_light_armor = weight(get_armor_weight(30))|abundance(80)|head_armor(0)|body_armor(15)|leg_armor(9)|difficulty(4)
+
 #roman segementata
 roman_segementata_armor_price = get_barmour_price(49,12)
 roman_segementata_armor = weight(get_armor_weight(61))|abundance(75)|head_armor(0)|body_armor(49)|leg_armor(12)|difficulty(9)
@@ -1286,28 +1290,28 @@ roman_light_armor_price, roman_light_armor,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_set_roman_clothing"),]), ], [fac_culture_7] ],
 
 ["military_tunic_1", "Military Tunic", [("military_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-roman_light_armor_price, roman_light_armor,imodbits_armor,
+roman_very_light_armor_price, roman_very_light_armor,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_set_roman_clothing"),]), ], [fac_culture_7] ],
 ["military_tunic_2", "Military Tunic", [("military_tunic_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-roman_light_armor_price, roman_light_armor,imodbits_armor,
+roman_very_light_armor_price, roman_very_light_armor,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_set_roman_clothing"),]), ], [fac_culture_7] ],
 ["military_tunic_3", "Military Tunic", [("military_tunic_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-roman_light_armor_price, roman_light_armor,imodbits_armor,
+roman_very_light_armor_price, roman_very_light_armor,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_set_roman_clothing"),]), ], [fac_culture_7] ],
 ["military_tunic_4", "Military Tunic", [("military_tunic_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-roman_light_armor_price, roman_light_armor,imodbits_armor,
+roman_very_light_armor_price, roman_very_light_armor,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_set_roman_clothing"),]), ], [fac_culture_7] ],
 
 ["aux_slinger", "Funditores Tunic", [("slinger_south",0)], itp_type_body_armor|itp_covers_legs,0,
-roman_light_armor_price, roman_light_armor,imodbits_cloth,
+roman_very_light_armor_price, roman_very_light_armor,imodbits_cloth,
 [(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_culture_7] ],
 
 ["aux_slinger_2", "Funditores Tunic", [("slinger_south_2",0)], itp_type_body_armor|itp_covers_legs,0,
-roman_light_armor_price, roman_light_armor,imodbits_cloth,
+roman_very_light_armor_price, roman_very_light_armor,imodbits_cloth,
 [(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_culture_7] ],
 
 ["aux_slinger_3", "Funditores Tunic", [("slinger_south_3",0)], itp_type_body_armor|itp_covers_legs,0,
-roman_light_armor_price, roman_light_armor,imodbits_cloth,
+roman_very_light_armor_price, roman_very_light_armor,imodbits_cloth,
 [(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_culture_7] ],
 
 ["legion_squamata_cape_pants_long_1", "Lorica Squamata with Cape", [("legion_squamata_cape_pants_long_1",0)], itp_type_body_armor|itp_covers_legs,0,

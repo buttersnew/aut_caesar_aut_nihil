@@ -7082,7 +7082,7 @@ mission_templates = [
     (68,mtef_visitor_source,af_override_fullhelm,0,1,[]),
     (69,mtef_visitor_source,af_override_fullhelm,0,1,[]),
     (70,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-  ], p_wetter +global_common_triggers+
+  ], p_wetter +global_common_triggers +
   [
     cannot_spawn_commoners,
     (ti_tab_pressed, 0, 0,[
@@ -7196,7 +7196,7 @@ mission_templates = [
     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
     (59,mtef_visitor_source,af_override_horse,0,1,[]),
     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms +global_common_triggers+
+  ], p_wetter + storms +global_common_triggers +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -7524,7 +7524,7 @@ mission_templates = [
     (45,mtef_visitor_source,af_override_horse,0,1,[]),
     (46,mtef_visitor_source,af_override_horse,0,1,[]),
     (47,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms +global_common_triggers+
+  ], p_wetter + storms +global_common_triggers +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -7903,7 +7903,7 @@ mission_templates = [
     "village_training",
     [(2,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
      (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
-     ], p_wetter + storms +global_common_triggers+
+     ], p_wetter + storms +global_common_triggers +
     [
     improved_lightning,
       (ti_before_mission_start, 0, 0, [],
@@ -8021,7 +8021,7 @@ mission_templates = [
     (78,mtef_visitor_source,af_override_body,0,1,[]),
     (79,mtef_visitor_source,af_override_body,0,1,[]),
     (80,mtef_visitor_source,af_override_body,0,1,[]),
-  ], p_wetter +global_common_triggers+
+  ], p_wetter +global_common_triggers +
   [
     can_spawn_commoners,
     # improved_lightning,
@@ -8222,7 +8222,7 @@ mission_templates = [
     [
       (0,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
       (1,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[]),
-    ], p_wetter + storms +global_common_triggers+
+    ], p_wetter + storms +global_common_triggers +
     [
     cannot_spawn_commoners,
     improved_lightning,
@@ -8353,7 +8353,7 @@ mission_templates = [
      (9,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[]),
      (10,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[]),
      (11,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[itm_knife,itm_pitch_fork,itm_sickle,itm_club,itm_stones]),
-     ], p_wetter + storms +global_common_triggers+
+     ], p_wetter + storms +global_common_triggers +
     [
     cannot_spawn_commoners,
     improved_lightning,
@@ -8405,7 +8405,7 @@ mission_templates = [
     (61,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),#9
     (62,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,30,[]),#10
     (63,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),#11
-  ], p_wetter + storms +global_common_triggers+
+  ], p_wetter + storms +global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -8635,7 +8635,7 @@ mission_templates = [
     (0,mtef_defenders|mtef_team_0,0,aif_start_alarmed,0,[]),
     (4,mtef_attackers|mtef_team_1,0,aif_start_alarmed,65,[]),
     (4,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     small_battle_check,
@@ -8968,7 +8968,7 @@ mission_templates = [
     ##additional cav reinforcement spawnpoints
     # (29,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
     # (30,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
-  ], p_wetter + fireball_trigger + storms +global_common_triggers+
+  ], p_wetter + fireball_trigger + storms +global_common_triggers +
   [
     cannot_spawn_commoners,
     (ti_before_mission_start, 0, ti_once,[],[
@@ -9223,7 +9223,7 @@ mission_templates = [
     (26,mtef_ally_party|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
     (27,mtef_ally_party|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
     (28,mtef_ally_party|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
-  ], p_wetter + fireball_trigger + storms +global_common_triggers+
+  ], p_wetter + fireball_trigger + storms +global_common_triggers +
   [
     # hold position
     (0, 0, ti_once, [],[
@@ -9438,7 +9438,7 @@ mission_templates = [
     (3,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
     (1,mtef_team_0|mtef_use_exact_number,0,aif_start_alarmed, 7,[]),
     (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-  ], p_wetter + storms +global_common_triggers+
+  ], p_wetter + storms +global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -9530,7 +9530,7 @@ mission_templates = [
      (3,mtef_defenders|mtef_team_0,0,aif_start_alarmed,0,[]),
      (1,mtef_attackers|mtef_team_1,0,aif_start_alarmed,35,[]),
      (1,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
-     ], p_wetter + storms +global_common_triggers+
+     ], p_wetter + storms +global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -9673,7 +9673,7 @@ mission_templates = [
      (18, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
      (19, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
      (20, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-     ], p_wetter +global_common_triggers+
+     ], p_wetter +global_common_triggers +
     [
       cannot_spawn_commoners,
       (ti_before_mission_start, 0, 0, [],[(call_script, "script_change_banners_and_chest")]),
@@ -9760,7 +9760,7 @@ mission_templates = [
      (26, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,4,[]),
      (27, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,4,[]),
      (28, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,6,[]),
-     ], p_wetter + storms +global_common_triggers+
+     ], p_wetter + storms +global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -9846,7 +9846,7 @@ mission_templates = [
      (0,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
      (3,mtef_defenders|mtef_team_0,0,aif_start_alarmed,50,[]), #dckplmc - allow defenders to use horses
      (3,mtef_defenders|mtef_team_0,0,aif_start_alarmed,0,[]),
-     ], p_wetter + storms +global_common_triggers+
+     ], p_wetter + storms +global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -10785,7 +10785,7 @@ mission_templates = [
     (44,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (45,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (46,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ], p_wetter + storms +global_common_triggers+
+  ], p_wetter + storms +global_common_triggers +
   [
     improved_lightning,
     can_spawn_commoners,
@@ -11018,7 +11018,7 @@ mission_templates = [
 	  (19,mtef_visitor_source|mtef_team_0,0,0,1,[]),
 	  (20,mtef_visitor_source|mtef_team_0,0,0,1,[]),
 	  (21,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_dreizack2, itm_arena_armor_red, itm_tourney_helm_red]),
-  ], p_wetter +global_common_triggers+
+  ], p_wetter +global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -11083,7 +11083,7 @@ mission_templates = [
       (18, mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
       (19, mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
       (20, mtef_visitor_source,0,0,1,[]),
-    ], p_wetter +global_common_triggers+
+    ], p_wetter +global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -11217,7 +11217,7 @@ mission_templates = [
       (13,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
       (14,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
       (15,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
-    ], p_wetter +global_common_triggers+
+    ], p_wetter +global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -11569,7 +11569,7 @@ mission_templates = [
      # (30,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
      # (31,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
      # (32,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -11758,7 +11758,7 @@ mission_templates = [
     [
      (0,mtef_scene_source,0,aif_start_alarmed,1,[]),
      (1,mtef_visitor_source,0,aif_start_alarmed,1,[]),
-     ], global_common_triggers+
+     ], global_common_triggers +
     [
       can_spawn_commoners,
       (0, 0, ti_once, [(neg|conversation_screen_is_active),],
@@ -11778,7 +11778,7 @@ mission_templates = [
     "camera Test.",
     [
 #     (0,mtef_attackers,0,aif_start_alarmed,5,[]),
-     ], p_wetter + global_common_triggers+
+     ], p_wetter + global_common_triggers +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -11865,7 +11865,7 @@ mission_templates = [
     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
     (59,mtef_visitor_source,af_override_horse,0,1,[]),
     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   tournament_triggers
 ),
 
@@ -11943,7 +11943,7 @@ mission_templates = [
     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
     (59,mtef_visitor_source,af_override_horse,0,1,[]),
     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   tournament_triggers
 ),
 
@@ -11953,7 +11953,7 @@ mission_templates = [
     [
       (56, mtef_visitor_source|mtef_team_0, 0, aif_start_alarmed, 1, []),
       (58, mtef_visitor_source|mtef_team_2, 0, aif_start_alarmed, 1, []),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -12027,7 +12027,7 @@ mission_templates = [
       (23, mtef_visitor_source|mtef_team_0,af_override_weapons|af_override_horse,aif_start_alarmed,1,[itm_roman_spatha]),
       (24, mtef_visitor_source|mtef_team_1,af_override_weapons|af_override_horse,aif_start_alarmed,1,[itm_roman_spatha]),
 
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -12119,7 +12119,7 @@ mission_templates = [
     (29,mtef_visitor_source,af_castle_lord,0,1,[]),
     (30,mtef_visitor_source,af_castle_lord,0,1,[]),
     (31,mtef_visitor_source,af_castle_lord,0,1,[]),
-  ], global_common_triggers+
+  ], global_common_triggers +
   [
     cannot_spawn_commoners,
     (ti_tab_pressed, 0, 0, [],
@@ -12465,7 +12465,7 @@ mission_templates = [
     (29,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
     (30,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
     (31,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -12703,7 +12703,7 @@ mission_templates = [
     (125,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (126,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (127,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -13258,7 +13258,7 @@ mission_templates = [
     (1,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
     (2,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -13394,7 +13394,7 @@ mission_templates = [
     (7,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
     (8,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
     (9,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     can_spawn_commoners,
     (ti_on_agent_spawn, 0, 0, [],[
@@ -13542,7 +13542,7 @@ mission_templates = [
 	  (45,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
 	  (46,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
 	  (47,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -13797,7 +13797,7 @@ mission_templates = [
     (47,mtef_visitor_source,af_override_everything,0,1,[]), #prisoners
     (48,mtef_visitor_source,af_override_everything,0,1,[]), #punish
     (49,mtef_visitor_source,af_override_everything,0,1,[]), #punish
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -13923,7 +13923,7 @@ mission_templates = [
       (29,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
       (30,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
       (31,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
-    ], p_wetter + global_common_triggers+
+    ], p_wetter + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -14102,7 +14102,7 @@ mission_templates = [
       # (30,mtef_visitor_source|mtef_team_1,af_override_horse, 0, 12,[]),
       # (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
       # (1,mtef_team_0, 0,aif_start_alarmed,12,[]),
-    ], p_wetter + global_common_triggers+
+    ], p_wetter + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -14399,7 +14399,7 @@ mission_templates = [
     (20,mtef_visitor_source,af_override_horse,0,1,[]),
     (21,mtef_visitor_source,af_override_horse,0,1,[]),
     (22,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     can_spawn_commoners,
     (ti_before_mission_start, 0, 0, [ ],[
@@ -14503,7 +14503,7 @@ mission_templates = [
     (38,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
     (39,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
     (40,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     can_spawn_commoners,
     common_inventory_not_available,
@@ -14632,7 +14632,7 @@ mission_templates = [
       (43,mtef_visitor_source,af_override_horse,0,1,[]),
       (44,mtef_visitor_source,af_override_horse,0,1,[]),
       (45,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
     improved_lightning,
     (ti_before_mission_start, 0, 0, [
@@ -14780,7 +14780,7 @@ mission_templates = [
 ("slave_hideout", mtf_battle_mode, 0,
   "You visit the slave hideout.",[
     (0,mtef_leader_only, 0, 0, 1,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     improved_lightning,
     cannot_spawn_commoners,
@@ -15264,7 +15264,7 @@ mission_templates = [
     (43,mtef_visitor_source,af_castle_lord,0,1,[]),
     (44,mtef_visitor_source,af_castle_lord,0,1,[]),
     (45,mtef_visitor_source,af_castle_lord,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     can_spawn_commoners,
 
@@ -15392,7 +15392,7 @@ mission_templates = [
     (67,mtef_visitor_source,af_castle_lord,0,1,[]),
     (68,mtef_visitor_source,af_castle_lord,0,1,[]),
     (69,mtef_visitor_source,af_castle_lord,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     (ti_on_agent_spawn,1,0,[
@@ -15623,7 +15623,7 @@ mission_templates = [
 	 (7,mtef_visitor_source,af_override_horse,0,1,[]),
 	 (8,mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
 
-    ],  p_wetter + global_common_triggers+
+    ],  p_wetter + global_common_triggers +
     [
       cannot_spawn_commoners,
         (0, 0, 0,[(key_clicked, key_k),
@@ -15655,7 +15655,7 @@ mission_templates = [
     (30,mtef_visitor_source|mtef_team_1,af_override_horse, 0, 10,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,10,[]),
     (1,mtef_team_0, af_override_horse,aif_start_alarmed,15,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -15770,7 +15770,7 @@ mission_templates = [
     [
       (0,mtef_scene_source,0,0,1,[]),
       (1,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -15838,7 +15838,7 @@ mission_templates = [
       (2,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
       (3,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
       (4,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -15984,7 +15984,7 @@ mission_templates = [
       (42,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(43,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
       (44,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(45,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
       (46,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(47,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       can_spawn_commoners,
       (ti_before_mission_start, 0, 0,[
@@ -16122,7 +16122,7 @@ mission_templates = [
     (30,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed, 12,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
     (1,mtef_team_0,af_override_horse,aif_start_alarmed,60,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     (0.5, 0, ti_once, [],[
@@ -16275,7 +16275,7 @@ mission_templates = [
       (24,mtef_visitor_source,af_override_horse,0,1,[]),
       (25,mtef_visitor_source,af_override_horse,0,1,[]),
       (26,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -16448,7 +16448,7 @@ mission_templates = [
       (28,mtef_visitor_source,af_override_horse,0,1,[]),
       (29,mtef_visitor_source,af_override_horse,0,1,[]),
       (30,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -16607,7 +16607,7 @@ mission_templates = [
       (28,mtef_visitor_source,af_override_horse,0,1,[]),
       (29,mtef_visitor_source,af_override_horse,0,1,[]),
       (30,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -16716,7 +16716,7 @@ mission_templates = [
     [
       (0,mtef_scene_source,af_override_horse|af_override_head,0,1,[]),
       (1,mtef_visitor_source,af_override_horse,0,1,[]),
-    ],  global_common_triggers+
+    ],  global_common_triggers +
     [
 
       common_inventory_not_available,
@@ -16811,7 +16811,7 @@ mission_templates = [
       (48,mtef_visitor_source,af_override_horse,0,1,[]),
       (49,mtef_visitor_source,af_override_horse,0,1,[]),
       (50,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -16941,7 +16941,7 @@ mission_templates = [
     (17,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
     (18,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
     (19,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
-     ],  p_wetter + storms + global_common_triggers+
+     ],  p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -17261,7 +17261,7 @@ mission_templates = [
     (34,mtef_visitor_source,af_override_horse,0,1,[]),
     (35,mtef_visitor_source,af_override_horse,0,1,[]),
     (36,mtef_scene_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     (ti_on_agent_spawn,0,0,[
       (store_current_scene, ":scn"),
@@ -17397,7 +17397,7 @@ mission_templates = [
     (10,mtef_visitor_source,af_override_horse,0,1,[]),
     (11,mtef_visitor_source,af_override_horse,0,1,[]),
     (12,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     improved_lightning,
     can_spawn_commoners,
@@ -17468,7 +17468,7 @@ mission_templates = [
       (14,mtef_visitor_source,af_override_horse,0,1,[]),
       (15,mtef_visitor_source,af_override_horse,0,1,[]),
 
-    ],  p_wetter + global_common_triggers+
+    ],  p_wetter + global_common_triggers +
     [
       can_spawn_commoners,
  common_inventory_not_available,
@@ -18087,7 +18087,7 @@ mission_templates = [
       (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
       (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
       (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-    ],p_wetter + global_common_triggers+
+    ],p_wetter + global_common_triggers +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -18493,7 +18493,7 @@ mission_templates = [
       (58,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
       (59,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
 
-     ], p_wetter + storms + global_common_triggers+
+     ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
         improved_lightning,
@@ -18767,7 +18767,7 @@ mission_templates = [
       (42,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(43,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
       (44,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(45,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
       (46,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(47,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    ], p_wetter + global_common_triggers+
+    ], p_wetter + global_common_triggers +
     [
       can_spawn_commoners,
       #can_spawn_commoners,
@@ -18996,7 +18996,7 @@ mission_templates = [
   (24, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
   (25, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
   (26, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-], p_wetter + storms + global_common_triggers+
+], p_wetter + storms + global_common_triggers +
 [
   can_spawn_commoners,
   improved_lightning,
@@ -19047,7 +19047,7 @@ mission_templates = [
   "You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
     (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -19096,7 +19096,7 @@ mission_templates = [
       (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
       (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
 
-     ], p_wetter + storms + global_common_triggers+
+     ], p_wetter + storms + global_common_triggers +
      [
       cannot_spawn_commoners,
       ambient_scene_play_loop,
@@ -19124,7 +19124,7 @@ mission_templates = [
     "You will fight a match in the holmgang.",
     [
     (0, mtef_scene_source|mtef_team_0, 0, 0, 1, []), #player start
-     ], p_wetter + storms + global_common_triggers+
+     ], p_wetter + storms + global_common_triggers +
      [
       cannot_spawn_commoners,
       (0, 0, ti_once, [
@@ -19245,7 +19245,7 @@ mission_templates = [
   "You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []), #player start
     (1, mtef_visitor_source|mtef_team_1, af_override_horse, aif_start_alarmed, 1, []), #opponent start
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
 
@@ -19312,7 +19312,7 @@ mission_templates = [
 ("apostel_paul",0,-1,"You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
     (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
-  ], global_common_triggers+p_wetter+
+  ], global_common_triggers +p_wetter+
   [
     cannot_spawn_commoners,
     ambient_set_agents_for_sounds,
@@ -19470,7 +19470,7 @@ mission_templates = [
     (1,mtef_visitor_source|mtef_team_1, af_override_horse,aif_start_alarmed,1,[]),
     (2,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed, 1,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-  ], global_common_triggers+ p_wetter +
+  ], global_common_triggers + p_wetter +
   [
     cannot_spawn_commoners,
     (ti_before_mission_start, 0, ti_once, [],[
@@ -19553,7 +19553,7 @@ mission_templates = [
       (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
       (4,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
 
-    ], global_common_triggers+ p_wetter +
+    ], global_common_triggers + p_wetter +
     [
       cannot_spawn_commoners,
       remove_banners,
@@ -19606,7 +19606,7 @@ mission_templates = [
       (9,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
       (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
 
-    ], global_common_triggers+ p_wetter +
+    ], global_common_triggers + p_wetter +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -19876,7 +19876,7 @@ mission_templates = [
       (36,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[]),
       (37,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_caligea,itm_roman_gladius,itm_generic_poor1,itm_simple_hood_1]),
       (38,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -19921,7 +19921,7 @@ mission_templates = [
     (20,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
     (21,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
     (22,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -20841,7 +20841,7 @@ mission_templates = [
     (38, mtef_team_1|mtef_visitor_source, 0, 0, 1, []),
     (39, mtef_team_1|mtef_visitor_source, 0, 0, 1, []),
     (40, mtef_team_1|mtef_visitor_source, 0, 0, 1, []),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -21261,7 +21261,7 @@ mission_templates = [
       (63, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_weapons, 0, 1, []), #opponent start
       (64, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_weapons, 0, 1, []), #opponent start
 
-    ], global_common_triggers+
+    ], global_common_triggers +
     [
       cannot_spawn_commoners,
   (ti_before_mission_start, 0, 0, [ ],
@@ -22157,7 +22157,7 @@ mission_templates = [
     (75, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (76, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (77, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
-  ], global_common_triggers+
+  ], global_common_triggers +
    p_wetter +[
     cannot_spawn_commoners,
    improved_lightning,
@@ -22466,7 +22466,7 @@ mission_templates = [
     (75, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (76, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (77, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -22580,7 +22580,7 @@ mission_templates = [
     (13, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
     (14, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
     (15, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -22676,7 +22676,7 @@ mission_templates = [
     (39, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_3]),
     (40, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_4]),
     (41, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, [itm_roman_gladius]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -22770,7 +22770,7 @@ mission_templates = [
     (47, mtef_team_0|mtef_visitor_source, af_override_head|af_override_horse|af_override_weapons|af_override_body, 0, 1, [itm_tutorial_sword,itm_arena_shield_red,itm_practice_javelin_amo4,itm_military_tunic_1]),
     (48, mtef_team_1|mtef_visitor_source, af_override_head|af_override_horse|af_override_weapons|af_override_body, 0, 1, [itm_tutorial_sword,itm_arena_shield_blue,itm_practice_javelin_amo4,itm_military_tunic_2]),
     (49, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, []),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
   improved_lightning,
@@ -22884,7 +22884,7 @@ mission_templates = [
     (44, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_2]),#special recruit
     (45, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_3]),#recruit
     (46, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_4]),#recruit
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -22939,7 +22939,7 @@ mission_templates = [
       (31,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_graves_simple_2,itm_military_tunic_3]),
       (32,mtef_visitor_source|mtef_team_4,af_override_everything,aif_start_alarmed,1,[itm_graves_simple_2,itm_military_tunic_2]),
       (33,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_graves_simple_2,itm_military_tunic_1]),
-    ], p_wetter + global_common_triggers+
+    ], p_wetter + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -23094,13 +23094,13 @@ mission_templates = [
     (40, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_2]),
     (41, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_4]),
     (42, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_1]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     remove_banners,
     improved_lightning,
     (0,0,ti_once, [],[
-      (team_set_relation, 1, 2, 1), # -1 for enemy, 1 for friend, 0 for neutral
+      (team_set_relation, 1, 2, 1),
       (team_set_relation,2,1,1),
       (team_set_relation,0,1,1),
       (team_set_relation,0,2,1),
@@ -23115,14 +23115,12 @@ mission_templates = [
       (agent_set_no_death_knock_down_only, ":agent", 1),
       (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 80),
     ]),
-
     (ti_on_agent_knocked_down, 0, 0, [],[
       (store_trigger_param_1, ":dead_agent"),
       (agent_get_troop_id, ":troop", ":dead_agent"),
       (eq, ":troop", "trp_quest_miles"),
       (assign, "$temp2", 2),
     ]),
-
     (3, 0, 0,[
       (eq, "$temp1", 1),
       (neq, "$temp2", 3),
@@ -23140,14 +23138,18 @@ mission_templates = [
       (team_set_relation,1,0,1),
       (set_party_battle_mode),
       (try_for_agents, ":agent"),
-        (agent_is_alive, ":agent"),
         (agent_is_active, ":agent"),
+        (agent_is_alive, ":agent"),
         (agent_is_human, ":agent"),
         (agent_get_troop_id, ":troop", ":agent"),
         (eq, ":troop", "trp_quest_miles"),
         (agent_ai_set_aggressiveness, ":agent", 10000),
         (agent_force_rethink, ":agent"),
+        (agent_ai_set_always_attack_in_melee, ":agent", 1),
+        (agent_set_damage_modifier, ":agent", 200),
       (try_end),
+      (get_player_agent_no, ":player"),
+      (agent_set_damage_modifier, ":player", 200),
       (mission_disable_talk),
     ]),
     (1, 0, 0,[(eq, "$temp2", 2),],[
@@ -23161,14 +23163,6 @@ mission_templates = [
       (mission_enable_talk),
       (start_mission_conversation, "trp_quest_miles"),
     ]),
-    # (2, 0, 0,
-    # [(eq, "$temp2", 3),  (neq, "$temp1", 1),],
-    # [
- # (jump_to_menu, "mnu_freelancer_event_1_2"),
- # (finish_mission),
- # (jump_to_menu, "mnu_freelancer_event_1_2"),
-    # ]),
-
 	  ambient_set_agents_for_sounds,
     ambient_agent_play_sound,
 ]),
@@ -23195,7 +23189,7 @@ mission_templates = [
     (16, mtef_team_0|mtef_visitor_source, af_castle_lord, 0, 1, []),
     (17, mtef_team_0|mtef_visitor_source, af_castle_lord, 0, 1, []),
     (18, mtef_team_0|mtef_visitor_source, af_castle_lord, 0, 1, []),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23226,7 +23220,7 @@ mission_templates = [
     (0, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, [itm_roman_gladius]),
     (1, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, [itm_roman_gladius]),
     (2, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, [itm_dagger]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23422,7 +23416,7 @@ mission_templates = [
     (10, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
     (11, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
     (12, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23449,7 +23443,7 @@ mission_templates = [
     (2, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
     (3, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head, 0, 1, []),
     (4, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head, 0, 1, []),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23482,7 +23476,7 @@ mission_templates = [
     (8,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ],p_wetter+ global_common_triggers+
+  ],p_wetter+ global_common_triggers +
   [
     improved_lightning,
     cannot_spawn_commoners,
@@ -23665,7 +23659,7 @@ mission_templates = [
       (18,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_knife,itm_wooden_stick,itm_pitch_fork]),
       (19,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_old_gladius_1,itm_knife,itm_wooden_stick,itm_pitch_fork]),
       (20,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_old_gladius_1,itm_knife,itm_wooden_stick,itm_pitch_fork]),
-  ],p_wetter+ global_common_triggers+
+  ],p_wetter+ global_common_triggers +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23763,7 +23757,7 @@ mission_templates = [
       (18,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
       (19,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
       (20,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
-    ],p_wetter+ global_common_triggers+
+    ],p_wetter+ global_common_triggers +
     [
       cannot_spawn_commoners,
     remove_banners,
@@ -23841,7 +23835,7 @@ mission_templates = [
       (2,mtef_visitor_source|mtef_team_2,af_override_horse,0, 1,[]),
       (3,mtef_visitor_source|mtef_team_3,af_override_horse,0,1,[]),
     ],
-    p_wetter+ global_common_triggers+
+    p_wetter+ global_common_triggers +
     [
       cannot_spawn_commoners,
         remove_banners,
@@ -24288,7 +24282,7 @@ mission_templates = [
       (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
       (10,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
       (11,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,12,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -24363,7 +24357,7 @@ mission_templates = [
       (7,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),
       (8,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),
       (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [ improved_lightning,
     cannot_spawn_commoners,
  (ti_before_mission_start, 0, 0, [
@@ -24444,7 +24438,7 @@ mission_templates = [
     (7,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,0,[]),
     (8,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,0,[itm_knife,itm_butchering_knife]),
     (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,0,[itm_staff,itm_knife,itm_butchering_knife]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -24509,24 +24503,23 @@ mission_templates = [
 ]),
 
 ("freelancer_mission_bandit", mtf_battle_mode,-1,
-    "monasterio",
-    [
-     (0,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,0,[]),
-     (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,0,[]),
-     (2,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
-     (3,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
-     (4,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
-    ], p_wetter + global_common_triggers+
-    [
-      cannot_spawn_commoners,
+  "monasterio",[
+    (0,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,0,[]),
+    (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,0,[]),
+    (2,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
+    (3,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
+    (4,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
+  ], p_wetter + global_common_triggers +
+  [
+    cannot_spawn_commoners,
     improved_lightning,
     common_battle_check_friendly_kills,
 
     (ti_before_mission_start, 0, 0, [],[
-       (assign, "$g_latest_order_1", 1),
-       (assign, "$g_latest_order_2", 1),
-       (assign, "$g_latest_order_3", 1),
-       (assign, "$g_latest_order_4", 1),
+      (assign, "$g_latest_order_1", 1),
+      (assign, "$g_latest_order_2", 1),
+      (assign, "$g_latest_order_3", 1),
+      (assign, "$g_latest_order_4", 1),
       (team_set_relation, 0, 1, -1), # -1 for enemy, 1 for friend, 0 for neutral
       (team_set_relation, 0, 2, 1),
       (team_set_relation, 1, 3, 1),
@@ -24534,17 +24527,47 @@ mission_templates = [
       (team_set_relation, 2, 3, -1),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_agent_spawned, 0),
       (set_party_battle_mode),
-     ]),
+    ]),
 
-      common_inventory_not_available,
-      common_battle_init_banner,
-      wounds_vc,
+    common_inventory_not_available,
+    common_battle_init_banner,
+    wounds_vc,
 
-      (ti_tab_pressed, 0, 0, [],[(question_box,"str_do_you_want_to_retreat"),]),
+    (ti_tab_pressed, 0, 0, [],[
+      (question_box,"str_do_you_want_to_retreat"),
+    ]),
 
-      (ti_question_answered, 0, 0, [],
-       [(store_trigger_param_1,":answer"),
-        (eq,":answer",0),
+    (ti_question_answered, 0, 0, [],[
+      (store_trigger_param_1,":answer"),
+      (eq,":answer",0),
+      (get_player_agent_no, ":player_agent"),
+      (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),
+      (agent_get_kill_count, ":wounded", ":player_agent"),
+      (val_add, "$g_arena_training_kills", ":wounded"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
+      (assign, "$auto_menu", "mnu_freelancer_task_failed"),
+      (jump_to_menu, "mnu_auto_return_map"),
+      (stop_all_sounds, 1),
+
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+      (finish_mission, 3),
+    ]),
+    (2, 6, 1, [],[
+      (try_begin),
+        (all_enemies_defeated),
+        (get_player_agent_no, ":player_agent"),
+        (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),
+        (agent_get_kill_count, ":wounded", ":player_agent"),
+        (val_add, "$g_arena_training_kills", ":wounded"),
+        (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
+        (assign, "$auto_menu", "mnu_freelancer_task_completed"),
+        (jump_to_menu, "mnu_auto_return_map"),
+        (stop_all_sounds, 1),
+        (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+        (finish_mission, 3),
+      (else_try),
+        (num_active_teams_le,1),
+        (main_hero_fallen),
         (get_player_agent_no, ":player_agent"),
         (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),
         (agent_get_kill_count, ":wounded", ":player_agent"),
@@ -24553,125 +24576,87 @@ mission_templates = [
         (assign, "$auto_menu", "mnu_freelancer_task_failed"),
         (jump_to_menu, "mnu_auto_return_map"),
         (stop_all_sounds, 1),
-
         (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
         (finish_mission, 3),
-
-        ]),
-
-      (2, 6, 1, [],
-        [
-          (try_begin),
-            (all_enemies_defeated),
-            (get_player_agent_no, ":player_agent"),
-            (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),
-            (agent_get_kill_count, ":wounded", ":player_agent"),
-            (val_add, "$g_arena_training_kills", ":wounded"),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
-            (assign, "$auto_menu", "mnu_freelancer_task_completed"),
-            (jump_to_menu, "mnu_auto_return_map"),
-            (stop_all_sounds, 1),
-            (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
-            (finish_mission, 3),
-          (else_try),
-            (num_active_teams_le,1),
-            (main_hero_fallen),
-            (get_player_agent_no, ":player_agent"),
-            (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),
-            (agent_get_kill_count, ":wounded", ":player_agent"),
-            (val_add, "$g_arena_training_kills", ":wounded"),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
-            (assign, "$auto_menu", "mnu_freelancer_task_failed"),
-            (jump_to_menu, "mnu_auto_return_map"),
-            (stop_all_sounds, 1),
-            (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
-            (finish_mission, 3),
-          (try_end),
-      ]),
-
-      (2, 4, 1, [
-            (main_hero_fallen),
-            (call_script, "script_cf_dplmc_battle_continuation"),
-            ],
-        [
-      ]),
-    (0, 0, ti_once, [],
-      [
-          (call_script, "script_init_death_cam"), #SB : add camera
-          (call_script, "script_combat_music_set_situation_with_culture"),
-       ]),
-      (0, 0, ti_once,
-        [
-        ],
-    [
-    (get_player_agent_no, ":player_agent"),
-    (try_for_agents, ":agent_no"),
-      (neq, ":agent_no", ":player_agent"),
-      (agent_is_ally, ":agent_no"),
-      (try_begin),
-        (quest_get_slot,":spawned", "qst_freelancing", slot_quest_freelancer_agent_spawned),
-        (quest_get_slot,":limit", "qst_freelancing", slot_quest_freelancer_agent_limit),
-        (lt, ":spawned", ":limit"),
-        (agent_get_team, ":player_team", ":player_agent"),
-        (agent_set_team, ":agent_no", ":player_team"),
-        (val_add, ":spawned", 1),
-        (quest_set_slot, "qst_freelancing", slot_quest_freelancer_agent_spawned,":spawned"),
-      (else_try),
-       ##player should not command other guys
-        (agent_get_team, ":player_team", ":player_agent"),
-        (try_begin),
-          (this_or_next|eq, ":player_team", 2),
-          (eq, ":player_team", 3),
-          (val_sub, ":player_team", 2),
-        (else_try),
-          (this_or_next|eq, ":player_team", 1),
-          (eq, ":player_team", 0),
-          (val_add, ":player_team", 2),
-        (else_try),
-          (display_message, "@Error, hahaha!"),
-        (try_end),
-        (agent_set_team, ":agent_no", ":player_team"),
       (try_end),
-
-    (try_end),
-      ]),
-   (ti_on_agent_spawn, 0, 0, [],
-    [
-    (store_trigger_param_1, ":agent_no"),
-    (agent_is_alive, ":agent_no"),
-    (agent_is_active, ":agent_no"),
-    (agent_is_human, ":agent_no"),
-    (agent_is_ally, ":agent_no"),
-    (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
-    (cur_agent_set_banner_tableau_material, "tableau_game_troop_label_banner", ":lord"),
     ]),
-      (ti_on_agent_killed_or_wounded, 0, 0, [],
-       [
-        (store_trigger_param_1, ":dead_agent_no"),
+
+    (2, 4, 1, [
+      (main_hero_fallen),
+      (call_script, "script_cf_dplmc_battle_continuation"),
+    ],[]),
+    (0, 0, ti_once, [],[
+      (call_script, "script_init_death_cam"), #SB : add camera
+      (call_script, "script_combat_music_set_situation_with_culture"),
+    ]),
+    (0, 0, ti_once,[
+    ],[
+      (get_player_agent_no, ":player_agent"),
+      (try_for_agents, ":agent_no"),
+        (neq, ":agent_no", ":player_agent"),
+        (agent_is_ally, ":agent_no"),
+        (try_begin),
+          (quest_get_slot,":spawned", "qst_freelancing", slot_quest_freelancer_agent_spawned),
+          (quest_get_slot,":limit", "qst_freelancing", slot_quest_freelancer_agent_limit),
+          (lt, ":spawned", ":limit"),
+          (agent_get_team, ":player_team", ":player_agent"),
+          (agent_set_team, ":agent_no", ":player_team"),
+          (val_add, ":spawned", 1),
+          (quest_set_slot, "qst_freelancing", slot_quest_freelancer_agent_spawned,":spawned"),
+        (else_try),
+        ##player should not command other guys
+          (agent_get_team, ":player_team", ":player_agent"),
+          (try_begin),
+            (this_or_next|eq, ":player_team", 2),
+            (eq, ":player_team", 3),
+            (val_sub, ":player_team", 2),
+          (else_try),
+            (this_or_next|eq, ":player_team", 1),
+            (eq, ":player_team", 0),
+            (val_add, ":player_team", 2),
+          (else_try),
+            (display_message, "@Error, hahaha!"),
+          (try_end),
+          (agent_set_team, ":agent_no", ":player_team"),
+        (try_end),
+
+      (try_end),
+    ]),
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (agent_is_active, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_ally, ":agent_no"),
+      (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
+      (cur_agent_set_banner_tableau_material, "tableau_game_troop_label_banner", ":lord"),
+    ]),
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent_no"),
+
+      (try_begin),
+        (ge, ":dead_agent_no", 0),
+        (neg|agent_is_ally, ":dead_agent_no"),
+        (agent_is_human, ":dead_agent_no"),
+        (agent_get_troop_id, ":dead_agent_troop_id", ":dead_agent_no"),
+
+        (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
 
         (try_begin),
-          (ge, ":dead_agent_no", 0),
-          (neg|agent_is_ally, ":dead_agent_no"),
-          (agent_is_human, ":dead_agent_no"),
-          (agent_get_troop_id, ":dead_agent_troop_id", ":dead_agent_no"),
-
-          (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
-
-          (try_begin),
-            (neg|troop_is_hero, ":dead_agent_troop_id"),
-            (eq, "$g_realistic_wounding", 1),
-            (le, ":last_damage", 13),
-            (set_trigger_result, 2),
-          (else_try),
-            (neg|troop_is_hero, ":dead_agent_troop_id"),
-            (eq, "$g_realistic_wounding", 1),
-            (ge, ":last_damage", 40),
-            (set_trigger_result, 1),
-          (else_try),
-            (set_trigger_result, 0),
-          (try_end),
+          (neg|troop_is_hero, ":dead_agent_troop_id"),
+          (eq, "$g_realistic_wounding", 1),
+          (le, ":last_damage", 13),
+          (set_trigger_result, 2),
+        (else_try),
+          (neg|troop_is_hero, ":dead_agent_troop_id"),
+          (eq, "$g_realistic_wounding", 1),
+          (ge, ":last_damage", 40),
+          (set_trigger_result, 1),
+        (else_try),
+          (set_trigger_result, 0),
         (try_end),
-       ]),
+      (try_end),
+      ]),
     common_battle_order_panel_tick,
     ]
     + theoris_decapitation
@@ -24683,734 +24668,683 @@ mission_templates = [
     + auxiliary_player
 ),
 
-
-  ("hunting", mtf_battle_mode, 0,
-    "You go hunting.",
-    [
+("hunting", mtf_battle_mode, 0,
+  "You go hunting.",[
       (0,mtef_leader_only, af_override_horse|af_override_head, 0,1,[]),		#|af_override_weapons|af_override_head	#[itm_practice_bow_2,itm_barbed_arrows,itm_practice_lance,itm_practice_dagger]
-    ], p_wetter + storms + creeping + global_common_triggers+
-    [ improved_lightning,
-    cannot_spawn_commoners,
-  (ti_before_mission_start, 0, 0,
+  ], p_wetter + storms + creeping + global_common_triggers +
   [
-    (init_position, pos1),
-    (position_move_z, pos1, -1000000),
-    (try_begin),
-      (scene_prop_get_instance, ":flag_object", banner_scene_props_begin, 0),
-      (ge, ":flag_object", 0),
-      (prop_instance_set_position, ":flag_object", pos1),
-    (try_end),
-    (try_begin),
-      (scene_prop_get_instance, ":pole_object", "spr_banner_pole", 0),
-      (ge, ":pole_object", 0),
-      (prop_instance_set_position, ":pole_object", pos1),
-    (try_end),
+    improved_lightning,
+    cannot_spawn_commoners,
+    (ti_before_mission_start, 0, 0,[
+      (init_position, pos1),
+      (position_move_z, pos1, -1000000),
+      (try_begin),
+        (scene_prop_get_instance, ":flag_object", banner_scene_props_begin, 0),
+        (ge, ":flag_object", 0),
+        (prop_instance_set_position, ":flag_object", pos1),
+      (try_end),
+      (try_begin),
+        (scene_prop_get_instance, ":pole_object", "spr_banner_pole", 0),
+        (ge, ":pole_object", 0),
+        (prop_instance_set_position, ":pole_object", pos1),
+      (try_end),
     ],[]),
       #common_inventory_not_available,
-      (ti_inventory_key_pressed, 0, 0, [],
-        [
-          (set_trigger_result, 1),
-      ]),
-
-      #1. Spawn the animals
-      (ti_on_agent_spawn, 0, ti_once, [],
-        [
-          (store_trigger_param, ":agent_no", 1),
+    (ti_inventory_key_pressed, 0, 0, [],[
+      (set_trigger_result, 1),
+    ]),
+    #1. Spawn the animals
+    (ti_on_agent_spawn, 0, ti_once, [],[
+      (store_trigger_param, ":agent_no", 1),
+      (set_fixed_point_multiplier, 100),
+      (agent_get_position, pos1, ":agent_no"),
+      (store_random_in_range, ":rand", 6000, 9000),
+      (position_move_y, pos1, ":rand"),
+      (store_random_in_range, ":rand", -1500, 1500),
+      (position_move_x, pos1, ":rand"),
+      (store_random_in_range, ":rand", 0, 360),
+      (position_rotate_z, pos1, ":rand"),
+      #(get_player_agent_no, ":player_agent"),
+      #(agent_get_position, pos1, ":player_agent"),
+      (set_spawn_position, pos1),
+      (assign, reg1, 0),
+      (assign, reg2, imod_cracked),
+      (shuffle_range, 1, 3),
+      (store_random_in_range, "$temp3", 0,2),
+      (try_begin),
+        (eq, "$temp3", 0),#boar
+        (spawn_horse, "itm_animal_boar", reg1),
+      (else_try),
+        (spawn_horse, "itm_animal_dear", reg1),
+      (try_end),
+      (assign, "$alpha_animal", reg0),
+      (party_get_num_companions, ":herd_size", "p_dhorak_keep"),
+      (gt, ":herd_size", 1),
+      (try_for_range, ":unused", 1, ":herd_size"),
+        (copy_position, pos2, pos1),
+        (store_random_in_range, ":rand", -500, 500),
+        (position_move_x, pos2, ":rand"),
+        (store_random_in_range, ":rand", -500, 500),
+        (position_move_y, pos2, ":rand"),
+        (store_random_in_range, ":rand", -3000, 3000),
+        (position_rotate_z, pos2, ":rand"),
+        (set_spawn_position, pos2),
+        (assign, reg1, 0),
+        (assign, reg2, imod_cracked),
+        (shuffle_range, 1, 3),
+        (try_begin),
+          (eq, "$temp3", 0),#boar
+          (spawn_horse, "itm_animal_boar", reg1),
+        (else_try),
+          (spawn_horse, "itm_animal_dear", reg1),
+        (try_end),
+      (try_end),
+    ]),
+    #2. Animals wandering
+    (5, 0, 0,[
+      (eq, "$animals_flee", 0),
+      (agent_is_alive, "$alpha_animal"),
+      (store_random_in_range, ":rand", 0, 3),
+      (eq, ":rand", 0),
+    ],[
+      #(display_message, "@Animals wander!"),
+      (set_fixed_point_multiplier, 100),
+      (agent_get_position, pos1, "$alpha_animal"),
+      (store_random_in_range, ":rand", -3000, 3000),
+      (position_move_x, pos1, ":rand"),
+      (store_random_in_range, ":rand", -3000, 3000),
+      (position_move_y, pos1, ":rand"),
+      (store_random_in_range, ":rand", 0, 360),
+      (position_rotate_z, pos1, ":rand"),
+      (try_for_agents, ":agent"),
+        (neg|agent_is_human, ":agent"),
+        (agent_is_alive, ":agent"),
+        #(agent_set_speed_modifier, ":agent", 10),
+        #(agent_set_horse_speed_factor, ":agent", 25),
+        (copy_position, pos2, pos1),
+        (store_random_in_range, ":rand", -500, 500),
+        (position_move_x, pos2, ":rand"),
+        (store_random_in_range, ":rand", -500, 500),
+        (position_move_y, pos2, ":rand"),
+        (store_random_in_range, ":rand", -3000, 3000),
+        (position_rotate_z, pos2, ":rand"),
+        (set_spawn_position, pos2),
+        (agent_set_speed_limit, ":agent", 1),
+        (agent_set_scripted_destination, ":agent", pos2, 1),
+      (try_end),
+    ]),
+    #3. Animals react on player
+    (0.5, 0, 0,[
+      (try_begin),
+        (gt, "$animals_flee", 1),
+        (val_sub, "$animals_flee", 1),
+      (try_end),
+      (agent_is_alive, "$alpha_animal"),
+    ],[
+      (set_fixed_point_multiplier, 100),
+      (agent_get_position, pos1, "$alpha_animal"),
+      (get_player_agent_no, ":player_agent"),
+      (agent_get_position, pos2, ":player_agent"),
+      (get_distance_between_positions, ":distance", pos1, pos2),
+      (try_begin),
+        (eq, "$player_is_creeping", 1),
+        (val_add, ":distance", 500),
+      (try_end),
+      (try_begin),
+        (eq, "$animals_flee", 0),
+        (lt, ":distance", 2500),
+        (try_begin),
+          (eq, "$temp3", 0),#boar
+          (assign, reg1, 6),
+          (assign, reg2, 4),
+          (assign, reg3, -1),
+          (shuffle_range, 1, 4),
+          (assign, "$animals_flee", reg1),
+        (else_try),
+          (assign, reg1, 3),
+          (assign, reg2, 2),
+          (assign, reg3, 1),
+          (shuffle_range, 1, 4),
+          (assign, "$animals_flee", reg1),#deer
+        (try_end),
+        #(display_message, "@Animals react on low distance!"),
+        (try_for_agents, ":agent"),
+          (neg|agent_is_human, ":agent"),
+          (agent_is_alive, ":agent"),
+          #run:
+          (agent_clear_scripted_mode, ":agent"),
+          (agent_set_speed_limit, ":agent", 100),
+          (agent_start_running_away, ":agent", 0),
+        (try_end),
+      (else_try),
+        (eq, "$animals_flee", 1),
+        (lt, ":distance", 5000),
+        (assign, "$animals_flee", 0),
+        (try_for_agents, ":agent"),
+          (neg|agent_is_human, ":agent"),
+          (agent_is_alive, ":agent"),
+          #stop:
+          (agent_set_speed_limit, ":agent", 1),
+          (agent_stop_running_away, ":agent"),
+        (try_end),
+      (else_try),
+        (eq, "$animals_flee", -1),	# =animals attack
+        (try_for_agents, ":agent"),
+          (neg|agent_is_human, ":agent"),
+          (agent_is_alive, ":agent"),
+          (agent_get_position, pos1, ":agent"),
+          (copy_position, pos3, pos1),
+          (position_move_y, pos3, -10),	#-10cm
+          (get_distance_between_positions, ":back_distance", pos2, pos3),
+          (position_move_y, pos3, 25),	#+15cm
+          (get_distance_between_positions, ":front_distance", pos2, pos3),
+          (this_or_next|lt, ":front_distance", ":back_distance"),
+          (gt, ":distance", 1000),
+          (call_script, "script_point_y_toward_position", pos1, pos2),
           (set_fixed_point_multiplier, 100),
-          (agent_get_position, pos1, ":agent_no"),
-          (store_random_in_range, ":rand", 6000, 9000),
-          (position_move_y, pos1, ":rand"),
-          (store_random_in_range, ":rand", -1500, 1500),
-          (position_move_x, pos1, ":rand"),
-          (store_random_in_range, ":rand", 0, 360),
-          (position_rotate_z, pos1, ":rand"),
-          #(get_player_agent_no, ":player_agent"),
-          #(agent_get_position, pos1, ":player_agent"),
-          (set_spawn_position, pos1),
-          (assign, reg1, 0),
-          (assign, reg2, imod_cracked),
-          (shuffle_range, 1, 3),
-          (store_random_in_range, "$temp3", 0,2),
-          (try_begin),
-            (eq, "$temp3", 0),#boar
-            (spawn_horse, "itm_animal_boar", reg1),
-          (else_try),
-            (spawn_horse, "itm_animal_dear", reg1),
-          (try_end),
-          (assign, "$alpha_animal", reg0),
-          (party_get_num_companions, ":herd_size", "p_dhorak_keep"),
-          (gt, ":herd_size", 1),
-          (try_for_range, ":unused", 1, ":herd_size"),
-            (copy_position, pos2, pos1),
-            (store_random_in_range, ":rand", -500, 500),
-            (position_move_x, pos2, ":rand"),
-            (store_random_in_range, ":rand", -500, 500),
-            (position_move_y, pos2, ":rand"),
-            (store_random_in_range, ":rand", -3000, 3000),
-            (position_rotate_z, pos2, ":rand"),
-            (set_spawn_position, pos2),
-            (assign, reg1, 0),
-            (assign, reg2, imod_cracked),
-            (shuffle_range, 1, 3),
-            (try_begin),
-              (eq, "$temp3", 0),#boar
-              (spawn_horse, "itm_animal_boar", reg1),
-            (else_try),
-              (spawn_horse, "itm_animal_dear", reg1),
-            (try_end),
-          (try_end),
-      ]),
+          (position_move_y, pos1, 5000),	#50m
+          (agent_start_running_away, ":agent", pos1),
+        (try_end),
+      (try_end),
+    ]),
 
-      #2. Animals wandering
-      (5, 0, 0,
-        [
-          (eq, "$animals_flee", 0),
-          (agent_is_alive, "$alpha_animal"),
-          (store_random_in_range, ":rand", 0, 3),
-          (eq, ":rand", 0),
-        ],
-        [
-          #(display_message, "@Animals wander!"),
-          (set_fixed_point_multiplier, 100),
-          (agent_get_position, pos1, "$alpha_animal"),
-          (store_random_in_range, ":rand", -3000, 3000),
-          (position_move_x, pos1, ":rand"),
-          (store_random_in_range, ":rand", -3000, 3000),
-          (position_move_y, pos1, ":rand"),
-          (store_random_in_range, ":rand", 0, 360),
-          (position_rotate_z, pos1, ":rand"),
-          (try_for_agents, ":agent"),
-            (neg|agent_is_human, ":agent"),
-            (agent_is_alive, ":agent"),
-            #(agent_set_speed_modifier, ":agent", 10),
-            #(agent_set_horse_speed_factor, ":agent", 25),
-            (copy_position, pos2, pos1),
-            (store_random_in_range, ":rand", -500, 500),
-            (position_move_x, pos2, ":rand"),
-            (store_random_in_range, ":rand", -500, 500),
-            (position_move_y, pos2, ":rand"),
-            (store_random_in_range, ":rand", -3000, 3000),
-            (position_rotate_z, pos2, ":rand"),
-            (set_spawn_position, pos2),
-            (agent_set_speed_limit, ":agent", 1),
-            (agent_set_scripted_destination, ":agent", pos2, 1),
-          (try_end),
-      ]),
+    (ti_on_agent_hit, 0, 0, [],[
+      # Animals react on hit
+      (try_begin),
+        (eq, "$temp3", 0),#boar
+        (assign, reg1, -1),
+        (assign, reg2, -1),
+        (assign, reg3, 4),
+        (shuffle_range, 1, 4),
+        (assign, "$animals_flee", reg1),
+      (else_try),
+        (assign, "$animals_flee", 4),
+      (try_end),
+      #(display_message, "@Animals react on hit!"),
+      (try_for_agents, ":agent"),
+        (neg|agent_is_human, ":agent"),
+        (agent_is_alive, ":agent"),
+        #run:
+        (agent_clear_scripted_mode, ":agent"),
+        (agent_set_speed_limit, ":agent", 100),
+        (agent_start_running_away, ":agent", 0),
+      (try_end),
 
-      #3. Animals react on player
-      (0.5, 0, 0,
-        [
-          (try_begin),
-            (gt, "$animals_flee", 1),
-            (val_sub, "$animals_flee", 1),
-          (try_end),
-          (agent_is_alive, "$alpha_animal"),
-        ],
-        [
-          (set_fixed_point_multiplier, 100),
-          (agent_get_position, pos1, "$alpha_animal"),
-          (get_player_agent_no, ":player_agent"),
-          (agent_get_position, pos2, ":player_agent"),
-          (get_distance_between_positions, ":distance", pos1, pos2),
-          (try_begin),
-            (eq, "$player_is_creeping", 1),
-            (val_add, ":distance", 500),
-          (try_end),
-          (try_begin),
-            (eq, "$animals_flee", 0),
-            (lt, ":distance", 2500),
-            (try_begin),
-              (eq, "$temp3", 0),#boar
-              (assign, reg1, 6),
-              (assign, reg2, 4),
-              (assign, reg3, -1),
-              (shuffle_range, 1, 4),
-              (assign, "$animals_flee", reg1),
-            (else_try),
-              (assign, reg1, 3),
-              (assign, reg2, 2),
-              (assign, reg3, 1),
-              (shuffle_range, 1, 4),
-              (assign, "$animals_flee", reg1),#deer
-            (try_end),
-            #(display_message, "@Animals react on low distance!"),
-            (try_for_agents, ":agent"),
-              (neg|agent_is_human, ":agent"),
-              (agent_is_alive, ":agent"),
-              #run:
-              (agent_clear_scripted_mode, ":agent"),
-              (agent_set_speed_limit, ":agent", 100),
-              (agent_start_running_away, ":agent", 0),
-            (try_end),
-          (else_try),
-            (eq, "$animals_flee", 1),
-            (lt, ":distance", 5000),
-            (assign, "$animals_flee", 0),
-            (try_for_agents, ":agent"),
-              (neg|agent_is_human, ":agent"),
-              (agent_is_alive, ":agent"),
-              #stop:
-              (agent_set_speed_limit, ":agent", 1),
-              (agent_stop_running_away, ":agent"),
-            (try_end),
-          (else_try),
-            (eq, "$animals_flee", -1),	# =animals attack
-            (try_for_agents, ":agent"),
-              (neg|agent_is_human, ":agent"),
-              (agent_is_alive, ":agent"),
-              (agent_get_position, pos1, ":agent"),
-              (copy_position, pos3, pos1),
-              (position_move_y, pos3, -10),	#-10cm
-              (get_distance_between_positions, ":back_distance", pos2, pos3),
-              (position_move_y, pos3, 25),	#+15cm
-              (get_distance_between_positions, ":front_distance", pos2, pos3),
-              (this_or_next|lt, ":front_distance", ":back_distance"),
-              (gt, ":distance", 1000),
-              (call_script, "script_point_y_toward_position", pos1, pos2),
-              (set_fixed_point_multiplier, 100),
-              (position_move_y, pos1, 5000),	#50m
-              (agent_start_running_away, ":agent", pos1),
-            (try_end),
-          (try_end),
-      ]),
+      (store_trigger_param, ":inflicted_agent_id", 1),
+      (agent_is_active, ":inflicted_agent_id"),
+      (agent_is_alive, ":inflicted_agent_id"),
+      (try_begin),
+        #Player stops creeping on hit
+        (agent_is_human, ":inflicted_agent_id"),
+        (assign, "$player_is_creeping", 0),
+      (else_try),
+        # Wounded animals get slower
+        (store_agent_hit_points, ":agent_hp", ":inflicted_agent_id", 0),
+        #(agent_set_speed_modifier, ":inflicted_agent_id", ":agent_hp"),
+        #(agent_set_horse_speed_factor, ":agent", ":agent_hp"),
+        (agent_set_speed_limit, ":inflicted_agent_id", ":agent_hp"),
+      (try_end),
+    ]),
+    # Kill count
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param, ":agent_no", 1),
+      (neg|agent_is_human, ":agent_no"),
+      (val_add, "$hunted_animals", 1),
+      (troop_add_items, "trp_temp_troop", "itm_venison", 1),
+      (add_xp_as_reward, 150),
+      (eq, "$alpha_animal", ":agent_no"),
+      (try_for_agents, ":agent"),
+        (neg|agent_is_human, ":agent"),
+        (agent_is_alive, ":agent"),
+        (assign, "$alpha_animal", ":agent"),
+      (try_end),
+      (eq, "$alpha_animal", ":agent_no"),
+      #(finish_mission, 10),
+      (assign,"$g_battle_won", 1),
+    ]),
+    # If alpha animal flee
+    (1, 0, 2,[
+      (this_or_next|neg|agent_is_alive, "$alpha_animal"),
+      (neg|agent_is_active, "$alpha_animal"),
+    ],[
+      (try_for_agents, ":agent"),
+        (neg|agent_is_human, ":agent"),
+        (agent_is_alive, ":agent"),
+        (agent_is_active, ":agent"),
+        (assign, "$alpha_animal", ":agent"),
+      (try_end),
+      (this_or_next|neg|agent_is_alive, "$alpha_animal"),
+      (neg|agent_is_active, "$alpha_animal"),
+      #(finish_mission, 10),
+      (assign,"$g_battle_won", 1),
+    ]),
+    # End
+    (3, 0, ti_once,[
+      (this_or_next|main_hero_fallen),
+      (eq, "$g_battle_won", 1),
+    ],[
+      (try_begin),	#VC-2635
+        (main_hero_fallen),
+        (assign, "$hunted_animals", 0),
+        (troop_clear_inventory, "trp_temp_troop"),
+      (try_end),
 
-      (ti_on_agent_hit, 0, 0, [],
-        [
-          # Animals react on hit
-          (try_begin),
-            (eq, "$temp3", 0),#boar
-            (assign, reg1, -1),
-            (assign, reg2, -1),
-            (assign, reg3, 4),
-            (shuffle_range, 1, 4),
-            (assign, "$animals_flee", reg1),
-          (else_try),
-            (assign, "$animals_flee", 4),
-          (try_end),
-          #(display_message, "@Animals react on hit!"),
-          (try_for_agents, ":agent"),
-            (neg|agent_is_human, ":agent"),
-            (agent_is_alive, ":agent"),
-            #run:
-            (agent_clear_scripted_mode, ":agent"),
-            (agent_set_speed_limit, ":agent", 100),
-            (agent_start_running_away, ":agent", 0),
-          (try_end),
-
-          (store_trigger_param, ":inflicted_agent_id", 1),
-          (agent_is_active, ":inflicted_agent_id"),
-          (agent_is_alive, ":inflicted_agent_id"),
-          (try_begin),
-            #Player stops creeping on hit
-            (agent_is_human, ":inflicted_agent_id"),
-            (assign, "$player_is_creeping", 0),
-          (else_try),
-            # Wounded animals get slower
-            (store_agent_hit_points, ":agent_hp", ":inflicted_agent_id", 0),
-            #(agent_set_speed_modifier, ":inflicted_agent_id", ":agent_hp"),
-            #(agent_set_horse_speed_factor, ":agent", ":agent_hp"),
-            (agent_set_speed_limit, ":inflicted_agent_id", ":agent_hp"),
-          (try_end),
-      ]),
-
-      # Kill count
-      (ti_on_agent_killed_or_wounded, 0, 0, [],
-        [
-          (store_trigger_param, ":agent_no", 1),
-          (neg|agent_is_human, ":agent_no"),
-          (val_add, "$hunted_animals", 1),
-          (troop_add_items, "trp_temp_troop", "itm_venison", 1),
-          (add_xp_as_reward, 150),
-          (eq, "$alpha_animal", ":agent_no"),
-          (try_for_agents, ":agent"),
-            (neg|agent_is_human, ":agent"),
-            (agent_is_alive, ":agent"),
-            (assign, "$alpha_animal", ":agent"),
-          (try_end),
-          (eq, "$alpha_animal", ":agent_no"),
-          #(finish_mission, 10),
-          (assign,"$g_battle_won", 1),
-
-      ]),
-
-      # If alpha animal flee
-      (1, 0, 2,
-        [
-          (this_or_next|neg|agent_is_alive, "$alpha_animal"),
-          (neg|agent_is_active, "$alpha_animal"),
-        ],
-        [
-          (try_for_agents, ":agent"),
-            (neg|agent_is_human, ":agent"),
-            (agent_is_alive, ":agent"),
-            (agent_is_active, ":agent"),
-            (assign, "$alpha_animal", ":agent"),
-          (try_end),
-          (this_or_next|neg|agent_is_alive, "$alpha_animal"),
-          (neg|agent_is_active, "$alpha_animal"),
-          #(finish_mission, 10),
-          (assign,"$g_battle_won", 1),
-
-      ]),
-
-      # End
-      (3, 0, ti_once,
-        [
-          (this_or_next|main_hero_fallen),
-          (eq, "$g_battle_won", 1),
-        ],
-        [
-          (try_begin),	#VC-2635
-            (main_hero_fallen),
-            (assign, "$hunted_animals", 0),
-            (troop_clear_inventory, "trp_temp_troop"),
-          (try_end),
-
-          (try_begin),##while freeancing
-            (check_quest_active, "qst_freelancing"),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
-            (assign, "$auto_menu", "mnu_after_hunt"),
-            (jump_to_menu, "mnu_auto_return_map"),
-            (stop_all_sounds, 1),
-          (try_end),
-          (finish_mission, 6),
-      ]),
-
-      (ti_tab_pressed, 0, 0, [],
-        [
-           (try_begin),##while freeancing
-            (check_quest_active, "qst_freelancing"),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
-            (assign, "$auto_menu", "mnu_after_hunt"),
-            (jump_to_menu, "mnu_auto_return_map"),
-            (stop_all_sounds, 1),
-            (finish_mission, 1),
-          (else_try),
-            (set_trigger_result, 1),
-            (stop_all_sounds, 1),
-          (try_end),
-
-      ]),
-
-      (ti_before_mission_start, 0, 0, [],
-        [
-          (team_set_relation, 0, 2, 1),
-          (team_set_relation, 1, 3, 1),
-
-          (party_clear, "p_routed_enemies"),
-
-          (assign, "$g_latest_order_1", 1),
-          (assign, "$g_latest_order_2", 1),
-          (assign, "$g_latest_order_3", 1),
-          (assign, "$g_latest_order_4", 1),
-          (assign, "$animals_flee", 0),
-          (assign, "$hunted_animals", 0),
-          (assign, "$g_battle_won", 0),
-          (assign, "$animals_flee", 0),
-          (play_sound,"snd_ambient_day_forest_loop"),
-          (music_set_situation, 0),
-      ]),
-      (0, 0, 0,[(key_clicked, key_k),
-          (tutorial_message, -1),
-          ],[]),
-
+      (try_begin),##while freeancing
+        (check_quest_active, "qst_freelancing"),
+        (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
+        (assign, "$auto_menu", "mnu_after_hunt"),
+        (jump_to_menu, "mnu_auto_return_map"),
+        (stop_all_sounds, 1),
+      (try_end),
+      (finish_mission, 6),
+    ]),
+    (ti_tab_pressed, 0, 0, [
+      (neq, "$g_battle_won", 1),
+      (neg|main_hero_fallen),
+    ],[
+      (try_begin),##while freeancing
+        (check_quest_active, "qst_freelancing"),
+        (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
+        (assign, "$auto_menu", "mnu_after_hunt"),
+        (jump_to_menu, "mnu_auto_return_map"),
+        (stop_all_sounds, 1),
+        (finish_mission, 1),
+      (else_try),
+        (set_trigger_result, 1),
+        (stop_all_sounds, 1),
+      (try_end),
+    ]),
+    (ti_before_mission_start, 0, 0, [],[
+      (team_set_relation, 0, 2, 1),
+      (team_set_relation, 1, 3, 1),
+      (party_clear, "p_routed_enemies"),
+      (assign, "$g_latest_order_1", 1),
+      (assign, "$g_latest_order_2", 1),
+      (assign, "$g_latest_order_3", 1),
+      (assign, "$g_latest_order_4", 1),
+      (assign, "$animals_flee", 0),
+      (assign, "$hunted_animals", 0),
+      (assign, "$g_battle_won", 0),
+      (assign, "$animals_flee", 0),
+      (play_sound,"snd_ambient_day_forest_loop"),
+      (music_set_situation, 0),
+    ]),
+    (0, 0, 0,[
+      (key_clicked, key_k),
+      (tutorial_message, -1),
+    ],[]),
 	  (1,0,ti_once,[
-      ],
-		[
-        (tutorial_message_set_size, 19, 19),
-        (tutorial_message_set_position, 500, 650),
-        (tutorial_message_set_center_justify, 0),
-        (tutorial_message_set_background, 1),
-        (tutorial_message, "@You may encounter two types of anmials: deers or boars. Deers will run away once you approach them, while boars may attack you. If an anmial reaches the border of the map it will disappear from the scene.^^You can walk crouched by pressing Y.^^(press K to finish read)"),
-
+    ],[
+      (tutorial_message_set_size, 19, 19),
+      (tutorial_message_set_position, 500, 650),
+      (tutorial_message_set_center_justify, 0),
+      (tutorial_message_set_background, 1),
+      (tutorial_message, "@You may encounter two types of anmials: deers or boars. Deers will run away once you approach them, while boars may attack you. If an anmial reaches the border of the map it will disappear from the scene.^^You can walk crouched by pressing Y.^^(press K to finish read)"),
 		]),
+]),
 
-    ]
-  ),
-  ("hunting_elephants", mtf_battle_mode|mtf_synch_inventory, 0,
-    "You go hunting.",
-    [
-      (0,mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head|af_override_weapons, aif_start_alarmed,1,[itm_throwing_spears,itm_jarid,itm_throwing_spears,itm_boar_spear]),
-      (1,mtef_visitor_source|mtef_team_1, 0, aif_start_alarmed,1,[]),
-    ], p_wetter + creeping + storms + global_common_triggers+
-    [ improved_lightning,
-      cannot_spawn_commoners,
-      (ti_before_mission_start, 0, 0, [],  #after player has spawned
-        [
-          (team_set_relation, 1, 0, -1),
-          (team_set_relation, 0, 1, -1),
-          (mission_disable_talk),
-      ]),
-###spawn hunting party
-      (ti_after_mission_start, 0, ti_once, [],  #after player has spawned
-        [
-          (store_current_scene, ":cur_scene"),
-          (modify_visitors_at_site, ":cur_scene"),
+("hunting_elephants", mtf_battle_mode|mtf_synch_inventory, 0,
+  "You go hunting.",[
+    (0,mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head|af_override_weapons, aif_start_alarmed,1,[itm_throwing_spears,itm_jarid,itm_throwing_spears,itm_boar_spear]),
+    (1,mtef_visitor_source|mtef_team_1, 0, aif_start_alarmed,1,[]),
+  ], p_wetter + creeping + storms + global_common_triggers +
+  [
+    improved_lightning,
+    cannot_spawn_commoners,
+    (ti_before_mission_start, 0, 0, [],[
+      (team_set_relation, 1, 0, -1),
+      (team_set_relation, 0, 1, -1),
+      (mission_disable_talk),
+    ]),
+    ###spawn hunting party
+    (ti_after_mission_start, 0, ti_once, [],[
+      (store_current_scene, ":cur_scene"),
+      (modify_visitors_at_site, ":cur_scene"),
 
-          (quest_get_slot, ":lord", "qst_elephant_hunt", slot_quest_giver_troop),
-          (store_faction_of_troop, ":fac", ":lord"),
+      (quest_get_slot, ":lord", "qst_elephant_hunt", slot_quest_giver_troop),
+      (store_faction_of_troop, ":fac", ":lord"),
 
-          (faction_get_slot, ":troop", ":fac", slot_faction_tier_2_troop),
-          (add_visitors_to_current_scene, 0, ":troop", 4),
-      ]),
-      #common_inventory_not_available,
-      (ti_inventory_key_pressed, 0, 0, [],
-        [
-          (set_trigger_result, 1),
-      ]),
+      (faction_get_slot, ":troop", ":fac", slot_faction_tier_2_troop),
+      (add_visitors_to_current_scene, 0, ":troop", 4),
+    ]),
+    #common_inventory_not_available,
+    (ti_inventory_key_pressed, 0, 0, [],[
+      (set_trigger_result, 1),
+    ]),
 
-      elephant_attack,
-      wild_cat_attack,
+    elephant_attack,
+    wild_cat_attack,
 
-      #1. Spawn the animals
-      (ti_on_agent_spawn, 0, ti_once, [],
-        [
-          (store_trigger_param, ":agent_no", 1),
-          (agent_get_troop_id, ":troop", ":agent_no"),
-          (eq, ":troop", "trp_player"),
-          (set_fixed_point_multiplier, 100),
-          (agent_get_position, pos1, ":agent_no"),
-          (store_random_in_range, ":rand", 6000, 9000),
-          (position_move_y, pos1, ":rand"),
-          (store_random_in_range, ":rand", -1500, 1500),
-          (position_move_x, pos1, ":rand"),
-          (store_random_in_range, ":rand", 0, 360),
-          (position_rotate_z, pos1, ":rand"),
-          #(get_player_agent_no, ":player_agent"),
-          #(agent_get_position, pos1, ":player_agent"),
-          (set_spawn_position, pos1),
+    #1. Spawn the animals
+    (ti_on_agent_spawn, 0, ti_once, [],[
+      (store_trigger_param, ":agent_no", 1),
+      (agent_get_troop_id, ":troop", ":agent_no"),
+      (eq, ":troop", "trp_player"),
+      (set_fixed_point_multiplier, 100),
+      (agent_get_position, pos1, ":agent_no"),
+      (store_random_in_range, ":rand", 6000, 9000),
+      (position_move_y, pos1, ":rand"),
+      (store_random_in_range, ":rand", -1500, 1500),
+      (position_move_x, pos1, ":rand"),
+      (store_random_in_range, ":rand", 0, 360),
+      (position_rotate_z, pos1, ":rand"),
+      #(get_player_agent_no, ":player_agent"),
+      #(agent_get_position, pos1, ":player_agent"),
+      (set_spawn_position, pos1),
 
-          (quest_get_slot, ":animal", "qst_elephant_hunt", slot_quest_target_troop),
-          (spawn_agent, ":animal"),
-          (assign, "$alpha_animal", reg0),
-          (agent_get_horse, ":horse", "$alpha_animal"),
-          (agent_set_slot, ":horse", slot_agent_bought_horse, "$alpha_animal"),
-         # (agent_set_visibility, "$alpha_animal", 0),
-          (agent_set_team, "$alpha_animal", 1),
-          (agent_set_no_death_knock_down_only,"$alpha_animal", 1),
+      (quest_get_slot, ":animal", "qst_elephant_hunt", slot_quest_target_troop),
+      (spawn_agent, ":animal"),
+      (assign, "$alpha_animal", reg0),
+      (agent_get_horse, ":horse", "$alpha_animal"),
+      (agent_set_slot, ":horse", slot_agent_bought_horse, "$alpha_animal"),
+      # (agent_set_visibility, "$alpha_animal", 0),
+      (agent_set_team, "$alpha_animal", 1),
+      (agent_set_no_death_knock_down_only,"$alpha_animal", 1),
 
-          (quest_get_slot, ":herd_size", "qst_elephant_hunt", slot_quest_target_faction),
-          (ge, ":herd_size", 1),
-          (try_for_range, ":unused", 1, ":herd_size"),
-            (copy_position, pos2, pos1),
-            (store_random_in_range, ":rand", -500, 500),
-            (position_move_x, pos2, ":rand"),
-            (store_random_in_range, ":rand", -500, 500),
-            (position_move_y, pos2, ":rand"),
-            (store_random_in_range, ":rand", -3000, 3000),
-            (position_rotate_z, pos2, ":rand"),
-            (set_spawn_position, pos2),
-            (spawn_agent, ":animal"),
-            (assign, ":agent", reg0),
-            (agent_get_horse, ":horse", ":agent"),
-            (agent_set_slot, ":horse", slot_agent_bought_horse, ":agent"),
-            (agent_set_no_death_knock_down_only,":agent", 1),
-            #(agent_set_visibility, ":agent", 0),
-            (agent_set_team, ":agent", 1),
-          (try_end),
-      ]),
+      (quest_get_slot, ":herd_size", "qst_elephant_hunt", slot_quest_target_faction),
+      (ge, ":herd_size", 1),
+      (try_for_range, ":unused", 1, ":herd_size"),
+        (copy_position, pos2, pos1),
+        (store_random_in_range, ":rand", -500, 500),
+        (position_move_x, pos2, ":rand"),
+        (store_random_in_range, ":rand", -500, 500),
+        (position_move_y, pos2, ":rand"),
+        (store_random_in_range, ":rand", -3000, 3000),
+        (position_rotate_z, pos2, ":rand"),
+        (set_spawn_position, pos2),
+        (spawn_agent, ":animal"),
+        (assign, ":agent", reg0),
+        (agent_get_horse, ":horse", ":agent"),
+        (agent_set_slot, ":horse", slot_agent_bought_horse, ":agent"),
+        (agent_set_no_death_knock_down_only,":agent", 1),
+        #(agent_set_visibility, ":agent", 0),
+        (agent_set_team, ":agent", 1),
+      (try_end),
+    ]),
 
       #2. Animals wandering
-      (5, 0, 0,
-        [
-          (eq, "$animals_flee", 0),
-          (agent_is_alive, "$alpha_animal"),
-          (store_random_in_range, ":rand", 0, 3),
-          (eq, ":rand", 0),
-        ],
-        [
-          #(display_message, "@Animals wander!"),
-          (set_fixed_point_multiplier, 100),
-          (agent_get_position, pos1, "$alpha_animal"),
-          (store_random_in_range, ":rand", -3000, 3000),
-          (position_move_x, pos1, ":rand"),
-          (store_random_in_range, ":rand", -3000, 3000),
-          (position_move_y, pos1, ":rand"),
-          (store_random_in_range, ":rand", 0, 360),
-          (position_rotate_z, pos1, ":rand"),
-          (try_for_agents, ":agent"),
-            (agent_is_human, ":agent"),
-            (agent_is_active, ":agent"),
-            (agent_get_troop_id, ":troop", ":agent"),
-            (this_or_next|eq, ":troop", "trp_elephant"),
-            (this_or_next|eq, ":troop", "trp_wild_cat_2"),
-            (this_or_next|eq, ":troop", "trp_wolf"),
-            (eq, ":troop", "trp_wild_cat"),
-            (copy_position, pos2, pos1),
-            (store_random_in_range, ":rand", -500, 500),
-            (position_move_x, pos2, ":rand"),
-            (store_random_in_range, ":rand", -500, 500),
-            (position_move_y, pos2, ":rand"),
-            (store_random_in_range, ":rand", -3000, 3000),
-            (position_rotate_z, pos2, ":rand"),
-            (set_spawn_position, pos2),
-            (agent_set_speed_limit, ":agent", 1),
-            (agent_set_scripted_destination, ":agent", pos2, 1),
-          (try_end),
-      ]),
+    (5, 0, 0,[
+      (eq, "$animals_flee", 0),
+      (agent_is_alive, "$alpha_animal"),
+      (store_random_in_range, ":rand", 0, 3),
+      (eq, ":rand", 0),
+    ],[
+      #(display_message, "@Animals wander!"),
+      (set_fixed_point_multiplier, 100),
+      (agent_get_position, pos1, "$alpha_animal"),
+      (store_random_in_range, ":rand", -3000, 3000),
+      (position_move_x, pos1, ":rand"),
+      (store_random_in_range, ":rand", -3000, 3000),
+      (position_move_y, pos1, ":rand"),
+      (store_random_in_range, ":rand", 0, 360),
+      (position_rotate_z, pos1, ":rand"),
+      (try_for_agents, ":agent"),
+        (agent_is_human, ":agent"),
+        (agent_is_active, ":agent"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (this_or_next|eq, ":troop", "trp_elephant"),
+        (this_or_next|eq, ":troop", "trp_wild_cat_2"),
+        (this_or_next|eq, ":troop", "trp_wolf"),
+        (eq, ":troop", "trp_wild_cat"),
+        (copy_position, pos2, pos1),
+        (store_random_in_range, ":rand", -500, 500),
+        (position_move_x, pos2, ":rand"),
+        (store_random_in_range, ":rand", -500, 500),
+        (position_move_y, pos2, ":rand"),
+        (store_random_in_range, ":rand", -3000, 3000),
+        (position_rotate_z, pos2, ":rand"),
+        (set_spawn_position, pos2),
+        (agent_set_speed_limit, ":agent", 1),
+        (agent_set_scripted_destination, ":agent", pos2, 1),
+      (try_end),
+    ]),
 
       #3. Animals react on player
-      (0.5, 0, 0,
-        [
-          (try_begin),
-            (gt, "$animals_flee", 1),
-            (val_sub, "$animals_flee", 1),
-          (try_end),
-          (agent_is_alive, "$alpha_animal"),
-        ],
-        [
+    (0.5, 0, 0,[
+      (try_begin),
+        (gt, "$animals_flee", 1),
+        (val_sub, "$animals_flee", 1),
+      (try_end),
+      (agent_is_alive, "$alpha_animal"),
+    ],[
+      (set_fixed_point_multiplier, 100),
+      (agent_get_position, pos1, "$alpha_animal"),
+      (get_player_agent_no, ":player_agent"),
+      (agent_get_position, pos2, ":player_agent"),
+      (get_distance_between_positions, ":distance", pos1, pos2),
+      (try_begin),
+        (eq, "$player_is_creeping", 1),
+        (val_add, ":distance", 500),
+      (try_end),
+      (try_begin),
+        (eq, "$animals_flee", 0),
+        (lt, ":distance", 2500),
+        (assign, reg1, 2),
+        (assign, reg2, -1),
+        (assign, reg3, -1),
+        (shuffle_range, 1, 4),
+        (assign, "$animals_flee", reg1),
+        #(display_message, "@Animals react on low distance!"),
+        (try_for_agents, ":agent"),
+          (agent_get_troop_id, ":troop", ":agent"),
+          (this_or_next|eq, ":troop", "trp_elephant"),
+          (this_or_next|eq, ":troop", "trp_wild_cat_2"),
+          (this_or_next|eq, ":troop", "trp_wolf"),
+          (eq, ":troop", "trp_wild_cat"),
+          (agent_is_human, ":agent"),
+          (agent_is_active, ":agent"),
+          #run:
+          (agent_clear_scripted_mode, ":agent"),
+          (agent_set_speed_limit, ":agent", 100),
+          #(agent_start_running_away, ":agent", 0),
+          (agent_set_scripted_destination, ":agent", pos1),
+        (try_end),
+      (else_try),
+        (eq, "$animals_flee", 1),
+        (lt, ":distance", 5000),
+        (assign, "$animals_flee", 0),
+        (try_for_agents, ":agent"),
+          (agent_get_troop_id, ":troop", ":agent"),
+          (this_or_next|eq, ":troop", "trp_elephant"),
+          (this_or_next|eq, ":troop", "trp_wild_cat_2"),
+          (this_or_next|eq, ":troop", "trp_wolf"),
+          (eq, ":troop", "trp_wild_cat"),
+          (agent_is_human, ":agent"),
+          (agent_is_active, ":agent"),
+          #stop:
+          (agent_set_speed_limit, ":agent", 1),
+          (agent_stop_running_away, ":agent"),
+        (try_end),
+      (else_try),
+        (eq, "$animals_flee", -1),	# =animals attack
+        (try_for_agents, ":agent"),
+          (agent_get_troop_id, ":troop", ":agent"),
+          (this_or_next|eq, ":troop", "trp_elephant"),
+          (this_or_next|eq, ":troop", "trp_wild_cat_2"),
+          (this_or_next|eq, ":troop", "trp_wolf"),
+          (eq, ":troop", "trp_wild_cat"),
+          (agent_is_human, ":agent"),
+          (agent_is_active, ":agent"),
+          (agent_get_position, pos1, ":agent"),
+          (copy_position, pos3, pos1),
+          (position_move_y, pos3, -10),	#-10cm
+          (get_distance_between_positions, ":back_distance", pos2, pos3),
+          (position_move_y, pos3, 25),	#+15cm
+          (get_distance_between_positions, ":front_distance", pos2, pos3),
+          (this_or_next|lt, ":front_distance", ":back_distance"),
+          (gt, ":distance", 1000),
+          (call_script, "script_point_y_toward_position", pos1, pos2),
           (set_fixed_point_multiplier, 100),
-          (agent_get_position, pos1, "$alpha_animal"),
-          (get_player_agent_no, ":player_agent"),
-          (agent_get_position, pos2, ":player_agent"),
-          (get_distance_between_positions, ":distance", pos1, pos2),
-          (try_begin),
-            (eq, "$player_is_creeping", 1),
-            (val_add, ":distance", 500),
-          (try_end),
-          (try_begin),
-            (eq, "$animals_flee", 0),
-            (lt, ":distance", 2500),
-            (assign, reg1, 2),
-            (assign, reg2, -1),
-            (assign, reg3, -1),
-            (shuffle_range, 1, 4),
-            (assign, "$animals_flee", reg1),
-            #(display_message, "@Animals react on low distance!"),
-            (try_for_agents, ":agent"),
-              (agent_get_troop_id, ":troop", ":agent"),
-              (this_or_next|eq, ":troop", "trp_elephant"),
-              (this_or_next|eq, ":troop", "trp_wild_cat_2"),
-              (this_or_next|eq, ":troop", "trp_wolf"),
-              (eq, ":troop", "trp_wild_cat"),
-              (agent_is_human, ":agent"),
-              (agent_is_active, ":agent"),
-              #run:
-              (agent_clear_scripted_mode, ":agent"),
-              (agent_set_speed_limit, ":agent", 100),
-              #(agent_start_running_away, ":agent", 0),
-              (agent_set_scripted_destination, ":agent", pos1),
-            (try_end),
-          (else_try),
-            (eq, "$animals_flee", 1),
-            (lt, ":distance", 5000),
-            (assign, "$animals_flee", 0),
-            (try_for_agents, ":agent"),
-              (agent_get_troop_id, ":troop", ":agent"),
-              (this_or_next|eq, ":troop", "trp_elephant"),
-              (this_or_next|eq, ":troop", "trp_wild_cat_2"),
-              (this_or_next|eq, ":troop", "trp_wolf"),
-              (eq, ":troop", "trp_wild_cat"),
-              (agent_is_human, ":agent"),
-              (agent_is_active, ":agent"),
-              #stop:
-              (agent_set_speed_limit, ":agent", 1),
-              (agent_stop_running_away, ":agent"),
-            (try_end),
-          (else_try),
-            (eq, "$animals_flee", -1),	# =animals attack
-            (try_for_agents, ":agent"),
-              (agent_get_troop_id, ":troop", ":agent"),
-              (this_or_next|eq, ":troop", "trp_elephant"),
-              (this_or_next|eq, ":troop", "trp_wild_cat_2"),
-              (this_or_next|eq, ":troop", "trp_wolf"),
-              (eq, ":troop", "trp_wild_cat"),
-              (agent_is_human, ":agent"),
-              (agent_is_active, ":agent"),
-              (agent_get_position, pos1, ":agent"),
-              (copy_position, pos3, pos1),
-              (position_move_y, pos3, -10),	#-10cm
-              (get_distance_between_positions, ":back_distance", pos2, pos3),
-              (position_move_y, pos3, 25),	#+15cm
-              (get_distance_between_positions, ":front_distance", pos2, pos3),
-              (this_or_next|lt, ":front_distance", ":back_distance"),
-              (gt, ":distance", 1000),
-              (call_script, "script_point_y_toward_position", pos1, pos2),
-              (set_fixed_point_multiplier, 100),
-              (position_move_y, pos1, 5000),	#50m
-              #(agent_start_running_away, ":agent", pos1),
-              (agent_set_scripted_destination, ":agent", pos1),
-            (try_end),
-          (try_end),
-      ]),
+          (position_move_y, pos1, 5000),	#50m
+          #(agent_start_running_away, ":agent", pos1),
+          (agent_set_scripted_destination, ":agent", pos1),
+        (try_end),
+      (try_end),
+    ]),
 
-      (ti_on_agent_hit, 0, 0, [],
-        [
-          # Animals react on hit
-          (assign, "$animals_flee", -1),
-          #(display_message, "@Animals react on hit!"),
-          (try_for_agents, ":agent"),
-            (agent_get_troop_id, ":troop", ":agent"),
-            (this_or_next|eq, ":troop", "trp_elephant"),
-            (this_or_next|eq, ":troop", "trp_wild_cat_2"),
-            (this_or_next|eq, ":troop", "trp_wolf"),
-            (eq, ":troop", "trp_wild_cat"),
-            (agent_is_human, ":agent"),
-            (agent_is_active, ":agent"),
+    (ti_on_agent_hit, 0, 0, [],[
+      # Animals react on hit
+      (assign, "$animals_flee", -1),
+      #(display_message, "@Animals react on hit!"),
+      (try_for_agents, ":agent"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (this_or_next|eq, ":troop", "trp_elephant"),
+        (this_or_next|eq, ":troop", "trp_wild_cat_2"),
+        (this_or_next|eq, ":troop", "trp_wolf"),
+        (eq, ":troop", "trp_wild_cat"),
+        (agent_is_human, ":agent"),
+        (agent_is_active, ":agent"),
 
-            (agent_get_position, pos1, ":agent"),
-            (copy_position, pos3, pos1),
-            (position_move_y, pos3, -10),	#-10cm
-            (position_move_y, pos3, 25),	#+15cm
-            (call_script, "script_point_y_toward_position", pos1, pos2),
-            (set_fixed_point_multiplier, 100),
-            (position_move_y, pos1, 5000),	#50m
-            #run:
-            (agent_clear_scripted_mode, ":agent"),
-            (agent_set_speed_limit, ":agent", 100),
-            #(agent_start_running_away, ":agent", 0),
-            (agent_set_scripted_destination, ":agent", pos1),
-          (try_end),
+        (agent_get_position, pos1, ":agent"),
+        (copy_position, pos3, pos1),
+        (position_move_y, pos3, -10),	#-10cm
+        (position_move_y, pos3, 25),	#+15cm
+        (call_script, "script_point_y_toward_position", pos1, pos2),
+        (set_fixed_point_multiplier, 100),
+        (position_move_y, pos1, 5000),	#50m
+        #run:
+        (agent_clear_scripted_mode, ":agent"),
+        (agent_set_speed_limit, ":agent", 100),
+        #(agent_start_running_away, ":agent", 0),
+        (agent_set_scripted_destination, ":agent", pos1),
+      (try_end),
 
-          (store_trigger_param, ":inflicted_agent_id", 1),
-          (agent_is_active, ":inflicted_agent_id"),
-          (agent_is_alive, ":inflicted_agent_id"),
-          (try_begin),
-            #Player stops creeping on hit
-            (agent_is_human, ":inflicted_agent_id"),
-            (assign, "$player_is_creeping", 0),
-          (else_try),
-            # Wounded animals get slower
-            (store_agent_hit_points, ":agent_hp", ":inflicted_agent_id", 0),
-            #(agent_set_speed_modifier, ":inflicted_agent_id", ":agent_hp"),
-            #(agent_set_horse_speed_factor, ":agent", ":agent_hp"),
-            (agent_set_speed_limit, ":inflicted_agent_id", ":agent_hp"),
-          (try_end),
-      ]),
+      (store_trigger_param, ":inflicted_agent_id", 1),
+      (agent_is_active, ":inflicted_agent_id"),
+      (agent_is_alive, ":inflicted_agent_id"),
+      (try_begin),
+        #Player stops creeping on hit
+        (agent_is_human, ":inflicted_agent_id"),
+        (assign, "$player_is_creeping", 0),
+      (else_try),
+        # Wounded animals get slower
+        (store_agent_hit_points, ":agent_hp", ":inflicted_agent_id", 0),
+        #(agent_set_speed_modifier, ":inflicted_agent_id", ":agent_hp"),
+        #(agent_set_horse_speed_factor, ":agent", ":agent_hp"),
+        (agent_set_speed_limit, ":inflicted_agent_id", ":agent_hp"),
+      (try_end),
+    ]),
+    # Kill count
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param, ":agent_no", 1),
+      (neg|agent_is_human, ":agent_no"),
 
-      # Kill count
-      (ti_on_agent_killed_or_wounded, 0, 0, [],
-        [
-          (store_trigger_param, ":agent_no", 1),
-          (neg|agent_is_human, ":agent_no"),
+      #kill rider
+      (agent_get_slot, ":rider", ":agent_no", slot_agent_bought_horse),
+      (agent_set_no_death_knock_down_only,":rider", 0),
+      (get_player_agent_no, ":player"),
+      (agent_deliver_damage_to_agent, ":player", ":rider", 1000),
 
-          #kill rider
-          (agent_get_slot, ":rider", ":agent_no", slot_agent_bought_horse),
-          (agent_set_no_death_knock_down_only,":rider", 0),
-          (get_player_agent_no, ":player"),
-          (agent_deliver_damage_to_agent, ":player", ":rider", 1000),
-
-          (val_add, "$hunted_animals", 1),
-          (agent_get_troop_id, ":troop_no", ":agent_no"),
-          (try_begin),
-            (this_or_next|eq, ":troop_no", "trp_wild_cat_2"),
-            (eq, ":troop_no", "trp_wild_cat"),
-            (troop_add_items, "trp_temp_troop", "itm_raw_leather", 1),
-            (troop_add_items, "trp_temp_troop", "itm_raw_leather", 1),
-            (add_xp_as_reward, 350),
-          (else_try),
-            (eq, ":troop_no", "trp_wolf"),
-            (try_begin),
-                (store_random_in_range, ":r", 0, 5),
-                (eq, ":r", 0),
-                (store_random_in_range, ":skin", "itm_wolf_skin_1", "itm_bear_skin_1"),
-                (troop_add_items, "trp_temp_troop", ":skin", 1),
-                (add_xp_as_reward, 200),
-            (else_try),
-                (troop_add_items, "trp_temp_troop", "itm_furs", 1),
-            (try_end),
+      (val_add, "$hunted_animals", 1),
+      (agent_get_troop_id, ":troop_no", ":agent_no"),
+      (try_begin),
+        (this_or_next|eq, ":troop_no", "trp_wild_cat_2"),
+        (eq, ":troop_no", "trp_wild_cat"),
+        (troop_add_items, "trp_temp_troop", "itm_raw_leather", 1),
+        (troop_add_items, "trp_temp_troop", "itm_raw_leather", 1),
+        (add_xp_as_reward, 350),
+      (else_try),
+        (eq, ":troop_no", "trp_wolf"),
+        (try_begin),
+            (store_random_in_range, ":r", 0, 5),
+            (eq, ":r", 0),
+            (store_random_in_range, ":skin", "itm_wolf_skin_1", "itm_bear_skin_1"),
+            (troop_add_items, "trp_temp_troop", ":skin", 1),
             (add_xp_as_reward, 200),
-          (else_try),
-            (eq, ":troop_no", "trp_elephant"),
-            (troop_add_items, "trp_temp_troop", "itm_ivory", 1),
-            (add_xp_as_reward, 550),
-          (try_end),
-          (try_begin),
-            (eq, "$alpha_animal", ":agent_no"),
-            (try_for_agents, ":agent"),
-              (agent_get_troop_id, ":troop", ":agent"),
-              (this_or_next|eq, ":troop", "trp_elephant"),
-              (this_or_next|eq, ":troop", "trp_wild_cat_2"),
-              (this_or_next|eq, ":troop", "trp_wolf"),
-              (eq, ":troop", "trp_wild_cat"),
-              (agent_is_human, ":agent"),
-              (agent_is_active, ":agent"),
-              (agent_is_alive, ":agent"),
-              (assign, "$alpha_animal", ":agent"),
-            (try_end),
-            (eq, "$alpha_animal", ":agent_no"),
-            #(finish_mission, 10),
-            (assign,"$g_battle_won", 1),
-          (try_end),
-      ]),
-      (1, 0, 2,
-        [
-          (this_or_next|neg|agent_is_alive, "$alpha_animal"),
-          (neg|agent_is_active, "$alpha_animal"),
-        ],
-        [
-          (try_for_agents, ":agent"),
-            (agent_get_troop_id, ":troop", ":agent"),
-            (this_or_next|eq, ":troop", "trp_elephant"),
-            (this_or_next|eq, ":troop", "trp_wild_cat_2"),
-            (this_or_next|eq, ":troop", "trp_wolf"),
-            (eq, ":troop", "trp_wild_cat"),
-            (agent_is_human, ":agent"),
-            (agent_is_active, ":agent"),
-            (agent_is_alive, ":agent"),
-            (assign, "$alpha_animal", ":agent"),
-          (try_end),
-          (this_or_next|neg|agent_is_alive, "$alpha_animal"),
-          (neg|agent_is_active, "$alpha_animal"),
-          #(finish_mission, 10),
-          (assign,"$g_battle_won", 1),
-      ]),
+        (else_try),
+            (troop_add_items, "trp_temp_troop", "itm_furs", 1),
+        (try_end),
+        (add_xp_as_reward, 200),
+      (else_try),
+        (eq, ":troop_no", "trp_elephant"),
+        (troop_add_items, "trp_temp_troop", "itm_ivory", 1),
+        (add_xp_as_reward, 550),
+      (try_end),
+      (try_begin),
+        (eq, "$alpha_animal", ":agent_no"),
+        (try_for_agents, ":agent"),
+          (agent_get_troop_id, ":troop", ":agent"),
+          (this_or_next|eq, ":troop", "trp_elephant"),
+          (this_or_next|eq, ":troop", "trp_wild_cat_2"),
+          (this_or_next|eq, ":troop", "trp_wolf"),
+          (eq, ":troop", "trp_wild_cat"),
+          (agent_is_human, ":agent"),
+          (agent_is_active, ":agent"),
+          (agent_is_alive, ":agent"),
+          (assign, "$alpha_animal", ":agent"),
+        (try_end),
+        (eq, "$alpha_animal", ":agent_no"),
+        #(finish_mission, 10),
+        (assign,"$g_battle_won", 1),
+      (try_end),
+    ]),
+    (1, 0, 2,[
+      (this_or_next|neg|agent_is_alive, "$alpha_animal"),
+      (neg|agent_is_active, "$alpha_animal"),
+    ],[
+      (try_for_agents, ":agent"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (this_or_next|eq, ":troop", "trp_elephant"),
+        (this_or_next|eq, ":troop", "trp_wild_cat_2"),
+        (this_or_next|eq, ":troop", "trp_wolf"),
+        (eq, ":troop", "trp_wild_cat"),
+        (agent_is_human, ":agent"),
+        (agent_is_active, ":agent"),
+        (agent_is_alive, ":agent"),
+        (assign, "$alpha_animal", ":agent"),
+      (try_end),
+      (this_or_next|neg|agent_is_alive, "$alpha_animal"),
+      (neg|agent_is_active, "$alpha_animal"),
+      (assign,"$g_battle_won", 1),
+    ]),
 
-      # End
-      (3, 0, ti_once,
-        [
-          (this_or_next|main_hero_fallen),
-          (eq, "$g_battle_won", 1),
-        ],
-        [
-          (try_begin),
-            (main_hero_fallen),
-            (assign, "$hunted_animals", 0),
-          (try_end),
-          (jump_to_menu, "mnu_desert_hunt_end"),
-          (finish_mission, 6),
-      ]),
+    # End
+    (3, 0, ti_once,[
+      (this_or_next|main_hero_fallen),
+      (eq, "$g_battle_won", 1),
+    ],[
+      (try_begin),
+        (main_hero_fallen),
+        (assign, "$hunted_animals", 0),
+      (try_end),
+      (jump_to_menu, "mnu_desert_hunt_end"),
+      (finish_mission, 6),
+    ]),
 
-      (ti_tab_pressed, 0, 0, [],
-        [
-        (display_message, "str_cannot_leave_now"),
-      ]),
+    (ti_tab_pressed, 0, 0, [],[
+      (display_message, "str_cannot_leave_now"),
+    ]),
 
-      (ti_before_mission_start, 0, 0, [],
-        [
-          (team_set_relation, 0, 2, 1),
-          (team_set_relation, 1, 3, 1),
+    (ti_before_mission_start, 0, 0, [],[
+      (team_set_relation, 0, 2, 1),
+      (team_set_relation, 1, 3, 1),
 
-          (party_clear, "p_routed_enemies"),
+      (party_clear, "p_routed_enemies"),
 
-          (assign, "$g_latest_order_1", 1),
-          (assign, "$g_latest_order_2", 1),
-          (assign, "$g_latest_order_3", 1),
-          (assign, "$g_latest_order_4", 1),
-          (assign, "$animals_flee", 0),
-          (assign, "$hunted_animals", 0),
-          (assign, "$g_battle_won", 0),
-          (assign, "$animals_flee", 0),
-          (play_sound,"snd_ambient_day_forest_loop"),
-          (music_set_situation, 0),
-      ]),
-      (0, 0, 0,[(key_clicked, key_k),
-          (tutorial_message, -1),
-          ],[]),
+      (assign, "$g_latest_order_1", 1),
+      (assign, "$g_latest_order_2", 1),
+      (assign, "$g_latest_order_3", 1),
+      (assign, "$g_latest_order_4", 1),
+      (assign, "$animals_flee", 0),
+      (assign, "$hunted_animals", 0),
+      (assign, "$g_battle_won", 0),
+      (assign, "$animals_flee", 0),
+      (play_sound,"snd_ambient_day_forest_loop"),
+      (music_set_situation, 0),
+    ]),
+    (0, 0, 0,[
+      (key_clicked, key_k),
+      (tutorial_message, -1),
+    ],[]),
 
-	  (1,0,ti_once,[
-      ],
-		[
-        (tutorial_message_set_size, 19, 19),
-        (tutorial_message_set_position, 500, 650),
-        (tutorial_message_set_center_justify, 0),
-        (tutorial_message_set_background, 1),
-        (tutorial_message, "@You can walk crouched by pressing Y.^^(press K to finish read)"),
-
+	  (1,0,ti_once,[],[
+      (tutorial_message_set_size, 19, 19),
+      (tutorial_message_set_position, 500, 650),
+      (tutorial_message_set_center_justify, 0),
+      (tutorial_message_set_background, 1),
+      (tutorial_message, "@You can walk crouched by pressing Y.^^(press K to finish read)"),
 		]),
-
-    ]
-  ),
+]),
 
 ("give_speech_story",mtf_battle_mode|mtf_synch_inventory,charge,
   "You lead your men to battle.",[
@@ -25777,7 +25711,7 @@ mission_templates = [
     (0,mtef_ally_party|mtef_team_0,0,aif_start_alarmed,0,[]),
     (4,mtef_visitor_source,0,aif_start_alarmed,65,[]),
     (4,mtef_visitor_source,0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -26168,7 +26102,7 @@ mission_templates = [
     (43,mtef_visitor_source,af_override_horse,0,1,[]),
     (44,mtef_visitor_source,af_override_horse,0,1,[]),
     (45,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     improved_lightning,
     can_spawn_commoners,
@@ -26270,7 +26204,7 @@ mission_templates = [
     (9,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (11,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     (0, 0, 0,[
@@ -26374,7 +26308,7 @@ mission_templates = [
     (9,mtef_visitor_source,af_override_horse,0,1,[]),
     (10,mtef_visitor_source,af_override_horse,0,1,[]),
     (11,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     can_spawn_commoners,
     (0, 0, 0,[
@@ -26457,7 +26391,7 @@ mission_templates = [
   "You visit the caves.",[
     (0,mtef_visitor_source,0,0,1,[]),
     (1,mtef_visitor_source,0,0,1,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [ improved_lightning,
     cannot_spawn_commoners,
     (ti_tab_pressed, 0, 0,[
@@ -26544,7 +26478,7 @@ mission_templates = [
     (70,mtef_visitor_source,af_override_horse,0,1,[]),
     (71,mtef_visitor_source,af_override_horse,0,1,[]),
     (72,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -27184,7 +27118,7 @@ mission_templates = [
     (0,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (1,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (2,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     dedal_shield_bash,
@@ -27290,7 +27224,7 @@ mission_templates = [
     (20,mtef_visitor_source,af_override_horse,0,1,[]),
     (21,mtef_visitor_source,af_override_body|af_override_foot,0,1,[itm_new_dress_2,itm_female_caligea_gold]),
     (22,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -27393,7 +27327,7 @@ mission_templates = [
     (10,mtef_visitor_source|mtef_team_0,0,0,1,[]),
     (11,mtef_scene_source|mtef_team_0,af_override_horse,0,1,[]),
     (12,mtef_visitor_source|mtef_team_0,0,0,1,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     (0, 0, 0,[
@@ -27607,7 +27541,7 @@ mission_templates = [
     (28,mtef_visitor_source,af_override_horse,0,1,[]),
     (29,mtef_visitor_source,af_override_horse,0,1,[]),
     (30,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -27738,7 +27672,7 @@ mission_templates = [
     (50,mtef_visitor_source,af_override_horse,0,1,[]),
     (51,mtef_visitor_source,af_override_horse,0,1,[]),
     (52,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -27912,7 +27846,7 @@ mission_templates = [
     (2,mtef_visitor_source,af_override_horse,0,1,[]),
     (3,mtef_visitor_source,af_override_horse,0,1,[]),
     (4,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + global_common_triggers+
+    ], p_wetter + global_common_triggers +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -27949,7 +27883,7 @@ mission_templates = [
     (5,mtef_visitor_source,af_override_everything,0,1,[]),#unused
     (6,mtef_visitor_source,af_override_everything,0,1,[]),#unused
     (7,mtef_visitor_source,af_override_everything,0,1,[]),#unused
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     can_spawn_commoners,
     (ti_on_agent_spawn,0,0,[
@@ -28092,7 +28026,7 @@ mission_templates = [
     (10,mtef_visitor_source,af_override_horse,0,1,[]),
     (11,mtef_visitor_source,af_override_horse,0,1,[]),
     (12,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -28225,7 +28159,7 @@ mission_templates = [
       (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
       (10,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
       (11,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -28658,7 +28592,7 @@ mission_templates = [
     (34,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
     (35,mtef_visitor_source|mtef_team_2,af_override_everything|af_override_foot,0,1,[itm_female_caligea_gold,itm_roman_femal_rich3_new,itm_flower_crown]),
     (36,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers+
+  ], p_wetter + global_common_triggers +
   [
       cannot_spawn_commoners,
     change_battle_speed_trigger,
@@ -28983,7 +28917,7 @@ mission_templates = [
     (8,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ],p_wetter + global_common_triggers+
+  ],p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -29314,7 +29248,7 @@ mission_templates = [
     (2,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
     (3,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
     (4,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -29663,7 +29597,7 @@ mission_templates = [
     (45,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
     (46,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
     (47,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-  ], p_wetter + storms + global_common_triggers+
+  ], p_wetter + storms + global_common_triggers +
   [
     common_siege_attacker_do_not_stall,
     cannot_spawn_commoners,
@@ -30192,7 +30126,7 @@ mission_templates = [
     (28,mtef_visitor_source,0,0,1,[]),#spectators
     (29,mtef_visitor_source,0,0,1,[]),#spectators
     (30,mtef_visitor_source,0,0,1,[]),#spectators
-  ],p_wetter + global_common_triggers+
+  ],p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -30433,7 +30367,7 @@ mission_templates = [
     (28,mtef_visitor_source,0,0,1,[]),#
     (29,mtef_visitor_source,0,0,1,[]),#
     (30,mtef_visitor_source,0,0,1,[]),
-    ],p_wetter + global_common_triggers+
+    ],p_wetter + global_common_triggers +
     [
     improved_lightning,
     cannot_spawn_commoners,
@@ -30632,7 +30566,7 @@ mission_templates = [
       (9,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
       (10,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
       (11,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
     improved_lightning,
     cannot_spawn_commoners,
@@ -30993,7 +30927,7 @@ mission_templates = [
     (44,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (45,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (46,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
-    ], p_wetter + global_common_triggers+
+    ], p_wetter + global_common_triggers +
     [
       cannot_spawn_commoners,
     (ti_before_mission_start, 0, 0, [],
@@ -31181,7 +31115,7 @@ mission_templates = [
     (4,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_poor2]),
     (5,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_lupa_dress_2]),
     (6,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_poor2]),
-    ], p_wetter + storms + global_common_triggers+
+    ], p_wetter + storms + global_common_triggers +
     [
       cannot_spawn_commoners,
     improved_lightning,

@@ -9672,7 +9672,7 @@ simple_triggers = [
         (troop_slot_ge, "trp_kingdom_7_lord", slot_troop_occupation, dplmc_slto_exile), # is dead or exile
         (neq, "$g_campaign_type", g_campaign_king),
         (quest_slot_eq, "qst_nero_reborn", slot_quest_current_state, 0),
-        (jump_to_menu, "mnu_emperor_event_fake_nero"),#new
+        (call_script, "script_add_notification_menu", "mnu_emperor_event_fake_nero", 0, 0),#new
     (else_try),
         #(party_slot_eq, "p_main_party", slot_party_on_water, 0),
         (neq, "$g_player_is_captive", 1),
@@ -9778,7 +9778,7 @@ simple_triggers = [
     (try_begin),
         (neq, "$g_campaign_type", g_campaign_king),
         (quest_slot_eq, "qst_nero_reborn", slot_quest_current_state, 1),
-        (jump_to_menu, "mnu_emperor_event_fake_nero_2"),
+        (call_script, "script_add_notification_menu", "mnu_emperor_event_fake_nero_2", 0, 0),
     (try_end),
 
     (try_begin),

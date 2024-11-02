@@ -18330,7 +18330,7 @@ presentations = [
     (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
     (val_add, ":num_options", 1),
 
-      ## NPC Complaints
+    ## NPC Complaints
     (create_text_overlay, reg0, "@Disable Companion Complaints:", tf_vertical_align_center),
     (position_set_y, pos1, ":texts_y"),
     (overlay_set_position, reg0, pos1),
@@ -18372,33 +18372,26 @@ presentations = [
     (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
     (val_add, ":num_options", 1),
 
-    ## CHEAT MENU
-    # (create_text_overlay, reg0, "@Cheat Mode:", tf_vertical_align_center),
-    # (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
-    # (position_set_y, pos1, ":texts_y"),
-    # (overlay_set_position, reg0, pos1),
-    # (val_sub, ":texts_y", ":y_increment"),
+    ## Charge on player death
+    (create_text_overlay, reg0, "@Charge on player death:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+    (val_sub, ":texts_y", ":y_increment"),
 
-    # (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
-    # (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
-    # (position_set_y, pos2, ":inputs_y"),
-    # (overlay_set_position, reg0, pos2),
-    # (val_sub, ":inputs_y", ":y_increment"),
-
-    # (try_begin),
-    #   (gt, "$cheat_mode", 0),
-    #   (assign, ":actual_input_value", 1),
-    # (else_try),
-    #   (assign, ":actual_input_value", 0),
-    # (try_end),
-    # (overlay_set_val, reg0, ":actual_input_value"),
-    # (set_container_overlay, -1),
-    # (create_mesh_overlay, reg0, "mesh_pic_cattle"),
-    # (set_container_overlay, ":container"),
-    # (overlay_set_position, reg0, pos3),
-    # (overlay_set_size, reg0, pos4),
-    # (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
-    # (val_add, ":num_options", 1),
+    (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (overlay_set_val, reg0, "$g_charge_on_player_death"),
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_charge"),
+    (set_container_overlay, ":container"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos6), #
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
 
     (set_container_overlay, -1),
 
@@ -18461,6 +18454,7 @@ presentations = [
     (try_begin),
       (eq, ":object", "$g_presentation_obj_profile_banner_selection_1"),
       (assign, "$cheat_mode", 0),
+      (assign, "$g_charge_on_player_death", 1),
       (assign, "$g_dplmc_horse_speed", 0),
       (assign, "$g_dplmc_battle_continuation", 0),
       (assign, "$g_horses_are_avaliable", 10),
@@ -18534,17 +18528,9 @@ presentations = [
       (troop_slot_eq, "trp_temp_array_b", 7, ":object"),
       (assign, "$g_dplmc_player_disguise", ":value"),
       (assign, "$sneaked_into_town", disguise_none), #so as to not proc trigger
-    # (else_try), ## CHEATS MENU
-    #   (troop_slot_eq, "trp_temp_array_b", 11, ":object"),
-    #   (assign, "$cheat_mode", ":value"),
-    #   (try_begin),
-    #       (troop_get_slot, ":cheats", "trp_global_variables", g_used_cheats),
-    #       (val_add, ":cheats", 1),
-    #       (troop_set_slot, "trp_global_variables", g_used_cheats, ":cheats"),
-    #       (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
-    #       (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
-    #       (display_message, "@GAME HAS NOTICED: You are using CHEATS!", color_terrible_news),
-    #   (try_end),
+    (else_try),# charge on player death
+      (troop_slot_eq, "trp_temp_array_b", 8, ":object"),
+      (assign, "$g_charge_on_player_death", ":value"),
     (try_end),
   ]),
   (ti_on_presentation_mouse_enter_leave,[
@@ -33993,10 +33979,34 @@ presentations = [
         # (neq, ":item", "itm_horn"),
         # (neg|is_between, ":item", "itm_roman_lupa_dress", "itm_sarranid_cloth_robe"),
         # (neg|is_between, ":item", "itm_flower_crown", "itm_celtic_boots"),
+        (assign, ":c0", 0),
+        # (assign, reg0, "$temp2"),
+        # (display_message, "@{reg0}"),
+        (try_begin),
+            (store_sub, ":number_cultures", cultures_end, cultures_begin),
+            (le, "$temp2", ":number_cultures"),
+            (try_begin),
+                (neg|item_has_faction, ":item", "fac_gladiators"),
+                (store_sub, ":culture", "$temp2", 1),
+                (val_add, ":culture", cultures_begin),
+                # (str_store_faction_name, s10, ":culture"),
+                # (display_message, "@Selected culture: {s10}"),
+                (try_begin),
+                    (eq, ":culture", "fac_dark_knights"),
+                    (assign, ":culture", "fac_minor_kingdoms_end"),
+                (try_end),
+                (item_has_faction, ":item", ":culture"),
+                (assign, ":c0", 1),
+            (try_end),
+        (else_try),
+            (assign, ":c0", 1),
+        (try_end),
+        (eq, ":c0", 1),
+
         (assign, ":c1", 1),
         (try_begin),
             (neg|quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
-            (neg|item_has_faction, ":item", "fac_culture_1"),
+            (neg|item_has_faction, ":item", "fac_gladiators"),
             (item_has_faction, ":item", "fac_minor_kingdoms_end"),
             # (display_message,"@Greek items are locked. You need to find Pavel to activate it!",0x888888),#grey
             (assign, ":c1", 0),
@@ -34054,6 +34064,7 @@ presentations = [
             (this_or_next|is_between, ":item", arabian_bows_begin, arabian_bows_end),
             (this_or_next|is_between, ":item", slings_begin, slings_end),
             (this_or_next|is_between, ":item", roman_music_begin, roman_music_end),
+            (this_or_next|is_between, ":item", bandit_armoury_shit_begin, bandit_armoury_shit_end),
             (is_between, ":item", ballista_begin, ballista_end),
             (assign, ":c1", 1),
         (else_try),
@@ -34507,73 +34518,22 @@ presentations = [
     (position_set_y, pos1, 1100),
     (overlay_set_size, reg1, pos1),
 
-    #rename troop:
-    (create_text_overlay, reg1, "@Singular Name:", tf_left_align),
+    (assign, ":cur_y", 690),
+
+    (create_text_overlay,reg1,"@Item type:",tf_left_align),
     (position_set_x, pos1, 340),
-    (position_set_y, pos1, 705-70-44),
-    (overlay_set_position, reg1, pos1),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 35),
+    (overlay_set_position,reg1, pos1),
     (position_set_x, pos1, 900),
     (position_set_y, pos1, 900),
-    (overlay_set_size, reg1, pos1),
-
-    (create_simple_text_box_overlay, "$g_presentation_obj_name_kingdom_1"),
-    (position_set_x, pos1, 340),
-    (position_set_y, pos1, 705-70-70),
-    (overlay_set_position, "$g_presentation_obj_name_kingdom_1", pos1),
-
-    (str_store_troop_name, s7, "$temp_troop"),
-    (overlay_set_text, "$g_presentation_obj_name_kingdom_1", s7),
-
-    (create_text_overlay, reg1, "@Plural Name:", tf_left_align),
-    (position_set_x, pos1, 340),
-    (position_set_y, pos1, 705-70-70-44),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 900),
-    (position_set_y, pos1, 900),
-    (overlay_set_size, reg1, pos1),
-
-    (create_simple_text_box_overlay, "$g_presentation_obj_name_kingdom_2"),
-    (position_set_x, pos1, 340),
-    (position_set_y, pos1, 705-70-70-70),
-    (overlay_set_position, "$g_presentation_obj_name_kingdom_2", pos1),
-
-    (str_store_troop_name_plural, s7, "$temp_troop"),
-    (overlay_set_text, "$g_presentation_obj_name_kingdom_2", s7),
-    #rename troop end
-
-###troop gender:
-    (assign, "$g_presentation_obj_admin_panel_9", -1),
-    (try_begin),
-        (ge, "$cheat_mode", 1),
-        (create_text_overlay, reg1, "@Gender:", tf_left_align),
-        (position_set_x, pos1, 340),
-        (position_set_y, pos1, 705-70-70-70-40),
-        (overlay_set_position, reg1, pos1),
-        (position_set_x, pos1, 900),
-        (position_set_y, pos1, 900),
-        (overlay_set_size, reg1, pos1),
-
-        (create_combo_button_overlay, "$g_presentation_obj_admin_panel_9"),
-        (position_set_x, pos1, 450),
-        (position_set_y, pos1, 705-70-70-70-75),
-        (overlay_set_position, "$g_presentation_obj_admin_panel_9", pos1),
-        (position_set_x, pos1, 750),
-        (position_set_y, pos1, 900),
-        (overlay_set_size, "$g_presentation_obj_admin_panel_9", pos1),
-
-        (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@Male"),#tf_make is 0
-        (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@Female"),#tf_female is 1
-
-        (troop_get_type, ":gender", "$temp_troop"),
-        (overlay_set_val, "$g_presentation_obj_admin_panel_9", ":gender"),
-    (try_end),
-#end troop gender
+    (overlay_set_size,reg1, pos1),
 
     (assign, "$g_presentation_obj_admin_panel_7", -1),
-
     (create_combo_button_overlay, "$g_presentation_obj_admin_panel_7"),
-    (position_set_x, pos1, 450),
-    (position_set_y, pos1, 705),
+    (position_set_x, pos1, 465),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 45),
     (overlay_set_position, "$g_presentation_obj_admin_panel_7", pos1),
     (position_set_x, pos1, 750),
     (position_set_y, pos1, 900),
@@ -34592,6 +34552,33 @@ presentations = [
     (overlay_add_item, "$g_presentation_obj_admin_panel_7", "@Standards and Instruments"),
 
     (overlay_set_val, "$g_presentation_obj_admin_panel_7", "$temp3"),
+
+    (create_text_overlay,reg1,"@Item culture:",tf_left_align),
+    (position_set_x, pos1, 340),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 35),
+    (overlay_set_position,reg1, pos1),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size,reg1, pos1),
+
+    (assign, "$g_presentation_obj_admin_panel_10", -1),
+    (create_combo_button_overlay, "$g_presentation_obj_admin_panel_10"),
+    (position_set_x, pos1, 465),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 45),
+    (overlay_set_position, "$g_presentation_obj_admin_panel_10", pos1),
+    (position_set_x, pos1, 750),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, "$g_presentation_obj_admin_panel_10", pos1),
+
+    (overlay_add_item, "$g_presentation_obj_admin_panel_10", "@Ancient Greek"),
+    (try_for_range_backwards, ":culture", cultures_begin, cultures_end),
+        (str_store_faction_name, s10, ":culture"),
+        (overlay_add_item, "$g_presentation_obj_admin_panel_10", "@{s10}"),
+    (try_end),
+    (overlay_add_item, "$g_presentation_obj_admin_panel_10", "@All"),
+    (overlay_set_val, "$g_presentation_obj_admin_panel_10", "$temp2"),
 
     (try_begin),
         (eq, "$temp3", 10),
@@ -34628,32 +34615,10 @@ presentations = [
         (assign, "$temp1", itp_type_one_handed_wpn),
     (try_end),
 
-    # (create_text_overlay,reg1,"@Selected weapon:",tf_left_align),
-    # (position_set_x, pos1, 450),
-    # (position_set_y, pos1, 705-35),
-    # (overlay_set_position,reg1, pos1),
-    # (position_set_x, pos1, 900),
-    # (position_set_y, pos1, 900),
-    # (overlay_set_size,reg1, pos1),
-
-    # (try_begin),
-        # (gt, "$current_item", -1),
-        # (str_store_item_name, s7, "$current_item"),
-    # (else_try),
-        # (str_store_string, s7, "@No item selected"),
-    # (try_end),
-
-    # (create_text_overlay,reg1,"@{s7}",tf_left_align),
-    # (position_set_x, pos1, 450),
-    # (position_set_y, pos1, 705-35),
-    # (overlay_set_position,reg1, pos1),
-    # (position_set_x, pos1, 900),
-    # (position_set_y, pos1, 900),
-    # (overlay_set_size,reg1, pos1),
-
-    (create_text_overlay,reg1,"@Modifier of selected weapon:",tf_left_align),
+    (create_text_overlay,reg1,"@Select item modifier:",tf_left_align),
     (position_set_x, pos1, 340),
-    (position_set_y, pos1, 705-35),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 35),
     (overlay_set_position,reg1, pos1),
     (position_set_x, pos1, 900),
     (position_set_y, pos1, 900),
@@ -34661,8 +34626,9 @@ presentations = [
 
     (assign, ":imod", "$temp4_1"),#use this for item modifier
     (create_combo_button_overlay, "$g_presentation_obj_admin_panel_6"),
-    (position_set_x, pos1, 450),
-    (position_set_y, pos1, 705-70),
+    (position_set_x, pos1, 465),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 45),
     (overlay_set_position, "$g_presentation_obj_admin_panel_6", pos1),
 
     (position_set_x, pos1, 750),
@@ -34789,7 +34755,75 @@ presentations = [
     # (try_end),
     #end modifer selection
 
-##item selection
+    #rename troop:
+    (create_text_overlay, reg1, "@Singular Name:", tf_left_align),
+    (position_set_x, pos1, 340),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 35),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+
+    (create_simple_text_box_overlay, "$g_presentation_obj_name_kingdom_1"),
+    (position_set_x, pos1, 340),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 45),
+    (overlay_set_position, "$g_presentation_obj_name_kingdom_1", pos1),
+
+    (str_store_troop_name, s7, "$temp_troop"),
+    (overlay_set_text, "$g_presentation_obj_name_kingdom_1", s7),
+
+    (create_text_overlay, reg1, "@Plural Name:", tf_left_align),
+    (position_set_x, pos1, 340),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 35),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+
+    (create_simple_text_box_overlay, "$g_presentation_obj_name_kingdom_2"),
+    (position_set_x, pos1, 340),
+    (position_set_y, pos1, ":cur_y"),
+    (val_sub, ":cur_y", 45),
+    (overlay_set_position, "$g_presentation_obj_name_kingdom_2", pos1),
+
+    (str_store_troop_name_plural, s7, "$temp_troop"),
+    (overlay_set_text, "$g_presentation_obj_name_kingdom_2", s7),
+    #rename troop end
+
+    ###troop gender:
+    (assign, "$g_presentation_obj_admin_panel_9", -1),
+    (try_begin),
+        (ge, "$cheat_mode", 1),
+        (create_text_overlay, reg1, "@Gender:", tf_left_align),
+        (position_set_x, pos1, 340),
+        (position_set_y, pos1, ":cur_y"),
+        (val_sub, ":cur_y", 35),
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+
+        (create_combo_button_overlay, "$g_presentation_obj_admin_panel_9"),
+        (position_set_x, pos1, 450),
+        (position_set_y, pos1, ":cur_y"),
+        (val_sub, ":cur_y", 45),
+        (overlay_set_position, "$g_presentation_obj_admin_panel_9", pos1),
+        (position_set_x, pos1, 750),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, "$g_presentation_obj_admin_panel_9", pos1),
+
+        (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@Male"),#tf_make is 0
+        (overlay_add_item, "$g_presentation_obj_admin_panel_9", "@Female"),#tf_female is 1
+
+        (troop_get_type, ":gender", "$temp_troop"),
+        (overlay_set_val, "$g_presentation_obj_admin_panel_9", ":gender"),
+    (try_end),
+    #end troop gender
+
+    ##item selection
     (str_clear, s1),
     (create_text_overlay, reg1, s1, tf_double_space|tf_scrollable),
     (position_set_x, pos1, 560),
@@ -34881,9 +34915,9 @@ presentations = [
     (try_end),
 
     (set_container_overlay, -1),
-##end item selection
+  ##end item selection
 
-###begin troop inventory
+  ###begin troop inventory
     (str_clear, s1),
     (create_text_overlay, reg1, s1, tf_double_space|tf_scrollable),
     (position_set_x, pos1, 1300),
@@ -35010,6 +35044,10 @@ presentations = [
     (else_try),
         (eq, ":object", "$g_presentation_obj_admin_panel_7"),
         (assign, "$temp3", ":value"),
+        (start_presentation, "prsnt_custom_troop_weapon_selection"),
+    (else_try),
+        (eq, ":object", "$g_presentation_obj_admin_panel_10"),
+        (assign, "$temp2", ":value"),
         (start_presentation, "prsnt_custom_troop_weapon_selection"),
 		(else_try),
         (eq, ":object", "$g_presentation_obj_admin_panel_6"),
