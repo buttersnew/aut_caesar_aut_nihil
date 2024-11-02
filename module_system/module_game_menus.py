@@ -15902,6 +15902,7 @@ game_menus = [
       (gt, "$sneaked_into_town", disguise_none), #SB : condition for disguise
     ],"Take a walk around the streets.",[
       (try_begin),
+          (eq, "$current_town", "p_town_6"),
           (check_quest_active, "qst_wlodowiecus_adventure_3"),
           (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 1),
           (jump_to_menu, "mnu_wlodowiecus_adventure_3_visit_manc"),
