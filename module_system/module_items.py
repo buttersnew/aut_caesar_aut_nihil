@@ -3115,15 +3115,15 @@ bandit_armor_price,bandit_armor,imodbits_cloth,[(ti_on_init_item,[(call_script, 
 
 ["mail_shirt", "Heavy Armor", [("mail_shirt_a",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_iron_armor_price,breastplate_iron_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_7,fac_culture_5,fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_7,fac_culture_5,fac_culture_6,fac_culture_8,fac_minor_kingdoms_end] ],
 
 ["mail_hauberk", "Heavy Armor", [("hauberk_a_new",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_iron_armor_price,breastplate_iron_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),] ),], [fac_culture_7,fac_culture_5,fac_culture_6,fac_culture_8]],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),] ),], [fac_culture_7,fac_culture_5,fac_culture_6,fac_culture_8,fac_minor_kingdoms_end]],
 
 ["haubergeon", "Heavy Armor", [("haubergeon_c",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_iron_armor_price,breastplate_iron_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),] ),], [fac_culture_7,fac_culture_5,fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),] ),], [fac_culture_7,fac_culture_5,fac_culture_6,fac_culture_8,fac_minor_kingdoms_end] ],
 
 ["lamellar_armor", "Scale Armor", [("lamellar_armor_b",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 roman_scale_armor_price,roman_scale_armor,imodbits_armor,
