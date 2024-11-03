@@ -4030,121 +4030,120 @@ morale_triggers = [
     (else_try),
       (call_script, "script_agent_reassign_team_freelancer", ":agent_no"),
     (try_end),
-    # (store_random_in_range, ":rand", 1, 101),
-    # (try_begin),
-			# # 1% chance COWARD/PANIC
-			# (eq, ":rand", 1),
-			# (agent_set_slot, ":agent_no", slot_agent_courage_score, 600), #very low Courage
-			# # (try_begin),
-			  # # (ge, "$vc_debug_mode", 1),
-			  # # (agent_is_ally, ":agent_no"),
-			  # # (display_message, "@{!}TEST: There is a Coward in our lines!"),
-			# # (try_end),
-	# (else_try),
-		##idea is to make barabrians braver so that they dont lose that easily against civilized factions
-         (try_begin),
-           (eq, ":culture", "fac_culture_1"),
-           (assign, ":initial_courage_score", 6500),
-         (else_try),
-           (eq, ":culture", "fac_culture_2"),
-           (assign, ":initial_courage_score", 8000),
-         (else_try),
-           (eq, ":culture", "fac_culture_3"),
-           (assign, ":initial_courage_score", 6500),
-         (else_try),
-           (eq, ":culture", "fac_culture_4"),
-           (assign, ":initial_courage_score", 8500),
-         (else_try),
-           (this_or_next|eq, ":faction", "fac_mountain_bandits"),
-           (eq, ":culture", "fac_culture_8"),##the jewish
-           (assign, ":initial_courage_score", 7000),
-         (else_try),
-           (is_between, ":troop_id", bandits_begin, bandits_end),
-           (assign, ":initial_courage_score", 3500),##bandits are cowards
-         (else_try),
-           (is_between, ":troop_id", mercenary_troops_begin, mercenary_troops_end),
-           (assign, ":initial_courage_score", 4000),##mercs have low moral
-         (else_try),
-           (assign, ":initial_courage_score", 5000),
-         (try_end),
+  # (store_random_in_range, ":rand", 1, 101),
+  # (try_begin),
+    # # 1% chance COWARD/PANIC
+    # (eq, ":rand", 1),
+    # (agent_set_slot, ":agent_no", slot_agent_courage_score, 600), #very low Courage
+    # # (try_begin),
+      # # (ge, "$vc_debug_mode", 1),
+      # # (agent_is_ally, ":agent_no"),
+      # # (display_message, "@{!}TEST: There is a Coward in our lines!"),
+    # # (try_end),
+  # (else_try),
+  ##idea is to make barabrians braver so that they dont lose that easily against civilized factions
+    (try_begin),
+      (eq, ":culture", "fac_culture_1"),
+      (assign, ":initial_courage_score", 6500),
+    (else_try),
+      (eq, ":culture", "fac_culture_2"),
+      (assign, ":initial_courage_score", 8000),
+    (else_try),
+      (eq, ":culture", "fac_culture_3"),
+      (assign, ":initial_courage_score", 6500),
+    (else_try),
+      (eq, ":culture", "fac_culture_4"),
+      (assign, ":initial_courage_score", 8500),
+    (else_try),
+      (this_or_next|eq, ":faction", "fac_mountain_bandits"),
+      (eq, ":culture", "fac_culture_8"),##the jewish
+      (assign, ":initial_courage_score", 7000),
+    (else_try),
+      (is_between, ":troop_id", bandits_begin, bandits_end),
+      (assign, ":initial_courage_score", 3500),##bandits are cowards
+    (else_try),
+      (is_between, ":troop_id", mercenary_troops_begin, mercenary_troops_end),
+      (assign, ":initial_courage_score", 4000),##mercs have low moral
+    (else_try),
+      (assign, ":initial_courage_score", 5000),
+    (try_end),
 
-         (try_begin), # defenders higher courage
-           (eq, "$g_empieza_asedio", 1),
-           (agent_get_team, ":team", ":agent_no"),
-           (this_or_next|eq, ":team", 0),
-           (eq, ":team", 2),
-           (val_add, ":initial_courage_score", 2000),
-         (try_end),
+    (try_begin), # defenders higher courage
+      (eq, "$g_empieza_asedio", 1),
+      (agent_get_team, ":team", ":agent_no"),
+      (this_or_next|eq, ":team", 0),
+      (eq, ":team", 2),
+      (val_add, ":initial_courage_score", 2000),
+    (try_end),
 
 
-         (try_begin), #reinforcements recieve a moral boost
-           (this_or_next|ge,"$defender_reinforcement_stage",1),
-           (ge,"$attacker_reinforcement_stage",1),
-           (val_add, ":initial_courage_score", 2500),
-           #(display_message, "@Moral boost for reinforcements applied"),
-         (try_end),
+    (try_begin), #reinforcements recieve a moral boost
+      (this_or_next|ge,"$defender_reinforcement_stage",1),
+      (ge,"$attacker_reinforcement_stage",1),
+      (val_add, ":initial_courage_score", 2500),
+      #(display_message, "@Moral boost for reinforcements applied"),
+    (try_end),
 
-         (try_begin), # ambush effect
-           (eq,"$player_ambushed",3),
-           (agent_is_ally, ":agent_no"),
-           (val_sub, ":initial_courage_score", 1000),
-         (else_try),
-           (eq,"$player_ambushed",3),
-           (neg|agent_is_ally, ":agent_no"),
-           (val_add, ":initial_courage_score", 3000),
-         (try_end),
+    (try_begin), # ambush effect
+      (eq,"$player_ambushed",3),
+      (agent_is_ally, ":agent_no"),
+      (val_sub, ":initial_courage_score", 1000),
+    (else_try),
+      (eq,"$player_ambushed",3),
+      (neg|agent_is_ally, ":agent_no"),
+      (val_add, ":initial_courage_score", 3000),
+    (try_end),
 
-         (try_begin), # ambush effect
-           (eq,"$player_ambushed",4),
-           (agent_is_ally, ":agent_no"),
-           (val_add, ":initial_courage_score", 3000),
-         (else_try),
-           (eq,"$player_ambushed",4),
-           (neg|agent_is_ally, ":agent_no"),
-           (val_sub, ":initial_courage_score", 1000),
-         (try_end),
+    (try_begin), # ambush effect
+      (eq,"$player_ambushed",4),
+      (agent_is_ally, ":agent_no"),
+      (val_add, ":initial_courage_score", 3000),
+    (else_try),
+      (eq,"$player_ambushed",4),
+      (neg|agent_is_ally, ":agent_no"),
+      (val_sub, ":initial_courage_score", 1000),
+    (try_end),
 
-         (try_begin),
-           (is_between, ":faction", minor_kingdoms_begin, minor_kingdoms_end),
-           (val_add, ":initial_courage_score", 2000),
-         (try_end),
-         (try_begin), # berserkers no flee or it is quite difficult to flee.
-           (this_or_next|eq,":troop_id","trp_germanic_berserker"), #berserker
-           (eq,":troop_id","trp_dacian_noble_inf"), #berserker
-           (val_add, ":initial_courage_score", 10000),
-         (try_end),
+    (try_begin),
+      (is_between, ":faction", minor_kingdoms_begin, minor_kingdoms_end),
+      (val_add, ":initial_courage_score", 2000),
+    (try_end),
+    (try_begin), # berserkers no flee or it is quite difficult to flee.
+      (this_or_next|eq,":troop_id","trp_germanic_berserker"), #berserker
+      (eq,":troop_id","trp_dacian_noble_inf"), #berserker
+      (val_add, ":initial_courage_score", 10000),
+    (try_end),
 
-         (try_begin),
-           (troop_is_mounted, ":troop_id"),
-           (val_add, ":initial_courage_score", 2000),
-         (try_end),
-        # (agent_get_troop_id, ":troop_id", ":agent_no"),
-         (store_character_level, ":troop_level", ":troop_id"),
-         (val_mul, ":troop_level", 200), #was 100
-         #I want to make the difference to high level troops a bit bigger
-         (val_add, ":initial_courage_score", ":troop_level"), #average : 25 * 100 = 2500
+    (try_begin),
+      (troop_is_mounted, ":troop_id"),
+      (val_add, ":initial_courage_score", 2000),
+    (try_end),
+  # (agent_get_troop_id, ":troop_id", ":agent_no"),
+    (store_character_level, ":troop_level", ":troop_id"),
+    (val_mul, ":troop_level", 200), #was 100
+    #I want to make the difference to high level troops a bit bigger
+    (val_add, ":initial_courage_score", ":troop_level"), #average : 25 * 100 = 2500
 
-         (store_random_in_range, ":randomized_addition_courage", 0, 1000), #average : 1500
-         (val_add, ":initial_courage_score", ":randomized_addition_courage"),
+    (store_random_in_range, ":randomized_addition_courage", 0, 1000), #average : 1500
+    (val_add, ":initial_courage_score", ":randomized_addition_courage"),
 
-         (agent_get_party_id, ":agent_party", ":agent_no"),
-         (assign, ":cur_morale", 100),
-         (try_begin),
-           (gt, ":agent_party", -1),
-           (party_get_morale, ":cur_morale", ":agent_party"),
-         (try_end),
+    (agent_get_party_id, ":agent_party", ":agent_no"),
+    (assign, ":cur_morale", 100),
+    (try_begin),
+      (gt, ":agent_party", -1),
+      (party_get_morale, ":cur_morale", ":agent_party"),
+    (try_end),
 
-         (store_sub, ":morale_effect_on_courage", ":cur_morale", 70),
-         (val_mul, ":morale_effect_on_courage", 30), #this can effect morale with -2100..900
-         (val_add, ":initial_courage_score", ":morale_effect_on_courage"),
+    (store_sub, ":morale_effect_on_courage", ":cur_morale", 70),
+    (val_mul, ":morale_effect_on_courage", 30), #this can effect morale with -2100..900
+    (val_add, ":initial_courage_score", ":morale_effect_on_courage"),
 
-         #average = 3000 + 2500 + 500 = 6000; min : 4800, max : 9000
-         #morale effect = min : -2100(party morale is 0), average : 0(party morale is 70), max : 900(party morale is 100)
-         #min starting : 2700, max starting  : 9900, average starting : 6000
-         (val_max, ":initial_courage_score", 100),##at least they shall have 100
-         (agent_set_slot, ":agent_no", slot_agent_courage_score, ":initial_courage_score"),
-	# (try_end),
-         ]),
+    #average = 3000 + 2500 + 500 = 6000; min : 4800, max : 9000
+    #morale effect = min : -2100(party morale is 0), average : 0(party morale is 70), max : 900(party morale is 100)
+    #min starting : 2700, max starting  : 9900, average starting : 6000
+    (val_max, ":initial_courage_score", 100),##at least they shall have 100
+    (agent_set_slot, ":agent_no", slot_agent_courage_score, ":initial_courage_score"),
+  ]),
 
   (ti_on_agent_killed_or_wounded, 0, 0, [],[
     (assign, ":ally_standing", 0),
@@ -4271,7 +4270,12 @@ morale_triggers = [
         (store_div, ":enemy_delta_courage", ":ally_delta_courage", -3),#So other side gets a 33% bonus
         (assign, "$ally_courage_pen_stage", 1),
         #(play_sound, "snd_enemy_scored_a_point"),
-        (play_sound, "snd_horn"),
+        (try_begin),
+          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+          (play_sound, "snd_cornu"),
+        (else_try),
+          (play_sound, "snd_horn"),
+        (try_end),
         (display_message, "@We lost a quarter of our troops in a very short time. The hearts of our troops are filled with fear.", color_terrible_news),
       (else_try),
         (eq, "$ally_courage_pen_stage", 1),
@@ -4284,7 +4288,12 @@ morale_triggers = [
         (store_div, ":enemy_delta_courage", ":ally_delta_courage", -3),#So other side gets a 33% bonus
         (assign, "$ally_courage_pen_stage", 2),
         #(play_sound, "snd_enemy_scored_a_point"),
-        (play_sound, "snd_horn"),
+        (try_begin),
+          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+          (play_sound, "snd_cornu"),
+        (else_try),
+          (play_sound, "snd_horn"),
+        (try_end),
         (display_message, "@Half of our army has fallen within a very short time. The troops panic!", color_terrible_news),
       (try_end),
     (else_try),
@@ -4301,7 +4310,12 @@ morale_triggers = [
         (store_div, ":ally_delta_courage", ":enemy_delta_courage", -3),#So other side gets a 33% bonus
         (assign, "$enemy_courage_pen_stage", 1),
         #(play_sound, "snd_team_scored_a_point"),
-        (play_sound, "snd_horn"),
+        (try_begin),
+          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+          (play_sound, "snd_cornu"),
+        (else_try),
+          (play_sound, "snd_horn"),
+        (try_end),
         (display_message, "@The enemy lost a quarter of his troops in a very short time. The hearts of his troops are filled with fear.", color_good_news),
       (else_try),
         (eq, "$enemy_courage_pen_stage", 1),
@@ -4314,7 +4328,12 @@ morale_triggers = [
         (store_div, ":ally_delta_courage", ":enemy_delta_courage", -3),#So other side gets a 33% bonus
         (assign, "$enemy_courage_pen_stage", 2),
         #(play_sound, "snd_team_scored_a_point"),
-        (play_sound, "snd_horn"),
+        (try_begin),
+          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+          (play_sound, "snd_cornu"),
+        (else_try),
+          (play_sound, "snd_horn"),
+        (try_end),
         (display_message, "@Half of the enemy army has fallen within a very short time. His troops panic.", color_good_news),
       (try_end),
     (try_end),

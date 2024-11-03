@@ -6253,7 +6253,7 @@ An estimated 70,000 to 80,000 Romans and British were then killed in the three c
   ("dplmc_good_quantity", "a slightly poor quality"),
   ("dplmc_mediocre_quality", "a mediocre quality"),
   ("dplmc_good_quality", "a good quality"),
-  ("dplmc_great_quality", "a great quality"),
+  ("dplmc_great_quality", "a high quality"),
   ("dplmc_very_quality", "a very high quality"),
 
   ("dplmc_s21_the_s8_declared_war_to_fulfil_pact", "{s21}. The {s8} declared war to fulfil a pact."),

@@ -2219,7 +2219,31 @@ game_menus = [
 
       (start_presentation, "prsnt_display_special_items"),
     ]),
-
+    # ("camp_action",[
+    # ],"Export volunteer limits.",[
+    #   ## init recruits for player recruitement
+    #   (display_message, "@type, province, center, peasants, nobles, mercs"),
+    #   (try_for_range, ":center_no", centers_begin, centers_end),
+    #       (call_script, "script_get_volunteer_limits", ":center_no"),
+    #       (party_set_slot, ":center_no", slot_center_peasant_troop_amount, reg1),
+    #       (party_set_slot, ":center_no", slot_center_volunteer_noble_troop_amount, reg2),
+    #       (party_set_slot, ":center_no", slot_center_mercenary_troop_amount, reg3),
+    #       (str_store_party_name, s10, ":center_no"),
+    #       (try_begin),
+    #           (is_between, ":center_no", villages_begin, villages_end),
+    #           (str_store_string, s11, "@village"),
+    #       (else_try),
+    #           (is_between, ":center_no", castles_begin, castles_end),
+    #           (str_store_string, s11, "@castle"),
+    #       (else_try),
+    #           (str_store_string, s11, "@town"),
+    #       (try_end),
+    #       (party_get_slot, ":province", ":center_no", slot_center_province),
+    #       (val_add, ":province", str_province_begin),
+    #       (str_store_string, s12, ":province"),
+    #       (display_message, "@{s11}, {s12}, {s10}, {reg1}, {reg2}, {reg3}"),
+    #   (try_end),
+    # ]),
     # ("camp_action",[
     # ],"Test scene.",[
     #   #1,2 player antonia,
@@ -2229,7 +2253,6 @@ game_menus = [
     #   (jump_to_scene, "scn_cutscene_rome_victory_2"),
     #   (change_screen_mission),
     # ]),
-
     # ("camp_action",[
     #   (ge, "$cheat_mode", 1)
     # ],"CHEAT add all legendary items.",[
@@ -2245,12 +2268,10 @@ game_menus = [
       (troop_set_slot, "trp_sporus", slot_troop_betrothed, 0),
       (change_screen_map),
     ]),
-
     # ("camp_action",[
     # ],"Test event",[
     #   (jump_to_menu, "mnu_emperor_event_26"),
     # ]),
-
     # ("camp_action",[
     #   (ge, "$cheat_mode", 1)
     # ],"Test marshal election.",[
@@ -13007,67 +13028,6 @@ game_menus = [
     ]),
 ]),
 
-("recruit_volunteers_castle",0,
-  "{s18}",
-  "none",[
-    (party_get_slot, ":volunteer_troop", "$current_town", slot_center_volunteer_troop_type),
-    (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
-    (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-    (store_troop_gold, ":gold", "trp_player"),
-    (store_div, ":gold_capacity", ":gold", 500),#500 denars per man
-    (assign, ":party_capacity", ":free_capacity"),
-    (val_min, ":party_capacity", ":gold_capacity"),
-    (try_begin),
-      (gt, ":party_capacity", 0),
-      (val_min, ":volunteer_amount", ":party_capacity"),
-    (try_end),
-    (assign, reg5, ":volunteer_amount"),
-    (assign, reg7, 0),
-    (try_begin),
-      (gt, ":volunteer_amount", ":gold_capacity"),
-      (assign, reg7, 1), #not enough money
-    (try_end),
-    (try_begin),
-      (eq, ":volunteer_amount", 0),
-      (str_store_string, s18, "@No one here seems to be willing to join your party."),
-    (else_try),
-      (store_mul, reg6, ":volunteer_amount", 500),#500 denars per man
-      (str_store_troop_name_by_count, s3, ":volunteer_troop", ":volunteer_amount"),
-      (try_begin),
-        (eq, reg5, 1),
-        (str_store_string, s18, "@One  {s3} volunteer to follow you."),
-      (else_try),
-        (str_store_string, s18, "@{reg5}  {s3} volunteer to follow you."),
-      (try_end),
-      (set_background_mesh, "mesh_pic_recruits"),
-    (try_end),
-  ],[
-  ("continue",[
-    (eq, reg7, 0),
-    (eq, reg5, 0),
-  ],"Continue...",[
-    (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
-    (jump_to_menu,"mnu_town"),
-  ]),
-  ("recruit_them",[
-    (eq, reg7, 0),
-    (gt, reg5, 0),
-  ],"Recruit them ({reg6} denars).",[
-    (call_script, "script_castle_recruit_volunteers_recruit"),
-    (jump_to_menu,"mnu_town"),
-  ]),
-  ("continue_not_enough_gold",[
-    (eq, reg7, 1),
-    (disable_menu_option),
-  ],"I don't have enough money...",[
-    (jump_to_menu,"mnu_town"),
-  ]),
-  ("forget_it",[
-  ],"Forget it.",[
-    (jump_to_menu,"mnu_town"),
-  ]),
-]),
-
 ("village_hunt_down_fugitive_defeated",0,
   "A heavy blow from the fugitive sends you to the ground, and your vision spins and goes dark. Time passes. When you open your eyes again you find yourself battered and bloody, but luckily none of the wounds appear to be lethal.",
   "none",[
@@ -13265,6 +13225,7 @@ game_menus = [
         (party_set_slot, "$current_town", slot_center_volunteer_noble_troop_amount, 0),
         (party_set_slot, "$current_town", slot_center_mercenary_troop_amount_2, 0),
         (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, 0),
+        (party_set_slot, "$current_town", slot_center_peasant_troop_amount, 0),
         (party_set_slot, "$current_town", slot_center_capital, 0),
 
         (party_get_slot, ":new_rents", "$current_town", slot_center_accumulated_rents),
@@ -31464,6 +31425,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (str_store_string, s5, "@The town has no {s0} build."),
     (assign, reg22, 0),
     (try_begin),
+        (neg|is_between, "$g_encountered_party", minor_towns_begin, minor_towns_end),
         (party_get_slot, reg22, "$current_town", slot_center_has_barracks),
         (ge, reg22, 1),
         (try_begin),
@@ -31494,7 +31456,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (set_background_mesh, "mesh_pic_recruits"),
   ],[
     ("rec_visit",[
-      (party_slot_ge, "$current_town", slot_center_has_barracks,1),
+      (party_slot_ge, "$current_town", slot_center_has_barracks, 1),
+      (neg|is_between, "$g_encountered_party", minor_towns_begin, minor_towns_end),
       # (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
       # (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
     ],"Walk around.",[
@@ -56101,14 +56064,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
- ("recruit_refugees",0,
-    "Because you are not renowned enough the local leader doesn't allow you to hire skilled men.^^(You need more than 100 renown for access to such troops.)^^^^Nevertheless, you can ask around if some shepherds or poor farmers volunteer to join your party.",
- "none",
-    [],
-    [
-      ("op1",[],
-       "Ask around.",
-       [
+("recruit_refugees",0,
+  "Because you are not renowned enough the local leader doesn't allow you to hire skilled men.^^(You need more than 100 renown for access to such troops.)^^^^Nevertheless, you can ask around if some shepherds or poor farmers volunteer to join your party.",
+  "none",[
+  ],[
+    ("op1",[],"Ask around.",[
       (store_random_in_range, ":rand", 0, 8),
       (store_random_in_range, ":rand", 0, 8),
       (try_begin),
@@ -56136,12 +56096,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu,"mnu_refugee_recruit_troops22"),
       (try_end),
       (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
-       ]),
-      ("op2",[],
-       "Go back.",
-       [(jump_to_menu, "mnu_village"),]),
-
- ]),
+    ]),
+    ("op2",[],"Go back.",[
+      (jump_to_menu, "mnu_village"),
+    ]),
+]),
 
 ("minotau_defeated",0,
   "You defeated the 'Minotaur'. It seems this creature was just a mentally ill bandit. You search for loot, but the only valueable object is the axe the Minotaur used to fight."

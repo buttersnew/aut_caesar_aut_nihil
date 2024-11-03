@@ -516,6 +516,7 @@ slot_town_arena_melee_cur_tier    = 81
 # slot_num_hours_battle_icon_on_map	   = 82
 
 # slot_center_npc_volunteer_troop_type   = 83
+slot_center_peasant_troop_amount = 83
 slot_center_mercenary_troop_amount_2 = 84
 
 slot_center_mercenary_troop_type  = 85
