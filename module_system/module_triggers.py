@@ -32,6 +32,10 @@ triggers = [
     ## init recruits for player recruitement
     # (display_message, "@type, province, center, peasants, nobles, mercs"),
     (try_for_range, ":center_no", centers_begin, centers_end),
+        (try_begin),
+            (is_between, ":center_no", villages_begin, villages_end),
+            (call_script, "script_update_volunteer_troops_in_village", ":center_no"),
+        (try_end),
         (call_script, "script_get_volunteer_limits", ":center_no"),
         (party_set_slot, ":center_no", slot_center_peasant_troop_amount, reg1),
         (party_set_slot, ":center_no", slot_center_volunteer_noble_troop_amount, reg2),
