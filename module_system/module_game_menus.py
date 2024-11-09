@@ -49066,11 +49066,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-  (
-    "player_attach",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "Your service in {s20} starts.^^{s33}",
-    "none",
-    [
+("player_attach",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Your service in {s20} starts.^^{s33}",
+  "none",[
     (str_store_party_name, s20, "$g_encountered_party"),
     (str_clear, s33),
     (call_script, "script_start_freelancing", "$g_encountered_party"),
@@ -49078,16 +49076,16 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_state, 1),
       (str_store_string, s33, "@After the quartermaster has given you the equipment, a centurio orders you to follow him. You and other recruits await the order of the centurio."),
     (try_end),
-    ],[
-       ("continue",[(neg|quest_slot_eq, "qst_freelancing", slot_quest_freelancer_state, 1),
-      ],"Continue...",[
+  ],[
+    ("continue",[
+      (neg|quest_slot_eq, "qst_freelancing", slot_quest_freelancer_state, 1),
+    ],"Continue...",[
       (change_screen_map),
-      ]),
-
-      ("continue",[(quest_slot_eq, "qst_freelancing", slot_quest_freelancer_state, 1),
-      ],"Continue...",[
+    ]),
+    ("continue",[
+      (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_state, 1),
+    ],"Continue...",[
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 2),
-
       (modify_visitors_at_site,"scn_follower_camp"),
       (reset_visitors),
       (set_visitor, 42, "trp_centurio_west"),
@@ -49099,20 +49097,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_scene, "scn_follower_camp"),
       (set_jump_mission,"mt_first_training"),
       (change_screen_mission),
-      ]),
-
-    ]
-  ),
-  (
-    "training",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You follow the centurio to a small training field. You and the recruit who has been punished before will have to train together.\
- You receive the proper training equipment, then the centurio approaches.",
-    "none",
-    [(set_background_mesh, "mesh_pic_mb_warrior_2"),
+    ]),
+]),
+("training",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You follow the centurio to a small training field. You and the recruit who has been punished before will have to train together."
+  +" You receive the proper training equipment, then the centurio approaches.",
+    "none",[
+      (set_background_mesh, "mesh_pic_mb_warrior_2"),
     ],[
-       ("continue",[
-      ],"Continue...",[
-
+    ("continue",[],"Continue...",[
       (modify_visitors_at_site,"scn_training_ground"),
       (reset_visitors),
       (set_visitor,0,"trp_player"),
@@ -49128,58 +49121,38 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_scene, "scn_training_ground"),
       (set_jump_mission,"mt_training_centurio"),
       (change_screen_mission),
-      ]),
-
-    ]
-  ),
-  (
-    "training_2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "After the centurio leaves, you and your training partner continue to fight until nightfall. Exhausted, you march back to the camp.",
-    "none",
-    [(set_background_mesh, "mesh_pic_mb_warrior_2"),
-    ],[
-       ("continue",[
-      ],"Continue...",[
-     (store_skill_level, ":throwing", "skl_power_throw", "trp_player"),
+    ]),
+]),
+("training_2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "After the centurio leaves, you and your training partner continue to fight until nightfall. Exhausted, you march back to the camp.",
+  "none",[
+    (set_background_mesh, "mesh_pic_mb_warrior_2"),
+  ],[
+  ("continue",[],"Continue...",[
+    (store_skill_level, ":throwing", "skl_power_throw", "trp_player"),
     # (lt, ":throwing", 3),
-     (store_sub, ":addition", 3, ":throwing"),
-     (try_begin),
+    (store_sub, ":addition", 3, ":throwing"),
+    (try_begin),
       (ge, ":addition", 1),
       (troop_raise_skill, "trp_player","skl_power_throw", ":addition"),
-     (try_end),
-     (store_proficiency_level, ":throwing_prof","trp_player", wpt_throwing),
-     (store_sub, ":addition", 100, ":throwing_prof"),
-     (try_begin),
+    (try_end),
+    (store_proficiency_level, ":throwing_prof","trp_player", wpt_throwing),
+    (store_sub, ":addition", 100, ":throwing_prof"),
+    (try_begin),
       (ge, ":addition", 1),
       (troop_raise_proficiency, "trp_player", wpt_throwing, ":addition"),
-     (try_end),
-     (store_proficiency_level, ":throwing_prof","trp_player", wpt_one_handed_weapon),
-     (store_sub, ":addition", 100, ":throwing_prof"),
-     (try_begin),
+    (try_end),
+    (store_proficiency_level, ":throwing_prof","trp_player", wpt_one_handed_weapon),
+    (store_sub, ":addition", 100, ":throwing_prof"),
+    (try_begin),
       (ge, ":addition", 1),
       (troop_raise_proficiency, "trp_player", wpt_one_handed_weapon, ":addition"),
-     (try_end),
-     (add_xp_as_reward, 2000),
+    (try_end),
+    (add_xp_as_reward, 2000),
 
-     (call_script, "script_freelancer_add_progress", 15),
-     (change_screen_map),
-      ]),
-
-    ]
-  ),
-("freelancer_event_0",0,
-  "Campfire song^^While sitting at the camp fire, a soldier starts to sing with a deep and sad voice. Soon the others join in:^^"+
-  "'Hardship times for legionary, one two three! Fate harasses him like cholera, one two three! To work much and eat little, march as ordered, one two, one two three!' ^^"+
-  "'Friend-pilum overcomes the hand, one two three! Scutum hits the knee, one two three! And at belt a gladius and your pack with private things, one two, one two three!' ^^"+
-  "'Before there were better times, one two three! Because you could eat what you like, one two three! Before such times will arrive again, you will fall die long ago, one two, one two three!'^^"+
-  "'Centuriones wake up early, one two three! Legionaries can't wake up later, one two three! Just you could wear your armor! Go to training field, brother! One two, one two three!'",
-  "none",[
-    (set_background_mesh, "mesh_pic_legion_march"),
-  ],[
-    ("continue",[],"Continue...",[
-      (call_script, "script_freelancer_add_progress", 5),
-      (change_screen_map),
-    ]),
+    (call_script, "script_freelancer_add_progress", 15),
+    (change_screen_map),
+  ]),
 ]),
 ("freelancer_event_pret_1",0,
   "Grain riots^^{s15} has recieved a message, from Tigellinus, the praefectus urbi. He needs a detachment of soldiers in the capital. It seems some riots broke out because Nero used a fraction of the funds"
@@ -50229,6 +50202,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_camp"),
   ],[
     ("continue",[],"Continue...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 3),
+
       (modify_visitors_at_site,"scn_follower_camp"),
       (reset_visitors),
 
@@ -50296,6 +50271,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Investigate this...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 4),
       # (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
       (modify_visitors_at_site,"scn_small_forest"),
       (reset_visitors),
@@ -50334,11 +50310,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Wake him up.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 6),
+
       (call_script, "script_change_player_honor", 1),
       (display_message, "@The soldier is happy about your help", color_good_news),
       (change_screen_map),
     ]),
     ("continue",[],"Tell it the centurio.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 6),
+
       (add_xp_as_reward, 150),
       (call_script, "script_change_player_honor", -1),
       (call_script, "script_freelancer_add_progress", 15),
@@ -50346,6 +50326,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Do nothing.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 6),
+
       (change_screen_map),
     ]),
 ]),
@@ -50382,6 +50364,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Try to stop them from escaping alone. (risky)",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 8),
       (jump_to_scene, "scn_bandit_camp"),
       (assign, "$talk_context", 0),#fix a possible bug
       (modify_visitors_at_site,"scn_bandit_camp"),
@@ -50401,6 +50384,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_mission),
     ]),
     ("continue",[],"Give alarm and then chase them.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 8),
       (jump_to_scene, "scn_bandit_camp"),
       (modify_visitors_at_site,"scn_bandit_camp"),
       (reset_visitors),
@@ -50419,6 +50403,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_mission),
     ]),
     ("continue",[],"Do nothing and risk getting punished.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 8),
       (str_store_string, s1, "@On the next day, a large amount of supplies is missing. All soldiers who where on watch get punished, you included."),
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
@@ -50458,6 +50443,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Tell it the Centurio. They have abused their position and brought shame onto Caesar!",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 9),
       (add_xp_as_reward, 50),
       (call_script, "script_change_troop_renown", "trp_player", 1),
       (str_store_string, s1, "@The centurio lauds you for your exemplary behavior. The soldiers get punished. They will now think twice before they will abuse their position again. On the other hand, nobody likes telltales and your relation with the other soldiers suffer..."),
@@ -50465,6 +50451,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Ignore the situation.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 9),
       (change_screen_map),
     ]),
 ]),
@@ -50478,6 +50465,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Order the soldiers to release the girl and the unlawfully taken goods. We only take the cattle not more!",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 11),
       (call_script, "script_change_troop_renown", "trp_player", 7),
       (call_script, "script_change_player_honor", 2),
       (call_script, "script_freelancer_add_progress", 10),
@@ -50485,11 +50473,13 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Order to punish the farmer for attacking representatives of the Princeps.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 11),
       (call_script, "script_change_player_honor", -2),
       (str_store_string, s1, "@The farmer is punished with his stick and the girl will now serve as follower woman."),
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Order not only to punish the farmer for attacking representatives of the Princeps but take also all his other goods and gold.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 11),
       (troop_add_gold, "trp_player", 2500),
       (call_script, "script_change_player_honor", -5),
       (str_store_string, s1, "@The farmer is punished with his stick and the girl will now serve as follower woman.^You loot the homestead of the farmer and find 2,500 denars."),
@@ -50506,6 +50496,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Whip them one hundred times! Such laziness needs a proper punishment.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 10),
       (call_script, "script_change_troop_renown", "trp_player", -1),
       (call_script, "script_change_player_honor", -1),
       (call_script, "script_freelancer_add_progress", -2),
@@ -50513,11 +50504,13 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Whip them twenty times. That's enough.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 10),
       (call_script, "script_freelancer_add_progress", 5),
       (str_store_string, s1, "@You punish all soldiers who neglected their weapons. The punishment was proper."),
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Don't punish them at all.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 10),
       (call_script, "script_freelancer_add_progress", -5),
       (str_store_string, s1, "@As your superiors hear about it they order to punish you and your soldiers."),
       (jump_to_menu, "mnu_freelancer_event_punishment"),
@@ -50538,6 +50531,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Enter the tent.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 12),
       (modify_visitors_at_site,"scn_commander_camp"),
       (reset_visitors),
       (set_visitor, 0, "trp_player"),
@@ -50552,6 +50546,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_mission),
     ]),
     ("continue",[],"Wait outside...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 12),
       (display_message, "@After the meeting is over you deliver the report."),
       (change_screen_map),
     ]),
@@ -50568,9 +50563,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Walk towards the aquilifer, tear out the aquila of his hands and RUN!",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 13),
       (jump_to_menu, "mnu_freelancer_event_7_reaction"),
     ]),
     ("continue",[],"A rest sounds fine...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 13),
       (display_message, "@As {s1} doesn't want a mutiny he finally agrees to set up a camp..."),
       (change_screen_map),
     ]),
@@ -50599,6 +50596,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Accept the offer. The soldiers deserve it.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 14),
       (add_xp_as_reward, 50),
       (call_script, "script_freelancer_add_progress", -5),
       (call_script, "script_change_player_honor", 3),
@@ -50607,6 +50605,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
     ("continue",[],"Reject the offer. We have a strict deadline to finish the road.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 14),
       (add_xp_as_reward, 50),
       (call_script, "script_freelancer_add_progress", 5),
       (call_script, "script_change_player_honor", -1),
@@ -50616,6 +50615,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
     ("continue",[],"Reject the offer and use the whip more often to force the soldiers to work harder.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 14),
       (add_xp_as_reward, 50),
       (call_script, "script_freelancer_add_progress", 15),
       (call_script, "script_change_player_honor", -3),
@@ -50625,6 +50625,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
     ("continue",[],"The soldiers must work, but I could need some company...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 14),
       (call_script, "script_freelancer_add_progress", 5),
       (call_script, "script_change_troop_renown", "trp_player", 2),
       (add_xp_as_reward, 500),
@@ -50659,6 +50660,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Go to the commanders tent.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 15),
       (modify_visitors_at_site,"scn_commander_camp"),
       (reset_visitors),
       (set_visitor, 0, "trp_player"),
@@ -50786,9 +50788,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"I'll show that bastard a lesson...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 7),
       (jump_to_menu, "mnu_duel_2"),
     ]),
     ("continue",[],"Temperance is a virtue.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 7),
       (call_script, "script_freelancer_add_progress", 5),
       (change_screen_map),
     ]),
@@ -50827,6 +50831,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Suggest decimation: This harsh treatment will guarantee discipline.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 17),
       (add_xp_as_reward, 150),
       (call_script,"script_change_player_relation_with_troop", "$temp2", 2),
       (call_script, "script_change_troop_renown", "trp_player", 2),
@@ -50835,6 +50840,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Suggest to search for the main troublemaker and punish them.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 17),
       (add_xp_as_reward, 150),
       (call_script,"script_change_player_relation_with_troop", "$temp2", 4),
       (call_script, "script_change_troop_renown", "trp_player", 5),
@@ -50843,11 +50849,13 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Suggest to pay some women from nearby villages to entertain the troops.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 17),
       (add_xp_as_reward, 150),
       (str_store_string, s1, "@After you made your suggestion {s31} laughs and says, you only suggested that to get the most prettiest woman for yourself. ^^To resolve the issue, {s31} decides to systematically punish the troublemakers and finally discipline is restored."),
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
     ("continue",[],"Make no suggestion.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 17),
       (display_message, "@{s31} decides to systematically punish the troublemakers and finally discipline is restored."),
       (change_screen_map),
     ]),
@@ -50863,9 +50871,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Intervene immediately.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 19),
       (jump_to_menu, "mnu_freelancer_event_12_1"),
     ]),
     ("continue",[],"Ingore it and do nothing.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 19),
       (change_screen_map),
     ]),
 ]),
@@ -50926,23 +50936,28 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_centurio"),
     (try_begin),
       (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_treatment, 1),
-      (str_store_string, s11, "@You are trying hard to remember the names of your soldiers and to be just in your decisions."
-      +" Your efforts have bear fruits: The soldiers respect you more than the other officers. Whenever a soldiers meets you he bows before you. Not because of your rank, but"
-      +" because of respect towards you. The soldiers are greeting you if you walk past them. They call you just and a true Roman."),
+      (str_store_string, s11, "@You strive to remember each soldier's name and to act with fairness in every decision."
+      + " Your dedication has borne fruit: the soldiers hold you in higher regard than any other officer."
+      + " When a soldier meets you, he bows—not out of obligation to your rank, but"
+      + " out of genuine respect for you. As you walk past, the soldiers greet you warmly."
+      + " They call you fair and a true Roman."),
       (call_script, "script_change_troop_renown", "trp_player", 10),
       (call_script, "script_change_player_honor", 4),
       (call_script, "script_freelancer_add_progress", 15),
       (add_xp_as_reward, 150),
     (else_try),
       (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_treatment, -1),
-      (str_store_string, s11, "@The way you treat your soldiers is like any other officer does. You don't care much about your soldiers, as you know,"
-      +" they will die soon anyways. You are doing your job as supposed. The soldiers are respecting you and bow before you, but not because they think you are a good officer, but"
-      +" simply because they fear your whip."),
+      (str_store_string, s11,"@You treat your soldiers no differently than any other officer. You don’t invest much care in them, knowing well"
+      + " they are likely to die soon anyway. You perform your duties as expected."
+      + " The soldiers respect you and bow before you, but not out of admiration or loyalty."
+      + " They do so purely out of fear of your whip."
+),
       (call_script, "script_freelancer_add_progress", 3),
       (add_xp_as_reward, 50),
     (try_end),
   ],[
     ("continue",[],"Continue...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 16),
       (change_screen_map),
     ]),
 ]),
@@ -50964,6 +50979,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Legio! Aeterna! Aeterna! Victrix!",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 5),
       (assign, reg50, 1),
       (set_jump_mission,"mt_legion_marsh"),
       (modify_visitors_at_site,"scn_marsh_with_the_legion"),
@@ -50983,7 +50999,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_mission),
     ]),
 ]),
-
 ("freelancer_event_14",0,
   "Omens^^The soldiers are restless. A series of bad omens have caused them to believe that the gods are angry and soon an inevitable evil will struck the legion."
   +" The morale of the troops is low and discipline suffers. If nothing is done, some will probably desert.",
@@ -50991,9 +51006,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_legion_march"),
   ],[
     ("continue",[],"I should do something. I will make a sacrifice.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 18),
       (jump_to_menu, "mnu_freelancer_event_14_reaction"),
     ]),
     ("continue",[],"There is nothing to be done if the gods are angry.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 18),
       (display_message, "@No evil struck the legion, but still some soldiers desert as they think the legion is doomed.", color_bad_news),
       (change_screen_map),
     ]),
@@ -51037,6 +51054,22 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_map),
     ]),
 ]),
+("freelancer_event_0",0,
+  "Campfire song^^While sitting at the camp fire, a soldier starts to sing with a deep and sad voice. Soon the others join in:^^"+
+  "'Hardship times for legionary, one two three! Fate harasses him like cholera, one two three! To work much and eat little, march as ordered, one two, one two three!' ^^"+
+  "'Friend-pilum overcomes the hand, one two three! Scutum hits the knee, one two three! And at belt a gladius and your pack with private things, one two, one two three!' ^^"+
+  "'Before there were better times, one two three! Because you could eat what you like, one two three! Before such times will arrive again, you will fall die long ago, one two, one two three!'^^"+
+  "'Centuriones wake up early, one two three! Legionaries can't wake up later, one two three! Just you could wear your armor! Go to training field, brother! One two, one two three!'",
+  "none",[
+    (set_background_mesh, "mesh_pic_legion_march"),
+  ],[
+    ("continue",[],"Continue...",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 20),
+      (call_script, "script_freelancer_add_progress", 5),
+      (change_screen_map),
+    ]),
+]),
+
 ("freelancing_battle_event",0,
   "{s46}.",
   "none",[

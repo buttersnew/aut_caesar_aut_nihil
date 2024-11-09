@@ -23666,19 +23666,17 @@ presentations = [
         # (try_end),
       ]),
   ]),
-
 ##########TROOP TREE END
 
 # __Freelancer Report: Commander_:Start_________________________________________________
-
 ("taragoth_lords_report", 0, mesh_load_window, [
 	(ti_on_presentation_load,[
 		(presentation_set_duration, 999999),
 		(set_fixed_point_multiplier, 1000),
     (party_stack_get_troop_id, ":lord", "$enlisted_party", 0),
 		#title
-		(create_text_overlay, reg0, "@Commander's Report", tf_left_align),
-		(position_set_x, pos1, 50),
+		(create_text_overlay, reg0, "@Overview", tf_left_align|tf_with_outline),
+		(position_set_x, pos1, 80),
 		(position_set_y, pos1, 650),
 		(overlay_set_position, reg0, pos1),
 		(position_set_x, pos1, 1500),
@@ -23692,7 +23690,7 @@ presentations = [
 		#(overlay_set_position, reg0, pos1),
 
 		(assign, ":cur_y_adder", 35),  #the amount of space between lines
-		(assign, ":cur_y", 580),
+		(assign, ":cur_y", 615),
 		(position_set_x, pos1, 50),
 
 		#Commander_name
@@ -23778,22 +23776,29 @@ presentations = [
 		(overlay_set_position, reg0, pos1),
 		(val_sub, ":cur_y", ":cur_y_adder"),
 
+    (call_script, "script_freelancer_get_event", 1000),
+    (val_sub, reg21, 1),
+		(create_text_overlay, reg0, "@Events resolved: {reg21} of {reg23}", tf_left_align),
+		(position_set_y, pos1, ":cur_y"),
+		(overlay_set_position, reg0, pos1),
+		(val_sub, ":cur_y", ":cur_y_adder"),
+
+		#commanders_army_title
+		(create_text_overlay, reg0, "@Legion's troops", tf_left_align|tf_with_outline),
+		(position_set_x, pos1, 650),
+		(position_set_y, pos1, 435),
+		(overlay_set_position, reg0, pos1),
+
 		#Commanders_troops size(right side)
 		(store_party_size_wo_prisoners,":army_size","$enlisted_party"),
 		(assign, reg26, ":army_size"),
-		(create_text_overlay, reg0, "@Party size: {reg26}", tf_left_align),
-		(position_set_x, pos1, 800),
-		(position_set_y, pos1, 60),
+		(create_text_overlay, reg0, "@Total: {reg26}", tf_left_align),
+		(position_set_x, pos1, 585),
+		(position_set_y, pos1, 405),
 		(overlay_set_position, reg0, pos1),
 		(position_set_x, pos1, 900),
-      (position_set_y, pos1, 900),
-      (overlay_set_size, reg0, pos1),
-
-		#commanders_army_title
-		(create_text_overlay, reg0, "@Party information:", tf_left_align),
-		(position_set_x, pos1, 500),
-		(position_set_y, pos1, 430),
-		(overlay_set_position, reg0, pos1),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg0, pos1),
 
     #camp  pic
 		(create_mesh_overlay, reg0, "mesh_pic_camp"),

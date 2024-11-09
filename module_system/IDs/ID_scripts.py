@@ -993,3 +993,4 @@ script_cf_troop_has_trait = 991
 script_display_available_recruits = 992
 script_take_recruits_from_province = 993
 script_print_lord_intro_to_s11 = 994
+script_freelancer_get_event = 995
