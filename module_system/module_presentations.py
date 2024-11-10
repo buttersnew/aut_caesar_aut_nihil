@@ -23776,7 +23776,7 @@ presentations = [
 		(overlay_set_position, reg0, pos1),
 		(val_sub, ":cur_y", ":cur_y_adder"),
 
-    (call_script, "script_freelancer_get_event", 1000),
+    (call_script, "script_freelancer_get_event", 1000, 50),
     (val_sub, reg21, 1),
 		(create_text_overlay, reg0, "@Events resolved: {reg21} of {reg23}", tf_left_align),
 		(position_set_y, pos1, ":cur_y"),

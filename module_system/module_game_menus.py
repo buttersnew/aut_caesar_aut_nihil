@@ -59934,6 +59934,10 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (try_end),
   ],[
     ("option_2", [
+      (store_faction_of_party, ":fac", "$g_notification_menu_var1"),
+      (is_between, ":fac", kingdoms_begin, kingdoms_end),
+      (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
+      (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
       (lt, "$temp4", 0),
       (assign, reg11, "$temp4_1"),
     ],"Sent {reg11} denars.",[
@@ -59957,6 +59961,10 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
+      (store_faction_of_party, ":fac", "$g_notification_menu_var1"),
+      (is_between, ":fac", kingdoms_begin, kingdoms_end),
+      (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
+      (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
       (lt, "$temp4", 0),
       (store_mul, reg10, "$temp4_1", 2),
       (val_div, reg10, 3)
@@ -59981,6 +59989,10 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
+      (store_faction_of_party, ":fac", "$g_notification_menu_var1"),
+      (is_between, ":fac", kingdoms_begin, kingdoms_end),
+      (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
+      (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
       (lt, "$temp4", 0),
       (store_div, reg10, "$temp4_1", 2),
     ],"Sent {reg10} denars.",[
