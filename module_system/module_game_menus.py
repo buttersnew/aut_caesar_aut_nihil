@@ -5629,7 +5629,7 @@ game_menus = [
             #p_total_enemy_casualties deki yarali askerler p_temp_party'e prisoner olarak eklenecek.
             (call_script, "script_party_add_wounded_members_as_prisoners", "p_temp_party", "p_total_enemy_casualties"),
 
-            (call_script, "script_party_add_party_prisoners", "p_temp_party", "p_collective_enemy"),
+            (call_script, "script_party_prisoners_add_party_prisoners", "p_temp_party", "p_collective_enemy"),
             (try_begin),
                 (call_script, "script_party_calculate_strength", "p_collective_friends_backup",0),
                 (assign,":total_initial_strength", reg(0)),
@@ -6000,7 +6000,7 @@ game_menus = [
 
         (assign, "$g_move_heroes", 0),
         (party_clear, "p_temp_party"),
-        (call_script, "script_party_add_party_prisoners", "p_temp_party", "p_main_party"),
+        (call_script, "script_party_prisoners_add_party_prisoners", "p_temp_party", "p_main_party"),
         (call_script, "script_party_prisoners_add_party_companions", "p_temp_party", "p_main_party"),
         (distribute_party_among_party_group, "p_temp_party", "$g_enemy_party"),
 

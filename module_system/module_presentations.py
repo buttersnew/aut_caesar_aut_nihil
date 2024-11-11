@@ -23677,17 +23677,30 @@ presentations = [
 		#title
 		(create_text_overlay, reg0, "@Overview", tf_left_align|tf_with_outline),
 		(position_set_x, pos1, 80),
-		(position_set_y, pos1, 650),
+		(position_set_y, pos1, 655),
 		(overlay_set_position, reg0, pos1),
 		(position_set_x, pos1, 1500),
 		(position_set_y, pos1, 1500),
 		(overlay_set_size, reg0, pos1),
 
-		#Player Name
-		#(create_text_overlay, reg0, "@'{playername}'", tf_center_justify),
-		#(position_set_x, pos1, 500),
-		#(position_set_y, pos1, 615),
-		#(overlay_set_position, reg0, pos1),
+    (call_script, "script_freelancer_get_event", 1000, 50),
+    (val_sub, reg21, 1),
+    (assign, ":last_event", reg21),
+    (assign, ":max_events", reg23),
+    (call_script, "script_freelancer_event_required_for_progess", ":last_event"),
+    (quest_get_slot, reg2, "qst_freelancing", slot_quest_freelancer_progress_limit),
+    (store_add, reg3, reg2, 75),
+		(create_text_overlay, reg1, "@Hint:^The next promotion will happen after you completed the {reg0}th event and you reached more than {reg2} progress points. Right now you are at event {reg21}. Until you reach the {reg0}th event your accumulated progress points are limited by {reg3}.", tf_scrollable|tf_double_space|tf_with_outline),
+		(position_set_x, pos1, 400),
+		(position_set_y, pos1, 415),
+		(overlay_set_position, reg1, pos1),
+		(position_set_x, pos1, 1000),
+		(position_set_y, pos1, 1000),
+		(overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 325),
+    (position_set_y, pos1, 250),
+    (overlay_set_area_size, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
 
 		(assign, ":cur_y_adder", 35),  #the amount of space between lines
 		(assign, ":cur_y", 615),
@@ -23735,10 +23748,18 @@ presentations = [
 
 		#xp-to-next promotion
 		(quest_get_slot, reg0, "qst_freelancing", slot_quest_freelancer_progress),
-		(quest_get_slot, reg1, "qst_freelancing", slot_quest_freelancer_progress_limit),
+    (quest_get_slot, reg1, "qst_freelancing", slot_quest_freelancer_progress_limit),
 		#(troop_get_slot, ":service_xp_start", "trp_player", slot_troop_freelancer_start_xp),
 	  (str_store_string, s1, "@{reg0} / {reg1}"),
 		(create_text_overlay, reg0, "@Promotion progress: {s1}", tf_left_align),
+		(position_set_y, pos1, ":cur_y"),
+		(overlay_set_position, reg0, pos1),
+		(val_sub, ":cur_y", ":cur_y_adder"),
+
+    ## events
+    (assign, reg21, ":last_event"),
+    (assign, reg23, ":max_events"),
+		(create_text_overlay, reg0, "@Event progress: {reg21} of {reg23}", tf_left_align),
 		(position_set_y, pos1, ":cur_y"),
 		(overlay_set_position, reg0, pos1),
 		(val_sub, ":cur_y", ":cur_y_adder"),
@@ -23771,14 +23792,7 @@ presentations = [
 
 		#next_pay
 		(str_store_date, s25, "$g_next_pay_time"),
-		(create_text_overlay, reg0, "@Next Pay/Promotion day: {s25}", tf_left_align),
-		(position_set_y, pos1, ":cur_y"),
-		(overlay_set_position, reg0, pos1),
-		(val_sub, ":cur_y", ":cur_y_adder"),
-
-    (call_script, "script_freelancer_get_event", 1000, 50),
-    (val_sub, reg21, 1),
-		(create_text_overlay, reg0, "@Events resolved: {reg21} of {reg23}", tf_left_align),
+		(create_text_overlay, reg0, "@Next pay day: {s25}", tf_left_align),
 		(position_set_y, pos1, ":cur_y"),
 		(overlay_set_position, reg0, pos1),
 		(val_sub, ":cur_y", ":cur_y_adder"),
