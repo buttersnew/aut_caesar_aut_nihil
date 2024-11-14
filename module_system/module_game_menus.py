@@ -1235,7 +1235,6 @@ game_menus = [
     ("camp_cheat_find_item",[(troop_slot_ge, "trp_global_variables", g_is_dev, 1),], "Find an item...",
        [(jump_to_menu, "mnu_cheat_find_item"),]
     ),
-
     ("camp_cheat_weather",[
       (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
     ],"Destroy your ship.",[
@@ -49165,6 +49164,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_1_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 3),
     ]),
 ]),
 ("freelancer_event_pret_1_2",0,
@@ -49231,6 +49231,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_2_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 4),
     ]),
 ]),
 
@@ -49311,6 +49312,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_3_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 5),
     ]),
 ]),
 ("freelancer_event_pret_3_2",0,
@@ -49355,6 +49357,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_4_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 6),
     ]),
 ]),
 ("freelancer_event_pret_4_2",0,
@@ -49406,6 +49409,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_5_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 7),
     ]),
 ]),
 ("freelancer_event_pret_5_2",0,
@@ -49453,6 +49457,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_6_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 8),
     ]),
 ]),
 ("freelancer_event_pret_6_2",0,
@@ -49514,6 +49519,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Here we go again.",[
       (jump_to_menu, "mnu_freelancer_event_pret_7_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 9),
     ]),
 ]),
 ("freelancer_event_pret_7_2",0,
@@ -49551,6 +49557,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_8_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 10),
     ]),
 ]),
 ("freelancer_event_pret_8_2",0,
@@ -49590,6 +49597,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_9_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 11),
     ]),
 ]),
 ("freelancer_event_pret_9_2",0,
@@ -49668,6 +49676,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_10_1"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 12),
     ]),
 ]),
 ("freelancer_event_pret_10_1",0,
@@ -49736,6 +49745,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_11_1"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 13),
     ]),
 ]),
 ("freelancer_event_pret_11_1",0,
@@ -49914,6 +49924,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_12_1"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 14),
     ]),
 ]),
 ("freelancer_event_pret_12_1",0,
@@ -49971,6 +49982,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (jump_to_menu, "mnu_freelancer_event_pret_13_1"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 15),
     ]),
 ]),
 ("freelancer_event_pret_13_1",0,
@@ -50023,6 +50035,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Talk with her.",[
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 16),
       (assign, "$temp4", 0),
       (assign, "$talk_context", tc_pret_event_14),
       (call_script, "script_get_meeting_scene"),
@@ -50117,6 +50130,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("continue",[],"Continue.",[
       (assign, "$temp4", 5),
       (jump_to_menu, "mnu_freelancer_event_pret_15_2"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 17),
     ]),
 ]),
 
