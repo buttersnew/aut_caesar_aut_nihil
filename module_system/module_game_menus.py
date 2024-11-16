@@ -6131,16 +6131,9 @@ game_menus = [
     (assign, reg35, ":attacker_relation"),
     (assign, reg36, ":defender_relation"),
   ],[
-
     ##freelancer attack
     ("pre_join_help_attackers_freelancer",[
-        (ge, "$enlisted_party", 1),
-        # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-        # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
-        # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-        # (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
-        # (ge, ":attacker_relation", 0),
-        # (lt, ":defender_relation", 0),
+      (ge, "$enlisted_party", 1),
     ],"Follow your commander into battle.",[
       (store_faction_of_party, ":lord_faction", "$enlisted_party"),##use enlisted party faction instead of player faction to prevent issues
       (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
@@ -6168,42 +6161,6 @@ game_menus = [
         (jump_to_menu,"mnu_join_battle"),
       (try_end),
     ]),
-      # ##freelancer defend
-      # ("pre_join_help_defenders_freelancer",[
-        # (ge, "$enlisted_party", 1),
-        # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-        # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
-        # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-        # (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
-        # (ge, ":defender_relation", 0),
-        # (lt, ":attacker_relation", 0),
-      # ],
-      # "Follow your commander into battle. [Defend]",[
-      # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-      # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_faction"),
-      # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-      # (store_relation, ":defender_relation", ":defender_faction", "fac_player_faction"),
-      # (try_begin),
-        # (ge, ":attacker_relation", 0),
-        # (lt, ":defender_relation", 0),
-        # (select_enemy,0),
-        # (assign,"$g_enemy_party","$g_encountered_party"),
-        # (assign,"$g_ally_party","$g_encountered_party_2"),
-        # (jump_to_menu,"mnu_join_battle"),
-      # (else_try),
-        # (ge, ":defender_relation", 0),
-        # (lt, ":attacker_relation", 0),
-        # (select_enemy,1),
-        # (assign,"$g_enemy_party","$g_encountered_party_2"),
-        # (assign,"$g_ally_party","$g_encountered_party"),
-        # (jump_to_menu,"mnu_join_battle"),
-      # (else_try),
-        # (select_enemy,1),
-        # (assign,"$g_enemy_party","$g_encountered_party_2"),
-        # (assign,"$g_ally_party","$g_encountered_party"),
-        # (jump_to_menu,"mnu_join_battle"),
-      # (try_end),
-    # ]),
     ("pre_join_help_attackers",[
       (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
       (neq, ":defender_faction", "$players_kingdom"),
@@ -6214,31 +6171,30 @@ game_menus = [
       (assign,"$g_ally_party","$g_encountered_party_2"),
       ## WINDYPLAINS+ ## - Join any side - relation changes
       (try_begin),
-          (store_faction_of_party, ":faction_no", "$g_enemy_party"),
-          (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
-          (ge, ":relation", -10),
-          # Improve relation with ally lords.
-          (party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
-          (try_for_range, ":stack_no", 0, ":stack_count"),
-              (party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
-              (troop_is_hero, ":troop_no"),
-              (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-              (call_script,"script_change_player_relation_with_troop", ":troop_no", 1),
-          (try_end),
-          # Reduce relation with enemy lords.
-          (party_get_num_companion_stacks, ":stack_count", "$g_enemy_party"),
-          (try_for_range, ":stack_no", 0, ":stack_count"),
-              (party_stack_get_troop_id, ":troop_no", "$g_enemy_party", ":stack_no"),
-              (troop_is_hero, ":troop_no"),
-              (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-              (call_script,"script_change_player_relation_with_troop", ":troop_no", -1),
-          (try_end),
-          # Improve relation with ally faction.
-          (store_faction_of_party, ":faction_no", "$g_ally_party"),
-          (call_script, "script_change_player_relation_with_faction", ":faction_no", 2),
-          # Reduce relation with enemy faction.
-          (store_faction_of_party, ":faction_no", "$g_enemy_party"),
-          (call_script, "script_change_player_relation_with_faction", ":faction_no", -2),
+        (store_faction_of_party, ":faction_no", "$g_enemy_party"),
+        (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
+        (ge, ":relation", -10),
+        (party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
+        (try_for_range, ":stack_no", 0, ":stack_count"),
+          (party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
+          (troop_is_hero, ":troop_no"),
+          (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+          (call_script,"script_change_player_relation_with_troop", ":troop_no", 1),
+        (try_end),
+        # Reduce relation with enemy lords.
+        (party_get_num_companion_stacks, ":stack_count", "$g_enemy_party"),
+        (try_for_range, ":stack_no", 0, ":stack_count"),
+          (party_stack_get_troop_id, ":troop_no", "$g_enemy_party", ":stack_no"),
+          (troop_is_hero, ":troop_no"),
+          (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+          (call_script,"script_change_player_relation_with_troop", ":troop_no", -1),
+        (try_end),
+        # Improve relation with ally faction.
+        (store_faction_of_party, ":faction_no", "$g_ally_party"),
+        (call_script, "script_change_player_relation_with_faction", ":faction_no", 2),
+        # Reduce relation with enemy faction.
+        (store_faction_of_party, ":faction_no", "$g_enemy_party"),
+        (call_script, "script_change_player_relation_with_faction", ":faction_no", -2),
       (try_end),
       ## WINDYPLAINS- ##
       (jump_to_menu,"mnu_join_battle")
@@ -6257,7 +6213,6 @@ game_menus = [
         (store_faction_of_party, ":faction_no", "$g_enemy_party"),
         (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
         (ge, ":relation", -10),
-        # Improve relation with ally lords.
         (party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
         (try_for_range, ":stack_no", 0, ":stack_count"),
           (party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
@@ -6283,39 +6238,12 @@ game_menus = [
       ## WINDYPLAINS- ##
       (jump_to_menu,"mnu_join_battle"),
     ]),
-
-      # ("pre_join_help_attackers",[
-          # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-          # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
-          # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-          # (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
-          # (ge, ":attacker_relation", 0),
-          # (lt, ":defender_relation", 0),
-          # ],
-          # "Move in to help the {s2}.",[
-              # (select_enemy,0),
-              # (assign,"$g_enemy_party","$g_encountered_party"),
-              # (assign,"$g_ally_party","$g_encountered_party_2"),
-              # (jump_to_menu,"mnu_join_battle")]),
-      # ("pre_join_help_defenders",[
-          # (store_faction_of_party, ":attacker_faction", "$g_encountered_party_2"),
-          # (store_relation, ":attacker_relation", ":attacker_faction", "fac_player_supporters_faction"),
-          # (store_faction_of_party, ":defender_faction", "$g_encountered_party"),
-          # (store_relation, ":defender_relation", ":defender_faction", "fac_player_supporters_faction"),
-          # (ge, ":defender_relation", 0),
-          # (lt, ":attacker_relation", 0),
-          # ],
-          # "Rush to the aid of the {s1}.",[
-              # (select_enemy,1),
-              # (assign,"$g_enemy_party","$g_encountered_party_2"),
-              # (assign,"$g_ally_party","$g_encountered_party"),
-              # (jump_to_menu,"mnu_join_battle")]),
-      ("pre_join_leave",[
-        (eq, "$enlisted_party", -1),
-      ],"Don't get involved.",[
-        (leave_encounter),
-        (change_screen_return)
-      ]),
+    ("pre_join_leave",[
+      (eq, "$enlisted_party", -1),
+    ],"Don't get involved.",[
+      (leave_encounter),
+      (change_screen_return)
+    ]),
 ]),
 
 ("join_battle",mnf_enable_hot_keys,
@@ -12784,14 +12712,14 @@ game_menus = [
       (party_slot_eq, "$current_town", slot_village_state, 0),
       (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
       (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
-    ],"Make a donation of 2,000 denars.",[
+    ],"Make a donation of 2,500 denars.",[
       (party_get_slot, ":prosperity", "$current_town", slot_town_prosperity),
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
         (try_begin),
-          (ge, ":gold", 2000), ## donation is 2000 Thaler, you can easily change this.
-          (troop_remove_gold, "trp_player", 2000),
+          (ge, ":gold", 2500), ## donation is 2500 Thaler, you can easily change this.
+          (troop_remove_gold, "trp_player", 2500),
           (display_message,"@You donated 2000 denars.",color_good_news),
           (try_begin),
             (is_between, ":prosperity", 0, 20),
@@ -38886,7 +38814,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
     ("doante",[
       (eq, "$can_sacrific", 1),
-    ],"Make a donation to Delphi (1000 denars).",[
+    ],"Make a donation to Delphi (1,000 denars).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 1000),
@@ -38902,7 +38830,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
     ("doante",[
       (eq, "$can_sacrific", 1),
-    ],"Make a medium donation to Delphi (5000 denars).",[
+    ],"Make a medium donation to Delphi (5,000 denars).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 5000),
@@ -38918,7 +38846,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
     ("doante",[
       (eq, "$can_sacrific", 1),
-    ],"Make a huge donation to Delphi (10000 denars).",[
+    ],"Make a huge donation to Delphi (10,000 denars).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 10000),
@@ -45339,81 +45267,139 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ]),
 ]),
 
-("meal_with_antonia",0,
-    "You take her cloak offer her a seat. The meal consists of various kinds of food and venison from the recent hunt. The wine is from Sicily and a gift of one of your officers."
-    +" You pour wine in a cup and offer it Antonia. Then, you and Antonia spill some wine on the ground as gift for the gods.^^During the meal you talk about various trivialities.",
-    "none",
-    [
-        (set_background_mesh, "mesh_pic_orgie"),
-    ],
-    [
+("meeting_with_antonia_civilian",0,
+  "You have established a camp with your entourage to rest and recharge. As you settle down to enjoy a meal, one of your slaves enters the tent,"
+  +" his demeanor urgent. He seeks to inform you of a pressing matter that requires your immediate attention.",
+  "none",[
+    (set_background_mesh, "mesh_pic_camp"),
+  ],[
     ("Continue...",[],"Continue.",[
+      (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
+      (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
+      (assign, "$talk_context", 0),#to fix bug in dialog
+      (assign, "$g_encountered_party_type", spt_kingdom_hero_party),#to fix bug in dialog
+      (assign, "$g_encountered_party_2", -1),#to fix bug in dialog
+      (assign, "$g_encountered_party_faction", "$players_kingdom"),#to fix bug in dialog
+      (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
+      (assign, "$temp", 0),
+      (assign, "$temp1", "trp_slave"),
+      (set_jump_mission, "mt_roman_story_player_tent"),
+      (modify_visitors_at_site, "scn_players_tent"),
+      (reset_visitors, 0),
+      (set_visitor, 1, "trp_slave"),
+      (set_visitor, 2, "trp_player"),
+      (set_visitor, 3, "trp_antonia"),
+      (jump_to_scene, "scn_players_tent"),
+      (change_screen_mission),
+    ]),
+]),
 
-        (assign, "$temp", 6),
-        (set_jump_mission, "mt_roman_story_player_tent"),
-        (modify_visitors_at_site, "scn_players_tent"),
-        (reset_visitors, 0),
-        (set_visitor, 4, "trp_player"),
-        (set_visitor, 5, "trp_antonia"),
-        (jump_to_scene, "scn_players_tent"),
-        (change_screen_mission),
-
-        (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 7),
+("meal_with_antonia",0,
+  "{s23}",
+  "none",[
+    (set_background_mesh, "mesh_pic_orgie"),
+    (try_begin),
+        (ge, "$g_rank", 1),
+        (str_store_string, s23,
+          "@You take her cloak and offer her a seat. The table is laid with a variety of dishes, including venison from the recent hunt. The wine, a fine Sicilian vintage, is a gift from one of your officers."
+          +"You pour the wine into a cup and offer it to Antonia. Together, you both spill a small amount on the ground as an offering to the gods.^^As the meal unfolds, you and Antonia engage in conversation, discussing various trivialities."
+        ),
+    (else_try),
+        (str_store_string, s23,
+          "@You take her cloak and gesture for her to sit. The table is adorned with a selection of dishes, including tender venison from the latest hunt. The wine, a rich Sicilian vintage, is a gift from a senator."
+          +" You pour the wine into a cup and hand it to Antonia, and together, you both spill a few drops onto the ground as an offering to the gods.^^As the meal progresses, you and Antonia engage in casual conversation, touching on various trivialities."
+        ),
+    (try_end),
+  ],[
+    ("Continue...",[],"Continue.",[
+      (assign, "$temp", 6),
+      (assign, "$temp1", -1),
+      (set_jump_mission, "mt_roman_story_player_tent"),
+      (modify_visitors_at_site, "scn_players_tent"),
+      (reset_visitors, 0),
+      (set_visitor, 4, "trp_player"),
+      (set_visitor, 5, "trp_antonia"),
+      (jump_to_scene, "scn_players_tent"),
+      (change_screen_mission),
+      (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 7),
     ]),
 ]),
 
 ("meeting_with_antonia",0,
-    "A soldier enters your tent while you are eating a meal. It is about an urgent matter.",
-    "none",
-    [
-        (set_background_mesh, "mesh_pic_camp"),
-    ],
-    [
+  "A soldier enters your tent while you are eating a meal. It is about an urgent matter.",
+  "none",[
+    (set_background_mesh, "mesh_pic_camp"),
+  ],[
     ("Continue...",[],"Continue.",[
-        (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
-        (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
-        (assign, "$talk_context", 0),#to fix bug in dialog
-        (assign, "$g_encountered_party_type", spt_kingdom_hero_party),#to fix bug in dialog
-        (assign, "$g_encountered_party_2", -1),#to fix bug in dialog
-        (assign, "$g_encountered_party_faction", "$players_kingdom"),#to fix bug in dialog
-        (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
-        (assign, "$temp", 0),
-        (set_jump_mission, "mt_roman_story_player_tent"),
-        (modify_visitors_at_site, "scn_players_tent"),
-        (reset_visitors, 0),
-        (set_visitor, 1, "trp_quest_miles"),
-        (set_visitor, 2, "trp_player"),
-        (set_visitor, 3, "trp_antonia"),
-        (jump_to_scene, "scn_players_tent"),
-        (change_screen_mission),
+      (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
+      (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
+      (assign, "$talk_context", 0),#to fix bug in dialog
+      (assign, "$g_encountered_party_type", spt_kingdom_hero_party),#to fix bug in dialog
+      (assign, "$g_encountered_party_2", -1),#to fix bug in dialog
+      (assign, "$g_encountered_party_faction", "$players_kingdom"),#to fix bug in dialog
+      (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
+      (assign, "$temp", 0),
+      (assign, "$temp1", "trp_quest_miles"),
+      (set_jump_mission, "mt_roman_story_player_tent"),
+      (modify_visitors_at_site, "scn_players_tent"),
+      (reset_visitors, 0),
+      (set_visitor, 1, "trp_quest_miles"),
+      (set_visitor, 2, "trp_player"),
+      (set_visitor, 3, "trp_antonia"),
+      (jump_to_scene, "scn_players_tent"),
+      (change_screen_mission),
     ]),
 ]),
 
 ("meeting_with_antonia_final_good",0,
-    "Your little play starts out quite conventionally, downright boringly normal."
-    +" But then Antonia turns into a she-wolf; with a bit biting and scratching."
-    +" In the end she honors Aphrodite with such ecstasy that even the soldiers outside the tent can only marvel."
-    +" Later, when Phoebus' journey comes to an end and Luna covers your camp with a dark cloth, Antonia makes herself on way."
-    +" The Night's Watch sees her sneaking away and thinks his part about the day's events.",
-    "none",
-    [
-        (set_background_mesh, "mesh_pic_hexe_party"),
-    ],
-    [
+  "{s23}",
+  "none",[
+    (set_background_mesh, "mesh_pic_hexe_party"),
+    (try_begin),
+        (ge, "$g_rank", 1),
+        (str_store_string, s23,
+          "@Your little play starts out quite conventionally, downright boringly normal."
+          +" But then Antonia turns into a she-wolf; with a bit biting and scratching."
+          +" In the end she honors Aphrodite with such ecstasy that even the soldiers outside the tent can only marvel."
+          +" Later, when Phoebus' journey comes to an end and Luna covers your camp with a dark cloth, Antonia makes herself on way."
+          +" The Night's Watch sees her sneaking away and thinks his part about the day's events."
+        ),
+    (else_try),
+        (str_store_string, s23,
+          "@Your little play starts out quite conventionally, downright boringly normal."
+          +" But then Antonia turns into a she-wolf; with a bit biting and scratching."
+          +" In the end she honors Aphrodite with such ecstasy that even the slaves and companions outside the tent can only marvel."
+          +" Later, when Phoebus' journey comes to an end and Luna covers your camp with a dark cloth, Antonia makes herself on way."
+          +" The Night's Watch sees her sneaking away and thinks his part about the day's events."
+        ),
+    (try_end),
+  ],[
     ("Continue...",[],"Continue.",[
-        (call_script, "script_change_player_relation_with_troop", "trp_antonia", 5),
-        (add_xp_as_reward, 2500),
-        (display_message, "str_quest_updated"),
-        (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
-        (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 1),
-        (change_screen_map),
+      (call_script, "script_change_player_relation_with_troop", "trp_antonia", 5),
+      (add_xp_as_reward, 2500),
+      (display_message, "str_quest_updated"),
+      (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
+      (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 1),
+      (change_screen_map),
     ]),
 ]),
 
 ("meeting_with_antonia_final_angry",0,
-  "As suddenly as she came she leaves your camp. Shouting around insults at you and your soldiers. A soldier standing next to notes: ^'This woman has indeed the spirit and temperament of a she-wolf.'",
+  "{s23}",
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
+    (try_begin),
+        (ge, "$g_rank", 1),
+        (str_store_string, s23,
+          "@As suddenly as she came she leaves your camp. Shouting around insults at you and your soldiers. A soldier standing next to you notes:"
+          +"^'This woman has indeed the spirit and temperament of a she-wolf.'"
+        ),
+    (else_try),
+        (str_store_string, s23,
+          "@As suddenly as she came she leaves your camp. Shouting around insults at you, your companions and slaves. A slave standing next to you notes:"
+          +"^'This woman has indeed the spirit and temperament of a she-wolf.'"
+        ),
+    (try_end),
   ],[
   ("Continue...",[],"Continue.",[
     (call_script, "script_change_player_relation_with_troop", "trp_antonia", -5),
@@ -50961,7 +50947,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (add_xp_as_reward, 150),
     (else_try),
       (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_treatment, -1),
-      (str_store_string, s11,"@You treat your soldiers no differently than any other officer. You don’t invest much care in them, knowing well"
+      (str_store_string, s11,"@You treat your soldiers no differently than any other officer. You don't invest much care in them, knowing well"
       + " they are likely to die soon anyway. You perform your duties as expected."
       + " The soldiers respect you and bow before you, but not out of admiration or loyalty."
       + " They do so purely out of fear of your whip."
@@ -55132,31 +55118,27 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("antonia_meeting_before_alexandria",0,
   "Thunders are roaming in the distance. Your soldiers report that a woman is approaching your party. It is Antonia. She wants to speak with you.^^You welcome her inside your tent.",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_deserters"),
     (play_sound, "snd_thunder_close"),
   ],[
-
-    ("Continue",[],
-      "Continue.",
-    [
-        (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
-        (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
-        (assign, "$talk_context", 0),#to fix bug in dialog
-        (assign, "$g_encountered_party_type", spt_kingdom_hero_party),#to fix bug in dialog
-        (assign, "$g_encountered_party_2", -1),#to fix bug in dialog
-        (assign, "$g_encountered_party_faction", "$players_kingdom"),#to fix bug in dialog
-        (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
-
-        (assign, "$temp", 1),
-        (set_jump_mission, "mt_roman_story_player_tent"),
-        (modify_visitors_at_site, "scn_players_tent"),
-        (reset_visitors, 0),
-        (set_visitor, 4, "trp_player"),
-        (set_visitor, 5, "trp_antonia"),
-        (jump_to_scene, "scn_players_tent"),
-        (change_screen_mission),
+    ("Continue",[],"Continue.",[
+      (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
+      (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
+      (assign, "$talk_context", 0),#to fix bug in dialog
+      (assign, "$g_encountered_party_type", spt_kingdom_hero_party),#to fix bug in dialog
+      (assign, "$g_encountered_party_2", -1),#to fix bug in dialog
+      (assign, "$g_encountered_party_faction", "$players_kingdom"),#to fix bug in dialog
+      (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
+      (assign, "$temp", 1),
+      (assign, "$temp1", -1),
+      (set_jump_mission, "mt_roman_story_player_tent"),
+      (modify_visitors_at_site, "scn_players_tent"),
+      (reset_visitors, 0),
+      (set_visitor, 4, "trp_player"),
+      (set_visitor, 5, "trp_antonia"),
+      (jump_to_scene, "scn_players_tent"),
+      (change_screen_mission),
     ]),
 ]),
 

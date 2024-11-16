@@ -31085,10 +31085,8 @@ mission_templates = [
     ]
 ),
 
-
-("roman_story_player_tent", 0, -1,
-    "Test.",
-    [
+("roman_story_player_tent", mtf_battle_mode, -1,
+  "Test.",[
     (0,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_poor2]),
     (1,mtef_visitor_source,af_override_weapons,0,1,[]),
     (2,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_poor2]),
@@ -31096,121 +31094,101 @@ mission_templates = [
     (4,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_poor2]),
     (5,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_lupa_dress_2]),
     (6,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_poor2]),
-    ], p_wetter + storms + global_common_triggers +
-    [
-      cannot_spawn_commoners,
+  ], p_wetter + storms + global_common_triggers +
+  [
+    cannot_spawn_commoners,
     improved_lightning,
-
-    (ti_before_mission_start, 0, 0, [],
-    [
-        (set_rain, 1,0),
-        (set_rain, 2,0),
-        (set_rain, 0, 100),
-        (scene_set_day_time, 10),
-        (mission_disable_talk),
+    (ti_before_mission_start, 0, 0, [],[
+      (set_rain, 1,0),
+      (set_rain, 2,0),
+      (set_rain, 0, 100),
+      (scene_set_day_time, 10),
+      (mission_disable_talk),
     ]),
-
-
-    (0, 0, ti_once,
-    [
-        (eq, "$temp", 0),
-        (store_mission_timer_a, ":cur_time"),
-        (ge, ":cur_time", 2),
-    ],
-    [
-        (mission_enable_talk),
-        (start_mission_conversation, "trp_quest_miles"),
+    (0, 0, ti_once,[
+      (eq, "$temp", 0),
+      (store_mission_timer_a, ":cur_time"),
+      (ge, ":cur_time", 2),
+      (gt, "$temp1", 0),
+    ],[
+      (mission_enable_talk),
+      (start_mission_conversation, "$temp1"),
     ]),
-
-    (0, 0, ti_once,
-    [
-        (eq, "$temp", 6),
-        (store_mission_timer_a, ":cur_time"),
-        (ge, ":cur_time", 4),
-    ],
-    [
-        (mission_enable_talk),
-        (start_mission_conversation, "trp_antonia"),
+    (0, 0, ti_once,[
+      (eq, "$temp", 6),
+      (store_mission_timer_a, ":cur_time"),
+      (ge, ":cur_time", 4),
+    ],[
+      (mission_enable_talk),
+      (start_mission_conversation, "trp_antonia"),
     ]),
-
-    (0, 0, ti_once,
-    [
-    ],
-    [
-        (mission_cam_set_screen_color, 0xFF000000),
-        (mission_cam_animate_to_screen_color, 0x00000000, 2000),
+    (0, 0, ti_once,[],[
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 2000),
     ]),
+    (0,0,ti_once, [],[
+      (try_for_agents, ":agent_no"),
+          (agent_is_active, ":agent_no"),
+          (agent_get_troop_id, ":troop_no", ":agent_no"),
+          (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 0),
+          (agent_set_no_death_knock_down_only, ":agent_no", 1),
+          (try_begin),
+              (gt, "$temp", 0),
+              (agent_set_no_dynamics, ":agent_no", 1),
 
-    (0,0,ti_once, [],
-    [
-        (try_for_agents, ":agent_no"),
-            (agent_is_active, ":agent_no"),
-            (agent_get_troop_id, ":troop_no", ":agent_no"),
-            (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 0),
-            (agent_set_no_death_knock_down_only, ":agent_no", 1),
-            (try_begin),
-                (gt, "$temp", 0),
-                (agent_set_no_dynamics, ":agent_no", 1),
+              (agent_get_position, pos12, ":agent_no"),
+              (position_move_z, pos12, -70),
+              (agent_set_position, ":agent_no", pos12),
 
-                (agent_get_position, pos12, ":agent_no"),
-                (position_move_z, pos12, -70),
-                (agent_set_position, ":agent_no", pos12),
-
-                (agent_set_stand_animation, ":agent_no", "anim_dedal_sitting_2"),
-                (agent_set_animation, ":agent_no", "anim_dedal_sitting_2"),
-                (store_random_in_range, ":random_no", 0, 100),
-                (agent_set_animation_progress, ":agent_no", ":random_no"),
-            (else_try),
-                (eq, "$temp", 0),
-                (eq, ":troop_no", "trp_antonia"),
-                (agent_set_visibility, ":agent_no", 0),
-                (agent_set_stand_animation, ":agent_no", "anim_vyrn_shieldmaiden_stand"),
-                (agent_set_animation, ":agent_no", "anim_vyrn_shieldmaiden_stand"),
-                (store_random_in_range, ":random_no", 0, 100),
-                (agent_set_animation_progress, ":agent_no", ":random_no"),
-            (try_end),
-        (try_end),
+              (agent_set_stand_animation, ":agent_no", "anim_dedal_sitting_2"),
+              (agent_set_animation, ":agent_no", "anim_dedal_sitting_2"),
+              (store_random_in_range, ":random_no", 0, 100),
+              (agent_set_animation_progress, ":agent_no", ":random_no"),
+          (else_try),
+              (eq, "$temp", 0),
+              (eq, ":troop_no", "trp_antonia"),
+              (agent_set_visibility, ":agent_no", 0),
+              (agent_set_stand_animation, ":agent_no", "anim_vyrn_shieldmaiden_stand"),
+              (agent_set_animation, ":agent_no", "anim_vyrn_shieldmaiden_stand"),
+              (store_random_in_range, ":random_no", 0, 100),
+              (agent_set_animation_progress, ":agent_no", ":random_no"),
+          (try_end),
+      (try_end),
     ]),
-
-    (0, 0, 3.5, [],
-    [
-        (try_begin),
-            (eq, "$temp", 1),
-            (assign, "$temp", 2),
-            (try_for_agents, ":agent_no"),
-                (agent_is_active, ":agent_no"),
-                (agent_get_troop_id, ":troop_no", ":agent_no"),
-                (eq, ":troop_no", "trp_quest_miles"),
-                (agent_fade_out, ":agent_no"),
-            (try_end),
-        (else_try),
-            (eq, "$temp", 2),
-            (try_for_agents, ":agent_no"),
-                (agent_is_active, ":agent_no"),
-                (agent_get_troop_id, ":troop_no", ":agent_no"),
-                (eq, ":troop_no", "trp_antonia"),
-                (agent_set_visibility, ":agent_no", 1),
-            (try_end),
-            (mission_cam_animate_to_screen_color, 0x00000000, 3500),
-            (assign, "$temp", 3),
-        (else_try),
-            (eq, "$temp", 3),
-            (mission_enable_talk),
-            (start_mission_conversation, "trp_antonia"),
-            (assign, "$temp", 4),
-        (try_end),
+    (0, 0, 3.5, [],[
+      (try_begin),
+          (eq, "$temp", 1),
+          (assign, "$temp", 2),
+          (try_for_agents, ":agent_no"),
+              (agent_is_active, ":agent_no"),
+              (agent_get_troop_id, ":troop_no", ":agent_no"),
+              (eq, "$temp1", ":troop_no"),
+              (agent_fade_out, ":agent_no"),
+          (try_end),
+      (else_try),
+          (eq, "$temp", 2),
+          (try_for_agents, ":agent_no"),
+              (agent_is_active, ":agent_no"),
+              (agent_get_troop_id, ":troop_no", ":agent_no"),
+              (eq, ":troop_no", "trp_antonia"),
+              (agent_set_visibility, ":agent_no", 1),
+          (try_end),
+          (mission_cam_animate_to_screen_color, 0x00000000, 3500),
+          (assign, "$temp", 3),
+      (else_try),
+          (eq, "$temp", 3),
+          (mission_enable_talk),
+          (start_mission_conversation, "trp_antonia"),
+          (assign, "$temp", 4),
+      (try_end),
     ]),
-
     common_inventory_not_available,
-
-    (ti_tab_pressed, 0, 0,
-	  [],
-    [(display_message, "str_cannot_leave_now"),]),
-
+    (ti_tab_pressed, 0, 0,[],[
+      (display_message, "str_cannot_leave_now"),
+    ]),
     ambient_set_agents_for_sounds,
     ambient_agent_play_sound,
-    ]
-),
+]),
 
 ("explore_kurgan", 0, -1,
   "Test.",[
