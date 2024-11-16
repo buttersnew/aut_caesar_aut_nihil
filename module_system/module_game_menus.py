@@ -56650,7 +56650,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
         (modify_visitors_at_site, "scn_cythnus"),
         (reset_visitors),
         (set_visitor, 0, "trp_player"),
-
+        (assign, "$temp", 0),
         # (set_visitors, 1, "trp_sea_raider", 10),
         (set_visitors, 2, "trp_looter", 2),
         (set_visitors, 3, "trp_sea_raider", 2),
