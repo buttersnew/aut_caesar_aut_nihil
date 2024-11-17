@@ -4577,51 +4577,46 @@ add_horn_hornman = (ti_on_agent_spawn, 0, 0, [],[
 ])
 
 ai_horn = [ #3 triggers
-
   add_horn_hornman,
 
-  (3, 0, ti_once, [],
-    [
-      (try_for_agents, ":agent"),
-        (agent_is_active, ":agent"),
-        (agent_is_alive, ":agent"),
-        (agent_is_human, ":agent"),
-        (agent_get_troop_id, ":agent_troop", ":agent"),
-        (call_script, "script_cf_troop_is_hornman", ":agent_troop"),
-        (store_random_in_range, ":rand", 0, 2),
-        (eq, ":rand", 1),
-        (call_script, "script_agent_perform_horn", ":agent"),
-      (try_end),
+  (3, 0, ti_once, [],[
+    (try_for_agents, ":agent"),
+      (agent_is_active, ":agent"),
+      (agent_is_alive, ":agent"),
+      (agent_is_human, ":agent"),
+      (agent_get_troop_id, ":agent_troop", ":agent"),
+      (call_script, "script_cf_troop_is_hornman", ":agent_troop"),
+      (store_random_in_range, ":rand", 0, 2),
+      (eq, ":rand", 1),
+      (call_script, "script_agent_perform_horn", ":agent"),
+    (try_end),
   ]),
 
-
-
-  (ti_on_order_issued, 0, 0,
-    [
-      (store_trigger_param, ":order_no", 1),
-      (assign, reg7, ":order_no"),
-      (this_or_next|eq, ":order_no", mordr_stand_closer),
-      (this_or_next|eq, ":order_no", mordr_spread_out),
-      (this_or_next|eq, ":order_no", mordr_fall_back),
-      (this_or_next|eq, ":order_no", mordr_stand_ground),
-      (this_or_next|eq, ":order_no", mordr_hold),
-      (this_or_next|eq, ":order_no", mordr_advance),
-      (eq, ":order_no", mordr_charge),
-    ],
-    [
-      (try_for_agents, ":agent"),
-        (agent_is_active, ":agent"),
-        (agent_is_alive, ":agent"),
-        (agent_is_human, ":agent"),
-        (agent_get_troop_id, ":agent_troop", ":agent"),
-        (call_script, "script_cf_troop_is_hornman", ":agent_troop"),
-        # (store_random_in_range, ":rand", 0, 2),
-        # (eq, ":rand", 1),
-        (call_script, "script_agent_perform_horn", ":agent"),
-      (try_end),
+  (ti_on_order_issued, 0, 0,[
+    (store_trigger_param, ":order_no", 1),
+    (assign, reg7, ":order_no"),
+    (this_or_next|eq, ":order_no", mordr_stand_closer),
+    (this_or_next|eq, ":order_no", mordr_spread_out),
+    (this_or_next|eq, ":order_no", mordr_fall_back),
+    (this_or_next|eq, ":order_no", mordr_stand_ground),
+    (this_or_next|eq, ":order_no", mordr_hold),
+    (this_or_next|eq, ":order_no", mordr_advance),
+    (eq, ":order_no", mordr_charge),
+  ],[
+    (try_for_agents, ":agent"),
+      (agent_is_active, ":agent"),
+      (agent_is_alive, ":agent"),
+      (agent_is_ally, ":agent"),
+      (agent_is_human, ":agent"),
+      (agent_get_troop_id, ":agent_troop", ":agent"),
+      (call_script, "script_cf_troop_is_hornman", ":agent_troop"),
+      # (store_random_in_range, ":rand", 0, 2),
+      # (eq, ":rand", 1),
+      (call_script, "script_agent_perform_horn", ":agent"),
+    (try_end),
   ]),
-
 ]
+
 immersive_troops = ( #inmersive troops gestos y sonidos
   5, 0, 0,[
     (store_mission_timer_a, ":cur_time"),
