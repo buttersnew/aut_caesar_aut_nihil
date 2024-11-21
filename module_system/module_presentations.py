@@ -8659,13 +8659,14 @@ presentations = [
     # (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
-    (create_text_overlay, reg1, "@_Estate Report_", tf_center_justify),
+    (create_text_overlay, reg1, "@_Estate Report_", tf_center_justify|tf_with_outline),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 685), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1500),
     (position_set_y, pos1, 1500),
     (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
 
     # Back to menu - graphical button
     (create_game_button_overlay, reg1, "str_return"),
@@ -8691,57 +8692,57 @@ presentations = [
     (overlay_set_area_size, reg1, pos1),
 
 
-    (create_text_overlay, reg0, "@Name", tf_left_align),
+    (create_text_overlay, reg0, "@Name", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 85),
-    (position_set_y, pos1, 615),
+    (position_set_y, pos1, 620),
     (overlay_set_position, reg0, pos1),
     (position_set_x, pos2, 1200),
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Garrison", tf_left_align),
+    (create_text_overlay, reg0, "@Garrison", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 130+130),###+220
-    (position_set_y, pos1, 595),
+    (position_set_y, pos1, 600),
     (overlay_set_position, reg0, pos1),
     (position_set_x, pos2, 1200),
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Prisoners,", tf_left_align),
+    (create_text_overlay, reg0, "@Prisoners,", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 130+130),###+160
-    (position_set_y, pos1, 615),
+    (position_set_y, pos1, 620),
     (overlay_set_position, reg0, pos1),
     (position_set_x, pos2, 1200),
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Buildings", tf_left_align),
+    (create_text_overlay, reg0, "@Buildings", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 120+130+125),###+160
-    (position_set_y, pos1, 615),
+    (position_set_y, pos1, 620),
     (overlay_set_position, reg0, pos1),
     (position_set_x, pos2, 1200),
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Construction Projects", tf_left_align),
+    (create_text_overlay, reg0, "@Construction Projects", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 120+130+125+160),###+110
-    (position_set_y, pos1, 615),
+    (position_set_y, pos1, 620),
     (overlay_set_position, reg0, pos1),
     (position_set_x, pos2, 1200),
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Physician", tf_left_align),
-    (position_set_x, pos1, 90+100+80+100+150+250),###+110
-    (position_set_y, pos1, 615),
+    (create_text_overlay, reg0, "@Physician", tf_left_align|tf_with_outline),
+    (position_set_x, pos1, 90+100+80+100+150+260),###+110
+    (position_set_y, pos1, 620),
     (overlay_set_position, reg0, pos1),
     (position_set_x, pos2, 1200),
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Magister", tf_left_align),
-    (position_set_x, pos1, 90+100+80+100+150+250+75),###+110
-    (position_set_y, pos1, 615),
+    (create_text_overlay, reg0, "@Magister", tf_left_align|tf_with_outline),
+    (position_set_x, pos1, 90+100+80+100+150+250+85),###+110
+    (position_set_y, pos1, 620),
     (overlay_set_position, reg0, pos1),
     (position_set_x, pos2, 1200),
     (position_set_y, pos2, 1200),

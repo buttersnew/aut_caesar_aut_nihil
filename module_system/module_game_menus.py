@@ -6788,12 +6788,9 @@ game_menus = [
     ]),
 ]),
 
-  ( #SB : pic hotkeys
-    "besiegers_camp_with_allies",mnf_enable_hot_keys,
-    "{s1} remains under siege. {s2} is the commander of the siege assault.\
- ^{s33}^^Your side has {reg10} troops ready against their {reg11}",
-    "none",
-    [
+("besiegers_camp_with_allies",mnf_enable_hot_keys,
+  "{s1} remains under siege. {s2} is the commander of the siege assault.^{s33}^^Your side has {reg10} troops ready against their {reg11}",
+  "none",[
     (try_begin),##freelancer
       (eq, "$enlisted_party", -1),
       (str_store_string, s33, "@You and your men are welcomed."),
@@ -6868,243 +6865,242 @@ game_menus = [
       (assign, "$new_encounter", 0),
     (try_end),
 
-        (try_begin),
-          (eq, "$g_leave_encounter",1),
-          (change_screen_return),
-        (else_try),
-          (assign, ":enemy_finished", 0),
+    (try_begin),
+      (eq, "$g_leave_encounter",1),
+      (change_screen_return),
+    (else_try),
+      (assign, ":enemy_finished", 0),
+      (try_begin),
+        (eq, "$g_battle_result", 1),
+        (assign, ":enemy_finished", 1),
+      (else_try),
+        (le, "$g_enemy_fit_for_battle", "$num_routed_enemies"),  #replaced for above line because we do not want routed agents to spawn again in next turn of battle.
+        (ge, "$g_friend_fit_for_battle", 1),
+        (assign, ":enemy_finished", 1),
+      (try_end),
+      (this_or_next|eq, ":enemy_finished", 1),
+      (eq, "$g_enemy_surrenders", 1),
+##          (assign, "$g_next_menu", -1),#"mnu_castle_taken_by_friends"),
+##          (jump_to_menu, "mnu_total_victory"),
+      (try_begin),#special battle event 1
+        (troop_slot_eq, "trp_player", slot_player_battle_event, 0),
+        (get_player_agent_kill_count, ":wounded", 1),
+        (get_player_agent_kill_count, ":kill"),
+        (val_add, ":kill", ":wounded"),
+        (ge, ":kill", 5),
+        (troop_set_slot, "trp_player", slot_player_battle_event, 1),
+        (jump_to_menu, "mnu_matters_of_life"),
+        (assign, "$temp4_1", "mnu_besiegers_camp_with_allies"),
+      (else_try),#special battle event 2
+        (troop_slot_eq, "trp_player", slot_player_battle_event, 1),
+        (get_player_agent_kill_count, ":wounded", 1),
+        (get_player_agent_kill_count, ":kill"),
+        (val_add, ":kill", ":wounded"),
+        (ge, ":kill", 50),
+        (troop_set_slot, "trp_player", slot_player_battle_event, 2),
+        (jump_to_menu, "mnu_matters_of_life"),
+        (assign, "$temp4_1", "mnu_besiegers_camp_with_allies"),
+      (else_try), #freelancer, special battle events
+        (ge, "$enlisted_party", 1),
+        (check_quest_active, "qst_freelancing"),
+        (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_event_2, 0),
+        (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event_2, 1),
+        (jump_to_menu, "mnu_freelancing_battle_event"),
+        (assign, "$temp4_1", "mnu_besiegers_camp_with_allies"),
+      (else_try),#freelancer battle
+        #SB : TODO : add prisoner train of unclaimed prisoners and such, succeed quests by proxy
+        (party_get_num_prisoner_stacks, ":num_prisoner_stacks", "$g_enemy_party"),
+        (try_for_range, ":stack_no", 0, ":num_prisoner_stacks"),
+          # (eq, ":break", 0),
+          (party_prisoner_stack_get_troop_id, ":stack_troop", "p_collective_enemy", ":stack_no"),
+          (troop_is_hero, ":stack_troop"),
           (try_begin),
-            (eq, "$g_battle_result", 1),
-            (assign, ":enemy_finished", 1),
+            (check_quest_active, "qst_rescue_prisoner"),
+            (quest_slot_eq, "qst_rescue_prisoner", slot_quest_target_troop, ":stack_troop"),
+            (call_script, "script_succeed_quest", "qst_rescue_prisoner"),
           (else_try),
-            (le, "$g_enemy_fit_for_battle", "$num_routed_enemies"),  #replaced for above line because we do not want routed agents to spawn again in next turn of battle.
-            (ge, "$g_friend_fit_for_battle", 1),
-            (assign, ":enemy_finished", 1),
+            (check_quest_active, "qst_deliver_message_to_prisoner_lord"),
+            (quest_slot_eq, "qst_deliver_message_to_prisoner_lord", slot_quest_target_troop, ":stack_troop"),
+            (call_script, "script_end_quest", "qst_deliver_message_to_prisoner_lord"),
           (try_end),
-          (this_or_next|eq, ":enemy_finished", 1),
-          (eq, "$g_enemy_surrenders", 1),
-  ##          (assign, "$g_next_menu", -1),#"mnu_castle_taken_by_friends"),
-  ##          (jump_to_menu, "mnu_total_victory"),
-          (try_begin),#special battle event 1
-            (troop_slot_eq, "trp_player", slot_player_battle_event, 0),
-            (get_player_agent_kill_count, ":wounded", 1),
-            (get_player_agent_kill_count, ":kill"),
-            (val_add, ":kill", ":wounded"),
-            (ge, ":kill", 5),
-            (troop_set_slot, "trp_player", slot_player_battle_event, 1),
-            (jump_to_menu, "mnu_matters_of_life"),
-            (assign, "$temp4_1", "mnu_besiegers_camp_with_allies"),
-          (else_try),#special battle event 2
-            (troop_slot_eq, "trp_player", slot_player_battle_event, 1),
-            (get_player_agent_kill_count, ":wounded", 1),
-            (get_player_agent_kill_count, ":kill"),
-            (val_add, ":kill", ":wounded"),
-            (ge, ":kill", 50),
-            (troop_set_slot, "trp_player", slot_player_battle_event, 2),
-            (jump_to_menu, "mnu_matters_of_life"),
-            (assign, "$temp4_1", "mnu_besiegers_camp_with_allies"),
-          (else_try), #freelancer, special battle events
-            (ge, "$enlisted_party", 1),
-            (check_quest_active, "qst_freelancing"),
-            (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_event_2, 0),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event_2, 1),
-            (jump_to_menu, "mnu_freelancing_battle_event"),
-            (assign, "$temp4_1", "mnu_besiegers_camp_with_allies"),
-          (else_try),#freelancer battle
-            #SB : TODO : add prisoner train of unclaimed prisoners and such, succeed quests by proxy
-            (party_get_num_prisoner_stacks, ":num_prisoner_stacks", "$g_enemy_party"),
-            (try_for_range, ":stack_no", 0, ":num_prisoner_stacks"),
-              # (eq, ":break", 0),
-              (party_prisoner_stack_get_troop_id, ":stack_troop", "p_collective_enemy", ":stack_no"),
-              (troop_is_hero, ":stack_troop"),
-              (try_begin),
-                (check_quest_active, "qst_rescue_prisoner"),
-                (quest_slot_eq, "qst_rescue_prisoner", slot_quest_target_troop, ":stack_troop"),
-                (call_script, "script_succeed_quest", "qst_rescue_prisoner"),
-              (else_try),
-                (check_quest_active, "qst_deliver_message_to_prisoner_lord"),
-                (quest_slot_eq, "qst_deliver_message_to_prisoner_lord", slot_quest_target_troop, ":stack_troop"),
-                (call_script, "script_end_quest", "qst_deliver_message_to_prisoner_lord"),
-              (try_end),
-            (try_end),
-            (try_begin), #check if player gets a share of party prisoners, freed prisoners doesn't count
-              (store_faction_of_party, ":faction_no", "$g_ally_party"),
-              (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", ":faction_no"),
-              (ge, reg0, DPLMC_FACTION_STANDING_MEMBER),
-              #check relation with siege leader as well
-              (party_stack_get_troop_id, ":leader","$g_encountered_party_2",0),
-              (call_script, "script_troop_get_player_relation", ":leader"),
-              (this_or_next|troop_slot_eq, ":leader", slot_lord_reputation_type, lrep_martial),
-              (ge, reg0, -10),
-              (eq, "$capture_screen_shown", 0),
-              (assign, "$capture_screen_shown", 1),
+        (try_end),
+        (try_begin), #check if player gets a share of party prisoners, freed prisoners doesn't count
+          (store_faction_of_party, ":faction_no", "$g_ally_party"),
+          (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", ":faction_no"),
+          (ge, reg0, DPLMC_FACTION_STANDING_MEMBER),
+          #check relation with siege leader as well
+          (party_stack_get_troop_id, ":leader","$g_encountered_party_2",0),
+          (call_script, "script_troop_get_player_relation", ":leader"),
+          (this_or_next|troop_slot_eq, ":leader", slot_lord_reputation_type, lrep_martial),
+          (ge, reg0, -10),
+          (eq, "$capture_screen_shown", 0),
+          (assign, "$capture_screen_shown", 1),
 
-              (party_clear, "p_temp_party"),
-              (assign, "$g_move_heroes", 0),
-              (eq, "$enlisted_party", -1),#freelancer
-              (change_screen_exchange_with_party, "p_temp_party"),
-            (else_try), #check if player has seen the loot
-              (eq, "$loot_screen_shown", 0),
-              (assign, "$loot_screen_shown", 1),
-              (troop_clear_inventory, "trp_temp_troop"),
-              (call_script, "script_party_calculate_loot", "p_total_enemy_casualties"), #p_encountered_party_backup changed to total_enemy_casualties
-              (gt, reg0, 0),
-              (troop_sort_inventory, "trp_temp_troop"),
-              (eq, "$enlisted_party", -1),#freelancer
-              (try_begin),
-                (call_script, "script_cf_dplmc_player_party_meets_autoloot_conditions"),###2
-                (assign, "$dplmc_return_menu", "mnu_besiegers_camp_with_allies"),
-                (assign, "$lord_selected", "trp_player"),
-                (jump_to_menu, "mnu_dplmc_manage_loot_pool"),
-              (else_try),
-                #Old behavior:
-                (change_screen_loot, "trp_temp_troop"),
-              (try_end),
-            (else_try), #SB : increment globals, add exp
-              (call_script, "script_party_give_xp_and_gold", "p_total_enemy_casualties"),
-              (val_add, "$g_total_victories", 1),
-              (call_script, "script_party_wound_all_members", "$g_enemy_party"),
-              (leave_encounter),
-              (change_screen_return),
-            (try_end),
-          (try_end),###freelancer
-        (else_try),
-          (call_script, "script_party_count_members_with_full_health", "p_collective_friends"),
-          (assign, ":ally_num_soldiers", reg0),
-          (eq, "$g_battle_result", -1),
-          #(eq, ":ally_num_soldiers", 0), #battle lost (TODO : also compare this with routed allies too like in other parts)
-          (le, ":ally_num_soldiers",  "$num_routed_allies"), #replaced for above line because we do not want routed agents to spawn again in next turn of battle.
+          (party_clear, "p_temp_party"),
+          (assign, "$g_move_heroes", 0),
+          (eq, "$enlisted_party", -1),#freelancer
+          (change_screen_exchange_with_party, "p_temp_party"),
+        (else_try), #check if player has seen the loot
+          (eq, "$loot_screen_shown", 0),
+          (assign, "$loot_screen_shown", 1),
+          (troop_clear_inventory, "trp_temp_troop"),
+          (call_script, "script_party_calculate_loot", "p_total_enemy_casualties"), #p_encountered_party_backup changed to total_enemy_casualties
+          (gt, reg0, 0),
+          (troop_sort_inventory, "trp_temp_troop"),
+          (eq, "$enlisted_party", -1),#freelancer
+          (try_begin),
+            (call_script, "script_cf_dplmc_player_party_meets_autoloot_conditions"),###2
+            (assign, "$dplmc_return_menu", "mnu_besiegers_camp_with_allies"),
+            (assign, "$lord_selected", "trp_player"),
+            (jump_to_menu, "mnu_dplmc_manage_loot_pool"),
+          (else_try),
+            #Old behavior:
+            (change_screen_loot, "trp_temp_troop"),
+          (try_end),
+        (else_try), #SB : increment globals, add exp
+          (call_script, "script_party_give_xp_and_gold", "p_total_enemy_casualties"),
+          (val_add, "$g_total_victories", 1),
+          (call_script, "script_party_wound_all_members", "$g_enemy_party"),
           (leave_encounter),
           (change_screen_return),
         (try_end),
-        ],
-    [
-      ("talk_to_siege_commander",[]," Request a meeting with the commander.",[
-                                (call_script, "script_get_meeting_scene"), (assign, ":meeting_scene", reg0),
-                                (modify_visitors_at_site,":meeting_scene"),(reset_visitors),
-                                (set_visitor,0,"trp_player"),
-                                (party_stack_get_troop_id, ":siege_leader_id","$g_encountered_party_2",0),
-                                (party_stack_get_troop_dna,":siege_leader_dna","$g_encountered_party_2",0),
-                                (set_visitor,17,":siege_leader_id",":siege_leader_dna"),
-                                (set_jump_mission,"mt_conversation_encounter"),
-                                (jump_to_scene,":meeting_scene"),
-                                (assign, "$talk_context", tc_siege_commander),
-                                (change_screen_map_conversation, ":siege_leader_id")]),
-      ("join_siege_with_allies",[(neg|troop_is_wounded, "trp_player")], "Join the next assault.",
-       [
-           (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
-           (try_begin),
-             (check_quest_active, "qst_join_siege_with_army"),
-             (quest_slot_eq, "qst_join_siege_with_army", slot_quest_target_center, "$g_encountered_party"),
-             (add_xp_as_reward, 500),
-             (call_script, "script_end_quest", "qst_join_siege_with_army"),
-             #Reactivating follow army quest
-             (faction_get_slot, ":faction_marshall", "$players_kingdom", slot_faction_marshall),
-             (str_store_troop_name_link, s9, ":faction_marshall"),
-             (setup_quest_text, "qst_follow_army"),
-             ##diplomacy start+ fix pronoun
-             (call_script, "script_dplmc_store_troop_is_female", ":faction_marshall"),
-             (str_store_string, s2, "@{s9} wants you to follow {reg0?her:his} army until further notice."),
-             ##diplomacy end+
-             (call_script, "script_start_quest", "qst_follow_army", ":faction_marshall"),
-             (assign, "$g_player_follow_army_warnings", 0),
-           (try_end),
-           (try_begin),
-             (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
-             (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_walls),
-           (else_try),
-             (party_get_slot, ":battle_scene", "$g_encountered_party", slot_castle_exterior),
-           (try_end),
-           (call_script, "script_calculate_battle_advantage"),
-           (val_mul, reg0, 2),
-           (val_div, reg0, 3), #scale down the advantage a bit in sieges.
-           (set_battle_advantage, reg0),
-           (set_party_battle_mode),
-           (assign, "$temp4", 0),
-           (set_jump_mission,"mt_castle_attack_walls_ladder"),
-           (jump_to_scene,":battle_scene"),
-           (assign, "$g_siege_final_menu", "mnu_besiegers_camp_with_allies"),
-           (assign, "$g_siege_battle_state", 1),
-           (assign, "$g_next_menu", "mnu_castle_besiege_inner_battle"),
-           (jump_to_menu, "mnu_battle_debrief"),
-           (change_screen_mission),
-          ]),
-      ("join_siege_stay_back", [(call_script, "script_party_count_members_with_full_health", "p_main_party"),
-                                (ge, reg0, 3),
-                                ],
-       "Order your soldiers to join the next assault without you.",
-       [
-         (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
-         (try_begin),
-           (check_quest_active, "qst_join_siege_with_army"),
-           (quest_slot_eq, "qst_join_siege_with_army", slot_quest_target_center, "$g_encountered_party"),
-           (add_xp_as_reward, 100),
-           (call_script, "script_end_quest", "qst_join_siege_with_army"),
-           #Reactivating follow army quest
-           (faction_get_slot, ":faction_marshall", "$players_kingdom", slot_faction_marshall),
-           (str_store_troop_name_link, s9, ":faction_marshall"),
-           (setup_quest_text, "qst_follow_army"),
-           ##diplomacy start+ fix pronoun
-           (call_script, "script_dplmc_store_troop_is_female", ":faction_marshall"),
-           (str_store_string, s2, "@{s9} wants you to follow {reg0?her:his} army until further notice."),
-           ##diplomacy end+
-           (call_script, "script_start_quest", "qst_follow_army", ":faction_marshall"),
-           (assign, "$g_player_follow_army_warnings", 0),
-         (try_end),
-         (assign, "$g_siege_final_menu", "mnu_besiegers_camp_with_allies"),
-         (jump_to_menu,"mnu_castle_attack_walls_with_allies_simulate")]),
+      (try_end),###freelancer
+    (else_try),
+      (call_script, "script_party_count_members_with_full_health", "p_collective_friends"),
+      (assign, ":ally_num_soldiers", reg0),
+      (eq, "$g_battle_result", -1),
+      #(eq, ":ally_num_soldiers", 0), #battle lost (TODO : also compare this with routed allies too like in other parts)
+      (le, ":ally_num_soldiers",  "$num_routed_allies"), #replaced for above line because we do not want routed agents to spawn again in next turn of battle.
+      (leave_encounter),
+      (change_screen_return),
+    (try_end),
+  ],[
+    ("talk_to_siege_commander",[
+    ]," Request a meeting with the commander.",[
+      (call_script, "script_get_meeting_scene"), (assign, ":meeting_scene", reg0),
+      (modify_visitors_at_site,":meeting_scene"),(reset_visitors),
+      (set_visitor,0,"trp_player"),
+      (party_stack_get_troop_id, ":siege_leader_id","$g_encountered_party_2",0),
+      (party_stack_get_troop_dna,":siege_leader_dna","$g_encountered_party_2",0),
+      (set_visitor,17,":siege_leader_id",":siege_leader_dna"),
+      (set_jump_mission,"mt_conversation_encounter"),
+      (jump_to_scene,":meeting_scene"),
+      (assign, "$talk_context", tc_siege_commander),
+      (change_screen_map_conversation, ":siege_leader_id"),
+    ]),
+    ("join_siege_with_allies",[
+      (neg|troop_is_wounded, "trp_player"),
+    ], "Join the next assault.",[
+      (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
+      (try_begin),
+        (check_quest_active, "qst_join_siege_with_army"),
+        (quest_slot_eq, "qst_join_siege_with_army", slot_quest_target_center, "$g_encountered_party"),
+        (add_xp_as_reward, 500),
+        (call_script, "script_end_quest", "qst_join_siege_with_army"),
+        #Reactivating follow army quest
+        (faction_get_slot, ":faction_marshall", "$players_kingdom", slot_faction_marshall),
+        (str_store_troop_name_link, s9, ":faction_marshall"),
+        (setup_quest_text, "qst_follow_army"),
+        ##diplomacy start+ fix pronoun
+        (call_script, "script_dplmc_store_troop_is_female", ":faction_marshall"),
+        (str_store_string, s2, "@{s9} wants you to follow {reg0?her:his} army until further notice."),
+        ##diplomacy end+
+        (call_script, "script_start_quest", "qst_follow_army", ":faction_marshall"),
+        (assign, "$g_player_follow_army_warnings", 0),
+      (try_end),
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+        (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_walls),
+      (else_try),
+        (party_get_slot, ":battle_scene", "$g_encountered_party", slot_castle_exterior),
+      (try_end),
+      (call_script, "script_calculate_battle_advantage"),
+      (val_mul, reg0, 2),
+      (val_div, reg0, 3), #scale down the advantage a bit in sieges.
+      (set_battle_advantage, reg0),
+      (set_party_battle_mode),
+      (assign, "$temp4", 0),
+      (set_jump_mission,"mt_castle_attack_walls_ladder"),
+      (jump_to_scene,":battle_scene"),
+      (assign, "$g_siege_final_menu", "mnu_besiegers_camp_with_allies"),
+      (assign, "$g_siege_battle_state", 1),
+      (assign, "$g_next_menu", "mnu_castle_besiege_inner_battle"),
+      (jump_to_menu, "mnu_battle_debrief"),
+      (change_screen_mission),
+    ]),
+    ("join_siege_stay_back",[
+      (call_script, "script_party_count_members_with_full_health", "p_main_party"),
+      (ge, reg0, 3),
+    ],"Order your soldiers to join the next assault without you.",[
+        (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
+        (try_begin),
+          (check_quest_active, "qst_join_siege_with_army"),
+          (quest_slot_eq, "qst_join_siege_with_army", slot_quest_target_center, "$g_encountered_party"),
+          (add_xp_as_reward, 100),
+          (call_script, "script_end_quest", "qst_join_siege_with_army"),
+          #Reactivating follow army quest
+          (faction_get_slot, ":faction_marshall", "$players_kingdom", slot_faction_marshall),
+          (str_store_troop_name_link, s9, ":faction_marshall"),
+          (setup_quest_text, "qst_follow_army"),
+          ##diplomacy start+ fix pronoun
+          (call_script, "script_dplmc_store_troop_is_female", ":faction_marshall"),
+          (str_store_string, s2, "@{s9} wants you to follow {reg0?her:his} army until further notice."),
+          ##diplomacy end+
+          (call_script, "script_start_quest", "qst_follow_army", ":faction_marshall"),
+          (assign, "$g_player_follow_army_warnings", 0),
+        (try_end),
+        (assign, "$g_siege_final_menu", "mnu_besiegers_camp_with_allies"),
+        (jump_to_menu,"mnu_castle_attack_walls_with_allies_simulate"),
+    ]),
 
-      ("join_siege_skipp_freelancer", [
+    ("join_siege_skipp_freelancer", [
       (gt, "$enlisted_party", 0),#is freelancing
-                                ],
-       "Stay back and let the others fight.",
-       [
-         (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
-         (try_begin),
-           (check_quest_active, "qst_join_siege_with_army"),
-           (quest_slot_eq, "qst_join_siege_with_army", slot_quest_target_center, "$g_encountered_party"),
-           (add_xp_as_reward, 100),
-           (call_script, "script_end_quest", "qst_join_siege_with_army"),
-           #Reactivating follow army quest
-           (faction_get_slot, ":faction_marshall", "$players_kingdom", slot_faction_marshall),
-           (str_store_troop_name_link, s9, ":faction_marshall"),
-           (setup_quest_text, "qst_follow_army"),
-           ##diplomacy start+ fix pronoun
-           (call_script, "script_dplmc_store_troop_is_female", ":faction_marshall"),
-           (str_store_string, s2, "@{s9} wants you to follow {reg0?her:his} army until further notice."),
-           ##diplomacy end+
-           (call_script, "script_start_quest", "qst_follow_army", ":faction_marshall"),
-           (assign, "$g_player_follow_army_warnings", 0),
-         (try_end),
-         (jump_to_menu,"mnu_castle_attack_walls_with_allies_simulate_freelancer")]),
-
-        ("commander",[
-        (gt, "$enlisted_party", 0),#is freelancing
-        (store_party_size, ":size", "$enlisted_party"),
-        (ge, ":size", 1),
-        (neg|troop_is_wounded, "trp_player"),
-        ],
-        "Talk with the Immune responsible for treating wounds.",
-        [
-        (assign, "$talk_context", 0),#fix a possible bug
-        (call_script, "script_get_meeting_scene"),
-        (assign, ":meeting_scene", reg0),
-        (set_jump_mission,"mt_conversation_encounter"),
-        (modify_visitors_at_site,":meeting_scene"),
-        (reset_visitors),
-        (set_visitor,17,"trp_player"),
-        (mission_tpl_entry_set_override_flags, "mt_conversation_encounter",0, af_override_all),
-        (mission_tpl_entry_clear_override_items, "mt_conversation_encounter", 0),
-        (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 0, "itm_legion_segmentata_1"),
-        (set_visitor,0,"trp_healer_2"),
-        (jump_to_scene,":meeting_scene"),
-        #(assign, "$talk_context", tc_siege_commander),
-        (change_screen_map_conversation, "trp_healer_2")
-        ]),
-
-      ("leave",[],"Leave.",[(leave_encounter),(change_screen_return)]),
-    ]
-  ),
+    ],"Stay back and let the others fight.",[
+        (party_set_next_battle_simulation_time, "$g_encountered_party", -1),
+        (try_begin),
+          (check_quest_active, "qst_join_siege_with_army"),
+          (quest_slot_eq, "qst_join_siege_with_army", slot_quest_target_center, "$g_encountered_party"),
+          (add_xp_as_reward, 100),
+          (call_script, "script_end_quest", "qst_join_siege_with_army"),
+          #Reactivating follow army quest
+          (faction_get_slot, ":faction_marshall", "$players_kingdom", slot_faction_marshall),
+          (str_store_troop_name_link, s9, ":faction_marshall"),
+          (setup_quest_text, "qst_follow_army"),
+          ##diplomacy start+ fix pronoun
+          (call_script, "script_dplmc_store_troop_is_female", ":faction_marshall"),
+          (str_store_string, s2, "@{s9} wants you to follow {reg0?her:his} army until further notice."),
+          ##diplomacy end+
+          (call_script, "script_start_quest", "qst_follow_army", ":faction_marshall"),
+          (assign, "$g_player_follow_army_warnings", 0),
+        (try_end),
+        (jump_to_menu,"mnu_castle_attack_walls_with_allies_simulate_freelancer"),
+    ]),
+    ("commander",[
+      (gt, "$enlisted_party", 0),#is freelancing
+      (store_party_size, ":size", "$enlisted_party"),
+      (ge, ":size", 1),
+      (neg|troop_is_wounded, "trp_player"),
+    ],"Talk with the Immune responsible for treating wounds.",[
+      (assign, "$talk_context", 0),#fix a possible bug
+      (call_script, "script_get_meeting_scene"),
+      (assign, ":meeting_scene", reg0),
+      (set_jump_mission,"mt_conversation_encounter"),
+      (modify_visitors_at_site,":meeting_scene"),
+      (reset_visitors),
+      (set_visitor,17,"trp_player"),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_encounter",0, af_override_all),
+      (mission_tpl_entry_clear_override_items, "mt_conversation_encounter", 0),
+      (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 0, "itm_legion_segmentata_1"),
+      (set_visitor,0,"trp_healer_2"),
+      (jump_to_scene,":meeting_scene"),
+      #(assign, "$talk_context", tc_siege_commander),
+      (change_screen_map_conversation, "trp_healer_2")
+    ]),
+    ("leave",[],"Leave.",[
+      (leave_encounter),
+      (change_screen_return),
+    ]),
+]),
 
 ("castle_outside",mnf_scale_picture,
   "You are outside {s2}.{s11} {s3} {s4}",
@@ -51176,19 +51172,25 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":size", 20),
     ],"Talk with the Immune responsible for treating wounds.",[
       (assign, "$talk_context", 0),#fix a possible bug
-      (call_script, "script_get_meeting_scene"),
-      (assign, ":meeting_scene", reg0),
+      (try_begin),
+          (party_get_current_terrain, ":terrain", "p_main_party"),
+          (this_or_next|eq, ":terrain", rt_desert),
+          (eq, ":terrain", rt_desert_forest),
+          (assign, ":scene", "scn_follower_camp_desert"),
+      (else_try),
+          (assign, ":scene", "scn_follower_camp"),
+      (try_end),
       (set_jump_mission,"mt_conversation_encounter"),
-      (modify_visitors_at_site,":meeting_scene"),
+      (modify_visitors_at_site,":scene"),
       (reset_visitors),
-      (set_visitor,17,"trp_player"),
+      (set_visitor,15,"trp_player"),
 
       (mission_tpl_entry_set_override_flags, "mt_conversation_encounter",0, af_override_all),
       (mission_tpl_entry_clear_override_items, "mt_conversation_encounter", 0),
       (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 0, "itm_legion_segmentata_1"),
       (set_visitor,0,"trp_healer_2"),
 
-      (jump_to_scene,":meeting_scene"),
+      (jump_to_scene,":scene"),
       #(assign, "$talk_context", tc_siege_commander),
       (change_screen_map_conversation, "trp_healer_2")
     ]),
@@ -51199,17 +51201,23 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":size", 20),
     ],"Talk with the Immune responsible for weapon maintaince.",[
       (assign, "$talk_context", 0),#fix a possible bug
-      (call_script, "script_get_meeting_scene"),
-      (assign, ":meeting_scene", reg0),
+      (try_begin),
+          (party_get_current_terrain, ":terrain", "p_main_party"),
+          (this_or_next|eq, ":terrain", rt_desert),
+          (eq, ":terrain", rt_desert_forest),
+          (assign, ":scene", "scn_follower_camp_desert"),
+      (else_try),
+          (assign, ":scene", "scn_follower_camp"),
+      (try_end),
       (set_jump_mission,"mt_conversation_encounter"),
-      (modify_visitors_at_site,":meeting_scene"),
+      (modify_visitors_at_site,":scene"),
       (reset_visitors),
-      (set_visitor,17,"trp_player"),
+      (set_visitor,15,"trp_player"),
       (mission_tpl_entry_set_override_flags, "mt_conversation_encounter",0, af_override_all),
       (mission_tpl_entry_clear_override_items, "mt_conversation_encounter", 0),
       (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 0, "itm_legion_segmentata_1"),
       (set_visitor,0,"trp_smith_master"),
-      (jump_to_scene,":meeting_scene"),
+      (jump_to_scene,":scene"),
       #(assign, "$talk_context", tc_siege_commander),
       (change_screen_map_conversation, "trp_smith_master")
     ]),
@@ -56773,60 +56781,52 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
   ]),
 ]),
 
-  ("elysium_refused",mnf_scale_picture,
-    "You wake up on a beach not far from Ostia. Your head hurts. Soon your soldiers, who have been searching for you for days, spot you.^^Now you know Elysium exist, a place where neither hunger nor winter, neither wolves nor lions, neither war nor death exist. Alas you will never be able to return.",
-    "none", [
+("elysium_refused",mnf_scale_picture,
+  "You wake up on a beach not far from Ostia. Your head hurts. Soon your soldiers, who have been searching for you for days, spot you."
+  +"^^Now you know Elysium exist, a place where neither hunger nor winter, neither wolves nor lions, neither war nor death exist. Alas you will never be able to return.",
+  "none", [
     (set_background_mesh, "mesh_pic_roma"),
-    ],
+  ],[
 
-    [
-
-    ("option_1",[],"Continue.",
-        [
+  ("option_1",[],"Continue.",[
     (call_script, "script_end_quest", "qst_elysium"),
     (add_xp_as_reward, 2000),
     (party_relocate_near_party, "p_main_party", "p_town_6",2),
     (change_screen_map),
-      ]),
-    ],
-  ),
-  ("flavor_event_1",mnf_scale_picture,
-    "The Lupanar is a dilapidated building on a secluded side street.^When you enter it a hideous stench hits you. Though you are too drunken to really perceive it. You and the soldiers sit down and some dancers appear. The soldiers each grab a dancer they like and disappear. You are left alone with a dancer. Like a she-wolf, she slowly approaches you. She quickly relieved you of your gold that you are carrying with you and before you can do anything she has already disappeared. A moment later a strong man appears. This must be Gaius. He grabs you by both shoulders and throws you out of the house. You stagger back to the tavern and quickly fall asleep.",
-    "none", [
+  ]),
+]),
+
+("flavor_event_1",mnf_scale_picture,
+  "The Lupanar is a dilapidated building on a secluded side street.^When you enter it a hideous stench hits you. Though you are too drunken to really perceive it."
+  +" You and the soldiers sit down and some dancers appear. The soldiers each grab a dancer they like and disappear. You are left alone with a dancer."
+  +" Like a she-wolf, she slowly approaches you. She quickly relieved you of your gold that you are carrying with you and before you can do anything she has already disappeared."
+  +" A moment later a strong man appears. This must be Gaius. He grabs you by both shoulders and throws you out of the house. You stagger back to the tavern and quickly fall asleep.",
+  "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
-    ],
+  ],[
 
-    [
-
-    ("option_1",[],"Continue.",
-        [
+  ("option_1",[],"Continue.",[
     (add_xp_as_reward, 1000),
     (troop_remove_gold, "trp_player", 1500),
     (change_screen_map),
-      ]),
-    ],
-  ),
-  ("flavor_event_3",mnf_scale_picture,
-    "You follow the Sarmatians to the hut of Wlodarnoxarthos.^ His wife welcomes you amicably. She looks strong and healthy although she has given birth to many children she still looks beautiful.^ You sit down and continue smoking with the others, while his wife prepares the meal. His daughters appear and wash your hands and feet. Then they bring the food. They serve many different dishes on silver plates that clearly testify to the wealth of the host. Now also Wlodarnoxarthos sons appear and join the meal. After the meal is finished, Wlodarnoxarthos orders his children to leave them. He tells only his wife to stay with him.^You continue smoking. While Kentaskros falls a sleep and Wlodarnoxarthos cuddling with his wife, the eldest daughter appears to bring some fruits and more weed. She accidentally pours the bowl over and kneels next to you to collect the fruit. Thereby she touches you several times. After she finished, she remains sitting next to you and slowly starts stroking your legs, arms and chest. She takes a quick glances at her parents. They are already in an advanced progress of making love. Then she looks at you, smiles and kisses you. Now the real fun starts...^^^^On the next day, you awake in the soft arms of a Wlodarnoxarthos' daughter. He, his wife and Kentaskros are still sleeping. In the middle of the hut stands the bong. Golden and beautiful.",
-    "none", [
+  ]),
+]),
+
+("flavor_event_3",mnf_scale_picture,
+  "You follow the Sarmatians to the hut of Wlodarnoxarthos.^ His wife welcomes you amicably. She looks strong and healthy although she has given birth to many children she still looks beautiful.^ You sit down and continue smoking with the others, while his wife prepares the meal. His daughters appear and wash your hands and feet. Then they bring the food. They serve many different dishes on silver plates that clearly testify to the wealth of the host. Now also Wlodarnoxarthos sons appear and join the meal. After the meal is finished, Wlodarnoxarthos orders his children to leave them. He tells only his wife to stay with him.^You continue smoking. While Kentaskros falls a sleep and Wlodarnoxarthos cuddling with his wife, the eldest daughter appears to bring some fruits and more weed. She accidentally pours the bowl over and kneels next to you to collect the fruit. Thereby she touches you several times. After she finished, she remains sitting next to you and slowly starts stroking your legs, arms and chest. She takes a quick glances at her parents. They are already in an advanced progress of making love. Then she looks at you, smiles and kisses you. Now the real fun starts...^^^^On the next day, you awake in the soft arms of a Wlodarnoxarthos' daughter. He, his wife and Kentaskros are still sleeping. In the middle of the hut stands the bong. Golden and beautiful.",
+  "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
-    ],
-
-    [
-
-    ("option_1",[],"Just quickly leave.",
-        [
+  ],[
+  ("option_1",[],"Just quickly leave.",[
     (add_xp_as_reward, 1000),
     (change_screen_map),
-      ]),
-    ("option_1",[],"Take the bong and then leave.",
-        [
+  ]),
+  ("option_1",[],"Take the bong and then leave.",[
     (troop_add_item, "trp_player", "itm_scythian_bong"),
     (add_xp_as_reward, 2000),
     (change_screen_map),
-      ]),
-    ],
-  ),
+  ]),
+]),
 
 ("flavor_event_4",mnf_scale_picture,
   "Everyone runs out of the tavern into the street to see what happened. Women are screaming, the street is full of blood. You see a dead body laying under a cart. "+

@@ -6954,8 +6954,8 @@ mission_templates = [
     improved_lightning,
     (ti_on_agent_spawn, 0, 0, [],[
       (store_trigger_param_1, ":agent"),
+      (agent_is_active, ":agent"),
       (agent_is_human, ":agent"),
-
       (agent_get_troop_id, ":troop", ":agent"),
       (try_begin),
           (call_script, "script_cf_dplmc_troop_is_female", ":troop"),
