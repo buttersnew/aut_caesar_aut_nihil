@@ -10760,6 +10760,16 @@ simple_triggers = [
             (try_end),
         (try_end),
     (try_end),
+
+    (try_begin),
+        (store_faction_of_party, ":rome_faction", "p_town_6"),
+        (faction_slot_eq, ":rome_faction", slot_faction_culture, "fac_culture_7"),
+        (store_mul, ":probability", "$wind_power", 4),
+        (val_add, ":probability", 5),
+        (store_random_in_range, ":r", 0, 100),
+        (le, ":r", ":probability"),
+        (call_script, "script_add_notification_menu", "mnu_emperor_event_grain_supply", ":rome_faction", 0),
+    (try_end),
 ]),
 
 (24,[

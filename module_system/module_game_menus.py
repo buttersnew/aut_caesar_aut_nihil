@@ -32839,6 +32839,62 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ##########################
 #    events for flavor   #
 ##########################
+("emperor_event_grain_supply",0,
+  "The Grain Ships Have Sunk!^^Several ships carrying grain bound for Rome have sunk, threatening famine in the city.^{s25}",
+  "none",[
+    (store_random_in_range, ":r", 0, 2),
+    (try_begin),
+        (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
+        (ge, "$g_is_emperor", 1),
+        (str_store_string, s25, "str_event_grain_emperor"),
+    (else_try),
+        (eq, ":r", 0),
+        (str_store_string, s25, "str_event_grain_ai_help"),
+        (call_script, "script_add_to_faction_treasury", "$g_notification_menu_var1", -150000),
+    (else_try),
+        (str_store_string, s25, "str_event_grain_ai_ignore"),
+        (call_script, "script_spawn_party", "p_town_6", "pt_rebels"),
+    (try_end),
+    (set_background_mesh, "mesh_pic_ships"),
+  ],[
+    ("continue",[
+      (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
+      (ge, "$g_is_emperor", 1),
+      (store_troop_gold, ":gold", "trp_player"),
+      (store_troop_gold, ":treasury", "trp_household_possessions"),
+      (val_add, ":gold", ":treasury"),
+      (ge, ":gold", 150000),
+    ],"Buy additional grain, using funds from your own purse! [150,000 denars]",[
+      (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 150000, "trp_player"),
+      (call_script, "script_change_troop_renown", "trp_player", 5),
+      (call_script, "script_change_player_honor", 1),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", 2),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+    ("continue",[
+      (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
+      (ge, "$g_is_emperor", 1),
+    ],"Buy additional grain, using funds from the imperial treasury! [150,000 denars]",[
+      (call_script, "script_add_to_faction_treasury", "$g_notification_menu_var1", -150000),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+    ("continue",[
+      (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
+      (ge, "$g_is_emperor", 1),
+    ],"Let them eat cake! [Do nothing]",[
+      (call_script, "script_change_troop_renown", "trp_player", -25),
+      (call_script, "script_change_player_honor", -5),
+      (call_script, "script_change_player_relation_with_center", "p_town_6", -5),
+      (call_script, "script_spawn_party", "p_town_6", "pt_rebels"),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+    ("continue",[
+      (lt, "$g_is_emperor", 1),
+    ],"Continue",[
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
+
 ##event for pharaoh quest line
 ("emperor_event_pharaoh",0,
   "{s25}",
