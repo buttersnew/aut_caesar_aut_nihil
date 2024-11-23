@@ -118,8 +118,8 @@ simple_triggers = [
         (party_set_slot, "p_main_party", slot_party_unrested_morale_penalty, 0),#no rest penality in olympia
     (else_try),
         ###this is for special quest
-        # (check_quest_active, "qst_wlodowiecus_adventure"),
-        # (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 2),
+        # (check_quest_active, "qst_wlodowiecus_adventure_1"),
+        # (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 2),
         # (eq,"$auto_menu","mnu_visit_to_sagala"),
         # (jump_to_menu, "$auto_menu"),
         # (else_try),##start freelancer###new auto menu for freelancing to avoid a bug where menu is not shown

@@ -2289,9 +2289,9 @@ game_menus = [
       (troop_set_slot, "trp_mancinellus", slot_troop_met, 1),
 
       (add_xp_as_reward, 10000000),
-      (call_script, "script_start_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
-      (quest_set_slot, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
-      (call_script, "script_end_quest", "qst_wlodowiecus_adventure", "trp_fortuna"),
+      (call_script, "script_start_quest", "qst_wlodowiecus_adventure_1", "trp_fortuna"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
+      (call_script, "script_end_quest", "qst_wlodowiecus_adventure_1", "trp_fortuna"),
       (call_script, "script_start_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
       (quest_set_slot, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 6),
       (call_script, "script_end_quest", "qst_wlodowiecus_adventure_2", "trp_fortuna"),
@@ -14851,7 +14851,7 @@ game_menus = [
         (check_quest_active, "qst_wlodowiecus_adventure_3"),
         (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 2),
         (eq, "$current_town", "p_castle_12"),
-        (jump_to_menu, "mnu_wlodowiecus_adventure_3_start_1"),
+        (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_start_1"),
     (else_try),
         (eq, "$current_town", "p_town_6"),
         (player_has_item, "itm_holy_grail"),
@@ -14878,9 +14878,9 @@ game_menus = [
         (jump_to_menu, "mnu_recieve_influence"),
     (else_try),
         (eq, "$current_town", "p_town_27"),
-        (check_quest_active, "qst_wlodowiecus_adventure"),
-        (this_or_next|quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 2),
-        (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 3),
+        (check_quest_active, "qst_wlodowiecus_adventure_1"),
+        (this_or_next|quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 2),
+        (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 3),
         (leave_encounter),
         (jump_to_menu, "mnu_auto_return_map"),
     (else_try),
@@ -15789,12 +15789,12 @@ game_menus = [
           (eq, "$current_town", "p_town_6"),
           (check_quest_active, "qst_wlodowiecus_adventure_3"),
           (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 1),
-          (jump_to_menu, "mnu_wlodowiecus_adventure_3_visit_manc"),
+          (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_visit_manc"),
       (else_try),
           (eq, "$current_town", "p_town_6"),
           (check_quest_active, "qst_wlodowiecus_adventure_2"),
           (quest_slot_eq, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 1),
-          (jump_to_menu, "mnu_wlodowiecus_adventure_2_visit_manc"),
+          (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_visit_manc"),
       (else_try),
           (this_or_next|eq,"$all_doors_locked",1),
           (eq,"$town_nighttime",1),
@@ -16798,10 +16798,10 @@ game_menus = [
       (change_screen_mission),
     ],"Door to your enterprise."),
 
-    ("visit_luparna",[
+    ("visit_lupanar",[
       (eq, 0, 1),
       (eq, "$current_town", "p_town_6"),
-    ],"Enter the Luparna.",[
+    ],"Enter the lupanar.",[
       (assign,"$talk_context", tc_tavern_talk),
       (set_jump_mission, "mt_toiletboys"),
       (modify_visitors_at_site, "scn_luparnium"),
@@ -16830,7 +16830,7 @@ game_menus = [
       (set_visitor, 9, "trp_slave_female"),
       (jump_to_scene, "scn_luparnium"),
       (change_screen_mission),
-    ], "Enter the Luparna."),
+    ], "Enter the lupanar."),
 
 
     ("trade_with_merchants",[
@@ -17462,7 +17462,7 @@ game_menus = [
           (neg|check_quest_active, "qst_wlodowiecus_adventure_4"),
           (neg|check_quest_active, "qst_wlodowiecus_adventure_3"),
           (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
-          (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
+          (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
           (set_visitor,17,"trp_wlodowiecus"),
           (set_visitor,18,"trp_hadrianus"),
           (set_visitor,19,"trp_mancinellus"),
@@ -29896,7 +29896,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (call_script, "script_visit_temple", "scn_temple_of_vesta", "trp_roman_priest_female"),
     ]),
     ("mithras",[
-      (quest_slot_ge, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
+      (quest_slot_ge, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
     ],"Visit the Temple of Mithras.",[
       (call_script, "script_visit_temple", "scn_temple_of_mithras", "trp_roman_priest"),
     ]),
@@ -45152,17 +45152,17 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-("luparna",mnf_scale_picture,
+("lupanar",mnf_scale_picture,
   "{s27}",
   "none", [
     (try_begin),
       (eq, "$temp3", 1),
       (str_store_string, s27, "str_event_male_penetrating"),
-      (set_background_mesh, "mesh_pic_luparna_1"),
+      (set_background_mesh, "mesh_pic_lupanar_1"),
     (else_try),
       (eq, "$temp3", 2),
       (str_store_string, s27, "str_event_male_penetrated"),
-      (set_background_mesh, "mesh_pic_luparna_2"),
+      (set_background_mesh, "mesh_pic_lupanar_2"),
     (else_try),
       (eq, "$temp3", 3),
       (str_store_string, s27, "str_event_male_blowjob"),
@@ -45170,11 +45170,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (else_try),
       (eq, "$temp3", 4),
       (str_store_string, s27, "str_event_female_classic"),
-      (set_background_mesh, "mesh_pic_luparna_1"),
+      (set_background_mesh, "mesh_pic_lupanar_1"),
     (else_try),
       (eq, "$temp3", 5),
       (str_store_string, s27, "str_event_female_butt"),
-      (set_background_mesh, "mesh_pic_luparna_2"),
+      (set_background_mesh, "mesh_pic_lupanar_2"),
     (else_try),
       (str_store_string, s27, "str_event_female_blowjob"),
       (set_background_mesh, "mesh_pic_hexe_party"),
@@ -48647,7 +48647,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     # (jump_to_menu, "mnu_center_improve"),
       # ]),
       # ("leave",[(neq, "$current_town", "p_town_6"),
-      # (quest_slot_ge, "qst_wlodowiecus_adventure", slot_quest_current_state,6),
+      # (quest_slot_ge, "qst_wlodowiecus_adventure_1", slot_quest_current_state,6),
       # ],"Mithras.",[
     # (assign, "$temp4_1", worships_mithras),
     # (jump_to_menu, "mnu_center_improve"),
@@ -48697,7 +48697,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       # ]),
      # ("leave",[(eq, "$current_town", "p_town_6"),
     # (disable_menu_option),
-    # (quest_slot_ge, "qst_wlodowiecus_adventure", slot_quest_current_state,6),
+    # (quest_slot_ge, "qst_wlodowiecus_adventure_1", slot_quest_current_state,6),
       # ],"Mithras. (already built)",[
     # (assign, "$temp4_1", worships_mithras),
     # (jump_to_menu, "mnu_center_improve"),
@@ -51853,11 +51853,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (assign,"$talk_context", tc_town_talk),
       (try_begin),
         (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 11),
-        (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_final"),
+        (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_lybicus_final"),
         (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 12),
       (else_try),
         (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 1),
-        (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_feast"),
+        (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_lybicus_feast"),
         (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 2),
       (else_try),
         (display_message, "str_door_locked"),
@@ -56481,15 +56481,13 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ],
   ),
 
-  ("travel_to_sagala",0,
-    "You arrived at the foreign camp. It's leader, Phamanus, allows you to join the caravan.^^A lengthy journey begins. The caravan cross over mountains and through deserts you've never seen before, the travel continues through the eastern regions of the realm of the Parthians until you reach the river of Hindus. There, the caravan follows the river North until they reach a town called Taxilia from where they head East in direction of Sagala.",
-    "none", [
+("travel_to_sagala",0,
+  "You arrived at the foreign camp. It's leader, Phamanus, allows you to join the caravan.^^A lengthy journey begins. The caravan cross over mountains and through deserts you've never seen before, the travel continues through the eastern regions of the realm of the Parthians until you reach the river of Hindus. There, the caravan follows the river North until they reach a town called Taxilia from where they head East in direction of Sagala.",
+  "none", [
     (set_background_mesh, "mesh_pic_desert"),
     (call_script, "script_dplmc_remove_disguise"),
-    ],
-
-    [("option_1",[],"Continue...",
-        [
+  ],[
+  ("option_1",[],"Continue...",[
     (add_xp_as_reward, 1500),
 
     (assign, "$g_next_menu", "mnu_travel_to_sagala_2"),
@@ -56521,33 +56519,30 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 
     (jump_to_scene, "scn_cutscene_parthia"),
     (change_screen_mission),
-      ]),
-    ],
-  ),
-  ("travel_to_sagala_2",0,
-    "The people you see are dressed in colorful clothing and some wear a colored dot on their forehead. The various foods you taste are surprisingly spicy and colorful. Some people use elephants for transportation. And you see strange little hairy people with tails walking around on all fours. You watched helplessly as a group of these little creatures tries to steal your food and when you wanted to scare them away you are told by the locals that they are holy animals and it is not allowed to hurt them.^^After a long journey through dense forests you finally reach the city of Sagala. You were told by Phamanus that the great Emperor Kujula Kadphises of the Kushan Empire is currently in a campaign to conquer these lands. Yet, the town of Sangala continues to resist. You are then told by a local that Sagala is ruled by Queen Karishma, who took a pale-skinned man, speaking a foreign language, as lover. Could this foreigner be Wlodowiecus? You should try find Karishma.",
-    "none", [
+  ]),
+]),
+("travel_to_sagala_2",0,
+  "The people you see are dressed in colorful clothing and some wear a colored dot on their forehead. The various foods you taste are surprisingly spicy and colorful. Some people use elephants for transportation. And you see strange little hairy people with tails walking around on all fours. You watched helplessly as a group of these little creatures tries to steal your food and when you wanted to scare them away you are told by the locals that they are holy animals and it is not allowed to hurt them.^^After a long journey through dense forests you finally reach the city of Sagala. You were told by Phamanus that the great Emperor Kujula Kadphises of the Kushan Empire is currently in a campaign to conquer these lands. Yet, the town of Sangala continues to resist. You are then told by a local that Sagala is ruled by Queen Karishma, who took a pale-skinned man, speaking a foreign language, as lover. Could this foreigner be Wlodowiecus? You should try find Karishma.",
+  "none", [
     (set_background_mesh, "mesh_pic_deserters"),
-    ],
-
-    [("option_1",[],"Continue...",
-        [
+  ],[
+  ("option_1",[],"Continue...",[
     (add_xp_as_reward, 2500),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure", 3, "@You arrived at Sagala. Try to find Wlodowiecus.", 0),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure", 4, "@Ask a guard for an audience with Queen Karishma. She probably knows more about Wlodowiecus.", 0),
+    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You arrived at Sagala. Try to find Wlodowiecus.", 0),
+    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Ask a guard for an audience with Queen Karishma. She probably knows more about Wlodowiecus.", 0),
     (display_message, "str_quest_updated"),
     (play_sound, "snd_quest_concluded"),
 
     (assign, "$talk_context", -1),
     (assign, "$g_start_belligerent_drunk_fight", 3),
     (set_jump_mission,"mt_visit_sagala"),
-    (modify_visitors_at_site,"scn_indian_town"),
+    (modify_visitors_at_site,"scn_sagala"),
     (reset_visitors, 0),
     (set_visitor, 2, "trp_hadrianus"),
     (set_visitor, 3, "trp_wlodowiecus"),
     (set_visitor, 52, "trp_merchant8"),
     (try_begin),
-        (scene_slot_eq, "scn_indian_town", slot_scene_visited, 0),
+        (scene_slot_eq, "scn_sagala", slot_scene_visited, 0),
         (set_visitor, 0, "trp_player"),
     (else_try),
         (set_visitor, 1, "trp_player"),
@@ -56561,22 +56556,18 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
             (set_visitor, ":entry", "trp_indian_archer"),
         (try_end),
     (try_end),
-    (jump_to_scene,"scn_indian_town"),
+    (jump_to_scene,"scn_sagala"),
     (change_screen_mission),
     #entry 0 player
     #entry 1 player
     #2 hadrian
     #3 wlodowicus
     #4-9 castle guards with info
-
     ##other guards
     #10-26
-
     #27-49 walker
-
-      ]),
-    ],
-  ),
+  ]),
+]),
   # ("visit_to_sagala",0,
     # "You are inside Sagala",
     # "none", [
@@ -56597,13 +56588,13 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
         # #10-26
     # (assign, "$talk_context", -1),
     # (set_jump_mission,"mt_visit_sagala"),
-    # (modify_visitors_at_site,"scn_indian_town"),
+    # (modify_visitors_at_site,"scn_sagala"),
     # (reset_visitors, 0),
     # (set_visitor, 2, "trp_hadrianus"),
     # (set_visitor, 3, "trp_wlodowiecus"),
     # (set_visitor, 52, "trp_merchant8"),
     # (try_begin),
-        # (scene_slot_eq, "scn_indian_town", slot_scene_visited, 0),
+        # (scene_slot_eq, "scn_sagala", slot_scene_visited, 0),
         # (set_visitor, 0, "trp_player"),
     # (else_try),
         # (set_visitor, 1, "trp_player"),
@@ -56617,7 +56608,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
             # (set_visitor, ":entry", "trp_indian_archer"),
         # (try_end),
     # (try_end),
-    # (jump_to_scene,"scn_indian_town"),
+    # (jump_to_scene,"scn_sagala"),
     # (change_screen_mission),
         # #27-49 walker
       # ]),
@@ -56637,9 +56628,9 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     [("option_1",[],"Continue.",
         [
     (add_xp_as_reward, 1500),
-    (quest_set_slot, "qst_wlodowiecus_adventure", slot_quest_current_state, 5),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure", 3, "@You found Wlodowiecus and escaped from Sagala.", 0),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure", 4, "@Now you need to find the special marble and a way back.", 0),
+    (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 5),
+    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You found Wlodowiecus and escaped from Sagala.", 0),
+    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Now you need to find the special marble and a way back.", 0),
     (display_message, "str_quest_updated"),
     (play_sound, "snd_quest_concluded"),
     (assign, "$g_start_belligerent_drunk_fight", 0),
@@ -56666,11 +56657,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 
     [("option_1",[],"Continue.",
         [
-    (quest_set_slot, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure", 3, "@You returned from the lands East of the river Indus.", 0),
+    (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
+    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You returned from the lands East of the river Indus.", 0),
 
     (str_store_party_name, s22, "p_town_6"),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure", 4, "@Travel to {s22} and meet Olivarius to claim your reward.", 0),
+    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Travel to {s22} and meet Olivarius to claim your reward.", 0),
     (display_message, "str_quest_updated"),
     (play_sound, "snd_quest_concluded"),
     (troop_add_items, "trp_player", "itm_spice", 10),
@@ -57051,7 +57042,194 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_journey_starts",mnf_scale_picture,
+("phamanus_travel",mnf_scale_picture,
+  "{s25}",
+  "none", [
+    (try_begin),
+      (eq, "$temp1", "scn_sagala"),
+      (set_background_mesh, "mesh_pic_deserters"),
+      (str_store_string, s25, "str_event_caravan_sagala"),
+    (else_try),
+      (eq, "$temp1", "scn_baltic_town"),
+      (set_background_mesh, "mesh_pic_castlesnow"),
+      (str_store_string, s25, "str_event_caravan_sciri"),
+    (else_try),
+      (eq, "$temp1", "scn_subsaharan_african_village"),
+      (set_background_mesh, "mesh_pic_village_p"),
+      (str_store_string, s25, "str_event_caravan_djenne"),
+    (else_try),
+      (eq, "$temp1", "scn_kashar"),
+      (set_background_mesh, "mesh_pic_castledes"),
+      (str_store_string, s25, "str_event_caravan_karsahr"),
+    (try_end),
+  ],[
+    ("option_1",[],"Enter.",[
+      (try_begin),
+          (eq, "$temp1", "scn_sagala"),
+          (assign, "$talk_context", -1),
+          (assign, "$g_start_belligerent_drunk_fight", -1),
+          (set_jump_mission,"mt_visit_sagala"),
+          (modify_visitors_at_site,"scn_sagala"),
+          (reset_visitors, 0),
+          (set_visitor, 2, "trp_slave"),
+          (set_visitor, 3, "trp_slave"),
+          (set_visitor, 52, "trp_merchant8"),
+          (try_begin),
+              (scene_slot_eq, "scn_sagala", slot_scene_visited, 0),
+              (set_visitor, 0, "trp_player"),
+          (else_try),
+              (set_visitor, 1, "trp_player"),
+          (try_end),
+          (try_for_range, ":entry", 4, 50),
+              (store_random_in_range, ":r", 0, 2),
+              (try_begin),
+                  (eq, ":r", 0),
+                  (set_visitor, ":entry", "trp_indian_spearman"),
+              (else_try),
+                  (set_visitor, ":entry", "trp_indian_archer"),
+              (try_end),
+          (try_end),
+          (jump_to_scene,"scn_sagala"),
+          (change_screen_mission),
+          #entry 0 player
+          #entry 1 player
+          #2 hadrian
+          #3 wlodowicus
+          #4-9 castle guards with info
+          ##other guards
+          #10-26
+          #27-49 walker
+      (else_try),
+          (eq, "$temp1", "scn_baltic_town"),
+          (assign, "$temp1", 13),
+          (assign, "$temp2", -1),
+          (set_jump_mission, "mt_conversation_generic"),
+          (modify_visitors_at_site, "scn_baltic_town"),
+          (reset_visitors),
+          (set_visitor, 1, "trp_player"),
+
+          (set_visitor, 45, "trp_germanic_richmerchant"),
+          (set_visitor, 46, "trp_germanic_poormerchant"),
+
+          (try_begin),
+              (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 11), ## not looted
+              (set_visitor, 8, "trp_ekkebert"),
+          (else_try),# looted
+              (set_visitor, 8, "trp_egino"),
+          (try_end),
+
+          (try_for_range, ":entry", 12, 25),
+              (set_visitor, ":entry", "trp_baltic_hunter"),
+          (try_end),
+          (jump_to_scene, "scn_baltic_town"),
+          (change_screen_mission),
+      (else_try),
+          (eq, "$temp1", "scn_subsaharan_african_village"),
+          (assign, "$current_town", "p_nubian_town_1"),
+          (assign, "$g_encountered_party", "p_nubian_town_1"),
+          (assign, "$temp1", 13),
+          (assign, "$temp2", -1),
+          (assign, "$talk_context", 0),
+          (set_jump_mission, "mt_conversation_generic"),
+          (modify_visitors_at_site, "scn_subsaharan_african_village"),
+          (reset_visitors),
+
+          (try_for_range, ":entry", 1, 31),
+              (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_horse),
+          (try_end),
+          (set_visitor, 1, "trp_player"),
+          (set_visitor, 7, "trp_african_richmerchant"),
+          (set_visitor, 8, "trp_african_poormerchant"),
+          (set_visitor, 9, "trp_sarranid_horseman"),
+          (set_visitor, 10, "trp_sarranid_horseman"),
+          (set_visitor, 11, "trp_sarranid_horseman"),
+          (set_visitor, 12, "trp_sarranid_horseman"),
+          (set_visitor, 13, "trp_sarranid_horseman"),
+          (set_visitor, 14, "trp_sarranid_horseman"),
+          (set_visitor, 15, "trp_african_man"),
+          (set_visitor, 16, "trp_african_woman"),
+          (set_visitor, 17, "trp_african_man"),
+          (set_visitor, 18, "trp_african_woman"),
+          (set_visitor, 19, "trp_african_woman"),
+          (set_visitor, 20, "trp_african_woman"),
+          (set_visitor, 21, "trp_african_woman"),
+          (set_visitor, 22, "trp_african_man"),
+          (set_visitor, 23, "trp_african_woman"),
+          (set_visitor, 24, "trp_african_man"),
+          (set_visitor, 25, "trp_african_woman"),
+          (set_visitor, 26, "trp_african_woman"),
+          (set_visitor, 27, "trp_african_woman"),
+          (set_visitor, 28, "trp_african_woman"),
+          (set_visitor, 29, "trp_african_man"),
+          (set_visitor, 30, "trp_african_woman"),
+
+          (jump_to_scene, "scn_subsaharan_african_village"),
+          (change_screen_mission),
+      (else_try),
+          (eq, "$temp1", "scn_kashar"),
+
+          (assign, "$temp1", 13),
+          (assign, "$temp2", -1),
+          (assign, "$talk_context", 0),
+          (assign, "$current_town", "p_dahae_town_1"),
+          (assign, "$g_encountered_party", "p_dahae_town_1"),
+
+          (set_jump_mission, "mt_conversation_generic"),
+          (modify_visitors_at_site, "scn_kashar"),
+          (reset_visitors),
+          (try_for_range, ":entry", 1, 43),
+              (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_horse),
+          (try_end),
+          (set_visitor, 1, "trp_player"),
+          (set_visitor, 2, "trp_saka_richmerchant"),
+          (set_visitor, 3, "trp_saka_poormerchant"),
+          (set_visitor, 4, "trp_merchant8"),
+          (set_visitor, 5, "trp_merchant5"),
+          (set_visitor, 6, "trp_merchant6"),
+
+          # (set_visitor, 8, "trp_xingnu_barbarian"),
+          # (set_visitor, 9, "trp_xingnu_barbarian"),
+          # (set_visitor, 10, "trp_xingnu_barbarian"),
+          # (set_visitor, 11, "trp_xingnu_barbarian"),
+          # (set_visitor, 12, "trp_xingnu_barbarian"),
+          # (set_visitor, 13, "trp_gaetuli_horseman"),
+          # (set_visitor, 14, "trp_lombard_vetran"),
+          # (set_visitor, 15, "trp_old_mercenary"),
+
+          (set_visitor, 21, "trp_saka_horse_archer"),
+          (set_visitor, 22, "trp_saka_horse_archer"),
+          (set_visitor, 23, "trp_saka_horse_archer"),
+          (set_visitor, 24, "trp_saka_horse_archer"),
+          (set_visitor, 25, "trp_saka_horse_archer"),
+          (set_visitor, 26, "trp_saka_horse_archer"),
+          (set_visitor, 27, "trp_judean_village_walker_female"),
+          (set_visitor, 28, "trp_judean_village_walker_female"),
+          (set_visitor, 29, "trp_judean_village_walker"),
+          (set_visitors, 30, "trp_judean_village_walker", 2),
+          (set_visitors, 31, "trp_judean_village_walker_female", 2),
+          (set_visitors, 32, "trp_judean_village_walker", 2),
+          (set_visitors, 33, "trp_judean_village_walker_female", 2),
+          (set_visitors, 34, "trp_saka_man", 2),
+          (set_visitors, 35, "trp_saka_woman", 2),
+          (set_visitors, 36, "trp_saka_man", 2),
+          (set_visitors, 37, "trp_saka_woman", 2),
+          (set_visitors, 38, "trp_saka_man", 2),
+          (set_visitors, 39, "trp_saka_woman", 2),
+          (set_visitors, 40, "trp_saka_man", 2),
+          (set_visitors, 41, "trp_saka_woman", 2),
+          (set_visitors, 42, "trp_saka_man", 2),
+          (jump_to_scene, "scn_kashar"),
+          (change_screen_mission),
+      (try_end),
+    ]),
+    ("option_1",[],"Travel back to Rome.",[
+      (rest_for_hours, 72, 16, 0),
+      (jump_to_menu, "mnu_auto_return_map"),
+      (add_xp_as_reward, 1000),
+    ]),
+]),
+
+("wlodowiecus_adventure_1_4_journey_starts",mnf_scale_picture,
   "After meeting with the Alanic guide recommended by The Lybian, you gather with the rest of the caravan before setting off for Chersonesus."
   +" You're struck by the diversity of the group: Winnili mercenaries, some familiar faces from your journey through the Barbaricum and others new;"
   +" Garamantian horsemen, including members of the same tribe that led you to the Gao River in the Sahara; and Alan warriors assembled by Wlodowiecus,"
@@ -57061,10 +57239,10 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
   ],[
     ("option_1",[],"Continue.",[
       (assign, "$talk_context", tc_town_talk),
-      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_1")
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_journey_1")
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_1",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_journey_1",mnf_scale_picture,
   "You arrive in the city of Chersonesus. The Alanic guide quickly reunites with his tribesmen at a local tavern, where they eagerly gather,"
   +" likely drawn by the promise of coin as they join your caravan as guards. With their ranks bolstered, you depart the Bosporan city and"
   +" begin your journey eastward.",
@@ -57079,7 +57257,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",[
       (add_xp_as_reward, 2000),
 
-      (assign, "$g_next_menu", "mnu_wlodowiecus_adventure_4_journey_temple"),
+      (assign, "$g_next_menu", "mnu_wlodowiecus_adventure_1_4_journey_temple"),
       (assign, "$tutorial_state", 0),
       (assign, "$temp3", 1),
       (set_jump_mission, "mt_desert_cutscene"),
@@ -57118,7 +57296,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (change_screen_mission),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_temple",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_journey_temple",mnf_scale_picture,
   "After several days of travel, you come across a temple dedicated to the Scythian goddess Artimpasa."
   +" With the help of your Alanic guide, you manage to communicate with one of the Enaree, male priests who dress and live as women, serving alongside the female priestesses."
   +" The Enaree explains that this temple belongs to one of the last significant Scythian tribes and warns you to show proper respect to the temple and its people, or face severe consequences."
@@ -57130,7 +57308,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (call_script, "script_setup_troop_meeting", "trp_mancinellus", -1, -1),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_temple_outcome",mnf_scale_picture|mnf_enable_hot_keys,
+("wlodowiecus_adventure_1_4_journey_temple_outcome",mnf_scale_picture|mnf_enable_hot_keys,
   "{s15}",
   "none", [
     (str_clear, s15),
@@ -57148,8 +57326,8 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
   ],[
     ("option_1",[],"Fight your way out!",[
       (assign, "$temp3", 1),
-      (assign, "$temp1", "mnu_wlodowiecus_adventure_4_fight_1_victory"),
-      (assign, "$temp2", "mnu_wlodowiecus_adventure_4_fight_1_die"),
+      (assign, "$temp1", "mnu_wlodowiecus_adventure_1_4_fight_1_victory"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_1_4_fight_1_die"),
 
       (set_jump_mission, "mt_wlods_advantures_fight"),
       (modify_visitors_at_site, "scn_random_scene_new_steppe_custom_10"),
@@ -57173,7 +57351,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (change_screen_mission),
     ]),
 ]),
-("wlodowiecus_adventure_4_fight_1_die",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_fight_1_die",mnf_scale_picture,
   "The battle is lost. The realization hits you like a cold blade—raiders swarm, chaos echoes, and the steppe feels endless, empty. Bodies—your comrades—lie strewn,"
   +" faces you know turned to lifeless masks. Mancilleus falls clutching the golden bracelet he never claimed, the Old Man's sword drops, his strength gone."
   +" Wlodowiecus's shouts fade to silence, Ali's mocking grin is no more. And Hadrianus—his eyes, once burning, now stare blankly at the sky."
@@ -57186,7 +57364,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (jump_to_menu, "mnu_death_waits"),
     ]),
 ]),
-("wlodowiecus_adventure_4_fight_1_victory",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_fight_1_victory",mnf_scale_picture,
   "With great effort, you fend off the attackers. Some of the surviving raiders, gripped by panic, scatter in all directions, desperately trying to lose themselves in the vast, open steppe surrounding you."
   +" You spot Mancilleus looting a fallen chieftain, prying a golden bracelet from his arm, while the Old Man wipes sweat from his brow, finishing off one of the raiders with grim efficiency."
   +" Wlodowiecus, distraught and furious, is shouting like a madman, while Ali, sauntering arrogantly across the battlefield, makes snarky remarks about the fallen enemies."
@@ -57200,10 +57378,10 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Set camp and wait for the next day.",[
       (troop_add_gold, "trp_player", 10000),
       (troop_add_item, "trp_player", "itm_jewelry", 0),
-      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_camp"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_journey_camp"),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_camp",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_journey_camp",mnf_scale_picture,
   "The camp took most of the afternoon to set up, but it was completed just before sunset."
   +" Several fires flicker around the camp, with small groups of warriors gathered around, murmuring and exchanging quiet words."
   +" You and your companions, along with the Alan guide, settle around the central fire. In the distance, some of the Alani play an unfamiliar instrument, their voices rising in a song sung in a tongue different from their own."
@@ -57250,7 +57428,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (change_screen_mission),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_wide",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_journey_wide",mnf_scale_picture,
   "The next day you pack your camp on your horses — including the ones captured from raiders — and gather your caravan through endless steppe."
   +" At one point, your guide leads you southwest, now traveling through the desert towards the nearby sea, which locals call the Aral Sea."
   +" Then you turn southeast again, traveling around the river which flows into it and which Hadrianus recognizes as Oxus river."
@@ -57259,10 +57437,10 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_desert"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_sogdia"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_journey_sogdia"),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_sogdia",mnf_scale_picture|mnf_enable_hot_keys,
+("wlodowiecus_adventure_1_4_journey_sogdia",mnf_scale_picture|mnf_enable_hot_keys,
   "You arrive at the nearest Sogdian town and secure lodging at a tavern, allowing you and your companions a much-needed rest."
   +" However, the next morning, chaos erupts as panic spreads throughout the city. Word quickly reaches you: a horde, said to be the distant Xiongnu — though"
   +" the locals aren't certain — has encircled the town, led by an unknown chieftain. The city's inhabitants, including their own king, plead for your assistance,"
@@ -57275,7 +57453,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (assign, "$temp3", 1),#used for current mission state
       (assign, "$temp1", "trp_wlodowiecus"),# starts conversation during battle
       (assign, "$temp4", "trp_alan_guide"),
-      (assign, "$temp2", "mnu_wlodowiecus_adventure_4_fight_1_die"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_1_4_fight_1_die"),
       (assign, "$tutorial_state", 0),
       (set_jump_mission, "mt_wlods_advantures_sogdia_siege"),
       (modify_visitors_at_site, "scn_sogdian_town"),
@@ -57316,7 +57494,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (change_screen_mission),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_sogdia_end",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_journey_sogdia_end",mnf_scale_picture,
   "You finally lead your group to what you hope is safety. Ensuring everyone—Mancilleus, Hadrianus, the Old Mercenary, Ali, Wlodowiecus, and any others who joined you—has made it inside,"
   +" you push forward through a dim cellar where the Sogdians once stored salt and meat. The air is thick with fear, and the scent of it is palpable as you hurry,"
   +" panting with each step. Above, the sounds of slaughter echo—agonized screams, the clash of steel, and the triumphant shouts and cruel laughter of the Xiongnu warriors."
@@ -57328,11 +57506,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_prisoner_man"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_xongnu_prisoner"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_journey_xongnu_prisoner"),
       (add_xp_as_reward, 5000),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_xongnu_prisoner",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_journey_xongnu_prisoner",mnf_scale_picture,
   "You are herded into a holding pen, destined either for slavery or some other grim fate at the hands of the horde."
   +" Just as hope begins to slip away, you notice a figure who appears to be the leader—the Khan of the horde."
   +" You watch as Mancilleus steps forward, attempting to speak with him. To your surprise, the Khan, looking amused, engages him in conversation.",
@@ -57400,7 +57578,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (change_screen_mission),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_great_wall_1",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_journey_great_wall_1",mnf_scale_picture,
   "You and the rest of the caravan are freed from your bindings and invited to stay in a yurt prepared for you."
   +" A few hours later, several of your men who had been trapped inside the city are dragged out—some did not survive, but the remaining ones are allowed to join you."
   +" The Sogdian citizens and warriors, on the other hand, are enslaved. That night, a grand feast is held to celebrate the victory, and the Tuqi King requests Mancinellus's presence."
@@ -57414,13 +57592,13 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_great_wall_2"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_journey_great_wall_2"),
       (add_xp_as_reward, 1500),
       (troop_add_items, "trp_player", "itm_silver", 2),
       (troop_add_items, "trp_player", "itm_temple_gold", 2),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_great_wall_2",mnf_scale_picture|mnf_enable_hot_keys,
+("wlodowiecus_adventure_1_4_journey_great_wall_2",mnf_scale_picture|mnf_enable_hot_keys,
   "Reassured and back on track, you follow your new Xiongnu guides northeast, journeying into the mysterious Ferghana Valley."
   +" You pass a large town that Hadrianus identifies as Alexandria Eschate, or Alexandria Ultima as it is known in Rome, still displaying traces of the Greek character left by the settlers of Alexander the Great."
   +" You continue through the lands of the Dayuan, the local name for the Ferghana Valley given by the Ionian Greeks. Here, Hadrianus exchanges news with the locals about events from across the world."
@@ -57444,7 +57622,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       #16 enemy commander
       #17 to 30 enemy troops
       (assign, "$temp1", "trp_chinese_commander"),
-      (assign, "$temp2", "mnu_wlodowiecus_adventure_4_fight_1_die"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_1_4_fight_1_die"),
       (assign, "$temp3", 1),
       (set_jump_mission, "mt_wlods_advantures_jilu_siege"),
       (modify_visitors_at_site, "scn_jilu_fortress"),
@@ -57491,7 +57669,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (change_screen_mission),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_end_1",mnf_scale_picture|mnf_enable_hot_keys,
+("wlodowiecus_adventure_1_4_journey_end_1",mnf_scale_picture|mnf_enable_hot_keys,
   "{s25}^^You travel for a few weeks back through Tarim Basin and then the Ferghana Valley before turning southeast until you enter the city of Karsahr.",
   "none", [
     (try_begin),
@@ -57571,7 +57749,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (change_screen_mission),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_end_2",mnf_scale_picture|mnf_enable_hot_keys,
+("wlodowiecus_adventure_1_4_journey_end_2",mnf_scale_picture|mnf_enable_hot_keys,
   "Led by Lei Li, you and your group reunite with Phamanus, the Parthian caravan master from your journey to India."
   +" Phamanus greets you with genuine enthusiasm and agrees to guide you back to Alexandria. In return, he requests to accompany you when you meet with The Lybian,"
   +" as he has a personal proposal he believes will interest both of you."
@@ -57584,10 +57762,10 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",[
       (call_script, "script_recruit_troop_as_companion", "trp_turakina"),
       (troop_add_item, "trp_player", "itm_chinese_sword_rich", 0),
-      (jump_to_menu, "mnu_wlodowiecus_adventure_4_journey_end_3"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_journey_end_3"),
     ]),
 ]),
-("wlodowiecus_adventure_4_journey_end_3",mnf_scale_picture|mnf_enable_hot_keys,
+("wlodowiecus_adventure_1_4_journey_end_3",mnf_scale_picture|mnf_enable_hot_keys,
   "After several weeks of uneventful yet exhausting travel, you finally arrive in Alexandria. The long journey, though tiring, passed without any significant incidents."
   +" Now, it's time to meet with The Lybian once more and deliver the long-awaited news about the expedition.",
   "none", [
@@ -57603,7 +57781,18 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_intro",mnf_scale_picture,
+("wlodowiecus_adventure_1_phamanus",mnf_scale_picture,
+  "You recieve a message from Phamanus. He informs you that his caravan business is now open.",
+  "none", [
+    (set_background_mesh, "mesh_pic_messenger"),
+  ],[
+    ("option_1",[],"Continue",[
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_object_faction, 2),
+      (change_screen_map),
+    ]),
+]),
+
+("wlodowiecus_adventure_1_4_intro",mnf_scale_picture,
   "While on your travels, you met a courier with a missive from Olivarius. After paying a coin to a young man for his job as a sign of gratitude, you thank him, take a note from him and read it."
   +"^The missive goes as follows:"
   +"^^To our friend {playername}, I hope to find you in good health. A lot of things changed since our last, unfortunate expedition to the northern lands of the Barbaricum."
@@ -57628,7 +57817,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_intro",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_intro",mnf_scale_picture,
   "A young courier approached you this morning carrying a message for you. It's from Oliverius, the famous sculptor that sent you to India and funded an expedition to Africa."
   +" It's short and clearly written by a man in a bad mood:"
   +"^^'{playername}, please come to Mancinellus home as soon as possible.'",
@@ -57645,7 +57834,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_2_intro",mnf_scale_picture,
+("wlodowiecus_adventure_1_2_intro",mnf_scale_picture,
   "A young courier approached you this morning carrying a message for you. It's from Mancinellus, the ex-soldier that you met in India while searching for Wlodowiecus and Hadrianus for Oliverus.^^"+
   " 'To the brave {playername}, I hope whatever gods you believe in are guarding you, my good friend! I wanted gather everyone from our last adventure in India, what an adventure that was! Come to my house in Roma, located near the entrance to the western-most wall, I might have found something you'll be interested in!'",
   "none", [
@@ -57662,7 +57851,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_lybicus_final",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_lybicus_final",mnf_scale_picture,
   "The first thing you notice is that all traces of the fire have been meticulously repaired. Not a single mark of damage remains."
   +" You are greeted by attentive slaves, who present you with a finely woven toga and assist you in donning it."
   +" Once properly dressed, they inform you that a meal will be served in the villa's garden."
@@ -57706,7 +57895,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_end",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_end",mnf_scale_picture,
   "The evening concludes with wine and music, though it remains far more subdued than the last chaotic orgy with Biggus Dickus."
   +"^^With a sense of satisfaction, you leave The Libyan's villa, expressing your thanks for his hospitality."
   +" Hadrianus, Lei Li, and Phamanus set off for Rome, eager to establish their shops and organize the caravan guild."
@@ -57727,7 +57916,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_lybicus_feast",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_lybicus_feast",mnf_scale_picture,
   "As you step through the grand entrance of the villa you are given fine toga, which you are supposed to wear. Then you enter the garden and you are wonderstruck by the opulence of The Lybian's residence."
   +" Rich tapestries line the walls, and the air is filled with the scent of exotic spices. The chatter of influential guests fills the halls—merchants, scholars, and nobles alike."
   +" Hadrianus, ever poised, exchanges words with Wlodowiecus, whose stoic demeanor reveals little."
@@ -57873,7 +58062,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_lybicus_feast_2",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_lybicus_feast_2",mnf_scale_picture,
   "Servants glide through the crowd, offering golden, bejeweled cups brimming with rich, spiced wine. The air fills with the aroma of roasted meats, honeyed fruits,"
   +" and exotic spices as dishes are presented on gleaming silver platters. Plates shimmer under the warm glow of lanterns, piled high with delicacies—stuffed quails, figs drizzled with honey,"
   +" and fragrant cheeses. One by one, the guests indulge, their laughter growing louder and movements looser. Faces flush, and conversations grow more fervent as the intoxicating effects of the wine and"
@@ -58027,7 +58216,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_lybicus_feast_lady",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_lybicus_feast_lady",mnf_scale_picture,
   "You run with her, as fast as you can, leaving behind the guests and the noise. Away from Hadrianus, who's still desperately avoiding Incontinentia."
   +" Away from The Lybian, caught in conversation with an overly drunken Mancinellus. She whispers, 'Love is a fragile little flame, it could burn out."
   +" But I know places where they won't find us.' You follow her through the bustling streets of Alexandria, her hand firmly in yours as she weaves through the crowd, making you both disappear in the sea of faces."
@@ -58039,11 +58228,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
   ],[
     ("option_1",[],"Continue.",[
       (add_xp_as_reward, 1500),
-      (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_feast_end_2"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_lybicus_feast_end_2"),
     ]),
 ]),
 
-("wlodowiecus_adventure_3_intro_end",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_intro_end",mnf_scale_picture,
   "You accompany Wlodowiecus through the streets of Rome down to a popina where his Winnili contacts were last seen. The popina is filthy and full of mostly foreigners and non-Roman citizens, non-zealous Jews, Germans, Celts and even Aethiopians."
   +" It doesn't take long for your friend to find his contacts, and you let him handle the negotiations, by the end of the talk, you were sharing some wine with these rowdy Scandians.",
   "none", [
@@ -58054,7 +58243,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_visit_manc",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_visit_manc",mnf_scale_picture,
   "As you walked through the impoverished areas of Rome, you could hear the loud shouting from both Oliverius and Mancinellus."
   +" Suddenly you hear Oliverius scream right as you were approaching Mancinellus' house. As you were about to knock on the door, Furaha, the current wife of Mancinellus, opened the door revealing her bloodied fist."
   +" 'My lovely and stupid husband is inside. Tell that moustachioed Roman to never touch him again.' When you enter the home, you see Oliverius holding his nose, Mancinellus holding his jaw and Wlodowiecus laughing hysterically."
@@ -58112,7 +58301,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_2_visit_manc",mnf_scale_picture,
+("wlodowiecus_adventure_1_2_visit_manc",mnf_scale_picture,
   "Mancinellus' home looks old and rundown; however, it looks better than the other houses surrounding it. Right as you were about to knock on the main door, it opens revealing a rather pretty but fierce looking woman with dark skin. It must be Fuhara, his new wife.^'My lovely and useless husband is inside. Please, get comfortable.' She says before walking away from the house. The inside of the house doesn't look as bad as the outside; still, it's clear that Mancinellus and his wife don't earn a lot of money. Mancinellus and five other men were sitting around a round table and when he notices you, he welcomes you with a friendly smile and a hug.",
   "none", [
     (set_background_mesh, "mesh_pic_roma"),
@@ -58168,14 +58357,14 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_start_1",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_start_1",mnf_scale_picture,
   "The adventurers have setup their camp near Carnuntum. You are welcomed by everone. Do you want to start the journey?",
   "none", [
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
     ("option_1",[],"Yes. Let us go.",[
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 3),
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_start"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_start"),
     ]),
 
     ("option_1",[],"I am not ready yet.",[
@@ -58183,7 +58372,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_start",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_start",mnf_scale_picture,
   "You reached the Danube, the border between civilized Roman lands and the wild Germanic forests, Wlodowiecus was the first man to cross it, and led the rest of the party north.",
   "none", [
     (set_background_mesh, "mesh_pic_deserters"),
@@ -58196,7 +58385,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",[
       (add_xp_as_reward, 2000),
 
-      (assign, "$g_next_menu", "mnu_wlodowiecus_adventure_3_raid_1"),
+      (assign, "$g_next_menu", "mnu_wlodowiecus_adventure_1_3_raid_1"),
       (assign, "$tutorial_state", 0),
       (assign, "$temp3", 1),
       (set_jump_mission, "mt_desert_cutscene"),
@@ -58236,7 +58425,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_raid_1",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_raid_1",mnf_scale_picture,
   "The journey north through Roman territory is uneventful, the only trouble you experienced was crossing the alps, it was an exhausting trek, but once you were through the lands of the Cotti, the rest of the journey was through plains and forest."
   +" Eventually you reached the Rhine, the border between civilized Roman lands and the wild Germanic forests, Wlodowiecus was the first man to cross it, and led the rest of the party north."
   +" As the party is moving northward, they feel rustling through the trees and then hear shouting from the woods, men howling and growling like beasts, until a man shouts something in Germanic."
@@ -58247,8 +58436,8 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
   ],[
     ("option_1",[],"Continue.",[
       (assign, "$temp3", 1),
-      (assign, "$temp1", "mnu_wlodowiecus_adventure_3_continue_1"),
-      (assign, "$temp2", "mnu_wlodowiecus_adventure_3_raid_1_died"),
+      (assign, "$temp1", "mnu_wlodowiecus_adventure_1_3_continue_1"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_1_3_raid_1_died"),
 
       (set_jump_mission, "mt_wlods_advantures_fight"),
       (modify_visitors_at_site, "scn_random_scene_plain_forest_custom_12"),
@@ -58271,7 +58460,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_lybicus_feast_end_1",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_lybicus_feast_end_1",mnf_scale_picture,
   "The lechery of the party guests was kept hidden until it erupted into an orgy of ignominy, when, with all shame and fear removed by Bacchus sweat wine, they simply followed their own inclinations."
   +"^^It seems that a woman named Incontinentia Buttocks was caught in a passionate embrace with you on a sofa. Meanwhile, a man called Biggus Dickus rallied the other guests, and they left The Lybian's villa,"
   +" parading through the streets of Alexandria while carrying the sofa - with you and Incontinentia still upon it - like a trophy. Leading the chaotic procession were a nude, drunken Hispanic and a nude,"
@@ -58288,7 +58477,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_4_lybicus_feast_end_2",mnf_scale_picture,
+("wlodowiecus_adventure_1_4_lybicus_feast_end_2",mnf_scale_picture,
   "It's all over too soon. She departs swiftly, giving you one last kiss and whispering: 'Don't forget your promise. Remember me, at least in your wildest dreams!'"
   +"^^As you make your way back to The Lybian's villa, the scent of smoke fills the air, and the distant sound of shouting grows louder. You soon see the cause: a fire has broken out at the villa."
   +" People are running wildly, looting nearby shops and homes. It's complete chaos - a full-scale riot. Feeling the effects of the wine, you decide it's best to retreat to your tavern, safely located in a different quarter, unaffected by the turmoil."
@@ -58306,7 +58495,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_continue_1",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_continue_1",mnf_scale_picture,
   "After the last of the enemy are dead, your companions start to loot the corpses. Varus is spitting on a dead German zealot, muttering something under his breath."
   +" Hadrian is sitting silently on the ground with his eyes closed while making a prayer, the rest are busy looking around the battlefield."
   +" When you asked Wlodowiecus what were these zealots shouting, he smiles and says: 'They wanted to sacrifice us to Tiwaz, guess we sacrificed them instead!'",
@@ -58314,11 +58503,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_victory"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_continue_2"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_continue_2"),
     ]),
 ]),
 
-("wlodowiecus_adventure_3_continue_2",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_continue_2",mnf_scale_picture,
   "When you and the rest of the company arrive to Kalissa, Hadrianus leads the party to the tavern. He orders food, drink and then you all rest for a day. While you were sleeping, Wlodowiecus heads out to buy some supplies. You and your friends all decide to have a briefing the next morning.",
   "none", [
     (set_background_mesh, "mesh_pic_townsnow"),
@@ -58379,7 +58568,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_continue_3",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_continue_3",mnf_scale_picture,
   "After a day of travel, the party reaches the village. It is structured like a typical Germanic village: one could see some small farmland and a wooden palisade surrounds the village."
   +" The homes are long thatched-roof huts. The families live in one end and the animals lived in the other end in stalls. They enter the village and meet Hadrianus cousin. He will comes everyone and they enter his house.",
   "none", [
@@ -58441,17 +58630,17 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_continue_4",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_continue_4",mnf_scale_picture,
   "After bidding farewell to Hadrianus' cousin, you and your companions a leave Alwisus' village and continue your trek towards the land of the Balthae. Truth be told, you only heard mythical tales about those distant lands, where monsters roam the swamps and forests, hopefully they are just tales told to scare children.",
   "none", [
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_continue_5"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_continue_5"),
     ]),
 ]),
 
-("wlodowiecus_adventure_3_continue_5",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_continue_5",mnf_scale_picture,
   "You and the rest of the company decide to camp for the night, it felt that regardless of the current season, this region was unreasonably cold, as if the wild gods of nature were making your travel harder. You and Mancinellus scavenge some kindling for the fires while the rest set up the camp.",
   "none", [
     (set_background_mesh, "mesh_pic_deserters"),
@@ -58485,15 +58674,15 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_raid_2",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_raid_2",mnf_scale_picture,
   "Suddenly, eerie war cries can be heard in the distance, the company steels themselves as they're attacked by Germanic tribesmen.",
   "none", [
     (set_background_mesh, "mesh_pic_mb_warrior_1"),
   ],[
     ("option_1",[],"Continue.",[
       (assign, "$temp3", 2),
-      (assign, "$temp1", "mnu_wlodowiecus_adventure_3_continue_6"),
-      (assign, "$temp2", "mnu_wlodowiecus_adventure_3_raid_1_died"),
+      (assign, "$temp1", "mnu_wlodowiecus_adventure_1_3_continue_6"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_1_3_raid_1_died"),
 
       (set_jump_mission, "mt_wlods_advantures_fight"),
       (modify_visitors_at_site, "scn_random_scene_plain_forest_custom_13"),
@@ -58515,7 +58704,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_continue_6",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_continue_6",mnf_scale_picture,
   "The battle ends with Wlodowiecus stabbing the last Harii warrior. You let out a war cry fueled by rage and anger, Mancinellus looks around disoriented and confused, his blade and armor coated in blood, Hadrianus is walking around, looking in horror as a Winnili warrior is screaming as he's trying to contain his spilling guts, the old mercenary is looking around for other ambushers."
   +" Suddenly, Wlodowiceus shouts and everyone comes over. On top of the chief of the marauding Harii warriors, Varus lies, as Mancinellus slowly flips him over, he discovers that he's dead."
   +" Everyone is looking in silence.",
@@ -58523,11 +58712,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_victory"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_continue_7"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_continue_7"),
     ]),
 ]),
 
-("wlodowiecus_adventure_3_continue_7",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_continue_7",mnf_scale_picture,
   "The party take their time preparing the dead and mourning. The Winnili burn their dead in a separate ceremony while you and your friends prepare a proper Roman funeral for Varus."
   +" He is washed and then placed on a funeral pyre. His sword is placed on his chest with both hands holding it. Then Mancinellus places a coin into Varus mouth, so he could pass on to the afterlife."
   +" Hadrianus then lights the funeral pyre after he and Mancinellus recite a few ritualistic words, which are customary to be recited for deceased soldiers."
@@ -58536,11 +58725,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_wounded"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_continue_8"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_continue_8"),
     ]),
 ]),
 
-("wlodowiecus_adventure_3_continue_8",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_continue_8",mnf_scale_picture,
   "The marching resumes, mostly in silence at first. The death of Varus has still shaken the party. He was a survivor of many battles, and yet one ambush took him out as well as several Winnili mercenaries who accompanied them."
   +" The men burn another who collapsed from malnutrition and exhaustion. After a while, Mancinellus and you start making japes and telling stories to pass the time and lift the men's spirits."
   +" The party then arrives at a frozen lake. Hadrianus, who usually is calm and stoic, curses their luck. They will now have to either circumvent the lake or cross it without the ice breaking under them."
@@ -58581,7 +58770,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_1",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_1",mnf_scale_picture,
   "The feast takes place in and around the main hall. Hludwig and Wlodowiecus are drinking together, you and Ekkebert are engaged in a game of arm wrestling, and the beautiful daughter of Hludwig who personally serves mead and meat to you introduces herself as Mahtildiz."
   +" She tells you that she has been promised to someone she does not want to marry and is searching a way out. During the conversation she comes closer and closer to you, until you can feel her warm breath and body on yours."
   +" However, Hludwig notices before she can kiss you and orders her to go somewhere else. He instructs someone to keep an eye on her.^^Hadrianus, who is usually quiet, seem to enjoy himself drinking and making a bet with a Sciri warrior."
@@ -58606,19 +58795,19 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_no_sex",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_no_sex",mnf_scale_picture,
   "You tell Mancinellus that this is dangerous. You beg him to stop this and return the dagger. While he seems a bit reluctant, your friend agrees and promises you that he will return the dagger and tell Mahtildiz to stop pestering you.",
   "none", [
     (set_background_mesh, "mesh_pic_castlesnow"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_sciri_2"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_sciri_2"),
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 8),
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_temp_slot, -1), # daughter choice
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_sex",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_sex",mnf_scale_picture,
   "You tells Mancinellus that he is a crazy bastard, but that he is a good friend. You then enter the hut behind Mancinellus and see the beautiful Mahtildiz standing in front of a fireplace, she was only wearing a fur, upon seeing you, she takes it off revealing her curvaceous form."
   +" You are amazed by her beauty, and kiss her tenderly. The two of you make sweet love all night and sleep in each others arms.",
   "none", [
@@ -58627,13 +58816,13 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",[
       (add_xp_as_reward, 5000),
       (call_script, "script_change_player_relation_with_troop", "trp_mathildiz", 10),
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_sciri_2"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_sciri_2"),
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 8),
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_temp_slot, 1), # daughter choice
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_2",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_2",mnf_scale_picture,
   "After many hours, you open your eyes after hearing many footsteps and people speaking loudly, you quickly get up when the door is kicked open and several Sciri warriors rush inside, while you try to fight back, you are overwhelmed rather quickly."
   +" You are then repeatedly punched and eventually dragged outside in the cold. There are a few corpses on the ground near the center of the settlement, warriors are lining up, the men and women scream insults at you as you are dragged towards the middle,"
   +" there are several Sciri warriors standing in a circle, as they parts away, they reveal your companions bounded in the center of the circle."
@@ -58643,11 +58832,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_castlesnow"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_sciri_3"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_sciri_3"),
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_3",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_3",mnf_scale_picture,
   "Hludwig and his son Ekkebert looks down upon you, Ekkebert's face displaying rage while his father displays both anger and sadness. The chieftain closes his eyes, draws a breath, before opening them again and directing his speech to the bound men, who are sitting down.",
   "none", [
     (set_background_mesh, "mesh_pic_castlesnow"),
@@ -58689,7 +58878,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_4",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_4",mnf_scale_picture,
   "Hludwig leaves, his Sciri warriors seem to spread around the settlement, but some of them remain nearby to watch over you, alongside Ekkebert."
   +" Your muscles start to ache due to the cold and you look around to see your friends are all in horrible condition. Soon you'll die, may the gods give you strength."
   +" Due to your exhaustion, sleep overtakes you and you close your eyes...",
@@ -58697,11 +58886,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     (set_background_mesh, "mesh_pic_prisoner_man"),
   ],[
     ("option_1",[],"Continue.",[
-      (jump_to_menu, "mnu_wlodowiecus_adventure_3_sciri_final_battle"),
+      (jump_to_menu, "mnu_wlodowiecus_adventure_1_3_sciri_final_battle"),
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_final_battle",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_final_battle",mnf_scale_picture,
   "Hours later you dream of battle, the noise however is becoming intense, it feels real, and you smell blood. You feel warmth and suddenly you open your eyes in terror to witness:"
   +"^Winnili warriors, led by Wlodowiecus, the Old Mercenary and the son of Hludwig, Egino, alongside some Sciri who seem to be on your side are fighting against Hludwigs scattered men, a hut is burning, and you hear Mathildiz screaming for help."
   +" Hadrianus seems to have been cut loose, he grabs a knife and quickly cuts off the ropes which bind you. Mancinellus and the others quickly grab weapons, and you do the same."
@@ -58712,8 +58901,8 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",[
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 9),
 
-      (assign, "$temp1", "mnu_wlodowiecus_adventure_3_sciri_end"),
-      (assign, "$temp2", "mnu_wlodowiecus_adventure_3_raid_1_died"),
+      (assign, "$temp1", "mnu_wlodowiecus_adventure_1_3_sciri_end"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_1_3_raid_1_died"),
 
       (set_jump_mission, "mt_wlods_advantures_3_sciri_battle"),
       (modify_visitors_at_site, "scn_baltic_town"),
@@ -58750,7 +58939,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_end",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_end",mnf_scale_picture,
   "You defeated the enemies.^^{s20} Hludwig has not survived the battle. His son Ekkebert was captured alive.",
   "none", [
     (set_background_mesh, "mesh_pic_victory"),
@@ -58788,7 +58977,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_final_loot",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_final_loot",mnf_scale_picture,
   "Hadrianus and Mancinellus watch in horror as you, Wlodowiecus, the old mercenary and the Winnili slaughter Ekkbert and his men, Egino orders his men to not interfere but they are also watching in horror."
   +" ^^Soon, the surviving Winnili start to loot the village and the corpses, you heard a few women and men are being taken slave by the mercenaries. You join them in the pillage and find two gold bars and 10.000 denars worth of loot."
   +" ^^When dawn comes, Egino and his men led the survivors away from you, he will have to lead the rest of the tribe now. {s19}"
@@ -58867,7 +59056,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_final_sub",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_final_sub",mnf_scale_picture,
   "The peasants and slaves of the Sciri decide to stay away from you as you load the carts with amber and other supplies for your journey back to Kalissa. {s19}"
   +" ^^Just like your travel through Africa, the return is uneventful, and after a few days, you are back at the tavern you've visited before leaving for the Baltic."
   +" A day later you and your companions meet with Hadrianus cousin.",
@@ -58949,7 +59138,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_sciri_final_end",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_sciri_final_end",mnf_scale_picture,
   "You return back to Carnuntum together with Hadrianus cousin Alwisus. The journey is uneventful."
   " As your party reaches Carnuntum, everybody departs. You return to your main party, which has camped near Carnuntum.",
   "none", [
@@ -58966,7 +59155,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_3_raid_1_died",mnf_scale_picture,
+("wlodowiecus_adventure_1_3_raid_1_died",mnf_scale_picture,
   "You feel the weight of your armor, your limbs growing heavy. As you fall to your knees, the earth embraces you, and your vision fades."
   +" In those final moments, you reflect on the life you've led, the battles you've fought, and the camaraderie you've shared with your fellow warriors."
   +" A profound sense of peace washes over you, and you find solace in the knowledge that you gave your all in the crucible of battle."
@@ -58981,7 +59170,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_2_start",mnf_scale_picture,
+("wlodowiecus_adventure_1_2_start",mnf_scale_picture,
   "You follow Wlodowiecus outside of Leptis Magna, near the front game to the city there's a pair of tents that belong to the travelling Garamantians. Hadrianus, Varus and the old mercenary were standing nearby, talking with the oddly friendly Berbers; Mancinellus can be seen talking with the eldest member of the caravan, whose wizened face formed a wide grin as the Roman handed him a bag full of coins. After an hour of preparation, the caravan departs Leptis Magna and heads into the hot desert ahead of you.",
   "none", [
     (troop_set_inventory_slot, "trp_wlodowiecus", ek_horse, "itm_horse_3"),
@@ -58994,11 +59183,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",[
       (add_xp_as_reward, 1500),
 
-      (assign, "$g_next_menu", "mnu_wlodowiecus_adventure_2_raid_1"),
+      (assign, "$g_next_menu", "mnu_wlodowiecus_adventure_1_2_raid_1"),
       (assign, "$tutorial_state", 0),
       (assign, "$temp3", 1),
-      (assign, "$temp1", "mnu_wlodowiecus_adventure_2_continue_1"),
-      (assign, "$temp2", "mnu_wlodowiecus_adventure_2_raid_1_died"),
+      (assign, "$temp1", "mnu_wlodowiecus_adventure_1_2_continue_1"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_1_2_raid_1_died"),
       (set_jump_mission, "mt_desert_cutscene"),
       (modify_visitors_at_site, "scn_scene_camp_desert"),
       (reset_visitors),
@@ -59027,7 +59216,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_2_raid_1",mnf_scale_picture,
+("wlodowiecus_adventure_1_2_raid_1",mnf_scale_picture,
   "It's been a few days, the desert heat is relentless and nights are cold and cruel. Luckily the Garamantians had everything covered for the most part. You managed to resupply in the Garamantian city of Gadames before continuing forth to the other Garamantian city of Rapsa. Everything went smoothly until the Old Mercenary told the caravan elder about a lone horseman following them. The Elder looked at you and the rest of the company before shouting 'RAIDERS!'. Before you could even react, the lone horseman called forth his men and from behind the desert dunes rode several enemy Garamantians.",
   "none", [
     (set_background_mesh, "mesh_pic_desert"),
@@ -59035,8 +59224,8 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 
     ("option_1",[],"Fight!",[
       (assign, "$temp3", 1),
-      (assign, "$temp1", "mnu_wlodowiecus_adventure_2_continue_1"),
-      (assign, "$temp2", "mnu_wlodowiecus_adventure_2_raid_1_died"),
+      (assign, "$temp1", "mnu_wlodowiecus_adventure_1_2_continue_1"),
+      (assign, "$temp2", "mnu_wlodowiecus_adventure_1_2_raid_1_died"),
 
       (set_jump_mission, "mt_wlods_advantures_fight"),
       (modify_visitors_at_site, "scn_random_scene_desert_custom_3"),
@@ -59057,7 +59246,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_2_raid_1_died",mnf_scale_picture,
+("wlodowiecus_adventure_1_2_raid_1_died",mnf_scale_picture,
   "You don't know how it happened; you were knocked out by one of the Berber bandits alongside the rest of the caravan. You watched as the raiders kidnapped the women and enslaved some of the healthier men before stripping the dead from any riches. You watched as they killed the wounded mercilessly, and you were next, after taking away your belongings, you felt a Garamantian spear sink into your chest. Everything went dark after that.",
   "none", [
     (set_background_mesh, "mesh_pic_desert"),
@@ -59068,7 +59257,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (jump_to_menu, "mnu_death_waits"),
     ]),
 ]),
-  ("wlodowiecus_adventure_2_continue_1",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_continue_1",mnf_scale_picture,
     "The last of the Garamantian bandits fall to you and your companions, some of the wounded bandits manage to escape into the desert despite their wounds but the allied Garamantian Elder insists that they will die out there; Mancinellus is oddly cheerful after that fight, flexing his martial prowess to some of the Garamantian women, Wlodowiecus starts to look for valuables alongside Varus and the Old Mercenary, Hadrianus can be seen making a small Christian prayer before joining in the looting. You and the others get some valuables from the dead bandits.^'See? This expedition pays for itself!' Shouted Mancinellus gleefully while Handrianus rolls his eyes unamused.",
     "none", [
     (set_background_mesh, "mesh_pic_desert"),],
@@ -59078,11 +59267,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
         [
     (troop_add_gold, "trp_player", 200),
     (add_xp_as_reward, 150),
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_rapsa"),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_rapsa"),
       ]),
     ],
   ),
-  ("wlodowiecus_adventure_2_rapsa",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_rapsa",mnf_scale_picture,
     "The journey to Rapsa continued smoothly after that and in a few days you arrived to the Berber city. You stayed in the city for a day to rest and resupply. Wlodowiecus and the Old Mercenary spent the night by the campfire while Varus snored loudly inside the tent, Mancinellus was busy using his charm on the local women, Hadrianus was nowhere to be seen but Wlodowiecus was not worried about him. You decided to go to bed after a hearty meal. The next day you learned that Hadrianus managed to secure a deal from a group of travelling Jews that were staying in the city. He gives you one piece of jewelry.",
     "none", [
     (set_background_mesh, "mesh_pic_desert"),],
@@ -59092,11 +59281,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
         [
     (troop_add_item, "trp_player", "itm_jewelry"),
     (add_xp_as_reward, 150),
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_camp"),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_camp"),
       ]),
     ],
   ),
-  ("wlodowiecus_adventure_2_camp",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_camp",mnf_scale_picture,
     "The travelling continued the following day, this time to the distant Berber city of Alasi. There was some uneasiness among the Garamantians because Mancinellus had seduced the daughter of one of the prominent members of the caravan. Wlodowiecus was ready to punch Mancinellus and break his nose until Hadrianus had an amicable talk with the Garamantian chieftain and eased up the tensions between your group and the Garamantians. The travel after that is relatively calm and after several hours of crossing the dunes, the group decides to camp and rest before continuing to Alasi. You find yourself sitting by the campfire alongside your fellow adventurers.",
     "none", [
     (set_background_mesh, "mesh_pic_desert"),],
@@ -59126,7 +59315,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       ]),
     ],
   ),
-  ("wlodowiecus_adventure_2_camp1_end",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_camp1_end",mnf_scale_picture,
     "Despite a few arguments and a few threats, everyone in the company went back to their tents with a good mood. The following morning everyone gathered their belongings and continued forth towards the last known Berber city this deep in the desert, the tribal city of Alasi.^^"+
     "After several days of trekking through the desert, you and your companions finally arrives to Alasi, which was sparsely populated, with only a few inhabitants remaining, when asked about the current situation of the town, the tribesmen reveal that the majority of their tribe had left the city and was travelling the desert, and those few left here were too sick or old to come with them. After exchanging some valuable information with the Berber elders, the caravan learns of another city they can stop by before reaching the Oya river. The 'Ethiope' city of Tabemekka. As soon as Mancinellus heard the word 'Ethiope' a lascivious grin grew on his face, much to the dismay of his companions.",
     "none", [
@@ -59136,12 +59325,12 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",
         [
     (add_xp_as_reward, 500),
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_tabemekka"),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_tabemekka"),
       ]),
     ],
   ),
 
-  ("wlodowiecus_adventure_2_tabemekka",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_tabemekka",mnf_scale_picture,
     "The people of Tabemekka were surprisingly friendly, plenty of times some of the children asked you if they could touch your and your hair, not used to see foreigners besides the travelling Berbers. Wlodowiecus and Hadrianus kept mostly to themselves, Varus was outright dismissive of the tribal people, earning some mockery from the Africans, the old mercenary on the other hand seemed to enjoy talking with the tribespeople despite the heavy language barrier and Mancinellus couldn't stop hitting on the various women of the tribe, from young to old. He even dared to make a move on the chieftess of Tabemekka, which deeply upsets Wlodowiecus. Your stay continued well for a few days until Wlodowiecus decided to leave the next day.",
     "none", [
     (set_background_mesh, "mesh_pic_desert"),],
@@ -59150,11 +59339,11 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",
         [
     (add_xp_as_reward, 500),
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_fuck_1"),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_fuck_1"),
       ]),
     ],
   ),
-  ("wlodowiecus_adventure_2_fuck_1",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_fuck_1",mnf_scale_picture,
     "During your last day in Tabemekka, however, while you were washing down near a stream, you were joined by two beautiful African maidens that were wearing colorful skirts and nothing covering their breasts. Both women walked straight towards you with big smiles on their faces, yet neither of them spoke your language, however, it was rather apparent that they were both looking at your body. After a few seconds of awkward silence, one of the ladies approach you and gently presses her hand on your cheek, attempting to kiss you.",
     "none", [
     (set_background_mesh, "mesh_pic_desert"),],
@@ -59162,16 +59351,16 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 
     ("option_1",[],"Allow her to continue.",
         [
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_fuck_y"),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_fuck_y"),
       ]),
     ("option_2",[],"Stop her.",
         [
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_fuck_n"),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_fuck_n"),
       ]),
     ],
   ),
 
-  ("wlodowiecus_adventure_2_fuck_y",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_fuck_y",mnf_scale_picture,
     "You let the tribal woman kiss you, before you even noticed her companion was standing next to you, gently caressing your body. You spend several hours with these ladies until the three of you were too exhausted to continue, but it was clear that they had enjoyed their time with you. When you returned to the caravan, you are approached by a grinning Mancinellus, who firmly wraps his arm around your neck. 'I hope you enjoyed them!' He says, his wolfish grin growing ever wider. 'They were the chieftess daughters! Mancinellus always tries to take care of his friends!' he shouts before walking away laughing out loud.",
     "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),],
@@ -59180,38 +59369,32 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",
         [
     (add_xp_as_reward, 1000),
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_gao"),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_gao"),
       ]),
     ],
   ),
-  ("wlodowiecus_adventure_2_fuck_n",mnf_scale_picture,
-    "You gently push the woman away before walking away from stream. When you return to the caravan, a disappointed Mancinellus approaches you. 'Oh, by Venus! How could you refuse the love of two beautiful women {playername}!' he says 'I seduced their mother, the chieftess, and convinced her to offer her daughters to you! They will be so disappointed!' he claims before walking away, sighing in utter disappointment.",
-    "none", [
-    (set_background_mesh, "mesh_pic_desert"),],
-    [
+("wlodowiecus_adventure_1_2_fuck_n",mnf_scale_picture,
+  "You gently push the woman away before walking away from stream. When you return to the caravan, a disappointed Mancinellus approaches you. 'Oh, by Venus! How could you refuse the love of two beautiful women {playername}!' he says 'I seduced their mother, the chieftess, and convinced her to offer her daughters to you! They will be so disappointed!' he claims before walking away, sighing in utter disappointment.",
+  "none", [
+    (set_background_mesh, "mesh_pic_desert"),
+  ],[
+  ("option_1",[],"Continue.",[
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_gao"),
+  ]),
+]),
 
-    ("option_1",[],"Continue.",
-        [
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_gao"),
-      ]),
-    ],
-  ),
-
-  ("wlodowiecus_adventure_2_gao",mnf_scale_picture,
-    "The next day the company continues their expedition down south, to one of these mythical gold kingdoms described by Mancinellus, the city of Gao. The travel to Gao was shorter and less enduring than the travel to Tabemekka. In a mere three days you arrived to the vast and expansive city, with hundreds of huts inhabited by people of many professions, such as blacksmiths, potters, fishermen and the like. But while Gao was quite advanced when compared to the other cities encountered on your way, you and your companions notice a severe lack of something important: Gold. You quickly find your answer, when a merchant informs you that the gold monopoly of the Niger belongs to the city of Tombouze, a few days heading west, following the river.",
-    "none", [
-    (set_background_mesh, "mesh_pic_desert"),],
-    [
-
-    ("option_1",[],"Continue.",
-        [
+("wlodowiecus_adventure_1_2_gao",mnf_scale_picture,
+  "The next day the company continues their expedition down south, to one of these mythical gold kingdoms described by Mancinellus, the city of Gao. The travel to Gao was shorter and less enduring than the travel to Tabemekka. In a mere three days you arrived to the vast and expansive city, with hundreds of huts inhabited by people of many professions, such as blacksmiths, potters, fishermen and the like. But while Gao was quite advanced when compared to the other cities encountered on your way, you and your companions notice a severe lack of something important: Gold. You quickly find your answer, when a merchant informs you that the gold monopoly of the Niger belongs to the city of Tombouze, a few days heading west, following the river.",
+  "none", [
+    (set_background_mesh, "mesh_pic_desert"),
+  ],[
+  ("option_1",[],"Continue.",[
     (add_xp_as_reward, 500),
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_gao_leave"),
-      ]),
-    ],
-  ),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_gao_leave"),
+  ]),
+]),
 
-  ("wlodowiecus_adventure_2_gao_leave",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_gao_leave",mnf_scale_picture,
     "After enjoying some days in Gao, the caravan continues to Tombouze and arrive to the center of the gold trade in just two days. Only to find the surprisingly large city almost abandoned. It was a haunting sight to walk throughout nearly a hundred empty huts before finding living inhabitants, they were a few women and elders living by the houses near river and when asked about the current state of the city, the women say that most have left to seek better lands temporarily. When asked about the gold trade, they admit that only their king and his closest allies know the location of the gold mines and that they have no gold to trade. When hit by this revelation, Wlodowiecus punches Mancinellus so hard in the face that it knocks the Roman for several minutes before regaining consciousness. 'We are leaving!' shouts Wlodowiecus before joining the Garamantian caravan.",
     "none", [
     (set_background_mesh, "mesh_pic_desert"),],
@@ -59220,12 +59403,12 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Continue.",
         [
     (add_xp_as_reward, 500),
-    (jump_to_menu, "mnu_wlodowiecus_adventure_2_raid_2"),
+    (jump_to_menu, "mnu_wlodowiecus_adventure_1_2_raid_2"),
       ]),
     ],
   ),
 
-  ("wlodowiecus_adventure_2_raid_2",mnf_scale_picture,
+  ("wlodowiecus_adventure_1_2_raid_2",mnf_scale_picture,
     "Everyone was quiet, even the talkative Mancinellus, who looked miserable right now. Hadrianus tried to console his Roman friend but to no avail. The caravan was making their way to the city of Djenne Djanno, which the Garamantians wanted to visit before returning to the previous path. When asked why they wanted to stop in this city, the elder of the caravan admits that he just wants to eat one of their delicious meals to lift up his mood after this chaotic expedition. But when the caravan arrives to Djenne Djanno, you are not welcomed by exotic new peoples, but by the javelins of an enemy. It seems like a Gaetuli war party was currently raiding the city and was now going to rob the caravan for approaching their siege!",
     "none", [
     (set_background_mesh, "mesh_pic_desert"),],
@@ -59234,8 +59417,8 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ("option_1",[],"Fight!",
         [
     (assign, "$temp3", 1),
-    (assign, "$temp1", "mnu_wlodowiecus_adventure_2_continue_2"),
-    (assign, "$temp2", "mnu_wlodowiecus_adventure_2_raid_2_died"),
+    (assign, "$temp1", "mnu_wlodowiecus_adventure_1_2_continue_2"),
+    (assign, "$temp2", "mnu_wlodowiecus_adventure_1_2_raid_2_died"),
 
     (set_jump_mission, "mt_wlods_advantures_fight"),
     (modify_visitors_at_site, "scn_random_scene_desert_custom_2"),
@@ -59257,7 +59440,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ],
   ),
 
-("wlodowiecus_adventure_2_continue_2",mnf_scale_picture,
+("wlodowiecus_adventure_1_2_continue_2",mnf_scale_picture,
   "Against all odds, you and the caravan manage to fend off the rampaging Gaetuli who run away back to the desert. You and your companions celebrate, but you were not alone, as the inhabitants of Djenne Djanno start to celebrate your victory and treat you as heroes! You are then lead to the chief's house, the biggest and certainly the best equipped building for taking care of important and esteemed guests such as yourselves. For the distinction of saving Djenne Djanno, the chief rewards you with various pieces of gold. While not the grand amount you were hoping for, it was certainly a handsome reward. You and the caravan are then invited to stay in the city and celebrate your victory!",
   "none", [
     (set_background_mesh, "mesh_pic_desert"),
@@ -59273,7 +59456,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (assign, "$temp1", 3),
       (assign, "$talk_context", 0),
       (set_jump_mission, "mt_conversation_generic"),
-      (modify_visitors_at_site, "scn_scene_town_desert"),
+      (modify_visitors_at_site, "scn_subsaharan_african_village"),
       (reset_visitors),
 
       (try_for_range, ":entry", 1, 31),
@@ -59310,12 +59493,12 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (set_visitor, 29, "trp_african_man"),
       (set_visitor, 30, "trp_african_woman"),
 
-      (jump_to_scene, "scn_scene_town_desert"),
+      (jump_to_scene, "scn_subsaharan_african_village"),
       (change_screen_mission),
     ]),
 ]),
 
-("wlodowiecus_adventure_2_raid_2_died",mnf_scale_picture,
+("wlodowiecus_adventure_1_2_raid_2_died",mnf_scale_picture,
   "You don't know how it happened; you were knocked out by one of the Berber bandits alongside the rest of the caravan. You watched as the raiders kidnapped the women and enslaved some of the healthier men before stripping the dead from any riches. You watched as they killed the wounded mercilessly, and you were next, after taking away your belongings, you felt a Gaetuli spear sink into your chest. Everything went dark after that.",
   "none", [
     (set_background_mesh, "mesh_pic_desert"),
@@ -59327,7 +59510,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-("wlodowiecus_adventure_2_final",mnf_scale_picture,
+("wlodowiecus_adventure_1_2_final",mnf_scale_picture,
   "The travel back to Rome was as eventful as the travel down to the Oya river, you witnessed strange animals and endured the merciless African weather. But luckily, you didn't have to fight any marauding bands of Berbers. After weeks of seemingly endless hours of trekking the through the desert, you finally arrive to Leptis Magna.",
   "none",[
     (set_background_mesh, "mesh_pic_desert"),

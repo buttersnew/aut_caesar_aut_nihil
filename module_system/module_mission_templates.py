@@ -27593,8 +27593,7 @@ mission_templates = [
 ]),
 
 
-("visit_sagala", mtf_battle_mode, -1,
-  "You visit the caves.",[
+("visit_sagala", mtf_battle_mode, -1,"You visit the caves.",[
     (0,mtef_visitor_source,0,0,1,[]),
     (1,mtef_visitor_source,0,0,1,[]),
     (2,mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
@@ -27655,19 +27654,29 @@ mission_templates = [
     (ti_before_mission_start, 0, 0, [],[
       (scene_set_day_time, 12),
       (try_begin),
-          (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 4),
+          (check_quest_active, "qst_wlodowiecus_adventure_1"),
+          (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 4),
           (team_set_relation, 0, 1, -1),
           (set_party_battle_mode),
           (mission_disable_talk),
       (try_end),
       (mission_enable_talk),#because it has the battle flag
     ]),
-    (ti_tab_pressed, 0, 0,[],[
+    (ti_tab_pressed, 0, 0,[
+      (check_quest_active, "qst_wlodowiecus_adventure_1"),
+    ],[
       (display_message, "str_cannot_leave_now"),
     ]),
-
+    (ti_tab_pressed, 0, 0,[
+      (neg|check_quest_active, "qst_wlodowiecus_adventure_1"),
+    ],[
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+      (finish_mission, 3),
+      (mission_disable_talk),
+    ]),
 	  (1,0,ti_once,[
-      (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 4),
+      (check_quest_active, "qst_wlodowiecus_adventure_1"),
+      (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 4),
       (neg|conversation_screen_is_active),
     ],[
       (tutorial_message_set_size, 19, 19),
@@ -27676,11 +27685,11 @@ mission_templates = [
       (tutorial_message_set_background, 1),
       (tutorial_message, "@Objective: Escape from Sagala through the main gate."),
 		]),
-
     (0, 0, 0,[
       (eq, "$g_start_belligerent_drunk_fight", 3),
 	    (neg|conversation_screen_is_active),
-      (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 2),
+      (check_quest_active, "qst_wlodowiecus_adventure_1"),
+      (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 2),
 	  ],[
       (agent_is_active, "$g_belligerent_drunk"),
       (eq, "$g_start_belligerent_drunk_fight", 3),
@@ -27695,9 +27704,9 @@ mission_templates = [
       (start_mission_conversation, "trp_wlodowiecus"),
       (assign, "$g_start_belligerent_drunk_fight", 4),
 	  ]),
-
     (0, 0, 0,[
-      (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 4),
+      (check_quest_active, "qst_wlodowiecus_adventure_1"),
+      (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 4),
 	  ],[
       (get_player_agent_no, ":player_agent"),
       (agent_is_active, ":player_agent"),
@@ -27711,7 +27720,6 @@ mission_templates = [
       (jump_to_menu, "mnu_escaped_sagala"),
       (finish_mission),
 	  ]),
-
     (ti_after_mission_start, 0, ti_once, [],[
       (store_current_scene, ":cur_scene"),
       (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
@@ -27722,7 +27730,8 @@ mission_templates = [
           (agent_is_human,":agent"),
           (agent_get_entry_no,":entry",":agent"),
           (try_begin),
-              (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 4),
+              (check_quest_active, "qst_wlodowiecus_adventure_1"),
+              (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 4),
               (agent_get_troop_id, ":troop",":agent"),
               (try_begin),
                   (this_or_next|eq, ":troop", "trp_indian_spearman"),
@@ -27743,7 +27752,8 @@ mission_templates = [
       (try_end),
 
       (try_begin),
-          (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 4),
+          (check_quest_active, "qst_wlodowiecus_adventure_1"),
+          (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 4),
           (get_player_agent_no, ":player"),
           (agent_get_team, ":playerteam", ":player"),
           (set_show_messages, 0),
@@ -27767,7 +27777,8 @@ mission_templates = [
     ambient_scene_play_random_sound,
 
     (1, 4, ti_once, [
-      (quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 4),
+      (check_quest_active, "qst_wlodowiecus_adventure_1"),
+      (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 4),
       (this_or_next|main_hero_fallen),
       (num_active_teams_le,1)
     ],[
@@ -27776,8 +27787,6 @@ mission_templates = [
       (stop_all_sounds, 1),
       (finish_mission),
     ]),
-
-
     (1, 0, ti_once, [
       (main_hero_fallen),
     ],[
@@ -27787,8 +27796,9 @@ mission_templates = [
       (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
       (finish_mission,3),
     ]),
-
-    (8,0,0,[(neg|quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 4),],[
+    (8,0,0,[
+      (neg|quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 4),
+    ],[
       (try_for_agents,":agent_no"),
         (agent_is_alive,":agent_no"),
         (agent_is_human,":agent_no"),
@@ -27811,7 +27821,9 @@ mission_templates = [
         (try_end),
       (try_end),
     ]),
-    (ti_inventory_key_pressed, 0, 0, [(set_trigger_result,1)],[]),
+    (ti_inventory_key_pressed, 0, 0, [
+      (set_trigger_result,1),
+    ],[]),
 ]),
 
 ("jungle_lair_final", 0, -1,
@@ -29017,11 +29029,26 @@ mission_templates = [
     (40,mtef_visitor_source,0,0,1,[]),
     (41,mtef_visitor_source,0,0,1,[]),
     (42,mtef_visitor_source,0,0,1,[]),
+    (43,mtef_visitor_source,0,0,1,[]),
+    (44,mtef_visitor_source,0,0,1,[]),
+    (45,mtef_visitor_source,0,0,1,[]),
+    (46,mtef_visitor_source,0,0,1,[]),
+    (47,mtef_visitor_source,0,0,1,[]),
   ], p_wetter + global_common_triggers +
   [
     (0,8,0,[
-      (check_quest_active, "qst_wlodowiecus_adventure_4"),
-      (eq, "$temp1", 10),
+      (assign, ":c", 0),
+      (try_begin),
+        (check_quest_active, "qst_wlodowiecus_adventure_4"),
+        (eq, "$temp1", 10),
+        (assign, ":c", 1),
+      (else_try),
+        (store_current_scene, ":scene"),
+        (eq, ":scene", "scn_kashar"),
+        (eq, "$temp1", 13),
+        (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
     ],[
       (try_for_agents,":agent_no"),
         (agent_is_alive,":agent_no"),
@@ -29200,8 +29227,21 @@ mission_templates = [
         (eq, "$temp1", 11),
         (display_message, "str_cannot_leave_now"),
       (else_try),
+        (neg|check_quest_active, "qst_wlodowiecus_adventure_4"),
+        (neg|check_quest_active, "qst_wlodowiecus_adventure_3"),
+        (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
+        (neg|check_quest_active, "qst_wlodowiecus_adventure_1"),
         (eq, "$temp1", 12),
         (tutorial_box,"@Enjoy or survive your time at the lupanar..."),
+      (else_try),
+        (neg|check_quest_active, "qst_wlodowiecus_adventure_4"),
+        (neg|check_quest_active, "qst_wlodowiecus_adventure_3"),
+        (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
+        (neg|check_quest_active, "qst_wlodowiecus_adventure_1"),
+        (eq, "$temp1", 13),
+        (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+        (finish_mission, 3),
+        (mission_disable_talk),
       (try_end),
     ],[]),
 ]),

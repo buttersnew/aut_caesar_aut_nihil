@@ -32924,7 +32924,7 @@ presentations = [
                 # (ge, ":has_item", 1),
                 # (display_message,"@The merchant sells this items. Buy it from him instead of ordering it to be crafted!",0x888888),#grey
             # (else_try),
-                # (neg|quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
+                # (neg|quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
                 # (neg|item_has_faction, "$selected_item", "fac_culture_1"),
                 # (item_has_faction, "$selected_item", "fac_minor_kingdoms_end"),
                 # (display_message,"@Greek items are locked. You need to find Pavel to activate it!",0x888888),#grey
@@ -33113,7 +33113,7 @@ presentations = [
         (neq, ":item", "itm_ballista_mounted"),
         (assign, ":c1", 1),
         (try_begin),
-            (neg|quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
+            (neg|quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
             (neg|item_has_faction, ":item", "fac_culture_1"),
             (item_has_faction, ":item", "fac_minor_kingdoms_end"),
             # (display_message,"@Greek items are locked. You need to find Pavel to activate it!",0x888888),#grey
@@ -34025,7 +34025,7 @@ presentations = [
 
         (assign, ":c1", 1),
         (try_begin),
-            (neg|quest_slot_eq, "qst_wlodowiecus_adventure", slot_quest_current_state, 6),
+            (neg|quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
             (neg|item_has_faction, ":item", "fac_gladiators"),
             (item_has_faction, ":item", "fac_minor_kingdoms_end"),
             # (display_message,"@Greek items are locked. You need to find Pavel to activate it!",0x888888),#grey

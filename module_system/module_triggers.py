@@ -214,9 +214,9 @@ triggers = [
 
 (24*3, 0, ti_once,[
     (neq, "$g_player_is_captive", 1),
-    (neg|check_quest_active, "qst_wlodowiecus_adventure"),
-    (quest_slot_ge, "qst_wlodowiecus_adventure", slot_quest_current_state, 1),
-    (quest_get_slot, ":timer", "qst_wlodowiecus_adventure", slot_quest_timer),
+    (neg|check_quest_active, "qst_wlodowiecus_adventure_1"),
+    (quest_slot_ge, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 1),
+    (quest_get_slot, ":timer", "qst_wlodowiecus_adventure_1", slot_quest_timer),
     (neq, ":timer", 0),
     (store_current_day, ":cur_day"),
     (val_sub, ":cur_day", ":timer"),
@@ -226,12 +226,12 @@ triggers = [
     (store_character_level, ":level", "trp_player"),
     (ge, ":level", 16),
 ],[
-    (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_2_intro", 0, 0),
+    (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_1_2_intro", 0, 0),
 ]),
 
 (24*3, 0, ti_once,[
     (neq, "$g_player_is_captive", 1),
-    (neg|check_quest_active, "qst_wlodowiecus_adventure"),
+    (neg|check_quest_active, "qst_wlodowiecus_adventure_1"),
     (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
     (quest_slot_ge, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 1),
 
@@ -245,12 +245,12 @@ triggers = [
     (store_character_level, ":level", "trp_player"),
     (ge, ":level", 21),
 ],[
-    (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_3_intro", 0, 0),
+    (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_1_3_intro", 0, 0),
 ]),
 
 (24*3, 0, ti_once,[
     (neq, "$g_player_is_captive", 1),
-    (neg|check_quest_active, "qst_wlodowiecus_adventure"),
+    (neg|check_quest_active, "qst_wlodowiecus_adventure_1"),
     (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
     (neg|check_quest_active, "qst_wlodowiecus_adventure_3"),
     (quest_slot_ge, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 1),
@@ -265,7 +265,24 @@ triggers = [
     (store_character_level, ":level", "trp_player"),
     (ge, ":level", 26),
 ],[
-    (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_4_intro", 0, 0),
+    (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_1_4_intro", 0, 0),
+]),
+
+(24*3, 0, ti_once,[
+    (neq, "$g_player_is_captive", 1),
+    (neg|check_quest_active, "qst_wlodowiecus_adventure_1"),
+    (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
+    (neg|check_quest_active, "qst_wlodowiecus_adventure_3"),
+    (neg|check_quest_active, "qst_wlodowiecus_adventure_4"),
+    (quest_slot_ge, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 1),
+    (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_object_faction, 1),
+    (quest_get_slot, ":timer", "qst_wlodowiecus_adventure_4", slot_quest_timer),
+    (neq, ":timer", 0),
+    (store_current_day, ":cur_day"),
+    (val_sub, ":cur_day", ":timer"),
+    (ge, ":cur_day", 7), ## 7 days
+],[
+    (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_1_phamanus", 0, 0),
 ]),
 
 (48, 0, ti_once, [

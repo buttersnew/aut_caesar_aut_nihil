@@ -496,7 +496,7 @@ quests = [
   ("amor_quest", "Special Quest: Te amo, tu me non amare", qf_random_quest,
   "{!}placeholder"
   ),
-  ("wlodowiecus_adventure", "Special Quest: The Adventure of Wlodowiecus (I)", qf_random_quest,
+  ("wlodowiecus_adventure_1", "Special Quest: The Adventure of Wlodowiecus (I)", qf_random_quest,
   "{!}placeholder"
   ),
   ("wlodowiecus_adventure_2", "Special Quest: The Adventure of Wlodowiecus (II)", qf_random_quest,

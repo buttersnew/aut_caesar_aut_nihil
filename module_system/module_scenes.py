@@ -1024,7 +1024,7 @@ scenes = [
 
   ("collusseum", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0xa0001d9300031ccb0000156f000048ba0000361c",[], [], "outer_terrain_plain"),
   ("labyrinth", sf_indoors, "cave-p01", "bo_cave-p01", (-100, -100), (100, 100), -100, "0",[], []),
-  ("indian_town",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000005695d00007fbc00005de100006275",[],[],"outer_terrain_plain"),
+  ("sagala",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000005695d00007fbc00005de100006275",[],[],"outer_terrain_plain"),
   ("jungle_camp",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000002589600005bbe000065a000001b43 ",[],[],"outer_terrain_plain"),
   ("follower_camp_desert", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x0000000030044e900003dd02000077b20000400100005697",[], [], "outer_terrain_desert_b"),
   ("elysium", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000013a01c85000057ddf700072a70000240a00001e090",[], [], "sea_outer_terrain_2"),
@@ -1036,7 +1036,7 @@ scenes = [
 
   ("manc_house", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("scene_camp_desert", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000005c600563000d2348000052d4000067d5000029c1",[], [], "outer_terrain_desert_b"),
-  ("scene_town_desert", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000044e00d63800d234800000a290000355400005080",[], [], "outer_terrain_steppe"),
+  ("subsaharan_african_village", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000044e00d63800d234800000a290000355400005080",[], [], "outer_terrain_steppe"),
   ("cutscene_parthia", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000004c6020e3000baeed0000587d00002e3200000ceb",[], [], "outer_terrain_mountain"),
   ("langobard_landing", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002b6800b63800a2286000036ec00004264000028ae",[], [], "outer_terrain_forest"),
   ("langobard_village", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000023009629a0005615800005564000023590000579e ",[], [], "outer_terrain_beach"),
