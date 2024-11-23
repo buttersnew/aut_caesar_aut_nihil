@@ -117,6 +117,7 @@ tracks = [
   ("town_vaegir1", "celtic_peace_1.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("town_vaegir2", "celtic_peace_2.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
   ("town_vaegir3", "celtic_peace_3.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
+  ("town_vaegir4", "call_to_maponos.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel|mtf_sit_tavern|mtf_sit_feast, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
 
   ("celtic_track_1", "celtic_track_1.ogg", mtf_culture_2|mtf_sit_town|mtf_sit_travel|mtf_sit_ambushed|mtf_sit_siege, mtf_sit_tavern|mtf_sit_night|mtf_culture_all),
 
