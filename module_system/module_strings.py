@@ -9534,7 +9534,14 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 
 ("event_grain_emperor", "As Princeps, you must decide: will you allocate emergency resources to secure alternative supplies, or let the populace fend for themselves and face potential unrest?"),
 ("event_grain_ai_help", "Caesar has acted decisively, ordering emergency measures to secure new grain supplies for the city. The people of Rome are relieved, though the treasury feels the strain."),
-("event_grain_ai_ignore", "Despite the dire news of grain ships lost at sea, Caesar has chosen not to intervene. The markets grow barren, and murmurs of discontent rise among the Roman populace.")
+("event_grain_ai_ignore", "Despite the dire news of grain ships lost at sea, Caesar has chosen not to intervene. The markets grow barren, and murmurs of discontent rise among the Roman populace."),
+
+("event_male_penetrating", "In the dim haze of the luparna, shadows intertwine as laughter echoes faintly through the walls. A fleeting connection forms, a reminder of the many roles a man may play in the theater of life."),
+("event_male_penetrated", "Behind closed curtains of the luparna, the night becomes a lesson in surrender, where strength is redefined and trust momentarily exchanged."),
+("event_male_blowjob", "Words dissolve into soft murmurs as the warmth of the moment carries away the weight of the world, leaving only fleeting sensations and stolen breaths."),
+("event_female_classic", "The soft glow of a flickering lamp illuminates her impressive curves. A shared rhythm dances in the air, whispering of timeless exchanges and mutual solace."),
+("event_female_butt", "In the small alcove of the luparna, the fullness of the moment takes shape, both playful and indulgent, a celebration of round forms and passion."),
+("event_female_blowjob", "The warm air thickens with hints of spice and desire, where words give way to knowing glances and quiet offerings beneath the golden lamplight."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

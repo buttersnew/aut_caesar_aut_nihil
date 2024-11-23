@@ -45122,6 +45122,53 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
+("luparna",mnf_scale_picture,
+  "{s27}",
+  "none", [
+    (try_begin),
+      (eq, "$temp3", 1),
+      (str_store_string, s27, "str_event_male_penetrating"),
+      (set_background_mesh, "mesh_pic_luparna_1"),
+    (else_try),
+      (eq, "$temp3", 2),
+      (str_store_string, s27, "str_event_male_penetrated"),
+      (set_background_mesh, "mesh_pic_luparna_2"),
+    (else_try),
+      (eq, "$temp3", 3),
+      (str_store_string, s27, "str_event_male_blowjob"),
+      (set_background_mesh, "mesh_pic_hexe_party"),
+    (else_try),
+      (eq, "$temp3", 4),
+      (str_store_string, s27, "str_event_female_classic"),
+      (set_background_mesh, "mesh_pic_luparna_1"),
+    (else_try),
+      (eq, "$temp3", 5),
+      (str_store_string, s27, "str_event_female_butt"),
+      (set_background_mesh, "mesh_pic_luparna_2"),
+    (else_try),
+      (str_store_string, s27, "str_event_female_blowjob"),
+      (set_background_mesh, "mesh_pic_hexe_party"),
+    (try_end),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (add_xp_as_reward, 100),
+      (store_random_in_range, ":r", -50, 15),
+      (val_max, ":r", 0),
+      (call_script, "script_change_troop_health", "trp_player", ":r"),
+      (display_message, "@You enjoy the time", color_good_news),
+      (try_begin),##only if you are not freelancing, i.e. if you are part of an army
+        (eq, "$enlisted_party", -1),
+        (rest_for_hours, 3, 11, 0),
+      (try_end),
+      (try_begin),
+        (eq, "$temp3", 2),
+        (call_script, "script_change_troop_renown", "trp_player", -25),
+        (call_script, "script_change_player_honor", -2),
+      (try_end),
+      (change_screen_map),
+    ]),
+]),
+
 ("groupy",0,
   "Someone is knocking at the door of your room. As you open a woman stands before you, dressed in a coat. "
   +"For a moment you aren't sure who she is, but then she opens her coat under which she is completely naked. "
@@ -51772,6 +51819,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (this_or_next|quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 1),
       (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 11),
     ],"Visit the villa of The Lybian.",[
+      (assign,"$talk_context", tc_town_talk),
       (try_begin),
         (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 11),
         (jump_to_menu, "mnu_wlodowiecus_adventure_4_lybicus_final"),
@@ -56854,19 +56902,62 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 
 ("flavor_event_1",mnf_scale_picture,
   "The Lupanar is a dilapidated building on a secluded side street.^When you enter it a hideous stench hits you. Though you are too drunken to really perceive it."
-  +" You and the soldiers sit down and some dancers appear. The soldiers each grab a dancer they like and disappear. You are left alone with a dancer."
+  +" You and the soldiers sit down and some dancers appear.",
+  "none", [
+    (set_background_mesh, "mesh_pic_hexe_party"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (assign, "$temp1", 12),
+      (assign, "$temp2", -1),
+      (assign,"$talk_context", tc_tavern_talk),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, "scn_luparnium"),
+      (reset_visitors),
+
+      (try_begin),#second outift
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_conversation_generic", 1, 0),
+        (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_outfit_1|af_override_horse),
+      (else_try),
+        (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 1, af_override_weapons|af_override_horse|af_override_head),
+      (try_end),
+      (set_visitor, 1, "trp_player"),
+
+      (try_for_range, ":entry", 2, 4),
+        (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_weapons|af_override_horse|af_override_head),
+      (try_end),
+      (set_visitor, 2, "trp_aux_inf"),
+      (set_visitor, 3, "trp_vigilia"),
+
+      (try_for_range, ":entry", 4, 10),
+        (mission_tpl_entry_set_override_flags, "mt_conversation_generic", ":entry", af_override_everything),
+      (try_end),
+
+      (set_visitor, 4, "trp_slave"),
+      (set_visitor, 5, "trp_slave_female"),
+      (set_visitor, 6, "trp_slave"),
+      (set_visitor, 7, "trp_slave_female"),
+      (set_visitor, 8, "trp_slave_female"),
+      (set_visitor, 9, "trp_slave_female"),
+
+      (jump_to_scene, "scn_luparnium"),
+      (change_screen_mission),
+    ]),
+]),
+("flavor_event_1_end",mnf_scale_picture,
+  "You share several cups of wine with him, the evening growing hazy with laughter and stories, until he takes the hand of a dancer and vanishes into an alcove. You are left alone with a dancer."
   +" Like a she-wolf, she slowly approaches you. She quickly relieved you of your gold that you are carrying with you and before you can do anything she has already disappeared."
   +" A moment later a strong man appears. This must be Gaius. He grabs you by both shoulders and throws you out of the house. You stagger back to the tavern and quickly fall asleep.",
   "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
-
-  ("option_1",[],"Continue.",[
-    (add_xp_as_reward, 1000),
-    (troop_remove_gold, "trp_player", 1500),
-    (change_screen_map),
-  ]),
+    ("option_1",[],"Continue.",[
+      (add_xp_as_reward, 1000),
+      (troop_remove_gold, "trp_player", 500),
+      (change_screen_map),
+    ]),
 ]),
+
 
 ("flavor_event_3",mnf_scale_picture,
   "You follow the Sarmatians to the hut of Wlodarnoxarthos.^ His wife welcomes you amicably. She looks strong and healthy although she has given birth to many children she still looks beautiful.^ You sit down and continue smoking with the others, while his wife prepares the meal. His daughters appear and wash your hands and feet. Then they bring the food. They serve many different dishes on silver plates that clearly testify to the wealth of the host. Now also Wlodarnoxarthos sons appear and join the meal. After the meal is finished, Wlodarnoxarthos orders his children to leave them. He tells only his wife to stay with him.^You continue smoking. While Kentaskros falls a sleep and Wlodarnoxarthos cuddling with his wife, the eldest daughter appears to bring some fruits and more weed. She accidentally pours the bowl over and kneels next to you to collect the fruit. Thereby she touches you several times. After she finished, she remains sitting next to you and slowly starts stroking your legs, arms and chest. She takes a quick glances at her parents. They are already in an advanced progress of making love. Then she looks at you, smiles and kisses you. Now the real fun starts...^^^^On the next day, you awake in the soft arms of a Wlodarnoxarthos' daughter. He, his wife and Kentaskros are still sleeping. In the middle of the hut stands the bong. Golden and beautiful.",

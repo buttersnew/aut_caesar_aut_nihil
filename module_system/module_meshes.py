@@ -120,6 +120,9 @@ meshes = [
   ("pic_nubian", 0, "pic_nubian", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_cave", 0, "pic_cave", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_bacchus_feast_cave", 0, "pic_bacchus_feast_cave", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_luparna_1", 0, "pic_luparna_1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_luparna_2", 0, "pic_luparna_2", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+
   #minor factions
   ("pic_arms_gaetuli", 0, "pic_arms_gaetuli", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_garamantes", 0, "pic_arms_garamantes", 0, 0, 0, 0, 0, 0, 1, 1, 1),

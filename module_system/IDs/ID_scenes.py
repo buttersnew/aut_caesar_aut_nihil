@@ -852,4 +852,5 @@ scn_xiongnu_camp = 849
 scn_sogdian_town = 850
 scn_jilu_fortress = 851
 scn_kashar = 852
+scn_luparnium = 853
 scn_exit = 100000

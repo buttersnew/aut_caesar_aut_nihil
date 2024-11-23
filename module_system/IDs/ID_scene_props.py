@@ -1619,3 +1619,4 @@ spr_3_western_wall_stucco_4 = 1617
 spr_3_western_wall_stucco_5 = 1618
 spr_3_western_wall_stucco_6 = 1619
 spr_roof_floor_marble_3 = 1620
+spr_lupanar = 1621

@@ -349,6 +349,10 @@ saka_face_2 = 0x00000009bf00940a5b6db6db6db6db6d00000000001edb6d0000000000000000
 saka_face_female_1 = 0x000000003308608127db6db6db49b6da00000000001db49a0000000000000000
 saka_face_female_2 = 0x000000003f08708a5bedb6d96db6db6a00000000001ec9240000000000000000
 
+all_face_1 = 0x000000002708000036db6db6db6db6db00000000001db6db0000000000000000
+all_face_2 = 0x000000002709a01236db6db6db6db6db00000000001db6db0000000000000000
+all_face_woman_1 = 0x00000001af08008136db6db6db6db6db00000000001db6db0000000000000000
+all_face_woman_2 = 0x00000001af08e09d36db6db6db6db6db00000000001db6db0000000000000000
 
 tf_guarantee_all = tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged
 tf_guarantee_all_wo_ranged = tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield
@@ -5160,9 +5164,9 @@ attrib_level_23,wp(20),knows_inventory_management_10,roman_face1, roman_face2],
 ##diplomacy end
 
 
-["slave", "Male Slave", "Male Slaves", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(25), wp(30), knows_common|knows_riding_2, white_face_11, white_face_12 ],
-["slave_mine", "Male Slave", "Male Slaves", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves, no_scene, reserved, fac_commoners, [itm_roman_poor1,itm_roman_poor2,itm_caligea,itm_pickaxe_work], def_attrib|level(25), wp(30), knows_common|knows_riding_2, white_face_21, white_face_22 ],
-["slave_female", "Female Slave", "Female Slaves", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), knows_common|knows_riding_2, woman_face_1, woman_face_2 ],
+["slave", "Male Slave", "Male Slaves", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(25), wp(30), knows_common|knows_riding_2, all_face_1, all_face_2 ],
+["slave_mine", "Male Slave", "Male Slaves", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves, no_scene, reserved, fac_commoners, [itm_roman_poor1,itm_roman_poor2,itm_caligea,itm_pickaxe_work], def_attrib|level(25), wp(30), knows_common|knows_riding_2, all_face_1, all_face_2 ],
+["slave_female", "Female Slave", "Female Slaves", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), knows_common|knows_riding_2, all_face_woman_1, all_face_woman_2 ],
 
 ###orgie, for pleasure and bacchus
 ["orgie_fem1","Salvation","Salvation",tf_female|tf_hero,0,0,fac_commoners,
