@@ -16798,10 +16798,40 @@ game_menus = [
       (change_screen_mission),
     ],"Door to your enterprise."),
 
-    ("visit_lady",[
+    ("visit_luparna",[
       (eq, 0, 1),
-    ],"Unused",[
-    ], "Unused."),
+      (eq, "$current_town", "p_town_6"),
+    ],"Enter the Luparna.",[
+      (assign,"$talk_context", tc_tavern_talk),
+      (set_jump_mission, "mt_toiletboys"),
+      (modify_visitors_at_site, "scn_luparnium"),
+      (reset_visitors),
+      (try_begin),#second outift
+        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+        (call_script, "script_init_second_outfit", "mt_toiletboys", 1, 0),
+        (mission_tpl_entry_set_override_flags, "mt_toiletboys", 1, af_override_outfit_1|af_override_horse),
+      (else_try),
+        (mission_tpl_entry_set_override_flags, "mt_toiletboys", 1, af_override_weapons|af_override_horse|af_override_head),
+      (try_end),
+      (set_visitor, 1, "trp_player"),
+      # (try_for_range, ":entry", 2, 4),
+      #   (mission_tpl_entry_set_override_flags, "mt_toiletboys", ":entry", af_override_weapons|af_override_horse|af_override_head),
+      # (try_end),
+      # (set_visitor, 2, "trp_aux_inf"),
+      # (set_visitor, 3, "trp_vigilia"),
+      (try_for_range, ":entry", 4, 10),
+        (mission_tpl_entry_set_override_flags, "mt_toiletboys", ":entry", af_override_everything),
+      (try_end),
+      (set_visitor, 4, "trp_slave"),
+      (set_visitor, 5, "trp_slave_female"),
+      (set_visitor, 6, "trp_slave"),
+      (set_visitor, 7, "trp_slave_female"),
+      (set_visitor, 8, "trp_slave_female"),
+      (set_visitor, 9, "trp_slave_female"),
+      (jump_to_scene, "scn_luparnium"),
+      (change_screen_mission),
+    ], "Enter the Luparna."),
+
 
     ("trade_with_merchants",[
       (party_slot_eq,"$current_town",slot_party_type, spt_town)
@@ -45151,6 +45181,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
   ],[
     ("answere_1",[],"Continue...",[
+      (troop_remove_gold, "trp_player", 500),
       (add_xp_as_reward, 100),
       (store_random_in_range, ":r", -50, 15),
       (val_max, ":r", 0),
