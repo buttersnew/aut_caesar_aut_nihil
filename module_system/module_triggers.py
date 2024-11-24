@@ -150,7 +150,9 @@ triggers = [
     (store_current_hours, "$g_next_pay_time"),
     (val_add, "$g_next_pay_time", 24 * 7),
 
+    # (assign, "$g_apply_budget_report_to_gold", 1),
     # (start_presentation, "prsnt_imperial_budget_report"),
+
     (try_begin),
         (eq, "$g_infinite_camping", 0),
         (assign, "$g_apply_budget_report_to_gold", 1),
@@ -168,6 +170,7 @@ triggers = [
         (try_end),
     (try_end),
     (try_for_range, ":imperial_faction", npc_kingdoms_begin, npc_kingdoms_end),
+        (neg|faction_slot_eq, ":imperial_faction", slot_faction_leader, "trp_player"),
         (faction_slot_eq, ":imperial_faction", slot_faction_government_type, gov_imperial),
         (call_script, "script_weekly_imperial_balance", ":imperial_faction"),
     (try_end),
