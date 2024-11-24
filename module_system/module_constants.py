@@ -289,7 +289,8 @@ slot_faction_taxes_war          = 272
 slot_faction_taxes_edicts       = 273
 slot_faction_taxes_diplomacy    = 274
 slot_faction_emperors_bocket    = 275
-
+slot_faction_tax_rate           = 276
+slot_faction_tax_rate_buisness  = 277
 #revolts -- notes for self
 #type 1 -- minor revolt, aimed at negotiating change without changing the ruler
 #type 2 -- alternate ruler revolt (ie, pretender, chinese dynastic revolt -- keep the same polity but switch the ruler)

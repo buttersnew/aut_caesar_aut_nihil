@@ -9338,7 +9338,7 @@ simple_triggers = [
 
     (try_begin),
         (store_num_parties_of_template, reg22, "pt_traveller_ship"),
-        (lt,reg22,10),
+        (le,reg22, 10),
         (neg|party_slot_eq, ":center", slot_center_decree_control, 1),
         (set_spawn_radius, 0),
         (call_script, "script_spawn_party",":center", "pt_traveller_ship"),
@@ -9768,7 +9768,8 @@ simple_triggers = [
     (neg|check_quest_active, "qst_blank_quest_21"),
     (try_begin),
         (eq, "$edict1", 0),
-        (store_mul, ":chance", "$g_taxrate",  "$g_taxrate"),
+        (faction_get_slot, ":chance", "$players_kingdom", slot_faction_tax_rate),
+        (val_mul, ":chance", ":chance"),
         (try_begin),
             (eq, "$control_tax", 1),  #tax control active
             (val_mul, ":chance", 2),
@@ -9840,7 +9841,8 @@ simple_triggers = [
     (neq, "$g_player_is_captive", 1),
     (eq, "$g_is_emperor", 1),
     (le, "$g_civil_war", 0),
-    (store_mul, ":chance", "$g_taxrate",  "$g_taxrate"),
+    (faction_get_slot, ":chance", "$players_kingdom", slot_faction_tax_rate),
+    (val_mul, ":chance", ":chance"),
     (val_add, ":chance", "$g_unrest"),
     (try_begin),
         (eq, "$control_tax", 1),  #tax control active
@@ -12769,7 +12771,8 @@ simple_triggers = [
     (le, "$g_civil_war", 0),
 
     (try_begin),
-        (store_mul, ":chance", "$g_taxrate_business",  "$g_taxrate_business"),
+        (faction_get_slot, ":chance", "$players_kingdom", slot_faction_tax_rate_buisness),
+        (val_mul, ":chance", ":chance"),
         (val_add, ":chance", "$g_unrest"),
 
         (store_random_in_range, ":rand", 0, 10000),

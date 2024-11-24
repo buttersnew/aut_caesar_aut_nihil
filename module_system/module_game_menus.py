@@ -32879,8 +32879,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (str_store_string, s25, "str_event_grain_emperor"),
     (else_try),
         (eq, ":r", 0),
+        (neg|faction_slot_ge, "$g_notification_menu_var1", slot_faction_debts, 1000000),
         (str_store_string, s25, "str_event_grain_ai_help"),
-        (call_script, "script_add_to_faction_treasury", "$g_notification_menu_var1", -150000),
+        (call_script, "script_add_to_faction_treasury", -150000, "$g_notification_menu_var1"),
     (else_try),
         (str_store_string, s25, "str_event_grain_ai_ignore"),
         (call_script, "script_spawn_party", "p_town_6", "pt_rebels"),
@@ -32905,7 +32906,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
       (ge, "$g_is_emperor", 1),
     ],"Buy additional grain, using funds from the imperial treasury! [150,000 denars]",[
-      (call_script, "script_add_to_faction_treasury", "$g_notification_menu_var1", -150000),
+      (call_script, "script_add_to_faction_treasury", -150000, "$g_notification_menu_var1"),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("continue",[
@@ -34339,7 +34340,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (call_script, "script_party_inflict_attrition", ":center", ":str"),
        # (lt, ":r", 30),
         (try_begin),
-            (ge, "$g_taxrate", 30),
+            (faction_slot_ge, "$players_kingdom", slot_faction_tax_rate, 30),
             (store_num_parties_of_template, ":num_parties", "pt_rebels"),
             (lt, ":num_parties", 30),
             (store_random_in_range, ":r", 0, 3),
@@ -45451,7 +45452,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_senators"),
   ],[
     ("Continue...",[],"Continue...",[
-      (store_div, ":relation_reduction", "$g_taxrate", -5),
+      (faction_get_slot, ":tax_rate_business", "$players_kingdom", slot_faction_tax_rate_buisness),
+      (store_div, ":relation_reduction", ":tax_rate_business", -5),
       (set_show_messages, 0),
       (try_for_range, ":roman", active_npcs_begin, active_npcs_end),
           (troop_slot_eq, ":roman", slot_troop_occupation, slto_kingdom_hero),
@@ -47754,7 +47756,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_senatus"),
     (try_begin),
         (store_random_in_range, ":center", towns_begin, towns_end),
-        (store_mul, ":chance", "$g_taxrate",  "$g_taxrate"),
+        (faction_get_slot, ":chance", "$players_kingdom", slot_faction_tax_rate),
+        (val_mul, ":chance", ":chance"),
 
         (try_begin),
             (eq, "$control_tax", 1),  #tax control active
