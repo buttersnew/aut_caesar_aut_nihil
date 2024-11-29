@@ -4405,6 +4405,7 @@ presentations = [
             (troop_set_slot, "trp_global_variables", g_player_recruitement_limit, gold_legate),
             (display_message, "@Recruitment funds updated!", message_alert),
         (try_end),
+        (troop_set_slot, "trp_global_variables", g_last_week_income, 0),#reset
     (try_end),
 
     (try_begin),
@@ -4751,10 +4752,6 @@ presentations = [
         (val_add, ":num_lines", 2), #include new debt line
     (try_end),
     ##new lines
-    (try_begin),##loans from nobility
-        (gt, "$g_new_money", 0),
-        (val_add, ":num_lines", 1), #
-    (try_end),
     (try_begin),##salery
         (ge, "$g_rank", 1),
         (val_add, ":num_lines", 1), #
@@ -4768,12 +4765,6 @@ presentations = [
         (quest_slot_ge, "qst_investment", slot_quest_current_state, ":cur_day"),
         (val_add, ":num_lines", 1), #
     (try_end),
-    # (try_begin),##libelli office
-    #     (eq, "$g_is_emperor", 1),
-    #     (eq, "$g_civil_war", -1),
-    #     (eq, "$g_libelli", 1),
-    #     (val_add, ":num_lines", 1), #
-    # (try_end),
     (try_begin),##Domus Augusti
         (eq, "$g_is_emperor", 1),
         (party_slot_eq, "p_town_6", slot_town_lord, "trp_player"),
@@ -4843,15 +4834,6 @@ presentations = [
         (gt, reg0, 1),
         (val_add, ":num_lines", 1),
     (try_end),
-    # (try_begin),##imperial tax
-        # (eq, "$g_is_emperor", 1),
-        # (gt, "$g_taxes", 0),
-        # (val_add, ":num_lines", 1), #
-    # (try_end),
-    # (try_begin),##empire maintenance
-        # (eq, "$g_is_emperor", 1),
-        # (val_add, ":num_lines", 1), #
-    # (try_end),
     (try_begin),##villa
         (troop_slot_eq, "trp_global_variables", g_player_villa, 2),
         (gt, "$g_player_villa_costs", 0),
@@ -4876,8 +4858,8 @@ presentations = [
     (assign, ":workshops_total", 0),
     (assign, ":latifundia_total", 0),
     (assign, ":expierence_gain"),
-##############center loop
-##calculate rents from centers
+    ##############center loop
+    ##calculate rents from centers
     (try_for_range, ":center_no", centers_begin, centers_end),
 		#Enterprise
         ######################
@@ -5399,6 +5381,12 @@ presentations = [
     (try_end),
 
     (try_begin),
+        (eq, "$g_apply_budget_report_to_gold", 1),
+        (gt, ":latifundia_total", 0),
+        (call_script, "script_add_to_weekly_income", ":latifundia_total"),
+    (try_end),
+
+    (try_begin),
         (eq, "$g_presentation_credits_obj_3_alpha", 0),
         (gt, ":workshops_total", 0),
         (create_text_overlay, reg1, "@Income from all workshops:", 0),
@@ -5419,6 +5407,13 @@ presentations = [
         (overlay_set_color, reg1, 0x00AA00),
         (val_sub, ":cur_y", 27),
     (try_end),
+
+    (try_begin),
+        (eq, "$g_apply_budget_report_to_gold", 1),
+        (gt, ":workshops_total", 0),
+        (call_script, "script_add_to_weekly_income", ":workshops_total"),
+    (try_end),
+
     #mercenary payment
     (try_begin),
         (gt, "$players_kingdom", 0),
@@ -5446,7 +5441,12 @@ presentations = [
         (val_div, ":offer_value", 2),##
         (val_add, ":offer_value", 500),##the base payment are 500 denars
         (call_script, "script_round_value", ":offer_value"),
-        (val_add, ":net_change", reg0),
+        (assign, ":offer_value", reg0),
+        (try_begin),
+            (eq, "$g_apply_budget_report_to_gold", 1),
+            (call_script, "script_add_to_weekly_income", ":offer_value"),
+        (try_end),
+        (val_add, ":net_change", ":offer_value"),
         (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -5467,13 +5467,8 @@ presentations = [
         (val_mul, ":ratio_lost", ":tax_efficiency_loss_ratio_per_center"),
         (val_min, ":ratio_lost", 50),#max tax inefficiency
 
-        #(store_mul, ":tax_lost", ":all_centers_accumulated_total", ":ratio_lost"),
-        # (try_begin),
-            # (eq, "$g_is_emperor", 1),
-            # (store_add, ":all_centers_accumulated_taxes_and_rents_2", "$g_taxes",":all_centers_accumulated_taxes_and_rents"),
-        # (else_try),
         (assign, ":all_centers_accumulated_taxes_and_rents_2", ":all_centers_accumulated_taxes_and_rents"),
-        # (try_end),
+
         (store_mul, ":tax_lost", ":all_centers_accumulated_taxes_and_rents_2", ":ratio_lost"),
         (val_div, ":tax_lost", 100),
         ##diplomacy begin
@@ -5740,7 +5735,6 @@ presentations = [
     ##STAFF SPENDING
     (call_script, "script_calculate_staff_salary"),
     (assign, ":staff_salary", reg0),
-    #END STAFF SPENDING
     (try_begin),
         (gt, ":staff_salary", 0),
         (val_sub, ":net_change", ":staff_salary"),
@@ -5762,7 +5756,7 @@ presentations = [
         (overlay_set_position, reg1, pos1),
         (val_sub, ":cur_y", 27),
     (try_end),
-    ##diplomacy end
+    #END STAFF SPENDING
     ## begin imperial tax if player is governor
     (assign, ":player_tax_faction", -1),
     (try_begin),
@@ -5885,74 +5879,6 @@ presentations = [
     (try_end),
     ##imperial tax end
 
-    # #TRIBUTES AND TAXES from goveners and provinces
-    # (try_begin),
-        # (eq, "$g_is_emperor", 1),
-        # #(eq, "$g_civil_war", -1),
-        # (gt, "$g_taxes", 0),
-        # (create_text_overlay, reg1, "@Taxes and Tributes from Provinces:", 0),
-        # (position_set_x, pos1, 900),
-        # (position_set_y, pos1, 900),
-        # (overlay_set_size, reg1, pos1),
-        # (position_set_x, pos1, 25),
-        # (position_set_y, pos1, ":cur_y"),
-        # (overlay_set_position, reg1, pos1),
-
-        # (assign, reg0, "$g_taxes"),
-
-
-        # (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
-        # (overlay_set_color, reg1, 0x00AA00),
-
-        # (val_add, ":net_change", "$g_taxes"),
-        # (try_begin),
-            # (eq, "$g_apply_budget_report_to_gold", 1),
-            # (assign, "$g_taxes", 0),
-        # (try_end),
-        # (position_set_x, pos1, 900),
-        # (position_set_y, pos1, 900),
-        # (overlay_set_size, reg1, pos1),
-        # (position_set_x, pos1, 500),
-        # (position_set_y, pos1, ":cur_y"),
-        # (overlay_set_position, reg1, pos1),
-        # (val_sub, ":cur_y", 27),
-    # (try_end),
-
-  #disabled, new system of debts
-  ##if player has taken a loan via questor
-    # (try_begin),
-    #     #(eq, "$g_is_emperor", 1),
-    #     #(eq, "$g_civil_war", -1),
-    #     (gt, "$g_new_money", 0),
-    #     (create_text_overlay, reg1, "@Loans from the Nobility:", 0),
-    #     (position_set_x, pos1, 900),
-    #     (position_set_y, pos1, 900),
-    #     (overlay_set_size, reg1, pos1),
-    #     (position_set_x, pos1, 25),
-    #     (position_set_y, pos1, ":cur_y"),
-    #     (overlay_set_position, reg1, pos1),
-
-    #     (assign, reg0, "$g_new_money"),
-
-
-    #     (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
-    #     (overlay_set_color, reg1, 0x00AA00),
-
-    #     (val_add, ":net_change", "$g_new_money"),
-    #     (try_begin),
-    #         (eq, "$g_apply_budget_report_to_gold", 1),
-    #         (assign, "$g_new_money", 0),
-    #     (try_end),
-    #     (position_set_x, pos1, 900),
-    #     (position_set_y, pos1, 900),
-    #     (overlay_set_size, reg1, pos1),
-    #     (position_set_x, pos1, 500),
-    #     (position_set_y, pos1, ":cur_y"),
-    #     (overlay_set_position, reg1, pos1),
-    #     (val_sub, ":cur_y", 27),
-    # (try_end),
-##end tributes
-
     #emperors pocket
     (try_begin),
         (eq, "$g_is_emperor", 1),
@@ -5976,6 +5902,10 @@ presentations = [
             (overlay_set_color, reg1, 0xFF2C2C),
         (else_try),
             (overlay_set_color, reg1, 0x00AA00),
+            (try_begin),
+                (eq, "$g_apply_budget_report_to_gold", 1),
+                (call_script, "script_add_to_weekly_income", ":emperors_pocket"),
+            (try_end),
         (try_end),
 
         (position_set_x, pos1, 900),
@@ -6013,6 +5943,12 @@ presentations = [
             (val_add, ":cost_for", 1500),
         (try_end),
         (ge, ":cost_for", 1000),
+
+        (try_begin),
+            (eq, "$g_apply_budget_report_to_gold", 1),
+            (call_script, "script_add_to_weekly_income", ":cost_for"),
+        (try_end),
+
         (create_text_overlay, reg1, "@Tributes from Tributaries:", 0),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -6021,7 +5957,6 @@ presentations = [
         (position_set_y, pos1, ":cur_y"),
         (overlay_set_position, reg1, pos1),
         (assign, reg0, ":cost_for"),
-
         (val_add, ":net_change", ":cost_for"),
 
         (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
@@ -6071,8 +6006,8 @@ presentations = [
     ##end player tribute
 
 
-#disabled: done else where now
-## begin imperial bureaucracy
+    #disabled: done else where now
+    ## begin imperial bureaucracy
     # (try_begin),
     #     (eq, "$g_is_emperor", 1),
     #     (create_text_overlay, reg1, "@Empire maintenance:", 0),
@@ -6267,7 +6202,7 @@ presentations = [
         (val_sub, ":cur_y", 27),
     (try_end),
 
-  #is now accounted differently
+    #is now accounted differently
     ###money from julia papia law
     # (try_begin),
     #     (eq, "$g_is_emperor", 1),
@@ -6447,37 +6382,6 @@ presentations = [
         (val_sub, ":cur_y", 27),
     (try_end),
 
-    # booked now differently
-    # #libelli office
-    # (try_begin),
-    #     (eq, "$g_is_emperor", 1),
-    #     (eq, "$g_civil_war", -1),
-    #     (eq, "$g_libelli", 1),
-    #     (create_text_overlay, reg1, "@Libelli Office cost:", 0),
-    #     (position_set_x, pos1, 900),
-    #     (position_set_y, pos1, 900),
-    #     (overlay_set_size, reg1, pos1),
-    #     (position_set_x, pos1, 25),
-    #     (position_set_y, pos1, ":cur_y"),
-    #     (overlay_set_position, reg1, pos1),
-
-    #     (assign, reg0, -80000),
-
-    #     (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
-    #     (overlay_set_color, reg1, 0xFF2C2C),
-
-    #     (val_sub, ":net_change", 80000),
-
-    #     (position_set_x, pos1, 900),
-    #     (position_set_y, pos1, 900),
-    #     (overlay_set_size, reg1, pos1),
-    #     (position_set_x, pos1, 500),
-    #     (position_set_y, pos1, ":cur_y"),
-    #     (overlay_set_position, reg1, pos1),
-    #     (val_sub, ":cur_y", 27),
-    # (try_end),
-    # ##end libelli
-
     ##Loans from player
     (try_begin),
         (eq, "$g_apply_budget_report_to_gold", 1),
@@ -6521,6 +6425,10 @@ presentations = [
 
         (try_begin),
             (ge, reg2, 0),
+            (try_begin),
+                (eq, "$g_apply_budget_report_to_gold", 1),
+                (call_script, "script_add_to_weekly_income", reg2),
+            (try_end),
             (overlay_set_color, reg1, 0x00AA00),
         (else_try),
             (overlay_set_color, reg1, 0xFF2C2C),
@@ -6696,7 +6604,7 @@ presentations = [
     (else_try),
         (assign, ":player_wealth_dif", ":player_wealth"),
         (store_sub, ":player_new_debt_to_party_members", ":net_change", ":player_wealth"),
-##diplomacy begin
+    ##diplomacy begin
         (try_begin),
             (gt, "$g_player_chamberlain", 0),
             (store_troop_gold, ":player_inv_wealth", "trp_player"),
@@ -9525,7 +9433,7 @@ presentations = [
     (position_set_x, pos1, 30),
     (position_set_y, pos1, 150),
     (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 350),
+    (position_set_x, pos1, 375),
     (position_set_y, pos1, 660-150),
     (overlay_set_area_size, reg1, pos1),
     (set_container_overlay, reg1),
@@ -9769,8 +9677,34 @@ presentations = [
     (overlay_set_size, reg0, pos2),
     (val_sub, ":cur_y", 27),
 
+    (call_script, "script_get_piety_impact"),
 
-	  (assign, reg6, "$player_honor"),
+    (create_text_overlay, reg0, "@Piety:", 0),
+    (position_set_y, pos1, ":cur_y"),
+    (overlay_set_position, reg0, pos1),
+    (overlay_set_size, reg0, pos2),
+
+	  (assign, reg12, "$player_piety"),
+    (create_text_overlay, reg0, "@{s60} ({reg12})", 0),
+    (try_begin),
+        (ge, reg12, 80),
+        (overlay_set_color, reg0, 0x228B22),
+    (else_try),
+        (le, reg12, 10),
+        (overlay_set_color, reg0, 0xFF0000),
+    (else_try),
+        (overlay_set_color, reg0, 0xff6060),
+    (try_end),
+    (position_set_x, pos3, 200),
+    (position_set_y, pos3, ":cur_y"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos2),
+    (val_sub, ":cur_y", 27),
+
+    (create_text_overlay, reg0, "@Reputation:", 0),
+    (position_set_y, pos1, ":cur_y"),
+    (overlay_set_position, reg0, pos1),
+    (overlay_set_size, reg0, pos2),
     (str_clear, s60),
     (try_begin),
         (lt, "$player_honor", -90),
@@ -9802,12 +9736,6 @@ presentations = [
     (else_try),
         (str_store_string,s60,"@Unknown"),
     (try_end),
-
-    (create_text_overlay, reg0, "@Reputation:", 0),
-    (position_set_y, pos1, ":cur_y"),
-    (overlay_set_position, reg0, pos1),
-    (overlay_set_size, reg0, pos2),
-
 	  (assign, reg12, "$player_honor"),
     (create_text_overlay, reg0, "@{s60} ({reg12})", 0),
     (try_begin),
@@ -9817,7 +9745,6 @@ presentations = [
         (le, reg12, -10),
         (overlay_set_color, reg0, 0xFF0000),
     (try_end),
-
     (position_set_x, pos3, 200),
     (position_set_y, pos3, ":cur_y"),
     (overlay_set_position, reg0, pos3),
@@ -24899,13 +24826,14 @@ presentations = [
     (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
-    (create_text_overlay, reg1, "@_Legions of Rome_", tf_center_justify),
+    (create_text_overlay, reg1, "@_Legions of Rome_", tf_center_justify|tf_with_outline),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 685), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1500),
     (position_set_y, pos1, 1500),
     (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
 
     (try_begin),
         (eq, "$g_notification_menu_var1", 1),#is not emperor
@@ -24987,7 +24915,7 @@ presentations = [
     (overlay_set_area_size, reg1, pos1),
 
 
-    (create_text_overlay, reg0, "@Legion/Auxiliar", tf_left_align),
+    (create_text_overlay, reg0, "@Legion/Auxiliar", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 50),
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -24995,7 +24923,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Legate/Tribune", tf_left_align),
+    (create_text_overlay, reg0, "@Legate/Tribune", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 220),###+160
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -25003,7 +24931,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Relation", tf_left_align),
+    (create_text_overlay, reg0, "@Relation", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 500-75),###+160
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -25011,7 +24939,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Personality", tf_left_align),
+    (create_text_overlay, reg0, "@Personality", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 600-75),###+110
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -25019,7 +24947,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Headquarter", tf_left_align),
+    (create_text_overlay, reg0, "@Headquarter", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 720-75),###+110
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -25028,7 +24956,7 @@ presentations = [
     (overlay_set_size, reg0, pos2),
 
 
-    (create_text_overlay, reg0, "@State", tf_left_align),
+    (create_text_overlay, reg0, "@State", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 720+50),###+110
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),

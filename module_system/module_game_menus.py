@@ -14483,54 +14483,48 @@ game_menus = [
     ],
   ),
 
-  (
-    "village_loot_continue",0,
-    "Do you wish to continue looting this village?",
-    "none",
-    [
+("village_loot_continue",0,
+  "Do you wish to continue looting this village?",
+  "none",[
     (set_background_mesh, "mesh_pic_looted_village"),
-    ],
-    [
-      ("loot_yes",[],"Yes.",[ (rest_for_hours_interactive, 3, 5, 1), #rest while attackable (3 hours will be extended by the trigger)
-                              #SB : resume hostilities
-                              (call_script, "script_diplomacy_party_attacks_neutral", "p_main_party", "$current_town"),
-                              (change_screen_return),
-                              ]),
-      ("loot_no",[],"No.",[(call_script, "script_village_set_state", "$current_town", 0),
-                            (party_set_slot, "$current_town", slot_village_raided_by, -1),
-                            (assign, "$g_player_raiding_village", 0),
-                            (party_set_slot, "$current_town", slot_town_last_nearby_fire_time, 0),
-                            (change_screen_return)]),
-    ],
-  ),
+  ],[
+    ("loot_yes",[],"Yes.",[
+      (rest_for_hours_interactive, 3, 5, 1), #rest while attackable (3 hours will be extended by the trigger)
+      #SB : resume hostilities
+      (call_script, "script_diplomacy_party_attacks_neutral", "p_main_party", "$current_town"),
+      (change_screen_return),
+    ]),
+    ("loot_no",[],"No.",[
+      (call_script, "script_village_set_state", "$current_town", 0),
+      (party_set_slot, "$current_town", slot_village_raided_by, -1),
+      (assign, "$g_player_raiding_village", 0),
+      (party_set_slot, "$current_town", slot_town_last_nearby_fire_time, 0),
+      (change_screen_return),
+    ]),
+]),
 
-  (
-    "close",0,
-    "Nothing.",
-    "none",
-    [
-        (change_screen_return),
-      ],
-    [],
-  ),
+("close",0,
+  "Nothing.",
+  "none",[
+    (change_screen_return),
+  ],[
+]),
 
-  (
-    "control",0,
-    "The governor has issued a decree that everybody who wants to enter the town must register by the guards. \
-	Therefore, travellers of all kinds have to wait in line for hours before being admitted in.",
-    "none",
-    [
-	 (call_script, "script_set_town_picture"),
-    ],
-    [
-      ("enter_the_town",[],"Continue...",[(jump_to_menu, "mnu_town"),]),
-    ],
-  ),
+("control",0,
+  "The governor has issued a decree that everybody who wants to enter the town must register by the guards."
+  +" Therefore, travellers of all kinds have to wait in line for hours before being admitted in.",
+  "none",[
+    (call_script, "script_set_town_picture"),
+  ],[
+    ("enter_the_town",[],"Continue...",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
 ("paganholysites_visit",0,
 "You arrive at a local sanctuary. {s14} is worshipped here. Pilgrims from far away have come to the sanctuary to offer sacrifices to the gods. Traders use the opportunity to sell their goods."
 +"^This place certainly treasures wealth!^^{s13}^^{s15}",
-  "none",[
+"none",[
     (try_begin),
         (party_slot_ge, "$g_encountered_party", slot_party_looted_left_days, 1),
         (jump_to_menu, "mnu_center_looted"),
@@ -14555,21 +14549,17 @@ game_menus = [
         (str_store_string, s15, "@Further towards the North one can find the holy forests of Seraca. Folklore says that silvan spirits inhabitate the forest."),
     (try_end),
   ],[
-    ##
-    ("test_scene",
-    [(ge, "$cheat_mode", 1),],
-    "Test scene",
-    [
+    ("test_scene",[
+      (ge, "$cheat_mode", 1),
+    ],"Test scene",[
       (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_castle_exterior),
       (modify_visitors_at_site, ":exterior_scene"),
       (jump_to_scene, ":exterior_scene"),
       (change_screen_mission),
     ],"Leave."),
-
-    ("test_scene",
-    [(eq, "$g_encountered_party", "p_caucasian_holy_side_2"),],
-    "Visit the holy forest of Seraca",
-    [
+    ("test_scene",[
+      (eq, "$g_encountered_party", "p_caucasian_holy_side_2"),
+    ],"Visit the holy forest of Seraca",[
       (set_jump_mission, "mt_explore_secret_place"),
       (modify_visitors_at_site, "scn_sacred_forests_seraca"),
       (reset_visitors),
@@ -14581,11 +14571,8 @@ game_menus = [
       (jump_to_scene, "scn_sacred_forests_seraca"),
       (change_screen_mission),
     ],"Leave."),
-
-    ("enter_hofho",
-    [],
-    "Visit the sanctuary.",
-    [
+    ("enter_hofho",[
+    ],"Visit the sanctuary.",[
       (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_castle_exterior),
       (modify_visitors_at_site, ":exterior_scene"),
       (reset_visitors),
@@ -14636,73 +14623,64 @@ game_menus = [
       (jump_to_scene, ":exterior_scene"),
       (change_screen_mission),
     ],"Leave."),
-
-    ("hof_recruitho",
-      [
-        (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_4"),
-        (party_slot_eq,"$g_encountered_party",slot_center_volunteer_troop_type,0),#can recruit
-        (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
-        (ge, ":free_capacity", 2),
-      ],
-      "Try to recruit a berserker.",
-      [
-        (store_random_in_range, ":rand", 1, 8),
-        (troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
-        (try_begin),
-            (le, ":player_renown", 150), # you have to be someone
-            (jump_to_menu,"mnu_nonberserker_renown_low"),
-        (else_try),
-            (ge, ":rand", 7),
-            (jump_to_menu,"mnu_berserker_recruit_2troop"),
-        (else_try),
-            (ge, ":rand", 4),
-            (jump_to_menu,"mnu_berserker_recruit_troop"),
-        (else_try),
-            (jump_to_menu,"mnu_nonberserker_avaiable_troop"),
-        (try_end),
+    ("hof_recruitho",[
+      (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_4"),
+      (party_slot_eq,"$g_encountered_party",slot_center_volunteer_troop_type,0),#can recruit
+      (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
+      (ge, ":free_capacity", 2),
+    ],"Try to recruit a berserker.",[
+      (store_random_in_range, ":rand", 1, 8),
+      (troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
+      (try_begin),
+          (le, ":player_renown", 150), # you have to be someone
+          (jump_to_menu,"mnu_nonberserker_renown_low"),
+      (else_try),
+          (ge, ":rand", 7),
+          (jump_to_menu,"mnu_berserker_recruit_2troop"),
+      (else_try),
+          (ge, ":rand", 4),
+          (jump_to_menu,"mnu_berserker_recruit_troop"),
+      (else_try),
+          (jump_to_menu,"mnu_nonberserker_avaiable_troop"),
+      (try_end),
     ]),
-
-    ("donate_hofho",
-      [(eq, "$can_sacrific", 1),],
-      "Make a small sacrifice to the gods (1000 denars).",
-      [
-        (call_script, "script_make_sacrifice", 1000),
-        (change_screen_return),
-    ]),
-
     ("donate_hofho",[
       (eq, "$can_sacrific", 1),
-    ],
-    "Make a medium sacrifice to the gods (5000 denars).",
-    [
-      (call_script, "script_make_sacrifice", 5000),
+    ],"Make a small sacrifice to the gods (1000 denars).",[
+        (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
+        (call_script, "script_make_sacrifice", 1000, ":diety"),
+        (change_screen_return),
+    ]),
+    ("donate_hofho",[
+      (eq, "$can_sacrific", 1),
+    ],"Make a medium sacrifice to the gods (5000 denars).",[
+      (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
+      (call_script, "script_make_sacrifice", 5000, ":diety"),
       (change_screen_return),
     ]),
-
     ("donate_hofho",[
       (eq, "$can_sacrific", 1),
     ],
     "Make a large sacrifice to the gods (10000 denars).",
     [
-      (call_script, "script_make_sacrifice", 10000),
+      (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
+      (call_script, "script_make_sacrifice", 10000, ":diety"),
       (change_screen_return),
     ]),
-    ("camp_wait_hereho",[],"Wait here for some time.",
-      [
-        (assign,"$g_camp_mode", 1),
-        (assign, "$g_infinite_camping", 0),
-        (assign, "$g_player_icon_state", pis_camping),
-        (rest_for_hours_interactive, 24 * 365, 5, 0), #rest while no attackable
-        (change_screen_return),
-      ]
-    ),
-
+    ("camp_wait_hereho",[],"Wait here for some time.",[
+      (assign,"$g_camp_mode", 1),
+      (assign, "$g_infinite_camping", 0),
+      (assign, "$g_player_icon_state", pis_camping),
+      (rest_for_hours_interactive, 24 * 365, 5, 0), #rest while no attackable
+      (change_screen_return),
+    ]),
     ("pillage_hofho",[
     ],"Raid the sanctuary.",[
       (jump_to_menu, "mnu_are_you_sure"),
     ]),
-
-    ("leaveho",[],"Leave.",[ (change_screen_map), ]),
+    ("leaveho",[],"Leave.",[
+      (change_screen_map),
+    ]),
 ]),
 
 ("raid_delphi",mnf_enable_hot_keys|mnf_scale_picture,
@@ -34507,8 +34485,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_begin),
       (ge, "$temp", 20),
       (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -20000),
-      # (val_sub, "$g_taxes", 20000),
-      # (val_max, "$g_taxes", 0),
       (change_screen_map),
     (else_try),
       (lt, "$temp", 20),
@@ -34674,8 +34650,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (str_store_party_name, s40, "$g_notification_menu_var1"),
       (str_store_troop_name, s44, "$g_notification_menu_var2"),
       (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -10000),
-      # (val_sub, "$g_taxes", -10000),
-      # (val_max, "$g_taxes", 0),
       (store_skill_level, ":trade","skl_trade", "trp_player"),
       (try_begin),
         (ge, ":trade", 6),
@@ -34797,8 +34771,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("answere_2",[],"I do not have money for this nonsens. Work harder!",[
       (display_message, "@ The head of the office is disappointed."),
       (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_govern, "$players_kingdom", -20000),
-      # (val_sub, "$g_taxes", -20000),
-      # (val_max, "$g_taxes", 0),
       (change_screen_map),
     ]),
 ]),

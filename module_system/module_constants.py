@@ -3889,6 +3889,8 @@ g_antonia_talk = 78
 
 g_corruption_check = 79
 
+g_last_week_income = 80
+
 #Spain
 p_hisp_tarraco = 1
 p_hisp_baetica = 2
