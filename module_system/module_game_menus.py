@@ -14644,29 +14644,29 @@ game_menus = [
           (jump_to_menu,"mnu_nonberserker_avaiable_troop"),
       (try_end),
     ]),
-    ("donate_hofho",[
-      (eq, "$can_sacrific", 1),
-    ],"Make a small sacrifice to the gods (1000 denars).",[
-        (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
-        (call_script, "script_make_sacrifice", 1000, ":diety"),
-        (change_screen_return),
-    ]),
-    ("donate_hofho",[
-      (eq, "$can_sacrific", 1),
-    ],"Make a medium sacrifice to the gods (5000 denars).",[
-      (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
-      (call_script, "script_make_sacrifice", 5000, ":diety"),
-      (change_screen_return),
-    ]),
-    ("donate_hofho",[
-      (eq, "$can_sacrific", 1),
-    ],
-    "Make a large sacrifice to the gods (10000 denars).",
-    [
-      (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
-      (call_script, "script_make_sacrifice", 10000, ":diety"),
-      (change_screen_return),
-    ]),
+    # ("donate_hofho",[
+    #   (eq, "$can_sacrific", 1),
+    # ],"Make a small sacrifice to the gods (1000 denars).",[
+    #     (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
+    #     (call_script, "script_make_sacrifice", 1000, ":diety"),
+    #     (change_screen_return),
+    # ]),
+    # ("donate_hofho",[
+    #   (eq, "$can_sacrific", 1),
+    # ],"Make a medium sacrifice to the gods (5000 denars).",[
+    #   (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
+    #   (call_script, "script_make_sacrifice", 5000, ":diety"),
+    #   (change_screen_return),
+    # ]),
+    # ("donate_hofho",[
+    #   (eq, "$can_sacrific", 1),
+    # ],
+    # "Make a large sacrifice to the gods (10000 denars).",
+    # [
+    #   (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
+    #   (call_script, "script_make_sacrifice", 10000, ":diety"),
+    #   (change_screen_return),
+    # ]),
     ("camp_wait_hereho",[],"Wait here for some time.",[
       (assign,"$g_camp_mode", 1),
       (assign, "$g_infinite_camping", 0),
@@ -14708,6 +14708,13 @@ game_menus = [
       (party_clear, "p_total_enemy_casualties"),
       (assign, "$capture_screen_shown", 0),
       (assign, "$loot_screen_shown", 0),
+      (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_center_culture, ":culture"),
+        (call_script, "script_add_piety", -50, 1),
+      (else_try),
+        (call_script, "script_add_piety", -25, 1),
+      (try_end),
     ]),
     ("defend", [], "Forget it.", [
       (jump_to_menu, "mnu_paganholysites_visit"),
@@ -14742,6 +14749,13 @@ game_menus = [
       (party_clear, "p_total_enemy_casualties"),
       (assign, "$capture_screen_shown", 0),
       (assign, "$loot_screen_shown", 0),
+      (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_center_culture, ":culture"),
+        (call_script, "script_add_piety", -50, 1),
+      (else_try),
+        (call_script, "script_add_piety", -25, 1),
+      (try_end),
     ]),
     ("defend", [], "Forget it.", [
       (jump_to_menu, "mnu_paganholysites_visit"),
@@ -55563,8 +55577,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (assign, ":c", 1),
       (try_end),
       (eq, ":c", 1),
-    ],
-    "Play similar tricks to punish the town while technically following the law. (cost: 15,000 denars)",[
+    ],"Play similar tricks to punish the town while technically following the law. (cost: 15,000 denars)",[
       (add_xp_as_reward, 100),
       (try_begin),
           (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
@@ -60446,7 +60459,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
       (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
       (lt, "$temp4", 0),
       (store_mul, reg10, "$temp4_1", 2),
-      (val_div, reg10, 3)
+      (val_div, reg10, 3),
     ],"Sent {reg10} denars.",[
       (call_script, "script_change_player_relation_with_center", "$g_notification_menu_var1", 3),
       (call_script, "script_change_player_honor", 3),

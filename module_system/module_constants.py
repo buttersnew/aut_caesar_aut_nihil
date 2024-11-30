@@ -1273,6 +1273,15 @@ worships_ammon      = 25
 #nubian
 worships_apedemak   = 26
 
+small_sacrifice_percentage = 2
+medium_sacrifice_percentage = 5
+large_sacrifice_percentage = 10
+huge_sacrifice_percentage = 15
+
+small_sacrifice_cost = 1000
+medium_sacrifice_cost = 5000
+large_sacrifice_cost = 10000
+huge_sacrifice_cost = 25000
 #####################################
 #
 slot_troop_last_quest          = 24

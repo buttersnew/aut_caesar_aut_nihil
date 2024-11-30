@@ -54,8 +54,23 @@ presentations = [
     # (overlay_set_position, reg0, pos1),
 
     (assign, ":initial_x_coordinate", 50+95),
-    (assign, ":Initial_y_coordinate", 469),
+    (assign, ":Initial_y_coordinate", 499),
     (assign, ":font_size", 1150),
+
+    (try_begin),
+        (is_vanilla_warband),
+        (create_text_overlay, reg1, "@You are running the mod with vanilla warband.^Consider using WSE2.", tf_center_justify|tf_vertical_align_center|tf_with_outline),
+        (position_set_x, pos1, 700),
+        (position_set_y, pos1, 700),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, ":initial_x_coordinate"),
+        (position_set_y, pos1, ":Initial_y_coordinate"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_color, reg1, message_alert),
+        (val_sub, ":Initial_y_coordinate", 30),
+    (try_end),
+
+
 
     (create_text_overlay, "$g_presentation_credits_obj_1", "@New Game", tf_center_justify|tf_double_space|tf_vertical_align_center),
     (position_set_x, pos1, ":font_size"),

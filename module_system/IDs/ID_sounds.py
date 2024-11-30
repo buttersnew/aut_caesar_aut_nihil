@@ -262,3 +262,4 @@ snd_antonia_speech_4 = 260
 snd_antonia_speech_5 = 261
 snd_baths_spring = 262
 snd_scream_warcry = 263
+snd_drunken = 264

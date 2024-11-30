@@ -4751,6 +4751,9 @@ simple_triggers = [
                 (try_begin),
                     (eq, ":building", slot_lat_guards),
                     (party_add_members, ":latifundium", "trp_vigilia", 10),
+                (else_try),
+                    (eq, ":building", slot_lat_temple),
+                    (call_script, "script_add_piety", 30, 1),
                 (try_end),
                 (add_xp_as_reward, 75),
             (try_end),
@@ -8047,7 +8050,6 @@ simple_triggers = [
 
 (49,[
     (call_script, "script_execude_debug_message", 128),
-    (eq, "$g_is_emperor", 1),
 
     (store_random_in_range, ":r", -5, 350),
     (ge, ":r", "$g_player_luck"),
@@ -8056,9 +8058,11 @@ simple_triggers = [
         (neg|troop_slot_ge, "trp_player", slot_troop_renown, 200),
         (call_script, "script_get_piety_impact"),
         (neq, reg1, 0),
+        (display_message, "@Your piety effects your renown.", message_alert),
         (call_script, "script_change_troop_renown", "trp_player", reg1),
     (try_end),
 
+    (eq, "$g_is_emperor", 1),
     (try_begin),
         (lt, "$player_right_to_rule", 50),
         (lt, "$g_unrest", 101),
@@ -8103,6 +8107,10 @@ simple_triggers = [
 
 (48,[
     (call_script, "script_execude_debug_message", 129),
+    (try_begin),
+        (ge, "$player_piety", 0),
+        (call_script, "script_add_piety", -1, 0),
+    (try_end),
     (try_begin),
         (ge, "$g_civil_war", 1),
         (lt, "$g_unrest", 101),
