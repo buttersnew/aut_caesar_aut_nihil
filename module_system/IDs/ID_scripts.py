@@ -1000,3 +1000,4 @@ script_take_recruits_from_province = 998
 script_print_lord_intro_to_s11 = 999
 script_freelancer_get_event = 1000
 script_freelancer_event_required_for_progess = 1001
+script_deity_compatibility_with_culture = 1002

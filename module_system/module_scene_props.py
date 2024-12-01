@@ -3440,4 +3440,6 @@ scene_props = [
 
   ("roof_floor_marble_3",0,"roof_floor_marble_3","bo_roof_floor_concrete", []),
   ("lupanar", 0, "lupanar", "bo_lupanar", []),
+  ("statue_potest", 0, "statue_potest", "bo_statue_potest", []),
+  ("wall_painting_mithras", 0, "wall_painting_mithras", "bo_wall_painting_mithras", []),
 ]
