@@ -96,6 +96,13 @@ vc_menu = [
   ])
 ]
 
+deactivate_player_agent = (0,0,ti_once,[],[
+  (get_player_agent_no, ":player"),
+  (call_script, "script_advanced_agent_set_speed_modifier", ":player", 0),
+  (agent_set_visibility, ":player", 0),
+  (agent_set_no_death_knock_down_only, ":player", 1),
+])
+
 poisoned_arrows_hit = (ti_on_agent_hit, 0, 0, [],[
     (store_trigger_param, ":victim", 1),
     (store_trigger_param, ":attacker", 2),
@@ -14473,7 +14480,155 @@ mission_templates = [
       (tutorial_message, "@ You can hardly move. Everything looks blurred. It seems you are in an advanced state of inebriation. ^^(press K to finish read)"),
 		]),
 ]),
+("cutscene_sacrifice",0,-1,
+  "plundering a settlement",[
+    (0,mtef_visitor_source,af_override_horse,0,1,[]),
+    (1,mtef_visitor_source,af_override_horse,0,1,[]),
+    (2,mtef_visitor_source,af_override_horse,0,1,[]),
+    (3,mtef_visitor_source,af_override_horse,0,1,[]),
+    (4,mtef_visitor_source,af_override_horse,0,1,[]),
+    (5,mtef_visitor_source,af_override_horse,0,1,[]),
+    (6,mtef_visitor_source,af_override_horse,0,1,[]),
+    (7,mtef_visitor_source,af_override_horse,0,1,[]),
+    (8,mtef_visitor_source,af_override_horse,0,1,[]),
+    (9,mtef_visitor_source,af_override_horse,0,1,[]),
+    (10,mtef_visitor_source,af_override_horse,0,1,[]),
+    (11,mtef_visitor_source,af_override_horse,0,1,[]),
+    (12,mtef_visitor_source,af_override_horse,0,1,[]),
+    (13,mtef_visitor_source,af_override_horse,0,1,[]),
+    (14,mtef_visitor_source,af_override_horse,0,1,[]),
+    (15,mtef_visitor_source,af_override_horse,0,1,[]),
+    (16,mtef_visitor_source,af_override_horse,0,1,[]),
+    (17,mtef_visitor_source,af_override_horse,0,1,[]),
+    (18,mtef_visitor_source,af_override_horse,0,1,[]),
+    (19,mtef_visitor_source,af_override_horse,0,1,[]),
+    (20,mtef_visitor_source,af_override_horse,0,1,[]),
+    (21,mtef_visitor_source,af_override_horse,0,1,[]),
+    (22,mtef_visitor_source,af_override_horse,0,1,[]),
+    (23,mtef_visitor_source,af_override_horse,0,1,[]),
+    (24,mtef_visitor_source,af_override_horse,0,1,[]),
+    (25,mtef_visitor_source,af_override_horse,0,1,[]),
+    (26,mtef_visitor_source,af_override_horse,0,1,[]),
+    (27,mtef_visitor_source,af_override_horse,0,1,[]),
+    (28,mtef_visitor_source,af_override_horse,0,1,[]),
+    (29,mtef_visitor_source,af_override_horse,0,1,[]),
+    (30,mtef_visitor_source,af_override_horse,0,1,[]),
+    (31,mtef_visitor_source,af_override_horse,0,1,[]),
+    (32,mtef_visitor_source,af_override_horse,0,1,[]),
+    (33,mtef_visitor_source,af_override_horse,0,1,[]),
+    (34,mtef_visitor_source,af_override_horse,0,1,[]),
+    (35,mtef_visitor_source,af_override_horse,0,1,[]),
+    (36,mtef_visitor_source,af_override_horse,0,1,[]),
+    (37,mtef_visitor_source,af_override_horse,0,1,[]),
+    (38,mtef_visitor_source,af_override_horse,0,1,[]),
+    (39,mtef_visitor_source,af_override_horse,0,1,[]),
+    (40,mtef_visitor_source,af_override_horse,0,1,[]),
+    (41,mtef_visitor_source,af_override_horse,0,1,[]),
+    (42,mtef_visitor_source,af_override_horse,0,1,[]),
+    (43,mtef_visitor_source,af_override_horse,0,1,[]),
+    (44,mtef_visitor_source,af_override_horse,0,1,[]),
+    (45,mtef_visitor_source,af_override_horse,0,1,[]),
+    (46,mtef_visitor_source,af_override_horse,0,1,[]),
+    (47,mtef_visitor_source,af_override_horse,0,1,[]),
+    (48,mtef_visitor_source,af_override_horse,0,1,[]),
+    (49,mtef_visitor_source,af_override_horse,0,1,[]),
+  ], p_wetter + global_common_triggers +
+  [
+    (ti_after_mission_start, 0, ti_once, [],[
+      (mission_cam_set_screen_color, 0xFF736252), #roughly the colour of the menu bg
+      (mission_cam_animate_to_screen_color, 0x00736252, 1500),
+      (show_object_details_overlay, 0),
+    ]),
 
+    deactivate_player_agent,
+    dedal_tavern_animations,
+    can_spawn_commoners,
+    common_inventory_not_available,
+    (ti_on_agent_spawn,1,0, [],[
+      (try_for_agents, ":agent"),
+        (agent_is_alive, ":agent"),
+        (agent_is_human, ":agent"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (try_begin),
+          (eq, ":troop", "trp_guest"),
+          (agent_set_stand_animation, ":agent", "anim_wedding_guest"),
+          (agent_set_animation, ":agent", "anim_wedding_guest"),
+          (store_random_in_range,":r",0,100),
+        (else_try),
+          (eq, ":troop", "trp_guest_female"),
+          (agent_set_stand_animation, ":agent", "anim_wedding_guest_woman"),
+          (agent_set_animation, ":agent", "anim_wedding_guest_woman"),
+          (store_random_in_range,":r",0,100),
+        (else_try),
+          (eq, ":troop", "trp_roman_priest_female"),
+          (agent_set_stand_animation, ":agent", "anim_wedding_guest_woman"),
+          (agent_set_animation, ":agent", "anim_wedding_guest_woman"),
+          (store_random_in_range,":r",0,100),
+        (else_try),
+          (eq, ":troop", "trp_roman_priest"),
+          (agent_set_stand_animation, ":agent", "anim_wedding_guest_notr"),
+          (agent_set_animation, ":agent", "anim_wedding_guest_notr"),
+          (store_random_in_range,":r",0,100),
+        (try_end),
+        (agent_set_animation_progress,":agent",":r"),
+      (try_end),
+    ]),
+    (0,0,0,[],[
+      (store_mission_timer_a, ":cur_time"),
+      (set_fixed_point_multiplier, 100),
+      (try_begin),
+          (ge, ":cur_time", 35),
+          (eq, "$tutorial_state", 3),
+          (val_add, "$tutorial_state", 1),
+          (stop_all_sounds, 1),
+          (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+          (mission_disable_talk),
+          (finish_mission, 4),
+      (else_try),
+          (ge, ":cur_time", 30),
+          (eq, "$tutorial_state", 2),
+          (val_add, "$tutorial_state", 1),
+          (tutorial_message_set_size, 23, 23),
+          (tutorial_message_set_position, 500, 650),
+          (tutorial_message_set_center_justify, 0),
+          (tutorial_message_set_background, 1),
+          (tutorial_message, -1),
+      (else_try),
+          (ge, ":cur_time", 4),
+          (eq, "$tutorial_state", 1),
+          (val_add, "$tutorial_state", 1),
+          (tutorial_message_set_size, 19, 19),
+          (tutorial_message_set_position, 500, 650),
+          (tutorial_message_set_center_justify, 0),
+          (tutorial_message_set_background, 1),
+          (val_add, "$temp1", "str_priest_sacrifice_begin"),
+          (str_store_string, s10, "$temp1"),
+          (tutorial_message, "@{s10}"),
+      (else_try),
+          (eq, "$tutorial_state", 0),
+          (call_script, "script_save_cam_first_person_mode"),
+          (mission_cam_set_mode, 1, 0, 0),
+          (set_camera_in_first_person, 0),
+          (init_position, pos10),
+          (entry_point_get_position, pos10, 45),
+          (mission_cam_set_position, pos10),
+          (val_add, "$tutorial_state", 1),
+      (try_end),
+    ]),
+    (ti_before_mission_start, 0, 0,[],[
+      (assign, "$tutorial_state", 0),
+      (scene_set_day_time, 12),
+      (set_global_cloud_amount, 10),
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+    ]),
+    (2, 0, 0, [(call_script, "script_center_ambiance_sounds")],[]),
+    (ti_tab_pressed, 0, 0, [],[
+      (stop_all_sounds, 1),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+      (mission_disable_talk),
+      (finish_mission, 4),
+    ]),
+]),
 ("visit_temple",0,-1,
   "plundering a settlement",[
     (0,mtef_visitor_source,af_override_horse,0,1,[]),
@@ -14521,38 +14676,32 @@ mission_templates = [
   [
     can_spawn_commoners,
     common_inventory_not_available,
-    (0, 0, 0, [],[
-      (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
-      (mission_enable_talk),
-      (try_for_agents, ":agent"),
-          (agent_set_no_dynamics, ":agent"),
-          (agent_get_troop_id, ":troop", ":agent"),
-          (try_begin),
-            (eq, ":troop", "trp_roman_priest_female"),
-            (agent_set_stand_animation, ":agent", "anim_wedding_guest_woman"),
-          (else_try),
-            (eq, ":troop", "trp_roman_priest"),
-            (agent_set_stand_animation, ":agent", "anim_wedding_guest_notr"),
-          (try_end),
-      (try_end),
-    ]),
-
     (ti_on_agent_spawn,1,0, [],[
       (try_for_agents, ":agent"),
         (agent_is_alive, ":agent"),
         (agent_is_human, ":agent"),
         (agent_get_troop_id, ":troop", ":agent"),
-          (try_begin),
-            (eq, ":troop", "trp_guest"),
-            (agent_set_stand_animation, ":agent", "anim_wedding_guest"),
-            (agent_set_animation, ":agent", "anim_wedding_guest"),
-            (store_random_in_range,":r",0,100),
-          (else_try),
-            (eq, ":troop", "trp_guest_female"),
-            (agent_set_stand_animation, ":agent", "anim_wedding_guest_woman"),
-            (agent_set_animation, ":agent", "anim_wedding_guest_woman"),
-            (store_random_in_range,":r",0,100),
-          (try_end),
+        (try_begin),
+          (eq, ":troop", "trp_guest"),
+          (agent_set_stand_animation, ":agent", "anim_wedding_guest"),
+          (agent_set_animation, ":agent", "anim_wedding_guest"),
+          (store_random_in_range,":r",0,100),
+        (else_try),
+          (eq, ":troop", "trp_guest_female"),
+          (agent_set_stand_animation, ":agent", "anim_wedding_guest_woman"),
+          (agent_set_animation, ":agent", "anim_wedding_guest_woman"),
+          (store_random_in_range,":r",0,100),
+        (else_try),
+          (eq, ":troop", "trp_roman_priest_female"),
+          (agent_set_stand_animation, ":agent", "anim_wedding_guest_woman"),
+          (agent_set_animation, ":agent", "anim_wedding_guest_woman"),
+          (store_random_in_range,":r",0,100),
+        (else_try),
+          (eq, ":troop", "trp_roman_priest"),
+          (agent_set_stand_animation, ":agent", "anim_wedding_guest_notr"),
+          (agent_set_animation, ":agent", "anim_wedding_guest_notr"),
+          (store_random_in_range,":r",0,100),
+        (try_end),
         (agent_set_animation_progress,":agent",":r"),
       (try_end),
     ]),
@@ -14593,7 +14742,9 @@ mission_templates = [
 
     (ti_tab_pressed, 0, 0, [],[
       (stop_all_sounds, 1),
-      (finish_mission,0)
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+      (mission_disable_talk),
+      (finish_mission, 3),
     ]),
 ]),
 
@@ -14972,7 +15123,9 @@ mission_templates = [
 
     (ti_tab_pressed, 0, 0, [],[
       (stop_all_sounds, 1),
-      (finish_mission,0),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+      (mission_disable_talk),
+      (finish_mission, 4),
     ]),
 ]),
 
@@ -20140,16 +20293,14 @@ mission_templates = [
         (set_trigger_result, 0)
     ]),
 
-    (ti_before_mission_start, 0, 0, [],
-    [
+    (ti_before_mission_start, 0, 0, [],[
       (scene_set_day_time, 10),
       (set_global_cloud_amount, 25),
       (assign, "$tutorial_state", 0),
     ]),
 
 
-    (0,0,ti_once,[],
-    [
+    (0,0,ti_once,[],[
       (show_object_details_overlay, 0),
       (call_script, "script_music_set_situation_with_culture", mtf_sit_travel),
       (get_player_agent_no, ":player"),
@@ -20157,8 +20308,7 @@ mission_templates = [
       (agent_set_no_death_knock_down_only, ":player", 1),
     ]),
 
-    (0,0,0,[],
-    [
+    (0,0,0,[],[
         (store_mission_timer_a, ":cur_time"),
         (set_fixed_point_multiplier, 100),
         (try_begin),
@@ -20613,12 +20763,9 @@ mission_templates = [
         0x000000),
     ]),
 
+    deactivate_player_agent,
 
     (0,0,ti_once,[],[
-        (get_player_agent_no, ":player"),
-        (call_script, "script_advanced_agent_set_speed_modifier", ":player", 0),
-        (agent_set_visibility, ":player", 0),
-
         (set_fixed_point_multiplier, 100),
         (assign, ":counter", 0),
         (try_for_prop_instances, ":curr_instance", -1, somt_object),
@@ -30263,10 +30410,9 @@ mission_templates = [
         (position_move_x, pos1, -1000), #4x2.5m
         (position_move_y, pos1, -250), #next rank 2.5m behind
       (try_end),
-      (get_player_agent_no, ":player"),
-      (call_script, "script_advanced_agent_set_speed_modifier", ":player", 0),
-      (agent_set_visibility, ":player", 0),
     ]),
+
+    deactivate_player_agent,
 
     (0,0,0,[],[
       (store_mission_timer_a, ":cur_time"),
@@ -31836,6 +31982,7 @@ mission_templates = [
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 2),
           (get_player_agent_no, ":player"),
           (call_script, "script_advanced_agent_set_speed_modifier", ":player", 0),
+          (agent_set_no_death_knock_down_only, ":player", 1),
       (try_end),
 
       (try_begin),
@@ -32165,13 +32312,7 @@ mission_templates = [
       (show_object_details_overlay, 0),
     ]),
 
-    (0, 0, ti_once,
-    [],[
-      (get_player_agent_no, ":player"),
-      (agent_set_speed_modifier,":player", 0),
-      (agent_set_horse_speed_factor, ":player", 0),
-      (agent_set_visibility, ":player", 0),
-    ]),
+    deactivate_player_agent,
 
     (0,0,0,[],[
       (store_mission_timer_a, ":cur_time"),
@@ -32413,19 +32554,7 @@ mission_templates = [
       (show_object_details_overlay, 0),
     ]),
 
-    (0, 0, ti_once,[],[
-      # (try_begin),
-      #     (store_current_scene, ":scene"),
-      #     (eq, ":scene", "scn_scene_camp_desert"),
-      #     (play_track, "track_cutscene_2_track",2),
-      # (else_try),
-      #     (eq, ":scene", "scn_cutscene_parthia"),
-      #     (play_track, "track_cutscene_3_track",2),
-      # (try_end),
-      (get_player_agent_no, ":player"),
-      (call_script, "script_advanced_agent_set_speed_modifier", ":player", 0),
-      (agent_set_visibility, ":player", 0),
-    ]),
+    deactivate_player_agent,
 
     (0,0,0,[],[
       (store_mission_timer_a, ":cur_time"),
@@ -32519,19 +32648,7 @@ mission_templates = [
       (show_object_details_overlay, 0),
     ]),
 
-    (0, 0, ti_once,[],[
-      # (try_begin),
-      #     (store_current_scene, ":scene"),
-      #     (eq, ":scene", "scn_scene_camp_desert"),
-      #     (play_track, "track_cutscene_2_track",2),
-      # (else_try),
-      #     (eq, ":scene", "scn_cutscene_parthia"),
-      #     (play_track, "track_cutscene_3_track",2),
-      # (try_end),
-      (get_player_agent_no, ":player"),
-      (call_script, "script_advanced_agent_set_speed_modifier", ":player", 0),
-      (agent_set_visibility, ":player", 0),
-    ]),
+    deactivate_player_agent,
 
     (0,0,0,[],[
       (store_mission_timer_a, ":cur_time"),
