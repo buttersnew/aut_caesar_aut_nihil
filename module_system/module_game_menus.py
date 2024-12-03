@@ -46288,7 +46288,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_jerusalem_tempel")
   ],[
   ("event04",[],"Continue...",[
-    (troop_set_slot, "trp_player", slot_troop_religion, worships_yhwhe),
+    (call_script, "script_player_change_religion", worships_yhwhe),
     (rest_for_hours, 24, 8, 0),
     (change_screen_map),
   ]),
