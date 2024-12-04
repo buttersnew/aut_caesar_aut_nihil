@@ -58766,7 +58766,7 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 ]),
 
 ("wlodowiecus_adventure_1_3_continue_4",mnf_scale_picture,
-  "After bidding farewell to Hadrianus' cousin, you and your companions a leave Alwisus' village and continue your trek towards the land of the Balthae. Truth be told, you only heard mythical tales about those distant lands, where monsters roam the swamps and forests, hopefully they are just tales told to scare children.",
+  "After bidding farewell to Hadrianus' cousin, you and your companions leave Alwisus' village and continue your trek towards the land of the Balthae. Truth be told, you only heard mythical tales about those distant lands, where monsters roam the swamps and forests, hopefully they are just tales told to scare children.",
   "none", [
     (set_background_mesh, "mesh_pic_deserters"),
   ],[

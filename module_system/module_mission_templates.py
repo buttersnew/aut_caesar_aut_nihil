@@ -3996,6 +3996,7 @@ morale_triggers = [
         (agent_is_human, ":agent_no"),
         (agent_is_alive, ":agent_no"),
         (agent_is_active, ":agent_no"),
+        (agent_is_ally, ":agent_no"),
         (agent_get_troop_id, ":id", ":agent_no"),
         (try_begin),
             (this_or_next|eq, ":id", "trp_custom_cornicen"),
@@ -4005,7 +4006,6 @@ morale_triggers = [
             (else_try),
                 (agent_equip_item, ":agent_no", "itm_f_cornu"),
             (try_end),
-
             (agent_set_wielded_item, ":agent_no", "itm_f_cornu"),
             (agent_set_animation, ":agent_no", "anim_cornu_play", 1),
             (agent_play_sound, ":agent_no", "snd_cornu"),
@@ -7217,7 +7217,7 @@ mission_templates = [
     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
     (59,mtef_visitor_source,af_override_horse,0,1,[]),
     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms + global_common_triggers +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -7274,33 +7274,6 @@ mission_templates = [
           (agent_is_human, ":agent_no"),
           (agent_is_alive, ":agent_no"),
           (call_script, "script_init_town_agent", ":agent_no"),
-      (try_end),
-    ]),
-
-    (ti_on_agent_spawn, 0, 0, [],[
-      (store_trigger_param_1, ":agent_no"),
-      (get_player_agent_no, ":player_agent"),
-      (agent_get_team, ":player_team", ":player_agent"),
-      (try_begin),
-        (neq, ":player_agent", ":agent_no"),
-        (agent_set_team, ":agent_no", 7),
-      (try_end),
-
-      (try_begin),
-        (this_or_next|eq, "$talk_context", tc_escape),
-        (eq, "$talk_context", tc_prison_break),
-        (agent_get_troop_id, ":troop_no", ":agent_no"),
-        (troop_get_slot, ":will_join_prison_break", ":troop_no", slot_troop_will_join_prison_break),
-        (eq, ":will_join_prison_break", 1),
-        (agent_set_team, ":agent_no", ":player_team"),
-        (agent_ai_set_aggressiveness, ":agent_no", 5),
-        (troop_set_slot, ":troop_no", slot_troop_will_join_prison_break, 0),
-        (agent_set_is_alarmed, ":agent_no", 1),
-        (try_begin),
-          (troop_slot_eq, ":troop_no", slot_troop_mission_participation, mp_prison_break_stand_back),
-          (agent_get_position, pos1, ":agent_no"),
-          (agent_set_scripted_destination, ":agent_no", pos1),
-        (try_end),
       (try_end),
     ]),
 
@@ -7394,7 +7367,25 @@ mission_templates = [
       (call_script, "script_neutral_behavior_in_fight"),
       (mission_disable_talk),
     ]),
-
+    (ti_on_agent_spawn, 0, 0, [
+      (this_or_next|eq, "$talk_context", tc_escape),
+      (eq, "$talk_context", tc_prison_break),
+    ],[
+      (store_trigger_param_1, ":agent_no"),
+      (agent_get_troop_id, ":troop_no", ":agent_no"),
+      (troop_get_slot, ":will_join_prison_break", ":troop_no", slot_troop_will_join_prison_break),
+      (eq, ":will_join_prison_break", 1),
+      (display_message, "@Check 1"),
+      (agent_ai_set_aggressiveness, ":agent_no", 5),
+      (troop_set_slot, ":troop_no", slot_troop_will_join_prison_break, 0),
+      (agent_set_is_alarmed, ":agent_no", 1),
+      (agent_set_team, ":agent_no", 0),
+      (try_begin),
+        (troop_slot_eq, ":troop_no", slot_troop_mission_participation, mp_prison_break_stand_back),
+        (agent_get_position, pos1, ":agent_no"),
+        (agent_set_scripted_destination, ":agent_no", pos1),
+      (try_end),
+    ]),
 	  #The game begins with the town alerted
     (1, 0, ti_once,[
       #If I set this to 1, 0, ti_once, then the prisoner spawns twice
@@ -7403,8 +7394,7 @@ mission_templates = [
       (get_player_agent_no, ":player_agent"),
       (assign, reg6, ":player_agent"),
       (call_script, "script_activate_town_guard"),
-
-      (get_player_agent_no, ":player_agent"),
+      (agent_get_team, ":player_team", ":player_agent"),
       (try_for_range, ":prisoner", active_npcs_begin, kingdom_ladies_end),
         (troop_slot_ge, ":prisoner", slot_troop_mission_participation, mp_prison_break_fight),
         (str_store_troop_name, s4, ":prisoner"),
@@ -7416,7 +7406,7 @@ mission_templates = [
         #team no and group no are used in multiplayer mode only. default team in entry is used in single player mode
         (store_current_scene, ":cur_scene"),
         (modify_visitors_at_site, ":cur_scene"),
-        (add_visitors_to_current_scene, 24, ":prisoner", 1, 0, 0),
+        (add_visitors_to_current_scene, 24, ":prisoner", 1, ":player_team", 0),
         (troop_set_slot, ":prisoner", slot_troop_will_join_prison_break, 1),
       (try_end),
 	  ]),
@@ -10827,33 +10817,6 @@ mission_templates = [
           (spawn_agent, ":troop_castle_guard"),
       (try_end),
     ]),
-    (ti_on_agent_spawn, 0, 0, [],[
-      (store_trigger_param_1, ":agent_no"),
-      (get_player_agent_no, ":player_agent"),
-      (agent_get_team, ":player_team", ":player_agent"),
-      (try_begin),
-        (neq, ":player_agent", ":agent_no"),
-        (agent_set_team, ":agent_no", 7),
-      (try_end),
-
-      (try_begin),
-        (this_or_next|eq, "$talk_context", tc_escape),
-        (eq, "$talk_context", tc_prison_break),
-        (agent_get_troop_id, ":troop_no", ":agent_no"),
-        (troop_get_slot, ":will_join_prison_break", ":troop_no", slot_troop_will_join_prison_break),
-        (eq, ":will_join_prison_break", 1),
-        (agent_set_team, ":agent_no", ":player_team"),
-        (agent_ai_set_aggressiveness, ":agent_no", 5),
-        (troop_set_slot, ":troop_no", slot_troop_will_join_prison_break, 0),
-        (agent_set_is_alarmed, ":agent_no", 1),
-        (try_begin),
-          (troop_slot_eq, ":troop_no", slot_troop_mission_participation, mp_prison_break_stand_back),
-          (agent_get_position, pos1, ":agent_no"),
-          (agent_set_scripted_destination, ":agent_no", pos1),
-        (try_end),
-      (try_end),
-    ]),
-
     (ti_on_agent_killed_or_wounded, 0, 0, [],[
       (store_trigger_param_1, ":dead_agent_no"),
       (store_trigger_param_2, ":killer_agent_no"),
@@ -10911,6 +10874,23 @@ mission_templates = [
     (3, 0, 0, [(call_script, "script_tick_town_walkers")],[]),
     (2, 0, 0, [(call_script, "script_center_ambiance_sounds")],[]),
 
+    (ti_on_agent_spawn, 0, 0, [
+      (this_or_next|eq, "$talk_context", tc_escape),
+      (eq, "$talk_context", tc_prison_break),
+    ],[
+      (store_trigger_param_1, ":agent_no"),
+      (agent_get_troop_id, ":troop_no", ":agent_no"),
+      (troop_get_slot, ":will_join_prison_break", ":troop_no", slot_troop_will_join_prison_break),
+      (eq, ":will_join_prison_break", 1),
+      (agent_ai_set_aggressiveness, ":agent_no", 5),
+      (troop_set_slot, ":troop_no", slot_troop_will_join_prison_break, 0),
+      (agent_set_is_alarmed, ":agent_no", 1),
+      (try_begin),
+        (troop_slot_eq, ":troop_no", slot_troop_mission_participation, mp_prison_break_stand_back),
+        (agent_get_position, pos1, ":agent_no"),
+        (agent_set_scripted_destination, ":agent_no", pos1),
+      (try_end),
+    ]),
     (1, 0, ti_once,[
       #If I set this to 1, 0, ti_once, then the prisoner spawns twice
       (eq, "$talk_context", tc_escape),
@@ -10923,6 +10903,7 @@ mission_templates = [
       (agent_get_position, pos4, ":player_agent"),
 
       (party_get_num_prisoner_stacks, ":cap", "$current_town"),
+      (agent_get_team, ":player_team", ":player_agent"),
       (try_for_range, ":stack", 0, ":cap"),
         (party_prisoner_stack_get_troop_id, ":prisoner", "$current_town", ":stack"),
         (troop_is_hero, ":prisoner"),
@@ -10937,7 +10918,7 @@ mission_templates = [
         (store_current_scene, ":cur_scene"),
         (modify_visitors_at_site, ":cur_scene"),
         # (assign, ":nearest_entry_no", 24),
-        (add_visitors_to_current_scene, 24, ":prisoner", 1, 0, 0),
+        (add_visitors_to_current_scene, 24, ":prisoner", 1, ":player_team", 0),
         (troop_set_slot, ":prisoner", slot_troop_will_join_prison_break, 1),
       (try_end),
 	  ]),
