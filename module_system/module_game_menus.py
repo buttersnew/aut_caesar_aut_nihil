@@ -1793,8 +1793,10 @@ game_menus = [
             (this_or_next|key_is_down, key_left_shift),
             (key_is_down, key_right_shift),
             (call_script, "script_change_player_honor", 50),
+            (call_script, "script_add_piety", 50, 1),
           (else_try),
             (call_script, "script_change_player_honor", 5),
+            (call_script, "script_add_piety", 5, 1),
           (try_end),
         ]
        ),
@@ -1805,8 +1807,10 @@ game_menus = [
             (this_or_next|key_is_down, key_left_shift),
             (key_is_down, key_right_shift),
             (call_script, "script_change_player_honor", -50),
+            (call_script, "script_add_piety", -50, 1),
           (else_try),
             (call_script, "script_change_player_honor", -5),
+            (call_script, "script_add_piety", -5, 1),
           (try_end),
         ]
        ),
