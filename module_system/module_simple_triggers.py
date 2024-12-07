@@ -8412,6 +8412,12 @@ simple_triggers = [
                 (this_or_next|eq, ":terrain", rt_snow_forest),
                 (eq, ":terrain", rt_forest),
                 (jump_to_menu,"mnu_event_witch"),
+            (else_try),
+                (ge, "$piety", 150),
+                (jump_to_menu,"mnu_event_good_omen"),
+            (else_try),
+                (le, "$piety", 75),
+                (jump_to_menu, "mnu_event_bad_omen"),
             (try_end),
         (else_try),##events if you are no one
             (store_random_in_range, ":rand", 0, 31),

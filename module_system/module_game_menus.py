@@ -56454,6 +56454,28 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
 ]),
+("event_good_omen",0,
+  "Good Omen!^^{s20}",
+  "none",[
+    (set_background_mesh, "mesh_pic_omen_bird"),
+    (store_random_in_range, ":string", "str_good_omen_1", "str_good_omen_end"),
+    (str_store_string, s20, ":string"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (call_script, "script_change_player_party_morale", 5),
+    ]),
+]),
+("event_bad_omen",0,
+  "Bad Omen!^^{s20}",
+  "none",[
+    (set_background_mesh, "mesh_pic_omen_bird"),
+    (store_random_in_range, ":string", "str_bad_omen_1", "str_bad_omen_end"),
+    (str_store_string, s20, ":string"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (call_script, "script_change_player_party_morale", -5),
+    ]),
+]),
 
 ("desperatius_villa",0,
   "You follow the description and finally find his villa near the marketplace. It is more a small house then a villa. "+
