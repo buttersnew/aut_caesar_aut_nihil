@@ -1002,4 +1002,5 @@ script_print_lord_intro_to_s11 = 1000
 script_freelancer_get_event = 1001
 script_freelancer_event_required_for_progess = 1002
 script_deity_compatibility_with_culture = 1003
-script_player_change_religion = 1004
+script_add_piety_culture_effect = 1004
+script_player_change_religion = 1005

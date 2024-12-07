@@ -1036,6 +1036,7 @@ spt_companion_raider	    = 19
 spt_prisoner_train          = 20
 spt_rebellion               = 21
 spt_paganholyside           = 22
+spt_minor_faction_raiders   = 23
 
 kingdom_party_types_begin = spt_kingdom_caravan
 kingdom_party_types_end = spt_kingdom_hero_party + 1
