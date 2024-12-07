@@ -8660,9 +8660,9 @@ Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.
 ("slot_center_shipyards", "number of shipyards"),
 ("slot_center_household_gardens", "number of household gardens"),
 
-("nero_rumor_1", "@Nero's court degeneracy knows no borders! They say, Poppea Sabina, that witch who was behind murder of Octavia mantains luxury bath, filled with milk from five houndreds of female donkeys, milked every day for her to bath in, in order to mantain her beauty. Such a wasteful witch she is, when we barely live from first to first to get food!"),
-("nero_rumor_2", "@You should take good care of your female slaves and female employees. Women are abducted at night here in Rome. Officially, it is a bandit gang responsible for this crime. But this is not true! The guards know about the abductions and don't do anything. It is said Nero and his friends are abducting the women and bring them to the palace."),
-("nero_rumor_end", "@Report this bug"),
+("nero_rumor_1", "Nero's court degeneracy knows no borders! They say, Poppea Sabina, that witch who was behind murder of Octavia mantains luxury bath, filled with milk from five houndreds of female donkeys, milked every day for her to bath in, in order to mantain her beauty. Such a wasteful witch she is, when we barely live from first to first to get food!"),
+("nero_rumor_2", "You should take good care of your female slaves and female employees. Women are abducted at night here in Rome. Officially, it is a bandit gang responsible for this crime. But this is not true! The guards know about the abductions and don't do anything. It is said Nero and his friends are abducting the women and bring them to the palace."),
+("nero_rumor_end", "Report this bug"),
 
 ("region_strings_begin","ZAMB LAND"),
 ("region_spain","Spain"),
