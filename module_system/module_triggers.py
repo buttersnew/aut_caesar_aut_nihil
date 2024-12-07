@@ -170,6 +170,7 @@ triggers = [
         (try_end),
     (try_end),
     (try_for_range, ":imperial_faction", npc_kingdoms_begin, npc_kingdoms_end),
+        (faction_slot_eq, ":imperial_faction", slot_faction_state, sfs_active),
         (neg|faction_slot_eq, ":imperial_faction", slot_faction_leader, "trp_player"),
         (faction_slot_eq, ":imperial_faction", slot_faction_government_type, gov_imperial),
         (call_script, "script_weekly_imperial_balance", ":imperial_faction"),

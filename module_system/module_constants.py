@@ -4229,3 +4229,5 @@ miracle_battle_morale   = 3
 
 # main story:
 antonia_relation_threshold = 50
+
+last_static_party = "p_vally_of_kings"
