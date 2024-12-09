@@ -56567,23 +56567,19 @@ It is said, that she lives now together with the goat.",
     ],
   ),
 
-  ("sad_final",0,
-    "Some days later you are informed about the following events:^^\
-Soon after you left the village, Tristitia, tormented with suffering, jumped from the cliff next to her house. Once Desperatius heard from her death, he followed her into the underworld.^^Three lives have been faded away and rest now in Erebos.",
-    "none", [
+("sad_final",0,
+  "Some days later you are informed about the following events:^^"
+  +"Soon after you left the village, Tristitia, tormented with suffering, jumped from the cliff next to her house. Once Desperatius heard from her death, he followed her into the underworld.^^Three lives have been faded away and rest now in Erebos.",
+  "none", [
     (set_background_mesh, "mesh_pic_woman"),
-
-    ],
-
-    [("option_1",[],"Continue...",
-        [
-    (add_xp_as_reward, 2500),
-    (call_script, "script_succeed_quest", "qst_amor_quest"),
-    (call_script, "script_end_quest", "qst_amor_quest"),
-    (change_screen_map),
-      ]),
-    ],
-  ),
+  ],[
+    ("option_1",[],"Continue...",[
+      (add_xp_as_reward, 2500),
+      (call_script, "script_succeed_quest", "qst_amor_quest"),
+      (call_script, "script_end_quest", "qst_amor_quest"),
+      (change_screen_map),
+    ]),
+]),
 
 ("travel_to_sagala",0,
   "You arrived at the foreign camp. It's leader, Phamanus, allows you to join the caravan.^^A lengthy journey begins. The caravan cross over mountains and through deserts you've never seen before, the travel continues through the eastern regions of the realm of the Parthians until you reach the river of Hindus. There, the caravan follows the river North until they reach a town called Taxilia from where they head East in direction of Sagala.",
@@ -56719,61 +56715,55 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     # ],
   # ),
 
-  ("escaped_sagala",0,
-    "The guards soon give up on chasing you and return to their town. You managed to escape from Sagala with Hadrianus and Wlodowiecus."
-    +"^^You wander through thick forests until you come across a cave next to a waterfall. You decide to set up camp there and try to find a way back west. But eventually,"
-    +" several days pass and you can't find a way out of the jungle. If no divine miracle happens, you will probably die out starvation. Out of despair Hadrianus starts to pray to Christus,"
-    +" while Wlodowiecus makes small sacrifices to his Germanic gods. You are also making prayers and sacrifices to the deities you believe in.^^"
-    +"One day, something rustles in the bushes outside the cave, fearing the wrath of Sagala's army or worse, a hungry beast, you and your friends prepare for a fight until a man dressed in Roman arms enters the cave, giving you all a sly smile.",
-    "none", [
-    (set_background_mesh, "mesh_pic_deserters"),
-    ],
+("escaped_sagala",0,
+  "The guards soon give up on chasing you and return to their town. You managed to escape from Sagala with Hadrianus and Wlodowiecus."
+  +"^^You wander through thick forests until you come across a cave next to a waterfall. You decide to set up camp there and try to find a way back west. But eventually,"
+  +" several days pass and you can't find a way out of the jungle. If no divine miracle happens, you will probably die out starvation. Out of despair Hadrianus starts to pray to Christus,"
+  +" while Wlodowiecus makes small sacrifices to his Germanic gods. You are also making prayers and sacrifices to the deities you believe in.^^"
+  +"One day, something rustles in the bushes outside the cave, fearing the wrath of Sagala's army or worse, a hungry beast, you and your friends prepare for a fight until a man dressed in Roman arms enters the cave, giving you all a sly smile.",
+  "none", [
+    (set_background_mesh, "mesh_pic_cave"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (add_xp_as_reward, 1500),
+      (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 5),
+      (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You found Wlodowiecus and escaped from Sagala.", 0),
+      (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Now you need to find the special marble and a way back.", 0),
+      (display_message, "str_quest_updated"),
+      (play_sound, "snd_quest_concluded"),
+      (assign, "$g_start_belligerent_drunk_fight", 0),
 
-    [("option_1",[],"Continue.",
-        [
-    (add_xp_as_reward, 1500),
-    (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 5),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You found Wlodowiecus and escaped from Sagala.", 0),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Now you need to find the special marble and a way back.", 0),
-    (display_message, "str_quest_updated"),
-    (play_sound, "snd_quest_concluded"),
-    (assign, "$g_start_belligerent_drunk_fight", 0),
+      (assign, "$talk_context", -1),
+      (set_jump_mission,"mt_jungle_lair_final"),
+      (modify_visitors_at_site,"scn_jungle_camp"),
+      (reset_visitors, 0),
+      (set_visitor, 1, "trp_player"),
+      (set_visitor, 2, "trp_hadrianus"),
+      (set_visitor, 3, "trp_wlodowiecus"),
+      (set_visitor, 4, "trp_mancinellus"),
+      (jump_to_scene,"scn_jungle_camp"),
+      (change_screen_mission),
+    ]),
+]),
 
-    (assign, "$talk_context", -1),
-    (set_jump_mission,"mt_jungle_lair_final"),
-    (modify_visitors_at_site,"scn_jungle_camp"),
-    (reset_visitors, 0),
-    (set_visitor, 1, "trp_player"),
-    (set_visitor, 2, "trp_hadrianus"),
-    (set_visitor, 3, "trp_wlodowiecus"),
-    (set_visitor, 4, "trp_mancinellus"),
-    (jump_to_scene,"scn_jungle_camp"),
-    (change_screen_mission),
-      ]),
-    ],
-  ),
+("jungle_final",0,
+  "Outside of the cave a group of Kushan soldiers is already waiting for you. You and your new friends then travel back to Sagala, now in Kushan control, where Mancinellus divides the spices equally between the four of you. Now with the Kushan caravan assembled, the group leaves Sagala and then the travel back to Ctesiphon begins.^^One again you travel through the jungles of India over the mountains and deserts of Persia until you finally reach Ctesiphon. You and your new friends decide to part ways head back to Rome on their own. It's time to return to Olivarius with the marble!",
+  "none", [
+    (set_background_mesh, "mesh_pic_cave"),
+  ],[
+    ("option_1",[],"Continue.",[
+      (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
+      (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You returned from the lands East of the river Indus.", 0),
 
-  ("jungle_final",0,
-    "Outside of the cave a group of Kushan soldiers is already waiting for you. You and your new friends then travel back to Sagala, now in Kushan control, where Mancinellus divides the spices equally between the four of you. Now with the Kushan caravan assembled, the group leaves Sagala and then the travel back to Ctesiphon begins.^^One again you travel through the jungles of India over the mountains and deserts of Persia until you finally reach Ctesiphon. You and your new friends decide to part ways head back to Rome on their own. It's time to return to Olivarius with the marble!",
-    "none", [
-    (set_background_mesh, "mesh_pic_deserters"),
-    ],
-
-    [("option_1",[],"Continue.",
-        [
-    (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You returned from the lands East of the river Indus.", 0),
-
-    (str_store_party_name, s22, "p_town_6"),
-    (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Travel to {s22} and meet Olivarius to claim your reward.", 0),
-    (display_message, "str_quest_updated"),
-    (play_sound, "snd_quest_concluded"),
-    (troop_add_items, "trp_player", "itm_spice", 10),
-    (assign, "$auto_menu", -1),
-    (jump_to_menu, "mnu_auto_return_map"),
-      ]),
-    ],
-  ),
+      (str_store_party_name, s22, "p_town_6"),
+      (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Travel to {s22} and meet Olivarius to claim your reward.", 0),
+      (display_message, "str_quest_updated"),
+      (play_sound, "snd_quest_concluded"),
+      (troop_add_items, "trp_player", "itm_spice", 10),
+      (assign, "$auto_menu", -1),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
 
 ("bacchus_feast",0,
   "You witness as extravagant dishes are brought onto the table: They consist of various exotic animal meats, fruits and spices from far-away lands. These delicious plates were unlike anything you've seen or eaten before. After having a lavish meal, copious amounts of wine is served for everyone in the party. Not even in Nero's palace would people eat and drink such delicacies as the ones being served right now. While you continued eating, you noticed that one of the plates on which the food was served is not an ordinary plate, but a shield. The shield looks strong and of high quality. Why would someone use such a beautiful shield as plate? You think about it for a few minutes but you are then distracted by a beautiful dancer who catches your attention. ^As the feast progresses, you get more and more drunk. Due to the darkness of the cave and your inebriated state, the people around you start to slowly blur. You can only see colorful silhouettes dancing, kissing and making love under the dim light of the torches. The music and the conversations become a gentle whisper in your ears. ^You are touched, but you don't know by whom. You touch, but you don't know who and what you actually touched. You feel things you never experienced before. ^You smell the smoke of the torches mixed with the intoxicating perfumes and the sweet sweat of the people. ^Slowly everything becomes black.^^Hours later, you awake with a terrible headache.",
@@ -56854,90 +56844,86 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
 ]),
 
 ("cythnus",0,
-    "You reach the island Cythnus. It is a small and rocky place, only a handful of your companions can follow you.",
-    "none", [
-    (set_background_mesh, "mesh_pic_deserters"),
-    ],
+  "You reach the island Cythnus. It is a small and rocky place, only a handful of your companions can follow you.",
+  "none", [
+    (set_background_mesh, "mesh_pic_ships"),
+  ],[
+    ("option_1",[
+      (check_quest_active, "qst_nero_reborn"),
+    ],"Go ashore.",[
+      #0 player
+      #1 enemies
+      #4-3-2 archers
+      #5 fake nero
+      #6-10 enemies
+      (modify_visitors_at_site, "scn_cythnus"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
 
-    [
+      (set_visitors, 1, "trp_looter", 10),
+      (set_visitors, 2, "trp_mercenary_crossbowman", 2),
+      (set_visitors, 3, "trp_looter", 2),
+      (set_visitors, 4, "trp_mercenary_crossbowman", 2),
+      (set_visitor, 5, "trp_fake_nero"),
+      (set_visitors, 6, "trp_irish_deserter", 7),
+      (set_visitors, 7, "trp_irish_deserter", 7),
+      (set_visitors, 8, "trp_irish_deserter", 7),
+      (set_visitors, 9, "trp_irish_deserter", 6),
+      (set_visitors, 10, "trp_irish_deserter", 6),
 
-    ("option_1",[(check_quest_active, "qst_nero_reborn"),],"Go ashore.",
-        [
-        #0 player
-        #1 enemies
-        #4-3-2 archers
-        #5 fake nero
-        #6-10 enemies
-        (modify_visitors_at_site, "scn_cythnus"),
-        (reset_visitors),
-        (set_visitor, 0, "trp_player"),
-
-        (set_visitors, 1, "trp_looter", 10),
-        (set_visitors, 2, "trp_mercenary_crossbowman", 2),
-        (set_visitors, 3, "trp_looter", 2),
-        (set_visitors, 4, "trp_mercenary_crossbowman", 2),
-        (set_visitor, 5, "trp_fake_nero"),
-        (set_visitors, 6, "trp_irish_deserter", 7),
-        (set_visitors, 7, "trp_irish_deserter", 7),
-        (set_visitors, 8, "trp_irish_deserter", 7),
-        (set_visitors, 9, "trp_irish_deserter", 6),
-        (set_visitors, 10, "trp_irish_deserter", 6),
-
-        (set_jump_mission, "mt_fake_nero_fight"),
-        (jump_to_scene, "scn_cythnus"),
-        (change_screen_mission),
-      ]),
-
-      ("option_1",[(neg|check_quest_active, "qst_nero_reborn"),
+      (set_jump_mission, "mt_fake_nero_fight"),
+      (jump_to_scene, "scn_cythnus"),
+      (change_screen_mission),
+    ]),
+    ("option_1",[
+      (neg|check_quest_active, "qst_nero_reborn"),
       (troop_slot_eq, "trp_global_variables", g_cythus_3, 0),
-      ],"Go ashore.",[
-        (modify_visitors_at_site, "scn_cythnus"),
-        (reset_visitors),
-        (set_visitor, 0, "trp_player"),
-        (assign, "$temp", 0),
-        # (set_visitors, 1, "trp_sea_raider", 10),
-        (set_visitors, 2, "trp_looter", 2),
-        (set_visitors, 3, "trp_sea_raider", 2),
-        (set_visitors, 3, "trp_bandit", 1),
-        (set_visitors, 4, "trp_mercenary_crossbowman", 2),
-        (set_visitor, 5, "trp_sussus_amogus"),
-        (set_visitors, 6, "trp_sea_raider", 2),
-        (set_visitors, 6, "trp_looter", 5),
-        (set_visitors, 7, "trp_sea_raider", 2),
-        (set_visitors, 7, "trp_looter", 5),
-        (set_visitors, 8, "trp_sea_raider", 2),
-        (set_visitors, 8, "trp_looter", 4),
-        (set_visitors, 9, "trp_looter", 10),
-        (set_visitors, 9, "trp_brigand", 1),
-        (set_visitors, 10, "trp_sea_raider", 2),
-        (set_visitors, 10, "trp_looter", 8),
+    ],"Go ashore.",[
+      (modify_visitors_at_site, "scn_cythnus"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+      (assign, "$temp", 0),
+      # (set_visitors, 1, "trp_sea_raider", 10),
+      (set_visitors, 2, "trp_looter", 2),
+      (set_visitors, 3, "trp_sea_raider", 2),
+      (set_visitors, 3, "trp_bandit", 1),
+      (set_visitors, 4, "trp_mercenary_crossbowman", 2),
+      (set_visitor, 5, "trp_sussus_amogus"),
+      (set_visitors, 6, "trp_sea_raider", 2),
+      (set_visitors, 6, "trp_looter", 5),
+      (set_visitors, 7, "trp_sea_raider", 2),
+      (set_visitors, 7, "trp_looter", 5),
+      (set_visitors, 8, "trp_sea_raider", 2),
+      (set_visitors, 8, "trp_looter", 4),
+      (set_visitors, 9, "trp_looter", 10),
+      (set_visitors, 9, "trp_brigand", 1),
+      (set_visitors, 10, "trp_sea_raider", 2),
+      (set_visitors, 10, "trp_looter", 8),
 
-        (set_jump_mission, "mt_island_cythnus"),
-        (jump_to_scene, "scn_cythnus"),
-        (change_screen_mission),
-      ]),
+      (set_jump_mission, "mt_island_cythnus"),
+      (jump_to_scene, "scn_cythnus"),
+      (change_screen_mission),
+    ]),
 
-    ("option_1",[(neg|check_quest_active, "qst_nero_reborn"),
+    ("option_1",[
+      (neg|check_quest_active, "qst_nero_reborn"),
       (troop_slot_eq, "trp_global_variables", g_cythus_3, 1),
-      ],"Go ashore.",
-        [
-        (set_jump_mission, "mt_explore_secret_place"),
-        (set_jump_entry, 0),
-        (jump_to_scene, "scn_cythnus"),
-        (change_screen_mission),
-      ]),
+    ],"Go ashore.",[
+      (set_jump_mission, "mt_explore_secret_place"),
+      (set_jump_entry, 0),
+      (jump_to_scene, "scn_cythnus"),
+      (change_screen_mission),
+    ]),
 
-    ("option_1",[],"Leave.",
-        [
-    (change_screen_map),
-      ]),
-    ],
-),
+    ("option_1",[],"Leave.",[
+      (change_screen_map),
+    ]),
+]),
 
 ("fake_nero_defeated",0,
   "You defeated the false Nero!^^You gain all the unlawfully taken items back. Among them is the decorated breastplate of Augustus and a decorated spatha. Fake-Nero probably found it while raiding his Mausoleum.",
   "none", [
-    (set_background_mesh, "mesh_pic_deserters"),
+    (set_background_mesh, "mesh_pic_seabattle"),
   ],[
     ("option_1",[],"Leave.",[
       (add_xp_as_reward, 1000),
