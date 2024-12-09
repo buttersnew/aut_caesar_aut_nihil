@@ -34041,6 +34041,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (ge, ":g", 1000000),
     ],"Give her a huge dowry of 1,000,000 denars.",[
       (add_xp_as_reward, 1000),
+      (call_script, "script_add_piety", 50, 1),
       (troop_remove_gold, "trp_player", 1000000),
       (call_script, "script_change_player_relation_with_troop", "$temp", 40),
       (call_script, "script_change_player_relation_with_center", "p_town_6", 25),
@@ -34055,6 +34056,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (ge, ":g", 500000),
     ],"Give her a dowry of 500,000 denars.",[
       (troop_remove_gold, "trp_player", 500000),
+      (call_script, "script_add_piety", 25, 1),
       (add_xp_as_reward, 500),
       (call_script, "script_change_player_relation_with_troop", "$temp", 20),
       (call_script, "script_change_player_relation_with_center", "p_town_6", 12),
@@ -34068,6 +34070,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 250000),
     ],"Give her a dowry of 250,000 denars.",[
+      (call_script, "script_add_piety", 15, 1),
       (troop_remove_gold, "trp_player", 250000),
       (add_xp_as_reward, 250),
       (call_script, "script_change_player_relation_with_troop", "$temp", 5),
@@ -34079,6 +34082,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
     ("choice_04",[],"Give her no dowry.",[
+      (call_script, "script_add_piety", -20, 1),
       (call_script, "script_change_player_relation_with_center", "p_town_6", -5),
       (call_script, "script_change_player_honor", -10),
       (call_script, "script_change_troop_renown", "trp_player", -25),
@@ -34366,7 +34370,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 
 ("event_temple",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Temple your honor^^The people of {s25} have sent an envoy requesting permission to build a temple in your honor."
+  "Temple of your honor^^The people of {s25} have sent an envoy requesting permission to build a temple in your honor."
   +" You may choose to either accept or decline this request. If you accept, there will be no additional costs for you, as they will use their own wealth to fund the construction.",
   "none",[
     (set_background_mesh, "mesh_pic_senatus"),
@@ -35600,7 +35604,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (change_screen_map),
     ]),
 ]),
-
 ("temple_jerusalem",0,
   "You see the Great Temple, the Jews call it Beit HaMikdash HaSheni. It is their second temple. The first was destroyed centuries ago. ^^"
   +" Walking around you see many people who seek truth and security through religion in times of need.^"
@@ -35613,9 +35616,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (neq, "$g_campaign_type", g_campaign_story_rome),
       (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_yhwhe),
       (eq, "$templelooted", 0),
-	  ],
-	  "Loot the temple",
-	  [
+	  ],"Loot the temple",[
       (try_begin),
           (call_script, "script_party_count_members_with_full_health", "p_main_party"),
           (gt, reg0, 50), #it is very dangerous you need enough men to protect yourself from angry jews
@@ -35624,7 +35625,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (display_message, "@You need at least 50 men, or it is too dangerous."),
       (try_end),
     ]),
-
     ("answere_steal",[
       (neq, "$g_campaign_type", g_campaign_story_rome),
       (troop_slot_eq, "trp_player", slot_troop_religion, worships_yhwhe),
@@ -35632,31 +35632,23 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
       (faction_get_slot, ":king", "$players_kingdom", slot_faction_leader),
       (neg|is_between, ":king", active_npcs_begin, active_npcs_end),
-	  ],
-	  "Incite a Revolt",
-	  [
-    (try_begin),
-        (troop_slot_ge, "trp_player", slot_troop_renown, 200),
-        (store_party_size_wo_prisoners, reg59, "p_main_party"),
-        (ge, reg59, 100),
-        (jump_to_menu, "mnu_revolt_start"),
-    (else_try),
-        (display_message, "@Improve your renown (200 is needed) and recruit more men (100 are needed)."),
-    (try_end),
-
-      ]),
-
+	  ],"Incite a Revolt",[
+      (try_begin),
+          (troop_slot_ge, "trp_player", slot_troop_renown, 200),
+          (store_party_size_wo_prisoners, reg59, "p_main_party"),
+          (ge, reg59, 100),
+          (jump_to_menu, "mnu_revolt_start"),
+      (else_try),
+          (display_message, "@Improve your renown (200 is needed) and recruit more men (100 are needed)."),
+      (try_end),
+    ]),
     ("answere_steal",[
       (neq, "$g_campaign_type", g_campaign_story_rome),
       (troop_slot_eq, "trp_player", slot_troop_religion, worships_yhwhe),
-	  ],
-	  "Fund rebels",
-	  [
+	  ],"Fund rebels",[
 		  (jump_to_menu, "mnu_found_rebells"),
     ]),
-    ("answere_1",[],
-	  "Walk around",
-	  [
+    ("answere_1",[],"Walk around",[
       (modify_visitors_at_site,"scn_temple_jerusalem"),
       (reset_visitors),
       (set_visitor,1,"trp_player"), #player
@@ -35678,61 +35670,40 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (jump_to_scene, "scn_temple_jerusalem"),
       (change_screen_mission),
     ]),
-
-    ("answere_2",[],
-	  "Go back",
-	  [
+    ("answere_2",[],"Go back",[
 	    (jump_to_menu, "mnu_town"),
     ]),
-	],
-),
-
+]),
 ("loot_temple",0,
   "You and your men gather before the temple. Are you sure you want to loot the great temple, center of the jewish faith. Be aware of the consequences!",
-  "none",
-  [
+  "none",[
 	  (set_background_mesh, "mesh_pic_jerusalem_tempel"),
-  ],
-  [
-  ("answere_1",[],
-	  "It is a stupid idea.",
-	  [
+  ],[
+    ("answere_1",[],"It is a stupid idea.",[
 	    (jump_to_menu, "mnu_town"),
     ]),
-  ("answere_2",[],
-	  "Yes. I will loot it! HAHAA!!",
-	  [
+    ("answere_2",[],"Yes. I will loot it! HAHAA!!",[
 	    (jump_to_menu, "mnu_temple_looted"),
     ]),
-	],
-),
-
+]),
 ("temple_looted",0,
-    "You bring some carts before the temple and order some men to guard them. Then you give order to the rest of your men to follow you. The plan is to go into the temple, kill all priests, bring the loot out of the temple to the carts and then leave Hierosolyma as fast as possible!",
-    "none",
-    [
-	(set_background_mesh, "mesh_pic_jerusalem_tempel"),
-      ],
-    [
-      ("answere_1",[],
-	  "Proceed as planned.",
-	  [
-		(jump_to_menu, "mnu_loot_final"),
-      ]),
-      ("answere_1",[],
-	  "No stop it, It is too dangerous.",
-	  [
-		(jump_to_menu, "mnu_town"),
-      ]),
-	],
-  ),
-
+  "You bring some carts before the temple and order some men to guard them. Then you give order to the rest of your men to follow you. The plan is to go into the temple, kill all priests, bring the loot out of the temple to the carts and then leave Hierosolyma as fast as possible!",
+  "none",[
+	  (set_background_mesh, "mesh_pic_jerusalem_tempel"),
+  ],[
+    ("answere_1",[],"Proceed as planned.",[
+		  (jump_to_menu, "mnu_loot_final"),
+    ]),
+    ("answere_1",[],"No stop it, It is too dangerous.",[
+		  (jump_to_menu, "mnu_town"),
+    ]),
+]),
 ("loot_final",0,
-  "Your men wear pligrim cloths over their armors to get not suspicious. Then you pass through the streams of pilgrim into the forecourt. Then you and your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out.^\
-	You order that some of your men guard the entrance into the inner court. You and your other men storm into the inner court and kill every priests you see. Then your men break up the door into the sanctum and start looting every thing.^^\
-	You and your men carry all the treasuries out of the temple to the carts.^^\
-	After half an hour one of your men reports that there is nothing left to loot. You order that the men with the carts shall leave Hierosolyma dressed as pilgrims. As the carts leave the temple hill over the main entrance, you see an angry mob, shouting insults, moving in your direction.^\
-	Now you must fight or you will die!",
+  "Your men wear pligrim cloths over their armors to get not suspicious. Then you pass through the streams of pilgrim into the forecourt. Then you and your men break up the door into the inner court. The other pilgrims start to scream and chaos breaks out.^"
+  +" You order that some of your men guard the entrance into the inner court. You and your other men storm into the inner court and kill every priests you see. Then your men break up the door into the sanctum and start looting every thing.^^"
+  +" You and your men carry all the treasuries out of the temple to the carts.^^"
+  +" After half an hour one of your men reports that there is nothing left to loot. You order that the men with the carts shall leave Hierosolyma dressed as pilgrims. As the carts leave the temple hill over the main entrance, you see an angry mob, shouting insults, moving in your direction.^"
+  +" Now you must fight or you will die!",
   "none",[
 	  (set_background_mesh, "mesh_pic_jerusalem_tempel"),
   ],[
@@ -35753,7 +35724,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (party_clear, "p_total_enemy_casualties"),
   ]),
 ]),
-
 ("great_jewish_reolt_start",0,
   "After you defeated the mob you quickly leave the temple hill. You must get out of Hierosolyma, as fast as possible. {s20}",
   "none",[
@@ -39052,8 +39022,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
        ),
 ]),
 
-     ("pythia_2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "The goat is sacrificed and burned on an altar. Then Lykos says:^^ \
+("pythia_2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "The goat is sacrificed and burned on an altar. Then Lykos says:^^ \
 	'Servant of the Delphian Apollo^\
 	Go to the Castallian Spring^\
  Wash in its silvery eddies,^\
@@ -39064,42 +39034,30 @@ goods, and books will never be sold. ^^You can change some settings here freely.
  Pure from all private fault'^^\
  Now you must wait several hours, while the Pythia baths in the Castalian Spring and drinks the holy waters of the Cassotis. ^^\
 After some time, Lykos comes and informs you that the Pythia can now be consulted.",
-    "none",
-    [(set_background_mesh, "mesh_pic_pythia"),
-
-	],
-    [
-
-     ("answere_1",[],"Visit the Pythia.",
-       [
-
-	  (modify_visitors_at_site, "scn_pythia"),
-	  (reset_visitors),
-	  (set_visitor, 1, "trp_pythia"),
-	  (set_jump_entry, 0),
-	   (set_jump_mission, "mt_visit_pythia"),
-	   (jump_to_scene, "scn_pythia"),
-	    (change_screen_mission),
-        ]
-       ),
-    ]
- ),
-     ("pythia_leave",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You wake up in a flower meadow, not fare away from Delphi. You are naked and your clothes are scattered around you. You can't remember what has happend. You have a unbearable headache. \
- You should visit her again, to find out what has happened.",
-    "none",
-    [(set_background_mesh, "mesh_pic_landschaft"),
-	],
-    [
-
-     ("answere_1",[],"Damn it.",
-       [
-	    (troop_set_slot, "trp_pythia", slot_lady_last_suitor, 1),
-	    (change_screen_map),
-        ]
-       ),
-    ]
- ),
+  "none",[
+    (set_background_mesh, "mesh_pic_pythia"),
+	],[
+    ("answere_1",[],"Visit the Pythia.",[
+      (modify_visitors_at_site, "scn_pythia"),
+      (reset_visitors),
+      (set_visitor, 1, "trp_pythia"),
+      (set_jump_entry, 0),
+      (set_jump_mission, "mt_visit_pythia"),
+      (jump_to_scene, "scn_pythia"),
+      (change_screen_mission),
+    ]),
+]),
+("pythia_leave",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You wake up in a flower meadow, not fare away from Delphi. You are naked and your clothes are scattered around you. You can't remember what has happend. You have a unbearable headache."
+  +" You should visit her again, to find out what has happened.",
+  "none",[
+    (set_background_mesh, "mesh_pic_landschaft"),
+	],[
+    ("answere_1",[],"Damn it.",[
+      (troop_set_slot, "trp_pythia", slot_lady_last_suitor, 1),
+      (change_screen_map),
+    ]),
+]),
 
 ("hire_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Who will be successor?^^{s20}",
@@ -39123,32 +39081,32 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-  ("refugee_recruit_troops12",0,
-    "There are some widows and orphans interested in joining and trying to find a new life.",
-    "none", [ (set_background_mesh, "mesh_pic_payment"),
+("refugee_recruit_troops12",0,
+  "There are some widows and orphans interested in joining and trying to find a new life.",
+  "none", [
+    (set_background_mesh, "mesh_pic_payment"),
     (try_begin),
         (neg|troops_can_join, 4),
         (jump_to_menu, "mnu_refugee_recruit_troops22"),
     (try_end),
-    ],
-    [("acept_themmo",[(store_troop_gold, ":gold", "trp_player"),
-          (ge, ":gold", 20),], "Hire them. (20 denars)",
-        [
-          (party_add_members,"p_main_party","trp_refugee",2),
-          (party_add_members,"p_main_party","trp_peasant_woman",2),
-          (troop_remove_gold,"trp_player", 20),
-          #(assign, "$reclutar_puede_refuges", 1),
-          (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
-          (change_screen_map),
-      ]),
-      ("back_to_town_menumo",[],"Head back.",
-        [
-          #(assign, "$reclutar_puede_refuges", 1),
-          (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
-          (change_screen_map),
-      ]),
-    ]
-  ),
+  ],[
+    ("acept_themmo",[
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge, ":gold", 20),
+    ], "Hire them. (20 denars)",[
+      (party_add_members,"p_main_party","trp_refugee",2),
+      (party_add_members,"p_main_party","trp_peasant_woman",2),
+      (troop_remove_gold,"trp_player", 20),
+      #(assign, "$reclutar_puede_refuges", 1),
+      (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
+      (change_screen_map),
+    ]),
+    ("back_to_town_menumo",[],"Head back.",[
+      #(assign, "$reclutar_puede_refuges", 1),
+      (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
+      (change_screen_map),
+    ]),
+]),
 
   ("refugee_recruit_troops22",0,
     "Nobody wants to join you.",
@@ -39782,6 +39740,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_string, s33, ":s"),
     ],"Order to build a large temple for {s33} (cost: 100,000 denars)",[
       (add_xp_as_reward, 100),
+      (call_script, "script_add_piety", 20, 1),
       (call_script, "script_change_player_relation_with_center", "p_castle_23", 50),
       (call_script, "script_change_troop_renown", "trp_player", 70),
       (call_script, "script_change_player_honor", 15),
@@ -39799,6 +39758,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_string, s33, ":s"),
     ],"Build a small shrine for {s33} (cost: 20,000 denars)",[
       (add_xp_as_reward, 100),
+      (call_script, "script_add_piety", 10, 1),
       (call_script, "script_change_player_relation_with_center", "p_castle_23", 10),
       (call_script, "script_change_troop_renown", "trp_player", 15),
       (call_script, "script_change_player_honor", 4),
@@ -43977,6 +43937,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_player_relation_with_center", "$current_town", 10),
       (call_script, "script_change_center_prosperity", "$current_town", 10),
       (call_script, "script_change_troop_renown", "trp_player", 10),
+      (call_script, "script_add_piety", 5, 1),
       (call_script, "script_change_player_honor", 4),
       (str_clear,s1),
       (str_store_string,s1,"@You set an example, donating to the less fortunate and paying for temple repairs. The trend catches on among the community now flush with money and before long it is hard to find a destitute person anywhere in the city. People feel good about themselves and as the leader of this trend, your reputation is lifted sky-high."),
@@ -44106,6 +44067,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":g", 50000),
     ], "Donate 50,000 denars.", [
       (str_clear, s1),
+      (call_script, "script_add_piety", 10, 1),
       (call_script, "script_change_player_relation_with_center", "$current_town", 5),
       (troop_remove_gold, "trp_player", 50000),
       (str_store_string, s1, "@The priests are happy about your donation and spread word of your wisdom and wealth."),
@@ -44117,6 +44079,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":g", 25000),
     ], "Donate only 25,000 denars.", [
       (str_clear, s1),
+      (call_script, "script_add_piety", 5, 1),
       (call_script, "script_change_player_relation_with_center", "$current_town", 2),
       (troop_remove_gold, "trp_player", 25000),
       (str_store_string, s1, "@The priests are happy about your donation, although its less than the expected sum. They spread word of your wisdom and wealth."),
@@ -44126,6 +44089,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("option_3", [
     ], "Donate nothing.", [
       (str_clear, s1),
+      (call_script, "script_add_piety", -5, 1),
       (call_script, "script_change_player_relation_with_center", "$current_town", -5),
       (str_store_string, s1, "@The priests are angry and spread word about your greed."),
       (display_message, "@{s1}"),
@@ -46878,6 +46842,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (store_troop_gold,"$temp4", "trp_player"),
   ],[
     ("choice_1",[(ge, "$temp4", 75000),],"Support the building project with 75,000 denars!",[
+      (call_script, "script_add_piety", 15, 1),
       (troop_remove_gold, "trp_player", 75000),
       (str_store_string, s44, "@The people hear about your generosity and praise your name."),
       (call_script, "script_change_player_relation_with_center", "$current_town", 5),
@@ -46886,6 +46851,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_event_senate_end"),
     ]),
     ("choice_2",[(ge, "$temp4", 50000),],"Support the building project with 50,000 denars.",[
+      (call_script, "script_add_piety", 10, 1),
       (troop_remove_gold, "trp_player", 50000),
       (str_store_string, s44, "@The people hear about your generosity and praise your name."),
       (call_script, "script_change_player_relation_with_center", "$current_town", 3),
@@ -46894,6 +46860,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_event_senate_end"),
     ]),
     ("choice_3",[(ge, "$temp4", 25000),],"Support the building project with 25,000 denars.",[
+      (call_script, "script_add_piety", 5, 1),
       (troop_remove_gold, "trp_player", 25000),
       (str_store_string, s44, "@The people hear about your generosity and praise your name."),
       (call_script, "script_change_player_relation_with_center", "$current_town", 1),
@@ -56831,23 +56798,29 @@ Soon after you left the village, Tristitia, tormented with suffering, jumped fro
     ]),
 ]),
 
-  ("bacchus_feast_rome",0,
-    "You try your best to search for Dionysus.^^Meanwhile the party continues: The streets of Rome are crowded by millions of people partying. You see people vomiting and urinating next to temples, statues and other public buildings with little regard for it's sanctity or importance. Soon enough, various members of the debauched horde start making love with each other. The streets are now a cacophony of decadence, with melodious moans mixed with delirious laughter. Some drunkards and other degenerates start forcing themselves onto animals. You witness a senator riding donkey upside down. You see various noble women getting groped and engaging in lascivious orgies in the backstreets like common whores. The most devious of people are using this opportunity and start raping and killing their enemies and looting their houses. The chaos is getting worse and worse by the minute. Luckily, some of the senators that dodn't participate in the orgy or are sober through it pass an emergency law that prohibits this party and gives the order to the Praetorian Guard to stop this chaos immediately. It takes four days for this mess to be cleared. Thousands of people have died either due to murder or alcohol abuse.^^However, you were not able to find Dionysus. It appears that he fled back to the cave.",
-    "none", [
+("bacchus_feast_rome",0,
+  "You try your best to search for Dionysus.^^Meanwhile the party continues: The streets of Rome are crowded by millions of people partying."
+  +" You see people vomiting and urinating next to temples, statues and other public buildings with little regard for it's sanctity or importance."
+  +" Soon enough, various members of the debauched horde start making love with each other. The streets are now a cacophony of decadence, with melodious moans mixed with delirious laughter."
+  +" Some drunkards and other degenerates start forcing themselves onto animals. You witness a senator riding donkey upside down."
+  +" You see various noble women getting groped and engaging in lascivious orgies in the backstreets like common whores."
+  +" The most devious of people are using this opportunity and start raping and killing their enemies and looting their houses. The chaos is getting worse and worse by the minute."
+  +" Luckily, some of the senators that dodn't participate in the orgy or are sober through it pass an emergency law that prohibits this party and gives the order to the Praetorian Guard to stop this chaos immediately."
+  +" It takes four days for this mess to be cleared. Thousands of people have died either due to murder or alcohol abuse.^^You were not able to find Dionysus. It appears that he fled back to the cave.",
+  "none", [
     (set_background_mesh, "mesh_pic_orgie"),
-    ],
-
-    [("option_1",[],"Continue.",
-        [
-    (quest_set_slot, "qst_bacchhus_quest", slot_quest_current_state, 3),
-    (add_quest_note_from_sreg, "qst_bacchhus_quest", 2, "@It seems Dionysius fooled you and fled back to the cave.", 0),
-    (add_quest_note_from_sreg, "qst_bacchhus_quest", 3, "@Return to the cave and confront him.", 0),
-    (display_message, "str_quest_updated"),
-    (play_sound, "snd_quest_concluded"),
-    (change_screen_map),
-      ]),
-    ],
-  ),
+  ],[
+    ("option_1",[],"Continue.",[
+      (call_script, "script_add_piety", -50, 1),
+      (display_message, "@The gods are displeased with your actions, their wrath stirring ominous signs across the heavens.", message_negative),
+      (quest_set_slot, "qst_bacchhus_quest", slot_quest_current_state, 3),
+      (add_quest_note_from_sreg, "qst_bacchhus_quest", 2, "@It seems Dionysius fooled you and fled back to the cave.", 0),
+      (add_quest_note_from_sreg, "qst_bacchhus_quest", 3, "@Return to the cave and confront him.", 0),
+      (display_message, "str_quest_updated"),
+      (play_sound, "snd_quest_concluded"),
+      (change_screen_map),
+    ]),
+]),
 
 ("event_petrus",0,
   "Quo vadis?^^You spot a small group of people gathered before the entrance of a small cave. Nothing special at all, nevertheless you decide to stop and approach them.",
