@@ -32865,6 +32865,39 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ##########################
 #    events for flavor   #
 ##########################
+("emperor_event_prophecy",0,
+  "The prophecy of Caeselius Bassus!^^A peculiar Roman eques by the name of Caeselius Bassus has arrived at the palace, bearing an extraordinary claim."
+  +" He insists that he has uncovered knowledge of an ancient treasure, buried deep beneath the ruins of Carthage. According to him, this treasure, left by Queen Dido herself, is so vast it could fund an empire's greatest ambitions."
+  +"^^The court is abuzz with speculation. Some scoff at his tale, calling it absurd; others whisper of the slim chance it could be true. The decision, as always, lies with you.",
+  "none",[
+    (set_background_mesh, "mesh_pic_omen_bird"),
+  ],[
+    ("continue",[
+    ],"Search for the treasure yourself! [Starts a quest]",[
+      (setup_quest_text,"qst_prophecy_of_caeselius_bassus"),
+      (str_store_party_name, s22, "p_town_28"),
+      (str_store_troop_name_link, s23, "trp_statthalter_new_12"),
+      (str_store_string, s2, "@Travel to {s22} and find {s23} in the ruins of old Punic Carthage. [Hint: Once in Carthage use 'Take an action' in town menu. In the submenu is an option to walk around the ruins of Punic Carthage.]"),
+      (call_script, "script_start_quest", "qst_prophecy_of_caeselius_bassus", "trp_fortuna"),
+      (quest_set_slot, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 1),
+
+      (str_store_string, s1, "@Caeselius Bassus requests that you meet him near the ruins of Carthage, where he claims he can guide you to the exact location of the treasure. He strongly advises bringing a contingent of slaves to assist with the extensive digging that will be required."),
+      (jump_to_menu, "mnu_event_juicio_end"),
+    ]),
+    ("continue",[
+    ],"Send an expedition! [costs: 50,000 denars]",[
+      (call_script, "script_change_player_relation_with_center", "p_town_6", -3),
+      (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 50000, "trp_player"),
+      (str_store_string, s1, "@An expedition is quickly assembled, and 50,000 denars are spent on provisions, laborers, and equipment to search the ruins of Carthage. Weeks pass, with growing anticipation. Finally, a message arrives: the treasure is nowhere to be found. Caeselius Bassus's prophecy was nothing more than an elaborate delusion.^^The failure stings, and whispers of your decision to indulge such folly circulate among the court. Bassus vanishes soon after, his reputation in ruins."),
+      (jump_to_menu, "mnu_event_juicio_end"),
+    ]),
+    ("continue",[
+    ],"What a nonsense!",[
+      (str_store_string, s1, "@You dismiss Caeselius Bassus with a wave of your hand, declaring his tale as nothing more than the ramblings of a deluded dreamer. Though some in your court chuckle at your wit, others look disappointed, as if wondering what might have been. Bassus leaves in shame, his eccentric prophecy quickly becoming the subject of jokes. Yet, a faint unease lingers—what if there had been a grain of truth in his wild story?"),
+      (jump_to_menu, "mnu_event_juicio_end"),
+    ]),
+]),
+
 ("emperor_event_grain_supply",0,
   "The Grain Ships Have Sunk!^^Several ships carrying grain bound for Rome have sunk, threatening famine in the city.^{s25}",
   "none",[
@@ -51929,6 +51962,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (call_script, "script_set_town_picture"),
   ],[
+    ("visit_lady",[
+      (eq, "$current_town", "p_town_28"),
+    ],"Visit the ruins of Ancient Punic Carthage.",[
+      (jump_to_scene, "scn_ruins_of_carthage"),
+      (change_screen_mission),
+    ]),
     ("visit_lady",[
       (eq, "$current_town", "p_town_20"),
       (check_quest_active, "qst_wlodowiecus_adventure_4"),

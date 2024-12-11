@@ -1622,3 +1622,6 @@ spr_roof_floor_marble_3 = 1620
 spr_lupanar = 1621
 spr_statue_potest = 1622
 spr_wall_painting_mithras = 1623
+spr_destroy_house_2_a = 1624
+spr_destroy_house_2_b = 1625
+spr_destroy_house_2_c = 1626

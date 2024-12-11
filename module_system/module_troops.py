@@ -3868,6 +3868,8 @@ knight_attrib_3,wp(190),knight_skills_3|knows_power_draw_4, 0x000000001c0c501062
 [itm_roman_legatus_helm_2,itm_roman_spatha,itm_horse_2,itm_musculata_legatus_10,itm_legio_armored_caligea,itm_officer_shield_2,itm_calceus_3,itm_roman_rich3],knight_attrib_4,wp(220),knight_skills_4, 0x000000000a0114c45b6ead5d3d9a449200000000001a52da0000000000000000, ],
 ["statthalter_new_11", "Fonteius Capito", "Fonteius Capito", tf_hero, 0, reserved,fac_kingdom_7,
 [itm_roman_legatus_helm,itm_roman_spatha,itm_horse_3,itm_musculata_legatus_1,itm_legio_armored_caligea,itm_officer_shield_2,itm_calceus_3,itm_roman_toga],knight_attrib_4,wp(220),knight_skills_4, 0x000000000a0114c45b6ead5d3d9a449200000000001a52da0000000000000000, ],
+["statthalter_new_12", "Caeselius Bassus", "Caeselius Bassus", tf_hero, 0, reserved,fac_kingdom_7,
+[itm_roman_legatus_helm_5,itm_roman_spatha,itm_horse_2,itm_musculata_legatus_7,itm_legio_armored_caligea,itm_officer_shield_3,itm_calceus_2,itm_roman_toga_2],knight_attrib_4,wp(220),knight_skills_4, 0x000000000a0114c45b6ead5d3d9a449200000000001a52da0000000000000000, ],
 
 ["aux_commander_new_1", "Marcus Ambivulus", "Marcus Ambivulus", tf_hero, 0, reserved,fac_kingdom_7,
 [itm_roman_legatus_helm_5,itm_roman_spatha,itm_horse_1,itm_musculata_legatus_2,itm_legio_armored_caligea,itm_officer_shield_2,itm_calceus_3,itm_roman_toga_2],knight_attrib_4,wp(220),knight_skills_4, 0x000000000a0114c45b6ead5d3d9a449200000000001a52da0000000000000000, ],
@@ -5037,6 +5039,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["bonus_chest_18","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_female_slave1,itm_female_slave2,itm_female_slave3,itm_female_slave4],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_19","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_xylospongium],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_20","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_book_poop],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_21","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 
 ["household_possessions","{!}household_possessions","{!}household_possessions",tf_hero|tf_inactive|tf_is_merchant, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 

@@ -3442,4 +3442,8 @@ scene_props = [
   ("lupanar", 0, "lupanar", "bo_lupanar", []),
   ("statue_potest", 0, "statue_potest", "bo_statue_potest", []),
   ("wall_painting_mithras", 0, "wall_painting_mithras", "bo_wall_painting_mithras", []),
+
+  ("destroy_house_2_a",0,"destroy_house_2_a","bo_destroy_house_2_a", []),
+  ("destroy_house_2_b",0,"destroy_house_2_b","bo_destroy_house_2_b", []),
+  ("destroy_house_2_c",0,"destroy_house_2_c","bo_destroy_house_2_c", []),
 ]
