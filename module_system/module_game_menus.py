@@ -52022,14 +52022,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_begin),
         (neg|is_currently_night),
         (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
-        (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 6),
-        (set_visitor, 3, "trp_slave"),
-        (set_visitor, 4, "trp_slave"),
-        (set_visitor, 5, "trp_slave"),
-        (set_visitor, 6, "trp_slave"),
-        (set_visitor, 7, "trp_slave"),
-        (set_visitor, 8, "trp_slave"),
-        (set_visitor, 9, "trp_slave"),
+        (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 7),
+        (set_visitor, 3, "trp_slave_mine"),
+        (set_visitor, 4, "trp_slave_mine"),
+        (set_visitor, 5, "trp_slave_mine"),
+        (set_visitor, 6, "trp_slave_mine"),
+        (set_visitor, 7, "trp_slave_mine"),
+        # (set_visitor, 8, "trp_slave"),
+        # (set_visitor, 9, "trp_slave"),
       (try_end),
       (set_jump_mission, "mt_explore_carthage"),
       (change_screen_mission),
@@ -61715,4 +61715,53 @@ It is said, that she lives now together with the goat.",
     ]),
 ]),
 
+("prophecy_final",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "As you stand there, inhaling the sweet, intoxicating scent of the underwear, something begins to change in the air. At first, it's subtle—a warm, almost pleasant sensation creeping over your skin. But as the minutes pass, the smell grows stronger, more overpowering, filling your lungs with each breath you take."
+  +"^^Bassus, too, seems entranced by the aroma. His eyes are wide, pupils dilated, as he waves his hands in front of his face, trying to push the scent away, but it's no use. He seems almost... lost in it now, his expression slack, his movements erratic. He calls for the slaves, urging them to come closer, but as they step forward, the haze of the fragrance deepens around them."
+  +"^^The slaves, too, begin to falter. At first, they stumble toward the smell with curiosity, but soon their faces grow pale, their bodies swaying, as if the air itself is clouding their minds. You can hear them muttering, almost incoherently, as the scent begins to drown out everything else.",
+  "none",[
+    (set_background_mesh, "mesh_pic_omen_bird"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (jump_to_menu, "mnu_prophecy_final_2"),
+    ]),
+]),
+
+("prophecy_final_2",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "The haze, once faint, now thickens, wrapping around all of you like a fog. The once-clear air is now dense, oppressive, and suffocating. Each breath becomes harder, your thoughts more muddled, as if the fragrance is weaving itself into your very soul, twisting your perception. You can barely see past the smoke-like fog anymore, and the world around you blurs."
+  +"^^Bassus suddenly begins to laugh, an eerie, unsettling sound. It's not the usual joyful laugh, but something manic, tinged with madness. 'It is... it is perfect!', he exclaims, but it's hard to tell if he's speaking to anyone in particular or just to himself. His hands claw at his face, as if trying to remove an invisible mask, but the scent only grows stronger."
+  +"^^The slaves, now clearly lost in their dazed stupor, collapse to their knees, mumbling prayers and incoherent words. One of them starts to giggle uncontrollably, their face twisted with delirium.",
+  "none",[
+    (set_background_mesh, "mesh_pic_omen_bird"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (jump_to_menu, "mnu_prophecy_final_3"),
+    ]),
+]),
+
+("prophecy_final_3",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "The smell... it's suffocating now. Your thoughts are clouded, your vision is narrowing. It's as if your mind is slipping away with each breath. What was once a simple scent has become something far more sinister, a force that bends your will and distorts your reality. All around you, the madness grows, pulling you deeper into its grasp."
+  +"^^Bassus's voice rings out again, louder this time, but it sounds distant, as though he's speaking from another world entirely. 'We're... we're chosen!', he screams. 'The gods have found us! We will be their priests, their servants...' His words are fractured, growing less coherent with each passing second."
+  +"^^And then, as if on cue, the haze reaches its peak, and everything fades to black. The world is swallowed by the overwhelming scent, and your mind finally surrenders to the madness.",
+  "none",[
+    (set_background_mesh, "mesh_pic_omen_bird"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (jump_to_menu, "mnu_prophecy_final_4"),
+    ]),
+]),
+
+("prophecy_final_4",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You slowly awaken, your mind groggy and clouded. The oppressive haze is gone, leaving a strange stillness in the air. As your vision clears, you see Bassus kneeling before you, looking pale and shaken, his eyes filled with guilt. He seems deeply embarrassed, repeatedly apologizing for the events that unfolded. His hands tremble as he gestures toward the underwear, now lying in the dirt."
+  +"^^Without further words, it's clear he regrets what happened and insists that you keep the underwear. Without any further words he leaves you.",
+  "none",[
+    (set_background_mesh, "mesh_pic_omen_bird"),
+  ],[
+    ("answere_1",[],"Continue...",[
+      (jump_to_menu, "mnu_auto_return_map"),
+      (add_xp_as_reward, 2500),
+      (call_script, "script_end_quest", "qst_prophecy_of_caeselius_bassus"),
+      (party_add_prisoners, "p_main_party", "trp_slave", 5),
+    ]),
+]),
 ]#end of file

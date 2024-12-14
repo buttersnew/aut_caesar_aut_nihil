@@ -1120,6 +1120,6 @@ scenes = [
 
   ("luparnium", sf_indoors, "lupanar", "bo_lupanar", (-100, -100), (100, 100), -100, "0",[], []),
 
-  ("ruins_of_carthage", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0x0000000040000532000741d00000705300003aad00000ac4", [], [], "outer_terrain_beach_desert_flat"),
+  ("ruins_of_carthage", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0x0000000040000532000741d00000705300003aad00000ac4", [], ["bonus_chest_21"], "outer_terrain_beach_desert_flat"),
 ]#end of file
 #

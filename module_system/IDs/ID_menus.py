@@ -1182,3 +1182,7 @@ mnu_werdheri_won = 1180
 mnu_triumph_awared_emperor = 1181
 mnu_triumph_awared_ai = 1182
 mnu_triumph_awared_player = 1183
+mnu_prophecy_final = 1184
+mnu_prophecy_final_2 = 1185
+mnu_prophecy_final_3 = 1186
+mnu_prophecy_final_4 = 1187

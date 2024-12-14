@@ -4874,6 +4874,7 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("the_other_matter_took_precedence", "The other matter took precedence."),
   ("i_cannot_leave_this_fortress_now_as_it_is_under_siege", "I cannot leave this fortress now, as it is under siege."),
   ("after_all_we_are_under_siege", "After all, we are under siege."),
+  ("prophecy_go_to_carthage", "I am heading to Carthago. We'll meet at the ancient Punic ruins to search for Dido's treasure."),
   ("we_are_not_strong_enough_to_face_the_enemy_out_in_the_open", "We are not strong enough to face the enemy out in the open."),
   ("i_should_probably_seek_shelter_behind_some_stout_walls", "I should probably seek shelter behind some stout walls."),
   ("enemies_are_reported_to_be_nearby_and_we_should_stand_ready_to_either_man_the_walls_or_sortie_out_to_do_battle", "Enemies are reported to be nearby, and we should stand ready to either man the walls or sortie out to do battle."),

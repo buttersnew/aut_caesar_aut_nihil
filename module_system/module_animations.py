@@ -2162,7 +2162,7 @@ animations = [
  #["order_charge", 0, 0, [1.0, "anim_human", 0, 1, 0]],
 # ["unused_human_anim_76", 0, 0, [1.0, "anim_human", 0, 1, 0]],
 # ["unused_human_anim_77", 0, 0, [1.0, "anim_human", 0, 1, 0]],
- ["mining", acf_enforce_all, amf_priority_die|amf_play,
+ ["mining", acf_enforce_all, amf_priority_fall_from_horse|amf_play,
    [2.0, "attacks_twohanded_overswing", 0, 73, arf_use_stand_progress|arf_cyclic, 0, (0, 0, 0), 0.25],
  ],
  ["cheer_loop", acf_enforce_all, amf_priority_die|amf_play,

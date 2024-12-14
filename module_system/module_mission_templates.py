@@ -31554,7 +31554,45 @@ mission_templates = [
     (11,mtef_visitor_source,af_override_horse,0,1,[]),
   ], p_wetter + storms + global_common_triggers +
   [
-    (1, 1, ti_once, [
+    (ti_before_mission_start, 0, 0, [
+      (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 10),
+    ],[
+      (replace_scene_props, "spr_mp_mound_a_path", "spr_empty"),
+      (replace_scene_props, "spr_mp_mound_b_path", "spr_empty"),
+      (replace_scene_props, "spr_mp_mound_c_path", "spr_empty"),
+      (replace_scene_props, "spr_mp_mound_d_path", "spr_empty"),
+      (replace_scene_props, "spr_mp_mound_e_path", "spr_empty"),
+      (replace_scene_props, "spr_mp_mound_f_path", "spr_empty"),
+    ]),
+
+
+    (ti_on_agent_spawn,1,0,[
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (store_trigger_param_1,":agent"),
+      (agent_get_troop_id,":troop",":agent"),
+      (try_begin),
+        (eq,":troop","trp_slave_mine"),
+        (agent_equip_item,":agent","itm_pickaxe_work"),
+        (agent_set_stand_animation, ":agent", "anim_mining"),
+        (agent_set_animation, ":agent", "anim_mining"),
+        (agent_play_sound,":agent","snd_dedal_mine_pickaxe"),
+        (agent_ai_set_interact_with_player,":agent",0),
+        (assign,":end",1),
+        (convert_to_fixed_point,":end"),
+        (store_random_in_range,":progress",0,":end"),
+        (agent_set_animation_progress,":agent",":progress"),
+      (try_end),
+    ],[]),
+
+    (ti_on_agent_spawn,1,0,[
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (store_trigger_param_1,":agent"),
+      (agent_get_troop_id,":troop",":agent"),
+      (eq, ":troop", "trp_statthalter_new_12"),
+      (assign, "$g_belligerent_drunk_leaving", ":agent"),
+    ],[]),
+
+    (0.5, 0.5, ti_once, [
       (neg|conversation_screen_is_active),
       (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
       (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 1),
@@ -31565,7 +31603,7 @@ mission_templates = [
       (mission_enable_talk),
       (start_mission_conversation, "trp_statthalter_new_12"),
     ]),
-    (1, 1, ti_once, [
+    (0.5, 0.5, ti_once, [
       (neg|conversation_screen_is_active),
       (is_currently_night),
       (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
@@ -31573,7 +31611,7 @@ mission_templates = [
     ],[
       (tutorial_box, "@Caeselius Bassus hasn't reached the ruins yet. Come back during day time."),
     ]),
-    (1, 1, ti_once, [
+    (0.5, 0.5, ti_once, [
       (neg|conversation_screen_is_active),
       (is_currently_night),
       (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
@@ -31581,33 +31619,32 @@ mission_templates = [
     ],[
       (tutorial_box, "@Caeselius Bassus is asleep. Come back during day time."),
     ]),
-    (1, 0, 0, [
+    (0.5, 0, 0, [
       (neg|conversation_screen_is_active),
       (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 2),
     ],[
+      (agent_is_active, "$g_belligerent_drunk_leaving"),
+      (agent_get_position, pos13, "$g_belligerent_drunk_leaving"),
       (entry_point_get_position, pos12, 18),
-      (get_player_agent_no, ":player"),
-      (agent_is_active, ":player"),
-      (agent_get_position, pos13, ":player"),
-      (get_distance_between_positions, reg22, pos12,pos13),
+      (get_distance_between_positions_in_meters, reg22, pos12,pos13),
       (le, reg22, 3),
+      (quest_set_slot, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 3),
       (mission_enable_talk),
       (start_mission_conversation, "trp_statthalter_new_12"),
     ]),
-    (1, 0, 0, [
+    (0.5, 0, 0, [
       (neg|conversation_screen_is_active),
       (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 4),
     ],[
+      (agent_is_active, "$g_belligerent_drunk_leaving"),
+      (agent_get_position, pos13, "$g_belligerent_drunk_leaving"),
       (entry_point_get_position, pos12, 2),
-      (get_player_agent_no, ":player"),
-      (agent_is_active, ":player"),
-      (agent_get_position, pos13, ":player"),
-      (get_distance_between_positions, reg22, pos12,pos13),
+      (get_distance_between_positions_in_meters, reg22, pos12,pos13),
       (le, reg22, 2),
+      (quest_set_slot, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 5),
       (mission_enable_talk),
       (start_mission_conversation, "trp_statthalter_new_12"),
     ]),
-
     cannot_spawn_commoners,
     (0, 0, ti_once, [],[
       (mission_enable_talk),
@@ -31616,18 +31653,60 @@ mission_templates = [
     ]),
     (ti_tab_pressed, 0, 0,[],[
       (try_begin),
+        (neg|is_currently_night),
         (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
         (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 1),
         (display_message, "str_cannot_leave_now"),
       (else_try),
+        (neg|is_currently_night),
         (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
-        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 2),
+        (neg|quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 6),
         (tutorial_box, "@Follow Caeselius Bassus!"),
+      (else_try),
+        (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+        (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 9),
+        (tutorial_box, "@Bring Caeselius Bassus the items inside the chest!"),
       (else_try),
         (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
         (finish_mission, 3),
       (try_end),
     ]),
+    (2, 0, 0,[
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 9),
+    ],[
+      (set_fixed_point_multiplier, 1000),
+      (try_for_prop_instances, ":earth"),
+          (prop_instance_get_scene_prop_kind, ":is_earth", ":earth"),
+          (is_between, ":is_earth", "spr_mp_mound_a_turf", "spr_mp_parts_a"),
+          (prop_instance_get_position, pos11, ":earth"),
+          (position_get_z, ":z", pos11),
+          (assign, reg1, ":z"),
+          # (display_message, "@z: {reg1}"),
+          (try_begin),
+              (gt, ":z", 6250),
+              (val_sub, ":z", 250),
+              (position_set_z, pos11, ":z"),
+              (prop_instance_animate_to_position, ":earth", pos11, 100),
+              (display_message, "@Digging continues...."),
+          (else_try),
+              (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 9),
+              (quest_set_slot, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 10),
+              (mission_enable_talk),
+              (start_mission_conversation, "trp_statthalter_new_12"),
+              (try_for_agents, ":agent"),
+                (agent_is_active, ":agent"),
+                (agent_get_troop_id,":troop",":agent"),
+                (eq,":troop","trp_slave_mine"),
+                (agent_unequip_item,":agent","itm_pickaxe_work"),
+                (agent_set_stand_animation, ":agent", "anim_end_animation"),
+                (agent_set_animation, ":agent", "anim_end_animation"),
+                (agent_stop_sound,":agent"),
+                (agent_ai_set_interact_with_player,":agent",1),
+              (try_end),
+          (try_end),
+      (try_end),
+    ]),
+
     improved_lightning,
     common_inventory_not_available,
     ambient_set_agents_for_sounds,
