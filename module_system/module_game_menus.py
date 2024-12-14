@@ -32865,35 +32865,74 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ##########################
 #    events for flavor   #
 ##########################
-("emperor_event_prophecy",0,
-  "The prophecy of Caeselius Bassus!^^A peculiar Roman eques by the name of Caeselius Bassus has arrived at the palace, bearing an extraordinary claim."
-  +" He insists that he has uncovered knowledge of an ancient treasure, buried deep beneath the ruins of Carthage. According to him, this treasure, left by Queen Dido herself, is so vast it could fund an empire's greatest ambitions."
-  +"^^The court is abuzz with speculation. Some scoff at his tale, calling it absurd; others whisper of the slim chance it could be true. The decision, as always, lies with you.",
+("emperor_event_comet",0,
+  "The Comet of Doom!^^A fiery streak cuts through the night sky, visible from the grandest cities to the smallest villages across the Roman Empire. The comet, its tail burning bright like a flaming spear, has sparked terror and awe among the populace. In the forums of Rome, whispers spread that it heralds the wrath of the gods or the fall of an Caesar."
+  +" In the provinces, priests scramble to interpret its meaning, offering sacrifices to avert disaster."
+  +"^^Your court is divided. Some see it as an ill omen forewarning calamity, while others dismiss it as mere celestial coincidence. The people, however, grow restless, their faith shaken by this eerie spectacle.",
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
     ("continue",[
-    ],"Search for the treasure yourself! [Starts a quest]",[
-      (setup_quest_text,"qst_prophecy_of_caeselius_bassus"),
-      (str_store_party_name, s22, "p_town_28"),
-      (str_store_troop_name_link, s23, "trp_statthalter_new_12"),
-      (str_store_string, s2, "@Travel to {s22} and find {s23} in the ruins of old Punic Carthage. [Hint: Once in Carthage use 'Take an action' in town menu. In the submenu is an option to walk around the ruins of Punic Carthage.]"),
-      (call_script, "script_start_quest", "qst_prophecy_of_caeselius_bassus", "trp_fortuna"),
-      (quest_set_slot, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 1),
-
-      (str_store_string, s1, "@Caeselius Bassus requests that you meet him near the ruins of Carthage, where he claims he can guide you to the exact location of the treasure. He strongly advises bringing a contingent of slaves to assist with the extensive digging that will be required."),
+      (store_troop_gold, ":gold", "trp_player"),
+      (store_troop_gold, ":treasury", "trp_household_possessions"),
+      (val_add, ":gold", ":treasury"),
+      (ge, ":gold", 250000),
+    ],"Declare the comet a sign of divine displeasure and offer a grand sacrifice. [costs: 250,000 denars; use your own funds!]",[
+      (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 250000, "trp_player"),
+      (call_script, "script_change_troop_renown", "trp_player", 25),
+      (call_script, "script_change_player_honor", 5),
+      (call_script, "script_add_piety", 50),
+      (str_store_string, s1, "@The priests declare the gods appeased after the grand sacrifice. The people gather to witness the solemn ceremony, their fears soothed by the promise of divine favor. The comet's fiery presence fades from memory, replaced by renewed hope and loyalty to your rule."),
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
     ("continue",[
-    ],"Send an expedition! [costs: 50,000 denars]",[
-      (call_script, "script_change_player_relation_with_center", "p_town_6", -3),
-      (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 50000, "trp_player"),
-      (str_store_string, s1, "@An expedition is quickly assembled, and 50,000 denars are spent on provisions, laborers, and equipment to search the ruins of Carthage. Weeks pass, with growing anticipation. Finally, a message arrives: the treasure is nowhere to be found. Caeselius Bassus's prophecy was nothing more than an elaborate delusion.^^The failure stings, and whispers of your decision to indulge such folly circulate among the court. Bassus vanishes soon after, his reputation in ruins."),
+    ],"Declare the comet a sign of divine displeasure and offer a grand sacrifice. [costs: 250,000 denars; use public funds!]",[
+      (call_script, "script_add_to_faction_treasury", -250000, "$g_notification_menu_var1"),
+      (call_script, "script_change_troop_renown", "trp_player", 5),
+      # (call_script, "script_change_player_honor", 5),
+      (call_script, "script_add_piety", 5),
+      (str_store_string, s1, "@The priests declare the gods appeased after the grand sacrifice. The people gather to witness the solemn ceremony, their fears soothed by the promise of divine favor. The comet's fiery presence fades from memory, replaced by renewed hope and loyalty to your rule."),
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
     ("continue",[
-    ],"What a nonsense!",[
-      (str_store_string, s1, "@You dismiss Caeselius Bassus with a wave of your hand, declaring his tale as nothing more than the ramblings of a deluded dreamer. Though some in your court chuckle at your wit, others look disappointed, as if wondering what might have been. Bassus leaves in shame, his eccentric prophecy quickly becoming the subject of jokes. Yet, a faint unease lingers—what if there had been a grain of truth in his wild story?"),
+      (store_troop_gold, ":gold", "trp_player"),
+      (store_troop_gold, ":treasury", "trp_household_possessions"),
+      (val_add, ":gold", ":treasury"),
+      (ge, ":gold", 100000),
+    ],"Declare the comet a sign of divine displeasure and offer a sacrifice. [costs: 100,000 denars; use your own funds!]",[
+      (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 100000, "trp_player"),
+      (call_script, "script_change_troop_renown", "trp_player", -10),
+      (call_script, "script_change_player_honor", -2),
+      (call_script, "script_add_piety", -5),
+      (str_store_string, s1, "@The priests perform the rites with what was given, but they warn that the gods demand greater offerings. The comet lingers in the heavens, fueling panic and distrust among the populace. Many question whether your leadership can avert the gods' wrath."),
+      (jump_to_menu, "mnu_event_juicio_end"),
+    ]),
+    ("continue",[
+    ],"Declare the comet a sign of divine displeasure and offer a sacrifice. [costs: 100,000 denars; use public funds!]",[
+      (call_script, "script_add_to_faction_treasury", -100000, "$g_notification_menu_var1"),
+      (call_script, "script_change_troop_renown", "trp_player", -10),
+      (call_script, "script_change_player_honor", -2),
+      (call_script, "script_add_piety", -5),
+      (str_store_string, s1, "@The priests perform the rites with what was given, but they warn that the gods demand greater offerings. The comet lingers in the heavens, fueling panic and distrust among the populace. Many question whether your leadership can avert the gods' wrath."),
+      (jump_to_menu, "mnu_event_juicio_end"),
+    ]),
+    ("continue",[
+    ],"What a nonsense! Do nothing.",[
+      (try_for_range,":npc",active_npcs_begin,active_npcs_end),
+          (this_or_next|troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero),#alive
+          (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_lady),#alive
+          (store_faction_of_troop, ":fac", ":npc"),
+          (eq, ":fac", "$players_kingdom"),
+          (store_random_in_range,":new_relation",15,35),
+          (val_mul, ":new_relation", -1),
+          (call_script, "script_troop_change_relation_with_troop", "trp_player", ":npc", ":new_relation"),
+      (try_end),
+      (val_add, "$g_unrest", 25),
+      (display_message, "@Stability of the Empire decreases", color_bad_news),
+      (call_script, "script_change_troop_renown", "trp_player", -100),
+      (call_script, "script_change_player_honor", -25),
+      (call_script, "script_add_piety", -150),
+      (str_store_string, s1, "@No offerings are made, and the comet continues to blaze ominously in the sky. Across the empire, fear and unrest grow. Many blame the inaction of their leaders, seeing the fiery omen as a herald of impending doom. Rebellion seems to simmer on the horizon."),
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
 ]),
@@ -51966,6 +52005,33 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$current_town", "p_town_28"),
     ],"Visit the ruins of Ancient Punic Carthage.",[
       (jump_to_scene, "scn_ruins_of_carthage"),
+      (modify_visitors_at_site,"scn_ruins_of_carthage"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+      (try_begin),
+        (neg|is_currently_night),
+        (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 1),
+        (set_visitor, 1, "trp_statthalter_new_12"),
+      (else_try),
+        (neg|is_currently_night),
+        (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+        (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 2),
+        (set_visitor, 2, "trp_statthalter_new_12"),
+      (try_end),
+      (try_begin),
+        (neg|is_currently_night),
+        (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+        (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 6),
+        (set_visitor, 3, "trp_slave"),
+        (set_visitor, 4, "trp_slave"),
+        (set_visitor, 5, "trp_slave"),
+        (set_visitor, 6, "trp_slave"),
+        (set_visitor, 7, "trp_slave"),
+        (set_visitor, 8, "trp_slave"),
+        (set_visitor, 9, "trp_slave"),
+      (try_end),
+      (set_jump_mission, "mt_explore_carthage"),
       (change_screen_mission),
     ]),
     ("visit_lady",[

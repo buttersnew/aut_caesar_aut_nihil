@@ -1888,7 +1888,9 @@ ambient_agent_play_sound = (4, 0, 0, [],[
     (call_script,"script_sp_agent_play_sound")])
 
 sand_storm = [
-  (1, 0, 0, [(eq,"$lightning_cycle",3),],[
+  (1, 0, 0, [
+    (eq,"$lightning_cycle",3),
+  ],[
     (get_player_agent_no, ":player"),
     (agent_is_active, ":player"),
     (agent_get_position, pos0, ":player"),
@@ -1900,12 +1902,18 @@ sand_storm = [
 
   (0, 0, ti_once, [],[
     (party_get_current_terrain, ":terrain","p_main_party"),
-    (this_or_next|eq, ":terrain", rt_desert_forest),
-    (eq, ":terrain", rt_desert),
-    (store_random_in_range, ":r", 0, 10),
-    (le, ":r", 1),
-    (assign,"$lightning_cycle",3),
-    (display_message, "@Sandstorm!"),
+    (try_begin),
+      (this_or_next|eq, ":terrain", rt_desert_forest),
+      (eq, ":terrain", rt_desert),
+      (store_random_in_range, ":r", 0, 10),
+      (le, ":r", 1),
+      (assign,"$lightning_cycle",3),
+      (display_message, "@Sandstorm!", message_negative),
+    (else_try),
+      (store_current_scene, ":scene"),
+      (eq, ":scene", "scn_ruins_of_carthage"),
+      (assign,"$lightning_cycle",3),
+    (try_end),
   ]),
 ]
 
@@ -1919,6 +1927,8 @@ thunder_storm =	[		# 4 trigger
         (party_get_current_terrain, ":terrain","p_main_party"),
         (neq, ":terrain", rt_desert_forest),
         (neq, ":terrain", rt_desert),
+        (store_current_scene, ":scene"),
+        (neq, ":scene", "scn_ruins_of_carthage"),
         (store_time_of_day, ":day_time"),
         (neg|is_between, ":day_time", 4, 20),
         (get_global_cloud_amount, ":clouds"),
@@ -31528,7 +31538,103 @@ mission_templates = [
     ambient_set_agents_for_sounds,
     ambient_agent_play_sound,
 ]),
+("explore_carthage", mtf_battle_mode, -1,
+  "Test.",[
+    (0,mtef_visitor_source,0,0,1,[]),
+    (1,mtef_visitor_source,af_override_horse,0,1,[]),
+    (2,mtef_visitor_source,af_override_horse,0,1,[]),
+    (3,mtef_visitor_source,af_override_horse,0,1,[]),
+    (4,mtef_visitor_source,af_override_horse,0,1,[]),
+    (5,mtef_visitor_source,af_override_horse,0,1,[]),
+    (6,mtef_visitor_source,af_override_horse,0,1,[]),
+    (7,mtef_visitor_source,af_override_horse,0,1,[]),
+    (8,mtef_visitor_source,af_override_horse,0,1,[]),
+    (9,mtef_visitor_source,af_override_horse,0,1,[]),
+    (10,mtef_visitor_source,af_override_horse,0,1,[]),
+    (11,mtef_visitor_source,af_override_horse,0,1,[]),
+  ], p_wetter + storms + global_common_triggers +
+  [
+    (1, 1, ti_once, [
+      (neg|conversation_screen_is_active),
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 1),
+      (neg|is_currently_night),
+      (store_mission_timer_a, ":time"),
+      (ge, ":time", 4),
+    ],[
+      (mission_enable_talk),
+      (start_mission_conversation, "trp_statthalter_new_12"),
+    ]),
+    (1, 1, ti_once, [
+      (neg|conversation_screen_is_active),
+      (is_currently_night),
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 1),
+    ],[
+      (tutorial_box, "@Caeselius Bassus hasn't reached the ruins yet. Come back during day time."),
+    ]),
+    (1, 1, ti_once, [
+      (neg|conversation_screen_is_active),
+      (is_currently_night),
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 2),
+    ],[
+      (tutorial_box, "@Caeselius Bassus is asleep. Come back during day time."),
+    ]),
+    (1, 0, 0, [
+      (neg|conversation_screen_is_active),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 2),
+    ],[
+      (entry_point_get_position, pos12, 18),
+      (get_player_agent_no, ":player"),
+      (agent_is_active, ":player"),
+      (agent_get_position, pos13, ":player"),
+      (get_distance_between_positions, reg22, pos12,pos13),
+      (le, reg22, 3),
+      (mission_enable_talk),
+      (start_mission_conversation, "trp_statthalter_new_12"),
+    ]),
+    (1, 0, 0, [
+      (neg|conversation_screen_is_active),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 4),
+    ],[
+      (entry_point_get_position, pos12, 2),
+      (get_player_agent_no, ":player"),
+      (agent_is_active, ":player"),
+      (agent_get_position, pos13, ":player"),
+      (get_distance_between_positions, reg22, pos12,pos13),
+      (le, reg22, 2),
+      (mission_enable_talk),
+      (start_mission_conversation, "trp_statthalter_new_12"),
+    ]),
 
+    cannot_spawn_commoners,
+    (0, 0, ti_once, [],[
+      (mission_enable_talk),
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 2000),
+    ]),
+    (ti_tab_pressed, 0, 0,[],[
+      (try_begin),
+        (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 1),
+        (display_message, "str_cannot_leave_now"),
+      (else_try),
+        (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 2),
+        (tutorial_box, "@Follow Caeselius Bassus!"),
+      (else_try),
+        (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+        (finish_mission, 3),
+      (try_end),
+    ]),
+    improved_lightning,
+    common_inventory_not_available,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+    ambient_scene_play_loop,
+    ambient_scene_play_random_sound,
+]),
 ("explore_secret_place", 0, -1,
   "Test.",[
     (0,mtef_scene_source,0,0,1,[]),

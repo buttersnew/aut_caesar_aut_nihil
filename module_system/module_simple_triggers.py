@@ -9621,20 +9621,9 @@ simple_triggers = [
     (try_end),
 ]),
 
-(288,[
+(275,[
     (call_script, "script_execude_debug_message", 150),
     (try_begin),
-        #(party_slot_eq, "p_main_party", slot_party_on_water, 0),
-        (neq, "$g_player_is_captive", 1),
-        (store_faction_of_party, ":fac", "p_town_6"),#rome
-        (eq, ":fac", "$players_kingdom"),
-        (store_faction_of_party, ":fac", "p_town_28"),#rome
-        (eq, ":fac", "$players_kingdom"),
-        (troop_slot_eq, "trp_statthalter_new_12", slot_troop_occupation, slto_kingdom_hero),
-        (store_troop_faction, ":fac", "trp_statthalter_new_12"),
-        (eq, ":fac", "$players_kingdom"),
-        (jump_to_menu, "mnu_emperor_event_prophecy"),
-    (else_try),
         #(party_slot_eq, "p_main_party", slot_party_on_water, 0),
         (neq, "$g_player_is_captive", 1),
         # (eq, "$g_is_emperor", 1),
@@ -9728,6 +9717,10 @@ simple_triggers = [
         (else_try),
             (eq, "$g_judicio", 12),
             (jump_to_menu, "mnu_emperor_event_26"),
+            (val_add, "$g_judicio", 1),
+        (else_try),
+            (eq, "$g_judicio", 13),
+            (jump_to_menu, "mnu_emperor_event_comet"),
             (val_add, "$g_judicio", 1),
         (try_end),
     (try_end),
