@@ -1555,8 +1555,7 @@ strings = [
   ("npc15_morality_speech", "Commander -- just so you know my opinion, any general with sense will not let his cohort {s21}.\
  I hope you don't mind me speaking so bluntly."),
   ("npc16_morality_speech", "Captain. I don't like to {s21}. So many throats left uncut, and so many purses left unexplored..."),
-  ("npc17_morality_speech", "What a bloodbath, and not the good kind either. I'll be honest, Dominus,\
- the point of a battle is not for all of us to die a heroic death, it's to make the other guys die. What good is loot if you are dead?"),
+  ("npc17_morality_speech", "What a bloodbath, and not the good kind either. I'll be honest, Dominus, the point of a battle is not for all of us to die a heroic death, it's to make the other guys die. What good is loot if you are dead?"),
   ("npc18_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
   ("npc19_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
   ("npc20_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
@@ -1570,8 +1569,7 @@ strings = [
   ("npc28_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
   ("npc29_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
   ("npc30_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
-  ("npc31_morality_speech", "Commander, I must say I am not happy that we {s21}. I'm a warrior with honor and it is important to keep your word.\
- You have given your word. When a warrior gives his word, he is bonded to it."),
+  ("npc31_morality_speech", "Commander, I must say I am not happy that we {s21}. I'm a warrior with honor and it is important to keep your word. You have given your word. When a warrior gives his word, he is bonded to it."),
   ("npc32_morality_speech", "{!}."),
   ("npc33_morality_speech", "{!}."),
   ("npc34_morality_speech", "{Dominus/Domina}, I am not really happy that you {s21}. They may be our enemies but it is not good to harm innocent people."),
@@ -1579,9 +1577,9 @@ strings = [
   ("npc36_morality_speech", "{Dominus/Domina}, I am not really happy that you {s21}. Poor souls there hadn't been given a chance to redeem their sins yet when we slaughtered them like animals."),
   ("npc37_morality_speech", "Commander I hope you do not get offended by what I will say but please refrain from running from battles, if you do then what would I write about?"),
   ("npc38_morality_speech", "To win is always an objective but to lose so many men pursuing it is a waste of resources, try to not repeat the mistakes of the late Pyrrhus. Dominus, remember what he said: if he won in that fashion one more time, he would be ruined."),
-  ("npc39_morality_speech", "{!}"),
+  ("npc39_morality_speech", "{playername}, it's a bit tough for me to picture us {s21}. Maybe we could show a bit more mercy now and then—it would definitely help me sleep better."),
   ("npc40_morality_speech", "{Dominus/Domina}, I have to criticize your last decision. It's just dishonorable to {s21}. That should not happen again!"),
-  ("npc41_morality_speech", "{!}"),
+  ("npc41_morality_speech", "{Dominus/Domina}, I think it is terrible that you {s21}. A good chief should take care for his warband!"),
 
   ("npc1_2ary_morality_speech", "Master -- just so you know, I've got no problem if we {s21}.\
  Living to fight another day makes good sense to me."),
