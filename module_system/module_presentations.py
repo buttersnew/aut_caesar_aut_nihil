@@ -9720,37 +9720,7 @@ presentations = [
     (position_set_y, pos1, ":cur_y"),
     (overlay_set_position, reg0, pos1),
     (overlay_set_size, reg0, pos2),
-    (str_clear, s60),
-    (try_begin),
-        (lt, "$player_honor", -90),
-        (str_store_string,s60,"@Ruthless"),
-    (else_try),
-        (lt, "$player_honor", -70),
-        (str_store_string,s60,"@Vile"),
-    (else_try),
-        (lt, "$player_honor", -50),
-        (str_store_string,s60,"@Notorious"),
-    (else_try),
-        (lt, "$player_honor", -20),
-        (str_store_string,s60,"@Unkind"),
-    (else_try),
-        (lt, "$player_honor", 20),
-        (str_store_string,s60,"@Unknown"),
-    (else_try),
-        (is_between, "$player_honor", 20, 50),
-        (str_store_string,s60,"@Kind"),
-    (else_try),
-        (is_between, "$player_honor", 50, 70),
-        (str_store_string,s60,"@Admirable"),
-    (else_try),
-        (is_between, "$player_honor", 70, 90),
-        (str_store_string,s60,"@Noble"),
-    (else_try),
-        (ge, "$player_honor", 90),
-        (str_store_string,s60,"@Heroic"),
-    (else_try),
-        (str_store_string,s60,"@Unknown"),
-    (try_end),
+    (call_script, "script_print_honor_to_s60"),
 	  (assign, reg12, "$player_honor"),
     (create_text_overlay, reg0, "@{s60} ({reg12})", 0),
     (try_begin),
@@ -23893,9 +23863,8 @@ presentations = [
 ]),
 
 ##fief management
- ("fief_management", 0, mesh_mp_ui_bg, [
-    (ti_on_presentation_load,
-      [
+("fief_management", 0, mesh_mp_ui_bg, [
+  (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
     # Presentation title, centered at the top
@@ -23940,7 +23909,7 @@ presentations = [
     (overlay_set_area_size, reg1, pos1),
 
 
-    (create_text_overlay, reg0, "@Name", tf_left_align),
+    (create_text_overlay, reg0, "@Name", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 50),
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -23948,7 +23917,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Garrison", tf_left_align),
+    (create_text_overlay, reg0, "@Garrison", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 200),###+220
     (position_set_y, pos1, 595),
     (overlay_set_position, reg0, pos1),
@@ -23956,7 +23925,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Prisoners,", tf_left_align),
+    (create_text_overlay, reg0, "@Prisoners,", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 200),###+160
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -23964,7 +23933,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Buildings", tf_left_align),
+    (create_text_overlay, reg0, "@Buildings", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 300),###+160
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -23972,7 +23941,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Construction Projects", tf_left_align),
+    (create_text_overlay, reg0, "@Construction Projects", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 500),###+110
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -23980,7 +23949,7 @@ presentations = [
     (position_set_y, pos2, 1200),
     (overlay_set_size, reg0, pos2),
 
-    (create_text_overlay, reg0, "@Edicts", tf_left_align),
+    (create_text_overlay, reg0, "@Edicts", tf_left_align|tf_with_outline),
     (position_set_x, pos1, 700),###+110
     (position_set_y, pos1, 615),
     (overlay_set_position, reg0, pos1),
@@ -24189,11 +24158,9 @@ presentations = [
       (val_sub, ":y_name", 40),
     (try_end),
     (set_container_overlay, -1),#end scroll
-
-       ]),
-   ## Check for buttonpress
-   (ti_on_presentation_event_state_change,
-    [
+  ]),
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
         (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
@@ -24209,27 +24176,24 @@ presentations = [
             (jump_to_menu, "mnu_center_manage_2"),
         (try_end),
     (try_end),
-    ]),
-      (ti_on_presentation_run,
-       [
-        ]),
-    (ti_on_presentation_run, [
-        (try_begin),
-            (key_clicked, key_escape),
-            (presentation_set_duration, 0),
-            (jump_to_menu, "mnu_auto_return_map"),
-        (else_try),
-            (key_clicked, key_space),
-            (set_fixed_point_multiplier, 1000),
-            (mouse_get_position, pos31),
-
-            (position_get_x, reg31, pos31),
-            (position_get_y, reg32, pos31),
-
-            (display_message, "@X: {reg31} | Y: {reg32}"),
-        (try_end),
-    ]),
   ]),
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_escape),
+        (presentation_set_duration, 0),
+        (jump_to_menu, "mnu_auto_return_map"),
+    (else_try),
+        (key_clicked, key_space),
+        (set_fixed_point_multiplier, 1000),
+        (mouse_get_position, pos31),
+
+        (position_get_x, reg31, pos31),
+        (position_get_y, reg32, pos31),
+
+        (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+]),
 ##fief management END
 
 ###new legion management ####################
@@ -25135,6 +25099,10 @@ presentations = [
             (troop_get_slot, ":personality", ":legate", slot_lord_reputation_type),
             (store_add, ":string", ":personality", "str_personality_archetypes"),
             (str_store_string, s22, ":string"),
+        (else_try),
+            (eq, ":legate", 0),
+            (call_script, "script_print_honor_to_s60"),
+            (str_store_string_reg, s22, s60),
         (else_try),
             (str_store_string, s22, "str_dplmc_none"),
         (try_end),
@@ -27554,10 +27522,14 @@ presentations = [
         (val_add, ":x_name", 100),
 
         (try_begin),
-            (ge, ":governor", 0),
+            (gt, ":governor", 0),
             (troop_get_slot, ":personality", ":governor", slot_lord_reputation_type),
             (store_add, ":string", ":personality", "str_personality_archetypes"),
             (str_store_string, s22, ":string"),
+        (else_try),
+            (eq, ":governor", 0),
+            (call_script, "script_print_honor_to_s60"),
+            (str_store_string_reg, s22, s60),
         (else_try),
             (str_store_string, s22, "str_dplmc_none"),
         (try_end),
@@ -27873,10 +27845,14 @@ presentations = [
         (val_add, ":x_name", 100),
 
         (try_begin),
-            (ge, ":governor", 0),
+            (gt, ":governor", 0),
             (troop_get_slot, ":personality", ":governor", slot_lord_reputation_type),
             (store_add, ":string", ":personality", "str_personality_archetypes"),
             (str_store_string, s22, ":string"),
+        (else_try),
+            (eq, ":governor", 0),
+            (call_script, "script_print_honor_to_s60"),
+            (str_store_string_reg, s22, s60),
         (else_try),
             (str_store_string, s22, "str_dplmc_none"),
         (try_end),
@@ -28186,6 +28162,10 @@ presentations = [
             (troop_get_slot, ":personality", ":governor", slot_lord_reputation_type),
             (store_add, ":string", ":personality", "str_personality_archetypes"),
             (str_store_string, s22, ":string"),
+        (else_try),
+            (eq, ":governor", 0),
+            (call_script, "script_print_honor_to_s60"),
+            (str_store_string_reg, s22, s60),
         (else_try),
             (str_store_string, s22, "str_dplmc_none"),
         (try_end),

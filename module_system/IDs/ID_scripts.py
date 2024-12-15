@@ -1004,3 +1004,4 @@ script_freelancer_event_required_for_progess = 1002
 script_deity_compatibility_with_culture = 1003
 script_add_piety_culture_effect = 1004
 script_player_change_religion = 1005
+script_print_honor_to_s60 = 1006

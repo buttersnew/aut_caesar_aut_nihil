@@ -2223,10 +2223,10 @@ game_menus = [
       (start_presentation, "prsnt_display_special_items"),
     ]),
 
-    ("camp_action",[
-    ],"Debug sulla event.",[
-      (jump_to_menu, "mnu_freelancer_event_pret_9"),
-    ]),
+    # ("camp_action",[
+    # ],"Debug sulla event.",[
+    #   (jump_to_menu, "mnu_freelancer_event_pret_9"),
+    # ]),
 
     # ("camp_action",[
     # ],"Export volunteer limits.",[
@@ -51437,7 +51437,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-("world_map_soldier",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+("world_map_soldier",menu_text_color(0xFF000000)|mnf_enable_hot_keys,
   "What do you want, soldier?",
   "none",[
     (set_background_mesh, "mesh_pic_camp"),
@@ -51769,21 +51769,41 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (set_show_messages, 0),
-      (try_for_range, ":slot", 0, 10),##to avoid duplication of items
+      (try_for_range, ":slot", ek_item_0, ek_food),##to avoid duplication of items
+          (this_or_next|eq, ":slot", ek_item_0),
+          (this_or_next|eq, ":slot", ek_item_1),
+          (this_or_next|eq, ":slot", ek_head),
+          (this_or_next|eq, ":slot", ek_body),
+          (this_or_next|eq, ":slot", ek_foot),
+          (eq, ":slot", ek_horse),
           (troop_get_inventory_slot, ":item", "trp_player", ":slot"),
           (ge, ":item", 1),
           (troop_get_inventory_slot_modifier,":modifier", "trp_player", ":slot"),
-          (troop_remove_item, "trp_player", ":item"),
-          (troop_set_inventory_slot, "trp_player", ":slot", -1),
+          # (troop_remove_item, "trp_player", ":item"),
+          # (str_store_item_name, s3, ":item"),
+          # (display_message, "@Removed: {s3}"),
+          (try_begin),
+            (eq, ":slot", ek_head),
+            (troop_set_inventory_slot, "trp_player", ":slot", "itm_roman_legatus_helm"),
+          (else_try),
+            (eq, ":slot", ek_body),
+            (troop_set_inventory_slot, "trp_player", ":slot", "itm_musculata_legatus_6"),
+          (else_try),
+            (eq, ":slot", ek_foot),
+            (troop_set_inventory_slot, "trp_player", ":slot", "itm_graves_simple_2"),
+          (else_try),
+            (eq, ":slot", ek_horse),
+            (troop_set_inventory_slot, "trp_player", ":slot", "itm_horse_3"),
+          (else_try),
+            (eq, ":slot", ek_item_0),
+            (troop_set_inventory_slot, "trp_player", ":slot", "itm_officer_shield"),
+          (else_try),
+            (eq, ":slot", ek_item_1),
+            (troop_set_inventory_slot, "trp_player", ":slot", "itm_roman_spatha"),
+          (try_end),
           (troop_add_item, "trp_player", ":item", ":modifier"),
       (try_end),
       (add_xp_as_reward, 1500),
-      (troop_set_inventory_slot, "trp_player", ek_head, "itm_roman_legatus_helm"),
-      (troop_set_inventory_slot, "trp_player", ek_body, "itm_musculata_legatus_6"),
-      (troop_set_inventory_slot, "trp_player", ek_foot, "itm_graves_simple_2"),
-      (troop_set_inventory_slot, "trp_player", ek_horse, "itm_horse_3"),
-      (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_officer_shield"),
-      (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_roman_spatha"),
       (set_show_messages, 1),
       (assign, "$talk_context", tc_last_promotion),
 		  (call_script, "script_setup_party_meeting", "$g_encountered_party"),
@@ -52398,22 +52418,18 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-(
-    "freelancer_weekly_duty",0,
-    "Press K while on the world map to view available mission.^^You can volunteer for one of the available tasks or participate in a training session.^^Press K while on the world map to view available mission.",
-    "none",
-    [
+("freelancer_weekly_duty",0,
+  "Press K while on the world map to view available mission.^^You can volunteer for one of the available tasks or participate in a training session.^^Press K while on the world map to view available mission.",
+  "none",[
     (set_background_mesh, "mesh_pic_messenger"),
-      ],
-    [
-      ("continue",[
+  ],[
+    ("continue",[
       (quest_get_slot, ":cur_timer", "qst_freelancing", slot_quest_freelancer_mission_1),
       (store_current_hours, ":cur_time"),
       (val_div, ":cur_timer", 24),
       (val_div, ":cur_time", 24),
       (val_sub, ":cur_time", ":cur_timer"),
       (ge, ":cur_time", 2),#every two days
-
       (assign, ":min_distance", 9999999),
       (assign, ":closest_center", -1),
       (try_for_range, ":center_no", villages_begin, villages_end),
@@ -52426,28 +52442,24 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (neg|party_slot_eq, ":closest_center", slot_center_culture, "fac_culture_7"),#not roman culture
       (store_faction_of_party, ":fac", ":closest_center"),
       (eq, ":fac", "fac_kingdom_7"),#roman
-      ],"Collect tributes.",
-       [
-        (store_current_hours, ":cur_time"),
-        (quest_set_slot, "qst_freelancing", slot_quest_freelancer_mission_1, ":cur_time"),
-	    (jump_to_menu, "mnu_freelancer_task_tribute"),
-        ]),
-
-       ("continue",[
+    ],"Collect tributes.",[
+      (store_current_hours, ":cur_time"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_mission_1, ":cur_time"),
+      (jump_to_menu, "mnu_freelancer_task_tribute"),
+    ]),
+    ("continue",[
       (quest_get_slot, ":cur_timer", "qst_freelancing", slot_quest_freelancer_mission_1),
       (store_current_hours, ":cur_time"),
       (val_div, ":cur_timer", 24),
       (val_div, ":cur_time", 24),
       (val_sub, ":cur_time", ":cur_timer"),
       (ge, ":cur_time", 2),#every two days
-      ],"Patrol.",
-       [
+    ],"Patrol.",[
       (store_current_hours, ":cur_time"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_mission_1, ":cur_time"),
 	    (jump_to_menu, "mnu_freelancer_task_patrol_1"),
-        ]),
-
-      ("continue",[
+    ]),
+    ("continue",[
       (quest_get_slot, ":cur_timer", "qst_freelancing", slot_quest_freelancer_mission_1),
       (store_current_hours, ":cur_time"),
       (val_div, ":cur_timer", 24),
@@ -52458,34 +52470,27 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (party_get_current_terrain,":terrain", "p_main_party"),
       (neq, ":terrain", rt_desert),
       (neq, ":terrain", rt_desert_forest),
-      ],"Forage. (Hunting)",
-       [
+    ],"Forage. (Hunting)",[
       (store_current_hours, ":cur_time"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_mission_1, ":cur_time"),
 	    (jump_to_menu, "mnu_freelancer_task_hunt"),
-        ]),
-
-      ("continue",[
+    ]),
+    ("continue",[
       (quest_get_slot, ":cur_timer", "qst_freelancing", slot_quest_freelancer_mission_2),
       (store_current_hours, ":cur_time"),
       (val_div, ":cur_timer", 24),
       (val_div, ":cur_time", 24),
       (val_sub, ":cur_time", ":cur_timer"),
       (ge, ":cur_time", 1),#every days
-      ],"Daily training session.",
-       [
-       (store_current_hours, ":cur_time"),
-       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_mission_2, ":cur_time"),
-	     (jump_to_menu, "mnu_freelancer_task_training"),
-        ]),
-
-      ("continue",[],"Continue...",
-       [
-
+    ],"Daily training session.",[
+      (store_current_hours, ":cur_time"),
+      (quest_set_slot, "qst_freelancing", slot_quest_freelancer_mission_2, ":cur_time"),
+      (jump_to_menu, "mnu_freelancer_task_training"),
+    ]),
+    ("continue",[],"Continue...",[
 	    (change_screen_map),
-        ]),
-     ]
-),
+    ]),
+]),
 
 (
     "freelancer_task_tribute",0,
@@ -55790,51 +55795,44 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         ]),
 ]),
 
- ("intro_to_court",0,
-    "You walk your way towards the main hall where Nero awaits his guests when a woman dressed in fine clothes approaches you. She says:^\
- 'You are not familar to me so I assume you will be introduced to Nero the first time. Just in the case you don't know the order which has developed here,\
- I want to give you a view tips, otherwise not even the gods can protect you from the warth of a Caesar. So listen:\
- Firstly, if Nero makes a joke, laugh about it. Secondly, never upset him. Thirdly, never do anything which could make him envious about you. Lastly and most importantly, if Nero performs any kind of art, be it a dance, a song, reading a verse; always\
- laud him. Remember this!'^^She walks away quickly.",
-    "none",
-    [(set_background_mesh, "mesh_pic_palast"),
+("intro_to_court",0,
+  "You walk your way towards the main hall where Nero awaits his guests when a woman dressed in fine clothes approaches you. She says:^"
+  +" 'You are not familar to me so I assume you will be introduced to Nero the first time. Just in the case you don't know the order which has developed here,"
+  +" I want to give you a view tips, otherwise not even the gods can protect you from the warth of a Caesar. So listen:"
+  +" Firstly, if Nero makes a joke, laugh about it. Secondly, never upset him. Thirdly, never do anything which could make him envious about you. Lastly and most importantly, if Nero performs any kind of art, be it a dance, a song, reading a verse; always"
+  +" laud him. Remember this!'^^She walks away quickly.",
+  "none",[
+    (set_background_mesh, "mesh_pic_palast"),
     (try_begin),
       (troop_slot_ge, "trp_global_variables", g_nero_intro, 1),
       (jump_to_menu, "mnu_town"),
     (try_end),
-    ],
-    [
-      ("op1",[],
-       "Continue...",
-       [
+  ],[
+  ("op1",[],"Continue...",[
     (add_xp_as_reward, 150),
     (troop_set_slot, "trp_global_variables", g_nero_intro, 1),
     (call_script, "script_enter_court", "$current_town"),
-    ]),
- ]),
+  ]),
+]),
 
 ("nero_special_quest_1",0,
-    "A messenger approaches:^^'Ave {s43}! I bring message from our Divine Caesar. The Princeps wants to talk you at your earliest convenience!'",
-    "none",
-    [(set_background_mesh, "mesh_pic_messenger"),
-
+  "A messenger approaches:^^'Ave {s43}! I bring message from our Divine Caesar. The Princeps wants to talk you at your earliest convenience!'",
+  "none",[
+    (set_background_mesh, "mesh_pic_messenger"),
     (call_script, "script_get_player_rank_string_s43"),
-    ],
-    [
-      ("op1",[],
-       "Continue...",
-      [
-        (quest_get_slot,":state", "qst_nero_special_quest", slot_quest_target_dna),
-        (val_add, ":state", 1),
-        (quest_set_slot, "qst_nero_special_quest", slot_quest_target_dna,":state"),
-        (setup_quest_text,  "qst_nero_special_quest"),
-        (str_store_string, s2, "@Visit Nero at your earliest convenience. Don't disappoint Caesar!"),
-        (quest_set_slot, "qst_nero_special_quest", slot_quest_expiration_days, 30),
-        (quest_set_slot, "qst_nero_special_quest", slot_quest_current_state, 0),
-        (call_script, "script_start_quest", "qst_nero_special_quest", "trp_kingdom_7_lord"),
-        (call_script, "script_update_all_notes"),
-        (change_screen_map),
-    ]),
+  ],[
+    ("op1",[],"Continue...",[
+      (quest_get_slot,":state", "qst_nero_special_quest", slot_quest_target_dna),
+      (val_add, ":state", 1),
+      (quest_set_slot, "qst_nero_special_quest", slot_quest_target_dna,":state"),
+      (setup_quest_text,  "qst_nero_special_quest"),
+      (str_store_string, s2, "@Visit Nero at your earliest convenience. Don't disappoint Caesar!"),
+      (quest_set_slot, "qst_nero_special_quest", slot_quest_expiration_days, 30),
+      (quest_set_slot, "qst_nero_special_quest", slot_quest_current_state, 0),
+      (call_script, "script_start_quest", "qst_nero_special_quest", "trp_kingdom_7_lord"),
+      (call_script, "script_update_all_notes"),
+      (change_screen_map),
+  ]),
 ]),
 
 ("abduction_nero",0,
@@ -59752,6 +59750,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (store_encountered_party, "$g_encountered_party"),
     (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
         (eq, reg61, 1),
         (assign, "$temp4", 0),
         (set_jump_mission,"mt_palace"),
@@ -59863,14 +59862,21 @@ It is said, that she lives now together with the goat.",
         (try_end),
         (jump_to_scene, "scn_imperial_palace"),
         (change_screen_mission),
-
     (else_try),
+        (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_castle),
         (eq, reg61, 2),
         (call_script, "script_enter_court", "$g_encountered_party"),
-    (try_end),
-    (try_begin),
-        (eq, reg61, 0),
+    (else_try),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_village),
+        (jump_to_menu, "mnu_village"),
+    (else_try),
+        (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_castle),
         (jump_to_menu, "mnu_town"),
+    (else_try),
+        (display_log_message, "@Issues in return fief management", message_negative),
+        (jump_to_menu, "mnu_auto_return_map"),
     (try_end),
     (assign, reg61, 0),
   ],[

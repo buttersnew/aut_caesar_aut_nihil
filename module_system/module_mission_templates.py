@@ -24237,17 +24237,17 @@ mission_templates = [
 ]),
 
 ("faustus_last_battle", mtf_battle_mode, -1, "monasterio",[
-    (0,mtef_visitor_source|mtef_team_0, 0,aif_start_alarmed,1,[]),
-    (1,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
-    (2,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
-    (3,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
-    (4,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
-    (5,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
-    (6,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
-    (7,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
-    (8,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
-    (9,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
-    (10,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,1,[]),
+    (0,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
+    (1,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
+    (2,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
+    (3,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
+    (4,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
+    (5,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
+    (6,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
+    (7,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
+    (8,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
+    (9,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
+    (10,mtef_visitor_source|mtef_team_0, 0,aif_start_alarmed,1,[]),
   ], p_wetter + global_common_triggers +
   [
     cannot_spawn_commoners,
@@ -24291,7 +24291,8 @@ mission_templates = [
       (display_message,"str_cannot_leave_now")
     ],[]),
     (1, 10, 1, [
-      (this_or_next|main_hero_fallen),(num_active_teams_le,1)
+      (this_or_next|main_hero_fallen),
+      (num_active_teams_le,1)
     ],[
       (try_begin),
           (num_active_teams_le,1),
@@ -24319,10 +24320,10 @@ mission_templates = [
     (0, 1, ti_once, [
       (main_hero_fallen),
     ],[
-      (team_set_order_listener, 0, grc_everyone),
-      (team_give_order, 0, grc_everyone, mordr_use_any_weapon),
-      (team_give_order, 0, grc_everyone, mordr_fire_at_will),
-      (team_give_order, 0, grc_everyone, mordr_charge),
+      (team_set_order_listener, "$attacker_team", grc_everyone),
+      (team_give_order, "$attacker_team", grc_everyone, mordr_use_any_weapon),
+      (team_give_order, "$attacker_team", grc_everyone, mordr_fire_at_will),
+      (team_give_order, "$attacker_team", grc_everyone, mordr_charge),
     ]),
 
     (ti_on_agent_killed_or_wounded, 0, 0, [],[
@@ -24353,10 +24354,10 @@ mission_templates = [
     (0, 0, ti_once, [],[
       (set_show_messages, 0),
       (try_for_range, ":cur_group", 0, 9),
-          (team_give_order, 1, ":cur_group", mordr_stand_ground),
-          (team_give_order, 1, ":cur_group", mordr_stand_closer),
-          (team_give_order, 1, ":cur_group", mordr_stand_closer),
-          (team_give_order, 0, ":cur_group", mordr_hold_fire),
+          (team_give_order, "$defender_team", ":cur_group", mordr_stand_ground),
+          (team_give_order, "$defender_team", ":cur_group", mordr_stand_closer),
+          (team_give_order, "$defender_team", ":cur_group", mordr_stand_closer),
+          # (team_give_order, 0, ":cur_group", mordr_hold_fire),
       (try_end),
       (set_show_messages, 1),
     ]),

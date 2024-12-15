@@ -6310,6 +6310,8 @@ simple_triggers = [
   # Here do NPC that is quitting
     (else_try),
         (gt, "$npc_is_quitting", 0),
+        (neq, "$npc_is_quitting", "trp_mathildiz"), # not mathildize
+        (neq, "$npc_is_quitting", "trp_turakina"), # not eamane
         (neq, "$npc_is_quitting", "trp_npc35"), # not ursus
         (eq, "$g_infinite_camping", 0),
         (try_begin),
@@ -6324,7 +6326,7 @@ simple_triggers = [
         (else_try),
             (assign, "$npc_is_quitting", 0),
        (try_end),
-#NPC with grievance
+    #NPC with grievance
     (else_try), #### Grievance
         (gt, "$npc_with_grievance", 0),
         (eq, "$g_infinite_camping", 0),
