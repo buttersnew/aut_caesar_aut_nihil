@@ -24236,8 +24236,7 @@ mission_templates = [
     common_inventory_not_available,
 ]),
 
-("faustus_last_battle", mtf_battle_mode, -1, "monasterio",
-  [
+("faustus_last_battle", mtf_battle_mode, -1, "monasterio",[
     (0,mtef_visitor_source|mtef_team_0, 0,aif_start_alarmed,1,[]),
     (1,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
     (2,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
@@ -24254,7 +24253,7 @@ mission_templates = [
     cannot_spawn_commoners,
     remove_banners,
     improved_lightning,
-
+    common_siege_attacker_do_not_stall,
     (2, 4, 1,[
       (main_hero_fallen),
       (call_script, "script_cf_dplmc_battle_continuation"),
@@ -24273,6 +24272,10 @@ mission_templates = [
     dedal_shield_bash_AI,
 
     (ti_before_mission_start, 0, 0, [],[
+      (assign, "$defender_team", 0),
+      (assign, "$attacker_team", 1),
+      (assign, "$defender_team_2", 2),
+      (assign, "$attacker_team_2", 3),
       (call_script, "script_change_banners_and_chest")
     ]),
     (ti_after_mission_start, 0, 0, [],[

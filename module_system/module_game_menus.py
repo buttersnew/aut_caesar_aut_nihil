@@ -2222,6 +2222,12 @@ game_menus = [
 
       (start_presentation, "prsnt_display_special_items"),
     ]),
+
+    ("camp_action",[
+    ],"Debug sulla event.",[
+      (jump_to_menu, "mnu_freelancer_event_pret_9"),
+    ]),
+
     # ("camp_action",[
     # ],"Export volunteer limits.",[
     #   ## init recruits for player recruitement
