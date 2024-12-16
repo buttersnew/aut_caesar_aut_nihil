@@ -7704,112 +7704,90 @@ game_menus = [
       (jump_to_menu, "mnu_town_cheats"),
     ]),
 ]),
-
-(
-    "castle_guard",mnf_scale_picture,
-    "You approach the gate. The men on the walls watch you closely.^^{s10}",
-    "none",
-    [
-      (str_clear, s10),
-      ##prisoner lord chief Siege Warfare
+("castle_guard",mnf_scale_picture,
+  "You approach the gate. The men on the walls watch you closely.^^{s10}",
+  "none",[
+    (str_clear, s10),
+    ##prisoner lord chief Siege Warfare
+    (try_begin),
+      (party_get_slot, ":town_lord", "$g_encountered_party", slot_town_lord),
+      (gt, ":town_lord", 0),
+      (is_between, ":town_lord", heroes_begin, active_npcs_end),
+      (str_store_troop_name, s11, ":town_lord"),
       (try_begin),
-        (party_get_slot, ":town_lord", "$g_encountered_party", slot_town_lord),
-        (gt, ":town_lord", 0),
-        (is_between, ":town_lord", heroes_begin, active_npcs_end),
-        (str_store_troop_name, s11, ":town_lord"),
-        (try_begin),
-          (party_count_prisoners_of_type, ":party_has_prisoner", "p_main_party", ":town_lord"),
-          (gt, ":party_has_prisoner", 0),
-          (str_store_string, s10, "@You make sure they see that their lord, {s11}, is held prisoner by your army."),
-        (try_end),
+        (party_count_prisoners_of_type, ":party_has_prisoner", "p_main_party", ":town_lord"),
+        (gt, ":party_has_prisoner", 0),
+        (str_store_string, s10, "@You make sure they see that their lord, {s11}, is held prisoner by your army."),
       (try_end),
-      ###chief acaba
-
-        (call_script, "script_set_town_picture"),
-    ],
-    [
-      ("request_shelter",[(party_slot_eq, "$g_encountered_party",slot_party_type, spt_castle),
-                          (ge, "$g_encountered_party_relation", 0)],
-       "Request entry to the fortress.",
-       [(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+    (try_end),
+    ###chief acaba
+    (call_script, "script_set_town_picture"),
+  ],[
+    ("request_shelter",[
+      (party_slot_eq, "$g_encountered_party",slot_party_type, spt_castle),
+      (ge, "$g_encountered_party_relation", 0),
+    ],"Request entry to the fortress.",[
+      (party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+      (try_begin),
+        (lt, ":castle_lord", 0),
+        (jump_to_menu, "mnu_castle_entry_granted"),
+      (else_try),
+        (call_script, "script_troop_get_player_relation", ":castle_lord"),
+        (assign, ":castle_lord_relation", reg0),
+        #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
         (try_begin),
-          (lt, ":castle_lord", 0),
+          (gt, ":castle_lord_relation", -15),
           (jump_to_menu, "mnu_castle_entry_granted"),
         (else_try),
-          (call_script, "script_troop_get_player_relation", ":castle_lord"),
-          (assign, ":castle_lord_relation", reg0),
-          #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
-          (try_begin),
-            (gt, ":castle_lord_relation", -15),
-            (jump_to_menu, "mnu_castle_entry_granted"),
-          (else_try),
-            (jump_to_menu, "mnu_castle_entry_denied"),
-          (try_end),
+          (jump_to_menu, "mnu_castle_entry_denied"),
         (try_end),
-       ]),
-      ("request_meeting_commander",[],
-       "Request a meeting with someone.",
-       [
-          (jump_to_menu, "mnu_castle_meeting"),
-       ]),
-      ("guard_leave",[],
-       "Leave.",
-       [(change_screen_return,0)]),
+      (try_end),
+    ]),
+    ("request_meeting_commander",[],"Request a meeting with someone.",[
+      (jump_to_menu, "mnu_castle_meeting"),
+    ]),
+    ("guard_leave",[],"Leave.",[
+      (change_screen_return,0),
+    ]),
+]),
+("castle_entry_granted",mnf_scale_picture,
+  "After a brief wait, the guards open the gates for you and allow your party inside.",
+  "none",[
+    (call_script, "script_set_town_picture"),
+  ],[
+    ("continue",[],"Continue...",[(jump_to_menu,"mnu_town")]),
+]),
+("castle_entry_denied",mnf_scale_picture,
+  "The lord of this fortress has forbidden you from coming inside these walls,"
+  +" and the guard sergeant informs you that his men will fire if you attempt to come any closer.",
+  "none",[
+    (call_script, "script_set_town_picture"),
+  ],[
+    ("continue",[],"Continue...",[
+      (jump_to_menu,"mnu_castle_guard"),
+    ]),
+]),
+("castle_meeting",mnf_scale_picture,
+  "With whom do you want to meet?",
+  "none",[
+    (party_clear, "p_temp_party"),
+    (call_script, "script_set_town_picture"),
+    (call_script, "script_get_heroes_attached_to_center_aux", "$g_encountered_party", "p_temp_party"),#recursive call
+    (party_get_num_companion_stacks, "$num_castle_meeting_troops", "p_temp_party"),
+    (assign, "$talk_context", tc_castle_gate), #SB : move this up here
+  ],[
+    ("guard_meet_"+str(x),[
+      (gt, "$num_castle_meeting_troops", x),#test this out
+      (party_stack_get_troop_id, ":troop_no", "p_temp_party", x),
+      (is_between, ":troop_no", active_npcs_begin, active_npcs_end),
+      (str_store_troop_name, s5, ":troop_no")],
+      "{s5}.",[(party_stack_get_troop_id, "$castle_meeting_selected_troop", "p_temp_party", x),
+      # (party_stack_get_troop_dna, "$temp_2", "p_temp_party", x),
+      (jump_to_menu,"mnu_castle_meeting_selected")])
+      for x in range(0, 8)
     ]
-  ),
-  (
-    "castle_entry_granted",mnf_scale_picture,
-    "After a brief wait, the guards open the gates for you and allow your party inside.",
-    "none",
-    [
-        (call_script, "script_set_town_picture"),
-    ],
-    [
-      ("continue",[],
-       "Continue...",
-       [(jump_to_menu,"mnu_town")]),
-    ]
-  ),
-
-  (
-    "castle_entry_denied",mnf_scale_picture,
-    "The lord of this fortress has forbidden you from coming inside these walls,\
- and the guard sergeant informs you that his men will fire if you attempt to come any closer.",
-    "none",
-    [
-        (call_script, "script_set_town_picture"),
-    ],
-    [
-      ("continue",[],
-       "Continue...",
-       [(jump_to_menu,"mnu_castle_guard")]),
-    ]
-  ),
-
-  (
-    "castle_meeting",mnf_scale_picture,
-    "With whom do you want to meet?",
-    "none",
-    [   (party_clear, "p_temp_party"),
-        (call_script, "script_set_town_picture"),
-        (call_script, "script_get_heroes_attached_to_center_aux", "$g_encountered_party", "p_temp_party"),#recursive call
-        (party_get_num_companion_stacks, "$num_castle_meeting_troops", "p_temp_party"),
-        (assign, "$talk_context", tc_castle_gate), #SB : move this up here
-    ],
-    [ ("guard_meet_"+str(x),[
-        (gt, "$num_castle_meeting_troops", x),#test this out
-        (party_stack_get_troop_id, ":troop_no", "p_temp_party", x),
-        (is_between, ":troop_no", active_npcs_begin, active_npcs_end),
-        (str_store_troop_name, s5, ":troop_no")],
-       "{s5}.",[(party_stack_get_troop_id, "$castle_meeting_selected_troop", "p_temp_party", x),
-       # (party_stack_get_troop_dna, "$temp_2", "p_temp_party", x),
-       (jump_to_menu,"mnu_castle_meeting_selected")])
-       for x in range(0, 8)
-      ]
-
-    +[("forget_it",[], "Forget it.", [(jump_to_menu,"mnu_castle_guard")]),]
-  ),
-
+    +[("forget_it",[], "Forget it.", [(jump_to_menu,"mnu_castle_guard")]),
+]),
 ("talk_with_commanders",mnf_scale_picture,
   "With whom do you want to talk?",
   "none",[
@@ -7861,26 +7839,22 @@ game_menus = [
 		(change_screen_map_conversation, "$castle_meeting_selected_troop"),
 	]),
 ]),
-  (
-    "castle_meeting_selected",0,
-    "Your request for a meeting is relayed inside, and finally {s6} appears in the courtyard to speak with you.",
-    "none",
-    [
-    (try_begin),
-		(eq, "$g_leave_encounter", 1),
-		(change_screen_return),
-	(try_end),
 
-    (str_store_troop_name, s6, "$castle_meeting_selected_troop")],
-    [
-      ("continue",[],
-       "Continue...",
-       [(jump_to_menu, "mnu_castle_outside"),
-        #do not set context here in case we need to use another one, set tc_castle_gate from parent menu
-        (call_script, "script_start_courtyard_conversation", "$castle_meeting_selected_troop", "$current_town"),
-        ]),
-    ]
-  ),
+("castle_meeting_selected",0,
+  "Your request for a meeting is relayed inside, and finally {s6} appears in the courtyard to speak with you.",
+  "none",[
+    (try_begin),
+      (eq, "$g_leave_encounter", 1),
+      (change_screen_return),
+    (try_end),
+    (str_store_troop_name, s6, "$castle_meeting_selected_troop")
+  ],[
+    ("continue",[],"Continue...",[
+      (jump_to_menu, "mnu_castle_outside"),
+      #do not set context here in case we need to use another one, set tc_castle_gate from parent menu
+      (call_script, "script_start_courtyard_conversation", "$castle_meeting_selected_troop", "$current_town"),
+    ]),
+]),
 
   (
     "castle_besiege",mnf_enable_hot_keys,
@@ -8042,7 +8016,7 @@ game_menus = [
       (try_begin),
         (party_slot_eq,"$g_encountered_party",slot_center_blockaded,1),
         (str_store_string, s15, "@>>Your men are building checkpoints and small camps around {s4} to prevent anyone from going in or out. "+
-        "As long as the blockad is unfinished the town can refill its food supplies.^^"),
+        "As long as the blockade is unfinished the town can refill its food supplies.^^"),
       (else_try),
         (party_slot_eq,"$g_encountered_party",slot_center_blockaded,2), #final
         (str_store_string, s15, "@>>Your perimeter control is ready. You have set a perimeter for surveillance around {s4}. No one can enter or leave without the knowledge of your men.^" +
@@ -11688,8 +11662,7 @@ game_menus = [
         (call_script, "script_dplmc_store_troop_is_female_reg", ":town_lord", 4),
       (try_end),
       #possibly replace "the" with "your"
-    ],"Go to the {reg4?Lady:Lord}'s hall.",
-    [
+    ],"Go to the {reg4?Lady:Lord}'s hall.",[
       (call_script, "script_enter_court", "$current_town"),
     ], "Door to the hall."),
 
@@ -15602,6 +15575,10 @@ game_menus = [
           (party_slot_eq, "$current_town", slot_town_lord, ":giver"),
           (jump_to_menu, "mnu_cannot_enter_court_treason"),
       (else_try),
+          (this_or_next|key_is_down, key_left_shift),
+          (key_is_down, key_right_shift),
+          (start_presentation, "prsnt_ask_audience"),
+      (else_try),
           (this_or_next|neq, "$players_kingdom", "$g_encountered_party_faction"),
           (neg|troop_slot_ge, "trp_player", slot_troop_renown, 50),
           (neg|troop_slot_ge, "trp_player", slot_troop_renown, 125),
@@ -15703,6 +15680,10 @@ game_menus = [
           (quest_get_slot, ":giver", "qst_player_treason", slot_quest_giver_troop),
           (party_slot_eq, "$current_town", slot_town_lord, ":giver"),
           (jump_to_menu, "mnu_cannot_enter_court_treason"),
+      (else_try),
+          (this_or_next|key_is_down, key_left_shift),
+          (key_is_down, key_right_shift),
+          (start_presentation, "prsnt_ask_audience"),
       (else_try),
           (this_or_next|neq, "$players_kingdom", "$g_encountered_party_faction"),
           (neg|troop_slot_ge, "trp_player", slot_troop_renown, 50),
@@ -16183,6 +16164,16 @@ game_menus = [
               (val_add, ":cur_entry", 1),
           (try_end),
 
+          (call_script, "script_spawn_companion", "$current_town", location_tavern),
+          (assign, ":companion", reg0),
+          (try_begin),
+              (is_between, ":companion", companions_begin, companions_end),
+              (neg|main_party_has_troop, ":companion"),
+              (troop_slot_eq, ":companion", slot_troop_occupation, 0),
+              (set_visitor, ":cur_entry", ":companion"),
+              (val_add, ":cur_entry", 1),
+          (try_end),
+
           (try_begin),
               (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state,3),
               (eq, "$current_town", "p_town_13"),
@@ -16229,15 +16220,6 @@ game_menus = [
               (val_add, ":cur_entry", 1),
           (try_end),
 
-          (call_script, "script_spawn_companion", "$current_town", location_tavern),
-          (assign, ":companion", reg0),
-          (try_begin),
-              (is_between, ":companion", companions_begin, companions_end),
-              (neg|main_party_has_troop, ":companion"),
-              (troop_slot_eq, ":companion", slot_troop_occupation, 0),
-              (set_visitor, ":cur_entry", ":companion"),
-              (val_add, ":cur_entry", 1),
-          (try_end),
           # (try_for_range, ":companion_candidate", companions_begin, companions_end),
               # (troop_slot_eq, ":companion_candidate", slot_troop_occupation, 0),
               # (troop_slot_eq, ":companion_candidate", slot_troop_cur_center, "$current_town"),
@@ -16354,6 +16336,7 @@ game_menus = [
                       (assign, ":rebel_troop", "trp_judean_village_walker"),
                   (try_end),
                   (set_visitor, ":cur_entry", ":rebel_troop"),
+                  (display_message, "@Added Peasant"),
                   (val_add, ":cur_entry", 1),
                   (assign, ":end_cond", -1),
               (try_end),
@@ -24676,13 +24659,10 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     "none",[
       (call_script, "script_write_economic_info_to_s0", "$g_notification_menu_var2", 0),
       (str_store_string_reg, s21, s0),
-
       (store_add, ":slot", slot_province_senatorial_begin, "$g_notification_menu_var2"),
       (troop_get_slot, "$temp4_1", "trp_province_array", ":slot"),
-
       (store_add, ":string", "$g_notification_menu_var2", str_province_begin),
       (str_store_string, s10, ":string"),
-
       (try_begin),
           (le, "$temp4_1", 0),
           (faction_get_slot, ":leader", "$players_kingdom", slot_faction_leader),
@@ -24692,11 +24672,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (try_end),
       (str_store_party_name, s11, "$g_notification_menu_var1"),
     ],[
-    ("accept",[],
-      "Accept the honor",
-    [
+    ("accept",[],"Accept the honor",[
       (call_script, "script_change_troop_renown", "trp_player", 50),
-
       (troop_set_slot, "trp_province_array", "$g_notification_menu_var2", "trp_player"),
       (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, 1),
       (call_script, "script_give_center_to_lord2", "$g_notification_menu_var1", "trp_player", 0),
@@ -24705,13 +24682,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (str_store_string, s23, "$g_notification_menu_var2"),
       (str_store_party_name, s24, "$g_notification_menu_var1"),
       (display_log_message, "@You have taken over the governorship of {s23}. {s24} is integrated into the newly found province."),
-
       (change_screen_return),
     ]),
-
-    ("decline",[],
-      "Decline the honor",
-    [
+    ("decline",[],"Decline the honor",[
       (try_begin),
           (le, "$temp4_1", 0),
           (faction_get_slot, ":leader", "$players_kingdom", slot_faction_leader),
@@ -24724,7 +24697,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (change_screen_return),
     ]),
 ]),
-
 ("notification_player_senatorial_province_appointed",0,
   "The governorship of {s10} has expired and the senate has decided to awared it to you. If you accept you will take over ownership of all settlements of the province. You may decline the honor, but it will cost you support in the senate.^^{s21}",
   "none",[
@@ -24769,7 +24741,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (change_screen_map),
   ]),
 ]),
-
 ("notification_player_faction_province_decide",0,
   "Hello",
   "none",[
@@ -24779,7 +24750,6 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     "Nothing.",
     [(change_screen_map)]),
 ]),
-
 ("notification_player_senatorial_province_expires",0,
   "Your governorship of {s10} has expired and the senate appointed a new governor.",
   "none",[
@@ -24792,53 +24762,38 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (change_screen_map),
   ]),
 ]),
-
-  (
-    "notification_player_faction_fief_appointed",0,
-    "Your liege {s10} has decided to confer {s11} on you. You may decline the honor, but it will probably mean that you will not receive other awards for a while.",
-    "none",
-    [
+("notification_player_faction_fief_appointed",0,
+  "Your liege {s10} has decided to confer {s11} on you. You may decline the honor, but it will probably mean that you will not receive other awards for a while.",
+  "none",[
     (faction_get_slot, ":leader", "$players_kingdom", slot_faction_leader),
     (str_store_troop_name, s10, ":leader"),
     (str_store_party_name, s11, "$g_notification_menu_var1"),
-    ],
-    [
-       ("accept",
-       [],"Accept the honor",
-       [
-        (call_script, "script_give_center_to_lord", "$g_notification_menu_var1", "trp_player", 0), #Zero means don't add garrison
-        (change_screen_return),
-        ]),
-
-       ("decline",
-       [],"Decline the honor",
-       [
-        (assign, "$g_dont_give_fief_to_player_days", 30),
-        (change_screen_return),
-        ]),
-    ]
-  ),
-  ("starting_mission_finished",mnf_disable_all_keys,
-    "The slaves run havoc in the villa. You try your best to stop them but without success:\
- Your former master Marcus Gaius Crachius is captured and forced to watch how two slaves rape his daughter. Then both are tortured to death.\
- Meanwhile, you tried to loot the villa, but the other slaves set it ablaze. In the chaos, you weren't able to loot anything of value. But then, additional guards approach.^\
- Most of the slaves are captured by the guards, while some manage to flee into the forests.^\
- Some guards are chasing you and you run as fast as you have never run before in your life. Luckily, you spot a farmer with his carriage driving along a road.\
- You jump on the carriage and hide yourself. The farmer didn't notice. The guards are too exhausted and head back.^^Soon you fall asleep.",
-    "none",
-    [
-     (set_background_mesh, "mesh_pic_wildfire"),
-    ],
-    [
-
-      ("continue",[], "Continue.",
-       [
-       (add_xp_as_reward, 250),
-       (jump_to_menu, "mnu_start_phase_3"),
-       ]),
-    ]
-  ),
-
+    (set_background_mesh, "mesh_pic_messenger"),
+  ],[
+    ("accept",[],"Accept the honor",[
+      (call_script, "script_give_center_to_lord", "$g_notification_menu_var1", "trp_player", 0), #Zero means don't add garrison
+      (change_screen_return),
+    ]),
+    ("decline",[],"Decline the honor",[
+      (assign, "$g_dont_give_fief_to_player_days", 30),
+      (change_screen_return),
+    ]),
+]),
+("starting_mission_finished",mnf_disable_all_keys,
+  "The slaves run havoc in the villa. You try your best to stop them but without success:"
+  +" Your former master Marcus Gaius Crachius is captured and forced to watch how two slaves rape his daughter. Then both are tortured to death."
+  +" Meanwhile, you tried to loot the villa, but the other slaves set it ablaze. In the chaos, you weren't able to loot anything of value. But then, additional guards approach.^"
+  +" Most of the slaves are captured by the guards, while some manage to flee into the forests.^"
+  +" Some guards are chasing you and you run as fast as you have never run before in your life. Luckily, you spot a farmer with his carriage driving along a road."
+  +" You jump on the carriage and hide yourself. The farmer didn't notice. The guards are too exhausted and head back.^^Soon you fall asleep.",
+  "none",[
+    (set_background_mesh, "mesh_pic_wildfire"),
+  ],[
+    ("continue",[], "Continue.",[
+      (add_xp_as_reward, 250),
+      (jump_to_menu, "mnu_start_phase_3"),
+    ]),
+]),
 ("start_phase_3",mnf_disable_all_keys,
   "The farmer was driving to Rome. When you awake, you witness the eternal city for the first time in your life and become overwhelmed by its splendor. You are awestruck."
   +" The streets are crowded with hundreds of people. Plebeians from all rungs of society can be seen. Farmers, bakers, merchants, craftsmen, and more are doing their daily business, with a few patricians mingling among them. As you are taking in the view, the carriage suddenly halts. You decide to jump from the carriage and give a short prayer of thanks."
@@ -56539,10 +56494,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("option_1",[],"Continue.",[
       (call_script, "script_change_player_party_morale", 5),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 ("event_bad_omen",0,
-  "Bad Omen!^^{s20}",
+  "Bad Omen!^^{s20}^^Hint: This event is caused by your low piety. Make sacrifices to the gods!",
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
     (store_random_in_range, ":string", "str_bad_omen_1", "str_bad_omen_end"),
@@ -56550,6 +56506,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("option_1",[],"Continue.",[
       (call_script, "script_change_player_party_morale", -5),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -59739,14 +59696,14 @@ It is said, that she lives now together with the goat.",
 
  ###EBD OF WLOD ADVENTURE II
 ("fief_management",0,
-  ".",
+  "Fief management menu.",
   "none", [
     (start_presentation, "prsnt_fief_management"),
   ],[
 ]),
 
 ("return_fief_management",0,
-  "HAHA! You are stuck in a menu.",
+  "Return fief managment menu. HAHA! You are stuck in a menu.",
   "none",[
     (store_encountered_party, "$g_encountered_party"),
     (try_begin),
@@ -59870,6 +59827,9 @@ It is said, that she lives now together with the goat.",
     (else_try),
         (party_slot_eq, "$g_encountered_party", slot_party_type, spt_village),
         (jump_to_menu, "mnu_village"),
+    (else_try),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_latifundium),
+        (jump_to_menu, "mnu_latifundium"),
     (else_try),
         (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
         (party_slot_eq, "$g_encountered_party", slot_party_type, spt_castle),
@@ -60485,6 +60445,8 @@ It is said, that she lives now together with the goat.",
     (assign, "$temp4", reg1),
     (store_sub, "$temp4_1", 100, reg0),
     (val_mul, "$temp4_1", 1000),
+    (str_clear, s23),
+    (str_clear, s24),
     (try_begin),
         (lt, "$temp4", 0),
         (str_store_string, s23, "@Disaster!^^{s10} was hit by a disastrous {s0}. {s1}^The people pray to the gods that the disaster may end soon."),
@@ -60504,11 +60466,19 @@ It is said, that she lives now together with the goat.",
     (try_end),
   ],[
     ("option_2", [
+      (lt, "$temp4", 0),
       (store_faction_of_party, ":fac", "$g_notification_menu_var1"),
       (is_between, ":fac", kingdoms_begin, kingdoms_end),
-      (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
-      (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
-      (lt, "$temp4", 0),
+      (assign, ":c", 0),
+      (try_begin),
+        (party_slot_eq, "$g_notification_menu_var1", slot_town_lord, "trp_player"),
+        (assign, ":c", 1),
+      (else_try),
+        (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
+        (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
+        (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
       (assign, reg11, "$temp4_1"),
     ],"Sent {reg11} denars.",[
       (call_script, "script_change_center_prosperity", "$g_notification_menu_var1", 4),
@@ -60531,11 +60501,19 @@ It is said, that she lives now together with the goat.",
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
+      (lt, "$temp4", 0),
       (store_faction_of_party, ":fac", "$g_notification_menu_var1"),
       (is_between, ":fac", kingdoms_begin, kingdoms_end),
-      (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
-      (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
-      (lt, "$temp4", 0),
+      (assign, ":c", 0),
+      (try_begin),
+        (party_slot_eq, "$g_notification_menu_var1", slot_town_lord, "trp_player"),
+        (assign, ":c", 1),
+      (else_try),
+        (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
+        (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
+        (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
       (store_mul, reg10, "$temp4_1", 2),
       (val_div, reg10, 3),
     ],"Sent {reg10} denars.",[
@@ -60559,11 +60537,19 @@ It is said, that she lives now together with the goat.",
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
+      (lt, "$temp4", 0),
       (store_faction_of_party, ":fac", "$g_notification_menu_var1"),
       (is_between, ":fac", kingdoms_begin, kingdoms_end),
-      (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
-      (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
-      (lt, "$temp4", 0),
+      (assign, ":c", 0),
+      (try_begin),
+        (party_slot_eq, "$g_notification_menu_var1", slot_town_lord, "trp_player"),
+        (assign, ":c", 1),
+      (else_try),
+        (faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
+        (faction_slot_eq, ":fac", slot_faction_government_type, gov_imperial),
+        (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
       (store_div, reg10, "$temp4_1", 2),
     ],"Sent {reg10} denars.",[
       (call_script, "script_change_player_relation_with_center", "$g_notification_menu_var1", 2),

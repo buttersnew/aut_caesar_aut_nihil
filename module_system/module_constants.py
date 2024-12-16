@@ -1031,7 +1031,7 @@ spt_bandit_lair             = 15
 
 dplmc_spt_gift_caravan      = 16
 spt_player_camp             = 17 #
-spt_latifunidum             = 18
+spt_latifundium             = 18
 spt_companion_raider	    = 19
 spt_prisoner_train          = 20
 spt_rebellion               = 21

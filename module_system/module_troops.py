@@ -3330,7 +3330,7 @@ str_17|agi_15|int_15|cha_17|level(23), wp(170), knows_veteran_npc, 0x00000001a50
 [itm_graves_simple_2,itm_horse_2,itm_praetorian_cav_scutum,itm_roman_spatha,itm_hasta2,itm_legion_hamata_cape_4,itm_1_imp_gallic_c_plume],
 str_17|agi_15|int_15|cha_17|level(23), wp(170), knows_veteran_npc, 0x00000001b808100939cbe544e12648a300000000001e9a820000000000000000 ],
 ["npc31", "Ra Karak", "Ra Karak", tf_hero|tf_unmoveable_in_party_window|tf_randomize_face, no_scene, reserved, fac_commoners,
-[itm_armor_of_african_gods,itm_leather_covered_round_shield,itm_throwing_spears,itm_war_spear,itm_arabian_horse_a,itm_1_imp_gallic_f_plume,itm_caligea],
+[itm_armor_of_african_gods,itm_leather_covered_round_shield,itm_throwing_spears,itm_war_spear,itm_arabian_horse_a,itm_caligea],
 str_30|agi_20|int_9|cha_15|level(40), wp(300), knows_veteran_npc|knows_ironflesh_10|knows_power_strike_10, african_face_younger,african_face_older ],
 ["npc32", "Gaius Lemonius", "Gaius Lemonius", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_horse_2,itm_officer_shield_2,itm_roman_spatha,itm_hasta1,itm_khergit_elite_armor,itm_1_imp_gallic_i_plume],

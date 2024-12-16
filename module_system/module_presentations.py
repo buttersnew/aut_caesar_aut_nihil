@@ -4668,11 +4668,11 @@ presentations = [
             (eq, "$g_presentation_credits_obj_1_alpha", 1),
             (val_add, ":num_lines", 1),
         (try_end),
-        (try_begin),
-            (neq, "$g_is_emperor", 1),
-            (val_add, ":num_owned_center_values_for_tax_efficiency", 1),
-        (try_end),
-        (try_begin),
+        # (try_begin),
+            # (neq, "$g_is_emperor", 1),
+        (val_add, ":num_owned_center_values_for_tax_efficiency", 1),
+        # (try_end),
+        (try_begin),#tariffs
             (is_between, ":center_no", towns_begin, towns_end),
             (eq, "$g_presentation_credits_obj_1_alpha", 1),
             (val_add, ":num_lines", 1),
@@ -4712,6 +4712,7 @@ presentations = [
     (try_end),
 
     (try_for_parties, ":party_no"),
+        (party_is_active, ":party_no"),
         (assign, ":garrison_troop", 0),
         (party_get_template_id, ":ptid", ":party_no"),
         (try_begin),
@@ -4743,7 +4744,7 @@ presentations = [
             (this_or_next|troop_slot_eq, ":party_leader", slot_troop_legion, 13),
             (this_or_next|troop_slot_eq, ":party_leader", slot_troop_aux, "pt_player_aux_inf"),
             (troop_slot_eq, ":party_leader", slot_troop_aux, "pt_player_aux_cav"),
-            (neg|troop_slot_ge, "trp_kingdom_7_lord", slot_troop_player_relation, 10),
+            # (neg|troop_slot_ge, "trp_kingdom_7_lord", slot_troop_player_relation, 10),
             (assign, ":patrol_troop", 1),
         (try_end),
 
@@ -4838,11 +4839,6 @@ presentations = [
         (troop_slot_eq, ":spouse", slot_troop_bachus, 3),
         (val_add, ":num_lines", 1), #
     (try_end),
-    (try_begin),##rents from the villa
-	      (troop_slot_eq, "trp_global_variables", g_player_villa, 2),
-	      (eq, "$g_player_rent", 1),
-        (val_add, ":num_lines", 1), #
-    (try_end),
     (try_begin),#emperors pocket
         (eq, "$g_is_emperor", 1),
         (faction_get_slot, reg0, "$players_kingdom", slot_faction_emperors_bocket),
@@ -4854,16 +4850,45 @@ presentations = [
         (gt, "$g_player_villa_costs", 0),
         (val_add, ":num_lines", 1), #
     (try_end),
-
-    (try_begin),
+    (try_begin),##rents from the villa
+	      (troop_slot_eq, "trp_global_variables", g_player_villa, 2),
+	      (eq, "$g_player_rent", 1),
+        (val_add, ":num_lines", 1), #
+    (try_end),
+    (try_begin),#staff salary
         (call_script, "script_calculate_staff_salary"),
         (gt, reg0, 0),
         (val_add, ":num_lines", 1), # staff salary
     (try_end),
-
-    (try_begin),
+    (try_begin), #earlier cash, new cash
         (gt, "$g_player_chamberlain", 0),
-        (val_add, ":num_lines", 2), #earlier cash, new cash
+        (val_add, ":num_lines", 2),
+    (try_end),
+    (assign, ":player_tax_faction", -1),
+    (try_begin),
+        (faction_slot_eq, "$players_kingdom", slot_faction_state, sfs_active),
+        (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+        (assign, ":player_tax_faction", "$players_kingdom"),
+    (else_try),
+        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        (assign, ":score_to_beat", 0),
+        (try_for_range, ":kingdom", npc_kingdoms_begin, npc_kingdoms_end),
+            (faction_slot_eq, ":kingdom", slot_faction_state, sfs_active),
+            (store_relation, ":score", ":kingdom", "$players_kingdom"),
+            (ge, ":score", ":score_to_beat"),
+            (assign, ":player_tax_faction", ":kingdom"),
+        (try_end),
+    (try_end),
+    (try_begin),# imperial taxes
+        (is_between, ":player_tax_faction", kingdoms_begin, kingdoms_end),
+        (val_add, ":num_lines", 3),
+    (try_end),
+    (try_begin),# tributes
+        (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
+        (faction_get_slot, ":tributary_off", "$players_kingdom", slot_faction_tributary_of),
+        (faction_slot_eq, ":tributary_off", slot_faction_state, sfs_active),
+        (is_between, ":tributary_off", kingdoms_begin, kingdoms_end),
+        (val_add, ":num_lines", 1),
     (try_end),
 
     (val_add, ":num_lines", 4),
@@ -5550,7 +5575,7 @@ presentations = [
             (gt, "$g_player_chamberlain", 0),
             (str_store_string, s55, "str_loss_due_to_tax_inefficiency"),
             (assign, reg0, ":percent"),
-            (val_mul, reg0, -1),
+            # (val_mul, reg0, -1),
             (str_store_string, s55, "@{s55} ({reg0}% regained)"),
             (create_text_overlay, reg1, "@{s55}", 0),
         (else_try),
@@ -5582,6 +5607,7 @@ presentations = [
     (assign, "$g_player_num_creditors", 0), #motomataru chief fix debt morale penalty
     (assign, "$g_player_old_wages", 0), #motomataru chief fix debt morale penalty
     (try_for_parties, ":party_no"),
+        (party_is_active, ":party_no"),
         (party_get_template_id, ":ptid", ":party_no"),
         (assign, ":garrison_troop", 0),
         (try_begin),
@@ -5773,22 +5799,6 @@ presentations = [
     (try_end),
     #END STAFF SPENDING
     ## begin imperial tax if player is governor
-    (assign, ":player_tax_faction", -1),
-    (try_begin),
-        (faction_slot_eq, "$players_kingdom", slot_faction_state, sfs_active),
-        (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
-        (assign, ":player_tax_faction", "$players_kingdom"),
-    (else_try),
-        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
-        (assign, ":score_to_beat", 0),
-        (try_for_range, ":kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-            (faction_slot_eq, ":kingdom", slot_faction_state, sfs_active),
-            (store_relation, ":score", ":kingdom", "$players_kingdom"),
-            (ge, ":score", ":score_to_beat"),
-            (assign, ":player_tax_faction", ":kingdom"),
-        (try_end),
-    (try_end),
-
     (try_begin),
         (is_between, ":player_tax_faction", kingdoms_begin, kingdoms_end),
         (store_add, ":taxes", ":latifundia_total", ":workshops_total"),
@@ -8074,9 +8084,9 @@ presentations = [
     # Back to menu - graphical button
     (create_game_button_overlay, reg1, "str_return"),
     (position_set_x, pos1, 500),
-        (position_set_y, pos1, 23),
-        (overlay_set_position, reg1, pos1),
-        (assign, "$g_jrider_faction_report_return_to_menu", reg1),
+    (position_set_y, pos1, 23),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
     # Set Headlines
     (assign, ":x_poshl", 215),
@@ -8601,11 +8611,8 @@ presentations = [
         ]),
    ]),
 ##report for estates owned by player
-  ("estate_report", 0,
-   mesh_load_window,
-   [
-     (ti_on_presentation_load,
-      [
+("estate_report", 0, mesh_load_window,[
+  (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
     # #0. BACKROUND
@@ -23868,7 +23875,7 @@ presentations = [
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
     # Presentation title, centered at the top
-    (create_text_overlay, reg1, "@_Settlement Overview_", tf_center_justify),
+    (create_text_overlay, reg1, "@Settlement Overview", tf_center_justify),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 685), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
@@ -24076,12 +24083,13 @@ presentations = [
       (assign, ":counter", 0),
       (assign, ":y_name_addition2", 0),
       (assign, reg10, 0),
-      (try_for_range_backwards, ":building", village_improvements_begin, walled_center_improvements_end),
+      (store_current_hours, ":cur_hours"),
+      (try_for_range, ":building", village_improvements_begin, walled_center_improvements_end),
         (party_get_slot, ":improvement_1", ":center", slot_center_current_improvement),
         (party_get_slot, ":improvement_2", ":center", slot_center_current_improvement_2),
-
         (this_or_next|eq, ":improvement_1", ":building"),
         (eq, ":improvement_2", ":building"),
+
         (call_script, "script_get_improvement_details",  ":building", ":center"),
         (str_store_string_reg, s20, s0),
         (try_begin),
@@ -24098,6 +24106,7 @@ presentations = [
             (eq, ":improvement_2", ":building"),
             (party_get_slot, reg10, ":center", slot_center_improvement_2_end_hour),
         (try_end),
+        (val_sub, reg10, ":cur_hours"),
         (val_div, reg10, 24),
         (val_max, reg10, 1),
         # (val_sub, reg10, 1),
@@ -24197,20 +24206,20 @@ presentations = [
 ##fief management END
 
 ###new legion management ####################
- ("select_auxiliar_cohort", 0, 0, [
+ ("select_auxiliar_cohort", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (str_store_string, s20, "str_none"),
     (try_begin),
@@ -24528,19 +24537,19 @@ presentations = [
     ]),
 ]),
 
-("select_legion_command", 0, 0, [
+("select_legion_command", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (str_store_string, s20, "str_none"),
     (try_begin),
@@ -24790,19 +24799,19 @@ presentations = [
   ]),
 ]),
 
-("legion_management", 0, 0, [
+("legion_management", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
     (create_text_overlay, reg1, "@_Legions of Rome_", tf_center_justify|tf_with_outline),
@@ -25711,7 +25720,7 @@ presentations = [
   ]),
 ]),
 
-("legion_selection", 0, 0, [
+("legion_selection", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -25765,13 +25774,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_lover_talk"),
     (str_store_string, s22, ":string"),
@@ -26349,7 +26358,7 @@ presentations = [
   ]),
 ]),
 
-("aux_selection", 0, 0, [
+("aux_selection", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -26403,13 +26412,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
     (store_add, ":slot", slot_aux_legion_begin, "$temp4_1"),
@@ -26953,20 +26962,20 @@ presentations = [
   ]),
 ]),
 
-("legion_select_hq", 0, 0, [
+("legion_select_hq", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        # #0. BACKROUND
-        (create_mesh_overlay, reg0, "mesh_load_window"),
-        (position_set_x, pos1, -1),
-        (position_set_y, pos1, -1),
-        (overlay_set_position, reg0, pos1),
-        (position_set_x, pos1, 1002),
-        (position_set_y, pos1, 1002),
-        (overlay_set_size, reg0, pos1),
+        # # #0. BACKROUND
+        # (create_mesh_overlay, reg0, "mesh_load_window"),
+        # (position_set_x, pos1, -1),
+        # (position_set_y, pos1, -1),
+        # (overlay_set_position, reg0, pos1),
+        # (position_set_x, pos1, 1002),
+        # (position_set_y, pos1, 1002),
+        # (overlay_set_size, reg0, pos1),
 
         (try_begin),
             (eq, "$temp4_1", 13),#player
@@ -27303,29 +27312,27 @@ presentations = [
     (try_end),
   ]),
 ]),
-
-
 ##########LEGION MANAGEMENT END
 
 ##province management BEGIN
-("influence_nero", 0, 0, [
+("influence_nero", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
     (create_text_overlay, reg1, "@_You can influence the Princeps to change governors_", tf_center_justify),
     (position_set_x, pos1, 500), # Higher, means more toward the right
-    (position_set_y, pos1, 710), # Higher, means more toward the top
+    (position_set_y, pos1, 700), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1300),
     (position_set_y, pos1, 1300),
@@ -27617,24 +27624,24 @@ presentations = [
 ]),
 
 ##province management BEGIN
-("influence_senate", 0, 0, [
+("influence_senate", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
-    (create_text_overlay, reg1, "@_You can influence the Senate to change governors_", tf_center_justify),
+    (create_text_overlay, reg1, "@You can influence the Senate to change governors", tf_center_justify),
     (position_set_x, pos1, 500), # Higher, means more toward the right
-    (position_set_y, pos1, 710), # Higher, means more toward the top
+    (position_set_y, pos1, 700), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1300),
     (position_set_y, pos1, 1300),
@@ -27668,23 +27675,6 @@ presentations = [
     # (position_set_y, pos1, 23),
     # (overlay_set_position, reg1, pos1),
     # (assign, "$g_jrider_faction_coat_of_arms", reg1),
-
-
-    # clear the string globals that we'll use
-    (str_clear, s0),
-    (str_clear, s20),
-    (str_clear, s21),
-    (str_clear, s23),
-    (str_clear, s24),
-    # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
-    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
-    (position_set_x, pos1, 50),
-    (position_set_y, pos1, 70),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 860),
-    (position_set_y, pos1, 527),
-    (overlay_set_area_size, reg1, pos1),
-
 
     (create_text_overlay, reg0, "@Province", tf_left_align),
     (position_set_x, pos1, 50),
@@ -27726,6 +27716,22 @@ presentations = [
     # (position_set_y, pos2, 1200),
     # (overlay_set_size, reg0, pos2),
 
+    # clear the string globals that we'll use
+    (str_clear, s0),
+    (str_clear, s20),
+    (str_clear, s21),
+    (str_clear, s23),
+    (str_clear, s24),
+    # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
+    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 50),
+    (position_set_y, pos1, 70),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 860),
+    (position_set_y, pos1, 527),
+    (overlay_set_area_size, reg1, pos1),
+    (set_container_overlay, reg1),#start scroll
+
     (assign, ":num_lines", 0),
     (try_for_range_backwards, ":province", slot_province_governor_begin, p_provinces_end),
         (troop_set_slot, "trp_temp_array_a", ":province", 0),
@@ -27752,7 +27758,6 @@ presentations = [
     (position_set_y, pos2, 900),
 
     (assign, ":slot", 0),
-    (set_container_overlay, reg1),#start scroll
     (try_for_range_backwards, ":province", slot_province_governor_begin, p_provinces_end),
         (store_add, ":slot", ":province", slot_province_senatorial_begin),
         (troop_get_slot, ":is_senatorial", "trp_province_array", ":slot"),
@@ -27948,19 +27953,19 @@ presentations = [
   ]),
 ]),
 
-("province_management", 0, 0, [
+("province_management", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
     (create_text_overlay, reg1, "@_Province List_", tf_center_justify),
@@ -28294,7 +28299,7 @@ presentations = [
   ]),
 ]),
 
-("governor_selection", 0, 0, [
+("governor_selection", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -28341,13 +28346,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -28608,19 +28613,19 @@ presentations = [
   ]),
 ]),
 
-("governor_change", 0, 0, [
+("governor_change", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -28884,19 +28889,19 @@ presentations = [
   ]),
 ]),
 
-("make_province_senatorial", 0, 0,[
+("make_province_senatorial", 0, mesh_load_window,[
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -29029,19 +29034,19 @@ presentations = [
   ]),
 ]),
 
-("make_province_imperial", 0, 0, [
+("make_province_imperial", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -29182,7 +29187,7 @@ presentations = [
   ]),
 ]),
 
-("province_notifiction_player", 0, 0, [
+("province_notifiction_player", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -29201,13 +29206,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (store_add, ":slot", "$g_notification_menu_var2", slot_province_senatorial_begin),
     (troop_get_slot, ":is_senatorial", "trp_province_array", ":slot"),
@@ -29569,7 +29574,7 @@ presentations = [
   ]),
 ]),
 
-("influence_governor_change", 0, 0, [
+("influence_governor_change", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -29595,13 +29600,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
 
     (store_add, ":string", "$g_notification_menu_var2", "str_province_begin"),
@@ -29933,7 +29938,7 @@ presentations = [
     (try_end),
   ]),
 ]),
-("influence_governor_change_senate", 0, 0, [
+("influence_governor_change_senate", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -29966,13 +29971,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
 
     (store_add, ":string", "$g_notification_menu_var2", "str_province_begin"),
@@ -30313,9 +30318,8 @@ presentations = [
     #    - id item in combo box vassal (-1 if not vassal)
 
 
-    ("worldmap_fief_selection_feudal", 0, 0, [
-    (ti_on_presentation_load,
-      [
+("worldmap_fief_selection_feudal", 0, mesh_load_window, [
+  (ti_on_presentation_load,[
         #init variables
         (assign, "$g_presentation_obj_5", -1),
         (assign, "$first_center_btn", -1),
@@ -30338,13 +30342,13 @@ presentations = [
         (set_fixed_point_multiplier, 1000),
 
         # #0. BACKROUND
-        (create_mesh_overlay, reg0, "mesh_load_window"),
-        (position_set_x, pos1, -1),
-        (position_set_y, pos1, -1),
-        (overlay_set_position, reg0, pos1),
-        (position_set_x, pos1, 1002),
-        (position_set_y, pos1, 1002),
-        (overlay_set_size, reg0, pos1),
+        # (create_mesh_overlay, reg0, "mesh_load_window"),
+        # (position_set_x, pos1, -1),
+        # (position_set_y, pos1, -1),
+        # (overlay_set_position, reg0, pos1),
+        # (position_set_x, pos1, 1002),
+        # (position_set_y, pos1, 1002),
+        # (overlay_set_size, reg0, pos1),
 
       ## initialization part begin
 
@@ -35497,7 +35501,7 @@ presentations = [
 ]),
 ###end presentation to customize legion and auxiliar unit ##################################################################################################################################
 
-("recruit_cohorts", 0, 0, [
+("recruit_cohorts", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -35512,13 +35516,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
 
     (create_text_overlay, reg1, "@Select a military unit by pressing on its name.", tf_center_justify|tf_with_outline),
@@ -35857,7 +35861,7 @@ presentations = [
   ]),
 ]),
 
-("manage_cohorts", 0, 0, [
+("manage_cohorts", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -35875,13 +35879,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (assign, reg22, ":num_of_cohorts"),
     (store_mul, reg0, reg22, -1),
@@ -36205,7 +36209,7 @@ presentations = [
   ]),
 ]),
 
-("manage_cohorts_town", 0, 0, [
+("manage_cohorts_town", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -36220,13 +36224,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (assign, reg22, ":num_of_cohorts"),
     (store_mul, reg0, reg22, -1),
@@ -36606,7 +36610,7 @@ presentations = [
   ]),
 ]),
 
-("imperial_budget_report", 0, 0, [
+("imperial_budget_report", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -36617,13 +36621,13 @@ presentations = [
     (assign, ":total_income", 0),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (create_text_overlay, reg1, "@Imperial budget report.", tf_center_justify),
     (position_set_x, pos1, 1500),
@@ -37636,7 +37640,7 @@ presentations = [
     ]),
 ]),
 
-("select_kingdom", 0, 0, [
+("select_kingdom", 0, mesh_load_window, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
@@ -37663,13 +37667,13 @@ presentations = [
     (try_end),
 
     # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_load_window"),
-    (position_set_x, pos1, -1),
-    (position_set_y, pos1, -1),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 1002),
-    (position_set_y, pos1, 1002),
-    (overlay_set_size, reg0, pos1),
+    # (create_mesh_overlay, reg0, "mesh_load_window"),
+    # (position_set_x, pos1, -1),
+    # (position_set_y, pos1, -1),
+    # (overlay_set_position, reg0, pos1),
+    # (position_set_x, pos1, 1002),
+    # (position_set_y, pos1, 1002),
+    # (overlay_set_size, reg0, pos1),
 
     (create_combo_button_overlay, "$g_presentation_obj_1"),
     (position_set_x, pos1, 750),
@@ -39252,4 +39256,182 @@ presentations = [
     (try_end),
   ]),
 ]),
+
+("ask_audience", 0, 0, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    (try_for_range, ":active_npc", active_npcs_begin, kingdom_ladies_end),
+        (troop_set_slot, "trp_temp_array_a", ":active_npc", -1),
+        (troop_set_slot, "trp_temp_array_b", ":active_npc", -1),
+    (try_end),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_game_log_window"),
+    (position_set_x, pos1, 300),
+    (position_set_y, pos1, 100),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 400),
+    (position_set_y, pos1, 850),
+    (overlay_set_size, reg0, pos1),
+
+    # Presentation title, centered at the top
+    (try_begin),
+      (faction_slot_eq, "$g_encountered_party_faction", slot_faction_leader, "trp_player"),
+      (str_store_string, s20, "@With whom do you like to speak?"),
+    (else_try),
+      (str_store_string, s20, "@Request an audience with someone..."),
+    (try_end),
+    (create_text_overlay, reg1, "@{s20}", tf_center_justify),
+    (position_set_x, pos1, 475), # Higher, means more toward the right
+    (position_set_y, pos1, 710), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1200),
+    (position_set_y, pos1, 1200),
+    (overlay_set_size, reg1, pos1),
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 350),
+    (position_set_y, pos1, 125),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 300),
+    (position_set_y, pos1, 550),
+    (overlay_set_area_size, reg1, pos1),
+    (set_container_overlay, reg1),#start scroll
+
+    (assign, ":num_lines", 0),
+    (call_script, "script_dplmc_time_sorted_heroes_for_center", "$g_encountered_party", "p_temp_party"),
+    (party_get_num_companion_stacks, ":num_stacks","p_temp_party"),
+    (try_for_range, ":i_stack", 0, ":num_stacks"),
+        (party_stack_get_troop_id, ":stack_troop","p_temp_party",":i_stack"),
+        (val_add, ":num_lines", 1),
+    (try_end),
+    (try_for_range, ":cur_troop", kingdom_ladies_begin, kingdom_ladies_end),
+        (neq, ":cur_troop", "trp_knight_1_1_wife"), #The one who should not appear in game
+        (troop_slot_eq, ":cur_troop", slot_troop_occupation, slto_kingdom_lady),#is active lady
+        (troop_slot_eq, ":cur_troop", slot_troop_cur_center, "$g_encountered_party"),
+        (val_add, ":num_lines", 1),
+    (try_end),
+    (position_set_x, pos1, 50),
+    (store_mul, ":y_name", 30, ":num_lines"),##get y for size of the scrollable overlay
+    ##text size of the table
+    (position_set_x, pos2, 900),
+    (position_set_y, pos2, 900),
+
+    (try_for_range, ":i_stack", 0, ":num_stacks"),
+        (party_stack_get_troop_id, ":stack_troop","p_temp_party",":i_stack"),
+        (str_store_troop_name, 20, ":stack_troop"),
+        (create_text_overlay, reg0, "@{s20}", tf_left_align|tf_with_outline),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg0, pos1),
+        (overlay_set_color, reg0, message_alert),
+        (overlay_set_size, reg0, pos2),
+        (troop_set_slot, "trp_temp_array_b", ":stack_troop", reg0),
+
+        (create_image_button_overlay, reg0, "mesh_longer_button", "mesh_longer_button"),
+        (overlay_set_position, reg0, pos1),
+        (overlay_set_size, reg0, pos2),
+        (overlay_set_alpha, reg0, 0),
+        (overlay_set_color, reg0, 0xDDDDDD),
+        (troop_set_slot, "trp_temp_array_a", ":stack_troop", reg0),
+
+        (val_sub, ":y_name", 30),
+    (try_end),
+
+    (try_for_range, ":cur_troop", kingdom_ladies_begin, kingdom_ladies_end),
+        (neq, ":cur_troop", "trp_knight_1_1_wife"), #The one who should not appear in game
+        (troop_slot_eq, ":cur_troop", slot_troop_occupation, slto_kingdom_lady),#is active lady
+        (troop_slot_eq, ":cur_troop", slot_troop_cur_center, "$g_encountered_party"),
+
+        (str_store_troop_name, 20, ":cur_troop"),
+        (create_text_overlay, reg0, "@{s20}", tf_left_align|tf_with_outline),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg0, pos1),
+        (overlay_set_color, reg0, message_alert),
+        (overlay_set_size, reg0, pos2),
+        (troop_set_slot, "trp_temp_array_b", ":cur_troop", reg0),
+
+        (create_image_button_overlay, reg0, "mesh_longer_button", "mesh_longer_button"),
+        (overlay_set_position, reg0, pos1),
+        (overlay_set_size, reg0, pos2),
+        (overlay_set_alpha, reg0, 0),
+        (overlay_set_color, reg0, 0xDDDDDD),
+        (troop_set_slot, "trp_temp_array_a", ":cur_troop", reg0),
+
+        (val_sub, ":y_name", 30),
+    (try_end),
+    (set_container_overlay, -1),#end scroll
+
+    (create_game_button_overlay, reg1, "str_return"),
+    (position_set_x, pos1, 500),
+    (position_set_y, pos1, 110),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
+  ]),
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":button_pressed_id"),
+    (try_begin),
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"),
+        (presentation_set_duration, 0),
+    (else_try),
+        (assign, "$castle_meeting_selected_troop", -1),
+        (try_for_range, ":active_npc", active_npcs_begin, kingdom_ladies_end),
+            (eq, "$castle_meeting_selected_troop", -1),
+            (troop_slot_eq, "trp_temp_array_a", ":active_npc", ":button_pressed_id"),
+            (assign, "$castle_meeting_selected_troop", ":active_npc"),
+        (try_end),
+        (is_between, "$castle_meeting_selected_troop", active_npcs_begin, kingdom_ladies_end),
+        (str_store_troop_name, s15, "$castle_meeting_selected_troop"),
+        (display_message, "@A meeting with {s15} is setup.", message_alert),
+        (call_script, "script_start_court_conversation", "$castle_meeting_selected_troop", "$current_town"),
+    (try_end),
+  ]),
+  (ti_on_presentation_mouse_enter_leave,[
+    (store_trigger_param_1, ":overlay_id"),
+    (store_trigger_param_2, ":mouse_enter"),
+    # (assign, reg10, ":overlay_id"),
+    # (display_message, "@{reg10}"),
+    (assign, ":break", kingdom_ladies_end),
+    (try_for_range, ":active_npc", active_npcs_begin, ":break"),
+        (troop_slot_eq, "trp_temp_array_b", ":active_npc", ":overlay_id"),
+        # (neg|troop_slot_eq, "trp_temp_array_a", ":active_npc", ":overlay_id"),
+        (assign, ":break", -1),
+    (try_end),
+    (eq, ":break", -1),
+    (try_begin),
+        (eq, ":mouse_enter", 1),
+        (overlay_set_color, ":overlay_id", message_alert),
+        (assign, ":re_size", 900),
+        (position_set_x, pos1, ":re_size"),
+        (position_set_y, pos1, ":re_size"),
+        (overlay_set_size, ":overlay_id", pos1),
+    (else_try),
+        (overlay_set_color, ":overlay_id", 0xAA0000),
+        (assign, ":re_size", 1200),
+        (position_set_x, pos1, ":re_size"),
+        (position_set_y, pos1, ":re_size"),
+        (overlay_set_size, ":overlay_id", pos1),
+        # (play_sound, "snd_message_negative_sound"),
+    (try_end),
+  ]),
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_escape),
+        (presentation_set_duration, 0),
+    (else_try),
+        (key_clicked, key_space),
+        (set_fixed_point_multiplier, 1000),
+        (mouse_get_position, pos31),
+
+        (position_get_x, reg31, pos31),
+        (position_get_y, reg32, pos31),
+
+        (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+]),
+
 ]#end of file

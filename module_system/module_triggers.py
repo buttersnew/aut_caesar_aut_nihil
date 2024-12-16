@@ -791,6 +791,7 @@ triggers = [
         (main_party_has_troop, ":npc1"),
         (val_add, ":npcs_in_party", 1),
     (try_end),
+    (val_div, ":npcs_in_party", 2),
     (val_sub, ":grievance_divisor", ":npcs_in_party"),
     (store_skill_level, ":persuasion_level", "skl_persuasion", "trp_player"),
     (val_add, ":grievance_divisor", ":persuasion_level"),
@@ -864,13 +865,16 @@ triggers = [
 
             (call_script, "script_dplmc_npc_morale", ":npc", 0), #SB : just the number
             (assign, ":npc_morale", reg0),
-
+            # (str_store_troop_name, s10, ":npc"),
+            # (display_message, "@{s10}: morale {reg0}"),
             (try_begin),
                 (lt, ":npc_morale", 20),
                 (store_random_in_range, ":random", 0, 100),
                 (val_add, ":npc_morale", ":random"),
                 (lt, ":npc_morale", 20),
                 (neq, ":npc", "trp_npc35"), # not ursus
+                (neq, ":npc", "trp_mathildiz"), # not mathildize
+                (neq, ":npc", "trp_turakina"), # not eamane
                 (assign, "$npc_is_quitting", ":npc"),
             (try_end),
 
@@ -1181,7 +1185,7 @@ triggers = [
             (ge, "$g_last_rest_center", 0),
             (this_or_next|party_slot_eq, "$g_last_rest_center", slot_party_type, spt_town),
             (this_or_next|party_slot_eq, "$g_last_rest_center", slot_party_type, spt_castle),
-            (this_or_next|party_slot_eq, "$g_last_rest_center", slot_party_type, spt_latifunidum),
+            (this_or_next|party_slot_eq, "$g_last_rest_center", slot_party_type, spt_latifundium),
             (party_slot_eq, "$g_last_rest_center", slot_party_type, spt_village),
             (val_add, ":add_morale", 1),
         (try_end),
