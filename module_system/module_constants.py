@@ -1617,7 +1617,7 @@ dplmc_slot_troop_affiliated                   = 164 ##notes: 0 is default, 1 is 
 # slot_troop_marriage_time 				      = 165
 slot_troop_triumph_points                = 165
 
-triumph_threshold = 1000
+triumph_threshold = 800
 
 #CONTROVERSY
 #This is used to create a more "rational choice" model of faction politics, in which lords pick fights with other lords for gain, rather than simply because of clashing personalities
@@ -1985,7 +1985,7 @@ tc_escape                     = 19
 tc_give_center_to_fief        = 20
 tc_merchants_house            = 21
 
-tc_camp_talk          		    = 22#camp scene
+tc_camp_talk          		  = 22#camp scene
 tc_player_defeated            = 23
 tc_permanent_camp_talk        = 24#camp scene
 tc_feast					  = 25##for feasts in your villa in neapolis
@@ -2017,6 +2017,9 @@ tc_mission_1_talk              = 43
 
 tc_poppaea_event_1          = 44
 tc_poppaea_event_2          = 45
+
+tc_main_story_fleet         = 46
+
 #Troop Commentaries begin
 #Log entry types
 #civilian

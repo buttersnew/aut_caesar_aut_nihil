@@ -5745,7 +5745,7 @@ def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
 ["custom_aux_centurio","Centurio Auxiliari (custom)", "Centurii Auxiliari (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
 attrib_level_29, wp(160), knows_level_29,roman_face1,roman_face2],
 ["custom_aux_centurio_equip","Centurio Auxiliari (custom)","Centurii Auxiliari (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
-[itm_aux_centurio_graves,itm_roman_gladius,itm_cetratus_aux_3,itm_auxilia_cent_helmet_1],
+[itm_aux_centurio_graves,itm_roman_gladius,itm_cetratus_aux_3,itm_auxilia_cent_helmet_1, itm_cenutrio_aux_squamata_1],
 def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
 
 ["custom_aux_signifer","Signifer Auxiliari (custom)", "Signifer Auxiliari (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],

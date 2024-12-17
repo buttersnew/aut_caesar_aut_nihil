@@ -7632,7 +7632,8 @@ simple_triggers = [
     (ge, ":r", "$g_player_luck"),
 
     (try_begin),
-        (neg|troop_slot_ge, "trp_player", slot_troop_renown, 200),
+        (troop_slot_ge, "trp_player", slot_troop_renown, 200),
+        (eq, "$enlisted_party", -1),
         (call_script, "script_get_piety_impact"),
         (neq, reg56, 0),
         (display_message, "@Your piety effects your renown.", message_alert),

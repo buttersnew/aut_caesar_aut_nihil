@@ -24964,42 +24964,33 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-  ("establish_court",mnf_disable_all_keys,
-    "To establish {s4} as your court will require a small refurbishment. In particular, you will need a set of tools and a bolt of velvet. it may also take a short while for some of your followers to relocate here. Do you wish to proceed?",
-    "none",
-    [
-	(str_store_party_name, s4, "$g_encountered_party"),
-	],
-
-    [
-      ("establish",[
-	  (player_has_item, "itm_tools"),
-	  (player_has_item, "itm_velvet"),
-	  ],"Establish {s4} as your court",
-       [
-		(assign, "$g_player_court", "$current_town"),
-	    (troop_remove_item, "trp_player", "itm_tools"),
-	    (troop_remove_item, "trp_player", "itm_velvet"),
-        (jump_to_menu, "mnu_town"),
-       ]),
-
-    ("capital_exists",
-      [
-        (store_and, ":name_set", "$players_kingdom_name_set", rename_center),
-        (ge, ":name_set", rename_center),
-        (str_store_party_name, s1, "$g_player_court"),
-        (disable_menu_option),
-      ],
-       "You cannot move the court as your capital is at {s1}.",
-       [
-     ]),
-
-      ("continue",[],"Hold off...",
-       [
-         (jump_to_menu, "mnu_town"),
-       ]),
-    ]
-  ),
+("establish_court",mnf_disable_all_keys,
+  "To establish {s4} as your court will require a small refurbishment. In particular, you will need 25,000 denars. it may also take a short while for some of your followers to relocate here. Do you wish to proceed?",
+  "none",[
+	  (str_store_party_name, s4, "$g_encountered_party"),
+    (set_background_mesh, "mesh_pic_party"),
+	],[
+    ("establish",[
+      (store_troop_gold, ":g1", "trp_player"),
+      (store_troop_gold, ":g2", "trp_household_possessions"),
+      (val_add, ":g1", ":g2"),
+      (ge, ":g1", 25000),
+	  ],"Establish {s4} as your court",[
+		  (assign, "$g_player_court", "$current_town"),
+      (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 25000, "trp_player"),
+      (jump_to_menu, "mnu_town"),
+    ]),
+    ("capital_exists",[
+      (store_and, ":name_set", "$players_kingdom_name_set", rename_center),
+      (ge, ":name_set", rename_center),
+      (str_store_party_name, s1, "$g_player_court"),
+      (disable_menu_option),
+    ],"You cannot move the court as your capital is at {s1}.",[
+    ]),
+    ("continue",[],"Hold off...",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
 ("notification_relieved_as_marshal", mnf_disable_all_keys,
   "{s4} wishes to inform you that your services as marshal are no longer required. In honor of valiant efforts on behalf of the realm over the last {reg4} days, however, {reg8?she:he} offers you a purse of {reg5} denars.",
@@ -26954,8 +26945,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   "{!}This menu jumps to the rename presentation. If you see it destroy your PC.",
   "none",[
   # (call_script, "script_change_player_right_to_rule", 1), #handled in dialogues
-  (assign, reg0, "$temp"),
-  (display_message, "@{reg0}"),
+  # (assign, reg0, "$temp"),
+  # (display_message, "@{reg0}"),
   (try_begin),
       #(eq, "$temp", 1), #avoid menus getting stuck
       (jump_to_menu, "mnu_auto_return_map"),
@@ -40030,6 +40021,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
     ("choice_12_1nor",[],"Tell your men to sacrifice the ox to Jupiter!",[
+      (call_script, "script_add_piety", 5, 1),
       (call_script, "script_change_player_party_morale", 5),
       (add_xp_as_reward, 250),
       (str_clear,s1),
@@ -40045,6 +40037,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_return, 0),
     ]),
     ("choice_12_3nor",[],"Slaughter the ox, we need meat.",[
+      (call_script, "script_add_piety", -5, 1),
       (call_script, "script_change_player_party_morale", -5),
       (troop_add_item, "trp_player","itm_cattle_meat",0),
       (troop_add_item, "trp_player","itm_cattle_meat",0),
@@ -51732,8 +51725,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (this_or_next|eq, ":slot", ek_foot),
           (eq, ":slot", ek_horse),
           (troop_get_inventory_slot, ":item", "trp_player", ":slot"),
-          (ge, ":item", 1),
-          (troop_get_inventory_slot_modifier,":modifier", "trp_player", ":slot"),
+          (try_begin),
+            (ge, ":item", 1),
+            (troop_set_inventory_slot, "trp_player", ":slot", -1),
+            (troop_get_inventory_slot_modifier,":modifier", "trp_player", ":slot"),
+            (troop_add_item, "trp_player", ":item", ":modifier"),
+          (try_end),
           # (troop_remove_item, "trp_player", ":item"),
           # (str_store_item_name, s3, ":item"),
           # (display_message, "@Removed: {s3}"),
@@ -51756,7 +51753,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
             (eq, ":slot", ek_item_1),
             (troop_set_inventory_slot, "trp_player", ":slot", "itm_roman_spatha"),
           (try_end),
-          (troop_add_item, "trp_player", ":item", ":modifier"),
       (try_end),
       (add_xp_as_reward, 1500),
       (set_show_messages, 1),
@@ -54963,14 +54959,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("the_fleet_conversation",0,
   "You are welcomed by Vespasian and Antonia. A great fleet is waiting in the harbor. Supplies and troops are ready to embark. ^^The fleet sets sail. Dark clouds cover the sky and the wind is howling. Thunders are roaming."
   +"^^Some days pass. Antonia and {s15} call you for a meeting.",
-  "none",
-  [
+  "none",[
     (str_store_troop_name_plural, s15, "trp_legatus_11"),
     (set_background_mesh, "mesh_pic_seabattle"),
   ],[
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
+      (assign, "$talk_context", tc_main_story_fleet),
       (add_xp_as_reward, 250),
       (assign, "$g_next_menu", "mnu_the_fleet_embarks"),
 
@@ -55128,8 +55122,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("poppaea_fate",0,
   "{s5}",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_palast"),
     (str_clear, s5),
     (try_begin),
@@ -55187,9 +55180,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 1),
     (try_end),
   ],[
-    ("Continue",[],
-      "Continue.",
-    [
+    ("Continue",[],"Continue.",[
       (rest_for_hours, 72, 20, 0),
       (change_screen_map),
     ]),
@@ -55243,6 +55234,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (assign, "$temp3", -1), # poppaea agent number
 
       (assign, "$praefectus_urbani", -1), # he is killed during fight
+      (troop_set_slot, "trp_tigellinus", slot_troop_occupation, dplmc_slto_dead), # he is killed during fight
 
       (set_jump_mission, "mt_vespasian_final_dialogue"),
       (modify_visitors_at_site, "scn_imperial_palace"),
@@ -55720,36 +55712,31 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("girl_fire_talk",0,
-    "Lamentations of a girl^^As you ride toward the Forum Romanum, your gaze falls upon a beautiful girl, clothed in tattered rags, weeping bitterly. Though you cannot fathom the reason for her sorrow, something in this fragile creature stirs a deep well of pity within you.",
-    "none",
-    [(set_background_mesh, "mesh_pic_roma"),],
-    [
-      ("op1",[],
-       "Talk with her.",
-       [
-        (assign, "$talk_context", tc_girl_talk),
-        (call_script, "script_get_meeting_scene"),
-        (assign, ":meeting_scene", reg0),
-        (set_jump_mission,"mt_conversation_encounter"),
-        (modify_visitors_at_site,":meeting_scene"),
-        (reset_visitors),
+  "Lamentations of a girl^^As you ride toward the Forum Romanum, your gaze falls upon a beautiful girl, clothed in tattered rags, weeping bitterly. Though you cannot fathom the reason for her sorrow, something in this fragile creature stirs a deep well of pity within you.",
+  "none",[
+    (set_background_mesh, "mesh_pic_roma"),
+  ],[
+    ("op1",[],"Talk with her.",[
+      (assign, "$talk_context", tc_girl_talk),
+      (call_script, "script_get_meeting_scene"),
+      (assign, ":meeting_scene", reg0),
+      (set_jump_mission,"mt_conversation_encounter"),
+      (modify_visitors_at_site,":meeting_scene"),
+      (reset_visitors),
 
-        (set_visitor,17,"trp_player"),
+      (set_visitor,17,"trp_player"),
 
-        (set_visitor,0,"trp_christ_fem"),
+      (set_visitor,0,"trp_christ_fem"),
 
-        (jump_to_scene,":meeting_scene"),
-        (change_screen_map_conversation, "trp_christ_fem"),
-        (troop_set_slot, "trp_global_variables", g_fire_talk_girl, 1),
-        ]),
-       ("op1",[],
-       "Bah, I don't care.",
-       [
-        (jump_to_menu, "mnu_town"),
-        (troop_set_slot, "trp_global_variables", g_fire_talk_girl, 1),
-        ]),
+      (jump_to_scene,":meeting_scene"),
+      (change_screen_map_conversation, "trp_christ_fem"),
+      (troop_set_slot, "trp_global_variables", g_fire_talk_girl, 1),
+    ]),
+      ("op1",[],"Bah, I don't care.",[
+      (jump_to_menu, "mnu_town"),
+      (troop_set_slot, "trp_global_variables", g_fire_talk_girl, 1),
+    ]),
 ]),
-
 ("intro_to_court",0,
   "You walk your way towards the main hall where Nero awaits his guests when a woman dressed in fine clothes approaches you. She says:^"
   +" 'You are not familar to me so I assume you will be introduced to Nero the first time. Just in the case you don't know the order which has developed here,"
@@ -55769,7 +55756,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (call_script, "script_enter_court", "$current_town"),
   ]),
 ]),
-
 ("nero_special_quest_1",0,
   "A messenger approaches:^^'Ave {s43}! I bring message from our Divine Caesar. The Princeps wants to talk you at your earliest convenience!'",
   "none",[
@@ -55789,99 +55775,86 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_map),
   ]),
 ]),
-
 ("abduction_nero",0,
-    "You wait until evening. The sun sets and night begins.^You make your way towards the shop. On your way, you notice\
- fewer and fewer soldiers standing guard. Tigellinus must have ordered them to avoid the area around the shop.\
- As you reach your target, Nero and Tigellinus approach.",
-    "none",
-    [(set_background_mesh, "mesh_pic_roma"),
-    ],
-    [
-      ("op1",[],#scn_temple_of_concordia
-      #spawn at 37
+  "You wait until evening. The sun sets and night begins.^You make your way towards the shop. On your way, you notice"
+  +" fewer and fewer soldiers standing guard. Tigellinus must have ordered them to avoid the area around the shop."
+  +" As you reach your target, Nero and Tigellinus approach.",
+  "none",[
+    (set_background_mesh, "mesh_pic_roma"),
+  ],[
+    ("op1",[],"Continue...",[
+      # scn_temple_of_concordia
+      # spawn at 37
       # she spawns at 5
       # 54
-       "Continue...",
-       [
-    (set_jump_mission,"mt_abduction_nero_1"),
-    (modify_visitors_at_site,"scn_temple_of_concordia"),
-    (reset_visitors, 0),
-    (set_visitor, 37, "trp_kingdom_7_lord"),
-    (set_visitor, 37, "trp_tigellinus"),
-    (set_visitor, 37, "trp_player"),
-    (set_visitor, 5, "trp_guest_female"),
-    (jump_to_scene,"scn_temple_of_concordia"),
-    (change_screen_mission),
-       ]),
- ]),
-
- ("abduction_return_fail",0,
-    "You return to the palace, without the woman!^^Nero doesn't want to speak you again and you are notified, that you should better leave now.^^\
- Tigellinus also informs you to better not tell anyone about what has happened this night, or you will recieve a 'present' from him.",
-    "none",
-    [(set_background_mesh, "mesh_pic_roma"),
-    ],
-    [
-      ("op1",[],
-       "Continue...",
-       [
-       (add_xp_as_reward, 1000),
-       (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -30),
-       (call_script, "script_fail_quest", "qst_nero_special_quest"),
-       (call_script, "script_end_quest", "qst_nero_special_quest"),
-       (call_script, "script_change_player_honor", 3),
-       (jump_to_menu, "mnu_town"),
-       ]),
- ]),
- ("abduction_return_suc",0,
-    "You return to the palace in company of the woman!^^Nero immediately pays all his attention to the woman you kidnapped.\
- Tigellinus informs you Caesar is happy and gives you a sack full of gold coins.^^Tigellinus also informs you to better not tell anyone about what has happened this night, or you will recieve a 'present' from him.",
-    "none",
-    [(set_background_mesh, "mesh_pic_palast"),
-    ],
-    [
-      ("op1",[],
-       "Continue...",
-       [
-       (troop_add_gold, "trp_player", 5000),
-       (add_xp_as_reward, 1000),
-       (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", 10),
-       (call_script, "script_change_player_relation_with_troop", "trp_tigellinus", 4),
-       (call_script, "script_succeed_quest", "qst_nero_special_quest"),
-       (call_script, "script_end_quest", "qst_nero_special_quest"),
-       (call_script, "script_change_player_honor", -10),
-       (jump_to_menu, "mnu_town"),
-       ]),
- ]),
- ("gaius_villa",0,
-    "A slave informs you, that there is currently a feast in progress and his master Petronius has no time now. Though, you tell the slave you have important orders from Caesar himself to speak Petronius immediately.\
- Thus the slave allows you to enter.^^ You go to the triclinium, where the feast is in progress. Many important courtiers and people are participating.",
-    "none",
-    [(set_background_mesh, "mesh_pic_villa"),
-    ],
-    [
-      ("op1",[],
-       "Continue...",
-       [
-    (jump_to_scene, "scn_carnuntum_in"),
-    (set_jump_mission,"mt_visit_town_castle"),
-    (modify_visitors_at_site,"scn_carnuntum_in"),
-    (reset_visitors, 0),
-    (set_jump_entry,0),
-    (try_for_range, ":entry", 17, 32),
-      (store_random_in_range, ":number", 0, 2),
-      (try_begin),
-        (eq, ":number", 1),
-        (set_visitor, ":entry", "trp_guest"),
-      (else_try),
-        (set_visitor, ":entry", "trp_guest_female"),
+      (set_jump_mission,"mt_abduction_nero_1"),
+      (modify_visitors_at_site,"scn_temple_of_concordia"),
+      (reset_visitors, 0),
+      (set_visitor, 37, "trp_kingdom_7_lord"),
+      (set_visitor, 37, "trp_tigellinus"),
+      (set_visitor, 37, "trp_player"),
+      (set_visitor, 5, "trp_guest_female"),
+      (jump_to_scene,"scn_temple_of_concordia"),
+      (change_screen_mission),
+    ]),
+]),
+("abduction_return_fail",0,
+  "You return to the palace, without the woman!^^Nero doesn't want to speak you again and you are notified, that you should better leave now.^^"
+  +"Tigellinus also informs you to better not tell anyone about what has happened this night, or you will recieve a 'present' from him.",
+  "none",[
+    (set_background_mesh, "mesh_pic_roma"),
+  ],[
+    ("op1",[],"Continue...",[
+      (add_xp_as_reward, 1000),
+      (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -30),
+      (call_script, "script_fail_quest", "qst_nero_special_quest"),
+      (call_script, "script_end_quest", "qst_nero_special_quest"),
+      (call_script, "script_change_player_honor", 3),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+("abduction_return_suc",0,
+  "You return to the palace in company of the woman!^^Nero immediately pays all his attention to the woman you kidnapped."
+  +" Tigellinus informs you Caesar is happy and gives you a sack full of gold coins.^^Tigellinus also informs you to better not tell anyone about what has happened this night, or you will recieve a 'present' from him.",
+  "none",[
+    (set_background_mesh, "mesh_pic_palast"),
+  ],[
+    ("op1",[],"Continue...",[
+      (troop_add_gold, "trp_player", 5000),
+      (add_xp_as_reward, 1000),
+      (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", 10),
+      (call_script, "script_change_player_relation_with_troop", "trp_tigellinus", 4),
+      (call_script, "script_succeed_quest", "qst_nero_special_quest"),
+      (call_script, "script_end_quest", "qst_nero_special_quest"),
+      (call_script, "script_change_player_honor", -10),
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
+("gaius_villa",0,
+  "A slave informs you, that there is currently a feast in progress and his master Petronius has no time now. Though, you tell the slave you have important orders from Caesar himself to speak Petronius immediately."
+  +" Thus the slave allows you to enter.^^ You go to the triclinium, where the feast is in progress. Many important courtiers and people are participating.",
+  "none",[
+    (set_background_mesh, "mesh_pic_villa"),
+  ],[
+    ("op1",[],"Continue...",[
+      (jump_to_scene, "scn_carnuntum_in"),
+      (set_jump_mission,"mt_visit_town_castle"),
+      (modify_visitors_at_site,"scn_carnuntum_in"),
+      (reset_visitors, 0),
+      (set_jump_entry,0),
+      (try_for_range, ":entry", 17, 32),
+        (store_random_in_range, ":number", 0, 2),
+        (try_begin),
+          (eq, ":number", 1),
+          (set_visitor, ":entry", "trp_guest"),
+        (else_try),
+          (set_visitor, ":entry", "trp_guest_female"),
+        (try_end),
       (try_end),
-    (try_end),
-    (set_visitor, 16, "trp_gaius_petronius"),
-    (change_screen_mission),
-       ]),
- ]),
+      (set_visitor, 16, "trp_gaius_petronius"),
+      (change_screen_mission),
+    ]),
+]),
  ("biggus_dickus_villa",0,
     "On the way to the villa you come over a group of drunkards fighting each other with their fists. You try to stay out of this nonsense but some of them attack you. Though they are in majority you manage to defeat them. Unfortunately due to the time lose you are now too late. When you arrive at the villa, only two of guests are still remaining.",
     "none",
@@ -56090,44 +56063,40 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
  ]),
 
  ("claudia_event",0,
-    "Today, Nero will present a poem he wrote for his daughter Claudia Augusta, who died four months after her birth. The performance takes place in the dining room of the palace.^^"+
-"You enter the room and are assigned a seat next to Caesar. After all the guest have arrived, Nero strokes the harp.",
- "none",
-    [(set_background_mesh, "mesh_pic_party"),
-    ],
-    [
-      ("op1",[],
-       "Continue...",
-       [
-    (add_xp_as_reward, 150),
-    (jump_to_scene, "scn_imperial_dinning_room"),
-    (set_jump_mission,"mt_palace_nero_play"),
-    (modify_visitors_at_site,"scn_imperial_dinning_room"),
-    (reset_visitors, 0),
-    #add guests
-    (set_visitor, 40, "trp_tigellinus"),
-    (set_visitor, 16, "trp_player"),
-    (set_visitor, 17, "trp_kingdom_7_lady_2"),
-    (set_visitor, 18, "trp_senator_2"),
-    (set_visitor, 19, "trp_senator_7"),
-    (set_visitor, 20, "trp_legatus_12"),
-    (set_visitor, 21, "trp_kingdom_7_lady_24"),
-    (set_visitor, 22, "trp_kingdom_7_lady_13"),
-    (set_visitor, 23, "trp_kingdom_7_lady_6"),
-    (set_visitor, 24, "trp_senator_4"),
-    (set_visitor, 25, "trp_senator_3"),
-    (set_visitor, 26, "trp_kingdom_7_lady_19"),
-    (set_visitor, 27, "trp_kingdom_7_lady_18"),
-    (set_visitor, 28, "trp_aux_commander_15"),
-    (set_visitor, 29, "trp_aux_commander_10"),
-    (set_visitor, 30, "trp_statthalter_11"),
-    (set_visitor, 31, "trp_statthalter_6"),
-    (set_visitor, 11, "trp_kingdom_7_lord"),
-    (set_visitor, 10, "trp_kingdom_7_lady_1"),
-    (change_screen_mission),
-       ]),
-
- ]),
+  "Today, Nero will present a poem he wrote for his daughter Claudia Augusta, who died four months after her birth. The performance takes place in the dining room of the palace.^^"
+  +"You enter the room and are assigned a seat next to Caesar. After all the guest have arrived, Nero strokes the harp.",
+  "none",[
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("op1",[],"Continue...",[
+      (add_xp_as_reward, 150),
+      (jump_to_scene, "scn_imperial_dinning_room"),
+      (set_jump_mission,"mt_palace_nero_play"),
+      (modify_visitors_at_site,"scn_imperial_dinning_room"),
+      (reset_visitors, 0),
+      #add guests
+      (set_visitor, 40, "trp_tigellinus"),
+      (set_visitor, 16, "trp_player"),
+      (set_visitor, 17, "trp_kingdom_7_lady_2"),
+      (set_visitor, 18, "trp_senator_2"),
+      (set_visitor, 19, "trp_senator_7"),
+      (set_visitor, 20, "trp_legatus_12"),
+      (set_visitor, 21, "trp_kingdom_7_lady_24"),
+      (set_visitor, 22, "trp_kingdom_7_lady_13"),
+      (set_visitor, 23, "trp_kingdom_7_lady_6"),
+      (set_visitor, 24, "trp_senator_4"),
+      (set_visitor, 25, "trp_senator_3"),
+      (set_visitor, 26, "trp_kingdom_7_lady_19"),
+      (set_visitor, 27, "trp_kingdom_7_lady_18"),
+      (set_visitor, 28, "trp_aux_commander_15"),
+      (set_visitor, 29, "trp_aux_commander_10"),
+      (set_visitor, 30, "trp_statthalter_11"),
+      (set_visitor, 31, "trp_statthalter_6"),
+      (set_visitor, 11, "trp_kingdom_7_lord"),
+      (set_visitor, 10, "trp_kingdom_7_lady_1"),
+      (change_screen_mission),
+    ]),
+]),
 
  ("tiggelinius_event_1",0,
     "A slaves informs you Nero is awaiting you for a special dinner to your honors in the Triclinium of the palace.^^You make your way towards the palace. As you enter, a woman approaches. You recognize her. She was the one who informed you about the palace 'routines' earlier.^\

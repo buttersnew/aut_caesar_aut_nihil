@@ -2474,8 +2474,8 @@ presentations = [
     (assign, ":x_pos", 40),
 
     (troop_get_slot, ":current_banner_spr", "$g_edit_banner_troop", slot_troop_banner_scene_prop),
-    (assign, reg1, ":current_banner_spr"),
-    (display_message, "@current_banner_spr = {reg1}"),
+    # (assign, reg1, ":current_banner_spr"),
+    # (display_message, "@current_banner_spr = {reg1}"),
 
     (assign, "$g_presentation_obj_banner_selection_1", 0),
     (try_for_range, ":cur_banner_mesh", ":try_begin", ":try_end"),
@@ -11870,7 +11870,7 @@ presentations = [
         (val_mul, reg49, ":tax_rate"),
         (val_div, reg49, 100),
 
-        (create_text_overlay, reg1, "@Total estimate for weekly rents: {reg49}", 0),
+        (create_text_overlay, reg1, "@Total estimate for rents: {reg49}", 0),
         (position_set_x, pos1, 0),
         (position_set_y, pos1, ":y_name"),
         (try_begin),
@@ -24559,7 +24559,7 @@ presentations = [
         (str_store_string, s20, ":string"),
     (try_end),
     # Presentation title, centered at the top
-    (create_text_overlay, reg1, "@_Selected Legion: {s20}_", tf_center_justify),
+    (create_text_overlay, reg1, "@Selected Legion: {s20}", tf_center_justify),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 685), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
@@ -24710,27 +24710,11 @@ presentations = [
             (is_between, "$temp1", 1, 12),
 
             (troop_get_slot, ":auxiliar", "trp_player", slot_troop_aux),
-            (call_script, "script_troop_set_rank", "trp_player", slot_troop_aux, -1),
 
-            (assign, ":end", active_npcs_end),
-            (try_for_range, ":tribunes", active_npcs_begin, ":end"),
-                (troop_slot_eq, ":tribunes", slot_troop_occupation, slto_kingdom_hero),
-                (neg|troop_slot_ge, ":tribunes", slot_troop_aux, 1),
-                (neg|troop_slot_ge, ":tribunes", slot_troop_legion, 1),
-                (neg|troop_slot_ge, ":tribunes", slot_troop_govern, 1),
-                (store_faction_of_troop, ":fac", ":tribunes"),
-                (eq, ":fac", "fac_kingdom_7"),
-                (neg|troop_slot_ge, ":tribunes", slot_troop_age, 35),
-                (assign, ":end", -1),
-                (call_script, "script_troop_set_rank", ":tribunes", slot_troop_aux, ":auxiliar"),
-                (call_script, "script_change_lord_party_to_fit_rank", ":tribunes"),
-
-                (str_store_troop_name, s22, ":tribunes"),
-                (store_sub, ":string", ":auxiliar", "pt_cohors_aux"),
-                (val_add, ":string","str_cohors_aux"),
-                (str_store_string, s23, ":string"),
-
-                (display_log_message, "@{s22} has been awarded the command of {s23}"),
+            (try_begin),
+                (gt, ":auxiliar", -1),
+                (call_script, "script_troop_set_rank", "trp_player", slot_troop_aux, -1),
+                (call_script, "script_find_new_commander_for_aux", ":auxiliar", "$players_kingdom"),
             (try_end),
 
             (store_add, ":slot", slot_legion_commanders_begin, "$temp1"),
@@ -24739,6 +24723,9 @@ presentations = [
                 (gt, ":oldcommannder", -1),
                 (call_script, "script_troop_set_rank", ":oldcommannder", slot_troop_legion, -1),
                 (call_script, "script_change_lord_party_to_fit_rank", ":oldcommannder"),
+                (str_store_troop_name, s10, ":oldcommannder"),
+                (display_log_message, "@{s10} is dismissed from service!", message_alert),
+                (call_script, "script_change_player_relation_with_troop", ":oldcommannder", -15),
             (try_end),
             (call_script, "script_troop_set_rank", "trp_player", slot_troop_legion, "$temp1"),
             (presentation_set_duration, 0),
@@ -24784,8 +24771,8 @@ presentations = [
         (val_add, "$temp_troop", "$temp1"),
         (start_presentation, "prsnt_select_legion_command"),
     (try_end),
-    ]),
-    (ti_on_presentation_run, [
+  ]),
+  (ti_on_presentation_run, [
     (try_begin),
         (key_clicked, key_space),
         (set_fixed_point_multiplier, 1000),
@@ -39294,10 +39281,10 @@ presentations = [
     (str_clear, s0),
     (create_text_overlay, reg1, s0, tf_scrollable_style_2),
     (position_set_x, pos1, 350),
-    (position_set_y, pos1, 125),
+    (position_set_y, pos1, 150),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 300),
-    (position_set_y, pos1, 550),
+    (position_set_y, pos1, 525),
     (overlay_set_area_size, reg1, pos1),
     (set_container_overlay, reg1),#start scroll
 
