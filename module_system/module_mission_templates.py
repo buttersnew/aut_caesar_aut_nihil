@@ -4391,6 +4391,10 @@ morale_triggers = [
       (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
 
       (try_begin),
+        (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+        (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+        (set_trigger_result, 2),
+      (else_try),
         (neg|troop_is_hero, ":dead_agent_troop_id"),
         (eq, "$g_realistic_wounding", 1),
         (le, ":last_damage", 10),
@@ -4428,6 +4432,10 @@ morale_triggers = [
       (store_random_in_range, ":rand", 0, 100),
 
       (try_begin),
+        (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+        (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+        (set_trigger_result, 2),
+      (else_try),
         (neg|troop_is_hero, ":dead_agent_troop_id"),
         (eq, "$g_realistic_wounding", 1),
         (le, ":last_damage", 10),
@@ -9952,6 +9960,10 @@ mission_templates = [
           (party_add_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1), #addition_to_p_total_enemy_casualties
           (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
           (try_begin),
+            (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+            (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+            (set_trigger_result, 2),
+          (else_try),
             (neg|troop_is_hero, ":dead_agent_troop_id"),
             (eq, "$g_realistic_wounding", 1),
             (le, ":last_damage", 10),
@@ -9986,6 +9998,10 @@ mission_templates = [
           (store_random_in_range, ":rand", 0, 100),
 
           (try_begin),
+            (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+            (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+            (set_trigger_result, 2),
+          (else_try),
             (neg|troop_is_hero, ":dead_agent_troop_id"),
             (eq, "$g_realistic_wounding", 1),
             (le, ":last_damage", 10),
@@ -10703,6 +10719,10 @@ mission_templates = [
           (party_add_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1), #addition_to_p_total_enemy_casualties
           (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
           (try_begin),
+              (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+              (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+              (set_trigger_result, 2),
+          (else_try),
               (neg|troop_is_hero, ":dead_agent_troop_id"),
               (eq, "$g_realistic_wounding", 1),
               (le, ":last_damage", 10),
@@ -10737,6 +10757,10 @@ mission_templates = [
           (store_random_in_range, ":rand", 0, 100),
 
           (try_begin),
+              (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+              (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+              (set_trigger_result, 2),
+          (else_try),
               (neg|troop_is_hero, ":dead_agent_troop_id"),
               (eq, "$g_realistic_wounding", 1),
               (le, ":last_damage", 10),
@@ -13098,6 +13122,10 @@ mission_templates = [
         (party_add_members, "p_temp_casualties", ":dead_agent_troop_id", 1), #addition_to_p_total_enemy_casualties
         (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
         (try_begin),
+            (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+            (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+            (set_trigger_result, 2),
+        (else_try),
             (neg|troop_is_hero, ":dead_agent_troop_id"),
             (eq, "$g_realistic_wounding", 1),
             (le, ":last_damage", 10),
@@ -13129,6 +13157,10 @@ mission_templates = [
         (val_add, ":chance", 25),
         (store_random_in_range, ":rand", 0, 100),
         (try_begin),
+            (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+            (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+            (set_trigger_result, 2),
+        (else_try),
             (neg|troop_is_hero, ":dead_agent_troop_id"),
             (eq, "$g_realistic_wounding", 1),
             (le, ":last_damage", 10),
@@ -15867,6 +15899,10 @@ mission_templates = [
             (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
 
             (try_begin),
+                (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+                (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+                (set_trigger_result, 2),
+            (else_try),
                 (neg|troop_is_hero, ":dead_agent_troop_id"),
                 (eq, "$g_realistic_wounding", 1),
                 (le, ":last_damage", 10),
@@ -15901,6 +15937,10 @@ mission_templates = [
             (store_random_in_range, ":rand", 0, 100),
 
             (try_begin),
+                (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+                (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+                (set_trigger_result, 2),
+            (else_try),
                 (neg|troop_is_hero, ":dead_agent_troop_id"),
                 (eq, "$g_realistic_wounding", 1),
                 (le, ":last_damage", 10),
@@ -17341,6 +17381,10 @@ mission_templates = [
           (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
 
           (try_begin),
+            (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+            (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+            (set_trigger_result, 2),
+          (else_try),
             (neg|troop_is_hero, ":dead_agent_troop_id"),
             (eq, "$g_realistic_wounding", 1),
             (le, ":last_damage", 10),
@@ -17378,6 +17422,10 @@ mission_templates = [
           (store_random_in_range, ":rand", 0, 100),
 
           (try_begin),
+            (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+            (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+            (set_trigger_result, 2),
+          (else_try),
             (neg|troop_is_hero, ":dead_agent_troop_id"),
             (eq, "$g_realistic_wounding", 1),
             (le, ":last_damage", 10),
@@ -24356,6 +24404,10 @@ mission_templates = [
           (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
 
           (try_begin),
+              (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+              (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+              (set_trigger_result, 2),
+          (else_try),
               (neg|troop_is_hero, ":dead_agent_troop_id"),
               (eq, "$g_realistic_wounding", 1),
               (le, ":last_damage", 13),
@@ -24779,6 +24831,10 @@ mission_templates = [
         (agent_get_slot, ":last_damage", ":dead_agent_no", slot_agent_last_damage),
 
         (try_begin),
+          (call_script, "script_cf_force_wound_troop", ":dead_agent_troop_id"),
+          (party_wound_members, "p_total_enemy_casualties", ":dead_agent_troop_id", 1),
+          (set_trigger_result, 2),
+        (else_try),
           (neg|troop_is_hero, ":dead_agent_troop_id"),
           (eq, "$g_realistic_wounding", 1),
           (le, ":last_damage", 13),
@@ -24792,16 +24848,16 @@ mission_templates = [
           (set_trigger_result, 0),
         (try_end),
       (try_end),
-      ]),
+    ]),
     common_battle_order_panel_tick,
-    ]
-    + theoris_decapitation
-    + ai_horn
-    + utility_triggers + battle_panel_triggers + extended_battle_menu
-    + common_division_data + division_order_processing + real_deployment
-    + formations_triggers + AI_triggers
-    + dplmc_battle_mode_triggers
-    + auxiliary_player
+  ]
+  + theoris_decapitation
+  + ai_horn
+  + utility_triggers + battle_panel_triggers + extended_battle_menu
+  + common_division_data + division_order_processing + real_deployment
+  + formations_triggers + AI_triggers
+  + dplmc_battle_mode_triggers
+  + auxiliary_player
 ),
 
 ("hunting", mtf_battle_mode, 0,

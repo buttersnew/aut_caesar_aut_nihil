@@ -2059,7 +2059,6 @@ presentations = [
           # (str_store_faction_name, s0, ":cur_faction"),
           # (overlay_add_item, "$g_presentation_obj_1", s0),
         # (try_end),
-        # (overlay_set_val, "$g_presentation_obj_1", "$temp"),
 
         ## name and color
         (try_begin),
@@ -2072,18 +2071,22 @@ presentations = [
 
           # faction list
           (assign, ":slot_no", 0),
-          (try_for_range, ":faction", "fac_commoners", "fac_innocents"),
-            (troop_set_slot, "trp_temp_array_a", ":slot_no", ":faction"),
-            (str_store_faction_name, s0, ":faction"),
-            (overlay_add_item, "$g_presentation_obj_1", s0),
-            (val_add, ":slot_no", 1),
-          (try_end),
+          # (try_for_range, ":faction", "fac_commoners", "fac_innocents"),
+          #   (troop_set_slot, "trp_temp_array_a", ":slot_no", ":faction"),
+          #   (str_store_faction_name, s0, ":faction"),
+          #   (overlay_add_item, "$g_presentation_obj_1", s0),
+          #   (val_add, ":slot_no", 1),
+          # (try_end),
           (try_for_range_backwards, ":faction", kingdoms_begin, kingdoms_end),
+            (faction_slot_eq, ":faction", slot_faction_state, sfs_active),
             (troop_set_slot, "trp_temp_array_a", ":slot_no", ":faction"),
             (str_store_faction_name, s0, ":faction"),
             (overlay_add_item, "$g_presentation_obj_1", s0),
             (val_add, ":slot_no", 1),
           (try_end),
+          (overlay_set_val, "$g_presentation_obj_1", "$temp"),
+          # (overlay_set_hilight_color, "$g_presentation_obj_1", 0xFFFFFF),
+          # (overlay_set_color, "$g_presentation_obj_1", 0xFFFFFF),
 
           # default color list
           # (troop_set_slot, "trp_temp_array_b", 0, factions[fac_deserters][6]),
@@ -2150,8 +2153,11 @@ presentations = [
           (create_mesh_overlay, reg0),
           (overlay_set_position, reg0, pos1),
         (try_end),
-        (store_add, ":string", "$g_presentation_state", "str_color_of"),
-        (str_store_string, s0, ":string"),
+        (try_begin),
+          (ge, "$g_presentation_state", recolor_heraldic),
+          (store_add, ":string", "$g_presentation_state", "str_color_of"),
+          (str_store_string, s0, ":string"),
+        (try_end),
         (create_text_overlay, reg1, "str_color_of", tf_center_justify),
         (position_set_x, pos1, 500),
         (position_set_y, pos1, 600),
@@ -2291,6 +2297,7 @@ presentations = [
         (try_begin),
           (eq, ":object", "$g_presentation_obj_1"),
           (assign, "$temp", ":value"),
+          # (overlay_set_val, "$g_presentation_obj_1", ":value"),
           (start_presentation, "prsnt_change_color"),
         (else_try),
           (this_or_next|eq, ":object", "$g_presentation_obj_3"),
@@ -10135,7 +10142,8 @@ presentations = [
     (overlay_set_position, reg1, pos1),
     (assign, "$g_presentation_obj_14", reg1),
 
-    (create_text_overlay, reg1, "@Party Effects", tf_center_justify),
+    (create_text_overlay, reg1, "@Party Effects", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, message_alert),
     (position_set_x, pos1, 200),
     (position_set_y, pos1, 705),
     (overlay_set_position, reg1, pos1),
@@ -10143,7 +10151,8 @@ presentations = [
     (position_set_y, pos1, 1200),
     (overlay_set_size, reg1, pos1),
 
-    (create_text_overlay, reg1, "@Party Moral", tf_left_align),
+    (create_text_overlay, reg1, "@Party Moral", tf_left_align|tf_with_outline),
+    (overlay_set_color, reg1, message_alert),
     (position_set_x, pos1, 490),
     (position_set_y, pos1, 705),
     (overlay_set_position, reg1, pos1),
@@ -10151,7 +10160,8 @@ presentations = [
     (position_set_y, pos1, 1200),
     (overlay_set_size, reg1, pos1),
 
-    (create_text_overlay, reg1, "@Party Size", tf_left_align),
+    (create_text_overlay, reg1, "@Party Size", tf_left_align|tf_with_outline),
+    (overlay_set_color, reg1, message_alert),
     (position_set_x, pos1, 490),
     (position_set_y, pos1, 430),
     (overlay_set_position, reg1, pos1),
@@ -11435,7 +11445,8 @@ presentations = [
         (position_set_x, pos2, 900),
         (position_set_y, pos2, 900),
 
-        (create_text_overlay, reg1, "@Agriculture :", 0),
+        (create_text_overlay, reg1, "@Agriculture:", tf_with_outline),
+        (overlay_set_color, reg1, message_alert),
         (position_set_x, pos1, 0),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg1, pos1),
@@ -11466,8 +11477,8 @@ presentations = [
         (overlay_set_color, reg1, 0x228B22),
         (val_sub, ":y_name", 20),
 
-
-        (create_text_overlay, reg1, "@Special Resources:", 0),
+        (create_text_overlay, reg1, "@Special Resources:", tf_with_outline),
+        (overlay_set_color, reg1, message_alert),
         (position_set_x, pos1, 0),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg1, pos1),
@@ -11497,7 +11508,8 @@ presentations = [
         (overlay_set_color, reg1, 0x228B22),
         (val_sub, ":y_name", 20),
 
-        (create_text_overlay, reg1, "@Production Sides:", 0),
+        (create_text_overlay, reg1, "@Production Sides:", tf_with_outline),
+        (overlay_set_color, reg1, message_alert),
         (position_set_x, pos1, 0),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg1, pos1),
@@ -11574,7 +11586,8 @@ presentations = [
         (position_set_x, pos2, 900),
         (position_set_y, pos2, 900),
 
-        (create_text_overlay, reg1, "@Building Effects:", 0),
+        (create_text_overlay, reg1, "@Building Effects:", tf_with_outline),
+        (overlay_set_color, reg1, message_alert),
         (position_set_x, pos1, 0),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg1, pos1),
@@ -11673,7 +11686,8 @@ presentations = [
             (val_sub, ":y_name", 20),
         (try_end),
 
-        (create_text_overlay, reg1, "@Decree Effects:", 0),
+        (create_text_overlay, reg1, "@Decree Effects:", tf_with_outline),
+        (overlay_set_color, reg1, message_alert),
         (position_set_x, pos1, 0),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg1, pos1),
@@ -11741,7 +11755,8 @@ presentations = [
         (position_set_x, pos2, 900),
         (position_set_y, pos2, 900),
 
-        (create_text_overlay, reg1, "@Modifiers:", 0),
+        (create_text_overlay, reg1, "@Modifiers:", tf_with_outline),
+        (overlay_set_color, reg1, message_alert),
         (position_set_x, pos1, 0),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg1, pos1),
@@ -11824,7 +11839,7 @@ presentations = [
         (party_get_slot, ":event", "$g_encountered_party", slot_center_event),
         (call_script, "script_get_event_details", ":event"),
         (store_sub, reg3, reg0, 100),
-        (create_text_overlay, reg1, "@Event: {reg3}% ({s0}, ~ {reg2} weeks)", 0),
+        (create_text_overlay, reg1, "@Event: {reg3}% ({s0}{reg3?, ~ {reg2} weeks):}", 0),
         (position_set_x, pos1, 0),
         (position_set_y, pos1, ":y_name"),
         (try_begin),
@@ -24206,20 +24221,20 @@ presentations = [
 ##fief management END
 
 ###new legion management ####################
- ("select_auxiliar_cohort", 0, mesh_load_window, [
+ ("select_auxiliar_cohort", 0, 0, [
     (ti_on_presentation_load,
       [
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     (str_store_string, s20, "str_none"),
     (try_begin),
@@ -24537,19 +24552,19 @@ presentations = [
     ]),
 ]),
 
-("select_legion_command", 0, mesh_load_window, [
+("select_legion_command", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     (str_store_string, s20, "str_none"),
     (try_begin),
@@ -24786,22 +24801,22 @@ presentations = [
   ]),
 ]),
 
-("legion_management", 0, mesh_load_window, [
+("legion_management", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
-    (create_text_overlay, reg1, "@_Legions of Rome_", tf_center_justify|tf_with_outline),
+    (create_text_overlay, reg1, "@Legions of Rome", tf_center_justify|tf_with_outline),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 685), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
@@ -25156,13 +25171,7 @@ presentations = [
                 (str_store_string, s22, "@Inactive"),
             (else_try),
                 (store_party_size_wo_prisoners, reg4, ":party"),
-                (str_clear, s23),
-                (try_begin),
-                    (party_get_battle_opponent, ":enemy", ":party"),
-                    (party_is_active, ":enemy"),
-                    (str_store_string, s23, "@In battle."),
-                (try_end),
-                (str_store_string, s22, "@Size: {reg4} men. {s23}"),
+                (str_store_string, s22, "@Size: {reg4} men."),
             (try_end),
         (else_try),
             (str_store_string, s22, "str_dplmc_none"),
@@ -25178,7 +25187,15 @@ presentations = [
         (try_begin),
             (gt, ":legate", -1),
             (eq, "$g_notification_menu_var1", 0),#is emperor
-            (create_text_overlay, reg0, "@DISBAND", tf_left_align),
+            (str_store_string, s23, "@DISBAND"),
+            (try_begin),
+                (troop_get_slot, ":party", ":legate", slot_troop_leaded_party),
+                (party_is_active, ":party"),
+                (party_get_battle_opponent, ":enemy", ":party"),
+                (party_is_active, ":enemy"),
+                (str_store_string, s23, "@IN BATTLE"),
+            (try_end),
+            (create_text_overlay, reg0, "@{s23}", tf_left_align),
             (overlay_set_color, reg0, 0xF07E70),
             (position_set_x, pos1, ":x_name"),
             (position_set_y, pos1, ":y_name"),
@@ -25362,13 +25379,7 @@ presentations = [
                     (str_store_string, s22, "@Inactive"),
                 (else_try),
                     (store_party_size_wo_prisoners, reg4, ":party"),
-                    (str_clear, s23),
-                    (try_begin),
-                        (party_get_battle_opponent, ":enemy", ":party"),
-                        (party_is_active, ":enemy"),
-                        (str_store_string, s23, "@In battle."),
-                    (try_end),
-                    (str_store_string, s22, "@Size: {reg4} men. {s23}"),
+                    (str_store_string, s22, "@Size: {reg4} men."),
                 (try_end),
             (else_try),
                 (str_store_string, s22, "str_dplmc_none"),
@@ -25384,7 +25395,15 @@ presentations = [
             (try_begin),
                 (gt, ":aux_cohort_commander", -1),
                 (eq, "$g_notification_menu_var1", 0),#is emperor
-                (create_text_overlay, reg0, "@DISBAND", tf_left_align),
+                (str_store_string, s23, "@DISBAND"),
+                (try_begin),
+                    (troop_get_slot, ":party", ":aux_cohort_commander", slot_troop_leaded_party),
+                    (party_is_active, ":party"),
+                    (party_get_battle_opponent, ":enemy", ":party"),
+                    (party_is_active, ":enemy"),
+                    (str_store_string, s23, "@IN BATTLE"),
+                (try_end),
+                (create_text_overlay, reg0, "@{s23}", tf_left_align),
                 (overlay_set_color, reg0, 0xF07E70),
                 (position_set_x, pos1, ":x_name"),
                 (position_set_y, pos1, ":y_name"),
@@ -25487,93 +25506,123 @@ presentations = [
         (else_try),
             (gt, ":legate", -1),
             (eq, ":disband", 1),
-            (call_script, "script_troop_set_rank", ":legate", slot_troop_legion, -1),
             (try_begin),
-                (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_martial),
-                (call_script, "script_change_player_relation_with_troop", ":legate", -30),
+                (troop_get_slot, ":party", ":legate", slot_troop_leaded_party),
+                (party_is_active, ":party"),
+                (party_get_battle_opponent, ":enemy", ":party"),
+                (party_is_active, ":enemy"),
+                (display_message, "@Can't disband the legion as it is in battle!", message_alert),
             (else_try),
-                (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_quarrelsome),
-                (call_script, "script_change_player_relation_with_troop", ":legate", -30),
-            (else_try),
-                (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_selfrighteous),
-                (call_script, "script_change_player_relation_with_troop", ":legate", -25),
-            (else_try),
-                (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_cunning),
-                (call_script, "script_change_player_relation_with_troop", ":legate", -25),
-            (else_try),
-                (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_debauched),
-                (call_script, "script_change_player_relation_with_troop", ":legate", -20),
-            (else_try),
-                (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_goodnatured),
-                (call_script, "script_change_player_relation_with_troop", ":legate", -15),
-            (else_try),
-                (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_upstanding),
-                (call_script, "script_change_player_relation_with_troop", ":legate", -22),
-            (else_try),
-                (call_script, "script_change_player_relation_with_troop", ":legate", -26),
-            (try_end),
-            (str_store_troop_name, s49, ":legate"),
-            (display_message, "@{s49} is dismissed from service."),
-            (call_script, "script_change_lord_party_to_fit_rank", ":legate"),
+                (assign, ":end", "pt_praetoriani_archer_cohors"),
+                (try_for_range, ":auxiliary", "pt_cohors_aux", ":end"),
+                    (val_sub, ":auxiliary", "pt_cohors_aux"),#slot_aux_legion_begin,slot_aux_commander_begin
 
-            (store_add, ":slot_legion_commander", slot_legion_commanders_begin, "$temp4_1"),
-            (troop_set_slot, "trp_province_array", ":slot_legion_commander", -1),#clear slot
+                    (store_add, ":slot", ":auxiliary", slot_aux_legion_begin),
+                    (troop_slot_eq, "trp_province_array", ":slot", "$temp4_1"),
 
-            (try_begin),
-                (eq, "$temp4_1", 13),
-                (troop_slot_eq, "trp_players_legion", 1,1),
-                (str_store_troop_name_plural, s52, "trp_players_legion"),
+                    (store_add, ":slot", ":auxiliary", slot_aux_commander_begin),
+                    (troop_get_slot, ":aux_cohort_commander", "trp_province_array", ":slot"),
+                    (troop_get_slot, ":party", ":aux_cohort_commander", slot_troop_leaded_party),
+                    (party_is_active, ":party"),
+                    (party_get_battle_opponent, ":enemy", ":party"),
+                    (party_is_active, ":enemy"),
+
+                    (val_add, ":auxiliary","str_cohors_aux"),
+                    (str_store_string, s23, ":auxiliary"),
+
+                    (display_log_message, "@The {s23}, which is attached to the legion, is still in battle. Legion can't be disbanded now!", message_alert),
+                    (assign, ":end", -1),
+                (try_end),
+                (eq, ":end", -1),
             (else_try),
-                (store_add, ":legion_string", "str_lover_talk", "$temp4_1"),
-                (str_store_string, s52, ":legion_string"),
-            (try_end),
-            (display_log_message, "@The {s52} has been disbanded!"),
+                (call_script, "script_troop_set_rank", ":legate", slot_troop_legion, -1),
+                (try_begin),
+                    (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_martial),
+                    (call_script, "script_change_player_relation_with_troop", ":legate", -30),
+                (else_try),
+                    (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_quarrelsome),
+                    (call_script, "script_change_player_relation_with_troop", ":legate", -30),
+                (else_try),
+                    (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_selfrighteous),
+                    (call_script, "script_change_player_relation_with_troop", ":legate", -25),
+                (else_try),
+                    (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_cunning),
+                    (call_script, "script_change_player_relation_with_troop", ":legate", -25),
+                (else_try),
+                    (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_debauched),
+                    (call_script, "script_change_player_relation_with_troop", ":legate", -20),
+                (else_try),
+                    (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_goodnatured),
+                    (call_script, "script_change_player_relation_with_troop", ":legate", -15),
+                (else_try),
+                    (troop_slot_eq, ":legate", slot_lord_reputation_type, lrep_upstanding),
+                    (call_script, "script_change_player_relation_with_troop", ":legate", -22),
+                (else_try),
+                    (call_script, "script_change_player_relation_with_troop", ":legate", -26),
+                (try_end),
+                (str_store_troop_name, s49, ":legate"),
+                (display_message, "@{s49} is dismissed from service."),
+                (call_script, "script_change_lord_party_to_fit_rank", ":legate"),
 
-            #also disband attached auxiliary forces
-            (try_for_range, ":auxiliary", "pt_cohors_aux", "pt_praetoriani_archer_cohors"),
-                (val_sub, ":auxiliary", "pt_cohors_aux"),#slot_aux_legion_begin,slot_aux_commander_begin
-
-                (store_add, ":slot", ":auxiliary", slot_aux_legion_begin),
-                (troop_slot_eq, "trp_province_array", ":slot", "$temp4_1"),
-
-                (store_add, ":slot", ":auxiliary", slot_aux_commander_begin),
-                (troop_get_slot, ":aux_cohort_commander", "trp_province_array", ":slot"),
-                (troop_set_slot, "trp_province_array", ":slot", -1),#clear slot
+                (store_add, ":slot_legion_commander", slot_legion_commanders_begin, "$temp4_1"),
+                (troop_set_slot, "trp_province_array", ":slot_legion_commander", -1),#clear slot
 
                 (try_begin),
-                    (is_between, ":aux_cohort_commander", active_npcs_begin, active_npcs_end),
-                    (call_script, "script_troop_set_rank", ":aux_cohort_commander", slot_troop_aux, -1),
-                    (try_begin),
-                        (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_martial),
-                        (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -30),
-                    (else_try),
-                        (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_quarrelsome),
-                        (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -30),
-                    (else_try),
-                        (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_selfrighteous),
-                        (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -25),
-                    (else_try),
-                        (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_cunning),
-                        (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -25),
-                    (else_try),
-                        (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_debauched),
-                        (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -20),
-                    (else_try),
-                        (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_goodnatured),
-                        (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -15),
-                    (else_try),
-                        (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_upstanding),
-                        (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -22),
-                    (else_try),
-                        (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -26),
-                    (try_end),
-                    (str_store_troop_name, s49, ":aux_cohort_commander"),
-                    (display_message, "@{s49} is dismissed from service."),
-                    (call_script, "script_change_lord_party_to_fit_rank", ":aux_cohort_commander"),
+                    (eq, "$temp4_1", 13),
+                    (troop_slot_eq, "trp_players_legion", 1,1),
+                    (str_store_troop_name_plural, s52, "trp_players_legion"),
+                (else_try),
+                    (store_add, ":legion_string", "str_lover_talk", "$temp4_1"),
+                    (str_store_string, s52, ":legion_string"),
                 (try_end),
-                (val_add, ":auxiliary","str_cohors_aux"),
-                (str_store_string, s23, ":auxiliary"),
-                (display_log_message, "@The {s23} has been disbanded!"),
+                (display_log_message, "@The {s52} has been disbanded!"),
+
+                #also disband attached auxiliary forces
+                (try_for_range, ":auxiliary", "pt_cohors_aux", "pt_praetoriani_archer_cohors"),
+                    (val_sub, ":auxiliary", "pt_cohors_aux"),#slot_aux_legion_begin,slot_aux_commander_begin
+
+                    (store_add, ":slot", ":auxiliary", slot_aux_legion_begin),
+                    (troop_slot_eq, "trp_province_array", ":slot", "$temp4_1"),
+
+                    (store_add, ":slot", ":auxiliary", slot_aux_commander_begin),
+                    (troop_get_slot, ":aux_cohort_commander", "trp_province_array", ":slot"),
+                    (troop_set_slot, "trp_province_array", ":slot", -1),#clear slot
+
+                    (try_begin),
+                        (is_between, ":aux_cohort_commander", active_npcs_begin, active_npcs_end),
+                        (call_script, "script_troop_set_rank", ":aux_cohort_commander", slot_troop_aux, -1),
+                        (try_begin),
+                            (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_martial),
+                            (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -30),
+                        (else_try),
+                            (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_quarrelsome),
+                            (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -30),
+                        (else_try),
+                            (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_selfrighteous),
+                            (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -25),
+                        (else_try),
+                            (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_cunning),
+                            (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -25),
+                        (else_try),
+                            (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_debauched),
+                            (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -20),
+                        (else_try),
+                            (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_goodnatured),
+                            (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -15),
+                        (else_try),
+                            (troop_slot_eq, ":aux_cohort_commander", slot_lord_reputation_type, lrep_upstanding),
+                            (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -22),
+                        (else_try),
+                            (call_script, "script_change_player_relation_with_troop", ":aux_cohort_commander", -26),
+                        (try_end),
+                        (str_store_troop_name, s49, ":aux_cohort_commander"),
+                        (display_message, "@{s49} is dismissed from service."),
+                        (call_script, "script_change_lord_party_to_fit_rank", ":aux_cohort_commander"),
+                    (try_end),
+                    (val_add, ":auxiliary","str_cohors_aux"),
+                    (str_store_string, s23, ":auxiliary"),
+                    (display_log_message, "@The {s23} has been disbanded!"),
+                (try_end),
             (try_end),
             (start_presentation, "prsnt_legion_management"),
         (else_try),
@@ -25634,42 +25683,50 @@ presentations = [
         (try_begin),
             (gt, ":aux_commander", -1),
             (eq, ":disband", 1),
-            (call_script, "script_troop_set_rank", ":aux_commander", slot_troop_legion, -1),
             (try_begin),
-                (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_martial),
-                (call_script, "script_change_player_relation_with_troop", ":aux_commander", -30),
+                (troop_get_slot, ":party", ":aux_commander", slot_troop_leaded_party),
+                (party_is_active, ":party"),
+                (party_get_battle_opponent, ":enemy", ":party"),
+                (party_is_active, ":enemy"),
+                (display_message, "@Can't disband the auxiliary unit as it is in battle!", message_alert),
             (else_try),
-                (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_quarrelsome),
-                (call_script, "script_change_player_relation_with_troop", ":aux_commander", -30),
-            (else_try),
-                (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_selfrighteous),
-                (call_script, "script_change_player_relation_with_troop", ":aux_commander", -25),
-            (else_try),
-                (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_cunning),
-                (call_script, "script_change_player_relation_with_troop", ":aux_commander", -25),
-            (else_try),
-                (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_debauched),
-                (call_script, "script_change_player_relation_with_troop", ":aux_commander", -20),
-            (else_try),
-                (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_goodnatured),
-                (call_script, "script_change_player_relation_with_troop", ":aux_commander", -15),
-            (else_try),
-                (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_upstanding),
-                (call_script, "script_change_player_relation_with_troop", ":aux_commander", -22),
-            (else_try),
-                (call_script, "script_change_player_relation_with_troop", ":aux_commander", -26),
+                (call_script, "script_troop_set_rank", ":aux_commander", slot_troop_legion, -1),
+                (try_begin),
+                    (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_martial),
+                    (call_script, "script_change_player_relation_with_troop", ":aux_commander", -30),
+                (else_try),
+                    (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_quarrelsome),
+                    (call_script, "script_change_player_relation_with_troop", ":aux_commander", -30),
+                (else_try),
+                    (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_selfrighteous),
+                    (call_script, "script_change_player_relation_with_troop", ":aux_commander", -25),
+                (else_try),
+                    (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_cunning),
+                    (call_script, "script_change_player_relation_with_troop", ":aux_commander", -25),
+                (else_try),
+                    (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_debauched),
+                    (call_script, "script_change_player_relation_with_troop", ":aux_commander", -20),
+                (else_try),
+                    (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_goodnatured),
+                    (call_script, "script_change_player_relation_with_troop", ":aux_commander", -15),
+                (else_try),
+                    (troop_slot_eq, ":aux_commander", slot_lord_reputation_type, lrep_upstanding),
+                    (call_script, "script_change_player_relation_with_troop", ":aux_commander", -22),
+                (else_try),
+                    (call_script, "script_change_player_relation_with_troop", ":aux_commander", -26),
+                (try_end),
+                (str_store_troop_name, s49, ":aux_commander"),
+                (display_message, "@{s49} is dismissed from service."),
+                (call_script, "script_change_lord_party_to_fit_rank", ":aux_commander"),
+
+                (store_add, ":slot_aux_commander", slot_aux_commander_begin, "$temp4_1"),
+                (troop_set_slot, "trp_province_array", ":slot_aux_commander", -1),#clear slot
+
+                (store_add, ":cohort", "$temp4_1", "pt_cohors_aux"),
+                (call_script, "script_get_cohort_name_to_s5", ":cohort"),
+                (display_log_message, "@The {s5} has been disbanded!"),
+                (start_presentation, "prsnt_legion_management"),
             (try_end),
-            (str_store_troop_name, s49, ":aux_commander"),
-            (display_message, "@{s49} is dismissed from service."),
-            (call_script, "script_change_lord_party_to_fit_rank", ":aux_commander"),
-
-            (store_add, ":slot_aux_commander", slot_aux_commander_begin, "$temp4_1"),
-            (troop_set_slot, "trp_province_array", ":slot_aux_commander", -1),#clear slot
-
-            (store_add, ":cohort", "$temp4_1", "pt_cohors_aux"),
-            (call_script, "script_get_cohort_name_to_s5", ":cohort"),
-            (display_log_message, "@The {s5} has been disbanded!"),
-            (start_presentation, "prsnt_legion_management"),
         (else_try),
             (gt, ":aux_commander", -1),
             (troop_get_slot, ":party", ":aux_commander", slot_troop_leaded_party),
@@ -25707,10 +25764,19 @@ presentations = [
   ]),
 ]),
 
-("legion_selection", 0, mesh_load_window, [
+("legion_selection", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     #init variables
     (assign, ":num_lords", 0),
@@ -25759,16 +25825,6 @@ presentations = [
 
         (val_add, ":num_lords", 1),
     (try_end),
-
-    # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
-
     (store_add, ":string", "$temp4_1", "str_lover_talk"),
     (str_store_string, s22, ":string"),
     # Presentation title, centered at the top
@@ -26345,10 +26401,19 @@ presentations = [
   ]),
 ]),
 
-("aux_selection", 0, mesh_load_window, [
+("aux_selection", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     #init variables
     (assign, ":num_lords", 0),
@@ -26397,15 +26462,6 @@ presentations = [
 
         (val_add, ":num_lords", 1),
     (try_end),
-
-    # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
     (store_add, ":slot", slot_aux_legion_begin, "$temp4_1"),
@@ -26949,20 +27005,20 @@ presentations = [
   ]),
 ]),
 
-("legion_select_hq", 0, mesh_load_window, [
+("legion_select_hq", 0, 0, [
     (ti_on_presentation_load,
       [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
         # # #0. BACKROUND
-        # (create_mesh_overlay, reg0, "mesh_load_window"),
-        # (position_set_x, pos1, -1),
-        # (position_set_y, pos1, -1),
-        # (overlay_set_position, reg0, pos1),
-        # (position_set_x, pos1, 1002),
-        # (position_set_y, pos1, 1002),
-        # (overlay_set_size, reg0, pos1),
+        (create_mesh_overlay, reg0, "mesh_load_window"),
+        (position_set_x, pos1, -1),
+        (position_set_y, pos1, -1),
+        (overlay_set_position, reg0, pos1),
+        (position_set_x, pos1, 1002),
+        (position_set_y, pos1, 1002),
+        (overlay_set_size, reg0, pos1),
 
         (try_begin),
             (eq, "$temp4_1", 13),#player
@@ -27302,19 +27358,19 @@ presentations = [
 ##########LEGION MANAGEMENT END
 
 ##province management BEGIN
-("influence_nero", 0, mesh_load_window, [
+("influence_nero", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
     (create_text_overlay, reg1, "@_You can influence the Princeps to change governors_", tf_center_justify),
@@ -27611,19 +27667,19 @@ presentations = [
 ]),
 
 ##province management BEGIN
-("influence_senate", 0, mesh_load_window, [
+("influence_senate", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
     (create_text_overlay, reg1, "@You can influence the Senate to change governors", tf_center_justify),
@@ -27940,19 +27996,19 @@ presentations = [
   ]),
 ]),
 
-("province_management", 0, mesh_load_window, [
+("province_management", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     # Presentation title, centered at the top
     (create_text_overlay, reg1, "@_Province List_", tf_center_justify),
@@ -28286,10 +28342,19 @@ presentations = [
   ]),
 ]),
 
-("governor_selection", 0, mesh_load_window, [
+("governor_selection", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     #init variables
     (assign, ":num_lords", 0),
@@ -28331,15 +28396,6 @@ presentations = [
 
         (val_add, ":num_lords", 1),
     (try_end),
-
-    # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -28600,19 +28656,19 @@ presentations = [
   ]),
 ]),
 
-("governor_change", 0, mesh_load_window, [
+("governor_change", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -28876,19 +28932,19 @@ presentations = [
   ]),
 ]),
 
-("make_province_senatorial", 0, mesh_load_window,[
+("make_province_senatorial", 0, 0,[
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -29021,19 +29077,19 @@ presentations = [
   ]),
 ]),
 
-("make_province_imperial", 0, mesh_load_window, [
+("make_province_imperial", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     (store_add, ":string", "$temp4_1", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -29174,10 +29230,19 @@ presentations = [
   ]),
 ]),
 
-("province_notifiction_player", 0, mesh_load_window, [
+("province_notifiction_player", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     #init variables
     (assign, ":num_lords", 0),
@@ -29191,15 +29256,6 @@ presentations = [
         (neg|troop_slot_ge, ":active_npc", slot_troop_govern, 1),
         (val_add, ":num_lords", 1),
     (try_end),
-
-    # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
 
     (store_add, ":slot", "$g_notification_menu_var2", slot_province_senatorial_begin),
     (troop_get_slot, ":is_senatorial", "trp_province_array", ":slot"),
@@ -29322,7 +29378,7 @@ presentations = [
 
     # (position_set_x, pos1, 0),
     (store_div, ":y_name", ":num_lords", 4),##get y for size of the scrollable overlay
-    (val_mul, ":y_name", 210),
+    (val_mul, ":y_name", 225),
     (assign, ":x_name", 20),
     #text size
     (position_set_x, pos2, 900),
@@ -29450,6 +29506,7 @@ presentations = [
         (troop_get_slot, ":old_governor", "trp_province_array", "$g_notification_menu_var2"),
         (try_begin),
             (gt, ":old_governor", -1),
+            (neq, ":old_governor", "$g_notification_menu_var1"),
             (call_script, "script_troop_set_rank", ":old_governor", slot_troop_govern, -1),
             (call_script, "script_change_lord_party_to_fit_rank", ":old_governor"),
         (try_end),
@@ -29561,10 +29618,19 @@ presentations = [
   ]),
 ]),
 
-("influence_governor_change", 0, mesh_load_window, [
+("influence_governor_change", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     #init variables
     (assign, ":num_lords", 0),
@@ -29585,16 +29651,6 @@ presentations = [
         (neg|troop_slot_ge, ":active_npc", slot_troop_govern, 1),
         (val_add, ":num_lords", 1),
     (try_end),
-
-    # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
-
 
     (store_add, ":string", "$g_notification_menu_var2", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -29925,10 +29981,19 @@ presentations = [
     (try_end),
   ]),
 ]),
-("influence_governor_change_senate", 0, mesh_load_window, [
+("influence_governor_change_senate", 0, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
 
     (try_begin),
         (ge, "$g_is_emperor", 1),
@@ -29956,16 +30021,6 @@ presentations = [
         (neg|troop_slot_ge, ":active_npc", slot_troop_govern, 1),
         (val_add, ":num_lords", 1),
     (try_end),
-
-    # #0. BACKROUND
-    # (create_mesh_overlay, reg0, "mesh_load_window"),
-    # (position_set_x, pos1, -1),
-    # (position_set_y, pos1, -1),
-    # (overlay_set_position, reg0, pos1),
-    # (position_set_x, pos1, 1002),
-    # (position_set_y, pos1, 1002),
-    # (overlay_set_size, reg0, pos1),
-
 
     (store_add, ":string", "$g_notification_menu_var2", "str_province_begin"),
     (str_store_string, s22, ":string"),
@@ -30305,7 +30360,7 @@ presentations = [
     #    - id item in combo box vassal (-1 if not vassal)
 
 
-("worldmap_fief_selection_feudal", 0, mesh_load_window, [
+("worldmap_fief_selection_feudal", 0, 0, [
   (ti_on_presentation_load,[
         #init variables
         (assign, "$g_presentation_obj_5", -1),
@@ -30329,15 +30384,15 @@ presentations = [
         (set_fixed_point_multiplier, 1000),
 
         # #0. BACKROUND
-        # (create_mesh_overlay, reg0, "mesh_load_window"),
-        # (position_set_x, pos1, -1),
-        # (position_set_y, pos1, -1),
-        # (overlay_set_position, reg0, pos1),
-        # (position_set_x, pos1, 1002),
-        # (position_set_y, pos1, 1002),
-        # (overlay_set_size, reg0, pos1),
+        (create_mesh_overlay, reg0, "mesh_load_window"),
+        (position_set_x, pos1, -1),
+        (position_set_y, pos1, -1),
+        (overlay_set_position, reg0, pos1),
+        (position_set_x, pos1, 1002),
+        (position_set_y, pos1, 1002),
+        (overlay_set_size, reg0, pos1),
 
-      ## initialization part begin
+        ## initialization part begin
 
 
         # presentation obj: begin from top left corner

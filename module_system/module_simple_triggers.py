@@ -6831,6 +6831,7 @@ simple_triggers = [
     (party_slot_ge, ":center", slot_town_lord, 1),#not a player fief
     (neg|party_slot_ge, ":center", slot_party_looted_left_days, 1),#not looted
     (party_slot_eq, ":center", slot_center_is_besieged_by, -1),#not under siege
+    (party_slot_eq, ":center", slot_center_ongoing_rebellion, 0),#no rebellion
     (party_get_slot,":patrol", ":center", slot_town_patrol_party),
     (try_begin),
         (ge, ":patrol", 1),
@@ -12258,9 +12259,11 @@ simple_triggers = [
                         (eq, ":active_npc", active_npcs_including_player_begin),
                         (assign, ":active_npc", "trp_player"),
                         (assign, ":npc_faction", "$players_kingdom"),
-                        (neq, "$g_is_emperor", 1),#is not emperor
                         (try_begin),
                             (gt, "$g_dont_give_fief_to_player_days", 0),#player has not refused a honour previously
+                            (assign, ":c", 0),
+                        (else_try),
+                            (ge, "$g_is_emperor", 1),#is not emperor
                             (assign, ":c", 0),
                         (try_end),
                     (else_try),
@@ -12269,14 +12272,10 @@ simple_triggers = [
                     (eq, ":c", 1),
                     (eq, ":npc_faction", ":ex_governor_faction"),#same faction
                     (assign, ":c", 0),
-                    (try_begin),#is not dead
-                        (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
-                        (assign, ":c", 1),
-                    (else_try),
-                        (eq, ":active_npc", "trp_player"),
-                        (assign, ":c", 1),
-                    (try_end),
-                    (eq, ":c", 1),
+                    #is not dead
+                    (this_or_next|troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
+                    (eq, ":active_npc", "trp_player"),
+
                     (neq, ":active_npc", ":governor"),
                     (neg|troop_slot_ge, ":active_npc", slot_troop_legion, 1),
                     (neg|troop_slot_ge, ":active_npc", slot_troop_aux, 1),
@@ -12307,14 +12306,21 @@ simple_triggers = [
                     (val_max, ":modifier", 1),
                     (val_mul, ":score_1", ":modifier"),
                     (val_div, ":score_1", 100),
-
+                    # (assign, reg1, ":score_1"),
+                    # (assign, reg2, ":modifier"),
+                    # (str_store_troop_name, s1, ":active_npc"),
+                    # (display_message, "@Check for {s1}, score {reg1}, modifier {reg2}"),
                     (ge, ":score_1", ":score"),
                     (assign, ":score", ":score_1"),
                     (assign, ":candiate", ":active_npc"),
+                    # (assign, reg1, ":score"),
+                    # (assign, reg2, ":modifier"),
+                    # (str_store_troop_name, s1, ":candiate"),
+                    # (display_message, "@candiate {s1}, score {reg1}, modifier {reg2}"),
                 (try_end),
                 #is no governor found use old governor
                 (try_begin),
-                    (gt, ":candiate", -1),
+                    (eq, ":candiate", -1),
                     (assign, ":candiate", ":governor"),
                 (try_end),
                 (gt, ":candiate", -1),
@@ -12346,12 +12352,14 @@ simple_triggers = [
                         (eq, ":governor", "trp_player"),
                         (call_script, "script_add_notification_menu", "mnu_notification_player_senatorial_province_expires", 0, ":province"),
                     (try_end),
-                    (str_store_troop_name, s22, ":candiate"),
+                    (str_store_troop_name_link, s22, ":candiate"),
+                    (str_store_troop_name_link, s21, ":governor"),
                     (val_add, ":province", "str_province_begin"),
                     (str_store_string, s23, ":province"),
-                    (display_log_message, "@The governorship of {s23} has expired. The senate has assigned {s22} as new governor."),
+                    (display_log_message, "@{s21}'s governorship of {s23} has expired. The senate has assigned {s22} as new governor."),
                     #remove old governor
                     (try_begin),
+                        (neq, ":governor", ":candiate"),
                         (call_script, "script_troop_set_rank", ":governor", slot_troop_govern, -1),
                         (try_begin),
                             (gt, ":governor", 0),#not player
@@ -12393,7 +12401,7 @@ simple_triggers = [
     (try_end),
 ]),
 
-(0.15,[
+(0.05,[
     (call_script, "script_execude_debug_message", 196),
     (try_for_parties, ":party_no"),
         (gt, ":party_no", last_static_party),

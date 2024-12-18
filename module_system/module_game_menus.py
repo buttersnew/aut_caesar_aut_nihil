@@ -2214,6 +2214,23 @@ game_menus = [
   "Choose an action:",
   "none",
   [],[
+    ("camp_cheat", [(ge, "$cheat_mode", 1)], "Find Roman parties",[
+      (display_message, "@Searching for roman parties"),
+      (display_message, "@name; type; template;"),
+      (try_for_parties, ":party"),
+        (party_is_active, ":party"),
+        (store_faction_of_party, ":faction", ":party"),
+        (eq, ":faction", "fac_kingdom_7"),
+        (party_get_template_id, ":template", ":party"),
+        (assign, reg10, ":template"),
+        (str_store_party_name, s10, ":party"),
+        (party_get_slot, reg11, ":party", slot_party_type),
+        (display_message, "@{s10}; {reg11}; {reg10}"),
+        # (party_relocate_near_party, ":party", "p_main_party", 2),
+      (try_end),
+      (display_message, "@End"),
+    ]),
+
     ("camp_action",[
     ],"Show legendary items.",[
       (assign, "$cheat_find_item_range_begin", 0),
@@ -2519,6 +2536,7 @@ game_menus = [
     ]),
     ("action_modify_factions_color",[],"Change faction colors.",[
       (assign, "$g_presentation_state", recolor_kingdom),
+      (assign, "$temp", 0),
       (try_begin),
           (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
           (store_sub, "$temp", "$players_kingdom", npc_kingdoms_begin),
@@ -24675,7 +24693,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ("accept",[],"Accept the honor",[
       (call_script, "script_change_troop_renown", "trp_player", 50),
       (troop_set_slot, "trp_province_array", "$g_notification_menu_var2", "trp_player"),
-      (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, 1),
+      (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, "$g_notification_menu_var2"),
       (call_script, "script_give_center_to_lord2", "$g_notification_menu_var1", "trp_player", 0),
       (str_store_troop_name, s22, "trp_player"),
       (val_add, "$g_notification_menu_var2", "str_province_begin"),
@@ -24726,7 +24744,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     (try_end),
 
     (troop_set_slot, "trp_province_array", "$g_notification_menu_var2", "trp_player"),
-    (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, 1),
+    (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, "$g_notification_menu_var2"),
 
     #remove old governor
     (call_script, "script_troop_set_rank", ":governor", slot_troop_govern, -1),
@@ -24746,9 +24764,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
   "none",[
     (start_presentation, "prsnt_province_notifiction_player"),
   ],[
-    ("accept",[],
-    "Nothing.",
-    [(change_screen_map)]),
+    ("accept",[],"Nothing.",[(change_screen_map)]),
 ]),
 ("notification_player_senatorial_province_expires",0,
   "Your governorship of {s10} has expired and the senate appointed a new governor.",
@@ -33258,7 +33274,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
 ]),
 ("emperor_event_04",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Boats^^Last night you had a dream. In your dream you travelled with a party-boat full of attractive young women through the Empire, making party all time."
-  +" This idea of a party-boot does not go out of your head.^What will you do?",
+  +" This idea of a party-boat does not go out of your head.^What will you do?",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
@@ -47839,7 +47855,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (try_end),
         #set all slots properly
         (call_script, "script_troop_set_rank", ":governor",slot_troop_govern, -1),
-        (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, 1),
+        (call_script, "script_troop_set_rank", "trp_player",slot_troop_govern, ":province"),
         (assign, "$g_dont_give_fief_to_player_days", 30),
         (troop_set_slot, "trp_province_array", ":province", "trp_player"),
         #update his party
@@ -49056,16 +49072,35 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       # (try_end),
         # ]
       # ),
-      ("camp_cheat_find_item",[], "Add unhealth..",
-       [
-         (call_script, "script_change_troop_health", "trp_player", 200),
-	   ]
-       ),
-      ("camp_cheat_find_item",[], "Change weather..",
-       [
-         (jump_to_menu, "mnu_cheat_change_weather"),
-	   ]
-       ),
+    ("camp_cheat_find_item",[], "Add unhealth.",[
+      (call_script, "script_change_troop_health", "trp_player", 200),
+    ]),
+    ("camp_cheat_find_item",[], "Change weather.",[
+      (jump_to_menu, "mnu_cheat_change_weather"),
+    ]),
+    ("camp_cheat_find_item",[], "Search for issues with governors",[
+        (try_for_range, ":province", slot_province_governor_begin, p_provinces_end),
+            (troop_get_slot, ":governor", "trp_province_array", ":province"),
+            (gt, ":governor", -1),
+            (str_store_troop_name_link, s10, ":governor"),
+            (try_begin),
+              (troop_get_slot, reg10, ":governor", slot_troop_legion),
+              (ge, reg10, 1),
+              (display_message, "@{s10} has legion {reg10}"),
+            (try_end),
+            (try_begin),
+              (troop_get_slot, reg10, ":governor", slot_troop_govern),
+              (neq, reg10, ":province"),
+              (assign, reg11, ":province"),
+              (display_message, "@{s10} has other province: {reg10} ({reg11})"),
+            (try_end),
+            (try_begin),
+              (troop_get_slot, reg10, ":governor", slot_troop_aux),
+              (ge, reg10, 1),
+              (display_message, "@{s10} has auxiliar {reg10}"),
+            (try_end),
+        (try_end),
+    ]),
 
       # ("options",[],"Set Civil war variable -1",
         # [

@@ -3347,7 +3347,7 @@ fighters_end = "trp_cattle"
 
 #threshold for lord upgrades
 #slot_troop_wealth must exceed the calculated amount for action in script_troop_does_business_in_center
-dplmc_improvement_limit = 50000#
+dplmc_improvement_limit = 75000#
 dplmc_equipment_limit = 60000
 dplmc_command_renown_limit = 300
 
