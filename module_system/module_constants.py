@@ -2272,6 +2272,9 @@ quick_battle_kingdoms_end = "fac_kingdom_8"
 bandits_begin = "trp_looter"
 bandits_end = "trp_follower_woman"
 
+follower_troops_begin = "trp_follower_woman"
+follower_troops_end = "trp_town_walker_1"
+
 kingdom_ladies_begin = "trp_knight_1_1_wife"
 kingdom_ladies_end = "trp_heroes_end"
 

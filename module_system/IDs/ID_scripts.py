@@ -1007,3 +1007,4 @@ script_player_change_religion = 1005
 script_print_honor_to_s60 = 1006
 script_calculate_weekly_rents = 1007
 script_cf_force_wound_troop = 1008
+script_lady_meets_visitor = 1009

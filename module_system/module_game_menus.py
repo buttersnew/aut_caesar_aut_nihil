@@ -2678,15 +2678,9 @@ game_menus = [
         (call_script, "script_objectionable_action", tmt_aristocratic, "str_hire_deserters"),
       (else_try),
         (is_between, ":troop_faction", npc_kingdoms_begin, npc_kingdoms_end),
-        # (store_character_level, ":relation", "$g_prisoner_recruit_troop_id"),
-        (try_begin), #check culture
-          (eq, "$players_kingdom", "fac_player_supporters_faction"),
-          (is_between, "$g_player_culture", npc_kingdoms_begin, npc_kingdoms_end),
-          (eq, "$g_player_culture", ":troop_faction"),
-          (assign, ":troop_faction", "$players_kingdom"),
-        (try_end),
+        (faction_get_slot, ":troop_faction_culture", ":troop_faction", slot_faction_culture),
         (try_begin), #no penalty for same faction
-          (eq, ":troop_faction", "$players_kingdom"),
+          (faction_slot_eq,"$players_kingdom", slot_faction_culture, ":troop_faction_culture"),
           # (val_sub, ":relation", ":morale_change"), #bonus
           (assign, ":morale_change", 0),
           (assign, "$g_prisoner_recruit_troop_id", 0),
@@ -5859,39 +5853,19 @@ game_menus = [
                         (change_screen_return),
 
                         (assign, ":best_troop", "trp_hired_blade"),
-                        ##diplomacy start+
-                        #Trivial aesthetic change, change the default troop to be appropriate to the
-                        #culture of the player kingdom (instead of defaulting always to a Swadian troop).
-                        (assign, ":players_culture", "$players_kingdom"),
                         (try_begin),
-                            #If not the co-ruler of an NPC kingdom, use the player faction culture.
-                            (neg|is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-                            # (assign, ":best_troop", "trp_mercenary_crossbowman"),#<- while we're at it, use a mercenary default #SB : hired blade
-                            (assign, ":players_culture", "$g_player_culture"),
-                            (this_or_next|is_between, ":players_culture", npc_kingdoms_begin, npc_kingdoms_end),
+                            (faction_get_slot, ":players_culture", "$players_kingdom", slot_faction_culture),
                             (is_between, ":players_culture", cultures_begin, cultures_end),
+                            (faction_get_slot, reg0, ":players_culture", slot_faction_guard_troop),
+                            (ge, reg0, soldiers_begin),
+                            (assign, ":best_troop", reg0),
                         (else_try),
-                            #If not the co-ruler of an NPC kingdom, and there wasn't a valid player faction
-                            #culture, try to use the faction of the player's court.
-                            (neg|is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-                            (is_between, "$g_player_court", centers_begin, centers_end),
-                            (party_slot_ge, "$g_player_court", slot_center_original_faction, 1),
-                            (party_get_slot, ":players_culture", "$g_player_court", slot_center_original_faction),
-                        (try_end),
-                        (try_begin),
-                            #Resolve from kingdom to culture if necessary
-                            (is_between, ":players_culture", kingdoms_begin, kingdoms_end),
-                            (faction_get_slot, ":players_culture", ":players_culture", slot_faction_culture),
-                        (try_end),
-                        (try_begin),
-                            #If the final result is a culture, get the best troop if valid
+                            (troop_get_slot, ":players_culture", "trp_player", slot_faction_culture),
                             (is_between, ":players_culture", cultures_begin, cultures_end),
                             (faction_get_slot, reg0, ":players_culture", slot_faction_guard_troop),
                             (ge, reg0, soldiers_begin),
                             (assign, ":best_troop", reg0),
                         (try_end),
-                        ##diplomacy end+
-                        #SB : fix this, otherwise previously calculated troop is useless
                         (try_begin),
                             (neq, ":best_troop", "trp_hired_blade"),
                             (store_character_level, ":maximum_troop_score", ":best_troop"),
@@ -46358,7 +46332,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (troop_set_slot, "trp_kingdom_17_lord", slot_troop_occupation, slto_inactive),
       (troop_set_faction,"trp_kingdom_17_lord","fac_outlaws"),
       (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"),
-      (assign, "$g_player_culture", "fac_kingdom_17"),
 
       (faction_set_slot, "fac_player_supporters_faction",  slot_faction_culture, "fac_culture_8"),
       (faction_set_slot, "fac_player_faction",  slot_faction_culture, "fac_culture_8"),
@@ -46428,7 +46401,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ("event04",[],"Continue. (as lord)",[
     (display_log_message, "@You take over the jewish culture"),
     (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"),
-    (assign, "$g_player_culture", "fac_kingdom_17"),
     (call_script, "script_cf_start_jewish_revolt"),
 
     (try_begin),
@@ -46544,25 +46516,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ("leave",[],"Go back.",[
     (jump_to_menu, "mnu_temple_jerusalem")
   ]),
-]),
-
-("select_culture",0,
-  "Select your culture:",
-  "none",[
-  ],[
-    ("event04",[],"Roman.",[
-      (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_7"),
-      (assign, "$g_player_culture", "fac_kingdom_7"),
-    ]),
-    ("event04",[(ge, "$cheat_mode", 1)],"Dacian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_1"),]),
-    ("event04",[(ge, "$cheat_mode", 1)],"Germanic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_4"),]),
-    ("event04",[(ge, "$cheat_mode", 1)],"Nomads.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_3"),]),
-    ("event04",[],"Jewish.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_8"), (assign, "$g_player_culture", "fac_kingdom_17"),]),
-    ("event04",[(ge, "$cheat_mode", 1)],"Parhtian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_6"),]),
-    ("event04",[(ge, "$cheat_mode", 1)],"Armenian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_5"),]),
-    ("event04",[(ge, "$cheat_mode", 1)],"Celtic.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2"),]),
-    ("event04",[(ge, "$cheat_mode", 1)],"Caledonian.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_2_1"),]),
-    ("event04",[(ge, "$cheat_mode", 1)],"Bosphoran.",[ (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_9"),]),
 ]),
 
 ("host_games",0,
@@ -56935,11 +56888,11 @@ It is said, that she lives now together with the goat.",
       (set_visitors, 3, "trp_looter", 2),
       (set_visitors, 4, "trp_mercenary_crossbowman", 2),
       (set_visitor, 5, "trp_fake_nero"),
-      (set_visitors, 6, "trp_irish_deserter", 7),
-      (set_visitors, 7, "trp_irish_deserter", 7),
-      (set_visitors, 8, "trp_irish_deserter", 7),
-      (set_visitors, 9, "trp_irish_deserter", 6),
-      (set_visitors, 10, "trp_irish_deserter", 6),
+      (set_visitors, 6, "trp_roman_deserter", 7),
+      (set_visitors, 7, "trp_roman_deserter", 7),
+      (set_visitors, 8, "trp_roman_deserter", 7),
+      (set_visitors, 9, "trp_roman_deserter", 6),
+      (set_visitors, 10, "trp_roman_deserter", 6),
 
       (set_jump_mission, "mt_fake_nero_fight"),
       (jump_to_scene, "scn_cythnus"),
