@@ -2315,7 +2315,7 @@ strings = [
 	+" But you shouldn't think that I am also one of those Barbarians."
 	+" My family is of true Roman birth, my grandfather was a veteran"
 	+" who obtained land from his general here in Lugdunum."),
-  ("npc10_home_description_2", "Athen is also a center of trade and most important, knowledge. The most famous Greek philosophers came from here."
+  ("npc10_home_description_2", "Athens is also a center of trade and most important, knowledge. The most famous Greek philosophers came from here."
 	+" It is the pearl of the Aegean sea, the heart of Greece."),
   ("npc11_home_description_2", "I started this adventurous life out of childish emotions for a handsome boy. Oh, if I could tell my young self"
 	+" what strains this decision will bring... Well, anyway."),

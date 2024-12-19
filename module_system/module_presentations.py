@@ -38885,7 +38885,7 @@ presentations = [
     (else_try),
         (eq,"$player_ambushed",1),
         (eq, "$encountered_party_friendly", 0),
-        (str_store_string, s0, "@Lead the defend"),
+        (str_store_string, s0, "@Lead the defence"),
         (assign, "$temp4_1", 3),
     (else_try),
         (eq,"$player_ambushed",5),

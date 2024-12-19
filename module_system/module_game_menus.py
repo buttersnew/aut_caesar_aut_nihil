@@ -3029,7 +3029,7 @@ game_menus = [
     ]),
 ]),
 ("cattle_herd_kill_opfer",0,
-  "How many animals do you want to sacrifice to honor {s58}?",
+  "How many animals do you want to sacrifice to honor {s58}?^^You gain 1 piety per 5 cattle. If you sacrifice less than 5 cattle it is random if {s58} accepts your sacrifice!",
   "none",[
     (str_store_string, s58, "@the gods"),
     (try_begin),
@@ -3039,9 +3039,9 @@ game_menus = [
     (party_get_num_companions, reg5, "$g_encountered_party")
   ],[
     ("cattle_kill_1",[(ge, reg5, 1),],"One.",[
-      (store_random_in_range, ":rand", 7),
+      (store_random_in_range, ":random", 0, 7),
       (try_begin),
-        (le, ":rand", 1),
+        (le, ":random", 1),
         (call_script, "script_add_piety", 1, 1),
         (call_script, "script_change_player_honor", 1),
         (display_message, "@The sacrifice was sufficient. You gain piety!", color_good_news),
@@ -3066,9 +3066,9 @@ game_menus = [
       (play_sound, "snd_cow_slaughter"),
     ]),
     ("cattle_kill_2",[(ge, reg5, 2),],"Two.",[
-      (store_random_in_range, ":rand", 7),
+      (store_random_in_range, ":random", 0, 7),
       (try_begin),
-        (le, ":rand", 2),
+        (le, ":random", 2),
         (call_script, "script_add_piety", 1, 1),
         (call_script, "script_change_player_honor", 1),
         (display_message, "@The sacrifice was sufficient. You gain piety!", color_good_news),
@@ -3093,9 +3093,9 @@ game_menus = [
       (play_sound, "snd_cow_slaughter"),
     ]),
     ("cattle_kill_3",[(ge, reg5, 3),],"Three.",[
-      (store_random_in_range, ":rand", 7),
+      (store_random_in_range, ":random", 0, 7),
       (try_begin),
-        (le, ":rand", 3),
+        (le, ":random", 3),
         (call_script, "script_add_piety", 1, 1),
         (call_script, "script_change_player_honor", 1),
         (display_message, "@The sacrifice was sufficient. You gain piety!", color_good_news),
@@ -3120,9 +3120,9 @@ game_menus = [
       (play_sound, "snd_cow_slaughter"),
     ]),
     ("cattle_kill_4",[(ge, reg5, 4),],"Four.",[
-      (store_random_in_range, ":rand", 7),
+      (store_random_in_range, ":random", 0, 7),
       (try_begin),
-        (le, ":rand", 4),
+        (le, ":random", 4),
         (call_script, "script_add_piety", 1, 1),
         (call_script, "script_change_player_honor", 1),
         (display_message, "@The sacrifice was sufficient. You gain piety!", color_good_news),
@@ -42681,9 +42681,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("event_09_juicio",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Missing proofs^^A special case is brought before you: Two {s35} who visited the baths, were robbed in the frigidarium. A lanky man and a busty girl were caught near the baths. The {s35} claim they are the thieves."
-  +" The girl and the man assures their innocents. The stolen objects could not be found, which speaks for their innocents. Meanwhile an angry mob has gathered before the hall, shouting and screaming."
-  +" They want to see the blood of the thieves and demand that they are thrown to the beasts. You note the fear in the eye of the thieves. Dears are rolling over the girls eyes.",
+ "Missing proofs^^A special case is brought before you: Two {s35} who visited the baths were robbed in the frigidarium. A lanky man and a busty girl were caught near the baths. The {s35} claim they are the thieves."
+ +" The girl and the man assure their innocence. The stolen objects could not be found, which supports their claim of innocence. Meanwhile, an angry mob has gathered before the hall, shouting and screaming."
+ +" They demand the blood of the thieves and insist that they be thrown to the beasts. You note the fear in the eyes of the accused. Tears are rolling down the girl's cheeks.",
   "none",[
     (store_random_in_range, ":r", "str_woman", "str_noble"),
     (str_store_string, s35, ":r"),
@@ -48872,7 +48872,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 ("freelancer_event_pret_1_vitory",0,
   "The riot is crushed by the praetorian guard. Some praetorians have been wounded but there has been no casualties. The troublemakers are either dead or seriously wounded. The street is colored red from their blood."
-  +" You notice, that not all troops are happy about slaughtering Roman citizens. You hear ill-talk about Nero.^^After a short rest, your detachment marsches back to meet the rest of the praetorian guard.",
+  +" You notice, that not all troops are happy about slaughtering Roman citizens. You hear ill-talk about Nero.^^After a short rest, your detachment marches back to meet the rest of the praetorian guard.",
   "none",[
     (set_background_mesh, "mesh_pic_townriot"),
     (try_begin),
@@ -49660,7 +49660,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_pret_13_1",0,
-  "Treacherous family^^As you reach Rome you receive your orders: A family, living on the Aventine, shall get imprisoned as they are traitors.^^You lead your men to the villa and order them to use staffs to knock them down if they should refuse to surrender."
+  "As you reach Rome you receive your orders: A family, living on the Aventine, shall get imprisoned as they are traitors.^^You lead your men to the villa and order them to use staffs to knock them down if they should refuse to surrender."
   +" You break the door and proclaim the verdict. But they refuse to surrender...",
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
@@ -57331,7 +57331,7 @@ It is said, that she lives now together with the goat.",
   "Led by Lei Li, you and your group reunite with Phamanus, the Parthian caravan master from your journey to India."
   +" Phamanus greets you with genuine enthusiasm and agrees to guide you back to Alexandria. In return, he requests to accompany you when you meet with The Lybian,"
   +" as he has a personal proposal he believes will interest both of you."
-  +"^^During the journey, you spend time conversing with Eamaneand Lei Li. Eamaneshares her story, explaining how she came under Lei Li's care."
+  +"^^During the journey, you spend time conversing with Eamane and Lei Li. Eamaneshares her story, explaining how she came under Lei Li's care."
   +" You exchange tales of your homelands and adventures, and she listens with fascination. As you introduce her to the rest of the group, you primarily speak in Greek,"
   +" though you soon realize that both Lei Li and Eamanehave a solid understanding of Latin. Though they speak it hesitantly, they comprehend much more than they let on.",
   "none", [
