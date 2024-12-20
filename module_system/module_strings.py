@@ -4463,7 +4463,7 @@ strings = [
   ("renown_change_of_reg4_reduced_to_reg5_because_of_high_existing_renown", "{!}Renown change of {reg4} reduced to {reg5}, because of high existing renown"),
   ("s14", "{!}{s14}"),
   ("players_kingdom_has_had_reg3_days_of_peace", "Player's kingdom has had {reg3} days of peace"),
-  ("s4_is_present_at_the_center_and_in_place_of_honor", "{!}{s4} is present at the center and in place of honor"),
+  ("s4_is_present_at_the_center_and_in_place_of_honor", "{!}{s4} is present at the center but prefers not to meet with you until after the marriage ceremony."),
   ("s4_is_present_at_the_center_as_a_refugee", "{!}{s4} is present at the center as a refugee"),
   ("s4_is_present_at_the_center_and_not_attending_the_feast", "{!}{s4} is present at the center and not attending the feast"),
   ("s4_is_present_at_the_center_and_is_married", "{!}{s4} is present at the center and is married"),
@@ -9478,6 +9478,18 @@ strings = [
 ("good_omen_3", "A strange, soothing breeze sweeps through the camp at dusk, carrying the sweet scent of blooming wildflowers. The oppressive weight of the journey seems to lift, and the men exchange hopeful smiles. Someone murmurs about the gods smiling upon the group, and morale surges."),
 ("good_omen_4", "In the dead of night, as the camp rests, the stars above shine with extraordinary clarity, their light forming shapes that some interpret as divine symbols. The party awakens refreshed, speaking excitedly of the vision. The stars, they believe, are guiding them to glory."),
 ("good_omen_end", "good_omen_end"),
+
+("bucket_0_5000", "0-10000"),
+("bucket_5000_10000", "10,000-25,000"),
+("bucket_10000_15000", "25,000-40,000"),
+("bucket_15000_20000", "40,000-60,000"),
+("bucket_20000_30000", "60,000-80,000"),
+("bucket_30000_40000", "80,000-100,000"),
+("bucket_40000_50000", "100,000-120,000"),
+("bucket_50000_60000", "120,000-140,000"),
+("bucket_60000_70000", "140,000-160,000"),
+("bucket_70000_100000", "160,000-200,000"),
+("bucket_over_100000", "Over 200,000"),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

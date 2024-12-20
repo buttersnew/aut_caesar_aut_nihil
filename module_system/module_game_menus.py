@@ -56237,6 +56237,10 @@ It is said, that she lives now together with the goat.",
       (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You returned from the lands East of the river Indus.", 0),
 
+      (call_script, "script_change_player_relation_with_troop", "trp_mancinellus", 100),
+      (call_script, "script_change_player_relation_with_troop", "trp_hadrianus", 100),
+      (call_script, "script_change_player_relation_with_troop", "trp_wlodowiecus", 100),
+
       (str_store_party_name, s22, "p_town_6"),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Travel to {s22} and meet Olivarius to claim your reward.", 0),
       (display_message, "str_quest_updated"),
@@ -57338,6 +57342,7 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_khergit"),
   ],[
     ("option_1",[],"Continue.",[
+      (call_script, "script_change_player_relation_with_troop", "trp_turakina", 100),
       (call_script, "script_recruit_troop_as_companion", "trp_turakina"),
       (troop_add_item, "trp_player", "itm_chinese_sword_rich", 0),
       (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_journey_end_3"),
@@ -58653,6 +58658,7 @@ It is said, that she lives now together with the goat.",
       (try_begin),
           (quest_slot_eq, "qst_wlodowiecus_adventure_3", slot_quest_object_center, 1),
           (call_script, "script_recruit_troop_as_companion", "trp_mathildiz"),
+          (call_script, "script_change_player_relation_with_troop", "trp_mathildiz", 100),
       (try_end),
 
       (troop_add_item, "trp_player", "itm_amber", 0),

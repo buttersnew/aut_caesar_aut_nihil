@@ -3064,6 +3064,7 @@ cmenu_follow = -6
 
 #default ones
 cmenu_notes = 1
+cmenu_landing_point = 2
 #SB : context menu cheats, some we roll into a menu instead
 cmenu_attach = 9
 cmenu_detach = 10
@@ -3385,6 +3386,7 @@ color_bad_news = 0xFFCCCC
 color_neutral_news = 0xFFFFFF
 color_quest_and_faction_news = 0xCCCCFF
 color_hero_news = 0xFFFF99
+color_information = 0x00007F
 
 
 #camera mode constants, see module_strings or info-pages
@@ -4238,3 +4240,16 @@ miracle_battle_morale   = 3
 antonia_relation_threshold = 50
 
 last_static_party = "p_vally_of_kings"
+
+# Define constants for wealth bucket thresholds
+wealth_bucket_1     = 10000
+wealth_bucket_2     = 25000
+wealth_bucket_3     = 40000
+wealth_bucket_4     = 60000
+wealth_bucket_5     = 80000
+wealth_bucket_6     = 100000
+wealth_bucket_7     = 120000
+wealth_bucket_8     = 140000
+wealth_bucket_9     = 160000
+wealth_bucket_10    = 200000
+wealth_bucket_11    = 1000000
