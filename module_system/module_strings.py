@@ -7047,21 +7047,20 @@ strings = [
   ("beginner", "Easy"),
   ("hardcore", "Hard"),
 
-  ("gear_affects_skills", "Gear affects skills:"),
-  ("resting_morale", "Rest improves morale:"),
-  ("insane_difficult", "Insane difficulty:"),
-  ("gore", "Gore:"),
+  ("resting_morale", "Rest improves morale"),
+  ("insane_difficult", "Insane difficulty"),
+  ("gore", "Gore"),
 
-  ("disable_complex_formations", "Disable complex formations:"),
-  ("have_formations_face_enemy", "Auto turn army to face enemy:"),
+  ("disable_complex_formations", "Disable complex formations"),
+  ("have_formations_face_enemy", "Auto turn army to face enemy"),
   # ("players_enemies_only_attack", "Player's enemies only attack:"),
 
-  ("damage_to_player", "Player damage:"),
-  ("damage_to_friends", "Friends damage:"),
-  ("combat_ai", "Combat AI:"),
-  ("campaign_ai", "Campaign AI:"),
-  ("movement_and_combat_speed", "Tactical Speed:"),
-  ("battle_size", "Battle size:"),
+  ("damage_to_player", "Player damage"),
+  ("damage_to_friends", "Friends damage"),
+  ("combat_ai", "Combat AI"),
+  ("campaign_ai", "Campaign AI"),
+  ("movement_and_combat_speed", "Tactical Speed"),
+  ("battle_size", "Battle size"),
 
   ("difficulty_setting", "Difficulty Setting"),
   ("realism_feature", "Realism Feature"),
@@ -7074,7 +7073,7 @@ strings = [
   #tutorial
 
   #new options
-  ("wounds", "Wounds:"),
+  ("wounds", "Wounds"),
   #("blood_loss", "Blood loss:"),
 
   ##retextures, new items
@@ -7155,7 +7154,7 @@ strings = [
   # ("ala_aux", "Ala Auxiliarum"),
   # ("ala_preat", "Ala Praetoriani"),
 
-  ("player_division", "Player division:"),
+  ("player_division", "Player division"),
   ("none", "None"),
   ("speech_senate_suggess", "Your speech was a success. The senators applauded you."),
   ("speech_senate_fail", "Your speech was a disaster! You were not able to speak a single word."),
