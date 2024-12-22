@@ -447,7 +447,7 @@ strings = [
   ("relation_plus_80_ns",  "{s60} is loyal to you."),
   ("relation_plus_90_ns",  "{s60} is devoted to you."),
 
-  ("relation_reg1", " Relation: {reg1}"),
+  ("relation_reg1", " Relation: {reg1} ({s63})"),
 
   ("center_relation_mnus_100", "The populace hates you with a passion"), # -100..-94
   ("center_relation_mnus_90",  "The populace hates you intensely"), # -95..-84
