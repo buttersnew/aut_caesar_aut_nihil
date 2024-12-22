@@ -5843,8 +5843,9 @@ simple_triggers = [
             (troop_set_slot, "$npc_to_rejoin_party", slot_troop_current_mission, npc_mission_rejoin_when_possible),
             (assign, "$npc_to_rejoin_party", 0),
         (try_end),
-  # Here do NPC that is quitting
+    # Here do NPC that is quitting
     (else_try),
+        (eq, "$disable_companions_leaving", 0),
         (gt, "$npc_is_quitting", 0),
         (neq, "$npc_is_quitting", "trp_mathildiz"), # not mathildize
         (neq, "$npc_is_quitting", "trp_turakina"), # not eamane

@@ -7033,7 +7033,9 @@ strings = [
 # ("dplmc_setting_tt6", "This option changes the economical and behavior values to be more realistic. It is supposed to use the highest level, low levels may cause bugs."),
 ("dplmc_setting_tt7", "This option lets you decide the level of sexism in the game."),
 ("dplmc_setting_tt8", "This option toggles whether companions suffer from incompatible moralities and grievance penalties. However, it will not prevent companions leaving party if morale is low!"),
-("dplmc_setting_tt9", "This option enables a more complex disguise system while entering hostile centers."),
+("dplmc_setting_tt9", "This option toggles if companions can leave your party or not. If you disable companions leaving, their wage will increase by a factor of 5!"),
+
+("dplmc_setting_tt10", "This option enables a more complex disguise system while entering hostile centers."),
 ("dplmc_setting_tt2a", "This option orders all your troops to use any weapons, fire at will, and charge once you fall in battle."),
 # ("dplmc_setting_tt10", "This option enables various cheat menus and debug features."),
 

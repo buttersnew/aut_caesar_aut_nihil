@@ -18720,6 +18720,27 @@ presentations = [
     (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
     (val_add, ":num_options", 1),
 
+    #disable companions leaving by increasing their wage
+    (create_text_overlay, reg0, "@Disable Companions Leaving:", tf_vertical_align_center),
+    (position_set_y, pos1, ":texts_y"),
+    (overlay_set_position, reg0, pos1),
+    (troop_set_slot, "trp_temp_array_a", ":num_options", reg0),
+    (val_sub, ":texts_y", ":y_increment"),
+
+    (create_check_box_overlay, reg0, "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_y, pos2, ":inputs_y"),
+    (overlay_set_position, reg0, pos2),
+    (val_sub, ":inputs_y", ":y_increment"),
+    (troop_set_slot, "trp_temp_array_b", ":num_options", reg0),
+    (overlay_set_val, reg0, "$disable_companions_leaving"),
+    (set_container_overlay, -1),
+    (create_mesh_overlay, reg0, "mesh_pic_recruits"),
+    (set_container_overlay, ":container"),
+    (overlay_set_position, reg0, pos3),
+    (overlay_set_size, reg0, pos6), #
+    (troop_set_slot, "trp_temp_array_c", ":num_options", reg0),
+    (val_add, ":num_options", 1),
+
     ## Disguises
     (create_text_overlay, reg0, "@Disguise System:", tf_vertical_align_center),
     (position_set_y, pos1, ":texts_y"),
@@ -18837,6 +18858,7 @@ presentations = [
       # (assign, "$g_dplmc_gold_changes", DPLMC_GOLD_CHANGES_LOW),
       (assign, "$g_disable_condescending_comments", 0),
       (assign, "$disable_npc_complaints", 0),
+      (assign, "$disable_companions_leaving", 0),
       # (call_script, "script_dplmc_update_info_settings"),
       (start_presentation, "prsnt_adv_diplomacy_preferences"),
     (else_try),
@@ -18893,12 +18915,15 @@ presentations = [
       (troop_slot_eq, "trp_temp_array_b", 6, ":object"),
       (assign, "$disable_npc_complaints", ":value"),
       (assign, "$personality_clash_after_24_hrs", 0),
-    (else_try), ## Disguise
+    (else_try),
       (troop_slot_eq, "trp_temp_array_b", 7, ":object"),
+      (assign, "$disable_companions_leaving", ":value"),
+    (else_try), ## Disguise
+      (troop_slot_eq, "trp_temp_array_b", 8, ":object"),
       (assign, "$g_dplmc_player_disguise", ":value"),
       (assign, "$sneaked_into_town", disguise_none), #so as to not proc trigger
     (else_try),# charge on player death
-      (troop_slot_eq, "trp_temp_array_b", 8, ":object"),
+      (troop_slot_eq, "trp_temp_array_b", 9, ":object"),
       (assign, "$g_charge_on_player_death", ":value"),
     (try_end),
   ]),

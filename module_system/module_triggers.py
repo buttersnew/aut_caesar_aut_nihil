@@ -868,6 +868,7 @@ triggers = [
             # (str_store_troop_name, s10, ":npc"),
             # (display_message, "@{s10}: morale {reg0}"),
             (try_begin),
+                (eq, "$disable_companions_leaving", 0),
                 (lt, ":npc_morale", 20),
                 (store_random_in_range, ":random", 0, 100),
                 (val_add, ":npc_morale", ":random"),
