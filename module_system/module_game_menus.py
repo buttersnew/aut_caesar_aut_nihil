@@ -22538,31 +22538,48 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-(
-    "notification_kingdom_restored",0,
-    "Kingdom restored!^^ The people of {s1} revolted against their overlords and restored their kingdom. Now their former lords come back to fight for the kingdom.",
-    "none",
-    [
-        (play_sound, "snd_riot_sound"),
-        (str_store_faction_name, s1, "$g_notification_menu_var1"),
-        (set_fixed_point_multiplier, 100),
-        (position_set_x, pos0, 65),
-        (position_set_y, pos0, 30),
-        (position_set_z, pos0, 170),
-        (try_begin),
-            (is_between, "$g_notification_menu_var1", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
-            (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_for_menu", "$g_notification_menu_var1", pos0),
-        (else_try),
-            (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-        (try_end),
+("notification_kingdom_restored",0,
+  "Kingdom Restored!^^The people of {s1} have risen in rebellion against their occupiers, reclaiming their kingdom. Their former lords now rally to fight for its future.",
+  "none",[
+    (play_sound, "snd_riot_sound"),
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (try_begin),
+        (is_between, "$g_notification_menu_var1", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+        (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_for_menu", "$g_notification_menu_var1", pos0),
+    (else_try),
+        (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (change_screen_return),
+    ]),
+]),
 
-      ],
-    [
-      ("continue",[],"Continue...",
-       [(change_screen_return),
-        ]),
-     ]
-),
+("notification_kingdom_liberated",0,
+  "Kingdom Liberated!^^The people of {s1} have been freed from their oppressors, thanks to the valor of {s2}.",
+  "none",[
+    (play_sound, "snd_riot_sound"),
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (try_begin),
+        (is_between, "$g_notification_menu_var1", "fac_kingdom_1", kingdoms_end), #Excluding player kingdom
+        (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_for_menu", "$g_notification_menu_var1", pos0),
+    (else_try),
+        (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+    (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (change_screen_return),
+    ]),
+]),
 
   (
     "notification_oath_renounced_faction_defeated",0,
@@ -23277,6 +23294,19 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (add_xp_as_reward, 2000),
         (try_end),
     (try_end),
+  ],[
+    ("continue",[],"Continue...",[
+      (change_screen_return),
+    ]),
+]),
+
+("notification_center_genocid",0,
+  "Massacre at {s5}^^A horrifying tragedy has unfolded in {s5}, where the {s6} have mercilessly slaughtered all foreign colonists. The former colony lies in ruins, its fields trampled and its homes burned.",
+  "none",[
+    (str_store_party_name, s5, "$g_notification_menu_var1"),
+    (str_store_faction_name, s6, "$g_notification_menu_var2"),
+    (set_background_mesh, "mesh_pic_looted_village"),
+    (play_sound, "snd_message_negative_sound"),
   ],[
     ("continue",[],"Continue...",[
       (change_screen_return),

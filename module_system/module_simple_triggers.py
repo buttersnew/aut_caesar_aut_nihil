@@ -4537,7 +4537,7 @@ simple_triggers = [
         (else_try),
             (neq, "$players_kingdom", ":cur_kingdom"),
             (faction_set_slot, ":cur_kingdom", slot_faction_state, sfs_defeated),
-
+            (faction_set_slot, ":cur_kingdom", slot_faction_ai_object, -1),
             ##if faction is defeated, declare a truce with all other factions of same culture
             ## that should help, e.g. germans to prevent german kingdoms raising from the dead and then being at war with everyone else
 
@@ -4590,41 +4590,7 @@ simple_triggers = [
         (faction_slot_eq, ":cur_kingdom", slot_faction_state, sfs_defeated),
         (faction_slot_ge, ":cur_kingdom", slot_faction_number_of_parties, 1),
         (neq, "$players_kingdom", ":cur_kingdom"),
-        (faction_set_slot, ":cur_kingdom", slot_faction_state, sfs_active),
-        (str_store_faction_name, s35, ":cur_kingdom"),
-        (display_log_message, "@The {s35} has been restored."),
-        (faction_get_slot,":king", ":cur_kingdom", slot_faction_leader),
-        (try_begin),
-            (eq, ":king", -1),
-            (display_message, "@Error: They have no king", color_bad_news),
-        (else_try),
-            (troop_slot_eq, ":king", slot_troop_occupation, dplmc_slto_dead),
-            (store_random_in_range, ":age", 20, 40),
-            (call_script, "script_give_birth_to_lord", ":king", ":cur_kingdom", ":age"),
-        (try_end),
-        (try_for_range, ":cur_troop_2", active_npcs_begin, active_npcs_end),
-            (troop_slot_eq,":cur_troop_2",slot_troop_original_faction,":cur_kingdom"),
-            (neg|troop_slot_eq, ":cur_troop_2", slot_troop_occupation, dplmc_slto_dead),
-            (neg|troop_slot_ge, ":cur_troop_2", slot_troop_legion, 1), #no legions or aux commanders
-            (neg|troop_slot_ge, ":cur_troop_2", slot_troop_aux, 1),    #no legions or aux commanders
-            (neg|troop_slot_ge, ":cur_troop_2", slot_troop_govern, 1), #no governors
-            #set up other lords for transfer
-            (try_begin),##lords from other factions
-                (troop_slot_eq, ":cur_troop_2", slot_troop_occupation, slto_kingdom_hero),
-                (neq, ":cur_troop_2", ":king"),
-                (store_troop_faction, ":faction_no_2", ":cur_troop_2"),
-                (neq, ":faction_no_2", ":cur_kingdom"),
-                (troop_get_slot, ":wealth", ":cur_troop_2", slot_troop_wealth),
-                (val_add, ":wealth", 5000),
-                (troop_set_slot, ":cur_troop_2", slot_troop_wealth, ":wealth"),
-                (troop_set_slot, ":cur_troop_2", slot_troop_change_to_faction, ":cur_kingdom"),
-            (else_try),##exiled lords come back
-                (troop_slot_eq, ":cur_troop_2", slot_troop_occupation, dplmc_slto_exile),
-                (call_script, "script_dplmc_lord_return_from_exile", ":cur_troop_2", ":cur_kingdom"),
-            (try_end),
-            #transfer lords
-        (try_end),
-        (call_script, "script_add_notification_menu", "mnu_notification_kingdom_restored", ":cur_kingdom", 0),
+        (call_script, "script_reactivate_kingdom", ":cur_kingdom", -1, -1),
     (try_end),
     (try_begin),
         (eq, ":num_roman_factions", 1),
