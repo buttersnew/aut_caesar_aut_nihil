@@ -8002,16 +8002,13 @@ scripts_hardcoded = [
             (party_slot_eq, ":party_no_seer", slot_party_ai_state, spai_screening_army),
 
             (neg|party_slot_eq, ":party_no_seen", slot_party_type, spt_kingdom_hero_party),
-            (neg|party_slot_eq, ":party_no_seen", slot_party_type, spt_patrol),
+            # (neg|party_slot_eq, ":party_no_seen", slot_party_type, spt_patrol),
             (neg|party_slot_eq, ":party_no_seen", slot_party_type, spt_rebellion),
             (neg|party_slot_eq, ":party_no_seen", slot_party_type, spt_minor_faction_raiders),
 
             (assign, ":trigger_result", 0),
         (try_end),
 	(try_end),
-
-
-
 	(assign, reg0, ":save_reg0"),
 	(set_trigger_result, ":trigger_result"),
 ]),

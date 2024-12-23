@@ -20578,7 +20578,6 @@ presentations = [
     (position_set_y, pos1, 920),
     (overlay_set_size, "$g_presentation_obj_27", pos1),
 
-
     (try_begin),
         (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
         (str_store_string, s12, "@officers"),
@@ -24100,6 +24099,12 @@ presentations = [
     (position_set_y, pos1, 250),
     (overlay_set_area_size, reg1, pos1),
     (overlay_set_color, reg1, message_alert),
+
+
+    # (quest_get_slot, ":service_length", "qst_freelancing", slot_quest_freelancer_service_length),
+    # (quest_get_slot, ":rank", "qst_freelancing", slot_quest_freelancer_rank),
+    # (call_script, "script_freelancer_get_event", ":service_length", ":rank"),
+
 
 		(assign, ":cur_y_adder", 35),  #the amount of space between lines
 		(assign, ":cur_y", 615),
@@ -39910,6 +39915,7 @@ presentations = [
             (dialog_box, "@A servant of {s58} approaches you and informs you that {reg4?she:he} is unwilling to speak with you at the moment.^^Hint: Your relationship is too strained. Try speaking with {reg4?her:him} directly by entering the hall.", "@Information"),
         (else_try),
             (is_between, "$castle_meeting_selected_troop", kingdom_ladies_begin, kingdom_ladies_end),
+            (neg|troop_slot_eq, "$castle_meeting_selected_troop", slot_troop_spouse, "trp_player"),
             (call_script, "script_lady_meets_visitor", "$castle_meeting_selected_troop", "$g_encountered_party", "$g_encountered_party_faction"),
             (eq, reg0, 0),
             (dialog_box, "@{s58}", "@Information"),
