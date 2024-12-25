@@ -610,6 +610,7 @@ scenes = [
   ("random_scene_snow_custom_8", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000243600a000009ca72000073d380007b9500007624",[], [], "outer_terrain_steppe"),
   ("random_scene_snow_custom_9", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000243600a000009ca7200003d4d8000306100002e10",[], [], "outer_terrain_steppe"),
   ("random_scene_snow_custom_10", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000243600a000009ca720000366c800051f900002434",[], [], "outer_terrain_steppe"),
+
   ("random_scene_snowforest_custom_1", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002c8400a000009ca720000366c800051f900002434",[], [], "outer_terrain_steppe_2"),
   ("random_scene_snowforest_custom_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002c8400a000009ca72000036168000185c000066da",[], [], "outer_terrain_steppe_2"),
   ("random_scene_snowforest_custom_3", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002c8400a000009ca720000645280001b3100004347",[], [], "outer_terrain_steppe_2"),

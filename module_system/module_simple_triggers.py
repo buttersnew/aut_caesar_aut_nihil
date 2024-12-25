@@ -5229,29 +5229,16 @@ simple_triggers = [
         (try_begin),#freelancing quest, promotion and payement
             (neg|check_quest_concluded, ":cur_quest"),
             (eq, ":cur_quest", "qst_freelancing"),
-            (quest_get_slot, ":days", "qst_freelancing", slot_quest_freelancer_service_length),
-            (val_add, ":days", 1),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_service_length, ":days"),
+            (quest_get_slot, ":service_length", "qst_freelancing", slot_quest_freelancer_service_length),
+            (val_add, ":service_length", 1),
+            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_service_length, ":service_length"),
             (quest_get_slot, ":progresse", "qst_freelancing", slot_quest_freelancer_progress),
             (val_add, ":progresse", 1),
             (quest_set_slot, "qst_freelancing", slot_quest_freelancer_progress, ":progresse"),
-            (try_begin),
-                (quest_get_slot, ":limit", "qst_freelancing", slot_quest_freelancer_progress_limit),
-                (ge,  ":progresse", ":limit"),
-                (call_script, "script_freelancer_get_event", 1000, 50),
-                (store_sub, ":last_event", reg21, 1),
-                (call_script, "script_freelancer_event_required_for_progess", ":last_event"),
-                (try_begin),
-                    (eq, reg0, ":last_event"),
-                    (jump_to_menu, "mnu_promotion_freelancer"),
-                (else_try),
-                    (val_add, ":limit", 75),
-                    (val_min, ":progresse", ":limit"),# limit progress otherwise
-                    (quest_set_slot, "qst_freelancing", slot_quest_freelancer_progress, ":progresse"),
-                (try_end),
-            (try_end),
-            (quest_get_slot, ":payment", "qst_freelancing", slot_quest_freelancer_rank),
-            (val_mul, ":payment", 10),
+
+            (quest_get_slot, ":rank", "qst_freelancing", slot_quest_freelancer_rank),
+            # do payment
+            (store_mul, ":payment", ":rank", 10),
             (try_begin),
                 (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_pretorian, 2),
                 (val_mul, ":payment", 2),
@@ -5259,7 +5246,39 @@ simple_triggers = [
             (quest_get_slot, ":current_payment", "qst_freelancing", slot_quest_freelancer_payment),
             (val_add, ":current_payment", ":payment"),
             (quest_set_slot,"qst_freelancing", slot_quest_freelancer_payment, ":current_payment"),
-            # (display_message, "@You recieve your wages.", color_good_news),
+
+            # do promotion
+            (try_begin),
+                (quest_get_slot, ":limit", "qst_freelancing", slot_quest_freelancer_progress_limit),
+                (ge,  ":progresse", ":limit"),
+                (call_script, "script_freelancer_get_event", 1000, 50),
+                (store_sub, ":last_event", reg21, 1),
+                (call_script, "script_freelancer_event_required_for_progess", ":last_event"),
+
+                (try_begin),
+                    (lt, ":last_event", reg0),
+                    (val_add, ":limit", 75),
+                    (val_min, ":progresse", ":limit"),# limit progress otherwise
+                    (quest_set_slot, "qst_freelancing", slot_quest_freelancer_progress, ":progresse"),
+                (try_end),
+                (ge, ":last_event", reg0),
+                (jump_to_menu, "mnu_promotion_freelancer"),
+            (else_try),# event
+                (ge, "$enlisted_party", 1),
+                (party_slot_eq, "$enlisted_party", slot_party_on_water, 0),
+                (party_get_battle_opponent, ":opponent", "$enlisted_party"),
+                (lt, ":opponent", 0),#not during battle
+                (try_begin),
+                    (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_pretorian, 2),#not part of the guard
+                    (party_stack_get_troop_id, ":leader", "$enlisted_party", 0),
+                    (eq, ":leader","trp_legatus_12"),
+                    (quest_set_slot, "qst_freelancing", slot_quest_freelancer_pretorian, 2),
+                    (display_message, "@Set freelancer praetorian slot properly."),
+                (try_end),
+                (call_script, "script_freelancer_get_event", ":service_length", ":rank"),
+                (neq, reg20, -1),
+                (jump_to_menu, reg20),
+            (try_end),
         (try_end),
         (try_begin),
             (neg|check_quest_concluded, ":cur_quest"),
@@ -8055,25 +8074,6 @@ simple_triggers = [
 
 (24,[
     (call_script, "script_execude_debug_message", 134),
-    ##freelancer triggers
-    (try_begin),
-        (ge, "$enlisted_party", 1),
-        (party_slot_eq, "$enlisted_party", slot_party_on_water, 0),
-        (party_get_battle_opponent, ":opponent", "$enlisted_party"),
-        (lt, ":opponent", 0),#not during battle
-        (try_begin),
-            (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_pretorian, 2),#not part of the guard
-            (party_stack_get_troop_id, ":leader", "$enlisted_party", 0),
-            (eq, ":leader","trp_legatus_12"),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_pretorian, 2),
-            (display_message, "@Set freelancer praetorian slot properly."),
-        (try_end),
-        (quest_get_slot, ":service_length", "qst_freelancing", slot_quest_freelancer_service_length),
-        (quest_get_slot, ":rank", "qst_freelancing", slot_quest_freelancer_rank),
-        (call_script, "script_freelancer_get_event", ":service_length", ":rank"),
-        (neq, reg20, -1),
-        (jump_to_menu, reg20),
-    (try_end),
     ###Jewish rebellion events
     (try_begin),
         (this_or_next|eq, "$g_campaign_type", g_campaign_king),
