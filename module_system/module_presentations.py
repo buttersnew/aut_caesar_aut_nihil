@@ -67,10 +67,8 @@ presentations = [
         (position_set_y, pos1, ":Initial_y_coordinate"),
         (overlay_set_position, reg1, pos1),
         (overlay_set_color, reg1, message_alert),
-        (val_sub, ":Initial_y_coordinate", 30),
     (try_end),
-
-
+    (val_sub, ":Initial_y_coordinate", 30),
 
     (create_text_overlay, "$g_presentation_credits_obj_1", "@New Game", tf_center_justify|tf_double_space|tf_vertical_align_center),
     (position_set_x, pos1, ":font_size"),
@@ -39508,7 +39506,7 @@ presentations = [
             (gt, "$enlisted_party",-1),
             (leave_encounter),
             (jump_to_menu, "mnu_auto_return_map"),
-            (party_end_battle, "$enlisted_party"),
+            (party_leave_cur_battle, "$enlisted_party"),
             (party_relocate_near_party, "$enlisted_party", "$g_encountered_party", 3),
         (else_try),
             (jump_to_menu, "mnu_encounter_retreat_confirm"),
