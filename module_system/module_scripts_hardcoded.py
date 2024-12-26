@@ -97,7 +97,7 @@ scripts_hardcoded = [
     (assign, "$reduce_factor", 1),
 
     ##moral options
-    (assign, "$moral_shock", 30),             #was 30 in vc
+    (assign, "$moral_shock", 45),             #was 30 in vc
     (assign, "$battle_ratio_multiple", 6000), #was 7000
     (assign, "$agent_run_away_multiplier", 10), #was 7000
     (assign, "$dead_effect_on_killer", 1), #was 0

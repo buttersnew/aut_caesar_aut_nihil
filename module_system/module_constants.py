@@ -3211,6 +3211,7 @@ fire_duration = 4 #fires takes 4 hours
 
 #battle_ratio_multiple = 7000
 max_morale = 40000 #was 35000
+min_morale = -1000
 #max_ratio = max_morale/2
 
 

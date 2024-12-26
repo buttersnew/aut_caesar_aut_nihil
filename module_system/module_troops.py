@@ -3288,7 +3288,7 @@ knows_tracker_npc|knows_power_throw_3|knows_athletics_2|knows_power_strike_1, 0x
 [itm_graves_simple_2,itm_horse_2,itm_lamellar_armor,itm_eastern_helm6,itm_armenian_sword_1,itm_hide_covered_round_shield],
 str_17|agi_15|int_14|cha_18|level(24), wp(180), knows_veteran_npc|knows_prisoner_management_4, 0x0000000a400d15d16b5982b6db89b78700000000001c42250000000000000000 ],
 
-["npc18", "Arminius", "Arminius", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
+["npc18", "Arminius Octavianus", "Arminius Octavianus", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_horse_3,itm_praetorian_cav_scutum,itm_roman_spatha,itm_hasta2,itm_legion_hamata_cape_1,itm_1_imp_gallic_h_plume],
 str_17|agi_15|int_14|cha_17|level(23), wp(170), knows_veteran_npc, 0x000000000601100446db5696fb7436db00000000001e45490000000000000000 ],
 
@@ -4196,7 +4196,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_3_seneschal", "Praefectus", "{!}Town 3 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_4_seneschal", "Praefectus", "{!}Town 4 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_5_seneschal", "Praefectus", "{!}Town 5 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga],def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
-["town_6_seneschal", "Praefectus", "{!}Town 6 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga],def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
+["town_6_seneschal", "Praefectus Romulus", "{!}Town 6 Seneschal", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga],def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
 ["town_7_seneschal", "Praefectus", "{!}Town7 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga],def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_8_seneschal", "Praefectus", "{!}Town 8 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga],def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_9_seneschal", "Praefectus", "{!}Town 9 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
@@ -4218,7 +4218,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_25_seneschal", "Praefectus", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_26_seneschal", "Praefectus", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_27_seneschal", "Praefectus", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
-["town_28_seneschal", "Praefectus", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
+["town_28_seneschal", "Praefectus Scipio", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, 0x00000009a501200071b17dcb398c0f6800000000001e35330000000000000000],
 ["town_29_seneschal", "Praefectus", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_30_seneschal", "Praefectus", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_31_seneschal", "Praefectus", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
@@ -4328,7 +4328,9 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_3_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000cab0810095a14a6b89a4db32b00000000000f56ce0000000000000000],
 ["town_4_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000da801300c216470c67e49291c00000000001d4d580000000000000000],
 ["town_5_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000e280415d236e6937ad9a9672500000000001cd76a0000000000000000],
-["town_6_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000043500614b16a37238da6d289b00000000001e28780000000000000000],
+["town_6_arena_master", "Auctor Caracalla","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[
+  itm_caligea, itm_judean_tunic_6,itm_cloak_4
+],def_attrib|level(2),wp(20),knows_common,0x000000043500614b16a37238da6d289b00000000001e28780000000000000000],
 ["town_7_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000ebb0d32c157bcb9885bdda6ea00000000001db6cc0000000000000000],
 ["town_8_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000c9300b08f192bb5b74b96cd1100000000001d388b0000000000000000],
 ["town_9_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000008030c048c656d5b3991aed52c000000000013576c0000000000000000],
@@ -4657,7 +4659,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_3_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000b740d11ce44db91b79b48b0fd00000000001dc6a30000000000000000],
 ["town_4_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000008fa01200f239b2dc72a69c38b00000000001e63120000000000000000],
 ["town_5_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000a3d00100942db4cb7608534e300000000001e58d60000000000000000],
-["town_6_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000009c30120024f2432371c850f3b00000000001d84e90000000000000000],
+["town_6_mayor", "Magister Civium Traianus", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000009c30120024f2432371c850f3b00000000001d84e90000000000000000],
 ["town_7_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000871092203372bb13a549502d100000000001e4c820000000000000000],
 ["town_8_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000c1b08d54542eb2192e2b8166900000000001e34dc0000000000000000],
 ["town_9_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000aed0022c6391b55c69ed4ad6400000000001d9b8c0000000000000000],

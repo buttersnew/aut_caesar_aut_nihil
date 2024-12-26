@@ -2026,21 +2026,13 @@ custom_commander_critical_strike =(ti_on_agent_hit, 0, 0, [],[
           (val_sub, ":inflicted_agent_hp", ":dest_damage"),
           (val_max, ":inflicted_agent_hp", 0),
           (agent_set_hit_points, ":inflicted_agent", ":inflicted_agent_hp", 1),
-          #(call_script, "script_change_courage_around_agent", -8, ":inflicted_agent"),##hab ich hinzugefugt,
-          # (try_begin),
-            # (neq, ":inflicted_agent", ":player_agent"),
-            # (agent_get_slot, ":agent_courage_score", ":inflicted_agent", slot_agent_courage_score),
-            # (val_sub, ":agent_courage_score", 100),
-            # (agent_set_slot, ":inflicted_agent", slot_agent_courage_score, ":agent_courage_score"),
-          # (try_end),
-          # (try_begin),
-            # (neq, ":dealer_agent", ":player_agent"),
-            # (agent_get_slot, ":agent_courage_score", ":dealer_agent", slot_agent_courage_score),
-            # (val_add, ":agent_courage_score", 100),
-            # (agent_set_slot, ":dealer_agent", slot_agent_courage_score, ":agent_courage_score"),
-          # (try_end),
+          #(call_script, "script_change_courage_around_agent", -8, ":inflicted_agent"),
           # messages for player
           (get_player_agent_no, ":player_agent"),
+          (try_begin),#reduce morale a bit if attacked from behind
+            (neq, ":inflicted_agent", ":player_agent"),
+            (call_script, "script_change_agent_courage", ":inflicted_agent", -100, 0),
+          (try_end),
           (try_begin),
             (eq, ":dealer_agent", ":player_agent"),
             (assign, reg1, ":dest_damage"),
@@ -3763,8 +3755,6 @@ jacobhinds_morale_recover = (
 			(agent_is_human, ":agent"),
 			(gt, ":agent", 1),
 			(agent_slot_eq, ":agent", slot_agent_is_running_away, 1),
-			(agent_get_slot, ":courage", ":agent", slot_agent_courage_score),
-
 			#Morale recovery based on number of ready troops on the battlefield, routing or not (prevents rush morale shock exploit)
 			(assign, ":strength", 0),
 			(try_begin),
@@ -3773,26 +3763,8 @@ jacobhinds_morale_recover = (
 			(else_try),
 				(assign, ":strength", "$j_num_enemies_ready"),
 			(try_end),
-			# #If battle ratio/2 is higher, use that
-			# #allows winning army to rally troops
-			# #remember to check for possible reinforcement exploits.
-			# (try_begin),
-				# (agent_is_ally, ":agent"),
-				# (store_div, ":half_ratio", "$battle_ratio", 2),
-				# (gt, ":half_ratio", ":strength"),
-				# (assign, ":strength", "$battle_ratio"),
-			# (else_try),
-				# (store_div, ":half_ratio", "$battle_ratio", -2),
-				# (gt, ":strength", ":half_ratio"),
-				# (assign, ":strength", "$battle_ratio"),
-			# (try_end),
-			# #tweaking
-			# (val_mul, ":strength", 5),
-		  # (val_div, ":strength", 4),
-            (val_add, ":strength", 10),
-
-			(val_add, ":courage", ":strength"),
-			(agent_set_slot, ":agent", slot_agent_courage_score, ":courage"),
+      (val_add, ":strength", 10),
+			(call_script, "script_change_agent_courage", ":agent", ":strength", 0),
 		(try_end),
 ])
 
@@ -3865,12 +3837,10 @@ jacobhinds_ranged_melee_morale_penalty = (
 
 			#closer ranks means less morale shock
 			(agent_get_slot, ":rank_depth", ":agent_no", slot_agent_rank_closeness),
-			(val_mul, ":rank_depth", 500),
+			(val_mul, ":rank_depth", 250),
 
-			(agent_get_slot, ":courage", ":agent_no", slot_agent_courage_score),
-			(val_sub, ":courage", 1500),#tweaking, was 3000
-			(val_add, ":courage", ":rank_depth"),
-			(agent_set_slot, ":agent_no", slot_agent_courage_score, ":courage"),
+			(store_sub, ":courage_change",  ":rank_depth", 1500),
+			(call_script, "script_change_agent_courage", ":agent_no", ":courage_change", 0),
 		(try_end),
 	],)
 
@@ -3936,6 +3906,7 @@ change_battle_speed_trigger = (0, 0, 2,[
 moral_trigger_decide_to_run_or_not = 		(3, 0, 0, [
     (store_mission_timer_a,":mission_time"),
     (ge,":mission_time",4),
+],[
     (try_for_agents, ":agent_no"),
         (agent_is_human, ":agent_no"),
         (agent_is_alive, ":agent_no"),
@@ -3949,22 +3920,21 @@ moral_trigger_decide_to_run_or_not = 		(3, 0, 0, [
             (call_script, "script_decide_run_away_or_not", ":agent_no"),
         (try_end),
     (try_end),
-              ],[])
+])
 
 morale_triggers = [
-  (0, 0, 3,
-    [
-   (key_clicked, key_t),
-   (assign, ":c", 0),
-   (try_begin),
-     (eq, "$enlisted_party", -1),
-     (assign, ":c", 1),
-   (else_try),
-     (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-     (assign, ":c", 1),
-   (try_end),
-   (eq, ":c", 1), ],
-    [
+(0, 0, 3,[
+    (key_clicked, key_t),
+    (assign, ":c", 0),
+    (try_begin),
+      (eq, "$enlisted_party", -1),
+      (assign, ":c", 1),
+    (else_try),
+      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+      (assign, ":c", 1),
+    (try_end),
+    (eq, ":c", 1),
+],[
     (le, "$warcry_loading", 0),
     (get_player_agent_no, ":player"),
     (agent_is_alive, ":player"),
@@ -3981,13 +3951,18 @@ morale_triggers = [
         (call_script,"script_agent_perform_warcry", ":cur_agent"),
     (try_end),
     (display_message, "str_war_cry",message_positive),
-	(call_script, "script_agent_perform_warcry", ":player"),
+	  (call_script, "script_agent_perform_warcry", ":player"),
     (call_script, "script_change_courage_around_agent", 5, ":player"),
-    (call_script, "script_change_courage_around_agent_for_routed_agents", 5, ":player"),]),
-    (0, 0, 1,[(gt, "$warcry_loading", 0), ],[(val_sub, "$warcry_loading", 1),]),
+    (call_script, "script_change_courage_around_agent_for_routed_agents", 5, ":player"),
+]),
 
+(0, 0, 1,[
+  (gt, "$warcry_loading", 0),
+],[
+  (val_sub, "$warcry_loading", 1),
+]),
 
- (ti_on_order_issued, 0, 0, [
+(ti_on_order_issued, 0, 0, [
     (store_trigger_param_1, ":order_no"),
     (store_trigger_param_2, ":order_agent"),
 
@@ -4024,41 +3999,39 @@ morale_triggers = [
 	],[]),
 
 
-  (ti_before_mission_start, 0, 0, [],
-  [ (gt, "$enlisted_party", -1),
+  (ti_before_mission_start, 0, 0, [],[
+    (gt, "$enlisted_party", -1),
     (quest_set_slot, "qst_freelancing", slot_quest_freelancer_agent_spawned, 0),
+  ]),
 
-    ]),
+  moral_trigger_decide_to_run_or_not,
 
-    moral_trigger_decide_to_run_or_not,
+  (ti_on_agent_spawn, 0, 0, [],[
+    (store_trigger_param_1, ":agent_no"),
+    (agent_get_troop_id, ":troop_id", ":agent_no"),
+    (gt, ":troop_id", "trp_player"),#this should also exclude horses
+    (store_faction_of_troop, ":faction", ":troop_id"),
+    (faction_get_slot, ":culture", ":faction", slot_faction_culture),
 
-      (ti_on_agent_spawn, 0, 0, [],
-       [
-	 (store_trigger_param_1, ":agent_no"),
-	 (agent_get_troop_id, ":troop_id", ":agent_no"),
-     (gt, ":troop_id", "trp_player"),#this should also exclude horses
-	 (store_faction_of_troop, ":faction", ":troop_id"),
-	 (faction_get_slot, ":culture", ":faction", slot_faction_culture),
-
-   #properly set teams!!!
+    #properly set teams!!!
     (try_begin),
       (eq, "$enlisted_party", -1),
       (call_script, "script_agent_reassign_team", ":agent_no"),
     (else_try),
       (call_script, "script_agent_reassign_team_freelancer", ":agent_no"),
     (try_end),
-  # (store_random_in_range, ":rand", 1, 101),
-  # (try_begin),
-    # # 1% chance COWARD/PANIC
-    # (eq, ":rand", 1),
-    # (agent_set_slot, ":agent_no", slot_agent_courage_score, 600), #very low Courage
-    # # (try_begin),
-      # # (ge, "$vc_debug_mode", 1),
-      # # (agent_is_ally, ":agent_no"),
-      # # (display_message, "@{!}TEST: There is a Coward in our lines!"),
-    # # (try_end),
-  # (else_try),
-  ##idea is to make barabrians braver so that they dont lose that easily against civilized factions
+    # (store_random_in_range, ":rand", 1, 101),
+    # (try_begin),
+      # # 1% chance COWARD/PANIC
+      # (eq, ":rand", 1),
+      # (agent_set_slot, ":agent_no", slot_agent_courage_score, 600), #very low Courage
+      # # (try_begin),
+        # # (ge, "$vc_debug_mode", 1),
+        # # (agent_is_ally, ":agent_no"),
+        # # (display_message, "@{!}TEST: There is a Coward in our lines!"),
+      # # (try_end),
+    # (else_try),
+    ##idea is to make barabrians braver so that they dont lose that easily against civilized factions
     (try_begin),
       (eq, ":culture", "fac_culture_1"),
       (assign, ":initial_courage_score", 6500),
@@ -4168,85 +4141,86 @@ morale_triggers = [
     (assign, ":enemy_standing", 0),
     (assign, ":enemy_fallen", 0),
 
-    (try_begin),
-      (try_for_agents, ":agent"),
-        (agent_is_human, ":agent"),#to avoid horses
+    (try_for_agents, ":agent"),
+      (agent_is_human, ":agent"),#to avoid horses
+      # BELONGS TO EFFECT 1:
+      # count standing and fallen agents of both sides
+      (try_begin),
+        (agent_is_ally, ":agent"),
         (try_begin),
-          # Effect 1: high level troops and heros will encourage troops randomly every minute
-          ##change: only heros
           (agent_is_alive, ":agent"),
-          (agent_get_troop_id, ":troop_id", ":agent"),
-          (neq, ":troop_id", "trp_player"),
-            # COURAGE TROOPS
-          (try_begin),
-            (eq, "$more_lose_leader", 1),
-            (troop_is_hero, ":troop_id"),##only heros encourage troops
-            (store_random_in_range, reg30, 0, 100),
-            (try_begin),
-              (le, reg30, 8),
-              (store_attribute_level, ":cha", ":troop_id", ca_charisma),
-              (val_div, ":cha", 5),
-              (store_skill_level, ":leadership","skl_leadership", ":troop_id"),
-              (val_add, ":cha", ":leadership"),
-              (val_clamp, ":cha", 1, 16),
-              (call_script, "script_change_courage_around_agent", ":cha", ":agent"),#was 1
-              #(str_store_troop_name, s40, ":troop_id"),
-              #(display_message, "@{s40} encourages his troops!"),
-            (else_try),
-              (ge, reg30, 80),
-              (store_attribute_level, ":cha", ":troop_id", ca_charisma),
-              (val_div, ":cha", 5),
-              (store_skill_level, ":leadership","skl_leadership", ":troop_id"),
-              (val_add, ":cha", ":leadership"),
-              (val_clamp, ":cha", 1, 16),
-              (call_script, "script_change_courage_around_agent_for_routed_agents", ":cha", ":agent"),
-              #(str_store_troop_name, s40, ":troop_id"),
-              #(display_message, "@{s40} encourages his troops!"),
-            (try_end),
-          (else_try),
-            (is_between, ":troop_id", "trp_vexilarius_i", "trp_centurio_west"),##roman officers
-            (store_random_in_range, reg30, 0, 100),
-            (try_begin),
-              (le, reg30, 8),
-              (call_script, "script_change_courage_around_agent", 3, ":agent"),
-              # (display_message, "@Aquila encourages troops.", color_good_news),
-            (else_try),
-              (ge, reg30, 80),
-              (call_script, "script_change_courage_around_agent_for_routed_agents", 2, ":agent"),
-              # (display_message, "@Aquila encourages troops.", color_good_news),
-            (try_end),
-          (else_try),##roman aquilifer gives more bonus
-            (is_between, ":troop_id", "trp_aquilifer_i", "trp_vexilarius_i"),
-            (store_random_in_range, reg30, 0, 11),
-            (try_begin),
-              (ge, reg30, 3),
-              (call_script, "script_change_courage_around_agent", 4, ":agent"),
-            (try_end),
-          (else_try),## non roman standard bearers and hornmen
-            (is_between, ":troop_id", "trp_bosporan_standard_bearer", "trp_judean_light_clubman"),
-            (store_random_in_range, reg30, 0, 11),
-            (try_begin),
-              (ge, reg30, 3),
-              (call_script, "script_change_courage_around_agent", 2, ":agent"),
-            (try_end),
-          (try_end),
+          (val_add, ":ally_standing", 1),
+        (else_try),
+          (val_add, ":ally_fallen", 1),
         (try_end),
-        # BELONGS TO EFFECT 2:
-        # count standing and fallen agents of both sides
+      (else_try),
         (try_begin),
-          (agent_is_ally, ":agent"),
+          (agent_is_alive, ":agent"),
+          (val_add, ":enemy_standing", 1),
+        (else_try),
+          (val_add, ":enemy_fallen", 1),
+        (try_end),
+      (try_end),
+      (try_begin),
+        (call_script, "script_cf_agent_can_rout", ":agent"),
+        # Effect 2: high level troops and heros will encourage troops randomly every minute
+        ##change: only heros
+        (agent_is_alive, ":agent"),
+        (agent_get_troop_id, ":troop_id", ":agent"),
+        (neq, ":troop_id", "trp_player"),
+          # COURAGE TROOPS
+        (try_begin),
+          (eq, "$more_lose_leader", 1),
+          (troop_is_hero, ":troop_id"),##only heros encourage troops
+          (store_random_in_range, reg30, 0, 101),
           (try_begin),
-            (agent_is_alive, ":agent"),
-            (val_add, ":ally_standing", 1),
-          (else_try),
-            (val_add, ":ally_fallen", 1),
+            (le, reg30, 10),
+            (store_attribute_level, ":cha", ":troop_id", ca_charisma),
+            (val_div, ":cha", 5),
+            (store_skill_level, ":leadership","skl_leadership", ":troop_id"),
+            (val_add, ":cha", ":leadership"),
+            (val_div, ":cha", 2),
+            (val_clamp, ":cha", 1, 16),
+            (call_script, "script_change_courage_around_agent", ":cha", ":agent"),#was 1
+            (call_script, "script_change_courage_around_agent_for_routed_agents", ":cha", ":agent"),
+            #(str_store_troop_name, s40, ":troop_id"),
+            #(display_message, "@{s40} encourages his troops!"),
+          # (else_try),
+          #   (ge, reg30, 80),
+          #   (store_attribute_level, ":cha", ":troop_id", ca_charisma),
+          #   (val_div, ":cha", 5),
+          #   (store_skill_level, ":leadership","skl_leadership", ":troop_id"),
+          #   (val_add, ":cha", ":leadership"),
+          #   (val_clamp, ":cha", 1, 16),
+          #   (call_script, "script_change_courage_around_agent_for_routed_agents", ":cha", ":agent"),
+            #(str_store_troop_name, s40, ":troop_id"),
+            #(display_message, "@{s40} encourages his troops!"),
           (try_end),
         (else_try),
+          (is_between, ":troop_id", "trp_vexilarius_i", "trp_centurio_west"),##roman officers
+          (store_random_in_range, reg30, 0, 100),
           (try_begin),
-            (agent_is_alive, ":agent"),
-            (val_add, ":enemy_standing", 1),
-          (else_try),
-            (val_add, ":enemy_fallen", 1),
+          #   (le, reg30, 8),
+          #   (call_script, "script_change_courage_around_agent", 3, ":agent"),
+          #   # (display_message, "@Aquila encourages troops.", color_good_news),
+          # (else_try),
+            (ge, reg30, 85),
+            (call_script, "script_change_courage_around_agent_for_routed_agents", 2, ":agent"),
+            # (display_message, "@Aquila encourages troops.", color_good_news),
+          (try_end),
+        (else_try),##roman aquilifer gives more bonus
+          (is_between, ":troop_id", "trp_aquilifer_i", "trp_vexilarius_i"),
+          (store_random_in_range, reg30, 0, 11),
+          (try_begin),
+            (ge, reg30, 3),
+            (call_script, "script_change_courage_around_agent", 4, ":agent"),
+          (try_end),
+        (else_try),## non roman standard bearers and hornmen
+          (is_between, ":troop_id", "trp_bosporan_standard_bearer", "trp_judean_light_clubman"),
+          (store_random_in_range, reg30, 0, 101),
+          (try_begin),
+            (ge, reg30, 85),
+            (call_script, "script_change_courage_around_agent", 2, ":agent"),
           (try_end),
         (try_end),
       (try_end),
@@ -4362,15 +4336,12 @@ morale_triggers = [
       (try_for_agents, ":agent"),
         (agent_is_alive, ":agent"),
         (agent_is_human, ":agent"),  #to avoid horses
-        (agent_get_slot, ":agent_courage_score", ":agent", slot_agent_courage_score),
         (try_begin),
           (agent_is_ally, ":agent"),
-          (val_add, ":agent_courage_score", ":ally_delta_courage"),
+          (call_script, "script_change_agent_courage", ":agent", ":ally_delta_courage", 0),
         (else_try),
-          (val_add, ":agent_courage_score", ":enemy_delta_courage"),
+          (call_script, "script_change_agent_courage", ":agent", ":enemy_delta_courage", 0),
         (try_end),
-        (val_max, ":agent_courage_score", 0), 				#not < 0
-        (agent_set_slot, ":agent", slot_agent_courage_score, ":agent_courage_score"),
       (try_end),
     (try_end),
   ]),
@@ -4511,23 +4482,20 @@ morale_triggers = [
       (try_for_agents, ":agent"),
         (agent_is_alive, ":agent"),
         (agent_is_human, ":agent"),
-        (agent_get_slot, ":agent_courage_score", ":agent", slot_agent_courage_score),
         # (str_store_agent_name, s1,":agent"),
         # (assign, reg1, ":agent_courage_score"),
         (try_begin),
           (agent_is_ally, ":agent"),
-          (val_add, ":agent_courage_score", ":ally_delta_courage"),
+          (call_script, "script_change_agent_courage", ":agent", ":ally_delta_courage", 0),
           # (assign, reg2, ":ally_delta_courage"),
           # (assign, reg3, ":agent_courage_score"),
           # (display_message, "@{s1} {reg1} + {reg2} = {reg3}"),
         (else_try),
-          (val_add, ":agent_courage_score", ":enemy_delta_courage"),
+          (call_script, "script_change_agent_courage", ":agent", ":ally_delta_courage", 0),
           # (assign, reg2, ":enemy_delta_courage"),
           # (assign, reg3, ":agent_courage_score"),
           # (display_message, "@{s1} {reg1} + {reg2} = {reg3}"),
         (try_end),
-        (val_max, ":agent_courage_score", 0), 				#not < 0
-        (agent_set_slot, ":agent", slot_agent_courage_score, ":agent_courage_score"),
       (try_end),
 
     (try_end),
@@ -29458,6 +29426,8 @@ mission_templates = [
         (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
         (finish_mission, 3),
         (mission_disable_talk),
+      (else_try),
+        (display_message, "str_cannot_leave_now"),
       (try_end),
     ],[]),
 ]),
@@ -31643,7 +31613,50 @@ mission_templates = [
       (replace_scene_props, "spr_mp_mound_e_path", "spr_empty"),
       (replace_scene_props, "spr_mp_mound_f_path", "spr_empty"),
     ]),
-
+    (ti_before_mission_start, 0, 0, [
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
+    ],[
+      (scene_set_day_time, 0),
+    ]),
+    (ti_after_mission_start, 0, 0, [
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
+    ],[
+      (set_fog_distance, 50, 0xA75862),
+      (play_sound, "snd_thunder_close"),
+    ]),
+    (ti_on_agent_knocked_down, 0, 0, [
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 13),
+    ],[
+      (store_trigger_param_1, ":dead_agent"),
+      (neg|agent_is_non_player, ":dead_agent"),
+      (val_add, "$temp3", 1),
+    ]),
+    (0.5, 0.5, ti_once, [
+      (neg|conversation_screen_is_active),
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
+      (store_mission_timer_a, ":time"),
+      (ge, ":time", 3),
+    ],[
+      (mission_enable_talk),
+      (start_mission_conversation, "trp_african_myth_hero_4"),
+    ]),
+    (1, 0, 0, [
+      (neg|conversation_screen_is_active),
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+      (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 13),
+      (gt, "$temp3", 0),
+      (store_mod, ":beaten", "$temp3", 3),
+      (eq, ":beaten", 0),
+    ],[
+      (finish_party_battle_mode),
+      (mission_enable_talk),
+      (start_mission_conversation, "trp_african_myth_hero_4"),
+      (val_add, "$temp3", 1),
+    ]),
 
     (ti_on_agent_spawn,1,0,[
       (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
@@ -31660,6 +31673,19 @@ mission_templates = [
         (convert_to_fixed_point,":end"),
         (store_random_in_range,":progress",0,":end"),
         (agent_set_animation_progress,":agent",":progress"),
+      (else_try),
+        (eq, ":troop", "trp_african_myth_hero_4"),
+        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
+        (agent_set_no_death_knock_down_only, ":agent", 1),
+        (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 250),
+        (agent_set_damage_modifier, ":agent", 200),
+      (else_try),
+        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
+        (neg|agent_is_non_player, ":agent"),
+        (agent_set_no_death_knock_down_only, ":agent", 1),
+        (assign, "$temp3", 0), # use this to count player falling
+        (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 75),
+        (agent_set_damage_modifier, ":agent", 50),
       (try_end),
     ],[]),
 
@@ -31743,6 +31769,11 @@ mission_templates = [
         (tutorial_box, "@Follow Caeselius Bassus!"),
       (else_try),
         (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+        (this_or_next|quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 13),
+        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
+        (display_message, "str_cannot_leave_now"),
+      (else_try),
+        (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
         (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 9),
         (tutorial_box, "@Bring Caeselius Bassus the items inside the chest!"),
       (else_try),
@@ -31762,7 +31793,7 @@ mission_templates = [
           (assign, reg1, ":z"),
           # (display_message, "@z: {reg1}"),
           (try_begin),
-              (gt, ":z", 6250),
+              (gt, ":z", 6500),
               (val_sub, ":z", 250),
               (position_set_z, pos11, ":z"),
               (prop_instance_animate_to_position, ":earth", pos11, 100),
@@ -31785,7 +31816,6 @@ mission_templates = [
           (try_end),
       (try_end),
     ]),
-
     improved_lightning,
     common_inventory_not_available,
     ambient_set_agents_for_sounds,

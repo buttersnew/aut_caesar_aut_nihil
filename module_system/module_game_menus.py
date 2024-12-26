@@ -50592,7 +50592,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
       (str_store_troop_name, s31, ":lord"),
       (str_store_string, s33, "@You order the whole centuria to show up. Then you climb on a box and start a talk^^In a rousing speech you tell the soldiers, how they have brought"
-      +" shame on themselves, on Legatus Kaeso Flavius, on the Princeps and, finally, shame on Rome. You would have expected such behavior from smelly Barbarians but not Romans!^"
+      +" shame on themselves, on {s31}, on the Princeps and, finally, shame on Rome. You would have expected such behavior from smelly Barbarians but not Romans!^"
       +" During your speech, you name some soldiers directly by their names and look into their eyes."
       +" All is silent, only you speek and nobody dares to interrupt you. You can see how some of them start to cry.^^"
       +" After you finished you order to punish the whole Centuria, even the Centurio. ^As {s31} hears about those events, he is quite surprised and lauds you for your good speech."),
@@ -61162,21 +61162,43 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
     ("answere_1",[],"Continue...",[
-      (jump_to_menu, "mnu_prophecy_final_4"),
+      # (jump_to_menu, "mnu_prophecy_final_4"),
+
+      (set_jump_mission, "mt_explore_carthage"),
+      (modify_visitors_at_site, "scn_ruins_of_carthage"),
+      (reset_visitors),
+      (quest_set_slot, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
+      (set_visitor, 5, "trp_player"),
+      (set_visitor, 3, "trp_african_myth_hero_4"),
+
+      (jump_to_scene, "scn_ruins_of_carthage"),
+      (change_screen_mission),
     ]),
 ]),
 
 ("prophecy_final_4",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "You slowly awaken, your mind groggy and clouded. The oppressive haze is gone, leaving a strange stillness in the air. As your vision clears, you see Bassus kneeling before you, looking pale and shaken, his eyes filled with guilt. He seems deeply embarrassed, repeatedly apologizing for the events that unfolded. His hands tremble as he gestures toward the underwear, now lying in the dirt."
-  +"^^Without further words, it's clear he regrets what happened and insists that you keep the underwear. Without any further words he leaves you.",
+"You awaken slowly, your mind heavy and muddled as though emerging from a deep fog. The oppressive haze that consumed you is gone, and so is Hannibal. As your senses return, you notice Bassus kneeling before you."
++" His nose is bloodied, his face mottled with bruises, and his expression one of profound guilt. He stammers out apologies, his voice trembling with shame and regret."
++"^^Pain courses through your body like a relentless tide. Your hands throb, raw and scraped, evidence of some forgotten struggle. It's only then that you realize your surroundings have changed."
++" The ruins of Carthage are nowhere in sight. Instead, you find yourself in the quiet, cool confines of the governor's palace.",
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
     ("answere_1",[],"Continue...",[
-      (jump_to_menu, "mnu_auto_return_map"),
-      (add_xp_as_reward, 2500),
-      (call_script, "script_end_quest", "qst_prophecy_of_caeselius_bassus"),
-      (party_add_prisoners, "p_main_party", "trp_slave", 5),
+      (assign, "$temp1", 4),
+      (assign, "$temp2", "trp_town_28_seneschal"),
+      (party_get_slot, ":castle_scene", "$g_encountered_party", slot_town_castle),
+      (quest_set_slot, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 14),
+      (set_jump_mission, "mt_conversation_generic"),
+      (modify_visitors_at_site, ":castle_scene"),
+      (reset_visitors),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 16, af_override_weapons|af_override_horse|af_override_head),
+      (set_visitor, 16, "trp_player"),
+      (mission_tpl_entry_set_override_flags, "mt_conversation_generic", 17, af_override_weapons|af_override_horse|af_override_head),
+      (set_visitor, 17, "trp_statthalter_new_12"),
+      (set_visitor, 33, "trp_town_28_seneschal"),
+      (jump_to_scene, ":castle_scene"),
+      (change_screen_mission),
     ]),
 ]),
 ]#end of file

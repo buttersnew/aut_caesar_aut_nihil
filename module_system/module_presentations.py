@@ -20222,7 +20222,7 @@ presentations = [
     (val_add, ":x", 300),
     (position_set_x, pos2, ":x"),
 
-    (create_slider_overlay, "$g_presentation_obj_13", 5, 50),
+    (create_slider_overlay, "$g_presentation_obj_13", 5, 75),
     (overlay_set_position, "$g_presentation_obj_13", pos2),
     (position_set_x, pos2, 700),
     (position_set_y, pos2, 700),
