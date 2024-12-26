@@ -3290,7 +3290,7 @@ str_17|agi_15|int_14|cha_18|level(24), wp(180), knows_veteran_npc|knows_prisoner
 
 ["npc18", "Arminius", "Arminius", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_horse_3,itm_praetorian_cav_scutum,itm_roman_spatha,itm_hasta2,itm_legion_hamata_cape_1,itm_1_imp_gallic_h_plume],
-str_17|agi_15|int_14|cha_17|level(23), wp(170), knows_veteran_npc, 0x00000001b608000936a38dd6eb70eaf100000000001ceb140000000000000000 ],
+str_17|agi_15|int_14|cha_17|level(23), wp(170), knows_veteran_npc, 0x000000000601100446db5696fb7436db00000000001e45490000000000000000 ],
 
 ["npc19", "Tertius Maior", "Tertius Maior", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_horse_3,itm_praetorian_cav_scutum,itm_roman_spatha,itm_hasta2,itm_legion_hamata_cape_2,itm_1_imp_gallic_c_plume],
@@ -3366,6 +3366,11 @@ str_16|agi_14|int_10|cha_12|level(10), wp(125), knows_warrior_npc|knows_trade_3|
 ["turakina","Eamane Turakina","Emane Turakina",tf_female|tf_hero,0,0,fac_commoners,
 [itm_leather_boots, itm_alan_light_1, itm_war_spear,itm_sarmatian_bow, itm_sarmatian_arrows_2],
 attrib_level_16_warrior,wp(150),knows_level_16_warrior,0x00000001bf00b09a37cf9d0edb5120db00000000001c10d30000000000000000],
+
+["npc42", "Chaditox", "Chaditox", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
+[itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_light_lance,itm_sarmatian_ringsword_1,itm_sarmatian_cap_3,itm_sarmatian_light5,itm_sarmatian_shoes,itm_steppe_horse_2],
+str_16|agi_16|int_15|cha_15|level(22), wp(160),knows_archer_exp|knows_veteran_npc,  0x0000000fee01128148a39ec87d6c349b00000000001e48f80000000000000000],
+
 #NPC system changes end
 
 
@@ -4323,7 +4328,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_3_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000cab0810095a14a6b89a4db32b00000000000f56ce0000000000000000],
 ["town_4_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000da801300c216470c67e49291c00000000001d4d580000000000000000],
 ["town_5_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000e280415d236e6937ad9a9672500000000001cd76a0000000000000000],
-["town_6_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000a8400d0093362b646a189192300000000001ee4d30000000000000000],
+["town_6_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000043500614b16a37238da6d289b00000000001e28780000000000000000],
 ["town_7_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000ebb0d32c157bcb9885bdda6ea00000000001db6cc0000000000000000],
 ["town_8_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000c9300b08f192bb5b74b96cd1100000000001d388b0000000000000000],
 ["town_9_arena_master", "Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000008030c048c656d5b3991aed52c000000000013576c0000000000000000],
@@ -4652,7 +4657,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_3_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000b740d11ce44db91b79b48b0fd00000000001dc6a30000000000000000],
 ["town_4_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000008fa01200f239b2dc72a69c38b00000000001e63120000000000000000],
 ["town_5_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000a3d00100942db4cb7608534e300000000001e58d60000000000000000],
-["town_6_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000003708c011573442d9656cb4d900000000001db8dc0000000000000000],
+["town_6_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000009c30120024f2432371c850f3b00000000001d84e90000000000000000],
 ["town_7_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000871092203372bb13a549502d100000000001e4c820000000000000000],
 ["town_8_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000c1b08d54542eb2192e2b8166900000000001e34dc0000000000000000],
 ["town_9_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000aed0022c6391b55c69ed4ad6400000000001d9b8c0000000000000000],
@@ -6414,10 +6419,10 @@ itm_caligea, itm_numidian_armor_5, itm_numidian_helm, itm_african_round_shield,
 itm_nubian_axe_2, itm_javelin_berber, itm_javelin_berber,
 ],hero_attrib|level(50), wp(400), knows_hero, 0x000000099f04e4c05ee1561c95d25ae300000000001e96e50000000000000000],
 
-["african_myth_hero_4", "Horemakhet", "Horemakhet", tf_hero, no_scene, reserved, fac_commoners,[
-itm_caligea, itm_nubian_kilt_3, itm_african_feather_band, itm_nubian_kite_shield_3,
-itm_nubian_axe, itm_javelin_berber, itm_javelin_berber,
-],hero_attrib|level(50), wp(600), knows_hero, 0x0000000e240c718b392491b70aaad9750000000000065a530000000000000000],
+["african_myth_hero_4", "Hannibal", "Hannibal", tf_hero, no_scene, reserved, fac_commoners,[
+itm_centurio_east_graves, itm_gauntles_1, itm_armor_of_african_gods, itm_javelin_berber, itm_javelin_berber,
+itm_numidian_spear_1,itm_eastern_shield_inf_heavy5
+],hero_attrib|level(50), wp(600), knows_hero, 0x0000000d770101517722ad827b84db6f00000000001e12f80000000000000000],
 
 
 ["troops_end", "END OF THE WORLD", "END OF THE WORLD", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],

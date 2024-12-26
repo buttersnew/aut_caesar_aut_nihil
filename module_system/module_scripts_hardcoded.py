@@ -2932,7 +2932,9 @@ scripts_hardcoded = [
             (party_slot_eq, ":village_no", slot_village_market_town, "p_town_19"),#Hierosolyma
             (party_set_slot,":village_no", slot_castle_exterior, "scn_village_judea"),
         (else_try),
-            (this_or_next|party_slot_eq, ":village_no", slot_village_bound_center, "p_town_20"),
+            (party_slot_eq, ":village_no", slot_village_bound_center, "p_town_20"),
+            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_egypt_delta"),
+        (else_try),
             (party_slot_eq, ":village_no", slot_village_bound_center, "p_town_48"),
             (party_set_slot,":village_no", slot_castle_exterior, "scn_village_egypt"),
         (else_try),

@@ -215,6 +215,8 @@ scenes = [
   ("village_58", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000232200ebc0005e9790000280900003a9c00006d70",[], [], "outer_terrain_plain_1"),
 
   ("village_egypt", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001500003e3000fffff0000074800005c49000021c5",[], [], "outer_terrain_desert"),
+  ("village_egypt_delta", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000025c600606000926470000240d0000747200007110",[], [], "outer_terrain_desert_b"),
+
   ("village_judea", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000255c0050000076ddb000065a900005a1700006e50",[], [], "outer_terrain_desert"),
 
   ("village_caledonian", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x000000033000050000084a1200006aaa000036e000000581",[], [], "outer_terrain_mountain_2"),
