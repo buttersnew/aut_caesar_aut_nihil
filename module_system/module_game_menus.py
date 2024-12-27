@@ -17309,64 +17309,64 @@ game_menus = [
     ]),
 ]),
 
-("lady_visit",0,
-  "Whom do you wish to visit?",
-  "none",
-  [
-    (set_background_mesh, "mesh_pic_palast"),
-  ],[
+# ("lady_visit",0,
+#   "Whom do you wish to visit?",
+#   "none",[
+#     (set_background_mesh, "mesh_pic_palast"),
+#   ],[
+#     ("visit_lady_1", [
+#       (gt, "$love_interest_in_town", 0),
+#       (str_store_troop_name, s12, "$love_interest_in_town"),
+#     ],"Visit {s12}",[
+#       (assign, "$love_interest_in_town", "$love_interest_in_town"),
+#       (jump_to_menu, "mnu_garden"),
+#     ]),
+#     ("visit_lady_2", [
+#       (gt, "$love_interest_in_town_2", 0),
+#       (str_store_troop_name, s12, "$love_interest_in_town_2"),
+#     ],"Visit {s12}",[
+#       (assign, "$love_interest_in_town", "$love_interest_in_town_2"),
+#       (jump_to_menu, "mnu_garden"),
+#     ]),
+#     ("visit_lady_3", [
+#       (gt, "$love_interest_in_town_3", 0),
+#       (str_store_troop_name, s12, "$love_interest_in_town_3"),
+#     ],"Visit {s12}",[
+#       (assign, "$love_interest_in_town", "$love_interest_in_town_3"),
+#       (jump_to_menu, "mnu_garden")
+#     ]),
+#     ("visit_lady_4", [
+#       (gt, "$love_interest_in_town_4", 0),
+#       (str_store_troop_name, s12, "$love_interest_in_town_4"),
+#     ],"Visit {s12}",[
+#       (assign, "$love_interest_in_town", "$love_interest_in_town_4"),(jump_to_menu, "mnu_garden"),
+#     ]),
+#     ("visit_lady_5", [
+#       (gt, "$love_interest_in_town_5", 0),(str_store_troop_name, s12, "$love_interest_in_town_5"),
+#     ],"Visit {s12}",[
+#       (assign, "$love_interest_in_town", "$love_interest_in_town_5"),(jump_to_menu, "mnu_garden"),
+#     ]),
+#     ("visit_lady_6",[
+#       (gt, "$love_interest_in_town_6", 0),(str_store_troop_name, s12, "$love_interest_in_town_6"),
+#     ],"Visit {s12}",[
+#       (assign, "$love_interest_in_town", "$love_interest_in_town_6"),(jump_to_menu, "mnu_garden"),
+#     ]),
+#     ("visit_lady_7",[
+#       (gt, "$love_interest_in_town_7", 0),(str_store_troop_name, s12, "$love_interest_in_town_7"),
+#     ],"Visit {s12}",[
+#       (assign, "$love_interest_in_town", "$love_interest_in_town_7"),(jump_to_menu, "mnu_garden"),
+#     ]),
+#     ("visit_lady_8",[
+#       (gt, "$love_interest_in_town_8", 0),(str_store_troop_name, s12, "$love_interest_in_town_8"),
+#     ],"Visit {s12}",[
+#       (assign, "$love_interest_in_town", "$love_interest_in_town_8"),(jump_to_menu, "mnu_garden"),
+#     ]),
+#     ("leave",[], "Leave",[(
+#       jump_to_menu, "mnu_town"),
+#     ]),
+# ]),
 
-    ("visit_lady_1", [
-      (gt, "$love_interest_in_town", 0),
-      (str_store_troop_name, s12, "$love_interest_in_town"),
-    ],
-    "Visit {s12}",
-      [
-        (assign, "$love_interest_in_town", "$love_interest_in_town"),
-        (jump_to_menu, "mnu_garden"),
-      ]),
-
-	("visit_lady_2", [
-	(gt, "$love_interest_in_town_2", 0),
-	(str_store_troop_name, s12, "$love_interest_in_town_2"),
-	],
-	  "Visit {s12}",
-       [
-	    (assign, "$love_interest_in_town", "$love_interest_in_town_2"),
-        (jump_to_menu, "mnu_garden"),
-        ]),
-
-	("visit_lady_3", [
-	(gt, "$love_interest_in_town_3", 0),
-	(str_store_troop_name, s12, "$love_interest_in_town_3"),
-	],
-	  "Visit {s12}",
-       [
-	    (assign, "$love_interest_in_town", "$love_interest_in_town_3"),
-        (jump_to_menu, "mnu_garden")], "Door to the garden."),
-
-	("visit_lady_4", [(gt, "$love_interest_in_town_4", 0),(str_store_troop_name, s12, "$love_interest_in_town_4"),],
-	"Visit {s12}",[(assign, "$love_interest_in_town", "$love_interest_in_town_4"),(jump_to_menu, "mnu_garden"),]),
-
-	("visit_lady_5", [(gt, "$love_interest_in_town_5", 0),(str_store_troop_name, s12, "$love_interest_in_town_5"),],
-	"Visit {s12}",[(assign, "$love_interest_in_town", "$love_interest_in_town_5"),(jump_to_menu, "mnu_garden"),]),
-
-	("visit_lady_6",[(gt, "$love_interest_in_town_6", 0),(str_store_troop_name, s12, "$love_interest_in_town_6"),],
-	"Visit {s12}",[(assign, "$love_interest_in_town", "$love_interest_in_town_6"),(jump_to_menu, "mnu_garden"),]),
-
-	("visit_lady_7",[(gt, "$love_interest_in_town_7", 0),(str_store_troop_name, s12, "$love_interest_in_town_7"),],
-	"Visit {s12}",[(assign, "$love_interest_in_town", "$love_interest_in_town_7"),(jump_to_menu, "mnu_garden"),]),
-
-	("visit_lady_8",[(gt, "$love_interest_in_town_8", 0),(str_store_troop_name, s12, "$love_interest_in_town_8"),],
-	"Visit {s12}",[(assign, "$love_interest_in_town", "$love_interest_in_town_8"),(jump_to_menu, "mnu_garden"),]),
-
-	("leave",[], "Leave",[(jump_to_menu, "mnu_town")]),
-
-    ]
-	),
-
-(
-  "town_tournament_lost",0,
+("town_tournament_lost",0,
   "You have been eliminated from the games.{s8}",
   "none",[
     (set_background_mesh, "mesh_pic_gladiator"),
@@ -23463,15 +23463,11 @@ goods, and books will never be sold. ^^You can change some settings here freely.
     ]),
 ]),
 
-  ( #pre lady visit
-    "garden",0,
-    "{s12}",
-    "none",
-    [
-
+("garden",0,
+  "{s12}",
+  "none",[
     (call_script, "script_get_kingdom_lady_social_determinants", "$love_interest_in_town"),
-	(assign, ":guardian_lord", reg0),
-
+	  (assign, ":guardian_lord", reg0),
     (try_begin),
         (neq, ":guardian_lord", "$love_interest_in_town"),
         (str_store_troop_name, s11, "$love_interest_in_town"),
@@ -23530,81 +23526,57 @@ goods, and books will never be sold. ^^You can change some settings here freely.
         (else_try),
             (str_store_string, s12, "str_the_guards_glare_at_you_and_you_know_better_than_to_ask_permission_to_enter"),
         (try_end),
-	(else_try),
+    (else_try),
         (call_script, "script_troop_get_relation_with_troop", "trp_player", "$love_interest_in_town"),
         (gt, reg0, 0),
         (str_store_string, s12, "@The guards inform you that {s12} is awaiting you."),
         (assign, "$temp4_1", 3),
-	(else_try),
+    (else_try),
         (str_store_string, s12, "@The guards inform you that {s12} doesn't want to see you."),
-	(try_end),
+    (try_end),
+	],[
+    ("enter",[
+      (call_script, "script_get_kingdom_lady_social_determinants", "$love_interest_in_town"),
+      (assign, ":lord",reg0),
+      (this_or_next|eq, "$temp4_1", 3),
+      (troop_slot_eq, ":lord", slot_lord_granted_courtship_permission, 1)
+    ], "Enter",[
+      (jump_to_menu, "mnu_town"),
+      (call_script, "script_setup_meet_lady", "$love_interest_in_town", "$g_encountered_party"),
+    ]),
+    ("nurse",[
+      (eq, "$temp4_1", 1),
+    ], "Go with the nurse",[
+      (jump_to_menu, "mnu_town"),
+      (call_script, "script_setup_meet_lady", "$love_interest_in_town", "$g_encountered_party"),
+    ]),
+    ("nurse",[
+      (eq, "$temp4_1", 2),
+    ], "Wait by the spring",[
+      (jump_to_menu, "mnu_town"),
+      (call_script, "script_setup_meet_lady", "$love_interest_in_town", "$g_encountered_party"),
+    ]),
+    ("leave",[],"Leave",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+]),
 
-	],
-    [
+("kill_local_merchant_begin",0,
+  "You spot your victim and follow him, observing as he turns a corner into a dark alley. This will surely be your best opportunity to attack him.",
+  "none",[
+  ],[
+    ("continue",[],"Continue...",[
+      (set_jump_mission,"mt_back_alley_kill_local_merchant"),
+      (party_get_slot, ":town_alley", "$qst_kill_local_merchant_center", slot_town_center),
+      (modify_visitors_at_site,":town_alley"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
 
-	("enter",
-	[
-    (call_script, "script_get_kingdom_lady_social_determinants", "$love_interest_in_town"),
-    (assign, ":lord",reg0),
-    (this_or_next|eq, "$temp4_1", 3),
-	(troop_slot_eq, ":lord", slot_lord_granted_courtship_permission, 1)
-	], "Enter",
-	[
-	(jump_to_menu, "mnu_town"),
-	(call_script, "script_setup_meet_lady", "$love_interest_in_town", "$g_encountered_party"),
-	]
-	),
-
-	("nurse",
-	[
-    (eq, "$temp4_1", 1),
-	], "Go with the nurse",
-	[
-	(jump_to_menu, "mnu_town"),
-	(call_script, "script_setup_meet_lady", "$love_interest_in_town", "$g_encountered_party"),
-	]
-	),
-
-	("nurse",
-	[
-    (eq, "$temp4_1", 2),
-	], "Wait by the spring",
-	[
-	(jump_to_menu, "mnu_town"),
-	(call_script, "script_setup_meet_lady", "$love_interest_in_town", "$g_encountered_party"),
-	]
-	),
-
-	("leave",
-	[],
-	"Leave",
-	[(jump_to_menu, "mnu_town")]),
-
-    ]
-
-  ),
-
-    (
-    "kill_local_merchant_begin",0,
-    "You spot your victim and follow him, observing as he turns a corner into a dark alley.\
- This will surely be your best opportunity to attack him.",
-    "none",
-    [
-    ],
-    [
-      ("continue",[],"Continue...",
-       [(set_jump_mission,"mt_back_alley_kill_local_merchant"),
-        (party_get_slot, ":town_alley", "$qst_kill_local_merchant_center", slot_town_center),
-        (modify_visitors_at_site,":town_alley"),
-        (reset_visitors),
-        (set_visitor, 0, "trp_player"),
-
-        (jump_to_menu, "mnu_town"),
-        (jump_to_scene,":town_alley"),
-        (change_screen_mission),
-        ]),
-     ]
-  ),
+      (jump_to_menu, "mnu_town"),
+      (jump_to_scene,":town_alley"),
+      (change_screen_mission),
+    ]),
+]),
 
 ("debug_alert_from_s65",0,
   "DEBUG ALERT: {s65}",
@@ -47580,8 +47552,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("latifundium",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "You visit your estate near {s22}.^You have {reg22} slaves working here, while you need at least {reg30} for efficient production.^^"
- +" The estate has the following buildings constructed: Grain fields, {s10}^^"
- +" The following buildings are under construction: {s11}^^{s44}",
+ +" The estate has the following buildings constructed: {s10}.^^"
+ +" The following buildings are under construction: {s11}.^^{s44}",
   "none",[
     (str_clear, s44),
     (party_get_slot, ":disease", "$current_town", slot_center_disease),
@@ -47603,24 +47575,50 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
 
     (assign, "$current_town", "$g_encountered_party"),
-    (str_clear, s10),
+    (str_store_string, s10, "@Grain fields"),
     (str_clear, s11),
     (assign, reg30, 30),
+    (assign, ":counter_const", 0),
+    (assign, ":counter_done", 0),
     (try_for_range, ":building", slot_lat_silk, slot_lat_building_end),
         (party_get_slot, ":time", "$g_encountered_party", ":building"),
         (neq, ":time", 0),
         (call_script, "script_get_building_details_lat",  ":building"),
         (try_begin),
             (ge, ":time", 1),
-            (str_store_string, s10, "@{s20}, {s10}"),
-            (val_add, reg30, reg22),
+            (try_begin),
+            #     (eq, ":counter", 0),
+            #     (str_store_string, s10, "@{s20}"),
+            # (else_try),
+                (eq, ":counter_done", 0),
+                (str_store_string, s10, "@{s20} and {s10}"),
+            (else_try),
+                (str_store_string, s10, "@{s20}, {s10}"),
+                (val_add, reg30, reg22),
+            (try_end),
+            (val_add, ":counter_done", 1),
         (else_try),
             (le, ":time", -1),
             (val_abs, ":time"),
             (assign, reg10, ":time"),
-            (str_store_string, s11, "@{s20} will finish in {reg10} days, {s11}"),
+            (str_store_string, s20, "@{s20} will finish in {reg10} days"),
+            (try_begin),
+                (eq, ":counter_const", 0),
+                (str_store_string, s11, "@{s20}"),
+            (else_try),
+                (eq, ":counter_const", 1),
+                (str_store_string, s11, "@{s20} and {s11}"),
+            (else_try),
+                (str_store_string, s11, "@{s20}, {s11}"),
+            (try_end),
+             (val_add, ":counter_const", 1),
         (try_end),
     (try_end),
+    (try_begin),
+        (str_is_empty, s11),
+        (str_store_string, s11, "@None"),
+    (try_end),
+
     (party_get_num_prisoners, reg22, "$g_encountered_party"),
 
     (set_background_mesh, "mesh_pic_villa_rustica"),
@@ -51472,58 +51470,58 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (display_message, "str_door_locked"),
       (try_end),
     ]),
-    ("visit_lady",[
-      (assign, "$love_interest_in_town", 0),
-      (assign, "$love_interest_in_town_2", 0),
-      (assign, "$love_interest_in_town_3", 0),
-      (assign, "$love_interest_in_town_4", 0),
-      (assign, "$love_interest_in_town_5", 0),
-      (assign, "$love_interest_in_town_6", 0),
-      (assign, "$love_interest_in_town_7", 0),
-      (assign, "$love_interest_in_town_8", 0),
-      (try_for_range, ":lady_no", kingdom_ladies_begin, kingdom_ladies_end),
-        (troop_slot_eq, ":lady_no", slot_troop_cur_center, "$current_town"),
-        (call_script, "script_get_kingdom_lady_social_determinants", ":lady_no"),
-        (assign, ":lady_guardian", reg0),
+    # ("visit_lady",[
+    #   (assign, "$love_interest_in_town", 0),
+    #   (assign, "$love_interest_in_town_2", 0),
+    #   (assign, "$love_interest_in_town_3", 0),
+    #   (assign, "$love_interest_in_town_4", 0),
+    #   (assign, "$love_interest_in_town_5", 0),
+    #   (assign, "$love_interest_in_town_6", 0),
+    #   (assign, "$love_interest_in_town_7", 0),
+    #   (assign, "$love_interest_in_town_8", 0),
+    #   (try_for_range, ":lady_no", kingdom_ladies_begin, kingdom_ladies_end),
+    #     (troop_slot_eq, ":lady_no", slot_troop_cur_center, "$current_town"),
+    #     (call_script, "script_get_kingdom_lady_social_determinants", ":lady_no"),
+    #     (assign, ":lady_guardian", reg0),
 
-        (troop_slot_eq, ":lady_no", slot_troop_spouse, -1),
-        (ge, ":lady_guardian", 0), #not sure when this would not be the case
+    #     (troop_slot_eq, ":lady_no", slot_troop_spouse, -1),
+    #     (ge, ":lady_guardian", 0), #not sure when this would not be the case
 
-        #must have spoken to either father or lady
-        (this_or_next|troop_slot_ge, ":lady_no", slot_troop_met, 2),
-        (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 1),
+    #     #must have spoken to either father or lady
+    #     (this_or_next|troop_slot_ge, ":lady_no", slot_troop_met, 2),
+    #     (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 1),
 
-        (neg|troop_slot_eq, ":lady_no", slot_troop_met, 4),
-        (try_begin),
-          (eq, "$love_interest_in_town", 0),
-          (assign, "$love_interest_in_town", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_2", 0),
-          (assign, "$love_interest_in_town_2", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_3", 0),
-          (assign, "$love_interest_in_town_3", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_4", 0),
-          (assign, "$love_interest_in_town_4", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_5", 0),
-          (assign, "$love_interest_in_town_5", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_6", 0),
-          (assign, "$love_interest_in_town_6", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_7", 0),
-          (assign, "$love_interest_in_town_7", ":lady_no"),
-        (else_try),
-          (eq, "$love_interest_in_town_8", 0),
-          (assign, "$love_interest_in_town_8", ":lady_no"),
-        (try_end),
-      (try_end),
-      (gt, "$love_interest_in_town", 0),
-    ],"Attempt to visit a lady",[
-      (jump_to_menu, "mnu_lady_visit"),
-    ], "Door to the garden."),
+    #     (neg|troop_slot_eq, ":lady_no", slot_troop_met, 4),
+    #     (try_begin),
+    #       (eq, "$love_interest_in_town", 0),
+    #       (assign, "$love_interest_in_town", ":lady_no"),
+    #     (else_try),
+    #       (eq, "$love_interest_in_town_2", 0),
+    #       (assign, "$love_interest_in_town_2", ":lady_no"),
+    #     (else_try),
+    #       (eq, "$love_interest_in_town_3", 0),
+    #       (assign, "$love_interest_in_town_3", ":lady_no"),
+    #     (else_try),
+    #       (eq, "$love_interest_in_town_4", 0),
+    #       (assign, "$love_interest_in_town_4", ":lady_no"),
+    #     (else_try),
+    #       (eq, "$love_interest_in_town_5", 0),
+    #       (assign, "$love_interest_in_town_5", ":lady_no"),
+    #     (else_try),
+    #       (eq, "$love_interest_in_town_6", 0),
+    #       (assign, "$love_interest_in_town_6", ":lady_no"),
+    #     (else_try),
+    #       (eq, "$love_interest_in_town_7", 0),
+    #       (assign, "$love_interest_in_town_7", ":lady_no"),
+    #     (else_try),
+    #       (eq, "$love_interest_in_town_8", 0),
+    #       (assign, "$love_interest_in_town_8", ":lady_no"),
+    #     (try_end),
+    #   (try_end),
+    #   (gt, "$love_interest_in_town", 0),
+    # ],"Attempt to visit a lady",[
+    #   (jump_to_menu, "mnu_lady_visit"),
+    # ], "Door to the garden."),
 		("set_sail",[
       (party_slot_eq, "$current_town", slot_town_port, 1),
       (eq, "$enlisted_party", -1),#not freelancing

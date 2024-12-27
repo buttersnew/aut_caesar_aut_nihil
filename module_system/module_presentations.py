@@ -5263,7 +5263,7 @@ presentations = [
         #player pays his tax
         (try_begin),
             (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
-            (faction_get_slot, ":taxrate", "$players_kingdom", slot_faction_government_type),
+            (faction_get_slot, ":taxrate", "$players_kingdom", slot_faction_tax_rate),
             (store_mul, ":tax", ":taxrate", ":accumulated_total"),
             (val_div, ":tax", 100),
             (val_add, ":all_taxes_paid", ":tax"),
@@ -11263,6 +11263,13 @@ presentations = [
     (position_set_x, pos1, 1002),
     (position_set_y, pos1, 1002),
     (overlay_set_size, reg0, pos1),
+
+    (party_get_slot, ":improvement", "$g_encountered_party", slot_center_current_improvement),
+    (party_get_slot, ":improvement_2", "$g_encountered_party", slot_center_current_improvement_2),
+    (try_begin),
+        (eq, ":improvement", ":improvement_2"),
+        (party_set_slot, "$g_encountered_party", slot_center_current_improvement_2, 0),
+    (try_end),
 
     (str_store_party_name, s0, "$g_encountered_party"),
     (create_text_overlay, reg1, "str_s0", tf_center_justify|tf_with_outline),
@@ -39911,6 +39918,15 @@ presentations = [
             (str_store_troop_name, s58, "$castle_meeting_selected_troop"),
             (call_script, "script_dplmc_store_troop_is_female_reg", "$castle_meeting_selected_troop", 4),
             (dialog_box, "@A servant of {s58} approaches you and informs you that {reg4?she:he} is unwilling to speak with you at the moment.^^Hint: Your relationship is too strained. Try speaking with {reg4?her:him} directly by entering the hall.", "@Information"),
+        (else_try),# visit lady
+            (troop_slot_eq, "$castle_meeting_selected_troop", slot_troop_spouse, -1),
+            (call_script, "script_get_kingdom_lady_social_determinants", "$castle_meeting_selected_troop"),
+            (assign, ":lady_guardian", reg0),
+            (ge, ":lady_guardian", 0),
+            (this_or_next|troop_slot_ge, "$castle_meeting_selected_troop", slot_troop_met, 2),
+            (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 1),
+            (neg|troop_slot_eq, "$castle_meeting_selected_troop", slot_troop_met, 4),
+            (jump_to_menu, "mnu_garden"),
         (else_try),
             (is_between, "$castle_meeting_selected_troop", kingdom_ladies_begin, kingdom_ladies_end),
             (neg|troop_slot_eq, "$castle_meeting_selected_troop", slot_troop_spouse, "trp_player"),
