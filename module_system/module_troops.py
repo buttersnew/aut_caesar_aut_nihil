@@ -743,6 +743,9 @@ desert_head_peasant = desert_turbans_1
 berber_head_peasant = desert_turbans_2
 garamantian_head_peasant = desert_turbans_2 + [itm_african_feather_band]
 
+gladiator_armors = [itm_arena_armor_yellow,itm_arena_armor_red,itm_arena_armor_blue,itm_arena_armor_green]
+gladiator_shields = [itm_arena_shield_red,itm_arena_shield_blue,itm_arena_shield_green,itm_arena_shield_yellow]
+
 troops = [
 ["player","Player","Player",tf_hero|tf_unmoveable_in_party_window,no_scene,reserved,fac_player_faction,[],str_4|agi_4|int_4|cha_4,wp(15),0,0x000000003f00100418a371b6da8dcaa200000000001e286b0000000000000000],
 ["multiplayer_profile_troop_male","multiplayer_profile_troop_male","multiplayer_profile_troop_male", tf_hero|tf_guarantee_all, 0, 0,fac_commoners,[],hero_attrib,0,knows_hero,0x000000018000000136db6db6db6db6db00000000001db6db0000000000000000],
@@ -5517,23 +5520,23 @@ def_attrib|level(4),wp(60),knows_common,african_face_female,african_face_female2
 ["slave_trader","Doulon Emporos","Douloi Emporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[itm_caligea,itm_roman_poor4],
 def_attrib|level(18),wp(60),knows_common,white_face_11, white_face_12],
 
-["gladiator_euqes","Eques","Eques",tf_guarantee_boots|tf_guarantee_horse|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield,no_scene,reserved,fac_gladiators,
-[itm_graves_simple_2,itm_hasta2,itm_eastern_sword1,itm_arabian_horse_b,itm_simple_thraex_shield,itm_iberian_light6,itm_tourney_helm_green],
+["gladiator_euqes","Eques","Eques",tf_guarantee_boots|tf_guarantee_horse|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm,no_scene,reserved,fac_gladiators,
+[itm_graves_simple,itm_hasta2,itm_eastern_sword1,itm_arabian_horse_b,itm_simple_thraex_shield,itm_iberian_light6,itm_tourney_helm_green],
 str_18|agi_18|level(23),wp(150),knows_common,mercenary_face_1,mercenary_face_2],
-["gladiator_murmillo","Murmillo","Murmillo",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield,no_scene,reserved,fac_gladiators,
-[itm_graves_simple_2,itm_roman_gladius,itm_arena_shield_blue,itm_arena_armor_red,itm_tourney_helm_yellow],
+["gladiator_murmillo","Murmillo","Murmillo",tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield,no_scene,reserved,fac_gladiators,
+[itm_roman_gladius,itm_tourney_helm_yellow]+gladiator_armors+gladiator_shields,
 str_30|agi_12|level(23),wp(160),knows_common,mercenary_face_1,mercenary_face_2],
-["gladiator_thraex","Thraex","Thraex",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield,no_scene,reserved,fac_gladiators,
-[itm_graves_simple_2,itm_flax_onehanded1,itm_leather_covered_round_shield,itm_arena_armor_blue,itm_tourney_helm_green],
+["gladiator_thraex","Thraex","Thraex",tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield,no_scene,reserved,fac_gladiators,
+[itm_flax_onehanded1,itm_leather_covered_round_shield,itm_tourney_helm_green]+gladiator_armors,
 str_20|agi_16|level(23),wp(180),knows_common,mercenary_face_1,mercenary_face_2],
-["gladiator_retiarius","Retiarius","Retiarius",tf_guarantee_boots|tf_guarantee_armor,no_scene,reserved,fac_gladiators,
-[itm_graves_simple_2,itm_arena_armor_green,itm_dagger,itm_dreizack2],
+["gladiator_retiarius","Retiarius","Retiarius",tf_guarantee_armor|tf_guarantee_polearm,no_scene,reserved,fac_gladiators,
+[itm_dagger,itm_dreizack2]+gladiator_armors,
 str_15|agi_30|level(23),wp(160),knows_common,mercenary_face_1,mercenary_face_2],
-["gladiator_gladiatrix","Gladiatrix","Gladiatrix",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_female|tf_guarantee_shield,no_scene,reserved,fac_gladiators,
-[itm_tourney_helm_red,itm_eastern_sword1,itm_arena_shield_green],
+["gladiator_gladiatrix","Gladiatrix","Gladiatrix",tf_guarantee_armor|tf_guarantee_helmet|tf_female|tf_guarantee_shield,no_scene,reserved,fac_gladiators,
+[itm_tourney_helm_red,itm_eastern_sword1]+gladiator_armors+gladiator_shields,
 str_30|agi_25|level(23),wp(160),knows_common,woman_face_1,woman_face_2],
-["gladiator_sagittarius","Sagittarius","Sagittarius",tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_ranged,no_scene,reserved,fac_gladiators,
-[itm_graves_simple_2,itm_tourney_helm_red,itm_dagger,itm_arena_armor_yellow,itm_arrows,itm_persian_bow],
+["gladiator_sagittarius","Sagittarius","Sagittarius",tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_ranged,no_scene,reserved,fac_gladiators,
+[itm_tourney_helm_red,itm_dagger,itm_arrows,itm_persian_bow]+gladiator_armors,
 str_17|agi_25|level(23),wp(160),knows_common|knows_power_draw_4,woman_face_1,woman_face_2],
 
 ["martial","Marcus Valerius Martialis","Marcus Valerius Martialis",tf_hero,no_scene,reserved,fac_commoners,

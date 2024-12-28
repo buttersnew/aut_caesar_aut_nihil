@@ -28,6 +28,7 @@ presentations = [
 ## mainmenu
 ("game_start",prsntf_read_only,0,[
   (ti_on_presentation_load,[
+    (stop_all_sounds),
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 

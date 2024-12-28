@@ -8069,7 +8069,7 @@ scripts_hardcoded = [
             ##if party is on water speed is determnied by wind
             (try_begin),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
-                (assign, ":speed_multiplier", 85),
+                (assign, ":speed_multiplier", 80),
                 (try_begin),
                     (eq, "$wind_power", 0),
                     (val_sub, ":speed_multiplier", 25),
@@ -8170,7 +8170,7 @@ scripts_hardcoded = [
             ##if party is on water speed is determnied by wind
             (try_begin),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
-                (assign, ":speed_multiplier", 85),
+                (assign, ":speed_multiplier", 80),
                 (try_begin),
                     (eq, "$wind_power", 0),
                     (val_sub, ":speed_multiplier", 25),

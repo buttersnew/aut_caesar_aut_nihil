@@ -284,5 +284,7 @@ sounds = [
    ("baths_spring", sf_priority_5|sf_vol_15|sf_stream_from_hd, ["baths_spring.wav",]),
    ("scream_warcry",sf_priority_8|sf_vol_15|sf_stream_from_hd, ["man_insult_13.wav"]),
 
-   ("drunken", sf_priority_15|sf_vol_15|sf_stream_from_hd, ["Taverndrunk_lose_1.wav","Taverndrunk_lose_2.wav","Taverndrunk_lose_3.wav","Taverndrunk_lose_4.wav"]),
+   ("drunken", sf_2d|sf_priority_15|sf_vol_15|sf_stream_from_hd, ["Taverndrunk_lose_1.wav","Taverndrunk_lose_2.wav","Taverndrunk_lose_3.wav","Taverndrunk_lose_4.wav"]),
+   ("drunken_win", sf_2d|sf_priority_15|sf_vol_15|sf_stream_from_hd, ["Taverndrunk_win_1.wav","Taverndrunk_win_2.wav","Taverndrunk_win_3.wav"]),
+
 ]
