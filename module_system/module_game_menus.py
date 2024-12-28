@@ -56419,7 +56419,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("wait_storm",0,
-  "You order your ships to hold. A small boat is let into the water. You enter it and order your other ships to travel to Ostia.^^The hours pass and the sun is burning you. In the distance you spot clouds. The wind is getting stronger. As evening falls, a strong storm starts. A large wave capsizes your boat. With effort you try to stay afloat, but you fail. You lose consciousness.",
+  "You order your ships to hold. A small boat is let into the water. You enter it and order your other ships to travel to Athens.^^The hours pass and the sun is burning you. In the distance you spot clouds. The wind is getting stronger. As evening falls, a strong storm starts. A large wave capsizes your boat. With effort you try to stay afloat, but you fail. You lose consciousness.",
   "none", [
     (set_background_mesh, "mesh_pic_seabattle"),
   ],[
