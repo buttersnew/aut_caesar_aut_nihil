@@ -3388,7 +3388,7 @@ color_neutral_news = 0xFFFFFF
 color_quest_and_faction_news = 0xCCCCFF
 color_hero_news = 0xFFFF99
 color_information = 0x00007F
-
+color_purple = 0x802552
 
 #camera mode constants, see module_strings or info-pages
 camera_keyboard = 1
@@ -4254,3 +4254,5 @@ wealth_bucket_8     = 140000
 wealth_bucket_9     = 160000
 wealth_bucket_10    = 200000
 wealth_bucket_11    = 1000000
+
+basic_loot = 275

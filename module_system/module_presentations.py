@@ -10178,7 +10178,7 @@ presentations = [
 
     (create_text_overlay, reg1, "@Party Moral", tf_left_align|tf_with_outline),
     (overlay_set_color, reg1, message_alert),
-    (position_set_x, pos1, 490),
+    (position_set_x, pos1, 475),
     (position_set_y, pos1, 705),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1200),
@@ -10187,7 +10187,7 @@ presentations = [
 
     (create_text_overlay, reg1, "@Party Size", tf_left_align|tf_with_outline),
     (overlay_set_color, reg1, message_alert),
-    (position_set_x, pos1, 490),
+    (position_set_x, pos1, 475),
     (position_set_y, pos1, 430),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1200),
@@ -39781,49 +39781,14 @@ presentations = [
   ]),
 ]),
 
-("ask_audience", 0, 0, [
+("ask_audience", prsntf_manual_end_only, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
     (try_for_range, ":active_npc", active_npcs_begin, kingdom_ladies_end),
         (troop_set_slot, "trp_temp_array_a", ":active_npc", -1),
-        (troop_set_slot, "trp_temp_array_b", ":active_npc", -1),
     (try_end),
-
-    # #0. BACKROUND
-    (create_mesh_overlay, reg0, "mesh_game_log_window"),
-    (position_set_x, pos1, 225),
-    (position_set_y, pos1, 100),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 525),
-    (position_set_y, pos1, 850),
-    (overlay_set_size, reg0, pos1),
-
-    # Presentation title, centered at the top
-    (try_begin),
-      (faction_slot_eq, "$g_encountered_party_faction", slot_faction_leader, "trp_player"),
-      (str_store_string, s20, "@With whom do you like to speak?"),
-    (else_try),
-      (str_store_string, s20, "@Request an audience with someone..."),
-    (try_end),
-    (create_text_overlay, reg1, "@{s20}", tf_center_justify),
-    (position_set_x, pos1, 475), # Higher, means more toward the right
-    (position_set_y, pos1, 710), # Higher, means more toward the top
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 1200),
-    (position_set_y, pos1, 1200),
-    (overlay_set_size, reg1, pos1),
-
-    (str_clear, s0),
-    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
-    (position_set_x, pos1, 275),
-    (position_set_y, pos1, 160),
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 375),
-    (position_set_y, pos1, 525),
-    (overlay_set_area_size, reg1, pos1),
-    (set_container_overlay, reg1),#start scroll
 
     (assign, ":num_lines", 0),
     (call_script, "script_dplmc_time_sorted_heroes_for_center", "$g_encountered_party", "p_temp_party"),
@@ -39838,66 +39803,106 @@ presentations = [
         (troop_slot_eq, ":cur_troop", slot_troop_cur_center, "$g_encountered_party"),
         (val_add, ":num_lines", 1),
     (try_end),
-    (position_set_x, pos1, 50),
-    (store_mul, ":y_name", 30, ":num_lines"),##get y for size of the scrollable overlay
-    ##text size of the table
-    (position_set_x, pos2, 900),
-    (position_set_y, pos2, 900),
+    (try_begin),
+        (eq, ":num_lines", 0),
+        (dialog_box, "@The hall stands empty at the moment, with no one present."),
+        (presentation_set_duration, 0),
+    (else_try),
+        # #0. BACKROUND
+        (create_mesh_overlay, reg0, "mesh_game_log_window"),
+        (position_set_x, pos1, 225),
+        (position_set_y, pos1, 100),
+        (overlay_set_position, reg0, pos1),
+        (position_set_x, pos1, 525),
+        (position_set_y, pos1, 850),
+        (overlay_set_size, reg0, pos1),
 
-    (try_for_range, ":i_stack", 0, ":num_stacks"),
-        (party_stack_get_troop_id, ":stack_troop","p_temp_party",":i_stack"),
-        (str_store_troop_name, 20, ":stack_troop"),
-
-        (call_script, "script_troop_get_player_relation", ":stack_troop"),
-
-        (create_text_overlay, reg1, "@{s20} (rel: {reg0})", tf_left_align|tf_with_outline),
-        (position_set_y, pos1, ":y_name"),
+        # Presentation title, centered at the top
+        (try_begin),
+          (faction_slot_eq, "$g_encountered_party_faction", slot_faction_leader, "trp_player"),
+          (str_store_string, s20, "@With whom do you like to speak?"),
+        (else_try),
+          (str_store_string, s20, "@Request an audience with someone..."),
+        (try_end),
+        (create_text_overlay, reg1, "@{s20}", tf_center_justify),
+        (position_set_x, pos1, 475), # Higher, means more toward the right
+        (position_set_y, pos1, 710), # Higher, means more toward the top
         (overlay_set_position, reg1, pos1),
-        (overlay_set_color, reg1, message_alert),
-        (overlay_set_size, reg1, pos2),
-        (troop_set_slot, "trp_temp_array_b", ":stack_troop", reg1),
+        (position_set_x, pos1, 1200),
+        (position_set_y, pos1, 1200),
+        (overlay_set_size, reg1, pos1),
 
-        (create_image_button_overlay, reg1, "mesh_longer_button", "mesh_longer_button"),
+        (str_clear, s0),
+        (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+        (position_set_x, pos1, 275),
+        (position_set_y, pos1, 160),
         (overlay_set_position, reg1, pos1),
-        (overlay_set_size, reg1, pos2),
-        (overlay_set_alpha, reg1, 0),
-        (overlay_set_color, reg1, 0xDDDDDD),
-        (troop_set_slot, "trp_temp_array_a", ":stack_troop", reg1),
+        (position_set_x, pos1, 375),
+        (position_set_y, pos1, 525),
+        (overlay_set_area_size, reg1, pos1),
+        (set_container_overlay, reg1),#start scroll
 
-        (val_sub, ":y_name", 30),
+        (position_set_x, pos1, 50),
+        (store_mul, ":y_name", 30, ":num_lines"),##get y for size of the scrollable overlay
+        ##text size of the table
+        (position_set_x, pos2, 950),
+        (position_set_y, pos2, 950),
+
+        (try_for_range, ":i_stack", 0, ":num_stacks"),
+            (party_stack_get_troop_id, ":stack_troop","p_temp_party",":i_stack"),
+            (str_store_troop_name, 20, ":stack_troop"),
+
+            (call_script, "script_troop_get_player_relation", ":stack_troop"),
+
+            (create_button_overlay, reg1, "@{s20} (rel: {reg0})", tf_with_outline),
+            (position_set_y, pos1, ":y_name"),
+            (overlay_set_position, reg1, pos1),
+            (overlay_set_color, reg1, color_information),
+            (overlay_set_size, reg1, pos2),
+            # (troop_set_slot, "trp_temp_array_b", ":stack_troop", reg1),
+
+            # (create_image_button_overlay, reg1, "mesh_longer_button", "mesh_longer_button"),
+            # (overlay_set_position, reg1, pos1),
+            # (overlay_set_size, reg1, pos2),
+            # (overlay_set_alpha, reg1, 0),
+            # (overlay_set_color, reg1, 0xDDDDDD),
+            (troop_set_slot, "trp_temp_array_a", ":stack_troop", reg1),
+
+            (val_sub, ":y_name", 30),
+        (try_end),
+
+        (try_for_range, ":cur_troop", kingdom_ladies_begin, kingdom_ladies_end),
+            (neq, ":cur_troop", "trp_knight_1_1_wife"), #The one who should not appear in game
+            (troop_slot_eq, ":cur_troop", slot_troop_occupation, slto_kingdom_lady),#is active lady
+            (troop_slot_eq, ":cur_troop", slot_troop_cur_center, "$g_encountered_party"),
+
+            (str_store_troop_name, 20, ":cur_troop"),
+            (call_script, "script_troop_get_player_relation", ":cur_troop"),
+
+            (create_button_overlay, reg1, "@{s20} (rel: {reg0})", tf_with_outline),
+            (position_set_y, pos1, ":y_name"),
+            (overlay_set_position, reg1, pos1),
+            (overlay_set_color, reg1, color_purple),
+            (overlay_set_size, reg1, pos2),
+            # (troop_set_slot, "trp_temp_array_b", ":cur_troop", reg1),
+
+            # (create_image_button_overlay, reg1, "mesh_longer_button", "mesh_longer_button"),
+            # (overlay_set_position, reg1, pos1),
+            # (overlay_set_size, reg1, pos2),
+            # (overlay_set_alpha, reg1, 0),
+            # (overlay_set_color, reg1, 0xDDDDDD),
+            (troop_set_slot, "trp_temp_array_a", ":cur_troop", reg1),
+
+            (val_sub, ":y_name", 30),
+        (try_end),
+        (set_container_overlay, -1),#end scroll
+
+        (create_game_button_overlay, reg1, "str_return"),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 110),
+        (overlay_set_position, reg1, pos1),
+        (assign, "$g_jrider_faction_report_return_to_menu", reg1),
     (try_end),
-
-    (try_for_range, ":cur_troop", kingdom_ladies_begin, kingdom_ladies_end),
-        (neq, ":cur_troop", "trp_knight_1_1_wife"), #The one who should not appear in game
-        (troop_slot_eq, ":cur_troop", slot_troop_occupation, slto_kingdom_lady),#is active lady
-        (troop_slot_eq, ":cur_troop", slot_troop_cur_center, "$g_encountered_party"),
-
-        (str_store_troop_name, 20, ":cur_troop"),
-        (call_script, "script_troop_get_player_relation", ":cur_troop"),
-
-        (create_text_overlay, reg1, "@{s20} (rel: {reg0})", tf_left_align|tf_with_outline),
-        (position_set_y, pos1, ":y_name"),
-        (overlay_set_position, reg1, pos1),
-        (overlay_set_color, reg1, message_alert),
-        (overlay_set_size, reg1, pos2),
-        (troop_set_slot, "trp_temp_array_b", ":cur_troop", reg1),
-
-        (create_image_button_overlay, reg1, "mesh_longer_button", "mesh_longer_button"),
-        (overlay_set_position, reg1, pos1),
-        (overlay_set_size, reg1, pos2),
-        (overlay_set_alpha, reg1, 0),
-        (overlay_set_color, reg1, 0xDDDDDD),
-        (troop_set_slot, "trp_temp_array_a", ":cur_troop", reg1),
-
-        (val_sub, ":y_name", 30),
-    (try_end),
-    (set_container_overlay, -1),#end scroll
-
-    (create_game_button_overlay, reg1, "str_return"),
-    (position_set_x, pos1, 500),
-    (position_set_y, pos1, 110),
-    (overlay_set_position, reg1, pos1),
-    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
   ]),
   ## Check for buttonpress
   (ti_on_presentation_event_state_change,[
@@ -39943,34 +39948,34 @@ presentations = [
         (try_end),
     (try_end),
   ]),
-  (ti_on_presentation_mouse_enter_leave,[
-    (store_trigger_param_1, ":overlay_id"),
-    (store_trigger_param_2, ":mouse_enter"),
-    # (assign, reg10, ":overlay_id"),
-    # (display_message, "@{reg10}"),
-    (assign, ":break", kingdom_ladies_end),
-    (try_for_range, ":active_npc", active_npcs_begin, ":break"),
-        (troop_slot_eq, "trp_temp_array_b", ":active_npc", ":overlay_id"),
-        # (neg|troop_slot_eq, "trp_temp_array_a", ":active_npc", ":overlay_id"),
-        (assign, ":break", -1),
-    (try_end),
-    (eq, ":break", -1),
-    (try_begin),
-        (eq, ":mouse_enter", 1),
-        (overlay_set_color, ":overlay_id", message_alert),
-        (assign, ":re_size", 900),
-        (position_set_x, pos1, ":re_size"),
-        (position_set_y, pos1, ":re_size"),
-        (overlay_set_size, ":overlay_id", pos1),
-    (else_try),
-        (overlay_set_color, ":overlay_id", 0xAA0000),
-        (assign, ":re_size", 1200),
-        (position_set_x, pos1, ":re_size"),
-        (position_set_y, pos1, ":re_size"),
-        (overlay_set_size, ":overlay_id", pos1),
-        # (play_sound, "snd_message_negative_sound"),
-    (try_end),
-  ]),
+  # (ti_on_presentation_mouse_enter_leave,[
+  #   (store_trigger_param_1, ":overlay_id"),
+  #   (store_trigger_param_2, ":mouse_enter"),
+  #   # (assign, reg10, ":overlay_id"),
+  #   # (display_message, "@{reg10}"),
+  #   (assign, ":break", kingdom_ladies_end),
+  #   (try_for_range, ":active_npc", active_npcs_begin, ":break"),
+  #       (troop_slot_eq, "trp_temp_array_a", ":active_npc", ":overlay_id"),
+  #       # (neg|troop_slot_eq, "trp_temp_array_a", ":active_npc", ":overlay_id"),
+  #       (assign, ":break", -1),
+  #   (try_end),
+  #   (eq, ":break", -1),
+  #   (try_begin),
+  #       (eq, ":mouse_enter", 1),
+  #       (overlay_set_color, ":overlay_id", message_alert),
+  #       (assign, ":re_size", 900),
+  #       (position_set_x, pos1, ":re_size"),
+  #       (position_set_y, pos1, ":re_size"),
+  #       (overlay_set_size, ":overlay_id", pos1),
+  #   (else_try),
+  #       (overlay_set_color, ":overlay_id", 0xAA0000),
+  #       (assign, ":re_size", 1200),
+  #       (position_set_x, pos1, ":re_size"),
+  #       (position_set_y, pos1, ":re_size"),
+  #       (overlay_set_size, ":overlay_id", pos1),
+  #       # (play_sound, "snd_message_negative_sound"),
+  #   (try_end),
+  # ]),
   (ti_on_presentation_run, [
     (try_begin),
         (key_clicked, key_escape),

@@ -21807,9 +21807,9 @@ goods, and books will never be sold. ^^You can change some settings here freely.
             (try_end),
             (ge, ":faction_2_to_1", 0),
             (call_script, "script_count_parties_of_faction_and_party_type", "$g_notification_menu_var2", spt_town),
-            (store_mul, reg40, reg0, 8000),
+            (store_mul, reg40, reg0, 4000),
             (call_script, "script_count_parties_of_faction_and_party_type", "$g_notification_menu_var2", spt_castle),
-            (val_mul, reg0, 4000),
+            (val_mul, reg0, 2000),
             (val_add, reg40, reg0),
             (try_begin),
                 (faction_slot_eq, "$g_notification_menu_var1", slot_faction_government_type, gov_imperial),
@@ -24522,7 +24522,8 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (lt, ":space", 10),
       (disable_menu_option)
     ],"Insufficient item pool space for auto-upgrade.",[]),
-		("dplmc_loot",[],"Access the items on the ground.",[
+		("dplmc_loot",[
+    ],"Access the items on the ground.",[
       (change_screen_loot, "$pool_troop"),
     ]),
     ("dplmc_loot_player",[
