@@ -313,7 +313,7 @@ small_battle_check = (ti_on_agent_spawn, 0, 0,[
     (call_script, "script_point_y_toward_position", pos10, pos11),
 
     (position_get_x, ":x", pos10),
-    (store_random_in_range, ":x_addition", -150, 150),
+    (store_random_in_range, ":x_addition", -2000, 2000),
     (val_add, ":x", ":x_addition"),
     (position_set_x, pos10, ":x"),
 
