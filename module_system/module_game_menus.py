@@ -38716,58 +38716,53 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
-  (
-    "town_port",0,
-    "You visit the port of {s1}.\
- While you look around you feel the strong wind from the ocean pulling on your clothes.\
- Many ships are anchored here and you notice that crews are already loading them with native goods, while a group of men is still discharging their cargo.^^\
- {s22}",
-    "none",
-    [
-	(set_background_mesh,"mesh_pic_harbor"),
+("town_port",0,
+  "You visit the port of {s1}."
+  +" While you look around you feel the strong wind from the ocean pulling on your clothes."
+  +" Many ships are anchored here and you notice that crews are already loading them with native goods, while a group of men is still discharging their cargo."
+  +"^^{s22}",
+  "none",[
+	  (set_background_mesh,"mesh_pic_harbor"),
     (str_store_party_name,s1,"$current_town"),
-	(try_begin),
-		(eq, "$players_ship", -1),
-		(str_store_string, s22, "@You don't own a ship."),
-	(else_try),
-		(eq, "$players_ship", 0),
-		(str_store_string, s22, "@Your ship is currently in no town."),
-	(else_try),
-		(str_store_party_name, s23, "$players_ship"),
-		(str_store_string, s22, "@Your ship is currently in {s23}."),
-	(try_end),
-	 (play_sound,"snd_ambient_coast_loop"),
-    ],
-[
-
-#Exa's OSP
-#Chief buy ship sea battles con script de control de precio, si no tienes dinero no te da el barco
-     ("buy_ships",[#(party_slot_eq,"$current_town",slot_party_type, spt_town),
-            (party_slot_eq,"$current_town",slot_town_port, 1),
-            (eq, "$players_ship", -1),
-                        ], "Buy a ship (40000 denars)",
-     [
- (try_begin),
-    (store_troop_gold,":money","trp_player"),
-    (gt,":money",39999),
-    (troop_remove_gold,"trp_player",40000),
-		(assign, "$players_ship", "$current_town"),
-		(display_message,"@You now own a ship and can disembark from this town."),
-	(else_try),
-		(display_message,"str_not_enough_gold"),
-	(try_end),
-        ]),
-
-	("sail_from_port",
-	[], "Set sail from port.(Minimum crew 15 men)",
-	[
-	(try_begin),
-		(party_get_num_companions, ":num", "p_main_party"),
-		(ge, ":num", 15),
-		(eq, "$players_ship", "$current_town"),
-    (party_get_slot, ":curr_port", "$current_town", slot_party_port_party),
-    (party_get_position, pos2, ":curr_port"),
-    (party_set_position, "p_main_party", pos2),
+    (try_begin),
+      (eq, "$players_ship", -1),
+      (str_store_string, s22, "@You don't own a ship."),
+    (else_try),
+      (eq, "$players_ship", 0),
+      (str_store_string, s22, "@Your ship is currently in no town."),
+    (else_try),
+      (str_store_party_name, s23, "$players_ship"),
+      (str_store_string, s22, "@Your ship is currently in {s23}."),
+    (try_end),
+    (play_sound,"snd_ambient_coast_loop"),
+  ],[
+    ("buy_ships",[#
+    ], "Travel to another port",[
+      (start_presentation, "prsnt_travel_port"),
+    ]),
+    ("buy_ships",[#(party_slot_eq,"$current_town",slot_party_type, spt_town),
+      (party_slot_eq,"$current_town",slot_town_port, 1),
+      (eq, "$players_ship", -1),
+    ], "Buy a ship (40000 denars)",[
+    (try_begin),
+        (store_troop_gold,":money","trp_player"),
+        (gt,":money",39999),
+        (troop_remove_gold,"trp_player",40000),
+        (assign, "$players_ship", "$current_town"),
+        (display_message,"@You now own a ship and can disembark from this town."),
+      (else_try),
+        (display_message,"str_not_enough_gold"),
+      (try_end),
+    ]),
+    ("sail_from_port",
+    [], "Set sail from port.(Minimum crew 15 men)",[
+      (try_begin),
+        (party_get_num_companions, ":num", "p_main_party"),
+        (ge, ":num", 15),
+        (eq, "$players_ship", "$current_town"),
+        (party_get_slot, ":curr_port", "$current_town", slot_party_port_party),
+        (party_get_position, pos2, ":curr_port"),
+        (party_set_position, "p_main_party", pos2),
 		# (try_begin),
 			# (gt, ":num", 200),
 			# (store_sub, ":cost", ":num", 200),
@@ -38783,83 +38778,62 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 			# (assign, reg1, ":cost"),
 			# (display_message,"@Because your army is so huge, you had to hire additional ships, costs: {reg1} denars.", color_bad_news),
 		# (try_end),
-    (call_script, "script_switch_to_water_consequences"),
-    (change_screen_map),
-	(else_try),
-		(display_message,"@You don't own a ship or your crew exceeds the boundaries. You need hire a ship."),
-	(try_end),
-	(stop_all_sounds,0),
-    ]),
-
-    ("back_to_town_menu",
-	[],
-	"Head back.",
-    [(jump_to_menu,"mnu_town"),
-	(stop_all_sounds,0),
-    ]),
- ]),
-
-  (
-    "jetty_encounter",0,
-    "You encounter a small landing point. You see some ships in the water.",
-    "none",
-    [
-      (set_background_mesh, "mesh_pic_ships"),
-
-    ],
-    [
-
-      ("back",[],"Leave.",
-        [
-          (change_screen_return),
-        ]
-      ),
-
-  ]),
-
-  (
-    "port_encounter",0,
-    "You encounter the port of {s2}. {s3}",
-    "none",
-    [
-      (party_get_slot, ":curr_town", "$g_encountered_party", slot_party_port_party),
-      (str_store_party_name, s2, ":curr_town"),
-      (assign, "$temp", 0),
-
-      #(party_get_slot, reg7, ":curr_town", slot_party_1_ship_type),
-
-      (try_begin),
-        #town is looted
-        (party_slot_ge, ":curr_town", slot_party_looted_left_days, 1),
-        (jump_to_menu, "mnu_center_looted"),
+        (call_script, "script_switch_to_water_consequences"),
+        (change_screen_map),
       (else_try),
-        #town is enemy
-        (lt, "$g_encountered_party_relation", 0),
-        # (assign, "$auto_port_attack", ":curr_town"),
-        # (assign, "$auto_enter_town", ":curr_town"),
-        (str_store_string, s3, "@You can't enter the port because you are not welcome in this town and the harbor is protected with heavy artillery. An attack would be suicidal."),
-        (assign, "$temp", 1),
-
-      (else_try),
-        #all ok - enter port
-        (party_get_position, pos2, ":curr_town"),
-        (party_set_position, "p_main_party", pos2),
-        (call_script, "script_switch_to_land_consequences"),
-        (assign, "$auto_enter_town", ":curr_town"),
-        (assign, "$players_ship", ":curr_town"),
-        (change_screen_return),
+        (display_message,"@You don't own a ship or your crew exceeds the boundaries. You need hire a ship."),
       (try_end),
-     (set_background_mesh, "mesh_pic_harbor"),
-    ],
-    [
+      (stop_all_sounds,0),
+    ]),
+    ("back_to_town_menu",[],"Go back.",[
+      (jump_to_menu,"mnu_town"),
+	    (stop_all_sounds,0),
+    ]),
+]),
 
-      ("continue",[],"Leave.",
-        [
-          (change_screen_return),
-        ]
-      ),
+("jetty_encounter",0,
+  "You encounter a small landing point. You see some ships in the water.",
+   "none",[
+    (set_background_mesh, "mesh_pic_ships"),
+  ],[
+    ("back",[],"Leave.",[
+      (change_screen_return),
+    ]),
+]),
 
+("port_encounter",0,
+  "You encounter the port of {s2}. {s3}",
+  "none",[
+    (party_get_slot, ":curr_town", "$g_encountered_party", slot_party_port_party),
+    (str_store_party_name, s2, ":curr_town"),
+    (assign, "$temp", 0),
+    #(party_get_slot, reg7, ":curr_town", slot_party_1_ship_type),
+    (try_begin),
+      #town is looted
+      (party_slot_ge, ":curr_town", slot_party_looted_left_days, 1),
+      (jump_to_menu, "mnu_center_looted"),
+    (else_try),
+      #town is enemy
+      (lt, "$g_encountered_party_relation", 0),
+      # (assign, "$auto_port_attack", ":curr_town"),
+      # (assign, "$auto_enter_town", ":curr_town"),
+      (str_store_string, s3, "@You can't enter the port because you are not welcome in this town and the harbor is protected with heavy artillery. An attack would be suicidal."),
+      (assign, "$temp", 1),
+    (else_try),
+      #all ok - enter port
+      (party_get_position, pos2, ":curr_town"),
+      (party_set_position, "p_main_party", pos2),
+      (call_script, "script_switch_to_land_consequences"),
+      (assign, "$auto_enter_town", ":curr_town"),
+      (assign, "$players_ship", ":curr_town"),
+      (change_screen_return),
+    (try_end),
+    (set_background_mesh, "mesh_pic_harbor"),
+  ],[
+  ("continue",[],"Leave.",[
+    (change_screen_return),
   ]),
+]),
 
   (
     "landing_point_encounter",0,

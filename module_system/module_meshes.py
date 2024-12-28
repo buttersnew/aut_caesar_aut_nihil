@@ -568,7 +568,7 @@ meshes = [
   ("main_menu_dust", 0, "main_menu_dust", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("warrider_logo", 0, "warrider_logo", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 
-    ("tableau_mesh_roman_spear_banner", 0, "tableau_mesh_roman_spear_banner",  0, 0, 0, 0, 0, 0, 5, 5, 5),
+  ("tableau_mesh_roman_spear_banner", 0, "tableau_mesh_roman_spear_banner",  0, 0, 0, 0, 0, 0, 5, 5, 5),
   # ("main_menu_move_1", 0, "main_menu_move_1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   # ("main_menu_prs", 0, "main_menu_prs", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   # ("main_menu_static", 0, "main_menu_static", 0, 0, 0, 0, 0, 0, 1, 1, 1),

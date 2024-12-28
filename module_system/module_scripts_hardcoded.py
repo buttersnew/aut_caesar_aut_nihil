@@ -8247,7 +8247,9 @@ scripts_hardcoded = [
     (try_begin), # TRAVEL SYSTEM (Ferry)
         (eq, ":party_no", "p_transporter"),
         (gt, "$travel_town", towns_end),	#ferry is in use
-        (assign,":speed_multiplier",18),
+        (assign,":speed_multiplier", 20),
+    (else_try),
+        (assign,":speed_multiplier", 75),
     (try_end),
     (try_begin), ##permanent player camps
         (party_slot_eq, ":party_no", slot_party_type, spt_player_camp),
