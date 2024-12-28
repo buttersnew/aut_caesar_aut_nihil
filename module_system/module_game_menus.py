@@ -41266,13 +41266,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
       (set_jump_entry, 21),
       (set_jump_mission, "mt_visit_villa"),
-      (try_for_range, ":guest", 0, 100),
-          (this_or_next|troop_slot_eq, ":guest", slot_troop_occupation, slto_kingdom_hero),
-          (troop_slot_eq, ":guest", slot_troop_occupation, slto_kingdom_lady),
+      (try_for_range, ":guest", 0, 11),
           (troop_set_slot, "trp_array_villa_feast", ":guest", -1),
-      (else_try),
-          (str_store_troop_name, s31, ":guest"),
-          (display_message, "@{s31} is deceased thus won't attend to the feast."),
       (try_end),
 
       (jump_to_scene, "scn_villa_player"),

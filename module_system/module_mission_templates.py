@@ -3864,6 +3864,7 @@ jacobhinds_battle_ratio_spawn_bonus = (
 		(else_try),
       (val_sub, ":courage", "$battle_ratio"),
 		(try_end),
+    (val_min, ":courage", max_morale),
 		(agent_set_slot, ":agent", slot_agent_courage_score, ":courage"),
 ])
 jacobhinds_battle_ratio_calculate = (
@@ -4121,6 +4122,7 @@ morale_triggers = [
     (assign, ":cur_morale", 100),
     (try_begin),
       (gt, ":agent_party", -1),
+      # (party_is_active, ":agent_party"),
       (party_get_morale, ":cur_morale", ":agent_party"),
     (try_end),
 
@@ -4132,6 +4134,7 @@ morale_triggers = [
     #morale effect = min : -2100(party morale is 0), average : 0(party morale is 70), max : 900(party morale is 100)
     #min starting : 2700, max starting  : 9900, average starting : 6000
     (val_max, ":initial_courage_score", 100),##at least they shall have 100
+    (val_min, ":initial_courage_score", max_morale),
     (agent_set_slot, ":agent_no", slot_agent_courage_score, ":initial_courage_score"),
   ]),
 
@@ -30783,15 +30786,15 @@ mission_templates = [
 
     improved_lightning,
     cannot_spawn_commoners,
-    (5, 0, 0, [],[
-      (try_for_agents, ":agent_no"),
-        (agent_is_human, ":agent_no"),
-        (agent_is_alive, ":agent_no"),
-        (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
-        (neg|agent_is_non_player, ":agent_no"),
-        (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 1000),
-      (try_end),
-    ]),
+    # (5, 0, 0, [],[
+    #   (try_for_agents, ":agent_no"),
+    #     (agent_is_human, ":agent_no"),
+    #     (agent_is_alive, ":agent_no"),
+    #     (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
+    #     (neg|agent_is_non_player, ":agent_no"),
+    #     (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 1000),
+    #   (try_end),
+    # ]),
 
     (ti_before_mission_start, 0, 0, [],[
       (assign,"$g_battle_result",0),
