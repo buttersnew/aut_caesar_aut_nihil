@@ -6948,7 +6948,7 @@ scripts_hardcoded = [
     (else_try),
         (eq, ":note_index", 0),
         (eq, ":info_page_no", "ip_companions"),
-        (str_store_string, s0, "@List of companions:^"),
+        (str_store_string, s0, "@List of companions and their locations:^"),
         (try_for_range, ":companions", companions_begin, companions_end),
             (str_store_troop_name_link, s1, ":companions"),
             (try_begin),

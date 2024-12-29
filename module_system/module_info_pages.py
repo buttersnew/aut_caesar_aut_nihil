@@ -101,15 +101,16 @@ info_pages = [
 # ^- Cash for prisoners.\
 # ^- Allows canceling improvements (cash goes back to local economy, but relations suffer).^^Current setting:"),
 
-("hoty_keys", "HOT KEYS", "Here is a list of all keys and where they are used:^\
-^^SHIFT - KEY: ^^*)By pressing Shift while clicking on 'Visit the Great Hall/Praetorium/Atrium, etc.,' a selection menu will pop up, allowing the player to talk with lords or ladies instantaneously.^*) Player can right away start a conversation with any town merchant by pressing 'shift' while clicking on 'trade with the XY'. ^*) By pressing 'shift' while clicking on 'visit the Domus Augusti' player will spawn next to advisors. ^*) After the player has visited a Roman temple for the first time he can spawn right next to the priest by pressing shift while clicking on 'visit the temple of XY'. ^*) The administrator of the latifundium can be quickly accessed by pressing 'shift' while clicking on 'visit the villa'.\
-^^ENTER - KEY: ^^*) During battle player can open strategic view.\
-^^H - KEY:^^*) Allows you to call your horse during battle (if it is still alive) \
-^^K - KEY: ^^*) During battle pressing K will start a shield taunt. ^*) While on worldmap, pressing K during freelancing allows player to access the daily missions menu.\
-^^T - KEY: ^^*) By pressing T player will perform a warcry during battles. ^*) While entering the lords hall player will make a handkiss by pressing T.\
-^^J - KEY: ^^*) Player can change the movement speed of troops during battles by pressing J ^*) Player's horse will start to sprint during horse races by pressing J\
-^^Z - KEY: ^^*) Pressing Z allows player to crouch (For German keyboards it is the Y key). Though it can be changed under game options -> controls.\
-^^^The keys for the death-camera can be changed under the Diplomacy preference menu."),
+("hoty_keys", "HOT KEYS", "Here is a list of all keys and where they are used:^"
++"^^CONTROL - KEY: ^^*) By pressing control while clicking on 'trade with the goods merchant' or 'Buy supplies from the peasants.' player can automatically buy all food items. If player has a follower party, food will be added to the follower party."
++"^^SHIFT - KEY: ^^*) By pressing Shift while clicking on 'Visit the Great Hall/Praetorium/Atrium, etc.,' a selection menu will pop up, allowing the player to talk with lords or ladies instantaneously.^*) Player can right away start a conversation with any town merchant by pressing 'shift' while clicking on 'trade with the XY'. ^*) By pressing 'shift' while clicking on 'visit the Domus Augusti' player will spawn next to advisors. ^*) After the player has visited a Roman temple for the first time he can spawn right next to the priest by pressing shift while clicking on 'visit the temple of XY'. ^*) The administrator of the latifundium can be quickly accessed by pressing 'shift' while clicking on 'visit the villa'."
++"^^ENTER - KEY: ^^*) During battle player can open strategic view."
++"^^H - KEY: ^^*) Allows you to call your horse during battle (if it is still alive) "
++"^^K - KEY: ^^*) During battle pressing K will start a shield taunt. ^*) While on worldmap, pressing K during freelancing allows player to access the daily missions menu."
++"^^T - KEY: ^^*) By pressing T player will perform a warcry during battles. ^*) While entering the lords hall player will make a handkiss by pressing T."
++"^^J - KEY: ^^*) Player can change the movement speed of troops during battles by pressing J ^*) Player's horse will start to sprint during horse races by pressing J"
++"^^Z - KEY: ^^*) Pressing Z allows player to crouch (For German keyboards it is the Y key). Though it can be changed under game options -> controls."
++"^^^The keys for the death-camera can be changed under the Diplomacy preference menu."),
 
 ("companions", "Companions", "Companions do no longer spawn randomly in taverns. They all have fixed locations or quests which enable them. Here is a complete list of all companions:^^"
 +"^*)  Pravare Ytarim               Location: Chersonesos, location in town: stables."
@@ -214,12 +215,12 @@ info_pages = [
 ("q_and_q", "Important informations",
 "Triumphs:^As Roman player may gets a triumph awarded. For this you need at least " + str(triumph_threshold) + " gravitas. You obtain gravitas by winning battles as marshal. Gravitas will decline over time though. You can see your current gravitas in the character notes. As Emperor you can also hold a triumph with less gravitas but this will upset the Romans."
 +"^^Battle field fortifications: ^As Roman you can fortify your camp. It requires a set of tools inside your inventory and an engineer skill higher than 5. Once fortified you can no longer move. It is also possible during sieges."
-+"^^Lending out money: Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denars. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report."
++"^^Lending out money: ^Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denars. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report."
 +" This can take a while. Depending on when you issued the loan and depending on when your next budget report will show it can take between one or two weeks until your receive the interests."
 +" For your loan you have two options. Either you order the argentarius to reinvest the money again, or you order him to send you back all the money. In the first case,"
 +" you will only receive the interests of your loan and a new loan will be lend out right away after recieving the interests. In the later case you will receive all the money back. Sometimes the interests can be negative. That shall simulate the case"
 +" when the debtor is not able to repay the loan you offered him."
-+"^^Diplomacy feature: You can become part of a family. To do this you must talk with a lord, depending the character of the lord you must either be honorable, or dishonorable, "
++"^^Diplomacy feature:^ You can become part of a family. To do this you must talk with a lord, depending the character of the lord you must either be honorable, or dishonorable, "
 +"famous, have a good relation or own a fief or wealth.^^"
 +"You need at least 200 renown to be considered as a full citizen of Rome. With 200 renown you can: Enter the great hall of towns and fortresses and you must pay the punitive tax (Lex Julia et Papia)."
 +"If you are Emperor or have a military rank in the Roman Army your renown won't go beyond: 450 if emperor, 200 if common military rank.^^"
@@ -251,11 +252,11 @@ info_pages = [
 +"Freelancing is only available for Roman legions, talk either with a legate commanding a legion directly or with a Praefectus Castrorum or Praefectus, who can be found in the scriptorium.^^"
 +"For freelancing in the Praetorian guard you need a letter of recommendation, this you can obtain once you reached the rank of Optio, while freelancing in a normal legion.^^"
 +"You can go hunting via the camp menu.^^"
-+"Roman officers provide a skill bonus: High rank officers, like Vexilarius, Aquilifer, Primus Pilus and Tribunus provide a bonus to leadership skill."
++"Roman officers provide a skill bonus: ^High rank officers, like Vexilarius, Aquilifer, Primus Pilus and Tribunus provide a bonus to leadership skill."
 +"For each 100 men in your party you need two officers (centurio, signifer etc.), otherwise you will get a malus on tactics skill. The only non-Roman 'officer' is currently the hornman."
 +"The idea behind this is the following: Larger armies are more difficult to lead during battles. The orders you give must reach the soldiers. Officers and musicians can help with that.^^"
 +"Sailors can be found as mercenaries in taverns of port towns. Each sailor in the party increases party speed on water by 1% up to a maximum of 40%. (Also sea raiders in your party will increase speed on water)^^"
-+"Commander panel: With an army large than 40 men you have access to the commander panel before a battle starts. It allows you to make sacrifices to the gods (improves moral, depends on a dice role, is a good choice if you have a low oratory skill), "
++"Commander panel: ^With an army large than 40 men you have access to the commander panel before a battle starts. It allows you to make sacrifices to the gods (improves moral, depends on a dice role, is a good choice if you have a low oratory skill), "
 +"give a speech (depending on your oratory, persuasion and leadership skill it is either a success or fail) or to send skirmishers to attack the enemy (success depends on your tactics skill).^^"
 +"Currently the escape change for a hero after battle is: 37%. Note that this also effect the player."),
 
@@ -426,15 +427,19 @@ which the enemy has laid. Additionally, on the battlefield you will encounter bu
  # for a short while. However, unless he is soundly beating his enemy. he may soon start looking for a way out of the conflict, lest he leave himself vulnerable to an attack by a third party. \
  # Europe's rulers are keenly aware that today's ally may be tomorrow's enemy, and vice versa."),
 
-("follower_party", "Follower party", "For creating a follower party you need to have at least 60 men in your main party, have 10 non-wounded women and 2,500 denars for hiring a physician and mules.\
- Once created, the follower party will automatically disband if you either get defeated or your party size goes below 40 men.^^\
- You can manage the follower party over the camp menu. There you can add more women to the party, store items on the mules or use the physician to treat major wounds. You can also add sailors to the follower party which will grant you a speed bonus when on water. But the troops in the follower party wont fight during battles. You can also manually disband the follower party.^^\
- Other advantages of the follower party:^^\
- Having soldier wives in your follower party improves your surgery skill (up to 3)^\
- Having camp followers, hunter women, camp defender or soldier wives in your follower party improves your wound treatment skill (up to 3)^\
- For women in your follower party you gain a moral bonus.^\
- Women in your follower party won't fight on the battlefield and you don't have to pay wages.^^\
- As a disadvantage, a follower party will significantly slow down your army."),
+("follower_party", "Follower party",
+    "For creating a follower party you need to have at least 60 men in your main party, have 10 non-wounded women and 2,500 denars for hiring a physician and mules."
+    +" Once created, the follower party will automatically disband if you either get defeated or your party size goes below 40 men.^^"
+    +" You can manage the follower party over the camp menu. There you can add more women to the party, store items on the mules or use the physician to treat major wounds. You can also add sailors to the follower party which will grant you a speed bonus when on water. But the troops in the follower party wont fight during battles. You can also manually disband the follower party.^^"
+    +" Other advantages of the follower party:^"
+    +"^-) Food items stored on the mules will be consumed by your party, saving space in your inventory."
+    +"^-) If you enable to automatically buy food after leaving a town, the food will be added to your follower party, if you have one (saving your own inventory space)."
+    +"^-) Having soldier wives in your follower party improves your surgery skill (up to 3)"
+    +"^-) Having camp followers, hunter women, camp defender or soldier wives in your follower party improves your wound treatment skill (up to 3)"
+    +"^-) For women in your follower party you gain a moral bonus."
+    +"^-) Women in your follower party won't fight on the battlefield and you don't have to pay wages for them."
+    +"^^As a disadvantage, a follower party will significantly slow down your army."
+),
 
 ("aor", "AOR Recruitment", "All Auxiliary cohorts are listed here:^^\
 Cohors Alporum: recruitable in barracks in: Augusta Vindelicorum, Vindobona, Mediolanum, Genua^\

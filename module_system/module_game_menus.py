@@ -11893,6 +11893,19 @@ game_menus = [
       (try_begin),
         (call_script, "script_cf_enter_center_location_bandit_check"),
       (else_try),
+        (this_or_next|key_is_down, key_left_control),
+        (key_is_down, key_right_control),
+        (display_message, "@You buy food automatically."),
+        (try_begin),# use follower party to buy food if player has one
+          (store_party_size_wo_prisoners,":size", "p_follower_party"),
+          (gt, ":size", 0),
+          (assign, reg48, "trp_follower_party_mules"),
+        (else_try),
+          (assign, reg48, "trp_player"),
+        (try_end),
+        (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
+        (call_script, "script_dplmc_auto_buy_food", reg48, ":merchant_troop", 1, "trp_player"),
+      (else_try),
         (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
         (change_screen_trade, ":merchant_troop"),
       (try_end),
@@ -12163,7 +12176,14 @@ game_menus = [
         (call_script, "script_dplmc_initialize_autoloot", 0),
         (try_begin),
           (eq, "$g_dplmc_buy_food_when_leaving", 1),
-          (call_script, "script_dplmc_auto_buy_food", "trp_player", ":merchant_troop"),
+          (try_begin),# use follower party to buy food if player has one
+              (store_party_size_wo_prisoners,":size", "p_follower_party"),
+              (gt, ":size", 0),
+              (assign, reg48, "trp_follower_party_mules"),
+          (else_try),
+              (assign, reg48, "trp_player"),
+          (try_end),
+          (call_script, "script_dplmc_auto_buy_food", reg48, ":merchant_troop", 0, "trp_player"),
         (try_end),
         (try_begin),
           (eq, "$g_dplmc_sell_items_when_leaving", 1),
@@ -17268,7 +17288,14 @@ game_menus = [
               (eq, "$g_dplmc_buy_food_when_leaving", 1),
               (party_get_slot, ":merchant_troop", "$current_town", slot_town_merchant),
               (gt, ":merchant_troop", 0),
-              (call_script, "script_dplmc_auto_buy_food", "trp_player", ":merchant_troop"),
+              (try_begin),# use follower party to buy food if player has one
+                  (store_party_size_wo_prisoners,":size", "p_follower_party"),
+                  (gt, ":size", 0),
+                  (assign, reg48, "trp_follower_party_mules"),
+              (else_try),
+                  (assign, reg48, "trp_player"),
+              (try_end),
+              (call_script, "script_dplmc_auto_buy_food", reg48, ":merchant_troop", 0, "trp_player"),
           (try_end),
           (try_begin),
               (party_slot_eq, "$current_town", slot_party_type, spt_town),#is town
@@ -18504,7 +18531,7 @@ game_menus = [
   ),
 
 ("town_trade",mnf_enable_hot_keys,
-  "You head towards the town center. Here you can find all important merchants of the town{s50}. ^The settlement is of {s61} culture.^{s34}^^{s49}",
+  "You head towards the town center. Here you can find all important merchants of the town{s50}.^The settlement is of {s61} culture.^{s34}^^{s49}^^Hints: Press shift + 'Talk with X' to talk with merchants. Press control + 'Talk with the food merchant' to automatically buy all food.",
   "none",[
     (troop_set_slot, "trp_global_variables", start_town_conversation, 0),#this is to store if the conversation was started from the menu or the scene
     (str_clear, s34),
@@ -18691,6 +18718,18 @@ game_menus = [
       (party_get_slot, ":merchant_troop", "$current_town", slot_town_merchant),
       (assign, "$g_talk_troop", ":merchant_troop"),
       (try_begin),
+        (this_or_next|key_is_down, key_left_control),
+        (key_is_down, key_right_control),
+        (display_message, "@You buy food automatically."),
+        (try_begin),# use follower party to buy food if player has one
+          (store_party_size_wo_prisoners,":size", "p_follower_party"),
+          (gt, ":size", 0),
+          (assign, reg48, "trp_follower_party_mules"),
+        (else_try),
+          (assign, reg48, "trp_player"),
+        (try_end),
+        (call_script, "script_dplmc_auto_buy_food", reg48, ":merchant_troop", 1, "trp_player"),
+      (else_try),
         (this_or_next|key_is_down, key_left_shift),
         (key_is_down, key_right_shift),
         (call_script, "script_start_town_conversation", slot_town_merchant, 9),
@@ -18719,73 +18758,92 @@ game_menus = [
 #
 #Uses global variable $g_auto_sell_price_limit changed to $g_dplmc_auto_sell_price_limit
 ## CC
-  (
-    "dplmc_trade_auto_sell_begin",0,
-    "Items in your inventory whose type is marked as sellable and whose prices \
-are below {reg1} denars will be sold to the {reg2?appropriate merchants:elder} \
-in the current {reg2?town:village} automatically.  Specifically food, trade \
-goods, and books will never be sold. ^^You can change some settings here freely.",
-    "none",
-  [
-	##dplmc+ added section begin
+("dplmc_trade_auto_sell_begin",0,
+  "Items in your inventory whose type is marked as sellable and whose prices"
+  +" are below {reg1} denars will be sold to the {reg2?appropriate merchants:elder}"
+  +" in the current {reg2?town:village} automatically.  Specifically food, trade"
+  +" goods, and books will never be sold. ^^You can change some settings here freely.",
+  "none",[
+	  ##dplmc+ added section begin
     (this_or_next|is_between, "$current_town", towns_begin, towns_end),
-	    (is_between, "$current_town", villages_begin, villages_end),
-	(call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
-	##dplmc+ added section end
+    (is_between, "$current_town", villages_begin, villages_end),
+    (call_script, "script_dplmc_initialize_autoloot", 0),#argument "0" means this does nothing if deemed unnecessary
+    ##dplmc+ added section end
     (assign, reg1, "$g_dplmc_auto_sell_price_limit"),
-	 (assign, reg2, 0),
+	  (assign, reg2, 0),
     (try_begin),
       (is_between, "$current_town", towns_begin, towns_end),
       (assign, reg2, 1),
     (try_end),
-  ],
-  [
-    ("continue",[],"Continue...",
-    [
-      #(call_script, "script_auto_sell_all"),
-	  (call_script, "script_dplmc_player_auto_sell_at_center", "$current_town"),
+  ],[
+    ("continue",[],"Continue...",[
+	    (call_script, "script_dplmc_player_auto_sell_at_center", "$current_town"),
       (jump_to_menu, "$g_next_menu"),
-      ]),
-    ("change_settings",[],"Change settings.",[(start_presentation, "prsnt_dplmc_auto_sell_options"),]),
-    ("go_back",[],"Go back",[(jump_to_menu, "$g_next_menu")]),
-  ]
-  ),
+    ]),
+    ("change_settings",[],"Change settings.",[
+      (start_presentation, "prsnt_dplmc_auto_sell_options"),
+    ]),
+    ("go_back",[],"Go back",[
+      (jump_to_menu, "$g_next_menu")
+    ]),
+]),
 
-  (
-    "dplmc_trade_auto_buy_food_begin",0,
-    "You will automatically buy food according to your shopping list. Do you want to continue?^^You can view and configure the shopping list here.",
-    "none", [],
-  [
-    ("continue",[
-	  #dplmc+ added to check against weird conditions
- 	  (assign, ":merchant_troop", -1),
-	  (try_begin),
-		  (is_between, "$current_town", towns_begin, towns_end),
-        (party_get_slot, ":merchant_troop", "$current_town", slot_town_merchant),
-     (else_try),
-		  (is_between, "$current_town", villages_begin, villages_end),
-        (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
-     (try_end),
+("dplmc_trade_auto_buy_food_begin",0,
+  "You can automatically buy food according to your shopping list. Do you want to continue?^^You can view and configure the shopping list here."
+  +" You can also {s10} to automatically buy food whenever you leave a town or village.",
+  "none", [
+    (str_store_string, s10, "@enalbe"),
+    (try_begin),
+      (eq, "$g_dplmc_buy_food_when_leaving", 1),
+      (str_store_string, s10, "@disable"),
+    (try_end),
+  ],[
+  ("disable",[
+    (eq, "$g_dplmc_buy_food_when_leaving", 1),
+  ],"Disable to buy food automatically on leave.",[
+    (assign, "$g_dplmc_buy_food_when_leaving", 0),
+  ]),
+  ("enable",[
+    (eq, "$g_dplmc_buy_food_when_leaving", 0),
+  ],"Enable to buy food automatically on leave.",[
+    (assign, "$g_dplmc_buy_food_when_leaving", 1),
+  ]),
+  ("continue",[
+    (assign, ":merchant_troop", -1),
+    (try_begin),
+      (is_between, "$current_town", towns_begin, towns_end),
+      (party_get_slot, ":merchant_troop", "$current_town", slot_town_merchant),
+    (else_try),
+      (is_between, "$current_town", villages_begin, villages_end),
+      (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
+    (try_end),
 	  (ge, ":merchant_troop", 1),
-	  #dplmc+ end addition
-	 ],"Continue...",
-    [
- 	   (assign, ":merchant_troop", -1),
-	   (try_begin),
-		  (is_between, "$current_town", towns_begin, towns_end),
-        (party_get_slot, ":merchant_troop", "$current_town", slot_town_merchant),
-      (else_try),
-		  (is_between, "$current_town", villages_begin, villages_end),
-        (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
-      (try_end),
-	   (call_script, "script_dplmc_auto_buy_food", "trp_player", ":merchant_troop"),
-      (jump_to_menu, "$g_next_menu"),
-      ]),
-
-    ("dplmc_change_shopping_list_of_food",[],"Configure your shopping list.",[(start_presentation, "prsnt_dplmc_shopping_list_of_food"),]),
-    ("go_back",[],"Go back",[(jump_to_menu, "$g_next_menu")]),
-   ]
-  ),
+	],"Continue...",[
+    (assign, ":merchant_troop", -1),
+    (try_begin),
+      (is_between, "$current_town", towns_begin, towns_end),
+      (party_get_slot, ":merchant_troop", "$current_town", slot_town_merchant),
+    (else_try),
+      (is_between, "$current_town", villages_begin, villages_end),
+      (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
+    (try_end),
+    (try_begin),# use follower party to buy food if player has one
+      (store_party_size_wo_prisoners,":size", "p_follower_party"),
+      (gt, ":size", 0),
+      (assign, reg48, "trp_follower_party_mules"),
+    (else_try),
+      (assign, reg48, "trp_player"),
+    (try_end),
+    (call_script, "script_dplmc_auto_buy_food", reg48, ":merchant_troop", 0, "trp_player"),
+    (jump_to_menu, "$g_next_menu"),
+  ]),
+  ("dplmc_change_shopping_list_of_food",[],"Configure your shopping list.",[
+    (start_presentation, "prsnt_dplmc_shopping_list_of_food"),
+  ]),
+  ("go_back",[],"Go back",[
+    (jump_to_menu, "$g_next_menu"),
+  ]),
+]),
 ## CC
 ##End auto-sell credit rubik (Custom Commander)
 ##diplomacy start+
