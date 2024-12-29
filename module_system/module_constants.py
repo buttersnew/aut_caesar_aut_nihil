@@ -3066,6 +3066,7 @@ cmenu_follow = -6
 cmenu_notes = 1
 cmenu_landing_point = 2
 cmenu_party_stance = 3
+cmenu_follower_party = 4
 #SB : context menu cheats, some we roll into a menu instead
 cmenu_attach = 9
 cmenu_detach = 10
