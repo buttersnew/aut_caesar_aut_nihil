@@ -289,6 +289,14 @@ global_common_triggers = [
       (gt, ":item", -1),
       (agent_equip_item, ":agent_no",":item",ek_foot),
   ]),
+  #print currently used scene
+  (0,0,ti_once,[
+  ],[
+    (set_show_messages, 0),
+    (store_current_scene, reg48),
+    (display_message, "@Current scene: {reg48}"),
+    (set_show_messages, 1),
+  ]),
 ]
 
 small_battle_check = (ti_on_agent_spawn, 0, 0,[
