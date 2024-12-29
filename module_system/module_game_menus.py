@@ -33161,7 +33161,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (call_script, "script_change_troop_renown", "trp_player", 5),
           (troop_add_item, "trp_player","itm_roman_poor2",0),
           (call_script, "script_change_troop_health", "trp_player", 25),
-          (call_script, "script_change_player_relation_with_center", "$g_ecnountered_party", 2),
+          (call_script, "script_change_player_relation_with_center", "$g_encountered_party", 2),
       (else_try),
           (display_message, "str_not_enough_gold"),
           (call_script, "script_change_troop_renown", "trp_player", -5),
@@ -33169,7 +33169,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
       (change_screen_return),
     ]),
     ("choice_34_2",[],"Scold the local magistrate for not treating the matter seriously and declaring these rags are not fit for dishcloths.",[
-      (call_script, "script_change_player_relation_with_center", "$g_ecnountered_party", -5),
+      (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -5),
       (change_screen_return),
     ]),
     ("choice_34_3",[],"You collect various coloured tunics brought to you and you compliment the local magistrate. (cost: 1,000 denars)",[
@@ -33181,7 +33181,7 @@ goods, and books will never be sold. ^^You can change some settings here freely.
           (call_script, "script_change_troop_renown", "trp_player", 5),
           (troop_add_item, "trp_player","itm_roman_poor1",0),
           (troop_add_item, "trp_player","itm_roman_poor2",0),
-          (call_script, "script_change_player_relation_with_center", "$g_ecnountered_party", 1),
+          (call_script, "script_change_player_relation_with_center", "$g_encountered_party", 1),
       (else_try),
           (display_message, "str_not_enough_gold"),
           (call_script, "script_change_troop_renown", "trp_player", -3),
@@ -41657,8 +41657,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
   ("monasterio_recruitm2",[
     (party_slot_eq,"$g_encountered_party",slot_center_volunteer_troop_type,0),#can recruit
-    (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_player_tributary, 1),
     (store_relation, ":relation", "fac_player_supporters_faction", "$g_encountered_party_faction"),
+    (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_player_tributary, 1),
     (ge, ":relation", 50),
   ],"Recruit troops.",[
     (jump_to_menu, "mnu_barracks"),

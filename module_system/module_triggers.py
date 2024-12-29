@@ -88,7 +88,7 @@ triggers = [
     (gt, ":day", -1),
     (store_current_day, ":cur_day"),
     (val_sub, ":cur_day", ":day"),
-    (ge, ":cUr_day", 14),
+    (ge, ":cur_day", 14),
 ],[
     (call_script, "script_add_notification_menu", "mnu_assassination_of_antonia",0,0),
     (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_timer, -1),

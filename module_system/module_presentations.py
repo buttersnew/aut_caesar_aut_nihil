@@ -3177,8 +3177,8 @@ presentations = [
             (try_for_range, ":cur_center", walled_centers_begin, walled_centers_end),
                 ##all use faction banners
                 (faction_slot_eq, "$players_kingdom", slot_faction_leader, "$g_edit_banner_troop"),
-                (this_or_next|party_slot_eq, ":cur_center", slot_town_lord, "$g_edit_banner_troop"),
                 (store_faction_of_party, ":fac", ":cur_center"),
+                (this_or_next|party_slot_eq, ":cur_center", slot_town_lord, "$g_edit_banner_troop"),
                 (eq, ":fac", "$players_kingdom"),
                 (party_get_slot, ":lord", ":cur_center", slot_town_lord),
 
@@ -7753,7 +7753,7 @@ presentations = [
 				#If the player faction is the original or previous owner, it might have been taken recently.
 				(this_or_next|party_slot_eq, "$demanded_castle", slot_center_original_faction, "$players_kingdom"),
 				(this_or_next|party_slot_eq, "$demanded_castle", slot_center_ex_faction, "$players_kingdom"),
-					(party_slot_eq, "$demanded_castle", slot_center_ex_faction, "fac_player_supporters_faction"),
+        (party_slot_eq, "$demanded_castle", slot_center_ex_faction, "fac_player_supporters_faction"),
 				(assign, ":was_taken_recently", 1),
 			(else_try),
 				#If the original owner is at war with the current owner, it might have been taken recently.
@@ -7801,7 +7801,7 @@ presentations = [
 				(try_end),
 				#For walled centers check distance
 				(this_or_next|party_slot_eq, ":center_no", slot_party_type, spt_town),
-					(this_or_next|party_slot_eq, ":center_no", slot_party_type, spt_castle),
+        (party_slot_eq, ":center_no", slot_party_type, spt_castle),
 
 				(store_faction_of_party, ":center_faction", ":center_no"),
 				(store_distance_to_party_from_party, ":cur_distance", ":center_no", "$demanded_castle"),
@@ -23428,8 +23428,7 @@ presentations = [
         (try_end),
     ]),
 
-    (ti_on_presentation_mouse_enter_leave,
-      [
+    (ti_on_presentation_mouse_enter_leave,[
       (store_trigger_param_1, ":object"),
       (store_trigger_param_2, ":enter_leave"),
 
@@ -31575,7 +31574,8 @@ presentations = [
     (else_try),
         (ge, ":object", "$first_center_btn"),
         (le, ":object", "$last_center_btn"),
-        (this_or_next| key_is_down, key_right_shift), (key_is_down, key_left_shift),
+        (this_or_next| key_is_down, key_right_shift),
+        (key_is_down, key_left_shift),
 
         (call_script, "script_search_fiefs_tmp", 0, ":object"),    (troop_get_slot, ":indx0", "trp_temp_array_c", 0),
         (store_add, ":indx1", ":indx0", 4),    (troop_get_slot, ":lord", "trp_temp_array_a", ":indx1"),
@@ -39933,6 +39933,7 @@ presentations = [
             (this_or_next|troop_slot_ge, "$castle_meeting_selected_troop", slot_troop_met, 2),
             (troop_slot_eq, ":lady_guardian", slot_lord_granted_courtship_permission, 1),
             (neg|troop_slot_eq, "$castle_meeting_selected_troop", slot_troop_met, 4),
+            (assign, "$love_interest_in_town", "$castle_meeting_selected_troop"),
             (jump_to_menu, "mnu_garden"),
         (else_try),
             (is_between, "$castle_meeting_selected_troop", kingdom_ladies_begin, kingdom_ladies_end),

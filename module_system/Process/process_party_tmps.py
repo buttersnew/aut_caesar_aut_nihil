@@ -5,17 +5,28 @@ from module_party_templates import *
 from process_common import *
 
 
-def save_party_template_troop(file,troop):
+def save_party_template_troop(file, troop):
   if troop:
-#    add_tag_use(tag_uses,tag_troop,troop[0])
-    file.write("%d %d %d "%(troop[0],troop[1],troop[2]))
-    if (len(troop) > 3):
-      file.write("%d "%troop[3])
+    # Ensure all elements in `troop` are integers before writing
+    try:
+      troop_values = [int(value) for value in troop[:3]]  # Convert first three elements to integers
+    except ValueError:
+      raise ValueError("Invalid data in troop: {}. Expected all numeric values for the first three elements.".format(troop))
+
+    file.write("%d %d %d " % (troop_values[0], troop_values[1], troop_values[2]))
+
+    if len(troop) > 3:
+      try:
+        additional_value = int(troop[3])
+      except ValueError:
+        raise ValueError("Invalid data in troop[3]: {}. Expected a numeric value.".format(troop[3]))
+      file.write("%d " % additional_value)
     else:
       file.write("0 ")
   else:
     file.write("-1 ")
-    
+
+
 def save_party_templates():
   file = open(export_dir + "party_templates.txt","w")
   file.write("partytemplatesfile version 1\n")

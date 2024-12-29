@@ -49,9 +49,10 @@ def save_triggers(variable_list,variable_uses,triggers,tag_uses,quick_strings):
   file.write("%d\n"%len(triggers))
   for i in xrange(len(triggers)):
     trigger = triggers[i]
+    trigger_id = "trigger " + str(i)
     file.write("%f %f %f "%(trigger[trigger_check_pos],trigger[trigger_delay_pos],trigger[trigger_rearm_pos]))
-    save_statement_block(file,0,1,trigger[trigger_conditions_pos]  , variable_list, variable_uses,tag_uses,quick_strings)
-    save_statement_block(file,0,1,trigger[trigger_consequences_pos], variable_list, variable_uses,tag_uses,quick_strings)
+    save_statement_block(file,0,1,trigger[trigger_conditions_pos]  , variable_list, variable_uses,tag_uses,quick_strings,trigger_id)
+    save_statement_block(file,0,1,trigger[trigger_consequences_pos], variable_list, variable_uses,tag_uses,quick_strings,trigger_id)
 #    for condition in trigger[trigger_conditions_pos]:
 #      save_operation(file,condition,variable_list)
 #    file.write(" %d "%(len(trigger[trigger_consequences_pos])))
@@ -124,7 +125,7 @@ def create_auto_id(sentence,auto_ids):
           done = 1
         else:
           i += 1
-      else:      
+      else:
         done = 1
         auto_ids[auto_id] = text
     if not done:
@@ -136,7 +137,7 @@ def create_auto_id(sentence,auto_ids):
       auto_id = new_auto_id
       auto_ids[auto_id] = text
     return auto_id
-  
+
 def create_auto_id2(sentence,auto_ids):
     text = sentence[text_pos]
     token_ipt = convert_to_identifier(sentence[ipt_token_pos])
@@ -158,7 +159,7 @@ def create_auto_id2(sentence,auto_ids):
       auto_id = new_auto_id
     auto_ids[auto_id] = text
     return auto_id
- 
+
 def save_sentences(variable_list,variable_uses,sentences,tag_uses,quick_strings,input_states,output_states):
   file = open(export_dir + "conversation.txt","w")
   file.write("dialogsfile version 2\n")
@@ -170,13 +171,13 @@ def save_sentences(variable_list,variable_uses,sentences,tag_uses,quick_strings,
     try:
       dialog_id = create_auto_id2(sentence,auto_ids)
       file.write("%s %d %d "%(dialog_id,sentence[speaker_pos],input_states[i]))
-      save_statement_block(file, 0, 1, sentence[sentence_conditions_pos], variable_list,variable_uses,tag_uses,quick_strings)
+      save_statement_block(file, 0, 1, sentence[sentence_conditions_pos], variable_list,variable_uses,tag_uses,quick_strings,dialog_id+" condition block")
 
       file.write("%s "%(string.replace(sentence[text_pos]," ","_")))
       if (len(sentence[text_pos]) == 0):
         file.write("NO_TEXT ")
       file.write(" %d "%(output_states[i]))
-      save_statement_block(file, 0, 1, sentence[sentence_consequences_pos], variable_list,variable_uses,tag_uses,quick_strings)
+      save_statement_block(file, 0, 1, sentence[sentence_consequences_pos], variable_list,variable_uses,tag_uses,quick_strings,dialog_id+" consequence block")
       if (len(sentence) > sentence_voice_over_pos):
         file.write("%s "%sentence[sentence_voice_over_pos])
       else:

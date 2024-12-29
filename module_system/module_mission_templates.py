@@ -4027,7 +4027,7 @@ morale_triggers = [
       # (eq, ":rand", 1),
       # (agent_set_slot, ":agent_no", slot_agent_courage_score, 600), #very low Courage
       # # (try_begin),
-        # # (ge, "$vc_debug_mode", 1),
+        # # (ge, "$cheat_mode", 1),
         # # (agent_is_ally, ":agent_no"),
         # # (display_message, "@{!}TEST: There is a Coward in our lines!"),
       # # (try_end),

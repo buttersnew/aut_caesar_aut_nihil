@@ -99,7 +99,7 @@ def get_id_value(tag, identifier, tag_uses):
   if (tag_type > -1 and id_no > -1):
     add_tag_use(tag_uses,tag_type,id_no)
   return (tag_type, id_no)
-  
+
 def get_identifier_value(str, tag_uses):
   underscore_pos = string.find(str, "_")
   result = -1
@@ -188,13 +188,13 @@ def add_tag_use(tag_uses, tag_no, object_no):
 #  ensure_tag_use(tag_uses, tag_no, object_no)
 #  tag_uses[tag_no][object_no] = tag_uses[tag_no][object_no] + 1
   pass
-    
+
 def load_tag_uses(export_dir):
   tag_uses = []
   for i in xrange(tags_end):
     sub_tag_uses = []
     tag_uses.append(sub_tag_uses)
-    
+
   try:
     file = open(export_dir + "tag_uses.txt","r")
     var_list = file.readlines()
@@ -265,7 +265,7 @@ def check_varible_not_defined(variable_string,variables_list):
 #    variables_list.append(variable_string)
 #    result = len(variables_list) - 1
 #  return result
-    
+
 def add_variable(variable_string,variables_list,variable_uses):
   found = 0
   for i_t in xrange(len(variables_list)):
@@ -346,7 +346,7 @@ def insert_quick_string_with_auto_id(sentence,quick_strings):
         done = 1
       else:
         i += 1
-    else:      
+    else:
       done = 1
       index = len(quick_strings)
       quick_strings.append([auto_id, sentence])
@@ -413,7 +413,7 @@ def compile_global_vars_in_statement(statement,variable_list, variable_uses):
           if (statement[1][0] == '$'):
             add_variable(statement[1][1:], variable_list, variable_uses)
 
-def save_statement_block(ofile,statement_name,can_fail_statement,statement_block,variable_list, variable_uses,tag_uses,quick_strings):
+def save_statement_block(ofile,statement_name,can_fail_statement,statement_block,variable_list, variable_uses,tag_uses,quick_strings,calling_script):
   local_vars = []
   local_var_uses = []
   ofile.write(" %d "%(len(statement_block)))
@@ -446,6 +446,14 @@ def save_statement_block(ofile,statement_name,can_fail_statement,statement_block
                or ((opcode == call_script) and (statement[1].startswith("cf_", 7))))
           and (not statement_name.startswith("cf_"))):
       print "WARNING: Script can fail at operation #" + str(i) + ". Use cf_ at the beginning of its name: " + statement_name
+    # swy: enhancement to track down buggy chained condition blocks, suggested by @Aro
+    next_opcode = 0
+    if (i + 1) < len(statement_block): # swy: don't try to grab a next opcode when we're the last operation in the block
+      next_opcode = hasattr(statement_block[i + 1], '__len__') and statement_block[i + 1][0] or \
+                                                                   statement_block[i + 1] # swy: if an operation tuple doesn't have parameters and hence no comma separators they are just integers and not actual tuples, handle both types gracefully
+    if (opcode & this_or_next) and (next_opcode & (0xFFFF)) not in can_fail_operations:   # swy: if our operation has this_or_next and the following operation isn't eq/ge/... or any other check (e.g. that we're the actual last condition in the chain)
+      print("WARNING: swy: this_or_next in the last chained condition, probably a mistake: " + str(statement_name)) + " / " + str(calling_script) + " " + str(i)
+    # --
     save_statement(ofile,opcode,no_variables,statement,variable_list,variable_uses,local_vars, local_var_uses,tag_uses,quick_strings)
   if (store_script_param_1_uses > 1):
     print "WARNING: store_script_param_1 is used more than once:" + statement_name
@@ -466,8 +474,10 @@ def compile_global_vars(statement_block,variable_list, variable_uses):
 
 def save_simple_triggers(ofile,triggers,variable_list, variable_uses,tag_uses,quick_strings):
   ofile.write("%d\n"%len(triggers))
+  trigger_id = 0
   for trigger in triggers:
     ofile.write("%f "%(trigger[0]))
-    save_statement_block(ofile,0,1,trigger[1]  , variable_list, variable_uses,tag_uses,quick_strings)
+    save_statement_block(ofile,0,1,trigger[1]  , variable_list, variable_uses,tag_uses,quick_strings, "trigger " + str(trigger_id))
     ofile.write("\n")
+    trigger_id += 1
   ofile.write("\n")
