@@ -3595,8 +3595,8 @@ game_menus = [
             (val_sub,":ambush_ai_yes",":spotting_skill"),
             (try_begin),
                 (eq, "$g_stance", 1),#forced march
-                (val_mul, ":ambush_ai_yes", 3),
-                (val_div, ":ambush_ai_yes", 2),
+                (val_mul, ":ambush_ai_yes", 7),
+                (val_div, ":ambush_ai_yes", 5),#+40%
             (else_try),
                 (eq, "$g_stance", 2),#screen
                 #(val_mul, ":ambush_ai_yes", 2),

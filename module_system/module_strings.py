@@ -9530,6 +9530,10 @@ strings = [
 ("bucket_60000_70000", "140,000-160,000"),
 ("bucket_70000_100000", "160,000-200,000"),
 ("bucket_over_100000", "Over 200,000"),
+
+("party_stance_default", "Default"),
+("party_stance_forced_march", "Forced March"),
+("party_stance_screening", "Screening"),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

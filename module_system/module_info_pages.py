@@ -318,7 +318,7 @@ info_pages = [
 ("army_stances", "Party stances and Ambushes", "Quite similar to games from the Total War series you can order your party a stance. There are three different stances:^^\
 - Default: No effects^\
 - Screening: Your party will march more careful and try to avoid ambushes (probability reduced by 50%), but this will decrease movement speed by 30%^\
-- Forced march: Your party will march faster (30%), but the probability to get ambushed is higher (33% increase). Additionally, your party consumes 2-times as much food and moral will be reduced over time (as your men get tired from the forced march they need more to eat)^^\
+- Forced march: Your party will march faster (40%), but the probability to get ambushed is higher (40% increase). Additionally, your party consumes 2-times as much food and moral will be reduced over time (as your men get tired from the forced march they need more to eat)^^\
 Ambushes:^\
 Ambushes can be performed by every non Roman faction once every two hours. But the probability is much higher for Germanic, British and Judean factions.^\
 You can decrease ambush probability by increasing your tracking skill and by using the 'screening' stance. During ambushes, you will receive random causalities caused by traps \
