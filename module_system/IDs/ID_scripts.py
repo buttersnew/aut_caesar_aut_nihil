@@ -1013,3 +1013,4 @@ script_generate_color_for_wealth_bucket = 1011
 script_reactivate_kingdom = 1012
 script_change_culture_of_center = 1013
 script_change_agent_courage = 1014
+script_print_cost_distribution_to_s10 = 1015

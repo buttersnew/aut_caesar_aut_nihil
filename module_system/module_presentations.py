@@ -11307,9 +11307,9 @@ presentations = [
     (position_set_x, pos1, 300),
     (position_set_y, pos1, 300),
     (overlay_set_area_size, reg0, pos1),
-#info END
+    #info END
 
-#buttons on the left side:
+    #buttons on the left side:
     (try_begin),
         (eq, reg63, 1),
         (create_game_button_overlay, reg1, "@Settle Veterans."),
@@ -11418,14 +11418,14 @@ presentations = [
         (try_end),
     (try_end),
 
-##button to leave on the right side
+    ##button to leave on the right side
     (create_game_button_overlay, reg1, "@Go Back."),
     (position_set_x, pos1, 800),
     (position_set_y, pos1, 25),
     (overlay_set_position, reg1, pos1),
     (assign, "$g_jrider_faction_report_return_to_menu", reg1),
 
-###container for buildings
+    ###container for buildings
    #5. CONTAINER for buildings and decres
     (try_begin),#economic information
         (eq, "$g_presentation_next_presentation", 4),
@@ -12752,17 +12752,19 @@ presentations = [
         (troop_slot_eq, "trp_zendar_chest", "$g_improvement_type", ":object_id"),
         (try_begin),
             (eq, "$temp", 1),
+            (call_script, "script_print_cost_distribution_to_s10",decree_cost),
             (call_script, "script_get_decree_details", "$g_improvement_type"),
             (assign, reg0, decree_cost),
-            (question_box, "@Do you wish to revoke {s30}? It would cost you {reg0} denars."),
+            (question_box, "@Do you wish to revoke {s30}? It would cost you {reg0} denars.^^{s10}"),
             #(assign, "$g_improvement_type", -1),
             (start_presentation, "prsnt_center_management"),
         (else_try),
             (eq, "$temp", 2),
             (party_slot_eq, "$g_encountered_party", "$g_improvement_type", 0),
+            (call_script, "script_print_cost_distribution_to_s10",decree_cost),
             (call_script, "script_get_decree_details", "$g_improvement_type"),
             (assign, reg0, decree_cost),
-            (question_box, "@Issuing a decree costs {reg0} denars. Do you wish to issue {s30}?"),
+            (question_box, "@Issuing a decree costs {reg0} denars. Do you wish to issue {s30}?^^{s10}"),
             #(assign, "$g_improvement_type", -1),
             (start_presentation, "prsnt_center_management"),
         (try_end),
@@ -12874,9 +12876,10 @@ presentations = [
                 (start_presentation, "prsnt_center_management"),
             (else_try),
                 (call_script, "script_get_improvement_details", "$g_improvement_type", "$g_encountered_party"),
+                (call_script, "script_print_cost_distribution_to_s10", "$diplomacy_var"),
                 (assign, reg0, "$diplomacy_var"),
                 (assign, reg1, "$diplomacy_var2"),
-                (question_box, "@Building a {s0} would cost you {reg0} denars and take {reg1} days. Do you wish to proceed?"),
+                (question_box, "@Building a {s0} would cost you {reg0} denars and take {reg1} days. Do you wish to proceed?^^{s10}"),
                 (start_presentation, "prsnt_center_management"),
             (try_end),
         (try_end),
