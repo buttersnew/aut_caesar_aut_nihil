@@ -7622,7 +7622,7 @@ simple_triggers = [
         (eq, "$enlisted_party", -1),
         (call_script, "script_get_piety_impact"),
         (neq, reg56, 0),
-        (display_message, "@Your piety effects your renown.", message_alert),
+        (display_message, "@Your pietas effects your renown.", message_alert),
         (call_script, "script_change_troop_renown", "trp_player", reg56),
     (try_end),
 

@@ -9713,7 +9713,7 @@ presentations = [
 
     (call_script, "script_get_piety_impact"),
 
-    (create_text_overlay, reg0, "@Piety:", 0),
+    (create_text_overlay, reg0, "@Pietas (piety):", 0),
     (position_set_y, pos1, ":cur_y"),
     (overlay_set_position, reg0, pos1),
     (overlay_set_size, reg0, pos2),
