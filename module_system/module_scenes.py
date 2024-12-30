@@ -484,6 +484,15 @@ scenes = [
   ("battle_europe_mountains_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000238c00500000992630000267800006700000071b3",[], [], "outer_terrain_mountain_2"),
   ("battle_europe_mountains_6", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000500000d2348000030c4000053ae00001d83",[], [], "outer_terrain_mountain_2"),
   ("battle_europe_mountains_7", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000500000d2348000030c4000053ae00001d83",[], [], "outer_terrain_mountain_2"),
+
+  #maps from oliver
+  ("custom_battle_forest_1",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000001bc61cee200093e53000056430000221c0000208f", [],[], "outer_terrain_mountain_2"), #hills 1 forest
+  #needs fix
+  ("custom_battle_forest_2",sf_generate,"none", "none", (0,0),(250,250),-0.5,"0x00000000300005800007c9f4000040a10000421300000192", [],[], "outer_terrain_mountain_2"), #flat forest
+  ("custom_battle_forest_3",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000000300005800007c9f4000040a10000421300000192", [],[], "outer_terrain_mountain_2"), #river - plains/forest
+  #
+  ("custom_battle_forest_4",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000002bc6088e28009be7900000a740000455f00003f08", [],[], "outer_terrain_mountain_2"), #river - forest
+
   ("battle_europe_mountains_8", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000913400d2348000030c40000600500006b66",[], [], "outer_terrain_mountain_2"),
 
   ("battle_persian_hills_green", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000022000160000089e2b00006f7200002a3400003b51",[], [], "outer_terrain_steppe_3"),
@@ -549,6 +558,15 @@ scenes = [
   ("random_scene_plain_custom_17", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000231c0086300098a63000048b200000f2000003774",[], [], "outer_terrain_plain_2"),
   ("random_scene_plain_custom_18", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000231c0086300098a630000177d00000e2d00002165",[], [], "outer_terrain_plain_3"),
   ("random_scene_plain_custom_19", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000231c0086300098a630000647f0000005f00004d32",[], [], "outer_terrain_plain_2"),
+
+  #maps from oliver
+  ("custom_battle_plains_1",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000000300012e30007c5f1000036660000112a00006486", [],[], "outer_terrain_plain"), #valley 1 forest/plains
+  #needs fix
+  ("custom_battle_plains_3",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000000300007630007bdf1000020360000064a00007b83", [],[], "outer_terrain_plain"), #hills 1 forest/plains
+  ("custom_battle_plains_4",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x0000000130000d6300093e4f00006024000006620000100a", [],[], "outer_terrain_plain"), #hills 2 forest/plains
+  ("custom_battle_plains_6",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x000000023c604780000b72df00000b7c00003503000067fc", [],[], "outer_terrain_plain"), #hills 3 forest/plains
+  ("custom_battle_plains_7",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x0000000231000580000c0b0500006b520000720600007ff0", [],[], "outer_terrain_plain"), #plains
+
   ("random_scene_plain_custom_20", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000231c0086300098a63000007fd0000723c000032c7",[], [], "outer_terrain_plain_3"),
 
   ("random_scene_desert_custom_1", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000025559050000098a630000260a0000532f00003eb5",[], [], "outer_terrain_desert_b"),
@@ -597,6 +615,15 @@ scenes = [
   ("random_scene_plain_river_custom_2", sf_generate|sf_muddy_water, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000235a005000008c631000001eb000073c1000056ff",[], [], "outer_terrain_river_1"),
   ("random_scene_plain_river_custom_3", sf_generate|sf_muddy_water, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000235a005000008c63100003d1100007356000023cb",[], [], "outer_terrain_river_1"),
   ("random_scene_plain_river_custom_4", sf_generate|sf_muddy_water, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000235a005000008c631000007fa000049e900003f2c",[], [], "outer_terrain_river_1"),
+
+  # map from oli with swamp land
+  ("custom_battle_swamp_1",sf_generate|sf_muddy_water,"none", "none", (0,0),(100,100),-0.5,"0x00000000300005000007bdef0000750f000056d900005a07", [],[], "outer_terrain_plain"), #plains
+  ("custom_battle_swamp_2",sf_generate|sf_muddy_water,"none", "none", (0,0),(100,100),-0.5,"0x00000000300005000007bdef0000750f000056d900005a07", [],[], "outer_terrain_forest"), #forest
+  # map from oli with river
+  ("custom_battle_plains_5",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000000300005000007b5ed0000750f000056d900005a07", [],[], "outer_terrain_plain"), #river 2 plains
+  #needs fix
+  ("custom_battle_plains_2",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x0000000030000763000785e300004b920000090a0000418d", [],[], "outer_terrain_plain"), #river 1 plains
+
   ("random_scene_plain_river_custom_5", sf_generate|sf_muddy_water, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000235a005000008c63100003773000049e9000025a8",[], [], "outer_terrain_river_1"),
 
   ("random_scene_snow_river_custom_1", sf_generate|sf_muddy_water, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000245a005000008c6310000543c000056bf0000078e",[], [], "outer_terrain_river_2"),

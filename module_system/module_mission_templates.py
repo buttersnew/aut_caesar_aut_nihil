@@ -11727,71 +11727,71 @@ mission_templates = [
     ],
   ),
 
-   (
-    "ai_training",0,-1,
-    "You start training.",
-    [
-     (0,0,0,aif_start_alarmed,30,[]),
-     ],
-    [
-      can_spawn_commoners,
-      (ti_tab_pressed, 0, 0, [],
-       [(finish_mission,0)]),
-    ],
-  ),
-  (
-    "fortuna_scene_testing",0,-1,
-    "You start training.",
-    [
-     (0,0,0,aif_start_alarmed,1,[]),
-     ],
-    [
-      can_spawn_commoners,
-      (ti_tab_pressed, 0, 0, [],
-       [
-    (assign, "$talk_context", 0),
-    (modify_visitors_at_site, "scn_camp_scene_plain"),
-    (reset_visitors),
-    (set_jump_entry, 0),
-    (set_visitor, 1, "trp_fortuna"),
-    (jump_to_scene, "scn_camp_scene_plain"),
-    (set_jump_mission, "mt_fortuna_scene_testing2"),
-    (change_screen_mission),
-       ]),
-
-       (0, 0, ti_once, [],
-       [
-    (set_fixed_point_multiplier, 100),
-    (get_scene_boundaries, pos12,pos13),
-    (position_get_x, reg12, pos12),
-    (position_get_y, reg13, pos12),
-    (position_get_x, reg14, pos13),
-    (position_get_y, reg15, pos13),
-    (display_message, "@Boundaries of scene: Minimum x: {reg12} y: {reg13} | Maximum x: {reg14} y: {reg15}"),
-       ]),
-    ],
-  ),
-  (
-    "fortuna_scene_testing2",0,-1,
-    "You start training.",
-    [
-     (0,mtef_scene_source,0,aif_start_alarmed,1,[]),
-     (1,mtef_visitor_source,0,aif_start_alarmed,1,[]),
-     ], global_common_triggers +
-    [
-      can_spawn_commoners,
-      (0, 0, ti_once, [(neg|conversation_screen_is_active),],
-       [
-    (start_mission_conversation, "trp_fortuna"),
-       ]),
-
-       (ti_tab_pressed, 0, 0, [],
-       [
-    (jump_to_menu, "mnu_cheat_menu2"),
-    (finish_mission),
-       ]),
-    ],
-  ),
+("ai_training",0,-1,
+  "You start training.",[
+    (0,0,0,aif_start_alarmed,30,[]),
+  ],[
+    can_spawn_commoners,
+    (ti_tab_pressed, 0, 0, [
+    ],[
+      (finish_mission,0)
+    ]),
+    (0,0,ti_once,[],[
+      (get_player_agent_no, ":player"),
+      (call_script, "script_advanced_agent_set_speed_modifier", ":player", 500),
+      (agent_set_no_death_knock_down_only, ":player", 1),
+    ]),
+]),
+("fortuna_scene_testing",0,-1,
+  "You start training.",[
+    (0,0,0,aif_start_alarmed,1,[]),
+  ],[
+    can_spawn_commoners,
+    (ti_tab_pressed, 0, 0, [],[
+      (assign, "$talk_context", 0),
+      (modify_visitors_at_site, "scn_camp_scene_plain"),
+      (reset_visitors),
+      (set_jump_entry, 0),
+      (set_visitor, 1, "trp_fortuna"),
+      (jump_to_scene, "scn_camp_scene_plain"),
+      (set_jump_mission, "mt_fortuna_scene_testing2"),
+      (change_screen_mission),
+    ]),
+    (0,0,ti_once,[],[
+      (get_player_agent_no, ":player"),
+      (call_script, "script_advanced_agent_set_speed_modifier", ":player", 500),
+      (agent_set_no_death_knock_down_only, ":player", 1),
+    ]),
+    (0, 0, ti_once, [],[
+      (set_fixed_point_multiplier, 100),
+      (get_scene_boundaries, pos12,pos13),
+      (position_get_x, reg12, pos12),
+      (position_get_y, reg13, pos12),
+      (position_get_x, reg14, pos13),
+      (position_get_y, reg15, pos13),
+      (display_message, "@Boundaries of scene: Minimum x: {reg12} y: {reg13} | Maximum x: {reg14} y: {reg15}"),
+    ]),
+]),
+("fortuna_scene_testing2",0,-1,
+  "You start training.",[
+    (0,mtef_scene_source,0,aif_start_alarmed,1,[]),
+    (1,mtef_visitor_source,0,aif_start_alarmed,1,[]),
+  ], global_common_triggers +
+  [
+    can_spawn_commoners,
+    (0, 0, ti_once, [(neg|conversation_screen_is_active),],[
+      (start_mission_conversation, "trp_fortuna"),
+    ]),
+    (0,0,ti_once,[],[
+      (get_player_agent_no, ":player"),
+      (call_script, "script_advanced_agent_set_speed_modifier", ":player", 500),
+      (agent_set_no_death_knock_down_only, ":player", 1),
+    ]),
+    (ti_tab_pressed, 0, 0, [],[
+      (jump_to_menu, "mnu_cheat_menu2"),
+      (finish_mission),
+    ]),
+]),
    (
     "camera_test",0,-1,
     "camera Test.",
