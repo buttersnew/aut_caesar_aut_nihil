@@ -17693,10 +17693,16 @@ game_menus = [
       (jump_to_scene, ":arena_scene"),
       (change_screen_mission),
     ]),
-    ("leave_tournament",[(neq, "$g_is_emperor", 1),],"Withdraw from the competition.",[
+    ("leave_tournament",[
+      (this_or_next|neq, "$g_is_emperor", 1),
+      (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_leader, "trp_player"),
+    ],"Withdraw from the competition.",[
       (jump_to_menu, "mnu_tournament_withdraw_verify"),
     ]),
-    ("watch",[(eq, "$g_is_emperor", 1),],"As Caesar Augustus, I watch the game.",[
+    ("watch",[
+      (eq, "$g_is_emperor", 1),
+      (faction_slot_eq, "$g_encountered_party_faction", slot_faction_leader, "trp_player"),
+    ],"As Caesar Augustus, I watch the game.",[
       (jump_to_menu, "mnu_tournament_watch"),
     ]),
 ]),
