@@ -1029,13 +1029,13 @@ itm_germanic_shield_hex_large1,itm_germanic_shield_hex_large2,itm_germanic_shiel
 attrib_level_29_warrior, wp(170), knows_level_29_warrior, barbarian_man_face_young_1, barbarian_man_face_old_2 ],
 
 ["slavic_skirmisher", "Caisoz Ridanz", "Caisoz Ridanz",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_ranged|tf_guarantee_helmet|tf_mounted|tf_guarantee_horse, no_scene, reserved, fac_slavic,
-[itm_celtic_boots,itm_javelin,itm_javelin,itm_eastern_germanic_shield_1,itm_eastern_germanic_shield_3,
+[itm_celtic_boots,itm_javelin,itm_javelin,itm_eastern_germanic_shield_1,itm_eastern_germanic_shield_3,itm_eastern_band_helmet_leather,
 itm_germanic_war_spear_3,itm_fighting_axe,itm_germanic_medium1,itm_germanic_medium2,itm_germanic_medium3,itm_germanic_medium4,itm_germanic_medium5,itm_germanic_medium6,
 ]+horse_normal+sarmatian_helm_spangen,
 attrib_level_23_warrior, wpe(140,150,150,150), knows_archer_elit, barbarian_man_face_younger_1, barbarian_man_face_middle_2 ],
 ["slavic_vetran", "Toutaginoi", "Toutaginoi",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_slavic,
 [
-itm_celtic_boots,itm_sarmatian_heavy_helm2,itm_sarmatian_heavy_helm3,itm_sarmatian_heavy_helm4,
+itm_celtic_boots,itm_sarmatian_heavy_helm2,itm_sarmatian_heavy_helm3,itm_sarmatian_heavy_helm4,itm_eastern_band_helmet_mail,
 itm_eastern_germanic_shield_1,itm_eastern_germanic_shield_2,itm_eastern_germanic_shield_3,
 itm_germanic_war_spear_3,itm_jarid,itm_jarid,
 ]+germanic_armor_fur_1+germanic_armor_fur_2+germanic_armor_fur_3,
@@ -5417,7 +5417,7 @@ def_attrib|level(4),wp(40),knows_inventory_management_10, bandit_face1, bandit_f
 
 ##minor faction troops and kings begin
 ["slavic_king", "Karovit", "Karovit", tf_hero, no_scene, reserved, fac_slavic,
-[itm_celtic_boots,itm_sarmatian_heavy_helm8,itm_jarid,itm_germanic_shield_large11,itm_sarmatian_scale_6,itm_sword_viking_2],
+[itm_celtic_boots,itm_eastern_band_helmet_mail,itm_jarid,itm_germanic_shield_large11,itm_sarmatian_scale_6,itm_sword_viking_2],
 attrib_level_31_warrior, wp(250), knows_level_31_warrior, 0x000000003f0513053b848ae75b8f69e300000000001e9ae30000000000000000, arab_face_old],
 ["danish_king", "Arluf", "Arluf", tf_hero, no_scene, reserved, fac_danish,
 [itm_celtic_boots,itm_germanic_helm3,itm_jarid,itm_germanic_shield_large12,itm_germanic_noble_1,itm_sword_viking_4],

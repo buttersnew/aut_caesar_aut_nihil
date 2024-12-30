@@ -3317,6 +3317,12 @@ medium_head_price,medium_head,imodbits_plate, [], [fac_culture_4] ],
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_4] ],
 ["germanic_helm4", "Old Roman Helmet", [("germanic_helm_new",0)], itp_merchandise| itp_type_head_armor|itp_covers_hair,0,
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_4] ],
+
+["eastern_band_helmet_leather", "Band Helmet with Leather", [("eastern_band_helmet_leather",0)], itp_merchandise| itp_type_head_armor|itp_covers_hair|itp_attach_armature|itp_fit_to_head,0,
+medium_head_price,medium_head,imodbits_plate, [], [fac_culture_4] ],
+["eastern_band_helmet_mail", "Band Helmet with Chain", [("eastern_band_helmet_mail",0)], itp_merchandise| itp_type_head_armor|itp_covers_hair|itp_attach_armature|itp_fit_to_head,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_4] ],
+
 ["wolf_skin_1", "Wolfskin", [("wolf_skin_1",0)], itp_merchandise|itp_type_head_armor|itp_attach_armature|itp_fit_to_head|itp_doesnt_cover_hair,0,
 fur_head_price,fur_head,imodbits_armor, [], [] ],
 ["wolf_skin_2", "Wolfskin", [("wolf_skin_2",0)], itp_merchandise|itp_type_head_armor|itp_attach_armature|itp_fit_to_head|itp_doesnt_cover_hair,0,
@@ -3325,6 +3331,7 @@ fur_head_price,fur_head,imodbits_armor, [], [] ],
 fur_head_price,fur_head,imodbits_armor, [], [] ],
 ["bear_skin_2", "Bearskin", [("bear_skin_2",0)], itp_merchandise|itp_type_head_armor|itp_attach_armature|itp_fit_to_head|itp_doesnt_cover_hair,0,
 fur_head_price,fur_head,imodbits_armor, [], [] ],
+
 
 #GREEK SHIT, use fac_minor_kingdoms_end for greek culture
 ["mak_helm_1", "Phrygian Helm", [("h3_mak2",0)], itp_type_head_armor|itp_attach_armature|itp_fit_to_head   ,0,
