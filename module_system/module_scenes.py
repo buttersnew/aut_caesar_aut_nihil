@@ -478,22 +478,22 @@ scenes = [
   ("battle_central_anatolia_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000020000ce30009725e000053370000024c00000ada",[], [], "outer_terrain_steppe_3"),
 
   ("battle_europe_mountains", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000023c0151e30008160200005d1e0000559000000edb",[], [], "outer_terrain_mountain_2"),
-  ("battle_europe_mountains_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002bc60158000087a1e00001d6d00003ee8000008cb",[], [], "outer_terrain_mountain_2"),
+  ("battle_europe_mountains_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002bc60158000087a1e00001d6d00003ee8000008cb",[], [], "outer_terrain_mountain_3"),
   ("battle_europe_mountains_3", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000238c005000009926300003fed0000064d00006e9d",[], [], "outer_terrain_mountain_2"),
-  ("battle_europe_mountains_4", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000238c00500000992630000763b000033b800000501",[], [], "outer_terrain_mountain_2"),
+  ("battle_europe_mountains_4", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000238c00500000992630000763b000033b800000501",[], [], "outer_terrain_mountain_3"),
   ("battle_europe_mountains_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000238c00500000992630000267800006700000071b3",[], [], "outer_terrain_mountain_2"),
-  ("battle_europe_mountains_6", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000500000d2348000030c4000053ae00001d83",[], [], "outer_terrain_mountain_2"),
+  ("battle_europe_mountains_6", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000500000d2348000030c4000053ae00001d83",[], [], "outer_terrain_mountain_3"),
   ("battle_europe_mountains_7", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000500000d2348000030c4000053ae00001d83",[], [], "outer_terrain_mountain_2"),
 
   #maps from oliver
-  ("custom_battle_forest_1",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000001bc61cee200093e53000056430000221c0000208f", [],[], "outer_terrain_mountain_2"), #hills 1 forest
+  ("custom_battle_forest_1",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000001bc61cee200093e53000056430000221c0000208f", [],[], "outer_terrain_mountain_3"), #hills 1 forest
   #needs fix
   ("custom_battle_forest_2",sf_generate,"none", "none", (0,0),(250,250),-0.5,"0x00000000300005800007c9f4000040a10000421300000192", [],[], "outer_terrain_mountain_2"), #flat forest
-  ("custom_battle_forest_3",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000000300005800007c9f4000040a10000421300000192", [],[], "outer_terrain_mountain_2"), #river - plains/forest
+  ("custom_battle_forest_3",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000000300005800007c9f4000040a10000421300000192", [],[], "outer_terrain_mountain_3"), #river - plains/forest
   #
-  ("custom_battle_forest_4",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000002bc6088e28009be7900000a740000455f00003f08", [],[], "outer_terrain_mountain_2"), #river - forest
+  ("custom_battle_forest_4",sf_generate,"none", "none", (0,0),(100,100),-0.5,"0x00000002bc6088e28009be7900000a740000455f00003f08", [],[], "outer_terrain_mountain_3"), #river - forest
 
-  ("battle_europe_mountains_8", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000913400d2348000030c40000600500006b66",[], [], "outer_terrain_mountain_2"),
+  ("battle_europe_mountains_8", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000030000913400d2348000030c40000600500006b66",[], [], "outer_terrain_mountain_3"),
 
   ("battle_persian_hills_green", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000022000160000089e2b00006f7200002a3400003b51",[], [], "outer_terrain_steppe_3"),
   ("battle_persian_hills_green_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000012201907e300599a64000009bd00002031000076c1",[], [], "outer_terrain_steppe_3"),
