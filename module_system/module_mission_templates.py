@@ -6295,6 +6295,14 @@ common_siege_attacker_do_not_stall = (5, 0, 0, [],[ #Make sure attackers do not 
       (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
     (try_end),
   ])
+common_nobody_stalls = (5, 0, 0, [],[ #Disable stalling on sea battles
+      (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
+        (agent_is_human, ":agent_no"),
+        (agent_is_alive, ":agent_no"),
+        (agent_ai_set_always_attack_in_melee, ":agent_no", 1),
+      (try_end),
+    ])
 
 common_battle_check_friendly_kills = (ti_on_agent_killed_or_wounded, 0, 0, [],[
     (store_trigger_param_1, ":dead_agent_no"),
@@ -7963,6 +7971,7 @@ mission_templates = [
     (44,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(45,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(46,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(47,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
   ], p_wetter + storms + global_common_triggers +
   [
+    common_nobody_stalls,
     cannot_spawn_commoners,
     improved_lightning,
     (ti_on_agent_spawn, 0, 0, [],[
@@ -13018,6 +13027,7 @@ mission_templates = [
     (10,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
   ], p_wetter + storms + global_common_triggers +
   [
+    common_nobody_stalls,
     cannot_spawn_commoners,
     common_battle_init_banner,
     improved_lightning,
@@ -17248,6 +17258,8 @@ mission_templates = [
     (19,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
   ],  p_wetter + storms + global_common_triggers + vc_water +
   [
+    common_nobody_stalls,
+
     cannot_spawn_commoners,
     improved_lightning,
     common_battle_init_banner,
