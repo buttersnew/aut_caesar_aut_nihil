@@ -25927,7 +25927,8 @@ mission_templates = [
       (assign, "$tutorial_state", 0),
     ]),
 
-    (0, 1, ti_once, [
+    (0.1, 0.25, 0, [
+      (eq, "$temp1", 0),
       (mission_tpl_are_all_agents_spawned),
     ],[
       #get scene boundaries
@@ -25952,34 +25953,45 @@ mission_templates = [
 
       (position_set_x, pos11, ":scene_max_x"),
       (position_set_y, pos11, ":scene_max_y"),
-      (assign, ":total_agents", 0),
-      (try_for_agents, ":agent"),
-        (agent_is_active, ":agent"),
-        (agent_is_alive, ":agent"),
-        (val_add, ":total_agents", 1),
-      (try_end),
-      (gt, ":total_agents", 0),
-      (store_div, ":x_step", 3000, ":total_agents"),
-      (assign, ":x_addition", ":x_step"),
+      # (assign, ":total_agents", 0),
+      # (try_for_agents, ":agent"),
+      #   (agent_is_active, ":agent"),
+      #   (agent_is_alive, ":agent"),
+      #   (val_add, ":total_agents", 1),
+      # (try_end),
+      # (gt, ":total_agents", 0),
+      # (store_div, ":x_step", 6000, ":total_agents"),
+      (assign, ":x_addition", 150),
       (try_for_agents, ":agent"),
         (agent_is_active, ":agent"),
         (agent_is_alive, ":agent"),
         (agent_get_position, pos10, ":agent"),
 
         (call_script, "script_point_y_toward_position", pos10, pos11),
+        # (init_position, pos20),
+        # (position_transform_position_to_local, pos20, pos10, pos11),
         (position_get_x, ":x", pos10),
         (val_add, ":x", ":x_addition"),
         (position_set_x, pos10, ":x"),
         (try_begin),
           (agent_is_non_player, ":agent"),
-          (position_move_y, pos10, 2500),
+          (try_begin),
+            (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+            (assign, ":randon_y", 6000),
+          (else_try),
+            (store_random_in_range, ":randon_y", 6000, 6501),
+          (try_end),
+          (position_move_y, pos10, ":randon_y"),
         (else_try),
-          (position_move_y, pos10, 4000),
+          (position_move_y, pos10, 9000),
         (try_end),
 
         (agent_set_position, ":agent", pos10),
-        (val_add, ":x_addition", ":x_step"),
+        (val_add, ":x_addition", 150),
+        (gt, ":x_addition", 7000),
+        (assign, ":x_addition", 150),
       (try_end),
+      (assign, "$temp1", 1),
     ]),
 
     (ti_on_agent_spawn, 0, 0, [],[
@@ -26010,6 +26022,9 @@ mission_templates = [
       (tutorial_message_set_size, 15, 15),
       (tutorial_message_set_position, 500, 650), #650 for tutorial or mission msg, 450 for dialogs
       (tutorial_message_set_center_justify, 0),
+
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 9000),
     ]),
 
     (0,0,0,[],[

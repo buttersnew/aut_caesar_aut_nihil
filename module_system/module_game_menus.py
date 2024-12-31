@@ -29084,6 +29084,7 @@ game_menus = [
       ("defendiendo_1_cd",[],"Continue...",
         [
           (assign, "$g_empieza_discurso", 1),
+          (assign, "$temp1", 0),
           (set_jump_mission, "mt_give_speech"),
           (call_script, "script_setup_random_scene"),
           (jump_to_menu,"mnu_simple_encounter"),
