@@ -10177,7 +10177,7 @@ presentations = [
     (position_set_y, pos1, 1200),
     (overlay_set_size, reg1, pos1),
 
-    (create_text_overlay, reg1, "@Party Moral", tf_left_align|tf_with_outline),
+    (create_text_overlay, reg1, "@Party Morale", tf_left_align|tf_with_outline),
     (overlay_set_color, reg1, message_alert),
     (position_set_x, pos1, 475),
     (position_set_y, pos1, 705),
@@ -10595,7 +10595,7 @@ presentations = [
     (set_container_overlay, -1),
 
 
-    #party moral report
+    #party morale report
 
     #size of the text
     (position_set_x, pos2, 900),
@@ -10615,7 +10615,7 @@ presentations = [
     (position_set_x, pos1, 0),
     (assign, ":cur_y", 8*25),
     #290,660
-    ##You can lead up to {reg23} troops. You can manage {reg22} troops without a party moral penalty. {s1}
+    ##You can lead up to {reg23} troops. You can manage {reg22} troops without a party morale penalty. {s1}
     # (create_text_overlay, reg0, "@Party size limit:", 0),
     # (position_set_y, pos1, ":cur_y"),
     # (overlay_set_position, reg0, pos1),
@@ -10636,7 +10636,7 @@ presentations = [
     (assign, reg6, 50),
     (assign, ":sum_modifiers", reg6),
 
-    (create_text_overlay, reg0, "@Base moral:", 0),
+    (create_text_overlay, reg0, "@Base morale:", 0),
     (position_set_y, pos1, ":cur_y"),
     (overlay_set_position, reg0, pos1),
     (overlay_set_size, reg0, pos2),
@@ -19812,7 +19812,7 @@ presentations = [
         (assign, "$g_autoloot_active", 0), # autoloot
         (assign, "$g_realistic_wounding", 1), # troops get wounded during battle instead of dead
         (assign, "$vc_wounds_on", 1), # player may get wounded
-        (assign, "$moralep_on", 1), # resting moral effect
+        (assign, "$moralep_on", 1), # resting morale effect
         (assign, "$g_body_guard_on", 0), # body guards
         # (assign, "$g_allow_curb_power", 1), # curb power war goal
         (assign, "$g_schield_bash", 1), # AI uses shieldbash
@@ -19837,7 +19837,7 @@ presentations = [
         (assign, "$g_autoloot_active", 1), # autoloot
         (assign, "$g_realistic_wounding", 1), # troops get wounded during battle instead of dead
         (assign, "$vc_wounds_on", 1), # player may get wounded
-        (assign, "$moralep_on", 1), # resting moral effect
+        (assign, "$moralep_on", 1), # resting morale effect
         (assign, "$g_body_guard_on", 1), # body guards
         # (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 1), # AI uses shieldbash
@@ -19862,7 +19862,7 @@ presentations = [
         (assign, "$g_autoloot_active", 1), # autoloot
         (assign, "$g_realistic_wounding", 1), # troops get wounded during battle instead of dead
         (assign, "$vc_wounds_on", 0), # player may get wounded
-        (assign, "$moralep_on", 1), # resting moral effect
+        (assign, "$moralep_on", 1), # resting morale effect
         (assign, "$g_body_guard_on", 1), # body guards
         # (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 0), # AI uses shieldbash
@@ -19887,7 +19887,7 @@ presentations = [
         (assign, "$g_autoloot_active", 1), # autoloot
         (assign, "$g_realistic_wounding", 0), # troops get wounded during battle instead of dead
         (assign, "$vc_wounds_on", 0), # player may get wounded
-        (assign, "$moralep_on", 0), # resting moral effect
+        (assign, "$moralep_on", 0), # resting morale effect
         (assign, "$g_body_guard_on", 1), # body guards
         # (assign, "$g_allow_curb_power", 0), # curb power war goal
         (assign, "$g_schield_bash", 0), # AI uses shieldbash
