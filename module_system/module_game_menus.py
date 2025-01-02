@@ -15628,6 +15628,7 @@ game_menus = [
               (neg|check_quest_active, "qst_elysium"),
               (quest_slot_eq, "qst_elysium", slot_quest_current_state,0),
               (this_or_next|eq, "$current_town", "p_town_37"),
+              (this_or_next|eq, "$current_town", "p_town_35"),
               (eq, "$current_town", "p_town_13"),
               (neq, "$g_is_emperor", 1),
               (set_visitor, 42, "trp_drunken_sailor"),
@@ -56525,7 +56526,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("elysium_refused",mnf_scale_picture,
-  "You wake up on a beach not far from Ostia. Your head hurts. Soon your soldiers, who have been searching for you for days, spot you."
+  "You wake up on a beach not far from Byzantium. Your head hurts. Soon your soldiers, who have been searching for you for days, spot you."
   +"^^Now you know Elysium exist, a place where neither hunger nor winter, neither wolves nor lions, neither war nor death exist. Alas you will never be able to return.",
   "none", [
     (set_background_mesh, "mesh_pic_roma"),
@@ -56534,7 +56535,7 @@ It is said, that she lives now together with the goat.",
   ("option_1",[],"Continue.",[
     (call_script, "script_end_quest", "qst_elysium"),
     (add_xp_as_reward, 2000),
-    (party_relocate_near_party, "p_main_party", "p_town_6",2),
+    (party_relocate_near_party, "p_main_party", "p_town_13",2),
     (change_screen_map),
   ]),
 ]),

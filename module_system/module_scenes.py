@@ -506,6 +506,8 @@ scenes = [
   ("battle_italian_greek_3", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000124a1907e300599a6400002ee9000074da0000423d ",[], [], "outer_terrain_plain_2"),
   ("battle_italian_greek_4", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000012401907e300599a64000061ae00006617000033aa ",[], [], "outer_terrain_plain_2"),
   ("battle_italian_greek_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000012400007e300599a6400007ec300000ad900006f54 ",[], [], "outer_terrain_plain_2"),
+  #from oliver
+  ("bridge_battle_mediterranean", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000001300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain_2"),
 
   #NORTH AFRICA
   ("river_battle_north_africa", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000248600500000b0ac6000016a200000dff00007268 ",[], [], "outer_terrain_steppe"),
