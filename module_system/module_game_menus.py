@@ -46875,9 +46875,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu, "mnu_senate_discussion"),
       (try_end),
       (play_sound, "snd_senatus_sound_1"),
-
-      ]),
-      ("leave_jui",[(eq, "$edict7",1)],"Propose to revoke the lex frumentaria et agraria.",[
+    ]),
+    ("leave_jui",[(eq, "$edict7",1)],"Propose to revoke the lex frumentaria et agraria.",[
       (store_random_in_range, reg26, -3, 2),
 
       (call_script, "script_change_senate_support", reg26, 0),
@@ -46920,15 +46919,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu, "mnu_senate_discussion"),
       (try_end),
       (play_sound, "snd_senatus_sound_1"),
-
-      ]),
-     ("leave_jui",[],"Go back.",[
-
-            (jump_to_menu, "mnu_senate_discussion"),
-      ]),
-
-    ]
-  ),
+    ]),
+    ("leave_jui",[],"Go back.",[
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
+]),
 
   (
     "statue_finished",menu_text_color(0xFF000000)|mnf_disable_all_keys,

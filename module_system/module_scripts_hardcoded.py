@@ -7081,18 +7081,11 @@ scripts_hardcoded = [
     (try_begin),
         (eq, ":party_id", "p_main_party"),
         (store_party_size_wo_prisoners, ":player_party_size", "p_main_party"),
-        (store_div, ":limit", ":player_party_size", 4),
-        (assign, ":limit", 0),
+        (store_div, ":limit", ":player_party_size", 5),
         (store_skill_level, ":skill", "skl_prisoner_management", ":troop_no"),
-        (val_mul, ":skill", 9),
+        (val_mul, ":skill", 10),
         (val_add, ":limit", ":skill"),
         (val_max, ":limit", 5),
-        ###ich weis nciht was das soll?
-        (try_begin), #SB : override with diplomacy_var2
-            (eq, "$diplomacy_var", DPLMC_CURRENT_VERSION_CODE),
-            (assign, ":limit", "$diplomacy_var2"),
-        (try_end),
-      ####################
         (try_begin),
             (ge, "$cheat_mode", 1),
             (val_add, ":limit", 2000),
