@@ -8160,6 +8160,12 @@ mission_templates = [
     (80,mtef_visitor_source,af_override_body,0,1,[]),
   ], p_wetter +global_common_triggers +
   [
+    (0, 0, ti_once, [
+      (gt, "$auto_speak_troop", -1),
+      (neg|conversation_screen_is_active),
+    ],[
+      (start_mission_conversation, "$auto_speak_troop"),
+    ]),
     can_spawn_commoners,
     # improved_lightning,
     (0, 0, 0.5,[
@@ -8236,7 +8242,9 @@ mission_templates = [
         (try_end),
       (try_end),
     ]),
-    (ti_after_mission_start, 0, ti_once, [],[
+    (ti_after_mission_start, 0, ti_once, [
+      (eq, "$auto_speak_troop", -1),
+    ],[
       (try_begin),
         (this_or_next|eq, "$talk_context", tc_tavern_talk),
         (eq, "$talk_context", tc_court_talk),

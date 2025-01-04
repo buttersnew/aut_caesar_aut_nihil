@@ -11089,7 +11089,7 @@ game_menus = [
       (try_end),
       #possibly replace "the" with "your"
     ],"Go to the {reg4?Lady:Lord}'s hall.",[
-      (call_script, "script_enter_court", "$current_town"),
+      (call_script, "script_enter_court", "$current_town", -1),
     ], "Door to the hall."),
 
     ("dplmc_negotiate_with_besieger",
@@ -15043,7 +15043,7 @@ game_menus = [
           (this_or_next|troop_slot_ge, "trp_player", slot_troop_renown, 200),
           (eq, "$players_kingdom", "$g_encountered_party_faction"),
           (assign, "$town_entered", 1),
-          (call_script, "script_enter_court", "$current_town"),
+          (call_script, "script_enter_court", "$current_town", -1),
       (else_try),
           (display_message,"@You need more renown or to ask the guard.",0xFFFFAAAA),
       (try_end),
@@ -15202,7 +15202,7 @@ game_menus = [
               (quest_slot_ge, "qst_four_emperors", slot_quest_current_state, 5),
               (jump_to_menu, "mnu_poppaea_event_chain_final"),
           (else_try),
-              (call_script, "script_enter_court", "$current_town"),
+              (call_script, "script_enter_court", "$current_town", -1),
           (try_end),
       (else_try),
           (display_message,"@You need more renown or to ask the guard.",0xFFFFAAAA),
@@ -15995,7 +15995,7 @@ game_menus = [
           (faction_slot_eq, ":prison_guard_faction", slot_faction_prison_guard_troop, ":agent_type"),
 
           (call_script, "script_deduct_casualties_from_garrison"),
-          (call_script, "script_enter_dungeon", "$current_town", "mt_visit_town_castle"),
+          (call_script, "script_enter_dungeon", "$current_town"),
 
       (else_try),
           (eq,"$all_doors_locked",1),
@@ -16004,7 +16004,7 @@ game_menus = [
           (this_or_next|party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
           (eq, "$g_encountered_party_faction", "$players_kingdom"),
           (assign, "$town_entered", 1),
-          (call_script, "script_enter_dungeon", "$current_town", "mt_visit_town_castle"),
+          (call_script, "script_enter_dungeon", "$current_town"),
       (else_try),
           (display_message,"str_door_locked",message_locked),
       (try_end),
@@ -55268,7 +55268,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ("op1",[],"Continue...",[
     (add_xp_as_reward, 150),
     (troop_set_slot, "trp_global_variables", g_nero_intro, 1),
-    (call_script, "script_enter_court", "$current_town"),
+    (call_script, "script_enter_court", "$current_town", -1),
   ]),
 ]),
 ("nero_special_quest_1",0,
@@ -55353,6 +55353,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("op1",[],"Continue...",[
       (jump_to_scene, "scn_carnuntum_in"),
+      (assign, "$auto_speak_troop", -1),
       (set_jump_mission,"mt_visit_town_castle"),
       (modify_visitors_at_site,"scn_carnuntum_in"),
       (reset_visitors, 0),
@@ -55370,34 +55371,30 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_mission),
     ]),
 ]),
- ("biggus_dickus_villa",0,
-    "On the way to the villa you come over a group of drunkards fighting each other with their fists. You try to stay out of this nonsense but some of them attack you. Though they are in majority you manage to defeat them. Unfortunately due to the time lose you are now too late. When you arrive at the villa, only two of guests are still remaining.",
-    "none",
-    [(set_background_mesh, "mesh_pic_party"),
-    ],
-    [
-      ("op1",[],
-       "Continue...",
-       [
-    (add_xp_as_reward, 150),
-    (assign, "$g_start_belligerent_drunk_fight", 0),#used for dialogue to trigger
-    (jump_to_scene, "scn_antiochia_castle"),
-    (set_jump_mission,"mt_diggus_event_1"),
-    (modify_visitors_at_site,"scn_antiochia_castle"),
-    (try_begin),
-        (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
-        (call_script, "script_init_second_outfit", "mt_visit_town_castle", 0, 0),
-        (mission_tpl_entry_set_override_flags, "mt_visit_town_castle", 0, af_override_outfit_1|af_override_horse),
-    (try_end),
-    (set_visitor, 0, "trp_player"),
-    (set_visitor, 17, "trp_diggus"),
-    (set_visitor, 16, "trp_orgie_fem4"),
-    (set_visitor, 19, "trp_desperatius"),
-    (set_visitor, 21, "trp_tristitia"),
-
-    (change_screen_mission),
-       ]),
- ]),
+("biggus_dickus_villa",0,
+  "On the way to the villa you come over a group of drunkards fighting each other with their fists. You try to stay out of this nonsense but some of them attack you. Though they are in majority you manage to defeat them. Unfortunately due to the time lose you are now too late. When you arrive at the villa, only two of guests are still remaining.",
+  "none",[
+    (set_background_mesh, "mesh_pic_party"),
+  ],[
+    ("op1",[],"Continue...",[
+      (add_xp_as_reward, 150),
+      (assign, "$g_start_belligerent_drunk_fight", 0),#used for dialogue to trigger
+      (jump_to_scene, "scn_antiochia_castle"),
+      (set_jump_mission,"mt_diggus_event_1"),
+      (modify_visitors_at_site,"scn_antiochia_castle"),
+      (try_begin),
+          (call_script, "script_cf_player_use_second_outfit"),#is using second outfit?
+          (call_script, "script_init_second_outfit", "mt_diggus_event_1", 0, 0),
+          (mission_tpl_entry_set_override_flags, "mt_diggus_event_1", 0, af_override_outfit_1|af_override_horse),
+      (try_end),
+      (set_visitor, 0, "trp_player"),
+      (set_visitor, 17, "trp_diggus"),
+      (set_visitor, 16, "trp_orgie_fem4"),
+      (set_visitor, 19, "trp_desperatius"),
+      (set_visitor, 21, "trp_tristitia"),
+      (change_screen_mission),
+    ]),
+]),
   ("biggus_event_end",menu_text_color(0xFF000000)|mnf_disable_all_keys,
     "What started with some drinks and nice conversations soon escalates into a full scale orgy. You and the others drink like vats, eat unhealthy amounts of food and make love with each other. It slowly becomes night. Then 'Biggus' suggests to tour the neighboring towns and villages. Everyone welcomes the idea.^^You three reach a small village. In a state of extreme drunkenness 'Biggus' thinks it would be a nice idea to set a stable on fire. You scream: 'You want fire! Who wants fire?' 'Biggus' and 'Incontinentia' shout: 'Fire! Fire! Fire!' You scream: 'Yeah, lets have some fire!' And you set the stable on fire. Some of the villagers wake up and notice the trouble. They grab their tools and attack you.  Luckily, you can elude. On the way back to the villa, your group encounters a lonely traveler. Though he seems to be harmless, 'Biggus' thinks it would be funny to beat him up. You join the fight. While the two men beat the traveler half to death, 'Incontinentia' stands by and cheers.^^On the next day, you have an insane headache and can only hardly remember what had happened.",
     "none",
@@ -59313,7 +59310,7 @@ It is said, that she lives now together with the goat.",
         (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
         (party_slot_eq, "$g_encountered_party", slot_party_type, spt_castle),
         (eq, reg61, 2),
-        (call_script, "script_enter_court", "$g_encountered_party"),
+        (call_script, "script_enter_court", "$g_encountered_party", -1),
     (else_try),
         (party_slot_eq, "$g_encountered_party", slot_party_type, spt_village),
         (jump_to_menu, "mnu_village"),
