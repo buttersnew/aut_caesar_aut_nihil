@@ -3085,13 +3085,13 @@ def_attrib|str_15|agi_20|level(43),wp(270),knows_power_strike_5|knows_ironflesh_
 ["tutorial_trainer","Tournament Champions END","Tournament Champions END",tf_hero, 0, 0, fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000000008414401e28f534c8a2d09],
 
 #athletes for olympia
-["athlet_1","Novice Athlet","Novice Athlets",tf_guarantee_armor|tf_guarantee_boots, no_scene,reserved,fac_commoners,
+["athlet_1","Novice Athlete","Novice Athlets",tf_guarantee_armor|tf_guarantee_boots, no_scene,reserved,fac_commoners,
 [itm_roman_poor1,itm_roman_poor2,itm_roman_poor3,itm_roman_poor4,itm_roman_poor5,itm_caligea],
 str_15|agi_15|int_6|cha_6|level(10),wp(120),knows_power_strike_4|knows_ironflesh_4|knows_riding_4|knows_power_throw_4|knows_athletics_4,roman_face1,roman_face2],
-["athlet_2","Experienced Athlet","Experienced Athlets",tf_male_north_african|tf_guarantee_armor|tf_guarantee_boots, no_scene,reserved,fac_commoners,
+["athlet_2","Experienced Athlete","Experienced Athlets",tf_male_north_african|tf_guarantee_armor|tf_guarantee_boots, no_scene,reserved,fac_commoners,
 [itm_roman_poor1,itm_roman_poor2,itm_roman_poor3,itm_roman_poor4,itm_roman_poor5,itm_caligea],
 str_17|agi_17|int_6|cha_6|level(15),wp(160),knows_power_strike_6|knows_ironflesh_6|knows_riding_6|knows_power_throw_6|knows_athletics_6,north_african_man_face_younger_1,north_african_man_face_younger_2],
-["athlet_3","Famous Athlet","Famous Athlets",tf_guarantee_armor|tf_guarantee_boots, no_scene,reserved,fac_commoners,
+["athlet_3","Famous Athlete","Famous Athlets",tf_guarantee_armor|tf_guarantee_boots, no_scene,reserved,fac_commoners,
 [itm_roman_poor1,itm_roman_poor2,itm_roman_poor3,itm_roman_poor4,itm_roman_poor5,itm_caligea],
 str_19|agi_19|int_6|cha_6|level(20),wp(200),knows_power_strike_8|knows_ironflesh_8|knows_riding_8|knows_power_throw_8|knows_athletics_8,persian_face_young,persian_face_middle],
 ["athlet_4","Champion","Champions",tf_guarantee_armor|tf_guarantee_boots, no_scene,reserved,fac_commoners,

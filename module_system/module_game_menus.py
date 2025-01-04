@@ -33030,7 +33030,7 @@ game_menus = [
 ]),
 ("emperor_event_11_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Rich troublemaker^^You hear about a rich merchant who spreads rumors about you in Rome. He also seems to be involved into other intrigues against you."
-  +" Due to his wealth it seems to be appropriate to get ride of this troublemaker, before he can cause any real damage to your case.",
+  +" Due to his wealth it seems to be appropriate to get rid of this troublemaker, before he can cause any real damage to your case.",
   "none",[
     (set_background_mesh, "mesh_pic_senators"),
   ],[
@@ -33052,7 +33052,7 @@ game_menus = [
       (display_message, "@{s1}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("answere_3",[],"Order the praetorian guard to get ride of him",[
+    ("answere_3",[],"Order the praetorian guard to get rid of him",[
       (add_xp_as_reward, 100),
       (call_script, "script_change_player_honor", -10),
       (call_script, "script_change_player_relation_with_center", "$current_town", -5),
@@ -33343,7 +33343,7 @@ game_menus = [
       (display_message, "@{s1}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("answere_3",[],"Order the praetorian guard to get ride of him",[
+    ("answere_3",[],"Order the praetorian guard to get rid of him",[
       (call_script, "script_change_player_honor", -10),
       # (call_script, "script_change_troop_renown", "trp_player", -25),
       (call_script, "script_change_player_relation_with_center", "$current_town", -5),
@@ -49681,7 +49681,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_pret_13",0,
-  "Unlucky debtors^^The treasury is in a horrible state. Neros debts with several families are high. To get ride of the issue, he claimed that on of his major debtors is a traitor and ordered to imprison him and his family."
+  "Unlucky debtors^^The treasury is in a horrible state. Neros debts with several families are high. To get rid of the issue, he claimed that on of his major debtors is a traitor and ordered to imprison him and his family."
   +" The idea is to frighten his other debtors to convince them to forgive him his debts.^^You are send with a detachment of soldiers to Rome.",
   "none",[
     (set_background_mesh, "mesh_pic_legion_march"),
