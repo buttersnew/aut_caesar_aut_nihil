@@ -3028,6 +3028,7 @@ game_menus = [
       (eq, ":continue", 1),
       (eq, "$can_sacrific", 1),
     ],"Sacrifice some of the animals to the {s58}.",[
+      (assign, "$temp3", 0),
       (jump_to_menu, "mnu_cattle_herd_kill_opfer"),
     ]),
 
@@ -3036,7 +3037,8 @@ game_menus = [
     ]),
 ]),
 ("cattle_herd_kill_opfer",0,
-  "How many animals do you want to sacrifice to honor {s58}?^^You gain 1 pietas per 5 cattle. If you sacrifice less than 5 cattle it is random if {s58} accepts your sacrifice! If you have already more than 100 pietas, you won't gain any additional pietas from cattle-sacrifices.",
+  "How many animals do you want to sacrifice to honor {s58}?^^You gain 1 pietas per 5 cattle. If you sacrifice less than 5 cattle it is random if {s58} accepts your sacrifice! If you have already more than 100 pietas, you won't gain any additional pietas from cattle-sacrifices. A hecatomb (killing 100 cattle) will circumvent this limitation, however it is only possible if you are dedicated yourself to worship a specific deity."
+  +"^^But be aware that performing a sacrifice will take time and you will be vulnerable to enemy attacks.",
   "none",[
     (str_store_string, s58, "@the gods"),
     (try_begin),
@@ -3072,6 +3074,7 @@ game_menus = [
       (try_end),
       (jump_to_menu, "mnu_cattle_herd_kill_opfer_end"),
       (play_sound, "snd_cow_slaughter"),
+      (val_add, "$temp3", 1),
     ]),
     ("cattle_kill_2",[(ge, reg5, 2),],"Two.",[
       (store_random_in_range, ":random", 0, 7),
@@ -3100,6 +3103,7 @@ game_menus = [
       (try_end),
       (jump_to_menu, "mnu_cattle_herd_kill_opfer_end"),
       (play_sound, "snd_cow_slaughter"),
+      (val_add, "$temp3", 2),
     ]),
     ("cattle_kill_3",[(ge, reg5, 3),],"Three.",[
       (store_random_in_range, ":random", 0, 7),
@@ -3128,6 +3132,7 @@ game_menus = [
       (try_end),
       (jump_to_menu, "mnu_cattle_herd_kill_opfer_end"),
       (play_sound, "snd_cow_slaughter"),
+      (val_add, "$temp3", 3),
     ]),
     ("cattle_kill_4",[(ge, reg5, 4),],"Four.",[
       (store_random_in_range, ":random", 0, 7),
@@ -3158,6 +3163,7 @@ game_menus = [
 
       (jump_to_menu, "mnu_cattle_herd_kill_opfer_end"),
       (play_sound, "snd_cow_slaughter"),
+      (val_add, "$temp3", 4),
     ]),
     ("cattle_kill_5",[(ge, reg5, 5),],"Five.",[
       (try_begin),
@@ -3184,6 +3190,7 @@ game_menus = [
 
       (jump_to_menu, "mnu_cattle_herd_kill_opfer_end"),
       (play_sound, "snd_cow_slaughter"),
+      (val_add, "$temp3", 5),
     ]),
     ("cattle_kill_10",[(ge, reg5, 10),],"Ten.",[
       (try_begin),
@@ -3209,9 +3216,52 @@ game_menus = [
 
       (jump_to_menu, "mnu_cattle_herd_kill_opfer_end"),
       (play_sound, "snd_cow_slaughter"),
+      (val_add, "$temp3", 10),
+    ]),
+
+    ("cattle_kill_10",[
+      (ge, reg5, 100),
+      (troop_get_slot, ":diety", "trp_player", slot_troop_religion),
+      (ge, ":diety", 1),
+      (val_add, ":diety", "str_gods_begin"),
+      (str_store_string, s8, ":diety"),
+    ],"Hecatomb in honor of {s8}. (100 cattle)",[
+      # (try_begin),
+        # (le, "$player_piety", 100),
+      (call_script, "script_change_player_honor", 20),
+      (call_script, "script_add_piety", 20, 1),
+      (display_message, "@The sacrifice was sufficient. You gain pietas!", color_good_news),
+      # (try_end),
+      (call_script, "script_kill_cattle_from_herd", "$g_encountered_party", 100),
+      (call_script, "script_change_party_morale", "p_main_party", 100),
+      (store_random_in_range, ":rand", 0, 100),
+      (try_begin),
+        (le, ":rand", 35),
+        (troop_slot_ge, "trp_player", slot_troop_religion, 1),
+        (call_script, "script_troop_get_relation_with_troop", "trp_player", "trp_fortuna"),
+        (ge, reg0, -20),
+        (troop_get_slot,":god", "trp_player", slot_troop_religion),
+        (store_add, ":string", ":god", "str_gods_begin"),
+        (str_store_string, s20, ":string"),
+        (display_message, "@You feel so alive! {s20} has healed you!", color_good_news),
+        (troop_set_health, "trp_player", 100),
+      (try_end),
+
+      (jump_to_menu, "mnu_cattle_herd_kill_opfer_end"),
+      (play_sound, "snd_cow_slaughter"),
+
+      (val_add, "$temp3", 100),
     ]),
     ("go_back_dot",[],"Go back.",[
-      (jump_to_menu, "mnu_cattle_herd"),
+      (try_begin),
+        (gt, "$temp3", 0),
+        (val_div, "$temp3", 10),
+        (val_max, "$temp3", 1),
+        (rest_for_hours, "$temp3", 15, 1),
+        (jump_to_menu, "mnu_auto_return_map"),
+      (else_try),
+        (jump_to_menu, "mnu_cattle_herd"),
+      (try_end),
     ]),
 ]),
 ("cattle_herd_kill",0,
@@ -3272,6 +3322,10 @@ game_menus = [
         (jump_to_menu, "mnu_cattle_herd_kill_opfer"),
         (assign, "$can_sacrific", 0),
       (else_try),
+        (jump_to_menu, "mnu_auto_return_map"),
+        (val_div, "$temp3", 10),
+        (val_max, "$temp3", 1),
+        (rest_for_hours, "$temp3", 15, 1),
         (jump_to_menu, "mnu_auto_return_map"),
       (try_end),
     ]),
