@@ -1602,7 +1602,7 @@ nero_lyre_playing =  (0, 0, 0,[
     (agent_is_active,":agent"),
     (agent_is_alive,":agent"),
     (agent_has_item_equipped,":agent", "itm_lyre_rich"),
-    ],[
+  ],[
     (get_player_agent_no,":agent"),
     (try_begin),
         (agent_is_active,":agent"),#is alive
@@ -3871,6 +3871,7 @@ jacobhinds_morale_recover = (
 			(agent_is_human, ":agent"),
 			(gt, ":agent", 1),
 			(agent_slot_eq, ":agent", slot_agent_is_running_away, 1),
+      (neg|agent_slot_eq, ":agent", slot_agent_recently_decided, 1),
 			#Morale recovery based on number of ready troops on the battlefield, routing or not (prevents rush morale shock exploit)
 			(assign, ":strength", 0),
 			(try_begin),
@@ -3879,7 +3880,7 @@ jacobhinds_morale_recover = (
 			(else_try),
 				(assign, ":strength", "$j_num_enemies_ready"),
 			(try_end),
-      (val_add, ":strength", 10),
+      (val_add, ":strength", 5),
 			(call_script, "script_change_agent_courage", ":agent", ":strength", 0),
 		(try_end),
 ])
@@ -4030,7 +4031,7 @@ moral_trigger_decide_to_run_or_not = 		(3, 0, 0, [
         (ge, ":agent_no", 0),
         (try_begin),
             (agent_get_slot, ":timer_local", ":agent_no", slot_agent_recently_decided),#he recently decided
-            (ge, ":timer_local", 1),
+            (ge, ":timer_local", 2),
             (val_sub, ":timer_local", 1),
             (agent_set_slot, ":agent_no", slot_agent_recently_decided, ":timer_local"),#he recently decided
         (else_try),

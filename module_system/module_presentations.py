@@ -23471,6 +23471,10 @@ presentations = [
         (overlay_set_area_size, reg43, pos1),
 
         (set_container_overlay, reg43),#start scroll
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_judean_guard", 60, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_judean_guard_vet", 210, 910),
+
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_judean_light_clubman", 60, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_judean_light_clubman_exp", 210, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_judean_light_clubman_vet", 360, 710),
@@ -23482,6 +23486,9 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_judean_elite", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_judean_elite_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_judean_elite_vet", 360, 310),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_judean_guard_archer", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_judean_guard_archer_vet", 710, 910),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_judean_slinger", 560, 710),#+200
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_judean_slinger_exp", 710, 710),
@@ -23500,6 +23507,8 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_judean_cav_vet", 360, 110),
 
         ##lines
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1010),##45 space for x
+
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 810),##45 space for x
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 810),
 
@@ -23508,6 +23517,8 @@ presentations = [
 
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 410),##45 space for x
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 410),
+
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1010),##45 space for x
 
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 810),##45 space for x
         (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 810),

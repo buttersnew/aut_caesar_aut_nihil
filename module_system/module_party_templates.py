@@ -283,9 +283,9 @@ party_templates = [
 ("kingdom_8_reinforcements_a", "Judean Levies", 0, 0, fac_commoners, 0,
 [(trp_judean_light_spearman,25,25),(trp_judean_light_clubman,25,25),(trp_judean_slinger,15,15),(trp_mountain_bandit,10,10),(trp_judean_hornman,1,1),(trp_judean_standard_bearer,1,1)] ),
 ("kingdom_8_reinforcements_b", "Judean Retinue", 0, 0, fac_commoners, 0,
-[(trp_judean_elite,35,35),(trp_judean_archer,20,20),(trp_judean_skirmisher,20,20),(trp_judean_hornman,1,1),(trp_dacian_standard_bearer,1,1)] ),
+[(trp_judean_elite,35,35),(trp_judean_archer,20,20),(trp_judean_skirmisher,20,20),(trp_judean_hornman,1,1),(trp_judean_standard_bearer,1,1)] ),
 ("kingdom_8_reinforcements_c", "Judean Guard", 0, 0, fac_commoners, 0,
-[(trp_judean_cav,10,10),(trp_judean_hornman,1,1),(trp_dacian_standard_bearer,1,1),(trp_judean_guard, 35,35),(trp_judean_guard_archer,25,25)] ),
+[(trp_judean_cav,10,10),(trp_judean_hornman,1,1),(trp_judean_standard_bearer,1,1),(trp_judean_guard, 35,35),(trp_judean_guard_archer,25,25)] ),
 
 ("kingdom_9_reinforcements_a", "Bosphoran Levies", 0, 0, fac_commoners, 0,
 [(trp_sarmatian_light_spearman,20,20),(trp_bosporan_light_spearman,40,40),(trp_sarmatian_light_horsearcher,15,15),(trp_bosporan_hornman,1,1),(trp_bosporan_standard_bearer,1,1)] ),
