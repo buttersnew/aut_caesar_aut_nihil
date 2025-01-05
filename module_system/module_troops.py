@@ -3421,7 +3421,7 @@ knight_attrib_2, wp(100), knight_skills_2, 0x00000001b90800113adb919962452999000
 [itm_ring_1,itm_germanic_noble_6,itm_germanic_helm4,itm_sword_viking_3,itm_germanic_shield_large10,itm_graves_simple_2,itm_germanic_noble_tunic_4], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_5, 0x00000001841003543ca651c4d47524ea00000000001950840000000000000000, ],
 
 ["kingdom_17_lord", "Melech Hanan ben Hanan", "Hanan ben Hanan", tf_hero, no_scene, reserved, fac_kingdom_17,
-[itm_ring_2,itm_judean_scale_2,itm_eastern_shoe_r,itm_arabian_horse_b,itm_eastern_sword5,itm_eastern_helm6,itm_eastern_shield_inf_heavy6,itm_sarranid_cloth_robe_fancy_2], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x00000000240cb2c325296a30246add3100000000001dab2d0000000000000000 ],
+[itm_ring_2,itm_judean_scale_2,itm_centurio_east_graves,itm_arabian_horse_b,itm_eastern_sword5,itm_eastern_helm6,itm_eastern_shield_inf_heavy6,itm_sarranid_cloth_robe_fancy_2,itm_eastern_shoe_r], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x00000000240cb2c325296a30246add3100000000001dab2d0000000000000000 ],
 
 ["kingdom_18_lord", "Batesa Banadaspus", "Banadaspus", tf_hero, no_scene, reserved, fac_kingdom_18,
 [itm_ring_2,itm_cataphract_horse_steppe_2,itm_eastern_shoe_r,itm_sarmatian_light3,itm_scythian_shield_cav1,itm_sarmatian_heavy_helm6,itm_sarmatian_scale_5,itm_sarmatian_ringsword_4], knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x000000003908028e42da99a523af151c00000000001cb4e40000000000000000 ],

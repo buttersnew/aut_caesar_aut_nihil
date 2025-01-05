@@ -2359,7 +2359,7 @@ game_menus = [
 
     ("options",[
       (faction_slot_eq, "fac_kingdom_27", slot_faction_state, sfs_active),
-      # (ge, "$cheat_mode", 1),
+      (ge, "$cheat_mode", 1),
     ],"CONQUER VITELLIUS MAN BA BY GALBA.",[
       (try_for_range, ":center", walled_centers_begin, walled_centers_end),
           (store_faction_of_party, ":fac", ":center"),
