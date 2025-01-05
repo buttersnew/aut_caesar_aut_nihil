@@ -9467,7 +9467,7 @@ strings = [
 ("priest_sacrifice_alcis", "Alcis, twin deities of harmony and strength, accept our offering. Unite us under your protection, and grant us balance and fortitude in all we do."),
 ("priest_sacrifice_mithras", "Mithras, bringer of light and protector of oaths, we honor you with this sacrifice. Guide us through darkness, uphold our promises, and grant us strength to overcome adversity."),
 ("priest_sacrifice_andraste", "Andraste, goddess of victory and vengeance, we dedicate this offering to you. Empower us in battle, crush our enemies, and let your fierce spirit guide us to triumph."),
-("priest_sacrifice_maponos", "Maponos, youthful god of healing and vitality, accept this offering. Grant us strength, renew our spirits, and bless us with your eternal vigor."),
+("priest_sacrifice_maponos", "In the name of the good strength of the underworld gods, I invoke Maponos of Arverion. Pursue those with the magic of the infernals!"),
 ("priest_sacrifice_gebeleizis", "Gebeleizis, lord of storms and lightning, we offer this sacrifice to honor your power. Strike down our enemies, cleanse our lands, and protect us with your might."),
 ("priest_sacrifice_zalmoxis", "Zalmoxis, god of immortality and wisdom, we humbly offer this tribute. Grant us your knowledge, shield us from harm, and guide us on the path to eternity."),
 ("priest_sacrifice_goitosuros", "Goitosuros, healer and guardian of life, accept this offering. Bless us with health, protect our families, and grant us the strength to endure life's trials."),

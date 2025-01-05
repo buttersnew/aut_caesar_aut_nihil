@@ -5,13 +5,21 @@
 ###################################################
 
 
-mtf_culture_1                          = 0x00000001
-mtf_culture_2                          = 0x00000002
-mtf_culture_3                          = 0x00000004
-mtf_culture_4                          = 0x00000008
-mtf_culture_5                          = 0x00000010
-mtf_culture_6                          = 0x00000020
+mtf_culture_1                          = 0x00000001 # dacians
+mtf_culture_2                          = 0x00000002 # celts
+mtf_culture_3                          = 0x00000004 # nomads
+mtf_culture_4                          = 0x00000008 # germanic
+mtf_culture_5                          = 0x00000010 # eastern
+mtf_culture_6                          = 0x00000020 # rome
 mtf_culture_all                        = 0x0000003F
+
+mtf_continue_culture_1 = mtf_culture_6|mtf_culture_4|mtf_culture_2|mtf_culture_1
+mtf_continue_culture_2 = mtf_culture_6|mtf_culture_4|mtf_culture_2|mtf_culture_1|mtf_culture_3
+mtf_continue_culture_3 = mtf_culture_6|mtf_culture_4|mtf_culture_3|mtf_culture_2|mtf_culture_5
+mtf_continue_culture_4 = mtf_culture_6|mtf_culture_4|mtf_culture_2|mtf_culture_1|mtf_culture_3
+mtf_continue_culture_5 = mtf_culture_6|mtf_culture_5|mtf_culture_3
+mtf_continue_culture_6 = mtf_culture_all
+
 
 
 ##mtf_sit_map_travel                 = 0x00000001

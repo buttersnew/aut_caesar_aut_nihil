@@ -14040,6 +14040,8 @@ game_menus = [
         (eq, "$g_encountered_party", "p_caucasian_holy_side_2"),
         (str_store_string, s15, "@Further towards the North one can find the holy forests of Seraca. Folklore says that silvan spirits inhabitate the forest."),
     (try_end),
+
+    (store_encountered_party, "$current_town"),
   ],[
     ("test_scene",[
       (ge, "$cheat_mode", 1),
@@ -60949,6 +60951,7 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
     ("answere_1",[],"Continue...",[
+      (troop_set_slot, "trp_global_variables", g_toilet_talk, -7),#retards escaped, player had to pay the bill
       (troop_remove_gold, "trp_player", 2000),
       (jump_to_menu, "mnu_town"),
     ]),
@@ -60963,6 +60966,7 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
     ("answere_1",[],"Continue...",[
+      (troop_set_slot, "trp_global_variables", g_toilet_talk, -8),#left tavern without any
       (troop_remove_gold, "trp_player", 2000),
       (jump_to_menu, "mnu_town"),
     ]),
@@ -61010,6 +61014,7 @@ It is said, that she lives now together with the goat.",
   ],[
     ("answere_1",[],"Continue...",[
       (jump_to_menu, "mnu_town"),
+      (troop_set_slot, "trp_global_variables", g_toilet_talk, -9),#tavern fight end
     ]),
 ]),
 
@@ -61024,6 +61029,7 @@ It is said, that she lives now together with the goat.",
     ("answere_1",[],"Continue...",[
       (add_xp_as_reward, 500),
       (jump_to_menu, "mnu_town"),
+      (troop_set_slot, "trp_global_variables", g_toilet_talk, -11),#escape
     ]),
 ]),
 
@@ -61040,6 +61046,7 @@ It is said, that she lives now together with the goat.",
     ("answere_1",[],"Continue...",[
       (add_xp_as_reward, 2500),
       (jump_to_menu, "mnu_town"),
+      (troop_set_slot, "trp_global_variables", g_toilet_talk, -10),#victory
     ]),
 ]),
 
@@ -61056,6 +61063,7 @@ It is said, that she lives now together with the goat.",
       (add_xp_as_reward, 1250),
       (jump_to_menu, "mnu_town"),
       (troop_remove_gold, "trp_player", 2000),
+      (troop_set_slot, "trp_global_variables", g_toilet_talk, -12),#brothel defeat
     ]),
 ]),
 
