@@ -39305,6 +39305,8 @@ presentations = [
     (assign, "$g_presentation_obj_3", -1),
     (try_begin),
         (neq, "$player_ambushed",1),#Ambush Yes
+        (call_script, "script_party_count_members_with_full_health", "p_main_party"),
+        (ge, reg0, 4),#at least 4 guys alive
         (eq, "$encountered_party_friendly", 0),
         (create_game_button_overlay, "$g_presentation_obj_3", "@Auto-calculate battle"),
 #       (position_set_x, pos1, 500),

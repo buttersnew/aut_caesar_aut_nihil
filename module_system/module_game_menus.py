@@ -4445,9 +4445,8 @@ game_menus = [
   ),
 
 ("order_attack_begin",0,
-    "Your troops prepare to attack the enemy.",
-    "none",
-  [
+  "Your troops prepare to attack the enemy.",
+  "none",[
     (set_background_mesh, "mesh_pic_charge"),
   ],[
     ("order_attack_begin",[
