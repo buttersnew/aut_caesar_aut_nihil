@@ -2063,8 +2063,8 @@ scripts_hardcoded = [
     (faction_set_slot, "fac_kingdom_7", slot_faction_treasury, 500000),
     (faction_set_slot, "fac_kingdom_7", slot_faction_emperors_bocket, -100000),
 
-    (faction_set_slot, "fac_kingdom_7", slot_faction_tax_rate, 25),
-    (faction_set_slot, "fac_kingdom_7", slot_faction_tax_rate_buisness, 20),
+    (faction_set_slot, "fac_kingdom_7", slot_faction_tax_rate, 20),
+    (faction_set_slot, "fac_kingdom_7", slot_faction_tax_rate_buisness, 15),
 
     # initialize disguise system
     (troop_set_slot, "trp_player", slot_troop_player_disguise_sets, disguise_pilgrim),
@@ -2643,7 +2643,7 @@ scripts_hardcoded = [
     (party_set_slot,"p_town_5", slot_town_arena, "scn_town_7_arena"),
 
     (party_set_slot,"p_town_6", slot_town_walls, "scn_rome_walls"),
-    (party_set_slot,"p_town_6", slot_town_center, "scn_temple_of_concordia"),
+    (party_set_slot,"p_town_6", slot_town_center, "scn_rome_center"),
     (party_set_slot,"p_town_6", slot_town_castle, "scn_roman_town_hall"),
     (party_set_slot,"p_town_6", slot_town_prison, "scn_rome_prison"),
 

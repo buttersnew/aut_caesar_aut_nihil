@@ -362,7 +362,6 @@ scenes = [
   ("temple_of_aphrodite", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
   ("temple_of_castorpollux", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
   ("temple_of_mithras", sf_indoors, "dungeon_cell_mithras", "bo_dungeon_cell_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
-  ("temple_of_concordia", sf_generate, "none", "none", (0, 0), (100, 100), -200, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
   ("temple_of_saturn", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
   ("temple_of_vesta", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
   ("random_scene_mountain", sf_generate|sf_randomize|sf_auto_entry_points, "none", "none", (0, 0), (240, 240), -0.5, "0x0000000235e201c40005194a0000a29f00005ae800003c55",[], [], "outer_terrain_mountain"),
@@ -901,6 +900,10 @@ scenes = [
   ("rome_walls", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013001c98d0005b56d000072a70000240a00001e09",[], [], "outer_terrain_plain"),
   ("roman_town_hall", sf_indoors, "none", "none", (-120, -120), (120, 120), -100, "0",["exit"], []),
   ("town_romewalls", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000013301c85000059224800072a70000240a00001e090",[], [], "outer_terrain_plain"),
+  ("town_romewalls_destroyed", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000013301c85000059224800072a70000240a00001e090",[], [], "outer_terrain_plain"),
+
+  ("rome_center", sf_generate, "none", "none", (0, 0), (100, 100), -200, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
+  ("rome_center_destoryed", sf_generate, "none", "none", (0, 0), (100, 100), -200, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
 
   # if player builds special building
   ("colosseum", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000030015f2b000350d4000011a4000017ee000054af",[], [], "outer_terrain_plain"),

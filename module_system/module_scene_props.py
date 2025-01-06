@@ -3414,4 +3414,6 @@ scene_props = [
   ("destroy_house_2_a",0,"destroy_house_2_a","bo_destroy_house_2_a", []),
   ("destroy_house_2_b",0,"destroy_house_2_b","bo_destroy_house_2_b", []),
   ("destroy_house_2_c",0,"destroy_house_2_c","bo_destroy_house_2_c", []),
+
+  ( "mp_battlement_framework_2",0,"mp_battlement_framework_2","bo_mp_battlement_framework_2",[]),
 ]

@@ -16910,8 +16910,16 @@ game_menus = [
     ("rest_of_rome",[
       (eq, 0, 1),
     ],"Back street.",[
+      (assign, ":scene", "scn_town_romewalls"),
+      (try_begin),
+          (eq, "$current_town", "p_town_6"),
+          (party_get_slot, ":event", "$current_town", slot_center_event),
+          (is_between, ":event", event_fire_of_rome_timer, event_fire_of_rome+1),
+          (assign, ":scene", "scn_town_romewalls_destroyed"),
+      (try_end),
+
       (set_passage_menu,"mnu_town"),
-      (modify_visitors_at_site, "scn_town_romewalls"),
+      (modify_visitors_at_site, ":scene"),
       (reset_visitors),
       (assign, "$g_mt_mode", tcm_default),
       (store_faction_of_party, ":town_faction","$current_town"),
@@ -17018,7 +17026,7 @@ game_menus = [
           (call_script, "script_init_second_outfit", "mt_town_center", 1, 1),
           (mission_tpl_entry_set_override_flags, "mt_town_center", 1, af_override_outfit_1 | af_override_horse),
       (try_end),
-      (jump_to_scene, "scn_town_romewalls"),
+      (jump_to_scene, ":scene"),
       (change_screen_mission),
     ],"Follow the street."),
 
@@ -45284,7 +45292,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ("Continue...",[],"Continue...",[
     (add_xp_as_reward, 250),
     (assign, "$talk_context", tc_campaign_talk),
-    (call_script, "script_setup_troop_meeting", "trp_petronius", -1, "scn_temple_of_concordia"),
+    (call_script, "script_setup_troop_meeting", "trp_petronius", -1, "scn_rome_center"),
   ]),
 ]),
 
@@ -45307,7 +45315,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
   ("Continue...",[],"Talk with him",[
     (assign, "$talk_context", tc_campaign_talk),
-    (call_script, "script_setup_troop_meeting", "trp_amorus", -1, "scn_temple_of_concordia"),
+    (call_script, "script_setup_troop_meeting", "trp_amorus", -1, "scn_rome_center"),
   ]),
 ]),
 
@@ -47466,7 +47474,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
   ("leave",[],"Continue.",[
-    (call_script, "script_setup_troop_meeting", "trp_bacchus", -1, "scn_temple_of_concordia"),
+    (call_script, "script_setup_troop_meeting", "trp_bacchus", -1, "scn_rome_center"),
   ]),
 ]),
 
@@ -53799,7 +53807,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue...",[
       (quest_set_slot, "qst_money_stinks", slot_quest_object_state, 1),
-      (call_script, "script_setup_troop_meeting", "trp_pupienus", -1, "scn_temple_of_concordia"),
+      (call_script, "script_setup_troop_meeting", "trp_pupienus", -1, "scn_rome_center"),
     ]),
 ]),
 
@@ -55363,18 +55371,18 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_roma"),
   ],[
     ("op1",[],"Continue...",[
-      # scn_temple_of_concordia
+      # scn_rome_center
       # spawn at 37
       # she spawns at 5
       # 54
       (set_jump_mission,"mt_abduction_nero_1"),
-      (modify_visitors_at_site,"scn_temple_of_concordia"),
+      (modify_visitors_at_site,"scn_rome_center"),
       (reset_visitors, 0),
       (set_visitor, 37, "trp_kingdom_7_lord"),
       (set_visitor, 37, "trp_tigellinus"),
       (set_visitor, 37, "trp_player"),
       (set_visitor, 5, "trp_guest_female"),
-      (jump_to_scene,"scn_temple_of_concordia"),
+      (jump_to_scene,"scn_rome_center"),
       (change_screen_mission),
     ]),
 ]),

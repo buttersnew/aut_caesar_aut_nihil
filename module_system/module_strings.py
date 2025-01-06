@@ -3819,7 +3819,7 @@ strings = [
 ##diplomacy end+
   ("gossip_about_character_martial",        "They say that {s6} loves nothing more than war."),
   ##diplomacy start+ make pronouns gender-correct (reg4)
-  ("gossip_about_character_quarrelsome",    "They say that {s6} almost came to blows with another lord lately, because the man made a joke about {reg4?her:his} nose."),
+  ("gossip_about_character_quarrelsome",    "They say that {s6} almost came to blows with another noble lately, because the man made a joke about {reg4?her:his} nose."),
   ("gossip_about_character_selfrighteous",  "I heard that {s6} had a slave executed because the unfortunate man dropped some expansive dishes."),
   ("gossip_about_character_cunning",        "They say that {s6} is a cunning opponent."),
   ("gossip_about_character_sadistic",       "They say that {s6} likes to torture {reg4?her:his} enemies. I wouldn't want to get on the bad side of that {reg4?woman:man}."),
