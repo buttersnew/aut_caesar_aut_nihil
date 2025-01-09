@@ -30858,9 +30858,8 @@ presentations = [
     #count lords
     (assign, "$n_lords", 1),#player
     (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_dead),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_exile),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_heir),
+        (this_or_next|troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
+        (main_party_has_troop, ":id_npc"),
         (val_add, "$n_lords", 1),
     (try_end),
 
@@ -30990,7 +30989,7 @@ presentations = [
               (neq, ":current_terrain_2", rt_water),
               (neq, ":current_terrain_2", 6),
               (neq, ":current_terrain_2", rt_bridge),
-                (neq, ":current_terrain_2", rt_river),
+              (neq, ":current_terrain_2", rt_river),
               (call_script, "script_get_closest_center_and_minor", "p_temp_party", 0),
               (assign, ":nearest_center_2", reg0),
               (try_begin),
@@ -31161,9 +31160,8 @@ presentations = [
     #Color codes for lords
     (assign, ":indx", -1),
     (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_dead),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_exile),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_heir),
+        (this_or_next|troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
+        (main_party_has_troop, ":id_npc"),
         (store_random_in_range, ":color_lord", 0, 10000),
         (val_mul, ":color_lord", 16777215), (val_div, ":color_lord", 10000),
         (val_add, ":indx", 1),
@@ -31215,9 +31213,8 @@ presentations = [
         (ge, "$g_player_chancellor", 1),
         #lords
         (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
-            (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_dead),
-            (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_exile),
-            (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_heir),
+            (this_or_next|troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
+            (main_party_has_troop, ":id_npc"),
             (str_store_troop_name_plural, s0, ":id_npc"),
             (create_game_button_overlay, reg1 , "@{s0}", tf_center_justify),
             (call_script, "script_search_lords_tmp", 0, ":id_npc"),
@@ -31293,9 +31290,9 @@ presentations = [
 
         #Combo box factions (hardcoded because few)
         (create_combo_button_overlay, "$factions"),
-        (try_for_range, ":unused", kingdoms_begin, kingdoms_end),
-            (faction_slot_eq, ":unused", slot_faction_state, sfs_active),
-            (str_store_faction_name, s1, ":unused"),
+        (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
+            (faction_slot_eq, ":faction", slot_faction_state, sfs_active),
+            (str_store_faction_name, s1, ":faction"),
             (overlay_add_item, "$factions", "@{s1}"),
         (try_end),
         (position_set_x, pos1, 955),
@@ -31322,14 +31319,14 @@ presentations = [
     (create_combo_button_overlay, "$cbo_grant"),
 
     (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_dead),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_exile),
-        (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_heir),
+        (this_or_next|troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
+        (main_party_has_troop, ":id_npc"),
         (store_troop_faction, ":npc_faction", ":id_npc"),
         (eq, ":npc_faction", "$players_kingdom"),
 
         (str_store_troop_name, s0, ":id_npc"),
-        (overlay_add_item, "$cbo_grant", s0),
+        (call_script, "script_troop_get_player_relation", ":id_npc"),
+        (overlay_add_item, "$cbo_grant", "@{s0} ({reg0})"),
 
         (call_script, "script_search_lords_tmp", 0, ":id_npc"),
         (troop_get_slot, ":indx", "trp_temp_array_c",0),
@@ -31343,7 +31340,7 @@ presentations = [
     (val_add, ":indx", 3),
     (troop_set_slot, "trp_temp_array_b", ":indx", ":i"),
     (str_store_troop_name, s0, 0),
-    (overlay_add_item, "$cbo_grant", s0),
+    (overlay_add_item, "$cbo_grant", "@{s0} (You)"),
     (val_add, ":i", 1),
     (overlay_add_item, "$cbo_grant", "@None"),
     (overlay_set_val, "$cbo_grant", ":i"),
@@ -31373,7 +31370,6 @@ presentations = [
     (position_set_x, pos1, 825), (position_set_y, pos1, 30),
     (overlay_set_position, "$g_help", pos1),
     (overlay_set_color, "$g_help", color_information),
-
 
     #6. DESCRIPTION
     #headline
@@ -31624,7 +31620,6 @@ presentations = [
                     (troop_set_slot, "trp_temp_array_a", ":indx1", 0),
                 (try_end),
             (try_end),
-
         (else_try),
             (display_message, "@Selected lord has no fiefs."),
         (try_end),
@@ -31709,7 +31704,34 @@ presentations = [
         (try_end),
 
         #paint centers of chosen faction
-        (store_add, ":fac_id", "fac_player_supporters_faction", ":value"),
+        (assign, ":fac_id", -1),
+        (try_for_range, ":factions", kingdoms_begin, kingdoms_end),
+            (neq, ":value", -1),
+            (faction_slot_eq, ":factions", slot_faction_state, sfs_active),
+            (val_add, ":fac_id", 1),
+            (eq, ":fac_id", ":value"),
+            (assign, ":value", -1),
+            (assign, ":fac_id", ":factions"),
+        (try_end),
+        (is_between, ":fac_id", kingdoms_begin, kingdoms_end),
+
+        # (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
+        #     (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_dead),
+        #     (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_exile),
+        #     (neg|troop_slot_eq, ":id_npc", slot_troop_occupation, dplmc_slto_heir),
+        #     (store_faction_of_troop, ":troop_faction", ":id_npc"),
+        #     (call_script, "script_search_lords_tmp", 0, ":id_npc"),
+        #     (troop_get_slot, ":indx", "trp_temp_array_c",0),
+        #     (val_add, ":indx", 2),
+        #     (troop_get_slot, reg1, "trp_temp_array_b",":indx"),
+        #     (try_begin),
+        #       (eq, ":fac_id", ":troop_faction"),
+        #       (overlay_set_display, reg1, 1),
+        #     (else_try),
+        #       (overlay_set_display, reg1, 0),
+        #     (try_end),
+        # (try_end),
+
 
         (try_for_range, ":i", 0, "$n_centers"),
             (store_mul, ":indx0", ":i", 6),
@@ -31780,7 +31802,7 @@ presentations = [
             (assign, ":c", 1),
         (try_end),
         (eq, ":c", 1),
-         (display_message, "@Check 4"),
+        #  (display_message, "@Check 4"),
         (store_add, ":indx1", ":indx0", 1),
         (troop_get_slot, "$fief_selected", "trp_temp_array_a", ":indx1"),
         (is_between, "$fief_selected", walled_centers_begin, walled_centers_end),
@@ -31873,6 +31895,14 @@ presentations = [
     #Click on help
         (eq, ":object", "$g_help"),
         (dialog_box, "str_tutorial_assign_fiefs", "@Tutorial"),
+    (try_end),
+  ]),
+   ## END presentation event state change trigger
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_escape),
+        (presentation_set_duration, 0),
+        (show_object_details_overlay,1),
     (try_end),
   ]),
 ]),
