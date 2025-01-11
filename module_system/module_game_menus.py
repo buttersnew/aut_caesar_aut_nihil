@@ -14258,6 +14258,15 @@ game_menus = [
 ("town",mnf_enable_hot_keys|mnf_scale_picture,
   "{s10} {s14}^{s11}{s12}{s13}^{s16}^^{s44}^{s43}",
   "none",[
+    # initialize strings
+    (str_clear, s10),
+    (str_clear, s14),
+    (str_clear, s11),
+    (str_clear, s12),
+    (str_clear, s13),
+    (str_clear, s16),
+    (str_clear, s44),
+    (str_clear, s43),
     ##set variables
     (store_encountered_party, "$current_town"),#set variable properly
     (troop_set_slot, "trp_global_variables", start_town_conversation, 0),#this is to store if the conversation was started from the menu or the scene
@@ -14270,7 +14279,6 @@ game_menus = [
         (display_log_message, "@A bug occured on town menu", message_negative),
     (try_end),
 
-    (str_clear, s44),
     (party_get_slot, ":disease", "$current_town", slot_center_disease),
     (try_begin),
         (ge, ":disease", 1),
@@ -15003,7 +15011,6 @@ game_menus = [
             (jump_to_menu, "mnu_ask_for_help"),
         (try_end),
     (try_end),
-    (str_clear, s43),
     (try_begin),
         (eq, "$current_town", "p_town_6"),
         (troop_get_slot, reg39, "trp_senator_dummy", slot_senate_next_meeting),
@@ -48985,7 +48992,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_pret_1_2",0,
-  "You finally reach Rome with your detachment. The centurios deploy their troops and the tribunus urbanae gives a short speech in which he explains the orders of Tigellinus:^^"
+  "You finally reach Rome with your detachment. The centuriones deploy their troops and the tribunus urbanae gives a short speech in which he explains the orders of Tigellinus:^^"
   +" 'Soldiers, Princeps Nero has ordered us to crush this revolt with violence. Our commander Tigellinus said we shall show no mercy, as the troublemakers doesn't deserve it."
   +"  If one of you may now say: This are Roman citizens, we can't kill them. Tigellinus and our Caesar said: They are traitors. Keep that in mind.'",
   "none",[
@@ -50132,7 +50139,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_2",0,
-  "Sleep^^One of the soldiers on guard fell asleep. You are the only one who has noticed it so far. If one of the Optios or Centurios notice, he will get punished. If you wake him up you could save him from punishment."
+  "Sleep^^One of the soldiers on guard fell asleep. You are the only one who has noticed it so far. If one of the Optios or centuriones notice, he will get punished. If you wake him up you could save him from punishment."
   +" On the other hand, if you tell the Centurio he fell asleep, you may make some progress towards promotion...",
   "none",[
     (set_background_mesh, "mesh_pic_mb_warrior_3"),
