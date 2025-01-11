@@ -10004,10 +10004,7 @@ presentations = [
     (try_end),
   ]),
 ]),
-
-
 ##END CHARACTER REPORT
-
 ##New camp menu
 ("camp_menu", 0,mesh_load_window,[
   (ti_on_presentation_load,[
@@ -10563,12 +10560,9 @@ presentations = [
     (position_set_y, pos1, ":cur_y"),
     (overlay_set_position, reg0, pos1),
     (val_sub, ":cur_y", 25),
-
     (set_container_overlay, -1),
 
-
     #party morale report
-
     #size of the text
     (position_set_x, pos2, 900),
     (position_set_y, pos2, 900),
@@ -12030,11 +12024,11 @@ presentations = [
 
         (try_begin),
             (party_slot_eq, "$g_encountered_party", slot_party_type, spt_village),
-            (store_mul, ":length", number_of_buildings_village, 40),
+            (store_mul, ":length", number_of_buildings_village, 29),
             (assign, ":loop_begin", village_improvements_begin),
             (assign, ":loop_end", village_improvements_end),
         (else_try),
-            (store_mul, ":length", number_of_buildings_town, 40),
+            (store_mul, ":length", number_of_buildings_town, 29),
             (assign, ":loop_begin", walled_center_improvements_begin),
             (assign, ":loop_end", walled_center_improvements_end),
         (try_end),

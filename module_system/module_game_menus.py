@@ -907,7 +907,29 @@ game_menus = [
       (jump_to_menu, "mnu_reports"),
     ]),
 ]),
-
+("destory_fortifications",mnf_scale_picture|mnf_enable_hot_keys,
+  "You have set up fortifications. What do you wish to do?",
+  "none",[
+    (set_background_mesh, "mesh_pic_camp"),
+  ],[
+    ("resume_travelling",[],"Camp Menu.",[
+      (jump_to_menu, "mnu_camp"),
+    ]),
+    ("resume_travelling",[],"Abandon fortifications.",[
+      (troop_set_slot, "trp_global_variables", g_player_trench, 0),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+    ("resume_travelling",[],"Continue camping.",[
+      (jump_to_menu, "mnu_auto_return_map"),
+      (assign,"$g_camp_mode", 1),
+      (assign, "$g_infinite_camping", 0),
+      (assign, "$g_player_icon_state", pis_camping),
+      (rest_for_hours_interactive, 24 * 365, 5, 1), #rest while attackable
+      (leave_encounter),
+      #(change_screen_map),
+      (jump_to_menu, "mnu_auto_return_map"),#phaiak
+    ]),
+]),
 ("camp",mnf_scale_picture|mnf_enable_hot_keys,
   "{s23}^^{s37}^^Current party stance: {s36}^^{s60}",
   "none",[
@@ -932,12 +954,17 @@ game_menus = [
     (else_try),
       (eq,"$temp",6), #waiting, building, exit
       (assign,"$temp",0), #waiting, building, exit
+      (jump_to_menu, "mnu_auto_return_map"),
       (try_begin),
-        (troop_slot_ge, "trp_global_variables", g_player_trench, 1),
-        (troop_set_slot, "trp_global_variables", g_player_trench, 0),
-        (display_message, "@Fortifications are destroyed.", message_alert), #SB : colorize
+        (troop_slot_eq, "trp_global_variables", g_player_trench, 1),
+        (eq,"$g_camp_mode", 1),
+        (assign, "$g_infinite_camping", 0),
+        (assign, "$g_player_icon_state", pis_camping),
+        (rest_for_hours_interactive, 24 * 365, 5, 1), #rest while attackable
+        (leave_encounter),
+        #(change_screen_map),
+        (jump_to_menu, "mnu_auto_return_map"),#phaiak
       (try_end),
-      (change_screen_map),
     (else_try),
       (start_presentation,"prsnt_camp_menu"),
       (party_slot_eq, "p_main_party", slot_party_on_water, 0),
@@ -11447,10 +11474,16 @@ game_menus = [
 ("village",mnf_enable_hot_keys,
   "{s10} {s12}^{s11}^{s6}{s7}^^{s44}",
   "none",[
+    (str_clear, s10),
+    (str_clear, s11),
+    (str_clear, s12),
+    (str_clear, s6),
+    (str_clear, s7),
+    (str_clear, s44),
+
     (assign, "$current_town", "$g_encountered_party"),
     (call_script, "script_update_center_recon_notes", "$current_town"),
 
-    (str_clear, s44),
     (party_get_slot, ":disease", "$current_town", slot_center_disease),
     (try_begin),
         (ge, ":disease", 1),
@@ -11501,8 +11534,7 @@ game_menus = [
         (str_store_troop_name,s8,":center_lord"),
         (str_store_string,s7,"@{s8} of {s9}"),
     (try_end),
-    (str_clear, s10),
-    (str_clear, s12),
+
     (try_begin),
         (neg|party_slot_eq, "$current_town", slot_village_state, svs_looted),
         (str_store_string, s60, s2),
@@ -11533,7 +11565,6 @@ game_menus = [
         (str_store_string, s12, ":str_id"),
     (try_end),
 
-    (str_clear, s11),
     ##diplomacy start+
     (assign, ":save_reg0", reg0),#save variables
 		(assign, ":save_reg4", reg4),
@@ -11646,7 +11677,6 @@ game_menus = [
 		(assign, reg4, ":save_reg4"),
 		##diplomacy end+
 
-    (str_clear, s7),
     (try_begin),
         (neg|party_slot_eq, "$current_town", slot_village_state, svs_looted),
         (party_get_slot, ":center_relation", "$current_town", slot_center_player_relation),
@@ -11654,7 +11684,6 @@ game_menus = [
         (assign, reg9, ":center_relation"),
         (str_store_string, s7, "@{!} {s3} ({reg9})."),
     (try_end),
-    (str_clear, s6),
     (try_begin),
         (party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
         (party_get_slot, ":bandit_troop", "$current_town", slot_village_infested_by_bandits),
@@ -14020,7 +14049,9 @@ game_menus = [
         (party_slot_ge, "$g_encountered_party", slot_party_looted_left_days, 1),
         (jump_to_menu, "mnu_center_looted"),
     (try_end),
-    (set_background_mesh, "mesh_pic_castlesnow"),
+
+    (set_background_mesh, "mesh_pic_omen_bird"),
+
     (try_begin),  #forbidden to enter?
         (store_time_of_day, reg12),
         (is_between, reg12, 5, 21),
