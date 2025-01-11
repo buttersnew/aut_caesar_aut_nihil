@@ -3060,7 +3060,7 @@ scripts_hardcoded = [
     (party_set_slot,"p_village_145", slot_castle_exterior, "scn_village_spain_2"),
     (party_set_slot,"p_village_23", slot_castle_exterior, "scn_village_spain_3"),
 
-    (party_set_slot,"p_village_146", slot_castle_exterior, "scn_village_spain_1"),
+    (party_set_slot,"p_village_146", slot_castle_exterior, "scn_village_caesar_augusta"),
     (party_set_slot,"p_village_13", slot_castle_exterior, "scn_village_spain_2"),
     (party_set_slot,"p_village_139", slot_castle_exterior, "scn_village_spain_3"),
 

@@ -266,6 +266,7 @@ scenes = [
   ("village_spain_3", sf_generate,"none", "none", (0,0),(100,100),-100, "0x000000003000050000063992000001970000443d000036c3",  [],[],"outer_terrain_plain"),
   ("village_spain_4", sf_generate,"none", "none", (0,0),(100,100),-100, "0x000000003000050000063992000001970000443d000036c3",  [],[],"outer_terrain_plain"),
   ("village_spain_5", sf_generate,"none", "none", (0,0),(100,100),-100, "0x000000003000050000059d670000359600004ac200003dcf",  [],[],"outer_terrain_plain"),
+  ("village_caesar_augusta", sf_generate,"none", "none", (0,0),(100,100),-100, "0x0000000230000500000816080000381a0000018600006fbe",  [],[],"outer_terrain_mountain_3"),
 
   ("village_persia_1", sf_generate,"none", "none", (0,0),(100,100),-100,"0x000000002000050000059d670000359600004ac200003dcf",  [],[],"outer_terrain_plain"),
   ("village_persia_2", sf_generate,"none", "none", (0,0),(100,100),-100,"0x000000002000050000059d670000359600004ac200003dcf",  [],[],"outer_terrain_plain"),
