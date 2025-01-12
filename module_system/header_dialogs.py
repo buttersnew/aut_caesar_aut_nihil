@@ -26,5 +26,5 @@ multi_line          = 0x00080000
 
 suf_other_bits   = 20
 
-def other(other_troop_id):
+def other(other_troop_id): # max troop-id shouldnt be higher than 2047 because of this
   return other_troop_id << suf_other_bits
