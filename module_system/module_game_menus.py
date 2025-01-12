@@ -2264,7 +2264,6 @@ game_menus = [
       (try_end),
       (display_message, "@End"),
     ]),
-
     ("camp_action",[
     ],"Show legendary items.",[
       (assign, "$cheat_find_item_range_begin", 0),
@@ -33873,18 +33872,15 @@ game_menus = [
       (set_spawn_radius, 15),
       (try_begin),
           (store_num_parties_of_template, reg54, "pt_mountain_bandits"),
-          (lt, reg54, 17),
-          (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-          (assign, ":party", reg0),
-          (party_add_template, ":party", "pt_mountain_bandits"),
-          (party_add_template, ":party", "pt_mountain_bandits"),
-          (party_add_template, ":party", "pt_mountain_bandits"),
-
-          (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-          (assign, ":party", reg0),
-          (party_add_template, ":party", "pt_mountain_bandits"),
-          (party_add_template, ":party", "pt_mountain_bandits"),
-          (party_add_template, ":party", "pt_mountain_bandits"),
+          (lt, reg54, 20),
+          (try_for_range, ":unused", 0, 4),
+              (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
+              (assign, ":party", reg0),
+              (party_add_template, ":party", "pt_mountain_bandits"),
+              (party_add_template, ":party", "pt_mountain_bandits"),
+              (party_add_template, ":party", "pt_mountain_bandits"),
+              (party_set_slot, ":party", slot_party_spawn_point, "p_town_19"),
+          (try_end),
       (try_end),
       (call_script, "script_spawn_looters", "p_town_19", 4),
       (val_add, "$g_unrest", 2),
@@ -33904,37 +33900,13 @@ game_menus = [
 	],[
     ("answere_1",[],"Continue.",[
       (set_spawn_radius, 5),
-
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (assign, ":party", reg0),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (assign, ":party", reg0),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (assign, ":party", reg0),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (assign, ":party", reg0),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (assign, ":party", reg0),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (assign, ":party", reg0),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-      (party_add_template, ":party", "pt_mountain_bandits"),
-
+      (try_for_range, ":unused", 0, 6),
+          (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
+          (assign, ":party", reg0),
+          (party_add_template, ":party", "pt_mountain_bandits"),
+          (party_add_template, ":party", "pt_mountain_bandits"),
+          (party_set_slot, ":party", slot_party_spawn_point, "p_town_19"),
+      (try_end),
       (call_script, "script_spawn_looters", "p_town_19", 5),
       (val_add, "$g_unrest", 2),
       (display_message, "@Stability of the Empire decreases", color_bad_news),
@@ -33955,11 +33927,11 @@ game_menus = [
 	],[
     ("answere_1",[],"Continue.",[
       (set_spawn_radius, 5),
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
-      (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
+      (try_for_range, ":unused", 0, 5),
+        (call_script, "script_spawn_party","p_town_19","pt_mountain_bandits"),
+        (assign, ":party", reg0),
+        (party_set_slot, ":party", slot_party_spawn_point, "p_town_19"),
+      (try_end),
       (val_sub, "$g_unrest", 2),
       (display_message, "@Stability of the Empire decreases", color_bad_news),
       (change_screen_map),
@@ -34961,45 +34933,40 @@ game_menus = [
 ),
 
 ("persecution",0,
-    "Persecution^^As you come closer to the town, you see crosses. First you don't know what is going on. You stand there and look\
-    at those people hanging on the crosses.^\
-	Mankind left alone and lonely, as Death, on the morrow Harvests the grain of humans.^^\
-	You see a mob, several hundred people, throwing rotten food on a woman with her child. You hear someone shout: 'Those Christians are weak sheep! They must be slaughtered like the animals they are.' The mob roars.",
-    "none",
-    [
+  "Persecution^^As you come closer to the town, you see crosses. First you don't know what is going on. You stand there and look"
+  +" at those people hanging on the crosses.^Mankind left alone and lonely, as Death, on the morrow Harvests the grain of humans.^^"
+  +"You see a mob, several hundred people, throwing rotten food on a woman with her child. You hear someone shout: 'Those Christians are weak sheep! They must be slaughtered like the animals they are.' The mob roars.",
+  "none",[
     (set_background_mesh, "mesh_pic_kreuzigung"),
 		(party_get_slot, ":slaves", "$current_town", slot_crucified_slave_icon),
 		(remove_party, ":slaves"),
 		(party_set_slot, "$current_town", slot_crucified_slave_icon, -1),
     (party_set_slot, "$current_town", slot_center_pursue, 0),
-      ],
-    [
-      ("answer_1",[(troop_slot_eq, "trp_player", slot_troop_religion, worships_christus)],"My poor brothers and sisters in faith!",
-	  [
-	  (jump_to_menu, "mnu_town"),
-      ]),
-
-     ("answer_1",[(neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_christus)],"Pathetic",
-	  [
-	  (jump_to_menu, "mnu_town"),
-      ]),
-      ("answer_2",[
-	  (store_attribute_level, ":intelligence", "trp_player", ca_intelligence),
-	  (ge, ":intelligence", 18),
-	  ],"Religious fanatism is the cancer of mankind.",
-	  [
-	  (jump_to_menu, "mnu_town"),
-      ]),
-      ("answer_3",[
-    (neq, "$g_is_emperor", 1),
-	  (store_attribute_level, ":intelligence", "trp_player", ca_intelligence),
-	  (ge, ":intelligence", 20),
-	  ],"I should help her.",
-	  [
-	  (jump_to_menu, "mnu_speech"),
-      ]),
-	],
-),
+  ],[
+    ("answer_1",[
+      (troop_slot_eq, "trp_player", slot_troop_religion, worships_christus),
+    ],"My poor brothers and sisters in faith!",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+    ("answer_1",[
+      (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_christus),
+    ],"Pathetic",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+    ("answer_2",[
+      (store_attribute_level, ":intelligence", "trp_player", ca_intelligence),
+      (ge, ":intelligence", 18),
+    ],"Religious fanatism is the cancer of mankind.",[
+      (jump_to_menu, "mnu_town"),
+    ]),
+    ("answer_3",[
+      (neq, "$g_is_emperor", 1),
+      (store_attribute_level, ":intelligence", "trp_player", ca_intelligence),
+      (ge, ":intelligence", 20),
+    ],"I should help her.",[
+      (jump_to_menu, "mnu_speech"),
+    ]),
+]),
 
 ("speech",0,
     "You come closer to the mob and shout: 'Silentium! Leave the poor woman alone!' ^\
@@ -42302,7 +42269,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_begin),
         (troop_get_slot, ":party_no", ":enemy", slot_troop_leaded_party),
         (ge, ":party_no", 1),
-        (remove_party, ":party_no"),
+        (call_script, "script_destroy_party", ":party_no"),
         (troop_set_slot, ":enemy", slot_troop_leaded_party, -1),
       (try_end),
       (troop_join_as_prisoner, ":enemy"),
@@ -42342,7 +42309,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_troop_name, s6, "$temp_troop")
     ],"{s6} shall dismiss all troops and join me as fast as possible",[
 	    (troop_set_slot, "$temp_troop", slot_troop_leaded_party, -1),
-      (remove_party, "$temp4"),
+      (call_script, "script_destroy_party", "$temp4"),
       (start_presentation, "prsnt_companion_overview"),
      	(display_message, "@A runner is sent."),
 		]),
@@ -44354,12 +44321,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     #(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -30),
     #(call_script, "script_change_player_relation_with_faction_ex", "$g_talk_troop_faction", -2),
     (call_script, "script_event_hero_taken_prisoner_by_player", "$g_talk_troop"),
-    #(remove_party, "$g_talk_troop_party"),
+
     (troop_get_slot, ":king_party", "$g_talk_troop", slot_troop_leaded_party),
-    (try_begin),
-      (party_is_active,":king_party"),
-      (remove_party,":king_party"),
-    (try_end),
+    (call_script, "script_destroy_party", ":king_party"),
     (troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
 
     (assign, "$cant_leave_encounter", 0),
@@ -44430,12 +44394,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     #(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -30),
     #(call_script, "script_change_player_relation_with_faction_ex", "$g_talk_troop_faction", -2),
     (call_script, "script_event_hero_taken_prisoner_by_player", "$g_talk_troop"),
-    #(remove_party, "$g_talk_troop_party"),
     (troop_get_slot, ":king_party", "$g_talk_troop", slot_troop_leaded_party),
-    (try_begin),
-      (party_is_active,":king_party"),
-      (remove_party,":king_party"),
-    (try_end),
+    (call_script, "script_destroy_party", ":king_party"),
     (troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
 
     (assign, "$cant_leave_encounter", 0),
@@ -45946,7 +45906,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (assign, "$g_player_court", "p_town_19"),
 
       (troop_get_slot, ":king_party", "trp_kingdom_17_lord", slot_troop_leaded_party),
-      (remove_party,":king_party"),
+      (call_script, "script_destroy_party", ":king_party"),
       (troop_set_slot, "trp_kingdom_17_lord", slot_troop_leaded_party, -1),
       (troop_set_slot, "trp_kingdom_17_lord", slot_troop_occupation, slto_inactive),
       (troop_set_faction,"trp_kingdom_17_lord","fac_outlaws"),
@@ -46104,7 +46064,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (set_spawn_radius, 3),
         (call_script, "script_spawn_party", "p_town_19", "pt_mountain_bandits"),
         (assign, ":party", reg0),
-
+        (party_set_slot, ":party", slot_party_spawn_point, "p_town_19"),
         (party_add_members, ":party", "trp_judean_light_clubman", 10),
         (party_add_members, ":party", "trp_judean_light_spearman", 10),
         (party_add_members, ":party", "trp_judean_archer", 15),
@@ -46129,6 +46089,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
         (set_spawn_radius, 3),
         (call_script, "script_spawn_party", "p_town_19", "pt_mountain_bandits"),
+        (assign, ":party", reg0),
+        (party_set_slot, ":party", slot_party_spawn_point, "p_town_19"),
         (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 2),
     (try_end),
   ]),
@@ -60901,7 +60863,7 @@ It is said, that she lives now together with the goat.",
         (gt, ":party", last_static_party),
         (party_stack_get_troop_id, ":party_leader", ":party", 0),
         (eq, ":party_leader", "trp_albus"),
-        (remove_party, ":party"),
+        (call_script, "script_destroy_party", ":party"),
       (try_end),
       (call_script, "script_change_player_honor", -15),
       (call_script, "script_change_troop_renown", "trp_player", -50),
