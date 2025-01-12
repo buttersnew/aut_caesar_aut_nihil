@@ -6180,7 +6180,7 @@ strings = [
 	("dplmc_hero_wpn_slot_foot_armor", "Foot armor "), #14
 	("dplmc_hero_wpn_slot_hand_armor", "Hand armor "), #15
 	("dplmc_hero_wpn_slot_pistol", "Slings "), #16
-	("dplmc_hero_wpn_slot_musket", "Musket "), #17
+	("dplmc_hero_wpn_slot_musket", "Staff slings (unused) "), #17
 	("dplmc_hero_wpn_slot_bullets", "Sling rocks "), #18
 	("dplmc_hero_wpn_slot_animal", "Animal "), #19
 	("dplmc_hero_wpn_slot_book", "Book "), #20
