@@ -181,7 +181,7 @@ knows_lord_1 = knows_weapon_master_2|knows_riding_3|knows_trade_2|knows_inventor
 knows_warrior_npc = knows_weapon_master_2|knows_ironflesh_1|knows_athletics_3|knows_power_strike_2|knows_riding_2|knows_shield_1|knows_inventory_management_2|knows_leadership_1|knows_looting_1
 knows_merchant_npc = knows_riding_2|knows_trade_3|knows_inventory_management_5|knows_persuasion_2
 knows_tracker_npc = knows_weapon_master_1|knows_athletics_6|knows_spotting_2|knows_pathfinding_2|knows_tracking_2|knows_ironflesh_1|knows_inventory_management_2|knows_power_strike_1
-knows_veteran_npc = knows_weapon_master_8|knows_athletics_8|knows_spotting_2|knows_pathfinding_2|knows_tracking_2|knows_ironflesh_8|knows_power_strike_6|knows_shield_7|knows_power_draw_2|knows_power_throw_4|knows_tactics_5|knows_leadership_7|knows_riding_4|knows_looting_2|knows_engineer_2|knows_prisoner_management_2|knows_inventory_management_3
+knows_veteran_npc = knows_weapon_master_8|knows_athletics_8|knows_spotting_2|knows_pathfinding_2|knows_tracking_2|knows_ironflesh_8|knows_power_strike_6|knows_shield_7|knows_power_draw_2|knows_power_throw_4|knows_tactics_5|knows_leadership_7|knows_riding_4|knows_looting_2|knows_prisoner_management_2|knows_inventory_management_3
 
 lord_attrib = str_20|agi_20|int_20|cha_20|level(38)
 
@@ -3275,7 +3275,7 @@ str_12|agi_8|int_11|cha_8|level(5), wp(100),
 knows_warrior_npc|knows_trainer_4|knows_weapon_master_3|knows_leadership_2|knows_power_strike_1, 0x00000001b011259144d5d1d6eb55e96a00000000001db0db0000000000000000 ],
 ["npc15", "Artimenus", "Artimenus", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_legion_segmentata_cape_1,itm_roman_gladius],
-str_16|agi_12|int_17|cha_8|level(17), wp(120),
+str_16|agi_12|int_17|cha_10|level(22), wp(120),
 knows_warrior_npc|knows_tactics_5|knows_engineer_8|knows_trade_3|knows_tracking_1|knows_spotting_1, 0x00000000bf1000102b4b9123594eab5300000000001d55360000000000000000 ],
 ["npc16", "Titocuna", "Titocuna", tf_female|tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_celtic_boots,itm_dagger,itm_throwing_knives,itm_female_2_celt],
@@ -3360,7 +3360,7 @@ attrib_common_lady,wp(100),knows_common_lady,0x000000018000405a0b9b6ca6db4ab6dd0
 
 ["npc40", "Kara Boga", "Kara Boga", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_roman_hammer,itm_judean_tunic_6],
-str_16|agi_14|int_10|cha_12|level(10), wp(125), knows_warrior_npc|knows_trade_3|knows_riding_3|knows_persuasion_2, 0x000000003f00c1806dcb3503dd492ea500000000001f27180000000000000000 ],
+str_14|agi_14|int_10|cha_12|level(8), wp(125), knows_warrior_npc|knows_riding_3, 0x000000003f00c1806dcb3503dd492ea500000000001f27180000000000000000 ],
 
 ["turakina","Eamane Turakina","Emane Turakina",tf_female|tf_hero,0,0,fac_commoners,
 [itm_leather_boots, itm_alan_light_1, itm_war_spear,itm_sarmatian_bow, itm_sarmatian_arrows_2],
@@ -3368,7 +3368,7 @@ attrib_level_16_warrior,wp(150),knows_level_16_warrior,0x00000001bf00b09a37cf9d0
 
 ["npc42", "Chaditox", "Chaditox", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_light_lance,itm_sarmatian_ringsword_1,itm_sarmatian_cap_3,itm_sarmatian_light5,itm_sarmatian_shoes,itm_steppe_horse_2],
-str_16|agi_16|int_15|cha_15|level(22), wp(160),knows_archer_exp|knows_veteran_npc,  0x0000000fee01128148a39ec87d6c349b00000000001e48f80000000000000000],
+str_16|agi_16|int_15|cha_15|level(25), wp(160),knows_archer_elit_eastern,  0x0000000fee01128148a39ec87d6c349b00000000001e48f80000000000000000],
 
 #NPC system changes end
 

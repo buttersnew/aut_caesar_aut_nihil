@@ -239,6 +239,9 @@ scripts_hardcoded = [
             (faction_get_slot, ":culture", ":npc_faction", slot_faction_culture),
             (troop_set_slot, ":npc", slot_troop_culture, ":culture"),
         (try_end),
+
+        (neg|is_between, ":npc", companions_begin, companions_end),#not for companions
+
         ##construct normal distribution
         (store_random_in_range, ":trade_skill", -6, 6),# -5 to 5
         (store_random_in_range, reg0, -6, 6),# -5 to 5
