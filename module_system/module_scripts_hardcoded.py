@@ -8099,11 +8099,11 @@ scripts_hardcoded = [
             ##if party is on water speed is determnied by wind
             (try_begin),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
-                (assign, ":speed_multiplier", 80),
+                (assign, ":speed_multiplier", 60),
                 (try_begin),
-                    (eq, "$wind_power", 0),
-                    (val_sub, ":speed_multiplier", 25),
-                (else_try),
+                    # (eq, "$wind_power", 0),
+                    # (val_sub, ":speed_multiplier", 1),
+                # (else_try),
                     (eq, "$wind_power", 1),
                     (val_add, ":speed_multiplier", 20),
                 (else_try),
@@ -8125,9 +8125,9 @@ scripts_hardcoded = [
                     (party_count_companions_of_type, ":num_sailors_follower", "p_follower_party", "trp_sailor"),
                     (party_count_companions_of_type, ":num_sailors", "p_main_party", "trp_sailor"),
                     (party_count_companions_of_type, ":num_sailors1", "p_main_party", "trp_sea_raider"),
-                    (party_count_companions_of_type, ":num_sailors1", "p_main_party", "trp_black_sea_priate"),
+                    (party_count_companions_of_type, ":num_sailors2", "p_main_party", "trp_black_sea_priate"),
                     (val_add, ":num_sailors", ":num_sailors1"),
-
+                    (val_add, ":num_sailors", ":num_sailors2"),
                     (val_add, ":num_sailors", ":num_sailors_follower"),
 
                     (val_mul, ":num_sailors", 80),
@@ -8200,11 +8200,11 @@ scripts_hardcoded = [
             ##if party is on water speed is determnied by wind
             (try_begin),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
-                (assign, ":speed_multiplier", 80),
+                (assign, ":speed_multiplier", 50),
                 (try_begin),
-                    (eq, "$wind_power", 0),
-                    (val_sub, ":speed_multiplier", 25),
-                (else_try),
+                    # (eq, "$wind_power", 0),
+                    # (val_sub, ":speed_multiplier", 1),
+                # (else_try),
                     (eq, "$wind_power", 1),
                     (val_add, ":speed_multiplier", 20),
                 (else_try),
@@ -8213,6 +8213,36 @@ scripts_hardcoded = [
                 (else_try),
                     (val_add, ":speed_multiplier", 15),
                 (try_end),
+                (try_begin),
+                    (store_party_size_wo_prisoners, ":party_size", ":party_no"),
+                    (gt, ":party_size", 0),
+                    (party_count_companions_of_type, ":num_sailors", ":party_no", "trp_sailor"),
+                    (party_count_companions_of_type, ":num_sailors1", ":party_no", "trp_sea_raider"),
+                    (party_count_companions_of_type, ":num_sailors2", ":party_no", "trp_black_sea_priate"),
+                    (val_add, ":num_sailors", ":num_sailors1"),
+                    (val_add, ":num_sailors", ":num_sailors2"),
+
+                    (val_mul, ":num_sailors", 80),
+                    (store_div, ":troop_speed_percent", ":num_sailors", ":party_size"),
+                    (val_min, ":troop_speed_percent", 40),	# troop speed bonus limit cap of 40% VC-2124
+                    (assign, reg6, ":troop_speed_percent"),					#for presentation
+                    (store_mul, ":troop_speed_bonus", ":troop_speed_percent", ":speed_multiplier"),
+                    (val_div, ":troop_speed_bonus", 100),
+                (try_end),
+                (val_add, ":speed_multiplier", ":troop_speed_bonus"),
+                # (assign, ":speed_multiplier", 80),
+                # (try_begin),
+                #     (eq, "$wind_power", 0),
+                #     (val_sub, ":speed_multiplier", 25),
+                # (else_try),
+                #     (eq, "$wind_power", 1),
+                #     (val_add, ":speed_multiplier", 20),
+                # (else_try),
+                #     (eq, "$wind_power", 2),
+                #     (val_add, ":speed_multiplier", 10),
+                # (else_try),
+                #     (val_add, ":speed_multiplier", 15),
+                # (try_end),
             (try_end),
         (else_try), #on land
 
@@ -8234,6 +8264,7 @@ scripts_hardcoded = [
                 (eq,":party_template","pt_kingdom_caravan_party"),
                 (val_sub,":speed_multiplier", 5),
             (else_try),
+                (neg|party_slot_eq, ":party_no", slot_party_on_water, 1),##not on water
                 (eq,":party_template","pt_messenger_party"),
                 (val_add,":speed_multiplier", 40),
             (else_try),#to make this quest easier
@@ -8251,21 +8282,29 @@ scripts_hardcoded = [
                     (assign, ":speed_multiplier", 50),
                 (try_end),
             (else_try),
+                (neg|party_slot_eq, ":party_no", slot_party_on_water, 1),##not on water
                 (eq, ":party_template", "pt_routed_warriors"),#smal bonus for
-                (val_add,":speed_multiplier",7),
+                (val_add,":speed_multiplier", 10),
             (try_end),
             ##if a slow lords follow a fast marshall he may get lost, this helps
             (try_begin),
+                (neg|party_slot_eq, ":party_no", slot_party_on_water, 1),##not on water
+                (party_slot_eq, ":party_no", slot_party_type, spt_kingdom_hero_party),
                 (get_party_ai_behavior, ":behavior", ":party_no"),
+                (this_or_next|eq, ":behavior", ai_bhvr_driven_by_party),
                 (eq, ":behavior", ai_bhvr_driven_by_party),
                 (val_add,":speed_multiplier",20),
             (try_end),
             (try_begin),
+                (neg|party_slot_eq, ":party_no", slot_party_on_water, 1),##not on water
+                (party_slot_eq, ":party_no", slot_party_type, spt_kingdom_hero_party),
                 (get_party_ai_behavior, ":behavior", ":party_no"),
                 (eq, ":behavior", ai_bhvr_escort_party),##if party follows party it will get a speed bonus,needs testing
                 (val_add,":speed_multiplier",20),
             (try_end),
             (try_begin),
+                (neg|party_slot_eq, ":party_no", slot_party_on_water, 1),##not on water
+                (party_slot_eq, ":party_no", slot_party_type, spt_kingdom_hero_party),
                 (party_stack_get_troop_id, ":commander", ":party_no", 0),
                 (this_or_next|troop_slot_ge, ":commander", slot_troop_legion, 1),
                 (troop_slot_ge, ":commander", slot_troop_aux, 1),
