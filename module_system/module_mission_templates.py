@@ -32650,7 +32650,7 @@ mission_templates = [
     (125,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (126,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (127,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-  ],[
+  ], vc_water + [
     cannot_spawn_commoners,
     (ti_before_mission_start, 0, 0, [],[
       (scene_set_day_time, 24),

@@ -54676,7 +54676,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     ("Continue",[],"Continue.",[
       (play_track, "track_cutscene_fleet", 2),
-
+      (assign, "$beaufort", 3), # waves
       (add_xp_as_reward, 1500),
       (assign, "$g_next_menu", "mnu_the_fleet_travels"),
       (assign, "$tutorial_state", 0),
