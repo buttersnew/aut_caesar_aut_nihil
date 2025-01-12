@@ -494,6 +494,10 @@ camera_controls = [ #7 triggers
     (assign, "$cam_seeking_mouse", Far_Away)
   ]),
 
+  # (ti_escape_pressed, 0, 0, [],[
+  #   (assign, "$cam_mode", 0),
+  # ]),
+
   (0, 0, 0, [
     (neq, "$cam_mode", 0),
     (set_fixed_point_multiplier, 1000),
@@ -526,7 +530,6 @@ camera_controls = [ #7 triggers
         (assign, "$cam_zoom", reg0),
         (assign, ":change_zoom", 1),
       (try_end),
-
     (else_try),
       (key_is_down, key_numpad_minus),
       (store_div, reg0, "$cam_speed", 30),
@@ -1062,6 +1065,7 @@ camera_controls = [ #7 triggers
       (try_end),
       (mission_cam_set_aperture,75),
       (assign, "$cam_mode", 0),
+      (display_message, "@Disable strategic camera", message_alert),
     (else_try),
       (eq, "$cam_mode", 0),
       # (ge, "$cheat_mode", 1),
@@ -1100,6 +1104,7 @@ camera_controls = [ #7 triggers
         (try_end),
         (dialog_box, "str_s0", "@Strategy Camera"),
       (try_end),
+      (display_message, "@Enable strategic camera", message_alert),
     (try_end),
     (eq,":pass",1),
   ],[
@@ -2790,26 +2795,26 @@ AI_triggers = [
   # Trigger file: AI_hero_fallen
   #if AI to take over for mods with post-player battle action
   (0, 0, ti_once, [
-      (main_hero_fallen),
+    (main_hero_fallen),
 
-      (assign, "$cam_mode", 0),#pickbacking this here to disable strategic camera
+    (assign, "$cam_mode", 0),#pickbacking this here to disable strategic camera
 
-      (eq, AI_Replace_Dead_Player, 1),
-      ],[
-      (set_show_messages, 0),
-      #undo special player commands
-      (team_set_order_listener, "$fplayer_team_no", grc_everyone),
-      (team_give_order, "$fplayer_team_no", grc_everyone, mordr_use_any_weapon),
-      (team_give_order, "$fplayer_team_no", grc_everyone, mordr_fire_at_will),
+    (eq, AI_Replace_Dead_Player, 1),
+  ],[
+    (set_show_messages, 0),
+    #undo special player commands
+    (team_set_order_listener, "$fplayer_team_no", grc_everyone),
+    (team_give_order, "$fplayer_team_no", grc_everyone, mordr_use_any_weapon),
+    (team_give_order, "$fplayer_team_no", grc_everyone, mordr_fire_at_will),
 
-      #clear all scripted movement (for now)
-      (call_script, "script_player_order_formations", mordr_retreat),
-      (set_show_messages, 1),
+    #clear all scripted movement (for now)
+    (call_script, "script_player_order_formations", mordr_retreat),
+    (set_show_messages, 1),
 
-      (try_for_agents, ":agent"),	#reassign agents to the divisions AI uses
-        (agent_is_alive, ":agent"),
-        (call_script, "script_agent_fix_division", ":agent"),
-      (try_end),
+    (try_for_agents, ":agent"),	#reassign agents to the divisions AI uses
+      (agent_is_alive, ":agent"),
+      (call_script, "script_agent_fix_division", ":agent"),
+    (try_end),
   ]),
 ] #end AI triggers
 
@@ -3988,7 +3993,7 @@ jacobhinds_battle_ratio_calculate = (
   10, 0, 0, [],[
     (call_script, "script_cf_calculate_battle_ratio"),
  ])
-change_battle_speed_trigger = (0, 0, 2,[
+change_battle_speed_trigger = (0.25, 0, 0,[
     (key_clicked, key_j),
   ],[
 		(options_get_combat_speed, ":speed"),
@@ -4992,9 +4997,7 @@ dplmc_horse_speed = (
 #alternate mouse camera
 ##BEAN BEGIN - Deathcam
 
-common_move_deathcam = (
-    0, 0, 0,
-    [
+common_move_deathcam = (0, 0, 0,[
     (neq, "$enable_deahtcam", 0),
     (eq, "$g_dplmc_cam_activated", camera_mouse),
     (this_or_next|game_key_is_down, gk_move_forward),
@@ -5007,102 +5010,99 @@ common_move_deathcam = (
     (this_or_next|key_is_down, "$g_camera_adjust_add"),
     (this_or_next|key_clicked, key_home),
     (game_key_is_down, gk_zoom),
-    ],
-    [
-        (set_fixed_point_multiplier, 10000),
-        (mission_cam_get_position, pos47),
+  ],[
+    (set_fixed_point_multiplier, 10000),
+    (mission_cam_get_position, pos47),
+    # (try_begin),
+    # (key_clicked, key_home),
+        # (position_set_x, pos47, "$deathcam_death_pos_x"),
+        # (position_set_y, pos47, "$deathcam_death_pos_y"),
+        # (position_set_z, pos47, "$deathcam_death_pos_z"),
+    # (try_end),
 
+    (assign, ":move_x", 0),
+    (assign, ":move_y", 0),
+    (assign, ":move_z", 0),
+
+    (try_begin),
+      (game_key_is_down, gk_move_forward),
+      (val_add, ":move_y", 10),
+    (else_try),
+      (game_key_is_down, gk_move_backward),
+      (val_add, ":move_y", -10),
+    (try_end),
+
+    (try_begin),
+      (game_key_is_down, gk_move_right),
+      (val_add, ":move_x", 10),
+    (else_try),
+      (game_key_is_down, gk_move_left),
+      (val_add, ":move_x", -10),
+    (try_end),
+
+    (try_begin),
+      (key_is_down, "$g_camera_adjust_add"),
+      (val_add, ":move_z", 10),
+    (else_try),
+      (key_is_down, "$g_camera_adjust_sub"),
+      (val_add, ":move_z", -10),
+    (try_end),
+
+    (try_begin),
+      (game_key_is_down, gk_zoom),
+      (val_mul, ":move_x", 4),
+      (val_mul, ":move_y", 4),
+      (val_mul, ":move_z", 2),
+    (try_end),
+
+    # (try_begin),
+    # (key_is_down, key_end),
         # (try_begin),
-        # (key_clicked, key_home),
-            # (position_set_x, pos47, "$deathcam_death_pos_x"),
-            # (position_set_y, pos47, "$deathcam_death_pos_y"),
-            # (position_set_z, pos47, "$deathcam_death_pos_z"),
+        # (eq, "$deathcam_flip_y_multiplier", 1),
+            # (assign, "$deathcam_flip_y_multiplier", -1),
+            # (display_message, "@Y-Rotation Inverted"),
+        # (else_try),
+            # (assign, "$deathcam_flip_y_multiplier", 1),
+            # (display_message, "@Y-Rotation Normal"),
         # (try_end),
+    # (try_end),
 
-        (assign, ":move_x", 0),
-        (assign, ":move_y", 0),
-        (assign, ":move_z", 0),
+    (position_move_x, pos47, ":move_x"),
+    (position_move_y, pos47, ":move_y"),
+    (position_move_z, pos47, ":move_z"),
 
-        (try_begin),
-          (game_key_is_down, gk_move_forward),
-          (val_add, ":move_y", 10),
-        (else_try),
-          (game_key_is_down, gk_move_backward),
-          (val_add, ":move_y", -10),
-        (try_end),
+    (mission_cam_set_position, pos47),
 
-        (try_begin),
-          (game_key_is_down, gk_move_right),
-          (val_add, ":move_x", 10),
-        (else_try),
-          (game_key_is_down, gk_move_left),
-          (val_add, ":move_x", -10),
-        (try_end),
-
-        (try_begin),
-          (key_is_down, "$g_camera_adjust_add"),
-          (val_add, ":move_z", 10),
-        (else_try),
-          (key_is_down, "$g_camera_adjust_sub"),
-          (val_add, ":move_z", -10),
-        (try_end),
-
-        (try_begin),
-          (game_key_is_down, gk_zoom),
-          (val_mul, ":move_x", 4),
-          (val_mul, ":move_y", 4),
-          (val_mul, ":move_z", 2),
-        (try_end),
-
-        # (try_begin),
-        # (key_is_down, key_end),
-            # (try_begin),
-            # (eq, "$deathcam_flip_y_multiplier", 1),
-                # (assign, "$deathcam_flip_y_multiplier", -1),
-                # (display_message, "@Y-Rotation Inverted"),
-            # (else_try),
-                # (assign, "$deathcam_flip_y_multiplier", 1),
-                # (display_message, "@Y-Rotation Normal"),
-            # (try_end),
-        # (try_end),
-
-        (position_move_x, pos47, ":move_x"),
-        (position_move_y, pos47, ":move_y"),
-        (position_move_z, pos47, ":move_z"),
-
-        (mission_cam_set_position, pos47),
-
-        (try_begin),
-          (key_is_down, "$g_cam_tilt_left"),
-          (ge, "$deathcam_sensitivity_x", 4), #Negative check.
-          (ge, "$deathcam_sensitivity_y", 3),
-          (val_sub, "$deathcam_sensitivity_x", 4),
-          (val_sub, "$deathcam_sensitivity_y", 3),
-          (store_mod, reg6, "$deathcam_sensitivity_x", 100), #25% increments
-          (store_mod, reg7, "$deathcam_sensitivity_y", 75),
-          (try_begin),
-            (eq, reg6, 0),
-            (eq, reg7, 0),
-            (assign, reg8, "$deathcam_sensitivity_x"),
-            (assign, reg9, "$deathcam_sensitivity_y"),
-            (display_message, "@Sensitivity - 25% ({reg8}, {reg9})"),
-          (try_end),
-        (else_try),
-          (key_is_down, "$g_cam_tilt_right"),
-          (val_add, "$deathcam_sensitivity_x", 4),
-          (val_add, "$deathcam_sensitivity_y", 3),
-          (store_mod, reg6, "$deathcam_sensitivity_x", 100), #25% increments
-          (store_mod, reg7, "$deathcam_sensitivity_y", 75),
-          (try_begin),
-            (eq, reg6, 0),
-            (eq, reg7, 0),
-            (assign, reg8, "$deathcam_sensitivity_x"),
-            (assign, reg9, "$deathcam_sensitivity_y"),
-            (display_message, "@Sensitivity + 25% ({reg8}, {reg9})"),
-          (try_end),
+    (try_begin),
+      (key_is_down, "$g_cam_tilt_left"),
+      (ge, "$deathcam_sensitivity_x", 4), #Negative check.
+      (ge, "$deathcam_sensitivity_y", 3),
+      (val_sub, "$deathcam_sensitivity_x", 4),
+      (val_sub, "$deathcam_sensitivity_y", 3),
+      (store_mod, reg6, "$deathcam_sensitivity_x", 100), #25% increments
+      (store_mod, reg7, "$deathcam_sensitivity_y", 75),
+      (try_begin),
+        (eq, reg6, 0),
+        (eq, reg7, 0),
+        (assign, reg8, "$deathcam_sensitivity_x"),
+        (assign, reg9, "$deathcam_sensitivity_y"),
+        (display_message, "@Sensitivity - 25% ({reg8}, {reg9})"),
       (try_end),
-   ]
-)
+    (else_try),
+      (key_is_down, "$g_cam_tilt_right"),
+      (val_add, "$deathcam_sensitivity_x", 4),
+      (val_add, "$deathcam_sensitivity_y", 3),
+      (store_mod, reg6, "$deathcam_sensitivity_x", 100), #25% increments
+      (store_mod, reg7, "$deathcam_sensitivity_y", 75),
+      (try_begin),
+        (eq, reg6, 0),
+        (eq, reg7, 0),
+        (assign, reg8, "$deathcam_sensitivity_x"),
+        (assign, reg9, "$deathcam_sensitivity_y"),
+        (display_message, "@Sensitivity + 25% ({reg8}, {reg9})"),
+      (try_end),
+  (try_end),
+])
 
 common_rotate_deathcam = (
     0, 0, 0,
@@ -5271,11 +5271,10 @@ common_rotate_deathcam = (
 #alternate follower camera
 custom_commander_camera = (
   0, 0, 0, [
-  (neq, "$enable_deahtcam", 0),
-  (this_or_next|eq, "$g_dplmc_cam_activated", camera_follow),
-  (neg|main_hero_fallen),
-  ],
-  [
+    (neq, "$enable_deahtcam", 0),
+    (eq, "$g_dplmc_cam_activated", camera_follow),
+    # (neg|main_hero_fallen),
+  ],[
     (try_begin),
       (main_hero_fallen),
       (gt, "$dmod_current_agent", -1), #should be -1, but variable gets bugged
@@ -5287,7 +5286,6 @@ custom_commander_camera = (
       (assign, ":player_agent", "$g_player_agent"),
       (assign, ":duration", 0),#instant
     (try_end),
-
     #compared to other deathcams these values are kept between missions
     (ge, ":player_agent", 0),
     (assign, ":continue", 0),
@@ -5324,7 +5322,6 @@ custom_commander_camera = (
         (val_sub, "$g_camera_rotate_x", 5),
       (try_end),
     (try_end),
-
     (try_begin),
       (key_is_down, key_left_control),
       (try_begin),
@@ -5340,12 +5337,10 @@ custom_commander_camera = (
       (assign, ":duration", 0),
       (mission_cam_set_mode, 1),
     (try_end),
-
     (agent_get_look_position, pos47, ":player_agent"),
     #moving around x when following is pointless
     (position_move_z, pos47, "$g_camera_z"),
     (position_move_y, pos47, "$g_camera_y"),
-
     (position_rotate_z, pos47, "$g_camera_rotate_z"),
     #rot x is the only one that makes sense, other rotations tilt too much
     (position_rotate_x, pos47, "$g_camera_rotate_x"),
@@ -5356,7 +5351,6 @@ custom_commander_camera = (
       (position_move_z, pos47, 90),
       (val_div, ":duration", 2),#mounted agents need to refresh faster
     (try_end),
-
     #prevent clipping underground
     (position_get_distance_to_ground_level, ":height", pos47),
     (try_begin), #centimeters?
@@ -5364,7 +5358,6 @@ custom_commander_camera = (
       (position_set_z_to_ground_level, pos47),
       (position_move_z, pos47, 15), #keep around knee height?
     (try_end),
-
     (try_begin), #if we don't cancel during first person, head disappears
       (call_script, "script_cf_cancel_camera_keys"),
       (neg|main_hero_fallen),
