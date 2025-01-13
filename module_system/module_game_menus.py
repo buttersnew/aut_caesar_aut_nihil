@@ -32534,7 +32534,7 @@ game_menus = [
     (store_random_in_range, ":r", 0, 2),
     (try_begin),
         (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
-        (ge, "$g_is_emperor", 1),
+        # (ge, "$g_is_emperor", 1),
         (str_store_string, s25, "str_event_grain_emperor"),
     (else_try),
         (eq, ":r", 0),
@@ -32549,7 +32549,7 @@ game_menus = [
   ],[
     ("continue",[
       (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
-      (ge, "$g_is_emperor", 1),
+      # (ge, "$g_is_emperor", 1),
       (store_troop_gold, ":gold", "trp_player"),
       (store_troop_gold, ":treasury", "trp_household_possessions"),
       (val_add, ":gold", ":treasury"),
@@ -32563,14 +32563,14 @@ game_menus = [
     ]),
     ("continue",[
       (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
-      (ge, "$g_is_emperor", 1),
+      # (ge, "$g_is_emperor", 1),
     ],"Buy additional grain, using funds from the imperial treasury! [150,000 denars]",[
       (call_script, "script_add_to_faction_treasury", -150000, "$g_notification_menu_var1"),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("continue",[
       (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
-      (ge, "$g_is_emperor", 1),
+      # (ge, "$g_is_emperor", 1),
     ],"Let them eat cake! [Do nothing]",[
       (call_script, "script_change_troop_renown", "trp_player", -25),
       (call_script, "script_change_player_honor", -5),
@@ -32579,7 +32579,8 @@ game_menus = [
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("continue",[
-      (lt, "$g_is_emperor", 1),
+      (neg|faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
+      # (lt, "$g_is_emperor", 1),
     ],"Continue",[
       (jump_to_menu, "mnu_auto_return_map"),
     ]),

@@ -9722,11 +9722,11 @@ presentations = [
         (val_sub, ":cur_y", 27),
     (try_end),
 
-    (troop_get_slot, reg22, "trp_player", slot_troop_influence),
     (create_text_overlay, reg0, "@Influence:", 0),
     (position_set_y, pos1, ":cur_y"),
     (overlay_set_position, reg0, pos1),
     (overlay_set_size, reg0, pos2),
+    (troop_get_slot, reg22, "trp_player", slot_troop_influence),
     (create_text_overlay, reg0, "@{reg22}", 0),
     (try_begin),
         (ge, reg22, 500),
