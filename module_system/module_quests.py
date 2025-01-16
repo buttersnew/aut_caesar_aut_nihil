@@ -441,7 +441,7 @@ quests = [
   ("town_trade_2", "Special Quest: The merchant Lucillus", qf_random_quest,
   "{!}placeholder"
   ),
-  ("the_eagle", "Special Quest: The Eagle", qf_random_quest,
+  ("the_eagle", "Special Quest: The eagle", qf_random_quest,
   "{!}placeholder"
   ),
   ("new_hope", "Main Story: A new hope", qf_random_quest,

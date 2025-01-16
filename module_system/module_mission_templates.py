@@ -20764,6 +20764,8 @@ mission_templates = [
     cannot_spawn_commoners,
 
     (ti_tab_pressed, 0, 0,[
+        (eq, "$temp1", 0),
+
         (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
         (finish_mission, 4),
         (jump_to_menu, "mnu_auto_return_map"),
@@ -20800,6 +20802,7 @@ mission_templates = [
         (call_script, "script_get_event_details", event_fire_of_rome),
         (call_script, "script_change_center_prosperity", "p_town_6", reg1),
         (party_set_slot, "p_town_6", slot_center_event, event_fire_of_rome),
+        (assign, "$temp1", 1),
     ],[]),
 
     (ti_before_mission_start, 0, 0, [],[
@@ -20809,6 +20812,8 @@ mission_templates = [
         (store_random_in_range, ":haze_power", 30, 35),
         (set_global_haze_amount, ":haze_power"),
         (set_fog_distance, ":fog_distance", 0x333333),
+
+        (assign, "$temp1", 0),
     ]),
 
 

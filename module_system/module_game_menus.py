@@ -2248,22 +2248,94 @@ game_menus = [
   "Choose an action:",
   "none",
   [],[
-    ("camp_cheat", [(ge, "$cheat_mode", 1)], "Find Roman parties",[
-      (display_message, "@Searching for roman parties"),
-      (display_message, "@name; type; template;"),
-      (try_for_parties, ":party"),
-        (party_is_active, ":party"),
-        (store_faction_of_party, ":faction", ":party"),
-        (eq, ":faction", "fac_kingdom_7"),
-        (party_get_template_id, ":template", ":party"),
-        (assign, reg10, ":template"),
-        (str_store_party_name, s10, ":party"),
-        (party_get_slot, reg11, ":party", slot_party_type),
-        (display_message, "@{s10}; {reg11}; {reg10}"),
-        # (party_relocate_near_party, ":party", "p_main_party", 2),
-      (try_end),
-      (display_message, "@End"),
-    ]),
+    # does not work
+    # ("camp_action",[
+    #   (eq, "$g_campaign_type", g_campaign_story_rome),
+    #   (ge, "$cheat_mode", 1),
+    # ],"Cheat: Progress to battle of Bedriacum in story (Vespasian).",[
+    #   # finish start quests
+    #   #Finish quest 1
+    #   (call_script, "script_succeed_quest", "qst_collect_men"),
+    #   (call_script, "script_end_quest", "qst_collect_men"),
+    #   #Setup quest 2: find location of brother
+    #   (str_store_party_name, s9, "$current_town"),
+    #   (str_store_string, s2, "str_start_up_quest_message_2"),
+    #   (call_script, "script_start_quest", "qst_learn_where_merchant_brother_is", "$g_talk_troop"),
+    #   #Finish quest 2
+    #   (call_script, "script_succeed_quest", "qst_learn_where_merchant_brother_is"),
+    #   (call_script, "script_end_quest", "qst_learn_where_merchant_brother_is"),
+    #   #Setup quest 3: rescue brother
+    #   (str_store_troop_name, s10, "$g_talk_troop"),
+    #   (str_store_string, s2, "str_find_the_lair_near_s9_and_free_the_brother_of_the_prominent_s10_merchant"),
+    #   (call_script, "script_start_quest", "qst_save_relative_of_merchant", "$g_talk_troop"),
+    #   #Finish quest 3
+    #   (assign, "$relative_of_merchant_is_found", 1),
+    #   (call_script, "script_succeed_quest", "qst_save_relative_of_merchant"),
+    #   (call_script, "script_finish_quest", "qst_save_relative_of_merchant", 100),
+    #   (troop_add_gold, "trp_player", 200),
+    #   #Setup quest 4: fight bandits
+    #   (str_store_party_name_link, s9, "$g_starting_town"),
+    #   (str_store_string, s2, "str_save_town_from_bandits"),
+    #   (call_script, "script_start_quest", "qst_save_town_from_bandits", "$g_talk_troop"),
+    #   #Finish quest 4
+    #   (assign, "$current_startup_quest_phase", 4),
+    #   (call_script, "script_change_player_relation_with_center", "$g_starting_town", 1),
+    #   (troop_add_gold, "trp_player", 200),
+    #   (call_script, "script_succeed_quest", "qst_save_town_from_bandits"),
+    #   (call_script, "script_end_quest", "qst_save_town_from_bandits"),
+    #   #So he'll reappear in the tavern (unless you don't immediately speak with him)
+    #   (assign, "$dialog_with_merchant_ended", 1),
+    #   (assign, "$g_do_one_more_meeting_with_merchant", 1),
+
+    #   (call_script, "script_succeed_quest", "qst_poking_the_lion"),
+    #   (call_script, "script_end_quest", "qst_poking_the_lion"),
+
+    #   (str_store_troop_name_link, s22, "trp_senator_1"),
+    #   (str_store_troop_name_link, s23, "trp_legatus_11"),
+    #   (str_store_troop_name_link, s24, "trp_statthalter_9"),
+    #   (str_store_troop_name_link, s25, "trp_senator_2"),
+
+    #   (add_quest_note_from_sreg, "qst_blank_quest_19", 6, "@You staged a revolt in Judea! Now you need to find allies among {s22}, {s23}, {s24} or {s25}.", 1),
+
+    #   (str_store_string, s2, "@Antonia ordered you to gain the trust of either {s22}, {s23}, {s24} or {s25}. Antonia favors {s23}, but you can choose whomever you like.^(Hint: Improve your relation to be at least 50 and have 750 influence points, then in the influence-dialogue-menu a new dialogue option will appear.)"),
+    #   (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 1),
+    #   (call_script, "script_start_quest", "qst_four_emperors", "trp_fortuna"),
+
+    #   (assign, "$jewish_revolt", 1),
+
+    #   (call_script, "script_add_notification_menu", "mnu_player_raises_to_nobility",0,0),#make player join rome
+
+    #   (call_script, "script_add_notification_menu", "mnu_fire_of_rome", 0, 0), # fire of rome
+
+    #   (troop_add_gold, "trp_player", 10000000),
+    #   (troop_set_slot, "trp_player", slot_troop_influence, 10000),
+    #   (troop_set_slot, "trp_player", slot_troop_renown, 10000),
+    #   (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 5),
+    #   (quest_set_slot, "qst_four_emperors", slot_quest_timer, 1),
+    #   (quest_set_slot, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
+
+    #   (setup_quest_text,"qst_blank_quest_19"),
+    #   (str_store_string, s2, "@You descended into Hades and talked with several great figures. Among them the oracle Teiresias foretold your future: One day you would bear the title of Caesar Augustus and rule in Rome."),
+    #   (call_script, "script_start_quest", "qst_blank_quest_19", "trp_fortuna"),
+    #   (quest_set_slot, "qst_blank_quest_19", slot_quest_object_state, 5),
+    #   (change_screen_map),
+    # ]),
+    # ("camp_cheat", [(ge, "$cheat_mode", 1)], "Find Roman parties",[
+    #   (display_message, "@Searching for roman parties"),
+    #   (display_message, "@name; type; template;"),
+    #   (try_for_parties, ":party"),
+    #     (party_is_active, ":party"),
+    #     (store_faction_of_party, ":faction", ":party"),
+    #     (eq, ":faction", "fac_kingdom_7"),
+    #     (party_get_template_id, ":template", ":party"),
+    #     (assign, reg10, ":template"),
+    #     (str_store_party_name, s10, ":party"),
+    #     (party_get_slot, reg11, ":party", slot_party_type),
+    #     (display_message, "@{s10}; {reg11}; {reg10}"),
+    #     # (party_relocate_near_party, ":party", "p_main_party", 2),
+    #   (try_end),
+    #   (display_message, "@End"),
+    # ]),
     ("camp_action",[
     ],"Show legendary items.",[
       (assign, "$cheat_find_item_range_begin", 0),
