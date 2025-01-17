@@ -11992,7 +11992,6 @@ game_menus = [
           (neg|check_quest_failed, "qst_hunt_down_fugitive"),
           (set_visitor, 45, "trp_fugitive"),
         (try_end),
-
         (set_jump_mission,"mt_village_center"),
         #VC-2404
         (try_begin),

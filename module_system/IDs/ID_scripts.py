@@ -1019,3 +1019,4 @@ script_set_wave_shader = 1017
 script_set_wave_timer = 1018
 script_get_wave_properties = 1019
 script_destroy_party = 1020
+script_cf_can_spawn_as_body_guard = 1021

@@ -1536,9 +1536,7 @@ bodyguard_triggers = [
     (party_get_num_companion_stacks, ":num_of_stacks", "p_main_party"),
     (try_for_range, ":i", 0, ":num_of_stacks"),
         (party_stack_get_troop_id, ":troop_id", "p_main_party", ":i"),
-        (neq, ":troop_id", "trp_player"),
-        (troop_is_hero, ":troop_id"),
-        (neg|troop_is_wounded, ":troop_id"),
+        (call_script, "script_cf_can_spawn_as_body_guard", ":troop_id"),
         (val_add, ":bodyguard_count", 1),
 
         (try_begin), #For prison-breaks
@@ -1556,29 +1554,35 @@ bodyguard_triggers = [
     (set_show_messages, 0),
     (team_give_order, ":playerteam", 8, mordr_follow), #Division 8 to avoid potential conflicts
     (set_show_messages, 1),
-   ]),
+  ]),
 
- (ti_on_agent_spawn, 0, 0, [],
-   [
+  (ti_on_agent_spawn, 0, 0, [],[
     (store_trigger_param_1, ":agent"),
-    (agent_is_human, ":agent"),
-    (agent_is_alive, ":agent"),
+    (agent_is_active, ":agent"),
+    (assign, ":agent_horse", -1),
+    (try_begin),# in case companion spawns mounted
+        (neg|agent_is_human, ":agent"),
+        (agent_get_rider, ":rider", ":agent"),
+        (agent_is_active, ":rider"),
+        (assign, ":agent_horse",":agent"),
+        (assign, ":agent", ":rider"),
+        (agent_get_troop_id, ":troop", ":agent"),
+        (str_store_troop_name, s10, ":troop"),
+    (try_end),
     (agent_get_troop_id, ":troop", ":agent"),
-    (neq, ":troop", "trp_player"),
-    (troop_is_hero, ":troop"),
-    (main_party_has_troop, ":troop"),
+    (call_script, "script_cf_can_spawn_as_body_guard", ":troop"),
+    (str_store_troop_name, s10, ":troop"),
 
     (get_player_agent_no, ":player"),
     (agent_get_team, ":playerteam", ":player"),
-    (agent_get_position,pos1,":player"),
-
+    (agent_get_position,pos25,":player"),
     (agent_set_team, ":agent", ":playerteam"),
     (agent_set_division, ":agent", 8),
     (agent_add_relation_with_agent, ":agent", ":player", 1),
     (agent_set_is_alarmed, ":agent", 1),
     (store_random_in_range, ":shift", 1, 3),
     (val_mul, ":shift", 100),
-    (position_move_y, pos1, ":shift"),
+    (position_move_y, pos25, ":shift"),
     (store_random_in_range, ":shift", 1, 3),
     (store_random_in_range, ":shift_2", 0, 2),
     (val_mul, ":shift_2", -1),
@@ -1586,20 +1590,27 @@ bodyguard_triggers = [
         (neq, ":shift_2", 0),
         (val_mul, ":shift", ":shift_2"),
     (try_end),
-    (position_move_x, pos1, ":shift"),
-    (agent_set_position, ":agent", pos1),
-   ]),
+    (position_move_x, pos25, ":shift"),
+    (agent_set_position, ":agent", pos25),
+    (try_begin),
+        (eq, ":agent_horse", -1),
+        (agent_get_horse, ":agent_horse", ":agent"),
+    (try_end),
+    (try_begin),
+        (agent_is_active, ":agent_horse"),
+        (agent_set_position, ":agent_horse", pos25),
+    (try_end),
+  ]),
 
- (ti_on_agent_killed_or_wounded, 0, 0, [],
-    [
-     (store_trigger_param_1, ":dead_agent"),
-     (agent_get_troop_id, ":troop", ":dead_agent"),
-     (neq, ":troop", "trp_player"),
-     (troop_is_hero, ":troop"),
-     (main_party_has_troop, ":troop"),
-     (party_wound_members, "p_main_party", ":troop", 1),
-    ]),
- ]
+  (ti_on_agent_killed_or_wounded, 0, 0, [],[
+    (store_trigger_param_1, ":dead_agent"),
+    (agent_get_troop_id, ":troop", ":dead_agent"),
+    (neq, ":troop", "trp_player"),
+    (troop_is_hero, ":troop"),
+    (main_party_has_troop, ":troop"),
+    (party_wound_members, "p_main_party", ":troop", 1),
+  ]),
+]
 
 nero_lyre_playing =  (0, 0, 0,[
     (key_clicked,key_o),

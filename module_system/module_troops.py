@@ -281,6 +281,9 @@ parthian_face_middle	 = 0x000000003f00d2cf5beeffffffffffff00000000001efff9000000
 persian_face_young= 0x000000003f00114d124000000020000000000000001c00800000000000000000
 persian_face_middle	 = 0x000000003f0043516deeffffffffffff00000000001efff90000000000000000
 
+persian_face_young_2 = 0x0000000c3f113211615d8a38db6db79b00000000001c00710000000000000000
+persian_face_middle_2 = 0x0000000c3f113211615d8a38db6db79b00000000001c00710000000000000000
+
 armenian_face_young= 0x000000002e012002124000000020000000000000001c00800000000000000000
 armenian_face_middle	 = 0x000000003f01358d6deeffffffffffff00000000001efff90000000000000000
 
@@ -353,6 +356,7 @@ all_face_1 = 0x000000002708000036db6db6db6db6db00000000001db6db0000000000000000
 all_face_2 = 0x000000002709a01236db6db6db6db6db00000000001db6db0000000000000000
 all_face_woman_1 = 0x00000001af08008136db6db6db6db6db00000000001db6db0000000000000000
 all_face_woman_2 = 0x00000001af08e09d36db6db6db6db6db00000000001db6db0000000000000000
+
 
 tf_guarantee_all = tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged
 tf_guarantee_all_wo_ranged = tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield
@@ -1057,7 +1061,7 @@ attrib_level_29_warrior, wp(170), knows_archer_elit, scythian_face_21, scythian_
 ##new Eastern mercenaries (parthia et armenia) p_town_22 p_town_10
 ["persian_picaxe_man", "Tabargane Eranshahr", "Tabargane Eranshahr", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_culture_6,
 [itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,itm_military_hammer,itm_throwing_spears_east,itm_throwing_spears_east]+eastern_boots_light+eastern_armor_furarmor+persian_helm_light+scythian_shields_1,
-attrib_level_18, wp(140), knows_level_18, persian_face_young, persian_face_middle ],
+attrib_level_18, wp(140), knows_level_18, persian_face_young_2, persian_face_middle_2 ],
 ["persian_noble_cav", "Asad Asavaran", "Asad Asavaran", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
 [itm_cataphract_eastern,itm_mamluke_mail,itm_sarranid_elite_armor,itm_sarranid_mace_1,itm_cataphract_boots,
 itm_persian_bow,itm_barbed_arrows,itm_lance]+horse_parth_cataphract+horse_parth_half_cataphract+parthian_helm_sallet+armenian_helm_heavy,

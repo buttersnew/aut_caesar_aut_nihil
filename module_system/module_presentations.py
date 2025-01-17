@@ -19595,7 +19595,7 @@ presentations = [
       (eq, ":object", "$g_presentation_obj_admin_panel_8"),
       (str_store_string,s2,"@Bodyguards"),
       (str_store_string,s3,"str_qual_life_feature"),
-      (str_store_string,s4,"@If enabled, up to four companions will accompany you when you walk in taverns, through the streets etc."),
+      (str_store_string,s4,"@If enabled, up to four companions will accompany you when you walk in taverns, through the streets etc. Companions spawn according to their position inside the party. Companions ordered first, will spawn first."),
       (overlay_set_display, "$g_presentation_obj_4", 0),
     (else_try),
       (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_admin_panel_7"),
