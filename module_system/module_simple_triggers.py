@@ -5084,10 +5084,10 @@ simple_triggers = [
         (ge, reg20, 1),
         (try_begin),
             (gt, reg20, 50),
-            (store_sub, ":prob", reg20, 50),
-            (val_div, ":prob", 5),
+            (store_sub, ":prob", reg20, 50),#55-50 = 5
+            (val_div, ":prob", 5), # 5 / 5 = 1
             (store_random_in_range, ":r", 0, 21),
-            (lt, ":r", ":prob"),
+            (lt, ":r", ":prob"), # r = 0 continues
             (party_get_num_prisoner_stacks, ":num_stacks", "$cur_village_weekly_on_average"),
             (assign, reg22, 0),
             (try_for_range_backwards, ":troop_iterator", 0, ":num_stacks"),
