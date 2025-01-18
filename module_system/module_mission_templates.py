@@ -1559,6 +1559,14 @@ bodyguard_triggers = [
   (ti_on_agent_spawn, 0, 0, [],[
     (store_trigger_param_1, ":agent"),
     (agent_is_active, ":agent"),
+
+    # (try_begin),
+    #     (agent_is_human, ":agent"),
+    #     (agent_get_team, reg15, ":agent"),
+    #     (str_store_agent_name, s0, ":agent"),
+    #     (display_message, "@{s0} team {reg15}"),
+    # (try_end),
+
     (assign, ":agent_horse", -1),
     (try_begin),# in case companion spawns mounted
         (neg|agent_is_human, ":agent"),
@@ -1574,9 +1582,10 @@ bodyguard_triggers = [
     (str_store_troop_name, s10, ":troop"),
 
     (get_player_agent_no, ":player"),
-    (agent_get_team, ":playerteam", ":player"),
+    (agent_get_team, reg15, ":player"),
     (agent_get_position,pos25,":player"),
-    (agent_set_team, ":agent", ":playerteam"),
+    (agent_set_team, ":agent", reg15),
+    # (display_message, "@player team {reg15}"),
     (agent_set_division, ":agent", 8),
     (agent_add_relation_with_agent, ":agent", ":player", 1),
     (agent_set_is_alarmed, ":agent", 1),
@@ -7410,20 +7419,19 @@ mission_templates = [
     (ti_before_mission_start, 0, 0, [],
     [(assign, "$g_main_attacker_agent", 0),]),
 
-    (1, 0, ti_once,[],
-      [
-        (try_begin),
-          (eq, "$g_mt_mode", tcm_default),
-          (store_current_scene, ":cur_scene"),
-          (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
-        (try_end),
-        (call_script, "script_init_town_walker_agents"),
-        (try_begin),
-          (gt, "$sneaked_into_town", disguise_none),
-          (call_script, "script_music_set_situation_with_culture", mtf_sit_town_infiltrate),
-        (else_try),
-          (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
-        (try_end),
+    (1, 0, ti_once,[],[
+      (try_begin),
+        (eq, "$g_mt_mode", tcm_default),
+        (store_current_scene, ":cur_scene"),
+        (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
+      (try_end),
+      (call_script, "script_init_town_walker_agents"),
+      (try_begin),
+        (gt, "$sneaked_into_town", disguise_none),
+        (call_script, "script_music_set_situation_with_culture", mtf_sit_town_infiltrate),
+      (else_try),
+        (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+      (try_end),
     ]),
 
     (ti_before_mission_start, 0, 0,[],[
@@ -10918,45 +10926,39 @@ mission_templates = [
     (17,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (18,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (19,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (20,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (21,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (22,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (23,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (24,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (25,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (26,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (27,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (28,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (29,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (30,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (31,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (32,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-    (33,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-    (34,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-    (35,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-    (36,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-    (37,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), ##castle chief walkers
-    (38,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
-    (39,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
+    (20,mtef_visitor_source,af_override_horse,0,1,[]),
+    (21,mtef_visitor_source,af_override_horse,0,1,[]),
+    (22,mtef_visitor_source,af_override_horse,0,1,[]),
+    (23,mtef_visitor_source,af_override_horse,0,1,[]),
+    (24,mtef_visitor_source,af_override_horse,0,1,[]),
+    (25,mtef_visitor_source,af_override_horse,0,1,[]),
+    (26,mtef_visitor_source,af_override_horse,0,1,[]),
+    (27,mtef_visitor_source,af_override_horse,0,1,[]),
+    (28,mtef_visitor_source,af_override_horse,0,1,[]),
+    (29,mtef_visitor_source,af_override_horse,0,1,[]),
+    (30,mtef_visitor_source,af_override_horse,0,1,[]),
+    (31,mtef_visitor_source,af_override_horse,0,1,[]),
+    (32,mtef_visitor_source,af_override_horse,0,1,[]), ##castle chief walkers
+    (33,mtef_visitor_source,af_override_horse,0,1,[]), ##castle chief walkers
+    (34,mtef_visitor_source,af_override_horse,0,1,[]), ##castle chief walkers
+    (35,mtef_visitor_source,af_override_horse,0,1,[]), ##castle chief walkers
+    (36,mtef_visitor_source,af_override_horse,0,1,[]), ##castle chief walkers
+    (37,mtef_visitor_source,af_override_horse,0,1,[]), ##castle chief walkers
+    (38,mtef_visitor_source,af_override_horse,0,1,[]), #castle chief walkers
+    (39,mtef_visitor_source,af_override_horse,0,1,[]), #castle chief walkers
     # Party members
-    (40,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (41,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (42,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (43,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (44,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (45,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    (46,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (40,mtef_visitor_source,af_override_horse,0,1,[]),
+    (41,mtef_visitor_source,af_override_horse,0,1,[]),
+    (42,mtef_visitor_source,af_override_horse,0,1,[]),
+    (43,mtef_visitor_source,af_override_horse,0,1,[]),
+    (44,mtef_visitor_source,af_override_horse,0,1,[]),
+    (45,mtef_visitor_source,af_override_horse,0,1,[]),
+    (46,mtef_visitor_source,af_override_horse,0,1,[]),
   ], p_wetter + storms +global_common_triggers +
   [
     improved_lightning,
     can_spawn_commoners,
     (0,0,ti_once, [],[
-      (try_for_agents, ":agent_no"),
-          (agent_is_active, ":agent_no"),
-          (agent_is_human, ":agent_no"),
-          (agent_is_alive, ":agent_no"),
-          (call_script, "script_init_town_agent", ":agent_no"),
-      (try_end),
       # spawn castle guard at entry 2
       (try_begin),
           (is_between, "$g_encountered_party_faction", kingdoms_begin, kingdoms_end),
@@ -10965,6 +10967,7 @@ mission_templates = [
           (entry_point_get_position, pos18, 2),
           (set_spawn_position, pos18),
           (spawn_agent, ":troop_castle_guard"),
+          (agent_set_team, reg0, 7),
       (try_end),
     ]),
     (ti_on_agent_killed_or_wounded, 0, 0, [],[
@@ -11018,6 +11021,12 @@ mission_templates = [
         (call_script, "script_music_set_situation_with_culture", mtf_sit_town_infiltrate),
       (else_try),
         (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+      (try_end),
+      (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
+        (agent_is_human, ":agent_no"),
+        (agent_is_alive, ":agent_no"),
+        (call_script, "script_init_town_agent", ":agent_no"),
       (try_end),
     ]),
 
