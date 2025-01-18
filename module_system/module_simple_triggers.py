@@ -3787,10 +3787,15 @@ simple_triggers = [
         (store_current_day, ":cur_day"),
         (val_sub, ":cur_day", ":timer"),
         (ge, ":cur_day", 10), ## 10 days past at least
+        (assign, ":treasury", 0),
+        (try_begin),
+            (gt, "$g_player_chamberlain", 0),#has chamberlain / quaestor
+            (store_troop_gold, ":treasury", "trp_household_possessions"),
+        (try_end),
         (store_troop_gold, ":gold", "trp_player"),
+        (val_add, ":gold", ":treasury"),
         (ge, ":gold", 500000),
         (troop_slot_ge, "trp_player", slot_troop_influence, 1500),
-        (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
         (call_script, "script_add_notification_menu", "mnu_antonia_meeting_before_alexandria", 0, 0),
     (try_end),
 
@@ -4539,11 +4544,6 @@ simple_triggers = [
         # (try_end),
         (else_try),
             (neq, "$players_kingdom", ":cur_kingdom"),
-            (faction_set_slot, ":cur_kingdom", slot_faction_state, sfs_defeated),
-            (faction_set_slot, ":cur_kingdom", slot_faction_ai_object, -1),
-            ##if faction is defeated, declare a truce with all other factions of same culture
-            ## that should help, e.g. germans to prevent german kingdoms raising from the dead and then being at war with everyone else
-
             (faction_get_slot, ":cur_culture", ":cur_kingdom", slot_faction_culture),
             (try_for_range, ":active_kingdoms", kingdoms_begin, kingdoms_end),
                 (neq, ":active_kingdoms", ":cur_kingdom"),#not the same!
@@ -4578,6 +4578,10 @@ simple_triggers = [
                 (call_script, "script_add_notification_menu", "mnu_notification_oath_renounced_faction_defeated", ":cur_kingdom", 0),
             (try_end),
             #This menu must be at the end because faction banner will change after this menu if the player's supported pretender's original faction is cur_kingdom
+            (faction_set_slot, ":cur_kingdom", slot_faction_state, sfs_defeated),
+            (faction_set_slot, ":cur_kingdom", slot_faction_ai_object, -1),
+            ## if faction is defeated, declare a truce with all other factions of same culture
+            ## that should help, e.g. germans to prevent german kingdoms raising from the dead and then being at war with everyone else
             (call_script, "script_add_notification_menu", "mnu_notification_faction_defeated", ":cur_kingdom", 0),
         (try_end),
         (try_begin),
@@ -11072,7 +11076,7 @@ simple_triggers = [
     (gt, ":size", 0),
     (try_begin),
         (store_party_size_wo_prisoners, ":size", "p_main_party"),
-        (lt, ":size", 55),
+        (lt, ":size", 40),
         (jump_to_menu, "mnu_followers_camp_leave"),
     (else_try),
         (party_get_num_companion_stacks, ":num", "p_follower_party"),

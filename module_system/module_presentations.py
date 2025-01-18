@@ -24824,11 +24824,10 @@ presentations = [
 
     (try_end),
     (set_container_overlay, -1),#end scroll
-    ]),
+  ]),
 
    ## Check for buttonpress
-    (ti_on_presentation_event_state_change,
-    [
+  (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":button_pressed_id"),
     (try_begin),
         (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
@@ -24931,7 +24930,7 @@ presentations = [
 
         (display_message, "@X: {reg31} | Y: {reg32}"),
     (try_end),
-    ]),
+  ]),
 ]),
 
 ("select_legion_command", 0, 0, [

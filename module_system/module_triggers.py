@@ -315,7 +315,7 @@ triggers = [
     (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_1_4_intro", 0, 0),
 ]),
 
-(24*3, 0, ti_once,[
+(24, 0, ti_once,[
     (neq, "$g_player_is_captive", 1),
     (neg|check_quest_active, "qst_wlodowiecus_adventure_1"),
     (neg|check_quest_active, "qst_wlodowiecus_adventure_2"),
@@ -327,7 +327,7 @@ triggers = [
     (neq, ":timer", 0),
     (store_current_day, ":cur_day"),
     (val_sub, ":cur_day", ":timer"),
-    (ge, ":cur_day", 7), ## 7 days
+    (ge, ":cur_day", 6), ## 7 days
 ],[
     (call_script, "script_add_notification_menu", "mnu_wlodowiecus_adventure_1_phamanus", 0, 0),
 ]),

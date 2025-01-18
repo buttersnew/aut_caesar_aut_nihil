@@ -2412,13 +2412,21 @@ game_menus = [
     # ]),
     ("camp_action",[
       (ge, "$cheat_mode", 1),
-    ],"CHEAT skip wlod 1 and wlod 2 and wlod 3.",[
+    ],"CHEAT skip wlod 1 and wlod 2 and wlod 3 and 4.",[
       (troop_set_slot, "trp_olivarius", slot_troop_met, 1),
       (troop_set_slot, "trp_wlodowiecus", slot_troop_met, 1),
       (troop_set_slot, "trp_hadrianus", slot_troop_met, 1),
       (troop_set_slot, "trp_varus", slot_troop_met, 1),
       (troop_set_slot, "trp_old_mercenary", slot_troop_met, 1),
       (troop_set_slot, "trp_mancinellus", slot_troop_met, 1),
+
+      (troop_set_slot, "trp_lybian", slot_troop_met, 1),
+      (troop_set_slot, "trp_chinese_commander", slot_troop_met, 1),
+      (troop_set_slot, "trp_temur", slot_troop_met, 1),
+      (troop_set_slot, "trp_xiao", slot_troop_met, 1),
+      (troop_set_slot, "trp_alan_guide", slot_troop_met, 1),
+      (troop_set_slot, "trp_ali", slot_troop_met, 1),
+      (troop_set_slot, "trp_phamanus", slot_troop_met, 1),
 
       (add_xp_as_reward, 10000000),
       (call_script, "script_start_quest", "qst_wlodowiecus_adventure_1", "trp_fortuna"),
@@ -2430,6 +2438,14 @@ game_menus = [
       (call_script, "script_start_quest", "qst_wlodowiecus_adventure_3", "trp_fortuna"),
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 12),
       (call_script, "script_end_quest", "qst_wlodowiecus_adventure_3", "trp_fortuna"),
+      (call_script, "script_start_quest", "qst_wlodowiecus_adventure_4", "trp_fortuna"),
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 13),
+      (call_script, "script_end_quest", "qst_wlodowiecus_adventure_4", "trp_fortuna"),
+
+      (store_current_day, ":day"),
+      (val_max, ":day", 1),
+      (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_timer, ":day"),
+
       (change_screen_map),
     ]),
 
@@ -34531,8 +34547,7 @@ game_menus = [
 
 ("promotion",0,
   "{s39}",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_senatus"),
     (try_begin),
         (eq, "$g_rank", 0),
@@ -34562,8 +34577,7 @@ game_menus = [
 
     (val_add, "$g_rank", 1),
     (val_clamp, "$g_rank", 0, 4),
-  ],
-  [
+  ],[
   ("continue",[],"Continue...",[
     (try_begin),
         (eq, "$g_rank", 1),
@@ -54203,18 +54217,16 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   [
     (set_background_mesh, "mesh_pic_cave"),
   ],[
-    ("enter",[],
-        "Continue.",
-    [
-        (quest_get_slot, "$temp", "qst_four_emperors", slot_quest_target_troop),
-        (modify_visitors_at_site, "scn_royal_tombs_interior"),
-        (reset_visitors),
-        (set_jump_mission, "mt_visit_royal_tombs"),
-        (set_visitor, 0, "trp_player"),
-        (set_visitor, 1, "trp_antonia"),
-        (set_visitor, 2, "$temp"),
-        (jump_to_scene, "scn_royal_tombs_interior"),
-        (change_screen_mission),
+    ("enter",[],"Continue.",[
+      (quest_get_slot, "$temp", "qst_four_emperors", slot_quest_target_troop),
+      (modify_visitors_at_site, "scn_royal_tombs_interior"),
+      (reset_visitors),
+      (set_jump_mission, "mt_visit_royal_tombs"),
+      (set_visitor, 0, "trp_player"),
+      (set_visitor, 1, "trp_antonia"),
+      (set_visitor, 2, "$temp"),
+      (jump_to_scene, "scn_royal_tombs_interior"),
+      (change_screen_mission),
     ]),
 ]),
 
@@ -55092,6 +55104,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (play_sound, "snd_thunder_close"),
   ],[
     ("Continue",[],"Continue.",[
+      (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
       (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
       (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
       (assign, "$talk_context", 0),#to fix bug in dialog
@@ -60922,9 +60935,15 @@ It is said, that she lives now together with the goat.",
 ("end_civil_war",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "End of the civil war^^{s22} has defeated his rivals and finally is declared Caesar Augustus.",
   "none",[
-    (faction_get_slot, reg0, "$g_notification_menu_var1", slot_faction_leader),
-    (str_store_troop_name_plural, s22, reg0),
+    (faction_get_slot, ":leader", "$g_notification_menu_var1", slot_faction_leader),
+    (str_store_troop_name_plural, s22, ":leader"),
     (set_background_mesh, "mesh_pic_triumph"),
+
+    (set_fixed_point_multiplier,100),
+    (position_set_x,pos0,65),			#left/right movement ( 0 = left edge of screen)
+    (position_set_y,pos0,3),			#up/down movement ( 0 = bottom edge of screen)
+    (position_set_z,pos0,80),			#in/out movement  (0 = no image, higher #'s make it larger)
+    (set_game_menu_tableau_mesh,"tableau_troop_note_mesh",":leader",pos0),
   ],[
     ("answere_1",[],"Continue.",[
       (call_script, "script_end_civil_war", "$g_notification_menu_var1"),
