@@ -54768,7 +54768,13 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_troop_name, s26, "trp_antonia"),
     (store_random_in_range, ":string", "str_poppaea_assassination_1", "str_poppaea_assassination_end"),
     (str_store_string, s24, ":string"),
-    (set_background_mesh, "mesh_pic_woman"),
+    (set_background_mesh, "mesh_pic_palast"),
+
+    (set_fixed_point_multiplier,100),
+    (position_set_x,pos0,65),			#left/right movement ( 0 = left edge of screen)
+    (position_set_y,pos0,3),			#up/down movement ( 0 = bottom edge of screen)
+    (position_set_z,pos0,80),			#in/out movement  (0 = no image, higher #'s make it larger)
+    (set_game_menu_tableau_mesh,"tableau_troop_note_mesh","trp_kingdom_7_lady_1",pos0),
   ],[
     ("Continue",[],"Continue.",[
       (call_script, "script_kill_lord_lady", "trp_kingdom_7_lady_1", "trp_antonia", 0),
@@ -54782,6 +54788,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("poppaea_fate",0,
   "{s5}",
   "none",[
+    (set_fixed_point_multiplier,100),
+    (position_set_x,pos0,65),			#left/right movement ( 0 = left edge of screen)
+    (position_set_y,pos0,3),			#up/down movement ( 0 = bottom edge of screen)
+    (position_set_z,pos0,80),			#in/out movement  (0 = no image, higher #'s make it larger)
+    (set_game_menu_tableau_mesh,"tableau_troop_note_mesh","trp_kingdom_7_lady_1",pos0),
+
     (set_background_mesh, "mesh_pic_palast"),
     (str_clear, s5),
     (try_begin),
@@ -54802,13 +54814,17 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (else_try),
             (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s20} was banished from Rome.", 1),
         (try_end),
-        (troop_remove_item, "trp_kingdom_7_lady_1", "itm_female_caligea_gold"),
-        (troop_remove_item, "trp_kingdom_7_lady_1", "itm_female_crown"),
-        (troop_remove_item, "trp_kingdom_7_lady_1", "itm_roman_female_augusta"),
+
+        (troop_set_inventory_slot, "trp_kingdom_7_lady_1", ek_foot, -1),
+        (troop_set_inventory_slot, "trp_kingdom_7_lady_1", ek_head, -1),
+        (troop_set_inventory_slot, "trp_kingdom_7_lady_1", ek_body, -1),
+
+        (troop_clear_inventory, "trp_kingdom_7_lady_1"),
 
         (troop_add_item, "trp_kingdom_7_lady_1", "itm_caligea"),
         (troop_add_item, "trp_kingdom_7_lady_1", "itm_roman_noble_dress_2"),
         (troop_equip_items, "trp_kingdom_7_lady_1"),
+
         (store_current_day, ":day"),
         (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_timer, ":day"),
         (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 3),
@@ -54862,6 +54878,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (add_quest_note_from_sreg, "qst_blank_quest_19", 12, "@On your orders, {s21} was forced to commit suicide.", 1),
         (call_script, "script_kill_lord_lady", "trp_antonia", "trp_player", 0),
     (try_end),
+    (set_fixed_point_multiplier,100),
+    (position_set_x,pos0,65),			#left/right movement ( 0 = left edge of screen)
+    (position_set_y,pos0,3),			#up/down movement ( 0 = bottom edge of screen)
+    (position_set_z,pos0,80),			#in/out movement  (0 = no image, higher #'s make it larger)
+    (set_game_menu_tableau_mesh,"tableau_troop_note_mesh","trp_antonia",pos0),
   ],[
     ("Continue",[],"Continue.",[
       (try_begin),# clear slot if its antonia

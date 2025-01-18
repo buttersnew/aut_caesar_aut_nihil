@@ -9215,7 +9215,7 @@ strings = [
 ("poppaea_assassination_2",
   "{s25} died yesterday. She was found dead in her bedroom with her veins open."
   +" They also found a pugio next to her dead body. The evidence points to suicide."
-  +" However, rumours say she was murdered. This is supported by the fact that traces of violence were found on her flawless body.."
+  +" However, rumours say she was murdered. This is supported by the fact that traces of violence were found on her flawless body."
   +" Most people believe {s26} was involved into her dead."
 ),
 ("poppaea_assassination_3",
