@@ -4774,7 +4774,7 @@ simple_triggers = [
     (try_end),
 ]),
 
-(33,[
+(24,[
     (call_script, "script_execude_debug_message", 91),
     (call_script, "script_map_sea_ai_1"),
 ]),
@@ -12389,35 +12389,36 @@ simple_triggers = [
 
 (0.05,[
     (call_script, "script_execude_debug_message", 196),
-    (try_for_parties, ":party_no"),
-        (gt, ":party_no", last_static_party),
-        (party_is_active, ":party_no"),
-        (try_begin),
-            (party_get_current_terrain, ":cur_terrain", ":party_no"),
-            (this_or_next|eq,":cur_terrain",rt_bridge),
-            (this_or_next|eq,":cur_terrain",rt_river),
-            (eq,":cur_terrain",rt_water),
-            (try_begin),
-                (this_or_next|eq,":cur_terrain",rt_bridge),
-                (this_or_next|eq,":cur_terrain",rt_river),
-                (eq,":cur_terrain",rt_water),
-                (party_slot_eq, ":party_no", slot_party_on_water, 0),	#PARTY IS SWITCHING FROM LAND TO WATER
-                (party_set_slot, ":party_no", slot_party_on_water, 1),
-                (party_set_flags, ":party_no", pf_is_ship, 1),
-                (try_begin),	#free player if he is captive
-                    (eq, "$g_player_is_captive", 1),
-                    (eq, "$travel_town", 0),	#VC-2283
-                    (eq, ":party_no", "$capturer_party"),
-                    (jump_to_menu,"mnu_captivity_end_wilderness_escape"),
-                (try_end),
-            (try_end),
-        (else_try),
-            (party_slot_eq, ":party_no", slot_party_on_water, 1),	#PARTY IS SWITCHING FROM WATER TO LAND
-            (party_set_slot, ":party_no", slot_party_on_water, 0),
-            (party_set_flags, ":party_no", pf_is_ship, 0),#I think this should still be necessary
-        (try_end),
-        (call_script, "script_update_party_icon", ":party_no"),#update icon
-    (try_end),
+    # moved back to game_get_party_speed_multiplier
+    # (try_for_parties, ":party_no"),
+    #     (gt, ":party_no", last_static_party),
+    #     (party_is_active, ":party_no"),
+    #     (try_begin),
+    #         (party_get_current_terrain, ":cur_terrain", ":party_no"),
+    #         (this_or_next|eq,":cur_terrain",rt_bridge),
+    #         (this_or_next|eq,":cur_terrain",rt_river),
+    #         (eq,":cur_terrain",rt_water),
+    #         (try_begin),
+    #             (this_or_next|eq,":cur_terrain",rt_bridge),
+    #             (this_or_next|eq,":cur_terrain",rt_river),
+    #             (eq,":cur_terrain",rt_water),
+    #             (party_slot_eq, ":party_no", slot_party_on_water, 0),	#PARTY IS SWITCHING FROM LAND TO WATER
+    #             (party_set_slot, ":party_no", slot_party_on_water, 1),
+    #             (party_set_flags, ":party_no", pf_is_ship, 1),
+    #             (try_begin),	#free player if he is captive
+    #                 (eq, "$g_player_is_captive", 1),
+    #                 (eq, "$travel_town", 0),	#VC-2283
+    #                 (eq, ":party_no", "$capturer_party"),
+    #                 (jump_to_menu,"mnu_captivity_end_wilderness_escape"),
+    #             (try_end),
+    #         (try_end),
+    #     (else_try),
+    #         (party_slot_eq, ":party_no", slot_party_on_water, 1),	#PARTY IS SWITCHING FROM WATER TO LAND
+    #         (party_set_slot, ":party_no", slot_party_on_water, 0),
+    #         (party_set_flags, ":party_no", pf_is_ship, 0),#I think this should still be necessary
+    #     (try_end),
+    #     (call_script, "script_update_party_icon", ":party_no"),#update icon
+    # (try_end),
 ]),
 
 (24.0*7.0/(number_of_villages),[

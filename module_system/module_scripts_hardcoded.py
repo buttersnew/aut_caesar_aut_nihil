@@ -5618,7 +5618,7 @@ scripts_hardcoded = [
         (try_begin),
             (eq, reg62, 1),
             (assign, ":limit", 0),
-        #patrols and players camp
+        # patrols and players camp
         (else_try),
             (this_or_next|eq, "$g_encountered_party_template", "pt_patrols_end"),
             (eq, "$g_encountered_party_template", "pt_player_camp"),
@@ -5634,7 +5634,7 @@ scripts_hardcoded = [
             (val_mul, ":charisma", pcamp_commander_charisma_size_bonus),
             (val_add, ":limit", ":skill"),
             (val_add, ":limit", ":charisma"),
-        #player latifundia
+        # player latifundia
         (else_try),
             (eq, "$g_encountered_party_template", "pt_latifundium"),
             (party_slot_eq, ":party", slot_party_type, spt_latifundium),
@@ -5643,7 +5643,7 @@ scripts_hardcoded = [
                 (party_slot_ge, ":party", slot_lat_guards, 1),
                 (val_add, ":limit", 10),
             (try_end),
-        #castles (if enabled flag to limit garrision)
+        # castles (if enabled flag to limit garrision)
         (else_try),
             (party_slot_eq, ":party", slot_party_type, spt_castle),
             (assign, ":limit", 1000),
@@ -5651,7 +5651,7 @@ scripts_hardcoded = [
                 (party_slot_ge, ":party", slot_center_has_barracks, 1),
                 (val_add, ":limit", 500),
             (try_end),
-        #towns, if enabled flag to limit garrision
+        # towns, if enabled flag to limit garrision
         (else_try),
             (party_slot_eq, ":party", slot_party_type, spt_town),
             (assign, ":limit", 2500),
@@ -8185,18 +8185,18 @@ scripts_hardcoded = [
             (this_or_next|eq,":cur_terrain",rt_river),
             (eq,":cur_terrain",rt_water),		# maybe remove line later...
 
-            # (try_begin),
-            #     (party_slot_eq, ":party_no", slot_party_on_water, 0),	#PARTY IS SWITCHING FROM LAND TO WATER
-            #     (party_set_slot, ":party_no", slot_party_on_water, 1),
-            #     (party_set_flags, ":party_no", pf_is_ship, 1),
-            #     (try_begin),	#free player if he is captive
-            #         (eq, "$g_player_is_captive", 1),
-            #         (eq, "$travel_town", 0),	#VC-2283
-            #         (eq, ":party_no", "$capturer_party"),
-            #         (jump_to_menu,"mnu_captivity_end_wilderness_escape"),
-            #     (try_end),
-            #     (call_script, "script_update_party_icon", ":party_no"),#update icon
-            # (try_end),
+            (try_begin),
+                (party_slot_eq, ":party_no", slot_party_on_water, 0),	#PARTY IS SWITCHING FROM LAND TO WATER
+                (party_set_slot, ":party_no", slot_party_on_water, 1),
+                (party_set_flags, ":party_no", pf_is_ship, 1),
+                (try_begin),	#free player if he is captive
+                    (eq, "$g_player_is_captive", 1),
+                    (eq, "$travel_town", 0),	#VC-2283
+                    (eq, ":party_no", "$capturer_party"),
+                    (jump_to_menu,"mnu_captivity_end_wilderness_escape"),
+                (try_end),
+                (call_script, "script_update_party_icon", ":party_no"),#update icon
+            (try_end),
             ##if party is on water speed is determnied by wind
             (try_begin),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
@@ -8246,12 +8246,12 @@ scripts_hardcoded = [
             (try_end),
         (else_try), #on land
 
-            # (try_begin),
-            #     (party_slot_eq, ":party_no", slot_party_on_water, 1),	#PARTY IS SWITCHING FROM WATER TO LAND
-            #     (party_set_slot, ":party_no", slot_party_on_water, 0),
-            #     (party_set_flags, ":party_no", pf_is_ship, 0),#I think this should still be necessary
-            #     (call_script, "script_update_party_icon", ":party_no"),#update icon
-            # (try_end),
+            (try_begin),
+                (party_slot_eq, ":party_no", slot_party_on_water, 1),	#PARTY IS SWITCHING FROM WATER TO LAND
+                (party_set_slot, ":party_no", slot_party_on_water, 0),
+                (party_set_flags, ":party_no", pf_is_ship, 0),#I think this should still be necessary
+                (call_script, "script_update_party_icon", ":party_no"),#update icon
+            (try_end),
             # AI
             (try_begin), #lords
                 (neg|party_slot_eq, ":party_no", slot_party_on_water, 1),##not on water

@@ -51345,6 +51345,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
                 (neg|troop_slot_eq, ":lord", slot_troop_legion, 12),
                 (assign, "$talk_context", tc_promotion_optio),
                 (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_pretorian, 1),
+                (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
+                (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
+                (assign, "$talk_context", 0),#to fix bug in dialog
                 (call_script, "script_setup_troop_meeting", "trp_centurio_west", -1, -1),
             (try_end),
         (else_try),
@@ -51411,6 +51414,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
   ],[
     ("continue",[],"Continue...",[
+      (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
+      (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
+      (assign, "$talk_context", 0),#to fix bug in dialog
       (set_show_messages, 0),
       (try_for_range, ":slot", ek_item_0, ek_food),##to avoid duplication of items
           (this_or_next|eq, ":slot", ek_item_0),
