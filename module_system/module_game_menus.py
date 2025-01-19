@@ -22940,22 +22940,21 @@ game_menus = [
 ),
 
 ("notification_troop_left_players_faction",0,
-    "Betrayal!^^{s1} has left {s2} and joined {s3}.",
-    "none",
-    [ (play_sound, "snd_message_negative_sound"),
-      (str_store_troop_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$players_kingdom"),
-      (str_store_faction_name, s3, "$g_notification_menu_var2"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 55),
-      (position_set_y, pos0, 20),
-      (position_set_z, pos0, 100),
-      (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("continue",[],"Continue...",
-       [(change_screen_return),
-        ]),
+  "Betrayal!^^{s1} has left {s2} and joined {s3}.",
+  "none",[
+    (play_sound, "snd_message_negative_sound"),
+    (str_store_troop_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$players_kingdom"),
+    (str_store_faction_name, s3, "$g_notification_menu_var2"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 55),
+    (position_set_y, pos0, 20),
+    (position_set_z, pos0, 100),
+    (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", "$g_notification_menu_var1", pos0),
+  ],[
+    ("continue",[],"Continue...",[
+      (change_screen_return),
+    ]),
 ]),
 
 ("notification_troop_joined_players_faction",0,
@@ -54302,8 +54301,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("goy_purge",0,
   "Purges and chaos!^^{s12} has been declared Caesar Augustus by the Praetorian guard. Any moment might be our last. Yet {s13} has reached this last moment.^{s14}",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_triumph"),
     (str_store_troop_name_plural, s12, "$g_notification_menu_var1"),
     (str_store_troop_name_plural, s13, "$g_notification_menu_var2"),
@@ -54786,6 +54784,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_troop_name_plural, s12, "trp_legatus_11"),
   ],[
     ("Continue",[],"Continue.",[
+      (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
+
       (str_store_party_name, s10, "p_town_20"),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@Travel to {s10} as fast as possible.", 1),
       (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Travel to {s10} as fast as possible.", 1),

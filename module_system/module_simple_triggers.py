@@ -3720,7 +3720,7 @@ simple_triggers = [
         (store_current_day, ":cur_day"),
         (val_sub, ":cur_day", ":timer"),
         (ge, ":cur_day", 30), ## 10 days
-        (call_script, "script_add_notification_menu", "mnu_message_travel_to_rome", -1, -1),
+        (jump_to_menu, "mnu_message_travel_to_rome"),
     (try_end),
 
     # event about death of Galba
@@ -3785,8 +3785,7 @@ simple_triggers = [
         (store_current_day, ":cur_day"),
         (val_sub, ":cur_day", ":timer"),
         (ge, ":cur_day", 30), ## 25 days
-        (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
-        (call_script, "script_add_notification_menu", "mnu_the_fleet_message", 0, 0),
+        (jump_to_menu, "mnu_the_fleet_message"),
     (try_end),
 
     # message to meet antonia in Alexandria
@@ -3809,7 +3808,7 @@ simple_triggers = [
         (val_add, ":gold", ":treasury"),
         (ge, ":gold", 500000),
         (troop_slot_ge, "trp_player", slot_troop_influence, 1500),
-        (call_script, "script_add_notification_menu", "mnu_antonia_meeting_before_alexandria", 0, 0),
+        (jump_to_menu, "mnu_antonia_meeting_before_alexandria"),
     (try_end),
 
     (try_begin),# consume food
