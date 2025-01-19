@@ -6363,6 +6363,7 @@ game_menus = [
     (set_background_mesh, "mesh_pic_siege_sighted"),
   ],[
     ("approach_besiegers",[
+      (eq, "$enlisted_party", -1),# not freelancing
       (store_faction_of_party, ":faction_no", "$g_encountered_party_2"),
       (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
       (ge, ":relation", 0),
@@ -6373,11 +6374,33 @@ game_menus = [
       (jump_to_menu, "mnu_besiegers_camp_with_allies"),
     ]),
     ("pass_through_siege",[
+      (eq, "$enlisted_party", -1),# not freelancing
       (store_faction_of_party, ":faction_no", "$g_encountered_party"),
       (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
       (ge, ":relation", 0),
     ],"Pass through the siege lines and enter {s1}.",[
       (jump_to_menu,"mnu_cut_siege_without_fight"),
+    ]),
+    ("pass_through_siege",[
+      (gt, "$enlisted_party", -1),# freelancing
+      (store_faction_of_party, ":faction_no", "$g_encountered_party"),
+      (store_faction_of_party, ":freelancer_faction", "$enlisted_party"),
+      (store_relation, ":relation", ":faction_no", ":freelancer_faction"),
+      (ge, ":relation", 0),
+    ],"Pass through the siege lines and enter {s1}.",[
+      (jump_to_menu,"mnu_cut_siege_without_fight"),
+    ]),
+    ("approach_besiegers",[
+      (gt, "$enlisted_party", -1),# freelancing
+      (store_faction_of_party, ":freelancer_faction", "$enlisted_party"),
+      (store_faction_of_party, ":faction_no", "$g_encountered_party_2"),
+      (store_relation, ":relation", ":faction_no", ":freelancer_faction"),
+      (ge, ":relation", 0),
+      (store_faction_of_party, ":faction_no", "$g_encountered_party"),
+      (store_relation, ":relation", ":faction_no", ":freelancer_faction"),
+      (lt, ":relation", 0),
+    ],"Approach the siege camp.",[
+      (jump_to_menu, "mnu_besiegers_camp_with_allies"),
     ]),
     ("leave",[],"Leave.",[
       (leave_encounter),

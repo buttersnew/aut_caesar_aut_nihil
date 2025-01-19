@@ -2323,6 +2323,18 @@ simple_triggers = [
 
             (store_troop_faction, ":troop_faction_no", ":troop_no"),
             (eq, ":troop_faction_no", ":besieger_faction"),
+
+            # only attack if they are on the same side
+            (party_get_battle_opponent, ":real_besieger_party", ":center_no"),
+            (assign, ":real_faction_besieger", -1),
+            (try_begin),
+                (party_is_active, ":real_besieger_party"),
+                (store_faction_of_party, ":real_faction_besieger", ":real_besieger_party"),
+                (store_relation, reg0, ":real_faction_besieger", ":troop_faction_no"),
+            (try_end),
+            (this_or_next|eq, ":real_faction_besieger", -1),
+            (ge, reg0, 5),# they at least like each other
+
             (assign, ":continue", 0),
             (try_begin),
                 (party_slot_eq, ":party_no", slot_party_ai_state, spai_besieging_center),
@@ -2341,6 +2353,7 @@ simple_triggers = [
             (party_get_battle_opponent, ":opponent", ":party_no"),
             (this_or_next|lt, ":opponent", 0),
             (eq, ":opponent", ":center_no"),
+
             (try_begin),
                 (faction_slot_eq, ":besieger_faction", slot_faction_marshall, ":troop_no"),
                 (assign, ":marshall_attacking", 1),
