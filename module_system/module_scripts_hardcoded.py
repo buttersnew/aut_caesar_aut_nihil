@@ -5601,7 +5601,7 @@ scripts_hardcoded = [
     (set_result_string, s1),
 ]),
 
-#script_game_get_party_companion_limit:
+# script_game_get_party_companion_limit:
 # This script is called from the game engine when the companion limit is needed for a party.
 # INPUT: arg1 = none
 # OUTPUT: reg0 = companion_limit
