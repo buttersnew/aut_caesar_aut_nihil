@@ -3813,7 +3813,7 @@ camera_pan_up_down     = 0x040
 camera_rotate          = 0x080
 camera_target_agent    = 0x100
 camera_target_prop     = 0x200  #not yet implemented
-camera_game_slow       = 0x400
+# camera_game_slow       = 0x400
 
 ##new way to define global variables:
 #use slots of trp_global_variables

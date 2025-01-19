@@ -224,7 +224,7 @@ sounds = [
    ("female_laugh",sf_priority_5|sf_vol_5|sf_stream_from_hd|sf_2d,["female_sigh_4.wav","female_sigh_5.wav"]),
    ("female_annoyed",sf_priority_5|sf_vol_5|sf_stream_from_hd|sf_2d,["female_sigh_1.wav","female_sigh_2.wav","female_sigh_3.wav"]),
    ("female_bored",sf_priority_5|sf_vol_5|sf_stream_from_hd|sf_2d,["female_sigh_7.wav"]),
-   ("horn", sf_priority_15|sf_vol_15|sf_stream_from_hd|sf_2d,["horn.wav","kwazi_epic_war_horns_02_high.wav","kwazi_epic_war_horns_02_low.wav","hedmarking__prillarhorn.wav"]),
+   ("horn", sf_priority_6|sf_vol_15|sf_stream_from_hd,["horn.wav","kwazi_epic_war_horns_02_high.wav","kwazi_epic_war_horns_02_low.wav","hedmarking__prillarhorn.wav"]),
    ("inmersive_troops",sf_priority_9|sf_vol_10|sf_stream_from_hd, ["immersive_susurros.wav","immersive_ahem.wav","immersive_burp.wav","immersive_cough_clears.wav","immersive_farties.wav","immersive_whistle.wav","immersive_coughs.wav","immersive_crowdwhispers.wav"]),
    ("inmersive_troops_cv",sf_priority_9|sf_vol_10|sf_stream_from_hd, ["immersive_short_burp.wav","immersive_sorbos.wav","immersive_coughings.wav","immersive_clearing_throat.wav","immersive_farts.wav","immersive_chantl.wav","immersive_chants.wav","immersive_chantsp.wav"]),
    ("shield_taunt", sf_priority_8|sf_vol_5|sf_stream_from_hd,["shield_taunt.wav"]),
@@ -234,7 +234,7 @@ sounds = [
 
    ("pickaxesound",sf_2d|sf_vol_6|sf_stream_from_hd, ["pickaxesound.wav"]),
    ("schiff_liegt",sf_2d|sf_vol_6|sf_stream_from_hd, ["schiff_liegt.wav"]),
-   ("cornu",sf_priority_15|sf_vol_15|sf_stream_from_hd, ["cornu_1.wav","cornu_2.wav"]),
+   ("cornu",sf_priority_6|sf_vol_15|sf_stream_from_hd, ["cornu_1.wav","cornu_2.wav"]),
    ("senatus_sound_1",sf_priority_9|sf_vol_15|sf_stream_from_hd, ["senate_1.wav"]),
    ("senatus_sound_2",sf_priority_9|sf_vol_15|sf_stream_from_hd, ["senate_2.wav"]),
    ("message_negative_sound",sf_priority_9|sf_vol_5|sf_stream_from_hd, ["message_negative_sound.wav"]),

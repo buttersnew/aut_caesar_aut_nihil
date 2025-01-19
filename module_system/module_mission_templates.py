@@ -306,6 +306,121 @@ poisoned_arrows_damage = (6, 0, 0, [],[
 
 
 global_common_triggers = [
+  (0, 0, 0,[
+    (key_clicked, key_j),
+  ],[
+		(options_get_combat_speed, ":speed"),
+		(try_begin),
+			(eq, ":speed", 0),
+			(options_set_combat_speed, 1),
+			(display_message, "@Changed agent movement speed from: slowest to slow",message_alert),
+		(else_try),
+			(eq, ":speed", 1),
+			(options_set_combat_speed, 2),
+			(display_message, "@Changed agent movement speed from: slow to normal",message_alert),
+		(else_try),
+			(eq, ":speed", 2),
+			(options_set_combat_speed, 3),
+			(display_message, "@Changed agent movement speed from: normal to fast",message_alert),
+		(else_try),
+			(eq, ":speed", 3),
+			(options_set_combat_speed, 4),
+			(display_message, "@Changed agent movement speed from: fast to fastest",message_alert),
+		(else_try),
+			(eq, ":speed", 4),
+			(options_set_combat_speed, 0),
+			(display_message, "@Changed agent movement speed from: fastest to slowest",message_alert),
+		(try_end),
+    (try_for_agents, ":agent_no"),
+      (agent_is_active, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (call_script, "script_advanced_agent_set_speed_modifier",":agent_no", 100),
+    (try_end),
+  ]),
+
+  (0, 0, 0, [
+    (key_is_down, key_f1),#hold position order
+    (eq, "$g_is_in_slow_mode", 0),
+  ],[
+    (set_fixed_point_multiplier, 1000),
+    (mission_get_time_speed, "$g_is_in_slow_mode"),
+    (gt, "$g_is_in_slow_mode", 1000),
+    (mission_set_time_speed, 900),  # below code causes problems with orders
+  ]),
+
+  (0, 0, 0, [
+    (neg|key_is_down, key_f1),#hold position order
+    (ge, "$g_is_in_slow_mode", 1),
+  ],[
+    (set_fixed_point_multiplier, 1000),
+    (val_max, "$g_is_in_slow_mode", 8),
+    (mission_set_time_speed, "$g_is_in_slow_mode"),
+    (assign, "$g_is_in_slow_mode", 0),
+  ]),
+
+  (0, 0, 0, [
+    # (eq, "$g_is_in_slow_mode", 0),
+    (this_or_next|key_is_down, key_left_control),
+    (key_is_down, key_right_control),
+
+    (this_or_next|key_clicked, key_numpad_0),
+    (this_or_next|key_clicked, key_numpad_1),
+    (this_or_next|key_clicked, key_numpad_2),
+    (this_or_next|key_clicked, key_numpad_3),
+    (this_or_next|key_clicked, key_numpad_4),
+    (this_or_next|key_clicked, key_numpad_5),
+    (this_or_next|key_clicked, key_numpad_6),
+    (this_or_next|key_clicked, key_numpad_7),
+    (this_or_next|key_clicked, key_numpad_8),
+    (key_clicked, key_numpad_9),
+    (display_message, "@Ho ho ho"),
+  ],[
+    (set_fixed_point_multiplier, 1000),
+    (try_begin),
+      (key_clicked, key_numpad_0),
+      (mission_set_time_speed, 8), #btw 8 is lowest speed we can animate well at 1 millisecond
+      (display_message, "@Set time-flow to lowest", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_1),
+      (mission_set_time_speed, 250),
+      (display_message, "@Set time-flow to 0.25", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_2),
+      (mission_set_time_speed, 500),
+      (display_message, "@Set time-flow to 0.50", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_3),
+      (mission_set_time_speed, 750),
+      (display_message, "@Set time-flow to 0.75", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_4),
+      (mission_set_time_speed, 1000),
+      (display_message, "@Set time-flow to normal", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_5),
+      (mission_set_time_speed, 1250),
+      (display_message, "@Set time-flow to 1.25", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_6),
+      (mission_set_time_speed, 1500),
+      (display_message, "@Set time-flow to 1.50", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_7),
+      (mission_set_time_speed, 1750),
+      (display_message, "@Set time-flow to 1.75", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_8),
+      (mission_set_time_speed, 2000),
+      (display_message, "@Set time-flow to 2.00", message_alert),
+    (else_try),
+      (key_clicked, key_numpad_9),
+      (mission_set_time_speed, 2250),
+      (display_message, "@Set time-flow to 2.25", message_alert),
+    (try_end),
+  ]),
+
+
   #crouching should only be available while hunting
   (ti_on_agent_spawn, 0, 0, [ ],[
     (store_trigger_param_1, ":agent_no"),
@@ -947,53 +1062,6 @@ camera_controls = [ #7 triggers
       (val_add, "$cam_speed", 1),
       (val_div, "$cam_speed", 2),
     (try_end),
-
-    #game speed
-    (try_begin),
-      (store_and, reg0, "$cam_mode", camera_game_slow),
-      (gt, reg0, 0),
-
-      (set_fixed_point_multiplier, 1000),
-      (try_begin),
-        (key_clicked, key_numpad_0),
-        (mission_set_time_speed, 8), #lowest speed we can animate well at 1 millisecond
-      (else_try),
-        (key_clicked, key_numpad_1),
-        (mission_set_time_speed, 118),
-      (else_try),
-        (key_clicked, key_numpad_2),
-        (mission_set_time_speed, 228),
-      (else_try),
-        (key_clicked, key_numpad_3),
-        (mission_set_time_speed, 338),
-      (else_try),
-        (key_clicked, key_numpad_4),
-        (mission_set_time_speed, 448),
-      (else_try),
-        (key_clicked, key_numpad_5),
-        (mission_set_time_speed, 559),
-      (else_try),
-        (key_clicked, key_numpad_6),
-        (mission_set_time_speed, 669),
-      (else_try),
-        (key_clicked, key_numpad_7),
-        (mission_set_time_speed, 779),
-      (else_try),
-        (key_clicked, key_numpad_8),
-        (mission_set_time_speed, 889),
-      (else_try),
-        (key_clicked, key_numpad_9),
-        (mission_set_time_speed, 1000),
-      (else_try),
-        (assign, reg0, 0),
-      (try_end),
-
-      # (gt, reg0, 0),
-      # (eq, "$cheat_mode", 0), not set in CB
-      # (mission_set_time_speed, 1000),
-      # (display_message, "@Set cheat mode to change game speed.", color_bad_news),
-    (try_end),
-
     #rotation by mouse
     (try_begin),
       (store_and, reg0, "$cam_mode", camera_rotate),
@@ -1109,7 +1177,7 @@ camera_controls = [ #7 triggers
     (eq,":pass",1),
   ],[
     (eq, "$cam_mode", 0), #test here in case naval battle camera has activated
-    (assign, "$cam_mode", camera_pan_up_down|camera_target_agent|camera_game_slow), #R/L and B/F pans not recommended, as the keys also move player agent
+    (assign, "$cam_mode", camera_pan_up_down|camera_target_agent), #R/L and B/F pans not recommended, as the keys also move player agent
     (assign, "$cam_target_instance", "$fplayer_agent_no"),
     (assign, "$cam_speed", 100), #10 m/s
     (assign, "$cam_last_called", 0),
@@ -4015,38 +4083,6 @@ jacobhinds_battle_ratio_calculate = (
   10, 0, 0, [],[
     (call_script, "script_cf_calculate_battle_ratio"),
  ])
-change_battle_speed_trigger = (0, 0, 0,[
-    (key_clicked, key_j),
-  ],[
-		(options_get_combat_speed, ":speed"),
-		(try_begin),
-			(eq, ":speed", 0),
-			(options_set_combat_speed, 1),
-			(display_message, "@Changed combat speed from: slowest to slow",message_alert),
-		(else_try),
-			(eq, ":speed", 1),
-			(options_set_combat_speed, 2),
-			(display_message, "@Changed combat speed from: slow to normal",message_alert),
-		(else_try),
-			(eq, ":speed", 2),
-			(options_set_combat_speed, 3),
-			(display_message, "@Changed combat speed from: normal to fast",message_alert),
-		(else_try),
-			(eq, ":speed", 3),
-			(options_set_combat_speed, 4),
-			(display_message, "@Changed combat speed from: fast to fastest",message_alert),
-		(else_try),
-			(eq, ":speed", 4),
-			(options_set_combat_speed, 0),
-			(display_message, "@Changed combat speed from: fastest to slowest",message_alert),
-		(try_end),
-    (try_for_agents, ":agent_no"),
-      (agent_is_active, ":agent_no"),
-      (agent_is_human, ":agent_no"),
-      (agent_is_alive, ":agent_no"),
-      (call_script, "script_advanced_agent_set_speed_modifier",":agent_no", 100),
-    (try_end),
-])
 
 moral_trigger_decide_to_run_or_not = 		(3, 0, 0, [
     (store_mission_timer_a,":mission_time"),
@@ -4408,12 +4444,12 @@ morale_triggers = [
         (store_div, ":enemy_delta_courage", ":ally_delta_courage", -3),#So other side gets a 33% bonus
         (assign, "$ally_courage_pen_stage", 1),
         #(play_sound, "snd_enemy_scored_a_point"),
-        (try_begin),
-          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
-          (play_sound, "snd_cornu"),
-        (else_try),
-          (play_sound, "snd_horn"),
-        (try_end),
+        # (try_begin),
+        #   (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        #   (play_sound, "snd_cornu"),
+        # (else_try),
+        #   (play_sound, "snd_horn"),
+        # (try_end),
         (display_message, "@We lost a quarter of our troops in a very short time. The hearts of our troops are filled with fear.", color_terrible_news),
       (else_try),
         (eq, "$ally_courage_pen_stage", 1),
@@ -4426,12 +4462,12 @@ morale_triggers = [
         (store_div, ":enemy_delta_courage", ":ally_delta_courage", -3),#So other side gets a 33% bonus
         (assign, "$ally_courage_pen_stage", 2),
         #(play_sound, "snd_enemy_scored_a_point"),
-        (try_begin),
-          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
-          (play_sound, "snd_cornu"),
-        (else_try),
-          (play_sound, "snd_horn"),
-        (try_end),
+        # (try_begin),
+        #   (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        #   (play_sound, "snd_cornu"),
+        # (else_try),
+        #   (play_sound, "snd_horn"),
+        # (try_end),
         (display_message, "@Half of our army has fallen within a very short time. The troops panic!", color_terrible_news),
       (try_end),
     (else_try),
@@ -4448,12 +4484,12 @@ morale_triggers = [
         (store_div, ":ally_delta_courage", ":enemy_delta_courage", -3),#So other side gets a 33% bonus
         (assign, "$enemy_courage_pen_stage", 1),
         #(play_sound, "snd_team_scored_a_point"),
-        (try_begin),
-          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
-          (play_sound, "snd_cornu"),
-        (else_try),
-          (play_sound, "snd_horn"),
-        (try_end),
+        # (try_begin),
+        #   (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        #   (play_sound, "snd_cornu"),
+        # (else_try),
+        #   (play_sound, "snd_horn"),
+        # (try_end),
         (display_message, "@The enemy lost a quarter of his troops in a very short time. The hearts of his troops are filled with fear.", color_good_news),
       (else_try),
         (eq, "$enemy_courage_pen_stage", 1),
@@ -4466,12 +4502,12 @@ morale_triggers = [
         (store_div, ":ally_delta_courage", ":enemy_delta_courage", -3),#So other side gets a 33% bonus
         (assign, "$enemy_courage_pen_stage", 2),
         #(play_sound, "snd_team_scored_a_point"),
-        (try_begin),
-          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
-          (play_sound, "snd_cornu"),
-        (else_try),
-          (play_sound, "snd_horn"),
-        (try_end),
+        # (try_begin),
+        #   (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        #   (play_sound, "snd_cornu"),
+        # (else_try),
+        #   (play_sound, "snd_horn"),
+        # (try_end),
         (display_message, "@Half of the enemy army has fallen within a very short time. His troops panic.", color_good_news),
       (try_end),
     (try_end),
@@ -6072,8 +6108,6 @@ dplmc_battle_mode_triggers_no_deathcam = [
       (try_end),
     (try_end),
   ]),
-
-  change_battle_speed_trigger,
   dedal_shield_bash_AI,
   dedal_shield_bash,
   custom_commander_critical_strike,
@@ -8042,7 +8076,6 @@ mission_templates = [
     dedal_shield_bash,
     dedal_shield_bash_AI,
 
-    change_battle_speed_trigger,
     custom_commander_critical_strike,
     miracle_battle_trigger,
     more_difficult_damage,
@@ -16168,7 +16201,6 @@ mission_templates = [
         [
           (team_set_relation, 0, 2, -1), # -1 for enemy, 1 for friend, 0 for neutral
       ]),
-  change_battle_speed_trigger,
   dedal_shield_bash_AI,
   dedal_shield_bash,
   custom_commander_critical_strike,
@@ -28488,7 +28520,6 @@ mission_templates = [
       (party_wound_members, "p_main_party", ":troop", 1),
     ]),
     #################
-    change_battle_speed_trigger,
     dedal_shield_bash,
     dedal_shield_bash_AI,
     custom_commander_critical_strike,
@@ -28878,8 +28909,7 @@ mission_templates = [
     (36,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
   ], p_wetter + global_common_triggers +
   [
-      cannot_spawn_commoners,
-    change_battle_speed_trigger,
+    cannot_spawn_commoners,
     dedal_shield_bash,
     dedal_shield_bash_AI,
     custom_commander_critical_strike,
@@ -29783,7 +29813,8 @@ mission_templates = [
       (eq, "$temp3", 2),
     ],[
       (tutorial_box, "@New objective: Follow Hadrianus to battle and conquer the fortress!"),
-      (play_sound, "snd_horn"),
+      (get_player_agent_no, ":player"),
+      (agent_play_sound, ":player", "snd_horn"),
     ]),
     (1, 0, ti_once,[
       (neg|main_hero_fallen),
@@ -30058,7 +30089,8 @@ mission_templates = [
         (add_visitors_to_current_scene, ":entry", "trp_saka_horse_archer", 10),
       (try_end),
       (display_message, "@New reinforcements arrive!", message_positive),
-      (play_sound, "snd_horn"),
+      (get_player_agent_no, ":player"),
+      (agent_play_sound, ":player", "snd_horn"),
       (val_add, "$tutorial_state", 1),
     ]),
 
@@ -30070,7 +30102,8 @@ mission_templates = [
         (add_visitors_to_current_scene, ":entry", "trp_xingnu_barbarian", 16),
       (try_end),
       (display_message, "@New enemies arrive!", message_negative),
-      (play_sound, "snd_horn"),
+      (get_player_agent_no, ":player"),
+      (agent_play_sound, ":player", "snd_horn"),
       (val_add, "$tutorial_state", 1),
     ]),
 
