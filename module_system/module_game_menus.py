@@ -39579,6 +39579,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_11_msgnor",[],"Kill it.",[
       (add_xp_as_reward, 125),
       (call_script, "script_change_player_party_morale", -10),
+      (call_script, "script_add_piety", -5, 1),
       (str_store_string, s1, "@You swiftly crush the scorpion and move on, but soon murmurs spreads among your men. Scorpions turn out to be associated with a diety in these lands, and a vengeful one at that. In foreign lands, foreign gods are believed to have the power, so the implications are not good."),
       (assign, "$temp", "mesh_pic_desert"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
