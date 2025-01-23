@@ -6870,7 +6870,7 @@ scripts_hardcoded = [
         ),
 
         (str_store_info_page_name_link, s10, "ip_hoty_keys"),
-        (str_store_string, s0, "@{s0}^^A list of all usefull hot-keys (for battles and menus) can be found at {s10}."),
+        (str_store_string, s0, "@{s0}^^A list of all useful hot-keys (for battles and menus) can be found at {s10}."),
 
         (str_store_info_page_name_link, s10, "ip_companions"),
         (str_store_string, s0, "@{s0}^^A list of all companions and their locations can be found at {s10}."),

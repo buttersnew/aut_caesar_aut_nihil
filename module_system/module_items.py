@@ -6300,7 +6300,7 @@ itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 ["didos_underwear","Queen Dido's Silken Lingerie", [("didos_underwear",0)], itp_unique|itp_type_goods, 0,
 10000,weight(0.1)|max_ammo(1),imodbits_none],
 
-["aegis", "Aegis", [("aegis",0)], itp_unique|itp_type_shield|itp_wooden_parry, 0,
+["aegis", "Aegis", [("aegis",0)], itp_unique|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 60000,weight(8)|hit_points(1000)|body_armor(shield_armor_t4)|spd_rtng(90)|shield_width(110)|difficulty(5),imodbits_shield ],
 
 ["caesars_sword", "Crocea Mors", [("roman_rich_gladius_57",0),("roman_rich_gladius_57_scabbard",ixmesh_carry)],

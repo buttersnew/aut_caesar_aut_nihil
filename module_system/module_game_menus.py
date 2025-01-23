@@ -2568,12 +2568,6 @@ game_menus = [
     #   (call_script, "script_add_notification_menu", "mnu_end_civil_war", "fac_kingdom_25", -1),
     # ]),
 
-    ("options",[
-      (ge, "$cheat_mode", 1),
-    ],"Add 20,000 denars",[
-      (troop_add_gold, "trp_player", 20000),
-    ]),
-
     ("pray",[
       (eq, "$g_wait_judgment", 0),
       (troop_slot_ge, "trp_player", slot_troop_religion, 1),
@@ -39586,7 +39580,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
     ("choice_11_msgnor",[],"Pick it up.",[
       (add_xp_as_reward, 250),
-      (troop_raise_attribute, "trp_player", ca_strength, -1),
+      (troop_set_health, "trp_player", 0),
       (str_store_string, s1, "@As you reach out the take the curious creature, it strikes with its tail, catching you just beyond the glove, and scurries away. The sting burns, then numbs. Over the coming days you mostly recover, but some especially strainous moves remain painful to execute."),
       (assign, "$temp", "mesh_pic_desert"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
@@ -48562,7 +48556,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "More cheats",
   "none",[
   ],[
-
+    ("options",[
+      (ge, "$cheat_mode", 1),
+    ],"Add 50,000 denars.",[
+      (troop_add_gold, "trp_player", 50000),
+    ]),
       # ("options",[(ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Show all bandits lairs",[
       #   (try_for_parties, ":party_no"),
       #       (party_get_template_id, ":party_template", ":party_no"),
@@ -48974,11 +48972,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, "$cheat_mode", 1),
     ],"Add 10,000 influence.",[
       (call_script, "script_change_influence", "trp_player", 10000),
-    ]),
-    ("options",[
-      (ge, "$cheat_mode", 1),
-    ],"Add 50,000 denars.",[
-      (troop_add_gold, "trp_player", 50000),
     ]),
     ("faction_debug", [
       (ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),
