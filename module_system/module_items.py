@@ -6230,7 +6230,7 @@ linothorax_armor_price,linothorax_armor,imodbits_armor,
 15000, weight(2.5)|head_armor(48)|body_armor(0)|leg_armor(0)|difficulty(9) ,imodbits_plate ],
 
 ["armor_of_african_gods", "Strong Hamata with Lionskin", [("coat_of_the_gods",0)], itp_unique|itp_type_body_armor|itp_covers_legs|itp_replaces_helm ,0,
-15000, weight(4)|abundance(100)|head_armor(40)|body_armor(50)|leg_armor(10)|difficulty(25) ,imodbits_cloth,
+15000, weight(4)|abundance(100)|head_armor(40)|body_armor(50)|leg_armor(10)|difficulty(30) ,imodbits_cloth,
 [(ti_on_init_item,[(call_script, "script_init_roman_simple"),]),] ],
 
 ##egypt

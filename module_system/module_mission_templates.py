@@ -31849,9 +31849,24 @@ mission_templates = [
         (agent_set_no_death_knock_down_only, ":agent", 1),
         (assign, "$temp3", 0), # use this to count player falling
         (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 75),
-        (agent_set_damage_modifier, ":agent", 50),
+        (agent_set_damage_modifier, ":agent", 10),
       (try_end),
     ],[]),
+
+    (0, 0, 0, [
+      (this_or_next|key_is_down, key_left_alt),
+      (key_is_down, key_right_alt),
+      (key_is_down, key_f4),
+      (this_or_next|key_is_down, key_left_control),
+      (key_is_down, key_right_control),
+    ],[
+      (get_player_agent_no, ":player"),
+      (agent_deliver_damage_to_agent,":player",":player",10000,"itm_warhammer"),
+      (display_message, "@DIE CHEATER! DIE CHEATER! DIE CHEATER!"),
+      (assign, "$temp", 2),
+      (jump_to_menu, "mnu_death_waits"),
+      (finish_mission),
+    ]),
 
     (ti_on_agent_spawn,1,0,[
       (check_quest_active, "qst_prophecy_of_caeselius_bassus"),

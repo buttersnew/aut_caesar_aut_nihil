@@ -31164,16 +31164,17 @@ game_menus = [
       (start_presentation, "prsnt_recruit_cohorts"),
     ]),
     ("rec_visit",[
+      # (ge, reg22, 1),
+      (troop_slot_eq, "trp_players_legion", 1, 1),##legion is created
       (assign, ":continueee", 0),
-      (party_get_slot, ":lord", "$current_town", slot_town_lord),
       (try_begin),
-          (ge, ":lord", 1),
-          (troop_slot_eq, ":lord", slot_troop_legion, 13),
-          (troop_slot_eq, "trp_players_legion", 1, 1),##legion is created
+          (store_add, ":legion", slot_legion_home_begin, 13),
+          (troop_get_slot, ":hq", "trp_province_array", ":legion"),
+          (eq, ":hq", "$current_town"),
           (assign, ":continueee", 1),
       (else_try),
+          (party_get_slot, ":lord", "$current_town", slot_town_lord),
           (eq, ":lord", "trp_player"),
-          (troop_slot_eq, "trp_players_legion", 1, 1),##legion is created
           (assign, ":continueee", 1),
       (try_end),
       (eq, ":continueee", 1),
@@ -31184,16 +31185,40 @@ game_menus = [
       (start_presentation, "prsnt_custom_troop_tree_legion"),
     ]),
     ("rec_visit",[
-      (ge, reg22, 1),
-      (troop_slot_eq, "trp_players_aux_cav",1,1),
+      # (ge, reg22, 1),
+      (troop_slot_eq, "trp_players_aux_cav", 1, 1),##legion is created
+      (assign, ":continueee", 0),
+      (try_begin),
+          (store_add, ":legion", slot_legion_home_begin, 13),
+          (troop_get_slot, ":hq", "trp_province_array", ":legion"),
+          (eq, ":hq", "$current_town"),
+          (assign, ":continueee", 1),
+      (else_try),
+          (party_get_slot, ":lord", "$current_town", slot_town_lord),
+          (eq, ":lord", "trp_player"),
+          (assign, ":continueee", 1),
+      (try_end),
+      (eq, ":continueee", 1),
     ],"Customize your auxilia ala.",[
       (assign, "$g_next_menu", "mnu_barracks"),
       (assign, "$g_player_troop", "trp_players_aux_cav"),
       (start_presentation, "prsnt_custom_troop_tree_legion"),
     ]),
     ("rec_visit",[
-      (ge, reg22, 1),
-      (troop_slot_eq, "trp_players_aux_inf",1,1),
+      # (ge, reg22, 1),
+      (troop_slot_eq, "trp_players_aux_inf", 1, 1),##legion is created
+      (assign, ":continueee", 0),
+      (try_begin),
+          (store_add, ":legion", slot_legion_home_begin, 13),
+          (troop_get_slot, ":hq", "trp_province_array", ":legion"),
+          (eq, ":hq", "$current_town"),
+          (assign, ":continueee", 1),
+      (else_try),
+          (party_get_slot, ":lord", "$current_town", slot_town_lord),
+          (eq, ":lord", "trp_player"),
+          (assign, ":continueee", 1),
+      (try_end),
+      (eq, ":continueee", 1),
     ],"Customize your auxilia cohort.",[
       (assign, "$g_next_menu", "mnu_barracks"),
       (assign, "$g_player_troop", "trp_players_aux_inf"),
@@ -33353,7 +33378,7 @@ game_menus = [
 ]),
 ("emperor_event_13",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "A senator's son^^One of the senators approaches you stating, he has an illegitimate son (who he favours) who wishes to join your bodyguard, you agree to meet the boy as it would be unseemly to flat out reject a noble."
-  +" When you meet the boy, however it is clear that he is rather homely and certainly not a man of war. The senator seems to be willing ro pay 10,000 denars, to grease the deal."
+  +" When you meet the boy, however it is clear that he is rather homely and certainly not a man of war. The senator seems to be willing to pay 10,000 denars, to grease the deal."
   +" Faced with this plump, smiling young man do you ...",
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
@@ -46437,7 +46462,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 ("event_senate_04",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Loss of virginity^^You hear rumors that one of the Vestal virgins was caught 'in flagrante delicto'."
-  +" She had sleeped with a young Roman senator! It is clear she must lose the priesthood, but some troublemakers now demand that she should be buried alive, since it is an old custom."
+  +" She had slept with a young Roman senator! It is clear she must lose the priesthood, but some troublemakers now demand that she should be buried alive, since it is an old custom."
   +" But since republican times, the act of 'human sacrifices' has been banned. Now a discussion started in the senate, if the sacrifice should be allowed or not."
   +" Your supporters, mostly populists, are on the side of the mob and say that the sacrifice should be allowed.",
   "none",[
@@ -59794,7 +59819,7 @@ It is said, that she lives now together with the goat.",
     (quest_set_slot, "qst_langobard_arrive", slot_quest_importance, ":state"),
     (jump_to_menu, "mnu_longbard_3_leave"),
     ]),
-    ("continue",[],"I will help the women with their launder.",
+    ("continue",[],"I will help the women with their laundry.",
     [
     (jump_to_menu, "mnu_longbard_3_launder"),
     ]),
