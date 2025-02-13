@@ -44450,8 +44450,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     #(call_script, "script_change_player_relation_with_faction_ex", "$g_talk_troop_faction", -2),
     (call_script, "script_event_hero_taken_prisoner_by_player", "$g_talk_troop"),
 
-    (troop_get_slot, ":king_party", "$g_talk_troop", slot_troop_leaded_party),
-    (call_script, "script_destroy_party", ":king_party"),
+    (troop_get_slot, ":lead_party", "$g_talk_troop", slot_troop_leaded_party),
+    (call_script, "script_destroy_party", ":lead_party"),
     (troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
 
     (assign, "$cant_leave_encounter", 0),
@@ -44522,8 +44522,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     #(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -30),
     #(call_script, "script_change_player_relation_with_faction_ex", "$g_talk_troop_faction", -2),
     (call_script, "script_event_hero_taken_prisoner_by_player", "$g_talk_troop"),
-    (troop_get_slot, ":king_party", "$g_talk_troop", slot_troop_leaded_party),
-    (call_script, "script_destroy_party", ":king_party"),
+    (troop_get_slot, ":lead_party", "$g_talk_troop", slot_troop_leaded_party),
+    (call_script, "script_destroy_party", ":lead_party"),
     (troop_set_slot, "$g_talk_troop", slot_troop_leaded_party, -1),
 
     (assign, "$cant_leave_encounter", 0),

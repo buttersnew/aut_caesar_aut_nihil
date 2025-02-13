@@ -14144,6 +14144,7 @@ presentations = [
       (is_between, "$temp_troop", companions_begin, companions_end),
       (troop_get_slot, ":party", "$temp_troop", slot_troop_leaded_party),
       (party_is_active, ":party"),
+      (party_slot_eq, ":party", slot_party_type, spt_companion_raider),
       (create_game_button_overlay, "$g_presentation_obj_4", "@Send a message"),
       (position_set_x, pos1, 430),
       (position_set_y, pos1, 10),
@@ -14710,6 +14711,7 @@ presentations = [
       (change_screen_notes, 1, "$temp_troop"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_4"),
+      (troop_get_slot, "$temp4", "$temp_troop", slot_troop_leaded_party),
       (jump_to_menu, "mnu_send_message_to_companion"),
       (presentation_set_duration, 0),
     (else_try), #done
@@ -25255,7 +25257,7 @@ presentations = [
     (try_begin),
         (eq, "$g_notification_menu_var1", 0),#is emperor
         (eq, "$g_notification_menu_var2", 0),#can change legates
-        (create_text_overlay, reg1, "@Hint: You can only change the legate of a legion or disband it while talking with your military advicor (who can be found in the Domus Augusti).", tf_center_justify),
+        (create_text_overlay, reg1, "@Hint: You can only change the legate of a legion or disband it while talking with your military advisor (who can be found in the Domus Augusti).", tf_center_justify),
         (overlay_set_color, reg1, color_information),
         (position_set_x, pos1, 500), # Higher, means more toward the right
         (position_set_y, pos1, 645), # Higher, means more toward the top
