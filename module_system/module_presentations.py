@@ -21270,6 +21270,8 @@ presentations = [
         (start_presentation, "prsnt_barracks"),
         (val_sub, ":recruits", reg43),
         (party_set_slot, "$current_town", ":slot_troop_type", ":recruits"),
+        (str_store_troop_name_by_count, s35, "$temp_troop", reg43),
+        (display_message, "@Recruited {s35}."),
       (else_try),
         (lt, ":recruits", reg43),
         (display_message, "@There are not enough recruits available!"),
