@@ -6663,11 +6663,11 @@ strings = [
 ("lover_talk", "Because you are my friend, I can tell you this.^^-- She looks around to make sure nobody is listening, then she whispers --^^I have heard something really interesting."
 +" {s30} and {s31} are having a love affair with each other. {s30} told me in secret during the last feast. But you haven't heard that from me, right?^^-- She winks. --"),
 
-("legio_1", "Legio I Adiutrix"),#
+("legio_1", "Legio XXII Primigenia"),#
 ("legio_2", "Legio III Augusta"),#
 ("legio_3", "Legio V Alaudae"),#
 ("legio_4", "Legio XXI Rapax"),#
-("legio_5", "Legio VII Galbia"),#
+("legio_5", "Legio XX Valeria Victrix"),#
 ("legio_6", "Legio VI Victrix"),#
 ("legio_7", "Legio XI Claudia"),#
 ("legio_8", "Legio XIII Gemina"),#
@@ -8601,11 +8601,11 @@ strings = [
 ("rt_snow_forest", "Mediterranean Forest"),
 ("rt_desert_forest", "Desert Forest"),
 
-("legio_i_adjutrix_staff","Cohors Prima Legio I Adjuterix"),
+("legio_xxii_primigenia_staff","Cohors Prima Legio XXII Primigenia"),
 ("legio_iii_augusta_staff","Cohors Prima Legio III Augusta"),
 ("legio_v_alaudae_staff","Cohors Prima Legio V Alaudae"),
 ("legio_xxi_rapax__staff","Cohors Prima Legio XXI Rapax"),
-("legio_vii_galbia_staff","Cohors Prima Legio VII Galbia"),
+("legio_xx_valeria_victrix_staff","Cohors Prima Legio XX Valeria Victrix"),
 ("legio_vi_victrix_staff","Cohors Prima Legio VI Victrix"),
 ("legio_xi_claudia_staff","Cohors Prima Legio XI Claudia"),
 ("legio_xiii_gemina_staff","Cohors Prima Legio XIII Gemina"),
@@ -8615,11 +8615,11 @@ strings = [
 ("praetoriani_staff","Cohors Prima Praetoriani"),
 ("player_legion_staff","Cohors Prima {s1}"),
 
-("legio_i_adjutrix_cohors","Cohors Legio I Adjuterix"),
+("legio_xxii_primigenia_cohors","Cohors Legio XXII Primigenia"),
 ("legio_iii_augusta_cohors","Cohors Legio III Augusta"),
 ("legio_v_alaudae_cohors","Cohors Legio V Alaudae"),
 ("legio_xxi_rapax__cohors","Cohors Legio XXI Rapax"),
-("legio_vii_galbia_cohors","Cohors Legio VII Galbia"),
+("legio_xx_valeria_victrix_cohors","Cohors Legio XX Valeria Victrix"),
 ("legio_vi_victrix_cohors","Cohors Legio VI Victrix"),
 ("legio_xi_claudia_cohors","Cohors Legio XI Claudia"),
 ("legio_xiii_gemina_cohors","Cohors Legio XIII Gemina"),
@@ -9087,7 +9087,7 @@ strings = [
 ("description_laurel_gold", "Description:^^A laurel wreath made of gold, fitting for a Caesar.^^Background:^^In Greek mythology, the god Apollo is usually depicted wearing a laurel wreath on his head. Wreaths were awarded to victors in athletic competitions, including the ancient Olympics. In Rome they were symbols of martial victory, crowning a successful commander during his triumph. Usually, a slave was holding a golden laurel wreath over the head of the triumphator."),
 ("description_female_crown", "Description:^^A diadem made out of gold decorated with plenty of gemstones, perfectly fitting for a queen or Augusta.^^Background:^^Diadem comes from the Greek diadema, originally denoting an embroidered silk ribbon signifying a king's authority. It evolved to include metal crowns and jeweled ornaments like tiaras. Ancient examples are found in Egypt and the Aegean world. It can also symbolize regal power. Roman emperors wore diadems, and Odoacer returned one to Emperor Zeno in 476 AD after expelling Romulus Augustus."),
 ("description_laurel_silver", "Description:^^A laurel wreath made of silver.^^Background:^^In Greek mythology, the god Apollo is usually depicted wearing a laurel wreath on his head. Wreaths were awarded to victors in athletic competitions, including the ancient Olympics. In Rome they were symbols of martial victory, crowning a successful commander during his triumph. Usually, a slave was holding a golden laurel wreath over the head of the triumphator."),
-("description_pharaoh_crown", "Descirption:^^The double crown of Egypt worn by the pharaoh, divine ruler of Kemet.^^Background:^^The Pschent represented the pharaoh's power over all of unified Egypt. It bore two animal emblems: an Egyptian cobra, known as the uraeus, ready to strike, which symbolized the Lower Egyptian goddess Wadjet; and a vulture representing the Upper Egyptian tutelary goddess Nekhbet. These were fastened to the front of the Pschent and referred to as the Two Ladies."),
+("description_pharaoh_crown", "Descirption:^^The double crown of Egypt worn by the pharaoh, divine ruler of Kemet.^^Background:^^The Pschent represented the pharaoh's power over all of unified Egypt. It bore two animal^Emblem:s: an Egyptian cobra, known as the uraeus, ready to strike, which symbolized the Lower Egyptian goddess Wadjet; and a vulture representing the Upper Egyptian tutelary goddess Nekhbet. These were fastened to the front of the Pschent and referred to as the Two Ladies."),
 ("description_pilos_ultimate", "Description:^^This Ancient Greek Pilos helmet has been restored with great skill. It is the ultimate symbol of power. Glory to PILOS!^^Background:^^The pilos together with the petasos were the most common types of hats in Archaic and Classical era Greece. In the 5th century BC, a bronze version began to appear in Ancient Greece and it became a popular infantry helmet. It occasionally had a horsehair crest. The Greek pilos resembled the Roman and Etruscan pileus, which were typically made of felt. The Greek pilidion and Latin pilleolus were smaller versions, similar to a skullcap.^In modern times the Pilos helmet became an object of worship. Spreading from discord, the PILOS cult slowly conquers the world."),
 ("description_felt_steppe_cap", "Description:^^This is just a funny looking cap.^^Background:^^This Santa cap (in German called 'Zipfelmuetze') is nothing more than a modern successor of the legendary Pilos helmet and thus a sign of the greatness of PILOS. It is usually worn during Christmas events."),
 ("description_laurel_wreath", "Description:^^A laurel wreath, typical award for the victor of competitions.^^Background:^^In Greek mythology, the god Apollo is usually depicted wearing a laurel wreath on his head. Wreaths were awarded to victors in athletic competitions, including the ancient Olympics. In Rome they were symbols of martial victory, crowning a successful commander during his triumph. Usually, a slave was holding a golden laurel wreath over the head of the triumphator."),
@@ -9534,6 +9534,21 @@ strings = [
 ("party_stance_default", "Default"),
 ("party_stance_forced_march", "Forced March"),
 ("party_stance_screening", "Screening"),
+
+("description_legio_begin", "description_legio_begin"),#
+("description_legio_1", "Location: Stationed in Germania Superior at Moguntiacum (Mainz) from 70 AD.^Notable commander: Gaius Dillius Vocula (during Batavian Revolt, 69 - 70 AD).^Emblem: Capricorn."),
+("description_legio_2", "Location: Garrisoned in Numidia (North Africa) at Theveste, later Lambaesis (c. 75 AD).^Notable commander: Quintus Anicius Faustus (late 1st century).^Emblem: Pegasus."),
+("description_legio_3", "Location: Destroyed in 86 AD during the Dacian Wars; previously stationed along the Rhine.^Notable commander: Unknown legate.^Emblem: Elephant (awarded by Julius Caesar)."),
+("description_legio_4", "Location: Deployed in Germania Inferior (Castra Vetera) until 70 AD, later Pannonia.^Notable commander: Aulus Caecina Alienus (69 AD).^Emblem: Capricorn."),
+("description_legio_5", "Location: Britannia after 43 AD, based at Camulodunum and later Deva Victrix.^Notable commander: Gnaeus Julius Agricola (70 - 73 AD).^Emblem: Boar."),
+("description_legio_6", "Location: Stationed in Hispania Tarraconensis until c. 70 AD, then relocated to Germania.^Notable commander: Unknown legate.^Emblem: Bull."),
+("description_legio_7", "Location: Moesia (Balkans) by 9 AD, later at Burnum (Dalmatia).^Notable commander: Marcus Annius Afrinus (mid-1st century).^Emblem: Neptune holding a dolphin."),
+("description_legio_8", "Location: Pannonia (Carnuntum) until 89 AD.^Notable commander: Marcus Antonius Primus (during 69 AD civil war).^Emblem: Lion."),
+("description_legio_9", "Location: Moesia at Oescus from 6 AD; fought in Judea (67 - 70 AD).^Notable commander: Sextus Vetulenus Cerialis (67 AD).^Emblem: Bull and eagle."),
+("description_legio_10", "Location: Syria and Judea; participated in Corbulo's Armenian campaigns (60s AD).^Notable commander: Gnaeus Domitius Corbulo (58 - 63 AD).^Emblem: She-wolf with Romulus and Remus."),
+("description_legio_11", "Location: Judea (70 - 117 AD); destroyed Jerusalem in 70 AD.^Notable commander: Sextus Lucilius Bassus (71 - 73 AD).^Emblem: Ship."),
+("description_legio_12", "Location: Rome (Castra Praetoria).^Notable commander: Lucius Seius Strabo (prefect under Tiberius).^Emblem: Scorpion, linked to Tiberius' zodiac sign.")
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

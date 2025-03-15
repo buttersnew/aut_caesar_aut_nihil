@@ -585,9 +585,22 @@ Use F1-F4 to order selected divisions. Keep the F1 key down to place selected di
 #  From a modern point of view this may be wrong, but from the point of view of a polytheist it is the natural way.^^\
 #  Other holy sides:^\
 #  In Delphi, the player can question the oracle. In Olympia, the player can visit the great statue of Zeus. At Stonehenge, the player can make sacrifices to the Celtic gods."),
- ("crafting_orders", "Crafting orders", "You can order any weapon, shields, armour, boots et cetera from weapon or armour merchants or you latifundia smith via a dialogue option.\
- An ordered item will take some time till it is crafted and you will have to pay for the materials too. Once the item has finished talk with the merchant to get it.\
- The merchant will send the finished item to you if you haven't collected it by yourself. Though this takes much longer than collecting it yourself (by talking with the respective merchant).^^\
- Similarly you can import horses from any horse merchant or your latifundia breeder."),
+("crafting_orders", "Crafting orders", "You can order any weapon, shields, armour, boots et cetera from weapon or armour merchants or you latifundia smith via a dialogue option.\
+An ordered item will take some time till it is crafted and you will have to pay for the materials too. Once the item has finished talk with the merchant to get it.\
+The merchant will send the finished item to you if you haven't collected it by yourself. Though this takes much longer than collecting it yourself (by talking with the respective merchant).^^\
+Similarly you can import horses from any horse merchant or your latifundia breeder."),
+
+("legio_1", "- Legio XXII Primigenia", "This legion has been disbanded."),#
+("legio_2", "- Legio III Augusta", "This legion has been disbanded."),#
+("legio_3", "- Legio V Alaudae", "This legion has been disbanded."),#
+("legio_4", "- Legio XXI Rapax", "This legion has been disbanded."),#
+("legio_5", "- Legio XX Valeria Victrix", "This legion has been disbanded."),#
+("legio_6", "- Legio VI Victrix", "This legion has been disbanded."),#
+("legio_7", "- Legio XI Claudia", "This legion has been disbanded."),#
+("legio_8", "- Legio XIII Gemina", "This legion has been disbanded."),#
+("legio_9", "- Legio V Macedonica", "This legion has been disbanded."),#
+("legio_10", "- Legio VI Ferrata", "This legion has been disbanded."),#
+("legio_11", "- Legio X Fretensis", "This legion has been disbanded."),#
+("legio_12", "- Praetorian Guard", "This legion has been disbanded."),
 
 ]#end of file

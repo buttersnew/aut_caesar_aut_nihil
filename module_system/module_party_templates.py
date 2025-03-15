@@ -336,16 +336,16 @@ party_templates = [
 # ("sarranid_farmers","Village Traders",icon_peasant,0,fac_innocents,merchant_personality,[(trp_farmer,5,10)]),
 
 #first cohort
-("legio_i_adjutrix_staff","Cohors Prima Legio I Adjuterix",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
-[(trp_legio_i_adjutrix,160,160),(trp_aquilifer_i,1,1),(trp_vexilarius_i,1,1),(trp_centurio_east,1,1),(trp_legatus_legionis,1,1),(trp_signifer,1,1)]),
+("legio_xxii_primigenia_staff","Cohors Prima Legio I Adjuterix",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
+[(trp_legio_xxii_primigenia,160,160),(trp_aquilifer_xxii,1,1),(trp_vexilarius_xxii,1,1),(trp_centurio_east,1,1),(trp_legatus_legionis,1,1),(trp_signifer,1,1)]),
 ("legio_iii_augusta_staff","Cohors Prima Legio III Augusta ",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
 [(trp_legio_iii_augusta,160,160),(trp_aquilifer_iii,1,1),(trp_vexilarius_iii,1,1),(trp_centurio_east,1,1),(trp_legatus_legionis,1,1),(trp_signifer,1,1)]),
 ("legio_v_alaudae_staff","Cohors Prima Legio V Alaudae",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
 [(trp_legio_v_alaudae,160,160),(trp_aquilifer_v_alaudae,1,1),(trp_vexilarius_v_alaudae,1,1),(trp_centurio_east,1,1),(trp_legatus_legionis,1,1),(trp_signifer,1,1)]),
 ("legio_xxi_rapax__staff","Cohors Prima Legio XXI Rapax",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
 [(trp_legio_xxi_rapax,160,160),(trp_aquilifer_xxi,1,1),(trp_vexilarius_xxi,1,1),(trp_centurio_east,1,1),(trp_legatus_legionis,1,1),(trp_signifer,1,1)]),
-("legio_vii_galbia_staff","Cohors Prima Legio VII Galbia",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
-[(trp_legio_vii_galbia,160,160),(trp_aquilifer_vii,1,1),(trp_vexilarius_vi_vict,1,1),(trp_centurio_east,1,1),(trp_legatus_legionis,1,1),(trp_signifer,1,1)]),
+("legio_xx_valeria_victrix_staff","Cohors Prima Legio XX Valeria Victrix",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
+[(trp_legio_xx_valeria_victrix,160,160),(trp_aquilifer_xx,1,1),(trp_vexilarius_vi_vict,1,1),(trp_centurio_east,1,1),(trp_legatus_legionis,1,1),(trp_signifer,1,1)]),
 ("legio_vi_victrix_staff","Cohors Prima Legio VI Victrix",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
 [(trp_legio_vi_victrix,160,160),(trp_aquilifer_vi_vict,1,1),(trp_vexilarius_vi_vict,1,1),(trp_centurio_east,1,1),(trp_legatus_legionis,1,1),(trp_signifer,1,1)]),
 ("legio_xi_claudia_staff","Cohors Prima Legio XI Claudia",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
@@ -364,16 +364,16 @@ party_templates = [
 [(trp_custom_legionary,160,160),(trp_custom_aquilifer,1,1), (trp_custom_vexilarius,1,1), (trp_custom_tribunus,1,1),(trp_custom_primus_pilius,1,1),(trp_custom_signifer,1,1)]),
 
 #standard cohort
-("legio_i_adjutrix_cohors","Cohors Legio I Adjuterix",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
-[(trp_legio_i_adjutrix,80,80),(trp_centurio_west,1,1),(trp_cornicen,1,1),(trp_signifer,1,1)]),#
+("legio_xxii_primigenia_cohors","Cohors Legio I Adjuterix",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
+[(trp_legio_xxii_primigenia,80,80),(trp_centurio_west,1,1),(trp_cornicen,1,1),(trp_signifer,1,1)]),#
 ("legio_iii_augusta_cohors","Cohors Legio III Augusta",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
 [(trp_legio_iii_augusta,80,80), (trp_centurio_west,1,1),(trp_cornicen,1,1),(trp_signifer,1,1)]),
 ("legio_v_alaudae_cohors","Cohors Legio V Alaudae",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
 [(trp_legio_v_alaudae,80,80),(trp_centurio_west,1,1),(trp_cornicen,1,1),(trp_signifer,1,1),]),
 ("legio_xxi_rapax__cohors","Cohors Legio XXI Rapax",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
 [(trp_legio_xxi_rapax,80,80),(trp_centurio_west,1,1),(trp_cornicen,1,1),(trp_signifer,1,1)]),
-("legio_vii_galbia_cohors","Cohors Legio VII Galbia",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
-[(trp_legio_vii_galbia,80,80),(trp_centurio_west,1,1),(trp_cornicen,1,1),(trp_signifer,1,1),]),
+("legio_xx_valeria_victrix_cohors","Cohors Legio XX Valeria Victrix",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
+[(trp_legio_xx_valeria_victrix,80,80),(trp_centurio_west,1,1),(trp_cornicen,1,1),(trp_signifer,1,1),]),
 ("legio_vi_victrix_cohors","Cohors Legio VI Victrix",icon_gray_knight,0,fac_kingdom_7,soldier_personality,
 [(trp_legio_vi_victrix,80,80),(trp_centurio_west,1,1),(trp_cornicen,1,1),(trp_signifer,1,1),]),
 ("legio_xi_claudia_cohors","Cohors Legio XI Claudia",icon_gray_knight,0,fac_kingdom_7,soldier_personality,

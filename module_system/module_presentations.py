@@ -20731,7 +20731,7 @@ presentations = [
         (call_script, "script_prsnt_vc_menu_helper_gap"),
 
         ##first do officers:
-        (try_for_range, ":troop", "trp_mercenaries_end", "trp_legio_i_adjutrix"),
+        (try_for_range, ":troop", "trp_mercenaries_end", "trp_legio_xxii_primigenia"),
             (store_faction_of_troop, ":culture", ":troop"),
             (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, ":culture"),
             (call_script, "script_cf_is_noble", ":troop"),
@@ -20767,7 +20767,7 @@ presentations = [
         #gap
         (call_script, "script_prsnt_vc_menu_helper_gap"),
 
-        (try_for_range, ":troop", "trp_mercenaries_end", "trp_legio_i_adjutrix"),
+        (try_for_range, ":troop", "trp_mercenaries_end", "trp_legio_xxii_primigenia"),
             (store_faction_of_troop, ":culture", ":troop"),
             (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, ":culture"),
             (call_script, "script_cf_is_peasant", ":troop"),
@@ -23217,9 +23217,9 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 64, "trp_centurio_east", 210, 2110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 65, "trp_signifer", 360, 2110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_legio_i_adjutrix", 60, 1910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_legio_i_adjutrix_exp", 210, 1910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_legio_i_adjutrix_vet", 360, 1910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_legio_xxii_primigenia", 60, 1910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_legio_xxii_primigenia_exp", 210, 1910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_legio_xxii_primigenia_vet", 360, 1910),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_legio_iii_augusta", 60, 1710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_legio_iii_augusta_exp", 210, 1710),
@@ -23237,9 +23237,9 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_legio_xxi_rapax_exp", 710, 1910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_legio_xxi_rapax_vet", 860, 1910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_legio_vii_galbia", 560, 1710),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_legio_vii_galbia_exp", 710, 1710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_legio_vii_galbia_vet", 860, 1710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_legio_xx_valeria_victrix", 560, 1710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_legio_xx_valeria_victrix_exp", 710, 1710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_legio_xx_valeria_victrix_vet", 860, 1710),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_legio_vi_victrix", 560, 1510),#+200
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_legio_vi_victrix_exp", 710, 1510),
@@ -23269,12 +23269,12 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_praetoriani_milites_exp", 710, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_praetoriani_milites_vet", 860, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_aquilifer_i", 60, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_aquilifer_xxii", 60, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_aquilifer_iii", 210, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_aquilifer_v_alaudae", 360, 710),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 39, "trp_aquilifer_xxi", 560, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 40, "trp_aquilifer_vii", 710, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 40, "trp_aquilifer_xx", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 41, "trp_aquilifer_vi_vict", 860, 710),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 42, "trp_aquilifer_xi", 60, 510),
@@ -23285,12 +23285,12 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 46, "trp_aquilifer_x", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 47, "trp_aquilifer_praetoriani", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 48, "trp_vexilarius_i", 60, 310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 48, "trp_vexilarius_xxii", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 49, "trp_vexilarius_iii", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 50, "trp_vexilarius_v_alaudae", 360, 310),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 51, "trp_vexilarius_xxi", 560, 310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 52, "trp_vexilarius_vii", 710, 310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 52, "trp_vexilarius_xx", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 53, "trp_vexilarius_vi_vict", 860, 310),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 54, "trp_vexilarius_xi", 60, 110),
@@ -25099,7 +25099,7 @@ presentations = [
 
         (assign, ":continue", 0),
         (store_sub, reg22, ":legion", 1),
-        (store_add, ":troop", "trp_legio_i_adjutrix_exp", reg22),
+        (store_add, ":troop", "trp_legio_xxii_primigenia_exp", reg22),
         (try_begin),
             (eq, "$temp_troop", ":troop"),
             (assign, ":continue", 1),
@@ -25151,10 +25151,10 @@ presentations = [
             (presentation_set_duration, 0),
             (jump_to_menu, "mnu_auto_return_map"),
 
-            (store_sub, ":cohort", "pt_legio_i_adjutrix_cohors", 1),
+            (store_sub, ":cohort", "pt_legio_xxii_primigenia_cohors", 1),
             (val_add, ":cohort", "$temp1"),
 
-            (store_sub, ":first_cohort", "pt_legio_i_adjutrix_staff", 1),
+            (store_sub, ":first_cohort", "pt_legio_xxii_primigenia_staff", 1),
             (val_add, ":first_cohort", "$temp1"),
             (assign, ":engineer", "pt_engineer_cohort"),
             (try_begin),
@@ -25187,7 +25187,7 @@ presentations = [
             (assign, "$temp1", ":slot"),
             (assign, ":end", -1),
         (try_end),
-        (store_sub, "$temp_troop", "trp_legio_i_adjutrix_exp", 1),
+        (store_sub, "$temp_troop", "trp_legio_xxii_primigenia_exp", 1),
         (val_add, "$temp_troop", "$temp1"),
         (start_presentation, "prsnt_select_legion_command"),
     (try_end),
@@ -36132,7 +36132,7 @@ presentations = [
     (assign, "$g_presentation_obj_1", -1),
     (try_begin),
         (this_or_next|is_between, "$temp", "pt_mercenary_guard", "pt_steppe_bandit_lair"),
-        (is_between, "$temp", "pt_legio_i_adjutrix_staff", "pt_germans"),
+        (is_between, "$temp", "pt_legio_xxii_primigenia_staff", "pt_germans"),
         (call_script, "script_get_cohort_name_to_s5", "$temp"),
         (create_text_overlay, reg1, "@Selected unit: {s5}", tf_left_align),
         (position_set_x, pos1, 25), # Higher, means more toward the right
@@ -36508,7 +36508,7 @@ presentations = [
     (assign, "$g_presentation_obj_5", -1),
     (try_begin),
         (this_or_next|is_between, "$temp", "pt_mercenary_guard", "pt_steppe_bandit_lair"),
-        (is_between, "$temp", "pt_legio_i_adjutrix_staff", "pt_germans"),
+        (is_between, "$temp", "pt_legio_xxii_primigenia_staff", "pt_germans"),
         (call_script, "script_get_cohort_name_to_s5", "$temp"),
         (create_text_overlay, reg1, "@Selected unit: {s5}", tf_left_align),
         (position_set_x, pos1, 25), # Higher, means more toward the right
@@ -36848,7 +36848,7 @@ presentations = [
     (assign, "$g_presentation_obj_4", -1),
     (assign, "$g_presentation_obj_2", -1),
     (try_begin),
-        (this_or_next|is_between, "$temp", "pt_legio_i_adjutrix_staff", "pt_germans"),
+        (this_or_next|is_between, "$temp", "pt_legio_xxii_primigenia_staff", "pt_germans"),
         (is_between, "$temp", "pt_kingdom_1_town_watch", "pt_steppe_bandit_lair"),
         (call_script, "script_get_cohort_name_to_s5", "$temp"),
         (create_text_overlay, reg1, "@Selected unit: {s5}", tf_left_align),
@@ -39387,7 +39387,7 @@ presentations = [
         (neq,":terrain_type",8),
         #limit parties that ambush
         (neg|is_between, "$g_encountered_party","pt_merchant_caravan", "pt_kingdom_hero_party"),
-        (neg|is_between, "$g_encountered_party","pt_steppe_bandit_lair", "pt_legio_i_adjutrix_staff"),
+        (neg|is_between, "$g_encountered_party","pt_steppe_bandit_lair", "pt_legio_xxii_primigenia_staff"),
         (troop_slot_eq, "trp_global_variables", g_player_trench, 0),
         (str_store_string, s0, "@Ambush the defend"),
         (assign, "$temp4_1", 4),

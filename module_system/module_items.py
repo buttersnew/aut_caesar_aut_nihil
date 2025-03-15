@@ -5579,7 +5579,7 @@ weight(get_shield_weight(shield_armor_t4,55,108))|hit_points(shield_hitpoints_t4
 get_shield_price(shield_armor_t4,55,108),
 weight(get_shield_weight(shield_armor_t4,55,108))|hit_points(shield_hitpoints_t4)|body_armor(shield_armor_t4)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(10),imodbits_shield, [],[fac_culture_7]],
 
-["scutum_legio_vii_galb", "Legio VII  Scutum",   [(" legio_vi_galb_scutum" ,0)], itp_merchandise|itp_type_shield|itp_cant_use_on_horseback|itp_wooden_parry, itcf_carry_board_shield,
+["scutum_legio_vii_galb", "Legio VII Scutum",   [(" legio_vi_galb_scutum" ,0)], itp_merchandise|itp_type_shield|itp_cant_use_on_horseback|itp_wooden_parry, itcf_carry_board_shield,
 get_shield_price(shield_armor_t4,55,108),
 weight(get_shield_weight(shield_armor_t4,55,108))|hit_points(shield_hitpoints_t4)|body_armor(shield_armor_t4)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(10),imodbits_shield, [],[fac_culture_7]],
 

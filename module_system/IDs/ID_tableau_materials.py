@@ -39,3 +39,4 @@ tableau_retired_troop_color = 37
 tableau_retirement_troop = 38
 tableau_dplmc_lord_profile = 39
 tableau_flag_pole_new = 40
+tableau_draw_info_page_legion_banner = 41

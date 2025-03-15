@@ -4,6 +4,7 @@ from header_mission_templates import *
 from header_tableau_materials import *
 from header_items import *
 from module_constants import *
+from IDs.ID_info_pages import *
 
 #from compiler import *
 ####################################################################################################################
@@ -736,5 +737,25 @@ tableaus = [
 
        (cur_tableau_add_mesh, "mesh_tableau_mesh_roman_spear_banner", pos1, 0, 0),
        (cur_tableau_set_camera_parameters, 0, 100, 100, 0, 100000),
-       ]),
+      ]),
+
+  ("draw_info_page_legion_banner", 0, "tableau_with_transparency", 256, 256, -128, 0, 128, 256,[
+    (assign, "$tableau_active", 1),
+    (store_script_param, ":page_number", 1),
+    (store_sub, ":legion", ":page_number", ip_legio_1 - 1),
+    (call_script, "script_get_legion_banner", ":legion"),
+    (assign, ":banner_mesh", reg0),
+
+
+    (cur_tableau_set_background_color, 0x00FFFFFF),
+    (set_fixed_point_multiplier, 100),
+    (cur_tableau_set_camera_parameters, 0, 100, 100, 0, 100000),
+
+    (val_sub, ":banner_mesh", banner_scene_props_begin),
+    (val_add, ":banner_mesh", arms_meshes_begin),
+    (init_position, pos1),
+    (position_set_y, pos1, 45),
+    (position_set_x, pos1, 0),
+    (cur_tableau_add_mesh, ":banner_mesh", pos1, 85, 0),
+  ]),
 ]

@@ -2196,8 +2196,8 @@ attrib_level_31, wp(185), knows_level_31|knows_power_draw_6, eastern_man_face_yo
 ##die reihen folge bei den legionaren und aquilifer und vexillarius typen is wichitig
 #roman legions es gibt 12 legionen im spiel
 #1
-["legio_i_adjutrix", "Tiro Legionis (I Adiutrix)", "Tirones Legionis (I Adiutrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
-[itm_scutum_legio_i,itm_graves_simple,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,
+["legio_xxii_primigenia", "Tiro Legionis (XXII Primigenia)", "Tirones Legionis (XXII Primigenia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+[itm_scutum_10,itm_scutum_2,itm_graves_simple,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,
 itm_legion_hamata_11,itm_legion_segmentata_3,itm_1_imp_gallic_c,itm_1_imp_gallic_f_b],
 attrib_level_23, wp(150), knows_level_23, roman_face1, roman_face2 ],
 #2
@@ -2216,8 +2216,8 @@ attrib_level_23, wp(150), knows_level_23, roman_face1, roman_face2 ],
 itm_legion_hamata_3,itm_legion_segmentata_5,itm_1_imp_gallic_h,itm_1_imp_gallic_i_ac],
 attrib_level_23, wp(150), knows_level_23, roman_face1, roman_face2 ],
 #5
-["legio_vii_galbia", "Tiro Legionis (VII Galbia)", "Tirones Legionis (VII Galbia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
-[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_legio_vii_galb,
+["legio_xx_valeria_victrix", "Tiro Legionis (XX Valeria Victrix)", "Tirones Legionis (XX Valeria Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_13,itm_scutum_6,
 itm_legion_segmentata_cape_1,itm_legion_squamata_14,itm_1_imp_gallic_i_ac_feather,itm_1_imp_gallic_i_ac_feather_plume],
 attrib_level_23, wp(150), knows_level_23, roman_face1, roman_face2 ],
 #6
@@ -2256,9 +2256,9 @@ attrib_level_23, wp(150), knows_level_23, roman_face1, roman_face2 ],
 itm_praetorian_segmentata_1,itm_praetorian_segmentata_2,itm_praetorian_segmentata_3,itm_praetorian_helm_1,itm_praetorian_helm_2],
 attrib_level_26, wp(170), knows_level_26, roman_face1, roman_face2 ],
 
-["aquilifer_i", "Aquilifer (I Adiutrix)", "Aquilifer (I Adiutrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+["aquilifer_xxii", "Aquilifer (XXII Primigenia)", "Aquilifer (XXII Primigenia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_graves_simple,itm_roman_gladius_2,itm_aquilifer_legion_squamata_2,itm_aquilifer_helmet,itm_aquilifer_helmet_mask,
-itm_signum_capricorn],#
+itm_signum_capricorn],
 attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
 ["aquilifer_iii", "Aquilifer (III Augusta)", "Aquilifer (III Augusta)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_graves_simple,itm_roman_gladius_2,itm_aquilifer_legion_squamata_2,itm_aquilifer_helmet,itm_aquilifer_helmet_mask,
@@ -2272,9 +2272,9 @@ attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
 [itm_graves_simple,itm_roman_gladius_2,itm_aquilifer_legion_squamata_2,itm_aquilifer_helmet,itm_aquilifer_helmet_mask,
 itm_signum_capricorn],#
 attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
-["aquilifer_vii", "Aquilifer (VII Galbia)", "Aquilifer (VII Galbia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+["aquilifer_xx", "Aquilifer (XX Valeria Victrix)", "Aquilifer (XX Valeria Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_graves_simple,itm_roman_gladius_2,itm_aquilifer_legion_squamata_2,itm_aquilifer_helmet,itm_aquilifer_helmet_mask,
-itm_signum_scorpion],#
+itm_signum_ox],#
 attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
 ["aquilifer_vi_vict", "Aquilifer (VI Victrix)", "Aquilifer (VI Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_graves_simple,itm_roman_gladius_2,itm_aquilifer_legion_squamata_2,itm_aquilifer_helmet,itm_aquilifer_helmet_mask,
@@ -2305,9 +2305,9 @@ attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
 itm_signum_praetoriani],#
 attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
 
-["vexilarius_i", "Vexillarius (I Adiutrix)", "Vexillarii (I Adiutrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+["vexilarius_xxii", "Vexillarius (XXII Primigenia)", "Vexillarii (XXII Primigenia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_roman_gladius_2,itm_graves_simple,itm_vexilarius_legion_hamata_1,itm_vexilarius_helmet,itm_vexilarius_helmet_mask,
-itm_vexilum_legio_i],
+itm_vexilum_legio_xx_prim],
 attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
 ["vexilarius_iii", "Vexillarius (III Augusta)", "Vexillarii (III Augusta)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_roman_gladius_2,itm_graves_simple,itm_vexilarius_legion_hamata_1,itm_vexilarius_helmet,itm_vexilarius_helmet_mask,
@@ -2321,9 +2321,9 @@ attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
 [itm_roman_gladius_2,itm_graves_simple,itm_vexilarius_legion_hamata_1,itm_vexilarius_helmet,itm_vexilarius_helmet_mask,
 itm_vexilum_legio_xxi],
 attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
-["vexilarius_vii", "Vexillarius (VII Galbia)", "Vexillarii (VII Galbia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+["vexilarius_xx", "Vexillarius (XX Valeria Victrix)", "Vexillarii (XX Valeria Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_roman_gladius_2,itm_graves_simple,itm_vexilarius_legion_hamata_1,itm_vexilarius_helmet,itm_vexilarius_helmet_mask,
-itm_vexilum_legio_vii],
+itm_vexilum_legio_xx_val],
 attrib_level_31, wp(160), knows_level_31, roman_face1, roman_face2 ],
 ["vexilarius_vi_vict", "Vexillarius (VI Victrix)", "Vexillarii (VI Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_roman_gladius_2,itm_graves_simple,itm_vexilarius_legion_hamata_1,itm_vexilarius_helmet,itm_vexilarius_helmet_mask,
@@ -2596,8 +2596,8 @@ itm_subarmalis_1,itm_subarmalis_2,itm_subarmalis_3,itm_1_imp_gallic_a,itm_1_imp_
 attrib_level_29, wpe(120,200,200,200), knows_level_29, roman_face1, roman_face2 ],
 
 #1
-["legio_i_adjutrix_exp", "Miles Legionis (I Adiutrix)", "Milites Legionis (I Adiutrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
-[itm_scutum_legio_i,itm_legio_armored_caligea,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,
+["legio_xxii_primigenia_exp", "Miles Legionis (XXII Primigenia)", "Milites Legionis (XXII Primigenia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+[itm_scutum_10,itm_scutum_2,itm_legio_armored_caligea,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,
 itm_legion_hamata_11,itm_legion_segmentata_3,itm_1_imp_gallic_c,itm_1_imp_gallic_f_b],
 attrib_level_26, wp(170), knows_level_26, roman_face1, roman_face2 ],
 #2
@@ -2616,8 +2616,8 @@ attrib_level_26, wp(170), knows_level_26, roman_face1, roman_face2 ],
 itm_legion_hamata_3,itm_legion_segmentata_5,itm_1_imp_gallic_h,itm_1_imp_gallic_i_ac],
 attrib_level_26, wp(170), knows_level_26, roman_face1, roman_face2 ],
 #5
-["legio_vii_galbia_exp", "Miles Legionis (VII Galbia)", "Milites Legionis (VII Galbia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
-[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_legio_vii_galb,
+["legio_xx_valeria_victrix_exp", "Miles Legionis (XX Valeria Victrix)", "Milites Legionis (XX Valeria Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_13,itm_scutum_6,
 itm_legion_segmentata_cape_1,itm_legion_squamata_14,itm_1_imp_gallic_i_ac_feather,itm_1_imp_gallic_i_ac_feather_plume],
 attrib_level_26, wp(170), knows_level_26, roman_face1, roman_face2 ],
 #6
@@ -2657,8 +2657,8 @@ itm_praetorian_segmentata_1,itm_praetorian_segmentata_2,itm_praetorian_segmentat
 attrib_level_29, wp(190), knows_level_29, roman_face1, roman_face2 ],
 
 #1
-["legio_i_adjutrix_vet", "Evocatus Legionis (I Adiutrix)", "Evocati Legionis (I Adiutrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_7,
-[itm_scutum_legio_i,itm_legio_armored_caligea,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+["legio_xxii_primigenia_vet", "Evocatus Legionis (XXII Primigenia)", "Evocati Legionis (XXII Primigenia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_7,
+[itm_scutum_10,itm_scutum_2,itm_legio_armored_caligea,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_segmentata_7,itm_1_imp_gallic_c,itm_1_imp_gallic_f_b, itm_legion_segmentata_manica_2,itm_legion_segmentata_manica_6],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #2
@@ -2677,8 +2677,8 @@ attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 itm_legion_segmentata_cape_5,itm_1_imp_gallic_h,itm_1_imp_gallic_i_ac, itm_legion_segmentata_manica_3,itm_legion_segmentata_manica_7],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #5
-["legio_vii_galbia_vet", "Evocatus Legionis (VII Galbia)", "Evocati Legionis (VII Galbia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_7,
-[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_legio_vii_galb,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+["legio_xx_valeria_victrix_vet", "Evocatus Legionis (XX Valeria Victrix)", "Evocati Legionis (XX Valeria Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_7,
+[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_13,itm_scutum_6,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_segmentata_cape_1,itm_legion_squamata_14,itm_1_imp_gallic_i_ac_feather,itm_1_imp_gallic_i_ac_feather_plume, itm_legion_segmentata_manica_2,itm_legion_segmentata_manica_6],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #6
@@ -6438,8 +6438,8 @@ itm_numidian_spear_1,itm_eastern_shield_inf_heavy5
 upgrade(troops,"custom_legionary","custom_legionary_exp")
 upgrade(troops,"custom_legionary_exp","custom_legionary_vet")
 
-upgrade(troops,"legio_i_adjutrix","legio_i_adjutrix_exp")
-upgrade(troops,"legio_i_adjutrix_exp","legio_i_adjutrix_vet")
+upgrade(troops,"legio_xxii_primigenia","legio_xxii_primigenia_exp")
+upgrade(troops,"legio_xxii_primigenia_exp","legio_xxii_primigenia_vet")
 
 upgrade(troops,"legio_iii_augusta","legio_iii_augusta_exp")
 upgrade(troops,"legio_iii_augusta_exp","legio_iii_augusta_vet")
@@ -6456,8 +6456,8 @@ upgrade(troops,"legio_vi_ferrata_exp","legio_vi_ferrata_vet")
 upgrade(troops,"legio_vi_victrix","legio_vi_victrix_exp")
 upgrade(troops,"legio_vi_victrix_exp","legio_vi_victrix_vet")
 
-upgrade(troops,"legio_vii_galbia","legio_vii_galbia_exp")
-upgrade(troops,"legio_vii_galbia_exp","legio_vii_galbia_vet")
+upgrade(troops,"legio_xx_valeria_victrix","legio_xx_valeria_victrix_exp")
+upgrade(troops,"legio_xx_valeria_victrix_exp","legio_xx_valeria_victrix_vet")
 
 upgrade(troops,"legio_x_fretensis","legio_x_fretensis_exp")
 upgrade(troops,"legio_x_fretensis_exp","legio_x_fretensis_vet")

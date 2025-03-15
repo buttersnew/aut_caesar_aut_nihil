@@ -3714,7 +3714,7 @@ game_menus = [
             (neq,":terrain_type",8),
             #limit parties that ambush
             (neg|is_between, "$g_encountered_party_template",      "pt_merchant_caravan", "pt_kingdom_hero_party"),
-            (neg|is_between, "$g_encountered_party_template",      "pt_steppe_bandit_lair", "pt_legio_i_adjutrix_staff"),
+            (neg|is_between, "$g_encountered_party_template",      "pt_steppe_bandit_lair", "pt_legio_xxii_primigenia_staff"),
             (neg|party_slot_eq, "$g_encountered_party",      slot_party_ai_state, spai_besieging_center),
             (neg|party_slot_eq, "$g_encountered_party",      slot_party_ai_state, spai_raiding_around_center),
             (neg|party_slot_eq, "$g_encountered_party",      slot_party_ai_state, spai_accompanying_army),
@@ -4091,7 +4091,7 @@ game_menus = [
     #   (neq,":terrain_type",8),
     #   #limit parties that ambush
     #   (neg|is_between, "$g_encountered_party","pt_merchant_caravan", "pt_kingdom_hero_party"),
-    #   (neg|is_between, "$g_encountered_party","pt_steppe_bandit_lair", "pt_legio_i_adjutrix_staff"),
+    #   (neg|is_between, "$g_encountered_party","pt_steppe_bandit_lair", "pt_legio_xxii_primigenia_staff"),
     #   (troop_slot_eq, "trp_global_variables", g_player_trench, 0),
     # ],"Ambush the enemy!",[
     #   (assign,"$player_ambushed",4),
@@ -4959,8 +4959,8 @@ game_menus = [
         # 18 19: aquilifer and vexilarius legion 4
         (set_visitor, 12, "trp_aquilifer_v_alaudae"),
         (set_visitor, 13, "trp_vexilarius_v_alaudae"),
-        (set_visitor, 14, "trp_aquilifer_i"),
-        (set_visitor, 15, "trp_vexilarius_i"),
+        (set_visitor, 14, "trp_aquilifer_xxii"),
+        (set_visitor, 15, "trp_vexilarius_xxii"),
         (set_visitor, 16, "trp_aquilifer_xi"),
         (set_visitor, 17, "trp_vexilarius_xi"),
         (set_visitor, 18, "trp_aquilifer_x"),
@@ -49034,8 +49034,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_visitor, 42, "trp_centurio_west"),
       (set_visitor, 43, "trp_player"),
       (set_visitor, 44, "trp_superbus"),
-      (set_visitor, 45, "trp_legio_i_adjutrix"),
-      (set_visitor, 46, "trp_legio_i_adjutrix"),
+      (set_visitor, 45, "trp_legio_xxii_primigenia"),
+      (set_visitor, 46, "trp_legio_xxii_primigenia"),
       (assign, "$talk_context", tc_camp_training),
       (jump_to_scene, "scn_follower_camp"),
       (set_jump_mission,"mt_first_training"),
@@ -49056,7 +49056,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_visitor,2,"trp_superbus"),
 
       (try_for_range, ":entries", 3, 34),
-        (set_visitor,":entries","trp_legio_i_adjutrix"),
+        (set_visitor,":entries","trp_legio_xxii_primigenia"),
       (try_end),
       (assign, "$temp", 0),
       (assign, "$temp2", 0),
@@ -54592,7 +54592,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("Continue",[],"Continue.",[
       (play_track, "track_cutscene_battle", 2),
       # legions on player side:
-      # Danube: Alaudae (1), Adiutrix (3), all other legions of player realm
+      # Danube: Alaudae (1), Primigenia (3), all other legions of player realm
 
       # legions on enemy side:
       # all other legions and praetorians
@@ -54642,8 +54642,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       # 18 19: aquilifer and vexilarius legion 4
       (set_visitor, 12, "trp_aquilifer_v_alaudae"),
       (set_visitor, 13, "trp_vexilarius_v_alaudae"),
-      (set_visitor, 14, "trp_aquilifer_i"),
-      (set_visitor, 15, "trp_vexilarius_i"),
+      (set_visitor, 14, "trp_aquilifer_xxii"),
+      (set_visitor, 15, "trp_vexilarius_xxii"),
       (set_visitor, 16, "trp_aquilifer_xi"),
       (set_visitor, 17, "trp_vexilarius_xi"),
       (set_visitor, 18, "trp_aquilifer_x"),
