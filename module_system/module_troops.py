@@ -4187,7 +4187,7 @@ wp(80),knows_merchant_npc|knows_surgery_8|knows_wound_treatment_7|knows_first_ai
 [itm_caligea,itm_female_3], str_8|agi_8|int_14|cha_18|level(5), wp(80),knows_merchant_npc,
 0x00000000050c705c361abc3763421a1c00000000001da0530000000000000000],
 
-["antonia","Claudia Antonia","Claudia Antonia",tf_female|tf_hero,0,0,fac_commoners,
+["antonia","Claudia Antonia","Claudia Antonia",tf_female|tf_hero|tf_unmoveable_in_party_window,0,0,fac_commoners,
 [itm_roman_noble_dress_7,itm_caligea],
 attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be00000000001eb20b0000000000000000],
 

@@ -51844,7 +51844,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (try_begin),
           (ge, ":gold", 10000),
           (troop_remove_gold, "trp_player", 10000),
-          (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 2),
+          (try_begin),# only increase if not at war
+            (store_relation, ":relation", "$players_kingdom", "$g_encountered_party_faction"),
+            (ge, ":relation", 0),
+            (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 2),
+          (try_end),
           (display_message,"@You donated 10000 denars.",color_good_news),
           (try_begin),
             (is_between, ":prosperity", 0, 20),
