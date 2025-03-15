@@ -51113,6 +51113,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (party_get_battle_opponent, ":commander_opponent", "$enlisted_party"),
       (lt, ":commander_opponent", 0),
       (party_get_attached_to, ":town", "$enlisted_party"),
+      (neg|is_between, ":town", centers_begin, centers_end),#not in town
+    ],"Take an action.",[
+      (jump_to_menu, "mnu_freelancer_weekly_duty"),
+    ]),
+    ("enter_town",[
+      (party_get_battle_opponent, ":commander_opponent", "$enlisted_party"),
+      (lt, ":commander_opponent", 0),
+      (party_get_attached_to, ":town", "$enlisted_party"),
       (is_between, ":town", centers_begin, centers_end),
     ],"Enter stationed town.",[
       (party_get_attached_to, ":town", "$enlisted_party"),
@@ -51366,7 +51374,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
                 (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_pretorian, 1),
                 (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
                 (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
-                (assign, "$talk_context", 0),#to fix bug in dialog
                 (call_script, "script_setup_troop_meeting", "trp_centurio_west", -1, -1),
             (try_end),
         (else_try),
