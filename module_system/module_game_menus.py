@@ -7537,6 +7537,13 @@ game_menus = [
 
         #siege warfare chief##############
         (try_begin),
+          (gt, "$g_days_spent_starving", 7),# judeans hold out longer and will commit suicide instead of surrendering
+          (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_8"),
+          (eq, "$g_encountered_party_faction", "fac_kingdom_17"),
+          (jump_to_menu, "mnu_suicide_siege_defenders_starved"),
+        (else_try),
+          (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_8"),
+          (neq, "$g_encountered_party_faction", "fac_kingdom_17"),
           (gt, "$g_days_spent_starving", 6), #6 days left, deffenders tired siege.
           (jump_to_menu, "mnu_surrender_siege_defenders_starved"),
         (else_try), #defenders desesperate = sally out to break the siege
@@ -8300,14 +8307,10 @@ game_menus = [
   ),
 
   ###############assault
-  (
-    "siege_assault",0,
-    "Time is of essence, and you fear the arrival of support force for the place. Assaulting will mean heavy casualties, but you have made up your mind.^^{s17} {s18} {s19}",
-    "none",
-    [
-
+("siege_assault",0,
+  "Time is of essence, and you fear the arrival of support force for the place. Assaulting will mean heavy casualties, but you have made up your mind.^^{s17} {s18} {s19}",
+  "none",[
       (str_store_party_name,s4,"$current_town"),
-
       (str_clear, s17),
       (str_clear, s18),
       (str_clear, s19),
@@ -8348,7 +8351,6 @@ game_menus = [
         (str_store_string,s17,"@>>You look at {s4}. Your men are silent while waiting for your order to charge towards death. Your muscles are tense, hot for battle, your mind cold and adrenaline fills your veins^" +
         "A man breathes deeply. 'Do you smell that?' he asks, 'That is the scent of glory.' 'Are you ready to seize it?'^^"),
       (try_end),
-
       (str_store_string,s18,"str_empty_string"),
       (try_begin),
         (ge, "$g_mantlets_1", 1),
@@ -8480,26 +8482,21 @@ game_menus = [
         #siege warfare acaba
         (jump_to_menu, "mnu_total_defeat"),
       (try_end),
-    ],
-    [
-      #####scout da pinceladas
-      ("scout_investigar",
-        [
-        ],
-        "Call the scouts for a report on {s4}.",
-        [
-          (jump_to_menu,"mnu_informacion_ciudad"),
+    ],[
+      ("scout_investigar",[],"Call the scouts for a report on {s4}.",[
+        (jump_to_menu,"mnu_informacion_ciudad"),
       ]),
-
-      ("poniendo_elementos_mantles",
-        [(eq, "$g_mantlets_1", 2),
-          (neq, "$g_listos_para_asalto", 1),
-          (ge, "$g_siege_method", 2),
-          (gt, "$g_friend_fit_for_battle", 3),
-          ##         (store_current_hours, ":cur_hours"),
-          ##         (ge, ":cur_hours",  "$g_siege_method_finish_hours"),
-        ],
-        "Order the vanguard to place the mantlets.", [(assign, "$cant_talk_to_enemy", 0),(jump_to_menu,"mnu_poner_escaleras_mantlets")]),
+      ("poniendo_elementos_mantles",[
+        (eq, "$g_mantlets_1", 2),
+        (neq, "$g_listos_para_asalto", 1),
+        (ge, "$g_siege_method", 2),
+        (gt, "$g_friend_fit_for_battle", 3),
+        ##         (store_current_hours, ":cur_hours"),
+        ##         (ge, ":cur_hours",  "$g_siege_method_finish_hours"),
+      ],"Order the vanguard to place the mantlets.",[
+        (assign, "$cant_talk_to_enemy", 0),
+        (jump_to_menu,"mnu_poner_escaleras_mantlets"),
+      ]),
 
       ("poniendo_elementos",
         [(neq, "$g_mantlets_1", 2),
@@ -8615,67 +8612,59 @@ game_menus = [
         "Go back.", [(jump_to_menu,"mnu_castle_besiege")]),
     ]
   ),
-
-  #####Siege warfare acaba
-
-  #########
-
-  (
-    "siege_attack_meets_sally",0,
-    "The defenders sally out to meet your assault.",
-    "none",
-    [
-      (set_background_mesh, "mesh_pic_sally_out"),
-    ],
-    [
-      ("continue",[],
-        "Continue...",
-        [
-          (jump_to_menu, "mnu_battle_debrief"),
-          (change_screen_mission),
-      ]),
-    ]
-  ),
-
-  #######siege warfare
-  #Low food = sally out
-  (
-    "nofood_siege_defenders_sally",0,
-    "The lack of food forces the desperate defenders of {s4} to sally out in an attempt to break the siege.",
-    "none",
-    [
-      (set_background_mesh, "mesh_pic_sally_out"),
-      (str_store_party_name,s4,"$current_town"),
-    ],
-    [
-      ("continue",[],
-        "Continue...",
-        [
-          (jump_to_menu, "mnu_battle_debrief"),
-          (change_screen_mission),
-      ]),
-    ]
-  ),
-
-  #surrender for hunger
-  (
-    "surrender_siege_defenders_starved",0,
-    "The defenders of {s4} can hold out no longer. Lack of food has debilitated them. Already the weakest have died of starvation, and in some cases, the need has led to cannibalism.^" +
-    "{s4} is ready to surrender...",
-    "none",
-    [
-      (set_background_mesh, "mesh_pic_victory"),
-      (str_store_party_name,s4,"$current_town"),
-    ],
-    [
-      ("continue",[],
-        "Continue...",
-        [
-          (assign, "$g_enemy_surrenders",1),
-          (jump_to_menu, "mnu_castle_besiege"), #
-      ]),
-    ]
-  ),
+#####Siege warfare acaba
+#########
+("siege_attack_meets_sally",0,
+  "The defenders sally out to meet your assault.",
+  "none",[
+    (set_background_mesh, "mesh_pic_sally_out"),
+  ],[
+    ("continue",[],"Continue...",[
+      (jump_to_menu, "mnu_battle_debrief"),
+      (change_screen_mission),
+    ]),
+]),
+#######siege warfare
+#Low food = sally out
+("nofood_siege_defenders_sally",0,
+  "The lack of food forces the desperate defenders of {s4} to sally out in an attempt to break the siege.",
+  "none",[
+    (set_background_mesh, "mesh_pic_sally_out"),
+    (str_store_party_name,s4,"$current_town"),
+  ],[
+    ("continue",[],"Continue...",[
+      (jump_to_menu, "mnu_battle_debrief"),
+      (change_screen_mission),
+    ]),
+]),
+("suicide_siege_defenders_starved",0,
+  "The defenders of {s4} are broken in body but unbroken in spirit. Though starvation has reduced them to shadows, their resolve burns like the sun."
+  +" In the shadow of great legacies, blades flash in the dusk - not against invaders, but against their own throats."
+  +" A final act of defiance echoes from the cliffs: 'Death before enslavement!'^"
+  +"^^{s4} falls silent, its people vanished into legend.",
+  "none",[
+    (set_background_mesh, "mesh_pic_victory"),
+    (str_store_party_name,s4,"$current_town"),
+  ],[
+    ("continue",[],"Continue...",[
+      (call_script, "script_inflict_casualties_to_party", "$current_town", 1000),
+      (assign, "$g_enemy_surrenders",1),
+      (jump_to_menu, "mnu_castle_besiege"), #
+    ]),
+]),
+#surrender for hunger
+("surrender_siege_defenders_starved",0,
+  "The defenders of {s4} can hold out no longer. Lack of food has debilitated them. Already the weakest have died of starvation, and in some cases, the need has led to cannibalism.^" +
+  "{s4} is ready to surrender...",
+  "none",[
+    (set_background_mesh, "mesh_pic_victory"),
+    (str_store_party_name,s4,"$current_town"),
+  ],[
+    ("continue",[],"Continue...",[
+      (assign, "$g_enemy_surrenders",1),
+      (jump_to_menu, "mnu_castle_besiege"), #
+    ]),
+]),
   ############
   ####SIEGE WARFARE CHIEF menus extras
   (
@@ -30673,7 +30662,7 @@ game_menus = [
           (val_mul, ":max_skill", 2),
           (store_sub, ":hours", 96, ":max_skill"),
           (assign, reg40, ":hours"),
-          (str_store_string, s35, "@As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to answere all the petitions."),
+          (str_store_string, s35, "@As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to answer all the petitions."),
     (try_end),
     (set_background_mesh, "mesh_pic_senatus"),
 
@@ -33141,7 +33130,7 @@ game_menus = [
       (call_script, "script_change_troop_renown", "trp_player", 100),
       (change_screen_map),
     ]),
-    ("answere_2",[],"No, too expansive",[
+    ("answere_2",[],"No, too expensive",[
       (change_screen_map),
       (call_script, "script_change_troop_renown", "trp_player", -200),
       (display_message, "@Fame is important ...",color_bad_news),
@@ -33210,7 +33199,7 @@ game_menus = [
     ]),
 ]),
 ("emperor_event_08",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Accident^^During breakfast one of your slaves stumbles and broke some expansive dishes. The slave starts to cry and apologies for the mistake.",
+  "Accident^^During breakfast one of your slaves stumbles and broke some expensive dishes. The slave starts to cry and apologies for the mistake.",
   "none",[
     (set_background_mesh, "mesh_pic_palast"),
   ],[
@@ -33247,7 +33236,7 @@ game_menus = [
 ]),
 ("emperor_event_10",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Temptations^^As you walk through your palace, you see this beautiful creature. Golden it stands before you. This flower is one of your slaves. Scared she askes:"
-  +"^'Divine Caesar. Is there anything I could do for you?'^You answere:",
+  +"^'Divine Caesar. Is there anything I could do for you?'^You answer:",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
@@ -33265,7 +33254,7 @@ game_menus = [
 ]),
 ("emperor_event_11",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Flowers^^You walk through your beautiful gardens with one of your favourite courtiers. She softly touches you, smiles and says:"
-  +" 'Flowers, flowers, I want flowers everywhere! They are so beautiful. Decorate the whole palace with flowers!'^You answere:",
+  +" 'Flowers, flowers, I want flowers everywhere! They are so beautiful. Decorate the whole palace with flowers!'^You answer:",
   "none",[
     (set_background_mesh, "mesh_pic_girls"),
   ],[
@@ -34531,7 +34520,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_senatus"),
   ],[
-    ("answere_1",[],"Means this I must read hundreds of writings and answere them?",[
+    ("answere_1",[],"Means this I must read hundreds of writings and answer them?",[
       (display_message, "@Yes! Hint: Go to Rome and then visit the senate, there you have the option to handle petitions."),
       (setup_quest_text,"qst_blank_quest_4"),
       (quest_set_slot, "qst_blank_quest_4", slot_quest_expiration_days, 20),
@@ -34543,7 +34532,7 @@ game_menus = [
 ###libelli events after the offices has beeen created
 ("libelli_event_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Bureaucratic escalation^^Due to the high amount of petitions going into the libelli office, the head of the office asks you for money, to hire additional personal.^"
-  +"He points out that it is very important or they cannot answere all petitions.",
+  +"He points out that it is very important or they cannot answer all petitions.",
   "none",[
     (set_background_mesh, "mesh_pic_senatus"),
   ],[
@@ -56577,13 +56566,13 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("bacchus_feast_rome",0,
-  "You try your best to search for Dionysus.^^Meanwhile the party continues: The streets of Rome are crowded by millions of people partying."
-  +" You see people vomiting and urinating next to temples, statues and other public buildings with little regard for it's sanctity or importance."
+  "You try your best to search for Dionysus.^^Meanwhile the party continues: The streets of Rome are crowded with thousands of people partying."
+  +" You see people vomiting and urinating next to temples, statues and other public buildings with little regard for its sanctity or importance."
   +" Soon enough, various members of the debauched horde start making love with each other. The streets are now a cacophony of decadence, with melodious moans mixed with delirious laughter."
-  +" Some drunkards and other degenerates start forcing themselves onto animals. You witness a senator riding donkey upside down."
+  +" Some drunkards and other degenerates start forcing themselves onto animals. You witness a senator riding a donkey upside down."
   +" You see various noble women getting groped and engaging in lascivious orgies in the backstreets like common whores."
   +" The most devious of people are using this opportunity and start raping and killing their enemies and looting their houses. The chaos is getting worse and worse by the minute."
-  +" Luckily, some of the senators that dodn't participate in the orgy or are sober through it pass an emergency law that prohibits this party and gives the order to the Praetorian Guard to stop this chaos immediately."
+  +" Luckily, some of the senators that didn't participate in the orgy, or remained sober, pass an emergency law that prohibits this party and gives the order to the Praetorian Guard to stop this chaos immediately."
   +" It takes four days for this mess to be cleared. Thousands of people have died either due to murder or alcohol abuse.^^You were not able to find Dionysus. It appears that he fled back to the cave.",
   "none", [
     (set_background_mesh, "mesh_pic_orgie"),
@@ -59270,7 +59259,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("wlodowiecus_adventure_1_2_gao",mnf_scale_picture,
-  "The next day the company continues their expedition down south, to one of these mythical gold kingdoms described by Mancinellus, the city of Gao. The travel to Gao was shorter and less enduring than the travel to Tabemekka. In a mere three days you arrived to the vast and expansive city, with hundreds of huts inhabited by people of many professions, such as blacksmiths, potters, fishermen and the like. But while Gao was quite advanced when compared to the other cities encountered on your way, you and your companions notice a severe lack of something important: Gold. You quickly find your answer, when a merchant informs you that the gold monopoly of the Niger belongs to the city of Tombouze, a few days heading west, following the river.",
+  "The next day the company continues their expedition down south, to one of these mythical gold kingdoms described by Mancinellus, the city of Gao. The travel to Gao was shorter and less enduring than the travel to Tabemekka. In a mere three days you arrived to the vast and expensive city, with hundreds of huts inhabited by people of many professions, such as blacksmiths, potters, fishermen and the like. But while Gao was quite advanced when compared to the other cities encountered on your way, you and your companions notice a severe lack of something important: Gold. You quickly find your answer, when a merchant informs you that the gold monopoly of the Niger belongs to the city of Tombouze, a few days heading west, following the river.",
   "none", [
     (set_background_mesh, "mesh_pic_desert"),
   ],[

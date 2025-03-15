@@ -244,11 +244,11 @@ robe_armor_price = get_barmour_price(7,9)
 robe_armor_armor = weight(get_armor_weight(16))|abundance(120)|head_armor(0)|body_armor(7)|leg_armor(9)|difficulty(0)
 
 #roman toga / eastern rich
-toga_a_noble_armor_price = get_barmour_price(20,20)##price should be higher, because its expansive clothing
+toga_a_noble_armor_price = get_barmour_price(20,20)##price should be higher, because its expensive clothing
 toga_a_noble_armor = weight(get_armor_weight(13))|abundance(75)|head_armor(0)|body_armor(7)|leg_armor(6)|difficulty(0)
 
 #roman rich
-roman_rich_armor_price = get_barmour_price(40,25)##price should be higher, because its expansive clothing
+roman_rich_armor_price = get_barmour_price(40,25)##price should be higher, because its expensive clothing
 roman_rich_armor = weight(get_armor_weight(13))|abundance(50)|head_armor(0)|body_armor(7)|leg_armor(6)|difficulty(0)
 
 #bandit fur armor
@@ -6202,7 +6202,7 @@ weight(get_w_weight(85))|difficulty(14)|spd_rtng(get_1hw_speed(85))|weapon_lengt
 #arminius items
 ["arminius_mask", "Decorated Galea", [("1_imperial_weiler",0)],itp_type_head_armor|itp_unique,0,
 30000, weight(8)|abundance(100)|head_armor(40)|body_armor(0)|leg_armor(0)|difficulty(15) ,imodbits_armor ],
-["arminius_spatha", "Decorated Spatha", [("arminius_spatha",0),("arminius_spatha_scab",ixmesh_carry)], itp_type_one_handed_wpn|itp_unique|itp_primary,
+["arminius_spatha", "Rich Spatha", [("arminius_spatha",0),("arminius_spatha_scab",ixmesh_carry)], itp_type_one_handed_wpn|itp_unique|itp_primary,
 itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 30000,weight(get_w_weight(93))|difficulty(9)|spd_rtng(get_1hw_speed(93))|weapon_length(93)|swing_damage(29,cut)|thrust_damage(14,pierce), imodbits_sword_high, [], [] ],
 
@@ -6245,9 +6245,12 @@ linothorax_armor_price,linothorax_armor,imodbits_armor,
 4000, weight(2)|difficulty(12)|spd_rtng(100)|weapon_length(165)|thrust_damage(34, pierce)|swing_damage(34, pierce), imodbits_polearm, []],
 
 ##augustus things
-["ancient_spatha", "Decorated Spatha", [("ancient_spatha",0),("ancient_spatha_scab",ixmesh_carry)], itp_type_one_handed_wpn|itp_unique|itp_primary,
+["ancient_spatha", "Decorated Spatha", [("ancient_spatha",0),("ancient_spatha_scab",ixmesh_carry)], itp_type_one_handed_wpn|itp_unique|itp_primary|itp_next_item_as_melee,
 itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 6000,weight(get_w_weight(87))|difficulty(9)|spd_rtng(get_1hw_speed(87))|weapon_length(87)|swing_damage(29,cut)|thrust_damage(14,pierce), imodbits_sword_high, [], [] ],
+["ancient_spatha_melee", "Decorated Spatha", [("ancient_spatha",0),("ancient_spatha_scab",ixmesh_carry)], itp_type_one_handed_wpn|itp_unique|itp_primary,
+itc_gladius|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
+6000,weight(get_w_weight(87))|difficulty(9)|spd_rtng(get_1hw_speed(87))|weapon_length(87)|swing_damage(14,cut)|thrust_damage(21,pierce), imodbits_sword_high, [], [] ],
 
 ["augustus_armor", "Lorica Musculata Augusti", [("armor_augustus",0)], itp_unique| itp_type_body_armor |itp_covers_legs|itp_civilian  ,0,
 150000, weight(42)|head_armor(0)|body_armor(55)|leg_armor(12)|difficulty(16) ,imodbits_armor,

@@ -3820,7 +3820,7 @@ strings = [
   ("gossip_about_character_martial",        "They say that {s6} loves nothing more than war."),
   ##diplomacy start+ make pronouns gender-correct (reg4)
   ("gossip_about_character_quarrelsome",    "They say that {s6} almost came to blows with another noble lately, because the man made a joke about {reg4?her:his} nose."),
-  ("gossip_about_character_selfrighteous",  "I heard that {s6} had a slave executed because the unfortunate man dropped some expansive dishes."),
+  ("gossip_about_character_selfrighteous",  "I heard that {s6} had a slave executed because the unfortunate man dropped some expensive dishes."),
   ("gossip_about_character_cunning",        "They say that {s6} is a cunning opponent."),
   ("gossip_about_character_sadistic",       "They say that {s6} likes to torture {reg4?her:his} enemies. I wouldn't want to get on the bad side of that {reg4?woman:man}."),
   ("gossip_about_character_goodnatured",    "They say that {s6} is a good {reg4?woman:man} and treats people living in {reg4?her:his} lands decently. That is more than what can be said for most of the nobles."),
@@ -7001,7 +7001,7 @@ strings = [
 
 ("parties_of_wife_1", "used {reg30} denars from the treasury for extravagant meals, food, wine etc. It seems she really like dinner."),
 ("parties_of_wife_2", "used {reg30} denars from the treasury for extravagant parties. It seems she has not informed you about those events. The letter contains a guest list. This list consists mostly of young noblemen, who are famous for their love affairs."),
-("parties_of_wife_3", "has spend {reg30} denars from the treasury for expansive and extravagant meals. For her dinner parties she has invited young nobles."),
+("parties_of_wife_3", "has spend {reg30} denars from the treasury for expensive and extravagant meals. For her dinner parties she has invited young nobles."),
 ("parties_of_wife_end", "end"),
 
 ("building_1", "aqueduct"),
@@ -9233,7 +9233,7 @@ strings = [
 
 ("poppaea_assassination_end", "poppaea_assassination_end"),
 
-("roman_advisor_hints_1", "A century ago the Senate and the people of Rome ruled over the world. But after Gaius Julius Caesar now you, the divine Caesar rules the world with absolute power. But do not forget that the old families still excists."),
+("roman_advisor_hints_1", "A century ago the Senate and the people of Rome ruled over the world. But after Gaius Julius Caesar now you, the divine Caesar rules the world with absolute power. But do not forget that the old families still exist."),
 ("roman_advisor_hints_2", "We are all waiting for our death. I mean, sooner or later we will all die. So do not grieve over deads. It is useless, soon you will be also one. Death is the only constant in our life. Even you divine {playername} will die sometime, when the gods want it."),
 ("roman_advisor_hints_3", "Mens sana in corpore sano. A healthy mind in a healthy body. It is important to life healthy and strengthen as well you body as your mind. A Caesar with a weak body is as useless as a Caesar with a weak mind. You must have both to guard Rome."),
 ("roman_advisor_hints_4", "Quod licet iovi, non licet bovi. Not all have the same rights. Some are born to rule, other to beg. Only the gods can change this! Remeber it when you see beggars or poor people. They have no other choice. Only if a god orders to give them wealth they can get out of their dirt."),

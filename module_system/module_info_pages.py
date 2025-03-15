@@ -274,7 +274,7 @@ info_pages = [
 
 # ("roman_empire", "Roman Empire", "Roman Administration:^\
 #  The Roman Empire is not a feudal state. It has a huge and complex imperial administration.\
-#  In this mod the Roman administration is represented by governors. Governors only command a little army, a 'bodyguard', which allows them to case bandits.\
+#  In this mod the Roman administration is represented by governors. Governors only command a little army, a 'bodyguard', which allows them to chase bandits.\
 #  They rule and manage most of the Roman provinces and must pay a part of their income to the Emperor. the Emperor then distributes those funds to the Empire\
 #  (or buy some nice clothes or host parties etc.).^^\
 #  Roman military:^\

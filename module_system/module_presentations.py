@@ -20546,6 +20546,12 @@ presentations = [
         (str_store_string, s12, "@nobles"),
     (try_end),
     (party_get_slot, ":number_nobles", "$current_town", slot_center_volunteer_noble_troop_amount),
+    (try_begin),
+        (ge, ":number_nobles", 1000),
+        (assign, ":number_nobles", 0),
+        (party_set_slot, "$current_town", slot_center_volunteer_noble_troop_amount, ":number_nobles"),
+        (display_message, "@DEBUG - noble recruits too high, reset to 0"),
+    (try_end),
     (assign, reg2, ":number_nobles"),
     (create_text_overlay, reg1, "@Available {s12}: {reg2}.", tf_left_align),
     (position_set_x, pos1, 40),
@@ -20556,6 +20562,12 @@ presentations = [
     (overlay_set_size, reg1, pos1),
 
     (party_get_slot, ":number_peasants", "$current_town", slot_center_peasant_troop_amount),
+    (try_begin),
+        (ge, ":number_peasants", 1000),
+        (assign, ":number_peasants", 0),
+        (party_set_slot, "$current_town", slot_center_peasant_troop_amount, ":number_peasants"),
+        (display_message, "@DEBUG - peasant recruits too high, reset to 0"),
+    (try_end),
     (assign, reg2, ":number_peasants"),
     (create_text_overlay, reg1, "@Available recruits: {reg2}.", tf_left_align),
     (position_set_x, pos1, 40),
@@ -21194,6 +21206,7 @@ presentations = [
     (overlay_set_position, "$presentation_leave_button", pos1),
     #reg41 join cost, reg43 number of recruits, reg44 total cost
     (val_min, reg43, "$g_max"),
+    (val_clamp, reg43, 0, 1000),
     (store_mul, reg44, reg43, reg41),
     ##explenation text
     (create_text_overlay, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denars.", tf_center_justify),
@@ -21282,6 +21295,7 @@ presentations = [
     (else_try),
       (eq, ":object_id", "$g_presentation_obj_30"),
       (assign, reg43, ":value"),
+      (val_clamp, reg43, 0, 1000),
       (store_mul, reg44, reg43, reg41),
       (overlay_set_text, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denars."),
     (else_try),
@@ -32913,7 +32927,7 @@ presentations = [
                 # (neg|item_has_faction, "$selected_item", ":culture"),
                 # (val_mul, reg23, 3),
                 # (val_div, reg23, 2),
-                # (str_store_string, s33, "@{s33} The selected item is from a foreign culture. Thus its more expansive to get the materials."),
+                # (str_store_string, s33, "@{s33} The selected item is from a foreign culture. Thus its more expensive to get the materials."),
             # (try_end),
 
             # (item_get_type, ":type", "$selected_item"),
@@ -33787,7 +33801,7 @@ presentations = [
                 (neg|item_has_faction, "$selected_item", ":culture"),
                 (val_mul, reg23, 3),
                 (val_div, reg23, 2),
-                (str_store_string, s33, "@{s33} The selected mount is from a foreign culture. Thus its more expansive to import it."),
+                (str_store_string, s33, "@{s33} The selected mount is from a foreign culture. Thus its more expensive to import it."),
             (try_end),
 
             (item_get_type, ":type", "$selected_item"),
@@ -33872,7 +33886,7 @@ presentations = [
                 (neg|item_has_faction, "$selected_item", ":culture"),
                 (val_mul, reg23, 3),
                 (val_div, reg23, 2),
-                (str_store_string, s33, "@{s33} The selected item is from a foreign culture. Thus its more expansive to get the materials."),
+                (str_store_string, s33, "@{s33} The selected item is from a foreign culture. Thus its more expensive to get the materials."),
                 (val_add, ":time", 2),
             (try_end),
 
