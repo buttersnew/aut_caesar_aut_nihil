@@ -2102,26 +2102,34 @@ sand_storm = [
   ],[
     (get_player_agent_no, ":player"),
     (agent_is_active, ":player"),
-    (agent_get_position, pos0, ":player"),
-    (position_get_z, ":z", pos0),
+    (agent_is_alive, ":player"),
+
+    (assign, ":save_fpm", 1),# dave fixed point value
+    (convert_to_fixed_point, ":save_fpm"),
+
+    (set_fixed_point_multiplier, 100),
+    (init_position, pos25),
+    (agent_get_position, pos25, ":player"),
+    (position_get_z, ":z", pos25),
     (val_add, ":z", 400),
-    (position_set_z, pos0, ":z"),
-    (particle_system_burst, "psys_desert_storm", pos0,90),
+    (position_set_z, pos25, ":z"),
+    (particle_system_burst, "psys_desert_storm", pos25, 90),
+
+    (set_fixed_point_multiplier, ":save_fpm"),
   ]),
 
   (0, 0, ti_once, [],[
-    (party_get_current_terrain, ":terrain","p_main_party"),
     (try_begin),
-      (this_or_next|eq, ":terrain", rt_desert_forest),
-      (eq, ":terrain", rt_desert),
+      (call_script, "script_cf_is_desert_or_mediterreanian", "p_main_party"),
       (store_random_in_range, ":r", 0, 10),
-      (le, ":r", 1),
+      (le, ":r", 10),
       (assign,"$lightning_cycle",3),
       (display_message, "@Sandstorm!", message_negative),
     (else_try),
       (store_current_scene, ":scene"),
       (eq, ":scene", "scn_ruins_of_carthage"),
       (assign,"$lightning_cycle",3),
+      (display_message, "@Sandstorm!", message_negative),
     (try_end),
   ]),
 ]
@@ -2132,36 +2140,33 @@ thunder_storm =	[		# 4 trigger
   ],[
     # (display_message, "@Thunderstorm. Check I"),
     (try_begin),
-        (store_current_scene, ":scene"),
-        (neq, ":scene", "scn_ruins_of_carthage"),# exclude certain scenes
-        (assign, "$lightning_cycle", -1),
-        (try_begin),
-            (party_get_current_terrain, ":terrain","p_main_party"),
-            (neq, ":terrain", rt_desert_forest),
-            (neq, ":terrain", rt_desert),
-            (store_time_of_day, ":day_time"),
-            (neg|is_between, ":day_time", 4, 20),
-            (get_global_cloud_amount, ":clouds"),
-            (ge, ":clouds", 65),
-            (store_random_in_range, ":rand", 1, 11),
-            (try_begin),
-                (le, ":rand", 4),	# 20% chance
-                (assign, "$lightning_cycle", 0),
-                (set_global_cloud_amount, 100),
-                (set_rain, 1, 250),
-            (try_end),
-        (try_end),
-        (eq, "$lightning_cycle", 0),
-        (display_message, "@A Thunderstorm approaches!", color_bad_news),
-        (set_fixed_point_multiplier, 1000),
-        (get_startup_sun_light, pos1),
-        (position_get_x, "$sun_r", pos1),	# r
-        (position_get_y, "$sun_g", pos1), # g
-        (position_get_z, "$sun_b", pos1),	# b
-        (get_startup_ambient_light, pos1),
-        (position_get_x, "$amb_r", pos1),	# r
-        (position_get_y, "$amb_g", pos1), # g
-        (position_get_z, "$amb_b", pos1),	# b
+      (store_current_scene, ":scene"),
+      (this_or_next|eq, ":scene", "scn_ruins_of_carthage"),# exclude certain scenes
+      (call_script, "script_cf_is_desert_or_mediterreanian", "p_main_party"),
+    (else_try),
+      (assign, "$lightning_cycle", -1),
+
+      (store_time_of_day, ":day_time"),
+      (neg|is_between, ":day_time", 4, 20),
+      (get_global_cloud_amount, ":clouds"),
+      (ge, ":clouds", 65),
+      (store_random_in_range, ":rand", 1, 11),
+      (le, ":rand", 4),	# 20% chance
+      (assign, "$lightning_cycle", 0),
+      (set_global_cloud_amount, 100),
+      (set_rain, 1, 250),
+
+      (eq, "$lightning_cycle", 0),
+      (display_message, "@A Thunderstorm approaches!", color_bad_news),
+      (set_fixed_point_multiplier, 1000),
+      (get_startup_sun_light, pos1),
+      (position_get_x, "$sun_r", pos1),	# r
+      (position_get_y, "$sun_g", pos1), # g
+      (position_get_z, "$sun_b", pos1),	# b
+      (get_startup_ambient_light, pos1),
+      (position_get_x, "$amb_r", pos1),	# r
+      (position_get_y, "$amb_g", pos1), # g
+      (position_get_z, "$amb_b", pos1),	# b
     (try_end),
   ]),
 
@@ -31841,7 +31846,7 @@ mission_templates = [
         (eq, ":troop", "trp_african_myth_hero_4"),
         (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
         (agent_set_no_death_knock_down_only, ":agent", 1),
-        (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 250),
+        (call_script, "script_advanced_agent_set_speed_modifier", ":agent", 200),
         (agent_set_damage_modifier, ":agent", 200),
       (else_try),
         (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 12),
@@ -31866,6 +31871,46 @@ mission_templates = [
       (assign, "$temp", 2),
       (jump_to_menu, "mnu_death_waits"),
       (finish_mission),
+    ]),
+
+
+    (1, 0, 0, [
+      (neg|conversation_screen_is_active),
+      (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
+    ],[
+      (try_begin),
+        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 2),
+        (eq, "$temp2", 1),
+
+        (assign, ":save_fpm", 1),# dave fixed point value
+        (convert_to_fixed_point, ":save_fpm"),
+
+        (agent_is_active, "$g_belligerent_drunk_leaving"),
+        (agent_clear_scripted_mode, "$g_belligerent_drunk_leaving"),
+        (set_fixed_point_multiplier, 100),
+        (entry_point_get_position, pos50, 18),
+        (agent_set_scripted_destination, "$g_belligerent_drunk_leaving", pos50, 0, 1),
+        (display_message, "@Follow him.", message_alert),
+
+        (assign, "$temp2", 2),
+        (set_fixed_point_multiplier, ":save_fpm"),
+      (else_try),
+        (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 4),
+        (eq, "$temp2", 3),
+        
+        (assign, ":save_fpm", 1),# dave fixed point value
+        (convert_to_fixed_point, ":save_fpm"),
+
+        (agent_is_active, "$g_belligerent_drunk_leaving"),
+        (agent_clear_scripted_mode, "$g_belligerent_drunk_leaving"),
+        (set_fixed_point_multiplier, 100),
+        (entry_point_get_position, pos50, 2),
+        (agent_set_scripted_destination, "$g_belligerent_drunk_leaving", pos50, 0, 1),
+        (display_message, "@Follow him.", message_alert),
+
+        (assign, "$temp2", 4),
+        (set_fixed_point_multiplier, ":save_fpm"),
+      (try_end),
     ]),
 
     (ti_on_agent_spawn,1,0,[

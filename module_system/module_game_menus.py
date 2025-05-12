@@ -51701,6 +51701,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (modify_visitors_at_site,"scn_ruins_of_carthage"),
       (reset_visitors),
       (set_visitor, 0, "trp_player"),
+      (assign, "$temp2", 0), # use this for scripted destination state
+      (assign, "$temp3", 0), # use this to count player falling
       (try_begin),
         (neg|is_currently_night),
         (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
