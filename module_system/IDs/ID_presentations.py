@@ -96,3 +96,4 @@ prsnt_mcc_character_creation = 94
 prsnt_simple_encounter = 95
 prsnt_ask_audience = 96
 prsnt_travel_port = 97
+prsnt_event_corruption_player = 98

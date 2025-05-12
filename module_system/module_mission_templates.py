@@ -31874,7 +31874,7 @@ mission_templates = [
     ]),
 
 
-    (1, 0, 0, [
+    (0.5, 0, 0, [
       (neg|conversation_screen_is_active),
       (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
     ],[

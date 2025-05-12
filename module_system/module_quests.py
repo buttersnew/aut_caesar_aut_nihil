@@ -569,5 +569,8 @@ quests = [
   ("prophecy_of_caeselius_bassus", "Special Quest: Prophecy of Caeselius Bassus", 0,
   "{!}placeholder."
   ),
+  ("trial", "Generic Quest: Trial", 0,
+  "{!}placeholder."
+  ),
   ("quests_end", "Quests End", 0, "{!}."),
 ]

@@ -147,4 +147,5 @@ qst_zarinaia = 145
 qst_werdheri = 146
 qst_triumph = 147
 qst_prophecy_of_caeselius_bassus = 148
-qst_quests_end = 149
+qst_trial = 149
+qst_quests_end = 150
