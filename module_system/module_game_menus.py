@@ -48229,11 +48229,26 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("inspect_treasury",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "As censor you are allowed to oversee the whole imperial budget: Everything from the imperial taxes Alexandria paid to the bills of Nero.^^^"
   +"You are surrounded by other officials. After some time they leave you alone, a good moment to make some changes..."
-  +"^^So far you have taken {reg22} denars.",
+  +"{s22}",
     "none",[
     (set_background_mesh, "mesh_pic_payment"),
+    (str_clear, s22),
+    (try_begin),
+      (troop_get_slot, reg22, "trp_player", slot_player_embezzeled_founds),
+      (val_mul, reg22, 1000),
 
-    (troop_get_slot, reg22, "trp_player", slot_player_embezzeled_founds),
+      (store_mul, reg23, reg22, 3),
+      (val_div, reg23, 2),
+      (val_mul, reg23, 1000),
+      (val_div, reg23, 1000),
+
+      (val_mul, reg22, 4),
+      (val_div, reg22, 5),
+      (val_mul, reg22, 1000),
+      (val_div, reg22, 1000),
+
+      (str_store_string, s22, "@^^So far you have taken something between {reg22} and {reg23} denars."),
+    (try_end),
   ],[
   ("visit",[
   ],
