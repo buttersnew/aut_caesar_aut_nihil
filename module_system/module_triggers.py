@@ -158,7 +158,7 @@ triggers = [
         (assign, "$g_apply_budget_report_to_gold", 1),
         (start_presentation, "prsnt_budget_report"),
         (try_begin),
-            (gt, "$g_player_debt_to_party_members", 50000),
+            (gt, "$g_player_debt_to_party_members", 75000),
             (call_script, "script_add_notification_menu", "mnu_dplmc_deserters",20,0),
         (try_end),
         (try_begin),

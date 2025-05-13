@@ -374,7 +374,6 @@ global_common_triggers = [
     (this_or_next|key_clicked, key_numpad_7),
     (this_or_next|key_clicked, key_numpad_8),
     (key_clicked, key_numpad_9),
-    (display_message, "@Ho ho ho"),
   ],[
     (set_fixed_point_multiplier, 1000),
     (try_begin),

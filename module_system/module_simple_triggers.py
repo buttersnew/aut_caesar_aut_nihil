@@ -4511,6 +4511,39 @@ simple_triggers = [
 # Spawn some bandits.
 (24*3,[
     (call_script, "script_execude_debug_message", 87),
+
+    (try_begin),
+        (display_message, "@Check I"),
+
+        (neq, "$g_is_emperor", 1),
+        (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),#roman
+        (neg|check_quest_active, "qst_trial"),#quest not active
+        (quest_slot_eq, "qst_trial", slot_quest_dont_give_again_remaining_days, 0),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),#not faction leader
+        (store_faction_of_party, ":fac", "p_town_6"),#rome is roman
+        (eq, ":fac", "$players_kingdom"),
+        (troop_slot_ge, "trp_player", slot_troop_honorary_title, 1),
+
+        (display_message, "@Check II"),
+
+        (store_random_in_range, ":r", 0, 101),
+        (call_script, "script_get_sacrifice_value", 100),# this script calculates player wealth by also taking into account weekly income
+        (store_div, ":chance", reg0, 100000), #=> 1 % per 100 000 wealth
+
+        (troop_get_slot, reg1, "trp_player", slot_player_embezzeled_founds),
+        (val_mul, reg1, 1000),
+        (val_div, reg1, 50000), #=> 1 % per 50 000 stolen money
+        (val_add, ":chance", reg1),# base chance of 3 %
+
+        (assign, reg20, ":chance"),
+        (assign, reg21, ":r"),
+        (display_message, "@Probability: {reg20}. Dice: {reg21}"),
+
+        (lt, ":r", ":chance"),
+        (call_script, "script_add_notification_menu", "mnu_event_corruption_player", -1, event_honorary),
+    (try_end),
+
+
     (call_script, "script_spawn_bandits"),
 ]),
 
@@ -10293,7 +10326,7 @@ simple_triggers = [
     (troop_set_slot, "trp_global_variables", g_fired_emperor_event, 0),## events with governors seeking advice
     (troop_set_slot, "trp_global_variables", g_nomad_event_triigered, 0),#events with minor factions if player is Emperor
     #steal taxes
-    (troop_set_slot, "trp_town_6_seneschal", 51, 0),
+    (troop_set_slot, "trp_town_6_seneschal", slot_troop_intrigue_impatience, 0),
 
     #for donating to centers
     (try_for_range, ":party", centers_begin, centers_end),
@@ -11584,6 +11617,9 @@ simple_triggers = [
 
 (24*7,[
     (call_script, "script_execude_debug_message", 184),
+    (store_current_hours, ":hour"),
+    (ge, ":hour", 24*14),#2 weeks
+    
     (try_begin),
         (neg|check_quest_active, "qst_nero_special_quest"),
         (eq, "$players_kingdom", "fac_kingdom_7"),
@@ -12095,6 +12131,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 191),
     (eq, "$g_player_is_captive", 0),#not captive
     (eq, "$enlisted_party", -1),#no freelance
+
     (neg|check_quest_active, "qst_investment"),
     (store_random_in_range, ":rand", 0, 10),
     (le, ":rand", 2),
@@ -12363,6 +12400,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 195),
     (party_slot_eq, "p_main_party", slot_party_on_water, 0),
     (neq, "$g_player_is_captive", 1),
+
     (eq, "$g_is_emperor", 1),
     (le, "$g_civil_war", 0),
 

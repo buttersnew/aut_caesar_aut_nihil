@@ -48228,9 +48228,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("inspect_treasury",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "As censor you are allowed to oversee the whole imperial budget: Everything from the imperial taxes Alexandria paid to the bills of Nero.^^^"
-  +"You are surrounded by other officials. After some time they leave you alone, a good moment to make some changes...",
+  +"You are surrounded by other officials. After some time they leave you alone, a good moment to make some changes..."
+  +"^^So far you have taken {reg22} denars.",
     "none",[
     (set_background_mesh, "mesh_pic_payment"),
+
+    (troop_get_slot, reg22, "trp_player", slot_player_embezzeled_founds),
   ],[
   ("visit",[
   ],
@@ -48298,7 +48301,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("caught_embezzle",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You manage to find out who is responsible for the investigation. You can bribe him to make sure it will stop now. The responsible official demands {reg33} denars as a bribe.",
+    "You manage to find out who is responsible for the investigation. You can bribe him to make sure it will stop. The responsible official demands {reg33} denars as a bribe.",
     "none",
     [
     (troop_get_slot, ":embezzled_founds_amount", "trp_player", slot_player_embezzeled_founds),
@@ -48337,9 +48340,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("caught_embezzle_punished",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "A major investigation takes place and the officials discovered that you have embezzled {reg33} denars over the time! Caesar Nero was informed about this incident and acts accordingly. You are forced to repay the embezzled founds.",
-  "none",
-  [
+  "A major investigation has concluded, revealing that you embezzled {reg33} denars over time!"
+  +"^^The Princeps has been informed of this incident. As the evidence of your guilt is considered irrefutable, no trial will be held, nor will you be questioned."
+  +" Believing your culpability to be manifest, he decrees the following:"
+  +" You are ordered to repay the embezzled funds. Additionally, you forfeit all of your offices and honorary titles.",
+  "none",[
     (troop_get_slot, ":embezzled_founds_amount", "trp_player", slot_player_embezzeled_founds),
 
     (store_mul, ":relation_lose", ":embezzled_founds_amount", -1),
@@ -48363,61 +48368,64 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, reg33, ":embezzled_founds_amount"),
     (try_begin),
       (ge, reg33, 600000),
-      (call_script, "script_change_player_honor", -300),
-      (call_script, "script_change_troop_renown","trp_player", -450),
+      (call_script, "script_change_player_honor", -50),
+      (call_script, "script_change_troop_renown","trp_player", -125),
     (else_try),
       (ge, reg33, 500000),
-      (call_script, "script_change_player_honor", -250),
-      (call_script, "script_change_troop_renown","trp_player", -400),
-    (else_try),
-      (ge, reg33, 400000),
-      (call_script, "script_change_player_honor", -220),
-      (call_script, "script_change_troop_renown","trp_player", -375),
-    (else_try),
-      (ge, reg33, 300000),
-      (call_script, "script_change_player_honor", -160),
-      (call_script, "script_change_troop_renown","trp_player", -350),
-    (else_try),
-      (ge, reg33, 200000),
-      (call_script, "script_change_player_honor", -120),
-      (call_script, "script_change_troop_renown","trp_player", -300),
-    (else_try),
-      (ge, reg33, 150000),
-      (call_script, "script_change_player_honor", -100),
-      (call_script, "script_change_troop_renown","trp_player", -250),
-    (else_try),
-      (ge, reg33, 100000),
-      (call_script, "script_change_player_honor", -80),
-      (call_script, "script_change_troop_renown","trp_player", -200),
-    (else_try),
-      (ge, reg33, 75000),
-      (call_script, "script_change_player_honor", -60),
+      (call_script, "script_change_player_honor", -40),
       (call_script, "script_change_troop_renown","trp_player", -100),
     (else_try),
-      (ge, reg33, 50000),
+      (ge, reg33, 400000),
+      (call_script, "script_change_player_honor", -35),
+      (call_script, "script_change_troop_renown","trp_player", -95),
+    (else_try),
+      (ge, reg33, 300000),
       (call_script, "script_change_player_honor", -30),
+      (call_script, "script_change_troop_renown","trp_player", -85),
+    (else_try),
+      (ge, reg33, 200000),
+      (call_script, "script_change_player_honor", -25),
       (call_script, "script_change_troop_renown","trp_player", -75),
     (else_try),
-      (ge, reg33, 25000),
-      (call_script, "script_change_player_honor", -15),
+      (ge, reg33, 150000),
+      (call_script, "script_change_player_honor", -20),
+      (call_script, "script_change_troop_renown","trp_player", -70),
+    (else_try),
+      (ge, reg33, 100000),
+      (call_script, "script_change_player_honor", -17),
+      (call_script, "script_change_troop_renown","trp_player", -65),
+    (else_try),
+      (ge, reg33, 75000),
+      (call_script, "script_change_player_honor", -14),
       (call_script, "script_change_troop_renown","trp_player", -60),
     (else_try),
-      (ge, reg33, 15000),
-      (call_script, "script_change_player_honor", -10),
+      (ge, reg33, 50000),
+      (call_script, "script_change_player_honor", -12),
       (call_script, "script_change_troop_renown","trp_player", -50),
     (else_try),
-      (call_script, "script_change_player_honor", -5),
-      (call_script, "script_change_troop_renown","trp_player", -50),
+      (ge, reg33, 25000),
+      (call_script, "script_change_player_honor", -9),
+      (call_script, "script_change_troop_renown","trp_player", -45),
+    (else_try),
+      (ge, reg33, 15000),
+      (call_script, "script_change_player_honor", -6),
+      (call_script, "script_change_troop_renown","trp_player", -35),
+    (else_try),
+      (call_script, "script_change_player_honor", -3),
+      (call_script, "script_change_troop_renown","trp_player", -25),
     (try_end),
   ],[
+    ("leave",[
+    ],"Damn it.",[
+      (call_script, "script_remove_office_from_troop", "trp_player", remove_all),
 
-      ("leave",[
-      ],"Damn it.",[
-        (troop_set_slot, "trp_player", slot_player_embezzeled_founds, 0),
-        (val_add, "$g_player_debt_to_party_members", reg33),
-        (jump_to_menu, "mnu_town"),
-      ]),
+      (store_div, ":repay", reg33, 2),
+      (call_script, "script_add_to_faction_bugdet", slot_faction_treasury, "fac_kingdom_7", ":repay"),
 
+      (troop_set_slot, "trp_player", slot_player_embezzeled_founds, 0),
+      (val_add, "$g_player_debt_to_party_members", reg33),
+      (jump_to_menu, "mnu_town"),
+    ]),
 ]),
 
   # (

@@ -4258,3 +4258,12 @@ wealth_bucket_10    = 200000
 wealth_bucket_11    = 1000000
 
 basic_loot = 275
+
+remove_honorary = 0
+remove_military = 1
+remove_governor = 2
+remove_all = 3
+
+event_governor = 1
+event_honorary = 2
+event_military = 3
