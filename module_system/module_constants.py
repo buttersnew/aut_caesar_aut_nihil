@@ -1481,6 +1481,7 @@ slot_troop_intro 						= 101
 slot_troop_intro_response_1 			= 102
 
 slot_player_embezzeled_founds           = 102 #use this instead of a global
+slot_troop_recently_bribed              = 102
 slot_player_takes_money_from_treasury   = 103
 
 slot_troop_intro_response_2 			= 103
