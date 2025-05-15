@@ -4546,11 +4546,13 @@ simple_triggers = [
             (call_script, "script_get_sacrifice_value", 100),# this script calculates player wealth by also taking into account weekly income
             (store_div, ":chance", reg0, 100000), #=> 1 % per 100 000 wealth
 
-            (val_add, ":chance", 300),# base chance of 3 %
+            (store_div, ":unrest_addition", "$g_unrest", 10),
 
-            (assign, reg20, ":chance"),
-            (assign, reg21, ":r"),
-            (display_message, "@Probability: {reg20}. Dice: {reg21}"),
+            (val_add, ":chance", ":unrest_addition"),# base chance depends on unrest
+
+            # (assign, reg20, ":chance"),
+            # (assign, reg21, ":r"),
+            # (display_message, "@Probability: {reg20}. Dice: {reg21}"),
 
             (lt, ":r", ":chance"),
             (call_script, "script_add_notification_menu", "mnu_event_corruption_player", -1, event_fake),
