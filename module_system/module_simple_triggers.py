@@ -4513,8 +4513,6 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 87),
 
     (try_begin),
-        (display_message, "@Check I"),
-
         (neq, "$g_is_emperor", 1),
         (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),#roman
         (neg|check_quest_active, "qst_trial"),#quest not active
@@ -4522,25 +4520,41 @@ simple_triggers = [
         (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),#not faction leader
         (store_faction_of_party, ":fac", "p_town_6"),#rome is roman
         (eq, ":fac", "$players_kingdom"),
-        (troop_slot_ge, "trp_player", slot_troop_honorary_title, 1),
+        (try_begin),
+            (troop_slot_ge, "trp_player", slot_troop_honorary_title, 1),
 
-        (display_message, "@Check II"),
+            (store_random_in_range, ":r", 0, 101),
+            (call_script, "script_get_sacrifice_value", 100),# this script calculates player wealth by also taking into account weekly income
+            (store_div, ":chance", reg0, 100000), #=> 1 % per 100 000 wealth
 
-        (store_random_in_range, ":r", 0, 101),
-        (call_script, "script_get_sacrifice_value", 100),# this script calculates player wealth by also taking into account weekly income
-        (store_div, ":chance", reg0, 100000), #=> 1 % per 100 000 wealth
+            (troop_get_slot, reg1, "trp_player", slot_player_embezzeled_founds),
+            (val_mul, reg1, 1000),
+            (val_div, reg1, 50000), #=> 1 % per 50 000 stolen money
+            (val_add, ":chance", reg1),# base chance of 3 %
 
-        (troop_get_slot, reg1, "trp_player", slot_player_embezzeled_founds),
-        (val_mul, reg1, 1000),
-        (val_div, reg1, 50000), #=> 1 % per 50 000 stolen money
-        (val_add, ":chance", reg1),# base chance of 3 %
+            # (assign, reg20, ":chance"),
+            # (assign, reg21, ":r"),
+            # (display_message, "@Probability: {reg20}. Dice: {reg21}"),
 
-        (assign, reg20, ":chance"),
-        (assign, reg21, ":r"),
-        (display_message, "@Probability: {reg20}. Dice: {reg21}"),
+            (lt, ":r", ":chance"),
+            (call_script, "script_add_notification_menu", "mnu_event_corruption_player", -1, event_honorary),
+        (else_try),
+            (this_or_next|troop_slot_ge, "trp_player", slot_troop_govern, 1),
+            (troop_slot_ge, "trp_player", slot_troop_legion, 1),
 
-        (lt, ":r", ":chance"),
-        (call_script, "script_add_notification_menu", "mnu_event_corruption_player", -1, event_honorary),
+            (store_random_in_range, ":r", 0, 101),
+            (call_script, "script_get_sacrifice_value", 100),# this script calculates player wealth by also taking into account weekly income
+            (store_div, ":chance", reg0, 100000), #=> 1 % per 100 000 wealth
+
+            (val_add, ":chance", 300),# base chance of 3 %
+
+            (assign, reg20, ":chance"),
+            (assign, reg21, ":r"),
+            (display_message, "@Probability: {reg20}. Dice: {reg21}"),
+
+            (lt, ":r", ":chance"),
+            (call_script, "script_add_notification_menu", "mnu_event_corruption_player", -1, event_fake),
+        (try_end),
     (try_end),
 
 
@@ -5338,6 +5352,12 @@ simple_triggers = [
             (quest_get_slot, ":exp_days", ":cur_quest", slot_quest_expiration_days),
             (val_sub, ":exp_days", 1),
             (try_begin),
+                (eq, ":exp_days", 0),
+                (eq, ":cur_quest", "qst_trial"),
+                (call_script, "script_fail_quest", ":cur_quest"),
+                (call_script, "script_end_quest", ":cur_quest"),
+                (call_script, "script_add_notification_menu", "mnu_trial_guilty", 0, 0),
+            (else_try),
                 (eq, ":exp_days", 0),
                 (eq, ":cur_quest", "qst_slave_revolt"),
                 (call_script, "script_fail_quest", ":cur_quest"),
@@ -12224,7 +12244,7 @@ simple_triggers = [
         #give a proper message
         (str_store_party_name, s5, ":headquarter"),
         (str_store_party_name, s6, ":new_headquarter"),
-        (store_add, ":string", ":legion", "str_lover_talk"),
+        (store_add, ":string", ":legion", "str_legion_names_begin"),
         (str_store_string, s7, ":string"),
         (display_log_message, "@The headquarter of {s7} in {s5} has been captured. It's new headquarter is in {s6}."),
         #set banner too

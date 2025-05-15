@@ -34202,6 +34202,51 @@ game_menus = [
     ]),
 ]),
 
+("trial_guilty",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Due to your failure to appear at the scheduled trial, a verdict has been rendered in absentia:"
+  +" Guilty. Consequently, you are hereby stripped of all current offices and titles. Furthermore, a punitive fine of {reg33} denars is levied against you for contempt and the original charges.",
+  "none",[
+    (try_begin),
+      (quest_slot_eq, "qst_trial", slot_quest_current_state, event_honorary), 
+      (troop_get_slot, ":base_fine_value", "trp_player", slot_player_embezzeled_founds),
+      (store_mul, reg33, ":base_fine_value", 1000),
+      (val_max, reg33, 5000),
+    (else_try),
+      (assign, reg33, 100000),
+    (try_end),
+    (set_background_mesh, "mesh_pic_senatus"),
+    ],[
+    ("accept_judgment_and_consequences",[
+    ],"Acknowledge the verdict and face the consequences.",[
+      # Universal consequences:
+      (call_script, "script_remove_office_from_troop", "trp_player", remove_all), # remove_all should be a defined constant
+      (call_script, "script_change_troop_renown", "trp_player", -50),
+      (call_script, "script_change_player_honor", -25),
+      (val_add, "$g_player_debt_to_party_members", reg33), # Add the determined fine to player debt
+
+      (try_begin),
+        (quest_slot_eq, "qst_trial", slot_quest_current_state, event_honorary),
+        (assign, "$g_dont_give_fief_to_player_days", 60), # Longer ban from receiving fiefs
+
+        (troop_set_slot, "trp_player", slot_player_embezzeled_founds, 0), # Clear embezzled amount tracker
+
+        (call_script, "script_end_quest", "qst_trial"), # End the specific quest
+        (quest_set_slot, "qst_trial", slot_quest_dont_give_again_remaining_days, 20), # Cooldown for this quest type
+
+        # Repay a portion to the state/faction from the embezzled funds fine
+        # This assumes reg33 now holds the full fine for the honorary case
+        (store_div, ":repayment_to_treasury", reg33, 2), # Half of the fine
+        (gt, ":repayment_to_treasury", 0), # Only if there's something to repay
+        (call_script, "script_add_to_faction_bugdet", slot_faction_treasury, "fac_kingdom_7", ":repayment_to_treasury"), # Ensure fac_kingdom_7 is appropriate
+      (else_try),
+        (assign, "$g_dont_give_fief_to_player_days", 40), # Shorter fief ban
+        (quest_set_slot, "qst_trial", slot_quest_dont_give_again_remaining_days, 15), # Shorter cooldown
+      (try_end),
+      
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
+
 ("event_corruption_player",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "You shouldn't be reading this.",
   "none",[

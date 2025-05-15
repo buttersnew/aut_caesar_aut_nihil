@@ -6159,7 +6159,7 @@ scripts_hardcoded = [
                     (eq, ":legion", 13),
                     (str_store_troop_name, s0, "trp_players_legion"),
                 (else_try),
-                    (store_add, ":string", "str_lover_talk", ":legion"),
+                    (store_add, ":string", "str_legion_names_begin", ":legion"),
                     (str_store_string, s0, ":string"),
                 (try_end),
 

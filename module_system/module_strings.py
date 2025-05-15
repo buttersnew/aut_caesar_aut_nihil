@@ -6663,6 +6663,8 @@ strings = [
 ("lover_talk", "Because you are my friend, I can tell you this.^^-- She looks around to make sure nobody is listening, then she whispers --^^I have heard something really interesting."
 +" {s30} and {s31} are having a love affair with each other. {s30} told me in secret during the last feast. But you haven't heard that from me, right?^^-- She winks. --"),
 
+("legion_names_begin", "legions_begin"),
+
 ("legio_1", "Legio XXII Primigenia"),#
 ("legio_2", "Legio III Augusta"),#
 ("legio_3", "Legio V Alaudae"),#

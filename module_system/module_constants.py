@@ -4267,4 +4267,4 @@ remove_all = 3
 
 event_governor = 1
 event_honorary = 2
-event_military = 3
+event_fake     = 3

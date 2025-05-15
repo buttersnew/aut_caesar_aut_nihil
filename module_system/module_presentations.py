@@ -9086,7 +9086,7 @@ presentations = [
 #       (try_begin),
 #         (troop_get_slot, ":legion", ":npc", slot_troop_legion),
 #         (ge, ":legion", 1),
-#         (store_add, ":string", "str_lover_talk", ":legion"),
+#         (store_add, ":string", "str_legion_names_begin", ":legion"),
 #         (str_store_string, s20, ":string"),
 #       (else_try),
 #         (troop_get_slot, ":aux", ":npc", slot_troop_aux),
@@ -21652,7 +21652,7 @@ presentations = [
 #               (assign, reg59, 0),
 #             (try_end),
 #           (else_try),
-#             (store_add, ":legion_string", "str_lover_talk", ":legion"),
+#             (store_add, ":legion_string", "str_legion_names_begin", ":legion"),
 #             (str_store_string, s28, ":legion_string"),
 #           (try_end),
 #           (eq, reg59, 1),
@@ -21693,7 +21693,7 @@ presentations = [
 #               (assign, reg59, 0),
 #             (try_end),
 #           (else_try),
-#             (store_add, ":legion_string", "str_lover_talk", ":slot"),
+#             (store_add, ":legion_string", "str_legion_names_begin", ":slot"),
 #             (str_store_string, s33, ":legion_string"),
 #           (try_end),
 #           (eq, reg59, 1),
@@ -21945,7 +21945,7 @@ presentations = [
 #               (troop_slot_eq, ":legat", slot_troop_occupation, dplmc_slto_dead),
 #               (str_store_string, s22, "@(is deceased)"),
 #             (try_end),
-#             (store_add, ":legion_string", "str_lover_talk", ":slot"),
+#             (store_add, ":legion_string", "str_legion_names_begin", ":slot"),
 #             (str_store_string, s20, ":legion_string"),
 #             (str_store_string,s57,s20),
 #             (str_store_string,s58,"@Commanded by {s21} {s22}"),
@@ -24110,7 +24110,7 @@ presentations = [
 		# (store_faction_of_troop, reg1, "$enlisted_lord"),
 		# (str_store_faction_name, s20, reg1),
     (troop_get_slot, ":legion", ":lord", slot_troop_legion),
-    (store_add, ":string", "str_lover_talk", ":legion"),
+    (store_add, ":string", "str_legion_names_begin", ":legion"),
     (str_store_string, s20, ":string"),
 		(create_text_overlay, reg1, "@Enlisted Legion: {s20}", tf_left_align),
 		(position_set_y, pos1, ":cur_y"),
@@ -25447,7 +25447,7 @@ presentations = [
             (eq, ":legion", 13),#player
             (str_store_troop_name_plural, s20, "trp_players_legion"),#handle player legion
         (else_try),
-            (store_add, ":string", ":legion", "str_lover_talk"),
+            (store_add, ":string", ":legion", "str_legion_names_begin"),
             (str_store_string, s20, ":string"),
         (try_end),
 
@@ -25985,7 +25985,7 @@ presentations = [
                     (troop_slot_eq, "trp_players_legion", 1,1),
                     (str_store_troop_name_plural, s52, "trp_players_legion"),
                 (else_try),
-                    (store_add, ":legion_string", "str_lover_talk", "$temp4_1"),
+                    (store_add, ":legion_string", "str_legion_names_begin", "$temp4_1"),
                     (str_store_string, s52, ":legion_string"),
                 (try_end),
                 (display_log_message, "@The {s52} has been disbanded!"),
@@ -26238,7 +26238,7 @@ presentations = [
 
         (val_add, ":num_lords", 1),
     (try_end),
-    (store_add, ":string", "$temp4_1", "str_lover_talk"),
+    (store_add, ":string", "$temp4_1", "str_legion_names_begin"),
     (str_store_string, s22, ":string"),
     # Presentation title, centered at the top
     (store_add, ":slot_hq",slot_legion_home_begin, "$temp4_1"),
@@ -26581,7 +26581,7 @@ presentations = [
                     (assign, reg59, 0),
                 (try_end),
             (else_try),
-                (store_add, ":legion_string", "str_lover_talk", "$temp4_1"),
+                (store_add, ":legion_string", "str_legion_names_begin", "$temp4_1"),
                 (str_store_string, s52, ":legion_string"),
             (try_end),
             (eq, reg59, 1),
@@ -26679,7 +26679,7 @@ presentations = [
                 (assign, reg59, 0),
             (try_end),
         (else_try),
-            (store_add, ":legion_string", "str_lover_talk", "$temp4_1"),
+            (store_add, ":legion_string", "str_legion_names_begin", "$temp4_1"),
             (str_store_string, s52, ":legion_string"),
         (try_end),
         (eq, reg59, 1),
@@ -26882,7 +26882,7 @@ presentations = [
     (store_add, ":slot_hq", slot_legion_home_begin, ":legion"),
     (troop_get_slot, "$temp4", "trp_province_array", ":slot_hq"),
 
-    (store_add, ":string", ":legion", "str_lover_talk"),
+    (store_add, ":string", ":legion", "str_legion_names_begin"),
     (str_store_string, s19, ":string"),
 
     (store_add, ":cohort", "$temp4_1", "pt_cohors_aux"),
@@ -27436,7 +27436,7 @@ presentations = [
         (eq, "$temp4_1", 13),#player
         (str_store_troop_name_plural, s20, "trp_players_legion"),#handle player legion
     (else_try),
-        (store_add, ":string", "$temp4_1", "str_lover_talk"),
+        (store_add, ":string", "$temp4_1", "str_legion_names_begin"),
         (str_store_string, s20, ":string"),
     (try_end),
     (str_store_string, s1, ":string"),
@@ -27777,7 +27777,7 @@ presentations = [
                 (eq, "$temp4_1", 13),
                 (str_store_troop_name, s2, "trp_players_legion"),
             (else_try),
-                (store_add, ":string", "str_lover_talk", "$temp4_1"),
+                (store_add, ":string", "str_legion_names_begin", "$temp4_1"),
                 (str_store_string, s2, ":string"),
             (try_end),
             (display_log_message, "@{s1} is the new headquarter of the {s2}"),
@@ -37417,7 +37417,7 @@ presentations = [
             (str_store_troop_name, s1, "trp_players_legion"),
         (else_try),
             (gt, ":legion", 0),
-            (store_add, ":string", "str_lover_talk", ":legion"),
+            (store_add, ":string", "str_legion_names_begin", ":legion"),
             (str_store_string, s1, ":string"),
         (else_try),
             (call_script, "script_get_cohort_name_to_s5", ":auxiliar"),
@@ -40384,6 +40384,32 @@ presentations = [
         (val_mul, reg12, 1000),
 
         (assign, ":upper_bound", 5000000),
+    (else_try),
+        (eq, "$g_notification_menu_var2", event_fake),
+
+        (try_begin),
+          (troop_get_slot, ":province_id", "trp_player", slot_troop_govern),
+          (gt, ":province_id", 0),
+          (store_add, ":province_string_id", "str_province_begin", ":province_id"), # More robust: store_add is safer if str_province_begin is not 0
+          (str_store_string, s40, ":province_string_id"),
+          (str_store_string, s44, "@Governor of {s40}"),
+        (else_try),
+          (troop_get_slot, ":legion_id", "trp_player", slot_troop_legion),
+          (gt, ":legion_id", 0),
+          (store_add, ":legion_string_id", "str_legion_names_begin", ":legion_id"), # Assuming str_legion_names_begin + legion_id gives the correct string
+          (str_store_string, s40, ":legion_string_id"),
+          (str_store_string, s44, "@Legate of {s40}"),
+        (try_end),
+
+        (str_store_string, s0,
+        "@As {s44}, the management of public funds falls under your purview. A procurator has recently arrived, announcing an audit into your expenditures, particularly concerning the procurement of supplies."
+        +" He has also discreetly hinted that a 'gesture of goodwill' on your part could significantly smooth over any potential discrepancies found in the accounts."
+        ),
+        (str_store_string, s22, "@Offer a 'facilitation fee':"), # Changed prompt slightly for flavor
+
+        (assign, reg12, 0), # Default bribe amount for the number box
+
+        (assign, ":upper_bound", 501), # Max bribe + 1 (so input is 0-500)
     (try_end),
 
     (create_text_overlay, reg1, "str_s0", tf_center_justify|tf_scrollable),
@@ -40465,6 +40491,7 @@ presentations = [
                 (call_script, "script_change_troop_renown", "trp_player", -25),
 
                 (quest_set_slot, "qst_trial", slot_quest_current_state, event_governor),
+                (quest_set_slot, "qst_trial", slot_quest_expiration_days, 30),
             (try_end),
         (else_try),
             (eq, "$g_notification_menu_var2", event_honorary),
@@ -40488,14 +40515,40 @@ presentations = [
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
 
-                (quest_set_slot, "qst_trial", slot_quest_current_state, event_honorary),
-
                 (faction_get_slot, ":leader", "$players_kingdom", slot_faction_leader),
                 (setup_quest_text,  "qst_trial"),
                 (str_store_troop_name_link, s15, ":leader"),
                 (str_store_string, s2, "@You reported wrong numbers related to public funds taken by you. Now you are accused of corruption and a trial is launched against you. Travel to {s15} to explain the situation."),
                 (call_script, "script_start_quest", "qst_trial", ":leader"),
+
+                (quest_set_slot, "qst_trial", slot_quest_current_state, event_honorary),
+                (quest_set_slot, "qst_trial", slot_quest_expiration_days, 30),
                 (call_script, "script_change_troop_renown", "trp_player", -25),
+            (try_end),
+        (else_try),
+            (eq, "$g_notification_menu_var2", event_fake),
+            (try_begin),
+                (eq, reg12, reg11),
+                (str_store_string, s29, "@The procurator departs shortly thereafter. A review of your accounts has found no irregularities. You are cleared of any suspicion."),
+                (display_message, "@{s29}"),
+                (jump_to_menu, "mnu_random_juice_events"),
+            (else_try),
+                (str_store_string,s29, "@Soon after the procurator's departure, an official dispatch arrives from Rome. It carries grave news: you stand accused of corruption and attempting to bribe an Imperial official. It seems the procurator was not merely an auditor, but a delator, an informant, sent to test your integrity!"),
+                (display_message, "@{s29}"),
+
+                (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", reg11, "trp_player"),
+
+                (faction_get_slot, ":leader", "$players_kingdom", slot_faction_leader),
+                (setup_quest_text, "qst_trial"),
+                (str_store_troop_name_link, s15, ":leader"),
+                (str_store_string, s2, "@You have been formally charged with corruption for attempting to bribe a procurator. You are summoned to present yourself before {s15} to answer these serious allegations."),
+                (call_script, "script_start_quest", "qst_trial", ":leader"),
+                (call_script, "script_change_troop_renown", "trp_player", -25),
+
+                (quest_set_slot, "qst_trial", slot_quest_current_state, event_fake),
+                (quest_set_slot, "qst_trial", slot_quest_expiration_days, 30),
+
+                (jump_to_menu, "mnu_random_juice_events"), # Or perhaps a specific menu related to the new quest/trial
             (try_end),
         (try_end),
     (try_end),
