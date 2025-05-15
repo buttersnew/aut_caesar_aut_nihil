@@ -56266,6 +56266,25 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
 ]),
+("event_desert_dates",0,
+  "Shrouded Oasis^^Under the merciless glare of the desert sun, when mirages dance on the horizon, you spot a small, almost miraculous cluster of date palms - a hidden oasis. A tattered, sun-bleached tent stands near a meager spring. Hoping for water or shade, you approach cautiously."
+  +" Inside the tent, the air is still and heavy. A lone figure, clad in desert robes, lies motionless on a worn rug, a handful of dried dates resting beside their outstretched hand. The palms around the oasis are heavy with clusters of ripe dates, a precious source of sustenance in this barren land."
+  +" Yet, the stillness of the camp and the fate of its occupant cast a grim shadow. Could the dates, or perhaps the water from the spring, be tainted?",
+  "none",[
+    (set_background_mesh, "mesh_pic_desert"), 
+  ],[
+    ("option_1_dates",[],"Leave the oasis untouched.",[
+      (str_store_string, s1, "@The unsettling scene serves as a potent warning. You decide the risk is too great and leave the oasis and its silent inhabitant behind, pushing onward through the desert."),
+      (assign, "$temp", "mesh_pic_desert"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("option_2_dates",[],"Risk it and gather the dates.",[
+      (troop_add_items, "trp_player", "itm_raw_date_fruit", 5), 
+      (str_store_string, s1, "@Thirst and hunger gnaw at your resolve. You decide to chance it, gathering a supply of dates from the palms. Cautiously, you sample one; it's sweet, rich, and seems perfectly fine. A welcome, if somber, relief."),
+      (assign, "$temp", "mesh_pic_desert"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+]),
 ("event_witch",0,
   "Witch?^^In the middle of the forest stands an anciet moss-covered hut, its dark half-rotten logs held together by nothing short of a miracle. Around it grows a large orchard of trees with slightly unusual-looking, but undoubtedly juicy yellow pears. Your foragers immediately detach to start collecting the fruit, when they are interrupted by an old woman's voice, sounding like the crunch of broken glass."+
   "^^--'I wouldn't eat that if I were you', the hag drops as she peeks out of the hut's window. She is even more ancient than the hut, with a single remaining tooth.",
