@@ -7896,7 +7896,7 @@ simple_triggers = [
         (try_begin),##events if you are famous
             (ge, ":player_renown", 200),
             (gt, ":num_men", 40),
-            (store_random_in_range, ":rand", 0, 35),
+            (store_random_in_range, ":rand", 0, 36),
             (try_begin),
                 (this_or_next|eq, ":rand", 0),
                 (eq, ":rand", 1),
@@ -8064,7 +8064,7 @@ simple_triggers = [
                 (jump_to_menu, "mnu_event_bad_omen"),
             (try_end),
         (else_try),##events if you are no one
-            (store_random_in_range, ":rand", 0, 31),
+            (store_random_in_range, ":rand", 0, 32),
             (try_begin),
                 (eq, ":rand", 1),
                 (jump_to_menu, "mnu_event_16_normal"),
