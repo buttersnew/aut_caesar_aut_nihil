@@ -56203,6 +56203,24 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
 ]),
+("event_apple",0,
+  "The Abandoned Cottage^^Deep in the forest, you stumble upon a small, isolated cottage, its door creaking softly as it hangs ajar. Curiosity, or perhaps the hope of shelter, draws you inside. There, a grim scene unfolds: a young woman lies still and lifeless on a crude bed, an apple clutched in her cold hand."
+  +" The cottage is nestled within an apple grove, branches laden with ripe fruit - a tempting resupply for your party. But the woman's death seems sinister, her pallor suggesting poison. Could these inviting apples be the cause of her demise?",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters")
+  ],[
+    ("option_1",[],"Leave the apples and the scene undisturbed.",[
+      (str_store_string, s1, "@Heeding the grim sight as a warning, you decide against taking any fruit and quickly depart from the unsettling cottage."),
+      (assign, "$temp", "mesh_pic_deserters"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("option_2",[],"Risk it and gather the apples.",[
+      (troop_add_items, "trp_player", "itm_apples", 5),
+      (str_store_string, s1, "@Deciding the need for supplies outweighs the potential danger, you gather a bounty of apples from the grove. You cautiously bite into one; it tastes sweet, crisp, and perfectly harmless."),
+      (assign, "$temp", "mesh_pic_deserters"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+]),
 ("event_witch",0,
   "Witch?^^In the middle of the forest stands an anciet moss-covered hut, its dark half-rotten logs held together by nothing short of a miracle. Around it grows a large orchard of trees with slightly unusual-looking, but undoubtedly juicy yellow pears. Your foragers immediately detach to start collecting the fruit, when they are interrupted by an old woman's voice, sounding like the crunch of broken glass."+
   "^^--'I wouldn't eat that if I were you', the hag drops as she peeks out of the hut's window. She is even more ancient than the hut, with a single remaining tooth.",
