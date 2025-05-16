@@ -46736,217 +46736,211 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]
   ),
 
-  (
-    "senate_discussion",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "{s49}^^{s48}",
-    "none",
-    [(set_background_mesh, "mesh_pic_senators"),
-    (str_store_string, s49, "@The senators are discussing various different topics, non of real importance. You can propose your own discussion topic.\
- Depending on your support, you may have success."),
+("senate_discussion",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "{s49}^^{s48}", # s49 is the current topic description, s48 is the current senate opinion
+  "none",[
+    (set_background_mesh, "mesh_pic_senators"),
+
+    # Default text if no specific topic is active (or as a base)
+    (str_store_string, s49, "@The Senate is currently engaged in discussions on various matters, none of which appear to be of pressing importance. You have the opportunity to propose your own topic for debate. Success will depend on the support you can muster among the senators."),
+
+    # Specific topic descriptions
     (try_begin),
       (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_grain),
-      (str_store_string, s49, "@The senators are discussing to import additional grain, in order to feed the population properly.\
- Since there is already enough grain in the town, it is clear, that the plan of senators is to offend the Praefectus annonae, the responsible offical elected by Caesar Augustus."),
-     # (store_random_in_range, "$temp", 0, 2),#0,1
+      (str_store_string, s49, "@The current debate centers on a proposal to import additional grain, ostensibly to ensure the proper sustenance of the populace. However, given that grain reserves in the city are already adequate, it is widely suspected that this motion is intended as a slight against the Praefectus Annonae, the official responsible for grain supply, who was appointed by Caesar Augustus himself."),
     (else_try),
       (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_nobles),
-      (str_store_string, s49, "@The senators are discussing wether the rights of the nobility should be increased or decreased. In particular, giving people of noble origins more rights\
- would reduce the rights of commoners at the same time."),
-      #(store_random_in_range, "$temp", -2, 2),#-1,0,1
+      (str_store_string, s49, "@Senators are currently debating whether the traditional rights and privileges of the nobility should be expanded or curtailed. Notably, granting further rights to those of noble birth would likely result in a corresponding reduction of rights for commoners."),
     (else_try),
       (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_slaves),
-      (str_store_string, s49, "@The senators are discussing wether the rights of the slaves should be increased or decreased. This means for example,\
- if the punishments that slaves could suffer should be more limited or not."),
-     # (store_random_in_range, "$temp", -2, 2),#-1,0,1
+      (str_store_string, s49, "@The discussion revolves around the rights afforded to slaves, specifically whether they should be increased or diminished. This includes considering if the types and severity of punishments that slaves may endure should be more strictly limited, or if masters should retain broader discretion."),
     (try_end),
-    (str_clear, s48),
-    (troop_get_slot, "$temp", "trp_senator_dummy", slot_senate_topic_opinion),
 
+    (str_clear, s48), # Clear s48 before setting it
+    (troop_get_slot, "$temp", "trp_senator_dummy", slot_senate_topic_opinion), # $temp holds the general opinion: -1 against, 0 undecided, 1 for
+
+    # Describe the current senate opinion (s48)
     (try_begin),
-      (neq, "$g_is_emperor", 1),
+      (neq, "$g_is_emperor", 1), # Only show opinion if player is not emperor
       (try_begin),
-        (eq, "$temp", 0),
-        (str_store_string, s48, "@It seems that the senators can't agree on a common approach"),
+        (eq, "$temp", 0), # Undecided
+        (str_store_string, s48, "@It appears the senators are divided and cannot reach a consensus on the current matter."),
       (else_try),
-        (eq, "$temp", 1),
+        (eq, "$temp", 1), # In favor of the proposal/first option
         (try_begin),
           (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_nobles),
-          (str_store_string, s48, "@It seems that the majority of the senators support a law change in favor of the nobility."),
+          (str_store_string, s48, "@The sentiment within the Senate seems to favor a change in laws that would benefit the nobility."),
         (else_try),
           (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_slaves),
-          (str_store_string, s48, "@It seems that the majority of the senators support a law change in favor of the masters. The limits to punishments should be reduced."),
+          (str_store_string, s48, "@A majority of senators appear to support measures that would reinforce the authority of masters, potentially by reducing limitations on slave punishments."),
         (else_try),
           (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_grain),
-          (str_store_string, s48, "@It seems that the majority of the senators support an order, to buy additional grain."),
+          (str_store_string, s48, "@It seems a majority of senators support the motion to order the purchase of additional grain supplies."),
         (try_end),
       (else_try),
-        (eq, "$temp", -1),
+        (eq, "$temp", -1), # Against the proposal/in favor of the second option
         (try_begin),
           (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_nobles),
-          (str_store_string, s48, "@It seems that the majority of the senators support a law change in favor of the commoners, the rights of the nobility should be reduced."),
+          (str_store_string, s48, "@The prevailing opinion among senators leans towards a law change favoring commoners, which would likely entail reducing the privileges of the nobility."),
         (else_try),
           (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_slaves),
-          (str_store_string, s48, "@It seems that the senators support a law change in favor of the slaves. The limits to punishments should be increased."),
+          (str_store_string, s48, "@It appears the Senate supports measures to improve the conditions for slaves, such as increasing the limitations on punishments they may suffer."),
         (else_try),
           (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_grain),
-          (str_store_string, s48, "@It seems that the majority of the senators don't support an order, to buy additional grain."),
+          (str_store_string, s48, "@A majority of senators seem disinclined to support the order for purchasing additional grain at this time."),
         (try_end),
       (try_end),
     (try_end),
-    ],
-    [
-      ("grain",[
-      (neg|troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_grain),
+  ],[
+    ("propose_new_topic",[ # Renamed option ID slightly for clarity, but original "grain" would also work if it's a generic "propose" button
+      (neg|troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_grain),    # Condition: No specific topic is currently active
       (neg|troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_nobles),
       (neg|troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_slaves),
       (neg|check_quest_active, "qst_talk_with_the_emperor"),
       (neg|check_quest_active, "qst_grain_supply"),
       (neq, "$g_is_emperor", 1),
-      ],
-      "Propose a topic",[
-            (jump_to_menu, "mnu_propose_topic"),
-      ]),
-      ("grain",[
+    ],"Propose a new topic for discussion.",[
+      (jump_to_menu, "mnu_propose_topic"),
+    ]),
+
+    ("organize_grain_supply",[ # Renamed option ID
       (neq, "$g_is_emperor", 1),
-      (eq, "$temp", 1),
+      (eq, "$temp", 1), # Senate supports buying more grain
       (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_grain),
       (neg|check_quest_active, "qst_grain_supply"),
-      ],
-      "Propose to organize the grain supply with your own funds",[
-            (jump_to_menu, "mnu_organize_grain"),
-      ]),
+    ],
+    "Offer to organize the additional grain supply using your own funds.",[
+      (jump_to_menu, "mnu_organize_grain"),
+    ]),
 
-      ("laws",[
+    ("speak_to_emperor_for_senate",[ # Renamed option ID
       (neq, "$g_is_emperor", 1),
-      (this_or_next|eq, "$temp", -1),
-      (eq, "$temp", 1),
+      (this_or_next|eq, "$temp", -1), # Senate is against current proposal (nobles/slaves) or for the 'other' side
+      (eq, "$temp", 1),               # Or for the current proposal
       (this_or_next|troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_slaves),
       (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_nobles),
       (neg|check_quest_active, "qst_talk_with_the_emperor"),
-      ],
-      "Propose to talk with Caesar Augustus in favor of the senate",[
-            (jump_to_menu, "mnu_talk_with_emperor"),
-      ]),
+    ],
+    "Propose to speak with Caesar Augustus on behalf of the Senate's position.",[
+      (jump_to_menu, "mnu_talk_with_emperor"),
+    ]),
 
-      ("leave_jui",[],"Go back.",[
-            (jump_to_menu, "mnu_senatus"),
-      ]),
-    ]
-  ),
+    ("leave_senate_discussion",[],"Go back.",[
+      (jump_to_menu, "mnu_senatus"),
+    ]),
+]),
 
-  (
-    "organize_grain",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "The senators seem quite interested in your offer, as it would be a good way to expose {s12} in the publicity. You would have to deliver the grain in 30 days. If you manage to bring the promised amount, you will for sure improve your renown and relation with Rome and in the senate.",
-    "none",
-    [
-      (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
-      (str_store_troop_name, s12, ":leader"),
-    ],[
-
-      ("leave_jui",[],"Promise to bring 25 ship full of grain.",[
-      (assign, reg25, 25),
-       (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
-   (str_store_string, s2, "str_grain_quest"),
-   (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
-   (troop_set_slot, "trp_senator_dummy", slot_senate_topic_opinion, -11),
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 25),
-
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
-   (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
-
-            (jump_to_menu, "mnu_senate_discussion"),
-      ]),
-
-      ("leave_jui",[],"Promise to bring 20 ship full of grain.",[
-       (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
-        (assign, reg25, 20),
-   (str_store_string, s2, "str_grain_quest"),
-   (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 20),
-
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
-   (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
-
-            (jump_to_menu, "mnu_senate_discussion"),
-      ]),
-
-      ("leave_jui",[],"Promise to bring 15 ship full of grain.",[
-       (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
-        (assign, reg25, 15),
-   (str_store_string, s2, "str_grain_quest"),
-   (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 15),
-
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
-   (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
-
-            (jump_to_menu, "mnu_senate_discussion"),
-      ]),
-      ("leave_jui",[],"Promise to bring at least 10 ship full of grain.",[
-       (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
-        (assign, reg25, 10),
-   (str_store_string, s2, "str_grain_quest"),
-   (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 10),
-
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
-   (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
-
-            (jump_to_menu, "mnu_senate_discussion"),
-      ]),
-      ("leave_jui",[],"Promise to bring 5 ship full of grain.",[
-       (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
-        (assign, reg25, 5),
-    (str_store_string, s2, "str_grain_quest"),
-   (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 5),
-
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
-   (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
-
-            (jump_to_menu, "mnu_senate_discussion"),
-      ]),
-      ("leave_jui",[],"Promise to bring at least 1 ship full of grain.",[
-       (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
-        (assign, reg25, 1),
-   (str_store_string, s2, "str_grain_quest"),
-   (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 1),
-
-   (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
-   (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
-
-            (jump_to_menu, "mnu_senate_discussion"),
-      ]),
-
-      ("leave_jui",[],"Go back.",[
-            (jump_to_menu, "mnu_senate_discussion"),
-      ]),
-    ]
-  ),
-
-  (
-    "finish_grain",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "The senators are satisfied and the grain is distributed to the people on the Mars field.\
- But the Princeps seems not very amused to hear about your actions.",
-    "none",
-    [
+("organize_grain",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Your offer to personally fund and organize an emergency grain shipment has piqued the interest of many senators."
+  +" They see this as an opportune moment to potentially embarrass {s12} publicly, should the official channels prove less effective or timely than your private initiative."
+  +"^^You will have 30 days to deliver the promised grain. Successfully fulfilling this commitment will undoubtedly enhance your renown, improve your standing with the Romans,"
+  +" and earn you considerable favor within the Senate itself. However, failure could have significant repercussions.",
+  "none",[
+    (faction_get_slot, ":leader_to_embarrass", "$g_encountered_party_faction", slot_faction_leader), # Or target official
+    (str_store_troop_name, s12, ":leader_to_embarrass"),
     (set_background_mesh, "mesh_pic_grain"),
-    (quest_get_slot, reg44, "qst_grain_supply", slot_quest_target_amount),
+  ],[
+    ("option_1",[],"Pledge to deliver twenty-five shiploads of grain.",[ # Text change
+      (assign, reg25, 25), # Used for quest text if "str_grain_quest" uses {reg25}
+      (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
+      (str_store_party_name_link, s5, "p_town_6"),
+      (str_store_string, s2, "str_grain_quest"), # Ensure str_grain_quest is well-phrased and possibly uses {reg25}
+      (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"), # Assuming trp_fortuna is the quest giver display
+      (troop_set_slot, "trp_senator_dummy", slot_senate_topic_opinion, -11), # Marks player has taken this action
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 25),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1), # No specific party target for delivery type quest
+      (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0), # Initial state
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
+
+    ("option_2",[],"Pledge to deliver twenty shiploads of grain.",[ # Text change
+      (assign, reg25, 20),
+      (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
+      (str_store_party_name_link, s5, "p_town_6"),
+      (str_store_string, s2, "str_grain_quest"),
+      (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 20),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
+      (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
+
+    ("option_3",[],"Pledge to deliver fifteen shiploads of grain.",[ # Text change
+      (assign, reg25, 15),
+      (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
+      (str_store_party_name_link, s5, "p_town_6"),
+      (str_store_string, s2, "str_grain_quest"),
+      (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 15),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
+      (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
+
+    ("option_4",[],"Pledge to deliver at least ten shiploads of grain.",[ # Text change
+      (assign, reg25, 10),
+      (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
+      (str_store_party_name_link, s5, "p_town_6"),
+      (str_store_string, s2, "str_grain_quest"),
+      (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 10),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
+      (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
+
+    ("option_5",[],"Pledge to deliver five shiploads of grain.",[ # Text change
+      (assign, reg25, 5),
+      (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
+      (str_store_party_name_link, s5, "p_town_6"),
+      (str_store_string, s2, "str_grain_quest"),
+      (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 5),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
+      (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
+
+    ("option_6",[],"Pledge to deliver at least one shipload of grain.",[ # Text change
+      (assign, reg25, 1),
+      (quest_set_slot, "qst_grain_supply", slot_quest_expiration_days, 30),
+      (str_store_party_name_link, s5, "p_town_6"),
+      (str_store_string, s2, "str_grain_quest"),
+      (call_script, "script_start_quest", "qst_grain_supply", "trp_fortuna"),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_amount, 1),
+      (quest_set_slot, "qst_grain_supply", slot_quest_target_party, -1),
+      (quest_set_slot, "qst_grain_supply", slot_quest_current_state, 0),
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
+
+    ("option_leave",[],"Decide against making a commitment at this time.",[ # Text change, slightly better ID suggestion if possible
+      (jump_to_menu, "mnu_senate_discussion"),
+    ]),
+]),
+
+("finish_grain",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "{s9}",
+  "none",[
+    (set_background_mesh, "mesh_pic_grain"), # Assuming this mesh depicts grain distribution or a similar scene
+    (quest_get_slot, reg44, "qst_grain_supply", slot_quest_target_amount), # reg44 stores the amount of grain delivered
+
+    (store_random_in_range, ":grain_string", "str_grain_success_1", "str_grain_success_end"),
+    (str_store_string, s9, ":grain_string"),
 
     (call_script, "script_change_troop_renown", "trp_player", reg44),
-    (assign, ":honor", reg44),
+    (assign, ":honor_gain", reg44), # Using a local variable for clarity in this block
     (set_fixed_point_multiplier, 1),
-    (convert_to_fixed_point, ":honor"),
-    (store_sqrt, ":honor", ":honor"),
-    (convert_from_fixed_point, ":honor"),
-    (call_script, "script_change_player_honor", ":honor"),
-    (call_script, "script_change_center_prosperity", "p_town_6", ":honor"),
-    (call_script, "script_change_senate_support", 1, 0),
+    (convert_to_fixed_point, ":honor_gain"),
+    (store_sqrt, ":honor_gain_sqrt", ":honor_gain"), # Store result in a new variable
+    (convert_from_fixed_point, ":honor_gain_sqrt"), # Store final result
+    (call_script, "script_change_player_honor", ":honor_gain_sqrt"),
+    (call_script, "script_change_center_prosperity", "p_town_6", ":honor_gain_sqrt"), # Assuming p_town_6 is Rome
+    (call_script, "script_change_senate_support", 1, 0), # Increase general senate support for player
+
     (try_begin),
       (eq, reg44, 1),
-      (call_script, "script_change_player_relation_with_center","$current_town", 2),
-      (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -3),
+      (call_script, "script_change_player_relation_with_center","$current_town", 2), # Assuming $current_town is where this menu is triggered, usually Rome/Senate
+      (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -3), # Assuming trp_kingdom_7_lord is Caesar or a key imperial figure
     (else_try),
       (eq, reg44, 5),
       (call_script, "script_change_player_relation_with_center","$current_town", 4),
@@ -46967,220 +46961,228 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_player_relation_with_center", "$current_town", 10),
       (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -15),
     (try_end),
-    (quest_get_slot, ":target", "qst_grain_supply", slot_quest_target_party),
-    (party_set_ai_behavior, ":target", ai_bhvr_travel_to_party),
-    (party_set_ai_object, ":target", "p_town_6"),
-    (party_set_flags, ":target", pf_default_behavior, 0),
+
+    (quest_get_slot, ":target_grain_caravan", "qst_grain_supply", slot_quest_target_party),
+    (party_set_ai_behavior, ":target_grain_caravan", ai_bhvr_travel_to_party), # Caravan now moves to Rome
+    (party_set_ai_object, ":target_grain_caravan", "p_town_6"), # Assuming p_town_6 is Rome
+    (party_set_flags, ":target_grain_caravan", pf_default_behavior, 0), # Clear default behavior if it was holding
 
     (add_xp_as_reward, 2000),
     (call_script, "script_succeed_quest", "qst_grain_supply"),
-    (call_script, "script_end_quest", "qst_grain_supply"),
-    ],[
-
-      ("leave_jui",[],"Very good!",[
-
-            (jump_to_menu, "mnu_senatus"),
-      ]),
-
-    ]
-  ),
-
-(
-  "talk_with_emperor",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "The senators are very happy about your proposal. You could try to convenience Caesar Augustus to change the law in favor of the senate. You would have 30 days to finish this quest.",
-  "none",[
+    (call_script, "script_end_quest", "qst_grain_supply"), # Properly end the quest
   ],[
-    ("leave_jui",[],"I will talk with the Princeps.",[
-      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
-      (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
-      (str_store_troop_name_link, s12, ":leader"),
-      (try_begin),
-        (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_nobles),
-        (try_begin),
-          (eq, "$temp", 1),
-          (str_store_string, s2, "@Talk with {s12} about a law change in favor of the nobility."),
-        (else_try),
-          (eq, "$temp", -1),
-          (str_store_string, s2, "@Talk with {s12} about a law change in favor of the commoners, the rights of the nobility should be reduced."),
-        (try_end),
-      (else_try),
-        (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_slaves),
-        (try_begin),
-          (eq, "$temp", 1),
-          (str_store_string, s2, "@Talk with {s12} about a law change in favor of the masters. The limits to punishments should be reduced."),
-        (else_try),
-          (eq, "$temp", -1),
-          (str_store_string, s2, "@Talk with {s12} about a law change in favor of the slaves. The limits to punishments should be increased."),
-        (try_end),
-      (try_end),
-      (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"),
-      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0),
-      (troop_get_slot, ":topic", "trp_senator_dummy", slot_senate_topic),
-      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, ":topic"),
-      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_target_state, "$temp"),
-      (store_random_in_range, ":r", 6, 12),
-      (troop_set_slot, "trp_senator_dummy",slot_senate_next_meeting, ":r"),
-      (display_message, "str_senate_meeting_over"),
-      (jump_to_menu, "mnu_senate_discussion"),
+    ("leave_jui_grain_success",[],"A satisfying outcome, despite the risks.",[ # Changed button text
+      (jump_to_menu, "mnu_senatus"), # Return to Senate menu
     ]),
-    ("leave_jui",[],"Go back.",[
+]),
 
-      (jump_to_menu, "mnu_senate_discussion"),
-    ]),
+("talk_with_emperor",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Your proposal to act as an envoy to Caesar Augustus has been met with considerable enthusiasm by the senators. They are hopeful that you can persuade the Princeps to enact a law aligned with the Senate's current prevailing sentiment. You will have 30 days to undertake this delicate diplomatic mission and report back with the outcome.",
+  "none",[
+    # s12 (Emperor's name) and s2 (quest description) will be set in the option block.
+    # $temp stores the Senate's opinion (-1 or 1) on the current topic.
+  ],[
+  ("accept_emperor_mission",[],"Offer to speak with the Princeps and present the Senate's view.",[ # Renamed option ID, clearer text
+    (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
+    
+    # Get Emperor's name for s12 (assuming he's the leader of the player's kingdom or a specific faction)
+    # If Caesar Augustus is a specific troop, use (str_store_troop_name_link, s12, "trp_caesar_augustus") instead.
+    (faction_get_slot, ":emperor_troop_id", "$players_kingdom", slot_faction_leader), # Or relevant faction if not player's
+    (str_store_troop_name_link, s12, ":emperor_troop_id"), # s12 will be Caesar Augustus's name
+
+    # Determine the specific quest string (s2) based on the topic and senate opinion ($temp)
+    (try_begin),
+      (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_nobles),
+      (try_begin),
+        (eq, "$temp", 1), # Senate favors nobility
+        (str_store_string, s2, "@You have been tasked by the Senate to persuade {s12} to enact legislation favoring the nobility, potentially expanding their rights and privileges."),
+      (else_try),
+        (eq, "$temp", -1), # Senate favors commoners
+        (str_store_string, s2, "@The Senate has charged you with convincing {s12} to pass laws that would benefit commoners, likely by curtailing certain rights of the nobility."),
+      (try_end),
+    (else_try),
+      (troop_slot_eq, "trp_senator_dummy", slot_senate_topic, topic_slaves),
+      (try_begin),
+        (eq, "$temp", 1), # Senate favors masters
+        (str_store_string, s2, "@Your mission from the Senate is to speak with {s12} regarding a law change that would reinforce the authority of masters, possibly by reducing current limitations on slave punishments."),
+      (else_try),
+        (eq, "$temp", -1), # Senate favors slaves
+        (str_store_string, s2, "@You are to petition {s12}, on behalf of the Senate, for legislation that would improve conditions for slaves, for instance, by increasing the limitations on punishments they may endure."),
+      (try_end),
+    (try_end),
+
+    (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"), # trp_fortuna as quest giver display
+    (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0), # Initial quest state
+    
+    (troop_get_slot, ":current_senate_topic", "trp_senator_dummy", slot_senate_topic),
+    (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, ":current_senate_topic"), # Store topic
+    (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_target_state, "$temp"), # Store Senate's desired outcome
+    
+    (store_random_in_range, ":days_until_next_meeting", 6, 12), # Days until next Senate meeting
+    (troop_set_slot, "trp_senator_dummy", slot_senate_next_meeting, ":days_until_next_meeting"),
+    (display_message, "str_senate_meeting_over"), # Ensure this string is defined e.g. "The current Senate session has concluded."
+    
+    (jump_to_menu, "mnu_senate_discussion"), # Or perhaps mnu_auto_return_map if Senate is over
+  ]),
+
+  ("decline_emperor_mission",[],"Go back.",[ # Renamed option ID, clearer text
+    (jump_to_menu, "mnu_senate_discussion"),
+  ]),
 ]),
 
 ("propose_topic",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Which topic do you wish to discuss?^^If your proposal is accepted, the senate meeting will be concluded.",
-  "none",
-  [
-
+  "none",[
+    (set_background_mesh, "mesh_pic_senators"),
   ],[
-      ("grain",[
-      (neg|check_quest_active, "qst_grain_supply"),
-      ],
-      "Propose to bring additional grain supplies",[
-           (troop_set_slot, "trp_senator_dummy", slot_senate_topic, topic_grain),
-           (troop_set_slot, "trp_senator_dummy", slot_senate_topic_opinion, 1),
-            (jump_to_menu, "mnu_organize_grain"),
-      ]),
+  ("grain",[
+    (neg|check_quest_active, "qst_grain_supply"),
+  ],"Propose to bring additional grain supplies",[
+    (troop_set_slot, "trp_senator_dummy", slot_senate_topic, topic_grain),
+    (troop_set_slot, "trp_senator_dummy", slot_senate_topic_opinion, 1),
+    (jump_to_menu, "mnu_organize_grain"),
+  ]),
+  ("leave_jui",[
+    (eq, "$edict8",1),
+  ],"Propose to revoke the lex militaris.",[
+    (store_random_in_range, reg26, -3, 2),
 
-      ("leave_jui",[(eq, "$edict8",1)],"Propose to revoke the lex militaris.",[
-
-      (store_random_in_range, reg26, -3, 2),
-
-      (call_script, "script_change_senate_support", reg26, 0),
-      (try_begin),
-        (eq, reg26, -2),
-        (str_store_string, s41, "@two senators changed to the opposite side."),
-      (else_try),
-        (eq, reg26, -1),
-        (str_store_string, s41, "@one senator changed to the opposite side."),
-      (else_try),
-        (eq, reg26, 0),
-        (str_store_string, s41, "@no senator changed side."),
-      (else_try),
-        (eq, reg26, 1),
-        (str_store_string, s41, "@one senator changed to your side."),
-      # (else_try),
-        # (eq, reg26, 2),
-        # (str_store_string, s41, "@two senators changed to your side."),
-      (try_end),
-      (display_message, s41),
-      (troop_get_slot, reg55, "trp_senator_dummy", slot_senate_support),
-      (try_begin),
-        (gt, reg55, 50),
-        (str_store_string, s44, "@During the discussion, {s41}.^^The senate accepted your proposal. Now you must convince the Princeps to issue the change of law."),
-        (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
-        (str_store_troop_name_link, s12, ":leader"),
-        (str_store_string, s2, "str_convince_emperor"),
-        (display_message, s44,color_good_news),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
-        (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, topic_lex_militaris),
-        (store_random_in_range, ":r", 6, 12),
-        (troop_set_slot, "trp_senator_dummy",slot_senate_next_meeting, ":r"),
-        (display_message, "str_senate_meeting_over"),
-        (assign, "$temp3", "mesh_pic_senators"),
-        (jump_to_menu, "mnu_event_senate_end"),
-      (else_try),
-        (display_message, "@The senate refused your proposal.",color_bad_news),
-        (jump_to_menu, "mnu_senate_discussion"),
-      (try_end),
-      (play_sound, "snd_senatus_sound_1"),
-
-      ]),
-      ("leave_jui",[(eq, "$edict2",1)],"Propose to revoke the lex Julia et Papia.",[
-      (store_random_in_range, reg26, -3, 2),
-
-      (call_script, "script_change_senate_support", reg26, 0),
-      (try_begin),
-        (eq, reg26, -2),
-        (str_store_string, s41, "@two senators changed to the opposite side."),
-      (else_try),
-        (eq, reg26, -1),
-        (str_store_string, s41, "@one senator changed to the opposite side."),
-      (else_try),
-        (eq, reg26, 0),
-        (str_store_string, s41, "@no senator changed side."),
-      (else_try),
-        (eq, reg26, 1),
-        (str_store_string, s41, "@one senator changed to your side."),
-      # (else_try),
-        # (eq, reg26, 2),
-        # (str_store_string, s41, "@two senators changed to your side."),
-      (try_end),
-      (display_message, s41),
-      (troop_get_slot, reg55, "trp_senator_dummy", slot_senate_support),
-      (try_begin),
-        (gt, reg55, 50),
-        (str_store_string, s44, "@During the discussion, {s41}.^^The senate accepted your proposal. Now you must convince the Princeps to issue the change of law."),
-        (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
-        (str_store_troop_name_link, s12, ":leader"),
-        (str_store_string, s2, "str_convince_emperor"),
-        (display_message, s44,color_good_news),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
-        (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, topic_lex_julia),
-        (store_random_in_range, ":r", 6, 12),
-        (troop_set_slot, "trp_senator_dummy",slot_senate_next_meeting, ":r"),
-        (display_message, "str_senate_meeting_over"),
-        (assign, "$temp3", "mesh_pic_senators"),
-        (jump_to_menu, "mnu_event_senate_end"),
-      (else_try),
-        (display_message, "@The senate refused your proposal.",color_bad_news),
-        (jump_to_menu, "mnu_senate_discussion"),
-      (try_end),
-      (play_sound, "snd_senatus_sound_1"),
-    ]),
-    ("leave_jui",[(eq, "$edict7",1)],"Propose to revoke the lex frumentaria et agraria.",[
-      (store_random_in_range, reg26, -3, 2),
-
-      (call_script, "script_change_senate_support", reg26, 0),
-      (try_begin),
-        (eq, reg26, -2),
-        (str_store_string, s41, "@two senators changed to the opposite side."),
-      (else_try),
-        (eq, reg26, -1),
-        (str_store_string, s41, "@one senator changed to the opposite side."),
-      (else_try),
-        (eq, reg26, 0),
-        (str_store_string, s41, "@no senator changed side."),
-      (else_try),
-        (eq, reg26, 1),
-        (str_store_string, s41, "@one senator changed to your side."),
-      # (else_try),
-        # (eq, reg26, 2),
-        # (str_store_string, s41, "@two senators changed to your side."),
-      (try_end),
-      (display_message, s41),
-      (troop_get_slot, reg55, "trp_senator_dummy", slot_senate_support),
-      (try_begin),
-        (gt, reg55, 50),
-        (str_store_string, s44, "@During the discussion, {s41}.^^The senate accepted your proposal. Now you must convince the Princeps to issue the change of law."),
-        (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
-        (str_store_troop_name_link, s12, ":leader"),
-        (str_store_string, s2, "str_convince_emperor"),
-        (display_message,s44,color_good_news),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
-        (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0),
-        (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, topic_lex_agra),
-        (store_random_in_range, ":r", 6, 12),
-        (troop_set_slot, "trp_senator_dummy",slot_senate_next_meeting, ":r"),
-        (display_message, "str_senate_meeting_over"),
-        (assign, "$temp3", "mesh_pic_senators"),
-        (jump_to_menu, "mnu_event_senate_end"),
-      (else_try),
-        (display_message, "@The senate refused your proposal.",color_bad_news),
-        (jump_to_menu, "mnu_senate_discussion"),
-      (try_end),
-      (play_sound, "snd_senatus_sound_1"),
-    ]),
-    ("leave_jui",[],"Go back.",[
+    (call_script, "script_change_senate_support", reg26, 0),
+    (try_begin),
+      (eq, reg26, -2),
+      (str_store_string, s41, "@two senators changed to the opposite side."),
+    (else_try),
+      (eq, reg26, -1),
+      (str_store_string, s41, "@one senator changed to the opposite side."),
+    (else_try),
+      (eq, reg26, 0),
+      (str_store_string, s41, "@no senator changed side."),
+    (else_try),
+      (eq, reg26, 1),
+      (str_store_string, s41, "@one senator changed to your side."),
+    # (else_try),
+      # (eq, reg26, 2),
+      # (str_store_string, s41, "@two senators changed to your side."),
+    (try_end),
+    (display_message, s41),
+    (troop_get_slot, reg55, "trp_senator_dummy", slot_senate_support),
+    (try_begin),
+      (gt, reg55, 50),
+      (str_store_string, s44, "@During the discussion, {s41}.^^The senate accepted your proposal. Now you must convince the Princeps to issue the change of law."),
+      (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
+      (str_store_troop_name_link, s12, ":leader"),
+      (str_store_string, s2, "str_convince_emperor"),
+      (display_message, s44,color_good_news),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
+      (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, topic_lex_militaris),
+      (store_random_in_range, ":r", 6, 12),
+      (troop_set_slot, "trp_senator_dummy",slot_senate_next_meeting, ":r"),
+      (display_message, "str_senate_meeting_over"),
+      (assign, "$temp3", "mesh_pic_senators"),
+      (jump_to_menu, "mnu_event_senate_end"),
+    (else_try),
+      (display_message, "@The senate refused your proposal.",color_bad_news),
       (jump_to_menu, "mnu_senate_discussion"),
-    ]),
+    (try_end),
+    (play_sound, "snd_senatus_sound_1"),
+  ]),
+  ("leave_jui",[
+    (eq, "$edict2",1),
+  ],"Propose to revoke the lex Julia et Papia.",[
+    (store_random_in_range, reg26, -3, 2),
+
+    (call_script, "script_change_senate_support", reg26, 0),
+    (try_begin),
+      (eq, reg26, -2),
+      (str_store_string, s41, "@two senators changed to the opposite side."),
+    (else_try),
+      (eq, reg26, -1),
+      (str_store_string, s41, "@one senator changed to the opposite side."),
+    (else_try),
+      (eq, reg26, 0),
+      (str_store_string, s41, "@no senator changed side."),
+    (else_try),
+      (eq, reg26, 1),
+      (str_store_string, s41, "@one senator changed to your side."),
+    # (else_try),
+      # (eq, reg26, 2),
+      # (str_store_string, s41, "@two senators changed to your side."),
+    (try_end),
+    (display_message, s41),
+    (troop_get_slot, reg55, "trp_senator_dummy", slot_senate_support),
+    (try_begin),
+      (gt, reg55, 50),
+      (str_store_string, s44, "@During the discussion, {s41}.^^The senate accepted your proposal. Now you must convince the Princeps to issue the change of law."),
+      (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
+      (str_store_troop_name_link, s12, ":leader"),
+      (str_store_string, s2, "str_convince_emperor"),
+      (display_message, s44,color_good_news),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
+      (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, topic_lex_julia),
+      (store_random_in_range, ":r", 6, 12),
+      (troop_set_slot, "trp_senator_dummy",slot_senate_next_meeting, ":r"),
+      (display_message, "str_senate_meeting_over"),
+      (assign, "$temp3", "mesh_pic_senators"),
+      (jump_to_menu, "mnu_event_senate_end"),
+    (else_try),
+      (display_message, "@The senate refused your proposal.",color_bad_news),
+      (jump_to_menu, "mnu_senate_discussion"),
+    (try_end),
+    (play_sound, "snd_senatus_sound_1"),
+  ]),
+  ("leave_jui",[
+    (eq, "$edict7",1),
+  ],"Propose to revoke the lex frumentaria et agraria.",[
+    (store_random_in_range, reg26, -3, 2),
+
+    (call_script, "script_change_senate_support", reg26, 0),
+    (try_begin),
+      (eq, reg26, -2),
+      (str_store_string, s41, "@two senators changed to the opposite side."),
+    (else_try),
+      (eq, reg26, -1),
+      (str_store_string, s41, "@one senator changed to the opposite side."),
+    (else_try),
+      (eq, reg26, 0),
+      (str_store_string, s41, "@no senator changed side."),
+    (else_try),
+      (eq, reg26, 1),
+      (str_store_string, s41, "@one senator changed to your side."),
+    # (else_try),
+      # (eq, reg26, 2),
+      # (str_store_string, s41, "@two senators changed to your side."),
+    (try_end),
+    (display_message, s41),
+    (troop_get_slot, reg55, "trp_senator_dummy", slot_senate_support),
+    (try_begin),
+      (gt, reg55, 50),
+      (str_store_string, s44, "@During the discussion, {s41}.^^The senate accepted your proposal. Now you must convince the Princeps to issue the change of law."),
+      (faction_get_slot, ":leader", "$g_encountered_party_faction", slot_faction_leader),
+      (str_store_troop_name_link, s12, ":leader"),
+      (str_store_string, s2, "str_convince_emperor"),
+      (display_message,s44,color_good_news),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
+      (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0),
+      (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, topic_lex_agra),
+      (store_random_in_range, ":r", 6, 12),
+      (troop_set_slot, "trp_senator_dummy",slot_senate_next_meeting, ":r"),
+      (display_message, "str_senate_meeting_over"),
+      (assign, "$temp3", "mesh_pic_senators"),
+      (jump_to_menu, "mnu_event_senate_end"),
+    (else_try),
+      (display_message, "@The senate refused your proposal.",color_bad_news),
+      (jump_to_menu, "mnu_senate_discussion"),
+    (try_end),
+    (play_sound, "snd_senatus_sound_1"),
+  ]),
+  ("leave_jui",[],"Go back.",[
+    (jump_to_menu, "mnu_senate_discussion"),
+  ]),
 ]),
 
 ("statue_finished",menu_text_color(0xFF000000)|mnf_disable_all_keys,

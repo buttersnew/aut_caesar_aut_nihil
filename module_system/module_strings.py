@@ -7317,7 +7317,7 @@ strings = [
 
   ("convince_emperor", "Convince {s12} to issue the change of law."),
   ("can_not_retreat_ambush","Can't retreat now. You have been ambushed!"),
-  ("grain_quest","Bring {reg25} shiploads of grain to Rome. ^Hint: Either go to a town in Egypt or North Africa and talk with the goods merchant to negotiate the shipment."),
+  ("grain_quest","Bring {reg25} shiploads of grain to {s5}. ^Hint: Either go to a town in Egypt or North Africa and talk with the goods merchant to negotiate the shipment."),
   ("center_rebellion_ongoing", "is currently attacked by rebells."),
   ("s46", "{s46}"),
 
@@ -9549,7 +9549,20 @@ strings = [
 ("description_legio_9", "Location: Moesia at Oescus from 6 AD; fought in Judea (67 - 70 AD).^Notable commander: Sextus Vetulenus Cerialis (67 AD).^Emblem: Bull and eagle."),
 ("description_legio_10", "Location: Syria and Judea; participated in Corbulo's Armenian campaigns (60s AD).^Notable commander: Gnaeus Domitius Corbulo (58 - 63 AD).^Emblem: She-wolf with Romulus and Remus."),
 ("description_legio_11", "Location: Judea (70 - 117 AD); destroyed Jerusalem in 70 AD.^Notable commander: Sextus Lucilius Bassus (71 - 73 AD).^Emblem: Ship."),
-("description_legio_12", "Location: Rome (Castra Praetoria).^Notable commander: Lucius Seius Strabo (prefect under Tiberius).^Emblem: Scorpion, linked to Tiberius' zodiac sign.")
+("description_legio_12", "Location: Rome (Castra Praetoria).^Notable commander: Lucius Seius Strabo (prefect under Tiberius).^Emblem: Scorpion, linked to Tiberius' zodiac sign."),
+
+("grain_success_1",
+  "Your timely intervention has ensured the city's grain supply. The senators express their satisfaction as the provisions are distributed to the grateful citizens on the Campus Martius."
+  +" Your standing within the Senate has undoubtedly improved.^^Yet, whispers from the Palatine indicate that the Princeps views your independent actions with a degree of displeasure,"
+  +" posibly concerned by the precedent set or the political implications of your success."
+),
+("grain_success_2",  
+  "Word of your successful grain delivery spreads quickly! Amidst cheers and gratitude, the vital supplies are distributed to the populace on the Campus Martius."
+  +" The Senate is visibly pleased with your decisive action and generosity."
+  +"^^However, reports suggest the Princeps, Caesar Augustus, is less than amused by this turn of events, perhaps seeing it as an unwelcome spotlight on his"
+  +" administration's perceived shortcomings or an overreach of senatorial influence facilitated by your efforts."
+),
+("grain_success_end",  "end"),
 
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
