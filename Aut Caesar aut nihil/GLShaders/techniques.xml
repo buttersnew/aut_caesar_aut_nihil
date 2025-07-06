@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+	<techniques>
+		<technique name="simple_shading_season">
+			<vertex_shader name="vs_font.glsl"/>
+			<fragment_shader name="ps_main_no_shadow_season.glsl"/>
+		</technique>
+		<technique name="map_font">
+			<vertex_shader name="vs_map_font.glsl"/>
+			<fragment_shader name="ps_map_font.glsl"/>
+		</technique>
+		<technique name="map_font_ALPHATEST">
+			<vertex_shader name="vs_map_font.glsl"/>
+			<fragment_shader name="ps_map_font.glsl"/>
+		</technique>
+		<technique name="parallax_water">
+			<vertex_shader name="vs_parallax_water.glsl"/>
+			<fragment_shader name="ps_parallax_water.glsl"/>
+		</technique>
+		<technique name="parallax_water_SHDW">
+			<vertex_shader name="vs_parallax_water.glsl"/>
+			<fragment_shader name="ps_parallax_water.glsl"/>
+		</technique>
+		<technique name="outer_terrain_water">
+			<vertex_shader name="vs_outer_terrain_water.glsl"/>
+			<fragment_shader name="ps_parallax_water2.glsl"/>
+		</technique>
+		<technique name="outer_terrain_water_SHDW">
+			<vertex_shader name="vs_outer_terrain_water.glsl"/>
+			<fragment_shader name="ps_parallax_water2.glsl"/>
+		</technique>
+		<technique name="diffuse_icon_seasonal">
+			<vertex_shader name="vs_main_icon_seasonal.glsl"/>
+			<fragment_shader name="ps_main_icon_seasonal.glsl"/>
+		</technique>
+		<technique name="diffuse_icon_seasonal_SHDW">
+			<vertex_shader name="vs_main_icon_seasonal.glsl"/>
+			<fragment_shader name="ps_main_icon_seasonal.glsl"/>
+		</technique>
+		<technique name="diffuse_sea_foam">
+			<vertex_shader name="vs_main_sea_foam.glsl"/>
+			<fragment_shader name="ps_main_sea_foam.glsl"/>
+		</technique>
+		<technique name="diffuse_sea_foam_SHDW">
+			<vertex_shader name="vs_main_sea_foam.glsl"/>
+			<fragment_shader name="ps_main_sea_foam.glsl"/>
+		</technique>
+		<technique name="dot3_season">
+			<vertex_shader name="vs_main_bump.glsl"/>
+			<fragment_shader name="ps_main_bump_season.glsl"/>
+		</technique>
+		<technique name="dot3_season_SHDW">
+			<vertex_shader name="vs_main_bump.glsl"/>
+			<fragment_shader name="ps_main_bump_season.glsl"/>
+		</technique>
+		<technique name="dot3_bark">
+			<vertex_shader name="vs_main_bump_bark.glsl"/>
+			<fragment_shader name="ps_main_bump_bark.glsl"/>
+		</technique>
+		<technique name="dot3_bark_SHDW">
+			<vertex_shader name="vs_main_bump_bark.glsl"/>
+			<fragment_shader name="ps_main_bump_bark.glsl"/>
+		</technique>
+		<technique name="parallax_ground">
+			<vertex_shader name="vs_main_parallax.glsl"/>
+			<fragment_shader name="ps_main_parallax.glsl"/>
+		</technique>
+		<technique name="parallax_ground_SHDW">
+			<vertex_shader name="vs_main_parallax.glsl"/>
+			<fragment_shader name="ps_main_parallax.glsl"/>
+		</technique>
+		<technique name="parallax_ground_multitex">
+			<vertex_shader name="vs_main_parallax.glsl"/>
+			<fragment_shader name="ps_main_parallax_multitex.glsl"/>
+		</technique>
+		<technique name="parallax_ground_multitex_SHDW">
+			<vertex_shader name="vs_main_parallax.glsl"/>
+			<fragment_shader name="ps_main_parallax_multitex.glsl"/>
+		</technique>
+		<technique name="standart_noskin_bump_specmap_high_sails">
+			<vertex_shader name="vs_main_standart_sails.glsl"/>
+			<fragment_shader name="ps_main_standart_fresnel.glsl"/>
+		</technique>
+		<technique name="standart_skin_bump_specmap_high_fresnel">
+			<vertex_shader name="vs_standart_skin_bump.glsl"/>
+			<fragment_shader name="ps_main_standart_fresnel.glsl"/>
+		</technique>
+		<technique name="hair_shader_aniso_static">
+			<vertex_shader name="vs_hair_aniso_static.glsl"/>
+			<fragment_shader name="ps_hair_aniso.glsl"/>
+		</technique>
+		<technique name="hair_shader_aniso_static_ALPHATEST">
+			<vertex_shader name="vs_hair_aniso_static.glsl"/>
+			<fragment_shader name="ps_hair_aniso.glsl"/>
+		</technique>
+		<technique name="flora_season">
+			<vertex_shader name="vs_flora_season.glsl"/>
+			<fragment_shader name="ps_flora_season.glsl"/>
+		</technique>
+		<technique name="flora_season_ALPHATEST">
+			<vertex_shader name="vs_flora_season.glsl"/>
+			<fragment_shader name="ps_flora_season.glsl"/>
+		</technique>
+		<technique name="flora_season_grass">
+			<vertex_shader name="vs_flora_season.glsl"/>
+			<fragment_shader name="ps_flora_season.glsl"/>
+		</technique>
+		<technique name="flora_season_grass_ALPHATEST">
+			<vertex_shader name="vs_flora_season.glsl"/>
+			<fragment_shader name="ps_flora_season.glsl"/>
+		</technique>
+		<technique name="flora_map">
+			<vertex_shader name="vs_flora_map.glsl"/>
+			<fragment_shader name="ps_flora_map.glsl"/>
+		</technique>
+		<technique name="flora_map_ALPHATEST">
+			<vertex_shader name="vs_flora_map.glsl"/>
+			<fragment_shader name="ps_flora_map.glsl"/>
+		</technique>
+		<technique name="new_map_shader">
+			<vertex_shader name="vs_new_map.glsl"/>
+			<fragment_shader name="ps_new_map.glsl"/>
+		</technique>
+		<technique name="new_map_shader_snow">
+			<vertex_shader name="vs_new_map.glsl"/>
+			<fragment_shader name="ps_new_map_2.glsl"/>
+		</technique>
+		<technique name="map_foam">
+			<vertex_shader name="vs_map_foam.glsl"/>
+			<fragment_shader name="ps_map_foam.glsl"/>
+		</technique>
+		<technique name="map_water_new">
+			<vertex_shader name="vs_map_water_new.glsl"/>
+			<fragment_shader name="ps_map_water_new.glsl"/>
+		</technique>
+		<technique name="map_water_new_high">
+			<vertex_shader name="vs_map_water_new.glsl"/>
+			<fragment_shader name="ps_map_water_new.glsl"/>
+		</technique>
+		<technique name="map_water_river_new">
+			<vertex_shader name="vs_map_water_new.glsl"/>
+			<fragment_shader name="ps_map_water_new.glsl"/>
+		</technique>
+		<technique name="map_water_river_new_high">
+			<vertex_shader name="vs_map_water_new.glsl"/>
+			<fragment_shader name="ps_map_water_new.glsl"/>
+		</technique>
+		<technique name="diffuse_no_shadow_season">
+			<vertex_shader name="vs_main_no_shadow.glsl"/>
+			<fragment_shader name="ps_main_no_shadow_season.glsl"/>
+		</technique>
+		<technique name="diffuse_no_shadow_season_bump">
+			<vertex_shader name="vs_main_no_shadow_bump.glsl"/>
+			<fragment_shader name="ps_main_no_shadow_season_bump.glsl"/>
+		</technique>
+	</techniques>
+</data>

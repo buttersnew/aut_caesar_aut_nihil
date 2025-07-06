@@ -1,0 +1,918 @@
+soundsfile version 3
+649
+ drum_3.wav 769
+ tutorial_1.wav 1801
+ tutorial_2.wav 265
+ s_cymbals.wav 1945
+ quest_completed.wav 2201
+ quest_succeeded.wav 1689
+ quest_completed2.wav 1945
+ quest_failed.wav 1945
+ quest_cancelled.wav 1945
+ rain_1.wav 1179
+ coins_dropped_1.wav 1193
+ coins_dropped_2.wav 2729
+ sword_clank_metal_09.wav 2128
+ sword_clank_metal_09b.wav 2128
+ sword_clank_metal_10.wav 2128
+ sword_clank_metal_10b.wav 2128
+ sword_clank_metal_12.wav 2128
+ sword_clank_metal_12b.wav 2128
+ sword_clank_metal_13.wav 2128
+ sword_clank_metal_13b.wav 2128
+ sword_clash_02.wav 2384
+ sword_clash_03.wav 2384
+ s_swordSwing.wav 2080
+ man_walk_hard_01.wav 528
+ man_walk_hard_02.wav 528
+ man_walk_hard_03.wav 528
+ man_walk_hard_04.wav 528
+ man_walk_hard_05.wav 528
+ man_walk_hard_06.wav 528
+ man_walk_hard_07.wav 528
+ man_walk_hard_08.wav 528
+ man_walk_hard_09.wav 528
+ man_walk_hard_10.wav 528
+ man_walk_soft_01.wav 528
+ man_walk_soft_02.wav 528
+ man_walk_soft_03.wav 528
+ man_walk_soft_04.wav 528
+ man_walk_soft_05.wav 528
+ man_walk_soft_06.wav 528
+ man_walk_soft_07.wav 528
+ man_walk_soft_08.wav 528
+ man_walk_soft_09.wav 528
+ man_walk_soft_10.wav 528
+ water_walk_1.wav 1072
+ water_walk_2.wav 1072
+ water_walk_3.wav 1072
+ water_walk_4.wav 1072
+ s_footstep_horse_4b.wav 0
+ s_footstep_horse_4f.wav 0
+ s_footstep_horse_5b.wav 0
+ s_footstep_horse_5f.wav 0
+ s_footstep_horse_2b.wav 2096
+ s_footstep_horse_2f.wav 2096
+ s_footstep_horse_3b.wav 2096
+ s_footstep_horse_3f.wav 2096
+ jump_begin.wav 1680
+ jump_end.wav 1424
+ jump_begin_water.wav 912
+ jump_end_water.wav 912
+ horse_jump_begin.wav 1680
+ horse_jump_end.wav 1936
+ release_bow_1.wav 1024
+ release_crossbow_1.wav 1792
+ crossbow_shoot_01.wav 768
+ crossbow_shoot_02.wav 768
+ crossbow_shoot_03.wav 768
+ crossbow_shoot_04.wav 768
+ crossbow_shoot_05.wav 768
+ crossbow_shoot_06.wav 768
+ throw_javelin_2.wav 1280
+ throw_axe_1.wav 1792
+ throw_knife_1.wav 1280
+ throw_stone_1.wav 1792
+ put_back_dagger.wav 1536
+ pull_bow_1.wav 1280
+ pull_arrow.wav 1280
+ arrow_pass_by_1.wav 112
+ arrow_pass_by_2.wav 112
+ arrow_pass_by_3.wav 112
+ arrow_pass_by_4.wav 112
+ bolt_pass_by_1.wav 112
+ javelin_pass_by_1.wav 112
+ javelin_pass_by_2.wav 112
+ stone_pass_by_1.wav 2416
+ axe_pass_by_1.wav 112
+ knife_pass_by_1.wav 112
+ arrow_whoosh_1.wav 112
+ arrow_hit_ground_2.wav 1904
+ arrow_hit_ground_3.wav 1904
+ incoming_bullet_hit_ground_1.wav 1904
+ incoming_javelin_hit_ground_1.wav 1904
+ incoming_stone_hit_ground_1.wav 1904
+ outgoing_arrow_hit_ground.wav 1904
+ draw_sword.wav 1056
+ put_back_sword.wav 1040
+ draw_greatsword.wav 1056
+ draw_mace.wav 1056
+ put_back_to_holster.wav 1040
+ draw_greataxe.wav 1056
+ put_back_to_leather.wav 1040
+ draw_spear.wav 1056
+ draw_crossbow.wav 1056
+ draw_from_holster.wav 1056
+ draw_dagger.wav 1056
+ draw_bow.wav 1056
+ draw_shield.wav 1056
+ put_back_shield.wav 1040
+ draw_other.wav 1056
+ draw_other2.wav 1040
+ body_fall_small_1.wav 2384
+ body_fall_small_2.wav 2384
+ body_fall_1.wav 2144
+ body_fall_2.wav 2144
+ body_fall_3.wav 2144
+ horse_body_fall_begin_1.wav 2656
+ horse_body_fall_end_1.wav 2656
+ horse_fall_e_03.wav 2656
+ hit_wood_wood_1.wav 3184
+ hit_wood_wood_2.wav 3184
+ hit_wood_wood_3.wav 3184
+ hit_wood_wood_4.wav 3184
+ hit_wood_metal_4.wav 3184
+ hit_wood_metal_5.wav 3184
+ hit_wood_metal_6.wav 3184
+ hit_metal_metal_3.wav 2672
+ hit_metal_metal_4.wav 2672
+ hit_metal_metal_5.wav 2672
+ hit_metal_metal_6.wav 2672
+ hit_metal_metal_7.wav 2672
+ hit_metal_metal_8.wav 2672
+ hit_metal_metal_9.wav 2672
+ hit_metal_metal_10.wav 2672
+ clang_metal_1.wav 2672
+ clang_metal_2.wav 2672
+ hit_metal_metal_1.wav 2672
+ hit_metal_metal_2.wav 2672
+ hit_wood_metal_7.wav 2672
+ shield_hit_wood_wood_1.wav 2416
+ shield_hit_wood_wood_2.wav 2416
+ shield_hit_wood_wood_3.wav 2416
+ shield_hit_metal_metal_1.wav 2672
+ shield_hit_metal_metal_2.wav 2672
+ shield_hit_metal_metal_3.wav 2672
+ shield_hit_metal_metal_4.wav 2672
+ shield_hit_cut_3.wav 2672
+ shield_hit_cut_4.wav 2672
+ shield_hit_cut_5.wav 2672
+ shield_hit_cut_10.wav 2672
+ shield_hit_metal_wood_1.wav 2672
+ shield_hit_metal_wood_2.wav 2672
+ shield_hit_metal_wood_3.wav 2672
+ shield_broken.wav 144
+ man_hit_5.wav 1904
+ man_hit_6.wav 1904
+ man_hit_7.wav 1904
+ man_hit_8.wav 1904
+ man_hit_9.wav 1904
+ man_hit_10.wav 1904
+ man_hit_11.wav 1904
+ man_hit_12.wav 1904
+ man_hit_13.wav 1904
+ man_hit_14.wav 1904
+ man_hit_15.wav 1904
+ man_hit_17.wav 1904
+ man_hit_18.wav 1904
+ man_hit_19.wav 1904
+ man_hit_22.wav 1904
+ man_hit_29.wav 1904
+ man_hit_32.wav 1904
+ man_hit_47.wav 1904
+ man_hit_57.wav 1904
+ man_hit_59.wav 1904
+ man_death_1.wav 2208
+ man_death_8.wav 2208
+ man_death_8b.wav 2208
+ man_death_11.wav 2208
+ man_death_14.wav 2208
+ man_death_16.wav 2208
+ man_death_18.wav 2208
+ man_death_21.wav 2208
+ man_death_29.wav 2208
+ man_death_40.wav 2208
+ man_death_44.wav 2208
+ man_death_46.wav 2208
+ man_death_48.wav 2208
+ man_death_64.wav 2208
+ woman_hit_2.wav 112
+ woman_hit_3.wav 112
+ woman_hit_b_2.wav 112
+ woman_hit_b_4.wav 112
+ woman_hit_b_6.wav 112
+ woman_hit_b_7.wav 112
+ woman_hit_b_8.wav 112
+ woman_hit_b_11.wav 112
+ woman_hit_b_14.wav 112
+ woman_hit_b_16.wav 112
+ woman_death_3.wav 2464
+ woman_death_4.wav 2464
+ woman_death_5.wav 2464
+ woman_death_6.wav 2464
+ woman_death_7.wav 2464
+ woman_death_8.wav 2464
+ woman_death_9.wav 2464
+ woman_death_10.wav 2464
+ woman_death_11.wav 2464
+ woman_death_12.wav 2464
+ woman_death_13.wav 2464
+ woman_death_14.wav 2464
+ woman_death_15.wav 2464
+ woman_yell_1.wav 2432
+ woman_yell_2.wav 2432
+ s_hide.wav 8
+ s_unhide.wav 8
+ horse_exterior_whinny_01.wav 8
+ horse_exterior_whinny_02.wav 8
+ horse_exterior_whinny_03.wav 8
+ horse_exterior_whinny_04.wav 8
+ horse_exterior_whinny_05.wav 8
+ horse_whinny.wav 8
+ horse_gallop_3.wav 1024
+ horse_gallop_4.wav 1024
+ horse_gallop_5.wav 1024
+ battle.wav 1032
+ battle_2.wav 1032
+ arrow_hit_body_1.wav 64
+ arrow_hit_body_2.wav 64
+ arrow_hit_body_3.wav 64
+ missile_flesh_01.wav 64
+ missile_flesh_02.wav 64
+ missile_flesh_03.wav 64
+ missile_flesh_04.wav 64
+ missile_flesh_05.wav 64
+ missile_flesh_06.wav 64
+ missile_flesh_07.wav 64
+ missile_flesh_08.wav 64
+ meleeimpact11.wav 2384
+ meleeimpact12.wav 2384
+ meleeimpact13.wav 2384
+ meleeimpact14.wav 2384
+ meleeimpact15.wav 2384
+ meleeimpact16.wav 2384
+ meleeimpact17.wav 2384
+ meleeimpact1.wav 2384
+ meleeimpact2.wav 2384
+ meleeimpact3.wav 2384
+ meleeimpact4.wav 2384
+ meleeimpact5.wav 2384
+ meleeimpact6.wav 2384
+ meleeimpact7.wav 2384
+ meleeimpact8.wav 2384
+ meleeimpact9.wav 2384
+ meleeimpact10.wav 2384
+ metal_high_low_01.wav 2384
+ metal_high_low_02.wav 2384
+ metal_high_low_03.wav 2384
+ metal_high_low_04.wav 2384
+ metal_high_low_05.wav 2384
+ metal_high_low_06.wav 2384
+ metal_high_low_07.wav 2384
+ metal_high_low_08.wav 2384
+ metal_high_low_09.wav 2384
+ metal_high_low_10.wav 2384
+ metal_high_low_11.wav 2384
+ metal_high_low_12.wav 2384
+ metal_high_low_13.wav 2384
+ metal_high_low_14.wav 2384
+ metal_high_low_15.wav 2384
+ metal_high_low_16.wav 2384
+ metal_high_low_17.wav 2384
+ metal_high_low_18.wav 2384
+ metal_high_low_19.wav 2384
+ metal_high_low_20.wav 2384
+ metal_high_low_21.wav 2384
+ metal_high_low_22.wav 2384
+ metal_high_low_23.wav 2384
+ metal_high_low_24.wav 2384
+ metal_high_low_25.wav 2384
+ metal_high_high_01.wav 2384
+ metal_high_high_02.wav 2384
+ metal_high_high_03.wav 2384
+ metal_high_high_04.wav 2384
+ metal_high_high_05.wav 2384
+ metal_high_high_06.wav 2384
+ metal_high_high_07.wav 2384
+ metal_high_high_08.wav 2384
+ metal_high_high_09.wav 2384
+ metal_high_high_10.wav 2384
+ metal_high_high_11.wav 2384
+ metal_high_high_12.wav 2384
+ metal_high_high_13.wav 2384
+ metal_high_high_14.wav 2384
+ metal_high_high_15.wav 2384
+ metal_high_high_16.wav 2384
+ metal_high_high_17.wav 2384
+ metal_high_high_18.wav 2384
+ metal_high_high_19.wav 2384
+ metal_high_high_20.wav 2384
+ metal_high_high_21.wav 2384
+ metal_high_high_22.wav 2384
+ metal_high_high_23.wav 2384
+ metal_high_high_24.wav 2384
+ metal_high_high_25.wav 2384
+ metal_high_high_26.wav 2384
+ metal_high_high_27.wav 2384
+ metal_high_high_28.wav 2384
+ metal_high_high_29.wav 2384
+ metal_high_high_30.wav 2384
+ metal_high_high_31.wav 2384
+ metal_high_high_32.wav 2384
+ blunt_hit_low_1.wav 2384
+ blunt_hit_low_2.wav 2384
+ blunt_hit_low_3.wav 2384
+ blunt_hit_high_1.wav 2384
+ blunt_hit_high_2.wav 2384
+ blunt_hit_high_3.wav 2384
+ blunt_high_low_01.wav 2384
+ wooden_hit_high_armor_low_damage_2.wav 2384
+ mp_arrow_hit_target.wav 2553
+ punch_1.wav 2384
+ punch_4.wav 2384
+ punch_5.wav 2384
+ player_hit_by_arrow.wav 2736
+ fl_pistol.wav 2720
+ man_excercise_1.wav 1120
+ man_excercise_2.wav 1120
+ man_excercise_4.wav 1120
+ man_ugh_1.wav 2096
+ man_ugh_2.wav 2096
+ man_ugh_4.wav 2096
+ man_ugh_7.wav 2096
+ man_ugh_12.wav 2096
+ man_ugh_13.wav 2096
+ man_ugh_17.wav 2096
+ man_stun_1.wav 2096
+ man_grunt_1.wav 1888
+ man_grunt_2.wav 1888
+ man_grunt_3.wav 1888
+ man_grunt_5.wav 1888
+ man_grunt_13.wav 1888
+ man_grunt_14.wav 1888
+ man_yell_4.wav 2128
+ man_yell_4_2.wav 2128
+ man_yell_7.wav 2128
+ man_yell_9.wav 2128
+ man_yell_11.wav 2128
+ man_yell_13.wav 2128
+ man_yell_15.wav 2128
+ man_yell_16.wav 2128
+ man_yell_17.wav 2128
+ man_yell_20.wav 2128
+ man_shortyell_4.wav 2128
+ man_shortyell_5.wav 2128
+ man_shortyell_6.wav 2128
+ man_shortyell_9.wav 2128
+ man_shortyell_11.wav 2128
+ man_shortyell_11b.wav 2128
+ man_yell_b_18.wav 2128
+ man_yell_22.wav 2128
+ man_yell_c_20.wav 2128
+ man_insult_2.wav 80
+ man_insult_3.wav 80
+ man_insult_7.wav 80
+ man_insult_9.wav 80
+ man_insult_13.wav 80
+ man_insult_15.wav 80
+ man_insult_16.wav 80
+ encounter_river_pirates_5.wav 2057
+ encounter_river_pirates_6.wav 2057
+ encounter_river_pirates_9.wav 2057
+ encounter_river_pirates_10.wav 2057
+ encounter_river_pirates_4.wav 2057
+ encounter_bandit_2.wav 2057
+ encounter_bandit_9.wav 2057
+ encounter_bandit_12.wav 2057
+ encounter_bandit_13.wav 2057
+ encounter_bandit_15.wav 2057
+ encounter_bandit_16.wav 2057
+ encounter_bandit_10.wav 2057
+ encounter_farmer_2.wav 2057
+ encounter_farmer_5.wav 2057
+ encounter_farmer_7.wav 2057
+ encounter_farmer_9.wav 2057
+ encounter_sea_raider_5.wav 2057
+ encounter_sea_raider_9.wav 2057
+ encounter_sea_raider_9b.wav 2057
+ encounter_sea_raider_10.wav 2057
+ encounter_steppe_bandit_3.wav 2057
+ encounter_steppe_bandit_3b.wav 2057
+ encounter_steppe_bandit_8.wav 2057
+ encounter_steppe_bandit_10.wav 2057
+ encounter_steppe_bandit_12.wav 2057
+ encounter_nobleman_1.wav 2057
+ encounter_vaegirs_ally.wav 2057
+ encounter_vaegirs_ally_2.wav 2057
+ encounter_vaegirs_neutral.wav 2057
+ encounter_vaegirs_neutral_2.wav 2057
+ encounter_vaegirs_neutral_3.wav 2057
+ encounter_vaegirs_neutral_4.wav 2057
+ sneak_halt_1.wav 9
+ sneak_halt_2.wav 9
+ horse_walk_1.wav 1328
+ horse_walk_2.wav 1328
+ horse_walk_3.wav 1328
+ horse_walk_4.wav 1328
+ horse_trot_1.wav 1600
+ horse_trot_2.wav 1600
+ horse_trot_3.wav 1600
+ horse_trot_4.wav 1600
+ horse_canter_1.wav 1856
+ horse_canter_2.wav 1856
+ horse_canter_3.wav 1856
+ horse_canter_4.wav 1856
+ horse_gallop_6.wav 2128
+ horse_gallop_7.wav 2128
+ horse_gallop_8.wav 2128
+ horse_gallop_9.wav 2128
+ horse_breath_4.wav 1040
+ horse_breath_5.wav 1040
+ horse_breath_6.wav 1040
+ horse_breath_7.wav 1040
+ horse_snort_1.wav 528
+ horse_snort_2.wav 528
+ horse_snort_3.wav 528
+ horse_snort_4.wav 528
+ horse_snort_5.wav 528
+ horse_whinny-1.wav 3072
+ horse_whinny-2.wav 3072
+ block_fist_3.wav 0
+ block_fist_4.wav 0
+ man_victory_3.wav 2640
+ man_victory_4.wav 2640
+ man_victory_5.wav 2640
+ man_victory_8.wav 2640
+ man_victory_15.wav 2640
+ man_victory_49.wav 2640
+ man_victory_52.wav 2640
+ man_victory_54.wav 2640
+ man_victory_57.wav 2640
+ man_victory_71.wav 2640
+ Fire_Torch_Loop3.wav 1182
+ Fire_Torch_Loop3_new.wav 1182
+ cow_moo_1.wav 2201
+ cow_slaughter.wav 2201
+ d_dog1.wav 2105
+ d_dog2.wav 2105
+ d_dog3.wav 2105
+ d_dog7.wav 2105
+ d_owl2.wav 2361
+ d_owl3.wav 2361
+ d_owl4.wav 2361
+ d_chicken1.wav 2105
+ d_chicken2.wav 2105
+ d_carpenter1.wav 825
+ d_saw_short3.wav 825
+ d_blacksmith2.wav 1081
+ arena_loop10.wav 907
+ town_loop_3.wav 907
+ cue_failure.wav 1801
+ you_scored_a_point.wav 2729
+ rome_lyre.wav 3978
+ greece_lyre.wav 3978
+ fleita.wav 2698
+ fleita1.wav 2698
+ pickaxesound.wav 3978
+ femgrunt5.wav 1384
+ femgrunt6.wav 1384
+ femgrunt8.wav 1384
+ gruntfem3.wav 1384
+ fem_attack.wav 1384
+ gruntfem1.wav 2104
+ gruntfem7.wav 2104
+ wgrunt4.wav 2104
+ femgrunt1.wav 1896
+ femgrunt2.wav 1896
+ femgrunt9.wav 1896
+ femgrunt10.wav 1896
+ wooaao.wav 2648
+ womancheer1.wav 2648
+ femalecheer3.wav 2648
+ femalecheer4.wav 2648
+ femalecheer5.wav 2648
+ womanlaugh.wav 2648
+ ribaude_1.wav 2648
+ thunder_close_1.wav 2729
+ thunder_close_2.wav 2729
+ thunder_close_3.wav 2729
+ thunder.wav 2729
+ male_scream_02.wav 2728
+ male_scream_04.wav 2728
+ yell_pain_male_06.wav 2712
+ yell_pain_male_11.wav 2712
+ missile_dive.wav 2136
+ male_misc_1.wav 1368
+ male_misc_2.wav 1368
+ male_misc_3.wav 1368
+ male_misc_4.wav 1368
+ male_misc_5.wav 1368
+ male_misc_6.wav 1368
+ male_misc_7.wav 1368
+ male_sigh_1.wav 1368
+ male_sigh_2.wav 1368
+ male_sigh_3.wav 1368
+ male_sigh_4.wav 1368
+ female_misc_1.wav 1368
+ female_misc_2.wav 1368
+ female_misc_3.wav 1368
+ female_misc_4.wav 1368
+ female_misc_5.wav 1368
+ female_misc_6.wav 1368
+ female_misc_7.wav 1368
+ female_misc_8.wav 1368
+ female_misc_9.wav 1368
+ female_sigh_1.wav 1368
+ female_sigh_2.wav 1368
+ female_sigh_3.wav 1368
+ female_sigh_4.wav 1368
+ female_sigh_5.wav 1368
+ female_sigh_6.wav 1368
+ female_sigh_7.wav 1368
+ ambient_day_plains_loop_1.wav 1387
+ ambient_day_plains_loop_2.wav 1387
+ ambient_day_plains_loop_3.wav 1387
+ country_ambience.wav 1387
+ sea_loop.wav 2155
+ oceansurf01.wav 2155
+ oceansurf02.wav 2155
+ ambient_night_loop_1.wav 1387
+ ambient_night_loop_2.wav 1387
+ ambient_night_loop_3.wav 1387
+ ambient_tavern_loop.wav 875
+ outdoor_market_small_town.wav 875
+ ambient_random_bird_1.wav 1897
+ ambient_random_bird_2.wav 1897
+ ambient_random_bird_3.wav 1897
+ ambient_random_bird_4.wav 1897
+ morning_birds.wav 1897
+ ambient_random_crow_1.wav 1897
+ ambient_random_crow_2.wav 1897
+ ambient_random_crow_3.wav 1897
+ ambient_random_dog_1.wav 1897
+ ambient_random_dog_2.wav 1897
+ ambient_random_dog_3.wav 1897
+ ambient_random_dog_4.wav 1897
+ ambient_random_dog_5.wav 1897
+ ambient_random_dog_6.wav 1897
+ ambient_random_chicken_1.wav 1897
+ ambient_random_chicken_2.wav 1897
+ ambient_random_chicken_3.wav 1897
+ ambient_random_chicken_4.wav 1897
+ ambient_random_chicken_5.wav 1897
+ ambient_random_cow_1.wav 1897
+ ambient_random_cow_2.wav 1897
+ ambient_random_cow_3.wav 1897
+ ambient_random_cow_4.wav 1897
+ ambient_random_cow_5.wav 1897
+ coastal_ambience.wav 283
+ seagull2.wav 1113
+ horn.wav 3944
+ kwazi_epic_war_horns_02_high.wav 3944
+ kwazi_epic_war_horns_02_low.wav 3944
+ hedmarking__prillarhorn.wav 3944
+ immersive_susurros.wav 2712
+ immersive_ahem.wav 2712
+ immersive_burp.wav 2712
+ immersive_cough_clears.wav 2712
+ immersive_farties.wav 2712
+ immersive_whistle.wav 2712
+ immersive_coughs.wav 2712
+ immersive_crowdwhispers.wav 2712
+ immersive_short_burp.wav 2712
+ immersive_sorbos.wav 2712
+ immersive_coughings.wav 2712
+ immersive_clearing_throat.wav 2712
+ immersive_farts.wav 2712
+ immersive_chantl.wav 2712
+ immersive_chants.wav 2712
+ immersive_chantsp.wav 2712
+ shield_taunt.wav 1416
+ water_splash_03.wav 1624
+ man_die_06.wav 1673
+ schiff_liegt.wav 1545
+ cornu_1.wav 3944
+ cornu_2.wav 3944
+ senate_1.wav 3992
+ senate_2.wav 3992
+ message_negative_sound.wav 1432
+ disease_sound.wav 1432
+ riot_sound.wav 1432
+ fire1.wav 3160
+ fire2.wav 3160
+ elephant1.wav 4000
+ tiger_roar_02.wav 4000
+ tiger_roar_01.wav 4000
+ tiger.wav 4000
+ wolf.wav 4000
+ wolf_2.wav 4000
+ order_charge.wav 2296
+ order_charge_2.wav 2296
+ order_charge_3.wav 2296
+ order_charge_4.wav 2296
+ order_charge_5.wav 2296
+ order_charge_6.wav 2296
+ order_hold.wav 2296
+ order_hold_2.wav 2296
+ order_hold_3.wav 2296
+ order_hold_4.wav 2296
+ order_hold_5.wav 2296
+ order_fire.wav 2296
+ order_fire_2.wav 2296
+ order_fire_3.wav 2296
+ order_fire_4.wav 2296
+ order_fire_5.wav 2296
+ order_hold_fire.wav 2296
+ order_hold_fire_2.wav 2296
+ order_hold_fire_3.wav 2296
+ order_stand_closer.wav 2296
+ order_spread.wav 2296
+ order_retreat.wav 2296
+ intro_1.wav 4088
+ intro_2.wav 4088
+ intro_3.wav 4088
+ intro_4.wav 4088
+ intro_5.wav 4088
+ intro_6.wav 4088
+ player_speech_rome_other_goy.wav 4088
+ battle_speech_1.wav 4088
+ battle_speech_2.wav 4088
+ battle_speech_3.wav 4088
+ battle_speech_4.wav 4088
+ battle_speech_5.wav 4088
+ battle_speech_6.wav 4088
+ battle_speech_7.wav 4088
+ battle_speech_8.wav 4088
+ battle_speech_9.wav 4088
+ battle_speech_10.wav 4088
+ battle_speech_11.wav 4088
+ antonia_speech_1.wav 4088
+ antonia_speech_2.wav 4088
+ antonia_speech_3.wav 4088
+ antonia_speech_4.wav 4088
+ antonia_speech_5.wav 4088
+ baths_spring.wav 3928
+ Taverndrunk_lose_1.wav 4089
+ Taverndrunk_lose_2.wav 4089
+ Taverndrunk_lose_3.wav 4089
+ Taverndrunk_lose_4.wav 4089
+ Taverndrunk_win_1.wav 4089
+ Taverndrunk_win_2.wav 4089
+ Taverndrunk_win_3.wav 4089
+266
+snd_click 769 1 0 0 
+snd_tutorial_1 1801 1 1 0 
+snd_tutorial_2 265 1 2 0 
+snd_gong 1945 1 3 0 
+snd_quest_taken 1945 0 
+snd_quest_completed 2201 1 4 0 
+snd_quest_succeeded 1689 1 5 0 
+snd_quest_concluded 1945 1 6 0 
+snd_quest_failed 1945 1 7 0 
+snd_quest_cancelled 1945 1 8 0 
+snd_rain 1179 1 9 0 
+snd_money_received 1193 1 10 0 
+snd_money_paid 2729 1 11 0 
+snd_sword_clash_1 2128 8 12 0 13 0 14 0 15 0 16 0 17 0 18 0 19 0 
+snd_sword_clash_2 2384 1 20 0 
+snd_sword_clash_3 2384 1 21 0 
+snd_sword_swing 2080 1 22 0 
+snd_footstep_grass 528 10 23 0 24 0 25 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 
+snd_footstep_wood 528 10 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 
+snd_footstep_water 1072 4 43 0 44 0 45 0 46 0 
+snd_footstep_horse 0 4 47 0 48 0 49 0 50 0 
+snd_footstep_horse_1b 2096 4 47 0 48 0 49 0 50 0 
+snd_footstep_horse_1f 2096 4 51 0 52 0 53 0 54 0 
+snd_footstep_horse_2b 2096 1 51 0 
+snd_footstep_horse_2f 2096 1 52 0 
+snd_footstep_horse_3b 2096 1 53 0 
+snd_footstep_horse_3f 2096 1 54 0 
+snd_footstep_horse_4b 2096 1 47 0 
+snd_footstep_horse_4f 2096 1 48 0 
+snd_footstep_horse_5b 2096 1 49 0 
+snd_footstep_horse_5f 2096 1 50 0 
+snd_jump_begin 1680 1 55 0 
+snd_jump_end 1424 1 56 0 
+snd_jump_begin_water 912 1 57 0 
+snd_jump_end_water 912 1 58 0 
+snd_horse_jump_begin 1680 1 59 0 
+snd_horse_jump_end 1936 1 60 0 
+snd_horse_jump_begin_water 1680 1 57 0 
+snd_horse_jump_end_water 1680 1 58 0 
+snd_release_bow 1024 1 61 0 
+snd_release_crossbow 1792 1 62 0 
+snd_release_crossbow_medium 768 6 63 0 64 0 65 0 66 0 67 0 68 0 
+snd_release_crossbow_far 256 6 63 0 64 0 65 0 66 0 67 0 68 0 
+snd_throw_javelin 1280 1 69 0 
+snd_throw_axe 1792 1 70 0 
+snd_throw_knife 1280 1 71 0 
+snd_throw_stone 1792 1 72 0 
+snd_reload_crossbow 768 0 
+snd_reload_crossbow_continue 1536 1 73 0 
+snd_pull_bow 1280 1 74 0 
+snd_pull_arrow 1280 1 75 0 
+snd_arrow_pass_by 112 4 76 0 77 0 78 0 79 0 
+snd_bolt_pass_by 112 1 80 0 
+snd_javelin_pass_by 112 2 81 0 82 0 
+snd_stone_pass_by 2416 1 83 0 
+snd_axe_pass_by 112 1 84 0 
+snd_knife_pass_by 112 1 85 0 
+snd_bullet_pass_by 112 1 86 0 
+snd_incoming_arrow_hit_ground 1904 3 87 0 88 0 89 0 
+snd_incoming_bolt_hit_ground 1904 3 87 0 88 0 89 0 
+snd_incoming_javelin_hit_ground 1904 1 90 0 
+snd_incoming_stone_hit_ground 1904 1 91 0 
+snd_incoming_axe_hit_ground 1904 1 90 0 
+snd_incoming_knife_hit_ground 1904 1 91 0 
+snd_incoming_bullet_hit_ground 1904 1 89 0 
+snd_outgoing_arrow_hit_ground 1904 1 92 0 
+snd_outgoing_bolt_hit_ground 1904 1 92 0 
+snd_outgoing_javelin_hit_ground 2672 1 92 0 
+snd_outgoing_stone_hit_ground 1904 1 91 0 
+snd_outgoing_axe_hit_ground 1904 1 90 0 
+snd_outgoing_knife_hit_ground 1904 1 91 0 
+snd_outgoing_bullet_hit_ground 1904 1 89 0 
+snd_draw_sword 1056 1 93 0 
+snd_put_back_sword 1040 1 94 0 
+snd_draw_greatsword 1056 1 95 0 
+snd_put_back_greatsword 1040 1 94 0 
+snd_draw_axe 1056 1 96 0 
+snd_put_back_axe 1040 1 97 0 
+snd_draw_greataxe 1056 1 98 0 
+snd_put_back_greataxe 1040 1 99 0 
+snd_draw_spear 1056 1 100 0 
+snd_put_back_spear 1040 1 99 0 
+snd_draw_crossbow 1056 1 101 0 
+snd_put_back_crossbow 1040 1 99 0 
+snd_draw_revolver 1056 1 102 0 
+snd_put_back_revolver 1040 1 97 0 
+snd_draw_dagger 1056 1 103 0 
+snd_put_back_dagger 1040 1 73 0 
+snd_draw_bow 1056 1 104 0 
+snd_put_back_bow 1040 1 97 0 
+snd_draw_shield 1056 1 105 0 
+snd_put_back_shield 1040 1 106 0 
+snd_draw_other 1056 1 107 0 
+snd_put_back_other 1040 1 108 0 
+snd_body_fall_small 2384 2 109 0 110 0 
+snd_body_fall_big 2144 3 111 0 112 0 113 0 
+snd_horse_body_fall_begin 2656 1 114 0 
+snd_horse_body_fall_end 2656 3 115 0 112 0 116 0 
+snd_hit_wood_wood 3184 7 117 0 118 0 119 0 120 0 121 0 122 0 123 0 
+snd_hit_metal_metal 2672 10 124 0 125 0 126 0 127 0 128 0 129 0 130 0 131 0 132 0 133 0 
+snd_hit_wood_metal 2672 3 134 0 135 0 136 0 
+snd_shield_hit_wood_wood 2416 3 137 0 138 0 139 0 
+snd_shield_hit_metal_metal 2672 4 140 0 141 0 142 0 143 0 
+snd_shield_hit_wood_metal 2672 4 144 0 145 0 146 0 147 0 
+snd_shield_hit_metal_wood 2672 3 148 0 149 0 150 0 
+snd_shield_broken 144 1 151 0 
+snd_man_hit 1904 20 152 0 153 0 154 0 155 0 156 0 157 0 158 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 168 0 169 0 170 0 171 0 
+snd_man_die 2208 14 172 0 173 0 174 0 175 0 176 0 177 0 178 0 179 0 180 0 181 0 182 0 183 0 184 0 185 0 
+snd_woman_hit 112 10 186 0 187 0 188 0 189 0 190 0 191 0 192 0 193 0 194 0 195 0 
+snd_woman_die 2464 13 196 0 197 0 198 0 199 0 200 0 201 0 202 0 203 0 204 0 205 0 206 0 207 0 208 0 
+snd_woman_yell 2432 2 209 0 210 0 
+snd_hide 8 1 211 0 
+snd_unhide 8 1 212 0 
+snd_neigh 8 6 213 0 214 0 215 0 216 0 217 0 218 0 
+snd_gallop 1024 3 219 0 220 0 221 0 
+snd_battle 1032 2 222 0 223 0 
+snd_arrow_hit_body 64 3 224 0 225 0 226 0 
+snd_bullet_hit_body 64 8 227 0 228 0 229 0 230 0 231 0 232 0 233 0 234 0 
+snd_metal_hit_low_armor_low_damage 2384 7 235 0 236 0 237 0 238 0 239 0 240 0 241 0 
+snd_metal_hit_low_armor_high_damage 2384 10 242 0 243 0 244 0 245 0 246 0 247 0 248 0 249 0 250 0 251 0 
+snd_metal_hit_high_armor_low_damage 2384 25 252 0 253 0 254 0 255 0 256 0 257 0 258 0 259 0 260 0 261 0 262 0 263 0 264 0 265 0 266 0 267 0 268 0 269 0 270 0 271 0 272 0 273 0 274 0 275 0 276 0 
+snd_metal_hit_high_armor_high_damage 2384 32 277 0 278 0 279 0 280 0 281 0 282 0 283 0 284 0 285 0 286 0 287 0 288 0 289 0 290 0 291 0 292 0 293 0 294 0 295 0 296 0 297 0 298 0 299 0 300 0 301 0 302 0 303 0 304 0 305 0 306 0 307 0 308 0 
+snd_wooden_hit_low_armor_low_damage 2384 3 309 0 310 0 311 0 
+snd_wooden_hit_low_armor_high_damage 2384 3 312 0 313 0 314 0 
+snd_wooden_hit_high_armor_low_damage 2384 2 315 0 316 0 
+snd_wooden_hit_high_armor_high_damage 2384 3 312 0 313 0 314 0 
+snd_mp_arrow_hit_target 2553 1 317 0 
+snd_blunt_hit 2384 4 318 0 319 0 319 0 320 0 
+snd_player_hit_by_bullet 2736 1 321 0 
+snd_player_hit_by_arrow 2720 1 321 0 
+snd_pistol_shot 2720 1 322 0 
+snd_man_grunt 1120 3 323 0 324 0 325 0 
+snd_man_breath_hard 2096 7 326 0 327 0 328 0 329 0 330 0 331 0 332 0 
+snd_man_stun 2096 1 333 0 
+snd_man_grunt_long 1888 6 334 0 335 0 336 0 337 0 338 0 339 0 
+snd_man_yell 2128 19 340 0 341 0 342 0 343 0 344 0 345 0 346 0 347 0 348 0 349 0 350 0 351 0 352 0 353 0 354 0 355 0 356 0 357 0 358 0 
+snd_man_warcry 80 7 359 0 360 0 361 0 362 0 363 0 364 0 365 0 
+snd_encounter_looters 2057 5 366 0 367 0 368 0 369 0 370 0 
+snd_encounter_bandits 2057 7 371 0 372 0 373 0 374 0 375 0 376 0 377 0 
+snd_encounter_farmers 2057 4 378 0 379 0 380 0 381 0 
+snd_encounter_sea_raiders 2057 4 382 0 383 0 384 0 385 0 
+snd_encounter_steppe_bandits 2057 5 386 0 387 0 388 0 389 0 390 0 
+snd_encounter_nobleman 2057 1 391 0 
+snd_encounter_vaegirs_ally 2057 2 392 0 393 0 
+snd_encounter_vaegirs_neutral 2057 4 394 0 395 0 396 0 397 0 
+snd_encounter_vaegirs_enemy 2057 4 394 0 395 0 396 0 397 0 
+snd_sneak_town_halt 9 2 398 0 399 0 
+snd_horse_walk 1328 4 400 0 401 0 402 0 403 0 
+snd_horse_trot 1600 4 404 0 405 0 406 0 407 0 
+snd_horse_canter 1856 4 408 0 409 0 410 0 411 0 
+snd_horse_gallop 2128 4 412 0 413 0 414 0 415 0 
+snd_horse_breath 1040 4 416 0 417 0 418 0 419 0 
+snd_horse_snort 528 5 420 0 421 0 422 0 423 0 424 0 
+snd_horse_low_whinny 3072 2 425 0 426 0 
+snd_block_fist 0 2 427 0 428 0 
+snd_man_hit_blunt_weak 2640 5 160 0 167 0 168 0 169 0 170 0 
+snd_man_hit_blunt_strong 2640 5 160 0 167 0 168 0 169 0 170 0 
+snd_man_hit_pierce_weak 2640 5 160 0 167 0 168 0 169 0 170 0 
+snd_man_hit_pierce_strong 2640 5 160 0 167 0 168 0 169 0 170 0 
+snd_man_hit_cut_weak 2640 5 160 0 167 0 168 0 169 0 170 0 
+snd_man_hit_cut_strong 2640 5 160 0 167 0 168 0 169 0 170 0 
+snd_man_victory 2640 10 429 0 430 0 431 0 432 0 433 0 434 0 435 0 436 0 437 0 438 0 
+snd_torch_loop 1182 2 439 0 440 0 
+snd_dummy_hit 152 2 144 0 146 0 
+snd_dummy_destroyed 152 1 151 0 
+snd_gourd_destroyed 152 1 151 0 
+snd_cow_moo 2201 1 441 0 
+snd_cow_slaughter 2201 1 442 0 
+snd_distant_dog_bark 2105 4 443 0 444 0 445 0 446 0 
+snd_distant_owl 2361 3 447 0 448 0 449 0 
+snd_distant_chicken 2105 2 450 0 451 0 
+snd_distant_carpenter 825 2 452 0 453 0 
+snd_distant_blacksmith 1081 1 454 0 
+snd_arena_ambiance 907 1 455 0 
+snd_town_ambiance 907 1 456 0 
+snd_tutorial_fail 1801 1 457 0 
+snd_team_scored_a_point 2729 1 458 0 
+snd_dedal_tavern_lute 3978 1 459 0 
+snd_dedal_tavern_lyre 3978 1 460 0 
+snd_dedal_tavern_flute 2698 2 461 0 462 0 
+snd_dedal_mine_pickaxe 3978 1 463 0 
+snd_woman_grunt 1384 5 464 0 465 0 466 0 467 0 468 0 
+snd_woman_stun 2104 3 469 0 470 0 471 0 
+snd_woman_grunt_long 1896 4 472 0 473 0 474 0 475 0 
+snd_woman_victory 2648 7 476 0 477 0 478 0 479 0 480 0 481 0 482 0 
+snd_thunder_close 2729 4 483 0 484 0 485 0 486 0 
+snd_panic_cry 2728 2 487 0 488 0 
+snd_panic_hit 2712 2 489 0 490 0 
+snd_missile_dive 2136 1 491 0 
+snd_male_misc 1368 7 492 0 493 0 494 0 495 0 496 0 497 0 498 0 
+snd_male_sigh 1368 4 499 0 500 0 501 0 502 0 
+snd_female_misc 1368 9 503 0 504 0 505 0 506 0 507 0 508 0 509 0 510 0 511 0 
+snd_female_sigh 1368 7 512 0 513 0 514 0 515 0 516 0 517 0 518 0 
+snd_ambient_day_plains_loop 1387 4 519 0 520 0 521 0 522 0 
+snd_ambient_day_forest_loop 1387 3 519 0 520 0 521 0 
+snd_ambient_day_village_loop 1387 3 519 0 520 0 521 0 
+snd_ambient_sea_loop 2155 3 523 0 524 0 525 0 
+snd_ambient_night_loop 1387 3 526 0 527 0 528 0 
+snd_ambient_tavern_loop 875 2 529 0 530 0 
+snd_ambient_random_plains 1897 8 531 0 532 0 533 0 534 0 535 0 536 0 537 0 538 0 
+snd_ambient_random_forest 1897 8 531 0 532 0 533 0 534 0 536 0 537 0 538 0 535 0 
+snd_ambient_random_village 1897 24 539 0 540 0 541 0 542 0 543 0 544 0 545 0 546 0 547 0 548 0 549 0 531 0 532 0 533 0 534 0 550 0 551 0 552 0 553 0 554 0 536 0 537 0 538 0 535 0 
+snd_ambient_random_sea 1641 2 524 0 525 0 
+snd_ambient_random_night 1641 3 447 0 448 0 449 0 
+snd_ambient_random_town 1897 16 539 0 540 0 541 0 542 0 543 0 544 0 545 0 546 0 547 0 548 0 549 0 531 0 532 0 533 0 534 0 535 0 
+snd_ambient_random_tavern 1641 7 492 0 493 0 494 0 495 0 496 0 497 0 498 0 
+snd_ambient_coast_loop 283 1 555 0 
+snd_seagull 1113 1 556 0 
+snd_distant_worker 873 3 454 0 452 0 453 0 
+snd_female_laugh 1369 2 515 0 516 0 
+snd_female_annoyed 1369 3 512 0 513 0 514 0 
+snd_female_bored 1369 1 518 0 
+snd_horn 3944 4 557 0 558 0 559 0 560 0 
+snd_inmersive_troops 2712 8 561 0 562 0 563 0 564 0 565 0 566 0 567 0 568 0 
+snd_inmersive_troops_cv 2712 8 569 0 570 0 571 0 572 0 573 0 574 0 575 0 576 0 
+snd_shield_taunt 1416 1 577 0 
+snd_water 1624 1 578 0 
+snd_man_scream 1673 1 489 0 
+snd_aaa_scream 1673 1 579 0 
+snd_pickaxesound 1545 1 463 0 
+snd_schiff_liegt 1545 1 580 0 
+snd_cornu 3944 2 581 0 582 0 
+snd_senatus_sound_1 3992 1 583 0 
+snd_senatus_sound_2 3992 1 584 0 
+snd_message_negative_sound 1432 1 585 0 
+snd_disease_sound 1432 1 586 0 
+snd_riot_sound 1432 1 587 0 
+snd_fire 3160 2 588 0 589 0 
+snd_harvesting_season 3160 1 378 0 
+snd_elephant 4000 1 590 0 
+snd_wild_cat 4000 3 591 0 592 0 593 0 
+snd_wolf 4000 2 594 0 595 0 
+snd_order_charge 2296 6 596 0 597 0 598 0 599 0 600 0 601 0 
+snd_order_hold 2296 5 602 0 603 0 604 0 605 0 606 0 
+snd_order_fire 2296 5 607 0 608 0 609 0 610 0 611 0 
+snd_order_hold_fire 2296 3 612 0 613 0 614 0 
+snd_order_stand_closer 2296 1 615 0 
+snd_order_spread 2296 1 616 0 
+snd_order_retreat 2296 1 617 0 
+snd_intro_1 4088 1 618 0 
+snd_intro_2 4088 1 619 0 
+snd_intro_3 4088 1 620 0 
+snd_intro_4 4088 1 621 0 
+snd_intro_5 4088 1 622 0 
+snd_intro_6 4088 1 623 0 
+snd_player_speech_rome_other_goy 4088 1 624 0 
+snd_battle_speech_1 4088 1 625 0 
+snd_battle_speech_2 4088 1 626 0 
+snd_battle_speech_3 4088 1 627 0 
+snd_battle_speech_4 4088 1 628 0 
+snd_battle_speech_5 4088 1 629 0 
+snd_battle_speech_6 4088 1 630 0 
+snd_battle_speech_7 4088 1 631 0 
+snd_battle_speech_8 4088 1 632 0 
+snd_battle_speech_9 4088 1 633 0 
+snd_battle_speech_10 4088 1 634 0 
+snd_battle_speech_11 4088 1 635 0 
+snd_antonia_speech_1 4088 1 636 0 
+snd_antonia_speech_2 4088 1 637 0 
+snd_antonia_speech_3 4088 1 638 0 
+snd_antonia_speech_4 4088 1 639 0 
+snd_antonia_speech_5 4088 1 640 0 
+snd_baths_spring 3928 1 641 0 
+snd_scream_warcry 3976 1 363 0 
+snd_drunken 4089 4 642 0 643 0 644 0 645 0 
+snd_drunken_win 4089 3 646 0 647 0 648 0 

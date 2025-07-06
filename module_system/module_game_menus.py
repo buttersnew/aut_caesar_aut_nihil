@@ -2846,47 +2846,16 @@ game_menus = [
     (set_background_mesh, "mesh_pic_prisoner_man"),
   ],[
     ("camp_recruit_prisoners_accept",[],"Make them to slaves!",[
-      (assign, ":gold", 0),
-      (assign, ":num_non_slaves_male", 0),
-      (assign, ":num_non_slaves_female", 0),
-      (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
-      (try_for_range_backwards, ":i_stack", 0, ":num_stacks"),
-        (party_prisoner_stack_get_troop_id, ":stack_troop","p_main_party",":i_stack"),
-        (call_script, "script_game_check_prisoner_can_be_sold", ":stack_troop"),
-        (eq, reg0, 1),
-        (party_prisoner_stack_get_size,":size", "p_main_party", ":i_stack"),
-        (store_character_level, ":level", ":stack_troop"),
+      (party_clear, "p_temp_party"),
+      (assign, "$g_move_heroes", 1),
+      (call_script, "script_party_prisoners_add_party_prisoners", "p_temp_party", "p_main_party"),
 
-        (try_begin),
-          (call_script, "script_cf_dplmc_troop_is_female", ":stack_troop"),
-          (val_add, ":num_non_slaves_female", ":size"),
-        (else_try),
-          (val_add, ":num_non_slaves_male", ":size"),
-          (val_mul,":level", 3),
-        (try_end),
-        (try_begin),
-          (neq, ":stack_troop", "trp_slave"),
-          (neq, ":stack_troop", "trp_slave_female"),
-          (val_add, ":gold", ":level"),
-        (try_end),
-        (party_remove_prisoners, "p_main_party", ":stack_troop", ":size"),
-      (try_end),
+      (call_script, "script_party_remove_all_prisoners", "p_main_party"),
 
-      (try_begin),
-        (ge, ":num_non_slaves_male", 1),
-        (party_force_add_prisoners, "p_main_party","trp_slave", ":num_non_slaves_male"),
-      (try_end),
-
-      (try_begin),
-        (ge, ":num_non_slaves_female", 1),
-        (party_force_add_prisoners, "p_main_party","trp_slave_female", ":num_non_slaves_female"),
-      (try_end),
-      # (val_add, ":num_non_slaves_male", ":num_non_slaves_female"),
-      # (val_mul, ":num_non_slaves_male", 100),
-      (troop_add_gold, "trp_player", ":gold"),
-      (display_message, "@You gain some gold from the equipment you sell to your men.", color_good_news),
-      (call_script, "script_change_party_morale", "p_main_party", 5),
-      (jump_to_menu, "mnu_camp"),
+      (call_script, "script_party_prisoners_add_party_prisoners", "p_main_party", "p_temp_party"),
+      (party_clear, "p_temp_party"),
+      
+      (jump_to_menu, "mnu_auto_return"),
     ]),
 
     ("continue",[
@@ -13572,8 +13541,8 @@ game_menus = [
        (call_script, "script_party_count_members_with_full_health","$current_town"),
        (assign, ":villagers_party_size", reg0),
        (try_begin),
-         (lt, ":player_party_size", 6),
-         (ge, ":villagers_party_size", 40),
+         (lt, ":player_party_size", 30),
+         (ge, ":villagers_party_size", 60),
          (neg|party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
          (jump_to_menu, "mnu_village_start_attack"),
        (try_end),
@@ -13770,86 +13739,12 @@ game_menus = [
           (call_script, "script_diplomacy_party_attacks_neutral", "p_main_party", "$current_town"),
       (try_end),
 
-    #add a party template to represent hiding villagers so we don't go empty-handed
-      (party_add_template, "$current_town", "pt_women"),
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, "$current_town", tf_female),
+      (assign, ":women", reg0),
+      (party_add_members, "$current_town", ":women", 10),
 
-      (try_begin),
-          (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_syr),
-          (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_jude),
-          (party_slot_eq, "$current_town", slot_center_province, p_asia_arab),
-          (store_random_in_range, ":random", 20, 120),
-          (le, ":random", 60),
-          (store_random_in_range, ":random", 4, 15),
-          (try_begin),
-              (le, ":random", 7),
-              (assign, ":peasant", "trp_arab_peasant"),
-          (else_try),
-              (assign, ":peasant", "trp_judean_peasant"),
-          (try_end),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_province, p_afrc_egyp),
-          (store_random_in_range, ":random", 20, 120),
-          (le, ":random", 60),
-          (store_random_in_range, ":random", 5, 15),
-          (try_begin),
-              (le, ":random", 7),
-              (assign, ":peasant", "trp_judean_peasant"),
-          (else_try),
-              (assign, ":peasant", "trp_african_man"),
-          (try_end),
-      (else_try),
-          (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_assy),
-          (party_slot_eq, "$current_town", slot_center_province, p_asia_meso),
-          (store_random_in_range, ":random", 20, 120),
-          (le, ":random", 60),
-          (assign, ":peasant", "trp_persian_peasant"),
-      (else_try),
-          (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_afrc_maur),
-          (party_slot_eq, "$current_town", slot_center_province, p_afrc_afrc),
-          (store_random_in_range, ":random", 20, 120),
-          (le, ":random", 60),
-          (assign, ":peasant", "trp_berber_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_province, p_afrc_cyre),
-          (store_random_in_range, ":random", 20, 120),
-          (le, ":random", 60),
-          (assign, ":peasant",  "trp_garamantian_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_1"),
-          (assign, ":peasant", "trp_dacian_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2"),
-          (assign, ":peasant", "trp_celtic_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2_1"),
-          (assign, ":peasant", "trp_celtic_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_3"),
-          (assign, ":peasant", "trp_sarmatian_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_9"),
-          (assign, ":peasant", "trp_germanic_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_4"),
-          (assign, ":peasant", "trp_germanic_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_5"),
-          (assign, ":peasant", "trp_armenian_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_6"),
-          (assign, ":peasant", "trp_parthian_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),
-          (assign, ":peasant", "trp_judean_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_9"),
-          (assign, ":peasant", "trp_bosporan_peasant"),
-      (else_try),
-          (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
-          (assign, ":peasant", "trp_roman_peasant"),
-      (else_try),
-          (assign, ":peasant", "trp_slave"),
-      (try_end),
+      (call_script, "script_get_peasant_warrior_for_culture", "$current_town"),
+      (assign, ":peasant", reg0),
 
       (party_add_members, "$current_town", ":peasant", 10),
       (try_begin),
@@ -14315,9 +14210,9 @@ game_menus = [
       (val_max, ":level", 1),
       (val_add, ":num_priest", ":level"),
 
-      (set_visitors, 1, "trp_roman_peasant", ":num_priest"),
-      (set_visitors, 1, "trp_roman_peasant", ":num_priest"),
-      (set_visitors, 1, "trp_mercenary_swordsman", ":num_priest"),
+      (set_visitors, 1, "trp_greek_peasant", ":num_priest"),
+      (set_visitors, 1, "trp_greek_peasant", ":num_priest"),
+      (set_visitors, 1, "trp_hired_blade", ":num_priest"),
       (set_jump_mission,"mt_paganholysites_atacado"),
       (jump_to_scene, "scn_delphi"),
       (change_screen_mission),
@@ -18772,8 +18667,10 @@ game_menus = [
         (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
         (str_store_string, s34, "@You may also visit the scriptorium if you have legal matters. It is located on the center of the marketplace."),
     (try_end),
-    (party_get_slot, ":culture", "$current_town", slot_center_culture),
-    (str_store_faction_name, s61, ":culture"),
+
+    (call_script, "script_get_party_full_culture_string", "$current_town"),
+    (str_store_string_reg, s61, s1),
+
     (try_begin),
         (party_slot_eq, "$current_town", slot_center_statues, -1),
         (str_store_string, s34, "@{s34}^The streets are decorated with statues of you."),
@@ -18837,8 +18734,10 @@ game_menus = [
 				  (set_visitor, ":visiterator", "trp_roman_town_walker_female",),
 			  (try_end),
       (try_end),
-      (set_visitor, 10, "trp_slave_trader",),
-      (set_visitor, 11, "trp_slave_trader",),
+      (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
+      (assign, ":slave_trader", reg0),
+      (set_visitor, 10, ":slave_trader",),
+      (set_visitor, 11, ":slave_trader",),
       (try_for_range, ":visiterator", 12, 31),
 			  (store_random_in_range, ":r", 0, 2),
 			  (try_begin),
@@ -22310,9 +22209,13 @@ game_menus = [
 ]),
 
 ("notification_player_faction_active",0,
-  "You now possess land in your name, without being tied to any realm. This makes you a monarch in your own right, with your court temporarily located at {s12}. However, the other kings and rulers in the known world will at first consider you a threat, for if any upstart warlord can grab a throne, then their own legitimacy is called into question.^^Your first priority should be to establish an independent right to rule. You can establish your right to rule through several means -- marrying into a high-born family, recruiting new lords, governing your lands, treating with other kings, or dispatching your companions on missions.^^At any rate, your first step should be to appoint a chief minister from among your companions, to handle affairs of state. Different companions have different capabilities.^You may appoint new ministers from time to time. You may also change the location of your court, by speaking to the minister.",
-  "none",
-  [
+  "You now possess land in your name, without being tied to any realm. This makes you a monarch in your own right, with your court temporarily located at {s12}."
+  +" However, the other kings and rulers in the known world will at first consider you a threat, for if any upstart warlord can grab a throne, then their own legitimacy is called into question."
+  +"^^Your first priority should be to establish an independent right to rule. You can establish your right to rule through several means"
+  +" -- marrying into a high-born family, recruiting new lords, governing your lands, treating with other kings, or dispatching your companions on missions."
+  +"^^At any rate, your first step should be to appoint a chief minister from among your companions, to handle affairs of state."
+  +" Different companions have different capabilities.^You may appoint new ministers from time to time. You may also change the location of your court, by speaking to the minister.",
+  "none",[
     (set_fixed_point_multiplier, 100),
     (position_set_x, pos0, 65),
     (position_set_y, pos0, 30),
@@ -22367,9 +22270,7 @@ game_menus = [
 	  (call_script, "script_dplmc_store_troop_is_female", ":player_spouse"),#reg0 make gender-correct
 	  ##diplomacy end+
 	  (str_store_troop_name, s10, ":player_spouse"),
-  ],
-    "Appoint your {reg0?wife:husband}, {s10}...",
-  [
+  ],"Appoint your {reg0?wife:husband}, {s10}...",[
     (troop_get_slot, ":player_spouse", "trp_player", slot_troop_spouse),
     (assign, "$g_player_minister", ":player_spouse"),
     (jump_to_menu, "mnu_minister_confirm"),
@@ -22391,9 +22292,7 @@ game_menus = [
 	  (ge, ":player_spouse", 1),
 	  (call_script, "script_dplmc_store_troop_is_female", ":player_spouse"),
 	  (str_store_troop_name, s10, ":player_spouse"),
-  ],
-    "Appoint your {reg0?wife:husband}, {s10}...",
-  [
+  ],"Appoint your {reg0?wife:husband}, {s10}...",[
     (assign, ":player_spouse", -1),
     (try_for_range_backwards, ":troop_no", heroes_begin, kingdom_ladies_end),#Go backwards to ensure we end with the first match
 	      (troop_slot_eq, ":troop_no", slot_troop_spouse, "trp_player"),
@@ -22439,8 +22338,7 @@ game_menus = [
       (assign, ":block", 1),
     (try_end),
     (eq, ":block", 0),
-  ],"Appoint a prominent citizen from the area...",
-  [
+  ],"Appoint a prominent citizen from the area...",[
     (assign, "$g_player_minister", "trp_temporary_minister"),
     (troop_set_faction, "trp_temporary_minister", "fac_player_supporters_faction"),
     (jump_to_menu, "mnu_minister_confirm"),
@@ -22450,8 +22348,7 @@ game_menus = [
     (neg|troop_slot_ge, "trp_antonia", slot_troop_occupation, dplmc_slto_exile),
     (check_quest_active, "qst_four_emperors"),
     (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 7), # main story vespasian
-  ],"Appoint Antonia.",
-  [
+  ],"Appoint Antonia.",[
     (assign, "$g_player_minister", "trp_antonia"),
     (troop_set_faction, "trp_antonia", "fac_player_supporters_faction"),
     (jump_to_menu, "mnu_minister_confirm"),
@@ -22461,8 +22358,7 @@ game_menus = [
     (neg|troop_slot_ge, "trp_antonia", slot_troop_occupation, dplmc_slto_exile),
     (check_quest_active, "qst_four_emperors"),
     (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 11), # main story other goy
-  ],"Appoint Antonia.",
-  [
+  ],"Appoint Antonia.",[
     (assign, "$g_player_minister", "trp_antonia"),
     (troop_set_faction, "trp_antonia", "fac_player_supporters_faction"),
     (jump_to_menu, "mnu_minister_confirm"),
@@ -22471,9 +22367,8 @@ game_menus = [
 ]),
 
 ("minister_confirm",0,
-  "{s9}can be found at your court in {s12}. You should consult {reg4?her:him} periodically, to avoid the accumulation of unresolved issues that may sap your authority...",
-  "none",
-  [
+  "{s9}can be found at your court in {s12} and will recieve a salary of {reg10} denars each week. You should consult {reg4?her:him} periodically, to avoid the accumulation of unresolved issues that may sap your authority...",
+  "none",[
 	  (str_store_party_name, s12, "$g_player_court"),
     (try_begin),
         (store_and, ":name_set", "$players_kingdom_name_set", rename_kingdom),
@@ -22501,6 +22396,7 @@ game_menus = [
     (position_set_z, pos0, 75),
     (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", "$g_player_minister", pos0),
     (call_script, "script_dplmc_store_troop_is_female_reg", "$g_player_minister", 4),
+    (assign, reg10, minister_salary),
 	],[
     ("continue",[],"Continue...",[
       #SB : explicitly state kingdom
@@ -22628,25 +22524,21 @@ game_menus = [
 	  ]),
 ]),
 
-  (
-    "notification_player_faction_deactive",0,
-    "Your kingdom no longer holds any land.",
-    "none",
-    [ (play_sound, "snd_message_negative_sound"),
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "fac_player_supporters_faction", pos0),
-      ],
-    [
-      ("continue",[],"Continue...",
-       [
-       (assign, "$g_player_minister", -1),
-       (change_screen_return),
-        ]),
-     ]
-  ),
+("notification_player_faction_deactive",0,
+  "Your kingdom no longer holds any land.",
+  "none",[ 
+    (play_sound, "snd_message_negative_sound"),
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "fac_player_supporters_faction", pos0),
+  ],[
+    ("continue",[],"Continue...",[
+      (assign, "$g_player_minister", -1),
+      (change_screen_return),
+    ]),
+]),
 
   (
     "notification_player_wedding_day",mnf_scale_picture,
@@ -23992,6 +23884,20 @@ game_menus = [
       (try_end),
     (try_end),
   ],[
+    ("continue_1",[
+      # (store_relation, ":rel", "$g_encountered_party_faction", "fac_player_faction"),#is at peace
+      # (ge, ":rel", 0),
+      (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 0), #used in place of global variable
+
+    ],"Trade slaves",[
+      (party_add_prisoners, "$g_encountered_party", "trp_slave_greek", 10),
+      (party_add_prisoners, "$g_encountered_party", "trp_slave", 10),
+      (party_add_prisoners, "p_main_party", "trp_slave_female_greek", 10),
+
+      (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
+      (assign, ":slave_trader", reg0),
+      (call_script, "script_setup_troop_meeting", ":slave_trader", -1, -1),
+    ]),
     ("continue_1",[
       (store_relation, ":rel", "$g_encountered_party_faction", "fac_player_faction"),#is at peace
       (ge, ":rel", 0),
@@ -25501,12 +25407,14 @@ game_menus = [
     ]),
 ]),
 ("dplmc_notification_appoint_chamberlain",0,
-  "You can appoint a Quaestor who resides at your court for a weekly salary of 1,500 denars."
+  "You can appoint a Quaestor who resides at your court for a weekly salary of {reg10} denars."
+  +"^^You can also manage your advisors under 'household management' in reports menu."
   +" ^^A Quaestor manages your private treasury, which can be used to savely store money. The money is then used to pay wages for troops or can be also used for construction projects."
   +" ^^If you govern a town, fortress or village, he will handle all financial affairs like collecting and determining taxes, paying wages and managing your estates."
   +" ^^If you are the leader of a faction, he supervises money transfers between kingdoms giving you more diplomatic options.",
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
+    (assign, reg10, chamberlain_salary),
   ],[
     ("dplmc_appoint_default",[],"Appoint a prominent nobleman from the area.",[
       (call_script, "script_dplmc_appoint_chamberlain"),
@@ -25528,8 +25436,10 @@ game_menus = [
     ]),
 ]),
 ("dplmc_notification_appoint_constable",0,
-  "You can now appoint a Custos Publicus who resides at you court for a weekly salary of 1500 denars. He will recruit new troops and provide information about your army.",
+  "You can appoint a Custos Publicus who resides at you court for a weekly salary of {reg10} denars. He will recruit new troops and provide information about your army."
+  +"^^You can also manage your advisors under 'household management' in reports menu.",
   "none",[
+    (assign, reg10, constable_salary),
     (set_background_mesh, "mesh_pic_mb_warrior_2"),
   ],[
   ("dplmc_appoint_default",[],"Appoint a prominent nobleman from the area.",[
@@ -25554,8 +25464,10 @@ game_menus = [
 ]),
 
 ("dplmc_notification_appoint_chancellor",0,
-  "You can now appoint a chancellor who resides at you court for a weekly salary of 2000 denars. He will be the keeper of your seal and conduct the correspondence between you and other important persons.",
+  "You can appoint a chancellor who resides at you court for a weekly salary of {reg10} denars. He will be the keeper of your seal and conduct the correspondence between you and other important persons."
+  +"^^You can also manage your advisors under 'household management' in reports menu.",
   "none",[
+    (assign, reg10, chancellor_salary),
     (set_background_mesh, "mesh_pic_senators"),
   ],[
   ("dplmc_appoint_default",[],"Appoint a prominent nobleman from the area.",[

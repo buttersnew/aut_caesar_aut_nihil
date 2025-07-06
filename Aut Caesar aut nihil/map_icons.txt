@@ -1,0 +1,531 @@
+map_icons_file version 1
+175
+player 0 slave 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+player_horseman 0 slave_donkey 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+gray_knight 0 vexillifer_icon_combinedd 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+vaegir_knight 0 mercenary_infantry 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+flagbearer_a 0 player_horseman1 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+flagbearer_b 0 flagbearer_b 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+peasant 0 peasant_a 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+khergit 0 arab 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+khergit_horseman_b 0 steppbandit 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+axeman 0 bandit 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+woman 0 woman_a 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+hord 0 horde 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+wonder_pyramids_egy 1 wonder_pyramids_egy 0.500000 0 0 0 0 0
+
+
+wonder_parthenon 1 wonder_parthenon 0.160000 0 0 0 0 0
+
+
+wonder_artemis 1 wonder_artemis 0.400000 0 0 0 0 0
+
+
+village_barbarian 1 village_barbarian 0.470000 0 0 0 0 0
+
+
+village_barbarian_burned 1 village_barbarian_burned 0.470000 0 0 0 0 0
+
+
+village_barbarian_deserted 1 village_barbarian_burned 0.470000 0 0 0 0 0
+
+
+village_roman 1 village_roman 0.350000 0 0 0 0 0
+
+
+village_roman_burned 1 village_roman_burned 0.350000 0 0 0 0 0
+
+
+village_roman_deserted 1 village_roman_burned 0.350000 0 0 0 0 0
+
+
+village_greek 1 village_greek 0.350000 0 0 0 0 0
+
+
+village_greek_burned 1 village_greek_burned 0.350000 0 0 0 0 0
+
+
+village_greek_deserted 1 village_greek_burned 0.350000 0 0 0 0 0
+
+
+camp 1 camp 0.130000 0 0 0 0 0
+
+
+camp_fort 1 camp_fort 0.130000 0 0 0 0 0
+
+
+ship 1 boat_sail 0.230000 17 0.000000 0.050000 0.000000 0
+
+
+ship_on_land 1 boat_sail_0 0.230000 0 0 0 0 0
+
+
+castle_a 1 horde_camp 0.150000 0 0 0 0 0
+
+
+castle_c 1 farmstead 0.420000 0 0 0 0 0
+
+
+map_island 1 map_island 0.500000 0 0 0 0 0
+
+
+map_stone_circle 1 map_stone_circle 0.350000 0 0 0 0 0
+
+
+map_temple 1 map_temple 0.370000 0 0 0 0 0
+
+
+map_persian_temple 1 map_persian_temple 0.370000 0 0 0 0 0
+
+
+map_bandit_lair 1 map_bandit_lair 0.450000 0 0 0 0 0
+
+
+map_ludus 1 map_ludus 0.350000 0 0 0 0 0
+
+
+mule 0 icon_mule 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+cattle 0 icon_cow 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+crucified_slave 1 crucified_slave 0.350000 0 0 0 0 0
+
+
+forest 1 forest 0.900000 0 0 0 0 0
+
+
+forest_palms 1 forest_palms 0.900000 0 0 0 0 0
+
+
+gaetulian_town 1 icon_gaetulian 0.340000 0 0 0 0 0
+
+
+arab_town 1 icon_arab 0.340000 0 0 0 0 0
+
+
+garamantian_town 1 icon_garama 0.280000 0 0 0 0 0
+
+
+village_desert 1 icon_village_desert 0.300000 0 0 0 0 0
+
+
+nubian_town 1 icon_nubia 0.330000 0 0 0 0 0
+
+
+mine 1 mine 0.450000 0 0 0 0 0
+
+
+kingdom_1_soldier_b 0 dac1_re 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+kingdom_2_soldier_b 0 brit2_re 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+kingdom_3_soldier_b 0 sarm2_re 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+kingdom_4_soldier_b 0 german1_re 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+kingdom_5_soldier_b 0 eastern1_re 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+kingdom_6_soldier_b 0 eastern1_re 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+kingdom_7_soldier_b 0 rom_re 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+mountain_bandit 0 banditrom 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+forest_bandit 0 bandithisp 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+german1 0 german1 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+brit1 0 brit1 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+dac1 0 dac1 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+eastern1 0 eastern1 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+sarm1 0 sarm1 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+numider 0 numider 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+pretorian_eques 0 pretorian_eques 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+legat 0 legat 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+aux2 0 aux2 0.200000 114 0.160000 0.173000 0.000000 0
+
+
+opidumn_rock_Reduced 1 opidumn_rock_Reduced 0.300000 0 0 0 0 0
+
+
+opidumn_rock1_Reduced 1 opidumn_rock1_Reduced 0.300000 0 0 0 0 0
+
+
+opidumn_wood_gl1_Reduced 1 opidumn_wood_gl1_Reduced 0.300000 0 0 0 0 0
+
+
+opidumn_wood_gl_Reduced 1 opidumn_wood_gl_Reduced 0.300000 0 0 0 0 0
+
+
+fort_roman 1 fort_roman 0.350000 0 0 0 0 0
+
+
+fort_greek 1 fort_greek 0.350000 0 0 0 0 0
+
+
+fort_persian 1 fort_persian 0.350000 0 0 0 0 0
+
+
+town_roman 1 town_roman 0.350000 0 0 0 0 0
+
+
+town_greek 1 town_greek 0.350000 0 0 0 0 0
+
+
+town_persian 1 town_persian 0.350000 0 0 0 0 0
+
+
+town_rome 1 town_rome 0.350000 0 0 0 0 0
+
+
+town_rome_after_fire 1 town_rome_after_fire 0.350000 0 0 0 0 0
+
+
+town_rome_before_fire 1 town_rome_before_fire 0.350000 0 0 0 0 0
+
+
+town_athen 1 town_athen 0.350000 0 0 0 0 0
+
+
+town_jerusalem_temple 1 town_jerusalem_temple 0.350000 0 0 0 0 0
+
+
+town_jerusalem_without_temple 1 town_jerusalem_without_temple 0.350000 0 0 0 0 0
+
+
+town_alexandria 1 town_alexandria 0.350000 0 0 0 0 0
+
+
+town_alexandria_lighthouse 1 town_alexandria_lighthouse 0.500000 0 0 0 0 0
+
+
+opidumn_wood_br_Reduced 1 opidumn_wood_br_Reduced 0.300000 0 0 0 0 0
+
+
+opidumn_wood_br1_Reduced 1 opidumn_wood_br1_Reduced 0.300000 0 0 0 0 0
+
+
+opidumn_wood_dc1_Reduced 1 opidumn_wood_dc1_Reduced 0.300000 0 0 0 0 0
+
+
+opidumn_wood_dc_Reduced 1 opidumn_wood_dc_Reduced 0.300000 0 0 0 0 0
+
+
+opidumn_rock_dc_Reduced 1 opidumn_rock_dc_Reduced 0.300000 0 0 0 0 0
+
+
+opidumn_rock_dc1_Reduced 1 opidumn_rock_dc1_Reduced 0.300000 0 0 0 0 0
+
+
+ferry_station 1 ferry_station 1.000000 0 0 0 0 0
+
+
+grain_fields 1 grain_fields 0.350000 0 0 0 0 0
+
+
+camp_siege 1 camp_siege 0.130000 0 0 0 0 0
+
+
+ship_merchant 1 boat_sail_on7_Reduced 0.230000 17 0.000000 0.050000 0.000000 0
+
+
+boat_simple 1 boat_sail_on71 0.230000 17 0.000000 0.050000 0.000000 0
+
+
+white_flag 0 custom_map_banner_02 0.400000 0 0 0 0 1
+-70.000000  2 500 3 360287970189639683 85 4294967295 1983 2 1729382256910270497 360287970189639683 
+
+
+landing_point 1 empty 0.000000 0 0 0 0 0
+
+
+villa_icon 1 villa_icon 0.350000 0 0 0 0 0
+
+
+sartemis_icon 1 hanging_gardens_icon 0.950000 0 0 0 0 0
+
+
+valley_of_kings_combined 1 valley_of_kings_combined 0.950000 0 0 0 0 0
+
+
+roman_house 1 icon_roman_house 0.500000 0 0 0 0 0
+
+
+barbarian_estate 1 barbarian_estate 0.500000 0 0 0 0 0
+
+
+custom_banner_01 0 custom_map_banner_01 0.400000 0 0 0 0 1
+-70.000000  1 1983 2 1729382256910270496 360287970189639680 
+
+
+custom_banner_02 0 custom_map_banner_02 0.400000 0 0 0 0 1
+-70.000000  1 1983 2 1729382256910270496 360287970189639680 
+
+
+custom_banner_03 0 custom_map_banner_03 0.400000 0 0 0 0 1
+-70.000000  1 1983 2 1729382256910270496 360287970189639680 
+
+
+map_flag_kingdom_1 0 map_flag_kingdom_1 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_2 0 map_flag_kingdom_2 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_3 0 map_flag_kingdom_3 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_4 0 map_flag_kingdom_4 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_5 0 map_flag_kingdom_5 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_6 0 map_flag_kingdom_6 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_7 0 map_flag_kingdom_7 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_8 0 map_flag_kingdom_8 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_9 0 map_flag_kingdom_9 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_10 0 map_flag_kingdom_10 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_11 0 map_flag_kingdom_11 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_12 0 map_flag_kingdom_12 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_13 0 map_flag_kingdom_13 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_14 0 map_flag_kingdom_14 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_15 0 map_flag_kingdom_15 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_16 0 map_flag_kingdom_16 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_17 0 map_flag_kingdom_17 0.400000 0 0 0 0 0
+
+
+map_flag_kingdom_18 0 map_flag_kingdom_18 0.400000 0 0 0 0 0
+
+
+map_flag_19 0 map_flag_19 0.400000 0 0 0 0 0
+
+
+map_flag_20 0 map_flag_20 0.400000 0 0 0 0 0
+
+
+map_flag_21 0 map_flag_21 0.400000 0 0 0 0 0
+
+
+map_flag_22 0 map_flag_22 0.400000 0 0 0 0 0
+
+
+map_flag_23 0 map_flag_23 0.400000 0 0 0 0 0
+
+
+map_flag_24 0 map_flag_24 0.400000 0 0 0 0 0
+
+
+map_flag_25 0 map_flag_25 0.400000 0 0 0 0 0
+
+
+map_flag_26 0 map_flag_26 0.400000 0 0 0 0 0
+
+
+map_flag_27 0 map_flag_27 0.400000 0 0 0 0 0
+
+
+map_flag_28 0 map_flag_28 0.400000 0 0 0 0 0
+
+
+map_flag_29 0 map_flag_29 0.400000 0 0 0 0 0
+
+
+map_flag_30 0 map_flag_30 0.400000 0 0 0 0 0
+
+
+map_flag_31 0 map_flag_31 0.400000 0 0 0 0 0
+
+
+map_flag_32 0 map_flag_32 0.400000 0 0 0 0 0
+
+
+map_flag_33 0 map_flag_33 0.400000 0 0 0 0 0
+
+
+map_flag_34 0 map_flag_34 0.400000 0 0 0 0 0
+
+
+map_flag_35 0 map_flag_35 0.400000 0 0 0 0 0
+
+
+map_flag_36 0 map_flag_36 0.400000 0 0 0 0 0
+
+
+map_flag_37 0 map_flag_37 0.400000 0 0 0 0 0
+
+
+map_flag_38 0 map_flag_38 0.400000 0 0 0 0 0
+
+
+map_flag_39 0 map_flag_39 0.400000 0 0 0 0 0
+
+
+map_flag_40 0 map_flag_40 0.400000 0 0 0 0 0
+
+
+map_flag_41 0 map_flag_41 0.400000 0 0 0 0 0
+
+
+map_flag_42 0 map_flag_42 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_italica_ii 0 map_legion_vexilium_italica_ii 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_scythica_iv 0 map_legion_vexilium_scythica_iv 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_fulminata_xii 0 map_legion_vexilium_fulminata_xii 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_amogus_lxix 0 map_legion_vexilium_amogus_lxix 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_minervia_i 0 map_legion_vexilium_minervia_i 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_uplia_victrix_xxx 0 map_legion_vexilium_uplia_victrix_xxx 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_biggus_dickus_cdxx 0 map_legion_vexilium_biggus_dickus_cdxx 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_texticulus_xxx 0 map_legion_vexilium_texticulus_xxx 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_parthica_i 0 map_legion_vexilium_parthica_i 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_valeria_xx 0 map_legion_vexilium_valeria_xx 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_hispania_ix 0 map_legion_vexilium_hispania_ix 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_apollinaris_xv 0 map_legion_vexilium_apollinaris_xv 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_primigenia_xxii 0 map_legion_vexilium_primigenia_xxii 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_deitoriana_xxi 0 map_legion_vexilium_deitoriana_xxi 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_gallica_xvi 0 map_legion_vexilium_gallica_xvi 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_germanica_i 0 map_legion_vexilium_germanica_i 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_praetorian 0 map_legion_vexilium_praetorian 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_adiutrix_i 0 map_legion_vexilium_adiutrix_i 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_victrix_vi 0 map_legion_vexilium_victrix_vi 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_rapax_xxi 0 map_legion_vexilium_rapax_xxi 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_alaudae_v 0 map_legion_vexilium_alaudae_v 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_augusta_iii 0 map_legion_vexilium_augusta_iii 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_claudia_xi 0 map_legion_vexilium_claudia_xi 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_ferrata_vi 0 map_legion_vexilium_ferrata_vi 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_fretensis_x 0 map_legion_vexilium_fretensis_x 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_macedonica_v 0 map_legion_vexilium_macedonica_v 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_gemina_xiii 0 map_legion_vexilium_gemina_xiii 0.400000 0 0 0 0 0
+
+
+map_legion_vexilium_galbiana_vii 0 map_legion_vexilium_galbiana_vii 0.400000 0 0 0 0 0
+
+
+banners_end 0 map_flag_42 0.400000 0 0 0 0 0
+
+

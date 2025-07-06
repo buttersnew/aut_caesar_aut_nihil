@@ -1025,7 +1025,7 @@ triggers = [
     (try_end),
 ]),
 # Appoint chamberlain
-(0, 0, 24 * 14,[],[
+(24*14, 0, ti_once,[],[
     (neq, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", centers_begin, centers_end),
@@ -1050,7 +1050,7 @@ triggers = [
     (call_script, "script_add_notification_menu", "mnu_dplmc_notification_appoint_chamberlain", 0, 0),
 ]),
 # Appoint constable
-(0, 0, 24 * 14,[],[
+(24*14, 0, ti_once,[],[
     (neq, "$g_player_constable", "trp_dplmc_constable"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
@@ -1069,7 +1069,7 @@ triggers = [
 ]),
 
 # Appoint chancellor
-(0, 0, 24 * 14,[],[
+(24*14, 0, ti_once,[],[
     (neq, "$g_player_chancellor", "trp_dplmc_chancellor"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", towns_begin, towns_end),
