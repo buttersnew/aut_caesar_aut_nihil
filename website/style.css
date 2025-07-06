@@ -130,6 +130,34 @@ p {
     margin-right: 10px;
 }
 
+/* GitHub Section */
+.github-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.github-section .github-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #24292e; /* GitHub dark color */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.github-section .github-link:hover {
+    background-color: #444d56; /* Slightly lighter on hover */
+}
+
+.github-section .github-link .fa-github {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
 /* Footer */
 footer {
     text-align: center;

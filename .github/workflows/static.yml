@@ -13,8 +13,6 @@ on:
 
   workflow_dispatch:
 
-# The entire top-level 'permissions' block has been REMOVED from here.
-
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -26,10 +24,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     
+    # We are using the permissions that you confirmed are valid.
+    # The script below will prove if these are sufficient.
     permissions:
-      contents: read     # Needed to checkout the code
-      pages: write       # Needed to deploy to Pages
-      id-token: write    # Needed to deploy to Pages
+      contents: read
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -37,18 +37,32 @@ jobs:
 
       - name: Get latest release info
         id: latest_release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -e # Exit immediately if a command exits with a non-zero status.
+
+          echo "Fetching latest release..."
           LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName')
-          MOD_URL=$(gh release view $LATEST_TAG --json assets --jq '.assets[] | select(.name | startswith("ACAN")).browser_download_url')
-          MANUAL_URL=$(gh release view $LATEST_TAG --json assets --jq '.assets[] | select(.name == "handbook.pdf").browser_download_url')
           
+          if [[ -z "$LATEST_TAG" ]]; then
+            echo "::error::Could not find any releases. Check repository permissions."
+            exit 1
+          fi
+          
+          echo "Found latest tag: $LATEST_TAG"
+
+          MOD_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).browser_download_url')
+          MANUAL_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "handbook.pdf").browser_download_url')
+          
+          echo "Found Mod URL: $MOD_URL"
+          echo "Found Manual URL: $MANUAL_URL"
+
           echo "VERSION=${LATEST_TAG#v}" >> $GITHUB_OUTPUT
           echo "MOD_URL=$MOD_URL" >> $GITHUB_OUTPUT
           echo "MANUAL_URL=$MANUAL_URL" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update placeholders in index.html
+      - name: Render placeholders in index.html
         run: |
           sed -i 's|__MOD_VERSION__|${{ steps.latest_release.outputs.VERSION }}|g' website/index.html
           sed -i 's|__MOD_DOWNLOAD_URL__|${{ steps.latest_release.outputs.MOD_URL }}|g' website/index.html
