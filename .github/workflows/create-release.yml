@@ -48,8 +48,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
-          asset_path: AutCaesar-v${{ steps.version.outputs.TAG }}.zip
-          asset_name: AutCaesar-v${{ steps.version.outputs.TAG }}.zip
+          asset_path: ./ACAN-v${{ steps.version.outputs.TAG }}.zip
+          asset_name: ACAN-v${{ steps.version.outputs.TAG }}.zip
           asset_content_type: application/zip
 
       - name: Upload Handbook PDF to Pre-Release
