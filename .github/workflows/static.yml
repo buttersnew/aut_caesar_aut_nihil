@@ -40,11 +40,10 @@ jobs:
           # --- LOGIC FOR STABLE RELEASE ---
           STABLE_TAG=$(gh release list --limit 1 --exclude-pre-releases --json tagName | jq -r '.[0].tagName')
 
-          echo "--- DUMPING ASSET JSON ---"
-          gh release view "$STABLE_TAG" --json assets
-          echo "--- END ASSET JSON ---"
-
           if [[ -n "$STABLE_TAG" && "$STABLE_TAG" != "null" ]]; then
+            echo "--- DUMPING ASSET JSON ---"
+            gh release view "$STABLE_TAG" --json assets
+            echo "--- END ASSET JSON ---"
             echo "STABLE_EXISTS=true" >> $GITHUB_OUTPUT
             RELEASE_INFO=$(gh release view "$STABLE_TAG" --json publishedAt,assets)
             echo "STABLE_VERSION=${STABLE_TAG#v}" >> $GITHUB_OUTPUT
@@ -59,11 +58,10 @@ jobs:
           # --- LOGIC FOR PRE-RELEASE ---
           PRERELEASE_TAG=$(gh release list --limit 10 --json tagName,isPrerelease | jq -r '(.[] | select(.isPrerelease == true) | .tagName)' | head -n 1)
 
-          echo "--- DUMPING ASSET JSON ---"
-          gh release view "$PRERELEASE_TAG" --json assets
-          echo "--- END ASSET JSON ---"
-
           if [[ -n "$PRERELEASE_TAG" && "$PRERELEASE_TAG" != "null" ]]; then
+            echo "--- DUMPING ASSET JSON ---"
+            gh release view "$PRERELEASE_TAG" --json assets
+            echo "--- END ASSET JSON ---"
             echo "PRERELEASE_EXISTS=true" >> $GITHUB_OUTPUT
             RELEASE_INFO=$(gh release view "$PRERELEASE_TAG" --json publishedAt,assets)
             echo "PRERELEASE_VERSION=${PRERELEASE_TAG#v}" >> $GITHUB_OUTPUT
