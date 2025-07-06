@@ -89,6 +89,47 @@ p {
     margin-top: 0;
 }
 
+/* ========================================= */
+/* Styles for Dynamic Download Cards         */
+/* ========================================= */
+
+/* Style for the Pre-release Card */
+.download-card.prerelease {
+  /* Add a red border to signify it's a special "beta" version */
+  border: 2px solid #E50914; 
+}
+
+/* Make the title of the pre-release card red to match the border */
+.download-card.prerelease h3 {
+  color: #E50914;
+}
+
+
+/* Style for the Unavailable Card */
+.download-card.unavailable {
+  /* Make the whole card look "disabled" or less important */
+  opacity: 0.6;
+  background-color: #1a1a1a;
+}
+
+/* Disable the hover effect for unavailable cards */
+.download-card.unavailable:hover {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Reverts to the default shadow */
+}
+
+/* Make the text inside the unavailable card more muted and italic */
+.download-card.unavailable p {
+  font-style: italic;
+  color: #999;
+}
+
+/* Style for the Update Date text we added earlier */
+.update-date {
+  font-weight: bold;
+  color: #ffc107; /* A nice, warm gold color */
+}
+
 /* Button Styling */
 .btn {
     display: inline-block;
