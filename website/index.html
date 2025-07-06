@@ -30,28 +30,50 @@
         </section>
         <!-- Download Section -->
         <section class="download-section">
-            <div class="container">
-                <h2>Downloads</h2>
-                <div class="download-grid">
-                    <!-- In the download-card for the mod -->
-                    <div class="download-card">
-                        <h3>Latest Version</h3>
-                        <!-- This __MOD_VERSION__ will be replaced by the workflow -->
-                        <p>Version __MOD_VERSION__</p>
-                        <p>Last updated: __MOD_UPDATED__</p>
-                        <!-- This __MOD_DOWNLOAD_URL__ will also be replaced -->
-                        <a href="__MOD_DOWNLOAD_URL__" class="btn">Download Mod</a>
-                    </div>
-                    <!-- In the download-card for the manual -->
-                    <div class="download-card">
-                        <h3>Installation Manual</h3>
-                        <p>A complete summary of all features and quests.</p>
-                        <p>Last updated: __MANUAL_UPDATED__</p>
-                        <!-- And this __MANUAL_DOWNLOAD_URL__ -->
-                        <a href="__MANUAL_DOWNLOAD_URL__" class="btn">Download Manual</a>
-                    </div>
-                </div>
+            <!-- STABLE RELEASE SECTION -->
+            <!-- The workflow will uncomment ONE of the two blocks below -->
+
+            <!-- STABLE_DOWNLOAD_AVAILABLE -->
+            <div class="download-card">
+                <h3>Latest Stable Release</h3>
+                <p>Version __STABLE_VERSION__</p>
+                <p>Last Updated: __STABLE_UPDATE_DATE__</p>
+                <a href="__STABLE_MOD_URL__" class="btn">Download Mod</a>
+                <a href="__STABLE_MANUAL_URL__" class="btn">Download Manual</a>
             </div>
+            <!-- /STABLE_DOWNLOAD_AVAILABLE -->
+
+            <!-- STABLE_DOWNLOAD_UNAVAILABLE -->
+            <!--
+            <div class="download-card unavailable">
+                <h3>Latest Stable Release</h3>
+                <p>There is currently no stable release available. Please check back later or try the pre-release.</p>
+            </div>
+            -->
+            <!-- /STABLE_DOWNLOAD_UNAVAILABLE -->
+
+
+            <!-- PRE-RELEASE SECTION -->
+            <!-- The workflow will uncomment ONE of the two blocks below -->
+
+            <!-- PRERELEASE_DOWNLOAD_AVAILABLE -->
+            <!--
+            <div class="download-card prerelease">
+                <h3>Latest Pre-release</h3>
+                <p>Version __PRERELEASE_VERSION__</p>
+                <p>Last Updated: __PRERELEASE_UPDATE_DATE__</p>
+                <a href="__PRERELEASE_MOD_URL__" class="btn">Download Mod (Beta)</a>
+                <a href="__PRERELEASE_MANUAL_URL__" class="btn">Download Manual (Beta)</a>
+            </div>
+            -->
+            <!-- /PRERELEASE_DOWNLOAD_AVAILABLE -->
+
+            <!-- PRERELEASE_DOWNLOAD_UNAVAILABLE -->
+            <div class="download-card unavailable">
+                <h3>Latest Pre-release</h3>
+                <p>There are currently no pre-releases available. Please check back later.</p>
+            </div>
+            <!-- /PRERELEASE_DOWNLOAD_UNAVAILABLE -->
         </section>
         <!-- Community/Discord Section -->
         <section class="community-section">

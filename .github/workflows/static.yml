@@ -58,12 +58,15 @@ jobs:
           # ------------------------------------
 
           MOD_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).url')
-          MOD_UPDATED=$(date -d (gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).updatedAt') + "%d.%m.%Y")
+          MOD_UPDATED_ISO=$gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).updatedAt')
           MANUAL_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')
-          MANUAL_UPDATED=$(date -d (gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").updatedAt') + "%d.%m.%Y")
+          MANUAL_UPDATED_ISO=$gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").updatedAt')
           
           echo "Found Mod URL: $MOD_URL"
           echo "Found Manual URL: $MANUAL_URL"
+
+          MOD_UPDATED = $(date -d "$MOD_UPDATED_ISO" + "%d.%m.%Y")
+          MANUAL_UPDATED_ISO = $(date -d "$MOD_UPDATED" + "%d.%m.%Y")
 
           echo "VERSION=${LATEST_TAG#v}" >> $GITHUB_OUTPUT
           echo "MOD_URL=$MOD_URL" >> $GITHUB_OUTPUT
