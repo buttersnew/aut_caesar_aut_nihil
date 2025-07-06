@@ -58,9 +58,9 @@ jobs:
           # ------------------------------------
 
           MOD_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).url')
-          MOD_UPDATED=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).updatedAt')
+          MOD_UPDATED=$(date -d (gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).updatedAt') + "%d.%m.%Y")
           MANUAL_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')
-          MANUAL_UPDATED=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").updatedAt')
+          MANUAL_UPDATED=$(date -d (gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").updatedAt') + "%d.%m.%Y")
           
           echo "Found Mod URL: $MOD_URL"
           echo "Found Manual URL: $MANUAL_URL"
