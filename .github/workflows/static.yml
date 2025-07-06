@@ -30,81 +30,60 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get release info (Stable and Pre-release)
-        id: latest_info
+      - name: Generate Download Sections and final index.html
+        id: build_html
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -e # Exit on any error
+          set -e
 
-          # --- LOGIC FOR STABLE RELEASE ---
+          # --- PROCESS STABLE RELEASE ---
           STABLE_TAG=$(gh release list --limit 1 --exclude-pre-releases --json tagName | jq -r '.[0].tagName')
-
           if [[ -n "$STABLE_TAG" && "$STABLE_TAG" != "null" ]]; then
-            echo "--- DUMPING ASSET JSON ---"
-            gh release view "$STABLE_TAG" --json assets
-            echo "--- END ASSET JSON ---"
-            echo "STABLE_EXISTS=true" >> $GITHUB_OUTPUT
             RELEASE_INFO=$(gh release view "$STABLE_TAG" --json publishedAt,assets)
-            echo "STABLE_VERSION=${STABLE_TAG#v}" >> $GITHUB_OUTPUT
-            echo "STABLE_MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).browser_download_url')" >> $GITHUB_OUTPUT
-            echo "STABLE_MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").browser_download_url')" >> $GITHUB_OUTPUT
+            VERSION=${STABLE_TAG#v}
+            MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url')
+            MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')
             RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
-            echo "STABLE_UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")" >> $GITHUB_OUTPUT
+            UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")
+            
+            # Read the 'available' template, replace placeholders, and save to stable_block.html
+            cat website/_blocks/stable_available.html | \
+              sed "s|__VERSION__|$VERSION|g" | \
+              sed "s|__UPDATE_DATE__|$UPDATE_DATE|g" | \
+              sed "s|__MOD_URL__|$MOD_URL|g" | \
+              sed "s|__MANUAL_URL__|$MANUAL_URL|g" > stable_block.html
           else
-            echo "STABLE_EXISTS=false" >> $GITHUB_OUTPUT
+            # Just copy the 'unavailable' template directly
+            cp website/_blocks/stable_unavailable.html stable_block.html
           fi
 
-          # --- LOGIC FOR PRE-RELEASE ---
+          # --- PROCESS PRE-RELEASE ---
           PRERELEASE_TAG=$(gh release list --limit 10 --json tagName,isPrerelease | jq -r '(.[] | select(.isPrerelease == true) | .tagName)' | head -n 1)
-
           if [[ -n "$PRERELEASE_TAG" && "$PRERELEASE_TAG" != "null" ]]; then
-            echo "--- DUMPING ASSET JSON ---"
-            gh release view "$PRERELEASE_TAG" --json assets
-            echo "--- END ASSET JSON ---"
-            echo "PRERELEASE_EXISTS=true" >> $GITHUB_OUTPUT
             RELEASE_INFO=$(gh release view "$PRERELEASE_TAG" --json publishedAt,assets)
-            echo "PRERELEASE_VERSION=${PRERELEASE_TAG#v}" >> $GITHUB_OUTPUT
-            echo "PRERELEASE_MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).browser_download_url')" >> $GITHUB_OUTPUT
-            echo "PRERELEASE_MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").browser_download_url')" >> $GITHUB_OUTPUT
+            VERSION=${PRERELEASE_TAG#v}
+            MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url')
+            MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')
             RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
-            echo "PRERELEASE_UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")" >> $GITHUB_OUTPUT
+            UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")
+            
+            # Read the 'available' template, replace placeholders, and save to prerelease_block.html
+            cat website/_blocks/prerelease_available.html | \
+              sed "s|__VERSION__|$VERSION|g" | \
+              sed "s|__UPDATE_DATE__|$UPDATE_DATE|g" | \
+              sed "s|__MOD_URL__|$MOD_URL|g" | \
+              sed "s|__MANUAL_URL__|$MANUAL_URL|g" > prerelease_block.html
           else
-            echo "PRERELEASE_EXISTS=false" >> $GITHUB_OUTPUT
+            # Just copy the 'unavailable' template directly
+            cp website/_blocks/prerelease_unavailable.html prerelease_block.html
           fi
 
-      - name: Update Stable Release section (if available)
-        if: steps.latest_info.outputs.STABLE_EXISTS == 'true'
-        run: |
-          sed -i 's|<!-- STABLE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          sed -i 's|<!-- /STABLE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          sed -i 's|__STABLE_VERSION__|${{ steps.latest_info.outputs.STABLE_VERSION }}|g' website/index.html
-          sed -i 's|__STABLE_MOD_URL__|${{ steps.latest_info.outputs.STABLE_MOD_URL }}|g' website/index.html
-          sed -i 's|__STABLE_MANUAL_URL__|${{ steps.latest_info.outputs.STABLE_MANUAL_URL }}|g' website/index.html
-          sed -i 's|__STABLE_UPDATE_DATE__|${{ steps.latest_info.outputs.STABLE_UPDATE_DATE }}|g' website/index.html
+          # --- ASSEMBLE THE FINAL index.html ---
+          cp website/index.template.html website/index.html
+          sed -i -e "/__STABLE_RELEASE_SECTION__/r stable_block.html" -e "/__STABLE_RELEASE_SECTION__/d" website/index.html
+          sed -i -e "/__PRERELEASE_RELEASE_SECTION__/r prerelease_block.html" -e "/__PRERELEASE_RELEASE_SECTION__/d" website/index.html
 
-      - name: Update Stable Release section (if unavailable)
-        if: steps.latest_info.outputs.STABLE_EXISTS == 'false'
-        run: |
-          sed -i 's|<!-- STABLE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
-          sed -i 's|<!-- /STABLE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
-
-      - name: Update Pre-Release section (if available)
-        if: steps.latest_info.outputs.PRERELEASE_EXISTS == 'true'
-        run: |
-          sed -i 's|<!-- PRERELEASE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          sed -i 's|<!-- /PRERELEASE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          sed -i 's|__PRERELEASE_VERSION__|${{ steps.latest_info.outputs.PRERELEASE_VERSION }}|g' website/index.html
-          sed -i 's|__PRERELEASE_MOD_URL__|${{ steps.latest_info.outputs.PRERELEASE_MOD_URL }}|g' website/index.html
-          sed -i 's|__PRERELEASE_MANUAL_URL__|${{ steps.latest_info.outputs.PRERELEASE_MANUAL_URL }}|g' website/index.html
-          sed -i 's|__PRERELEASE_UPDATE_DATE__|${{ steps.latest_info.outputs.PRERELEASE_UPDATE_DATE }}|g' website/index.html
-
-      - name: Update Pre-Release section (if unavailable)
-        if: steps.latest_info.outputs.PRERELEASE_EXISTS == 'false'
-        run: |
-          sed -i 's|<!-- PRERELEASE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
-          sed -i 's|<!-- /PRERELEASE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
-      
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
