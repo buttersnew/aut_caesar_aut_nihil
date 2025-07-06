@@ -1,110 +1,63 @@
-name: Deploy static content to Pages
+name: Create Pre-Release
 
 on:
   push:
-    branches: ["develop"]
+    branches:
+      - 'develop'
     paths:
-      - 'website/**'
-  workflow_run:
-    workflows: ["Create Pre-Release"]
-    types:
-      - completed
-  workflow_dispatch:
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+      - 'version.txt' # Only run when the version file changes
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-release:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pages: write
-      id-token: write
+      contents: write # This is required to create a release and upload assets
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get release info (Stable and Pre-release)
-        id: latest_info
+      - name: Read version from file
+        id: version
+        run: echo "TAG=$(cat version.txt)" >> $GITHUB_OUTPUT
+
+      - name: Zip the mod folder
+        run: |
+          zip -r ACAN-v${{ steps.version.outputs.TAG }}.zip Aut_Caesar_Aut_Nihil
+
+      - name: List files in workspace
+        run: ls -R
+
+      - name: Create Pre-Release
+        id: create_prerelease
+        uses: actions/create-release@v1
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # --- LOGIC FOR STABLE RELEASE ---
-          STABLE_TAG=$(gh release list --limit 1 --json tagName --jq -r '.[0].tagName')
-          if [[ -n "$STABLE_TAG" ]]; then
-            echo "STABLE_EXISTS=true" >> $GITHUB_OUTPUT
-            RELEASE_INFO=$(gh release view "$STABLE_TAG" --json publishedAt,assets)
-            echo "STABLE_VERSION=${STABLE_TAG#v}" >> $GITHUB_OUTPUT
-            echo "STABLE_MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url')" >> $GITHUB_OUTPUT
-            echo "STABLE_MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')" >> $GITHUB_OUTPUT
-            RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
-            echo "STABLE_UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")" >> $GITHUB_OUTPUT
-          else
-            echo "STABLE_EXISTS=false" >> $GITHUB_OUTPUT
-          fi
-
-          # --- LOGIC FOR PRE-RELEASE ---
-          PRERELEASE_TAG=$(gh release list --prerelease --limit 1 --json tagName --jq -r '.[0].tagName')
-          if [[ -n "$PRERELEASE_TAG" ]]; then
-            echo "PRERELEASE_EXISTS=true" >> $GITHUB_OUTPUT
-            RELEASE_INFO=$(gh release view "$PRERELEASE_TAG" --json publishedAt,assets)
-            echo "PRERELEASE_VERSION=${PRERELEASE_TAG#v}" >> $GITHUB_OUTPUT
-            echo "PRERELEASE_MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url')" >> $GITHUB_OUTPUT
-            echo "PRERELEASE_MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')" >> $GITHUB_OUTPUT
-            RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
-            echo "PRERELEASE_UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")" >> $GITHUB_OUTPUT
-          else
-            echo "PRERELEASE_EXISTS=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Update Stable Release section (if available)
-        if: steps.latest_info.outputs.STABLE_EXISTS == 'true'
-        run: |
-          # Make the 'available' block visible by removing its comment tags
-          sed -i 's|<!-- STABLE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          sed -i 's|<!-- /STABLE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          # Fill in the placeholders
-          sed -i 's|__STABLE_VERSION__|${{ steps.latest_info.outputs.STABLE_VERSION }}|g' website/index.html
-          sed -i 's|__STABLE_MOD_URL__|${{ steps.latest_info.outputs.STABLE_MOD_URL }}|g' website/index.html
-          sed -i 's|__STABLE_MANUAL_URL__|${{ steps.latest_info.outputs.STABLE_MANUAL_URL }}|g' website/index.html
-          sed -i 's|__STABLE_UPDATE_DATE__|${{ steps.latest_info.outputs.STABLE_UPDATE_DATE }}|g' website/index.html
-
-      - name: Update Stable Release section (if unavailable)
-        if: steps.latest_info.outputs.STABLE_EXISTS == 'false'
-        run: |
-          # Make the 'unavailable' block visible
-          sed -i 's|<!-- STABLE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
-          sed -i 's|<!-- /STABLE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
-
-      - name: Update Pre-Release section (if available)
-        if: steps.latest_info.outputs.PRERELEASE_EXISTS == 'true'
-        run: |
-          sed -i 's|<!-- PRERELEASE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          sed -i 's|<!-- /PRERELEASE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          sed -i 's|__PRERELEASE_VERSION__|${{ steps.latest_info.outputs.PRERELEASE_VERSION }}|g' website/index.html
-          sed -i 's|__PRERELEASE_MOD_URL__|${{ steps.latest_info.outputs.PRERELEASE_MOD_URL }}|g' website/index.html
-          sed -i 's|__PRERELEASE_MANUAL_URL__|${{ steps.latest_info.outputs.PRERELEASE_MANUAL_URL }}|g' website/index.html
-          sed -i 's|__PRERELEASE_UPDATE_DATE__|${{ steps.latest_info.outputs.PRERELEASE_UPDATE_DATE }}|g' website/index.html
-
-      - name: Update Pre-Release section (if unavailable)
-        if: steps.latest_info.outputs.PRERELEASE_EXISTS == 'false'
-        run: |
-          sed -i 's|<!-- PRERELEASE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
-          sed -i 's|<!-- /PRERELEASE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
-      
-      # The rest of the workflow remains the same
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: './website'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          tag_name: v${{ steps.version.outputs.TAG }}
+          release_name: Version ${{ steps.version.outputs.TAG }} (Pre-release)
+          body: |
+            Automated pre-release based on changes to the version file.
+            These are development builds and may be unstable.
+          draft: false
+          prerelease: true # This marks it as a pre-release!
+
+      - name: Upload Mod Zip to Pre-Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
+          asset_path: ./ACAN-v${{ steps.version.outputs.TAG }}.zip
+          asset_name: ACAN-v${{ steps.version.outputs.TAG }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload Handbook PDF to Pre-Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
+          asset_path: ./handbook/aut_ceasar_aut_nihil_handbook.pdf
+          asset_name: aut_ceasar_aut_nihil_handbook.pdf
+          asset_content_type: application/pdf

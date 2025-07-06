@@ -5,12 +5,10 @@ on:
     branches: ["develop"]
     paths:
       - 'website/**'
-
   workflow_run:
     workflows: ["Create Pre-Release"]
     types:
       - completed
-
   workflow_dispatch:
 
 concurrency:
@@ -23,9 +21,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
-    # We are using the permissions that you confirmed are valid.
-    # The script below will prove if these are sufficient.
     permissions:
       contents: read
       pages: write
@@ -35,60 +30,81 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get latest release info
-        id: latest_release
+      - name: Get release info (Stable and Pre-release)
+        id: latest_info
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -e
-
-          echo "Fetching latest release..."
-          LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName')
-          
-          if [[ -z "$LATEST_TAG" ]]; then
-            echo "::error::Could not find any releases. Check repository permissions."
-            exit 1
+          # --- LOGIC FOR STABLE RELEASE ---
+          STABLE_TAG=$(gh release list --limit 1 --json tagName --jq -r '.[0].tagName')
+          if [[ -n "$STABLE_TAG" ]]; then
+            echo "STABLE_EXISTS=true" >> $GITHUB_OUTPUT
+            RELEASE_INFO=$(gh release view "$STABLE_TAG" --json publishedAt,assets)
+            echo "STABLE_VERSION=${STABLE_TAG#v}" >> $GITHUB_OUTPUT
+            echo "STABLE_MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).browser_download_url')" >> $GITHUB_OUTPUT
+            echo "STABLE_MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").browser_download_url')" >> $GITHUB_OUTPUT
+            RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
+            echo "STABLE_UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")" >> $GITHUB_OUTPUT
+          else
+            echo "STABLE_EXISTS=false" >> $GITHUB_OUTPUT
           fi
-          
-          echo "Found latest tag: $LATEST_TAG"
 
-          echo "--- DUMPING ASSET JSON ---"
-          gh release view "$LATEST_TAG" --json assets
-          echo "--- END ASSET JSON ---"
-          # ------------------------------------
+          # --- LOGIC FOR PRE-RELEASE ---
+          PRERELEASE_TAG=$(gh release list --prerelease --limit 1 --json tagName --jq -r '.[0].tagName')
+          if [[ -n "$PRERELEASE_TAG" ]]; then
+            echo "PRERELEASE_EXISTS=true" >> $GITHUB_OUTPUT
+            RELEASE_INFO=$(gh release view "$PRERELEASE_TAG" --json publishedAt,assets)
+            echo "PRERELEASE_VERSION=${PRERELEASE_TAG#v}" >> $GITHUB_OUTPUT
+            echo "PRERELEASE_MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).browser_download_url')" >> $GITHUB_OUTPUT
+            echo "PRERELEASE_MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").browser_download_url')" >> $GITHUB_OUTPUT
+            RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
+            echo "PRERELEASE_UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")" >> $GITHUB_OUTPUT
+          else
+            echo "PRERELEASE_EXISTS=false" >> $GITHUB_OUTPUT
+          fi
 
-          MOD_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).url')
-          MOD_UPDATED_ISO=$gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).updatedAt')
-          MANUAL_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')
-          MANUAL_UPDATED_ISO=$gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").updatedAt')
-          
-          echo "Found Mod URL: $MOD_URL"
-          echo "Found Manual URL: $MANUAL_URL"
-
-          MOD_UPDATED = $(date -d "$MOD_UPDATED_ISO" + "%d.%m.%Y")
-          MANUAL_UPDATED_ISO = $(date -d "$MOD_UPDATED" + "%d.%m.%Y")
-
-          echo "VERSION=${LATEST_TAG#v}" >> $GITHUB_OUTPUT
-          echo "MOD_URL=$MOD_URL" >> $GITHUB_OUTPUT
-          echo "MANUAL_URL=$MANUAL_URL" >> $GITHUB_OUTPUT
-          echo "MANUAL_UPDATED=$MANUAL_UPDATED" >> $GITHUB_OUTPUT
-          echo "MOD_UPDATED=$MOD_UPDATED" >> $GITHUB_OUTPUT
-      - name: Render placeholders in index.html
+      - name: Update Stable Release section (if available)
+        if: steps.latest_info.outputs.STABLE_EXISTS == 'true'
         run: |
-          sed -i 's|__MOD_VERSION__|${{ steps.latest_release.outputs.VERSION }}|g' website/index.html
-          sed -i 's|__MOD_DOWNLOAD_URL__|${{ steps.latest_release.outputs.MOD_URL }}|g' website/index.html
-          sed -i 's|__MANUAL_DOWNLOAD_URL__|${{ steps.latest_release.outputs.MANUAL_URL }}|g' website/index.html
-          sed -i 's|__MANUAL_UPDATED__|${{ steps.latest_release.outputs.MANUAL_UPDATED }}|g' website/index.html
-          sed -i 's|__MOD_UPDATED__|${{ steps.latest_release.outputs.MOD_UPDATED }}|g' website/index.html
+          # Make the 'available' block visible by removing its comment tags
+          sed -i 's|<!-- STABLE_DOWNLOAD_AVAILABLE -->||g' website/index.html
+          sed -i 's|<!-- /STABLE_DOWNLOAD_AVAILABLE -->||g' website/index.html
+          # Fill in the placeholders
+          sed -i 's|__STABLE_VERSION__|${{ steps.latest_info.outputs.STABLE_VERSION }}|g' website/index.html
+          sed -i 's|__STABLE_MOD_URL__|${{ steps.latest_info.outputs.STABLE_MOD_URL }}|g' website/index.html
+          sed -i 's|__STABLE_MANUAL_URL__|${{ steps.latest_info.outputs.STABLE_MANUAL_URL }}|g' website/index.html
+          sed -i 's|__STABLE_UPDATE_DATE__|${{ steps.latest_info.outputs.STABLE_UPDATE_DATE }}|g' website/index.html
 
+      - name: Update Stable Release section (if unavailable)
+        if: steps.latest_info.outputs.STABLE_EXISTS == 'false'
+        run: |
+          # Make the 'unavailable' block visible
+          sed -i 's|<!-- STABLE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
+          sed -i 's|<!-- /STABLE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
+
+      - name: Update Pre-Release section (if available)
+        if: steps.latest_info.outputs.PRERELEASE_EXISTS == 'true'
+        run: |
+          sed -i 's|<!-- PRERELEASE_DOWNLOAD_AVAILABLE -->||g' website/index.html
+          sed -i 's|<!-- /PRERELEASE_DOWNLOAD_AVAILABLE -->||g' website/index.html
+          sed -i 's|__PRERELEASE_VERSION__|${{ steps.latest_info.outputs.PRERELEASE_VERSION }}|g' website/index.html
+          sed -i 's|__PRERELEASE_MOD_URL__|${{ steps.latest_info.outputs.PRERELEASE_MOD_URL }}|g' website/index.html
+          sed -i 's|__PRERELEASE_MANUAL_URL__|${{ steps.latest_info.outputs.PRERELEASE_MANUAL_URL }}|g' website/index.html
+          sed -i 's|__PRERELEASE_UPDATE_DATE__|${{ steps.latest_info.outputs.PRERELEASE_UPDATE_DATE }}|g' website/index.html
+
+      - name: Update Pre-Release section (if unavailable)
+        if: steps.latest_info.outputs.PRERELEASE_EXISTS == 'false'
+        run: |
+          sed -i 's|<!-- PRERELEASE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
+          sed -i 's|<!-- /PRERELEASE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
+      
+      # The rest of the workflow remains the same
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './website'
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
