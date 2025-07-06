@@ -30,14 +30,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get release info (Stable and Pre-release)
+      - name: Get release info (Stable and Pre-release) - CORRECTED
         id: latest_info
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -e # Exit on any error
+
           # --- LOGIC FOR STABLE RELEASE ---
-          STABLE_TAG=$(gh release list --limit 1 --json tagName --jq -r '.[0].tagName')
-          if [[ -n "$STABLE_TAG" ]]; then
+          STABLE_TAG=$(gh release list --limit 1 --exclude-pre-releases --json tagName | jq -r '.[0].tagName')
+          if [[ -n "$STABLE_TAG" && "$STABLE_TAG" != "null" ]]; then
             echo "STABLE_EXISTS=true" >> $GITHUB_OUTPUT
             RELEASE_INFO=$(gh release view "$STABLE_TAG" --json publishedAt,assets)
             echo "STABLE_VERSION=${STABLE_TAG#v}" >> $GITHUB_OUTPUT
@@ -50,8 +52,8 @@ jobs:
           fi
 
           # --- LOGIC FOR PRE-RELEASE ---
-          PRERELEASE_TAG=$(gh release list --prerelease --limit 1 --json tagName --jq -r '.[0].tagName')
-          if [[ -n "$PRERELEASE_TAG" ]]; then
+          PRERELEASE_TAG=$(gh release list --limit 10 --json tagName,isPrerelease | jq -r '(.[] | select(.isPrerelease == true) | .tagName)' | head -n 1)
+          if [[ -n "$PRERELEASE_TAG" && "$PRERELEASE_TAG" != "null" ]]; then
             echo "PRERELEASE_EXISTS=true" >> $GITHUB_OUTPUT
             RELEASE_INFO=$(gh release view "$PRERELEASE_TAG" --json publishedAt,assets)
             echo "PRERELEASE_VERSION=${PRERELEASE_TAG#v}" >> $GITHUB_OUTPUT
@@ -66,10 +68,8 @@ jobs:
       - name: Update Stable Release section (if available)
         if: steps.latest_info.outputs.STABLE_EXISTS == 'true'
         run: |
-          # Make the 'available' block visible by removing its comment tags
           sed -i 's|<!-- STABLE_DOWNLOAD_AVAILABLE -->||g' website/index.html
           sed -i 's|<!-- /STABLE_DOWNLOAD_AVAILABLE -->||g' website/index.html
-          # Fill in the placeholders
           sed -i 's|__STABLE_VERSION__|${{ steps.latest_info.outputs.STABLE_VERSION }}|g' website/index.html
           sed -i 's|__STABLE_MOD_URL__|${{ steps.latest_info.outputs.STABLE_MOD_URL }}|g' website/index.html
           sed -i 's|__STABLE_MANUAL_URL__|${{ steps.latest_info.outputs.STABLE_MANUAL_URL }}|g' website/index.html
@@ -78,7 +78,6 @@ jobs:
       - name: Update Stable Release section (if unavailable)
         if: steps.latest_info.outputs.STABLE_EXISTS == 'false'
         run: |
-          # Make the 'unavailable' block visible
           sed -i 's|<!-- STABLE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
           sed -i 's|<!-- /STABLE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
 
@@ -98,7 +97,6 @@ jobs:
           sed -i 's|<!-- PRERELEASE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
           sed -i 's|<!-- /PRERELEASE_DOWNLOAD_UNAVAILABLE -->||g' website/index.html
       
-      # The rest of the workflow remains the same
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
