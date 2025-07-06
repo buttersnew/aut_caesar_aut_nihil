@@ -39,9 +39,54 @@ body {
 }
 
 /* General Section Styling */
-.content-section, .download-section, .community-section {
+.content-section, .download-section, .community-section, .screenshot-section {
     padding: 60px 0;
     text-align: center;
+}
+
+/* ========================================= */
+/* Styles for Screenshot Slider              */
+/* ========================================= */
+
+/* This is the main container for the slider */
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* This is an individual slide */
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 60%; /* Adjust the width of the central slide */
+  max-width: 800px;
+}
+
+/* Style the image inside the slide */
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  border-radius: 8px; /* Give the images slightly rounded corners */
+}
+
+/* Style the navigation buttons and pagination to match the theme */
+:root {
+  --swiper-theme-color: #E50914; /* Set the main color to Netflix Red */
+}
+
+/* Make the navigation arrows a bit bigger and easier to see */
+.swiper-button-next, .swiper-button-prev {
+  transform: scale(0.8);
+  color: #fff; /* Make arrows white */
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent dark background */
+  border-radius: 50%;
+  width: 50px !important;
+  height: 50px !important;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+  font-size: 2rem !important; /* Make arrow icon bigger */
+  font-weight: bold;
 }
 
 h2 {
@@ -207,52 +252,4 @@ footer {
     margin-top: 40px;
     color: #808080;
     border-top: 1px solid #333;
-}
-
-/* ========================================= */
-/* Styles for Screenshot Slider              */
-/* ========================================= */
-.screenshot-section {
-    padding: 60px 0;
-}
-
-/* This is the main container for the slider */
-.swiper {
-  width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-/* This is an individual slide */
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 60%; /* Adjust the width of the central slide */
-  max-width: 800px;
-}
-
-/* Style the image inside the slide */
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  border-radius: 8px; /* Give the images slightly rounded corners */
-}
-
-/* Style the navigation buttons and pagination to match the theme */
-:root {
-  --swiper-theme-color: #E50914; /* Set the main color to Netflix Red */
-}
-
-/* Make the navigation arrows a bit bigger and easier to see */
-.swiper-button-next, .swiper-button-prev {
-  transform: scale(0.8);
-  color: #fff; /* Make arrows white */
-  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent dark background */
-  border-radius: 50%;
-  width: 50px !important;
-  height: 50px !important;
-}
-.swiper-button-next:after, .swiper-button-prev:after {
-  font-size: 2rem !important; /* Make arrow icon bigger */
-  font-weight: bold;
 }
