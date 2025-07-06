@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
     <!-- Hero Section: The big background image at the top -->
@@ -26,6 +27,43 @@
                 <p>
                     Aut Caesar Aut Nihil is a total conversion modification for Mount & Blade: Warband, thrusting players into the volatile 1st century AD during the tumultuous reign of Emperor Nero. The mod offers two distinct ways to play. You can embrace the classic Mount & Blade sandbox experience, completely reimagined with meticulously researched Roman legions, new factions, and a wealth of new features. Alternatively, you can embark on an epic, story-driven campaign that will see you rise from the squalor of slavery, navigate a web of deadly political intrigue, and carve a bloody path to the ultimate prize: being crowned Caesar Augustus, ruler of the known world.
                 </p>
+            </div>
+        </section>
+        <!-- Screenshot Section -->
+        <section class="screenshot-section">
+            <div class="container">
+                <h2>Screenshots</h2>
+            </div>
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="mb1.jpg"></div>
+                    <div class="swiper-slide"><img src="mb2.jpg"></div>
+                    <div class="swiper-slide"><img src="mb3.jpg"></div>
+                    <div class="swiper-slide"><img src="mb4.jpg"></div>
+                    <div class="swiper-slide"><img src="mb5.jpg"></div>
+                    <div class="swiper-slide"><img src="mb6.jpg"></div>
+                    <div class="swiper-slide"><img src="mb7.jpg"></div>
+                    <div class="swiper-slide"><img src="mb8.jpg"></div>
+                    <div class="swiper-slide"><img src="mb9.jpg"></div>
+                    <div class="swiper-slide"><img src="mb10.jpg"></div>
+                    <div class="swiper-slide"><img src="mb11.jpg"></div>
+                    <div class="swiper-slide"><img src="mb12.jpg"></div>
+                    <div class="swiper-slide"><img src="mb13.jpg"></div>
+                    <div class="swiper-slide"><img src="mb14.jpg"></div>
+                    <div class="swiper-slide"><img src="mb15.jpg"></div>
+                    <div class="swiper-slide"><img src="mb16.jpg"></div>
+                    <div class="swiper-slide"><img src="mb17.jpg"></div>
+                    <div class="swiper-slide"><img src="mb18.jpg"></div>
+                </div>
+                <!-- If you want pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- If you want navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </section>
         <!-- Download Section -->
@@ -64,5 +102,34 @@
     <footer>
         <p>© 2025 PILOSstudios. All Rights Reserved.</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // parameters
+            loop: true,
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            // pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 </body>
 </html>
