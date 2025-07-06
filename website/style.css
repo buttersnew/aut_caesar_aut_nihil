@@ -67,6 +67,7 @@ p {
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap; /* Allows cards to stack on smaller screens */
+    width: 100%;
 }
 
 .download-card {
