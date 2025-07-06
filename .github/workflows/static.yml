@@ -13,10 +13,7 @@ on:
 
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# The entire top-level 'permissions' block has been REMOVED from here.
 
 concurrency:
   group: "pages"
@@ -30,8 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: read
-      releases: read     # Grant permission for the 'gh release' command
+      contents: read     # Needed to checkout the code
+      pages: write       # Needed to deploy to Pages
+      id-token: write    # Needed to deploy to Pages
 
     steps:
       - name: Checkout repository
