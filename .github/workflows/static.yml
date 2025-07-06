@@ -38,51 +38,49 @@ jobs:
           set -e
 
           # --- PROCESS STABLE RELEASE ---
+          # This section now writes to all_blocks.html, overwriting any previous content.
           STABLE_TAG=$(gh release list --limit 1 --exclude-pre-releases --json tagName | jq -r '.[0].tagName')
           if [[ -n "$STABLE_TAG" && "$STABLE_TAG" != "null" ]]; then
             RELEASE_INFO=$(gh release view "$STABLE_TAG" --json publishedAt,assets)
             VERSION=${STABLE_TAG#v}
-            MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url')
-            MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')
+            MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url') # CORRECTED .url
+            MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url') # CORRECTED
             RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
             UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")
             
-            # Read the 'available' template, replace placeholders, and save to stable_block.html
             cat website/_blocks/stable_available.html | \
               sed "s|__VERSION__|$VERSION|g" | \
               sed "s|__UPDATE_DATE__|$UPDATE_DATE|g" | \
               sed "s|__MOD_URL__|$MOD_URL|g" | \
-              sed "s|__MANUAL_URL__|$MANUAL_URL|g" > stable_block.html
+              sed "s|__MANUAL_URL__|$MANUAL_URL|g" > all_blocks.html
           else
-            # Just copy the 'unavailable' template directly
-            cp website/_blocks/stable_unavailable.html stable_block.html
+            cp website/_blocks/stable_unavailable.html all_blocks.html
           fi
 
           # --- PROCESS PRE-RELEASE ---
+          # This section now APPENDS (>>) to all_blocks.html.
           PRERELEASE_TAG=$(gh release list --limit 10 --json tagName,isPrerelease | jq -r '(.[] | select(.isPrerelease == true) | .tagName)' | head -n 1)
           if [[ -n "$PRERELEASE_TAG" && "$PRERELEASE_TAG" != "null" ]]; then
             RELEASE_INFO=$(gh release view "$PRERELEASE_TAG" --json publishedAt,assets)
             VERSION=${PRERELEASE_TAG#v}
-            MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url')
-            MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url')
+            MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url') # CORRECTED
+            MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url') # CORRECTED
             RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
             UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")
             
-            # Read the 'available' template, replace placeholders, and save to prerelease_block.html
             cat website/_blocks/prerelease_available.html | \
               sed "s|__VERSION__|$VERSION|g" | \
               sed "s|__UPDATE_DATE__|$UPDATE_DATE|g" | \
               sed "s|__MOD_URL__|$MOD_URL|g" | \
-              sed "s|__MANUAL_URL__|$MANUAL_URL|g" > prerelease_block.html
+              sed "s|__MANUAL_URL__|$MANUAL_URL|g" >> all_blocks.html
           else
-            # Just copy the 'unavailable' template directly
-            cp website/_blocks/prerelease_unavailable.html prerelease_block.html
+            cp website/_blocks/prerelease_unavailable.html >> all_blocks.html
           fi
 
           # --- ASSEMBLE THE FINAL index.html ---
           cp website/index.template.html website/index.html
-          sed -i -e "/__STABLE_RELEASE_SECTION__/r stable_block.html" -e "/__STABLE_RELEASE_SECTION__/d" website/index.html
-          sed -i -e "/__PRERELEASE_RELEASE_SECTION__/r prerelease_block.html" -e "/__PRERELEASE_RELEASE_SECTION__/d" website/index.html
+          # Inject the combined blocks into the single placeholder
+          sed -i -e "/__DOWNLOAD_SECTIONS__/r all_blocks.html" -e "/__DOWNLOAD_SECTIONS__/d" website/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
