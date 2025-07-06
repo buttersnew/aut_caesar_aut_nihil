@@ -34,15 +34,15 @@ party_templates = [
 # Party templates before this point are hard-wired into the game and should not be changed.
 ####################################################################################################################
 ("village_defenders","Village Defenders",icon_peasant,0,fac_commoners,merchant_personality,[(trp_peasant_woman,10,20)]),
-("village_defenders_rom", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_vigilia,10,20),(trp_peasant_woman,1,5)] ),
-("village_defenders_east", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_eastern_slinger,10,20),(trp_peasant_woman,1,5)] ),
-("village_defenders_celt", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_celtic_light_clubman,5,10),(trp_celtic_archer,1,4),(trp_celtic_skirmisher,3,6),(trp_peasant_woman,1,5)] ),
-("village_defenders_cal", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_caledonian_light_clubman,5,10),(trp_caledonian_archer,1,4),(trp_caledonian_skirmisher,3,6),(trp_peasant_woman,1,5)] ),
-("village_defenders_germ", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_germanic_slinger,10,20),(trp_germanic_skirmisher,2,6),(trp_peasant_woman,1,5)] ),
-("village_defenders_sarm", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_sarmatian_light_spearman,10,20),(trp_peasant_woman,1,5)] ),
-("village_defenders_dac", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_dacian_skirmishers,10,20),(trp_peasant_woman,1,5)] ),
-("village_defenders_jew", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_judean_archer,5,10),(trp_judean_slinger,5,10),(trp_judean_light_spearman,5,10),(trp_peasant_woman,1,5)] ),
-("village_defenders_bos", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_bosporan_light_spearman,5,10),(trp_peasant_woman,1,5)] ),
+("village_defenders_rom", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_vigilia,10,20)] ),
+("village_defenders_east", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_eastern_slinger,10,20)] ),
+("village_defenders_celt", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_celtic_light_clubman,5,10),(trp_celtic_archer,1,4),(trp_celtic_skirmisher,3,6)] ),
+("village_defenders_cal", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_caledonian_light_clubman,5,10),(trp_caledonian_archer,1,4),(trp_caledonian_skirmisher,3,6)] ),
+("village_defenders_germ", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_germanic_slinger,10,20),(trp_germanic_skirmisher,2,6)] ),
+("village_defenders_sarm", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_sarmatian_light_spearman,10,20)] ),
+("village_defenders_dac", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_dacian_skirmishers,10,20)] ),
+("village_defenders_jew", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_judean_archer,5,10),(trp_judean_slinger,5,10),(trp_judean_light_spearman,5,10)] ),
+("village_defenders_bos", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_bosporan_light_spearman,5,10)] ),
 
 ("cattle_herd","Cattle Herd",icon_cattle|carries_goods(10),0,fac_neutral,merchant_personality,[(trp_cattle,80,120)]),
 
@@ -94,7 +94,7 @@ party_templates = [
 ("village_celtic","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_celtic_peasant,15,25),]),
 ("village_germanic","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_germanic_peasant,15,25),]),
 ("village_dacian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_dacian_peasant,15,25),]),
-("village_armenian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_armenian_peasant,15,25),]),
+("village_armenian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_caucasian_peasant,15,25),]),
 ("village_arabian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_arab_peasant,15,25),]),
 ("village_berber","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_berber_peasant,15,25),]),
 ("village_garmantian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_garamantian_peasant,15,25),]),

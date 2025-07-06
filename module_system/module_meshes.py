@@ -488,6 +488,7 @@ meshes = [
 
   ("ui_quick_battle_a", 0, "ui_quick_battle_a", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("white_bg_plane_a", 0, "white_bg_plane_a", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("cb_ui_icon_empty", 0, "cb_ui_icon_empty", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("cb_ui_icon_infantry", 0, "cb_ui_icon_infantry", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("cb_ui_icon_archer", 0, "cb_ui_icon_archer", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("cb_ui_icon_horseman", 0, "cb_ui_icon_horseman", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -570,6 +571,9 @@ meshes = [
   ("warrider_logo", 0, "warrider_logo", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 
   ("tableau_mesh_roman_spear_banner", 0, "tableau_mesh_roman_spear_banner",  0, 0, 0, 0, 0, 0, 5, 5, 5),
+
+  ("background_scroll", 0, "background_scroll", 0, 0, 0, 0, 0, 0, 0.70, 0.65, 0.6),
+
   # ("main_menu_move_1", 0, "main_menu_move_1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   # ("main_menu_prs", 0, "main_menu_prs", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   # ("main_menu_static", 0, "main_menu_static", 0, 0, 0, 0, 0, 0, 1, 1, 1),

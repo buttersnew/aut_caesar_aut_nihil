@@ -65,6 +65,13 @@ scripts_hardcoded = [
     #for slave treatment
     (assign, "$g_slave_manu", 1),
     (assign, "$g_slave_treatment", 0),
+    
+    #advicors
+    (assign, "$g_player_chamberlain", -1),
+    (assign, "$g_player_constable", -1),
+    (assign, "$g_player_chancellor", -1),
+    (assign, "$g_player_minister", -1),
+
     #formation
     (assign, "$form_ai_autorotate", 1),
 
@@ -1141,44 +1148,6 @@ scripts_hardcoded = [
             (party_set_slot, ":party", slot_center_can_rebell, 0),
         (try_end),
     (try_end),
-    (try_for_range, ":party", villages_begin, villages_end),
-        (call_script, "script_refresh_village_defenders", ":party"),
-        (call_script, "script_refresh_village_defenders", ":party"),
-        (call_script, "script_refresh_village_defenders", ":party"),
-        (call_script, "script_refresh_village_defenders", ":party"),
-        (store_faction_of_party, ":faction2", ":party"),
-        (faction_get_slot, ":faction", ":faction2", slot_faction_culture),
-        (try_begin),
-            (eq, ":faction", "fac_culture_1"),
-            (party_set_icon, ":party", "icon_village_barbarian"),
-        (else_try),
-            (this_or_next|eq, ":faction", "fac_culture_2"),
-            (eq, ":faction", "fac_culture_2_1"),
-            (party_set_icon, ":party", "icon_village_barbarian"),
-        (else_try),
-            (eq, ":faction", "fac_culture_3"),
-            (party_set_icon, ":party", "icon_village_barbarian"),
-        (else_try),
-            (eq, ":faction", "fac_culture_4"),
-            (party_set_icon, ":party", "icon_village_barbarian"),
-        (else_try),
-            (eq, ":faction", "fac_culture_5"),
-            (party_set_icon, ":party", "icon_village_greek"),
-        (else_try),
-            (eq, ":faction", "fac_culture_6"),
-            (party_set_icon, ":party", "icon_village_greek"),
-        (else_try),
-            (eq, ":faction", "fac_culture_7"),
-            (party_set_icon, ":party", "icon_village_roman"),
-        (else_try),
-            (eq, ":faction", "fac_culture_8"),
-            (party_set_icon, ":party", "icon_village_greek"),
-        (else_try),
-            (eq, ":faction", "fac_culture_9"),
-            (party_set_icon, ":party", "icon_village_greek"),
-        (try_end),
-    (try_end),
-
     ## OLD DEBUGGING CODE
     # (try_for_range, ":troop", "trp_player", "trp_troops_end"),
         # (store_attribute_level, reg1,":troop", ca_agility),
@@ -1334,7 +1303,6 @@ scripts_hardcoded = [
         (try_end),
         ##diplomacy end+
     (try_end),
-
     ## correct culture:
     (party_set_slot, "p_town_19", slot_center_culture, "fac_culture_8"),
     (party_set_slot, "p_castle_44", slot_center_culture, "fac_culture_8"),
@@ -1456,14 +1424,6 @@ scripts_hardcoded = [
         # (try_end),
         # (call_script, "script_randomly_start_war_peace_new", 0),
     # (try_end),
-
-    #castle walkers
-    #Initialize walkers
-    (try_for_range, ":center_no", centers_begin, centers_end),
-        (try_for_range, ":walker_no", 0, num_town_walkers),
-            (call_script, "script_center_set_walker_to_type", ":center_no", ":walker_no", walkert_default),
-        (try_end),
-    (try_end),
 
     #This needs to be after market towns
     (call_script, "script_initialize_economic_information"),
@@ -2030,6 +1990,52 @@ scripts_hardcoded = [
 
     ##finally scenes
     (call_script, "script_game_set_scenes_for_towns"),
+
+    #Initialize walkers
+    (try_for_range, ":center_no", centers_begin, centers_end),
+        (try_for_range, ":walker_no", 0, num_town_walkers),
+            (call_script, "script_center_set_walker_to_type", ":center_no", ":walker_no", walkert_default),
+        (try_end),
+    (try_end),
+    # refresh village defenders
+    (try_for_range, ":party", villages_begin, villages_end),
+        (call_script, "script_refresh_village_defenders", ":party"),
+        (call_script, "script_refresh_village_defenders", ":party"),
+        (call_script, "script_refresh_village_defenders", ":party"),
+        (call_script, "script_refresh_village_defenders", ":party"),
+        (store_faction_of_party, ":faction2", ":party"),
+        (faction_get_slot, ":faction", ":faction2", slot_faction_culture),
+        (try_begin),
+            (eq, ":faction", "fac_culture_1"),
+            (party_set_icon, ":party", "icon_village_barbarian"),
+        (else_try),
+            (this_or_next|eq, ":faction", "fac_culture_2"),
+            (eq, ":faction", "fac_culture_2_1"),
+            (party_set_icon, ":party", "icon_village_barbarian"),
+        (else_try),
+            (eq, ":faction", "fac_culture_3"),
+            (party_set_icon, ":party", "icon_village_barbarian"),
+        (else_try),
+            (eq, ":faction", "fac_culture_4"),
+            (party_set_icon, ":party", "icon_village_barbarian"),
+        (else_try),
+            (eq, ":faction", "fac_culture_5"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_6"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_7"),
+            (party_set_icon, ":party", "icon_village_roman"),
+        (else_try),
+            (eq, ":faction", "fac_culture_8"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_9"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (try_end),
+    (try_end),
+
 
     (try_for_range, ":town", walled_centers_begin,walled_centers_end),
         (party_get_slot, ":lord", ":town", slot_town_lord),
@@ -2676,13 +2682,13 @@ scripts_hardcoded = [
     (party_set_slot,"p_town_12", slot_town_prison, "scn_lugdunum_prison"),
     (party_set_slot,"p_town_12", slot_town_store, "scn_lugdunum_store"),
     (party_set_slot,"p_town_12", slot_town_arena, "scn_lugdunum_arena"),
-#carthago: p_town_28,
-# athen p_town_37
-# alexandria p_town_20
-#habours roman: p_town_10, p_town_22, p_town_13, p_town_33, p_town_36, p_town_35 (thessalonika), p_town_4, p_town_32, p_town_34
-#mountain scene: town_8, town_38, town_30
-#new generic scene: town_3, town_21, town_5, town_2
-#castle scenen
+    #carthago: p_town_28,
+    # athen p_town_37
+    # alexandria p_town_20
+    #habours roman: p_town_10, p_town_22, p_town_13, p_town_33, p_town_36, p_town_35 (thessalonika), p_town_4, p_town_32, p_town_34
+    #mountain scene: town_8, town_38, town_30
+    #new generic scene: town_3, town_21, town_5, town_2
+    #castle scenen
     (try_for_range, ":castle_no", castles_begin, castles_end),#ich verwend die selben scenen, sonst werd ich wahnsinnig
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_7"),
         (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_1_exterior"),
@@ -5354,30 +5360,64 @@ scripts_hardcoded = [
 ]),
 
 # script_game_get_prisoner_price
-# This script is called from the game engine for calculating prisoner price
+# This script is called from the game engine for calculating prisoner price (for selling)
 # Input:
 # param1: troop_id,
 # Output: reg0
 ("game_get_prisoner_price",[
     (store_script_param_1, ":troop_id"),
+    
+    (store_character_level, ":troop_level", ":troop_id"),
+    (store_add, ":ransom_amount", ":troop_level", 10),
+    (val_mul, ":ransom_amount", ":ransom_amount"),
 
-    (try_begin), #SB : regular prices for constable selling
-        (this_or_next|eq, "$g_talk_troop", "$g_player_constable"),
-        (is_between, "$g_talk_troop", ransom_brokers_begin, ransom_brokers_end),
-        (store_character_level, ":troop_level", ":troop_id"),
-        (store_add, ":ransom_amount", ":troop_level", 10),##e.g. level is 40 => 50
-        # (val_add, ":ransom_amount", 10),
-        (val_mul, ":ransom_amount", ":ransom_amount"),##e.g. 50^2 = 2500
-        (val_div, ":ransom_amount", 5), ##e.g. 2500/5 = 500
-    (else_try),
-        (eq, "$g_talk_troop", "trp_slave_trader"),
-        (assign, ":ransom_amount", 300),
+    (try_begin),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_bandit"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_hispanic"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_alans"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_illyrian"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_sea_raiders"),
+        (eq, "$g_talk_troop", "trp_slave_trader_black_sea"),
+        (val_div, ":ransom_amount", 2),
+    # (else_try),
+    #     (eq, "$g_talk_troop", "trp_slave_trader"),
     (else_try),
         (this_or_next|eq, "$g_talk_troop", "trp_ramun_the_slave_trader"),
         (eq, "$g_talk_troop", "trp_galeas"),
-        (assign, ":ransom_amount", 301),
+        (val_add, ":ransom_amount", 25),
+    (try_end),
+    (assign, reg0, ":ransom_amount"),
+    (set_trigger_result, reg0),
+]),
+# script_game_get_prisoner_price_buy
+# Input:
+# param1: troop_id,
+# Output: reg0
+("game_get_prisoner_price_buy",[
+    (store_script_param_1, ":troop_id"),
+    
+    (store_character_level, ":troop_level", ":troop_id"),
+    (store_add, ":ransom_amount", ":troop_level", 10),
+    (val_mul, ":ransom_amount", ":ransom_amount"),
+
+    (try_begin),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_bandit"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_hispanic"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_alans"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_illyrian"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_sea_raiders"),
+        (eq, "$g_talk_troop", "trp_slave_trader_black_sea"),
+        (val_mul, ":ransom_amount", 2),
+    # (else_try),
+    #     (eq, "$g_talk_troop", "trp_slave_trader"),
     (else_try),
-        (assign, ":ransom_amount", 150),
+        (this_or_next|eq, "$g_talk_troop", "trp_ramun_the_slave_trader"),
+        (eq, "$g_talk_troop", "trp_galeas"),
+        (val_mul, ":ransom_amount", 5),
+        (val_div, ":ransom_amount", 4),
+    (else_try),
+        (val_mul, ":ransom_amount", 3),
+        (val_div, ":ransom_amount", 2),
     (try_end),
     (assign, reg0, ":ransom_amount"),
     (set_trigger_result, reg0),
@@ -6386,7 +6426,8 @@ scripts_hardcoded = [
             (party_get_slot, ":province", ":center_no", slot_center_province),
             (val_add, ":province", "str_province_begin"),
             (str_store_string, s49, ":province"),
-            (str_store_string, s2, "@{s2}^^Province: {s49}"),
+            (call_script, "script_get_party_full_culture_string", ":center_no"),
+            (str_store_string, s2, "@{s2}^^Province: {s49}^^Culture: {s1}"),
         (try_end),
 
         (str_store_string, s0, "@{s2}", 0),

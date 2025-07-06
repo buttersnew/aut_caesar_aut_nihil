@@ -10954,13 +10954,13 @@ simple_triggers = [
         (try_end),
         (troop_set_slot,"trp_diplomat_africa",slot_troop_days_on_mission,":val"),
     (try_end),
-    (try_begin),
-        (troop_get_slot,":val","trp_slave_trader",slot_troop_days_on_mission),
-        (neq,":val",0),#0 = can ask to sing about player
-        (val_sub,":val",1),
-        (val_max,":val",0),#to clear negative values (errors)
-        (troop_set_slot,"trp_slave_trader",slot_troop_days_on_mission,":val"),
-    (try_end),
+    # (try_begin),
+    #     (troop_get_slot,":val","trp_slave_trader",slot_troop_days_on_mission),
+    #     (neq,":val",0),#0 = can ask to sing about player
+    #     (val_sub,":val",1),
+    #     (val_max,":val",0),#to clear negative values (errors)
+    #     (troop_set_slot,"trp_slave_trader",slot_troop_days_on_mission,":val"),
+    # (try_end),
     (try_begin),
         (ge, "$g_player_chamberlain", 1),
         (troop_get_slot,":val","$g_player_chamberlain",slot_troop_days_on_mission),
@@ -12474,8 +12474,35 @@ simple_triggers = [
     (try_end),
 ]),
 
-(0.05,[
+(24*14,[
     (call_script, "script_execude_debug_message", 196),
+    # check number of household troops player has
+    (assign, ":number_household_slaves", 0),
+    (assign, ":number_household_cooks", 0),
+    (try_for_range, ":household_troop", household_slaves_begin, cook_slaves_end),
+        (troop_get_slot, ":slave_dna", ":household_troop", slot_slave_template_troop),
+        (gt, ":slave_dna", 0),
+        (try_begin),
+            (is_between, ":household_troop", household_slaves_begin, household_slaves_end),
+            (val_add, ":number_household_slaves", 1),
+        (else_try),
+            (val_add, ":number_household_cooks", 1),
+        (try_end),
+        #check if the number exceeds the limit and remove troop if so
+        (try_begin),
+            (call_script, "script_get_slave_limit"),
+            (gt, ":number_household_slaves", reg0),
+            (troop_set_slot, ":household_troop", slot_slave_template_troop, 0),#remove troop
+            (str_store_troop_name, s1, ":household_troop"),
+            (display_message, "@You have too many household slaves. {s1} has been freed.", color_bad_news),
+        (else_try),
+            (call_script, "script_get_cook_limit"),
+            (gt, ":number_household_cooks", reg0),
+            (troop_set_slot, ":household_troop", slot_slave_template_troop, 0),#remove troop
+            (str_store_troop_name, s1, ":household_troop"),
+            (display_message, "@You have too many household cooks. {s1} has been freed.", color_bad_news),
+        (try_end),
+    (try_end),
     # moved back to game_get_party_speed_multiplier
     # (try_for_parties, ":party_no"),
     #     (gt, ":party_no", last_static_party),

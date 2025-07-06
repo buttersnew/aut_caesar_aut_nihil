@@ -7271,6 +7271,9 @@ strings = [
   ("persia", "Persia"),
   ("parthia", "Parthia"),
   ("media", "Media Magna"),
+  ("nubia", "Nubia"),
+  ("garamantia", "Garamantia"),
+  ("chorasmia", "Chorasmia"),
 
   ("simple_names_begin","No region"),
   ("hispania_simple","HS"),
@@ -9048,7 +9051,7 @@ strings = [
 ("mcc_skl_persuasion", "Persuasion"),
 ("mcc_skl_prisonermanagement", "Prisoner Mgmt."),
 ("mcc_skl_leadership", "Leadership"),
-("mcc_skl_trade", "Trade"),
+("mcc_skl_trade", "Trade & Management"),
 ("mcc_skl_oratory", "Oratory"),
 
 ("antonia_speech_1", "Soldiers of Rome!^^Today, you stand on the precipice of destiny, ready to write your names in the annals of history. You march forth not just as men, but as warriors imbued with the spirit of heroes who have come before us. Like the mighty Aeneas, you carry the weight of our empire's future upon your shoulders."),
@@ -9564,6 +9567,98 @@ strings = [
 ),
 ("grain_success_end",  "end"),
 
+# Subculture Strings
+("subculture_hispanic_tarraconensian", "Tarraconensian Iberian"),
+("subculture_hispanic_baetican", "Baetican Iberian"),
+("subculture_hispanic_lusitanian", "Lusitanian Iberian"),
+("subculture_african_mauretanian", "Mauretanian"), # Could also be "Moorish" or "Numidian" depending on nuance
+("subculture_african_proconsular", "African"), # For Africa Proconsularis
+("subculture_african_cyrenaican", "Cyrenaican"),
+("subculture_african_egyptian", "Egyptian"),
+("subculture_asian_arabian_petraea", "Nabataean"), # Arabia Petraea
+("subculture_asian_judean", "Judean"), # Or Syro-Palestinian if broader
+("subculture_asian_syrian", "Syrian"),
+("subculture_asian_cilician", "Cilician"),
+("subculture_asian_cappadocian", "Cappadocian"),
+("subculture_asian_pontic", "Pontic"),
+("subculture_asian_anatolian", "Anatolian"), # For Asia Minor
+("subculture_balkan_thracian", "Thracian"),
+("subculture_balkan_moesian_superior", "Upper Moesian"),
+("subculture_balkan_moesian_inferior", "Lower Moesian"),
+("subculture_balkan_achaean_greek", "Achaean Greek"),
+("subculture_balkan_epirote_greek", "Epirote Greek"),
+("subculture_balkan_macedonian_greek", "Macedonian Greek"),
+("subculture_balkan_dalmatian_illyrian", "Illyrian"),
+("subculture_italian_sicilian", "Sicilian"),
+("subculture_italian_magna_graecian", "Italian"), # Greek in Southern Italy
+("subculture_italian_italic", "Italian"), # Central Italy
+("subculture_italian_cisalpine", "Cisalpinian"), # Northern Italy (often Gallic/Celtic influences)
+("subculture_gaulish_narbonensian", "Narbonensian Gaul"),
+("subculture_gaulish_aquitanian", "Aquitanian Gaul"),
+("subculture_gaulish_lugdunensian", "Lugdunensian Gaul"),
+("subculture_gaulish_belgic", "Belgic Gaul"),
+("subculture_germanic_inferior", "Lower Germanic"), # Along the Rhine
+("subculture_germanic_superior", "Upper Germanic"), # Along the Rhine
+("subculture_germanic_raetian", "Raetian"), # Alpine
+("subculture_germanic_norican", "Norican"), # Alpine Celtic/Illyrian, Romanized
+("subculture_central_pannonian", "Pannonian"), # Illyrian/Celtic
+("subculture_britannic_britannian", "Britannic"), # Southern Britain
+("subculture_britannic_caledonian", "Caledonian"), # Northern Britain/Scotland
+("subculture_magna_germanian", "Germanic"), # General for Germania Libera
+("subculture_hercynian_germanian", "Hercynian"), # Forest Germans
+("subculture_suebian_germanian", "Suebian"),
+("subculture_dacian", "Dacian"),
+("subculture_sarmatian_plains", "Sarmatian"),
+("subculture_bosporan_kingdom", "Bosporan"), # Greek/Scythian mix
+("subculture_scythian_steppe", "Scythian"),
+("subculture_armenian_highlands", "Armenian"),
+("subculture_mesopotamian", "Mesopotamian"),
+("subculture_assyrian", "Assyrian"),
+("subculture_mediterranean_western_isles", "Western Mediterranean"),
+("subculture_mediterranean_eastern_isles", "Eastern Mediterranean"), # e.g., Cretan, Cypriot, Rhodian
+("subculture_caucasian_mountain", "Caucasian"),
+("subculture_persian_plateau", "Persian"),
+("subculture_parthian_iranian", "Partho-Iranian"),
+("subculture_median", "Median"),
+("subculture_nubian", "Nubian"),
+("subculture_garamantian", "Garamantian"),
+("subculture_saka", "Saka"),
+("subculture_unknown", "American Chungus"), # Fallback
+
+("culture_1_rized", "Daco"),
+("culture_2_rized", "Celto"),
+("culture_2_1_rized", "Caledonian"),
+("culture_3_rized", "Sarmato"),
+("culture_4_rized", "Germano"),
+("culture_5_rized", "Caucasian"),
+("culture_6_rized", "Partho"),
+("culture_7_rized", "Romanized"),
+("culture_8_rized", "Judeo"),
+("culture_9_rized", "Bosperan"),
+("culture_10_rized", "Arabo"),
+("culture_11_rized", "Berber"),
+("culture_12_rized", "Garamanto"),
+("culture_13_rized", "Nubian"),
+("culture_14_rized", "Saka"),
+
+("here_is_what_i_have_on_offer", "Here's what I have on offer:"),
+("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),
+("i_will_take_the_reg1_s1_for_reg2_denars", "I'll take the {reg1} {s1} for {reg2} denars."),
+("reg1_s1_have_been_added_to_your_party_as_prisoners", "{reg1} {s1} have been added to your party as prisoners."),
+ 
+("household_mod_latifunida_limit_name", "Latifundia Limit"),
+("household_mod_workshop_limit_name", "Workshop Limit"),
+("household_mod_corruption_name", "Corruption"),
+("household_mod_cook_quality_name", "Cook Quality"),
+("household_mod_admin_eff_name", "Administrative Efficiency"),
+("household_mod_engineering_eff_name", "Engineering Efficiency"),
+
+("household_mod_latifunida_limit_descr", "The maximum number of latifundia you can own. Latifundia are large estates that provide income but require substantial management."),
+("household_mod_workshop_limit_descr", "The maximum number of workshops you can own. Workshops generate income through production, but require management."),
+("household_mod_corruption_descr", "The level of corruption in your administration. High corruption can lead to reduced income."),
+("household_mod_cook_quality_descr", "The quality of food prepared by your household cook. Higher quality food improves feasts and your own health."),
+("household_mod_admin_eff_descr", "The efficiency of your administrative staff. Higher efficiency leads to better management of your estates and resources."),
+("household_mod_engineering_eff_descr", "The efficiency of your engineering staff. Higher efficiency leads to better construction and maintenance of your properties."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

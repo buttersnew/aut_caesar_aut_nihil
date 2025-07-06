@@ -32,20 +32,6 @@ from IDs.ID_scenes import *
 # 13) Face code (int)(2) (only applicable to regular troops, can be omitted for heroes):
 # The game will create random faces between Face code 1 and face code 2 for generated troops
 # 14) Troop image (string): If this variable is set, the troop will use an image rather than its 3D visual during the conversations
-#town_1Sargoth
-#town_2Tihr
-#town_3Veluca
-#town_4Suno
-#town_5Jelkala
-#town_6Praven
-#town_7Uxkhal
-#town_8Reyvadin
-#town_9Khudan
-#town_10Tulga
-#town_11Curaw
-#town_12Wercheg
-#town_13Rivacheg
-#town_14Halmar
 ####################################################################################################################
 
 # Some constant and function declarations to be used below...
@@ -792,58 +778,98 @@ troops = [
 # [itm_knife,itm_pitch_fork,itm_shepherds_crook, itm_sickle,itm_club,itm_club_2,itm_club_3,itm_stones,itm_roman_poor1,itm_roman_poor2,itm_roman_poor3,itm_roman_poor4,itm_roman_poor5,itm_straw_hat,itm_caligea],
 # attrib_level_6, wp(100), knows_level_6, white_face_11, white_face_12 ],
 
-["sarmatian_peasant", "Sarmatian Tribesman", "Sarmatian Tribesmen", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["sarmatian_peasant", "Sarmata Tribulis", "Sarmatae Tribules", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_3,
 [itm_sling,itm_sling_rock1]+nomadic_tunic+nomadic_foot_peasant+nomadic_head_peasant+nomadic_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, scythian_face_11, scythian_face_12 ],
 
-["bosporan_peasant", "Bosporan Peasant", "Bosporan Peasants", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["bosporan_peasant", "Bosporanus Rusticus", "Bosporani Rustici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_9,
 [itm_sling,itm_sling_rock1]+bosporan_tunic+bosporan_foot_peasant+bosporan_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, scythian_face_11, scythian_face_12 ],
 
-["judean_peasant","Eastern Peasant","Eastern Peasants",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_commoners,
+["judean_peasant","Iudaeus Rusticus","Iudaei Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_culture_8,
 [itm_sling,itm_sling_rock1]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6,wp(100),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
 
-["parthian_peasant","Parthian Tribesman","Parthian Tribesmen",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_commoners,
+["parthian_peasant","Parthus Tribulis","Parthi Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_culture_6,
 [itm_sling,itm_sling_rock1]+parthian_tunic+persian_tunic_sheepskin+parthian_foot_peasant+parthian_head_peasant+parthian_weapons_peasant,
 attrib_level_6,wp(100),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
 
-["persian_peasant","Persian Peasant","Persian Peasants",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_commoners,
+["persian_peasant","Persa Rusticus","Persae Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_culture_6,
 [itm_sling,itm_sling_rock1]+persian_tunic+persian_tunic_sheepskin+persian_foot_peasant+persian_head_peasant+parthian_weapons_peasant,
 attrib_level_6,wp(100),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
 
-["roman_peasant", "Roman Peasant", "Roman Peasants", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["roman_peasant", "Romanus Rusticus", "Romani Rustici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_7,
 [itm_sling,itm_sling_rock1]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant,
 attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
 
-["celtic_peasant", "Celtic Tribesman", "Celtic Tribesmen", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["celtic_peasant", "Celticus Tribulis", "Celtici Tribules", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_2,
 [itm_sling,itm_sling_rock1]+celtic_foot_peasant+celtic_tunic+celtic_head_peasant+celtic_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
 
-["germanic_peasant", "Germanic Tribesman", "Germanic Tribesmen", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["germanic_peasant", "Germanus Tribulis", "Germani Tribules", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_4,
 [itm_sling,itm_sling_rock1]+germanic_foot_peasant+germanic_tunic+germanic_head_peasant+germanic_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
 
-["dacian_peasant", "Dacian Peasant", "Dacian Peasant", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["dacian_peasant", "Dacus Rusticus", "Daci Rustici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_1,
 [itm_sling,itm_sling_rock1]+dacian_tunic+dacian_foot_peasant+dacian_head_peasant+dacian_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
 
-["armenian_peasant", "Caucasian Tribesman", "Caucasian Tribesmen", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
-[itm_sling,itm_sling_rock1]+persian_tunic_sheepskin+caucasian_foot_peasant+caucasian_tunic+caucasian_head_peasant+caucasian_weapons_peasant,
-attrib_level_6, wp(100), knows_level_6, armenian_face_young, armenian_face_middle ],
+["thracian_peasant", "Thracicus Rusticus", "Thracici Rustici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_1,
+[itm_sling,itm_sling_rock1]+dacian_tunic+dacian_foot_peasant+dacian_head_peasant+dacian_weapons_peasant,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
 
-["arab_peasant", "Arab Tribesman", "Arab Tribesmen",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["arab_peasant", "Arabs Tribulis", "Arabes Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_10,
 [itm_sling,itm_sling_rock1]+desert_head_peasant+desert_tunic+eastern_foot_peasant+desert_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
 
-["berber_peasant", "Berber Tribesman", "Berber Tribesmen",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["syrian_peasant", "Syrus Tribulis", "Syri Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_10,
+[itm_sling,itm_sling_rock1]+desert_head_peasant+desert_tunic+eastern_foot_peasant+desert_weapons_peasant,
+attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
+
+["eastern_peasant", "Orientalis Tribulis", "Orientales Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_10,
+[itm_sling,itm_sling_rock1]+desert_head_peasant+eastern_roman_tunic+roman_foot_peasant+roman_weapons_peasant+caucasian_head_peasant,
+attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
+
+["berber_peasant", "Maurus Tribulis", "Mauri Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_11,
 [itm_sling,itm_sling_rock1]+berber_foot_peasant+berber_tunic+berber_head_peasant+berber_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
 
-["garamantian_peasant", "Garamantian Tribesman", "Garamantian Tribesmen",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["garamantian_peasant", "Garamans Tribulis", "Garamantes Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_12,
 [itm_sling,itm_sling_rock1]+garamantian_foot_peasant+garamantian_tunic+garamantian_head_peasant+garamantian_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
 
+["caucasian_peasant", "Caucasicus Tribulis", "Caucasici Tribules", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_5,
+[itm_sling,itm_sling_rock1]+caucasian_foot_peasant+caucasian_tunic+caucasian_head_peasant+caucasian_weapons_peasant,
+attrib_level_6, wp(100), knows_level_6, armenian_face_young, armenian_face_middle ],
+
+["greek_peasant", "Graecus Rusticus", "Graeci Rustici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_7,
+[itm_sling,itm_sling_rock1]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant,
+attrib_level_6, wp(60), knows_level_6, mercenary_face_greek_1, mercenary_face_greek_2 ],
+
+["illyrian_peasant", "Illyricus Rusticus", "Illyrici Rustici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_7,
+[itm_sling,itm_sling_rock1]+celtic_foot_peasant+iberian_tunic+celtic_head_peasant+celtic_weapons_peasant,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["hispanic_peasant", "Hispanus Rusticus", "Hispani Rustici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_7,
+[itm_sling,itm_sling_rock1]+celtic_foot_peasant+iberian_tunic+celtic_head_peasant+celtic_weapons_peasant,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["gaulish_peasant", "Gallus Rusticus", "Galli Rustici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_7,
+[itm_sling,itm_sling_rock1]+celtic_foot_peasant+celtic_tunic+celtic_head_peasant+celtic_weapons_peasant,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["nubian_peasant", "Nubianus Tribulis", "Nubiani Tribules", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_13,
+[itm_sling,itm_sling_rock1]+garamantian_foot_peasant+[itm_nubian_kilt_3, itm_nubian_kilt_2, itm_nubian_kilt]+garamantian_head_peasant+garamantian_weapons_peasant,
+attrib_level_6, wp(100), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
+
+["saka_peasant", "Sacae Tribulis", "Sacae Tribules", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_14,
+[itm_sling,itm_sling_rock1]+nomadic_foot_peasant+nomadic_tunic+nomadic_head_peasant+nomadic_weapons_peasant,
+attrib_level_6, wp(100), knows_level_6, saka_face_1, saka_face_2 ],
+
+["egyptian_peasant", "Aegyptius Rusticus", "Aegyptii Rustici", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_7,
+[itm_sling,itm_sling_rock1]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(60), knows_level_6, north_african_man_face_younger_1, north_african_man_face_older_2 ],
+# NEW PEASANT TROOPS END HERE
 
 ["watchman", "Mercenarius Funditor", "Mercenarii Funditores", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
 [itm_sling_rock1,itm_sling,itm_sword_akinakes,itm_roman_poor1,itm_roman_poor2,itm_roman_poor4,itm_roman_poor5,itm_caligea],
@@ -1090,11 +1116,11 @@ itm_saka_cap_1,itm_saka_hat_1,itm_saka_cap_2,itm_saka_hat_2,itm_saka_cap_3,itm_s
 attrib_level_29_warrior, wp(180), knows_archer_elit_eastern, saka_face_female_1, saka_face_female_2 ],
 
 #indian
-["indian_archer", "Dhanurdhara", "Dhanurdhara", tf_guarantee_boots|tf_male_eastern|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_helmet, no_scene, reserved, fac_culture_4,
+["indian_archer", "Dhanurdhara", "Dhanurdhara", tf_guarantee_boots|tf_male_eastern|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_helmet, no_scene, reserved, fac_neutral,
 [itm_long_bow,itm_khergit_arrows,itm_indian_pants_1,itm_indian_pants,itm_caligea,itm_indian_turban_1,itm_indian_turban_2,itm_indian_turban_3,itm_indian_turban_4,itm_indian_turban_5,
 itm_sword_kopis,itm_indian_shield_1,itm_indian_shield_2,itm_indian_shield_3,itm_indian_shield_4,itm_indian_shield_5],
 attrib_level_18_warrior, wpe(135,160,160,160), knows_archer_basic, eastern_man_face_young_1, eastern_man_face_middle_2 ],
-["indian_spearman", "Patti Kauntika", "Patti Kauntika", tf_guarantee_boots|tf_male_eastern|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_culture_4,
+["indian_spearman", "Patti Kauntika", "Patti Kauntika", tf_guarantee_boots|tf_male_eastern|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_neutral,
 [itm_indian_pants_1,itm_indian_pants_2,itm_indian_pants,itm_caligea,itm_indian_turban_1,itm_indian_turban_2,itm_indian_turban_3,itm_indian_turban_4,itm_indian_turban_5,
 itm_greek_spear_1,itm_indian_shield_1,itm_indian_shield_2,itm_indian_shield_3,itm_indian_shield_4,itm_indian_shield_5,itm_throwing_spears,itm_throwing_spears],
 attrib_level_23_warrior, wp(170), knows_level_23_warrior, eastern_man_face_middle_2, eastern_man_face_old_2 ],
@@ -2412,7 +2438,7 @@ attrib_level_29, wp(160), knows_level_29, roman_face1, roman_face2 ],
 [itm_graves_simple,itm_cetratus_aux_3,itm_cetratus_aux_2,itm_cetratus_aux_4,itm_hasta1,itm_roman_spatha,
 itm_auxilia_cavalry_hamata_1,itm_auxilia_cavalry_hamata_2,itm_imp_aux_cav_weiler_brass_a,itm_imp_aux_cav_weiler_brass_b,itm_imp_aux_cav_weiler_brass_c]+items_roman_horses,
 attrib_level_26, wp_melee(130), knows_level_26, mercenary_face_1, mercenary_face_2 ],
-["aux_cav_eastern", "Auxilia Eques Orientalis", "Auxilia Equites Orientalis", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_polearm|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
+["aux_cav_eastern", "Auxilia Eques Orientalis", "Auxilia Equites Orientales", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_polearm|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_roman_spatha_2,itm_graves_simple,itm_cetratus_aux_6,itm_cetratus_aux_7,itm_cetratus_aux_8,itm_hasta1,
 itm_auxilia_cavalry_squamata_1,itm_auxilia_cavalry_squamata_2,itm_imp_aux_cav_weiler_brass_a,itm_imp_aux_cav_weiler_brass_b,itm_imp_aux_cav_weiler_brass_c]+items_roman_horses,
 attrib_level_26, wp_melee(140), knows_level_26, roman_face1, roman_face2 ],
@@ -2843,222 +2869,333 @@ def_attrib|level(2), wp(50), knows_common|knows_riding_2, woman_face_1, woman_fa
 [],
 def_attrib|level(4),wp(60),knows_common,germanic_face_11,germanic_face_12],
 
-["sarmatian_town_walker", "Sarmatian Noble Tribesman", "Sarmatian Noble Tribesmen", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["sarmatian_town_walker", "Sarmaticus Nobilis Tribulis", "Sarmatici Nobiles Tribules", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_3,
 [itm_sarmatian_ringsword_1]+nomadic_cives+nomadic_foot_cives,
 attrib_level_6, wp(60), knows_level_6, scythian_face_11, scythian_face_12 ],
-["sarmatian_town_walker_female", "Sarmatian Noblewoman", "Sarmatian Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["sarmatian_town_walker_female", "Sarmatica Nobilis Mulier", "Sarmaticae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_3,
 [itm_sarmatian_ringsword_1]+nomadic_dress_cives+nomadic_foot_cives,
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
-["bosporan_town_walker", "Bosporan Nobleman", "Bosporan Noblemen", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["bosporan_town_walker", "Bosporanus Nobilis", "Bosporani Nobiles", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_9,
 [itm_sarmatian_ringsword_1]+bosporan_cives+bosporan_foot_cives,
 attrib_level_6, wp(60), knows_level_6, scythian_face_11, scythian_face_12 ],
-["bosporan_town_walker_female", "Bosporan Noblewoman", "Bosporan Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["bosporan_town_walker_female", "Bosporana Nobilis Mulier", "Bosporanae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_9,
 [itm_sarmatian_ringsword_1]+bosporan_dress_cives+bosporan_foot_cives,
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
-["judean_town_walker","Eastern Townsman","Eastern Townsmen",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["judean_town_walker","Iudaeus Urbanus","Iudaei Urbani",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_culture_8,
 [itm_dagger]+eastern_cives+eastern_roman_tunic+eastern_foot_cives,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
-["judean_town_walker_female", "Eastern Townswoman", "Eastern Townswomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["judean_town_walker_female", "Iudaea Urbana Mulier", "Iudaeae Urbanae Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_8,
 [itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+eastern_dress_cives+eastern_foot_cives,
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
-["parthian_town_walker","Parthian Nobleman","Parthian Noblemen",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["syrian_town_walker","Syrus Urbanus","Syri Urbani",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+[itm_dagger]+eastern_cives+eastern_roman_tunic+eastern_foot_cives,
+attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
+["syrian_town_walker_female", "Syra Urbana Mulier", "Syrae Urbanae Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+eastern_dress_cives+eastern_foot_cives,
+attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
+
+["eastern_town_walker","Orientalis Urbanus","Orientales Urbani",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+[itm_dagger]+eastern_cives+eastern_roman_tunic+eastern_foot_cives,
+attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
+["eastern_town_walker_female", "Orientalis Urbana Mulier", "Orientales Urbanae Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+eastern_dress_cives+eastern_foot_cives,
+attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
+
+["parthian_town_walker","Parthicus Nobilis","Parthici Nobiles",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_culture_6,
 [itm_dagger_parthian_1,itm_dagger_parthian_2]+parthian_cives+parthian_foot_cives,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
-["parthian_town_walker_female","Parthian Noblewoman","Parthian Noblewomen",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["parthian_town_walker_female","Parthica Nobilis Mulier","Parthicae Nobiles Mulieres",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_culture_6,
 [itm_dagger_parthian_1,itm_dagger_parthian_2]+parthian_dress_cives+parthian_foot_cives,
 attrib_level_6,wp(40),knows_level_6,woman_face_1,woman_face_2],
 
-["persian_town_walker","Persian Nobleman","Persian Noblemen",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["persian_town_walker","Persicus Nobilis","Persici Nobiles",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 [itm_eastern_spear_149]+persian_cives+persian_foot_cives,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
-["persian_town_walker_female","Persian Noblewoman","Persian Noblewomen",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["persian_town_walker_female","Persica Nobilis Mulier","Persicae Nobiles Mulieres",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 [itm_eastern_spear_149]+persian_dress_cives+persian_foot_cives,
 attrib_level_6,wp(40),knows_level_6,woman_face_1,woman_face_2],
 
-["roman_town_walker", "Civis", "Civis", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["roman_town_walker", "Civis", "Cives", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_7,
 [itm_dagger]+roman_cives+roman_foot_cives,
 attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
-["roman_town_walker_female", "Civis", "Civis", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["roman_town_walker_female", "Civis Femina", "Cives Feminae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_7,
 [itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+roman_dress_cives+roman_foot_peasant,
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
-["celtic_town_walker", "Celtic Nobleman", "Celtic Noblemen", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["gallish_town_walker", "Gallicus Nobilis", "Gallici Nobiles", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger]+roman_cives+roman_foot_cives,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+["gallish_town_walker_female", "Gallica Nobilis Mulier", "Gallicae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+roman_dress_cives+roman_foot_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
+
+["greek_town_walker", "Graecus Nobilis", "Graeci Nobiles", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger]+roman_cives+eastern_roman_tunic+roman_foot_cives,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+["greek_town_walker_female", "Graeca Nobilis Mulier", "Graecae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+roman_dress_cives+roman_foot_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
+
+["hispanic_town_walker", "Hispanus Nobilis", "Hispani Nobiles", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger]+roman_cives+eastern_roman_tunic+roman_foot_cives,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+["hispanic_town_walker_female", "Hispana Nobilis Mulier", "Hispanae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+roman_dress_cives+roman_foot_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
+
+["illyrian_town_walker", "Illyricus Nobilis", "Illyrici Nobiles", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger]+roman_cives+eastern_roman_tunic+roman_foot_cives,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+["illyrian_town_walker_female", "Illyrica Nobilis Mulier", "Illyricae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+roman_dress_cives+roman_foot_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
+
+["celtic_town_walker", "Celticus Nobilis", "Celtici Nobiles", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_2,
 [itm_celtic_axe1]+celtic_foot_cives+celtic_cives,
 attrib_level_6, wp(60), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
-["celtic_town_walker_female", "Celtic Noblewoman", "Celtic Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["celtic_town_walker_female", "Celtica Nobilis Mulier", "Celticae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_2,
 [itm_celtic_axe1]+celtic_foot_cives+celtic_dress_cives,
 attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
 
-["germanic_town_walker", "Germanic Nobleman", "Germanic Noblemen", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["germanic_town_walker", "Germanicus Nobilis", "Germanici Nobiles", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_4,
 [itm_germanic_axe1]+germanic_foot_cives+germanic_cives,
 attrib_level_6, wp(60), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
-["germanic_town_walker_female", "Germanic Noblewoman", "Germanic Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["germanic_town_walker_female", "Germanica Nobilis Mulier", "Germanicae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_4,
 [itm_germanic_axe1]+germanic_foot_cives+germanic_dress_cives,
 attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
 
-["dacian_town_walker", "Dacian Nobleman", "Dacian Noblemen", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["dacian_town_walker", "Dacicus Nobilis", "Dacici Nobiles", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_1,
 [itm_dacian_sword]+dacian_cives+dacian_foot_cives,
 attrib_level_6, wp(60), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
-["dacian_town_walker_female", "Dacian Noblewoman", "Dacian Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["dacian_town_walker_female", "Dacica Nobilis Mulier", "Dacicae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_1,
 [itm_dacian_sword]+dacian_foot_cives+dacian_dress_cives,
 attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
 
-["armenian_town_walker", "Caucasian Nobleman", "Caucasian Noblemen", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["thracian_town_walker", "Thracicus Nobilis", "Thracici Nobiles", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dacian_sword]+dacian_cives+dacian_foot_cives,
+attrib_level_6, wp(60), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+["thracian_town_walker_female", "Thracica Nobilis Mulier", "Thracicae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dacian_sword]+dacian_foot_cives+dacian_dress_cives,
+attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
+
+["armenian_town_walker", "Caucasicus Nobilis", "Caucasici Nobiles", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_5,
 [itm_armenian_sword_1]+caucasian_foot_cives+caucasian_cives,
 attrib_level_6, wp(60), knows_level_6, armenian_face_young, armenian_face_middle ],
-["armenian_town_walker_female", "Caucasian Noblewoman", "Caucasian Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["armenian_town_walker_female", "Caucasica Nobilis Mulier", "Caucasicae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_5,
 [itm_armenian_sword_1]+caucasian_foot_cives+caucasian_dress_cives,
 attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
 
-["arab_town_walker", "Arab Nobleman", "Arab Noblemen",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["arab_town_walker", "Arabicus Nobilis", "Arabici Nobiles",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_10,
 [itm_dagger]+desert_head_peasant+eastern_cives+eastern_foot_cives,
 attrib_level_6, wp(60), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
-["arab_town_walker_female", "Arab Noblewoman", "Arab Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["arab_town_walker_female", "Arabica Nobilis Mulier", "Arabicae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_10,
 [itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+eastern_dress_cives+eastern_foot_cives,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
-["berber_town_walker", "Berber Nobleman", "Berber Noblemen",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["egyptian_town_walker", "Aegyptius Nobilis", "Aegyptii Nobiles",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger,itm_numidian_wig, itm_judean_tunic_5,itm_judean_tunic_4,itm_judean_tunic_3,itm_judean_tunic_2,itm_judean_tunic_1]+roman_foot_cives,
+attrib_level_6, wp(60), knows_level_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+["egyptian_town_walker_female", "Aegyptia Nobilis Mulier", "Aegyptiae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger]+eastern_dress_cives+eastern_foot_cives,
+attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
+
+["berber_town_walker", "Berberus Nobilis", "Berberi Nobiles",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_11,
 [itm_dagger,itm_numidian_spear_1]+berber_foot_cives+berber_cives+berber_head_peasant,
 attrib_level_6, wp(60), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
-["berber_town_walker_female", "Berber Noblewoman", "Berber Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["berber_town_walker_female", "Berbera Nobilis Mulier", "Berberae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_11,
 [itm_dagger,itm_numidian_spear_1,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+berber_foot_cives+berber_dress_cives,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
-["garamantian_town_walker", "Garamantian Nobleman", "Garamantian Noblemen",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["garamantian_town_walker", "Garamanticus Nobilis", "Garamantici Nobiles",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_12,
 [itm_dagger,itm_numidian_spear_1]+garamantian_foot_cives+garamantian_cives+garamantian_head_peasant,
 attrib_level_6, wp(60), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
-["garamantian_town_walker_female", "Garamantian Noblewoman", "Garamantian Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["garamantian_town_walker_female", "Garamantica Nobilis Mulier", "Garamanticae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_12,
 [itm_dagger,itm_numidian_spear_1,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+garamantian_foot_cives+garamantian_dress_cives,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
-["boy", "Boy", "Boys", tf_boy|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_commoners,
+["boy", "Puer", "Pueri", tf_boy|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea],
 def_attrib|level(1)|agi_22, wp(10), knows_common|knows_athletics_8, 0x000000000400300436db6db6db6db6db00000000001db6db0000000000000000, 0x000000001000100536db6db6db6c049100000000001db6db0000000000000000 ],
-["girl", "Girl", "Girls", tf_girl|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_commoners,
+["girl", "Puella", "Puellae", tf_girl|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_commoners,
 [itm_female_3,itm_female_1,itm_female_2,itm_caligea],
 def_attrib|level(1)|agi_18, wp(10), knows_common|knows_athletics_5, 0x000000000000300136db4db6071fffff00000000001db6c00000000000000000, 0x000000000000500236db6db6db7c000000000000001dbadb0000000000000000 ],
 
-["african_man","Nubian Tribesman", "Nubian Tribesmen", tf_male_black|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_garamantes,
+["african_man","Nubianus Tribulis", "Nubiani Tribules", tf_male_black|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_13,
 [itm_knife,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_headcloth,itm_turban,itm_caligea,itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_numidian_armor_5],
 attrib_level_6, wp(60), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
-["african_woman","Nubian Tribeswoman", "Nubian Tribeswomen", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_garamantes,
+["african_woman","Nubiana Tribulis Mulier", "Nubianae Tribules Mulieres", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_13,
 [itm_knife,itm_sarranid_common_dress,itm_head_wrappings,itm_caligea],
 attrib_level_6, wp(40), knows_riding_2, african_face_female, african_face_female2 ],
 
-["saka_man","Saka Tribesman", "Saka Tribesmen", tf_male|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_dahae,
+["saka_man","Sacicus Tribulis", "Sacici Tribules", tf_male|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_dahae,
 [itm_knife,itm_sarmatian_shoes, itm_kaftan_1, itm_kaftan_2,itm_kaftan_3,itm_saka_cap_1,itm_saka_hat_1,itm_saka_cap_2,itm_saka_hat_2,itm_saka_cap_3,itm_saka_hat_3],
 attrib_level_6, wp(60), knows_level_6, saka_face_1, saka_face_2 ],
-["saka_woman","Saka Tribeswoman", "Saka Tribeswomen", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_dahae,
+["saka_woman","Sacica Tribulis Mulier", "Sacicae Tribules Mulieres", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_dahae,
 [itm_saka_hat_2,itm_saka_hat_3,itm_saka_hat_1]+nomadic_dress_peasant+nomadic_foot_peasant+nomadic_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, saka_face_female_1, saka_face_female_2 ],
 
-["sarmatian_village_walker", "Sarmatian Tribesman", "Sarmatian Tribesmen", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["sarmatian_village_walker", "Sarmaticus Tribulis", "Sarmatici Tribules", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_3,
 []+nomadic_tunic+nomadic_foot_peasant+nomadic_head_peasant+nomadic_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, scythian_face_11, scythian_face_12 ],
-["sarmatian_village_walker_female", "Sarmatian Tribeswoman", "Sarmatian Tribeswomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["sarmatian_village_walker_female", "Sarmatica Tribulis Mulier", "Sarmaticae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_3,
 []+nomadic_dress_peasant+nomadic_foot_peasant+nomadic_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
-["bosporan_village_walker", "Bosporan Peasant", "Bosporan Peasants", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["bosporan_village_walker", "Bosporanus Rusticus", "Bosporani Rustici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_9,
 []+bosporan_tunic+bosporan_foot_peasant+bosporan_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, scythian_face_11, scythian_face_12 ],
-["bosporan_village_walker_female", "Bosporan Peasant", "Bosporan Peasants", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["bosporan_village_walker_female", "Bosporana Rustica", "Bosporanae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_9,
 []+bosporan_dress_peasant+bosporan_foot_peasant+bosporan_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
-["judean_village_walker","Eastern Peasant","Eastern Peasants",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["judean_village_walker","Iudaeus Rusticus","Iudaei Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_culture_8,
 [itm_dagger]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
-["judean_village_walker_female", "Eastern Peasant", "Eastern Peasants", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["judean_village_walker_female", "Iudaea Rustica", "Iudaeae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_8,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
-["parthian_village_walker","Parthian Tribesman","Parthian Tribesmen",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["eastern_village_walker","Orientalis Rusticus","Orientales Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+[itm_dagger]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
+["eastern_village_walker_female", "Orientalis Rustica", "Orientales Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
+
+["syrian_village_walker","Syrus Rusticus","Syri Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+[itm_dagger]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
+["syrian_village_walker_female", "Syra Rustica", "Syrae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
+
+["greek_village_walker","Graecus Rusticus","Graeci Rustici",tf_male|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+[itm_dagger]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6,wp(60),knows_level_6,white_face_21,white_face_22],
+["greek_village_walker_female", "Graeca Rustica", "Graecae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2],
+
+["illyrian_village_walker","Illyricus Rusticus","Illyrici Rustici",tf_male|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+[itm_dagger]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6,wp(60),knows_level_6,white_face_21,white_face_22],
+["illyrian_village_walker_female", "Illyrica Rustica", "Illyricae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2],
+
+["parthian_village_walker","Parthicus Tribulis","Parthici Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_culture_6,
 []+parthian_tunic+persian_tunic_sheepskin+parthian_foot_peasant+parthian_head_peasant+parthian_weapons_peasant,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
-["parthian_village_walker_female","Parthian Tribeswoman","Parthian Tribeswomen",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["parthian_village_walker_female","Parthica Tribulis Mulier","Parthicae Tribules Mulieres",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_culture_6,
 []+parthian_dress_peasant+parthian_foot_peasant+parthian_weapons_peasant,
 attrib_level_6,wp(40),knows_level_6,woman_face_1,woman_face_2],
 
-["persian_village_walker","Persian Peasant","Persian Peasants",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["persian_village_walker","Persicus Rusticus","Persici Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 []+persian_tunic+persian_tunic_sheepskin+persian_foot_peasant+persian_head_peasant+parthian_weapons_peasant,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
-["persian_village_walker_female","Persian Peasant","Persian Peasants",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+["persian_village_walker_female","Persica Rustica","Persicae Rusticae",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 []+persian_dress_peasant+persian_foot_peasant+parthian_weapons_peasant,
 attrib_level_6,wp(40),knows_level_6,woman_face_1,woman_face_2],
 
-["roman_village_walker", "Roman Peasant", "Roman Peasants", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["gaul_village_walker", "Gallicus Rusticus", "Gallici Rustici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 []+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant,
 attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
-["roman_village_walker_female", "Roman Peasant", "Roman Peasants", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["gaul_village_walker_female", "Gallica Rustica", "Gallicae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 []+roman_dress_peasant+roman_foot_peasant+roman_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
-["celtic_village_walker", "Celtic Tribesman", "Celtic Tribesmen", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["roman_village_walker", "Romanus Rusticus", "Romani Rustici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_7,
+[]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+["roman_village_walker_female", "Romana Rustica", "Romanae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_7,
+[]+roman_dress_peasant+roman_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
+
+["hispanic_village_walker", "Hispanus Rusticus", "Hispani Rustici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+["hispanic_village_walker_female", "Hispana Rustica", "Hispanae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[]+roman_dress_peasant+roman_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
+
+["celtic_village_walker", "Celticus Tribulis", "Celtici Tribules", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_2,
 [itm_celtic_axe1]+celtic_foot_peasant+celtic_tunic+celtic_head_peasant+celtic_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
-["celtic_village_walker_female", "Celtic Tribeswoman", "Celtic Tribeswomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["celtic_village_walker_female", "Celtica Tribulis Mulier", "Celticae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_2,
 [itm_celtic_axe1]+celtic_foot_peasant+celtic_dress_peasant+celtic_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
 
-["germanic_village_walker", "Germanic Tribesman", "Germanic Tribesmen", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["germanic_village_walker", "Germanicus Tribulis", "Germanici Tribules", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_4,
 []+germanic_foot_peasant+germanic_tunic+germanic_head_peasant+germanic_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
-["germanic_village_walker_female", "Germanic Tribeswoman", "Germanic Tribeswomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["germanic_village_walker_female", "Germanica Tribulis Mulier", "Germanicae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_4,
 []+germanic_foot_peasant+germanic_dress_peasant+germanic_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
 
-["dacian_village_walker", "Dacian Peasant", "Dacian Peasant", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["dacian_village_walker", "Dacicus Rusticus", "Dacicus Rusticus", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_2,
 []+dacian_tunic+dacian_foot_peasant+dacian_head_peasant+dacian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
-["dacian_village_walker_female", "Dacian Peasant", "Dacian Peasants", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["dacian_village_walker_female", "Dacica Rustica", "Dacicae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_2,
 []+dacian_foot_peasant+dacian_dress_peasant+dacian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
 
-["armenian_village_walker", "Caucasian Tribesman", "Caucasian Tribesmen", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["thracian_village_walker", "Thracicus Rusticus", "Thracicus Rusticus", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[]+dacian_tunic+dacian_foot_peasant+dacian_head_peasant+dacian_weapons_peasant,
+attrib_level_6, wp(60), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+["thracian_village_walker_female", "Thracica Rustica", "Thracicae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[]+dacian_foot_peasant+dacian_dress_peasant+dacian_weapons_peasant,
+attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
+
+["armenian_village_walker", "Caucasicus Tribulis", "Caucasici Tribules", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_5,
 []+persian_tunic_sheepskin+caucasian_foot_peasant+caucasian_tunic+caucasian_head_peasant+caucasian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, armenian_face_young, armenian_face_middle ],
-["armenian_village_walker_female", "Caucasian Tribeswoman", "Caucasian Tribeswomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["armenian_village_walker_female", "Caucasica Tribulis Mulier", "Caucasicae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_5,
 []+caucasian_foot_peasant+caucasian_dress_peasant+caucasian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, woman_face_1, woman_face_2 ],
 
-["arab_village_walker", "Arab Tribesman", "Arab Tribesmen",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["arab_village_walker", "Arabicus Tribulis", "Arabici Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_10,
 []+desert_head_peasant+desert_tunic+eastern_foot_peasant+desert_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
-["arab_village_walker_female", "Arab Tribeswoman", "Arab Tribeswomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["arab_village_walker_female", "Arabica Tribulis Mulier", "Arabicae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_10,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+desert_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
-["berber_village_walker", "Berber Tribesman", "Berber Tribesmen",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["egyptian_village_walker", "Aegyptius Rusticus", "Aegyptii Rustici",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_judean_tunic_5,itm_judean_tunic_4,itm_judean_tunic_2,itm_roman_poor1,itm_roman_poor2]+desert_tunic+roman_foot_peasant+desert_weapons_peasant,
+attrib_level_6, wp(60), knows_level_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+["egyptian_village_walker_female", "Aegyptia Rustica Mulier", "Aegyptiae Rusticae Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[]+eastern_dress_peasant+eastern_foot_peasant+desert_weapons_peasant,
+attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
+
+["berber_village_walker", "Berberus Tribulis", "Berberi Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_11,
 []+berber_foot_peasant+berber_tunic+berber_head_peasant+berber_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
-["berber_village_walker_female", "Berber Tribeswoman", "Berber Tribeswomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["berber_village_walker_female", "Berbera Tribulis Mulier", "Berberae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_11,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+berber_foot_peasant+berber_dress_peasant+berber_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
-["garamantian_village_walker", "Garamantian Tribesman", "Garamantian Tribesmen",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["garamantian_village_walker", "Garamanticus Tribulis", "Garamantici Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_12,
 []+garamantian_foot_peasant+garamantian_tunic+garamantian_head_peasant+garamantian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
-["garamantian_village_walker_female", "Garamantian Tribeswoman", "Garamantian Tribeswomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["garamantian_village_walker_female", "Garamantica Tribulis Mulier", "Garamanticae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_12,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+garamantian_foot_peasant+garamantian_dress_peasant+garamantian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
 #This troop is the troop marked as village_walkers_end and spy_walkers_begin
-["spy_walker_1", "Nobleman", "Noblemen", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["spy_walker_1", "Nobilis", "Nobiles", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_dacian_noble4,itm_dacian_noble5,itm_dacian_noble6,itm_celtic_boots],
 def_attrib|level(4), wp(60), knows_common, white_face_11, white_face_12 ],
-["spy_walker_2", "Noblewoman", "Noblewomen", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["spy_walker_2", "Nobilis Mulier", "Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_leather_boots,itm_barb_femal_rich1,itm_barb_femal_rich1,itm_barb_femal_rich1,itm_barb_femal_rich1],
-def_attrib|level(2), wp(40), knows_common, woman_face_1, woman_face_2 ],
-# Ryan END
+def_attrib|level(2), wp(40), knows_common, woman_face_1, woman_face_2 ],# Ryan END
 #This troop is the troop marked as spy_walkers_end
 ["tournament_master","Spywalkers END","Spywalkers END",tf_hero, no_scene,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000000008414401e28f534c8a2d09],
 
 #special slave trader
-["ramun_the_slave_trader","Ramun","Ramun",tf_hero, no_scene,reserved, fac_commoners,[itm_roman_rich3, itm_caligea],def_attrib|level(5),wp(20),knows_common,0x0000000fd5105592385281c55b8e44eb00000000001d9b220000000000000000],
+["ramun_the_slave_trader","Aulus Kapreilius Timotheus","Aulus Kapreilius Timotheus",tf_hero, no_scene,reserved, fac_commoners,[itm_roman_rich3, itm_caligea],def_attrib|level(5),wp(20),knows_common,0x0000000fd5105592385281c55b8e44eb00000000001d9b220000000000000000],
 
 #special gladiators for Roman tournaments
 ["xerina","Tetraites ","Tetraites ",tf_hero, no_scene,reserved,fac_commoners,
@@ -3100,7 +3237,7 @@ str_21|agi_21|int_6|cha_6|level(25),wp(240),knows_power_strike_10|knows_ironfles
 
 
 #special slave trader
-["galeas","Galeas","Galeas",tf_hero, 0, reserved, fac_commoners,[itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x00000004718201c073191a9bb10c44eb00000000001d9b220000000000000000],
+["galeas","Undarum Dominus","Undarum Dominus",tf_hero, 0, reserved, fac_commoners,[itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x00000004718201c073191a9bb10c44eb00000000001d9b220000000000000000],
 
 #SB : semi-random arena training rewards
 ["trainer_1","Trainer","Trainer",tf_hero, scn_training_ground_ranged_melee_1|entry(6),reserved,fac_commoners,
@@ -5169,21 +5306,261 @@ attrib_level_23,wp(20),knows_inventory_management_10,roman_face1, roman_face2],
 ["dplmc_scout", "Scout", "Scouts", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_neutral,
 [itm_graves_simple,itm_legion_hamata_7,itm_roman_townguard_helm,itm_roman_spatha,itm_horse_2], def_attrib|agi_21|int_30|cha_21|level(25), wp(130), knows_common|knows_riding_7|knows_horse_archery_5|knows_leadership_7, germanic_face_11, germanic_face_12 ],
 
+# slave skills: 
+# # - looting => corruption (Stealth/Thievery)
+# # - trade   => management (Commerce/Stewardship)
+# # - engineering => building (Construction/Siegecraft), management
+# # - power strike => mining (Labor/Strength), building
+# # - athletics => farming (Endurance/Agility), general labor
+["slave", "Servus", "Servi", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
+knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2, 
+roman_face1, roman_face2 ],
 
-# # recruiter kit begin
-# ["dplmc_recruiter", "Recruiter", "Recruiter", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_neutral,
-# [itm_roman_townguard_helm,itm_graves_simple_2,itm_legion_hamata_cape_4,itm_roman_spatha,itm_horse_2], def_attrib|agi_21|int_30|cha_21|level(25), wp(130), knows_common|knows_riding_7|knows_horse_archery_5|knows_leadership_7, white_face_11, white_face_12 ],
-# # recruiter kit end
-##diplomacy end
+["slave_roman", "Servus Romanus", "Servi Romani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
+knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2, 
+roman_face1, roman_face2 ],
 
+["slave_dacian", "Servus Dacicus", "Servi Dacici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+8+8 = 18
+knows_looting_2|knows_power_strike_8|knows_athletics_8, 
+barbarian_man_face_younger_1, barbarian_man_face_young_1 ],
 
-["slave", "Male Slave", "Male Slaves", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(25), wp(30), knows_common|knows_riding_2, all_face_1, all_face_2 ],
-["slave_mine", "Male Slave", "Male Slaves", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves, no_scene, reserved, fac_commoners, [itm_roman_poor1,itm_roman_poor2,itm_caligea,itm_pickaxe_work], def_attrib|level(25), wp(30), knows_common|knows_riding_2, all_face_1, all_face_2 ],
-["slave_female", "Female Slave", "Female Slaves", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), knows_common|knows_riding_2, all_face_woman_1, all_face_woman_2 ],
+["slave_thracian", "Servus Thracicus", "Servi Thracici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+8+8 = 18
+knows_looting_2|knows_power_strike_8|knows_athletics_8, 
+barbarian_man_face_younger_1, barbarian_man_face_young_1 ],
+
+["slave_celt", "Servus Celticus", "Servi Celtici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 6+9 = 15
+knows_power_strike_6|knows_athletics_9, 
+celtic_face_11, celtic_face_12 ],
+
+["slave_sarmatian", "Servus Sarmaticus", "Servi Sarmatici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(13), wp(30), # 1+6+6 = 13
+knows_looting_1|knows_power_strike_6|knows_athletics_6, 
+scythian_face_21, scythian_face_22 ],
+
+["slave_germanic", "Servus Germanicus", "Servi Germanici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 10+8 = 18
+knows_power_strike_10|knows_athletics_8, 
+germanic_face_21, germanic_face_22 ],
+
+["slave_caucasian", "Servus Caucasicus", "Servi Caucasici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 4+3+2+4+4 = 17
+knows_looting_4|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4, 
+armenian_face_young, armenian_face_middle ],
+
+["slave_parthian", "Servus Parthicus", "Servi Parthici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 4+8+2+2+2 = 18
+knows_looting_4|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2, 
+parthian_face_young, parthian_face_middle ],
+
+["slave_persian", "Servus Persicus", "Servi Persici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 5+7+2+2+2 = 18
+knows_looting_5|knows_trade_7|knows_engineer_2|knows_power_strike_2|knows_athletics_2, 
+persian_face_young, persian_face_middle ],
+
+["slave_judean", "Servus Iudaeus", "Servi Iudaei", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 1+8+2+2+2 = 15
+knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2, 
+eastern_man_face_younger_2, eastern_man_face_young_2 ], # Note: "Iudaeus" might be sensitive; consider "Syro-Palaestinus" if aiming for broader regional.
+
+["slave_bosporan", "Servus Bosporanus", "Servi Bosporani", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(14), wp(30), # 2+3+1+3+5 = 14
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_3|knows_athletics_5, 
+white_face_11, white_face_12 ], # Often Hellenized Scythians/Sarmatians
+
+["slave_arabian", "Servus Arabicus", "Servi Arabici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 1+8+2+2+2 = 15
+knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2, 
+arab_face_young, arab_face_old ],
+
+["slave_berber", "Servus Maurus", "Servi Mauri", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # "Maurus" is a common term for Berbers/North Africans
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+4+1+4+7 = 18
+knows_looting_2|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_7, 
+african_face_younger, african_face_older ],
+
+["slave_garmantian", "Servus Garamanticus", "Servi Garamantici", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 2+3+1+2+8 = 16
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_2|knows_athletics_8, 
+african_face_younger, african_face_older ],
+
+["slave_nubian", "Servus Nubianus", "Servi Nubiani", tf_male_black|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Could also use "Aethiops" but Nubianus is more specific
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(21), wp(30), # 2+3+1+5+10 = 21
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_5|knows_athletics_10, 
+nubian_face1, nubian_face2 ],
+
+["slave_saka", "Servus Sacae", "Servi Sacae", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Sacae is plural, Saca singular. "Servus Sacarum" for plural.
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 3+4+1+4+6 = 18
+knows_looting_3|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_6, 
+saka_face_1, saka_face_2 ],
+
+["slave_greek", "Servus Graecus", "Servi Graeci", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(30), wp(30), # 10+10+8+2+2 = 30
+knows_looting_10|knows_trade_10|knows_engineer_8|knows_power_strike_2|knows_athletics_2, 
+white_face_21, white_face_22 ],
+
+["slave_illyrian", "Servus Illyricus", "Servi Illyrici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 5+2+2+5+4 = 18
+knows_looting_5|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4, 
+mercenary_face_greek_1, mercenary_face_greek_2 ],
+
+["slave_hispanic", "Servus Hispanicus", "Servi Hispanici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 4+2+2+5+4 = 17
+knows_looting_4|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4, 
+barbarian_man_face_younger_2, barbarian_man_face_young_2 ],
+
+["slave_gaul", "Servus Gallicus", "Servi Gallici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 3+3+3+4+4 = 17
+knows_looting_3|knows_trade_3|knows_engineer_3|knows_power_strike_4|knows_athletics_4, 
+barbarian_man_face_younger_1, barbarian_man_face_young_1 ],
+
+["slave_egyptian", "Servus Aegyptius", "Servi Aegyptii", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 7+8+6+3+7 = 31
+knows_looting_6|knows_trade_7|knows_engineer_5|knows_power_strike_3|knows_athletics_5, 
+eastern_man_face_younger_2, eastern_man_face_young_2 ],
+
+["slave_syrian", "Servus Syrus", "Servi Syri", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(22), wp(30), # 5+6+4+3+4 = 22
+knows_looting_5|knows_trade_6|knows_engineer_4|knows_power_strike_3|knows_athletics_4, 
+eastern_man_face_younger_1, eastern_man_face_young_1 ],
+
+["slave_eastern", "Servus Orientalis", "Servi Orientales", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 3+3+2+4+4 = 16
+knows_looting_3|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4, 
+persian_face_young_2, persian_face_middle_2 ],
+
+["slave_mine", "Servus", "Servi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves, no_scene, reserved, fac_commoners, 
+[itm_roman_poor1,itm_roman_poor2,itm_caligea,itm_pickaxe_work], def_attrib|level(25), wp(30), 
+knows_common|knows_riding_2, 
+all_face_1, all_face_2 ],
+
+["slave_female", "Serva", "Servae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
+knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_4, 
+all_face_woman_1, all_face_woman_2 ],
+
+["slave_female_roman", "Serva Romana", "Servae Romanae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
+knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_6, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_dacian", "Serva Dacica", "Servae Dacicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+8+8 = 18
+knows_looting_2|knows_power_strike_8|knows_athletics_8|knows_inventory_management_1, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_thracian", "Serva Thracica", "Servae Thracicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+8+8 = 18
+knows_looting_2|knows_power_strike_8|knows_athletics_8|knows_inventory_management_1, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_celt", "Serva Celtica", "Servae Celticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 6+9 = 15
+knows_power_strike_6|knows_athletics_9, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_sarmatian", "Serva Sarmatica", "Servae Sarmaticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(13), wp(30), # 1+6+6 = 13
+knows_looting_1|knows_power_strike_6|knows_athletics_6|knows_inventory_management_1, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_germanic", "Serva Germanica", "Servae Germanicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 10+8 = 18
+knows_power_strike_10|knows_athletics_8, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_caucasian", "Serva Caucasica", "Servae Caucasicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 4+3+2+4+4 = 17
+knows_looting_4|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4|knows_inventory_management_5, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_parthian", "Serva Parthica", "Servae Parthicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 4+8+2+2+2 = 18
+knows_looting_4|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_7, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_persian", "Serva Persica", "Servae Persicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 5+7+2+2+2 = 18
+knows_looting_5|knows_trade_7|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_9, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_judean", "Serva Iudaea", "Servae Iudaeae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 1+8+2+2+2 = 15
+knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_3, 
+woman_face_1, woman_face_2 ], # Note: "Iudaeus" might be sensitive; consider "Syro-Palaestinus" if aiming for broader regional.
+
+["slave_female_bosporan", "Serva Bosporana", "Servae Bosporanae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(14), wp(30), # 2+3+1+3+5 = 14
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_3|knows_athletics_5|knows_inventory_management_4, 
+woman_face_1, woman_face_2 ], # Often Hellenized Scythians/Sarmatians
+
+["slave_female_arabian", "Serva Arabica", "Servae Arabicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 1+8+2+2+2 = 15
+knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_4, 
+arab_face_female, arab_face_female2 ],
+
+["slave_female_berber", "Serva Maura", "Servae Maurae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # "Maurus" is a common term for Berbers/North Africans
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+4+1+4+7 = 18
+knows_looting_2|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_7|knows_inventory_management_3, 
+arab_face_female, arab_face_female2 ],
+
+["slave_female_garmantian", "Serva Garamantica", "Servae Garamanticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 2+3+1+2+8 = 16
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_2|knows_athletics_8|knows_inventory_management_3, 
+arab_face_female, arab_face_female2 ],
+
+["slave_female_nubian", "Serva Nubiana", "Servae Nubianae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Could also use "Aethiops" but Nubianus is more specific
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(21), wp(30), # 2+3+1+5+10 = 21
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_5|knows_athletics_10|knows_inventory_management_8, 
+african_face_female, african_face_female2 ],
+
+["slave_female_saka", "Serva Saca", "Servae Sacae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Sacae is plural, Saca singular. "Servus Sacarum" for plural.
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 3+4+1+4+6 = 18
+knows_looting_3|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_6|knows_inventory_management_8, 
+saka_face_female_1, saka_face_female_2 ],
+
+["slave_female_greek", "Serva Graeca", "Servae Graecae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(30), wp(30), # 10+10+8+2+2 = 30
+knows_looting_10|knows_trade_10|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_8, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_illyrian", "Serva Illyrica", "Servae Illyricae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 5+2+2+5+4 = 18
+knows_looting_5|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4|knows_inventory_management_2, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_hispanic", "Serva Hispanica", "Servae Hispanicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 4+2+2+5+4 = 17
+knows_looting_4|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4|knows_inventory_management_6, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_gaul", "Serva Gallica", "Servae Gallicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 3+3+3+4+4 = 17
+knows_looting_3|knows_trade_3|knows_engineer_3|knows_power_strike_4|knows_athletics_4|knows_inventory_management_4, 
+woman_face_1, woman_face_2 ],
+
+["slave_female_egyptian", "Serva Aegyptia", "Servae Aegyptiae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 7+8+6+3+7 = 31 (Note: original comment sum is 31, actual skill sum 6+7+5+3+5=26 matching level)
+knows_looting_6|knows_trade_7|knows_engineer_5|knows_power_strike_3|knows_athletics_5|knows_inventory_management_8, 
+arab_face_female, arab_face_female2 ],
+
+["slave_female_syrian", "Serva Syra", "Servae Syrae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(22), wp(30), # 5+6+4+3+4 = 22
+knows_looting_5|knows_trade_6|knows_engineer_4|knows_power_strike_3|knows_athletics_4|knows_inventory_management_10, 
+arab_face_female, arab_face_female2 ],
+
+["slave_female_eastern", "Serva Orientalis", "Servae Orientales", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 3+3+2+4+4 = 16
+knows_looting_3|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4|knows_inventory_management_8, 
+arab_face_female, arab_face_female2 ],
 
 ###orgie, for pleasure and bacchus
 ["orgie_fem1","Salvation","Salvation",tf_female|tf_hero,0,0,fac_commoners,
-[itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,dancer_face1,dancer_face2],
+[itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,
+dancer_face1,dancer_face2],
 
 ["orgie_fem2","Participant in an orgy","Participants in an orgy",tf_female|tf_guarantee_armor|tf_guarantee_boots,0,0,fac_commoners,
 [itm_female_slave3,itm_female_slave4,itm_female_slave2,itm_nothing_legs],def_attrib|level(5),wp(30),knows_common|knows_riding_2,dancer_face_african1,dancer_face_african2],
@@ -5280,22 +5657,27 @@ attrib_level_12,wp(100),knows_level_12,nubian_man_face_old_1, nubian_man_face_ol
 [itm_caligea,itm_roman_poor1,itm_roman_poor2,itm_roman_poor3,itm_roman_poor4,itm_roman_poor5,itm_roman_toga],
 def_attrib|level(4), wp(60), knows_common, white_face_11, white_face_12 ],
 
-["dacian_deserter", "Desertor Dacus", "Desertores Daci", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_deserters,
+["dacian_deserter", "Desertor Dacus", "Desertores Daci", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_1,
 [itm_dacian_naked5,itm_dacian_naked6,itm_dacian_naked7,itm_dacian_naked8,itm_dacian_naked3,itm_dacian_pileus_a_1,itm_dacian_pileus_a_2,itm_dacian_pileus_b_1,itm_dacian_pileus_b_2,itm_dacian_shield_small5,itm_dacian_shield_small6,itm_dacian_shield_small4,itm_dacian_sword,itm_flax_onehanded1,itm_flax_onehanded2,itm_leather_boots],
 attrib_level_26, wp(160), knows_level_26, mercenary_face_greek_1, mercenary_face_greek_2 ],
-["briton_deserter", "Desertor Celticus", "Desertores Celtici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_deserters,
+["briton_deserter", "Desertor Celticus", "Desertores Celtici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_culture_2,
 [itm_leather_boots,itm_celtic_light6,itm_celtic_light7,itm_celtic_light8,itm_celtic_light2,itm_celtic_light1,itm_celtic_axe4,itm_celtic_long_shild1,itm_celtic_long_shild3,itm_celtic_long_shild2,itm_celtic_round_shild2],
 attrib_level_26, wp(160), knows_level_26, celtic_face_11, celtic_face_12 ],
-["sarmatian_deserter", "Desertor Sarmata", "Desertores Sarmatae", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_deserters,
+["sarmatian_deserter", "Desertor Sarmata", "Desertores Sarmatae", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_culture_3,
 [itm_steppe_horse_1,itm_sarmatian_light3,itm_sarmatian_light4,itm_sarmatian_light2,itm_sarmatian_light1,itm_kopfband,itm_scythian_shield_cav2,itm_scythian_shield_cav3,itm_sarmatian_ringsword_1,itm_bodkin_arrows,itm_persian_bow,itm_eastern_shoe]+sarmatian_helm_spangen,
 attrib_level_26, wp(160), knows_level_26, scythian_face_21, scythian_face_22 ],
-["germanic_deserter", " Desertor Germanicus", "Desertores Germani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_deserters,
+["germanic_deserter", " Desertor Germanicus", "Desertores Germani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_5,
 [itm_celtic_boots,itm_germanic_light4,itm_germanic_light7,itm_germanic_naked6,itm_germanic_axe1,itm_germanic_axe3,itm_germanic_shield_large10,itm_germanic_shield_large11,itm_germanic_shield_large6,itm_germanic_shield_large2,itm_war_spear,itm_throwing_spears],
 attrib_level_26, wp(160), knows_level_26, germanic_face_11, germanic_face_12],
-["eastern_deserter", "Desertor Orientalis", "Desertores Orientales", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_deserters,
+["caucasian_deserter", "Desertor Caucasicus", "Desertores Caucasici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_5,
+[itm_armenian_war_spear,itm_caucasian_spear_145,itm_sarmatian_spear_169,itm_throwing_spears]+sarmatian_helm_cap_2+parthian_helm_phyrgian+eastern_armor_tunics_armenian+sarmatian_boots+eastern_shields_wicker_armenian,
+attrib_level_23, wp_melee(170), knows_level_23, armenian_face_young, armenian_face_middle ],
+["parthian_deserter", "Desertor Parthus", "Desertores Parthi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
 [itm_throwing_spears_east,itm_military_hammer]+eastern_boots_light+eastern_armor_furarmor+parthian_helm_phyrgian+scythian_shields_2+eastern_sword_short,
 attrib_level_26, wp(160), knows_level_26, persian_face_young, persian_face_middle ],
-["roman_deserter", "Desertor Romanus", "Desertores Romani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_deserters,[
+["judean_deserter", "Desertor Iudaeus", "Desertores Iudaei", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
+[itm_throwing_spears_roman,itm_throwing_spears_roman]+jew_boots_simple+jew_tunics_2+jew_mail_2+jew_helm_light+jew_swords_old+jew_shields_simple, attrib_level_23, wp_melee(160), knows_level_23, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+["roman_deserter", "Desertor Romanus", "Desertores Romani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_7,[
   itm_old_gladius_2,itm_old_gladius_1,itm_hasta2,itm_roman_townguard_helm,itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,
   itm_graves_simple_2,itm_legion_hamata_cape_5,itm_old_scutum_2,itm_old_scutum,itm_old_scutum_3,itm_old_round_shield_5,itm_old_round_shield_4,
 ],attrib_level_26, wp(160), knows_level_26, roman_face1, roman_face2 ],
@@ -5517,8 +5899,85 @@ def_attrib|level(4),wp(60),knows_common,african_face_female,african_face_female2
 ##minor faction troops and kings END
 
 #trader in slave market
-["slave_trader","Doulon Emporos","Douloi Emporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[itm_caligea,itm_roman_poor4],
-def_attrib|level(18),wp(60),knows_common,white_face_11, white_face_12],
+["slave_trader","Doulemporos","Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_roman_poor4],
+def_attrib|level(18),wp(60),knows_common,white_face_11, white_face_12], # Roman/Generic Slave Trader
+
+["slave_trader_judean","Ioudaios Doulemporos","Ioudaioi Doulemporoi", tf_male_eastern|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_judean_tunic_3, itm_tuareg_new_2_green], # Consider more Judean-specific headwear if available, tuareg is more desert Arab/Berber
+def_attrib|level(18),wp(60),knows_common,eastern_man_face_middle_1, eastern_man_face_old_2], # Changed from arab_face to general eastern_man for Judean
+
+["slave_trader_germanic","Germanikos Doulemporos","Germanikoi Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_celtic_boots,itm_germanic_noble_tunic_3],
+def_attrib|level(18),wp(60),knows_common,germanic_face_11, germanic_face_12], # Changed to specific Germanic faces
+
+["slave_trader_celtic","Keltikos Doulemporos","Keltikoi Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_celtic_boots,itm_celtic_light_noble_1],
+def_attrib|level(18),wp(60),knows_common,celtic_face_11, celtic_face_12], # Changed to specific Celtic faces
+
+["slave_trader_dacian","Dakikos Doulemporos","Dakikoi Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_leather_boots,itm_dacian_noble3],
+def_attrib|level(18),wp(60),knows_common,barbarian_man_face_middle_1, barbarian_man_face_old_1], # Kept general barbarian as Dacian peasants use similar
+
+["slave_trader_sarmatian","Sarmatikos Doulemporos","Sarmatikoi Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_sarmatian_shoes,itm_sarmatian_light6, itm_sarmatian_cap_2],
+def_attrib|level(18),wp(60),knows_common,scythian_face_11, scythian_face_12], # Kept Scythian faces, appropriate for Sarmatians
+
+["slave_trader_bosporan","Bosporanos Doulemporos","Bosporanoi Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_sarmatian_shoes, itm_bosporan_light2], # Consider Bosporan specific headwear if available
+def_attrib|level(18),wp(60),knows_common,scythian_face_11, scythian_face_12],  # Alan Slave Trader
+
+["slave_trader_saka","Sakes Doulemporos","Sakai Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_eastern_shoe_b,itm_kaftan_1],
+def_attrib|level(18),wp(60),knows_common,saka_face_1, saka_face_2], # Saka Slave Trader
+
+["slave_trader_alans","Alanos Doulemporos","Alanoi Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_sarmatian_shoes,itm_kaftan_3],
+def_attrib|level(18),wp(60),knows_common,scythian_face_11, scythian_face_12], # Alan Slave Trader
+
+["slave_trader_hispanic","Iber Doulemporos","Iberes Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_iberian_light5],
+def_attrib|level(18),wp(60),knows_common,barbarian_man_face_middle_1, barbarian_man_face_old_1], # Hispanic/Iberian Slave Trader
+
+["slave_trader_illyrian","Illyrios Doulemporos","Illyrioi Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_illyrian_medium3],
+def_attrib|level(18),wp(60),knows_common,barbarian_man_face_middle_1, barbarian_man_face_old_1], # Illyrian Slave Trader
+
+["slave_trader_sea_raiders","Peirates Doulemporos","Peiratai Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_graves_simple,itm_roman_poor3, itm_kopfband],
+def_attrib|level(18),wp(60),knows_common,mercenary_face_greek_1, mercenary_face_greek_2], # Pirate Slave Trader
+
+["slave_trader_black_sea","Pontikos Doulemporos","Pontikoi Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_graves_simple,itm_bosporan_light1, itm_roman_aux_helm_old_1],
+def_attrib|level(18),wp(60),knows_common,scythian_face_11, scythian_face_12], # Black Sea Slave Trader
+
+["slave_trader_arab","Araps Doulemporos","Arabes Doulemporoi", tf_male_eastern|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_arabian_tunic_3, itm_tuareg_new_1_red],
+def_attrib|level(18),wp(60),knows_common,arab_face_young, arab_face_old], # Arab Slave Trader
+
+["slave_trader_egyptian","Aigyptios Doulemporos","Aigyptioi Doulemporoi", tf_male_north_african|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_judean_tunic_5, itm_numidian_wig],
+def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_african_man_face_old_1], # Egyptian Slave Trader
+
+["slave_trader_nubian","Aithiops Doulemporos","Aithiopes Doulemporoi", tf_male_black|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_headcloth,itm_garmantian_armor_2], # Consider more Nubian-specific items if available
+def_attrib|level(18),wp(60),knows_common,nubian_man_face_middle_1, nubian_man_face_old_1], # Nubian/Aethiopian Slave Trader
+
+["slave_trader_nabatean","Nabataios Doulemporos","Nabataioi Doulemporoi", tf_male_eastern|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_arabian_tunic_1,itm_tuareg_new_1_blue],
+def_attrib|level(18),wp(60),knows_common,arab_face_young, arab_face_old], # Nabatean Slave Trader
+
+["slave_trader_garamantian","Garamas Doulemporos","Garamantes Doulemporoi", tf_male_north_african|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_garmantian_armor_3],
+def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_african_man_face_old_1], # Garamantian Slave Trader
+
+["slave_trader_gaetulian","Gaitoulos Doulemporos","Gaitouloi Doulemporoi", tf_male_north_african|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_numidian_armor_2],
+def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_african_man_face_old_1], # Gaetulian Slave Trader
+
+["slave_trader_bandit","Lestes Doulemporos","Lestai Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_roman_poor1], # Generic bandit gear
+def_attrib|level(18),wp(60),knows_common,bandit_face1, bandit_face2], # Bandit Slave Trader
 
 ["gladiator_euqes","Eques","Eques",tf_guarantee_boots|tf_guarantee_horse|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm,no_scene,reserved,fac_gladiators,
 [itm_graves_simple,itm_hasta2,itm_eastern_sword1,itm_arabian_horse_b,itm_simple_thraex_shield,itm_iberian_light6,itm_tourney_helm_green],
@@ -6429,6 +6888,44 @@ itm_centurio_east_graves, itm_gauntles_1, itm_armor_of_african_gods, itm_javelin
 itm_numidian_spear_1,itm_eastern_shield_inf_heavy5
 ],hero_attrib|level(50), wp(600), knows_hero, 0x0000000d770101517722ad827b84db6f00000000001e12f80000000000000000],
 
+["household_slave_1","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_2","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_3","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_4","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_5","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_6","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_7","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_8","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_9","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_10","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_11","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_slave_12","{!}Slave","{!}Slave",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+
+["household_cook_1","{!}Cook","{!}Cook",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_cook_2","{!}Cook","{!}Cook",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_cook_3","{!}Cook","{!}Cook",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_cook_4","{!}Cook","{!}Cook",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_cook_5","{!}Cook","{!}Cook",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_cook_6","{!}Cook","{!}Cook",
+tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, 0],
+["household_end", "end of household", "end of household", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
 ["troops_end", "END OF THE WORLD", "END OF THE WORLD", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 

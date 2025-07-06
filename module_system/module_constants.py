@@ -1170,6 +1170,9 @@ slot_troop_prisoner_of_party   = 8  # important for heroes only
 
 slot_troop_present_at_event    = 9
 
+## for household slaves:
+slot_slave_template_troop = 10
+
 slot_troop_leaded_party         = 10 # important for kingdom heroes only
 slot_troop_wealth               = 11 # important for kingdom heroes only
 slot_troop_cur_center           = 12 # important for royal family members only (non-kingdom heroes)
@@ -2304,6 +2307,24 @@ seneschal_end = "trp_town_1_arena_master"
 
 special_roman_merchants_begin = "trp_merchant1"
 special_roman_merchants_end = "trp_merchant5"
+
+slave_traders_begin = "trp_slave_trader"
+slave_traders_end   = trp_slave_trader_bandit + 1
+
+slaves_begin    = "trp_slave"
+slaves_end      = "trp_orgie_fem1"
+
+male_slaves_begin = "trp_slave"
+male_slaves_end = "trp_slave_female"
+
+female_slaves_begin = "trp_slave_female"
+female_slaves_end = slaves_end
+
+household_slaves_begin = "trp_household_slave_1"
+household_slaves_end = "trp_household_cook_1"
+
+cook_slaves_begin = "trp_household_cook_1"
+cook_slaves_end = "trp_household_end"
 
 special_eastern_merchants_begin = "trp_merchant5"
 special_eastern_merchants_end = "trp_prisoner"
@@ -3913,7 +3934,7 @@ g_corruption_check = 79
 
 g_last_week_income = 80
 
-#Spain
+## hispania
 p_hisp_tarraco = 1
 p_hisp_baetica = 2
 p_hisp_lusit   = 3
@@ -3922,7 +3943,7 @@ p_afrc_maur = 4
 p_afrc_afrc = 5
 p_afrc_cyre = 6 #
 p_afrc_egyp = 7 #
-##Asien
+## asia
 p_asia_arab   = 8 #
 p_asia_jude   = 9 #
 p_asia_syr    = 10 #
@@ -3930,7 +3951,7 @@ p_asia_cili   = 11 #
 p_asia_capa   = 12 #
 p_asia_pontus = 13 #
 p_asia_minor  = 14 #
-##Balkan
+## balkan
 p_balk_thrac      = 15
 p_balk_moesia_sup = 16
 p_balk_moesia_inf = 17
@@ -3938,52 +3959,64 @@ p_balk_acha       = 18
 p_balk_epir       = 19
 p_balk_mac        = 20
 p_balk_dalm       = 21
-##italy
+## italy
 p_ita_sici    = 22
 p_ita_magna   = 23
 p_ita_ital    = 24
 p_ita_cis     = 25
-##Gaul
+## Gaul
 p_gaul_narab  = 26
 p_gaul_aqua   = 27
 p_gaul_lugd   = 28
 p_gaul_belg   = 29
-#Germania
+## Germania
 p_germ_inf    = 30
 p_germ_sup    = 31
 p_germ_reat   = 32
 p_germ_noric  = 33
-##central europe
+## central europe
 p_cent_panno  = 34
 
-##britannia
+## britannia
 p_brit_brita  = 35
 p_brit_cale   = 36
-##magna germania
+## magna germania
 p_germ_magna  = 37
 p_germ_herc   = 38
 p_germ_sueb   = 39
-##dacia
+## dacia
 p_cent_dac    = 40
-##samatia
+## samatia
 p_east_sam    = 41
-#krim
+## bosporean
 p_east_bos    = 42
-#scythia, caucaus
+## scythia
 p_cauc_scyth  = 43
+
+#armenia
 p_asia_arme   = 44
+
+# mespotamia and assyria
 p_asia_meso   = 45
 p_asia_assy   = 46
 
-##isle
+##isles in mediteranian sea
 p_ins_oc  = 47
 p_ins_or  = 48 #
 
+# caucasus
 p_asia_cauc = 49
 
+# persia and parthia
 p_asia_persia = 50
 p_asia_parthia = 51
 p_asia_media = 52
+
+p_afrc_nubia = 53
+
+p_afrc_garamantia = 54
+
+p_asia_chor = 55
 
 p_provinces_end = p_asia_media + 1
 
@@ -4119,6 +4152,12 @@ salary_legate = 6000
 salary_aux_2 = 4000
 salary_aux_1 = 2250
 
+minister_salary = 3000
+praefectus_urbi_salary = 5000
+chamberlain_salary = 1500
+constable_salary = 1500
+chancellor_salary = 2000
+tax_control_costs = 7000
 
 ACAN_CORRUPT_SAVE_CHECK = 103940214
 
@@ -4268,3 +4307,17 @@ remove_all = 3
 event_governor = 1
 event_honorary = 2
 event_fake     = 3
+
+walker_noble   = 1
+walker_peasant = 2
+walker_slave   = 3
+walker_peasant_warrior = 4
+
+# household modifers
+household_mod_latifunida_limit  = 0
+household_mod_workshop_limit    = 1
+household_mod_corruption        = 2
+household_mod_cook_quality      = 3
+household_mod_admin_eff         = 4
+household_mod_engineering_eff   = 5
+household_mod_ends              = 6    

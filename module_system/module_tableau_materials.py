@@ -27,14 +27,14 @@ from IDs.ID_info_pages import *
 
 tableaus = [
 
-   ##character displayed on the screen for selecting the skills and attributes
-  ("game_character_sheet", 0, "tableau_with_transparency", 1024, 1024, 0, 0, 266, 532,
-   [
+##character displayed on the screen for selecting the skills and attributes
+("game_character_sheet", 0, "tableau_with_transparency", 1024, 1024, 0, 0, 266, 532,[
 
     (assign, "$tableau_active", 2),
     (assign, "$character_sheet_is_active", 1),
 
     (store_script_param, ":troop_no", 1),
+
     (cur_tableau_set_background_color, 0xFF888888),
     (cur_tableau_set_ambient_light, 10,11,15),
     (set_fixed_point_multiplier, 100),
@@ -48,9 +48,7 @@ tableaus = [
     (position_set_z, pos1, 200),
     (cur_tableau_add_tableau_mesh, "tableau_troop_character_alpha_mask", ":troop_no", pos1, 0, 0),
     (position_set_z, pos1, 300),
-
-
-       ]),
+]),
 
   ("game_inventory_window", 0, "tableau_with_transparency", 1024, 1024, 0, 0, 180, 270,
    [(assign, "$tableau_active", 1),

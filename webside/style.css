@@ -1,0 +1,140 @@
+/* General Body & Font Styles */
+body {
+    background-color: #141414; /* Netflix's dark background */
+    color: #e5e5e5; /* Light grey text for readability */
+    font-family: Arial, sans-serif; /* A simple, clean font */
+    margin: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section (Top banner) */
+.hero-section {
+    background-image: linear-gradient(to top, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0) 50%, rgba(20, 20, 20, 1) 100%), url('hero-background.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 60vh; /* Takes 60% of the screen's height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero-content .tagline {
+    font-size: 1.5rem;
+    color: #e5e5e5;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+/* General Section Styling */
+.content-section, .download-section, .community-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #E50914; /* Netflix Red */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+}
+
+/* Download Section Specifics */
+.download-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Allows cards to stack on smaller screens */
+}
+
+.download-card {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+}
+
+.download-card h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-top: 0;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    background-color: #E50914; /* Netflix Red */
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #f40612; /* A slightly brighter red on hover */
+}
+
+/* Community Section (Discord) */
+.community-section .discord-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #5865F2; /* Discord's Blurple color */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.community-section .discord-link:hover {
+    background-color: #4752C4; /* Darker blurple on hover */
+}
+
+.community-section .discord-link .fa-discord {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #808080;
+    border-top: 1px solid #333;
+}
