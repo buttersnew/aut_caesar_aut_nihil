@@ -23,11 +23,7 @@ jobs:
 
       - name: Zip the mod folder
         run: |
-          cd mod_files
-          zip -r ACAN-v${{ steps.version.outputs.TAG }}.zip Aut_Caesar_Aut_Nihil/
-
-      - name: List files in workspace
-        run: ls -R
+          zip -r ACAN-v${{ steps.version.outputs.TAG }}.zip Aut_Caesar_Aut_Nihil
 
       - name: Create Pre-Release
         id: create_prerelease
