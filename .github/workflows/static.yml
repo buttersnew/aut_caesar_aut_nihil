@@ -4,6 +4,8 @@ name: Deploy website to github pages
 on:
   push:
     branches: ["develop"]
+    paths:
+          - 'website/**'
   workflow_dispatch:
 
 permissions:
