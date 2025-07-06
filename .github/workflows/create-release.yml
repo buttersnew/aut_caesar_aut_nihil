@@ -1,0 +1,59 @@
+name: Create Pre-Release
+
+on:
+  push:
+    branches:
+      - 'develop'
+    paths:
+      - 'version.txt' # Only run when the version file changes
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # This is required to create a release and upload assets
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read version from file
+        id: version
+        run: echo "TAG=$(cat version.txt)" >> $GITHUB_OUTPUT
+
+      - name: Zip the mod folder
+        run: zip -r ACAN-v${{ steps.version.outputs.TAG }}.zip Aut Caesar aut nihil/
+
+      - name: Create Pre-Release
+        id: create_prerelease
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.version.outputs.TAG }}
+          release_name: Version ${{ steps.version.outputs.TAG }} (Pre-release)
+          body: |
+            Automated pre-release based on changes to the version file.
+            These are development builds and may be unstable.
+          draft: false
+          prerelease: true # This marks it as a pre-release!
+
+      - name: Upload Mod Zip to Pre-Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
+          asset_path: ./AutCaesar-v${{ steps.version.outputs.TAG }}.zip
+          asset_name: AutCaesar-v${{ steps.version.outputs.TAG }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload Handbook PDF to Pre-Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_prerelease.outputs.upload_url }}
+          asset_path: ./handbook/aut_ceasar_aut_nihil_handbook.pdf
+          asset_name: aut_ceasar_aut_nihil_handbook.pdf
+          asset_content_type: application/pdf

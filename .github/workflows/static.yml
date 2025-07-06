@@ -1,40 +1,70 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy website to github pages
+name: Deploy static content to Pages
 
 on:
   push:
     branches: ["develop"]
     paths:
-          - 'website/**'
+      - 'website/**' # Keep this so it runs when you only change the website
+
+  # Also run this workflow after the release workflow completes successfully
+  workflow_run:
+    workflows: ["Create Pre-Release"]
+    types:
+      - completed
+
   workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  # Add this permission to read release information
+  releases: read
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Get latest release info
+        id: latest_release
+        # This uses the GitHub CLI to fetch details about the latest release
+        run: |
+          LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName')
+          MOD_URL=$(gh release view $LATEST_TAG --json assets --jq '.assets[] | select(.name | startswith("AutCaesar")).browser_download_url')
+          MANUAL_URL=$(gh release view $LATEST_TAG --json assets --jq '.assets[] | select(.name == "handbook.pdf").browser_download_url')
+          
+          # We remove the 'v' from the tag for the display version
+          echo "VERSION=${LATEST_TAG#v}" >> $GITHUB_OUTPUT
+          echo "MOD_URL=$MOD_URL" >> $GITHUB_OUTPUT
+          echo "MANUAL_URL=$MANUAL_URL" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update placeholders in index.html
+        # This powerful command finds and replaces your placeholders with the real values
+        run: |
+          sed -i 's|__MOD_VERSION__|${{ steps.latest_release.outputs.VERSION }}|g' website/index.html
+          sed -i 's|__MOD_DOWNLOAD_URL__|${{ steps.latest_release.outputs.MOD_URL }}|g' website/index.html
+          sed -i 's|__MANUAL_DOWNLOAD_URL__|${{ steps.latest_release.outputs.MANUAL_URL }}|g' website/index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './website' 
+          path: './website'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
