@@ -22,7 +22,7 @@ jobs:
         run: echo "TAG=$(cat version.txt)" >> $GITHUB_OUTPUT
 
       - name: Zip the mod folder
-        run: zip -r ACAN-v${{ steps.version.outputs.TAG }}.zip Aut Caesar aut nihil/
+        run: zip -r ACAN-v${{ steps.version.outputs.TAG }}.zip Aut_Caesar_Aut_Nihil/
 
       - name: Create Pre-Release
         id: create_prerelease
