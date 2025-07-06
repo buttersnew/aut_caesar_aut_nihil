@@ -40,7 +40,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -e # Exit immediately if a command exits with a non-zero status.
+          set -e
 
           echo "Fetching latest release..."
           LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName')
@@ -51,6 +51,11 @@ jobs:
           fi
           
           echo "Found latest tag: $LATEST_TAG"
+
+          echo "--- DUMPING ASSET JSON ---"
+          gh release view "$LATEST_TAG" --json assets
+          echo "--- END ASSET JSON ---"
+          # ------------------------------------
 
           MOD_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name | startswith("ACAN")).browser_download_url')
           MANUAL_URL=$(gh release view "$LATEST_TAG" --json assets --jq '.assets[] | select(.name == "handbook.pdf").browser_download_url')
