@@ -216,7 +216,54 @@ p {
     font-size: 1.5rem;
     margin-right: 10px;
 }
+/* The grid that holds the community cards */
+.community-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between cards */
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
 
+/* A single community card */
+.community-card {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 8px;
+    width: 350px; /* Adjust width as needed */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center;
+}
+
+/* This is the key part for the icon styling */
+.mod-icon {
+    width: 140px;           /* Set a fixed width */
+    height: 140px;          /* Set a fixed height */
+    border-radius: 50%;     /* Makes the icon circular - very professional */
+    object-fit: cover;      /* Prevents image distortion */
+    margin-bottom: 20px;    /* Space between icon and title */
+    border: 3px solid #444; /* A subtle border */
+}
+
+.community-card h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.community-card p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* This pushes the button to the bottom, making cards of different text heights align perfectly */
+.community-card .discord-link {
+    margin-top: auto;
+}
 /* GitHub Section */
 .github-section {
     padding: 60px 0;

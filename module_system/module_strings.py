@@ -708,6 +708,9 @@ strings = [
   ("rob_caravan", "rob a merchant caravan"), # possibly remove
   ("sell_slavery", "sell people into slavery"),
 
+  ("flog_slave", "senselessly flogging and torturing slaves"),
+  ("kill_slave", "senselessly murdering slaves"),
+
 # egalitarian
   ("men_hungry", "run out of food"), ##Done - simple triggers
   ("men_unpaid", "not be able to pay the men"),
@@ -5127,6 +5130,7 @@ strings = [
   ("s9_of_drink_which_guests_will_expect_in_great_abundance_the_amount_is_s8", "{s9} Of drink, which guests will expect in great abundance, the amount is {s8}"),
   ("s9_of_spice_which_is_essential_to_demonstrate_that_we_spare_no_expense_as_hosts_the_amount_is_s8_", "{s9} Of spice, which is essential to demonstrate that we spare no expense as hosts, the amount is {s8}. "),
   ("s9_of_oil_which_we_shall_require_to_light_the_lamps_the_amount_is_s8", "{s9} Of oil, which we shall require to light the lamps, the amount is {s8}."),
+  ("s9_cooks_s8", "{s9} And let us not forget our cooks, the meal has to be prepared by someone. {s8}"),
   ("s9_overall_our_table_will_be_considered_s8", "{s9} Overall, our table will be considered {s8}."),
   ("rebel", "rebel"),
   ("bandit", "bandit"),
@@ -9659,6 +9663,39 @@ strings = [
 ("household_mod_cook_quality_descr", "The quality of food prepared by your household cook. Higher quality food improves feasts and your own health."),
 ("household_mod_admin_eff_descr", "The efficiency of your administrative staff. Higher efficiency leads to better management of your estates and resources."),
 ("household_mod_engineering_eff_descr", "The efficiency of your engineering staff. Higher efficiency leads to better construction and maintenance of your properties."),
+
+## Cook Quality Descriptions (MUST BE IN THIS EXACT ORDER)
+# Tier 5 (God-Tier)
+("cook_quality_5_tooltip", "- A true culinary artist. Their feasts could appease angry gods or sway the Senate's vote. An invaluable asset."),
+("cook_quality_5_host",    "Your cooks are true culinary artists; their feasts could appease angry gods or sway the Senate's vote."),
+("cook_quality_5_guest_m", "By the gods, this is a feast worthy of Olympus! My compliments to your chefs!"),
+("cook_quality_5_guest_f", "This is simply divine! Your household will be the talk of the city. Such artistry is rarely seen outside the Emperor's own table!"),
+("cook_quality_5_spouse",  "My love, our guests will speak of our feast for months! Our cooks will bring great honor to our house."),
+# Tier 4 (Excellent)
+("cook_quality_4_tooltip", "- An excellent cook, able to create delicious meals from humble ingredients."),
+("cook_quality_4_host",    "Your cooks are excellent and can turn even humble ingredients into a delicious meal."),
+("cook_quality_4_guest_m", "This is truly a remarkable meal! The flavors are exquisite. You have some very talented cooks in your household."),
+("cook_quality_4_guest_f", "What a delightful meal! Everything is cooked to perfection. Your cooks have truly outdone themselves."),
+("cook_quality_4_spouse",  "I must say, my dear, our cooks are worth every denar. Their meals are simply wonderful."),
+# Tier 3 (Competent)
+("cook_quality_3_tooltip", "- A competent cook, capable of turning mundane ingredients into a respectable meal."),
+("cook_quality_3_host",    "Your cooks are competent and capable of preparing a respectable meal that should please your guests."),
+("cook_quality_3_guest_m", "A most respectable meal. It is simple, yet skillfully prepared. You feed your guests well."),
+("cook_quality_3_guest_f", "A very pleasant repast. Simple, yet elegant. It is a credit to your household management."),
+("cook_quality_3_spouse",  "Our cooks can prepare fine meals, my dear. They are simple but well-made, and it will make our guests content."),
+# Tier 2 (Basic)
+("cook_quality_2_tooltip", "- Can prepare basic rations that won't kill you. Probably. Do not expect any flavor."),
+("cook_quality_2_host",    "Your cooks can prepare basic, uninspired rations. It should be enough to fill bellies, but do not expect praise."),
+("cook_quality_2_guest_m", "Ah... a simple, straightforward meal. It fills the belly, which is what matters, is it not?"),
+("cook_quality_2_guest_f", "How... authentic. It is certainly... a nourishing meal."),
+("cook_quality_2_spouse",  "My dear, let us make a note to... *encourage* the kitchen staff. Their meals are edible, at least. No one will collapse."),
+# Tier 1 (Disaster)
+("cook_quality_1_tooltip", "- A culinary disaster. Useful for poisoning enemies, but should be kept away from your personal kitchen at all costs."),
+("cook_quality_1_host",    "Your so-called 'cooks' are a culinary disaster. They might be useful for poisoning a besieging army, but they should be kept away from our own kitchen."),
+("cook_quality_1_guest_m", "Forgive my candor, but... is this meant to be consumed? I've had better fare in a legionary marching camp."),
+("cook_quality_1_guest_f", "My dear, I believe my field slaves eat better than this. How... quaint."),
+("cook_quality_1_spouse",  "By all the gods, this is a catastrophe! We must find new cooks immediately, my love. Our cooks are only useful for poisoning enemies!"),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

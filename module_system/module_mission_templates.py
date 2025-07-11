@@ -419,7 +419,6 @@ global_common_triggers = [
     (try_end),
   ]),
 
-
   #crouching should only be available while hunting
   (ti_on_agent_spawn, 0, 0, [ ],[
     (store_trigger_param_1, ":agent_no"),
@@ -518,6 +517,14 @@ global_common_triggers = [
       (try_end),
       (gt, ":item", -1),
       (agent_equip_item, ":agent_no",":item",ek_foot),
+  ]),
+  (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent"),
+      (agent_get_troop_id, ":troop_no", ":dead_agent"),
+      (is_between, ":troop_no", household_slaves_begin, cook_slaves_end),
+      (str_store_troop_name, s0, ":troop_no"),
+      (display_message, "@Your slave {s0} died!", message_negative),
+      (troop_set_slot, ":troop_no", slot_slave_template_troop, 0),
   ]),
 ]
 
@@ -2119,9 +2126,9 @@ sand_storm = [
 
   (0, 0, ti_once, [],[
     (try_begin),
-      (call_script, "script_cf_is_desert_or_mediterreanian", "p_main_party"),
+      (call_script, "script_cf_is_desert", "p_main_party"),
       (store_random_in_range, ":r", 0, 10),
-      (le, ":r", 10),
+      (le, ":r", 2),
       (assign,"$lightning_cycle",3),
       (display_message, "@Sandstorm!", message_negative),
     (else_try),
@@ -2141,7 +2148,7 @@ thunder_storm =	[		# 4 trigger
     (try_begin),
       (store_current_scene, ":scene"),
       (this_or_next|eq, ":scene", "scn_ruins_of_carthage"),# exclude certain scenes
-      (call_script, "script_cf_is_desert_or_mediterreanian", "p_main_party"),
+      (call_script, "script_cf_is_desert", "p_main_party"),
     (else_try),
       (assign, "$lightning_cycle", -1),
 
@@ -15509,6 +15516,34 @@ mission_templates = [
 
     common_inventory_not_available,
 
+    (0,8,0,[
+      (neq, "$talk_context", tc_prison_break),
+      (neq, "$talk_context", tc_pret_event_14),
+    ],[
+      (try_for_agents,":agent_no"),
+        (agent_is_alive,":agent_no"),
+        (agent_is_human,":agent_no"),
+        (agent_get_troop_id, ":troop_no", ":agent_no"),
+        (is_between, ":troop_no", household_slaves_begin, cook_slaves_end),
+
+        (assign, ":continue_walk", 0),
+        (store_random_in_range, ":continue_walk", 1, 100),
+        (try_begin),
+          (le, ":continue_walk", 38),
+          (agent_set_stand_animation, ":agent_no", "anim_stand_man"),
+          (agent_set_walk_forward_animation, ":agent_no", "anim_walk_forward"),
+          (agent_set_animation, ":agent_no", "anim_stand_man"),
+          (agent_set_animation_progress, ":agent_no", 10),
+
+          (agent_get_position, pos1, ":agent_no"),
+          (store_random_in_range, ":points", 46, 60),
+          (entry_point_get_position, pos2, ":points"),
+          (agent_set_speed_limit, ":agent_no", 1),
+          (agent_set_scripted_destination, ":agent_no", pos2),
+        (try_end),
+      (try_end),
+    ]),
+
     (ti_tab_pressed, 0, 0,[
       (neq, "$talk_context", tc_prison_break),
       (neq, "$talk_context", tc_pret_event_14),
@@ -17537,7 +17572,7 @@ mission_templates = [
     ]),
 ] + theoris_decapitation + auxiliary_player + dplmc_battle_mode_triggers),
 
-("visit_villa",0,-1,
+("visit_villa",mtf_battle_mode,-1,
   "visit your villa",[
     (0,mtef_scene_source,0,0,1,[]),
     (1,mtef_visitor_source,af_override_horse,0,1,[]),
@@ -17605,30 +17640,32 @@ mission_templates = [
     improved_lightning,
     common_inventory_not_available,
     dedal_tavern_animations,
-    (ti_on_agent_spawn, 0, 0, [],
-      [
-        (store_trigger_param_1, ":agent_no"),
-        (get_player_agent_no, ":player_agent"),
 
-        (try_begin),
-          (neq, ":player_agent", ":agent_no"),
-          (agent_set_team, ":agent_no", 7),
-        (try_end),
+    (ti_on_agent_spawn, 0, 0, [],[
+      (store_trigger_param_1, ":agent_no"),
+      (get_player_agent_no, ":player_agent"),
+      (try_begin),
+        (neq, ":player_agent", ":agent_no"),
+        (agent_set_team, ":agent_no", 7),
+      (try_end),
     ]),
     (1, 0, ti_once,[],[
       (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+      (mission_enable_talk),
     ]),
+
     ambient_scene_play_loop,
     ambient_scene_play_random_sound,
     ambient_set_agents_for_sounds,
     ambient_agent_play_sound,
+
     (0,8,0,[],[
       (try_for_agents,":agent_no"),
         (agent_is_alive,":agent_no"),
         (agent_is_human,":agent_no"),
         (agent_get_troop_id, ":troop_no", ":agent_no"),
-        (this_or_next|eq, ":troop_no", "trp_slave"),
-        (eq, ":troop_no", "trp_slave_female"),
+        (this_or_next|is_between, ":troop_no", slaves_begin, slaves_end),
+        (is_between, ":troop_no", household_slaves_begin, cook_slaves_end),
 
         (assign, ":continue_walk", 0),
         (store_random_in_range, ":continue_walk", 1, 100),
@@ -17647,27 +17684,27 @@ mission_templates = [
         (try_end),
       (try_end),
     ]),
-    (ti_on_agent_spawn,1,0,[
-      (troop_slot_eq, "trp_array_villa_feast", 9, 0),
-      (store_trigger_param_1,":agent"),
-      (agent_get_troop_id,":troop",":agent"),
-      (try_begin),
-        (this_or_next|eq,":troop", "trp_guest"),
-        (this_or_next|is_between,":troop", active_npcs_begin, kingdom_ladies_end),
-        (eq,":troop", "trp_guest_female"),
-        (try_begin),
-          (agent_has_item_equipped,":agent","itm_dedal_kufel"),
-          (agent_set_stand_animation, ":agent", "anim_sitting_drinking_low"),
-          (agent_set_animation, ":agent", "anim_sitting_drinking_low"),
-          (store_random_in_range,":r",0,300),
-        (else_try),
-          (agent_set_stand_animation, ":agent", "anim_sitting_low"),
-          (agent_set_animation, ":agent", "anim_sitting_low"),
-          (store_random_in_range,":r",0,300),
-        (try_end),
-        (agent_set_animation_progress,":agent",":r"),
-      (try_end),
-    ],[]),
+    # (ti_on_agent_spawn,1,0,[
+    #   (troop_slot_eq, "trp_array_villa_feast", 9, 0),
+    #   (store_trigger_param_1,":agent"),
+    #   (agent_get_troop_id,":troop",":agent"),
+    #   (try_begin),
+    #     (this_or_next|eq,":troop", "trp_guest"),
+    #     (this_or_next|is_between,":troop", active_npcs_begin, kingdom_ladies_end),
+    #     (eq,":troop", "trp_guest_female"),
+    #     (try_begin),
+    #       (agent_has_item_equipped,":agent","itm_dedal_kufel"),
+    #       (agent_set_stand_animation, ":agent", "anim_sitting_drinking_low"),
+    #       (agent_set_animation, ":agent", "anim_sitting_drinking_low"),
+    #       (store_random_in_range,":r",0,300),
+    #     (else_try),
+    #       (agent_set_stand_animation, ":agent", "anim_sitting_low"),
+    #       (agent_set_animation, ":agent", "anim_sitting_low"),
+    #       (store_random_in_range,":r",0,300),
+    #     (try_end),
+    #     (agent_set_animation_progress,":agent",":r"),
+    #   (try_end),
+    # ],[]),
     (ti_tab_pressed, 0, 0, [
       (troop_slot_eq, "trp_array_villa_feast", 9, 0),
     ],[
@@ -17681,8 +17718,8 @@ mission_templates = [
       (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
       (mission_disable_talk),
       (finish_mission, 3),
-      (try_for_range, ":slot",1,10),
-          (troop_set_slot, "trp_array_villa_feast", ":slot", -1),
+      (try_for_range, ":guest", 0, 11),
+          (troop_set_slot, "trp_array_villa_feast", ":guest", -1),
       (try_end),
       (display_message, "@The feast concludes", message_alert),
     ]),
