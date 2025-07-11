@@ -39,9 +39,38 @@ body {
 }
 
 /* General Section Styling */
-.content-section, .download-section, .community-section, .screenshot-section {
+.content-section, .download-section, .community-section, .screenshot-section, .video-section {
     padding: 60px 0;
     text-align: center;
+}
+
+.video-section {
+  padding: 60px 0;
+}
+
+/* This is the responsive container for the video */
+.video-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 960px; /* Limit the max size of the video */
+  margin: 0 auto;   /* Center the container */
+  /* This uses the "padding-top trick" for a 16:9 aspect ratio */
+  padding-top: 56.25%; /* (9 / 16) * 100% */
+  border-radius: 8px; /* Give it rounded corners like our other elements */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* This targets the iframe itself */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove any default iframe border */
 }
 
 /* ========================================= */
