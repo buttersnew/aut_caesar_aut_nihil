@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
+    <div id="particles-js"></div>
     <!-- Hero Section: The big background image at the top -->
     <header class="hero-section">
         <div class="hero-content">
@@ -135,11 +136,14 @@
     <footer>
         <p>© 2025 PILOS Studios. All Rights Reserved.</p>
     </footer>
+    <!-- Load Libraries ONCE -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- Initialize Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.1.0/tsparticles.bundle.min.js"></script>
+    
+    <!-- Initialize all scripts in ONE place -->
     <script>
-        const swiper = new Swiper('.swiper', {
-            // parameters
+        // Initialize the Screenshot Slider
+        const screenshotSwiper = new Swiper('.swiper', {
             loop: true,
             effect: 'coverflow',
             grabCursor: true,
@@ -152,17 +156,52 @@
                 modifier: 1,
                 slideShadows: true,
             },
-            // pagination
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
-            // Navigation arrows
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
         });
+
+        // Initialize tsParticles for the background animation
+        (async () => {
+            await tsParticles.load({
+                id: "particles-js",
+                options: {
+                    background: {
+                        color: {
+                            value: "transparent" // The canvas itself should be transparent
+                        }
+                    },
+                    fpsLimit: 60,
+                    particles: {
+                        number: { value: 250, density: { enable: true } },
+                        color: { value: ["#ffc107", "#ff9800", "#E50914"] },
+                        shape: { type: "circle" },
+                        opacity: {
+                            value: { min: 0.1, max: 0.8 },
+                            random: true,
+                            anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                        },
+                        size: { value: { min: 1, max: 3 }, random: true },
+                        move: {
+                            enable: true,
+                            speed: 2.0,
+                            direction: "top",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false,
+                        }
+                    },
+                    interactivity: { events: { resize: true } },
+                    detectRetina: true
+                }
+            });
+        })();
     </script>
 </body>
 </html>
