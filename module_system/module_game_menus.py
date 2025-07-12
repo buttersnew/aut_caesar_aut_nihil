@@ -45064,8 +45064,108 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 
+("player_has_no_slaves", 0,
+  "The Burden of Management^^The duties of a wealthy landowner are overwhelming. Day after day, you are buried under a mountain of administrative tasks. Bills need paying, supplies need ordering, and the thousand other trifles of managing your estates demand your constant attention.^^Recently, you've felt your grip on your finances slipping. Small sums of money seem to disappear, not through theft, but through sheer oversight and the chaos of managing everything yourself. A late payment here, a miscounted delivery there... the losses are adding up. It is becoming painfully clear that you cannot handle this burden alone.",
+  "none",[
+    (set_background_mesh, "mesh_pic_payment"),
+  ],[
+    ("continue", [], "This cannot continue...",[
+      (call_script, "script_change_troop_health", "trp_player", 200),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
+
+("slave_steals_from_household", 0,
+ "Discrepancies in the Ledgers^^{s5} is responsible for managing a portion of your household treasury, and the recent ledgers are... perplexing."
+ +" The columns of figures seem to blur together, and your own attempts to balance the accounts result in a different sum each time."
+ +" It feels as though a small but consistent amount of money has simply vanished into thin air."
+ +"^^Is it simple incompetence and poor record-keeping, or is {s5} cleverly skimming from the coffers?"
+ +" The ledgers are too convoluted to serve as definitive proof, but the constant shortfalls are undeniable.",
+ "none",[
+  (set_background_mesh, "mesh_pic_payment"),
+  (str_store_troop_name, s5, "$g_notification_menu_var1"),
+ ],[
+  ("continue", [], "Continue...",[
+      (store_troop_gold, ":gold", "trp_household_possessions"),
+      (try_begin),
+          (le, ":gold", 150000),
+          (store_random_in_range, ":r2", 20000, 30001),
+      (else_try),
+          (le, ":gold", 250000),
+          (store_random_in_range, ":r2", 30000, 50001),
+      (else_try),
+          (le, ":gold", 350000),
+          (store_random_in_range, ":r2", 50000, 75001),
+      (else_try),
+          (le, ":gold", 450000),
+          (store_random_in_range, ":r2", 76000, 100001),
+      (else_try),
+          (le, ":gold", 550000),
+          (store_random_in_range, ":r2", 100000, 150001),
+      (else_try),
+          (le, ":gold", 750000),
+          (store_random_in_range, ":r2", 150000, 200001),
+      (else_try),
+          (le, ":gold", 850000),
+          (store_random_in_range, ":r2", 200000, 250001),
+      (else_try),
+          (le, ":gold", 950000),
+          (store_random_in_range, ":r2", 250000, 300000),
+      (else_try),
+          (store_random_in_range, ":r2", 80000, 150000),
+      (try_end),
+      (troop_remove_gold, "trp_household_possessions", ":r2"),
+      (change_screen_map),
+      (jump_to_menu, "mnu_auto_return_map"), 
+    ]),
+]),
+
+("slave_steals_from_player", 0,
+ "A Light Coin Pouch^^{s5} has been attending to your personal needs lately, and you've noticed your coin pouch feels lighter than it should."
+ +" You can't be certain, as the flow of denars from your pocket is constant and chaotic, but a nagging suspicion remains."
+ +"^^The slave is diligent, but his eyes sometimes linger on your purse for a moment too long. Is it mere admiration for your wealth, or the calculated assessment of a thief?"
+ +" Without proof, any action would be based on instinct alone.",
+ "none",[
+  (set_background_mesh, "mesh_pic_payment"),
+  (str_store_troop_name, s5, "$g_notification_menu_var1"),
+ ],[
+  ("continue", [], "Continue...",[
+      (store_troop_gold, ":gold", "trp_player"),
+      (try_begin),
+          (le, ":gold", 150000),
+          (store_random_in_range, ":r2", 20000, 30001),
+      (else_try),
+          (le, ":gold", 250000),
+          (store_random_in_range, ":r2", 30000, 50001),
+      (else_try),
+          (le, ":gold", 350000),
+          (store_random_in_range, ":r2", 50000, 75001),
+      (else_try),
+          (le, ":gold", 450000),
+          (store_random_in_range, ":r2", 76000, 100001),
+      (else_try),
+          (le, ":gold", 550000),
+          (store_random_in_range, ":r2", 100000, 150001),
+      (else_try),
+          (le, ":gold", 750000),
+          (store_random_in_range, ":r2", 150000, 200001),
+      (else_try),
+          (le, ":gold", 850000),
+          (store_random_in_range, ":r2", 200000, 250001),
+      (else_try),
+          (le, ":gold", 950000),
+          (store_random_in_range, ":r2", 250000, 300000),
+      (else_try),
+          (store_random_in_range, ":r2", 80000, 150000),
+      (try_end),
+      (troop_remove_gold, "trp_player", ":r2"),
+      (change_screen_map),
+      (jump_to_menu, "mnu_auto_return_map"), 
+    ]),
+]),
+
 ("gold_losses_imperial_treasury",0,
-  "Nonsensical numbers^^You recieved a report about spendings booked via the imperial treasury. It is a long and very confusing list."
+  "Nonsensical Numbers^^You recieved a report about spendings booked via the imperial treasury. It is a long and very confusing list."
   +" You try to make sanity checks but always come to a different conlusion. At the end, you decide to ask your advisors."
   +" They do calculations which you can't comprehend, however they get the right numbers at the end...",
   "none",[

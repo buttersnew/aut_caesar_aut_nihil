@@ -4553,50 +4553,6 @@ presentations = [
     (overlay_set_area_size, "$g_presentation_obj_bugdet_report_container", pos1),
     (set_container_overlay, "$g_presentation_obj_bugdet_report_container"),
 
-    #get variables for tax inefficiency
-    (store_skill_level, reg1, "skl_trade", "trp_player"),
-    (store_sub, ":tax_efficiency_loss_ratio_per_center", 10, reg1),
-
-    (store_div, ":num_centers_needed_for_efficiency_loss", reg1, 2),
-    (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
-
-    #census also helps on an induvidual level
-    (try_begin),
-        (eq, "$conducted_census", 1),
-        (val_div, ":tax_efficiency_loss_ratio_per_center", 2),
-    (try_end),
-
-    #corruption on imperial level is now handled elsewhere
-    #only apply this for non feudal ones
-    (try_begin),
-        (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_government_type, gov_imperial),
-        (gt, "$g_player_minister", 0),
-        # (troop_get_slot, ":relation", "$g_player_minister", slot_troop_player_relation),
-        (call_script, "script_troop_get_player_relation", "$g_player_minister"),
-        (assign, ":relation", reg0),
-        (try_begin),
-            (ge, ":relation", 75), #high relation = less tax loss
-            (val_add, ":num_centers_needed_for_efficiency_loss", 2),
-            (val_sub, ":tax_efficiency_loss_ratio_per_center", 1),
-        (else_try),
-            (lt, ":relation", 15),
-            (val_sub, ":num_centers_needed_for_efficiency_loss", 1),
-            (val_add, ":tax_efficiency_loss_ratio_per_center", 1),
-        (else_try),
-            (lt, ":relation", -5),
-            (val_sub, ":num_centers_needed_for_efficiency_loss", 2),
-            (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
-        (try_end),
-    (try_end),
-    (try_begin),
-        (eq, "$control_tax", 1), #tax control
-        (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_government_type, gov_imperial),
-        (val_add, ":num_centers_needed_for_efficiency_loss", 2),
-    (try_end),
-
-    (val_clamp, ":num_centers_needed_for_efficiency_loss", 1, 11),
-    (val_clamp, ":tax_efficiency_loss_ratio_per_center", 1, 51),
-
     # (assign, reg1, ":num_centers_needed_for_efficiency_loss"),
     # (display_message, "@num_centers_needed_for_efficiency_loss: {reg1}"),
 
@@ -4662,6 +4618,75 @@ presentations = [
             # (try_end),
         (try_end),
     (try_end),
+
+    # count number of slaves
+    (assign, ":number_slaves", 0),
+    (try_for_range, ":slave", household_slaves_begin, household_slaves_end),
+        (troop_slot_ge, ":slave", slot_slave_template_troop, 1),
+        (val_add, ":number_slaves", 1),
+    (try_end),
+    # (assign, reg0, ":number_slaves"),
+    # (display_message, "@number_slaves {reg0}"),
+    (store_div, ":num_centers_needed_for_efficiency_loss", ":number_slaves", 2),
+    # (assign, reg0, ":num_centers_needed_for_efficiency_loss"),
+    # (display_message, "@num_centers_needed_for_efficiency_loss {reg0}"),
+    #get variables for tax inefficiency
+    (store_skill_level, reg1, "skl_trade", "trp_player"),
+    (store_sub, ":tax_efficiency_loss_ratio_per_center", 10, reg1),
+
+    (val_div, reg1, 5),
+    (val_add, ":num_centers_needed_for_efficiency_loss", reg1),
+    # (assign, reg0, ":num_centers_needed_for_efficiency_loss"),
+    # (display_message, "@num_centers_needed_for_efficiency_loss {reg0}"),
+
+    (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
+    # (assign, reg0, ":tax_efficiency_loss_ratio_per_center"),
+    # (display_message, "@tax_efficiency_loss_ratio_per_center {reg0}"),
+    #census also helps on an induvidual level
+    (try_begin),
+        (eq, "$conducted_census", 1),
+        (val_div, ":tax_efficiency_loss_ratio_per_center", 2),
+    (try_end),
+
+    #corruption on imperial level is now handled elsewhere
+    #only apply this for non feudal ones
+    (try_begin),
+        (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_government_type, gov_imperial),
+        (gt, "$g_player_minister", 0),
+        # (troop_get_slot, ":relation", "$g_player_minister", slot_troop_player_relation),
+        (call_script, "script_troop_get_player_relation", "$g_player_minister"),
+        (assign, ":relation", reg0),
+        (try_begin),
+            (ge, ":relation", 75), #high relation = less tax loss
+            (val_add, ":num_centers_needed_for_efficiency_loss", 2),
+            (val_sub, ":tax_efficiency_loss_ratio_per_center", 1),
+        (else_try),
+            (lt, ":relation", 15),
+            (val_sub, ":num_centers_needed_for_efficiency_loss", 1),
+            (val_add, ":tax_efficiency_loss_ratio_per_center", 1),
+        (else_try),
+            (lt, ":relation", -5),
+            (val_sub, ":num_centers_needed_for_efficiency_loss", 2),
+            (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
+        (try_end),
+    (try_end),
+    (try_begin),
+        (eq, "$control_tax", 1), #tax control
+        (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_government_type, gov_imperial),
+        (val_add, ":num_centers_needed_for_efficiency_loss", 2),
+    (try_end),
+
+    # (assign, reg0, ":num_centers_needed_for_efficiency_loss"),
+    # (display_message, "@num_centers_needed_for_efficiency_loss {reg0}"),
+
+    # (assign, reg0, ":tax_efficiency_loss_ratio_per_center"),
+    # (display_message, "@tax_efficiency_loss_ratio_per_center {reg0}"),
+
+    # (val_clamp, ":num_centers_needed_for_efficiency_loss", 1, 11),
+    # (val_clamp, ":tax_efficiency_loss_ratio_per_center", 1, 51),
+
+
+
     # (assign, reg1, ":num_owned_center_values_for_tax_efficiency"),
     # (display_message, "@num_owned_center_values_for_tax_efficiency: {reg1}"),
 
@@ -6210,8 +6235,8 @@ presentations = [
 
     (assign, ":corruption_loss", 0),
 
-    (assign, reg2, ":household_corruption_modifier"),
-    (display_message, "@Household corruption modifier: {reg2}%", 0x00AA00),
+    # (assign, reg2, ":household_corruption_modifier"),
+    # (display_message, "@Household corruption modifier: {reg2}%", 0x00AA00),
 
     (try_begin),
         (neq, ":household_corruption_modifier", 0),
@@ -25644,7 +25669,7 @@ presentations = [
     (assign, ":cur_y", 50),
 
     (set_container_overlay, reg1),#start scroll
-    (assign, ":slave_count", 13),
+    (assign, ":slave_count", 15),
     (try_for_range_backwards, ":slave", household_slaves_begin, household_slaves_end),
         (troop_set_slot, "trp_temp_array_a", ":slave", -1),#for button
         (troop_set_slot, "trp_temp_array_b", ":slave", -1),#for button
