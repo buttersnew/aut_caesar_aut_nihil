@@ -11171,7 +11171,6 @@ presentations = [
       (try_begin),
         (eq, "$enlisted_party", -1),#freelancer
         (assign, "$temp", 0),
-        (set_jump_mission,"mt_camp"),
         (call_script, "script_setup_camp_scene"),
         (change_screen_mission),
       (else_try),
@@ -25464,6 +25463,7 @@ presentations = [
     (try_for_range, ":advicor", "trp_dplmc_chamberlain", "trp_dplmc_scout"),
         (assign, ":original_advicor", ":advicor"),
         (troop_set_slot, "trp_temp_array_a", ":original_advicor", -1),#for button
+        (troop_set_slot, "trp_temp_array_b", ":original_advicor", -1),#for button
         
         (str_clear, s22),
         (str_clear, s23),
@@ -25647,6 +25647,7 @@ presentations = [
     (assign, ":slave_count", 13),
     (try_for_range_backwards, ":slave", household_slaves_begin, household_slaves_end),
         (troop_set_slot, "trp_temp_array_a", ":slave", -1),#for button
+        (troop_set_slot, "trp_temp_array_b", ":slave", -1),#for button
         (val_sub, ":slave_count", 1),
         (troop_get_slot, ":slave_dna", ":slave", slot_slave_template_troop),
 
@@ -25704,6 +25705,18 @@ presentations = [
             (overlay_set_size, reg1, pos1),
 
             (troop_set_slot, "trp_temp_array_a", ":slave", reg1),#for button
+
+            (create_button_overlay, reg1, "@Talk", tf_center_justify|tf_with_outline),
+            (overlay_set_color, reg1, message_alert),
+            (position_set_x, pos1, 210), # Higher, means more toward the right
+            (store_add, ":gap_y", ":cur_y", -65),
+            (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (troop_set_slot, "trp_temp_array_b", ":slave", reg1),#for button
 
         (else_try),
             (try_begin),
@@ -25775,6 +25788,7 @@ presentations = [
     (assign, ":cook_count",7),
     (try_for_range_backwards, ":cook", cook_slaves_begin, cook_slaves_end),
         (troop_set_slot, "trp_temp_array_a", ":cook", -1),#for button
+        (troop_set_slot, "trp_temp_array_b", ":cook", -1),#for button
         (val_sub, ":cook_count", 1),
         (troop_get_slot, ":cook_dna", ":cook", slot_slave_template_troop),
 
@@ -25833,6 +25847,18 @@ presentations = [
             (overlay_set_size, reg1, pos1),
 
             (troop_set_slot, "trp_temp_array_a", ":cook", reg1),#for button
+
+            (create_button_overlay, reg1, "@Talk", tf_center_justify|tf_with_outline),
+            (overlay_set_color, reg1, message_alert),
+            (position_set_x, pos1, 210), # Higher, means more toward the right
+            (store_add, ":gap_y", ":cur_y", -65),
+            (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (troop_set_slot, "trp_temp_array_b", ":cook", reg1),#for button
 
         (else_try),
             (try_begin),
@@ -25959,6 +25985,27 @@ presentations = [
                     (dialog_box, "@You have no slaves to assign. You need slaves inside your party as prisoners to assign them to your household."),
                 (try_end),
             (try_end),
+        (else_try),
+            (troop_slot_eq, "trp_temp_array_b", ":slave", ":button_pressed_id"),#for button
+            (assign, ":continue", 0),
+
+            (try_begin),
+                (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
+                (store_party_size_wo_prisoners, ":men", "p_main_party"),
+                (ge, ":men", 20),
+                (assign, ":scene", "scn_players_tent"), 
+            (else_try),
+                (call_script, "script_get_player_camp_scene"),
+                (assign, ":scene", reg0),
+            (try_end),
+
+            (set_jump_mission, "mt_camp"),
+            (modify_visitors_at_site, ":scene"),
+            (reset_visitors, 0),
+            (set_visitor, 2, "trp_player"),
+            (set_visitor, 3, ":slave"),
+            (jump_to_scene, ":scene"),
+            (change_screen_mission),
         (try_end),
         (eq, ":continue", 0),
     (else_try),

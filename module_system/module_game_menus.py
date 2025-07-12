@@ -7824,7 +7824,6 @@ game_menus = [
 
       ("siege_assault_camp",[],
         "Your siege Camp.", [
-        (set_jump_mission,"mt_camp"),
         (call_script, "script_setup_camp_scene"),
         (change_screen_mission),
       ]),
