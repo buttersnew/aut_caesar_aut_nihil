@@ -12474,7 +12474,7 @@ simple_triggers = [
     (try_end),
 ]),
 
-(4,[
+(24*12,[
     (call_script, "script_execude_debug_message", 196),
     # check number of household troops player has
     (assign, ":number_household_slaves", 0),

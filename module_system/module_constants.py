@@ -2024,6 +2024,8 @@ tc_poppaea_event_2          = 45
 
 tc_main_story_fleet         = 46
 
+tc_bandit_lair              = 47
+
 #Troop Commentaries begin
 #Log entry types
 #civilian

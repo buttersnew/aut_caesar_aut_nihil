@@ -23883,27 +23883,27 @@ game_menus = [
       (try_end),
     (try_end),
   ],[
-    ("continue_1",[
+    ("trade_slaves",[
+      (party_get_template_id, ":template", "$g_encountered_party"),
+      (neq, ":template", "pt_looter_lair"),
       # (store_relation, ":rel", "$g_encountered_party_faction", "fac_player_faction"),#is at peace
       # (ge, ":rel", 0),
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 0), #used in place of global variable
 
     ],"Trade slaves",[
-      (party_add_prisoners, "$g_encountered_party", "trp_slave_greek", 10),
-      (party_add_prisoners, "$g_encountered_party", "trp_slave", 10),
-      (party_add_prisoners, "p_main_party", "trp_slave_female_greek", 10),
-
       (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
       (assign, ":slave_trader", reg0),
       (call_script, "script_setup_troop_meeting", ":slave_trader", -1, -1),
     ]),
-    ("continue_1",[
+
+    ("hire_troops",[
       (store_relation, ":rel", "$g_encountered_party_faction", "fac_player_faction"),#is at peace
       (ge, ":rel", 0),
 
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 0), #used in place of global variable
 
       (party_get_template_id, ":template", "$g_encountered_party"),
+      (neq, ":template", "pt_looter_lair"),
 
       (try_begin),
         (eq, ":template", "pt_black_sea_pirates_lair"),
@@ -23994,6 +23994,90 @@ game_menus = [
       (else_try),
           (display_message, "str_not_enough_party_space"),
       (try_end),
+    ]),
+    ("continue_1",[
+      (party_get_template_id, ":template", "$g_encountered_party"),
+      (neq, ":template", "pt_looter_lair"),
+      (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 0), #used in place of global variable
+    ],"Walk around...",[
+      (party_get_template_id, ":template", "$g_encountered_party"),
+      (try_begin),
+        (eq, ":template", "pt_black_sea_pirates_lair"),
+        (assign, ":bandit_troop", "trp_black_sea_priate"),
+        (assign, ":scene_to_use", "scn_lair_pirates"),
+      (else_try),
+        (eq, ":template", "pt_sea_raider_lair"),
+        (assign, ":bandit_troop", "trp_sea_raider"),
+        (assign, ":scene_to_use", "scn_lair_sea_raiders"),
+      (else_try),
+        (eq, ":template", "pt_forest_bandit_lair"),
+        (assign, ":bandit_troop", "trp_forest_bandit"),
+        (assign, ":scene_to_use", "scn_lair_forest_bandits"),
+      (else_try),
+        (eq, ":template", "pt_egyptian_bandit_lair"),
+        (assign, ":bandit_troop", "trp_egyptian_infantry_heavy"),
+        (assign, ":scene_to_use", "scn_lair_egypt_bandits"),
+      (else_try),
+        (eq, ":template", "pt_nabatean_lair"),
+        (assign, ":bandit_troop", "trp_desert_bandit"),
+        (assign, ":scene_to_use", "scn_lair_arabian"),
+      (else_try),
+        (eq, ":template", "pt_desert_bandit_lair"),
+        (assign, ":bandit_troop", "trp_desert_bandit"),
+        (assign, ":scene_to_use", "scn_lair_desert_bandits"),
+      (else_try),
+        (eq, ":template", "pt_numidian_bandit_lair"),
+        (assign, ":bandit_troop", "trp_sarranid_horseman"),
+        (assign, ":scene_to_use", "scn_lair_african"),
+      (else_try),
+        (eq, ":template", "pt_nubian_lair"),
+        (assign, ":bandit_troop", "trp_meroe_archers"),
+        (assign, ":scene_to_use", "scn_lair_african_2"),
+      (else_try),
+        (eq, ":template", "pt_gaetuli_bandit_lair"),
+        (assign, ":bandit_troop", "trp_gaetuli_horseman"),
+        (assign, ":scene_to_use", "scn_lair_african"),
+      (else_try),
+        (eq, ":template", "pt_mountain_bandit_lair"),
+        (assign, ":bandit_troop", "trp_mountain_bandit"),
+        (assign, ":scene_to_use", "scn_lair_mountain_bandits"),
+      (else_try),
+        (eq, ":template", "pt_taiga_bandit_lair"),
+        (assign, ":bandit_troop", "trp_taiga_bandit"),
+        (assign, ":scene_to_use", "scn_lair_taiga_bandits"),
+      (else_try),
+        (eq, ":template", "pt_steppe_bandit_lair"),
+        (assign, ":bandit_troop", "trp_steppe_bandit"),
+        (assign, ":scene_to_use", "scn_lair_steppe_bandits"),
+      (else_try),
+        (eq, ":template", "pt_saka_camp"),
+        (assign, ":bandit_troop", "trp_saka_horse_archer"),
+        (assign, ":scene_to_use", "scn_lair_saka"),
+      (else_try),
+        (eq, ":template", "pt_looter_lair"),
+        (assign, ":bandit_troop", "trp_looter"),
+        (assign, ":scene_to_use", "scn_lair_forest_bandits"),
+      (try_end),
+
+      (set_jump_mission,"mt_visit_bandit_lair"),
+
+      (modify_visitors_at_site,":scene_to_use"),
+      (reset_visitors),
+
+      (set_visitor, 0, "trp_player"),
+
+      (try_for_range, ":entry", 2, 12),
+        (set_visitor, ":entry", ":bandit_troop", 1),
+      (try_end),
+
+      (assign, "$talk_context", tc_bandit_lair),
+
+      (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
+      (assign, ":slave_trader", reg0),
+      (set_visitor, 5, ":slave_trader", 1),
+
+      (jump_to_scene, ":scene_to_use"),
+      (change_screen_mission),
     ]),
     ("continue_1",[
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 0), #used in place of global variable
@@ -24088,21 +24172,15 @@ game_menus = [
       (try_end),
     ]),
 
-    ("leave_no_attack",
-    [
+    ("leave_no_attack",[
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 0),
-    ],
-    "Leave...",
-    [
+    ],"Leave...",[
       (change_screen_return),
     ]),
 
-    ("leave_victory",
-    [
+    ("leave_victory",[
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 2),
-    ],
-    "Continue...",
-    [
+    ],"Continue...",[
       (try_begin),
         (eq, "$loot_screen_shown", 0),
   #          (try_begin),
@@ -24172,12 +24250,9 @@ game_menus = [
       # (try_end),
     ]),
 
-    ("leave_defeat",
-    [
+    ("leave_defeat",[
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 1),
-    ],
-    "Continue...",
-    [
+    ],"Continue...",[
       # (try_for_range, ":bandit_template", bandit_party_templates_begin, bandit_party_templates_end), #SB : template range
       #     (party_template_slot_eq, ":bandit_template", slot_party_template_lair_party, "$g_encountered_party"),
       #     (party_template_set_slot, ":bandit_template", slot_party_template_lair_party, 0),
@@ -38526,6 +38601,25 @@ game_menus = [
       (set_visitor, 0, "trp_player"),
 
       (jump_to_scene, "scn_holy_lance_cave"),
+      (change_screen_mission),
+    ], "Leave."),
+    ("answere_3",[],"Leave.",[
+	      (change_screen_map),
+    ]),
+]),
+
+("valley_of_elah",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
+  "The legendary site of David's triumph over Goliath. Once a battlefield that decided the fate of a kingdom, the valley is now a quiet expanse of dusty hills and ancient terebinth trees, its heroic past fading into memory.^^It is said that David's sling is hidden somewhere in this valley.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+	],[
+    ("answere_1",[],"Explore the place.",[
+      (modify_visitors_at_site, "scn_valley_of_elah"),
+      (reset_visitors),
+      (set_jump_mission, "mt_explore_secret_place"),
+      (set_visitor, 0, "trp_player"),
+
+      (jump_to_scene, "scn_valley_of_elah"),
       (change_screen_mission),
     ], "Leave."),
     ("answere_3",[],"Leave.",[

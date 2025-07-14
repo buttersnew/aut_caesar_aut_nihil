@@ -6219,6 +6219,12 @@ itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 ["thunder_arrows", "Thunder Arrows", [("kritan_arrow",0),("kritan_arrow_flying",ixmesh_flying_ammo),("kritan_arrow_qui",ixmesh_carry)], itp_unique|itp_type_arrows, itcf_carry_quiver_back_right,
 3500, weight(3)|abundance(50)|weapon_length(91)|thrust_damage(7,pierce)|max_ammo(25), imodbits_missile ],
 
+#legendary sling
+["sling_david", "David's Sling", [("sling_2",0)],itp_type_pistol |itp_merchandise|itp_primary|itp_secondary|itp_cant_use_on_horseback ,itcf_shoot_pistol,
+50,  abundance(90)|weight(0.5)|difficulty(0)|spd_rtng(100) | shoot_speed(70) | thrust_damage(32 ,blunt)|max_ammo(1)|accuracy(99),imodbits_none, [
+  (ti_on_weapon_attack, [(play_sound,"snd_throw_stone")])
+]],
+
 
 ##legendary bows end
 

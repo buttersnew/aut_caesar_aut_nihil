@@ -9114,6 +9114,7 @@ strings = [
 ("description_african_longbow", "Description:^^Mighty bow blessed by the god Nyame.^^Background:^^Nyame is a North African deity worshipped by the Akan people of Ghana. However, this bow is purely fictional."),
 ("description_dragon_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'dragon'.^^Background:^^This arrows are purely fictional."),
 ("description_thunder_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'thunder'.^^Background:^^This arrows are purely fictional."),
+("description_sling_David", "Description:^^The legendary sling with which David killed Goliat. A perfect weapon for fighting a superior enemy.^^Background:^^According to religious texts, David defeated the stronger Goliat with a sling."),
 ("description_linothorax_alexander", "Description:^^This is the armour worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
 ("description_alexanders_helm", "Description:^^This is the helmet worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
 ("description_armor_of_african_gods", "Description:^^A strong hamata over a tunic together with a lionskin. Somehow it offers much more protection than one would expect.^^Background:^^This armour set is purely fictional."),
@@ -9645,7 +9646,7 @@ strings = [
 ("culture_13_rized", "Nubian"),
 ("culture_14_rized", "Saka"),
 
-("here_is_what_i_have_on_offer", "Here's what I have on offer:"),
+("here_is_what_i_have_on_offer", "Here's what I have on offer:^^{s3}"),
 ("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),
 ("i_will_take_the_reg1_s1_for_reg2_denars", "I'll take the {reg1} {s1} for {reg2} denars."),
 ("reg1_s1_have_been_added_to_your_party_as_prisoners", "{reg1} {s1} have been added to your party as prisoners."),

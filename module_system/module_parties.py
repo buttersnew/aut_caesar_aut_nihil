@@ -570,6 +570,7 @@ parties = [
 
 ("old_mine", "Old mine", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-275.72, 45.67), [(trp_mercenary_swordsman, 50, 0),(trp_hispanic_infantry, 50, 0), (trp_hispanic_heavy_infantry, 50, 0)], 180),
 ("holy_lance_cave","Montes Sinai", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(78.77, -77.54),[]),
+("valley_of_elah","Valley of Elah", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(85.675, -60.00),[]),
 
 ("gaetulian_town_1", "Larbas", icon_gaetulian_town|pf_town, no_menu, pt_none, fac_gaetuli, 0, ai_bhvr_hold, 0, (-230.63, -62.98), []),
 ("garmantian_town_1", "Garama", icon_garamantian_town|pf_town, no_menu, pt_none, fac_garamantes, 0, ai_bhvr_hold, 0, (-110.41, -146.35), []),

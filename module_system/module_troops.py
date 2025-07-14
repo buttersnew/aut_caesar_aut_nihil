@@ -5187,6 +5187,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["bonus_chest_19","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_xylospongium],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_20","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_book_poop],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_21","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt,itm_didos_underwear],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_22","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_sling_david,itm_sling_rock1],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 
 ["household_possessions","{!}household_possessions","{!}household_possessions",tf_hero|tf_inactive|tf_is_merchant, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 

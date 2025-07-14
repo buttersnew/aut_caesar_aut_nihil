@@ -3266,9 +3266,9 @@ scene_props = [
   ("egy_temple_1",0,"egy_temple_1","bo_egy_temple_1", []),
 
 # from 'odysseia_assets.brf': begin (OpenBRF)
-	( "odysseia_carpet02"                          ,0,"odysseia_carpet02","0",[]),
-	( "odysseia_carpet03"                          ,0,"odysseia_carpet03","0",[]),
-	( "odysseia_alexanders_tomb"                          ,0,"odysseia_alexanders_tomb","bo_roman_temple_new_b",[]),
+	("odysseia_carpet02"                          ,0,"odysseia_carpet02","0",[]),
+	("odysseia_carpet03"                          ,0,"odysseia_carpet03","0",[]),
+	("odysseia_alexanders_tomb"                          ,0,"odysseia_alexanders_tomb","bo_roman_temple_new_b",[]),
 # from 'odysseia_assets.brf': end (OpenBRF)
 
   ("rescue_door",0,"door_a","bo_door_a",[
@@ -3415,5 +3415,5 @@ scene_props = [
   ("destroy_house_2_b",0,"destroy_house_2_b","bo_destroy_house_2_b", []),
   ("destroy_house_2_c",0,"destroy_house_2_c","bo_destroy_house_2_c", []),
 
-  ( "mp_battlement_framework_2",0,"mp_battlement_framework_2","bo_mp_battlement_framework_2",[]),
+  ("mp_battlement_framework_2",0,"mp_battlement_framework_2","bo_mp_battlement_framework_2",[]),
 ]

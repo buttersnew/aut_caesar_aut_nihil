@@ -1139,6 +1139,7 @@ scenes = [
   ("shitty_tavern", sf_indoors, "thirsty_lion", "bo_thirsty_lion", (-100, -100), (100, 100), -100, "0",[], []),
 
   ("holy_lance_cave",sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000500007630005a56b00006e200000319300002f0b", [],[], "outer_terrain_desert_mountain"),
+  ("valley_of_elah",sf_generate,"none", "none", (0,0),(100,100),-100,"0x0000000343e005000008661800004f9c00007e0c00003bf4", [],["bonus_chest_22"], "outer_terrain_steppe_3"),
 
   ("werdheri_bandit_lair",sf_generate,"none", "none", (0,0),(100,100),-100,"0x0000000130025cb20006097f00005b1400000e2f00005fd9", [],[], "outer_terrain_plain"),
 

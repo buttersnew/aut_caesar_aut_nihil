@@ -306,6 +306,17 @@ poisoned_arrows_damage = (6, 0, 0, [],[
 
 
 global_common_triggers = [
+  # (0, 0, 0,[
+  #   (key_clicked, key_h),
+  # ],[
+  #   (display_message, "@Change skybox"),
+  #   (store_add, ":hdr", "$sky_box", 1),
+  #   (set_skybox, "$sky_box", ":hdr"),
+  #   (val_add, "$sky_box", 2),
+  #   (ge, "$sky_box", 54),
+  #   (assign, "$sky_box", 0),
+  # ]),
+
   (0, 0, 0,[
     (key_clicked, key_j),
   ],[
@@ -8009,7 +8020,81 @@ mission_templates = [
 
   ] + bodyguard_triggers,
 ),
+("visit_bandit_lair",0,-1,
+  "village center",[
+    (0,mtef_visitor_source|mtef_team_0,0,0,1,[]),
+    (1,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (2,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (3,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (4,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (5,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (6,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (7,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
 
+    (8,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (11,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+  ], p_wetter + storms +global_common_triggers +
+  [
+    (ti_tab_pressed, 0, 0, [
+    ],[
+      (stop_all_sounds, 1),
+      (finish_mission, 3),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+      (mission_disable_talk),
+    ]),
+
+    can_spawn_commoners,
+    improved_lightning,
+
+    (1, 0, ti_once, [],[
+      (store_current_scene, ":cur_scene"),
+      (scene_set_slot, ":cur_scene", slot_scene_visited, 1),
+      (call_script, "script_init_town_walker_agents"),
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_travel),
+    ]),
+
+    (ti_before_mission_start, 0, 0, [],[(call_script, "script_change_banners_and_chest")]),
+
+    (ti_inventory_key_pressed, 0, 0, [
+      (set_trigger_result,1),
+    ],[]),
+
+    (2, 0, 0, [(call_script, "script_center_ambiance_sounds")],[]),
+
+    (0,8,0,[],[
+      (try_for_agents,":agent_no"),
+        (agent_is_alive,":agent_no"),
+        (agent_is_human,":agent_no"),
+        (agent_get_troop_id, ":troop_no", ":agent_no"),
+        (neg|troop_is_hero, ":troop_no"),
+
+        (assign, ":continue_walk", 0),
+        (store_random_in_range, ":continue_walk", 1, 100),
+        (try_begin),
+          (le, ":continue_walk", 38),
+          (agent_set_stand_animation, ":agent_no", "anim_stand_man"),
+          (agent_set_walk_forward_animation, ":agent_no", "anim_walk_forward"),
+          (agent_set_animation, ":agent_no", "anim_stand_man"),
+          (agent_set_animation_progress, ":agent_no", 10),
+
+          (agent_get_position, pos1, ":agent_no"),
+          (store_random_in_range, ":points", 1, 12),
+          (entry_point_get_position, pos2, ":points"),
+          (agent_set_speed_limit, ":agent_no", 1),
+          (agent_set_scripted_destination, ":agent_no", pos2),
+        (try_end),
+      (try_end),
+    ]),
+
+    ambient_scene_play_loop,
+    ambient_scene_play_random_sound,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+
+  ] + bodyguard_triggers,
+),
 ("bandits_at_night",0,-1,
   "Default town visit",[
     (0,mtef_scene_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, pilgrim_disguise),
@@ -32644,9 +32729,7 @@ mission_templates = [
       (try_end),
     ]),
 
-    (0,8,0,[
-    ],
-      [
+    (0,8,0,[],[
       (try_for_agents,":agent_no"),
           (agent_is_alive,":agent_no"),
           (agent_is_human,":agent_no"),
