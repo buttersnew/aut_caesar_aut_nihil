@@ -5315,12 +5315,12 @@ attrib_level_23,wp(20),knows_inventory_management_10,roman_face1, roman_face2],
 # # - athletics => farming (Endurance/Agility), general labor
 ["slave", "Servus", "Servi", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
-knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2, 
+knows_looting_8|knows_trade_6|knows_engineer_6|knows_power_strike_3|knows_athletics_3, 
 roman_face1, roman_face2 ],
 
 ["slave_roman", "Servus Romanus", "Servi Romani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
-knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2, 
+knows_looting_8|knows_trade_4|knows_engineer_10|knows_power_strike_2|knows_athletics_2, 
 roman_face1, roman_face2 ],
 
 ["slave_dacian", "Servus Dacicus", "Servi Dacici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
