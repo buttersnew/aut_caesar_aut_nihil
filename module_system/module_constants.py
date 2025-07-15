@@ -351,6 +351,8 @@ slot_town_lord                 = 7
 slot_party_ai_substate         = 8
 # slot_town_claimed_by_player    = 9 # this slot number is free
 
+slot_center_slave_trader = 9
+
 slot_cattle_driven_by_player = slot_town_lord #hack
 
 # slots used by parties which are not centers:
@@ -1487,6 +1489,7 @@ slot_player_embezzeled_founds           = 102 #use this instead of a global
 slot_troop_recently_bribed              = 102
 slot_player_takes_money_from_treasury   = 103
 
+# for companions
 slot_troop_intro_response_2 			= 103
 slot_troop_backstory_a 					= 104
 slot_troop_backstory_b 				  	= 105
@@ -1541,6 +1544,63 @@ slot_troop_kingsupport_objection_state  = 145 #0, default, 1, needs to voice, 2,
 slot_troop_player_routed_agents                 = 146
 slot_troop_ally_routed_agents                   = 147
 slot_troop_enemy_routed_agents                  = 148
+
+# special slots for slave traders
+slot_troop_slaves_begin = 102
+
+# Male Slaves
+slot_troop_slave                = 102
+slot_troop_slave_roman          = 103
+slot_troop_slave_dacian         = 104
+slot_troop_slave_thracian       = 105
+slot_troop_slave_celt           = 106
+slot_troop_slave_sarmatian      = 107
+slot_troop_slave_germanic       = 108
+slot_troop_slave_caucasian      = 109
+slot_troop_slave_parthian       = 110
+slot_troop_slave_persian        = 111
+slot_troop_slave_judean         = 112
+slot_troop_slave_bosporan       = 113
+slot_troop_slave_arabian        = 114
+slot_troop_slave_berber         = 115
+slot_troop_slave_garamantian    = 116
+slot_troop_slave_nubian         = 117
+slot_troop_slave_saka           = 118
+slot_troop_slave_greek          = 119
+slot_troop_slave_illyrian       = 120
+slot_troop_slave_hispanic       = 121
+slot_troop_slave_gaul           = 122
+slot_troop_slave_egyptian       = 123
+slot_troop_slave_syrian         = 124
+slot_troop_slave_eastern        = 125
+
+# Female Slaves (Offset by 23 from male counterparts)
+slot_troop_slave_female                = 126
+slot_troop_slave_female_roman          = 127
+slot_troop_slave_female_dacian         = 128
+slot_troop_slave_female_thracian       = 129
+slot_troop_slave_female_celt           = 130
+slot_troop_slave_female_sarmatian      = 131
+slot_troop_slave_female_germanic       = 132
+slot_troop_slave_female_caucasian      = 133
+slot_troop_slave_female_parthian       = 134
+slot_troop_slave_female_persian        = 135
+slot_troop_slave_female_judean         = 136
+slot_troop_slave_female_bosporan       = 137
+slot_troop_slave_female_arabian        = 138
+slot_troop_slave_female_berber         = 139
+slot_troop_slave_female_garmantian     = 140
+slot_troop_slave_female_nubian         = 141
+slot_troop_slave_female_saka           = 142
+slot_troop_slave_female_greek          = 143
+slot_troop_slave_female_illyrian       = 144
+slot_troop_slave_female_hispanic       = 145
+slot_troop_slave_female_gaul           = 146
+slot_troop_slave_female_egyptian       = 147
+slot_troop_slave_female_syrian         = 148
+slot_troop_slave_female_eastern        = 149
+
+slot_troop_slaves_end = 150
 
 #Special quest slots
 slot_troop_mission_participation        = 149
@@ -2304,13 +2364,16 @@ minor_queens_end   = "trp_arab_richmerchant"
 companions_begin = "trp_npc1"
 companions_end = kings_begin
 
+slave_traders_centers_begin = "trp_town_1_slave_trader"
+slave_traders_centers_end = "trp_town_1_seneschal"
+
 seneschal_begin = "trp_town_1_seneschal"
 seneschal_end = "trp_town_1_arena_master"
 
 special_roman_merchants_begin = "trp_merchant1"
 special_roman_merchants_end = "trp_merchant5"
 
-slave_traders_begin = "trp_slave_trader"
+slave_traders_begin = "trp_slave_trader_judean"
 slave_traders_end   = trp_slave_trader_bandit + 1
 
 slaves_begin    = "trp_slave"
@@ -3935,6 +3998,8 @@ g_antonia_talk = 78
 g_corruption_check = 79
 
 g_last_week_income = 80
+
+g_slave_contract = 81
 
 ## hispania
 p_hisp_tarraco = 1

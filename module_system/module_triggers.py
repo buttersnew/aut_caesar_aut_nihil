@@ -399,6 +399,24 @@ triggers = [
   (try_end),
 ]),
 
+# Refresh slave merchants
+(0, 0, 168.0, [],[
+    # Refill town-based slave traders
+    (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
+      (call_script, "script_get_slave_merchant_troop", ":center_no"),
+      (assign, ":slave_trader", reg0),
+      (is_between, ":slave_trader", slave_traders_centers_begin, slave_traders_centers_end),
+      (call_script, "script_refill_slave_merchant", ":slave_trader", ":center_no"),
+    (try_end),
+    # Refill bandit-lair slave traders
+    (try_for_range, ":slave_trader", slave_traders_begin, slave_traders_end),
+      (call_script, "script_refill_slave_merchant", ":slave_trader", -1), # -1 indicates not a town
+    (try_end),
+    # Refill special traders
+    (call_script, "script_refill_slave_merchant", "trp_galeas", -1),
+    (call_script, "script_refill_slave_merchant", "trp_ramun_the_slave_trader", -1),
+]),
+
 # Refresh Merchants
 (0.0, 0, 168.0, [],[
   (call_script, "script_refresh_center_inventories"),

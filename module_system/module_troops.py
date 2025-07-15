@@ -4330,6 +4330,57 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 
 ["heroes_end", "{!}heroes end", "{!}heroes end", tf_hero, 0,reserved,fac_neutral,[],def_attrib|level(2),wp(20),knows_common, 0x000000000008318101f390c515555594],
 
+#slave traders
+["town_1_slave_trader", "Slave Trader", "{!}Town 1 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_2_slave_trader", "Slave Trader", "{!}Town 2 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea],def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_3_slave_trader", "Slave Trader", "{!}Town 3 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_4_slave_trader", "Slave Trader", "{!}Town 4 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_5_slave_trader", "Slave Trader", "{!}Town 5 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea],def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_6_slave_trader", "Slave Trader", "{!}Town 6 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea],def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_7_slave_trader", "Slave Trader", "{!}Town 7 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea],def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_8_slave_trader", "Slave Trader", "{!}Town 8 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea],def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_9_slave_trader", "Slave Trader", "{!}Town 9 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_10_slave_trader", "Slave Trader", "{!}Town 10 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_11_slave_trader", "Slave Trader", "{!}Town 11 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea],def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_12_slave_trader", "Slave Trader", "{!}Town 12 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_13_slave_trader", "Slave Trader", "{!}Town 13 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea],def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_14_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_15_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_16_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_17_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_18_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_19_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_20_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_21_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_22_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_23_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_24_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_25_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_26_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_27_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_28_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_29_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_30_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_31_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_32_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_33_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_34_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_35_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_36_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_37_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_38_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_39_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_40_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_41_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_42_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_43_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_44_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_45_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_46_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_47_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_48_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+["town_49_slave_trader", "Slave Trader", "{!}Town 14 Slave Trader", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[itm_caligea], def_attrib|level(2),wp(20),knows_common, 0x00000000380120085cfb5e96fb6d57fb00000000001e35700000000000000000],
+
 #Seneschals
 ["town_1_seneschal", "Praefectus", "{!}Town 1 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga], def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
 ["town_2_seneschal", "Praefectus", "{!}Town 2 Seneschal", tf_hero|tf_is_merchant|tf_randomize_face, 0,reserved,fac_neutral,[itm_caligea, itm_roman_toga],def_attrib|level(2),wp(20),knows_common, roman_face1, roman_face2],
@@ -4690,7 +4741,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_3_merchant", "Merchant","{!}Merchant",tf_female|tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x00000002530012d526a88ec4a2d02d110000000000093c9a0000000000000000],
 ["town_4_merchant", "Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d860041913b6446455daca29f00000000001de4930000000000000000],
 ["town_5_merchant", "Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x00000006ef10300a5d7472a6e28f297500000000001e25130000000000000000],
-["town_6_merchant", "Mamertinus Crachus","Mamertinus Crachus",tf_hero|tf_is_merchant, 0,0, fac_commoners,[itm_roman_rich2,itm_caligea],def_attrib|level(2),wp(20),knows_inventory_management_10, 0x00000000100c40096759cab76bc757ac00000000001ec55d0000000000000000],
+["town_6_merchant", "Mamertinus Crachus from Roma","Mamertinus Crachus from Roma",tf_hero|tf_is_merchant, 0,0, fac_commoners,[itm_roman_rich2,itm_caligea],def_attrib|level(2),wp(20),knows_inventory_management_10, 0x00000000100c40096759cab76bc757ac00000000001ec55d0000000000000000],
 ["town_7_merchant", "Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x000000088d0833455522accb1bad16d600000000000a58950000000000000000],
 ["town_8_merchant", "Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000a8a10125156a3ad58a34ec62300000000001e27630000000000000000],
 ["town_9_merchant", "Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000c8905228e4959a9b7ab8ecc9400000000001e26dc0000000000000000],
@@ -5900,33 +5951,9 @@ def_attrib|level(4),wp(60),knows_common,african_face_female,african_face_female2
 ##minor faction troops and kings END
 
 #trader in slave market
-["slave_trader","Doulemporos","Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_caligea,itm_roman_poor4],
-def_attrib|level(18),wp(60),knows_common,white_face_11, white_face_12], # Roman/Generic Slave Trader
-
 ["slave_trader_judean","Ioudaios Doulemporos","Ioudaioi Doulemporoi", tf_male_eastern|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
   itm_caligea,itm_judean_tunic_3, itm_tuareg_new_2_green], # Consider more Judean-specific headwear if available, tuareg is more desert Arab/Berber
 def_attrib|level(18),wp(60),knows_common,eastern_man_face_middle_1, eastern_man_face_old_2], # Changed from arab_face to general eastern_man for Judean
-
-["slave_trader_germanic","Germanikos Doulemporos","Germanikoi Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_celtic_boots,itm_germanic_noble_tunic_3],
-def_attrib|level(18),wp(60),knows_common,germanic_face_11, germanic_face_12], # Changed to specific Germanic faces
-
-["slave_trader_celtic","Keltikos Doulemporos","Keltikoi Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_celtic_boots,itm_celtic_light_noble_1],
-def_attrib|level(18),wp(60),knows_common,celtic_face_11, celtic_face_12], # Changed to specific Celtic faces
-
-["slave_trader_dacian","Dakikos Doulemporos","Dakikoi Doulemporoi", tf_male_barbarian|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_leather_boots,itm_dacian_noble3],
-def_attrib|level(18),wp(60),knows_common,barbarian_man_face_middle_1, barbarian_man_face_old_1], # Kept general barbarian as Dacian peasants use similar
-
-["slave_trader_sarmatian","Sarmatikos Doulemporos","Sarmatikoi Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_sarmatian_shoes,itm_sarmatian_light6, itm_sarmatian_cap_2],
-def_attrib|level(18),wp(60),knows_common,scythian_face_11, scythian_face_12], # Kept Scythian faces, appropriate for Sarmatians
-
-["slave_trader_bosporan","Bosporanos Doulemporos","Bosporanoi Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_sarmatian_shoes, itm_bosporan_light2], # Consider Bosporan specific headwear if available
-def_attrib|level(18),wp(60),knows_common,scythian_face_11, scythian_face_12],  # Alan Slave Trader
 
 ["slave_trader_saka","Sakes Doulemporos","Sakai Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
   itm_eastern_shoe_b,itm_kaftan_1],
@@ -7042,6 +7069,31 @@ upgrade(troops,"refugee","follower_woman")
 upgrade(troops,"peasant_woman","follower_woman")
 upgrade(troops,"slave_female","refugee")
 upgrade(troops,"slave","slave_warrior")
+
+upgrade(troops,"slave_roman","slave_warrior")
+upgrade(troops,"slave_dacian","slave_warrior")
+upgrade(troops,"slave_thracian","slave_warrior")
+upgrade(troops,"slave_celt","slave_warrior")
+upgrade(troops,"slave_sarmatian","slave_warrior")
+upgrade(troops,"slave_germanic","slave_warrior")
+upgrade(troops,"slave_caucasian","slave_warrior")
+upgrade(troops,"slave_parthian","slave_warrior")
+upgrade(troops,"slave_persian","slave_warrior")
+upgrade(troops,"slave_judean","slave_warrior")
+upgrade(troops,"slave_bosporan","slave_warrior")
+upgrade(troops,"slave_arabian","slave_warrior")
+upgrade(troops,"slave_berber","slave_warrior")
+upgrade(troops,"slave_garmantian","slave_warrior")
+upgrade(troops,"slave_nubian","slave_warrior")
+upgrade(troops,"slave_saka","slave_warrior")
+upgrade(troops,"slave_greek","slave_warrior")
+upgrade(troops,"slave_illyrian","slave_warrior")
+upgrade(troops,"slave_hispanic","slave_warrior")
+upgrade(troops,"slave_gaul","slave_warrior")
+upgrade(troops,"slave_egyptian","slave_warrior")
+upgrade(troops,"slave_syrian","slave_warrior")
+upgrade(troops,"slave_eastern","slave_warrior")
+
 upgrade(troops,"slave_warrior","slave_warrior_2")
 upgrade(troops,"slave_warrior_2","slave_warrior_3")
 
