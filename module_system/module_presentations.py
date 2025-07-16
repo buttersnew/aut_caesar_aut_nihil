@@ -12449,10 +12449,25 @@ presentations = [
                 (assign, ":max_skill_owner", reg1),
                 (assign, reg2, ":max_skill"),
 
-                (party_get_num_prisoners, ":num_prisoners", "$g_encountered_party"), #possibly up to 100
-                (val_div, ":num_prisoners", 5), ##5 prisoners improve by 1%
-                (val_clamp, ":num_prisoners", 0, 31),
-                (store_sub, ":num_prisoners_modifier", 100, ":num_prisoners"),
+                # (party_get_num_prisoners, ":num_prisoners", "$g_encountered_party"), #possibly up to 100
+                # (val_div, ":num_prisoners", 5), ##5 prisoners improve by 1%
+                # (val_clamp, ":num_prisoners", 0, 31),
+                # (store_sub, ":num_prisoners_modifier", 100, ":num_prisoners"),
+
+                (call_script, "script_get_labour_slave_skill_modifier", "$g_encountered_party", "skl_power_strike"),
+                (assign, ":num_prisoners",reg0),
+                (try_begin),
+                    (gt, ":num_prisoners",0),
+                    # (assign, reg10, ":modifier"),
+                    # (assign, reg11, ":total_slaves"),
+                    # (display_message, "@weighted_number_slaves: {reg10} | total_slaves: {reg11}"),
+                    (val_div, ":num_prisoners", 5),
+                    (val_clamp, ":num_prisoners", 1, 31),
+                (else_try),
+                    (assign, ":num_prisoners", -4),
+                (try_end),
+                (store_add, ":num_prisoners_modifier", ":num_prisoners", 100),
+
 
                 ##new code:
                 ##same code applies for CAI
@@ -12491,7 +12506,6 @@ presentations = [
                 (assign, reg46, ":num_prisoners"),#prisoner
                 (assign, reg47, ":engin_eff"),
 
-
                 (assign, reg5, ":improvement_cost"),
                 (assign, reg6, ":improvement_time"),
 
@@ -12515,7 +12529,7 @@ presentations = [
                 (str_store_string, s10, s0),
                 (str_store_string, s11, s1),
 
-                (str_store_string, s11, "@{s11}^^As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you {reg5} denars (base cost {reg0}) and will take {reg6} days  (base time {reg40}).^^The building time and costs are modified by: Skill: {reg44}%, slave politic of the realm: {reg45}% and engineering efficiency of your household slaves: {reg47}%. Additionally, the building time is modified by the number of prisoners in the town: {reg46}%."),
+                (str_store_string, s11, "@{s11}^^As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you {reg5} denars (base cost {reg0}) and will take {reg6} days  (base time {reg40}).^^The building time and costs are modified by: Skill: {reg44}%, slave politic of the realm: {reg45}% and engineering efficiency of your household slaves: {reg47}%. Number of slaves in prison: {reg46}%."),
                 (assign, ":value", 1),
                 (call_script, "script_get_improvement_picture", ":building", "trp_player", "$g_encountered_party"),
                 (assign, ":material", reg0),

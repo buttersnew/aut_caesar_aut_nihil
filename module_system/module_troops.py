@@ -5396,7 +5396,7 @@ scythian_face_21, scythian_face_22 ],
 
 ["slave_germanic", "Servus Germanicus", "Servi Germanici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 10+8 = 18
-knows_power_strike_10|knows_athletics_8, 
+knows_power_strike_10|knows_athletics_10, 
 germanic_face_21, germanic_face_22 ],
 
 ["slave_caucasian", "Servus Caucasicus", "Servi Caucasici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
@@ -5441,7 +5441,7 @@ african_face_younger, african_face_older ],
 
 ["slave_nubian", "Servus Nubianus", "Servi Nubiani", tf_male_black|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Could also use "Aethiops" but Nubianus is more specific
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(21), wp(30), # 2+3+1+5+10 = 21
-knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_5|knows_athletics_10, 
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_10|knows_athletics_10, 
 nubian_face1, nubian_face2 ],
 
 ["slave_saka", "Servus Sacae", "Servi Sacae", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Sacae is plural, Saca singular. "Servus Sacarum" for plural.
@@ -5718,7 +5718,7 @@ attrib_level_26, wp(160), knows_level_26, celtic_face_11, celtic_face_12 ],
 ["sarmatian_deserter", "Desertor Sarmata", "Desertores Sarmatae", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_culture_3,
 [itm_steppe_horse_1,itm_sarmatian_light3,itm_sarmatian_light4,itm_sarmatian_light2,itm_sarmatian_light1,itm_kopfband,itm_scythian_shield_cav2,itm_scythian_shield_cav3,itm_sarmatian_ringsword_1,itm_bodkin_arrows,itm_persian_bow,itm_eastern_shoe]+sarmatian_helm_spangen,
 attrib_level_26, wp(160), knows_level_26, scythian_face_21, scythian_face_22 ],
-["germanic_deserter", " Desertor Germanicus", "Desertores Germani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_5,
+["germanic_deserter", " Desertor Germanicus", "Desertores Germani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_4,
 [itm_celtic_boots,itm_germanic_light4,itm_germanic_light7,itm_germanic_naked6,itm_germanic_axe1,itm_germanic_axe3,itm_germanic_shield_large10,itm_germanic_shield_large11,itm_germanic_shield_large6,itm_germanic_shield_large2,itm_war_spear,itm_throwing_spears],
 attrib_level_26, wp(160), knows_level_26, germanic_face_11, germanic_face_12],
 ["caucasian_deserter", "Desertor Caucasicus", "Desertores Caucasici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_5,

@@ -1048,3 +1048,6 @@ script_refill_slave_trader_bandit = 1046
 script_refill_slave_trader_special = 1047
 script_init_temp_party = 1048
 script_apply_changes_to_slave_trader = 1049
+script_get_labour_slave_skill_modifier = 1050
+script_count_party_slaves = 1051
+script_remove_slaves_from_party = 1052

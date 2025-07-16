@@ -60,21 +60,20 @@ scene_props = [
       ]),
     ]),
   ("light",sokf_invisible,"light_sphere","0",  [
-     (ti_on_init_scene_prop,
-      [
-          (store_trigger_param_1, ":prop_instance_no"),
-          (set_fixed_point_multiplier, 100),
-          (prop_instance_get_scale, pos5, ":prop_instance_no"),
-          (position_get_scale_x, ":scale", pos5),
-          (store_mul, ":red", 3 * 200, ":scale"),
-          (store_mul, ":green", 3 * 145, ":scale"),
-          (store_mul, ":blue", 3 * 45, ":scale"),
-          (val_div, ":red", 100),
-          (val_div, ":green", 100),
-          (val_div, ":blue", 100),
-          (set_current_color,":red", ":green", ":blue"),
-          (set_position_delta,0,0,0),
-          (add_point_light_to_entity, 10, 30),
+     (ti_on_init_scene_prop,[
+      (store_trigger_param_1, ":prop_instance_no"),
+      (set_fixed_point_multiplier, 100),
+      (prop_instance_get_scale, pos5, ":prop_instance_no"),
+      (position_get_scale_x, ":scale", pos5),
+      (store_mul, ":red", 3 * 200, ":scale"),
+      (store_mul, ":green", 3 * 145, ":scale"),
+      (store_mul, ":blue", 3 * 45, ":scale"),
+      (val_div, ":red", 100),
+      (val_div, ":green", 100),
+      (val_div, ":blue", 100),
+      (set_current_color,":red", ":green", ":blue"),
+      (set_position_delta,0,0,0),
+      (add_point_light_to_entity, 10, 30),
       ]),
     ]),
   ("light_red",sokf_invisible,"light_sphere","0",  [
@@ -3416,4 +3415,23 @@ scene_props = [
   ("destroy_house_2_c",0,"destroy_house_2_c","bo_destroy_house_2_c", []),
 
   ("mp_battlement_framework_2",0,"mp_battlement_framework_2","bo_mp_battlement_framework_2",[]),
+
+
+  ("alexandria_lighthouse_icon",0,"town_alexandria_lighthouse","bo_town_alexandria_lighthouse",[
+    (ti_on_init_scene_prop,[
+      (store_trigger_param_1, ":prop_instance_no"),
+      (set_fixed_point_multiplier, 100),
+      (prop_instance_get_scale, pos5, ":prop_instance_no"),
+      (position_get_scale_x, ":scale", pos5),
+      (store_mul, ":red", 3 * 200, ":scale"),
+      (store_mul, ":green", 3 * 145, ":scale"),
+      (store_mul, ":blue", 3 * 45, ":scale"),
+      (val_div, ":red", 100),
+      (val_div, ":green", 100),
+      (val_div, ":blue", 100),
+      (set_current_color,":red", ":green", ":blue"),
+      (set_position_delta,0,0,0),
+      (add_point_light_to_entity, 10, 30),
+    ]),
+  ]),
 ]

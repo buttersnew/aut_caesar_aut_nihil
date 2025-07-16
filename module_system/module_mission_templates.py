@@ -57,6 +57,54 @@ remove_banners = (ti_before_mission_start, 0, 0, [],[
   (try_end),
 ])
 
+# Trigger to spawn Alexandria Lighthouse in the background if nearby
+spawn_alexandria_lighthouse = (0, 0, ti_once, [
+  (store_distance_to_party_from_party, ":distance", "p_main_party", "p_town_20"),
+  (le, ":distance", 40),
+  (party_get_current_terrain, ":terrain", "p_temp_party"),
+  (this_or_next|eq, ":terrain", rt_bridge),
+  (this_or_next|eq, ":terrain", rt_water),
+  (eq, ":terrain", rt_river),
+],[
+  (set_fixed_point_multiplier, 100),
+  (display_message, "@You can see the distant light of Alexandria on the horizon.", color_good_news),
+
+  # Get the direction vector from the player to the town on the world map
+  (party_get_position, pos1, "p_main_party"),
+  (party_get_position, pos2, "p_town_20"),
+  (position_transform_position_to_local, pos3, pos1, pos2), # pos3 is now the vector from player to town
+
+  # Get the center of the battle scene
+  # Entry point 0 is a reliable way to get a point near the center of the scene's geometry
+  (entry_point_get_position, pos4, 0),
+
+  (position_get_x, ":dir_x", pos3),
+  (position_get_y, ":dir_y", pos3),
+  (val_mul, ":dir_x", 150),
+  (val_mul, ":dir_y", 150),
+  
+  (position_get_x, ":center_x", pos4),
+  (position_get_y, ":center_y", pos4),
+  (val_add, ":dir_x", ":center_x"),
+  (val_add, ":dir_y", ":center_y"),
+  
+  (position_set_x, pos1, ":dir_x"),
+  (position_set_y, pos1, ":dir_y"),
+  (position_set_z, pos1, 0),
+
+  # --- DEBUG: Print the final spawn coordinates ---
+  (assign, reg5, ":dir_x"),
+  (assign, reg6, ":dir_y"),
+  (assign, reg7, 0),
+  (display_message, "@DEBUG: Lighthouse spawning at X:{reg5}, Y:{reg6}, Z:{reg7}"),
+
+  (set_spawn_position, pos1),
+  (spawn_scene_prop, "spr_alexandria_lighthouse_icon"),
+  (assign, ":prop", reg0),
+
+  (prop_instance_set_scale, ":prop", 750, 750, 750),
+])
+
 common_maritime_drowning =(1, 0, 0,[
     (store_mission_timer_a, ":cur_time"),
     (gt, ":cur_time", 5),
@@ -14096,6 +14144,8 @@ mission_templates = [
     (49,mtef_visitor_source,af_override_everything,0,1,[]), #punish
   ], p_wetter + storms + global_common_triggers + vc_water +
   [
+    spawn_alexandria_lighthouse,
+
     can_spawn_commoners,
     improved_lightning,
     (ti_before_mission_start, 0, 0, [],[
@@ -17446,6 +17496,8 @@ mission_templates = [
   ],  p_wetter + storms + global_common_triggers + vc_water +
   [
     common_nobody_stalls,
+
+    spawn_alexandria_lighthouse,
 
     cannot_spawn_commoners,
     improved_lightning,

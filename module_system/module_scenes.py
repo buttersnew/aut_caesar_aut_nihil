@@ -966,9 +966,9 @@ scenes = [
 
   ("slavemarket", sf_indoors, "oil_press_interior", "bo_oil_press_interior", (-100, -100), (100, 100), -100, "0",[], []),
   ##sea scenes
-  ("sea_barbarian", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x0000000030000000c00d2348000000008000000000000000",[], [], "outer_terrain_beach"),
-  ("sea_roman", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x0000000030000000c00d2348000000008000000000000000",[], [], "outer_terrain_beach"),
-  ("meeting_scene_water", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x0000000030000000c00d2348000000008000000000000000",[], [], "sea_outer_terrain_2"),
+  ("sea_barbarian", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x0000000030000000c00d2348000000008000000000000000",[], [], "sea_outer_terrain_2"),
+  ("sea_roman", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x00000003300005000007bded000025500000152100000535",[], [], "sea_outer_terrain_2"),
+  ("meeting_scene_water", sf_generate, "none", "none", (0, 0), (240, 240), -0.5, "0x00000003300005000007bded000025500000152100000535",[], [], "sea_outer_terrain_2"),
 
   ("lugdunum_center",sf_generate,"none", "none",(0,0),(100,100),-100,"0x00000000300005000005695d00007fbc00005de100006275", [],[],"outer_terrain_plain"),
   ("lugdunum_castle",sf_indoors, "interior_castle_d", "bo_interior_castle_d", (-100, -100), (100, 100), -100, "0",["exit"], []),
