@@ -2853,7 +2853,7 @@ game_menus = [
 
       (call_script, "script_party_prisoners_add_party_prisoners", "p_main_party", "p_temp_party"),
       (party_clear, "p_temp_party"),
-      
+
       (jump_to_menu, "mnu_auto_return"),
     ]),
 
@@ -13257,7 +13257,7 @@ game_menus = [
   # ),
 
 ("garrison_management",mnf_disable_all_keys,
-  "You can exchange troops with the garrison. Size of the garrison: {reg31}. Number of prisoners: {reg30}^^{s22}^^{s11}^Prisoners in the garrison will decrease construction time upon building something.",
+  "You can exchange troops with the garrison.^Size of the garrison: {reg31}.^Number of prisoners: {reg30}^^{s22}^{s11}^Prisoners in the garrison will decrease construction time upon building something.",
   "none",[
     (str_clear, s11),
     (try_begin),
@@ -13325,8 +13325,14 @@ game_menus = [
       (gt, ":slave_trader_contract", 0),
       (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
     ],"Trade Slaves",[
-      (troop_get_slot, ":slave_trader_contract", "trp_global_variables", g_slave_contract),
-      (call_script, "script_setup_troop_meeting", ":slave_trader_contract", -1, -1),
+      (assign, "$temp1", -1),
+      (assign, "$temp2", -1),
+      (assign, "$temp3", "$g_encountered_party"),
+      (troop_get_slot, "$temp_troop", "trp_global_variables", g_slave_contract),
+      (assign, "$temp4_1", 0),
+      (start_presentation, "prsnt_trade_slaves"),
+      # (troop_get_slot, ":slave_trader_contract", "trp_global_variables", g_slave_contract),
+      # (call_script, "script_setup_troop_meeting", ":slave_trader_contract", -1, -1),
     ]),
 
     # ("slaves_0",[
@@ -16198,13 +16204,13 @@ game_menus = [
           (modify_visitors_at_site,":cur_castle_exterior"),
           (reset_visitors),
 
-          (try_begin),
-              (neq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
-              (faction_get_slot, ":troop_prison_guard", "$g_encountered_party_faction", slot_faction_prison_guard_troop),
-          (else_try),
-              (party_get_slot, ":town_original_faction", "$current_town", slot_center_original_faction),
-              (faction_get_slot, ":troop_prison_guard", ":town_original_faction", slot_faction_prison_guard_troop),
-          (try_end),
+          # (try_begin),
+              # (neq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
+          (faction_get_slot, ":troop_prison_guard", "$g_encountered_party_faction", slot_faction_prison_guard_troop),
+          # (else_try),
+              # (party_get_slot, ":town_original_faction", "$current_town", slot_center_original_faction),
+              # (faction_get_slot, ":troop_prison_guard", ":town_original_faction", slot_faction_prison_guard_troop),
+          # (try_end),
           (set_visitor, 24, ":troop_prison_guard"),
           (call_script, "script_init_town_walkers"), #chief anadido walkers a castillos
 
@@ -22547,7 +22553,7 @@ game_menus = [
 
 ("notification_player_faction_deactive",0,
   "Your kingdom no longer holds any land.",
-  "none",[ 
+  "none",[
     (play_sound, "snd_message_negative_sound"),
     (set_fixed_point_multiplier, 100),
     (position_set_x, pos0, 65),
@@ -34215,7 +34221,7 @@ game_menus = [
   +" Guilty. Consequently, you are hereby stripped of all current offices and titles. Furthermore, a punitive fine of {reg33} denars is levied against you for contempt and the original charges.",
   "none",[
     (try_begin),
-      (quest_slot_eq, "qst_trial", slot_quest_current_state, event_honorary), 
+      (quest_slot_eq, "qst_trial", slot_quest_current_state, event_honorary),
       (troop_get_slot, ":base_fine_value", "trp_player", slot_player_embezzeled_founds),
       (store_mul, reg33, ":base_fine_value", 1000),
       (val_max, reg33, 5000),
@@ -34250,7 +34256,7 @@ game_menus = [
         (assign, "$g_dont_give_fief_to_player_days", 40), # Shorter fief ban
         (quest_set_slot, "qst_trial", slot_quest_dont_give_again_remaining_days, 15), # Shorter cooldown
       (try_end),
-      
+
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
@@ -45232,7 +45238,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
       (troop_remove_gold, "trp_household_possessions", ":r2"),
       (change_screen_map),
-      (jump_to_menu, "mnu_auto_return_map"), 
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -45276,7 +45282,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
       (troop_remove_gold, "trp_player", ":r2"),
       (change_screen_map),
-      (jump_to_menu, "mnu_auto_return_map"), 
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
@@ -47146,7 +47152,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
   ("accept_emperor_mission",[],"Offer to speak with the Princeps and present the Senate's view.",[ # Renamed option ID, clearer text
     (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_expiration_days, 30),
-    
+
     # Get Emperor's name for s12 (assuming he's the leader of the player's kingdom or a specific faction)
     # If Caesar Augustus is a specific troop, use (str_store_troop_name_link, s12, "trp_caesar_augustus") instead.
     (faction_get_slot, ":emperor_troop_id", "$players_kingdom", slot_faction_leader), # Or relevant faction if not player's
@@ -47175,15 +47181,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     (call_script, "script_start_quest", "qst_talk_with_the_emperor", "trp_fortuna"), # trp_fortuna as quest giver display
     (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_current_state, 0), # Initial quest state
-    
+
     (troop_get_slot, ":current_senate_topic", "trp_senator_dummy", slot_senate_topic),
     (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_object_state, ":current_senate_topic"), # Store topic
     (quest_set_slot, "qst_talk_with_the_emperor", slot_quest_target_state, "$temp"), # Store Senate's desired outcome
-    
+
     (store_random_in_range, ":days_until_next_meeting", 6, 12), # Days until next Senate meeting
     (troop_set_slot, "trp_senator_dummy", slot_senate_next_meeting, ":days_until_next_meeting"),
     (display_message, "str_senate_meeting_over"), # Ensure this string is defined e.g. "The current Senate session has concluded."
-    
+
     (jump_to_menu, "mnu_senate_discussion"), # Or perhaps mnu_auto_return_map if Senate is over
   ]),
 
@@ -48161,12 +48167,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ##59 master_grain
     ##60 physician
     ##61 mercenary in tavern
+    ##62 quaestor
 
-    (party_get_num_prisoners, ":slaves", "$g_encountered_party"),
-    (party_count_prisoners_of_type, ":female_count", "$g_encountered_party", "trp_slave_female"),
-    (party_count_prisoners_of_type, ":male_count", "$g_encountered_party", "trp_slave"),
-    (store_mul, ":ratio", ":female_count", 100),
-    (val_div, ":ratio", ":slaves"),
     (party_get_slot, ":scene", "$g_encountered_party",  slot_castle_exterior),
     (modify_visitors_at_site,":scene"),
     (set_jump_mission,"mt_latifundium"),
@@ -48181,18 +48183,25 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_visitor, 61, ":mercenary"),
     (try_end),
 
-    (try_for_range, ":entry", 14, 41),
-      (store_random_in_range, ":r", 1, 101),
-      (try_begin),
-        (gt, ":female_count", 0),
-        (le, ":r", ":ratio"),
-        (set_visitors, ":entry", "trp_slave_female", 1),
-        (val_sub, ":female_count", 1),
-      (else_try),
-        (gt, ":male_count", 0),
-        (set_visitors, ":entry", "trp_slave", 1),
-        (val_sub, ":male_count", 1),
-      (try_end),
+    (assign, ":max_prisoners_to_spawn", 200),
+    (assign, ":next_entry_point", 14),
+    (assign, ":max_entry_point", 41), # Last entry point to use
+
+    (party_get_num_prisoner_stacks, ":num_prisoner_stacks", "$g_encountered_party"),
+    (try_for_range, ":i_stack", 0, ":num_prisoner_stacks"),
+        (gt, ":max_prisoners_to_spawn", 0),
+
+        (le, ":next_entry_point", ":max_entry_point"),
+
+        (party_prisoner_stack_get_troop_id, ":troop_id", "$g_encountered_party", ":i_stack"),
+        (party_prisoner_stack_get_size, ":stack_size", "$g_encountered_party", ":i_stack"),
+
+        (val_div, ":stack_size", 2),
+        (val_clamp, ":stack_size", 1, ":max_prisoners_to_spawn"),
+        (set_visitors, ":next_entry_point", ":troop_id", ":stack_size"),
+
+        (val_sub, ":max_prisoners_to_spawn", ":stack_size"),
+        (val_add, ":next_entry_point", 1),
     (try_end),
 
     (try_begin),
@@ -48261,7 +48270,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_begin),
       (gt, "$g_player_chamberlain", 0),
       (call_script, "script_dplmc_appoint_chamberlain"),  #fix for wrong troops after update
-      (set_visitor, 2, "$g_player_chamberlain"),
+      (set_visitor, 62, "$g_player_chamberlain"),
     (try_end),
     (set_visitor,2,"trp_administrator"),
     (try_begin),
@@ -56435,7 +56444,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   +" Inside the tent, the air is still and heavy. A lone figure, clad in desert robes, lies motionless on a worn rug, a handful of dried dates resting beside their outstretched hand. The palms around the oasis are heavy with clusters of ripe dates, a precious source of sustenance in this barren land."
   +" Yet, the stillness of the camp and the fate of its occupant cast a grim shadow. Could the dates, or perhaps the water from the spring, be tainted?",
   "none",[
-    (set_background_mesh, "mesh_pic_desert"), 
+    (set_background_mesh, "mesh_pic_desert"),
   ],[
     ("option_1_dates",[],"Leave the oasis untouched.",[
       (str_store_string, s1, "@The unsettling scene serves as a potent warning. You decide the risk is too great and leave the oasis and its silent inhabitant behind, pushing onward through the desert."),
@@ -56443,7 +56452,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
     ("option_2_dates",[],"Risk it and gather the dates.",[
-      (troop_add_items, "trp_player", "itm_raw_date_fruit", 5), 
+      (troop_add_items, "trp_player", "itm_raw_date_fruit", 5),
       (str_store_string, s1, "@Thirst and hunger gnaw at your resolve. You decide to chance it, gathering a supply of dates from the palms. Cautiously, you sample one; it's sweet, rich, and seems perfectly fine. A welcome, if somber, relief."),
       (assign, "$temp", "mesh_pic_desert"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),

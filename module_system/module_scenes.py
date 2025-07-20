@@ -714,9 +714,14 @@ scenes = [
   # ("castle_21_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000020000500000721e6000011ab000063ff000007ad",[], [], "outer_terrain_desert"),
   # ("castle_20_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000020000500000721e6000011ab000063ff000007ad",[], [], "outer_terrain_desert"),
 
-  ("londinium", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013000000000083e1200009d1f00000fbb0000a6f0",[], ["bonus_chest_6"], "outer_terrain_plain"),
+  ("londinium", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013000000000083e1200009d1f00000fbb0000a6f0",[], [], "outer_terrain_plain"),
   ("londinium_castle", sf_indoors, "arabian_interior_keep_b", "bo_arabian_interior_keep_b", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("londinium_prison", sf_indoors, "interior_prison_i", "bo_interior_prison_i", (-100, -100), (100, 100), -100, "0",["exit"], []),
+
+  ("romanized_celt_castle_ext", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013000000000083e1200009d1f00000fbb0000a6f0",[], ["bonus_chest_6"], "outer_terrain_plain"),
+  ("romanized_celt_castle_int", sf_indoors, "arabian_interior_keep_b", "bo_arabian_interior_keep_b", (-100, -100), (100, 100), -100, "0",["exit"], []),
+  ("romanized_celt_castle_prison", sf_indoors, "interior_prison_i", "bo_interior_prison_i", (-100, -100), (100, 100), -100, "0",["exit"], []),
+
 
   ("arbela_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002200005000006a5aa000046e400006d5d0000526a",[], [], "outer_terrain_steppe"),
 

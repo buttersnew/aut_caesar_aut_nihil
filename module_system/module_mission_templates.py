@@ -59,12 +59,13 @@ remove_banners = (ti_before_mission_start, 0, 0, [],[
 
 # Trigger to spawn Alexandria Lighthouse in the background if nearby
 spawn_alexandria_lighthouse = (0, 0, ti_once, [
-  (store_distance_to_party_from_party, ":distance", "p_main_party", "p_town_20"),
-  (le, ":distance", 40),
   (party_get_current_terrain, ":terrain", "p_temp_party"),
   (this_or_next|eq, ":terrain", rt_bridge),
   (this_or_next|eq, ":terrain", rt_water),
   (eq, ":terrain", rt_river),
+  (set_fixed_point_multiplier, 1),
+  (store_distance_to_party_from_party, ":distance", "p_main_party", "p_town_20"),
+  (le, ":distance", 60),
 ],[
   (set_fixed_point_multiplier, 100),
   (display_message, "@You can see the distant light of Alexandria on the horizon.", color_good_news),
@@ -82,12 +83,12 @@ spawn_alexandria_lighthouse = (0, 0, ti_once, [
   (position_get_y, ":dir_y", pos3),
   (val_mul, ":dir_x", 150),
   (val_mul, ":dir_y", 150),
-  
+
   (position_get_x, ":center_x", pos4),
   (position_get_y, ":center_y", pos4),
   (val_add, ":dir_x", ":center_x"),
   (val_add, ":dir_y", ":center_y"),
-  
+
   (position_set_x, pos1, ":dir_x"),
   (position_set_y, pos1, ":dir_y"),
   (position_set_z, pos1, 0),
@@ -22882,8 +22883,7 @@ mission_templates = [
 
   ]),
 
-("latifundium", 0, -1,
-  "lala",[
+("latifundium", 0, -1,"lala",[
     (0, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (1, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
     (2, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
@@ -22967,7 +22967,9 @@ mission_templates = [
     can_spawn_commoners,
     improved_lightning,
 
-    (ti_after_mission_start, 0, 0, [],[(call_script, "script_music_set_situation_with_culture", mtf_sit_town)]),
+    (ti_after_mission_start, 0, 0, [],[
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_town),
+    ]),
 
  	  (ti_before_mission_start, 0, ti_once, [],[
       (store_current_scene, ":scene"),
@@ -22979,18 +22981,18 @@ mission_templates = [
       (scene_set_slot, ":scene", slot_scene_visited, 1),
     ]),
 
-    (0,8,0,[],[
+    (1,0,7,[],[
       (try_for_agents,":agent_no"),
         (agent_is_alive,":agent_no"),
         (agent_is_human,":agent_no"),
         (agent_get_troop_id, ":troop_no", ":agent_no"),
         (try_begin),
-          (this_or_next|eq, ":troop_no", "trp_slave_female"),
-          (eq, ":troop_no", "trp_slave"),
+          (is_between, ":troop_no", slaves_begin, slaves_end),
 
           (assign, ":continue_walk", 0),
           (store_random_in_range, ":continue_walk", 1, 100),
           (try_begin),
+            (this_or_next|agent_slot_eq, ":agent_no", slot_agent_is_in_scripted_mode, 0),
             (le, ":continue_walk", 40),
             (agent_set_stand_animation, ":agent_no", "anim_stand_man"),
             (agent_set_walk_forward_animation, ":agent_no", "anim_walk_forward"),
@@ -23002,6 +23004,7 @@ mission_templates = [
             (entry_point_get_position, pos2, ":points"),
             (agent_set_speed_limit, ":agent_no", 1),
             (agent_set_scripted_destination, ":agent_no", pos2),
+            (agent_set_slot, ":agent_no", slot_agent_is_in_scripted_mode, 1),
           (try_end),
         (else_try),
           (this_or_next|eq,":troop_no", "trp_guest"),
@@ -23118,9 +23121,8 @@ mission_templates = [
       ambient_set_agents_for_sounds,
       ambient_agent_play_sound,
 
-      (ti_inventory_key_pressed, 0, 0,
-      [
-          (set_trigger_result, 1),
+      (ti_inventory_key_pressed, 0, 0,[
+        (set_trigger_result, 1),
       ],[]),
 
   (ti_tab_pressed, 0, 0, [],[(finish_mission), ]),
@@ -32065,7 +32067,7 @@ mission_templates = [
       (else_try),
         (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 4),
         (eq, "$temp2", 3),
-        
+
         (assign, ":save_fpm", 1),# dave fixed point value
         (convert_to_fixed_point, ":save_fpm"),
 

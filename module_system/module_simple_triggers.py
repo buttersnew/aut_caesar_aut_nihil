@@ -7828,12 +7828,14 @@ simple_triggers = [
     (set_fixed_point_multiplier, 1),
     (try_begin),
         (troop_slot_eq, "trp_global_variables", g_alesia, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_village_77"),
         (le, ":distance", 20),
         (jump_to_menu, "mnu_event_alesia"),
         (troop_set_slot, "trp_global_variables", g_alesia, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_dova, 0),#each one is unique
+        (party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_castle_23"),
         (le, ":distance", 20),
         (eq, "$g_is_emperor", 1),
@@ -7842,12 +7844,14 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_dova, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_rubicon, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_village_60"),
         (le, ":distance", 20),
         (jump_to_menu, "mnu_event_rubicon"),
         (troop_set_slot, "trp_global_variables", g_rubicon, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_famous_battle_1, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_town_33"),
         (le, ":distance", 20),
         (assign, "$temp3", 0),
@@ -7855,6 +7859,7 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_famous_battle_1, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_famous_battle_2, 0),#each one is unique
+        (party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_castle_6"),
         (le, ":distance", 20),
         (assign, "$temp3", 1),
@@ -7862,6 +7867,7 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_famous_battle_2, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_famous_battle_3, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_village_57"),
         (le, ":distance", 20),
         (assign, "$temp3", 2),
@@ -7869,6 +7875,7 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_famous_battle_3, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_famous_battle_4, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_castle_49"),
         (le, ":distance", 20),
         (assign, "$temp3", 3),
@@ -7876,9 +7883,9 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_famous_battle_4, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_pillars_of_hercules, 0),#each one is unique
+        (party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_village_138"),
         (le, ":distance", 35),
-        (party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (jump_to_menu, "mnu_event_pillars_of_hercules"),
         (troop_set_slot, "trp_global_variables", g_pillars_of_hercules, 1),
     (try_end),

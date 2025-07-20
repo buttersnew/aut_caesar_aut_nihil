@@ -65,7 +65,7 @@ scripts_hardcoded = [
     #for slave treatment
     (assign, "$g_slave_manu", 1),
     (assign, "$g_slave_treatment", 0),
-    
+
     #advicors
     (assign, "$g_player_chamberlain", -1),
     (assign, "$g_player_constable", -1),
@@ -2858,9 +2858,14 @@ scripts_hardcoded = [
     (party_set_icon, "p_castle_45", "icon_fort_greek"),
     (party_set_icon, "p_castle_44", "icon_fort_greek"),
 
-    (party_set_slot,"p_castle_23", slot_castle_exterior, "scn_londinium"),#londinium
-    (party_set_slot,"p_castle_23", slot_town_castle, "scn_londinium_castle"),#londinium
-    (party_set_slot,"p_castle_23", slot_town_prison, "scn_londinium_prison"),#londinium
+    (party_set_slot,"p_castle_23", slot_castle_exterior, "scn_romanized_celt_castle_ext"),#londinium
+    (party_set_slot,"p_castle_23", slot_town_castle, "scn_romanized_celt_castle_int"),#londinium
+    (party_set_slot,"p_castle_23", slot_town_prison, "scn_romanized_celt_castle_prison"),#londinium
+
+    (party_set_slot,"p_castle_9", slot_castle_exterior, "scn_londinium"),#
+    (party_set_slot,"p_castle_9", slot_town_castle, "scn_londinium_castle"),#
+    (party_set_slot,"p_castle_9", slot_town_prison, "scn_londinium_prison"),#
+
 
     (party_set_slot,"p_castle_16", slot_castle_exterior, "scn_roman_castle_2_exterior"),#colonia aggrippina
     (party_set_slot,"p_castle_16", slot_town_castle, "scn_roman_castle_2_interior"),#colonia aggrippina
@@ -5369,7 +5374,7 @@ scripts_hardcoded = [
 # Output: reg0
 ("game_get_prisoner_price",[
     (store_script_param_1, ":troop_id"),
-    
+
     (store_character_level, ":troop_level", ":troop_id"),
     (store_add, ":ransom_amount", ":troop_level", 10),
     (val_mul, ":ransom_amount", ":ransom_amount"),
@@ -5398,7 +5403,7 @@ scripts_hardcoded = [
 # Output: reg0
 ("game_get_prisoner_price_buy",[
     (store_script_param_1, ":troop_id"),
-    
+
     (store_character_level, ":troop_level", ":troop_id"),
     (store_add, ":ransom_amount", ":troop_level", 10),
     (val_mul, ":ransom_amount", ":ransom_amount"),

@@ -3252,34 +3252,34 @@ str_21|agi_21|int_6|cha_6|level(25),wp(240),knows_power_strike_10|knows_ironfles
 [itm_eastern_sword1,itm_roman_poor2,itm_caligea],def_attrib|level(2),wp(20),knows_common,0x0000000e77082000150049a34c42ec960000000000000e080000000000000000],
 
 # Ransom brokers.
-["ransom_broker_1","Venalicius","Venalicius",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_1","Venalicius Gaius Sextus","Venalicius Gaius Sextus",tf_hero, 0, reserved, fac_culture_7,
 [itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x000000082f0010091683adc88c6f5b2a00000000001ddb110000000000000000],
 
-["ransom_broker_2","Doulon Emporos","Doulon Emporos",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_2","Doulon Emporos Aichaikos","Doulon Emporos Aichaikos",tf_hero, 0, reserved, fac_culture_6,
 [itm_sarranid_cloth_robe_fancy_3,itm_eastern_shoe_r],def_attrib|level(5),wp(20),knows_common,0x000000087100b20536916936daa2a86b00000000001d37680000000000000000],
 
-["ransom_broker_3","Venalicius","Venalicius",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_3","Venalicius Honorius","Venalicius Honorius",tf_hero, 0, reserved, fac_culture_7,
 [itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x0000000f540020011683a9c88c6f5b2a00000000001ddb310000000000000000],
 
-["ransom_broker_4","Doulon Emporos","Doulon Emporos",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_4","Doulon Emporos Nereus","Doulon Emporos Nereus",tf_hero, 0, reserved, fac_culture_9,
 [itm_bosporan_light2,itm_eastern_shoe_y],def_attrib|level(5),wp(20),knows_common,0x00000004a300c18448936d36daa2a86b00000000001cb7680000000000000000],
 
-["ransom_broker_5","Venalicius","Venalicius",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_5","Venalicius Flavius","Venalicius Flavius",tf_hero, 0, reserved, fac_culture_7,
 [itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x00000007a201301236db6db6db6db6db00000000001db6db0000000000000000],
 
-["ransom_broker_6","Doulon Emporos","Doulon Emporos",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_6","Doulon Emporos Parthos","Doulon Emporos Parthos",tf_hero, 0, reserved, fac_culture_6,
 [itm_parthian_tunic_4,itm_eastern_shoe],def_attrib|level(5),wp(20),knows_common,0x0000000a2c00700036db6db6db6db6db00000000001db6db0000000000000000],
 
-["ransom_broker_7","Venalicius","Venalicius",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_7","Venalicius Decimus","Venalicius Decimus",tf_hero, 0, reserved, fac_culture_7,
 [itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x00000007c10021c51683a9c88c6f5b2a00000000001ddb310000000000000000],
 
-["ransom_broker_8","Doulon Emporos","Doulon Emporos",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_8","Doulon Emporos Phazinamos","Doulon Emporos Phazinamos",tf_hero, 0, reserved, fac_culture_3,
 [itm_sarmatian_light1,itm_eastern_shoe_b],def_attrib|level(5),wp(20),knows_common,0x0000000c8d00c08536db6db6db6db6db00000000001db6db0000000000000000],
 
-["ransom_broker_9","Venalicius","Venalicius",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_9","Venalicius Remus","Venalicius Remus",tf_hero, 0, reserved, fac_culture_7,
 [itm_roman_toga,itm_caligea],def_attrib|level(5),wp(20),knows_common,0x0000000a4d0015d11683a9c88c6f5b2a00000000001ddb110000000000000000],
 
-["ransom_broker_10","Doulon Emporos","Doulon Emporos",tf_hero, 0, reserved, fac_commoners,
+["ransom_broker_10","Doulon Emporos Blaikisa","Doulon Emporos Blaikisa",tf_hero, 0, reserved, fac_culture_1,
 [itm_dacian_noble3,itm_celtic_boots],def_attrib|level(5),wp(20),knows_common,0x0000000d0000204d4c606d36dc7664a500000000001e5d200000000000000000],
 
 # Tavern traveler.
@@ -5358,255 +5358,255 @@ attrib_level_23,wp(20),knows_inventory_management_10,roman_face1, roman_face2],
 ["dplmc_scout", "Scout", "Scouts", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_neutral,
 [itm_graves_simple,itm_legion_hamata_7,itm_roman_townguard_helm,itm_roman_spatha,itm_horse_2], def_attrib|agi_21|int_30|cha_21|level(25), wp(130), knows_common|knows_riding_7|knows_horse_archery_5|knows_leadership_7, germanic_face_11, germanic_face_12 ],
 
-# slave skills: 
+# slave skills:
 # # - looting => corruption (Stealth/Thievery)
 # # - trade   => management (Commerce/Stewardship)
 # # - engineering => building (Construction/Siegecraft), management
 # # - power strike => mining (Labor/Strength), building
 # # - athletics => farming (Endurance/Agility), general labor
-["slave", "Servus", "Servi", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave", "Servus", "Servi", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
-knows_looting_8|knows_trade_6|knows_engineer_6|knows_power_strike_3|knows_athletics_3, 
+knows_looting_8|knows_trade_6|knows_engineer_6|knows_power_strike_3|knows_athletics_3,
 roman_face1, roman_face2 ],
 
-["slave_roman", "Servus Romanus", "Servi Romani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_roman", "Servus Romanus", "Servi Romani", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
-knows_looting_8|knows_trade_4|knows_engineer_10|knows_power_strike_2|knows_athletics_2, 
+knows_looting_8|knows_trade_4|knows_engineer_10|knows_power_strike_2|knows_athletics_2,
 roman_face1, roman_face2 ],
 
-["slave_dacian", "Servus Dacicus", "Servi Dacici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_dacian", "Servus Dacicus", "Servi Dacici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+8+8 = 18
-knows_looting_2|knows_power_strike_8|knows_athletics_8, 
+knows_looting_2|knows_power_strike_8|knows_athletics_8,
 barbarian_man_face_younger_1, barbarian_man_face_young_1 ],
 
-["slave_thracian", "Servus Thracicus", "Servi Thracici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_thracian", "Servus Thracicus", "Servi Thracici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+8+8 = 18
-knows_looting_2|knows_power_strike_8|knows_athletics_8, 
+knows_looting_2|knows_power_strike_8|knows_athletics_8,
 barbarian_man_face_younger_1, barbarian_man_face_young_1 ],
 
-["slave_celt", "Servus Celticus", "Servi Celtici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_celt", "Servus Celticus", "Servi Celtici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 6+9 = 15
-knows_power_strike_6|knows_athletics_9, 
+knows_power_strike_6|knows_athletics_9,
 celtic_face_11, celtic_face_12 ],
 
-["slave_sarmatian", "Servus Sarmaticus", "Servi Sarmatici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_sarmatian", "Servus Sarmaticus", "Servi Sarmatici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(13), wp(30), # 1+6+6 = 13
-knows_looting_1|knows_power_strike_6|knows_athletics_6, 
+knows_looting_1|knows_power_strike_6|knows_athletics_6,
 scythian_face_21, scythian_face_22 ],
 
-["slave_germanic", "Servus Germanicus", "Servi Germanici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_germanic", "Servus Germanicus", "Servi Germanici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 10+8 = 18
-knows_power_strike_10|knows_athletics_10, 
+knows_power_strike_10|knows_athletics_10,
 germanic_face_21, germanic_face_22 ],
 
-["slave_caucasian", "Servus Caucasicus", "Servi Caucasici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_caucasian", "Servus Caucasicus", "Servi Caucasici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 4+3+2+4+4 = 17
-knows_looting_4|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4, 
+knows_looting_4|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4,
 armenian_face_young, armenian_face_middle ],
 
-["slave_parthian", "Servus Parthicus", "Servi Parthici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_parthian", "Servus Parthicus", "Servi Parthici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 4+8+2+2+2 = 18
-knows_looting_4|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2, 
+knows_looting_4|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2,
 parthian_face_young, parthian_face_middle ],
 
-["slave_persian", "Servus Persicus", "Servi Persici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_persian", "Servus Persicus", "Servi Persici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 5+7+2+2+2 = 18
-knows_looting_5|knows_trade_7|knows_engineer_2|knows_power_strike_2|knows_athletics_2, 
+knows_looting_5|knows_trade_7|knows_engineer_2|knows_power_strike_2|knows_athletics_2,
 persian_face_young, persian_face_middle ],
 
-["slave_judean", "Servus Iudaeus", "Servi Iudaei", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_judean", "Servus Iudaeus", "Servi Iudaei", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 1+8+2+2+2 = 15
-knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2, 
+knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2,
 eastern_man_face_younger_2, eastern_man_face_young_2 ], # Note: "Iudaeus" might be sensitive; consider "Syro-Palaestinus" if aiming for broader regional.
 
-["slave_bosporan", "Servus Bosporanus", "Servi Bosporani", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_bosporan", "Servus Bosporanus", "Servi Bosporani", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(14), wp(30), # 2+3+1+3+5 = 14
-knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_3|knows_athletics_5, 
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_3|knows_athletics_5,
 white_face_11, white_face_12 ], # Often Hellenized Scythians/Sarmatians
 
-["slave_arabian", "Servus Arabicus", "Servi Arabici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_arabian", "Servus Arabicus", "Servi Arabici", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 1+8+2+2+2 = 15
-knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2, 
+knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2,
 arab_face_young, arab_face_old ],
 
 ["slave_berber", "Servus Maurus", "Servi Mauri", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # "Maurus" is a common term for Berbers/North Africans
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+4+1+4+7 = 18
-knows_looting_2|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_7, 
+knows_looting_2|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_7,
 african_face_younger, african_face_older ],
 
-["slave_garmantian", "Servus Garamanticus", "Servi Garamantici", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_garmantian", "Servus Garamanticus", "Servi Garamantici", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 2+3+1+2+8 = 16
-knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_2|knows_athletics_8, 
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_2|knows_athletics_8,
 african_face_younger, african_face_older ],
 
 ["slave_nubian", "Servus Nubianus", "Servi Nubiani", tf_male_black|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Could also use "Aethiops" but Nubianus is more specific
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(21), wp(30), # 2+3+1+5+10 = 21
-knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_10|knows_athletics_10, 
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_10|knows_athletics_10,
 nubian_face1, nubian_face2 ],
 
 ["slave_saka", "Servus Sacae", "Servi Sacae", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Sacae is plural, Saca singular. "Servus Sacarum" for plural.
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 3+4+1+4+6 = 18
-knows_looting_3|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_6, 
+knows_looting_3|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_6,
 saka_face_1, saka_face_2 ],
 
-["slave_greek", "Servus Graecus", "Servi Graeci", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_greek", "Servus Graecus", "Servi Graeci", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(30), wp(30), # 10+10+8+2+2 = 30
-knows_looting_10|knows_trade_10|knows_engineer_8|knows_power_strike_2|knows_athletics_2, 
+knows_looting_10|knows_trade_10|knows_engineer_8|knows_power_strike_2|knows_athletics_2,
 white_face_21, white_face_22 ],
 
-["slave_illyrian", "Servus Illyricus", "Servi Illyrici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_illyrian", "Servus Illyricus", "Servi Illyrici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 5+2+2+5+4 = 18
-knows_looting_5|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4, 
+knows_looting_5|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4,
 mercenary_face_greek_1, mercenary_face_greek_2 ],
 
-["slave_hispanic", "Servus Hispanicus", "Servi Hispanici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_hispanic", "Servus Hispanicus", "Servi Hispanici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 4+2+2+5+4 = 17
-knows_looting_4|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4, 
+knows_looting_4|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4,
 barbarian_man_face_younger_2, barbarian_man_face_young_2 ],
 
-["slave_gaul", "Servus Gallicus", "Servi Gallici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_gaul", "Servus Gallicus", "Servi Gallici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 3+3+3+4+4 = 17
-knows_looting_3|knows_trade_3|knows_engineer_3|knows_power_strike_4|knows_athletics_4, 
+knows_looting_3|knows_trade_3|knows_engineer_3|knows_power_strike_4|knows_athletics_4,
 barbarian_man_face_younger_1, barbarian_man_face_young_1 ],
 
-["slave_egyptian", "Servus Aegyptius", "Servi Aegyptii", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_egyptian", "Servus Aegyptius", "Servi Aegyptii", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 7+8+6+3+7 = 31
-knows_looting_6|knows_trade_7|knows_engineer_5|knows_power_strike_3|knows_athletics_5, 
+knows_looting_6|knows_trade_7|knows_engineer_5|knows_power_strike_3|knows_athletics_5,
 eastern_man_face_younger_2, eastern_man_face_young_2 ],
 
-["slave_syrian", "Servus Syrus", "Servi Syri", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_syrian", "Servus Syrus", "Servi Syri", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(22), wp(30), # 5+6+4+3+4 = 22
-knows_looting_5|knows_trade_6|knows_engineer_4|knows_power_strike_3|knows_athletics_4, 
+knows_looting_5|knows_trade_6|knows_engineer_4|knows_power_strike_3|knows_athletics_4,
 eastern_man_face_younger_1, eastern_man_face_young_1 ],
 
-["slave_eastern", "Servus Orientalis", "Servi Orientales", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_eastern", "Servus Orientalis", "Servi Orientales", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 3+3+2+4+4 = 16
-knows_looting_3|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4, 
+knows_looting_3|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4,
 persian_face_young_2, persian_face_middle_2 ],
 
-["slave_mine", "Servus", "Servi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves, no_scene, reserved, fac_commoners, 
-[itm_roman_poor1,itm_roman_poor2,itm_caligea,itm_pickaxe_work], def_attrib|level(25), wp(30), 
-knows_common|knows_riding_2, 
+["slave_mine", "Servus", "Servi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves, no_scene, reserved, fac_commoners,
+[itm_roman_poor1,itm_roman_poor2,itm_caligea,itm_pickaxe_work], def_attrib|level(25), wp(30),
+knows_common|knows_riding_2,
 all_face_1, all_face_2 ],
 
-["slave_female", "Serva", "Servae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female", "Serva", "Servae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
-knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_4, 
+knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_4,
 all_face_woman_1, all_face_woman_2 ],
 
-["slave_female_roman", "Serva Romana", "Servae Romanae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_roman", "Serva Romana", "Servae Romanae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 8+6+8+2+2 = 26
-knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_6, 
+knows_looting_8|knows_trade_6|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_6,
 woman_face_1, woman_face_2 ],
 
-["slave_female_dacian", "Serva Dacica", "Servae Dacicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_dacian", "Serva Dacica", "Servae Dacicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+8+8 = 18
-knows_looting_2|knows_power_strike_8|knows_athletics_8|knows_inventory_management_1, 
+knows_looting_2|knows_power_strike_8|knows_athletics_8|knows_inventory_management_1,
 woman_face_1, woman_face_2 ],
 
-["slave_female_thracian", "Serva Thracica", "Servae Thracicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_thracian", "Serva Thracica", "Servae Thracicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+8+8 = 18
-knows_looting_2|knows_power_strike_8|knows_athletics_8|knows_inventory_management_1, 
+knows_looting_2|knows_power_strike_8|knows_athletics_8|knows_inventory_management_1,
 woman_face_1, woman_face_2 ],
 
-["slave_female_celt", "Serva Celtica", "Servae Celticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_celt", "Serva Celtica", "Servae Celticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 6+9 = 15
-knows_power_strike_6|knows_athletics_9, 
+knows_power_strike_6|knows_athletics_9,
 woman_face_1, woman_face_2 ],
 
-["slave_female_sarmatian", "Serva Sarmatica", "Servae Sarmaticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_sarmatian", "Serva Sarmatica", "Servae Sarmaticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(13), wp(30), # 1+6+6 = 13
-knows_looting_1|knows_power_strike_6|knows_athletics_6|knows_inventory_management_1, 
+knows_looting_1|knows_power_strike_6|knows_athletics_6|knows_inventory_management_1,
 woman_face_1, woman_face_2 ],
 
-["slave_female_germanic", "Serva Germanica", "Servae Germanicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_germanic", "Serva Germanica", "Servae Germanicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 10+8 = 18
-knows_power_strike_10|knows_athletics_8, 
+knows_power_strike_10|knows_athletics_8,
 woman_face_1, woman_face_2 ],
 
-["slave_female_caucasian", "Serva Caucasica", "Servae Caucasicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_caucasian", "Serva Caucasica", "Servae Caucasicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 4+3+2+4+4 = 17
-knows_looting_4|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4|knows_inventory_management_5, 
+knows_looting_4|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4|knows_inventory_management_5,
 woman_face_1, woman_face_2 ],
 
-["slave_female_parthian", "Serva Parthica", "Servae Parthicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_parthian", "Serva Parthica", "Servae Parthicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 4+8+2+2+2 = 18
-knows_looting_4|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_7, 
+knows_looting_4|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_7,
 woman_face_1, woman_face_2 ],
 
-["slave_female_persian", "Serva Persica", "Servae Persicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_persian", "Serva Persica", "Servae Persicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 5+7+2+2+2 = 18
-knows_looting_5|knows_trade_7|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_9, 
+knows_looting_5|knows_trade_7|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_9,
 woman_face_1, woman_face_2 ],
 
-["slave_female_judean", "Serva Iudaea", "Servae Iudaeae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_judean", "Serva Iudaea", "Servae Iudaeae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 1+8+2+2+2 = 15
-knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_3, 
+knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_3,
 woman_face_1, woman_face_2 ], # Note: "Iudaeus" might be sensitive; consider "Syro-Palaestinus" if aiming for broader regional.
 
-["slave_female_bosporan", "Serva Bosporana", "Servae Bosporanae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_bosporan", "Serva Bosporana", "Servae Bosporanae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(14), wp(30), # 2+3+1+3+5 = 14
-knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_3|knows_athletics_5|knows_inventory_management_4, 
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_3|knows_athletics_5|knows_inventory_management_4,
 woman_face_1, woman_face_2 ], # Often Hellenized Scythians/Sarmatians
 
-["slave_female_arabian", "Serva Arabica", "Servae Arabicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_arabian", "Serva Arabica", "Servae Arabicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 1+8+2+2+2 = 15
-knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_4, 
+knows_looting_1|knows_trade_8|knows_engineer_2|knows_power_strike_2|knows_athletics_2|knows_inventory_management_4,
 arab_face_female, arab_face_female2 ],
 
 ["slave_female_berber", "Serva Maura", "Servae Maurae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # "Maurus" is a common term for Berbers/North Africans
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 2+4+1+4+7 = 18
-knows_looting_2|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_7|knows_inventory_management_3, 
+knows_looting_2|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_7|knows_inventory_management_3,
 arab_face_female, arab_face_female2 ],
 
-["slave_female_garmantian", "Serva Garamantica", "Servae Garamanticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_garmantian", "Serva Garamantica", "Servae Garamanticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 2+3+1+2+8 = 16
-knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_2|knows_athletics_8|knows_inventory_management_3, 
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_2|knows_athletics_8|knows_inventory_management_3,
 arab_face_female, arab_face_female2 ],
 
 ["slave_female_nubian", "Serva Nubiana", "Servae Nubianae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Could also use "Aethiops" but Nubianus is more specific
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(21), wp(30), # 2+3+1+5+10 = 21
-knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_5|knows_athletics_10|knows_inventory_management_8, 
+knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_5|knows_athletics_10|knows_inventory_management_8,
 african_face_female, african_face_female2 ],
 
 ["slave_female_saka", "Serva Saca", "Servae Sacae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, # Sacae is plural, Saca singular. "Servus Sacarum" for plural.
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 3+4+1+4+6 = 18
-knows_looting_3|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_6|knows_inventory_management_8, 
+knows_looting_3|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_6|knows_inventory_management_8,
 saka_face_female_1, saka_face_female_2 ],
 
-["slave_female_greek", "Serva Graeca", "Servae Graecae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_greek", "Serva Graeca", "Servae Graecae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(30), wp(30), # 10+10+8+2+2 = 30
-knows_looting_10|knows_trade_10|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_8, 
+knows_looting_10|knows_trade_10|knows_engineer_8|knows_power_strike_2|knows_athletics_2|knows_inventory_management_8,
 woman_face_1, woman_face_2 ],
 
-["slave_female_illyrian", "Serva Illyrica", "Servae Illyricae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_illyrian", "Serva Illyrica", "Servae Illyricae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(18), wp(30), # 5+2+2+5+4 = 18
-knows_looting_5|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4|knows_inventory_management_2, 
+knows_looting_5|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4|knows_inventory_management_2,
 woman_face_1, woman_face_2 ],
 
-["slave_female_hispanic", "Serva Hispanica", "Servae Hispanicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_hispanic", "Serva Hispanica", "Servae Hispanicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 4+2+2+5+4 = 17
-knows_looting_4|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4|knows_inventory_management_6, 
+knows_looting_4|knows_trade_2|knows_engineer_2|knows_power_strike_5|knows_athletics_4|knows_inventory_management_6,
 woman_face_1, woman_face_2 ],
 
-["slave_female_gaul", "Serva Gallica", "Servae Gallicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_gaul", "Serva Gallica", "Servae Gallicae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 3+3+3+4+4 = 17
-knows_looting_3|knows_trade_3|knows_engineer_3|knows_power_strike_4|knows_athletics_4|knows_inventory_management_4, 
+knows_looting_3|knows_trade_3|knows_engineer_3|knows_power_strike_4|knows_athletics_4|knows_inventory_management_4,
 woman_face_1, woman_face_2 ],
 
-["slave_female_egyptian", "Serva Aegyptia", "Servae Aegyptiae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_egyptian", "Serva Aegyptia", "Servae Aegyptiae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(26), wp(30), # 7+8+6+3+7 = 31 (Note: original comment sum is 31, actual skill sum 6+7+5+3+5=26 matching level)
-knows_looting_6|knows_trade_7|knows_engineer_5|knows_power_strike_3|knows_athletics_5|knows_inventory_management_8, 
+knows_looting_6|knows_trade_7|knows_engineer_5|knows_power_strike_3|knows_athletics_5|knows_inventory_management_8,
 arab_face_female, arab_face_female2 ],
 
-["slave_female_syrian", "Serva Syra", "Servae Syrae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_syrian", "Serva Syra", "Servae Syrae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(22), wp(30), # 5+6+4+3+4 = 22
-knows_looting_5|knows_trade_6|knows_engineer_4|knows_power_strike_3|knows_athletics_4|knows_inventory_management_10, 
+knows_looting_5|knows_trade_6|knows_engineer_4|knows_power_strike_3|knows_athletics_4|knows_inventory_management_10,
 arab_face_female, arab_face_female2 ],
 
-["slave_female_eastern", "Serva Orientalis", "Servae Orientales", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners, 
+["slave_female_eastern", "Serva Orientalis", "Servae Orientales", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 3+3+2+4+4 = 16
-knows_looting_3|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4|knows_inventory_management_8, 
+knows_looting_3|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4|knows_inventory_management_8,
 arab_face_female, arab_face_female2 ],
 
 ###orgie, for pleasure and bacchus
@@ -6958,7 +6958,7 @@ tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows
 ["household_cook_6","{!}Cook","{!}Cook",
 tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, white_face_11, white_face_12],
 
-["household_end", "end of household", "end of household", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), 
+["household_end", "end of household", "end of household", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0),
 knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
 ["troops_end", "END OF THE WORLD", "END OF THE WORLD", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],

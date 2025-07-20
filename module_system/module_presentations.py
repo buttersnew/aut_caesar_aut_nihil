@@ -5465,7 +5465,7 @@ presentations = [
         (gt, ":workshops_total", 0),
         (call_script, "script_add_to_weekly_income", ":workshops_total"),
     (try_end),
-  
+
     #mercenary payment
     (try_begin),
         (gt, "$players_kingdom", 0),
@@ -25223,7 +25223,7 @@ presentations = [
 
     # add household modifiers
     (try_for_range, ":modifier", household_mod_latifunida_limit, household_mod_ends),
-        
+
         (store_add, ":string", ":modifier", "str_household_mod_latifunida_limit_name"),
         (str_store_string, s0, ":string"),
         (create_text_overlay, reg1, "str_s0", 0),
@@ -25309,7 +25309,7 @@ presentations = [
     (position_set_y, pos1, ":cur_y"),
     (val_add, ":cur_y", 27),
     (overlay_set_position, reg1, pos1),
-  
+
     (assign, ":total", 0), # total spendings
 
     ##spouse spendings
@@ -25503,7 +25503,7 @@ presentations = [
         (assign, ":original_advicor", ":advicor"),
         (troop_set_slot, "trp_temp_array_a", ":original_advicor", -1),#for button
         (troop_set_slot, "trp_temp_array_b", ":original_advicor", -1),#for button
-        
+
         (str_clear, s22),
         (str_clear, s23),
         (assign, ":c", 0),
@@ -26032,7 +26032,7 @@ presentations = [
                 (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
                 (store_party_size_wo_prisoners, ":men", "p_main_party"),
                 (ge, ":men", 20),
-                (assign, ":scene", "scn_players_tent"), 
+                (assign, ":scene", "scn_players_tent"),
             (else_try),
                 (call_script, "script_get_player_camp_scene"),
                 (assign, ":scene", reg0),
@@ -40716,10 +40716,6 @@ presentations = [
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
-    (try_for_range, ":active_npc", active_npcs_begin, kingdom_ladies_end),
-        (troop_set_slot, "trp_temp_array_a", ":active_npc", -1),
-    (try_end),
-
     # #0. BACKROUND
     (create_mesh_overlay, reg0, "mesh_background_scroll"),
     (position_set_x, pos1, 250),
@@ -40784,7 +40780,7 @@ presentations = [
         # (str_store_troop_name, s20, ":cur_troop"),
         # (display_message, "@{s20} ({reg0})", 0x00FF00), # Debug message
         (eq, ":c", 1), # if cook or household slave is selected
-      
+
         (party_prisoner_stack_get_size, ":stack_size", "p_main_party", ":stack_no"),
         (try_begin),
             (eq, ":stack_size", 1),
@@ -40850,6 +40846,56 @@ presentations = [
         (try_end),
     (try_end),
 
+    (try_begin),
+        (troop_get_slot, ":current_partner", "trp_global_variables", g_slave_contract),
+        (ge, ":current_partner", 1),
+
+        (call_script, "script_init_temp_party", ":current_partner"),
+        (party_get_num_prisoner_stacks, ":num_stacks", "p_temp_party_2"),
+
+        (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+            (party_prisoner_stack_get_troop_id, ":cur_troop", "p_temp_party_2", ":stack_no"),
+            (assign, ":c", 0),
+            (try_begin),
+                (eq, "$temp", 1), # if cook is selected
+                (is_between, ":cur_troop", female_slaves_begin, female_slaves_end),
+                (assign, ":c", 1),
+            (else_try),
+                (eq, "$temp", 2), # if household slave is selected
+                (is_between, ":cur_troop", male_slaves_begin, male_slaves_end),
+                (assign, ":c", 1),
+            (try_end),
+            # (assign, reg0, ":c"),
+            # (str_store_troop_name, s20, ":cur_troop"),
+            # (display_message, "@{s20} ({reg0})", 0x00FF00), # Debug message
+            (eq, ":c", 1), # if cook or household slave is selected
+
+            (party_prisoner_stack_get_size, ":stack_size", "p_temp_party_2", ":stack_no"),
+            (try_begin),
+                (eq, ":stack_size", 1),
+                (str_store_troop_name, s20, ":cur_troop"),
+            (else_try),
+                (str_store_troop_name_plural, s20, ":cur_troop"),
+            (try_end),
+            (str_store_troop_name, s1, ":current_partner"),
+            (call_script, "script_game_get_prisoner_price_buy", ":cur_troop"),
+            (assign, reg3, reg0),
+            (assign, reg2, ":stack_size"),
+            (create_button_overlay, reg1, "@{s20} ({reg2} from {s1} for {reg3})", tf_with_outline),
+            (position_set_y, pos1, ":y_name"),
+            (overlay_set_position, reg1, pos1),
+            (overlay_set_color, reg1, color_purple),
+            (overlay_set_size, reg1, pos2),
+
+            (troop_set_slot, "trp_temp_array_a", ":id_slot", reg1),
+            (troop_set_slot, "trp_temp_array_b", ":id_slot", ":cur_troop"),
+            (troop_set_slot, "trp_temp_array_c", ":id_slot", "p_temp_party_2"),
+            (val_add, ":id_slot", 1),
+
+            (val_add, ":y_name", 30),
+        (try_end),
+    (try_end),
+
     (assign, "$temp2", ":id_slot"),
     (set_container_overlay, -1),#end scroll
 
@@ -40880,6 +40926,26 @@ presentations = [
             (try_end),
             #remove troop from prison
             (party_remove_prisoners, ":cur_center", ":cur_troop", 1),
+            (try_begin),
+                (eq, ":cur_center", "p_temp_party_2"),
+                (troop_get_slot, ":current_partner", "trp_global_variables", g_slave_contract),
+                (call_script, "script_apply_changes_to_slave_trader", ":current_partner"),
+                (call_script, "script_game_get_prisoner_price_buy", ":cur_troop"),
+                (assign, ":slave_price_per_unit", reg0),
+
+                (try_begin),
+                    (store_troop_gold, ":gold", "trp_player"),
+                    (store_troop_gold, ":treasury", "trp_household_possessions"),
+                    (val_add, ":gold", ":treasury"),
+                    (ge, ":gold", ":slave_price_per_unit"),
+                    (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", ":slave_price_per_unit", "trp_player"),
+                (else_try),
+                    (display_message, "str_not_enough_gold"),
+                    (assign, reg0, ":slave_price_per_unit"),
+                    (display_message, "@{reg0} denars have been added to your debts."),
+                    (val_add, "$g_player_debt_to_party_members", ":slave_price_per_unit"),
+                (try_end),
+            (try_end),
         (try_end),
         (start_presentation, "prsnt_household_management"),
     (try_end),
@@ -40888,6 +40954,348 @@ presentations = [
     (try_begin),
         (key_clicked, key_escape),
         (presentation_set_duration, 0),
+    (else_try),
+        (key_clicked, key_space),
+        (set_fixed_point_multiplier, 1000),
+        (mouse_get_position, pos31),
+
+        (position_get_x, reg31, pos31),
+        (position_get_y, reg32, pos31),
+
+        (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+]),
+
+("trade_slaves", prsntf_manual_end_only, 0, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
+
+    (str_store_string, s0, "@Buy or Sell slaves"),
+    (create_text_overlay, reg1, "str_s0", tf_center_justify|tf_with_outline),
+    (position_set_x, pos1, 500), # Higher, means more toward the right
+    (position_set_y, pos1, 710), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1200),
+    (position_set_y, pos1, 1200),
+    (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, color_information),
+
+    (try_begin),
+        (is_between, "$temp1", slaves_begin, slaves_end),
+        (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", "$temp1"),
+        (position_set_x, pos1, 475),
+        (position_set_y, pos1, 450),
+        (overlay_set_position, reg0, pos1),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 500),
+        (overlay_set_size, reg0, pos1),
+        (str_store_troop_name_plural, s0, "$temp1"),
+        (create_text_overlay, reg1, "str_s0", tf_center_justify),
+        (position_set_x, pos1, 550), # Higher, means more toward the right
+        (position_set_y, pos1, 420), # Higher, means more toward the top
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+
+        (val_clamp, "$temp4_1", 0, "$g_max"),
+
+        (try_begin),
+            (eq, "$temp2", "p_temp_party_2"),
+            (call_script, "script_game_get_prisoner_price_buy", "$temp1"),
+            (assign, ":price", reg0),
+            (str_store_string, s2, "@Buy"),
+        (else_try),
+            (call_script, "script_game_get_prisoner_price", "$temp1"),
+            (assign, ":price", reg0),
+            (str_store_string, s2, "@Sell"),
+        (try_end),
+        (try_begin),
+            (eq, "$temp4_1", 1),
+            (str_store_troop_name, s1, "$temp1"),
+        (else_try),
+            (str_store_troop_name_plural, s1, "$temp1"),
+        (try_end),
+        (store_mul, reg44, "$temp4_1", ":price"),
+        (assign, reg43, "$temp4_1"),
+        (str_store_string, s0, "@{s2} {reg43} {s1} for {reg44} denars."),
+
+        (create_text_overlay, "$g_presentation_obj_29", s0, tf_center_justify),
+        (position_set_x, pos1, 550),
+        (position_set_y, pos1, 390),
+        (overlay_set_position, "$g_presentation_obj_29", pos1),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, "$g_presentation_obj_29", pos1),
+
+        (create_slider_overlay, "$g_presentation_obj_30", 0, "$g_max"),
+        (position_set_x, pos2, 550),
+        (position_set_y, pos2, 355),
+        (overlay_set_position, "$g_presentation_obj_30", pos2),
+        (position_set_x, pos2, 700),
+        (position_set_y, pos2, 700),
+        (overlay_set_size, "$g_presentation_obj_30", pos2),
+        (overlay_set_val, "$g_presentation_obj_30", "$temp4_1"),
+
+        (create_game_button_overlay, reg1, "@Confirm"),
+        (position_set_x, pos1, 550),
+        (position_set_y, pos1, 300),
+        (overlay_set_position, reg1, pos1),
+        (assign, "$g_presentation_obj_28", reg1),
+    (try_end),
+    # (else_try),
+
+    (create_mesh_overlay, reg1, "mesh_cb_ui_icon_empty"),
+    (try_begin),
+        (neg|is_between, "$temp1", slaves_begin, slaves_end),
+        (overlay_set_tooltip, reg1, "@Select a slave."),
+    (try_end),
+    (position_set_x, pos1, 475),
+    (position_set_y, pos1, 445),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1750),
+    (position_set_y, pos1, 1850),
+    (overlay_set_size, reg1, pos1),
+
+    (str_store_party_name, s0, "$temp3"),
+    (create_text_overlay, reg1, "str_s0", tf_center_justify|tf_with_outline),
+    (position_set_x, pos1, 850), # Higher, means more toward the right
+    (position_set_y, pos1, 700), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1100),
+    (position_set_y, pos1, 1100),
+    (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
+
+    (store_troop_gold, reg2, "trp_player"),
+    (create_text_overlay, reg1, "@Your wealth: {reg2} denars.", tf_center_justify),
+    (position_set_x, pos1, 850), # Higher, means more toward the right
+    (position_set_y, pos1, 675), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+
+    (party_get_num_prisoners, reg3, "$temp3"),
+    (call_script, "script_game_get_party_prisoner_limit", "$temp3"),
+    (assign, reg4, reg0),
+    (create_text_overlay, reg1, "@Prisoner limit {reg4} ({reg3} used).", tf_center_justify),
+    (position_set_x, pos1, 850), # Higher, means more toward the right
+    (position_set_y, pos1, 660), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 730),
+    (position_set_y, pos1, 50),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 250),
+    (position_set_y, pos1, 600),
+    (overlay_set_area_size, reg1, pos1),
+    (set_container_overlay, reg1),#start scroll
+
+    (position_set_x, pos1, 25),
+    ##text size of the table
+    (position_set_x, pos2, 950),
+    (position_set_y, pos2, 950),
+
+    (assign, ":y_name", 10),
+
+    (party_get_num_prisoner_stacks, ":num_stacks", "$temp3"),
+
+    (assign, ":id_slot", 0),
+
+    (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+        (party_prisoner_stack_get_troop_id, ":cur_troop", "$temp3", ":stack_no"),
+        (is_between, ":cur_troop", slaves_begin, slaves_end),
+        (party_prisoner_stack_get_size, ":stack_size", "$temp3", ":stack_no"),
+        (try_begin),
+            (eq, ":stack_size", 1),
+            (str_store_troop_name, s20, ":cur_troop"),
+        (else_try),
+            (str_store_troop_name_plural, s20, ":cur_troop"),
+        (try_end),
+        (call_script, "script_game_get_prisoner_price", ":cur_troop"),
+        (assign, reg3, reg0),
+        (assign, reg2, ":stack_size"),
+        (create_button_overlay, reg1, "@{reg2} {s20} (sell {reg3} per unit)", tf_with_outline),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_color, reg1, color_purple),
+        (overlay_set_size, reg1, pos2),
+
+        (troop_set_slot, "trp_temp_array_a", ":id_slot", reg1),
+        (troop_set_slot, "trp_temp_array_b", ":id_slot", ":cur_troop"),
+        (troop_set_slot, "trp_temp_array_c", ":id_slot", "$temp3"),
+        (val_add, ":id_slot", 1),
+
+        (val_add, ":y_name", 20),
+    (try_end),
+    (set_container_overlay, -1),#end scroll
+
+    (str_store_troop_name, s0, "$temp_troop"),
+    (create_text_overlay, reg1, "str_s0", tf_center_justify|tf_with_outline),
+    (position_set_x, pos1, 150), # Higher, means more toward the right
+    (position_set_y, pos1, 700), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1100),
+    (position_set_y, pos1, 1100),
+    (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 5),
+    (position_set_y, pos1, 50),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 250),
+    (position_set_y, pos1, 600),
+    (overlay_set_area_size, reg1, pos1),
+    (set_container_overlay, reg1),#start scroll
+
+    (position_set_x, pos1, 25),
+
+    (call_script, "script_init_temp_party", "$temp_troop"),
+    (party_get_num_prisoner_stacks, ":num_stacks", "p_temp_party_2"),
+
+    (assign, ":y_name", 10),
+
+    (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+        (party_prisoner_stack_get_troop_id, ":cur_troop", "p_temp_party_2", ":stack_no"),
+        (is_between, ":cur_troop", slaves_begin, slaves_end),
+
+        (party_prisoner_stack_get_size, ":stack_size", "p_temp_party_2", ":stack_no"),
+        (try_begin),
+            (eq, ":stack_size", 1),
+            (str_store_troop_name, s20, ":cur_troop"),
+        (else_try),
+            (str_store_troop_name_plural, s20, ":cur_troop"),
+        (try_end),
+        (call_script, "script_game_get_prisoner_price_buy", ":cur_troop"),
+        (assign, reg3, reg0),
+        (assign, reg2, ":stack_size"),
+        (create_button_overlay, reg1, "@{reg2} {s20} (buy {reg3} per unit)", tf_with_outline),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_color, reg1, color_purple),
+        (overlay_set_size, reg1, pos2),
+
+        (troop_set_slot, "trp_temp_array_a", ":id_slot", reg1),
+        (troop_set_slot, "trp_temp_array_b", ":id_slot", ":cur_troop"),
+        (troop_set_slot, "trp_temp_array_c", ":id_slot", "p_temp_party_2"),
+        (val_add, ":id_slot", 1),
+
+        (val_add, ":y_name", 20),
+    (try_end),
+    (assign, "$temp4", ":id_slot"),
+    (set_container_overlay, -1),#end scroll
+
+    (create_game_button_overlay, reg1, "str_return"),
+    (position_set_x, pos1, 500),
+    (position_set_y, pos1, 50),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
+  ]),
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":button_pressed_id"),
+    (store_trigger_param_2, ":value"),
+    (try_begin),
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"),
+        (presentation_set_duration, 0),
+        (show_object_details_overlay, 1),
+    (else_try),
+        (eq, ":button_pressed_id", "$g_presentation_obj_28"),
+        (try_begin),
+            (eq, "$temp2", "p_temp_party_2"),
+            (call_script, "script_game_get_prisoner_price_buy", "$temp1"),
+            (assign, ":price", reg0),
+            (store_mul, reg44, "$temp4_1", ":price"),
+            (store_troop_gold, ":gold", "trp_player"),
+            (try_begin),
+                (eq, "$temp3", "p_main_party"),
+                (party_get_free_prisoners_capacity, ":pisoner_size", "p_main_party"),
+                (gt, "$temp4_1", ":pisoner_size"),
+                (display_message, "str_not_enough_party_space"),
+            (else_try),
+                (lt, ":gold", reg44),
+                (display_message, "str_not_enough_gold"),
+            (else_try),
+                (troop_remove_gold, "trp_player", reg44),
+                (party_remove_prisoners, "$temp2", "$temp1", "$temp4_1"),
+                (party_add_prisoners, "$temp3", "$temp1", "$temp4_1"),
+            (try_end),
+        (else_try),
+            (call_script, "script_game_get_prisoner_price", "$temp1"),
+            (assign, ":price", reg0),
+            (store_mul, reg44, "$temp4_1", ":price"),
+            (troop_add_gold, "trp_player", reg44),
+            (party_remove_prisoners, "$temp3", "$temp1", "$temp4_1"),
+            (party_add_prisoners, "p_temp_party_2", "$temp1", "$temp4_1"),
+        (try_end),
+        (assign, "$temp1", -1),
+        (assign, "$temp2", -1),
+        (assign, "$temp4_1", 0),
+        (call_script, "script_apply_changes_to_slave_trader", "$temp_troop"),
+        (start_presentation, "prsnt_trade_slaves"),
+        (call_script, "script_objectionable_action", tmt_humanitarian, "str_sell_slavery"),
+    (else_try),
+        (eq, ":button_pressed_id", "$g_presentation_obj_30"),
+        (assign, "$temp4_1", ":value"),
+        (val_clamp, "$temp4_1", 0, 1000),
+        (try_begin),
+            (eq, "$temp2", "p_temp_party_2"),
+            (call_script, "script_game_get_prisoner_price_buy", "$temp1"),
+            (assign, ":price", reg0),
+            (str_store_string, s2, "@Buy"),
+        (else_try),
+            (call_script, "script_game_get_prisoner_price", "$temp1"),
+            (assign, ":price", reg0),
+            (str_store_string, s2, "@Sell"),
+        (try_end),
+        (try_begin),
+            (eq, "$temp4_1", 1),
+            (str_store_troop_name, s1, "$temp1"),
+        (else_try),
+            (str_store_troop_name_plural, s1, "$temp1"),
+        (try_end),
+        (store_mul, reg44, "$temp4_1", ":price"),
+        (assign, reg43, "$temp4_1"),
+        (overlay_set_text, "$g_presentation_obj_29", "@{s2} {reg43} {s1} for {reg44} denars."),
+    (else_try),
+        (try_for_range, ":id_slot", 0, "$temp4"),
+            (troop_slot_eq, "trp_temp_array_a", ":id_slot", ":button_pressed_id"),
+            (troop_get_slot, ":cur_troop", "trp_temp_array_b", ":id_slot"),
+            (troop_get_slot, ":cur_party", "trp_temp_array_c", ":id_slot"),
+
+            (assign, "$temp1", ":cur_troop"),
+            (assign, "$temp2", ":cur_party"),
+
+            (party_count_prisoners_of_type, "$g_max", ":cur_party", ":cur_troop"),
+        (try_end),
+        (start_presentation, "prsnt_trade_slaves"),
+    (try_end),
+  ]),
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_escape),
+        (presentation_set_duration, 0),
+        (show_object_details_overlay, 1),
     (else_try),
         (key_clicked, key_space),
         (set_fixed_point_multiplier, 1000),
@@ -41643,7 +42051,7 @@ presentations = [
           (str_store_string, s39, "str_none"),
         (try_end),
 
-        (str_store_string, s0, 
+        (str_store_string, s0,
         "@You, governor of the province of {s40}, have been accused by a delator of evading taxes, exploiting the population with high tributes, and abusing your office."
         +" A local lawyer has taken the opportunity and written a petition to ask the Princeps for help in this case.^^"
         +" The Princeps now demands a list of all buildings that have been built in {s41}."
@@ -41659,7 +42067,7 @@ presentations = [
         (val_add, ":title", "str_title_begin"),
         (str_store_string, s44, ":title"),
 
-        (str_store_string, s0, 
+        (str_store_string, s0,
         "@As {s44}, you have access to public funds. Now, a delator has accused you of misappropriating these funds for your personal pleasures."
         +"^^The Princeps demands a precise declaration of the total amount you have taken from the treasury."
         +" If you fail to respond accurately with the exact sum, you risk losing reputation, renown, and your office."

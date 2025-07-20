@@ -412,6 +412,10 @@ triggers = [
     (try_for_range, ":slave_trader", slave_traders_begin, slave_traders_end),
       (call_script, "script_refill_slave_merchant", ":slave_trader", -1), # -1 indicates not a town
     (try_end),
+    # refill ransom brokers
+    (try_for_range, ":ransom_broker", ransom_brokers_begin, ransom_brokers_end),
+      (call_script, "script_refill_slave_merchant", ":ransom_broker", -1), # -1 indicates not a town
+    (try_end),
     # Refill special traders
     (call_script, "script_refill_slave_merchant", "trp_galeas", -1),
     (call_script, "script_refill_slave_merchant", "trp_ramun_the_slave_trader", -1),

@@ -9661,8 +9661,8 @@ strings = [
 ("household_mod_latifunida_limit_descr", "The maximum number of latifundia you can own. Latifundia are large estates that provide income but require substantial management."),
 ("household_mod_workshop_limit_descr", "The maximum number of workshops you can own. Workshops generate income through production, but require management."),
 ("household_mod_corruption_descr", "The level of corruption in your administration. High corruption can lead to reduced income."),
-("household_mod_cook_quality_descr", "The quality of food prepared by your household cook. Higher quality food improves feasts and your own health."),
-("household_mod_admin_eff_descr", "The efficiency of your administrative staff. Higher efficiency leads to better management of your estates and resources."),
+("household_mod_cook_quality_descr", "The quality of food prepared by your household cook. Higher quality food improves feasts."),
+("household_mod_admin_eff_descr", "The efficiency of your administrative staff. Higher efficiency leads to better management of your estates."),
 ("household_mod_engineering_eff_descr", "The efficiency of your engineering staff. Higher efficiency leads to better construction and maintenance of your properties."),
 
 ## Cook Quality Descriptions (MUST BE IN THIS EXACT ORDER)
