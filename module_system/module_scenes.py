@@ -261,6 +261,8 @@ scenes = [
   ("village_bosporan", sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000004c13100001d3100006d4100001edd",  [],[],"outer_terrain_beach"),
 
 
+  ("romanized_celt_village", sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000004c13100001d3100006d4100001edd",  [],[],"outer_terrain_plain_2"),
+
   ("village_spain_1", sf_generate,"none", "none", (0,0),(100,100),-100, "0x0000000020004500000719c400002bac000064fb00005e4a",  [],[],"outer_terrain_plain_2"),
   ("village_spain_2", sf_generate,"none", "none", (0,0),(100,100),-100, "0x00000000200005000008ee3d00007f2800006a9100006095",  [],[],"outer_terrain_plain_3"),
   ("village_spain_3", sf_generate,"none", "none", (0,0),(100,100),-100, "0x000000003000050000063992000001970000443d000036c3",  [],[],"outer_terrain_plain"),

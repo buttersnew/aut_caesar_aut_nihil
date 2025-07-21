@@ -8086,6 +8086,13 @@ mission_templates = [
     (11,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
   ], p_wetter + storms +global_common_triggers +
   [
+    (0, 0, ti_once,[
+      (gt, "$temp_troop", 0),
+      (neg|conversation_screen_is_active),
+    ],[
+      (start_mission_conversation, "$temp_troop"),
+    ]),
+
     (ti_tab_pressed, 0, 0, [
     ],[
       (stop_all_sounds, 1),
