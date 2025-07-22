@@ -2245,10 +2245,11 @@ game_menus = [
       ]
   ),
 
-("camp_action",0,
+("camp_action",mnf_enable_hot_keys,
   "Choose an action:",
-  "none",
-  [],[
+  "none",[
+
+  ],[
     # does not work
     # ("camp_action",[
     #   (eq, "$g_campaign_type", g_campaign_story_rome),
@@ -52021,7 +52022,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]
   ),
 
-("town_action",0,
+("town_action",mnf_enable_hot_keys|mnf_scale_picture,
   "Choose an action:",
   "none",[
     (call_script, "script_set_town_picture"),
