@@ -9115,6 +9115,7 @@ strings = [
 ("description_dragon_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'dragon'.^^Background:^^This arrows are purely fictional."),
 ("description_thunder_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'thunder'.^^Background:^^This arrows are purely fictional."),
 ("description_sling_David", "Description:^^The legendary sling with which David killed Goliat. A perfect weapon for fighting a superior enemy.^^Background:^^According to religious texts, David defeated the stronger Goliat with a sling."),
+("description_jupiters_throwing_spear", "Description:^^A throwing spear so powerfull that it could be a lightning bolt of Jupiter.^^Background:^^Jupiter (Zeus) has as symbol a lightning bolt."),
 ("description_linothorax_alexander", "Description:^^This is the armour worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
 ("description_alexanders_helm", "Description:^^This is the helmet worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
 ("description_armor_of_african_gods", "Description:^^A strong hamata over a tunic together with a lionskin. Somehow it offers much more protection than one would expect.^^Background:^^This armour set is purely fictional."),
@@ -9564,7 +9565,7 @@ strings = [
   +" Your standing within the Senate has undoubtedly improved.^^Yet, whispers from the Palatine indicate that the Princeps views your independent actions with a degree of displeasure,"
   +" posibly concerned by the precedent set or the political implications of your success."
 ),
-("grain_success_2",  
+("grain_success_2",
   "Word of your successful grain delivery spreads quickly! Amidst cheers and gratitude, the vital supplies are distributed to the populace on the Campus Martius."
   +" The Senate is visibly pleased with your decisive action and generosity."
   +"^^However, reports suggest the Princeps, Caesar Augustus, is less than amused by this turn of events, perhaps seeing it as an unwelcome spotlight on his"
@@ -9650,7 +9651,7 @@ strings = [
 ("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),
 ("i_will_take_the_reg1_s1_for_reg2_denars", "I'll take the {reg1} {s1} for {reg2} denars."),
 ("reg1_s1_have_been_added_to_your_party_as_prisoners", "{reg1} {s1} have been added to your party as prisoners."),
- 
+
 ("household_mod_latifunida_limit_name", "Latifundia Limit"),
 ("household_mod_workshop_limit_name", "Workshop Limit"),
 ("household_mod_corruption_name", "Corruption"),
@@ -9696,6 +9697,23 @@ strings = [
 ("cook_quality_1_guest_m", "Forgive my candor, but... is this meant to be consumed? I've had better fare in a legionary marching camp."),
 ("cook_quality_1_guest_f", "My dear, I believe my field slaves eat better than this. How... quaint."),
 ("cook_quality_1_spouse",  "By all the gods, this is a catastrophe! We must find new cooks immediately, my love. Our cooks are only useful for poisoning enemies!"),
+
+("merchant_greeting_very_dishonorable", "I know your reputation, and frankly, I'd rather not do business. But coin is coin. State your purpose quickly."),
+("merchant_greeting_dishonorable", "Ave... I suppose. Be aware, I'll be watching you closely. Now, what do you want?"),
+("merchant_greeting_neutral", "Ave, citizen. Are you interested in my wares?"),
+("merchant_greeting_honorable", "Greetings, a pleasure to see a reputable customer. How may I be of service?"),
+("merchant_greeting_very_honorable", "An honor to receive you! A person of your standing is always welcome here. Please, browse my finest goods at your leisure."),
+
+
+("christian_priest_greet_first_meeting_vhonorable", "Peace be with you. I sense a kindred spirit in you, a soul searching for truth. I am a servant of the One True God and His Son. What guidance do you seek, my friend?"),
+("christian_priest_greet_first_meeting_honorable", "May you walk in peace, traveler. I am a presbyter for the followers of the Way. If you come with an open heart, you may find the answers you seek here."),
+("christian_priest_greet_first_meeting_neutral", "Greetings. I am a teacher of the good news. People come here for solace and guidance. What is your purpose in coming here?"),
+("christian_priest_greet_first_meeting_dishonorable", "This is a place of peace. Your reputation suggests you are a stranger to it. State your business plainly."),
+("christian_priest_greet_first_meeting_vdisponorable", "I know of you by your deeds. Whatever darkness you serve, do not bring it here. What do you want?"),
+
+("christian_priest_greet_later_positive", "Brother, it is good to see you again. May God's peace be with you. How can I help our community today?"),
+("christian_priest_greet_later_neutral", "Welcome back, {playername}. How may I help you this day?"),
+("christian_priest_greet_later_negative", "You have returned. I pray you come with better intentions this time. What is it now?"),
 
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))

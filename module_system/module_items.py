@@ -6220,10 +6220,15 @@ itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 3500, weight(3)|abundance(50)|weapon_length(91)|thrust_damage(7,pierce)|max_ammo(25), imodbits_missile ],
 
 #legendary sling
-["sling_david", "David's Sling", [("sling_2",0)],itp_type_pistol |itp_merchandise|itp_primary|itp_secondary|itp_cant_use_on_horseback ,itcf_shoot_pistol,
-50,  abundance(90)|weight(0.5)|difficulty(0)|spd_rtng(100) | shoot_speed(70) | thrust_damage(32 ,blunt)|max_ammo(1)|accuracy(99),imodbits_none, [
+["sling_david", "David's Sling", [("sling_2",0)],itp_type_pistol|itp_unique|itp_primary|itp_secondary|itp_cant_use_on_horseback ,itcf_shoot_pistol,
+45000,  abundance(90)|weight(0.5)|difficulty(0)|spd_rtng(100) | shoot_speed(70) | thrust_damage(32 ,blunt)|max_ammo(1)|accuracy(99),imodbits_none, [
   (ti_on_weapon_attack, [(play_sound,"snd_throw_stone")])
 ]],
+
+# legendary javelin
+["jupiters_throwing_spear", "Jupiter'S Thunder", [("roman_jav",0)], itp_extra_penetration|itp_unique|itp_type_thrown|itp_primary|itp_secondary|itp_bonus_against_shield|itp_crush_through, itcf_throw_javelin,
+50000, abundance(80)|weight(3)|difficulty(5)|spd_rtng(90)|shoot_speed(25) | thrust_damage(100 ,  pierce)|max_ammo(1)|weapon_length(85)|accuracy(99),imodbits_thrown, [],
+[]],
 
 
 ##legendary bows end
