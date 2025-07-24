@@ -16,6 +16,8 @@ from IDs.ID_postfx_params import *
 from IDs.ID_factions import *
 from header_parties import *
 
+from module_presentations_wse2 import *
+
 #from compiler import *
 ####################################################################################################################
 #  Each presentation record contains the following fields:
@@ -25,7 +27,7 @@ from header_parties import *
 #  4) Triggers: Simple triggers that are associated with the presentation
 ####################################################################################################################
 
-presentations = [
+presentations = presentations_wse2 + [
 ## mainmenu
 ("game_start",prsntf_read_only,0,[
   (ti_on_presentation_load,[
