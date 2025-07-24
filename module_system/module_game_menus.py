@@ -31241,6 +31241,36 @@ game_menus = [
     ]),
     ("rec_visit",[
       # (ge, reg22, 1),
+      (troop_slot_eq, "trp_players_infantry", 1, 1),##legion is created
+      (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+    ],"Customize your infantry retinue.",[
+      (assign, "$g_next_menu", "mnu_barracks"),
+      (assign, "$g_player_troop", "trp_players_infantry"),
+      # (assign, "$temp4", 1),
+      (start_presentation, "prsnt_custom_troop_tree_legion"),
+    ]),
+    ("rec_visit",[
+      # (ge, reg22, 1),
+      (troop_slot_eq, "trp_players_cavalry", 1, 1),##legion is created
+      (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+    ],"Customize your cavalry retinue.",[
+      (assign, "$g_next_menu", "mnu_barracks"),
+      (assign, "$g_player_troop", "trp_players_cavalry"),
+      # (assign, "$temp4", 1),
+      (start_presentation, "prsnt_custom_troop_tree_legion"),
+    ]),
+    ("rec_visit",[
+      # (ge, reg22, 1),
+      (troop_slot_eq, "trp_players_skirmisher", 1, 1),##legion is created
+      (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+    ],"Customize your skirmisher retinue.",[
+      (assign, "$g_next_menu", "mnu_barracks"),
+      (assign, "$g_player_troop", "trp_players_skirmisher"),
+      # (assign, "$temp4", 1),
+      (start_presentation, "prsnt_custom_troop_tree_legion"),
+    ]),
+    ("rec_visit",[
+      # (ge, reg22, 1),
       (troop_slot_eq, "trp_players_legion", 1, 1),##legion is created
       (assign, ":continueee", 0),
       (try_begin),
