@@ -5088,7 +5088,7 @@ strings = [
   ("hmm_young_girls_may_easily_be_led_astray_so_out_of_a_sense_of_duty_to_the_ladies_of_my_household_i_think_i_would_like_to_get_to_know_you_a_bit_better_we_may_speak_of_this_at_a_later_date", "Hmm. Young girls may easily be led astray, so out of a sense of duty to the ladies of my household, I think I would like to get to know you a bit better. We may speak of this at a later date."), #dckplmc end+
   ("you_may_indeed_make_a_fine_match_for_the_young_mistress", "You may indeed make a fine match for the young mistress."),
 #diplomacy start+ (players of either gender may marry opposite-gender lords)
-  ("madame__given_our_relations_in_the_past_this_proposal_is_most_surprising_i_do_not_think_that_you_are_the_kind_of_woman_who_can_be_bent_to_a_hushands_will_and_i_would_prefer_not_to_have_our_married_life_be_a_source_of_constant_acrimony", "{Sir/Madame} -- given our relations in the past, this proposal is most surprising. I do not think that you are the kind of {man/woman} who can be bent to a {wife/husband}'s will, and I would prefer not to have our married life be a source of constant acrimony."),
+  ("madame__given_our_relations_in_the_past_this_proposal_is_most_surprising_i_do_not_think_that_you_are_the_kind_of_woman_who_can_be_bent_to_a_hushands_will_and_i_would_prefer_not_to_have_our_married_life_be_a_source_of_constant_acrimony", "{Dominus/Domina} -- given our relations in the past, this proposal is most surprising. I do not think that you are the kind of {man/woman} who can be bent to a {wife/husband}'s will, and I would prefer not to have our married life be a source of constant acrimony."),
   ("i_would_prefer_to_marry_a_proper_maiden_who_will_obey_her_husband_and_is_not_likely_to_split_his_head_with_a_sword", "I would prefer to marry a proper {lord/maiden} who will {cherish/obey} {his/her} {wife/husband}, and is not likely to split {her/his} head with a sword."),
   ("my_lady_while_i_admire_your_valor_you_will_forgive_me_if_i_tell_you_that_a_woman_like_you_does_not_uphold_to_my_ideal_of_the_feminine_of_the_delicate_and_of_the_pure", "My {lord/lady}, while I admire your valor and your beauty, you will forgive me if I tell you that a {man/woman} like you does not uphold to my ideal of a {husband/wife}: {masculine/feminine}, delicate, and pure."),#this sounds ridiculous -- don't use the male version
   ("nah_i_want_a_woman_wholl_keep_quiet_and_do_what_shes_told_i_dont_think_thats_you", "Nah. I want a {man/woman} who'll keep quiet and do what {he/she}'s told. I don't think that's you."),
@@ -5097,7 +5097,7 @@ strings = [
   ("my_lady__forgive_me__the_quality_of_our_bond_is_not_of_the_sort_which_the_poets_tell_us_is_necessary_to_sustain_a_happy_marriage", "My {lord/lady} -- forgive me -- the quality of our bond is not of the sort which the poets tell us is necessary to sustain a happy marriage."),
   ("um_i_think_that_if_i_want_to_stay_on_s4s_good_side_id_best_not_marry_you", "Um, I think that if I want to stay on {s4}'s good side, I'd best not marry you."),
   ("you_serve_another_realm_i_dont_see_s4_granting_reg4herhis_blessing_to_our_union", "You serve another realm. I don't see {s4} granting {reg4?her:his} blessing to our union."),
-  ("madame_my_heart_currently_belongs_to_s4", "{Sir/Madame}, my heart currently belongs to {s4}."),
+  ("madame_my_heart_currently_belongs_to_s4", "{Dominus/Domina}, my heart currently belongs to {s4}."),
   ("my_lady_you_are_a_woman_of_great_spirit_and_bravery_possessed_of_beauty_grace_and_wit_i_shall_give_your_proposal_consideration", "My {lord/lady}, you are a {man/woman} of great spirit and bravery, possessed of {strength/beauty}, {courage/grace}, and wit. I shall give your proposal consideration."),
   ("my_lady_you_are_a_woman_of_great_spirit_and_bravery_possessed_of_beauty_grace_and_wit_i_would_be_most_honored_were_you_to_become_my_wife", "My {lord/lady}, you are a {man/woman} of great spirit and bravery, possessed of {strength/beauty}, {courage/grace}, and wit. I would be most honored were you to become my {husband/wife}."),
 #diplomacy end+
@@ -5649,7 +5649,7 @@ strings = [
   ("mulberry_groves", "acres of mulberry groves"),
   ("olive_groves", "acres of olive groves"),
   ("acres_flax", "acres of flax fields"),
-  ("enterprise_enemy_realm", "{Sir/Madame}, you are an enemy of this realm. We cannot allow you to buy land here."),
+  ("enterprise_enemy_realm", "{Dominus/Domina}, you are an enemy of this realm. We cannot allow you to buy land here."),
   ("intrigue_success_chance", "{!}Your modified relation: {reg5}, {s4}'s relation: {reg4}"),
 
   ("you_intend_to_denounce_s14_to_s13_on_behalf_of_s12", "You intend to privately denounce {s14} to {s13} on behalf of {s12}"),
@@ -9714,6 +9714,54 @@ strings = [
 ("christian_priest_greet_later_positive", "Brother, it is good to see you again. May God's peace be with you. How can I help our community today?"),
 ("christian_priest_greet_later_neutral", "Welcome back, {playername}. How may I help you this day?"),
 ("christian_priest_greet_later_negative", "You have returned. I pray you come with better intentions this time. What is it now?"),
+
+# module_strings.py
+
+## Flirtation outcome text
+# module_strings.py
+
+## Flirtation outcome text (REVISED - Spoken Dialogue)
+# Poppaea Sabina (special)
+("flirt_poppaea_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^You... amuse me. In the way a particularly clumsy beetle might. Run along now, I have important matters to attend to."),
+("flirt_poppaea_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^A pleasant enough conversation. You have a certain... rustic charm. Do excuse me."),
+("flirt_poppaea_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^You are more interesting than most of the dullards in this court. Your words have wit. Do not be a stranger."),
+("flirt_poppaea_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She leans closer, her voice a low purr. --^^ You have a dangerous spark in your eyes. I find it... compelling. We will speak again. Soon."),
+
+# Statilia Messalina (special)
+("flirt_messalina_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^I'm sorry, were you saying something? My apologies, my attention was elsewhere. Good day."),
+("flirt_messalina_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^A pleasure to make your acquaintance. One must always be seen to be sociable."),
+("flirt_messalina_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^You speak with the confidence of a person who achieves their goals. I find that... admirable. I will be watching your career with interest."),
+("flirt_messalina_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She smiles, a calculating glint in her eyes. --^^ A man of your ambition could achieve great things with the right allies. We should discuss what the future might hold for us both."),
+
+# Conventional Personality
+("flirt_conventional_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Oh! My good sir, your forwardness is... quite unbecoming. I must ask that you maintain a proper distance."),
+("flirt_conventional_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^You are a most courteous conversationalist. Thank you for the pleasant diversion."),
+("flirt_conventional_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^It is a relief to speak with a true gentleman. You have a way with words that is most charming."),
+("flirt_conventional_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She blushes and touches your arm lightly. --^^ My goodness, you'll make me forget all my courtly manners! It has been a true delight speaking with you."),
+
+# Adventurous Personality
+("flirt_adventurous_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Is that all? Forgive me, but I find courtly chatter dreadfully dull. I must go see to... anything else."),
+("flirt_adventurous_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^Your stories of battle are interesting. Much better than discussing the price of silk, at least."),
+("flirt_adventurous_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^Finally, someone who has seen the world beyond these suffocating walls! Tell me more of your travels!"),
+("flirt_adventurous_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^To ride across the steppes... oh, what I would give for such freedom! You have truly lived. Perhaps one day, you could show me what lies beyond the horizon?"),
+
+# Otherworldly Personality
+("flirt_otherworldly_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^...I'm sorry, I was listening to the wind. It carries such sorrowful tales today. What were you saying?"),
+("flirt_otherworldly_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^Your words are like stones in a river... they make ripples, but the stream flows on. An interesting diversion."),
+("flirt_otherworldly_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^You speak of things that resonate with my own soul. It feels as if we have spoken before, perhaps in a dream."),
+("flirt_otherworldly_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She looks at you with unnerving intensity. --^^ The threads of our fates are entwined, I can see them now. This meeting was not by chance. We must speak again when the moon is full."),
+
+# Ambitious Personality
+("flirt_ambitious_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Yes, yes, very charming. Now, if you'll excuse me, I see someone of consequence I must speak with."),
+("flirt_ambitious_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^You have a certain... potential. It will be interesting to see if you live up to it."),
+("flirt_ambitious_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^You are clearly a person of influence and power. Such qualities are... very appealing. I believe we may have much to discuss."),
+("flirt_ambitious_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^Do not waste your time with pleasantries. You and I both know what we want. An alliance between us could be... immensely profitable. For us both."),
+
+# Moralist Personality
+("flirt_moralist_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Dominus! Such frivolous talk is unbefitting of our station. We have duties to our people, not time for idle flattery."),
+("flirt_moralist_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^It is good to speak with someone who understands the weight of responsibility we carry."),
+("flirt_moralist_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^Your dedication to justice and honor is truly commendable. It is refreshing to meet a kindred spirit in these trying times."),
+("flirt_moralist_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^Finally, someone who speaks of virtue and means it! Your words give me hope for the future of this realm. It is an honor to know you."),
 
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
