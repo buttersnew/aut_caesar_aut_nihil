@@ -15181,10 +15181,10 @@ game_menus = [
       (assign, "$g_tournament_next_num_teams", 0),
       (assign, "$g_tournament_next_team_size", 0),
       (try_begin),
-      (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
-      (jump_to_menu, "mnu_decide_game"),
+        (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
+        (jump_to_menu, "mnu_decide_game"),
       (else_try),
-      (jump_to_menu, "mnu_town_tournament"),
+        (jump_to_menu, "mnu_town_tournament"),
       (try_end),
     ]),
     ("town_castle",[
@@ -37993,11 +37993,11 @@ game_menus = [
     ]),
 ###############END
 ###sixth horse race
-    ("competition_horse",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
-    "The sixth competition is the horse race. Two races will take place: The winners of the first race will battle each other in the second and final race."+
-    " ^^You are at round {reg21} and {reg22} opponents are remaining.",
-    "none",
-    [(set_background_mesh, "mesh_pic_orgie"),
+("competition_horse",menu_text_color(0xFF000000)|mnf_disable_all_keys|mnf_scale_picture,
+  "The sixth competition is the horse race. Two races will take place: The winners of the first race will battle each other in the second and final race."+
+  " ^^You are at round {reg21} and {reg22} opponents are remaining.",
+  "none",[
+    (set_background_mesh, "mesh_pic_orgie"),
     (try_begin),
         (troop_slot_eq, "trp_organiser", won_horse, -1),
         (try_for_range, ":participants_0", 0, 49),
@@ -38093,9 +38093,7 @@ game_menus = [
         (troop_set_slot, "trp_organiser", won_horse,reg0),
         (jump_to_menu, "mnu_competition_won"),
     (try_end),
-    ],
-
-    [
+  ],[
     ("leave",[],"Race!",[
         (assign, "$g_tournament_player_team_won", -1),
         (assign, "$g_tournament_bet_placed", 0),
@@ -47931,8 +47929,163 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ]),
 ]),
 
+("chariot_race",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "Chariot Race!^^The trumpets sound, and the roar of the crowd fills the arena. The dust and the hopes of thousands rise from the track."
+  +" This is your moment, Auriga!^Show your confidence and place a wager on your own skill. Victory will bring not only glory, but a purse heavy with gold."
+  +" Your current wager stands at {reg20} denars.^^^A true charioteer knows how to command their beasts. When the moment is right,"
+  +" you may press [G] to furiously urge your horses into a desperate sprint, giving you a burst of speed to overtake a rival or break for the finish line."
+  +"^^Be warned, this effort takes a tremendous toll on your animals."
+  +" Each use saps their vitality, and even the strongest horse can be driven to collapse and death if pushed too far."
+  +" Manage their stamina, or you'll both end up as wreckage on the spina.",
+  "none",[
+    (set_background_mesh, "mesh_pic_race"),
+    (assign, reg20, "$g_tournament_bet_placed"),
+    # (party_set_slot, "$current_town", slot_town_has_tournament, 0), #No way to return back if this menu is left
+   ],[
+    ("leave",[],"Start the race.",[
+      (try_begin),
+        (gt, "$g_tournament_bet_placed", 0),
+        (troop_remove_gold, "trp_player", "$g_tournament_bet_placed"),
+      (try_end),
+
+      (assign, "$temp4_1", 1),
+      (assign, "$temp4", 0),
+
+      (modify_visitors_at_site, "scn_horse_race_arena"),
+      (reset_visitors),
+      (set_jump_mission, "mt_horse_racing"),
+
+      (mission_tpl_entry_set_override_flags, "mt_horse_racing", 0, af_override_everything),
+      (mission_tpl_entry_clear_override_items, "mt_horse_racing", 0),
+      (mission_tpl_entry_add_override_item, "mt_horse_racing",0, "itm_roman_poor1"),
+      (mission_tpl_entry_add_override_item, "mt_horse_racing",0, "itm_caligea"),
+      (store_random_in_range, ":chariot", "itm_basic_chariot_horse", "itm_sumpter_horse"),
+      (mission_tpl_entry_add_override_item, "mt_horse_racing",0, ":chariot"),
+
+      (try_for_range, ":entry", 8, 15),
+          (mission_tpl_entry_set_override_flags, "mt_horse_racing", ":entry", af_override_everything),
+          (mission_tpl_entry_clear_override_items, "mt_horse_racing", ":entry"),
+          (mission_tpl_entry_add_override_item, "mt_horse_racing",":entry", "itm_roman_poor1"),
+          (mission_tpl_entry_add_override_item, "mt_horse_racing",":entry", "itm_caligea"),
+          (store_random_in_range, ":chariot", "itm_basic_chariot_horse", "itm_sumpter_horse"),
+          (mission_tpl_entry_add_override_item, "mt_horse_racing",":entry", ":chariot"),
+      (try_end),
+      # # (mission_tpl_entry_set_override_flags, "mt_horse_racing", 0, af_override_horse),#player
+      # (mission_tpl_entry_clear_override_items, "mt_horse_racing", 0),
+      # (mission_tpl_entry_add_override_item, "mt_horse_racing",0, "itm_roman_poor1"),
+      # (mission_tpl_entry_add_override_item, "mt_horse_racing",0, "itm_caligea"),
+
+      (set_jump_entry, 0),
+
+      # (call_script, "script_sort_tournament_participant_troops"),
+      # (call_script, "script_get_num_tournament_participants"),
+      # (assign, ":num_participants", reg0),
+      # (assign, ":slot", 1),
+      # (assign, ":entry", 8),
+      # (try_for_range, ":cur_slot", 0, ":num_participants"),
+        # (troop_get_slot, ":troop_no", "trp_tournament_participants", ":cur_slot"),
+        # (troop_set_slot, "trp_temp_array_b", ":entry", ":troop_no"),
+        # (set_visitor, ":entry", ":troop_no"),
+        # (val_add, ":slot", 1),
+        # (val_add, ":entry", 1),
+        # (eq, ":slot", 8),
+        # (assign, ":num_participants", -1),
+      # (try_end),
+
+      (troop_set_slot, "trp_temp_array_olympia_b", 0, "trp_player"),
+      (troop_set_slot, "trp_temp_array_olympia_b", 1, "trp_Xerina"),
+      (troop_set_slot, "trp_temp_array_olympia_b", 2, "trp_Dranton"),
+      (troop_set_slot, "trp_temp_array_olympia_b", 3, "trp_Kradus"),
+      (troop_set_slot, "trp_temp_array_olympia_b", 4, "trp_Flamma"),
+      (troop_set_slot, "trp_temp_array_olympia_b", 5, "trp_Marcus_Attilius"),
+      (troop_set_slot, "trp_temp_array_olympia_b", 6, "trp_Scorpius"),
+      (troop_set_slot, "trp_temp_array_olympia_b", 7, "trp_champion_fighter"),
+      (troop_set_slot, "trp_temp_array_olympia_b", 8, "trp_Diocles"),
+
+      (set_visitor, 8, "trp_Xerina"),
+      (set_visitor, 9, "trp_Dranton"),
+      (set_visitor, 10, "trp_Kradus"),
+      (set_visitor, 11, "trp_Flamma"),
+      (set_visitor, 12, "trp_Marcus_Attilius"),
+      (set_visitor, 13, "trp_Scorpius"),
+      (set_visitor, 14, "trp_Diocles"),
+      #(set_visitor, 15, "trp_mercenary_horseman"),
+      ##spawn visitors
+      (set_visitors, 1, "trp_guest", 10),
+      (set_visitors, 2, "trp_guest_female", 10),
+      (set_visitors, 3, "trp_guest", 10),
+      (set_visitors, 4, "trp_guest_female", 10),
+      (set_visitors, 5, "trp_guest", 10),
+      (set_visitors, 6, "trp_guest_female", 10),
+      (set_visitors, 7, "trp_guest", 10),
+      (set_visitors, 16, "trp_guest_female", 10),
+      (set_visitors, 17, "trp_guest", 10),
+      (try_for_range, ":entry", 28, 48),
+        (store_random_in_range, ":r", 0, 2),
+        (try_begin),
+          (eq, ":r", 0),
+          (set_visitors, ":entry", "trp_guest", 10),
+        (else_try),
+          (set_visitors, ":entry", "trp_guest_female", 10),
+        (try_end),
+      (try_end),
+      (try_for_range, ":entry", 58, 76),
+        (store_random_in_range, ":r", 0, 2),
+        (try_begin),
+          (eq, ":r", 0),
+          (set_visitors, ":entry", "trp_guest", 10),
+        (else_try),
+          (set_visitors, ":entry", "trp_guest_female", 10),
+        (try_end),
+      (try_end),
+      #####visitors
+      (jump_to_scene, "scn_horse_race_arena"),
+      (change_screen_mission),
+    ]),
+    ("leave",[(eq, "$g_tournament_bet_placed", 0),
+      (store_troop_gold,":g", "trp_player"),
+      (ge, ":g", 100),
+    ],"Bet 100 denars.",[
+      (assign, "$g_tournament_bet_placed", 100),
+      (jump_to_menu, "mnu_horse_race"),
+    ]),
+    ("leave",[
+      (eq, "$g_tournament_bet_placed", 0),
+      (store_troop_gold,":g", "trp_player"),
+      (ge, ":g", 250),
+    ],"Bet 250 denars.",[
+      (assign, "$g_tournament_bet_placed",250),
+		  (jump_to_menu, "mnu_horse_race"),
+    ]),
+    ("leave",[
+      (eq, "$g_tournament_bet_placed", 0),
+      (store_troop_gold,":g", "trp_player"),
+      (ge, ":g", 500),
+    ],"Bet 500 denars.",[
+      (assign, "$g_tournament_bet_placed",500),
+      (jump_to_menu, "mnu_horse_race"),
+    ]),
+    ("leave",[
+      (eq, "$g_tournament_bet_placed", 0),
+      (store_troop_gold,":g", "trp_player"),
+      (ge, ":g", 1000),
+     ],"Bet 1000 denars.",[
+      (assign, "$g_tournament_bet_placed",1000),
+		  (jump_to_menu, "mnu_horse_race"),
+    ]),
+    ("leave",[],"Withdraw.",[
+		  (jump_to_menu, "mnu_town_tournament_won_by_another"),
+    ]),
+]),
+
 ("horse_race",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "You can place a bet on yourself. The money you will receive depends on your rank in the race.^You have set a bet of {reg20} denars on yourself.",
+  "Horse Race!^^The herald's horn echoes across the hippodrome as the restless horses line up at the starting gates. The crowd roars in anticipation."
+  +" This is your chance to prove your equestrian mastery!^Show your confidence and place a wager on your own skill."
+  +" A victory wreath brings glory, but a purse heavy with gold is the true prize. Your current wager stands at {reg20} denars."
+  +"^^A master rider knows when to push their steed. When the moment is right, you may press [G] to spur your horse into a desperate sprint,"
+  +" giving you a burst of speed to overtake a rival or claim the finish line.^^Be warned, such exertion takes a tremendous toll."
+  +" Each use saps your mount's vitality, and even the strongest horse can be driven to exhaustion and collapse if pushed too far."
+  +" Manage its stamina wisely, or you will finish the race in the dust.",
   "none",[
     (set_background_mesh, "mesh_pic_race"),
     (assign, reg20, "$g_tournament_bet_placed"),
@@ -47945,7 +48098,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
 
       (assign, "$temp4_1", 1),
-      (assign, "$temp4", 1),
+      (assign, "$temp4", 0),
 
       (modify_visitors_at_site, "scn_horse_race_arena"),
       (reset_visitors),
@@ -48066,11 +48219,24 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("decide_game",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "You can either join the gladiator fights in the arena or participate in an horse race!^^"
-  +" The horse race is quite challenging and only true masters participate it.^^You can also watch the beast fights: Criminals are thrown to the beasts between the gladiator fights.",
+  "Ludi Circenses!^^You can either join the gladiator fights in the arena or participate in horse or chariot races!^^"
+  +" The races are quite challenging and only true masters participate it.^^You can also watch the beast fights: Criminals are thrown to the beasts between the gladiator fights.",
   "none",[
     (set_background_mesh, "mesh_pic_girls"),
   ],[
+    ("op1",[],"Participate in the chariot race.",[
+      (try_begin),
+          (is_vanilla_warband),
+          (display_message, "@Chariot races are only available if you are using WSE2.", message_alert),
+          (display_message, "@Chariot races are only available if you are using WSE2.", message_alert),
+          (display_message, "@Chariot races are only available if you are using WSE2.", message_alert),
+          (display_message, "@Chariot races are only available if you are using WSE2.", message_alert),
+          (display_message, "@Chariot races are only available if you are using WSE2.", message_alert),
+      (else_try),
+          (assign, "$temp1",0),
+          (jump_to_menu, "mnu_chariot_race"),
+      (try_end),
+    ]),
     ("op1",[],"Participate in the horse race.",[
       (try_begin),
           (store_skill_level, ":skill", "skl_riding", "trp_player", ),

@@ -1627,3 +1627,7 @@ spr_destroy_house_2_b = 1625
 spr_destroy_house_2_c = 1626
 spr_mp_battlement_framework_2 = 1627
 spr_alexandria_lighthouse_icon = 1628
+spr_basic_chariot = 1629
+spr_basic_chariot_destroyed = 1630
+spr_basic_chariot_b = 1631
+spr_basic_chariot_b_destroyed = 1632

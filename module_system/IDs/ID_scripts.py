@@ -1051,3 +1051,7 @@ script_apply_changes_to_slave_trader = 1049
 script_get_labour_slave_skill_modifier = 1050
 script_count_party_slaves = 1051
 script_remove_slaves_from_party = 1052
+script_chariot_trigger = 1053
+script_chariot_on_destruction = 1054
+script_check_chariots_crashed = 1055
+script_init_chariot_item = 1056

@@ -74,6 +74,9 @@ slot_agent_is_running_away        = 2
 slot_agent_courage_score          = 3
 slot_agent_recently_decided       = 4
 
+# horse slots
+slot_agent_chariot_prop_instance = 2
+
 #battle feature slot
 slot_agent_shieldbash_cooldown    = 5
 
@@ -2010,13 +2013,18 @@ slot_party_template_lair_next_spawn = 6
 ##  SCENE PROP SLOTS       #############################
 ########################################################
 
-scene_prop_open_or_close_slot       = 1
-scene_prop_smoke_effect_done        = 2
-scene_prop_number_of_agents_pushing = 3 #for belfries only
-scene_prop_next_entry_point_id      = 4 #for belfries only
-scene_prop_belfry_platform_moved    = 5 #for belfries only
-scene_prop_slots_end                = 6
-scene_prop_timer					          = 7
+scene_prop_timer       = 1
+slot_scene_prop_moving = 2 # for chariots only
+
+#possible values of slot_scene_prop_moving
+prop_moving_forward = 1
+prop_moving_backward = -1
+prop_disabled = -2
+prop_not_moving = 0
+# end
+
+slot_attached_horse    = 3
+slot_scene_prop_init   = 4
 
 ########################################################
 rel_enemy   = 0
@@ -4387,4 +4395,4 @@ household_mod_corruption        = 2
 household_mod_cook_quality      = 3
 household_mod_admin_eff         = 4
 household_mod_engineering_eff   = 5
-household_mod_ends              = 6    
+household_mod_ends              = 6

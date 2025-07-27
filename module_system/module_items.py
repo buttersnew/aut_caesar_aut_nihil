@@ -659,8 +659,23 @@ heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_7] ],
 ["quest_ale","Ale", [("ale_barrel",0)], itp_type_goods, 0,
 31,weight(40)|abundance(70)|max_ammo(50),imodbits_none],
 
-# Horses: sumpter horse/ pack horse, saddle horse, steppe horse, warm blood, geldling, stallion,   war mount, charger,
-# Carthorse, hunter, heavy hunter, hackney, palfrey, courser, destrier.
+# chariot horse
+["basic_chariot_horse","Red Chariot", [("basic_chariot",0)], itp_type_horse|itp_unique, 0,
+2200,abundance(70)|hit_points(200)|body_armor(0)|difficulty(0)|
+horse_speed(50)|horse_maneuver(40)|horse_charge(80)|horse_scale(105),imodbits_horse_basic,[
+    (ti_on_init_item, [
+        (call_script, "script_init_chariot_item", "spr_basic_chariot"),
+    ]),
+],[]],
+["basic_chariot_b_horse","Blue Chariot", [("basic_chariot_2",0)], itp_type_horse|itp_unique, 0,
+2200,abundance(70)|hit_points(200)|body_armor(0)|difficulty(0)|
+horse_speed(50)|horse_maneuver(40)|horse_charge(80)|horse_scale(105),imodbits_horse_basic,[
+    (ti_on_init_item, [
+        (call_script, "script_init_chariot_item", "spr_basic_chariot_b"),
+    ]),
+],[]],
+
+# Horses
 ["sumpter_horse","Packhorse", [("sumpter_horse",0)], itp_merchandise|itp_type_horse, 0,
 1034,abundance(90)|hit_points(100)|body_armor(14)|difficulty(1)|
 horse_speed(35)|horse_maneuver(39)|horse_charge(9)|horse_scale(100),imodbits_horse_basic],
@@ -795,23 +810,6 @@ horse_speed(44)|horse_maneuver(50)|horse_charge(13)|horse_scale(100),imodbits_ho
 ["leopard_horse_3","Horse", [("horse_leopard_black",0),], itp_merchandise|itp_type_horse, 0,
 3100,abundance(80)|hit_points(120)|body_armor(12)|difficulty(3)|
 horse_speed(44)|horse_maneuver(50)|horse_charge(13)|horse_scale(100),imodbits_horse_basic|imodbit_champion, [], [fac_culture_6,fac_culture_8,fac_culture_5,fac_culture_7]],
-
-# test chariot
-# ["war_chariot_horse","War Chariot", [("chariot2",0)], itp_type_horse, 0,
-# 4800,abundance(40)|hit_points(125)|body_armor(45)|difficulty(4)|
-# horse_speed(39)|horse_maneuver(45)|horse_charge(30)|horse_scale(100),imodbits_horse_basic|imodbit_champion, [
-# ], []],
-# ["war_chariot","War Chariot", [("chariot2_2",0)], itp_type_horse, 0,
-# 4800,abundance(40)|hit_points(125)|body_armor(45)|difficulty(4)|
-# horse_speed(39)|horse_maneuver(45)|horse_charge(30)|horse_scale(100),imodbits_horse_basic|imodbit_champion, [
-# (ti_on_init_item, [
-# (store_trigger_param_1, ":agent"),
-# (agent_get_position, pos22, ":agent"),
-# (set_spawn_position, pos22),
-# (spawn_horse, "itm_war_chariot_horse"),
-# (assign, ":horse", reg0),
-# ]),
-# ], []],
 
 ##camels
 ["camel","Camel", [("camel",0)], itp_merchandise|itp_type_horse, 0,

@@ -353,19 +353,88 @@ poisoned_arrows_damage = (6, 0, 0, [],[
   (try_end),
 ])
 
+chariot_triggers = [
+  (ti_before_mission_start, 0, 0, [],[
+    (assign, "$g_activate_chariot_cam", -1),
+  ]),
+  # clear chariot animation
+  (ti_on_agent_mount, 0, 0, [],[
+    (store_trigger_param_1, ":rider"),
+    (store_trigger_param_2, ":horse"),
+    (agent_is_active, ":rider"),
+    (agent_is_alive, ":rider"),
+    # (agent_is_active, ":horse"),
+    (agent_get_item_id, ":chariot", ":horse"),
+    (eq, ":chariot", "itm_basic_chariot_horse"),
+    (agent_get_slot, ":instance", ":horse", slot_agent_chariot_prop_instance),
+    (scene_prop_set_slot, ":instance", slot_scene_prop_init, 1),
+  ]),
+  (ti_on_agent_dismount, 0, 0, [],[
+    (store_trigger_param_1, ":rider"),
+    (store_trigger_param_2, ":horse"),
+    (agent_is_active, ":rider"),
+    (agent_is_alive, ":rider"),
+    # (agent_is_active, ":horse"),
+    (agent_get_item_id, ":chariot", ":horse"),
+    (eq, ":chariot", "itm_basic_chariot_horse"),
+    (agent_set_animation, ":rider", "anim_rider_fall_roll",0),
+    (try_begin),# disable camera on dismount for player
+        (neg|agent_is_non_player, ":rider"),
+        (assign, "$g_activate_chariot_cam", -1),
+        (mission_cam_set_mode, 0),
+    (try_end),
+  ]),
+  (ti_on_agent_killed_or_wounded, 0, 0, [],[
+    (store_trigger_param_1, ":agent"),
+    (agent_is_active, ":agent"),
+    # (try_begin),
+    #   (agent_is_human, ":agent"),
+    #   (agent_get_horse, ":horse", ":agent"),
+    #   (agent_is_active, ":horse"),
+    # (try_end),
+    (try_begin),# disable camera on player death
+      (ge, "$g_activate_chariot_cam", 0),
+      (neg|agent_is_non_player, ":agent"),
+      (assign, "$g_activate_chariot_cam", -1),
+      (mission_cam_set_mode, 0),
+
+      (display_message, "@Diasble chariot camera. Reason: Player dead"),
+    (else_try),# disable camera on horse death
+      (eq, ":agent", "$g_activate_chariot_cam"),
+      (assign, "$g_activate_chariot_cam", -1),
+      (mission_cam_set_mode, 0),
+      (display_message, "@Diasble chariot camera. Reason: Horse dead"),
+    (try_end),
+  ]),
+  (0, 0, 0, [
+    (ge, "$g_activate_chariot_cam", 0),
+    (mission_cam_set_mode, 0),
+  ],[
+    (try_begin),
+      (neg|is_camera_in_first_person),
+      (get_player_agent_no, ":player"),
+      (mission_cam_set_mode, 1),
+      (agent_get_position, pos47, ":player"),
+      (position_move_z, pos47, 350),#always cm
+      (position_move_y, pos47, -700),
+      (mission_cam_set_position, pos47),
+    (else_try),
+      (mission_cam_set_mode, 0),
+    (try_end),
+  ]),
+  (0.5, 0, 0, [
+    (neg|is_vanilla_warband),
+  ],[
+    (call_script, "script_chariot_trigger", "spr_basic_chariot_b"),
+  ]),
+  (0.5, 0, 0, [
+    (neg|is_vanilla_warband),
+  ],[
+    (call_script, "script_chariot_trigger", "spr_basic_chariot"),
+  ]),
+]
 
 global_common_triggers = [
-  # (0, 0, 0,[
-  #   (key_clicked, key_h),
-  # ],[
-  #   (display_message, "@Change skybox"),
-  #   (store_add, ":hdr", "$sky_box", 1),
-  #   (set_skybox, "$sky_box", ":hdr"),
-  #   (val_add, "$sky_box", 2),
-  #   (ge, "$sky_box", 54),
-  #   (assign, "$sky_box", 0),
-  # ]),
-
   (0, 0, 0,[
     (key_clicked, key_j),
   ],[
@@ -586,7 +655,7 @@ global_common_triggers = [
       (display_message, "@Your slave {s0} died!", message_negative),
       (troop_set_slot, ":troop_no", slot_slave_template_troop, 0),
   ]),
-]
+] + chariot_triggers
 
 small_battle_check = (ti_on_agent_spawn, 0, 0,[
     (store_add, ":total_size", "$g_friend_fit_for_battle", "$g_enemy_fit_for_battle"),
@@ -14590,9 +14659,8 @@ mission_templates = [
             (agent_play_sound, ":agent_no", "snd_panic_cry"),
           (try_end),
       ]),
-
-      (ti_on_agent_hit, 0, 0, [],		# make damaged agents flee
-        [
+      # make damaged agents flee
+      (ti_on_agent_hit, 0, 0, [],	[
           (store_trigger_param, ":inflicted_agent_id", 1),
           #(store_trigger_param, ":dealer_agent_id", 2),
           (store_trigger_param, ":inflicted_damage", 3),
@@ -22065,7 +22133,8 @@ mission_templates = [
       (else_try),
         (str_store_string, s11, "@Do you wish to give up?^You will lose the competition."),
       (try_end),
-      (question_box, s11),]),
+      (question_box, s11),
+    ]),
     ##leave2
     (ti_question_answered, 0, 0,[],[
       (store_trigger_param_1, ":number"),
@@ -22097,65 +22166,65 @@ mission_templates = [
     ###race start
     (0.3, 0, 0,[
       (try_begin),
-        (eq, "$temp", -1),
-        (str_clear, s1),
-        (assign, reg1, 1),
-        (try_for_range, ":slot", 0, 8),
-          (troop_get_slot, ":troop", "trp_temp_array_olympia_b", ":slot"),
-          (ge, ":troop", 0),
-          (str_store_troop_name, s2, ":troop"),
-          (str_store_string, s1, "@{s1}^^Number {reg1}:  {s2} "),
-          (val_add, reg1, 1),
-        (try_end),
-        (str_store_string, s1, "@Participants list:^^^{s1}^^^<<   Press 'K' to start the race!   >>"),
-        (tutorial_message_set_size, 17, 17),
-        (tutorial_message_set_position, 500, 600),
-        (tutorial_message_set_center_justify, 0),
-        (tutorial_message_set_background, 0),
-        (tutorial_message, "@{s1}", 0x000000),
+          (eq, "$temp", -1),
+          (str_clear, s1),
+          (assign, reg1, 1),
+          (try_for_range, ":slot", 0, 8),
+            (troop_get_slot, ":troop", "trp_temp_array_olympia_b", ":slot"),
+            (ge, ":troop", 0),
+            (str_store_troop_name, s2, ":troop"),
+            (str_store_string, s1, "@{s1}^^Number {reg1}:  {s2} "),
+            (val_add, reg1, 1),
+          (try_end),
+          (str_store_string, s1, "@Participants list:^^^{s1}^^^<<   Press 'K' to start the race!   >>"),
+          (tutorial_message_set_size, 17, 17),
+          (tutorial_message_set_position, 500, 600),
+          (tutorial_message_set_center_justify, 0),
+          (tutorial_message_set_background, 0),
+          (tutorial_message, "@{s1}", 0x000000),
 
-        (get_player_agent_no, ":agent_player"),
-        (try_begin),
-          (agent_get_horse, ":horse", ":agent_player"),
-          (agent_is_active, ":horse"),
-          (agent_is_alive, ":horse"),
-          (set_fixed_point_multiplier, 100),
-          (agent_set_position, ":horse", pos40),
-        (else_try),
-          (set_fixed_point_multiplier, 100),
-          (agent_set_position, ":agent_player", pos40),
-        (try_end),
+          (get_player_agent_no, ":agent_player"),
+          (try_begin),
+            (agent_get_horse, ":horse", ":agent_player"),
+            (agent_is_active, ":horse"),
+            (agent_is_alive, ":horse"),
+            (set_fixed_point_multiplier, 100),
+            (agent_set_position, ":horse", pos40),
+          (else_try),
+            (set_fixed_point_multiplier, 100),
+            (agent_set_position, ":agent_player", pos40),
+          (try_end),
       (else_try),
-        (ge, "$temp_3", 0),
-        (ge, "$temp", 1),
-        (get_player_agent_no, ":player"),
-        (try_begin),
-          (agent_slot_ge, ":player", slot_agent_race_state, 20),
-          (str_store_string, s1, "@final round"),
-        (else_try),
-          (agent_slot_ge, ":player", slot_agent_race_state, 10),
-            (try_begin),
-                (eq, "$temp4", 1),
-                (str_store_string, s1, "@final round"),
-            (else_try),
-                (str_store_string, s1, "@2nd round"),
-            (try_end),
-        (else_try),
-          (agent_slot_ge, ":player", slot_agent_race_state, 0),
-            (try_begin),
-                (eq, "$temp4", 2),
-                (str_store_string, s1, "@first and final round"),
-            (else_try),
-                (this_or_next|eq, "$temp4", 1),
-                (eq, "$temp4", 0),
-                (str_store_string, s1, "@1st round"),
-            (try_end),
-        (try_end),
-        (tutorial_message_set_size, 22, 22),
-        (tutorial_message_set_position, 500, 650),
-        (tutorial_message_set_center_justify, 1),
-        (tutorial_message_set_background, 0),
-        (tutorial_message, "@{s1}", 0x000000),
+          (ge, "$temp_3", 0),
+          (ge, "$temp", 1),
+          (get_player_agent_no, ":player"),
+          (try_begin),
+              (agent_slot_ge, ":player", slot_agent_race_state, 20),
+              (str_store_string, s1, "@final round"),
+          (else_try),
+              (agent_slot_ge, ":player", slot_agent_race_state, 10),
+              (try_begin),
+                  (eq, "$temp4", 1),
+                  (str_store_string, s1, "@final round"),
+              (else_try),
+                  (str_store_string, s1, "@2nd round"),
+              (try_end),
+          (else_try),
+              (agent_slot_ge, ":player", slot_agent_race_state, 0),
+              (try_begin),
+                  (eq, "$temp4", 2),
+                  (str_store_string, s1, "@first and final round"),
+              (else_try),
+                  (this_or_next|eq, "$temp4", 1),
+                  (eq, "$temp4", 0),
+                  (str_store_string, s1, "@1st round"),
+              (try_end),
+          (try_end),
+          (tutorial_message_set_size, 22, 22),
+          (tutorial_message_set_position, 500, 650),
+          (tutorial_message_set_center_justify, 1),
+          (tutorial_message_set_background, 0),
+          (tutorial_message, "@{s1}", 0x000000),
       (try_end),
     ],
     []),
@@ -22247,7 +22316,7 @@ mission_templates = [
     ]),
 
     (0, 0, 0,[
-      (key_clicked, key_j),
+      (key_clicked, key_g),
       (neq, "$temp", -1),
     ],[
       (get_player_agent_no, ":player"),
@@ -22267,7 +22336,6 @@ mission_templates = [
           (call_script, "script_advanced_agent_set_speed_modifier", ":player", 100),
       (try_end),
     ]),
-
     (ti_on_agent_dismount, 0, 0, [],[
       (store_trigger_param_2, ":horse"),
       (neg|agent_is_alive, ":horse"),
@@ -22450,7 +22518,6 @@ mission_templates = [
         (agent_get_troop_id, ":troop", ":agent"),
         (neq, ":troop", "trp_guest"),
         (neq, ":troop", "trp_guest_female"),
-
         (try_begin),
             (eq, "$temp4", 2),
             (assign, ":win", 10),
@@ -22460,6 +22527,7 @@ mission_templates = [
         (else_try),
             (assign, ":win", 30),
         (try_end),
+
         (agent_slot_ge, ":agent", slot_agent_race_state, ":win"),
         (agent_set_slot, ":agent", slot_agent_race_state, -1),
         (agent_clear_scripted_mode, ":agent"),
@@ -22481,11 +22549,11 @@ mission_templates = [
           (else_try),
             (agent_play_sound, ":agent", "snd_man_victory"),
           (try_end),
+          (agent_set_slot, ":agent", slot_horse_sprinting, 0),#stop sprinting
         (try_end),
       (try_end),
-    ],
-    []),
-##win money
+    ],[]),
+    ##win money
     (0.1, 1, ti_once,[
       (store_mission_timer_a, ":timer_mission"),
       (val_sub, ":timer_mission", "$temp_3"),
@@ -22505,17 +22573,15 @@ mission_templates = [
           (neq, ":troop", "trp_guest_female"),
           (agent_get_slot, ":race_state", ":agents", slot_agent_race_state),
           (ge, ":race_state", 0),
-
-            (try_begin),
-                (eq, "$temp4", 2),
-                (assign, ":win", 10),
-            (else_try),
-                (eq, "$temp4", 1),
-                (assign, ":win", 20),
-            (else_try),
-                (assign, ":win", 30),
-            (try_end),
-
+          (try_begin),
+              (eq, "$temp4", 2),
+              (assign, ":win", 10),
+          (else_try),
+              (eq, "$temp4", 1),
+              (assign, ":win", 20),
+          (else_try),
+              (assign, ":win", 30),
+          (try_end),
           (lt, ":race_state", ":win"),
           (gt, ":race_state", ":winer_state"),
           (agent_get_troop_id, ":troop1", ":agents"),
@@ -22526,6 +22592,9 @@ mission_templates = [
             (assign, ":continue", 0),
           (try_end),
           (eq, ":continue", 1),
+
+          (agent_set_slot, ":agents", slot_horse_sprinting, 0),#stop sprinting
+
           (assign, ":winer_state", ":race_state"),
           (assign, ":winer", ":troop1"),
         (try_end),
