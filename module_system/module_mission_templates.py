@@ -22072,6 +22072,7 @@ mission_templates = [
   [
     cannot_spawn_commoners,
     improved_lightning,
+    wounds_vc,
 
     (ti_before_mission_start, 0, 0,[
       (troop_slot_eq, "trp_organiser", olympia_easter_egg, 0),
@@ -22090,7 +22091,7 @@ mission_templates = [
       (try_end),
     ]),
 
-    (1, 4, ti_once,[
+    (1, 2, ti_once,[
       (lt, "$temp_3", 0),
     ],[
       (stop_all_sounds),
@@ -22115,7 +22116,7 @@ mission_templates = [
       (troop_set_slot, "trp_organiser", olympia_auto_menu, ":menu"),
       (jump_to_menu, "mnu_auto_return_map"),
       (mission_cam_animate_to_screen_color, 0xFF000000, 1000),
-      (finish_mission,4),
+      (finish_mission, 4),
     ]),
     ##leave1
     (ti_tab_pressed, 0, 0,[
@@ -22560,9 +22561,9 @@ mission_templates = [
       (get_player_agent_no, ":player"),
       (this_or_next|ge, ":timer_mission", 30),
       (agent_slot_eq, ":player", slot_agent_race_state, -1),
+    ],[
       (assign, "$temp_3", -1),
       (tutorial_message, -1),
-    ],[
       # (get_player_agent_no, ":player"),
       (try_for_range, ":unused", 0, 9),
         (assign, ":winer_state", -1),

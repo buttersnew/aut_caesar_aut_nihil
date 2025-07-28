@@ -110,7 +110,8 @@ info_pages = [
 +"^^H - KEY: ^^*) Allows you to call your horse during battle (if it is still alive) "
 +"^^K - KEY: ^^*) During battle pressing K will start a shield taunt. ^*) While on worldmap, pressing K during freelancing allows player to access the daily missions menu."
 +"^^T - KEY: ^^*) By pressing T player will perform a warcry during battles. ^*) While entering the lords hall player will make a handkiss by pressing T."
-+"^^J - KEY: ^^*) Player can change the movement speed of troops during battles by pressing J ^*) Player's horse will start to sprint during horse races by pressing J"
++"^^J - KEY: ^^*) Player can change the movement speed of troops during battles by pressing J"
++"^^G - KEY: ^^*) Player's horse will start to sprint during horse races by pressing J"
 +"^^Z - KEY: ^^*) Pressing Z allows player to crouch (For German keyboards it is the Y key). Though it can be changed under game options -> controls."
 +"^^^The keys for the death-camera can be changed under the Diplomacy preference menu."),
 

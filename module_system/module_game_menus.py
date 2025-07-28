@@ -48047,7 +48047,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":g", 100),
     ],"Bet 100 denars.",[
       (assign, "$g_tournament_bet_placed", 100),
-      (jump_to_menu, "mnu_horse_race"),
+      (jump_to_menu, "mnu_chariot_race"),
     ]),
     ("leave",[
       (eq, "$g_tournament_bet_placed", 0),
@@ -48055,7 +48055,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":g", 250),
     ],"Bet 250 denars.",[
       (assign, "$g_tournament_bet_placed",250),
-		  (jump_to_menu, "mnu_horse_race"),
+		  (jump_to_menu, "mnu_chariot_race"),
     ]),
     ("leave",[
       (eq, "$g_tournament_bet_placed", 0),
@@ -48063,7 +48063,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":g", 500),
     ],"Bet 500 denars.",[
       (assign, "$g_tournament_bet_placed",500),
-      (jump_to_menu, "mnu_horse_race"),
+      (jump_to_menu, "mnu_chariot_race"),
     ]),
     ("leave",[
       (eq, "$g_tournament_bet_placed", 0),
@@ -48071,7 +48071,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, ":g", 1000),
      ],"Bet 1000 denars.",[
       (assign, "$g_tournament_bet_placed",1000),
-		  (jump_to_menu, "mnu_horse_race"),
+		  (jump_to_menu, "mnu_chariot_race"),
     ]),
     ("leave",[],"Withdraw.",[
 		  (jump_to_menu, "mnu_town_tournament_won_by_another"),
