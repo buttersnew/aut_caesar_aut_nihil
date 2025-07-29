@@ -8153,6 +8153,7 @@ strings = [
 # ("roman_focale_brown",  "roman_focale_brown"),
 # ("roman_focale_end",  "end"),
 
+("won_chariot",  "Chariot race"),
 ("won_horse",  "Horse race"),
 ("won_mule",  "Mule race"),
 ("won_throwing",  "Spear throw"),

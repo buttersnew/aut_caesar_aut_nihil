@@ -45,7 +45,7 @@ scripts_hardcoded = [
     (troop_set_slot, "trp_household_villa", slot_troop_spouse, "scn_domus_mare_interior"),#for domus mare scene upgrade
 
     (assign, reg62, 0),#used for script_view_party_members
-    (quest_set_slot, "qst_olympic_games", slot_quest_dont_give_again_remaining_days, 240),
+    (quest_set_slot, "qst_olympic_games", slot_quest_dont_give_again_remaining_days, 1),
 
     (call_script, "script_update_party_creation_random_limits"),
 

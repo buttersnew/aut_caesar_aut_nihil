@@ -1305,17 +1305,18 @@ slot_troop_last_comment_slot   = 29
 
 #olympia slots for organiser
 won_horse = 30
-won_mule  = 31
-won_throwing  = 32
-won_fighting  = 33
-won_running_tunic  = 34
-won_running_hoplit  = 35
-won_throwing_2       = 36
-current_opponent_1  = 37
-rest_olympia        = 38
-olympia_progress    = 39
-olympia_auto_menu    = 40
-olympia_easter_egg    = 41
+won_chariot = 31
+won_mule  = 32
+won_throwing  = 33
+won_fighting  = 34
+won_running_tunic  = 35
+won_running_hoplit  = 36
+won_throwing_2       = 37
+current_opponent_1  = 38
+rest_olympia        = 39
+olympia_progress    = 40
+olympia_auto_menu    = 41
+olympia_easter_egg    = 42
 
 slot_troop_spouse              = 30
 slot_troop_father              = 31
