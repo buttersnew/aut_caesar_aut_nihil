@@ -75,7 +75,7 @@ slot_agent_courage_score          = 3
 slot_agent_recently_decided       = 4
 
 # horse slots
-slot_agent_chariot_prop_instance = 2
+slot_agent_chariot_prop_instance = 3
 
 #battle feature slot
 slot_agent_shieldbash_cooldown    = 5
@@ -2614,7 +2614,7 @@ village_elders_end     = "trp_merchants_end"
 # startup_merchants_end = "trp_superbus"
 
 ##diplomacy start+
-tournament_champions_begin = "trp_Xerina"
+tournament_champions_begin = "trp_tetraites"
 tournament_champions_end   = "trp_tutorial_trainer"
 
 merchants_begin = armor_merchants_begin

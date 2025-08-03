@@ -357,6 +357,7 @@ armenian_standards = [itm_battle_standard]
 parthian_standards = [itm_battle_standard]
 caucasian_standards = [itm_battle_standard]
 dacian_standards = [itm_battle_standard]
+syrian_standards = [itm_battle_standard]
 
 bosporan_horns = [itm_horn]
 judean_horns = [itm_trumpet_eastern]
@@ -366,6 +367,7 @@ armenian_horns = [itm_trumpet_eastern]
 parthian_horns = [itm_trumpet_eastern]
 caucasian_horns = [itm_trumpet_eastern]
 dacian_horns = [itm_horn]
+syrian_horns = [itm_trumpet_eastern]
 
 jew_shields_simple = [itm_eastern_shield_inf_light5,itm_eastern_shield_inf_light6,itm_eastern_shield_inf_light1,itm_eastern_shield_inf_light2,itm_eastern_shield_inf_light3,itm_eastern_shield_inf_light4]
 jew_shields_large = [itm_judean_shield_large_1,itm_judean_shield_large_2,itm_judean_shield_large_3,itm_judean_shield_large_4]
@@ -619,6 +621,22 @@ itm_tuareg_new_2_green,itm_tuareg_new_2_blue,itm_tuareg_new_2_red,itm_tuareg_new
 
 desert_turbans_2 = [itm_turban,itm_turban_2,itm_desert_turban,itm_desert_turban_2]
 
+syrian_bow = [itm_syrian_barbed_arrows,itm_arabian_bow_1,itm_arabian_bow_2]
+syrian_shield_round = [itm_old_round_shield_2,itm_old_round_shield_4]+jew_shields_poor
+syrian_shield_oval = [itm_arabian_oval_shield_1,itm_arabian_oval_shield_2,itm_eastern_shield_inf_light1,itm_eastern_shield_inf_light2,itm_eastern_shield_inf_light3,itm_eastern_shield_inf_light4]
+
+syrian_helm = [itm_pilos_simple,itm_pilos_simple_2,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm5,itm_eastern_helm6]
+syrian_helm_heavy = [itm_pilos_chad,itm_pilos_chad_2,itm_parthian_helm_cavalry_heavy_1,itm_parthian_helm_cavalry_heavy_2]
+
+syrian_scale_armor = [itm_syrian_scale_1,itm_syrian_scale_2,itm_syrian_scale_3]
+syrian_scale_armor_heavy = [itm_heavy_syrian_scale_1,itm_heavy_syrian_scale_2,itm_heavy_syrian_scale_3]
+
+syrian_spears = [itm_syrian_spear_1_145,itm_eastern_spear_149]
+
+syrian_javelins = [itm_throwing_spears_east]
+
+syrian_swords = [itm_eastern_sword2,itm_eastern_sword3,itm_palmyran_gladius,itm_old_gladius_2]
+
 roman_tunic = [itm_roman_tunic_1,itm_roman_tunic_2,itm_roman_tunic_3,itm_roman_poor1,itm_roman_poor4,itm_roman_poor5,itm_roman_poor6,itm_roman_poor7,itm_roman_poor2,itm_roman_poor3]
 berber_tunic = [itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_numidian_armor_5]
 garamantian_tunic = [itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5]
@@ -641,6 +659,7 @@ persian_tunic_sheepskin = [itm_persian_sheepskin_1,itm_persian_sheepskin_2,itm_p
 persian_tunic = [itm_persian_tunic_1,itm_persian_tunic_2,itm_persian_tunic_3,itm_persian_tunic_4]
 parthian_tunic = [itm_parthian_tunic_1,itm_parthian_tunic_2,itm_parthian_tunic_3,itm_parthian_tunic_4]
 celtic_tunic = celtic_tunics_1+celtic_tunics_2
+syrian_tunic = [itm_arabian_tunic_1,itm_arabian_tunic_2,itm_arabian_tunic_3,itm_sarranid_cloth_robe,itm_sarranid_cloth_robe_b,itm_sarranid_cloth_robe_c,itm_judean_tunic_1,itm_judean_tunic_4]
 
 roman_cives= [itm_roman_toga,itm_roman_toga_2,itm_roman_toga_3]
 dacian_cives = [itm_dacian_noble1,itm_dacian_noble2,itm_dacian_noble3,itm_dacian_noble4,itm_dacian_noble5,itm_dacian_noble6]
@@ -654,6 +673,7 @@ bosporan_cives = bosporan_tunic+nomadic_cives
 caucasian_cives = caucasian_tunic
 berber_cives = [itm_numidian_armor_5]
 garamantian_cives = [itm_garmantian_armor_2,itm_garmantian_armor_1]
+syrian_cives = [itm_arab_noble_tunic_1,itm_arab_noble_tunic_2,itm_sarranid_cloth_robe_fancy_1,itm_sarranid_cloth_robe_fancy_2,itm_sarranid_cloth_robe_fancy_3]
 
 weapons_peasant_generic = [itm_shepherds_crook,itm_scythe,itm_pitch_fork,itm_sickle,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2]
 roman_weapons_peasant = [itm_roman_work_axe,itm_roman_hammer]+weapons_peasant_generic
@@ -662,11 +682,12 @@ celtic_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
 germanic_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
 parthian_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
 nomadic_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
-bosporan_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
+bosporan_weapons_peasant = [itm_roman_work_axe,itm_roman_hammer]+weapons_peasant_generic
 caucasian_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
 berber_weapons_peasant = [itm_roman_work_axe, itm_roman_hammer,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2,itm_numidian_spear_1]
 garamantian_weapons_peasant = [itm_hand_axe, itm_hammer,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2,itm_numidian_spear_1]
 desert_weapons_peasant = [itm_hand_axe,itm_roman_work_axe,itm_roman_hammer,itm_hammer,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2]
+syrian_weapons_peasant = [itm_roman_work_axe,itm_roman_hammer]+weapons_peasant_generic
 
 roman_foot_peasant = [itm_caligea]
 berber_foot_peasant = [itm_caligea]
@@ -680,6 +701,7 @@ caucasian_foot_peasant = [itm_sarmatian_shoes,itm_eastern_shoe]
 persian_foot_peasant = [itm_eastern_shoe,itm_leather_boots]
 bosporan_foot_peasant = [itm_leather_boots,itm_sarmatian_shoes]
 nomadic_foot_peasant = [itm_sarmatian_shoes,itm_leather_boots]
+syria_foot_peasant = [itm_caligea]
 
 roman_foot_cives = [itm_caligea,itm_calceus_2,itm_calceus_3,itm_calceus_4]
 berber_foot_cives = [itm_caligea]
@@ -693,6 +715,7 @@ caucasian_foot_cives = [itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y
 persian_foot_cives = [itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y]
 bosporan_foot_cives = [itm_sarmatian_shoes]
 nomadic_foot_cives = [itm_sarmatian_shoes]
+syria_foot_cives = [itm_eastern_shoe,itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y]
 
 roman_dress_peasant = [itm_female_1,itm_female_2,itm_female_3]
 berber_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b]
@@ -706,6 +729,7 @@ parthian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b]
 caucasian_dress_peasant = [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_4_barb]
 persian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b]
 bosporan_dress_peasant = [itm_female_1,itm_female_2,itm_female_3]
+syrian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b] + roman_dress_peasant
 
 roman_dress_cives = [itm_roman_noble_dress_7,itm_roman_noble_dress_6,itm_roman_noble_dress_5,itm_roman_noble_dress_4,itm_roman_noble_dress_3,itm_roman_noble_dress_2,itm_roman_noble_dress_1]
 berber_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_dress_b]
@@ -719,6 +743,7 @@ parthian_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_
 caucasian_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_dress_b]
 persian_dress_cives = [itm_sarranid_lady_dress,itm_sarranid_lady_dress_b]
 bosporan_dress_cives = [itm_barb_femal_rich1,itm_barb_femal_rich2,itm_barb_femal_rich3,itm_barb_femal_rich5]
+syrian_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_dress_b,itm_sarranid_lady_dress,itm_sarranid_lady_dress_b]
 
 roman_head_peasant = [itm_straw_hat,itm_mediterranean_straw_hat,itm_mediterranean_straw_hat_1,itm_mediterranean_straw_hat_2]
 persian_head_peasant = [itm_perisan_headcloth_1,itm_perisan_headcloth_2,itm_perisan_headcloth_3,itm_perisan_headcloth_4,itm_headcloth]
@@ -732,6 +757,7 @@ bosphoran_head_peasant = [itm_black_hood,itm_simple_hood_1,itm_simple_hood_2]
 desert_head_peasant = desert_turbans_1
 berber_head_peasant = desert_turbans_2
 garamantian_head_peasant = desert_turbans_2 + [itm_african_feather_band]
+syrian_head_peasant = [itm_tuareg_new_1_blue,itm_tuareg_new_1_red,itm_tuareg_new_1_white,itm_tuareg_new_2_blue,itm_tuareg_new_2_red,itm_tuareg_new_2_white,itm_phrygian_cap_red,itm_phrygian_cap_blue,itm_phrygian_cap_white]
 
 gladiator_armors = [itm_arena_armor_yellow,itm_arena_armor_red,itm_arena_armor_blue,itm_arena_armor_green]
 gladiator_shields = [itm_arena_shield_red,itm_arena_shield_blue,itm_arena_shield_green,itm_arena_shield_yellow]
@@ -823,7 +849,7 @@ attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_
 attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
 
 ["syrian_peasant", "Syrus Tribulis", "Syri Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_10,
-[itm_sling,itm_sling_rock1]+desert_head_peasant+desert_tunic+eastern_foot_peasant+desert_weapons_peasant,
+[itm_sling,itm_sling_rock1]+syrian_head_peasant+syria_foot_peasant+syrian_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
 
 ["eastern_peasant", "Orientalis Tribulis", "Orientales Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_10,
@@ -1274,6 +1300,13 @@ attrib_level_26, wp_melee(180), knows_level_26, armenian_face_young, armenian_fa
 attrib_level_26, wp_melee(180), knows_level_26, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 ["parthian_hornman", "Parthian Horman", "Parthian Hornmen", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
 []+eastern_boots_light+eastern_sword_short+eastern_armor_mail_parthian+parthian_helm_infantry_heavy+parthian_horns,
+attrib_level_26, wp_melee(180), knows_level_26, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+
+["syrian_standard_bearer", "Regalya D-Darpsa", "Regalya D-Darpsa", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
+[]+syrian_helm+syrian_scale_armor+syria_foot_cives+syrian_standards,
+attrib_level_26, wp_melee(180), knows_level_26, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+["syrian_hornman", "Musiqara D-Gesa", "Musiqara D-Gesa", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
+[]+syrian_helm+syrian_swords+syrian_scale_armor+syria_foot_cives+syrian_horns,
 attrib_level_26, wp_melee(180), knows_level_26, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 
 
@@ -1898,11 +1931,19 @@ attrib_level_31, wp(180), knows_level_31, roman_face1, roman_face2 ],
 ["roman_castle_guard", "Castle Guard", "Castle Guards", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_7,
 [itm_scutum_praetorian,itm_scutum_praetorian_2,itm_graves_simple,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_praetorian_hamata_1,itm_praetorian_hamata_2,itm_praetorian_hamata_3,itm_praetorian_hamata_4,itm_praetorian_helm_1,itm_praetorian_helm_2],
 attrib_level_31, wp(180), knows_level_31, roman_face1, roman_face2 ],
+
 ["jew_prison_guard", "Prison Guard", "Prison Guard", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_8,
 []+jew_helm_heavy+jew_scale+jew_boots_heavy+jew_swords+jew_shields_large,
 attrib_level_31, wp(180), knows_level_31, eastern_man_face_middle_1, eastern_man_face_middle_2 ],
 ["jew_castle_guard", "Castle Guard", "Castle Guard", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_8,
 []+jew_helm_heavy+jew_scale+jew_boots_heavy+jew_swords+jew_shields_large,
+attrib_level_31, wp(180), knows_level_31, eastern_man_face_middle_1, eastern_man_face_middle_2 ],
+
+["syrian_prison_guard", "Prison Guard", "Prison Guard", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_8,
+[]+syrian_helm_heavy+syrian_scale_armor+syria_foot_cives+syrian_swords+syrian_shield_oval,
+attrib_level_31, wp(180), knows_level_31, eastern_man_face_middle_1, eastern_man_face_middle_2 ],
+["syrian_castle_guard", "Castle Guard", "Castle Guard", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_8,
+[]+syrian_helm_heavy+syrian_scale_armor+syria_foot_cives+syrian_swords+syrian_shield_oval,
 attrib_level_31, wp(180), knows_level_31, eastern_man_face_middle_1, eastern_man_face_middle_2 ],
 ##end
 
@@ -2218,6 +2259,58 @@ attrib_level_29, wp(175), knows_level_29|knows_power_draw_5, eastern_man_face_yo
 ["eastern_elite_infantry_vet", "Kamandaran Zhayadan (vet)", "Kamandaran Zhayadan (vet)",tf_male_eastern|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet, no_scene, reserved, fac_culture_6,
 [itm_barbed_arrows,itm_khergit_bow,itm_parthian_pointed_helm,itm_heavy_wicker_1,itm_heavy_wicker_2]+eastern_swords_medium+eastern_armor_scale_heavy_1+parthian_helm_sallet+eastern_boots_light,
 attrib_level_31, wp(185), knows_level_31|knows_power_draw_6, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+
+## syrian
+["syrian_archer", "Kassat", "Kassata",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_culture_15,
+[]+syrian_bow+syria_foot_peasant+syrian_tunic+syrian_spears+syrian_shield_round+syrian_head_peasant,
+attrib_level_12, wpe(120,160,160,160), knows_archer_basic_eastern, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
+["syrian_archer_exp", "Kassat (exp)", "Kassata (exp)",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_culture_15,
+[]+syrian_bow+syria_foot_cives+syrian_tunic+syrian_spears+syrian_shield_round+syrian_head_peasant,
+attrib_level_18, wpe(130,170,170,170), knows_archer_exp_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+["syrian_archer_vet", "Kassat (vet)", "Kassata (vet)",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_culture_15,
+[]+syrian_bow+syria_foot_cives+syrian_scale_armor+syrian_tunic+syrian_spears+syrian_shield_round+syrian_helm,
+attrib_level_23, wpe(140,180,180,180), knows_archer_elit_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+
+["syrian_spearman", "Regaly", "Regaly", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_15,
+[]+syrian_helm+syrian_head_peasant+syrian_tunic+syrian_scale_armor+syria_foot_cives+syrian_spears+syrian_javelins+syrian_swords+syrian_shield_oval,
+attrib_level_18, wp_melee(160), knows_level_18, armenian_face_young, armenian_face_middle ],
+["syrian_spearman_exp", "Regaly (exp)", "Regaly (exp)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_15,
+[]+syrian_helm+syrian_helm_heavy+syrian_scale_armor+syria_foot_cives+syrian_spears+syrian_javelins+syrian_swords+syrian_shield_oval,
+attrib_level_23, wp_melee(170), knows_level_23, armenian_face_young, armenian_face_middle ],
+["syrian_spearman_vet", "Regaly (vet)", "Regaly (vet)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_15,
+[]+syrian_helm_heavy+syrian_scale_armor+syria_foot_cives+syrian_spears+syrian_javelins+syrian_swords+syrian_shield_oval,
+attrib_level_26, wp_melee(180), knows_level_26, armenian_face_young, armenian_face_middle ],
+
+["syrian_horsearcher", "Rakkba Kassat", "Rakkba Kassata",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_15,
+[]+syrian_spears+syrian_bow+syrian_scale_armor+syrian_helm_heavy+syria_foot_cives+syrian_shield_round+horse_arab,
+attrib_level_23, wpe(120,170,170,170), knows_archer_basic_eastern, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
+["syrian_horsearcher_exp", "Rakkba Kassat (exp)", "Rakkba Kassata (exp)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_15,
+[]+syrian_spears+syrian_bow+syrian_scale_armor+syrian_helm_heavy+syria_foot_cives+syrian_shield_round+horse_arab,
+attrib_level_26, wpe(130,180,180,180), knows_archer_exp_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+["syrian_horsearcher_vet", "Rakkba Kassat (vet)", "Rakkba Kassata (vet)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_15,
+[]+syrian_spears+syrian_bow+syrian_scale_armor+syrian_helm_heavy+syria_foot_cives+syrian_shield_round+horse_arab,
+attrib_level_29,wpe(140,190,190,190), knows_archer_elit_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+
+["syrian_horseman", "Rakkaba D-Dayyaqa", "Rakkaba D-Dayyaqa",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_15,
+[]+syrian_spears+syrian_scale_armor+syrian_tunic+syrian_helm+syria_foot_cives+syrian_shield_round+horse_arab,
+attrib_level_23, wp_melee(160), knows_level_23, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
+["syrian_horseman_exp", "Rakkaba D-Dayyaqa (exp)", "Rakkaba D-Dayyaqa (exp)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_15,
+[]+syrian_spears+syrian_scale_armor+syrian_tunic+syrian_helm+syria_foot_cives+syrian_shield_round+horse_arab,
+attrib_level_26, wp_melee(170), knows_level_26, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+["syrian_horseman_vet", "Rakkaba D-Dayyaqa (vet)", "Rakkaba D-Dayyaqa (vet)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_15,
+[]+syrian_spears+syrian_scale_armor+syrian_helm+syria_foot_cives+syrian_shield_round+horse_arab,
+attrib_level_29, wp_melee(180), knows_level_29, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+
+["syrian_heavy_cav", "Rakkaba D-Zerya", "Rakkaba D-Zerya",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_gloves|tf_guarantee_horse, no_scene, reserved, fac_culture_15,
+[itm_leather_gloves]+syrian_swords+syria_foot_cives+syrian_scale_armor_heavy+syrian_helm_heavy+kontos+horse_parth_half_cataphract,
+attrib_level_26, wp_melee(165), knows_level_26, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
+["syrian_heavy_cav_exp", "Rakkaba D-Zerya (exp)", "Rakkaba D-Zerya (exp)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_gloves|tf_guarantee_horse, no_scene, reserved, fac_culture_15,
+[itm_leather_gloves]+syrian_swords+syria_foot_cives+syrian_scale_armor_heavy+syrian_helm_heavy+kontos+horse_parth_half_cataphract,
+attrib_level_29, wp_melee(175), knows_level_29, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+["syrian_heavy_cav_vet", "Rakkaba D-Zerya (vet)", "Rakkaba D-Zerya (vet)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_gloves|tf_guarantee_horse, no_scene, reserved, fac_culture_15,
+[itm_leather_gloves]+syrian_swords+syria_foot_cives+syrian_scale_armor_heavy+syrian_helm_heavy+kontos+horse_parth_half_cataphract,
+attrib_level_31, wp_melee(185), knows_level_31, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+
 
 ##die reihen folge bei den legionaren und aquilifer und vexillarius typen is wichitig
 #roman legions es gibt 12 legionen im spiel
@@ -2891,10 +2984,10 @@ attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
 ["syrian_town_walker","Syrus Urbanus","Syri Urbani",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
-[itm_dagger]+eastern_cives+eastern_roman_tunic+eastern_foot_cives,
+[itm_dagger]+syrian_cives+syria_foot_cives,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
 ["syrian_town_walker_female", "Syra Urbana Mulier", "Syrae Urbanae Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
-[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+eastern_dress_cives+eastern_foot_cives,
+[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+syrian_dress_cives+syria_foot_cives,
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
 ["eastern_town_walker","Orientalis Urbanus","Orientales Urbani",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
@@ -3052,24 +3145,24 @@ attrib_level_6, wp(60), knows_level_6, scythian_face_11, scythian_face_12 ],
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
 ["judean_village_walker","Iudaeus Rusticus","Iudaei Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_culture_8,
-[itm_dagger]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+[]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
 ["judean_village_walker_female", "Iudaea Rustica", "Iudaeae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_8,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
 ["eastern_village_walker","Orientalis Rusticus","Orientales Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
-[itm_dagger]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+[]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
 ["eastern_village_walker_female", "Orientalis Rustica", "Orientales Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
 ["syrian_village_walker","Syrus Rusticus","Syri Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
-[itm_dagger]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+[]+syrian_tunic+syria_foot_peasant+syrian_weapons_peasant,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
 ["syrian_village_walker_female", "Syra Rustica", "Syrae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
-[itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
+[itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+syrian_dress_peasant+syria_foot_peasant+syrian_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
 ["greek_village_walker","Graecus Rusticus","Graeci Rustici",tf_male|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
@@ -3198,13 +3291,13 @@ def_attrib|level(2), wp(40), knows_common, woman_face_1, woman_face_2 ],# Ryan E
 ["ramun_the_slave_trader","Aulus Kapreilius Timotheus","Aulus Kapreilius Timotheus",tf_hero, no_scene,reserved, fac_commoners,[itm_roman_rich3, itm_caligea],def_attrib|level(5),wp(20),knows_common,0x0000000fd5105592385281c55b8e44eb00000000001d9b220000000000000000],
 
 #special gladiators for Roman tournaments
-["xerina","Tetraites ","Tetraites ",tf_hero, no_scene,reserved,fac_commoners,
+["tetraites","Tetraites ","Tetraites ",tf_hero, no_scene,reserved,fac_commoners,
 [itm_roman_poor1,itm_caligea],
 def_attrib|str_15|agi_15|level(39),wp(312),knows_power_strike_5|knows_ironflesh_5|knows_riding_10|knows_power_draw_4|knows_athletics_8|knows_shield_3,0x0000000b3d01300925528eb8da4c06db00000000001ec62a0000000000000000],
-["dranton","Spiculus","Spiculus",tf_hero, no_scene,reserved,fac_commoners,
+["spiculus","Spiculus","Spiculus",tf_hero, no_scene,reserved,fac_commoners,
 [itm_roman_poor2,itm_caligea],
 def_attrib|str_15|agi_14|level(42),wp(324),knows_power_strike_5|knows_ironflesh_7|knows_riding_10|knows_power_draw_4|knows_athletics_4|knows_shield_3,0x0000000bbf10d012588c55bada6506db00000000001d24e20000000000000000],
-["kradus","Hermes","Hermes",tf_hero, no_scene,reserved,fac_commoners,
+["hermes","Hermes","Hermes",tf_hero, no_scene,reserved,fac_commoners,
 [itm_roman_poor3,itm_caligea],
 def_attrib|str_15|agi_14|level(43),wp(270),knows_power_strike_5|knows_ironflesh_7|knows_riding_10|knows_power_draw_4|knows_athletics_4|knows_shield_3,0x0000000f5b1112c61ce06b7a1db137d200000000001cd31b0000000000000000],
 ["flamma","Flamma","Flamma",tf_hero, no_scene,reserved,fac_commoners
@@ -3584,10 +3677,10 @@ itm_bosporan_pointed_helm,itm_mail_mittens,itm_caucasian_longsword,itm_caucasian
 itm_sarranid_cloth_robe_fancy_2,itm_ring_2,itm_eastern_shoe_r],
 knight_attrib_3, wp(270), knight_skills_3, 0x000000000005318d251b89d69d71d96c00000000001da8d30000000000000000, ],
 
-["kingdom_23_lord", "Malko Ma'nu, son of Abgar", "Ma'nu, son of Abgar", tf_hero, no_scene, reserved, fac_kingdom_23,
-[itm_cataphract_boots,itm_cataphract_eastern,
-itm_cataphract_sallet_1,itm_mail_mittens,itm_parthian_cataphract_axe,itm_lance,itm_cataphract_horse_parthian_2,
-itm_sarranid_cloth_robe_fancy_2,itm_ring_2,itm_eastern_shoe_r],
+["kingdom_23_lord", "Malka Ma'nu, son of Abgar", "Ma'nu, son of Abgar", tf_hero, no_scene, reserved, fac_kingdom_23,
+[itm_eastern_shoe_b,itm_heavy_syrian_scale_3,itm_pilos_chad_2,
+itm_leather_gloves,itm_palmyran_gladius_rich,itm_lance,itm_cataphract_horse_parthian_2,
+itm_arab_noble_tunic_2,itm_ring_2],
 knight_attrib_1, wp(270), knight_skills_1, 0x000000000005318d251b89d69d71d96c00000000001da8d30000000000000000, ],
 
 ["knight_1_1", "Dacian Lord", "Avizina", tf_hero, no_scene, reserved, fac_kingdom_1,
@@ -3747,9 +3840,18 @@ knight_attrib_3,wp(190),knight_skills_3|knows_power_draw_4, 0x000000001c0c501062
 ["knight_5_16", "Armenian Lord", "Sisamnes", tf_hero, 0, reserved,fac_kingdom_5,
 [itm_lance,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_2,itm_cataphract_boots,itm_mail_mittens,itm_sarranid_elite_armor,itm_armenian_helm_heavy_2,itm_eastern_shoe_r,itm_sarranid_cloth_robe_fancy_3],knight_attrib_1,wp(120),knight_skills_1, 0x0000000c06046151435b5122a37756a400000000001c46e50000000000000000, ],
 
-["knight_6_1", "Osrhoenian Lord", "Achaimenes", tf_hero, no_scene, reserved, fac_kingdom_23, [itm_cataphract_boots,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_1,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_r,itm_sarranid_cloth_robe_fancy_3], knight_attrib_1, wp(130), knight_skills_1|knows_trainer_3, 0x00000000600c2084486195383349eae500000000001d16a30000000000000000,],
-["knight_6_9", "Osrhoenian Lord", "Kophenes", tf_hero, 0, reserved,fac_kingdom_23, [itm_cataphract_boots,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_3,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_y,itm_sarranid_cloth_robe_fancy_3],knight_attrib_4,wp(220),knight_skills_4|knows_trainer_5, 0x0000000dde0040c4549dd5ca6f4dd56500000000001e291b0000000000000000, ],
-["knight_6_17", "Osrhoenian Lord", "Spitamenes", tf_hero, 0, reserved,fac_kingdom_23, [itm_cataphract_boots,itm_sarranid_mace_1,itm_cataphract_horse_parthian_2,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_r,itm_sarranid_cloth_robe_fancy_3], knight_attrib_2,wp(150),knight_skills_2, 0x000000007f0462c32419f47a1aba8bcf00000000001e7e090000000000000000, ],
+["knight_6_1", "Osrhoenian Lord", "Achaimenes", tf_hero, no_scene, reserved, fac_kingdom_23,
+[itm_eastern_shoe_r,itm_heavy_syrian_scale_2,itm_pilos_chad,
+itm_leather_gloves,itm_palmyran_gladius_rich,itm_lance,itm_cataphract_horse_parthian_1,
+itm_arab_noble_tunic_2,itm_ring_2], knight_attrib_1, wp(130), knight_skills_1|knows_trainer_3, 0x00000000600c2084486195383349eae500000000001d16a30000000000000000,],
+["knight_6_9", "Osrhoenian Lord", "Kophenes", tf_hero, 0, reserved,fac_kingdom_23,
+[itm_eastern_shoe_y,itm_heavy_syrian_scale_1,itm_pilos_chad_2,
+itm_leather_gloves,itm_palmyran_gladius_rich,itm_lance,itm_cataphract_horse_parthian_3,
+itm_arab_noble_tunic_1,itm_ring_2],knight_attrib_4,wp(220),knight_skills_4|knows_trainer_5, 0x0000000dde0040c4549dd5ca6f4dd56500000000001e291b0000000000000000, ],
+["knight_6_17", "Osrhoenian Lord", "Spitamenes", tf_hero, 0, reserved,fac_kingdom_23,
+[itm_eastern_shoe_b,itm_heavy_syrian_scale_3,itm_pilos_chad,
+itm_leather_gloves,itm_palmyran_gladius_rich,itm_lance,itm_cataphract_horse_parthian_3,
+itm_arab_noble_tunic_1,itm_ring_2], knight_attrib_2,wp(150),knight_skills_2, 0x000000007f0462c32419f47a1aba8bcf00000000001e7e090000000000000000, ],
 
 ["knight_6_2", "Parthian Lord", "Ariobarzanes", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_sarranid_mace_1,itm_cataphract_horse_parthian_2,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_y,itm_sarranid_cloth_robe_fancy_3], knight_attrib_2,wp(160),knight_skills_2|knows_trainer_4, 0x0000000df809000044cb68b92b8d3b1d00000000001dd71e0000000000000000, ],
 ["knight_6_3", "Parthian Lord", "Artabazos", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_3,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_b,itm_sarranid_cloth_robe_fancy_3],knight_attrib_3,wp(190),knight_skills_3, 0x000000002208428579723147247ad4e500000000001f14d40000000000000000, ],
@@ -5733,6 +5835,9 @@ attrib_level_26, wp(160), knows_level_26, persian_face_young, persian_face_middl
   itm_old_gladius_2,itm_old_gladius_1,itm_hasta2,itm_roman_townguard_helm,itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,
   itm_graves_simple_2,itm_legion_hamata_cape_5,itm_old_scutum_2,itm_old_scutum,itm_old_scutum_3,itm_old_round_shield_5,itm_old_round_shield_4,
 ],attrib_level_26, wp(160), knows_level_26, roman_face1, roman_face2 ],
+["syrian_desrter", "Desertor Syricus", "Desertores Syrici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
+[]+syria_foot_cives+syrian_scale_armor+syrian_helm+syrian_spears+syrian_swords+syrian_shield_round+syrian_shield_oval+syrian_tunic, attrib_level_23, wp_melee(160), knows_level_23, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+
 ["asturias_veteran", "Ghost", "Ghosts", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_commoners,
 [itm_caligea,itm_dagger,itm_roman_poor1,itm_roman_poor2], hero_attrib|level(31), wp(380), knows_hero, white_face_21, white_face_22 ],
 

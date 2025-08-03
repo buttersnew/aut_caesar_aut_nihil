@@ -175,7 +175,7 @@ parties = [
 ("castle_64", "Tingis", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-271.83, -37.27), []),
 ("castle_65", "Susa", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (193.49, -11.09), []),
 ("castle_66", "Themiskyra", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (34.49, 109.53), []),
-("castle_67", "Porulissum", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-58.03, 85.5), []),
+("castle_67", "Porulissum", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-54.056, 86.253), []),
 ("castle_68", "Derbent", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (140.49, 90.53), []),
 ("castle_69", "Shamakha", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (159.49, 65.53), []),
 ("castle_70", "Alashkert", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (124.49, 44.53), []),

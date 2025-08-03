@@ -1084,6 +1084,7 @@ scripts_hardcoded = [
             (party_set_icon, ":party", "icon_opidumn_wood_gl1_Reduced"),
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
+            (this_or_next|eq, ":faction", "fac_culture_15"),
             (eq, ":faction", "fac_culture_5"),
             (party_set_icon, ":party", "icon_town_greek"),
             (party_set_slot, ":party", slot_center_can_rebell, 0),
@@ -1127,6 +1128,7 @@ scripts_hardcoded = [
             (party_set_icon, ":party", "icon_opidumn_wood_gl_Reduced"),
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
+            (this_or_next|eq, ":faction", "fac_culture_15"),
             (eq, ":faction", "fac_culture_5"),
             (party_set_icon, ":party", "icon_fort_greek"),
             (party_set_slot, ":party", slot_center_can_rebell, 0),
@@ -1303,6 +1305,26 @@ scripts_hardcoded = [
         (try_end),
         ##diplomacy end+
     (try_end),
+    # change culture for some occupied centers
+    # judeans
+    (party_set_slot, "p_town_19", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_castle_44", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_castle_45", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_castle_46", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_village_98", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_village_97", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_village_96", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_village_109", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_village_51", slot_center_culture, "fac_culture_8"),
+    (party_set_slot, "p_village_100", slot_center_culture, "fac_culture_8"),
+
+    # syrian
+    (party_set_slot, "p_town_47", slot_center_culture, "fac_culture_15"),
+    (party_set_slot, "p_village_217", slot_center_culture, "fac_culture_15"),
+    (party_set_slot, "p_village_218", slot_center_culture, "fac_culture_15"),
+    (party_set_slot, "p_village_219", slot_center_culture, "fac_culture_15"),
+
+
     ## correct culture:
     (party_set_slot, "p_town_19", slot_center_culture, "fac_culture_8"),
     (party_set_slot, "p_castle_44", slot_center_culture, "fac_culture_8"),
@@ -2022,6 +2044,9 @@ scripts_hardcoded = [
             (eq, ":faction", "fac_culture_5"),
             (party_set_icon, ":party", "icon_village_greek"),
         (else_try),
+            (eq, ":faction", "fac_culture_15"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
             (eq, ":faction", "fac_culture_6"),
             (party_set_icon, ":party", "icon_village_greek"),
         (else_try),
@@ -2375,6 +2400,7 @@ scripts_hardcoded = [
         (party_set_slot,":town_no", slot_town_store, "scn_town_4_store"),
         (party_set_slot,":town_no", slot_town_arena, "scn_town_4_arena"),
     (else_try),
+        (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_15"),#eastern
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_5"),#eastern
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_8"),#eastern
         (party_slot_eq, ":town_no", slot_center_culture, "fac_culture_6"),
@@ -2711,6 +2737,7 @@ scripts_hardcoded = [
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_5_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_5_prison"),
     (else_try),
+        (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_15"),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_5"),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_8"),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_6"),
@@ -3162,6 +3189,7 @@ scripts_hardcoded = [
             (store_random_in_range, ":scene", "scn_village_98", "scn_village_94"),
             (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
         (else_try),
+            (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_15"),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_6"),
             (store_random_in_range, ":scene", "scn_village_parthian_1", "scn_village_7"),
             (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
@@ -5157,6 +5185,10 @@ scripts_hardcoded = [
             (eq, ":culture", "fac_culture_5"),
             (eq, ":troop_culture", "fac_culture_5"),
             (val_mul, ":wage", 3),
+        (else_try),#syrians
+            (eq, ":culture", "fac_culture_15"),
+            (eq, ":troop_culture", "fac_culture_15"),
+            (val_mul, ":wage", 3),
         (else_try),
             (val_mul, ":wage", 5),
         (try_end),
@@ -6135,6 +6167,7 @@ scripts_hardcoded = [
                     (troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_2"),
                     (str_store_string, s27, "@chieftain"),
                 (else_try),
+                    (this_or_next|troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_15"),
                     (this_or_next|troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_5"),
                     (troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_6"),
                     (str_store_string, s27, "@vassal"),
@@ -7580,6 +7613,13 @@ scripts_hardcoded = [
         (try_begin),
             (eq, ":extra_text_id", 0),
             (set_result_string, "@This throwing surrounds a powerful aura."),
+            (set_trigger_result, 0xFFEEDD),
+        (try_end),
+    (else_try),
+        (is_between, ":item_no", "itm_basic_chariot_horse", "itm_sumpter_horse"),
+        (try_begin),
+            (eq, ":extra_text_id", 0),
+            (set_result_string, "@If WSE2 is enabled, a chariot will spawn attached to the horse.^Keep in mind, the chariot behaves like a horse.^You need to walk towards the horses to mount the chariot."),
             (set_trigger_result, 0xFFEEDD),
         (try_end),
     (else_try),

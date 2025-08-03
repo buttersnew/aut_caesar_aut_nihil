@@ -4682,6 +4682,7 @@ strings = [
   ("romans", "Romans"),
   ("judean", "Judeans"),
   ("bosporans", "Bosporans"),
+  ("syrians", "Syrians"),
   ("bandits", "bandits"),
   ("deserters", "deserters"),
   ("your_followers", "your followers"),
@@ -5703,7 +5704,7 @@ strings = [
   ("faction_title_female_player", "Domina {s0}"),
   ("faction_title_female_1", "{s0}"),
   ("faction_title_female_2", "{s0}"),
-  ("faction_title_female_3", "Domina {s0}"),
+  ("faction_title_female_3", "{s0}"),
   ("faction_title_female_4", "{s0}"),
   ("faction_title_female_5", "{s0}"),
   ("faction_title_female_6", "{s0}"),
@@ -5723,7 +5724,7 @@ strings = [
   ("faction_title_female_20", "{s0}"),
   ("faction_title_female_21", "{s0}"),
   ("faction_title_female_22", "{s0}"),
-  ("faction_title_female_23", "{s0}"),
+  ("faction_title_female_23", "Morto {s0}"),
   ("faction_title_female_24", "Domina {s0}"),
   ("faction_title_female_25", "Domina {s0}"),
   ("faction_title_female_26", "Domina {s0}"),
@@ -5752,7 +5753,7 @@ strings = [
   ("faction_leader_title_male_20", "Shah {s0}"),
   ("faction_leader_title_male_21", "Shah {s0}"),
   ("faction_leader_title_male_22", "Basileus {s0}"),
-  ("faction_leader_title_male_23", "Malko {s0}"),
+  ("faction_leader_title_male_23", "Malka {s0}"),
   ("faction_leader_title_male_24", "Imperator {s0}"),
   ("faction_leader_title_male_25", "Imperator {s0}"),
   ("faction_leader_title_male_26", "Imperator {s0}"),
@@ -5781,7 +5782,7 @@ strings = [
   ("faction_leader_title_female_20", "Shahbanu {s0}"),
   ("faction_leader_title_female_21", "Shahbanu {s0}"),
   ("faction_leader_title_female_22", "Basileia {s0}"),
-  ("faction_leader_title_female_23", "Shahbanu {s0}"),
+  ("faction_leader_title_female_23", "Malkto {s0}"),
   ("faction_leader_title_female_24", "Domina {s0}"),
   ("faction_leader_title_female_25", "Domina {s0}"),
   ("faction_leader_title_female_26", "Domina {s0}"),
@@ -8769,6 +8770,9 @@ strings = [
 ("kingdom_19_reinforcements_b","Batavan Cohort"),
 ("kingdom_19_reinforcements_c","Batavan Retinue"),
 
+("kingdom_23_reinforcements_a","Syrian Levies"),
+("kingdom_23_reinforcements_b","Syrian Lordly Retinue"),
+("kingdom_23_reinforcements_c","Syrian Royal Retinue"),
 
 ("hair_1","hair_1"),
 # ("hair_2","hair_2"),
@@ -9575,9 +9579,9 @@ strings = [
 ("grain_success_end",  "end"),
 
 # Subculture Strings
-("subculture_hispanic_tarraconensian", "Tarraconensian Iberian"),
-("subculture_hispanic_baetican", "Baetican Iberian"),
-("subculture_hispanic_lusitanian", "Lusitanian Iberian"),
+("subculture_hispanic_tarraconensian", "Iberian"),
+("subculture_hispanic_baetican", "Iberian"),
+("subculture_hispanic_lusitanian", "Iberian"),
 ("subculture_african_mauretanian", "Mauretanian"), # Could also be "Moorish" or "Numidian" depending on nuance
 ("subculture_african_proconsular", "African"), # For Africa Proconsularis
 ("subculture_african_cyrenaican", "Cyrenaican"),
@@ -9590,22 +9594,22 @@ strings = [
 ("subculture_asian_pontic", "Pontic"),
 ("subculture_asian_anatolian", "Anatolian"), # For Asia Minor
 ("subculture_balkan_thracian", "Thracian"),
-("subculture_balkan_moesian_superior", "Upper Moesian"),
-("subculture_balkan_moesian_inferior", "Lower Moesian"),
+("subculture_balkan_moesian_superior", "Thracian"),
+("subculture_balkan_moesian_inferior", "Thracian"),
 ("subculture_balkan_achaean_greek", "Achaean Greek"),
 ("subculture_balkan_epirote_greek", "Epirote Greek"),
-("subculture_balkan_macedonian_greek", "Macedonian Greek"),
+("subculture_balkan_macedonian_greek", "Macedonian"),
 ("subculture_balkan_dalmatian_illyrian", "Illyrian"),
 ("subculture_italian_sicilian", "Sicilian"),
 ("subculture_italian_magna_graecian", "Italian"), # Greek in Southern Italy
 ("subculture_italian_italic", "Italian"), # Central Italy
 ("subculture_italian_cisalpine", "Cisalpinian"), # Northern Italy (often Gallic/Celtic influences)
-("subculture_gaulish_narbonensian", "Narbonensian Gaul"),
-("subculture_gaulish_aquitanian", "Aquitanian Gaul"),
-("subculture_gaulish_lugdunensian", "Lugdunensian Gaul"),
-("subculture_gaulish_belgic", "Belgic Gaul"),
-("subculture_germanic_inferior", "Lower Germanic"), # Along the Rhine
-("subculture_germanic_superior", "Upper Germanic"), # Along the Rhine
+("subculture_gaulish_narbonensian", "Gaulish"),
+("subculture_gaulish_aquitanian", "Gaulish"),
+("subculture_gaulish_lugdunensian", "Gaulish"),
+("subculture_gaulish_belgic", "Belgic"),
+("subculture_germanic_inferior", "Germanic"), # Along the Rhine
+("subculture_germanic_superior", "Germanic"), # Along the Rhine
 ("subculture_germanic_raetian", "Raetian"), # Alpine
 ("subculture_germanic_norican", "Norican"), # Alpine Celtic/Illyrian, Romanized
 ("subculture_central_pannonian", "Pannonian"), # Illyrian/Celtic
@@ -9621,8 +9625,8 @@ strings = [
 ("subculture_armenian_highlands", "Armenian"),
 ("subculture_mesopotamian", "Mesopotamian"),
 ("subculture_assyrian", "Assyrian"),
-("subculture_mediterranean_western_isles", "Western Mediterranean"),
-("subculture_mediterranean_eastern_isles", "Eastern Mediterranean"), # e.g., Cretan, Cypriot, Rhodian
+("subculture_mediterranean_western_isles", "Sardinian"),
+("subculture_mediterranean_eastern_isles", "Greek"), # e.g., Cretan, Cypriot, Rhodian
 ("subculture_caucasian_mountain", "Caucasian"),
 ("subculture_persian_plateau", "Persian"),
 ("subculture_parthian_iranian", "Partho-Iranian"),
@@ -9647,6 +9651,7 @@ strings = [
 ("culture_12_rized", "Garamanto"),
 ("culture_13_rized", "Nubian"),
 ("culture_14_rized", "Saka"),
+("culture_15_rized", "Syrian"),
 
 ("here_is_what_i_have_on_offer", "Here's what I have on offer:^^{s3}"),
 ("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),
@@ -9764,6 +9769,27 @@ strings = [
 ("flirt_moralist_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^Your dedication to justice and honor is truly commendable. It is refreshing to meet a kindred spirit in these trying times."),
 ("flirt_moralist_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^Finally, someone who speaks of virtue and means it! Your words give me hope for the future of this realm. It is an honor to know you."),
 
+
+("tetraites_intro", "I am Tetraites, a name that echoes in every arena from Britannia to Aegyptus. They say my skill with the gladius is a gift from Mars himself. Perhaps you have heard the tales of my victories?"),
+("tetraites_greeting", "Hail, {playername}. Good to see you again. The baths are a fine place to ease the aches of the arena."),
+
+("spiculus_intro", "Spiculus. Remember that name, for it is the one whispered in fear by my opponents and roared in adoration by the crowds. The Emperor Nero himself has shown me great favor. I am a murmillo of some renown, and my victories have earned me more than just my freedom."),
+("spiculus_greeting", "Well met, {playername}. Taking in the splendors of Rome, I see."),
+
+("hermes_intro", "They call me Hermes, swift of foot and deadly with the blade. I have been lauded in the verses of the poet Martial, a testament to my prowess. For a century, I have been the darling of the games. What brings you to a humble gladiator?"),
+("hermes_greeting", "Greetings, {playername}. The steam does wonders for the muscles."),
+
+("flamma_intro", "I am Flamma, a Syrian by birth, but a Roman by the bloody rites of the arena. Four times I have been offered the rudis, the wooden sword that grants a gladiator his freedom, and four times I have refused it. The life of a fighter is the only life I know."),
+("flamma_greeting", "{playername}. Still walking among the living, I see."),
+
+("marcus_attilius_intro", "I am Marcus Attilius, a citizen of Rome who chose the life of a gladiator. I was a novice, a tiro, when I first stepped into the arena. I faced Hilarus, a veteran of Nero's ludus, a man with thirteen victories to his name. And I defeated him. My name is now etched in the graffiti of Pompeii, a testament to my unexpected triumph."),
+("marcus_attilius_greeting", "Hail, {playername}. Another day in the eternal city."),
+
+("diocles_intro", "You stand before Appuleius Diocles, a Lusitanian, but known throughout the Empire as the master of the Circus Maximus. They call me the 'Lamecus', and my victories for the Red faction are legendary. I have won over a thousand races and earned more sesterces than most senators will see in a lifetime. What business have you with me?"),
+("diocles_greeting", "Well met, {playername}. The roar of the crowd still rings in my ears, but the calm of the baths is a welcome change."),
+
+("scorpus_intro", "I am Scorpus, the pride of the Green faction! The crowds adore me, and the Emperor himself has gifted me my freedom and a fortune. They say I am the master of the final turn, snatching victory from the jaws of defeat. With over two thousand victories, my name will be remembered for eternity."),
+("scorpus_greeting", "Hail, {playername}! Always a pleasure to see a friendly face."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black

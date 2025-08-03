@@ -355,36 +355,46 @@ poisoned_arrows_damage = (6, 0, 0, [],[
 
 chariot_triggers = [
   (ti_before_mission_start, 0, 0, [],[
-    (assign, "$g_activate_chariot_cam", -1),
+    (assign, "$g_player_chariot_agent", -1),
   ]),
   # clear chariot animation
-  (ti_on_agent_mount, 0, 0, [],[
+  (ti_on_agent_mount, 0, 0, [
+    (neg|is_vanilla_warband),
+  ],[
     (store_trigger_param_1, ":rider"),
     (store_trigger_param_2, ":horse"),
     (agent_is_active, ":rider"),
     (agent_is_alive, ":rider"),
-    # (agent_is_active, ":horse"),
     (agent_get_item_id, ":chariot", ":horse"),
+    (this_or_next|eq, ":chariot", "itm_quadriga_chariot_horse"),
+    (this_or_next|eq, ":chariot", "itm_basic_chariot_b_horse"),
     (eq, ":chariot", "itm_basic_chariot_horse"),
     (agent_get_slot, ":instance", ":horse", slot_agent_chariot_prop_instance),
     (scene_prop_set_slot, ":instance", slot_scene_prop_init, 1),
   ]),
-  (ti_on_agent_dismount, 0, 0, [],[
+  (ti_on_agent_dismount, 0, 0, [
+    (neg|is_vanilla_warband),
+  ],[
     (store_trigger_param_1, ":rider"),
     (store_trigger_param_2, ":horse"),
     (agent_is_active, ":rider"),
     (agent_is_alive, ":rider"),
     # (agent_is_active, ":horse"),
     (agent_get_item_id, ":chariot", ":horse"),
+    (this_or_next|eq, ":chariot", "itm_quadriga_chariot_horse"),
+    (this_or_next|eq, ":chariot", "itm_basic_chariot_b_horse"),
     (eq, ":chariot", "itm_basic_chariot_horse"),
     (agent_set_animation, ":rider", "anim_rider_fall_roll",0),
     (try_begin),# disable camera on dismount for player
         (neg|agent_is_non_player, ":rider"),
-        (assign, "$g_activate_chariot_cam", -1),
+        (assign, "$g_player_chariot_agent", -1),
         (mission_cam_set_mode, 0),
     (try_end),
+    (display_message, "@Trigger ti_on_agent_dismount"),
   ]),
-  (ti_on_agent_killed_or_wounded, 0, 0, [],[
+  (ti_on_agent_killed_or_wounded, 0, 0, [
+    (neg|is_vanilla_warband),
+  ],[
     (store_trigger_param_1, ":agent"),
     (agent_is_active, ":agent"),
     # (try_begin),
@@ -393,21 +403,50 @@ chariot_triggers = [
     #   (agent_is_active, ":horse"),
     # (try_end),
     (try_begin),# disable camera on player death
-      (ge, "$g_activate_chariot_cam", 0),
+      (ge, "$g_player_chariot_agent", 0),
       (neg|agent_is_non_player, ":agent"),
-      (assign, "$g_activate_chariot_cam", -1),
+      (assign, "$g_player_chariot_agent", -1),
       (mission_cam_set_mode, 0),
 
       (display_message, "@Diasble chariot camera. Reason: Player dead"),
     (else_try),# disable camera on horse death
-      (eq, ":agent", "$g_activate_chariot_cam"),
-      (assign, "$g_activate_chariot_cam", -1),
+      (eq, ":agent", "$g_player_chariot_agent"),
+      (assign, "$g_player_chariot_agent", -1),
       (mission_cam_set_mode, 0),
       (display_message, "@Diasble chariot camera. Reason: Horse dead"),
     (try_end),
   ]),
+  #dismount player with m-key
   (0, 0, 0, [
-    (ge, "$g_activate_chariot_cam", 0),
+    (neg|is_vanilla_warband),
+    (ge, "$g_player_chariot_agent", 0),
+    (key_clicked, key_f),
+  ],[
+    (get_player_agent_no, ":player"),
+    # (agent_get_horse, ":horse", ":player"),
+    # (gt, ":horse", -1),
+    (agent_is_alive, "$g_player_chariot_agent"),
+
+    (agent_get_item_id, ":chariot", "$g_player_chariot_agent"),
+    (this_or_next|eq, ":chariot", "itm_quadriga_chariot_horse"),
+    (this_or_next|eq, ":chariot", "itm_basic_chariot_b_horse"),
+    (eq, ":chariot", "itm_basic_chariot_horse"),
+
+    # (agent_start_running_away, "$g_player_chariot_agent"),
+    (agent_set_horse, ":player", -1),
+
+    (agent_set_animation, ":player", "anim_dismount_chariot",0),
+
+    # (agent_set_slot, "$g_player_chariot_agent", slot_agent_is_running_away, 1),
+    # does not work
+    # (agent_stop_running_away, "$g_player_chariot_agent"),
+
+    (assign, "$g_player_chariot_agent", -1),
+    (mission_cam_set_mode, 0),
+  ]),
+  (0, 0, 0, [
+    (neg|is_vanilla_warband),
+    (ge, "$g_player_chariot_agent", 0),
     (mission_cam_set_mode, 0),
   ],[
     (try_begin),
@@ -431,6 +470,11 @@ chariot_triggers = [
     (neg|is_vanilla_warband),
   ],[
     (call_script, "script_chariot_trigger", "spr_basic_chariot"),
+  ]),
+  (0.5, 0, 0, [
+    (neg|is_vanilla_warband),
+  ],[
+    (call_script, "script_chariot_trigger", "spr_quadriga_chariot"),
   ]),
 ]
 
@@ -2274,13 +2318,12 @@ thunder_storm =	[		# 4 trigger
   (0, 0, ti_once, [#preparations 2
   ],[
     # (display_message, "@Thunderstorm. Check I"),
+    (assign, "$lightning_cycle", -1),
     (try_begin),
       (store_current_scene, ":scene"),
       (this_or_next|eq, ":scene", "scn_ruins_of_carthage"),# exclude certain scenes
       (call_script, "script_cf_is_desert", "p_main_party"),
     (else_try),
-      (assign, "$lightning_cycle", -1),
-
       (store_time_of_day, ":day_time"),
       (neg|is_between, ":day_time", 4, 20),
       (get_global_cloud_amount, ":clouds"),
@@ -4229,6 +4272,7 @@ moral_trigger_decide_to_run_or_not = 		(3, 0, 0, [
     (ge,":mission_time",4),
 ],[
     (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
         (agent_is_human, ":agent_no"),
         (agent_is_alive, ":agent_no"),
         (ge, ":agent_no", 0),
@@ -14645,6 +14689,9 @@ mission_templates = [
         [
           (assign, ":sound_played", 0),
           (try_for_agents, ":agent_no"),
+            (agent_is_active, ":agent_no"),
+            (agent_is_alive, ":agent_no"),
+            (agent_is_human, ":agent_no"),
             (agent_slot_ge, ":agent_no",  slot_agent_is_running_away, 1),
             (neg|agent_is_ally, ":agent_no"),
             (store_random_in_range, ":rand", 32, 40),
@@ -18904,6 +18951,9 @@ mission_templates = [
     ],[
       (assign, ":sound_played", 0),
       (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
+        (agent_is_alive, ":agent_no"),
+        (agent_is_human, ":agent_no"),
         (agent_slot_ge, ":agent_no",  slot_agent_is_running_away, 1),
         # (neg|agent_is_ally, ":agent_no"),
         (store_random_in_range, ":rand", 32, 40),
@@ -20187,6 +20237,9 @@ mission_templates = [
         [
           (assign, ":sound_played", 0),
           (try_for_agents, ":agent_no"),
+            (agent_is_active, ":agent_no"),
+            (agent_is_alive, ":agent_no"),
+            (agent_is_human, ":agent_no"),
             (agent_slot_ge, ":agent_no",  slot_agent_is_running_away, 1),
             (agent_get_troop_id, ":troop_no", ":agent_no"),
             (this_or_next|eq, ":troop_no", "trp_senator"),
@@ -20498,6 +20551,9 @@ mission_templates = [
         [
           (assign, ":sound_played", 0),
           (try_for_agents, ":agent_no"),
+            (agent_is_active, ":agent_no"),
+            (agent_is_alive, ":agent_no"),
+            (agent_is_human, ":agent_no"),
             (agent_slot_ge, ":agent_no",  slot_agent_is_running_away, 1),
             (agent_get_troop_id, ":troop_no", ":agent_no"),
             (this_or_next|eq, ":troop_no", "trp_guest"),
@@ -22082,7 +22138,7 @@ mission_templates = [
     ##init list
     (ti_before_mission_start, 0, 0,[],[
       (play_sound, "snd_arena_ambiance", sf_looping),
-      (play_track, "track_travel_neutral2", 1),#nice music
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_thermae),
       (assign, "$temp", -1),
       (assign, "$temp_2", 0),
       (assign, "$temp_3", 999999),
@@ -22744,7 +22800,7 @@ mission_templates = [
     [],
     [
       (play_sound, "snd_arena_ambiance", sf_looping),
-      (play_track, "track_travel_neutral2", 1),#nice music
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_thermae),
       (assign, "$temp", -1),
       (assign, "$temp2", -1),
       (assign, "$temp3", 0),
@@ -25353,6 +25409,7 @@ mission_templates = [
         (try_end),
         #(display_message, "@Animals react on low distance!"),
         (try_for_agents, ":agent"),
+          (agent_is_active, ":agent"),
           (neg|agent_is_human, ":agent"),
           (agent_is_alive, ":agent"),
           #run:
@@ -25374,6 +25431,7 @@ mission_templates = [
       (else_try),
         (eq, "$animals_flee", -1),	# =animals attack
         (try_for_agents, ":agent"),
+          (agent_is_active, ":agent"),
           (neg|agent_is_human, ":agent"),
           (agent_is_alive, ":agent"),
           (agent_get_position, pos1, ":agent"),
@@ -25406,6 +25464,7 @@ mission_templates = [
       (try_end),
       #(display_message, "@Animals react on hit!"),
       (try_for_agents, ":agent"),
+        (agent_is_active, ":agent"),
         (neg|agent_is_human, ":agent"),
         (agent_is_alive, ":agent"),
         #run:
@@ -25670,6 +25729,9 @@ mission_templates = [
         (assign, "$animals_flee", reg1),
         #(display_message, "@Animals react on low distance!"),
         (try_for_agents, ":agent"),
+          (agent_is_active, ":agent"),
+          (agent_is_alive, ":agent"),
+          (agent_is_human, ":agent"),
           (agent_get_troop_id, ":troop", ":agent"),
           (this_or_next|eq, ":troop", "trp_elephant"),
           (this_or_next|eq, ":troop", "trp_wild_cat_2"),
@@ -25680,7 +25742,6 @@ mission_templates = [
           #run:
           (agent_clear_scripted_mode, ":agent"),
           (agent_set_speed_limit, ":agent", 100),
-          #(agent_start_running_away, ":agent", 0),
           (agent_set_scripted_destination, ":agent", pos1),
         (try_end),
       (else_try),
@@ -25702,6 +25763,9 @@ mission_templates = [
       (else_try),
         (eq, "$animals_flee", -1),	# =animals attack
         (try_for_agents, ":agent"),
+          (agent_is_active, ":agent"),
+          (agent_is_alive, ":agent"),
+          (agent_is_human, ":agent"),
           (agent_get_troop_id, ":troop", ":agent"),
           (this_or_next|eq, ":troop", "trp_elephant"),
           (this_or_next|eq, ":troop", "trp_wild_cat_2"),
@@ -25720,7 +25784,6 @@ mission_templates = [
           (call_script, "script_point_y_toward_position", pos1, pos2),
           (set_fixed_point_multiplier, 100),
           (position_move_y, pos1, 5000),	#50m
-          #(agent_start_running_away, ":agent", pos1),
           (agent_set_scripted_destination, ":agent", pos1),
         (try_end),
       (try_end),
@@ -25731,6 +25794,9 @@ mission_templates = [
       (assign, "$animals_flee", -1),
       #(display_message, "@Animals react on hit!"),
       (try_for_agents, ":agent"),
+        (agent_is_active, ":agent"),
+        (agent_is_alive, ":agent"),
+        (agent_is_human, ":agent"),
         (agent_get_troop_id, ":troop", ":agent"),
         (this_or_next|eq, ":troop", "trp_elephant"),
         (this_or_next|eq, ":troop", "trp_wild_cat_2"),
@@ -25749,7 +25815,6 @@ mission_templates = [
         #run:
         (agent_clear_scripted_mode, ":agent"),
         (agent_set_speed_limit, ":agent", 100),
-        #(agent_start_running_away, ":agent", 0),
         (agent_set_scripted_destination, ":agent", pos1),
       (try_end),
 
@@ -27619,6 +27684,9 @@ mission_templates = [
     (3, 0, 0, [(eq, "$temp1", 1),],[
       (assign, ":sound_played", 0),
       (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
+        (agent_is_alive, ":agent_no"),
+        (agent_is_human, ":agent_no"),
         (agent_slot_eq, ":agent_no", slot_agent_is_running_away, 1),
         (agent_get_troop_id, ":troop", ":agent_no"),
         (eq, ":troop", "trp_prisoner"),

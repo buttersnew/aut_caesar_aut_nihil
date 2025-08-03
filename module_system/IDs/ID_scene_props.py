@@ -1631,3 +1631,5 @@ spr_basic_chariot = 1629
 spr_basic_chariot_destroyed = 1630
 spr_basic_chariot_b = 1631
 spr_basic_chariot_b_destroyed = 1632
+spr_quadriga_chariot = 1633
+spr_quadriga_chariot_destroyed = 1634

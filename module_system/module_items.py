@@ -660,18 +660,25 @@ heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_7] ],
 31,weight(40)|abundance(70)|max_ammo(50),imodbits_none],
 
 # chariot horse
-["basic_chariot_horse","Red Chariot", [("basic_chariot",0)], itp_type_horse|itp_unique, 0,
-2200,abundance(70)|hit_points(200)|body_armor(0)|difficulty(0)|
+["basic_chariot_horse","Biga Russata (Red two-horse chariot)", [("basic_chariot",0)], itp_type_horse|itp_unique, 0,
+75000,abundance(70)|hit_points(200)|body_armor(0)|difficulty(0)|
 horse_speed(50)|horse_maneuver(40)|horse_charge(80)|horse_scale(105),imodbits_horse_basic,[
     (ti_on_init_item, [
         (call_script, "script_init_chariot_item", "spr_basic_chariot"),
     ]),
 ],[]],
-["basic_chariot_b_horse","Blue Chariot", [("basic_chariot_2",0)], itp_type_horse|itp_unique, 0,
-2200,abundance(70)|hit_points(200)|body_armor(0)|difficulty(0)|
+["basic_chariot_b_horse","Biga Veneta (Blue Two-Horse Chariot)", [("basic_chariot_2",0)], itp_type_horse|itp_unique, 0,
+75000,abundance(70)|hit_points(200)|body_armor(0)|difficulty(0)|
 horse_speed(50)|horse_maneuver(40)|horse_charge(80)|horse_scale(105),imodbits_horse_basic,[
     (ti_on_init_item, [
         (call_script, "script_init_chariot_item", "spr_basic_chariot_b"),
+    ]),
+],[]],
+["quadriga_chariot_horse","Currus Triumphalis (Four Horses of a Triumphator)", [("quadriga_chariot",0)], itp_type_horse|itp_unique, 0,
+150000,abundance(70)|hit_points(200)|body_armor(0)|difficulty(0)|
+horse_speed(50)|horse_maneuver(40)|horse_charge(80)|horse_scale(105),imodbits_horse_basic,[
+    (ti_on_init_item, [
+        (call_script, "script_init_chariot_item", "spr_quadriga_chariot"),
     ]),
 ],[]],
 
@@ -2603,42 +2610,69 @@ tunic_light_armor_price, tunic_light_armor_armor,imodbits_cloth,
 #arabian
 ["arabian_tunic_1", "Arabian Tunic", [("arabian_cloth_1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7,fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7,fac_culture_15,fac_culture_6,fac_culture_8] ],
 ["arabian_tunic_2", "Arabian Tunic", [("arabian_cloth_2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7,fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7,fac_culture_15,fac_culture_6,fac_culture_8] ],
 ["arabian_tunic_3", "Arabian Tunic", [("arabian_cloth_3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7,fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7,fac_culture_15,fac_culture_6,fac_culture_8] ],
+
+["arab_noble_tunic_1", "Noble Robe", [("arabian_noble_cloth_1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8]  ],
+["arab_noble_tunic_2", "Noble Robe", [("arabian_noble_cloth_2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8]  ],
 
 ["arabian_armor_b", "Arabian Lamella Armor", [("arabian_armor_b",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 pants_linothorax_price,pants_linothorax_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7, fac_culture_5, fac_culture_6,fac_culture_8]],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8]],
 
 ["sarranid_mail_shirt", "Arabian Lamella Armor", [("sarranian_mail_shirt",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 pants_linothorax_price,pants_linothorax_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7, fac_culture_5, fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+
+["syrian_scale_1", "Syrian Scale Armor", [("syrian_scale_1",0)], itp_type_body_armor|itp_covers_legs,0,
+pants_with_mail_price, pants_with_mail_armor,imodbits_armor,
+[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+["syrian_scale_2", "Syrian Scale Armor", [("syrian_scale_2",0)], itp_type_body_armor|itp_covers_legs,0,
+pants_with_mail_price, pants_with_mail_armor,imodbits_armor,
+[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+["syrian_scale_3", "Syrian Scale Armor", [("syrian_scale_3",0)], itp_type_body_armor|itp_covers_legs,0,
+pants_with_mail_price, pants_with_mail_armor,imodbits_armor,
+[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+
+["heavy_syrian_scale_1", "Heavy Syrian Scale Armor", [("syrian_scale_4",0)], itp_type_body_armor|itp_covers_legs,0,
+noble_mail_price, noble_mail_armor,imodbits_armor,
+[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+["heavy_syrian_scale_2", "Heavy Syrian Scale Armor", [("syrian_scale_5",0)], itp_type_body_armor|itp_covers_legs,0,
+noble_mail_price, noble_mail_armor,imodbits_armor,
+[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+["heavy_syrian_scale_3", "Heavy Syrian Scale Armor", [("syrian_scale_6",0)], itp_type_body_armor|itp_covers_legs,0,
+noble_mail_price, noble_mail_armor,imodbits_armor,
+[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
 
 #palmyran stuff
 ["palmyran_lamellar_armor", "Palmyrene Lamellar Armor", [("palmyran_lamellar_armor",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 pants_with_mail_price, pants_with_mail_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_5]  ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_15,fac_culture_7]  ],
 ["palmyran_lamellar_armor_2", "Palmyrene Lamellar Armor", [("palmyran_lamellar_armor_2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 pants_with_mail_price, pants_with_mail_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_5]  ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_15,fac_culture_7]  ],
 ["palmyran_lamellar_armor_3", "Palmyrene Lamellar Armor", [("palmyran_lamellar_armor_3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 pants_with_mail_price, pants_with_mail_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_5]  ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_15,fac_culture_7]  ],
 
 ["palmyran_lamellar_armor_heavy_1", "Heavy Palmyrene Lamellar Armor", [("palmyran_lamellar_armor_heavy",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, noble_mail_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_5]  ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_15,fac_culture_7]  ],
 ["palmyran_lamellar_armor_heavy_2", "Heavy Palmyrene Lamellar Armor", [("palmyran_lamellar_armor_heavy_2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, noble_mail_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_5]  ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_15,fac_culture_7]  ],
 ["palmyran_lamellar_armor_heavy_3", "Heavy Palmyrene Lamellar Armor", [("palmyran_lamellar_armor_heavy_3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, noble_mail_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_5]  ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_6, fac_culture_15,fac_culture_7]  ],
 #end palmyran stuff
 
 #judean
@@ -3427,27 +3461,27 @@ heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fa
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
 ["parthian_pointed_helm", "Parthian Pointed Helm", [("parthian_helm_1",0)], itp_merchandise| itp_type_head_armor|itp_attach_armature|itp_fit_to_head,0,
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_9,fac_culture_3] ],
-["parthian_helm_inf_heavy_1", "Parthian Hellenistic Helm", [("parthian_helmet_1",0),("parthian_helmet_1_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_inf_heavy_1", "Eastern Hellenistic Helm", [("parthian_helmet_1",0),("parthian_helmet_1_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_inf_heavy_2", "Parthian Hellenistic Helm", [("parthian_helmet_2",0),("parthian_helmet_2_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_inf_heavy_2", "Eastern Hellenistic Helm", [("parthian_helmet_2",0),("parthian_helmet_2_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_inf_heavy_3", "Parthian Hellenistic Helm", [("parthian_helmet_3",0)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_inf_heavy_3", "Eastern Hellenistic Helm", [("parthian_helmet_3",0)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_inf_heavy_4", "Parthian Hellenistic Helm", [("parthian_helmet_4",0)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_inf_heavy_4", "Eastern Hellenistic Helm", [("parthian_helmet_4",0)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_inf_1", "Parthian Hellenistic Helm", [("parthian_helmet_1_light",0),("parthian_helmet_1_light_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_inf_1", "Eastern Hellenistic Helm", [("parthian_helmet_1_light",0),("parthian_helmet_1_light_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_inf_2", "Parthian Hellenistic Helm", [("parthian_helmet_2_light",0),("parthian_helmet_2_light_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_inf_2", "Eastern Hellenistic Helm", [("parthian_helmet_2_light",0),("parthian_helmet_2_light_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_cavalry_1", "Parthian Phyrgian Helm", [("parthian_kedaris_1",0),], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_cavalry_1", "Eastern Phyrgian Helm", [("parthian_kedaris_1",0),], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_cavalry_2", "Parthian Phyrgian Helm", [("parthian_kedaris_3",0),("parthian_kedaris_3_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_cavalry_2", "Eastern Phyrgian Helm", [("parthian_kedaris_3",0),("parthian_kedaris_3_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_cavalry_3", "Parthian Phyrgian Helm", [("parthian_kedaris_4",0),("parthian_kedaris_4_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_cavalry_3", "Eastern Phyrgian Helm", [("parthian_kedaris_4",0),("parthian_kedaris_4_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_cavalry_heavy_1", "Parthian Phyrgian Helm", [("parthian_kedaris_2",0),("parthian_kedaris_2_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_cavalry_heavy_1", "Eastern Phyrgian Helm", [("parthian_kedaris_2",0),("parthian_kedaris_2_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
-["parthian_helm_cavalry_heavy_2", "Parthian Phyrgian Helm", [("parthian_kedaris_5",0),("parthian_kedaris_5_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
+["parthian_helm_cavalry_heavy_2", "Eastern Phyrgian Helm", [("parthian_kedaris_5",0),("parthian_kedaris_5_inv",ixmesh_inventory)], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
 
 #armenian
@@ -3460,33 +3494,39 @@ legio_head_price,legio_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fa
 ["armenian_helm_legion_4", "Armeno-Roman Helm with Plume", [("armenian_coolus_4",0),], itp_merchandise| itp_type_head_armor ,0,
 legio_head_price,legio_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
 ["armenian_helm_heavy_1", "Pointed Helm", [("armenian_helm",0),], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
-heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 ["armenian_helm_heavy_2", "Pointed Helm", [("armenian_helm_2",0),], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
-heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 ["armenian_helm_heavy_3", "Pointed Helm", [("armenian_helm_3",0),], itp_merchandise| itp_type_head_armor|itp_fit_to_head|itp_attach_armature ,0,
-heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 
 #arabian/syrian
 ["pilos_chad", "Syrian Helm", [("chad_pilos",0)], itp_merchandise| itp_type_head_armor ,0,
-heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 ["pilos_chad_2", "Syrian Helm", [("chad_pilos2",0)], itp_merchandise| itp_type_head_armor ,0,
-heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
+
+["pilos_simple", "Syrian Helm", [("simple_pilos",0)], itp_merchandise| itp_type_head_armor ,0,
+medium_head_price,medium_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
+["pilos_simple_2", "Syrian Helm", [("simple_pilos2",0)], itp_merchandise| itp_type_head_armor ,0,
+medium_head_price,medium_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
+
 
 #generic eastern
 ["sarranid_felt_hat", "Eastern Felt Hat", [("sar_helmet3",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_5, fac_culture_6,fac_culture_8] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_5, fac_culture_6, fac_culture_15, fac_culture_8] ],
 ["eastern_helm1", "Eastern Felt Hat", [("ude_helm4",0)], itp_merchandise| itp_type_head_armor ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 ["eastern_helm2", "Eastern Felt Hat", [("ude_helm5",0)], itp_merchandise| itp_type_head_armor ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 ["eastern_helm3", "Eastern Felt Hat", [("ude_helm6",0)], itp_merchandise| itp_type_head_armor ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 ["eastern_helm4", "Eastern Felt Hat", [("ude_helm7",0)], itp_merchandise| itp_type_head_armor ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 ["eastern_helm5", "Eastern Helm", [("ude_helm8",0)], itp_merchandise| itp_type_head_armor ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+light_head_price,light_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 ["eastern_helm6", "Eastern Helm", [("ude_helm9",0)], itp_merchandise| itp_type_head_armor ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+light_head_price,light_head,imodbits_plate, [], [fac_culture_6,fac_culture_8, fac_culture_15, fac_culture_5] ],
 
 ##roman helms
 #auxiliar helmets
@@ -4169,34 +4209,39 @@ weight(get_axe_weight(84))|abundance(50)|difficulty(10)|spd_rtng(get_1haxe_speed
 # EASTERN
 ["eastern_sword1", "Eastern Shortsword", [("east_sword68",0),("east_sword68_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_secondary|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 get_w_price(68, get_w_weight(68), get_1hw_speed(68), 21, 26),
-weight(get_w_weight(68))|difficulty(9)|spd_rtng(get_1hw_speed(68)) | weapon_length(68)|swing_damage(21 , cut) | thrust_damage(26 ,  pierce),imodbits_sword_high, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+weight(get_w_weight(68))|difficulty(9)|spd_rtng(get_1hw_speed(68)) | weapon_length(68)|swing_damage(21 , cut) | thrust_damage(26 ,  pierce),imodbits_sword_high, [], [fac_culture_15,fac_culture_6,fac_culture_8, fac_culture_5] ],
 
 ["eastern_sword2", "Eastern Sword", [("east_sword87",0),("east_sword87_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 get_w_price(87, get_w_weight(87), get_1hw_speed(87), 26, 22),
-weight(get_w_weight(87))|difficulty(10)|spd_rtng(get_1hw_speed(87))|weapon_length(87)|swing_damage(26 , cut)|thrust_damage(22 ,  pierce),imodbits_sword_high, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+weight(get_w_weight(87))|difficulty(10)|spd_rtng(get_1hw_speed(87))|weapon_length(87)|swing_damage(26 , cut)|thrust_damage(22 ,  pierce),imodbits_sword_high, [], [fac_culture_15,fac_culture_6,fac_culture_8, fac_culture_5] ],
 
 ["eastern_sword3", "Eastern Sword", [("east_sword87_1",0),("east_sword87_1_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 get_w_price(87, get_w_weight(87), get_1hw_speed(87), 26, 22),
-weight(get_w_weight(87))|difficulty(10)|spd_rtng(get_1hw_speed(87))|weapon_length(87)|swing_damage(26 , cut)|thrust_damage(22 ,  pierce),imodbits_sword_high, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+weight(get_w_weight(87))|difficulty(10)|spd_rtng(get_1hw_speed(87))|weapon_length(87)|swing_damage(26 , cut)|thrust_damage(22 ,  pierce),imodbits_sword_high, [], [fac_culture_15,fac_culture_6,fac_culture_8, fac_culture_5] ],
 
 ["eastern_sword4", "Eastern War Sword", [("east_sword95_1",0),("east_sword95_1_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 get_w_price(95, get_w_weight(95), get_1hw_speed(95), 28, 19),
-weight(get_w_weight(95))|difficulty(10)|spd_rtng(get_1hw_speed(95)) | weapon_length(95)|swing_damage(28 , cut) | thrust_damage(19 ,  pierce),imodbits_sword_high, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+weight(get_w_weight(95))|difficulty(10)|spd_rtng(get_1hw_speed(95)) | weapon_length(95)|swing_damage(28 , cut) | thrust_damage(19 ,  pierce),imodbits_sword_high, [], [fac_culture_15,fac_culture_6,fac_culture_8, fac_culture_5] ],
 
 ["eastern_sword5", "Eastern War Sword", [("east_sword95_2",0),("east_sword95_2_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 get_w_price(95, get_w_weight(95), get_1hw_speed(95), 28, 19),
-weight(get_w_weight(95))|difficulty(10)|spd_rtng(get_1hw_speed(95)) | weapon_length(95)|swing_damage(28 , cut) | thrust_damage(19 ,  pierce),imodbits_sword_high, [], [fac_culture_6,fac_culture_8, fac_culture_5] ],
+weight(get_w_weight(95))|difficulty(10)|spd_rtng(get_1hw_speed(95)) | weapon_length(95)|swing_damage(28 , cut) | thrust_damage(19 ,  pierce),imodbits_sword_high, [], [fac_culture_15,fac_culture_6,fac_culture_8, fac_culture_5] ],
 
 ["bamboo_spear",         "Bamboo Spear", [("arabian_spear_a_3m",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_is_pike|itp_has_upper_stab|itp_no_blur, itc_spear,
 get_polarm_price(200,get_w_weight(200),get_polew_speed(200),16,28),
-weight(get_w_weight(200))|difficulty(10)|spd_rtng(get_polew_speed(200)) | weapon_length(200)|swing_damage(28 , pierce) | thrust_damage(28 ,  pierce),imodbits_polearm, [], [fac_culture_5, fac_culture_6,fac_culture_8]  ],
+weight(get_w_weight(200))|difficulty(10)|spd_rtng(get_polew_speed(200)) | weapon_length(200)|swing_damage(28 , pierce) | thrust_damage(28 ,  pierce),imodbits_polearm, [], [fac_culture_15, fac_culture_6,fac_culture_8]  ],
 
 ["eastern_spear_149",         "Eastern Spear", [("eastern_spear_149",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
 get_polarm_price(149,get_w_weight(149),get_polew_speed(149),17,30),
-weight(get_w_weight(149))|difficulty(7)|spd_rtng(get_polew_speed(149)) | weapon_length(149)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_5, fac_culture_6,fac_culture_8] ],
+weight(get_w_weight(149))|difficulty(7)|spd_rtng(get_polew_speed(149)) | weapon_length(149)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_15,fac_culture_5, fac_culture_6,fac_culture_8] ],
 ["eastern_spear_168",         "Eastern Spear", [("eastern_spear_168",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
 get_polarm_price(168,get_w_weight(168),get_polew_speed(168),17,30),
-weight(get_w_weight(127))|difficulty(7)|spd_rtng(get_polew_speed(168)) | weapon_length(168)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_5, fac_culture_6,fac_culture_8] ],
+weight(get_w_weight(127))|difficulty(7)|spd_rtng(get_polew_speed(168)) | weapon_length(168)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_15,fac_culture_5, fac_culture_6,fac_culture_8] ],
+
+["syrian_spear_1_145",         "Eastern Spear", [("syrian_spear_1_145",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
+get_polarm_price(145,get_w_weight(145),get_polew_speed(145),17,30),
+weight(get_w_weight(145))|difficulty(7)|spd_rtng(get_polew_speed(145)) | weapon_length(145)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_15, fac_culture_6,fac_culture_8] ],
+
 # END EASTERN
 
 #Dacian

@@ -36,6 +36,7 @@ party_templates = [
 ("village_defenders","Village Defenders",icon_peasant,0,fac_commoners,merchant_personality,[(trp_peasant_woman,10,20)]),
 ("village_defenders_rom", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_vigilia,10,20)] ),
 ("village_defenders_east", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_eastern_slinger,10,20)] ),
+("village_defenders_syria", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_syrian_archer,10,20)] ),
 ("village_defenders_celt", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_celtic_light_clubman,5,10),(trp_celtic_archer,1,4),(trp_celtic_skirmisher,3,6)] ),
 ("village_defenders_cal", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_caledonian_light_clubman,5,10),(trp_caledonian_archer,1,4),(trp_caledonian_skirmisher,3,6)] ),
 ("village_defenders_germ", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_germanic_slinger,10,20),(trp_germanic_skirmisher,2,6)] ),
@@ -99,6 +100,7 @@ party_templates = [
 ("village_berber","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_berber_peasant,15,25),]),
 ("village_garmantian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_garamantian_peasant,15,25),]),
 ("village_egyptian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_african_man,5,10),(trp_judean_peasant,10,15),]),
+("village_syrian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_african_man,5,10),(trp_syrian_peasant,10,15),]),
 
 ("spy_partners", "Unremarkable Travellers", icon_vaegir_knight|carries_goods(10)|pf_default_behavior|pf_quest_party,0,fac_neutral,merchant_personality,[(trp_spy_partner,1,1),(trp_caravan_guard,5,11)]),
 ("runaway_serfs","Runaway slaves",icon_peasant|carries_goods(8)|pf_default_behavior|pf_quest_party,0,fac_neutral,merchant_personality,[(trp_slave,6,7), (trp_slave_female,3,3)]),
@@ -300,6 +302,13 @@ party_templates = [
 [(trp_aux_inf_batavorum,30,30),(trp_germanic_archer,10,10),(trp_aux_archer_batavorum,15,15),(trp_aux_cav_batavorum,25,25),(trp_germanic_hornman,1,1),(trp_germanic_standard_bearer,1,1)] ),
 ("kingdom_19_reinforcements_c", "Romano-Germanic Retinue", 0, 0, fac_commoners, 0,
 [(trp_germanic_noble_spearman,25,25),(trp_germanic_noble_swordsman,25,25),(trp_germanic_hornman,1,1),(trp_germanic_standard_bearer,1,1)] ),
+
+("kingdom_23_reinforcements_a", "Syrian Levies", 0, 0, fac_commoners, 0,
+[(trp_syrian_spearman,55,55),(trp_syrian_archer,30,30),(trp_syrian_standard_bearer,1,1),(trp_syrian_hornman,1,1)] ),
+("kingdom_23_reinforcements_b", "Syrian Lordly Retinue", 0, 0, fac_commoners, 0,
+[(trp_syrian_horsearcher,50,50),(trp_syrian_horseman,20,20)] ),
+("kingdom_23_reinforcements_c", "Syrian Royal Retinue", 0, 0, fac_commoners, 0,
+[(trp_syrian_heavy_cav,50,50),(trp_syrian_horsearcher,25,25)] ),
 
 
 ("steppe_bandit_lair" ,"Alan Camp",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_alans,bandit_personality,[(trp_steppe_bandit,15,30)]),

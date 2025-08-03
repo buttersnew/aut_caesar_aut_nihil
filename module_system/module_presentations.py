@@ -21238,6 +21238,7 @@ presentations = presentations_wse2 + [
             (assign, "$g_presentation_next_presentation", "prsnt_barracks"),
             (call_script, "script_start_customizing", "$temp_troop"),
           (else_try),
+            (assign, "$g_presentation_next_presentation", "prsnt_barracks"),
             (start_presentation, "prsnt_troop_detail"),
           (try_end),
         (else_try),
@@ -21974,16 +21975,12 @@ presentations = presentations_wse2 + [
     (try_begin),# done button
       (eq, ":object", "$g_presentation_leave_button"),
       (this_or_next|eq, "$temp4", 1),
-      (eq, "$temp4", 2),
-      (start_presentation, "prsnt_barracks"),
-    (else_try),
+      (this_or_next|eq, "$temp4", 2),
       (eq, "$temp4", 3),
-      (eq, ":object", "$g_presentation_leave_button"),
       (start_presentation, "$g_presentation_next_presentation"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_1"),
       (call_script, "script_troop_detail_change_screen", "$temp_troop"),
-
     (else_try),
       (eq, ":object", "$checkbox_show_item_details"),
       (assign, "$checkbox_show_item_details_val", ":value"),
@@ -22257,21 +22254,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_2"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_2"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
   ("upgrade_tree_2_1", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
@@ -22408,21 +22395,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_2_1"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_2"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
   ("upgrade_tree_3", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
@@ -22530,21 +22507,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_3"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_3"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
 
   ("upgrade_tree_4", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -22662,21 +22629,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_4"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_4"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
 
   ("upgrade_tree_5", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -22806,188 +22763,167 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_5"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_5"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
-  ("upgrade_tree_6", 0, mesh_load_window, [
-    (ti_on_presentation_load,
-      [
-        (presentation_set_duration, 999999),
-        (set_fixed_point_multiplier, 1000),
-
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_6"),
-
-        # clear the string globals that we'll use
-        (str_clear, s0),
-
-        # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
-        (create_text_overlay, reg43, s0, tf_scrollable_style_2),
-        (position_set_x, pos1, 50),
-        (position_set_y, pos1, 70),
-        (overlay_set_position, reg43, pos1),
-        (position_set_x, pos1, 970),
-        (position_set_y, pos1, 527),
-        (overlay_set_area_size, reg43, pos1),
-
-        (set_container_overlay, reg43),#start scroll
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_caucasian_cataphract", 60, 1310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_caucasian_cataphract_exp", 210, 1310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_caucasian_cataphract_vet", 360, 1310),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_caucasian_heavy_spearman", 60, 1110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_caucasian_heavy_spearman_exp", 210, 1110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_caucasian_heavy_spearman_vet", 360, 1110),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_caucasian_medium_horsearcher", 560, 1110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_caucasian_medium_horsearcher_exp", 710, 1110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_caucasian_medium_horsearcher_vet", 860, 1110),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_armenian_spear_levy", 60, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_armenian_spear_levy_exp", 210, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_armenian_spear_levy_vet", 360, 910),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_armenian_light_axeman", 60, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_armenian_light_axeman_exp", 210, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_armenian_light_axeman_vet", 360, 710),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_armenian_skrimisher", 60, 510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_armenian_skrimisher_exp", 210, 510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_armenian_skrimisher_vet", 360, 510),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_armenian_slinger", 560, 910),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_armenian_slinger_exp", 710, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_armenian_slinger_vet", 860, 910),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_armenian_heavy_inf", 560, 710),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_armenian_heavy_inf_exp", 710, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_armenian_heavy_inf_vet", 860, 710),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_armenian_heavy_maceman", 560, 510),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_armenian_heavy_maceman_exp", 710, 510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_armenian_heavy_maceman_vet", 860, 510),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_armenian_horsearcher", 60, 310),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_armenian_horsearcher_exp", 210, 310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_armenian_horsearcher_vet", 360, 310),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_armenian_medium_horseman", 560, 310),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_armenian_medium_horseman_exp", 710, 310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_armenian_medium_horseman_vet", 860, 310),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_armenian_cataphract", 60, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_armenian_cataphract_exp", 210, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_armenian_cataphract_vet", 360, 110),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_armenian_elite_infantry", 560, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_armenian_elite_infantry_exp", 710, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_armenian_elite_infantry_vet", 860, 110),
-
-
-        ##lines
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1410),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1410),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1210),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1210),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1010),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1010),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 810),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 810),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 610),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 610),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1210),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1210),
-
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1010),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1010),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 810),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 810),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 610),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 610),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 410),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 410),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 410),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 410),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 210),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 210),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 210),
-
-
-        (set_container_overlay, -1),#end scroll
-      ]),
-
-    (ti_on_presentation_run, [
-        (try_begin),
-          (key_clicked, key_escape),
-          (presentation_set_duration, 0),
-        (else_try),
-          (key_clicked, key_space),
-          (set_fixed_point_multiplier, 1000),
-          (mouse_get_position, pos31),
-
-          (position_get_x, reg31, pos31),
-          (position_get_y, reg32, pos31),
-
-          (display_message, "@X: {reg31} | Y: {reg32}"),
-        (try_end),
     ]),
+]),
 
-    (ti_on_presentation_mouse_enter_leave,
-      [
-      (store_trigger_param_1, ":object"),
-      (store_trigger_param_2, ":enter_leave"),
+("upgrade_tree_6", 0, mesh_load_window, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
 
-      (try_begin),
-        (this_or_next|eq, ":object", "$g_presentation_obj_1"),
-        (eq, ":object", "$g_presentation_obj_3"),
-        (overlay_set_display, "$g_presentation_obj_3", ":enter_leave"),
-      (else_try),
-        (this_or_next|eq, ":object", "$g_presentation_obj_2"),
-        (eq, ":object", "$g_presentation_obj_4"),
-        (overlay_set_display, "$g_presentation_obj_4", ":enter_leave"),
-      (try_end),
-    ]),
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_6"),
 
-    (ti_on_presentation_event_state_change,
-      [
-        (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_6"),
+    # clear the string globals that we'll use
+    (str_clear, s0),
 
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_5"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
+    # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
+    (create_text_overlay, reg43, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 50),
+    (position_set_y, pos1, 70),
+    (overlay_set_position, reg43, pos1),
+    (position_set_x, pos1, 970),
+    (position_set_y, pos1, 527),
+    (overlay_set_area_size, reg43, pos1),
+
+    (set_container_overlay, reg43),#start scroll
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_caucasian_cataphract", 60, 1310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_caucasian_cataphract_exp", 210, 1310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_caucasian_cataphract_vet", 360, 1310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_caucasian_heavy_spearman", 60, 1110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_caucasian_heavy_spearman_exp", 210, 1110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_caucasian_heavy_spearman_vet", 360, 1110),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_caucasian_medium_horsearcher", 560, 1110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_caucasian_medium_horsearcher_exp", 710, 1110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_caucasian_medium_horsearcher_vet", 860, 1110),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_armenian_spear_levy", 60, 910),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_armenian_spear_levy_exp", 210, 910),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_armenian_spear_levy_vet", 360, 910),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_armenian_light_axeman", 60, 710),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_armenian_light_axeman_exp", 210, 710),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_armenian_light_axeman_vet", 360, 710),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_armenian_skrimisher", 60, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_armenian_skrimisher_exp", 210, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_armenian_skrimisher_vet", 360, 510),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_armenian_slinger", 560, 910),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_armenian_slinger_exp", 710, 910),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_armenian_slinger_vet", 860, 910),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_armenian_heavy_inf", 560, 710),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_armenian_heavy_inf_exp", 710, 710),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_armenian_heavy_inf_vet", 860, 710),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_armenian_heavy_maceman", 560, 510),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_armenian_heavy_maceman_exp", 710, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_armenian_heavy_maceman_vet", 860, 510),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_armenian_horsearcher", 60, 310),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_armenian_horsearcher_exp", 210, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_armenian_horsearcher_vet", 360, 310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_armenian_medium_horseman", 560, 310),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_armenian_medium_horseman_exp", 710, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_armenian_medium_horseman_vet", 860, 310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_armenian_cataphract", 60, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_armenian_cataphract_exp", 210, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_armenian_cataphract_vet", 360, 110),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_armenian_elite_infantry", 560, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_armenian_elite_infantry_exp", 710, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_armenian_elite_infantry_vet", 860, 110),
+
+
+    ##lines
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1210),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1010),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1010),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 810),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 810),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 610),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 610),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1210),
+
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1010),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1010),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 810),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 810),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 610),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 610),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 210),
+
+
+    (set_container_overlay, -1),#end scroll
   ]),
+
+  (ti_on_presentation_run, [
+    (try_begin),
+      (key_clicked, key_escape),
+      (presentation_set_duration, 0),
+    (else_try),
+      (key_clicked, key_space),
+      (set_fixed_point_multiplier, 1000),
+      (mouse_get_position, pos31),
+
+      (position_get_x, reg31, pos31),
+      (position_get_y, reg32, pos31),
+
+      (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_mouse_enter_leave,[
+    (store_trigger_param_1, ":object"),
+    (store_trigger_param_2, ":enter_leave"),
+
+    (try_begin),
+      (this_or_next|eq, ":object", "$g_presentation_obj_1"),
+      (eq, ":object", "$g_presentation_obj_3"),
+      (overlay_set_display, "$g_presentation_obj_3", ":enter_leave"),
+    (else_try),
+      (this_or_next|eq, ":object", "$g_presentation_obj_2"),
+      (eq, ":object", "$g_presentation_obj_4"),
+      (overlay_set_display, "$g_presentation_obj_4", ":enter_leave"),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":object"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_6"),
+  ]),
+]),
 
   ("upgrade_tree_7", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23113,21 +23049,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_7"),
-
-        # (try_for_range, ":slot_no", 0, 40),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_6"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
 
   ("upgrade_tree_8", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23336,21 +23262,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_8"),
-
-        # (try_for_range, ":slot_no", 0, 80),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_7"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
 
    ("upgrade_tree_9", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23454,21 +23370,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_9"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_8"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
       ]),
-  ]),
+ ]),
   ("upgrade_tree_10", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
@@ -23556,21 +23462,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_10"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_5"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
       ]),
-  ]),
+]),
 
    ("upgrade_tree_11", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23686,21 +23582,11 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_11"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_9"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
       ]),
-  ]),
+]),
   # Mercenaries
   ("upgrade_tree_12", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23959,21 +23845,112 @@ presentations = presentations_wse2 + [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
-        (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_13"),
+    (ti_on_presentation_event_state_change,[
+      (store_trigger_param_1, ":object"),
+      (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_13"),
+    ]),
+]),
 
-        # (try_for_range, ":slot_no", 0, 40),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_11"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
+("upgrade_tree_14", 0, mesh_load_window,[
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_14"),
+
+    # clear the string globals that we'll use
+    (str_clear, s0),
+
+    # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
+    (create_text_overlay, reg43, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 50),
+    (position_set_y, pos1, 70),
+    (overlay_set_position, reg43, pos1),
+    (position_set_x, pos1, 970),
+    (position_set_y, pos1, 527),
+    (overlay_set_area_size, reg43, pos1),
+
+    (set_container_overlay, reg43),#start scroll
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_syrian_heavy_cav", 560, 510),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_syrian_heavy_cav_exp", 710, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_syrian_heavy_cav_vet", 860, 510),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_syrian_horseman", 60, 310),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_syrian_horseman_exp", 210, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_syrian_horseman_vet", 360, 310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_syrian_horsearcher", 560, 310),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_syrian_horsearcher_exp", 710, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_syrian_horsearcher_vet", 860, 310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_syrian_spearman", 60, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_syrian_spearman_exp", 210, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_syrian_spearman_vet", 360, 110),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_syrian_archer", 560, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_syrian_archer_exp", 710, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_syrian_archer_vet", 860, 110),
+
+    ##lines
+    # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 610),##45 space for x
+    # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 610),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 610),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 610),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 210),
+
+
+    (set_container_overlay, -1),#end scroll
   ]),
+
+  (ti_on_presentation_run, [
+    (try_begin),
+      (key_clicked, key_escape),
+      (presentation_set_duration, 0),
+    (else_try),
+      (key_clicked, key_space),
+      (set_fixed_point_multiplier, 1000),
+      (mouse_get_position, pos31),
+
+      (position_get_x, reg31, pos31),
+      (position_get_y, reg32, pos31),
+
+      (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_mouse_enter_leave,[
+    (store_trigger_param_1, ":object"),
+    (store_trigger_param_2, ":enter_leave"),
+
+    (try_begin),
+      (this_or_next|eq, ":object", "$g_presentation_obj_1"),
+      (eq, ":object", "$g_presentation_obj_3"),
+      (overlay_set_display, "$g_presentation_obj_3", ":enter_leave"),
+    (else_try),
+      (this_or_next|eq, ":object", "$g_presentation_obj_2"),
+      (eq, ":object", "$g_presentation_obj_4"),
+      (overlay_set_display, "$g_presentation_obj_4", ":enter_leave"),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":object"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_14"),
+  ]),
+]),
 ##########TROOP TREE END
 
 # __Freelancer Report: Commander_:Start_________________________________________________
@@ -35418,6 +35395,7 @@ presentations = presentations_wse2 + [
         # (neq, ":item", "itm_horn"),
         # (neg|is_between, ":item", "itm_roman_lupa_dress", "itm_sarranid_cloth_robe"),
         # (neg|is_between, ":item", "itm_flower_crown", "itm_celtic_boots"),
+        (neg|is_between, ":item", "itm_basic_chariot_horse", "itm_sumpter_horse"),#no chariots
         (assign, ":c0", 0),
         # (assign, reg0, "$temp2"),
         # (display_message, "@{reg0}"),
