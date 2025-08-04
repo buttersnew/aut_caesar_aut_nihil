@@ -49,7 +49,7 @@ party_templates = [
 
 # Ryan BEGIN
 ("looters_2","Escaped Slaves",icon_axeman|carries_goods(8),0,fac_outlaws,bandit_personality,[]),
-("looters","Looters",icon_axeman|carries_goods(8),0,fac_outlaws,bandit_personality,[(trp_looter,15,55)]),
+("looters","Latrones",icon_axeman|carries_goods(8),0,fac_outlaws,bandit_personality,[(trp_looter,15,55)]),
 # Ryan END
 ("generic_bandits","Bandit Gang",icon_axeman|carries_goods(9),0,fac_outlaws,bandit_personality,[(trp_bandit,14,30),(trp_brigand,14,30),(trp_looter,5,15),]),
 
