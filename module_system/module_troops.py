@@ -872,6 +872,10 @@ attrib_level_6, wp(100), knows_level_6, armenian_face_young, armenian_face_middl
 [itm_sling,itm_sling_rock1]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant,
 attrib_level_6, wp(60), knows_level_6, mercenary_face_greek_1, mercenary_face_greek_2 ],
 
+["galatian_peasant", "Galaticus Rusticus", "Galatici Rustici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_7,
+[itm_sling,itm_sling_rock1]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant,
+attrib_level_6, wp(60), knows_level_6, mercenary_face_greek_1, mercenary_face_greek_2 ],
+
 ["illyrian_peasant", "Illyricus Rusticus", "Illyrici Rustici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_7,
 [itm_sling,itm_sling_rock1]+celtic_foot_peasant+iberian_tunic+celtic_head_peasant+celtic_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
@@ -2990,6 +2994,13 @@ attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_
 [itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+syrian_dress_cives+syria_foot_cives,
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
+["galatian_town_walker","Galaticus Urbanus","Galatici Urbani",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+[itm_dagger]+eastern_cives+eastern_roman_tunic+eastern_foot_cives,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+["galatian_town_walker_female", "Galatica Urbana Mulier", "Galaticae Urbanae Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_dagger,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+eastern_dress_cives+eastern_foot_cives,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
+
 ["eastern_town_walker","Orientalis Urbanus","Orientales Urbani",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 [itm_dagger]+eastern_cives+eastern_roman_tunic+eastern_foot_cives,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
@@ -3157,6 +3168,13 @@ attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_
 ["eastern_village_walker_female", "Orientalis Rustica", "Orientales Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
+
+["galatian_village_walker","Galaticus Rusticus","Galatici Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
+[]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+["galatian_village_walker_female", "Galatica Rustica", "Galaticae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
+attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
 ["syrian_village_walker","Syrus Rusticus","Syri Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 []+syrian_tunic+syria_foot_peasant+syrian_weapons_peasant,
@@ -5586,6 +5604,11 @@ eastern_man_face_younger_1, eastern_man_face_young_1 ],
 knows_looting_3|knows_trade_3|knows_engineer_2|knows_power_strike_4|knows_athletics_4,
 persian_face_young_2, persian_face_middle_2 ],
 
+["slave_galatian", "Servus Galaticus", "Servi Galatici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(17), wp(30), # 3+3+3+4+4 = 17
+knows_looting_3|knows_trade_3|knows_engineer_3|knows_power_strike_4|knows_athletics_4,
+barbarian_man_face_younger_1, barbarian_man_face_young_1 ],
+
 ["slave_mine", "Servus", "Servi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor2,itm_caligea,itm_pickaxe_work], def_attrib|level(25), wp(30),
 knows_common|knows_riding_2,
@@ -5612,6 +5635,11 @@ knows_looting_2|knows_power_strike_8|knows_athletics_8|knows_inventory_managemen
 woman_face_1, woman_face_2 ],
 
 ["slave_female_celt", "Serva Celtica", "Servae Celticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+[itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 6+9 = 15
+knows_power_strike_6|knows_athletics_9,
+woman_face_1, woman_face_2 ],
+
+["slave_female_galatian", "Serva Galatica", "Servae Galaticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(15), wp(30), # 6+9 = 15
 knows_power_strike_6|knows_athletics_9,
 woman_face_1, woman_face_2 ],

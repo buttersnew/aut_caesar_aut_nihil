@@ -2645,13 +2645,13 @@ pants_with_mail_price, pants_with_mail_armor,imodbits_armor,
 
 ["heavy_syrian_scale_1", "Heavy Syrian Scale Armor", [("syrian_scale_4",0)], itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, noble_mail_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
 ["heavy_syrian_scale_2", "Heavy Syrian Scale Armor", [("syrian_scale_5",0)], itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, noble_mail_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
 ["heavy_syrian_scale_3", "Heavy Syrian Scale Armor", [("syrian_scale_6",0)], itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, noble_mail_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_set_roman_clothing_2"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_7, fac_culture_15, fac_culture_6,fac_culture_8] ],
 
 #palmyran stuff
 ["palmyran_lamellar_armor", "Palmyrene Lamellar Armor", [("palmyran_lamellar_armor",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,

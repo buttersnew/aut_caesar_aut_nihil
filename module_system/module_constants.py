@@ -1577,6 +1577,7 @@ slot_troop_slave_gaul           = 122
 slot_troop_slave_egyptian       = 123
 slot_troop_slave_syrian         = 124
 slot_troop_slave_eastern        = 125
+slot_troop_slave_galatian       = 126
 
 # Female Slaves (Offset by 23 from male counterparts)
 slot_troop_slave_female                = 126
@@ -1603,8 +1604,9 @@ slot_troop_slave_female_gaul           = 146
 slot_troop_slave_female_egyptian       = 147
 slot_troop_slave_female_syrian         = 148
 slot_troop_slave_female_eastern        = 149
+slot_troop_slave_female_galatian       = 150
 
-slot_troop_slaves_end = 150
+slot_troop_slaves_end = slot_troop_slave_female_galatian + 1
 
 #Special quest slots
 slot_troop_mission_participation        = 149
@@ -4094,7 +4096,9 @@ p_afrc_garamantia = 54
 
 p_asia_chor = 55
 
-p_provinces_end = p_asia_media + 1
+p_asia_osreon = 56
+
+p_provinces_end = p_asia_osreon + 1
 
 
 #new province system:

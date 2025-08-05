@@ -17332,7 +17332,7 @@ presentations = presentations_wse2 + [
     (overlay_add_item, "$g_presentation_obj_6", "@Political Mode"),
     (overlay_add_item, "$g_presentation_obj_6", "@Terrain Mode"),
     (overlay_add_item, "$g_presentation_obj_6", "@Province Mode"),
-    (overlay_add_item, "$g_presentation_obj_6", "@Culture Mode"),
+    (overlay_add_item, "$g_presentation_obj_6", "@(Main) Culture Mode"),
     (overlay_add_item, "$g_presentation_obj_6", "@Wealth Mode"),
     (store_sub, ":value", "$temp1", 1),
     (overlay_set_val, "$g_presentation_obj_6", ":value"),
@@ -17730,7 +17730,6 @@ presentations = presentations_wse2 + [
         (troop_set_slot, "trp_temp_array_a", ":slot_no", reg0), # overlay id
 
         # name
-        (str_store_party_name, s1, ":center_no"),
         (try_begin),
           (eq, "$temp1", 5),
           (troop_get_slot, reg10, "trp_temp_array_olympia_a", ":center_no"),
@@ -17741,12 +17740,14 @@ presentations = presentations_wse2 + [
           (eq, "$temp1", 4),
           (party_get_slot, ":culture", ":center_no", slot_center_culture),
           (is_between, ":culture", cultures_begin, cultures_end),
-          (str_store_faction_name, s2, ":culture"),
+          (call_script, "script_get_party_full_culture_string", ":center_no"),
+          (str_store_string_reg, s2, s1),
         (else_try),
           (party_get_slot, ":province", ":center_no", slot_center_province),
           (val_add, ":province", "str_province_begin"),
           (str_store_string, s2, ":province"),
         (try_end),
+        (str_store_party_name, s1, ":center_no"),
         (create_text_overlay, reg1, "@{s1}^{s2}", tf_center_justify|tf_with_outline),
         (overlay_set_color, reg1, 0xFFFFFF),
         (store_add, ":text_x", ":center_x", 0),
@@ -17795,7 +17796,6 @@ presentations = presentations_wse2 + [
         (overlay_set_size, reg0, pos1),
         (troop_set_slot, "trp_temp_array_a", ":slot_no", reg0), # overlay id
         # name
-        (str_store_party_name, s1, ":center_no"),
         (try_begin),
           (eq, "$temp1", 5),
           (party_get_slot, reg10, ":center_no", slot_center_capital),
@@ -17805,10 +17805,12 @@ presentations = presentations_wse2 + [
           (eq, "$temp1", 4),
           (party_get_slot, ":culture", ":center_no", slot_center_culture),
           (is_between, ":culture", cultures_begin, cultures_end),
-          (str_store_faction_name, s2, ":culture"),
+          (call_script, "script_get_party_full_culture_string", ":center_no"),
+          (str_store_string_reg, s2, s1),
         (else_try),
           (str_store_string, s2, "@Minor faction"),
         (try_end),
+        (str_store_party_name, s1, ":center_no"),
         (create_text_overlay, reg1, "@{s1}^{s2}", tf_center_justify|tf_with_outline),
         (overlay_set_color, reg1, 0xFFFFFF),
         (store_add, ":text_x", ":center_x", 0),
@@ -18031,7 +18033,7 @@ presentations = presentations_wse2 + [
       (assign, ":pos_x", 0),
       (assign, ":pos_y", 0),
 
-      (create_text_overlay, reg1, "@Cultures", tf_center_justify),
+      (create_text_overlay, reg1, "@Main Cultures", tf_center_justify),
       (position_set_x, pos1, 1200),
       (position_set_y, pos1, 1200),
       (overlay_set_size, reg1, pos1),
@@ -18055,6 +18057,7 @@ presentations = presentations_wse2 + [
 
         (faction_get_color, ":dest_color", ":culture"),
         (str_store_faction_name, s1, ":culture"),
+
         (create_text_overlay, reg0, s1, tf_left_align|tf_with_outline),
         (overlay_set_color, reg0, ":dest_color"),
         (position_set_x, pos1, ":text_x"),

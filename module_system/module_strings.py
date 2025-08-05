@@ -7279,6 +7279,7 @@ strings = [
   ("nubia", "Nubia"),
   ("garamantia", "Garamantia"),
   ("chorasmia", "Chorasmia"),
+  ("osreon", "Osreon"),
 
   ("simple_names_begin","No region"),
   ("hispania_simple","HS"),
@@ -9582,28 +9583,29 @@ strings = [
 ("subculture_hispanic_tarraconensian", "Iberian"),
 ("subculture_hispanic_baetican", "Iberian"),
 ("subculture_hispanic_lusitanian", "Iberian"),
-("subculture_african_mauretanian", "Mauretanian"), # Could also be "Moorish" or "Numidian" depending on nuance
-("subculture_african_proconsular", "African"), # For Africa Proconsularis
-("subculture_african_cyrenaican", "Cyrenaican"),
+("subculture_african_mauretanian", "Berber"), # Could also be "Moorish" or "Numidian" depending on nuance
+("subculture_african_proconsular", "Berber"), # For Africa Proconsularis
+("subculture_african_cyrenaican", "Garamantian"),
 ("subculture_african_egyptian", "Egyptian"),
-("subculture_asian_arabian_petraea", "Nabataean"), # Arabia Petraea
+("subculture_asian_arabian_petraea", "Arabian"), # Arabia Petraea
 ("subculture_asian_judean", "Judean"), # Or Syro-Palestinian if broader
 ("subculture_asian_syrian", "Syrian"),
-("subculture_asian_cilician", "Cilician"),
-("subculture_asian_cappadocian", "Cappadocian"),
+("subculture_asian_osreon", "Syrian"),
+("subculture_asian_cilician", "Greek"),
+("subculture_asian_cappadocian", "Galatian"),
 ("subculture_asian_pontic", "Pontic"),
-("subculture_asian_anatolian", "Anatolian"), # For Asia Minor
+("subculture_asian_anatolian", "Greek"), # For Asia Minor
 ("subculture_balkan_thracian", "Thracian"),
 ("subculture_balkan_moesian_superior", "Thracian"),
 ("subculture_balkan_moesian_inferior", "Thracian"),
-("subculture_balkan_achaean_greek", "Achaean Greek"),
-("subculture_balkan_epirote_greek", "Epirote Greek"),
-("subculture_balkan_macedonian_greek", "Macedonian"),
+("subculture_balkan_achaean_greek", "Greek"),
+("subculture_balkan_epirote_greek", "Greek"),
+("subculture_balkan_macedonian_greek", "Greek"),
 ("subculture_balkan_dalmatian_illyrian", "Illyrian"),
-("subculture_italian_sicilian", "Sicilian"),
-("subculture_italian_magna_graecian", "Italian"), # Greek in Southern Italy
-("subculture_italian_italic", "Italian"), # Central Italy
-("subculture_italian_cisalpine", "Cisalpinian"), # Northern Italy (often Gallic/Celtic influences)
+("subculture_italian_sicilian", "Greek"),
+("subculture_italian_magna_graecian", "Roman"), # Greek in Southern Italy
+("subculture_italian_italic", "Roman"), # Central Italy
+("subculture_italian_cisalpine", "Roman"), # Northern Italy (often Gallic/Celtic influences)
 ("subculture_gaulish_narbonensian", "Gaulish"),
 ("subculture_gaulish_aquitanian", "Gaulish"),
 ("subculture_gaulish_lugdunensian", "Gaulish"),
@@ -9612,7 +9614,7 @@ strings = [
 ("subculture_germanic_superior", "Germanic"), # Along the Rhine
 ("subculture_germanic_raetian", "Raetian"), # Alpine
 ("subculture_germanic_norican", "Norican"), # Alpine Celtic/Illyrian, Romanized
-("subculture_central_pannonian", "Pannonian"), # Illyrian/Celtic
+("subculture_central_pannonian", "Illyrian"), # Illyrian/Celtic
 ("subculture_britannic_britannian", "Britannic"), # Southern Britain
 ("subculture_britannic_caledonian", "Caledonian"), # Northern Britain/Scotland
 ("subculture_magna_germanian", "Germanic"), # General for Germania Libera

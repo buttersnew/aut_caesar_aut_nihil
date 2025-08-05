@@ -5215,7 +5215,7 @@ simple_triggers = [
         (val_mul, ":wealth_field", ":weighted_number_slaves_field"),
 
         (store_add, reg20, ":wealth_mine", ":wealth_field"),
-        
+
         (call_script, "script_get_honor_factor"),
         (store_add, ":factor", 100, reg0),
         (val_mul, reg20,  ":factor"),
@@ -10304,6 +10304,7 @@ simple_triggers = [
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_media),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_arab),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_syr),
+        (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_osreon),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_jude),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_afrc_maur),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_afrc_afrc),
@@ -10318,6 +10319,7 @@ simple_triggers = [
         (else_try),
             (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_arab),
             (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_syr),
+            (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_osreon),
             (party_slot_eq, ":village", slot_center_province, p_asia_jude),
             (assign, ":nomad_faction", "fac_nabataea"),
         (else_try),
@@ -11686,7 +11688,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 184),
     (store_current_hours, ":hour"),
     (ge, ":hour", 24*14),#2 weeks
-    
+
     (try_begin),
         (neg|check_quest_active, "qst_nero_special_quest"),
         (eq, "$players_kingdom", "fac_kingdom_7"),
