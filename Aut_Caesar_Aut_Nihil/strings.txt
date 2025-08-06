@@ -6186,7 +6186,7 @@ str_mercenary_saka_amazon Saka_Amazons
 str_custom_infantry_retinue Infantry_retinue_(custom)
 str_custom_cavalry_retinue Cavalry_retinue_(custom)
 str_custom_skirmisher_retinue Skirmisher_retinue_(custom)
-str_kingdom_1_town_watch Local_Townwatch(Dacian)
+str_culture_1_town_watch Local_Townwatch(Dacian)
 str_kingdom_2_town_watch Local_Townwatch_(Celtic)
 str_kingdom_2_1_town_watch Local_Townwatch_(Caledonian)
 str_kingdom_3_town_watch Local_Townwatch_(Sarmatian)

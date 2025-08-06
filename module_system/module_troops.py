@@ -849,7 +849,7 @@ attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_
 attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
 
 ["syrian_peasant", "Syrus Tribulis", "Syri Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_10,
-[itm_sling,itm_sling_rock1]+syrian_head_peasant+syria_foot_peasant+syrian_weapons_peasant,
+[itm_sling,itm_sling_rock1]+syrian_head_peasant+syria_foot_peasant+syrian_weapons_peasant+syrian_tunic,
 attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
 
 ["eastern_peasant", "Orientalis Tribulis", "Orientales Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_10,

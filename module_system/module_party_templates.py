@@ -195,27 +195,42 @@ party_templates = [
 [(trp_custom_standard_bearer_skirmisher,1,1),(trp_custom_hornman_skirmisher,1,1),(trp_custom_skirmisher,40,40),(trp_custom_archer,40,40)]),
 
 ##town watch templates
-("kingdom_1_town_watch", "Dacian Townwatch", 0, 0, fac_commoners, 0,
+("culture_1_town_watch", "Dacian Townwatch", 0, 0, fac_commoners, 0,
 [(trp_dacian_light_spearman,25,25),(trp_dacian_light_swordman,15,15),(trp_dacian_skirmishers,10,10),(trp_dacian_archers, 25,25)] ),#75
-("kingdom_2_town_watch", "Celtic Townwatch", 0, 0, fac_commoners, 0,
+("culture_2_town_watch", "Celtic Townwatch", 0, 0, fac_commoners, 0,
 [(trp_celtic_light_clubman,25,25),(trp_celtic_light_spearman,15,15),(trp_celtic_skirmisher,10,10),(trp_celtic_archer,25,25)] ),#75
-("kingdom_2_1_town_watch", "Caledonian Townwatch", 0, 0, fac_commoners, 0,
+("culture_2_1_town_watch", "Caledonian Townwatch", 0, 0, fac_commoners, 0,
 [(trp_caledonian_light_clubman,15,15),(trp_caledonian_light_spearman,25,25),(trp_caledonian_skirmisher,10,10),(trp_caledonian_archer, 25,25)] ),
-("kingdom_3_town_watch", "Sarmatian Townwatch", 0, 0, fac_commoners, 0,
+("culture_3_town_watch", "Sarmatian Townwatch", 0, 0, fac_commoners, 0,
 [(trp_sarmatian_light_spearman,30,30),(trp_sarmatian_archers,35,35)] ),#60
-("kingdom_4_town_watch", "Germanic Townwatch", 0, 0, fac_commoners, 0,
+("culture_4_town_watch", "Germanic Townwatch", 0, 0, fac_commoners, 0,
 [(trp_germanic_light_clubman,25,25),(trp_germanic_light_spearman,15,15),(trp_germanic_archer,15,15),(trp_germanic_skirmisher,10,10),(trp_germanic_slinger,10,10)] ),
-("kingdom_5_town_watch", "Caucasian Townwatch", 0, 0, fac_commoners, 0,
+("culture_5_town_watch", "Caucasian Townwatch", 0, 0, fac_commoners, 0,
 [(trp_armenian_horsearcher,15,15),(trp_armenian_skrimisher,10,10),(trp_armenian_spear_levy,25,25),(trp_armenian_light_axeman,15,15),(trp_armenian_slinger,10,10)] ),
-("kingdom_6_town_watch", "Persian Townwatch", 0, 0, fac_commoners, 0,
+("culture_6_town_watch", "Persian Townwatch", 0, 0, fac_commoners, 0,
 [(trp_eastern_skrimisher,15,15),(trp_eastern_light_archer,20,20),(trp_eastern_light_axeman,25,25),(trp_eastern_slinger,15,15),] ),
-("kingdom_7_town_watch", "Vigilia", 0, 0, fac_commoners, 0,
+("culture_7_town_watch", "Vigilia", 0, 0, fac_commoners, 0,
 [(trp_aux_vigiles_centurio,2,2),(trp_vigilia,40,40),(trp_aux_archer,25,25),(trp_aux_inf,5,5),(trp_ballistarii,5,5)] ),
-("kingdom_8_town_watch", "Judean Townwatch", 0, 0, fac_commoners, 0,
+("culture_8_town_watch", "Judean Townwatch", 0, 0, fac_commoners, 0,
 [(trp_judean_light_spearman,25,25),(trp_judean_light_clubman,25,25),(trp_judean_slinger,15,15),(trp_judean_archer,10,10),] ),
-("kingdom_9_town_watch", "Bosphoran Townwatch", 0, 0, fac_commoners, 0,
+("culture_9_town_watch", "Bosporan Townwatch", 0, 0, fac_commoners, 0,
 [(trp_sarmatian_archers,15,15),(trp_bosporan_light_spearman,45,45),(trp_bosporan_archer,15,15)] ),
-("kingdom_19_town_watch", "Batavan Townwatch", 0, 0, fac_commoners, 0,
+("culture_10_town_watch", "Arabian Townwatch", 0, 0, fac_commoners, 0,
+[(trp_arab_noble_cav,20,20),(trp_desert_bandit,45,45)] ),
+("culture_11_town_watch", "Berber Townwatch", 0, 0, fac_commoners, 0,
+[(trp_gaetuli_noble_horseman,20,20),(trp_gaetuli_horseman,45,45)] ),
+("culture_12_town_watch", "Garamantian Townwatch", 0, 0, fac_commoners, 0,
+[(trp_garamantien_noble_horseman,20,20),(trp_sarranid_horseman,45,45)] ),
+("culture_13_town_watch", "Nubian Townwatch", 0, 0, fac_commoners, 0,
+[(trp_meroe_archers,20,20),(trp_meroe_infantry,45,45)] ),
+("culture_14_town_watch", "Saka Townwatch", 0, 0, fac_commoners, 0,
+[(trp_saka_heavy_cavalry,20,20),(trp_saka_horse_archer,45,45)] ),
+
+("culture_15_town_watch", "Batavan Townwatch", 0, 0, fac_commoners, 0,
+[(trp_syrian_archer,10,10),(trp_syrian_spearman,40,40),(trp_syrian_horsearcher,20,20)] ),
+
+#special for batavans
+("culture_4_1_town_watch", "Batavan Townwatch", 0, 0, fac_commoners, 0,
 [(trp_germanic_light_clubman,25,25),(trp_germanic_light_spearman,25,25),(trp_aux_archer_batavorum,25,25)] ),
 
 # Reinforcements

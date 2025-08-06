@@ -1325,18 +1325,6 @@ scripts_hardcoded = [
     (party_set_slot, "p_village_219", slot_center_culture, "fac_culture_15"),
 
 
-    ## correct culture:
-    (party_set_slot, "p_town_19", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_castle_44", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_castle_45", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_castle_46", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_village_98", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_village_97", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_village_96", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_village_109", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_village_51", slot_center_culture, "fac_culture_8"),
-    (party_set_slot, "p_village_100", slot_center_culture, "fac_culture_8"),
-
     (call_script, "script_initialize_npc_items"),
     ##also add lady items, to it here because it require troop culture slot to be set properly
     (try_for_range, ":cur_lady", "trp_kingdom_1_lady_1", "trp_gwenhwyfar"),
@@ -1494,17 +1482,13 @@ scripts_hardcoded = [
             (party_slot_eq, ":center_no", slot_party_type, spt_town),
             (assign, ":garrison_strength", 60),
         (try_end),
-        (try_begin),
-            (party_get_slot, ":legati", ":center_no", slot_town_lord),
-            (is_between, ":legati", "trp_legatus_1", "trp_aux_commander_1"),
-            (assign, ":garrison_strength", 5),
-        (try_end),
 
+        (store_faction_of_party, ":faction", ":center_no"),
         (try_begin),
-            (store_faction_of_party, ":faction", ":center_no"),
+            (this_or_next|faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_15"),## to help syrians
             (this_or_next|faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_3"),###to help nomads to survive
             (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_4"),##to help germans
-            (val_add, ":garrison_strength", 15),
+            (val_add, ":garrison_strength", 25),
         (try_end),
             ####
 
