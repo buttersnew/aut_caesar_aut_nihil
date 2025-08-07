@@ -184,6 +184,7 @@ scenes = [
   ("village_parthian_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000022007a7b200045d19000004920000076d00003b0a",[], [], "outer_terrain_steppe"),
   ("village_parthian_2", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000022000050000085e190000131d000064ff00003ac0",[], [], "outer_terrain_steppe"),
   ("village_43", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000022002de4c00077ddd00007e1300000af400006de1",[], [], "outer_terrain_steppe"),
+  ("village_parthian_3",sf_generate,"none", "none",(0,0),(100,100),-100,"0x00000000a000050000091e4b0000683a00006fbb0000640c",[],[],"outer_terrain_steppe"),
   #end parthian villages
 
   #fac_culture_2,fac_culture_1

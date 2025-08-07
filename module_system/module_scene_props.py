@@ -3562,4 +3562,16 @@ scene_props = [
       (prop_instance_dynamics_set_properties, ":instance_no", pos10),
     ]),
   ]),
+
+# from 'additional_props.brf': begin (OpenBRF)
+	( "new_rome_gaul_a"                            ,0,"new_rome_gaul_a","bo_new_rome_gaul_a",[]),
+	( "new_rome_gaul_b"                            ,0,"new_rome_gaul_b","bo_new_rome_gaul_b",[]),
+	( "new_rome_gaul_c"                            ,0,"new_rome_gaul_c","bo_new_rome_gaul_c",[]),
+	( "oppidum_gate"                               ,0,"oppidum_gate","bo_oppidum_gate",[]),
+	( "oppidum_wall"                               ,0,"oppidum_wall","bo_oppidum_wall",[]),
+	( "oppidum_wall_turn"                          ,0,"oppidum_wall_turn","bo_oppidum_wall_turn",[]),
+	( "ado_wood_bridge_long"                       ,0,"ado_wood_bridge_long","bo_ado_wood_bridge_long",[]),
+	( "ado_wood_bridge_long_ramp"                  ,0,"ado_wood_bridge_long_ramp","bo_ado_wood_bridge_long_ramp",[]),
+# from 'additional_props.brf': end (OpenBRF)
+
 ]
