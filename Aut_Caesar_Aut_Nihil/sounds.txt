@@ -1,5 +1,5 @@
 soundsfile version 3
-649
+651
  drum_3.wav 769
  tutorial_1.wav 1801
  tutorial_2.wav 265
@@ -649,7 +649,9 @@ soundsfile version 3
  Taverndrunk_win_1.wav 4089
  Taverndrunk_win_2.wav 4089
  Taverndrunk_win_3.wav 4089
-266
+ chariot_1.wav 1960
+ chariot_2.wav 1960
+267
 snd_click 769 1 0 0 
 snd_tutorial_1 1801 1 1 0 
 snd_tutorial_2 265 1 2 0 
@@ -916,3 +918,4 @@ snd_baths_spring 3928 1 641 0
 snd_scream_warcry 3976 1 363 0 
 snd_drunken 4089 4 642 0 643 0 644 0 645 0 
 snd_drunken_win 4089 3 646 0 647 0 648 0 
+snd_chariot 1960 2 649 0 650 0 

@@ -27,14 +27,30 @@ float3 RGBtoHCV(in float3 RGB)
 	float4 P = (RGB.g < RGB.b) ? float4(RGB.bg, -1.0, 2.0/3.0) : float4(RGB.gb, 0.0, -1.0/3.0);
 	float4 Q = (RGB.r < P.x) ? float4(P.xyw, RGB.r) : float4(RGB.r, P.yzx);
 	float C = Q.x - min(Q.w, Q.y);
-	float H = abs((Q.w - Q.y) / (6 * C + Epsilon) + Q.z);
+	float H;
+	if (C < 1e-10) // Use a small threshold instead of checking for exact zero
+	{
+		H = 0.0;
+	}
+	else
+	{
+		H = abs((Q.w - Q.y) / (6 * C + Epsilon) + Q.z);
+	}
 	return float3(H, C, Q.x);
 }
 
 float3 RGBtoHSV(in float3 RGB)
 {
 	float3 HCV = RGBtoHCV(RGB);
-	float S = HCV.y / (HCV.z + Epsilon);
+	float S;
+	if (HCV.z < 1e-10) // Use a small threshold for black
+	{
+		S = 0.0;
+	}
+	else
+	{
+		S = HCV.y / (HCV.z + Epsilon);
+	}
 	return float3(HCV.x, S, HCV.z);
 }
 
@@ -196,7 +212,7 @@ float3 tonemapping(const float3 scene_color, const float2 luminanceAvgMax, const
 		{
 			float Lp = (exposure / lum_avg) * max(scene_color_exposed.r, max(scene_color_exposed.g, scene_color_exposed.b));
 			float LmSqr = lum_max; //(lum_max * lum_max) * (lum_max * lum_max);
-			float toneScalar = ( Lp * ( 1.0f + ( Lp / ( LmSqr ) ) ) ) / ( 1.0f + Lp );
+			float toneScalar = ( Lp * ( 1.0f + ( Lp / ( LmSqr + 0.00001 ) ) ) ) / ( 1.0f + Lp );
 
 			final_color = scene_color_exposed * toneScalar;
 		}
@@ -313,8 +329,15 @@ float4 ps_main_brightPass(uniform const bool with_luminance, float2 inTex: TEXCO
 		/*color.rgb = pow(color.rgb, BrightpassPostPower);
 		*/
 		float intensity = dot(color.rgb, float3(.5f, .5f, .5f));
-		float bloom_intensity = pow(intensity, BrightpassPostPower);
-		color.rgb = color.rgb * ( bloom_intensity/intensity );
+		if (intensity > 0.00001)
+		{
+			float bloom_intensity = pow(intensity, BrightpassPostPower);
+			color.rgb *= ( bloom_intensity / intensity );
+		}
+		else
+		{
+			color.rgb = 0.0; // If there's no intensity, there's no color.
+		}
 	}
 	else
 	{
@@ -443,7 +466,7 @@ float4 ps_main_postFX_AverageAvgMax(float2 texCoord: TEXCOORD0, uniform const bo
 	}
 	float _avg = _sum / 16;
 
-	float4 new_ret = float4(sqrt(_avg), _max, 0, 1);
+	float4 new_ret = float4(sqrt(max(0.0,_avg)), _max, 0, 1);
 
 	if(smooth)
 	{

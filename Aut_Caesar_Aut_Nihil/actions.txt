@@ -1284,10 +1284,10 @@
   50.000000 animation_circus_3 0 460 1342177280 0 0.0 0.0 0.0 0.0 
  stand_still 1024 67108959  1
   3.000000 stand_man_new3 50 50 1342177280 0 0.000000 0.000000 0.000000  0.250000 
- unused_human_anim_94 0 0  1
-  1.000000 anim_human 0 1 0 0 0.0 0.0 0.0 0.0 
- unused_human_anim_95 0 0  1
-  1.000000 anim_human 0 1 0 0 0.0 0.0 0.0 0.0 
+ chariot_rider 1024 67108928  1
+  16.000000 chariot_1 0 20 268435456 0 0.0 0.0 0.0 0.0 
+ dismount_chariot 17408 58720337  1
+  1.100000 anim_human 11103 11145 2 0 -0.500000 0.000000 0.000000  0.0 
  unused_human_anim_96 0 0  1
   1.000000 anim_human 0 1 0 0 0.0 0.0 0.0 0.0 
  unused_human_anim_97 0 0  1

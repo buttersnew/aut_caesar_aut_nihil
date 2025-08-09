@@ -1163,3 +1163,11 @@ g_presentation_obj_23
 g_player_honor
 g_praefect_bribe_amount
 g_selected_slave_price
+sky_box
+player_cart
+key_cart_right
+key_cart_left
+key_cart_forward
+key_cart_brake
+g_activate_chariot_cam
+g_player_chariot_agent

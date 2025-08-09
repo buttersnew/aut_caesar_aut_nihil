@@ -120,7 +120,7 @@ crucified_slave 1 crucified_slave 0.350000 0 0 0 0 0
 forest 1 forest 0.900000 0 0 0 0 0
 
 
-forest_palms 1 forest_palms 0.900000 0 0 0 0 0
+forest_palms 1 forest_palms 2.000000 0 0 0 0 0
 
 
 gaetulian_town 1 icon_gaetulian 0.340000 0 0 0 0 0

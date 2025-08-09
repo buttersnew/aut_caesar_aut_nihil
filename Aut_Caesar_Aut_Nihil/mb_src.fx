@@ -494,7 +494,7 @@ float4 calculate_point_lights_diffuse(const float3 vWorldPos, const float3 vWorl
 			float3 L = normalize(point_to_light);
 			float wNdotL = dot(vWorldN, L);
 
-			float fAtten = VERTEX_LIGHTING_SCALER / LD;
+			float fAtten = VERTEX_LIGHTING_SCALER / (LD + 1e-6f);
 			//compute diffuse color
 			if(face_like_NdotL) {
 				total += max(0.2f * (wNdotL + 0.9f), wNdotL) * vLightDiffuse[i] * fAtten;
@@ -521,7 +521,7 @@ float4 calculate_point_lights_specular(const float3 vWorldPos, const float3 vWor
 			float LD = dot(point_to_light, point_to_light);
 			float3 L = normalize(point_to_light);
 
-			float fAtten = VERTEX_LIGHTING_SPECULAR_SCALER / LD;
+			float fAtten = VERTEX_LIGHTING_SPECULAR_SCALER / (LD + 1e-6f);
 
 			float3 vHalf = normalize( vWorldView + L );
 			total += fAtten * vLightDiffuse[i] * pow( saturate(dot(vHalf, vWorldN)), fMaterialPower);
@@ -1151,7 +1151,7 @@ VS_OUTPUT_SHADOWMAP vs_main_shadowmap (float4 vPosition : POSITION, float3 vNorm
 {
 	VS_OUTPUT_SHADOWMAP Out;
 	Out.Pos = mul(matWorldViewProj, vPosition);
-	Out.Depth = Out.Pos.z/Out.Pos.w;
+	Out.Depth = Out.Pos.w > 0.0001f ? (Out.Pos.z / Out.Pos.w) : 0;
 
 	if (1)
 	{
@@ -1166,7 +1166,7 @@ VS_OUTPUT_SHADOWMAP vs_main_shadowmap_biased (float4 vPosition : POSITION, float
 {
 	VS_OUTPUT_SHADOWMAP Out;
 	Out.Pos = mul(matWorldViewProj, vPosition);
-	Out.Depth = Out.Pos.z/Out.Pos.w;
+	Out.Depth = Out.Pos.w > 0.0001f ? (Out.Pos.z / Out.Pos.w) : 0;
 
 	if (1)
 	{
@@ -1335,7 +1335,7 @@ VS_OUTPUT_CHARACTER_SHADOW vs_character_shadow (uniform const int PcfMode, float
 
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -1500,7 +1500,8 @@ PS_OUTPUT ps_main_water( VS_OUTPUT_WATER In, uniform const bool use_high, unifor
 	float4 tex;
 	if(apply_depth)
 	{
-		tex = tex2D(ReflectionTextureSampler, (0.25f * normal.xy) + float2(0.5f + 0.5f * (In.PosWater.x / In.PosWater.w), 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w)));
+		float xw_depth = In.PosWater.w > 0.0001f ? (In.PosWater.x / In.PosWater.w) : 0;
+		tex = tex2D(ReflectionTextureSampler, (0.25f * normal.xy) + float2(0.5f + 0.5f * xw_depth, 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w)));
 	}
 	else
 	{
@@ -1868,7 +1869,8 @@ PS_OUTPUT ps_parallax_water( VS_OUTPUT_PARALLAX_WATER In, uniform const bool use
 	float4 tex;
 	if(apply_depth)
 	{
-		tex = tex2D(ReflectionTextureSampler, (0.25f * normal.xy) + float2(0.5f + 0.5f * (In.PosWater.x / In.PosWater.w), 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w)));
+		float xw_depth = In.PosWater.w > 0.0001f ? (In.PosWater.x / In.PosWater.w) : 0;
+		tex = tex2D(ReflectionTextureSampler, (0.25f * normal.xy) + float2(0.5f + 0.5f * xw_depth, 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w)));
 	}
 	else
 	{
@@ -2177,7 +2179,8 @@ PS_OUTPUT ps_parallax_water2( VS_OUTPUT_PARALLAX_WATER In, uniform const bool us
 	float4 tex;
 	if(apply_depth)
 	{
-		tex = tex2D(ReflectionTextureSampler, (0.25f * normal.xy) + float2(0.5f + 0.5f * (In.PosWater.x / In.PosWater.w), 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w)));
+		float xw_depth = In.PosWater.w > 0.0001f ? (In.PosWater.x / In.PosWater.w) : 0;
+		tex = tex2D(ReflectionTextureSampler, (0.25f * normal.xy) + float2(0.5f + 0.5f * xw_depth, 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w)));
 	}
 	else
 	{
@@ -2581,7 +2584,7 @@ VS_OUTPUT vs_main(uniform const int PcfMode, uniform const bool UseSecondLight, 
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -2642,7 +2645,7 @@ VS_OUTPUT vs_main_Instanced(uniform const int PcfMode, uniform const bool UseSec
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -2861,7 +2864,7 @@ VS_OUTPUT_ICON_SEASONAL vs_main_icon_seasonal(uniform const int PcfMode, uniform
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -3046,7 +3049,7 @@ VS_OUTPUT_SEA_FOAM vs_main_sea_foam(uniform const int PcfMode, uniform const boo
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -3165,7 +3168,7 @@ VS_OUTPUT_BUMP vs_main_bump (uniform const int PcfMode, float4 vPosition : POSIT
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -3509,7 +3512,7 @@ VS_OUTPUT_BUMP vs_main_bump_bark (uniform const int PcfMode, float4 vPosition : 
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -3808,7 +3811,7 @@ VS_OUTPUT_PARALLAX vs_main_parallax (uniform const int PcfMode, float4 vPosition
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -4320,7 +4323,7 @@ VS_OUTPUT_ENVMAP_SPECULAR vs_envmap_specular(uniform const int PcfMode, float4 v
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -4424,7 +4427,7 @@ VS_OUTPUT_ENVMAP_SPECULAR vs_envmap_specular_Instanced(uniform const int PcfMode
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -4625,19 +4628,19 @@ PS_OUTPUT ps_main_bump_interior( VS_OUTPUT_BUMP_DYNAMIC In)
 	float LD = dot(In.vec_to_light_0.xyz,In.vec_to_light_0.xyz);
 	float3 L = normalize(In.vec_to_light_0.xyz);
 	float wNdotL = dot(normal, L);
-	total_light += saturate(wNdotL) * vLightDiffuse[iLightIndices[0]] /(LD);
+	total_light += saturate(wNdotL) * vLightDiffuse[iLightIndices[0]] / (LD + 1e-6f);
 
 //	LD = In.vec_to_light_1.w;
 	LD = dot(In.vec_to_light_1.xyz,In.vec_to_light_1.xyz);
 	L = normalize(In.vec_to_light_1.xyz);
 	wNdotL = dot(normal, L);
-	total_light += saturate(wNdotL) * vLightDiffuse[iLightIndices[1]] /(LD);
+	total_light += saturate(wNdotL) * vLightDiffuse[iLightIndices[1]] / (LD + 1e-6f);
 
 //	LD = In.vec_to_light_2.w;
 	LD = dot(In.vec_to_light_2.xyz,In.vec_to_light_2.xyz);
 	L = normalize(In.vec_to_light_2.xyz);
 	wNdotL = dot(normal, L);
-	total_light += saturate(wNdotL) * vLightDiffuse[iLightIndices[2]] /(LD);
+	total_light += saturate(wNdotL) * vLightDiffuse[iLightIndices[2]] / (LD + 1e-6f);
 	#endif
 
 //	Output.RGBColor = saturate(total_light * 0.6f) * 1.66f;
@@ -4730,7 +4733,7 @@ PS_OUTPUT ps_main_bump_interior_new( VS_OUTPUT_BUMP_DYNAMIC_NEW In, uniform cons
 
 
 	//	float LD = In.vec_to_light_0.w;
-	float LD_0 = saturate(1.0f / dot(In.vec_to_light_0.xyz,In.vec_to_light_0.xyz));
+	float LD_0 = saturate(1.0f / (dot(In.vec_to_light_0.xyz, In.vec_to_light_0.xyz) + 1e-6f));
 	float3 L_0 = normalize(In.vec_to_light_0.xyz);
 	float wNdotL_0 = dot(normal, L_0);
 	total_light += saturate(wNdotL_0) * vLightDiffuse[ iLightIndices[0] ] * (LD_0);
@@ -4950,7 +4953,7 @@ VS_OUTPUT_STANDART vs_main_standart (uniform const int PcfMode, uniform const bo
 		Out.PointLightDir.xyz = mul(TBNMatrix, normalize(point_to_light));
 
 		float LD = dot(point_to_light, point_to_light);
-		Out.PointLightDir.a = saturate(1.0f/LD);	//prevent bloom for 1 meters
+		Out.PointLightDir.a = saturate(1.0f/(LD + 1e-6f));	//prevent bloom for 1 meters
 		#endif
 
 		float3 viewdir = normalize(vCameraPos.xyz - vWorldPos.xyz);
@@ -4985,7 +4988,7 @@ VS_OUTPUT_STANDART vs_main_standart (uniform const int PcfMode, uniform const bo
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -5133,7 +5136,7 @@ VS_OUTPUT_STANDART vs_main_standart_Instanced (uniform const int PcfMode, unifor
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -5368,7 +5371,7 @@ VS_OUTPUT_STANDART vs_main_standart_sails (uniform const int PcfMode, uniform co
 		float4 vWorldPos2 = mul(matWorld, vPos_without_movement);
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -6290,7 +6293,7 @@ VS_OUTPUT_SIMPLE_HAIR vs_hair (uniform const int PcfMode, float4 vPosition : POS
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -6421,7 +6424,7 @@ VS_OUTPUT_HAIR vs_hair_aniso (uniform const int PcfMode, VS_INPUT_HAIR In)
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -6478,7 +6481,7 @@ VS_OUTPUT_HAIR vs_hair_aniso_static (uniform const int PcfMode, VS_INPUT_HAIR In
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -6646,7 +6649,7 @@ VS_OUTPUT_SIMPLE_FACE vs_face (uniform const int PcfMode, float4 vPosition : POS
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -6769,7 +6772,7 @@ VS_OUTPUT_STANDART vs_main_standart_face_mod (uniform const int PcfMode,
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 	}
@@ -7081,7 +7084,7 @@ VS_OUTPUT vs_main_skin (float4 vPosition : POSITION, float3 vNormal : NORMAL, fl
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -7183,7 +7186,7 @@ VS_OUTPUT_FLORA vs_flora(uniform const int PcfMode, float4 vPosition : POSITION,
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 	}
@@ -7228,7 +7231,7 @@ VS_OUTPUT_FLORA vs_flora_Instanced(uniform const int PcfMode, float4 vPosition :
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 	}
@@ -7367,7 +7370,7 @@ VS_OUTPUT_FLORA vs_grass(uniform const int PcfMode, float4 vPosition : POSITION,
 		Out.SunLight = (vSunColor * 0.55f) * vMaterialColor * vColor;
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 	}
@@ -7563,7 +7566,7 @@ VS_OUTPUT_FLORA_SEASON vs_flora_season(uniform const int PcfMode, float4 vPositi
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 	}
@@ -7767,7 +7770,7 @@ VS_OUTPUT_FLORA_SEASON vs_flora_season_grass(uniform const int PcfMode, float4 v
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 	}
@@ -7982,7 +7985,7 @@ VS_OUTPUT_FLORA_MAP vs_flora_map(uniform const int PcfMode, float4 vPosition : P
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 	}
@@ -8214,7 +8217,7 @@ VS_OUTPUT_NEW_MAP vs_new_map(uniform const int PcfMode, float4 vPosition : POSIT
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -8495,7 +8498,7 @@ VS_OUTPUT_MAP vs_main_map(uniform const int PcfMode, float4 vPosition : POSITION
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -8604,7 +8607,7 @@ VS_OUTPUT_MAP_BUMP vs_main_map_bump(uniform const int PcfMode, float4 vPosition 
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -8724,7 +8727,7 @@ VS_OUTPUT_MAP_BUMP_BEACH vs_main_map_bump_beach(uniform const int PcfMode, float
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -8844,7 +8847,7 @@ VS_OUTPUT_MAP_MOUNTAIN vs_map_mountain(uniform const int PcfMode, float4 vPositi
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -8958,7 +8961,7 @@ VS_OUTPUT_MAP_MOUNTAIN_BUMP vs_map_mountain_bump(uniform const int PcfMode, floa
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -9531,7 +9534,10 @@ PS_OUTPUT ps_map_water_new(uniform const bool reflections, VS_OUTPUT_MAP_WATER_N
 	Output.RGBColor = 0.01f * NdotL * In.LightDif;
 
 	float3 vView = normalize(In.CameraDir);
-	float2 reflectcoords = (0.25f * normal.xy) + float2(0.5f + 0.5f * (In.PosWater.x / In.PosWater.w), 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w));
+
+	float xw_depth = In.PosWater.w > 0.0001f ? (In.PosWater.x / In.PosWater.w) : 0;
+
+	float2 reflectcoords = (0.25f * normal.xy) + float2(0.5f + 0.5f * xw_depth, 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w));
 	float4	tex = tex2D(ReflectionTextureSampler,reflectcoords);
 	INPUT_OUTPUT_GAMMA(tex.rgb);
 
@@ -9777,7 +9783,10 @@ PS_OUTPUT ps_map_water_river_new(uniform const bool reflections, VS_OUTPUT_MAP_W
 	Output.RGBColor = 0.01f * NdotL * In.LightDif;
 
 	float3 vView = normalize(In.CameraDir);
-	float2 reflectcoords = (0.25f * normal.xy) + float2(0.5f + 0.5f * (In.PosWater.x / In.PosWater.w), 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w));
+
+	float xw_depth = In.PosWater.w > 0.0001f ? (In.PosWater.x / In.PosWater.w) : 0;
+
+	float2 reflectcoords = (0.25f * normal.xy) + float2(0.5f + 0.5f * xw_depth, 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w));
 	float4	tex = tex2D(ReflectionTextureSampler,reflectcoords);
 	INPUT_OUTPUT_GAMMA(tex.rgb);
 
@@ -10139,8 +10148,8 @@ PS_OUTPUT ps_main_ocean( VS_OUTPUT_OCEAN In )
 
 	float NdotL = saturate(dot(normal, In.LightDir));
 
-
-	float4 tex = tex2D(ReflectionTextureSampler, 0.5f * normal.xy + float2(0.5f + 0.5f * (In.PosWater.x / In.PosWater.w), 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w)));
+	float xw_depth = In.PosWater.w > 0.0001f ? (In.PosWater.x / In.PosWater.w) : 0;
+	float4 tex = tex2D(ReflectionTextureSampler, 0.5f * normal.xy + float2(0.5f + 0.5f * xw_depth, 0.5f - 0.5f * (In.PosWater.y / In.PosWater.w)));
 	INPUT_OUTPUT_GAMMA(tex.rgb);
 
 	Output.RGBColor = 0.01f * NdotL * In.LightDif;
@@ -10234,7 +10243,7 @@ VS_OUTPUT_FLORA vs_flora_billboards(uniform const int PcfMode,
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -10285,7 +10294,7 @@ VS_OUTPUT_BUMP vs_main_bump_billboards (uniform const int PcfMode, float4 vPosit
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
@@ -10372,7 +10381,7 @@ VS_OUTPUT vs_mtarini_waterfall (uniform const int PcfMode, uniform const bool Us
 	{
 		float4 ShadowPos = mul(matSunViewProj, vWorldPos);
 		Out.ShadowTexCoord = ShadowPos;
-		Out.ShadowTexCoord.z /= ShadowPos.w;
+		Out.ShadowTexCoord.z = ShadowPos.w > 0.0001f ? (Out.ShadowTexCoord.z / ShadowPos.w) : 0;
 		Out.ShadowTexCoord.w = 1.0f;
 		Out.ShadowTexelPos = Out.ShadowTexCoord * fShadowMapSize;
 		//shadow mapping variables end
