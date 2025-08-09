@@ -54910,6 +54910,31 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ]),
 ]),
 
+("rhodogune_temple",0,
+  "You see an ancient temple in the distance.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cave"),
+  ],[
+    ("op3",[
+    ],"Explore.",[
+      (set_jump_mission, "mt_explore_secret_place"),
+      (modify_visitors_at_site, "scn_rhodogune_temple"),
+      (reset_visitors),
+      (set_jump_entry, 0),
+      (try_begin),
+        (check_quest_active, "qst_rhodogune"),
+        (neg|quest_slot_ge, "qst_rhodogune", slot_quest_current_state, 2),
+        (set_visitor, 1, "trp_dj_pence"),
+      (try_end),
+      (jump_to_scene, "scn_rhodogune_temple"),
+      (change_screen_mission),
+    ],"Leave the kurgan."),
+    ("op2",[
+    ],"Leave.",[
+      (change_screen_map),
+    ]),
+]),
+
 ("kurgan_enter",0,
   "You see a burial mound in the distance.",
   "none",[

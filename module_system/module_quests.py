@@ -560,6 +560,9 @@ quests = [
   ("zarinaia", "Special Quest: Zarinaia, the golden one", 0,
   "{!}placeholder."
   ),
+  ("rhodogune", "Special Quest: Vow of the unbound hair", 0,
+  "{!}placeholder."
+  ),
   ("werdheri", "Special Quest: The suffering of Werdheri", 0,
   "{!}placeholder."
   ),

@@ -529,4 +529,5 @@ p_sartemis = 527
 p_island = 528
 p_langobard_landing = 529
 p_kurgan = 530
-p_vally_of_kings = 531
+p_temple_of_rhodogune = 531
+p_vally_of_kings = 532

@@ -5359,6 +5359,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["bonus_chest_20","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_book_poop],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_21","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt,itm_didos_underwear],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_22","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_sling_david,itm_sling_rock1],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_23","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_silver],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 
 ["household_possessions","{!}household_possessions","{!}household_possessions",tf_hero|tf_inactive|tf_is_merchant, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 
@@ -6798,6 +6799,10 @@ attrib_level_12,wp(100),knows_level_12,0x000000003f00b04549981ff8e0e978b90000000
 ["zarinaia","Zarinaia","Zarinaia",tf_female|tf_hero,0,0,fac_commoners,
 [itm_saka_dress,itm_saka_crown],
 attrib_level_12,wp(100),knows_level_12,0x00000000000c731307d106390c6606ec00000000001c45330000000000000000],
+
+["dj_pence","D.J. Pence","D.J. Pence",tf_male|tf_hero,0,0,fac_commoners,
+[itm_caligea, itm_generic_poor2,itm_dagger_parthian_1],
+hero_attrib,wp(500),knows_hero,0x000000017f0911487e3b9d2488eff53400000000001fa9f80000000000000000],
 
 # wlod 4
 ["han_footman", "Han Archer", "Han Archer", tf_male|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet|tf_guarantee_ranged, no_scene, reserved, fac_commoners,

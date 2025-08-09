@@ -32372,6 +32372,20 @@ mission_templates = [
     (5,mtef_visitor_source,af_override_horse,0,1,[]),
   ], p_wetter + storms + global_common_triggers +
   [
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent_no"),
+      (agent_is_active, ":dead_agent_no"),
+      (neg|agent_is_non_player, ":dead_agent_no"),#player
+      (display_message, "@You lost money!", color_terrible_news),
+      (troop_remove_gold, "trp_player", 250),
+    ]),
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent_no"),
+      (agent_is_active, ":dead_agent_no"),
+      (agent_get_troop_id, ":troop_id", ":dead_agent_no"),#player
+      (eq, ":troop_id", "trp_dj_pence"),
+      (set_trigger_result, 1),# force kill
+    ]),
     cannot_spawn_commoners,
     (0, 0, ti_once, [],[
       (mission_cam_set_screen_color, 0xFF000000),

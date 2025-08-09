@@ -674,7 +674,7 @@ horse_speed(50)|horse_maneuver(40)|horse_charge(80)|horse_scale(105),imodbits_ho
         (call_script, "script_init_chariot_item", "spr_basic_chariot_b"),
     ]),
 ],[]],
-["quadriga_chariot_horse","Currus Triumphalis (Four Horses of a Triumphator)", [("quadriga_chariot",0)], itp_type_horse|itp_unique, 0,
+["quadriga_chariot_horse","Currus Triumphalis (Rich Four Horse Chariot)", [("quadriga_chariot",0)], itp_type_horse|itp_unique, 0,
 150000,abundance(70)|hit_points(200)|body_armor(0)|difficulty(0)|
 horse_speed(50)|horse_maneuver(40)|horse_charge(80)|horse_scale(105),imodbits_horse_basic,[
     (ti_on_init_item, [
@@ -6269,7 +6269,7 @@ itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 ]],
 
 # legendary javelin
-["jupiters_throwing_spear", "Jupiter'S Thunder", [("roman_jav",0)], itp_extra_penetration|itp_unique|itp_type_thrown|itp_primary|itp_secondary|itp_bonus_against_shield|itp_crush_through, itcf_throw_javelin,
+["jupiters_throwing_spear", "Jupiter's Thunder", [("roman_jav",0)], itp_extra_penetration|itp_unique|itp_type_thrown|itp_primary|itp_secondary|itp_bonus_against_shield|itp_crush_through, itcf_throw_javelin,
 50000, abundance(80)|weight(3)|difficulty(5)|spd_rtng(90)|shoot_speed(25) | thrust_damage(100 ,  pierce)|max_ammo(1)|weapon_length(85)|accuracy(99),imodbits_thrown, [],
 []],
 

@@ -503,6 +503,7 @@ scenes = [
   ("battle_persian_hills_green_3", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000012201907e300599a6400000175000056a60000146c",[], [], "outer_terrain_steppe_3"),
   ("battle_persian_hills_green_4", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000012201907e300599a64000067d400001d0d000014bc",[], [], "outer_terrain_steppe_3"),
   ("battle_persian_hills_green_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000012201907e300599a64000001eb000014bc0000411e",[], [], "outer_terrain_steppe_3"),
+  ("battle_persian_hills_green_6", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000023000050000087a1b000030dc00007b34000040d5",[], [], "outer_terrain_steppe_3"),
 
   ("battle_italian_greek", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000247c4caa3000982610000689f00000bda00002412 ",[], [], "outer_terrain_plain_2"),
   ("battle_italian_greek_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000124a1907e300599a6400001dc2000050d600002850 ",[], [], "outer_terrain_plain_2"),
@@ -1177,5 +1178,8 @@ scenes = [
   ("luparnium", sf_indoors, "lupanar", "bo_lupanar", (-100, -100), (100, 100), -100, "0",[], []),
 
   ("ruins_of_carthage", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0x0000000040000532000741d00000705300003aad00000ac4", [], ["bonus_chest_21"], "outer_terrain_beach_desert_flat"),
+
+  ("rhodogune_temple", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000023000050000087a1b000030dc00007b34000040d5",[], ["bonus_chest_23"], "outer_terrain_steppe_3"),
+
 ]#end of file
 #

@@ -588,6 +588,7 @@ parties = [
 
 ("langobard_landing", "Lugian Camp", icon_forest|pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-80.5,150.9), [], 90),
 ("kurgan", "Old burial mound", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (276.077, 90.409), [(trp_saka_amazon, 100, 0)], 135),
+("temple_of_rhodogune", "Ruins of Zamb", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (163.638, 14.726), [], 105),
 
 ("vally_of_kings", "Valley of the Kings", icon_valley_of_kings_combined|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (72.67, -124.38), []),
 ]
