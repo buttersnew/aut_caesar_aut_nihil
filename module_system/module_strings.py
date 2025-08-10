@@ -7058,7 +7058,7 @@ strings = [
 ("s24_coma_s21", "{s24}, {s21}"),
 ("s17_and_s67", "{s17} and {s67}"),
 ("s17_coma_s67", "{s17}, {s67}"),
-("nobles_at_hall", "{reg0?Nobles at hall {reg0}.{reg1? Commanders {reg1} ({s67}).:} {reg2?Ladies {reg2} ({s19}).:}:}{reg4? pretenders to the throne {reg4} ({s21}).:} {reg3?Heroes {reg3} ({s20}).:}"),
+("nobles_at_hall", "{reg0?Nobles at hall {reg0}.{reg1? Commanders {reg1} ({s67}).:} {reg2?Ladies {reg2} ({s19}).:}:} {reg3?Heroes {reg3} ({s20}).:}"),
 
 ###########
 ### NEW OPTIONS MENUS strings

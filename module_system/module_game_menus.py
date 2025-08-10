@@ -14319,7 +14319,9 @@ game_menus = [
 ("town",mnf_enable_hot_keys|mnf_scale_picture,
   "{s10} {s14}^{s11}{s12}{s13}^{s16}^^{s44}^{s43}",
   "none",[
+    (display_message, "@Hi"),
     # initialize strings
+    (str_clear, s0),
     (str_clear, s10),
     (str_clear, s14),
     (str_clear, s11),
