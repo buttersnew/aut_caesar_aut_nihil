@@ -2877,7 +2877,6 @@ scripts_hardcoded = [
     (party_set_slot,"p_castle_24", slot_town_prison, "scn_londinium_prison"),#Mogontiacum
     (party_set_slot,"p_castle_34", slot_castle_exterior, "scn_castellum"),#?
 
-    (party_set_slot,"p_castle_9", slot_castle_exterior, "scn_castellum"),#?
     (party_set_slot,"p_castle_4", slot_castle_exterior, "scn_castellum"),#?
 
     (party_set_slot,"p_castle_20", slot_castle_exterior, "scn_castellum"),#?

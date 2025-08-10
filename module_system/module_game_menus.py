@@ -57031,7 +57031,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("op1",[],"Continue.",[
       (add_xp_as_reward, 500),
       (scene_set_slot, "scn_labyrinth", slot_scene_visited, 2),
-      (troop_add_item, "trp_player", "itm_ancient_axe", imodbit_heavy),
+      (troop_add_item, "trp_player", "itm_ancient_axe", 0),
       (troop_add_item, "trp_player", "itm_minotaur_armor", 0),
       (change_screen_map),
     ]),

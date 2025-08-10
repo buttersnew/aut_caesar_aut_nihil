@@ -3446,7 +3446,7 @@ scene_props = [
       (prop_instance_dynamics_set_properties, ":instance_no", pos10),
 
       (try_begin),
-        (scene_slot_eq, ":instance_no", slot_scene_prop_init, 0),
+        (scene_prop_slot_eq, ":instance_no", slot_scene_prop_init, 0),
         (scene_prop_set_slot, ":instance_no", slot_attached_horse, -1),
       (try_end),
     ]),
@@ -3489,7 +3489,7 @@ scene_props = [
       (prop_instance_dynamics_set_properties, ":instance_no", pos10),
 
       (try_begin),
-        (scene_slot_eq, ":instance_no", slot_scene_prop_init, 0),
+        (scene_prop_slot_eq, ":instance_no", slot_scene_prop_init, 0),
         (scene_prop_set_slot, ":instance_no", slot_attached_horse, -1),
       (try_end),
     ]),
@@ -3532,7 +3532,7 @@ scene_props = [
       (prop_instance_dynamics_set_properties, ":instance_no", pos10),
 
       (try_begin),
-        (scene_slot_eq, ":instance_no", slot_scene_prop_init, 0),
+        (scene_prop_slot_eq, ":instance_no", slot_scene_prop_init, 0),
         (scene_prop_set_slot, ":instance_no", slot_attached_horse, -1),
       (try_end),
     ]),

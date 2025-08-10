@@ -6270,7 +6270,7 @@ itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 
 # legendary javelin
 ["jupiters_throwing_spear", "Jupiter's Thunder", [("roman_jav",0)], itp_extra_penetration|itp_unique|itp_type_thrown|itp_primary|itp_secondary|itp_bonus_against_shield|itp_crush_through, itcf_throw_javelin,
-50000, abundance(80)|weight(3)|difficulty(5)|spd_rtng(90)|shoot_speed(25) | thrust_damage(100 ,  pierce)|max_ammo(1)|weapon_length(85)|accuracy(99),imodbits_thrown, [],
+50000, abundance(80)|weight(3)|difficulty(8)|spd_rtng(90)|shoot_speed(25) | thrust_damage(100 ,  pierce)|max_ammo(1)|weapon_length(85)|accuracy(99),imodbits_thrown, [],
 []],
 
 
