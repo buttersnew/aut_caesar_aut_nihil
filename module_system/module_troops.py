@@ -7188,7 +7188,11 @@ upgrade2(troops,"mountain_bandit","judean_light_clubman", "judean_light_spearman
 # upgrade(troops,"mercenary_horseman","mercenary_cavalry")
 
 upgrade2(troops,"bandit","brigand","mercenary_swordsman")
-# upgrade2(troops,"egyptian_infantry_light","egyptian_infantry_heavy","egyptian_archers")
+
+upgrade2(troops,"egyptian_infantry_light","egyptian_infantry_heavy","egyptian_archers")
+upgrade(troops,"egyptian_town_walker","egyptian_infantry_light")
+upgrade(troops,"egyptian_peasant","egyptian_infantry_light")
+upgrade(troops,"egyptian_village_walker","egyptian_infantry_light")
 
 # upgrade(troops,"manhunter","slave_driver")
 
@@ -7228,7 +7232,7 @@ upgrade(troops,"slave_greek","slave_warrior")
 upgrade(troops,"slave_illyrian","slave_warrior")
 upgrade(troops,"slave_hispanic","slave_warrior")
 upgrade(troops,"slave_gaul","slave_warrior")
-upgrade(troops,"slave_egyptian","slave_warrior")
+upgrade(troops,"slave_egyptian","egyptian_infantry_light")
 upgrade(troops,"slave_syrian","slave_warrior")
 upgrade(troops,"slave_eastern","slave_warrior")
 
