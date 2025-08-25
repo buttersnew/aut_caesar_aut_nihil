@@ -1,1 +1,1 @@
-1.0.0.4-publicbeta
+1.0.0.5-publicbeta

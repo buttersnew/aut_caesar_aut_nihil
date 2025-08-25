@@ -8319,7 +8319,7 @@ itemsfile version 3
 1
 -51.000000  1 600 1 1152921504606847022 
 
- itm_jupiters_throwing_spear Jupiter's_Thunder Jupiter's_Thunder 1  roman_jav 0  17596560707594 262144 50000 4398046781448 3.000000 80 0 0 99 5 0 90 25 85 1 356 0
+ itm_jupiters_throwing_spear Jupiter's_Thunder Jupiter's_Thunder 1  roman_jav 0  17596560707594 262144 50000 4398046781448 3.000000 80 0 0 99 8 0 90 25 85 1 356 0
  0
 0
 

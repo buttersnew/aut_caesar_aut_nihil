@@ -1,4 +1,4 @@
-5444
+5448
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -5443,3 +5443,7 @@ qstr_Hint:_The_treasure_i Hint:_The_treasure_is_hidden_somewhere_in_a_chest_in_t
 qstr_You_lost_money! You_lost_money!
 qstr_This_throwing_spear_ This_throwing_spear_surrounds_a_powerful_aura.
 qstr_This_throwing_spear_s This_throwing_spear_surrounds_a_powerful_aura.^According_to_legend,_Rhodogune_used_this_spear_to_crush_a_revolt_in_Media.^Braided_hair_is_tied_just_below_the_head.
+qstr_Hi Hi
+qstr_male_slot_{reg4}_fi male_slot_{reg4},_final_amount_male_{reg1},_female_slot_{reg3},_final_amount_female_{reg2}
+qstr_Bring_200000_denars Bring_200,000_denars,_10_female_Syrian_and_10_male_Greek_slaves_to_the_strange_woman_living_in_the_hanging_gardens.
+qstr_ERROR:_Quest_failed_ ERROR:_Quest_failed_due_to_quest_giver_becoming_player.

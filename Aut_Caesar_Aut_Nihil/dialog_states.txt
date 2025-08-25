@@ -65,11 +65,12 @@ scorpus_sell_veneta
 scorpus_complete_sale_russata
 scorpus_complete_sale_veneta
 slaver_talk
+slaver_talk_explain
+slaver_pretalk
 slaver_talk_sell
 slaver_talk_sell_options
 slaver_talk_sell_all_confirm
 slaver_talk_sell_individual_start
-slaver_pretalk
 slaver_talk_sell_all_finalize
 slaver_action_sold_all
 slaver_buy_slaves_start

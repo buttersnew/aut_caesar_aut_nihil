@@ -4974,7 +4974,7 @@ str_s24_and_s21 {s24}_and_{s21}
 str_s24_coma_s21 {s24},_{s21}
 str_s17_and_s67 {s17}_and_{s67}
 str_s17_coma_s67 {s17},_{s67}
-str_nobles_at_hall {reg0?Nobles_at_hall_{reg0}.{reg1?_Commanders_{reg1}_({s67}).:}_{reg2?Ladies_{reg2}_({s19}).:}:}{reg4?_pretenders_to_the_throne_{reg4}_({s21}).:}_{reg3?Heroes_{reg3}_({s20}).:}
+str_nobles_at_hall {reg0?Nobles_at_hall_{reg0}.{reg1?_Commanders_{reg1}_({s67}).:}_{reg2?Ladies_{reg2}_({s19}).:}:}_{reg3?Heroes_{reg3}_({s20}).:}
 str_dplmc_setting_2 High
 str_dplmc_setting_1 Medium
 str_dplmc_setting_0 Low
