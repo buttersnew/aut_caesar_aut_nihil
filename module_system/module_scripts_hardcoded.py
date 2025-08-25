@@ -45,7 +45,7 @@ scripts_hardcoded = [
     (troop_set_slot, "trp_household_villa", slot_troop_spouse, "scn_domus_mare_interior"),#for domus mare scene upgrade
 
     (assign, reg62, 0),#used for script_view_party_members
-    (quest_set_slot, "qst_olympic_games", slot_quest_dont_give_again_remaining_days, 1),
+    (quest_set_slot, "qst_olympic_games", slot_quest_dont_give_again_remaining_days, 204),
 
     (call_script, "script_update_party_creation_random_limits"),
 
@@ -2248,12 +2248,12 @@ scripts_hardcoded = [
     (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_archer, "trp_germanic_slinger"),
     (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_1_cavalry, "trp_germanic_cavalry"),
     (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_cavalry, "trp_germanic_berserker"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_infantry, "trp_eastern_light_axeman"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_infantry, "trp_eastern_heavy_inf"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_archer, "trp_eastern_slinger"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_archer, "trp_eastern_light_archer"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_cavalry, "trp_eastern_horsearcher"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_cavalry, "trp_eastern_medium_horseman"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_infantry, "trp_syrian_spearman"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_infantry, "trp_syrian_spearman_vet"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_archer, "trp_syrian_archer"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_archer, "trp_syrian_archer_vet"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_cavalry, "trp_syrian_horsearcher_vet"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_cavalry, "trp_syrian_heavy_cav_vet"),
     (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_infantry, "trp_eastern_heavy_inf"),
     (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_infantry, "trp_eastern_heavy_spearman"),
     (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_archer, "trp_eastern_skrimisher"),

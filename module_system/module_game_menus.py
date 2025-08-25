@@ -2652,6 +2652,7 @@ game_menus = [
     ]),
     ("action_modify_factions_color",[],"Change faction colors.",[
       (assign, "$g_presentation_state", recolor_kingdom),
+      (assign, "$g_presentation_next_presentation", -1),
       (assign, "$temp", 0),
       (try_begin),
           (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
@@ -6097,7 +6098,7 @@ game_menus = [
       (leave_encounter),
       (change_screen_return),
     ]),
-    ("encounter_leave",[
+    ("encounter_leave_freelancer",[
       (neq, "$player_ambushed",1),
       (gt, "$enlisted_party",-1),
       (call_script, "script_party_count_fit_for_battle", "$g_enemy_party"),
@@ -6105,8 +6106,11 @@ game_menus = [
     ],"Leave. [Try to end current battle.]",[
       (leave_encounter),
       (change_screen_return),
-      (party_leave_cur_battle, "$enlisted_party"),
-      (party_relocate_near_party, "$enlisted_party", "$g_enemy_party", 3),
+      (try_begin),
+        (party_is_active, "$enlisted_party"),
+        (party_leave_cur_battle, "$enlisted_party"),
+        (party_relocate_near_party, "$enlisted_party", "$g_enemy_party", 3),
+      (try_end),
     ]),
     ("encounter_leave",[
       (neq, "$player_ambushed",1),
@@ -53633,11 +53637,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
      ]
 ),
-(
-    "freelancer_task_patrol",0,
-    "As the patrol round a bend in the path, you see an opposing party lined up to meet you. It is too late to retreat. Missiles rain down around you. It's time for a fight.",
-    "none",
-    [
+("freelancer_task_patrol",0,
+  "As the patrol round a bend in the path, you see an opposing party lined up to meet you. It is too late to retreat. Missiles rain down around you. It's time for a fight.",
+  "none",[
 
     (set_background_mesh, "mesh_pic_charge"),
 
@@ -53737,27 +53739,25 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
    # (str_store_troop_name_plural, s2, "$temp1"),
     (store_random_in_range, "$temp2", 20, 31),
-      ],
-    [
-      ("continue",[],"Fight.",
-      [
-        (assign, "$g_arena_training_kills", 0),
-        (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
-        (assign, "$talk_context", 0),#fix a possible bug
-        (call_script, "script_setup_random_scene_native"),
-        (assign,":scene_to_use", reg0),
-        (jump_to_scene, ":scene_to_use"),
-        (modify_visitors_at_site,":scene_to_use"),
-        (reset_visitors),
-        (set_visitor, 0, "trp_player"),
-        (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
-        (troop_get_slot, ":legion", ":lord", slot_troop_legion),
-        (store_add, ":troop", ":legion", "trp_eastern_elite_infantry_vet"),
-        (set_visitors, 0, ":troop", 21),
-        (set_visitors, 3, "$temp1", "$temp2"),
-        (set_jump_mission, "mt_freelancer_mission_bandit"),
-        (change_screen_mission),
-      ]),
+  ],[
+    ("continue",[],"Fight.",[
+      (assign, "$g_arena_training_kills", 0),
+      (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
+      (assign, "$talk_context", 0),#fix a possible bug
+      (call_script, "script_setup_random_scene_native"),
+      (assign,":scene_to_use", reg0),
+      (jump_to_scene, ":scene_to_use"),
+      (modify_visitors_at_site,":scene_to_use"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+      (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
+      (troop_get_slot, ":legion", ":lord", slot_troop_legion),
+      (store_add, ":troop", ":legion", "trp_eastern_elite_infantry_vet"),
+      (set_visitors, 0, ":troop", 21),
+      (set_visitors, 3, "$temp1", "$temp2"),
+      (set_jump_mission, "mt_freelancer_mission_bandit"),
+      (change_screen_mission),
+    ]),
 ]),
 
 ("freelancer_task_tribute_fight",0,
