@@ -36032,39 +36032,26 @@ game_menus = [
       ]),
 	],
   ),
-  (
-    "vally_of_kings",0,
-    "The valley stands on the west bank of the Nile, opposite Thebes. Many pharaohs have been buried in the valley. \
- Rumors say the tombs are full of treasures. Thus, many grave robbers tried their luck to search for them. \
- But legends say everybody, who disturbs the mummy of a pharaoh is cased by a curse! Beware, as anybody who has entered a tomb never left it alive...",
-    "none",
-    [
 
-      ],
-    [
-      ("answere_1",[
-	  ],
-	  "Explore.",
-	  [
+("vally_of_kings",0,
+  "The valley stands on the west bank of the Nile, opposite Thebes. Many pharaohs have been buried in the valley. Rumors say the tombs are full of treasures. Thus, many grave robbers tried their luck to search for them. But legends say everybody, who disturbs the mummy of a pharaoh is cased by a curse! Beware, as anybody who has entered a tomb never left it alive...",  "none",[
+  ],[
+  ("answere_1",[],"Explore.",[
 	  (modify_visitors_at_site, "scn_vally_of_kings"),
 	  (reset_visitors),
 	  (set_jump_entry, 0),
-    (set_visitors,1,"trp_hired_blade", 3),
-    (set_visitors,2,"trp_hired_blade", 2),
-    (set_visitors,3,"trp_hired_blade", 2),
-
+    (set_visitors,1,"trp_egyptian_infantry_light", 3),
+    (set_visitors,2,"trp_egyptian_infantry_heavy", 2),
+    (set_visitors,3,"trp_egyptian_archers", 4),
+    (set_visitors,3,"trp_egyptian_infantry_heavy", 2),
 	  (set_jump_mission, "mt_visit_vally_of_kings"),
 	  (jump_to_scene, "scn_vally_of_kings"),
 	  (change_screen_mission),
-      ]),
-      ("answere_2",[
-	  ],
-	  "Leave.",
-	  [
+  ]),
+  ("answere_2",[],"Leave.",[
 		(change_screen_map),
-      ]),
-	],
-  ),
+  ]),
+]),
 
 ("sartemis",0,
   "Behind the ruins of the old city of Babylon you spot a large palace, overgrown with all kinds of plants. This must be the legendary hanging gardens of Semiramis.",
