@@ -5166,10 +5166,10 @@ simple_triggers = [
         (try_end),
 
         (call_script, "script_get_labour_slave_skill_modifier", "$cur_village_weekly_on_average", "skl_power_strike"),
-        (assign, ":weighted_number_slaves_mining"),
+        (assign, ":weighted_number_slaves_mining", reg0),
 
         (call_script, "script_get_labour_slave_skill_modifier", "$cur_village_weekly_on_average", "skl_athletics"),
-        (assign, ":weighted_number_slaves_field"),
+        (assign, ":weighted_number_slaves_field", reg0),
 
         (assign, ":wealth_field", 10),
         (assign, ":wealth_mine", 5),

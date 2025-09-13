@@ -18465,12 +18465,13 @@ scripts = scripts_hardcoded + [
     (val_add, "$player_honor", ":honor_dif"),
     (assign, ":save_reg10", reg10),
     (assign, reg10, ":honor_dif"),
+    (assign, reg11, "$player_honor"),
     (try_begin),
         (gt, ":honor_dif", 0),
-        (display_message, "@Your reputation changed. (+{reg10})", message_positive),
+        (display_message, "@Your reputation changed. (+{reg10}) New value: {reg11}.", message_positive),
     (else_try),
         (lt, ":honor_dif", 0),
-        (display_message, "@Your reputation changed. (-{reg10})", message_negative),
+        (display_message, "@Your reputation changed. (-{reg10}) New value: {reg11}.", message_negative),
     (try_end),
     (assign, reg10, ":save_reg10"),
 ]),
@@ -74359,14 +74360,20 @@ scripts = scripts_hardcoded + [
         (assign, ":rents", 0),
         (assign, ":multiplier", 100),
         # (party_get_num_prisoners, ":slaves", ":latifundium"),
-        (call_script, "script_get_labour_slave_skill_modifier", "$cur_village_weekly_on_average", "skl_power_strike"),
-        (assign, ":weighted_number_slaves_mining"),
+        (call_script, "script_get_labour_slave_skill_modifier", ":latifundium", "skl_power_strike"),
+        (assign, ":weighted_number_slaves_mining", reg0),
+        # (assign, reg10, ":weighted_number_slaves_mining"),
+        # (display_message, "@weighted_number_slaves_mining: {reg10}"),
 
-        (call_script, "script_get_labour_slave_skill_modifier", "$cur_village_weekly_on_average", "skl_athletics"),
-        (assign, ":weighted_number_slaves_field"),
+        (call_script, "script_get_labour_slave_skill_modifier", ":latifundium", "skl_athletics"),
+        (assign, ":weighted_number_slaves_field", reg0),
+        # (assign, reg10, ":weighted_number_slaves_field"),
+        # (display_message, "@weighted_number_slaves_mining: {reg10}"),
 
         (store_add, ":slaves", ":weighted_number_slaves_mining", ":weighted_number_slaves_field"),
         (val_div, ":slaves", 2),
+        # (assign, reg10, ":slaves"),
+        # (display_message, "@slaves: {reg10}"),
 
         # manumission tax
         (try_begin),
@@ -74527,7 +74534,7 @@ scripts = scripts_hardcoded + [
                 (ge, ":slavefactor", 1),
                 (val_div, ":slavefactor", 4),#was 5
             (try_end),
-            (val_clamp, ":slavefactor", -100, 26),
+            (val_clamp, ":slavefactor", -100, 31),
             (val_add,":multiplier", ":slavefactor"),
 
             # regional effects
@@ -74595,6 +74602,7 @@ scripts = scripts_hardcoded + [
             (assign, reg39, ":slavefactor"),
             (display_message, "@ Latifundia near {s29} has negative rents. New rents: {reg1}. Multiplier: {reg2}. Slavefactor: {reg39}."),
         (try_end),
+
         (val_max, ":old_rents", 0),
 
         (val_add, ":rents", ":old_rents"),
@@ -99312,14 +99320,24 @@ scripts = scripts_hardcoded + [
         (party_prisoner_stack_get_troop_id, ":troop_id", ":party_id", ":i_stack"),
         (is_between, ":troop_id", slaves_begin, slaves_end),
 
+        # (display_message, "@Check 1"),
+
         (party_prisoner_stack_get_size, ":stack_size", ":party_id", ":i_stack"),
         (store_skill_level, ":cur_skill", ":skill", ":troop_id"),
         (val_mul, ":cur_skill", 2),
         (val_add, ":cur_skill", -4),
 
+        # (assign, reg10, ":cur_skill"),
+        # (assign, reg11, ":stack_size"),
+        # (display_message, "@Check skill: {reg10} | stack_size: {reg11}"),
+
         (val_add, ":cur_skill", 100),#factor of -4 to 12%
         (store_mul, ":weighted_number_slaves", ":cur_skill", ":stack_size"),
         (val_div, ":weighted_number_slaves", 100),
+
+        # (assign, reg10, ":cur_skill"),
+        # (assign, reg11, ":weighted_number_slaves"),
+        # (display_message, "@Check skill: {reg10} | weighted_number_slaves: {reg11}"),
 
         # Add this stack's total to the grand total
         (val_add, ":modifier", ":weighted_number_slaves"),

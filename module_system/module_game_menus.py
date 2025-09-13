@@ -13788,7 +13788,7 @@ game_menus = [
 
       (call_script, "script_get_walker_according_to_subculture", walker_peasant, "$current_town", tf_female),
       (assign, ":women", reg0),
-      (party_add_members, "$current_town", ":women", 10),
+      (party_add_members, "$current_town", ":women", 5),
 
       (call_script, "script_get_peasant_warrior_for_culture", "$current_town"),
       (assign, ":peasant", reg0),
