@@ -4284,6 +4284,9 @@ male_persian_names_end   = "str_persian_name_end"
 male_arabian_names_begin = "str_arabian_name_01"
 male_arabian_names_end   = "str_arabian_name_end"
 
+male_egyptian_names_begin = "str_egyptian_name_01"
+male_egyptian_names_end   = "str_egyptian_name_end"
+
 male_hebrew_names_begin = "str_hebrew_name_01"
 male_hebrew_names_end   = "str_hebrew_name_end"
 
@@ -4323,6 +4326,9 @@ female_persian_names_end   = "str_persian_female_name_end"
 
 female_arabian_names_begin = "str_arabian_female_name_01"
 female_arabian_names_end   = "str_arabian_female_name_end"
+
+female_egyptian_names_begin = "str_egyptian_female_name_01"
+female_egyptian_names_end   = "str_egyptian_female_name_end"
 
 female_hebrew_names_begin = "str_hebrew_female_name_01"
 female_hebrew_names_end   = "str_hebrew_female_name_end"

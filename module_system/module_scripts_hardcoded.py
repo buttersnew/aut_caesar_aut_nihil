@@ -1085,6 +1085,7 @@ scripts_hardcoded = [
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
             (this_or_next|eq, ":faction", "fac_culture_15"),
+            (this_or_next|eq, ":faction", "fac_culture_16"),
             (eq, ":faction", "fac_culture_5"),
             (party_set_icon, ":party", "icon_town_greek"),
             (party_set_slot, ":party", slot_center_can_rebell, 0),
@@ -1129,6 +1130,7 @@ scripts_hardcoded = [
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
             (this_or_next|eq, ":faction", "fac_culture_15"),
+            (this_or_next|eq, ":faction", "fac_culture_16"),
             (eq, ":faction", "fac_culture_5"),
             (party_set_icon, ":party", "icon_fort_greek"),
             (party_set_slot, ":party", slot_center_can_rebell, 0),
@@ -1324,6 +1326,30 @@ scripts_hardcoded = [
     (party_set_slot, "p_village_218", slot_center_culture, "fac_culture_15"),
     (party_set_slot, "p_village_219", slot_center_culture, "fac_culture_15"),
 
+    #egyptian
+    (party_set_slot, "p_town_48", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_206", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_242", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_204", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_207", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_203", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_202", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_95", slot_center_culture, "fac_culture_16"),
+
+    #berber
+    (party_set_slot, "p_town_21", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_castle_64", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_castle_43", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_48", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_106", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_104", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_105", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_131", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_132", slot_center_culture, "fac_culture_11"),
+
+    (party_set_slot, "p_village_134", slot_center_culture, "fac_culture_12"),
+    (party_set_slot, "p_village_135", slot_center_culture, "fac_culture_12"),
+    (party_set_slot, "p_village_137", slot_center_culture, "fac_culture_12"),
 
     (call_script, "script_initialize_npc_items"),
     ##also add lady items, to it here because it require troop culture slot to be set properly
@@ -2031,6 +2057,9 @@ scripts_hardcoded = [
             (eq, ":faction", "fac_culture_15"),
             (party_set_icon, ":party", "icon_village_greek"),
         (else_try),
+            (eq, ":faction", "fac_culture_16"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
             (eq, ":faction", "fac_culture_6"),
             (party_set_icon, ":party", "icon_village_greek"),
         (else_try),
@@ -2384,6 +2413,7 @@ scripts_hardcoded = [
         (party_set_slot,":town_no", slot_town_store, "scn_town_4_store"),
         (party_set_slot,":town_no", slot_town_arena, "scn_town_4_arena"),
     (else_try),
+        (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_16"),#eastern
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_15"),#eastern
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_5"),#eastern
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_8"),#eastern
@@ -2721,6 +2751,7 @@ scripts_hardcoded = [
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_5_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_5_prison"),
     (else_try),
+        (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_16"),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_15"),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_5"),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_8"),
@@ -3171,6 +3202,9 @@ scripts_hardcoded = [
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_4"),
             (store_random_in_range, ":scene", "scn_village_98", "scn_village_94"),
             (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+        (else_try),
+            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_16"),
+            (store_random_in_range, ":scene", "scn_village_egypt", "scn_village_judea"),
         (else_try),
             (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_15"),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_6"),

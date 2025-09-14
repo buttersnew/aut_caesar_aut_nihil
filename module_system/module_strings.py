@@ -9,6 +9,7 @@ from strings_character_names.module_names_roman import *
 from strings_character_names.module_names_caucasian import *
 from strings_character_names.module_names_north_african import *
 from strings_character_names.module_names_arabian import *
+from strings_character_names.module_names_egyptian import *
 from strings_character_names.module_names_north_african import *
 from strings_character_names.module_names_persian import *
 from strings_character_names.module_names_sarmatian import *
@@ -4683,6 +4684,7 @@ strings = [
   ("judean", "Judeans"),
   ("bosporans", "Bosporans"),
   ("syrians", "Syrians"),
+  ("egyptians", "Egyptians"),
   ("bandits", "bandits"),
   ("deserters", "deserters"),
   ("your_followers", "your followers"),
@@ -8728,6 +8730,7 @@ strings = [
 ("culture_14_town_watch","Local Townwatch (Saka)"),
 ("culture_15_town_watch","Local Townwatch (Syrian)"),
 ("culture_4_1_town_watch","Local Townwatch (Batavan)"),
+("culture_16_town_watch","Local Townwatch (Egyptian)"),
 
 ("kingdom_1_reinforcements_a","Dacian Levies"),
 ("kingdom_1_reinforcements_b","Dacian Lordly Retinue"),
@@ -9660,6 +9663,7 @@ strings = [
 ("culture_13_rized", "Nubian"),
 ("culture_14_rized", "Saka"),
 ("culture_15_rized", "Syrian"),
+("culture_16_rized", "Egyptian"),
 
 ("here_is_what_i_have_on_offer", "Here's what I have on offer:^^{s3}"),
 ("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),
@@ -9800,4 +9804,4 @@ strings = [
 ("scorpus_greeting", "Hail, {playername}! Always a pleasure to see a friendly face."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
-] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black
+] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names

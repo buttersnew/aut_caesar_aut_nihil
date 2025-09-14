@@ -1191,14 +1191,14 @@ itm_nubian_axe,itm_nubian_axe_2],
 attrib_level_23_warrior, wp(150), knows_level_23_warrior, nubian_man_face_younger_1, nubian_man_face_old_2 ],
 
 #Egyptian
-["egyptian_archers", "Reftksote", "Reftksote", tf_male_north_african|tf_guarantee_ranged|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_egypt,
+["egyptian_archers", "Reftksote", "Reftksote", tf_male_north_african|tf_guarantee_ranged|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_16,
 [itm_caligea,itm_short_bow,itm_bodkin_arrows,itm_old_gladius_2,itm_numidian_wig,itm_judean_tunic_5,itm_judean_tunic_4,itm_judean_tunic_2,itm_roman_poor1,itm_roman_poor2],
 attrib_level_20, wpe(145,155,155,155), knows_archer_exp_eastern, north_african_man_face_younger_1, north_african_man_face_middle_2],
-["egyptian_infantry_heavy", "Refbouts", "Refbouts", tf_male_north_african|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_egypt,
+["egyptian_infantry_heavy", "Refbouts", "Refbouts", tf_male_north_african|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_16,
 [itm_caligea,itm_legio_armored_caligea,itm_roman_gladius,itm_roman_gladius_2,itm_roman_gladius_3,itm_pilum,itm_auxilia_squamata_east_2,itm_auxilia_squamata_east_4,itm_auxilia_squamata_east_3,itm_auxilia_squamata_east_1,
 itm_roman_aux_helm_8,itm_roman_aux_helm_11,itm_egyptian_shield_large_1,itm_egyptian_shield_large_2,itm_egyptian_shield_large_3,itm_egyptian_shield_large_4,itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4],
 attrib_level_26, wp(160), knows_level_26, north_african_man_face_middle_1, north_african_man_face_old_2 ],
-["egyptian_infantry_light", "Refqenqen", "Refqenqen",tf_male_north_african|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_egypt,
+["egyptian_infantry_light", "Refqenqen", "Refqenqen",tf_male_north_african|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_16,
 [itm_caligea,itm_hasta1,itm_pilum,itm_old_gladius_1,itm_numidian_wig,itm_judean_tunic_5,itm_judean_tunic_4,itm_judean_tunic_2,itm_roman_poor1,itm_roman_poor2,itm_egyptian_shield_large_1,itm_egyptian_shield_large_2,itm_egyptian_shield_large_3,itm_egyptian_shield_large_4,
 itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4],
 attrib_level_23, wp(140), knows_level_23,north_african_man_face_young_1, north_african_man_face_middle_2 ],
@@ -1942,6 +1942,16 @@ attrib_level_31, wp(180), knows_level_31, eastern_man_face_middle_1, eastern_man
 ["jew_castle_guard", "Castle Guard", "Castle Guard", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_8,
 []+jew_helm_heavy+jew_scale+jew_boots_heavy+jew_swords+jew_shields_large,
 attrib_level_31, wp(180), knows_level_31, eastern_man_face_middle_1, eastern_man_face_middle_2 ],
+
+["egyptian_prison_guard", "Prison Guard", "Prison Guard", tf_male_north_african|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_16,
+[itm_caligea,itm_legio_armored_caligea,itm_roman_gladius,itm_roman_gladius_2,itm_roman_gladius_3,itm_pilum,itm_auxilia_squamata_east_2,itm_auxilia_squamata_east_4,itm_auxilia_squamata_east_3,itm_auxilia_squamata_east_1,
+itm_roman_aux_helm_8,itm_roman_aux_helm_11,itm_egyptian_shield_large_1,itm_egyptian_shield_large_2,itm_egyptian_shield_large_3,itm_egyptian_shield_large_4,itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4],
+attrib_level_26, wp(160), knows_level_26, north_african_man_face_middle_1, north_african_man_face_old_2 ],
+
+["egyptian_castle_guard", "Castle Guard", "Castle Guard", tf_male_north_african|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_16,
+[itm_caligea,itm_legio_armored_caligea,itm_roman_gladius,itm_roman_gladius_2,itm_roman_gladius_3,itm_pilum,itm_auxilia_squamata_east_2,itm_auxilia_squamata_east_4,itm_auxilia_squamata_east_3,itm_auxilia_squamata_east_1,
+itm_roman_aux_helm_8,itm_roman_aux_helm_11,itm_egyptian_shield_large_1,itm_egyptian_shield_large_2,itm_egyptian_shield_large_3,itm_egyptian_shield_large_4,itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4],
+attrib_level_26, wp(160), knows_level_26, north_african_man_face_middle_1, north_african_man_face_old_2 ],
 
 ["syrian_prison_guard", "Prison Guard", "Prison Guard", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_8,
 []+syrian_helm_heavy+syrian_scale_armor+syria_foot_cives+syrian_swords+syrian_shield_oval,
@@ -5865,8 +5875,12 @@ attrib_level_26, wp(160), knows_level_26, persian_face_young, persian_face_middl
   itm_old_gladius_2,itm_old_gladius_1,itm_hasta2,itm_roman_townguard_helm,itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,
   itm_graves_simple_2,itm_legion_hamata_cape_5,itm_old_scutum_2,itm_old_scutum,itm_old_scutum_3,itm_old_round_shield_5,itm_old_round_shield_4,
 ],attrib_level_26, wp(160), knows_level_26, roman_face1, roman_face2 ],
-["syrian_desrter", "Desertor Syricus", "Desertores Syrici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
+["syrian_deserter", "Desertor Syricus", "Desertores Syrici", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
 []+syria_foot_cives+syrian_scale_armor+syrian_helm+syrian_spears+syrian_swords+syrian_shield_round+syrian_shield_oval+syrian_tunic, attrib_level_23, wp_melee(160), knows_level_23, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+
+["egyptian_deserter", "Desertor Aegyptius", "Desertores Aegyptii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_6,
+[itm_caligea,itm_hasta1,itm_pilum,itm_old_gladius_1,itm_numidian_wig,itm_judean_tunic_5,itm_judean_tunic_4,itm_judean_tunic_2,itm_roman_poor1,itm_roman_poor2,itm_egyptian_shield_large_1,itm_egyptian_shield_large_2,itm_egyptian_shield_large_3,itm_egyptian_shield_large_4,
+itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4], attrib_level_23, wp_melee(160), knows_level_23, north_african_man_face_young_1, north_african_man_face_middle_2 ],
 
 ["asturias_veteran", "Ghost", "Ghosts", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_commoners,
 [itm_caligea,itm_dagger,itm_roman_poor1,itm_roman_poor2], hero_attrib|level(31), wp(380), knows_hero, white_face_21, white_face_22 ],

@@ -44,6 +44,7 @@ factions = [
   ("culture_13",  "Nubian", 0, 0.9, [], [], 0x8AAC71),
   ("culture_14",  "Saka", 0, 0.9, [], [], 0xAC7B6A),
   ("culture_15",  "Syrian", 0, 0.9, [], [], 0x670B96),
+  ("culture_16",  "Egyptian", 0, 0.9, [], [], 0xFFFF00),
 
   ("player_faction","Player Faction",0, 0.9, [], [], 0xED1C24),
   ("player_supporters_faction","Player's Supporters",0, 0.9, [("furor_teutonicus",-0.15),("egypt",-0.15),("black_khergits",-0.9),("picton",-0.20),("player_faction",1.00),("outlaws",-0.15),("peasant_rebels", -0.1),("deserters", -0.15),("mountain_bandits", -0.15),("forest_bandits", -0.15),("taiga_bandits", -0.15),("arabian_bandits", -0.15)], [], 0xED1C24), #changed name so that can tell difference if shows up on map
@@ -91,7 +92,9 @@ factions = [
 
   ("alans","Alanna", 0, 0.5,[("commoners",-0.2),("merchants",-0.5),("player_faction",-0.15),("outlaws",-0.6),("black_khergits",-0.6),("mountain_bandits",-0.10),("forest_bandits",-0.10),("deserters",-0.10),], [], 0xAAE7A3),
   ("furor_teutonicus","Teutones", 0, 0.5,[("alans",-0.2),("commoners",-0.2),("merchants",-0.5),("player_faction",-0.15),("outlaws",-0.6),("black_khergits",-0.6),("mountain_bandits",-0.10),("forest_bandits",-0.10),("deserters",-0.10),], [], 0xA19D8F),
-  ("egypt","Remetjw-men-Maat", 0, 0.5,[("commoners",-0.2),("merchants",-0.5),("player_faction",-0.15),("outlaws",-0.6),("black_khergits",-0.6),("mountain_bandits",-0.10),("forest_bandits",-0.10),("deserters",-0.10),], [], 0xFFFF00),
+
+  ("egypt","Remetjw-men-Maat", 0, 0.5,[("commoners",-0.2),("merchants",-0.5),("player_faction",-0.15),("outlaws",-0.6),("black_khergits",-0.6),
+  ("mountain_bandits",-0.10),("forest_bandits",-0.10),("deserters",-0.10),], [], 0xFFFF00),
 
   ("undeads","{!}Undeads", max_player_rating(-30), 0.5,[("commoners",-0.7),("player_faction",-0.5)], []),
   ("slavers","{!}Slavers", 0, 0.1, [], []),

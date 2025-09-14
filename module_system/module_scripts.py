@@ -2508,8 +2508,18 @@ scripts = scripts_hardcoded + [
             (try_end),
             (faction_set_slot, ":faction_no",  slot_faction_reinforcements_c, "pt_kingdom_4_reinforcements_c"),
         (else_try),
+            (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_16"),
+            (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_egyptian_deserter"),
+            (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_egyptian_infantry_heavy"),
+            (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_egyptian_archers"),
+            (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_egyptian_prison_guard"),
+            (faction_set_slot, ":faction_no", slot_faction_castle_guard_troop, "trp_egyptian_castle_guard"),
+            (faction_set_slot, ":faction_no",  slot_faction_reinforcements_a, "pt_mercenary_egyptian"),
+            (faction_set_slot, ":faction_no",  slot_faction_reinforcements_b, "pt_mercenary_egyptian"),
+            (faction_set_slot, ":faction_no",  slot_faction_reinforcements_c, "pt_mercenary_egyptian"),
+        (else_try),
             (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_15"),
-            (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_syrian_desrter"),
+            (faction_set_slot, ":faction_no", slot_faction_deserter_troop, "trp_syrian_deserter"),
             (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_syrian_spearman"),
             (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_syrian_horsearcher"),
             (faction_set_slot, ":faction_no", slot_faction_prison_guard_troop, "trp_syrian_prison_guard"),
@@ -2682,6 +2692,13 @@ scripts = scripts_hardcoded + [
     (faction_set_slot, "fac_culture_15", slot_faction_tier_3_troop, "trp_syrian_horseman"),
     (faction_set_slot, "fac_culture_15", slot_faction_tier_4_troop, "trp_syrian_horsearcher"),
     (faction_set_slot, "fac_culture_15", slot_faction_tier_5_troop, "trp_syrian_heavy_cav"),
+
+    (faction_set_slot, "fac_culture_16", slot_faction_tier_1_troop, "trp_egyptian_archers"),
+    (faction_set_slot, "fac_culture_16", slot_faction_tier_2_troop, "trp_egyptian_infantry_light"),
+    (faction_set_slot, "fac_culture_16", slot_faction_tier_3_troop, "trp_egyptian_infantry_light"),
+    (faction_set_slot, "fac_culture_16", slot_faction_tier_4_troop, "trp_egyptian_infantry_heavy"),
+    (faction_set_slot, "fac_culture_16", slot_faction_tier_5_troop, "trp_egyptian_infantry_heavy"),
+
 
     (faction_set_slot, "fac_culture_1", slot_faction_town_walker_male_troop, "trp_dacian_town_walker"),
     (faction_set_slot, "fac_culture_1", slot_faction_town_walker_female_troop, "trp_dacian_town_walker_female"),
@@ -14659,6 +14676,11 @@ scripts = scripts_hardcoded + [
 			(lt, ":party_size", ":ideal_size"),
 			(party_add_template, ":village_no", "pt_village_defenders_syria"),
         (else_try),
+			(eq, ":culture", "fac_culture_16"),
+			(assign, ":ideal_size", 60),
+			(lt, ":party_size", ":ideal_size"),
+			(party_add_template, ":village_no", "pt_village_defenders_egyptian"),
+        (else_try),
 			(this_or_next|eq, ":culture", "fac_culture_5"),
 			(eq, ":culture", "fac_culture_6"),
 			(assign, ":ideal_size", 45),
@@ -14872,6 +14894,7 @@ scripts = scripts_hardcoded + [
             (assign, ":deserted_village_icon", "icon_village_barbarian_deserted"),
         (else_try),
             (this_or_next|party_slot_eq, ":village_no",slot_center_culture, "fac_culture_15"),
+            (this_or_next|party_slot_eq, ":village_no",slot_center_culture, "fac_culture_16"),
             (this_or_next|party_slot_eq, ":village_no",slot_center_culture, "fac_culture_5"),
             (this_or_next|party_slot_eq, ":village_no",slot_center_culture, "fac_culture_8"),
             (this_or_next|party_slot_eq, ":village_no",slot_center_culture, "fac_culture_9"),
@@ -26196,6 +26219,9 @@ scripts = scripts_hardcoded + [
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_15"),
             (party_add_template, ":new_party", "pt_village_syrian"),
         (else_try),
+            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_16"),
+            (party_add_template, ":new_party", "pt_village_egyptian"),
+        (else_try),
             (party_add_template, ":new_party", "pt_village_defenders"),
         (try_end),
 
@@ -27248,6 +27274,7 @@ scripts = scripts_hardcoded + [
             (store_random_in_range, ":troop_no", "trp_sarranid_horseman", "trp_meroe_archers"),
             (store_random_in_range, ":amount", 4, 24),
         (else_try),##kush mercs and egyptians
+            (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_16"),
             (this_or_next|eq, ":town_no", "p_town_48"),
             (eq, ":town_no", "p_town_20"),
             (store_random_in_range, ":troop_no", "trp_meroe_archers", "trp_arab_noble_archers"),
@@ -27495,6 +27522,7 @@ scripts = scripts_hardcoded + [
         (party_slot_eq, ":center_no", slot_center_culture, ":culture"),
         (this_or_next|party_slot_eq, ":center_no", slot_center_culture, "fac_culture_1"),
         (this_or_next|party_slot_eq, ":center_no", slot_center_culture, "fac_culture_15"),
+        (this_or_next|party_slot_eq, ":center_no", slot_center_culture, "fac_culture_16"),
         (party_slot_eq, ":center_no", slot_center_culture, "fac_culture_5"),
         (val_add, ":percent", 15),
     (else_try),
@@ -30014,6 +30042,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_sewers_name_eastern"),
             (assign, ":string_description", "str_sewers_description_eastern"),
@@ -30051,6 +30080,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_mills_name_eastern"),
             (assign, ":string_description", "str_mills_description_eastern"),
@@ -30089,6 +30119,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_looms_name_eastern"),
             (assign, ":string_description", "str_looms_description_eastern"),
@@ -30126,6 +30157,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_smithies_name_eastern"),
             (assign, ":string_description", "str_smithies_description_eastern"),
@@ -30168,6 +30200,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_roads_name_eastern"),
             (assign, ":string_description", "str_roads_description_eastern"),
@@ -30204,6 +30237,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_hospital_name_eastern"),
             (assign, ":string_description", "str_hospital_description_eastern"),
@@ -30240,6 +30274,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_habour_name_eastern"),
             (assign, ":string_description", "str_sewers_description_eastern"),
@@ -30276,6 +30311,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_farming_name_eastern"),
             (assign, ":string_description", "str_farming_description_eastern"),
@@ -30312,6 +30348,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_pasture_name_eastern"),
             (assign, ":string_description", "str_pasture_description_eastern"),
@@ -30348,6 +30385,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_trader_name_eastern"),
             (assign, ":string_description", "str_trader_description_eastern"),
@@ -30420,6 +30458,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_firefighters_name_eastern"),
             (assign, ":string_description", "str_firefighters_description_eastern"),
@@ -30462,6 +30501,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_school_name_eastern"),
             (assign, ":string_description", "str_school_description_eastern"),
@@ -30516,6 +30556,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_forum_name_eastern"),
             (assign, ":string_description", "str_forum_description_eastern"),
@@ -30560,6 +30601,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#Judean
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_theatre_name_eastern"),
             (assign, ":string_description", "str_theatre_description_eastern"),
@@ -30596,6 +30638,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_public_baths_name_eastern"),
             (assign, ":string_description", "str_public_baths_description_eastern"),
@@ -30632,6 +30675,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_triumphal_arch_name_eastern"),
             (assign, ":string_description", "str_triumphal_arch_description_eastern"),
@@ -30671,6 +30715,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_barracks_name_eastern"),
             (assign, ":string_description", "str_barracks_description_eastern"),
@@ -30707,6 +30752,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_culture_name_eastern"),
             (assign, ":string_description", "str_culture_description_eastern"),
@@ -30743,6 +30789,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+            (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, ":string_name", "str_culture_name_eastern"),
             (assign, ":string_description", "str_culture_description_eastern"),
@@ -32292,6 +32339,7 @@ scripts = scripts_hardcoded + [
     (try_begin),
         (this_or_next|eq, ":culture", "fac_culture_5"),
         (this_or_next|eq, ":culture", "fac_culture_15"),
+        (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
         (eq, ":culture", "fac_culture_6"),
         (assign, ":ransom_amount", 600),
     (else_try),
@@ -36447,6 +36495,9 @@ scripts = scripts_hardcoded + [
                 (faction_slot_eq, ":faction_object", slot_faction_culture, "fac_culture_15"),
                 (str_store_string, s39, "str_syrians"),
             (else_try),
+                (faction_slot_eq, ":faction_object", slot_faction_culture, "fac_culture_16"),
+                (str_store_string, s39, "str_egyptians"),
+            (else_try),
                 (eq, ":faction_object", "fac_player_supporters_faction"),
                 (str_store_string, s39, "str_your_followers"),
             (else_try), #bandits
@@ -37100,6 +37151,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_12"),
         (this_or_next|faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_13"),
         (this_or_next|faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_15"),
+        (this_or_next|faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_16"),
         (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_8"),
         (assign, ":result", mtf_culture_5),#culture 5 music wird eastern
     (else_try),
@@ -39687,6 +39739,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|troop_slot_eq, ":lady_no", slot_troop_culture, "fac_culture_8"),
         (this_or_next|troop_slot_eq, ":lady_no", slot_troop_culture, "fac_culture_5"),
         (this_or_next|troop_slot_eq, ":lady_no", slot_troop_culture, "fac_culture_15"),
+        (this_or_next|troop_slot_eq, ":lady_no", slot_troop_culture, "fac_culture_16"),
         (troop_slot_eq, ":lady_no", slot_troop_culture, "fac_culture_6"),
         (store_random_in_range, ":random", eastern_dresses_noble_begin, eastern_dresses_noble_end),
         (troop_add_item, ":lady_no", ":random", 0),
@@ -46148,6 +46201,12 @@ scripts = scripts_hardcoded + [
             (mission_tpl_entry_add_override_item, "mt_town_default", ":cur_entry", "itm_caligea"),
             (mission_tpl_entry_add_override_item, "mt_town_default", ":cur_entry", "itm_palmyran_gladius"),
         (else_try),
+            (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_16"),
+            (mission_tpl_entry_add_override_item, "mt_town_default", ":cur_entry", "itm_numidian_wig"),
+            (mission_tpl_entry_add_override_item, "mt_town_default", ":cur_entry", "itm_judean_tunic_4"),
+            (mission_tpl_entry_add_override_item, "mt_town_default", ":cur_entry", "itm_caligea"),
+            (mission_tpl_entry_add_override_item, "mt_town_default", ":cur_entry", "itm_old_gladius_1"),
+        (else_try),
             (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_5"),
             (mission_tpl_entry_add_override_item, "mt_town_default", ":cur_entry", "itm_armenian_tunic_1"),
             (mission_tpl_entry_add_override_item, "mt_town_default", ":cur_entry", "itm_eastern_shoe"),
@@ -52308,6 +52367,7 @@ scripts = scripts_hardcoded + [
             (faction_set_slot, ":kingdom", dplmc_slot_faction_serfdom, -3), ##zorathoism do not like slaves
         (else_try),
             (this_or_next|faction_slot_eq, ":kingdom", slot_faction_culture, "fac_culture_5"),
+            (this_or_next|faction_slot_eq, ":kingdom", slot_faction_culture, "fac_culture_16"),
             (faction_slot_eq, ":kingdom", slot_faction_culture, "fac_culture_15"),
             (faction_set_slot, ":kingdom", dplmc_slot_faction_centralization, 1),
             (faction_set_slot, ":kingdom", dplmc_slot_faction_aristocracy, -1),
@@ -52508,6 +52568,12 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_foot, "itm_eastern_shoe_y"),
         (troop_set_face_keys, "trp_dplmc_chamberlain", "@00000000001144cc172ad258e2714d2b000000000015b4db0000000000000000"),
     (else_try),
+        (eq, ":culture", "fac_culture_16"),
+        (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_body, "itm_numidian_wig"),
+        (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_body, "itm_judean_tunic_4"),
+        (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_foot, "itm_caligea"),
+        (troop_set_face_keys, "trp_dplmc_chamberlain", "@000000001d09400138c945269b71ad3400000000001d9b2b0000000000000000"),
+    (else_try),
         (display_message, "@dplmc_appoint_chamberlain: Issue with culture of player faction detected."),
         (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_body, "itm_roman_toga"),
         (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_foot, "itm_caligea"),
@@ -52611,6 +52677,11 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_dplmc_constable", ek_foot, "itm_eastern_shoe_r"),
         (troop_set_face_keys, "trp_dplmc_constable", "@000000003b11a5095923d0b6536dd6ec000000000006d11c0000000000000000"),
     (else_try),
+        (eq, ":culture", "fac_culture_16"),
+        (troop_set_inventory_slot, "trp_dplmc_constable", ek_body, "itm_judean_tunic_1"),
+        (troop_set_inventory_slot, "trp_dplmc_constable", ek_foot, "itm_caligea"),
+        (troop_set_face_keys, "trp_dplmc_constable", "@000000003d05401136d24f5d15b754d400000000001e592c0000000000000000"),
+    (else_try),
         (display_message, "@dplmc_appoint_chancellor: Issue with culture of player faction detected."),
         (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_body, "itm_roman_toga"),
         (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_foot, "itm_caligea"),
@@ -52704,6 +52775,11 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_dplmc_constable", ek_body, "itm_sarranid_cloth_robe_fancy_2"),
         (troop_set_inventory_slot, "trp_dplmc_constable", ek_foot, "itm_eastern_shoe_b"),
         (troop_set_face_keys, "trp_dplmc_constable", "@000000003210b34e28b6adc45a72c6a400000000001e19710000000000000000"),
+    (else_try),
+        (eq, ":culture", "fac_culture_16"),
+        (troop_set_inventory_slot, "trp_dplmc_constable", ek_body, "itm_judean_tunic_3"),
+        (troop_set_inventory_slot, "trp_dplmc_constable", ek_foot, "itm_caligea"),
+        (troop_set_face_keys, "trp_dplmc_constable", "@000000002908e5c1252ad46cd48ecd2c00000000001ec8540000000000000000"),
     (else_try),
         (display_message, "@dplmc_appoint_constable: Issue with culture of player faction detected."),
         (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_body, "itm_roman_toga"),
@@ -55727,6 +55803,7 @@ scripts = scripts_hardcoded + [
             (str_store_string, ":string_register", "@spear"),
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_15"),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (this_or_next|eq, ":culture", "fac_culture_9"),#Vaegirs
             (eq, ":culture", "fac_culture_3"),#Khergits
             (str_store_string, ":string_register", "@bow"),
@@ -55751,6 +55828,7 @@ scripts = scripts_hardcoded + [
             (str_store_string, ":string_register", "@spears"),
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_15"),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (this_or_next|eq, ":culture", "fac_culture_9"),#Vaegirs
             (eq, ":culture", "fac_culture_3"),#Khergits
             (str_store_string, ":string_register", "@bows"),
@@ -55776,6 +55854,7 @@ scripts = scripts_hardcoded + [
             (str_store_string, ":string_register", "@lift my spear"),
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_15"),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (this_or_next|eq, ":culture", "fac_culture_9"),#Vaegirs
             (eq, ":culture", "fac_culture_3"),#Khergits
             (str_store_string, ":string_register", "@loose my arrows"),
@@ -55795,6 +55874,9 @@ scripts = scripts_hardcoded + [
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_15"),
             (str_store_string, ":string_register", "@Malka, great king"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
+            (str_store_string, ":string_register", "@Pharaoh"),
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_5"),#Sarranid
             (eq, ":culture", "fac_culture_6"),#Sarranid
@@ -55852,6 +55934,9 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_15"),
             (str_store_string, ":string_register", "@guards of the Shah"),
         (else_try),
+            (eq, ":culture", "fac_culture_16"),
+            (str_store_string, ":string_register", "@guards of the Pharaoh"),
+        (else_try),
             (this_or_next|eq, ":culture", "fac_culture_5"),#Sarranid
             (eq, ":culture", "fac_culture_6"),#Sarranid
             (str_store_string, ":string_register", "@apitarpa, guards of the king"),
@@ -55872,6 +55957,9 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_15"),#Sarranid
             (str_store_string, ":string_register", "@Malka"),
+        (else_try),
+            (eq, ":culture", "fac_culture_16"),#Sarranid
+            (str_store_string, ":string_register", "@Pharaoh"),
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_5"),#Sarranid
             (eq, ":culture", "fac_culture_6"),#Sarranid
@@ -55897,6 +55985,9 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_15"),#Sarranid
             (str_store_string, ":string_register", "@Malka's"),
+        (else_try),
+            (eq, ":culture", "fac_culture_16"),#Sarranid
+            (str_store_string, ":string_register", "@Pharaoh's"),
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_5"),#Sarranid
             (eq, ":culture", "fac_culture_6"),#Sarranid
@@ -55947,6 +56038,7 @@ scripts = scripts_hardcoded + [
                 (str_store_string, ":string_register", "@swineherd"),
             (try_end),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (eq, ":culture", "fac_culture_7"),#Romans
             (try_begin),
                 (eq, ":mode", 0),
@@ -58477,6 +58569,11 @@ scripts = scripts_hardcoded + [
                 (le, ":r", 2),
                 (eq, ":culture", "fac_culture_15"),
                 (assign, ":bandit_troop", "trp_desert_bandit"),
+            (else_try),
+                (store_random_in_range, ":r", 0, 5),
+                (le, ":r", 2),
+                (eq, ":culture", "fac_culture_16"),
+                (assign, ":bandit_troop", "trp_egyptian_infantry_light"),
             (else_try),
                 (eq, ":culture", "fac_culture_1"),
                 (assign, ":bandit_troop", "trp_steppe_bandit"),
@@ -62046,6 +62143,9 @@ scripts = scripts_hardcoded + [
       (else_try),
         (eq, ":ffaction", "fac_culture_15"),
         (assign, reg0, formation_ranks),
+      (else_try),
+        (eq, ":ffaction", "fac_culture_16"),
+        (assign, reg0, formation_square),
       (else_try),
         (eq, ":ffaction", "fac_culture_6"),
         (assign, reg0, formation_ranks),
@@ -67238,6 +67338,7 @@ scripts = scripts_hardcoded + [
                     (this_or_next|faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_8"),
                     (this_or_next|faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_6"),
                     (this_or_next|faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_15"),
+                    (this_or_next|faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_16"),
                     (faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_5"),
                     (assign, ":icon", "icon_eastern1"),
                 (else_try),
@@ -67308,6 +67409,7 @@ scripts = scripts_hardcoded + [
                     (this_or_next|faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_8"),
                     (this_or_next|faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_6"),
                     (this_or_next|faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_15"),
+                    (this_or_next|faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_16"),
                     (faction_slot_eq, ":party_faction", slot_faction_culture, "fac_culture_5"),
                     (assign, ":icon", "icon_kingdom_6_soldier_b"),
                 (else_try),
@@ -76592,6 +76694,62 @@ scripts = scripts_hardcoded + [
                     (assign, ":head", -1),
                 (try_end),
             (else_try),
+                (eq, ":culture", "fac_culture_16"),#egyptian
+                (store_random_in_range, ":r", 0, 9),
+                (try_begin),
+                    (eq, ":r", 0),
+                    (assign, ":body", "itm_judean_tunic_1"),
+                (else_try),
+                    (eq, ":r", 1),
+                    (assign, ":body", "itm_judean_tunic_2"),
+                (else_try),
+                    (eq, ":r", 2),
+                    (assign, ":body", "itm_judean_tunic_3"),
+                (else_try),
+                    (eq, ":r", 3),
+                    (assign, ":body", "itm_judean_tunic_4"),
+                (else_try),
+                    (eq, ":r", 4),
+                    (assign, ":body", "itm_judean_tunic_5"),
+                (else_try),
+                    (eq, ":r", 5),
+                    (assign, ":body", "itm_judean_tunic_6"),
+                (else_try),
+                    (eq, ":r", 6),
+                    (assign, ":body", "itm_sarranid_cloth_robe"),
+                (else_try),
+                    (eq, ":r", 7),
+                    (assign, ":body", "itm_sarranid_cloth_robe_b"),
+                (else_try),
+                    (assign, ":body", "itm_sarranid_cloth_robe_c"),
+                (try_end),
+                (store_random_in_range, ":r", 0, 4),
+                (try_begin),
+                    (eq, ":r", 0),
+                    (assign, ":foot", "itm_eastern_shoe"),
+                (else_try),
+                    (eq, ":r", 1),
+                    (assign, ":foot", "itm_eastern_shoe_b"),
+                (else_try),
+                    (eq, ":r", 1),
+                    (assign, ":foot", "itm_eastern_shoe_y"),
+                (else_try),
+                    (assign, ":foot", "itm_leather_boots"),
+                (try_end),
+                (store_random_in_range, ":r", 0, 5),
+                (try_begin),
+                    (eq, ":r", 0),
+                    (assign, ":head", "itm_headcloth"),
+                (else_try),
+                    (eq, ":r", 1),
+                    (assign, ":head", "itm_sarranid_felt_hat"),
+                (else_try),
+                    (eq, ":r", 3),
+                    (assign, ":head", "itm_numidian_wig"),
+                (else_try),
+                    (assign, ":head", -1),
+                (try_end),
+            (else_try),
                 (eq, ":culture", "fac_culture_8"),#judean
                 (store_random_in_range, ":r", 0, 10),
                 (try_begin),
@@ -76830,6 +76988,7 @@ scripts = scripts_hardcoded + [
             (else_try),
                 (this_or_next|eq, ":culture", "fac_culture_8"),#judean
                 (this_or_next|eq, ":culture", "fac_culture_15"),#syrian
+                (this_or_next|eq, ":culture", "fac_culture_16"),#egyptian
                 (this_or_next|eq, ":culture", "fac_culture_5"),#armenian
                 (eq, ":culture", "fac_culture_6"),#parthian
                 (store_random_in_range, ":r", 0, 11),
@@ -82086,6 +82245,11 @@ scripts = scripts_hardcoded + [
         (eq, ":province", p_asia_osreon),
         (assign, ":easy_to_rule", 1),
     (else_try),
+        (gt, ":candiate", -1),
+        (troop_slot_eq, ":candiate", slot_troop_culture, "fac_culture_16"),
+        (eq, ":province", p_afrc_egyp),
+        (assign, ":easy_to_rule", 1),
+    (else_try),
         (this_or_next|eq, ":province", p_hisp_tarraco),
         (this_or_next|eq, ":province", p_hisp_baetica),
         (this_or_next|eq, ":province", p_hisp_lusit),
@@ -82643,6 +82807,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_manor_eastern"),
         (else_try),
@@ -82668,6 +82833,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_sewers_eastern"),
         (else_try),
@@ -82694,6 +82860,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_industry_eastern"),
         (else_try),
@@ -82720,6 +82887,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_loom_eastern"),
         (else_try),
@@ -82746,6 +82914,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_smithy_generic"),
         (else_try),
@@ -82775,6 +82944,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_roads_eastern"),
         (else_try),
@@ -82801,6 +82971,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_hospital_eastern"),
         (else_try),
@@ -82827,6 +82998,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_port_eastern"),
         (else_try),
@@ -82853,6 +83025,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_farms_eastern"),
         (else_try),
@@ -82879,6 +83052,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_cattle"),
         (else_try),
@@ -82905,6 +83079,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_trader_eastern"),
         (else_try),
@@ -82949,6 +83124,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_fire_eastern"),
         (else_try),
@@ -82978,6 +83154,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_school_eastern"),
         (else_try),
@@ -83013,6 +83190,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_forum_eastern"),
         (else_try),
@@ -83039,6 +83217,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_temple_eastern"),
         (else_try),
@@ -83065,6 +83244,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_theatre_eastern"),
         (else_try),
@@ -83091,6 +83271,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_water_eastern"),
         (else_try),
@@ -83117,6 +83298,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_triumph_eastern"),
         (else_try),
@@ -83143,6 +83325,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_barracks_eastern"),
         (else_try),
@@ -83170,6 +83353,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_6"),#eastern
             (this_or_next|eq, ":culture", "fac_culture_15"),#eastern
+            (this_or_next|eq, ":culture", "fac_culture_16"),#eastern
             (eq, ":culture", "fac_culture_5"),#eastern
             (assign, reg0, "str_pic_settlement_changeculture_armenian"),
         (else_try),
@@ -83422,6 +83606,11 @@ scripts = scripts_hardcoded + [
         (troop_add_item, "trp_pseudo_troop_end", "itm_arabian_tunic_3"),
         (troop_add_item, "trp_pseudo_troop_end", "itm_caligea"),
         (troop_add_item, "trp_pseudo_troop_end", "itm_tuareg_new_1_blue"),
+    (else_try),
+        (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_16"),
+        (troop_add_item, "trp_pseudo_troop_end", "itm_judean_tunic_1"),
+        (troop_add_item, "trp_pseudo_troop_end", "itm_caligea"),
+        (troop_add_item, "trp_pseudo_troop_end", "itm_numidian_wig"),
     (else_try),
         (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_6"),
         (troop_add_item, "trp_pseudo_troop_end", "itm_parthian_tunic_4"),
@@ -85945,6 +86134,9 @@ scripts = scripts_hardcoded + [
     (else_try),
         (eq,":party_template", "pt_culture_15_town_watch"),
         (assign, ":troop_no", "trp_syrian_spearman"),
+    (else_try),
+        (eq,":party_template", "pt_culture_16_town_watch"),
+        (assign, ":troop_no", "trp_egyptian_infantry_light"),
     (else_try),
         (eq,":party_template", "pt_kingdom_1_reinforcements_a"),
         (assign, ":troop_no", "trp_dacian_light_swordman"),
@@ -89243,6 +89435,14 @@ scripts = scripts_hardcoded + [
         (assign, ":skill_engineer", 1),
         (assign, ":skill_inventorymanagement", 1),
     (else_try),
+        (eq, "$background_answer_4", "fac_culture_16"), # egyptian
+        (val_add, ":prof_onehand", 10),
+        (val_add, ":prof_archery", 15),
+        (val_add, ":prof_polearm", 5),
+        (assign, ":skill_trade", 1),
+        (assign, ":skill_engineer", 1),
+        (assign, ":skill_inventorymanagement", 1),
+    (else_try),
         (eq, "$background_answer_4", "fac_culture_2_1"), # Caledonian
         (val_add, ":prof_polearm", 15),
         (val_add, ":prof_onehand", 10),
@@ -90655,6 +90855,9 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_13"),
             (store_random_in_range, ":name", female_nubian_names_begin, female_nubian_names_end),
         (else_try),
+            (eq, ":culture", "fac_culture_16"),
+            (store_random_in_range, ":name", female_egyptian_names_begin, female_egyptian_names_end),
+        (else_try),
             (eq, ":culture", "fac_culture_14"),
             (store_random_in_range, ":name", female_saka_names_begin, female_saka_names_end),
         (else_try),
@@ -90686,6 +90889,9 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_8"),
             (store_random_in_range, ":name", male_hebrew_names_begin, male_hebrew_names_end),
+        (else_try),
+            (eq, ":culture", "fac_culture_16"),
+            (store_random_in_range, ":name", male_egyptian_names_begin, male_egyptian_names_end),
         (else_try),
             (eq, ":culture", "fac_culture_6"),
             (store_random_in_range, ":name", male_persian_names_begin, male_persian_names_end),
@@ -94307,6 +94513,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_7"),
             (this_or_next|eq, ":culture", "fac_culture_6"),
             (this_or_next|eq, ":culture", "fac_culture_15"),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (eq, ":culture", "fac_culture_5"),
             (assign, ":compatibility", -1),
         (try_end),
@@ -94326,6 +94533,7 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_9"),#bosporans
             (assign, ":compatibility", 1),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (this_or_next|eq, ":culture", "fac_culture_4"),
             (this_or_next|eq, ":culture", "fac_culture_2"),
             (this_or_next|eq, ":culture", "fac_culture_1"),
@@ -94370,6 +94578,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_7"),
             (this_or_next|eq, ":culture", "fac_culture_6"),
             (this_or_next|eq, ":culture", "fac_culture_15"),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (eq, ":culture", "fac_culture_5"),
             (assign, ":compatibility", -1),
         (try_end),
@@ -94389,6 +94598,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_7"),
             (this_or_next|eq, ":culture", "fac_culture_6"),
             (this_or_next|eq, ":culture", "fac_culture_15"),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (eq, ":culture", "fac_culture_5"),
             (assign, ":compatibility", -1),
         (try_end),
@@ -94407,6 +94617,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":culture", "fac_culture_8"),
             (this_or_next|eq, ":culture", "fac_culture_7"),
             (this_or_next|eq, ":culture", "fac_culture_6"),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (eq, ":culture", "fac_culture_15"),
             (assign, ":compatibility", -1),
         (try_end),
@@ -94473,6 +94684,7 @@ scripts = scripts_hardcoded + [
     (else_try),#egypt/lybia
         (eq, ":diety", worships_ammon),
         (try_begin),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (eq, ":culture", "fac_culture_12"),
             (assign, ":compatibility", 2),
         (else_try),
@@ -94491,6 +94703,7 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_13"),
             (assign, ":compatibility", 2),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_16"),
             (this_or_next|eq, ":culture", "fac_culture_12"),
             (eq, ":culture", "fac_culture_7"),
             (assign, ":compatibility", 1),
@@ -95925,6 +96138,11 @@ scripts = scripts_hardcoded + [
         (eq, ":subculture_string_id", "str_subculture_asian_osreon"),
         (str_store_faction_name, s1, ":main_culture_id"),
     (else_try),
+        # egyptian main culture
+        (eq, ":main_culture_id", "fac_culture_16"),
+        (eq, ":subculture_string_id", "str_subculture_african_egyptian"),
+        (str_store_faction_name, s1, ":main_culture_id"),
+    (else_try),
         (str_store_string, s1, "@{s0} {s1}"), # Example: "Parthian (Armenian Highlands)"
     (try_end),
 ]),
@@ -96290,7 +96508,8 @@ scripts = scripts_hardcoded + [
                 (assign, ":slave_troop", "trp_slave_caucasian"),
             (try_end),
         (else_try),
-             (eq, ":faction", "fac_egypt"), # Egyptian (if not caught by specific troop checks earlier)
+            (this_or_next|eq, ":faction", "fac_culture_16"),
+            (eq, ":faction", "fac_egypt"), # Egyptian (if not caught by specific troop checks earlier)
             (try_begin),
                 (eq, ":is_female", 1),
                 (assign, ":slave_troop", "trp_slave_female_egyptian"),
