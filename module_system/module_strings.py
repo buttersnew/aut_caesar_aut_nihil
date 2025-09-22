@@ -15,6 +15,7 @@ from strings_character_names.module_names_persian import *
 from strings_character_names.module_names_sarmatian import *
 from strings_character_names.module_names_hebrew import *
 from strings_character_names.module_names_saka import *
+from strings_character_names.module_names_greek import *
 from strings_face_keys.female_white import *
 from strings_face_keys.female_brown import *
 from strings_face_keys.female_black import *
@@ -4685,6 +4686,7 @@ strings = [
   ("bosporans", "Bosporans"),
   ("syrians", "Syrians"),
   ("egyptians", "Egyptians"),
+  ("greeks", "Greeks"),
   ("bandits", "bandits"),
   ("deserters", "deserters"),
   ("your_followers", "your followers"),
@@ -8731,6 +8733,7 @@ strings = [
 ("culture_15_town_watch","Local Townwatch (Syrian)"),
 ("culture_4_1_town_watch","Local Townwatch (Batavan)"),
 ("culture_16_town_watch","Local Townwatch (Egyptian)"),
+("culture_17_town_watch","Local Townwatch (Greek)"),
 
 ("kingdom_1_reinforcements_a","Dacian Levies"),
 ("kingdom_1_reinforcements_b","Dacian Lordly Retinue"),
@@ -9618,7 +9621,7 @@ strings = [
 ("subculture_gaulish_narbonensian", "Gaulish"),
 ("subculture_gaulish_aquitanian", "Gaulish"),
 ("subculture_gaulish_lugdunensian", "Gaulish"),
-("subculture_gaulish_belgic", "Belgic"),
+("subculture_gaulish_belgic", "Gaulish"),
 ("subculture_germanic_inferior", "Germanic"), # Along the Rhine
 ("subculture_germanic_superior", "Germanic"), # Along the Rhine
 ("subculture_germanic_raetian", "Raetian"), # Alpine
@@ -9664,6 +9667,7 @@ strings = [
 ("culture_14_rized", "Saka"),
 ("culture_15_rized", "Syrian"),
 ("culture_16_rized", "Egyptian"),
+("culture_17_rized", "Hellenized"),
 
 ("here_is_what_i_have_on_offer", "Here's what I have on offer:^^{s3}"),
 ("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),
@@ -9804,4 +9808,4 @@ strings = [
 ("scorpus_greeting", "Hail, {playername}! Always a pleasure to see a friendly face."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
-] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names
+] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

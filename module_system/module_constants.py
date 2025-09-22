@@ -4269,6 +4269,9 @@ male_britannic_names_end   = "str_britannic_name_end"
 male_dacian_names_begin = "str_dacian_name_01"
 male_dacian_names_end   = "str_dacian_name_end"
 
+male_greek_names_begin = "str_sarmatian_name_01"
+male_greek_names_end   = "str_sarmatian_name_end"
+
 male_sarmatian_names_begin = "str_sarmatian_name_01"
 male_sarmatian_names_end   = "str_sarmatian_name_end"
 
@@ -4332,6 +4335,10 @@ female_egyptian_names_end   = "str_egyptian_female_name_end"
 
 female_hebrew_names_begin = "str_hebrew_female_name_01"
 female_hebrew_names_end   = "str_hebrew_female_name_end"
+
+female_greek_names_begin = "str_greek_female_name_01"
+female_greek_names_end   = "str_greek_female_name_end"
+
 
 female_north_african_names_begin = "str_north_african_female_name_01"
 female_north_african_names_end   = "str_north_african_female_name_end"

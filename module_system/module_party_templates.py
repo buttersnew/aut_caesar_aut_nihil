@@ -38,6 +38,7 @@ party_templates = [
 ("village_defenders_east", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_eastern_slinger,10,20)] ),
 ("village_defenders_syria", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_syrian_archer,10,20)] ),
 ("village_defenders_egyptian", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_egyptian_archers,5,10),(trp_egyptian_infantry_light,5,10)] ),
+("village_defenders_greek", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_vigilia,10,20)] ),
 ("village_defenders_celt", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_celtic_light_clubman,5,10),(trp_celtic_archer,1,4),(trp_celtic_skirmisher,3,6)] ),
 ("village_defenders_cal", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_caledonian_light_clubman,5,10),(trp_caledonian_archer,1,4),(trp_caledonian_skirmisher,3,6)] ),
 ("village_defenders_germ", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_germanic_slinger,10,20),(trp_germanic_skirmisher,2,6)] ),
@@ -102,6 +103,7 @@ party_templates = [
 ("village_garmantian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_garamantian_peasant,15,25),]),
 ("village_syrian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_syrian_peasant,10,15),]),
 ("village_egyptian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_egyptian_peasant,10,15),]),
+("village_greek","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_greek_peasant,10,15),]),
 
 ("spy_partners", "Unremarkable Travellers", icon_vaegir_knight|carries_goods(10)|pf_default_behavior|pf_quest_party,0,fac_neutral,merchant_personality,[(trp_spy_partner,1,1),(trp_caravan_guard,5,11)]),
 ("runaway_serfs","Runaway slaves",icon_peasant|carries_goods(8)|pf_default_behavior|pf_quest_party,0,fac_neutral,merchant_personality,[(trp_slave,6,7), (trp_slave_female,3,3)]),
@@ -232,6 +234,9 @@ party_templates = [
 
 ("culture_16_town_watch", "Egyptian Townwatch", 0, 0, fac_commoners, 0,
 [(trp_egyptian_archers,25,25),(trp_egyptian_infantry_heavy,25,25),(trp_egyptian_infantry_light,30,30)] ),
+
+("culture_17_town_watch", "Greek Townwatch", 0, 0, fac_commoners, 0,
+[(trp_aux_vigiles_centurio,2,2),(trp_vigilia,40,40),(trp_aux_archer,25,25),(trp_aux_inf,5,5),(trp_ballistarii,5,5)] ),
 
 #special for batavans
 ("culture_4_1_town_watch", "Batavan Townwatch", 0, 0, fac_commoners, 0,

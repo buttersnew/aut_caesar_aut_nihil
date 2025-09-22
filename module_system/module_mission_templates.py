@@ -7828,6 +7828,7 @@ mission_templates = [
         (this_or_next|eq, ":dead_agent_troop_no", "trp_batava_prison_guard"),
         (this_or_next|eq, ":dead_agent_troop_no", "trp_jew_prison_guard"),
         (this_or_next|eq, ":dead_agent_troop_no", "trp_bosporan_prison_guard"),
+        (this_or_next|eq, ":dead_agent_troop_no", "trp_egyptian_prison_guard"),
         (eq, ":dead_agent_troop_no", "trp_roman_prison_guard"),
         (eq, ":killer_agent_troop_no", "trp_player"),
         (display_message, "@You got keys to the dungeon.", message_alert),
@@ -11276,6 +11277,7 @@ mission_templates = [
         (this_or_next|eq, ":dead_agent_troop_no", "trp_batava_prison_guard"),
         (this_or_next|eq, ":dead_agent_troop_no", "trp_jew_prison_guard"),
         (this_or_next|eq, ":dead_agent_troop_no", "trp_bosporan_prison_guard"),
+        (this_or_next|eq, ":dead_agent_troop_no", "trp_egyptian_prison_guard"),
         (eq, ":dead_agent_troop_no", "trp_roman_prison_guard"),
 
         (eq, ":killer_agent_troop_no", "trp_player"),
