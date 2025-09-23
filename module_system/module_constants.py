@@ -2489,6 +2489,10 @@ quick_battle_scene_names_begin = "str_quick_battle_scene_1"
 lord_quests_begin = "qst_deliver_message"
 lord_quests_end   = "qst_follow_army"
 
+
+festival_quests_begin = "qst_saturnalia"
+festival_quests_end   = "qst_quests_end"
+
 lord_quests_begin_2 = "qst_destroy_bandit_lair"
 lord_quests_end_2   = "qst_blank_quest_2"
 

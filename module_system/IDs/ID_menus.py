@@ -1200,3 +1200,5 @@ mnu_prophecy_final = 1198
 mnu_prophecy_final_2 = 1199
 mnu_prophecy_final_3 = 1200
 mnu_prophecy_final_4 = 1201
+mnu_religious_festival = 1202
+mnu_state_sacrifice_prompt = 1203

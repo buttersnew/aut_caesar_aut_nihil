@@ -149,4 +149,6 @@ qst_werdheri = 147
 qst_triumph = 148
 qst_prophecy_of_caeselius_bassus = 149
 qst_trial = 150
-qst_quests_end = 151
+qst_saturnalia = 151
+qst_ludi_romani = 152
+qst_quests_end = 153

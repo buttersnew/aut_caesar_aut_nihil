@@ -452,6 +452,25 @@ simple_triggers = [
 (24,[
     (call_script, "script_execude_debug_message", 13),
 
+    # religious festivals
+    (store_faction_of_party, ":fac", "p_town_6"),
+    (try_begin),
+        (eq, ":fac", "$players_kingdom"),
+        (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
+        (neg|check_quest_active, "qst_ludi_romani"),
+        (neg|check_quest_active, "qst_saturnalia"),
+        (eq, "$g_cur_month", 9),
+        (call_script, "script_add_notification_menu", "mnu_religious_festival", "qst_ludi_romani", -1),
+    (else_try),
+        (eq, ":fac", "$players_kingdom"),
+        (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
+        (neg|check_quest_active, "qst_saturnalia"),
+        (neg|check_quest_active, "qst_ludi_romani"),
+        (eq, "$g_cur_month", 12),
+        (call_script, "script_add_notification_menu", "mnu_religious_festival", "qst_saturnalia", -1),
+    (try_end),
+
+
     (troop_set_slot, "trp_global_variables", g_rumours_lover, 0), # for lover rumours
 
     # Kingdom ladies
@@ -4368,7 +4387,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 84),
     (assign, ":num_active_tournaments", 0),
     (try_for_range, ":center_no", towns_begin, towns_end),
-      ##fixe a bug were the icon still exists
+        ##fixe a bug were the icon still exists
         (try_begin),
             (neg|party_slot_eq, ":center_no", slot_center_pursue, 1),##no christians are killed
             (party_get_slot, ":slave_icon", ":center_no", slot_crucified_slave_icon),
@@ -4411,9 +4430,20 @@ simple_triggers = [
         (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_feast),
         (faction_get_slot, ":faction_object", ":faction_no", slot_faction_ai_object),
         (is_between, ":faction_object", towns_begin, towns_end),
-      #(party_slot_ge, ":faction_object", slot_town_has_tournament, 1), #dckplmc - ?
-      #continue holding tournaments during the feast
-        (party_set_slot, ":faction_object", slot_town_has_tournament, 1), #dckplmc - was 2
+        # continue holding tournaments during the feast
+        (party_set_slot, ":faction_object", slot_town_has_tournament, 1),
+    (try_end),
+
+    # continue holding tournaments during religious festicals
+    (try_begin),
+        (check_quest_active, "qst_ludi_romani"),
+        (quest_get_slot, ":target_center", "qst_ludi_romani", slot_quest_target_center),
+        (party_set_slot, ":target_center", slot_town_has_tournament, 1),
+    (try_end),
+    (try_begin),
+        (check_quest_active, "qst_saturnalia"),
+        (quest_get_slot, ":target_center", "qst_saturnalia", slot_quest_target_center),
+        (party_set_slot, ":target_center", slot_town_has_tournament, 1),
     (try_end),
 
     (try_begin),
@@ -5383,6 +5413,24 @@ simple_triggers = [
                 (call_script, "script_fail_quest", ":cur_quest"),
                 (call_script, "script_end_quest", ":cur_quest"),
                 (call_script, "script_add_notification_menu", "mnu_trial_guilty", 0, 0),
+            (else_try),
+                (eq, ":exp_days", 0),
+                (this_or_next|eq, ":cur_quest", "qst_saturnalia"),
+                (eq, ":cur_quest", "qst_ludi_romani"),
+                (try_begin),
+                    (neg|quest_slot_eq, ":cur_quest", slot_quest_temp_slot, 0),
+                    (quest_slot_eq, ":cur_quest", slot_quest_current_state, 1),
+                    (call_script, "script_fail_quest", ":cur_quest"),
+                    (call_script, "script_change_player_relation_with_center", "p_town_6", -10),
+                    (call_script, "script_add_piety", -25, 1),
+                    (call_script, "script_change_troop_renown", "trp_player", -50),
+                (else_try),
+                    (neg|quest_slot_eq, ":cur_quest", slot_quest_temp_slot, 0),
+                    (call_script, "script_fail_quest", ":cur_quest"),
+                    (call_script, "script_add_piety", -12, 1),
+                    (call_script, "script_change_troop_renown", "trp_player", -25),
+                (try_end),
+                (call_script, "script_end_quest", ":cur_quest"),
             (else_try),
                 (eq, ":exp_days", 0),
                 (eq, ":cur_quest", "qst_slave_revolt"),

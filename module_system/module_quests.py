@@ -575,5 +575,11 @@ quests = [
   ("trial", "Generic Quest: Trial", 0,
   "{!}placeholder."
   ),
+  ("saturnalia", "Generic Quest: Saturnalia", 0,
+  "{!}placeholder."
+  ),#december
+  ("ludi_romani", "Generic Quest: Ludi Romani", 0,
+  "{!}placeholder."
+  ),#september
   ("quests_end", "Quests End", 0, "{!}."),
 ]

@@ -9624,9 +9624,9 @@ strings = [
 ("subculture_gaulish_belgic", "Gaulish"),
 ("subculture_germanic_inferior", "Germanic"), # Along the Rhine
 ("subculture_germanic_superior", "Germanic"), # Along the Rhine
-("subculture_germanic_raetian", "Raetian"), # Alpine
-("subculture_germanic_norican", "Norican"), # Alpine Celtic/Illyrian, Romanized
-("subculture_central_pannonian", "Illyrian"), # Illyrian/Celtic
+("subculture_germanic_raetian", "Celtic"), # Alpine
+("subculture_germanic_norican", "Celtic"), # Alpine Celtic/Illyrian, Romanized
+("subculture_central_pannonian", "Celtic"), # Illyrian/Celtic
 ("subculture_britannic_britannian", "Britannic"), # Southern Britain
 ("subculture_britannic_caledonian", "Caledonian"), # Northern Britain/Scotland
 ("subculture_magna_germanian", "Germanic"), # General for Germania Libera
@@ -9693,7 +9693,7 @@ strings = [
 ("cook_quality_5_tooltip", "- A true culinary artist. Their feasts could appease angry gods or sway the Senate's vote. An invaluable asset."),
 ("cook_quality_5_host",    "Your cooks are true culinary artists; their feasts could appease angry gods or sway the Senate's vote."),
 ("cook_quality_5_guest_m", "By the gods, this is a feast worthy of Olympus! My compliments to your chefs!"),
-("cook_quality_5_guest_f", "This is simply divine! Your household will be the talk of the city. Such artistry is rarely seen outside the Emperor's own table!"),
+("cook_quality_5_guest_f", "This is simply divine! Your household will be the talk of the city. Such artistry is rarely seen outside Caesar's own table!"),
 ("cook_quality_5_spouse",  "My love, our guests will speak of our feast for months! Our cooks will bring great honor to our house."),
 # Tier 4 (Excellent)
 ("cook_quality_4_tooltip", "- An excellent cook, able to create delicious meals from humble ingredients."),
@@ -9789,7 +9789,7 @@ strings = [
 ("tetraites_intro", "I am Tetraites, a name that echoes in every arena from Britannia to Aegyptus. They say my skill with the gladius is a gift from Mars himself. Perhaps you have heard the tales of my victories?"),
 ("tetraites_greeting", "Hail, {playername}. Good to see you again. The baths are a fine place to ease the aches of the arena."),
 
-("spiculus_intro", "Spiculus. Remember that name, for it is the one whispered in fear by my opponents and roared in adoration by the crowds. The Emperor Nero himself has shown me great favor. I am a murmillo of some renown, and my victories have earned me more than just my freedom."),
+("spiculus_intro", "Spiculus. Remember that name, for it is the one whispered in fear by my opponents and roared in adoration by the crowds. Caesar Nero himself has shown me great favor. I am a murmillo of some renown, and my victories have earned me more than just my freedom."),
 ("spiculus_greeting", "Well met, {playername}. Taking in the splendors of Rome, I see."),
 
 ("hermes_intro", "They call me Hermes, swift of foot and deadly with the blade. I have been lauded in the verses of the poet Martial, a testament to my prowess. For a century, I have been the darling of the games. What brings you to a humble gladiator?"),
@@ -9804,8 +9804,64 @@ strings = [
 ("diocles_intro", "You stand before Appuleius Diocles, a Lusitanian, but known throughout the Empire as the master of the Circus Maximus. They call me the 'Lamecus', and my victories for the Red faction are legendary. I have won over a thousand races and earned more sesterces than most senators will see in a lifetime. What business have you with me?"),
 ("diocles_greeting", "Well met, {playername}. The roar of the crowd still rings in my ears, but the calm of the baths is a welcome change."),
 
-("scorpus_intro", "I am Scorpus, the pride of the Green faction! The crowds adore me, and the Emperor himself has gifted me my freedom and a fortune. They say I am the master of the final turn, snatching victory from the jaws of defeat. With over two thousand victories, my name will be remembered for eternity."),
+("scorpus_intro", "I am Scorpus, the pride of the Green faction! The crowds adore me, and Caesar himself has gifted me my freedom and a fortune. They say I am the master of the final turn, snatching victory from the jaws of defeat. With over two thousand victories, my name will be remembered for eternity."),
 ("scorpus_greeting", "Hail, {playername}! Always a pleasure to see a friendly face."),
+
+
+("desc_ludi_romani_emperor", "Ludi Romani!^^As Princeps and Pontifex Maximus, the sacred duty falls to you to inaugurate the Ludi Romani. The city looks to you to lead the grand procession and perform the necessary sacrifices to Jupiter Optimus Maximus, ensuring the gods' favor for another year. After your duties are complete, the spectacles you have sponsored—chariot races, gladiatorial combats, and theatrical plays—will entertain the masses. The games will last for seven days; you must ensure they are a worthy tribute to the father of the gods."),
+
+("desc_ludi_romani", "Ludi Romani!^^The city of Rome buzzes with anticipation, for the Ludi Romani are upon you! The most ancient and grand of all the games, held in honor of Jupiter Optimus Maximus, are about to begin. Chariot races will thunder through the Circus Maximus, gladiators will test their mettle in the arena, and actors will perform on every stage. The festivities will last for seven days. You have this time to witness the spectacles and honor the gods."),
+
+("desc_saturnalia_emperor", "Saturnalia!^^The time of Saturnalia is here, a period of celebrated chaos that even you, as Princeps, must embrace. As Pontifex Maximus, it is your duty to offer the state sacrifices to Saturn to inaugurate the festival and usher in the Golden Age, if only for a short time. Afterward, you are expected to participate in the revelry, setting aside your diadem to join in the feasting and gift-giving. For seven days, you are not only a ruler, but a participant in the joyful inversion of the social order."),
+
+("desc_saturnalia", "Saturnalia!^^A spirit of revelry and joyful chaos descends upon the Empire, announcing the arrival of Saturnalia! For seven days, the old order is overturned in honor of the god Saturn. Slaves will speak their minds freely, masters will serve their servants, and dice will be cast in the streets without fear of reprisal. Feasting, drinking, and gift-giving are the order of the day. You have seven days to take part in this cherished tradition and celebrate the memory of the Golden Age."),
+
+("quest_desc_ludi_romani_emperor", "As Princeps and Pontifex Maximus, the sacred duty falls to you to inaugurate the Ludi Romani. Travel to {s44} as soon as possible."),
+("quest_obj_ludi_romani_emperor", "Perform a state sacrifice, ideally in person."),
+
+("quest_desc_ludi_romani", "The city of Rome buzzes with anticipation, for the Ludi Romani are upon you! Travel to {s44} to participate."),
+("quest_obj_ludi_romani", "Perform at least one small sacrifice at the temple of Jupiter."),
+
+("quest_desc_saturnalia_emperor", "Saturnalia!^^The time of Saturnalia is here and as Pontifex Maximus, it is your duty to offer the state sacrifices to Saturn to inaugurate the festival and usher in the Golden Age. Travel to {s44} as soon as possible."),
+("quest_obj_saturnalia_emperor", "Perform a state sacrifice, ideally in person"),
+
+("quest_desc_saturnalia", "Saturnalia!^^A spirit of revelry and joyful chaos descends upon the Empire, announcing the arrival of Saturnalia! Travel to {s44} to participate."),
+("quest_obj_saturnalia", "Perform at least one small sacrifice at the temple of Saturn."),
+
+
+("ludi_romani_dialogue_1", "Greetings, {s0}. Are you heading to the Circus Maximus? I've got my money on the Greens today!"),
+("ludi_romani_dialogue_2", "Greetings, {s0}. By the gods, you can barely move in the Forum! The whole world has come to Rome for the games."),
+("ludi_romani_dialogue_3", "Greetings, {s0}. The procession this morning was magnificent. A truly grand tribute to Jupiter Optimus Maximus."),
+("ludi_romani_dialogue_4", "Greetings, {s0}. The races are for the mob. I'm hoping to see a good, skillful gladiatorial match in the arena."),
+("ludi_romani_dialogue_5", "Greetings, {s0}. Let's hope the sacrifices were pleasing to the gods. The city's fortune depends on it."),
+("ludi_romani_dialogue_6", "Greetings, {s0}. Forget the arena, the tragedies at the Theatre of Pompey are the real spectacle."),
+("ludi_romani_dialogue_7", "Greetings, {s0}. I saw a senator lose a fortune betting on the Reds. A glorious day!"),
+("ludi_romani_dialogue_end", "End"),
+
+("saturnalia_dialogue_1", "Io, Saturnalia, {s0}! Don't just stand there, have some wine!"),
+("saturnalia_dialogue_2", "Greetings, {s0}. My master served me my dinner last night. Tasted awful, but it's the principle of the thing!"),
+("saturnalia_dialogue_3", "Greetings, {s0}. I just called a magistrate a blockhead and all he did was laugh! What a wonderful time of year!"),
+("saturnalia_dialogue_4", "Greetings, {s0}. Lost all my money playing dice, but who cares? It's Saturnalia! Gambling is the rule of the day!"),
+("saturnalia_dialogue_5", "Greetings, {s0}. Don't forget to buy some wax candles and little clay figures for the children. The market is a madhouse."),
+("saturnalia_dialogue_6", "Greetings, {s0}. Why aren't you wearing the pileus, the cap of freedom? Are you even celebrating?"),
+("saturnalia_dialogue_7", "Greetings, {s0}. The whole city is drunk! It feels like the Golden Age has returned! Io, Saturnalia!"),
+("saturnalia_dialogue_end", "End"),
+
+("default_town_walker_dialogue", "Greetings, {s0}. Just another day in the city."),
+
+("saturnalia", "Saturnalia"),
+("ludi_romani", "Ludi Romani"),
+
+("sacrifice_success_small_desc", "You conduct the rites for the offering with proper reverence. The entrails of the sacrificed lamb are unblemished, and the augurs note no ill omens in the sky. The crowd murmurs in satisfaction as the priests declare that the gods have accepted your offering, fulfilling the state's obligation."),
+
+("sacrifice_success_medium_desc", "You perform the rites with solemn dignity. The auspices are favorable, the entrails of the sacrificed bull are perfect, and a wave of approval ripples through the crowd. The priests declare that the gods are pleased with your devotion."),
+
+("sacrifice_success_large_desc", "You preside over the grand sacrifice, offering the finest white bulls from across Italia. As the smoke from the pyres rises straight to the heavens, the senior augur cries out, pointing to an eagle circling directly overhead. The entrails are declared not merely perfect, but to show signs of immense future prosperity. An ecstatic roar erupts from the crowd as the priests proclaim that the gods have shown their undeniable favor upon you and all of Rome."),
+
+("sacrifice_delegated_desc", "You delegate the duty to the college of priests. They perform the rites competently in your name. While the sacrifice is technically valid, some whisper that Caesar lacks the personal piety of his predecessors. The gods are appeased, but the people are not inspired."),
+
+("sacrifice_refused_desc", "You refuse to perform the sacrifice, citing more important matters of state. A shocked silence falls over the priests and the gathered public. To neglect the gods so openly is seen as a terrible omen. The festival begins under a cloud of uncertainty and divine disapproval."),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

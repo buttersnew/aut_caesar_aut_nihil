@@ -5653,7 +5653,7 @@ scripts_hardcoded = [
     (store_script_param_2, ":num_hours"),
     (store_div, ":num_days", ":num_hours", 24),
     (store_add, ":cur_day", ":num_days", 1),
-    (assign, ":cur_month", 6),
+    (assign, ":cur_month", 9),
     (troop_get_slot, ":starting_year", "trp_global_variables", g_starting_year),
     (assign, ":cur_year", ":starting_year"),
     (assign, ":try_range", 99999),
