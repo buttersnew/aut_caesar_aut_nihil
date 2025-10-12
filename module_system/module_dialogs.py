@@ -2915,8 +2915,8 @@ dialogs =[
 ],"A discerning buyer! A man who understands that not all stock is created equal. Matching the right slave to the right labor is the key to a profitable enterprise."
 +" For tasks of the mind—managing a household, keeping your accounts, or educating your children—you cannot do better than a Greek. A word of caution, however: their minds are as quick as their fingers, and you must watch them closely. A literate Syrian or Roman can also serve these roles well, and often with less trouble."
 +"^^For the toil of the fields or the quarry, you need pure strength and endurance. Look to the north—the Germans, Celts, and Dacians. They are hardy stock, built for labor. Slaves from Africa are also excellent for fieldwork; they endure the noon sun better than most."
-+"^^I would advise against a Sarmatian for farm work. A nomad is more at home on a horse than behind a plow. And for the mines... if you need to send a soul into that darkness, take a German. Their frames are powerful, and they last longer down there than any other."
-+"^^If you wish to delight your palate, the finest cooks come from the East. A Syrian, in particular, can craft a meal that would impress Lucullus himself. A Greek or a Roman will also serve you well in the kitchen. As for the other barbarians... I would not trust them to boil an egg without starting a fire.",
++"^I would advise against a Sarmatian for farm work. A nomad is more at home on a horse than behind a plow. And for the mines... if you need to send a soul into that darkness, take a German. Their frames are powerful, and they last longer down there than any other."
++"^If you wish to delight your palate, the finest cooks come from the East. A Syrian, in particular, can craft a meal that would impress Lucullus himself. A Greek or a Roman will also serve you well in the kitchen. As for the other barbarians... I would not trust them to boil an egg without starting a fire.",
 "slaver_pretalk", []],
 
 [anyone|plyr, "slaver_talk", [
