@@ -59046,7 +59046,6 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 []],
 
 [anyone,"lord_tell_mission_longbards_explain_finish",[],
-
 "I am glad to hear that {playername}. Once you are ready meet our army near the river Suebos. I will mark the location on your map. Farewell! And my the gods protect you in battle.",
 "close_window",[
   (finish_mission),
@@ -59059,14 +59058,6 @@ gaining the right to choose a banner of your own and fight under it in battle.",
   (party_set_flags, "p_langobard_landing", pf_disabled, 0),
   (quest_set_slot, "qst_langobard_arrive", slot_quest_current_state, 1),
 ]],
-
-[anyone,"lord_tell_mission",[
-  (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
-  (troop_slot_ge, "$g_talk_troop", slot_troop_player_relation, 50),
-  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 0),
-  (neg|check_quest_active, "qst_nero_greece_tour"),
-], "A task... another report from Britannia, another grain shipment from Aegyptus... how tiresome the mechanisms of empire can be. The soul requires more than logistics, it requires... inspiration! Art!", "nero_delphi_intro_2",
-[]],
 
 [anyone, "nero_delphi_intro_2", [],
   "That's it! A grand tour! A pilgrimage to the heart of culture itself! To Hellas! Not as a conqueror, but as a competitor! I shall compete in their games, sing in their theatres, and show the Greeks what true artistry is! I will return with more crowns than any general has brought back from a triumph!",
@@ -59132,6 +59123,7 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 +" eagle could be found, people would always remember, that it was me who finally took revenge for this shameful defeat!"
 +" Thus, I order you to bring me the last eagle!", "lord_tell_mission_eagle",
 []],
+
 [anyone,"lord_tell_mission",[
   (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
   (eq, "$g_talk_troop_faction", "$players_kingdom"),
@@ -59139,6 +59131,15 @@ gaining the right to choose a banner of your own and fight under it in battle.",
   (neg|quest_slot_ge, "qst_thunder", slot_quest_thunder_dont_give_again, 1),
   (neg|check_quest_active, "qst_thunder"),
 ], "As a matter of fact, I have a task for you, {playername}.", "thunder_god_talk",
+[]],
+
+[anyone,"lord_tell_mission",[
+  (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
+  (eq, "$g_talk_troop_faction", "$players_kingdom"),
+  (troop_slot_ge, "$g_talk_troop", slot_troop_player_relation, 50),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 0),
+  (neg|check_quest_active, "qst_nero_greece_tour"),
+], "A task... another report from Britannia, another grain shipment from Aegyptus... how tiresome the mechanisms of empire can be. The soul requires more than logistics, it requires... inspiration! Art!", "nero_delphi_intro_2",
 []],
 
 [anyone,"thunder_god_talk",[

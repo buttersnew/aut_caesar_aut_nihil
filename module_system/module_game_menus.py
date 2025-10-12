@@ -41,8 +41,10 @@ from module_constants import *
 
 game_menus = [
 ("start_game_0",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Welcome to Aut Caesar aut nihil",
+  "ADULT CONTENT WARNING^^This modification for Mount & Blade: Warband is intended for mature audiences only and contains graphic violence, strong language, and explicit sexual themes.^^You must be 18 years of age or older to play.^^By clicking 'Continue', you confirm that you meet this age requirement and that you are willing to view such content. The creators of this modification are not responsible for users who violate this age agreement.",
   "none",[
+  ],[
+  ("go_back",[],"Continue",[
     (allow_ironman,0),#no save without quite
     (assign, "$difficulty_type", camp_d2),	#beginner
     (assign, "$g_gore_on", 0), # gore
@@ -69,7 +71,7 @@ game_menus = [
     (options_set_combat_speed, 0),	#0 = slowest, 1 = slower, 2 = normal, 3 = faster, 4 = fastest
     (assign, reg60, 1),
     (start_presentation, "prsnt_vc_options"),
-  ],[
+  ]),
   ("go_back",[],"Go back",[
     (change_screen_quit),
   ]),
