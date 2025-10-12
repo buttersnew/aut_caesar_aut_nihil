@@ -1,81 +1,313 @@
 egyptian_names = [
-("egyptian_name_01", "Petosiris"),   # Egyptian: "Gift of Osiris"
-("egyptian_name_02", "Horion"),        # Hellenized Egyptian: From the god Horus
-("egyptian_name_03", "Sarapion"),      # Hellenized Egyptian: From the god Serapis
-("egyptian_name_04", "Ammonios"),      # Hellenized Egyptian: From the god Amun
-("egyptian_name_05", "Pachomios"),     # Egyptian: "He of the Falcon"
-("egyptian_name_06", "Apollonios"),    # Greek: Common in Egypt
-("egyptian_name_07", "Herakleides"),   # Greek: "Son of Herakles"
-("egyptian_name_08", "Ptolemaios"),    # Greek: A famous dynastic name
-("egyptian_name_09", "Isidoros"),      # Hellenized Egyptian: "Gift of Isis"
-("egyptian_name_10", "Anoubion"),      # Hellenized Egyptian: From the god Anubis
-("egyptian_name_11", "Petesouchos"),   # Hellenized Egyptian: "He whom Sobek has given"
-("egyptian_name_12", "Psenapis"),      # Egyptian: "Son of the god Apis"
-("egyptian_name_13", "Theon"),         # Greek: Common intellectual name
-("egyptian_name_14", "Didymos"),       # Greek: "Twin"
-("egyptian_name_15", "Harpalos"),      # Greek
-("egyptian_name_16", "Bek"),           # Traditional Egyptian
-("egyptian_name_17", "Paneb"),         # Traditional Egyptian
-("egyptian_name_18", "Hor"),           # Traditional Egyptian
-("egyptian_name_19", "Neilos"),        # Greek: "Nile"
-("egyptian_name_20", "Philammon"),     # Greek: "Friend of Amun"
-("egyptian_name_21", "Achillas"),      # Greek
-("egyptian_name_22", "Pakhom"),        # Coptic/Late Egyptian
-("egyptian_name_23", "Pasan"),         # Egyptian
-("egyptian_name_24", "Zosimos"),       # Greek
-("egyptian_name_25", "Alexandros"),    # Greek: Extremely common due to Alexandria
-("egyptian_name_26", "Demetrios"),     # Greek
-("egyptian_name_27", "Hierax"),        # Greek: "Hawk" (often used to translate Egyptian names)
-("egyptian_name_28", "Gaius"),         # Roman: For romanized individuals
-("egyptian_name_29", "Longinus"),      # Roman
-("egyptian_name_30", "Valerius"),      # Roman
-("egyptian_name_31", "Heron"),         # Greek
-("egyptian_name_32", "Nikanor"),       # Greek
-("egyptian_name_33", "Pabis"),         # Egyptian
-("egyptian_name_34", "Tithoes"),       # Egyptian
-("egyptian_name_35", "Paniskos"),      # Greek
-("egyptian_name_36", "Apion"),         # Hellenized Egyptian
-("egyptian_name_37", "Lysimachos"),    # Greek
-("egyptian_name_38", "Potamon"),       # Greek: "River"
-("egyptian_name_39", "Onnophris"),     # Hellenized form of Egyptian "Wennefer" (an epithet of Osiris)
-("egyptian_name_40", "Kastor"),        # Greek (Castor)
+("egyptian_name_01", "Aaamn"),
+("egyptian_name_02", "Aher"),
+("egyptian_name_03", "Amnemhat"),
+("egyptian_name_04", "Amnhotep"),
+("egyptian_name_05", "Amniu"),
+("egyptian_name_06", "Amnpayem"),
+("egyptian_name_07", "Amnpayiwtawy"),
+("egyptian_name_08", "Ankhamn"),
+("egyptian_name_09", "Ankhhapi"),
+("egyptian_name_10", "Ankhifenkhonsu"),
+("egyptian_name_11", "Ankhkhonsu"),
+("egyptian_name_12", "Ankhmare"),
+("egyptian_name_13", "Ankhmerwer"),
+("egyptian_name_14", "Ankhnebthet"),
+("egyptian_name_15", "Ankhpakhered"),
+("egyptian_name_16", "Ankhsmatawy"),
+("egyptian_name_17", "Byankh"),
+("egyptian_name_18", "Chehepenimiu"),
+("egyptian_name_19", "Djehutyiu"),
+("egyptian_name_20", "Djehutysedjem"),
+("egyptian_name_21", "Djehutywah"),
+("egyptian_name_22", "Geten"),
+("egyptian_name_23", "Hakor"),
+("egyptian_name_24", "Hapmin"),
+("egyptian_name_25", "Hater"),
+("egyptian_name_26", "Heriu"),
+("egyptian_name_27", "Heryinpu"),
+("egyptian_name_28", "Hetepsebek"),
+("egyptian_name_29", "Hor"),
+("egyptian_name_30", "Horankh"),
+("egyptian_name_31", "Horatwa"),
+("egyptian_name_32", "Hordjehuty"),
+("egyptian_name_33", "Horemheb"),
+("egyptian_name_34", "Horkheb"),
+("egyptian_name_35", "Hormakht"),
+("egyptian_name_36", "Horpakhered"),
+("egyptian_name_37", "Horpeniset"),
+("egyptian_name_38", "Horsaiset"),
+("egyptian_name_39", "Horsawsir"),
+("egyptian_name_40", "Horsysobek"),
+("egyptian_name_41", "Hortayifnakht"),
+("egyptian_name_42", "Horwedja"),
+("egyptian_name_43", "Horwer"),
+("egyptian_name_44", "Iahmos"),
+("egyptian_name_45", "Iahwennefer"),
+("egyptian_name_46", "Imhotep"),
+("egyptian_name_47", "Inpu"),
+("egyptian_name_48", "Irethorereriw"),
+("egyptian_name_49", "Irethorerw"),
+("egyptian_name_50", "Iretiuereriu"),
+("egyptian_name_51", "Iret-redj"),
+("egyptian_name_52", "Iufanch"),
+("egyptian_name_53", "Iufiu"),
+("egyptian_name_54", "Ka"),
+("egyptian_name_55", "Kalsher"),
+("egyptian_name_56", "Kashet"),
+("egyptian_name_57", "Kamet"),
+("egyptian_name_58", "Khemnayifshemeshu"),
+("egyptian_name_59", "Khemneteranew"),
+("egyptian_name_60", "Khifnkhonsu"),
+("egyptian_name_61", "Khonsudjehuty"),
+("egyptian_name_62", "Khonsuiirau"),
+("egyptian_name_63", "Khutawey"),
+("egyptian_name_64", "Khyrek"),
+("egyptian_name_65", "Kludj"),
+("egyptian_name_66", "Maare"),
+("egyptian_name_67", "Maatre"),
+("egyptian_name_68", "Maaresasebek"),
+("egyptian_name_69", "Mayresy"),
+("egyptian_name_70", "Nakht"),
+("egyptian_name_71", "Nakhthor"),
+("egyptian_name_72", "Nakhthorheb"),
+("egyptian_name_73", "Nakhtmontu"),
+("egyptian_name_74", "Nakhtnebif"),
+("egyptian_name_75", "Nektanebo"),
+("egyptian_name_76", "Nakhtpara"),
+("egyptian_name_77", "Nakhtsobek"),
+("egyptian_name_78", "Nanakhtif"),
+("egyptian_name_79", "Nebwab"),
+("egyptian_name_80", "Nesnayiwkhemeniw"),
+("egyptian_name_81", "Paaam"),
+("egyptian_name_82", "Paaan"),
+("egyptian_name_83", "Paachem"),
+("egyptian_name_84", "Paamun"),
+("egyptian_name_85", "Paat"),
+("egyptian_name_86", "Paatpaaa"),
+("egyptian_name_87", "Paatpashey"),
+("egyptian_name_88", "Paatpawer"),
+("egyptian_name_89", "Pabek"),
+("egyptian_name_90", "Pachenefey"),
+("egyptian_name_91", "Padiamun"),
+("egyptian_name_92", "Padiamunnesewtawey"),
+("egyptian_name_93", "Padiashaakhy"),
+("egyptian_name_94", "Padibast"),
+("egyptian_name_95", "Padiherytepe"),
+("egyptian_name_96", "Padihor"),
+("egyptian_name_97", "Padihorpakhered"),
+("egyptian_name_98", "Padihorpara"),
+("egyptian_name_99", "Padihorresen"),
+("egyptian_name_100", "Padihorsmatawey"),
+("egyptian_name_101", "Padihorwer"),
+("egyptian_name_102", "Padiiset"),
+("egyptian_name_103", "Padikhonsu"),
+("egyptian_name_104", "Padimin"),
+("egyptian_name_105", "Padinanecheru"),
+("egyptian_name_106", "Padineferhotep"),
+("egyptian_name_107", "Padinit"),
+("egyptian_name_108", "Padineith"),
+("egyptian_name_109", "Padipara"),
+("egyptian_name_110", "Potiphar"),
+("egyptian_name_111", "Padiwsir"),
+("egyptian_name_112", "Padiwsirnesmeter"),
+("egyptian_name_113", "Padiwsirwer"),
+("egyptian_name_114", "Padjehuty"),
+("egyptian_name_115", "Pagay"),
+("egyptian_name_116", "Pahater"),
+("egyptian_name_117", "Paheb"),
+("egyptian_name_118", "Pahemneternew"),
+("egyptian_name_119", "Paherkhonsu"),
+("egyptian_name_120", "Pahorsaiset"),
+("egyptian_name_121", "Pahy"),
+("egyptian_name_122", "Paigesh"),
+("egyptian_name_123", "Painmewet"),
+("egyptian_name_124", "Paiset"),
+("egyptian_name_125", "Paisher"),
+("egyptian_name_126", "Paiwiw"),
+("egyptian_name_127", "Pakeme"),
+("egyptian_name_128", "Pakewer"),
+("egyptian_name_129", "Pakhaas"),
+("egyptian_name_130", "Pakhered"),
+("egyptian_name_131", "Pameh"),
+("egyptian_name_132", "Pamehcherey"),
+("egyptian_name_133", "Pamerah"),
+("egyptian_name_134", "Pamonthes"),
+("egyptian_name_135", "Paminis"),
+("egyptian_name_136", "Pana"),
+("egyptian_name_137", "Paneferher"),
+("egyptian_name_138", "Panetweret"),
+("egyptian_name_139", "Papranetreq"),
+("egyptian_name_140", "Paptah"),
+("egyptian_name_141", "Paremechmymy"),
+("egyptian_name_142", "Parl"),
+("egyptian_name_143", "Pase"),
+("egyptian_name_144", "Pasenkey"),
+("egyptian_name_145", "Pasensenu"),
+("egyptian_name_146", "Pashemetere"),
+("egyptian_name_147", "Pasheramun"),
+("egyptian_name_148", "Pasherdjehuty"),
+("egyptian_name_149", "Pasherinpu"),
+("egyptian_name_150", "Pasheriset"),
+("egyptian_name_151", "Pasherkhnum"),
+("egyptian_name_152", "Pasherkhonsu"),
+("egyptian_name_153", "Pashermin"),
+("egyptian_name_154", "Pashermontu"),
+("egyptian_name_155", "Pashernagewerw"),
+("egyptian_name_156", "Pashernanecheru"),
+("egyptian_name_157", "Pashernecherwey"),
+("egyptian_name_158", "Pashernetaiht"),
+("egyptian_name_159", "Pashernit"),
+("egyptian_name_160", "Pasherpamewet"),
+("egyptian_name_161", "Pasherpawer"),
+("egyptian_name_162", "Pashertulys"),
+("egyptian_name_163", "Pashertut"),
+("egyptian_name_164", "Pashertyshet"),
+("egyptian_name_165", "Pasherwsirnesmet"),
+("egyptian_name_166", "Pashuch"),
+("egyptian_name_169", "Patiamun"),
+("egyptian_name_170", "Patihor"),
+("egyptian_name_171", "Patihorpasheriset"),
+("egyptian_name_172", "Patihorpashereniset"),
+("egyptian_name_173", "Patiinhert"),
+("egyptian_name_174", "Patianhur"),
+("egyptian_name_175", "Patiiset"),
+("egyptian_name_176", "Patimin"),
+("egyptian_name_177", "Patinaneturu"),
+("egyptian_name_178", "Patirenenet"),
+("egyptian_name_179", "Patisebek"),
+("egyptian_name_180", "Patisobekhotep"),
+("egyptian_name_181", "Patiu"),
+("egyptian_name_182", "Patiwsir"),
+("egyptian_name_183", "Pawa"),
+("egyptian_name_184", "Pawahamun"),
+("egyptian_name_185", "Pawahmaat"),
+("egyptian_name_186", "Paweher"),
+("egyptian_name_187", "Pawer"),
+("egyptian_name_188", "Pawerwerwerwerwer"),
+("egyptian_name_189", "Payankh"),
+("egyptian_name_190", "Payaramun"),
+("egyptian_name_191", "Payhorsaiset"),
+("egyptian_name_192", "Payhout"),
+("egyptian_name_193", "Payifiuiu"),
+("egyptian_name_194", "Payiuiu"),
+("egyptian_name_195", "Payiwiuiu"),
+("egyptian_name_196", "Payka"),
+("egyptian_name_197", "Paymin"),
+("egyptian_name_198", "Paynetweret"),
+("egyptian_name_199", "Paysobek"),
+("egyptian_name_200", "Pehey"),
+("egyptian_name_201", "Penamon"),
+("egyptian_name_202", "Penbukh"),
+("egyptian_name_203", "Pendjehuty"),
+("egyptian_name_204", "Pendjeme"),
+("egyptian_name_205", "Pengeb"),
+("egyptian_name_206", "Penhor"),
+("egyptian_name_207", "Penirdit"),
+("egyptian_name_208", "Peniry"),
+("egyptian_name_209", "Peniuiu"),
+("egyptian_name_210", "Penkemet"),
+("egyptian_name_211", "Penkhered"),
+("egyptian_name_212", "Penkhi"),
+("egyptian_name_213", "Penkhy"),
+("egyptian_name_214", "Penkhnum"),
+("egyptian_name_215", "Penna"),
+("egyptian_name_216", "Pennabekhenw"),
+("egyptian_name_217", "Pennechernepher"),
+("egyptian_name_218", "Pennefer"),
+("egyptian_name_219", "Penredj"),
+("egyptian_name_220", "Penrehu"),
+("egyptian_name_221", "Penret"),
+("egyptian_name_222", "Pensen"),
+("egyptian_name_223", "Pentaniut"),
+("egyptian_name_224", "Pentaweraet"),
+("egyptian_name_225", "Pentawey"),
+("egyptian_name_226", "Penwen"),
+("egyptian_name_227", "Perel"),
+("egyptian_name_228", "Pesay"),
+("egyptian_name_229", "Pesey"),
+("egyptian_name_231", "Pn-rd"),
+("egyptian_name_232", "Psamtikmenekhib"),
+("egyptian_name_233", "Ptahnefer"),
+("egyptian_name_234", "Rakhnum"),
+("egyptian_name_235", "Rer"),
+("egyptian_name_236", "Samut"),
+("egyptian_name_237", "Sasebek"),
+("egyptian_name_238", "Sebekchay"),
+("egyptian_name_239", "Sebekhapy"),
+("egyptian_name_240", "Sebekhetep"),
+("egyptian_name_241", "Sebekiu"),
+("egyptian_name_242", "Sebekmen"),
+("egyptian_name_243", "Sebekpaym"),
+("egyptian_name_244", "Senweser"),
+("egyptian_name_245", "Senweseret"),
+("egyptian_name_246", "Smatawy"),
+("egyptian_name_247", "Smatawytayfnakht"),
+("egyptian_name_248", "Sobekhep"),
+("egyptian_name_249", "Sus"),
+("egyptian_name_250", "Sypamewet"),
+("egyptian_name_251", "Sysobek"),
+("egyptian_name_252", "Taynakhtereriu"),
+("egyptian_name_253", "Terekem"),
+("egyptian_name_254", "Tibastetiau"),
+("egyptian_name_255", "Tiniyiau"),
+("egyptian_name_256", "Tutu"),
+("egyptian_name_257", "Tut"),
+("egyptian_name_258", "Udjahor"),
+("egyptian_name_259", "Udjaif"),
+("egyptian_name_260", "Usermaatre"),
+("egyptian_name_261", "Userwer"),
+("egyptian_name_262", "Wsirwer"),
+("egyptian_name_263", "Wahibra"),
+("egyptian_name_264", "Wenamun"),
+("egyptian_name_265", "Wennefer"),
 ("egyptian_name_end", "end"),
 
-("egyptian_female_name_01", "Taisis"),         # Hellenized Egyptian: "She of Isis"
-("egyptian_female_name_02", "Isidora"),        # Hellenized Egyptian: "Gift of Isis"
-("egyptian_female_name_03", "Cleopatra"),      # Greek: A famous dynastic name, means "Glory of her father"
-("egyptian_female_name_04", "Arsinoe"),        # Greek: Another famous Ptolemaic royal name
-("egyptian_female_name_05", "Berenike"),       # Greek: The Greek form of Berenice
-("egyptian_female_name_06", "Thermouthis"),    # Hellenized Egyptian: "Dedicated to Renenutet" (goddess of harvest)
-("egyptian_female_name_07", "Thais"),          # Greek: A famous name associated with Egypt
-("egyptian_female_name_08", "Helene"),         # Greek
-("egyptian_female_name_09", "Merit"),          # Traditional Egyptian: "Beloved"
-("egyptian_female_name_10", "Nefert"),         # Traditional Egyptian: "Beautiful"
-("egyptian_female_name_11", "Senmonthis"),     # Egyptian: "Daughter of Monthu"
-("egyptian_female_name_12", "Alexandra"),      # Greek: Very common due to the city of Alexandria
-("egyptian_female_name_13", "Sophia"),         # Greek: "Wisdom"
-("egyptian_female_name_14", "Zoe"),            # Greek: "Life"
-("egyptian_female_name_15", "Apollonia"),      # Greek
-("egyptian_female_name_16", "Demetria"),       # Greek
-("egyptian_female_name_17", "Tanet"),          # Traditional Egyptian
-("egyptian_female_name_18", "Herennia"),       # Roman
-("egyptian_female_name_19", "Julia"),          # Roman
-("egyptian_female_name_20", "Antonia"),        # Roman
-("egyptian_female_name_21", "Didyme"),         # Greek: "Twin" (female form)
-("egyptian_female_name_22", "Eirene"),         # Greek: "Peace"
-("egyptian_female_name_23", "Ptolemais"),      # Greek: A common female name from "Ptolemaios"
-("egyptian_female_name_24", "Sarapias"),       # Hellenized Egyptian: "She of Serapis"
-("egyptian_female_name_25", "Tanephthys"),     # Hellenized Egyptian: "She of Nephthys"
-("egyptian_female_name_26", "Aline"),          # Hellenized Egyptian/Greek
-("egyptian_female_name_27", "Herais"),         # Greek
-("egyptian_female_name_28", "Kolluthis"),      # Egyptian
-("egyptian_female_name_29", "Nikaia"),         # Greek: "Victory"
-("egyptian_female_name_30", "Philotera"),      # Greek: "Loving"
-("egyptian_female_name_31", "Soteris"),        # Greek
-("egyptian_female_name_32", "Tasenouphis"),    # Egyptian
-("egyptian_female_name_33", "Valeria"),        # Roman
-("egyptian_female_name_34", "Ammonia"),        # Hellenized Egyptian: "She of Amun"
-("egyptian_female_name_35", "Tefnut"),         # Traditional Egyptian goddess name
+("egyptian_female_name_01", "Ankhes"),
+("egyptian_female_name_02", "Ankhet"),
+("egyptian_female_name_03", "Bastetiyt"),
+("egyptian_female_name_04", "Hathoriyt"),
+("egyptian_female_name_05", "Horankh"),
+("egyptian_female_name_06", "Iset"),
+("egyptian_female_name_07", "Isetweret"),
+("egyptian_female_name_08", "Naneferibptah"),
+("egyptian_female_name_09", "Nanefermenibptah"),
+("egyptian_female_name_10", "Naneferrenpet"),
+("egyptian_female_name_11", "Nanefersobek"),
+("egyptian_female_name_12", "Nebettahy"),
+("egyptian_female_name_13", "Neferet"),
+("egyptian_female_name_14", "Nehytweret"),
+("egyptian_female_name_15", "Nitiyt"),
+("egyptian_female_name_16", "Nitounet"),
+("egyptian_female_name_17", "Peset"),
+("egyptian_female_name_18", "Reneptnefert"),
+("egyptian_female_name_19", "Shetey"),
+("egyptian_female_name_20", "Taa"),
+("egyptian_female_name_21", "Taamenra"),
+("egyptian_female_name_22", "Taamun"),
+("egyptian_female_name_23", "Tabehes"),
+("egyptian_female_name_24", "Tachenef"),
+("egyptian_female_name_25", "Tadiwsir"),
+("egyptian_female_name_26", "Tahena"),
+("egyptian_female_name_27", "Taremetetbastet"),
+("egyptian_female_name_28", "Taremetetkhonsudjehuty"),
+("egyptian_female_name_29", "Taremetetmem"),
+("egyptian_female_name_30", "Tarenenet"),
+("egyptian_female_name_31", "Tasheretenhor"),
+("egyptian_female_name_32", "Tashereteniah"),
+("egyptian_female_name_33", "Tasheretmenecht"),
+("egyptian_female_name_34", "Tasheretmontu"),
+("egyptian_female_name_35", "Tasheretnpashey"),
+("egyptian_female_name_36", "Tasheretpaarewarew"),
+("egyptian_female_name_37", "Tasherettut"),
+("egyptian_female_name_38", "Tasheretweret"),
+("egyptian_female_name_39", "Tasheretwsir"),
+("egyptian_female_name_40", "Tasheretwsirbech"),
+("egyptian_female_name_41", "Tatiwsir"),
+("egyptian_female_name_42", "Tayarew"),
+("egyptian_female_name_43", "Taydewanecher"),
+("egyptian_female_name_44", "Taywet"),
+("egyptian_female_name_45", "Tentnahebw"),
 ("egyptian_female_name_end", "end"),
 
 ]

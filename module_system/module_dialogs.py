@@ -272,6 +272,2063 @@ dialogs =[
 ],"{!}Warning: This line is never displayed. It is just for storing conversation variables.",
 "close_window",[]],
 
+[trp_kingdom_7_lady_1, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (agent_get_slot, ":is_upset", "$g_talk_agent", slot_agent_fatiga),
+  (eq, ":is_upset", -1),
+], "My own reflection in this cup is more stimulating conversation. Go away.",
+"close_window", []],
+
+[trp_kingdom_7_lady_1, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "Another cup, {playername}? Be careful. Drunkenness makes men... clumsy. And I detest clumsiness.",
+"poppaea_player_pickup_lines", []],
+
+[anyone|plyr, "poppaea_player_pickup_lines", [
+], "You're... -- hic --... the prettiest lady here. In the whole world!",
+"poppaea_upset_boring", []],
+
+[anyone|plyr, "poppaea_player_pickup_lines", [
+], "Your beauty... shines brighter than all these... -- hic --... torches.",
+"poppaea_upset_clumsy", []],
+
+[anyone|plyr, "poppaea_player_pickup_lines", [
+], "They say... -- hic --... Aphrodite was born from the sea foam. But I think... the sea foam was just trying to copy you.",
+"poppaea_intrigued", []],
+
+[anyone, "poppaea_upset_boring", [],
+"Prettiest? How... quaint. Go tell that to a barmaid. She might be impressed.",
+"poppaea_upset_consequence", []],
+
+[anyone, "poppaea_upset_clumsy", [],
+"Brighter than torches?^^-- She sighs. --^^Is that the best poetry you can manage? You're a soldier, not Ovid. Stick to what you know.",
+"poppaea_upset_consequence", []],
+
+[anyone, "poppaea_upset_consequence", [],
+"It's better to go now, {playername}. You are already too drunken...",
+"close_window", [
+  (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -1), # Set the "upset" flag
+]],
+
+[anyone, "poppaea_intrigued", [
+], "-- A slow, genuine smile spreads across her face. The first one you've seen all night. --^^Now that... that is how you compliment an deity. For a drunken brute, you have a poet's soul.",
+"poppaea_suggests_privacy_1", []],
+
+[anyone|plyr, "poppaea_suggests_privacy_1", [
+], "Honor is...with me, oh Divinity.",
+"poppaea_suggests_privacy", []],
+[anyone|plyr, "poppaea_suggests_privacy_1", [
+], "Augusta ... but where?",
+"poppaea_suggests_privacy", []],
+[anyone|plyr, "poppaea_suggests_privacy_1", [
+], "I will perform sacrifices...in you...",
+"poppaea_suggests_privacy", []],
+
+[anyone, "poppaea_suggests_privacy", [],
+"My private chambers are quiet... and comfortable. The noise of this party has become tiresome. Come. Worship your goddess properly.",
+"close_window", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", 15),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, "trp_kingdom_7_lady_1"),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+]],
+
+[trp_kingdom_7_lady_new_4, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (agent_get_slot, ":is_upset", "$g_talk_agent", slot_agent_fatiga),
+  (eq, ":is_upset", -1),
+], "I've lost interest. Go find another cage to rattle your bars in.",
+ "close_window", []],
+
+[trp_kingdom_7_lady_new_4, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "Look at them all. Like animals in a gilded cage. You, however... you move with a certain... predatory grace, even with all that wine in you.",
+"verania_player_pickup_lines", []],
+
+[anyone|plyr, "verania_player_pickup_lines", [
+], "You're the only... -- hic --... thing of beauty in this whole zoo.",
+"verania_upset_boring", []],
+
+[anyone|plyr, "verania_player_pickup_lines", [
+], "I can be a... -- hic --... real animal. For you.",
+"verania_upset_clumsy", []],
+
+[anyone|plyr, "verania_player_pickup_lines", [
+], "This wine... -- hic --... it strips away the citizen. Leaves only the... beast.",
+"verania_intrigued", []],
+
+
+[anyone, "verania_upset_boring", [],
+"Beauty is a domestic virtue. I am interested in the wild. You are not.",
+"verania_upset_consequence", []],
+
+[anyone, "verania_upset_clumsy", [],
+"You misunderstand. Roaring does not make one a lion. It is about instinct, not noise.", "verania_upset_consequence", []],
+
+[anyone, "verania_upset_consequence", [],
+"Just go away!", "close_window", [
+  (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -1), # Set the "upset" flag
+]],
+
+[anyone, "verania_intrigued", [
+], "-- Her calm expression shifts to one of intense, focused interest. A slow smile plays on her lips. --^^The beast... Yes. I see it in your eyes. But a beast needs the proper skin.",
+"verania_suggests_privacy_1", []],
+
+[anyone|plyr, "verania_suggests_privacy_1", [
+], "The cage...",
+"verania_suggests_privacy", []],
+[anyone|plyr, "verania_suggests_privacy_1", [
+], "The beast...",
+"verania_suggests_privacy", []],
+[anyone|plyr, "verania_suggests_privacy_1", [
+], "WARGGGG!!",
+"verania_suggests_privacy", []],
+
+[anyone, "verania_suggests_privacy", [],
+"Nero keeps a lion skin in his private study... a trophy from some staged hunt. Come. It is time to let the beast out of its cage.",
+"close_window", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_new_4", 15),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, "trp_kingdom_7_lady_new_4"),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+]],
+
+[trp_kingdom_7_lady_10, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (agent_get_slot, ":is_upset", "$g_talk_agent", slot_agent_fatiga),
+  (eq, ":is_upset", -1),
+], "Your drunken stumbling is an eyesore. Find another corner to lean in.",
+"close_window", []],
+
+[trp_kingdom_7_lady_10, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "You're holding your wine better than most, {playername}, but your eyes have a certain... lack of focus. Are you enjoying the Caesar's celebration?",
+"fabia_player_pickup_lines", []],
+
+[anyone|plyr, "fabia_player_pickup_lines", [
+], "You're... -- hic --... you're very beautiful. I want you.",
+"fabia_upset_clumsy", []],
+
+[anyone|plyr, "fabia_player_pickup_lines", [
+], "I'm enjoying just... -- hic --... looking at you.",
+"fabia_upset_boring", []],
+
+[anyone|plyr, "fabia_player_pickup_lines", [
+], "The poets talk of Venus's temple... -- hic --... but I've always been more interested in the... less-traveled path behind it.",
+"fabia_intrigued", []],
+
+[anyone, "fabia_upset_clumsy", [],
+"How crude. You sound like every other drunken legionary. I expected more from Nero's companion.", "fabia_upset_consequence", []],
+
+[anyone, "fabia_upset_boring", [],
+"And I am bored of being looked at. Find someone else to flatter with your slurred poetry.",
+"fabia_upset_consequence", []],
+
+[anyone, "fabia_upset_consequence", [],
+"Just leave me alone!",
+"close_window", [
+  (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -1), # Set the "upset" flag
+]],
+
+[anyone, "fabia_intrigued", [
+], "-- A small, sharp smile touches her lips. She looks you up and down, her gaze lingering. --^^A soldier who appreciates an alternative strategy. How refreshing. Most men are so... predictable.",
+"fabia_suggests_privacy_1", []],
+
+[anyone|plyr, "fabia_suggests_privacy_1", [
+], "I am a master strategist.",
+"fabia_suggests_privacy", []],
+[anyone|plyr, "fabia_suggests_privacy_1", [
+], "Well, well, well.",
+"fabia_suggests_privacy", []],
+[anyone|plyr, "fabia_suggests_privacy_1", [
+], "Attack the ... rear then!",
+"fabia_suggests_privacy", []],
+
+[anyone, "fabia_suggests_privacy", [],
+"There is a small study... down the hall. Unused. Unlocked. Meet me there. And don't be late.",
+"close_window", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_10", 15),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, "trp_kingdom_7_lady_10"),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+]],
+
+[trp_kingdom_7_lady_23, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (agent_get_slot, ":is_upset", "$g_talk_agent", slot_agent_fatiga),
+  (eq, ":is_upset", -1),
+], "Oh, the boring one. Go away. You can't even... -- hic --... hurt my feelings properly.",
+"close_window", []],
+
+[trp_kingdom_7_lady_23, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "-- She sways slightly, staring into the flame of a nearby lamp. --^^ So... -- hic --... so warm. So... pleasant. I'm bored. Are you bored, {playername}?",
+"plautilla_player_pickup_lines", []],
+
+[anyone|plyr, "plautilla_player_pickup_lines", [
+], "Maybe you need... -- hic --... more wine? Or a pretty song?",
+"plautilla_upset_boring", []],
+
+[anyone|plyr, "plautilla_player_pickup_lines", [
+], "I can make it... -- hic --... less boring. C'mere.",
+"plautilla_upset_clumsy", []],
+
+[anyone|plyr, "plautilla_player_pickup_lines", [
+], "This wine is sweet. But I bet you prefer something that... -- hic --... stings. Something that leaves a mark.",
+"plautilla_intrigued", []],
+
+[anyone, "plautilla_upset_boring", [],
+"More wine?^^-- She scoffs. --^^I'm drowning in pleasantness. I don't need... -- hic --... more water.",
+"plautilla_upset_consequence", []],
+
+[anyone, "plautilla_upset_clumsy", [],
+"Is that it? A clumsy grab in the dark? You have no... -- hic --... imagination. Go away.",
+"plautilla_upset_consequence", []],
+
+[anyone, "plautilla_upset_consequence", [],
+"Just leave me alone...",
+"close_window", [
+  (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -1), # Set the "upset" flag
+]],
+
+[anyone, "plautilla_intrigued", [
+], "-- Her drunken haze seems to vanish, replaced by a sharp, predatory focus. A slow, dark smile spreads across her face. --^^A mark... -- hic --... Yes. I like things that leave a mark.", "plautilla_suggests_privacy_1", []],
+
+[anyone|plyr, "plautilla_suggests_privacy_1", [
+], "I will...leave a mark",
+"plautilla_suggests_privacy", []],
+[anyone|plyr, "plautilla_suggests_privacy_1", [
+], "Where we go?",
+"plautilla_suggests_privacy", []],
+[anyone|plyr, "plautilla_suggests_privacy_1", [
+], "The time ... it has come!",
+"plautilla_suggests_privacy", []],
+
+[anyone, "plautilla_suggests_privacy", [],
+"There is an empty room. The walls are... -- hic --... thick. No one will hear you... make me scream.",
+"close_window", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_23", 15),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, "trp_kingdom_7_lady_23"),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+]],
+
+
+[trp_kingdom_7_lady_14, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (agent_get_slot, ":is_upset", "$g_talk_agent", slot_agent_fatiga),
+  (eq, ":is_upset", -1),
+], "Oh, it's you. Please, I'm really not in the mood for... -- hic --... whatever this is. Go away.",
+"close_window", []],
+
+[trp_kingdom_7_lady_14, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "-- She sighs, subtly rubbing one of her ankles with the other foot. --^^My feet ache from all this... standing. And traveling.  I miss my comfortable sandals from home.",
+"sulpicia_player_pickup_lines", []],
+
+[anyone|plyr, "sulpicia_player_pickup_lines", [
+], "You have a... a very pretty face. Even when you're sad.",
+"sulpicia_upset_boring", []],
+
+[anyone|plyr, "sulpicia_player_pickup_lines", [
+], "Can I... -- hic --... get you a chair? Or more wine?",
+"sulpicia_upset_clumsy", []],
+
+[anyone|plyr, "sulpicia_player_pickup_lines", [
+], "A goddess's feet should not ache. They should be... -- hic --... worshipped.",
+"sulpicia_intrigued", []],
+
+[anyone, "sulpicia_upset_boring", [],
+"My face isn't what's aching. ^^-- She sighs again, more heavily. --^^You're not listening.",
+"sulpicia_upset_consequence", []],
+
+[anyone, "sulpicia_upset_clumsy", [],
+"I am sitting. And more wine will only make my head ache as much as my feet. -- Hic -- You're not very perceptive, are you?",
+"sulpicia_upset_consequence", []],
+
+[anyone, "sulpicia_upset_consequence", [],
+"Fuck off!",
+"close_window", [
+  (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -1),
+]],
+
+[anyone, "sulpicia_intrigued", [
+], "-- She looks up, her hazy, wine-flushed eyes suddenly sharp and focused on you. --^^Worshipped? That's... that's the first interesting thing I've heard all night.",
+"sulpicia_suggests_privacy_1", []],
+
+[anyone|plyr, "sulpicia_suggests_privacy_1", [
+], "Let's go then!",
+"sulpicia_suggests_privacy", []],
+[anyone|plyr, "sulpicia_suggests_privacy_1", [
+], "Hehe!",
+"sulpicia_suggests_privacy", []],
+[anyone|plyr, "sulpicia_suggests_privacy_1", [
+], "By all demons of Egypt, yeah!",
+"sulpicia_suggests_privacy", []],
+
+[anyone, "sulpicia_suggests_privacy", [],
+"The servants' baths are empty at this hour... The warm water would be so soothing. Come with me. You can... -- hic --... show me what you mean.",
+"close_window", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_14", 15),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, "trp_kingdom_7_lady_14"),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+]],
+
+[trp_kingdom_7_lady_2, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (agent_get_slot, ":is_upset", "$g_talk_agent", slot_agent_fatiga),
+  (eq, ":is_upset", -1),
+], "You're a waste of good wine. Go bother someone else before you spoil my appetite.",
+"close_window", []],
+
+[trp_kingdom_7_lady_2, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "Ah, {playername}. This... -- hic --... stuffed dormouse is simply divine. Have you tried it?",
+"messalina_player_pickup_lines", []],
+
+[anyone|plyr, "messalina_player_pickup_lines", [
+], "You're... -- hic --... you're even more beautiful than all this food.",
+"messalina_upset_boring", []],
+
+[anyone|plyr, "messalina_player_pickup_lines", [
+], "Can I... get you some more of that? Or... something else?",
+"messalina_upset_clumsy", []],
+
+[anyone|plyr, "messalina_player_pickup_lines", [
+], "Those figs look sweet. But they'd taste sweeter... -- hic --... if I fed them to you myself.",
+"messalina_intrigued", []],
+
+[anyone, "messalina_upset_boring", [],
+"Don't be a fool. Nothing is more beautiful than a perfectly glazed peacock. Your flattery is... -- hic --... bland.",
+"messalina_upset_consequence", []],
+
+[anyone, "messalina_upset_clumsy", [],
+"I have slaves for that. I thought you were offering something... -- hic --... more personal. How disappointing.",
+"messalina_upset_consequence", []],
+
+[anyone, "messalina_upset_consequence", [],
+"Just leave me alone eating!", "close_window", [
+  (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -1),
+]],
+
+[anyone, "messalina_intrigued", [
+], "-- Her eyes widen, and a slow, hungry smile spreads across her face. She licks a drop of honey from her lip. --^^Now... That is an interesting proposal. The best I've heard all night.", "messalina_suggests_privacy_1", []],
+
+[anyone|plyr, "messalina_suggests_privacy_1", [
+], "Perfect... where we go?",
+"messalina_suggests_privacy", []],
+[anyone|plyr, "messalina_suggests_privacy_1", [
+], "Hehe, little piggy.",
+"messalina_suggests_privacy", []],
+
+[anyone, "messalina_suggests_privacy", [],
+"There's a small, private triclinium just off the main hall... with a platter of honeyed dates and other sweet things. Come. Feed me.",
+"close_window", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_2", 15),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, "trp_kingdom_7_lady_2"),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+]],
+
+[trp_courtier_crispinilla, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (agent_get_slot, ":is_upset", "$g_talk_agent", slot_agent_fatiga),
+  (eq, ":is_upset", -1),
+], "Ugh, it's you again. Piss off. You're... -- hic --... you're ruining my buzz.",
+"close_window", []],
+
+[trp_courtier_crispinilla, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "Well, look what the... -- hic --... cat dragged in. Still... still standing, handsome? You've got good legs.",
+"crispinilla_player_pickup_lines", []],
+
+[anyone|plyr, "crispinilla_player_pickup_lines", [
+], "Your eyes... they're like... two shiny... shiny things.",
+"crispinilla_upset_boring", []],
+
+[anyone|plyr, "crispinilla_player_pickup_lines", [
+], "You. Me. Now. Let's..... go.",
+"crispinilla_upset_clumsy", []],
+
+[anyone|plyr, "crispinilla_player_pickup_lines", [
+], "All this wine is boring.... I've got something ... harder you can put in your mouth.",
+"crispinilla_intrigued", []],
+
+[anyone, "crispinilla_upset_boring", [],
+"Gods, you're a bore. Go... -- hic --... go be a poet somewhere else. I'm busy.", "crispinilla_upset_consequence", []],
+
+[anyone, "crispinilla_upset_clumsy", [],
+"Hah! Is that the best you've got? Pathetic. I've heard better lines from... a goat.",
+"crispinilla_upset_consequence", []],
+
+[anyone, "crispinilla_upset_consequence", [],
+"Just leave me alone!", "close_window", [
+  (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -1),
+]],
+
+[anyone, "crispinilla_intrigued", [
+], "-- She throws her head back and lets out a loud, throaty laugh. -- Now that's the kind of poetry I understand! Less talking, more... showing.",
+"crispinilla_suggests_privacy_1", []],
+
+[anyone|plyr, "crispinilla_suggests_privacy_1", [
+], "You will feel... it all!",
+"crispinilla_suggests_privacy", []],
+[anyone|plyr, "crispinilla_suggests_privacy_1", [
+], "But where to go?",
+"crispinilla_suggests_privacy", []],
+[anyone|plyr, "crispinilla_suggests_privacy_1", [
+], "Hehe!",
+"crispinilla_suggests_privacy", []],
+
+[anyone, "crispinilla_suggests_privacy", [],
+"There's an empty storeroom... behind the kitchens. Smells like olive oil. Let's go make it smell like... -- hic --... something else.", "close_window", [
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, "trp_courtier_crispinilla"),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+]],
+
+[trp_courtier_locusta, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (agent_get_slot, ":is_upset", "$g_talk_agent", slot_agent_fatiga),
+  (eq, ":is_upset", -1),
+], "We have nothing to discuss. Leave my sight before I decide to make you part of an experiment.",
+"close_window", []],
+
+[trp_courtier_locusta, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "Still standing, I see. The wine has a... slower effect on you than the others. An interesting variable.",
+"locusta_player_pickup_lines", []],
+
+[anyone|plyr, "locusta_player_pickup_lines", [
+], "Even among all this beauty, your presence is the most captivating.", "locusta_upset_generic", []],
+
+[anyone|plyr, "locusta_player_pickup_lines", [
+], "... You're a fine-looking woman. Let's... go somewhere quiet.",
+"locusta_upset_drunk", []],
+
+[anyone|plyr, "locusta_player_pickup_lines", [
+], "This wine makes it hard to breathe. I imagine your hands could do it with far more... intimacy.",
+"locusta_intrigued", []],
+
+[anyone, "locusta_upset_generic", [],
+"Flattery is a dull poison, and I have no taste for it. You're boring me.",
+"locusta_upset_consequence", []],
+
+[anyone, "locusta_upset_drunk", [],
+"Sloppy. I have no use for the imprecise. Go drink yourself into a stupor somewhere else.",
+"locusta_upset_consequence", []],
+
+[anyone, "locusta_upset_consequence", [],
+"Leave, drunken idiot!", "close_window", [
+    (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -1), # Set the "upset" flag
+]],
+
+[anyone, "locusta_intrigued", [
+], "-- A rare, thin smile touches her lips. Her eyes, cold and analytical, seem to appraise you in a new light. --^^For a drunken soldier, you have a surprisingly sharp understanding of... chemistry. How intriguing.",
+"locusta_suggests_privacy_1", []],
+
+[anyone|plyr, "locusta_suggests_privacy_1", [
+], "Yeah! Hell yeah!",
+"locusta_suggests_privacy", []],
+[anyone|plyr, "locusta_suggests_privacy_1", [
+], "I am ... I am perfect.. you will see!",
+"locusta_suggests_privacy", []],
+[anyone|plyr, "locusta_suggests_privacy_1", [
+], "You can do with me wha you want!",
+"locusta_suggests_privacy", []],
+
+[anyone, "locusta_suggests_privacy", [
+],"This noise is tiresome. There is a secret garden near the entrance. We can... continue our conversation there.",
+"close_window", [
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, "trp_courtier_locusta"),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+]],
+
+[trp_legatus_11, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "Ah... {playername}. Still... still running around'. You got your... match? Or you want to drink with me?",
+"vespasian_player_comes_back", []],
+
+[anyone|plyr, "vespasian_player_comes_back", [],
+"Still... searching a match.",
+"close_window", []],
+
+[anyone|plyr, "vespasian_player_comes_back", [],
+"Vespasian... hic. Let's drink... those ladies are weird...",
+"vespasian_stops_player", [
+  (call_script, "script_change_player_relation_with_troop", "trp_legatus_11", 5),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, 1),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+]],
+
+[trp_legatus_11, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "Ah... {playername}. Still... still standin'. Good soldier. Got good... legs.",
+"vespasian_player_reply", []],
+
+[anyone|plyr, "vespasian_player_reply", [],
+"Vespasian... hic. Long night. Think I'll... find my bedroll.",
+"vespasian_stops_player", []],
+
+[anyone, "vespasian_stops_player", [],
+"Retiring? He grabs your arm, a bit too hard. No, no, no. Orders are orders. Caesar's orders. We... we stand post. This... hic... this is the battlefield now. Deserters get... noted.",
+"vespasian_offers_choice", []],
+
+[anyone, "vespasian_offers_choice", [],
+"So... we survive. Two ways to survive this... this campaign. More wine... He points with a wobbly finger... or you... you go fight on that front. The... uh... the ladies. What's your plan, soldier?",
+"vespasian_player_choice", []],
+
+[anyone|plyr, "vespasian_player_choice", [],
+"Time for a... tactical advance. On the ladies.",
+"vespasian_gives_advice", []],
+
+[anyone|plyr, "vespasian_player_choice", [],
+"Reinforce this position. With you. And more wine.",
+"vespasian_drinks_with_player", []],
+
+[anyone, "vespasian_gives_advice", [],
+"Hah! A brave man! A... a forlorn hope! Jus' remember... hic... you need a key for that lock. Not the one to their... door... to their thighs... to open them",
+"player_asks_about_heart", []],
+
+[anyone|plyr, "player_asks_about_heart", [],
+"Their... heart?",
+"vespasian_clarifies", []],
+
+[anyone|plyr, "player_asks_about_heart", [],
+"You mean... their heart, right?",
+"vespasian_clarifies", []],
+
+[anyone|plyr, "player_asks_about_heart", [],
+"Thighs! Hah! A man who speaks the truth!",
+"vespasian_clarifies_2", []],
+
+[anyone, "vespasian_clarifies_2", [],
+"-- He lets out a loud, rumbling laugh. --^^ You heard right. This is Nero's circus... not some poet's... fuzzy dream. These women... they're quartermasters. They count... everything. You want love? hic... Go find a camp follower with an honest smile. Cheaper. And you know what you're... paying for.",
+"player_final_choice", []],
+
+[anyone, "vespasian_clarifies", [],
+"-- He lets out a loud, rumbling laugh. --^^ Heart? Gods preserve you, son. This is Nero's circus... not some poet's... fuzzy dream. These women... they're quartermasters. They count... everything. You want love? hic... Go find a camp follower with an honest smile. Cheaper. And you know what you're... paying for.^^[>>WARNING: FLIRTING WITH THE LADIES MAY LEAD TO TERRIFYING DIALOGUES<<]", "player_final_choice", []],
+
+[anyone|plyr, "player_final_choice", [],
+"Understood. Wish me luck, old man.",
+"vespasian_wishes_luck", []],
+
+[anyone|plyr, "player_final_choice", [],
+"You're right. The wine is safer. Pour me one.",
+"vespasian_drinks_with_player", []],
+
+[anyone|plyr, "player_final_choice", [],
+"Nah. I'll just... stand watch. From over there.",
+"vespasian_nods_in_approval", []],
+
+[anyone, "vespasian_drinks_with_player", [],
+"Good man. Here... hic. To... surviving. That's all. Surviving.^^-- He sloshes a generous amount of wine into your cup. --",
+"close_window", [
+  (call_script, "script_change_player_relation_with_troop", "trp_legatus_11", 5),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, 1),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+]],
+
+[anyone, "vespasian_wishes_luck", [],
+"Go on then, you mad fool. Just... watch your flank. The daggers come out after the fun is over.",
+"close_window", [
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 23),
+]],
+
+[anyone, "vespasian_nods_in_approval", [],
+"-- He gives a slow, approving nod. -- The sentry's post. Good. See all, say nothin'. That's how you get... old. Just... don't fall asleep on watch.",
+"close_window", [
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 23),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, 2),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+]],
+
+[trp_kingdom_7_lady_1, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "This little Greek play has reached its final act. Soon, we return to the real theatre: Rome.",
+"close_window", []],
+
+[trp_courtier_locusta, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "I find the effect of this particular vintage on the courtiers... most instructive.",
+"close_window", []],
+
+[trp_courtier_crispinilla, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "A fitting end to a... vigorous tour. Wouldn't you agree, {playername}?",
+"close_window", []],
+
+[trp_kingdom_7_lady_2, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "It is good to see the Princeps so inspired by his journey through this ancient land.",
+"close_window", []],
+
+[trp_kingdom_7_lady_14, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "Athens is magnificent, but I must confess, I miss the comforts of my villa in Rome.",
+"close_window", []],
+
+[trp_kingdom_7_lady_10, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "To think, we are dining in the city of Perikles, and our host outshines even his memory!",
+"close_window", []],
+
+[trp_kingdom_7_lady_23, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "My head is spinning... I believe that means the wine is of exceptional quality!",
+"close_window", []],
+
+[trp_kingdom_7_lady_new_4, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+], "You've had the most difficult task of all, haven't you? Ensuring this entire grand tour didn't collapse into chaos.",
+"close_window", []],
+
+[trp_senator_2, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "-- Vitellius is staring intently at a half-eaten platter of food. He looks up at you with unfocused eyes. --^^{playername}... a word of advice.",
+"vitellius_drunken_talk", []],
+
+[anyone|plyr, "vitellius_drunken_talk", [],
+"King of food .... hihi",
+"vitellius_drunken_advice", [
+  (play_sound, "snd_drunken"),
+]],
+[anyone|plyr, "vitellius_drunken_talk", [],
+"Sacko di fatto ... I mean senator ... hihihi",
+"vitellius_drunken_advice", [
+  (play_sound, "snd_drunken"),
+]],
+
+[anyone, "vitellius_drunken_advice", [],
+"Never... ever... trust a peacock. They look magnificent... but their soul... their soul tastes of disappointment. The saffron, though... ^^-- He sighs contentedly. --^^ ...the saffron tastes of dreams.",
+"vitellius_drunken_ramble", []],
+
+[anyone, "vitellius_drunken_ramble", [],
+"A fine feast. A fine... evening. I must... go and compliment the cook. Or maybe the table. This is a very sturdy table. A credit to its... maker.", "close_window", []],
+
+[trp_kingdom_7_lord, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 22),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 23),
+], "-- Nero is slumped in his seat, a lopsided grin on his face. He raises a half-empty cup as you approach. --^^{playername}! The... the victor of the symposium! Or was that me? ^^-- He laughs. --^^ It doesn't matter! We are all victors tonight!",
+"nero_drunken_talk", []],
+
+[anyone|plyr, "nero_drunken_talk", [],
+"It is a night to ... to remember ... divine Caesar!",
+"nero_drunken_final_words", [
+  (play_sound, "snd_drunken"),
+]],
+
+[anyone|plyr, "nero_drunken_talk", [],
+"You well? Princeps?",
+"nero_drunken_final_words", [
+  (play_sound, "snd_drunken"),
+]],
+
+[anyone, "nero_drunken_final_words", [],
+"Well? I am... divine! This whole trip... -- hic --... it was a triumph of the spirit! The Greeks... they needed me. They needed to see what true... art... is. And now they know.",
+"nero_drunken_concludes", []],
+
+[anyone, "nero_drunken_concludes", [],
+"We have done it, {playername}. We have conquered Greece not with legions... but with... ^^-- He gestures vaguely with his cup. --^^ ...this! Now leave me. I must... contemplate my own genius. And this very interesting wall.",
+"close_window", [
+]],
+
+[trp_kingdom_7_lord, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 21),
+], "Friends, artists, Romans! We are in Athens! The cradle of wisdom, the heart of philosophy. But a cradle is for infants. Greece has grown old, its glories are memories whispered by silent stones.",
+"nero_opens_feast_2", []],
+
+[anyone, "nero_opens_feast_2", [],
+"Tonight, we do not celebrate the past. We celebrate the future! A new golden age, forged not by hoplites, but by poets! An age I shall lead! Let us begin. Let us toast!",
+"poppaea_toasts", []],
+
+[anyone|other(trp_kingdom_7_lady_1), "poppaea_toasts", [],
+"To the Emperor, who graces this ancient land with new, living divinity.", "vitellius_toasts", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
+]],
+
+[anyone|other(trp_senator_2), "vitellius_toasts", [],
+"To the feast! A symbol of the bounty and exquisite taste our Princeps brings to the world!",
+"locusta_toasts", [
+  (call_script, "script_set_conversation_troop", "trp_senator_2"),
+]],
+
+[anyone|other(trp_courtier_locusta), "locusta_toasts", [],
+"To a... potent evening.",
+"crispinilla_toasts", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_locusta"),
+]],
+
+[anyone|other(trp_courtier_crispinilla), "crispinilla_toasts", [],
+"To the passions of our Emperor, which inspire us all!",
+"player_toasts", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_crispinilla"),
+]],
+
+[anyone|plyr, "player_toasts", [],
+"To Nero, a new light for Greece.",
+"nero_recites_poem", []],
+[anyone|plyr, "player_toasts", [],
+"To the glory of Rome.",
+"nero_recites_poem", []],
+[anyone|plyr, "player_toasts", [],
+"To victory, in all its forms.",
+"nero_recites_poem", []],
+
+[anyone, "nero_recites_poem", [],
+"Your words are sweet, but now it is time for art itself. I have been moved by our journey through this faded land. I have composed an ode. 'The Lament for Hellas.'",
+"nero_recites_poem_2", [
+  (agent_play_sound, "$g_talk_agent", "snd_dedal_tavern_lyre"),
+  (agent_equip_item, "$g_talk_agent", "itm_lyre_rich"),
+  (agent_set_wielded_item,"$g_talk_agent", "itm_lyre_rich"),
+  (agent_set_stand_animation, "$g_talk_agent", "anim_lyre_standing"),
+  (agent_set_animation, "$g_talk_agent", "anim_lyre_standing"),
+]],
+
+[anyone, "nero_recites_poem_2", [],
+"-- He holds his lyre, and a hush falls over the hall. His voice, trained and powerful, fills the space. --^^Where now the tread of Achilles on the plain?^His mighty heel, a whisper in the dust.^The wine-dark sea remembers not his rage,^But laps the shore in ignorant, soft lust.",
+"nero_recites_poem_3", []],
+
+[anyone, "nero_recites_poem_3", [],
+"I hear the shade of Leonidas sigh,^A breath of wind through Thermopylae's pass.^Three hundred ghosts, they watch with hollow eyes,^As weeds grow thick and shatter glory's glass.'",
+"nero_recites_poem_4", []],
+
+[anyone, "nero_recites_poem_4", [],
+"And Pallas, born of thunder from the brow,^Forsakes her Parthenon to silent birds.^Her wisdom, carved in stone, is vacant now,^A riddle lost to unenlightened herds.",
+"nero_recites_poem_5", []],
+
+[anyone, "nero_recites_poem_5", [],
+"The Oracle is dumb, her vapors thin,^The Pythia's trance a mummer's fading art.^The old gods sleep, their fire now dead within,^And leave a wound upon the world's great heart.", "nero_recites_poem_6", []],
+
+[anyone, "nero_recites_poem_6", [],
+"So weep, you ghosts!^Your sun has truly set!^But mourn no more, for a new dawn is here.^A Neronian sun, whose rays will make you forget^The twilight age you held so very dear!^^-- He strikes a final, resonant chord on his lyre, his eyes gleaming, and holds the pose. --", "poppaea_praises_poem", []],
+
+[anyone|other(trp_kingdom_7_lady_1), "poppaea_praises_poem", [],
+"More beautiful than Sappho, more powerful than Homer. My husband, you have given Greece the eulogy it has deserved for centuries.",
+"vitellius_praises_poem", [
+  (agent_stop_sound, "$g_talk_agent"),
+  (agent_set_wielded_item,"$g_talk_agent", -1),
+  (agent_unequip_item, "$g_talk_agent", "itm_lyre_rich"),
+  (call_script, "script_init_town_agent", "$g_talk_agent"),
+
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
+]],
+
+[anyone|other(trp_senator_2), "vitellius_praises_poem", [],
+"Magnificent! It fills the soul as this feast fills the stomach! A perfect pairing, Princeps!",
+"locusta_praises_poem", [
+  (call_script, "script_set_conversation_troop", "trp_senator_2"),
+]],
+
+[anyone|other(trp_courtier_locusta), "locusta_praises_poem", [],
+"Every word perfectly chosen. A flawless composition.",
+"crispinilla_praises_poem", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_locusta"),
+]],
+
+[anyone|other(trp_courtier_crispinilla), "crispinilla_praises_poem", [],
+"Divine, Caesar. Simply divine. I am breathless.",
+"player_praises_poem", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_crispinilla"),
+]],
+
+[anyone|plyr, "player_praises_poem", [],
+"A masterpiece, Princeps. You have captured the very soul of this land.",
+"nero_concludes_feast", [
+    (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", 1),
+]],
+
+[anyone|plyr, "player_praises_poem", [
+],"A performance worthy of an Caesar.",
+"nero_concludes_feast", [
+]],
+
+[anyone|plyr, "player_praises_poem", [],
+"[Say nothing, merely applaud with the others]",
+"nero_concludes_feast", [
+    (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -1),
+]],
+
+[anyone, "nero_concludes_feast", [
+], "Enough praise! Art should inspire passion, not just words! The wine is good, the company is... adequate. Let us put our spirits to the test!",
+"nero_suggests_drinking_game", []],
+
+[anyone, "nero_suggests_drinking_game", [],
+"A drinking competition! To see who truly has the constitution of a god! What say you?",
+"vitellius_agrees_eagerly", []],
+
+[anyone|other(trp_senator_2), "vitellius_agrees_eagerly", [],
+"A contest of libations! Princeps, your genius is boundless! My throat is already prepared for victory!",
+"crispinilla_agrees_eagerly", [
+(call_script, "script_set_conversation_troop", "trp_senator_2"),
+]],
+
+[anyone|other(trp_courtier_crispinilla), "crispinilla_agrees_eagerly", [],
+"Oh, I do love a vigorous competition! I will happily join in!",
+"nero_invites_player", [
+(call_script, "script_set_conversation_troop", "trp_courtier_crispinilla"),
+]],
+
+[anyone, "nero_invites_player", [],
+"And you, {playername}? Will you join our little symposium, or do you prefer the sobriety of the common man?",
+"player_drinking_choice", [
+    (assign, "$temp3", 0),
+]],
+
+[anyone|plyr, "player_drinking_choice", [],
+"I would be honored to drink with my Emperor.",
+"nero_pleased_by_acceptance", []],
+
+[anyone|plyr, "player_drinking_choice", [],
+"With respect, Princeps, I must keep a clear head for my duties.",
+"nero_forces_player", []],
+
+[anyone, "nero_pleased_by_acceptance", [],
+"Ha! A true Roman! You understand that duty is best performed with a cup of wine in hand! Let the games begin!",
+"drinking_game_hub", []],
+
+[anyone, "nero_forces_player", [],
+"Duties? Nonsense! Your duty right now is to your Emperor's good cheer! A man who cannot drink with his friends is a man who cannot be trusted. You will drink. That is an order.",
+"drinking_game_hub", [
+    (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -2),
+]],
+
+# --- The Drinking Game Loop Hub ---
+[anyone, "drinking_game_hub", [
+  (try_begin),
+    (is_between, "$temp3", 0, 3),
+    (str_store_string, s1, "str_drinking_game_intro_sober"),
+  (else_try),
+    (is_between, "$temp3", 3, 6),
+    (str_store_string, s1, "str_drinking_game_intro_tipsy"),
+    (play_sound, "snd_drunken"),
+  (else_try),
+    (ge, "$temp3", 6),
+    (str_store_string, s1, "str_drinking_game_intro_drunk"),
+    (play_sound, "snd_drunken_win"),
+  (try_end),
+], "{s1}",
+"player_drinks_again_choice", []],
+
+[anyone|plyr, "player_drinks_again_choice", [],
+"[Take Falernian wine]",
+"player_drinks_again_consequence", [
+  (val_add, "$temp3", 1),
+]],
+[anyone|plyr, "player_drinks_again_choice", [],
+"[Take Chian wine]",
+"player_drinks_again_consequence", []],
+[anyone|plyr, "player_drinks_again_choice", [],
+"[Take Coan wine]",
+"player_drinks_again_consequence", []],
+[anyone|plyr, "player_drinks_again_choice", [],
+"[Take Pucinian wine]",
+"player_drinks_again_consequence", []],
+[anyone|plyr, "player_drinks_again_choice", [],
+"[Take Caecubian wine]",
+"player_drinks_again_consequence", []],
+
+[anyone, "player_drinks_again_consequence", [
+    (val_add, "$temp3", 1),
+    (gt, "$temp3", 9),
+], "-- You drain another cup. The room feels warmer, the voices louder. --",
+"player_passes_out", []],
+
+[anyone, "player_drinks_again_consequence", [
+    (val_add, "$temp3", 1),
+], "-- You drain another cup. The room feels warmer, the voices louder. --",
+"random_drunken_banter", [
+    (store_random_in_range, "$temp4", 0, 3),
+]],
+
+# --- Random Banter Logic ---
+[anyone|auto_proceed, "random_drunken_banter", [
+    (eq, "$temp4", 0),
+], "Drinking is FUN.",
+"nero_drunken_banter", []],
+
+[anyone|auto_proceed, "random_drunken_banter", [
+    (eq, "$temp4", 1),
+], "Drinking is FUN.",
+"vitellius_drunken_banter", []],
+
+[anyone|auto_proceed, "random_drunken_banter", [
+], "Drinking is FUN.",
+"crispinilla_drunken_banter", []],
+
+# --- Drunken Banter Dialogues ---
+[anyone|other(trp_kingdom_7_lord), "nero_drunken_banter", [
+    (try_begin),
+        (le, "$temp3", 2),
+        (str_store_string, s1, "str_nero_banter_sober"),
+    (else_try),
+        (str_store_string, s1, "str_nero_banter_drunk"),
+    (try_end),
+], "{s1}",
+"drinking_game_hub", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+]],
+
+[anyone|other(trp_senator_2), "vitellius_drunken_banter", [
+    (try_begin),
+        (le, "$temp3", 2),
+        (str_store_string, s1, "str_vitellius_banter_sober"),
+    (else_try),
+        (str_store_string, s1, "str_vitellius_banter_drunk"),
+    (try_end),
+], "{s1}",
+"drinking_game_hub", [
+  (call_script, "script_set_conversation_troop", "trp_senator_2"),
+]],
+
+[anyone|other(trp_courtier_crispinilla), "crispinilla_drunken_banter", [
+    (try_begin),
+        (le, "$temp3", 2),
+        (str_store_string, s1, "str_crispinilla_banter_sober"),
+    (else_try),
+        (str_store_string, s1, "str_crispinilla_banter_drunk"),
+    (try_end),
+], "{s1}",
+"drinking_game_hub", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_crispinilla"),
+]],
+
+# --- The End of the Game ---
+[anyone, "player_passes_out", [],
+"-- You raise the cup to your lips, but the world suddenly tilts. The faces of Nero and his court blur into a smear of color and torchlight. Their laughter echoes as if from the bottom of a well... --^^Guys appologize me. I am out!",
+"close_window", [
+  (mission_cam_animate_to_screen_color, 0x33B67700, 6000),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 22),
+]],
+
+[trp_kingdom_7_lady_1, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 19),
+  (neg|quest_slot_ge, "qst_nero_greece_tour", slot_quest_temp_slot, 31),
+], "{playername}. Do you see what you have done? Three days of public humiliation. Nero, Caesar, Augustus and Imperator, the master of the world, made a laughingstock by provincial brutes. This is your fault.",
+"poppaea_olympia_failure_player_reply", []],
+
+[anyone|plyr, "poppaea_olympia_failure_player_reply", [],
+"I refused to dishonor the Games. My duty is to Nero's safety, not his pride.",
+"poppaea_dismisses_excuses", [
+  (assign, "$temp3", 1), # Honor
+]],
+
+[anyone|plyr, "poppaea_olympia_failure_player_reply", [],
+"To rig the games so blatantly would have been a greater insult. It would have caused riots.",
+"poppaea_dismisses_excuses", [
+  (assign, "$temp3", 2), # Pragmatism
+]],
+
+[anyone|plyr, "poppaea_olympia_failure_player_reply", [],
+"The athletes competed. Nero lost. That is the truth of it.",
+"poppaea_dismisses_excuses", [
+    (assign, "$temp3", 3), # Bluntness
+]],
+
+[trp_kingdom_7_lady_1, "poppaea_dismisses_excuses", [
+    (try_begin),
+        (eq, "$temp3", 1),
+        (str_store_string, s13, "str_poppaea_response_honor"),
+    (else_try),
+        (eq, "$temp3", 2),
+        (str_store_string, s13, "str_poppaea_response_pragmatic"),
+    (else_try),
+        (str_store_string, s13, "str_poppaea_response_blunt"),
+    (try_end),
+], "{s13}",
+"poppaea_reveals_fear", []],
+
+[anyone, "poppaea_reveals_fear", [],
+"He is in his chambers now, silent. That is when he is most dangerous. He will need someone to blame. An athlete, a judge... a city... or perhaps the gods themselves for spiting him. He will start to see conspiracies in every shadow.",
+"poppaea_reveals_fear_2", []],
+
+[anyone, "poppaea_reveals_fear_2", [],
+"I am a superstitious woman, {playername}. To challenge the gods at their own sacred games and be found wanting... this is a terrible omen. I fear this will curdle into a madness that will consume us all. What are we to do now?",
+"player_gives_advice", []],
+
+# The player's chance to advise the Empress.
+[anyone|plyr, "player_gives_advice", [],
+"His rage is a storm, my lady. But you are the harbor. Soothe him.",
+"poppaea_reacts_to_advice", []],
+
+[anyone|plyr, "player_gives_advice", [],
+"He is an artist who has been given a bad review. Remind him of his other talents... and the pleasures only... you can provide.",
+"poppaea_reacts_to_advice", []],
+
+[anyone|plyr, "player_gives_advice", [],
+"You are his wife, and his goddess. His anger cannot survive your embrace. Show him a passion greater than his fury.",
+"poppaea_reacts_to_advice", []],
+
+[anyone, "poppaea_reacts_to_advice", [],
+"-- A flicker of respect appears in her cold eyes. --^^You are more than just a soldier, aren't you? You see the real levers of power. You are right. His fury must be... redirected. Drowned in a different kind of passion.",
+"poppaea_formulates_plan", []],
+
+[anyone, "poppaea_formulates_plan", [],
+"I will go to him. But this tour cannot end in failure. He needs a new stage, a final act to erase this humiliation. Athens. The intellectual heart of the world. A triumph there will mean more than a thousand wrestling crowns.",
+"poppaea_gives_orders", []],
+
+[anyone, "poppaea_gives_orders", [
+],"Prepare the entourage. I will convince him that this was his plan all along. We leave for Athens as soon as he is... composed.",
+"close_window", [
+  (jump_to_menu, "mnu_nero_tour_greece"),
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+[trp_kingdom_7_lady_1, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 19),
+    (quest_slot_ge, "qst_nero_greece_tour", slot_quest_temp_slot, 31),
+], "Finally, some quiet. Three days of manufactured adoration is enough to give a woman a headache. Did you find it as tedious as I did?",
+"poppaea_olympia_success_player_reply", []],
+
+[anyone|plyr, "poppaea_olympia_success_player_reply", [],
+"It was a great triumph for the Princeps.",
+"poppaea_praises_player_competence", []],
+
+[anyone|plyr, "poppaea_olympia_success_player_reply", [],
+"The true victory was in the planning, my lady. The games themselves were a formality.",
+"poppaea_praises_player_competence", [
+    (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", 3),
+]],
+[anyone|plyr, "poppaea_olympia_success_player_reply", [],
+"All that matters is that Nero is pleased.",
+"poppaea_praises_player_competence", []],
+
+[trp_kingdom_7_lady_1, "poppaea_praises_player_competence", [],
+"Precisely. Nero sees his victory. I see the careful hand that guaranteed it. That organizer, Eystachus, is a panicked fool; he would have failed. You... you were effective.",
+"poppaea_values_player_1", []],
+
+[anyone|plyr, "poppaea_values_player_1", [],
+"I am honored to hear it from you.",
+ "poppaea_values_player", []],
+[anyone|plyr, "poppaea_values_player_1", [],
+"Thank you, my lady.",
+ "poppaea_values_player", []],
+
+[anyone, "poppaea_values_player", [],
+"Competence is a rare and valuable, {playername}. Far more valuable than a strong arm or a loud voice. Remember that.",
+"poppaea_concludes_conversation", []],
+
+[anyone, "poppaea_concludes_conversation", [],
+"Nero's mood is soaring, which is both a blessing and a danger. He will be insufferable for weeks, but at least he is happy. Go, get some rest. The next act of this play is about to begin, and I will need competent players on the stage.",
+"close_window", [
+  (jump_to_menu, "mnu_nero_tour_greece"),
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+# --- DIALOGUE ENTRY POINTS ---
+[trp_tetraites, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 17),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (store_and, ":convinced", ":flags", 1),
+    (eq, ":convinced", 0),
+    (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, 6000),
+], "Hmph. You are not here to train. State your purpose.",
+"athlete_start_persuasion", []],
+[trp_spiculus, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 17),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (store_and, ":convinced", ":flags", 2),
+    (eq, ":convinced", 0),
+    (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, 5000),
+], "Quickly now, I am timing my sprints. What do you want?", "athlete_start_persuasion", []],
+[trp_diocles, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 17),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (store_and, ":convinced", ":flags", 4),
+    (eq, ":convinced", 0),
+    (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, 8000),
+], "Be careful around the horses. They are worth more than this entire gymnasium. What is your business?",
+"athlete_start_persuasion", []],
+[trp_scorpius, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 17),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (store_and, ":convinced", ":flags", 8),
+    (eq, ":convinced", 0),
+    (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, 9000),
+], "-- He grunts, wrapping his hands. --^^You need something?",
+"athlete_start_persuasion", []],
+[trp_hermes, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 17),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (store_and, ":convinced", ":flags", 16),
+    (eq, ":convinced", 0),
+    (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, 5500),
+], "You carry the weight of the Princeps's business. I can see it in your eyes. Speak.",
+"athlete_start_persuasion", []],
+
+# Dialogue for athletes who have already been convinced
+[trp_tetraites, "start", [], "We have an understanding. There is nothing more to discuss.",
+"close_window", []],
+[trp_spiculus, "start", [], "Our business is concluded. Good day.",
+"close_window", []],
+[trp_diocles, "start", [], "I remember our arrangement. Do not worry.",
+"close_window", []],
+[trp_scorpius, "start", [], "I know what I have to do. Leave me be.",
+"close_window", []],
+[trp_hermes, "start", [], "The fate of Olympia is what matters. I have not forgotten.",
+"close_window", []],
+
+# --- COMMON PERSUASION DIALOGUE ---
+[anyone|plyr, "athlete_start_persuasion", [],
+"I am here on behalf of the Princeps. He is to compete against you. It is in everyone's best interest that he wins.",
+"athlete_refusal", []],
+
+[anyone, "athlete_refusal", [
+    (try_begin),
+        (eq, "$g_talk_troop", "trp_tetraites"),
+        (str_store_string, s1, "str_wrestler_refusal"),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_spiculus"),
+        (str_store_string, s1, "str_runner_refusal"),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_diocles"),
+        (str_store_string, s1, "str_charioteer_refusal"),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_scorpius"),
+        (str_store_string, s1, "str_boxer_refusal"),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_hermes"),
+        (str_store_string, s1, "str_pankratiast_refusal"),
+    (try_end),
+], "{s1}",
+"athlete_persuade_or_bribe", []],
+
+[anyone|plyr, "athlete_persuade_or_bribe", [],
+"Let me try to persuade you.",
+"athlete_persuade_intro", []],
+
+[anyone|plyr, "athlete_persuade_or_bribe", [
+    (agent_get_slot, reg37, "$g_talk_agent", slot_agent_fatiga),
+], "What is your price to ensure the Princeps is satisfied?",
+"athlete_bribe_offer", []],
+
+# --- BRIBE PATH ---
+[anyone, "athlete_bribe_offer", [
+    (agent_get_slot, reg37, "$g_talk_agent", slot_agent_fatiga),
+], "For my legacy? For my honor? It will cost you {reg37} denarii.",
+"athlete_bribe_choice", []],
+
+[anyone|plyr, "athlete_bribe_choice", [
+    (agent_get_slot, ":price", "$g_talk_agent", slot_agent_fatiga),
+    (store_troop_gold, ":player_gold", "trp_player"),
+    (ge, ":player_gold", ":price"),
+    (assign, reg37, ":price"),
+], "A worthy price to avoid imperial disappointment. You have a deal.",
+"athlete_bribe_accepted", []],
+
+[anyone|plyr, "athlete_bribe_choice", [], "I cannot pay that.",
+"athlete_persuade_or_bribe", []],
+
+[anyone|plyr, "athlete_bribe_choice", [], "I will not pay that. You will obey or die!",
+"athlete_persuade_result", [
+  (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, -10),
+  (call_script, "script_change_player_honor", -3),
+  (call_script, "script_add_piety", -3, 1),
+]],
+
+[anyone, "athlete_bribe_accepted", [],
+"It is a sad day, but a wealthy one. The Princeps will have his victory.",
+"close_window", [
+    (agent_get_slot, ":price", "$g_talk_agent", slot_agent_fatiga),
+    (troop_remove_gold, "trp_player", ":price"),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (try_begin),
+        (eq, "$g_talk_troop", "trp_tetraites"),
+        (val_or, ":flags", 1),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_spiculus"),
+        (val_or, ":flags", 2),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_diocles"),
+        (val_or, ":flags", 4),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_scorpius"),
+        (val_or, ":flags", 8),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_hermes"),
+        (val_or, ":flags", 16),
+    (try_end),
+    (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, ":flags"),
+]],
+
+# --- PERSUASION PATH (USING YOUR MINIGAME) ---
+[anyone, "athlete_persuade_intro", [],
+"Very well. Make your case. I will listen.","athlete_persuade_attempt_menu", []],
+
+[anyone|plyr, "athlete_persuade_attempt_menu", [
+],"[Attempt to persuade]", "athlete_persuade_result", [
+    (agent_get_slot, "$convince_value", "$g_talk_agent", slot_agent_fatiga),
+    # --- PASTE YOUR PERSUASION CALCULATION SCRIPT HERE ---
+    # (store_skill_level, ":persuasion_level", ... etc. ...)
+    (store_skill_level, ":persuasion_level", "skl_persuasion", "trp_player"),
+    (store_skill_level, ":oratory", "skl_oratory", "trp_player"),
+    (store_attribute_level, ":charisma", "trp_player", ca_charisma),
+    (store_add, ":persuasion_potential", ":persuasion_level", ":oratory"),
+    (val_add, ":persuasion_potential", ":charisma"),
+    (store_random_in_range, ":random_1", 0, ":persuasion_potential"),
+    (store_random_in_range, ":random_2", 0, ":persuasion_potential"),
+    (store_add, ":rand", ":random_1", ":random_2"),
+    (assign, ":persuasion_difficulty", "$convince_value"),
+    (convert_to_fixed_point, ":persuasion_difficulty"),
+    (store_sqrt, ":persuasion_difficulty", ":persuasion_difficulty"),
+    (convert_from_fixed_point, ":persuasion_difficulty"),
+    (val_div, ":persuasion_difficulty", 10),
+    (val_add, ":persuasion_difficulty", 4),
+    (store_sub, "$persuasion_strength", ":rand", ":persuasion_difficulty"),
+    (val_mul, "$persuasion_strength", 20),
+    (assign, reg5, "$persuasion_strength"),
+    (val_sub, "$convince_value", "$persuasion_strength"),
+    (try_begin),
+        (ge, "$convince_value", 6000),
+        (ge, "$persuasion_strength", 200),
+        (val_sub, "$convince_value", 5000),
+    (try_end),
+    (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, "$convince_value"),
+    (str_store_troop_name, s50, "$g_talk_troop"),
+    (try_begin),
+        (call_script, "script_cf_dplmc_troop_is_female", "$g_talk_troop"),
+        (assign, reg51, 1),
+        (assign, reg65, 1),
+    (else_try),
+        (assign, reg51, 0),
+        (assign, reg65, 0),
+    (try_end),
+    (try_begin),
+        (lt, "$persuasion_strength", -30),
+        (str_store_string, s5, "str_persuasion_summary_very_bad"),
+    (else_try),
+        (lt, "$persuasion_strength", -10),
+        (str_store_string, s5, "str_persuasion_summary_bad"),
+    (else_try),
+        (lt, "$persuasion_strength", 100),
+        (str_store_string, s5, "str_persuasion_summary_average"),
+    (else_try),
+        (lt, "$persuasion_strength", 300),
+        (str_store_string, s5, "str_persuasion_summary_good"),
+    (else_try),
+        (str_store_string, s5, "str_persuasion_summary_very_good"),
+    (try_end),
+    (dialog_box, "@{s5} (Persuasion strength: {reg5})", "@Persuasion Attempt"),
+]],
+[anyone|plyr, "athlete_persuade_attempt_menu", [
+], "Nevermind.",
+"athlete_persuade_or_bribe", []],
+
+# --- PERSUASION RESULTS ---
+[anyone, "athlete_persuade_result", [
+    (agent_get_slot, ":convince_value", "$g_talk_agent", slot_agent_fatiga),
+    (le, ":convince_value", 0),
+], "Enough! You have convinced me. The risk is too great. I... I will do as you ask. For Olympia.",
+"close_window", [
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (try_begin),
+        (eq, "$g_talk_troop", "trp_tetraites"),
+        (val_or, ":flags", 1),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_spiculus"),
+        (val_or, ":flags", 2),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_diocles"),
+        (val_or, ":flags", 4),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_scorpius"),
+        (val_or, ":flags", 8),
+    (else_try),
+        (eq, "$g_talk_troop", "trp_hermes"),
+        (val_or, ":flags", 16),
+    (try_end),
+    (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, ":flags"),
+]],
+[anyone, "athlete_persuade_result", [
+    (gt, "$persuasion_strength", 5),
+], "You've made some good points, I'll admit. But my honor is not so cheap.",
+"athlete_pretalk", []],
+
+[anyone, "athlete_persuade_result", [
+    (gt, "$persuasion_strength", -10),
+], "Your words are hollow. I find none of them convincing. I stand by what I said.",
+"athlete_pretalk", []],
+
+[anyone, "athlete_persuade_result", [
+],"Do you take me for a fool? Your reasoning is an insult! Do not waste my time!",
+"athlete_pretalk", []],
+
+[anyone, "athlete_pretalk", [
+    (agent_get_slot, reg37, "$g_talk_agent", slot_agent_fatiga),
+], "If you wish for my cooperation, my price is now {reg37} denarii.",
+ "athlete_bribe_choice", []],
+
+[trp_organiser, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 14),
+], "Princeps, Nero Claudius Caesar, Son of Apollo, welcome! The sacred grove of Olympia is honored beyond measure by your divine presence. We have awaited your arrival with great anticipation.",
+"nero_replies_to_welcome", []],
+
+[anyone|other(trp_kingdom_7_lord), "nero_replies_to_welcome", [],
+"Your reputation for wisdom precedes you, Hellanodikos. I trust Olympia is prepared to witness true artistry, a level of performance not seen here since the days of Herakles himself.",
+"hellanodikos_explains_games", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+]],
+
+[anyone, "hellanodikos_explains_games", [],
+"Indeed, Princeps. The traditional Olympic Games, as you know, are bound by the ancient traditions of men. But for a competitor whose talent is a gift from the gods themselves, tradition must make way for destiny.",
+"hellanodikos_explains_games_2", []],
+
+[anyone, "hellanodikos_explains_games_2", [],
+"News of your... passion for the arts has preceded you. We understand that a standard competition would be an insufficient stage for your genius. Therefore, the council of Elis, in its wisdom, has decreed that a special contest will be held.",
+"hellanodikos_makes_offer", []],
+
+[anyone, "hellanodikos_makes_offer", [],
+"In your honor, we will host the first ever Imperial Games at Olympia. A unique event, with new contests of poetry and music alongside the traditional athletics, so that all facets of your divine talent may be displayed. It will be a festival worthy of your name.",
+"nero_reacts_to_offer", []],
+
+[anyone|other(trp_kingdom_7_lord), "nero_reacts_to_offer", [],
+"-- A slow, wide smile spreads across Nero's face. --^^Ha! At last! Men who understand! They did not wait to be commanded; they anticipated greatness! This... this is a gesture worthy of my talent. It seems the Greeks are not all dull provincials after all.",
+"nero_concludes_olympia", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+]],
+
+[anyone|other(trp_kingdom_7_lord), "nero_concludes_olympia", [],
+"Very well, Hellanodikos. You have pleased your Caesar. Prepare the stadium. I shall rest and compose myself for the contests. One does not simply compete; one performs a sacred rite for the ages.",
+"close_window", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 15),
+  (jump_to_menu, "mnu_nero_tour_greece"),
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+[trp_organiser, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 17),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (ge, ":flags", 31), # 1+2+4+8+16 = 31. This means all flags are set.
+], "You have returned! Tell me, what news? I have been imagining the worst...",
+"eystachus_player_reports_success", []],
+[anyone|plyr, "eystachus_player_reports_success", [],
+"It is done. All of them have agreed. The Caesar will have his victories.",
+"eystachus_done", []],
+[anyone|plyr, "eystachus_player_reports_success", [],
+"I have dealt with them. You need not worry.",
+"eystachus_done", []],
+
+[anyone, "eystachus_done", [
+], "-- He visibly sags with relief, a hand going to his chest as if to calm his heart. --^^Done? All of them? By the sacred olive trees... I... I don't know what to say. You have averted a catastrophe. Olympia owes you a debt that can never truly be repaid.",
+"eystachus_done_reward", []],
+
+[anyone, "eystachus_done_reward", [
+], "This is but a small token for what you have done. It is the prize purse I had set aside for the Pankration champion. It is only right that you, the true champion of these games, should have it.",
+"eystachus_done_final", []],
+
+[anyone, "eystachus_done_final", [
+    (assign, reg1, 10000),
+], "Please, take these {reg1} denarii. Now, we must prepare for the opening ceremony. Thanks to you, it will be a day of celebration, not of dread.",
+"close_window", [
+    (call_script, "script_change_player_honor", -5),
+    (troop_add_gold, "trp_player", 10000),
+    (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 18),
+    (jump_to_menu, "mnu_nero_tour_greece"),
+    (finish_mission, 3),
+    (mission_disable_talk),
+    (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+
+[trp_organiser, "start", [
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 17),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (lt, ":flags", 31), # 1+2+4+8+16 = 31. This means not all flags are set.
+], "Have you had any success? The games draw ever closer, and my nerves are frayed to the breaking point. How goes the persuasion?",
+"eystachus_check_in", []],
+
+[anyone|plyr, "eystachus_check_in", [
+],"I am speaking with them. It is a delicate matter.",
+"eystachus_progress_report", []],
+[anyone|plyr, "eystachus_check_in", [
+],"I am working on it.",
+"eystachus_progress_report", []],
+
+[anyone, "eystachus_progress_report", [
+    (assign, ":convinced_count", 0),
+    (quest_get_slot, ":flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (store_and, ":bit_check", ":flags", 1),
+    (try_begin),
+        (gt, ":bit_check", 0),
+        (val_add, ":convinced_count", 1),
+    (try_end),
+    (store_and, ":bit_check", ":flags", 2),
+    (try_begin),
+        (gt, ":bit_check", 0),
+        (val_add, ":convinced_count", 1),
+    (try_end),
+    (store_and, ":bit_check", ":flags", 4),
+    (try_begin),
+        (gt, ":bit_check", 0),
+        (val_add, ":convinced_count", 1),
+    (try_end),
+    (store_and, ":bit_check", ":flags", 8),
+    (try_begin),
+        (gt, ":bit_check", 0),
+        (val_add, ":convinced_count", 1),
+    (try_end),
+    (store_and, ":bit_check", ":flags", 16),
+    (try_begin),
+        (gt, ":bit_check", 0),
+        (val_add, ":convinced_count", 1),
+    (try_end),
+    (assign, reg1, ":convinced_count"),
+    (try_begin),
+        (eq, ":convinced_count", 0),
+        (str_store_string, s1, "str_eystachus_progress_none"),
+    (else_try),
+        (is_between, ":convinced_count", 1, 3), # 1 or 2 convinced
+        (str_store_string, s1, "str_eystachus_progress_some"),
+    (else_try),
+        (ge, ":convinced_count", 3), # 3 or 4 convinced
+        (str_store_string, s1, "str_eystachus_progress_many"),
+    (try_end),
+], "{s1}", "eystachus_continue_task", []],
+
+[anyone|plyr, "eystachus_continue_task", [],
+"Leave it to me.", "eystachus_final_plea", []],
+
+[anyone, "eystachus_final_plea", [
+],"May your words be as swift as Hermes and as heavy as Hercules' club. Go.",
+"close_window", []],
+
+[trp_organiser, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 16),
+], "Thank you for your discretion. I am Eystachus. Olympia is my home, and these Games are my life's work. You are the Caesar's confidant, a person of action. That is why I have come to you.",
+"eystachus_explains_problem_1", []],
+
+[anyone|plyr, "eystachus_explains_problem_1", [],
+"Greetings. What do you need?",
+"eystachus_explains_problem", []],
+[anyone|plyr, "eystachus_explains_problem_1", [],
+"Salve. What is your bidding?",
+"eystachus_explains_problem", []],
+
+[anyone, "eystachus_explains_problem", [],
+"We have bent our traditions to honor the Princeps. We have added his contests, prepared his triumphs... but there is one thing I cannot control: the spirit of the athletes.",
+"eystachus_explains_problem_2", []],
+
+[anyone, "eystachus_explains_problem_2", [],
+"They are the finest wrestlers, runners, and charioteers in the world. They have trained their entire lives for a single purpose: to win. They do not understand politics. They only understand victory. They will not simply... step aside.",
+"eystachus_makes_request", []],
+
+[anyone, "eystachus_makes_request", [],
+"If Caesar competes and loses... his disappointment will not be measured in angry words. It will be measured in legions, in proscriptions, in the ruin of this sacred place. I cannot allow that to happen. I need your help.",
+"eystachus_player_choice", []],
+
+[anyone|plyr, "eystachus_player_choice", [],
+"What are you asking me to do?",
+"eystachus_clarifies_request", []],
+
+[anyone, "eystachus_clarifies_request", [],
+"I need you to speak with the champions. Persuade them. A bag of silver, a quiet threat, an appeal to their love for Olympia... you are a resourceful man. They must understand that in these 'Imperial Games', there is a glory greater than winning. It is the glory of ensuring Caesar is pleased. Will you help me?",
+"eystachus_final_choice", []],
+
+# Here is the final choice for the player
+[anyone|plyr, "eystachus_final_choice", [],
+"I understand the stakes. I will speak to them. Nero will have his victory.",
+"eystachus_quest_accepted", []],
+
+[anyone|plyr, "eystachus_final_choice", [],
+"No. My duty is to protect the Nero's life, not his pride. The integrity of the Games is sacred. They will compete fairly.",
+"eystachus_quest_refused", []],
+
+# Consequence: Player agrees to help rig the games
+[anyone, "eystachus_quest_accepted", [],
+"Thank you. Thank you. You have lifted a terrible weight from my shoulders. The champions are resting in my estate. Do what you must.",
+"close_window", [
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 17),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, 0),
+]],
+
+# Consequence: Player refuses to rig the games
+[anyone, "eystachus_quest_refused", [],
+"-- He looks genuinely terrified. --^^Sacred? I pray Caesar sees it that way when a wrestler from Sparta throws him to the dust. The fate of Olympia is now in the hands of the gods. I hope they are merciful.",
+"close_window", [
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 18),
+
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, -1),
+
+  (jump_to_menu, "mnu_nero_tour_greece"),
+
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+[trp_kingdom_7_lady_1, "start", [
+    # Dialogue triggers only upon arriving at Delphi.
+    (check_quest_active, "qst_nero_greece_tour"),
+    (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 12),
+], "This dust... this endless rattling in the carriage. I expected Greece to be a land of marble and pleasure, not rocks and irritable goats.",
+"poppaea_relation_branch", []],
+
+# --- LOW RELATION PATH ---
+[anyone, "poppaea_relation_branch", [
+  (le, "$g_talk_troop_effective_relation", -5),
+],
+"And you, our stoic guardian. You seem to thrive in this provincial squalor. Does it remind you of your dirty home?",
+"player_responds_low_relation", []],
+
+[anyone|plyr, "player_responds_low_relation", [],
+"My duty is to protect, not to complain, my lady.",
+"poppaea_messenger_arrives", []],
+
+[anyone|plyr, "player_responds_low_relation", [],
+"I serve the Princeps. The conditions are irrelevant.",
+"poppaea_messenger_arrives", []],
+
+# --- NEUTRAL RELATION PATH ---
+[anyone, "poppaea_relation_branch", [
+    (is_between, "$g_talk_troop_effective_relation", -5, 25),
+],
+"Forgive my mood, {playername}. It is simply... not what I imagined. Even an I can grow weary. You must be tired as well.",
+"player_responds_neutral_relation", []],
+
+[anyone|plyr, "player_responds_neutral_relation", [
+],"The journey is difficult for everyone, my lady. But this is a sacred place.",
+"poppaea_messenger_arrives", []],
+
+[anyone|plyr, "player_responds_neutral_relation", [],
+"Your presence makes the journey enjoyable.",
+"poppaea_messenger_arrives", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", 2),
+]],
+
+# --- HIGH RELATION PATH ---
+[anyone, "poppaea_relation_branch", [],
+"I confess, seeing you handle these hardships with such... competence... has been the only pleasant part of this journey. It is a shame we are always surrounded by flatterers, fools and sycophants.",
+"player_responds_high_relation", []],
+
+[anyone|plyr, "player_responds_high_relation", [],
+"Your company is a privilege, my lady. It makes any hardship bearable.",
+"poppaea_messenger_arrives", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", 5), # Larger relation boost
+]],
+
+[anyone|plyr, "player_responds_high_relation", [
+],"Perhaps we could find a moment of peace, away from the court?",
+"poppaea_suggests_meadow", []],
+
+[anyone, "poppaea_suggests_meadow", [
+],"Peace?^^-- She smiles. --^^ What an intriguing idea. There is a meadow just beyond the sanctuary, overlooking the valley... a place fit for a private conversation. Shall we?",
+"player_accepts_meadow", [
+  (play_sound, "snd_female_laugh"),
+]],
+
+[anyone|plyr, "player_accepts_meadow", [
+],"Lead the way, my lady.", "close_window", [
+  (jump_to_menu, "mnu_meadow_romance"), # Jumps to the romance scene/menu
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+[anyone|plyr, "player_accepts_meadow", [
+],"Perhaps another time. My duty is here.",
+"poppaea_messenger_arrives", [
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", -5), # Larger relation boost
+]],
+
+[anyone|other(trp_praetoriani_milites_vet), "poppaea_messenger_arrives", [
+], "My lady! {playername}! A message from the Princeps!",
+"messenger_delivers_news", [
+  (call_script, "script_set_conversation_troop", "trp_praetoriani_milites_vet"),
+]],
+
+[anyone|other(trp_praetoriani_milites_vet), "messenger_delivers_news", [],
+"He has consulted the Oracle. The omens were... unclear. He is displeased and will speak to no one. We are to leave for Olympia at once. The baggage is already being prepared.",
+"poppaea_reacts_to_news", [
+  (call_script, "script_set_conversation_troop", "trp_praetoriani_milites_vet"),
+]],
+
+[anyone, "poppaea_reacts_to_news", [],
+"Unclear? The Pythia dares to be ambiguous with a god?^^-- She sighs. --^^Very well. Another day, another dusty road. It seems your moment of peace will have to wait, {playername}. We have our ... orders...",
+"close_window", [
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 13),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_target_center, "p_olympia"),
+
+  (jump_to_menu, "mnu_auto_return"),
+
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+[trp_kingdom_7_lord, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 10),
+], "A masterful composition! Nature and artifice in perfect dialogue. The raw power of the waterfall, a chorus to the silent elegy of the stone. A fitting stage for greatness, I admit. But is the play worthy of the setting?",
+"nero_asks_for_opinions", []],
+
+[anyone, "nero_asks_for_opinions", [],
+"Well? Do not stand there like silent statues. You are my court, my chosen audience. Give me your critique!",
+"crispinilla_gives_opinion", []],
+
+[anyone|other(trp_courtier_crispinilla), "crispinilla_gives_opinion", [],
+"It has a certain... raw power, Princeps. The power of a brute. It makes one appreciate the refined elegance of your Golden House all the more.",
+"locusta_gives_opinion", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_crispinilla"),
+]],
+
+[anyone|other(trp_courtier_locusta), "locusta_gives_opinion", [],
+"It is a monument to an ending, Caesar. A final, stone-cold legacy. Yours, however, is a legacy of vibrant, living art. Far more potent.",
+"poppaea_gives_opinion", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_locusta"),
+]],
+
+[anyone|other(trp_kingdom_7_lady_1), "poppaea_gives_opinion", [],
+"They built a house for their bones, my husband. You are building a home for the soul of Rome itself. There is no comparison.",
+"nero_reacts_to_opinions", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
+]],
+
+[anyone, "nero_reacts_to_opinions", [
+], "And you, {playername}? You are a person of action, not words. What does your pragmatic eye see? Speak freely.",
+"player_gives_opinion", []],
+
+[anyone|plyr, "player_gives_opinion", [],
+"It is a monument to a king, Princeps. But you are a living god. The difference is clear.",
+"nero_reacts_to_player", [
+  (assign, "$temp3", 1), # Flattery
+]],
+
+[anyone|plyr, "player_gives_opinion", [],
+"It is a strong, defensible position. A fitting tomb for warrior-kings.",
+"nero_reacts_to_player", [
+  (assign, "$temp3", 2), # Pragmatic
+]],
+
+[anyone|plyr, "player_gives_opinion", [],
+"It is a solemn reminder that even the greatest kings must bow to time.",
+"nero_reacts_to_player", [
+  (assign, "$temp3", 3), # Philosophical
+]],
+
+[anyone, "nero_reacts_to_player", [
+  # Nero's reaction to the player's choice.
+  (try_begin),
+      (eq, "$temp3", 1), # Flattery
+      (str_store_string, s10, "str_nero_reaction_flattery"),
+  (else_try),
+      (eq, "$temp3", 2), # Pragmatic
+      (str_store_string, s10, "str_nero_reaction_pragmatic"),
+  (else_try),
+      (eq, "$temp3", 3), # Philosophical
+      (str_store_string, s10, "str_nero_reaction_philosophical"),
+  (try_end),
+], "{s10}",
+"nero_concludes_visit", [
+]],
+
+[anyone, "nero_concludes_visit", [],
+"Enough of these silent stones. I have seen what I came to see. My own monuments will cast a far greater shadow. Let us return to the living world. The journey continues. {playername}, we will travel to Delphi next!",
+"close_window", [
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 11),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_target_center, "p_delphi"),
+  (display_message, "str_quest_updated"),
+
+  (assign, "$g_leave_encounter", 1),
+  (store_current_hours, ":hours"),
+  (val_add, ":hours", 24 * 5),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_timer, ":hours"),
+  (jump_to_menu, "mnu_auto_return"),
+
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+[trp_senator_2, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 8),
+], "A triumph, Princeps! A triumph for the ages! Not even Apollo himself could have plucked the lyre with such divine skill. My only hope is that this feast is but a pale reflection of your performance!",
+"crispinilla_praises_nero", [
+]],
+
+[anyone|other(trp_courtier_crispinilla), "crispinilla_praises_nero", [],
+"Vitellius is too modest, Caesar. The roar of the crowd when you took your bow... it was a sound of pure adoration. They do not just respect you; they desire you.",
+"locusta_praises_nero", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_crispinilla"),
+]],
+
+[anyone|other(trp_courtier_locusta), "locusta_praises_nero", [],
+"Such precision in your delivery. Every note, every word... struck like a carefully measured dose. It was... intoxicating to witness.",
+"poppaea_praises_nero", [
+  (call_script, "script_set_conversation_troop", "trp_courtier_locusta"),
+]],
+
+[anyone|other(trp_kingdom_7_lady_1), "poppaea_praises_nero", [],
+"They are all correct, my divine husband. The heroes of old conquered Greece with the sword and spear. You have conquered their hearts and souls with your voice. This victory will be remembered when all others have turned to dust.",
+"nero_acknowledges_praise", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
+]],
+
+[anyone|other(trp_kingdom_7_lord), "nero_acknowledges_praise", [],
+"A simple truth, elegantly spoken, my dear. Art is the only true immortal. But even art must be sustained! {playername}, your moment has come. Let us see if your feast can match the glory of my performance.",
+"player_begins_feast", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+]],
+
+[anyone|plyr, "player_begins_feast", [
+],"The feast is served, Princeps.", "nero_judges_meal", []],
+[anyone|plyr, "player_begins_feast", [
+],"Oh Divine Caesar, the feast is ready.", "nero_judges_meal", []],
+[anyone|plyr, "player_begins_feast", [
+],"Divine Victor, Caesar, Imperator, Princepts, the meal is served!", "nero_judges_meal", []],
+
+[anyone|other(trp_kingdom_7_lord), "nero_judges_meal", [
+  (try_begin),
+      (eq, "$temp1", 1), # Good Meal
+      (str_store_string, s1, "str_nero_reaction_good_meal"),
+  (else_try),
+      (eq, "$temp1", 2), # Player-made Meal
+      (str_store_string, s1, "str_nero_reaction_player_meal"),
+  (else_try),
+      (eq, "$temp1", 4), # Bad Meal
+      (str_store_string, s1, "str_nero_reaction_bad_meal"),
+  (try_end),
+], "{s1}",
+"nero_gives_next_task_mac_tombs", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+  (try_begin),
+      (eq, "$g_feast_outcome", 4), # Bad Meal
+      (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -10),
+  (try_end),
+]],
+
+[anyone|other(trp_kingdom_7_lord), "nero_gives_next_task_mac_tombs", [
+],"This victory has put me in a historical mood. It is not enough to triumph in the present; one must commune with the glories of the past!^^-- He looks around, lingering in the moment. --",
+"nero_gives_next_task_2", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+]],
+
+[anyone|other(trp_kingdom_7_lord), "nero_gives_next_task_2", [],
+"We shall travel to Macedonia. I wish to gaze upon the legacy of Philip and Alexander, to see the tombs of the old kings at Aigai. A pilgrimage to the roots of greatness.",
+"nero_gives_next_task_3_1", [
+(call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+]],
+
+[anyone|other(trp_kingdom_7_lady_1), "nero_gives_next_task_3_1", [],
+"An excellent idea, my love.",
+"nero_gives_next_task_3", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
+]],
+
+[anyone|other(trp_kingdom_7_lord), "nero_gives_next_task_3", [
+  (str_store_party_name, s21, "p_royal_tombs"),
+], "Of course it is! {playername}! You will arrange the journey. Take us to {s21}. I must see if their monuments can compare to the ones I am building in Rome.",
+"vitellius_in_olympia", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+]],
+
+[anyone, "vitellius_in_olympia", [
+], "An excellent plan, Princeps. A true connoisseur of history. If I may, I will take my leave here to attend to some private business in Patras. However, I shall eagerly rejoin your divine entourage at Olympia for the grand spectacle of the Olympic Games.",
+"vitellius_in_olympia_2", [
+]],
+
+[anyone|other(trp_kingdom_7_lord), "vitellius_in_olympia_2", [
+], "As you wish, Vitellius. See that your 'business' does not dull your senses for the true artistry to come. Now, {playername}, you have your orders. To Aigai!",
+"player_accepts_macedonia_task", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+]],
+
+[anyone|plyr, "player_accepts_macedonia_task", [],
+"As you command, Princeps. We shall make for Macedonia.",
+"nero_final_dismissal_feast", []],
+
+[anyone|other(trp_kingdom_7_lord), "nero_final_dismissal_feast", [],
+"Good. Finish your wine. We have history to see.",
+"close_window", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lord"),
+  # Quest is updated to the next stage: Travel to Macedonia.
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 9),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_target_center, "p_royal_tombs"),
+  (display_message, "str_quest_updated"),
+
+  (troop_get_slot, ":leaded_party", "trp_kingdom_7_lord", slot_troop_leaded_party),
+  (party_attach_to_party, ":leaded_party", "p_main_party"),
+  (party_set_slot,":leaded_party",slot_party_time_service, 1),
+  (assign, "$g_leave_encounter", 1),
+  (store_current_hours, ":hours"),
+  (val_add, ":hours", 24 * 5),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_timer, ":hours"),
+  (jump_to_menu, "mnu_auto_return"),
+
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+
+[trp_kingdom_7_lord, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+  (eq, "$current_town", "p_town_36"),
+  (eq, "$g_encountered_party", "p_town_36"),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (eq, ":item_flags", 7),
+], "Ah, the purveyor returns! Finally. For a moment, I feared my victory feast would be served with nothing but stale bread and the tears of my disappointed admirers. I assume your tedious journeys were successful?",
+"player_confirms_supplies", []],
+
+[anyone|plyr, "player_confirms_supplies", [],
+"Yes, Princeps. The Falernian wine, the saffron, and the peacocks have all been procured as you commanded.",
+"nero_gives_next_task", []],
+
+[anyone|plyr, "player_confirms_supplies", [],
+"Divine Caesar, I brought the finest Falernian wine, the best saffron, and beautiful peacocks.",
+"nero_gives_next_task", []],
+
+[anyone, "nero_gives_next_task", [
+], "Of course they have. The world provides for its luminaries. Your work is not done, however. Gathering ingredients is for grocers. Overseeing a masterpiece is for a man of talent. You will be responsible for the feast's preparation.",
+"nero_explains_roles", []],
+
+[anyone, "nero_explains_roles", [
+], "Do not waste any more of my time. While you are busy with the... culinary details, I must prepare for a different kind of artistry. The Actian Games are about to begin. The crowd awaits its god.",
+"player_accepts_feast_duty", []],
+
+[anyone|plyr, "player_accepts_feast_duty", [],
+"I will see to the preparations, Princeps. Good luck in the games.",
+"nero_final_dismissal", []],
+
+[trp_kingdom_7_lord, "nero_final_dismissal", [
+], "Luck is for mortals who require it. I have talent. Now go, ensure my triumph is properly celebrated. The cooks await your direction.",
+"close_window", [
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 7),
+
+  (store_current_hours, ":end_of_games"),
+  (val_add, ":end_of_games", 24 * 4),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_timer, ":end_of_games"),
+
+  (display_message, "str_quest_updated"),
+
+  (jump_to_menu, "mnu_nero_tour_greece"),
+
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+[trp_kingdom_7_lord, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 5),
+  (eq, "$current_town", "p_town_36"),
+  (eq, "$g_encountered_party", "p_town_36"),
+], "Ah, {playername}. I trust my will has been made manifest? Has the praefect ceased his tedious objections and embraced his city's glorious destiny?",
+"player_reports_success", []],
+
+[anyone|plyr, "player_reports_success", [],
+"Yes, Princeps. The praefect has agreed. The Actian Games will be held in your honor.",
+"nero_reacts_to_success", []],
+
+[anyone, "nero_reacts_to_success", [
+], "Of course he has! Did you expect any other outcome when you carry a message from a living god? The man is a bureaucrat, but he is not a fool. See how smoothly the world bends to accommodate true art?",
+"nero_plans_feast", []],
+
+[anyone, "nero_plans_feast", [
+], "My victory in these games is, naturally, a foregone conclusion. And such a victory demands a celebration worthy of Olympus! A feast that will be spoken of for centuries!",
+"nero_gives_new_task", []],
+
+[anyone, "nero_gives_new_task", [
+], "But this is a province, not Rome. We cannot rely on the local merchants for the quality I require. You, therefore, will be my purveyor. You are to acquire the necessary provisions for this triumph.",
+"nero_lists_supplies", []],
+
+[anyone, "nero_lists_supplies", [
+], "I will need three things. First, the finest Falernian wine—none of this local swill. Second, peacocks from the East; their meat is divine and their plumage will adorn the platters. And finally, saffron, a king's ransom in saffron to turn the sauces to gold. See to it. This feast must be a masterpiece.",
+"player_accepts_supply_quest", []],
+
+[anyone|plyr, "player_accepts_supply_quest", [],
+"A feast worthy of the gods, Princeps. I will gather the supplies.",
+"nero_supply_quest_accepted", []],
+
+[anyone|plyr, "player_accepts_supply_quest", [],
+"I will not fail you. The finest provisions will be procured.",
+"nero_supply_quest_accepted", []],
+
+[anyone, "nero_supply_quest_accepted", [
+], "Good. Attend to it while I prepare my mind for the competition. One must be in the proper artistic state to achieve perfection. Go!", "close_window", [
+  (store_current_hours, ":hours"),
+  (val_add, ":hours", 24 * 14),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_timer, ":hours"),
+
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 6),
+
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, 0),
+
+  (display_message, "str_quest_updated"),
+
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+]],
+
+[trp_kingdom_7_lord, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 3),
+  (eq, "$current_town", "p_town_36"),
+  (eq, "$g_encountered_party", "p_town_36"),
+], "Ah, the shores of Hellas at last! The sea was a tedious stage, but now we have our audience! I can already feel the acclaim of the ages waiting to embrace me.",
+"nero_greece_arrival_1", []],
+
+[anyone, "nero_greece_arrival_1", [
+], "However... I have just received a message from the town praefect. A most... irritating piece of parchment.",
+"nero_greece_arrival_2", []],
+
+[anyone, "nero_greece_arrival_2", [
+], "He welcomes me, of course, as is his duty. But he informs me that the sacred Actian Games are not to be held for another six months! Six months! The sheer, provincial insolence!",
+"nero_greece_arrival_3", []],
+
+[anyone|other(trp_kingdom_7_lady_1), "nero_greece_arrival_3", [
+], "Calm yourself, my divine husband. Their small minds are simply bound by tradition. They see a calendar; you see destiny. They are merely unprepared for your brilliance.",
+"nero_greece_arrival_4", [
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
+]],
+
+[anyone, "nero_greece_arrival_4", [
+], "Unprepared? Yes, that must be it! They simply need to be guided towards their own glory. {playername}, you shall be my guide for them. This will be your first task.",
+"nero_greece_task_1", []],
+
+[anyone, "nero_greece_task_1", [
+], "Go to this praefect. Inform him that the Actian Games will be held now, in my honor. Use persuasion, use coin, use whatever arguments you must. I will have my stage, and I will have it before my artistic inspiration fades! Do you understand?", "nero_greece_player_choice", []],
+
+[anyone|plyr, "nero_greece_player_choice", [
+], "It will be done, Princeps. The praefect will see reason.",
+"nero_greece_quest_accepted", []],
+
+[anyone|plyr, "nero_greece_player_choice", [
+], "To reschedule their most sacred games will be difficult, but I will do my best.",
+"nero_greece_quest_accepted", []],
+
+[trp_kingdom_7_lord, "nero_greece_quest_accepted", [
+], "Difficult? Nothing is difficult when commanded by a god! Now go. Find this praefect and bring me back news of my impending victory. I shall be here, composing my triumphal ode.", "close_window", [
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 4),
+
+  (store_current_hours, ":hours"),
+  (val_add, ":hours", 24 * 3),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_timer, ":hours"),
+
+  (display_message, "str_quest_updated"),
+  (jump_to_menu, "mnu_town"),
+  (finish_mission, 3),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color,  0xFF000000, 2000),
+
+  (troop_get_slot, ":lord_party", "$g_talk_troop", slot_troop_leaded_party),
+  (party_detach, ":lord_party"),
+  (party_set_slot,":lord_party",slot_party_time_service, -1),
+  (party_relocate_near_party, ":lord_party", "p_main_party", 1),
+  (party_attach_to_party, ":lord_party", "p_town_36"),
+  (str_store_party_name, s22, ":lord_party"),
+  (display_message, "@{s22} has left your force."),
+]],
+
+[trp_kingdom_7_lord, "event_triggered", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 2),
+  (quest_slot_ge, "qst_nero_greece_tour", slot_quest_target_center, 1),
+  (eq, "$talk_context", tc_nero_quest_failed),
+], "Is this how you serve your Princeps? The schedule was precise, the timing impeccable! The fates themselves had aligned for my performance at {s11}, and you... you have squandered it with your sluggishness! The moment is lost!",
+"nero_quest_failed_player_reply", [
+  (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+  (str_store_party_name, s11, ":next_target"),
+]],
+
+[anyone|plyr, "nero_quest_failed_player_reply", [
+], "My deepest apologies, Princeps. I was delayed.",
+"nero_quest_failed_final",
+[]],
+
+[anyone|plyr, "nero_quest_failed_player_reply", [
+], "Forgive my tardiness, Princeps. There were unforeseen complications on the journey.",
+"nero_quest_failed_final",
+[]],
+
+[trp_kingdom_7_lord, "nero_quest_failed_final", [
+], "Complications? Excuses are the refuge of the mundane! Do you think inspiration waits for logistics? The artistic fire has turned to ash. This entire venture is tainted by your incompetence. The tour is over before it truly began. Return to whatever dreary duties you are actually suited for. You have failed me.",
+"close_window",[
+  (call_script, "script_fail_quest", "qst_nero_greece_tour"),
+  (call_script, "script_end_quest", "qst_nero_greece_tour"),
+  (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -25),
+  (call_script, "script_change_troop_renown", "trp_player", -50),
+  (assign, "$g_leave_encounter", 1),
+
+  (troop_get_slot, ":lord_party", "$g_talk_troop", slot_troop_leaded_party),
+  (party_detach, ":lord_party"),
+  (party_set_slot,":lord_party",slot_party_time_service, -1),
+  (party_relocate_near_party, ":lord_party", "p_main_party", 1),
+  (str_store_party_name, s22, ":lord_party"),
+  (display_message, "@{s22} has left your force."),
+]],
+
 [anyone ,"event_triggered",[
   (store_conversation_troop, "$g_talk_troop"),
   (try_begin),
@@ -676,7 +2733,7 @@ dialogs =[
 "diocles_complete_sale_russata", []],
 
 [anyone,"diocles_sell_russata",[
-], "You do not have enough denarii for this purchase. Come back when you are wealthier.",
+], "You do not have enough denars for this purchase. Come back when you are wealthier.",
 "diocles_pretalk", []],
 
 [anyone,"diocles_complete_sale_russata", [
@@ -4042,7 +6099,7 @@ dialogs =[
 ],"Of course he did! And how did you get them out?",
 "wlodowiecus_4_intro_roman_lady_exag_summary_2",[]],
 [anyone|plyr,"wlodowiecus_4_intro_roman_lady_exag_summary_2",[
-],"A good old prison break! I fought off guards, and just as we escaped, the city was besieged by an emperor. Mancinellus, somehow, became an agent of the emperor while we fled through the jungle.",
+],"A good old prison break! I fought off guards, and just as we escaped, the city was besieged by an Emperor. Mancinellus, somehow, became an agent of the Emperor while we fled through the jungle.",
 "wlodowiecus_4_intro_roman_lady_exag_summary_3",[]],
 [anyone,"wlodowiecus_4_intro_roman_lady_exag_summary_3",[
 ],"You've been through some wild adventures. What else?",
@@ -4067,7 +6124,7 @@ dialogs =[
 ],"That's unfortunate. How did you manage to rescue them?",
 "wlodowiecus_4_intro_roman_lady_summary_2",[]],
 [anyone|plyr,"wlodowiecus_4_intro_roman_lady_summary_2",[
-],"I organized a prison break, fought off the guards, and we escaped just before the city was besieged. Mancinellus somehow gained favor with the emperor while we fled.",
+],"I organized a prison break, fought off the guards, and we escaped just before the city was besieged. Mancinellus somehow gained favor with the Emperor while we fled.",
 "wlodowiecus_4_intro_roman_lady_summary_3",[]],
 [anyone,"wlodowiecus_4_intro_roman_lady_summary_3",[
 ],"What happened next?",
@@ -4374,7 +6431,7 @@ dialogs =[
 "wlodowiecus_4_intro_lybian_21",[
 ]],
 [anyone|other(trp_old_mercenary),"wlodowiecus_4_intro_lybian_21",[
-],"Well, I am sure going beyond any lands my people have ever gone to. I don't think I'll survive this so I might as well find a woman here and have a child before my cock finally dies *chuckles*.",
+],"Well, I am sure going beyond any lands my people have ever gone to. I don't think I'll survive this so I might as well find a woman here and have a child before my cock finally dies...",
 "wlodowiecus_4_intro_lybian_22",[
   (call_script, "script_set_conversation_troop", "trp_old_mercenary"),
 ]],
@@ -14158,7 +16215,7 @@ dialogs =[
 ]],
 
 [anyone,"senate_stab_goy_2",[],
-"Guards! Kill the wrong Ceasar!",
+"Guards! Kill the wrong Caesar!",
 "senate_stab_goy_3",[]],
 
 [anyone,"senate_stab_goy_3",[],
@@ -15605,7 +17662,7 @@ dialogs =[
       (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 6),
       (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
  ],
-    "(He sings with a sad, sweet voice.)^^"+
+    "-- He sings with a sad, sweet voice. --^^"+
     "'All the cries, all Heraclit's tears,'^"+
     "'and lamentations, Simonides' complains,'^"+
     "'all the worries, all the sights,'^"+
@@ -16584,27 +18641,26 @@ dialogs =[
 [
  ],"And what is so important?", "senate_talk_bribe2",[]],
 
-[trp_senator|plyr, "senate_talk_bribe2",
-[
- ],"I would offer you my support and some gifts as token for our friendship if you would support me in the senate.", "senate_talk_bribe3",[
+[trp_senator|plyr, "senate_talk_bribe2",[
+],"I would offer you my support and some gifts as token for our friendship if you would support me in the senate.",
+"senate_talk_bribe3",[
+]],
 
-  ]],
-
-[trp_senator, "senate_talk_bribe3",
-[
+[trp_senator, "senate_talk_bribe3",[
   (agent_get_slot, reg37, "$g_talk_agent", slot_agent_fatiga),
- ],"Such a gift would cost you {reg37} denars!", "senate_talk_bribe4",[]],
+],"Such a gift would cost you {reg37} denars!",
+"senate_talk_bribe4",[]],
 
-[trp_senator|plyr, "senate_talk_bribe4",
-[
- ],"Maybe I can try to persuade you.", "senate_talk_bribe_persuade",[]],
+[trp_senator|plyr, "senate_talk_bribe4",[
+],"Maybe I can try to persuade you.",
+ "senate_talk_bribe_persuade",[]],
 
-[trp_senator, "senate_talk_bribe_persuade",
-[
- ],"Very well. Make your case. I listen to your arguments.", "senate_talk_bribe_persuade2",[]],
-[trp_senator|plyr, "senate_talk_bribe_persuade2",
-[
- ],"[Attempt to persuade]", "senator_convince_persuade",[
+[trp_senator, "senate_talk_bribe_persuade",[
+],"Very well. Make your case. I listen to your arguments.",
+"senate_talk_bribe_persuade2",[]],
+
+[trp_senator|plyr, "senate_talk_bribe_persuade2",[
+],"[Attempt to persuade]", "senator_convince_persuade",[
     (assign, "$convince_value", reg37),
 
     (store_skill_level, ":persuasion_level", "skl_persuasion", "trp_player"),
@@ -16648,73 +18704,83 @@ dialogs =[
 			(assign, reg65, 0),
 		(try_end),
 		##diplomacy end+
-        (try_begin),
-          (lt, "$persuasion_strength", -30),
-          (str_store_string, s5, "str_persuasion_summary_very_bad"),
-        (else_try),
-          (lt, "$persuasion_strength", -10),
-          (str_store_string, s5, "str_persuasion_summary_bad"),
-        (else_try),
-          (lt, "$persuasion_strength", 100),
-          (str_store_string, s5, "str_persuasion_summary_average"),
-        (else_try),
-          (lt, "$persuasion_strength", 300),
-          (str_store_string, s5, "str_persuasion_summary_good"),
-        (else_try),
-          (str_store_string, s5, "str_persuasion_summary_very_good"),
-        (try_end),
-        (dialog_box, "@{s5} (Persuasion strength: {reg5})", "@Persuasion Attempt"),
-  ]],
+    (try_begin),
+      (lt, "$persuasion_strength", -30),
+      (str_store_string, s5, "str_persuasion_summary_very_bad"),
+    (else_try),
+      (lt, "$persuasion_strength", -10),
+      (str_store_string, s5, "str_persuasion_summary_bad"),
+    (else_try),
+      (lt, "$persuasion_strength", 100),
+      (str_store_string, s5, "str_persuasion_summary_average"),
+    (else_try),
+      (lt, "$persuasion_strength", 300),
+      (str_store_string, s5, "str_persuasion_summary_good"),
+    (else_try),
+      (str_store_string, s5, "str_persuasion_summary_very_good"),
+    (try_end),
+    (dialog_box, "@{s5} (Persuasion strength: {reg5})", "@Persuasion Attempt"),
+]],
 
-[trp_senator,"senator_convince_persuade",[(le, "$convince_value", 0)], "All right, all right. You have persuaded me to it.\
- I'll go ahead with what you suggest. I swear by the gods, I will support you from now on!", "close_window",[
-# (val_add, "$temp3", 1),
- (call_script, "script_change_senate_support", 1,0),
- (display_message, "@You gain support", color_good_news),
- (agent_set_slot, "$g_talk_agent", slot_agent_courage_score, 1),
- ]],
-[trp_senator,"senator_convince_persuade",[(gt, "$persuasion_strength", 5)], "You've a point, {playername},\
- I'll admit that much. However I am not yet convinced I should do as you bid.", "senator_pretalk",[]],
-[trp_senator,"senator_convince_persuade",[(gt, "$persuasion_strength", -10)], "Enough, {playername}.\
- You've a lot of arguments, but I find none of them truly convincing. I stand by what I said before.", "senator_pretalk",[]],
-[trp_senator,"senator_convince_persuade",[], "Truthfully, {playername}, I fail to see the virtue of your reasoning.\
- What you ask for makes even less sense now than it did before. Don't waste my time any longer, it's better when you leave now.", "close_window",[
+[trp_senator,"senator_convince_persuade",[
+  (le, "$convince_value", 0)
+], "All right, all right. You have persuaded me to it. I'll go ahead with what you suggest. I swear by the gods, I will support you from now on!",
+"close_window",[
+  (call_script, "script_change_senate_support", 1,0),
+  (display_message, "@You gain support", color_good_news),
+  (agent_set_slot, "$g_talk_agent", slot_agent_courage_score, 1),
+]],
+
+[trp_senator,"senator_convince_persuade",[
+  (gt, "$persuasion_strength", 5)
+], "You've a point, {playername}, I'll admit that much. However I am not yet convinced I should do as you bid.",
+"senator_pretalk",[]],
+
+[trp_senator,"senator_convince_persuade",[
+  (gt, "$persuasion_strength", -10)
+], "Enough, {playername}. You've a lot of arguments, but I find none of them truly convincing. I stand by what I said before.",
+"senator_pretalk",[]],
+
+[trp_senator,"senator_convince_persuade",[
+], "Truthfully, {playername}, I fail to see the virtue of your reasoning. What you ask for makes even less sense now than it did before. Don't waste my time any longer, it's better when you leave now.",
+"close_window",[
  (agent_set_slot, "$g_talk_agent", slot_agent_courage_score, -1),
- ]],
+]],
 
-[trp_senator, "senator_pretalk",
-[
+[trp_senator, "senator_pretalk",[
   (agent_get_slot, reg37, "$g_talk_agent", slot_agent_fatiga),
- ],"I still want a gift of {reg37} denars, as you hopefully understand.", "senate_talk_bribe4",[]],
+],"I still want a gift of {reg37} denars, as you hopefully understand.",
+"senate_talk_bribe4",[]],
 
-[trp_senator|plyr, "senate_talk_bribe_persuade2",
-[
- ],"Nevermind.", "senator_pretalk",[]],
+[trp_senator|plyr, "senate_talk_bribe_persuade2",[
+],"Nevermind.", "senator_pretalk",[]],
 
-[trp_senator|plyr, "senate_talk_bribe4",
-[(store_troop_gold, ":g", "trp_player"),
+[trp_senator|plyr, "senate_talk_bribe4",[
+  (store_troop_gold, ":g", "trp_player"),
   (ge, ":g", reg37),
- ],"Very well. I will hand it over to you if I have your support.", "senate_talk_bribe5",[]],
-[trp_senator, "senate_talk_bribe5",
-[
- ],"Of course I will support you. Now, give me the money.^^ -- Greedily, he looks at the silver. -- ^^ Farewell, my friend.", "close_window",[
+],"Very well. I will hand it over to you if I have your support.",
+"senate_talk_bribe5",[]],
+
+[trp_senator, "senate_talk_bribe5",[
+],"Of course I will support you. Now, give me the money.^^ -- Greedily, he looks at the silver. -- ^^ Farewell, my friend.",
+"close_window",[
   (call_script, "script_change_senate_support", 1,1),
   (display_message, "@You gain support", color_good_news),
   (agent_set_slot, "$g_talk_agent", slot_agent_courage_score, 1),
   (troop_remove_gold, "trp_player", reg37),
-  ]],
+]],
 
-[trp_senator|plyr, "senate_talk_bribe4",
-[
- ],"Nevermind", "close_window",[]],
+[trp_senator|plyr, "senate_talk_bribe4",[
+],"Nevermind",
+"close_window",[]],
 
-[trp_senator|plyr, "senate_talk_bribe2",
-[
- ],"Nevermind", "close_window",[]],
+[trp_senator|plyr, "senate_talk_bribe2",[
+],"Nevermind",
+"close_window",[]],
 
-[trp_senator|plyr, "senate_talk",
-[
- ],"I must apologize, I wanted to talk with someone else.", "close_window",[]],
+[trp_senator|plyr, "senate_talk",[
+],"I must apologize, I wanted to talk with someone else.",
+"close_window",[]],
  ###senator talk not supporter ends
 
 ##wife of biggus dickus
@@ -22038,11 +24104,11 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
 ], "I'm sending you to deliver a message to {s22}", "send_message_to_leader",[]],
 
 [anyone|plyr,"member_missions2",[
-], "Tour the nearest friendly settlements and offer top denarii for anyone willing to join us.", "member_missions_mercs",[]],
+], "Tour the nearest friendly settlements and offer top denars for anyone willing to join us.", "member_missions_mercs",[]],
 
 [anyone,"member_missions_mercs",[
 ], "Vero domine! A good price should get some warriors off their asses.\
- ^It will have to be much more than hiring a normal mercenary. Say, 50000 denarii in total. Should I do it?", "member_missions_mercs2",[]],
+ ^It will have to be much more than hiring a normal mercenary. Say, 50000 denars in total. Should I do it?", "member_missions_mercs2",[]],
 
 [anyone|plyr,"member_missions_mercs2",[
 (store_troop_gold, ":g", "trp_player"),
@@ -22069,7 +24135,7 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
 
 [anyone,"member_missions_follower",[
 ], "Vero domine! It will improve the men's morale. I've broken up two fights just this morning.\
- ^A small scout detachment is all I need for his, Dominus, but I will need to throw around some serious coin to get what you want quickly. Something like 10000 denarii. Should I do it?", "member_missions_follower2",[]],
+ ^A small scout detachment is all I need for his, Dominus, but I will need to throw around some serious coin to get what you want quickly. Something like 10000 denars. Should I do it?", "member_missions_follower2",[]],
 
 [anyone|plyr,"member_missions_follower2",[
 (store_troop_gold, ":g", "trp_player"),
@@ -22096,7 +24162,7 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
 
 [anyone,"member_missions_resupply",[
 ], "Vero domine! I will detach a wagon train and a unit for security. I should be back in two days!\
- ^But, Dominus, I'm sure you understand we will be in a hurry and have to pay very high prices for these goods. I will need about 5000 denarii. Should we proceed?", "member_missions_resupply2",[]],
+ ^But, Dominus, I'm sure you understand we will be in a hurry and have to pay very high prices for these goods. I will need about 5000 denars. Should we proceed?", "member_missions_resupply2",[]],
 
 [anyone|plyr,"member_missions_resupply2",[
 (store_troop_gold, ":g", "trp_player"),
@@ -43933,7 +45999,44 @@ I knew that I had found someone worthy of becoming a commander of my realm.", "l
     (quest_set_slot, "qst_trial", slot_quest_dont_give_again_remaining_days, 40),
 ]],
 
+[trp_kingdom_7_lord,"lord_start",[
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 1),
+],"Ah, {playername}, finally. I have been contemplating the odes I shall write upon our arrival in Hellas. Tell me, is your ship prepared to fulfill its glorious destiny? The Muses will not wait forever.",
+"nero_tour_start_1",[
+]],
 
+[anyone|plyr,"nero_tour_start_1",[
+],"The ship is ready and the winds are favorable, Princeps. We can set sail at your command.",
+"nero_tour_start_start",[
+]],
+
+[anyone,"nero_tour_start_start",[
+],"Splendid! Let the world see that our voyage has begun! First, to {s11}! The Greeks there will be the first to witness true artistry!",
+"close_window",[
+  (str_store_party_name, s11, "p_town_36"),
+  (party_attach_to_party, "$g_talk_troop_party", "p_main_party"),
+  (party_set_slot,"$g_talk_troop_party",slot_party_time_service, 1),
+  (assign, "$g_leave_encounter", 1),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 2),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_target_center, "p_town_36"),
+  (store_current_hours, ":hours"),
+  (val_add, ":hours", 24 * 7),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_timer, ":hours"),
+  (jump_to_menu, "mnu_auto_return"),
+]],
+
+[anyone|plyr,"nero_tour_start_1",[
+],"My apologies, Princeps. A few final preparations are required to ensure your safety.",
+"nero_tour_start_2",[
+]],
+
+[anyone,"nero_tour_start_2",[
+],"Preparations? See to them quickly! Every moment we remain docked is a moment Greece is deprived of my genius. Go, and do not return until you are ready to sail!",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+  (jump_to_menu, "mnu_auto_return"),
+]],
 
 # thundergod nero
 [trp_kingdom_7_lord,"lord_start",[
@@ -50872,13 +52975,15 @@ I will use this to make amends to those you have wronged, and I will let it be k
 
 [anyone,"lord_ask_pardon_tribue_deny",[], "Then there's nothing I can do for you, {playername}. No silver, no pardon.", "lord_pretalk",[]],
 
-[anyone|plyr,"lord_talk",[(store_partner_quest,":lords_quest"),
-                       (ge,":lords_quest",0),
-                       (neq, ":lords_quest", "qst_the_eagle"),
-                       (neq, ":lords_quest", "qst_slave_revolt"),
-                      #  (neq, ":lords_quest", "qst_bribes_bribes"),
-                       (neq, ":lords_quest", "qst_freelancing"),
-                       (neq, ":lords_quest", "qst_langobard_arrive"),
+[anyone|plyr,"lord_talk",[
+  (store_partner_quest,":lords_quest"),
+  (ge,":lords_quest",0),
+  (neq, ":lords_quest", "qst_the_eagle"),
+  (neq, ":lords_quest", "qst_nero_greece_tour"),
+  (neq, ":lords_quest", "qst_slave_revolt"),
+#  (neq, ":lords_quest", "qst_bribes_bribes"),
+  (neq, ":lords_quest", "qst_freelancing"),
+  (neq, ":lords_quest", "qst_langobard_arrive"),
 ],
 "About the task you gave me...", "lord_active_mission_1",[]],
 
@@ -56943,16 +59048,77 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 [anyone,"lord_tell_mission_longbards_explain_finish",[],
 
 "I am glad to hear that {playername}. Once you are ready meet our army near the river Suebos. I will mark the location on your map. Farewell! And my the gods protect you in battle.",
-"close_window",
-[ (finish_mission),
-(assign, "$g_leave_encounter", 1),
-(jump_to_menu, "mnu_auto_return_map"),
+"close_window",[
+  (finish_mission),
+  (assign, "$g_leave_encounter", 1),
+  (jump_to_menu, "mnu_auto_return_map"),
 
-(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
-(str_store_string, s2, "@Make yourself ready for battle and travel to the Lugian camp near the river Suebos and meet their king."),
-(call_script, "script_start_quest", "qst_langobard_arrive", "$g_talk_troop"),
-(party_set_flags, "p_langobard_landing", pf_disabled, 0),
-(quest_set_slot, "qst_langobard_arrive", slot_quest_current_state, 1),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
+  (str_store_string, s2, "@Make yourself ready for battle and travel to the Lugian camp near the river Suebos and meet their king."),
+  (call_script, "script_start_quest", "qst_langobard_arrive", "$g_talk_troop"),
+  (party_set_flags, "p_langobard_landing", pf_disabled, 0),
+  (quest_set_slot, "qst_langobard_arrive", slot_quest_current_state, 1),
+]],
+
+[anyone,"lord_tell_mission",[
+  (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
+  (troop_slot_ge, "$g_talk_troop", slot_troop_player_relation, 50),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 0),
+  (neg|check_quest_active, "qst_nero_greece_tour"),
+], "A task... another report from Britannia, another grain shipment from Aegyptus... how tiresome the mechanisms of empire can be. The soul requires more than logistics, it requires... inspiration! Art!", "nero_delphi_intro_2",
+[]],
+
+[anyone, "nero_delphi_intro_2", [],
+  "That's it! A grand tour! A pilgrimage to the heart of culture itself! To Hellas! Not as a conqueror, but as a competitor! I shall compete in their games, sing in their theatres, and show the Greeks what true artistry is! I will return with more crowns than any general has brought back from a triumph!",
+"nero_delphi_intro_poppaea", []],
+
+[anyone|other(trp_kingdom_7_lady_1) ,"nero_delphi_intro_poppaea",[
+],
+"A divine notion, my husband. Alexander went to the East with an army and brought back an empire. You shall go to Greece with your voice and lyre, and bring back immortality. Apollo himself will be envious of the acclaim you receive.",
+"nero_delphi_intro_tigellinius",[
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
+]],
+
+[anyone|other(trp_tigellinus) ,"nero_delphi_intro_tigellinius",[
+],
+"And a stroke of political genius, Princeps! The Greeks will adore you for honoring their traditions. Their loyalty will be secured for a generation, not by the sword, but by your song! Your security will, of course, be my highest priority. No harm shall befall our divine artist.",
+"nero_makes_offer_delphi",[
+  (call_script, "script_set_conversation_troop", "trp_tigellinus"),
+]],
+
+[anyone, "nero_makes_offer_delphi", [],
+  "You see, {playername}? The gods themselves approve of this venture! But it cannot be all poets and actors. I will need a man of your... particular talents. Someone to ensure the smooth running of the artistic proceedings, and to deal with any provincial dullards who fail to appreciate true genius. You will accompany us. You will be my companion on this historic journey.",
+"player_choice_delphi", []],
+
+[anyone|plyr, "player_choice_delphi", [],
+  "To be part of such a grand tour would be an honor, Princeps. I accept.",
+"quest_accepted_delphi", [
+]],
+
+[anyone|plyr, "player_choice_delphi", [],
+  "Forgive me, Divine Augustus, but my duties require me to remain in Roma at this time. I cannot go.",
+"quest_refused_delphi", [
+]],
+
+[anyone, "quest_accepted_delphi", [],
+  "Excellent! You choose to be a character in an epic, not a footnote in a ledger! While Tigellinus tends to the prose of politics here, you and I shall pursue the poetry of history! You will be my champion, my guardian on this quest. Your ship shall be our vessel. Prepare it. We sail for Greece within the week to claim our eternal fame!",
+"close_window", [
+  (assign, "$g_leave_encounter", 1),
+  (str_store_troop_name_link, s10, "$g_talk_troop"),
+  (str_store_string, s2, "@{s10} has decided to embark on a grand artistic tour of Greece. He intends to compete in the Olympic and Actian games, as well as various musical festivals. He has ordered you to accompany him as part of his entourage, to provide security and ensure the tour proceeds smoothly."),
+  (call_script, "script_start_quest", "qst_nero_greece_tour", "$g_talk_troop"),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 1),
+
+  (store_current_hours, ":hours"),
+  (val_add, ":hours", 24 * 7),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_timer, ":hours"),
+
+]],
+
+[anyone, "quest_refused_delphi", [],
+  "I see... A pity. You miss a chance to witness true artistry. Very well. You are dismissed.",
+"close_window", [
+  (assign, "$g_leave_encounter", 1),
 ]],
 
 [anyone,"lord_tell_mission",[
@@ -64918,43 +67084,105 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
   (eq, "$talk_context", tc_court_talk),
   (eq, "$g_is_emperor",1),
- ],
-   "Ave, divine Caesar. What can I do for you?","slave_talk2",[]],
+],"Ave, divine Caesar. What can I do for you?",
+"slave_talk2",[]],
+
 [anyone,"start",[
   (store_current_scene, ":scene"),
   (neq, ":scene", "scn_imperial_palace"),
   (neq, ":scene", "scn_slavemarket"),
 
   (is_between, "$g_talk_troop", slaves_begin, slaves_end),# maybe add manumission dialogue later
-
   (eq, "$talk_context", tc_court_talk),
- ],
-   "Can't you see I'm busy here?","close_window",[]],
+],"Can't you see I'm busy here?",
+"close_window",[]],
 
-[anyone,"start",[(eq,"$g_is_emperor",1),
+[anyone,"start",[
+  (eq,"$g_is_emperor",1),
   (is_between, "$g_talk_troop", seneschal_begin, seneschal_end),
   (eq,"$g_talk_troop_met",0),
-  (str_store_party_name,s1,"$g_encountered_party")],
-   "Ave, {sir/madam}. It is an honor to meet you, divine {playername}.", "seneschal_intro_1",[]],
+  (str_store_party_name,s1,"$g_encountered_party"),
+],
+"Ave, {sir/madam}. It is an honor to meet you, divine {playername}.",
+"seneschal_intro_1",[]],
 
 [anyone,"start",[
     (is_between, "$g_talk_troop", seneschal_begin, seneschal_end),
     (eq,"$g_talk_troop_met",0),
-    (str_store_party_name,s1,"$g_encountered_party")],
-   "Ave, {sir/madam}. I do not believe I've seen you here before. Let me extend my welcome to you as the Praefectus of {s1}.",
- "seneschal_intro_1",[]],
+    (str_store_party_name,s1,"$g_encountered_party"),
+  ],
+"Ave, {sir/madam}. I do not believe I've seen you here before. Let me extend my welcome to you as the Praefectus of {s1}.",
+"seneschal_intro_1",[]],
 
 [anyone|plyr,"seneschal_intro_1",[],  "A pleasure to meet you.", "seneschal_intro_1a",[]],
+
 [anyone,"seneschal_intro_1a",[], "How can I help you?", "seneschal_talk",[]],
 [anyone|plyr,"seneschal_intro_1",[],  "What exactly do you do here?", "seneschal_intro_1b",[]],
 
 [anyone,"seneschal_intro_1b",[], "Ah, a Praefectus's duties are many, good {sire/woman}. For example, I oversee the rents and tributes, I manage the storerooms of the townwatch, I deal with the local peasantry, I take care of the vigilia, I arrange supplies for the garrison... I also ensure that the laws are enforced corrctly by the elected citizens' assembly. I also help out in trials if there are any problems.",
  "seneschal_talk",[]],
 
-[anyone,"start",[(is_between, "$g_talk_troop", seneschal_begin, seneschal_end),],
-   "Ave!", "seneschal_talk",[]],
+[anyone,"start",[
+  (is_between, "$g_talk_troop", seneschal_begin, seneschal_end),
+],"Ave!", "seneschal_talk",[]],
 
 [anyone,"seneschal_pretalk",[], "Anything else?", "seneschal_talk",[]],
+
+[anyone|plyr,"seneschal_talk",[
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 4),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_target_center, "$current_town"),
+], "The Princeps has a request regarding the Actian Games!", "governor_reaction_1",[]],
+
+[anyone, "governor_reaction_1", [],
+"Of course, anything to honor the Caesar's visit. We would be delighted to arrange a special viewing box for him when the games are held. What is his request?",
+"player_states_demand", []],
+
+[anyone|plyr, "player_states_demand", [],
+"He wishes for the games to be held immediately, in his honor.",
+"governor_laughs", []],
+
+[anyone, "governor_laughs", [
+], "-- He lets out a short, sharp laugh, then stifles it when he sees your expression. --^^By the gods, you're serious. That is... impossible.",
+"governor_explains_difficulty", []],
+
+[anyone, "governor_explains_difficulty", [],
+"The Actian Games are a sacred tradition, founded by the divine Augustus himself. Their date is fixed by religious calendars that have been observed for a century. The athletes, priests, and spectators come from all over the province. We can't simply... change the date. It would be an act of sacrilege.",
+"player_choice_persuasion", []],
+
+[anyone|plyr, "player_choice_persuasion", [],
+"Nero's artistic inspiration is a divine sign in itself. It cannot wait for calendars.",
+"governor_realization", []],
+
+[anyone|plyr, "player_choice_persuasion", [],
+"Perhaps a generous donation to the city's temples would convince the priests to be more flexible.",
+"governor_realization", []],
+
+[anyone|plyr, "player_choice_persuasion", [],
+"This is not a request. It is Caesar's will. It would be unwise to disappoint him.",
+"governor_realization_threat", []],
+
+[anyone, "governor_realization", [
+], "-- He pales slightly, realizing the gravity of the situation. --^^ I see. So it is not a matter for debate. Caesar's... inspiration ... takes precedence over the gods themselves...",
+"governor_desperation", []],
+
+[anyone, "governor_realization_threat", [
+], "-- His professional demeanor cracks, and he looks at you with genuine fear. --^^Disappoint him... yes, I understand the weight of that word. Caesar's disappointment can be... fatal. Of course.",
+"governor_desperation", []],
+
+[anyone, "governor_desperation", [
+], "Do you have any idea what you are asking? The priests of Apollo must be placated, the athletes must be summoned from across Achaea and Macedonia! We need to arrange provisions, security for Caesars Nero... this is a logistical nightmare and an insult to tradition!",
+"player_final_push", []],
+
+[anyone|plyr, "player_final_push", [],
+"Caesar is confident you will handle these details.", "governor_capitulates", []],
+
+[anyone, "governor_capitulates", [
+], "-- He sighs heavily, the image of a defeated man.--^^Very well. What choice do I have? Tell the Princeps... tell him that the city will be honored to host the Actian Games at his command. I will make it happen. Now leave me, I have a thousand messages to write and a dozen angry priests to bribe.", "close_window", [
+  (call_script, "script_add_piety", -5, 1),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 5),
+  (display_message, "str_quest_updated"),
+]],
 
 [anyone|plyr,"seneschal_talk",[
   (this_or_next|troop_slot_eq, "trp_player", slot_troop_honorary_title, ht_censor),
@@ -64962,8 +67190,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (troop_slot_eq, "trp_player", slot_troop_honorary_title, ht_quaestor),
   (eq, "$current_town", "p_town_6"),
   (neg|troop_slot_eq, "$g_talk_troop", slot_troop_intrigue_impatience, 1),
-],
-  "The Princeps has send me to collect a special tax...",
+],"The Princeps has send me to collect a special tax...",
 "seneschal_ask_something_33",[]],
 
 [anyone,"seneschal_ask_something_33",[
@@ -64987,8 +67214,8 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ]],
 
 [anyone,"seneschal_ask_something_bribe2",[
- ],
-   "Very well. Give me the money. Now let's talk about the tax.", "seneschal_ask_something_35",[]],
+],"Very well. Give me the money. Now let's talk about the tax.",
+"seneschal_ask_something_35",[]],
 
 [anyone|plyr,"seneschal_ask_something_bribe",[
  ],
@@ -67525,6 +69752,32 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ]],
 
 [anyone,"tavernkeeper_pretalk",[], "Anything else?", "tavernkeeper_talk",[]],
+
+
+[anyone|plyr, "tavernkeeper_talk", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_sici),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_magna),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_ital),
+  (party_slot_eq, "$current_town", slot_center_province, p_ita_cis),
+], "I am in need of the finest Falernian wine. Do you know where I might procure some?",
+"player_asks_for_wine", []],
+
+# Add this as another player choice to the same town walker node.
+[anyone|plyr, "tavernkeeper_talk", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_afrc_egyp),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_arab),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_jude),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_syr),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_cili),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_capa),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_pontus),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_minor),
+  (party_slot_eq, "$current_town", slot_center_province, p_asia_osreon),
+], "I have been tasked with finding saffron and live peacocks. Such things are not easily found.", "player_asks_for_exotics", []],
 
 [anyone|plyr,"tavernkeeper_talk",[
     (check_quest_active, "qst_four_emperors"),
@@ -76967,9 +79220,155 @@ I will need 500 denars.", "bardo_sing2",[]],
 #Goods Merchants
 [anyone ,"start",[
   (is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end),
-  (party_slot_eq, "$current_town", slot_town_lord, "trp_player")],
+  (party_slot_eq, "$current_town", slot_town_lord, "trp_player")
+],
 "{My lord/my lady}, you honour my humble shop with your presence.",
 "goods_merchant_talk",[]],
+
+[anyone|plyr, "goods_merchant_talk", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (eq, "$current_town", "p_town_34"),#Neaples
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (store_and, ":has_wine", ":item_flags", 1),
+  (eq, ":has_wine", 0),
+],"You have true Falernian wine?",
+"merchant_wine_offer", []],
+
+[anyone, "merchant_wine_offer", [
+  (assign, reg1, 50000), # Set the price
+], "Falernian? Indeed. I have a small stock of the Faustianum vintage, the finest in the world. An Caesar's drink. It will cost you {reg1} denars.",
+"merchant_wine_player_choice", []],
+
+[anyone|plyr, "merchant_wine_player_choice", [
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", 50000),
+], "A fair price for such quality. I'll take it.",
+"merchant_wine_paid", []],
+
+[anyone, "merchant_wine_paid", [],
+"A pleasure doing business. This vintage will not disappoint.",
+"close_window", [
+  (troop_remove_gold, "trp_player", 50000),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (val_or, ":item_flags", 1), # Set the "wine" flag
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, ":item_flags"),
+]],
+
+[anyone|plyr, "merchant_wine_player_choice", [],
+"I am on a mission for Caesar. This wine is a matter of state. I will have it, with or without payment.",
+"merchant_wine_threatened", []],
+
+[anyone, "merchant_wine_threatened", [
+],"Caesar's business? Of... of course. Take it. Just don't cause any trouble. Please.",
+"close_window", [
+  (call_script, "script_change_player_relation_with_center", "p_town_34", -10),
+  (call_script, "script_change_player_honor", -5),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (val_or, ":item_flags", 1), # Set the "wine" flag
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, ":item_flags"),
+]],
+
+[anyone|plyr, "merchant_wine_player_choice", [],
+"I cannot afford that right now.",
+"close_window", []],
+
+[anyone|plyr, "goods_merchant_talk", [
+  (eq, "$current_town", "p_town_20"),#Alexandria
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (store_and, ":has_saffron", ":item_flags", 2),
+  (eq, ":has_saffron", 0),
+],"I need to purchase the highest quality saffron. You have some?",
+"merchant_saffron_offer", []],
+
+[anyone, "merchant_saffron_offer", [
+  (assign, reg1, 75000),
+], "Saffron? But of course! The scent of Cilicia itself, the color of the sun. The finest in the world flows through this port. For such quality, the price is {reg1} denars.",
+"merchant_saffron_player_choice", []],
+
+# Option 1: Player Pays
+[anyone|plyr, "merchant_saffron_player_choice", [
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", 75000),
+], "It is worth every coin for Caesar's feast. I will pay.",
+"merchant_saffron_paid", []],
+
+[anyone, "merchant_saffron_paid", [],
+"A wise choice. Its aroma will be legendary.",
+"close_window", [
+  (troop_remove_gold, "trp_player", 75000),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (val_or, ":item_flags", 2), # Set the "saffron" flag
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, ":item_flags"),
+]],
+
+# Option 2: Player Threatens
+[anyone|plyr, "merchant_saffron_player_choice", [],
+"This saffron is required for the Caesar. It is a state requisition. I will not pay.",
+"merchant_saffron_threatened", []],
+
+[anyone, "merchant_saffron_threatened", [],
+"Requisition? This is a private enterprise! But... if it is for Caesar... take it. It is my gift to his divine person.", "close_window", [
+  (call_script, "script_change_player_relation_with_center", "p_town_20", -15),
+  (call_script, "script_change_player_honor", -5),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (val_or, ":item_flags", 2),
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, ":item_flags"),
+]],
+
+[anyone|plyr, "merchant_saffron_player_choice", [
+], "That is far too much for me.",
+"close_window", []],
+
+[anyone|plyr, "goods_merchant_talk", [
+  (eq, "$current_town", "p_town_22"),#Alexandria
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (store_and, ":has_peacocks", ":item_flags", 4),
+  (eq, ":has_peacocks", 0),
+],"I need to acquire live peacocks. Maybe you have some?",
+"merchant_peacocks_offer", []],
+
+[anyone, "merchant_peacocks_offer", [
+  (assign, reg1, 100000),
+], "Peacocks! A difficult but beautiful cargo. I have a pair, brought by caravan from Persia. They are symbols of immortality, fit for a god... or an Caesar. The price for the pair is {reg1} denars.",
+"merchant_peacocks_player_choice", []],
+
+# Option 1: Player Pays
+[anyone|plyr, "merchant_peacocks_player_choice", [
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", 100000),
+], "Their beauty is worth the price. I will buy them.",
+"merchant_peacocks_paid", []],
+
+[anyone, "merchant_peacocks_paid", [],
+"Excellent. I will have them caged and brought to your ship immediately.",
+"close_window", [
+  (troop_remove_gold, "trp_player", 100000),
+  (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+  (val_or, ":item_flags", 4), # Set the "peacocks" flag
+  (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, ":item_flags"),
+]],
+
+[anyone|plyr, "merchant_peacocks_player_choice", [],
+"These birds are for Caesar's triumph. They are now property of the state. Hand them over.",
+"merchant_peacocks_threatened", []],
+
+[anyone, "merchant_peacocks_threatened", [],
+"Property of... what choice do I have? Caesar's will be done. Take them.", "close_window", [
+    (call_script, "script_change_player_relation_with_center", "p_town_22", -5), # Replace Z with Antioch's town number
+    (call_script, "script_change_player_honor", -3),
+    (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+    (val_or, ":item_flags", 4), # Set the "peacocks" flag
+    (quest_set_slot, "qst_nero_greece_tour", slot_quest_temp_slot, ":item_flags"),
+]],
+
+[anyone|plyr, "merchant_peacocks_player_choice", [
+], "I will consider your price.",
+"close_window", []],
 
 [anyone ,"start",[
   (is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end),
@@ -79339,14 +81738,27 @@ I will need 500 denars.", "bardo_sing2",[]],
     ]
  ],
 
-[anyone,      "prisoner_chat_treason_plead",[(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 1),],
-    "Please have mercy upon my soul.  All I have done, I have done in the name of my Country!  I am but a loyal servitor, as you, and I deserve your respect, if nothing else.", "prisoner_chat_treason_choose",[]],
-[anyone,      "prisoner_chat_treason_plead",[(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 2),],
-    "You are gravely mistaken!  I am an honorable man, and I have done nothing that you would not do were our roles exchanged.", "prisoner_chat_treason_choose",[]],
-[anyone,      "prisoner_chat_treason_plead",[(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 3),],
-    "I spit on you and yours!  You are but a cur come to put on airs, as though you were Noble and had any right whatsoever to judge me!  Me!  You are a nothing but a common brigand and a coward!  I do not bow to you.  You should drop to your knees and beg *my* forgiveness!", "prisoner_chat_treason_choose",[]],
-[anyone,      "prisoner_chat_treason_plead",[(troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 4),],
-    "You dare accuse me?!  You sniveling whelpling!  I should see you flogged and put in chains in one of my prisons for your insolence!", "prisoner_chat_treason_choose",[]],
+[anyone,"prisoner_chat_treason_plead",[
+  (troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 1),
+],
+"Please have mercy upon my soul.  All I have done, I have done in the name of my Country!  I am but a loyal servitor, as you, and I deserve your respect, if nothing else.",
+"prisoner_chat_treason_choose",[]],
+[anyone,"prisoner_chat_treason_plead",[
+  (troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 2),
+],
+"You are gravely mistaken!  I am an honorable man, and I have done nothing that you would not do were our roles exchanged.",
+"prisoner_chat_treason_choose",[]],
+[anyone,"prisoner_chat_treason_plead",[
+  (troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 3),
+],
+"I spit on you and yours!  You are but a cur come to put on airs, as though you were Noble and had any right whatsoever to judge me!  Me!  You are a nothing but a common brigand and a coward!  I do not bow to you.  You should drop to your knees and beg my forgiveness!",
+"prisoner_chat_treason_choose",[]],
+
+[anyone, "prisoner_chat_treason_plead",[
+  (troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 4),
+],
+"You dare accuse me?!  You sniveling whelpling!  I should see you flogged and put in chains in one of my prisons for your insolence!",
+"prisoner_chat_treason_choose",[]],
 
 [anyone|plyr, "prisoner_chat_treason_choose",[], "I am a {man/woman} of honor.  I shall spare your life this day!", "prisoner_chat_treason_not_guilty",
 [
@@ -80243,7 +82655,58 @@ I will need 500 denars.", "bardo_sing2",[]],
   (assign, "$rumors_inquired",0),
   (assign, "$info_inquired",0)
 ]],
-                    ##diplomacy end+
+
+[anyone|plyr, "town_dweller_talk", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_sici),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_magna),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_ital),
+  (party_slot_eq, "$current_town", slot_center_province, p_ita_cis),
+], "I am in need of the finest Falernian wine. Do you know where I might procure some?",
+"player_asks_for_wine", []],
+
+# Add this as another player choice to the same town walker node.
+[anyone|plyr, "town_dweller_talk", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_afrc_egyp),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_arab),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_jude),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_syr),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_cili),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_capa),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_pontus),
+  (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_minor),
+  (party_slot_eq, "$current_town", slot_center_province, p_asia_osreon),
+], "I have been tasked with finding saffron and live peacocks. Such things are not easily found.", "player_asks_for_exotics", []],
+
+
+[anyone, "player_asks_for_wine", [],
+"Falernian? Ah, a man of exquisite taste! You will not find the genuine article here in Achaea, not the kind worthy of the name. It is all cheap imitation meant for legionaries.",
+"npc_gives_wine_info", []],
+
+[anyone, "npc_gives_wine_info", [],
+"The true Falernian, the amber vintage from the slopes of Campania... that is the wine of poets and Caesars. For that, you must go to the source.",
+"npc_gives_wine_location", []],
+
+[anyone, "npc_gives_wine_location", [],
+"Your journey will take you to Neapolis. The goods merchant there has exclusive contracts with the vineyards. Speak with him. He can provide a vintage that would make Bacchus himself weep with joy.",
+"close_window", []],
+
+[anyone, "player_asks_for_exotics", [],
+"Saffron and peacocks? By all the gods, are you preparing a feast for the Caesar himself? Those are not goods for common men.",
+"npc_gives_saffron_info", []],
+
+[anyone, "npc_gives_saffron_info", [],
+"For the saffron, there is only one true market: Alexandria. All the riches of the East flow through its port. The goods merchant there will have saffron so pure it seems to glow, but be warned, it is worth more than gold.",
+"npc_gives_peacock_info", []],
+
+[anyone, "npc_gives_peacock_info", [],
+"As for peacocks... a far more delicate cargo. They are bred in the far eastern provinces and beyond. The great trading hub for such exotic creatures is Antioch in Syria. Find the goods merchant there. He is the only one with the contacts to procure live birds of such beauty. May your purse be deep, friend.",
+"close_window", []],
+
+##diplomacy end+
 [anyone|plyr,"town_dweller_talk",[
   (check_quest_active, "qst_hunt_down_fugitive"),
   (neg|check_quest_concluded, "qst_hunt_down_fugitive"),
@@ -84261,7 +86724,7 @@ I will need 500 denars.", "bardo_sing2",[]],
 [],
   "If you want to improve this route, more sailors will need to be trained to make this journey, and more big ships built, fit to travel the great sea. Roman sailors must learn from\
  the best seafarers, but if this can be done, then the sea route will go directly from Aegyptus to our shores, and the gold Aden used to take will be all yours.\
- This will not be cheap. Building a proper trade fleet from nothing would take at least a couple million denarii.", "india_sea_route_1_plyr",
+ This will not be cheap. Building a proper trade fleet from nothing would take at least a couple million denars.", "india_sea_route_1_plyr",
 []],
 [anyone|plyr, "india_sea_route_1_plyr",
 [ (store_troop_gold,":g", "trp_player"),
@@ -93937,7 +96400,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [anyone|other(trp_quest_miles),"event_1_miles_interjects_first",[], # Consolidated Miles' first interjection
 "Careful there, {playername}. 'Legendary' her cooking might be, but not for the reasons she'd have you believe."
-+" More like infamous. Not many survive a bowl of *that* stew with their dignity, or their guts, intact.",
++" More like infamous. Not many survive a bowl of that stew with their dignity, or their guts, intact.",
 "event_1_avaritia_defends_stew_1",[
     (call_script, "script_set_conversation_troop", "trp_quest_miles"),
 ]],
@@ -94036,7 +96499,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 "event_1_miles_finishes_bullying",[]], # Player does nothing
 
 [anyone|other(trp_quest_miles),"event_1_miles_challenges_player",[], # Response to player saying "Enough"
-"And if I don't stop? Who in Tartarus are *you* to be giving me orders, eh, new blood?",
+"And if I don't stop? Who in Tartarus are you to be giving me orders, eh, new blood?",
 "event_1_player_justification_options",[
     (call_script, "script_set_conversation_troop", "trp_quest_miles"),
 ]],
@@ -95824,7 +98287,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   "wlodowiecus_2_intro_27",[(call_script, "script_set_conversation_troop", "trp_mancinellus"),]],
 
 [anyone|other(trp_mancinellus),"wlodowiecus_2_intro_27",[],
-  "Oliverius, think of the possibilities! You created two beautiful statues of the god Mithras; you are the talk of all of Rome, not just that little cult! Think of this for a moment, grand sculptures adorned with golden amulets and jewels, statues fit for an emperor! This investment would only lead you more riches!",
+  "Oliverius, think of the possibilities! You created two beautiful statues of the god Mithras; you are the talk of all of Rome, not just that little cult! Think of this for a moment, grand sculptures adorned with golden amulets and jewels, statues fit for a Caesar! This investment would only lead you more riches!",
   "wlodowiecus_2_intro_28",[(call_script, "script_set_conversation_troop", "trp_mancinellus"),]],
 
 [anyone|other(trp_mancinellus),"wlodowiecus_2_intro_28",[],
@@ -97729,7 +100192,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [anyone,"antonia_talk2_5",[
  ],
-  "Listen: We have a lot of work in front of us but the setup is good. You are a son of Rome, literally, as you just appeared in a boat on the river. Then you visited Hades and were struck by a lightning. Being struck by a lightning is a sign of divinity according to old myths. Ha, piggy-Ceasar claims to have be struck by lightning too, which is hilarious in many ways. There are not even any witnesses. But I have seen how the lightning has struck you!",
+  "Listen: We have a lot of work in front of us but the setup is good. You are a son of Rome, literally, as you just appeared in a boat on the river. Then you visited Hades and were struck by a lightning. Being struck by a lightning is a sign of divinity according to old myths. Ha, piggy-Caesar claims to have be struck by lightning too, which is hilarious in many ways. There are not even any witnesses. But I have seen how the lightning has struck you!",
   "antonia_talk2_6",[]],
 [anyone|plyr,"antonia_talk2_6",[
  ],
@@ -97963,7 +100426,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   "antonia_intro_4",[]],
 [anyone,"antonia_intro_4",[],
   "What? No, I am not! I am Claudia Antonia, the legitimate daughter of Claudius. Luckily not her. Fortuna wasn't always good to me but at least she treated me better than her."
-  +" I heard Urgulanallia was sent to some brothel after  she had an affair with some renowned son of a senator. I guess piggy-Ceasar got too nervous."
+  +" I heard Urgulanallia was sent to some brothel after  she had an affair with some renowned son of a senator. I guess piggy-Caesar got too nervous."
   +"^^--She drinks from her cup and then pours more wine into it.--^^But just call me Antonia.",
   "antonia_intro_5",[]],
 

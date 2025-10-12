@@ -1202,3 +1202,5 @@ mnu_prophecy_final_3 = 1200
 mnu_prophecy_final_4 = 1201
 mnu_religious_festival = 1202
 mnu_state_sacrifice_prompt = 1203
+mnu_nero_tour_greece = 1204
+mnu_meadow_romance = 1205

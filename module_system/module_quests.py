@@ -575,6 +575,9 @@ quests = [
   ("trial", "Generic Quest: Trial", 0,
   "{!}placeholder."
   ),
+  ("nero_greece_tour", "Special Quest: The Grand Tour of Hellas", 0,
+  "{!}placeholder."
+  ),
   ("saturnalia", "Generic Quest: Saturnalia", 0,
   "{!}placeholder."
   ),#december

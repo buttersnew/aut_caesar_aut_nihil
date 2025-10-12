@@ -911,7 +911,7 @@ scripts = scripts_hardcoded + [
             (troop_set_slot, ":cur_lady", slot_lord_reputation_type, ":lady_reputation"),
         (try_end),
     (try_end),
-##lord ages
+    ##lord ages
     (try_for_range, ":lord_old", "trp_knight_1_1", "trp_knight_1_9"), # die neuen is ne junge die 8 ne alte
         (store_random_in_range, ":age2", 44, 65),
         (troop_set_slot, ":lord_old", slot_troop_age, ":age2"),
@@ -39756,6 +39756,10 @@ scripts = scripts_hardcoded + [
 
     (store_random_in_range, ":random", 0, 7),
     (try_begin),
+        (eq, ":lady_no", "trp_kingdom_7_lady_2"),
+        (troop_add_item, ":lady_no", "itm_ring_1", 0),
+        (troop_add_item, ":lady_no", "itm_roman_noble_dress_7_fat", 0),
+    (else_try),
         (troop_get_slot, ":spouse", ":lady_no", slot_troop_spouse),
         (party_slot_eq, "p_town_6", slot_town_lord, ":spouse"),
         (troop_add_item, ":lady_no", "itm_ring_1", 0),
@@ -40995,6 +40999,17 @@ scripts = scripts_hardcoded + [
 
     (try_begin),
 	# nero claudius ai changes
+        (check_quest_active, "qst_nero_greece_tour"),
+        (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 4),
+        (quest_slot_eq, "qst_nero_greece_tour", slot_quest_target_center, "p_town_36"),
+		(assign, ":action", spai_holding_center),
+		(assign, ":object", "p_town_36"),
+		(try_begin),
+			(eq, ":troop_no", "$g_talk_troop"),
+			(str_store_string, s14, "str_nero_tour_greece_thessaolonica_1"),
+			(str_store_string, s16, "str_nero_tour_greece_thessaolonica_1"),
+		(try_end),
+    (else_try),
 		(faction_slot_eq, ":faction_no", slot_faction_leader, ":troop_no"),
         (faction_slot_eq, ":faction_no", slot_faction_government_type, gov_imperial),
 		(store_faction_of_party, ":faction", "p_town_6"),

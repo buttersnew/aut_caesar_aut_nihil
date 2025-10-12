@@ -2097,6 +2097,8 @@ tc_main_story_fleet         = 46
 
 tc_bandit_lair              = 47
 
+tc_nero_quest_failed        = 48
+
 #Troop Commentaries begin
 #Log entry types
 #civilian
