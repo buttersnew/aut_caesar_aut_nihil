@@ -137,8 +137,8 @@ scripts_hardcoded = [
     (assign, "$edict5", 0),##das ist das gesetz womit allen freien reichsbewohnern das bugerrecht verliehen wird
     (assign, "$edict6", 0),##reichsverfassung + nachfolgegesetz
     ##jetzt kommen ein paar gesetze aus republikanischer Zeit
-    (assign, "$edict7", 1),##Lex frumentaria et agraria: maximaler getreide preis: 100 denars per unit,
-               ## this means 1000 denars for scenter price slot,
+    (assign, "$edict7", 1),##Lex frumentaria et agraria: maximaler getreide preis: 100 denarii per unit,
+               ## this means 1000 denarii for scenter price slot,
     (assign, "$edict8", 1),##Lex militaris minimal alter von Rekruten ist 17 Jahre
     (assign, "$edict9", 0),##Alimenta von trajan
     (assign, "$edict10",0),##rename month
@@ -6158,23 +6158,23 @@ scripts_hardcoded = [
                 (try_end),
                 (try_begin),
                     (gt, reg49, 0),
-                    (str_store_string, s26, "@{s26}^Last week he spend for court, servants, cloths, etc {reg49} denars"),
+                    (str_store_string, s26, "@{s26}^Last week he spend for court, servants, cloths, etc {reg49} denarii"),
                 (try_end),
                 (try_begin),
                     (gt, reg50, 0),
-                    (str_store_string, s26, "@{s26}^Last week he spend for his family {reg50} denars"),
+                    (str_store_string, s26, "@{s26}^Last week he spend for his family {reg50} denarii"),
                 (try_end),
                 (try_begin),
                     (gt, reg51, 0),
-                    (str_store_string, s26, "@{s26}^Last week he spend for his love affairs {reg51} denars"),
+                    (str_store_string, s26, "@{s26}^Last week he spend for his love affairs {reg51} denarii"),
                 (try_end),
                 (try_begin),
                     (gt, reg52, 0),
-                    (str_store_string, s26, "@{s26}^Last week he paid {reg52} denars imperial tax."),
+                    (str_store_string, s26, "@{s26}^Last week he paid {reg52} denarii imperial tax."),
                 (try_end),
                 (try_begin),
                     (gt, reg53, 0),
-                    (str_store_string, s26, "@{s26}^Last week he donated {reg53} denars to his settlements."),
+                    (str_store_string, s26, "@{s26}^Last week he donated {reg53} denarii to his settlements."),
                 (try_end),
             (try_end),
             (str_clear, s53),
@@ -6484,7 +6484,7 @@ scripts_hardcoded = [
             (this_or_next|party_slot_eq, ":center_no", slot_party_type, spt_town),
             (party_slot_eq, ":center_no", slot_party_type, spt_castle),
             (party_get_slot, reg1, ":center_no", slot_town_wealth),
-            (str_store_string, s2, "@{s2}^Treasury of the town watch: {reg1} denars", 0),
+            (str_store_string, s2, "@{s2}^Treasury of the town watch: {reg1} denarii", 0),
         (try_end),
 
         (party_get_slot, reg1, ":center_no", slot_center_capital),

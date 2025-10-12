@@ -57,7 +57,7 @@ quests = [
   "{!}{s9} asked you to lend your companion {s3} to him for a week."
   ),
   ("collect_debt", "Generic Quest: Collect the debt {s3} owes to {s9}", qf_random_quest,
-  "{!}{s9} asked you to collect the debt of {reg4} denars {s3} owes to him."
+  "{!}{s9} asked you to collect the debt of {reg4} denarii {s3} owes to him."
   ),
   ## ("capture_conspirators", "Capture Conspirators", qf_random_quest,
   ##  "TODO: {s1} asked you to capture all troops in {reg1} conspirator parties that plan to rebel against him and join {s3}."
@@ -160,13 +160,13 @@ quests = [
   ),
 
   ("kidnapped_girl", "Generic Quest: Ransom girl from bandits", qf_random_quest,
-  "{!}Guildmaster of {s4} gave you {reg12} denars to pay the ransom of a girl kidnapped by bandits.\
+  "{!}Guildmaster of {s4} gave you {reg12} denarii to pay the ransom of a girl kidnapped by bandits.\
   You are to meet the bandits near {s3} and pay them the ransom fee.\
   After that you are to bring the girl back to {s4}."
   ),
 
   ("persuade_lords_to_make_peace", "Generic Quest: Make sure two Lords don't object to peace", qf_random_quest, #possibly deprecate., or change effects
-  "{!}Guildmaster of {s4} promised you {reg12} denars if you can make sure that\
+  "{!}Guildmaster of {s4} promised you {reg12} denarii if you can make sure that\
   {s12} and {s13} no longer pose a threat to a peace settlement between {s15} and {s14}.\
   In order to do that, you must either convince them or make sure they fall captive and remain so until a peace agreement is made."
   ),
@@ -282,7 +282,7 @@ quests = [
   ),
 
   ("deliver_bribe", "Generic Quest: 'Gifts' for 'friends'", qf_random_quest,
-  "{s11} asked you to deliver a gift of 10,000 denars to a senator in Roma."
+  "{s11} asked you to deliver a gift of 10,000 denarii to a senator in Roma."
   ),
   ("spy_on_spouse", "Generic Quest: Jealous husband", qf_random_quest,
   "{s11} asked you to spy on his spouse {s14}."

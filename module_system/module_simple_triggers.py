@@ -1489,7 +1489,7 @@ simple_triggers = [
                 (assign, reg1, ":refill_costs"),
                 (str_store_troop_name, s1, ":lord"),
                 (str_store_party_name, s2, "$g_center_wealth"),
-                (display_message, "@{s1} paid {reg1} denars to hire troops for {s2}"),
+                (display_message, "@{s1} paid {reg1} denarii to hire troops for {s2}"),
 
                 (store_party_size_wo_prisoners, reg1, "$g_center_wealth"),
                 (str_store_party_name, s2, "$g_center_wealth"),
@@ -2854,7 +2854,7 @@ simple_triggers = [
             (call_script, "script_troop_change_relation_with_troop", "trp_player", "$g_set_lord_decision_seed_and_wages", -3),
             (str_store_troop_name, s15, "$g_set_lord_decision_seed_and_wages"),
             (assign, reg1, ":cur_debt"),
-            (display_message, "@You have an outstanding debt of {reg1} denars with {s15}"),
+            (display_message, "@You have an outstanding debt of {reg1} denarii with {s15}"),
             #SB : aristocracy/plutocracy debt modifier
             (store_faction_of_troop, ":faction_no", "$g_set_lord_decision_seed_and_wages"),
             (faction_get_slot, ":aristocracy", ":faction_no", dplmc_slot_faction_aristocracy),
@@ -4497,7 +4497,7 @@ simple_triggers = [
     (assign, "$g_player_tournament_placement", 0),
 ]),
 
-# Taking denars from player while resting in not owned centers
+# Taking denarii from player while resting in not owned centers
 (1,[
     (call_script, "script_execude_debug_message", 86),
     (neg|map_free),
@@ -5288,7 +5288,7 @@ simple_triggers = [
         (try_begin),
             (party_slot_eq, "$cur_village_weekly_on_average", slot_town_lord, "trp_player"),
             (str_store_party_name, s40, "$cur_village_weekly_on_average"),
-            (display_message, "@Your slaves in {s40} have generated {reg20} denars"),
+            (display_message, "@Your slaves in {s40} have generated {reg20} denarii"),
         (try_end),
         # manu tax
         (try_begin),
@@ -7601,7 +7601,7 @@ simple_triggers = [
                 (val_mul, reg10, ":cur_gold", 800),
                 (val_div, reg10, 1000),
                 (store_sub, reg12, reg11, reg10),
-                (display_message, "@Your last estate was captured and {reg10} denars of {reg11} are transfered to you. {reg12} denars have been lost!", message_negative),
+                (display_message, "@Your last estate was captured and {reg10} denarii of {reg11} are transfered to you. {reg12} denarii have been lost!", message_negative),
                 (call_script, "script_dplmc_withdraw_from_treasury", reg11),
                 (call_script, "script_troop_add_gold", "trp_player", reg10),
             (try_end),
@@ -9074,7 +9074,7 @@ simple_triggers = [
             # (try_begin),
             # (troop_slot_ge, "trp_player", slot_troop_renown, 200),
             # (assign, reg0, ":r"),
-            # (display_message, "@The Emperor has given {reg0} denars for campagin."),
+            # (display_message, "@The Emperor has given {reg0} denarii for campagin."),
             # (try_end),
             (troop_set_slot, "trp_kingdom_7_lord", slot_troop_wealth, ":neros_gold"),
             (troop_set_slot, ":troop", slot_troop_wealth, ":gold"),
@@ -10694,7 +10694,7 @@ simple_triggers = [
         (eq,":pos",":curr_event"),   # this first line is same for all events
         (neq, "$g_is_emperor", 1),#not if emperor
         (le, "$g_rank", 1),#not if high rank
-        (display_message, "@Today you got lucky and found a small bag hidden behind a bush. Inside the bag was 300 denars."),
+        (display_message, "@Today you got lucky and found a small bag hidden behind a bush. Inside the bag was 300 denarii."),
         (troop_add_gold, "trp_player", 300),
         (add_xp_as_reward, 50),
     (else_try),
@@ -10703,7 +10703,7 @@ simple_triggers = [
         (neq, "$g_is_emperor", 1),#not if emperor
         (le, "$g_rank", 1),#not if high rank
         (add_xp_as_reward, 50),
-        (display_message, "@During a small rest you noticed a shiney object in the ground caught your eye. You tooked a closer look, thinking it may be some denars. Unfortunately it was only a small piece of rusted metal lying on the ground, totally worthless."),
+        (display_message, "@During a small rest you noticed a shiney object in the ground caught your eye. You tooked a closer look, thinking it may be some denarii. Unfortunately it was only a small piece of rusted metal lying on the ground, totally worthless."),
     (else_try),
         (val_add,":pos",1),
         (eq,":pos",":curr_event"),   # this first line is same for all events
@@ -10739,7 +10739,7 @@ simple_triggers = [
         (eq,":pos",":curr_event"),   # this first line is same for all events
         (neq, "$g_is_emperor", 1),#not if emperor
         (le, "$g_rank", 1),#not if high rank
-        (display_message, "@You have found leftovers of a recent battle. Searching the bodies, you managed to find 200 denars."),
+        (display_message, "@You have found leftovers of a recent battle. Searching the bodies, you managed to find 200 denarii."),
         (troop_add_gold, "trp_player", 200),
         (add_xp_as_reward, 100),
     (try_end),

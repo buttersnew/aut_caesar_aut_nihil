@@ -13491,7 +13491,7 @@ scripts = scripts_hardcoded + [
     (val_mul, ":weekly_income", 100),
     ##trade skill
     (store_skill_level,":trade_skill", "skl_trade", ":troop_no"),
-    (val_mul, ":trade_skill", 200), #max of 2000 denars
+    (val_mul, ":trade_skill", 200), #max of 2000 denarii
     (val_add, ":weekly_income", ":trade_skill"),
 
     (val_add, ":weekly_income", 5000),
@@ -13618,7 +13618,7 @@ scripts = scripts_hardcoded + [
 
             # # (str_store_party_name, s23, ":center_n"),
             # # (assign, reg19, ":addition"),
-            # # (display_message, "@Added {reg19} denars to {s23}"),
+            # # (display_message, "@Added {reg19} denarii to {s23}"),
                 # (try_end),
             # (else_try),
                 # (val_add, ":cost_for", 4000),
@@ -13643,7 +13643,7 @@ scripts = scripts_hardcoded + [
 
             # # (str_store_party_name, s23, ":center_n"),
             # # (assign, reg19, ":addition"),
-            # # (display_message, "@Added {reg19} denars to {s23}"),
+            # # (display_message, "@Added {reg19} denarii to {s23}"),
                 # (try_end),
             # (try_end),
         # (try_end),
@@ -15226,7 +15226,7 @@ scripts = scripts_hardcoded + [
                         (eq, "$cheat_mode", 2),
                         (troop_get_slot, reg2, ":raid_leader", slot_troop_wealth),
                         (str_store_troop_name_link, s2, ":raid_leader"),
-                        (display_message, "@{s2} now has {reg2} denars from raiding"),#SB : debug
+                        (display_message, "@{s2} now has {reg2} denarii from raiding"),#SB : debug
                     (try_end),
 
                     (call_script, "script_village_set_state",  ":village_no", svs_looted),
@@ -16369,7 +16369,7 @@ scripts = scripts_hardcoded + [
             (str_store_troop_name, s1, ":troop_no"),
             (str_store_party_name, s2, ":center_no"),
             (assign, reg0, ":investment_income"),
-            (display_message, "@{s1} does investments in {s2}. He gained {reg0} denars."),
+            (display_message, "@{s1} does investments in {s2}. He gained {reg0} denarii."),
         (try_end),
         (try_begin),
             (faction_slot_eq, ":troop_faction", slot_faction_government_type, gov_imperial),
@@ -16426,7 +16426,7 @@ scripts = scripts_hardcoded + [
                 (assign, reg2, ":all_taxes"),
                 (assign, reg1, ":tax"),
                 (str_store_party_name, s1, ":center_no"),
-                (display_message, "@TAX {s1}: tax paid to imperial treasury {reg1} denars (of {reg2} total)"),
+                (display_message, "@TAX {s1}: tax paid to imperial treasury {reg1} denarii (of {reg2} total)"),
             (try_end),
 
             (troop_set_slot, ":troop_no", slot_troop_paid_taxes, ":tax"),
@@ -16616,7 +16616,7 @@ scripts = scripts_hardcoded + [
                 (str_store_troop_name_link, s10, ":troop_no"),
                 #s0 comes from improvement_details
                 (str_store_party_name_link, s4, ":center_no"),
-                (display_log_message, "@{s10} constructs a {s0} in {s4} which takes {reg6} days and costs {reg7} denars.", message_alert),
+                (display_log_message, "@{s10} constructs a {s0} in {s4} which takes {reg6} days and costs {reg7} denarii.", message_alert),
             (try_end),
             (assign, "$g_improvement_type", ":improvement_no"),
             # (assign, reg6, ":improvement_time"),
@@ -16637,7 +16637,7 @@ scripts = scripts_hardcoded + [
             (str_store_troop_name_link, s0, ":troop_no"),
             (try_begin),
                 (gt, reg0, 0),
-                (display_log_message, "@{s0} collects {reg0} denars from {s4}, current wealth: {reg1} denars"),
+                (display_log_message, "@{s0} collects {reg0} denarii from {s4}, current wealth: {reg1} denarii"),
             (try_end),
         (try_end),
         ##diplomacy end+
@@ -16808,7 +16808,7 @@ scripts = scripts_hardcoded + [
                     (str_store_string, s3, ":string"),
                     (call_script, "script_game_get_money_text", ":cost"),
                     (assign, reg0, ":troop_wealth"),
-                    (display_log_message, "@{s10} upgrades {s3}{s11} (costing {s1}) in {s4}, {reg0} denars remaining."),
+                    (display_log_message, "@{s10} upgrades {s3}{s11} (costing {s1}) in {s4}, {reg0} denarii remaining."),
                 (try_end),
                 (val_sub, ":troop_wealth", ":cost"),
                 (troop_set_inventory_slot_modifier, ":troop_no", ":slot", ":imod"),
@@ -16831,7 +16831,7 @@ scripts = scripts_hardcoded + [
         (str_store_troop_name_link, s1, ":troop_no"),
         (str_store_party_name_link, s2, ":center_no"),
         (assign, reg2, ":troop_wealth"),
-        (display_message, "@{s1} spends time in {s2}, {reg1} -> {reg2} denars"),
+        (display_message, "@{s1} spends time in {s2}, {reg1} -> {reg2} denarii"),
     (try_end),
     #Courtship
     (try_begin),
@@ -21757,7 +21757,7 @@ scripts = scripts_hardcoded + [
     (try_begin), #SB : display only if > 0
         (gt, ":cur_debt", 0),
         (str_store_troop_name_link, s1, ":troop_no"),
-        (display_message, "@You now owe {reg2} denars to {s1}.", message_negative),
+        (display_message, "@You now owe {reg2} denarii to {s1}.", message_negative),
     (try_end),
 ]),
 
@@ -30955,11 +30955,11 @@ scripts = scripts_hardcoded + [
     (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
     (val_min, ":volunteer_amount", ":free_capacity"),
     (store_troop_gold, ":gold", "trp_player"),
-    (store_div, ":gold_capacity", ":gold", 100),#100 denars per man
+    (store_div, ":gold_capacity", ":gold", 100),#100 denarii per man
     (val_min, ":volunteer_amount", ":gold_capacity"),
     (party_add_members, "p_main_party", ":volunteer_troop", ":volunteer_amount"),
     (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
-    (store_mul, ":cost", ":volunteer_amount", 100),#100 denars per man
+    (store_mul, ":cost", ":volunteer_amount", 100),#100 denarii per man
     (troop_remove_gold, "trp_player", ":cost"),
 ]),
 
@@ -33183,7 +33183,7 @@ scripts = scripts_hardcoded + [
         (try_end),
         (val_mul, ":win_amount", ":player_odds"),
         (val_div, ":win_amount", 100),
-        (val_add, ":win_amount", 100), #win amount when 100 denars is placed
+        (val_add, ":win_amount", 100), #win amount when 100 denarii is placed
         (assign, reg0, ":win_amount"),
      ]),
 
@@ -50483,7 +50483,7 @@ scripts = scripts_hardcoded + [
     (troop_add_gold, "trp_household_possessions", ":amount"),
     (assign, reg0, ":amount"),
     (play_sound, "snd_money_received"),
-    (display_message, "@{reg0} denars added to treasury.", color_good_news),
+    (display_message, "@{reg0} denarii added to treasury.", color_good_news),
 ]),
 
 ("dplmc_withdraw_from_treasury", [
@@ -50491,7 +50491,7 @@ scripts = scripts_hardcoded + [
     (troop_remove_gold, "trp_household_possessions", ":amount"),
     (assign, reg0, ":amount"),
     (play_sound, "snd_money_paid"),
-    (display_message, "@{reg0} denars removed from treasury.", color_bad_news),
+    (display_message, "@{reg0} denarii removed from treasury.", color_bad_news),
 ]),
 
 ("dplmc_describe_tax_rate_to_s50",[
@@ -52166,7 +52166,7 @@ scripts = scripts_hardcoded + [
 
         (str_store_string, s47, "str_s46s45s44s48"),
         # (troop_get_slot, reg40, ":troop_no", slot_troop_wealth),
-        # (str_store_string, s47, "@{s47} ^He currently has a wealth of {reg40} denars."),
+        # (str_store_string, s47, "@{s47} ^He currently has a wealth of {reg40} denarii."),
     (try_end),
     ##diplomacy start+
     (assign, reg1, ":save_reg1"),#revert register
@@ -53011,7 +53011,7 @@ scripts = scripts_hardcoded + [
             (lt, ":offered_prosperity", ":min_prosperity"),
             (str_store_string, s14, "str_dplmc_fief_exchange_refuse_rich"),
         (else_try),
-            #accept trade for 0 or more denars
+            #accept trade for 0 or more denarii
             (store_sub, ":result", ":target_prosperity", ":offered_prosperity"),
             (val_mul, ":result", ":target_type"),
             (val_mul, ":result", 36),#Should probably be 60 instead
@@ -53181,7 +53181,7 @@ scripts = scripts_hardcoded + [
 		#	(assign, reg0, ":num_lords"),
 		#	(assign, reg1, ":gold_to_each"),
 		#	(str_store_faction_name, s5, ":faction_no"),
-		#	(display_message, "@ {reg0} vassals of the {s5} receive {reg1} denars each (dplmc_faction_leader_splits_gold)"),
+		#	(display_message, "@ {reg0} vassals of the {s5} receive {reg1} denarii each (dplmc_faction_leader_splits_gold)"),
 		#(try_end),
 
 		(try_for_range, ":lord_no", heroes_begin, heroes_end),
@@ -53251,7 +53251,7 @@ scripts = scripts_hardcoded + [
 		#	(str_store_troop_name, s4, ":lord_no"),
 		#	(str_store_faction_name, s5, ":faction_no"),
 		#	(str_store_troop_name, s6, ":faction_liege"),
-		#	(display_message, "@{!}{s4} of the {s5} receives {reg0} denars (dplmc_faction_leader_splits_gold)"),
+		#	(display_message, "@{!}{s4} of the {s5} receives {reg0} denarii (dplmc_faction_leader_splits_gold)"),
 		#(try_end),
 		(call_script, "script_dplmc_distribute_gold_to_lord_and_holdings", reg0, ":lord_no"),
 		(troop_set_slot, ":lord_no", slot_troop_temp_slot, 0),
@@ -53263,7 +53263,7 @@ scripts = scripts_hardcoded + [
 		(str_store_troop_name, s4, ":troop_no"),
 		(str_store_faction_name, s5, ":faction_no"),
 		(str_store_troop_name, s6, ":faction_liege"),
-		(display_message, "@{!}{s6} of the {s5} retains the remaining {reg0} denars (dplmc_faction_leader_splits_gold)"),
+		(display_message, "@{!}{s6} of the {s5} retains the remaining {reg0} denarii (dplmc_faction_leader_splits_gold)"),
 	(try_end),
 
 	#(call_script, "script_troop_add_gold", ":faction_liege", ":king_gold"),
@@ -54732,7 +54732,7 @@ scripts = scripts_hardcoded + [
                 # (str_store_troop_name, s22, ":lord_no"),
                 # (str_store_party_name, s23, ":center_no"),
                 # (assign, reg19, ":difference"),
-                # (display_message, "@{s22} added {reg19} denars to {s23}"),
+                # (display_message, "@{s22} added {reg19} denarii to {s23}"),
             (try_end),
             (troop_set_slot, ":lord_no", slot_troop_money_to_center, ":total_difference"),
         (try_end),
@@ -55383,9 +55383,9 @@ scripts = scripts_hardcoded + [
 			(this_or_next|is_between, ":merchant", heroes_begin, heroes_end),
 			(this_or_next|is_between, ":merchant", dplmc_employees_begin, dplmc_employees_end),
 			(is_between, ":merchant", walkers_end, tournament_champions_end),
-			(display_message, "@You sold {reg1} {reg3?items:item} to {s0} and gained {reg0} {reg3?denars:denar}."),
+			(display_message, "@You sold {reg1} {reg3?items:item} to {s0} and gained {reg0} {reg3?denarii:denarius}."),
 		(else_try),
-			(display_message, "@You sold {reg1} {reg3?items:item} to the {s0} and gained {reg0} {reg3?denars:denar}."),
+			(display_message, "@You sold {reg1} {reg3?items:item} to the {s0} and gained {reg0} {reg3?denarii:denarius}."),
 		(try_end),
 	(try_end),
 
@@ -55523,7 +55523,7 @@ scripts = scripts_hardcoded + [
         (store_sub, reg4, reg2, 1),
         (this_or_next|eq, ":customer", "trp_player"),
         (eq, ":customer", "trp_follower_party_mules"),
-        (display_message, "@You have bought {reg2} {reg4?kinds:kind} of food and lost {reg1} {reg3?denars:denar}."),
+        (display_message, "@You have bought {reg2} {reg4?kinds:kind} of food and lost {reg1} {reg3?denarii:denarius}."),
     (try_end),
 
     # sell rotten food
@@ -55571,7 +55571,7 @@ scripts = scripts_hardcoded + [
         (store_sub, reg4, reg2, 1),
         (this_or_next|eq, ":customer", "trp_player"),
         (eq, ":customer", "trp_follower_party_mules"),
-        (display_message, "@You sold {reg2} {reg4?kinds:kind} of rotten food and gained {reg1} {reg3?denars:denar}."),
+        (display_message, "@You sold {reg2} {reg4?kinds:kind} of rotten food and gained {reg1} {reg3?denarii:denarius}."),
     (try_end),
     ##added section begin, preserve registers
     (assign, reg1, ":save_reg1"),
@@ -58969,7 +58969,7 @@ scripts = scripts_hardcoded + [
         (try_end),
         (try_begin),
             (eq, "$edict7", 1),
-            (str_store_string, s0, "@* Lex frumentaria et agraria:^  Grain prices are regulated: minimum of 30 denars per unit, maximum of 59 denars per unit. Also restrict landownership: There is a maximum of land which someone can obtain. Thus one can only buy 10 latifundia in total."),
+            (str_store_string, s0, "@* Lex frumentaria et agraria:^  Grain prices are regulated: minimum of 30 denarii per unit, maximum of 59 denarii per unit. Also restrict landownership: There is a maximum of land which someone can obtain. Thus one can only buy 10 latifundia in total."),
             (str_store_string, s20, "@{s20}{s0}{reg3?^: }"),
         (try_end),
         (try_begin),
@@ -59184,7 +59184,7 @@ scripts = scripts_hardcoded + [
     (assign, reg0, ":cur_ransom"),
     #the amount calculated at the start, will differ from expected ransom
     (quest_get_slot, reg1, "qst_rescue_prisoner", slot_quest_target_amount),
-    (str_store_string, s1, "@You have raised {reg0}/{reg1} denars for the ransom"),
+    (str_store_string, s1, "@You have raised {reg0}/{reg1} denarii for the ransom"),
     (add_quest_note_from_sreg, "qst_rescue_prisoner", 4, s1, 1), #0:date, 1:giver, 2:desc 3:time
 
     #move actual gold
@@ -82578,7 +82578,7 @@ scripts = scripts_hardcoded + [
         (try_end),
         (store_mul, reg12, reg11, 60),
         (val_div, reg12, 100),
-        (str_store_string, s0, "@Economic information about the province: Total wealth {reg11} denars. Expected tax income: {reg12} denars (with normal taxrate)."),
+        (str_store_string, s0, "@Economic information about the province: Total wealth {reg11} denarii. Expected tax income: {reg12} denarii (with normal taxrate)."),
     (try_end),
 ]),
 
@@ -82683,12 +82683,12 @@ scripts = scripts_hardcoded + [
         (val_clamp, ":outcome", 50, 3001),
     (else_try),
         (eq, ":decision", decision_bribe),
-        (store_div, ":outcome", ":object", 200),#base cost, object is money between 5000-50000 denars
+        (store_div, ":outcome", ":object", 200),#base cost, object is money between 5000-50000 denarii
 
         (val_clamp, ":outcome", 50, 3001),
     (else_try),
         (eq, ":decision", decision_reward),
-        (store_div, ":outcome", ":object", 50),#base cost, object is money between 5000-50000 denars
+        (store_div, ":outcome", ":object", 50),#base cost, object is money between 5000-50000 denarii
 
         (store_faction_of_troop, ":faction", ":character"),
         (faction_get_slot, ":leader", ":faction", slot_faction_leader),
@@ -85145,7 +85145,7 @@ scripts = scripts_hardcoded + [
             (try_begin),
                 (eq, ":lord", "trp_player"),
                 (str_store_party_name, s2, ":party_no"),
-                (display_message, "@{reg6} denars were taken from the imperial treasury on your order to recruit troops for {s2}."),
+                (display_message, "@{reg6} denarii were taken from the imperial treasury on your order to recruit troops for {s2}."),
             (try_end),
         (else_try),
             (eq, ":lord", "trp_player"),
@@ -86781,12 +86781,12 @@ scripts = scripts_hardcoded + [
             (ge, ":money", 0),
             (play_sound, "snd_money_received"),
             (assign, reg0, ":money"),
-            (display_message, "@{reg0} denars have been added to the imperial treasury", message_negative),
+            (display_message, "@{reg0} denarii have been added to the imperial treasury", message_negative),
         (else_try),
             (lt, ":money", 0),
             (play_sound, "snd_money_paid"),
             (assign, reg0, ":money"),
-            (display_message, "@{reg0} denars have been taken from the imperial treasury", message_negative),
+            (display_message, "@{reg0} denarii have been taken from the imperial treasury", message_negative),
         (try_end),
         (assign, reg0, ":save_reg0"),
     (try_end),
@@ -88799,7 +88799,7 @@ scripts = scripts_hardcoded + [
         (val_add, reg0, minister_salary),
         (assign, reg1, minister_salary),
         (str_store_troop_name, s1, "$g_player_minister"),
-        (str_store_string, s0, "@Your minister {s1}, with a salary of {reg1} denars."),
+        (str_store_string, s0, "@Your minister {s1}, with a salary of {reg1} denarii."),
     (try_end),
     (try_begin),
         (ge, "$g_is_emperor", 1),
@@ -88809,34 +88809,34 @@ scripts = scripts_hardcoded + [
         (val_add, reg0, praefectus_urbi_salary),
         (assign, reg1, praefectus_urbi_salary),
         (str_store_troop_name, s1, "$praefectus_urbani"),
-        (str_store_string, s0, "@{s0}^Your praefectus urbani {s1}, with a salary of {reg1} denars."),
+        (str_store_string, s0, "@{s0}^Your praefectus urbani {s1}, with a salary of {reg1} denarii."),
     (try_end),
     (try_begin),
         (gt, "$g_player_chamberlain", 0),
         (val_add, reg0, chamberlain_salary),
         (assign, reg1, chamberlain_salary),
         (str_store_troop_name, s1, "$g_player_chamberlain"),
-        (str_store_string, s0, "@{s0}^Your {s1}, with a salary of {reg1} denars."),
+        (str_store_string, s0, "@{s0}^Your {s1}, with a salary of {reg1} denarii."),
     (try_end),
     (try_begin),
         (gt, "$g_player_constable", 0),
         (val_add, reg0, constable_salary),
         (assign, reg1, constable_salary),
         (str_store_troop_name, s1, "$g_player_constable"),
-        (str_store_string, s0, "@{s0}^Your {s1}, with a salary of {reg1} denars."),
+        (str_store_string, s0, "@{s0}^Your {s1}, with a salary of {reg1} denarii."),
     (try_end),
     (try_begin),
         (gt, "$g_player_chancellor", 0),
         (val_add, reg0, chancellor_salary),
         (assign, reg1, chancellor_salary),
         (str_store_troop_name, s1, "$g_player_chancellor"),
-        (str_store_string, s0, "@{s0}^Your {s1}, with a salary of {reg1} denars."),
+        (str_store_string, s0, "@{s0}^Your {s1}, with a salary of {reg1} denarii."),
     (try_end),
     (try_begin),
         (eq, "$control_tax", 1),  #tax control active
         (val_add, reg0, tax_control_costs),
         (assign, reg1, tax_control_costs),
-        (str_store_string, s0, "@{s0}^Additional tax collectors to fight tax fraud, with a salary of {reg1} denars."),
+        (str_store_string, s0, "@{s0}^Additional tax collectors to fight tax fraud, with a salary of {reg1} denarii."),
     (try_end),
 ]),
 #script_calculate_bureaucratic_costs
@@ -89183,11 +89183,11 @@ scripts = scripts_hardcoded + [
     (store_troop_gold, ":deposits", "trp_argentarius"),
     (val_add, ":player_wealth", ":deposits"),
     (assign, reg0, ":player_wealth"),
-    # (display_message, "@{reg0} denars player wealth"),
+    # (display_message, "@{reg0} denarii player wealth"),
     (val_mul, ":player_wealth", ":percentage"),
     (store_div, reg0, ":player_wealth", 100),
     (call_script, "script_round_value", reg0),
-    # (display_message, "@{reg0} denars sacrifice value"),
+    # (display_message, "@{reg0} denarii sacrifice value"),
 ]),
 # script_execude_debug_message
 ("execude_debug_message",[
@@ -91029,7 +91029,7 @@ scripts = scripts_hardcoded + [
     #     (call_script, "script_add_to_faction_bugdet", slot_faction_treasury, ":winner_faction", ":treasury"),
     #     (assign, reg1, ":debts"),
     #     (assign, reg2, ":treasury"),
-    #     (display_message, "@You take on the debts ({reg1} denars) and treasury ({reg2} denars).", message_alert),
+    #     (display_message, "@You take on the debts ({reg1} denarii) and treasury ({reg2} denarii).", message_alert),
     #     (try_for_range, ":slot", slot_faction_hire, slot_faction_emperors_bocket),
     #         (faction_get_slot, ":value", "fac_kingdom_7", ":slot"),
     #         (val_min, ":value", 0),
@@ -95170,7 +95170,7 @@ scripts = scripts_hardcoded + [
                     (else_try),
                         (str_store_party_name, s11, ":latifundium"),
                         (troop_remove_gold, "trp_player", 50000),
-                        (dialog_box, "@You are informed that {s11} has sustained damage due to recent wildfires. The estimated cost for repair is 50,000 denars.", "@Wildfires threaten {s11}"),
+                        (dialog_box, "@You are informed that {s11} has sustained damage due to recent wildfires. The estimated cost for repair is 50,000 denarii.", "@Wildfires threaten {s11}"),
                     (try_end),
                 (else_try),
                     (party_slot_ge, ":trigger_center", slot_town_lord, 1),#not player
@@ -95831,7 +95831,7 @@ scripts = scripts_hardcoded + [
         (val_sub, ":gold_cost", ":treasury"),
         (assign, reg4, ":treasury"),
     (try_end),
-    (str_store_string, s10, "@{reg2} denars are taking from your private treasury (containing {reg1} denars) and {reg4} denars are taken from your own pocket (containing {reg3} denars).^^{reg5?You can also use funds from the imperial treasury, it currently contains {reg5} denars. Press control while clicking on 'Yes' to use the imperial treasury.:}"),
+    (str_store_string, s10, "@{reg2} denarii are taking from your private treasury (containing {reg1} denarii) and {reg4} denarii are taken from your own pocket (containing {reg3} denarii).^^{reg5?You can also use funds from the imperial treasury, it currently contains {reg5} denarii. Press control while clicking on 'Yes' to use the imperial treasury.:}"),
 ]),
 #script_faction_dismisses_marshall
 ("faction_dismisses_marshall",[

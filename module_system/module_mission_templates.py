@@ -29086,7 +29086,7 @@ mission_templates = [
                   (call_script, "script_get_improvement_details", "$g_improvement_type", "$g_encountered_party"),
                   (val_mul, reg0, 3),
                   (val_div, reg0, 5),
-                  (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
+                  (display_message, "@{s0} has been destroyed. You gained {reg0} of denarii.", message_alert),
                   (troop_add_gold, "trp_player", reg0),
                   (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
 

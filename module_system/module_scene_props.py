@@ -3320,7 +3320,7 @@ scene_props = [
         (try_begin),
           (le, ":rand", 1),
           (dialog_box, "@You begrudgingly wield the Xylospongium, scrubbing a neglected toilet. Amidst the grime, a glint catches your eye."
-          +" Astonished, you discover 50 denars concealed in the filth - an unexpected reward for your unsavory task. In the echoes of history,"
+          +" Astonished, you discover 50 denarii concealed in the filth - an unexpected reward for your unsavory task. In the echoes of history,"
           +" the humble toilet becomes an unlikely treasure trove, a testament to the unpredictability of your journey through the ancient Roman world."
           +" ^Despite your efforts, the toilet is still dirty...."),
           (call_script, "script_change_troop_health", "trp_player", 25),

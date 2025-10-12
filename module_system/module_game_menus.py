@@ -992,7 +992,7 @@ game_menus = [
 
 #######camp follower party management
 ("hire_follower_party",0,
-  "To creat a follower party you need at least 10 non-wounded women in your main party and 2,500 denars for hiring a physician and mules.^^On creation all women will be moved to the follower party.",
+  "To creat a follower party you need at least 10 non-wounded women in your main party and 2,500 denarii for hiring a physician and mules.^^On creation all women will be moved to the follower party.",
   "none",[
     (set_background_mesh, "mesh_pic_camp"),
   ],[
@@ -1334,28 +1334,28 @@ game_menus = [
     #         (lt, ":tarrifs", 0),
     #         (party_set_slot, ":center", slot_center_accumulated_tariffs, 1000),
     #         (assign, reg20, ":tarrifs"),
-    #         (display_message, "@Reset {s2} tariffs to 1000 denars, was {reg20}"),
+    #         (display_message, "@Reset {s2} tariffs to 1000 denarii, was {reg20}"),
     #         (assign, reg20, 0),
     #       (try_end),
     #       (try_begin),
     #         (ge, ":tarrifs", 100000),
     #         (party_set_slot, ":center", slot_center_accumulated_tariffs, 1000),
     #         (assign, reg20, ":tarrifs"),
-    #         (display_message, "@Reset {s2} tariffs to 1000 denars, was {reg20}"),
+    #         (display_message, "@Reset {s2} tariffs to 1000 denarii, was {reg20}"),
     #         (assign, reg20, 0),
     #       (try_end),
     #       (try_begin),
     #         (lt, ":rents", 0),
     #         (party_set_slot, ":center", slot_center_accumulated_rents, 10000),
     #         (assign, reg20, ":rents"),
-    #         (display_message, "@Reset {s2} rents to 10000 denars, was {reg20}"),
+    #         (display_message, "@Reset {s2} rents to 10000 denarii, was {reg20}"),
     #         (assign, reg20, 0),
     #       (try_end),
     #       (try_begin),
     #         (ge, ":rents", 100000),
     #         (party_set_slot, ":center", slot_center_accumulated_rents, 10000),
     #         (assign, reg20, ":rents"),
-    #         (display_message, "@Reset {s2} rents to 10000 denars, was {reg20}"),
+    #         (display_message, "@Reset {s2} rents to 10000 denarii, was {reg20}"),
     #         (assign, reg20, 0),
     #       (try_end),
     #     (try_end),
@@ -1367,14 +1367,14 @@ game_menus = [
     #         (troop_set_slot, ":npc", slot_troop_wealth, 60000),
     #         (assign, reg20, ":wealth"),
     #         (str_store_troop_name, s2, ":npc"),
-    #         (display_message, "@Reset {s2} wealth to 60000 denars, was {reg20}"),
+    #         (display_message, "@Reset {s2} wealth to 60000 denarii, was {reg20}"),
     #         (assign, reg20, 0),
     #       (else_try),
     #         (lt, ":wealth", 0),
     #         (troop_set_slot, ":npc", slot_troop_wealth, 60000),
     #         (assign, reg20, ":wealth"),
     #         (str_store_troop_name, s2, ":npc"),
-    #         (display_message, "@Reset {s2} wealth to 60000 denars, was {reg20}"),
+    #         (display_message, "@Reset {s2} wealth to 60000 denarii, was {reg20}"),
     #         (assign, reg20, 0),
     #       (try_end),
     #     (try_end),
@@ -2558,7 +2558,7 @@ game_menus = [
     #   (try_for_range, ":walled_center", centers_begin, centers_end),
     #       (party_get_slot, reg22, ":walled_center", slot_center_capital),
     #       (str_store_party_name, s22, ":walled_center"),
-    #       (display_message, "@{s22}: {reg22} denars wealth"),
+    #       (display_message, "@{s22}: {reg22} denarii wealth"),
     #   (try_end),
     # ]),
 
@@ -5164,7 +5164,7 @@ game_menus = [
                         (troop_add_gold, "trp_player", ":money"),
                         (assign, reg32, ":money"),
                         (str_store_troop_name, s39, ":stack_troop"),
-                        (display_message, "@You have stolen {s39} {reg32} denars."),
+                        (display_message, "@You have stolen {s39} {reg32} denarii."),
                         (val_div, ":money", -2),
                         (call_script, "script_add_to_troop_wealth", ":stack_troop", ":money"),
                     (try_end),
@@ -5201,7 +5201,7 @@ game_menus = [
                         (troop_add_gold, "trp_player", ":money"),
                         (assign, reg32, ":money"),
                         (str_store_troop_name, s39, ":stack_troop"),
-                        (display_message, "@You have stolen {s39} {reg32} denars."),
+                        (display_message, "@You have stolen {s39} {reg32} denarii."),
                         (val_div, ":money", -2),
                         (call_script, "script_add_to_troop_wealth", ":stack_troop", ":money"),
                     (try_end),
@@ -8761,7 +8761,7 @@ game_menus = [
 
   ##########
   ("traicion_interna2",0,
-    "Your siege works begin to demoralize the defenders. Some of your soldiers are willing to contact the garrison or the inhabitants at {s4} and probe if someone would be willing to commit treason and facilitate the conquest. They need 500 denars for the job.",
+    "Your siege works begin to demoralize the defenders. Some of your soldiers are willing to contact the garrison or the inhabitants at {s4} and probe if someone would be willing to commit treason and facilitate the conquest. They need 500 denarii for the job.",
     "none",
     [
       (str_store_party_name,s4,"$current_town"),
@@ -9986,7 +9986,7 @@ game_menus = [
 
   (
     "castle_taken_plunder",mnf_disable_all_keys,
-    "The {reg2?town:fort} is plundered. You have collected {reg7} denars.",
+    "The {reg2?town:fort} is plundered. You have collected {reg7} denarii.",
     "none",
     [
       (set_background_mesh, "mesh_pic_victory"),
@@ -10214,7 +10214,7 @@ game_menus = [
         (assign, reg51, ":loot"),
         (assign, reg50, ":loot2"),
         (assign, reg52, ":tax"),
-        (display_message, "@You gained {reg50} denars from looting the population and {reg51} denars from looting the town administration and {reg52} from looting the accumulated taxes."),
+        (display_message, "@You gained {reg50} denarii from looting the population and {reg51} denarii from looting the town administration and {reg52} from looting the accumulated taxes."),
         (val_add, ":loot", ":loot2"),
         (val_add, ":loot", ":tax"),
 
@@ -10392,7 +10392,7 @@ game_menus = [
 
 ####
 ("castle_taken_keepplunder",mnf_disable_all_keys,
-  "{s3} has fallen to your troops, and you now have full control of the {reg2?town:fort}. Your troops run through the streets getting as much stuff as they can carry. The {reg2?town:fort} is plundered. You have collected {reg7} denars. " +
+  "{s3} has fallen to your troops, and you now have full control of the {reg2?town:fort}. Your troops run through the streets getting as much stuff as they can carry. The {reg2?town:fort} is plundered. You have collected {reg7} denarii. " +
   "{reg1? You may station troops here to defend it against enemies who may try to recapture it. Also, you should select now whether you will hold the {reg2?town:fortress} yourself or give it to a faithful vassal...:}",# Only visible when castle is taken without being a vassal of a kingdom.
   "none",[
     (set_background_mesh, "mesh_pic_victory"),
@@ -10553,8 +10553,8 @@ game_menus = [
 
         # (try_begin),
           # (eq, "$loot_option", 3),
-          # (val_mul, ":random_money", 8),		# 500 - 1000 denars
-          # (val_mul, ":prosperity_money", 60),		# 0 - 10000 denars		# 100 - 6000
+          # (val_mul, ":random_money", 8),		# 500 - 1000 denarii
+          # (val_mul, ":prosperity_money", 60),		# 0 - 10000 denarii		# 100 - 6000
           # (assign, ":prosperity_impact", -12),
           # #(call_script, "script_change_center_prosperity", "$g_encountered_party", -12),
         # (else_try),
@@ -10580,7 +10580,7 @@ game_menus = [
         (party_set_slot, "$g_encountered_party", slot_center_capital, ":wealth2"),
         (assign, reg51, ":loot"),
         (assign, reg50, ":loot2"),
-        (display_message, "@You gained {reg50} denars from looting the population and {reg51} denars from looting the town administration"),
+        (display_message, "@You gained {reg50} denarii from looting the population and {reg51} denarii from looting the town administration"),
         (val_add, ":loot", ":loot2"),
 
         (store_random_in_range, ":random_money", 2000, 4000),
@@ -10903,7 +10903,7 @@ game_menus = [
  'I was most pleased to hear of your valiant efforts in the capture of {s2}. Your victory has gladdened all our hearts.\
  You also requested me to give you ownership of the fortress, but that is a favor which I fear I cannot grant,\
  as you already hold significant estates.\
- Instead I have sent you {reg6} denars to cover the expenses of your campaign, but {s2} I give to {s5}.'\
+ Instead I have sent you {reg6} denarii to cover the expenses of your campaign, but {s2} I give to {s5}.'\
  ",
     "none",
     [
@@ -10963,7 +10963,7 @@ game_menus = [
  'I was most pleased to hear of your valiant efforts in the capture of {s2}. Your victory has gladdened all our hearts.\
  You also requested me to give ownership of the fortress to your {wife/husband}, but that is a favor which I fear I cannot grant,\
  as {she/he} already holds significant estates in my realm.\
- Instead I have sent you {reg6} denars to cover the expenses of your campaign, but {s2} I give to {s5}.'\
+ Instead I have sent you {reg6} denarii to cover the expenses of your campaign, but {s2} I give to {s5}.'\
  ",
 ##diplomacy end+
     "none",
@@ -12316,7 +12316,7 @@ game_menus = [
       (party_slot_eq, "$current_town", slot_village_state, 0),
       (neg|party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
       (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
-    ],"Make a donation of 2,500 denars.",[
+    ],"Make a donation of 2,500 denarii.",[
       (party_get_slot, ":prosperity", "$current_town", slot_town_prosperity),
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
@@ -12324,7 +12324,7 @@ game_menus = [
         (try_begin),
           (ge, ":gold", 2500), ## donation is 2500 Thaler, you can easily change this.
           (troop_remove_gold, "trp_player", 2500),
-          (display_message,"@You donated 2000 denars.",color_good_news),
+          (display_message,"@You donated 2000 denarii.",color_good_news),
           (try_begin),
             (is_between, ":prosperity", 0, 20),
             (call_script, "script_change_player_relation_with_center", "$current_town", 15),
@@ -12509,7 +12509,7 @@ game_menus = [
     (party_get_slot, ":volunteer_amount", "$current_town", slot_center_volunteer_troop_amount),
     (party_get_free_companions_capacity, ":free_capacity", "p_main_party"),
     (store_troop_gold, ":gold", "trp_player"),
-    (store_div, ":gold_capacity", ":gold", 100),#100 denars per man
+    (store_div, ":gold_capacity", ":gold", 100),#100 denarii per man
     (assign, ":party_capacity", ":free_capacity"),
     (val_min, ":party_capacity", ":gold_capacity"),
     (try_begin),
@@ -12526,7 +12526,7 @@ game_menus = [
       (eq, ":volunteer_amount", 0),
       (str_store_string, s18, "@No one here seems to be willing to join your party."),
     (else_try),
-      (store_mul, reg6, ":volunteer_amount", 100),#100 denars per man
+      (store_mul, reg6, ":volunteer_amount", 100),#100 denarii per man
       (str_store_troop_name_by_count, s3, ":volunteer_troop", ":volunteer_amount"),
       (try_begin),
         (eq, reg5, 1),
@@ -12548,7 +12548,7 @@ game_menus = [
     ("recruit_them",[
       (eq, reg7, 0),
       (gt, reg5, 0),
-    ],"Recruit them ({reg6} denars).",[
+    ],"Recruit them ({reg6} denarii).",[
       (call_script, "script_village_recruit_volunteers_recruit"),
       (jump_to_menu,"mnu_village"),
     ]),
@@ -12727,7 +12727,7 @@ game_menus = [
 ]),
 
 ("center_manage_2",0,
-  "{s39} has a prosperity rating of {reg51} and a accumulated capital of {reg29} denars, which can be taxed. The taxrate is {s11}.^^{s44}",
+  "{s39} has a prosperity rating of {reg51} and a accumulated capital of {reg29} denarii, which can be taxed. The taxrate is {s11}.^^{s44}",
   "none",[
   #set variables
   (try_for_range, ":slot",0,500),
@@ -12843,7 +12843,7 @@ game_menus = [
   # (
     # "extort_commoners",0,
     # "You can raise a special tax. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect this tax \
-	# and would give you {reg30} denars: But it will upset the citizens of {s39}.",
+	# and would give you {reg30} denarii: But it will upset the citizens of {s39}.",
     # "none",
     # [
 	# (str_store_party_name, s39, "$g_encountered_party"),
@@ -12877,7 +12877,7 @@ game_menus = [
  # (
     # "extort_merchants",0,
     # "You can raise a special toll on goods which are traded today. This would upset the merchants of {s39} and the villagers of the surrounding villages, who come here to sell their goods.\
-	# As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect the toll and would give you {reg30} denars.",
+	# As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect the toll and would give you {reg30} denarii.",
     # "none",
     # [(str_store_party_name, s39, "$g_encountered_party"),
 	# (party_get_slot, ":capital", "$current_town", slot_center_capital),
@@ -12907,7 +12907,7 @@ game_menus = [
   # ),
   # (
     # "extort_counsel",0,
-    # "The town counsel has {reg31} in their treasury. You can force them to take over their funds. It would take you 2 hours and you would gain {reg31} denars.",
+    # "The town counsel has {reg31} in their treasury. You can force them to take over their funds. It would take you 2 hours and you would gain {reg31} denarii.",
     # "none",
     # [
 	# (party_get_slot, reg31, "$current_town", slot_town_wealth),
@@ -13017,7 +13017,7 @@ game_menus = [
  # (
     # "center_decrees",0,
     # "As the govenor of this center you can issue decrees to react on certain matters. ^\
-	# Enacting or revoking a decree will cost you {reg40} denars.",
+	# Enacting or revoking a decree will cost you {reg40} denarii.",
     # "none",
     # [(assign, reg40, decree_cost),
     # ],
@@ -13168,7 +13168,7 @@ game_menus = [
   # (
     # "center_improve",mnf_scale_picture,
     # "{s19} As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you\
- # {reg5} denars and will take {reg6} days.^^The building time and costs are modified by: Skill: {reg44}%,  slave politic of the realm: {reg45}%.\
+ # {reg5} denarii and will take {reg6} days.^^The building time and costs are modified by: Skill: {reg44}%,  slave politic of the realm: {reg45}%.\
  # Additionally, the building time is modified by the number of prisoners in the town: {reg46}%.",
     # "none",
     # [#SB : town pictures
@@ -13375,7 +13375,7 @@ game_menus = [
     #   (troop_get_slot, ":slave_trader_contract", "trp_global_variables", g_slave_contract),
     #   (gt, ":slave_trader_contract", 0),
     #   (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
-    # ],"Buy 25 slaves. (25,000 denars)",[
+    # ],"Buy 25 slaves. (25,000 denarii)",[
     #   (try_begin),
     #       (store_troop_gold, ":gold", "trp_household_possessions"),
     #       (ge, ":gold", 25000),
@@ -13390,7 +13390,7 @@ game_menus = [
     # ]),
     # ("slaves_1",[
     #   (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
-    # ],"Buy 50 slaves. (50,000 denars)",[
+    # ],"Buy 50 slaves. (50,000 denarii)",[
     #   (try_begin),
     #       (store_troop_gold, ":gold", "trp_household_possessions"),
     #       (ge, ":gold", 50000),
@@ -13405,7 +13405,7 @@ game_menus = [
     # ]),
     # ("slaves_2",[
     #   (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
-    # ],"Buy 100 slaves. (100,000 denars)",[
+    # ],"Buy 100 slaves. (100,000 denarii)",[
     #   (try_begin),
     #       (store_troop_gold, ":gold", "trp_household_possessions"),
     #       (ge, ":gold", 100000),
@@ -13835,7 +13835,7 @@ game_menus = [
     ("village_raid_leave",[],"Leave this village alone.",[(change_screen_return)]),
 ]),
 ("village_loot_complete",mnf_disable_all_keys,
-  "On your orders your troops sack {s22}, pillaging everything of any value, and then put the buildings to the torch. From the coins and valuables that are found, you get your share of {reg23} denars.",
+  "On your orders your troops sack {s22}, pillaging everything of any value, and then put the buildings to the torch. From the coins and valuables that are found, you get your share of {reg23} denarii.",
   "none",[
     (str_store_party_name, s22, "$current_town"),
 
@@ -14220,14 +14220,14 @@ game_menus = [
     ]),
     # ("donate_hofho",[
     #   (eq, "$can_sacrific", 1),
-    # ],"Make a small sacrifice to the gods (1000 denars).",[
+    # ],"Make a small sacrifice to the gods (1000 denarii).",[
     #     (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
     #     (call_script, "script_make_sacrifice", 1000, ":diety"),
     #     (change_screen_return),
     # ]),
     # ("donate_hofho",[
     #   (eq, "$can_sacrific", 1),
-    # ],"Make a medium sacrifice to the gods (5000 denars).",[
+    # ],"Make a medium sacrifice to the gods (5000 denarii).",[
     #   (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
     #   (call_script, "script_make_sacrifice", 5000, ":diety"),
     #   (change_screen_return),
@@ -14235,7 +14235,7 @@ game_menus = [
     # ("donate_hofho",[
     #   (eq, "$can_sacrific", 1),
     # ],
-    # "Make a large sacrifice to the gods (10000 denars).",
+    # "Make a large sacrifice to the gods (10000 denarii).",
     # [
     #   (party_get_slot, ":diety", "$g_encountered_party", slot_paganside_god),
     #   (call_script, "script_make_sacrifice", 10000, ":diety"),
@@ -16643,7 +16643,7 @@ game_menus = [
           (party_get_num_companions, ":num_men", "p_main_party"),
           (store_div, reg1, ":num_men", 4),
           (val_add, reg1, 1),
-          (str_store_string, s1, "@ ({reg1} denars per night)"),
+          (str_store_string, s1, "@ ({reg1} denarii per night)"),
           (store_troop_gold, ":gold", "trp_player"),
           (lt, ":gold", reg1),
           (assign, ":can_rest", 0),
@@ -17670,7 +17670,7 @@ game_menus = [
 
 ("town_tournament_won",mnf_disable_all_keys,
   "You have won the great game of {s3}! You are filled with pride as the crowd cheers your name."
-  +" In addition to honour, fame and glory, you earn a prize of {reg9} denars, as well as one mystery prize. {s8}",
+  +" In addition to honour, fame and glory, you earn a prize of {reg9} denarii, as well as one mystery prize. {s8}",
   "none",[
     (str_store_party_name, s3, "$current_town"),
     (call_script, "script_change_troop_renown", "trp_player", 20),
@@ -17685,7 +17685,7 @@ game_menus = [
     (try_begin),
       (gt, "$g_tournament_bet_win_amount", 0),
       (assign, reg8, ":total_win"),
-      (str_store_string, s8, "@Moreover, you earn {reg8} denars from the clever bets you placed on yourself..."),
+      (str_store_string, s8, "@Moreover, you earn {reg8} denarii from the clever bets you placed on yourself..."),
     (try_end),
 		(try_begin),
 			(this_or_next|neq, "$players_kingdom", "$g_encountered_party_faction"),
@@ -17987,7 +17987,7 @@ game_menus = [
   ),
   (
     "tournament_bet",0,
-    "The odds against you are {reg5} to {reg6}.{reg1? You have already bet {reg1} denars on yourself, and if you win, you will earn {reg2} denars.:} How much do you want to bet?",
+    "The odds against you are {reg5} to {reg6}.{reg1? You have already bet {reg1} denarii on yourself, and if you win, you will earn {reg2} denarii.:} How much do you want to bet?",
     "none",
     [
       (assign, reg1, "$g_tournament_bet_placed"),
@@ -18016,7 +18016,7 @@ game_menus = [
       ("bet_100_denars", [(store_troop_gold, ":gold", "trp_player"),
                           (ge, ":gold", 100)
                           ],
-       "100 denars.",
+       "100 denarii.",
        [
          (assign, "$temp", 100),
          (jump_to_menu, "mnu_tournament_bet_confirm"),
@@ -18024,7 +18024,7 @@ game_menus = [
       ("bet_50_denars", [(store_troop_gold, ":gold", "trp_player"),
                          (ge, ":gold", 50)
                          ],
-       "50 denars.",
+       "50 denarii.",
        [
          (assign, "$temp", 50),
          (jump_to_menu, "mnu_tournament_bet_confirm"),
@@ -18032,7 +18032,7 @@ game_menus = [
       ("bet_20_denars", [(store_troop_gold, ":gold", "trp_player"),
                          (ge, ":gold", 20)
                          ],
-       "20 denars.",
+       "20 denarii.",
        [
          (assign, "$temp", 20),
          (jump_to_menu, "mnu_tournament_bet_confirm"),
@@ -18040,7 +18040,7 @@ game_menus = [
       ("bet_10_denars", [(store_troop_gold, ":gold", "trp_player"),
                          (ge, ":gold", 10)
                          ],
-       "10 denars.",
+       "10 denarii.",
        [
          (assign, "$temp", 10),
          (jump_to_menu, "mnu_tournament_bet_confirm"),
@@ -18048,7 +18048,7 @@ game_menus = [
       ("bet_5_denars", [(store_troop_gold, ":gold", "trp_player"),
                         (ge, ":gold", 5)
                         ],
-       "5 denars.",
+       "5 denarii.",
        [
          (assign, "$temp", 5),
          (jump_to_menu, "mnu_tournament_bet_confirm"),
@@ -18062,7 +18062,7 @@ game_menus = [
 
   (
     "tournament_bet_confirm",0,
-    "If you bet {reg1} denars, you will earn {reg2} denars if you win the games. Is that all right?",
+    "If you bet {reg1} denarii, you will earn {reg2} denarii if you win the games. Is that all right?",
     "none",
     [
       (call_script, "script_get_win_amount_for_tournament_bet"),
@@ -18198,7 +18198,7 @@ game_menus = [
     "collect_taxes_complete",mnf_disable_all_keys,
     ##diplomacy start+
     ##Replace "him" with "{reg4?her:him}"
-    "You've collected {reg3} denars in taxes from {s3}. {s19} will be expecting you to take the money to {reg4?her:him}.",
+    "You've collected {reg3} denarii in taxes from {s3}. {s19} will be expecting you to take the money to {reg4?her:him}.",
     ##diplomacy end+
     "none",
     [(str_store_party_name, s3, "$current_town"),
@@ -18248,7 +18248,7 @@ game_menus = [
   (
     "collect_taxes_failed",mnf_disable_all_keys,
 ##diplomacy start+ fix gender of pronoun
-    "You could collect only {reg3} denars as tax from {s3} before the revolt broke out.\
+    "You could collect only {reg3} denarii as tax from {s3} before the revolt broke out.\
  {s1} won't be happy, but some silver will placate {reg4?her:him} better than nothing at all...",
 ##diplomacy end+
     "none",
@@ -18657,7 +18657,7 @@ game_menus = [
 
   (
     "center_reports",0,
-    "Town Name: {s1}^Rent Income: {reg1} denars^Tariff Income: {reg2} denars^Food Stock: for {reg3} days",
+    "Town Name: {s1}^Rent Income: {reg1} denarii^Tariff Income: {reg2} denarii^Food Stock: for {reg3} days",
     "none",
     [(party_get_slot, ":town_food_store", "$g_encountered_party", slot_party_food_store),
      (call_script, "script_center_get_food_consumption", "$g_encountered_party"),
@@ -19043,7 +19043,7 @@ game_menus = [
 ## CC
 ("dplmc_trade_auto_sell_begin",0,
   "Items in your inventory whose type is marked as sellable and whose prices"
-  +" are below {reg1} denars will be sold to the {reg2?appropriate merchants:elder}"
+  +" are below {reg1} denarii will be sold to the {reg2?appropriate merchants:elder}"
   +" in the current {reg2?town:village} automatically.  Specifically food, trade"
   +" goods, and books will never be sold. ^^You can change some settings here freely.",
   "none",[
@@ -19395,35 +19395,35 @@ game_menus = [
          (assign, reg6, ":best_result_5_profit"),
          (str_store_item_name, s4, ":best_result_5_item"),
          (str_store_party_name, s5, ":best_result_5_town"),
-         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denars per item.{s3}"),
+         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denarii per item.{s3}"),
        (try_end),
        (try_begin),
          (ge, ":best_result_4_item", 0),
          (assign, reg6, ":best_result_4_profit"),
          (str_store_item_name, s4, ":best_result_4_item"),
          (str_store_party_name, s5, ":best_result_4_town"),
-         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denars per item.{s3}"),
+         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denarii per item.{s3}"),
        (try_end),
        (try_begin),
          (ge, ":best_result_3_item", 0),
          (assign, reg6, ":best_result_3_profit"),
          (str_store_item_name, s4, ":best_result_3_item"),
          (str_store_party_name, s5, ":best_result_3_town"),
-         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denars per item.{s3}"),
+         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denarii per item.{s3}"),
        (try_end),
        (try_begin),
          (ge, ":best_result_2_item", 0),
          (assign, reg6, ":best_result_2_profit"),
          (str_store_item_name, s4, ":best_result_2_item"),
          (str_store_party_name, s5, ":best_result_2_town"),
-         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denars per item.{s3}"),
+         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denarii per item.{s3}"),
        (try_end),
        (try_begin),
          (ge, ":best_result_1_item", 0),
          (assign, reg6, ":best_result_1_profit"),
          (str_store_item_name, s4, ":best_result_1_item"),
          (str_store_party_name, s5, ":best_result_1_town"),
-         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denars per item.{s3}"),
+         (str_store_string, s3, "@^Buying {s4} here and selling it at {s5} would bring a profit of {reg6} denarii per item.{s3}"),
        (try_end),
        (str_store_string, s2, "@{reg3?You find:{s1} finds} out the following:^{s3}"),
      (try_end),
@@ -19605,7 +19605,7 @@ game_menus = [
 ),
 
 ("enemy_offer_ransom_for_prisoner",0,
-  "The family of {s1}, from {s2}, offers you a sum of {reg12} denars in silver if you are willing to sell him.",
+  "The family of {s1}, from {s2}, offers you a sum of {reg12} denarii in silver if you are willing to sell him.",
   "none",[
     (call_script, "script_calculate_ransom_amount_for_troop", "$g_ransom_offer_troop"),
     (assign, reg12, reg0),
@@ -20593,7 +20593,7 @@ game_menus = [
 ("captivity_end_propose_ransom",0,
   "You spend long hours in the sunless dank of the dungeon, more than you can count."
   +" Suddenly one of your captors enters your cell with an offer;"
-  +" he proposes to free you in return for {reg5} denars of your hidden wealth. You decide to...",
+  +" he proposes to free you in return for {reg5} denarii of your hidden wealth. You decide to...",
   "none",[
     (assign, reg5, "$player_ransom_amount"),
     (set_background_mesh, "mesh_pic_deserters"),
@@ -20623,7 +20623,7 @@ game_menus = [
         (store_troop_gold, ":player_gold", "trp_player"),
         (assign, reg6, ":player_gold"),
       (try_end),
-    ],"Pay him {reg6} denars, promising to pay the rest when you are free.",[
+    ],"Pay him {reg6} denarii, promising to pay the rest when you are free.",[
       (play_cue_track, "track_escape"),
       (assign, "$g_player_is_captive", 0),
 
@@ -20824,7 +20824,7 @@ game_menus = [
 			# (eq, "$g_invite_faction_lord", "trp_kingdom_7_lord"),
 			# (str_store_string, s32, "@You receive a message from the Roman Senate!^^\
  # {s8} has heard from your fame and has ordered the senate to make you a Tribunus.\
- # You would be granted the honour of leading troops and a monthly salery of 1000 denars,\
+ # You would be granted the honour of leading troops and a monthly salery of 1000 denarii,\
  # and in return you would be obligated to follow the orders of Caesar Augustus and fight in {reg4?her:his} military campaigns,\
  # although {reg4?she:he} offers you no lands or titles.\
  # {reg4?She:He} will surely be offended if you do not take the offer... "),
@@ -20887,7 +20887,7 @@ game_menus = [
 			# (eq, "$g_invite_faction_lord", "trp_kingdom_7_lord"),
 			# (str_store_string, s32, "@You receive a message from the Roman Senate!^^\
  # {s8} has heard from your fame and has ordered the senate to make you a Tribunus.\
- # You would be granted the honour of leading troops and a monthly salery of 1000 denars,\
+ # You would be granted the honour of leading troops and a monthly salery of 1000 denarii,\
  # and in return you would be obligated to follow the orders of Caesar Augustus and fight in {reg4?her:his} military campaigns,\
  # offering you to be the governor of {s2}, which would mean that you have to collect taxes and maintaine public order.\
  # {reg4?She:He} will surely be offended if you do not take the offer... "),
@@ -20973,7 +20973,7 @@ game_menus = [
     (troop_set_slot, "$g_notification_menu_var1", slot_crafting_order_time, 0),
     (troop_set_slot, "$g_notification_menu_var1", slot_crafting_order_time_modifier, 0),
   ],[
-    ("continue",[],"Pay him. [100 denars.]",[
+    ("continue",[],"Pay him. [100 denarii.]",[
       (troop_remove_gold, "trp_player", 100),
       (change_screen_map),
     ]),
@@ -21139,7 +21139,7 @@ game_menus = [
         (val_add, reg40, reg0),
     ],
     [
-        ("tribute",[],"Demand a tribute of {reg40} denars",[
+        ("tribute",[],"Demand a tribute of {reg40} denarii",[
             (jump_to_menu, "mnu_decide_ai_tribute"),
         ]),
 
@@ -21157,7 +21157,7 @@ game_menus = [
 ),
 
 ("notification_tribute_demanded",0,
-    "Due to recent provocations from your subjects, the {s1} demand reparations and tributes of {reg40} denars from you. How do you react?"
+    "Due to recent provocations from your subjects, the {s1} demand reparations and tributes of {reg40} denarii from you. How do you react?"
     " Refusing the demand will most likely lead to war!",
     "none",
     [
@@ -21301,7 +21301,7 @@ game_menus = [
 
       ("continue",[
         (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
-      ],"Demand additional tribute of 15,000 denars!",[
+      ],"Demand additional tribute of 15,000 denarii!",[
         (faction_get_slot, ":leader_2", "$g_notification_menu_var2", slot_faction_leader),
         (call_script, "script_change_player_relation_with_troop", ":leader_2", -25),
         (set_show_messages, 0),
@@ -21332,7 +21332,7 @@ game_menus = [
 
       ("continue",[
         (eq, reg50, 1),
-      ],"Pay the tribute. [15,000 denars]",[
+      ],"Pay the tribute. [15,000 denarii]",[
         (try_begin),
             (faction_slot_eq, "$g_notification_menu_var2", slot_faction_government_type, gov_imperial),
             (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_diplomacy, "$g_notification_menu_var2", 15000),
@@ -21815,7 +21815,7 @@ game_menus = [
           (ge, ":g", 25000),
       (try_end),
       (eq, ":block", 0),
-    ],"Send them gifts. [25,000 denars]",[
+    ],"Send them gifts. [25,000 denarii]",[
       (faction_get_slot, ":leader_1", "$g_notification_menu_var1", slot_faction_leader),
       (str_store_troop_name, s63, ":leader_1"),
       (str_clear, s29),
@@ -21845,7 +21845,7 @@ game_menus = [
           (ge, ":g", 50000),
       (try_end),
       (eq, ":block", 0),
-    ],"Ask them to switch sides by offering 50,000 denars.",[
+    ],"Ask them to switch sides by offering 50,000 denarii.",[
       (faction_get_slot, ":leader_1", "$g_notification_menu_var1", slot_faction_leader),
       (faction_get_slot, ":leader_2", "$g_notification_menu_var1", slot_faction_leader),
       (call_script, "script_change_player_relation_with_troop", ":leader_1", 5),
@@ -22006,7 +22006,7 @@ game_menus = [
       (is_between, "$temp2", kingdoms_begin, kingdoms_end),
       (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
       (str_store_faction_name, "$temp2", s30),
-    ],"Switch sides to {s30}, break the treaty and declare war! [25,000 denars from {s30}]",[
+    ],"Switch sides to {s30}, break the treaty and declare war! [25,000 denarii from {s30}]",[
       (try_begin),
           (faction_slot_eq, "$g_notification_menu_var1", slot_faction_government_type, gov_imperial),
           (call_script, "script_add_to_faction_bugdet", slot_faction_taxes_diplomacy, "$g_notification_menu_var1", 25000),
@@ -22535,7 +22535,7 @@ game_menus = [
 ]),
 
 ("minister_confirm",0,
-  "{s9}can be found at your court in {s12} and will recieve a salary of {reg10} denars each week. You should consult {reg4?her:him} periodically, to avoid the accumulation of unresolved issues that may sap your authority...",
+  "{s9}can be found at your court in {s12} and will recieve a salary of {reg10} denarii each week. You should consult {reg4?her:him} periodically, to avoid the accumulation of unresolved issues that may sap your authority...",
   "none",[
 	  (str_store_party_name, s12, "$g_player_court"),
     (try_begin),
@@ -23019,7 +23019,7 @@ game_menus = [
 
 # for main story: if parthia or armenia declare war on player Rome
 ("armenia_parthia_declare_war",0,
-  "War avoided^^{s1} wanted to declare war against you! However, as the civil war continues, your minister {s25} negotiated a treaty to avoid a second front.^{reg22} denars had to be paid to avoid war.",
+  "War avoided^^{s1} wanted to declare war against you! However, as the civil war continues, your minister {s25} negotiated a treaty to avoid a second front.^{reg22} denarii had to be paid to avoid war.",
   "none",[
     (try_begin),
         (gt, "$g_player_minister", 0),
@@ -23160,7 +23160,7 @@ game_menus = [
         (play_sound, "snd_message_negative_sound"),
       ],
     [
-      ("continue",[],"Try to enforce peace by threatening {s1} with joining the war. [costs 1,000 denars to send message]",
+      ("continue",[],"Try to enforce peace by threatening {s1} with joining the war. [costs 1,000 denarii to send message]",
        [
         (try_begin),
             (store_troop_gold, reg0, "trp_player"),
@@ -23248,7 +23248,7 @@ game_menus = [
       (neg|faction_slot_eq, "$players_kingdom", slot_faction_tributary_of, "$g_notification_menu_var1"),
       (store_troop_gold, reg0, "trp_player"),
       (gt, reg0, 1000),
-    ],"Try to persuade {s1} to stop the war. [costs 1,000 denars to send message]",[
+    ],"Try to persuade {s1} to stop the war. [costs 1,000 denarii to send message]",[
       (store_add, ":slot_provocation_days", "$players_kingdom", slot_faction_provocation_days_with_factions_begin),
       (val_sub, ":slot_provocation_days", kingdoms_begin),
       (faction_set_slot, "$g_notification_menu_var1", ":slot_provocation_days", 15),
@@ -23525,7 +23525,7 @@ game_menus = [
         (store_mul, reg40, ":enemy_strength", 1000),
         (val_clamp, reg40, 5000, 100001),
 
-        (str_store_string, s57, "@Messengers are sent, and soon you receive word that {s3} of {s1} has reconsidered his actions. He has sent you a gift of {reg40} denars and will not attack the {s2} in the future."),
+        (str_store_string, s57, "@Messengers are sent, and soon you receive word that {s3} of {s1} has reconsidered his actions. He has sent you a gift of {reg40} denarii and will not attack the {s2} in the future."),
         (assign, "$temp1", 1),
     (else_try),
         (str_store_string, s57, "@Messengers are sent, and soon you receive word that {s3} of {s1} will attack the {s2} regardless. You are now compelled to join the war."),
@@ -24191,7 +24191,7 @@ game_menus = [
       (neq, ":template", "pt_looter_lair"),
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 1000),
-    ],"Hire 10 {s41} (1000 denars)",[
+    ],"Hire 10 {s41} (1000 denarii)",[
       (party_get_template_id, ":template", "$g_encountered_party"),
       (try_begin),
         (troops_can_join, 10),
@@ -24746,7 +24746,7 @@ game_menus = [
 ("start_phase_3",mnf_disable_all_keys,
   "The farmer was driving to Rome. When you awake, you witness the eternal city for the first time in your life and become overwhelmed by its splendor. You are awestruck."
   +" The streets are crowded with hundreds of people. Plebeians from all rungs of society can be seen. Farmers, bakers, merchants, craftsmen, and more are doing their daily business, with a few patricians mingling among them. As you are taking in the view, the carriage suddenly halts. You decide to jump from the carriage and give a short prayer of thanks."
-  +" ^^As you have not even a single denar, you stray around the streets thinking about a"
+  +" ^^As you have not even a single denarius, you stray around the streets thinking about a"
   +" good way to obtain some coins. Suddenly, you hear something ...",
     "none",[
     (set_background_mesh, "mesh_pic_roma"),
@@ -24914,7 +24914,7 @@ game_menus = [
 ]),
 
 ("establish_court",mnf_disable_all_keys,
-  "To establish {s4} as your court will require a small refurbishment. In particular, you will need 25,000 denars. it may also take a short while for some of your followers to relocate here. Do you wish to proceed?",
+  "To establish {s4} as your court will require a small refurbishment. In particular, you will need 25,000 denarii. it may also take a short while for some of your followers to relocate here. Do you wish to proceed?",
   "none",[
 	  (str_store_party_name, s4, "$g_encountered_party"),
     (set_background_mesh, "mesh_pic_party"),
@@ -24942,7 +24942,7 @@ game_menus = [
 ]),
 
 ("notification_relieved_as_marshal", mnf_disable_all_keys,
-  "{s4} wishes to inform you that your services as marshal are no longer required. In honor of valiant efforts on behalf of the realm over the last {reg4} days, however, {reg8?she:he} offers you a purse of {reg5} denars.",
+  "{s4} wishes to inform you that your services as marshal are no longer required. In honor of valiant efforts on behalf of the realm over the last {reg4} days, however, {reg8?she:he} offers you a purse of {reg5} denarii.",
   "none",[
     (assign, reg4, "$g_player_days_as_marshal"),
 
@@ -25233,7 +25233,7 @@ game_menus = [
 ]),
 
 ("notification_tributary_offer",0,
-  "You recieve a message from {s1} of the {s2}. He offers you a tribute of 20,000 denars and to submit to you. The {s2} would be your vassal state from now on.^^"
+  "You recieve a message from {s1} of the {s2}. He offers you a tribute of 20,000 denarii and to submit to you. The {s2} would be your vassal state from now on.^^"
   + " As vassal state they are not able to declare war or peace and will follow you into wars.",
   "none",[
     (str_store_faction_name, s2, "$g_notification_menu_var1"),
@@ -25656,7 +25656,7 @@ game_menus = [
 ]),
 
 ("dplmc_riot_negotiate",mnf_disable_all_keys,
-  "You approach the angry crowd and begin negotiations. The leader of the riot demands {reg0} denars. He agrees to lay down arms if you are willing to pay.",
+  "You approach the angry crowd and begin negotiations. The leader of the riot demands {reg0} denarii. He agrees to lay down arms if you are willing to pay.",
   "none",[
     (party_get_slot, ":center_relation", "$g_encountered_party", slot_center_player_relation),
     (val_min, ":center_relation", 0),
@@ -25727,7 +25727,7 @@ game_menus = [
     ]),
 ]),
 ("dplmc_notification_appoint_chamberlain",0,
-  "You can appoint a Quaestor who resides at your court for a weekly salary of {reg10} denars."
+  "You can appoint a Quaestor who resides at your court for a weekly salary of {reg10} denarii."
   +"^^You can also manage your advisors under 'household management' in reports menu."
   +" ^^A Quaestor manages your private treasury, which can be used to savely store money. The money is then used to pay wages for troops or can be also used for construction projects."
   +" ^^If you govern a town, fortress or village, he will handle all financial affairs like collecting and determining taxes, paying wages and managing your estates."
@@ -25756,7 +25756,7 @@ game_menus = [
     ]),
 ]),
 ("dplmc_notification_appoint_constable",0,
-  "You can appoint a Custos Publicus who resides at you court for a weekly salary of {reg10} denars. He will recruit new troops and provide information about your army."
+  "You can appoint a Custos Publicus who resides at you court for a weekly salary of {reg10} denarii. He will recruit new troops and provide information about your army."
   +"^^You can also manage your advisors under 'household management' in reports menu.",
   "none",[
     (assign, reg10, constable_salary),
@@ -25784,7 +25784,7 @@ game_menus = [
 ]),
 
 ("dplmc_notification_appoint_chancellor",0,
-  "You can appoint a chancellor who resides at you court for a weekly salary of {reg10} denars. He will be the keeper of your seal and conduct the correspondence between you and other important persons."
+  "You can appoint a chancellor who resides at you court for a weekly salary of {reg10} denarii. He will be the keeper of your seal and conduct the correspondence between you and other important persons."
   +"^^You can also manage your advisors under 'household management' in reports menu.",
   "none",[
     (assign, reg10, chancellor_salary),
@@ -25825,7 +25825,7 @@ game_menus = [
 
   (
     "dplmc_negotiate_besieger",0,
-    "You appear with a white flag at the top of the wall. After a while a negotiator of {s11} approaches you. He demands {s6} and all associated villages as well as {reg0} denars for safe conduct.",
+    "You appear with a white flag at the top of the wall. After a while a negotiator of {s11} approaches you. He demands {s6} and all associated villages as well as {reg0} denarii for safe conduct.",
     "none",
     [
       (party_get_slot, ":besieger", "$current_town", slot_center_is_besieged_by),
@@ -26167,7 +26167,7 @@ game_menus = [
   Number of earthquake events: {reg59}^Number of Beetle invasions: {reg60}^\
   Number of good harvests: {reg49}^Number of bad harvests: {reg48}^\
   Number of mild winters: {reg47}^Number of harsh winters: {reg46}^^\
-  Richest lord in the world: {s33} (wealth: {reg33} denars)^Poorest lord in the world: {s34} (wealth: {reg34})^^{s0}",
+  Richest lord in the world: {s33} (wealth: {reg33} denarii)^Poorest lord in the world: {s34} (wealth: {reg34})^^{s0}",
   "none",[
     (troop_get_slot, reg46, "trp_global_variables", g_number_harsh_winters),
     (troop_get_slot, reg47, "trp_global_variables", g_number_mild_winters),
@@ -27599,7 +27599,7 @@ game_menus = [
 ]),
 
 ("dplmc_choose_disguise", 0,
-  "You are about to sneak into {s1}. Make sure you don't bring suspicious items or excess denars that might be confiscated. {s2}",
+  "You are about to sneak into {s1}. Make sure you don't bring suspicious items or excess denarii that might be confiscated. {s2}",
   "none",[
     (troop_get_inventory_capacity, ":inv_cap", "trp_random_town_sequence"),
     (assign, ":count", 0),
@@ -28203,7 +28203,7 @@ game_menus = [
   "Dysentery!^^Poor hygiene in your camp has led to dysentery. The men start dying all around you. This could have been prevented with sanitation!",
   "none",[
   ],[
-    ("choice_02_1b",[],"Hire a physician to try to help the sick (1000 denars).",[
+    ("choice_02_1b",[],"Hire a physician to try to help the sick (1000 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 1000),
@@ -28360,7 +28360,7 @@ game_menus = [
       # (call_script, "script_change_player_party_morale", 5),
       (change_screen_return),
     ]),
-    ("choice_05_2e",[],"Reward each with gold (300 denars).",[
+    ("choice_05_2e",[],"Reward each with gold (300 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 300),
@@ -28373,7 +28373,7 @@ game_menus = [
       (try_end),
       (change_screen_return),
     ]),
-    ("choice_05_3e",[],"Reward them with a night off with pay (200 denars).",[
+    ("choice_05_3e",[],"Reward them with a night off with pay (200 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 200),
@@ -28404,7 +28404,7 @@ game_menus = [
     ]),
     ("choice_06_2f",[
       (store_troop_gold, ":gold", "trp_player"),(ge, ":gold", 500),
-    ],"Send messengers to pay them off (500 denars).",[
+    ],"Send messengers to pay them off (500 denarii).",[
       (troop_remove_gold, "trp_player", 500),
       (jump_to_menu,"mnu_encuentro_avituallamiento2"),
     ]),
@@ -28518,7 +28518,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
   ],[
-    ("choice_07_1g",[],"Yes (600 denars).",[
+    ("choice_07_1g",[],"Yes (600 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 600),
@@ -28559,7 +28559,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
   ],[
-    ("choice_08_1h",[],"Offer 400 denars. I don't want more desertions.",[
+    ("choice_08_1h",[],"Offer 400 denarii. I don't want more desertions.",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 400),
@@ -28572,7 +28572,7 @@ game_menus = [
       (try_end),
       (change_screen_return),
     ]),
-    ("choice_08_2h",[],"Offer 800 denars to minimize temptation.",[
+    ("choice_08_2h",[],"Offer 800 denarii to minimize temptation.",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 800),
@@ -29074,7 +29074,7 @@ game_menus = [
       (call_script, "script_change_player_party_morale", -8),
       (change_screen_return),
     ]),
-    ("choice_25_2b",[],"Hire dancers just for yourself (100 denars).",[
+    ("choice_25_2b",[],"Hire dancers just for yourself (100 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 100),
@@ -29089,7 +29089,7 @@ game_menus = [
       (try_end),
       (change_screen_return),
     ]),
-    ("choice_25_3b",[],"Hire dancers for your men (500 denars).",[
+    ("choice_25_3b",[],"Hire dancers for your men (500 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 500),
@@ -29190,7 +29190,7 @@ game_menus = [
       (party_add_members, "p_main_party", "trp_refugee", 8),
       (change_screen_return),
     ]),
-    ("choice_28_2b",[(store_troop_gold, ":gold", "trp_player"),(ge, ":gold", 1000),],"Buy food for them (1000 denars). Then let them leave.",[
+    ("choice_28_2b",[(store_troop_gold, ":gold", "trp_player"),(ge, ":gold", 1000),],"Buy food for them (1000 denarii). Then let them leave.",[
       (troop_remove_gold, "trp_player", 1000),
       (display_message, "@You feel good for helping."),
       (call_script, "script_change_player_honor", 5),
@@ -29244,7 +29244,7 @@ game_menus = [
     ("choice_29_4b",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 1000),
-    ],"Pay compensation to the officer (1000 denars).",[
+    ],"Pay compensation to the officer (1000 denarii).",[
       (troop_remove_gold, "trp_player", 1000),
       (display_message, "@The wife is pregnant, and the officer asks for a high compensation. To avoid rumors and problems, you pay."),
       (change_screen_return),
@@ -30013,7 +30013,7 @@ game_menus = [
 	# Number of wool looms: {reg26}^\
 	# Number of pottery kilns: {reg27}^\
 	# Number of tanneries: {reg28}^\
-	# This settlement has accumulated a total capital of {reg29} denars, which can be taxed. The administration has a budget of {reg50} denars for the townwatch and other projects.^\
+	# This settlement has accumulated a total capital of {reg29} denarii, which can be taxed. The administration has a budget of {reg50} denarii for the townwatch and other projects.^\
 	# The prosperity rating is {reg51}.",
     # "none",
     # [(party_get_slot, ":mills", "$current_town", slot_center_mills),
@@ -31163,12 +31163,12 @@ game_menus = [
     ],"Give a speech.",[
       (call_script, "script_give_a_speech", "$current_town"),
     ]),
-      # ("con",[(eq, "$g_bribe", 0),],"Try to bribe (15000 denars)",
+      # ("con",[(eq, "$g_bribe", 0),],"Try to bribe (15000 denarii)",
         # [
 		# (store_troop_gold, ":g", "trp_player"),
 		# (try_begin),
 			# (lt, ":g", 15000),
-			# (display_message, "@You don't have enough denars!"),
+			# (display_message, "@You don't have enough denarii!"),
 			# (jump_to_menu, "mnu_town"),
 		# (else_try),
 
@@ -31868,7 +31868,7 @@ game_menus = [
     ("use_bath",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 100),
-    ],"Buy ticket for one day (100 denars). [Improves health]",[
+    ],"Buy ticket for one day (100 denarii). [Improves health]",[
       (try_begin),
         (neg|troop_slot_ge, "trp_player", slot_troop_unhealth, 300),
         (store_random_in_range, ":r", 1, 10),
@@ -32121,7 +32121,7 @@ game_menus = [
     ("answere_1",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 1000),
-    ],"Gift her 1,000 denars and let her go.",[
+    ],"Gift her 1,000 denarii and let her go.",[
       (troop_remove_gold, "trp_player", 1000),
       (call_script, "script_change_player_honor", 5),
       (str_store_string, s1, "@The girl is very happy about your decision, hugs you and places you in the name of the sole almighty God. You write a letter to Nero with a detailed description about her 'torture'."),
@@ -32144,7 +32144,7 @@ game_menus = [
     ("answere_4",[],"Sell her on a slave market.",[
       (troop_add_gold, "trp_player", 15000),
       (call_script, "script_change_player_honor", -5),
-      (str_store_string, s1, "@The girl is tortured in a way that preverve her beauty. Than she is brought to a slave market where she is sold for 15,000 denars to a patrician, who is famous for his cruel treatment of slaves. You write a letter to Nero with a detailed description about her torture."),
+      (str_store_string, s1, "@The girl is tortured in a way that preverve her beauty. Than she is brought to a slave market where she is sold for 15,000 denarii to a patrician, who is famous for his cruel treatment of slaves. You write a letter to Nero with a detailed description about her torture."),
       (assign, "$temp", "mesh_pic_girls"),
       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
     ]),
@@ -32672,7 +32672,7 @@ game_menus = [
       (change_screen_return, 0),
     ]),
     ("choice_9_3nor",[],"Kill them. Surely they will yield some good loot.",[
-      (display_message, "@Among the bodies, your men find 500 denars."),
+      (display_message, "@Among the bodies, your men find 500 denarii."),
       (call_script, "script_change_player_honor", -5),
       (troop_add_gold, "trp_player", 500),
       (call_script, "script_change_troop_renown", "trp_player", -16),
@@ -32758,7 +32758,7 @@ game_menus = [
 ("india_event_3",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Sailing by spirit stone^^The latest trade convoy to Kushan brings rumors of advanced navigation methods used by people in faraway lands even further east from Kushan."
   +" It is said they use stones imbued with spirits, who help guard the ships and find their way in the open ocean. Perhaps we can visit this land to buy such stones and"+
-  " learn from their best mariners. A modest fleet should be enough and can be outfitted for 100,000 denars.",
+  " learn from their best mariners. A modest fleet should be enough and can be outfitted for 100,000 denarii.",
   "none",[
     (set_background_mesh, "mesh_pic_ships")
   ],[
@@ -32783,7 +32783,7 @@ game_menus = [
 ]),
 ("india_event_4",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Expand sea trade^^After the latest sea expedition to shores beyond Kushan and the acquisition of the spirit stones for navigation, it is clear that the Roman mariners could"
-  +" establish trade routes going even farther. This will require a massive expansion of our great fleet, costing 1,000,000 denars, and still go through Kushan ports as an intermediate stop,"
+  +" establish trade routes going even farther. This will require a massive expansion of our great fleet, costing 1,000,000 denarii, and still go through Kushan ports as an intermediate stop,"
   +" but will increase the volume of our sea trade.",
   "none",[
     (set_background_mesh, "mesh_pic_ships")
@@ -32805,7 +32805,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_bachus")
   ],[
-    ("answere_0",[],"Throw a Great Festival of Discovery (cost: 1,000,000 denars)",[
+    ("answere_0",[],"Throw a Great Festival of Discovery (cost: 1,000,000 denarii)",[
       (troop_set_slot, "trp_plinius_elder", slot_expedition_event_1_shown, 1),
       (call_script, "script_change_player_relation_with_center", "p_town_6", 25),
       (call_script, "script_change_player_honor", 30),
@@ -32831,7 +32831,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_ships")
   ],[
-    ("answere_0",[],"Steal the silk worms (cost: 1,000,000 denars)",[
+    ("answere_0",[],"Steal the silk worms (cost: 1,000,000 denarii)",[
       (troop_set_slot, "trp_plinius_elder", slot_expedition_event_2_shown, 1),
       (troop_remove_gold, "trp_player", 1000000),
       (troop_set_slot, "trp_plinius_elder", slot_expedition_silk_stolen, 1),
@@ -32859,7 +32859,7 @@ game_menus = [
       (store_troop_gold, ":treasury", "trp_household_possessions"),
       (val_add, ":gold", ":treasury"),
       (ge, ":gold", 250000),
-    ],"Declare the comet a sign of divine displeasure and offer a grand sacrifice. [costs: 250,000 denars; use your own funds!]",[
+    ],"Declare the comet a sign of divine displeasure and offer a grand sacrifice. [costs: 250,000 denarii; use your own funds!]",[
       (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 250000, "trp_player"),
       (call_script, "script_change_troop_renown", "trp_player", 25),
       (call_script, "script_change_player_honor", 5),
@@ -32868,7 +32868,7 @@ game_menus = [
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
     ("continue",[
-    ],"Declare the comet a sign of divine displeasure and offer a grand sacrifice. [costs: 250,000 denars; use public funds!]",[
+    ],"Declare the comet a sign of divine displeasure and offer a grand sacrifice. [costs: 250,000 denarii; use public funds!]",[
       (call_script, "script_add_to_faction_treasury", -250000, "$g_notification_menu_var1"),
       (call_script, "script_change_troop_renown", "trp_player", 5),
       # (call_script, "script_change_player_honor", 5),
@@ -32881,7 +32881,7 @@ game_menus = [
       (store_troop_gold, ":treasury", "trp_household_possessions"),
       (val_add, ":gold", ":treasury"),
       (ge, ":gold", 100000),
-    ],"Declare the comet a sign of divine displeasure and offer a sacrifice. [costs: 100,000 denars; use your own funds!]",[
+    ],"Declare the comet a sign of divine displeasure and offer a sacrifice. [costs: 100,000 denarii; use your own funds!]",[
       (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 100000, "trp_player"),
       (call_script, "script_change_troop_renown", "trp_player", -10),
       (call_script, "script_change_player_honor", -2),
@@ -32890,7 +32890,7 @@ game_menus = [
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
     ("continue",[
-    ],"Declare the comet a sign of divine displeasure and offer a sacrifice. [costs: 100,000 denars; use public funds!]",[
+    ],"Declare the comet a sign of divine displeasure and offer a sacrifice. [costs: 100,000 denarii; use public funds!]",[
       (call_script, "script_add_to_faction_treasury", -100000, "$g_notification_menu_var1"),
       (call_script, "script_change_troop_renown", "trp_player", -10),
       (call_script, "script_change_player_honor", -2),
@@ -32945,7 +32945,7 @@ game_menus = [
       (store_troop_gold, ":treasury", "trp_household_possessions"),
       (val_add, ":gold", ":treasury"),
       (ge, ":gold", 150000),
-    ],"Buy additional grain, using funds from your own purse! [150,000 denars]",[
+    ],"Buy additional grain, using funds from your own purse! [150,000 denarii]",[
       (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 150000, "trp_player"),
       (call_script, "script_change_troop_renown", "trp_player", 5),
       (call_script, "script_change_player_honor", 1),
@@ -32955,7 +32955,7 @@ game_menus = [
     ("continue",[
       (faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
       # (ge, "$g_is_emperor", 1),
-    ],"Buy additional grain, using funds from the imperial treasury! [150,000 denars]",[
+    ],"Buy additional grain, using funds from the imperial treasury! [150,000 denarii]",[
       (call_script, "script_add_to_faction_treasury", -150000, "$g_notification_menu_var1"),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
@@ -33184,7 +33184,7 @@ game_menus = [
         (store_troop_gold, ":gold", "trp_household_possessions"),
       (try_end),
       (ge, ":gold", 50000),
-    ],"From now on she shall be free! Additionally, I gift her 50,000 denars.",[
+    ],"From now on she shall be free! Additionally, I gift her 50,000 denarii.",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (lt, ":gold", 50000),
@@ -33293,7 +33293,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-     ("answere_1",[],"Build such a boat! (200000 denars)",[
+     ("answere_1",[],"Build such a boat! (200000 denarii)",[
       (add_xp_as_reward, 50),
       (store_troop_gold, ":gold", "trp_player"),
       (call_script, "script_change_player_honor", -10),
@@ -33352,7 +33352,7 @@ game_menus = [
 ("emperor_event_05_coins",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Coins^^Every Princeps has presented his face on coins, so that every citizen knows how his ruler looks like.^"
   +" Your adviser has asked you if you want to issue a new coinage featuring your portrait."
-  +" It would cost you only 200,000 denars and would increase your fame. And even in the future, people would see this coins and know who you are.",
+  +" It would cost you only 200,000 denarii and would increase your fame. And even in the future, people would see this coins and know who you are.",
   "none",[
     (set_background_mesh, "mesh_pic_palast"),
   ],[
@@ -33415,7 +33415,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("answere_1",[],"What? I am a god. I will build an army like Alxeander and conquer even more! (150,000 denars)",[
+    ("answere_1",[],"What? I am a god. I will build an army like Alxeander and conquer even more! (150,000 denarii)",[
       (store_troop_gold, ":gold", "trp_player"),
       (add_xp_as_reward, 150),
       (try_begin),
@@ -33540,7 +33540,7 @@ game_menus = [
       (call_script, "script_change_player_honor", -2),
       (change_screen_map),
     ]),
-    ("answere_3",[],"Yes, what ever you want. I will order it! (50,000 denars)",[
+    ("answere_3",[],"Yes, what ever you want. I will order it! (50,000 denarii)",[
       (add_xp_as_reward, 50),
 	    (store_troop_gold, ":gold", "trp_player"),
 	    (try_begin),
@@ -33641,7 +33641,7 @@ game_menus = [
 ]),
 ("emperor_event_13",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "A senator's son^^One of the senators approaches you stating, he has an illegitimate son (who he favours) who wishes to join your bodyguard, you agree to meet the boy as it would be unseemly to flat out reject a noble."
-  +" When you meet the boy, however it is clear that he is rather homely and certainly not a man of war. The senator seems to be willing to pay 10,000 denars, to grease the deal."
+  +" When you meet the boy, however it is clear that he is rather homely and certainly not a man of war. The senator seems to be willing to pay 10,000 denarii, to grease the deal."
   +" Faced with this plump, smiling young man do you ...",
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
@@ -33762,7 +33762,7 @@ game_menus = [
   "none",[
 	  (set_background_mesh, "mesh_pic_family"),
 	],[
-    ("choice_34_1",[],"Reward the suburb well. Declare the prettiest girl to be the winner and gift her a dinner with you. (cost: 2,500 denars)",[
+    ("choice_34_1",[],"Reward the suburb well. Declare the prettiest girl to be the winner and gift her a dinner with you. (cost: 2,500 denarii)",[
       (add_xp_as_reward, 250),
       (try_begin),
           (store_troop_gold, ":gold", "trp_player"),
@@ -33783,7 +33783,7 @@ game_menus = [
       (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -5),
       (change_screen_return),
     ]),
-    ("choice_34_3",[],"You collect various coloured tunics brought to you and you compliment the local magistrate. (cost: 1,000 denars)",[
+    ("choice_34_3",[],"You collect various coloured tunics brought to you and you compliment the local magistrate. (cost: 1,000 denarii)",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
           (ge, ":gold", 1000),
@@ -33823,7 +33823,7 @@ game_menus = [
       (try_end),
       (change_screen_return),
     ]),
-    ("choice_32_2",[],"Pay for a new gravemarker (20,000 denars)",[
+    ("choice_32_2",[],"Pay for a new gravemarker (20,000 denarii)",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 20000),
@@ -33845,7 +33845,7 @@ game_menus = [
 ]),
 ("emperor_event_18",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Poor senators^^You are meet in the palace by some senators who support you. They have come with a small request:"
-  +" They all seem to owe a rich merchant 200,000 denars. But they are not able to pay back their debts."
+  +" They all seem to owe a rich merchant 200,000 denarii. But they are not able to pay back their debts."
   +" The merchant now has threatened them to bring them before court if they don't pay! The senators would ask you for help in this matter.",
   "none",[
 	  (set_background_mesh, "mesh_pic_senators"),
@@ -33862,7 +33862,7 @@ game_menus = [
     ("choice_24_2",[
       (troop_get_slot, ":g", "trp_player"),
       (ge, ":g", 200000),
-    ],"I will pay their debts with my own money. (cost: 200,000 denars)",[
+    ],"I will pay their debts with my own money. (cost: 200,000 denarii)",[
       (troop_remove_gold, "trp_player", 200000),
       (call_script, "script_change_player_honor", 2),
       (call_script, "script_change_troop_renown", "trp_player", 5),
@@ -33909,7 +33909,7 @@ game_menus = [
         (str_store_string , s2, "@of an indigestion"),
     (try_end),
 	],[
-    ("choice_08_1",[],"Agree to such request. (cost: 5,000 denars)",[
+    ("choice_08_1",[],"Agree to such request. (cost: 5,000 denarii)",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 5000),
@@ -33934,7 +33934,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_family"),
 	],[
-    ("choice_02_1",[],"Allocate 10,000 denars for an alms fund.",[
+    ("choice_02_1",[],"Allocate 10,000 denarii for an alms fund.",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 10000),
@@ -34094,7 +34094,7 @@ game_menus = [
     ("choice_01",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 1000000),
-    ],"Give her a huge dowry of 1,000,000 denars.",[
+    ],"Give her a huge dowry of 1,000,000 denarii.",[
       (add_xp_as_reward, 1000),
       (call_script, "script_add_piety", 50, 1),
       (troop_remove_gold, "trp_player", 1000000),
@@ -34109,7 +34109,7 @@ game_menus = [
     ("choice_02",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 500000),
-    ],"Give her a dowry of 500,000 denars.",[
+    ],"Give her a dowry of 500,000 denarii.",[
       (troop_remove_gold, "trp_player", 500000),
       (call_script, "script_add_piety", 25, 1),
       (add_xp_as_reward, 500),
@@ -34124,7 +34124,7 @@ game_menus = [
     ("choice_03",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 250000),
-    ],"Give her a dowry of 250,000 denars.",[
+    ],"Give her a dowry of 250,000 denarii.",[
       (call_script, "script_add_piety", 15, 1),
       (troop_remove_gold, "trp_player", 250000),
       (add_xp_as_reward, 250),
@@ -34150,14 +34150,14 @@ game_menus = [
 ("emperor_event_25",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Downfall of a family^^A once-prosperous family, the gens Pupii, has fallen on hard times and can no longer afford the wealth required to maintain their status among the equites."
   +" Their fall from grace is imminent. As Caesar, you hold the power to intervene. Will you choose to provide them with the funds necessary to retain their standing,"
-  +" or will you let them face their fate unaided? They need at least 250,000 denars to maintain their status.",
+  +" or will you let them face their fate unaided? They need at least 250,000 denarii to maintain their status.",
   "none",[
     (set_background_mesh, "mesh_pic_palast"),
 	],[
     ("choice_01",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 1000000),
-    ],"Gift them 1,000,000 denars.",[
+    ],"Gift them 1,000,000 denarii.",[
       (add_xp_as_reward, 1000),
       (troop_remove_gold, "trp_player", 1000000),
       (call_script, "script_change_player_relation_with_troop", "$temp", 40),
@@ -34171,7 +34171,7 @@ game_menus = [
     ("choice_02",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 500000),
-    ],"Gift them 500,000 denars.",[
+    ],"Gift them 500,000 denarii.",[
       (troop_remove_gold, "trp_player", 500000),
       (add_xp_as_reward, 500),
       (call_script, "script_change_player_relation_with_troop", "$temp", 20),
@@ -34185,7 +34185,7 @@ game_menus = [
     ("choice_03",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 250000),
-    ],"Gift them 250,000 denars.",[
+    ],"Gift them 250,000 denarii.",[
       (troop_remove_gold, "trp_player", 250000),
       (add_xp_as_reward, 250),
       (call_script, "script_change_player_relation_with_troop", "$temp", 5),
@@ -34207,7 +34207,7 @@ game_menus = [
 
 ("emperor_event_26",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "The state is greedy^^A wealthy woman named {s19}, living in a town in Asia minor, died without a will."
-  +" This situation prompted a legal question about what should happen to her substantial estate, worth 200,000 denars."
+  +" This situation prompted a legal question about what should happen to her substantial estate, worth 200,000 denarii."
   +" Given the significant wealth involved and the lack of clear heirs, the decision fell to the Roman senate."
   +" The senate decided, that the wealth should go to the state according to law."
   +" Though {s21} asked you to intervene and donate the money to his family. {s19} was a freed slave of his family.",
@@ -34484,7 +34484,7 @@ game_menus = [
 
 ("trial_guilty",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Due to your failure to appear at the scheduled trial, a verdict has been rendered in absentia:"
-  +" Guilty. Consequently, you are hereby stripped of all current offices and titles. Furthermore, a punitive fine of {reg33} denars is levied against you for contempt and the original charges.",
+  +" Guilty. Consequently, you are hereby stripped of all current offices and titles. Furthermore, a punitive fine of {reg33} denarii is levied against you for contempt and the original charges.",
   "none",[
     (try_begin),
       (quest_slot_eq, "qst_trial", slot_quest_current_state, event_honorary),
@@ -34886,7 +34886,7 @@ game_menus = [
     ("answere_1",[
       (store_troop_gold, ":gold", "trp_player"),
 	    (ge, ":gold", 20000),
-    ],"Well. I give you 20,000 denars!",[
+    ],"Well. I give you 20,000 denarii!",[
       (troop_remove_gold, "trp_player", 20000),
       (display_message, "@ The head of the offices is pleased to hear that."),
       (change_screen_map),
@@ -34930,14 +34930,14 @@ game_menus = [
         (eq, "$g_rank", 0),
         (str_store_string, s41, "str_tribunus"),
         (assign, reg1, salary_aux_1),
-        (str_store_string, s39, "@You have been promoted to {s41}, Congratulations! Changes: ^^New salary: {reg1} denars. You can take now up to 100,000 denars from the imperial treasury to recruit troops."),
+        (str_store_string, s39, "@You have been promoted to {s41}, Congratulations! Changes: ^^New salary: {reg1} denarii. You can take now up to 100,000 denarii from the imperial treasury to recruit troops."),
         (troop_set_slot, "trp_global_variables", g_player_recruitement_limit, gold_tribue),
     (else_try),
         (eq, "$g_rank", 1),
         (str_store_string, s40, "str_tribunus"),
         (str_store_string, s41, "str_praefectus"),
         (assign, reg1, salary_aux_2),
-        (str_store_string, s39, "@You have been promoted from {s40} to {s41}, Congratulations! Changes: ^^New salary: {reg1} denars. You can take now up to 250,000 denars from the imperial treasury to recruit troops."),
+        (str_store_string, s39, "@You have been promoted from {s40} to {s41}, Congratulations! Changes: ^^New salary: {reg1} denarii. You can take now up to 250,000 denarii from the imperial treasury to recruit troops."),
         (troop_set_slot, "trp_global_variables", g_player_recruitement_limit, gold_praefect),
         (call_script, "script_change_influence", "trp_player", -250),
     (else_try),
@@ -34945,7 +34945,7 @@ game_menus = [
         (str_store_string, s40, "str_praefectus"),
         (str_store_string, s41, "str_legatus"),
         (assign, reg1, salary_legate),
-        (str_store_string, s39, "@You have been promoted from {s40} to {s41}, Congratulations! Changes: ^^New salary: {reg1} denars. You can take now up to 500,000 denars from the imperial treasury to recruit troops."),
+        (str_store_string, s39, "@You have been promoted from {s40} to {s41}, Congratulations! Changes: ^^New salary: {reg1} denarii. You can take now up to 500,000 denarii from the imperial treasury to recruit troops."),
         (troop_set_slot, "trp_global_variables", g_player_recruitement_limit, gold_legate),
         (call_script, "script_change_influence", "trp_player", -500),
     (try_end),
@@ -35205,7 +35205,7 @@ game_menus = [
             (ge, "$g_talk_troop", 0),
             (assign, reg7, pcamp_build_cost),
         ],
-            "Yes, create a permanent camp. ({reg7} denars)",
+            "Yes, create a permanent camp. ({reg7} denarii)",
         [
             (troop_remove_gold, "trp_player", pcamp_build_cost),
 
@@ -35630,7 +35630,7 @@ game_menus = [
 ]),
 
 ("temple_jerusalem_story_loot_2",0,
-  "You defeat the mob and leave the city. You reach a mountain, not far from Hierosolyma, where you make a rest to oversee the looted treasures: A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'. A huge golden  menorah, gold and silver ingots, jewelry, velvet cloths and nice carpeting. Additionally, you looted valuables worth 150,000 denars.^^A soldier interrupts you and informs you that a woman is waiting for you. It must be Antonia.",
+  "You defeat the mob and leave the city. You reach a mountain, not far from Hierosolyma, where you make a rest to oversee the looted treasures: A bow with arrows, as strong and mighty as a thunderstorm. You call the bow 'Thunder'. A huge golden  menorah, gold and silver ingots, jewelry, velvet cloths and nice carpeting. Additionally, you looted valuables worth 150,000 denarii.^^A soldier interrupts you and informs you that a woman is waiting for you. It must be Antonia.",
   "none",[
     (set_background_mesh, "mesh_pic_jerusalem_tempel"),
     (add_xp_as_reward, 5000),
@@ -35852,7 +35852,7 @@ game_menus = [
   +"Jewellery^^"
   +"Velvet cloths and nice carpeting^^"
   +"Silver ingots^^"
-  +"Additionally you looted expensive artifacts worth 150,000 denars.",
+  +"Additionally you looted expensive artifacts worth 150,000 denarii.",
   "none",[
     (troop_add_gold, "trp_player", 150000),
     (troop_add_item, "trp_player", "itm_menorah"),
@@ -36367,7 +36367,7 @@ game_menus = [
 ]),
 
 ("saquear_paganholysite",mnf_disable_all_keys,
-  "Blood and treasure. Those of your men with fewer scruples proceed towards {s3}, killing anyone in their path and plundering its riches. The fire and death sweeping the place are rampant. You plunder spoils of war are worth {reg3} denars.",
+  "Blood and treasure. Those of your men with fewer scruples proceed towards {s3}, killing anyone in their path and plundering its riches. The fire and death sweeping the place are rampant. You plunder spoils of war are worth {reg3} denarii.",
   "none",[
     (try_begin),
         (eq, "$capture_screen_shown", 0),
@@ -39297,7 +39297,7 @@ game_menus = [
     ]),
     ("doante",[
       (eq, "$can_sacrific", 1),
-    ],"Make a donation to Delphi (1,000 denars).",[
+    ],"Make a donation to Delphi (1,000 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 1000),
@@ -39313,7 +39313,7 @@ game_menus = [
     ]),
     ("doante",[
       (eq, "$can_sacrific", 1),
-    ],"Make a medium donation to Delphi (5,000 denars).",[
+    ],"Make a medium donation to Delphi (5,000 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 5000),
@@ -39329,7 +39329,7 @@ game_menus = [
     ]),
     ("doante",[
       (eq, "$can_sacrific", 1),
-    ],"Make a huge donation to Delphi (10,000 denars).",[
+    ],"Make a huge donation to Delphi (10,000 denarii).",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
         (ge, ":gold", 10000),
@@ -39456,7 +39456,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("acept_themmo",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 20),
-    ], "Hire them. (20 denars)",[
+    ], "Hire them. (20 denarii)",[
       (party_add_members,"p_main_party","trp_refugee",2),
       (party_add_members,"p_main_party","trp_peasant_woman",2),
       (troop_remove_gold,"trp_player", 20),
@@ -39495,7 +39495,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     ],
     [("acept_themmo2",[ (store_troop_gold, ":gold", "trp_player"),
-          (ge, ":gold", 60),], "Hire them. (60 denars)",
+          (ge, ":gold", 60),], "Hire them. (60 denarii)",
         [
           (party_add_members,"p_main_party","trp_refugee",5),
           (troop_remove_gold,"trp_player", 60),
@@ -39521,7 +39521,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
     ],
     [("acept_themmo3",[(store_troop_gold, ":gold", "trp_player"),
-          (ge, ":gold", 500),], "Hire them. (500 denars)",
+          (ge, ":gold", 500),], "Hire them. (500 denarii)",
         [
           (party_add_members,"p_main_party","trp_follower_woman",15),
           (troop_remove_gold,"trp_player", 500),
@@ -39539,7 +39539,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ),
 
 ("ferry_encounter",0,
-  "The ferry captain will carry you to the other side for {reg7} denars.",
+  "The ferry captain will carry you to the other side for {reg7} denarii.",
   "none",
   [
     (set_background_mesh, "mesh_pic_ships"),
@@ -39662,7 +39662,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("buy_ships",[#(party_slot_eq,"$current_town",slot_party_type, spt_town),
       (party_slot_eq,"$current_town",slot_town_port, 1),
       (eq, "$players_ship", -1),
-    ], "Buy a ship (40000 denars)",[
+    ], "Buy a ship (40000 denarii)",[
     (try_begin),
         (store_troop_gold,":money","trp_player"),
         (gt,":money",39999),
@@ -39691,11 +39691,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 				# (ge, ":gold", ":cost"),
 				# (troop_remove_gold, "trp_player", ":cost"),
 			# (else_try),
-				# (display_message,"@Because your army is so huge, you must hire additional ships. But you don't have enough money to buy a ship. (costs: {reg1} denars)", color_bad_news),
+				# (display_message,"@Because your army is so huge, you must hire additional ships. But you don't have enough money to buy a ship. (costs: {reg1} denarii)", color_bad_news),
 				# (jump_to_menu, "mnu_town_port"),
 			# (try_end),
 			# (assign, reg1, ":cost"),
-			# (display_message,"@Because your army is so huge, you had to hire additional ships, costs: {reg1} denars.", color_bad_news),
+			# (display_message,"@Because your army is so huge, you had to hire additional ships, costs: {reg1} denarii.", color_bad_news),
 		# (try_end),
         (call_script, "script_switch_to_water_consequences"),
         (change_screen_map),
@@ -40075,7 +40075,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (troop_get_slot, ":god", "trp_player", slot_troop_religion),
       (store_add, ":s", "str_gods_begin", ":god"),
       (str_store_string, s33, ":s"),
-    ],"Order to build a large temple for {s33} (cost: 100,000 denars)",[
+    ],"Order to build a large temple for {s33} (cost: 100,000 denarii)",[
       (add_xp_as_reward, 100),
       (call_script, "script_add_piety", 20, 1),
       (call_script, "script_change_player_relation_with_center", "p_castle_23", 50),
@@ -40093,7 +40093,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (troop_get_slot, ":god", "trp_player", slot_troop_religion),
       (store_add, ":s", "str_gods_begin", ":god"),
       (str_store_string, s33, ":s"),
-    ],"Build a small shrine for {s33} (cost: 20,000 denars)",[
+    ],"Build a small shrine for {s33} (cost: 20,000 denarii)",[
       (add_xp_as_reward, 100),
       (call_script, "script_add_piety", 10, 1),
       (call_script, "script_change_player_relation_with_center", "p_castle_23", 10),
@@ -40288,7 +40288,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 1000),
       (eq, "$temp", 2),
-    ],"Reward him with 1,000 denars. Let this song be played across the land.",[
+    ],"Reward him with 1,000 denarii. Let this song be played across the land.",[
       (troop_remove_gold, "trp_player", 1000),
       (call_script, "script_change_troop_renown", "trp_player", 9),
       (str_clear,s1),
@@ -40300,7 +40300,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 1000),
       (eq, "$temp", 1),
-    ],"Bribe him with 1,000 denars to stop writing about you.",[
+    ],"Bribe him with 1,000 denarii to stop writing about you.",[
       (troop_remove_gold, "trp_player", 1000),
       (call_script, "script_change_troop_renown", "trp_player", -10),
       (str_clear,s1),
@@ -40478,7 +40478,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("event_08_normal",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Achilles spear^^As you travel, a man dressed in long robes approaches your army. When you grant him an audience, he says he can sell you the legendary spear of Achilles, for 8000 denars.",
+  "Achilles spear^^As you travel, a man dressed in long robes approaches your army. When you grant him an audience, he says he can sell you the legendary spear of Achilles, for 8000 denarii.",
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
   ],[
@@ -40547,7 +40547,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_28_1nor",[
       (store_troop_gold,":money","trp_player"),
       (ge,":money",50000),
-    ],"Give them 50,00 denars.",[
+    ],"Give them 50,00 denarii.",[
       (troop_remove_gold, "trp_player", 50000),
       (try_for_range, ":center_no", centers_begin, centers_end),
         (store_distance_to_party_from_party, ":dist", "p_main_party", ":center_no"),
@@ -40562,7 +40562,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_28_2nor",[
       (store_troop_gold,":money","trp_player"),
       (ge,":money",10000),
-    ],"Give them 10,000 denars.",[
+    ],"Give them 10,000 denarii.",[
       (troop_remove_gold, "trp_player", 10000),
       (try_for_range, ":center_no", centers_begin, centers_end),
         (store_distance_to_party_from_party, ":dist", "p_main_party", ":center_no"),
@@ -40591,7 +40591,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_29_1nor",[
       (store_troop_gold,":money","trp_player"),
       (ge,":money",10000),
-    ],"Give them 10,000 denars for paying their taxes and buying food.",[
+    ],"Give them 10,000 denarii for paying their taxes and buying food.",[
       (troop_remove_gold, "trp_player", 10000),
       (try_for_range, ":center_no", centers_begin, centers_end),
         (store_distance_to_party_from_party, ":dist", "p_main_party", ":center_no"),
@@ -40606,7 +40606,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_29_2nor",[
       (store_troop_gold,":money","trp_player"),
       (ge,":money",5000),
-    ],"Give them 5,000 denars for paying their taxes.",[
+    ],"Give them 5,000 denarii for paying their taxes.",[
       (troop_remove_gold, "trp_player", 5000),
       (try_for_range, ":center_no", centers_begin, centers_end),
         (store_distance_to_party_from_party, ":dist", "p_main_party", ":center_no"),
@@ -40648,7 +40648,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_30_1nor",[
       (store_troop_gold,":money","trp_player"),
       (ge,":money",1000),
-    ],"Give her 1000 denars to hire a good physician.",[
+    ],"Give her 1000 denarii to hire a good physician.",[
       (troop_remove_gold, "trp_player", 1000),
       (try_for_range, ":center_no", centers_begin, centers_end),
         (store_distance_to_party_from_party, ":dist", "p_main_party", ":center_no"),
@@ -40791,7 +40791,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_21_1",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 1000),
-    ],"Help them on their way with 1,000 denars",[
+    ],"Help them on their way with 1,000 denarii",[
 		  (call_script, "script_change_player_honor", 2),
       (troop_remove_gold, "trp_player", 1000),
       (change_screen_return),
@@ -40885,7 +40885,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_42_1",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 2000),
-    ],"Soldier! You will free the woman, nobody will harm them! Here old man, take this sack full of denars. (2,000 denars)",[
+    ],"Soldier! You will free the woman, nobody will harm them! Here old man, take this sack full of denarii. (2,000 denarii)",[
       (call_script, "script_change_player_honor", 4),
       (call_script, "script_change_player_party_morale", -5),
       (str_store_string, s29, "@Your soldiers are not quite amused, but the travellers seem to be very happy about your gift and help."),
@@ -40919,7 +40919,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("event_21_normal",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "Purse^^You happen to find a purse filled with coins. You count the coins, there are 1,000 denars.",
+  "Purse^^You happen to find a purse filled with coins. You count the coins, there are 1,000 denarii.",
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
@@ -40973,7 +40973,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ("choice_12_1nor",[
         (store_troop_gold, ":g", "trp_player"),
         (ge, ":g", 2000),
-      ],"Make a sacrifice to the gods! (2,000 denars)",[
+      ],"Make a sacrifice to the gods! (2,000 denarii)",[
         (troop_remove_gold, "trp_player", 2000),
         (call_script, "script_change_player_party_morale", 5),
         (add_xp_as_reward, 500),
@@ -41052,7 +41052,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_12_3nor",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 50000),
-    ]," Post a bounty of 50,000 denars for the heads of these pirates to be brought to Rome.",[
+    ]," Post a bounty of 50,000 denarii for the heads of these pirates to be brought to Rome.",[
       (troop_remove_gold, "trp_player", 50000),
       (call_script, "script_change_player_honor", 3),
       (call_script, "script_change_troop_renown", "trp_player", 20),
@@ -41938,7 +41938,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("debate_in_senat_3",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "You can talk with the senators and try to convince them or bribe them. You have {reg1} denars with you."
+  "You can talk with the senators and try to convince them or bribe them. You have {reg1} denarii with you."
   +"^You can also threaten them with the Praetorian guard. But this will decrease your relation with Rome!"
   +"^^What do you want to do?",
   "none",[
@@ -42792,7 +42792,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (party_get_num_companions, ":num_men", "p_main_party"),
       (store_div, reg1, ":num_men", 4),
       (val_add, reg1, 1),
-      (str_store_string, s1, "@ ({reg1} denars per night)"),
+      (str_store_string, s1, "@ ({reg1} denarii per night)"),
       (store_troop_gold, ":gold", "trp_player"),
       (lt, ":gold", reg1),
       (assign, ":can_rest", 0),
@@ -42833,7 +42833,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
   (
     "desert_town_loot2",mnf_disable_all_keys,
-    "The town is plundered. You have collected {reg7} denars.",
+    "The town is plundered. You have collected {reg7} denarii.",
     "none",
     [
 	#(add_faction_note_from_sreg, "$g_encountered_party_faction", 5, "@You have destroyed their capital. Their king is probably dead.", 1),
@@ -43359,7 +43359,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("choice_03_3nj",[],"Punish the famer, but only for a little 'pocket money' (recieve 5,000 denars) from the landowner.",[
+    ("choice_03_3nj",[],"Punish the famer, but only for a little 'pocket money' (recieve 5,000 denarii) from the landowner.",[
 		  (troop_add_gold, "trp_player", 5000),
 		  (display_message, "@The local landowner gives you a heavy bag full of coins."),
       (call_script, "script_change_player_relation_with_center", "$current_town", -4),
@@ -43398,7 +43398,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("choice_02_2nj",[],"I will be reasonable: I will punish the suldiers, but only for a little 'pocket money' (recieve 5,000 denars).",[
+    ("choice_02_2nj",[],"I will be reasonable: I will punish the suldiers, but only for a little 'pocket money' (recieve 5,000 denarii).",[
 		  (troop_add_gold, "trp_player", 5000),
       (str_store_party_name, s4, "$current_town"),
       (call_script, "script_change_player_honor", -2),
@@ -43452,7 +43452,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "Ancient oaks^^Your judgment is demanded: The guards bring you two men. The guards say they are ready to kill each other. One of them has cut some old oaks that were blocking on the way, but they were actually within the borders of the estate of the other.^^" +
   "'Those trees made the passage of my cart difficult!' exclaims the first one. 'We are only talking about trees. I do not understand this suit!'^^" +
   "'Those trees were on my land, planted by my father, recently deceased,' shouts the other."+
-  "The man who cut the trees would offer you a 'gift' of 2,000 denars if you punish the other.",
+  "The man who cut the trees would offer you a 'gift' of 2,000 denarii if you punish the other.",
   "none",[
     (set_background_mesh, "mesh_pic_governor_judgment"),
   ],[
@@ -43489,7 +43489,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_07_1nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 50000),
-    ],"Import some wagons of grain from other places. (50,000 denars)",[
+    ],"Import some wagons of grain from other places. (50,000 denarii)",[
       (troop_remove_gold, "trp_player", 50000),
       (str_store_party_name, s4, "$current_town"),
       (call_script, "script_change_player_relation_with_center", "$current_town", 6),
@@ -43521,7 +43521,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_07_4nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 25000),
-    ],"Buy some grain from the local market to alleviate the problem. (25,000 denars)",[
+    ],"Buy some grain from the local market to alleviate the problem. (25,000 denarii)",[
       (troop_remove_gold, "trp_player", 25000),
       (str_store_party_name, s4, "$current_town"),
       # (call_script, "script_change_player_relation_with_center", "$current_town", 1),
@@ -43534,7 +43534,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("event_08_juicio",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "A merchants gift^^An influential merchant approaches you stating that he has an illegitimate son (whom he favours) who wishes to join the army as officer."
   +" You agree to meet the boy, as it would be unseemly to reject a him outright." +
-  " When you meet the boy, however, it is clear that he is a homebody, certainly not warrior material. But the merchant would offer you a 'gift' of 10,000 denars. Faced with this plump, smiling youth do you:",
+  " When you meet the boy, however, it is clear that he is a homebody, certainly not warrior material. But the merchant would offer you a 'gift' of 10,000 denarii. Faced with this plump, smiling youth do you:",
   "none",[
     (set_background_mesh, "mesh_pic_governor_judgment"),
   ],[
@@ -43617,7 +43617,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "Signs of doom^^A searing flash crosses the night sky. There is much talk of omens the next day. The people of {s4} generally agree that some act of sacrifice must be committed, or some divine wrath will befall the town." +
   " A message is send to consult the oracle of Delphi and it says that the people shall sacrifice a young girl."+
   " They find a germanic girl, whose father was an auxiliary, as the perfect sacrifice. A great ceremony will be hold in which the girl will be buried alive under the cattle market, but the town counsel has not enough founds."
-  +" Thus they demand 5,000 denars from you to prevent any evil.",
+  +" Thus they demand 5,000 denarii from you to prevent any evil.",
   "none",[
     (set_background_mesh, "mesh_pic_governor_judgment"),
     (str_store_party_name, s4, "$current_town"),
@@ -43625,7 +43625,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_07_1nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 5000),
-    ],"Agree with the demand. (5,000 denars)",[
+    ],"Agree with the demand. (5,000 denarii)",[
       (troop_remove_gold, "trp_player", 5000),
       (str_store_party_name, s4, "$current_town"),
       (call_script, "script_change_player_relation_with_center", "$current_town", 6),
@@ -43648,7 +43648,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_10_2nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 10000),
-    ],"Take the girl into your party for safety, as she is the daughter of a soldier. But offer 10,000 denars for another sacrific.",[
+    ],"Take the girl into your party for safety, as she is the daughter of a soldier. But offer 10,000 denarii for another sacrific.",[
       (troop_remove_gold, "trp_player", 10000),
       (call_script, "script_change_player_relation_with_center", "$current_town", 6),
       (call_script, "script_change_player_honor", 2),
@@ -43680,7 +43680,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_governor_judgment"),
     (play_sound, "snd_disease_sound"),
   ],[
-    ("choice_11_1nj",[(store_troop_gold, ":gold", "trp_player"),(ge, ":gold", 5000),],"Quarantine the place, but send the best area physicians to help! (5,000 denars)",[
+    ("choice_11_1nj",[(store_troop_gold, ":gold", "trp_player"),(ge, ":gold", 5000),],"Quarantine the place, but send the best area physicians to help! (5,000 denarii)",[
       (troop_remove_gold, "trp_player", 5000),
       (call_script, "script_change_player_honor", 1),
       (call_script, "script_change_player_relation_with_center", "$current_town", 10),
@@ -43742,7 +43742,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("event_13_juicio",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Aunt and her nehpew^^You receive a petition of an influential woman: 'To {playername}, Prefect of {s4}. I ask you, my Lord, to give me as guardian {s35}, my nephew, in accordance with the Lex Julia et Titia."
   +" Dated in the consulship of Philippus Augustus and Philippus Caesar. Yours sincerely {s36}!' It seems that she wants to be the guardian of a little boy. Currently the father of the boy, a rich landowner, is the guardian."
-  +" The slave who brought you the letter also informs you, that his Lady would offer you a 'gift' of 7,500 denars if you act in her favor.",
+  +" The slave who brought you the letter also informs you, that his Lady would offer you a 'gift' of 7,500 denarii if you act in her favor.",
   "none",[
     (set_background_mesh, "mesh_pic_governor_judgment"),
     (str_store_party_name, s4, "$current_town"),
@@ -43780,7 +43780,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-	  ("choice_13_3nj",[],"Don't agree to this petition, but demand a 'gift' of 15,000 denars from the landwoner",[
+	  ("choice_13_3nj",[],"Don't agree to this petition, but demand a 'gift' of 15,000 denarii from the landwoner",[
 		  (troop_add_gold, "trp_player", 15000),
       (call_script, "script_change_player_relation_with_center", "$current_town", -2),
       (call_script, "script_change_troop_renown", "trp_player", -10),
@@ -43807,7 +43807,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("choice_13_1nj",[],"Agree to this petition, but for a little pocket money (5,000 denars) from the woman.",[
+    ("choice_13_1nj",[],"Agree to this petition, but for a little pocket money (5,000 denarii) from the woman.",[
       (troop_add_gold, "trp_player", 5000),
       (call_script, "script_change_player_relation_with_center", "$current_town", -1),
       (str_clear,s29),
@@ -43877,7 +43877,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_16_2nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 1000),
-    ],"Bribe him with money to stop (1,000 denars).",[
+    ],"Bribe him with money to stop (1,000 denarii).",[
       (troop_remove_gold, "trp_player", 1000),
       (str_store_party_name, s4, "$current_town"),
       (call_script, "script_change_player_relation_with_center", "$current_town", 4),
@@ -43907,7 +43907,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_17_1nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 1000),
-    ],"Compensate the farmer and order to free the women (1,000 denars).",[
+    ],"Compensate the farmer and order to free the women (1,000 denarii).",[
       (troop_remove_gold, "trp_player", 1000),
       (str_store_party_name, s4, "$current_town"),
       (call_script, "script_change_player_relation_with_center", "$current_town", 5),
@@ -43997,7 +43997,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("choice_13_3nj",[],"Only agree to the man's demand for a bribe of 5,000 denars!",[
+    ("choice_13_3nj",[],"Only agree to the man's demand for a bribe of 5,000 denarii!",[
       (troop_add_gold, "trp_player", 5000),
       (call_script, "script_change_player_relation_with_center", "$current_town", -4),
       (call_script, "script_change_troop_renown", "trp_player", -10),
@@ -44016,7 +44016,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_20_1nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 1000),
-    ],"Give her monetary assistance. (1000 denars)",[
+    ],"Give her monetary assistance. (1000 denarii)",[
       (troop_remove_gold, "trp_player", 1000),
       (call_script, "script_change_player_honor", 2),
       (call_script, "script_change_player_party_morale", 4),
@@ -44055,7 +44055,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_20_1nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 500),
-    ],"Give her monetary assistance and take the gift. (500 denars)",[
+    ],"Give her monetary assistance and take the gift. (500 denarii)",[
       (troop_remove_gold, "trp_player", 500),
       (call_script, "script_change_player_honor", 2),
       (call_script, "script_change_player_party_morale", 4),
@@ -44067,7 +44067,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_20_2nj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 500),
-    ],"Give her monetary assistance but refuse the gift. (500 denars)",[
+    ],"Give her monetary assistance but refuse the gift. (500 denarii)",[
       (troop_remove_gold, "trp_player", 500),
       (call_script, "script_change_player_honor", 2),
       (call_script, "script_change_player_party_morale", 4),
@@ -44154,7 +44154,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("choice_22_3nj",[],"Both are wrong! You exile them and confiscate their wealth. (75,000 denars)",[
+    ("choice_22_3nj",[],"Both are wrong! You exile them and confiscate their wealth. (75,000 denarii)",[
       (troop_add_gold, "trp_player", 75000),
       (str_store_party_name, s4, "$current_town"),
       (call_script, "script_change_player_honor", -25),
@@ -44174,7 +44174,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_governor_judgment"),
   ],[
-    ("choice_22_1nj",[],"Take the 'gift' and decide in her favor. (7,500 denars)",[
+    ("choice_22_1nj",[],"Take the 'gift' and decide in her favor. (7,500 denarii)",[
       (str_store_party_name, s4, "$current_town"),
       (troop_add_gold, "trp_player", 7500),
       (call_script, "script_change_player_relation_with_center", "$current_town", -1),
@@ -44233,7 +44233,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_22_1nj",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 5000),
-    ],"Bribe the guildmaster. (cost: 5000 denars)",[
+    ],"Bribe the guildmaster. (cost: 5000 denarii)",[
       (troop_remove_gold, "trp_player", 5000),
       (call_script, "script_change_player_relation_with_center", "$current_town", 5),
       (str_clear,s29),
@@ -44245,7 +44245,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_player_relation_with_center", "$current_town", 10),
       (call_script, "script_change_center_prosperity", "$current_town", 2),
       (str_clear,s29),
-      (str_store_string,s29,"@You give fair warning to the ambitious leader of tailors, but he is not receptive. The next day, tax collectors and soldiers appear at the guild-affiliated businesses, notifying them that a tailoring permit is now required to operate their business in the city, at a modest price of 10000 denars each. The industry is shut down and the guild quickly announces the appointment of a new master, who negotiates reasonable terms."),
+      (str_store_string,s29,"@You give fair warning to the ambitious leader of tailors, but he is not receptive. The next day, tax collectors and soldiers appear at the guild-affiliated businesses, notifying them that a tailoring permit is now required to operate their business in the city, at a modest price of 10000 denarii each. The industry is shut down and the guild quickly announces the appointment of a new master, who negotiates reasonable terms."),
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
@@ -44275,7 +44275,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_22_1nj",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 50000),
-    ],"Pay for the upgrades. (costs: 50,000 denars)",[
+    ],"Pay for the upgrades. (costs: 50,000 denarii)",[
       (troop_remove_gold, "trp_player", 50000),
       (call_script, "script_change_player_relation_with_center", "$current_town", 10),
       (call_script, "script_change_center_prosperity", "$current_town", 5),
@@ -44304,7 +44304,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_22_1nj",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 5000),
-    ],"Promote charity. (cost: 5,000 denars)",[
+    ],"Promote charity. (cost: 5,000 denarii)",[
       (troop_remove_gold, "trp_player", 5000),
       (call_script, "script_change_player_relation_with_center", "$current_town", 10),
       (call_script, "script_change_center_prosperity", "$current_town", 10),
@@ -44316,7 +44316,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
-    ("choice_22_1nj",[],"Enact new taxes. (prospected income: 75,000 denars)",[
+    ("choice_22_1nj",[],"Enact new taxes. (prospected income: 75,000 denarii)",[
       (troop_add_gold, "trp_player", 75000),
       (call_script, "script_change_player_relation_with_center", "$current_town", -30),
       (str_clear,s29),
@@ -44373,7 +44373,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("event_28_juicio", menu_text_color(0xFF000000) | mnf_disable_all_keys,
   "Public buildings are evil^^The noble {s22} has estates near the town of {s23}. A {s24} has been built near one of his estates with public funds."
   + " After the building was finished, a warehouse on {s22}'s estate collapsed. He now claims that the construction works of the public building have damaged his property."
-  + " In particular, he demands compensation of 100,000 denars. The praetors have already refused his request, but {s22} has now brought the case to you.",
+  + " In particular, he demands compensation of 100,000 denarii. The praetors have already refused his request, but {s22} has now brought the case to you.",
   "none", [
     (try_begin),
         (call_script, "script_cf_get_random_lord_of_faction", "$players_kingdom"),
@@ -44390,7 +44390,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("option_1", [
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 100000),
-    ], "{s22} is right. The {s24} should not have been built near his estate. [cost: 100,000 denars]", [
+    ], "{s22} is right. The {s24} should not have been built near his estate. [cost: 100,000 denarii]", [
       (str_clear, s29),
       (call_script, "script_change_player_relation_with_troop", "$temp", 50),
       (troop_remove_gold, "trp_player", 100000),
@@ -44401,7 +44401,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("option_2", [
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 50000),
-    ], "{s22} is right. The {s24} should not have been built near his estate. But his demand is too high. Pay him only 50,000 denars.", [
+    ], "{s22} is right. The {s24} should not have been built near his estate. But his demand is too high. Pay him only 50,000 denarii.", [
       (str_clear, s29),
       (call_script, "script_change_player_relation_with_troop", "$temp", 15),
       (troop_remove_gold, "trp_player", 50000),
@@ -44429,7 +44429,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("event_29_juicio", menu_text_color(0xFF000000) | mnf_disable_all_keys,
-  "Renovating a temple^^The college of priests is asking for 50,000 denars to renovate an old temple, which has been build several centuries ago."
+  "Renovating a temple^^The college of priests is asking for 50,000 denarii to renovate an old temple, which has been build several centuries ago."
   +" The temple was once a great side of the town, but has been neglected by time.",
   "none", [
     (set_background_mesh, "mesh_pic_girls"),
@@ -44437,7 +44437,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("option_1", [
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 50000),
-    ], "Donate 50,000 denars.", [
+    ], "Donate 50,000 denarii.", [
       (str_clear, s29),
       (call_script, "script_add_piety", 10, 1),
       (call_script, "script_change_player_relation_with_center", "$current_town", 5),
@@ -44449,7 +44449,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("option_2", [
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 25000),
-    ], "Donate only 25,000 denars.", [
+    ], "Donate only 25,000 denarii.", [
       (str_clear, s29),
       (call_script, "script_add_piety", 5, 1),
       (call_script, "script_change_player_relation_with_center", "$current_town", 2),
@@ -44479,7 +44479,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("option_1", [
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 50000),
-    ], "Make sacrifices to appease the gods and compensate the victims. [50,000 denars]", [
+    ], "Make sacrifices to appease the gods and compensate the victims. [50,000 denarii]", [
       (str_clear, s29),
       (call_script, "script_change_player_relation_with_center", "$current_town", 5),
       (call_script, "script_change_player_honor", 5),
@@ -44491,7 +44491,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("option_2", [
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 25000),
-    ], "Make sacrifices only. [25,000 denars]", [
+    ], "Make sacrifices only. [25,000 denarii]", [
       (str_clear, s29),
       (call_script, "script_change_player_relation_with_center", "$current_town", 2),
       (call_script, "script_change_player_honor", 1),
@@ -44503,7 +44503,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("option_3", [
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 25000),
-    ], "Compensate the victims only. [25,000 denars]", [
+    ], "Compensate the victims only. [25,000 denarii]", [
       (str_clear, s29),
       (call_script, "script_change_player_relation_with_center", "$current_town", 1),
       (call_script, "script_change_player_honor", 2),
@@ -44565,7 +44565,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_05_2notaxj",[
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 2000),
-    ],"Distribute bags of money among the people as compensation (2000 denars).",[
+    ],"Distribute bags of money among the people as compensation (2000 denarii).",[
       (str_store_party_name, s4, "$current_town"),
       (call_script, "script_change_player_relation_with_center", "$current_town", 8),
       (call_script, "script_change_troop_renown", "trp_player", -5),
@@ -45781,7 +45781,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("slave_steals_from_player", 0,
  "A Light Coin Pouch^^{s5} has been attending to your personal needs lately, and you've noticed your coin pouch feels lighter than it should."
- +" You can't be certain, as the flow of denars from your pocket is constant and chaotic, but a nagging suspicion remains."
+ +" You can't be certain, as the flow of denarii from your pocket is constant and chaotic, but a nagging suspicion remains."
  +"^^The slave is diligent, but his eyes sometimes linger on your purse for a moment too long. Is it mere admiration for your wealth, or the calculated assessment of a thief?"
  +" Without proof, any action would be based on instinct alone.",
  "none",[
@@ -46227,7 +46227,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("lucias_death",0,
-  "For a brief moment, you stare at the headless body and the pool of blood that slowly spreads towards you. Before it can stain your feet you leave and enter her chambers. After a thorough inspection you find a locked chest. The key fits and inside you find the 100,000 denars you were promised."+
+  "For a brief moment, you stare at the headless body and the pool of blood that slowly spreads towards you. Before it can stain your feet you leave and enter her chambers. After a thorough inspection you find a locked chest. The key fits and inside you find the 100,000 denarii you were promised."+
   " Now you need to make sure not to be suspected as her murderer. After taking the money you rush to the vigilia. ",
   "none",[
     (set_background_mesh, "mesh_pic_woman"),
@@ -46281,7 +46281,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("slave_message",0,
   "While you walk towards the town center you are interrupted by a slave. He greets you and says he was sent by his master to bring you a message."
-  +" His master wants to talk with you. He has heard from the merchant Gaius Lucarius about your skills. You will receive 1000 denars"
+  +" His master wants to talk with you. He has heard from the merchant Gaius Lucarius about your skills. You will receive 1000 denarii"
   +" immediately if you visit him as fast as possible. His master is the goods merchant of Rome, you can find him in his shop in the town center of Rome."
   +" What is your response?",
     "none",
@@ -46532,7 +46532,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
   (
     "luc_vic_2",0,
-    "It seems you have finally killed Lucillus. You use the opportunity and search the villa for valuables. You find jewelry and denars in the value of 10000 denars.\
+    "It seems you have finally killed Lucillus. You use the opportunity and search the villa for valuables. You find jewelry and denarii in the value of 10000 denarii.\
  It is time to claim your reward.",
     "none",
     [
@@ -46937,7 +46937,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_townriot")
   ],[
-  ("large",[],"Found one large rebell party. (5,000 denars)",[
+  ("large",[],"Found one large rebell party. (5,000 denarii)",[
     (store_troop_gold, reg55, "trp_player"),
     (try_begin),
         (store_num_parties_of_template, reg54, "pt_mountain_bandits"),
@@ -46962,7 +46962,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (call_script, "script_change_player_relation_with_faction", "fac_mountain_bandits", 4),
     (try_end),
   ]),
-  ("small",[],"Found one rebell party. (2,500 denars)",[
+  ("small",[],"Found one rebell party. (2,500 denarii)",[
     (store_troop_gold, reg55, "trp_player"),
     (try_begin),
         (store_num_parties_of_template, reg54, "pt_mountain_bandits"),
@@ -46992,13 +46992,13 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("host_games",0,
   "You can choose between various options. The more magnificent the spectacle is, the more your relation with the town, your renown and reputation will improve.^"
-  +" But even if you spend hundred thounsands of denars, don't expect you can improve your relation that much. People usually forget such events quite fast.",
+  +" But even if you spend hundred thounsands of denarii, don't expect you can improve your relation that much. People usually forget such events quite fast.",
   "none",[
     (set_background_mesh, "mesh_pic_gladiator")
   ],[
     ("event04",[
       (str_store_party_name, s10, "$g_encountered_party"),
-    ],"The greatest spectacle {s10} has ever seen, with free food and drinks (300,000 denars)",[
+    ],"The greatest spectacle {s10} has ever seen, with free food and drinks (300,000 denarii)",[
       (store_troop_gold, ":gold", "trp_player"),
       (assign, "$g_triumph", 1),
       (try_begin),
@@ -47027,7 +47027,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (try_end),
       (try_end),
     ]),
-    ("event04",[],"An extravagante Game, with free food and drinks (100,000 denars)",[
+    ("event04",[],"An extravagante Game, with free food and drinks (100,000 denarii)",[
       (store_troop_gold, ":gold", "trp_player"),
       (assign, "$g_triumph", 1),
       (try_begin),
@@ -47056,7 +47056,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (try_end),
       (try_end),
     ]),
-    ("event04",[],"Normal Games, with free food and drinks (50,000 denars)",[
+    ("event04",[],"Normal Games, with free food and drinks (50,000 denarii)",[
       (store_troop_gold, ":gold", "trp_player"),
       (assign, "$g_triumph", 1),
       (try_begin),
@@ -47085,7 +47085,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (try_end),
       (try_end),
     ]),
-    ("event04",[],"Normal Games, without any addition (25,000 denars)",[
+    ("event04",[],"Normal Games, without any addition (25,000 denarii)",[
       (store_troop_gold, ":gold", "trp_player"),
       (assign, "$g_triumph", 1),
       (try_begin),
@@ -47119,7 +47119,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ### events for the senate
 ("event_senate_01",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "A favour for a friend^^As you enter the Curia Julia, a senator approaches you. He introduces himself as one of your supporters and asks you for a favor:^^"
-  +"'Dominus, I have a urgent problem in which you probably can help me. I am in dire need of money for a lawyer since I'm in a legal dispute with a rich citizen. If you could gift me 10,000 denars as a token of our friendship?'",
+  +"'Dominus, I have a urgent problem in which you probably can help me. I am in dire need of money for a lawyer since I'm in a legal dispute with a rich citizen. If you could gift me 10,000 denarii as a token of our friendship?'",
   "none",[
     (set_background_mesh, "mesh_pic_senatus"),
     (assign, "$temp3", "mesh_pic_senators"),
@@ -47153,14 +47153,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("event_senate_02",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Lazy Patron^^As you enter the Curia Julia, a young man approaches you. He looks poor and dirty and at first you think he is a beggar. But he introduces himself as a client of one of the senators supporting you. He says:^^"
-  +"'Dominus, I asked my patron to protect me. I was attacked by robbers while I visited a tavern. They stole me 500 denars! This is a large sum for a poor man like me."
+  +"'Dominus, I asked my patron to protect me. I was attacked by robbers while I visited a tavern. They stole me 500 denarii! This is a large sum for a poor man like me."
   +" I know exactly who has stolen my money and I asked my patron if he could take over the matter and take revenge. But he send me away and told me I should ask you for support instead.'",
   "none",[
     (set_background_mesh, "mesh_pic_senatus"),
     (assign, "$temp3", "mesh_pic_senators"),
     (store_troop_gold,"$temp4", "trp_player"),
   ],[
-    ("choice_1",[(ge, "$temp4", 1000),],"Here take 1,000 denars. You can use half of the money to hire some thugs, the rest is for you.",[
+    ("choice_1",[(ge, "$temp4", 1000),],"Here take 1,000 denarii. You can use half of the money to hire some thugs, the rest is for you.",[
       (troop_remove_gold, "trp_player", 1000),
       (call_script, "script_change_player_relation_with_center", "$current_town", 1),
       (call_script, "script_change_troop_renown", "trp_player", 2),
@@ -47192,7 +47192,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$temp3", "mesh_pic_senators"),
     (store_troop_gold,"$temp4", "trp_player"),
   ],[
-    ("choice_1",[(ge, "$temp4", 15000),],"Here take 15,000 denars to bribe enough witnesses. Then I am sure you will win.",[
+    ("choice_1",[(ge, "$temp4", 15000),],"Here take 15,000 denarii to bribe enough witnesses. Then I am sure you will win.",[
       (troop_remove_gold, "trp_player", 15000),
       (call_script, "script_change_player_relation_with_center", "$current_town", 1),
       (call_script, "script_change_troop_renown", "trp_player", 2),
@@ -47302,13 +47302,13 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 ("event_senate_07",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Temple project^^While entering the Curia Julia, you notice a group of senators talking. You try to follow the conversation unobtrusively, and find out,"
-  +" that they talk about the restoration of small temple near the forum romanum. You hear, that there are still something like 50,000 denars missing. ^^You could use this opportunity to improve your renown and relation with Rome.",
+  +" that they talk about the restoration of small temple near the forum romanum. You hear, that there are still something like 50,000 denarii missing. ^^You could use this opportunity to improve your renown and relation with Rome.",
   "none",[
     (set_background_mesh, "mesh_pic_senatus"),
     (assign, "$temp3", "mesh_pic_building_project"),
     (store_troop_gold,"$temp4", "trp_player"),
   ],[
-    ("choice_1",[(ge, "$temp4", 75000),],"Support the building project with 75,000 denars!",[
+    ("choice_1",[(ge, "$temp4", 75000),],"Support the building project with 75,000 denarii!",[
       (call_script, "script_add_piety", 15, 1),
       (troop_remove_gold, "trp_player", 75000),
       (str_store_string, s44, "@The people hear about your generosity and praise your name."),
@@ -47317,7 +47317,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_troop_renown", "trp_player", 16),
       (jump_to_menu, "mnu_event_senate_end"),
     ]),
-    ("choice_2",[(ge, "$temp4", 50000),],"Support the building project with 50,000 denars.",[
+    ("choice_2",[(ge, "$temp4", 50000),],"Support the building project with 50,000 denarii.",[
       (call_script, "script_add_piety", 10, 1),
       (troop_remove_gold, "trp_player", 50000),
       (str_store_string, s44, "@The people hear about your generosity and praise your name."),
@@ -47326,7 +47326,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_troop_renown", "trp_player", 12),
       (jump_to_menu, "mnu_event_senate_end"),
     ]),
-    ("choice_3",[(ge, "$temp4", 25000),],"Support the building project with 25,000 denars.",[
+    ("choice_3",[(ge, "$temp4", 25000),],"Support the building project with 25,000 denarii.",[
       (call_script, "script_add_piety", 5, 1),
       (troop_remove_gold, "trp_player", 25000),
       (str_store_string, s44, "@The people hear about your generosity and praise your name."),
@@ -47946,7 +47946,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("rename_month",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "You propose an edict, edictum mensum, to rename a month after you. You need a simple majority for this edict to be justified. {reg33}% of the senators voted for your proposal.^^"
-  +" Additionally, it will cost you 250,000 denars to rename everything. The money will be taken from your treasury. (You have currently {reg34} denars)^^"
+  +" Additionally, it will cost you 250,000 denarii to rename everything. The money will be taken from your treasury. (You have currently {reg34} denarii)^^"
   +" But careful, you can't change the name later on.",
   "none",[
     (troop_get_slot, reg33, "trp_senator_dummy", slot_senate_support),
@@ -48362,7 +48362,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("chariot_race",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Chariot Race!^^The trumpets sound, and the roar of the crowd fills the arena. The dust and the hopes of thousands rise from the track."
   +" This is your moment, Auriga!^Show your confidence and place a wager on your own skill. Victory will bring not only glory, but a purse heavy with gold."
-  +" Your current wager stands at {reg20} denars.^^^A true charioteer knows how to command their beasts. When the moment is right,"
+  +" Your current wager stands at {reg20} denarii.^^^A true charioteer knows how to command their beasts. When the moment is right,"
   +" you may press [G] to furiously urge your horses into a desperate sprint, giving you a burst of speed to overtake a rival or break for the finish line."
   +"^^Be warned, this effort takes a tremendous toll on your animals."
   +" Each use saps their vitality, and even the strongest horse can be driven to collapse and death if pushed too far."
@@ -48475,7 +48475,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("leave",[(eq, "$g_tournament_bet_placed", 0),
       (store_troop_gold,":g", "trp_player"),
       (ge, ":g", 100),
-    ],"Bet 100 denars.",[
+    ],"Bet 100 denarii.",[
       (assign, "$g_tournament_bet_placed", 100),
       (jump_to_menu, "mnu_chariot_race"),
     ]),
@@ -48483,7 +48483,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$g_tournament_bet_placed", 0),
       (store_troop_gold,":g", "trp_player"),
       (ge, ":g", 250),
-    ],"Bet 250 denars.",[
+    ],"Bet 250 denarii.",[
       (assign, "$g_tournament_bet_placed",250),
 		  (jump_to_menu, "mnu_chariot_race"),
     ]),
@@ -48491,7 +48491,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$g_tournament_bet_placed", 0),
       (store_troop_gold,":g", "trp_player"),
       (ge, ":g", 500),
-    ],"Bet 500 denars.",[
+    ],"Bet 500 denarii.",[
       (assign, "$g_tournament_bet_placed",500),
       (jump_to_menu, "mnu_chariot_race"),
     ]),
@@ -48499,7 +48499,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$g_tournament_bet_placed", 0),
       (store_troop_gold,":g", "trp_player"),
       (ge, ":g", 1000),
-     ],"Bet 1000 denars.",[
+     ],"Bet 1000 denarii.",[
       (assign, "$g_tournament_bet_placed",1000),
 		  (jump_to_menu, "mnu_chariot_race"),
     ]),
@@ -48511,7 +48511,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("horse_race",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Horse Race!^^The herald's horn echoes across the hippodrome as the restless horses line up at the starting gates. The crowd roars in anticipation."
   +" This is your chance to prove your equestrian mastery!^Show your confidence and place a wager on your own skill."
-  +" A victory wreath brings glory, but a purse heavy with gold is the true prize. Your current wager stands at {reg20} denars."
+  +" A victory wreath brings glory, but a purse heavy with gold is the true prize. Your current wager stands at {reg20} denarii."
   +"^^A master rider knows when to push their steed. When the moment is right, you may press [G] to spur your horse into a desperate sprint,"
   +" giving you a burst of speed to overtake a rival or claim the finish line.^^Be warned, such exertion takes a tremendous toll."
   +" Each use saps your mount's vitality, and even the strongest horse can be driven to exhaustion and collapse if pushed too far."
@@ -48615,7 +48615,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("leave",[(eq, "$g_tournament_bet_placed", 0),
       (store_troop_gold,":g", "trp_player"),
       (ge, ":g", 100),
-    ],"Bet 100 denars.",[
+    ],"Bet 100 denarii.",[
       (assign, "$g_tournament_bet_placed", 100),
       (jump_to_menu, "mnu_horse_race"),
     ]),
@@ -48623,7 +48623,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$g_tournament_bet_placed", 0),
       (store_troop_gold,":g", "trp_player"),
       (ge, ":g", 250),
-    ],"Bet 250 denars.",[
+    ],"Bet 250 denarii.",[
       (assign, "$g_tournament_bet_placed",250),
 		  (jump_to_menu, "mnu_horse_race"),
     ]),
@@ -48631,7 +48631,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$g_tournament_bet_placed", 0),
       (store_troop_gold,":g", "trp_player"),
       (ge, ":g", 500),
-    ],"Bet 500 denars.",[
+    ],"Bet 500 denarii.",[
       (assign, "$g_tournament_bet_placed",500),
       (jump_to_menu, "mnu_horse_race"),
     ]),
@@ -48639,7 +48639,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$g_tournament_bet_placed", 0),
       (store_troop_gold,":g", "trp_player"),
       (ge, ":g", 1000),
-     ],"Bet 1000 denars.",[
+     ],"Bet 1000 denarii.",[
       (assign, "$g_tournament_bet_placed",1000),
 		  (jump_to_menu, "mnu_horse_race"),
     ]),
@@ -49183,27 +49183,27 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (val_mul, reg22, 1000),
       (val_div, reg22, 1000),
 
-      (str_store_string, s22, "@^^So far you have taken something between {reg22} and {reg23} denars."),
+      (str_store_string, s22, "@^^So far you have taken something between {reg22} and {reg23} denarii."),
     (try_end),
   ],[
   ("visit",[
   ],
-  "The townwatch ordered 10,000 denars for new spears, I am sure it was 20,000 (embezzle 10,000 denars)",[
+  "The townwatch ordered 10,000 denarii for new spears, I am sure it was 20,000 (embezzle 10,000 denarii)",[
     (assign, "$temp", 10000),
     (jump_to_menu, "mnu_reaction_embezzle"),
   ]),
   ("visit",[
-  ],"Alexandria paid 100,000 denars taxes in the last months. I am sure it was only 50,000 denars (embezzle 50,000 denars)",[
+  ],"Alexandria paid 100,000 denarii taxes in the last months. I am sure it was only 50,000 denarii (embezzle 50,000 denarii)",[
     (assign, "$temp", 50000),
     (jump_to_menu, "mnu_reaction_embezzle"),
   ]),
   ("visit",[
-  ],"The Augusta is known to be piggish, I am sure she has spend 100,000 denars not 10,000 denars for her last meal... (embezzle 90,000 denars)",[
+  ],"The Augusta is known to be piggish, I am sure she has spend 100,000 denarii not 10,000 denarii for her last meal... (embezzle 90,000 denarii)",[
     (assign, "$temp", 90000),
     (jump_to_menu, "mnu_reaction_embezzle"),
   ]),
   ("visit",[
-  ],"The Princeps likes parties, I am sure for last one he spend 250,000 denars not 120,000... (embezzle 130,000 denars)",[
+  ],"The Princeps likes parties, I am sure for last one he spend 250,000 denarii not 120,000... (embezzle 130,000 denarii)",[
     (assign, "$temp", 130000),
     (jump_to_menu, "mnu_reaction_embezzle"),
   ]),
@@ -49227,7 +49227,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        (str_store_string, s1, "@You were caught! An official who crosschecked the documents you modified noticed your changes. A major investigation is now about to be initiated. It is also possible, that other misdeeds you committed will be discovered!"),
     (else_try),
        (assign, reg33, "$temp"),
-       (str_store_string, s1, "@You successfully embezzled founds worth {reg33} denars without anybody noting."),
+       (str_store_string, s1, "@You successfully embezzled founds worth {reg33} denarii without anybody noting."),
     (try_end),
   ],[
     ("leave",[
@@ -49252,7 +49252,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("caught_embezzle",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You manage to find out who is responsible for the investigation. You can bribe him to make sure it will stop. The responsible official demands {reg33} denars as a bribe.",
+    "You manage to find out who is responsible for the investigation. You can bribe him to make sure it will stop. The responsible official demands {reg33} denarii as a bribe.",
     "none",
     [
     (troop_get_slot, ":embezzled_founds_amount", "trp_player", slot_player_embezzeled_founds),
@@ -49291,7 +49291,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("caught_embezzle_punished",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "A major investigation has concluded, revealing that you embezzled {reg33} denars over time!"
+  "A major investigation has concluded, revealing that you embezzled {reg33} denarii over time!"
   +"^^The Princeps has been informed of this incident. As the evidence of your guilt is considered irrefutable, no trial will be held, nor will you be questioned."
   +" Believing your culpability to be manifest, he decrees the following:"
   +" You are ordered to repay the embezzled funds. Additionally, you forfeit all of your offices and honorary titles.",
@@ -49544,7 +49544,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("options",[
       (ge, "$cheat_mode", 1),
-    ],"Add 50,000 denars.",[
+    ],"Add 50,000 denarii.",[
       (troop_add_gold, "trp_player", 50000),
     ]),
       # ("options",[(ge, "$cheat_mode", 1),(troop_slot_eq, "trp_global_variables", g_is_dev, 1),],"Show all bandits lairs",[
@@ -50539,7 +50539,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_pret_9_lost",0,
-  "Although you fall the Praetorians win the battle.^Faustus was killed during the combat. All Praetorians who participated in the assault receive 5,000 denars as gift."
+  "Although you fall the Praetorians win the battle.^Faustus was killed during the combat. All Praetorians who participated in the assault receive 5,000 denarii as gift."
   +"^^The job is done and your detachment marches back to meet the rest of the guard.",
   "none",[
     (set_background_mesh, "mesh_pic_battle_aftermath"),
@@ -50554,8 +50554,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_pret_9_vic",0,
-  "Victory is yours! The Praetorians won the battle.^Faustus was killed during the combat. All Praetorians who participated in the assault receive 5,000 denars as gift."
-  +"^Additional you managed to loot spoils worth 2,500 denars.^^The job is done and your detachment marches back to meet the rest of the guard.",
+  "Victory is yours! The Praetorians won the battle.^Faustus was killed during the combat. All Praetorians who participated in the assault receive 5,000 denarii as gift."
+  +"^Additional you managed to loot spoils worth 2,500 denarii.^^The job is done and your detachment marches back to meet the rest of the guard.",
   "none",[
     (set_background_mesh, "mesh_pic_battle_aftermath"),
   ],[
@@ -50855,7 +50855,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_pret_12_vic",0,
-  "{s11}^^The job is done. You and your troops are rewarded with 2,000 denars.",
+  "{s11}^^The job is done. You and your troops are rewarded with 2,000 denarii.",
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
     (try_begin),
@@ -51328,7 +51328,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_3_victory",0,
-  "You have defeated the bandits and returned all the supplies they looted. {s1}, after he was informed about your deed, gifts you 1,000 denars. You made for sure a huge advance towards promotion.",
+  "You have defeated the bandits and returned all the supplies they looted. {s1}, after he was informed about your deed, gifts you 1,000 denarii. You made for sure a huge advance towards promotion.",
   "none",[
     (set_background_mesh, "mesh_pic_sally_out"),
     (party_stack_get_troop_id, ":lord", "$enlisted_party", 0),
@@ -51401,7 +51401,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 11),
       (troop_add_gold, "trp_player", 2500),
       (call_script, "script_change_player_honor", -5),
-      (str_store_string, s1, "@The farmer is punished with his stick and the girl will now serve as follower woman.^You loot the homestead of the farmer and find 2,500 denars."),
+      (str_store_string, s1, "@The farmer is punished with his stick and the girl will now serve as follower woman.^You loot the homestead of the farmer and find 2,500 denarii."),
       (jump_to_menu, "mnu_freelancer_event_punishment"),
     ]),
 ]),
@@ -51604,7 +51604,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("freelancer_event_9_victory",0,
-  "You manage to defeat the bandits and the deserters. ^{s22}^ You gather loot from the deserters and bandits worth 1,000 denars.^^When you reach the marching camp again, {s1} lauds you and you receive 2,000 denars.",
+  "You manage to defeat the bandits and the deserters. ^{s22}^ You gather loot from the deserters and bandits worth 1,000 denarii.^^When you reach the marching camp again, {s1} lauds you and you receive 2,000 denarii.",
   "none",[
     (str_clear, s22),
     ##40 peasants
@@ -51997,7 +51997,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_troop_name, s47, ":lord"),
     (try_begin),
       (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_kill, 15),
-      (str_store_string, s46, "@{s47} recognized your noble deeds in battle and gifts you 2,000 denars.^^You have shown real Roman values: virtue and courage in battle."),
+      (str_store_string, s46, "@{s47} recognized your noble deeds in battle and gifts you 2,000 denarii.^^You have shown real Roman values: virtue and courage in battle."),
       (troop_add_gold, "trp_player", 2000),
       (call_script, "script_change_troop_renown", "trp_player", 5),
       (call_script,"script_change_player_relation_with_troop", ":lord", 2),
@@ -52015,7 +52015,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
     (else_try),
       (store_random_in_range, reg46, 100, 500),
-      (str_store_string, s46, "@After battle, the loot is shared among the soldiers. You managed to get {reg46} denars."),
+      (str_store_string, s46, "@After battle, the loot is shared among the soldiers. You managed to get {reg46} denarii."),
       (troop_add_gold, "trp_player", reg46),
       (call_script, "script_change_troop_renown", "trp_player", 2),
     (try_end),
@@ -52038,7 +52038,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (troop_add_gold, "trp_player", reg46),
       (call_script, "script_change_player_honor", -2),
       (call_script, "script_change_troop_renown", "trp_player", 3),
-      (display_message, "@You managed to get {reg46} denars."),
+      (display_message, "@You managed to get {reg46} denarii."),
       (jump_to_menu, "$temp4_1"),
     ]),
     ("continue",[(neq, "$temp1", -1),],"Do nothing.",[
@@ -52799,7 +52799,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (troop_slot_ge, "trp_player", slot_troop_renown, 200), #beggars do not donate money
       (neg|party_slot_eq, "$current_town", slot_village_state, svs_under_siege),
       (neg|party_slot_eq, "$current_town", slot_donate_party, 1),
-    ],"Donate 10,000 denars to town officials.",[
+    ],"Donate 10,000 denarii to town officials.",[
       (party_get_slot, ":prosperity", "$current_town", slot_town_prosperity),
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
@@ -52812,7 +52812,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
             (ge, ":relation", 0),
             (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 2),
           (try_end),
-          (display_message,"@You donated 10000 denars.",color_good_news),
+          (display_message,"@You donated 10000 denarii.",color_good_news),
           (try_begin),
             (is_between, ":prosperity", 0, 20),
             (call_script, "script_change_player_relation_with_center", "$current_town", 15),
@@ -54215,7 +54215,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 (
     "freelancer_task_completed",0,
-    "You managed to defeat {reg24} enemies and the ambush was defeated. As a reward, you get a bag of denars and extra rations for today.",
+    "You managed to defeat {reg24} enemies and the ambush was defeated. As a reward, you get a bag of denarii and extra rations for today.",
     "none",
     [
     (assign, reg24, "$g_arena_training_kills"),
@@ -54405,7 +54405,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_troop_name_link, s13, "$temp3"),
     (set_background_mesh, "mesh_pic_wildfire"),
   ],[
-    ("answere_1",[],"Pay for your own repairs. (pay 50,000 denars)",[
+    ("answere_1",[],"Pay for your own repairs. (pay 50,000 denarii)",[
       (troop_remove_gold, "trp_player", 50000),
       (try_begin),
         (eq, "$g_is_emperor", 1),
@@ -54425,11 +54425,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (else_try),
         (call_script, "script_change_player_relation_with_troop", "$temp3", -5),
         (troop_remove_gold, "trp_player", 50000),
-        (str_store_string, s1, "@You try your best to lobby for your case but it seems you will never see a denar from {s13}. At the end, you have to repair the latifundium by yourself."),
+        (str_store_string, s1, "@You try your best to lobby for your case but it seems you will never see a denarius from {s13}. At the end, you have to repair the latifundium by yourself."),
         (jump_to_menu, "mnu_event_juicio_end"),
       (try_end),
     ]),
-    ("answere_3",[(eq, "$g_is_emperor", 1),],"Remove the governor and make him pay a punitive amount. (gain 15,000 denars)",[
+    ("answere_3",[(eq, "$g_is_emperor", 1),],"Remove the governor and make him pay a punitive amount. (gain 15,000 denarii)",[
       (troop_add_gold, "trp_player", 15000),
       (call_script, "script_add_to_troop_wealth", "$temp3", -65000),
       (call_script, "script_change_player_relation_with_troop", "$temp3", -45),
@@ -54493,7 +54493,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_string, s1, "@The governor is thankful for your recognition and replies humbly. Though he would not admit it, it is clear that your property was handled with the greatest care and protected at all costs, while others had to be abandoned to burn."),
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
-    ("answere_2",[  ],"Send a gift to the governor. (25,000 denars)",[
+    ("answere_2",[  ],"Send a gift to the governor. (25,000 denarii)",[
       (troop_remove_gold, "trp_player", 25000),
       (call_script, "script_change_player_relation_with_troop", "$temp3", 10),
       (str_store_string, s1, "@The damages could have been devastating, as they were to some neighbouring latifundia. The governor's actions have saved you much money in repairs, so it would be reasonable to expect some reward. However, your generosity is not expected and the governor is delighted by the expensive gifts."),
@@ -54524,7 +54524,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("answere_2",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 75000),
-    ],"Send food aid to the city. (75,000 denars)",[
+    ],"Send food aid to the city. (75,000 denarii)",[
       (call_script, "script_change_center_prosperity", "$temp1", -35),
       (call_script, "script_change_player_relation_with_center", "$temp1", 10),
       (call_script, "script_spawn_looters", "$temp1", 3),
@@ -54535,7 +54535,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("answere_2",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 250000),
-    ],"Buy as much cheap farmland as possible. (250,000 denars)",[
+    ],"Buy as much cheap farmland as possible. (250,000 denarii)",[
       (call_script, "script_change_center_prosperity", "$temp1", -85),
       (call_script, "script_change_player_relation_with_center", "$temp1", -90),
       (call_script, "script_spawn_looters", "$temp1", 5),
@@ -54558,7 +54558,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("answere_2",[
       (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 300000),
-    ],"Send enough aid. (300,000 denars)",[
+    ],"Send enough aid. (300,000 denarii)",[
       (call_script, "script_change_center_prosperity", "$temp1", -5),
       (call_script, "script_change_player_relation_with_center", "$temp1", 50),
       (troop_remove_gold, "trp_player", 300000),
@@ -54629,7 +54629,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("answere_1",[
       (store_troop_gold,":g", "trp_player"),
       (ge,":g",10000),
-    ],"Discretely help one side. (10,000 denars)",[
+    ],"Discretely help one side. (10,000 denarii)",[
       (troop_remove_gold, "trp_player", 10000),
       (store_random_in_range, ":r", 0, 100),
       (try_begin),
@@ -54694,7 +54694,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_party_name, s25, "$g_player_court"),
     (call_script, "script_print_culture_word", s26, ":culture", DPLMC_CULTURAL_TERM_KING),
   ],[
-    ("answere_1",[]," Install a friendly despot. (25,000 denars)",[
+    ("answere_1",[]," Install a friendly despot. (25,000 denarii)",[
       (troop_remove_gold, "trp_player", 25000),
       (store_random_in_range, ":r", 0, 100),
       (try_begin),
@@ -55303,8 +55303,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_party_name, s10, "p_town_20"),
       (try_begin),
           (eq, "$temp", "trp_legatus_11"),
-          (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Increase your wealth and influence as preparation for the upcoming events. You will be informed when the time has come to strike.^(Hint: 10 days must have past, you have 500,000 denars and 1,500 influence.)", 1),
-          (add_quest_note_from_sreg, "qst_blank_quest_19", 7, "@You allied with {s22}. Now you have to increase your wealth as preparation for the upcoming events.^(Hint: 10 days must have past, you have 500,000 denars and 1,500 influence.)", 1),
+          (add_quest_note_from_sreg, "qst_four_emperors", 5, "@Increase your wealth and influence as preparation for the upcoming events. You will be informed when the time has come to strike.^(Hint: 10 days must have past, you have 500,000 denarii and 1,500 influence.)", 1),
+          (add_quest_note_from_sreg, "qst_blank_quest_19", 7, "@You allied with {s22}. Now you have to increase your wealth as preparation for the upcoming events.^(Hint: 10 days must have past, you have 500,000 denarii and 1,500 influence.)", 1),
           (store_current_day, reg1),
           (val_max, reg1, 1),
           (quest_set_slot, "qst_four_emperors", slot_quest_timer, reg1),
@@ -56327,7 +56327,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (assign, ":c", 1),
       (try_end),
       (eq, ":c", 1),
-    ],"Play similar tricks to punish the town while technically following the law. (cost: 15,000 denars)",[
+    ],"Play similar tricks to punish the town while technically following the law. (cost: 15,000 denarii)",[
       (add_xp_as_reward, 100),
       (try_begin),
           (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
@@ -56373,7 +56373,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
       (eq, ":c", 1),
     ],
-      "Establish an imperial inquisition to destroy the cult in {s13}. (cost: 25,000 denars)",[
+      "Establish an imperial inquisition to destroy the cult in {s13}. (cost: 25,000 denarii)",[
       (add_xp_as_reward, 100),
       (try_begin),
           (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
@@ -56866,7 +56866,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
  ]),
 
  ("akademeia",0,
-    "The Akademia of Athenae was founded by Plato centuries ago. Unfortunately, the dictator Sulla ordered it's destruction. The place has been abandoned ever since. Rebuilding it would cost you 150,000 denars.",
+    "The Akademia of Athenae was founded by Plato centuries ago. Unfortunately, the dictator Sulla ordered it's destruction. The place has been abandoned ever since. Rebuilding it would cost you 150,000 denarii.",
  "none",
     [(set_background_mesh, "mesh_pic_library"),
     ],
@@ -56981,7 +56981,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("op5",[(neq, "$g_is_emperor", 1),#not caesar
     ],
-      "Force {s24} to help you increasing your standing in the realm in exchange for gold. [cost: 20,000 denars, gain 300 influence]",
+      "Force {s24} to help you increasing your standing in the realm in exchange for gold. [cost: 20,000 denarii, gain 300 influence]",
     [
       (call_script, "script_troop_change_relation_with_troop", "trp_kingdom_7_lord", "trp_player", -1),
       (display_message, "@Your little intrigue generated minor rumours.", color_bad_news),
@@ -57014,7 +57014,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
     ]),
     ("op1",[],
-      "Provide {s24} valuable help and strengthen your political ties. [cost: 15,000 denars]",
+      "Provide {s24} valuable help and strengthen your political ties. [cost: 15,000 denarii]",
     [
       (add_xp_as_reward, 150),
       (call_script, "script_add_log_entry", logent_player_helped_buisness, "trp_player",  -1, "$g_notification_menu_var1", "$g_notification_menu_var2"),
@@ -57066,7 +57066,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (assign, ":c", 1),
       (try_end),
       (eq, ":c", 1),
-    ],"Assist {s24}. [costs: 10,000 denars]",[
+    ],"Assist {s24}. [costs: 10,000 denarii]",[
       (add_xp_as_reward, 150),
       (try_begin),
           (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
@@ -59889,7 +59889,7 @@ It is said, that she lives now together with the goat.",
 
 ("wlodowiecus_adventure_1_3_sciri_final_loot",mnf_scale_picture,
   "Hadrianus and Mancinellus watch in horror as you, Wlodowiecus, the old mercenary and the Winnili slaughter Ekkbert and his men, Egino orders his men to not interfere but they are also watching in horror."
-  +" ^^Soon, the surviving Winnili start to loot the village and the corpses, you heard a few women and men are being taken slave by the mercenaries. You join them in the pillage and find two gold bars and 10.000 denars worth of loot."
+  +" ^^Soon, the surviving Winnili start to loot the village and the corpses, you heard a few women and men are being taken slave by the mercenaries. You join them in the pillage and find two gold bars and 10.000 denarii worth of loot."
   +" ^^When dawn comes, Egino and his men led the survivors away from you, he will have to lead the rest of the tribe now. {s19}"
   +" The survivors of the Sciri decide to stay away from you as you load the carts with amber and other supplies for your journey back to Kalissa."
   +" ^^After a few days, you are back at the tavern of Kalissia you've visited before leaving for the Baltic. A day later you and your companions meet with Hadrianus cousin."
@@ -61087,7 +61087,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
  ("investment",0,
-  "Investment opportunity^^A prominent merchant from {s40} has reached out through your client looking for a loan to finance a potentially profitable business venture in the {s41} sector. They are looking for {reg41} denars and will repay with interest in your next weekly budget. If the venture goes well they will share some profits on top of the original sum, otherwise you will lose the investment. Your client thinks it's a good deal.",
+  "Investment opportunity^^A prominent merchant from {s40} has reached out through your client looking for a loan to finance a potentially profitable business venture in the {s41} sector. They are looking for {reg41} denarii and will repay with interest in your next weekly budget. If the venture goes well they will share some profits on top of the original sum, otherwise you will lose the investment. Your client thinks it's a good deal.",
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
     (call_script, "script_cf_get_random_town_of_culture", "fac_culture_7"),
@@ -61229,7 +61229,7 @@ It is said, that she lives now together with the goat.",
       (try_end),
       (eq, ":c", 1),
       (assign, reg11, "$temp4_1"),
-    ],"Sent {reg11} denars.",[
+    ],"Sent {reg11} denarii.",[
       (call_script, "script_change_center_prosperity", "$g_notification_menu_var1", 4),
       (party_get_slot, ":event", "$g_notification_menu_var1", slot_center_event),
       (val_sub, ":event", 1),
@@ -61265,7 +61265,7 @@ It is said, that she lives now together with the goat.",
       (eq, ":c", 1),
       (store_mul, reg10, "$temp4_1", 2),
       (val_div, reg10, 3),
-    ],"Sent {reg10} denars.",[
+    ],"Sent {reg10} denarii.",[
       (call_script, "script_change_player_relation_with_center", "$g_notification_menu_var1", 3),
       (call_script, "script_change_player_honor", 3),
       (call_script, "script_change_troop_renown", "trp_player", 8),
@@ -61300,7 +61300,7 @@ It is said, that she lives now together with the goat.",
       (try_end),
       (eq, ":c", 1),
       (store_div, reg10, "$temp4_1", 2),
-    ],"Sent {reg10} denars.",[
+    ],"Sent {reg10} denarii.",[
       (call_script, "script_change_player_relation_with_center", "$g_notification_menu_var1", 2),
       (call_script, "script_change_player_honor", 2),
       (call_script, "script_change_troop_renown", "trp_player", 5),
@@ -61406,7 +61406,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("recieve_money",0,
-    "You find the moneylender and obtain the requested money. Additionally you recieve 2,500 denars as a gift from {s22}.^^As it seems, your intrigue generated minor rumours.",
+    "You find the moneylender and obtain the requested money. Additionally you recieve 2,500 denarii as a gift from {s22}.^^As it seems, your intrigue generated minor rumours.",
     "none", [
     (quest_get_slot, ":giver", "qst_collect_requested_money", slot_quest_giver_troop),
     (str_store_troop_name, s22, ":giver"),
@@ -62613,7 +62613,7 @@ It is said, that she lives now together with the goat.",
     (try_end),
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
-    ("perform_personally_large", [], "Perform the rites personally. (large sacrifice: 500,000 denars)",[
+    ("perform_personally_large", [], "Perform the rites personally. (large sacrifice: 500,000 denarii)",[
       (try_for_range, ":festival_quest", festival_quests_begin, festival_quests_end),
           (check_quest_active, ":festival_quest"),
           (quest_set_slot, ":festival_quest", slot_quest_temp_slot, 0),
@@ -62631,7 +62631,7 @@ It is said, that she lives now together with the goat.",
 
       (call_script, "script_add_to_faction_bugdet", slot_faction_spending_edicts, "$players_kingdom", 500000),
     ]),
-    ("perform_personally_medium", [], "Perform the rites personally. (medium sacrifice: 250,000 denars)",[
+    ("perform_personally_medium", [], "Perform the rites personally. (medium sacrifice: 250,000 denarii)",[
       (try_for_range, ":festival_quest", festival_quests_begin, festival_quests_end),
           (check_quest_active, ":festival_quest"),
           (quest_set_slot, ":festival_quest", slot_quest_temp_slot, 0),
@@ -62649,7 +62649,7 @@ It is said, that she lives now together with the goat.",
 
       (call_script, "script_add_to_faction_bugdet", slot_faction_spending_edicts, "$players_kingdom", 250000),
     ]),
-    ("perform_personally_small", [], "Perform the rites personally. (small sacrifice: 100,000 denars)",[
+    ("perform_personally_small", [], "Perform the rites personally. (small sacrifice: 100,000 denarii)",[
       (try_for_range, ":festival_quest", festival_quests_begin, festival_quests_end),
           (check_quest_active, ":festival_quest"),
           (quest_set_slot, ":festival_quest", slot_quest_temp_slot, 0),
@@ -62667,7 +62667,7 @@ It is said, that she lives now together with the goat.",
 
       (call_script, "script_add_to_faction_bugdet", slot_faction_spending_edicts, "$players_kingdom", 100000),
     ]),
-    ("delegate_duty", [], "Delegate the duty to the priests. (cost: 50,000 denars)",[
+    ("delegate_duty", [], "Delegate the duty to the priests. (cost: 50,000 denarii)",[
       (try_for_range, ":festival_quest", festival_quests_begin, festival_quests_end),
           (check_quest_active, ":festival_quest"),
           (quest_set_slot, ":festival_quest", slot_quest_temp_slot, 0),

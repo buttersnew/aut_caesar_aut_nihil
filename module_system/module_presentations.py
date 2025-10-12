@@ -4061,7 +4061,7 @@ presentations = presentations_wse2 + [
         (try_end),
 
         (assign, reg0, ":wealth"),
-        (create_text_overlay, reg1, "@Wealth: {reg0} denars", 0),
+        (create_text_overlay, reg1, "@Wealth: {reg0} denarii", 0),
         (position_set_x, pos1, 750),
         (position_set_y, pos1, 750),
         (overlay_set_size, reg1, pos1),
@@ -4082,7 +4082,7 @@ presentations = presentations_wse2 + [
         (try_end),
 
         (assign, reg0, ":total_item_value"),
-        (create_text_overlay, reg1, "@Inventory: {reg0} denars", 0),
+        (create_text_overlay, reg1, "@Inventory: {reg0} denarii", 0),
         (position_set_x, pos1, 750),
         (position_set_y, pos1, 750),
         (overlay_set_size, reg1, pos1),
@@ -5484,7 +5484,7 @@ presentations = presentations_wse2 + [
         ##Nero Change
         (val_mul, ":offer_value", 5),##
         (val_div, ":offer_value", 2),##
-        (val_add, ":offer_value", 500),##the base payment are 500 denars
+        (val_add, ":offer_value", 500),##the base payment are 500 denarii
         (call_script, "script_round_value", ":offer_value"),
         (assign, ":offer_value", reg0),
         (try_begin),
@@ -6719,7 +6719,7 @@ presentations = presentations_wse2 + [
                 (eq, "$g_apply_budget_report_to_gold", 1),
                 (troop_remove_gold, "trp_player", ":cash_to_pay"),
                 (assign, reg0, ":cash_to_pay"),
-                (display_message, "@You paid {reg0} denars in cash to liquidate a debt", message_alert), #SB : rephrase and recolor
+                (display_message, "@You paid {reg0} denarii in cash to liquidate a debt", message_alert), #SB : rephrase and recolor
             (try_end),
         (try_end),
         ##diplomacy end
@@ -7656,7 +7656,7 @@ presentations = presentations_wse2 + [
         (assign, "$demanded_money", 1000),
         (assign, "$diplomacy_var", 1),
 
-        (create_text_overlay, "$g_presentation_obj_sliders_2", "@1000 denars"),
+        (create_text_overlay, "$g_presentation_obj_sliders_2", "@1000 denarii"),
         (position_set_x, pos1, 500),
         (overlay_set_position, "$g_presentation_obj_sliders_2", pos1),
 
@@ -7725,7 +7725,7 @@ presentations = presentations_wse2 + [
 		  ##diplomacy start+
 		  ##OLD:
           #(assign, reg0, "$demanded_money"),
-          #(overlay_set_text, "$g_presentation_obj_sliders_2", "@{reg0} denars"),
+          #(overlay_set_text, "$g_presentation_obj_sliders_2", "@{reg0} denarii"),
 		  ##NEW:
 		  (assign, reg1, "$demanded_money"),
 		  (overlay_set_text, "$g_presentation_obj_sliders_2", "str_reg1_denars"),
@@ -9203,7 +9203,7 @@ presentations = presentations_wse2 + [
 
 
 
-#       (str_store_string, s20, "@{reg16} denars"),
+#       (str_store_string, s20, "@{reg16} denarii"),
 
 #       (create_text_overlay, reg0, "@{s20}", tf_left_align),
 #       (position_set_y, pos1, ":y_name"),
@@ -9859,15 +9859,15 @@ presentations = presentations_wse2 + [
         (try_begin),
             (eq, "$g_rank", 1),
             (assign, reg1, salary_aux_1),
-            (str_store_string, s1, "@Military rank: Tribunus militaris (salary: {reg1} denars)"),
+            (str_store_string, s1, "@Military rank: Tribunus militaris (salary: {reg1} denarii)"),
         (else_try),
             (eq, "$g_rank", 2),
             (assign, reg1, salary_aux_2),
-            (str_store_string, s1, "@Military rank: Praefectus cohortis (salary: {reg1} denars)"),
+            (str_store_string, s1, "@Military rank: Praefectus cohortis (salary: {reg1} denarii)"),
         (else_try),
             (eq, "$g_rank", 3),
             (assign, reg1, salary_legate),
-            (str_store_string, s1, "@Military rank: Legatus legionis (salary: {reg1} denars)"),
+            (str_store_string, s1, "@Military rank: Legatus legionis (salary: {reg1} denarii)"),
         (try_end),
         (create_text_overlay, reg0, "@{s1}", 0),
         (position_set_y, pos1, ":cur_y"),
@@ -11726,7 +11726,7 @@ presentations = presentations_wse2 + [
             (try_end),
 
             (call_script, "script_get_improvement_details", ":improvement", "$g_encountered_party"),
-            (create_text_overlay, reg1, "@{s0}: {reg22} denars to rents", 0),
+            (create_text_overlay, reg1, "@{s0}: {reg22} denarii to rents", 0),
             (position_set_x, pos1, 0),
             (position_set_y, pos1, ":y_name"),
 
@@ -11789,7 +11789,7 @@ presentations = presentations_wse2 + [
             (try_end),
 
             (call_script, "script_get_decree_details", ":decree"),
-            (create_text_overlay, reg1, "@{s30}: {reg22} denars to rents", 0),
+            (create_text_overlay, reg1, "@{s30}: {reg22} denarii to rents", 0),
             (position_set_x, pos1, 0),
             (position_set_y, pos1, ":y_name"),
 
@@ -12533,7 +12533,7 @@ presentations = presentations_wse2 + [
                 (str_store_string, s10, s0),
                 (str_store_string, s11, s1),
 
-                (str_store_string, s11, "@{s11}^^As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you {reg5} denars (base cost {reg0}) and will take {reg6} days  (base time {reg40}).^^The building time and costs are modified by: Skill: {reg44}%, slave politic of the realm: {reg45}% and engineering efficiency of your household slaves: {reg47}%. Number of slaves in prison: {reg46}%."),
+                (str_store_string, s11, "@{s11}^^As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you {reg5} denarii (base cost {reg0}) and will take {reg6} days  (base time {reg40}).^^The building time and costs are modified by: Skill: {reg44}%, slave politic of the realm: {reg45}% and engineering efficiency of your household slaves: {reg47}%. Number of slaves in prison: {reg46}%."),
                 (assign, ":value", 1),
                 (call_script, "script_get_improvement_picture", ":building", "trp_player", "$g_encountered_party"),
                 (assign, ":material", reg0),
@@ -12826,7 +12826,7 @@ presentations = presentations_wse2 + [
             (call_script, "script_print_cost_distribution_to_s10",decree_cost),
             (call_script, "script_get_decree_details", "$g_improvement_type"),
             (assign, reg0, decree_cost),
-            (question_box, "@Do you wish to revoke {s30}? It would cost you {reg0} denars.^^{s10}"),
+            (question_box, "@Do you wish to revoke {s30}? It would cost you {reg0} denarii.^^{s10}"),
             #(assign, "$g_improvement_type", -1),
             (start_presentation, "prsnt_center_management"),
         (else_try),
@@ -12835,7 +12835,7 @@ presentations = presentations_wse2 + [
             (call_script, "script_print_cost_distribution_to_s10",decree_cost),
             (call_script, "script_get_decree_details", "$g_improvement_type"),
             (assign, reg0, decree_cost),
-            (question_box, "@Issuing a decree costs {reg0} denars. Do you wish to issue {s30}?^^{s10}"),
+            (question_box, "@Issuing a decree costs {reg0} denarii. Do you wish to issue {s30}?^^{s10}"),
             #(assign, "$g_improvement_type", -1),
             (start_presentation, "prsnt_center_management"),
         (try_end),
@@ -12924,7 +12924,7 @@ presentations = presentations_wse2 + [
                 (call_script, "script_get_improvement_details", "$g_improvement_type", "$g_encountered_party"),
                 (val_mul, reg0, 3),
                 (val_div, reg0, 5),
-                (question_box, "@{s0} has already been built. You wish to destroy it? You would regain {reg0} denars."),
+                (question_box, "@{s0} has already been built. You wish to destroy it? You would regain {reg0} denarii."),
                 (start_presentation, "prsnt_center_management"),
                 #(display_message, "@The building has already been built.", message_alert),
             (else_try),
@@ -12950,7 +12950,7 @@ presentations = presentations_wse2 + [
                 (call_script, "script_print_cost_distribution_to_s10", "$diplomacy_var"),
                 (assign, reg0, "$diplomacy_var"),
                 (assign, reg1, "$diplomacy_var2"),
-                (question_box, "@Building a {s0} would cost you {reg0} denars and take {reg1} days. Do you wish to proceed?^^{s10}"),
+                (question_box, "@Building a {s0} would cost you {reg0} denarii and take {reg1} days. Do you wish to proceed?^^{s10}"),
                 (start_presentation, "prsnt_center_management"),
             (try_end),
         (try_end),
@@ -12958,16 +12958,16 @@ presentations = presentations_wse2 + [
     # (try_end),
   ]),
     # (ti_question_answered, [
-        # (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
+        # (display_message, "@{s0} has been destroyed. You gained {reg0} of denarii.", message_alert),
         # (store_trigger_param_1, ":answer"),
         # (eq, ":answer", 0),
-        # (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
+        # (display_message, "@{s0} has been destroyed. You gained {reg0} of denarii.", message_alert),
         # (try_begin),
             # (eq, "$temp", 1),#destroy a building
             # (call_script, "script_get_improvement_details", "$g_improvement_type"),
             # (val_mul, reg0, 3),
             # (val_div, reg0, 5),
-            # (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
+            # (display_message, "@{s0} has been destroyed. You gained {reg0} of denarii.", message_alert),
             # (troop_add_gold, "trp_player", reg0),
             # (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
             # (assign, "$temp", 0),
@@ -17133,7 +17133,7 @@ presentations = presentations_wse2 + [
         (position_set_y, pos1, 1400),
         (overlay_set_size, reg1, pos1),
         (create_text_overlay, reg1, "@A good way to hasten the fall of the {s2} is to infiltrate it with a group of men to damage the defences, food stores, water supplies or loyalty of the defenders. It is a difficult and risky maneuver, almost suicidal. " +
-        "Those you send in have low chances of returning, but if successful, they could cause great damage to the enemy. They need 600 denars for their troubles. What type of sabotage would you like them to cause?", tf_center_justify|tf_double_space|tf_scrollable),
+        "Those you send in have low chances of returning, but if successful, they could cause great damage to the enemy. They need 600 denarii for their troubles. What type of sabotage would you like them to cause?", tf_center_justify|tf_double_space|tf_scrollable),
         #  (overlay_set_color, reg1, 0xDDDDDD),
         (position_set_x, pos1, 80),
         (position_set_y, pos1, 180),
@@ -17308,7 +17308,7 @@ presentations = presentations_wse2 + [
             (try_end),
           (else_try),
             (le,":cur_wealth",499),
-            (str_store_string,s4,"@You do not have the 600 denars to pay for this mission.",tf_left_align),
+            (str_store_string,s4,"@You do not have the 600 denarii to pay for this mission.",tf_left_align),
             (assign,"$g_presentations_next_presentation",-1),
             (assign,"$cur_choice",0),
             (start_presentation,"prsnt_infiltrationandsabotage"),
@@ -20453,7 +20453,7 @@ presentations = presentations_wse2 + [
     (assign, reg3, ":party_size"),
     (store_troop_gold, reg4, "trp_player"),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men, Wage: {reg2} denars, ^Party limit: {reg3} men. Your gold: {reg4} denars.", tf_left_align),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men, Wage: {reg2} denarii, ^Party limit: {reg3} men. Your gold: {reg4} denarii.", tf_left_align),
     (position_set_x, pos1, 40),
     (position_set_y, pos1, 660),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
@@ -20625,7 +20625,7 @@ presentations = presentations_wse2 + [
     (assign, reg40, reg0),
     (call_script, "script_game_get_join_cost", "$temp_troop"),
     (assign, reg41, reg0),
-    (create_text_overlay, reg1, "@Wage: {reg40} denars. Recruitment cost: {reg41} denars.", tf_center_justify),
+    (create_text_overlay, reg1, "@Wage: {reg40} denarii. Recruitment cost: {reg41} denarii.", tf_center_justify),
     (position_set_x, pos1, 320),
     (position_set_y, pos1, 290),
     (overlay_set_position, reg1, pos1),
@@ -21137,7 +21137,7 @@ presentations = presentations_wse2 + [
     (val_clamp, reg43, 0, 1000),
     (store_mul, reg44, reg43, reg41),
     ##explenation text
-    (create_text_overlay, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denars.", tf_center_justify),
+    (create_text_overlay, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denarii.", tf_center_justify),
     (position_set_x, pos1, 200),
     (position_set_y, pos1, 200),
     (overlay_set_position, "$g_presentation_obj_29", pos1),
@@ -21217,7 +21217,7 @@ presentations = presentations_wse2 + [
         (lt, ":recruits", reg43),
         (display_message, "@There are not enough recruits available!"),
       (else_try),
-        (display_message, "@You don't have enough space in your party, or you don't have enough denars!"),
+        (display_message, "@You don't have enough space in your party, or you don't have enough denarii!"),
       (try_end),
 
     (else_try),
@@ -21225,7 +21225,7 @@ presentations = presentations_wse2 + [
       (assign, reg43, ":value"),
       (val_clamp, reg43, 0, 1000),
       (store_mul, reg44, reg43, reg41),
-      (overlay_set_text, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denars."),
+      (overlay_set_text, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denarii."),
     (else_try),
         (assign, ":troop_id", -1),
         (assign, ":end_loop", 0),
@@ -21838,7 +21838,7 @@ presentations = presentations_wse2 + [
 #           (eq, ":object", "$g_presentation_obj_19"),
 #           (str_store_string,s57,"@Lex frumentaria et agraria"),
 #           (str_store_string,s58,"str_law"),
-#           (str_store_string,s59,"@Grain prices are regulated: minimum of 30 denars per unit, maximum of 59 denars per unit. Also restrict landownership: There is a maximum of land which someone can obtain. Thus player can only buy 10 latifundia at once."),
+#           (str_store_string,s59,"@Grain prices are regulated: minimum of 30 denarii per unit, maximum of 59 denarii per unit. Also restrict landownership: There is a maximum of land which someone can obtain. Thus player can only buy 10 latifundia at once."),
 
 #         (else_try),
 #          # (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_20"),
@@ -24081,7 +24081,7 @@ presentations = presentations_wse2 + [
       (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_pretorian, 2),
       (val_mul, reg23, 2),
     (try_end),
-		(create_text_overlay, reg0, "@Current Wage: {reg23} denars.", tf_left_align),
+		(create_text_overlay, reg0, "@Current Wage: {reg23} denarii.", tf_left_align),
 		(position_set_y, pos1, ":cur_y"),
 		(overlay_set_position, reg0, pos1),
 		(val_sub, ":cur_y", ":cur_y_adder"),
@@ -36996,7 +36996,7 @@ presentations = presentations_wse2 + [
     (call_script, "script_get_cohort_limit", "p_main_party"),
     (store_sub, reg5, reg0, slot_cohort_1),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denars.^Party limit: {reg3} men.^Your gold: {reg4} denars.^Cohort limit: {reg5} cohorts.", tf_left_align),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denarii.^Party limit: {reg3} men.^Your gold: {reg4} denarii.^Cohort limit: {reg5} cohorts.", tf_left_align),
     (position_set_x, pos1, 785),
     (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
@@ -37259,11 +37259,11 @@ presentations = presentations_wse2 + [
                 # (try_begin),
                 #     (ge, "$g_is_emperor", 1),
                 #     (call_script, "script_add_to_faction_bugdet", slot_faction_hire, "$players_kingdom", reg6),
-                #     (display_message, "@{reg6} denars were taken from the imperial treasury on your order to hire {s5}."),
+                #     (display_message, "@{reg6} denarii were taken from the imperial treasury on your order to hire {s5}."),
                 # (else_try),
                 #     (ge, "$g_rank", 1),
                 #     (troop_get_slot, ":imperial_funds", "trp_global_variables", g_player_recruitement_limit),
-                #     (display_message, "@{reg6} denars were taken from the imperial treasury on your order to hire {s5}."),
+                #     (display_message, "@{reg6} denarii were taken from the imperial treasury on your order to hire {s5}."),
                 #     (call_script, "script_add_to_faction_bugdet", slot_faction_hire, "$players_kingdom", reg6),
                 #     (val_sub, ":imperial_funds", reg6),
                 #     (try_begin),
@@ -37371,7 +37371,7 @@ presentations = presentations_wse2 + [
     (call_script, "script_get_cohort_limit", "p_main_party"),
     (store_sub, reg5, reg0, slot_cohort_1),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denars.^Party limit: {reg3} men.^Your gold: {reg4} denars.^Cohort limit: {reg5} cohorts.", tf_left_align),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denarii.^Party limit: {reg3} men.^Your gold: {reg4} denarii.^Cohort limit: {reg5} cohorts.", tf_left_align),
     (position_set_x, pos1, 785),
     (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
@@ -37710,7 +37710,7 @@ presentations = presentations_wse2 + [
 
     (party_get_slot, reg4, "$g_encountered_party", slot_town_wealth),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Party wage: {reg2} denars.^Budget of the town watch: {reg4} denars.", tf_left_align),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Party wage: {reg2} denarii.^Budget of the town watch: {reg4} denarii.", tf_left_align),
     (position_set_x, pos1, 785),
     (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
@@ -40944,7 +40944,7 @@ presentations = presentations_wse2 + [
                 (else_try),
                     (display_message, "str_not_enough_gold"),
                     (assign, reg0, ":slave_price_per_unit"),
-                    (display_message, "@{reg0} denars have been added to your debts."),
+                    (display_message, "@{reg0} denarii have been added to your debts."),
                     (val_add, "$g_player_debt_to_party_members", ":slave_price_per_unit"),
                 (try_end),
             (try_end),
@@ -41031,7 +41031,7 @@ presentations = presentations_wse2 + [
         (try_end),
         (store_mul, reg44, "$temp4_1", ":price"),
         (assign, reg43, "$temp4_1"),
-        (str_store_string, s0, "@{s2} {reg43} {s1} for {reg44} denars."),
+        (str_store_string, s0, "@{s2} {reg43} {s1} for {reg44} denarii."),
 
         (create_text_overlay, "$g_presentation_obj_29", s0, tf_center_justify),
         (position_set_x, pos1, 550),
@@ -41081,7 +41081,7 @@ presentations = presentations_wse2 + [
     (overlay_set_color, reg1, message_alert),
 
     (store_troop_gold, reg2, "trp_player"),
-    (create_text_overlay, reg1, "@Your wealth: {reg2} denars.", tf_center_justify),
+    (create_text_overlay, reg1, "@Your wealth: {reg2} denarii.", tf_center_justify),
     (position_set_x, pos1, 850), # Higher, means more toward the right
     (position_set_y, pos1, 675), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
@@ -41280,7 +41280,7 @@ presentations = presentations_wse2 + [
         (try_end),
         (store_mul, reg44, "$temp4_1", ":price"),
         (assign, reg43, "$temp4_1"),
-        (overlay_set_text, "$g_presentation_obj_29", "@{s2} {reg43} {s1} for {reg44} denars."),
+        (overlay_set_text, "$g_presentation_obj_29", "@{s2} {reg43} {s1} for {reg44} denarii."),
     (else_try),
         (try_for_range, ":id_slot", 0, "$temp4"),
             (troop_slot_eq, "trp_temp_array_a", ":id_slot", ":button_pressed_id"),
@@ -41940,7 +41940,7 @@ presentations = presentations_wse2 + [
           (gt, ":num_companions", 1),
           (str_store_string, s3, "@ and your troops"),
         (try_end),
-        (str_store_string, s2, "@There is a ship that can bring you{s3} to the port of {s1} for {reg1} denars."),
+        (str_store_string, s2, "@There is a ship that can bring you{s3} to the port of {s1} for {reg1} denarii."),
         (overlay_set_display, "$g_presentation_credits_obj_1", 1),
         (overlay_set_display, "$g_presentation_credits_obj_2", 1),
         (overlay_set_display, "$g_presentation_credits_obj_3", 1),
@@ -42155,7 +42155,7 @@ presentations = presentations_wse2 + [
                 (eq, reg12, 0),
                 (str_clear,s29),
                 (str_store_string,s29,"@The number of buildings was reported correctly. The accusations turned out to be wrong. However the Princeps noticed that you haven't build anything yet and wrote the following letter:"
-                +" 'For the glory of Rome, develop your town! To punish you for not properly fullfilling your task as governor you have to pay 5,000 denars.'"),
+                +" 'For the glory of Rome, develop your town! To punish you for not properly fullfilling your task as governor you have to pay 5,000 denarii.'"),
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
                 (try_begin),
@@ -42210,7 +42210,7 @@ presentations = presentations_wse2 + [
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
             (else_try),
-                (str_store_string,s29,"@Your declared sum of funds taken was false! In truth, Caesar's own freed slaves, who are responsible for the imperial treasury, report that you have actually taken {reg12} denars. You are hereby summoned to Rome to answer for this discrepancy before the Princeps himself!"),
+                (str_store_string,s29,"@Your declared sum of funds taken was false! In truth, Caesar's own freed slaves, who are responsible for the imperial treasury, report that you have actually taken {reg12} denarii. You are hereby summoned to Rome to answer for this discrepancy before the Princeps himself!"),
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
 

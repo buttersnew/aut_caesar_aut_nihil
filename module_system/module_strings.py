@@ -272,8 +272,8 @@ strings = [
   ("cant_use_inventory_arena","Can't access inventory in the arena."),
   ("cant_use_inventory_disguised","Can't access inventory while you're disguised."),
   ("cant_use_inventory_tutorial","Can't access inventory in the training camp."),
-  ("1_denar", "1 denar"),
-  ("reg1_denars", "{reg1} denars"),
+  ("1_denar", "1 denarius"),
+  ("reg1_denars", "{reg1} denarii"),
   ("january_reg1_reg2", "Ianuarius {reg1}, {reg2}"),
   ("february_reg1_reg2", "Februarius {reg1}, {reg2}"),
   ("march_reg1_reg2", "Martius {reg1}, {reg2}"),
@@ -764,7 +764,7 @@ strings = [
 
 #NPC strings
   ("npc1_intro", "Ho there, traveller. You wouldn't by chance be in the market for a tracker, would you?"),
-  ("npc2_intro", "Salve! Would you be so kind as to have a cup with me? I'm down to my last five denars and I'd rather not drink alone."),
+  ("npc2_intro", "Salve! Would you be so kind as to have a cup with me? I'm down to my last five denarii and I'd rather not drink alone."),
   ("npc3_intro", "Salve and good day to you!"),
   ("npc4_intro", "Greetings, stranger. You want a drink?"),
   ("npc5_intro", "Greetings, traveller. Would you join me for a drink?"),
@@ -808,7 +808,7 @@ strings = [
   ("npc42_intro", "Aye, stranger. How can I help you?"),
 
   ("npc1_intro_response_1", "Perhaps. What's the urgency?"),
-  ("npc2_intro_response_1", "Your last five denars? What happened to you?"),
+  ("npc2_intro_response_1", "Your last five denarii? What happened to you?"),
   ("npc3_intro_response_1", "Ave! What's a clearly well-brought up young lady like you doing in a place like this?"),
   ("npc4_intro_response_1", "May I ask who you are?"),
   ("npc5_intro_response_1", "Certainly. With whom do I have the pleasure of drinking?"),
@@ -991,7 +991,7 @@ strings = [
 	+" hunted runaway slaves. But then one day, one of my man said I have become to old to be their leader."
 	+" He challenged me to a fight and defeated me."),
   ("npc11_backstory_b", "For 30 years I followed the armies, selling them victuals and drink, watching their games of dice and"
-	+" finding them girls, and nary a denar was left in my purse at the end."),
+	+" finding them girls, and nary a denarius was left in my purse at the end."),
   ("npc12_backstory_b", "I am by training a natural philosopher, but condemned by the jealousy of the thick-headed doctors"
 	+" to make my living as an itinerant surgeon. I was hired by a nobleman of this city to cure his son, who fell into a coma after a fall"
 	+" from his balcony. I successfully trepanned the patient's skull to reduce the cranial swelling, but the family ignored my advice to treat"
@@ -1099,7 +1099,7 @@ strings = [
 
   ### use these if there is a short period of time between the last meeting
   ("npc1_backstory_later", "I've been here and about, you know, doing my best to keep out of trouble. I'm desperately in need of work, however."),
-  ("npc2_backstory_later", "I sold my boots and have managed to make a few denars peddling goods from town to town, but it's a hard living."),
+  ("npc2_backstory_later", "I sold my boots and have managed to make a few denarii peddling goods from town to town, but it's a hard living."),
   ("npc3_backstory_later", "I hired myself on as a cook for some passing caravans, and that at least keeps me fed."
 	+" But it is rough company on the road, and I grow weary of fighting off guards and others who would try to take liberties."
 	+" I was thinking that if I could find work as a warrior, men would know to leave me alone."),
@@ -1119,7 +1119,7 @@ strings = [
   ("npc11_backstory_later", "I've been around and about to find work in a mercenary band. But it's a rare captain who'll take on an old bag of bones like me as a fighter,"
 	+" even if I could whip half the boys in his outfit."),
   ("npc12_backstory_later", "I have been here and about, tending to the sick and taking what reward I can."
-	+" But the people of these parts are ignorant, and have little respect for my skills. The few denars I make are barely"
+	+" But the people of these parts are ignorant, and have little respect for my skills. The few denarii I make are barely"
 	+" enough for me to replenish my stock of medicine. I should be grateful for the chance to find other work."),
   ("npc13_backstory_later", "I have been wandering through the cities of the world, leaving a string of love-sick women and"
 	+" cuckolded husbands in my wake. But I grow weary of such simple challenges, and had been thinking of turning myself to more martial pastimes."),
@@ -1259,7 +1259,7 @@ strings = [
 	+" I can get my hands dirty."),
   ("npc13_signup", "Indeed? You would do well to enlist me."),
   ("npc14_signup", "I would be pleased to ride with you, at least for a little while, for pay and a share of any loot."),
-  ("npc15_signup", "A village near Rome, eventually, but I'd welcome the opportunity to get a few denars in my pocket,"
+  ("npc15_signup", "A village near Rome, eventually, but I'd welcome the opportunity to get a few denarii in my pocket,"
 	+" first, so I don't come home empty handed. So if you promise me food and a share of the loot, I'd be happy to fight with you for a while."),
   ("npc16_signup", "Well, friend, let me tell you. I may not know how to read and write,"
 	+" but I know the quickest way to a man's heart is between his fourth and fifth rib, if you understand me. "),
@@ -1441,107 +1441,107 @@ strings = [
   ("npc42_signup_response_2", "You should better take care of your family instead of joining my warband."),
 
   ("npc1_payment", "I will be very useful to you, master, you can bet on that. Just one more thing before we leave,"
-	+" would you mind lending me {reg3} denars? I am ashamed to say it, but I have made myself a bit of debt here,"
+	+" would you mind lending me {reg3} denarii? I am ashamed to say it, but I have made myself a bit of debt here,"
 	+" staying in this tavern over the last few weeks and the tavern owners no longer believe that I am loaded with gold as"
 	+" I used to tell them. You know, things could get ugly here if they see me leaving with you before paying them."),
   ("npc2_payment", "{!}."),
   ("npc3_payment", "{!}."),
-  ("npc4_payment", "Excellent. Before we depart, would you be so kind to lend me {reg3} denars? I have made some debts"
+  ("npc4_payment", "Excellent. Before we depart, would you be so kind to lend me {reg3} denarii? I have made some debts"
 	+" here in {s20}, and I would like to repay them before we leave."),
-  ("npc5_payment", "Thank you. Now, to seal off our agreement, I ask for {reg3} denars from you."
+  ("npc5_payment", "Thank you. Now, to seal off our agreement, I ask for {reg3} denarii from you."
 	+" It's an advice my father gave me. He told me 'Satibarzanes, never fight for a barbarian before {he/she} pays you your worth of gold first'."),
   ("npc6_payment", "{!}."),
-  ("npc7_payment", "All right then. I will come with you. But I want a payment of {reg3} denars first."
+  ("npc7_payment", "All right then. I will come with you. But I want a payment of {reg3} denarii first."
 	+" You aren't expecting me to work for free, do you?"),
-  ("npc8_payment", "Then I will fight your enemies for you. But first I want a bounty of {reg3} denars. If you are a worthy captain"
+  ("npc8_payment", "Then I will fight your enemies for you. But first I want a bounty of {reg3} denarii. If you are a worthy captain"
 	+" who can lead {his/her} company to riches and plunder, you should have no trouble paying. I cannot afford to follow a beggar."),
-  ("npc9_payment", "That's very good of you. And before I join, can you lend me {reg3} denars, so that I can buy some proper"
+  ("npc9_payment", "That's very good of you. And before I join, can you lend me {reg3} denarii, so that I can buy some proper"
 	+" clothing that befits a eques of noble birth such as myself. My clothes has been worn down badly due to my recent bad fortune,"
 	+" and I cannot let common soldiers mistake me as one of their own."),
   ("npc10_payment", "That's good news. But I'll ask for one last thing, captain. I have a woman here in {s20}, a tavern wench,"
 	+" and she says she has my child in her belly. I want to give her some money before I leave... for the child, you know."
-	+" Do you think you can spare {reg3} denars?"),
-  ("npc11_payment", "Hey thank you captain. But before joining up with you, I would ask for a payment of {reg3} denars."
+	+" Do you think you can spare {reg3} denarii?"),
+  ("npc11_payment", "Hey thank you captain. But before joining up with you, I would ask for a payment of {reg3} denarii."
 	+" I know that during campaigns soldiers can go on for weeks without seeing any wages. I am wise enough not to sign anywhere"
 	+" without having myself covered."),
   ("npc12_payment", "{!}."),
-  ("npc13_payment", "Before I sign up, there is the small matter of some expenses I have incurred while staying here -- {reg3} denars."
+  ("npc13_payment", "Before I sign up, there is the small matter of some expenses I have incurred while staying here -- {reg3} denarii."
 	+" Do you think that you could cover those for me, as a gesture of friendship?"),
-  ("npc14_payment", "Ah, one last thing. I would ask for an initial bounty of {reg3} denars before I join your command."
+  ("npc14_payment", "Ah, one last thing. I would ask for an initial bounty of {reg3} denarii before I join your command."
 	+" It's my principle never to enter someone's service without receiving the payment I deserve."),
   ("npc15_payment", "Good. By the way, as a skilled engineer I would expect a payment for my services."
-	+" A signing bonus of {reg3} denars would be fair, I think."),
+	+" A signing bonus of {reg3} denarii would be fair, I think."),
   ("npc16_payment", "Now, that's good news, captain. So, how about paying me a little something to seal off our agreement?"
 	+" A mere {reg3} would be enough. Please don't take this the wrong way, but I've had some bad luck with employers in the past. "),
   ("npc17_payment", "{!}"),
-  ("npc18_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc19_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc20_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc21_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc22_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc23_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc24_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc25_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc26_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc27_payment", "Very good. But before I join I need a payement of {reg3} denars. I have made a lot of debts with ... eih certain peoples. I must repay my debts first."),
-  ("npc28_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc29_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc30_payment", "But before I join I need a payement of {reg3} denars. You understand?"),
+  ("npc18_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc19_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc20_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc21_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc22_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc23_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc24_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc25_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc26_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc27_payment", "Very good. But before I join I need a payement of {reg3} denarii. I have made a lot of debts with ... eih certain peoples. I must repay my debts first."),
+  ("npc28_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc29_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc30_payment", "But before I join I need a payement of {reg3} denarii. You understand?"),
   ("npc31_payment", "{!}"),#special
   ("npc32_payment", "{!}"),
   ("npc33_payment", "{!}"),
   ("npc34_payment", "{!}"),
   ("npc35_payment", "{!}"),
   ("npc36_payment", "{!}."),
-  ("npc37_payment", "I will be very valuable to you, commander, that I promise. Just one more thing before we leave, would you mind lending me {reg3} denars? I need to buy more papyrus, ink and some more materials for the travels."),
-  ("npc38_payment", "I will be very useful to you, master, you can bet on that. Just one more thing before we leave, would you mind lending me {reg3} denars? I am ashamed to say it, but I have made myself a bit of debt here, staying in this tavern over the last few weeks and the tavern owners no longer believe that I am loaded with gold as I used to tell them. You know, things could get ugly here if they see me leaving with you before paying them."),
+  ("npc37_payment", "I will be very valuable to you, commander, that I promise. Just one more thing before we leave, would you mind lending me {reg3} denarii? I need to buy more papyrus, ink and some more materials for the travels."),
+  ("npc38_payment", "I will be very useful to you, master, you can bet on that. Just one more thing before we leave, would you mind lending me {reg3} denarii? I am ashamed to say it, but I have made myself a bit of debt here, staying in this tavern over the last few weeks and the tavern owners no longer believe that I am loaded with gold as I used to tell them. You know, things could get ugly here if they see me leaving with you before paying them."),
   ("npc39_payment", "{!}"),
-  ("npc40_payment", "Just one more thing before we leave, would you mind lending me {reg3} denars? I am ashamed, but I have made myself a bit of debt in {s20} as I was workless for half a year.... But I still had to pay all the bills and buy food. So I had to take a loan ..."),
+  ("npc40_payment", "Just one more thing before we leave, would you mind lending me {reg3} denarii? I am ashamed, but I have made myself a bit of debt in {s20} as I was workless for half a year.... But I still had to pay all the bills and buy food. So I had to take a loan ..."),
   ("npc41_payment", "{!}"),
-  ("npc42_payment", "Just one moment. I am ashamed to mention it, but I have debts in {s20}… Some unpaid bills. I ask you for {reg3} denars. I know it's much, but I don't want to leave my mother and sisters with debts."),
+  ("npc42_payment", "Just one moment. I am ashamed to mention it, but I have debts in {s20}… Some unpaid bills. I ask you for {reg3} denarii. I know it's much, but I don't want to leave my mother and sisters with debts."),
 
-  ("npc1_payment_response", "Very well, here's {reg3} denars. Now, fall in with the rest."),
+  ("npc1_payment_response", "Very well, here's {reg3} denarii. Now, fall in with the rest."),
   ("npc2_payment_response", "{!}."),
   ("npc3_payment_response", "{!}."),
-  ("npc4_payment_response", "Certainly. Here's {reg3} denars."),
-  ("npc5_payment_response", "Well... here's {reg3} denars, then. Your first payment."),
+  ("npc4_payment_response", "Certainly. Here's {reg3} denarii."),
+  ("npc5_payment_response", "Well... here's {reg3} denarii, then. Your first payment."),
   ("npc6_payment_response", "{!}."),
-  ("npc7_payment_response", "No, of course not. Here's {reg3} denars."),
-  ("npc8_payment_response", "Oh, I am no pauper! Here's {reg3} denars for you."),
-  ("npc9_payment_response", "Very well, here's {reg3} denars."),
-  ("npc10_payment_response", "Of course. Here, {reg3} denars."),
-  ("npc11_payment_response", "Very well, here's {reg3} denars. Make yourself ready. We leave soon."),
+  ("npc7_payment_response", "No, of course not. Here's {reg3} denarii."),
+  ("npc8_payment_response", "Oh, I am no pauper! Here's {reg3} denarii for you."),
+  ("npc9_payment_response", "Very well, here's {reg3} denarii."),
+  ("npc10_payment_response", "Of course. Here, {reg3} denarii."),
+  ("npc11_payment_response", "Very well, here's {reg3} denarii. Make yourself ready. We leave soon."),
   ("npc12_payment_response", "{!}."),
-  ("npc13_payment_response", "Of course, here's {reg3} denars. Make ready to leave soon."),
-  ("npc14_payment_response", "All right, here's {reg3} denars. You are most welcome in our company."),
-  ("npc15_payment_response", "Yes, here's {reg3} denars. Glad to have you with us."),
-  ("npc16_payment_response", "Well, here's {reg3} denars for you. Make yourself ready."),
+  ("npc13_payment_response", "Of course, here's {reg3} denarii. Make ready to leave soon."),
+  ("npc14_payment_response", "All right, here's {reg3} denarii. You are most welcome in our company."),
+  ("npc15_payment_response", "Yes, here's {reg3} denarii. Glad to have you with us."),
+  ("npc16_payment_response", "Well, here's {reg3} denarii for you. Make yourself ready."),
   ("npc17_payment_response", "{!}"),
-  ("npc18_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc19_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc20_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc21_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc22_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc23_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc24_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc25_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc26_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc27_payment_response", "Very well, {reg3} denars for you."),
-  ("npc28_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc29_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc30_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
+  ("npc18_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc19_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc20_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc21_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc22_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc23_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc24_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc25_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc26_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc27_payment_response", "Very well, {reg3} denarii for you."),
+  ("npc28_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc29_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc30_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
   ("npc31_payment_response", "{!}."),##special
   ("npc32_payment_response", "{!}."),
   ("npc33_payment_response", "{!}."),
   ("npc34_payment_response", "{!}"),
   ("npc35_payment_response", "{!}"),
   ("npc36_payment_response", "{!}."),
-  ("npc37_payment_response", "Very well, here's {reg3} denars. Now, go buy your stuff, we leave at dawn."),
-  ("npc38_payment_response", "Very well, here's {reg3} denars. Now, fall in with the rest."),
+  ("npc37_payment_response", "Very well, here's {reg3} denarii. Now, go buy your stuff, we leave at dawn."),
+  ("npc38_payment_response", "Very well, here's {reg3} denarii. Now, fall in with the rest."),
   ("npc39_payment_response", "{!}"),
-  ("npc40_payment_response", "Here's {reg3} denars. Now, fall in with the rest."),
+  ("npc40_payment_response", "Here's {reg3} denarii. Now, fall in with the rest."),
   ("npc41_payment_response", "{!}"),
-  ("npc42_payment_response", "Well. {reg3} denars for you. I am sure you are worth it."),
+  ("npc42_payment_response", "Well. {reg3} denarii for you. I am sure you are worth it."),
 
   ("npc1_morality_speech", "Oy -- master. Please don't take this the wrong way, but it's a hard life and it's a bit much that we {s21}."
 	+" Take a little more care in the future, captain, if you don't mind my saying."),
@@ -2326,7 +2326,7 @@ strings = [
 	+" For example, long ago, as the Persians ruled over the world, the Scythians pillaged their lands."
 	+" Then the Persians, lead by Darius, crossed the Danube and invaded Scythian lands. But the Scythians avoided any combat. Haha, the Persian army marched"
 	+" through all their land, but never fought any battle!"),
-  ("npc2_home_description_2", "I had loaded up on saffron, cinnamon, cloves, pepper and other spices and a chest full of denars."
+  ("npc2_home_description_2", "I had loaded up on saffron, cinnamon, cloves, pepper and other spices and a chest full of denarii."
 	+" I estimated that I could buy linens, furs, velvet, iron and wool, and the extra horses to carry them back, and I'd still make a profit."
 	+" I just hadn't figured in the Parthian raiders, who apparently don't care for others cutting in on their monopoly."),
   ("npc3_home_description_2", "Maybe, sometime in the future I will also marry a Thracian man? Who knows, what fate brings."),
@@ -2376,7 +2376,7 @@ strings = [
   ("npc25_home_description_2", "Only the great Julius Caesar managed to rebuild it properly. And now, it's the biggest city West of Rome! Some say we are half a million people here. Only Rome has more. We have great temples, amphitheaters, grain, elephants and lions, and did I mention the dates?! It's hard to believe this land was once Rome's greatest enemy."),
   ("npc26_home_description_2", "Bosphorus was been a good vassal state. They kept good order here, controlled trade, sent riches back to Rome. Most of the time, they kept the Scythians up North in check and that's no easy feat, let me tell you that!^Those barbarians are born in the saddle. They have horses for all, man, woman and child. They don't stand and fight like civilized armies. But holding this place is worth it, though. The two rivers on either side of Taurica go far, far inland. Lots of trade flowing down these rivers. And the horse barbarians are no match for our heavy infantry on top of city walls."),
   ("npc27_home_description_2", "So you can imagine the kind of folk who live here. Heh, I'd take the cowardliest fishmonger from Emerita to hold the line next to me before I'd take any of those soft rich boys from Rome. Present company excluded, of course.^We know how to party here, too. See that amphitheater? The whole town can fit in the stands. And you haven't seen a four-horse chariot race until you've seen one in Emerita, that's for sure!"),
-  ("npc28_home_description_2", "Every last denar with Nero's damn fat mug on it is a shiny bit of suffering and despair. It's a sick man's life slowly suffocating after he's given up.^^Gods, I hate silver! You promise me, Dominus. If I ever fall in battle and all is lost, you drive this gladius straight through my heart. I will not die a slave."),
+  ("npc28_home_description_2", "Every last denarius with Nero's damn fat mug on it is a shiny bit of suffering and despair. It's a sick man's life slowly suffocating after he's given up.^^Gods, I hate silver! You promise me, Dominus. If I ever fall in battle and all is lost, you drive this gladius straight through my heart. I will not die a slave."),
   ("npc29_home_description_2", "It's not his Garum I want you to try, though. This man makes the best gourmet dishes from his finest catch, too. Just picture it: prime giant red mullet, the kind you can pay thousands of sesterces for, freshly grilled and sizzling, with charred onions, pine nuts, topped with fresh herbs. Mmm, that's a meal fit for a Caesar!"),
   ("npc30_home_description_2", "This frontier might be colored Roman on paper, but the Empire is not rooted as deep here as in Italia or Graecia. We were always ready for revolts here. When we weren't chasing bandits, that is.^"
 	+" Some would use the bogs to flee from us. And we let them. No shame in that, Dominus. I led a pursuit in there once. The things we saw cannot be unseen. The gods reigning dominion over these bogs are pure evil, and no mortal dare ire them. Even the birds don't fly there, and what more omen does anyone need?"),
@@ -2550,7 +2550,7 @@ strings = [
 	+" particularly us poor folk. If you would, as new Princeps, who took the throne, issue a great amnesty"
 	+" for all but the worst prisoners in his dungeons, giving people a second chance to make something of themselves --"
 	+" like you gave me a second chance, Master."), #Pravare Ytarim
-  ("npc2_kingsupport_2", "Most of the nobles of this land -- well, let's just say that they never held a denar that they didn't"
+  ("npc2_kingsupport_2", "Most of the nobles of this land -- well, let's just say that they never held a denarius that they didn't"
 	+" collect as rent or take as pillage. You, on the other hand, have some experience of commerce and trade, of the effort and risk"
 	+" involved in making sure that men don't go hungry in Alexandria while there's a glut of grain in Rome, to give an example...."
 	+" If you like, captain, I reckon I could find some support for you among the merchants of this realm."), #Marius Gaius
@@ -2575,7 +2575,7 @@ strings = [
 	+" settle it sword to sword, according to the old ways, and let the gods decide who is in the right."), #Hildr
   ("npc9_kingsupport_2", "I would and others would too. But here's what I think -- you need to show the noble Romans that you'll uphold their"
 	+" ancient rights. Right now, the Empire is a mess -- the Princeps spits on the mos maiorum and ignores old traditions."
-	+" He does what ever he wants, celebrates extravagant parties, wastes tons of denars for nothing but his pleasures."
+	+" He does what ever he wants, celebrates extravagant parties, wastes tons of denarii for nothing but his pleasures."
 	+" So I say you make things, like it was in Augustian times -- restoration of the old traditions and values."), #Aturius Spurus
   ("npc10_kingsupport_2", "Certainly, {Brother/Sister}. But I'd ask that you consider a thought of mine. If you became Princeps,"
 	+" then I'd ask you open your court to the common folks, and not just to the nobles, the rich and the powerful."
@@ -2719,7 +2719,7 @@ strings = [
 	+" kinfolk -- well, they would start talking of you as a Caesar, and that would pave your way to the throne. Shall I do that, Master?"), #Pravare Ytarim
   ("npc2_kingsupport_3", "If you like, captain, I can take a few weeks to visit the townhalls and caravanseries"
 	+" where I have contacts, and explain to them that, in you, they will have a Princeps who will check the rapacious nobles,"
-	+" who, with their tariffs and taxes, would strangle commerce for the sake of a few extra denars to spend on their wars and their feasts."
+	+" who, with their tariffs and taxes, would strangle commerce for the sake of a few extra denarii to spend on their wars and their feasts."
 	+" What do you say to that, captain?"), #Marius Gaius
   ("npc3_kingsupport_3", "If you were to make such a pledge, Commander, I think that it would help many of the nobles of this land overcome"
 	+" any reluctance that they might have. If your aim is to restore the old Roman system, then arguably you are a more legitimate Caesar"
@@ -3426,7 +3426,7 @@ strings = [
 
   ##diplomacy start+
   #Make gender correct, using reg4 for the gender of s54.  Making this work required altering script_get_relevant_comment_to_s42
-  ("comment_you_captured_a_lord_allied_friendly_spiteful",   "I heard that you captured {s54}. I hope that you squeezed {reg4?her:him} for every denar."),
+  ("comment_you_captured_a_lord_allied_friendly_spiteful",   "I heard that you captured {s54}. I hope that you squeezed {reg4?her:him} for every denarius."),
   ("comment_you_captured_a_lord_allied_unfriendly_spiteful", "I heard that you captured {s54}. Your coffers must be well-bloated with ransom by now. Such a pity that money cannot transform a low-born cur into a {gentleman/gentlewoman}!"),#also gentleman -> {gentleman/gentlewoman}
   ("comment_you_captured_a_lord_allied_chivalrous",          "I heard that you captured {s54}. Well done. I assume, of course, that {reg4?she:he} has been been treated with the honours due {reg4?her:his} rank."),
   ("comment_you_captured_a_lord_allied",                     "I heard that you captured {s54}. Well done. {reg4?Her:His} ransom must be worth quite something."),
@@ -5082,7 +5082,7 @@ strings = [
   ("s12s15_has_no_particular_reason_to_continue_the_war_with_s16_and_would_probably_make_peace_if_given_the_opportunity", "{s12}{s15} has no particular reason to continue the war with {s16}, and would probably make peace if given the opportunity."),
   ("s12s15_seems_to_be_willing_to_improve_relations_with_s16", "{s12}{s15} seems to be willing to improve relations with {s16}."),
   ("excuse_me_how_can_you_possibly_imagine_yourself_worthy_to_marry_into_our_family", "Excuse me? How can you possibly imagine yourself worthy to marry into our family?"),
-  ("em_with_regard_to_her_ladyship_we_were_looking_specifically_for_a_groom_of_some_distinction_fight_hard_count_your_dinars_and_perhaps_some_day_in_the_future_we_may_speak_of_such_things_my_good_man", "Em... With regard to her ladyship, we were looking specifically for a {groom/bride} of some distinction. Fight hard, count your denars, and perhaps some day in the future we may speak of such things, my good {man/woman}!"), #dckplmc start+
+  ("em_with_regard_to_her_ladyship_we_were_looking_specifically_for_a_groom_of_some_distinction_fight_hard_count_your_dinars_and_perhaps_some_day_in_the_future_we_may_speak_of_such_things_my_good_man", "Em... With regard to her ladyship, we were looking specifically for a {groom/bride} of some distinction. Fight hard, count your denarii, and perhaps some day in the future we may speak of such things, my good {man/woman}!"), #dckplmc start+
   ("em_with_regard_to_her_ladyship_we_were_looking_specifically_for_a_groom_of_some_distinction", "Em... With regard to her ladyship, we were looking specifically for a {groom/bride} of some distinction."),
   ("it_is_too_early_for_you_to_be_speaking_of_such_things_you_are_still_making_your_mark_in_the_world", "It is too early for you to be speaking of such things. You are still making your mark in the world."),
   ("you_dont_serve_the_s4_so_id_say_no_one_day_we_may_be_at_war_and_i_prefer_not_to_have_to_kill_my_inlaws_if_at_all_possible", "You don't serve the {s4}, so I'd say no. One day we may be at war, and I prefer not to have to kill my in-laws, if at all possible."),
@@ -6129,7 +6129,7 @@ strings = [
   ("velvet_site", "dyeworks"),
 
   ("under_sequestration", "Under sequestration"),
-  ("describe_secondary_input", " In addition, you will also need to purchase {s11} worth {reg10} denars."),
+  ("describe_secondary_input", " In addition, you will also need to purchase {s11} worth {reg10} denarii."),
   ("profit", "profit"),
   ("loss", "loss"),
 
@@ -6340,10 +6340,10 @@ strings = [
   ("dplmc_fief_exchange_refuse_s14_attack", "Speak of this to me later when {s14} is not under attack."),
 
   ("dplmc_fief_exchange_accept", "That exchange is acceptable to me."),
-  ("dplmc_fief_exchange_accept_reg3_denars", "That exchange is acceptable to me, if you are willing to provide {reg3} denars to cover my expenses from the relocation."),
+  ("dplmc_fief_exchange_accept_reg3_denars", "That exchange is acceptable to me, if you are willing to provide {reg3} denarii to cover my expenses from the relocation."),
 
   ("dplmc_fief_exchange_confirm","It is settled then."),
-  ("dplmc_fief_exchange_confirm_reg3_denars","It is settled then.  Here are your {reg3} denars."),
+  ("dplmc_fief_exchange_confirm_reg3_denars","It is settled then.  Here are your {reg3} denarii."),
   #Other dialog
   ("dplmc_your_s11_s10", "Your {s11}, {s10}"),
   ("dplmc_reg6my_reg7spouse", "{reg6?M:m}y {reg7?love:{husband/wife}}"),
@@ -6704,9 +6704,9 @@ strings = [
   ("pcamp_near_s9", "near {s9}"),
   ("pcamp_too_many_camps", "You already have too many active permanent camps."),
   ("pcamp_no_free_companions", "You don't have any companions available to command a permanent camp."),
-  ("pcamp_no_reg7_denars", "You don't have {reg7} denars needed to start a permanent camp."),
+  ("pcamp_no_reg7_denars", "You don't have {reg7} denarii needed to start a permanent camp."),
   ("pcamp_too_far_from_s0", "You are too far from {s0} for the camp to supply itself."),
-  ("pcamp_can_start_camp_s0_reg5_reg6_reg7", "You can leave a companion to manage a camp near {s0} with a part of your troops until you return. He will require {reg7} denars for initial expenses.^^You can create {reg5} more camps and have {reg6} denars available."),
+  ("pcamp_can_start_camp_s0_reg5_reg6_reg7", "You can leave a companion to manage a camp near {s0} with a part of your troops until you return. He will require {reg7} denarii for initial expenses.^^You can create {reg5} more camps and have {reg6} denarii available."),
   ("pcamp_s0_destroyed", "{s0} has been destroyed!"),
   ("pcamp_is_commanding_near_s5", "Is commanding a camp near {s5}."),
   ("pcamp_s0s_camp", "{s0}'s Camp"),
@@ -6723,10 +6723,10 @@ strings = [
 ("decree_beggingban_name", "Ban on begging"),
 
 ##decree explanation strings
-("decree_curfew", "It is no longer allowed to walk around the streets during night time. This may lower criminality and may helps to destroy smuggler gangs. It will also produce costs of 500 denars for the additional night watch."),
-("decree_control", "Controlling who enters and leaves a town can help to lower banditry. The additional controls will cost 500 denars directly taken from the local center rents."),
-("decree_garbage_collection", "Founding a proper troop to collect garbage that lies around the street will increase health and prevent diseases. It will cost 1000 denars to maintain."),
-("decree_housing", "To reduce poverty it is not unusual that the ruler of a town founds special 'almshouses' in which the poor can life. There will be also additional costs of 5000 denars to maintain the houses. But it can also prevent poor people from slipping into crime."),
+("decree_curfew", "It is no longer allowed to walk around the streets during night time. This may lower criminality and may helps to destroy smuggler gangs. It will also produce costs of 500 denarii for the additional night watch."),
+("decree_control", "Controlling who enters and leaves a town can help to lower banditry. The additional controls will cost 500 denarii directly taken from the local center rents."),
+("decree_garbage_collection", "Founding a proper troop to collect garbage that lies around the street will increase health and prevent diseases. It will cost 1000 denarii to maintain."),
+("decree_housing", "To reduce poverty it is not unusual that the ruler of a town founds special 'almshouses' in which the poor can life. There will be also additional costs of 5000 denarii to maintain the houses. But it can also prevent poor people from slipping into crime."),
 ("decree_enforcement_law", "Sometimes the town watch is a bit too soft with criminals. By ordering to enforce law strictly banditry may be reduced."),
 ("decree_beggingban", "Beggars are an annoying and common thing in every center. Banning will not help to ease poverty but it will remove those scums from public places."),
 ##kreta
@@ -7010,9 +7010,9 @@ strings = [
 ("offense_of_empress_6", "It is said she loves wine, food and parties. The extravagance of her meals are legendary, as her weight."),
 ("offense_of_empress_end", "end"),
 
-("parties_of_wife_1", "used {reg30} denars from the treasury for extravagant meals, food, wine etc. It seems she really like dinner."),
-("parties_of_wife_2", "used {reg30} denars from the treasury for extravagant parties. It seems she has not informed you about those events. The letter contains a guest list. This list consists mostly of young noblemen, who are famous for their love affairs."),
-("parties_of_wife_3", "has spend {reg30} denars from the treasury for expensive and extravagant meals. For her dinner parties she has invited young nobles."),
+("parties_of_wife_1", "used {reg30} denarii from the treasury for extravagant meals, food, wine etc. It seems she really like dinner."),
+("parties_of_wife_2", "used {reg30} denarii from the treasury for extravagant parties. It seems she has not informed you about those events. The letter contains a guest list. This list consists mostly of young noblemen, who are famous for their love affairs."),
+("parties_of_wife_3", "has spend {reg30} denarii from the treasury for expensive and extravagant meals. For her dinner parties she has invited young nobles."),
 ("parties_of_wife_end", "end"),
 
 ("building_1", "aqueduct"),
@@ -7511,7 +7511,7 @@ strings = [
 ("patrol_nothing_vignette11", "a dead bird, decomposing on the ground, definitely a bad omen."),
 ("patrol_end", "patrol end"),
 ("patrol_text_peaceful", "March, march, march. The potentially dangerous task of patrolling with a small force turned typically uneventful again. The unit covered its designated route, taking great care to avoid potential ambushes. You saw {s2} After hours have passed you return to the legion."),
-("village_x_has_been_raided_player_pay", "You have to pay {reg23} denars for repair works in {s31}, which has been raided."),
+("village_x_has_been_raided_player_pay", "You have to pay {reg23} denarii for repair works in {s31}, which has been raided."),
 ("fake_rumor_1", "You hear that {s32} has been involved in the murder of a senator, who was a supporter of your case."),
 ("fake_rumor_2", "You hear rumors about {s32} wicked character. Terrible rumors are spreading through Rome about his awful habits."
 	+" He seems to enjoy himself with various slaves during parties he celebrate in the name of Bachus."),
@@ -7544,7 +7544,7 @@ strings = [
 
 ("start_emperor_1", "You are near Rome, the eternal city, and the capital of the Imperium Romanum, your Empire."),
 ("start_tribune_1", "You have been assigned an auxiliary cohort to command. Wages for your troops are paid"
-	+" from the imperial treasury, and with your current rank, you receive a salary of 1000 denars. Since you are not married, you must"
+	+" from the imperial treasury, and with your current rank, you receive a salary of 1000 denarii. Since you are not married, you must"
 	+" pay a punitive tax (Lex Iulia et Papia)."),
 ("start_slave_1", "You are brought to the slave market. As a strong man, you are on track to spend the rest of your life making yourself an early grave in a quarry or mine. But Fortuna had something else in mind. The spoiled daughter of the landowner Marcus Gaius Crachius saw you on the slave market and was impressed by your muscles. She immediately bought you as a 'toy'.^Your new life turned out to be a nightmare. You had to satisfy her darkest desires, and if you didn't act as she demanded, you were punished and tortured.^As you cannot stand this life, you decide to act. You rally support among the slaves. Since the master is incredibly unpopular, every last slave agrees to your plan to revolt. The slaves carefully collect any tool which can be used as a weapon. On the day of reckoning, the slaves gather in front of the master's house. The time has come to fight for your future!"),
 
@@ -7780,7 +7780,7 @@ strings = [
 ("battle_of_bedriacum_default", "The news of your victory at the battle of Bedriacum echoes through each corner of the Empire. This bloodshed will surely end the struggle. May your reign be long and blessed by the gods!"),
 
 ##buisness
-("comment_you_attacked_buisness_enemy_benevolent",    "You have interfered my business and caused me a lot of trouble and denars. I will not forget this!"),
+("comment_you_attacked_buisness_enemy_benevolent",    "You have interfered my business and caused me a lot of trouble and denarii. I will not forget this!"),
 ("comment_you_attacked_buisness_enemy_spiteful",      "You have attacked my business and caused much trouble. You will pay for that one day."),
 ("comment_you_attacked_buisness_enemy_coldblooded",   "You have interfered my business and caused much trouble. I lost a large sum. I will make you think twice before you disrupt my revenues like that again."),
 ("comment_you_attacked_buisness_enemy",               "You interfered my business, caused trouble and costs. You will pay that back in one way or the other I will make sure!"),
@@ -7991,7 +7991,7 @@ strings = [
 ("hyroglyphs_2", "Echnaton, son of Aton, praises his name... Aten bends low, near the earth, to watch over his creation; he takes his place in the sky for the same purpose; he wearies himself in the service of the creatures; he shines for them all; he gives them sun and sends them rain. The unborn child and the baby chick are cared for; and Akhenaten asks his divine father to 'lift up' the creatures for his sake so that they might aspire to the condition of perfection of his father, Aten..."),
 
 ("reg0_reg2", "{!}{reg0} (netto change: {reg2})"),
-("reg0_reg3", "{!}{reg0} ({reg3} denars are reinvested)"),
+("reg0_reg3", "{!}{reg0} ({reg3} denarii are reinvested)"),
 
 ("salary_string_1", "Salary (tribunus)"),
 ("salary_string_2", "Salary (praefectus)"),
@@ -8002,9 +8002,9 @@ strings = [
 ("extort_toll", "Raise special tariffs"),
 ("extort_concile", "Raid the town counsel"),
 
-("extort_tax_xp", "You can raise a special tax. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect this tax and would give you {reg30} denars: But it will upset the citizens of {s39}."),
-("extort_toll_xp", "You can raise a special toll on goods which are traded today. This would upset the merchants of {s39} and the villagers of the surrounding villages, who come here to sell their goods. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect the toll and would give you {reg30} denars."),
-("extort_concile_xp", "The town counsel has {reg31} in their treasury. You can force them to take over their funds. It would take you 2 hours and you would gain {reg31} denars."),
+("extort_tax_xp", "You can raise a special tax. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect this tax and would give you {reg30} denarii: But it will upset the citizens of {s39}."),
+("extort_toll_xp", "You can raise a special toll on goods which are traded today. This would upset the merchants of {s39} and the villagers of the surrounding villages, who come here to sell their goods. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect the toll and would give you {reg30} denarii."),
+("extort_concile_xp", "The town counsel has {reg31} in their treasury. You can force them to take over their funds. It would take you 2 hours and you would gain {reg31} denarii."),
 
 
 ("center_manage_denied", "You need to be either the governor of the town or increase faction centralization."),
@@ -8225,10 +8225,10 @@ strings = [
 ("irigation_description_rome", "Improving the irrigation of farms and pasture land will improve the fertility of the lands. It will also lower probability of droughts."),
 
 ("manor_name_rome", "Manor"),
-("manor_description_rome", "A manor lets you rest at the village and pay your troops half wages while you rest. You can also garrison troops in your manor to protect the village from raiding. You won't have to pay for the upkeep of stationed troops, but you can only add up to maximal 150 men. Furthermore, you can add prisoners, who will work in your village and generate additional wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("manor_description_rome", "A manor lets you rest at the village and pay your troops half wages while you rest. You can also garrison troops in your manor to protect the village from raiding. You won't have to pay for the upkeep of stationed troops, but you can only add up to maximal 150 men. Furthermore, you can add prisoners, who will work in your village and generate additional wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 
 ("guard_posts_name_rome", "Guard Posts"),
-("guard_posts_description_rome", "Additional guard posts will help fighting banditry. Bandits will no longer be able to infest the settlement at night and looter will no longer spawn near the settlement. It will cost 300 denars upkeep which will be taken directly from the rents."),
+("guard_posts_description_rome", "Additional guard posts will help fighting banditry. Bandits will no longer be able to infest the settlement at night and looter will no longer spawn near the settlement. It will cost 300 denarii upkeep which will be taken directly from the rents."),
 
 ("sewers_name_rome", "Sewers"),
 ("sewers_description_rome", "Building sewers and keeping the poop out of the streets will improve the health of the population and decrease probability of diseases."),
@@ -8283,47 +8283,47 @@ strings = [
 ("smithies_description_nomadic", "Smithies will increase production of tools and other metal goods and thus increase wealth and rents."),
 
 ("fishing_name_rome", "Fishing Port"),
-("fishing_description_rome", "Building an own port for a fishing fleet will increase the production of fish and thus increase rents. It will also generate 500 denars which are added to the rents (tolls)."),
+("fishing_description_rome", "Building an own port for a fishing fleet will increase the production of fish and thus increase rents. It will also generate 500 denarii which are added to the rents (tolls)."),
 
 ("roads_name_rome", "Paved Roads"),
-("roads_description_rome", "Roads simplify transportation and will increase trade and prosperity. It will also generate 2,000 denars which are added to the rents (tolls)."),
+("roads_description_rome", "Roads simplify transportation and will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
 ("roads_name_eastern", "Royal Toll Roads"),
-("roads_description_eastern", "Roads simplify transportation and will increase trade and prosperity. It will also generate 2,000 denars which are added to the rents (tolls)."),
+("roads_description_eastern", "Roads simplify transportation and will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
 ("roads_name_germanic", "Meadhall"),
-("roads_description_germanic", "Building a large meadhall will increase trade and prosperity as people from nearby villages will come to spend their time there. It will also generate 2,000 denars which are added to the rents."),
+("roads_description_germanic", "Building a large meadhall will increase trade and prosperity as people from nearby villages will come to spend their time there. It will also generate 2,000 denarii which are added to the rents."),
 ("roads_name_british", "Farmer's Market"),
-("roads_description_british", "A large marketplace will increase trade and prosperity. It will also generate 2,000 denars which are added to the rents."),
+("roads_description_british", "A large marketplace will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents."),
 ("roads_name_dacian", "Royal Treasury"),
-("roads_description_dacian", "Minting coins and additional tax collectors will increase your income from trade and it will also generate 2,000 denars which are added to the rents."),
+("roads_description_dacian", "Minting coins and additional tax collectors will increase your income from trade and it will also generate 2,000 denarii which are added to the rents."),
 
 ("roads_name_nomadic", "Marketplace"),
-("roads_description_nomadic", "A marketplace will increase trade and prosperity. It will also generate 2,000 denars which are added to the rents (tolls)."),
+("roads_description_nomadic", "A marketplace will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
 
 ("hospital_name_rome", "Hospital"),
-("hospital_description_rome", "A hospital will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_rome", "A hospital will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_eastern", "Shabestans"),
-("hospital_description_eastern", "Shabestans are an underground floor with windcatchers to provide a cool environment. Thus, they will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_eastern", "Shabestans are an underground floor with windcatchers to provide a cool environment. Thus, they will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_germanic", "Healer"),
-("hospital_description_germanic", "A healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_germanic", "A healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_british", "Druid Healer"),
-("hospital_description_british", "A druidic healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_british", "A druidic healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_dacian", "Grove of Derzelas"),
-("hospital_description_dacian", "Gaining the blessing of Derzelas will increase the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_dacian", "Gaining the blessing of Derzelas will increase the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_nomadic", "Shaman's Hut"),
-("hospital_description_nomadic", "A shaman will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_nomadic", "A shaman will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 
 ("habour_name_rome", "Great Harbour"),
-("habour_description_rome", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_rome", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_eastern", "Grand Merchant Port"),
-("habour_description_eastern", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_eastern", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_germanic", "Docks"),
-("habour_description_germanic", "Building docks and a proper port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_germanic", "Building docks and a proper port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_british", "Port"),
-("habour_description_british", "Building a port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_british", "Building a port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_dacian", "Harbour"),
-("habour_description_dacian", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_dacian", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_nomadic", "Basic Port"),
-("habour_description_nomadic", "Building a basic port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_nomadic", "Building a basic port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 
 
 ("farming_name_rome", "Provincial Farming"),
@@ -8355,17 +8355,17 @@ strings = [
 
 
 ("trader_name_rome", "Provincial Trader"),
-("trader_description_rome", "Investment into local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_rome", "Investment into local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_eastern", "Bazaar"),
-("trader_description_eastern", "Investment into local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_eastern", "Investment into local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_germanic", "Fair"),
-("trader_description_germanic", "Greating a place for fairs and markets will increase local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_germanic", "Greating a place for fairs and markets will increase local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_british", "Tavern"),
-("trader_description_british", "By building a tavern people from nearby villages will come and thus increases trade and wealth. Additionally you will get 1,000 denars per month added to your rents."),
+("trader_description_british", "By building a tavern people from nearby villages will come and thus increases trade and wealth. Additionally you will get 1,000 denarii per month added to your rents."),
 ("trader_name_dacian", "Public Markets"),
-("trader_description_dacian", "Investment into regional trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_dacian", "Investment into regional trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_nomadic", "Trading Post"),
-("trader_description_nomadic", "A trading post will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_nomadic", "A trading post will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 
 
 ("ironmine_name_rome", "Iron mine"),
@@ -8379,42 +8379,42 @@ strings = [
 
 #house of strength - for easterns
 ("training_name_rome", "Training Ground"),
-("training_description_rome", "A training ground allows your troops to train while garrisoned in the center. It will cost 1000 denars a month to maintain (costs will be paid from rents)."),
+("training_description_rome", "A training ground allows your troops to train while garrisoned in the center. It will cost 1000 denarii a month to maintain (costs will be paid from rents)."),
 
 ("mill_simple_name_rome", "Mill"),
-("mill_simple_description_rome", "A mill increases village prosperity every month. And it will also add an additional income of 600 denars to the center rents (fees)."),
+("mill_simple_description_rome", "A mill increases village prosperity every month. And it will also add an additional income of 600 denarii to the center rents (fees)."),
 
 ("firefighters_name_rome", "Fire Department"),
-("firefighters_description_rome", "Organizing a professional fire department can decrease the chance of devastating fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_rome", "Organizing a professional fire department can decrease the chance of devastating fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_eastern", "Windcatchers"),
-("firefighters_description_eastern", "Windcatchers are special buildings designed to decrease temprature in the city. Hence they decreases the chance of devastating fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_eastern", "Windcatchers are special buildings designed to decrease temprature in the city. Hence they decreases the chance of devastating fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_germanic", "Sanctuary of Wodanaz"),
-("firefighters_description_germanic", "Creating a sacred grove for Wodanaz to honour him will decrease the chance of devastating events like fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_germanic", "Creating a sacred grove for Wodanaz to honour him will decrease the chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_british", "Sanctuary of Epona"),
-("firefighters_description_british", "Creating a large sanctuary for Epona will appease her and decrease the chance of devastating events like fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_british", "Creating a large sanctuary for Epona will appease her and decrease the chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_dacian", "Basic Sanitations"),
-("firefighters_description_dacian", "Make waster disposal more efficient to decrease chance of devastating events like fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_dacian", "Make waster disposal more efficient to decrease chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_nomadic", "Altar"),
-("firefighters_description_nomadic", "Build an altar to honor the gods. This will decrease chance of devastating events like fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_nomadic", "Build an altar to honor the gods. This will decrease chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 
 ("watchtower_name_rome", "Watch Tower"),
 ("watchtower_description_rome", "A watch tower lets the villagers raise alarm earlier. The time it takes for enemies to loot the village increases by 50%."),
 
 ("school_name_rome", "School"),
-("school_description_rome", "A school increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_rome", "A school increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_eastern", "Archery Games"),
-("school_description_eastern", "Games will entertain the population and thus increase your relation by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_eastern", "Games will entertain the population and thus increase your relation by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_germanic", "Storyteller"),
-("school_description_germanic", "Building a house for a storyteller will entertain the population and thus increase the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_germanic", "Building a house for a storyteller will entertain the population and thus increase the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_british", "Hall of the Elders"),
-("school_description_british", "Building a hall where the elders can gather will increase your realtion by +1 each month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_british", "Building a hall where the elders can gather will increase your realtion by +1 each month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_dacian", "School of Nobles"),
-("school_description_dacian", "A school to teach the local aristocracy will increases the loyality by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_dacian", "A school to teach the local aristocracy will increases the loyality by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_nomadic", "Learning Grove"),
-("school_description_nomadic", "A learning grove increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_nomadic", "A learning grove increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 
 ("messenger_post_name_rome", "Messenger Post"),
-("messenger_post_description_rome", "A messenger post lets the inhabitants send you a message whenever enemies are nearby, even if you are far away from here. It will cost 250 denars a month to maintain (costs will be paid from rents)."),
+("messenger_post_description_rome", "A messenger post lets the inhabitants send you a message whenever enemies are nearby, even if you are far away from here. It will cost 250 denarii a month to maintain (costs will be paid from rents)."),
 ("prison_tower_name_rome", "Prison"),
 ("prison_tower_description_rome", "A prison reduces the chance of captives held here running away successfully. A prisoner tower also allows you to torture your prisoners."),
 
@@ -8812,7 +8812,7 @@ strings = [
 ("diplo_provocations","provocations"),
 ("diplo_strings_end","diplo_strings_end"),
 
-("diplo_casus_expired_reparations_accepted","In order to avoid war they decide to accept the demand. A sum of {reg40} denars has been paid as tribute."),
+("diplo_casus_expired_reparations_accepted","In order to avoid war they decide to accept the demand. A sum of {reg40} denarii has been paid as tribute."),
 ("diplo_casus_expired_reparations_refused_war","They refuse the demand and declare war!"),
 
 ("minor_faction_description_garamantes",
@@ -9674,7 +9674,7 @@ strings = [
 
 ("here_is_what_i_have_on_offer", "Here's what I have on offer:^^{s3}"),
 ("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),
-("i_will_take_the_reg1_s1_for_reg2_denars", "I'll take the {reg1} {s1} for {reg2} denars."),
+("i_will_take_the_reg1_s1_for_reg2_denars", "I'll take the {reg1} {s1} for {reg2} denarii."),
 ("reg1_s1_have_been_added_to_your_party_as_prisoners", "{reg1} {s1} have been added to your party as prisoners."),
 
 ("household_mod_latifunida_limit_name", "Latifundia Limit"),
@@ -9703,7 +9703,7 @@ strings = [
 ("cook_quality_4_host",    "Your cooks are excellent and can turn even humble ingredients into a delicious meal."),
 ("cook_quality_4_guest_m", "This is truly a remarkable meal! The flavors are exquisite. You have some very talented cooks in your household."),
 ("cook_quality_4_guest_f", "What a delightful meal! Everything is cooked to perfection. Your cooks have truly outdone themselves."),
-("cook_quality_4_spouse",  "I must say, my dear, our cooks are worth every denar. Their meals are simply wonderful."),
+("cook_quality_4_spouse",  "I must say, my dear, our cooks are worth every denarius. Their meals are simply wonderful."),
 # Tier 3 (Competent)
 ("cook_quality_3_tooltip", "- A competent cook, capable of turning mundane ingredients into a respectable meal."),
 ("cook_quality_3_host",    "Your cooks are competent and capable of preparing a respectable meal that should please your guests."),
