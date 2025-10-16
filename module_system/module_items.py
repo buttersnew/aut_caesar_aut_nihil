@@ -4253,7 +4253,6 @@ weight(get_w_weight(55))|difficulty(9)|spd_rtng(get_1hw_speed(55))|weapon_length
 ["eastern_sica_rusty", "Old Sica", [("eastern_sica_rusty",0)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_cleaver|itc_parry_onehanded,
 get_w_price(55, get_w_weight(5558), get_1hw_speed(55), 25, 10),
 weight(get_w_weight(55))|difficulty(9)|spd_rtng(get_1hw_speed(55))|weapon_length(55)|swing_damage(25 , cut) | thrust_damage(10 ,  pierce),imodbits_sword_high, [], [fac_culture_8,fac_culture_6,fac_culture_7] ],
-
 # END EASTERN
 
 #Dacian

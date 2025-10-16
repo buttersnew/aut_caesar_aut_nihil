@@ -913,7 +913,7 @@ attrib_level_23, wp(120), knows_level_26, mercenary_face_1, mercenary_face_2 ],
 ["hired_blade", "Xenikos Peltastes", "Xenikoi Peltastai", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_commoners,
 [itm_throwing_spears_east,itm_throwing_spears_east]+eastern_shields_oval_armenian_1+eastern_shields_oval_parthian_2+eastern_sword_short+armenian_helm_heavy+eastern_armor_scale_armenian+eastern_armor_mail_parthian+eastern_boots_light,
 attrib_level_26, wp(130), knows_level_23, white_face_11, white_face_12 ],
-["mercenary_crossbowman", "Mercenarius Sagittarius", "Mercenarii Sagittarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["mercenary_bowman", "Mercenarius Sagittarius", "Mercenarii Sagittarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
 [itm_phrygian_cap_black,itm_phrygian_cap_green,itm_phrygian_cap_white,itm_iberian_light6,itm_iberian_light5,itm_iberian_light3,itm_iberian_light4,itm_caligea,itm_short_bow,itm_arrows,itm_mace_1,
 itm_spiked_club],
 attrib_level_18, wpe(100,135,135,135), knows_archer_basic, white_face_11, white_face_12 ],
@@ -2868,18 +2868,20 @@ itm_fur_hat,itm_nomad_cap,itm_footman_helmet,itm_mace_1,itm_boar_spear,itm_hand_
 itm_simple_hood_1,itm_simple_hood_2,itm_generic_poor1,itm_generic_poor2],
 attrib_level_12, wp(80), knows_level_12, bandit_face1, bandit_face2 ],
 ["brigand", "Sicarius", "Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
-[itm_throwing_spears,itm_wooden_shield,itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,
+[itm_throwing_spears,itm_wooden_shield,itm_hide_covered_round_shield,itm_eastern_sica_rusty,itm_hide_covered_round_shield_2,
 itm_leather_boots,itm_rawhide_coat,itm_pelt_coat,
 itm_fur_hat,itm_nomad_cap,itm_footman_helmet,itm_hand_axe,itm_mace_1,itm_boar_spear,
 itm_simple_hood_1,itm_simple_hood_2,itm_generic_poor1,itm_generic_poor2],
 attrib_level_18, wp(110), knows_level_18, bandit_face1, bandit_face2 ],
 
+["judean_sicarius", "Iudaicus Sicarius", "Iudaici Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,[itm_caligea, itm_eastern_sica, itm_eastern_sica_rusty,itm_sling_lead,itm_sling]+jew_tunics_1+jew_tunics_2+jew_robes + eastern_shields_wicker_smallround + desert_turbans_1 + desert_turbans_2 + eastern_shields_wicker,
+attrib_level_18_warrior, wp(160), knows_level_18_warrior, arab_face_young, arab_face_old ],
 
-["mountain_bandit", "Iudaicus Rebellis", "Iudaici Rebellis", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,
+["judean_rebel", "Iudaicus Rebellis", "Iudaici Rebellis", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,
 [itm_spiked_club,itm_sling_rock1,itm_sling_lead,itm_sling,itm_caligea,itm_javelin,itm_club,itm_club_2,itm_club_3,itm_ad_mixed_round_shields_07,
 itm_ad_mixed_round_shields_08,itm_old_gladius_1,itm_old_gladius_2,itm_eastern_helm1,itm_sarranid_felt_hat]+jew_tunics_1+jew_tunics_2+jew_robes,
 attrib_level_16_warrior, wp(135), knows_level_16_warrior, arab_face_young, arab_face_old ],
-["forest_bandit", "Hispanicus Rebellis", "Hispanici Rebellis", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
+["hispanic_bandit", "Hispanicus Rebellis", "Hispanici Rebellis", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_celtic_round_shild3,itm_celtic_round_shild2,itm_celtic_round_shild1,itm_iberian_light5,itm_iberian_light6,itm_iberian_heavy1,
 itm_iberian_medium2,itm_iberian_medium3,itm_caligea,itm_spear,itm_war_spear,itm_javelin,itm_hand_axe,itm_throwing_spears,
 itm_footman_helmet,itm_ad_mixed_round_shields_02,itm_ad_mixed_round_shields_01],
@@ -2900,13 +2902,13 @@ itm_ad_mixed_round_shields_05,itm_ad_mixed_round_shields_06
 attrib_level_26_warrior, wp(160), knows_level_26_warrior, scythian_face_11, scythian_face_12 ],
 
 #steppe bandits are now Alan raiders
-["steppe_bandit", "Alanna Baragatae", "Alan Baragatae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_outlaws,
+["alannic_raider", "Alanna Baragatae", "Alan Baragatae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_outlaws,
 [itm_light_lance,itm_khergit_bow_2,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_alan_light_1,itm_alan_light_2,itm_kaftan_1,itm_kaftan_2,itm_kaftan_3,
 itm_sarmatian_shoes,itm_alan_long_sword,itm_alan_long_sword_ring,itm_sarmatian_cap_1,itm_sarmatian_cap_2,itm_sarmatian_cap_3,itm_sarmatian_cap_4,itm_alan_light_helm,itm_alan_light_helm,
 ]+horse_steppe,
 attrib_level_23_warrior, wp(150), knows_archer_basic_eastern, scythian_face_21, scythian_face_22 ],
 
-["taiga_bandit", "Illyricus Sicarius", "Illyrici Sicarii", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
+["illyrian_bandit", "Illyricus Sicarius", "Illyrici Sicarii", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_spear,itm_javelin,itm_illyrian_medium3,itm_iberian_light1,itm_iberian_light2,
 itm_illyrian_medium4,itm_illyrian_medium1,itm_illyrian_shield_large1,itm_illyrian_shield_large2,
 itm_illyrian_shield_heavy1,itm_illyrian_shield_heavy2,
@@ -2945,11 +2947,11 @@ def_attrib|level(2), wp(50), knows_common, refugee_face1, refugee_face2 ],
 [itm_female_1_barb,itm_female_3_celt,itm_female_4_celt,itm_female_2_barb,itm_female_3_barb,itm_female_4_barb,itm_leather_boots,itm_celtic_boots,
 itm_butchering_knife,itm_butchering_knife_2,itm_hand_axe, itm_hunting_bow, itm_arrows,itm_fur_covered_shield],
 attrib_level_6, wp(85), knows_level_6, refugee_face1, refugee_face2 ],
-["fighter_woman", "Camp Defender", "Camp Defenders", tf_female|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_commoners,
+["camp_defender", "Camp Defender", "Camp Defenders", tf_female|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_commoners,
 [itm_female_3_barb,itm_female_4_barb,itm_female_1,itm_female_2,itm_female_3,itm_leather_boots,itm_celtic_boots,itm_fur_covered_shield,itm_simple_thraex_shield,
 itm_butchering_knife,itm_butchering_knife_2,itm_arrows,itm_short_bow,itm_boar_spear],
 attrib_level_12, wp(100), knows_level_12, refugee_face1, refugee_face2 ],
-["sword_sister", "Soldier Wife", "Soldier Wifes", tf_female|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+["soldier_wife", "Soldier Wife", "Soldier Wifes", tf_female|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_gloves|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
 [itm_female_3,itm_female_2,itm_female_3_celt,itm_female_2_celt,itm_female_2_barb,itm_female_3_barb,itm_female_4_barb,itm_leather_boots,itm_celtic_boots,
 itm_spear, itm_arrows,itm_short_bow,itm_fur_covered_shield,itm_simple_thraex_shield,itm_sword_akinakes],
 attrib_level_16, wp(120), knows_level_16, refugee_face1, refugee_face2 ],
@@ -7111,10 +7113,10 @@ tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows
 ["household_cook_6","{!}Cook","{!}Cook",
 tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common, white_face_11, white_face_12],
 
-["household_end", "end of household", "end of household", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0),
+["household_end", "end of household", "end of household", 0, no_scene, reserved, fac_neutral, [], def_attrib, wp(0),
 knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
-["troops_end", "END OF THE WORLD", "END OF THE WORLD", 0, no_scene, reserved, fac_dark_knights, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
+["troops_end", "END OF THE WORLD", "END OF THE WORLD", 0, no_scene, reserved, fac_neutral, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
 ]#end of file
 #Troop upgrade declarations
@@ -7194,10 +7196,12 @@ upgrade(troops,"judean_slinger_exp","judean_slinger_vet")
 upgrade(troops,"judean_skirmisher","judean_skirmisher_exp")
 upgrade(troops,"judean_skirmisher_exp","judean_skirmisher_vet")
 
-upgrade2(troops,"mountain_bandit","judean_light_clubman", "judean_light_spearman")
+upgrade2(troops,"judean_sicarius","judean_light_clubman_exp", "judean_light_spearman_exp")
+
+upgrade(troops,"judean_rebel","judean_sicarius")
 
 # upgrade(troops,"farmer","watchman")
-# upgrade2(troops,"watchman","caravan_guard","mercenary_crossbowman")
+# upgrade2(troops,"watchman","caravan_guard","mercenary_bowman")
 # upgrade2(troops,"caravan_guard","mercenary_swordsman","mercenary_horseman")
 # upgrade(troops,"mercenary_swordsman","hired_blade")
 # upgrade(troops,"mercenary_horseman","mercenary_cavalry")
@@ -7216,10 +7220,10 @@ upgrade(troops,"egyptian_village_walker","egyptian_infantry_light")
 # upgrade(troops,"slave_crusher","slaver_chief")
 
 upgrade(troops,"follower_woman","hunter_woman")
-upgrade(troops,"hunter_woman","fighter_woman")
-upgrade(troops,"fighter_woman","sword_sister")
+upgrade(troops,"hunter_woman","camp_defender")
+upgrade(troops,"camp_defender","soldier_wife")
 
-upgrade(troops,"steppe_bandit","alan_horse_archer")
+upgrade(troops,"alannic_raider","alan_horse_archer")
 upgrade(troops,"alan_horse_archer","alan_heavy_horse_archer")
 
 upgrade(troops,"refugee","follower_woman")

@@ -2820,7 +2820,7 @@ scripts = scripts_hardcoded + [
     (faction_set_slot, "fac_culture_15", slot_faction_town_spy_male_troop, "trp_spy_walker_1"),
     (faction_set_slot, "fac_culture_15", slot_faction_town_spy_female_troop, "trp_spy_walker_2"),
     #i think this is necessary
-    (faction_set_slot, "fac_mountain_bandits",  slot_faction_culture, -1),
+    (faction_set_slot, "fac_judean_rebels",  slot_faction_culture, -1),
 # Factions:
     (faction_set_slot, "fac_kingdom_1",  slot_faction_culture, "fac_culture_1"),
     (faction_set_slot, "fac_kingdom_1",  slot_faction_leader, "trp_kingdom_1_lord"),
@@ -2931,7 +2931,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_kingdom_19_lord", slot_troop_renown, 300),
 
     (faction_set_slot, "fac_kingdom_7",  slot_faction_culture, "fac_culture_7"),
-    (faction_set_slot, "fac_black_khergits",  slot_faction_culture, "fac_culture_7"),##roman peasant rebels
+    (faction_set_slot, "fac_roman_rebells",  slot_faction_culture, "fac_culture_7"),##roman peasant rebels
     (faction_set_slot, "fac_kingdom_7",  slot_faction_leader, "trp_kingdom_7_lord"),
 
     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_renown, 1500),
@@ -29326,9 +29326,9 @@ scripts = scripts_hardcoded + [
 
     (try_begin),
         #now jewish rebels
-        (party_template_get_slot, ":bandit_lair_party", "pt_mountain_bandits", slot_party_template_lair_party),
+        (party_template_get_slot, ":bandit_lair_party", "pt_judean_rebels_party", slot_party_template_lair_party),
         (gt, ":bandit_lair_party", 1),
-        (store_num_parties_of_template, ":num_parties", "pt_mountain_bandits"),
+        (store_num_parties_of_template, ":num_parties", "pt_judean_rebels_party"),
         (try_begin),
             (neq, "$jewish_revolt", 1),
             (store_add, reg63, ":unrest_mod", 3),
@@ -29343,7 +29343,7 @@ scripts = scripts_hardcoded + [
 
         (assign,":spawn_point","p_mountain_bandit_spawn_point1"),
         (set_spawn_radius, 5),###israel is small
-        (call_script, "script_spawn_party",":spawn_point","pt_mountain_bandits"),
+        (call_script, "script_spawn_party",":spawn_point","pt_judean_rebels_party"),
         (assign, ":spawned_party", reg0),
         (party_set_ai_behavior, ":spawned_party", ai_bhvr_patrol_party),
         (party_set_ai_object, ":spawned_party", ":spawn_point"),
@@ -29586,7 +29586,7 @@ scripts = scripts_hardcoded + [
 			(party_set_flags, ":new_camp", pf_disabled, 1),
             (party_set_slot, ":new_camp", slot_party_on_water, 1),# lair is on water
 		(else_try),
-			(eq, ":bandit_template", "pt_mountain_bandits"),
+			(eq, ":bandit_template", "pt_judean_rebels_party"),
 			(party_template_set_slot, ":bandit_template", slot_party_template_lair_party, ":new_camp"),
 			(party_set_flags, ":new_camp", pf_disabled, 1),
 		(else_try),
@@ -37201,9 +37201,9 @@ scripts = scripts_hardcoded + [
         (assign, ":result", mtf_culture_6), # wir verwenden music von culture 6 fur rome
     (else_try),
         # (this_or_next|eq, ":faction_no", "fac_outlaws"),
-        (this_or_next|eq, ":faction_no", "fac_black_khergits"),
+        (this_or_next|eq, ":faction_no", "fac_roman_rebells"),
         # (this_or_next|eq, ":faction_no", "fac_deserters"),
-        # (this_or_next|eq, ":faction_no", "fac_mountain_bandits"),
+        # (this_or_next|eq, ":faction_no", "fac_judean_rebels"),
         (eq, ":faction_no", "fac_forest_bandits"),
         (assign, ":result", mtf_culture_6),
     (else_try),
@@ -46203,7 +46203,7 @@ scripts = scripts_hardcoded + [
 		(str_store_string, s10, "str_rebel"),
 	(else_try),
 		(this_or_next|eq, ":faction_no", "fac_outlaws"),
-		(this_or_next|eq, ":faction_no", "fac_mountain_bandits"),
+		(this_or_next|eq, ":faction_no", "fac_judean_rebels"),
 		(this_or_next|eq, ":faction_no", "fac_forest_bandits"),
 			(eq, ":faction_no", "fac_deserters"),
 		(str_store_string, s10, "str_bandit"),
@@ -55779,19 +55779,19 @@ scripts = scripts_hardcoded + [
             #Translate raiders into the equivalent kingdoms
             (is_between, ":speaker", bandits_begin, bandits_end),
             (try_begin),
-                (eq, ":speaker", "trp_mountain_bandit"),#Mountain bandits
+                (eq, ":speaker", "trp_judean_rebel"),#Mountain bandits
                 (assign, ":speaker_faction", "fac_kingdom_5"),#Rhodoks
             (else_try),
-                (eq, ":speaker", "trp_forest_bandit"),#Forest bandits
+                (eq, ":speaker", "trp_hispanic_bandit"),#Forest bandits
                 (assign, ":speaker_faction", "fac_kingdom_1"),#Swadian
             (else_try),
                 (eq, ":speaker", "trp_sea_raider"),#Sea raiders
                 (assign, ":speaker_faction", "fac_kingdom_4"),#Nords
             (else_try),
-                (eq, ":speaker", "trp_steppe_bandit"),#Steppe bandits
+                (eq, ":speaker", "trp_alannic_raider"),#Steppe bandits
                 (assign, ":speaker_faction", "fac_kingdom_3"),#Khergits
             (else_try),
-                (eq, ":speaker", "trp_taiga_bandit"),#Taiga bandits
+                (eq, ":speaker", "trp_illyrian_bandit"),#Taiga bandits
                 (assign, ":speaker_faction", "fac_kingdom_2"),#Vaegir
             (else_try),
                 (eq, ":speaker", "trp_desert_bandit"),#Desert bandits
@@ -58632,7 +58632,7 @@ scripts = scripts_hardcoded + [
             (faction_get_slot, ":bandit_troop", ":faction", slot_faction_deserter_troop),
         (else_try),
             (lt, ":random_no", 6),  #regular bandits (looter to brigand), 50%
-            (store_random_in_range, ":bandit_troop","trp_looter","trp_mountain_bandit"),
+            (store_random_in_range, ":bandit_troop","trp_looter","trp_judean_rebel"),
         (else_try), #regional bandits, 40% (should be terrain based though)
             (faction_get_slot, ":culture", ":faction", slot_faction_culture),
             (try_begin),
@@ -58643,7 +58643,7 @@ scripts = scripts_hardcoded + [
                 (store_random_in_range, ":r", 0, 5),
                 (le, ":r", 2),
                 (eq, ":culture", "fac_culture_5"),
-                (assign, ":bandit_troop", "trp_steppe_bandit"),
+                (assign, ":bandit_troop", "trp_alannic_raider"),
             (else_try),
                 (store_random_in_range, ":r", 0, 5),
                 (le, ":r", 2),
@@ -58656,31 +58656,31 @@ scripts = scripts_hardcoded + [
                 (assign, ":bandit_troop", "trp_egyptian_infantry_light"),
             (else_try),
                 (eq, ":culture", "fac_culture_1"),
-                (assign, ":bandit_troop", "trp_steppe_bandit"),
+                (assign, ":bandit_troop", "trp_alannic_raider"),
             (else_try),
                 (this_or_next|eq, ":culture", "fac_culture_9"),
                 (eq, ":culture", "fac_culture_3"),
-                (assign, ":bandit_troop", "trp_steppe_bandit"),
+                (assign, ":bandit_troop", "trp_alannic_raider"),
             (else_try),
                 (store_distance_to_party_from_party, ":dist", ":village_no", "p_taiga_bandit_spawn_point"),
                 (le, ":dist", 30),
-                (assign, ":bandit_troop", "trp_taiga_bandit"),
+                (assign, ":bandit_troop", "trp_illyrian_bandit"),
             (else_try),
                 (store_distance_to_party_from_party, ":dist", ":village_no", "p_forest_bandit_spawn_point"),
                 (le, ":dist", 25),
-                (assign, ":bandit_troop", "trp_forest_bandit"),
+                (assign, ":bandit_troop", "trp_hispanic_bandit"),
             (else_try),
                 (store_distance_to_party_from_party, ":dist", ":village_no", "p_forest_bandit_spawn_point1"),
                 (le, ":dist", 25),
-                (assign, ":bandit_troop", "trp_forest_bandit"),
+                (assign, ":bandit_troop", "trp_hispanic_bandit"),
             (else_try),
                 (store_distance_to_party_from_party, ":dist", ":village_no", "p_forest_bandit_spawn_point2"),
                 (le, ":dist", 25),
-                (assign, ":bandit_troop", "trp_forest_bandit"),
+                (assign, ":bandit_troop", "trp_hispanic_bandit"),
             (else_try),
                 (store_distance_to_party_from_party, ":dist", ":village_no", "p_mountain_bandit_spawn_point"),
                 (le, ":dist", 30),
-                (assign, ":bandit_troop", "trp_mountain_bandit"),
+                (assign, ":bandit_troop", "trp_judean_rebel"),
             (else_try),
                 (store_distance_to_party_from_party, ":dist", ":village_no", "p_sea_raider_spawn_point_2"),
                 (le, ":dist", 30),
@@ -58707,7 +58707,7 @@ scripts = scripts_hardcoded + [
             (this_or_next|eq, ":terrain_type", rt_steppe),
             (eq, ":terrain_type", rt_steppe_forest),
             #(store_random_in_range, ":random_no", 0, 10),
-            (assign, ":bandit_troop", "trp_steppe_bandit"),
+            (assign, ":bandit_troop", "trp_alannic_raider"),
         # (else_try),
             # (eq, ":terrain_type", rt_plain),
             # (assign, ":bandit_troop", "trp_bandit"),
@@ -58717,7 +58717,7 @@ scripts = scripts_hardcoded + [
             (assign, ":bandit_troop", "trp_desert_bandit"),
         # (else_try),
             # (eq, ":terrain_type", rt_forest),
-            # (assign, ":bandit_troop", "trp_forest_bandit"),
+            # (assign, ":bandit_troop", "trp_hispanic_bandit"),
         (try_end),
         (try_begin),
             (eq, ":bandit_troop", "trp_looter"), #still not picked
@@ -62247,11 +62247,11 @@ scripts = scripts_hardcoded + [
         (assign, reg0, formation_shield),
       (else_try),
         (this_or_next | eq, ":ffaction", "fac_egypt"),
-        (this_or_next | eq, ":ffaction", "fac_black_khergits"),
+        (this_or_next | eq, ":ffaction", "fac_roman_rebells"),
         (this_or_next | eq, ":ffaction", "fac_deserters"),
-        (this_or_next | eq, ":ffaction", "fac_mountain_bandits"),
+        (this_or_next | eq, ":ffaction", "fac_judean_rebels"),
         (this_or_next | eq, ":ffaction", "fac_forest_bandits"),
-        (this_or_next | eq, ":ffaction", "fac_taiga_bandits"),
+        (this_or_next | eq, ":ffaction", "fac_illyrian_bandits"),
         (this_or_next | eq, ":ffaction", "fac_arabian_bandits"),
         (is_between, ":ffaction", minor_kingdoms_begin,minor_kingdoms_end),
         (assign, reg0, formation_shield),
@@ -66990,11 +66990,11 @@ scripts = scripts_hardcoded + [
         (try_begin),
           (neq, AI_for_kingdoms_only, 0),
           (neq, ":ai_faction", "fac_egypt"),
-          (neq, ":ai_faction", "fac_black_khergits"),
+          (neq, ":ai_faction", "fac_roman_rebells"),
           (neq, ":ai_faction", "fac_deserters"),
-          (neq, ":ai_faction", "fac_mountain_bandits"),
+          (neq, ":ai_faction", "fac_judean_rebels"),
           (neq, ":ai_faction", "fac_forest_bandits"),
-          (neq, ":ai_faction", "fac_taiga_bandits"),
+          (neq, ":ai_faction", "fac_illyrian_bandits"),
           (neq, ":ai_faction", "fac_arabian_bandits"),
           (neq, ":ai_faction", "fac_picton"),
           (neg | is_between, ":ai_faction", kingdoms_begin, kingdoms_end),
@@ -67528,7 +67528,7 @@ scripts = scripts_hardcoded + [
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
-                (assign, ":icon", "icon_axeman"),
+                (assign, ":icon", "icon_bandit"),
             (try_end),
         (else_try),
             (this_or_next|eq, ":party_template", "pt_deserters"),
@@ -67543,7 +67543,7 @@ scripts = scripts_hardcoded + [
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
-                (assign, ":icon", "icon_vaegir_knight"),
+                (assign, ":icon", "icon_mercenary_infantry"),
             (try_end),
         (else_try),
             (this_or_next|eq, ":party_template", "pt_sakas"),
@@ -67552,7 +67552,7 @@ scripts = scripts_hardcoded + [
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
-                (assign, ":icon", "icon_khergit_horseman_b"),
+                (assign, ":icon", "icon_steppbandit"),
             (try_end),
         (else_try),
             (eq, ":party_template", "pt_cattle_herd"),
@@ -67569,7 +67569,7 @@ scripts = scripts_hardcoded + [
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
-                (assign, ":icon", "icon_khergit"),
+                (assign, ":icon", "icon_arab"),
             (try_end),
         (else_try),
             (eq, ":party_template", "pt_forest_bandits"),
@@ -67577,15 +67577,15 @@ scripts = scripts_hardcoded + [
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
-                (assign, ":icon", "icon_forest_bandit"),
+                (assign, ":icon", "icon_bandithisp"),
             (try_end),
         (else_try),
-            (eq, ":party_template", "pt_mountain_bandits"),
+            (eq, ":party_template", "pt_judean_rebels_party"),
             (try_begin),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
-                (assign, ":icon", "icon_mountain_bandit"),
+                (assign, ":icon", "icon_banditrom"),
             (try_end),
         (else_try),
             (this_or_next|eq, ":party_template", "pt_egyptian_rebels"),
@@ -67668,7 +67668,7 @@ scripts = scripts_hardcoded + [
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
-                (assign, ":icon", "icon_mountain_bandit"),
+                (assign, ":icon", "icon_banditrom"),
             (try_end),
         (else_try),
             (this_or_next|eq, ":party_template", "pt_women"),
@@ -67689,7 +67689,7 @@ scripts = scripts_hardcoded + [
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
                 (party_get_icon, ":icon", ":party_no"),
-                (eq, ":icon", "icon_castle_a"),
+                (eq, ":icon", "icon_horde_camp"),
             (else_try),
                 (assign, ":icon", "icon_hord"),
             (try_end),
@@ -67699,7 +67699,7 @@ scripts = scripts_hardcoded + [
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_ship"),
             (else_try),
-                (assign, ":icon", "icon_vaegir_knight"),
+                (assign, ":icon", "icon_mercenary_infantry"),
             (try_end),
         (else_try),
             (this_or_next|eq, ":party_template", "pt_black_sea_pirates"),
@@ -67708,14 +67708,14 @@ scripts = scripts_hardcoded + [
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_ship"),
             (else_try),
-                (assign, ":icon", "icon_axeman"),
+                (assign, ":icon", "icon_bandit"),
             (try_end),
         (else_try),##if everything else fails
             (try_begin),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 (assign, ":icon", "icon_boat_simple"),
             (else_try),
-                (assign, ":icon", "icon_axeman"),
+                (assign, ":icon", "icon_bandit"),
             (try_end),
         (try_end),
         (try_begin),
@@ -72916,18 +72916,18 @@ scripts = scripts_hardcoded + [
        (call_script, "script_refresh_village_defenders", "p_village_100"),
     (try_end),
 
-    (party_add_template, "p_castle_44", "pt_mountain_bandits"),
-    (party_add_members, "p_castle_44", "trp_mountain_bandit", 500),
-    (party_add_members, "p_castle_44", "trp_mercenary_crossbowman", 70),
+    (party_add_template, "p_castle_44", "pt_judean_rebels_party"),
+    (party_add_members, "p_castle_44", "trp_judean_rebel", 500),
+    (party_add_members, "p_castle_44", "trp_mercenary_bowman", 70),
     (party_add_members, "p_castle_44", "trp_mercenary_swordsman", 50),
 
-    (party_add_template, "p_castle_45", "pt_mountain_bandits"),
-    (party_add_members, "p_castle_45", "trp_mountain_bandit", 500),
-    (party_add_members, "p_castle_45", "trp_mercenary_crossbowman", 70),
+    (party_add_template, "p_castle_45", "pt_judean_rebels_party"),
+    (party_add_members, "p_castle_45", "trp_judean_rebel", 500),
+    (party_add_members, "p_castle_45", "trp_mercenary_bowman", 70),
     (party_add_members, "p_castle_45", "trp_mercenary_swordsman", 50),
-    (party_add_template, "p_castle_46", "pt_mountain_bandits"),
-    (party_add_members, "p_castle_46", "trp_mountain_bandit", 500),
-    (party_add_members, "p_castle_46", "trp_mercenary_crossbowman", 70),
+    (party_add_template, "p_castle_46", "pt_judean_rebels_party"),
+    (party_add_members, "p_castle_46", "trp_judean_rebel", 500),
+    (party_add_members, "p_castle_46", "trp_mercenary_bowman", 70),
     (party_add_members, "p_castle_46", "trp_mercenary_swordsman", 50),
 
     (party_add_template, "p_town_19", "pt_jewish_revolt"),
@@ -73777,7 +73777,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s1, "@Regional Mercenaries"),
     (else_try),
         (eq, ":faction_no", "fac_culture_12"),#13
-        (str_store_string, s1, "@Generic Mercenaries"),
+        (str_store_string, s1, "@Generic Mercenaries and Peasants"),
     (else_try),
         (eq, ":faction_no", "fac_culture_13"),#14
         (str_store_string, s1, "@Bandits and Others"),
@@ -77746,7 +77746,7 @@ scripts = scripts_hardcoded + [
                 (eq, ":party_template", "pt_forest_bandits"),
                 (val_add, ":limit", 20),
             (else_try),
-                (eq, ":party_template", "pt_mountain_bandits"),
+                (eq, ":party_template", "pt_judean_rebels_party"),
                 (val_sub, ":limit", 10),
             (try_end),
 
@@ -80890,7 +80890,7 @@ scripts = scripts_hardcoded + [
     (store_script_param_1, ":troop"),
     (this_or_next|is_between, ":troop", "trp_sarmatian_peasant", "trp_mercenaries_end"),#
     (this_or_next|is_between, ":troop", "trp_gladiator_euqes", "trp_martial"),#gladiators
-    (eq, ":troop", "trp_steppe_bandit"),
+    (eq, ":troop", "trp_alannic_raider"),
 ]),
 
 ("cf_is_peasant",[
@@ -86236,7 +86236,7 @@ scripts = scripts_hardcoded + [
         (assign, ":troop_no", "trp_scythian_horse_archer"),
     (else_try),
         (eq,":party_template", "pt_mercenary_alan"),
-        (assign, ":troop_no", "trp_steppe_bandit"),
+        (assign, ":troop_no", "trp_alannic_raider"),
     (else_try),
         (eq,":party_template", "pt_mercenary_celtic"),
         (assign, ":troop_no", "trp_celtic_freeman"),
@@ -90182,7 +90182,7 @@ scripts = scripts_hardcoded + [
         #set additional faction relation if necessary
         (try_begin),
             (eq, "$background_answer_4", "fac_culture_8"),
-            (call_script, "script_set_player_relation_with_faction", "fac_mountain_bandits", 50),
+            (call_script, "script_set_player_relation_with_faction", "fac_judean_rebels", 50),
         (else_try),
             (eq, "$background_answer_4", "fac_culture_10"),
             (call_script, "script_set_player_relation_with_faction", "fac_nabataea", 5),
@@ -94005,7 +94005,7 @@ scripts = scripts_hardcoded + [
             (eq, ":party_template", "pt_looters"),
             (assign, reg0, "mesh_pic_bandits"),
         (else_try),
-            (eq, ":party_template", "pt_mountain_bandits"),
+            (eq, ":party_template", "pt_judean_rebels_party"),
             (assign, reg0, "mesh_pic_mountain_bandits"),
         (else_try),
             (this_or_next|eq, ":party_template", "pt_sakas"),
@@ -95351,7 +95351,7 @@ scripts = scripts_hardcoded + [
                             (store_random_in_range, ":random",":player_leveld2", ":player_levelx2"),
                             (party_add_members, ":trigger_center", "trp_watchman", ":random"),
                             (store_random_in_range, ":random",0, ":player_level"),
-                            (party_add_members, ":trigger_center", "trp_mercenary_crossbowman", ":random"),
+                            (party_add_members, ":trigger_center", "trp_mercenary_bowman", ":random"),
                         (try_end),
                     (try_end),
                 (try_end),
@@ -96534,7 +96534,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":troop_no", "trp_hispanic_village_walker"),
         (this_or_next|eq, ":troop_no", "trp_hispanic_village_walker_female"),
         (this_or_next|eq, ":troop_no", "trp_mercenary_horseman"),
-        (eq, ":troop_no", "trp_forest_bandit"), # Described as Hispanic rebel
+        (eq, ":troop_no", "trp_hispanic_bandit"), # Described as Hispanic rebel
         (try_begin),
             (eq, ":is_female", 1),
             (assign, ":slave_troop", "trp_slave_female_hispanic"),
@@ -96550,7 +96550,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":troop_no", "trp_illyrian_town_walker_female"),
         (this_or_next|eq, ":troop_no", "trp_illyrian_village_walker"),
         (this_or_next|eq, ":troop_no", "trp_illyrian_village_walker_female"),
-        (eq, ":troop_no", "trp_taiga_bandit"), # Described as Illyrian
+        (eq, ":troop_no", "trp_illyrian_bandit"), # Described as Illyrian
         (try_begin),
             (eq, ":is_female", 1),
             (assign, ":slave_troop", "trp_slave_female_illyrian"),
@@ -96594,7 +96594,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":troop_no", "trp_eastern_town_walker_female"), # Roman auxiliary of Gaulish origin
         (this_or_next|eq, ":troop_no", "trp_eastern_village_walker"),
         (this_or_next|eq, ":troop_no", "trp_eastern_village_walker_female"),
-        (this_or_next|eq, ":troop_no", "trp_mercenary_crossbowman"),
+        (this_or_next|eq, ":troop_no", "trp_mercenary_bowman"),
         (this_or_next|eq, ":troop_no", "trp_hired_blade"),
         (eq, ":troop_no", "trp_mercenary_cavalry"),
         (try_begin),

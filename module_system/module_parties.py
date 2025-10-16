@@ -503,9 +503,9 @@ parties = [
 ("underworld", "Claudia's House", icon_roman_house|pf_disabled|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-102.85, -22.08), [], 100),
 
 ("forest", "Dark Forest", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-222.84, 136.61), [], 180),
-("german_temple_1", "Baduhenna sanctuary", icon_castle_c|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-158.96, 130.59), [], 60),
-("german_temple_2", "Dunraz sanctuary", icon_castle_c|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-123.74, 104.27), [], 150),
-("german_temple_3", "Frijo sanctuary", icon_castle_c|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-103.27, 126.48), [], 40),
+("german_temple_1", "Baduhenna sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-158.96, 130.59), [], 60),
+("german_temple_2", "Dunraz sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-123.74, 104.27), [], 150),
+("german_temple_3", "Frijo sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-103.27, 126.48), [], 40),
 ("slavic_holy_side_1", "Sleza", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-90.66, 115.06), [], 136),
 ("stone_henge", "Andraste sanctuary", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-216.61, 124.92), [], 100),
 ("stone_henge_2", "Maponos sanctuary", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-234.9, 133.15), [], 100),

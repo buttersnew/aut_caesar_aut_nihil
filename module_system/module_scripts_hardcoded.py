@@ -1719,7 +1719,7 @@ scripts_hardcoded = [
     (party_template_set_slot, "pt_sakas", slot_party_template_lair_type, "pt_saka_camp"),
     (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_type, "pt_steppe_bandit_lair"),
     (party_template_set_slot, "pt_taiga_bandits", slot_party_template_lair_type, "pt_taiga_bandit_lair"),
-    (party_template_set_slot, "pt_mountain_bandits", slot_party_template_lair_type, "pt_mountain_bandit_lair"),
+    (party_template_set_slot, "pt_judean_rebels_party", slot_party_template_lair_type, "pt_mountain_bandit_lair"),
     (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_type, "pt_forest_bandit_lair"),
     (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_type, "pt_sea_raider_lair"),
     (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_type, "pt_black_sea_pirates_lair"),
@@ -1734,7 +1734,7 @@ scripts_hardcoded = [
     (party_template_set_slot, "pt_sakas", slot_party_template_lair_spawnpoint, "p_saka_spawn"),
     (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_spawnpoint, "p_steppe_bandit_spawn_point"), #the stepp
     (party_template_set_slot, "pt_taiga_bandits", slot_party_template_lair_spawnpoint, "p_taiga_bandit_spawn_point1"), #illyricum
-    (party_template_set_slot, "pt_mountain_bandits", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point1"), # judea
+    (party_template_set_slot, "pt_judean_rebels_party", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point1"), # judea
     (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_spawnpoint, "p_forest_bandit_spawn_point"), #hispania
     (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_1"), # the coast
     (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_spawnpoint, "p_black_sea_pirates_spawn_1"), # the coast
@@ -2281,11 +2281,11 @@ scripts_hardcoded = [
     (assign, "$g_quick_battle_army_2_size", 25),
     #(assign, "$form_ai_off", 0),
 
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_infantry, "trp_mountain_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_infantry, "trp_judean_rebel"),
     (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_infantry, "trp_sea_raider"),
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_archer, "trp_forest_bandit"),
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_archer, "trp_taiga_bandit"),
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_cavalry, "trp_steppe_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_archer, "trp_hispanic_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_archer, "trp_illyrian_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_cavalry, "trp_alannic_raider"),
     (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_cavalry, "trp_desert_bandit"),
     (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_infantry, "trp_dacian_flaxman_heavy"),
     (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_2_infantry, "trp_dacian_light_spearman"),
@@ -3408,7 +3408,7 @@ scripts_hardcoded = [
                 (jump_to_menu, "mnu_bandit_lair"),
             (else_try),
                 (party_get_icon, ":icon", "$g_encountered_party"),
-                (eq, ":icon", "icon_castle_a"),
+                (eq, ":icon", "icon_horde_camp"),
                 (jump_to_menu, "mnu_horde"),
             (else_try),
                 (eq, "$g_encountered_party", "p_pillars"),
@@ -8267,7 +8267,7 @@ scripts_hardcoded = [
 
             (try_for_range, ":i", 0, ":num_of_stacks"),
                 (party_stack_get_troop_id, ":stack_troop", "p_follower_party", ":i"),
-                (eq, ":stack_troop", "trp_sword_sister"),
+                (eq, ":stack_troop", "trp_soldier_wife"),
 
                 (party_stack_get_size, ":stack_size", "p_follower_party", ":i"),
                 (party_stack_get_num_wounded, ":stack_wounded", "p_follower_party", ":i"),
@@ -8598,7 +8598,7 @@ scripts_hardcoded = [
                 (eq, ":party_template", "pt_hord_roxolanen"),
                 (party_get_icon, ":icon", ":party_no"),
                 (try_begin),
-                    (eq, ":icon", "icon_castle_a"),
+                    (eq, ":icon", "icon_horde_camp"),
                     (assign, ":speed_multiplier", 0),
                 (else_try),
                     (assign, ":speed_multiplier", 50),

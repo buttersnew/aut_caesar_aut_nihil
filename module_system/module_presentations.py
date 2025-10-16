@@ -589,7 +589,7 @@ presentations = presentations_wse2 + [
         (eq, "$g_quick_battle_team_2_faction", "fac_gladiators"),
         (assign, ":cur_troop", "trp_gladiator_murmillo"),
 	  (else_try),
-        (assign, ":cur_troop", "trp_taiga_bandit"),
+        (assign, ":cur_troop", "trp_illyrian_bandit"),
       (try_end),
       (val_mul, ":cur_troop", 2), #with weapons
       (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_game_party_window", ":cur_troop"),
@@ -10388,7 +10388,7 @@ presentations = presentations_wse2 + [
     (party_get_num_companion_stacks, ":num_of_stacks", "p_follower_party"),##now p_follower_party
     (try_for_range, ":i", 0, ":num_of_stacks"),
         (party_stack_get_troop_id, ":stack_troop", "p_follower_party", ":i"),
-        (eq, ":stack_troop", "trp_sword_sister"),
+        (eq, ":stack_troop", "trp_soldier_wife"),
 
         (party_stack_get_size, ":stack_size", "p_follower_party", ":i"),
         (party_stack_get_num_wounded, ":stack_wounded", "p_follower_party", ":i"),
@@ -22054,24 +22054,24 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_dacian_flaxman_vet", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_dacian_flaxman_heavy", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_dacian_archers", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_dacian_archers", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_dacian_archers_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_dacian_archers_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_dacian_skirmishers", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_dacian_skirmishers", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_dacian_skirmishers_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_dacian_skirmishers_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_dacian_noble_cav", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_dacian_noble_cav", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_dacian_noble_cav_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_dacian_noble_cav_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_dacian_noble_inf", 60, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_dacian_noble_inf", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_dacian_noble_inf_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_dacian_noble_inf_vet", 360, 110),
 
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_dacian_heavy_inf", 560, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_dacian_heavy_inf", 560, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_dacian_heavy_inf_exp", 710, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_dacian_heavy_inf_vet", 860, 110),
 
@@ -22156,19 +22156,19 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_celtic_naked_swordman_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_celtic_naked_swordman_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_celtic_skirmisher", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_celtic_skirmisher", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_celtic_skirmisher_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_celtic_skirmisher_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_celtic_archer", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_celtic_archer", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_celtic_archer_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_celtic_archer_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_celtic_horseman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_celtic_horseman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_celtic_horseman_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_celtic_horseman_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_celtic_noble_swords", 60, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_celtic_noble_swords", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_celtic_noble_swords_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_celtic_noble_swords_vet", 360, 110),
 
@@ -22297,19 +22297,19 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_caledonian_naked_swordman_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_caledonian_naked_swordman_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_caledonian_skirmisher", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_caledonian_skirmisher", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_caledonian_skirmisher_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_caledonian_skirmisher_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_caledonian_archer", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_caledonian_archer", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_caledonian_archer_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_caledonian_archer_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_caledonian_horseman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_caledonian_horseman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_caledonian_horseman_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_caledonian_horseman_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_caledonian_noble_swords", 60, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_caledonian_noble_swords", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_caledonian_noble_swords_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_caledonian_noble_swords_vet", 360, 110),
 
@@ -22438,19 +22438,19 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_sarmatian_light_horsearcher_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_sarmatian_light_horsearcher_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_sarmatian_heavy_horsearcher", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_sarmatian_heavy_horsearcher", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_sarmatian_heavy_horsearcher_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_sarmatian_heavy_horsearcher_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_sarmatian_heavy_horseman", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_sarmatian_heavy_horseman", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_sarmatian_heavy_horseman_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_sarmatian_heavy_horseman_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_sarmatian_noble_horseman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_sarmatian_noble_horseman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_sarmatian_noble_horseman_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_sarmatian_noble_horseman_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_sarmatian_light_horseman", 60, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_sarmatian_light_horseman", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_sarmatian_light_horseman_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_sarmatian_light_horseman_vet", 360, 110),
 
@@ -22551,23 +22551,23 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_germanic_noble_swordsman_exp", 210, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_germanic_noble_swordsman_vet", 360, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_germanic_skirmisher", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_germanic_skirmisher", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_germanic_skirmisher_exp", 710, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_germanic_skirmisher_vet", 860, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_germanic_slinger", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_germanic_slinger", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_germanic_slinger_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_germanic_slinger_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_germanic_archer", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_germanic_archer", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_germanic_archer_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_germanic_archer_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_germanic_noble_spearman", 60, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_germanic_noble_spearman", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_germanic_noble_spearman_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_germanic_noble_spearman_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_germanic_cavalry", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_germanic_cavalry", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_germanic_cavalry_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_germanic_cavalry_vet", 860, 310),
 
@@ -22673,23 +22673,23 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_eastern_slinger_exp", 210, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_eastern_slinger_vet", 360, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_eastern_heavy_inf", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_eastern_heavy_inf", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_eastern_heavy_inf_exp", 710, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_eastern_heavy_inf_vet", 860, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_eastern_heavy_spearman", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_eastern_heavy_spearman", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_eastern_heavy_spearman_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_eastern_heavy_spearman_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_eastern_horsearcher", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_eastern_horsearcher", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_eastern_horsearcher_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_eastern_horsearcher_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_eastern_light_axeman", 60, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_eastern_light_axeman", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_eastern_light_axeman_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_eastern_light_axeman_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_eastern_medium_horseman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_eastern_medium_horseman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_eastern_medium_horseman_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_eastern_medium_horseman_vet", 860, 310),
 
@@ -22819,23 +22819,23 @@ presentations = presentations_wse2 + [
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_armenian_skrimisher_exp", 210, 510),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_armenian_skrimisher_vet", 360, 510),
 
-    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_armenian_slinger", 560, 910),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_armenian_slinger", 560, 910),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_armenian_slinger_exp", 710, 910),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_armenian_slinger_vet", 860, 910),
 
-    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_armenian_heavy_inf", 560, 710),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_armenian_heavy_inf", 560, 710),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_armenian_heavy_inf_exp", 710, 710),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_armenian_heavy_inf_vet", 860, 710),
 
-    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_armenian_heavy_maceman", 560, 510),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_armenian_heavy_maceman", 560, 510),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_armenian_heavy_maceman_exp", 710, 510),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_armenian_heavy_maceman_vet", 860, 510),
 
-    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_armenian_horsearcher", 60, 310),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_armenian_horsearcher", 60, 310),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_armenian_horsearcher_exp", 210, 310),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_armenian_horsearcher_vet", 360, 310),
 
-    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_armenian_medium_horseman", 560, 310),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_armenian_medium_horseman", 560, 310),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_armenian_medium_horseman_exp", 710, 310),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_armenian_medium_horseman_vet", 860, 310),
 
@@ -22954,53 +22954,53 @@ presentations = presentations_wse2 + [
 
         #60, 210, 360       560, 710, 860
 
-        # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 40, "trp_aux_cav_gallorum", 560, 1510),#+200
+        # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 40, "trp_aux_cav_gallorum", 560, 1510),
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 39, "trp_aux_inf", 710, 1510),
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_aux_slinger", 860, 1510),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_aux_inf", 560, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_aux_archer_praetoriana", 60, 1510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_aux_archer_praetoriana", 60, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_aux_archer", 210, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_aux_cav_ituraeorum", 360, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_aux_cav_gallorum", 560, 1310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_aux_cav_gallorum", 560, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_aux_cav_commagenorum", 710, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_aux_cav_batavorum", 860, 1310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_aux_archer_sryrorum", 60, 1310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_aux_archer_sryrorum", 60, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_aux_inf_petreorum", 210, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_aux_archer_thracum", 360, 1310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_aux_inf_thracum", 560, 1110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_aux_inf_thracum", 560, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_aux_archer_brittonum", 710, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_aux_inf_brittonum", 860, 1110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_aux_archer_batavorum", 60, 1110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_aux_archer_batavorum", 60, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_aux_inf_batavorum", 210, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_aux_archer_gallorum", 360, 1110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_aux_inf_gallorum", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_aux_inf_gallorum", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_aux_archer_tungrorum", 710, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_aux_inf_tungrorum", 860, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_aux_archer_maurorum", 60, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_aux_archer_maurorum", 60, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_aux_inf_hispanorum", 210, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_aux_slinger", 360, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_aux_inf_maurorum", 60, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_aux_inf_maurorum", 60, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_aux_archer_alporum", 210, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_aux_inf_alporum", 360, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name",13, "trp_aux_cav", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name",13, "trp_aux_cav", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name",12, "trp_aux_cav_eastern", 710, 710),
 
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_aux_cav_decurio", 60, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_aux_cav_decurio", 60, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_aux_cav_vexilarius", 210, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_aux_vigiles_centurio", 360, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_aux_cav_decurio", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_aux_cav_decurio", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_aux_signifer", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_aux_centurio", 860, 510),
 
@@ -23097,27 +23097,27 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_legio_v_alaudae_exp", 210, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_legio_v_alaudae_vet", 360, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 60, "trp_centurio_preatoriani", 560, 2110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 60, "trp_centurio_preatoriani", 560, 2110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 61, "trp_centurio_west", 710, 2110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 62, "trp_cornicen", 860, 2110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_legio_xxi_rapax", 560, 1910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_legio_xxi_rapax", 560, 1910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_legio_xxi_rapax_exp", 710, 1910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_legio_xxi_rapax_vet", 860, 1910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_legio_xx_valeria_victrix", 560, 1710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_legio_xx_valeria_victrix", 560, 1710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_legio_xx_valeria_victrix_exp", 710, 1710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_legio_xx_valeria_victrix_vet", 860, 1710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_legio_vi_victrix", 560, 1510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_legio_vi_victrix", 560, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_legio_vi_victrix_exp", 710, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_legio_vi_victrix_vet", 860, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_legio_xi_claudia", 60, 1310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_legio_xi_claudia", 60, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_legio_xi_claudia_exp", 210, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_legio_xi_claudia_vet", 360, 1310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_legio_xiii_gemina", 560, 1310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_legio_xiii_gemina", 560, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_legio_xiii_gemina_exp", 710, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_legio_xiii_gemina_vet", 860, 1310),
 
@@ -23310,18 +23310,18 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_judean_elite_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_judean_elite_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_judean_guard_archer", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_judean_guard_archer", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_judean_guard_archer_vet", 710, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_judean_slinger", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_judean_slinger", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_judean_slinger_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_judean_slinger_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_judean_archer", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_judean_archer", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_judean_archer_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_judean_archer_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_judean_skirmisher", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_judean_skirmisher", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_judean_skirmisher_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_judean_skirmisher_vet", 860, 310),
 
@@ -23402,15 +23402,15 @@ presentations = presentations_wse2 + [
 
         (set_container_overlay, reg43),#start scroll
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_bosporan_cav", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_bosporan_cav", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_bosporan_cav_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_bosporan_cav_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_bosporan_elite", 60, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_bosporan_elite", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_bosporan_elite_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_bosporan_elite_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_bosporan_archer", 560, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_bosporan_archer", 560, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_bosporan_archer_exp", 710, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_bosporan_archer_vet", 860, 110),
 
@@ -23533,31 +23533,31 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_meroe_archers", 60, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_meroe_infantry", 210, 1110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_irish_skirmisher", 560, 1110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_irish_skirmisher", 560, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_irish_vetran", 710, 1110),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_persian_picaxe_man", 60, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_persian_noble_cav", 210, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_arab_noble_archers", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_arab_noble_archers", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_arab_noble_cav", 710, 910),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_illyrian_horseman", 60, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_illyrian_infantry", 210, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_hispanic_infantry", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_hispanic_infantry", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_hispanic_heavy_infantry", 710, 710),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_kreta_archer", 60, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_meroe_axemen", 210, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_lombard_skirmisher", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_lombard_skirmisher", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_lombard_vetran", 710, 510),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_scythian_horse_archer", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_scythian_cataphract", 210, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_celtic_freeman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_celtic_freeman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_celtic_elite_swordsman", 710, 310),
 
 
@@ -23615,26 +23615,40 @@ presentations = presentations_wse2 + [
 
         (set_container_overlay, reg43),#start scroll
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_mercenary_cavalry", 60, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_mercenary_horseman", 210, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_mercenary_crossbowman", 560, 910),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_hired_blade", 710, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_mercenary_cavalry", 60, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_mercenary_horseman", 210, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_mercenary_bowman", 560, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_hired_blade", 710, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_mercenary_swordsman", 60, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_caravan_guard", 210, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_watchman", 560, 710),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_garamantian_peasant", 710, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_mercenary_swordsman", 60, 1310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_caravan_guard", 210, 1310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_watchman", 560, 1310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_garamantian_peasant", 710, 1310),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_berber_peasant", 60, 1110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_eastern_peasant", 210, 1110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_syrian_peasant", 560, 1110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_thracian_peasant", 710, 1110),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_egyptian_peasant", 60, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_saka_peasant", 210, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_nubian_peasant", 560, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_gaulish_peasant", 710, 910),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_hispanic_peasant", 60, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_illyrian_peasant", 210, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_galatian_peasant", 560, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_greek_peasant", 710, 710),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_berber_peasant", 60, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_arab_peasant", 210, 510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_caucasian_peasant", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_caucasian_peasant", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12,  "trp_dacian_peasant", 710, 510),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13,  "trp_germanic_peasant", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14,  "trp_celtic_peasant", 210, 310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15,  "trp_roman_peasant", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15,  "trp_roman_peasant", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16,  "trp_persian_peasant", 710, 310),
-
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_parthian_peasant", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_judean_peasant", 210, 110),
@@ -23654,7 +23668,7 @@ presentations = presentations_wse2 + [
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_mercenary_cavalry", 715, 500),
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_mercenary_swordsman", 565, 300),
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_hired_blade", 715, 300),
-      # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_mercenary_crossbowman", 415, 100),
+      # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_mercenary_bowman", 415, 100),
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_caravan_master", 715, 100),
 
 
@@ -23727,8 +23741,8 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_peasant_woman", 115, 2500),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_follower_woman", 265, 2400),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_hunter_woman", 415, 2400),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_fighter_woman", 565, 2400),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_sword_sister", 715, 2400),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_camp_defender", 565, 2400),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_soldier_wife", 715, 2400),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_slave", 115, 2100),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_slave_warrior", 265, 2100),
@@ -23754,17 +23768,17 @@ presentations = presentations_wse2 + [
         ##### | lines
 
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_steppe_bandit", 60, 1910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_taiga_bandit", 210, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_alannic_raider", 60, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_illyrian_bandit", 210, 1910),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_black_sea_priate", 560, 1910),#+200
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_black_sea_priate", 560, 1910),
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_judean_hornman", 710, 1910),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_slave_female", 60, 1710),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_refugee", 210, 1710),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_sea_raider", 560, 1710),#+200
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_forest_bandit", 710, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_sea_raider", 560, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_hispanic_bandit", 710, 1710),
 
 
       (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1810),##45 space for x
@@ -23774,7 +23788,7 @@ presentations = presentations_wse2 + [
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_desert_bandit", 60, 1510),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_arab_noble_cav", 210, 1510),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_slave_rebel", 560, 1510),#+200
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_slave_rebel", 560, 1510),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_slave_rebel_2", 710, 1510),
 
 
@@ -23787,7 +23801,7 @@ presentations = presentations_wse2 + [
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_sarranid_horseman", 60, 1310),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_garamantien_noble_horseman", 210, 1310),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_gaetuli_horseman", 560, 1310),#+200
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_gaetuli_horseman", 560, 1310),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_gaetuli_noble_horseman", 710, 1310),
 
 
@@ -23797,17 +23811,20 @@ presentations = presentations_wse2 + [
       # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1410),##45 space for x
      # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1410),
 
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_judean_rebel", 255, 850),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_mountain_bandit", 165, 850),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_judean_light_clubman", 315, 1000),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_judean_light_spearman", 315, 700),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_judean_sicarius", 365, 850),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_judean_light_clubman_exp", 515, 1000),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_judean_light_spearman_exp", 515, 700),
 
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 300, 940),
 
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 220, 940),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 245, 1090),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 245, 790),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 420, 940),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 445, 1090),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 445, 790),
 
-      (call_script, "script_prsnt_upgrade_tree_lines", 4, 304, 243, 790),
+      (call_script, "script_prsnt_upgrade_tree_lines", 4, 304, 443, 790),
+
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_looter", 165, 250),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_bandit", 315, 400),
@@ -23877,15 +23894,15 @@ presentations = presentations_wse2 + [
 
     (set_container_overlay, reg43),#start scroll
 
-    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_syrian_heavy_cav", 560, 510),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_syrian_heavy_cav", 560, 510),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_syrian_heavy_cav_exp", 710, 510),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_syrian_heavy_cav_vet", 860, 510),
 
-    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_syrian_horseman", 60, 310),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_syrian_horseman", 60, 310),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_syrian_horseman_exp", 210, 310),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_syrian_horseman_vet", 360, 310),
 
-    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_syrian_horsearcher", 560, 310),#+200
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_syrian_horsearcher", 560, 310),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_syrian_horsearcher_exp", 710, 310),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_syrian_horsearcher_vet", 860, 310),
 
@@ -35414,7 +35431,7 @@ presentations = presentations_wse2 + [
                 # (str_store_faction_name, s10, ":culture"),
                 # (display_message, "@Selected culture: {s10}"),
                 (try_begin),
-                    (eq, ":culture", "fac_dark_knights"),
+                    (eq, ":culture", "fac_merchants"),
                     (assign, ":culture", "fac_minor_kingdoms_end"),
                 (try_end),
                 (item_has_faction, ":item", ":culture"),

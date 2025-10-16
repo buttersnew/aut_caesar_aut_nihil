@@ -3950,7 +3950,7 @@ simple_triggers = [
                 (assign, ":new_icon", "icon_gray_knight"),
             (else_try),
                 (troop_slot_ge, "trp_player", slot_troop_renown, 50),
-                (assign, ":new_icon", "icon_vaegir_knight"),
+                (assign, ":new_icon", "icon_mercenary_infantry"),
             (else_try),
                 (assign, ":new_icon", "icon_player"),
             (try_end),
@@ -4801,7 +4801,7 @@ simple_triggers = [
     #refresh volunteers for lombards
     (party_set_slot,"p_langobard_landing",slot_center_volunteer_troop_type,0),
 
-    ##icon_castle_a fuer camp von horden
+    ##icon_horde_camp fuer camp von horden
     (try_begin),
         (store_num_parties_of_template, ":siraken", "pt_hord_siraken"),
         (store_num_parties_of_template, ":roxolanen", "pt_hord_roxolanen"),
@@ -4810,11 +4810,11 @@ simple_triggers = [
             (store_random_party_of_template, ":scythen_horde", "pt_hord_siraken"),
             (party_get_icon, ":icon", ":scythen_horde"),
             (try_begin),
-                (neq, ":icon", "icon_castle_a"),
-                (party_set_icon, ":scythen_horde", "icon_castle_a"),
+                (neq, ":icon", "icon_horde_camp"),
+                (party_set_icon, ":scythen_horde", "icon_horde_camp"),
                 # (display_message, "@A hord starts to settle."),
             (else_try),
-                (eq, ":icon", "icon_castle_a"),
+                (eq, ":icon", "icon_horde_camp"),
                 (party_set_icon, ":scythen_horde", "icon_hord"),
                 # (display_message, "@A hord starts to move."),
                 # (else_try),
@@ -4828,11 +4828,11 @@ simple_triggers = [
             (store_random_party_of_template, ":scythen_horde", "pt_hord_roxolanen"),
             (party_get_icon, ":icon", ":scythen_horde"),
             (try_begin),
-                (neq, ":icon", "icon_castle_a"),
-                (party_set_icon, ":scythen_horde", "icon_castle_a"),
+                (neq, ":icon", "icon_horde_camp"),
+                (party_set_icon, ":scythen_horde", "icon_horde_camp"),
                 #(display_message, "@A hord starts to settle."),
             (else_try),
-                (eq, ":icon", "icon_castle_a"),
+                (eq, ":icon", "icon_horde_camp"),
                 (party_set_icon, ":scythen_horde", "icon_hord"),
                 # (display_message, "@A hord starts to move."),
                 # (else_try),
@@ -4964,8 +4964,7 @@ simple_triggers = [
                 (store_faction_of_troop, ":faction_no", ":troop_no"),
                 (this_or_next|is_between, ":faction_no", kingdoms_begin, kingdoms_end),
                 (this_or_next|is_between, ":faction_no", minor_kingdoms_begin, minor_kingdoms_end),
-                (this_or_next|is_between, ":faction_no", "fac_black_khergits", "fac_undeads"),
-                (this_or_next|eq, ":faction_no", "fac_picton"),
+                (this_or_next|is_between, ":faction_no", "fac_roman_rebells", "fac_garamantes"),
                 (this_or_next|eq, ":faction_no", "fac_gladiators"),
                 (eq, ":faction_no", "fac_outlaws"),
                 (store_relation, ":cur_relation", ":cur_faction", ":faction_no"),
@@ -11101,18 +11100,18 @@ simple_triggers = [
         (troop_set_slot,"trp_hunter_woman",slot_troop_days_on_mission,":val"),
     (try_end),
     (try_begin),
-        (troop_get_slot,":val","trp_fighter_woman",slot_troop_days_on_mission),
+        (troop_get_slot,":val","trp_camp_defender",slot_troop_days_on_mission),
         (neq,":val",0),#0 = can ask to sing about player
         (val_sub,":val",1),
         (val_max,":val",0),#to clear negative values (errors)
-        (troop_set_slot,"trp_fighter_woman",slot_troop_days_on_mission,":val"),
+        (troop_set_slot,"trp_camp_defender",slot_troop_days_on_mission,":val"),
     (try_end),
     (try_begin),
-        (troop_get_slot,":val","trp_sword_sister",slot_troop_days_on_mission),
+        (troop_get_slot,":val","trp_soldier_wife",slot_troop_days_on_mission),
         (neq,":val",0),#0 = can ask to sing about player
         (val_sub,":val",1),
         (val_max,":val",0),#to clear negative values (errors)
-        (troop_set_slot,"trp_sword_sister",slot_troop_days_on_mission,":val"),
+        (troop_set_slot,"trp_soldier_wife",slot_troop_days_on_mission,":val"),
     (try_end),
     (try_begin),
         (troop_get_slot,":val","trp_peasant_woman",slot_troop_days_on_mission),
@@ -11452,7 +11451,7 @@ simple_triggers = [
         (gt, ":party_no", last_static_party),
         (party_is_active, ":party_no"),
         (store_faction_of_party, ":faction", ":party_no"),
-        (this_or_next|eq, ":faction", "fac_black_khergits"),##roman rebells
+        (this_or_next|eq, ":faction", "fac_roman_rebells"),##roman rebells
         (is_between, ":faction", minor_kingdoms_begin, minor_kingdoms_end),
         (try_begin),
                 # (eq, ":party_template", "pt_kingdom_hero_party"),
@@ -11569,7 +11568,7 @@ simple_triggers = [
                     # (party_set_ai_object, ":party_no", -1),
                 # (try_end),
             (else_try),#check here if they wandered on sea
-                (eq, ":faction", "fac_black_khergits"),
+                (eq, ":faction", "fac_roman_rebells"),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 # (party_get_current_terrain, ":cur_terrain", ":party_no"),
                 # (this_or_next|eq,":cur_terrain",rt_water),
@@ -11590,7 +11589,7 @@ simple_triggers = [
                 (party_set_ai_target_position, ":party_no", ":closest_village"),
                 (party_set_ai_object, ":party_no", ":closest_village"),
             (else_try),
-                (neq, ":faction", "fac_black_khergits"),
+                (neq, ":faction", "fac_roman_rebells"),
                 (party_get_slot, ":spawn_point", ":party_no", slot_party_spawn_point),
                 (neq, ":ai_bhvr", ai_bhvr_travel_to_party),
                 #(neq, ":ai_bhvr", ai_bhvr_travel_to_point),
@@ -11606,7 +11605,7 @@ simple_triggers = [
                 (party_set_slot, ":party_no", slot_party_ai_state, spai_retreating_to_center),
             (else_try),##reached spawn, start patrolling again
                 (eq, ":ai_behavior", spai_retreating_to_center),
-                (neq, ":faction", "fac_black_khergits"),
+                (neq, ":faction", "fac_roman_rebells"),
                 (try_begin),
                     (eq, ":ai_bhvr", ai_bhvr_travel_to_party),
                     (set_fixed_point_multiplier, 1),
@@ -11638,7 +11637,7 @@ simple_triggers = [
                 (store_random_in_range, ":village_no", villages_begin, villages_end),
 
                 (try_begin),
-                    (eq, ":faction", "fac_black_khergits"),##roman rebells
+                    (eq, ":faction", "fac_roman_rebells"),##roman rebells
                     (try_begin),
                         (store_distance_to_party_from_party, ":dist", ":party_no",":village_no"),
                         (lt, ":dist", ":minimum_distance"),

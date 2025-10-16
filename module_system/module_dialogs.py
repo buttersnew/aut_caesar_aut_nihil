@@ -3249,15 +3249,15 @@ dialogs =[
     (eq, "$talk_context", tc_bandit_lair),
     (this_or_next|eq, "$g_talk_troop", "trp_black_sea_priate"),
     (this_or_next|eq, "$g_talk_troop", "trp_sea_raider"),
-    (this_or_next|eq, "$g_talk_troop", "trp_forest_bandit"),
+    (this_or_next|eq, "$g_talk_troop", "trp_hispanic_bandit"),
     (this_or_next|eq, "$g_talk_troop", "trp_egyptian_infantry_heavy"),
     (this_or_next|eq, "$g_talk_troop", "trp_desert_bandit"),
     (this_or_next|eq, "$g_talk_troop", "trp_sarranid_horseman"),
     (this_or_next|eq, "$g_talk_troop", "trp_meroe_archers"),
     (this_or_next|eq, "$g_talk_troop", "trp_gaetuli_horseman"),
-    (this_or_next|eq, "$g_talk_troop", "trp_mountain_bandit"),
-    (this_or_next|eq, "$g_talk_troop", "trp_taiga_bandit"),
-    (this_or_next|eq, "$g_talk_troop", "trp_steppe_bandit"),
+    (this_or_next|eq, "$g_talk_troop", "trp_judean_rebel"),
+    (this_or_next|eq, "$g_talk_troop", "trp_illyrian_bandit"),
+    (this_or_next|eq, "$g_talk_troop", "trp_alannic_raider"),
     (this_or_next|eq, "$g_talk_troop", "trp_saka_horse_archer"),
     (eq, "$g_talk_troop", "trp_looter"),
 ],"Move along and maybe we won't have to fuck around.",
@@ -25707,7 +25707,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 [
     (try_for_agents, ":agent_no"),
       (agent_get_troop_id, ":agent_troop_id", ":agent_no"),
-      (is_between, ":agent_troop_id", "trp_looter", "trp_mountain_bandit"),
+      (is_between, ":agent_troop_id", "trp_looter", "trp_judean_rebel"),
       (agent_set_team, ":agent_no", 1),
     (try_end),
 
@@ -68079,8 +68079,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (is_between, ":troop_faction", "fac_culture_1", kingdoms_end),
     (store_relation, ":relation", ":troop_faction", ":faction"),
     (this_or_next|lt, ":relation", 0),
-    (this_or_next|eq, ":troop_faction", fac_black_khergits),
-    (eq, ":troop_faction", fac_dark_knights),
+    (eq, ":troop_faction", fac_roman_rebells),
     (party_prisoner_stack_get_size, ":size", "p_main_party", ":i_stack"),
     (val_add, ":prisoners", ":size"),
   (try_end),
@@ -68100,8 +68099,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (is_between, ":troop_faction", kingdoms_begin, kingdoms_end),
     (store_relation, ":relation", ":troop_faction", ":faction"),
     (this_or_next|lt, ":relation", 0),
-    (this_or_next|eq, ":troop_faction", fac_black_khergits),
-    (eq, ":troop_faction", fac_dark_knights),
+    (eq, ":troop_faction", fac_roman_rebells),
     (party_prisoner_stack_get_size, ":size", "p_main_party", ":i_stack"),
     (val_add, ":prisoners", ":size"),
   (try_end),
@@ -68122,8 +68120,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (is_between, ":troop_faction", kingdoms_begin, kingdoms_end),
     (store_relation, ":relation", ":troop_faction", ":faction"),
     (this_or_next|lt, ":relation", 0),
-    (this_or_next|eq, ":troop_faction", fac_black_khergits),
-    (eq, ":troop_faction", fac_dark_knights),
+    (eq, ":troop_faction", fac_roman_rebells),
     (troop_set_slot, "trp_temp_array_a", ":count", ":troop_id"),
     (val_add, ":count", 1),
   (try_end),
@@ -78141,6 +78138,52 @@ I will need 500 denarii.", "bardo_sing2",[]],
       (ge, "$edict7", 1),
       (val_add, reg44, 15000),
   (try_end),
+  # make price also depending on province
+  (assign, ":factor", 100),
+  (try_begin),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_germ_magna),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_germ_herc),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_germ_sueb),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_cent_dac),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_east_sam),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_brit_cale),
+    (party_slot_eq, "$current_town", slot_center_province, p_hisp_tarraco),
+    (assign, ":factor", 80),
+  (else_try),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_hisp_baetica),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_hisp_lusit),
+    (party_slot_eq, "$current_town", slot_center_province, p_asia_jude),
+    (assign, ":factor", 90),
+  (else_try),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_syr),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_cili),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_minor),
+    (party_slot_eq, "$current_town", slot_center_province, p_balk_dalm),
+    (assign, ":factor", 115),
+  (else_try),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_balk_epir),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_balk_acha),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_balk_thrac),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_balk_mac),
+    (party_slot_eq, "$current_town", slot_center_province, p_asia_meso),
+    (assign, ":factor", 125),
+  (else_try),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_assy),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ins_oc),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ins_or),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_asia_osreon),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_cis),
+    (party_slot_eq, "$current_town", slot_center_province, p_ita_sici),
+    (assign, ":factor", 130),
+  (else_try),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_magna),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_ita_ital),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_province, p_afrc_afrc),
+    (party_slot_eq, "$current_town", slot_center_province, p_afrc_egyp),
+    (assign, ":factor", 135),
+  (try_end),
+  (val_mul, reg44, ":factor"),
+  (val_div, reg44, 100),
 ],"Indeed there is someone who wants to sell land. I could make a deal for you, but this would cost you {reg44} denarii. The land consists of several acres of fields and some small buildings. But it is up do you what you want to do with it. {s33}",
 "lad_talk2",[]],
 
@@ -80452,7 +80495,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ##    (try_end),
 ##    (try_for_range, reg(4), 0, 5),
 ##      (lt, ":slot_no", 48),
-##      (troop_set_slot, "trp_temp_array_a", ":slot_no", "trp_sword_sister"),
+##      (troop_set_slot, "trp_temp_array_a", ":slot_no", "trp_soldier_wife"),
 ##      (val_add, ":slot_no", 1),
 ##    (try_end),
 ##    (try_for_range, reg(4), 0, 10),
@@ -80644,7 +80687,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   #[anyone|plyr, "reinforcements_attack",[], "Alright, go! But you haven't seen the last of {playername}!", "close_window",[(assign, "$g_leave_encounter", 1),]],
 
 # Bandits
-##[party_tpl|pt_mountain_bandits,"start",[(this_or_next|eq, "$g_encountered_party_template", "pt_mountain_bandits"),(eq, "$g_encountered_party_template", "pt_forest_bandits"),
+##[party_tpl|pt_judean_rebels_party,"start",[(this_or_next|eq, "$g_encountered_party_template", "pt_judean_rebels_party"),(eq, "$g_encountered_party_template", "pt_forest_bandits"),
 ##               (eq,"$talk_context",tc_party_encounter),
 ##               (party_get_slot,":protected_until_hours", "$g_encountered_party",slot_party_ignore_player_until),
 ##               (store_current_hours,":cur_hours"),
@@ -80662,7 +80705,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ##]],
 
 # Ryan BEGIN
-  #[party_tpl|pt_mountain_bandits|auto_proceed,"start",[(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
+  #[party_tpl|pt_judean_rebels_party|auto_proceed,"start",[(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
    # "{!}Warning: This line should never display.", "bandit_introduce",[]],
 [party_tpl|pt_forest_bandits|auto_proceed,"start",[(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)],
    "{!}Warning: This line should never display.", "bandit_introduce",[]],
@@ -80680,8 +80723,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
    "We are the children of Keeme, our beloved land. You have no right to be here! Let us kill this foreign invader!", "battle_reason_stated",[
    ]],
 
-[party_tpl|pt_mountain_bandits,"start",[
-     (eq, "$g_encountered_party_template", "pt_mountain_bandits"),#to fix bug in dialog
+[party_tpl|pt_judean_rebels_party,"start",[
+     (eq, "$g_encountered_party_template", "pt_judean_rebels_party"),#to fix bug in dialog
     (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
 ],
    "Romani ite Domum! This our land, and you have no right to walk through it!", "battle_reason_stated",[
@@ -80701,14 +80744,14 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
    ]],
 
-[party_tpl|pt_mountain_bandits,"start",[
+[party_tpl|pt_judean_rebels_party,"start",[
   (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
   (lt, ":bandit_relation", 0),
-  (eq, "$g_encountered_party_template", "pt_mountain_bandits"),#to fix bug in dialog
+  (eq, "$g_encountered_party_template", "pt_judean_rebels_party"),#to fix bug in dialog
 ],"Get ready for battle!", "battle_reason_stated",[]],
 
-[party_tpl|pt_mountain_bandits,"start",[
-  (eq, "$g_encountered_party_template", "pt_mountain_bandits"),#to fix bug in dialog
+[party_tpl|pt_judean_rebels_party,"start",[
+  (eq, "$g_encountered_party_template", "pt_judean_rebels_party"),#to fix bug in dialog
 ],"We are the free people of Judea. What do you want?",
 "judean_talk",[]],
 
@@ -81122,7 +81165,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [party_tpl|pt_rebels,"start",[
   (eq, "$g_encountered_party_template", "pt_rebels"),#to fix bug in dialog
-  (eq, "$g_encountered_party_faction", "fac_black_khergits"), #first stack should always be a bandit
+  (eq, "$g_encountered_party_faction", "fac_roman_rebells"), #first stack should always be a bandit
 	(encountered_party_is_attacker),
 ],
    "We fight for our freedom against corruption and tyranny. As the honorable gods have made us all free men, nobody can force slavery or tyranny on us! You are one of those tyrants, one of those who suppress free men. Lads, we will kill this rat!",
@@ -83876,7 +83919,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone|plyr,"regular_member_talk",[
   (this_or_next|eq, "$g_talk_troop", "trp_hunter_woman"),
-  (eq, "$g_talk_troop", "trp_fighter_woman"),
+  (eq, "$g_talk_troop", "trp_camp_defender"),
 
   (check_quest_active, "qst_blank_quest_6"),
 
@@ -83906,7 +83949,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
  ],
     "Forget it.", "close_window",[]],
 
-[trp_sword_sister|plyr,"regular_member_talk",[
+[trp_soldier_wife|plyr,"regular_member_talk",[
 
   (check_quest_active, "qst_blank_quest_6"),
 
@@ -83954,27 +83997,27 @@ I will need 500 denarii.", "bardo_sing2",[]],
       (call_script, "script_change_player_party_morale", 3),
       (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
   ]],
-[trp_fighter_woman|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
+[trp_camp_defender|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
     "I need you help me to raise the morale of my men. I pay 500 denarii for your efforts.", "fighter_woman_action",[]],
 
-[trp_fighter_woman, "fighter_woman_action",[],
+[trp_camp_defender, "fighter_woman_action",[],
     "As you wish, I will 'play' with them.^^-- She winks. --", "regular_member_talk",[
       (troop_remove_gold, "trp_player", 500),
       (call_script, "script_change_player_party_morale", 3),
       (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
   ]],
-[trp_sword_sister|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
+[trp_soldier_wife|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
     "I want to donate 500 denarii for your family.", "wife_solder_action",[]],
 
-[trp_sword_sister, "wife_solder_action",[],
+[trp_soldier_wife, "wife_solder_action",[],
     "Thank you. It is nice to see that a commander take care of his men.", "regular_member_talk",[
       (troop_remove_gold, "trp_player", 500),
       (call_script, "script_change_player_party_morale", 3),
       (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
   ]],
-[trp_sword_sister|plyr, "regular_member_talk",[],
+[trp_soldier_wife|plyr, "regular_member_talk",[],
     "Hey, what can you do for my men?", "porta1_presentacion",[]],
-[trp_sword_sister, "porta1_presentacion",[], "Me? " +
+[trp_soldier_wife, "porta1_presentacion",[], "Me? " +
     "I am important to you. I am the wife of one of your soldiers. If you have wives (30) in your party, your men will gain morale (every 48 hours).\
  Additionally, I help tending wounds (improves surgery skill and wound treatment skill up to max. 3)", "regular_member_talk",[]],
 [trp_peasant_woman|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
@@ -94506,13 +94549,13 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [trp_follower_woman,"start",[(eq, "$talk_context", tc_marshing_camp)], "Ave soldier. You need something?", "follower_woman_talk",[]],
 
-[trp_sword_sister,"start",[(eq, "$talk_context", tc_marshing_camp)], "Ave soldier. What do you want?", "sword_sister_talk",[]],
-[trp_sword_sister,"sword_sister_pretalk",[], "Anything else?", "sword_sister_talk",[]],
-[trp_sword_sister|plyr,"sword_sister_talk",[], "Why are you here? What does a woman in the legion?", "sword_sister_talk_exp",[]],
+[trp_soldier_wife,"start",[(eq, "$talk_context", tc_marshing_camp)], "Ave soldier. What do you want?", "sword_sister_talk",[]],
+[trp_soldier_wife,"sword_sister_pretalk",[], "Anything else?", "sword_sister_talk",[]],
+[trp_soldier_wife|plyr,"sword_sister_talk",[], "Why are you here? What does a woman in the legion?", "sword_sister_talk_exp",[]],
 
-[trp_sword_sister,"sword_sister_talk_exp",[], "I am the wife of one of the soldiers. I didn't want to be separated from my husband, so I decided to follow him into war.\
+[trp_soldier_wife,"sword_sister_talk_exp",[], "I am the wife of one of the soldiers. I didn't want to be separated from my husband, so I decided to follow him into war.\
  This was years ago. Now I am still alive and happy about this decision. Life in the field may be harsh but it's still much better than the slums of the large towns.", "sword_sister_pretalk",[]],
-[trp_sword_sister|plyr,"sword_sister_talk",[], "I will leave now.", "close_window",[]],
+[trp_soldier_wife|plyr,"sword_sister_talk",[], "I will leave now.", "close_window",[]],
 
   ##freelancer marshing camps
 [anyone ,"start",[

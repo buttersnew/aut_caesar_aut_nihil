@@ -31,13 +31,13 @@ map_icons = [
   ("player",0,"slave", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
   ("player_horseman",0,"slave_donkey", avatar_scale, snd_gallop, 0.16, 0.173, 0),
   ("gray_knight",0,"vexillifer_icon_combinedd", avatar_scale, snd_gallop, 0.16, 0.173, 0),
-  ("vaegir_knight",0,"mercenary_infantry", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("mercenary_infantry",0,"mercenary_infantry", avatar_scale, snd_gallop, 0.16, 0.173, 0),
   ("flagbearer_a",0,"player_horseman1", avatar_scale, snd_gallop, 0.16, 0.173, 0),
   ("flagbearer_b",0,"flagbearer_b", avatar_scale, snd_gallop, 0.16, 0.173, 0),
   ("peasant",0,"peasant_a", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-  ("khergit",0,"arab", avatar_scale,snd_gallop, 0.16, 0.173, 0),
-  ("khergit_horseman_b",0,"steppbandit", avatar_scale,snd_gallop, 0.16, 0.173, 0),
-  ("axeman",0,"bandit", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
+  ("arab",0,"arab", avatar_scale,snd_gallop, 0.16, 0.173, 0),
+  ("steppbandit",0,"steppbandit", avatar_scale,snd_gallop, 0.16, 0.173, 0),
+  ("bandit",0,"bandit", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
   ("woman",0,"woman_a", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
   ("hord",0,"horde", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
 
@@ -60,8 +60,8 @@ map_icons = [
   ("ship",mcn_no_shadow,"boat_sail", 0.23, snd_footstep_grass, 0.0, 0.05, 0),
   ("ship_on_land",mcn_no_shadow,"boat_sail_0", 0.23, 0),
 
-  ("castle_a",mcn_no_shadow,"horde_camp", 0.15,0),
-  ("castle_c",mcn_no_shadow,"farmstead", 0.42,0),
+  ("horde_camp",mcn_no_shadow,"horde_camp", 0.15,0),
+  ("farmstead",mcn_no_shadow,"farmstead", 0.42,0),
 
   ("map_island",mcn_no_shadow,"map_island", 0.5,0),
   ("map_stone_circle",mcn_no_shadow,"map_stone_circle", 0.35,0),
@@ -92,8 +92,8 @@ map_icons = [
   ("kingdom_6_soldier_b",0,"eastern1_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
   ("kingdom_7_soldier_b",0,"rom_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
 
-  ("mountain_bandit",0,"banditrom", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
-  ("forest_bandit",0,"bandithisp", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("banditrom",0,"banditrom", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("bandithisp",0,"bandithisp", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
 
   ("german1",0,"german1", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
   ("brit1",0,"brit1", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),

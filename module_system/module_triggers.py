@@ -588,7 +588,7 @@ triggers = [
     #   (gt, ":target_faction", 0),
     #   (call_script, "script_change_troop_faction", ":quest_object_troop", ":target_faction"),
     # (else_try),
-    (call_script, "script_change_troop_faction", ":quest_object_troop", "fac_robber_knights"),
+    (call_script, "script_change_troop_faction", ":quest_object_troop", "fac_outlaws"),
     # (try_end),
     (call_script, "script_succeed_quest", "qst_incriminate_loyal_commander"),
   (try_end),
