@@ -2874,7 +2874,9 @@ itm_fur_hat,itm_nomad_cap,itm_footman_helmet,itm_hand_axe,itm_mace_1,itm_boar_sp
 itm_simple_hood_1,itm_simple_hood_2,itm_generic_poor1,itm_generic_poor2],
 attrib_level_18, wp(110), knows_level_18, bandit_face1, bandit_face2 ],
 
-["judean_sicarius", "Iudaicus Sicarius", "Iudaici Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,[itm_caligea, itm_eastern_sica, itm_eastern_sica_rusty,itm_sling_lead,itm_sling]+jew_tunics_1+jew_tunics_2+jew_robes + eastern_shields_wicker_smallround + desert_turbans_1 + desert_turbans_2 + eastern_shields_wicker,
+["judean_sicarius", "Iudaicus Sicarius", "Iudaici Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,[itm_caligea, itm_eastern_sica, itm_eastern_sica_rusty,itm_sling_lead,itm_sling,
+itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2
+]+jew_tunics_1+jew_tunics_2+jew_robes + eastern_shields_wicker_smallround + desert_turbans_1 + desert_turbans_2 + eastern_shields_wicker,
 attrib_level_18_warrior, wp(160), knows_level_18_warrior, arab_face_young, arab_face_old ],
 
 ["judean_rebel", "Iudaicus Rebellis", "Iudaici Rebellis", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,
@@ -2884,7 +2886,11 @@ attrib_level_16_warrior, wp(135), knows_level_16_warrior, arab_face_young, arab_
 ["hispanic_bandit", "Hispanicus Rebellis", "Hispanici Rebellis", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_celtic_round_shild3,itm_celtic_round_shild2,itm_celtic_round_shild1,itm_iberian_light5,itm_iberian_light6,itm_iberian_heavy1,
 itm_iberian_medium2,itm_iberian_medium3,itm_caligea,itm_spear,itm_war_spear,itm_javelin,itm_hand_axe,itm_throwing_spears,
-itm_footman_helmet,itm_ad_mixed_round_shields_02,itm_ad_mixed_round_shields_01],
+itm_footman_helmet,itm_ad_mixed_round_shields_02,itm_ad_mixed_round_shields_01,
+itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,
+itm_old_round_shield_2,itm_old_round_shield_4,
+itm_eastern_sica_rusty, itm_old_gladius_2
+],
 attrib_level_23_warrior, wpe(130,130,130,180), knows_level_23, barbarian_man_face_younger_1, barbarian_man_face_young_2 ],
 ["sea_raider", "Pirata", "Piratae", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_short_bow,itm_arrows,itm_spear,itm_kopis,itm_kopfband,itm_iberian_light4,itm_iberian_light1,itm_armenian_tunic_1,itm_bosporan_light1,itm_caligea,itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,
@@ -2912,7 +2918,11 @@ attrib_level_23_warrior, wp(150), knows_archer_basic_eastern, scythian_face_21, 
 [itm_spear,itm_javelin,itm_illyrian_medium3,itm_iberian_light1,itm_iberian_light2,
 itm_illyrian_medium4,itm_illyrian_medium1,itm_illyrian_shield_large1,itm_illyrian_shield_large2,
 itm_illyrian_shield_heavy1,itm_illyrian_shield_heavy2,
-itm_illyrian_shield_heavy3,itm_kopfband,itm_illyrian_leader_cap,itm_illyrian_hevy_helmet,itm_caligea,itm_ad_mixed_round_shields_04,itm_ad_mixed_round_shields_03],
+itm_illyrian_shield_heavy3,itm_kopfband,itm_illyrian_leader_cap,itm_illyrian_hevy_helmet,itm_caligea,itm_ad_mixed_round_shields_04,itm_ad_mixed_round_shields_03,
+itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,
+itm_old_round_shield_3,itm_old_round_shield_5, itm_old_round_shield_1,
+itm_eastern_sica_rusty, itm_eastern_sica
+],
 attrib_level_23_warrior, wp(115), knows_level_23_warrior, barbarian_man_face_younger_1, barbarian_man_face_young_2 ],
 
 ["slave_warrior", "Seditiosus Servus", "Seditiosi Servi", tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_outlaws,
