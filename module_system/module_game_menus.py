@@ -35616,7 +35616,7 @@ game_menus = [
 ]),
 
 ("forest",0,
-  "A dark, dark forest.",
+  "A low, cold mist coils around the trees, refusing to burn away even at midday. The branches of the ancient yews are twisted and bare, resembling skeletal fingers clawing at the grey sky. An unnatural silence has fallen; there are no birds, no rustling animals, only the sound of your own breathing. You have the distinct, prickling sensation of being watched by unseen eyes from the deep, impenetrable shadows between the trees.",
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[

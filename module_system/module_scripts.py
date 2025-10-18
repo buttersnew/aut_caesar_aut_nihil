@@ -70012,6 +70012,35 @@ scripts = scripts_hardcoded + [
 # Input: target party
 # Output: reg0 ID of party with port
 #         reg1 distance
+
+# can add to trigger to test locations
+    # (try_begin),
+    #     (set_fixed_point_multiplier, 1),
+    #     (party_get_position, pos1, "p_main_party"),
+    #     (position_get_y, ":y", pos1),
+    #     (position_get_x, ":x", pos1),
+
+    #     (assign, reg2, ":y"),
+    #     (assign, reg1, ":x"),
+    #     (display_message, "@Cor: ({reg1}, {reg2})"),
+    #     (try_begin),
+    #         (ge, ":y", 68),
+    #         (le, ":x", -135),
+    #         (display_message, "@In Britannnia Gaul!"),
+    #     (try_end),
+
+
+    #     (party_get_position, pos1, "p_main_party"),
+    #     (position_get_y, ":y", pos1),
+    #     (position_get_x, ":x", pos1),
+
+    #     (try_begin),
+    #         (this_or_next|le, ":y", 40),
+    #         (ge, ":x", -25),
+    #         (display_message, "@South East!"),
+    #     (try_end),
+    # (try_end),
+
 ("get_closest_port",[
     (store_script_param, ":target_party", 1),
     (store_script_param, ":cur_party", 2),
@@ -70028,6 +70057,59 @@ scripts = scripts_hardcoded + [
         (store_distance_to_party_from_party, ":distance1", ":cur_party", "p_jetty_3a"),
         (le, ":distance1", 25),
         (assign, reg0, "p_jetty_3a"),
+    (else_try),
+    # travelling from south/east to Northern Gaul or Britannia
+        (party_slot_ge, ":cur_party", slot_party_on_water, 1),
+        (party_slot_eq, ":target_party", slot_party_on_water, 0),
+
+        # travelling to britannia / Northern Gaul
+        # (this_or_next|party_slot_eq, ":target_party", slot_center_province, p_brit_brita),
+        # (this_or_next|party_slot_eq, ":target_party", slot_center_province, p_brit_cale),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_castle_23"),#britannia
+        # (this_or_next|lt, ":distance1", 10),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_town_1"),#britannia
+        # (this_or_next|lt, ":distance1", 10),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_castle_57"),#britannia
+        # (this_or_next|lt, ":distance1", 10),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_town_43"),#britannia
+        # (this_or_next|lt, ":distance1", 10),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_castle_14"),#britannia
+        # (this_or_next|lt, ":distance1", 10),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_castle_5"),#britannia
+        # (this_or_next|lt, ":distance1", 10),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_town_44"),#britannia
+        # (this_or_next|lt, ":distance1", 10),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_town_24"),#britannia
+        # (this_or_next|lt, ":distance1", 10),
+
+        # (store_distance_to_party_from_party, ":distance1", ":target_party", "p_castle_58"),#britannia
+        # (lt, ":distance1", 10),
+        (party_get_position, pos1, ":target_party"),
+        (position_get_y, ":y", pos1),
+        (position_get_x, ":x", pos1),
+
+        (ge, ":y", 68),
+        (le, ":x", -135),
+
+
+
+        (party_get_position, pos1, ":cur_party"),
+        (position_get_y, ":y", pos1),
+        (position_get_x, ":x", pos1),
+
+        (this_or_next|le, ":y", 40),
+        (ge, ":x", -25),
+
+        (assign, reg0, "p_town_4"),
+
     (else_try),
         (store_distance_to_party_from_party, ":distance1", ":target_party", "p_castle_6"),#sizilien
         (store_distance_to_party_from_party, ":distance2", ":target_party", "p_village_53"),
@@ -82272,7 +82354,7 @@ scripts = scripts_hardcoded + [
             (store_add, ":slot", slot_aux_legion_begin, ":auxiliar"),
             (troop_set_slot, "trp_province_array", ":slot", 3),
         (else_try),# rapax
-            (this_or_next|eq, "pt_ala_batavorum"),
+            (this_or_next|eq, ":auxiliar", "pt_ala_batavorum"),
             (eq, ":auxiliar", "pt_cohors_bata"),
             (val_sub, ":auxiliar", "pt_cohors_aux"),
             (store_add, ":slot", slot_aux_legion_begin, ":auxiliar"),
@@ -85266,13 +85348,13 @@ scripts = scripts_hardcoded + [
             (val_add, reg1, 1),
             (call_script, "script_get_cohort_name_to_s5", ":party_template"),
             (display_message, "@The {reg1}. cohort {s5} is fully manned.", message_positive),
-        (else_try),
-            (eq, ":refil_y", 1),
-            (eq, ":lord", 0),
-            (store_sub, reg1, ":party_template_slot", ":cohort_begin"),
-            (val_add, reg1, 1),
-            (call_script, "script_get_cohort_name_to_s5", ":party_template"),
-            (display_message, "@The {reg1}. cohort {s5} is not fully manned, but not enough gold or recruits available.", message_alert),
+        # (else_try),
+        #     (eq, ":refil_y", 1),
+        #     (eq, ":lord", 0),
+        #     (store_sub, reg1, ":party_template_slot", ":cohort_begin"),
+        #     (val_add, reg1, 1),
+        #     (call_script, "script_get_cohort_name_to_s5", ":party_template"),
+        #     (display_message, "@The {reg1}. cohort {s5} is not fully manned, but not enough gold or recruits available.", message_alert),
         (try_end),
     (else_try),
         (eq, ":refil_y", -1),
