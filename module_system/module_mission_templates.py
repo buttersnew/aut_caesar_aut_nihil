@@ -13518,8 +13518,10 @@ mission_templates = [
 
       (store_current_scene, ":cur_scene"),
       (modify_visitors_at_site, ":cur_scene"),
-      (store_random_in_range, ":random_entry_point", 2, 11),
-      (add_visitors_to_current_scene, ":random_entry_point", ":bandit_troop", 2),
+      (try_for_range, ":unused", 0, 5),
+        (store_random_in_range, ":random_entry_point", 2, 11),
+        (add_visitors_to_current_scene, ":random_entry_point", ":bandit_troop", 2),
+      (try_end),
     ]),
     (ti_on_agent_killed_or_wounded, 0, 0, [],[
       (store_trigger_param_1, ":dead_agent_no"),
@@ -19705,157 +19707,140 @@ mission_templates = [
     ]),
 ]),
 
-  ("witch",0,-1,
-    "You will fight a match in the holmgang.",
-    [
-      (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
-      (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
-
-     ], p_wetter + storms + global_common_triggers +
-     [
-      cannot_spawn_commoners,
-      ambient_scene_play_loop,
-      ambient_scene_play_random_sound,
-      ambient_set_agents_for_sounds,
-      ambient_agent_play_sound,
-
-      (ti_before_mission_start, 0, ti_once, [],[
-
+("witch",0,-1,
+  "You will fight a match in the holmgang.",[
+    (0, mtef_scene_source|mtef_team_0, 0, 0, 1, []), #player start
+    (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
+  ], p_wetter + storms + global_common_triggers +
+  [
+    cannot_spawn_commoners,
+    ambient_scene_play_loop,
+    ambient_scene_play_random_sound,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+    (ti_before_mission_start, 0, ti_once, [],[
       (store_random_in_range, ":fog_distance", 40, 55),
       (store_random_in_range, ":haze_power", 25, 65),
       (set_global_haze_amount, ":haze_power"),
       (set_fog_distance, ":fog_distance", 0x333333),
-      ] ),
-
-      (ti_tab_pressed, 0, 0, [
-         (jump_to_menu, "mnu_grove"),
-         (finish_mission),
-      ],[]),
-
-
-    ],
-  ),
-  ("arminius_grove",0,-1,
-    "You will fight a match in the holmgang.",
-    [
+    ] ),
+    (ti_tab_pressed, 0, 0, [
+      (jump_to_menu, "mnu_grove"),
+      (finish_mission),
+    ],[]),
+]),
+("arminius_grove",0,-1,
+  "You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, 0, 0, 1, []), #player start
-     ], p_wetter + storms + global_common_triggers +
-     [
-      cannot_spawn_commoners,
-      (0, 0, ti_once, [
-          (tutorial_message_set_size, 15, 15),
-          (tutorial_message_set_position, 500, 650), #650 for tutorial or mission msg, 450 for dialogs
-          (tutorial_message_set_center_justify, 0),
-          ],[]),
-
-      (1,0,0,[
-        (neg|conversation_screen_is_active),
-        (neg|is_presentation_active, "prsnt_battle"),
-        (neg|is_presentation_active, "prsnt_order_display"),  ],
-        [
-          (store_mission_timer_a, ":cur_time"),
-          (try_begin),
-            (ge, ":cur_time", 17),
-            (tutorial_message, -1),
-            (tutorial_message_set_background, 0),
-          (else_try),
-            (ge, ":cur_time", 10),
-            (tutorial_message_set_background, 1),
-            (tutorial_message, "@This area is sacred for the local population. Be careful and do not anger them."),
-          (try_end),
-      ]),
-
-      ambient_scene_play_loop,
-      ambient_scene_play_random_sound,
-      ambient_set_agents_for_sounds,
-      ambient_agent_play_sound,
-
-      (ti_before_mission_start, 0, ti_once, [],[
-
+  ],
+  p_wetter + storms + global_common_triggers +
+  [
+    cannot_spawn_commoners,
+    (0, 0, ti_once, [
+      (tutorial_message_set_size, 15, 15),
+      (tutorial_message_set_position, 500, 650), #650 for tutorial or mission msg, 450 for dialogs
+      (tutorial_message_set_center_justify, 0),
+    ],[]),
+    (1,0,0,[
+      (neg|conversation_screen_is_active),
+      (neg|is_presentation_active, "prsnt_battle"),
+      (neg|is_presentation_active, "prsnt_order_display"),
+    ],[
+      (store_mission_timer_a, ":cur_time"),
+      (try_begin),
+        (ge, ":cur_time", 17),
+        (tutorial_message, -1),
+        (tutorial_message_set_background, 0),
+      (else_try),
+        (ge, ":cur_time", 10),
+        (tutorial_message_set_background, 1),
+        (tutorial_message, "@This area is sacred for the local population. Be careful and do not anger them."),
+      (try_end),
+    ]),
+    ambient_scene_play_loop,
+    ambient_scene_play_random_sound,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+    (ti_before_mission_start, 0, ti_once, [],[
       (store_random_in_range, ":fog_distance", 100, 125),
       (store_random_in_range, ":haze_power", 10, 50),
       (set_global_haze_amount, ":haze_power"),
       (set_fog_distance, ":fog_distance"),#0x333333
-      ] ),
-
-      (1, 0, 0, [(troop_slot_eq, "trp_witch", slot_troop_wealth, 1),],	# keep them fleeing
-        [
-        (set_fixed_point_multiplier, 1),
-        (entry_point_get_position, pos2, 1),
-        (get_player_agent_no, ":player"),
-        (agent_get_position, pos1, ":player"),
-        (get_distance_between_positions_in_meters, ":distance", pos1, pos2),
-        (le, ":distance", 3),
-        (display_message, "@You found Arminius tomb!", color_good_news),
-        (add_xp_as_reward, 1000),
-        (troop_set_slot, "trp_witch", slot_troop_wealth, 2),
-      ]),
-
-      (ti_tab_pressed, 0, 0, [
-         (jump_to_menu, "mnu_grove_2"),
-         (finish_mission),
-      ],[]),
-
-    (ti_question_answered, 0, 0,
-    [(troop_slot_eq, "trp_witch", slot_troop_leaded_party, 0),],
-    [
-    (store_trigger_param_1, ":number"),
-    (eq, ":number", 0),
-    (display_message, "@Your action angered the Germans!", color_terrible_news),
-    (display_log_message, "@You desecrate Arminius tomb!", color_terrible_news),
-    (troop_set_slot, "trp_witch", slot_troop_leaded_party, 1),
-
-    (assign, ":min_dist", 100),
-    (assign, ":min_dist_village", -1),
-    (try_for_range, ":cur_village", villages_begin, villages_end),
-      (store_distance_to_party_from_party, ":cur_dist", ":cur_village", "p_main_party"),
-      (lt, ":cur_dist", ":min_dist"),
-      (assign, ":min_dist", ":cur_dist"),
-      (assign, ":min_dist_village", ":cur_village"),
-    (try_end),
-    (try_begin),
-      (gt, ":min_dist_village", -1),
-      (store_faction_of_party, ":village_faction", ":min_dist_village"),
-      (is_between, ":village_faction", "fac_kingdom_1", kingdoms_end),
-      (faction_slot_eq, ":village_faction", slot_faction_culture, "fac_culture_4"),
-      (call_script, "script_change_player_relation_with_faction", ":village_faction", -5),
-    (try_end),
-
-    (call_script, "script_change_player_honor", -5),
-    (call_script, "script_change_troop_renown", "trp_player", 15),
-
-    (set_show_messages, 0),
-    (set_fixed_point_multiplier, 100),
-    (try_for_range, ":center", centers_begin, centers_end),#reduce relacion con cada centro chief
-      (party_slot_eq, ":center", slot_center_culture, "fac_culture_4"),
-      (store_distance_to_party_from_party, ":cur_distance", "p_main_party", ":center"),
-      (lt,":cur_distance", 20),
-      (call_script, "script_change_player_relation_with_center", ":center", -5),
-    (try_end),
-    (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
-        (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_dead),
-        (store_faction_of_troop, ":fac", ":npc"),
-        (eq, ":fac", "$players_kingdom"),
-        (troop_get_slot, ":personality", ":npc", slot_lord_reputation_type),
-        (try_begin),
-            (is_between, ":personality", lrep_goodnatured, lrep_custodian),
-            (neq, ":personality", lrep_roguish),
-            (troop_slot_eq, ":npc", slot_troop_culture, "fac_culture_7"),
-            (store_random_in_range, ":rand", 0, 3),
-            (call_script, "script_change_player_relation_with_troop", ":npc", ":rand"),
-        (else_try),
-            (troop_slot_eq, ":npc", slot_troop_culture, "fac_culture_7"),
-            (store_random_in_range, ":rand", 1, 3),
-            (call_script, "script_change_player_relation_with_troop", ":npc", ":rand"),
-        (try_end),
-    (try_end),
-    (set_show_messages, 1),
-    (add_xp_as_reward, 500),
+    ] ),
+    (1, 0, 0, [
+      (troop_slot_eq, "trp_witch", slot_troop_wealth, 1),
+    ],[
+      (set_fixed_point_multiplier, 1),
+      (entry_point_get_position, pos2, 1),
+      (get_player_agent_no, ":player"),
+      (agent_get_position, pos1, ":player"),
+      (get_distance_between_positions_in_meters, ":distance", pos1, pos2),
+      (le, ":distance", 3),
+      (display_message, "@You found Arminius tomb!", color_good_news),
+      (add_xp_as_reward, 1000),
+      (troop_set_slot, "trp_witch", slot_troop_wealth, 2),
     ]),
+    (ti_tab_pressed, 0, 0, [
+      (jump_to_menu, "mnu_grove_2"),
+      (finish_mission),
+    ],[]),
+    (ti_question_answered, 0, 0,[
+      (troop_slot_eq, "trp_witch", slot_troop_leaded_party, 0),
+    ],[
+      (store_trigger_param_1, ":number"),
+      (eq, ":number", 0),
+      (display_message, "@Your action angered the Germans!", color_terrible_news),
+      (display_log_message, "@You desecrate Arminius tomb!", color_terrible_news),
+      (troop_set_slot, "trp_witch", slot_troop_leaded_party, 1),
 
-    ],
-  ),
+      (assign, ":min_dist", 100),
+      (assign, ":min_dist_village", -1),
+      (try_for_range, ":cur_village", villages_begin, villages_end),
+        (store_distance_to_party_from_party, ":cur_dist", ":cur_village", "p_main_party"),
+        (lt, ":cur_dist", ":min_dist"),
+        (assign, ":min_dist", ":cur_dist"),
+        (assign, ":min_dist_village", ":cur_village"),
+      (try_end),
+      (try_begin),
+        (gt, ":min_dist_village", -1),
+        (store_faction_of_party, ":village_faction", ":min_dist_village"),
+        (is_between, ":village_faction", "fac_kingdom_1", kingdoms_end),
+        (faction_slot_eq, ":village_faction", slot_faction_culture, "fac_culture_4"),
+        (call_script, "script_change_player_relation_with_faction", ":village_faction", -5),
+      (try_end),
 
+      (call_script, "script_change_player_honor", -5),
+      (call_script, "script_change_troop_renown", "trp_player", 15),
+
+      (set_show_messages, 0),
+      (set_fixed_point_multiplier, 100),
+      (try_for_range, ":center", centers_begin, centers_end),#reduce relacion con cada centro chief
+        (party_slot_eq, ":center", slot_center_culture, "fac_culture_4"),
+        (store_distance_to_party_from_party, ":cur_distance", "p_main_party", ":center"),
+        (lt,":cur_distance", 20),
+        (call_script, "script_change_player_relation_with_center", ":center", -5),
+      (try_end),
+      (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
+          (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_dead),
+          (store_faction_of_troop, ":fac", ":npc"),
+          (eq, ":fac", "$players_kingdom"),
+          (troop_get_slot, ":personality", ":npc", slot_lord_reputation_type),
+          (try_begin),
+              (is_between, ":personality", lrep_goodnatured, lrep_custodian),
+              (neq, ":personality", lrep_roguish),
+              (troop_slot_eq, ":npc", slot_troop_culture, "fac_culture_7"),
+              (store_random_in_range, ":rand", 0, 3),
+              (call_script, "script_change_player_relation_with_troop", ":npc", ":rand"),
+          (else_try),
+              (troop_slot_eq, ":npc", slot_troop_culture, "fac_culture_7"),
+              (store_random_in_range, ":rand", 1, 3),
+              (call_script, "script_change_player_relation_with_troop", ":npc", ":rand"),
+          (try_end),
+      (try_end),
+      (set_show_messages, 1),
+      (add_xp_as_reward, 500),
+    ]),
+]),
 ("witch_2",mtf_battle_mode|mtf_commit_casualties,-1,
   "You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []), #player start
@@ -22134,13 +22119,11 @@ mission_templates = [
     cannot_spawn_commoners,
     improved_lightning,
     wounds_vc,
-
     (ti_before_mission_start, 0, 0,[
       (troop_slot_eq, "trp_organiser", olympia_easter_egg, 0),
     ],[
       (call_script, "script_remove_easter_eggs"),
     ]),
-    ##init list
     (ti_before_mission_start, 0, 0,[],[
       (play_sound, "snd_arena_ambiance", sf_looping),
       (call_script, "script_music_set_situation_with_culture", mtf_sit_thermae),
@@ -22151,7 +22134,6 @@ mission_templates = [
         (troop_set_slot, "trp_temp_array_olympia_a", ":slot", -1),
       (try_end),
     ]),
-
     (1, 2, ti_once,[
       (lt, "$temp_3", 0),
     ],[
@@ -22179,13 +22161,11 @@ mission_templates = [
       (mission_cam_animate_to_screen_color, 0xFF000000, 1000),
       (finish_mission, 4),
     ]),
-    ##leave1
     (ti_tab_pressed, 0, 0,[
       (lt, "$temp_3", 0),
     ],[
       (display_message, "str_cannot_leave_now"),
     ]),
-
     (ti_tab_pressed, 0, 0,[
       (ge, "$temp_3", 0),
     ],[
@@ -22205,7 +22185,8 @@ mission_templates = [
       (assign, ":menu",  -1),
       (try_begin),
         (eq, "$temp4_1", 1),
-        (assign, ":menu",  "mnu_town"),
+        (store_random_in_range, "$g_tournament_player_team_won", "trp_novice_fighter", "trp_arena_training_fighter_1"),
+        (assign, ":menu", "mnu_town_race_won_by_another"),
       (else_try),
         (try_for_range, ":slot", 1, 8),
             (troop_slot_ge, "trp_temp_array_olympia_b", ":slot", 1),

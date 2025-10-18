@@ -37084,7 +37084,7 @@ presentations = presentations_wse2 + [
         (position_set_y, pos3, 250),
         (overlay_set_size, reg0, pos3),
 
-        (call_script, "script_get_cohort_info_to_s5", "$temp"),
+        (call_script, "script_get_cohort_info_to_s5", "$temp", "$players_kingdom"),
         (create_text_overlay, reg1, s5, tf_scrollable_style_2),
         (position_set_x, pos1, 140),
         (position_set_y, pos1, 535),
@@ -37194,7 +37194,7 @@ presentations = presentations_wse2 + [
         (start_presentation, "prsnt_manage_cohorts"),
     (else_try),
         (eq, ":button_pressed_id", "$g_presentation_obj_1"),
-        (call_script, "script_get_cohort_info_to_s5", "$temp"),
+        (call_script, "script_get_cohort_info_to_s5", "$temp", "$players_kingdom"),
         (store_troop_gold, ":g", "trp_player"),
         (try_begin),
             (ge, "$g_rank", 1),

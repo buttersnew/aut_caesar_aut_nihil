@@ -31443,7 +31443,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (ge, ":current_hours", ":policy_time"),
 
   (faction_get_slot, ":template", "$players_kingdom", slot_faction_reinforcements_a),
-  (call_script, "script_get_cohort_info_to_s5", ":template"),
+  (call_script, "script_get_cohort_info_to_s5", ":template", "$players_kingdom"),
   (try_begin),
       (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
       (str_store_string, s6, "@Mounted troops."),
@@ -31462,7 +31462,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (ge, ":current_hours", ":policy_time"),
 
   (faction_get_slot, ":template", "$players_kingdom", slot_faction_reinforcements_b),
-  (call_script, "script_get_cohort_info_to_s5", ":template"),
+  (call_script, "script_get_cohort_info_to_s5", ":template", "$players_kingdom"),
   (try_begin),
       (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
       (str_store_string, s6, "@Low Quality foot soldiers."),
@@ -31481,7 +31481,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (ge, ":current_hours", ":policy_time"),
 
   (faction_get_slot, ":template", "$players_kingdom", slot_faction_reinforcements_c),
-  (call_script, "script_get_cohort_info_to_s5", ":template"),
+  (call_script, "script_get_cohort_info_to_s5", ":template", "$players_kingdom"),
   (try_begin),
       (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
       (str_store_string, s6, "@Medium Quality foot soldiers."),
@@ -31523,7 +31523,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (else_try),
       (faction_get_slot, ":template", "$players_kingdom", slot_faction_reinforcements_a),
   (try_end),
-  (call_script, "script_get_cohort_info_to_s5", ":template"),
+  (call_script, "script_get_cohort_info_to_s5", ":template", "$players_kingdom"),
   (store_troop_gold,reg12,"trp_household_possessions"),
   (lt, reg12, reg6),
 ],"As it seems we have not enough gold in the treasury to recruit the patrol. We have currently only {reg12} gold in the treasury while we need {reg6} to hire it.",
@@ -43905,7 +43905,7 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
   #[anyone,"germanicus_history_pretalk",[],
     # "Anything else?", "germanicus_history_33",[]],
   #[anyone,"germanicus_history",[],
-    # "It is a cognomen I gained for fighting Germanic tribes in the Magna Germania. Also my father and my grandfather had this cognomen.\
+    # "It is a cognomen I gained for fighting Germanic tribes in Magna Germania. Also my father and my grandfather had this cognomen.\
  # We fight the Germanic tribes since the shameful defeat at Teuteburg.", "germanicus_history_33",[]],
   #[anyone|plyr,"germanicus_history_33",[],
     # "Can you tell me more about Teuteburg?", "germanicus_history_3",[]],
@@ -59190,17 +59190,17 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 ], "Of course, oh divine Caesar.", "lord_tell_mission_eagle2",
 []],
 [anyone,"lord_tell_mission_eagle2",[
-], "Very good. Bring me the eagle of the seventeenth legion! You should look around in the Magna Germania, it should be somewhere there.", "lord_pretalk",
-[
-(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
-(str_store_string, s2, "@Find the eagle of the seventeenth legion. It should be somewhere in the Magna Germania.\
-You should start your search near Baduhenna's sanctuary in the land of the Frisi, as it was the place where the battle of Teuteburg was fought."),
-(call_script, "script_start_quest", "qst_the_eagle", "$g_talk_troop"),
-(set_spawn_radius, 5),
-(call_script, "script_spawn_party", "p_german_temple_1", "pt_grove"),
-(assign, ":party_no", reg(0)),
-(party_set_flags, ":party_no", pf_disabled, 1),
-(quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 1),
+], "Very good. Bring me the eagle of the seventeenth legion! You should look around in Magna Germania, it should be somewhere there.",
+"lord_pretalk",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
+  (str_store_string, s2, "@Find the eagle of the seventeenth legion. It should be somewhere in Magna Germania.\
+  You should start your search near Baduhenna's sanctuary in the land of the Frisi, as it was the place where the battle of Teuteburg was fought."),
+  (call_script, "script_start_quest", "qst_the_eagle", "$g_talk_troop"),
+  (set_spawn_radius, 5),
+  (call_script, "script_spawn_party", "p_german_temple_1", "pt_grove"),
+  (assign, ":party_no", reg(0)),
+  (party_set_flags, ":party_no", pf_disabled, 1),
+  (quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 1),
 ]],
 #check with armagan on this
 
@@ -59638,7 +59638,7 @@ You should start your search near Baduhenna's sanctuary in the land of the Frisi
   (quest_get_slot, reg33, "$random_quest_no", slot_quest_gold_reward),
   (quest_get_slot, reg34, "$random_quest_no", slot_quest_target_amount),
   (setup_quest_text,"$random_quest_no"),
-  (str_store_string, s2, "@{s11} asked you to deliver a gift of {reg34} to a senator in {s32}.^^(Hint: Go to Rome and visit the sights.)"),
+  (str_store_string, s2, "@{s11} asked you to deliver a gift of {reg34} to a senator in {s32}.^^(Hint: Go to Rome and click on 'Take an Action'.)"),
 ]],
 
 ##diplomacy start+ Fix gender and relation of target.  Also replace "My {s17} {s13}" with {s0}

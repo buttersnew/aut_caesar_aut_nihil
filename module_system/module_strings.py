@@ -1662,7 +1662,7 @@ strings = [
   ("npc3_personalityclash_speech", "Captain -- in my opinion, {s11} is a hard and cruel man. He speaks of nothing but the need to flog,"
 	+" beat, and hang his fellow soldiers."),
   ("npc4_personalityclash_speech", "Warlord. My Clan is one of the most ancient and respected families in Scandia,"
-	+" and we are even known in the Magna Germania. Yet {s11} openly shows me disrespect, and smears the reputation of my Clan and family."),
+	+" and we are even known in Magna Germania. Yet {s11} openly shows me disrespect, and smears the reputation of my Clan and family."),
   ("npc5_personalityclash_speech", "A moment of your time, captain. {s11} seems to think me a common bandit, just because"
 	+" I have rewarded myself in the past to the legitimate spoils of war from caravans passing through my family's lands."),
   ("npc6_personalityclash_speech", "Your pardon, Commander, but I cannot keep my tongue stilled any longer."

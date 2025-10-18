@@ -13,23 +13,23 @@ from header_quests import *
 
 quests = [
   # Note : This is defined as the first governer quest in module_constants.py:
-  ("deliver_message", "Generic Quest: Deliver message to {s13}", qf_random_quest,
+  ("deliver_message", "Generic Quest: Deliver Message to {s13}", qf_random_quest,
   "{!}{s9} asked you to take a message to {s13}. {s13} was at {s4} when you were given this quest."
   ),
-  ("deliver_message_to_enemy_lord", "Generic Quest: Deliver message to {s13}", qf_random_quest,
+  ("deliver_message_to_enemy_lord", "Generic Quest: Deliver Message to {s13}", qf_random_quest,
   "{!}{s9} asked you to take a message to {s13} of {s15}. {s13} was at {s4} when you were given this quest."
   ),
-  ("raise_troops", "Generic Quest: Obtain {reg1} {s14} as prisoners", qf_random_quest,
+  ("raise_troops", "Generic Quest: Obtain {reg1} {s14} as Prisoners", qf_random_quest,
   "{!}{s9} asked you to obtain {reg1} {s14} as prisoners and bring them to him."
   ),
   ("escort_lady", "Generic Quest: Escort {s13} to {s14}", qf_random_quest,
   "{!}None"
   ),
 
-  ("deal_with_bandits_at_lords_village", "Generic Quest: Save the village of {s15} from bandits", qf_random_quest,
+  ("deal_with_bandits_at_lords_village", "Generic Quest: Save the Village of {s15} from Bandits", qf_random_quest,
   "{!}{s13} asked you to deal with the bandits who took refuge in his village of {s15} and then report back to him."
   ),
-  ("collect_taxes", "Generic Quest: Collect taxes from {s3}", qf_random_quest,
+  ("collect_taxes", "Generic Quest: Collect Taxes from {s3}", qf_random_quest,
   "{!}{s9} asked you to collect taxes from {s3}. He offered to leave you one-fifth of all the money you collect there."
   ),
   ("hunt_down_fugitive", "Generic Quest: Hunt down {s4}", qf_random_quest,
@@ -41,22 +41,22 @@ quests = [
   ## ("bring_back_deserters", "Bring {reg1} {s3}", qf_random_quest,
   ##  "{s1} asked you to bring {reg1} {s3}."
   ##  ),
-  ("kill_local_merchant", "Generic Quest: Assassinate local merchant at {s3}", qf_random_quest,
+  ("kill_local_merchant", "Generic Quest: Assassinate local Merchant at {s3}", qf_random_quest,
   "{!}{s9} asked you to assassinate a local merchant at {s3}."
   ),
-  ("bring_back_runaway_serfs", "Generic Quest: Bring back runaway slaves", qf_random_quest,
+  ("bring_back_runaway_serfs", "Generic Quest: Bring back runaway Slaves", qf_random_quest,
   "{!}{s9} asked you to bring back the three groups of runaway slaves back to {s2}. He said all three groups must be running away in the direction of {s3}."
   ),
-  ("follow_spy", "Generic Quest: Follow the spy", qf_random_quest,
+  ("follow_spy", "Generic Quest: Follow the Spy", qf_random_quest,
   "{!}{s11} asked you to follow the spy that will leave {s12}. You must be careful not to be seen by the spy during his travel, or else he may get suspicious and turn back. Once the spy meets with his accomplice, you are to ambush and capture them and bring them both back to {s11}."
   ),
   ("capture_enemy_hero", "Generic Quest: Capture a Lord from {s13}", qf_random_quest,
   "{!}TODO: {s11} asked you to capture a lord from {s13}."
   ),
-  ("lend_companion", "Generic Quest: Lend your companion {s3} to {s9}", qf_random_quest,
+  ("lend_companion", "Generic Quest: Lend your Companion {s3} to {s9}", qf_random_quest,
   "{!}{s9} asked you to lend your companion {s3} to him for a week."
   ),
-  ("collect_debt", "Generic Quest: Collect the debt {s3} owes to {s9}", qf_random_quest,
+  ("collect_debt", "Generic Quest: Collect the Debt {s3} owes to {s9}", qf_random_quest,
   "{!}{s9} asked you to collect the debt of {reg4} denarii {s3} owes to him."
   ),
   ## ("capture_conspirators", "Capture Conspirators", qf_random_quest,
@@ -65,16 +65,16 @@ quests = [
   ## ("defend_nobles_against_peasants", "Defend Nobles Against Peasants", qf_random_quest,
   ##  "TODO: {s1} asked you to defend {reg1} noble parties against peasants."l
   ##  ),
-  ("incriminate_loyal_commander", "Generic Quest: Incriminate the loyal commander of {s13}, {s16}", qf_random_quest,
+  ("incriminate_loyal_commander", "Generic Quest: Incriminate the loyal Commander of {s13}, {s16}", qf_random_quest,
   "{!}None"
   ),
   # ("raid_caravan_to_start_war", "Raid {reg13} Caravans of {s13}", qf_random_quest,   #This is now a dynamic quest, integrated into the provocation system
   #  "None"
   #  ),
-  ("meet_spy_in_enemy_town", "Generic Quest: Meet spy in {s13}", qf_random_quest,
+  ("meet_spy_in_enemy_town", "Generic Quest: Meet Spy in {s13}", qf_random_quest,
   "{!}None"
   ),
-  ("capture_prisoners", "Generic Quest: Bring {reg1} {s3} prisoners", qf_random_quest,
+  ("capture_prisoners", "Generic Quest: Bring {reg1} {s3} Prisoners", qf_random_quest,
   "{!}{s9} wanted you to bring him {reg1} {s3} as prisoners."
   ),
 
@@ -86,7 +86,7 @@ quests = [
   # Enemy Kingdom Lord quests
   ##################
   # Note : This is defined as the first enemy lord quest in module_constants.py:
-  ("lend_surgeon", "Generic Quest: Lend your surgeon {s3} to {s1}", qf_random_quest,
+  ("lend_surgeon", "Generic Quest: Lend your Surgeon {s3} to {s1}", qf_random_quest,
   "{!}Lend your experienced surgeon {s3} to {s1}."
   ),
 
@@ -94,18 +94,18 @@ quests = [
   # Kingdom Army quests
   ##################
   # Note : This is defined as lord quests end in module_constants.py:
-  ("follow_army", "Army Quest: Follow {s9}'s army", qf_random_quest,
+  ("follow_army", "Army Quest: Follow {s9}'s Army", qf_random_quest,
   "{!}None"
   ),
-  ("report_to_army", "Army Quest: Report to {s13}, the marshall", qf_random_quest,
+  ("report_to_army", "Army Quest: Report to {s13}, the Marshall", qf_random_quest,
   "{!}None"
   ),
   # Note : This is defined as the first army quest in module_constants.py:
   # maybe disable these army quests, except as volunteer quests that add to the capacity of the army
-  ("deliver_cattle_to_army", "Army Quest: Deliver {reg3} heads of cattle to {s13}", qf_random_quest,
+  ("deliver_cattle_to_army", "Army Quest: Deliver {reg3} Heads of Cattle to {s13}", qf_random_quest,
   "{!}None"
   ),
-  ("join_siege_with_army", "Army Quest: Join the siege of {s14}", qf_random_quest,
+  ("join_siege_with_army", "Army Quest: Join the Siege of {s14}", qf_random_quest,
   "{!}None"
   ),
   ("screen_army", "Army Quest: Screen the advance of {s13}'s Army", qf_random_quest,
@@ -124,21 +124,21 @@ quests = [
   ("rescue_lord_by_replace", "Generic Quest: Rescue {s13} from {s14}", qf_random_quest,
   "{!}None"
   ),
-  ("deliver_message_to_prisoner_lord", "Generic Quest: Deliver message to {s13} at {s14}", qf_random_quest,
+  ("deliver_message_to_prisoner_lord", "Generic Quest: Deliver Message to {s13} at {s14}", qf_random_quest,
   "{!}None"
   ),
 
   #Courtship quests
-  ("duel_for_lady", "Generic Quest: Challenge {s13} to a duel", qf_random_quest,
+  ("duel_for_lady", "Generic Quest: Challenge {s13} to a Duel", qf_random_quest,
   "{!}None"
   ),
 
-  ("duel_courtship_rival", "Optinal Quest: Challenge {s13} to a duel", qf_random_quest,
+  ("duel_courtship_rival", "Optinal Quest: Challenge {s13} to a Duel", qf_random_quest,
   "{!}None"
   ),
 
   #Other duel quests
-  ("duel_avenge_insult", "Generic Quest: Challenge {s13} to a duel", qf_random_quest,
+  ("duel_avenge_insult", "Generic Quest: Challenge {s13} to a Duel", qf_random_quest,
   "{!}None"
   ),
 
@@ -146,39 +146,39 @@ quests = [
   # Mayor quests
   ##################
   # Note : This is defined as the first mayor quest in module_constants.py:
-  ("move_cattle_herd", "Generic Quest: Move cattle herd to {s13}", qf_random_quest,
+  ("move_cattle_herd", "Generic Quest: Move Cattle Herd to {s13}", qf_random_quest,
   "{!}Guildmaster of {s10} asked you to move a cattle herd to {s13}."
   ),
-  ("escort_merchant_caravan", "Generic Quest: Escort merchant caravan to {s8}", qf_random_quest, #make this a non-random quest?
+  ("escort_merchant_caravan", "Generic Quest: Escort Merchant Caravan to {s8}", qf_random_quest, #make this a non-random quest?
   "{!}Escort the merchant caravan to the town of {s8}."
   ),
-  ("deliver_wine", "Generic Quest: Deliver {reg5} units of {s6} to {s4}", qf_random_quest,
+  ("deliver_wine", "Generic Quest: Deliver {reg5} Units of {s6} to {s4}", qf_random_quest,
   "{!}{s9} of {s3} asked you to deliver {reg5} units of {s6} to the tavern in {s4} in 7 days."
   ),
-  ("troublesome_bandits", "Generic Quest: Hunt down troublesome bandits", qf_random_quest,
+  ("troublesome_bandits", "Generic Quest: Hunt down troublesome Bandits", qf_random_quest,
   "{!}{s9} of {s4} asked you to hunt down the troublesome bandits in the vicinity of the town."
   ),
 
-  ("kidnapped_girl", "Generic Quest: Ransom girl from bandits", qf_random_quest,
+  ("kidnapped_girl", "Generic Quest: Ransom Girl from Bandits", qf_random_quest,
   "{!}Guildmaster of {s4} gave you {reg12} denarii to pay the ransom of a girl kidnapped by bandits.\
   You are to meet the bandits near {s3} and pay them the ransom fee.\
   After that you are to bring the girl back to {s4}."
   ),
 
-  ("persuade_lords_to_make_peace", "Generic Quest: Make sure two Lords don't object to peace", qf_random_quest, #possibly deprecate., or change effects
+  ("persuade_lords_to_make_peace", "Generic Quest: Make sure two Lords don't object to Peace", qf_random_quest, #possibly deprecate., or change effects
   "{!}Guildmaster of {s4} promised you {reg12} denarii if you can make sure that\
   {s12} and {s13} no longer pose a threat to a peace settlement between {s15} and {s14}.\
   In order to do that, you must either convince them or make sure they fall captive and remain so until a peace agreement is made."
   ),
 
-  ("deal_with_looters", "Generic Quest: Deal with looters", qf_random_quest,
+  ("deal_with_looters", "Generic Quest: Deal with Looters", qf_random_quest,
   "{!}The Guildmaster of {s4} has asked you to deal with several bands of looters around {s4}, and bring back any goods you recover."
   ),
-  ("deal_with_night_bandits", "Generic Quest: Deal with night bandits", qf_random_quest,
+  ("deal_with_night_bandits", "Generic Quest: Deal with Night Bandits", qf_random_quest,
   "{!}TODO: The Guildmaster of {s14} has asked you to deal with night bandits at {s14}."
   ),
 
-  ("elusive_bandits", "Generic Quest: Elusive bandits", qf_random_quest,
+  ("elusive_bandits", "Generic Quest: Elusive Bandits", qf_random_quest,
   "{!}New quest."
   ),
 
@@ -186,27 +186,27 @@ quests = [
   # Village Elder quests
   ############
   # Note : This is defined as the first village elder quest in module_constants.py:
-  ("deliver_grain", "Generic Quest: Bring wheat to {s3}", qf_random_quest,
+  ("deliver_grain", "Generic Quest: Bring Wheat to {s3}", qf_random_quest,
   "{!}The elder of the village of {s3} asked you to bring them {reg5} packs of wheat.."
   ),
-  ("deliver_cattle", "Generic Quest: Deliver {reg5} heads of cattle to {s3}", qf_random_quest,
+  ("deliver_cattle", "Generic Quest: Deliver {reg5} Heads of Cattle to {s3}", qf_random_quest,
   "{!}The elder of the village of {s3} asked you to bring {reg5} heads of cattle."
   ),
-  ("train_peasants_against_bandits", "Generic Quest: Train peasants of {s13}", qf_random_quest,
+  ("train_peasants_against_bandits", "Generic Quest: Train Peasants of {s13}", qf_random_quest,
   "{!}None"
   ),
-  ("water_dispute", "Generic Quest: Water dispute", qf_random_quest,
+  ("water_dispute", "Generic Quest: Water Dispute", qf_random_quest,
   "{!}None"
   ),
-  ("dry_wells", "Generic Quest: Dry wells", qf_random_quest,
+  ("dry_wells", "Generic Quest: Dry Wells", qf_random_quest,
   "{!}None"
   ),
-  ("need_tools", "Generic Quest: Villagers need tools", qf_random_quest,
+  ("need_tools", "Generic Quest: Villagers need Tools", qf_random_quest,
   "{!}None"
   ),
 
   # Note : This is defined as the last village elder quest in module_constants.py:
-  ("eliminate_bandits_infesting_village", "Generic Quest: Save the village of {s7} from bandits", qf_random_quest,
+  ("eliminate_bandits_infesting_village", "Generic Quest: Save the Village of {s7} from Bandits", qf_random_quest,
   "{!}A villager from {s7} begged you to save their village from the bandits that took refuge there."
   ),
 
@@ -214,16 +214,16 @@ quests = [
   ("visit_lady", "Generic Quest: Visit Lady", qf_random_quest,
   "{!}None"
   ),
-  ("formal_marriage_proposal", "Generic Quest: Formal marriage proposal", qf_random_quest,
+  ("formal_marriage_proposal", "Generic Quest: Formal Marriage Proposal", qf_random_quest,
   "{!}None"
   ),  #Make a formal proposal to a bride's father or brother
-  ("obtain_liege_blessing", "Generic Quest: Formal marriage proposal", qf_random_quest,
+  ("obtain_liege_blessing", "Generic Quest: Formal Marriage Proposal", qf_random_quest,
   "{!}None"
   ),  #The equivalent of the above -- ask permission of a groom's liege. Is currently not used
-  ("wed_betrothed", "Generic Quest: Wed your betrothed", qf_random_quest,
+  ("wed_betrothed", "Generic Quest: Wed your Betrothed", qf_random_quest,
   "{!}None"
   ),  #in this case, the giver troop is the father or guardian of the bride, object troop is the bride
-  ("wed_betrothed_female", "Generic Quest: Wed your betrothed", qf_random_quest,
+  ("wed_betrothed_female", "Generic Quest: Wed your Betrothed", qf_random_quest,
   "{!}None"
   ),  #in this case, the giver troop is the spouse
 
@@ -239,29 +239,29 @@ quests = [
   ),
 
   #Political quests begin here
-  ("consult_with_minister", "Generic Quest: Consult with minister", qf_random_quest, "{!}Consult your minister, {s11}, currently at {s12}"),
+  ("consult_with_minister", "Generic Quest: Consult with Minister", qf_random_quest, "{!}Consult your minister, {s11}, currently at {s12}"),
 
-  ("organize_feast",        "Generic Quest: Organize feast", qf_random_quest,        "{!}Bring goods for a feast to your spouse {s11}, currently at {s12}"),
-  ("resolve_dispute",       "Generic Quest: Resolve dispute", qf_random_quest,       "{!}Resolve the dispute between {s11} and {s12}"),
-  ("offer_gift",            "Generic Quest: Procure gift", qf_random_quest,          "{!}Give {s10} a gift to provide to {reg4?her:his} {s11}, {s12}"),
+  ("organize_feast",        "Generic Quest: Organize Feast", qf_random_quest,        "{!}Bring goods for a feast to your spouse {s11}, currently at {s12}"),
+  ("resolve_dispute",       "Generic Quest: Resolve Dispute", qf_random_quest,       "{!}Resolve the dispute between {s11} and {s12}"),
+  ("offer_gift",            "Generic Quest: Procure Gift", qf_random_quest,          "{!}Give {s10} a gift to provide to {reg4?her:his} {s11}, {s12}"),
   ("denounce_lord",         "Generic Quest: Denunciation", qf_random_quest,         "{!}Denounce {s11} in Public"),
   ("intrigue_against_lord", "Generic Quest: Scheme", qf_random_quest, "{!}Criticize {s11} in Private"),
 
 
   #Dynamic quests begin here
   #These quests are determined dynamically by external conditions -- bandits who have carried out a raid, an impending war, etc...
-  ("track_down_bandits", "Generic Quest: Track down bandits", qf_random_quest,
+  ("track_down_bandits", "Generic Quest: Track down Bandits", qf_random_quest,
   "{!}{s9} of {s4} asked you to track down {s6}, who attacked travellers on the roads near town."
   ), #this is a fairly simple quest for the early game to make the town guildmaster's description of the economy a little more relevant, and also to give the player a reason to talk to other neutral parties on the map
 
-  ("track_down_provocateurs", "Generic Quest: Track down provocateurs", qf_random_quest,
+  ("track_down_provocateurs", "Generic Quest: Track down Provocateurs", qf_random_quest,
   "{!}{s9} of {s4} asked you to track down a group of thugs, hired to create a border incident between {s5} and {s6}."
   ),
-  ("retaliate_for_border_incident", "Generic Quest: Retaliate for a border incident", qf_random_quest,
+  ("retaliate_for_border_incident", "Generic Quest: Retaliate for a Border Incident", qf_random_quest,
   "{!}{s9} of {s4} asked you to defeat {s5} of the {s7} in battle, defusing tension in the {s8} to go to war."
   ), #perhaps replaces persuade_lords_to_make_peace
 
-  ("raid_caravan_to_start_war", "Generic Quest: Attack a neutral caravan to provoke war", qf_random_quest,
+  ("raid_caravan_to_start_war", "Generic Quest: Attack a neutral Caravan to provoke War", qf_random_quest,
   "{!}placeholder",
   ),
 
@@ -269,11 +269,11 @@ quests = [
   "{!}placeholder",
   ), #replaces raid_caravan_to_start_war
 
-  ("rescue_prisoner", "Generic Quest: Rescue or ransom a prisoner", qf_random_quest,
+  ("rescue_prisoner", "Generic Quest: Rescue or ransom a Prisoner", qf_random_quest,
   "{!}placeholder"
   ), #possibly replaces rescue lord
 
-  ("destroy_bandit_lair", "Generic Quest: Destroy bandit lair", qf_random_quest,
+  ("destroy_bandit_lair", "Generic Quest: Destroy Bandit Lair", qf_random_quest,
   "{!}{s9} of {s4} asked you to discover a {s6} and destroy it."
   ),
 
@@ -281,10 +281,10 @@ quests = [
   "{s11} asked you to destroy the temple at {s14}, near {s34}."
   ),
 
-  ("deliver_bribe", "Generic Quest: 'Gifts' for 'friends'", qf_random_quest,
+  ("deliver_bribe", "Generic Quest: 'Gifts' for 'Friends'", qf_random_quest,
   "{s11} asked you to deliver a gift of 10,000 denarii to a senator in Roma."
   ),
-  ("spy_on_spouse", "Generic Quest: Jealous husband", qf_random_quest,
+  ("spy_on_spouse", "Generic Quest: Jealous Husband", qf_random_quest,
   "{s11} asked you to spy on his spouse {s14}."
   ),
 
@@ -308,10 +308,10 @@ quests = [
   "{!}placeholder"
   ),
 
-  ("blank_quest_6","Generic Quest: Capture and bring {reg5} women to {s3}", qf_random_quest,
+  ("blank_quest_6","Generic Quest: Capture and bring {reg5} Women to {s3}", qf_random_quest,
   "The local leader of the village of {s3} asked you to bring {reg5} women to the village (as prisoners)."),
 
-  ("blank_quest_7", "Generic Quest: Return runaway slave to {s3}", qf_random_quest,
+  ("blank_quest_7", "Generic Quest: Return runaway Slave to {s3}", qf_random_quest,
   "The leader of the village of {s3} asked you to bring a runaway slave back to the village."
   ),
 
@@ -358,7 +358,7 @@ quests = [
   "{!}placeholder"
   ),
 
-  ("blank_quest_20", "Special Quest: Blossom in the desert", qf_random_quest,
+  ("blank_quest_20", "Special Quest: Blossom in the Desert", qf_random_quest,
   "{!}placeholder"
   ),
 
@@ -395,15 +395,15 @@ quests = [
   "{!}{s9} asked you to collect at least 5 more men before you move against the bandits threatening the townsmen. You can recruit soldiers from villages as well as town taverns. You can find {s9} at the tavern in {s4} when you have think you have enough men."
   ),
 
-  ("learn_where_merchant_brother_is", "Main Story: Learn where the hostages are held.", 0,
+  ("learn_where_merchant_brother_is", "Main Story: Learn where the Hostages are held.", 0,
   "{!}placeholder."
   ),
 
-  ("save_relative_of_merchant", "Main Story: Attack the bandit lair", 0,
+  ("save_relative_of_merchant", "Main Story: Attack the Bandit Lair", 0,
   "{!}placeholder."
   ),
 
-  ("save_town_from_bandits", "Main Story: Bandit cartel", 0,
+  ("save_town_from_bandits", "Main Story: Bandit Cartel", 0,
   "{!}placeholder."
   ),
   ### end start up quests
@@ -412,14 +412,14 @@ quests = [
   "{!}placeholder"
   ),
 
-  ("usurp_province", "Special Quest: Tyranny and despotism", qf_random_quest,
+  ("usurp_province", "Special Quest: Tyranny and Despotism", qf_random_quest,
   "{!}placeholder"
   ),
 
-  ("join_roman_army", "Main Story: Serve in the legion", qf_random_quest,
+  ("join_roman_army", "Main Story: Serve in the Legion", qf_random_quest,
   "{!}placeholder"
   ),
-  ("gain_renown", "Main Story: Become a rich landowner", qf_random_quest,
+  ("gain_renown", "Main Story: Become a rich Landowner", qf_random_quest,
   "{!}placeholder"
   ),
   ("important_friends", "Main Story: The Secret of Kaeso Flavius", qf_random_quest,
@@ -435,19 +435,19 @@ quests = [
   ("petrus", "Special Quest: Paulus the Christ", qf_random_quest,
   "{!}placeholder"
   ),
-  ("town_trade", "Special Quest: A meeting", qf_random_quest,
+  ("town_trade", "Special Quest: A Meeting", qf_random_quest,
   "{!}placeholder"
   ),
   ("town_trade_2", "Special Quest: The merchant Lucillus", qf_random_quest,
   "{!}placeholder"
   ),
-  ("the_eagle", "Special Quest: The eagle", qf_random_quest,
+  ("the_eagle", "Special Quest: The Eagle", qf_random_quest,
   "{!}placeholder"
   ),
-  ("new_hope", "Main Story: A new hope", qf_random_quest,
+  ("new_hope", "Main Story: A new Hope", qf_random_quest,
   "{!}placeholder"
   ),
-  ("grain_supply", "Senate Quest: Grain supply", qf_random_quest,
+  ("grain_supply", "Senate Quest: Grain Supply", qf_random_quest,
   "{!}placeholder"
   ),
   ("talk_with_the_emperor", "Senate Quest: Talk with the Princeps", qf_random_quest,
@@ -463,7 +463,7 @@ quests = [
   "{!}placeholder"
   ),
 
-  ("avaritia", "Special Quest: Gang activities", qf_random_quest,
+  ("avaritia", "Special Quest: Gang Activities", qf_random_quest,
   "{!}placeholder"
   ),
 
@@ -478,13 +478,13 @@ quests = [
   ("money_stinks", "Special Quest: Money doesn't stink", qf_random_quest,
   "{!}placeholder"
   ),
-  ("pirates", "Special Quest: Fast ships", qf_random_quest,
+  ("pirates", "Special Quest: Fast Ships", qf_random_quest,
   "{!}placeholder"
   ),
-  ("philosopher", "Special Quest: The philosopher", qf_random_quest,
+  ("philosopher", "Special Quest: The Philosopher", qf_random_quest,
   "{!}placeholder"
   ),
-  ("nero_special_quest", "Special Quest: Nero's wishes", qf_random_quest,
+  ("nero_special_quest", "Special Quest: Nero's Wishes", qf_random_quest,
   "{!}placeholder"
   ),
   ("elephant_hunt", "Generic Quest: Dangerous Hunt", qf_random_quest,
@@ -508,16 +508,16 @@ quests = [
   ("wlodowiecus_adventure_4", "Special Quest: The Adventure of Wlodowiecus (IV)", qf_random_quest,
   "{!}placeholder"
   ),
-  ("bacchhus_quest", "Special Quest: Dionysus rege!", qf_random_quest,
+  ("bacchhus_quest", "Special Quest: Dionysus Rege!", qf_random_quest,
   "{!}placeholder"
   ),
   ("hadrian_letter", "Special Quest: Lugian Forests", qf_random_quest,
   "{!}placeholder"
   ),
-  ("arminius_sword", "Special Quest: Arminius' tomb", qf_random_quest,
+  ("arminius_sword", "Special Quest: Arminius' Tomb", qf_random_quest,
   "{!}placeholder"
   ),
-  ("nero_reborn", "Special Quest: Nero reborn", qf_random_quest,
+  ("nero_reborn", "Special Quest: Nero Reborn", qf_random_quest,
   "{!}placeholder"
   ),
   ("elysium", "Special Quest: Elyisum", qf_random_quest,
@@ -526,26 +526,26 @@ quests = [
   ("olympic_games", "Special Quest: Olympic Games", qf_random_quest,
   "{!}placeholder"
   ),
-  ("langobard_arrive", "Special Quest: The invasion of the Winnili", qf_random_quest,
+  ("langobard_arrive", "Special Quest: The Invasion of the Winnili", qf_random_quest,
   "{!}placeholder"
   ),
   ("investment", "Generic Quest: Investment Opportunity", qf_random_quest,
   "{!}placeholder"
   ),
 
-  ("collect_requested_money", "Generic Quest: Collect the requested money", 0,
+  ("collect_requested_money", "Generic Quest: Collect the requested Money", 0,
   "{!}placeholder."
   ),
-  ("collect_requested_influence", "Generic Quest: Meet with friends", 0,
+  ("collect_requested_influence", "Generic Quest: Meet with Friends", 0,
   "{!}placeholder."
   ),
-  ("collect_requested_senate", "Generic Quest: Meet with senators", 0,
+  ("collect_requested_senate", "Generic Quest: Meet with Senators", 0,
   "{!}placeholder."
   ),
-  ("rags_to_riches", "Special Quest: A lightning from the past", 0,
+  ("rags_to_riches", "Special Quest: A lightning from the Past", 0,
   "{!}placeholder."
   ),
-  ("poking_the_lion", "Main Story: Poke the lion", 0,
+  ("poking_the_lion", "Main Story: Poke the Lion", 0,
   "{!}placeholder."
   ),
   ("four_emperors", "Main Story: The four Caesars", 0,
@@ -554,16 +554,16 @@ quests = [
   ("player_treason", "Special Quest: Treason", 0,
   "{!}placeholder."
   ),
-  ("neros_fate", "Special Quest: Fate of an artist", 0,
+  ("neros_fate", "Special Quest: Fate of an Artist", 0,
   "{!}placeholder."
   ),
-  ("zarinaia", "Special Quest: Zarinaia, the golden one", 0,
+  ("zarinaia", "Special Quest: Zarinaia, the golden One", 0,
   "{!}placeholder."
   ),
-  ("rhodogune", "Special Quest: Vow of the unbound hair", 0,
+  ("rhodogune", "Special Quest: Vow of the unbound Hair", 0,
   "{!}placeholder."
   ),
-  ("werdheri", "Special Quest: The suffering of Werdheri", 0,
+  ("werdheri", "Special Quest: The Suffering of Werdheri", 0,
   "{!}placeholder."
   ),
   ("triumph", "Special Quest: Triumph", 0,
