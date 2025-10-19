@@ -63,15 +63,21 @@ presentations = presentations_wse2 + [
 
     (try_begin),
         (is_vanilla_warband),
-        (create_text_overlay, reg1, "@You are running the mod with vanilla warband.^Consider using WSE2.", tf_center_justify|tf_vertical_align_center|tf_with_outline),
-        (position_set_x, pos1, 700),
-        (position_set_y, pos1, 700),
-        (overlay_set_size, reg1, pos1),
-        (position_set_x, pos1, ":initial_x_coordinate"),
-        (position_set_y, pos1, ":Initial_y_coordinate"),
-        (overlay_set_position, reg1, pos1),
-        (overlay_set_color, reg1, message_alert),
+        (assign, reg0, ACAN_VERSION),
+        (str_store_string, s1, "@Mod version {reg0}. You are running vanilla warband.^Consider using WSE2."),
+    (else_try),
+        (assign, reg0, ACAN_VERSION),
+        (str_store_string, s1, "@Mod version {reg0}."),
     (try_end),
+    (create_text_overlay, reg1, "str_blank_s1", tf_center_justify|tf_vertical_align_center|tf_with_outline),
+    (position_set_x, pos1, 700),
+    (position_set_y, pos1, 700),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, ":initial_x_coordinate"),
+    (position_set_y, pos1, ":Initial_y_coordinate"),
+    (overlay_set_position, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
+
     (val_sub, ":Initial_y_coordinate", 30),
 
     (create_text_overlay, "$g_presentation_credits_obj_1", "@New Game", tf_center_justify|tf_double_space|tf_vertical_align_center),
@@ -18913,7 +18919,8 @@ presentations = presentations_wse2 + [
     (try_end),
 
     #2. province names
-    (create_text_overlay, reg1, "@Settlement names", tf_center_justify),
+    (create_text_overlay, reg1, "@Settlement names", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 250),
     (position_set_y, pos1, 645),
     (overlay_set_position, reg1, pos1),
@@ -18955,7 +18962,8 @@ presentations = presentations_wse2 + [
     #2.1 campaign type
     (try_begin),
         (troop_slot_ge, "trp_global_variables", g_is_dev, 1),
-        (create_text_overlay, reg1, "@Campaign type", tf_center_justify),
+        (create_text_overlay, reg1, "@Campaign type", tf_center_justify|tf_with_outline),
+        (overlay_set_color, reg1, color_purple),
         (position_set_x, pos1, 250),
         (position_set_y, pos1, 555),
         (overlay_set_position, reg1, pos1),
@@ -19012,7 +19020,8 @@ presentations = presentations_wse2 + [
     (try_end),
 
     #3. DIFFICULTY
-    (create_text_overlay, reg1, "@Difficulty Type", tf_center_justify),
+    (create_text_overlay, reg1, "@Difficulty Type", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 250),
     (position_set_y, pos1, 465),
     (overlay_set_position, reg1, pos1),
@@ -19047,7 +19056,8 @@ presentations = presentations_wse2 + [
     (try_end),
 
     #4. OPTIONS
-    (create_text_overlay, reg1, "@Options", tf_center_justify),
+    (create_text_overlay, reg1, "@Options", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 750),
     (position_set_y, pos1, 650),
     (overlay_set_position, reg1, pos1),

@@ -9,7 +9,7 @@ player_horseman 0 slave_donkey 0.200000 114 0.160000 0.173000 0.000000 0
 gray_knight 0 vexillifer_icon_combinedd 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-vaegir_knight 0 mercenary_infantry 0.200000 114 0.160000 0.173000 0.000000 0
+mercenary_infantry 0 mercenary_infantry 0.200000 114 0.160000 0.173000 0.000000 0
 
 
 flagbearer_a 0 player_horseman1 0.200000 114 0.160000 0.173000 0.000000 0
@@ -21,13 +21,13 @@ flagbearer_b 0 flagbearer_b 0.200000 114 0.160000 0.173000 0.000000 0
 peasant 0 peasant_a 0.200000 17 0.160000 0.173000 0.000000 0
 
 
-khergit 0 arab 0.200000 114 0.160000 0.173000 0.000000 0
+arab 0 arab 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-khergit_horseman_b 0 steppbandit 0.200000 114 0.160000 0.173000 0.000000 0
+steppbandit 0 steppbandit 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-axeman 0 bandit 0.200000 17 0.160000 0.173000 0.000000 0
+bandit 0 bandit 0.200000 17 0.160000 0.173000 0.000000 0
 
 
 woman 0 woman_a 0.200000 17 0.160000 0.173000 0.000000 0
@@ -84,10 +84,10 @@ ship 1 boat_sail 0.230000 17 0.000000 0.050000 0.000000 0
 ship_on_land 1 boat_sail_0 0.230000 0 0 0 0 0
 
 
-castle_a 1 horde_camp 0.150000 0 0 0 0 0
+horde_camp 1 horde_camp 0.150000 0 0 0 0 0
 
 
-castle_c 1 farmstead 0.420000 0 0 0 0 0
+farmstead 1 farmstead 0.420000 0 0 0 0 0
 
 
 map_island 1 map_island 0.500000 0 0 0 0 0
@@ -162,10 +162,10 @@ kingdom_6_soldier_b 0 eastern1_re 0.200000 17 0.160000 0.173000 0.000000 0
 kingdom_7_soldier_b 0 rom_re 0.200000 17 0.160000 0.173000 0.000000 0
 
 
-mountain_bandit 0 banditrom 0.200000 17 0.160000 0.173000 0.000000 0
+banditrom 0 banditrom 0.200000 17 0.160000 0.173000 0.000000 0
 
 
-forest_bandit 0 bandithisp 0.200000 17 0.160000 0.173000 0.000000 0
+bandithisp 0 bandithisp 0.200000 17 0.160000 0.173000 0.000000 0
 
 
 german1 0 german1 0.200000 17 0.160000 0.173000 0.000000 0

@@ -185,15 +185,15 @@ ui_time_limit_reached|Time Limit Reached!
 ui_explanation_time_limit|Hail Adventurer, Mount&Blade has not been activated yet and is running in trial mode. In this mode, the game is limited to 30 game days. In oder to continue playing, please restart the game and activate it with your 16-digit serial key which is included in your boxed copy. After activating, you can continue playing right from here. Now, Mount&Blade will save your game and exit.
 ui_target_lost|Target lost
 ui_waiting|Waiting.
-ui_travelling_to|Travelling to 
-ui_following|Following 
-ui_accompanying|Accompanying 
-ui_running_from|Running from 
-ui_patrolling|Patrolling 
-ui_patrolling_around|Patrolling around 
+ui_travelling_to|Travelling to
+ui_following|Following
+ui_accompanying|Accompanying
+ui_running_from|Running from
+ui_patrolling|Patrolling
+ui_patrolling_around|Patrolling around
 ui_holding|Holding
 ui_travelling|Travelling
-ui_fighting_against|Fighting against 
+ui_fighting_against|Fighting against
 ui_speed_equals|Speed = %2.1f
 ui_defenders|Garrison:
 ui_prisoners|Prisoners:
@@ -312,7 +312,7 @@ ui_capture|Capture
 ui_party_capcity_reached|(Party capacity reached)
 ui_all| all
 ui_joining_cost_weekly_wage|Joining cost: %d, Weekly wage: %d
-ui_weekly_wage|Weekly wage: %d denars
+ui_weekly_wage|Weekly wage: %d denarii
 ui_price|Price: %d
 ui_number_ready_to_upgrade|%d ready to be upgraded.
 ui_upgrade_to_value| Upgrade to %s (%dd)
@@ -566,7 +566,7 @@ ui_game_log|Event Log
 ui_recent_messages|Messages
 ui_custom_battle|Custom Battle
 ui_player|Player
-ui_value_denars|%d denars
+ui_value_denars|%d denarii
 ui_back|Back
 ui_forward|Forward
 ui_display_on_map|Show On Map

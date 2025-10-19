@@ -4018,6 +4018,10 @@ g_last_week_income = 80
 
 g_slave_contract = 81
 
+g_acan_version = 82
+
+ACAN_VERSION = 1006
+
 ## hispania
 p_hisp_tarraco = 1
 p_hisp_baetica = 2

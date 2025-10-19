@@ -33,6 +33,8 @@ scripts_hardcoded = [
 # INPUT: none
 ("game_start",[
 
+    (troop_set_slot, "trp_global_variables", g_iazyges_event, 0),
+
     (troop_set_slot, "trp_global_variables", g_iazyges_event, 0),#not triggered yet
 
     #default starting year
@@ -77,6 +79,7 @@ scripts_hardcoded = [
 
     (assign, "$g_corruption_check", ACAN_CORRUPT_SAVE_CHECK),#check if save is corrupted
     (troop_set_slot, "trp_global_variables", g_corruption_check, ACAN_CORRUPT_SAVE_CHECK),
+    (troop_set_slot, "trp_global_variables", g_acan_version, ACAN_VERSION),
 
     (assign, "$g_dancers", 0),
     #new special quests
