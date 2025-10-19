@@ -100355,8 +100355,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
   (str_store_string, s2, "@You need to establish yourself among the Roman nobility. One option is to join the Roman army and rise through the ranks to become finally part of Roman nobility.^^Goal: Have the rank of tribunus militaris."),
   (call_script, "script_start_quest", "qst_join_roman_army", "trp_fortuna"),
-  code
-  Code
+
   (str_store_string, s2, "@You need to establish yourself among the Roman nobility. In Rome its all about money. One option is to become a rich landowner to finally rise into nobility.^^Goal: have 200,000 denarii, own 5 latifundia and have a renown of at least 200."),
   (call_script, "script_start_quest", "qst_gain_renown", "trp_fortuna"),
 
