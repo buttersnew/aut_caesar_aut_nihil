@@ -17991,93 +17991,106 @@ dialogs =[
 
 #start paulus talk
 [trp_paulus, "start",[
-],"Ave. Finally, someone to talk with. It was getting boring, since the rats don't talk much. Why are you here?",
+],"Ave. A visitor? Thank the Lord. The rats are attentive listeners, but their conversation is wanting. What brings you to this darkness?",
 "paulus_talk",[]],
 
-[trp_paulus|plyr, "paulus_talk",[
-],"You must be Paulus. I have been sent by a man called Muscullus to talk with you.",
+[anyone|plyr, "paulus_talk",[
+],"You must be Paulus. A man named Muscullus sent me to find you.",
 "paulus_talk_1",[]],
 
-[trp_paulus, "paulus_talk_1",
-[],"Yes yes, I am Paulus. So you aren't a prisoner?", "paulus_talk_2",[]],
-[trp_paulus|plyr, "paulus_talk_2",
-[],"I bribed the guard to enter the prison, with gold I got from Muscullus. He wants to know if you are still alive.", "paulus_talk_3",[]],
-[trp_paulus, "paulus_talk_3",
-[],"By Christus. You can tell him I am alive, but I don't think I have much time left. In the oubliette it is cold and wet, as you have noticed,\
- and I don't get much to eat. But I am happy about the situation.", "paulus_talk_4",[]],
-[trp_paulus|plyr, "paulus_talk_4",
-[],"Why are you happy? It is awful here and soon you will die!", "paulus_talk_5",[]],
-[trp_paulus, "paulus_talk_5",
-[],"It may be awful in the oubliette, but when I am dead I will be with God. And the word of God is finally fulfilled.", "paulus_talk_6",[]],
-[trp_paulus|plyr, "paulus_talk_6",
-[],"How do you know  that? What if there are no gods at all?", "paulus_talk_7",[]],
-[trp_paulus|plyr, "paulus_talk_6",
-[],"Interesting. I will leave and tell Muscullus you are still alive", "paulus_talk_5_finish",[]],
-[trp_paulus, "paulus_talk_5_finish",
-[],"Then, farewell, my friend.", "close_window",[
+[anyone, "paulus_talk_1",
+[],"I am Paulus, yes. So you are not one of the jailer's new acquisitions?",
+"paulus_talk_2",[]],
+
+[anyone|plyr, "paulus_talk_2",
+[],"I bribed the guard, with gold from Muscullus. He needs to know if you are still among the living.",
+"paulus_talk_3",[]],
+
+[anyone, "paulus_talk_3",
+[],"Praise be to Christus. Tell Muscullus I am alive, though I do not think for much longer. The cold and damp of this oubliette gnaw at the bones, and the bread is scarce. But in my spirit... I am joyful.", "paulus_talk_4",[]],
+
+[anyone|plyr, "paulus_talk_4",
+[],"Joyful? How can you be joyful? This place is a tomb, and you will soon be dead!",
+"paulus_talk_5",[]],
+
+[anyone, "paulus_talk_5",
+[],"This place may be my tomb, but my death is my deliverance. When I die, I will be with my God, and His great promise to me will be fulfilled.",
+"paulus_talk_6",[]],
+
+[anyone|plyr, "paulus_talk_6",
+[],"How can you be so certain? What if there are no gods to greet you?",
+"paulus_talk_7",[]],
+
+[anyone|plyr, "paulus_talk_6",
+[],"I see. I will leave now and tell Muscullus that you are alive.",
+"paulus_talk_5_finish",[]],
+
+[anyone, "paulus_talk_5_finish",
+[],"Go with God's peace, my friend.",
+ "close_window",[
   (call_script, "script_succeed_quest", "qst_petrus"),
   (display_message, "str_quest_updated"),
   (add_quest_note_from_sreg, "qst_petrus", 4, "@You have talked with Paulus. Now report back to Muscullus.^^(Hint: To find Muscullus search for Petronius in the streets of Rome.)", 0),
   (finish_mission),
-  ]],
+]],
 
-[trp_paulus, "paulus_talk_7",
-[],"Yes, there are no gods. There is only one almighty God, who will bring us salvation. All other gods are only idol, simple pictures\
- created by men, nothing more.But there is only one truth in this world, it is a truth stronger than anything else made by humans. It is the truth of God, which was brought to us via his son Christus.", "paulus_talk_8",[]],
-[trp_paulus|plyr, "paulus_talk_8",
-[],"I still don't understand it. How do you know that this God exists.", "paulus_talk_9",[]],
-[trp_paulus|plyr, "paulus_talk_8",
-[],"Interesting... but now I have to leave", "paulus_talk_5_finish",[
-  ]],
+[anyone, "paulus_talk_7",
+[],"You are right, there are no 'gods'. The idols of Jupiter and Mars are just stone and gold, graven images crafted by human hands. There is only one God, almighty and unseen, who offers salvation through His son, Christus. His truth is not made of marble, but of love.",
+"paulus_talk_8",[]],
 
-[trp_paulus, "paulus_talk_9",
-[],"Long time ago, I wasn't a follower of Christus. I hunted them, like a hunter chases a deer. I was called Saulus and I\
- thought those worshippers of Christus are something evil, which I had to destroy.\
- But then, while I was travelling, Christus spoke to me: Why are you persecuting me?\
- Suddenly I was blind. I couldn't see anymore. This lasted for three days. But on the third day, a man called Hananias came to me. He said\
- God has sent him to me and from now on I shall see again and I shall be filled with the Holy spirit.\
- From this day on I am a follower of Christus and I spread his word in the Roman Empire! From this day on I was called Paulus.", "paulus_talk_10",[]],
+[anyone|plyr, "paulus_talk_8",
+[],"I still don't understand. What makes you so certain this one God exists?",
+"paulus_talk_9",[]],
 
-[trp_paulus, "paulus_talk_10",
-[],"Christus forgave me, although I have committed the greatest sins. That is the core of Christ's message: Love even your enemies.\
- But another important point is to love Christus and never leave him, even if it means suffering, even if it means death. So now I am suffering, but I am still loving God. That's why I am happy.", "paulus_talk_11",[]],
-[trp_paulus|plyr, "paulus_talk_11",
-[],"I don't believe this is true. And a god who forgives everyone seems to be a weak one.", "paulus_talk_12",[]],
-[trp_paulus|plyr, "paulus_talk_11",
-[],"Interesting, but now I have to leave.", "paulus_talk_5_finish",[]],
+[anyone|plyr, "paulus_talk_8",
+[],"This is a deep well of thought... but I must leave now.",
+"paulus_talk_5_finish",[
+]],
 
-[trp_paulus, "paulus_talk_12",
-[],"Ah, your heart is still closed for the love of Christus. To forgive, even your enemies, is a very difficult task. One must be strong to do that.\
- But your heart is still filled with the believe that being proud, and taking revenge on people who have wronged you is something important. It is NOT!\
- Christus wants us to love each other. To treat everyone equal: Every slave, every tribune, every caesar! All are equal before Christus.\
- Christus wants us to walk this way called life till the end, no matter how difficult it is and to help each other on this way.\
- At the end of this way, the realm of God awaits us.", "paulus_talk_13",[]],
-[trp_paulus|plyr, "paulus_talk_13",
-[],"All are equal. This does mean no hierarchy. And what is the realm of God?", "paulus_talk_14",[]],
-[trp_paulus|plyr, "paulus_talk_13",
-[],"Interesting,I will leave now.", "paulus_talk_5_finish",[]],
+[anyone, "paulus_talk_9",
+[],"Because I once served the very darkness I now oppose. I was not always a follower of the Way. I was Saulus of Tarsus, a hunter of these people. I pursued them with fire in my heart, believing them to be a sickness I had to purge. But on the road to Damascus, the living Christus spoke to me from a light that blinded all reason. 'Saulus,' He said, 'why do you persecute me?' And I was struck blind.",
+"paulus_talk_10",[]],
 
-[trp_paulus, "paulus_talk_14",
-[],"Yes, there is no human-made hierarchy, there is only the hierarchy of God. God is the only one who stands above us.\
- This human-made hierarchy is pointless, senseless, it is wrong. It doesn't matter, because at the end of the world, Christus will come back and\
- judge over us.", "paulus_talk_15",[]],
-[trp_paulus, "paulus_talk_15",
-[],"With this, the realm of God will begin. Christus will judge over everyone, also over all who have lived and died before.\
- And everyone will be treated equally: According to the sinses they have committed, they will be punished in a meaningful way.\
- In particular, sinse are: being proud, being hatful and vengeful, killing, being greedy. If you want to live a life according to Christus,\
- according to the only true faith you must love everyone, even your enemies; you must spread love, and not hate; you must help the poor.", "paulus_talk_16",[
+[anyone, "paulus_talk_10",
+[],"For three days, I was lost in a world of total darkness. Then a follower of the Way, a man named Hananias, came to me. He said God had sent him, and he laid his hands upon me. At that moment, it was as if scales fell from my eyes. I could see again, not just the world, but the Truth. From that day, I was no longer Saulus the persecutor, but Paulus, a servant of Christus, charged with spreading His word throughout the Empire.",
+"paulus_talk_11",[]],
 
-  ]],
-[trp_paulus|plyr, "paulus_talk_16",
-[],"This all sounds nice and good. I must say: You are right! This world is cruel and what you say sounds much better than this cruel, hateful world. But on the other hand\
- it sounds like the Christs only follow this faith to save oneself from the wrath of God, to save oneself from the judgment of God. Not because they really love each other.\
- And how shall this punishment of God look like, if God is a God of love, a God who doesn't like violence?", "paulus_talk_17",[]],
+[anyone|plyr, "paulus_talk_11",
+[],"I don't believe it. And a god who forgives his own persecutor... that sounds like weakness.",
+ "paulus_talk_12",[]],
 
-[trp_paulus, "paulus_talk_17",
-[],"There are things we can not understand. There are things our human nature will never be able to understand.\
- It is not in our nature to understand the mysteries of God. I can only tell you: All what I said is true, and it is the only truth!\
- Believe it and open your heart for the love of God and you will understand it.", "close_window",[
+[anyone|plyr, "paulus_talk_11",
+[],"Your story is remarkable. But I must take my leave.",
+"paulus_talk_5_finish",[]],
 
+[anyone, "paulus_talk_12",
+[],"Ah, you see through the eyes of this world. Is it weakness for a father to forgive his lost son? Forgiveness is the ultimate strength. Your heart still clings to the pride of men—that revenge is justice and strength is dominance. But that is the law of beasts, not of God. Christus teaches us to love, even our enemies. He teaches that all are equal in His sight: slave and Caesar, tribune and beggar. All are His children.",
+"paulus_talk_13",[]],
+
+[anyone|plyr, "paulus_talk_13",
+[],"All are equal? That is a radical thought. What is this 'realm of God' you speak of?",
+"paulus_talk_14",[]],
+
+[anyone|plyr, "paulus_talk_13",
+[],"I have heard enough. I will leave you to your faith.",
+"paulus_talk_5_finish",[]],
+
+[anyone, "paulus_talk_14",
+[],"Yes. The hierarchies of men are towers built on sand, meaningless before the judgment of God, who is the only true authority. When this world reaches its end, Christus will return, not as a suffering servant, but as a righteous judge over all who have ever lived.",
+"paulus_talk_15",[]],
+
+[anyone, "paulus_talk_15",
+[],"And on that day, the Realm of God will begin. Every soul, living and dead, will be judged. Not by their wealth or station, but by the state of their heart. The sins of pride, hatred, greed, and violence will be weighed. To live a life worthy of Christus is to live a life of humility, to show love where there is hate, and to give aid to the poor and the suffering.",
+"paulus_talk_16",[
+]],
+
+[anyone|plyr, "paulus_talk_16",
+[],"It's a beautiful vision. A world better than this cruel one. But it sounds as if your followers obey not out of love, but out of fear of this final judgment. And what sort of punishment can a God of love deliver?",
+"paulus_talk_17",[]],
+
+[anyone, "paulus_talk_17",
+[],"There are mysteries of God that the mind of man cannot fully grasp. Can a child understand all the reasons of his father? I cannot show you God. I can only tell you that this Truth is real, more real than the stone walls around us. Open your heart to it, and you will begin to understand.",
+"close_window",[
   (troop_raise_attribute, "trp_player",ca_charisma,1),
   (troop_raise_attribute, "trp_player",ca_intelligence,1),
   (troop_raise_attribute, "trp_player",ca_strength,1),
@@ -18085,9 +18098,9 @@ dialogs =[
   (display_message, "@You feel something. You feel stronger, quicker, smarter and more charismatic."),
   (call_script, "script_succeed_quest", "qst_petrus"),
   (display_message, "str_quest_updated"),
-  (add_quest_note_from_sreg, "qst_petrus", 4, "@You have talked with Paulus.  Now report back to Muscullus.^^(Hint: To find Muscullus search for Petronius in the streets of Rome.)", 0),
+  (add_quest_note_from_sreg, "qst_petrus", 4, "@You have talked with Paulus. Now report back to Muscullus.^^(Hint: To find Muscullus search for Petronius in the streets of Rome.)", 0),
   (finish_mission),
-  ]],
+]],
 ##end paulus talk
 
 #special bannerlord talk
@@ -87710,7 +87723,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [trp_guest, "mission_1_talk_3",
 [
 ],
-    "Today you will learn how one properly treats rebellious slaves, my daughter. Guards! Capture them, then we shall crucify them to set an example.^^(While he has spoken, more slaves armed with tools have appeared. He realises the overwhelming number of slaves revolting and panics.)^^No! Please! Take my wife and daughter instead! Anything! Just please spare my life!", "mission_1_talk_4",
+    "Today you will learn how one properly treats rebellious slaves, my daughter. Guards! Capture them, then we shall crucify them to set an example.^^-- While he has spoken, more slaves armed with tools have appeared. He realises the overwhelming number of slaves revolting and panics. --^^No! Please! Take my wife and daughter instead! Anything! Just please spare my life!", "mission_1_talk_4",
 []],
 [trp_guest|plyr, "mission_1_talk_4",
 [
@@ -99220,133 +99233,162 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [trp_ybor,"ybor_pretalk",[], "Anything else?", "ybor_talk",[]],
 [trp_ybor|plyr,"ybor_talk",[], "Farewell", "close_window",[]],
 
+## Iazyges Settlement Event
+
 [trp_kingdom_18_lord,"start",[
   (troop_slot_eq, "trp_global_variables", g_iazyges_event, 0),
- ], "We come from lands faraway, nevertheless we know the might and power of Rome. We have awe for your stable, which is said to be larger than any other stable under the Sky. We also brought you a horse as gift: It was send to us by the Tapati, the goddess of fire. The priests said we shall bring this horse to the one who rules from the middle of the Earth over the Sky. Of course we knew it was you who is meant by that cryptical message.",
-  "iazyges_talk_1",[
+], "Great Caesar of Rome. We come from the endless grasslands, but even there, we have heard tales of your power. We marvel at your armies, which are like locusts upon the earth, and your city, which is the center of the world. We have brought you a gift. Our priests say this horse is a child of Tabiti, our goddess of the sacred fire. They told us to bring it to 'He who rules the Sky from the middle of the Earth.' We knew they spoke of you.",
+"iazyges_talk_1",[
   (troop_add_item, "trp_player", "itm_steppe_horse_3", imod_champion),
   (troop_set_slot, "trp_global_variables", g_iazyges_event, 1),
-  ]],
+]],
 
 [anyone|plyr,"iazyges_talk_1",[],
-  "I was told you also have an offer for me? Please continue.", "iazyges_talk_2",[]],
+"You honor me. I was told you have a proposal for me as well. Speak freely.",
+"iazyges_talk_2",[]],
+[anyone|plyr,"iazyges_talk_1",[],
+"I am honored. You have a proposal? Speak quickly!",
+"iazyges_talk_2",[]],
 
 [anyone,"iazyges_talk_2",[],
-  "We are in great danger and that is why I came together with my most loyal vassals to you. Our tribe is under constant attack of other Sarmatians. They kill our cattle, rape our wives and enslave our children. We are in search of grazing grounds for our herds. I came to you to ask you for your protection and help in this matter. There are large plains between the border of your realm and the Dacian lands. If you could help us against the Dacians we could settle in this region. We would be loyal to Rome and defend its border.",
-  "iazyges_talk_3",[]],
+"We are beset by enemies, Great Caesar. Other Sarmatian tribes, the Roxolani and the Aorsi, harry our people. They steal our cattle, burn our camps, and carry off our children into slavery. We seek new pastures, and new hope. There is a great plain between the edge of your mighty empire and the lands of the Daci. If you grant us your protection and aid us against the Dacians, we will settle there. We will be the shield of Rome. Our riders will be your loyal border guards.",
+"iazyges_talk_3",[]],
 
 [anyone|other(trp_diplomatic_adviser),"iazyges_talk_3",[],
-  "(He is whispering into your ear.)^^It would have an advantage to have a safe border. However, they may prepare an attack and betray us. You should be careful.",
-  "iazyges_talk_4",[(call_script, "script_set_conversation_troop", "trp_diplomatic_adviser")]],
+"-- He whispers in your ear. --^^Divinity, a client kingdom on the Danube could secure the border. But these are nomads, famously treacherous. Once armed and settled, they could turn on us. Caution is advised.",
+"iazyges_talk_4",[
+  (call_script, "script_set_conversation_troop", "trp_diplomatic_adviser")
+]],
 
 [anyone,"iazyges_talk_4",[],
-  "The priests of the sky-god and of the fire goddess told us it is now the right time, the omens are good.",
-  "iazyges_talk_5",[]],
+"Our priests have read the omens. The sky-god and the fire-goddess have shown us the path. Now is the time.",
+"iazyges_talk_5",[]],
 
 [anyone|plyr,"iazyges_talk_5",[],
-  "I agree. Let us sign an agreement. The Iazyges will be a Roman protectorate and guard the Danube border against Dacian attacks.",
-  "iazyges_talk_5_accepted",[]],
+"I agree. We will have a treaty. The Iazyges shall become a protectorate of Rome and guard the Danube frontier against the Dacians.",
+"iazyges_talk_5_accepted",[]],
 
 [anyone|plyr,"iazyges_talk_5",[],
-  "I refuse, I rather rule over those lands myself.",
-  "iazyges_talk_5_refused",[]],
-[anyone|plyr,"iazyges_talk_5",[],
-  "Why should I trust a horse fucker like you?",
-  "iazyges_talk_5_making_fun",[]],
+"I refuse. I have my own plans for that territory.",
+"iazyges_talk_5_refused",[]],
 
 [anyone|plyr,"iazyges_talk_5",[],
-  "You may understand that I am a little bit hesitant. We shouldn't rush anything. Let us have meal together.",
-  "iazyges_talk_5_feast",[]],
+"Why should I trust a barbarian who spends more time with his horse than his wife?",
+"iazyges_talk_5_making_fun",[]],
+
+[anyone|plyr,"iazyges_talk_5",[],
+"An alliance of this magnitude cannot be decided in a moment. Let us share a meal and discuss this further.",
+"iazyges_talk_5_feast",[]],
+
 [anyone,"iazyges_talk_5_feast",[],
-  "I agree with you. Let us feast together!",
-  "close_window",[  (jump_to_menu, "mnu_iazyges_feast"),
-  (finish_mission),]],
+"That is wise. Let us feast as friends.",
+"close_window",[
+  (jump_to_menu, "mnu_iazyges_feast"),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 1500),
+  (finish_mission, 2),
+]],
 
 [anyone,"iazyges_talk_5_accepted",[],
-  "The sky-god and the goddess of fire will gift you well with treasures and horses! We will be your most loyal servants, killing as many Dacians as possible.",
-  "close_window",
-[
+"The gods will smile on this day! Our spears and our horses are yours to command. We will be your loyal bulwark against the Dacian hordes!",
+"close_window",[
   (troop_set_slot, "trp_global_variables", g_iazyges_event, 2),
   (jump_to_menu, "mnu_auto_return_map"),
-  (finish_mission),]],
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 1500),
+  (finish_mission, 2),
+]],
 
 [anyone,"iazyges_talk_5_refused",[],
-  "I see. The will of the gods becomes true sooner or later, remember my words!",
-  "close_window",
-[
+"I see. Then we will find our own path. The gods' will cannot be denied forever. Remember this.",
+"close_window",[
   (troop_set_slot, "trp_global_variables", g_iazyges_event, -1),
   (jump_to_menu, "mnu_auto_return_map"),
-  (finish_mission),]],
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 1500),
+  (finish_mission, 2),
+]],
 
 [anyone,"iazyges_talk_5_making_fun",[],
-  "We are the best warriors you can find out there! Our horses are strong and we are under the protection of the goddess of fire. We never betray, nor lie as it is a sin in the eyes of the gods. Our gods have spoken, it is there will that we have to settle in this plains. We would never act against the will of the gods and you should nether.",
-  "iazyges_talk_5_making_fun2",
-[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -50),]],
+"We are warriors, not politicians! Our horses are our brothers, and our loyalty is sworn before the sacred fire. To lie is the greatest sin. The gods have willed that we settle in those plains. We would not dare defy them, and neither should you.",
+"iazyges_talk_5_making_fun2",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -50),
+]],
 
-[anyone|plyr,"iazyges_talk_5_making_fun2",[], "Well. Let us sign the agreement.", "iazyges_talk_5_accepted",[]],
-[anyone|plyr,"iazyges_talk_5_making_fun2",[], "I refuse, I rather rule over those lands myself.", "iazyges_talk_5_refused",[]],
+[anyone|plyr,"iazyges_talk_5_making_fun2",[
+], "My apologies. Let us make this agreement.",
+"iazyges_talk_5_accepted",[]],
+[anyone|plyr,"iazyges_talk_5_making_fun2",[
+], "I stand by my decision. I refuse.",
+"iazyges_talk_5_refused",[]],
 
-[trp_joesph_arimatrea,"start",[(ge, "$g_talk_troop_met", 1),],
-  "My time has come...",
-  "close_window",[]],
+[trp_joesph_arimatrea,"start", [
+(ge, "$g_talk_troop_met", 1),
+],"My time is at hand...",
+"close_window",[]],
 
 [trp_joesph_arimatrea,"start",[],
-  "I am weak, I am old. I see his kingdom coming.^^-- He stammers and seems to be hallucinating. --",
-  "joesph_arimatrea_talk_1",[]],
+"The clouds part... the trumpets sound... His kingdom... is coming...^^-- He stammers, his eyes unfocused, as if seeing something beyond this world. --",
+"joesph_arimatrea_talk_1",[]],
 
-[trp_joesph_arimatrea|plyr,"joesph_arimatrea_talk_1",[],
-  "What are you talking old men?",
-  "joesph_arimatrea_talk_2",[]],
-[trp_joesph_arimatrea|plyr,"joesph_arimatrea_talk_1",[],
-  "I better go.",
-  "close_window",[]],
+[anyone|plyr,"joesph_arimatrea_talk_1",[],
+"Old man, what are you talking about?",
+"joesph_arimatrea_talk_2",[]],
 
-[trp_joesph_arimatrea,"joesph_arimatrea_talk_2",[],
-  "Uh. What? Who are you? Why have you interrupted me? I saw him coming but you scared him away.",
-  "joesph_arimatrea_talk_3",[]],
+[anyone|plyr,"joesph_arimatrea_talk_1",[],
+"I should leave you to your visions.",
+"close_window",[]],
 
-[trp_joesph_arimatrea|plyr,"joesph_arimatrea_talk_3",[],
-  "I don't understand. There is nobody else except us. Who did you saw?",
-  "joesph_arimatrea_talk_4",[]],
+[anyone,"joesph_arimatrea_talk_2",[],
+"You... who are you? Why did you interrupt? He was here... the light was here... and you broke the vision.",
+"joesph_arimatrea_talk_3",[]],
 
-[trp_joesph_arimatrea,"joesph_arimatrea_talk_4",[],
-  "I saw HIM! The master. The last time I saw him was in prison. He gave me his cup.^^-- He shows you a simple cup, with the name Chrestos engraved and a fish symbol. -- ^^ He said I should guard his cup. I only survived prison because of the power coming from the cup. You must know, I am Joseph of Arimathea, a follower of Jesus of Nazareth.",
-  "joesph_arimatrea_talk_5",[]],
+[anyone|plyr,"joesph_arimatrea_talk_3",[],
+"I don't understand. There is no one else here. Who did you see?",
+"joesph_arimatrea_talk_4",[]],
+[anyone|plyr,"joesph_arimatrea_talk_3",[],
+"You speak in riddles. What or who did you see?",
+"joesph_arimatrea_talk_4",[]],
 
-[trp_joesph_arimatrea|plyr,"joesph_arimatrea_talk_5",[],
-  "Interesting tale, old man. But why did they through you into prison.",
-  "joesph_arimatrea_talk_6",[]],
-[trp_joesph_arimatrea|plyr,"joesph_arimatrea_talk_5",[],
-  "Well. That all sounds too weird for my taste, I better go.",
-  "close_window",[]],
+[anyone,"joesph_arimatrea_talk_4",[],
+"I saw the Master! The last time I saw that light was in the darkness of my cell. He came to me... and gave me this.^^-- He reveals a simple, unadorned cup, but on its side is a crude engraving of a fish and the name 'Chrestos'. -- ^^ He told me to guard it. Its presence was the only reason I survived. You must understand... I am Joseph of Arimathea, a follower of the Nazarene.",
+"joesph_arimatrea_talk_5",[]],
 
-[trp_joesph_arimatrea,"joesph_arimatrea_talk_6",[],
-  "I was in prison, because I was a friend of Jesus and because I gifted him my grave. Jesus was poor, he had nothing. Then he was crucified. His dead body need a grave, so we decided to use my grave. But on the next day, the grave was empty! I swear you it was. There are many witnesses who can proof this. But he appeared again. Many many times he appeared to us. At first, we couldn't believe it, but then we believed: He was resurrected from the dead!"
-  +"^^But they said that we stole his dead body. They said we fooled everyone by stealing his dead body from the grave. They started investigations against us. And finally, because it was my grave and due to my friendship to the Master I was imprisoned. They said I shall stay in prison for FOURTY years. But thanks to the Almighty and to the Master I was only for thirty years in jail, or maybe fourty? I don't know to be honest.",
-  "joesph_arimatrea_talk_7",[]],
+[anyone|plyr,"joesph_arimatrea_talk_5",[],
+"That is a remarkable story. But why were you in prison?",
+"joesph_arimatrea_talk_6",[]],
 
-[trp_joesph_arimatrea,"joesph_arimatrea_talk_7",[],
-  "I would have never survived it, if he wouldn't gifted me his cup. I once was a rich merchant and now I am poor. But I am happy. I am happy as I can feel his realm coming. He, sitting on the throne, as it should be.",
-  "joesph_arimatrea_talk_8",[]],
+[anyone|plyr,"joesph_arimatrea_talk_5",[],
+"This sounds like madness. I should go.",
+"close_window",[]],
 
-[trp_joesph_arimatrea|plyr,"joesph_arimatrea_talk_8",[],
-  "I may can help you and pay a doctor. You seem to have high fever.",
-  "joesph_arimatrea_talk_9",[]],
+[anyone,"joesph_arimatrea_talk_6",[],
+"I was his friend. When they crucified him, he had nothing. No family tomb. I offered mine. We laid his body there... but on the third day... the stone was rolled away. The tomb was empty! I swear it on my soul. Later, he appeared to us, again and again. At first, we thought him a ghost... but he was real. Risen from the dead!"
++"^^But our rulers claimed we were liars, that we had stolen the body to fake a miracle. Because the tomb was mine, their wrath fell upon me. They threw me into a cell and told me I would rot there for forty years. It was... thirty years? Or forty? The darkness eats time.",
+"joesph_arimatrea_talk_7",[]],
 
-[trp_joesph_arimatrea|plyr,"joesph_arimatrea_talk_8",[],
-  "Interesting tale, Joseph. I wish you good luck and hope your master will help you.",
-  "close_window",[]],
+[anyone,"joesph_arimatrea_talk_7",[],
+"I would have died in that hole, but for this cup. I was once a rich man, a member of the council. Now I am a beggar. And yet... I am happy. Because I know His kingdom is coming. I can feel it drawing near, like the warmth of the sun after a long winter.",
+"joesph_arimatrea_talk_8",[]],
 
-[trp_joesph_arimatrea,"joesph_arimatrea_talk_9",[],
-  "Thank you for offering me help. But I have to refuse as I know that my time has come. But for offering me help and listening to me, I want to gift you this cup. It shall guard and protect you well, the same way as it protected me when I was imprisoned.",
-  "joesph_arimatrea_talk_10",[]],
+[anyone|plyr,"joesph_arimatrea_talk_8",[],
+"You are speaking in riddles and you burn with fever. Let me find a physician for you.",
+"joesph_arimatrea_talk_9",[]],
 
-[trp_joesph_arimatrea|plyr,"joesph_arimatrea_talk_10",[],
-  "Thank you Joseph of Arimathea. I will take good care for it.",
-  "joesph_arimatrea_talk_11",[]],
+[anyone|plyr,"joesph_arimatrea_talk_8",[],
+"A fascinating tale, Joseph. May your master bring you peace.",
+"close_window",[]],
 
-[trp_joesph_arimatrea,"joesph_arimatrea_talk_11",[],
-"-- He gives you the cup. Then he lays down and closes his eyes. He stopped breathing, his pules isn't beating anymore. He is dead. -- ",
+[anyone,"joesph_arimatrea_talk_9",[],
+"Your kindness is a balm, but my sickness is not of the body. My time has come. But because you have shown compassion and listened to an old man's ramblings, I want you to have this. It protected me in the darkness. Let it now guard and guide you.",
+"joesph_arimatrea_talk_10",[]],
+
+[anyone|plyr,"joesph_arimatrea_talk_10",[],
+"Thank you, Joseph of Arimathea. I will cherish it.",
+"joesph_arimatrea_talk_11",[]],
+
+[anyone,"joesph_arimatrea_talk_11",[],
+"--He gives you the cup. A look of profound peace settles on his features. He lies back, closes his eyes, and with a final, soft sigh, his breath ceases. He is gone.-- ",
 "close_window",[
   (jump_to_menu, "mnu_death_of_joseph_arimatrea"),
   (mission_disable_talk),
@@ -99354,82 +99396,90 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   (finish_mission, 4),
 ]],
 
+# Claudia and Amokos
 [trp_claudia,"start",[],
-"Whom have we here? What do you want stranger?",
+"Who are you? What brings you to our humble home, stranger?",
 "roman_intro_2_claudia_amokos_talk_1",[]],
 
 [anyone|plyr,"roman_intro_2_claudia_amokos_talk_1",[],
-"I am {playername}. I was looking for Claudia Urgulanallia and Amokos Impostos. I was told they live somewhere in this area.",
+"My name is {playername}. I am looking for Claudia Urgulanilla and Amokos Impostos. I was told I could find them here.",
 "roman_intro_2_claudia_amokos_talk_2",[]],
+
 [anyone|plyr,"roman_intro_2_claudia_amokos_talk_1",[],
-"I am known as {playername}, remember my name, as you will hear a lot from me. Are you Claudia Urgulanallia?",
+"They call me {playername}. Soon all of Sicily will know that name. Are you Claudia Urgulanilla?",
 "roman_intro_2_claudia_amokos_talk_2",[]],
 
 [anyone,"roman_intro_2_claudia_amokos_talk_2",[],
-"Yes I am.",
+"I am she.",
 "roman_intro_2_claudia_amokos_talk_3",[]],
 
 [anyone|other(trp_amokos),"roman_intro_2_claudia_amokos_talk_3",[],
-"And I am Amokos Impostos. Have you come to be baptized and join the path of the Lord, Chrestus?",
+"And I am Amokos Impostos. Has the Lord Chrestus led you to our door to be baptized and find salvation?",
 "roman_intro_2_claudia_amokos_talk_4",[
-  (call_script, "script_set_conversation_troop", "trp_amokos"),
+(call_script, "script_set_conversation_troop", "trp_amokos"),
 ]],
 
 [anyone|plyr,"roman_intro_2_claudia_amokos_talk_4",[],
-"Baptized? Chrestus? No, I have come to bring you messages from your old friend Gaius Temeritus. He passed away and gave me the task of throwing a single coin into Hades realm, so he can pay Charon. He told me you would live near the entrance to the underworld and that you know the path.",
+"Chrestus? No. I come with news of an old friend of yours, Gaius Temeritus. He has passed away. His dying wish was that I travel here and cast a coin into the realm of Hades, so that he may pay the ferryman. He said you live near the entrance and could show me the way.",
 "roman_intro_2_claudia_amokos_talk_5",[]],
 
 [anyone,"roman_intro_2_claudia_amokos_talk_5",[],
-"Oh no, Temeritius died before we could baptize him. That is terrible, now he will never find salvation.^^--She throws herself on the ground and starts praying.--",
+"Oh, Lord have mercy! Temeritus is gone? Gone before he could accept the grace of baptism... His soul is lost to us! ^^--She throws herself on the ground and starts weeping.--",
 "roman_intro_2_claudia_amokos_talk_6",[]],
 
 [anyone|other(trp_amokos),"roman_intro_2_claudia_amokos_talk_6",[],
-"It is good Claudia. The master taught us that God is just. We will make prayers at the evening. ",
+"Peace, Claudia. The Lord is just. Our master taught us not to despair. We will pray for his soul this evening. Rise.",
 "roman_intro_2_claudia_amokos_talk_7",[
   (call_script, "script_set_conversation_troop", "trp_amokos"),
 ]],
 
 [anyone,"roman_intro_2_claudia_amokos_talk_7",[],
-"Well, you are probably right. Ach {playername}, thank you for bringing us this sad message. We would like to invite you to our house to a meal and prayers to honor Temeritus. Are you actually baptized?",
+"Yes... you are right. Thank you, {playername}, for bringing us this sorrowful news. You must stay and share a meal with us, and join our prayers for our lost friend. Tell me, have you been washed in the waters of baptism?",
 "roman_intro_2_claudia_amokos_talk_8",[]],
 
 [anyone|plyr,"roman_intro_2_claudia_amokos_talk_8",[],
-"Yes I am and I believe in Christus!",
+"Yes, I am a follower of the Way.",
 "roman_intro_2_claudia_amokos_talk_9_1",[]],
 
 [anyone|plyr,"roman_intro_2_claudia_amokos_talk_8",[],
-"No, I am not and I do not believe in this god Chrestos.",
+"No, I am not. I follow the old gods.",
 "roman_intro_2_claudia_amokos_talk_9_2",[]],
 
 [anyone,"roman_intro_2_claudia_amokos_talk_9_1",[],
-"That is great. Then I invite you to pray with us together for Temeritus. Let us start...",
+"Praise be! Then you will pray with us as a brother. Let us begin...",
 "roman_intro_2_claudia_amokos_talk_10",[]],
 
 [anyone,"roman_intro_2_claudia_amokos_talk_9_2",[],
-"Then we will baptize you! Trust me, it is great. It will cleanse you of your sins and brings you salvation. The Lord is just and good, he helps the poor. But most importantly, he will come and judge over the people. If you are not baptized you will be punished! And...",
+"Then this is a sign! The Lord has sent you here not just for Temeritus, but for your own soul! We must baptize you! It will wash away your sins and grant you eternal life. The Lord is coming to judge the world, and only the faithful will be saved! You must...",
 "roman_intro_2_claudia_amokos_talk_10",[]],
 
 [anyone|plyr,"roman_intro_2_claudia_amokos_talk_10",[],
-"I am sorry, but I have to interrupt you. I came with a specific task which I would like to fulfill. ",
+"I am sorry to interrupt your fervor, but I gave my word to a dying man. I must fulfill my promise to him.",
 "roman_intro_2_claudia_amokos_talk_11",[]],
+
+[anyone|plyr,"roman_intro_2_claudia_amokos_talk_10",[],
+"No! I gave my word. I must fulfill my promise to a dying man.",
+"roman_intro_2_claudia_amokos_talk_11",[]],
+
 [anyone,"roman_intro_2_claudia_amokos_talk_11",[],
-"We need to pray for him and not to throw some coins inside a cave!",
+"His soul needs our prayers, not pagan rituals! Tossing a coin into a dark hole is a meaningless superstition!",
 "roman_intro_2_claudia_amokos_talk_12",[]],
+
 [anyone|other(trp_amokos),"roman_intro_2_claudia_amokos_talk_12",[],
-"He is right, we should give him his last wish.",
+"Claudia, he is right. We must honor the promise made to our friend, even if we do not share his beliefs.",
 "roman_intro_2_claudia_amokos_talk_13",[
 (call_script, "script_set_conversation_troop", "trp_amokos"),
 ]],
 [anyone,"roman_intro_2_claudia_amokos_talk_13",[],
-"But! But...",
+"But Amokos, it is heresy!",
 "roman_intro_2_claudia_amokos_talk_14",[]],
 [anyone|other(trp_amokos),"roman_intro_2_claudia_amokos_talk_14",[],
-"Be quiet. I will lead him to the entrance. Claudia, you will go and prepare the meal and everything for the prayers. Now come {playername}. Let us go now, before it gets dark.",
+"It is an act of love for a friend. Be still. I will guide him to the entrance. You, Claudia, prepare the meal and make ready for our evening prayers. Come now, {playername}, before the light fails.",
 "roman_intro_2_claudia_amokos_talk_15",[
-  (call_script, "script_set_conversation_troop", "trp_amokos"),
+(call_script, "script_set_conversation_troop", "trp_amokos"),
 ]],
 [anyone,"roman_intro_2_claudia_amokos_talk_15",[],
-  "Bah, such nonsense. But anyway, I will do as you said, husband.",
+"Such foolishness... Very well, husband. I will do as you say.",
 "close_window",[
   (mission_disable_talk),
   (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
@@ -99438,90 +99488,97 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   (finish_mission, 4),
 ]],
 
+## old man event
 [trp_old_man,"start",[],
-"Greetings! Isn't it not a beautiful day?^^--He looks at you closely.--^^ What are you doing here slave? Or did you escaped your master?",
+"Greetings, child. A beautiful day, is it not? The sun is a blessing on old bones. ^^--He squints at you, his gaze surprisingly sharp.--^^ But you wear the rags of a slave. Have you misplaced your master?",
 "roman_intro_1_old_man_talk_1",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_1",[],
-"I am not a slave, but a free citizen of Rome!",
+"I am no one's property. I am a free citizen of Rome!",
 "roman_intro_1_old_man_talk_2",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_1",[],
-"I am indeed a slave, my master sent me to buy something for him.",
+"I am a slave, yes. My master sent me on an errand.",
 "roman_intro_1_old_man_talk_2",[]],
 
 [anyone,"roman_intro_1_old_man_talk_2",[],
-"Don't lie, its pointless. I recognized your face and the mark on your leg. You are one of Marcus Gaius Crachius slaves."
-+" He and his daughter Julia were brutally killed by their slaves and you were their leader."
-+" I was sitting on a hill not far from his estate, when I spot you, ralling the slaves."
-+" Then you torched the whole estate and killed them all.",
+"Lying is such a waste of breath. I saw the brand on your leg when you walked up. I recognize you. You belonged to Marcus Gaius Crachius. I saw you... I saw you on that terrible night. I was watching from the hills when you rallied the others. When you put the torch to his villa. When you murdered him and his daughter.",
 "roman_intro_1_old_man_talk_3",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_3",[],
-"It's true! He was a terrible master. He deserved to die, it was a fair punishment.",
+"It's true. He was a monster, and he got the death he deserved. It was justice.",
 "roman_intro_1_old_man_talk_4",[]],
+
 [anyone|plyr,"roman_intro_1_old_man_talk_3",[],
-"Its true! He was a terrible master. But I don't think he should have died that way. The revolt escalated too quickly.",
+"It's true, he was a cruel master. But the revolt... it went too far. It was not meant to end in butchery.",
 "roman_intro_1_old_man_talk_4",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_4",[],
-"However, I have to warn you: Don't give the vigilia or anyone else any information about me. I don't want to be crucified like the other slaves. Otherwise I will be forced to kill you right away.",
+"Regardless, you will keep your mouth shut. Tell the Vigiles, tell anyone, and I will silence you for good. I will not end up on a cross.",
 "roman_intro_1_old_man_talk_5",[]],
 
 [anyone,"roman_intro_1_old_man_talk_5",[],
-"Fear not. I have no such intention. The dumb bickering of mankind is something I have not worried about for a long time now. Once you reach the point were you are free from trivialities you can see the quintessence of everything.^^Your secret will be safe. I can guarantee you as I am old and my time has come. Though, I want to ask you for a final favor: People who died receive a coin, the Obolus. This coin is necessary to pay Charon to carry you over the river of Styx. But I am poor and have no coins.",
+"Fear not, child. The squabbles of men are like the buzzing of flies to me now. When you have seen as many suns rise as I have, you learn to look past such trivial things to the heart of the matter. Your secret is safe. I am old, and my time is short. But because of that, I must ask you a final favor. Every soul needs an obolus, a coin for the ferryman Charon, to cross the Styx. I am a beggar; I have none.",
 "roman_intro_1_old_man_talk_6",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_6",[],
-"So you want a single coin from me?",
+"So you're asking me for a coin?",
+"roman_intro_1_old_man_talk_7",[]],
+
+[anyone|plyr,"roman_intro_1_old_man_talk_6",[],
+"A coin? You can have a coin.",
 "roman_intro_1_old_man_talk_7",[]],
 
 [anyone,"roman_intro_1_old_man_talk_7",[],
-"More or less. The main problem is: If I die, I wont receive a proper funeral. If you gift me one coin and I die, some vile beggar will loot my dead body and take it. What I want to ask you is to travel to Sicily and throw a coin into the entrance of the underworld.",
+"Not so simple. If I die with a coin in my mouth, some carrion-picker will pry it out before my body is cold. I will have no proper burial. No, I need you to make an offering for me. I need you to travel to Sicily, and cast a coin into the mouth of the underworld itself.",
 "roman_intro_1_old_man_talk_8",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_8",[],
-"This is a rather weird task.",
+"That is a strange and morbid request.",
+"roman_intro_1_old_man_talk_9",[]],
+
+[anyone|plyr,"roman_intro_1_old_man_talk_8",[],
+"In the underworld? That is madness!",
 "roman_intro_1_old_man_talk_9",[]],
 
 [anyone,"roman_intro_1_old_man_talk_9",[],
-"I also have two friends living in Sicily. Amokos Impostos and Claudia Urgulanallia. Claudia is the daughter of Claudius himself! But Claudius never accepted her as his daughter and denied everything. She became too controversial and her family tried to get rid of her by making her disappear. She was send to the naval brothels in Neapolis. Amokos was also a 'worker' there.",
+"I have friends there who can guide you. Amokos Impostos and Claudia Urgulanilla. You may have heard of her father... the Divine Claudius himself. He never acknowledged her, of course. She was an inconvenience, a stain on the imperial purple. They tried to make her disappear in the naval brothels of Neapolis. That's where she met Amokos.",
 "roman_intro_1_old_man_talk_10",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_10",[],
-"Hm, palace intrigues are terrible as it seems. Nobody deserves such a fate. But how did you met them? How did you become friends?",
+"An Caesar's daughter in a brothel... a cruel fate. How did you come to know them?",
 "roman_intro_1_old_man_talk_11",[]],
 
 [anyone,"roman_intro_1_old_man_talk_11",[],
-"I wasn't always poor. Actually I was one of the richest people in Rome. But as I have a weakness for light-hearted young women and as such kind of women are known to be the complete opposite of modest I started to lose more and more money. And then I met Julia. She came from Egypt and she liked to call herself: Nefernefernefer. The Egyptians are so brought of being Egyptian that they still stick to their old language and their old customs. Well, Nefernefernefer means basically: 'Most beautiful woman' . And she was the most beautiful woman I ever saw... But such women are the most dangerous I say. But I couldn't resist of course. And of course she encouraged me to do all kinds of nonsense and oddities. It was her idea to visit Neapolis and there, after an escapade of embarrassing crimes we finally ended up in the brothel... At the end I felt so guilty that I bought all slaves there and set them free. I still remained in contact with Amokos and Claudia as they were both converted to this new Christian faith and they thought they could save me from my sins. But there was no chance. I ended up with not even a single denarius, reduced to begging in order to make a living. ",
+"I was not always this ragged philosopher. I was once one of the wealthiest men in Rome. But I had a weakness for beauty, and the most beautiful women are often the most expensive. Her name was Julia, an Egyptian girl who called herself 'Nefernefernefer'—'the most beautiful of the beautiful.' And she was. But a woman like that is a whirlpool of chaos and desire. She led me on a tour of every vice and folly imaginable, which is how we ended up in that brothel in Neapolis. In a moment of guilt-ridden clarity, I bought every soul in that place and set them free. Amokos and Claudia were among them. They found this new faith - they worhsip Chrestus now - and tried to save my soul in return. They failed. I lost everything.",
 "roman_intro_1_old_man_talk_12",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_12",[],
-"I am sorry to hear that. But as they are your friends, why are you not asking them to do you a final favor?",
+"I'm sorry for your misfortune. But if they are your friends, why not ask them for this favor?",
 "roman_intro_1_old_man_talk_13",[]],
 
 [anyone,"roman_intro_1_old_man_talk_13",[],
-"Ha, they are Christians. They just tell me to spur water over my head and to confess my sins. But I don't believe in their god and I don't think their god has any power to help me. That's why I ask you to help me.",
+"Ha! Because they are Christians. They will tell me to confess my sins and be sprinkled with water. They don't believe in Charon's toll. They have their own god, and I have mine. That is why I must ask you.",
 "roman_intro_1_old_man_talk_14",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_14",[],
-"I see, and it's fair. Meeting the daughter of Claudius is something that really intrigues me. Where do they live?",
+"I see. An Caesar's forgotten daughter... that is a story I wish to hear. Tell me where to find them.",
 "roman_intro_1_old_man_talk_15",[]],
 
 [anyone,"roman_intro_1_old_man_talk_15",[],
-"I once bought them a small and modest house near the entrance to the underworld. Just travel there and ask them to show you the entrance. They will tell you all kinds of Christian blabla but then they will show you the way. Once there, throw the coin inside it and we are good. A copper coin is sufficient.",
+"With the last of my fortune, I bought them a small house near the entrance to the underworld. Go to Sicily, find them, and ask to see the way. They will preach at you, but in the end, they will show you. A single copper coin is all that is required. Toss it into the darkness, and my soul will be at peace.",
 "roman_intro_1_old_man_talk_16",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_16",[],
-"I will as you said and travel to Sicily as fast as possible. Just a final question: Whats your name?",
+"I will do as you ask. I'll leave for Sicily at once. But tell me, what is your name?",
 "roman_intro_1_old_man_talk_17",[]],
 
 [anyone,"roman_intro_1_old_man_talk_17",[],
-"My name? Oh well, I forgot to introduce me. I am Gaius Temeritus. Now farewell, friend. I feel, that my last hours have come and I want to spend them at a beautiful place: at the spring of Aphrodite, which is right over there.",
+"My name? Forgive an old man's memory. I am Gaius Temeritus. Now, go. I feel the end is near, and I wish to spend my last moments by the Spring of Aphrodite, just over there.",
 "roman_intro_1_old_man_talk_18",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_18",[],
-  "Farewell, Gaius Temeritus.",
+"Farewell, Gaius Temeritus.",
 "close_window",[
   (enable_party, "p_underworld"),
   (setup_quest_text,"qst_blank_quest_5"),
@@ -99535,13 +99592,12 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 ]],
 
 [trp_antonia,"start",[
-    (quest_slot_eq,"qst_blank_quest_19", slot_quest_object_state, 1),
-    (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 8),
- ],
-  "Finally, you arrive! You took forever! You should be ashamed letting me wait alone. But what should one expect from a slave? Anyway, let's get straight to business.",
-  "antonia_talk5_1",[
-    (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 9),
-  ]],
+  (quest_slot_eq,"qst_blank_quest_19", slot_quest_object_state, 1),
+  (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 8),
+],"Finally, you arrive! You took forever! You should be ashamed letting me wait alone. But what should one expect from a slave? Anyway, let's get straight to business.",
+"antonia_talk5_1",[
+  (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 9),
+]],
 
 [anyone|plyr,"antonia_talk5_1",
 [],
@@ -100175,348 +100231,414 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 ]],
 
 ###########################
-
 [trp_antonia,"start",[
-    (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 5),
- ],
-  "I have an idea! Listen {playername}: For decades a rumor has been spreading. This rumor claims that the ruler of the world would be born in one of the Eastern provinces of Rome and will come to establish his realm, bringing peace and all that kind of stuff. This rumor is obviously nonsense. The Eastern provinces are very unimportant for the political landscape, though some are rebellious. But nobody important ever came from there. They are important for the economy though. Anyway, what I want to say is: You are this mysterious ruler!",
-  "antonia_talk2_1",[]],
+  (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 5),
+],
+"I have an idea. Listen to me, {playername}. There's an old prophecy, a rumor that's been whispered in the East for decades. It says a new ruler of the world will come from Judaea, or one of the eastern provinces, and bring peace. It's nonsense, of course. Nothing important ever comes from the East except grain and fanatics. But... what if the prophecy was just... aimed at the wrong man? What if you are this mysterious ruler!",
+"antonia_talk2_1",[]],
+
 [anyone|plyr,"antonia_talk2_1",[
- ],
-  "Me? Are you again drunken?",
-  "antonia_talk2_2",[]],
+],
+"Me? Are you drunk again?",
+"antonia_talk2_2",[]],
+
 [anyone,"antonia_talk2_2",[
- ],
-  "I am sober indeed. I spent the day thinking about this. See, I don't believe you are this ruler, but what if we made you into this ruler? I am a daughter of Claudius, thus you will get all the legitimization by marrying me. But it's always helpful if the plebs think you are some hero, sent by the gods or whatever.",
-  "antonia_talk2_3",[]],
+],
+"Painfully sober, I assure you. I spent the day thinking. I don't believe you are this chosen one. But what if we made you him? The story is already half-written. Marry me, and you have the bloodline of the Divine Claudius. Legitimacy. All we need is the myth, and the plebs love a good myth.",
+"antonia_talk2_3",[]],
 
 [anyone|plyr,"antonia_talk2_1",[
- ],
-  "Seeing my majestetic dick brought you to this idea, right?",
-  "antonia_talk2_2_1",[
-    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
-  ]],
+],
+"My 'majestic tool' put this idea in your head, didn't it?",
+"antonia_talk2_2_1",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+]],
 [anyone,"antonia_talk2_2_1",[
- ],
-  "--She giggles.--^^ Stop messing around. See, I don't believe you are this ruler, but what if we made you into this ruler? I am a daughter of Claudius, thus you will get all the legitimization by marrying me. But it's always helpful if the plebs think you are some hero, sent by the gods or whatever.",
-  "antonia_talk2_3",[]],
+],
+"--She gives a short, genuine laugh.--^^ It's certainly a compelling argument. But no, stay focused. I don't believe you're a messiah, but what if we made you one? Marry me, and you're the son-in-law of an Caesar. Legitimacy. The common folk just need a story to believe in.",
+"antonia_talk2_3",[
+  (play_sound, "snd_female_laugh"),
+]],
 
 [anyone|plyr,"antonia_talk2_1",[
- ],
-  "Great idea. I've always thought that I'm something better than the rabble.",
-  "antonia_talk2_2_2",[
-    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
-  ]],
+],
+"A fine idea. I've always known I was destined for more than this.",
+"antonia_talk2_2_2",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+]],
+
 [anyone,"antonia_talk2_2_2",[
- ],
-  "Hahaha. You're pretty conceited for a slave. See, I don't believe you are this ruler, but what if we made you into this ruler? I am a daughter of Claudius, thus you will get all the legitimization by marrying me. But it's always helpful if the plebs think you are some hero, sent by the gods or whatever.",
-  "antonia_talk2_3",[]],
+],
+"Hah! Such arrogance for a slave I found in my garden. Good. You'll need it. I don't believe you're a messiah, but what if we made you one? Marry me, and you're the son-in-law of an Caesar. The rest is just... marketing.",
+"antonia_talk2_3",[]],
 
 [anyone|plyr,"antonia_talk2_3",[
- ],
-  "You were never popular among the plebs and nor you have any power. How should this work?",
-  "antonia_talk2_5_1",[
-  ]],
+],
+"You're a political exile with no power. How could this possibly work?",
+"antonia_talk2_5_1",[
+]],
 
 [anyone|plyr,"antonia_talk2_3",[
- ],
-  "How should this work? You were never popular. Right now, you are nothing more than a old drunken wench.",
-  "antonia_talk2_4",[
-    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
-  ]],
+],
+"How? You're a disgraced drunk hiding on an island. You have nothing.",
+"antonia_talk2_4",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
+]],
+
 [anyone,"antonia_talk2_4",[
- ],
-  "--Slaps you.--^^Never call me old. I may be a drunken wench but not old.",
-  "antonia_talk2_5_1",[]],
+],
+"--She slaps you, hard.--^^Never call me old. I may be a drunk, but I am not old. And I am not finished.",
+"antonia_talk2_5_1",[]],
 
 [anyone,"antonia_talk2_5_1",[
- ],
-  "I may not have power right now, but none of that matters.",
-  "antonia_talk2_5",[]],
+],
+"Power? I have the most powerful tools in Rome: a legitimate bloodline and a thirst for revenge.",
+"antonia_talk2_5",[]],
 
 [anyone,"antonia_talk2_5",[
- ],
-  "Listen: We have a lot of work in front of us but the setup is good. You are a son of Rome, literally, as you just appeared in a boat on the river. Then you visited Hades and were struck by a lightning. Being struck by a lightning is a sign of divinity according to old myths. Ha, piggy-Caesar claims to have be struck by lightning too, which is hilarious in many ways. There are not even any witnesses. But I have seen how the lightning has struck you!",
-  "antonia_talk2_6",[]],
+],
+"Listen. The story writes itself. Found in a boat on the Tiber, just like Romulus. You've walked in the underworld and returned. You were struck by lightning—a sign of Jupiter's favor. Nero claims that happened to him, but there were no witnesses. I saw you. I am your witness.",
+"antonia_talk2_6",[]],
+
 [anyone|plyr,"antonia_talk2_6",[
- ],
-  "In your imagination.",
-  "antonia_talk2_7",[]],
+],
+"You saw it in a drunken haze.",
+"antonia_talk2_7",[]],
+[anyone|plyr,"antonia_talk2_6",[
+],
+"It was properly your drunken imagination.",
+"antonia_talk2_7",[]],
+
 [anyone,"antonia_talk2_7",[
- ],
-  "Doesn't matter. The point is: I will stop drinking everyday and start playing some political games. I will start spreading rumors about a great hero who was born in Rome, a son of the Rome. And I will also try to find out whom we have to get on our side.",
-  "antonia_talk2_8",[]],
+],
+"It doesn't matter. The point is, I will stop drinking and start plotting. I will go back to Rome, spread these stories, and find out which senators are tired of living in fear of a mad poet. I will build the foundation.",
+"antonia_talk2_8",[]],
 
 [anyone|plyr,"antonia_talk2_8",[
- ],
-  "It sounds suicidal, but I have nothing to lose anyway.",
-  "antonia_talk2_11",[]],
+],
+"It sounds like a quick way to get us both killed. But I have nothing to lose.",
+"antonia_talk2_11",[]],
 
 [anyone|plyr,"antonia_talk2_8",[
- ],
-  "This is hilarious. All I ever wanted was a peaceful humble life.",
-  "antonia_talk2_9_1",[]],
+],
+"This is insane. All I ever wanted was a quiet life.",
+"antonia_talk2_9_1",[]],
+
 [anyone|plyr,"antonia_talk2_9_1",[
- ],
-  "And here I am, forced to stay as I still am not able to walk. Soon forced to participate in a suicidal political intrigue.",
-  "antonia_talk2_9",[]],
+],
+"And now I'm trapped here with a madwoman, my leg is on fire, and I'm being drafted into a suicidal conspiracy.",
+"antonia_talk2_9",[]],
 
 [anyone,"antonia_talk2_9",[
- ],
-  "Come on. We both have nothing to lose. While I am spreading rumors and gathering information you will have to either become rich or go through the military ranks. In fact: if you gather enough wealth and renown you can rise into Roman nobility. In Rome everything depends on your property, capital and wealth. But also the military fame is important. These are basically your choices: Enlist in some legion, which is pretty easy to do, you just need to talk with a Praefectus Castrorum. Those you can find in any town by visiting the scriptorium. Or you become rich, which can be much harder. Though fighting in the legion may be more dangerous. ^^And if you still have doubts: What else do you want to do? Even though the chance is small its still realistic that we could make you Caesar, or do you want to stay poor and unimportant for the rest of your life?",
-  "antonia_talk2_10",[]],
+],
+"Come now. We both have nothing to lose. While I weave the myth and gather allies, you must build the man. You need power. In Rome, power comes from two things: the sword or the purse. Either enlist in a legion and climb the ranks—speak to any Praefectus Castrorum in a scriptorium—or become so obscenely wealthy that the nobles have no choice but to accept you. What other path do you have? Do you want to spend the rest of your life as a fugitive, or will you take a chance, however small, at becoming Caesar?",
+"antonia_talk2_10",[]],
+
 [anyone|plyr,"antonia_talk2_10",[
- ],
-  "Well, maybe you are right. Lets try it!",
-  "antonia_talk2_11",[]],
+],
+"You're right. Damn you, you're right. Let's do it.",
+"antonia_talk2_11",[]],
+[anyone|plyr,"antonia_talk2_10",[
+],
+"Alright. Let's do it! I have nothing to lose!",
+"antonia_talk2_11",[]],
+
 [anyone,"antonia_talk2_11",[
- ],
-  "Perfect, then you are on board. I will take care for you until your wounds healed. Then you will do what I said: Either enlist military service or become a rich trader. I will try to gather support and spread some rumors. After you entered Roman nobility I will inform you about our future steps.",
-  "antonia_talk2_12",[]],
+],
+"Good. Then you are with me. I'll see that you're cared for until that leg is healed. Then, you go and build your legend. I will go and build our conspiracy. When you have made a name for yourself, I will contact you with the next steps.",
+"antonia_talk2_12",[]],
+
 [anyone|plyr,"antonia_talk2_12",[
- ],
-  "Aye, then we will try it.",
-  "close_window",
-[
-    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
-    (str_store_string, s2, "@You need to establish yourself among the Roman nobility. One option is to join the Roman army and rise through the ranks to become finally part of Roman nobility.^^Goal: Have the rank of tribunus militaris."),
-    (call_script, "script_start_quest", "qst_join_roman_army", "trp_fortuna"),
+],
+"Very well. Let's see if we can set the world on fire.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
+  (str_store_string, s2, "@You need to establish yourself among the Roman nobility. One option is to join the Roman army and rise through the ranks to become finally part of Roman nobility.^^Goal: Have the rank of tribunus militaris."),
+  (call_script, "script_start_quest", "qst_join_roman_army", "trp_fortuna"),
+  code
+  Code
+  (str_store_string, s2, "@You need to establish yourself among the Roman nobility. In Rome its all about money. One option is to become a rich landowner to finally rise into nobility.^^Goal: have 200,000 denarii, own 5 latifundia and have a renown of at least 200."),
+  (call_script, "script_start_quest", "qst_gain_renown", "trp_fortuna"),
 
-    (str_store_string, s2, "@You need to establish yourself among the Roman nobility. In Rome its all about money. One option is to become a rich landowner to finally rise into nobility.^^Goal: have 200,000 denarii, own 5 latifundia and have a renown of at least 200."),
-    (call_script, "script_start_quest", "qst_gain_renown", "trp_fortuna"),
+  (add_quest_note_from_sreg, "qst_blank_quest_19", 4, "@By chance you met Antonia, the daughter of Claudius. She convinced you to join her scheme to overthrow Nero. As a first part, you need to establish yourself among the Roman nobility. Once done, you will recieve a message from her.^^(Goals: Be part of the Roman Empire, either as noble, governor or tribune.)", 1),
 
-    (add_quest_note_from_sreg, "qst_blank_quest_19", 4, "@By chance you met Antonia, the daughter of Claudius. She convinced you to join her scheme to overthrow Nero. As a first part, you need to establish yourself among the Roman nobility. Once done, you will recieve a message from her.^^(Goals: Be part of the Roman Empire, either as noble, governor or tribune.)", 1),
-
-    (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 6),
-    (mission_disable_talk),
-    (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
-    (finish_mission, 4),
-    (jump_to_menu, "mnu_staying_at_antonias_villa_final"),
-  ]],
+  (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 6),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (jump_to_menu, "mnu_staying_at_antonias_villa_final"),
+]],
 
 [trp_antonia,"start",[
-    (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 4),
- ],
-  "I have to admit: I can't remember who you are. And this is the first time since, eih, a week? Maybe two weeks that I am sober.",
-  "antonia_talk1_1",[]],
+  (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 4),
+],
+"I have to admit... I don't remember who you are. And this is the first time I've been sober in... a week? Maybe two? My head is pounding.",
+"antonia_talk1_1",[]],
+
 [anyone|plyr,"antonia_talk1_1",[
- ],
-  "I am not surprised and if I wouldn't be injured I would have left already. But I am literally forced to sit in your dinning room.",
-  "antonia_talk1_2",[]],
+],
+"I'm not surprised. If I could walk, I'd have been gone hours ago. But I'm stuck here in your dining room, thanks to you.",
+"antonia_talk1_2",[]],
+
 [anyone,"antonia_talk1_2",[
- ],
-  "Injured? Oh, now I can remember you. You are a slave and I removed your slave mark. Hahaha. ^Hm, I also remember that I have seen how you were hit by lightning."
-  +" I am not sure if it's true or if it was Bacchus playing his tricks on me. But why are you running around at this remote place during a thunderstorm?"
-  +" Most likely you killed your master and fled, right?^^Oh, how low have I sunk that I eat on the same table with a slave!",
-  "antonia_talk1_3",[]],
+],
+"Injured? Oh... oh, gods, it's coming back to me. You're the slave. I 'freed' you from your brand. Hahaha... Oh, my head. I also remember... I saw you appear in a flash of lightning. Was that real? Or just Bacchus playing tricks? Still, what were you doing running around my property in a thunderstorm? You must have killed your master and fled, yes?",
+"antonia_talk1_3",[]],
+
 [anyone|plyr,"antonia_talk1_3",[
- ],
-  "I am not a slave and I have never been. Wrong has been done to me and my parents! Let me explain: I was born in Rome. My parents found me as a baby driving along the Tiber in a small boat. They decided to adopt me. They were poor, but not slaves! We had a good life all in all. But then they were murdered by thugs. As the vigilia was  doing nothing I took revenge on the murders of my parents myself.  I slew them, but then I was captured by the vigilia and sold on the slave market! I was bought by some idiotic landowner and his daughter. They tortured me and their other slaves. I had enough and decided to stage a revolt. However, everything escalated and the landowner and his daughter were killed and his whole estate burned down. I managed to escape while all the other slaves were crucified. ",
-  "antonia_talk1_4",[]],
+],
+"I was never a slave. Fortune has been cruel to me, but I was born free. My parents found me as an infant, adrift on the Tiber in a basket. They raised me as their own. They were poor, but they were good people. Thugs murdered them, and when the Vigiles did nothing, I hunted down their killers myself. They caught me for that, and sold me as a slave. The man who bought me, and his daughter... they were monsters. I led a revolt. It... got out of hand. They were killed, the villa burned. The others were crucified. I was the only one who escaped.",
+"antonia_talk1_4",[]],
+
 [anyone,"antonia_talk1_4",[
- ],
-  "Most interesting. ^^--She wants to drink a bottle of wine.--",
-  "antonia_talk1_5",[]],
+],"What a story. ^^--She reaches for a bottle of wine.--",
+"antonia_talk1_5",[]],
+
 [anyone|plyr,"antonia_talk1_5",[
- ],
-  "--You stop her.--^^No, you have to remain sober. I don't want more wounds and scars.",
-  "antonia_talk1_6",[]],
+],
+"--You grab her wrist.-- ^^No. Stay sober. I don't need any more scars.",
+"antonia_talk1_6",[]],
+
 [anyone,"antonia_talk1_6",[
- ],
-  "Pff",
-  "antonia_talk1_7",[]],
+],
+"Pfft. Fine.",
+"antonia_talk1_7",[]],
+
 [anyone|plyr,"antonia_talk1_7",[
- ],
-  "Now let me continue. After I escaped I met a strange old man who asked me to do a favor for him. He said he would die soon and feared that he would have no coin to pay the ferryman Charon. I offered him to gift him a coin but he refused and said as he is poor someone would steal the coin from him once he dies. Thus he asked me to travel to Sicily and throw the coin into the entrance of the underworld. Of course I would have never agreed to do such a nonsensical task, but he told me that he is befriended with Claudia Urginallia. And as it seems she is living hear on Sicily. I was intrigued by the fact that I could meet a daughter of Claudius and agreed to help him. I traveled to Sicily, met Claudia and her husband. I wanted to complete my task first and went towards the entrance to the underworld. But as I stood their the Earth shacked under my feet, I stumbled and fell into the entrance.",
-  "antonia_talk1_8",[]],
+],
+"After I escaped, I met a strange old man. He knew he was dying and was terrified of having no coin for Charon. He asked me to come here, to Sicily, and throw a coin into the entrance to the underworld for him. I only agreed because he mentioned his friend, Claudia Urgulanilla, lived here. I was intrigued... a daughter of Claudius. I found them, then went to fulfill my promise. I was standing at the entrance, a cave in the volcano, when the ground shook. I stumbled, and fell into darkness.",
+"antonia_talk1_8",[]],
+
 [anyone,"antonia_talk1_8",[
- ],
-  "You fell into the underworld? What nonsense are you telling me.",
-  "antonia_talk1_9",[]],
+],
+"You fell into the underworld? Now you're telling me fairy tales.",
+"antonia_talk1_9",[]],
+
 [anyone|plyr,"antonia_talk1_9",[
- ],
-  "It is true! The gates of the underworld opened in front of me. I walked through it. I met many famous people. Finally, I talked with Teiresias. He told me something about my fate but then I woke up and found myself lying in your bed. ",
-  "antonia_talk1_10",[]],
+],
+"It's true. I walked in the realm of shades. I spoke with heroes... with Teiresias. He spoke of my fate. Then I woke up here, in your villa.",
+"antonia_talk1_10",[]],
+
 [anyone,"antonia_talk1_10",[
- ],
-  "Say, this is true? You are not lying? And I am sober?",
-  "antonia_talk1_12",[]],
+],
+"Are you telling me this is true? You're not lying? And I'm really sober?",
+"antonia_talk1_12",[]],
+
 [anyone|plyr,"antonia_talk1_12",[
- ],
-  "Yes to all of your questions.",
-  "antonia_talk1_14",[]],
+],
+"Yes, to all three.",
+"antonia_talk1_14",[]],
+[anyone|plyr,"antonia_talk1_12",[
+],
+"I was there! And you are sober.",
+"antonia_talk1_14",[]],
+
 [anyone,"antonia_talk1_14",[
- ],
-  " Uh, being sober is weirder than being drunken. Anyway. I am a very superstitious person and I believe in the gods! However, it is always difficult with omens, sometimes they are misinterpreted."
-  +" Sometimes our mind is fooling us, in particular when we are drunken.",
-  "antonia_talk1_15",[]],
+],
+"Gods, being sober is stranger than being drunk. I'm a superstitious woman. I believe in omens. But the gods are fickle, and our minds even more so, especially when clouded by wine.",
+"antonia_talk1_15",[]],
+
 [anyone|plyr,"antonia_talk1_15",[
- ],
-  "You are a drunkard, that is a fact. And what I said is what I have seen, what I have experienced. Maybe my mind tricked me. Maybe I didn't descended into Hades."
-  +" Maybe I was just hallucinating and somehow managed to walk out of the vulcano.",
-  "antonia_talk1_16",[]],
+],
+"You're a drunkard, that's a fact. But what I saw... what I experienced... it felt real. Maybe it was just a fever dream. Maybe I stumbled out of the volcano and collapsed in your garden.",
+"antonia_talk1_16",[]],
+
 [anyone,"antonia_talk1_16",[
- ],
-  "Hm, yes. You said your parents found you in a boat. That is an old sign of divinity. In myths, heroes are usually found as babies driving in some boat."
-  +" Like Romulus and Remus, Oedipus or this persian king, I forgot his name, wait, ... it was Kyros!"
-  +"^^Though, women who give birth to illegitimate children usually get rid of them by abandoning their babies, placing them in a basket, and then throwing the basket into a river."
-  +" Its more common in high society, the plebs sometimes kill them right away.",
-  "antonia_talk1_17",[]],
+],
+"Perhaps. But your parents finding you in a boat... that's a classic sign. Romulus and Remus, Oedipus, Cyrus of Persia... heroes are always found in baskets, adrift on the water. Of course, it's also a common way for noblewomen to get rid of illegitimate children. The poor just kill them.",
+"antonia_talk1_17",[]],
+
 [anyone|plyr,"antonia_talk1_17",[
- ],
-  "Do not offend my mother. Whoever she was, I am sure she was a good Roman wife.",
-  "antonia_talk1_18",[]],
+],
+"Do not speak ill of my mother. Whoever she was, she gave me a chance at life.",
+"antonia_talk1_18",[]],
+[anyone|plyr,"antonia_talk1_17",[
+],
+"Whoever she was, she gave me at least a chance.",
+"antonia_talk1_18",[]],
+
 [anyone,"antonia_talk1_18",[
- ],
-  " I am sorry, this was not my intention.^^--Antonia and you continue the meal.--",
-  "antonia_talk1_19",[]],
+],
+"Forgive me. That was cruel.^^--Antonia and you continue the meal in silence for a moment.--",
+"antonia_talk1_19",[]],
+
 [anyone,"antonia_talk1_19",[
- ],
-  "And? Did you enjoy the meal?",
-  "antonia_talk1_20_1",[]],
-  #
+],
+"Well? How is the food?",
+"antonia_talk1_20_1",[]],
 [anyone|plyr,"antonia_talk1_20_1",[
- ],
-  "It was good. Though, as you are a daughter of Claudius one would expect more.",
-  "antonia_talk1_20",[]],
+],
+"It's good. But for a daughter of Claudius, I expected something more.",
+"antonia_talk1_20",[]],
 
 [anyone,"antonia_talk1_20",[
- ],
-  "Uh, you are quiet sassy. I baked the bread myself, picked all the fruit myself. You should count yourself lucky, no one else in this world gets a hand-made meal from a daughter of the Divine Claudius!",
-  "antonia_talk1_21",[]],
+],
+"You have a nerve. I baked this bread myself. I picked these olives myself. You should feel honored. No one else in this world is served a meal by the hands of the Divine Claudius's daughter!",
+"antonia_talk1_21",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
+]],
 
 [anyone|plyr,"antonia_talk1_20_1",[
- ],
-  "It was perfect. I have nothing to complain.",
-  "antonia_talk1_20_1_1",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),]],
+],
+"It's perfect. I have no complaints.",
+"antonia_talk1_20_1_1",[]],
+
 [anyone,"antonia_talk1_20_1_1",[
- ],
-  "Thank you. I baked the bread myself, picked all the fruit myself. No one else other than you gets a hand-made meal from a daughter of the Divine Claudius!",
-  "antonia_talk1_21",[]],
+],
+"Thank you. I baked this bread myself. I picked these olives myself. You are the only person in the world to be served a meal by the hands of the Divine Claudius's daughter!",
+"antonia_talk1_21",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+]],
 
 [anyone|plyr,"antonia_talk1_21",[
- ],
-  "Why are you living here? Why do you have no slaves?",
-  "antonia_talk1_22",[]],
+],
+"Why are you living like this? Hiding in Sicily, without a single slave?",
+"antonia_talk1_22",[]],
+
 [anyone,"antonia_talk1_22",[
- ],
-  "Are you dumb or deaf? But I see, you are not familiar with court intrigues. So listen, I will tell you: I am the daughter of Claudius and Aelia Paetina. My mother was married to Claudius, when he was just some unimportant figure. Actually, nobody thought he would become Caesar. This marriage was arranged by Lucius Seius Strabo. He wasn't her biological father. My grandfather actually died much earlier. But anyway. Seius wanted to get connections into the Imperial family. He was prefect of the praetorian guard by the time. ",
-  "antonia_talk1_23",[]],
+],
+"Are you retarded? It's politics. My father, Claudius, was a nobody, a club-footed academic everyone laughed at. But then Caligula died, and suddenly, the cripple was Claudius. I was married off to Gnaeus Pompeius Magnus, a man with a great name and small ambitions, except in the bedchambers of other men. It was a fine arrangement. He left me alone.",
+"antonia_talk1_23",[]],
+
 [anyone,"antonia_talk1_23",[
- ],
-  "So, I was born at a time when nobody thought that Claudius would ever be Princeps. But as you know, things can change quickly in the political landscape of Rome and vola! A cripple like Claudius is suddenly Caesar Augustus! I was married to Gnaeus Pompeius. He wasn't very intelligent nor important, but still he managed to impress Claudius enough to bring him to force me to marry him. It wasn't the worst marriage. In particular, he was more interested in men than women, which meant that I never had to fuck him. And then, he fucked a favorite slave of Claudius.  And Messalina, my stepmother, decided its best to kill him. I think this was a lie though. I am sure it was Messalina who spread those rumors to get rid of him. Gnaeus Pompeius had indeed imperial ambitions. That was the only things we actually talked about.",
-  "antonia_talk1_24",[]],
+],
+"Then he made the mistake of sleeping with one of my father's favorite boys. My stepmother, Messalina, claimed he was a traitor and had him killed. More likely, she saw his imperial ambitions as a threat. We had that in common, at least.",
+"antonia_talk1_24",[]],
+
 [anyone|plyr,"antonia_talk1_24",[
- ],
-  "Sounds like a good marriage then.",
-  "antonia_talk1_25",[]],
+],
+"It sounds like a perfect marriage, then.",
+"antonia_talk1_25",[]],
+
 [anyone,"antonia_talk1_25",[
- ],
-  " It was! I had my free time, and he could please himself with slaves. Anyway, he was the first husband who died due to an intrigue. Then I married Faustus Cornelius Sulla Felix, the half-brother of Messalina."
-  +" I know, it looks like I was forced by Messalina, but that is not true. I indeed loved him. He was smarter and although not so good looking compared to Pompeius, but at least he knew how to please a woman in bed."
-  +" But then Nero became Caesar. After a series of false accusations my husband was banned and then murdered on the orders of Tigellinus and Nero. I then started to plot against him, joined the conspiracy of Piso."
-  +" But when I noticed that the conspiracy will fail I decided to flee and hide here in Sicily. Some people claim that I only joined the conspiracy because I was envious that Nero took Poppaea as spouse and not me. Uh that is nonsense!",
-  "antonia_talk1_26",[]],
+],
+"It was! Then I married Faustus Cornelius Sulla Felix, Messalina's half-brother. I actually loved him. He was clever, and unlike Pompeius, he knew what a woman wanted. But then Nero came to power. My husband was accused of treason, exiled, and quietly murdered on Nero's orders. I joined the Pisonian conspiracy to see him dead. When it failed, I fled here. People say I only did it because Nero married Poppaea instead of me. Nonsense!",
+"antonia_talk1_26",[]],
+
 [anyone,"antonia_talk1_26",[
- ],
-  "Of course I look much better than her, although I am a little bit older. Nobody knows why he likes that wench so much. But anyway. Thats why I am here hiding myself. I cook my own food and make my own bread because I fear that it could be poisoned.",
-  "antonia_talk1_27",[]],
+],
+"I am far more beautiful than that little whore, even if I am older. No one knows what he sees in her. So, that's why I'm here. I cook my own food because I'm terrified of being poisoned.",
+"antonia_talk1_27",[]],
+
 [anyone|plyr,"antonia_talk1_27",[
- ],
-  "A sad tale. And instead of being poisoned you try to kill yourself with enough wine, right?",
-  "antonia_talk1_28",[]],
+],
+"A sad story. So instead of poison, you're trying to kill yourself with wine?",
+"antonia_talk1_28",[]],
 [anyone|plyr,"antonia_talk1_27",[
- ],
-  "That's shit. One day justice will prevail.",
-  "antonia_talk1_28_1",[
-    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
-  ]],
+],
+"This world is rotten. One day, there will be justice.",
+"antonia_talk1_28_1",[]],
+
 [anyone,"antonia_talk1_28_1",[
- ],
-  "Yes! I hope they will both die a painful death. Even if I had to sacrifice myself for it, it would be worth knowing that they go straight to Tartarus.^^Anyway, lunch is over and I have to do all the household stuff.",
-  "antonia_talk1_29",[]],
+],
+"Yes! May they both die screaming. I would give my own life just to know they were on their way to Tartarus. ^^Anyway, lunch is over, and I have chores to do.",
+"antonia_talk1_29",[]],
+
 [anyone,"antonia_talk1_28",[
- ],
-  " Pff. I want to die in a way I want. And what could be more beautiful than dying while being drunken. You wouldn't even notice the pain. ^^Anyway, lunch is over and I have to do all the household stuff.",
-  "antonia_talk1_29",[]],
+],
+"Pfft. I will die on my own terms. And what's better than dying drunk? You don't feel a thing. ^^Anyway, lunch is over, and I have chores to do.",
+"antonia_talk1_29",[]],
+
 [anyone|plyr,"antonia_talk1_29",[
- ],
-  "I still cannot move my leg due to my injuries.",
-  "antonia_talk1_30",[]],
+],
+"My leg is still on fire. I can barely move.",
+"antonia_talk1_30",[]],
+
 [anyone,"antonia_talk1_30",[
- ],
-  "You can stay until your wounds are cured, it is fine. We will see as at evening, probably.",
-  "close_window",[
-    (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 5),
-    (mission_disable_talk),
-    (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
-    (finish_mission, 4),
-    (jump_to_menu, "mnu_staying_at_antonias_villa_2"),
-  ]],
+],
+"You can stay until you're healed. I suppose the company is... a novelty. I'll see you this evening, probably.",
+"close_window",[
+  (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 5),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (jump_to_menu, "mnu_staying_at_antonias_villa_2"),
+]],
 
 [trp_antonia,"start",[
     (quest_slot_eq, "qst_blank_quest_5", slot_quest_current_state, 3),
  ],
-  "So, whom do we have here? I was just enjoying another boring evening with way too much wine and all of the sudden I heard a loud 'BANG'. I looked out of the window and I saw how a thunder struck the ground. A moment later you appeared! I may be drunken, but I am sure you were either struck by thunder or Jupiter himself gave birth to you. Lately I am enjoying Bacchus pleasures too much I guess, but wouldn't you not do the same if you were living alone in the middle of nowhere?",
+  "Well now, what's this? I was just settling into another miserably boring evening with my only friend, this jug of wine, when I heard a great 'BANG!' outside. I looked out, and lightning had struck the ground. A moment later, there you were! I may be drunk, but I'm sure of it. Either you were born from the thunderbolt, or Jupiter is getting sloppy in his old age. What else is a girl to do in the middle of nowhere but drink and watch for omens?",
   "antonia_intro_1",[]],
 [anyone|plyr,"antonia_intro_1",[],
-  "Fuck it, my head hurts, my arm hurts, my whole body hurts!",
+  "Gods damn it... my head, my arm... everything hurts!",
   "antonia_intro_2",[]],
+[anyone|plyr,"antonia_intro_1",[],
+  "Fuck! My body hurts. Fuck it...",
+  "antonia_intro_2",[]],
+
 [anyone,"antonia_intro_2",[],
-  "How dare you speak like that in front of the daughter of Claudius! But I forgive you, as you probably suffered a lot.",
+  "How dare you use such language in my presence! I am the daughter of the Divine Claudius! Still... I suppose I can forgive you, considering you just fell out of the sky.",
   "antonia_intro_3",[]],
+
 [anyone|plyr,"antonia_intro_3",[],
-  "Daughter of Claudius? Are you Claudia Urgulanallia?",
+  "Daughter of Claudius? Then you must be Claudia Urgulanilla.",
   "antonia_intro_4",[]],
+[anyone|plyr,"antonia_intro_3",[],
+  "Claudia Urgulanilla? Is this you?",
+  "antonia_intro_4",[]],
+
 [anyone,"antonia_intro_4",[],
-  "What? No, I am not! I am Claudia Antonia, the legitimate daughter of Claudius. Luckily not her. Fortuna wasn't always good to me but at least she treated me better than her."
-  +" I heard Urgulanallia was sent to some brothel after  she had an affair with some renowned son of a senator. I guess piggy-Caesar got too nervous."
-  +"^^--She drinks from her cup and then pours more wine into it.--^^But just call me Antonia.",
-  "antonia_intro_5",[]],
-
-[anyone|plyr,"antonia_intro_5",[],
-  "You better not that drink that much. Everytime you say a word I can smell Sicilian wine...",
-  "antonia_intro_6_1",[
-    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
+  "What? Gods, no! I'm Claudia Antonia, the legitimate one. Thank Fortuna for small favors. I heard about Urgulanilla... had an affair with some senator's pretty son, so my dear half-brother Nero got nervous and had her 'disappeared' into a Neapolis brothel. So messy."
+  +"^^--She swirls the wine in her cup, then refills it to the brim.--^^But you can just call me Antonia.",
+  "antonia_intro_5",[
+    (assign, "$temp3", 0),
   ]],
-[anyone,"antonia_intro_6_1",[],
-  "And? Do I care? I am the daughter of Claudius and I am baking my own bread and serving it to a slave. I can't fall deeper.",
-  "antonia_intro_6",[]],
 
-[anyone|plyr,"antonia_intro_5",[],
-  "Actually, I met Claudia Urgulanallia, before I fell into the creater.",
-  "antonia_intro_6",[]],
+[anyone|plyr,"antonia_intro_5",[
+  (store_and, ":has_flag", "$temp3", 1),
+  (eq, ":has_flag", 0),
+],
+"Perhaps you should slow down. I can smell the Sicilian wine on your breath from here.",
+"antonia_intro_6_1",[
+  (val_or, "$temp3", 1),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
+]],
+
+[anyone,"antonia_intro_6_1",[],
+"And? What of it? I am the daughter of a god, reduced to baking my own bread. I have no further to fall.",
+"antonia_intro_6",[]],
+
+[anyone|plyr,"antonia_intro_5",[
+  (store_and, ":has_flag", "$temp3", 2),
+  (eq, ":has_flag", 0),
+],
+"Actually, I met Claudia Urgulanilla just before I... fell.",
+"antonia_intro_6",[
+  (val_or, "$temp3", 2),
+]],
 
 [anyone,"antonia_intro_6",[],
-  "Most interesting.^^--She plays with her hair and then takes another sip from her cup.--^^Tell! I want to hear all of it. Then you also have to tell me what a slave is actually doing here."
-  +" Have you run away from your master, eih? I already discovered the mark on your leg. You seem to be the property of some Roman landowner, but I forgot whom.",
+  "Did you really? How fascinating.^^--She idly twists a lock of her hair.--^^You must tell me everything. And then you can tell me what a runaway slave is doing in my garden. I saw the brand on your leg. You belong to some Roman landowner, though the name escapes me.",
   "antonia_intro_7",[]],
 
 [anyone|plyr,"antonia_intro_7",[],
-  "Firstly, I see myself as free man and I shit on slavery.",
+  "I am a free man, and I spit on the concept of slavery.",
   "antonia_intro_8",[]],
 [anyone|plyr,"antonia_intro_7",[],
-  "Firstly, I am a free man!",
+  "I am a free man!",
   "antonia_intro_8",[]],
 [anyone|plyr,"antonia_intro_7",[],
-  "Firstly, my master was slain, so I see no reason why I would be still a slave!",
+  "My master is dead. That makes me free.",
   "antonia_intro_8",[]],
 
 [anyone,"antonia_intro_8",[],
-  "Ha! A free man. Hahaha. I want to inform you, that after I saw your slave mark I couldn't resist and played a little with your tool... but you are just a slave hahaha."
-  +"^^--She laughs so much that she nearly falls off the bed.--",
+  "Ha! A free man! Hahaha! Oh, that's rich. I must confess, while you were unconscious, I couldn't resist... checking the quality of your 'tool'. Just a little peek. But you're still just a slave! Hahaha!"
+  +"^^--She laughs so hard she almost tumbles off.--",
   "antonia_intro_9",[]],
 
 [anyone|plyr,"antonia_intro_9",[],
-  "I am {playername} and I am not just a slave. I will forgive your behavior as you are drunken. But now stop this rude behavior.",
+  "My name is {playername}, and I am not 'just a slave'. I'll forgive your behavior because you're drunk. Now, stop it.",
   "antonia_intro_10",[
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
   ]],
+
 [anyone|plyr,"antonia_intro_9",[],
-  "That was a mistake as you will never be able to enjoy other men than me.",
+  "That was your mistake. Now no other man will ever satisfy you.",
   "antonia_intro_10",[
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
   ]],
+
 [anyone|plyr,"antonia_intro_9",[],
   "Hahaha.",
   "antonia_intro_10",[
@@ -100524,56 +100646,62 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   ]],
 
 [anyone,"antonia_intro_10",[],
-  "I mean: You are a slave so I can do with you whatever I want... on the other hand, you were struck by lightning. This is a sign of divinity! Or I am really drunken. Ach, {playername}, please forgive me ... But I, I just have to look at this slave mark and it always reminds me: You are a slave! What if we remove it? I mean, you have to remove it anyway, what if some guards spot it, while you are walking through the forum?",
+  "I mean... you are a slave, so by law, I can do as I please... but on the other hand, you were struck by lightning. A sign from the gods! Or I'm just very, very drunk. Oh, {playername}, forgive me... It's just... that brand. It's an ugly reminder. What if we just... got rid of it? You'll have to anyway, won't you? What if a guard sees it in the city?",
   "antonia_intro_11",[]],
 
 [anyone|plyr,"antonia_intro_11",[],
-  "What? Removing it, you are indeed drunken. How should that work? If there wouldn't be a thunderstorm outside I would have left already... Oh gods! Why are you punishing me?",
+  "Remove it? You really are drunk. How would that even work? If it wasn't for this storm, I'd be long gone... Oh, gods, what did I do to deserve this?",
   "antonia_intro_12",[]],
 
 [anyone,"antonia_intro_12",[],
-  "--She pulls out a pugio.-- ^^It will be easy. I will just make some cuts and it's gone. Afterwards you will have a scar but just say its from a battle wound!",
+  "--She pulls out a small, sharp pugio from a fold in her tunic.-- ^^Simple. A few quick cuts, and it's gone. It will leave a scar, but you can just tell everyone it's a battle wound!",
   "antonia_intro_13",[]],
 
 [anyone|plyr,"antonia_intro_13",[],
-  "No! What are you doing! ^^--You try to defend yourself but due to your wounds you are too weak. She gives you a deep cut on your leg.-- ^^AHHHHH.",
+  "No! What are you doing! Get away from me! ^^--You try to push her away, but your injuries make you weak. The blade cuts deep into your leg.-- ^^AHHHHH!",
   "antonia_intro_14",[]],
 
 [anyone,"antonia_intro_14",[],
-  "And done! Now let me treat your wounds.",
+  "There! All done. Now, hold still so I can clean it.",
   "antonia_intro_15",[]],
 
 [anyone|plyr,"antonia_intro_15",[],
-  "You witch, you god damn witch!",
+  "You mad witch! You insane, damnable witch!",
   "antonia_intro_16",[
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
   ]],
 [anyone|plyr,"antonia_intro_15",[],
-  "You drunken whore! I should have stayed in Hades!",
+  "Drunken whore! I should have stayed in the underworld!",
   "antonia_intro_16",[
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
   ]],
 [anyone|plyr,"antonia_intro_15",[],
-  "AAHHHH. Damn it.",
+  "AAHHHH. Damn you to Tartarus.",
   "antonia_intro_16",[]],
 
 [anyone,"antonia_intro_16",[],
-  "Don't cry, be a man. If you want to belong to the powerful and free, to the beautiful and rich, you have to suffer! I did you a great favor and I am even treating your wounds and feeding you, although I am the daughter of Claudius. ",
+  "Don't be so dramatic. Be a man. If you want to be counted among the free and the powerful, you have to endure a little pain. I've done you a great favor. And here I am, the daughter of Caesar Claudius, tending to your wounds like a common slave.",
   "antonia_intro_17",[]],
 
 [anyone|plyr,"antonia_intro_17",[],
-  "You are drunken bitch, not more! Oh gods! I can't even walk anymore because of the cut you made on my leg.",
-  "antonia_intro_18",[]],
+"You're a drunken bitch, nothing more! Gods, I can't even stand on this leg.",
+"antonia_intro_18",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
+]],
+[anyone|plyr,"antonia_intro_17",[],
+"Damn you! Damn that fucking hurts. Now I can't even stand anymore",
+"antonia_intro_18",[]],
 
 [anyone,"antonia_intro_18",[],
-  "Uh? Don't dare to call me like that again. Ah, I am tired from all the wine I drunk and you need to rest too. Let us talk again tomorrow. I will go now to bed. You will sleep here in the dinning room, as punishment for your rude behavior. Good night, {playername} and I really hope you are more polite tomorrow.",
-  "close_window",[
-    (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 4),
-    (mission_disable_talk),
-    (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
-    (finish_mission, 4),
-    (jump_to_menu, "mnu_staying_at_antonias_villa"),
+"Don't you dare speak to me like that again. Ugh, I'm tired. The wine has finally won. You need to rest as well. We'll talk tomorrow. You can sleep here, on the floor of the dining room. A punishment for your rudeness. Good night, {playername}. I expect you to be far more polite in the morning.",
+"close_window",[
+  (quest_set_slot, "qst_blank_quest_5", slot_quest_current_state, 4),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (jump_to_menu, "mnu_staying_at_antonias_villa"),
 ]],
+## Pamphile dialogues
 
 [trp_pamphile,"start",[
   (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, -1),

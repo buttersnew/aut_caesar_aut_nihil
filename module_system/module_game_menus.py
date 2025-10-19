@@ -44,7 +44,7 @@ game_menus = [
   "ADULT CONTENT WARNING^^This modification for Mount & Blade: Warband is intended for mature audiences only and contains graphic violence, strong language, and explicit sexual themes.^^You must be 18 years of age or older to play.^^By clicking 'Continue', you confirm that you meet this age requirement and that you are willing to view such content. The creators of this modification are not responsible for users who violate this age agreement.",
   "none",[
   ],[
-  ("go_back",[],"Continue",[
+  ("go_back",[],"Continue.",[
     (allow_ironman,0),#no save without quite
     (assign, "$difficulty_type", camp_d2),	#beginner
     (assign, "$g_gore_on", 0), # gore
@@ -233,7 +233,7 @@ game_menus = [
       (set_background_mesh, "mesh_pic_victory"),
     (try_end),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (change_screen_quit),
   ]),
 ]),
@@ -241,7 +241,7 @@ game_menus = [
 ("start_game_1",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Roman, remember that you shall rule the nations by your authority, for this is to be your skill, to make peace the custom, to spare the conquered,^"
   +"and to wage war until the haughty are brought low.^ Virgil, Aeneid^^"+
-  "Fortuna offers you three different clothes: a purple robe, a simple toga or an old and smelly tunic. You take the tunic.",
+  "Fortuna offers you three different clothes: a purple robe, a simple toga or an old and smelly tunic.^^You take the tunic.",
   "none",[
     (set_background_mesh, "mesh_pic_elysium"),
   ],[
@@ -402,7 +402,7 @@ game_menus = [
       (val_add,"$current_string_reg",1),
       (jump_to_menu, "mnu_past_life_explanation"),
     ]),
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
     ]),
     ("go_back_dot",[],"Go back.",[
       (jump_to_menu, "mnu_choose_skill"),
@@ -550,7 +550,7 @@ game_menus = [
     (try_end),
    ],
    [
-     ("continue",[],"Continue...",
+     ("continue",[],"Continue.",
      [
        (jump_to_menu, "mnu_reports"),
      ]),
@@ -600,7 +600,7 @@ game_menus = [
       (str_store_string, s1, "str_s1_a_hearts_desire_mystic"),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_reports"),
     ]),
 ]),
@@ -647,7 +647,7 @@ game_menus = [
       (troop_set_slot, ":best_relation_remaining_npc", slot_troop_temp_slot, 1),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_reports"),
     ]),
 ]),
@@ -2874,7 +2874,7 @@ game_menus = [
    "none",
    [],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(jump_to_menu, "mnu_camp"),
         ]
        ),
@@ -3014,7 +3014,7 @@ game_menus = [
         (str_store_string, s1, "@You flip through the pages of {s2}, but you find the text confusing and difficult to follow. Try as you might, it soon gives you a headache, and you're forced to give up the attempt."),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_camp"),
     ]),
 ]),
@@ -3397,7 +3397,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (try_begin),
         (party_is_active, "$g_encountered_party"),
         (jump_to_menu, "mnu_cattle_herd_kill_opfer"),
@@ -3453,7 +3453,7 @@ game_menus = [
       (set_background_mesh, "mesh_pic_mountain_bandits"),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$g_leave_encounter", 0),
       (assign, ":closest_town", "$g_encountered_party"),
 
@@ -3605,7 +3605,7 @@ game_menus = [
       (try_end),
     (try_end),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (assign, "$talk_context", tc_after_duel),
     (try_begin), #SB : use the appropriate script calls
       (is_between, "$g_encountered_party", centers_begin, centers_end),
@@ -4507,7 +4507,7 @@ game_menus = [
     [
      ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
 	  [
 ###Troop commentary changes begin
           (call_script, "script_objectionable_action", tmt_aristocratic, "str_flee_battle"),
@@ -4700,7 +4700,7 @@ game_menus = [
     ("order_retreat",[(eq, "$no_soldiers_left", 0)],"Call your soldiers back.",[
       (jump_to_menu,"mnu_simple_encounter"),
     ]),
-    ("continue",[(eq, "$no_soldiers_left", 1)],"Continue...",[
+    ("continue",[(eq, "$no_soldiers_left", 1)],"Continue.",[
       (jump_to_menu,"mnu_simple_encounter"),
     ]),
 ]),
@@ -4858,7 +4858,7 @@ game_menus = [
         (str_store_string, s10, "@^^Ally Casualties:{s0}"),
     (try_end),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (jump_to_menu, "$g_next_menu"),
   ]),
 ]),
@@ -5532,7 +5532,7 @@ game_menus = [
         (try_end),
     (try_end),##freelancer event battle
   ],[
-    ("continue",[],"Continue...",[]),
+    ("continue",[],"Continue.",[]),
 ]),
 
 ("enemy_slipped_away",0,
@@ -5540,7 +5540,7 @@ game_menus = [
   "none",
   [],
     [
-      ("continue",[],"Continue...",[(jump_to_menu,"mnu_total_victory")]),
+      ("continue",[],"Continue.",[(jump_to_menu,"mnu_total_victory")]),
 ]),
 
 ("total_defeat",0,
@@ -6211,7 +6211,7 @@ game_menus = [
        (try_end),
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
       [
         (jump_to_menu,"mnu_join_battle"),
       ]),
@@ -6301,7 +6301,7 @@ game_menus = [
        (try_end),
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
       [
         (jump_to_menu,"mnu_join_battle"),
       ]),
@@ -6387,7 +6387,7 @@ game_menus = [
   "The besiegers let you approach the gates without challenge.",
   "none",
   [],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (try_begin),
           (this_or_next|eq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
           (eq, "$g_encountered_party_faction", "$players_kingdom"),
@@ -7355,7 +7355,7 @@ game_menus = [
   "none",[
     (call_script, "script_set_town_picture"),
   ],[
-    ("continue",[],"Continue...",[(jump_to_menu,"mnu_town")]),
+    ("continue",[],"Continue.",[(jump_to_menu,"mnu_town")]),
 ]),
 ("castle_entry_denied",mnf_scale_picture,
   "The lord of this fortress has forbidden you from coming inside these walls,"
@@ -7363,7 +7363,7 @@ game_menus = [
   "none",[
     (call_script, "script_set_town_picture"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu,"mnu_castle_guard"),
     ]),
 ]),
@@ -7418,7 +7418,7 @@ game_menus = [
     (try_end),
     (str_store_troop_name, s6, "$castle_meeting_selected_troop")
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
     (troop_get_slot, "$g_encountered_party", "$castle_meeting_selected_troop", slot_troop_leaded_party),
     (store_faction_of_party, "$g_encountered_party_faction","$g_encountered_party"),
     (store_relation, "$g_encountered_party_relation", "$g_encountered_party_faction", "fac_player_faction"),
@@ -7449,7 +7449,7 @@ game_menus = [
     (try_end),
     (str_store_troop_name, s6, "$castle_meeting_selected_troop")
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_castle_outside"),
       #do not set context here in case we need to use another one, set tc_castle_gate from parent menu
       (call_script, "script_start_courtyard_conversation", "$castle_meeting_selected_troop", "$current_town"),
@@ -8599,7 +8599,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_sally_out"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_battle_debrief"),
       (change_screen_mission),
     ]),
@@ -8612,7 +8612,7 @@ game_menus = [
     (set_background_mesh, "mesh_pic_sally_out"),
     (str_store_party_name,s4,"$current_town"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_battle_debrief"),
       (change_screen_mission),
     ]),
@@ -8626,7 +8626,7 @@ game_menus = [
     (set_background_mesh, "mesh_pic_victory"),
     (str_store_party_name,s4,"$current_town"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_inflict_casualties_to_party", "$current_town", 1000),
       (assign, "$g_enemy_surrenders",1),
       (jump_to_menu, "mnu_castle_besiege"), #
@@ -8640,7 +8640,7 @@ game_menus = [
     (set_background_mesh, "mesh_pic_victory"),
     (str_store_party_name,s4,"$current_town"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$g_enemy_surrenders",1),
       (jump_to_menu, "mnu_castle_besiege"), #
     ]),
@@ -8678,7 +8678,7 @@ game_menus = [
       (try_end),
     ],
     [
-      ("continue",[],"Continue...",[(jump_to_menu,"mnu_siege_assault")]),
+      ("continue",[],"Continue.",[(jump_to_menu,"mnu_siege_assault")]),
     ]
   ),
 
@@ -8690,7 +8690,7 @@ game_menus = [
       (str_store_party_name,s4,"$current_town"),
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
         [
           (assign, "$sneaked_into_town",1),
           (jump_to_menu,"mnu_town"),
@@ -9526,7 +9526,7 @@ game_menus = [
     (try_end),
   ],[
     ("continue",[
-    ],"Continue...",[
+    ],"Continue.",[
       (try_begin),
         (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
         (try_begin),
@@ -9674,7 +9674,7 @@ game_menus = [
       ##                                    (jump_to_menu,"mnu_castle_attack_walls_3"),
       ##                                    ]),
       ##      ("call_soldiers_back",[(eq, "$no_soldiers_left", 0)],"Call your soldiers back.",[(jump_to_menu,"mnu_castle_outside")]),
-      ("continue",[],"Continue...",[(jump_to_menu,"mnu_castle_besiege")]),
+      ("continue",[],"Continue.",[(jump_to_menu,"mnu_castle_besiege")]),
     ]
   ),
 
@@ -9706,7 +9706,7 @@ game_menus = [
       (try_end),
     ],
     [
-      ("continue",[],"Continue...",[(jump_to_menu,"mnu_besiegers_camp_with_allies")]),
+      ("continue",[],"Continue.",[(jump_to_menu,"mnu_besiegers_camp_with_allies")]),
     ]
   ),
 
@@ -9738,7 +9738,7 @@ game_menus = [
       (try_end),
     ],
     [
-      ("continue",[],"Continue...",[(jump_to_menu,"mnu_besiegers_camp_with_allies")]),
+      ("continue",[],"Continue.",[(jump_to_menu,"mnu_besiegers_camp_with_allies")]),
     ]
   ),
 
@@ -10276,7 +10276,7 @@ game_menus = [
     ],
     [
 
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
         [
           # (assign, "$auto_enter_town", "$g_encountered_party"),
           # (change_screen_return),
@@ -10345,7 +10345,7 @@ game_menus = [
         (assign, reg2, 1),
     (try_end),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (assign, "$auto_enter_town", "$g_encountered_party"),
     #(change_screen_return),
     (change_screen_map),
@@ -10643,7 +10643,7 @@ game_menus = [
         (try_end),
     (try_end),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (assign, "$auto_enter_town", "$g_encountered_party"),
     #       (change_screen_return),
     (change_screen_map),
@@ -11047,7 +11047,7 @@ game_menus = [
       (try_end),
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
     ],
@@ -11399,7 +11399,7 @@ game_menus = [
 		###diplomacy end+
     ],
     [
-      ("continue",[],"Continue...",[
+      ("continue",[],"Continue.",[
         (jump_to_menu,"mnu_siege_started_defender"),
       ]),
 ]),
@@ -11477,7 +11477,7 @@ game_menus = [
 		###diplomacy end+
     ],
     [
-      ("continue",[],"Continue...",[
+      ("continue",[],"Continue.",[
           (jump_to_menu,"mnu_siege_started_defender"),
           ]),
     ]
@@ -11514,7 +11514,7 @@ game_menus = [
       (str_store_party_name, s2, "$current_town"),
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [ (jump_to_menu,"mnu_town"),
         ]),
     ],
@@ -12408,7 +12408,7 @@ game_menus = [
 			(str_store_string,s3,"@Here are the results of your hard work: You exhaust yourself, You gain {reg36} xps, you receive some {s22}. You improve your relation with this village. Peasant life is hard, but you feel good."),
 		(try_end),
 	],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
       (try_begin),
         (this_or_next|eq, "$g_player_is_captive", 1),
         (this_or_next|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
@@ -12502,7 +12502,7 @@ game_menus = [
     ("continue",[
       (eq, reg7, 0),
       (eq, reg5, 0),
-    ],"Continue...",[
+    ],"Continue.",[
       (party_set_slot, "$current_town", slot_center_volunteer_troop_amount, -1),
       (jump_to_menu,"mnu_village"),
     ]),
@@ -12533,7 +12533,7 @@ game_menus = [
   "none",[
     (call_script, "script_fail_quest", "qst_hunt_down_fugitive"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_village"),
       (call_script, "script_change_troop_renown", "trp_player", -2),
     ]),
@@ -12573,7 +12573,7 @@ game_menus = [
       (quest_set_slot, "qst_hunt_down_fugitive", slot_quest_current_state, 1),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_succeed_quest", "qst_hunt_down_fugitive"),
       (jump_to_menu, "mnu_village"),
     ]),
@@ -12590,7 +12590,7 @@ game_menus = [
       (set_background_mesh, "mesh_pic_looted_village"),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (party_set_slot, "$g_encountered_party", slot_village_infested_by_bandits, 0),
       (call_script, "script_village_set_state",  "$current_town", svs_looted),
       (party_set_slot, "$current_town", slot_village_raid_progress, 0),
@@ -12960,7 +12960,7 @@ game_menus = [
       (party_set_slot, "$current_town", slot_town_wealth, 0),
     (try_end),
   ],[
-  ("go_back_dot",[],"Continue...",[
+  ("go_back_dot",[],"Continue.",[
     (call_script, "script_change_player_honor", -5),
     (call_script, "script_change_troop_renown", "trp_player", -15),
     (call_script, "script_troop_add_gold", "trp_player", "$temp2"),
@@ -13417,7 +13417,7 @@ game_menus = [
       (try_end),
     ],
     [
-      ("continue",[],"Continue...",[(change_screen_return),
+      ("continue",[],"Continue.",[(change_screen_return),
       #SB : lose renown for easy encounters
       (call_script, "script_change_troop_renown", "trp_player", -2),
       ]),
@@ -13454,7 +13454,7 @@ game_menus = [
       (call_script, "script_troop_add_gold", "trp_player", ":gold_reward"),
     ],
     [
-      ("continue",[],"Continue...",[
+      ("continue",[],"Continue.",[
         (party_set_slot, "$current_town", slot_center_has_bandits, 0),
         (change_screen_return),
       ]),
@@ -13530,7 +13530,7 @@ game_menus = [
       (try_end),
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
          (change_screen_return),
          ]),
@@ -13865,7 +13865,7 @@ game_menus = [
     # (faction_set_slot, ":village_faction",  slot_faction_morale_of_player_troops, ":faction_morale"),
     (call_script, "script_objectionable_action", tmt_humanitarian, "str_loot_village"),
   ],[
-  ("continue",[], "Continue...",[
+  ("continue",[], "Continue.",[
     #steal cattle
     (jump_to_menu, "mnu_close"),
     (call_script, "script_calculate_amount_of_cattle_can_be_stolen", "$current_town"),
@@ -13994,7 +13994,7 @@ game_menus = [
     (call_script, "script_change_faction_troop_morale", ":village_faction", ":morale_decrease", 1), #SB : script call
     (assign, reg1, "$qst_eliminate_bandits_infesting_village_num_villagers"),
   ],[
-    ("continue",[], "Continue...",[
+    ("continue",[], "Continue.",[
       (assign, "$g_leave_town", 1),
       (jump_to_menu, "mnu_village"),
     ]),
@@ -14008,7 +14008,7 @@ game_menus = [
         (set_background_mesh, "mesh_pic_villageriot"),
     ],
     [
-      ("continue",[],"Continue...",[(change_screen_return),
+      ("continue",[],"Continue.",[(change_screen_return),
       #SB : renown loss
       (call_script, "script_change_troop_renown", "trp_player", -3),
       ]),
@@ -14048,7 +14048,7 @@ game_menus = [
   "none",[
     (call_script, "script_set_town_picture"),
   ],[
-    ("enter_the_town",[],"Continue...",[
+    ("enter_the_town",[],"Continue.",[
       (jump_to_menu, "mnu_town"),
     ]),
 ]),
@@ -17530,7 +17530,7 @@ game_menus = [
   [
     (set_background_mesh, "mesh_pic_mb_warrior_3"),
   ],[
-    ("continue", [],"Continue",
+    ("continue", [],"Continue.",
     [
       (jump_to_menu, "mnu_town"),
     ]),
@@ -17542,7 +17542,7 @@ game_menus = [
   [
     (set_background_mesh, "mesh_pic_girls"),
   ],[
-    ("continue", [],"Continue",
+    ("continue", [],"Continue.",
     [
       (jump_to_menu, "mnu_town"),
     ]),
@@ -17620,7 +17620,7 @@ game_menus = [
       (str_store_string, s8, "str__however_you_have_sufficiently_distinguished_yourself_to_be_invited_to_attend_the_ongoing_feast_in_the_lords_castle"),
     (try_end),
   ],[
-    ("continue", [], "Continue...",[
+    ("continue", [], "Continue.",[
       (jump_to_menu, "mnu_town_tournament_won_by_another"),
     ]),
 ]),
@@ -17702,7 +17702,7 @@ game_menus = [
     (stop_all_sounds, 0),
     (set_background_mesh, "mesh_pic_girls"),
   ],[
-    ("continue", [], "Continue...",[
+    ("continue", [], "Continue.",[
       (jump_to_menu, "mnu_town"),
     ]),
 ]),
@@ -17722,7 +17722,7 @@ game_menus = [
 
       (set_background_mesh, "mesh_pic_girls"),
   ],[
-    ("continue", [], "Continue...",[
+    ("continue", [], "Continue.",[
       (jump_to_menu, "mnu_town"),
     ]),
 ]),
@@ -18133,7 +18133,7 @@ game_menus = [
      ##diplomacy end+
      ],
     [
-      ("continue", [], "Continue...",
+      ("continue", [], "Continue.",
        [(change_screen_return),
         ]),
     ]
@@ -18147,7 +18147,7 @@ game_menus = [
     [
     ],
     [
-      ("continue", [], "Continue...",
+      ("continue", [], "Continue.",
        [(change_screen_map),
         ]),
     ]
@@ -18175,7 +18175,7 @@ game_menus = [
      (rest_for_hours, 0, 0, 0), #stop resting
      ],
     [
-      ("continue", [], "Continue...",
+      ("continue", [], "Continue.",
         [#SB : lose renown
           (call_script, "script_change_troop_renown", "trp_player", -2),
           (change_screen_map),
@@ -18221,7 +18221,7 @@ game_menus = [
      (try_end),
      ],
     [
-      ("continue", [], "Continue...",
+      ("continue", [], "Continue.",
        [(set_jump_mission,"mt_back_alley_revolt"),
         (quest_get_slot, ":target_center", "qst_collect_taxes", slot_quest_target_center),
         (try_begin),
@@ -18381,7 +18381,7 @@ game_menus = [
       (try_end),
      ],
     [
-      ("continue", [], "Continue...",
+      ("continue", [], "Continue.",
        [
          (try_begin),
            (quest_get_slot, ":quest_current_state", "qst_train_peasants_against_bandits", slot_quest_current_state),
@@ -18508,7 +18508,7 @@ game_menus = [
       (try_end),
      ],
     [
-      ("continue", [], "Continue...",
+      ("continue", [], "Continue.",
        [(try_begin),
           (call_script, "script_village_set_state",  "$current_town", svs_looted),
           (party_set_slot, "$current_town", slot_village_raid_progress, 0),
@@ -18967,7 +18967,7 @@ game_menus = [
       (assign, reg2, 1),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
 	    (call_script, "script_dplmc_player_auto_sell_at_center", "$current_town"),
       (jump_to_menu, "$g_next_menu"),
     ]),
@@ -19009,7 +19009,7 @@ game_menus = [
       (party_get_slot, ":merchant_troop", "$current_town", slot_town_elder),
     (try_end),
 	  (ge, ":merchant_troop", 1),
-	],"Continue...",[
+	],"Continue.",[
     (assign, ":merchant_troop", -1),
     (try_begin),
       (is_between, "$current_town", towns_begin, towns_end),
@@ -19051,7 +19051,7 @@ game_menus = [
     ],
 
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
            (assign,"$auto_enter_town", "$current_town"),
            (assign, "$g_town_assess_trade_goods_after_rest", "$current_town"), #SB : save this
@@ -19337,7 +19337,7 @@ game_menus = [
      (try_end),
      ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
            (jump_to_menu,"mnu_town_trade"),
         ]),
@@ -19358,7 +19358,7 @@ game_menus = [
      # (try_end),
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
            # (assign, "$sneaked_into_town",1),
            (jump_to_menu,"mnu_town"),
@@ -19446,7 +19446,7 @@ game_menus = [
     "none",
     [],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
            (try_begin),
                (eq, "$sneaked_into_town", 0),
@@ -19502,7 +19502,7 @@ game_menus = [
 	],
     [
 
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
     (assign,"$auto_menu",-1),
     (store_encountered_party,"$last_sneak_attempt_town"),
     (store_current_hours,"$last_sneak_attempt_time"),
@@ -20066,7 +20066,7 @@ game_menus = [
 
    ],
     [
-      ("continue", [], "Continue...",
+      ("continue", [], "Continue.",
        [
          (jump_to_scene, "$g_training_ground_training_scene"),
          (change_screen_mission),
@@ -20178,7 +20178,7 @@ game_menus = [
 
      ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(jump_to_menu, "mnu_training_ground"),
         ]
        ),
@@ -20341,7 +20341,7 @@ game_menus = [
         (jump_to_menu, "mnu_captivity_avoid_wilderness"),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_change_troop_health", "trp_player", 5),
       (assign, "$talk_context", tc_player_defeated),
       (try_begin),
@@ -20373,7 +20373,7 @@ game_menus = [
     (play_cue_track, "track_escape"),
     (set_background_mesh, "mesh_pic_escape_1"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$g_player_is_captive", 0),
       (try_begin),
           (party_is_active, "$capturer_party"),
@@ -20400,7 +20400,7 @@ game_menus = [
       #SB : deduct relation here, probably
       (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -1),
     ],[
-      ("continue",[],"Continue...",[
+      ("continue",[],"Continue.",[
         (assign, "$g_player_is_captive", 1),
         (store_random_in_range, ":random_hours", 16, 22),
         (call_script, "script_event_player_captured_as_prisoner"),
@@ -20420,7 +20420,7 @@ game_menus = [
     (set_background_mesh, "mesh_pic_prisoner_man"),
     ##diplomacy end+
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$g_player_is_captive", 1),
       (store_random_in_range, ":random_hours", 16, 22),
       (call_script, "script_event_player_captured_as_prisoner"),
@@ -20484,7 +20484,7 @@ game_menus = [
         (str_store_string, s0, "@when your captors exchange you with another prisoner."),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$g_player_is_captive", 0),
       (try_begin),
         (party_is_active, "$capturer_party"),
@@ -20592,7 +20592,7 @@ game_menus = [
 
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
            (assign, "$g_player_is_captive", 1),
            (change_screen_return),
@@ -20627,7 +20627,7 @@ game_menus = [
 		##diplomacy end+
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
            (quest_get_slot, ":quest_target_troop", "qst_report_to_army", slot_quest_target_troop),
            (quest_get_slot, ":quest_target_amount", "qst_report_to_army", slot_quest_target_amount),
@@ -20658,7 +20658,7 @@ game_menus = [
         (str_store_troop_name, s8, ":faction_marshall"),
     ],
     [
-        ("continue",[],"Continue...",
+        ("continue",[],"Continue.",
         [
             (change_screen_return)
         ]),
@@ -20679,7 +20679,7 @@ game_menus = [
         (str_store_party_name, s9, ":quest_target_center"),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
            (call_script, "script_end_quest", "qst_follow_army"),
            (quest_get_slot, ":quest_target_center", "qst_join_siege_with_army", slot_quest_target_center),
@@ -20706,7 +20706,7 @@ game_menus = [
 #        (call_script, "script_change_player_relation_with_troop", ":faction_marshall", -3),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
      ]
@@ -20857,7 +20857,7 @@ game_menus = [
 
       # ],
     # [
-      # ("continue",[],"Continue...",
+      # ("continue",[],"Continue.",
        # [(change_screen_return),
         # ]),
      # ]
@@ -20944,7 +20944,7 @@ game_menus = [
       (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
       ],
     [
-      ("continue",[],"Continue",
+      ("continue",[],"Continue.",
        [
 	   (change_screen_return),
         ]),
@@ -20958,7 +20958,7 @@ game_menus = [
     (set_background_mesh, "mesh_pic_senatus"),
       ],
     [
-      ("continue",[],"Continue",
+      ("continue",[],"Continue.",
        [
 	   (change_screen_return),
         ]),
@@ -20973,7 +20973,7 @@ game_menus = [
     (str_store_string, s10, "str_feast_quest_expired"),
     ],
     [
-      ("continue",[],"Continue",
+      ("continue",[],"Continue.",
        [
 	   (change_screen_return),
         ]),
@@ -20987,7 +20987,7 @@ game_menus = [
     (party_stack_get_troop_id, ":leader", "$g_notification_menu_var2", 0),
     (str_store_troop_name, s5, ":leader"),
   ],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
 	    (change_screen_return),
     ]),
 ]),
@@ -21012,7 +21012,7 @@ game_menus = [
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
       ],
     [
-        ("continue",[],"Continue",
+        ("continue",[],"Continue.",
         [
         (call_script, "script_faction_follows_controversial_policy", "$g_notification_menu_var1", logent_policy_ruler_ignores_provocation),
         (change_screen_return),
@@ -22034,7 +22034,7 @@ game_menus = [
         (set_background_mesh, "mesh_pic_messenger"),
       ],
     [
-        ("continue",[],"Continue",
+        ("continue",[],"Continue.",
         [
             (jump_to_menu, "mnu_auto_return_map"),
         ]),
@@ -22137,7 +22137,7 @@ game_menus = [
     (val_add, ":faction_1", ":faction_2"),
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
   ],[
-      ("continue",[],"Continue",[
+      ("continue",[],"Continue.",[
         (jump_to_menu, "mnu_auto_return_map"),
       ]),
 ]),
@@ -22161,7 +22161,7 @@ game_menus = [
 
 	],
     [
-      ("continue",[],"Continue",
+      ("continue",[],"Continue.",
        [
 	   (change_screen_return),
         ]),
@@ -22204,7 +22204,7 @@ game_menus = [
 
 	],
     [
-      ("continue",[],"Continue",
+      ("continue",[],"Continue.",
        [
 	   (change_screen_return),
         ]),
@@ -22279,7 +22279,7 @@ game_menus = [
     (val_add, ":faction_1", ":faction_2"),
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
   ],[
-  ("continue",[],"Continue",[
+  ("continue",[],"Continue.",[
 	  (change_screen_return),
   ]),
 ]),
@@ -22474,7 +22474,7 @@ game_menus = [
     (call_script, "script_dplmc_store_troop_is_female_reg", "$g_player_minister", 4),
     (assign, reg10, minister_salary),
 	],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       #SB : explicitly state kingdom
       (assign, "$g_presentation_state", rename_kingdom),
       (start_presentation, "prsnt_name_kingdom"),
@@ -22595,7 +22595,7 @@ game_menus = [
     (try_end),
     (str_store_string, s12, s14),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
 	    (change_screen_return),
 	  ]),
 ]),
@@ -22610,7 +22610,7 @@ game_menus = [
     (position_set_z, pos0, 170),
     (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "fac_player_supporters_faction", pos0),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$g_player_minister", -1),
       (change_screen_return),
     ]),
@@ -22626,7 +22626,7 @@ game_menus = [
 		(str_store_party_name, s10, "$g_notification_menu_var2"),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
      ]
@@ -22673,7 +22673,7 @@ game_menus = [
 
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
      ]
@@ -22695,7 +22695,7 @@ game_menus = [
       (set_game_menu_tableau_mesh, "tableau_center_note_mesh", "$g_notification_menu_var1", pos0),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
      ]
@@ -22717,7 +22717,7 @@ game_menus = [
       (set_game_menu_tableau_mesh, "tableau_center_note_mesh", "$g_notification_menu_var1", pos0),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
      ]
@@ -22739,7 +22739,7 @@ game_menus = [
       (set_game_menu_tableau_mesh, "tableau_center_note_mesh", "$g_notification_menu_var1", pos0),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
      ]
@@ -22758,7 +22758,7 @@ game_menus = [
       (set_game_menu_tableau_mesh, "tableau_center_note_mesh", "$g_notification_menu_var1", pos0),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
      ]
@@ -22780,7 +22780,7 @@ game_menus = [
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -22801,7 +22801,7 @@ game_menus = [
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -22823,7 +22823,7 @@ game_menus = [
         (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -22846,7 +22846,7 @@ game_menus = [
       (try_end),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [(change_screen_return),
         ]),
      ]
@@ -22865,7 +22865,7 @@ game_menus = [
     (set_game_menu_tableau_mesh, "tableau_center_note_mesh", "$g_notification_menu_var1", pos0),
     ],
   [
-    ("continue",[],"Continue...",
+    ("continue",[],"Continue.",
       [(change_screen_return),
       ]),
     ]
@@ -22903,7 +22903,7 @@ game_menus = [
     (position_set_z, pos0, 100),
     (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", "$g_notification_menu_var1", pos0),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -22920,7 +22920,7 @@ game_menus = [
     (position_set_z, pos0, 100),
     (set_game_menu_tableau_mesh, "tableau_troop_note_mesh", "$g_notification_menu_var1", pos0),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -22957,7 +22957,7 @@ game_menus = [
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
     (play_sound, "snd_message_negative_sound"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_dplmc_start_nonaggression_between_kingdoms", "$players_kingdom", "$g_notification_menu_var1", 1),
       (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", reg22),
       (change_screen_return),
@@ -22995,7 +22995,7 @@ game_menus = [
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
     (play_sound, "snd_message_negative_sound"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -23250,7 +23250,7 @@ game_menus = [
         (assign, "$temp1", -1),
     (try_end),
   ],[
-    ("continue",[(eq, "$temp1", 1),],"Continue",[
+    ("continue",[(eq, "$temp1", 1),],"Continue.",[
       (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_notification_menu_var2", "$g_notification_menu_var1", 0),
       (faction_get_slot, ":leader", "$g_notification_menu_var1", slot_faction_leader),
       (call_script, "script_change_player_relation_with_troop", ":leader", -10),
@@ -23440,7 +23440,7 @@ game_menus = [
         (assign, "$temp1", -1),
     (try_end),
   ],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
       (try_begin),
           (eq, "$temp1", -1),
           (call_script, "script_diplomacy_start_war_between_kingdoms", "$players_kingdom", "$g_notification_menu_var1", logent_faction_declares_war_to_curb_power),
@@ -23500,7 +23500,7 @@ game_menus = [
       (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
     ],
     [
-      ("continue",[],"Continue...",[
+      ("continue",[],"Continue.",[
         (change_screen_return),
       ]),
 ]),
@@ -23541,7 +23541,7 @@ game_menus = [
         (try_end),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -23554,7 +23554,7 @@ game_menus = [
     (set_background_mesh, "mesh_pic_looted_village"),
     (play_sound, "snd_message_negative_sound"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -23578,7 +23578,7 @@ game_menus = [
       (try_end),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
          (assign, "$talk_context", tc_rebel_thanks),
          (start_map_conversation, "$g_notification_menu_var2", -1),
@@ -23619,7 +23619,7 @@ game_menus = [
 		(quest_set_slot, "qst_consult_with_minister", slot_quest_giver_troop, "$g_player_minister"),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
 	    (change_screen_return),
         ]),
@@ -23631,7 +23631,7 @@ game_menus = [
   "none",[
     (str_store_party_name, s11, "$g_notification_menu_var1"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -23837,7 +23837,7 @@ game_menus = [
   "You spot your victim and follow him, observing as he turns a corner into a dark alley. This will surely be your best opportunity to attack him.",
   "none",[
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (set_jump_mission,"mt_back_alley_kill_local_merchant"),
       (party_get_slot, ":town_alley", "$qst_kill_local_merchant_center", slot_town_center),
       (modify_visitors_at_site,":town_alley"),
@@ -23854,7 +23854,7 @@ game_menus = [
   "DEBUG ALERT: {s65}",
   "none",[
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       # (assign, "$debug_message_in_queue", 0),
       (change_screen_return),
     ]),
@@ -24334,7 +24334,7 @@ game_menus = [
 
     ("leave_victory",[
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 2),
-    ],"Continue...",[
+    ],"Continue.",[
       (try_begin),
         (eq, "$loot_screen_shown", 0),
   #          (try_begin),
@@ -24406,7 +24406,7 @@ game_menus = [
 
     ("leave_defeat",[
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 1),
-    ],"Continue...",[
+    ],"Continue.",[
       # (try_for_range, ":bandit_template", bandit_party_templates_begin, bandit_party_templates_end), #SB : template range
       #     (party_template_slot_eq, ":bandit_template", slot_party_template_lair_party, "$g_encountered_party"),
       #     (party_template_set_slot, ":bandit_template", slot_party_template_lair_party, 0),
@@ -24454,7 +24454,7 @@ game_menus = [
     (try_end),
     (str_store_troop_name, s12, ":faction_decision"),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (change_screen_return),
   ]),
 ]),
@@ -24740,7 +24740,7 @@ game_menus = [
         (this_or_next|eq, "$current_startup_quest_phase", 1),
         (eq, "$current_startup_quest_phase", 4),
       ],
-      "Continue...",
+      "Continue.",
       [
         (assign, "$town_entered", 1),
         (modify_visitors_at_site, "scn_town_6_room"),
@@ -24762,7 +24762,7 @@ game_menus = [
       [
         (eq, "$current_startup_quest_phase", 3),
       ],
-      "Continue...",
+      "Continue.",
       [
         (call_script, "script_prepare_town_to_fight"),
       ]),
@@ -24807,7 +24807,7 @@ game_menus = [
   ],[
     ("continue",[
       (eq, "$sneaked_into_town", disguise_none),
-    ],"Continue...",[
+    ],"Continue.",[
       (jump_to_menu, "mnu_town"),
       (troop_set_health, "trp_player", 25),
       #SB : renown loss, less than losing to bandits
@@ -24878,7 +24878,7 @@ game_menus = [
     (assign, reg0, ":save_reg0"),
     ##diplomacy end+
 	],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25135,7 +25135,7 @@ game_menus = [
     (val_add, ":faction_1", ":faction_2"),
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25173,7 +25173,7 @@ game_menus = [
     (val_add, ":faction_1", ":faction_2"),
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25194,7 +25194,7 @@ game_menus = [
     (val_add, ":faction_1", ":faction_2"),
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25215,7 +25215,7 @@ game_menus = [
     (val_add, ":faction_1", ":faction_2"),
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25236,7 +25236,7 @@ game_menus = [
     (val_add, ":faction_1", ":faction_2"),
     (set_game_menu_tableau_mesh, "tableau_2_factions_mesh", ":faction_1", pos0),
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25424,7 +25424,7 @@ game_menus = [
     ]),
     ("dplmc_continue",[
       (neg|faction_slot_eq, "$g_notification_menu_var2", slot_faction_leader, "trp_player"),
-    ],"Continue",[
+    ],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25440,7 +25440,7 @@ game_menus = [
     (position_set_z, pos0, 170),
     (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
   ],[
-    ("dplmc_continue",[],"Continue",[
+    ("dplmc_continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25459,7 +25459,7 @@ game_menus = [
     (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
     ],
   [
-    ("dplmc_continue",[],"Continue",
+    ("dplmc_continue",[],"Continue.",
       [
     (change_screen_return),
       ]),
@@ -25481,7 +25481,7 @@ game_menus = [
     (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
     ],
   [
-    ("dplmc_continue",[],"Continue",
+    ("dplmc_continue",[],"Continue.",
       [
     (change_screen_return),
       ]),
@@ -25493,7 +25493,7 @@ game_menus = [
   "none",
   [(set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),],
   [
-  ("dplmc_continue",[],"Continue",
+  ("dplmc_continue",[],"Continue.",
       [
       (jump_to_menu, "mnu_question_peace_offer"),
       ]),
@@ -25511,7 +25511,7 @@ game_menus = [
        (str_store_string, s9, "@Try as you might, you could not defeat the rebelling village."),
      (try_end),
   ],[
-      ("dplmc_continue",[],"Continue...",[
+      ("dplmc_continue",[],"Continue.",[
         (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -3),
         (call_script, "script_change_troop_renown", "trp_player", -5), #SB : renown loss highest here
         (jump_to_menu, "mnu_village"),
@@ -25527,7 +25527,7 @@ game_menus = [
     # (call_script, "script_village_set_state",  "$current_town", svs_looted),
     # you wont loot it!
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (call_script, "script_change_player_relation_with_center", "$g_encountered_party", 20),
       (jump_to_menu, "mnu_village"),
     ]),
@@ -25538,7 +25538,7 @@ game_menus = [
   "none",
   [
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (party_set_slot, "$g_encountered_party", slot_village_infested_by_bandits, 0),
       (assign, "$new_encounter", 1),
       (try_begin),
@@ -25630,7 +25630,7 @@ game_menus = [
       (set_background_mesh, "mesh_pic_villageriot"),
     (try_end),
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -25659,7 +25659,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
          (change_screen_return),
     ]),
 ]),
@@ -25686,7 +25686,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_mb_warrior_2"),
   ],[
-  ("dplmc_continue",[],"Continue...",[
+  ("dplmc_continue",[],"Continue.",[
     (change_screen_return),
   ]),
 ]),
@@ -25713,7 +25713,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_senators"),
   ],[
-  ("dplmc_continue",[],"Continue...",[
+  ("dplmc_continue",[],"Continue.",[
     (change_screen_return),
   ]),
 ]),
@@ -25726,7 +25726,7 @@ game_menus = [
     (call_script, "script_dplmc_player_troops_leave", ":random"),
     (str_store_string, s11, "@{reg0}"),
   ],[
-  ("dplmc_continue",[],"Continue...",[
+  ("dplmc_continue",[],"Continue.",[
     (change_screen_return),
   ]),
 ]),
@@ -25860,7 +25860,7 @@ game_menus = [
         ##nested diplomacy end+
     ],
     [
-      ("dplmc_continue",[],"Continue...",
+      ("dplmc_continue",[],"Continue.",
        [
          (change_screen_return),
         ]),
@@ -25907,7 +25907,7 @@ game_menus = [
     (call_script, "script_update_center_recon_notes", "$g_notification_menu_var1"),
     ],
     [
-      ("dplmc_continue",[],"Continue...",
+      ("dplmc_continue",[],"Continue.",
        [
          (change_screen_return),
         ]),
@@ -25991,7 +25991,7 @@ game_menus = [
       (str_store_string, s63, "@This is a diplomacy bug! Complain at the diplomacy forum."),
     (try_end),
   ],[
-    ("dplmc_continue",[],"Continue...",[
+    ("dplmc_continue",[],"Continue.",[
       (change_screen_return),
     ]),
 ]),
@@ -26045,7 +26045,7 @@ game_menus = [
       (try_end),
     (try_end),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (jump_to_menu, "mnu_reports"),
   ]),
 ]),
@@ -26312,7 +26312,7 @@ game_menus = [
   ("dplmc_back",[],"Show trade report.",[
     (jump_to_menu, "mnu_trade_report"),
   ]),
-  ("dplmc_back",[],"Continue...",[
+  ("dplmc_back",[],"Continue.",[
     (jump_to_menu, "mnu_reports"),
   ]),
 ]),
@@ -27893,7 +27893,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_bachus"),
   ],[
-	  ("continue",[],"Continue",[
+	  ("continue",[],"Continue.",[
       (call_script, "script_add_to_troop_wealth", "trp_kingdom_7_lord", -50000),
       (val_add, "$g_unrest", 8),
       (display_message, "@Stability of the Empire decreases", color_bad_news),
@@ -29456,7 +29456,7 @@ game_menus = [
     [
     ],
     [
-      ("defendiendo_1_cd",[],"Continue...",
+      ("defendiendo_1_cd",[],"Continue.",
         [
           (assign, "$g_empieza_discurso", 1),
           (assign, "$temp1", 0),
@@ -29840,7 +29840,7 @@ game_menus = [
     (add_quest_note_from_sreg, "qst_four_emperors", 5, "@{s24} will march with the Rhine legions towards Rome. You have 30 days to prepare yourself for battle.", 1),
     (add_xp_as_reward, 2500),
   ],[
-    ("Continue...",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
       (call_script, "script_kill_lord_lady", ":goy", "trp_player", 0),
 
@@ -30009,7 +30009,7 @@ game_menus = [
     (call_script, "script_update_all_notes"),
   ],[
 
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       #1,2 player antonia,
       #3-10: guards
       #11-36 people
@@ -30081,7 +30081,7 @@ game_menus = [
     (add_xp_as_reward, 2500),
     (set_background_mesh, "mesh_pic_emperor"),
   ],[
-  ("Continue...",[],"Continue...",[
+  ("Continue.",[],"Continue.",[
     (play_track, "track_cutscene_to_hades",2),
     (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
     (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 12),
@@ -31411,7 +31411,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_underworld"),
     ]),
 ]),
@@ -31426,7 +31426,7 @@ game_menus = [
     (call_script, "script_end_quest", "qst_blank_quest_5"),
     (add_xp_as_reward, 1500),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (set_jump_mission, "mt_roman_intro_3"),
       (modify_visitors_at_site,"scn_antonias_house"),
       (reset_visitors),
@@ -31473,7 +31473,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_change_troop_health", "trp_player", 5),
       (jump_to_menu, "mnu_village"),
     ]),
@@ -31486,7 +31486,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_village"),
     ]),
 ]),
@@ -31727,7 +31727,7 @@ game_menus = [
   [
     (set_background_mesh, "mesh_pic_fire_of_rome"),
 	],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (modify_visitors_at_site,"scn_roman_burns"),
       (reset_visitors, 0),
       (set_jump_entry,0),
@@ -32603,7 +32603,7 @@ game_menus = [
     ("continue",[
       (neg|faction_slot_eq, "$g_notification_menu_var1", slot_faction_leader, "trp_player"),
       # (lt, "$g_is_emperor", 1),
-    ],"Continue",[
+    ],"Continue.",[
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
@@ -34586,7 +34586,7 @@ game_menus = [
     (val_add, "$g_rank", 1),
     (val_clamp, "$g_rank", 0, 4),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (try_begin),
         (eq, "$g_rank", 1),
         (assign, "$temp1", -1),
@@ -34702,7 +34702,7 @@ game_menus = [
 	(set_background_mesh, "mesh_pic_landschaft"),
    ],
    [
-     ("continue",[],"Continue...",
+     ("continue",[],"Continue.",
      [
         (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
         (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
@@ -38559,7 +38559,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_bachus"),
   ],[
-    ("leave",[],"Continue",[
+    ("leave",[],"Continue.",[
       (str_store_troop_name_link, s13, "trp_kingdom_7_lord"),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 14, "@You found {s13} hidding in a cave near mount Olymp. You decided to spare his life. He and his followers disappeared. There is no trace of them anymore.", 1),
       (add_xp_as_reward, 1000),
@@ -38572,7 +38572,7 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_bachus"),
   ],[
-    ("leave",[],"Continue",[
+    ("leave",[],"Continue.",[
       (str_store_troop_name_link, s13, "trp_kingdom_7_lord"),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 14, "@You found {s13} hidding in a cave near mount Olymp. You decided to kill him.", 1),
       (display_message, "@You found Nero's lyre!", color_good_news),
@@ -40815,7 +40815,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_senatus"),
     (troop_get_slot, reg33, "trp_senator_dummy", slot_senate_support),
   ],[
-  ("choice_12_1nor",[],"Continue",[
+  ("choice_12_1nor",[],"Continue.",[
     (assign, "$g_bribe", 0),
     (jump_to_menu, "mnu_debate_in_senat_2"),
   ]),
@@ -42514,7 +42514,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
 
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
         [
           # (assign, "$auto_enter_town", "$g_encountered_party"),
           # (change_screen_return),
@@ -42659,7 +42659,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
   ],[
-	  ("financial_crisis_answere_1",[],"Continue",[
+	  ("financial_crisis_answere_1",[],"Continue.",[
       (troop_set_slot, "$g_player_chamberlain", slot_troop_days_on_mission, 25),
       (change_screen_map),
     ]),
@@ -44687,7 +44687,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$cant_leave_encounter", 0),
     (assign, "$g_leave_encounter", 1),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -44759,7 +44759,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$cant_leave_encounter", 0),
     (assign, "$g_leave_encounter", 1),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -45149,7 +45149,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_string, s30, "@'This was you last trial of arms. Take those weapons and take this armor as your last reward, it shall guard you well during battle.'"),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -45160,7 +45160,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_bachus"),
   ],
   [
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -45172,7 +45172,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
-      ("Continue...",[],"Continue...",[
+      ("Continue.",[],"Continue.",[
         (add_xp_as_reward, 100),
         (store_random_in_range, ":r", -25, 25),
         (val_max, ":r", 0),
@@ -45215,7 +45215,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_background_mesh, "mesh_pic_hexe_party"),
     (try_end),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (troop_remove_gold, "trp_player", 500),
       (add_xp_as_reward, 100),
       (store_random_in_range, ":r", -50, 15),
@@ -45243,7 +45243,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       (troop_set_slot, "trp_groupie", slot_troop_mother, 0),
       (add_xp_as_reward, 250),
       (change_screen_map),
@@ -45256,7 +45256,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
   ],[
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       (store_troop_gold, ":gold", "trp_household_possessions"),
       (try_begin),
           (le, ":gold", 150000),
@@ -45311,7 +45311,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   (set_background_mesh, "mesh_pic_payment"),
   (str_store_troop_name, s5, "$g_notification_menu_var1"),
  ],[
-  ("continue", [], "Continue...",[
+  ("continue", [], "Continue.",[
       (store_troop_gold, ":gold", "trp_household_possessions"),
       (try_begin),
           (le, ":gold", 150000),
@@ -45355,7 +45355,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   (set_background_mesh, "mesh_pic_payment"),
   (str_store_troop_name, s5, "$g_notification_menu_var1"),
  ],[
-  ("continue", [], "Continue...",[
+  ("continue", [], "Continue.",[
       (store_troop_gold, ":gold", "trp_player"),
       (try_begin),
           (le, ":gold", 150000),
@@ -45397,7 +45397,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_payment"),
   ],[
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       (faction_get_slot, ":gold", "$players_kingdom", slot_faction_treasury),
       (try_begin),
           (le, ":gold", 150000),
@@ -45438,7 +45438,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_senators"),
   ],[
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       (faction_get_slot, ":tax_rate_business", "$players_kingdom", slot_faction_tax_rate_buisness),
       (store_div, ":relation_reduction", ":tax_rate_business", -5),
       (set_show_messages, 0),
@@ -45467,7 +45467,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_townriot"),
   ],[
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       (try_begin),
           (store_num_parties_of_template, ":num_parties", "pt_rebels"),
           (lt, ":num_parties", 30),
@@ -45513,7 +45513,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (start_presentation, "prsnt_banner_selection"),
     (try_end),
   ],[
-  ("Continue...",[],"Continue...",[
+  ("Continue.",[],"Continue.",[
     (try_begin),
         (eq, "$g_player_troop", "trp_players_legion"),
         (store_add, ":slot", slot_legion_commanders_begin, 13),
@@ -45539,7 +45539,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_camp"),
   ],[
-    ("Continue...",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
       (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
       (assign, "$talk_context", 0),#to fix bug in dialog
@@ -45577,7 +45577,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         ),
     (try_end),
   ],[
-    ("Continue...",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (assign, "$temp", 6),
       (assign, "$temp1", -1),
       (set_jump_mission, "mt_roman_story_player_tent"),
@@ -45596,7 +45596,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_camp"),
   ],[
-    ("Continue...",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
       (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
       (assign, "$talk_context", 0),#to fix bug in dialog
@@ -45640,7 +45640,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         ),
     (try_end),
   ],[
-    ("Continue...",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (call_script, "script_change_player_relation_with_troop", "trp_antonia", 5),
       (add_xp_as_reward, 2500),
       (display_message, "str_quest_updated"),
@@ -45667,7 +45667,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         ),
     (try_end),
   ],[
-  ("Continue...",[],"Continue.",[
+  ("Continue.",[],"Continue.",[
     (call_script, "script_change_player_relation_with_troop", "trp_antonia", -5),
     (display_message, "str_quest_updated"),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
@@ -45685,7 +45685,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (quest_get_slot,  ":lady", "qst_important_friends", slot_quest_object_troop),
     (str_store_troop_name, s20, ":lady"),
   ],[
-  ("Continue...",[],"Continue...",[
+  ("Continue.",[],"Continue.",[
     (add_quest_note_from_sreg, "qst_important_friends", 3, "@Finally, you know his secret: Kaeso Flavius is a Christ and it seems he is concerned about the recent persecution of Christians. Time to talk with him!", 0),
     (quest_set_slot, "qst_important_friends", slot_quest_current_state, 2),
     (change_screen_map),
@@ -45701,7 +45701,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 #     [(set_background_mesh, "mesh_pic_fire_of_rome"),
 #     ],
 #     [
-#       ("Continue...",[],"Continue.",[
+#       ("Continue.",[],"Continue.",[
 #       (assign, "$visited_rom_first", 2),
 #       (modify_visitors_at_site,"scn_roman_burns"),
 #       (reset_visitors, 0),
@@ -45720,7 +45720,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     "none",
     [(set_background_mesh, "mesh_pic_fire_of_rome"),
     ],[
-    ("Continue...",[],"Luckily, I am alive.",[
+    ("Continue.",[],"Luckily, I am alive.",[
 
       (jump_to_menu, "mnu_fire_of_rome"),
 
@@ -45734,7 +45734,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     ],
     [
-      ("Continue...",[],"Continue...",[
+      ("Continue.",[],"Continue.",[
         (call_script, "script_cutscene_1"),
       ]),
 ]),
@@ -45744,7 +45744,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-  ("Continue...",[],"Continue...",[
+  ("Continue.",[],"Continue.",[
     (add_xp_as_reward, 250),
     (assign, "$talk_context", tc_campaign_talk),
     (call_script, "script_setup_troop_meeting", "trp_petronius", -1, "scn_rome_center"),
@@ -45758,7 +45758,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-  ("Continue...",[], "Continue...",[
+  ("Continue.",[], "Continue.",[
     (call_script, "script_enter_secret_christian_church", 0),
   ]),
 ]),
@@ -45768,7 +45768,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_villa"),
   ],[
-  ("Continue...",[],"Talk with him",[
+  ("Continue.",[],"Talk with him",[
     (assign, "$talk_context", tc_campaign_talk),
     (call_script, "script_setup_troop_meeting", "trp_amorus", -1, "scn_rome_center"),
   ]),
@@ -45779,7 +45779,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_villa"),
   ],[
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       (assign, "$temp", 1),
       (modify_visitors_at_site,"scn_lucias_villa"),
       (reset_visitors),
@@ -45798,12 +45798,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_woman"),
   ],[
-  ("Continue...",[],"Tell she was murdered by her slaves. According to Roman law, all her slaves would be crucified.",[
+  ("Continue.",[],"Tell she was murdered by her slaves. According to Roman law, all her slaves would be crucified.",[
     (troop_add_gold, "trp_player", 100000),
     (call_script, "script_end_quest", "qst_widow"),
     (jump_to_menu, "mnu_lucia_slaves_killed"),
   ]),
-  ("Continue...",[],"Tell it was some paid murderer, who escaped.",[
+  ("Continue.",[],"Tell it was some paid murderer, who escaped.",[
     (store_random_in_range, ":r", 0, 2),
     (try_begin),
         (eq, ":r",0),
@@ -45822,7 +45822,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[ #qst_town_trade
-    ("Continue...",[],"Damn.",[
+    ("Continue.",[],"Damn.",[
       (add_xp_as_reward, 500),
       (assign, "$g_player_is_captive", 1),
       (store_random_in_range, ":random_hours", 60, 80),
@@ -45838,7 +45838,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_kreuzigung"),
   ],[ #qst_town_trade
-  ("Continue...",[],"Continue.",[
+  ("Continue.",[],"Continue.",[
     (jump_to_menu, "mnu_auto_return_map"),
     (add_xp_as_reward, 250),
   ]),
@@ -45849,7 +45849,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-    ("Continue...",[],"Tell your master, I will come as soon as possible.",[
+    ("Continue.",[],"Tell your master, I will come as soon as possible.",[
       (str_store_string, s2, "@Visit the goods merchant of Rome, you can find him in his shop in the town center of Rome."),
       (quest_set_slot, "qst_town_trade", slot_quest_current_state, 0),
       (quest_set_slot, "qst_town_trade", slot_quest_gold_reward, 1000),
@@ -45858,7 +45858,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_set_slot, "qst_town_trade", slot_quest_menu_1, 1),
       (jump_to_menu, "mnu_town_trade"),
     ]),
-    ("Continue...",[],"Tell your master I am not interested at all.",[
+    ("Continue.",[],"Tell your master I am not interested at all.",[
       (quest_set_slot, "qst_town_trade", slot_quest_menu_1, 1),
       (jump_to_menu, "mnu_town_trade"),
     ]),
@@ -45869,14 +45869,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-  ("Continue...",[
+  ("Continue.",[
     (quest_slot_eq, "qst_the_eagle", slot_quest_temp_slot, 2),],"Collect the herbs.",[
     (rest_for_hours, 4, 5, 0),
     (display_message, "@You start collecting the herbs"),
     (quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 3),
     (change_screen_map),
   ]),
-  ("Continue...",[],"Visit the hut.",[
+  ("Continue.",[],"Visit the hut.",[
     (modify_visitors_at_site,"scn_grove_witch"),
     (reset_visitors),
     (set_visitor,0,"trp_player"), #player
@@ -45886,7 +45886,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (jump_to_scene, "scn_grove_witch"),
     (change_screen_mission),
   ]),
-  ("Continue...",[],"Leave.",[
+  ("Continue.",[],"Leave.",[
     (change_screen_map),
   ]),
 ]),
@@ -45895,7 +45895,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("Continue...",[
+    ("Continue.",[
       (troop_slot_ge, "trp_witch", slot_troop_wealth, 1),
     ],"Search for Arminius tomb.",[
       (modify_visitors_at_site,"scn_arminius_tomb"),
@@ -45906,7 +45906,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_scene, "scn_arminius_tomb"),
       (change_screen_mission),
     ]),
-    ("Continue...",[],"Leave.",[
+    ("Continue.",[],"Leave.",[
       (change_screen_map),
     ]),
 ]),
@@ -45915,7 +45915,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("Continue...",[],"Defend yourself",[
+    ("Continue.",[],"Defend yourself",[
       (modify_visitors_at_site,"scn_grove_witch_2"),
       (reset_visitors),
       (set_visitor,0,"trp_player"), #player
@@ -45932,7 +45932,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("Continue...",[],"Continue",[
+    ("Continue.",[],"Continue.",[
       (quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 5),
       (add_quest_note_from_sreg, "qst_the_eagle", 4, "@You have defeated the warrior. Bring Hunna his head.", 0),
       (change_screen_map),
@@ -45944,7 +45944,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-    ("Continue...",[],"A trap...",[
+    ("Continue.",[],"A trap...",[
       (set_jump_mission,"mt_lucillus_1"),
       (modify_visitors_at_site, "scn_house_1"),
       (reset_visitors),
@@ -45962,7 +45962,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("Continue...",[],"It's party time! Let's get drunk!",[
+    ("Continue.",[],"It's party time! Let's get drunk!",[
         # (call_script, "script_change_troop_renown", "trp_player", 25),
         # (assign, "$auto_enter_town", "$current_town"),
         # (assign, "$g_town_visit_after_rest", 1),
@@ -46002,7 +46002,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("Continue...",[],"I shouldn't drink so much ...",[
+    ("Continue.",[],"I shouldn't drink so much ...",[
       (call_script, "script_change_troop_renown", "trp_player", 25),
       (call_script, "script_change_player_honor", -5),
         # (assign, "$auto_enter_town", "$current_town"),
@@ -46019,7 +46019,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-    ("Continue...",[],"Climb over the wall.",[
+    ("Continue.",[],"Climb over the wall.",[
         (set_jump_mission,"mt_lucillus_2"),
         (modify_visitors_at_site, "scn_house_2"),
         (reset_visitors),
@@ -46036,7 +46036,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_scene, "scn_house_2"),
         (change_screen_mission),
     ]),
-    ("Continue...",[],"Go back.",[
+    ("Continue.",[],"Go back.",[
       (jump_to_menu, "mnu_town_action"),
     ]),
 ]),
@@ -46046,7 +46046,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_victory"),
   ],[
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       (add_quest_note_from_sreg, "qst_town_trade_2", 4, "@Finally you have killed Lucillus. Claim your reward!", 0),
       (add_xp_as_reward, 2000),
       (troop_add_gold, "trp_player", 10000),
@@ -46060,7 +46060,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_victory"),
   ],[
-  ("Continue...",[],"Continue...",[
+  ("Continue.",[],"Continue.",[
     (add_quest_note_from_sreg, "qst_town_trade_2", 3, "@It seems Lucillus was informed about the plan. Report back to Mamertinus.", 0),
     (add_xp_as_reward, 1000),
     (change_screen_map),
@@ -46071,7 +46071,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_defeat"),
   ],[
-    ("Continue...",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       (add_quest_note_from_sreg, "qst_town_trade_2", 3, "@It seems Lucillus was informed about the plan. Report back to Mamertinus.", 0),
       (add_xp_as_reward, 1000),
       (troop_remove_gold, "trp_player", 500),
@@ -46177,7 +46177,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("event04",[],"Continue...",[
+    ("event04",[],"Continue.",[
       (try_begin),
         (store_troop_health, ":health", "trp_player", 0), #get relative health in 1-100 range and put it into the ":health" variable
         (lt, ":health", 30),
@@ -46196,7 +46196,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_deserters")
   ],[
-  ("event04",[],"Continue...",[
+  ("event04",[],"Continue.",[
     (remove_party, "$g_encountered_party"),
     (troop_join_as_prisoner, "$g_talk_troop"),
     (call_script, "script_succeed_quest", "qst_slave_revolt"),
@@ -46209,7 +46209,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_jerusalem_tempel")
   ],[
-  ("event04",[],"Continue...",[
+  ("event04",[],"Continue.",[
     (call_script, "script_player_change_religion", worships_yhwhe),
     (rest_for_hours, 24, 8, 0),
     (change_screen_map),
@@ -47684,7 +47684,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu, "mnu_event_temple"),
     (try_end),
   ],[
-    ("leave",[],"Continue",[
+    ("leave",[],"Continue.",[
 		  (change_screen_map),
     ]),
 ]),
@@ -49471,12 +49471,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[
       (neg|quest_slot_eq, "qst_freelancing", slot_quest_freelancer_state, 1),
-    ],"Continue...",[
+    ],"Continue.",[
       (change_screen_map),
     ]),
     ("continue",[
       (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_state, 1),
-    ],"Continue...",[
+    ],"Continue.",[
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 2),
       (modify_visitors_at_site,"scn_follower_camp"),
       (reset_visitors),
@@ -49497,7 +49497,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     "none",[
       (set_background_mesh, "mesh_pic_mb_warrior_2"),
     ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (modify_visitors_at_site,"scn_training_ground"),
       (reset_visitors),
       (set_visitor,0,"trp_player"),
@@ -49520,7 +49520,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_mb_warrior_2"),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (store_skill_level, ":throwing", "skl_power_throw", "trp_player"),
     # (lt, ":throwing", 3),
     (store_sub, ":addition", 3, ":throwing"),
@@ -49555,7 +49555,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (quest_get_slot, ":giver", "qst_freelancing", slot_quest_giver_troop),
     (str_store_troop_name, s15, ":giver"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_1_2"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 3),
     ]),
@@ -49622,7 +49622,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_2_2"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 4),
     ]),
@@ -49635,7 +49635,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_villa_sea"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (modify_visitors_at_site,"scn_pandateria"),
       (reset_visitors),
       (set_jump_mission,"mt_pandateria"),
@@ -49667,7 +49667,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_woman"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_change_player_honor", -2),
       (call_script, "script_freelancer_add_progress", 15),
       (change_screen_map),
@@ -49680,7 +49680,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_punishment_roman"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_change_player_honor", 10),
       (call_script, "script_change_troop_renown", "trp_player", 5),
       (change_screen_map),
@@ -49703,7 +49703,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_faction", "fac_kingdom_7"),#to fix bug in dialog
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_3_2"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 5),
     ]),
@@ -49748,7 +49748,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_4_2"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 6),
     ]),
@@ -49758,7 +49758,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_villa_sea"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (modify_visitors_at_site,"scn_pandateria"),
       (reset_visitors),
       (assign, "$temp", 0),
@@ -49783,7 +49783,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_woman"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_freelancer_add_progress", 15),
       (change_screen_map),
     ]),
@@ -49800,7 +49800,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_5_2"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 7),
     ]),
@@ -49831,7 +49831,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (set_background_mesh, "mesh_pic_roma"),
     (try_end),
   ],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -49848,7 +49848,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_6_2"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 8),
     ]),
@@ -49859,7 +49859,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$temp1", 0),
       (assign, "$talk_context", tc_pret_event_1),
       (modify_visitors_at_site,"scn_lucias_villa"),
@@ -49894,7 +49894,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_string, s23, "@you will make no progress towards promotion. But at least, nobody can claim that you didn't do your job properly."),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
 			(change_screen_map),
     ]),
 ]),
@@ -49921,7 +49921,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$temp1", 0),
       (assign, "$talk_context", tc_pret_event_2),
       (modify_visitors_at_site,"scn_lucias_villa"),
@@ -49948,7 +49948,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_8_2"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 10),
     ]),
@@ -49958,7 +49958,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$temp1", 0),
       (assign, "$talk_context", tc_pret_event_3),
       (modify_visitors_at_site,"scn_lucias_villa"),
@@ -49988,7 +49988,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_9_2"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 11),
     ]),
@@ -49999,7 +49999,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_villa_rustica"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       #0 player
       #1 pret
       #2 7 8 9 10 enemy inf
@@ -50032,7 +50032,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_battle_aftermath"),
   ],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
       (troop_add_gold, "trp_player", 5000),
       (call_script, "script_change_troop_renown", "trp_player", 10),
 
@@ -50047,7 +50047,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_battle_aftermath"),
   ],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
       (troop_add_gold, "trp_player", 7500),
       (call_script, "script_change_troop_renown", "trp_player", 25),
       (call_script, "script_freelancer_add_progress", "$temp"),
@@ -50281,7 +50281,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_nile"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_11_end"),
     ]),
 ]),
@@ -50298,7 +50298,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (store_mul, ":exp", "$temp4", 1000),
     (add_xp_as_reward, ":exp"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -50315,7 +50315,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_12_1"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 14),
     ]),
@@ -50354,7 +50354,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_string, s11, "str_defeated_enemy"),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (call_script, "script_freelancer_add_progress", 15),
       (troop_add_gold, "trp_player", 2000),
       (change_screen_map),
@@ -50373,7 +50373,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
     (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (jump_to_menu, "mnu_freelancer_event_pret_13_1"),
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 15),
     ]),
@@ -50451,7 +50451,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$temp4", 0),
       (set_jump_mission,"mt_palace"),
       (modify_visitors_at_site,"scn_imperial_palace"),
@@ -50608,7 +50608,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$talk_context", 0),#to fix bug in dialog
     (set_background_mesh, "mesh_pic_camp"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 3),
 
       (modify_visitors_at_site,"scn_follower_camp"),
@@ -50701,7 +50701,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_kreuzigung"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (add_xp_as_reward, 250),
       (call_script, "script_freelancer_add_progress", 15),
       (change_screen_map),
@@ -50743,7 +50743,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_punishment_roman"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -50751,7 +50751,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "Later Avaritia informes you that the Centurio has heard from your fight and seems quite impressed that you stood up for your lad.",
   "none",[
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (add_xp_as_reward, 150),
       (call_script, "script_freelancer_add_progress", 25),
       (change_screen_map),
@@ -50985,7 +50985,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_legion_march"),
   ],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
       (add_xp_as_reward, 150),
       (call_script, "script_freelancer_add_progress", 35),
       (call_script, "script_change_troop_renown", "trp_player", 2),
@@ -51048,7 +51048,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "$temp"),
   ],[
-    ("continue",[],"Continue",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -51208,7 +51208,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "With a heavy blow you are knocked down. ^^The other soldiers cheer and celebrate the victory of your opponent.",
   "none",[
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
@@ -51220,7 +51220,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   +" You will get punished. Rome punishes those who disturb peace. Rome brings order and peace!'",
   "none",[
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (add_xp_as_reward, 150),
       (call_script, "script_freelancer_add_progress", 10),
       (call_script, "script_change_troop_renown", "trp_player", 5),
@@ -51363,7 +51363,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (add_xp_as_reward, 50),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 16),
       (change_screen_map),
     ]),
@@ -51470,7 +51470,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_legion_march"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 20),
       (call_script, "script_freelancer_add_progress", 5),
       (change_screen_map),
@@ -51545,7 +51545,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
     (set_background_mesh, "mesh_pic_battle_aftermath"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (add_xp_as_reward, 150),
       (jump_to_menu, "$temp4_1"),
     ]),
@@ -51749,7 +51749,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (party_stack_get_troop_id, ":lord", "$enlisted_party", 0),
     (str_store_troop_name, s6, ":lord"),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
 		(try_begin),
       (party_get_attached_to, ":town", "$enlisted_party"),
       (neg|is_between, ":town", centers_begin, centers_end),
@@ -51858,7 +51858,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[
       (eq, "$temp4_1", 0),
-    ],"Continue...",[
+    ],"Continue.",[
       (change_screen_map),
     ]),
     ("continue",[
@@ -51888,7 +51888,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (change_screen_map),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
       (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
       (assign, "$talk_context", 0),#to fix bug in dialog
@@ -52010,7 +52010,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
       ("continue",[],
-       "Continue",
+       "Continue.",
        [
        (try_begin),
          (eq, "$temp_3",1),
@@ -52829,7 +52829,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (assign, reg4, 1),
 		(try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
 
 	    (change_screen_map),
     ]),
@@ -52904,7 +52904,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_mission_2, ":cur_time"),
       (jump_to_menu, "mnu_freelancer_task_training"),
     ]),
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
 	    (change_screen_map),
     ]),
 ]),
@@ -53723,7 +53723,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_deserters"),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
         (call_script, "script_start_hunting"),
         ]),
@@ -53743,7 +53743,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_deserters"),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
         (call_script, "script_start_hunting"),
         ]),
@@ -53936,7 +53936,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, reg1, "$g_arena_training_kills"),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
         (add_xp_as_reward, 250),
         (val_add, "$g_arena_training_kills", 1),
@@ -53956,7 +53956,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     [
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
         (call_script, "script_change_troop_renown", "trp_player", -2),
         (add_xp_as_reward, 50),
@@ -53976,7 +53976,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (call_script, "script_freelancer_add_progress", "$g_arena_training_kills"),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
         (add_xp_as_reward, 50),
         (change_screen_map),
@@ -53998,7 +53998,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (add_xp_as_reward, 250),
       ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
        [
         (change_screen_map),
         ]),
@@ -54022,7 +54022,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
     (set_background_mesh, "mesh_pic_pyramid"),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (call_script, "script_change_player_relation_with_center", "p_town_48", -25),#theben
     (call_script, "script_change_player_relation_with_center", "p_town_20", -25),#alexandria
 
@@ -54074,7 +54074,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
     (set_background_mesh, "mesh_pic_pyramid"),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (add_xp_as_reward, 250),
     (call_script, "script_change_player_relation_with_center", "p_town_48", 10),#theben
     (call_script, "script_change_player_relation_with_center", "p_town_20", 10),#alexandria
@@ -54104,7 +54104,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (str_store_string, s25, "@The land of Egypt is at peace."),
     (try_end),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (add_xp_as_reward, 250),
     (call_script, "script_change_player_relation_with_center", "p_town_48", -5),#theben
     (call_script, "script_change_player_relation_with_center", "p_town_20", -5),#alexandria
@@ -54132,7 +54132,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (val_add, ":new_stage", "str_become_pharaoh_ceremony_text2"),
     (str_store_string, s1, ":new_stage"),
   ],[
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (add_xp_as_reward, 100),
     (try_begin),
       (quest_slot_ge, "qst_become_pharao", slot_quest_current_state, 7),
@@ -54685,7 +54685,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_senators"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (quest_set_slot, "qst_money_stinks", slot_quest_object_state, 1),
       (call_script, "script_setup_troop_meeting", "trp_pupienus", -1, "scn_rome_center"),
     ]),
@@ -54696,7 +54696,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (quest_set_slot, "qst_money_stinks", slot_quest_current_state, -1),
       (display_message, "str_quest_updated"),
       (add_quest_note_from_sreg, "qst_money_stinks", 2, "@The Princeps has called you to Rome immediately. Speak to Nero at the palace.", 0),
@@ -55068,7 +55068,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_deserters"),
     (play_sound, "snd_thunder_close"),
   ],[
-    ("Continue",[],"Leave.",[
+    ("Continue.",[],"Leave.",[
       (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 5),
       (quest_get_slot, ":goy", "qst_four_emperors", slot_quest_target_troop),
       (str_store_troop_name_link, s22, ":goy"),
@@ -55118,7 +55118,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (add_quest_note_from_sreg, "qst_blank_quest_19", 10, "@{s12} was declared Caesar Augustus by the Rhine legions and marched towards Rome. He defeated {s13} in the battle of Bedriacum.", 1),
     (try_end),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       #  # kill NERO and usurp Rome
       (call_script, "script_usurp_faction", "$g_notification_menu_var1", "fac_kingdom_7"),
       (change_screen_map),
@@ -55130,10 +55130,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_emperor"),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (jump_to_menu, "mnu_second_battle_of_bedriacum"),
     ]),
-    # ("Continue",[],
+    # ("Continue.",[],
     #   "test scene.",
     # [
     #   (jump_to_scene, "scn_second_battle_of_bedriacum"),
@@ -55191,7 +55191,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_troop_name, s20, ":other_goy"),
 
   ],[
-    # ("Continue",[],
+    # ("Continue.",[],
     #   "Battle Scene.",
     # [
     #   (set_global_haze_amount, 0),
@@ -55199,7 +55199,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     #   (jump_to_scene, "scn_camp_second_battle_of_bedriacum"),
     #   (change_screen_mission),
     # ]),
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       #(leave_encounter), # leave any encounter
       (set_fixed_point_multiplier, 1),
       (init_position, pos32),
@@ -55302,7 +55302,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_string_reg, s14, s1),
   ],[
 
-    # ("Continue",[],
+    # ("Continue.",[],
     #   "Battle Scene.",
     # [
     #   (set_global_haze_amount, 0),
@@ -55310,7 +55310,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     #   (jump_to_scene, "scn_camp_second_battle_of_bedriacum"),
     #   (change_screen_mission),
     # ]),
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       #(leave_encounter), # leave any encounter
       (set_fixed_point_multiplier, 1),
       (init_position, pos32),
@@ -55362,7 +55362,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_troop_name, s16, ":poppaea_or_antonia"),
     (set_background_mesh, "mesh_pic_mb_warrior_3"),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (play_track, "track_cutscene_battle", 2),
       # legions on player side:
       # Danube: Alaudae (1), Primigenia (3), all other legions of player realm
@@ -55434,12 +55434,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   [
     (set_background_mesh, "mesh_pic_ships"),
   ],[
-    ("Continue",[],
+    ("Continue.",[],
       "Continue.",
     [
       (jump_to_menu, "mnu_the_fleet_conversation"),
     ]),
-    ("Continue",[],
+    ("Continue.",[],
       "Go back.",
     [
       (change_screen_map),
@@ -55453,7 +55453,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_troop_name_plural, s15, "trp_legatus_11"),
     (set_background_mesh, "mesh_pic_seabattle"),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (assign, "$talk_context", tc_main_story_fleet),
       (add_xp_as_reward, 250),
       (assign, "$g_next_menu", "mnu_the_fleet_embarks"),
@@ -55487,7 +55487,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_seabattle"),
   ],[
-    ("Continue",[],"Continue...",[
+    ("Continue.",[],"Continue.",[
       # detache player party
       (try_begin),
           (party_get_attached_to, ":cur_town", "p_main_party"),
@@ -55532,14 +55532,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     # declare war
     (call_script, "script_diplomacy_start_war_between_kingdoms", "fac_kingdom_7", "fac_player_supporters_faction", logent_faction_declares_war_to_end_civil_war),
   ],[
-    ("Continue",[
+    ("Continue.",[
       (ge, "$cheat_mode", 1)
     ],"Test scene.",[
       (jump_to_scene, "scn_cutscene_fleet"),
       (change_screen_mission),
     ]),
 
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (play_track, "track_cutscene_fleet", 2),
       (assign, "$beaufort", 3), # waves
       (add_xp_as_reward, 1500),
@@ -55581,7 +55581,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_messenger"),
     (str_store_troop_name_plural, s12, "trp_legatus_11"),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
 
       (str_store_party_name, s10, "p_town_20"),
@@ -55609,7 +55609,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (position_set_z,pos0,80),			#in/out movement  (0 = no image, higher #'s make it larger)
     (set_game_menu_tableau_mesh,"tableau_troop_note_mesh","trp_kingdom_7_lady_1",pos0),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (call_script, "script_kill_lord_lady", "trp_kingdom_7_lady_1", "trp_antonia", 0),
       (str_store_troop_name_link, s25, "trp_kingdom_7_lady_1"),
       (str_store_troop_name_link, s26, "trp_antonia"),
@@ -55688,7 +55688,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 1),
     (try_end),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (rest_for_hours, 72, 20, 0),
       (change_screen_map),
     ]),
@@ -55717,7 +55717,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (position_set_z,pos0,80),			#in/out movement  (0 = no image, higher #'s make it larger)
     (set_game_menu_tableau_mesh,"tableau_troop_note_mesh","trp_antonia",pos0),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (try_begin),# clear slot if its antonia
         (quest_slot_eq, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, "trp_antonia"),
         (quest_set_slot, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, -1),
@@ -55735,7 +55735,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_palast"),
     (call_script, "script_kill_lord_lady", "trp_senator_2", "trp_player", 0),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 6),
       (str_store_troop_name_link, s20, "trp_senator_2"),
       (str_store_troop_name_link, s21, "trp_antonia"),
@@ -55785,7 +55785,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_gladiator"),
     (str_store_troop_name_plural, s10, "trp_senator_2"),
   ],[
-    ("Continue",[],
+    ("Continue.",[],
       "Continue.",
     [
       (jump_to_menu, "mnu_vespasian_enter_palace"),
@@ -55822,7 +55822,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (str_store_troop_name_link, s11, ":enemy_goy"),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 13, "@On orders of {s21}, {s11} was {s22}.", 1),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (call_script, "script_add_notification_menu", "mnu_end_civil_war", "$players_kingdom", -1),
       (party_relocate_near_party, "p_main_party", "p_town_6"),
       (add_xp_as_reward, 5000),
@@ -55839,7 +55839,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_triumph"),
     (party_relocate_near_party, "p_main_party", "p_town_6", 1),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (play_track, "track_trailer_2", 2),
 
       (set_jump_mission, "mt_cutscene_rome_triumph"),
@@ -55910,7 +55910,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
 
-    ("Continue",[],
+    ("Continue.",[],
       "Continue.",
     [
       (add_xp_as_reward, 1500),
@@ -55924,7 +55924,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_deserters"),
     (play_sound, "snd_thunder_close"),
   ],[
-    ("Continue",[],"Continue.",[
+    ("Continue.",[],"Continue.",[
       (quest_set_slot, "qst_four_emperors", slot_quest_timer, -1),
       (assign, "$g_encountered_party", "p_main_party"),#to fix bug in dialog
       (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
@@ -56262,7 +56262,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_menu, "mnu_town"),
     (try_end),
   ],[
-  ("op1",[],"Continue...",[
+  ("op1",[],"Continue.",[
     (add_xp_as_reward, 150),
     (troop_set_slot, "trp_global_variables", g_nero_intro, 1),
     (call_script, "script_enter_court", "$current_town", -1),
@@ -56274,7 +56274,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (set_background_mesh, "mesh_pic_messenger"),
     (call_script, "script_get_player_rank_string_s43"),
   ],[
-    ("op1",[],"Continue...",[
+    ("op1",[],"Continue.",[
       (quest_get_slot,":state", "qst_nero_special_quest", slot_quest_target_dna),
       (val_add, ":state", 1),
       (quest_set_slot, "qst_nero_special_quest", slot_quest_target_dna,":state"),
@@ -56294,7 +56294,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-    ("op1",[],"Continue...",[
+    ("op1",[],"Continue.",[
       # scn_rome_center
       # spawn at 37
       # she spawns at 5
@@ -56316,7 +56316,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
-    ("op1",[],"Continue...",[
+    ("op1",[],"Continue.",[
       (add_xp_as_reward, 1000),
       (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -30),
       (call_script, "script_fail_quest", "qst_nero_special_quest"),
@@ -56331,7 +56331,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_palast"),
   ],[
-    ("op1",[],"Continue...",[
+    ("op1",[],"Continue.",[
       (troop_add_gold, "trp_player", 5000),
       (add_xp_as_reward, 1000),
       (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", 10),
@@ -56348,7 +56348,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_villa"),
   ],[
-    ("op1",[],"Continue...",[
+    ("op1",[],"Continue.",[
       (jump_to_scene, "scn_carnuntum_in"),
       (assign, "$auto_speak_troop", -1),
       (set_jump_mission,"mt_visit_town_castle"),
@@ -56373,7 +56373,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("op1",[],"Continue...",[
+    ("op1",[],"Continue.",[
       (add_xp_as_reward, 150),
       (assign, "$g_start_belligerent_drunk_fight", 0),#used for dialogue to trigger
       (jump_to_scene, "scn_antiochia_castle"),
@@ -56417,7 +56417,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
       ("op1",[],
-       "Continue...",
+       "Continue.",
        [
     (add_xp_as_reward, 150),
     (jump_to_scene, "scn_imperial_dinning_room"),
@@ -56548,7 +56548,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
       ("op1",[],
-       "Continue...",
+       "Continue.",
        [
     (add_xp_as_reward, 500),
     (jump_to_menu, "mnu_town"),
@@ -56563,7 +56563,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
       ("op1",[],
-       "Continue...",
+       "Continue.",
        [
        (assign, "$talk_context", tc_poppaea_event_1),
        (call_script, "script_setup_troop_meeting", "trp_kingdom_7_lady_1", -1, "scn_londinium_castle"),
@@ -56577,7 +56577,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("op1",[],"Continue...",[
+    ("op1",[],"Continue.",[
       (add_xp_as_reward, 150),
       (jump_to_scene, "scn_imperial_dinning_room"),
       (set_jump_mission,"mt_palace_nero_play"),
@@ -56618,7 +56618,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ],
     [
       ("op1",[],
-       "Continue...",
+       "Continue.",
        [
     (add_xp_as_reward, 150),
     (jump_to_scene, "scn_imperial_dinning_room"),
@@ -57075,7 +57075,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (display_message, "str_quest_updated"),
     (play_sound, "snd_quest_concluded"),
   ],[
-    ("option_1",[],"Continue...",[
+    ("option_1",[],"Continue.",[
       (add_xp_as_reward, 500),
       (change_screen_map),
     ]),
@@ -57096,7 +57096,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (display_message, "str_quest_updated"),
     (play_sound, "snd_quest_concluded"),
   ],[
-  ("option_1",[],"Continue...",[
+  ("option_1",[],"Continue.",[
     (add_xp_as_reward, 500),
     (change_screen_map),
   ]),
@@ -57114,7 +57114,7 @@ It is said, that she lives now together with the goat.",
 
     ],
 
-    [("option_1",[],"Continue...",
+    [("option_1",[],"Continue.",
         [
         (add_xp_as_reward, 500),
         (change_screen_map),
@@ -57132,7 +57132,7 @@ It is said, that she lives now together with the goat.",
 
     ],
 
-    [("option_1",[],"Continue...",
+    [("option_1",[],"Continue.",
         [
     (add_xp_as_reward, 500),
     (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 12),
@@ -57154,7 +57154,7 @@ It is said, that she lives now together with the goat.",
   "none", [
     (set_background_mesh, "mesh_pic_woman"),
   ],[
-    ("option_1",[],"Continue...",[
+    ("option_1",[],"Continue.",[
       (add_xp_as_reward, 2500),
       (call_script, "script_succeed_quest", "qst_amor_quest"),
       (call_script, "script_end_quest", "qst_amor_quest"),
@@ -57168,7 +57168,7 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_desert"),
     (call_script, "script_dplmc_remove_disguise"),
   ],[
-  ("option_1",[],"Continue...",[
+  ("option_1",[],"Continue.",[
     (add_xp_as_reward, 1500),
 
     (assign, "$g_next_menu", "mnu_travel_to_sagala_2"),
@@ -57207,7 +57207,7 @@ It is said, that she lives now together with the goat.",
   "none", [
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-  ("option_1",[],"Continue...",[
+  ("option_1",[],"Continue.",[
     (add_xp_as_reward, 2500),
     (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You arrived at Sagala. Try to find Wlodowiecus.", 0),
     (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Ask a guard for an audience with Queen Karishma. She probably knows more about Wlodowiecus.", 0),
@@ -57609,7 +57609,7 @@ It is said, that she lives now together with the goat.",
   "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (assign, "$temp1", 12),
       (assign, "$temp2", -1),
       (assign,"$talk_context", tc_tavern_talk),
@@ -58468,7 +58468,7 @@ It is said, that she lives now together with the goat.",
   "none", [
     (set_background_mesh, "mesh_pic_messenger"),
   ],[
-    ("option_1",[],"Continue",[
+    ("option_1",[],"Continue.",[
       (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_object_faction, 2),
       (change_screen_map),
     ]),
@@ -60419,7 +60419,7 @@ It is said, that she lives now together with the goat.",
         (change_screen_mission),
     (try_end),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (quest_set_slot, "qst_langobard_arrive", slot_quest_temp_slot, 1),
       (call_script, "script_setup_troop_meeting", "trp_kingdom_13_lord", -1, -1),
     ]),
@@ -60462,7 +60462,7 @@ It is said, that she lives now together with the goat.",
   "none", [
     (set_background_mesh, "mesh_pic_girls"),
   ],[
-    ("continue",[],"Continue...",[
+    ("continue",[],"Continue.",[
       (party_set_name, "p_langobard_landing", "@Scoringa"),
       (party_set_icon, "p_langobard_landing", "icon_farmstead"),
       #scn_town_germanic_east_castle
@@ -60499,7 +60499,7 @@ It is said, that she lives now together with the goat.",
 
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
     [
     (add_xp_as_reward, 1500),
     (store_current_hours, ":cur_hour"),
@@ -60517,7 +60517,7 @@ It is said, that she lives now together with the goat.",
 
     ],
     [
-      ("continue",[],"Continue...",
+      ("continue",[],"Continue.",
     [
     (store_current_hours, ":cur_hour"),
     (val_add, ":cur_hour", 24),
@@ -60588,7 +60588,7 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_deserters"),
     ],
     [
-     ("continue",[],"Continue...",
+     ("continue",[],"Continue.",
     [
     (add_xp_as_reward, 1500),
     (quest_get_slot, ":state", "qst_langobard_arrive", slot_quest_importance),
@@ -60640,7 +60640,7 @@ It is said, that she lives now together with the goat.",
     ],
     [
 
-     ("continue",[],"Continue...",
+     ("continue",[],"Continue.",
     [
     (troop_add_item, "trp_player", "itm_amber",0),
     (add_xp_as_reward, 1500),
@@ -60661,7 +60661,7 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_deserters"),
     ],
     [
-    ("continue",[],"Continue...",
+    ("continue",[],"Continue.",
     [
     (add_xp_as_reward, 1500),
     (store_current_hours, ":cur_hour"),
@@ -60708,7 +60708,7 @@ It is said, that she lives now together with the goat.",
     ],
     [
 
-     ("continue",[],"Continue...",
+     ("continue",[],"Continue.",
     [
     (add_xp_as_reward, 1500),
     (quest_get_slot, ":state", "qst_langobard_arrive", slot_quest_importance),
@@ -60730,7 +60730,7 @@ It is said, that she lives now together with the goat.",
     ],
     [
 
-    ("continue",[],"Continue...",
+    ("continue",[],"Continue.",
     [
     (add_xp_as_reward, 1500),
     (quest_set_slot, "qst_langobard_arrive", slot_quest_current_state, 14),
@@ -60765,7 +60765,7 @@ It is said, that she lives now together with the goat.",
     (quest_set_slot, "qst_langobard_arrive", slot_quest_current_state, 15),
   ],
   [
-  ("continue",[],"Continue...",[
+  ("continue",[],"Continue.",[
     (add_xp_as_reward, 1500),
     (call_script, "script_end_quest", "qst_langobard_arrive"),
     (change_screen_map),
@@ -61098,88 +61098,88 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("player_raises_to_nobility",0,
-    "As you are wealthy and famous enough you have owned yourself the right to be part of the Roman nobility! From now on it is possible for you to be elected a governorship or to obtain high military ranks.",
-    "none", [
-      (try_begin),
-          (check_quest_active, "qst_gain_renown"),
-          (call_script, "script_succeed_quest", "qst_gain_renown"),
-          (call_script, "script_end_quest", "qst_gain_renown"),
-          (add_xp_as_reward, 2000),
-          (display_message, "@You have finished one of your goals! You are now part of Roman nobility.", color_good_news),
-      (try_end),
-      (try_begin),
-          (check_quest_active, "qst_join_roman_army"),
-          (call_script, "script_cancel_quest", "qst_join_roman_army"),
-          (call_script, "script_end_quest", "qst_join_roman_army"),
-      (try_end),
-    ],[
-    ("option_1", [],"Continue.",[
-      (try_begin),
-          (eq, "$players_kingdom", "fac_player_supporters_faction"),
-          (call_script, "script_deactivate_player_faction"),
-          (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
-              (store_faction_of_troop, ":npc_faction", ":npc"),
-              (eq, ":npc_faction", "fac_player_supporters_faction"),
-              (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero),
-              (call_script, "script_change_troop_faction", ":npc", "fac_kingdom_7"),
-          (try_end),
-      (try_end),
+  "As you are wealthy and famous enough you have owned yourself the right to be part of the Roman nobility! From now on it is possible for you to be elected a governorship or to obtain high military ranks.",
+  "none", [
+    (try_begin),
+        (check_quest_active, "qst_gain_renown"),
+        (call_script, "script_succeed_quest", "qst_gain_renown"),
+        (call_script, "script_end_quest", "qst_gain_renown"),
+        (add_xp_as_reward, 2000),
+        (display_message, "@You have finished one of your goals! You are now part of Roman nobility.", color_good_news),
+    (try_end),
+    (try_begin),
+        (check_quest_active, "qst_join_roman_army"),
+        (call_script, "script_cancel_quest", "qst_join_roman_army"),
+        (call_script, "script_end_quest", "qst_join_roman_army"),
+    (try_end),
+  ],[
+  ("option_1", [],"Continue.",[
+    (try_begin),
+        (eq, "$players_kingdom", "fac_player_supporters_faction"),
+        (call_script, "script_deactivate_player_faction"),
+        (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
+            (store_faction_of_troop, ":npc_faction", ":npc"),
+            (eq, ":npc_faction", "fac_player_supporters_faction"),
+            (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero),
+            (call_script, "script_change_troop_faction", ":npc", "fac_kingdom_7"),
+        (try_end),
+    (try_end),
 
-      (try_begin),
-          (is_between, "$players_oath_renounced_against_kingdom", kingdoms_begin, kingdoms_end),
-          (neq, "$players_oath_renounced_against_kingdom", "fac_kingdom_7"),
-          (store_relation, ":relation", "fac_player_supporters_faction", "$players_oath_renounced_against_kingdom"),
-          (val_min, ":relation", -40),
-          (call_script, "script_set_player_relation_with_faction", "$players_oath_renounced_against_kingdom", ":relation"),
-          (call_script, "script_update_all_notes"),
-          (assign, "$g_recalculate_ais", 1),
-      (try_end),
+    (try_begin),
+        (is_between, "$players_oath_renounced_against_kingdom", kingdoms_begin, kingdoms_end),
+        (neq, "$players_oath_renounced_against_kingdom", "fac_kingdom_7"),
+        (store_relation, ":relation", "fac_player_supporters_faction", "$players_oath_renounced_against_kingdom"),
+        (val_min, ":relation", -40),
+        (call_script, "script_set_player_relation_with_faction", "$players_oath_renounced_against_kingdom", ":relation"),
+        (call_script, "script_update_all_notes"),
+        (assign, "$g_recalculate_ais", 1),
+    (try_end),
 
-      (try_begin),
-          (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
-          (neq, "$players_kingdom", "fac_player_supporters_faction"),
-          (neq, "$players_kingdom", "fac_kingdom_7"), #ie, don't leave faction if the player is already part of the same kingdom
+    (try_begin),
+        (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
+        (neq, "$players_kingdom", "fac_player_supporters_faction"),
+        (neq, "$players_kingdom", "fac_kingdom_7"), #ie, don't leave faction if the player is already part of the same kingdom
 
-          (faction_get_slot, ":old_leader", "$players_kingdom", slot_faction_leader),
-          (call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, ":old_leader", "$players_kingdom"),
-          (call_script, "script_player_leave_faction", 0),
-      (try_end),
+        (faction_get_slot, ":old_leader", "$players_kingdom", slot_faction_leader),
+        (call_script, "script_add_log_entry", logent_renounced_allegiance,   "trp_player",  -1, ":old_leader", "$players_kingdom"),
+        (call_script, "script_player_leave_faction", 0),
+    (try_end),
 
-      (call_script, "script_player_join_faction", "fac_kingdom_7"),
+    (call_script, "script_player_join_faction", "fac_kingdom_7"),
 
-      # (try_begin),
-          # (gt, "$g_invite_offered_center", 0),
-          # (call_script, "script_give_center_to_lord", "$g_invite_offered_center", "trp_player", 0),
-          # (try_begin),
-              # (faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$g_invite_offered_center"),
-              # (faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
-          # (try_end),
-      # (try_end),
+    # (try_begin),
+        # (gt, "$g_invite_offered_center", 0),
+        # (call_script, "script_give_center_to_lord", "$g_invite_offered_center", "trp_player", 0),
+        # (try_begin),
+            # (faction_slot_eq, "$players_kingdom", slot_faction_political_issue, "$g_invite_offered_center"),
+            # (faction_set_slot, "$players_kingdom", slot_faction_political_issue, -1),
+        # (try_end),
+    # (try_end),
 
-      (faction_get_slot, ":leader","fac_kingdom_7",slot_faction_leader),
-      (call_script, "script_add_log_entry", logent_pledged_allegiance,   "trp_player",  -1, ":leader", "fac_kingdom_7"),
+    (faction_get_slot, ":leader","fac_kingdom_7",slot_faction_leader),
+    (call_script, "script_add_log_entry", logent_pledged_allegiance,   "trp_player",  -1, ":leader", "fac_kingdom_7"),
 
-      # (try_begin),
-          # (check_quest_active, "qst_join_faction"),
-          # (eq, "$g_invite_faction_lord", "$g_talk_troop"),
-          # (call_script, "script_end_quest", "qst_join_faction"),
-      # (else_try),
-          # (check_quest_active, "qst_join_faction"),
-          # (call_script, "script_abort_quest", "qst_join_faction", 0),
-      # (try_end),
-      (assign, "$player_has_homage" ,1),
-      (assign, "$g_player_banner_granted", 1),
-      (assign, "$g_invite_faction", 0),
-      (assign, "$g_invite_faction_lord", 0),
-      # (assign, "$g_invite_offered_center", 0),
-      (assign, "$g_leave_encounter",1),
-      (jump_to_menu, "mnu_auto_return_map"),
-    ]),
+    # (try_begin),
+        # (check_quest_active, "qst_join_faction"),
+        # (eq, "$g_invite_faction_lord", "$g_talk_troop"),
+        # (call_script, "script_end_quest", "qst_join_faction"),
+    # (else_try),
+        # (check_quest_active, "qst_join_faction"),
+        # (call_script, "script_abort_quest", "qst_join_faction", 0),
+    # (try_end),
+    (assign, "$player_has_homage" ,1),
+    (assign, "$g_player_banner_granted", 1),
+    (assign, "$g_invite_faction", 0),
+    (assign, "$g_invite_faction_lord", 0),
+    # (assign, "$g_invite_offered_center", 0),
+    (assign, "$g_leave_encounter",1),
+    (jump_to_menu, "mnu_auto_return_map"),
+  ]),
 ]),
 
 ("recieve_money",0,
-    "You find the moneylender and obtain the requested money. Additionally you recieve 2,500 denarii as a gift from {s22}.^^As it seems, your intrigue generated minor rumours.",
-    "none", [
+  "You find the moneylender and obtain the requested money. Additionally you recieve 2,500 denarii as a gift from {s22}.^^As it seems, your intrigue generated minor rumours.",
+  "none", [
     (quest_get_slot, ":giver", "qst_collect_requested_money", slot_quest_giver_troop),
     (str_store_troop_name, s22, ":giver"),
 
@@ -61187,11 +61187,8 @@ It is said, that she lives now together with the goat.",
     (display_message, "@Your little intrigue generated minor rumours.", color_bad_news),
     (call_script, "script_change_troop_renown", "trp_player", -10),
     (call_script, "script_change_player_honor", -1),
-    ],
-    [
-
-    ("option_1", [],"Continue.",
-    [
+  ],[
+  ("option_1", [],"Continue.",[
     (quest_get_slot, ":money", "qst_collect_requested_money", slot_quest_target_amount),
     (val_add, ":money", 2500),
     (troop_add_gold, "trp_player", ":money"),
@@ -61200,8 +61197,8 @@ It is said, that she lives now together with the goat.",
 
     (call_script, "script_end_quest", "qst_collect_requested_money"),
     (add_xp_as_reward, 250),
-    (jump_to_menu, "mnu_town"),]),
-
+    (jump_to_menu, "mnu_town"),
+  ]),
 ]),
 
 ("recieve_senate",0,
@@ -61255,8 +61252,7 @@ It is said, that she lives now together with the goat.",
 
 ##BEGIN: IAZYGES SETTLEMENT EVENTS
 ("iazyges_delegation",0,
-  "Delegation of chieftains^^You are informed that a delegation of chieftains from a Sarmatian tribe called Iazyges has arrived."
-  +" They heard from your rise to power and are now bringing gifts and an offer you may want to consider.",
+  "Delegation of chieftains^^You are informed that a delegation of chieftains from a nomadic tribe called the Iazyges has arrived at the gates of Rome. They are clad in scale armor and exotic furs, their weathered faces speaking of a life lived on the endless steppe.^^Word of your power has clearly reached even their distant lands. They have brought gifts and seek an audience to discuss a matter of great importance.",
   "none",[
     (set_background_mesh, "mesh_pic_khergit"),
   ],[
@@ -61311,9 +61307,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("iazyges_event",0,
-  "Settlement of the Iazyges^^In the past decades the Sarmatian tribe of the Iazyges has pressured into the Dacian and Pannonian area. Their chieftains made an agreement with Rome to settle in the Pannonian plains."+
-  " The Iazyges want land and grazing grounds while the Romans want an ally against the Dacian threat."+
-  "^^The Iazyges tribe invade the Pannonian plains, killing and enslaving the local population with the help of Rome. A new kingdom is established!",
+  "Settlement of the Iazyges^^The Sarmatian tribe of the Iazyges signed a treaty with Rome. With the full backing of Roman might, the Iazyges thunder across the Danube into the Pannonian plains. They are a storm of hoof and spear, a force of nature unleashed upon the Dacian settlements.^^The local population is killed, enslaved, or driven out as the Iazyges claim the fertile grasslands for their herds. A new client kingdom is born in blood and fire, a savage but loyal buffer state on the edge of the Roman world.",
   "none",[
     (set_background_mesh, "mesh_pic_khergit"),
   ],[
@@ -61323,8 +61317,7 @@ It is said, that she lives now together with the goat.",
     ]),
 ]),
 ("iazyges_event_2",0,
-  "Invasion of the Iazyges^^In the past decades the Sarmatian tribe of the Iazyges has pressured into the Dacian and Pannonian area. Their chieftains decided to invade the Pannonian plains to gain land and grazing grounds."+
-  "^^Their warriors fought hard against the Dacians, but they could only conquer a small part of the plain. Without help from Rome their new kingdom will most likely die out soon.",
+  "Invasion of the Iazyges^^Although spurned by Rome, the Iazyges invade the Pannonian plains on their own. Their riders are fierce, and their courage is undeniable, but they are no match for the fortified hill-forts and disciplined armies of the Dacians.^^After a bloody campaign, they manage to carve out a small, precarious foothold on the edge of the plains. Without Roman support, their new kingdom is a flickering flame in a gathering storm, likely to be extinguished by the next seasonal campaign.",
   "none",[
     (set_background_mesh, "mesh_pic_khergit"),
   ],[
@@ -61335,7 +61328,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("iazyges_feast",0,
-  "All different kinds of food are served, coming from all parts of the world. Among these are the brains of pheasants and peacocks, the tongues of flamingos, the liver of a pike and the milt of a lamprey. The lavish meal impresses the Iazyges chieftains. Then the dessert is served. Meanwhile, a dozen of dancers perform the most stunning and erotic performance the chieftains have ever witnessed. After the performance is finished you yawn to show them that you are already used to such plays. Then you invite them to a bath. During the bath you have several conversations with the chieftains increasing your relation with them.^^As night is slowly pulling a dark veil over the palace you invite them to stay a night here. The chieftains agree and thank you many times for your generosity.^^When they think they are alone, the chieftains discuss their experiences. However, they are overheard by your slaves. The next day you receive the report of your slaves: the Iazyges where so impressed, they think an Empire that can serve such dishes and build such buildings can also easily field armies large enough to crush any enemy. Judging from their reaction, it is very unlikely that they will betray you, they fear your might too much.^^Now it is time to finish the negotiations.",
+  "You host a feast for the Iazyges chieftains, a carefully orchestrated spectacle designed to awe and intimidate. Dish after dish arrives, a parade of impossible luxuries: the brains of peacocks, the tongues of flamingos, and fish from the shores of Egypt, all served on silver platters. Dancers from Syria perform an erotic, hypnotic ballet that leaves the hardened steppe warriors speechless.^^After the meal, you lead them to the baths, the sheer scale of the marble and heated water a wonder to them. Throughout the night, your conversations are casual, but your message is clear: this is but a fraction of Rome's power.^^When the chieftains retire, they believe themselves to be alone. But the walls have ears. The next morning, your spies report their hushed, awestruck conversation: 'An empire that can feast like this can raise an army to swallow the world. Their might is not a boast; it is a fact. We must not betray them.'^^The display was a success. Their fear will be your leash. Now, it is time to conclude the negotiations.",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
     (call_script, "script_change_player_relation_with_troop", "trp_kingdom_18_lord", 25),
@@ -61369,56 +61362,49 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("rags_to_riches_1",0,
-    "Upon entering Carthage, a dishevelled looking woman gives you a letter and disappears into the crowd. The letter simply reads: 'Meet me at the tavern.' You have the strange feeling you have seen her somewhere before.",
-    "none", [
+  "Upon entering Carthage, a dishevelled looking woman gives you a letter and disappears into the crowd. The letter simply reads: 'Meet me at the tavern.' You have the strange feeling you have seen her somewhere before.",
+  "none", [
     (set_background_mesh, "mesh_pic_woman"),
-    ],
-    [
-
-    ("option_1", [],"Continue.",
-    [
+  ],[
+  ("option_1", [],"Continue.",[
     (str_store_string, s2, "@Visit the tavern of Carthago and find the mysterious person who sent you the letter."),
     (call_script, "script_start_quest", "qst_rags_to_riches", "trp_fortuna"),
     (quest_set_slot, "qst_rags_to_riches", slot_quest_current_state, 1),
     (jump_to_menu, "mnu_town"),
-    ]),
+  ]),
 ]),
 
 ("rags_to_riches_2",0,
-    "A lightning doesn't strike at the same place twice she said.  However, right after you and Sittius Afer left the tavern, the whole place bursts into flames. Surprised, you turn around and want "+
-    "to rescue Agrippina from the tavern, but you could only watch as she perishes in agony in the flames. You will always remember her piercing cry of pain. Meanwhile Sittius reports that he "+
-    "spotted several armed men who managed to escaped. Soon the vigila arrives and the fire is extinguished. At least it caused no other deads.^^With Agrippas dead, her are promises are null and void. "+
-    "It may be better: Staying together with her would have caused only problems for you at the long turn. You can only hope that nobody noticed your conversations with her.",
-    "none", [
+  "A lightning doesn't strike at the same place twice she said.  However, right after you and Sittius Afer left the tavern, the whole place bursts into flames. Surprised, you turn around and want "+
+  "to rescue Agrippina from the tavern, but you could only watch as she perishes in agony in the flames. You will always remember her piercing cry of pain. Meanwhile Sittius reports that he "+
+  "spotted several armed men who managed to escaped. Soon the vigila arrives and the fire is extinguished. At least it caused no other deads.^^With Agrippas dead, her are promises are null and void. "+
+  "It may be better: Staying together with her would have caused only problems for you at the long turn. You can only hope that nobody noticed your conversations with her.",
+  "none", [
     (set_background_mesh, "mesh_pic_wildfire"),
-    ],
-    [
-
-    ("option_1", [],"Continue.",
-    [
+  ],[
+  ("option_1", [],"Continue.",[
     (add_xp_as_reward, 2500),
     (call_script, "script_end_quest", "qst_rags_to_riches"),
     (quest_set_slot, "qst_rags_to_riches", slot_quest_current_state, 7),
     (change_screen_map),
-    ]),
+  ]),
+]),
 
-    ]),
-    ("death_of_joseph_arimatrea",0,
-    "Then a young man appears with a judge of water in his hands. He notices you are sweating heavily due to the heat and without asking, he takes your cup and fills it with clear water, then he hands it over to you. You say that Joseph of Arimathea has died, just a moment ago. He says, that he already knew he would die today and that he knew you would come and drink out of his cup. You are confused by his words and without thinking you take a sip from the cup. You taste wine! You look at the cup and you see that the water has turned into wine! You want to ask the young man how he made his trick but he has already disappeared.^^A moment later, women and men arrive to prepare Joseph for his funeral. You are still standing there and think how the wine could turn into water.",
-    "none", [
-    ],
-    [
+("death_of_joseph_arimatrea",0,
+  "As you stand over the body of Joseph, a young man with a calm and commanding presence approaches, a jug of water in his hands. He meets your gaze. 'The heat of this land is heavy. May I?' he asks, gesturing to the cup. He takes it and pours the clear, cool water into it.^^'Joseph of Arimathea is dead,' you say. The man looks not at the body, but at you. 'His suffering is over. He has gone to his Father. As he knew you would come, he also knew you would be thirsty.'^^His words leave you confused. 'Drink,' the man says gently, 'and do not be afraid.' You hesitate, then take a sip. The water is tasteless on your tongue for a second, then it blossoms into the undeniable warmth and complexity of strong wine. You stare at the cup as the clear liquid within it blushes to a deep crimson. When you look up, the man is gone, lost in the small crowd of mourners now arriving to prepare Joseph for burial.",
+  "none", [
+    (set_background_mesh, "mesh_pic_bush"),
+  ],[
 
-    ("option_1", [],"Most likely it was the heat...",
-    [
+  ("option_1", [],"Continue.",[
     (add_xp_as_reward, 2500),
     (troop_add_item, "trp_player", "itm_holy_grail"),
     (jump_to_menu, "mnu_town"),
-    ]),
+  ]),
 ]),
 
 ("lose_of_the_gral",0,
-  "Lose of the grail^^The bright sun dazzles your light, the stench coming from the Tiber hurts your nose and crowds of people are blocking your path. You never have felt more disgusted by Rome than today. ^^You decide to sit town under a tree. A woman appears with a large judge of wine in her hands. She offers you some. You remember the cup you have been gifted by Joseph of Arimathea. You tell her to fill the cup. Then you drink. You don't know why, but the wine tastes like ordinary water. Either she fooled you or the wine is of bad quality.^^ The people around you spot the fish symbol and the name Chrestos on the cup. People start whispering. And in no time a large crowd has gathered. 'Can it be? It has to be! Chrestos! It is the cup of the Master himself! The Master has shown us a sign!' And while they talk more people gather. ^^The excitement of the crowd accelerates. Some woman start falling on the ground and scream and shout words in foreign languages. Some man raise there arms to the sky and start singing chants praising the name of their Lord. Some start dancing, others fall on their knees and cry. The mania of the crowd increases more and suddenly people start attacking you and try to grab the cup. Wine spills onto your cloths. You cannot keep them back, they are too many. You stumble and fall, and with you the cup falls. You lose sight of the cup. Finally, the vigilia appears and the chaos reaches its peak. People start to through stones at the troops and a riot starts. The riot lasts for one day, bringing death and suffering to many people.^^You check your pockets and find the cup gone.",
+  "Lose of the grail^^The stench of the Tiber hangs thick in the sweltering air, a foul miasma of sewage and decay. The relentless sun beats down, and the oppressive crush of the crowd makes your head spin. Disgusted, you find a moment's respite in the shade of a plane tree.^^A woman offers you a jug of wine. You hold out the simple cup Joseph gave you. She fills it. You drink, expecting relief, but the taste is flat—nothing but common water. A cheap trick, or just cheap wine?^^Before you can decide, a nearby man points at your cup, his eyes wide. 'The fish...' he whispers. Another voice gasps, 'Chrestos!' The words spread like fire through dry grass. 'The cup! The Master's cup!' A crowd swells around you, their faces a mixture of awe and desperate hunger.^^Then, the fervor breaks. A woman shrieks and collapses, speaking in a strange, guttural tongue. Men raise their arms to the sky, chanting the name of their Lord. The scene explodes into a religious mania. Hands grab at you, desperate to touch the relic. The cup is knocked from your grasp, its contents splashing across you like a cold shock. You are thrown to the ground, the roar of the mob and the sudden, sharp blast of Vigiles horns the last things you hear before the riot swallows everything.^^When you finally pull yourself from the bloody chaos hours later, bruised and battered, you check your pockets. The cup is gone.",
   "none", [
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
@@ -61440,9 +61426,9 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("save_file_corrupted",0,
-    "Your save file has been corrupted. You can try to restore the save:^^Go to the folder Documents -> Mount&Blade Warband Savegames."
-    +"^There open the Aut Caesar aut nihil folder. Copy the file last_savegame_backup.sav and rename it to sg00.sav (or sg01.sav or whatever empty savegame slot you have). Then you can try loading this savegame.",
-    "none", [
+  "Your save file has been corrupted. You can try to restore the save:^^Go to the folder Documents -> Mount&Blade Warband Savegames."
+  +"^There open the Aut Caesar aut nihil folder. Copy the file last_savegame_backup.sav and rename it to sg00.sav (or sg01.sav or whatever empty savegame slot you have). Then you can try loading this savegame.",
+  "none", [
     (assign, reg0, "$g_corruption_check"),
     (display_message, "@global variable g_corruption_check = {reg0}"),
     (troop_get_slot, reg0, "trp_global_variables", g_corruption_check),
@@ -61454,73 +61440,62 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("staying_at_antonias_villa",0,
-    "You try to sleep but its impossible. The pain is too much. You crap a bottle of wine and drink until you are so drunken that you can't feel the pain anymore. Then you fall asleep. You have nightmares of ghosts haunting you through the underworld. "+
-    "The ghosts disappear. You spot your parents under a birch tree. You want to say something but they disintegrate in darkness. The darkness comes and stays.^^You awake at lunchtime. Claudia Antonia is preparing lunch. "+
-    "She curses loudly her terrible headache. Then she sits down next do you and starts to eat.",
-    "none", [
+  "Sleep is a distant country you cannot reach. The fire in your leg denies it, a constant, throbbing agony that consumes every thought. In desperation, you find a bottle of wine and drink, not for pleasure, but for oblivion. You drink until the edges of the pain blur and the world finally dissolves into blackness.^^You dream of the underworld—a cold, grey realm of whispering shades. Then, a moment of impossible peace: you see your parents standing beneath a birch tree, just as you remember them. You open your mouth to call out, but they crumble like ash on the wind, disintegrating into the darkness that rushes in to swallow everything.^^You awake to a spear of sunlight stabbing you in the eye. Your head feels like a cracked pot, and your mouth tastes of stale wine and regret. Across the room, Claudia Antonia is moving with the pained slowness of the profoundly hungover, preparing a simple meal. 'Gods, my head...' she groans, noticing you're awake. She brings a plate of bread and cheese and sits opposite you, the silence filled only by her loud, miserable chewing.",
+  "none", [
     (set_background_mesh, "mesh_pic_villa"),
-    ],
-    [
-    ("option_1", [],"Continue.",
-    [
-        (set_jump_mission, "mt_roman_intro_4"),
-        (modify_visitors_at_site,"scn_antonias_house"),
-        (reset_visitors),
-        (set_visitor, 1, "trp_player"),
-        (set_visitor, 2, "trp_antonia"),
-        (jump_to_scene, "scn_antonias_house"),
-        ##remove spr_draw_bridge_a if needed
-        (change_screen_mission),
+  ],[
+    ("option_1", [],"Continue.",[
+      (set_jump_mission, "mt_roman_intro_4"),
+      (modify_visitors_at_site,"scn_antonias_house"),
+      (reset_visitors),
+      (set_visitor, 1, "trp_player"),
+      (set_visitor, 2, "trp_antonia"),
+      (jump_to_scene, "scn_antonias_house"),
+      ##remove spr_draw_bridge_a if needed
+      (change_screen_mission),
     ]),
 ]),
+
 ("staying_at_antonias_villa_2",0,
-    "The hours pass and all you can do is lie on the bed. Meanwhile, you watch as Antonia goes here and there to do some household chores."+
-    " However, judging by the neglected state of the house she does not seem to follow these tasks conscientiously."+
-    " At the evening she appears again, serving you a simple dinner.",
-    "none", [
+  "The day drags on, a tedious prison of pain and boredom. From your bed, you are granted a front-row seat to Antonia's clumsy parody of domesticity. She sweeps dust from one corner to another, muttering curses at a broom she holds like a spear. You hear a distant crash from the kitchen, followed by a string of inventive oaths that would make a sailor blush. The villa's fine layer of aristocratic dust remains largely undisturbed.^^As evening falls, she returns, not as a gentle nurse, but as a resentful jailer, thrusting a plate with a simple meal of bread and cheese before you.",
+  "none", [
     (set_background_mesh, "mesh_pic_villa"),
-    ],
-    [
-    ("option_1", [],"Continue.",
-    [
-        (set_jump_mission, "mt_roman_intro_4"),
-        (modify_visitors_at_site,"scn_antonias_house"),
-        (reset_visitors),
-        (set_visitor, 1, "trp_player"),
-        (set_visitor, 2, "trp_antonia"),
-        (jump_to_scene, "scn_antonias_house"),
-        ##remove spr_draw_bridge_a if needed
-        (change_screen_mission),
+  ],[
+    ("option_1", [],"Continue.",[
+      (set_jump_mission, "mt_roman_intro_4"),
+      (modify_visitors_at_site,"scn_antonias_house"),
+      (reset_visitors),
+      (set_visitor, 1, "trp_player"),
+      (set_visitor, 2, "trp_antonia"),
+      (jump_to_scene, "scn_antonias_house"),
+      ##remove spr_draw_bridge_a if needed
+      (change_screen_mission),
     ]),
 ]),
+
 ("staying_at_antonias_villa_final",0,
-    "Some days pass and your wounds finally heal. Before you leave, Antonia reminds you about your tasks and says she will send you a message once you are a Roman noble. She also tells you not to visit her again nor to try to find her. Otherwise she may be captured and killed.",
-    "none", [
+  "The days of forced convalescence bleed into one another until, finally, your leg is strong enough to hold your weight. The strange interlude at the villa is over. On the morning of your departure, Antonia meets you at the door, her eyes clear and sober.^^'Now the real work begins,' she says, her voice low and firm. 'You are to become a man of consequence, a name whispered in the barracks or the forum. Build your legend. While you do that, I will return to the shadows of Rome and begin to weave our web.'^^'A final, critical instruction,' she adds, her gaze intense. 'Do not try to find me. Do not send messages. To all the world, I am dead or disappeared. If you lead them to me, you lead them to our graves. When the time is right, and when you are ready, I will find you. Now go.'",
+  "none", [
     (set_background_mesh, "mesh_pic_villa"),
-    ],
-    [
-    ("option_1", [],"Continue.",
-    [
-        (disable_party, "p_underworld"),
-        (jump_to_menu, "mnu_auto_return_map"),
+  ],[
+    ("option_1", [],"Continue.",[
+      (disable_party, "p_underworld"),
+      (jump_to_menu, "mnu_auto_return_map"),
     ]),
 ]),
 
 ("ask_judea_decide",0,
-    "You leave the palace. You could wait now and find out what she want to discuss with you. She is for sure angry. But if you just leave immediately she will be even more angry.",
-    "none", [
+  "You leave the palace. You could wait now and find out what she want to discuss with you. She is for sure angry. But if you just leave immediately she will be even more angry.",
+  "none", [
     (set_background_mesh, "mesh_pic_palast"),
-    ],
-    [
-    ("option_1", [],"Wait for Poppaea.",
-    [
-        (call_script, "script_setup_troop_meeting", "trp_kingdom_7_lady_1", -1, "scn_londinium_castle"),
+  ],[
+    ("option_1", [],"Wait for Poppaea.",[
+      (call_script, "script_setup_troop_meeting", "trp_kingdom_7_lady_1", -1, "scn_londinium_castle"),
     ]),
-    ("option_2", [],"Leave.",
-    [
-        (quest_set_slot, "qst_poking_the_lion", slot_quest_current_state, 3),
-        (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", -25),
-        (jump_to_menu, "mnu_town"),
+    ("option_2", [],"Leave.",[
+      (quest_set_slot, "qst_poking_the_lion", slot_quest_current_state, 3),
+      (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", -25),
+      (jump_to_menu, "mnu_town"),
     ]),
 ]),
 
@@ -61896,7 +61871,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (add_xp_as_reward, 1000),
       (set_jump_mission, "mt_toiletboys"),
       (modify_visitors_at_site, "scn_shitty_tavern"),
@@ -61925,7 +61900,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (troop_set_slot, "trp_global_variables", g_toilet_talk, -7),#retards escaped, player had to pay the bill
       (troop_remove_gold, "trp_player", 2000),
       (jump_to_menu, "mnu_town"),
@@ -61940,7 +61915,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (troop_set_slot, "trp_global_variables", g_toilet_talk, -8),#left tavern without any
       (troop_remove_gold, "trp_player", 2000),
       (jump_to_menu, "mnu_town"),
@@ -61955,7 +61930,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (add_xp_as_reward, 1000),
       (set_jump_mission, "mt_toiletboys"),
       (modify_visitors_at_site, "scn_shitty_tavern"),
@@ -61987,7 +61962,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (jump_to_menu, "mnu_town"),
       (troop_set_slot, "trp_global_variables", g_toilet_talk, -9),#tavern fight end
     ]),
@@ -62001,7 +61976,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (add_xp_as_reward, 500),
       (jump_to_menu, "mnu_town"),
       (troop_set_slot, "trp_global_variables", g_toilet_talk, -11),#escape
@@ -62018,7 +61993,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (add_xp_as_reward, 2500),
       (jump_to_menu, "mnu_town"),
       (troop_set_slot, "trp_global_variables", g_toilet_talk, -10),#victory
@@ -62034,7 +62009,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (add_xp_as_reward, 1250),
       (jump_to_menu, "mnu_town"),
       (troop_remove_gold, "trp_player", 2000),
@@ -62047,7 +62022,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_cave"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       # 0, 1 player, werdheri
       # 2 to 43 enemies
       (add_xp_as_reward, 1000),
@@ -62114,7 +62089,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_cave"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (jump_to_menu, "mnu_town"),
     ]),
 ]),
@@ -62156,7 +62131,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (jump_to_menu, "mnu_auto_return_map"),
       (call_script, "script_change_troop_renown", "trp_player", 25),
       (add_xp_as_reward, 5000),
@@ -62173,7 +62148,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_cave"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (call_script, "script_fail_quest", "qst_werdheri"),
       (call_script, "script_end_quest", "qst_werdheri"),
       (add_xp_as_reward, 1000),
@@ -62190,7 +62165,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_cave"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (call_script, "script_end_quest", "qst_werdheri"),
       (quest_set_slot, "qst_werdheri", slot_quest_current_state, 6),
       (add_xp_as_reward, 5000),
@@ -62226,7 +62201,7 @@ It is said, that she lives now together with the goat.",
     (str_store_troop_name_plural, s15, "$g_notification_menu_var1"),
     (set_background_mesh, "mesh_pic_triumph"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (call_script, "script_troop_holds_triumph", "$g_notification_menu_var1"),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
@@ -62237,7 +62212,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_messenger"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (setup_quest_text, "qst_triumph"),
       (str_store_party_name_link, s25, "p_town_6"),
       (str_store_string, s2, "@A triumph has been awarded to you. Travel to {s25}."),
@@ -62253,7 +62228,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (jump_to_menu, "mnu_prophecy_final_2"),
     ]),
 ]),
@@ -62265,7 +62240,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (jump_to_menu, "mnu_prophecy_final_3"),
     ]),
 ]),
@@ -62277,7 +62252,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       # (jump_to_menu, "mnu_prophecy_final_4"),
 
       (set_jump_mission, "mt_explore_carthage"),
@@ -62300,7 +62275,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (assign, "$temp1", 4),
       (assign, "$temp2", "trp_town_28_seneschal"),
       (party_get_slot, ":castle_scene", "$g_encountered_party", slot_town_castle),
@@ -62348,7 +62323,7 @@ It is said, that she lives now together with the goat.",
         (try_end),
     (try_end),
   ],[
-    ("answere_1",[],"Continue...",[
+    ("answere_1",[],"Continue.",[
       (str_store_party_name_link, s44, "p_town_6"),
       (setup_quest_text,  "$g_notification_menu_var1"),
       (str_store_string, s2, "@{s43}"),
@@ -62633,7 +62608,7 @@ It is said, that she lives now together with the goat.",
         (str_store_string, s10, "@Error occured in menu nero-tour-greece"),
     (try_end),
   ],[
-    ("continue", [], "Continue",[
+    ("continue", [], "Continue.",[
       (try_begin),
         (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 19),
         (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 20),
@@ -62870,7 +62845,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
-    ("continue", [], "Continue...",[
+    ("continue", [], "Continue.",[
       (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", 5),
       (add_xp_as_reward, 1000),
       (jump_to_menu, "mnu_auto_return_map"),
