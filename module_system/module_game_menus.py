@@ -31417,10 +31417,7 @@ game_menus = [
 ]),
 
 ("awak",0,    #modified motomataru chief
-  "You have awaken. Thunders are roaring in the distance and it rains. Your head hurts. You find yourself laying on soft cushions, while a woman anoints your wounds."+
-  " She notices that you have awaken and smiles. Then she gives you a tunic and tells you to dress."+
-  " You stand up, put on the tunic and then follow her. She walks through her small but elegant house towards the dinning room. She tells you to take a seat."+
-  " Then she walks away. After a while she returns with food which she serves. As it seems she doesn't have any slaves. The thunders are still roaring in the distance.",
+  "You awake not to darkness, but to the low rumble of thunder and the searing pain of a fractured skull. For a moment, you are nowhere. Then, the world comes back in pieces: soft cushions beneath you, the cool touch of a woman's hand anointing a wound on your arm, the scent of rain and something herbal.^^She notices your eyes are open and offers a quiet, unreadable smile. Without a word, she hands you a fresh tunic. You dress, your movements stiff and clumsy, and follow her through a small but elegant villa. She gestures for you to sit at a simple wooden table in the dining room.^^She leaves and returns a short while later with bread, cheese, and a cup of water, serving you herself. The storm continues to rage outside, a perfect mirror for the tempest of questions in your mind. Who is this woman, and how did you get here?",
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
     (call_script, "script_end_quest", "qst_blank_quest_5"),
@@ -45997,8 +45994,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]),
 ]),
 ("end_party",0,
-  "You awake with a terrible headache, lying in a haystack. In front of you lies an empty bottle of wine. You can't remember how you came here,\
- nore what happend during the party. It doesn't matter at all.",
+  "You awake with a terrible headache, lying in a haystack. In front of you lies an empty bottle of wine. You can't remember how you came here, nore what happend during the party. It doesn't matter at all.",
   "none",[
     (set_background_mesh, "mesh_pic_party"),
   ],[

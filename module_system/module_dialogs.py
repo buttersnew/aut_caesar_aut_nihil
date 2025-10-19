@@ -12143,7 +12143,7 @@ dialogs =[
 
 [anyone,"underworld_lupa_talk_2",[
 ],
-"One of the grievous experiences you make as human is that you cannot memorize everything. Though, it is also one of the good things about our mind as we usually first forget about terrible experiences.",
+"One of the grievous experiences you make as human is that you cannot memorize everything. Though, it is also one of the good things about our mind as we usually first forget terrible experiences.",
 "underworld_lupa_talk_3",[]],
 
 [anyone|plyr,"underworld_lupa_talk_3",[
@@ -18123,14 +18123,16 @@ dialogs =[
 [trp_bannerlord|plyr, "bannerlord_talk2",
 [],"I also want such a fancy cap!", "bannerlord_cap",[]],
 [trp_bannerlord, "bannerlord_cap",
-[],"Very well, here take one.", "bannerlord_talk2",[(troop_add_item, "trp_player", "itm_felt_steppe_cap"),]],
+[],"Very well, here take one.", "bannerlord_talk2",[
+  (troop_add_item, "trp_player", "itm_felt_steppe_cap"),
+]],
 
 [trp_bannerlord|plyr, "bannerlord_talk2",
 [],"Holy Soon, gift us updates!", "bannerlord_talk2_1",[]],
 [trp_bannerlord, "bannerlord_talk2_1",
 [],"Something is delaying me...", "bannerlord_pretalk",[
   (play_sound, "snd_aaa_scream"),
-  ]],
+]],
 
 [trp_bannerlord|plyr, "bannerlord_talk2",
 [],"What are you doing here?", "bannerlord_talk2_2",[]],
@@ -18153,186 +18155,231 @@ dialogs =[
 ##end bannerlord talk
 
 #special talk party
-[trp_orgie_fem1, "start",
-[ (eq,"$g_talk_troop_met",0),],"Hello. What happened, you look so sad?", "salvation_talk",[]],
-[trp_orgie_fem1, "start",
-[],"Wanna come with me do my house?^^-- She smiles at you. --", "salvation_talk3",[]],
+[trp_orgie_fem1, "start",[
+  (eq,"$g_talk_troop_met",0),
+],"Hello. What happened, you look so sad?",
+"salvation_talk",[]],
 
-[trp_orgie_fem1|plyr, "salvation_talk",
-[
- ],"Everybody on this party is so disgusting and mean.", "salvation_talk2",[]],
-[trp_orgie_fem1, "salvation_talk2",
-[
- ],"I have a nice idea. We both could leave and go to my house instead. There we would be alone. Only you and me...^^-- She smiles at you. --", "salvation_talk3",[]],
-[trp_orgie_fem1|plyr, "salvation_talk3",
-[
- ],"Sounds good", "salvation_talk2_yes",[]],
-[trp_orgie_fem1, "salvation_talk2_yes",
-[
- ],"Very good, follow me honey. ^^-- She takes your hand and you follow her... --", "close_window",[
-  (finish_mission),
+[trp_orgie_fem1, "start",[
+],"Wanna come with me do my house?^^-- She smiles at you. --",
+"salvation_talk3",[]],
+
+[anyone|plyr, "salvation_talk",[
+],"Everybody on this party is so disgusting and mean.",
+"salvation_talk2",[]],
+
+[anyone, "salvation_talk2",[
+],"I have a nice idea. We both could leave and go to my house instead. There we would be alone. Only you and me...^^-- She smiles at you. --",
+"salvation_talk3",[]],
+
+[anyone|plyr, "salvation_talk3",[
+],"Sounds good",
+"salvation_talk2_yes",[]],
+
+[anyone, "salvation_talk2_yes",[
+],"Very good, follow me honey. ^^-- She takes your hand and you follow her... --", "close_window",[
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission,4),
+  (mission_disable_talk),
   (jump_to_menu, "mnu_end_party"),
-  ]],
-[trp_orgie_fem1|plyr, "salvation_talk3",
-[
- ],"I must think about it.", "salvation_talk2_no",[]],
-[trp_orgie_fem1, "salvation_talk2_no",
-[
- ],"Come back if you wanna leave, honey.", "close_window",[]],
+]],
+
+[anyone|plyr, "salvation_talk3",[
+],"I must think about it.",
+"salvation_talk2_no",[]],
+
+[anyone, "salvation_talk2_no",[
+],"Come back if you wanna leave, honey.",
+"close_window",[]],
 ###end slavation
 
 #start billy
-[trp_billy, "start",
-[(eq,"$g_talk_troop_met",0),],"What the hell are you?", "billy_talk",[]],
-[trp_billy, "start",[],"Wanna lick my balls?", "billy_talk8_2",[]],
+[trp_billy, "start",[
+  (eq,"$g_talk_troop_met",0),
+],"What the hell are you?",
+"billy_talk",[]],
 
-[trp_billy|plyr, "billy_talk",
-[
- ],"I wanted to ask you exactly the same question!", "billy_talk2",[]],
-[trp_billy, "billy_talk2",
-[
- ],"I am a mighty Beagle, called Billy.", "billy_talk3",[]],
-[trp_billy|plyr, "billy_talk3",
-[
- ],"But you are a camel", "billy_talk4",[]],
-[trp_billy, "billy_talk4",
-[
- ],"Well, I am a Beagle in the body of a camel! This witch and bitch called Incontinentia Buttocks has cursed me! Once I was a migthy Beagle, now I am in the body\
- of a camel, uff, I hate camels.", "billy_talk5",[]],
-[trp_billy|plyr, "billy_talk5",
-[
- ],"I think I am going crazy.", "billy_talk6",[]],
+[trp_billy, "start",[],"Wanna lick my balls?",
+"billy_talk8_2",[]],
 
-[trp_billy, "billy_talk6",
-[
- ],"No I am going crazy, because I can't lick my balls anymore.", "billy_talk7",[]],
+[anyone|plyr, "billy_talk",[
+],"I wanted to ask you exactly the same question!",
+"billy_talk2",[]],
 
-[trp_billy|plyr, "billy_talk7",
-[
- ],"I should leave now.", "billy_talk8",[]],
+[anyone, "billy_talk2",[
+],"I am a mighty Beagle, called Billy.",
+"billy_talk3",[]],
 
-[trp_billy, "billy_talk8",
-[
- ],"Wait, wait, wait. You must do something for me. Or else, you won't be able to leave this place.", "billy_talk9",[]],
+[anyone|plyr, "billy_talk3",[
+],"But you are a camel",
+"billy_talk4",[]],
 
-[trp_billy|plyr, "billy_talk9",
-[
- ],"Hm, what shall I do?", "billy_talk8_1",[]],
-[trp_billy, "billy_talk8_1",
-[
- ],"Guess what! Lick my balls!", "billy_talk8_2",[]],
-[trp_billy|plyr, "billy_talk8_2",
-[
- ],"If it must be", "billy_talk10",[]],
-[trp_billy, "billy_talk10",
-[
- ],"Let's start. ^^-- I don't want to describe this. --^^Ah, that was nice.", "billy_talk11",[]],
-[trp_billy|plyr, "billy_talk11",
-[
- ],"Can I now leave?", "billy_talk12",[]],
+[anyone, "billy_talk4",[
+],"Well, I am a Beagle in the body of a camel! This witch and bitch called Incontinentia Buttocks has cursed me! Once I was a migthy Beagle, now I am in the body\
+ of a camel, uff, I hate camels.",
+"billy_talk5",[]],
 
-[trp_billy, "billy_talk12",
+[anyone|plyr, "billy_talk5",[
+],"I think I am going crazy.",
+"billy_talk6",[]],
+
+[anyone, "billy_talk6",[
+],"No I am going crazy, because I can't lick my balls anymore.",
+"billy_talk7",[]],
+
+[anyone|plyr, "billy_talk7",[
+],"I should leave now.",
+"billy_talk8",[]],
+
+[anyone, "billy_talk8",[
+],"Wait, wait, wait. You must do something for me. Or else, you won't be able to leave this place.",
+"billy_talk9",[]],
+
+[anyone|plyr, "billy_talk9",[
+],"Hm, what shall I do?",
+"billy_talk8_1",[]],
+
+[anyone, "billy_talk8_1",[
+],"Guess what! Lick my balls!",
+"billy_talk8_2",[]],
+
+[anyone|plyr, "billy_talk8_2",[
+],"If it must be",
+"billy_talk10",[]],
+
+[anyone, "billy_talk10",[
+],"Let's start. ^^-- I don't want to describe this. --^^Ah, that was nice.",
+"billy_talk11",[]],
+
+[anyone|plyr, "billy_talk11",[
+],"Can I now leave?",
+"billy_talk12",[]],
+
+[anyone, "billy_talk12",
 [
  ],"Nope", "billy_talk13",[]],
 
-[trp_billy|plyr, "billy_talk13",
+[anyone|plyr, "billy_talk13",
 [
  ],"But you said ...", "billy_talk14",[]],
-[trp_billy, "billy_talk14",
+[anyone, "billy_talk14",
 [
  ],"I said Nope!", "billy_talk15",[]],
-[trp_billy|plyr, "billy_talk15",
-[
- ],"Damn it! Away with you, vile beggar.", "close_window",[(play_sound, "snd_encounter_nobleman"),]],
+[anyone|plyr, "billy_talk15",[
+],"Damn it! Away with you, vile beggar.",
+"close_window",[
+  (play_sound, "snd_encounter_nobleman"),
+]],
 
-[trp_billy|plyr, "billy_talk8_2",
-[
- ],"Never!", "billy_talk8_no",[]],
-[trp_billy, "billy_talk8_no",
-[
- ],"Then you will never be able to leave this place again.", "close_window",[]],
+[anyone|plyr, "billy_talk8_2",[
+],"Never!", "billy_talk8_no",[]],
+
+[anyone, "billy_talk8_no",[
+],"Then you will never be able to leave this place again.",
+"close_window",[]],
 ###end billy
+
 ##start witch hunna
-[trp_witch, "start",
-[
+[trp_witch, "start",[
   (eq,"$g_talk_troop_met",0),
- ],"-- As you approach you see that she nibbles meat from a bone.\
- Disgusted, you watch her and try to figure out if it is human flesh. After she finished, she raises her head and looks at you with bright eyes. --^^\
- Excuse me, I didn't hear you coming. I am Hunna. Why have you come?", "witch_talk_1",[]],
-[trp_witch, "start",
-[
+],"-- As you approach, you see her gnawing meat from a bone, the cracking sound sharp in the quiet woods. She doesn't look up, but speaks as if she's known you were there all along. --^^I smelled you coming, little Roman. You stink of iron and sweat.^^-- She finally tosses the bone aside, wipes her mouth with the back of her hand, and fixes you with her piercing eyes. --^^You have interrupted my meal. I am Hunna. State your purpose before you spoil my appetite further.",
+"witch_talk_1",[]],
+
+[trp_witch, "start",[
   (this_or_next|quest_slot_eq, "qst_the_eagle", slot_quest_temp_slot, 2),
   (quest_slot_eq, "qst_the_eagle", slot_quest_temp_slot, 3),
- ],"Do you have the herbs?", "witch_talk_1_herbs",[]],
-[trp_witch, "start",
-[
+],"Do you have the herbs?", "witch_talk_1_herbs",[]],
+
+[trp_witch, "start",[
   (quest_slot_eq, "qst_the_eagle", slot_quest_temp_slot, 4),
- ],"Are you prepared for your challenge?", "witch_talk_1_herbs_10",[]],
+],"Are you prepared for your challenge?",
+"witch_talk_1_herbs_10",[]],
 
-[trp_witch, "start",
-[
+[trp_witch, "start",[
   (quest_slot_eq, "qst_the_eagle", slot_quest_temp_slot, 5),
- ],"You? You are alive?", "witch_final",[]],
+],"You? You are alive?",
+"witch_final",[]],
 
 [trp_witch, "start",
-[],"What do you want?", "witch_final_33",[]],
+[],"What do you want?",
+"witch_final_33",[]],
 
-[trp_witch|plyr, "witch_final_33",
-[(troop_slot_eq, "trp_witch", slot_troop_wealth, 0),],"You want to join my warband? I would need your skills", "witch_ask_player",[]],
+[trp_witch|plyr, "witch_final_33",[
+  (troop_slot_eq, "trp_witch", slot_troop_wealth, 0),
+],"You have powerful magic. I could use your skills in my warband. Will you join me?",
+"witch_ask_player",[]],
 
-[trp_witch, "witch_ask_player",
-[],"Joining your warband? That would mean sleeping next to stinky men! Bah! Even if you would have a warband full women I wouldn't join. "+
-  "I have already all I want. Hm, but something else comes to my mind. It is said Arminius forget a beautiful spatha and a golden mask from the gold he looted after the battle in the Teuteburg forest. "+
-  "Nobody knows the location of his tomb except one person: his wife Thusnelda.", "witch_ask_player2",[]],
+[trp_witch, "witch_ask_player",[
+],"Join you? ^^-- She cackles. --^^March in the mud and sleep on the hard ground with a pack of smelly, shouting men? I think not. I have my roots in this soil. I have all I need. But... your ambition gives me an idea. There is a treasure in the forests, a prize far greater than a lost eagle.",
+"witch_ask_player2",[]],
 
-[trp_witch|plyr, "witch_ask_player2",
-[],"I thought Thusnelda was imprisoned by Caesar Germanicus and then tortured to death?", "witch_ask_player3",[
+[trp_witch, "witch_ask_player2",
+[],"It is said that after Arminius slaughtered Varus's legions, he took the melted gold from their standards and forged two things: a spatha that could cut the wind, and a mask of pure gold. They were buried with him. No one has ever found his tomb. No one... except the one person who knew his heart: his wife, Thusnelda.",
+"witch_ask_player3",[]],
 
-  ]],
+[trp_witch|plyr, "witch_ask_player3",
+[],"But Thusnelda was captured. Paraded in Germanicus's triumph in Rome. Surely she is long dead?",
+"witch_ask_player4",[
+]],
 
-[trp_witch, "witch_ask_player3",
-[],"Yes she was imprisoned, but she is still alive. Germanicus was impressed by her beauty and released her after the triumph. "+
-  "I heard rumors she lives now in Lupfurdum. You can try your luck and visit her. Maybe she gives you some hints about the location of Arminius' tomb.", "witch_ask_player4",[]],
+[trp_witch, "witch_ask_player4",
+[],"Dead? No. The Romans broke her spirit, but Germanicus was taken by her fierce pride. After the triumph, she was not executed. She was given a new life, a quiet exile. The whispers I hear on the wind say she now lives as a priestess in Lupfurdum. Go there. Find the ghost of the Cherusci queen. Perhaps she will share her secrets with another enemy of Rome.",
+"witch_ask_player5",[]],
 
-[trp_witch|plyr, "witch_ask_player4",
-[],"Thank you for the information.", "close_window",[
-    (setup_quest_text,  "qst_arminius_sword"),
-    (str_store_party_name_link, s12, "p_town_23"),
-    (str_store_string, s2, "@Arminius was burried together with his sword and a golden helm. Only his wife Thusnelda knows the exact location of his tomb. You can find her somewhere in {s12}."),
-    (call_script, "script_start_quest", "qst_arminius_sword", "trp_fortuna"),
+[trp_witch|plyr, "witch_ask_player5",
+[],"Thank you for this knowledge, witch.", "close_window",[
+  (setup_quest_text,  "qst_arminius_sword"),
+  (str_store_party_name_link, s12, "p_town_23"),
+  (str_store_string, s2, "@Arminius was burried together with his sword and a golden helm. Only his wife Thusnelda knows the exact location of his tomb. You can find her somewhere in {s12}."),
+  (call_script, "script_start_quest", "qst_arminius_sword", "trp_fortuna"),
   (troop_set_slot, "trp_witch", slot_troop_wealth, 1),
   (jump_to_menu, "mnu_grove"),
-  (finish_mission),
-  ]],
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
+]],
 
-[trp_witch|plyr, "witch_final_33",
-[
+[trp_witch|plyr, "witch_final_33",[
   (check_quest_active, "qst_arminius_sword"),
-  (quest_slot_eq, "qst_arminius_sword", slot_quest_current_state, 1),],"I need a potion that makes a woman look ugly.", "witch_ugly_potion",[]],
+  (quest_slot_eq, "qst_arminius_sword", slot_quest_current_state, 1),
+],"I need a potion. One that will make a beautiful woman look old and ugly.",
+"witch_ugly_potion",[]],
+
 [trp_witch, "witch_ugly_potion",
-[],"A potion of ugliness? Hahahaha, decades ago, a young eighteen years old woman approached me and asked for a potion that makes her look beautiful for the rest of her life. I made the potion for her. Her name was Thusnelda. She asked you to bring her the potion of ugliness, right?", "witch_ugly_potion_1",[]],
+[],"A potion to steal beauty? ^^-- She cackles. --^^ Oh, this is rich. Decades ago, a fierce young girl came to me with the opposite request. She wanted a potion to preserve her beauty forever. Her name was Thusnelda. She sent you, didn't she?",
+"witch_ugly_potion_1",[]],
 
 [trp_witch|plyr, "witch_ugly_potion_1",
-[],"Indeed.", "witch_ugly_potion_2",[]],
+[],"She did.",
+"witch_ugly_potion_2",[]],
+[trp_witch|plyr, "witch_ugly_potion_1",
+[],"I assume you mean Thusnelda.",
+"witch_ugly_potion_2",[]],
 
 [trp_witch, "witch_ugly_potion_2",
-[],"I expected something like that will happen. She is fed up with all the suitors constantly visiting her. Bah Men!? Useless horny bastards who just wanna stuck their dick into the next whole. I hope she learned her lesson.", "witch_ugly_potion_3",[]],
+[],"I knew it would come to this. So tired of being desired. Such a terrible burden. Men... so predictable. Like moths to a flame, buzzing and burning their stupid wings. I hope the silly girl has learned her lesson about vanity.",
+"witch_ugly_potion_3",[]],
 
 [trp_witch|plyr, "witch_ugly_potion_3",
-[],"Could I have the potion or you want me to do something for you first?", "witch_ugly_potion_4",[]],
+[],"So, can I have the potion? Or is there another task?",
+"witch_ugly_potion_4",[]],
+[trp_witch|plyr, "witch_ugly_potion_3",
+[],"I assume there is another task to be done?",
+"witch_ugly_potion_4",[]],
 
 [trp_witch, "witch_ugly_potion_4",
-[],"Hm, hm. Yes you can do something for me. I need a male and a female slave for certain, eih, rituals I want to perform. But ensure they are from Greece!", "witch_ugly_potion_5",[
+[],"Oh, yes. A small price. I have need of fresh... ingredients for some rituals. Bring me two slaves, a man and a woman. And they must be Greeks. I find their passions... potent.",
+"witch_ugly_potion_5",[
   (play_sound, "snd_female_laugh"),
-  ]],
+]],
 
 [trp_witch|plyr, "witch_ugly_potion_5",
-[],"Ah, well I will bring you some slaves.", "close_window",[
-
+[],"Very well. I will bring you your... ingredients.",
+"close_window",[
   (display_message, "str_quest_updated"),
   (add_quest_note_from_sreg, "qst_arminius_sword", 4, "@Bring one Greek female and one Greek male slave to Hunna the witch to obtain the potion of ugliness.", 0),
   (quest_set_slot, "qst_arminius_sword", slot_quest_current_state, 2),
-  ]],
+]],
 
 [trp_witch|plyr, "witch_final_33",[
   (check_quest_active, "qst_arminius_sword"),
@@ -18342,53 +18389,59 @@ dialogs =[
 
   (party_count_prisoners_of_type,":slave2", "p_main_party", "trp_slave_female_greek"),
   (ge, ":slave2", 1),
-],"I have a female and a male slave",
+],"I have the male and female Greek slaves you asked for.",
 "witch_slave_player_has",[]],
 
 [trp_witch, "witch_slave_player_has",
-[],"Splendid! I forgot to tell you, I only want young slaves... anyway, they will do too. Now to your potion: The potion of beauty is a fake, same with the potion of ugliness. Just give her this liquor. I made it as strong as possible. Make sure she gives you your reward before she drinks it. That way you have the reward and she will be too drunken to notice it didn't work.",
+[],"Splendid! Hmm, a bit older than I'd prefer, but they'll do. Now, for your 'potion'. The truth is, the original potion of beauty was a fake. As is this one. It's just a very, very strong liquor. Make sure she tells you the location of the tomb before she drinks it. You'll have your information, and she'll be too drunk to realize she's been fooled. Everyone wins.",
 "witch_slave_player_has_1",[]],
 
 [trp_witch|plyr, "witch_slave_player_has_1",
-[],"What? You could have told me that right away!", "witch_slave_player_has_2",[]],
+[],"You are not very trustworthy...",
+"witch_slave_player_has_2",[]],
+[trp_witch|plyr, "witch_slave_player_has_1",
+[],"What? You tricked me! You could have just told me!",
+"witch_slave_player_has_2",[]],
+
 [trp_witch, "witch_slave_player_has_2",
-[],"Haha, no! It would have been less funny otherwise.", "witch_slave_player_has_3",[]],
+[],"-- She cackles again. --^^And miss out on the slaves? And the irony? Where's the fun in that?", "witch_slave_player_has_3",[]],
 
 [trp_witch|plyr, "witch_slave_player_has_3",
-[],"I am still confused. Why is she looking like eighteen if your potion never worked? And why are you looking so young? I thought you also drunk the potion.", "witch_slave_player_has_4",[]],
+[],"But I'm confused. If the potion was fake, why does she still look so young? And what about you?", "witch_slave_player_has_4",[]],
 
 [trp_witch, "witch_slave_player_has_4",
-[],"Haha, some secrets you will never understand. Here take the potion and now go and get your reward.",
+[],"Hah! Some magic is real, little Roman. You are just not meant to understand it. Now take this bottle and go. Your prize awaits.",
 "close_window",[
   (display_message, "str_quest_updated"),
   (add_xp_as_reward, 500),
-  (add_quest_note_from_sreg, "qst_arminius_sword", 4, "@The potion seems to be a fake. Make sure Thusnelda tells you the location of the tomb before she drinks it!", 0),
+  (add_quest_note_from_sreg, "qst_arminius_sword", 4, "@The potion is a fake. Make sure Thusnelda tells you the location of the tomb before she drinks it!", 0),
   (quest_set_slot, "qst_arminius_sword", slot_quest_current_state, 3),
   (party_remove_prisoners, "p_main_party", "trp_slave_greek", 1),
   (party_remove_prisoners, "p_main_party", "trp_slave_female_greek", 1),
 ]],
 
 [trp_witch|plyr, "witch_final_33",
-[],"Can you heal my party?", "witch_final_heal",[]],
+[],"My men and I are wounded. Can you heal us?", "witch_final_heal",[]],
 
 [trp_witch, "witch_final_heal",[],
-"Of course I can. But you must bring me one slave of any gender as sacrifice for the gods.",
+"Healing requires a price. The spirits of this wood do not give their gifts for free. You will bring me a slave. A life for a life. That is the balance.",
 "witch_final_heal_3",[]],
 
 [trp_witch|plyr, "witch_final_heal_3",[
   (call_script, "script_count_party_slaves", "p_main_party",0),
   (ge, reg0, 1),
-],"Of course you can have one. [Lose one slave]",
+],"Very well. Take one. [Lose one slave]",
 "witch_final_heal_deal",[]],
 
 [trp_witch, "witch_final_heal_deal",[
-],"-- You watch the ceremonie. She pushes a knife in the throat of the slave. Then she catches the blood in a bowl."
-+" With the blood and some herbs she creates a tincture, which she smears on the wounds of you and your men. --",
+],"-- You watch as she performs the rite. She takes one of your slaves, a man whose face you barely remember, and chants in a language you do not understand. With a swift, practiced motion, she draws a knife across his throat, catching the lifeblood in a dark, wooden bowl. She mixes the blood with herbs, creating a thick, steaming poultice, and begins to anoint your wounds and those of your men with the tincture. --",
 "close_window",[
   (call_script, "script_remove_slaves_from_party", "p_main_party", 1, 0),
   (heal_party, "p_main_party"),
   (jump_to_menu, "mnu_auto_return"),
-  (finish_mission),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
 ]],
 
 [trp_witch|plyr, "witch_final_heal_3",[
@@ -18400,20 +18453,19 @@ dialogs =[
 "close_window",[]],
 
 [trp_witch|plyr, "witch_final",[
-],"Yes I am! And I have his head. He shouldn't bother you any longer. But now, I want my reward. Give me the eagle of the seventeenth legion!",
+],"I have returned, witch! And I have his head. His song is silenced. Now, honor our bargain. Give me the eagle of the Seventeenth Legion.",
 "witch_final2",[]],
 
 [trp_witch, "witch_final2",[
-],"-- You hand her over a sack. She empties the sack and the warrior's head falls out. Satisfied, she brings the head into her hut."
-+" After a while she comes out with an eagle in her hands. You look at it and notice, that it is indeed the eagle of the seventeenth legion. --",
+],"-- You hand her the heavy sack. She opens it, and with a grim satisfaction, pulls out the warrior's head by his matted hair. She disappears into her hut with the grisly trophy. A moment later, she re-emerges, cradling a heavy object wrapped in oilskin. As she unwraps it, the unmistakable shape of a Roman Aquila glints in the dim light. It is the lost eagle of the Seventeenth. --",
 "witch_final3",[]],
 
 [trp_witch, "witch_final3",[
-],"Roman, you have mastered my challenge and served me well. For this you will recieve the eagle, which you desire so much.",
+],"You have proven yourself a proper hero, little Roman. Strong, and useful. A promise is a promise. Here is the shiny bird you have chased all over this forest.",
 "witch_final4",[]],
 
 [trp_witch, "witch_final4",[
-],"-- She giggles. -- ^^Go and bring Caesar the ealge.",
+],"-- She giggles as she hands it to you. -- ^^Now run along. Go give your Caesar his toy back.",
 "close_window",[
   (display_message, "str_quest_updated"),
   (add_quest_note_from_sreg, "qst_the_eagle", 4, "@You have found the eagle!", 0),
@@ -18428,151 +18480,166 @@ dialogs =[
 "witch_talk_1_herbs_3",[]],
 
 [trp_witch|plyr, "witch_talk_1_herbs",[
-],"I am still searching for them.",
+],"I am still looking for them.",
 "witch_talk_1_herbs_2",[]],
 
 [trp_witch, "witch_talk_1_herbs_2",[
-],"No herbs, no eagle. ^^--She giggles.--",
+],"No herbs, no shiny bird. ^^--She giggles.--",
 "close_window",[]],
 
 [trp_witch, "witch_talk_1_herbs_3",[
-],"Very good. Now comes your second task.",
+],"Ah, well done, little Roman. Now for your second task.",
 "witch_talk_1_herbs_4",[]],
 
 [trp_witch|plyr, "witch_talk_1_herbs_4",[
-],"No second task, I want my reward?",
+],"A second task? The deal was for the herbs. I want my reward.",
+"witch_talk_1_herbs_5",[]],
+[trp_witch|plyr, "witch_talk_1_herbs_4",[
+],"Another one? We had a deal. Where is the reward?",
 "witch_talk_1_herbs_5",[]],
 
 [trp_witch, "witch_talk_1_herbs_5",[
-],"Haha. The task was too easy for you. You must do one last thing for me, then I will hand you over the eagle.",
+],"Haha! But that task was so simple, a child could have done it. You need to prove you are a hero, not just a gardener. One final thing, and the eagle is yours. I promise.",
 "witch_talk_1_herbs_6",[]],
 
 [trp_witch|plyr, "witch_talk_1_herbs_6",[
-],"Arg. What shall I do?",
+],"... What now?",
+"witch_talk_1_herbs_7",[]],
+[trp_witch|plyr, "witch_talk_1_herbs_6",[
+],"Speak!",
 "witch_talk_1_herbs_7",[]],
 
 [trp_witch, "witch_talk_1_herbs_7",[
-],"A mighty and renowned warrior has come to this land. He has come from far away, from a mystic land called Scandia."
-+" In Scandia the winters are harsh and the people there are more animals, than men."
-+" He wanders around the land singing his songs. But his songs are evil and his songs are bewitching the animals of the forest."
-+" I am sure, if he continues like that, something evil will happen."
-+" But to break his spell, I need his head. Thus, your task is to bring me his head!",
+],"A great warrior has wandered into my woods. He comes from Scandia, a land of ice and endless night, where men are said to be closer to bears than to you or I. He walks the forest, singing. But his songs are wrong. They are songs of power, and they are twisting the spirits of the animals, making them savage and hateful. The balance of this place is threatened.^^To break the enchantment, his song must be silenced forever. You will bring me his head.",
 "witch_talk_1_herbs_8",[]],
 
 [trp_witch|plyr, "witch_talk_1_herbs_8",[
-],"Aye, witch. I will bring you his head.",
-"witch_talk_1_herbs_9",[]],
+],"So be it. I will bring you his head.",
+"witch_talk_1_herbs_10",[]],
 
 [trp_witch|plyr, "witch_talk_1_herbs_8",[
-],"Why don't you use your witchcraft against him?",
+],"Why don't you simply curse him yourself?",
 "witch_talk_1_herbs_7_explain",[]],
 
 [trp_witch, "witch_talk_1_herbs_7_explain",[
-],"-- She winks. -- ^^That's not how it works. I need a mighty hero, someone like you.",
-"witch_talk_1_herbs_8",[]],
+],"-- She winks. -- ^^Such things require... a hero's touch. A clash of steel. It is the proper way. Now, will you do it?",
+"witch_talk_1_herbs_10",[]],
 
-[trp_witch, "witch_talk_1_herbs_9",[
+[trp_witch, "witch_talk_1_herbs_10",[
   (store_troop_health, ":h", "trp_player"),
   (lt, ":h", 100),
-],"You seem to be wounded. I will heal you with the herbs you have collected.",
+],"You are wounded. Here. The very herbs you collected will knit your flesh anew.",
  "witch_talk_1_herbs_heal",[
-    (get_player_agent_no, ":player_agent"),
-    (agent_set_hit_points, ":player_agent", 100),
-    (troop_set_health, "trp_player", 100),
-    (call_script, "script_change_troop_health", "trp_player", -50),
+  (get_player_agent_no, ":player_agent"),
+  (agent_set_hit_points, ":player_agent", 100),
+  (troop_set_health, "trp_player", 100),
+  (call_script, "script_change_troop_health", "trp_player", -50),
 ]],
 
 [trp_witch|plyr, "witch_talk_1_herbs_heal",[
-],"Thank you.",
-"witch_talk_1_herbs_9",[
+],"Thank you, witch.",
+"witch_talk_1_herbs_10",[
 ]],
 
-[trp_witch, "witch_talk_1_herbs_9",
-[
- ],"I will bring you to the place, where the mighty warrior currently is. Tell me, when you are ready.", "witch_talk_1_herbs_10",[
+[trp_witch, "witch_talk_1_herbs_10",[
+],"I will guide you to the place where this wandering giant now rests. Tell me when you are ready to face your legend.",
+"witch_talk_1_herbs_11",[
   (quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 4),
   (display_message, "str_quest_updated"),
   (add_quest_note_from_sreg, "qst_the_eagle", 4, "@You must defeat a mighty hero from Scandia and bring her his head.", 0),
-  ]],
-[trp_witch|plyr, "witch_talk_1_herbs_10",
-[
- ],"I am ready.", "close_window",[
+]],
+
+[trp_witch|plyr, "witch_talk_1_herbs_11",[
+],"I am ready.", "close_window",[
   (jump_to_menu, "mnu_scandia"),
-  (finish_mission),
-  ]],
-[trp_witch|plyr, "witch_talk_1_herbs_10",
-[
- ],"I need some time to prepare.", "close_window",[
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
+]],
 
-  ]],
+[trp_witch|plyr, "witch_talk_1_herbs_11",[
+],"Give me a moment to prepare.",
+"close_window",[
+]],
 
-[trp_witch|plyr, "witch_talk_1",
-[
- ],"I am {playername}. I am looking for the lost eagle of the seventeenth legion. That's why I am here.", "witch_talk_2",[]],
+[trp_witch|plyr, "witch_talk_1",[
+],"My name is {playername}. I'm looking for the lost eagle of the Seventeenth Legion. My search has led me to you.",
+"witch_talk_2",[]],
 
-[trp_witch, "witch_talk_2",
-[
- ],"Ah, another Roman who seeks the eagle. Why do you think I would give the eagle to you, if I have it?", "witch_talk_3",[
+[trp_witch, "witch_talk_2",[
+],"Ah, another little Roman, chasing after his shiny bird. Tell me, if I did have this eagle, why would I give it to you?",
+"witch_talk_3",[
   (assign, "$temp", 0),
   (assign, "$temp2", 0),
+]],
 
-  ]],
-[trp_witch|plyr, "witch_talk_3",
-[(eq, "$temp", 0),
- ],"I would pay you 10,000 denarii.", "witch_talk_4",[]],
-[trp_witch, "witch_talk_4",
-[
- ],"Money? Haha, don't be silly. What shall I do with your useless coins, in the middle of a forest? Haha.", "witch_talk_3",[(assign, "$temp", 1),]],
+[trp_witch|plyr, "witch_talk_3",[
+  (eq, "$temp", 0),
+],"I will give you ten thousand denarii for it.",
+"witch_talk_4",[]],
 
-[trp_witch|plyr, "witch_talk_3",
-[(eq, "$temp2", 0),
- ],"If you don't hand over the eagle to me, I will kill you.", "witch_talk_4_1",[]],
+[trp_witch, "witch_talk_4",[
+],"Money?^^-- She cackles, a sound like dry leaves skittering on stone. --^^You offer me bits of metal? What use is gold to one who speaks with the trees and dines with the moon? A foolish offer.",
+"witch_talk_3",[
+  (assign, "$temp", 1),
+]],
 
-[trp_witch, "witch_talk_4_1",
-[
- ],"A stupid idea. Firstly, what if I curse you? I am a witch, don't forget that. Secondly, you don't know where the eagle is.\
- If you kill me, you will never find it.", "witch_talk_3",[(assign, "$temp2", 1),]],
+[trp_witch|plyr, "witch_talk_3",[
+  (eq, "$temp2", 0),
+],"If you don't give me the eagle, I will take it from your corpse.",
+"witch_talk_4_1",[]],
 
-[trp_witch|plyr, "witch_talk_3",
-[(neq, "$temp2", 0),(neq, "$temp", 0),
- ],"So, what do you want witch? You seem to neither fear my sword, nor want any money.", "witch_talk_5",[]],
+[trp_witch, "witch_talk_4_1",[
+],"A foolish threat. First, you assume your steel is stronger than my curses. And second, you assume I keep the eagle in my pocket. If you kill me, its hiding place dies with me. Try again.",
+"witch_talk_3",[
+  (assign, "$temp2", 1),
+]],
 
-[trp_witch, "witch_talk_5",
-[
- ],"-- She giggles. -- ^^ There is something you could do for me, for which I would give you the eagle as reward.", "witch_talk_6",[]],
-[trp_witch|plyr, "witch_talk_6",
-[
- ],"Oh, I know what you want", "witch_talk_6_fail",[]],
+[trp_witch|plyr, "witch_talk_3",[
+  (neq, "$temp2", 0),
+  (neq, "$temp", 0),
+],"So, what do you want, witch? You don't want my gold, and you don't fear my sword.",
+"witch_talk_5",[]],
 
-[trp_witch, "witch_talk_6_fail",
-[
- ],"-- You start do kiss her, but she slaps you and kicks you away. -- ^^ What are you doing? I don't want anything like that with you!", "witch_talk_6_fail2",[]],
+[trp_witch, "witch_talk_5",[
+],"-- She giggles, a surprisingly girlish sound. -- ^^ Oh, there is a small service you could perform. A task. If you complete it, the eagle is yours.",
+"witch_talk_6",[]],
 
-[trp_witch|plyr, "witch_talk_6_fail2",
-[
- ],"Oh, oh. I missunderstood you. I am sorry.", "witch_talk_6_fail3",[]],
+[trp_witch|plyr, "witch_talk_6",[
+],"Oh, I think I know what kind of 'service' you have in mind.",
+"witch_talk_6_fail",[]],
 
-[trp_witch, "witch_talk_6_fail3",
-[
- ],"You stupid donkey. Now listen carefully, I will tell you my task I have for you.", "witch_talk_7",[]],
+[trp_witch, "witch_talk_6_fail",[
+],"-- You lean in to kiss her, but she slaps you so hard your ears ring. -- ^^ Arrogant little man! Do you think my desires are so mundane? I have seen empires rise and fall; your crude urges are of no interest to me!",
+"witch_talk_6_fail2",[]],
 
-[trp_witch|plyr, "witch_talk_6",
-[
- ],"Very well. Speak and tell me what I have to do.", "witch_talk_7",[]],
+[trp_witch|plyr, "witch_talk_6_fail2",[
+],"My mistake. My apologies.",
+"witch_talk_6_fail3",[]],
+[trp_witch|plyr, "witch_talk_6_fail2",[
+],"I just thought... that's usually what they want...",
+"witch_talk_6_fail3",[]],
 
-[trp_witch, "witch_talk_7",
-[
- ],"You must collect some herbs for me. They grow on a field not far from here, but I saw some wolves there, and I fear they could attack me if I would collect them.\
- Hence, you must do this for me.", "witch_talk_8",[]],
+[trp_witch, "witch_talk_6_fail3",[
+],"You are a fool. Now, silence your mortal mind and listen to what I require.",
+"witch_talk_7",[]],
 
-[trp_witch|plyr, "witch_talk_8",
-[
- ],"Very well, I will bring you the herbs.", "close_window",[
+[trp_witch|plyr, "witch_talk_6",[
+],"Very well. Name your task.",
+"witch_talk_7",[]],
+
+[trp_witch, "witch_talk_7",[
+],"I need certain herbs for a poultice. They grow in a meadow not far from here. But the wolves have grown bold lately, and I'd rather not be bothered by them. You, however, look like you could handle a few overgrown dogs. You will fetch them for me.",
+"witch_talk_8",[]],
+
+[trp_witch|plyr, "witch_talk_8",[
+],"So be it. I will bring you your herbs.",
+"close_window",[
   (quest_set_slot, "qst_the_eagle", slot_quest_temp_slot, 2),
   (display_message, "str_quest_updated"),
   (add_quest_note_from_sreg, "qst_the_eagle", 3, "@It seems the witch living near Baduhenna's sanctuary has the eagle.", 0),
   (add_quest_note_from_sreg, "qst_the_eagle", 4, "@You must collect some herbs for her.", 0),
-  ]],
+]],
 ##end witch hunna
 
 ##senator talk
@@ -79271,8 +79338,104 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
   (eq, "$g_talk_troop", "trp_town_6_merchant"),
   (check_quest_active, "qst_town_trade"),
-],"Hey, you useless idiot! Didn't I not ordered you to bring the wine in the cellar? I should punish you for being so stupid.",
+],"You! You useless sack of flesh! Didn't I tell you to move that wine to the cellar an hour ago? By the gods, I should have you whipped for your incompetence.",
 "special_merchant_talk",[]],
+
+[anyone|plyr,"special_merchant_talk",[
+],"I am not your slave. My name is {playername}. I was told you wanted to see me. And that there was a purse of 1,000 denarii involved...",
+"goods_merchant_talk2",[]],
+[anyone|plyr,"special_merchant_talk",[
+],"Watch out, I am {playername} and not your slave. I was promised 1,000 denarii if I meet you...",
+"goods_merchant_talk2",[]],
+
+
+[anyone,"goods_merchant_talk2",[
+],"Ah, {playername}! Forgive the... misunderstanding. Yes, yes, of course. Here. A thousand denarii, as promised. You value coin, I can see that. Good. That simplifies things. Let's get straight to business. I have a problem, and I am told you are... a solution.",
+"goods_merchant_talk3",[
+	(call_script, "script_succeed_quest", "qst_town_trade"),
+	(call_script, "script_finish_quest", "qst_town_trade", 100),
+]],
+
+[anyone|plyr,"goods_merchant_talk3",[
+],"What kind of problem?",
+"goods_merchant_talk4",[
+]],
+[anyone|plyr,"goods_merchant_talk3",[
+],"What do you need from me?",
+"goods_merchant_talk4",[
+]],
+
+[anyone,"goods_merchant_talk4",[
+],"A man named Lucillus. An upstart. He has opened a competing shop and is undercutting my prices. This is not just business; it is a threat to my livelihood. When my customers realize they can get their goods cheaper from him, I am ruined. I want you to go to his shop and... liquidate this asset.",
+"goods_merchant_talk5",[
+]],
+
+[anyone|plyr,"goods_merchant_talk5",[
+],"You want me to wreck his shop?",
+"goods_merchant_talk6",[
+]],
+
+[anyone,"goods_merchant_talk6",[
+],"No. I want you to kill him. A shop can be rebuilt. Guards can be hired. A corpse, however, is a permanent solution. I will pay you ten thousand denarii for this service.",
+"goods_merchant_talk7",[
+]],
+
+[anyone|plyr,"goods_merchant_talk7",[
+],"For that price, consider it done.",
+"goods_merchant_talk_accept",[
+]],
+
+[anyone|plyr,"goods_merchant_talk7",[
+],"No. I'm not a murderer for hire.",
+ "goods_merchant_talk_refuse",[
+]],
+
+[anyone,"goods_merchant_talk_refuse",[
+],
+"Refuse? A pity. An opportunity like this is rare. I will simply find someone else with fewer scruples. But your payment for coming here is, of course, forfeit.",
+"goods_merchant_talk_refuse2",[
+]],
+
+[anyone|plyr,"goods_merchant_talk_refuse2",[
+],
+"On second thought... ten thousand is a convincing argument. I'll do it.",
+"goods_merchant_talk_accept",[
+]],
+[anyone|plyr,"goods_merchant_talk_refuse2",[
+],"My answer is still no. Find another killer.",
+"goods_merchant_talk_refuse3",[
+]],
+
+[anyone,"goods_merchant_talk_refuse3",[
+],
+"Then our business is concluded. Farewell, {playername}.",
+"close_window",[
+]],
+
+[anyone,"goods_merchant_talk_accept",[
+],"Excellent. I knew you were a practical man. Here is the plan: one of my slaves will guide you. Lucillus is expecting a shipment from Egypt today. You will enter his shop, tell him you are the delivery agent, and follow him into his warehouse. Once you are alone... you solve the problem.",
+"goods_merchant_talk_accept2",[
+]],
+
+[anyone|plyr,"goods_merchant_talk_accept2",[
+],"Sounds too easy.",
+"goods_merchant_talk_accept_end",[
+]],
+[anyone|plyr,"goods_merchant_talk_accept2",[
+],"Understood. A simple, effective plan.",
+"goods_merchant_talk_accept_end",[
+]],
+
+[anyone,"goods_merchant_talk_accept_end",[
+],"Indeed. It should be easily done. One of my slaves will guide you to the warehouse.",
+"close_window",[
+  (quest_set_slot, "qst_town_trade_2", slot_quest_current_state, 0),
+  (quest_set_slot, "qst_town_trade_2", slot_quest_gold_reward, 10000),
+  (str_store_string, s2, "@Kill the merchant Lucillus."),
+  (call_script, "script_start_quest", "qst_town_trade_2", "$g_talk_troop"),
+  (jump_to_menu, "mnu_lucillus"),
+  (finish_mission),
+]],
 
 #Goods Merchants
 [anyone ,"start",[
@@ -79427,23 +79590,19 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ], "I will consider your price.",
 "close_window", []],
 
-[anyone ,"start",[
-  (is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end),
-  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
-  (eq, "$g_talk_troop", "trp_town_6_merchant"),
+[trp_town_6_merchant ,"start",[
   (check_quest_active, "qst_town_trade_2"),
   (quest_slot_eq, "qst_town_trade_2", slot_quest_current_state, 2),
-],"Ah, {playername}! I heard Lucillus was murdered in his villa, nobody survived. All his guards, slaves and even his guests are dead!"
-+" Well done {playername}. He won't bother  me any longer.",
+],"Ah, {playername}! The conquering hero returns! I've heard the most wonderful news. It seems my rival Lucillus suffered a terrible... accident at his villa. A complete tragedy. Not a single soul survived."
++" Excellent work. He will no longer be a problem.",
 "town_trade_2_reward",[]],
 
 [anyone|plyr,"town_trade_2_reward",[
-],"Yeah, it wasn't difficult. Now I want my reward, you promised 50000 denarii.",
+],"It was a messy business. Now, about my payment. You promised fifty thousand denarii.",
 "town_trade_2_reward2",[]],
 
 [anyone,"town_trade_2_reward2",[
-],"Of course, here take your reward. Additionally I want to invite you to my victory party, eih our victory party, I give today. You should come, the food will be delicious"
-+" and I have invited some girls too...",
+],"And you shall have it! A bargain, for the peace of mind you have brought me. But business is concluded. Now, we celebrate! I am hosting a victory party this evening. Our victory party. You must come. The food will be exquisite, and I've invited some... very accommodating company.",
 "town_trade_2_reward3",[
   (call_script, "script_succeed_quest", "qst_town_trade_2"),
 	(call_script, "script_finish_quest", "qst_town_trade_2", 100),
@@ -79451,170 +79610,99 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (add_xp_as_reward, 2000),
 ]],
 [anyone|plyr,"town_trade_2_reward3",[
-],"Sounds like fun, sure I will come.",
+],"A party? I suppose I could be persuaded.",
 "town_trade_2_reward_party",[
 ]],
 [anyone,"town_trade_2_reward_party",[
-],"Very good. The party will be in my villa here in Rome and will start in some hours. You can accompany me, I just wanted to leave.",
+],"Excellent! The party is at my villa. I was just about to head over. You can accompany me.",
 "town_trade_2_reward_party2",[
 ]],
 [anyone|plyr,"town_trade_2_reward_party2",[
-],"Of course, Let's go.", "close_window",[
+],"Very well. Lead the way.", "close_window",[
   (jump_to_menu, "mnu_party_with_mamertinus"),
   (finish_mission),
 ]],
+
 [anyone|plyr,"town_trade_2_reward3",[
-],"I am sorry, but I must refuse.",
+],"I think not. I have other business to attend to.",
 "town_trade_2_reward4",[
 ]],
 [anyone,"town_trade_2_reward4",[
-],"Whatever, I want to thank you again {playername}. You saved my business. Now, if you would excuse me. I have other things to do...",
+],"Your loss. In any case, thank you again, {playername}. You've done me a great service. Now, if you'll excuse me, I have a victory to arrange.",
 "town_trade_2_reward5",[
 ]],
 [anyone|plyr,"town_trade_2_reward5",[
-],"Yes of course, farewell.",
+],"Farewell.",
 "close_window",[
 ]],
+
 [anyone ,"start",[
   (is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end),
   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
   (eq, "$g_talk_troop", "trp_town_6_merchant"),
   (check_quest_active, "qst_town_trade_2"),
   (neg|quest_slot_eq, "qst_town_trade_2", slot_quest_current_state, 1),
-],"Ah, {playername}! I hope everything proceed as planned.",
+],"Ah, {playername}! Good. I trust our little problem has been... resolved?",
 "town_trade_2_talk",[]],
 
 [anyone|plyr,"town_trade_2_talk",[
-],"It was a total disaster. It seems one of your slaves works for Lucillus. As I entered the warehouse, I was attacked by 4 armed men"
-+" who were hired by Lucillus to kill me. But I managed to escape.",
+],"Your plan was a disaster. It was an ambush. Lucillus knew I was coming. I guess, one of your slaves is a spy. I barely made it out alive.",
 "town_trade_2_talk2",[]],
 
 [anyone,"town_trade_2_talk2",[
-],"Damn it! By the gods, this are terrible news. I also heard rumors Lucillus started to sell a drink called 'beer'."
-+" He imports it from the Barbarians of Germania and it seems to be quite popular among he Romans. This are dangerous developments!"
-+" With their drinks sooner or later also their barbarian habits will come to Rome! The moral decline under Nero is slowly reaching its peak!",
+],"What?! A spy in my own household? By Mercury's crooked staff, this is worse than I thought. I've also heard rumors... Lucillus has started importing that barbaric swill they call 'beer' from Germania. The plebs are drinking it! This is how the rot starts! First their foul drink, then their foul manners! The moral decay under Nero is a cancer on this city!",
 "town_trade_2_talk3",[]],
 
 [anyone,"town_trade_2_talk3",[
-],"Nevertheless, the most important thing now is to kill Lucillus. And I already have a new idea: You will directly storm his villa and kill him."
-+" He won't expect such a bold move.",
+],"No matter. We must be more direct. Subtlety has failed. Now we use force. You will go to his villa directly and kill him. A frontal assault. He will never expect such a bold move.",
 "town_trade_2_talk4",[]],
 
 [anyone|plyr,"town_trade_2_talk4",[
-],"This sounds as stupid as your previous plan.",
+],"You want that I die, don't you?",
+"town_trade_2_talk5",[]],
+[anyone|plyr,"town_trade_2_talk4",[
+],"That sounds even more stupid than your last plan.",
 "town_trade_2_talk5",[]],
 
 [anyone,"town_trade_2_talk5",[
-],"Hey, don't call my plans stupid. I will pay you not only 10000 denarii, but now you will recieve 50,000 denarii. Additionally,"
-+" I gift you a armor and a helmet which I found in my cellar. So, {playername}, will you help me?",
+],"What? Insolence! My plans are... bold. But I see you require more incentive. Very well. Not ten thousand denarii. Fifty thousand. And... I will give you this armor and helmet I had stored away. A bonus. Now, {playername}, are we in business?",
 "town_trade_2_talk6",[]],
 
 [anyone|plyr,"town_trade_2_talk6",[
-],"Seems a fair offer, I accept.",
+],"For that price, I'll consider it. I accept.",
 "town_trade_2_talk_accept",[]],
 
 [anyone|plyr,"town_trade_2_talk6",[
-],"No, I am sure this is again a trap.",
+],"No. This smells like another trap.",
 "town_trade_2_talk7",[]],
 
 [anyone|plyr,"town_trade_2_talk7",[
-],"I don't want to have anything to do with you. Fight your war against this merchant without me.",
+],"I'm done with this. Fight your own filthy little trade war.",
 "town_trade_2_talk8",[]],
 
 [anyone,"town_trade_2_talk8",[
-],"You disappoint me {playername}. But if it's what you want. Farewell.",
+],"You disappoint me, {playername}. But so be it. Farewell.",
 "close_window",[
   (call_script, "script_fail_quest", "qst_town_trade_2"),
   (call_script, "script_end_quest", "qst_town_trade_2"),
 ]],
 [anyone,"town_trade_2_talk_accept",[
-],"Very good, take the promised armor. You can find his Villa in Rome. After you have killed him, come back and talk with me again.",
+],"Excellent! Take the armor. You will find his villa in the city. When he is dead, return to me for your payment.",
 "close_window",[
    (quest_set_slot, "qst_town_trade_2", slot_quest_current_state, 1),
    (quest_set_slot, "qst_town_trade_2", slot_quest_gold_reward, 50000),
    (troop_add_item, "trp_player", "itm_mak_helm_2", imodbit_cracked),
    (troop_add_item, "trp_player", "itm_mail_hauberk", imodbit_cracked),
    (display_message, "str_quest_updated"),
-   (add_quest_note_from_sreg, "qst_town_trade_2", 4, "@Go to the villa of Lucillus in Rome, and kill him.^(Hint: you find the villa under the 'sights of Rome' menu. Your companions can help you.)", 0),
+   (add_quest_note_from_sreg, "qst_town_trade_2", 4, "@Go to the villa of Lucillus in Rome, and kill him.^(Hint: you find the villa under the 'Take an Action' menu. Your companions can help you.)", 0),
 ]],
 
-[anyone|plyr,"special_merchant_talk",[
-           ],
-   "I am not your slave. I am {playername} and I was told you want to speak with me. I was also told I would recieve a reward of 1000 denarii...", "goods_merchant_talk2",[]],
-[anyone,"goods_merchant_talk2",[
-           ],
-   "Ah {playername}! I am sorry. Yes,yes here is your money, 1000 denarii as promised. You seem to be someone who values money. I appreciate that.\
- Nevertheless, let's get straight to the point. I need your help in a certain matter and I am sure you can handle this.", "goods_merchant_talk3",[
-	(call_script, "script_succeed_quest", "qst_town_trade"),
-	(call_script, "script_finish_quest", "qst_town_trade", 100),
-   ]],
+[anyone ,"start",[
+  (is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end),
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+],"Welcome {s0}. What can I do for you?",
+"goods_merchant_talk",[]],
 
-[anyone|plyr,"goods_merchant_talk3",[
-           ],
-   "What do you want to get done?", "goods_merchant_talk4",[
-   ]],
-
-[anyone,"goods_merchant_talk4",[
-           ],
-   "I have a problem. Actually, it is a huge problem. A man called Lucillus has opened a shop and he sells goods with a lower price than me.\
- When my customers find out that they can buy their stuff much cheaper I am done... I want you to visit the shop of Lucillus and ... \
- get rid of the problem.", "goods_merchant_talk5",[
-   ]],
-[anyone|plyr,"goods_merchant_talk5",[
-           ],
-   "So, you want me to go there and destroy his shop?", "goods_merchant_talk6",[
-   ]],
-[anyone,"goods_merchant_talk6",[
-           ],
-   "No, kill him. If you destroy his shop, he could rebuild it and hire guards. The easiest way would be to kill him or let him disappear.\
- I would pay you 10000 denarii for this job.", "goods_merchant_talk7",[
-   ]],
-[anyone|plyr,"goods_merchant_talk7",[
-           ],
-   "Sounds good, I will do that.", "goods_merchant_talk_accept",[
-   ]],
-[anyone|plyr,"goods_merchant_talk7",[
-           ],
-   "No I refuse. I am not a murderer.", "goods_merchant_talk_refuse",[
-   ]],
-
-[anyone,"goods_merchant_talk_refuse",[
-           ],
-   "Refuse? You will never have this opportunity again. If you refuse I will hire someone else... and the money, you won't get it.", "goods_merchant_talk_refuse2",[
-   ]],
-[anyone|plyr,"goods_merchant_talk_refuse2",[
-           ],
-   "Hm, you convinced me, I do it.", "goods_merchant_talk_accept",[
-   ]],
-[anyone|plyr,"goods_merchant_talk_refuse2",[
-           ],
-   "No, I am not a murderer. That's it.", "goods_merchant_talk_refuse3",[
-   ]],
-[anyone,"goods_merchant_talk_refuse3",[
-           ],
-   "Then farewell {playername}. I don't need you any longer.", "close_window",[
-   ]],
-
-[anyone,"goods_merchant_talk_accept",[
-           ],
-   "Very good {playername}! One of my slaves will bring you to the shop of Lucillus. I know he is currently awaiting a shipment from Egypt. You will enter the shop and tell him\
- you are here with the goods he is awaiting, then you follow him into his warehouse and ... kill him.", "goods_merchant_talk_accept2",[
-   ]],
-
-[anyone|plyr,"goods_merchant_talk_accept2",[
-           ],
-   "Aye master. Sounds like a reasonable plan.", "close_window",[
-   (quest_set_slot, "qst_town_trade_2", slot_quest_current_state, 0),
-   (quest_set_slot, "qst_town_trade_2", slot_quest_gold_reward, 10000),
-   (str_store_string, s2, "@Kill the merchant Lucillus."),
-   (call_script, "script_start_quest", "qst_town_trade_2", "$g_talk_troop"),
-   (jump_to_menu, "mnu_lucillus"),
-    (finish_mission),
-   ]],
-
-[anyone ,"start",[(is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end),
-			         (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),],
-   "Welcome {s0}. What can I do for you?", "goods_merchant_talk",[]],
   ##diplomacy end+
 #[trp_salt_mine_merchant,"start",[], "Hello.", "goods_merchant_talk",[]],
 
@@ -89166,62 +89254,44 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ##end odysseus
 
 ##Teiresias
-[trp_wahrsager, "start",
-[],
-  "I am Teiresias stranger, a prophet of Apollo and famous oracle, I am the son of Everes and the nymph Chariclo. How can I help you?",
-  "wahrsager_talk",[]],
+[trp_wahrsager, "start",[
+],"A warm breath in the cold dark... a living soul. I am the shade of Teiresias, son of Everes and Chariclo. Why have you disturbed the endless silence of the dead?",
+"wahrsager_talk",[]],
 
-[anyone|plyr, "wahrsager_talk",
-[(check_quest_active, "qst_blank_quest_5"),],
-  "By accident I fell into the entrance of Hades. I heard you could help me.",
-  "wahrsager_talk1",[]],
+[anyone|plyr, "wahrsager_talk",[
+],"I have fallen into the realm of Hades. I was told you could show me the way back to the light.",
+"wahrsager_talk1",[]],
 
-[anyone|plyr, "wahrsager_talk",
-[],
-  "Nothing. I must leave now.",
-  "close_window",[]],
+[anyone|plyr, "wahrsager_talk",[
+],"I seek nothing from the dead. I must leave.",
+"close_window",[]],
 
-[anyone, "wahrsager_talk1",
-[],
-  "I can help you, {playername}? How should I? I am just a shadow in the darkness of eternity. You are the light. You must help yourself.",
-  "wahrsager_talk3",[]],
+[anyone, "wahrsager_talk1",[
+],"Help you, mortal? I am a memory, a whisper in the gloom. You are the fire. It is you who must burn your own path out of this darkness.",
+"wahrsager_talk3",[]],
 
-[anyone, "wahrsager_talk3",
-[],
-  "--He closes his eyes and puts his hand on your head.--^^You are a son of Rome. A wolf!",
-  "wahrsager_talk4",[
-  ]],
+[anyone, "wahrsager_talk3",[
+],"--His blind eyes seem to look through you. He reaches out a hand, not to your head, but to the air before you, as if touching the threads of your life.--^^I see... a child of the she-wolf, cast adrift on the river of fate.",
+"wahrsager_talk4",[
+]],
 
-[anyone, "wahrsager_talk4",
-[],
-  "I see the years before you and the years behind you. Great trouble awaits. What you have endured thus far is nothing compared to the strife that is coming. I see an important person, Kaeso Flavius. He has a secret, which is very helpful for you. When you have him as friend, things are a lot easier.^^The eternal city, there lies all what you desire."
-  +" You have the potential to rule the world! Being one of the Caesars.",
-  "wahrsager_talk5",[]],
+[anyone, "wahrsager_talk4",[
+],"I see the path that lies behind you, and the storm that lies ahead. I see a daughter of a god, who thinks herself a goddess, yet drowns her sorrow like a common whore. I see a gilded boar, wearing the imperial purple, who fancies himself a songbird as the world bows to his squealing. And I see three shadows gathering, three daggers in the dark, plotting to bleed the boar and claim his sty.",
+"wahrsager_talk5",[]],
 
-[anyone, "wahrsager_talk5",
-[],
-  "Now open your eyes.",
-  "close_window",[
-    (setup_quest_text,"qst_blank_quest_19"),
-    (str_store_string, s2, "@You descended into Hades and talked with several great figures. Among them the oracle Teiresias foretold your future: One day you would bear the title of Caesar Augustus and rule in Rome."),
-    (call_script, "script_start_quest", "qst_blank_quest_19", "trp_fortuna"),
-    (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 0),
-    (display_message, "str_quest_updated"),
-    # (try_begin),
-        # (lt, "$g_rank", 1),
-        # (str_store_string, s2, "@To reach my goal it is crucial to join the Roman Army. I will either have to work myself through the ranks from a soldier to an officer, or I may find another way to gain an officer rank."),
-        # (call_script, "script_start_quest", "qst_join_roman_army", "trp_fortuna"),
-    # (try_end),
-    # (try_begin),
-        # (neg|troop_slot_ge, "trp_player", slot_troop_renown, 200),
-        # (str_store_string, s2, "@First of all, I must become renowned. I should improve my renown at least to 200."),
-        # (call_script, "script_start_quest", "qst_gain_renown", "trp_fortuna"),
-    # (try_end),
-    (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
-    (mission_disable_talk),
-    (finish_mission, 4),
-    (jump_to_menu, "mnu_awak"),
-  ]],
+[anyone, "wahrsager_talk5",[
+],"And you... you are at the center of it all. The eternal city is your destiny. The throne of Caesar is... a possibility. A shadow you may yet cast. Now go. The vision fades. Your path back to the light is your own to find.",
+"close_window",[
+  (setup_quest_text,"qst_blank_quest_19"),
+  (str_store_string, s2, "@You descended into Hades and talked with several great figures. Among them the oracle Teiresias foretold your future: One day you would bear the title of Caesar Augustus and rule in Rome."),
+  (call_script, "script_start_quest", "qst_blank_quest_19", "trp_fortuna"),
+  (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 0),
+  (display_message, "str_quest_updated"),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
+  (jump_to_menu, "mnu_awak"),
+]],
 ##end Teiresias
 
 ##Herakles
@@ -99061,131 +99131,191 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [trp_hadrianus,"start",[], "You need to get us out here.", "close_window",[]],
 [trp_wlodowiecus,"start",[], "You need to get us out here.", "close_window",[]],
 
+## Thusnelda, Arminius Sword Quest
+
 [trp_thusnelda,"start",[
   (quest_slot_ge, "qst_arminius_sword", slot_quest_current_state, 1),
- ],
-  "You have the potion?", "thusnelda_talk2_1",[]],
+],"Do you have it? The potion?", "thusnelda_talk2_1",[]],
+
 [trp_thusnelda|plyr,"thusnelda_talk2_1",[
   (quest_slot_eq, "qst_arminius_sword", slot_quest_current_state, 3),
- ],
-  "Yes I have it.", "thusnelda_talk2_2",[]],
+],"Yes. I have it right here.", "thusnelda_talk2_2",[]],
+
 [trp_thusnelda|plyr,"thusnelda_talk2_1",[],
-  "Not yet.", "close_window",[]],
+"Not yet. I am still working on it.", "close_window",[]],
 
 [trp_thusnelda,"thusnelda_talk2_2",[],
-  "Fine, give it to me!", "thusnelda_talk2_3",[]],
+"Finally! Give it to me!", "thusnelda_talk2_3",[]],
 [trp_thusnelda|plyr,"thusnelda_talk2_3",[],
-  "Sure, here take.", "thusnelda_talk2_4_fail",[]],
+"Of course. Here you are.", "thusnelda_talk2_4_fail",[]],
 
 [trp_thusnelda,"thusnelda_talk2_4_fail",[],
-  "--She drinks the potion.--^^Uh ahhh, that is strong. Uff Annd nnooow to your reewarddd. I think the tomb was near, I was it UFLA, or blaaa ba.", "thusnelda_talk2_4_fail2",[]],
+"--She snatches the bottle and drinks it down in one long gulp.--^^Gods, that's strong... ahhh... Now, your reward... The tomb... it's somewhere... somewhere between the... *hic*... the trees...", "thusnelda_talk2_4_fail2",[]],
 [trp_thusnelda|plyr,"thusnelda_talk2_4_fail2",[],
-  "Damn! Where is it!", "thusnelda_talk2_4_fail3",[]],
+"Damn it, woman! Where is it?!", "thusnelda_talk2_4_fail3",[]],
+[trp_thusnelda|plyr,"thusnelda_talk2_4_fail2",[],
+"Speak?! Where is it!", "thusnelda_talk2_4_fail3",[]],
+
 [trp_thusnelda,"thusnelda_talk2_4_fail3",[],
-  " I I, I don't know but, I really don't know...", "close_window",
-[(jump_to_menu, "mnu_town"),
-  (finish_mission),
-  (call_script, "script_fail_quest", "qst_arminius_sword"),
-  (call_script, "script_end_quest", "qst_arminius_sword"),]],
-
-[trp_thusnelda|plyr,"thusnelda_talk2_3",[],
-  "First I want my reward!", "thusnelda_talk2_4",[]],
-
-[trp_thusnelda,"thusnelda_talk2_4",[],
-  "No, no I must make sure that this potion really works! Give it to me if you want to know the location of the tomb.", "thusnelda_talk2_5",[]],
-[trp_thusnelda|plyr,"thusnelda_talk2_5",[],
-  "Fuck of you whore, tell it! Now! Or I will!", "thusnelda_talk2_6",[]],
-[trp_thusnelda,"thusnelda_talk2_6",[],
-  "Or what? You think I fear you? No! No!  I will never tell you.  Go away! I don't want to see you again.", "close_window",[
+"I... I don't... ^^-- She slumps over, unconscious. --", "close_window",[
   (jump_to_menu, "mnu_town"),
-  (finish_mission),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 1500),
+  (finish_mission, 2),
   (call_script, "script_fail_quest", "qst_arminius_sword"),
   (call_script, "script_end_quest", "qst_arminius_sword"),
-  ]],
+]],
+
+[trp_thusnelda|plyr,"thusnelda_talk2_3",[],
+"First, the location of the tomb. Then you get the potion.",
+"thusnelda_talk2_4",[]],
+
+[trp_thusnelda,"thusnelda_talk2_4",[],
+"No! How do I know it's not just colored water? I must see if it works first! Give it to me, or you get nothing!",
+"thusnelda_talk2_5",[]],
+
 [trp_thusnelda|plyr,"thusnelda_talk2_5",[],
-   "It works, the witch Hunna made it!", "thusnelda_talk2_6_fin",[]],
+"Damn you, whore! Tell me now, or I'll carve the answer out of you!",
+"thusnelda_talk2_6",[]],
+
+[trp_thusnelda,"thusnelda_talk2_6",[],
+"Or what? You think I fear a Roman dog like you? I have faced far worse. I will never tell you. Now get out!",
+"close_window",[
+  (jump_to_menu, "mnu_town"),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+  (call_script, "script_fail_quest", "qst_arminius_sword"),
+  (call_script, "script_end_quest", "qst_arminius_sword"),
+]],
+
+[trp_thusnelda|plyr,"thusnelda_talk2_5",[],
+"It will work. The witch Hunna brewed it herself.",
+"thusnelda_talk2_6_fin",[]],
+
 [trp_thusnelda,"thusnelda_talk2_6_fin",[],
-   "Hunna you say? Ah she also made the other potion...", "thusnelda_talk2_6_fin1",[]],
+"Hunna... She was the one who gave me the first potion...",
+"thusnelda_talk2_6_fin1",[]],
+
 [trp_thusnelda|plyr,"thusnelda_talk2_6_fin1",[],
-   "The other potion?", "thusnelda_talk2_6_fin2",[]],
+"The 'first potion'?",
+"thusnelda_talk2_6_fin2",[]],
+
 [trp_thusnelda,"thusnelda_talk2_6_fin2",[],
-   "When I was young I asked her for a potion to make me look beautiful and young even if I am old. But If I would have known what would happen...", "thusnelda_talk2_6_fin3",[]],
+"When I was a young bride, I asked her for a potion to keep me beautiful forever. I was afraid... afraid Arminius would tire of me if I grew old. If only I had known...",
+"thusnelda_talk2_6_fin3",[]],
 
 [trp_thusnelda|plyr,"thusnelda_talk2_6_fin3",[],
-   "Oh, I see. Why you wanted such a potion? Wasn't you not already married with Arminius?", "thusnelda_talk2_6_fin4",[]],
+"Why would you fear that? You were already married to him.",
+ "thusnelda_talk2_6_fin4",[]],
 
 [trp_thusnelda,"thusnelda_talk2_6_fin4",[],
-   "Yes, but I feared he would leave me if I become too old. I wanted to make sure I always stay beautiful. I thought Arminius would only love me because of my beauty.", "thusnelda_talk2_6_fin5",[]],
+"Yes, but I thought he only loved my beauty. I was a fool.",
+"thusnelda_talk2_6_fin5",[]],
+
 [trp_thusnelda|plyr,"thusnelda_talk2_6_fin5",[],
-   "Did he? It is said he was driven to frenzy after he heard about the rumors of your death.", "thusnelda_talk2_6_fin6",[]],
+"Was he? They say he flew into a rage when he heard the Romans had killed you.",
+"thusnelda_talk2_6_fin6",[]],
 
 [trp_thusnelda,"thusnelda_talk2_6_fin6",[],
-   "Yes I know. But when I was young I was stupid... Anyway, I was released from prison but not allowed to leave Rome. My son was taken away from me and fought in the arena. He died young. I managed to convince Claudius to set me free and then traveled back to Germania only to discover, that my husband is dead and his coalition against Rome was crushed.", "thusnelda_talk2_6_fin7",[]],
+"I know. I was young and foolish... After my capture, they took my son from me. He died in the gladiator schools. I was a prisoner in Rome for years. When Claudius finally released me, I came home... only to find Arminius was dead, and his great alliance shattered.",
+"thusnelda_talk2_6_fin7",[]],
 
 [trp_thusnelda|plyr,"thusnelda_talk2_6_fin7",[],
-   "Did you organized a proper funeral for him? And where was he buried?", "thusnelda_talk2_6_fin8",[]],
+"Did you give him a proper burial? Where is his tomb?",
+"thusnelda_talk2_6_fin8",[]],
+[trp_thusnelda|plyr,"thusnelda_talk2_6_fin7",[],
+"And you gave him a proper burial, right?",
+"thusnelda_talk2_6_fin8",[]],
 
 [trp_thusnelda,"thusnelda_talk2_6_fin8",[],
-   "Yes I did. We buried him in a sacred forest between Locoritum and Kedelk. Now give me the potion!", "thusnelda_talk2_6_fin9",[]],
+"Yes. We buried him in the sacred grove, deep in the forest between Locoritum and Kedelk. Now... give me the potion. Please.",
+"thusnelda_talk2_6_fin9",[]],
 
 [trp_thusnelda|plyr,"thusnelda_talk2_6_fin9",[],
-   "ye, here take it. Though I should tell you that the potion is fake. Also the potion of beauty you drunk as girl was a fake. Hunna told me.", "thusnelda_talk2_6_fin10",[]],
+"Here. But you should know... Hunna told me it's a fake. Just like the first one.", "thusnelda_talk2_6_fin10",[]],
 
 [trp_thusnelda,"thusnelda_talk2_6_fin10",[],
-   "What? But why I am still looking young? ", "thusnelda_talk2_6_fin11",[]],
+"What? But... why do I still look like this?", "thusnelda_talk2_6_fin11",[]],
 
 [trp_thusnelda|plyr,"thusnelda_talk2_6_fin11",[],
-   "Dunno, but if I look closely I notice some small crinkles. Hm, how did your mother look?", "thusnelda_talk2_6_fin12",[]],
+"I don't know. Looking closer, I can see a few small wrinkles. What did your mother look like when she was older?",
+"thusnelda_talk2_6_fin12",[]],
 
 [trp_thusnelda,"thusnelda_talk2_6_fin12",[],
-   "Ah she was a beauty, even with fifty years she looked like eighteen.... Ah I am stupid...", "thusnelda_talk2_6_fin13",[]],
+"She was a great beauty. Even at fifty, she looked no older than... Oh. Oh, you gods. All this time... I was a fool.",
+"thusnelda_talk2_6_fin13",[]],
 
 [trp_thusnelda|plyr,"thusnelda_talk2_6_fin13",[],
-   "I think we solved this riddle. Now I will leave and search for the tomb.", "thusnelda_talk2_6_fin14",[]],
+"It seems we've solved one mystery, at least. Now I will leave you and find the tomb.",
+"thusnelda_talk2_6_fin14",[]],
 
 [trp_thusnelda,"thusnelda_talk2_6_fin14",[],
-   "But, please don't desecrate or loot it. I loved my husband and I want that he rests in peace.", "thusnelda_talk2_6_fin15",[]],
+"Wait. Please... do not desecrate his grave. He was my husband. Let him rest in peace.",
+"thusnelda_talk2_6_fin15",[]],
+
 [trp_thusnelda|plyr,"thusnelda_talk2_6_fin15",[],
-   "I am sorry, but I can't promise anything, my lady.", "close_window",[
+"I can't make any promises, my lady.",
+"close_window",[
   (jump_to_menu, "mnu_town"),
-  (finish_mission),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
   (add_xp_as_reward, 500),
   (enable_party, "p_sacred_grove_2"),
   (display_message, "@A new location is now available on the map"),
   (call_script, "script_succeed_quest", "qst_arminius_sword"),
   (call_script, "script_end_quest", "qst_arminius_sword"),
-   ]],
+]],
 
 [trp_thusnelda,"start",[
   (quest_slot_eq, "qst_arminius_sword", slot_quest_current_state, 0),
- ],
-  "Another stupid suitor? Fuck off idiot.", "thusnelda_talk_1",[]],
-[anyone|plyr,"thusnelda_talk_1",[], "What? Whats wrong with you?", "thusnelda_talk_2",[]],
-[anyone|plyr,"thusnelda_talk_1",[], "How you call me, you whore?", "thusnelda_talk_2_fail",[]],
-[anyone,"thusnelda_talk_2_fail",[], "--She quickly draws a knife.-- ^^One step closer or I'll stab you bastard! I have enough! I can't stand all those idiots coming to me just because I still look like eighteen. I am fifty years old and I don't want to marry again. Now leave and never come back or I'll stab you.", "close_window",
-[(jump_to_menu, "mnu_town"),
-  (finish_mission),
+],"Another suitor? By the gods, can't a woman find peace even at the edge of the world? Get lost.", "thusnelda_talk_1",[]],
+
+[anyone|plyr,"thusnelda_talk_1",[], "What? What are you talking about?",
+"thusnelda_talk_2",[]],
+[anyone|plyr,"thusnelda_talk_1",[], "Watch your tongue, woman. Who do you think you're talking to?",
+"thusnelda_talk_2_fail",[]],
+
+[anyone,"thusnelda_talk_2_fail",[], "--She draws a knife with startling speed.-- ^^One more step and I'll gut you where you stand. I am done with idiots like you and your leering eyes! I may look young, but I am fifty years old and my heart is buried with my husband. Now get out of my sight before I give you a new scar to remember me by.",
+"close_window",[
+  (jump_to_menu, "mnu_town"),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
   (call_script, "script_fail_quest", "qst_arminius_sword"),
   (call_script, "script_end_quest", "qst_arminius_sword"),
-  ]],
+]],
 
-[anyone,"thusnelda_talk_2",[], "I have enough! I can't stand all those idiots coming to me just because I still look like eighteen. I am fifty years old and I don't want to marry again.", "thusnelda_talk_3",[]],
-[anyone|plyr,"thusnelda_talk_3",[], "I am sorry. The gods must have blessed, or cursed you? Depends on how you see it. "+
-  "Anyway, I am {playername}. With whom I have the pleasure of speaking?", "thusnelda_talk_4",[]],
+[anyone,"thusnelda_talk_2",[], "I've had enough! Every man in this town thinks that because the gods have left my face untouched by time, my bed is open for offers. I am fifty years old. I will never marry again. Is that clear enough?", "thusnelda_talk_3",[]],
 
-[anyone,"thusnelda_talk_4",[], "I am Thusnelda, wife of Arminius. You have come to marry me too, right? If that's the case you better leave. There is no hope for you.", "thusnelda_talk_5",[]],
-[anyone|plyr,"thusnelda_talk_5",[], "No, I was indeed searching for you but for another reason. I want to ask where your husband is buried. He was a great warrior and I want to make sacrifices next to his tomb.", "thusnelda_talk_6",[]],
+[anyone|plyr,"thusnelda_talk_3",[], "My apologies. It seems the gods have given you a blessing that feels more like a curse. My name is {playername}. With whom do I have the honor of speaking?",
+"thusnelda_talk_4",[]],
 
-[anyone,"thusnelda_talk_6",[], "How do I know that you are not a Roman who wants to take revenge on my husband or a grave robber? I won't tell you the location!", "thusnelda_talk_7",[]],
-[anyone|plyr,"thusnelda_talk_7",[], "What if I make you look old and ugly? I know a witch who may can make a potion.", "thusnelda_talk_8",[]],
-[anyone,"thusnelda_talk_8",[], "Hm, hm, agreed! Bring me the potion and I will tell you where you can find the grave of my husband.", "close_window",
-[
+[anyone,"thusnelda_talk_4",[], "I am Thusnelda, wife of Arminius. So, you're not here to offer me marriage and a pig farm, then? What do you want?",
+"thusnelda_talk_5",[]],
+
+[anyone|plyr,"thusnelda_talk_5",[], "I was not. I seek the resting place of your husband. He was a great warrior, and I wish to pay my respects at his tomb.",
+"thusnelda_talk_6",[]],
+
+[anyone,"thusnelda_talk_6",[], "Respects? Or are you a Roman dog sent to desecrate his grave? Or a common thief looking to pry the gold from his bones? I will never reveal its location!",
+"thusnelda_talk_7",[]],
+
+[anyone|plyr,"thusnelda_talk_7",[], "What if I could solve your problem? I know a witch who could help.",
+"thusnelda_talk_8",[]],
+[anyone|plyr,"thusnelda_talk_7",[], "What if I could make you look as old as you feel? There maight be a potion that could help.",
+"thusnelda_talk_8",[]],
+
+[anyone,"thusnelda_talk_8",[], "-- A flicker of something—hope? desperation?—crosses her face. --^^To look... old? To finally have peace? Agreed. Bring me this potion, and I will tell you the location of my husband's grave.",
+"close_window",[
   (add_quest_note_from_sreg, "qst_arminius_sword", 3, "@Bring Thusnelda a potion which makes her look older. Its the best to ask Hunna for such a postion.", 0),
   (display_message, "str_quest_updated"),
   (quest_set_slot,"qst_arminius_sword", slot_quest_current_state, 1),
-  ]],
+]],
 
-  #lombard fall back dialgoue
+
+# lombard fall back dialgoue
+
 [trp_gambara,"start",[], "Welcome {playername}. How can I help you?", "gambara_talk",[]],
 [trp_gambara|plyr,"gambara_talk",[], "Farewell.", "close_window",[]],
 

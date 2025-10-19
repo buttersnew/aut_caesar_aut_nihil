@@ -763,7 +763,7 @@ gladiator_armors = [itm_arena_armor_yellow,itm_arena_armor_red,itm_arena_armor_b
 gladiator_shields = [itm_arena_shield_red,itm_arena_shield_blue,itm_arena_shield_green,itm_arena_shield_yellow]
 
 troops = [
-["player","Player","Player",tf_hero|tf_unmoveable_in_party_window,no_scene,reserved,fac_player_faction,[],str_4|agi_4|int_4|cha_4,wp(15),0,0x000000003f00100418a371b6da8dcaa200000000001e286b0000000000000000],
+["player","Player","Player",tf_hero|tf_unmoveable_in_party_window,no_scene,reserved,fac_player_faction,[],str_4|agi_4|int_4|cha_4,wp(15),0,0x000000002708300432db74b65b71badb00000000001db6d20000000000000000],
 ["multiplayer_profile_troop_male","multiplayer_profile_troop_male","multiplayer_profile_troop_male", tf_hero|tf_guarantee_all, 0, 0,fac_commoners,[],hero_attrib,0,knows_hero,0x000000018000000136db6db6db6db6db00000000001db6db0000000000000000],
 ["multiplayer_profile_troop_female","multiplayer_profile_troop_female","multiplayer_profile_troop_female", tf_hero|tf_female|tf_guarantee_all, 0, 0,fac_commoners,[],hero_attrib,0,knows_hero,0x000000018000004136db6db6db6db6db00000000001db6db0000000000000000],
 ["temp_troop","Temp Troop","Temp Troop",tf_hero,no_scene,reserved,fac_commoners,[],hero_attrib,0,knows_hero|knows_inventory_management_10,0],
