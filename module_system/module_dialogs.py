@@ -20501,88 +20501,166 @@ dialogs =[
 
 ###PETRUS
 [trp_petrus,"start",[],
-    "Ave! What brings you to me?", "petrus_talk_1",[]],
+"Ave. What brings you to me?",
+"petrus_talk_1",[]],
 
 [anyone|plyr,"petrus_talk_1",[],
-    "I am not sure why but after I saw a group of people standing next to the road I wanted to take a look and see whats going on.^Who are you want what wanted the people from you?", "petrus_talk_2",[]],
+"I saw a crowd gathered here earlier. I was curious what was happening. Who are you, and what did those people want from you?",
+"petrus_talk_2",[]],
 [anyone,"petrus_talk_2",[],
-    "I am Petrus. The people who visited me were afraid. Like many others they think I could save them from death or heal them or whatever. Though I cannot.", "petrus_talk_3",[]],
+"I am Petrus. And those people... they were afraid. They came seeking miracles, hoping I could save them from sickness or death. But that is not in my power.",
+"petrus_talk_3",[]],
+
 [anyone|plyr,"petrus_talk_3",[],
-    "I am {playername}. I heard people talking about the miracles Christus performed. Of course, I am also familiar with the legends of the gods. And there are always people who claim the gods have healed or helped them. There are even people who worship the Princeps as god.", "petrus_talk_4",[]],
+"My name is {playername}. I have heard stories of the miracles your Chrestus performed. But I've also heard tales of Apollo's healing, and seen men worship Caesar as a living god. Miracles seem to be everywhere.",
+"petrus_talk_4",[]],
+
 [anyone,"petrus_talk_4",[],
-    "God is not a magician! I can tell you, God wont perform any miracles! And the tales of the Roman and Greek gods are all nothing more than tales. The people who claim to be healed by the gods are either liars or they don't understand. And no Caesar ever was a god!", "petrus_talk_5",[]],
+"God is not a stage magician, my friend. He does not perform tricks for an audience. The stories of the old gods are just that—stories. And no Caesar, however powerful, has ever been more than a man.",
+"petrus_talk_5",[]],
+
 [anyone|plyr,"petrus_talk_5",[],
-    "I am now confused and I must say I also saw miracles by myself. For example, sometimes when I make sacrifices to the gods before a battle I feel stronger or my wounds heal.", "petrus_talk_6",[]],
+"I am not so sure. I've seen things myself. Sometimes, when I sacrifice to the gods before a battle, I feel my wounds ache less, my arm grow stronger.",
+"petrus_talk_6",[]],
+
 [anyone,"petrus_talk_6",[],
-    "Did your wounds really heal? Are you really stronger? No! You just think it and then you push yourself.", "petrus_talk_7",[]],
+"Do your wounds truly heal? Or does the belief that they will simply give you the strength to ignore the pain? The mind is a powerful thing.",
+"petrus_talk_7",[]],
+
 [anyone|plyr,"petrus_talk_7",[],
-    "Hm, if I think about it my wounds never healed nor anything like that. It was always me thinking it. Sometimes my men think the gods favor us, then they are braver and then I can push them more. Sometimes they think the gods wont favor us anymore, then their hearts are full of fear when we enter battle. Their morale will break more easily.", "petrus_talk_7_1",[]],
+"When I think on it... no, the wounds never vanished. It was always in my head. When my men believe the gods are with us, they fight like lions. When they fear the gods have abandoned them, their hearts are filled with dread and they break easily.",
+"petrus_talk_7_1",[]],
+
 [anyone,"petrus_talk_7_1",[],
-    "Exactly. Superstition is widespread, in particular among soldiers.", "petrus_talk_8",[]],
+"Exactly. Superstition is a powerful motivator, especially for men who live by the sword.",
+"petrus_talk_8",[]],
+
 [anyone|plyr,"petrus_talk_8",[],
-    "Though if your god cannot perform any miracles, if he cannot help his worshipers how you know he exists? And I saw things in my life which I cannot explain. This makes me believe gods exist.", "petrus_talk_9",[]],
+"But if your God performs no miracles, how do you know he exists? I've seen things in my life I cannot explain. That is why I believe in the divine.",
+"petrus_talk_9",[]],
+
 [anyone,"petrus_talk_9",[],
-    "One almighty God exists. But as I already said, he isn't a magician. God exists through people, their deeds and works. I give you an example: Let's assume there is a man who prays every day. He prays that God grands him a wife, children, food and farmland. Although he is a strong man who could work he does nothing else than praying. And what will he have once he is old? Nothing.^Now let's assume there is a woman who never prayed in her whole life, though she worked hard and helped other people. What else does she need? I tell you, she will have a place in heaven!", "petrus_talk_10",[]],
+"God exists. Not as a magician in the sky, but through the actions of good people. Consider this: a man prays every day for a wife, a farm, and a family. But he does nothing else. He is strong and able, but he only prays. He will die old, alone, and hungry. Now consider a woman who never prays, but works hard her entire life and shows kindness to her neighbors. Will she not have everything the other man wished for? She has already found her place in God's kingdom.",
+"petrus_talk_10",[]],
+
 [anyone|plyr,"petrus_talk_10",[],
-    "But is god not totally useless then? Does one even need god, if he seems to do nothing?", "petrus_talk_11",[]],
+"But then what is the point of god? If we must do everything ourselves, why do we need Him at all?",
+"petrus_talk_11",[]],
+
 [anyone,"petrus_talk_11",[],
-    "No he is not useless. I'll give you another example. Let's say we have a sick man. He can't work and thus lives in poverty. Nobody cares for him, still God does. If he believes in God, he will find relief in praying.", "petrus_talk_12",[]],
+"He is not useless. He is comfort. Imagine a man so sick he cannot work. The world ignores him, but God does not. In his faith, in his prayers, he finds the strength to endure his suffering with peace in his heart.",
+"petrus_talk_12",[]],
+
 [anyone|plyr,"petrus_talk_12",[],
-    "But he will suffer a lot and God doesn't seem to help him.", "petrus_talk_13",[]],
+"But he still suffers. His god does not take away his pain.",
+"petrus_talk_13",[]],
+
 [anyone,"petrus_talk_13",[],
-    "God will help him once he dies and he will have a place in heaven.", "petrus_talk_14",[]],
+"His pain on this earth, no. But God promises him relief in the life to come.",
+"petrus_talk_14",[]],
+
 [anyone|plyr,"petrus_talk_14",[],
-    "How shall he know God exists? How shall he know he gets a place in heaven, whatever that means? Why does he even suffer, if God loves us and wants us to live? ", "petrus_talk_15",[]],
+"How can he know that? How can he know this 'heaven' is real? And if god loves us, why does he allow us to suffer in the first place?",
+"petrus_talk_15",[]],
+
 [anyone,"petrus_talk_15",[],
-    "If all people would follow God and understand the message of his son the sick man from my example wouldn't have to suffer. People would care for him. Though they don't and thus the people have to pay the price for it. Nevertheless if one follows Gods path he will find redemption in the afterlife.", "petrus_talk_16",[]],
+"If all people followed the way of Chrestus, the sick man in my story would not suffer alone. His neighbors would care for him. The suffering exists because people turn away from God's path. Yet even so, for the man who keeps his faith, there is redemption waiting at the end of his journey.",
+"petrus_talk_16",[]],
+
 [anyone|plyr,"petrus_talk_16",[],
-    "I still don't understand it. Does god wants us to suffer? Let's say we have a poor but strong man. There is no hope he can make his living in a legal way. Is he allowed to commit crimes to improve his situation? For example stealing.", "petrus_talk_17",[]],
+"I'm still not sure I understand. Does god want us to be poor and helpless? What of a strong man with no legal way to feed his family? Is it a sin for him to steal bread?",
+"petrus_talk_17",[]],
+
 [anyone,"petrus_talk_17",[],
-    "No, God wants you to live without sin. He will have to pay for all the crimes he does in the afterlife. But God doesn't want us to suffer. Though suffering exists. It is because the people have a free will. God wanted that everyone has a free will, thus they can also make bad and sinful decisions which cause the suffering.", "petrus_talk_18",[]],
+"God does not want us to suffer. But He gave us free will—the freedom to choose. And with that freedom comes the ability to make sinful choices that cause suffering for ourselves and for others. The man who steals will answer for his crime in the afterlife. God's path is to live without sin, even when it is difficult.",
+"petrus_talk_18",[]],
+
 [anyone|plyr,"petrus_talk_18",[],
-    "Hm.", "petrus_talk_19",[]],
+"I see.", "petrus_talk_19",[]],
+
 [anyone,"petrus_talk_19",[],
-    " I hope I could help you somehow. I know the world is confusing. But we cannot understand everything. God's way of thinking is above us. You have more questions? Its always good to ask.", "petrus_talk_20",[]],
+"I hope I have given you some clarity. The world is a confusing place, and God's ways are not always easy for us to understand. Do you have more questions? It is always good to ask.",
+"petrus_talk_20",[
+  (assign, "$temp3", 0),
+]],
+
 [anyone,"petrus_talk_20_pretalk",[],
-    "Any other questions?", "petrus_talk_20",[]],
+"Do you have any other questions?",
+"petrus_talk_20",[]],
 
-[anyone|plyr,"petrus_talk_20",[],
-    "Are Christians allowed to kill someone?", "petrus_talk_20_q1",[]],
+[anyone|plyr,"petrus_talk_20",[
+  (store_and, ":has_flag", "$temp3", 1),
+  (eq, ":has_flag", 0),
+],
+"Are followers of Chrestus forbidden from killing?",
+"petrus_talk_20_q1",[
+  (val_or, "$temp3", 1),
+]],
+
 [anyone,"petrus_talk_20_q1",[],
-    "Strictly speaking: no. The Master told us not to use any violence. "+
-    " Though others argue one is allowed to defend himself."+
-    " In any case, I highly recommend you to try to solve your conflicts with words rather than swords."+
-    " If you really cannot avoid it show at least mercy.", "petrus_talk_20_pretalk",[(val_add, "$temp2", 250),]],
+"The Master taught us to turn the other cheek, to not meet violence with violence. However, some argue that a man has a right to defend his life. My advice is this: always seek peace. Use words before you use a sword. And if you must fight, show mercy.",
+"petrus_talk_20_pretalk",[
+  (val_add, "$temp2", 250),
+]],
 
-[anyone|plyr,"petrus_talk_20",[],
-    "I heard some Christians talking about the end of the world. Will the world end soon?", "petrus_talk_20_q5",[]],
+[anyone|plyr,"petrus_talk_20",[
+  (store_and, ":has_flag", "$temp3", 2),
+  (eq, ":has_flag", 0),
+],
+"I have heard some Christians speak of the end of the world. Is it coming soon?",
+"petrus_talk_20_q5",[
+  (val_or, "$temp3", 2),
+]],
+
 [anyone,"petrus_talk_20_q5",[],
-    "I don't know, though I don't think so. "+
-    "They are afraid and because they are afraid they talk all sorts of nonsense. "+
-    "Though something will change for sure! God has send us his son to clean the world from sin. "+
-    "In some way this is the beginning of a new era.", "petrus_talk_20_pretalk",[(val_add, "$temp2", 250),]],
+"I do not know the hour. Many who speak of it are driven by fear. But in a way, the world has already ended. God sent His son to cleanse the world of sin. This is the dawn of a new age.",
+"petrus_talk_20_pretalk",[
+  (val_add, "$temp2", 250),
+]],
 
-[anyone|plyr,"petrus_talk_20",[],
-    "Did you know Christus?", "petrus_talk_20_q2",[]],
+[anyone|plyr,"petrus_talk_20",[
+  (store_and, ":has_flag", "$temp3", 4),
+  (eq, ":has_flag", 0),
+],
+"Did you know Chrestus personally?",
+"petrus_talk_20_q2",[
+  (val_or, "$temp3", 4),
+]],
+
 [anyone,"petrus_talk_20_q2",[],
-    "Yes, of course. Decades ago I was one of his companions. "+
-    "I saw his work and his death", "petrus_talk_20_pretalk",[(val_add, "$temp2", 250),]],
+"Yes. I was a simple fisherman when he called me. I walked with him. I saw his works, and I saw his death.",
+"petrus_talk_20_pretalk",[
+  (val_add, "$temp2", 250),
+]],
 
-[anyone|plyr,"petrus_talk_20",[],
-    "I am still confused about life and death. Christus wants us to live, still we die.", "petrus_talk_20_q3",[]],
+[anyone|plyr,"petrus_talk_20",[
+  (store_and, ":has_flag", "$temp3", 8),
+  (eq, ":has_flag", 0),
+],
+"I am still confused. Chrestus wants us to live, yet we all die.",
+"petrus_talk_20_q3",[
+  (val_or, "$temp3", 8),
+]],
+
 [anyone,"petrus_talk_20_q3",[],
-    "Yes, he wants us to live. Death is part of it. "+
-    "With death the afterlife will start. Only people who live in sin fear death. "+
-    "If you live according to Christus' rules you don't need to fear anything.", "petrus_talk_20_pretalk",[(val_add, "$temp2", 250),]],
+"Yes, he wants us to truly live. This life is only a small part of that. Death is a doorway, not an end. Only those who live in sin have reason to fear what lies beyond it. If you follow the path of Chrestus, you have nothing to fear.",
+"petrus_talk_20_pretalk",[
+  (val_add, "$temp2", 250),
+]],
 
 [anyone|plyr,"petrus_talk_20",[],
-    "I have enough for today and don't want to waste your time. Ave atque vale!", "petrus_talk_21",[]],
+"I have taken enough of your time. Thank you. Ave atque vale!",
+"petrus_talk_21",[]],
+
 [anyone,"petrus_talk_21",[],
-    "You aren't wasting my time, its important to ask questions. The worst people are those who never ask questions. I will head now to Rome. Pax vobiscum.", "close_window",
-[
-    (add_xp_as_reward, "$temp2"),
-    (jump_to_menu, "mnu_auto_return_map"),
-    (finish_mission),]],
+"You have not wasted my time. A question asked is a step towards wisdom. The most lost are those who never ask. I must head to Rome now. My time has come. Pax vobiscum.",
+"close_window",[
+  (add_xp_as_reward, "$temp2"),
+  (jump_to_menu, "mnu_auto_return_map"),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
+]],
  ###END PETRUS
 
 [trp_argentarius,"start",[(eq, "$g_talk_troop_met", 0),
