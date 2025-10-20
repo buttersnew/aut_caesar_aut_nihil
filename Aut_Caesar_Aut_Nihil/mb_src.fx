@@ -3799,6 +3799,85 @@ struct VS_OUTPUT_BUMP_DYNAMIC
 	half   Fog					: FOG;
 };
 
+VS_OUTPUT_BUMP_DYNAMIC vs_main_bump_interior (float4 vPosition : POSITION, half3 vNormal : NORMAL, half2 tc : TEXCOORD0,  half3 vTangent : TANGENT, half3 vBinormal : BINORMAL, half4 vVertexColor : COLOR0)
+{
+	INITIALIZE_OUTPUT(VS_OUTPUT_BUMP_DYNAMIC, Out);
+
+	float4 vWorldPos = mul(matWorld,vPosition);
+	Out.Pos = mul(matWorldViewProj, vPosition);
+	Out.Tex0 = tc;
+
+	half3 vWorldN = (half3)normalize(mul((float3x3)matWorld, vNormal));
+	half3 vWorld_binormal = (half3)normalize(mul((float3x3)matWorld, vBinormal));
+	half3 vWorld_tangent  = (half3)normalize(mul((float3x3)matWorld, vTangent));
+
+	half3x3 TBNMatrix = half3x3(vWorld_tangent, vWorld_binormal, vWorldN);
+
+	#ifndef USE_LIGHTING_PASS
+	// Performance: Pass the light vectors in tangent space to the pixel shader.
+	// The vectors are NOT normalized here to save VS instructions.
+	Out.vec_to_light_0.xyz =  mul(TBNMatrix, vLightPosDir[iLightIndices[0]] - vWorldPos.xyz);
+	Out.vec_to_light_1.xyz =  mul(TBNMatrix, vLightPosDir[iLightIndices[1]] - vWorldPos.xyz);
+	Out.vec_to_light_2.xyz =  mul(TBNMatrix, vLightPosDir[iLightIndices[2]] - vWorldPos.xyz);
+	#endif
+
+   	Out.VertexColor = vVertexColor;
+
+	float3 P = mul(matWorldView, vPosition).xyz;
+	float d = length(P);
+	Out.Fog = get_fog_amount_new(d, vWorldPos.z);
+	return Out;
+}
+
+PS_OUTPUT ps_main_bump_interior( VS_OUTPUT_BUMP_DYNAMIC In)
+{
+    PS_OUTPUT Output;
+
+    half4 total_light = (half4)vAmbientColor;
+
+	#ifndef USE_LIGHTING_PASS
+	half3 normal;
+	normal.xy = (2.0h * tex2D(NormalTextureSampler, In.Tex0).ag - 1.0h);
+	normal.z = sqrt(1.0h - dot(normal.xy, normal.xy));
+
+    // Performance: Use dot(vec, vec) for length squared, which is faster than length().
+    // Attenuation is calculated from this squared distance.
+	float LD_sq_0 = dot(In.vec_to_light_0.xyz, In.vec_to_light_0.xyz);
+	half3 L_0 = (half3)normalize(In.vec_to_light_0.xyz);
+	total_light += saturate(dot(normal, L_0)) * (half4)vLightDiffuse[iLightIndices[0]] / (LD_sq_0 + 1e-6f);
+
+	float LD_sq_1 = dot(In.vec_to_light_1.xyz, In.vec_to_light_1.xyz);
+	half3 L_1 = (half3)normalize(In.vec_to_light_1.xyz);
+	total_light += saturate(dot(normal, L_1)) * (half4)vLightDiffuse[iLightIndices[1]] / (LD_sq_1 + 1e-6f);
+
+	float LD_sq_2 = dot(In.vec_to_light_2.xyz, In.vec_to_light_2.xyz);
+	half3 L_2 = (half3)normalize(In.vec_to_light_2.xyz);
+	total_light += saturate(dot(normal, L_2)) * (half4)vLightDiffuse[iLightIndices[2]] / (LD_sq_2 + 1e-6f);
+	#endif
+
+	Output.RGBColor = half4(total_light.rgb, 1.0h);
+	half4 tex_col = tex2D(MeshTextureSampler, In.Tex0);
+    INPUT_TEX_GAMMA(tex_col.rgb);
+
+	Output.RGBColor *= tex_col;
+	Output.RGBColor *= In.VertexColor;
+
+    Output.RGBColor.rgb = saturate(OUTPUT_GAMMA(Output.RGBColor.rgb));
+    Output.RGBColor.a = In.VertexColor.a;
+
+	return Output;
+}
+
+technique bumpmap_interior
+{
+	pass P0
+	{
+		VertexShader = compile vs_2_0 vs_main_bump_interior();
+		PixelShader = compile ps_2_0 ps_main_bump_interior();
+	}
+}
+
+//---
 struct VS_OUTPUT_BUMP_DYNAMIC_NEW
 {
 	float4 Pos					: POSITION;
