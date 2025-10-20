@@ -6692,7 +6692,7 @@ str_10|agi_10|int_15|cha_22|level(21), wp(50), knows_common, 0x0000000fc204030c4
 [itm_roman_poor1,itm_caligea],
 str_10|agi_10|int_15|cha_22|level(21), wp(50), knows_common, 0x0000000fff0c3282131a8ec21171367400000000001dc76d0000000000000000],
 ["petrus","Petrus","Petrus",tf_hero, no_scene, reserved, fac_neutral,
-[itm_roman_poor2,itm_caligea],
+[itm_generic_poor2,itm_caligea],
 str_10|agi_10|int_15|cha_22|level(21), wp(50), knows_common, 0x0000000ff900d34745a372429c6a38ad00000000001eb6d40000000000000000],
 
 ["lucillus","Lucillus","Lucillus",tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_neutral,

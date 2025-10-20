@@ -10805,130 +10805,141 @@ dialogs =[
 ############################################################################################################
 
 ############################################################################################################
-####################jew dialogue
-[trp_sarmatian_light_horseman|auto_proceed,"start",[(eq, "$talk_context", tc_tavern_talk),
-(eq, "$current_town", "p_town_26"),
-(troop_slot_eq, "trp_global_variables", g_flavor_event_3, 0),
+####################Sarmatian dialogue
+[trp_sarmatian_light_horseman|auto_proceed,"start",[
+  (eq, "$talk_context", tc_tavern_talk),
+  (eq, "$current_town", "p_town_26"),
+  (troop_slot_eq, "trp_global_variables", g_flavor_event_3, 0),
 ],
 "Proceed",
 "sarmatian_talk_1_1",[]],
 
-[trp_sarmatian_town_walker|auto_proceed,"start",[(eq, "$talk_context", tc_tavern_talk),
-(eq, "$current_town", "p_town_26"),
-(troop_slot_eq, "trp_global_variables", g_flavor_event_3, 0),
+[trp_sarmatian_town_walker|auto_proceed,"start",[
+  (eq, "$talk_context", tc_tavern_talk),
+  (eq, "$current_town", "p_town_26"),
+  (troop_slot_eq, "trp_global_variables", g_flavor_event_3, 0),
 ],
 "Proceed",
 "sarmatian_talk_1_1",[]],
 
 [anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_1_1",[
 ],
-"Ah, friend! I just returned from my journey deep into the steppes. We raided many Alan camps and I returned with much gold. With the gold I bought a nice decorated bong from a gold smith. I also bought weed and opium. We can smoke it together, honoring our victory and honoring our gods! I will prepare everything. ^^-- He pulls out the bong and fills in a mixture of weed and opium. --^^You can start.",
-"sarmatian_talk_1",[(troop_set_slot, "trp_global_variables", g_flavor_event_3, 1),
-    (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
+"Ah, my friend! Home from the steppes! We rode deep into the Alan lands and came back heavy with gold. I had a smith craft this beautiful bong. I also brought back the best smokeleaf and black-seed from the east. Come, let us smoke to our victory and give thanks to the gods! ^^-- He pulls out an ornate bong and begins packing a mixture into it. --^^ You first.",
+"sarmatian_talk_1",[
+  (troop_set_slot, "trp_global_variables", g_flavor_event_3, 1),
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
 ]],
 
 [anyone|other(trp_sarmatian_town_walker),"sarmatian_talk_1",[],
-"Sure. Hm, delicious, very delicious. Now tell me about your journeys.",
+"Good. Very good. Now, tell me of your raid.",
 "sarmatian_talk_2",
 [(call_script, "script_set_conversation_troop", "trp_sarmatian_town_walker"),]],
 
 [anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_2",[],
-"You know, the Alans are always sending raider parties. Thus we thought it would be time to strike back! We assembled a large host and ventured into their main lands. It was a long journey. We lost many men on the way due to constant attacks. But we inflicted high causalities too. We killed much of their cattle, their wives and children. I hope they learned something and will stop raiding us!",
+"The Alans have been bleeding us for too long. We gathered our best riders and struck back at their heart. It was a long ride, and they nipped at our heels the whole way. We lost good men. But we burned their camps, scattered their herds, and made their women weep. Perhaps now they will think twice before raiding our lands again.",
 "sarmatian_talk_3",
 [(call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),]],
 
 [anyone|other(trp_sarmatian_town_walker),"sarmatian_talk_3",[],
-"Don't think they will stop. They will come back to take revenge. I heard their kings are assembling their tribes for a punitive expedition, just like our king did.",
+"They will not. Blood calls for blood. I have heard their kings are gathering the tribes for revenge, just as we did.",
 "sarmatian_talk_4",
 [ (call_script, "script_set_conversation_troop", "trp_sarmatian_town_walker"),]],
 
 [anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_4",[],
-"If they come and raid our lands, we will come and raid their lands! Sooner or later they will give up. I am sure.^^But now tell me, what has happened while I was gone? I saw your herd grew in number. I counted one hundred horses. Also your wife grew. Has she given you many children?",
-"sarmatian_talk_5",
-[(call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),]],
+"Then let them come! For every one of our herds they slaughter, we will slaughter two of theirs! It is the way of the steppe. ^^But enough of war. How have you prospered? Your herd has grown, I see. A hundred fine horses. And your wife... she is wider. Many new children?",
+"sarmatian_talk_5",[
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
+]],
 
 [anyone|other(trp_sarmatian_town_walker),"sarmatian_talk_5",[],
-"Indeed! Six boys and five girls. Though one of the girls and two of the boys died as infants. Either it was because of some evil spirit or the gods were angry with us. I don't know. I am doing my sacrifices, I honor our law, I treat my servants well but I am also serve if necessary. I can't complain. My other girls are now all of full age and I am looking for suitable husbands. My oldest son is already married.",
-"sarmatian_talk_6",
-[(call_script, "script_set_conversation_troop", "trp_sarmatian_town_walker"),]],
+"Indeed! Six strong sons and five daughters. The gods took two of the boys and one girl in their first winter. An evil spirit, perhaps, or a sacrifice they demanded. I do not know. I honor the gods, I obey the laws. I cannot complain. My sons are learning the spear and the bow, and my daughters are of age. I must find good husbands for them soon.",
+"sarmatian_talk_6",[
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_town_walker"),
+]],
 
 [anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_6",[],
-"You are right. Damn I am high. Look at that foreigner there. Dunno why but I want to invite him to our little conversation.^^Hey you there! ^^-- He points at you.--^^You want to join us? Have a new bong with weed and opium. You wont find anything better than that.",
-"sarmatian_talk_7",
-[(call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"), ]],
-[anyone|plyr,"sarmatian_talk_7",[],
-"Thank you very much. Sounds fun.",
-"sarmatian_talk_8",
-[   ]],
-[anyone|plyr,"sarmatian_talk_7",[],
-"Thank you but I have to attend more important business.",
-"sarmatian_talk_leave_friendly",
-[   ]],
-[anyone|plyr,"sarmatian_talk_7",[],
-"Leave me alone you scum.",
-"sarmatian_talk_leave_angry",
-[   ]],
-[anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_leave_friendly",[],
-"Aye, have a nice day then.",
-"close_window",
-[ (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
+"You are a fortunate man. The smoke... it makes my head swim. Look at that stranger over there. He looks... interesting. Let's invite him to share our smoke.^^Hey, you! ^^-- He gestures at you.--^^ Yes, you! Come, join us. I have a new bong, and the smokeleaf is the best you will find this side of the Tanais.",
+"sarmatian_talk_7",[
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
 ]],
+
+[anyone|plyr,"sarmatian_talk_7",[],
+"Thank you for the offer. I would be honored.",
+"sarmatian_talk_8",[]],
+
+[anyone|plyr,"sarmatian_talk_7",[],
+"Thank you, but I have other business to attend to.",
+"sarmatian_talk_leave_friendly",[]],
+
+[anyone|plyr,"sarmatian_talk_7",[],
+"Leave me alone, you steppe filth.",
+"sarmatian_talk_leave_angry",[]],
+
+[anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_leave_friendly",[],
+"As you wish. Ride well.",
+"close_window",[
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
+]],
+
 [anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_leave_angry",[],
-"Bah. Idiot. I hope some Alans will kill you.",
-"close_window",
-[  (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
+"Bah. Another soft southerner. May the Alans find you and your fancy boots.",
+"close_window",[
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
 ]],
 
 [anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_8",[],
-"Whats your name? I am Kentaskros and he is my good friend Wlodarnoxarthos.",
-"sarmatian_talk_9",
-[ (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
+"Good. I am Kentaskros, and this is my kinsman, Wlodarnoxarthos. What is your name?",
+"sarmatian_talk_9",[
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
 ]],
+
 [anyone|plyr,"sarmatian_talk_9",[],
-"I am {playername}. I must say, that thing you call 'bong' is an incredible invention. I feel now very relaxed and hungry.",
-"sarmatian_talk_10",
-[   ]],
+"I am {playername}. This is... a remarkable bong. I feel very relaxed. And very hungry.",
+"sarmatian_talk_10",[]],
 
 [anyone|other(trp_sarmatian_town_walker),"sarmatian_talk_10",[],
-"Haha, its the weed, it always makes one hungry. I have an idea! Let's go to my hut. My wife will cook for us.",
-"sarmatian_talk_11",
-[ (call_script, "script_set_conversation_troop", "trp_sarmatian_town_walker"),
+"Hah! It is the smokeleaf. It always awakens the hunger of the wolf. I have an idea! Come to my yurt. My wife will cook us a proper meal.",
+"sarmatian_talk_11",[
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_town_walker"),
 ]],
 
 [anyone|other(trp_sarmatian_light_horseman),"sarmatian_talk_11",[],
-"I am in. You can also come {playername}.",
-"sarmatian_talk_12",
-[ (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
+"A fine idea! You should come too, {playername}.",
+"sarmatian_talk_12",[
+  (call_script, "script_set_conversation_troop", "trp_sarmatian_light_horseman"),
 ]],
 
 [anyone|plyr,"sarmatian_talk_12",[],
-"Thank you for the invitation, I am honored.",
-"sarmatian_talk_13",
-[]],
+"Thank you. I accept your generous invitation.",
+"sarmatian_talk_13",[]],
+
 [anyone|plyr,"sarmatian_talk_12",[],
-"I must refuse. I have important business to handle in town.",
-"sarmatian_talk_leave_friendly",
-[]],
+"I must refuse, but I thank you for your hospitality.",
+"sarmatian_talk_leave_friendly",[]],
 
 [anyone,"sarmatian_talk_13",[],
-"Very good. Let's go.",
-"close_window",
-[(jump_to_menu, "mnu_flavor_event_3"),
- (finish_mission),
+"Good. Let us go.",
+"close_window",[
+  (jump_to_menu, "mnu_flavor_event_3"),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
 ]],
 
-[trp_sarmatian_light_horseman,"start",[(eq, "$talk_context", tc_tavern_talk),
-(eq, "$current_town", "p_town_26"),
-(troop_slot_eq, "trp_global_variables", g_flavor_event_3, 1), ],
-"Can't you see I am busy.",
-"close_window",
-[   ]],
-[trp_sarmatian_town_walker,"start",[(eq, "$talk_context", tc_tavern_talk),
-(eq, "$current_town", "p_town_26"),
-(troop_slot_eq, "trp_global_variables", g_flavor_event_3, 1), ],
-"Can't you see I am busy.",
-"close_window",
-[   ]],
+[trp_sarmatian_light_horseman,"start",[
+  (eq, "$talk_context", tc_tavern_talk),
+  (eq, "$current_town", "p_town_26"),
+  (troop_slot_eq, "trp_global_variables", g_flavor_event_3, 1),
+],"Can't you see we are talking?",
+"close_window",[]],
+
+[trp_sarmatian_town_walker,"start",[
+  (eq, "$talk_context", tc_tavern_talk),
+  (eq, "$current_town", "p_town_26"),
+  (troop_slot_eq, "trp_global_variables", g_flavor_event_3, 1),
+],"We are in the middle of a conversation.",
+"close_window",[]],
+
 ##END
 ############################################################################################################
 
@@ -11002,68 +11013,87 @@ dialogs =[
 (troop_slot_eq, "trp_global_variables", g_flavor_event_2, 1), ],
 "Can't you see I am busy.",
 "close_window",
-[   ]],
+[]],
 ##END
 ############################################################################################################
-[trp_random_idiot,"start",[(str_store_troop_name, s2, "$g_talk_troop"),
+[trp_random_idiot,"start",[
+  (str_store_troop_name, s2, "$g_talk_troop"),
 ],
-"I am {s2} the blessed! Yes the blessed! I am blessed, I am BLESSED by the ETERNAL SUN! SOL INVICTUS blessed me! You, you, you like Sol Invictus?","random_idiot_talk",[]],
+"I am {s2} the Blessed! Yes, blessed by the ETERNAL SUN! SOL INVICTUS has touched me! Do you... do you believe in the Unconquered Sun?",
+"random_idiot_talk",[
+  (party_get_slot, "$temp1", "$current_town", slot_town_tavernkeeper),
+]],
 
 [anyone|plyr,"random_idiot_talk",[],
-"Blessed be Sol Invictus!","random_idiot_talk_good",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 50),]],
+"May the Unconquered Sun bless us all!","random_idiot_talk_good",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 50),]],
 
 [anyone|plyr,"random_idiot_talk",[],
-"A weak god and a useless god.","random_idiot_talk_angry",
-[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -50),]],
+"He is a false god, a pale imitation of Jupiter.",
+"random_idiot_talk_angry",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -50),
+]],
 
 [anyone,"random_idiot_talk_good",[],
-"Yes! Yes! He is the greatest. And I will tell you, what he did for me!","random_idiot_talk_2",[]],
+"Yes! YES! You see the light! Then you must hear my testimony! You must know what He did for me!",
+"random_idiot_talk_2",[]],
+
 [anyone,"random_idiot_talk_angry",[],
-"How dare you! Calling the strongest and greatest of all GODS WEAK! But I, I will forgive, because you don't know why he is so strong! I will tell you.","random_idiot_talk_2",[]],
+"How dare you! Blasphemer! To call the mightiest of all gods WEAK! But... I will forgive you. Because you are ignorant. I will enlighten you as to his true power!",
+"random_idiot_talk_2",[]],
 
 [anyone,"random_idiot_talk_2",[],
-"You must now: There is a woman working in this tavern as barmaid. Her name is Aureliana. She is beautiful! Her hair is like the rays of the sun casting on her heavenly face. "+
-"And her boobs are like mountains! So I am in love with her as you can see. I asked her out, but she refused. Then I made sacrifices to the gods, but non of them heard my call. "+
-"Then I made a sacrifice to Sol Invictus, praised be his name, and he heard me! I asked her again and she immediately fell in love with me! "+
-"Since that day I have been writing with chalk, 'I fucked the barmaiden!' on the walls of this tavern.","random_idiot_talk_3",[
-
-(party_get_slot, "$temp1", "$current_town", slot_town_tavernkeeper),
+"You must understand... there is a barmaid here, Aureliana. A goddess in human form! Her hair is like spun gold, her eyes are twin suns, and her breasts... her breasts are like the hills of Alba Longa! I was consumed with love for her, but she spurned me. I prayed to all the old gods, but they were deaf. Then, I prayed to Sol Invictus, and HE answered! I asked her again, and she fell into my arms! We made love! And since that day, I have written the truth on these walls for all to see: 'I FUCKED THE BARMAID!'", "random_idiot_talk_3",[
+  (party_get_slot, "$temp1", "$current_town", slot_town_tavernkeeper),
 ]],
 
 [anyone,"random_idiot_talk_3",[],
-"Bah, don't listen to this drunkard. He only tells nonsense! There is no woman called Aureliana working in my tavern! "+
-"The wine must have damaged his brain, otherwise I can't imagine why he is hallucinating constantly. ","random_idiot_talk_4",[
+"Don't listen to this madman. He's a wine-soaked lunatic! There is no Aureliana working here! His brain is pickled from drink. He's been hallucinating for a week.",
+"random_idiot_talk_4",[
     (call_script, "script_set_conversation_troop", "$temp1"),
 ]],
 
 [anyone,"random_idiot_talk_4",[],
-"Hey, hey! I am not hallucinating! Here she is! Standing there! ^^--He points on the wall. There is nothing but his shadow.--^^Here she is! My love, my honey!","random_idiot_talk_5",[]],
+"Not hallucinating! She's right here! Can't you see her? ^^--He gestures wildly at the empty wall, where his shadow plays.--^^ There she is! My love! My sunbeam!",
+"random_idiot_talk_5",[]],
+
 [anyone,"random_idiot_talk_5",[],
-"The people shall know it! They shall know that I fucked her!^^--He takes a piece of chalk and starts to write.--","random_idiot_talk_6",[]],
+"The world must know of our love! They must know! ^^--He fumbles for a piece of chalk and begins to scrawl on the wall again.--",
+"random_idiot_talk_6",[]],
 
 [anyone,"random_idiot_talk_6",[],
-"You drunken bastard. Stop this shit.^^--He takes the chalk and throws it away.--^^Go! Go! Leave my tavern!","random_idiot_talk_7",[
+"You drunken degenerate! Stop defiling my tavern! ^^--He snatches the chalk and throws it across the room.--^^ Get out! Get out before I call the Vigiles!",
+"random_idiot_talk_7",[
     (call_script, "script_set_conversation_troop", "$temp1"),
 ]],
+
 [anyone,"random_idiot_talk_7",[],
-"Sol invictus! Sol invictus! Help me! Help me! Defeat this scum! ^^--He is raising his arms.--^^Defeat him! Defeat him! Defeat him!","random_idiot_talk_8",[]],
+"Sol Invictus! Oh, mighty Sun! Strike down this unbeliever! Burn him with your holy fire! ^^--He raises his arms to the ceiling.--^^ Smite him! Smite him!", "random_idiot_talk_8",[]],
 
 [anyone,"random_idiot_talk_8",[],
-"You see, he is just plain crazy. It has been going on like this for days now. I must have angered the gods and they have sent him to punish me. Bah, if I am lucky he will die soon. He has drunk an amphora of wine each day. One can't survive this long.","random_idiot_talk_9",[
+"You see? Utterly insane. This has been my life for days. I must have angered some god to deserve this punishment. If I'm lucky, his liver will give out soon. He drinks enough wine to float a trireme.",
+"random_idiot_talk_9",[
     (call_script, "script_set_conversation_troop", "$temp1"),
 ]],
 
-[anyone,"random_idiot_talk_9",[(call_script, "script_troop_get_player_relation", "$g_talk_troop"),
-(gt, reg0, 0),],
-"I will leave now. I curse you, I curse you all! All except you. ^-- He points at you.--^^Because you said Sol is strong! But now I will go","random_idiot_talk_10",[]],
+[anyone,"random_idiot_talk_9",[
+  (call_script, "script_troop_get_player_relation", "$g_talk_troop"),
+  (gt, reg0, 0),
+],
+"I'm leaving! I curse this den of unbelievers! All except you! ^-- He points at you.--^^ You know the truth of the Sun! But I am going now!",
+"random_idiot_talk_10",[]],
+
 [anyone,"random_idiot_talk_9",[],
-"I will leave now. I curse you, I curse you all! But now I will go.","random_idiot_talk_10",[]],
+"I'm leaving! I curse you all! This place is a pit of darkness! I am going now!",
+"random_idiot_talk_10",[]],
 
 [anyone,"random_idiot_talk_10",[],
-"Finally, he leaves. ^^-- You hear screams from outside. -- ^^What's going on there?","close_window",[
+"Finally. Gods be praised, he's leaving. ^^-- A sudden, loud commotion erupts from the street outside. -- ^^Now what in Tartarus is going on out there?", "close_window",[
     (call_script, "script_set_conversation_troop", "$temp1"),
+
     (jump_to_menu, "mnu_flavor_event_4"),
-    (finish_mission),
+    (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+    (mission_disable_talk),
+    (finish_mission, 4),
 ]],
 
 ############################################################################################################
@@ -11256,222 +11286,215 @@ dialogs =[
 "close_window",[
 ]],
 
-[trp_aux_inf|auto_proceed,"start",[(eq, "$talk_context", tc_tavern_talk),
-(eq, "$current_town", "p_town_2"),
-(troop_slot_eq, "trp_global_variables", g_flavor_event_1, 0),
-(str_store_party_name, s22, "$current_town"),
-],
-"Proceed",
+[trp_aux_inf|auto_proceed,"start",[
+  (eq, "$talk_context", tc_tavern_talk),
+  (eq, "$current_town", "p_town_2"),
+  (troop_slot_eq, "trp_global_variables", g_flavor_event_1, 0),
+  (str_store_party_name, s22, "$current_town"),
+],"Proceed",
 "soldiers_talk_1_1",[]],
 
-[trp_vigilia|auto_proceed,"start",[(eq, "$talk_context", tc_tavern_talk),
-(eq, "$current_town", "p_town_2"),
-(troop_slot_eq, "trp_global_variables", g_flavor_event_1, 0),
-(str_store_party_name, s22, "$current_town"),
-],
-"Proceed",
+[trp_vigilia|auto_proceed,"start",[
+  (eq, "$talk_context", tc_tavern_talk),
+  (eq, "$current_town", "p_town_2"),
+  (troop_slot_eq, "trp_global_variables", g_flavor_event_1, 0),
+  (str_store_party_name, s22, "$current_town"),
+],"Proceed",
 "soldiers_talk_1_1",[]],
 
 [anyone|other(trp_aux_inf),"soldiers_talk_1_1",[
-],"By the gods, those Jews are crazy bastards! Its not even possible to erect a statue of Caesar! Whenever one is put up they go crazy!"
-+" I tell you the, as I served in the Hierosolyma garrison the new governor, it was Marcus Antonius Felix if I recall correctly, wanted to introduce the imperial cult"
-+" in the town. People told him its a bad idea but he continued with his plan. So, I and some other lads where ordered to erect this statue."
-+" But then, guess what happened! We erected the statue and not even fifteen minutes later a mob appeared and not only destroyed the statue but nearly"
-+" even killed us all. We had luck and managed it fast enough to retreat to the castle on the temple mount. In the following days we had a hard time restoring order."
-+" A week later or so we captured one of the rebels. As you know its custom to torture prisoners a little bit just for fun, but we decided to gave him the choice: either we torture him or"
-+" he makes at least one small sacrifice to our good Caesar. Guess what he did? ",
+],"By all the gods, the Jews are a stubborn bunch of bastards. You can't even put up a statue of the Princeps without them going completely mad!"
++" I'm telling you, I served in the Jerusalem garrison when the new governor, Felix, decided to introduce the Imperial Cult. The locals told him it was a bad idea, but would he listen? So, me and some other lads get the order to erect the statue. We get it up, and not fifteen minutes later, a mob swarms the place. They didn't just tear it down; they nearly tore us to pieces. We were lucky to get back to the Antonia Fortress with our skins intact. Took us days to restore order."
++" A week later, we catch one of the ringleaders. You know how it is, a little 'questioning' for fun. We gave him a choice: a bit of torture, or just a pinch of incense for the Divine Caesar. Guess what he chose?",
 "soldiers_talk_1",[
   (troop_set_slot, "trp_global_variables", g_flavor_event_1, 1),
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 [anyone|other(trp_aux_inf),"soldiers_talk_1",[],
-"He said he would rather die then worshiping him. We said: Well if thats what you want. So we tortured him a little and asked him the same question again:"
-+" either more torture or a small sacrifice to our Caesar. He said again he would rather die. We continued this game for one week."
-+" He was already quite battered and if we had continued he would have died, but still he refused to make a sacrifice. Hence we said: Good be it."
-+" Let the gods decide his face. Lets us see how strong his YHWH  is. So we said to him: Either we tie you on a stake in the desert for a week,"
-+" if you should survive we will set you free, or you accept Caesar at least as another god and we would set you free immediately and even gift you some denarii."
-+" He said he would rather die in the desert then accepting another god. Ha! We tied him on a stake and as we came back he was already dead."
-+" I tell you: Judea is a terrible place, full of maniacs. If you would do the same torture with some peasant from Syria or Gaul he would immediately gave up"
-+" and worship Caesar like his own gods. But those Jews! Something must be wrong with them.",
+"He said he'd rather die than worship a false god. 'Fine,' we said, 'have it your way.' So we worked him over a bit and asked again. Same answer. We kept this up for a week. The man was a bloody pulp, but he still wouldn't break. So we said, 'Alright, let your god decide.' We offered him a choice: be tied to a stake in the desert for a week—if you survive, you're free—or just admit Caesar is a god and walk away with a full purse. He chose the desert. When we went back, the vultures had already found him. I'm telling you, Judaea is a pit, full of fanatics. You do that to a Gaul, he'd be worshiping Caesar's sandals by the first day.",
 "soldiers_talk_2",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 [anyone|other(trp_vigilia),"soldiers_talk_2",[],
-"Yeah. I know what you mean. We had a Christian woman captured here in {s22} and told her we would set her free if she would worship our Caesar."
-+" I knew her well and I always saw her visiting the temple of Aphrodite and flirted a little with her. We also had fun together, here and there."
-+" But one day she stopped visiting the temple and when I talked with her she said we should not meet each other again. I didn't know what has changed with her."
-+" Later it turned out she has become a Christian. So we got orders to capture her. As I know her well I didn't want to execute her like the others."
-+" Thus I talked with her: Come on girl. Stop worshiping this Christos. What can he offer our gods can't? If you stop worshiping Christos we can set you free,"
-+" otherwise we have to... Guess what she said? She rather die than stop praying to him! She rather die than worshiping any other god."
-+" I tried everything to convince her, but she did not want. I even tried to help her escape prison but she refused. She said its her destiny to die."
-+" Alas, she was killed on the next day during the beast fights.",
+"Yeah, I know exactly what you mean. We had a woman here in {s22}. I knew her. Used to see her at the Temple of Aphrodite, we'd flirt a bit. Good times. Then one day, she just stopped coming. Said we shouldn't meet anymore. Turns out she'd joined this new cult. When the order came down to round them up, I tried to help her. 'Come on,' I said, 'what can this Chrestos offer that our gods can't? Just make a small offering to the Princeps and you can walk free.' But she wouldn't do it. Said she'd rather die. I even offered to help her escape, but she refused! Said it was her 'destiny'. A week later, she was torn apart by lions in the arena.",
 "soldiers_talk_3",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
 [anyone|other(trp_aux_inf),"soldiers_talk_3",[],
-"Terrible! Terrible! Those Jews are all maniacs. I wonder whats so great about this YHWH  that they would rather die than making sacrifics also to other gods.",
+"See? Mad. The lot of them. What's so special about their 'Yahweh' that they'd rather die than toss a little incense for another god?",
 "soldiers_talk_4",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 [anyone|other(trp_vigilia),"soldiers_talk_4",[],
-"Bah, I don't know. Funnily enough, they even hate each other. Those Chrestus worshippers and the other Jews, they don't like each other.",
+"Don't know. And the funny thing is, they hate each other. The Chrestos followers and the other Jews, they're at each other's throats.",
 "soldiers_talk_5",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
 [anyone|other(trp_aux_inf),"soldiers_talk_5",[],
-"I thought they would be the same.",
+"I thought they were the same thing.",
 "soldiers_talk_6",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 [anyone|other(trp_vigilia),"soldiers_talk_6",[],
-"No, no. The jews are waiting for a king to come, they call him Messiah. The others, those who worship Chrestos or Christos, claim that this man called Christos,"
-+" eih Jesus Christos thats his full name, was the Messiah, but the other Jews say no. But there have many other people appeared claiming to be Messiah. All in all its a very complicated situation.",
+"No, no. The Jews are waiting for some king, a Messiah, to come and free them. These Chrestos folk claim he already came, this 'Jesus Chrestos', but the other Jews say no. It's a whole complicated mess.",
 "soldiers_talk_7",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
 
 [anyone|other(trp_aux_inf),"soldiers_talk_7",[],
-"As I said: They are all crazy bastards. We should either kill them all or just let them be in their snake nest."
-+"^^Hey, you there. Want to join us? I'll spend you a drink.",
+"Like I said: madmen. We should either wipe them all out or just leave them to rot in their own little snake pit. ^^Hey, you there. You look thirsty. Join us for a drink.",
 "soldiers_talk_8",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 [anyone|plyr,"soldiers_talk_8",[],
-"Sure why not.", "soldiers_talk_9",[
+"Sure, why not.", "soldiers_talk_9",[
   (add_xp_as_reward, 100),
 ]],
 [anyone|plyr,"soldiers_talk_8",[],
-"I have not time. I better leave.",
+"No thank you. I have things to do.",
 "close_window",[]],
 
 [anyone|other(trp_aux_inf),"soldiers_talk_9",[],
-"We were currently talking about the beauty of Judea. Haha.",
+"We were just discussing the many splendors of service in Judaea. Hah!",
 "soldiers_talk_10",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 
 [anyone|other(trp_vigilia),"soldiers_talk_10",[],
-"A terrible land, not worth visiting it.",
+"A terrible place. Not worth the dust on your sandals.",
 "soldiers_talk_11",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
 [anyone|other(trp_aux_inf),"soldiers_talk_11",[],
-"What has lead you to {s22}?",
+"So what brings you to {s22}, friend?",
 "soldiers_talk_12",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 
 [anyone|plyr,"soldiers_talk_12",[],
-"Trade and business investments.",
+"Trade. Trying to make a denarius or two.",
 "soldiers_talk_13_trade",[]],
+
 [anyone|other(trp_vigilia),"soldiers_talk_13_trade",[],
-"A merchant! Haha. Want to drink another one with us? I would invite you again!",
+"A merchant! Hah! Well, let me buy you another cup. Can't have you thinking we're all uncivilized here!",
 "soldiers_talk_14",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
 
 [anyone|plyr,"soldiers_talk_12",[],
-"I am just an adventurer and want to explore this lands.",
+"Just an adventurer, seeing the world.",
 "soldiers_talk_13_adventure",[]],
 
 [anyone|other(trp_vigilia),"soldiers_talk_13_adventure",[],
-"An adventurer! I am sure you could clean a whole winecellar on your own.",
+"An adventurer! I bet you could drink this whole tavern dry, then.",
 "soldiers_talk_14",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
 
 [anyone|plyr,"soldiers_talk_12",[],
-"That's none of your business. I have to leave now.",
+"That's my business. I have to go.",
 "close_window",[]],
 
 [anyone|plyr,"soldiers_talk_14",[],
-"Sure.",
+"Alright, you've convinced me.",
 "soldiers_talk_15",[
   (add_xp_as_reward, 100),
 ]],
 
 [anyone|plyr,"soldiers_talk_14",[],
-"I am sorry but I have to leave now.",
+"Sorry, I really must be going.",
 "close_window",[]],
 
 [anyone|other(trp_aux_inf),"soldiers_talk_15",[],
-"Let's drink another one. Oh Dionysus, I gift you some of my wine as sacrific! ^^ -- He pours some of his wine on the floor. --",
+"Another round! Oh, Bacchus, this one's for you! ^^ -- He pours a splash of wine on the floor. --",
 "soldiers_talk_16",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
+
 [anyone|other(trp_vigilia),"soldiers_talk_16",[],
-"I saw your wife yesterday, she looks healthy. Wish I would also have such a wife.",
+"Saw your wife in the market yesterday. She's looking well.",
 "soldiers_talk_17",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
+
 [anyone|other(trp_aux_inf),"soldiers_talk_17",[],
-"Healthy? She has become fat! Since they build a new aqueduct she no longer has to walk for hours to fetch water. The more sedentary lifestyle made her fat.",
+"Well? She's gotten fat! Ever since they built that new aqueduct, she doesn't have to haul water from the well. Sits around all day. It's made her soft.",
 "soldiers_talk_18",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
+
 [anyone|other(trp_vigilia),"soldiers_talk_18",[],
-"Haha. Maybe that's the reason why Barbarians usually hate our aqueducts: It makes their wives fat.", "soldiers_talk_19",[
+"Hah! Maybe that's why the barbarians hate our aqueducts. They're trying to keep their women thin.",
+"soldiers_talk_19",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
+
 [anyone|other(trp_aux_inf),"soldiers_talk_19",[],
-"Another disadvantage is that she has now more time to annoy me with all kind of stuff. Anyway, let's drink another one."
-+" My purse is still full with coins and my belly could use more wine. ",
+"Worse, now she has more time to nag me. Anyway, another drink! My purse is still heavy and my throat is dry.",
 "soldiers_talk_20",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
+
 [anyone|other(trp_vigilia),"soldiers_talk_20",[],
-"I agree. You want to join us again?", "soldiers_talk_21",[
+"I'm with you. What about you, friend? One more for the road?",
+"soldiers_talk_21",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
+
 [anyone|plyr,"soldiers_talk_21",[],
-"Yeah, thank you.",
+"Aye, thank you.",
 "soldiers_talk_22",[
   (add_xp_as_reward, 100),
 ]],
 
 [anyone|plyr,"soldiers_talk_21",[],
-"I have to refuse. I must leave now.",
+"I have to refuse. I must be on my way.",
 "close_window",[]],
 
 [anyone|other(trp_aux_inf),"soldiers_talk_22",[],
-"I have a brother who works as architect in Cirta. You probably know it. It is this town in Africa. In his last letter he told me, haha, he seriously told me the people there did everything to prevent its construction."
-+" As the governor wanted to avoid trouble, he stopped the project.",
+"My brother is an architect out in Africa, in a town called Cirta. In his last letter, he told me the locals kept tearing down the aqueduct scaffolding at night. The governor finally got fed up and cancelled the whole project.",
 "soldiers_talk_23",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
+
 [anyone|other(trp_vigilia),"soldiers_talk_23",[],
-"Hahaha. We collect taxes to use them to build buildings improving peoples life and they just destroy them. Haha.",
+"Hahaha! We tax them to build things to make their lives better, and they fight us every step of the way. Ungrateful bastards.",
 "soldiers_talk_24",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
+
 [anyone|other(trp_aux_inf),"soldiers_talk_24",[],
-"Aye. That is true.",
+"Aye. That's the truth of it.",
 "soldiers_talk_24_1",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 
 [anyone|other(trp_vigilia),"soldiers_talk_24_1",[],
-"Dionysus got me drunk, know Cupido is calling. I heard Gaius has new belly dancers from Syria, with nice big bellies. Let's visit the Lupanar know.",
+"Bacchus has made me drunk; now Venus is calling. I hear Gaius has some new Syrian belly dancers at the Lupanar. Let's go see.",
 "soldiers_talk_25",[
   (call_script, "script_set_conversation_troop", "trp_vigilia"),
 ]],
+
 [anyone|other(trp_aux_inf),"soldiers_talk_25",[],
-"Sure. My wife will be angry but I don't care. You want to come with us?",
+"A fine idea. The wife will be angry, but she's always angry. You coming with us?",
 "soldiers_talk_26",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 
 [anyone|plyr,"soldiers_talk_26",[],
-"Sounds good.",
+"Sounds like a plan.",
 "soldiers_talk_27",[]],
+
 [anyone|plyr,"soldiers_talk_26",[],
-"Only if there are also dancers with flat bellies.",
+"Only if they're worth looking at.",
 "soldiers_talk_27",[]],
+
 [anyone|plyr,"soldiers_talk_26",[],
-"I am sorry, its late and I have to leave now.",
+"I've had enough for one night. I must be going.",
 "close_window",[]],
+
 [anyone|other(trp_aux_inf),"soldiers_talk_27",[],
-"Yeah. Gaius has a girl for every taste. Now come lads.",
+"Hah! Gaius has a girl for every taste. Come on, then.",
 "close_window",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
   (jump_to_menu,  "mnu_flavor_event_1"),
@@ -11482,17 +11505,19 @@ dialogs =[
 
 #fall back
 [trp_aux_inf,"start",[
-(eq, "$talk_context", tc_tavern_talk),
-(eq, "$current_town", "p_town_2"),
-(troop_slot_ge, "trp_global_variables", g_flavor_event_1, 1),
-],
-"Can't you see we are busy?", "close_window",[]],
+  (eq, "$talk_context", tc_tavern_talk),
+  (eq, "$current_town", "p_town_2"),
+  (troop_slot_ge, "trp_global_variables", g_flavor_event_1, 1),
+],"Can't you see we are busy?",
+"close_window",[]],
+
 [trp_vigilia,"start",[
-(eq, "$talk_context", tc_tavern_talk),
-(eq, "$current_town", "p_town_2"),
-(troop_slot_ge, "trp_global_variables", g_flavor_event_1, 1),
-],
-"Can't you see we are busy?", "close_window",[]],
+  (eq, "$talk_context", tc_tavern_talk),
+  (eq, "$current_town", "p_town_2"),
+  (troop_slot_ge, "trp_global_variables", g_flavor_event_1, 1),
+],"Can't you see we are busy?",
+"close_window",[]],
+
 #####################END soldiers dialogue
 #################################################################################################################################################
 
@@ -20697,9 +20722,9 @@ dialogs =[
     (troop_slot_eq, "trp_argentarius", slot_troop_prisoner_of_party, 1),
     (str_store_string, s3, "@I will reinvest the money once the loan expires."),
   (try_end),
- ],
-   "You have already lent out a loan. It's best to wait until you get the money back before lending out a new one. {s2}^{s3}", "argentarius_reinvest",[
- ]],
+],"You have already lent out a loan. It's best to wait until you get the money back before lending out a new one. {s2}^{s3}",
+"argentarius_reinvest",[
+]],
 
 [trp_argentarius|plyr,"argentarius_reinvest",[(troop_slot_eq, "trp_argentarius", slot_troop_prisoner_of_party, 0),],
    "Reinvest the money once the loan expires.", "argentarius_reinvest2",[(troop_set_slot, "trp_argentarius", slot_troop_prisoner_of_party, 1), ]],
@@ -22456,100 +22481,117 @@ dialogs =[
 
 #TAVERN DRUNK DIALOGS
 [trp_belligerent_drunk, "start",[
+  (is_between, "$g_encountered_party", walled_centers_begin, walled_centers_end),
+  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_7"),
   (troop_slot_eq, "trp_global_variables", g_flavor_event_4, 0),
-  (call_script, "script_deactivate_tavern_attackers"),],
-"Ah, ah it hurts. Those bandits! I hate them.",
+  (call_script, "script_deactivate_tavern_attackers"),
+],"Oh, the agony! The injustice of it all! Curses on all bandits and their brutish fists.",
 "sussus_roast_talk_1",[
   (troop_set_slot, "trp_global_variables", g_flavor_event_4, 1),
 ]],
 
 [trp_belligerent_drunk|plyr, "sussus_roast_talk_1",
 [],
-"What happened?",
+"What happened to you?",
 "sussus_roast_talk_2",[]],
+
 [trp_belligerent_drunk|plyr, "sussus_roast_talk_1",
 [],
-"I better not waste my time with you.",
-"close_window",[(jump_to_menu, "mnu_flavor_event_5_2"),
-(finish_mission),]],
+"I'd rather not get involved.",
+"close_window",[
+  (jump_to_menu, "mnu_flavor_event_5_2"),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
+]],
 
 [trp_belligerent_drunk, "sussus_roast_talk_2",
 [],
-"When I was leaving the baths I was robbed by some bandits. They stole my purse and when I tried to stop them one beat me in my face and my nose broke. So I visited a doctor to cure my wounds."
-+" But I don't know what he did, but my nose is now crooked! I also reported to the vigilia but they couldn't help me. They told me I am an idiot. "+
-"However, let me introduce myself: I am Kashamir! Famous painter and artist. Though I have spent the last few days drinking here at the tavern and now Kashamir is a little short on money. You have some coins to spare?",
+"I was robbed! Right outside the baths! They took my purse, and when I protested, they broke my nose! And the butcher who calls himself a physician left it crooked! A crooked nose, on an artist! The Vigiles? They called me a fool and laughed. "
++"But allow me to introduce myself. I am Kashamir. A painter of renown, a poet of the soul... currently suffering a temporary... financial malaise. Perhaps a man of your standing could spare a few coins for a suffering artist?",
 "sussus_roast_talk_3",[]],
 
 [trp_belligerent_drunk|plyr, "sussus_roast_talk_3",
 [],
-"You had bad luck in the past. I could help you with some coins.",
+"You've had a string of bad luck. Here, let me help you.",
 "sussus_roast_talk_4",[]],
+
 [trp_belligerent_drunk|plyr, "sussus_roast_talk_3",
 [],
-"I wont give coins to a drunken idiot like you.",
-"close_window",[(jump_to_menu, "mnu_flavor_event_5_2"),
-(finish_mission),]],
+"I'm not giving my coin to a drunk.",
+"close_window",[
+  (jump_to_menu, "mnu_flavor_event_5_2"),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
+]],
 
 [trp_belligerent_drunk, "sussus_roast_talk_4",
 [],
-"Oh splendid! I am a famous painter and artist! I can write poems for you and make paintings, and spread the word of how glorious and famous you are!"
-+" That would only benefit for your reputation and renown! I shall sing in all cities of the Roman Empire about you! A man, glorious, just, honorable, kind, charitable ..."
-+" ^I have an idea! Let us drink together and discuss our deal.",
+"Splendid! A patron! A true Maecenas! I shall immortalize you! I will write odes to your generosity, paint frescoes of your triumphs! Your name will be sung in every tavern from Britannia to Aegyptus!"
++" ^But such grand plans cannot be forged with dry throats! Come! Let us seal our new partnership with wine.",
 "sussus_roast_talk_5",[]],
 
 [trp_belligerent_drunk|plyr, "sussus_roast_talk_5",
 [],
-"Sure. You pay the first round.",
+"Fine. But you're paying.",
 "sussus_roast_talk_6",[]],
+
 [trp_belligerent_drunk|plyr, "sussus_roast_talk_5",
 [],
-"I don't want to waste my times with folk like you.",
-"close_window",[(jump_to_menu, "mnu_flavor_event_5_2"),
-(finish_mission),]],
+"I don't have time for this.",
+"close_window",[
+  (jump_to_menu, "mnu_flavor_event_5_2"),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
+]],
 
 [trp_belligerent_drunk, "sussus_roast_talk_6",
 [],
-"I? I mean, yes, yes! I order something to drink!^^(He disappears and returns with two cups of wine. You take one and smell at it. It smells like rotten fish and decide to not drink it.)^^Ah that's good! ^^(He takes a long swig.)^^Eih, now I am not only a poet, I am also an actor and I know how to play the lyre. The women say my lyre playing is as delicious as my dick. However, if you want, I can write a play for you! A whole play!",
+"I... pay? Of course! An artist must host his patron!^^-- He vanishes and returns with two cups of foul-smelling wine. You discreetly avoid yours. --^^Ah, that's the stuff! ^^-- He takes a long swig. --^^You know, I'm not just a poet. I am an actor! A musician! They say my fingers on the lyre can make a Vestal Virgin weep with... desire. For you, my friend, I could write an entire play!",
 "sussus_roast_talk_7",[]],
 
 [trp_belligerent_drunk|plyr, "sussus_roast_talk_7",
 [],
-"Most interesting.",
-"sussus_roast_talk_8",
-[
-(party_get_slot, "$temp1", "$current_town", slot_town_tavernkeeper),
+"Is that so?",
+"sussus_roast_talk_8",[
+  (party_get_slot, "$temp1", "$current_town", slot_town_tavernkeeper),
 ]],
 
 [anyone, "sussus_roast_talk_8",
 [],
-"(The tavernkeeper appears. He looks angry at Kashamir.)^^You retarded bastard! What are you doing here!",
-"sussus_roast_talk_9",
-[
-(call_script, "script_set_conversation_troop", "$temp1"),]],
+"-- The tavern keeper appears, his face a mask of thunder. --^^Kashamir! You worthless parasite! What are you doing back here?!",
+"sussus_roast_talk_9",[
+  (call_script, "script_set_conversation_troop", "$temp1"),
+]],
 
 [anyone, "sussus_roast_talk_9",
 [],
-"Good Dominus, I don't know what you are talking about. I am a free citizen and I can walk, talk, drink and fart wherever I want!",
+"Good sir! I am a free citizen, conversing with my new patron! How dare you interrupt this... this genesis of a new epic!",
 "sussus_roast_talk_10",[]],
 
 [anyone, "sussus_roast_talk_10",
 [],
-"You are such a useless bastard. ^^(Now he is looking at you.)^^You most know that this man is a liar, a drunkard and scrounger. He runs around claiming to be a famous artist, yet nobody ever saw him lyre playing, nobody ever saw him acting in the theater. On top of that he owes me five hundred denarii!",
-"sussus_roast_talk_11",
-[
-(call_script, "script_set_conversation_troop", "$temp1"),]],
+"Patron? ^^-- He turns to you. --^^Traveler, you must know this man is a fraud, a drunkard, and a thief of my patience. He claims to be a great artist, but the only thing he's ever created is a massive tab! He owes me five hundred denarii!",
+"sussus_roast_talk_11",[
+  (call_script, "script_set_conversation_troop", "$temp1"),
+]],
 
 [anyone|plyr, "sussus_roast_talk_11",
 [],
-"I suspected something like that to be honest.",
+"Somehow, I'm not surprised.",
 "sussus_roast_talk_12",[]],
 
 [anyone, "sussus_roast_talk_12",
 [],
-"That is not true! I am not a drunkard, I am an artist! A famous one! I, I show you, I show you! ^^(He quickly pushes you and the tavernkeeper away and runs in direction of the door. But unfortunately he collides with a large man...)",
-"close_window",
-[(jump_to_menu, "mnu_flavor_event_5"),
-(finish_mission),]],
+"Lies! Slander from a man with no soul! I am a genius! I'll prove it! I'll prove it to you all! ^^-- He shoves past you both and makes a panicked dash for the door, only to collide headfirst with a large, unmoving figure... --",
+"close_window",[
+  (jump_to_menu, "mnu_flavor_event_5"),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (mission_disable_talk),
+  (finish_mission, 4),
+]],
 
 [trp_belligerent_drunk, "start",
 [],

@@ -57600,8 +57600,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("flavor_event_1",mnf_scale_picture,
-  "The Lupanar is a dilapidated building on a secluded side street.^When you enter it a hideous stench hits you. Though you are too drunken to really perceive it."
-  +" You and the soldiers sit down and some dancers appear.",
+  "You are led to the Lupanar, a sagging, decrepit building tucked away in a filthy side alley. The moment the door groans open, a wall of stench hits you—a foul cocktail of stale wine, sweat, cheap perfume, and something unpleasantly human. A sober man would have recoiled, but in your drunken haze, the smell is just a distant, unimportant fact.^^You and the soldiers collapse onto a sticky bench as a few weary-looking dancers emerge from the shadows, their painted smiles doing little to hide the exhaustion in their eyes.",
   "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
@@ -57643,10 +57642,9 @@ It is said, that she lives now together with the goat.",
       (change_screen_mission),
     ]),
 ]),
+
 ("flavor_event_1_end",mnf_scale_picture,
-  "You share several cups of wine with him, the evening growing hazy with laughter and stories, until he takes the hand of a dancer and vanishes into an alcove. You are left alone with a dancer."
-  +" Like a she-wolf, she slowly approaches you. She quickly relieved you of your gold that you are carrying with you and before you can do anything she has already disappeared."
-  +" A moment later a strong man appears. This must be Gaius. He grabs you by both shoulders and throws you out of the house. You stagger back to the tavern and quickly fall asleep.",
+  "The evening melts away in a warm river of wine and easy conversation. Your host, laughing, leads a dancer away for some 'private entertainment,' leaving you in the company of another. She approaches, her hips swaying to the music, her dark eyes locked on yours.^^She closes the distance, her body pressing against yours. Her scent is intoxicating—a mix of sweat, perfume, and spilled wine. Her fingers trace patterns on your arm, then slide to your coin purse with such practiced subtlety that you barely notice. One moment she's whispering a promise in your ear, the next she has vanished back into the crowd like a phantom.^^Before the realization of your empty purse fully dawns, a hulking figure looms over you. Gaius. He gives you a look of pure contempt, then seizes you and throws you from the lupanar like a bag of trash. You stagger back to the tavern, the ghost of her perfume still on your tunic, and pass out.",
   "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
@@ -57659,7 +57657,7 @@ It is said, that she lives now together with the goat.",
 
 
 ("flavor_event_3",mnf_scale_picture,
-  "You follow the Sarmatians to the hut of Wlodarnoxarthos.^ His wife welcomes you amicably. She looks strong and healthy although she has given birth to many children she still looks beautiful.^ You sit down and continue smoking with the others, while his wife prepares the meal. His daughters appear and wash your hands and feet. Then they bring the food. They serve many different dishes on silver plates that clearly testify to the wealth of the host. Now also Wlodarnoxarthos sons appear and join the meal. After the meal is finished, Wlodarnoxarthos orders his children to leave them. He tells only his wife to stay with him.^You continue smoking. While Kentaskros falls a sleep and Wlodarnoxarthos cuddling with his wife, the eldest daughter appears to bring some fruits and more weed. She accidentally pours the bowl over and kneels next to you to collect the fruit. Thereby she touches you several times. After she finished, she remains sitting next to you and slowly starts stroking your legs, arms and chest. She takes a quick glances at her parents. They are already in an advanced progress of making love. Then she looks at you, smiles and kisses you. Now the real fun starts...^^^^On the next day, you awake in the soft arms of a Wlodarnoxarthos' daughter. He, his wife and Kentaskros are still sleeping. In the middle of the hut stands the bong. Golden and beautiful.",
+  "You follow the two Sarmatians to the hut of Wlodarnoxarthos, a large, well-appointed dwelling decorated with rich carpets and captured Roman silks. His wife, a strong, handsome woman with eyes as clear as the steppe sky, greets you warmly.^^You sit on plush cushions, passing the ornate bong between you as the air grows thick with sweet, heavy smoke. His daughters, quiet and graceful, move like spirits, washing the dust of the road from your hands and feet before serving the meal. The feast is a testament to their wealth: roasted mutton, cured meats, and strange, savory cheeses, all served on gleaming silver plates looted from some long-forgotten raid.^^As the meal ends, the children are dismissed, but the wife remains, reclining by her husband's side. The bong is passed again. Kentaskros soon slumps over, lost in a deep, opium-fueled sleep. Wlodarnoxarthos, murmuring to his wife, pulls her close.^^It is then that the eldest daughter returns with a bowl of figs and more smokeleaf. As she sets it down, she 'accidentally' spills the fruit, her hand brushing against yours as she kneels to gather it. Her touch lingers. She glances at her parents, now lost in their own passionate embrace, then her eyes meet yours—a clear, unspoken invitation. She leans in, and her kiss is a silent promise of the pleasure to come...^^^^You awaken the next morning wrapped in furs and the soft, warm arms of Wlodarnoxarthos's daughter. Across the hut, her parents and Kentaskros are still sound asleep. In the center of the room, catching the first rays of dawn, the golden bong stands like a silent monument to the night's indulgence.",
   "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
@@ -57675,10 +57673,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("flavor_event_4",mnf_scale_picture,
-  "Everyone runs out of the tavern into the street to see what happened. Women are screaming, the street is full of blood. You see a dead body laying under a cart. "+
-  "It is {s2}! Witnesses say that he stormed out of the tavern and was caught by a passing cart. He died immediately.^The tavernkeeper, standing next to you notes:^"+
-  "'I am very happy that I never sacrificed to Sol, as it seems he is killing his followers.'^The vigilia appears to remove the dead body. You want to take a last look at him but"+
-  " the sun is blinding you.",
+  "You rush out into the street to a scene of chaos. Women are screaming, and a dark pool of blood is spreading across the cobblestones from beneath a heavy grain cart. Lying twisted in the filth is the body of the man who called himself {s2}, the Blessed.^^Witnesses say he stormed out of the tavern, shouting praises to the sun, and ran directly into the path of the oncoming cart. Death was instant.^^The tavern keeper, standing beside you, shakes his head with a grim smirk. 'Well,' he mutters, 'I suppose the Sun God came to collect his devoted follower.'^^As the Vigiles arrive to haul the body away, you move to take one last look. At that moment, the sun breaks through the clouds, its light so blindingly intense that it forces you to turn away, spots dancing in your vision.",
   "none", [
     (set_background_mesh, "mesh_pic_roma"),
     (str_store_troop_name, s2, "trp_random_idiot"),
@@ -57690,9 +57685,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("flavor_event_5",mnf_scale_picture,
-  "The man turns around and looks at Kashamir. He has the build of a true Herakles! He grabs Kashamir at his throat and throws him onto the floor. "+
-  "Then he beats into his face several times. You think it will be over quickly but the man doesn't stop. He keeps beating his face. The tavernkeeper "+
-  "and other guests try to stop him, but its too late ... Kashamir has already died. The man quickly escapes through the door before the guard can catch him.",
+  "The tavern keeper, his patience finally shattered, threatens to call the Vigiles to settle Kashamir's massive debt. Panicked, Kashamir shoves past you and makes a desperate bolt for the door. He collides headfirst with a mountain of a man who was just entering—a figure with the physique of Herakles.^^The giant turns, his expression unreadable. Without a word, he grabs the sputtering artist by the throat and hurls him to the floor. What follows is not a fight, but a savage, brutal beating. The man's fists fall like hammers, again and again, long after Kashamir has stopped moving. You and the other patrons rush to intervene, but it's too late. By the time you pull the giant away, Kashamir is a broken, bloody mess on the floorboards, his last poem silenced forever.^^The killer shoves his way back out the door and vanishes into the crowded street just as the first whistles of the approaching guard can be heard.",
   "none", [
     (set_background_mesh, "mesh_pic_roma"),
   ],[
@@ -57704,11 +57697,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("flavor_event_5_2",mnf_scale_picture,
-  "The tavernkeeper noticed Kashamir and told him he has many unpaid bills. He says he will call the guard to make sure his bills get paid! "+
-  "Kashamir quickly pushes you away and runs in direction of the door. "+
-  "The man turns around and looks at Kashamir. He has the build of a true Herakles! He grabs Kashamir at his throat and throws him onto the floor. "+
-  "Then he beats into his face several times. You think it will be over quickly but the man doesn't stop. He keeps beating his face. You, the tavernkeeper "+
-  "and other guests try to stop him, but its too late ... Kashamir has already died. The man quickly escapes through the door before the guard can catch him. ",
+  "You are minding your own business in the tavern when a commotion erupts. The tavern keeper is shouting at Kashamir. As the argument escalates, the drunkard tries to flee but crashes directly into a hulking giant of a man blocking the doorway.^^The giant grabs the drunk by the throat and throws him to the ground. A savage, one-sided beating ensues. The drunkard's pleas turn to gurgles and then to silence as the giant's fists continue to fall with sickening thuds. The tavern's patrons, yourself included, try to intervene, but the violence is too sudden, too absolute. By the time you pull the man off, the drunkard is dead.^^Without a word, the killer shoves his way through the stunned crowd and disappears into the street, leaving a bloody corpse on the floor as the tavern keeper begins to scream for the Vigiles.",
   "none", [
     (set_background_mesh, "mesh_pic_roma"),
   ],[
