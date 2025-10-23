@@ -80938,11 +80938,176 @@ I will need 500 denarii.", "bardo_sing2",[]],
    "{!}Warning: This line should never display.", "bandit_introduce",[]],
 
 [party_tpl|pt_egyptian_rebels,"start",[
+  (eq, "$g_encountered_party_template", "pt_egyptian_rebels"),#to fix bug in dialog
+  (eq,"$talk_context",tc_party_encounter),
+  (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
+  (ge, ":bandit_relation", 0),# player good with rebels
+],"Well met, kinsman. It is good to see a true son of Kemet who has not forgotten his people. The Romans bleed our land dry, but you have shown us that not all who walk in their shadow have lost their soul.",
+"egy_rebel_good_player_reply",[
+]],
+
+[anyone|plyr,"egy_rebel_good_player_reply",[
+],"Our paths may be different, but our blood is the same. I wish you well.",
+"egy_rebel_good_farewell",[
+]],
+
+[anyone|plyr,"egy_rebel_good_player_reply",[
+],"Do you have need of supplies? I can spare some food.",
+"egy_rebel_good_offer_food",[
+]],
+
+[anyone|plyr,"egy_rebel_good_player_reply",[
+],"Tell me of your fight. How goes the struggle against Rome?",
+"egy_rebel_good_news",[
+]],
+
+[anyone|plyr,"egy_rebel_good_player_reply",[
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_16"),# player is egyptian
+],"I need your help fighting the Romans. Can you join my warband?",
+"egy_rebel_good_player_join",[]],
+
+[anyone,"egy_rebel_good_player_join",[
+  (party_can_join),
+  (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
+  (ge, ":bandit_relation", 25),
+],"Of course! Together we are stronger.",
+"close_window",[
+  (party_join),
+  (assign, "$g_leave_encounter", 1),
+]],
+[anyone,"egy_rebel_good_player_join",[
+  (party_can_join),
+],"We don't trust you enough.^^[Hint: More than 25 relation with faction needed.]",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
+[anyone,"egy_rebel_good_player_join",[
+],"You have not enough space in your party for all of us.",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
+
+[anyone,"egy_rebel_good_farewell",[
+],"May the old gods watch over your journey. Be careful. The Romans have many eyes.",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
+
+[anyone,"egy_rebel_good_offer_food",[
+],"Let's see if you have some grain. That is what we need.",
+"egy_rebel_food",[
+]],
+
+[anyone,"egy_rebel_food",[
+  (call_script, "script_get_troop_item_amount", "trp_player", "itm_grain"),
+  (eq, reg0, 0),
+  (call_script, "script_get_troop_item_amount", "trp_follower_party_mules", "itm_grain"),
+  (eq, reg0, 0),
+],"Your offer is kind, kinsman, but your bags are as empty as our fields after the tax collectors have passed. Keep what little you have.",
+"egy_rebel_good_farewell",[]],
+
+[anyone,"egy_rebel_food",[
+],"You would share your own provisions with us? That is a true act of kinship. We gratefully accept. This will feed many.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 3),
+  (try_begin),
+    (call_script, "script_get_troop_item_amount", "trp_player", "itm_grain"),
+    (gt, reg0, 0),
+    (troop_remove_items,"trp_player","itm_grain",1),
+    (display_message, "@You gifted grain to the rebels from your own inventory."),
+  (else_try),
+    (call_script, "script_get_troop_item_amount", "trp_follower_party_mules", "itm_grain"),
+    (gt, reg0, 0),
+    (troop_remove_items,"trp_follower_party_mules","itm_grain",1),
+    (display_message, "@You gifted grain to the rebels from your follower party."),
+  (try_end),
+  (assign, "$g_leave_encounter", 1),
+]],
+
+[anyone,"egy_rebel_good_news",[
+],"The struggle is hard. For every Roman patrol we ambush, they send two more. They take our grain, tax our labor, and spit on our gods. But the spirit of our people is not yet broken. We fight in the shadows, in the canals, in the desert wastes. We remind them that this land is not theirs. As long as one of us still draws breath, the rebellion lives.",
+"egy_rebel_good_farewell",[]],
+
+
+[party_tpl|pt_egyptian_rebels,"start",[
+  (eq, "$g_encountered_party_template", "pt_egyptian_rebels"),#to fix bug in dialog
+  (eq,"$talk_context",tc_party_encounter),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_16"),# player is egyptian
+  (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
+  (lt, ":bandit_relation", 0),# player hostile with rebels
+],"Look at this one. The face of a son of the Nile, but the stench of Rome hangs on them like a shroud. You eat Roman bread and drink Roman wine while your people starve. You are a collaborator, a disgrace to your ancestors.", "egy_rebel_hostile_player_reply",[
+]],
+
+[anyone|plyr,"egy_rebel_hostile_player_reply",[
+],"I serve the Empire that brings order and grain. You bring only fire and starvation.",
+"rebel_final_statement_hostile",[
+]],
+[anyone|plyr,"egy_rebel_hostile_player_reply",[
+],"A man must eat. Rome pays. It is that simple.",
+"rebel_final_statement_pragmatic",[
+]],
+[anyone|plyr,"egy_rebel_hostile_player_reply",[
+],"I don't have to explain myself to peasants with rusty spears. Stand aside, or be trampled.",
+"rebel_final_statement_arrogant",[
+]],
+
+[anyone,"rebel_final_statement_hostile",[
+],"Then your Roman 'order' ends here. You have chosen your masters. Now die with them. For the freedom of Kemet!",
+"battle_reason_stated",[]],
+
+[anyone,"rebel_final_statement_pragmatic",[
+],"We all must eat. But you feast on our suffering. Your survival comes at the cost of our children's lives, and that is a price we will not let you pay any longer.",
+"battle_reason_stated",[]],
+
+[anyone,"rebel_final_statement_arrogant",[
+],"Trampled? We are the true sons of the earth you stand on! It is you, the lapdog of a foreign tyrant, who will be broken today! For the gods of our fathers!",
+"battle_reason_stated",[]],
+
+[anyone|plyr,"egy_rebel_hostile_player_reply",[
+],"We are both sons of Kemet. There is no need for bloodshed between us. Let us negotiate.",
+"rebel_egy_negotiate_demand",[]],
+
+
+[anyone,"rebel_egy_negotiate_demand",[
+  (assign, reg13, 5000),
+],"Negotiate? You speak of kinship while wearing the jackal's pelt. Very well. Our people are hungry. Your Roman masters steal our grain to feed their city. You will give us a 'grain tax' of {reg13} denarii. Pay it, and you may pass. This time.",
+"rebel_negotiate_choice",[]],
+
+[anyone|plyr,"rebel_negotiate_choice",[
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", 5000),
+],"A steep price for passage. But it is better than spilling the blood of my countrymen. Take it.",
+"rebel_negotiate_success",[
+
+]],
+
+[anyone|plyr,"rebel_negotiate_choice",[
+],"I don't have that much coin.",
+"rebel_negotiate_fail",[]],
+
+[anyone|plyr,"rebel_negotiate_choice",[
+],"I will not pay tribute to bandits. Prepare to fight.",
+"rebel_final_statement_hostile",[]], # Jumps back to the hostile path
+
+[anyone,"rebel_negotiate_success",[
+],"Wise choice. This gold will feed a hundred families for a month. Now go, before we change our minds.",
+"close_window",[
+  (party_ignore_player, "$g_encountered_party", 24),
+  (troop_remove_gold, "trp_player", 5000),
+  (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 5),
+  (assign, "$g_leave_encounter", 1),
+]],
+
+[anyone,"rebel_negotiate_fail",[
+],"Then you have nothing to offer but Roman steel. And we have seen enough of that. There is nothing more to say. Prepare for battle!",
+"battle_reason_stated",[]], # Jumps to the attack sequence
+
+[party_tpl|pt_egyptian_rebels,"start",[
     (eq, "$g_encountered_party_template", "pt_egyptian_rebels"),#to fix bug in dialog
-    (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
-],
-   "We are the children of Keeme, our beloved land. You have no right to be here! Let us kill this foreign invader!", "battle_reason_stated",[
-   ]],
+    (eq,"$talk_context",tc_party_encounter),
+    (encountered_party_is_attacker)
+],"We are the children of Keeme, our beloved land. You have no right to be here! Die foreign invader!", "battle_reason_stated",[
+]],
 
 [party_tpl|pt_judean_rebels_party,"start",[
      (eq, "$g_encountered_party_template", "pt_judean_rebels_party"),#to fix bug in dialog
@@ -80980,123 +81145,156 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],
    "You must die, scum!", "judean_talk_attack",[]],
 
-[anyone,"judean_talk_attack",[], "You will regret your words!", "close_window",[
+[anyone,"judean_talk_attack",[
+], "You will regret your words!", "close_window",[
   (call_script, "script_make_kingdom_hostile_to_player", "$g_encountered_party_faction", -20),
-  (encounter_attack)]],
-
-[anyone|plyr,"judean_talk",[(troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_8"),
-],
-   "I need your help fighting the Romans. Can you join my warband?", "judean_talk_join",[]],
-
-[anyone,"judean_talk_join",[(party_can_join),
-],
-   "Of course! Together we are stronger.", "close_window",[
-   (party_join),
-   (assign, "$g_leave_encounter", 1)]],
-[anyone,"judean_talk_join",[
-],
-   "It seems, you don't have enough space in your party for us.", "close_window",[(assign, "$g_leave_encounter", 1)]],
+  (encounter_attack)
+]],
 
 [anyone|plyr,"judean_talk",[
-],
-   "Nothing, farewell.", "close_window",[(assign, "$g_leave_encounter", 1)]],
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_8"),
+],"I need your help fighting the Romans. Can you join my warband?",
+"judean_talk_join",[]],
+
+[anyone,"judean_talk_join",[
+  (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
+  (ge, ":bandit_relation", 25),
+  (party_can_join),
+],"Of course! Together we are stronger.",
+"close_window",[
+  (party_join),
+  (assign, "$g_leave_encounter", 1),
+]],
+[anyone,"judean_talk_join",[
+  (party_can_join),
+],"We don't trust you enough.^^[Hint: More than 25 relation needed with Judean rebels]",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
+
+[anyone,"judean_talk_join",[
+],"It seems, you don't have enough space in your party for us.",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
+
+[anyone|plyr,"judean_talk",[
+],"Nothing, farewell.",
+"close_window",[
+  (assign, "$g_leave_encounter", 1)
+]],
 
 [party_tpl|pt_hord_siraken,"start",[
-     (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
+  (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
   (lt, ":bandit_relation", 0),
-     (eq, "$g_encountered_party_template", "pt_hord_siraken"),#to fix bug in dialog
-],
-   "Get ready for battle!", "battle_reason_stated",[
-
-   ]],
+  (eq, "$g_encountered_party_template", "pt_hord_siraken"),#to fix bug in dialog
+],"Get ready for battle!",
+"battle_reason_stated",[
+]],
 [party_tpl|pt_hord_roxolanen,"start",[
-      (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
+  (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
   (lt, ":bandit_relation", 0),
   (eq, "$g_encountered_party_template", "pt_hord_roxolanen"),#to fix bug in dialog
-],
-   "Prepare to die!", "battle_reason_stated",[
-
-   ]],
+],"Prepare to die!",
+"battle_reason_stated",[
+]],
 
 [party_tpl|pt_hord_siraken,"start",[
-     (eq, "$g_encountered_party_template", "pt_hord_siraken"),#to fix bug in dialog
-],
-   "What do you want stranger? We are one of many tribes of the people of the steppes.", "hord_talk",[
+  (eq, "$g_encountered_party_template", "pt_hord_siraken"),#to fix bug in dialog
+],"What do you want stranger? We are one of many tribes of the people of the steppes.",
+"hord_talk",[
+]],
 
-   ]],
 [party_tpl|pt_hord_roxolanen,"start",[
-    (eq, "$g_encountered_party_template", "pt_hord_roxolanen"),#to fix bug in dialog
-],
-   "What do you want stranger? We are one of many tribes of the people of the steppes.", "hord_talk",[
+  (eq, "$g_encountered_party_template", "pt_hord_roxolanen"),#to fix bug in dialog
+],"What do you want stranger? We are one of many tribes of the people of the steppes.",
+"hord_talk",[
+]],
 
-   ]],
+[anyone|plyr,"hord_talk",[
+], "I will exterminate the people of the steppes!",
+"steppe_answere",[]],
 
-[anyone|plyr,"hord_talk",[], "I will exterminate the people of the steppes!", "steppe_answere",[]],
-
-[anyone|plyr,"steppe_answere",[], "Men! Kill them all!", "close_window",[
+[anyone|plyr,"steppe_answere",[
+], "Men! Kill them all!",
+"close_window",[
   (call_script, "script_make_kingdom_hostile_to_player", "$g_encountered_party_faction", -20),
+  (encounter_attack),
+]],
 
-  (encounter_attack)]],
-
-[anyone|plyr,"hord_talk",[], "Nothing, I am just passing through.", "close_window",[(assign, "$g_leave_encounter", 1)]],
+[anyone|plyr,"hord_talk",[
+], "Nothing, I am just passing through.",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
 
 [party_tpl|pt_sakas,"start",[
   (eq, "$g_encountered_party_template", "pt_sakas"),#to fix bug in dialog
   (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
 ],"Prepare to die, scum! We are the scourge of the sky-god!",
-"battle_reason_stated",[]],
+"battle_reason_stated",[
+]],
 
 [party_tpl|pt_garamantes,"start",[
   (eq, "$g_encountered_party_template", "pt_garamantes"),#to fix bug in dialog
-    (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
-],
-   "Prepare to die!", "battle_reason_stated",[
+  (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
+],"Prepare to die!",
+"battle_reason_stated",[
+]],
 
-   ]],
+[party_tpl|pt_gaetuli,"start",[
+  (eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
+  (eq,"$talk_context",tc_party_encounter),
+  (encountered_party_is_attacker)
+],"We will see us on the battlefield.",
+"battle_reason_stated",[
+]],
 
-[party_tpl|pt_gaetuli,"start",[(eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
-    (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
-],
-   "We will see us on the battlefield.", "battle_reason_stated",[
+[party_tpl|pt_nabatean,"start",[
+  (eq, "$g_encountered_party_template", "pt_nabatean"),#to fix bug in dialog
+  (eq,"$talk_context",tc_party_encounter),
+  (encountered_party_is_attacker)
+],"We will see us on the battlefield.",
+"battle_reason_stated",[
+]],
 
-   ]],
+[party_tpl|pt_nubian,"start",[
+  (eq, "$g_encountered_party_template", "pt_nubian"),#to fix bug in dialog
+  (eq,"$talk_context",tc_party_encounter),
+  (encountered_party_is_attacker)
+],"Die scum!",
+"battle_reason_stated",[
+]],
 
-[party_tpl|pt_nabatean,"start",[(eq, "$g_encountered_party_template", "pt_nabatean"),#to fix bug in dialog
-    (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
-],
-   "We will see us on the battlefield.", "battle_reason_stated",[
-
-   ]],
-[party_tpl|pt_nubian,"start",[(eq, "$g_encountered_party_template", "pt_nubian"),#to fix bug in dialog
-    (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
-],
-   "Die scum!", "battle_reason_stated",[
-
-   ]],
-
-[party_tpl|pt_nabatean,"start",[(eq, "$g_encountered_party_template", "pt_nabatean"),#to fix bug in dialog
-    (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
+[party_tpl|pt_nabatean,"start",[
+  (eq, "$g_encountered_party_template", "pt_nabatean"),#to fix bug in dialog
+  (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
 	(lt, ":bandit_relation", 0),
-],
-   "You again! Get him lads.", "battle_reason_stated",[
-   ]],
+],"You again! Get him lads.",
+"battle_reason_stated",[
+]],
 
-[party_tpl|pt_gaetuli,"start",[(eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
-    (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
+[party_tpl|pt_gaetuli,"start",[
+  (eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
+  (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
 	(lt, ":bandit_relation", 0),
-],
-   "You again! Prepare to die.", "battle_reason_stated",[
-   ]],
+],"You again! Prepare to die.",
+"battle_reason_stated",[
+]],
+
 [party_tpl|pt_sakas,"start",[
   (eq, "$g_encountered_party_template", "pt_sakas"),#to fix bug in dialog
   (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
 	(lt, ":bandit_relation", 0),
-],"The sky-god will protect us! Be ready for battle!", "battle_reason_stated",[]],
+],"The sky-god will protect us! Be ready for battle!",
+"battle_reason_stated",[]],
+
 [party_tpl|pt_garamantes,"start",[
   (eq, "$g_encountered_party_template", "pt_garamantes"),#to fix bug in dialog
   (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
 	(lt, ":bandit_relation", 0),
-],"Die you scum!", "battle_reason_stated",[]],
+],"Die you scum!",
+"battle_reason_stated",[]],
 
 [party_tpl|pt_nubian,"start",[
   (eq, "$g_encountered_party_template", "pt_nubian"),#to fix bug in dialog
@@ -81105,69 +81303,82 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"Die scum!",
 "battle_reason_stated",[]],
 
-[party_tpl|pt_sakas,"start",[   (eq, "$g_encountered_party_template", "pt_sakas"),#to fix bug in dialog
-],
-   "Welcome stranger. We are the mighty Saka people and part of the Dahae tribe. What is your desire?", "garamanten_talk",[]],
+[party_tpl|pt_sakas,"start",[
+  (eq, "$g_encountered_party_template", "pt_sakas"),#to fix bug in dialog
+],"Welcome stranger. We are the mighty Saka people and part of the Dahae tribe. What is your desire?",
+"garamanten_talk",[]],
 
-[party_tpl|pt_garamantes,"start",[   (eq, "$g_encountered_party_template", "pt_garamantes"),#to fix bug in dialog
-],
-   "Welcome stranger. We are the mighty Garamantian people. What is your desire?", "garamanten_talk",[]],
+[party_tpl|pt_garamantes,"start",[
+  (eq, "$g_encountered_party_template", "pt_garamantes"),#to fix bug in dialog
+],"Welcome stranger. We are the mighty Garamantian people. What is your desire?",
+"garamanten_talk",[]],
 
-[party_tpl|pt_gaetuli,"start",[   (eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
-],
-   "Welcome stranger. We are the Gaetulian people. How can I help you?", "garamanten_talk",[]],
+[party_tpl|pt_gaetuli,"start",[
+  (eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
+],"Welcome stranger. We are the Gaetulian people. How can I help you?",
+"garamanten_talk",[]],
 
-[party_tpl|pt_nabatean,"start",[   (eq, "$g_encountered_party_template", "pt_nabatean"),#to fix bug in dialog
-],
-   "Welcome stranger. We are the Nabatean people. How can I help you?", "garamanten_talk",[]],
+[party_tpl|pt_nabatean,"start",[
+  (eq, "$g_encountered_party_template", "pt_nabatean"),#to fix bug in dialog
+],"Welcome stranger. We are the Nabatean people. How can I help you?",
+"garamanten_talk",[]],
 
-[party_tpl|pt_nubian,"start",[  (eq, "$g_encountered_party_template", "pt_nubian"),#to fix bug in dialog
-],
-   "Welcome stranger. We are the Kushite people. How can I help you?", "garamanten_talk",[]],
+[party_tpl|pt_nubian,"start",[
+  (eq, "$g_encountered_party_template", "pt_nubian"),#to fix bug in dialog
+],"Welcome stranger. We are the Kushite people. How can I help you?",
+"garamanten_talk",[]],
 
 [anyone|plyr,"garamanten_talk",[
   (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_player_tributary, 1),
- ], "I will kill you all!", "close_window",[
+], "I will kill you all!",
+"close_window",[
   (call_script, "script_make_kingdom_hostile_to_player", "$g_encountered_party_faction", -6),
-  (encounter_attack)]],
+  (encounter_attack),
+]],
 
-[anyone|plyr,"garamanten_talk",
-[(store_troop_gold, ":g", "trp_player"), (ge, ":g", 2000)], "I want to offer you those rings and bracelets. (2000 denarii)", "hire",[
-	]],
+[anyone|plyr,"garamanten_talk",[
+  (store_troop_gold, ":g", "trp_player"),
+  (ge, ":g", 5000),
+], "I want to offer you those rings and bracelets. [5,000 denarii]",
+"hire",[
+]],
 
-[anyone|plyr,"garamanten_talk",[], "I want to hire you.", "hire_aux1",[
-	]],
-[anyone|plyr,"hire_aux1",[], "It is said that you are strong warriors and I need soldiers. I would pay you well and give you good protection if you join my army.", "hire_aux2",[
-	]],
+[anyone|plyr,"garamanten_talk",[], "I want to hire you.",
+"hire_aux1",[
+]],
+[anyone|plyr,"hire_aux1",[], "It is said that you are strong warriors and I need soldiers. I would pay you well and give you good protection if you join my army.",
+"hire_aux2",[
+]],
 
 [anyone,"hire_aux2",[
   (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
   (ge, ":bandit_relation", 0),
  ], "Give us {reg40} denarii and we have an agreement my friend.", "hire_aux3",[
-      (party_get_num_companion_stacks, ":num_stacks","$g_encountered_party"),
-      (assign, ":recruit_cost", 0),
-      (try_for_range, ":i_stack", 0, ":num_stacks"),
-        (party_stack_get_troop_id, ":troop_no", "$g_encountered_party", ":i_stack"),
-        (party_stack_get_size, ":stack_size", "$g_encountered_party", ":i_stack"),
-        (call_script, "script_game_get_join_cost", ":troop_no"),
-        (assign, ":join_cost", reg0),
-        (val_mul, ":join_cost", ":stack_size"),
-        (val_add, ":recruit_cost", ":join_cost"),
-      (try_end),
-      (assign, "$temp", ":recruit_cost"),
-      (assign, reg40, "$temp"),
+    (party_get_num_companion_stacks, ":num_stacks","$g_encountered_party"),
+    (assign, ":recruit_cost", 0),
+    (try_for_range, ":i_stack", 0, ":num_stacks"),
+      (party_stack_get_troop_id, ":troop_no", "$g_encountered_party", ":i_stack"),
+      (party_stack_get_size, ":stack_size", "$g_encountered_party", ":i_stack"),
+      (call_script, "script_game_get_join_cost", ":troop_no"),
+      (assign, ":join_cost", reg0),
+      (val_mul, ":join_cost", ":stack_size"),
+      (val_add, ":recruit_cost", ":join_cost"),
+    (try_end),
+    (assign, "$temp", ":recruit_cost"),
+    (assign, reg40, "$temp"),
 	]],
 [anyone,"hire_aux2",[
- ], "We will never join you scum!", "close_window",[
+], "We will never join you scum!",
+"close_window",[
   (assign, "$g_leave_encounter",1),
-	]],
+]],
 
-[anyone,"hired_aux",[], "Good. We are at your service from now on.", "close_window",
-[
-      (call_script, "script_party_add_party", "p_main_party", "$g_encountered_party"),
-      (party_detach, "$g_encountered_party"),
-      (remove_party, "$g_encountered_party"),
-      (assign, "$g_leave_encounter", 1),
+[anyone,"hired_aux",[], "Good. We are at your service from now on.",
+"close_window",[
+  (call_script, "script_party_add_party", "p_main_party", "$g_encountered_party"),
+  (party_detach, "$g_encountered_party"),
+  (remove_party, "$g_encountered_party"),
+  (assign, "$g_leave_encounter", 1),
 ]],
 
 [anyone|plyr,"hire_aux3",[
@@ -81194,12 +81405,12 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone,"hire2",[
 ], "We accept your present. {s50}",
 "garamanten_talk",[
-  (troop_remove_gold, "trp_player", 2000),
+  (troop_remove_gold, "trp_player", 5000),
   (assign, "$g_leave_encounter", 1),
   (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
   (str_clear, s50),
   (try_begin),
-    (gt, ":bandit_relation", 10),
+    (ge, ":bandit_relation", 25),
     (str_store_string, s50, "@We also want to give you some ivory as a present from our tribe."),
     (troop_add_item, "trp_player", "itm_ivory"),
   (try_end),
@@ -101879,8 +102090,16 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 "Let's leave whenever you are ready.", "close_window",[]],
 
 [anyone,"start",[], "Surrender or die. Make your choice.", "battle_reason_stated",[]],
-[anyone|plyr,"battle_reason_stated",[], "I am not afraid of you. I will fight.", "close_window",[[encounter_attack]]],
-[anyone|plyr,"battle_reason_stated",[], "I'll give you nothing but cold steel, you scum!", "close_window",[(encounter_attack)]],
+
+[anyone|plyr,"battle_reason_stated",[
+], "I am not afraid of you. I will fight.", "close_window",[
+  (encounter_attack)
+]],
+
+[anyone|plyr,"battle_reason_stated",[
+], "I'll give you nothing but cold steel, you scum!", "close_window",[
+  (encounter_attack)
+]],
 
 [anyone,"start",[], "Hello. What can I do for you?", "free",[]],
 [anyone|plyr,"free",[[neg|in_meta_mission]], "Tell me about yourself", "view_char_requested",[]],
