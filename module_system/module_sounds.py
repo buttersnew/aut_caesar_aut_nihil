@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_sounds import *
 
 #from compiler import *
@@ -286,5 +287,7 @@ sounds = [
 
    ("drunken", sf_2d|sf_priority_15|sf_vol_15|sf_stream_from_hd, ["Taverndrunk_lose_1.wav","Taverndrunk_lose_2.wav","Taverndrunk_lose_3.wav","Taverndrunk_lose_4.wav"]),
    ("drunken_win", sf_2d|sf_priority_15|sf_vol_15|sf_stream_from_hd, ["Taverndrunk_win_1.wav","Taverndrunk_win_2.wav","Taverndrunk_win_3.wav"]),
+
+   ("chariot", sf_priority_10|sf_vol_7|sf_stream_from_hd, ["chariot_1.wav","chariot_2.wav"]),
 
 ]

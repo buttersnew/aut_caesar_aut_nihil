@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from __future__ import print_function
 from header_common import *
 
 ###################################################
@@ -222,7 +224,7 @@ def level(v):
   if (v > level_mask):
     v = level_mask
   return (bignum|v) << level_bits
-  
+
 def_attrib = str_5 | agi_5 | int_4 | cha_4
 
 # Weapon proficiencies:
@@ -268,9 +270,9 @@ def upgrade(troops,troop1_id,troop2_id):
   troop1_no = find_troop(troops,troop1_id)
   troop2_no = find_troop(troops,troop2_id)
   if (troop1_no == -1):
-    print "Error with upgrade def: Unable to find troop1-id: " + troop1_id
+    print(("Error with upgrade def: Unable to find troop1-id: " + troop1_id))
   elif (troop2_no == -1):
-    print "Error with upgrade def: Unable to find troop2-id: " + troop2_id
+    print(("Error with upgrade def: Unable to find troop2-id: " + troop2_id))
   else:
     cur_troop = troops[troop1_no]
     cur_troop_length = len(cur_troop)
@@ -282,18 +284,18 @@ def upgrade(troops,troop1_id,troop2_id):
       cur_troop[13:13] = [0, troop2_no, 0]
     else:
       cur_troop[14:14] = [troop2_no, 0]
-      
+
 
 def upgrade2(troops,troop1_id,troop2_id,troop3_id):
   troop1_no = find_troop(troops,troop1_id)
   troop2_no = find_troop(troops,troop2_id)
   troop3_no = find_troop(troops,troop3_id)
   if (troop1_no == -1):
-    print "Error with upgrade2 def: Unable to find troop1-id: " + troop1_id
+    print(("Error with upgrade2 def: Unable to find troop1-id: " + troop1_id))
   elif (troop2_no == -1):
-    print "Error with upgrade2 def: Unable to find troop2-id: " + troop2_id
+    print(("Error with upgrade2 def: Unable to find troop2-id: " + troop2_id))
   elif (troop3_no == -1):
-    print "Error with upgrade2 def: Unable to find troop3-id: " + troop3_id
+    print(("Error with upgrade2 def: Unable to find troop3-id: " + troop3_id))
   else:
     cur_troop = troops[troop1_no]
     cur_troop_length = len(cur_troop)

@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_common import *
 from header_parties import *
 from IDs.ID_troops import *
@@ -95,7 +96,7 @@ parties = [
 ("town_37", "Athenae", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-24.51, -11.52), [], 225),
 ("town_38", "Nicomedia", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (17.49, 19.96), [], 225),
 ("town_39", "Ecbatana", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (168.35, 19.02), [], 225),
-("town_40", "Dura Europos", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (127.42, -8.39), [], 225),
+("town_40", "Dura Europos", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (131.11, -9.71), [], 225),
 ("town_41", "Torik", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (79.47, 77.17), [], 225),
 ("town_42", "Dacidava", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-51.53, 68.01), [], 225),
 ("town_43", "Durnovaria", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-225.69, 119.24), [], 225),
@@ -148,7 +149,7 @@ parties = [
 ("castle_37", "Troesmis", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-0.850, 63.50), [], 260),
 ("castle_38", "Arsamosata", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (111.46, 38.77), [], 260),
 ("castle_39", "Singidunum", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-82.59, 59.75), [], 280),
-("castle_40", "Edessa", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (116.59, -6.88), [], 260),
+("castle_40", "Edessa", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (114.12, 0.8), [], 260),
 ("castle_41", "Cyrene", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-40.31, -70.71), [], 260),
 ("castle_42", "Samosata", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (102.12, 8.38), [], 80),
 ("castle_43", "Utica", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-156.96, -43.98), [], 260),
@@ -175,7 +176,7 @@ parties = [
 ("castle_64", "Tingis", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-271.83, -37.27), []),
 ("castle_65", "Susa", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (193.49, -11.09), []),
 ("castle_66", "Themiskyra", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (34.49, 109.53), []),
-("castle_67", "Porulissum", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-58.03, 85.5), []),
+("castle_67", "Porulissum", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-54.056, 86.253), []),
 ("castle_68", "Derbent", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (140.49, 90.53), []),
 ("castle_69", "Shamakha", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (159.49, 65.53), []),
 ("castle_70", "Alashkert", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (124.49, 44.53), []),
@@ -358,10 +359,10 @@ parties = [
 ("village_165", "Bithynium", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (41.69, 41.25), [], 40),
 ("village_166", "Ephesus", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (2.55, -2.73), [], 40),
 ("village_167", "Takrit", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (142.02, -3.62), [], 40),
-("village_168", "Hatra", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (142.96, -15.09), [], 40),
+("village_168", "Anatha", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (142.96, -15.09), [], 40),
 ("village_169", "Nahavand", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (179.04, 6.12), [], 40),
 ("village_170", "Riskephas", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (139.84, 20.31), [], 40),
-("village_171", "Amia", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (129.06, 5.49), [], 40),
+("village_171", "Hatra", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (127.72, 3.468), [], 70),
 ("village_172", "Kish", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (184.09, -18.46), [], 40),
 ("village_173", "Ebirapa", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (102.27, 97.53), [], 40),
 ("village_174", "Dioscurias", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (95.51, 71.5), [], 40),
@@ -390,7 +391,7 @@ parties = [
 ("village_197", "Tolosa", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-205.92, 42.29), [], 40),
 ("village_198", "Hierapolis", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (101.3, -1.49), [], 40),
 ("village_199", "Cyrrhus", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (90.68, 6.68), [], 40),
-("village_200", "Thaura", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (114.12, 0.8), [], 40),
+("village_200", "Sura", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (116.59, -6.88), [], 140),
 ("village_201", "Issus", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (87.41, -5.55), [], 40),
 ("village_202", "Pharbaetus", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (57.16, -68.79), [], 40),
 ("village_203", "Athribis", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (56.82, -79.98), [], 40),
@@ -503,9 +504,9 @@ parties = [
 ("underworld", "Claudia's House", icon_roman_house|pf_disabled|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-102.85, -22.08), [], 100),
 
 ("forest", "Dark Forest", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-222.84, 136.61), [], 180),
-("german_temple_1", "Baduhenna sanctuary", icon_castle_c|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-158.96, 130.59), [], 60),
-("german_temple_2", "Dunraz sanctuary", icon_castle_c|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-123.74, 104.27), [], 150),
-("german_temple_3", "Frijo sanctuary", icon_castle_c|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-103.27, 126.48), [], 40),
+("german_temple_1", "Baduhenna sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-158.96, 130.59), [], 60),
+("german_temple_2", "Dunraz sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-123.74, 104.27), [], 150),
+("german_temple_3", "Frijo sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-103.27, 126.48), [], 40),
 ("slavic_holy_side_1", "Sleza", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-90.66, 115.06), [], 136),
 ("stone_henge", "Andraste sanctuary", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-216.61, 124.92), [], 100),
 ("stone_henge_2", "Maponos sanctuary", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-234.9, 133.15), [], 100),
@@ -570,6 +571,7 @@ parties = [
 
 ("old_mine", "Old mine", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-275.72, 45.67), [(trp_mercenary_swordsman, 50, 0),(trp_hispanic_infantry, 50, 0), (trp_hispanic_heavy_infantry, 50, 0)], 180),
 ("holy_lance_cave","Montes Sinai", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(78.77, -77.54),[]),
+("valley_of_elah","Vallis Elae", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(85.675, -60.00),[]),
 
 ("gaetulian_town_1", "Larbas", icon_gaetulian_town|pf_town, no_menu, pt_none, fac_gaetuli, 0, ai_bhvr_hold, 0, (-230.63, -62.98), []),
 ("garmantian_town_1", "Garama", icon_garamantian_town|pf_town, no_menu, pt_none, fac_garamantes, 0, ai_bhvr_hold, 0, (-110.41, -146.35), []),
@@ -587,6 +589,7 @@ parties = [
 
 ("langobard_landing", "Lugian Camp", icon_forest|pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-80.5,150.9), [], 90),
 ("kurgan", "Old burial mound", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (276.077, 90.409), [(trp_saka_amazon, 100, 0)], 135),
+("temple_of_rhodogune", "Ruins of Zamb", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (163.638, 14.726), [], 105),
 
 ("vally_of_kings", "Valley of the Kings", icon_valley_of_kings_combined|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (72.67, -124.38), []),
 ]

@@ -1,4 +1,5 @@
 # -*- coding: cp1252 -*-
+from __future__ import absolute_import
 from header_common import *
 from header_scene_props import *
 from header_operations import *
@@ -60,21 +61,20 @@ scene_props = [
       ]),
     ]),
   ("light",sokf_invisible,"light_sphere","0",  [
-     (ti_on_init_scene_prop,
-      [
-          (store_trigger_param_1, ":prop_instance_no"),
-          (set_fixed_point_multiplier, 100),
-          (prop_instance_get_scale, pos5, ":prop_instance_no"),
-          (position_get_scale_x, ":scale", pos5),
-          (store_mul, ":red", 3 * 200, ":scale"),
-          (store_mul, ":green", 3 * 145, ":scale"),
-          (store_mul, ":blue", 3 * 45, ":scale"),
-          (val_div, ":red", 100),
-          (val_div, ":green", 100),
-          (val_div, ":blue", 100),
-          (set_current_color,":red", ":green", ":blue"),
-          (set_position_delta,0,0,0),
-          (add_point_light_to_entity, 10, 30),
+     (ti_on_init_scene_prop,[
+      (store_trigger_param_1, ":prop_instance_no"),
+      (set_fixed_point_multiplier, 100),
+      (prop_instance_get_scale, pos5, ":prop_instance_no"),
+      (position_get_scale_x, ":scale", pos5),
+      (store_mul, ":red", 3 * 200, ":scale"),
+      (store_mul, ":green", 3 * 145, ":scale"),
+      (store_mul, ":blue", 3 * 45, ":scale"),
+      (val_div, ":red", 100),
+      (val_div, ":green", 100),
+      (val_div, ":blue", 100),
+      (set_current_color,":red", ":green", ":blue"),
+      (set_position_delta,0,0,0),
+      (add_point_light_to_entity, 10, 30),
       ]),
     ]),
   ("light_red",sokf_invisible,"light_sphere","0",  [
@@ -2906,8 +2906,7 @@ scene_props = [
     ]),
   ("x_fire_ball",spr_hit_points(1)|sokf_destructible|sokf_enforce_shadows|sokf_dynamic_physics|sokf_missiles_not_attached,"straw_ball","bo_straw_ball",
   [ # mesh not right yet
-    (ti_on_init_scene_prop,
-      [
+    (ti_on_init_scene_prop,[
       (store_trigger_param_1, ":instance_no"),
       (scene_prop_set_hit_points, ":instance_no", 3300),
 
@@ -3266,9 +3265,9 @@ scene_props = [
   ("egy_temple_1",0,"egy_temple_1","bo_egy_temple_1", []),
 
 # from 'odysseia_assets.brf': begin (OpenBRF)
-	( "odysseia_carpet02"                          ,0,"odysseia_carpet02","0",[]),
-	( "odysseia_carpet03"                          ,0,"odysseia_carpet03","0",[]),
-	( "odysseia_alexanders_tomb"                          ,0,"odysseia_alexanders_tomb","bo_roman_temple_new_b",[]),
+	("odysseia_carpet02"                          ,0,"odysseia_carpet02","0",[]),
+	("odysseia_carpet03"                          ,0,"odysseia_carpet03","0",[]),
+	("odysseia_alexanders_tomb"                          ,0,"odysseia_alexanders_tomb","bo_roman_temple_new_b",[]),
 # from 'odysseia_assets.brf': end (OpenBRF)
 
   ("rescue_door",0,"door_a","bo_door_a",[
@@ -3322,7 +3321,7 @@ scene_props = [
         (try_begin),
           (le, ":rand", 1),
           (dialog_box, "@You begrudgingly wield the Xylospongium, scrubbing a neglected toilet. Amidst the grime, a glint catches your eye."
-          +" Astonished, you discover 50 denars concealed in the filth - an unexpected reward for your unsavory task. In the echoes of history,"
+          +" Astonished, you discover 50 denarii concealed in the filth - an unexpected reward for your unsavory task. In the echoes of history,"
           +" the humble toilet becomes an unlikely treasure trove, a testament to the unpredictability of your journey through the ancient Roman world."
           +" ^Despite your efforts, the toilet is still dirty...."),
           (call_script, "script_change_troop_health", "trp_player", 25),
@@ -3415,5 +3414,165 @@ scene_props = [
   ("destroy_house_2_b",0,"destroy_house_2_b","bo_destroy_house_2_b", []),
   ("destroy_house_2_c",0,"destroy_house_2_c","bo_destroy_house_2_c", []),
 
-  ( "mp_battlement_framework_2",0,"mp_battlement_framework_2","bo_mp_battlement_framework_2",[]),
+  ("mp_battlement_framework_2",0,"mp_battlement_framework_2","bo_mp_battlement_framework_2",[]),
+
+  ("alexandria_lighthouse_icon",0,"town_alexandria_lighthouse","bo_town_alexandria_lighthouse",[
+    (ti_on_init_scene_prop,[
+      (store_trigger_param_1, ":prop_instance_no"),
+      (set_fixed_point_multiplier, 100),
+      (prop_instance_get_scale, pos5, ":prop_instance_no"),
+      (position_get_scale_x, ":scale", pos5),
+      (store_mul, ":red", 3 * 200, ":scale"),
+      (store_mul, ":green", 3 * 145, ":scale"),
+      (store_mul, ":blue", 3 * 45, ":scale"),
+      (val_div, ":red", 100),
+      (val_div, ":green", 100),
+      (val_div, ":blue", 100),
+      (set_current_color,":red", ":green", ":blue"),
+      (set_position_delta,0,0,0),
+      (add_point_light_to_entity, 10, 30),
+    ]),
+  ]),
+  #
+  ("basic_chariot",spr_hit_points(1)|sokf_destructible|sokf_enforce_shadows|sokf_moveable|sokf_dynamic_physics|sokf_missiles_not_attached,"basic_chariot_unified_nohorse","bo_basic_chariot_unified_nohorse",[
+    (ti_on_scene_prop_init, [
+      (store_trigger_param_1, ":instance_no"),
+      (scene_prop_set_hit_points, ":instance_no", 500),
+
+      # set up mass and friction parameters
+      (set_fixed_point_multiplier, 1000),
+      (position_set_z, pos10, 0),
+      (position_set_y, pos10, 15),
+      (position_set_x, pos10, 5000),
+      (prop_instance_dynamics_set_properties, ":instance_no", pos10),
+
+      (try_begin),
+        (scene_prop_slot_eq, ":instance_no", slot_scene_prop_init, 0),
+        (scene_prop_set_slot, ":instance_no", slot_attached_horse, -1),
+      (try_end),
+    ]),
+    (ti_on_scene_prop_hit,[
+      (play_sound, "snd_dummy_hit"),
+      (particle_system_burst, "psys_dummy_smoke", pos1, 3),
+      (particle_system_burst, "psys_dummy_straw", pos1, 10),
+    ]),
+    (ti_on_scene_prop_destroy,[
+      (call_script, "script_chariot_on_destruction", "spr_basic_chariot_destroyed"),
+    ]),
+  ]),
+  ("basic_chariot_destroyed",sokf_moveable|sokf_dynamic_physics|sokf_missiles_not_attached,"basic_chariot_unified_destroyed","bo_basic_chariot_unified_destroyed",[
+    (ti_on_scene_prop_hit,[
+      (play_sound, "snd_dummy_hit"),
+      (particle_system_burst, "psys_dummy_smoke", pos1, 3),
+      (particle_system_burst, "psys_dummy_straw", pos1, 10),
+    ]),
+    (ti_on_scene_prop_init, [
+      (store_trigger_param_1, ":instance_no"),
+
+      # set up mass and friction parameters
+      (set_fixed_point_multiplier, 1000),
+      (position_set_z, pos10, 0),
+      (position_set_y, pos10, 15),
+      (position_set_x, pos10, 5000),
+      (prop_instance_dynamics_set_properties, ":instance_no", pos10),
+    ]),
+  ]),
+  ("basic_chariot_b",spr_hit_points(1)|sokf_destructible|sokf_enforce_shadows|sokf_moveable|sokf_dynamic_physics|sokf_missiles_not_attached,"basic_chariot_unified_nohorse_b","bo_basic_chariot_unified_nohorse",[
+    (ti_on_scene_prop_init, [
+      (store_trigger_param_1, ":instance_no"),
+      (scene_prop_set_hit_points, ":instance_no", 500),
+
+      # set up mass and friction parameters
+      (set_fixed_point_multiplier, 1000),
+      (position_set_z, pos10, 0),
+      (position_set_y, pos10, 15),
+      (position_set_x, pos10, 5000),
+      (prop_instance_dynamics_set_properties, ":instance_no", pos10),
+
+      (try_begin),
+        (scene_prop_slot_eq, ":instance_no", slot_scene_prop_init, 0),
+        (scene_prop_set_slot, ":instance_no", slot_attached_horse, -1),
+      (try_end),
+    ]),
+    (ti_on_scene_prop_hit,[
+      (play_sound, "snd_dummy_hit"),
+      (particle_system_burst, "psys_dummy_smoke", pos1, 3),
+      (particle_system_burst, "psys_dummy_straw", pos1, 10),
+    ]),
+    (ti_on_scene_prop_destroy,[
+      (call_script, "script_chariot_on_destruction", "spr_basic_chariot_b_destroyed"),
+    ]),
+  ]),
+  ("basic_chariot_b_destroyed",sokf_moveable|sokf_dynamic_physics|sokf_missiles_not_attached,"basic_chariot_unified_destroyed_b","bo_basic_chariot_unified_destroyed",[
+    (ti_on_scene_prop_hit,[
+      (play_sound, "snd_dummy_hit"),
+      (particle_system_burst, "psys_dummy_smoke", pos1, 3),
+      (particle_system_burst, "psys_dummy_straw", pos1, 10),
+    ]),
+    (ti_on_scene_prop_init, [
+      (store_trigger_param_1, ":instance_no"),
+
+      # set up mass and friction parameters
+      (set_fixed_point_multiplier, 1000),
+      (position_set_z, pos10, 0),
+      (position_set_y, pos10, 15),
+      (position_set_x, pos10, 5000),
+      (prop_instance_dynamics_set_properties, ":instance_no", pos10),
+    ]),
+  ]),
+  ("quadriga_chariot",spr_hit_points(1)|sokf_destructible|sokf_enforce_shadows|sokf_moveable|sokf_dynamic_physics|sokf_missiles_not_attached,"quadriga_chariot_unified_nohorse","bo_basic_chariot_unified_nohorse",[
+    (ti_on_scene_prop_init, [
+      (store_trigger_param_1, ":instance_no"),
+      (scene_prop_set_hit_points, ":instance_no", 750),
+
+      # set up mass and friction parameters
+      (set_fixed_point_multiplier, 1000),
+      (position_set_z, pos10, 0),
+      (position_set_y, pos10, 15),
+      (position_set_x, pos10, 5000),
+      (prop_instance_dynamics_set_properties, ":instance_no", pos10),
+
+      (try_begin),
+        (scene_prop_slot_eq, ":instance_no", slot_scene_prop_init, 0),
+        (scene_prop_set_slot, ":instance_no", slot_attached_horse, -1),
+      (try_end),
+    ]),
+    (ti_on_scene_prop_hit,[
+      (play_sound, "snd_dummy_hit"),
+      (particle_system_burst, "psys_dummy_smoke", pos1, 3),
+      (particle_system_burst, "psys_dummy_straw", pos1, 10),
+    ]),
+    (ti_on_scene_prop_destroy,[
+      (call_script, "script_chariot_on_destruction", "spr_quadriga_chariot_destroyed"),
+    ]),
+  ]),
+  ("quadriga_chariot_destroyed",sokf_moveable|sokf_dynamic_physics|sokf_missiles_not_attached,"quadriga_chariot_unified_destroyed","bo_basic_chariot_unified_destroyed",[
+    (ti_on_scene_prop_hit,[
+      (play_sound, "snd_dummy_hit"),
+      (particle_system_burst, "psys_dummy_smoke", pos1, 3),
+      (particle_system_burst, "psys_dummy_straw", pos1, 10),
+    ]),
+    (ti_on_scene_prop_init, [
+      (store_trigger_param_1, ":instance_no"),
+
+      # set up mass and friction parameters
+      (set_fixed_point_multiplier, 1000),
+      (position_set_z, pos10, 0),
+      (position_set_y, pos10, 15),
+      (position_set_x, pos10, 5000),
+      (prop_instance_dynamics_set_properties, ":instance_no", pos10),
+    ]),
+  ]),
+
+# from 'additional_props.brf': begin (OpenBRF)
+	( "new_rome_gaul_a"                            ,0,"new_rome_gaul_a","bo_new_rome_gaul_a",[]),
+	( "new_rome_gaul_b"                            ,0,"new_rome_gaul_b","bo_new_rome_gaul_b",[]),
+	( "new_rome_gaul_c"                            ,0,"new_rome_gaul_c","bo_new_rome_gaul_c",[]),
+	( "oppidum_gate"                               ,0,"oppidum_gate","bo_oppidum_gate",[]),
+	( "oppidum_wall"                               ,0,"oppidum_wall","bo_oppidum_wall",[]),
+	( "oppidum_wall_turn"                          ,0,"oppidum_wall_turn","bo_oppidum_wall_turn",[]),
+	( "ado_wood_bridge_long"                       ,0,"ado_wood_bridge_long","bo_ado_wood_bridge_long",[]),
+	( "ado_wood_bridge_long_ramp"                  ,0,"ado_wood_bridge_long_ramp","bo_ado_wood_bridge_long_ramp",[]),
+# from 'additional_props.brf': end (OpenBRF)
+
 ]

@@ -6,6 +6,7 @@
 #
 ####################################################################################################################
 ##diplomacy start+
+from __future__ import absolute_import
 from module_constants import DPLMC_DIPLOMACY_VERSION_STRING, triumph_threshold
 ##diplomacy end+
 
@@ -16,15 +17,15 @@ info_pages = [
 ("dplmc_autoloot", "Diplomacy Feature: Autoloot", "Autoloot settings are managed through the camp menu. It allows you to have your companions (named heroes, not ordinary soldiers) automatically select equipment from the loot after a battle.\
 ^^ In order for this feature to be enabled, one of the following must be true: someone in your party must have a Looting score of 2 or better, someone in your party must have an Inventory Management score of 3 or better, or the player {him/her}self must have an Inventory Management score of 2 or better.\
 ^^ The desired primary damage types (the higher of any swing/thrust damage) for melee and throwing weapons can be set up here. In addition, players can fine-tune weapon selection for two-handed/one-handed weapons, pikes, lances, and bladed polearms.^^This setting is currently:"),
-("dplmc_autosell", "Diplomacy Feature: Autosell", "The Autosell feature allows you  to sell many items to a merchant all at once, instead of selling them one at a time. Autosell settings are managed through the Town menu, where you can specify which types of items you want to be able to sell (e.g. you might not want to automatically sell horses) and a price limit (for example, you might not want to automatically sell any items that cost more than 200 denars).^^ There are two primary ways to use autosell.  If you speak to a Horse Merchant, Armorer, or Weapon Merchant in a town, there is a conversation option to sell items of a particular type.  Also, when visiting a town there will be an option in the Marketplace section of the menu to automatically sell your items throughout the town.^^ For people who used Autosell in other mods, note that this sells from your own inventory, according to certain rules.  Items you have equipped will never be sold, and neither will the first three items in your inventory.  After that, autosell also skips anything that it thinks might be your personal equipment (since people often have more than one set).  Regardless of whether you have them equipped, it won't sell your best bow, crossbow, armor, helmet, boots, or gloves. If you have a bow you can use, it won't sell your best three packs of arrows, and if you have a crossbow it won't sell your best three packs of bolts. For shields, one-handed weapons, two-handed weapons, polearms, and horses, it won't sell your best or second-best item. Your best three throwing weapons also will not be sold. However, items that your character is unable to use are considered fair game."),
+("dplmc_autosell", "Diplomacy Feature: Autosell", "The Autosell feature allows you  to sell many items to a merchant all at once, instead of selling them one at a time. Autosell settings are managed through the Town menu, where you can specify which types of items you want to be able to sell (e.g. you might not want to automatically sell horses) and a price limit (for example, you might not want to automatically sell any items that cost more than 200 denarii).^^ There are two primary ways to use autosell.  If you speak to a Horse Merchant, Armorer, or Weapon Merchant in a town, there is a conversation option to sell items of a particular type.  Also, when visiting a town there will be an option in the Marketplace section of the menu to automatically sell your items throughout the town.^^ For people who used Autosell in other mods, note that this sells from your own inventory, according to certain rules.  Items you have equipped will never be sold, and neither will the first three items in your inventory.  After that, autosell also skips anything that it thinks might be your personal equipment (since people often have more than one set).  Regardless of whether you have them equipped, it won't sell your best bow, crossbow, armor, helmet, boots, or gloves. If you have a bow you can use, it won't sell your best three packs of arrows, and if you have a crossbow it won't sell your best three packs of bolts. For shields, one-handed weapons, two-handed weapons, polearms, and horses, it won't sell your best or second-best item. Your best three throwing weapons also will not be sold. However, items that your character is unable to use are considered fair game."),
 # ("dplmc_policy", "Diplomacy Feature: Policy", "Centralization/Decentralization:\
-# ^+3 - very centralized. Tax inefficiency for the ruler is reduced by 15%, and increased by 15% to his vassals. Ruler's relations with his vassals should suffer a -3 hit every month. King's army get 30% percent increase, lords' armies get 9% decrease. Imperial administration: +1500 denars maintenance costs for towns, +150 for fortresses. Imperial tax: maximal tax rate is 90%\
-# ^+2 - quite centralized. Tax inefficiency for the ruler is reduced by 10%,and increased by 10% to his vassals. Ruler's relations with his vassals fiefs should suffer a -2 hit every month. King's army get 20% percent increase, lords' armies get 6% decrease. Imperial administration: +1000 denars maintenance costs for towns, +100 for fortresses. Imperial tax: maximal tax rate is 60%\
-# ^+1 - slightly centralized. Tax inefficiency for the ruler is reduced by 5%, and increased by 5% to his vassals. Ruler's relations with his vassals fiefs should suffer a -1 hit every month. King's army get 10% percent increase, lords' armies get 3% decrease. Imperial administration: +500 denars maintenance costs for towns, +50 for fortresses. Imperial tax: maximal tax rate is 50%\
+# ^+3 - very centralized. Tax inefficiency for the ruler is reduced by 15%, and increased by 15% to his vassals. Ruler's relations with his vassals should suffer a -3 hit every month. King's army get 30% percent increase, lords' armies get 9% decrease. Imperial administration: +1500 denarii maintenance costs for towns, +150 for fortresses. Imperial tax: maximal tax rate is 90%\
+# ^+2 - quite centralized. Tax inefficiency for the ruler is reduced by 10%,and increased by 10% to his vassals. Ruler's relations with his vassals fiefs should suffer a -2 hit every month. King's army get 20% percent increase, lords' armies get 6% decrease. Imperial administration: +1000 denarii maintenance costs for towns, +100 for fortresses. Imperial tax: maximal tax rate is 60%\
+# ^+1 - slightly centralized. Tax inefficiency for the ruler is reduced by 5%, and increased by 5% to his vassals. Ruler's relations with his vassals fiefs should suffer a -1 hit every month. King's army get 10% percent increase, lords' armies get 3% decrease. Imperial administration: +500 denarii maintenance costs for towns, +50 for fortresses. Imperial tax: maximal tax rate is 50%\
 # ^ 0 - neither decentralized nor centralized. Imperial administration: no additional costs. Imperial tax: maximal tax rate is 40%\
-# ^-1 - slightly decentralized. Tax inefficiency for the ruler is increased by 5%. Ruler's relations with his vassals increase by +1 every month. King's army get 10% percent decrease, lords' armies get 3% increase. Imperial administration: -500 denars maintenance costs for towns, -50 for fortresses. Imperial tax: maximal tax rate is 30%\
-# ^-2 - quite decentralized. Tax inefficiency for the ruler is increased by 10%. Ruler's relations with his vassals increase by +2 every month. King's army get 20% percent decrease, lords' armies get 6% increase. Imperial administration: -1000 denars maintenance costs for towns, -100 for fortresses. Imperial tax: maximal tax rate is 25%\
-# ^-3 - very decentralized. Tax inefficiency for the ruler is increased by 15%. Ruler's relations with his vassals increase by +3 every month. King's army get 30% percent decrease, lords' armies get 9% increase. Imperial administration: -1500 denars maintenance costs for towns, -150 for fortresses. Imperial tax: maximal tax rate is 20%\
+# ^-1 - slightly decentralized. Tax inefficiency for the ruler is increased by 5%. Ruler's relations with his vassals increase by +1 every month. King's army get 10% percent decrease, lords' armies get 3% increase. Imperial administration: -500 denarii maintenance costs for towns, -50 for fortresses. Imperial tax: maximal tax rate is 30%\
+# ^-2 - quite decentralized. Tax inefficiency for the ruler is increased by 10%. Ruler's relations with his vassals increase by +2 every month. King's army get 20% percent decrease, lords' armies get 6% increase. Imperial administration: -1000 denarii maintenance costs for towns, -100 for fortresses. Imperial tax: maximal tax rate is 25%\
+# ^-3 - very decentralized. Tax inefficiency for the ruler is increased by 15%. Ruler's relations with his vassals increase by +3 every month. King's army get 30% percent decrease, lords' armies get 9% increase. Imperial administration: -1500 denarii maintenance costs for towns, -150 for fortresses. Imperial tax: maximal tax rate is 20%\
 # ^^Noble rights vs Citizen rights:\
 # ^+3 - very aristocratic.  Trade decreased by 15%. Kings relations with their lords increased by 3 every month. Vassals armies increased by 9%.\
 # ^+2 - quite aristocratic. Trade decreased by 10%. Kings relations with their lords increased by 2 every month. Vassals armies increased by 6%.\
@@ -110,7 +111,8 @@ info_pages = [
 +"^^H - KEY: ^^*) Allows you to call your horse during battle (if it is still alive) "
 +"^^K - KEY: ^^*) During battle pressing K will start a shield taunt. ^*) While on worldmap, pressing K during freelancing allows player to access the daily missions menu."
 +"^^T - KEY: ^^*) By pressing T player will perform a warcry during battles. ^*) While entering the lords hall player will make a handkiss by pressing T."
-+"^^J - KEY: ^^*) Player can change the movement speed of troops during battles by pressing J ^*) Player's horse will start to sprint during horse races by pressing J"
++"^^J - KEY: ^^*) Player can change the movement speed of troops during battles by pressing J"
++"^^G - KEY: ^^*) Player's horse will start to sprint during horse races by pressing J"
 +"^^Z - KEY: ^^*) Pressing Z allows player to crouch (For German keyboards it is the Y key). Though it can be changed under game options -> controls."
 +"^^^The keys for the death-camera can be changed under the Diplomacy preference menu."),
 
@@ -217,7 +219,7 @@ info_pages = [
 ("q_and_q", "Important informations",
 "Triumphs:^As Roman player may gets a triumph awarded. For this you need at least " + str(triumph_threshold) + " gravitas. You obtain gravitas by winning battles as marshal. Gravitas will decline over time though. You can see your current gravitas in the character notes. As Emperor you can also hold a triumph with less gravitas but this will upset the Romans."
 +"^^Battle field fortifications: ^As Roman you can fortify your camp. It requires a set of tools inside your inventory and an engineer skill higher than 5. Once fortified you can no longer move. It is also possible during sieges."
-+"^^Lending out money: ^Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denars. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report."
++"^^Lending out money: ^Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denarii. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report."
 +" This can take a while. Depending on when you issued the loan and depending on when your next budget report will show it can take between one or two weeks until your receive the interests."
 +" For your loan you have two options. Either you order the argentarius to reinvest the money again, or you order him to send you back all the money. In the first case,"
 +" you will only receive the interests of your loan and a new loan will be lend out right away after recieving the interests. In the later case you will receive all the money back. Sometimes the interests can be negative. That shall simulate the case"
@@ -373,9 +375,9 @@ which the enemy has laid. Additionally, on the battlefield you will encounter bu
 # own are taxed, for enterprises or other sources of income you don't have to pay a tax). \
 # ^^\
 # Empire maintenance^\
-# The emperor must pay empire maintenance. For every fortress, you must pay either 1100 denars (hard campaign difficulty), 1000 denars (medium campaign difficulty) or 900 denars (poor campaign difficulty), and for every town 5000 denars (hard campaign difficulty), 4000 denars (medium campaign difficulty) or 3000 denars (poor campaign difficulty), which are owned by \
-# the Empire. The lex julia et papia increases the costs by 1000 denars per town and the lex frumentaria by 500 denars per town \
-# and per fortress. The edictum securitas publicas also increases the maintenance costs by 400 denars per town and per fortress. The Lex Alimenta adds another 300 denars per walled center. Additionally, the centralization level effects maintenance costs too (see 'Diplomacy Feature: Policy')\
+# The emperor must pay empire maintenance. For every fortress, you must pay either 1100 denarii (hard campaign difficulty), 1000 denarii (medium campaign difficulty) or 900 denarii (poor campaign difficulty), and for every town 5000 denarii (hard campaign difficulty), 4000 denarii (medium campaign difficulty) or 3000 denarii (poor campaign difficulty), which are owned by \
+# the Empire. The lex julia et papia increases the costs by 1000 denarii per town and the lex frumentaria by 500 denarii per town \
+# and per fortress. The edictum securitas publicas also increases the maintenance costs by 400 denarii per town and per fortress. The Lex Alimenta adds another 300 denarii per walled center. Additionally, the centralization level effects maintenance costs too (see 'Diplomacy Feature: Policy')\
 # ^^\
 # Tax inefficiency^\
 # At some point, tax  inefficiency will become the main reason why you have a negative income and there are ways to lower it. \
@@ -396,8 +398,8 @@ which the enemy has laid. Additionally, on the battlefield you will encounter bu
 # Forums, Theatres, Triumphal arches, baths and barracks can't be destroyed at all. \
 # ^^\
 # An additional way of income is through slaves: You can let your slaves work in villages you own. Each slave will generate between \
-# 60 and 100 denars additional rents. If the village has iron or silver deposits, additional 40 denars will be added, if it has iron \
-# or silver mine building constructed, additional 40 denars will be added. To place your slaves in the mine, you must own the village, \
+# 60 and 100 denarii additional rents. If the village has iron or silver deposits, additional 40 denarii will be added, if it has iron \
+# or silver mine building constructed, additional 40 denarii will be added. To place your slaves in the mine, you must own the village, \
 # and you must construct a manor first. Then you can manage the prisoners and garrison. Place the slaves simply as prisoners \
 # in your village. You shouldn't add more than 100 slaves, otherwise, there is a certain probability that they escape and spawn \
 # as bandits next to your village. Also, if the village is raided, slaves can escape.^^\
@@ -430,7 +432,7 @@ which the enemy has laid. Additionally, on the battlefield you will encounter bu
  # Europe's rulers are keenly aware that today's ally may be tomorrow's enemy, and vice versa."),
 
 ("follower_party", "Follower party",
-    "For creating a follower party you need to have at least 60 men in your main party, have 10 non-wounded women and 2,500 denars for hiring a physician and mules."
+    "For creating a follower party you need to have at least 60 men in your main party, have 10 non-wounded women and 2,500 denarii for hiring a physician and mules."
     +" Once created, the follower party will automatically disband if you either get defeated or your party size goes below 40 men.^^"
     +" You can manage the follower party over the camp menu. There you can add more women to the party, store items on the mules or use the physician to treat major wounds. You can also add sailors to the follower party which will grant you a speed bonus when on water. But the troops in the follower party wont fight during battles. You can also manually disband the follower party.^^"
     +" Other advantages of the follower party:^"
@@ -546,7 +548,7 @@ Use F1-F4 to order selected divisions. Keep the F1 key down to place selected di
 
 # ("custom_player_legion", "Custom Player Legion", "You can found your own legion and equip it with Roman weapons and armours.^\
 # To do that, you must either have the rank of a legatus legionis, or be Emperor of Rome. Then, visit a barrack in a town or fortress you own and talk with the praetor. He will demand \
-# 125000 denars. When you have paid you can equip your new troops in the courtyard, by talking with them. You can always change their equipment by talking to the soldiers from the party screen. Finally, \
+# 125000 denarii. When you have paid you can equip your new troops in the courtyard, by talking with them. You can always change their equipment by talking to the soldiers from the party screen. Finally, \
 # you must choose a name for your legion. Now you can recruit your own legion in all your towns or fortresses with a barrack building constructed."),  #copied from str_tactical_controls
 # ("tryphe", "Tryphe", "Tryphe is a concept that drew attention and severe criticism in Roman antiquity when it became a significant factor in the reign of the Ptolemaic dynasty. \
 # Classical authors such as Aeshines and Plutarch condemned the tryphe of Romans such as Crassus and Lucullus, which included lavish dinner parties and ostentatious buildings. But there was more to \

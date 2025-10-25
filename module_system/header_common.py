@@ -5,6 +5,7 @@
 ###################################################
 
 #human bones
+from __future__ import print_function
 hb_abdomen = 0
 hb_thigh_l = 1
 hb_calf_l = 2
@@ -384,7 +385,7 @@ opmask_quick_string         =  tag_quick_string   << op_num_value_bits
 
 def reg(reg_no):
   if (reg_no < 0):
-    print ("Error register_no negative")
+    print("Error register_no negative")
     cause_error()
   return opmask_register | reg_no
 

@@ -1,0 +1,352 @@
+/* General Body & Font Styles */
+body {
+    /* background-image: url('hero-background.jpg'); */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Keeps the image in place while scrolling */
+    background-color: #141414; /* Fallback color */
+    
+    color: #e5e5e5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section (Top banner) */
+.hero-section {
+    background-image: linear-gradient(to top, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0) 50%, rgba(20, 20, 20, 1) 100%), url('hero-background.jpg');
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero-content .tagline {
+    font-size: 1.5rem;
+    color: #e5e5e5;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+/* General Section Styling */
+.content-section, .download-section, .community-section, .screenshot-section, .video-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.video-section {
+  padding: 60px 0;
+}
+
+/* This is the responsive container for the video */
+.video-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 960px; /* Limit the max size of the video */
+  margin: 0 auto;   /* Center the container */
+  /* This uses the "padding-top trick" for a 16:9 aspect ratio */
+  padding-top: 56.25%; /* (9 / 16) * 100% */
+  border-radius: 8px; /* Give it rounded corners like our other elements */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* This targets the iframe itself */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove any default iframe border */
+}
+
+/* ========================================= */
+/* Styles for Screenshot Slider              */
+/* ========================================= */
+
+/* This is the main container for the slider */
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* This is an individual slide */
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 60%; /* Adjust the width of the central slide */
+  max-width: 800px;
+}
+
+/* Style the image inside the slide */
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  border-radius: 8px; /* Give the images slightly rounded corners */
+}
+
+/* Style the navigation buttons and pagination to match the theme */
+:root {
+  --swiper-theme-color: #E50914; /* Set the main color to Netflix Red */
+}
+
+/* Make the navigation arrows a bit bigger and easier to see */
+.swiper-button-next, .swiper-button-prev {
+  transform: scale(0.8);
+  color: #fff; /* Make arrows white */
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent dark background */
+  border-radius: 50%;
+  width: 50px !important;
+  height: 50px !important;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+  font-size: 2rem !important; /* Make arrow icon bigger */
+  font-weight: bold;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #E50914; /* Netflix Red */
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+}
+
+/* Download Section Specifics */
+.download-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Allows cards to stack on smaller screens */
+    width: 100%;
+}
+
+.download-card {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+}
+
+.download-card h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-top: 0;
+}
+
+/* ========================================= */
+/* Styles for Dynamic Download Cards         */
+/* ========================================= */
+
+/* Style for the Pre-release Card */
+.download-card.prerelease {
+  /* Add a red border to signify it's a special "beta" version */
+  border: 2px solid #E50914; 
+}
+
+/* Make the title of the pre-release card red to match the border */
+.download-card.prerelease h3 {
+  color: #E50914;
+}
+
+
+/* Style for the Unavailable Card */
+.download-card.unavailable {
+  /* Make the whole card look "disabled" or less important */
+  opacity: 0.6;
+  background-color: #1a1a1a;
+}
+
+/* Disable the hover effect for unavailable cards */
+.download-card.unavailable:hover {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Reverts to the default shadow */
+}
+
+/* Make the text inside the unavailable card more muted and italic */
+.download-card.unavailable p {
+  font-style: italic;
+  color: #999;
+}
+
+/* Style for the Update Date text we added earlier */
+.update-date {
+  font-weight: bold;
+  color: #ffc107; /* A nice, warm gold color */
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    background-color: #E50914; /* Netflix Red */
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #f40612; /* A slightly brighter red on hover */
+}
+
+/* Community Section (Discord) */
+.community-section .discord-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #5865F2; /* Discord's Blurple color */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.community-section .discord-link:hover {
+    background-color: #4752C4; /* Darker blurple on hover */
+}
+
+.community-section .discord-link .fa-discord {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+/* The grid that holds the community cards */
+.community-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between cards */
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+/* A single community card */
+.community-card {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 8px;
+    width: 350px; /* Adjust width as needed */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center;
+}
+
+.community-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+}
+
+/* This is the key part for the icon styling */
+.mod-icon {
+    width: 140px;           /* Set a fixed width */
+    height: 140px;          /* Set a fixed height */
+    border-radius: 50%;     /* Makes the icon circular - very professional */
+    object-fit: cover;      /* Prevents image distortion */
+    margin-bottom: 20px;    /* Space between icon and title */
+    border: 3px solid #444; /* A subtle border */
+}
+
+.community-card h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.community-card p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* This pushes the button to the bottom, making cards of different text heights align perfectly */
+.community-card .discord-link {
+    margin-top: auto;
+}
+/* GitHub Section */
+.github-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.github-section .github-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #24292e; /* GitHub dark color */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.github-section .github-link:hover {
+    background-color: #444d56; /* Slightly lighter on hover */
+}
+
+.github-section .github-link .fa-github {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #808080;
+    border-top: 1px solid #333;
+}
+
+/* ========================================= */
+/* Styles for Background Particle Animation  */
+/* ========================================= */
+
+#particles-js {
+  position: fixed; /* Fixes it to the viewport */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /* This is the key: it places the canvas BEHIND all other content */
+}

@@ -1,4 +1,5 @@
 # -*- coding: cp1254 -*-
+from __future__ import absolute_import
 import string
 from header_common import *
 from header_presentations import *
@@ -16,6 +17,8 @@ from IDs.ID_postfx_params import *
 from IDs.ID_factions import *
 from header_parties import *
 
+from module_presentations_wse2 import *
+
 #from compiler import *
 ####################################################################################################################
 #  Each presentation record contains the following fields:
@@ -25,7 +28,7 @@ from header_parties import *
 #  4) Triggers: Simple triggers that are associated with the presentation
 ####################################################################################################################
 
-presentations = [
+presentations = presentations_wse2 + [
 ## mainmenu
 ("game_start",prsntf_read_only,0,[
   (ti_on_presentation_load,[
@@ -61,15 +64,21 @@ presentations = [
 
     (try_begin),
         (is_vanilla_warband),
-        (create_text_overlay, reg1, "@You are running the mod with vanilla warband.^Consider using WSE2.", tf_center_justify|tf_vertical_align_center|tf_with_outline),
-        (position_set_x, pos1, 700),
-        (position_set_y, pos1, 700),
-        (overlay_set_size, reg1, pos1),
-        (position_set_x, pos1, ":initial_x_coordinate"),
-        (position_set_y, pos1, ":Initial_y_coordinate"),
-        (overlay_set_position, reg1, pos1),
-        (overlay_set_color, reg1, message_alert),
+        (assign, reg0, ACAN_VERSION),
+        (str_store_string, s1, "@Mod version {reg0}. You are running vanilla warband.^Consider using WSE2."),
+    (else_try),
+        (assign, reg0, ACAN_VERSION),
+        (str_store_string, s1, "@Mod version {reg0}."),
     (try_end),
+    (create_text_overlay, reg1, "str_blank_s1", tf_center_justify|tf_vertical_align_center|tf_with_outline),
+    (position_set_x, pos1, 700),
+    (position_set_y, pos1, 700),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, ":initial_x_coordinate"),
+    (position_set_y, pos1, ":Initial_y_coordinate"),
+    (overlay_set_position, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
+
     (val_sub, ":Initial_y_coordinate", 30),
 
     (create_text_overlay, "$g_presentation_credits_obj_1", "@New Game", tf_center_justify|tf_double_space|tf_vertical_align_center),
@@ -587,7 +596,7 @@ presentations = [
         (eq, "$g_quick_battle_team_2_faction", "fac_gladiators"),
         (assign, ":cur_troop", "trp_gladiator_murmillo"),
 	  (else_try),
-        (assign, ":cur_troop", "trp_taiga_bandit"),
+        (assign, ":cur_troop", "trp_illyrian_bandit"),
       (try_end),
       (val_mul, ":cur_troop", 2), #with weapons
       (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_game_party_window", ":cur_troop"),
@@ -2044,326 +2053,372 @@ presentations = [
 ]),
 ## SB : recolor kingdom presentation
 
-  ("change_color", 0, mesh_load_window, [
-    (ti_on_presentation_load,
-      [
-        (presentation_set_duration, 999999),
-        (set_fixed_point_multiplier, 1000),
+("change_color", 0, mesh_load_window, [
+  (ti_on_presentation_load,[
+      (presentation_set_duration, 999999),
+      (set_fixed_point_multiplier, 1000),
 
-        (create_combo_button_overlay, "$g_presentation_obj_1"),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, 680),
-        (overlay_set_position, "$g_presentation_obj_1", pos1),
+      (create_combo_button_overlay, "$g_presentation_obj_1"),
+      (position_set_x, pos1, 500),
+      (position_set_y, pos1, 680),
+      (overlay_set_position, "$g_presentation_obj_1", pos1),
 
-        # (try_for_range, ":cur_slot", 0, 9),
-          # (troop_get_slot, ":cur_faction", "trp_temp_array_a", ":cur_slot"),
-          # (str_store_faction_name, s0, ":cur_faction"),
-          # (overlay_add_item, "$g_presentation_obj_1", s0),
+      # (try_for_range, ":cur_slot", 0, 9),
+        # (troop_get_slot, ":cur_faction", "trp_temp_array_a", ":cur_slot"),
+        # (str_store_faction_name, s0, ":cur_faction"),
+        # (overlay_add_item, "$g_presentation_obj_1", s0),
+      # (try_end),
+
+      ## name and color
+      (try_begin),
+        (eq, "$g_presentation_state", recolor_kingdom),
+
+        #maybe not
+        # (faction_get_slot, ":mesh", "$players_kingdom", slot_faction_banner),
+        # (create_mesh_overlay, reg0, ":mesh"),
+        # (overlay_set_position, reg0, pos1),
+
+        # faction list
+        (assign, ":slot_no", 0),
+        # (try_for_range, ":faction", "fac_commoners", "fac_innocents"),
+        #   (troop_set_slot, "trp_temp_array_a", ":slot_no", ":faction"),
+        #   (str_store_faction_name, s0, ":faction"),
+        #   (overlay_add_item, "$g_presentation_obj_1", s0),
+        #   (val_add, ":slot_no", 1),
         # (try_end),
+        (try_for_range_backwards, ":faction", kingdoms_begin, kingdoms_end),
+          (faction_slot_eq, ":faction", slot_faction_state, sfs_active),
+          (troop_set_slot, "trp_temp_array_a", ":slot_no", ":faction"),
+          (str_store_faction_name, s0, ":faction"),
+          (overlay_add_item, "$g_presentation_obj_1", s0),
+          (val_add, ":slot_no", 1),
+        (try_end),
+        (overlay_set_val, "$g_presentation_obj_1", "$temp"),
+        # (overlay_set_hilight_color, "$g_presentation_obj_1", 0xFFFFFF),
+        # (overlay_set_color, "$g_presentation_obj_1", 0xFFFFFF),
+
+        # default color list
+        # (troop_set_slot, "trp_temp_array_b", 0, factions[fac_deserters][6]),
+        (troop_set_slot, "trp_temp_array_b", 0, 0xAAAAAA), #commoners doesn't have a default value
+        (troop_set_slot, "trp_temp_array_b", 1, factions[fac_outlaws][6]),
+        (troop_set_slot, "trp_temp_array_b", 2, factions[fac_neutral][6]),
+        # (troop_set_slot, "trp_temp_array_b", 0, 0x444444), #common
+        # (troop_set_slot, "trp_temp_array_b", 1, 0x888888), #outlaw
+        # (troop_set_slot, "trp_temp_array_b", 2, 0xFFFFFF), #neutral
+        (troop_set_slot, "trp_temp_array_b", 3, factions[fac_kingdom_1][6]),
+        (troop_set_slot, "trp_temp_array_b", 4, factions[fac_kingdom_2][6]),
+        (troop_set_slot, "trp_temp_array_b", 5, factions[fac_kingdom_3][6]),
+        (troop_set_slot, "trp_temp_array_b", 6, factions[fac_kingdom_4][6]),
+        (troop_set_slot, "trp_temp_array_b", 7, factions[fac_kingdom_5][6]),
+        (troop_set_slot, "trp_temp_array_b", 8, factions[fac_kingdom_6][6]),
+        (troop_set_slot, "trp_temp_array_b", 9, factions[fac_kingdom_7][6]),
+        (troop_set_slot, "trp_temp_array_b", 10, factions[fac_kingdom_8][6]),
+        (troop_set_slot, "trp_temp_array_b", 11, factions[fac_kingdom_9][6]),
+        (troop_set_slot, "trp_temp_array_b", 12, factions[fac_kingdom_10][6]),
+        (troop_set_slot, "trp_temp_array_b", 13, factions[fac_kingdom_11][6]),
+        (troop_set_slot, "trp_temp_array_b", 14, factions[fac_kingdom_12][6]),
+        (troop_set_slot, "trp_temp_array_b", 15, factions[fac_kingdom_13][6]),
+        (troop_set_slot, "trp_temp_array_b", 16, factions[fac_kingdom_14][6]),
+        (troop_set_slot, "trp_temp_array_b", 17, factions[fac_kingdom_15][6]),
+        (troop_set_slot, "trp_temp_array_b", 18, factions[fac_kingdom_16][6]),
+        (troop_set_slot, "trp_temp_array_b", 18, factions[fac_kingdom_17][6]),
+        (troop_set_slot, "trp_temp_array_b", 19, factions[fac_player_supporters_faction][6]),
+        # (troop_set_slot, "trp_temp_array_b", 3, 0xCCCC66),
+        # (troop_set_slot, "trp_temp_array_b", 4, 0x669999),
+        # (troop_set_slot, "trp_temp_array_b", 5, 0x0066FF),
+        # (troop_set_slot, "trp_temp_array_b", 6, 0x9999CC),
+        # (troop_set_slot, "trp_temp_array_b", 7, 0xFF3300),
+        # (troop_set_slot, "trp_temp_array_b", 8, 0xCC6600),
+        # (troop_set_slot, "trp_temp_array_b", 9, 0x33DD33),
+        # (troop_set_slot, "trp_temp_array_b", 10, 0xFFCC33),
+
+        # (troop_set_slot, "trp_temp_array_b", 11, 0xFF4433), #plyr
 
         ## name and color
+        (troop_get_slot, ":faction", "trp_temp_array_a", "$temp"),
+        (str_store_faction_name, s0, ":faction"),
+        (faction_get_color, ":faction_color", ":faction"),
+      (else_try),
+        (eq, "$g_presentation_state", recolor_groups),
+        # (assign, "$temp", grc_infantry),
+        (overlay_add_item, "$g_presentation_obj_1", "str_allies_"),
+        (overlay_add_item, "$g_presentation_obj_1", "str_enemies_"),
+        (try_for_range_backwards, ":class", grc_infantry, grc_everyone),
+          # (troop_get_slot, ":faction_color", "trp_mercenaries_end", ":class"),
+          # (troop_set_slot, "trp_temp_array_b", ":class", ":faction_color"), #unnecessary?
+          (str_store_class_name, s0, ":class"),
+          (overlay_add_item, "$g_presentation_obj_1", s0),
+        (try_end),
+        (troop_get_slot, ":class", "trp_temp_array_a", "$temp"),
+        (str_store_class_name, s0, ":class"),
+      (else_try),
+        (eq, "$g_presentation_state", recolor_heraldic),
+        (overlay_set_display, "$g_presentation_obj_1", 0),
+        (troop_get_slot, ":banner", "$g_player_troop", slot_troop_banner_scene_prop),
+        (val_sub, ":banner", banner_scene_props_begin),
+        (troop_get_slot, ":faction_color", "trp_banner_background_color_array", ":banner"),
+        (assign, "$temp", ":banner"), #store offset
+        (val_add, ":banner", banner_meshes_begin),
+        (create_mesh_overlay, reg0),
+        (overlay_set_position, reg0, pos1),
+      (try_end),
+      (try_begin),
+        (ge, "$g_presentation_state", recolor_heraldic),
+        (store_add, ":string", "$g_presentation_state", "str_color_of"),
+        (str_store_string, s0, ":string"),
+      (try_end),
+      (create_text_overlay, reg1, "str_color_of", tf_center_justify),
+      (position_set_x, pos1, 500),
+      (position_set_y, pos1, 600),
+      (overlay_set_position, reg1, pos1),
+      (create_mesh_overlay, "$g_presentation_obj_2", "mesh_white_plane"),
+      (position_set_x, pos1, 450),
+      (position_set_y, pos1, 480),
+      (overlay_set_position, "$g_presentation_obj_2", pos1),
+      (position_set_x, pos1, 5000),
+      (position_set_y, pos1, 5000),
+      (overlay_set_size, "$g_presentation_obj_2", pos1),
+      # (faction_get_color, ":faction_color", ":cur_faction"),
+      (overlay_set_color, "$g_presentation_obj_2", ":faction_color"),
+
+      ## sliders
+      (position_set_x, pos1, 500),
+      (create_slider_overlay, "$g_presentation_obj_3", 0, 255),
+      (position_set_y, pos1, 400),
+      (overlay_set_position, "$g_presentation_obj_3", pos1),
+      (create_slider_overlay, "$g_presentation_obj_4", 0, 255),
+      (position_set_y, pos1, 350),
+      (overlay_set_position, "$g_presentation_obj_4", pos1),
+      (create_slider_overlay, "$g_presentation_obj_5", 0, 255),
+      (position_set_y, pos1, 300),
+      (overlay_set_position, "$g_presentation_obj_5", pos1),
+      (store_mod, ":blue", ":faction_color", 0x100),
+      (val_div, ":faction_color", 0x100),
+      (store_mod, ":green", ":faction_color", 0x100),
+      (val_div, ":faction_color", 0x100),
+      (store_mod, ":red", ":faction_color", 0x100),
+      (overlay_set_val, "$g_presentation_obj_3", ":red"),
+      (overlay_set_val, "$g_presentation_obj_4", ":green"),
+      (overlay_set_val, "$g_presentation_obj_5", ":blue"),
+      ## num boxes
+      (position_set_x, pos1, 650),
+      (create_number_box_overlay, "$g_presentation_obj_6", 0, 256),
+      (position_set_y, pos1, 400),
+      (overlay_set_position, "$g_presentation_obj_6", pos1),
+      (create_number_box_overlay, "$g_presentation_obj_7", 0, 256),
+      (position_set_y, pos1, 350),
+      (overlay_set_position, "$g_presentation_obj_7", pos1),
+      (create_number_box_overlay, "$g_presentation_obj_8", 0, 256),
+      (position_set_y, pos1, 300),
+      (overlay_set_position, "$g_presentation_obj_8", pos1),
+      (overlay_set_val, "$g_presentation_obj_6", ":red"),
+      (overlay_set_val, "$g_presentation_obj_7", ":green"),
+      (overlay_set_val, "$g_presentation_obj_8", ":blue"),
+      (assign, reg2, ":red"),
+      (assign, reg3, ":green"),
+      (assign, reg4, ":blue"),
+      ## text: r g b
+      (position_set_x, pos1, 330),
+      (create_text_overlay, reg1, "@Red:", tf_center_justify),
+      (position_set_y, pos1, 400),
+      (overlay_set_position, reg1, pos1),
+      (create_text_overlay, reg1, "@Green:", tf_center_justify),
+      (position_set_y, pos1, 350),
+      (overlay_set_position, reg1, pos1),
+      (create_text_overlay, reg1, "@Blue:", tf_center_justify),
+      (position_set_y, pos1, 300),
+      (overlay_set_position, reg1, pos1),
+
+      ## HTML code
+      (str_store_string, s0, "str_dplmc_none"),
+      (create_text_overlay, "$g_presentation_obj_9", "str_html", tf_center_justify),
+      (position_set_x, pos1, 500),
+      (position_set_y, pos1, 450),
+      (overlay_set_position, "$g_presentation_obj_9", pos1),
+      (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
+      (overlay_set_text, "$g_presentation_obj_9", "str_html"),
+
+      ## default and random
+      (create_game_button_overlay, "$g_presentation_obj_11", "str_reset_to_default"),
+      (position_set_x, pos1, 420),
+      (position_set_y, pos1, 230),
+      (overlay_set_position, "$g_presentation_obj_11", pos1),
+      (create_game_button_overlay, "$g_presentation_obj_12", "str_randomize"),
+      (position_set_x, pos1, 580),
+      (position_set_y, pos1, 230),
+      (overlay_set_position, "$g_presentation_obj_12", pos1),
+
+      ## color picker
+      (create_mesh_overlay, reg1, "mesh_white_plane"),
+      (position_set_x, pos1, 138),
+      (position_set_y, pos1, 78),
+      (overlay_set_position, reg1, pos1),
+      (position_set_x, pos1, 36100),
+      (position_set_y, pos1, 6100),
+      (overlay_set_size, reg1, pos1),
+      (overlay_set_color, reg1, 0),
+
+      (assign, ":pos_x", 140),
+      (assign, ":pos_y", 80),
+      (try_for_range, ":cur_slot", 0, 216),
+        (create_image_button_overlay, reg1, "mesh_white_plane", "mesh_white_plane"),
+        (position_set_x, pos1, ":pos_x"),
+        (position_set_y, pos1, ":pos_y"),
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (assign, ":cur_color", ":cur_slot"),
+        (call_script, "script_convert_slot_no_to_color", ":cur_color"),
+        (assign, ":dest_color", reg0),
+        (overlay_set_color, reg1, ":dest_color"),
+        (val_add, ":pos_x", 20),
+        (try_begin),
+          (eq, ":pos_x", 860),
+          (assign, ":pos_x", 140),
+          (val_add, ":pos_y", 20),
+        (try_end),
+        (troop_set_slot, "trp_temp_array_c", ":cur_slot", reg1),
+      (try_end),
+
+      ## done
+      (create_game_button_overlay, "$g_presentation_obj_10", "str_done"),
+      (position_set_x, pos1, 900),
+      (position_set_y, pos1, 25),
+      (overlay_set_position, "$g_presentation_obj_10", pos1),
+      ####### mouse fix pos system #######
+      #(call_script, "script_mouse_fix_pos_ready"),
+      ####### mouse fix pos system #######
+    ]),
+
+    (ti_on_presentation_event_state_change,[
+      (store_trigger_param_1, ":object"),
+      (store_trigger_param_2, ":value"),
+
+      (try_begin),
+        (eq, ":object", "$g_presentation_obj_1"),
+        (assign, "$temp", ":value"),
+        # (overlay_set_val, "$g_presentation_obj_1", ":value"),
+        (start_presentation, "prsnt_change_color"),
+      (else_try),
+        (this_or_next|eq, ":object", "$g_presentation_obj_3"),
+        (eq, ":object", "$g_presentation_obj_6"),
+        (overlay_set_val, "$g_presentation_obj_3", ":value"),
+        (overlay_set_val, "$g_presentation_obj_6", ":value"),
+        (assign, reg2, ":value"),
+        (call_script, "script_get_dest_color_from_rgb", reg2, reg3, reg4),
+        (assign, ":cur_color", reg0),
+        (overlay_set_color, "$g_presentation_obj_2", ":cur_color"),
+
+        (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
+        (str_store_faction_name,s0, ":cur_faction"),
+        (faction_set_color, ":cur_faction", ":cur_color"),
+        (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
+        (overlay_set_text, "$g_presentation_obj_9", "str_html"),
+      (else_try),
+        (this_or_next|eq, ":object", "$g_presentation_obj_4"),
+        (eq, ":object", "$g_presentation_obj_7"),
+        (overlay_set_val, "$g_presentation_obj_4", ":value"),
+        (overlay_set_val, "$g_presentation_obj_7", ":value"),
+        (assign, reg3, ":value"),
+        (call_script, "script_get_dest_color_from_rgb", reg2, reg3, reg4),
+        (assign, ":cur_color", reg0),
+        (overlay_set_color, "$g_presentation_obj_2", ":cur_color"),
+        (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
+        (str_store_faction_name,s0, ":cur_faction"),
+        (faction_set_color, ":cur_faction", ":cur_color"),
+        (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
+        (overlay_set_text, "$g_presentation_obj_9", "str_html"),
+      (else_try),
+        (this_or_next|eq, ":object", "$g_presentation_obj_5"),
+        (eq, ":object", "$g_presentation_obj_8"),
+        (overlay_set_val, "$g_presentation_obj_5", ":value"),
+        (overlay_set_val, "$g_presentation_obj_8", ":value"),
+        (assign, reg4, ":value"),
+        (call_script, "script_change_color"),
+        # (call_script, "script_get_dest_color_from_rgb", reg2, reg3, reg4),
+        # (assign, ":cur_color", reg0),
+        # (overlay_set_color, "$g_presentation_obj_2", ":cur_color"),
+        # (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
+        # (faction_set_color, ":cur_faction", ":cur_color"),
+        # (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
+        # (overlay_set_text, "$g_presentation_obj_9", "str_html"),
+      (else_try),
+        (eq, ":object", "$g_presentation_obj_11"),
+        (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
+        (str_store_faction_name,s0, ":cur_faction"),
+        (troop_get_slot, ":default_color", "trp_temp_array_b", "$temp"),
         (try_begin),
           (eq, "$g_presentation_state", recolor_kingdom),
-
-          #maybe not
-          # (faction_get_slot, ":mesh", "$players_kingdom", slot_faction_banner),
-          # (create_mesh_overlay, reg0, ":mesh"),
-          # (overlay_set_position, reg0, pos1),
-
-          # faction list
-          (assign, ":slot_no", 0),
-          # (try_for_range, ":faction", "fac_commoners", "fac_innocents"),
-          #   (troop_set_slot, "trp_temp_array_a", ":slot_no", ":faction"),
-          #   (str_store_faction_name, s0, ":faction"),
-          #   (overlay_add_item, "$g_presentation_obj_1", s0),
-          #   (val_add, ":slot_no", 1),
-          # (try_end),
-          (try_for_range_backwards, ":faction", kingdoms_begin, kingdoms_end),
-            (faction_slot_eq, ":faction", slot_faction_state, sfs_active),
-            (troop_set_slot, "trp_temp_array_a", ":slot_no", ":faction"),
-            (str_store_faction_name, s0, ":faction"),
-            (overlay_add_item, "$g_presentation_obj_1", s0),
-            (val_add, ":slot_no", 1),
-          (try_end),
-          (overlay_set_val, "$g_presentation_obj_1", "$temp"),
-          # (overlay_set_hilight_color, "$g_presentation_obj_1", 0xFFFFFF),
-          # (overlay_set_color, "$g_presentation_obj_1", 0xFFFFFF),
-
-          # default color list
-          # (troop_set_slot, "trp_temp_array_b", 0, factions[fac_deserters][6]),
-          (troop_set_slot, "trp_temp_array_b", 0, 0xAAAAAA), #commoners doesn't have a default value
-          (troop_set_slot, "trp_temp_array_b", 1, factions[fac_outlaws][6]),
-          (troop_set_slot, "trp_temp_array_b", 2, factions[fac_neutral][6]),
-          # (troop_set_slot, "trp_temp_array_b", 0, 0x444444), #common
-          # (troop_set_slot, "trp_temp_array_b", 1, 0x888888), #outlaw
-          # (troop_set_slot, "trp_temp_array_b", 2, 0xFFFFFF), #neutral
-          (troop_set_slot, "trp_temp_array_b", 3, factions[fac_kingdom_1][6]),
-          (troop_set_slot, "trp_temp_array_b", 4, factions[fac_kingdom_2][6]),
-          (troop_set_slot, "trp_temp_array_b", 5, factions[fac_kingdom_3][6]),
-          (troop_set_slot, "trp_temp_array_b", 6, factions[fac_kingdom_4][6]),
-          (troop_set_slot, "trp_temp_array_b", 7, factions[fac_kingdom_5][6]),
-          (troop_set_slot, "trp_temp_array_b", 8, factions[fac_kingdom_6][6]),
-          (troop_set_slot, "trp_temp_array_b", 9, factions[fac_kingdom_7][6]),
-          (troop_set_slot, "trp_temp_array_b", 10, factions[fac_kingdom_8][6]),
-          (troop_set_slot, "trp_temp_array_b", 11, factions[fac_kingdom_9][6]),
-          (troop_set_slot, "trp_temp_array_b", 12, factions[fac_kingdom_10][6]),
-          (troop_set_slot, "trp_temp_array_b", 13, factions[fac_kingdom_11][6]),
-          (troop_set_slot, "trp_temp_array_b", 14, factions[fac_kingdom_12][6]),
-          (troop_set_slot, "trp_temp_array_b", 15, factions[fac_kingdom_13][6]),
-          (troop_set_slot, "trp_temp_array_b", 16, factions[fac_kingdom_14][6]),
-          (troop_set_slot, "trp_temp_array_b", 17, factions[fac_kingdom_15][6]),
-          (troop_set_slot, "trp_temp_array_b", 18, factions[fac_kingdom_16][6]),
-          (troop_set_slot, "trp_temp_array_b", 18, factions[fac_kingdom_17][6]),
-          (troop_set_slot, "trp_temp_array_b", 19, factions[fac_player_supporters_faction][6]),
-          # (troop_set_slot, "trp_temp_array_b", 3, 0xCCCC66),
-          # (troop_set_slot, "trp_temp_array_b", 4, 0x669999),
-          # (troop_set_slot, "trp_temp_array_b", 5, 0x0066FF),
-          # (troop_set_slot, "trp_temp_array_b", 6, 0x9999CC),
-          # (troop_set_slot, "trp_temp_array_b", 7, 0xFF3300),
-          # (troop_set_slot, "trp_temp_array_b", 8, 0xCC6600),
-          # (troop_set_slot, "trp_temp_array_b", 9, 0x33DD33),
-          # (troop_set_slot, "trp_temp_array_b", 10, 0xFFCC33),
-
-          # (troop_set_slot, "trp_temp_array_b", 11, 0xFF4433), #plyr
-
-          ## name and color
-          (troop_get_slot, ":faction", "trp_temp_array_a", "$temp"),
-          (str_store_faction_name, s0, ":faction"),
-          (faction_get_color, ":faction_color", ":faction"),
+          (faction_set_color, ":cur_faction", ":default_color"),
         (else_try),
           (eq, "$g_presentation_state", recolor_groups),
-          # (assign, "$temp", grc_infantry),
-          (overlay_add_item, "$g_presentation_obj_1", "str_allies_"),
-          (overlay_add_item, "$g_presentation_obj_1", "str_enemies_"),
-          (try_for_range_backwards, ":class", grc_infantry, grc_everyone),
-            # (troop_get_slot, ":faction_color", "trp_mercenaries_end", ":class"),
-            # (troop_set_slot, "trp_temp_array_b", ":class", ":faction_color"), #unnecessary?
-            (str_store_class_name, s0, ":class"),
-            (overlay_add_item, "$g_presentation_obj_1", s0),
-          (try_end),
-          (troop_get_slot, ":class", "trp_temp_array_a", "$temp"),
-          (str_store_class_name, s0, ":class"),
+          (troop_set_slot, "trp_mercenaries_end", "$temp", ":default_color"),
         (else_try),
           (eq, "$g_presentation_state", recolor_heraldic),
-          (overlay_set_display, "$g_presentation_obj_1", 0),
-          (troop_get_slot, ":banner", "$g_player_troop", slot_troop_banner_scene_prop),
-          (val_sub, ":banner", banner_scene_props_begin),
-          (troop_get_slot, ":faction_color", "trp_banner_background_color_array", ":banner"),
-          (assign, "$temp", ":banner"), #store offset
-          (val_add, ":banner", banner_meshes_begin),
-          (create_mesh_overlay, reg0),
-          (overlay_set_position, reg0, pos1),
+          (troop_set_slot, "trp_banner_background_color_array", "$temp", ":default_color"),
         (try_end),
-        (try_begin),
-          (ge, "$g_presentation_state", recolor_heraldic),
-          (store_add, ":string", "$g_presentation_state", "str_color_of"),
-          (str_store_string, s0, ":string"),
-        (try_end),
-        (create_text_overlay, reg1, "str_color_of", tf_center_justify),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, 600),
-        (overlay_set_position, reg1, pos1),
-        (create_mesh_overlay, "$g_presentation_obj_2", "mesh_white_plane"),
-        (position_set_x, pos1, 450),
-        (position_set_y, pos1, 480),
-        (overlay_set_position, "$g_presentation_obj_2", pos1),
-        (position_set_x, pos1, 5000),
-        (position_set_y, pos1, 5000),
-        (overlay_set_size, "$g_presentation_obj_2", pos1),
-        # (faction_get_color, ":faction_color", ":cur_faction"),
-        (overlay_set_color, "$g_presentation_obj_2", ":faction_color"),
-
-        ## sliders
-        (position_set_x, pos1, 500),
-        (create_slider_overlay, "$g_presentation_obj_3", 0, 255),
-        (position_set_y, pos1, 400),
-        (overlay_set_position, "$g_presentation_obj_3", pos1),
-        (create_slider_overlay, "$g_presentation_obj_4", 0, 255),
-        (position_set_y, pos1, 350),
-        (overlay_set_position, "$g_presentation_obj_4", pos1),
-        (create_slider_overlay, "$g_presentation_obj_5", 0, 255),
-        (position_set_y, pos1, 300),
-        (overlay_set_position, "$g_presentation_obj_5", pos1),
-        (store_mod, ":blue", ":faction_color", 0x100),
-        (val_div, ":faction_color", 0x100),
-        (store_mod, ":green", ":faction_color", 0x100),
-        (val_div, ":faction_color", 0x100),
-        (store_mod, ":red", ":faction_color", 0x100),
+        (overlay_set_color, "$g_presentation_obj_2", ":default_color"),
+        (store_mod, ":blue", ":default_color", 0x100),
+        (val_div, ":default_color", 0x100),
+        (store_mod, ":green", ":default_color", 0x100),
+        (val_div, ":default_color", 0x100),
+        (store_mod, ":red", ":default_color", 0x100),
         (overlay_set_val, "$g_presentation_obj_3", ":red"),
         (overlay_set_val, "$g_presentation_obj_4", ":green"),
         (overlay_set_val, "$g_presentation_obj_5", ":blue"),
-        ## num boxes
-        (position_set_x, pos1, 650),
-        (create_number_box_overlay, "$g_presentation_obj_6", 0, 256),
-        (position_set_y, pos1, 400),
-        (overlay_set_position, "$g_presentation_obj_6", pos1),
-        (create_number_box_overlay, "$g_presentation_obj_7", 0, 256),
-        (position_set_y, pos1, 350),
-        (overlay_set_position, "$g_presentation_obj_7", pos1),
-        (create_number_box_overlay, "$g_presentation_obj_8", 0, 256),
-        (position_set_y, pos1, 300),
-        (overlay_set_position, "$g_presentation_obj_8", pos1),
         (overlay_set_val, "$g_presentation_obj_6", ":red"),
         (overlay_set_val, "$g_presentation_obj_7", ":green"),
         (overlay_set_val, "$g_presentation_obj_8", ":blue"),
         (assign, reg2, ":red"),
         (assign, reg3, ":green"),
         (assign, reg4, ":blue"),
-        ## text: r g b
-        (position_set_x, pos1, 330),
-        (create_text_overlay, reg1, "@Red:", tf_center_justify),
-        (position_set_y, pos1, 400),
-        (overlay_set_position, reg1, pos1),
-        (create_text_overlay, reg1, "@Green:", tf_center_justify),
-        (position_set_y, pos1, 350),
-        (overlay_set_position, reg1, pos1),
-        (create_text_overlay, reg1, "@Blue:", tf_center_justify),
-        (position_set_y, pos1, 300),
-        (overlay_set_position, reg1, pos1),
-
-        ## HTML code
-        (str_store_string, s0, "str_dplmc_none"),
-        (create_text_overlay, "$g_presentation_obj_9", "str_html", tf_center_justify),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, 450),
-        (overlay_set_position, "$g_presentation_obj_9", pos1),
         (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
         (overlay_set_text, "$g_presentation_obj_9", "str_html"),
-
-        ## default and random
-        (create_game_button_overlay, "$g_presentation_obj_11", "str_reset_to_default"),
-        (position_set_x, pos1, 420),
-        (position_set_y, pos1, 230),
-        (overlay_set_position, "$g_presentation_obj_11", pos1),
-        (create_game_button_overlay, "$g_presentation_obj_12", "str_randomize"),
-        (position_set_x, pos1, 580),
-        (position_set_y, pos1, 230),
-        (overlay_set_position, "$g_presentation_obj_12", pos1),
-
-        ## color picker
-        (create_mesh_overlay, reg1, "mesh_white_plane"),
-        (position_set_x, pos1, 138),
-        (position_set_y, pos1, 78),
-        (overlay_set_position, reg1, pos1),
-        (position_set_x, pos1, 36100),
-        (position_set_y, pos1, 6100),
-        (overlay_set_size, reg1, pos1),
-        (overlay_set_color, reg1, 0),
-
-        (assign, ":pos_x", 140),
-        (assign, ":pos_y", 80),
+      (else_try),
+        (eq, ":object", "$g_presentation_obj_12"),
+        (store_random_in_range, reg2, 0, 256),
+        (store_random_in_range, reg3, 0, 256),
+        (store_random_in_range, reg4, 0, 256),
+        (overlay_set_val, "$g_presentation_obj_3", reg2),
+        (overlay_set_val, "$g_presentation_obj_4", reg3),
+        (overlay_set_val, "$g_presentation_obj_5", reg4),
+        (overlay_set_val, "$g_presentation_obj_6", reg2),
+        (overlay_set_val, "$g_presentation_obj_7", reg3),
+        (overlay_set_val, "$g_presentation_obj_8", reg4),
+        (call_script, "script_change_color"),
+        # (call_script, "script_get_dest_color_from_rgb", reg2, reg3, reg4),
+        # (assign, ":cur_color", reg0),
+        # (overlay_set_color, "$g_presentation_obj_2", ":cur_color"),
+        # (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
+        # (faction_set_color, ":cur_faction", ":cur_color"),
+        # (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
+        # (overlay_set_text, "$g_presentation_obj_9", "str_html"),
+      (else_try),
+        (eq, ":object", "$g_presentation_obj_10"),
+        (try_begin),
+          (gt, "$g_presentation_next_presentation", 0),
+          (start_presentation, "$g_presentation_next_presentation"),
+        (else_try),
+          (presentation_set_duration, 0),
+        (try_end),
+      (else_try),
         (try_for_range, ":cur_slot", 0, 216),
-          (create_image_button_overlay, reg1, "mesh_white_plane", "mesh_white_plane"),
-          (position_set_x, pos1, ":pos_x"),
-          (position_set_y, pos1, ":pos_y"),
-          (overlay_set_position, reg1, pos1),
-          (position_set_x, pos1, 900),
-          (position_set_y, pos1, 900),
-          (overlay_set_size, reg1, pos1),
+          (troop_slot_eq, "trp_temp_array_c", ":cur_slot", ":object"),
           (assign, ":cur_color", ":cur_slot"),
           (call_script, "script_convert_slot_no_to_color", ":cur_color"),
           (assign, ":dest_color", reg0),
-          (overlay_set_color, reg1, ":dest_color"),
-          (val_add, ":pos_x", 20),
-          (try_begin),
-            (eq, ":pos_x", 860),
-            (assign, ":pos_x", 140),
-            (val_add, ":pos_y", 20),
-          (try_end),
-          (troop_set_slot, "trp_temp_array_c", ":cur_slot", reg1),
-        (try_end),
-
-        ## done
-        (create_game_button_overlay, "$g_presentation_obj_10", "str_done"),
-        (position_set_x, pos1, 900),
-        (position_set_y, pos1, 25),
-        (overlay_set_position, "$g_presentation_obj_10", pos1),
-        ####### mouse fix pos system #######
-        #(call_script, "script_mouse_fix_pos_ready"),
-        ####### mouse fix pos system #######
-      ]),
-
-      #(ti_on_presentation_run,
-        #[
-        ####### mouse fix pos system #######
-        #(call_script, "script_mouse_fix_pos_run"),
-        ####### mouse fix pos system #######
-      #]),
-
-    (ti_on_presentation_event_state_change,
-      [
-        (store_trigger_param_1, ":object"),
-        (store_trigger_param_2, ":value"),
-
-        (try_begin),
-          (eq, ":object", "$g_presentation_obj_1"),
-          (assign, "$temp", ":value"),
-          # (overlay_set_val, "$g_presentation_obj_1", ":value"),
-          (start_presentation, "prsnt_change_color"),
-        (else_try),
-          (this_or_next|eq, ":object", "$g_presentation_obj_3"),
-          (eq, ":object", "$g_presentation_obj_6"),
-          (overlay_set_val, "$g_presentation_obj_3", ":value"),
-          (overlay_set_val, "$g_presentation_obj_6", ":value"),
-          (assign, reg2, ":value"),
-          (call_script, "script_get_dest_color_from_rgb", reg2, reg3, reg4),
-          (assign, ":cur_color", reg0),
-          (overlay_set_color, "$g_presentation_obj_2", ":cur_color"),
-
           (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
           (str_store_faction_name,s0, ":cur_faction"),
-          (faction_set_color, ":cur_faction", ":cur_color"),
-          (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
-          (overlay_set_text, "$g_presentation_obj_9", "str_html"),
-        (else_try),
-          (this_or_next|eq, ":object", "$g_presentation_obj_4"),
-          (eq, ":object", "$g_presentation_obj_7"),
-          (overlay_set_val, "$g_presentation_obj_4", ":value"),
-          (overlay_set_val, "$g_presentation_obj_7", ":value"),
-          (assign, reg3, ":value"),
-          (call_script, "script_get_dest_color_from_rgb", reg2, reg3, reg4),
-          (assign, ":cur_color", reg0),
-          (overlay_set_color, "$g_presentation_obj_2", ":cur_color"),
-          (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
-          (str_store_faction_name,s0, ":cur_faction"),
-          (faction_set_color, ":cur_faction", ":cur_color"),
-          (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
-          (overlay_set_text, "$g_presentation_obj_9", "str_html"),
-        (else_try),
-          (this_or_next|eq, ":object", "$g_presentation_obj_5"),
-          (eq, ":object", "$g_presentation_obj_8"),
-          (overlay_set_val, "$g_presentation_obj_5", ":value"),
-          (overlay_set_val, "$g_presentation_obj_8", ":value"),
-          (assign, reg4, ":value"),
-          (call_script, "script_change_color"),
-          # (call_script, "script_get_dest_color_from_rgb", reg2, reg3, reg4),
-          # (assign, ":cur_color", reg0),
-          # (overlay_set_color, "$g_presentation_obj_2", ":cur_color"),
-          # (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
-          # (faction_set_color, ":cur_faction", ":cur_color"),
-          # (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
-          # (overlay_set_text, "$g_presentation_obj_9", "str_html"),
-        (else_try),
-          (eq, ":object", "$g_presentation_obj_11"),
-          (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
-          (str_store_faction_name,s0, ":cur_faction"),
-          (troop_get_slot, ":default_color", "trp_temp_array_b", "$temp"),
-          (try_begin),
-            (eq, "$g_presentation_state", recolor_kingdom),
-            (faction_set_color, ":cur_faction", ":default_color"),
-          (else_try),
-            (eq, "$g_presentation_state", recolor_groups),
-            (troop_set_slot, "trp_mercenaries_end", "$temp", ":default_color"),
-          (else_try),
-            (eq, "$g_presentation_state", recolor_heraldic),
-            (troop_set_slot, "trp_banner_background_color_array", "$temp", ":default_color"),
-          (try_end),
-          (overlay_set_color, "$g_presentation_obj_2", ":default_color"),
-          (store_mod, ":blue", ":default_color", 0x100),
-          (val_div, ":default_color", 0x100),
-          (store_mod, ":green", ":default_color", 0x100),
-          (val_div, ":default_color", 0x100),
-          (store_mod, ":red", ":default_color", 0x100),
+          #(display_message, "@color {reg0}, {s0}"),
+          (faction_set_color, ":cur_faction", ":dest_color"),
+          #(faction_set_color, "fac_player_supporters_faction", ":dest_color"),
+          (overlay_set_color, "$g_presentation_obj_2", ":dest_color"),
+          (store_mod, ":blue", ":dest_color", 0x100),
+          (val_div, ":dest_color", 0x100),
+          (store_mod, ":green", ":dest_color", 0x100),
+          (val_div, ":dest_color", 0x100),
+          (store_mod, ":red", ":dest_color", 0x100),
           (overlay_set_val, "$g_presentation_obj_3", ":red"),
           (overlay_set_val, "$g_presentation_obj_4", ":green"),
           (overlay_set_val, "$g_presentation_obj_5", ":blue"),
@@ -2375,65 +2430,10 @@ presentations = [
           (assign, reg4, ":blue"),
           (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
           (overlay_set_text, "$g_presentation_obj_9", "str_html"),
-        (else_try),
-          (eq, ":object", "$g_presentation_obj_12"),
-          (store_random_in_range, reg2, 0, 256),
-          (store_random_in_range, reg3, 0, 256),
-          (store_random_in_range, reg4, 0, 256),
-          (overlay_set_val, "$g_presentation_obj_3", reg2),
-          (overlay_set_val, "$g_presentation_obj_4", reg3),
-          (overlay_set_val, "$g_presentation_obj_5", reg4),
-          (overlay_set_val, "$g_presentation_obj_6", reg2),
-          (overlay_set_val, "$g_presentation_obj_7", reg3),
-          (overlay_set_val, "$g_presentation_obj_8", reg4),
-          (call_script, "script_change_color"),
-          # (call_script, "script_get_dest_color_from_rgb", reg2, reg3, reg4),
-          # (assign, ":cur_color", reg0),
-          # (overlay_set_color, "$g_presentation_obj_2", ":cur_color"),
-          # (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
-          # (faction_set_color, ":cur_faction", ":cur_color"),
-          # (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
-          # (overlay_set_text, "$g_presentation_obj_9", "str_html"),
-        (else_try),
-          (eq, ":object", "$g_presentation_obj_10"),
-          (try_begin),
-            (gt, "$g_presentation_next_presentation", 0),
-            (start_presentation, "$g_presentation_next_presentation"),
-          (else_try),
-            (presentation_set_duration, 0),
-          (try_end),
-        (else_try),
-          (try_for_range, ":cur_slot", 0, 216),
-            (troop_slot_eq, "trp_temp_array_c", ":cur_slot", ":object"),
-            (assign, ":cur_color", ":cur_slot"),
-            (call_script, "script_convert_slot_no_to_color", ":cur_color"),
-            (assign, ":dest_color", reg0),
-            (troop_get_slot, ":cur_faction", "trp_temp_array_a", "$temp"),
-            (str_store_faction_name,s0, ":cur_faction"),
-            #(display_message, "@color {reg0}, {s0}"),
-            (faction_set_color, ":cur_faction", ":dest_color"),
-            #(faction_set_color, "fac_player_supporters_faction", ":dest_color"),
-            (overlay_set_color, "$g_presentation_obj_2", ":dest_color"),
-            (store_mod, ":blue", ":dest_color", 0x100),
-            (val_div, ":dest_color", 0x100),
-            (store_mod, ":green", ":dest_color", 0x100),
-            (val_div, ":dest_color", 0x100),
-            (store_mod, ":red", ":dest_color", 0x100),
-            (overlay_set_val, "$g_presentation_obj_3", ":red"),
-            (overlay_set_val, "$g_presentation_obj_4", ":green"),
-            (overlay_set_val, "$g_presentation_obj_5", ":blue"),
-            (overlay_set_val, "$g_presentation_obj_6", ":red"),
-            (overlay_set_val, "$g_presentation_obj_7", ":green"),
-            (overlay_set_val, "$g_presentation_obj_8", ":blue"),
-            (assign, reg2, ":red"),
-            (assign, reg3, ":green"),
-            (assign, reg4, ":blue"),
-            (call_script, "script_convert_rgb_code_to_html_code", reg2, reg3, reg4),
-            (overlay_set_text, "$g_presentation_obj_9", "str_html"),
-          (try_end),
         (try_end),
+      (try_end),
     ]),
-  ]),
+]),
 
 
 ## SB: Update from CC
@@ -4068,7 +4068,7 @@ presentations = [
         (try_end),
 
         (assign, reg0, ":wealth"),
-        (create_text_overlay, reg1, "@Wealth: {reg0} denars", 0),
+        (create_text_overlay, reg1, "@Wealth: {reg0} denarii", 0),
         (position_set_x, pos1, 750),
         (position_set_y, pos1, 750),
         (overlay_set_size, reg1, pos1),
@@ -4089,7 +4089,7 @@ presentations = [
         (try_end),
 
         (assign, reg0, ":total_item_value"),
-        (create_text_overlay, reg1, "@Inventory: {reg0} denars", 0),
+        (create_text_overlay, reg1, "@Inventory: {reg0} denarii", 0),
         (position_set_x, pos1, 750),
         (position_set_y, pos1, 750),
         (overlay_set_size, reg1, pos1),
@@ -4553,50 +4553,6 @@ presentations = [
     (overlay_set_area_size, "$g_presentation_obj_bugdet_report_container", pos1),
     (set_container_overlay, "$g_presentation_obj_bugdet_report_container"),
 
-    #get variables for tax inefficiency
-    (store_skill_level, reg1, "skl_trade", "trp_player"),
-    (store_sub, ":tax_efficiency_loss_ratio_per_center", 10, reg1),
-
-    (store_div, ":num_centers_needed_for_efficiency_loss", reg1, 2),
-    (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
-
-    #census also helps on an induvidual level
-    (try_begin),
-        (eq, "$conducted_census", 1),
-        (val_div, ":tax_efficiency_loss_ratio_per_center", 2),
-    (try_end),
-
-    #corruption on imperial level is now handled elsewhere
-    #only apply this for non feudal ones
-    (try_begin),
-        (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_government_type, gov_imperial),
-        (gt, "$g_player_minister", 0),
-        # (troop_get_slot, ":relation", "$g_player_minister", slot_troop_player_relation),
-        (call_script, "script_troop_get_player_relation", "$g_player_minister"),
-        (assign, ":relation", reg0),
-        (try_begin),
-            (ge, ":relation", 75), #high relation = less tax loss
-            (val_add, ":num_centers_needed_for_efficiency_loss", 2),
-            (val_sub, ":tax_efficiency_loss_ratio_per_center", 1),
-        (else_try),
-            (lt, ":relation", 15),
-            (val_sub, ":num_centers_needed_for_efficiency_loss", 1),
-            (val_add, ":tax_efficiency_loss_ratio_per_center", 1),
-        (else_try),
-            (lt, ":relation", -5),
-            (val_sub, ":num_centers_needed_for_efficiency_loss", 2),
-            (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
-        (try_end),
-    (try_end),
-    (try_begin),
-        (eq, "$control_tax", 1), #tax control
-        (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_government_type, gov_imperial),
-        (val_add, ":num_centers_needed_for_efficiency_loss", 2),
-    (try_end),
-
-    (val_clamp, ":num_centers_needed_for_efficiency_loss", 1, 11),
-    (val_clamp, ":tax_efficiency_loss_ratio_per_center", 1, 51),
-
     # (assign, reg1, ":num_centers_needed_for_efficiency_loss"),
     # (display_message, "@num_centers_needed_for_efficiency_loss: {reg1}"),
 
@@ -4662,6 +4618,75 @@ presentations = [
             # (try_end),
         (try_end),
     (try_end),
+
+    # count number of slaves
+    (assign, ":number_slaves", 0),
+    (try_for_range, ":slave", household_slaves_begin, household_slaves_end),
+        (troop_slot_ge, ":slave", slot_slave_template_troop, 1),
+        (val_add, ":number_slaves", 1),
+    (try_end),
+    # (assign, reg0, ":number_slaves"),
+    # (display_message, "@number_slaves {reg0}"),
+    (store_div, ":num_centers_needed_for_efficiency_loss", ":number_slaves", 2),
+    # (assign, reg0, ":num_centers_needed_for_efficiency_loss"),
+    # (display_message, "@num_centers_needed_for_efficiency_loss {reg0}"),
+    #get variables for tax inefficiency
+    (store_skill_level, reg1, "skl_trade", "trp_player"),
+    (store_sub, ":tax_efficiency_loss_ratio_per_center", 10, reg1),
+
+    (val_div, reg1, 5),
+    (val_add, ":num_centers_needed_for_efficiency_loss", reg1),
+    # (assign, reg0, ":num_centers_needed_for_efficiency_loss"),
+    # (display_message, "@num_centers_needed_for_efficiency_loss {reg0}"),
+
+    (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
+    # (assign, reg0, ":tax_efficiency_loss_ratio_per_center"),
+    # (display_message, "@tax_efficiency_loss_ratio_per_center {reg0}"),
+    #census also helps on an induvidual level
+    (try_begin),
+        (eq, "$conducted_census", 1),
+        (val_div, ":tax_efficiency_loss_ratio_per_center", 2),
+    (try_end),
+
+    #corruption on imperial level is now handled elsewhere
+    #only apply this for non feudal ones
+    (try_begin),
+        (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_government_type, gov_imperial),
+        (gt, "$g_player_minister", 0),
+        # (troop_get_slot, ":relation", "$g_player_minister", slot_troop_player_relation),
+        (call_script, "script_troop_get_player_relation", "$g_player_minister"),
+        (assign, ":relation", reg0),
+        (try_begin),
+            (ge, ":relation", 75), #high relation = less tax loss
+            (val_add, ":num_centers_needed_for_efficiency_loss", 2),
+            (val_sub, ":tax_efficiency_loss_ratio_per_center", 1),
+        (else_try),
+            (lt, ":relation", 15),
+            (val_sub, ":num_centers_needed_for_efficiency_loss", 1),
+            (val_add, ":tax_efficiency_loss_ratio_per_center", 1),
+        (else_try),
+            (lt, ":relation", -5),
+            (val_sub, ":num_centers_needed_for_efficiency_loss", 2),
+            (val_add, ":tax_efficiency_loss_ratio_per_center", 2),
+        (try_end),
+    (try_end),
+    (try_begin),
+        (eq, "$control_tax", 1), #tax control
+        (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_government_type, gov_imperial),
+        (val_add, ":num_centers_needed_for_efficiency_loss", 2),
+    (try_end),
+
+    # (assign, reg0, ":num_centers_needed_for_efficiency_loss"),
+    # (display_message, "@num_centers_needed_for_efficiency_loss {reg0}"),
+
+    # (assign, reg0, ":tax_efficiency_loss_ratio_per_center"),
+    # (display_message, "@tax_efficiency_loss_ratio_per_center {reg0}"),
+
+    # (val_clamp, ":num_centers_needed_for_efficiency_loss", 1, 11),
+    # (val_clamp, ":tax_efficiency_loss_ratio_per_center", 1, 51),
+
+
+
     # (assign, reg1, ":num_owned_center_values_for_tax_efficiency"),
     # (display_message, "@num_owned_center_values_for_tax_efficiency: {reg1}"),
 
@@ -4781,6 +4806,13 @@ presentations = [
     (try_begin),##freelancer payment
         (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_payment, 1),
         (val_add, ":num_lines", 1), #
+    (try_end),
+
+    (try_begin),#household corruption
+        (call_script, "script_get_household_modifier", household_mod_corruption),
+        (assign, ":household_corruption_modifier", reg0),
+        (gt, ":household_corruption_modifier", 0),
+        (val_add, ":num_lines", 1), # household corruption
     (try_end),
 
     (try_begin),##lending out money
@@ -5459,7 +5491,7 @@ presentations = [
         ##Nero Change
         (val_mul, ":offer_value", 5),##
         (val_div, ":offer_value", 2),##
-        (val_add, ":offer_value", 500),##the base payment are 500 denars
+        (val_add, ":offer_value", 500),##the base payment are 500 denarii
         (call_script, "script_round_value", ":offer_value"),
         (assign, ":offer_value", reg0),
         (try_begin),
@@ -5773,31 +5805,6 @@ presentations = [
         (val_sub, ":cur_y", 27),
     (try_end),
 
-    ##STAFF SPENDING
-    (call_script, "script_calculate_staff_salary"),
-    (assign, ":staff_salary", reg0),
-    (try_begin),
-        (gt, ":staff_salary", 0),
-        (val_sub, ":net_change", ":staff_salary"),
-        (create_text_overlay, reg1, "@Staff:", 0),
-        (position_set_x, pos1, 900),
-        (position_set_y, pos1, 900),
-        (overlay_set_size, reg1, pos1),
-        (position_set_x, pos1, 25),
-        (position_set_y, pos1, ":cur_y"),
-        (overlay_set_position, reg1, pos1),
-        (store_mul, reg0, ":staff_salary", -1),
-        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
-        (position_set_x, pos1, 900),
-        (position_set_y, pos1, 900),
-        (overlay_set_size, reg1, pos1),
-        (overlay_set_color, reg1, 0xFF0000),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, ":cur_y"),
-        (overlay_set_position, reg1, pos1),
-        (val_sub, ":cur_y", 27),
-    (try_end),
-    #END STAFF SPENDING
     ## begin imperial tax if player is governor
     (try_begin),
         (is_between, ":player_tax_faction", kingdoms_begin, kingdoms_end),
@@ -6127,6 +6134,7 @@ presentations = [
     #     (overlay_set_position, reg1, pos1),
     #     (val_sub, ":cur_y", 27),
     # (try_end),
+    (assign, ":special_estate_costs", 0),
     ## villa costs
     (try_begin),
         (troop_slot_eq, "trp_global_variables", g_player_villa, 2),
@@ -6144,10 +6152,9 @@ presentations = [
             (assign, "$g_player_villa_costs", 0),
         (try_end),
         (val_sub, ":net_change", ":cost_for_1"),
-        (val_mul, ":cost_for_1", -1),
-        (assign, reg0, ":cost_for_1"),
+        (val_add, ":special_estate_costs", ":cost_for_1"),
 
-
+        (store_mul, reg0, ":cost_for_1", -1),
         (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
         (overlay_set_color, reg1, 0xFF2C2C),
 
@@ -6173,14 +6180,15 @@ presentations = [
         (position_set_y, pos1, ":cur_y"),
         (overlay_set_position, reg1, pos1),
 
-        (assign, ":cost_for4444", ":gold"),
+        (assign, ":cost_for_1", ":gold"),
         (try_begin),
             (eq, "$g_apply_budget_report_to_gold", 1),
             (troop_remove_gold, "trp_household_villa", ":gold"),
         (try_end),
-        (val_add, ":net_change", ":cost_for4444"),
+        (val_add, ":net_change", ":cost_for_1"),
+        (val_add, ":special_estate_costs", ":cost_for_1"),
         #(val_mul, ":cost_for", -1),
-        (assign, reg0, ":cost_for4444"),
+        (assign, reg0, ":cost_for_1"),
 
 
         (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
@@ -6194,6 +6202,105 @@ presentations = [
         (overlay_set_position, reg1, pos1),
         (val_sub, ":cur_y", 27),
     (try_end),
+
+    #domus augusti maintaince
+    (try_begin),
+        (eq, "$g_is_emperor", 1),
+        (party_slot_eq, "p_town_6", slot_town_lord, "trp_player"),
+        (create_text_overlay, reg1, "@Household-costs Domus Augusti:", 0),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 25),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (store_troop_gold,":cost_for_1", "trp_housholder"),
+        (troop_remove_gold, "trp_housholder",":cost_for_1"),
+        (val_add, ":cost_for_1", 10000),
+        (val_sub, ":net_change", ":cost_for_1"),
+        (val_add, ":special_estate_costs", ":cost_for_1"),
+
+        (store_mul, reg0, ":cost_for_1", -1),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (overlay_set_color, reg1, 0xFF2C2C),
+
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_sub, ":cur_y", 27),
+    (try_end),
+
+    (assign, ":corruption_loss", 0),
+
+    # (assign, reg2, ":household_corruption_modifier"),
+    # (display_message, "@Household corruption modifier: {reg2}%", 0x00AA00),
+
+    (try_begin),
+        (neq, ":household_corruption_modifier", 0),
+        (val_abs, ":household_corruption_modifier"),
+        # (val_mul, ":household_corruption_modifier", 100),
+        (val_max, ":workshops_total", 0),
+        (store_add, ":corruption_loss", ":workshops_total", ":latifundia_total"),
+        (val_add, ":corruption_loss", ":all_centers_accumulated_total"),
+        (val_add, ":corruption_loss", ":special_estate_costs"),
+        (val_mul, ":corruption_loss", ":household_corruption_modifier"),
+        (val_div, ":corruption_loss", 100),
+        (val_mul, ":corruption_loss", -1), #negative value
+        (lt, ":corruption_loss", 0), #clamp to zero
+
+        (assign, reg2, ":household_corruption_modifier"),
+        (create_text_overlay, reg1, "@Corruption (household, {reg2}%):", 0),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 25),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (assign, reg0, ":corruption_loss"),
+        (val_add, ":net_change", ":corruption_loss"),
+        (try_begin),#substract from weekly income
+            (eq, "$g_apply_budget_report_to_gold", 1),
+            (call_script, "script_add_to_weekly_income", ":corruption_loss"),
+        (try_end),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_color, reg1, 0xFF2C2C),
+        (val_sub, ":cur_y", 27),
+    (try_end),
+
+    ##STAFF SPENDING
+    (call_script, "script_calculate_staff_salary"),
+    (assign, ":staff_salary", reg0),
+    (try_begin),
+        (gt, ":staff_salary", 0),
+        (val_sub, ":net_change", ":staff_salary"),
+        (create_text_overlay, reg1, "@Staff:", 0),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 25),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (store_mul, reg0, ":staff_salary", -1),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (overlay_set_color, reg1, 0xFF0000),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_sub, ":cur_y", 27),
+    (try_end),
+    #END STAFF SPENDING
     ##spouse spendings
     (try_begin),
         (troop_slot_ge, "trp_player", slot_troop_spouse, 1),
@@ -6270,34 +6377,7 @@ presentations = [
     #     (overlay_set_position, reg1, pos1),
     #     (val_sub, ":cur_y", 27),
     # (try_end),
-    #domus augusti maintaince
-    (try_begin),
-        (eq, "$g_is_emperor", 1),
-        (party_slot_eq, "p_town_6", slot_town_lord, "trp_player"),
-        (create_text_overlay, reg1, "@Household-costs Domus Augusti:", 0),
-        (position_set_x, pos1, 900),
-        (position_set_y, pos1, 900),
-        (overlay_set_size, reg1, pos1),
-        (position_set_x, pos1, 25),
-        (position_set_y, pos1, ":cur_y"),
-        (overlay_set_position, reg1, pos1),
-        (store_troop_gold,":cost_for3", "trp_housholder"),
-        (troop_remove_gold, "trp_housholder",":cost_for3"),
-        (val_add, ":cost_for3", 10000),
-        (val_mul, ":cost_for3", -1),
-        (assign, reg0, ":cost_for3"),
-        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
-        (overlay_set_color, reg1, 0xFF2C2C),
-        (val_add, ":net_change", ":cost_for3"),
 
-        (position_set_x, pos1, 900),
-        (position_set_y, pos1, 900),
-        (overlay_set_size, reg1, pos1),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, ":cur_y"),
-        (overlay_set_position, reg1, pos1),
-        (val_sub, ":cur_y", 27),
-    (try_end),
     ##salary for player if he is in roman service
     (try_begin),
         (ge, "$g_rank", 1),
@@ -6646,7 +6726,7 @@ presentations = [
                 (eq, "$g_apply_budget_report_to_gold", 1),
                 (troop_remove_gold, "trp_player", ":cash_to_pay"),
                 (assign, reg0, ":cash_to_pay"),
-                (display_message, "@You paid {reg0} denars in cash to liquidate a debt", message_alert), #SB : rephrase and recolor
+                (display_message, "@You paid {reg0} denarii in cash to liquidate a debt", message_alert), #SB : rephrase and recolor
             (try_end),
         (try_end),
         ##diplomacy end
@@ -7583,7 +7663,7 @@ presentations = [
         (assign, "$demanded_money", 1000),
         (assign, "$diplomacy_var", 1),
 
-        (create_text_overlay, "$g_presentation_obj_sliders_2", "@1000 denars"),
+        (create_text_overlay, "$g_presentation_obj_sliders_2", "@1000 denarii"),
         (position_set_x, pos1, 500),
         (overlay_set_position, "$g_presentation_obj_sliders_2", pos1),
 
@@ -7652,7 +7732,7 @@ presentations = [
 		  ##diplomacy start+
 		  ##OLD:
           #(assign, reg0, "$demanded_money"),
-          #(overlay_set_text, "$g_presentation_obj_sliders_2", "@{reg0} denars"),
+          #(overlay_set_text, "$g_presentation_obj_sliders_2", "@{reg0} denarii"),
 		  ##NEW:
 		  (assign, reg1, "$demanded_money"),
 		  (overlay_set_text, "$g_presentation_obj_sliders_2", "str_reg1_denars"),
@@ -9130,7 +9210,7 @@ presentations = [
 
 
 
-#       (str_store_string, s20, "@{reg16} denars"),
+#       (str_store_string, s20, "@{reg16} denarii"),
 
 #       (create_text_overlay, reg0, "@{s20}", tf_left_align),
 #       (position_set_y, pos1, ":y_name"),
@@ -9359,15 +9439,21 @@ presentations = [
         (assign, "$g_presentation_obj_15", reg1),
     (try_end),
 
-    (create_game_button_overlay, reg1, "@Estate Report"),
+    (create_game_button_overlay, reg1, "@Household"),
     (position_set_x, pos1, 860),
     (position_set_y, pos1, 240),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_presentation_obj_13", reg1),
+
+    (create_game_button_overlay, reg1, "@Estate Report"),
+    (position_set_x, pos1, 860),
+    (position_set_y, pos1, 190),
     (overlay_set_position, reg1, pos1),
     (assign, "$g_presentation_obj_14", reg1),
 
     (create_game_button_overlay, reg1, "@Concepts"),
     (position_set_x, pos1, 860),
-    (position_set_y, pos1, 190),
+    (position_set_y, pos1, 140),
     (overlay_set_position, reg1, pos1),
     (assign, "$g_presentation_obj_11", reg1),
 
@@ -9531,7 +9617,7 @@ presentations = [
 
     ##health
     (call_script, "script_print_health_text_to_s0", "trp_player"),
-    (create_text_overlay, reg0, "@{s0}", 0),
+    (create_text_overlay, reg0, "str_s0", 0),
     (position_set_y, pos1, ":cur_y"),
     (overlay_set_position, reg0, pos1),
     (overlay_set_size, reg0, pos2),
@@ -9780,15 +9866,15 @@ presentations = [
         (try_begin),
             (eq, "$g_rank", 1),
             (assign, reg1, salary_aux_1),
-            (str_store_string, s1, "@Military rank: Tribunus militaris (salary: {reg1} denars)"),
+            (str_store_string, s1, "@Military rank: Tribunus militaris (salary: {reg1} denarii)"),
         (else_try),
             (eq, "$g_rank", 2),
             (assign, reg1, salary_aux_2),
-            (str_store_string, s1, "@Military rank: Praefectus cohortis (salary: {reg1} denars)"),
+            (str_store_string, s1, "@Military rank: Praefectus cohortis (salary: {reg1} denarii)"),
         (else_try),
             (eq, "$g_rank", 3),
             (assign, reg1, salary_legate),
-            (str_store_string, s1, "@Military rank: Legatus legionis (salary: {reg1} denars)"),
+            (str_store_string, s1, "@Military rank: Legatus legionis (salary: {reg1} denarii)"),
         (try_end),
         (create_text_overlay, reg0, "@{s1}", 0),
         (position_set_y, pos1, ":cur_y"),
@@ -9971,10 +10057,9 @@ presentations = [
     #     (eq, ":button_pressed_id", "$g_presentation_obj_12"),
     #     (assign, "$temp", 0),
     #     (jump_to_menu, "mnu_morale_report"),
-    # (else_try),
-    #     (eq, ":button_pressed_id", "$g_presentation_obj_13"),
-    #     (assign, "$temp", 0),
-    #     (jump_to_menu, "mnu_party_size_report"),
+    (else_try),
+        (eq, ":button_pressed_id", "$g_presentation_obj_13"),
+        (start_presentation, "prsnt_household_management"),
     (try_end),
   ]),
    ## END presentation event state change trigger
@@ -10183,7 +10268,7 @@ presentations = [
 
     (store_add, reg1, "str_party_stance_default", "$g_stance"),
     (str_store_string, s0, reg1),
-    (create_text_overlay, reg0, "@{s0}", 0),
+    (create_text_overlay, reg0, "str_s0", 0),
     (overlay_set_color, reg0, color_information),
     (overlay_set_size, reg0, pos2),
     (position_set_x, pos1, 200),
@@ -10310,7 +10395,7 @@ presentations = [
     (party_get_num_companion_stacks, ":num_of_stacks", "p_follower_party"),##now p_follower_party
     (try_for_range, ":i", 0, ":num_of_stacks"),
         (party_stack_get_troop_id, ":stack_troop", "p_follower_party", ":i"),
-        (eq, ":stack_troop", "trp_sword_sister"),
+        (eq, ":stack_troop", "trp_soldier_wife"),
 
         (party_stack_get_size, ":stack_size", "p_follower_party", ":i"),
         (party_stack_get_num_wounded, ":stack_wounded", "p_follower_party", ":i"),
@@ -10958,20 +11043,31 @@ presentations = [
     (else_try),
       (eq, ":button_pressed_id", "$g_presentation_obj_2"),
       (try_begin),
-       (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
-       (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
-       (ge, ":num_attached_parties", 1),
-       (try_for_range_backwards, ":attached_party_rank", 0, ":num_attached_parties"),
-         (party_get_attached_party_with_rank, ":attached_party", "p_main_party", ":attached_party_rank"),
-         (party_detach, ":attached_party"),
-         (party_relocate_near_party, ":attached_party", "p_main_party", 1),
-         (party_set_slot,":attached_party",slot_party_time_service, -1),
-         (str_store_party_name, s22, ":attached_party"),
-         (display_message, "@{s22} has left your force.",message_alert),
-       (try_end),
-       (display_message, "@Parties have been detached from main party.",message_alert),
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
+        (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
+        (ge, ":num_attached_parties", 1),
+        (try_for_range_backwards, ":attached_party_rank", 0, ":num_attached_parties"),
+          (party_get_attached_party_with_rank, ":attached_party", "p_main_party", ":attached_party_rank"),
+
+          (assign, ":block", 0),
+          (try_begin),
+              (check_quest_active, "qst_nero_greece_tour"),
+              (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 1),
+              (party_stack_get_troop_id, ":leader",":attached_party",0),
+              (eq, ":leader", "trp_kingdom_7_lord"),
+              (assign, ":block", 1),
+          (try_end),
+          (eq, ":block", 0),
+
+          (party_detach, ":attached_party"),
+          (party_relocate_near_party, ":attached_party", "p_main_party", 1),
+          (party_set_slot,":attached_party",slot_party_time_service, -1),
+          (str_store_party_name, s22, ":attached_party"),
+          (display_message, "@{s22} has left your force.",message_alert),
+        (try_end),
+        (display_message, "@Parties have been detached from main party.",message_alert),
       (else_try),
-       (display_message, "@No parties are attached to main party.",message_alert),
+        (display_message, "@No parties are attached to main party.",message_alert),
       (try_end),
     (else_try),
       (eq, ":button_pressed_id", "$g_presentation_obj_3"),
@@ -11111,7 +11207,6 @@ presentations = [
       (try_begin),
         (eq, "$enlisted_party", -1),#freelancer
         (assign, "$temp", 0),
-        (set_jump_mission,"mt_camp"),
         (call_script, "script_setup_camp_scene"),
         (change_screen_mission),
       (else_try),
@@ -11249,11 +11344,10 @@ presentations = [
         (str_store_string, s2, "@{reg6} men"),
     (try_end),
 
-    (party_get_slot, ":center_culture", "$g_encountered_party", slot_center_culture),
-    (str_store_faction_name, s61, ":center_culture"),
-
-    (str_store_string, s1, "@Culture: {s61}^Prosperity: {reg1}.^Town wealth: {reg3}.^Budget of the town counsel: {reg2}.^Relation: {reg4}.^Garrison size: {reg5} men.^Prisoners: {s2}."),
-    (create_text_overlay, reg0, "@{s1}", tf_double_space|tf_scrollable|tf_left_align),
+    # (party_get_slot, ":center_culture", "$g_encountered_party", slot_center_culture),
+    (call_script, "script_get_party_full_culture_string", "$g_encountered_party"),
+    (str_store_string, s61, "@Culture: {s1}^Prosperity: {reg1}.^Town wealth: {reg3}.^Budget of the town counsel: {reg2}.^Relation: {reg4}.^Garrison size: {reg5} men.^Prisoners: {s2}."),
+    (create_text_overlay, reg0, "@{s61}", tf_double_space|tf_scrollable|tf_left_align),
     #(overlay_set_color, reg0, 0x000000),
     (position_set_x, pos1, 30),
     (position_set_y, pos1, 390),
@@ -11639,7 +11733,7 @@ presentations = [
             (try_end),
 
             (call_script, "script_get_improvement_details", ":improvement", "$g_encountered_party"),
-            (create_text_overlay, reg1, "@{s0}: {reg22} denars to rents", 0),
+            (create_text_overlay, reg1, "@{s0}: {reg22} denarii to rents", 0),
             (position_set_x, pos1, 0),
             (position_set_y, pos1, ":y_name"),
 
@@ -11702,7 +11796,7 @@ presentations = [
             (try_end),
 
             (call_script, "script_get_decree_details", ":decree"),
-            (create_text_overlay, reg1, "@{s30}: {reg22} denars to rents", 0),
+            (create_text_overlay, reg1, "@{s30}: {reg22} denarii to rents", 0),
             (position_set_x, pos1, 0),
             (position_set_y, pos1, ":y_name"),
 
@@ -12366,13 +12460,29 @@ presentations = [
                 (assign, ":max_skill_owner", reg1),
                 (assign, reg2, ":max_skill"),
 
-                (party_get_num_prisoners, ":num_prisoners", "$g_encountered_party"), #possibly up to 100
-                (val_div, ":num_prisoners", 5), ##5 prisoners improve by 1%
-                (val_clamp, ":num_prisoners", 0, 31),
-                (store_sub, ":num_prisoners_modifier", 100, ":num_prisoners"),
+                # (party_get_num_prisoners, ":num_prisoners", "$g_encountered_party"), #possibly up to 100
+                # (val_div, ":num_prisoners", 5), ##5 prisoners improve by 1%
+                # (val_clamp, ":num_prisoners", 0, 31),
+                # (store_sub, ":num_prisoners_modifier", 100, ":num_prisoners"),
+
+                (call_script, "script_get_labour_slave_skill_modifier", "$g_encountered_party", "skl_power_strike"),
+                (assign, ":num_prisoners",reg0),
+                (try_begin),
+                    (gt, ":num_prisoners",0),
+                    # (assign, reg10, ":modifier"),
+                    # (assign, reg11, ":total_slaves"),
+                    # (display_message, "@weighted_number_slaves: {reg10} | total_slaves: {reg11}"),
+                    (val_div, ":num_prisoners", 5),
+                    (val_clamp, ":num_prisoners", 1, 31),
+                (else_try),
+                    (assign, ":num_prisoners", -4),
+                (try_end),
+                (store_add, ":num_prisoners_modifier", ":num_prisoners", 100),
+
 
                 ##new code:
                 ##same code applies for CAI
+                ## only the engineering efficieny is player only
                 (store_faction_of_party, ":faction_no", "$g_encountered_party"),
                 (faction_get_slot, ":serfdom", ":faction_no", dplmc_slot_faction_serfdom),
 
@@ -12393,9 +12503,19 @@ presentations = [
                 (val_div, ":improvement_time", 160),
                 (val_mul, ":improvement_cost", ":modifer2"),
                 (val_div, ":improvement_cost", 160),
+
+                (call_script, "script_get_household_modifier", household_mod_engineering_eff),
+                (assign, ":engin_eff", reg0),
+                (store_sub, ":modifier", 100, ":engin_eff"),
+                (val_mul, ":improvement_cost", ":modifier"),
+                (val_div, ":improvement_cost", 100),
+                (val_mul, ":improvement_time", ":modifier"),
+                (val_div, ":improvement_time", 100),
+
                 (assign, reg44, ":max_skill"),#skill
                 (assign, reg45, ":serfdom"),#politic
                 (assign, reg46, ":num_prisoners"),#prisoner
+                (assign, reg47, ":engin_eff"),
 
                 (assign, reg5, ":improvement_cost"),
                 (assign, reg6, ":improvement_time"),
@@ -12419,7 +12539,8 @@ presentations = [
                 (call_script, "script_get_improvement_details", ":building", "$g_encountered_party"),
                 (str_store_string, s10, s0),
                 (str_store_string, s11, s1),
-                (str_store_string, s11, "@{s11}^^As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you {reg5} denars (base cost {reg0}) and will take {reg6} days  (base time {reg40}).^^The building time and costs are modified by: Skill: {reg44}%, slave politic of the realm: {reg45}%. Additionally, the building time is modified by the number of prisoners in the town: {reg46}%."),
+
+                (str_store_string, s11, "@{s11}^^As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you {reg5} denarii (base cost {reg0}) and will take {reg6} days  (base time {reg40}).^^The building time and costs are modified by: Skill: {reg44}%, slave politic of the realm: {reg45}% and engineering efficiency of your household slaves: {reg47}%. Number of slaves in prison: {reg46}%."),
                 (assign, ":value", 1),
                 (call_script, "script_get_improvement_picture", ":building", "trp_player", "$g_encountered_party"),
                 (assign, ":material", reg0),
@@ -12712,7 +12833,7 @@ presentations = [
             (call_script, "script_print_cost_distribution_to_s10",decree_cost),
             (call_script, "script_get_decree_details", "$g_improvement_type"),
             (assign, reg0, decree_cost),
-            (question_box, "@Do you wish to revoke {s30}? It would cost you {reg0} denars.^^{s10}"),
+            (question_box, "@Do you wish to revoke {s30}? It would cost you {reg0} denarii.^^{s10}"),
             #(assign, "$g_improvement_type", -1),
             (start_presentation, "prsnt_center_management"),
         (else_try),
@@ -12721,7 +12842,7 @@ presentations = [
             (call_script, "script_print_cost_distribution_to_s10",decree_cost),
             (call_script, "script_get_decree_details", "$g_improvement_type"),
             (assign, reg0, decree_cost),
-            (question_box, "@Issuing a decree costs {reg0} denars. Do you wish to issue {s30}?^^{s10}"),
+            (question_box, "@Issuing a decree costs {reg0} denarii. Do you wish to issue {s30}?^^{s10}"),
             #(assign, "$g_improvement_type", -1),
             (start_presentation, "prsnt_center_management"),
         (try_end),
@@ -12810,7 +12931,7 @@ presentations = [
                 (call_script, "script_get_improvement_details", "$g_improvement_type", "$g_encountered_party"),
                 (val_mul, reg0, 3),
                 (val_div, reg0, 5),
-                (question_box, "@{s0} has already been built. You wish to destroy it? You would regain {reg0} denars."),
+                (question_box, "@{s0} has already been built. You wish to destroy it? You would regain {reg0} denarii."),
                 (start_presentation, "prsnt_center_management"),
                 #(display_message, "@The building has already been built.", message_alert),
             (else_try),
@@ -12836,7 +12957,7 @@ presentations = [
                 (call_script, "script_print_cost_distribution_to_s10", "$diplomacy_var"),
                 (assign, reg0, "$diplomacy_var"),
                 (assign, reg1, "$diplomacy_var2"),
-                (question_box, "@Building a {s0} would cost you {reg0} denars and take {reg1} days. Do you wish to proceed?^^{s10}"),
+                (question_box, "@Building a {s0} would cost you {reg0} denarii and take {reg1} days. Do you wish to proceed?^^{s10}"),
                 (start_presentation, "prsnt_center_management"),
             (try_end),
         (try_end),
@@ -12844,16 +12965,16 @@ presentations = [
     # (try_end),
   ]),
     # (ti_question_answered, [
-        # (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
+        # (display_message, "@{s0} has been destroyed. You gained {reg0} of denarii.", message_alert),
         # (store_trigger_param_1, ":answer"),
         # (eq, ":answer", 0),
-        # (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
+        # (display_message, "@{s0} has been destroyed. You gained {reg0} of denarii.", message_alert),
         # (try_begin),
             # (eq, "$temp", 1),#destroy a building
             # (call_script, "script_get_improvement_details", "$g_improvement_type"),
             # (val_mul, reg0, 3),
             # (val_div, reg0, 5),
-            # (display_message, "@{s0} has been destroyed. You gained {reg0} of denars.", message_alert),
+            # (display_message, "@{s0} has been destroyed. You gained {reg0} of denarii.", message_alert),
             # (troop_add_gold, "trp_player", reg0),
             # (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
             # (assign, "$temp", 0),
@@ -12862,195 +12983,6 @@ presentations = [
         # (try_end),
     # ]),
 ]),
-
-##diplomacy end
-##diplomacy start+
-##Custom player kingdom vassal titles, credit Caba`drin start
-#(Updated 2011-04-24, to use Caba`drin's 2011-04-20 bug-fix and update)
-# See http://forums.taleworlds.com/index.php/topic,148259.0.html
-("dplmc_set_vassal_title",0,mesh_load_window, [
-      (ti_on_presentation_load,
-       [(set_fixed_point_multiplier, 1000),
-        (str_clear, s1),
-        (str_clear, s2),
-
-        (create_text_overlay, reg0, "@How will your male vassals be known?", tf_center_justify),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, 600),
-        (overlay_set_position, reg0, pos1),
-        (create_text_overlay, reg0, "@How will your female vassals be known?", tf_center_justify),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, 400),
-        (overlay_set_position, reg0, pos1),
-
-        (create_simple_text_box_overlay, "$g_presentation_obj_name_kingdom_1"),
-        (position_set_x, pos1, 400),
-        (position_set_y, pos1, 500),
-        (overlay_set_position, "$g_presentation_obj_name_kingdom_1", pos1),
-        (try_begin),
-          (troop_slot_eq, "trp_heroes_end", 0, 1), #Pick a slot
-          (str_store_troop_name, s0, "trp_heroes_end"),
-        (else_try), #SB : str_clear, offset for npc kingdom titles
-          (str_clear, s0),
-          (store_sub, ":string", "$players_kingdom", kingdoms_begin),
-          (val_add, ":string", "str_faction_title_male_player"),
-          (str_store_string, s0, ":string"),
-        (try_end),
-        (overlay_set_text, "$g_presentation_obj_name_kingdom_1", s0),
-
-        (create_simple_text_box_overlay, reg0),
-        (position_set_x, pos1, 400),
-        (position_set_y, pos1, 300),
-        (overlay_set_position, reg0, pos1),
-        (try_begin),
-          (troop_slot_eq, "trp_heroes_end", 1, 1), #Pick a slot
-          (str_store_troop_name_plural, s0, "trp_heroes_end"),
-        (else_try),  #SB : str_clear
-          (str_clear, s0),
-          (store_sub, ":string", "$players_kingdom", kingdoms_begin),
-          (val_add, ":string", "str_faction_title_female_player"),
-          (str_store_string, s0, ":string"),
-        (try_end),
-        (overlay_set_text, reg0, s0),
-
-        #SB : use actual buttons and center
-        (create_game_button_overlay, reg0, "str_done", tf_center_justify),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, 150),
-        (overlay_set_position, reg0, pos1),
-
-        (create_game_button_overlay, reg0, "str_reset_to_default", tf_center_justify),
-        (position_set_x, pos1, 500),
-        (position_set_y, pos1, 100),
-        (overlay_set_position, reg0, pos1),
-
-        #SB : add tableau figures to the sides
-        (assign, ":left_figure", "trp_quick_battle_6_player"),
-        (assign, ":right_figure", "trp_knight_1_1_wife"),
-
-        (assign, ":left_score", 0),
-        (assign, ":right_score", 0),
-        (assign, "$lord_selected", 0),
-        #show spouses first
-        (try_begin),
-          (troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
-          (is_between, ":spouse", heroes_begin, heroes_end),
-          (try_begin),
-            (call_script, "script_cf_dplmc_troop_is_female", ":spouse"),
-            (assign, ":right_figure", ":spouse"),
-            (assign, ":right_score", 9999),
-          (else_try),
-            (assign, ":left_figure", ":spouse"),
-            (assign, ":left_score", 9999),
-          (try_end),
-        (try_end),
-        #otherwise criteria is highest renown/age
-        (try_for_range, ":troop_no", heroes_begin, heroes_end),
-          (store_faction_of_troop, ":faction_no", ":troop_no"),
-          (eq, ":faction_no", "$players_kingdom"),
-          (troop_get_slot, ":occupation", ":troop_no", slot_troop_occupation),
-          (try_begin),
-            (eq, ":occupation", slto_kingdom_hero),
-            (troop_get_slot, ":renown", ":troop_no", slot_troop_renown),
-            (try_begin), #female lords
-              (call_script, "script_cf_dplmc_troop_is_female", ":troop_no"),
-              (lt, ":right_score", ":renown"),
-              (assign, ":right_figure", ":troop_no"),
-            (else_try),
-              (lt, ":left_score", ":renown"),
-              (assign, ":left_figure", ":troop_no"),
-            (try_end),
-          (else_try),
-            (eq, ":occupation", slto_kingdom_lady),
-            (troop_get_slot, ":renown", ":troop_no", slot_troop_age),
-            (lt, ":right_score", ":renown"),
-            (assign, ":right_figure", ":troop_no"),
-          (try_end),
-        (try_end),
-        (init_position, pos1),
-        #480x320 instead of 600x600 for retirement tableau
-        (create_mesh_overlay_with_tableau_material, reg1, -1, "tableau_dplmc_lord_profile", ":left_figure"),
-        (position_set_x, pos1, 10),
-        (position_set_y, pos1, 100),
-        (overlay_set_position, reg1, pos1),
-        (position_set_x, pos1, 750),
-        (position_set_y, pos1, 750),
-        (overlay_set_size, reg1, pos1),
-
-        (create_mesh_overlay_with_tableau_material, reg1, -1, "tableau_dplmc_lord_profile", ":right_figure"),
-        (position_set_x, pos1, 750),
-        (position_set_y, pos1, 100),
-        (overlay_set_position, reg1, pos1),
-        (position_set_x, pos1, 750),
-        (position_set_y, pos1, 750),
-        (overlay_set_size, reg1, pos1),
-        (presentation_set_duration, 999999),
-        ]),
-      (ti_on_presentation_event_state_change,
-       [(store_trigger_param_1, ":object"),
-        (try_begin),
-          (eq, ":object", "$g_presentation_obj_name_kingdom_1"),
-          (str_store_string, s1, s0), #Male Title
-        (else_try),
-          (store_add, ":overlay", "$g_presentation_obj_name_kingdom_1", 1),
-          (eq, ":object", ":overlay"),
-          (str_store_string, s2, s0), ##Female Title
-        (else_try),
-          (val_add, ":overlay", 1),
-          (eq, ":object", ":overlay"), #Custom
-          (try_begin),
-            (neg|str_is_empty, s1),
-            (troop_set_name, "trp_heroes_end", s1),
-            (troop_set_slot, "trp_heroes_end", 0, 1),
-            (try_for_range, ":lord_lady", lords_begin, lords_end),
-                (store_troop_faction, ":faction", ":lord_lady"),
-                (eq, ":faction", "$players_kingdom"), #SB : change to players_kingdom, flip next script params
-                (call_script, "script_troop_set_title_according_to_faction", ":lord_lady", "fac_player_supporters_faction"),
-            (try_end),
-          (try_end),
-          (try_begin),
-            (neg|str_is_empty, s2),
-            (troop_set_plural_name, "trp_heroes_end", s2),
-            (troop_set_slot, "trp_heroes_end", 1, 1),
-            (try_for_range, ":lord_lady", kingdom_ladies_begin, kingdom_ladies_end),
-                (store_troop_faction, ":faction", ":lord_lady"),
-                (eq, ":faction", "$players_kingdom"), #SB : chance to players_kingdom
-                (call_script, "script_troop_set_title_according_to_faction", ":lord_lady", "fac_player_supporters_faction"),
-            (try_end),
-          (try_end),
-          (try_begin),
-            (this_or_next|neg|str_is_empty, s1),
-            (neg|str_is_empty, s2),
-            (try_for_range, ":lord_lady", companions_begin, companions_end),
-                (store_troop_faction, ":faction", ":lord_lady"),
-                (eq, ":faction", "$players_kingdom"), #SB : chance to players_kingdom
-                (troop_slot_eq, ":lord_lady", slot_troop_occupation, slto_kingdom_hero),
-                (call_script, "script_troop_set_title_according_to_faction", ":lord_lady", "fac_player_supporters_faction"),
-            (try_end),
-          (try_end),
-          (presentation_set_duration, 0),
-        (else_try),
-          (val_add, ":overlay", 1),
-          (eq, ":object", ":overlay"), #Default
-          (troop_set_slot, "trp_heroes_end", 0, 0),
-          (troop_set_slot, "trp_heroes_end", 1, 0),
-          (try_for_range, ":lord_lady", lords_begin, kingdom_ladies_end),
-           # (neg|is_between, ":lord_lady", pretenders_begin, pretenders_end),
-            (store_troop_faction, ":faction", ":lord_lady"),
-            (eq, ":faction", "$players_kingdom"),
-            (call_script, "script_troop_set_title_according_to_faction", ":lord_lady", ":faction"),
-          (try_end),
-          (try_for_range, ":lord_lady", companions_begin, companions_end),
-            (store_troop_faction, ":faction", ":lord_lady"),
-            (eq, ":faction", "$players_kingdom"),
-            (troop_slot_eq, ":lord_lady", slot_troop_occupation, slto_kingdom_hero),
-            (call_script, "script_troop_set_title_according_to_faction", ":lord_lady", ":faction"),
-          (try_end),
-          (presentation_set_duration, 0),
-        (try_end),
-        ]),
-      ]),
-##Custom player kingdom vassal titles, credit Caba`drin end
 
 ##Auto-Sell, credit rubik (Custom Commander) begin
 ##Adds global variables:
@@ -17208,7 +17140,7 @@ presentations = [
         (position_set_y, pos1, 1400),
         (overlay_set_size, reg1, pos1),
         (create_text_overlay, reg1, "@A good way to hasten the fall of the {s2} is to infiltrate it with a group of men to damage the defences, food stores, water supplies or loyalty of the defenders. It is a difficult and risky maneuver, almost suicidal. " +
-        "Those you send in have low chances of returning, but if successful, they could cause great damage to the enemy. They need 600 denars for their troubles. What type of sabotage would you like them to cause?", tf_center_justify|tf_double_space|tf_scrollable),
+        "Those you send in have low chances of returning, but if successful, they could cause great damage to the enemy. They need 600 denarii for their troubles. What type of sabotage would you like them to cause?", tf_center_justify|tf_double_space|tf_scrollable),
         #  (overlay_set_color, reg1, 0xDDDDDD),
         (position_set_x, pos1, 80),
         (position_set_y, pos1, 180),
@@ -17383,7 +17315,7 @@ presentations = [
             (try_end),
           (else_try),
             (le,":cur_wealth",499),
-            (str_store_string,s4,"@You do not have the 600 denars to pay for this mission.",tf_left_align),
+            (str_store_string,s4,"@You do not have the 600 denarii to pay for this mission.",tf_left_align),
             (assign,"$g_presentations_next_presentation",-1),
             (assign,"$cur_choice",0),
             (start_presentation,"prsnt_infiltrationandsabotage"),
@@ -17409,7 +17341,7 @@ presentations = [
     (overlay_add_item, "$g_presentation_obj_6", "@Political Mode"),
     (overlay_add_item, "$g_presentation_obj_6", "@Terrain Mode"),
     (overlay_add_item, "$g_presentation_obj_6", "@Province Mode"),
-    (overlay_add_item, "$g_presentation_obj_6", "@Culture Mode"),
+    (overlay_add_item, "$g_presentation_obj_6", "@(Main) Culture Mode"),
     (overlay_add_item, "$g_presentation_obj_6", "@Wealth Mode"),
     (store_sub, ":value", "$temp1", 1),
     (overlay_set_val, "$g_presentation_obj_6", ":value"),
@@ -17807,7 +17739,6 @@ presentations = [
         (troop_set_slot, "trp_temp_array_a", ":slot_no", reg0), # overlay id
 
         # name
-        (str_store_party_name, s1, ":center_no"),
         (try_begin),
           (eq, "$temp1", 5),
           (troop_get_slot, reg10, "trp_temp_array_olympia_a", ":center_no"),
@@ -17818,12 +17749,14 @@ presentations = [
           (eq, "$temp1", 4),
           (party_get_slot, ":culture", ":center_no", slot_center_culture),
           (is_between, ":culture", cultures_begin, cultures_end),
-          (str_store_faction_name, s2, ":culture"),
+          (call_script, "script_get_party_full_culture_string", ":center_no"),
+          (str_store_string_reg, s2, s1),
         (else_try),
           (party_get_slot, ":province", ":center_no", slot_center_province),
           (val_add, ":province", "str_province_begin"),
           (str_store_string, s2, ":province"),
         (try_end),
+        (str_store_party_name, s1, ":center_no"),
         (create_text_overlay, reg1, "@{s1}^{s2}", tf_center_justify|tf_with_outline),
         (overlay_set_color, reg1, 0xFFFFFF),
         (store_add, ":text_x", ":center_x", 0),
@@ -17872,7 +17805,6 @@ presentations = [
         (overlay_set_size, reg0, pos1),
         (troop_set_slot, "trp_temp_array_a", ":slot_no", reg0), # overlay id
         # name
-        (str_store_party_name, s1, ":center_no"),
         (try_begin),
           (eq, "$temp1", 5),
           (party_get_slot, reg10, ":center_no", slot_center_capital),
@@ -17882,10 +17814,12 @@ presentations = [
           (eq, "$temp1", 4),
           (party_get_slot, ":culture", ":center_no", slot_center_culture),
           (is_between, ":culture", cultures_begin, cultures_end),
-          (str_store_faction_name, s2, ":culture"),
+          (call_script, "script_get_party_full_culture_string", ":center_no"),
+          (str_store_string_reg, s2, s1),
         (else_try),
           (str_store_string, s2, "@Minor faction"),
         (try_end),
+        (str_store_party_name, s1, ":center_no"),
         (create_text_overlay, reg1, "@{s1}^{s2}", tf_center_justify|tf_with_outline),
         (overlay_set_color, reg1, 0xFFFFFF),
         (store_add, ":text_x", ":center_x", 0),
@@ -18024,7 +17958,7 @@ presentations = [
       (overlay_set_area_size, "$g_presentation_obj_bugdet_report_container", pos1),
       (set_container_overlay, "$g_presentation_obj_bugdet_report_container"),
 
-      (try_for_range, ":region", 1, region_mountain_europe_bohemia + 1),
+      (try_for_range, ":region", 1, region_africa_green + 1),
         (store_add, ":text_x", ":pos_x", 40),
         (store_add, ":text_y", ":pos_y", 12),
         (store_add, ":region_string", "str_region_strings_begin", ":region"),
@@ -18108,7 +18042,7 @@ presentations = [
       (assign, ":pos_x", 0),
       (assign, ":pos_y", 0),
 
-      (create_text_overlay, reg1, "@Cultures", tf_center_justify),
+      (create_text_overlay, reg1, "@Main Cultures", tf_center_justify),
       (position_set_x, pos1, 1200),
       (position_set_y, pos1, 1200),
       (overlay_set_size, reg1, pos1),
@@ -18132,6 +18066,7 @@ presentations = [
 
         (faction_get_color, ":dest_color", ":culture"),
         (str_store_faction_name, s1, ":culture"),
+
         (create_text_overlay, reg0, s1, tf_left_align|tf_with_outline),
         (overlay_set_color, reg0, ":dest_color"),
         (position_set_x, pos1, ":text_x"),
@@ -18985,7 +18920,8 @@ presentations = [
     (try_end),
 
     #2. province names
-    (create_text_overlay, reg1, "@Settlement names", tf_center_justify),
+    (create_text_overlay, reg1, "@Settlement names", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 250),
     (position_set_y, pos1, 645),
     (overlay_set_position, reg1, pos1),
@@ -19027,7 +18963,8 @@ presentations = [
     #2.1 campaign type
     (try_begin),
         (troop_slot_ge, "trp_global_variables", g_is_dev, 1),
-        (create_text_overlay, reg1, "@Campaign type", tf_center_justify),
+        (create_text_overlay, reg1, "@Campaign type", tf_center_justify|tf_with_outline),
+        (overlay_set_color, reg1, color_purple),
         (position_set_x, pos1, 250),
         (position_set_y, pos1, 555),
         (overlay_set_position, reg1, pos1),
@@ -19084,7 +19021,8 @@ presentations = [
     (try_end),
 
     #3. DIFFICULTY
-    (create_text_overlay, reg1, "@Difficulty Type", tf_center_justify),
+    (create_text_overlay, reg1, "@Difficulty Type", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 250),
     (position_set_y, pos1, 465),
     (overlay_set_position, reg1, pos1),
@@ -19119,7 +19057,8 @@ presentations = [
     (try_end),
 
     #4. OPTIONS
-    (create_text_overlay, reg1, "@Options", tf_center_justify),
+    (create_text_overlay, reg1, "@Options", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 750),
     (position_set_y, pos1, 650),
     (overlay_set_position, reg1, pos1),
@@ -20525,7 +20464,7 @@ presentations = [
     (assign, reg3, ":party_size"),
     (store_troop_gold, reg4, "trp_player"),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men, Wage: {reg2} denars, ^Party limit: {reg3} men. Your gold: {reg4} denars.", tf_left_align),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men, Wage: {reg2} denarii, ^Party limit: {reg3} men. Your gold: {reg4} denarii.", tf_left_align),
     (position_set_x, pos1, 40),
     (position_set_y, pos1, 660),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
@@ -20697,7 +20636,7 @@ presentations = [
     (assign, reg40, reg0),
     (call_script, "script_game_get_join_cost", "$temp_troop"),
     (assign, reg41, reg0),
-    (create_text_overlay, reg1, "@Wage: {reg40} denars. Recruitment cost: {reg41} denars.", tf_center_justify),
+    (create_text_overlay, reg1, "@Wage: {reg40} denarii. Recruitment cost: {reg41} denarii.", tf_center_justify),
     (position_set_x, pos1, 320),
     (position_set_y, pos1, 290),
     (overlay_set_position, reg1, pos1),
@@ -20879,12 +20818,16 @@ presentations = [
             (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
             (this_or_next|eq, ":troop", "trp_custom_standard_bearer"),
             (this_or_next|eq, ":troop", "trp_custom_hornman"),
+            (this_or_next|eq, ":troop", "trp_custom_infantry_vet"),
+            (this_or_next|eq, ":troop", "trp_custom_infantry_exp"),
             (eq, ":troop", "trp_custom_infantry"),
             (assign, ":c", 1),
           (else_try),
             (troop_slot_eq, "trp_players_cavalry", 1, 1),
             (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
             (this_or_next|eq, ":troop", "trp_custom_standard_bearer_cav"),
+            (this_or_next|eq, ":troop", "trp_custom_cav_barb_vet"),
+            (this_or_next|eq, ":troop", "trp_custom_skirmisher_cav_vet"),
             (this_or_next|eq, ":troop", "trp_custom_skirmisher_cav"),
             (eq, ":troop", "trp_custom_cav_barb"),
             (assign, ":c", 1),
@@ -20893,7 +20836,9 @@ presentations = [
             (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
             (this_or_next|eq, ":troop", "trp_custom_standard_bearer_skirmisher"),
             (this_or_next|eq, ":troop", "trp_custom_hornman_skirmisher"),
+            (this_or_next|eq, ":troop", "trp_custom_archer_vet"),
             (this_or_next|eq, ":troop", "trp_custom_archer"),
+            (this_or_next|eq, ":troop", "trp_custom_skirmisher_vet"),
             (eq, ":troop", "trp_custom_skirmisher"),
             (assign, ":c", 1),
           (else_try),
@@ -21203,7 +21148,7 @@ presentations = [
     (val_clamp, reg43, 0, 1000),
     (store_mul, reg44, reg43, reg41),
     ##explenation text
-    (create_text_overlay, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denars.", tf_center_justify),
+    (create_text_overlay, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denarii.", tf_center_justify),
     (position_set_x, pos1, 200),
     (position_set_y, pos1, 200),
     (overlay_set_position, "$g_presentation_obj_29", pos1),
@@ -21283,7 +21228,7 @@ presentations = [
         (lt, ":recruits", reg43),
         (display_message, "@There are not enough recruits available!"),
       (else_try),
-        (display_message, "@You don't have enough space in your party, or you don't have enough denars!"),
+        (display_message, "@You don't have enough space in your party, or you don't have enough denarii!"),
       (try_end),
 
     (else_try),
@@ -21291,7 +21236,7 @@ presentations = [
       (assign, reg43, ":value"),
       (val_clamp, reg43, 0, 1000),
       (store_mul, reg44, reg43, reg41),
-      (overlay_set_text, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denars."),
+      (overlay_set_text, "$g_presentation_obj_29", "@Recruit {reg43} troops for {reg44} denarii."),
     (else_try),
         (assign, ":troop_id", -1),
         (assign, ":end_loop", 0),
@@ -21309,6 +21254,7 @@ presentations = [
             (assign, "$g_presentation_next_presentation", "prsnt_barracks"),
             (call_script, "script_start_customizing", "$temp_troop"),
           (else_try),
+            (assign, "$g_presentation_next_presentation", "prsnt_barracks"),
             (start_presentation, "prsnt_troop_detail"),
           (try_end),
         (else_try),
@@ -21903,7 +21849,7 @@ presentations = [
 #           (eq, ":object", "$g_presentation_obj_19"),
 #           (str_store_string,s57,"@Lex frumentaria et agraria"),
 #           (str_store_string,s58,"str_law"),
-#           (str_store_string,s59,"@Grain prices are regulated: minimum of 30 denars per unit, maximum of 59 denars per unit. Also restrict landownership: There is a maximum of land which someone can obtain. Thus player can only buy 10 latifundia at once."),
+#           (str_store_string,s59,"@Grain prices are regulated: minimum of 30 denarii per unit, maximum of 59 denarii per unit. Also restrict landownership: There is a maximum of land which someone can obtain. Thus player can only buy 10 latifundia at once."),
 
 #         (else_try),
 #          # (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_20"),
@@ -22045,16 +21991,12 @@ presentations = [
     (try_begin),# done button
       (eq, ":object", "$g_presentation_leave_button"),
       (this_or_next|eq, "$temp4", 1),
-      (eq, "$temp4", 2),
-      (start_presentation, "prsnt_barracks"),
-    (else_try),
+      (this_or_next|eq, "$temp4", 2),
       (eq, "$temp4", 3),
-      (eq, ":object", "$g_presentation_leave_button"),
       (start_presentation, "$g_presentation_next_presentation"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_1"),
       (call_script, "script_troop_detail_change_screen", "$temp_troop"),
-
     (else_try),
       (eq, ":object", "$checkbox_show_item_details"),
       (assign, "$checkbox_show_item_details_val", ":value"),
@@ -22123,24 +22065,24 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_dacian_flaxman_vet", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_dacian_flaxman_heavy", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_dacian_archers", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_dacian_archers", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_dacian_archers_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_dacian_archers_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_dacian_skirmishers", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_dacian_skirmishers", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_dacian_skirmishers_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_dacian_skirmishers_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_dacian_noble_cav", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_dacian_noble_cav", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_dacian_noble_cav_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_dacian_noble_cav_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_dacian_noble_inf", 60, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_dacian_noble_inf", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_dacian_noble_inf_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_dacian_noble_inf_vet", 360, 110),
 
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_dacian_heavy_inf", 560, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_dacian_heavy_inf", 560, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_dacian_heavy_inf_exp", 710, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_dacian_heavy_inf_vet", 860, 110),
 
@@ -22225,19 +22167,19 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_celtic_naked_swordman_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_celtic_naked_swordman_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_celtic_skirmisher", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_celtic_skirmisher", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_celtic_skirmisher_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_celtic_skirmisher_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_celtic_archer", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_celtic_archer", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_celtic_archer_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_celtic_archer_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_celtic_horseman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_celtic_horseman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_celtic_horseman_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_celtic_horseman_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_celtic_noble_swords", 60, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_celtic_noble_swords", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_celtic_noble_swords_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_celtic_noble_swords_vet", 360, 110),
 
@@ -22328,21 +22270,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_2"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_2"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
   ("upgrade_tree_2_1", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
@@ -22376,19 +22308,19 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_caledonian_naked_swordman_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_caledonian_naked_swordman_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_caledonian_skirmisher", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_caledonian_skirmisher", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_caledonian_skirmisher_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_caledonian_skirmisher_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_caledonian_archer", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_caledonian_archer", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_caledonian_archer_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_caledonian_archer_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_caledonian_horseman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_caledonian_horseman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_caledonian_horseman_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_caledonian_horseman_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_caledonian_noble_swords", 60, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_caledonian_noble_swords", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_caledonian_noble_swords_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_caledonian_noble_swords_vet", 360, 110),
 
@@ -22479,21 +22411,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_2_1"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_2"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
   ("upgrade_tree_3", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
@@ -22527,19 +22449,19 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_sarmatian_light_horsearcher_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_sarmatian_light_horsearcher_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_sarmatian_heavy_horsearcher", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_sarmatian_heavy_horsearcher", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_sarmatian_heavy_horsearcher_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_sarmatian_heavy_horsearcher_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_sarmatian_heavy_horseman", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_sarmatian_heavy_horseman", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_sarmatian_heavy_horseman_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_sarmatian_heavy_horseman_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_sarmatian_noble_horseman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_sarmatian_noble_horseman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_sarmatian_noble_horseman_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_sarmatian_noble_horseman_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_sarmatian_light_horseman", 60, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_sarmatian_light_horseman", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_sarmatian_light_horseman_exp", 210, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_sarmatian_light_horseman_vet", 360, 110),
 
@@ -22601,21 +22523,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_3"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_3"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
 
   ("upgrade_tree_4", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -22650,23 +22562,23 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_germanic_noble_swordsman_exp", 210, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_germanic_noble_swordsman_vet", 360, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_germanic_skirmisher", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_germanic_skirmisher", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_germanic_skirmisher_exp", 710, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_germanic_skirmisher_vet", 860, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_germanic_slinger", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_germanic_slinger", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_germanic_slinger_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_germanic_slinger_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_germanic_archer", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_germanic_archer", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_germanic_archer_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_germanic_archer_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_germanic_noble_spearman", 60, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_germanic_noble_spearman", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_germanic_noble_spearman_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_germanic_noble_spearman_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_germanic_cavalry", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_germanic_cavalry", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_germanic_cavalry_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_germanic_cavalry_vet", 860, 310),
 
@@ -22733,21 +22645,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_4"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_4"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
 
   ("upgrade_tree_5", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -22782,23 +22684,23 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_eastern_slinger_exp", 210, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_eastern_slinger_vet", 360, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_eastern_heavy_inf", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_eastern_heavy_inf", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_eastern_heavy_inf_exp", 710, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_eastern_heavy_inf_vet", 860, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_eastern_heavy_spearman", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_eastern_heavy_spearman", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_eastern_heavy_spearman_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_eastern_heavy_spearman_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_eastern_horsearcher", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_eastern_horsearcher", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_eastern_horsearcher_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_eastern_horsearcher_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_eastern_light_axeman", 60, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_eastern_light_axeman", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_eastern_light_axeman_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_eastern_light_axeman_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_eastern_medium_horseman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_eastern_medium_horseman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_eastern_medium_horseman_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_eastern_medium_horseman_vet", 860, 310),
 
@@ -22877,188 +22779,167 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_5"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_5"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
-  ("upgrade_tree_6", 0, mesh_load_window, [
-    (ti_on_presentation_load,
-      [
-        (presentation_set_duration, 999999),
-        (set_fixed_point_multiplier, 1000),
-
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_6"),
-
-        # clear the string globals that we'll use
-        (str_clear, s0),
-
-        # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
-        (create_text_overlay, reg43, s0, tf_scrollable_style_2),
-        (position_set_x, pos1, 50),
-        (position_set_y, pos1, 70),
-        (overlay_set_position, reg43, pos1),
-        (position_set_x, pos1, 970),
-        (position_set_y, pos1, 527),
-        (overlay_set_area_size, reg43, pos1),
-
-        (set_container_overlay, reg43),#start scroll
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_caucasian_cataphract", 60, 1310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_caucasian_cataphract_exp", 210, 1310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_caucasian_cataphract_vet", 360, 1310),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_caucasian_heavy_spearman", 60, 1110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_caucasian_heavy_spearman_exp", 210, 1110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_caucasian_heavy_spearman_vet", 360, 1110),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_caucasian_medium_horsearcher", 560, 1110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_caucasian_medium_horsearcher_exp", 710, 1110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_caucasian_medium_horsearcher_vet", 860, 1110),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_armenian_spear_levy", 60, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_armenian_spear_levy_exp", 210, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_armenian_spear_levy_vet", 360, 910),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_armenian_light_axeman", 60, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_armenian_light_axeman_exp", 210, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_armenian_light_axeman_vet", 360, 710),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_armenian_skrimisher", 60, 510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_armenian_skrimisher_exp", 210, 510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_armenian_skrimisher_vet", 360, 510),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_armenian_slinger", 560, 910),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_armenian_slinger_exp", 710, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_armenian_slinger_vet", 860, 910),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_armenian_heavy_inf", 560, 710),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_armenian_heavy_inf_exp", 710, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_armenian_heavy_inf_vet", 860, 710),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_armenian_heavy_maceman", 560, 510),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_armenian_heavy_maceman_exp", 710, 510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_armenian_heavy_maceman_vet", 860, 510),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_armenian_horsearcher", 60, 310),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_armenian_horsearcher_exp", 210, 310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_armenian_horsearcher_vet", 360, 310),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_armenian_medium_horseman", 560, 310),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_armenian_medium_horseman_exp", 710, 310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_armenian_medium_horseman_vet", 860, 310),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_armenian_cataphract", 60, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_armenian_cataphract_exp", 210, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_armenian_cataphract_vet", 360, 110),
-
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_armenian_elite_infantry", 560, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_armenian_elite_infantry_exp", 710, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_armenian_elite_infantry_vet", 860, 110),
-
-
-        ##lines
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1410),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1410),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1210),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1210),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1010),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1010),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 810),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 810),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 610),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 610),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1210),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1210),
-
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1010),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1010),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 810),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 810),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 610),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 610),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 410),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 410),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 410),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 410),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 210),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
-
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 210),##45 space for x
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 210),
-
-
-        (set_container_overlay, -1),#end scroll
-      ]),
-
-    (ti_on_presentation_run, [
-        (try_begin),
-          (key_clicked, key_escape),
-          (presentation_set_duration, 0),
-        (else_try),
-          (key_clicked, key_space),
-          (set_fixed_point_multiplier, 1000),
-          (mouse_get_position, pos31),
-
-          (position_get_x, reg31, pos31),
-          (position_get_y, reg32, pos31),
-
-          (display_message, "@X: {reg31} | Y: {reg32}"),
-        (try_end),
     ]),
+]),
 
-    (ti_on_presentation_mouse_enter_leave,
-      [
-      (store_trigger_param_1, ":object"),
-      (store_trigger_param_2, ":enter_leave"),
+("upgrade_tree_6", 0, mesh_load_window, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
 
-      (try_begin),
-        (this_or_next|eq, ":object", "$g_presentation_obj_1"),
-        (eq, ":object", "$g_presentation_obj_3"),
-        (overlay_set_display, "$g_presentation_obj_3", ":enter_leave"),
-      (else_try),
-        (this_or_next|eq, ":object", "$g_presentation_obj_2"),
-        (eq, ":object", "$g_presentation_obj_4"),
-        (overlay_set_display, "$g_presentation_obj_4", ":enter_leave"),
-      (try_end),
-    ]),
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_6"),
 
-    (ti_on_presentation_event_state_change,
-      [
-        (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_6"),
+    # clear the string globals that we'll use
+    (str_clear, s0),
 
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_5"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
+    # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
+    (create_text_overlay, reg43, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 50),
+    (position_set_y, pos1, 70),
+    (overlay_set_position, reg43, pos1),
+    (position_set_x, pos1, 970),
+    (position_set_y, pos1, 527),
+    (overlay_set_area_size, reg43, pos1),
+
+    (set_container_overlay, reg43),#start scroll
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_caucasian_cataphract", 60, 1310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_caucasian_cataphract_exp", 210, 1310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_caucasian_cataphract_vet", 360, 1310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_caucasian_heavy_spearman", 60, 1110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_caucasian_heavy_spearman_exp", 210, 1110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_caucasian_heavy_spearman_vet", 360, 1110),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_caucasian_medium_horsearcher", 560, 1110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_caucasian_medium_horsearcher_exp", 710, 1110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_caucasian_medium_horsearcher_vet", 860, 1110),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_armenian_spear_levy", 60, 910),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_armenian_spear_levy_exp", 210, 910),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_armenian_spear_levy_vet", 360, 910),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_armenian_light_axeman", 60, 710),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_armenian_light_axeman_exp", 210, 710),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_armenian_light_axeman_vet", 360, 710),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_armenian_skrimisher", 60, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_armenian_skrimisher_exp", 210, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_armenian_skrimisher_vet", 360, 510),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_armenian_slinger", 560, 910),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_armenian_slinger_exp", 710, 910),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_armenian_slinger_vet", 860, 910),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_armenian_heavy_inf", 560, 710),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_armenian_heavy_inf_exp", 710, 710),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_armenian_heavy_inf_vet", 860, 710),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_armenian_heavy_maceman", 560, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_armenian_heavy_maceman_exp", 710, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_armenian_heavy_maceman_vet", 860, 510),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_armenian_horsearcher", 60, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_armenian_horsearcher_exp", 210, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_armenian_horsearcher_vet", 360, 310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_armenian_medium_horseman", 560, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_armenian_medium_horseman_exp", 710, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_armenian_medium_horseman_vet", 860, 310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_armenian_cataphract", 60, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_armenian_cataphract_exp", 210, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_armenian_cataphract_vet", 360, 110),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_armenian_elite_infantry", 560, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_armenian_elite_infantry_exp", 710, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_armenian_elite_infantry_vet", 860, 110),
+
+
+    ##lines
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1210),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1010),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 1010),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 810),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 810),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 610),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 610),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1210),
+
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1010),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1010),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 810),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 810),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 610),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 610),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 210),
+
+
+    (set_container_overlay, -1),#end scroll
   ]),
+
+  (ti_on_presentation_run, [
+    (try_begin),
+      (key_clicked, key_escape),
+      (presentation_set_duration, 0),
+    (else_try),
+      (key_clicked, key_space),
+      (set_fixed_point_multiplier, 1000),
+      (mouse_get_position, pos31),
+
+      (position_get_x, reg31, pos31),
+      (position_get_y, reg32, pos31),
+
+      (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_mouse_enter_leave,[
+    (store_trigger_param_1, ":object"),
+    (store_trigger_param_2, ":enter_leave"),
+
+    (try_begin),
+      (this_or_next|eq, ":object", "$g_presentation_obj_1"),
+      (eq, ":object", "$g_presentation_obj_3"),
+      (overlay_set_display, "$g_presentation_obj_3", ":enter_leave"),
+    (else_try),
+      (this_or_next|eq, ":object", "$g_presentation_obj_2"),
+      (eq, ":object", "$g_presentation_obj_4"),
+      (overlay_set_display, "$g_presentation_obj_4", ":enter_leave"),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":object"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_6"),
+  ]),
+]),
 
   ("upgrade_tree_7", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23084,53 +22965,53 @@ presentations = [
 
         #60, 210, 360       560, 710, 860
 
-        # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 40, "trp_aux_cav_gallorum", 560, 1510),#+200
+        # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 40, "trp_aux_cav_gallorum", 560, 1510),
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 39, "trp_aux_inf", 710, 1510),
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_aux_slinger", 860, 1510),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_aux_inf", 560, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_aux_archer_praetoriana", 60, 1510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_aux_archer_praetoriana", 60, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_aux_archer", 210, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_aux_cav_ituraeorum", 360, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_aux_cav_gallorum", 560, 1310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_aux_cav_gallorum", 560, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_aux_cav_commagenorum", 710, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_aux_cav_batavorum", 860, 1310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_aux_archer_sryrorum", 60, 1310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_aux_archer_sryrorum", 60, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_aux_inf_petreorum", 210, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_aux_archer_thracum", 360, 1310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_aux_inf_thracum", 560, 1110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_aux_inf_thracum", 560, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_aux_archer_brittonum", 710, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_aux_inf_brittonum", 860, 1110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_aux_archer_batavorum", 60, 1110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_aux_archer_batavorum", 60, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_aux_inf_batavorum", 210, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_aux_archer_gallorum", 360, 1110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_aux_inf_gallorum", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_aux_inf_gallorum", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_aux_archer_tungrorum", 710, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_aux_inf_tungrorum", 860, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_aux_archer_maurorum", 60, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_aux_archer_maurorum", 60, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_aux_inf_hispanorum", 210, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_aux_slinger", 360, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_aux_inf_maurorum", 60, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_aux_inf_maurorum", 60, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_aux_archer_alporum", 210, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_aux_inf_alporum", 360, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name",13, "trp_aux_cav", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name",13, "trp_aux_cav", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name",12, "trp_aux_cav_eastern", 710, 710),
 
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_aux_cav_decurio", 60, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_aux_cav_decurio", 60, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_aux_cav_vexilarius", 210, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_aux_vigiles_centurio", 360, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_aux_cav_decurio", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_aux_cav_decurio", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_aux_signifer", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_aux_centurio", 860, 510),
 
@@ -23184,21 +23065,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_7"),
-
-        # (try_for_range, ":slot_no", 0, 40),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_6"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
 
   ("upgrade_tree_8", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23237,27 +23108,27 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_legio_v_alaudae_exp", 210, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_legio_v_alaudae_vet", 360, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 60, "trp_centurio_preatoriani", 560, 2110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 60, "trp_centurio_preatoriani", 560, 2110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 61, "trp_centurio_west", 710, 2110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 62, "trp_cornicen", 860, 2110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_legio_xxi_rapax", 560, 1910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_legio_xxi_rapax", 560, 1910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_legio_xxi_rapax_exp", 710, 1910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_legio_xxi_rapax_vet", 860, 1910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_legio_xx_valeria_victrix", 560, 1710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_legio_xx_valeria_victrix", 560, 1710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_legio_xx_valeria_victrix_exp", 710, 1710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_legio_xx_valeria_victrix_vet", 860, 1710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_legio_vi_victrix", 560, 1510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_legio_vi_victrix", 560, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_legio_vi_victrix_exp", 710, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_legio_vi_victrix_vet", 860, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_legio_xi_claudia", 60, 1310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_legio_xi_claudia", 60, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_legio_xi_claudia_exp", 210, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_legio_xi_claudia_vet", 360, 1310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_legio_xiii_gemina", 560, 1310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_legio_xiii_gemina", 560, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_legio_xiii_gemina_exp", 710, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_legio_xiii_gemina_vet", 860, 1310),
 
@@ -23407,21 +23278,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_8"),
-
-        # (try_for_range, ":slot_no", 0, 80),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_7"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
-  ]),
+    ]),
+]),
 
    ("upgrade_tree_9", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23460,18 +23321,18 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_judean_elite_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_judean_elite_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_judean_guard_archer", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_judean_guard_archer", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_judean_guard_archer_vet", 710, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_judean_slinger", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_judean_slinger", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_judean_slinger_exp", 710, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_judean_slinger_vet", 860, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_judean_archer", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_judean_archer", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_judean_archer_exp", 710, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_judean_archer_vet", 860, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_judean_skirmisher", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_judean_skirmisher", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_judean_skirmisher_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_judean_skirmisher_vet", 860, 310),
 
@@ -23525,21 +23386,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_9"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_8"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
       ]),
-  ]),
+ ]),
   ("upgrade_tree_10", 0, mesh_load_window, [
     (ti_on_presentation_load,
       [
@@ -23562,15 +23413,15 @@ presentations = [
 
         (set_container_overlay, reg43),#start scroll
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_bosporan_cav", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_bosporan_cav", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_bosporan_cav_exp", 710, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_bosporan_cav_vet", 860, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_bosporan_elite", 60, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_bosporan_elite", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_bosporan_elite_exp", 210, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_bosporan_elite_vet", 360, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_bosporan_archer", 560, 110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_bosporan_archer", 560, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_bosporan_archer_exp", 710, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_bosporan_archer_vet", 860, 110),
 
@@ -23627,21 +23478,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_10"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_5"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
       ]),
-  ]),
+]),
 
    ("upgrade_tree_11", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23703,31 +23544,31 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_meroe_archers", 60, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_meroe_infantry", 210, 1110),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_irish_skirmisher", 560, 1110),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_irish_skirmisher", 560, 1110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_irish_vetran", 710, 1110),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_persian_picaxe_man", 60, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_persian_noble_cav", 210, 910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_arab_noble_archers", 560, 910),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_arab_noble_archers", 560, 910),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_arab_noble_cav", 710, 910),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_illyrian_horseman", 60, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_illyrian_infantry", 210, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_hispanic_infantry", 560, 710),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_hispanic_infantry", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_hispanic_heavy_infantry", 710, 710),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_kreta_archer", 60, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_meroe_axemen", 210, 510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_lombard_skirmisher", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_lombard_skirmisher", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_lombard_vetran", 710, 510),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_scythian_horse_archer", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_scythian_cataphract", 210, 310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_celtic_freeman", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_celtic_freeman", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_celtic_elite_swordsman", 710, 310),
 
 
@@ -23757,21 +23598,11 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
+    (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_11"),
-
-        # (try_for_range, ":slot_no", 0, 30),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_9"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
       ]),
-  ]),
+]),
   # Mercenaries
   ("upgrade_tree_12", 0, mesh_load_window, [
     (ti_on_presentation_load,
@@ -23795,26 +23626,40 @@ presentations = [
 
         (set_container_overlay, reg43),#start scroll
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_mercenary_cavalry", 60, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_mercenary_horseman", 210, 910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_mercenary_crossbowman", 560, 910),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_hired_blade", 710, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_mercenary_cavalry", 60, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_mercenary_horseman", 210, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_mercenary_bowman", 560, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_hired_blade", 710, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_mercenary_swordsman", 60, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_caravan_guard", 210, 710),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_watchman", 560, 710),#+200
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_garamantian_peasant", 710, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_mercenary_swordsman", 60, 1310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_caravan_guard", 210, 1310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_watchman", 560, 1310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_garamantian_peasant", 710, 1310),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_berber_peasant", 60, 1110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_eastern_peasant", 210, 1110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_syrian_peasant", 560, 1110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_thracian_peasant", 710, 1110),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_egyptian_peasant", 60, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_saka_peasant", 210, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_nubian_peasant", 560, 910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_gaulish_peasant", 710, 910),
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_hispanic_peasant", 60, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_illyrian_peasant", 210, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_galatian_peasant", 560, 710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_greek_peasant", 710, 710),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_berber_peasant", 60, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_arab_peasant", 210, 510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_armenian_peasant", 560, 510),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_caucasian_peasant", 560, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12,  "trp_dacian_peasant", 710, 510),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13,  "trp_germanic_peasant", 60, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14,  "trp_celtic_peasant", 210, 310),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15,  "trp_roman_peasant", 560, 310),#+200
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15,  "trp_roman_peasant", 560, 310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16,  "trp_persian_peasant", 710, 310),
-
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_parthian_peasant", 60, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_judean_peasant", 210, 110),
@@ -23834,7 +23679,7 @@ presentations = [
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_mercenary_cavalry", 715, 500),
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_mercenary_swordsman", 565, 300),
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_hired_blade", 715, 300),
-      # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_mercenary_crossbowman", 415, 100),
+      # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_mercenary_bowman", 415, 100),
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_caravan_master", 715, 100),
 
 
@@ -23907,8 +23752,8 @@ presentations = [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_peasant_woman", 115, 2500),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_follower_woman", 265, 2400),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_hunter_woman", 415, 2400),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_fighter_woman", 565, 2400),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_sword_sister", 715, 2400),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_camp_defender", 565, 2400),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_soldier_wife", 715, 2400),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_slave", 115, 2100),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_slave_warrior", 265, 2100),
@@ -23934,17 +23779,17 @@ presentations = [
         ##### | lines
 
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_steppe_bandit", 60, 1910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_taiga_bandit", 210, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_alannic_raider", 60, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_illyrian_bandit", 210, 1910),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_black_sea_priate", 560, 1910),#+200
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_black_sea_priate", 560, 1910),
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_judean_hornman", 710, 1910),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_slave_female", 60, 1710),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_refugee", 210, 1710),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_sea_raider", 560, 1710),#+200
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_forest_bandit", 710, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_sea_raider", 560, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_hispanic_bandit", 710, 1710),
 
 
       (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1810),##45 space for x
@@ -23954,7 +23799,7 @@ presentations = [
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_desert_bandit", 60, 1510),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_arab_noble_cav", 210, 1510),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_slave_rebel", 560, 1510),#+200
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_slave_rebel", 560, 1510),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_slave_rebel_2", 710, 1510),
 
 
@@ -23967,7 +23812,7 @@ presentations = [
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_sarranid_horseman", 60, 1310),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_garamantien_noble_horseman", 210, 1310),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_gaetuli_horseman", 560, 1310),#+200
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_gaetuli_horseman", 560, 1310),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_gaetuli_noble_horseman", 710, 1310),
 
 
@@ -23977,17 +23822,20 @@ presentations = [
       # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1410),##45 space for x
      # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1410),
 
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_judean_rebel", 255, 850),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_mountain_bandit", 165, 850),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_judean_light_clubman", 315, 1000),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_judean_light_spearman", 315, 700),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_judean_sicarius", 365, 850),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_judean_light_clubman_exp", 515, 1000),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_judean_light_spearman_exp", 515, 700),
 
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 300, 940),
 
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 220, 940),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 245, 1090),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 245, 790),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 420, 940),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 445, 1090),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 445, 790),
 
-      (call_script, "script_prsnt_upgrade_tree_lines", 4, 304, 243, 790),
+      (call_script, "script_prsnt_upgrade_tree_lines", 4, 304, 443, 790),
+
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_looter", 165, 250),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_bandit", 315, 400),
@@ -24030,21 +23878,112 @@ presentations = [
       (try_end),
     ]),
 
-    (ti_on_presentation_event_state_change,
-      [
-        (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_13"),
+    (ti_on_presentation_event_state_change,[
+      (store_trigger_param_1, ":object"),
+      (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_13"),
+    ]),
+]),
 
-        # (try_for_range, ":slot_no", 0, 40),
-          # (troop_slot_eq, "trp_temp_array_a", ":slot_no", ":object"),
-          # (troop_get_slot, "$temp_troop", "trp_temp_array_b", ":slot_no"),
-          # (assign, "$g_presentation_next_presentation", "prsnt_upgrade_tree_11"),
-          # (assign, "$temp4", 3),
-          # (assign, "$temp", 1),
-          # (start_presentation, "prsnt_troop_detail"),
-        # (try_end),
-      ]),
+("upgrade_tree_14", 0, mesh_load_window,[
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_14"),
+
+    # clear the string globals that we'll use
+    (str_clear, s0),
+
+    # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
+    (create_text_overlay, reg43, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 50),
+    (position_set_y, pos1, 70),
+    (overlay_set_position, reg43, pos1),
+    (position_set_x, pos1, 970),
+    (position_set_y, pos1, 527),
+    (overlay_set_area_size, reg43, pos1),
+
+    (set_container_overlay, reg43),#start scroll
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_syrian_heavy_cav", 560, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_syrian_heavy_cav_exp", 710, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_syrian_heavy_cav_vet", 860, 510),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_syrian_horseman", 60, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_syrian_horseman_exp", 210, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_syrian_horseman_vet", 360, 310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_syrian_horsearcher", 560, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_syrian_horsearcher_exp", 710, 310),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_syrian_horsearcher_vet", 860, 310),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_syrian_spearman", 60, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_syrian_spearman_exp", 210, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_syrian_spearman_vet", 360, 110),
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_syrian_archer", 560, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_syrian_archer_exp", 710, 110),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_syrian_archer_vet", 860, 110),
+
+    ##lines
+    # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 610),##45 space for x
+    # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 610),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 610),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 610),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 410),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 410),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 260, 210),
+
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 210),##45 space for x
+    (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 210),
+
+
+    (set_container_overlay, -1),#end scroll
   ]),
+
+  (ti_on_presentation_run, [
+    (try_begin),
+      (key_clicked, key_escape),
+      (presentation_set_duration, 0),
+    (else_try),
+      (key_clicked, key_space),
+      (set_fixed_point_multiplier, 1000),
+      (mouse_get_position, pos31),
+
+      (position_get_x, reg31, pos31),
+      (position_get_y, reg32, pos31),
+
+      (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_mouse_enter_leave,[
+    (store_trigger_param_1, ":object"),
+    (store_trigger_param_2, ":enter_leave"),
+
+    (try_begin),
+      (this_or_next|eq, ":object", "$g_presentation_obj_1"),
+      (eq, ":object", "$g_presentation_obj_3"),
+      (overlay_set_display, "$g_presentation_obj_3", ":enter_leave"),
+    (else_try),
+      (this_or_next|eq, ":object", "$g_presentation_obj_2"),
+      (eq, ":object", "$g_presentation_obj_4"),
+      (overlay_set_display, "$g_presentation_obj_4", ":enter_leave"),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":object"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_14"),
+  ]),
+]),
 ##########TROOP TREE END
 
 # __Freelancer Report: Commander_:Start_________________________________________________
@@ -24170,7 +24109,7 @@ presentations = [
       (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_pretorian, 2),
       (val_mul, reg23, 2),
     (try_end),
-		(create_text_overlay, reg0, "@Current Wage: {reg23} denars.", tf_left_align),
+		(create_text_overlay, reg0, "@Current Wage: {reg23} denarii.", tf_left_align),
 		(position_set_y, pos1, ":cur_y"),
 		(overlay_set_position, reg0, pos1),
 		(val_sub, ":cur_y", ":cur_y_adder"),
@@ -25202,6 +25141,1028 @@ presentations = [
   ]),
   (ti_on_presentation_run, [
     (try_begin),
+        (key_clicked, key_space),
+        (set_fixed_point_multiplier, 1000),
+        (mouse_get_position, pos31),
+
+        (position_get_x, reg31, pos31),
+        (position_get_y, reg32, pos31),
+
+        (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+]),
+("household_management", 0, 0, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
+
+    # Presentation title, centered at the top
+    (create_text_overlay, reg1, "@Household", tf_center_justify|tf_with_outline),
+    (position_set_x, pos1, 475), # Higher, means more toward the right
+    (position_set_y, pos1, 695), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1500),
+    (position_set_y, pos1, 1500),
+    (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
+
+    (create_text_overlay, reg1, "@Spouse", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
+    (position_set_x, pos1, 620), # Higher, means more toward the right
+    (position_set_y, pos1, 650), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg1, pos1),
+
+    (troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
+    (try_begin),
+        (gt, ":spouse", 0),
+        (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", ":spouse"),
+        (position_set_x, pos1, 520),
+        (position_set_y, pos1, 450),
+        (overlay_set_position, reg0, pos1),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 500),
+        (overlay_set_size, reg0, pos1),
+        (str_store_troop_name_plural, s0, ":spouse"),
+        (create_text_overlay, reg1, "str_s0", tf_center_justify),
+        (position_set_x, pos1, 620), # Higher, means more toward the right
+        (position_set_y, pos1, 420), # Higher, means more toward the top
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+    (try_end),
+    # (else_try),
+
+    (create_mesh_overlay, reg1, "mesh_cb_ui_icon_empty"),
+    (try_begin),
+        (le, ":spouse", 0),
+        (overlay_set_tooltip, reg1, "@Marry to get a spouse!"),
+    (try_end),
+    (position_set_x, pos1, 540),
+    (position_set_y, pos1, 445),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1750),
+    (position_set_y, pos1, 1850),
+    (overlay_set_size, reg1, pos1),
+
+    (create_text_overlay, reg1, "@Effects", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_information),
+    (position_set_x, pos1, 620), # Higher, means more toward the right
+    (position_set_y, pos1, 390), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg1, pos1),
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable),
+    (position_set_x, pos1, 515),
+    (position_set_y, pos1, 40),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 220),
+    (position_set_y, pos1, 340),
+    (overlay_set_area_size, reg1, pos1),
+    (assign, ":cur_y", 25),
+
+    (set_container_overlay, reg1),#start scroll
+
+    # add household modifiers
+    (try_for_range, ":modifier", household_mod_latifunida_limit, household_mod_ends),
+
+        (store_add, ":string", ":modifier", "str_household_mod_latifunida_limit_name"),
+        (str_store_string, s0, ":string"),
+        (create_text_overlay, reg1, "str_s0", 0),
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+
+        (store_add, ":string", ":modifier", "str_household_mod_latifunida_limit_descr"),
+        (str_store_string, s0, ":string"),
+        (overlay_set_tooltip, reg1, "str_s0"),
+
+        (call_script, "script_get_household_modifier", ":modifier"),
+        (try_begin),
+            (this_or_next|eq, ":modifier", household_mod_workshop_limit),
+            (eq, ":modifier", household_mod_latifunida_limit),
+            (assign, ":owned", 0),
+            (try_begin),
+                (eq, ":modifier", household_mod_workshop_limit),
+                (try_for_range, ":center_no", towns_begin, towns_end),
+                  (party_slot_ge, ":center_no", slot_center_player_enterprise, 1),
+                  (val_add, ":owned", 1),
+                (try_end),
+            (else_try),
+                (eq, ":modifier", household_mod_latifunida_limit),
+                (troop_get_slot, ":owned", "trp_global_variables", g_number_of_lat),
+            (try_end),
+            (assign, reg2, ":owned"),
+            (str_store_string, s0, "@{reg0} (owned: {reg2})"),
+        (else_try),
+            (str_store_string, s0, "@{reg0} %"),
+        (try_end),
+        (create_text_overlay, reg1, "str_s0", tf_right_align|tf_single_line),
+        (try_begin),
+            (this_or_next|eq, ":modifier", household_mod_workshop_limit),
+            (eq, ":modifier", household_mod_latifunida_limit),
+            (eq, reg0, 0),
+            (overlay_set_color, reg1, message_negative),
+        (else_try),
+            (eq, ":modifier", household_mod_latifunida_limit),
+            (lt, reg0, 10),
+            (overlay_set_color, reg1, color_good_news),
+        (else_try),
+            (eq, ":modifier", household_mod_workshop_limit),
+            (lt, reg0, 5),
+            (overlay_set_color, reg1, color_good_news),
+        (else_try),
+            (this_or_next|eq, ":modifier", household_mod_workshop_limit),
+            (eq, ":modifier", household_mod_latifunida_limit),
+            (overlay_set_color, reg1, message_positive),
+        (else_try),
+            (eq, ":modifier", household_mod_corruption),
+            (le, reg0, 0),
+            (overlay_set_color, reg1, message_positive),
+        (else_try),
+            (eq, ":modifier", household_mod_corruption),
+            (gt, reg0, 0),
+            (overlay_set_color, reg1, message_negative),
+        (else_try),
+            (lt, reg0, 0),
+            (overlay_set_color, reg1, message_negative),
+        (else_try),
+            (gt, reg0, 0),
+            (overlay_set_color, reg1, message_positive),
+        (try_end),
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 220),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_add, ":cur_y", 27),
+    (try_end),
+    # headline
+    (create_text_overlay, reg1, "@Modifiers", tf_with_outline),
+    (overlay_set_color, reg1, message_alert),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 0),
+    (position_set_y, pos1, ":cur_y"),
+    (val_add, ":cur_y", 27),
+    (overlay_set_position, reg1, pos1),
+
+    (assign, ":total", 0), # total spendings
+
+    ##spouse spendings
+    (try_begin),
+        (gt, ":spouse", 0),
+        (troop_get_slot,":spouse", "trp_player", slot_troop_spouse),
+        (troop_slot_eq, ":spouse", slot_troop_bachus, 3),
+
+        (create_text_overlay, reg1, "@Expenditure of your spouse:", 0),
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+
+        (store_random_in_range, ":cost_for6", 21000, 22000),
+        (val_mul, ":cost_for6", -1),
+        (assign, reg0, ":cost_for6"),
+        (val_add, ":total", reg0),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (overlay_set_color, reg1, 0xFF2C2C),
+
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 220),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_add, ":cur_y", 27),
+    (try_end),
+
+    (try_begin),
+        (gt, "$g_player_chamberlain", 0),
+        (str_store_troop_name, s1, "$g_player_chamberlain"),
+        (create_text_overlay, reg1, "@{s1}:", 0),
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+
+        (store_mul, reg0, chamberlain_salary, -1),
+        (val_add, ":total", reg0),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (overlay_set_color, reg1, 0xFF2C2C),
+
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 220),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_add, ":cur_y", 27),
+    (try_end),
+
+    (try_begin),
+        (gt, "$g_player_constable", 0),
+        (str_store_troop_name, s1, "$g_player_constable"),
+        (create_text_overlay, reg1, "@{s1}:", 0),
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+
+        (store_mul, reg0, constable_salary, -1),
+        (val_add, ":total", reg0),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (overlay_set_color, reg1, 0xFF2C2C),
+
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 220),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_add, ":cur_y", 27),
+    (try_end),
+
+    (try_begin),
+        (gt, "$g_player_chancellor", 0),
+        (str_store_troop_name, s1, "$g_player_chancellor"),
+        (create_text_overlay, reg1, "@{s1}:", 0),
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+
+        (store_mul, reg0, chancellor_salary, -1),
+        (val_add, ":total", reg0),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (overlay_set_color, reg1, 0xFF2C2C),
+
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 220),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_add, ":cur_y", 27),
+    (try_end),
+
+    (try_begin),
+        (gt, "$g_player_minister", 0),
+        (str_store_troop_name_plural, s1, "$g_player_minister"),
+        (create_text_overlay, reg1, "@{s1}, Minister:", 0),
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+
+        (store_mul, reg0, minister_salary, -1),
+        (val_add, ":total", reg0),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (overlay_set_color, reg1, 0xFF2C2C),
+
+        (position_set_x, pos1, 800),
+        (position_set_y, pos1, 800),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 220),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_add, ":cur_y", 27),
+    (try_end),
+
+    (try_begin),
+        (neq, ":total", 0),
+
+        (position_set_x, pos1, 0),
+        (store_add, ":gab_y", ":cur_y", -22),
+        (position_set_y, pos1, ":gab_y"),
+        (call_script, "script_prsnt_vc_menu_helper_gap"),
+
+        (create_text_overlay, reg1, "@Total household costs:", tf_with_outline),
+        (overlay_set_color, reg1, message_alert),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 0),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+
+        (assign, reg0, ":total"),
+        (val_add, ":total", reg0),
+        (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
+        (overlay_set_color, reg1, 0xFF2C2C),
+
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+        (position_set_x, pos1, 220),
+        (position_set_y, pos1, ":cur_y"),
+        (overlay_set_position, reg1, pos1),
+        (val_add, ":cur_y", 27),
+
+    (try_end),
+
+    (set_container_overlay, -1), #end scroll
+
+    (create_text_overlay, reg1, "@Advisors", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_information),
+    (position_set_x, pos1, 845), # Higher, means more toward the right
+    (position_set_y, pos1, 695), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg1, pos1),
+
+    #advisors
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable),
+    (position_set_x, pos1, 745),
+    (position_set_y, pos1, 40),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 230),
+    (position_set_y, pos1, 640),
+    (overlay_set_area_size, reg1, pos1),
+
+    (assign, ":cur_y", 50),
+
+    (set_container_overlay, reg1),#start scroll
+    (try_for_range, ":advicor", "trp_dplmc_chamberlain", "trp_dplmc_scout"),
+        (assign, ":original_advicor", ":advicor"),
+        (troop_set_slot, "trp_temp_array_a", ":original_advicor", -1),#for button
+        (troop_set_slot, "trp_temp_array_b", ":original_advicor", -1),#for button
+
+        (str_clear, s22),
+        (str_clear, s23),
+        (assign, ":c", 0),
+        (assign, ":allow", 0),
+        (try_begin),
+            (eq, ":advicor", "trp_dplmc_chamberlain"),
+            (str_store_string, s22, "@Quaestor"),
+            (str_store_string, s23, "@You need to own at least one settlement or a latifundia to appoint a Quaestor."),
+            (try_begin),
+                (eq, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
+                (assign, ":c", 1),
+            (else_try),
+                (try_for_range, ":center_no", centers_begin, centers_end),
+                    (eq, ":allow", 0),
+                    (try_begin),
+                        (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+                        (assign, ":allow", 1),
+                    (else_try),
+                        (party_get_slot, ":latifundium", ":center_no",slot_center_has_latifundium),
+                        (gt, ":latifundium", 0),
+                        (party_is_active, ":latifundium"),
+                        (assign, ":allow", 1),
+                    (try_end),
+                (try_end),
+            (try_end),
+        (else_try),
+            (eq, ":advicor", "trp_dplmc_constable"),
+            (str_store_string, s22, "@Custos Publicus"),
+            (str_store_string, s23, "@You need to own at least one town or fortress to appoint a Custos Publicus."),
+            (try_begin),
+                (eq, "$g_player_constable", "trp_dplmc_constable"),
+                (assign, ":c", 1),
+            (else_try),
+                (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
+                    (eq, ":allow", 0),
+                    (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+                    (assign, ":allow", 1),
+                (try_end),
+            (try_end),
+        (else_try),
+            (eq, ":advicor", "trp_dplmc_chancellor"),
+            (str_store_string, s22, "@Censor"),
+            (str_store_string, s23, "@You need to own at least one town to appoint a Censor."),
+            (try_begin),
+                (eq, "$g_player_chancellor", "trp_dplmc_chancellor"),
+                (assign, ":c", 1),
+            (else_try),
+                (try_for_range, ":center_no", towns_begin, towns_end),
+                    (eq, ":allow", 0),
+                    (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+                    (assign, ":allow", 1),
+                (try_end),
+            (try_end),
+        (else_try),
+            (eq, ":advicor", "trp_dplmc_messenger"),##minister
+            (str_store_string, s22, "@Minister"),
+            (str_store_string, s23, "@You need to be ruler of your own independent realm to have a minister."),
+            (gt, "$g_player_minister", 0),
+            (assign, ":advicor", "$g_player_minister"),
+            (assign, ":c", 1),
+        (try_end),
+
+        (create_mesh_overlay, reg1, "mesh_cb_ui_icon_empty"),
+        (try_begin),
+            (neq, ":c", 1),
+            (overlay_set_tooltip, reg1, "@{s23}"),
+        (try_end),
+        (position_set_x, pos1, 10),
+        (store_sub, ":gab_y", ":cur_y", -17),
+        (position_set_y, pos1, ":gab_y"),
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 1800),
+        (position_set_y, pos1, 1800),
+        (overlay_set_size, reg1, pos1),
+
+        (try_begin),
+            (eq, ":c", 1),
+            (try_begin),
+                (is_between, ":advicor", active_npcs_begin, kingdom_ladies_end),
+                (str_store_troop_name_plural, s0, ":advicor"),
+                (str_store_string, s22, "@{s0}, {s22}"),
+            (try_end),
+            (create_text_overlay, reg1, "@{s22}", tf_center_justify),
+            (position_set_x, pos1, 115), # Higher, means more toward the right
+            (position_set_y, pos1, ":cur_y"), # Higher, means more toward the top
+            (val_add, ":cur_y", 25),
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (position_set_x, pos1, 0),
+            (store_add, ":gap_y", ":cur_y", -45),
+            (position_set_y, pos1, ":gap_y"),
+            (call_script, "script_prsnt_vc_menu_helper_gap"),
+
+            (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", ":advicor"),
+            (position_set_x, pos1, 0),
+            (position_set_y, pos1, ":cur_y"),
+            (val_add, ":cur_y", 180),
+            (overlay_set_position, reg0, pos1),
+            (position_set_x, pos1, 500),
+            (position_set_y, pos1, 500),
+            (overlay_set_size, reg0, pos1),
+
+            (try_begin),
+                (eq, ":original_advicor", "trp_dplmc_messenger"),#minister cannot be fired
+                (str_store_string, s22, "@Replace"),
+            (else_try),
+                (str_store_string, s22, "@Resign"),
+            (try_end),
+            (create_button_overlay, reg1, "@{s22}", tf_center_justify|tf_with_outline),
+            (overlay_set_color, reg1, message_negative),
+            (position_set_x, pos1, 210), # Higher, means more toward the right
+            (store_add, ":gap_y", ":cur_y", -35),
+            (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (troop_set_slot, "trp_temp_array_a", ":original_advicor", reg1),#for button
+
+        (else_try),
+            (create_text_overlay, reg1, "@You have not assigned a {s22} yet.", tf_center_justify),
+            (position_set_x, pos1, 115), # Higher, means more toward the right
+            (position_set_y, pos1, ":cur_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+            (val_add, ":cur_y", 25),
+
+            (position_set_x, pos1, 0),
+            (store_add, ":gap_y", ":cur_y", -45),
+            (position_set_y, pos1, ":gap_y"),
+            (call_script, "script_prsnt_vc_menu_helper_gap"),
+
+            (val_add, ":cur_y", 180),
+            (try_begin),
+                (eq, ":allow", 1),
+                (create_button_overlay, reg1, "@Assign", tf_center_justify|tf_with_outline),
+                (troop_set_slot, "trp_temp_array_a", ":original_advicor", reg1),#for button
+                (overlay_set_color, reg1, color_good_news),
+                (position_set_x, pos1, 210), # Higher, means more toward the right
+                (store_add, ":gap_y", ":cur_y", -35),
+                (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+                (overlay_set_position, reg1, pos1),
+                (position_set_x, pos1, 1000),
+                (position_set_y, pos1, 1000),
+                (overlay_set_size, reg1, pos1),
+            (try_end),
+        (try_end),
+    (try_end),
+
+    (set_container_overlay, -1),#end scroll
+
+    #slaves
+    (create_text_overlay, reg1, "@Slaves", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_information),
+    (position_set_x, pos1, 125), # Higher, means more toward the right
+    (position_set_y, pos1, 695), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg1, pos1),
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable),
+    (position_set_x, pos1, 10),
+    (position_set_y, pos1, 40),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 230),
+    (position_set_y, pos1, 640),
+    (overlay_set_area_size, reg1, pos1),
+
+    (assign, ":cur_y", 50),
+
+    (set_container_overlay, reg1),#start scroll
+    (assign, ":slave_count", 15),
+    (try_for_range_backwards, ":slave", household_slaves_begin, household_slaves_end),
+        (troop_set_slot, "trp_temp_array_a", ":slave", -1),#for button
+        (troop_set_slot, "trp_temp_array_b", ":slave", -1),#for button
+        (val_sub, ":slave_count", 1),
+        (troop_get_slot, ":slave_dna", ":slave", slot_slave_template_troop),
+
+        (create_mesh_overlay, reg1, "mesh_cb_ui_icon_empty"),
+        (try_begin),
+            (gt, ":slave_dna", 0),
+            (call_script, "script_describe_slave_skills_to_s0", ":slave_dna"),
+            (overlay_set_tooltip, reg1, "str_s0"),
+        (try_end),
+        (position_set_x, pos1, 10),
+        (store_sub, ":gab_y", ":cur_y", -17),
+        (position_set_y, pos1, ":gab_y"),
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 1800),
+        (position_set_y, pos1, 1800),
+        (overlay_set_size, reg1, pos1),
+
+        (assign, ":allow", 1),
+
+        (try_begin),
+            (gt, ":slave_dna", 0),
+            (str_store_troop_name, s1, ":slave"),
+            (str_store_troop_name, s2, ":slave_dna"),
+            (create_text_overlay, reg1, "@{s1}, {s2}", tf_center_justify),
+            (position_set_x, pos1, 115), # Higher, means more toward the right
+            (position_set_y, pos1, ":cur_y"), # Higher, means more toward the top
+            (val_add, ":cur_y", 25),
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (position_set_x, pos1, 0),
+            (store_add, ":gap_y", ":cur_y", -45),
+            (position_set_y, pos1, ":gap_y"),
+            (call_script, "script_prsnt_vc_menu_helper_gap"),
+
+            (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", ":slave"),
+            (position_set_x, pos1, 0),
+            (position_set_y, pos1, ":cur_y"),
+            (val_add, ":cur_y", 180),
+            (overlay_set_position, reg0, pos1),
+            (position_set_x, pos1, 500),
+            (position_set_y, pos1, 500),
+            (overlay_set_size, reg0, pos1),
+
+            (create_button_overlay, reg1, "@Dismiss", tf_center_justify|tf_with_outline),
+            (overlay_set_color, reg1, message_negative),
+            (position_set_x, pos1, 210), # Higher, means more toward the right
+            (store_add, ":gap_y", ":cur_y", -35),
+            (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (troop_set_slot, "trp_temp_array_a", ":slave", reg1),#for button
+
+            (create_button_overlay, reg1, "@Talk", tf_center_justify|tf_with_outline),
+            (overlay_set_color, reg1, message_alert),
+            (position_set_x, pos1, 210), # Higher, means more toward the right
+            (store_add, ":gap_y", ":cur_y", -65),
+            (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (troop_set_slot, "trp_temp_array_b", ":slave", reg1),#for button
+
+        (else_try),
+            (try_begin),
+                (call_script, "script_get_slave_limit"),
+                (gt, ":slave_count", reg0),
+                (call_script, "script_get_slave_slot_renown_threshold", ":slave_count"),
+                (assign, reg2, ":slave_count"),
+                (str_store_string, s0, "@You need {reg0} to have a {reg2}. household slave!"),
+                (assign, ":allow", 0),
+            (else_try),
+                (assign, reg2, ":slave_count"),
+                (str_store_string, s0, "@{reg2}. slot free slot"),
+            (try_end),
+            (create_text_overlay, reg1, "str_s0", tf_center_justify),
+            (position_set_x, pos1, 115), # Higher, means more toward the right
+            (position_set_y, pos1, ":cur_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+            (val_add, ":cur_y", 25),
+
+            (position_set_x, pos1, 0),
+            (store_add, ":gap_y", ":cur_y", -45),
+            (position_set_y, pos1, ":gap_y"),
+            (call_script, "script_prsnt_vc_menu_helper_gap"),
+
+            (val_add, ":cur_y", 180),
+            (try_begin),
+                (eq, ":allow", 1),
+                (create_button_overlay, reg1, "@Assign", tf_center_justify|tf_with_outline),
+                (troop_set_slot, "trp_temp_array_a", ":slave", reg1),#for button
+                (overlay_set_color, reg1, color_good_news),
+                (position_set_x, pos1, 210), # Higher, means more toward the right
+                (store_add, ":gap_y", ":cur_y", -35),
+                (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+                (overlay_set_position, reg1, pos1),
+                (position_set_x, pos1, 1000),
+                (position_set_y, pos1, 1000),
+                (overlay_set_size, reg1, pos1),
+            (try_end),
+        (try_end),
+    (try_end),
+
+    (set_container_overlay, -1),#end scroll
+
+    #cooks
+    (create_text_overlay, reg1, "@Cooks", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_information),
+    (position_set_x, pos1, 350), # Higher, means more toward the right
+    (position_set_y, pos1, 695), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg1, pos1),
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable),
+    (position_set_x, pos1, 260),
+    (position_set_y, pos1, 70),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 230),
+    (position_set_y, pos1, 610),
+    (overlay_set_area_size, reg1, pos1),
+
+    (assign, ":cur_y", 50),
+
+    (set_container_overlay, reg1),#start scroll
+    (assign, ":cook_count",7),
+    (try_for_range_backwards, ":cook", cook_slaves_begin, cook_slaves_end),
+        (troop_set_slot, "trp_temp_array_a", ":cook", -1),#for button
+        (troop_set_slot, "trp_temp_array_b", ":cook", -1),#for button
+        (val_sub, ":cook_count", 1),
+        (troop_get_slot, ":cook_dna", ":cook", slot_slave_template_troop),
+
+        (create_mesh_overlay, reg1, "mesh_cb_ui_icon_empty"),
+        (try_begin),
+            (gt, ":cook_dna", 0),
+            (call_script, "script_describe_slave_skills_to_s0", ":cook_dna"),
+            (overlay_set_tooltip, reg1, "str_s0"),
+        (try_end),
+        (position_set_x, pos1, 10),
+        (store_sub, ":gab_y", ":cur_y", -17),
+        (position_set_y, pos1, ":gab_y"),
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 1800),
+        (position_set_y, pos1, 1800),
+        (overlay_set_size, reg1, pos1),
+
+        (assign, ":allow", 1),
+
+        (try_begin),
+            (gt, ":cook_dna", 0),
+
+            (str_store_troop_name, s1, ":cook"),
+            (str_store_troop_name, s2, ":cook_dna"),
+            (create_text_overlay, reg1, "@{s1}, {s2}", tf_center_justify),
+            (position_set_x, pos1, 115), # Higher, means more toward the right
+            (position_set_y, pos1, ":cur_y"), # Higher, means more toward the top
+            (val_add, ":cur_y", 25),
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (position_set_x, pos1, 0),
+            (store_add, ":gap_y", ":cur_y", -45),
+            (position_set_y, pos1, ":gap_y"),
+            (call_script, "script_prsnt_vc_menu_helper_gap"),
+
+            (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", ":cook"),
+            (position_set_x, pos1, 0),
+            (position_set_y, pos1, ":cur_y"),
+            (val_add, ":cur_y", 180),
+            (overlay_set_position, reg0, pos1),
+            (position_set_x, pos1, 500),
+            (position_set_y, pos1, 500),
+            (overlay_set_size, reg0, pos1),
+
+            (create_button_overlay, reg1, "@Dismiss", tf_center_justify|tf_with_outline),
+            (overlay_set_color, reg1, message_negative),
+            (position_set_x, pos1, 210), # Higher, means more toward the right
+            (store_add, ":gap_y", ":cur_y", -35),
+            (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (troop_set_slot, "trp_temp_array_a", ":cook", reg1),#for button
+
+            (create_button_overlay, reg1, "@Talk", tf_center_justify|tf_with_outline),
+            (overlay_set_color, reg1, message_alert),
+            (position_set_x, pos1, 210), # Higher, means more toward the right
+            (store_add, ":gap_y", ":cur_y", -65),
+            (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+
+            (troop_set_slot, "trp_temp_array_b", ":cook", reg1),#for button
+
+        (else_try),
+            (try_begin),
+                (call_script, "script_get_cook_limit"),
+                (gt, ":cook_count", reg0),
+                (call_script, "script_get_cook_slot_renown_threshold", ":cook_count"),
+                (assign, reg2, ":cook_count"),
+                (str_store_string, s0, "@You need {reg0} to have a {reg2}. cook!"),
+                (assign, ":allow", 0),
+            (else_try),
+                (assign, reg2, ":cook_count"),
+                (str_store_string, s0, "@{reg2}. slot free slot"),
+            (try_end),
+            (create_text_overlay, reg1, "str_s0", tf_center_justify),
+            (position_set_x, pos1, 115), # Higher, means more toward the right
+            (position_set_y, pos1, ":cur_y"), # Higher, means more toward the top
+            (overlay_set_position, reg1, pos1),
+            (position_set_x, pos1, 900),
+            (position_set_y, pos1, 900),
+            (overlay_set_size, reg1, pos1),
+            (val_add, ":cur_y", 25),
+
+            (position_set_x, pos1, 0),
+            (store_add, ":gap_y", ":cur_y", -45),
+            (position_set_y, pos1, ":gap_y"),
+            (call_script, "script_prsnt_vc_menu_helper_gap"),
+
+            (val_add, ":cur_y", 180),
+            (try_begin),
+                (eq, ":allow", 1),
+                (create_button_overlay, reg1, "@Assign", tf_center_justify|tf_with_outline),
+                (troop_set_slot, "trp_temp_array_a", ":cook", reg1),#for button
+                (overlay_set_color, reg1, color_good_news),
+                (position_set_x, pos1, 210), # Higher, means more toward the right
+                (store_add, ":gap_y", ":cur_y", -35),
+                (position_set_y, pos1, ":gap_y"), # Higher, means more toward the top
+                (overlay_set_position, reg1, pos1),
+                (position_set_x, pos1, 1000),
+                (position_set_y, pos1, 1000),
+                (overlay_set_size, reg1, pos1),
+            (try_end),
+        (try_end),
+    (try_end),
+
+    (set_container_overlay, -1),#end scroll
+
+    (create_game_button_overlay, reg1, "str_return"),
+    (position_set_x, pos1, 500),
+    (position_set_y, pos1, 23),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
+  ]),
+
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":button_pressed_id"),
+    (try_begin),
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"), # pressed  (Return to menu)
+        (presentation_set_duration, 0),
+    (else_try),
+        (assign, ":continue", 1),
+        (try_for_range, ":slave", household_slaves_begin, cook_slaves_end),
+            (troop_slot_eq, "trp_temp_array_a", ":slave", ":button_pressed_id"),#for button
+            (assign, ":continue", 0),
+            (try_begin),
+                (troop_get_slot, ":slave_dna", ":slave", slot_slave_template_troop),
+                (try_begin),
+                    (gt, ":slave_dna", 0),
+                    (troop_set_slot, ":slave", slot_slave_template_troop, 0),
+                    (try_begin),
+                        (troops_can_join_as_prisoner, 1),
+                        (party_add_prisoners, "p_main_party", ":slave_dna", 1),
+                    (else_try),
+                        (display_message, "@You don't have enough space in your party for additional prisoners. The slave is thus manumissioned!", message_alert),
+                    (try_end),
+                    (start_presentation, "prsnt_household_management"),
+                # if there is no slave assigned, let player assign a new one from prisoners or buy from contract
+                (else_try),
+                    (is_between, ":slave", household_slaves_begin, household_slaves_end),
+                    (assign, ":c", 0),
+                    (try_begin),
+                        (party_get_num_prisoner_stacks, ":num_prisoners", "p_main_party"),
+                        (gt, ":num_prisoners", 0),
+                        (try_for_range, ":prisoner", 0, ":num_prisoners"),
+                            (party_prisoner_stack_get_troop_id, ":slave_troop", "p_main_party", ":prisoner"),
+                            (is_between, ":slave_troop", male_slaves_begin, male_slaves_end),
+                            (assign, ":num_prisoners", -1),
+                            (assign, ":c", 1),
+                        (try_end),
+                    (try_end),
+                    (try_begin),
+                        (eq, ":c", 0),
+                        # check for other centers player may own
+                        (try_for_range, ":center_no", centers_begin, centers_end),
+                            (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+                            (party_get_num_prisoner_stacks, ":num_prisoners", ":center_no"),
+                            (gt, ":num_prisoners", 0),
+                            (try_for_range, ":prisoner", 0, ":num_prisoners"),
+                                (party_prisoner_stack_get_troop_id, ":slave_troop", ":center_no", ":prisoner"),
+                                (is_between, ":slave_troop", male_slaves_begin, male_slaves_end),
+                                (assign, ":num_prisoners", -1),
+                                (assign, ":c", 1),
+                            (try_end),
+                        (try_end),
+                    (try_end),
+                    (try_begin),# check for contract
+                        (eq, ":c", 0),
+                        (troop_slot_ge, "trp_global_variables", g_slave_contract, 1),
+                        (assign, ":c", 1),
+                    (try_end),
+                    (eq, ":c", 1),
+                    (assign, "$temp", 2),#household slave
+                    (start_presentation, "prsnt_select_household_slave"),
+                (else_try),
+                    (is_between, ":slave", cook_slaves_begin, cook_slaves_end),
+                    # check if player has at least one slave prisoner, otherwise display message
+                    (assign, ":c", 0),
+                    (try_begin),
+                        (party_get_num_prisoner_stacks, ":num_prisoners", "p_main_party"),
+                        (gt, ":num_prisoners", 0),
+                        (try_for_range, ":prisoner", 0, ":num_prisoners"),
+                            (party_prisoner_stack_get_troop_id, ":slave_troop", "p_main_party", ":prisoner"),
+                            (is_between, ":slave_troop", female_slaves_begin, female_slaves_end),
+                            (assign, ":num_prisoners", -1),
+                            (assign, ":c", 1),
+                        (try_end),
+                    (try_end),
+                    (try_begin),
+                        (eq, ":c", 0),
+                        # check for other centers player may own
+                        (try_for_range, ":center_no", centers_begin, centers_end),
+                            (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+                            (party_get_num_prisoner_stacks, ":num_prisoners", ":center_no"),
+                            (gt, ":num_prisoners", 0),
+                            (try_for_range, ":prisoner", 0, ":num_prisoners"),
+                                (party_prisoner_stack_get_troop_id, ":slave_troop", ":center_no", ":prisoner"),
+                                (is_between, ":slave_troop", female_slaves_begin, female_slaves_end),
+                                (assign, ":num_prisoners", -1),
+                                (assign, ":c", 1),
+                            (try_end),
+                        (try_end),
+                    (try_end),
+                    (try_begin),# check for contract
+                        (eq, ":c", 0),
+                        (troop_slot_ge, "trp_global_variables", g_slave_contract, 1),
+                        (assign, ":c", 1),
+                    (try_end),
+                    (eq, ":c", 1),
+                    (assign, "$temp", 1),#cook slave
+                    (start_presentation, "prsnt_select_household_slave"),
+                (else_try),
+                    (dialog_box, "@You have no slaves to assign. You need slaves inside your party as prisoners to assign them to your household or to have a contract with a slave trader."),
+                (try_end),
+            (try_end),
+        (else_try),
+            (troop_slot_eq, "trp_temp_array_b", ":slave", ":button_pressed_id"),#for button
+            (assign, ":continue", 0),
+
+            (try_begin),
+                (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
+                (store_party_size_wo_prisoners, ":men", "p_main_party"),
+                (ge, ":men", 20),
+                (assign, ":scene", "scn_players_tent"),
+            (else_try),
+                (call_script, "script_get_player_camp_scene"),
+                (assign, ":scene", reg0),
+            (try_end),
+
+            (set_jump_mission, "mt_camp"),
+            (modify_visitors_at_site, ":scene"),
+            (reset_visitors, 0),
+            (set_visitor, 2, "trp_player"),
+            (set_visitor, 3, ":slave"),
+            (jump_to_scene, ":scene"),
+            (change_screen_mission),
+        (try_end),
+        (eq, ":continue", 0),
+    (else_try),
+        (assign, ":continue", 1),
+        (try_for_range, ":advicor", "trp_dplmc_chamberlain", "trp_dplmc_scout"),
+            (troop_slot_eq, "trp_temp_array_a", ":advicor", ":button_pressed_id"),#for button
+            (assign, ":continue", 0),
+            (try_begin),
+                (eq, ":advicor", "trp_dplmc_chamberlain"),
+                (eq, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
+                (assign, "$g_player_chamberlain", -1),
+                (store_troop_gold, ":treasury", "trp_household_possessions"),
+                (call_script, "script_dplmc_withdraw_from_treasury",  ":treasury"),
+                (troop_add_gold, "trp_player", ":treasury"),
+                (str_store_troop_name, s22, ":advicor"),
+                (dialog_box, "@You have no longer a {s22}."),
+                (start_presentation, "prsnt_household_management"),
+            (else_try),
+                (eq, ":advicor", "trp_dplmc_constable"),
+                (eq, "$g_player_constable", "trp_dplmc_constable"),
+                (assign, "$g_player_constable", -1),
+                (str_store_troop_name, s22, ":advicor"),
+                (dialog_box, "@You have no longer a {s22}."),
+                (start_presentation, "prsnt_household_management"),
+            (else_try),
+                (eq, ":advicor", "trp_dplmc_chancellor"),
+                (eq, "$g_player_chancellor", "trp_dplmc_chancellor"),
+                (assign, "$g_player_chancellor", -1),
+                (str_store_troop_name, s22, ":advicor"),
+                (dialog_box, "@You have no longer a {s22}."),
+                (start_presentation, "prsnt_household_management"),
+            ##reassign
+            (else_try),
+                (eq, ":advicor", "trp_dplmc_chamberlain"),
+                (le, "$g_player_chamberlain", 0),
+                # (assign, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
+                (call_script, "script_dplmc_appoint_chamberlain"),
+                (str_store_troop_name, s22, ":advicor"),
+                (dialog_box, "@You have now a {s22}."),
+                (start_presentation, "prsnt_household_management"),
+            (else_try),
+                (eq, ":advicor", "trp_dplmc_constable"),
+                (le, "$g_player_constable", 0),
+                # (assign, "$g_player_constable", "trp_dplmc_constable"),
+                (call_script, "script_dplmc_appoint_constable"),
+                (str_store_troop_name, s22, ":advicor"),
+                (dialog_box, "@You have now a {s22}."),
+                (start_presentation, "prsnt_household_management"),
+            (else_try),
+                (eq, ":advicor", "trp_dplmc_chancellor"),
+                (le, "$g_player_chancellor", 0),
+                # (assign, "$g_player_chancellor", "trp_dplmc_chancellor"),
+                (call_script, "script_dplmc_appoint_chancellor"),
+                (str_store_troop_name, s22, ":advicor"),
+                (dialog_box, "@You have now a {s22}."),
+                (start_presentation, "prsnt_household_management"),
+            (else_try),
+                (eq, ":advicor", "trp_dplmc_messenger"),##minister
+                (gt, "$g_player_minister", 0),
+                (start_presentation, "prsnt_select_minister"),
+            (try_end),
+        (try_end),
+        (eq, ":continue", 0),
+    (try_end),
+  ]),
+
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_escape),
+        (presentation_set_duration, 0),
+        (show_object_details_overlay, 1),
+    (else_try),
         (key_clicked, key_space),
         (set_fixed_point_multiplier, 1000),
         (mouse_get_position, pos31),
@@ -31199,7 +32160,7 @@ presentations = [
     (assign, ":x_pos", 160), (assign, ":y_pos", 4000),
     #human
     (str_store_troop_name, s0, 0),
-    (create_game_button_overlay, reg1 , "@{s0}", tf_center_justify),
+    (create_game_button_overlay, reg1 , "str_s0", tf_center_justify),
     (position_set_x, pos3, ":x_pos"),
     (position_set_y, pos3, ":y_pos"),
     (overlay_set_position, reg1, pos3),
@@ -31221,7 +32182,7 @@ presentations = [
             (this_or_next|troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
             (main_party_has_troop, ":id_npc"),
             (str_store_troop_name_plural, s0, ":id_npc"),
-            (create_game_button_overlay, reg1 , "@{s0}", tf_center_justify),
+            (create_game_button_overlay, reg1 , "str_s0", tf_center_justify),
             (call_script, "script_search_lords_tmp", 0, ":id_npc"),
             (troop_get_slot, ":indx", "trp_temp_array_c",0),
             (val_add, ":indx", 2),
@@ -34495,6 +35456,7 @@ presentations = [
         # (neq, ":item", "itm_horn"),
         # (neg|is_between, ":item", "itm_roman_lupa_dress", "itm_sarranid_cloth_robe"),
         # (neg|is_between, ":item", "itm_flower_crown", "itm_celtic_boots"),
+        (neg|is_between, ":item", "itm_basic_chariot_horse", "itm_sumpter_horse"),#no chariots
         (assign, ":c0", 0),
         # (assign, reg0, "$temp2"),
         # (display_message, "@{reg0}"),
@@ -34508,7 +35470,7 @@ presentations = [
                 # (str_store_faction_name, s10, ":culture"),
                 # (display_message, "@Selected culture: {s10}"),
                 (try_begin),
-                    (eq, ":culture", "fac_dark_knights"),
+                    (eq, ":culture", "fac_merchants"),
                     (assign, ":culture", "fac_minor_kingdoms_end"),
                 (try_end),
                 (item_has_faction, ":item", ":culture"),
@@ -36090,7 +37052,7 @@ presentations = [
     (call_script, "script_get_cohort_limit", "p_main_party"),
     (store_sub, reg5, reg0, slot_cohort_1),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denars.^Party limit: {reg3} men.^Your gold: {reg4} denars.^Cohort limit: {reg5} cohorts.", tf_left_align),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denarii.^Party limit: {reg3} men.^Your gold: {reg4} denarii.^Cohort limit: {reg5} cohorts.", tf_left_align),
     (position_set_x, pos1, 785),
     (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
@@ -36161,7 +37123,7 @@ presentations = [
         (position_set_y, pos3, 250),
         (overlay_set_size, reg0, pos3),
 
-        (call_script, "script_get_cohort_info_to_s5", "$temp"),
+        (call_script, "script_get_cohort_info_to_s5", "$temp", "$players_kingdom"),
         (create_text_overlay, reg1, s5, tf_scrollable_style_2),
         (position_set_x, pos1, 140),
         (position_set_y, pos1, 535),
@@ -36271,7 +37233,7 @@ presentations = [
         (start_presentation, "prsnt_manage_cohorts"),
     (else_try),
         (eq, ":button_pressed_id", "$g_presentation_obj_1"),
-        (call_script, "script_get_cohort_info_to_s5", "$temp"),
+        (call_script, "script_get_cohort_info_to_s5", "$temp", "$players_kingdom"),
         (store_troop_gold, ":g", "trp_player"),
         (try_begin),
             (ge, "$g_rank", 1),
@@ -36304,7 +37266,10 @@ presentations = [
             (neg|troops_can_join, reg2),
             (display_message, "@Not enough party space"),
         (else_try),
-            (lt, ":nobles", reg3),
+            (gt, reg3, 0),
+            (le, ":nobles", 0),
+            (this_or_next|le, ":peasants", 0),
+            (eq, reg4, 0),
             (try_begin),
                 (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
                 (str_store_string, s4, "@officers"),
@@ -36313,22 +37278,28 @@ presentations = [
             (try_end),
             (display_message, "@Not enough {s4} available in province."),
         (else_try),
-            (lt, ":peasants", reg4),
+            (gt, reg4, 0),
+            (le, ":peasants", 0),
+            (this_or_next|le, ":nobles", 0),
+            (eq, reg3, 0),
             (display_message, "@Not enough recruits available in province."),
         (else_try),
-            (lt, ":mercenaries", reg7),
+            (le, ":mercenaries", 0),
             (display_message, "@Not enough mercenaries available in province."),
         (else_try),
             (call_script, "script_get_cohort_limit", "p_main_party"),
             (assign, ":end", reg0),
+            (assign, ":cohort_slot", -1),
             (try_for_range, ":cohort", slot_cohort_begin, ":end"),
                 (party_slot_eq, "p_main_party", ":cohort", 0),
                 (assign, ":end", -1),
                 (party_set_slot, "p_main_party", ":cohort", "$temp"),
+                (assign, ":cohort_slot", ":cohort"),
             (try_end),
             (try_begin),
                 (eq, ":end", -1),
-                (party_add_template, "p_main_party", "$temp"),
+                (gt, ":cohort_slot", -1),
+                # (party_add_template, "p_main_party", "$temp"),
                 (call_script, "script_get_cohort_name_to_s5", "$temp"),
                 (display_message, "@You recruited a {s5}"),
                 # (val_sub, ":nobles", reg3),
@@ -36337,32 +37308,34 @@ presentations = [
                 # (party_set_slot, "$g_encountered_party", slot_center_mercenary_troop_amount_2, ":mercenaries"),
                 # (party_set_slot, "$g_encountered_party", slot_center_volunteer_noble_troop_amount, ":nobles"),
                 # (party_set_slot, "$g_encountered_party", slot_center_peasant_troop_amount, ":peasants"),
-
-                (call_script, "script_take_recruits_from_province", "$g_encountered_party", "$g_encountered_party_faction", reg3, reg4, reg7),
-
-                (try_begin),
-                    (ge, "$g_is_emperor", 1),
-                    (call_script, "script_add_to_faction_bugdet", slot_faction_hire, "$players_kingdom", reg6),
-                    (display_message, "@{reg6} denars were taken from the imperial treasury on your order to hire {s5}."),
-                (else_try),
-                    (ge, "$g_rank", 1),
-                    (troop_get_slot, ":imperial_funds", "trp_global_variables", g_player_recruitement_limit),
-                    (display_message, "@{reg6} denars were taken from the imperial treasury on your order to hire {s5}."),
-                    (call_script, "script_add_to_faction_bugdet", slot_faction_hire, "$players_kingdom", reg6),
-                    (val_sub, ":imperial_funds", reg6),
-                    (try_begin),
-                        (ge, ":imperial_funds", 0),
-                        (assign, reg6, 0),
-                        (troop_set_slot, "trp_global_variables", g_player_recruitement_limit, ":imperial_funds"),
-                    (else_try),
-                        (val_abs, ":imperial_funds"),
-                        (assign, reg6, ":imperial_funds"),
-                        (troop_set_slot, "trp_global_variables", g_player_recruitement_limit, 0),
-                    (try_end),
-                    (eq, reg6, 0),
-                (else_try),
-                    (troop_remove_gold, "trp_player", reg6),
-                (try_end),
+                # (val_min, reg3, ":nobles"),
+                # (val_min, reg4, ":peasants"),
+                # (val_min, reg7, ":mercenaries"),
+                # (call_script, "script_take_recruits_from_province", "$g_encountered_party", "$g_encountered_party_faction", reg3, reg4, reg7),
+                # (try_begin),
+                #     (ge, "$g_is_emperor", 1),
+                #     (call_script, "script_add_to_faction_bugdet", slot_faction_hire, "$players_kingdom", reg6),
+                #     (display_message, "@{reg6} denarii were taken from the imperial treasury on your order to hire {s5}."),
+                # (else_try),
+                #     (ge, "$g_rank", 1),
+                #     (troop_get_slot, ":imperial_funds", "trp_global_variables", g_player_recruitement_limit),
+                #     (display_message, "@{reg6} denarii were taken from the imperial treasury on your order to hire {s5}."),
+                #     (call_script, "script_add_to_faction_bugdet", slot_faction_hire, "$players_kingdom", reg6),
+                #     (val_sub, ":imperial_funds", reg6),
+                #     (try_begin),
+                #         (ge, ":imperial_funds", 0),
+                #         (assign, reg6, 0),
+                #         (troop_set_slot, "trp_global_variables", g_player_recruitement_limit, ":imperial_funds"),
+                #     (else_try),
+                #         (val_abs, ":imperial_funds"),
+                #         (assign, reg6, ":imperial_funds"),
+                #         (troop_set_slot, "trp_global_variables", g_player_recruitement_limit, 0),
+                #     (try_end),
+                #     (eq, reg6, 0),
+                # (else_try),
+                #     (troop_remove_gold, "trp_player", reg6),
+                # (try_end),
+                (call_script, "script_cohort_describe_strength_to_s5_and_refil", "p_main_party", "$temp", ":cohort_slot", "$g_encountered_party", "trp_player", 1),
             (else_try),
                 (display_message, "@You reached the maximum of cohorts you can command."),
             (try_end),
@@ -36454,7 +37427,7 @@ presentations = [
     (call_script, "script_get_cohort_limit", "p_main_party"),
     (store_sub, reg5, reg0, slot_cohort_1),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denars.^Party limit: {reg3} men.^Your gold: {reg4} denars.^Cohort limit: {reg5} cohorts.", tf_left_align),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Wage: {reg2} denarii.^Party limit: {reg3} men.^Your gold: {reg4} denarii.^Cohort limit: {reg5} cohorts.", tf_left_align),
     (position_set_x, pos1, 785),
     (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
@@ -36793,7 +37766,7 @@ presentations = [
 
     (party_get_slot, reg4, "$g_encountered_party", slot_town_wealth),
 
-    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Party wage: {reg2} denars.^Budget of the town watch: {reg4} denars.", tf_left_align),
+    (create_text_overlay, "$g_presentation_obj_27", "@Party size: {reg1} men.^Party wage: {reg2} denarii.^Budget of the town watch: {reg4} denarii.", tf_left_align),
     (position_set_x, pos1, 785),
     (position_set_y, pos1, 630),
     (overlay_set_position, "$g_presentation_obj_27", pos1),
@@ -36857,7 +37830,7 @@ presentations = [
     (assign, "$g_presentation_obj_2", -1),
     (try_begin),
         (this_or_next|is_between, "$temp", "pt_legio_xxii_primigenia_staff", "pt_germans"),
-        (is_between, "$temp", "pt_kingdom_1_town_watch", "pt_steppe_bandit_lair"),
+        (is_between, "$temp", "pt_culture_1_town_watch", "pt_steppe_bandit_lair"),
         (call_script, "script_get_cohort_name_to_s5", "$temp"),
         (create_text_overlay, reg1, "@Selected unit: {s5}", tf_left_align),
         (position_set_x, pos1, 25), # Higher, means more toward the right
@@ -37027,7 +38000,7 @@ presentations = [
         (eq, ":button_pressed_id", "$g_presentation_obj_4"), #add to main party
 
         (try_begin),
-            (is_between, "$temp", "pt_kingdom_1_town_watch", "pt_kingdom_1_reinforcements_a"),
+            (is_between, "$temp", "pt_culture_1_town_watch", "pt_kingdom_1_reinforcements_a"),
             (display_message, "@You cannot add the local townwatch to your party.", message_alert),
         (else_try),
             (call_script, "script_cohort_describe_strength_to_s5_and_refil", "$g_encountered_party", "$temp", "$temp2", "$g_encountered_party", -1, 0),
@@ -37043,7 +38016,7 @@ presentations = [
         (eq, ":button_pressed_id", "$g_presentation_obj_2"), #disband
 
         (try_begin),
-            (is_between, "$temp", "pt_kingdom_1_town_watch", "pt_kingdom_1_reinforcements_a"),
+            (is_between, "$temp", "pt_culture_1_town_watch", "pt_kingdom_1_reinforcements_a"),
             (display_message, "@You cannot disband the local townwatch", message_alert),
         (else_try),
             (call_script, "script_cohort_remove_from_party", "$g_encountered_party", "$temp", "$temp2"),
@@ -39796,6 +40769,788 @@ presentations = [
   ]),
 ]),
 
+("select_household_slave", prsntf_manual_end_only, 0, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_background_scroll"),
+    (position_set_x, pos1, 250),
+    (position_set_y, pos1, 100),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg0, pos1),
+
+    (str_clear, s0),
+    (try_begin),
+        (eq, "$temp", 1), # if cook or household slave is selected
+        (str_store_string, s0, "@Select an imprisoned slave to work as cook."),
+    (else_try),
+        (eq, "$temp", 2), # if cook or household slave is selected
+        (str_store_string, s0, "@Select an imprisoned slave to work as household slave."),
+    (try_end),
+
+    # Presentation title, centered at the top
+    (create_text_overlay, reg1, "str_s0", tf_center_justify),
+    (position_set_x, pos1, 500), # Higher, means more toward the right
+    (position_set_y, pos1, 710), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1200),
+    (position_set_y, pos1, 1200),
+    (overlay_set_size, reg1, pos1),
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 275),
+    (position_set_y, pos1, 160),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 375),
+    (position_set_y, pos1, 525),
+    (overlay_set_area_size, reg1, pos1),
+    (set_container_overlay, reg1),#start scroll
+
+    (position_set_x, pos1, 25),
+    ##text size of the table
+    (position_set_x, pos2, 950),
+    (position_set_y, pos2, 950),
+
+    (assign, ":y_name", 10),
+
+    (party_get_num_prisoner_stacks, ":num_stacks", "p_main_party"),
+
+    (assign, ":id_slot", 0),
+
+    (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+        (party_prisoner_stack_get_troop_id, ":cur_troop", "p_main_party", ":stack_no"),
+        (assign, ":c", 0),
+        (try_begin),
+            (eq, "$temp", 1), # if cook is selected
+            (is_between, ":cur_troop", female_slaves_begin, female_slaves_end),
+            (assign, ":c", 1),
+        (else_try),
+            (eq, "$temp", 2), # if household slave is selected
+            (is_between, ":cur_troop", male_slaves_begin, male_slaves_end),
+            (assign, ":c", 1),
+        (try_end),
+        # (assign, reg0, ":c"),
+        # (str_store_troop_name, s20, ":cur_troop"),
+        # (display_message, "@{s20} ({reg0})", 0x00FF00), # Debug message
+        (eq, ":c", 1), # if cook or household slave is selected
+
+        (party_prisoner_stack_get_size, ":stack_size", "p_main_party", ":stack_no"),
+        (try_begin),
+            (eq, ":stack_size", 1),
+            (str_store_troop_name, s20, ":cur_troop"),
+        (else_try),
+            (str_store_troop_name_plural, s20, ":cur_troop"),
+        (try_end),
+        (str_store_party_name, s1, "p_main_party"),
+        (assign, reg0, ":stack_size"),
+        (create_button_overlay, reg1, "@{s20} ({reg0} in {s1})", tf_with_outline),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_color, reg1, color_purple),
+        (overlay_set_size, reg1, pos2),
+
+        (troop_set_slot, "trp_temp_array_a", ":id_slot", reg1),
+        (troop_set_slot, "trp_temp_array_b", ":id_slot", ":cur_troop"),
+        (troop_set_slot, "trp_temp_array_c", ":id_slot", "p_main_party"),
+        (val_add, ":id_slot", 1),
+
+        (val_add, ":y_name", 30),
+    (try_end),
+
+    # loop over all other centers player may own and check for slave prisoners
+    (try_for_range, ":cur_center", centers_begin, centers_end),
+        (party_slot_eq, ":cur_center", slot_town_lord, "trp_player"),
+        (party_get_num_prisoner_stacks, ":num_stacks", ":cur_center"),
+        (gt, ":num_stacks", 0), # if there are prisoners in the center
+        (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+            (party_prisoner_stack_get_troop_id, ":cur_troop", ":cur_center", ":stack_no"),
+            (assign, ":c", 0),
+            (try_begin),
+                (eq, "$temp", 1), # if cook is selected
+                (is_between, ":cur_troop", female_slaves_begin, female_slaves_end),
+                (assign, ":c", 1),
+            (else_try),
+                (eq, "$temp", 2), # if household slave is selected
+                (is_between, ":cur_troop", male_slaves_begin, male_slaves_end),
+                (assign, ":c", 1),
+            (try_end),
+            (eq, ":c", 1), # if cook or household slave is selected
+            (party_prisoner_stack_get_size, ":stack_size", ":cur_center", ":stack_no"),
+            (try_begin),
+                (eq, ":stack_size", 1),
+                (str_store_troop_name, s20, ":cur_troop"),
+            (else_try),
+                (str_store_troop_name_plural, s20, ":cur_troop"),
+            (try_end),
+            (str_store_party_name, s1, ":cur_center"),
+            (assign, reg0, ":stack_size"),
+            (create_button_overlay, reg1, "@{s20} ({reg0} in {s1})", tf_with_outline),
+            (position_set_y, pos1, ":y_name"),
+            (overlay_set_position, reg1, pos1),
+            (overlay_set_color, reg1, color_purple),
+            (overlay_set_size, reg1, pos2),
+
+            (troop_set_slot, "trp_temp_array_a", ":id_slot", reg1),
+            (troop_set_slot, "trp_temp_array_b", ":id_slot", ":cur_troop"),
+            (troop_set_slot, "trp_temp_array_c", ":id_slot", ":cur_center"),
+            (val_add, ":id_slot", 1),
+
+            (val_add, ":y_name", 30),
+        (try_end),
+    (try_end),
+
+    (try_begin),
+        (troop_get_slot, ":current_partner", "trp_global_variables", g_slave_contract),
+        (ge, ":current_partner", 1),
+
+        (call_script, "script_init_temp_party", ":current_partner"),
+        (party_get_num_prisoner_stacks, ":num_stacks", "p_temp_party_2"),
+
+        (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+            (party_prisoner_stack_get_troop_id, ":cur_troop", "p_temp_party_2", ":stack_no"),
+            (assign, ":c", 0),
+            (try_begin),
+                (eq, "$temp", 1), # if cook is selected
+                (is_between, ":cur_troop", female_slaves_begin, female_slaves_end),
+                (assign, ":c", 1),
+            (else_try),
+                (eq, "$temp", 2), # if household slave is selected
+                (is_between, ":cur_troop", male_slaves_begin, male_slaves_end),
+                (assign, ":c", 1),
+            (try_end),
+            # (assign, reg0, ":c"),
+            # (str_store_troop_name, s20, ":cur_troop"),
+            # (display_message, "@{s20} ({reg0})", 0x00FF00), # Debug message
+            (eq, ":c", 1), # if cook or household slave is selected
+
+            (party_prisoner_stack_get_size, ":stack_size", "p_temp_party_2", ":stack_no"),
+            (try_begin),
+                (eq, ":stack_size", 1),
+                (str_store_troop_name, s20, ":cur_troop"),
+            (else_try),
+                (str_store_troop_name_plural, s20, ":cur_troop"),
+            (try_end),
+            (str_store_troop_name, s1, ":current_partner"),
+            (call_script, "script_game_get_prisoner_price_buy", ":cur_troop"),
+            (assign, reg3, reg0),
+            (assign, reg2, ":stack_size"),
+            (create_button_overlay, reg1, "@{s20} ({reg2} from {s1} for {reg3})", tf_with_outline),
+            (position_set_y, pos1, ":y_name"),
+            (overlay_set_position, reg1, pos1),
+            (overlay_set_color, reg1, color_purple),
+            (overlay_set_size, reg1, pos2),
+
+            (troop_set_slot, "trp_temp_array_a", ":id_slot", reg1),
+            (troop_set_slot, "trp_temp_array_b", ":id_slot", ":cur_troop"),
+            (troop_set_slot, "trp_temp_array_c", ":id_slot", "p_temp_party_2"),
+            (val_add, ":id_slot", 1),
+
+            (val_add, ":y_name", 30),
+        (try_end),
+    (try_end),
+
+    (assign, "$temp2", ":id_slot"),
+    (set_container_overlay, -1),#end scroll
+
+    (create_game_button_overlay, reg1, "str_return"),
+    (position_set_x, pos1, 500),
+    (position_set_y, pos1, 110),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
+  ]),
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":button_pressed_id"),
+    (try_begin),
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"),
+        (start_presentation, "prsnt_household_management"),
+    (else_try),
+        (try_for_range, ":id_slot", 0, "$temp2"),
+            (troop_slot_eq, "trp_temp_array_a", ":id_slot", ":button_pressed_id"),
+            (troop_get_slot, ":cur_troop", "trp_temp_array_b", ":id_slot"),
+            (troop_get_slot, ":cur_center", "trp_temp_array_c", ":id_slot"),
+            (assign, "$temp2", -1), # to break the loop
+            (try_begin),
+                (eq, "$temp", 1), # if cook is selected
+                (call_script, "script_assign_household_cook", ":cur_troop", 0),
+            (else_try),
+                (eq, "$temp", 2), # if household slave is selected
+                (call_script, "script_assign_household_slave", ":cur_troop", 0),
+            (try_end),
+            #remove troop from prison
+            (party_remove_prisoners, ":cur_center", ":cur_troop", 1),
+            (try_begin),
+                (eq, ":cur_center", "p_temp_party_2"),
+                (troop_get_slot, ":current_partner", "trp_global_variables", g_slave_contract),
+                (call_script, "script_apply_changes_to_slave_trader", ":current_partner"),
+                (call_script, "script_game_get_prisoner_price_buy", ":cur_troop"),
+                (assign, ":slave_price_per_unit", reg0),
+
+                (try_begin),
+                    (store_troop_gold, ":gold", "trp_player"),
+                    (store_troop_gold, ":treasury", "trp_household_possessions"),
+                    (val_add, ":gold", ":treasury"),
+                    (ge, ":gold", ":slave_price_per_unit"),
+                    (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", ":slave_price_per_unit", "trp_player"),
+                (else_try),
+                    (display_message, "str_not_enough_gold"),
+                    (assign, reg0, ":slave_price_per_unit"),
+                    (display_message, "@{reg0} denarii have been added to your debts."),
+                    (val_add, "$g_player_debt_to_party_members", ":slave_price_per_unit"),
+                (try_end),
+            (try_end),
+        (try_end),
+        (start_presentation, "prsnt_household_management"),
+    (try_end),
+  ]),
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_escape),
+        (presentation_set_duration, 0),
+    (else_try),
+        (key_clicked, key_space),
+        (set_fixed_point_multiplier, 1000),
+        (mouse_get_position, pos31),
+
+        (position_get_x, reg31, pos31),
+        (position_get_y, reg32, pos31),
+
+        (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+]),
+
+("trade_slaves", prsntf_manual_end_only, 0, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_load_window"),
+    (position_set_x, pos1, -1),
+    (position_set_y, pos1, -1),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1002),
+    (position_set_y, pos1, 1002),
+    (overlay_set_size, reg0, pos1),
+
+    (str_store_string, s0, "@Buy or Sell slaves"),
+    (create_text_overlay, reg1, "str_s0", tf_center_justify|tf_with_outline),
+    (position_set_x, pos1, 500), # Higher, means more toward the right
+    (position_set_y, pos1, 710), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1200),
+    (position_set_y, pos1, 1200),
+    (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, color_information),
+
+    (try_begin),
+        (is_between, "$temp1", slaves_begin, slaves_end),
+        (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", "$temp1"),
+        (position_set_x, pos1, 475),
+        (position_set_y, pos1, 450),
+        (overlay_set_position, reg0, pos1),
+        (position_set_x, pos1, 500),
+        (position_set_y, pos1, 500),
+        (overlay_set_size, reg0, pos1),
+        (str_store_troop_name_plural, s0, "$temp1"),
+        (create_text_overlay, reg1, "str_s0", tf_center_justify),
+        (position_set_x, pos1, 550), # Higher, means more toward the right
+        (position_set_y, pos1, 420), # Higher, means more toward the top
+        (overlay_set_position, reg1, pos1),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, reg1, pos1),
+
+        (val_clamp, "$temp4_1", 0, "$g_max"),
+
+        (try_begin),
+            (eq, "$temp2", "p_temp_party_2"),
+            (call_script, "script_game_get_prisoner_price_buy", "$temp1"),
+            (assign, ":price", reg0),
+            (str_store_string, s2, "@Buy"),
+        (else_try),
+            (call_script, "script_game_get_prisoner_price", "$temp1"),
+            (assign, ":price", reg0),
+            (str_store_string, s2, "@Sell"),
+        (try_end),
+        (try_begin),
+            (eq, "$temp4_1", 1),
+            (str_store_troop_name, s1, "$temp1"),
+        (else_try),
+            (str_store_troop_name_plural, s1, "$temp1"),
+        (try_end),
+        (store_mul, reg44, "$temp4_1", ":price"),
+        (assign, reg43, "$temp4_1"),
+        (str_store_string, s0, "@{s2} {reg43} {s1} for {reg44} denarii."),
+
+        (create_text_overlay, "$g_presentation_obj_29", s0, tf_center_justify),
+        (position_set_x, pos1, 550),
+        (position_set_y, pos1, 390),
+        (overlay_set_position, "$g_presentation_obj_29", pos1),
+        (position_set_x, pos1, 900),
+        (position_set_y, pos1, 900),
+        (overlay_set_size, "$g_presentation_obj_29", pos1),
+
+        (create_slider_overlay, "$g_presentation_obj_30", 0, "$g_max"),
+        (position_set_x, pos2, 550),
+        (position_set_y, pos2, 355),
+        (overlay_set_position, "$g_presentation_obj_30", pos2),
+        (position_set_x, pos2, 700),
+        (position_set_y, pos2, 700),
+        (overlay_set_size, "$g_presentation_obj_30", pos2),
+        (overlay_set_val, "$g_presentation_obj_30", "$temp4_1"),
+
+        (create_game_button_overlay, reg1, "@Confirm"),
+        (position_set_x, pos1, 550),
+        (position_set_y, pos1, 300),
+        (overlay_set_position, reg1, pos1),
+        (assign, "$g_presentation_obj_28", reg1),
+    (try_end),
+    # (else_try),
+
+    (create_mesh_overlay, reg1, "mesh_cb_ui_icon_empty"),
+    (try_begin),
+        (neg|is_between, "$temp1", slaves_begin, slaves_end),
+        (overlay_set_tooltip, reg1, "@Select a slave."),
+    (try_end),
+    (position_set_x, pos1, 475),
+    (position_set_y, pos1, 445),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1750),
+    (position_set_y, pos1, 1850),
+    (overlay_set_size, reg1, pos1),
+
+    (str_store_party_name, s0, "$temp3"),
+    (create_text_overlay, reg1, "str_s0", tf_center_justify|tf_with_outline),
+    (position_set_x, pos1, 850), # Higher, means more toward the right
+    (position_set_y, pos1, 700), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1100),
+    (position_set_y, pos1, 1100),
+    (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
+
+    (store_troop_gold, reg2, "trp_player"),
+    (create_text_overlay, reg1, "@Your wealth: {reg2} denarii.", tf_center_justify),
+    (position_set_x, pos1, 850), # Higher, means more toward the right
+    (position_set_y, pos1, 675), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+
+    (party_get_num_prisoners, reg3, "$temp3"),
+    (call_script, "script_game_get_party_prisoner_limit", "$temp3"),
+    (assign, reg4, reg0),
+    (create_text_overlay, reg1, "@Prisoner limit {reg4} ({reg3} used).", tf_center_justify),
+    (position_set_x, pos1, 850), # Higher, means more toward the right
+    (position_set_y, pos1, 660), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 730),
+    (position_set_y, pos1, 50),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 250),
+    (position_set_y, pos1, 600),
+    (overlay_set_area_size, reg1, pos1),
+    (set_container_overlay, reg1),#start scroll
+
+    (position_set_x, pos1, 25),
+    ##text size of the table
+    (position_set_x, pos2, 950),
+    (position_set_y, pos2, 950),
+
+    (assign, ":y_name", 10),
+
+    (party_get_num_prisoner_stacks, ":num_stacks", "$temp3"),
+
+    (assign, ":id_slot", 0),
+
+    (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+        (party_prisoner_stack_get_troop_id, ":cur_troop", "$temp3", ":stack_no"),
+        (is_between, ":cur_troop", slaves_begin, slaves_end),
+        (party_prisoner_stack_get_size, ":stack_size", "$temp3", ":stack_no"),
+        (try_begin),
+            (eq, ":stack_size", 1),
+            (str_store_troop_name, s20, ":cur_troop"),
+        (else_try),
+            (str_store_troop_name_plural, s20, ":cur_troop"),
+        (try_end),
+        (call_script, "script_game_get_prisoner_price", ":cur_troop"),
+        (assign, reg3, reg0),
+        (assign, reg2, ":stack_size"),
+        (create_button_overlay, reg1, "@{reg2} {s20} (sell {reg3} per unit)", tf_with_outline),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_color, reg1, color_purple),
+        (overlay_set_size, reg1, pos2),
+
+        (troop_set_slot, "trp_temp_array_a", ":id_slot", reg1),
+        (troop_set_slot, "trp_temp_array_b", ":id_slot", ":cur_troop"),
+        (troop_set_slot, "trp_temp_array_c", ":id_slot", "$temp3"),
+        (val_add, ":id_slot", 1),
+
+        (val_add, ":y_name", 20),
+    (try_end),
+    (set_container_overlay, -1),#end scroll
+
+    (str_store_troop_name, s0, "$temp_troop"),
+    (create_text_overlay, reg1, "str_s0", tf_center_justify|tf_with_outline),
+    (position_set_x, pos1, 150), # Higher, means more toward the right
+    (position_set_y, pos1, 700), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1100),
+    (position_set_y, pos1, 1100),
+    (overlay_set_size, reg1, pos1),
+    (overlay_set_color, reg1, message_alert),
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 5),
+    (position_set_y, pos1, 50),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 250),
+    (position_set_y, pos1, 600),
+    (overlay_set_area_size, reg1, pos1),
+    (set_container_overlay, reg1),#start scroll
+
+    (position_set_x, pos1, 25),
+
+    (call_script, "script_init_temp_party", "$temp_troop"),
+    (party_get_num_prisoner_stacks, ":num_stacks", "p_temp_party_2"),
+
+    (assign, ":y_name", 10),
+
+    (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+        (party_prisoner_stack_get_troop_id, ":cur_troop", "p_temp_party_2", ":stack_no"),
+        (is_between, ":cur_troop", slaves_begin, slaves_end),
+
+        (party_prisoner_stack_get_size, ":stack_size", "p_temp_party_2", ":stack_no"),
+        (try_begin),
+            (eq, ":stack_size", 1),
+            (str_store_troop_name, s20, ":cur_troop"),
+        (else_try),
+            (str_store_troop_name_plural, s20, ":cur_troop"),
+        (try_end),
+        (call_script, "script_game_get_prisoner_price_buy", ":cur_troop"),
+        (assign, reg3, reg0),
+        (assign, reg2, ":stack_size"),
+        (create_button_overlay, reg1, "@{reg2} {s20} (buy {reg3} per unit)", tf_with_outline),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_color, reg1, color_purple),
+        (overlay_set_size, reg1, pos2),
+
+        (troop_set_slot, "trp_temp_array_a", ":id_slot", reg1),
+        (troop_set_slot, "trp_temp_array_b", ":id_slot", ":cur_troop"),
+        (troop_set_slot, "trp_temp_array_c", ":id_slot", "p_temp_party_2"),
+        (val_add, ":id_slot", 1),
+
+        (val_add, ":y_name", 20),
+    (try_end),
+    (assign, "$temp4", ":id_slot"),
+    (set_container_overlay, -1),#end scroll
+
+    (create_game_button_overlay, reg1, "str_return"),
+    (position_set_x, pos1, 500),
+    (position_set_y, pos1, 50),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
+  ]),
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":button_pressed_id"),
+    (store_trigger_param_2, ":value"),
+    (try_begin),
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"),
+        (presentation_set_duration, 0),
+        (show_object_details_overlay, 1),
+    (else_try),
+        (eq, ":button_pressed_id", "$g_presentation_obj_28"),
+        (is_between, "$temp1", slaves_begin, slaves_end),
+        (try_begin),
+            (eq, "$temp2", "p_temp_party_2"),
+            (call_script, "script_game_get_prisoner_price_buy", "$temp1"),
+            (assign, ":price", reg0),
+            (store_mul, reg44, "$temp4_1", ":price"),
+            (store_troop_gold, ":gold", "trp_player"),
+            (try_begin),
+                (eq, "$temp3", "p_main_party"),
+                (party_get_free_prisoners_capacity, ":pisoner_size", "p_main_party"),
+                (gt, "$temp4_1", ":pisoner_size"),
+                (display_message, "str_not_enough_party_space"),
+            (else_try),
+                (lt, ":gold", reg44),
+                (display_message, "str_not_enough_gold"),
+            (else_try),
+                (troop_remove_gold, "trp_player", reg44),
+                (party_remove_prisoners, "$temp2", "$temp1", "$temp4_1"),
+                (party_add_prisoners, "$temp3", "$temp1", "$temp4_1"),
+            (try_end),
+        (else_try),
+            (call_script, "script_game_get_prisoner_price", "$temp1"),
+            (assign, ":price", reg0),
+            (store_mul, reg44, "$temp4_1", ":price"),
+            (troop_add_gold, "trp_player", reg44),
+            (party_remove_prisoners, "$temp3", "$temp1", "$temp4_1"),
+            (party_add_prisoners, "p_temp_party_2", "$temp1", "$temp4_1"),
+        (try_end),
+        (assign, "$temp1", -1),
+        (assign, "$temp2", -1),
+        (assign, "$temp4_1", 0),
+        (call_script, "script_apply_changes_to_slave_trader", "$temp_troop"),
+        (start_presentation, "prsnt_trade_slaves"),
+        (call_script, "script_objectionable_action", tmt_humanitarian, "str_sell_slavery"),
+    (else_try),
+        (eq, ":button_pressed_id", "$g_presentation_obj_30"),
+        (is_between, "$temp1", slaves_begin, slaves_end),
+        (assign, "$temp4_1", ":value"),
+        (val_clamp, "$temp4_1", 0, 1000),
+        (try_begin),
+            (eq, "$temp2", "p_temp_party_2"),
+            (call_script, "script_game_get_prisoner_price_buy", "$temp1"),
+            (assign, ":price", reg0),
+            (str_store_string, s2, "@Buy"),
+        (else_try),
+            (call_script, "script_game_get_prisoner_price", "$temp1"),
+            (assign, ":price", reg0),
+            (str_store_string, s2, "@Sell"),
+        (try_end),
+        (try_begin),
+            (eq, "$temp4_1", 1),
+            (str_store_troop_name, s1, "$temp1"),
+        (else_try),
+            (str_store_troop_name_plural, s1, "$temp1"),
+        (try_end),
+        (store_mul, reg44, "$temp4_1", ":price"),
+        (assign, reg43, "$temp4_1"),
+        (overlay_set_text, "$g_presentation_obj_29", "@{s2} {reg43} {s1} for {reg44} denarii."),
+    (else_try),
+        (try_for_range, ":id_slot", 0, "$temp4"),
+            (troop_slot_eq, "trp_temp_array_a", ":id_slot", ":button_pressed_id"),
+            (troop_get_slot, ":cur_troop", "trp_temp_array_b", ":id_slot"),
+            (troop_get_slot, ":cur_party", "trp_temp_array_c", ":id_slot"),
+
+            (assign, "$temp1", ":cur_troop"),
+            (assign, "$temp2", ":cur_party"),
+
+            (party_count_prisoners_of_type, "$g_max", ":cur_party", ":cur_troop"),
+        (try_end),
+        (start_presentation, "prsnt_trade_slaves"),
+    (try_end),
+  ]),
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_escape),
+        (presentation_set_duration, 0),
+        (show_object_details_overlay, 1),
+    # (else_try),
+    #     (key_clicked, key_space),
+    #     (set_fixed_point_multiplier, 1000),
+    #     (mouse_get_position, pos31),
+
+    #     (position_get_x, reg31, pos31),
+    #     (position_get_y, reg32, pos31),
+
+    #     (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+]),
+
+("select_minister", prsntf_manual_end_only, 0, [
+  (ti_on_presentation_load,[
+    (presentation_set_duration, 999999),
+    (set_fixed_point_multiplier, 1000),
+
+    (try_for_range, ":active_npc", active_npcs_begin, kingdom_ladies_end),
+        (troop_set_slot, "trp_temp_array_a", ":active_npc", -1),
+    (try_end),
+
+    # #0. BACKROUND
+    (create_mesh_overlay, reg0, "mesh_background_scroll"),
+    (position_set_x, pos1, 250),
+    (position_set_y, pos1, 100),
+    (overlay_set_position, reg0, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg0, pos1),
+
+    # Presentation title, centered at the top
+    (create_text_overlay, reg1, "@Select a new minister", tf_center_justify),
+    (position_set_x, pos1, 500), # Higher, means more toward the right
+    (position_set_y, pos1, 710), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1200),
+    (position_set_y, pos1, 1200),
+    (overlay_set_size, reg1, pos1),
+
+    (str_clear, s0),
+    (create_text_overlay, reg1, s0, tf_scrollable_style_2),
+    (position_set_x, pos1, 275),
+    (position_set_y, pos1, 160),
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 375),
+    (position_set_y, pos1, 525),
+    (overlay_set_area_size, reg1, pos1),
+    (set_container_overlay, reg1),#start scroll
+
+    (position_set_x, pos1, 25),
+    ##text size of the table
+    (position_set_x, pos2, 950),
+    (position_set_y, pos2, 950),
+
+    (assign, ":y_name", 10),
+
+    (try_for_range, ":cur_troop", active_npcs_begin, kingdom_ladies_end),
+        (neq, ":cur_troop", "trp_knight_1_1_wife"), #The one who should not appear in game
+        (neq, ":cur_troop", "$g_player_minister"),
+        (neq, ":cur_troop", "trp_npc34"),
+        (neq, ":cur_troop", "trp_npc35"),
+
+        (assign, ":c", 0),
+
+        (try_begin),
+            (main_party_has_troop, ":cur_troop"),
+            (assign, ":c", 1),
+            (str_store_troop_name, s20, ":cur_troop"),
+        (else_try),
+            (troop_slot_eq, "trp_player", slot_troop_spouse, ":cur_troop"),
+            (neg|troop_slot_ge, ":cur_troop", slot_troop_occupation, slto_retirement),
+            (assign, ":c", 1),
+            (str_store_troop_name, s20, ":cur_troop"),
+        (else_try),
+            (neg|troop_slot_ge, ":cur_troop", slot_troop_occupation, slto_retirement),
+            (call_script, "script_dplmc_troop_get_family_relation_to_troop", ":cur_troop", "trp_player"),
+            (gt, reg0, 0),#Related
+            (try_begin),
+              (this_or_next|ge, reg0, 15),#Spouse, child, parent
+              (this_or_next|eq, reg1, "str_dplmc_sister_wife"),
+              (eq, reg1, "str_dplmc_co_husband"),
+            (else_try),
+              #Otherwise, disallow if the troop has a (valid) guardian who is not the
+              #player or themself
+              (call_script, "script_get_kingdom_lady_social_determinants", ":cur_troop"),
+              (try_begin),
+                (this_or_next|le, reg0, "trp_player"),#the player or a negative value
+                (eq, reg0, ":cur_troop"),
+                (assign, reg0, 1),
+              (else_try),
+                (assign, reg0, 0),
+              (try_end),
+            (try_end),
+            (ge, reg0, 0),
+            (call_script, "script_dplmc_cap_troop_describes_troop_to_troop_s1", 1, "trp_player", ":cur_troop", "$g_player_minister"),
+            (str_store_string_reg, s20, s0),
+            (assign, ":c", 1),
+        (try_end),
+        (eq, ":c", 1),
+
+        (call_script, "script_troop_get_player_relation", ":cur_troop"),
+
+        (create_button_overlay, reg1, "@{s20} (rel: {reg0})", tf_with_outline),
+        (position_set_y, pos1, ":y_name"),
+        (overlay_set_position, reg1, pos1),
+        (overlay_set_color, reg1, color_purple),
+        (overlay_set_size, reg1, pos2),
+
+        (troop_set_slot, "trp_temp_array_a", ":cur_troop", reg1),
+
+        (val_add, ":y_name", 30),
+    (try_end),
+    (set_container_overlay, -1),#end scroll
+
+    (create_game_button_overlay, reg1, "str_return"),
+    (position_set_x, pos1, 500),
+    (position_set_y, pos1, 110),
+    (overlay_set_position, reg1, pos1),
+    (assign, "$g_jrider_faction_report_return_to_menu", reg1),
+  ]),
+  ## Check for buttonpress
+  (ti_on_presentation_event_state_change,[
+    (store_trigger_param_1, ":button_pressed_id"),
+    (try_begin),
+        (eq, ":button_pressed_id", "$g_jrider_faction_report_return_to_menu"),
+        (start_presentation, "prsnt_household_management"),
+    (else_try),
+        (assign, ":break", kingdom_ladies_end),
+        (assign, ":ex_minister", "$g_player_minister"),
+        (try_for_range, ":active_npc", active_npcs_begin, ":break"),
+            (troop_slot_eq, "trp_temp_array_a", ":active_npc", ":button_pressed_id"),
+            (assign, "$g_player_minister", ":active_npc"),
+            (assign, ":break", -1),
+        (try_end),
+
+        (try_begin),
+            (troop_slot_eq, ":ex_minister", slot_troop_occupation, slto_player_companion),
+            (party_add_members, "p_main_party", ":ex_minister", 1),
+            (assign, "$g_leave_encounter", 1),
+            (try_begin),
+                (main_party_has_troop, "$g_player_minister"),
+                (party_remove_members, "p_main_party", "$g_player_minister", 1),
+            (try_end),
+
+            (try_for_range, ":minister_quest", all_quests_begin, all_quests_end),
+                #(check_quest_active, ":minister_quest"),
+                (quest_slot_eq, ":minister_quest", slot_quest_giver_troop, ":ex_minister"),
+                (call_script, "script_abort_quest", ":minister_quest", 0),
+            (try_end),
+        (else_try),
+            (str_store_troop_name, s9, "$g_player_minister"),
+            (try_begin),
+                (main_party_has_troop, "$g_player_minister"),
+                (party_remove_members, "p_main_party", "$g_player_minister", 1),
+            (try_end),
+            (try_begin),
+                (this_or_next|neg|is_between, ":ex_minister", heroes_begin, kingdom_ladies_end),
+                (this_or_next|troop_slot_eq, ":ex_minister", slot_troop_occupation, slto_kingdom_hero),
+                (troop_slot_eq, ":ex_minister", slot_troop_occupation, slto_kingdom_lady),
+            (else_try),
+                (is_between, ":ex_minister", kingdom_ladies_begin, kingdom_ladies_end),
+                (neg|troop_slot_eq, ":ex_minister", slot_troop_playerparty_history, dplmc_pp_history_granted_fief),
+                (neg|troop_slot_eq, ":ex_minister", slot_troop_playerparty_history, dplmc_pp_history_lord_rejoined),
+                (troop_set_slot, ":ex_minister", slot_troop_occupation, slto_kingdom_lady),
+            (else_try),
+                (is_between, ":ex_minister", companions_begin, companions_end),
+                (neg|troop_slot_eq, ":ex_minister", slot_troop_playerparty_history, dplmc_pp_history_granted_fief),
+                (neg|troop_slot_eq, ":ex_minister", slot_troop_playerparty_history, dplmc_pp_history_lord_rejoined),
+                (neg|troop_slot_eq, ":ex_minister", slot_troop_playerparty_history, dplmc_pp_history_nonplayer_entry),
+                (troop_set_slot, ":ex_minister", slot_troop_occupation, slto_inactive),
+            (else_try),
+                (troop_set_slot, ":ex_minister", slot_troop_occupation, slto_kingdom_hero),
+            (try_end),
+        (try_end),
+        (start_presentation, "prsnt_household_management"),
+    (try_end),
+  ]),
+  (ti_on_presentation_run, [
+    (try_begin),
+        (key_clicked, key_escape),
+        (presentation_set_duration, 0),
+    (else_try),
+        (key_clicked, key_space),
+        (set_fixed_point_multiplier, 1000),
+        (mouse_get_position, pos31),
+
+        (position_get_x, reg31, pos31),
+        (position_get_y, reg32, pos31),
+
+        (display_message, "@X: {reg31} | Y: {reg32}"),
+    (try_end),
+  ]),
+]),
+
 ("ask_audience", prsntf_manual_end_only, 0, [
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
@@ -39824,12 +41579,12 @@ presentations = [
         (presentation_set_duration, 0),
     (else_try),
         # #0. BACKROUND
-        (create_mesh_overlay, reg0, "mesh_game_log_window"),
-        (position_set_x, pos1, 225),
+        (create_mesh_overlay, reg0, "mesh_background_scroll"),
+        (position_set_x, pos1, 250),
         (position_set_y, pos1, 100),
         (overlay_set_position, reg0, pos1),
-        (position_set_x, pos1, 525),
-        (position_set_y, pos1, 850),
+        (position_set_x, pos1, 1000),
+        (position_set_y, pos1, 1000),
         (overlay_set_size, reg0, pos1),
 
         # Presentation title, centered at the top
@@ -39840,7 +41595,7 @@ presentations = [
           (str_store_string, s20, "@Request an audience with someone..."),
         (try_end),
         (create_text_overlay, reg1, "@{s20}", tf_center_justify),
-        (position_set_x, pos1, 475), # Higher, means more toward the right
+        (position_set_x, pos1, 500), # Higher, means more toward the right
         (position_set_y, pos1, 710), # Higher, means more toward the top
         (overlay_set_position, reg1, pos1),
         (position_set_x, pos1, 1200),
@@ -40051,12 +41806,12 @@ presentations = [
         (presentation_set_duration, 0),
     (else_try),
         # #0. BACKROUND
-        (create_mesh_overlay, reg0, "mesh_game_log_window"),
-        (position_set_x, pos1, 225),
+        (create_mesh_overlay, reg0, "mesh_background_scroll"),
+        (position_set_x, pos1, 250),
         (position_set_y, pos1, 100),
         (overlay_set_position, reg0, pos1),
-        (position_set_x, pos1, 525),
-        (position_set_y, pos1, 850),
+        (position_set_x, pos1, 1000),
+        (position_set_y, pos1, 1000),
         (overlay_set_size, reg0, pos1),
 
         # Presentation title, centered at the top
@@ -40067,7 +41822,7 @@ presentations = [
           (str_store_string, s20, "@One may travel to ports in the Pontos Euxeinos."),
         (try_end),
         (create_text_overlay, reg1, "@{s20}", tf_center_justify),
-        (position_set_x, pos1, 475), # Higher, means more toward the right
+        (position_set_x, pos1, 500), # Higher, means more toward the right
         (position_set_y, pos1, 710), # Higher, means more toward the top
         (overlay_set_position, reg1, pos1),
         (position_set_x, pos1, 1200),
@@ -40241,7 +41996,7 @@ presentations = [
           (gt, ":num_companions", 1),
           (str_store_string, s3, "@ and your troops"),
         (try_end),
-        (str_store_string, s2, "@There is a ship that can bring you{s3} to the port of {s1} for {reg1} denars."),
+        (str_store_string, s2, "@There is a ship that can bring you{s3} to the port of {s1} for {reg1} denarii."),
         (overlay_set_display, "$g_presentation_credits_obj_1", 1),
         (overlay_set_display, "$g_presentation_credits_obj_2", 1),
         (overlay_set_display, "$g_presentation_credits_obj_3", 1),
@@ -40356,7 +42111,7 @@ presentations = [
           (str_store_string, s39, "str_none"),
         (try_end),
 
-        (str_store_string, s0, 
+        (str_store_string, s0,
         "@You, governor of the province of {s40}, have been accused by a delator of evading taxes, exploiting the population with high tributes, and abusing your office."
         +" A local lawyer has taken the opportunity and written a petition to ask the Princeps for help in this case.^^"
         +" The Princeps now demands a list of all buildings that have been built in {s41}."
@@ -40372,7 +42127,7 @@ presentations = [
         (val_add, ":title", "str_title_begin"),
         (str_store_string, s44, ":title"),
 
-        (str_store_string, s0, 
+        (str_store_string, s0,
         "@As {s44}, you have access to public funds. Now, a delator has accused you of misappropriating these funds for your personal pleasures."
         +"^^The Princeps demands a precise declaration of the total amount you have taken from the treasury."
         +" If you fail to respond accurately with the exact sum, you risk losing reputation, renown, and your office."
@@ -40456,7 +42211,7 @@ presentations = [
                 (eq, reg12, 0),
                 (str_clear,s29),
                 (str_store_string,s29,"@The number of buildings was reported correctly. The accusations turned out to be wrong. However the Princeps noticed that you haven't build anything yet and wrote the following letter:"
-                +" 'For the glory of Rome, develop your town! To punish you for not properly fullfilling your task as governor you have to pay 5,000 denars.'"),
+                +" 'For the glory of Rome, develop your town! To punish you for not properly fullfilling your task as governor you have to pay 5,000 denarii.'"),
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
                 (try_begin),
@@ -40511,7 +42266,7 @@ presentations = [
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
             (else_try),
-                (str_store_string,s29,"@Your declared sum of funds taken was false! In truth, Caesar's own freed slaves, who are responsible for the imperial treasury, report that you have actually taken {reg12} denars. You are hereby summoned to Rome to answer for this discrepancy before the Princeps himself!"),
+                (str_store_string,s29,"@Your declared sum of funds taken was false! In truth, Caesar's own freed slaves, who are responsible for the imperial treasury, report that you have actually taken {reg12} denarii. You are hereby summoned to Rome to answer for this discrepancy before the Princeps himself!"),
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
 

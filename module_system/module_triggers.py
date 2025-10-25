@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_common import *
 from header_operations import *
 from header_parties import *
@@ -399,6 +400,28 @@ triggers = [
   (try_end),
 ]),
 
+# Refresh slave merchants
+(0, 0, 168.0, [],[
+    # Refill town-based slave traders
+    (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
+      (call_script, "script_get_slave_merchant_troop", ":center_no"),
+      (assign, ":slave_trader", reg0),
+      (is_between, ":slave_trader", slave_traders_centers_begin, slave_traders_centers_end),
+      (call_script, "script_refill_slave_merchant", ":slave_trader", ":center_no"),
+    (try_end),
+    # Refill bandit-lair slave traders
+    (try_for_range, ":slave_trader", slave_traders_begin, slave_traders_end),
+      (call_script, "script_refill_slave_merchant", ":slave_trader", -1), # -1 indicates not a town
+    (try_end),
+    # refill ransom brokers
+    (try_for_range, ":ransom_broker", ransom_brokers_begin, ransom_brokers_end),
+      (call_script, "script_refill_slave_merchant", ":ransom_broker", -1), # -1 indicates not a town
+    (try_end),
+    # Refill special traders
+    (call_script, "script_refill_slave_merchant", "trp_galeas", -1),
+    (call_script, "script_refill_slave_merchant", "trp_ramun_the_slave_trader", -1),
+]),
+
 # Refresh Merchants
 (0.0, 0, 168.0, [],[
   (call_script, "script_refresh_center_inventories"),
@@ -566,7 +589,7 @@ triggers = [
     #   (gt, ":target_faction", 0),
     #   (call_script, "script_change_troop_faction", ":quest_object_troop", ":target_faction"),
     # (else_try),
-    (call_script, "script_change_troop_faction", ":quest_object_troop", "fac_robber_knights"),
+    (call_script, "script_change_troop_faction", ":quest_object_troop", "fac_outlaws"),
     # (try_end),
     (call_script, "script_succeed_quest", "qst_incriminate_loyal_commander"),
   (try_end),
@@ -1025,7 +1048,7 @@ triggers = [
     (try_end),
 ]),
 # Appoint chamberlain
-(0, 0, 24 * 14,[],[
+(24*14, 0, ti_once,[],[
     (neq, "$g_player_chamberlain", "trp_dplmc_chamberlain"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", centers_begin, centers_end),
@@ -1050,7 +1073,7 @@ triggers = [
     (call_script, "script_add_notification_menu", "mnu_dplmc_notification_appoint_chamberlain", 0, 0),
 ]),
 # Appoint constable
-(0, 0, 24 * 14,[],[
+(24*14, 0, ti_once,[],[
     (neq, "$g_player_constable", "trp_dplmc_constable"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
@@ -1069,7 +1092,7 @@ triggers = [
 ]),
 
 # Appoint chancellor
-(0, 0, 24 * 14,[],[
+(24*14, 0, ti_once,[],[
     (neq, "$g_player_chancellor", "trp_dplmc_chancellor"),
     (assign, ":has_fief", 0),
     (try_for_range, ":center_no", towns_begin, towns_end),

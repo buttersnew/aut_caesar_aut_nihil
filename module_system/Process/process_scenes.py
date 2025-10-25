@@ -1,18 +1,21 @@
+from __future__ import absolute_import
+from __future__ import print_function
 from module_info import *
 from module_scenes import *
 
-from process_common import *
+from .process_common import *
+from six.moves import range
 
 def save_python_header():
   ofile = open("./ID_scenes.py","w")
-  for i_scene in xrange(len(scenes)):
+  for i_scene in range(len(scenes)):
     ofile.write("scn_%s = %d\n"%(convert_to_identifier(scenes[i_scene][0]),i_scene))
   ofile.close()
 
-print "Exporting scene data..."
+print("Exporting scene data...")
 save_python_header()
 
-from process_operations import *
+from .process_operations import *
 from module_troops import *
 
 scene_name_pos = 0
@@ -36,8 +39,8 @@ def write_passage(ofile,scenes,passage):
   elif (passage == ""):
     scene_no = 0
   elif not found:
-    print "Error passage not found:"
-    print passage
+    print("Error passage not found:")
+    print(passage)
     do_error()
   ofile.write(" %d "%scene_no)
 
@@ -57,7 +60,7 @@ def save_scenes(variables,variable_uses,tag_uses):
     for chest_troop in chest_troops:
       troop_no = find_troop(troops,chest_troop)
       if (troop_no < 0):
-        print "Error unable to find chest-troop: " + chest_troop
+        print("Error unable to find chest-troop: " + chest_troop)
         troop_no = 0
       else:
         add_tag_use(tag_uses,tag_troop,troop_no)

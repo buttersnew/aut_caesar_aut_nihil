@@ -1,11 +1,14 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import string
 import types
 
 from module_info import *
 from module_game_menus import *
 
-from process_common import *
-from process_operations import *
+from .process_common import *
+from .process_operations import *
+from six.moves import range
 
 def save_game_menu_item(ofile,variable_list,variable_uses,menu_item,tag_uses,quick_strings):
   ofile.write(" mno_%s "%(menu_item[0]))
@@ -34,11 +37,11 @@ def save_game_menus(variable_list,variable_uses,tag_uses,quick_strings):
 
 def save_python_header():
   ofile = open("./ID_menus.py","w")
-  for i_game_menu in xrange(len(game_menus)):
+  for i_game_menu in range(len(game_menus)):
     ofile.write("menu_%s = %d\n"%(game_menus[i_game_menu][0],i_game_menu))
   ofile.close()
 
-print "Exporting game menus data..."
+print("Exporting game menus data...")
 save_python_header()
 variable_uses = []
 variables = load_variables(export_dir, variable_uses)

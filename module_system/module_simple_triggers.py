@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_common import *
 from header_operations import *
 from header_parties import *
@@ -451,6 +452,25 @@ simple_triggers = [
 
 (24,[
     (call_script, "script_execude_debug_message", 13),
+
+    # religious festivals
+    (store_faction_of_party, ":fac", "p_town_6"),
+    (try_begin),
+        (eq, ":fac", "$players_kingdom"),
+        (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
+        (neg|check_quest_active, "qst_ludi_romani"),
+        (neg|check_quest_active, "qst_saturnalia"),
+        (eq, "$g_cur_month", 9),
+        (call_script, "script_add_notification_menu", "mnu_religious_festival", "qst_ludi_romani", -1),
+    (else_try),
+        (eq, ":fac", "$players_kingdom"),
+        (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
+        (neg|check_quest_active, "qst_saturnalia"),
+        (neg|check_quest_active, "qst_ludi_romani"),
+        (eq, "$g_cur_month", 12),
+        (call_script, "script_add_notification_menu", "mnu_religious_festival", "qst_saturnalia", -1),
+    (try_end),
+
 
     (troop_set_slot, "trp_global_variables", g_rumours_lover, 0), # for lover rumours
 
@@ -1470,7 +1490,7 @@ simple_triggers = [
                 (assign, reg1, ":refill_costs"),
                 (str_store_troop_name, s1, ":lord"),
                 (str_store_party_name, s2, "$g_center_wealth"),
-                (display_message, "@{s1} paid {reg1} denars to hire troops for {s2}"),
+                (display_message, "@{s1} paid {reg1} denarii to hire troops for {s2}"),
 
                 (store_party_size_wo_prisoners, reg1, "$g_center_wealth"),
                 (str_store_party_name, s2, "$g_center_wealth"),
@@ -2286,7 +2306,7 @@ simple_triggers = [
     (call_script, "script_process_kingdom_parties_ai"),
 ]),
 
-(1.0,[
+(1,[
     (call_script, "script_execude_debug_message", 44),
     (try_for_range, ":troop_no", active_npcs_begin, active_npcs_end),
         (call_script, "script_allow_vassals_to_join_indoor_battle", ":troop_no"),
@@ -2294,7 +2314,7 @@ simple_triggers = [
 ]),
 
 # Process siege ai
-(1 / number_of_walled_centers,[
+(1.1 / number_of_walled_centers,[
     (call_script, "script_execude_debug_message", 45),
 
     (assign, ":save_reg0", reg0),#Save registers
@@ -2835,7 +2855,7 @@ simple_triggers = [
             (call_script, "script_troop_change_relation_with_troop", "trp_player", "$g_set_lord_decision_seed_and_wages", -3),
             (str_store_troop_name, s15, "$g_set_lord_decision_seed_and_wages"),
             (assign, reg1, ":cur_debt"),
-            (display_message, "@You have an outstanding debt of {reg1} denars with {s15}"),
+            (display_message, "@You have an outstanding debt of {reg1} denarii with {s15}"),
             #SB : aristocracy/plutocracy debt modifier
             (store_faction_of_troop, ":faction_no", "$g_set_lord_decision_seed_and_wages"),
             (faction_get_slot, ":aristocracy", ":faction_no", dplmc_slot_faction_aristocracy),
@@ -3192,30 +3212,61 @@ simple_triggers = [
 
 (1,[
     (call_script, "script_execude_debug_message", 64),
-    (gt,"$g_work_for_village_ongoing",0),
-    (is_between, "$current_town", villages_begin, villages_end),
     (try_begin),
-        (this_or_next|eq, "$g_player_is_captive", 1),
-        (this_or_next|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
-        (party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
-        (assign,"$g_work_for_village_ongoing", 0),
-        (rest_for_hours,0,0,0),
-        (jump_to_menu,"mnu_village_basic_work"),
-    (else_try),
-        (gt,"$g_work_for_village_ongoing",1),
-        (val_sub, "$g_work_for_village_ongoing", 1),
-        (store_random_in_range,":show_overrall_message",1,5),
+        (gt,"$g_work_for_village_ongoing",0),
+        (is_between, "$current_town", villages_begin, villages_end),
         (try_begin),
-            (eq,":show_overrall_message",1),
-            (display_message,"@You keep working hard for this village...",0x66CC33),
+            (this_or_next|eq, "$g_player_is_captive", 1),
+            (this_or_next|party_slot_eq, "$current_town", slot_village_state, svs_being_raided),
+            (party_slot_ge, "$current_town", slot_village_infested_by_bandits, 1),
+            (assign,"$g_work_for_village_ongoing", 0),
+            (rest_for_hours,0,0,0),
+            (jump_to_menu,"mnu_village_basic_work"),
+        (else_try),
+            (gt,"$g_work_for_village_ongoing",1),
+            (val_sub, "$g_work_for_village_ongoing", 1),
+            (store_random_in_range,":show_overrall_message",1,5),
+            (try_begin),
+                (eq,":show_overrall_message",1),
+                (display_message,"@You keep working hard for this village...",0x66CC33),
+            (try_end),
+            (rest_for_hours,2,5,0),
+        (else_try),
+            (eq,"$g_work_for_village_ongoing",1),
+            (display_message,"@Your strenuous village work ends."),
+            (rest_for_hours,0,0,0),
+            (val_sub, "$g_work_for_village_ongoing", 1),
+            (jump_to_menu,"mnu_village_basic_work"),
         (try_end),
-        (rest_for_hours,2,5,0),
     (else_try),
-        (eq,"$g_work_for_village_ongoing",1),
-        (display_message,"@Your strenuous village work ends."),
-        (rest_for_hours,0,0,0),
-        (val_sub, "$g_work_for_village_ongoing", 1),
-        (jump_to_menu,"mnu_village_basic_work"),
+        (check_quest_active, "qst_nero_greece_tour"),
+        (try_begin),
+            (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 1),
+            (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 4),
+
+            (quest_get_slot, ":hours", "qst_nero_greece_tour", slot_quest_timer),
+            (gt, ":hours", 0),
+            (store_current_hours, ":cur_hours"),
+            (gt, ":cur_hours", ":hours"),
+
+            (call_script, "script_fail_quest", "qst_nero_greece_tour"),
+            (call_script, "script_end_quest", "qst_nero_greece_tour"),
+            (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -25),
+            (call_script, "script_change_troop_renown", "trp_player", -50),
+        (else_try),
+            (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 2),
+            (quest_slot_ge, "qst_nero_greece_tour", slot_quest_target_center, 1),
+
+            (troop_get_slot, ":leaded_party", "trp_kingdom_7_lord", slot_troop_leaded_party),
+            (party_slot_ge, ":leaded_party", slot_party_time_service, 1),
+
+            (quest_get_slot, ":hours", "qst_nero_greece_tour", slot_quest_timer),
+            (gt, ":hours", 0),
+            (store_current_hours, ":cur_hours"),
+            (gt, ":cur_hours", ":hours"),
+            (assign, "$talk_context", tc_nero_quest_failed),
+            (start_map_conversation, "trp_kingdom_7_lord", -1),
+        (try_end),
     (try_end),
 ]),
 
@@ -3900,7 +3951,7 @@ simple_triggers = [
                 (assign, ":new_icon", "icon_gray_knight"),
             (else_try),
                 (troop_slot_ge, "trp_player", slot_troop_renown, 50),
-                (assign, ":new_icon", "icon_vaegir_knight"),
+                (assign, ":new_icon", "icon_mercenary_infantry"),
             (else_try),
                 (assign, ":new_icon", "icon_player"),
             (try_end),
@@ -4368,7 +4419,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 84),
     (assign, ":num_active_tournaments", 0),
     (try_for_range, ":center_no", towns_begin, towns_end),
-      ##fixe a bug were the icon still exists
+        ##fixe a bug were the icon still exists
         (try_begin),
             (neg|party_slot_eq, ":center_no", slot_center_pursue, 1),##no christians are killed
             (party_get_slot, ":slave_icon", ":center_no", slot_crucified_slave_icon),
@@ -4411,9 +4462,20 @@ simple_triggers = [
         (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_feast),
         (faction_get_slot, ":faction_object", ":faction_no", slot_faction_ai_object),
         (is_between, ":faction_object", towns_begin, towns_end),
-      #(party_slot_ge, ":faction_object", slot_town_has_tournament, 1), #dckplmc - ?
-      #continue holding tournaments during the feast
-        (party_set_slot, ":faction_object", slot_town_has_tournament, 1), #dckplmc - was 2
+        # continue holding tournaments during the feast
+        (party_set_slot, ":faction_object", slot_town_has_tournament, 1),
+    (try_end),
+
+    # continue holding tournaments during religious festicals
+    (try_begin),
+        (check_quest_active, "qst_ludi_romani"),
+        (quest_get_slot, ":target_center", "qst_ludi_romani", slot_quest_target_center),
+        (party_set_slot, ":target_center", slot_town_has_tournament, 1),
+    (try_end),
+    (try_begin),
+        (check_quest_active, "qst_saturnalia"),
+        (quest_get_slot, ":target_center", "qst_saturnalia", slot_quest_target_center),
+        (party_set_slot, ":target_center", slot_town_has_tournament, 1),
     (try_end),
 
     (try_begin),
@@ -4436,7 +4498,7 @@ simple_triggers = [
     (assign, "$g_player_tournament_placement", 0),
 ]),
 
-# Taking denars from player while resting in not owned centers
+# Taking denarii from player while resting in not owned centers
 (1,[
     (call_script, "script_execude_debug_message", 86),
     (neg|map_free),
@@ -4740,7 +4802,7 @@ simple_triggers = [
     #refresh volunteers for lombards
     (party_set_slot,"p_langobard_landing",slot_center_volunteer_troop_type,0),
 
-    ##icon_castle_a fuer camp von horden
+    ##icon_horde_camp fuer camp von horden
     (try_begin),
         (store_num_parties_of_template, ":siraken", "pt_hord_siraken"),
         (store_num_parties_of_template, ":roxolanen", "pt_hord_roxolanen"),
@@ -4749,11 +4811,11 @@ simple_triggers = [
             (store_random_party_of_template, ":scythen_horde", "pt_hord_siraken"),
             (party_get_icon, ":icon", ":scythen_horde"),
             (try_begin),
-                (neq, ":icon", "icon_castle_a"),
-                (party_set_icon, ":scythen_horde", "icon_castle_a"),
+                (neq, ":icon", "icon_horde_camp"),
+                (party_set_icon, ":scythen_horde", "icon_horde_camp"),
                 # (display_message, "@A hord starts to settle."),
             (else_try),
-                (eq, ":icon", "icon_castle_a"),
+                (eq, ":icon", "icon_horde_camp"),
                 (party_set_icon, ":scythen_horde", "icon_hord"),
                 # (display_message, "@A hord starts to move."),
                 # (else_try),
@@ -4767,11 +4829,11 @@ simple_triggers = [
             (store_random_party_of_template, ":scythen_horde", "pt_hord_roxolanen"),
             (party_get_icon, ":icon", ":scythen_horde"),
             (try_begin),
-                (neq, ":icon", "icon_castle_a"),
-                (party_set_icon, ":scythen_horde", "icon_castle_a"),
+                (neq, ":icon", "icon_horde_camp"),
+                (party_set_icon, ":scythen_horde", "icon_horde_camp"),
                 #(display_message, "@A hord starts to settle."),
             (else_try),
-                (eq, ":icon", "icon_castle_a"),
+                (eq, ":icon", "icon_horde_camp"),
                 (party_set_icon, ":scythen_horde", "icon_hord"),
                 # (display_message, "@A hord starts to move."),
                 # (else_try),
@@ -4903,8 +4965,7 @@ simple_triggers = [
                 (store_faction_of_troop, ":faction_no", ":troop_no"),
                 (this_or_next|is_between, ":faction_no", kingdoms_begin, kingdoms_end),
                 (this_or_next|is_between, ":faction_no", minor_kingdoms_begin, minor_kingdoms_end),
-                (this_or_next|is_between, ":faction_no", "fac_black_khergits", "fac_undeads"),
-                (this_or_next|eq, ":faction_no", "fac_picton"),
+                (this_or_next|is_between, ":faction_no", "fac_roman_rebells", "fac_garamantes"),
                 (this_or_next|eq, ":faction_no", "fac_gladiators"),
                 (eq, ":faction_no", "fac_outlaws"),
                 (store_relation, ":cur_relation", ":cur_faction", ":faction_no"),
@@ -4918,13 +4979,9 @@ simple_triggers = [
                 (this_or_next|is_between, ":troop_no", follower_troops_begin, follower_troops_end), #enslave women anyway
                 (lt, ":cur_relation", 0),
                 (party_remove_members, ":party_no", ":troop_no", ":stack_size"),
-                (try_begin),
-                    (call_script, "script_dplmc_store_troop_is_female", ":troop_no"),
-                    (eq, reg0, 1),
-                    (party_add_prisoners, ":party_no", "trp_slave_female", ":stack_size"),
-                (else_try),
-                    (party_add_prisoners, ":party_no", "trp_slave", ":stack_size"),
-                (try_end),
+                (call_script, "script_troop_to_slave_mapping", ":troop_no"),
+                (assign, ":slave", reg0),
+                (party_add_prisoners, ":party_no", ":slave", ":stack_size"),
             (try_end),
         (try_end),
         (call_script, "script_party_add_party", ":cur_attached_town", ":party_no"),
@@ -5169,7 +5226,14 @@ simple_triggers = [
             (display_message, "@{reg22} of your prisoners escaped from {s40}!", color_bad_news),
         (try_end),
 
-        (assign, ":wealth", 25),
+        (call_script, "script_get_labour_slave_skill_modifier", "$cur_village_weekly_on_average", "skl_power_strike"),
+        (assign, ":weighted_number_slaves_mining", reg0),
+
+        (call_script, "script_get_labour_slave_skill_modifier", "$cur_village_weekly_on_average", "skl_athletics"),
+        (assign, ":weighted_number_slaves_field", reg0),
+
+        (assign, ":wealth_field", 10),
+        (assign, ":wealth_mine", 5),
       # (try_begin),
           # (lt, "$player_honor", -20),
           # (val_mul, ":wealth", 3),
@@ -5177,38 +5241,41 @@ simple_triggers = [
         # (try_end),
         (try_begin),
             (party_slot_ge, "$cur_village_weekly_on_average", slot_center_has_silver_mine, 1),
-            (val_add, ":wealth", 65),
+            (val_add, ":wealth_mine", 65),
         (try_end),
         (try_begin),
             (party_slot_ge, "$cur_village_weekly_on_average", slot_center_has_iron_mine, 1),
-            (val_add, ":wealth", 30),
+            (val_add, ":wealth_mine", 30),
         (try_end),
         (try_begin),
             (party_slot_ge, "$cur_village_weekly_on_average", slot_center_has_farms, 1),
-            (val_add, ":wealth", 5),
+            (val_add, ":wealth_field", 5),
         (try_end),
         (try_begin),
             (party_slot_ge, "$cur_village_weekly_on_average", slot_center_has_irigation, 1),
-            (val_add, ":wealth", 5),
+            (val_add, ":wealth_field", 5),
         (try_end),
         (try_begin),
             (party_slot_ge, "$cur_village_weekly_on_average", slot_center_has_cattle, 1),
-            (val_add, ":wealth", 5),
+            (val_add, ":wealth_field", 5),
         (try_end),
         (try_begin),
             (party_slot_ge, "$cur_village_weekly_on_average", slot_center_iron_deposits, 1),
-            (val_add, ":wealth", 5),
+            (val_add, ":wealth_mine", 5),
         (try_end),
         (try_begin),
             (party_slot_ge, "$cur_village_weekly_on_average", slot_center_has_quarry, 1),
-            (val_add, ":wealth", 35),
+            (val_add, ":wealth_mine", 35),
         (try_end),
-
         (try_begin),
             (party_slot_ge, "$cur_village_weekly_on_average", slot_center_silver_deposits, 1),
-            (val_add, ":wealth", 10),
+            (val_add, ":wealth_mine", 10),
         (try_end),
-        (val_mul, reg20, ":wealth"),
+
+        (val_mul, ":wealth_mine", ":weighted_number_slaves_mining"),
+        (val_mul, ":wealth_field", ":weighted_number_slaves_field"),
+
+        (store_add, reg20, ":wealth_mine", ":wealth_field"),
 
         (call_script, "script_get_honor_factor"),
         (store_add, ":factor", 100, reg0),
@@ -5221,7 +5288,7 @@ simple_triggers = [
         (try_begin),
             (party_slot_eq, "$cur_village_weekly_on_average", slot_town_lord, "trp_player"),
             (str_store_party_name, s40, "$cur_village_weekly_on_average"),
-            (display_message, "@Your slaves in {s40} have generated {reg20} denars"),
+            (display_message, "@Your slaves in {s40} have generated {reg20} denarii"),
         (try_end),
         # manu tax
         (try_begin),
@@ -5235,7 +5302,7 @@ simple_triggers = [
         (try_end),
     (try_end),
 
-  #(store_random_in_range, "$cur_village_weekly_on_average", villages_begin, villages_end),
+    #(store_random_in_range, "$cur_village_weekly_on_average", villages_begin, villages_end),
     (try_begin),
         (party_get_slot, ":town_lord", "$cur_village_weekly_on_average", slot_town_lord),
         #SB : also handle the case where player hands out villages
@@ -5287,6 +5354,24 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 98),
     (try_for_range, ":cur_quest", all_quests_begin, all_quests_end),
         (check_quest_active, ":cur_quest"),
+        (try_begin),# fail bugged quests
+            (this_or_next|is_between, ":cur_quest", lord_quests_begin, lord_quests_end),
+            (this_or_next|is_between, ":cur_quest", lord_quests_begin_2, lord_quests_end_2),
+            (this_or_next|is_between, ":cur_quest", enemy_lord_quests_begin, enemy_lord_quests_end),
+            (this_or_next|is_between, ":cur_quest", village_elder_quests_begin, village_elder_quests_end),
+            (this_or_next|is_between, ":cur_quest", village_elder_quests_begin_2, village_elder_quests_end_2),
+            (this_or_next|is_between, ":cur_quest", mayor_quests_begin, mayor_quests_end),
+            (this_or_next|is_between, ":cur_quest", mayor_quests_begin_2, mayor_quests_end_2),
+            (this_or_next|is_between, ":cur_quest", lady_quests_begin, lady_quests_end),
+            (this_or_next|is_between, ":cur_quest", lady_quests_begin_2, lady_quests_end_2),
+            (this_or_next|is_between, ":cur_quest", army_quests_begin, army_quests_end),
+            (is_between, ":cur_quest", army_quests_begin_2, army_quests_end_2),
+            (quest_slot_eq, ":cur_quest", slot_quest_giver_troop, "trp_player"),
+            (display_message, "@ERROR: Quest failed due to quest giver becoming player.", message_negative),
+            (call_script, "script_fail_quest", ":cur_quest"),
+            (call_script, "script_end_quest", ":cur_quest"),
+            (display_message, "@ERROR: Quest failed due to quest giver becoming player.", message_negative),
+        (try_end),
         (try_begin),
             (eq, ":cur_quest", "qst_become_pharao"),
             (quest_slot_ge, ":cur_quest", slot_quest_dont_give_again_remaining_days, 1),
@@ -5359,6 +5444,24 @@ simple_triggers = [
                 (call_script, "script_fail_quest", ":cur_quest"),
                 (call_script, "script_end_quest", ":cur_quest"),
                 (call_script, "script_add_notification_menu", "mnu_trial_guilty", 0, 0),
+            (else_try),
+                (eq, ":exp_days", 0),
+                (this_or_next|eq, ":cur_quest", "qst_saturnalia"),
+                (eq, ":cur_quest", "qst_ludi_romani"),
+                (try_begin),
+                    (neg|quest_slot_eq, ":cur_quest", slot_quest_temp_slot, 0),
+                    (quest_slot_eq, ":cur_quest", slot_quest_current_state, 1),
+                    (call_script, "script_fail_quest", ":cur_quest"),
+                    (call_script, "script_change_player_relation_with_center", "p_town_6", -10),
+                    (call_script, "script_add_piety", -25, 1),
+                    (call_script, "script_change_troop_renown", "trp_player", -50),
+                (else_try),
+                    (neg|quest_slot_eq, ":cur_quest", slot_quest_temp_slot, 0),
+                    (call_script, "script_fail_quest", ":cur_quest"),
+                    (call_script, "script_add_piety", -12, 1),
+                    (call_script, "script_change_troop_renown", "trp_player", -25),
+                (try_end),
+                (call_script, "script_end_quest", ":cur_quest"),
             (else_try),
                 (eq, ":exp_days", 0),
                 (eq, ":cur_quest", "qst_slave_revolt"),
@@ -7498,7 +7601,7 @@ simple_triggers = [
                 (val_mul, reg10, ":cur_gold", 800),
                 (val_div, reg10, 1000),
                 (store_sub, reg12, reg11, reg10),
-                (display_message, "@Your last estate was captured and {reg10} denars of {reg11} are transfered to you. {reg12} denars have been lost!", message_negative),
+                (display_message, "@Your last estate was captured and {reg10} denarii of {reg11} are transfered to you. {reg12} denarii have been lost!", message_negative),
                 (call_script, "script_dplmc_withdraw_from_treasury", reg11),
                 (call_script, "script_troop_add_gold", "trp_player", reg10),
             (try_end),
@@ -7822,12 +7925,14 @@ simple_triggers = [
     (set_fixed_point_multiplier, 1),
     (try_begin),
         (troop_slot_eq, "trp_global_variables", g_alesia, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_village_77"),
         (le, ":distance", 20),
         (jump_to_menu, "mnu_event_alesia"),
         (troop_set_slot, "trp_global_variables", g_alesia, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_dova, 0),#each one is unique
+        (party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_castle_23"),
         (le, ":distance", 20),
         (eq, "$g_is_emperor", 1),
@@ -7836,12 +7941,14 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_dova, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_rubicon, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_village_60"),
         (le, ":distance", 20),
         (jump_to_menu, "mnu_event_rubicon"),
         (troop_set_slot, "trp_global_variables", g_rubicon, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_famous_battle_1, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_town_33"),
         (le, ":distance", 20),
         (assign, "$temp3", 0),
@@ -7849,6 +7956,7 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_famous_battle_1, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_famous_battle_2, 0),#each one is unique
+        (party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_castle_6"),
         (le, ":distance", 20),
         (assign, "$temp3", 1),
@@ -7856,6 +7964,7 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_famous_battle_2, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_famous_battle_3, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_village_57"),
         (le, ":distance", 20),
         (assign, "$temp3", 2),
@@ -7863,6 +7972,7 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_famous_battle_3, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_famous_battle_4, 0),#each one is unique
+        (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_castle_49"),
         (le, ":distance", 20),
         (assign, "$temp3", 3),
@@ -7870,9 +7980,9 @@ simple_triggers = [
         (troop_set_slot, "trp_global_variables", g_famous_battle_4, 1),
     (else_try),
         (troop_slot_eq, "trp_global_variables", g_pillars_of_hercules, 0),#each one is unique
+        (party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (store_distance_to_party_from_party, ":distance", "p_main_party", "p_village_138"),
         (le, ":distance", 35),
-        (party_slot_eq, "p_main_party", slot_party_on_water, 1),#is on water
         (jump_to_menu, "mnu_event_pillars_of_hercules"),
         (troop_set_slot, "trp_global_variables", g_pillars_of_hercules, 1),
     (try_end),
@@ -8241,9 +8351,9 @@ simple_triggers = [
     (try_begin),
         (neq, "$g_corruption_check", ACAN_CORRUPT_SAVE_CHECK),
         (jump_to_menu, "mnu_save_file_corrupted"),
-    # (else_try),
-    #     (neg|troop_slot_eq, "trp_global_variables", g_corruption_check, ACAN_CORRUPT_SAVE_CHECK),
-    #     (jump_to_menu, "mnu_save_file_corrupted"),
+    (else_try),
+        (neg|troop_slot_eq, "trp_global_variables", g_corruption_check, ACAN_CORRUPT_SAVE_CHECK),
+        (jump_to_menu, "mnu_save_file_corrupted"),
     (try_end),
     (try_begin),
         (neq, "$players_kingdom", "fac_kingdom_7"),
@@ -8964,7 +9074,7 @@ simple_triggers = [
             # (try_begin),
             # (troop_slot_ge, "trp_player", slot_troop_renown, 200),
             # (assign, reg0, ":r"),
-            # (display_message, "@The Emperor has given {reg0} denars for campagin."),
+            # (display_message, "@The Emperor has given {reg0} denarii for campagin."),
             # (try_end),
             (troop_set_slot, "trp_kingdom_7_lord", slot_troop_wealth, ":neros_gold"),
             (troop_set_slot, ":troop", slot_troop_wealth, ":gold"),
@@ -8999,8 +9109,20 @@ simple_triggers = [
         (val_mul, ":number", ":rand"),
         (val_div, ":number", 100),
         (val_div, ":number", 2),
-        (party_add_prisoners,":new_party", "trp_slave" , ":number"),
-        (party_add_prisoners,":new_party", "trp_slave_female" , ":number"),
+
+        (call_script, "script_get_slave_merchant_troop", ":center"),
+        (assign, ":slave_trader", reg0),
+        (try_for_range, ":current_slave_slot", slot_troop_slaves_begin, slot_troop_slaves_end),
+            (troop_get_slot, ":slave_amount", ":slave_trader", ":current_slave_slot"),
+            (gt, ":slave_amount", 0),
+            (store_sub, ":offset", ":current_slave_slot", slot_troop_slaves_begin),
+            (store_add, ":slave_troop_id", "trp_slave", ":offset"),
+            (is_between, ":slave_troop_id", slaves_begin, slaves_end),
+            (party_add_prisoners, ":new_party", ":slave_troop_id", ":slave_amount"),
+        (try_end),
+
+        # (party_add_prisoners,":new_party", "trp_slave" , ":number"),
+        # (party_add_prisoners,":new_party", "trp_slave_female" , ":number"),
     (try_end),
 
     (try_begin),
@@ -10279,6 +10401,7 @@ simple_triggers = [
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_media),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_arab),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_syr),
+        (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_osreon),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_jude),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_afrc_maur),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_afrc_afrc),
@@ -10293,6 +10416,7 @@ simple_triggers = [
         (else_try),
             (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_arab),
             (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_syr),
+            (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_osreon),
             (party_slot_eq, ":village", slot_center_province, p_asia_jude),
             (assign, ":nomad_faction", "fac_nabataea"),
         (else_try),
@@ -10570,7 +10694,7 @@ simple_triggers = [
         (eq,":pos",":curr_event"),   # this first line is same for all events
         (neq, "$g_is_emperor", 1),#not if emperor
         (le, "$g_rank", 1),#not if high rank
-        (display_message, "@Today you got lucky and found a small bag hidden behind a bush. Inside the bag was 300 denars."),
+        (display_message, "@Today you got lucky and found a small bag hidden behind a bush. Inside the bag was 300 denarii."),
         (troop_add_gold, "trp_player", 300),
         (add_xp_as_reward, 50),
     (else_try),
@@ -10579,7 +10703,7 @@ simple_triggers = [
         (neq, "$g_is_emperor", 1),#not if emperor
         (le, "$g_rank", 1),#not if high rank
         (add_xp_as_reward, 50),
-        (display_message, "@During a small rest you noticed a shiney object in the ground caught your eye. You tooked a closer look, thinking it may be some denars. Unfortunately it was only a small piece of rusted metal lying on the ground, totally worthless."),
+        (display_message, "@During a small rest you noticed a shiney object in the ground caught your eye. You tooked a closer look, thinking it may be some denarii. Unfortunately it was only a small piece of rusted metal lying on the ground, totally worthless."),
     (else_try),
         (val_add,":pos",1),
         (eq,":pos",":curr_event"),   # this first line is same for all events
@@ -10615,7 +10739,7 @@ simple_triggers = [
         (eq,":pos",":curr_event"),   # this first line is same for all events
         (neq, "$g_is_emperor", 1),#not if emperor
         (le, "$g_rank", 1),#not if high rank
-        (display_message, "@You have found leftovers of a recent battle. Searching the bodies, you managed to find 200 denars."),
+        (display_message, "@You have found leftovers of a recent battle. Searching the bodies, you managed to find 200 denarii."),
         (troop_add_gold, "trp_player", 200),
         (add_xp_as_reward, 100),
     (try_end),
@@ -10955,13 +11079,6 @@ simple_triggers = [
         (troop_set_slot,"trp_diplomat_africa",slot_troop_days_on_mission,":val"),
     (try_end),
     (try_begin),
-        (troop_get_slot,":val","trp_slave_trader",slot_troop_days_on_mission),
-        (neq,":val",0),#0 = can ask to sing about player
-        (val_sub,":val",1),
-        (val_max,":val",0),#to clear negative values (errors)
-        (troop_set_slot,"trp_slave_trader",slot_troop_days_on_mission,":val"),
-    (try_end),
-    (try_begin),
         (ge, "$g_player_chamberlain", 1),
         (troop_get_slot,":val","$g_player_chamberlain",slot_troop_days_on_mission),
         (neq,":val",0),#0
@@ -10984,18 +11101,18 @@ simple_triggers = [
         (troop_set_slot,"trp_hunter_woman",slot_troop_days_on_mission,":val"),
     (try_end),
     (try_begin),
-        (troop_get_slot,":val","trp_fighter_woman",slot_troop_days_on_mission),
+        (troop_get_slot,":val","trp_camp_defender",slot_troop_days_on_mission),
         (neq,":val",0),#0 = can ask to sing about player
         (val_sub,":val",1),
         (val_max,":val",0),#to clear negative values (errors)
-        (troop_set_slot,"trp_fighter_woman",slot_troop_days_on_mission,":val"),
+        (troop_set_slot,"trp_camp_defender",slot_troop_days_on_mission,":val"),
     (try_end),
     (try_begin),
-        (troop_get_slot,":val","trp_sword_sister",slot_troop_days_on_mission),
+        (troop_get_slot,":val","trp_soldier_wife",slot_troop_days_on_mission),
         (neq,":val",0),#0 = can ask to sing about player
         (val_sub,":val",1),
         (val_max,":val",0),#to clear negative values (errors)
-        (troop_set_slot,"trp_sword_sister",slot_troop_days_on_mission,":val"),
+        (troop_set_slot,"trp_soldier_wife",slot_troop_days_on_mission,":val"),
     (try_end),
     (try_begin),
         (troop_get_slot,":val","trp_peasant_woman",slot_troop_days_on_mission),
@@ -11011,12 +11128,12 @@ simple_triggers = [
         (val_max,":val",0),#to clear negative values (errors)
         (troop_set_slot,"trp_refugee",slot_troop_days_on_mission,":val"),
     (try_end),
-    (try_begin),
-        (troop_get_slot,":val","trp_slave_female",slot_troop_days_on_mission),
+    (try_for_range, ":female_slave", female_slaves_begin, female_slaves_end),
+        (troop_get_slot,":val",":female_slave",slot_troop_days_on_mission),
         (neq,":val",0),#0 = can ask to sing about player
         (val_sub,":val",1),
         (val_max,":val",0),#to clear negative values (errors)
-        (troop_set_slot,"trp_slave_female",slot_troop_days_on_mission,":val"),
+        (troop_set_slot,":female_slave",slot_troop_days_on_mission,":val"),
     (try_end),
 
     (try_for_range, ":troop", "trp_centurio_west", "trp_aux_cav"),
@@ -11335,7 +11452,7 @@ simple_triggers = [
         (gt, ":party_no", last_static_party),
         (party_is_active, ":party_no"),
         (store_faction_of_party, ":faction", ":party_no"),
-        (this_or_next|eq, ":faction", "fac_black_khergits"),##roman rebells
+        (this_or_next|eq, ":faction", "fac_roman_rebells"),##roman rebells
         (is_between, ":faction", minor_kingdoms_begin, minor_kingdoms_end),
         (try_begin),
                 # (eq, ":party_template", "pt_kingdom_hero_party"),
@@ -11452,7 +11569,7 @@ simple_triggers = [
                     # (party_set_ai_object, ":party_no", -1),
                 # (try_end),
             (else_try),#check here if they wandered on sea
-                (eq, ":faction", "fac_black_khergits"),
+                (eq, ":faction", "fac_roman_rebells"),
                 (party_slot_eq, ":party_no", slot_party_on_water, 1),
                 # (party_get_current_terrain, ":cur_terrain", ":party_no"),
                 # (this_or_next|eq,":cur_terrain",rt_water),
@@ -11473,7 +11590,7 @@ simple_triggers = [
                 (party_set_ai_target_position, ":party_no", ":closest_village"),
                 (party_set_ai_object, ":party_no", ":closest_village"),
             (else_try),
-                (neq, ":faction", "fac_black_khergits"),
+                (neq, ":faction", "fac_roman_rebells"),
                 (party_get_slot, ":spawn_point", ":party_no", slot_party_spawn_point),
                 (neq, ":ai_bhvr", ai_bhvr_travel_to_party),
                 #(neq, ":ai_bhvr", ai_bhvr_travel_to_point),
@@ -11489,7 +11606,7 @@ simple_triggers = [
                 (party_set_slot, ":party_no", slot_party_ai_state, spai_retreating_to_center),
             (else_try),##reached spawn, start patrolling again
                 (eq, ":ai_behavior", spai_retreating_to_center),
-                (neq, ":faction", "fac_black_khergits"),
+                (neq, ":faction", "fac_roman_rebells"),
                 (try_begin),
                     (eq, ":ai_bhvr", ai_bhvr_travel_to_party),
                     (set_fixed_point_multiplier, 1),
@@ -11521,7 +11638,7 @@ simple_triggers = [
                 (store_random_in_range, ":village_no", villages_begin, villages_end),
 
                 (try_begin),
-                    (eq, ":faction", "fac_black_khergits"),##roman rebells
+                    (eq, ":faction", "fac_roman_rebells"),##roman rebells
                     (try_begin),
                         (store_distance_to_party_from_party, ":dist", ":party_no",":village_no"),
                         (lt, ":dist", ":minimum_distance"),
@@ -11643,6 +11760,14 @@ simple_triggers = [
                 # (display_message, "@{s22} has left your force."),
                 (party_slot_eq, ":attached_party", slot_party_type, spt_kingdom_hero_party),
                 (party_stack_get_troop_id, ":leader",":attached_party",0),
+                (assign, ":block", 0),
+                (try_begin),
+                    (eq, ":leader", "trp_kingdom_7_lord"),
+                    (check_quest_active, "qst_nero_greece_tour"),
+                    (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 1),
+                    (assign, ":block", 1),
+                (try_end),
+                (eq, ":block", 0),
                 (troop_slot_eq, ":leader", slot_troop_occupation, slto_kingdom_hero),
                 (neg|main_party_has_troop, ":leader"),
                 (assign, "$talk_context", tc_campaign_talk),
@@ -11668,7 +11793,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 184),
     (store_current_hours, ":hour"),
     (ge, ":hour", 24*14),#2 weeks
-    
+
     (try_begin),
         (neg|check_quest_active, "qst_nero_special_quest"),
         (eq, "$players_kingdom", "fac_kingdom_7"),
@@ -12474,8 +12599,59 @@ simple_triggers = [
     (try_end),
 ]),
 
-(0.05,[
+(24*12,[
     (call_script, "script_execude_debug_message", 196),
+    # check number of household troops player has
+    (assign, ":number_household_slaves", 0),
+    (assign, ":number_household_cooks", 0),
+    (assign, ":thief", -1),
+    (try_for_range, ":household_troop", household_slaves_begin, cook_slaves_end),
+        (troop_get_slot, ":slave_dna", ":household_troop", slot_slave_template_troop),
+        (gt, ":slave_dna", 0),
+        (try_begin),
+            (is_between, ":household_troop", household_slaves_begin, household_slaves_end),
+            (val_add, ":number_household_slaves", 1),
+            (store_skill_level, ":corruption", "skl_looting", ":slave_dna"),
+            (store_random_in_range, ":r", 0, 11),
+            (le, ":r", ":corruption"),
+            (assign, ":thief", ":household_troop"),
+        (else_try),
+            (val_add, ":number_household_cooks", 1),
+        (try_end),
+        #check if the number exceeds the limit and remove troop if so
+        (try_begin),
+            (call_script, "script_get_slave_limit"),
+            (gt, ":number_household_slaves", reg0),
+            (troop_set_slot, ":household_troop", slot_slave_template_troop, 0),#remove troop
+            (str_store_troop_name, s1, ":household_troop"),
+            (display_message, "@You have too many household slaves. {s1} has been freed.", color_bad_news),
+        (else_try),
+            (call_script, "script_get_cook_limit"),
+            (gt, ":number_household_cooks", reg0),
+            (troop_set_slot, ":household_troop", slot_slave_template_troop, 0),#remove troop
+            (str_store_troop_name, s1, ":household_troop"),
+            (display_message, "@You have too many household cooks. {s1} has been freed.", color_bad_news),
+        (try_end),
+    (try_end),
+    (assign, ":gold", 0),
+    (assign, ":gold_possesions", 0),
+    (try_begin),
+        (store_troop_gold, ":gold", "trp_player"),
+        (ge, ":gold", 150000),
+        (gt, ":thief", -1),
+        (gt, ":number_household_slaves", 0),
+        (call_script, "script_add_notification_menu", "mnu_slave_steals_from_player", ":thief",-1),
+    (else_try),
+        (store_troop_gold, ":gold_possesions", "trp_household_possessions"),
+        (ge, ":gold_possesions", 150000),
+        (gt, ":thief", -1),
+        (gt, ":number_household_slaves", 0),
+        (call_script, "script_add_notification_menu", "mnu_slave_steals_from_household", ":thief",-1),
+    (else_try),
+        (this_or_next|ge, ":gold", 150000),
+        (ge, ":gold_possesions", 150000),
+        (call_script, "script_add_notification_menu", "mnu_player_has_no_slaves", -1,-1),
+    (try_end),
     # moved back to game_get_party_speed_multiplier
     # (try_for_parties, ":party_no"),
     #     (gt, ":party_no", last_static_party),

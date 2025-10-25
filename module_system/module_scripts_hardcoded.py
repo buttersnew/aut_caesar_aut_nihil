@@ -1,4 +1,5 @@
 # -*- coding: cp1254 -*-
+from __future__ import absolute_import
 from header_common import *
 from header_operations import *
 from module_constants import *
@@ -33,6 +34,8 @@ scripts_hardcoded = [
 # INPUT: none
 ("game_start",[
 
+    (troop_set_slot, "trp_global_variables", g_iazyges_event, 0),
+
     (troop_set_slot, "trp_global_variables", g_iazyges_event, 0),#not triggered yet
 
     #default starting year
@@ -45,7 +48,7 @@ scripts_hardcoded = [
     (troop_set_slot, "trp_household_villa", slot_troop_spouse, "scn_domus_mare_interior"),#for domus mare scene upgrade
 
     (assign, reg62, 0),#used for script_view_party_members
-    (quest_set_slot, "qst_olympic_games", slot_quest_dont_give_again_remaining_days, 240),
+    (quest_set_slot, "qst_olympic_games", slot_quest_dont_give_again_remaining_days, 204),
 
     (call_script, "script_update_party_creation_random_limits"),
 
@@ -65,11 +68,19 @@ scripts_hardcoded = [
     #for slave treatment
     (assign, "$g_slave_manu", 1),
     (assign, "$g_slave_treatment", 0),
+
+    #advicors
+    (assign, "$g_player_chamberlain", -1),
+    (assign, "$g_player_constable", -1),
+    (assign, "$g_player_chancellor", -1),
+    (assign, "$g_player_minister", -1),
+
     #formation
     (assign, "$form_ai_autorotate", 1),
 
     (assign, "$g_corruption_check", ACAN_CORRUPT_SAVE_CHECK),#check if save is corrupted
     (troop_set_slot, "trp_global_variables", g_corruption_check, ACAN_CORRUPT_SAVE_CHECK),
+    (troop_set_slot, "trp_global_variables", g_acan_version, ACAN_VERSION),
 
     (assign, "$g_dancers", 0),
     #new special quests
@@ -130,8 +141,8 @@ scripts_hardcoded = [
     (assign, "$edict5", 0),##das ist das gesetz womit allen freien reichsbewohnern das bugerrecht verliehen wird
     (assign, "$edict6", 0),##reichsverfassung + nachfolgegesetz
     ##jetzt kommen ein paar gesetze aus republikanischer Zeit
-    (assign, "$edict7", 1),##Lex frumentaria et agraria: maximaler getreide preis: 100 denars per unit,
-               ## this means 1000 denars for scenter price slot,
+    (assign, "$edict7", 1),##Lex frumentaria et agraria: maximaler getreide preis: 100 denarii per unit,
+               ## this means 1000 denarii for scenter price slot,
     (assign, "$edict8", 1),##Lex militaris minimal alter von Rekruten ist 17 Jahre
     (assign, "$edict9", 0),##Alimenta von trajan
     (assign, "$edict10",0),##rename month
@@ -1077,6 +1088,9 @@ scripts_hardcoded = [
             (party_set_icon, ":party", "icon_opidumn_wood_gl1_Reduced"),
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
+            (this_or_next|eq, ":faction", "fac_culture_15"),
+            (this_or_next|eq, ":faction", "fac_culture_16"),
+            (this_or_next|eq, ":faction", "fac_culture_17"),
             (eq, ":faction", "fac_culture_5"),
             (party_set_icon, ":party", "icon_town_greek"),
             (party_set_slot, ":party", slot_center_can_rebell, 0),
@@ -1120,6 +1134,9 @@ scripts_hardcoded = [
             (party_set_icon, ":party", "icon_opidumn_wood_gl_Reduced"),
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
+            (this_or_next|eq, ":faction", "fac_culture_15"),
+            (this_or_next|eq, ":faction", "fac_culture_16"),
+            (this_or_next|eq, ":faction", "fac_culture_17"),
             (eq, ":faction", "fac_culture_5"),
             (party_set_icon, ":party", "icon_fort_greek"),
             (party_set_slot, ":party", slot_center_can_rebell, 0),
@@ -1141,44 +1158,6 @@ scripts_hardcoded = [
             (party_set_slot, ":party", slot_center_can_rebell, 0),
         (try_end),
     (try_end),
-    (try_for_range, ":party", villages_begin, villages_end),
-        (call_script, "script_refresh_village_defenders", ":party"),
-        (call_script, "script_refresh_village_defenders", ":party"),
-        (call_script, "script_refresh_village_defenders", ":party"),
-        (call_script, "script_refresh_village_defenders", ":party"),
-        (store_faction_of_party, ":faction2", ":party"),
-        (faction_get_slot, ":faction", ":faction2", slot_faction_culture),
-        (try_begin),
-            (eq, ":faction", "fac_culture_1"),
-            (party_set_icon, ":party", "icon_village_barbarian"),
-        (else_try),
-            (this_or_next|eq, ":faction", "fac_culture_2"),
-            (eq, ":faction", "fac_culture_2_1"),
-            (party_set_icon, ":party", "icon_village_barbarian"),
-        (else_try),
-            (eq, ":faction", "fac_culture_3"),
-            (party_set_icon, ":party", "icon_village_barbarian"),
-        (else_try),
-            (eq, ":faction", "fac_culture_4"),
-            (party_set_icon, ":party", "icon_village_barbarian"),
-        (else_try),
-            (eq, ":faction", "fac_culture_5"),
-            (party_set_icon, ":party", "icon_village_greek"),
-        (else_try),
-            (eq, ":faction", "fac_culture_6"),
-            (party_set_icon, ":party", "icon_village_greek"),
-        (else_try),
-            (eq, ":faction", "fac_culture_7"),
-            (party_set_icon, ":party", "icon_village_roman"),
-        (else_try),
-            (eq, ":faction", "fac_culture_8"),
-            (party_set_icon, ":party", "icon_village_greek"),
-        (else_try),
-            (eq, ":faction", "fac_culture_9"),
-            (party_set_icon, ":party", "icon_village_greek"),
-        (try_end),
-    (try_end),
-
     ## OLD DEBUGGING CODE
     # (try_for_range, ":troop", "trp_player", "trp_troops_end"),
         # (store_attribute_level, reg1,":troop", ca_agility),
@@ -1334,8 +1313,8 @@ scripts_hardcoded = [
         (try_end),
         ##diplomacy end+
     (try_end),
-
-    ## correct culture:
+    # change culture for some occupied centers
+    # judeans
     (party_set_slot, "p_town_19", slot_center_culture, "fac_culture_8"),
     (party_set_slot, "p_castle_44", slot_center_culture, "fac_culture_8"),
     (party_set_slot, "p_castle_45", slot_center_culture, "fac_culture_8"),
@@ -1346,6 +1325,66 @@ scripts_hardcoded = [
     (party_set_slot, "p_village_109", slot_center_culture, "fac_culture_8"),
     (party_set_slot, "p_village_51", slot_center_culture, "fac_culture_8"),
     (party_set_slot, "p_village_100", slot_center_culture, "fac_culture_8"),
+
+    # syrian
+    (party_set_slot, "p_town_47", slot_center_culture, "fac_culture_15"),
+    (party_set_slot, "p_village_217", slot_center_culture, "fac_culture_15"),
+    (party_set_slot, "p_village_218", slot_center_culture, "fac_culture_15"),
+    (party_set_slot, "p_village_219", slot_center_culture, "fac_culture_15"),
+
+    #egyptian
+    (party_set_slot, "p_town_48", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_206", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_242", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_204", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_207", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_203", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_202", slot_center_culture, "fac_culture_16"),
+    (party_set_slot, "p_village_95", slot_center_culture, "fac_culture_16"),
+
+    #greek
+    (party_set_slot, "p_town_35", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_town_36", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_town_37", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_town_38", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_castle_31", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_castle_6", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_town_10", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_castle_62", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_castle_63", slot_center_culture, "fac_culture_17"),
+
+    (party_set_slot, "p_village_53", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_248", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_159", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_69", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_155", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_161", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_162", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_71", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_73", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_166", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_50", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_156", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_33", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_41", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_227", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_90", slot_center_culture, "fac_culture_17"),
+    (party_set_slot, "p_village_88", slot_center_culture, "fac_culture_17"),
+
+    #berber
+    (party_set_slot, "p_town_21", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_castle_64", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_castle_43", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_48", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_106", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_104", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_105", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_131", slot_center_culture, "fac_culture_11"),
+    (party_set_slot, "p_village_132", slot_center_culture, "fac_culture_11"),
+
+    (party_set_slot, "p_village_134", slot_center_culture, "fac_culture_12"),
+    (party_set_slot, "p_village_135", slot_center_culture, "fac_culture_12"),
+    (party_set_slot, "p_village_137", slot_center_culture, "fac_culture_12"),
 
     (call_script, "script_initialize_npc_items"),
     ##also add lady items, to it here because it require troop culture slot to be set properly
@@ -1457,14 +1496,6 @@ scripts_hardcoded = [
         # (call_script, "script_randomly_start_war_peace_new", 0),
     # (try_end),
 
-    #castle walkers
-    #Initialize walkers
-    (try_for_range, ":center_no", centers_begin, centers_end),
-        (try_for_range, ":walker_no", 0, num_town_walkers),
-            (call_script, "script_center_set_walker_to_type", ":center_no", ":walker_no", walkert_default),
-        (try_end),
-    (try_end),
-
     #This needs to be after market towns
     (call_script, "script_initialize_economic_information"),
 
@@ -1512,17 +1543,13 @@ scripts_hardcoded = [
             (party_slot_eq, ":center_no", slot_party_type, spt_town),
             (assign, ":garrison_strength", 60),
         (try_end),
-        (try_begin),
-            (party_get_slot, ":legati", ":center_no", slot_town_lord),
-            (is_between, ":legati", "trp_legatus_1", "trp_aux_commander_1"),
-            (assign, ":garrison_strength", 5),
-        (try_end),
 
+        (store_faction_of_party, ":faction", ":center_no"),
         (try_begin),
-            (store_faction_of_party, ":faction", ":center_no"),
+            (this_or_next|faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_15"),## to help syrians
             (this_or_next|faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_3"),###to help nomads to survive
             (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_4"),##to help germans
-            (val_add, ":garrison_strength", 15),
+            (val_add, ":garrison_strength", 25),
         (try_end),
             ####
 
@@ -1696,7 +1723,7 @@ scripts_hardcoded = [
     (party_template_set_slot, "pt_sakas", slot_party_template_lair_type, "pt_saka_camp"),
     (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_type, "pt_steppe_bandit_lair"),
     (party_template_set_slot, "pt_taiga_bandits", slot_party_template_lair_type, "pt_taiga_bandit_lair"),
-    (party_template_set_slot, "pt_mountain_bandits", slot_party_template_lair_type, "pt_mountain_bandit_lair"),
+    (party_template_set_slot, "pt_judean_rebels_party", slot_party_template_lair_type, "pt_mountain_bandit_lair"),
     (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_type, "pt_forest_bandit_lair"),
     (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_type, "pt_sea_raider_lair"),
     (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_type, "pt_black_sea_pirates_lair"),
@@ -1711,7 +1738,7 @@ scripts_hardcoded = [
     (party_template_set_slot, "pt_sakas", slot_party_template_lair_spawnpoint, "p_saka_spawn"),
     (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_spawnpoint, "p_steppe_bandit_spawn_point"), #the stepp
     (party_template_set_slot, "pt_taiga_bandits", slot_party_template_lair_spawnpoint, "p_taiga_bandit_spawn_point1"), #illyricum
-    (party_template_set_slot, "pt_mountain_bandits", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point1"), # judea
+    (party_template_set_slot, "pt_judean_rebels_party", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point1"), # judea
     (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_spawnpoint, "p_forest_bandit_spawn_point"), #hispania
     (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_1"), # the coast
     (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_spawnpoint, "p_black_sea_pirates_spawn_1"), # the coast
@@ -2031,6 +2058,61 @@ scripts_hardcoded = [
     ##finally scenes
     (call_script, "script_game_set_scenes_for_towns"),
 
+    #Initialize walkers
+    (try_for_range, ":center_no", centers_begin, centers_end),
+        (try_for_range, ":walker_no", 0, num_town_walkers),
+            (call_script, "script_center_set_walker_to_type", ":center_no", ":walker_no", walkert_default),
+        (try_end),
+    (try_end),
+    # refresh village defenders
+    (try_for_range, ":party", villages_begin, villages_end),
+        (call_script, "script_refresh_village_defenders", ":party"),
+        (call_script, "script_refresh_village_defenders", ":party"),
+        (call_script, "script_refresh_village_defenders", ":party"),
+        (call_script, "script_refresh_village_defenders", ":party"),
+        (store_faction_of_party, ":faction2", ":party"),
+        (faction_get_slot, ":faction", ":faction2", slot_faction_culture),
+        (try_begin),
+            (eq, ":faction", "fac_culture_1"),
+            (party_set_icon, ":party", "icon_village_barbarian"),
+        (else_try),
+            (this_or_next|eq, ":faction", "fac_culture_2"),
+            (eq, ":faction", "fac_culture_2_1"),
+            (party_set_icon, ":party", "icon_village_barbarian"),
+        (else_try),
+            (eq, ":faction", "fac_culture_3"),
+            (party_set_icon, ":party", "icon_village_barbarian"),
+        (else_try),
+            (eq, ":faction", "fac_culture_4"),
+            (party_set_icon, ":party", "icon_village_barbarian"),
+        (else_try),
+            (eq, ":faction", "fac_culture_5"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_15"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_16"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_17"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_6"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_7"),
+            (party_set_icon, ":party", "icon_village_roman"),
+        (else_try),
+            (eq, ":faction", "fac_culture_8"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (else_try),
+            (eq, ":faction", "fac_culture_9"),
+            (party_set_icon, ":party", "icon_village_greek"),
+        (try_end),
+    (try_end),
+
+
     (try_for_range, ":town", walled_centers_begin,walled_centers_end),
         (party_get_slot, ":lord", ":town", slot_town_lord),
         # (str_store_troop_name, s1, ":lord"),
@@ -2093,39 +2175,29 @@ scripts_hardcoded = [
     (try_begin),
         (prop_instance_is_valid, ":instance_id"),
         (prop_instance_get_scene_prop_kind, ":scene_prop_id", ":instance_id"),
-        (try_begin),
-            (this_or_next|eq, ":scene_prop_id", "spr_winch_b"),
-            (eq, ":scene_prop_id", "spr_winch"),
-            (assign, ":effected_object", "spr_portcullis"),
-        (else_try),
-            (this_or_next|eq, ":scene_prop_id", "spr_door_destructible"),
-            (this_or_next|eq, ":scene_prop_id", "spr_castle_f_door_b"),
-            (this_or_next|eq, ":scene_prop_id", "spr_castle_e_sally_door_a"),
-            (this_or_next|eq, ":scene_prop_id", "spr_castle_f_sally_door_a"),
-            (this_or_next|eq, ":scene_prop_id", "spr_earth_sally_gate_left"),
-            (this_or_next|eq, ":scene_prop_id", "spr_earth_sally_gate_right"),
-            (this_or_next|eq, ":scene_prop_id", "spr_viking_keep_destroy_sally_door_left"),
-            (this_or_next|eq, ":scene_prop_id", "spr_viking_keep_destroy_sally_door_right"),
-            (this_or_next|eq, ":scene_prop_id", "spr_castle_f_door_a"),
-            (this_or_next|eq, ":scene_prop_id", "spr_siege_ladder_move_6m"),
-            (this_or_next|eq, ":scene_prop_id", "spr_siege_ladder_move_8m"),
-            (this_or_next|eq, ":scene_prop_id", "spr_siege_ladder_move_10m"),
-            (this_or_next|eq, ":scene_prop_id", "spr_siege_ladder_move_12m"),
-            (eq, ":scene_prop_id", "spr_siege_ladder_move_14m"),
-            (assign, ":effected_object", ":scene_prop_id"),
-        (try_end),
+        # (try_begin),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_winch_b"),
+        #     (eq, ":scene_prop_id", "spr_winch"),
+        #     (assign, ":effected_object", "spr_portcullis"),
+        # (else_try),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_door_destructible"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_castle_f_door_b"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_castle_e_sally_door_a"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_castle_f_sally_door_a"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_earth_sally_gate_left"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_earth_sally_gate_right"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_viking_keep_destroy_sally_door_left"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_viking_keep_destroy_sally_door_right"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_castle_f_door_a"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_siege_ladder_move_6m"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_siege_ladder_move_8m"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_siege_ladder_move_10m"),
+        #     (this_or_next|eq, ":scene_prop_id", "spr_siege_ladder_move_12m"),
+        #     (eq, ":scene_prop_id", "spr_siege_ladder_move_14m"),
+        #     (assign, ":effected_object", ":scene_prop_id"),
+        # (try_end),
 
-        (scene_prop_get_slot, ":item_situation", ":instance_id", scene_prop_open_or_close_slot),
-
-        (try_begin), #opening/closing portcullis
-            (eq, ":effected_object", "spr_portcullis"),
-            (try_begin),
-                (eq, ":item_situation", 0),
-                (str_store_string, s0, "str_open_gate"),
-            (else_try),
-                (str_store_string, s0, "str_close_gate"),
-            (try_end),
-        (else_try), #arminius tomb
+        (try_begin), #arminius tomb
             (eq, ":scene_prop_id", "spr_arminius_tomb"),
             (str_store_string, s0, "str_arminius_tomb_use"),
         (else_try), #arminius tomb
@@ -2161,30 +2233,30 @@ scripts_hardcoded = [
             (this_or_next|eq, ":scene_prop_id", "spr_wall_painting_heroglyphs2"),
             (eq, ":scene_prop_id", "spr_wall_painting_heroglyphs"),
             (str_store_string, s0, "str_hieroglyphs_use"),
-        (else_try), #opening/closing door
-            (this_or_next|eq, ":effected_object", "spr_door_destructible"),
-            (this_or_next|eq, ":effected_object", "spr_castle_f_door_b"),
-            (this_or_next|eq, ":effected_object", "spr_castle_e_sally_door_a"),
-            (this_or_next|eq, ":effected_object", "spr_castle_f_sally_door_a"),
-            (this_or_next|eq, ":effected_object", "spr_earth_sally_gate_left"),
-            (this_or_next|eq, ":effected_object", "spr_earth_sally_gate_right"),
-            (this_or_next|eq, ":effected_object", "spr_viking_keep_destroy_sally_door_left"),
-            (this_or_next|eq, ":effected_object", "spr_viking_keep_destroy_sally_door_right"),
-            (eq, ":effected_object", "spr_castle_f_door_a"),
+        # (else_try), #opening/closing door
+        #     (this_or_next|eq, ":effected_object", "spr_door_destructible"),
+        #     (this_or_next|eq, ":effected_object", "spr_castle_f_door_b"),
+        #     (this_or_next|eq, ":effected_object", "spr_castle_e_sally_door_a"),
+        #     (this_or_next|eq, ":effected_object", "spr_castle_f_sally_door_a"),
+        #     (this_or_next|eq, ":effected_object", "spr_earth_sally_gate_left"),
+        #     (this_or_next|eq, ":effected_object", "spr_earth_sally_gate_right"),
+        #     (this_or_next|eq, ":effected_object", "spr_viking_keep_destroy_sally_door_left"),
+        #     (this_or_next|eq, ":effected_object", "spr_viking_keep_destroy_sally_door_right"),
+        #     (eq, ":effected_object", "spr_castle_f_door_a"),
 
-            (try_begin),
-                (eq, ":item_situation", 0),
-                (str_store_string, s0, "str_open_door"),
-            (else_try),
-                (str_store_string, s0, "str_close_door"),
-            (try_end),
-        (else_try), #raising/dropping ladder
-            (try_begin),
-                (eq, ":item_situation", 0),
-                (str_store_string, s0, "str_raise_ladder"),
-            (else_try),
-                (str_store_string, s0, "str_drop_ladder"),
-            (try_end),
+        #     (try_begin),
+        #         (eq, ":item_situation", 0),
+        #         (str_store_string, s0, "str_open_door"),
+        #     (else_try),
+        #         (str_store_string, s0, "str_close_door"),
+        #     (try_end),
+        # (else_try), #raising/dropping ladder
+        #     (try_begin),
+        #         (eq, ":item_situation", 0),
+        #         (str_store_string, s0, "str_raise_ladder"),
+        #     (else_try),
+        #         (str_store_string, s0, "str_drop_ladder"),
+        #     (try_end),
         (try_end),
     (try_end),
 ]),
@@ -2213,11 +2285,11 @@ scripts_hardcoded = [
     (assign, "$g_quick_battle_army_2_size", 25),
     #(assign, "$form_ai_off", 0),
 
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_infantry, "trp_mountain_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_infantry, "trp_judean_rebel"),
     (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_infantry, "trp_sea_raider"),
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_archer, "trp_forest_bandit"),
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_archer, "trp_taiga_bandit"),
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_cavalry, "trp_steppe_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_archer, "trp_hispanic_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_archer, "trp_illyrian_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_cavalry, "trp_alannic_raider"),
     (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_cavalry, "trp_desert_bandit"),
     (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_infantry, "trp_dacian_flaxman_heavy"),
     (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_2_infantry, "trp_dacian_light_spearman"),
@@ -2243,12 +2315,12 @@ scripts_hardcoded = [
     (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_archer, "trp_germanic_slinger"),
     (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_1_cavalry, "trp_germanic_cavalry"),
     (faction_set_slot, "fac_kingdom_4", slot_faction_quick_battle_tier_2_cavalry, "trp_germanic_berserker"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_infantry, "trp_eastern_light_axeman"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_infantry, "trp_eastern_heavy_inf"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_archer, "trp_eastern_slinger"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_archer, "trp_eastern_light_archer"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_cavalry, "trp_eastern_horsearcher"),
-    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_cavalry, "trp_eastern_medium_horseman"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_infantry, "trp_syrian_spearman"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_infantry, "trp_syrian_spearman_vet"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_archer, "trp_syrian_archer"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_archer, "trp_syrian_archer_vet"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_1_cavalry, "trp_syrian_horsearcher_vet"),
+    (faction_set_slot, "fac_kingdom_5", slot_faction_quick_battle_tier_2_cavalry, "trp_syrian_heavy_cav_vet"),
     (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_infantry, "trp_eastern_heavy_inf"),
     (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_2_infantry, "trp_eastern_heavy_spearman"),
     (faction_set_slot, "fac_kingdom_6", slot_faction_quick_battle_tier_1_archer, "trp_eastern_skrimisher"),
@@ -2324,7 +2396,8 @@ scripts_hardcoded = [
     #scenen
     # Towns (loop)
     (try_for_range, ":town_no", towns_begin, towns_end),#ich verwend die selben scenen, sonst werd ich wahnsinnig
-        (party_slot_eq, ":town_no", slot_center_culture, "fac_culture_7"),#romer
+        (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_7"),#romer
+        (party_slot_eq, ":town_no", slot_center_culture, "fac_culture_17"),#greek
         (party_set_slot,":town_no", slot_town_center, "scn_town_1_center"),
         (party_set_slot,":town_no", slot_town_castle, "scn_town_1_castle"),
         (party_set_slot,":town_no", slot_town_prison, "scn_town_1_prison"),
@@ -2379,6 +2452,8 @@ scripts_hardcoded = [
         (party_set_slot,":town_no", slot_town_store, "scn_town_4_store"),
         (party_set_slot,":town_no", slot_town_arena, "scn_town_4_arena"),
     (else_try),
+        (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_16"),#eastern
+        (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_15"),#eastern
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_5"),#eastern
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_8"),#eastern
         (party_slot_eq, ":town_no", slot_center_culture, "fac_culture_6"),
@@ -2676,14 +2751,15 @@ scripts_hardcoded = [
     (party_set_slot,"p_town_12", slot_town_prison, "scn_lugdunum_prison"),
     (party_set_slot,"p_town_12", slot_town_store, "scn_lugdunum_store"),
     (party_set_slot,"p_town_12", slot_town_arena, "scn_lugdunum_arena"),
-#carthago: p_town_28,
-# athen p_town_37
-# alexandria p_town_20
-#habours roman: p_town_10, p_town_22, p_town_13, p_town_33, p_town_36, p_town_35 (thessalonika), p_town_4, p_town_32, p_town_34
-#mountain scene: town_8, town_38, town_30
-#new generic scene: town_3, town_21, town_5, town_2
-#castle scenen
+    #carthago: p_town_28,
+    # athen p_town_37
+    # alexandria p_town_20
+    #habours roman: p_town_10, p_town_22, p_town_13, p_town_33, p_town_36, p_town_35 (thessalonika), p_town_4, p_town_32, p_town_34
+    #mountain scene: town_8, town_38, town_30
+    #new generic scene: town_3, town_21, town_5, town_2
+    #castle scenen
     (try_for_range, ":castle_no", castles_begin, castles_end),#ich verwend die selben scenen, sonst werd ich wahnsinnig
+        (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_17"),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_7"),
         (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_1_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_1_interior"),
@@ -2715,6 +2791,8 @@ scripts_hardcoded = [
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_5_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_5_prison"),
     (else_try),
+        (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_16"),
+        (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_15"),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_5"),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_8"),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_6"),
@@ -2852,9 +2930,14 @@ scripts_hardcoded = [
     (party_set_icon, "p_castle_45", "icon_fort_greek"),
     (party_set_icon, "p_castle_44", "icon_fort_greek"),
 
-    (party_set_slot,"p_castle_23", slot_castle_exterior, "scn_londinium"),#londinium
-    (party_set_slot,"p_castle_23", slot_town_castle, "scn_londinium_castle"),#londinium
-    (party_set_slot,"p_castle_23", slot_town_prison, "scn_londinium_prison"),#londinium
+    (party_set_slot,"p_castle_23", slot_castle_exterior, "scn_romanized_celt_castle_ext"),#londinium
+    (party_set_slot,"p_castle_23", slot_town_castle, "scn_romanized_celt_castle_int"),#londinium
+    (party_set_slot,"p_castle_23", slot_town_prison, "scn_romanized_celt_castle_prison"),#londinium
+
+    (party_set_slot,"p_castle_9", slot_castle_exterior, "scn_londinium"),#
+    (party_set_slot,"p_castle_9", slot_town_castle, "scn_londinium_castle"),#
+    (party_set_slot,"p_castle_9", slot_town_prison, "scn_londinium_prison"),#
+
 
     (party_set_slot,"p_castle_16", slot_castle_exterior, "scn_roman_castle_2_exterior"),#colonia aggrippina
     (party_set_slot,"p_castle_16", slot_town_castle, "scn_roman_castle_2_interior"),#colonia aggrippina
@@ -2865,7 +2948,6 @@ scripts_hardcoded = [
     (party_set_slot,"p_castle_24", slot_town_prison, "scn_londinium_prison"),#Mogontiacum
     (party_set_slot,"p_castle_34", slot_castle_exterior, "scn_castellum"),#?
 
-    (party_set_slot,"p_castle_9", slot_castle_exterior, "scn_castellum"),#?
     (party_set_slot,"p_castle_4", slot_castle_exterior, "scn_castellum"),#?
 
     (party_set_slot,"p_castle_20", slot_castle_exterior, "scn_castellum"),#?
@@ -3022,6 +3104,10 @@ scripts_hardcoded = [
         #     (try_end),
           (try_end),
     (try_end),
+
+    # romainzed celtic
+    (party_set_slot,"p_village_10", slot_castle_exterior, "scn_romanized_celt_village"),
+
     #otherwise set other special scenes
     (party_set_slot,"p_village_189", slot_castle_exterior, "scn_village_germanic_1"),
     (party_set_slot,"p_village_79", slot_castle_exterior, "scn_village_germanic_1"),
@@ -3135,6 +3221,7 @@ scripts_hardcoded = [
         (party_get_slot, ":scene", ":village_no", slot_castle_exterior),
         (lt, ":scene", "scn_training_ground_ranged_melee_5"),#not assigned yet
         (try_begin),
+            (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_17"),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_7"),
             (store_random_in_range, ":scene", "scn_village_41", "scn_village_42"),
             (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
@@ -3157,6 +3244,10 @@ scripts_hardcoded = [
             (store_random_in_range, ":scene", "scn_village_98", "scn_village_94"),
             (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
         (else_try),
+            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_16"),
+            (store_random_in_range, ":scene", "scn_village_egypt", "scn_village_judea"),
+        (else_try),
+            (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_15"),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_6"),
             (store_random_in_range, ":scene", "scn_village_parthian_1", "scn_village_7"),
             (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
@@ -3321,7 +3412,7 @@ scripts_hardcoded = [
                 (jump_to_menu, "mnu_bandit_lair"),
             (else_try),
                 (party_get_icon, ":icon", "$g_encountered_party"),
-                (eq, ":icon", "icon_castle_a"),
+                (eq, ":icon", "icon_horde_camp"),
                 (jump_to_menu, "mnu_horde"),
             (else_try),
                 (eq, "$g_encountered_party", "p_pillars"),
@@ -3351,6 +3442,9 @@ scripts_hardcoded = [
             (else_try),
                 (eq, "$g_encountered_party", "p_caves_of_bacchus"),
                 (jump_to_menu, "mnu_bacchus_entrance"),
+            (else_try),
+                (eq, "$g_encountered_party", "p_temple_of_rhodogune"),
+                (jump_to_menu, "mnu_rhodogune_temple"),
             (else_try),
                 (eq, "$g_encountered_party", "p_kurgan"),
                 (jump_to_menu, "mnu_kurgan_enter"),
@@ -3396,6 +3490,9 @@ scripts_hardcoded = [
             (else_try),
                 (eq, "$g_encountered_party", "p_holy_lance_cave"),
                 (jump_to_menu, "mnu_holy_lance_caves"),
+            (else_try),
+                (eq, "$g_encountered_party", "p_valley_of_elah"),
+                (jump_to_menu, "mnu_valley_of_elah"),
             (else_try),
                 (eq, "$g_encountered_party", "p_island"),
                 (jump_to_menu, "mnu_cythnus"),
@@ -5149,6 +5246,10 @@ scripts_hardcoded = [
             (eq, ":culture", "fac_culture_5"),
             (eq, ":troop_culture", "fac_culture_5"),
             (val_mul, ":wage", 3),
+        (else_try),#syrians
+            (eq, ":culture", "fac_culture_15"),
+            (eq, ":troop_culture", "fac_culture_15"),
+            (val_mul, ":wage", 3),
         (else_try),
             (val_mul, ":wage", 5),
         (try_end),
@@ -5354,30 +5455,64 @@ scripts_hardcoded = [
 ]),
 
 # script_game_get_prisoner_price
-# This script is called from the game engine for calculating prisoner price
+# This script is called from the game engine for calculating prisoner price (for selling)
 # Input:
 # param1: troop_id,
 # Output: reg0
 ("game_get_prisoner_price",[
     (store_script_param_1, ":troop_id"),
 
-    (try_begin), #SB : regular prices for constable selling
-        (this_or_next|eq, "$g_talk_troop", "$g_player_constable"),
-        (is_between, "$g_talk_troop", ransom_brokers_begin, ransom_brokers_end),
-        (store_character_level, ":troop_level", ":troop_id"),
-        (store_add, ":ransom_amount", ":troop_level", 10),##e.g. level is 40 => 50
-        # (val_add, ":ransom_amount", 10),
-        (val_mul, ":ransom_amount", ":ransom_amount"),##e.g. 50^2 = 2500
-        (val_div, ":ransom_amount", 5), ##e.g. 2500/5 = 500
-    (else_try),
-        (eq, "$g_talk_troop", "trp_slave_trader"),
-        (assign, ":ransom_amount", 300),
+    (store_character_level, ":troop_level", ":troop_id"),
+    (store_add, ":ransom_amount", ":troop_level", 10),
+    (val_mul, ":ransom_amount", ":ransom_amount"),
+
+    (try_begin),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_bandit"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_hispanic"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_alans"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_illyrian"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_sea_raiders"),
+        (eq, "$g_talk_troop", "trp_slave_trader_black_sea"),
+        (val_div, ":ransom_amount", 2),
+    # (else_try),
+    #     (eq, "$g_talk_troop", "trp_slave_trader"),
     (else_try),
         (this_or_next|eq, "$g_talk_troop", "trp_ramun_the_slave_trader"),
         (eq, "$g_talk_troop", "trp_galeas"),
-        (assign, ":ransom_amount", 301),
+        (val_add, ":ransom_amount", 25),
+    (try_end),
+    (assign, reg0, ":ransom_amount"),
+    (set_trigger_result, reg0),
+]),
+# script_game_get_prisoner_price_buy
+# Input:
+# param1: troop_id,
+# Output: reg0
+("game_get_prisoner_price_buy",[
+    (store_script_param_1, ":troop_id"),
+
+    (store_character_level, ":troop_level", ":troop_id"),
+    (store_add, ":ransom_amount", ":troop_level", 10),
+    (val_mul, ":ransom_amount", ":ransom_amount"),
+
+    (try_begin),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_bandit"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_hispanic"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_alans"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_illyrian"),
+        (this_or_next|eq, "$g_talk_troop", "trp_slave_trader_sea_raiders"),
+        (eq, "$g_talk_troop", "trp_slave_trader_black_sea"),
+        (val_mul, ":ransom_amount", 2),
+    # (else_try),
+    #     (eq, "$g_talk_troop", "trp_slave_trader"),
     (else_try),
-        (assign, ":ransom_amount", 150),
+        (this_or_next|eq, "$g_talk_troop", "trp_ramun_the_slave_trader"),
+        (eq, "$g_talk_troop", "trp_galeas"),
+        (val_mul, ":ransom_amount", 5),
+        (val_div, ":ransom_amount", 4),
+    (else_try),
+        (val_mul, ":ransom_amount", 3),
+        (val_div, ":ransom_amount", 2),
     (try_end),
     (assign, reg0, ":ransom_amount"),
     (set_trigger_result, reg0),
@@ -6027,23 +6162,23 @@ scripts_hardcoded = [
                 (try_end),
                 (try_begin),
                     (gt, reg49, 0),
-                    (str_store_string, s26, "@{s26}^Last week he spend for court, servants, cloths, etc {reg49} denars"),
+                    (str_store_string, s26, "@{s26}^Last week he spend for court, servants, cloths, etc {reg49} denarii"),
                 (try_end),
                 (try_begin),
                     (gt, reg50, 0),
-                    (str_store_string, s26, "@{s26}^Last week he spend for his family {reg50} denars"),
+                    (str_store_string, s26, "@{s26}^Last week he spend for his family {reg50} denarii"),
                 (try_end),
                 (try_begin),
                     (gt, reg51, 0),
-                    (str_store_string, s26, "@{s26}^Last week he spend for his love affairs {reg51} denars"),
+                    (str_store_string, s26, "@{s26}^Last week he spend for his love affairs {reg51} denarii"),
                 (try_end),
                 (try_begin),
                     (gt, reg52, 0),
-                    (str_store_string, s26, "@{s26}^Last week he paid {reg52} denars imperial tax."),
+                    (str_store_string, s26, "@{s26}^Last week he paid {reg52} denarii imperial tax."),
                 (try_end),
                 (try_begin),
                     (gt, reg53, 0),
-                    (str_store_string, s26, "@{s26}^Last week he donated {reg53} denars to his settlements."),
+                    (str_store_string, s26, "@{s26}^Last week he donated {reg53} denarii to his settlements."),
                 (try_end),
             (try_end),
             (str_clear, s53),
@@ -6093,6 +6228,7 @@ scripts_hardcoded = [
                     (troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_2"),
                     (str_store_string, s27, "@chieftain"),
                 (else_try),
+                    (this_or_next|troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_15"),
                     (this_or_next|troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_5"),
                     (troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_6"),
                     (str_store_string, s27, "@vassal"),
@@ -6122,7 +6258,7 @@ scripts_hardcoded = [
                     (str_store_string, s53, "@{s53} The headquarters are in {s0}."),
                 (try_end),
                 (str_store_string, s53, "@{s53}^^It has the following auxiliar units attached:"),
-                (str_store_string, s29, "@None."),
+                (str_clear, s29),
                 (try_for_range, ":aux_commander_slot", slot_aux_commander_begin, slot_aux_commander_end),
                     (store_sub, ":aux_legion_slot", ":aux_commander_slot", slot_aux_commander_begin),
                     (val_add, ":aux_legion_slot", slot_aux_legion_begin),
@@ -6144,7 +6280,11 @@ scripts_hardcoded = [
                         (str_store_string, s28, ":aux"),
                     (try_end),
                     (str_store_troop_name_link, s0, ":aux_comander"),
-                    (str_store_string, s29, "@^{s28}, commanded by {s0}."),
+                    (str_store_string, s29, "@-) {s28}, commanded by {s0}.^{s29}"),
+                (try_end),
+                (try_begin),
+                    (str_is_empty, s29),
+                    (str_store_string, s29, "str_none"),
                 (try_end),
                 (str_store_string, s53, "@{s53}^{s29}"),
                 (troop_get_slot, reg18, ":troop_no", slot_troop_triumph_points),
@@ -6352,7 +6492,7 @@ scripts_hardcoded = [
             (this_or_next|party_slot_eq, ":center_no", slot_party_type, spt_town),
             (party_slot_eq, ":center_no", slot_party_type, spt_castle),
             (party_get_slot, reg1, ":center_no", slot_town_wealth),
-            (str_store_string, s2, "@{s2}^Treasury of the town watch: {reg1} denars", 0),
+            (str_store_string, s2, "@{s2}^Treasury of the town watch: {reg1} denarii", 0),
         (try_end),
 
         (party_get_slot, reg1, ":center_no", slot_center_capital),
@@ -6386,7 +6526,8 @@ scripts_hardcoded = [
             (party_get_slot, ":province", ":center_no", slot_center_province),
             (val_add, ":province", "str_province_begin"),
             (str_store_string, s49, ":province"),
-            (str_store_string, s2, "@{s2}^^Province: {s49}"),
+            (call_script, "script_get_party_full_culture_string", ":center_no"),
+            (str_store_string, s2, "@{s2}^^Province: {s49}^^Culture: {s1}"),
         (try_end),
 
         (str_store_string, s0, "@{s2}", 0),
@@ -6778,6 +6919,111 @@ scripts_hardcoded = [
     (try_begin),
         (eq, ":note_index", 5),
         (try_begin),
+            (eq, ":quest", "qst_nero_greece_tour"),
+            (str_store_troop_name_link, s10, "$g_talk_troop"),
+            (str_clear, s0),
+
+            (quest_get_slot, ":total_hours_left", "qst_nero_greece_tour", slot_quest_timer),
+            (store_current_hours, ":current_time"),
+            (val_sub, ":total_hours_left", ":current_time"),
+            (val_max, ":total_hours_left", 0),
+            (store_div, reg5, ":total_hours_left", 24),
+            (store_mod, reg6, ":total_hours_left", 24),
+            (assign, reg7, ":total_hours_left"),
+
+            (try_begin),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 1),
+                (str_store_party_name_link, s13, "p_town_6"),
+                (str_store_string, s0, "@{s0}^^You are to make preparations to sail for Greece immediately. Talk with Nero to start the journey. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) left to start the journey. It is recommended to buy a ship and ensure it's in the harbour of {s13}."),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 4),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^Talk with the town praefect in {s1} (Hint: Visit the scriptorium). You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) left."),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 5),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^Visit Nero in {s1} as fast as possible. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) left."),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 7),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^You must prepare the meal for the feast in {s1}. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) left."),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 9),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^Now, inspired by his victory, Nero wishes to see {s1}. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) to reach the target location."),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 9),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^The journey continues to {s1}. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) to reach the target location."),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 13),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^The next destination is {s1}. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) to reach the target location."),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 16),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_temp_slot, 11),
+                (str_store_string, s0, "@{s0}^^Eystachus, the organizer of the games, has asked for your help. Fearing Nero's wrath if he loses, Eystachus wants you to persuade the champion athletes to let Caesar win. You have agreed to help him. You should seek out the athletes, then return to Eystachus."),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 20),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^The final destination is {s1}. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) to reach the target location."),
+            (else_try),
+                (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 21),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^Enjoy the final grand feast in Athenae!"),
+            (else_try),
+                (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (quest_get_slot, ":item_flags", "qst_nero_greece_tour", slot_quest_temp_slot),
+                (try_begin),
+                    (eq, ":item_flags", 7),
+                    (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                    (str_store_party_name_link, s1, ":next_target"),
+
+                    (str_store_string, s0, "@You have gathered all the necessary provisions for the feast. You should return to Nero in {s1} and inform him of your success. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) left."),
+                (else_try),
+                    # If not all items are collected, build a list of what is still needed.
+                    (str_store_string, s0, "@You have been tasked with gathering provisions for Nero's victory feast. You still need to find:"),
+
+                    # Check for Wine (flag 1)
+                    (store_and, ":has_wine", ":item_flags", 1),
+                    (try_begin),
+                        (eq, ":has_wine", 0),
+                        (str_store_string, s0, "@{s0}^^- Falernian Wine (Hint: Italy)"),
+                    (try_end),
+
+                    # Check for Saffron (flag 2)
+                    (store_and, ":has_saffron", ":item_flags", 2),
+                    (try_begin),
+                        (eq, ":has_saffron", 0),
+                        (str_store_string, s0, "@{s0}^^- Saffron (Hint: Eastern provinces)"),
+                    (try_end),
+
+                    # Check for Peacocks (flag 4)
+                    (store_and, ":has_peacocks", ":item_flags", 4),
+                    (try_begin),
+                        (eq, ":has_peacocks", 0),
+                        (str_store_string, s0, "@{s0}^^- Peacocks (Hint: Eastern provinces)"),
+                    (try_end),
+                    (str_store_string, s0, "@{s0}^^You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) left."),
+                (try_end),
+            (else_try),
+                (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 2),
+                (quest_get_slot, ":next_target", "qst_nero_greece_tour", slot_quest_target_center),
+                (gt, ":next_target", 0),
+                (str_store_party_name_link, s1, ":next_target"),
+                (str_store_string, s0, "@{s0}^^Nero joined your host. Now travel to {s1}, the first stop at your journey. You have {reg5} days ({reg6} hours) left to reach it."),
+            (try_end),
+            (set_trigger_result, 1),
+        (else_try),
             (eq, ":quest", "qst_blank_quest_23"),
             (str_store_string, s0, "@Your realm (not allies or tributaries) must hold the following settlements:^"),
             (try_for_range, ":walled_center", walled_centers_begin, walled_centers_end),
@@ -7526,6 +7772,27 @@ scripts_hardcoded = [
             (set_trigger_result, 0xFFEEDD),
         (try_end),
     (else_try),
+        (eq, ":item_no",  "itm_sling_david"),
+        (try_begin),
+            (eq, ":extra_text_id", 0),
+            (set_result_string, "@The sling with which David killed Goliat."),
+            (set_trigger_result, 0xFFEEDD),
+        (try_end),
+    (else_try),
+        (eq, ":item_no",  "itm_jupiters_throwing_spear"),
+        (try_begin),
+            (eq, ":extra_text_id", 0),
+            (set_result_string, "@This throwing spear surrounds a powerful aura.^According to legend, Rhodogune used this spear to crush a revolt in Media.^Braided hair is tied just below the head."),
+            (set_trigger_result, 0xFFEEDD),
+        (try_end),
+    (else_try),
+        (is_between, ":item_no", "itm_basic_chariot_horse", "itm_sumpter_horse"),
+        (try_begin),
+            (eq, ":extra_text_id", 0),
+            (set_result_string, "@If WSE2 is enabled, a chariot will spawn attached to the horse.^Keep in mind, the chariot behaves like a horse.^You need to walk towards the horses to mount the chariot."),
+            (set_trigger_result, 0xFFEEDD),
+        (try_end),
+    (else_try),
         (eq, ":item_no",  "itm_linothorax_alexander"),
         (try_begin),
             (eq, ":extra_text_id", 0),
@@ -8008,7 +8275,7 @@ scripts_hardcoded = [
 
             (try_for_range, ":i", 0, ":num_of_stacks"),
                 (party_stack_get_troop_id, ":stack_troop", "p_follower_party", ":i"),
-                (eq, ":stack_troop", "trp_sword_sister"),
+                (eq, ":stack_troop", "trp_soldier_wife"),
 
                 (party_stack_get_size, ":stack_size", "p_follower_party", ":i"),
                 (party_stack_get_num_wounded, ":stack_wounded", "p_follower_party", ":i"),
@@ -8339,7 +8606,7 @@ scripts_hardcoded = [
                 (eq, ":party_template", "pt_hord_roxolanen"),
                 (party_get_icon, ":icon", ":party_no"),
                 (try_begin),
-                    (eq, ":icon", "icon_castle_a"),
+                    (eq, ":icon", "icon_horde_camp"),
                     (assign, ":speed_multiplier", 0),
                 (else_try),
                     (assign, ":speed_multiplier", 50),

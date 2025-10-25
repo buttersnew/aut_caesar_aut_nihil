@@ -1,4 +1,5 @@
 # -*- coding: cp1254 -*-
+from __future__ import absolute_import
 from module_skills import *
 
 from strings_character_names.module_names_britannic import *
@@ -9,14 +10,17 @@ from strings_character_names.module_names_roman import *
 from strings_character_names.module_names_caucasian import *
 from strings_character_names.module_names_north_african import *
 from strings_character_names.module_names_arabian import *
+from strings_character_names.module_names_egyptian import *
 from strings_character_names.module_names_north_african import *
 from strings_character_names.module_names_persian import *
 from strings_character_names.module_names_sarmatian import *
 from strings_character_names.module_names_hebrew import *
 from strings_character_names.module_names_saka import *
+from strings_character_names.module_names_greek import *
 from strings_face_keys.female_white import *
 from strings_face_keys.female_brown import *
 from strings_face_keys.female_black import *
+from six.moves import range
 
 #from compiler import *
 #SB : skill strings from CC, see bottom
@@ -270,8 +274,8 @@ strings = [
   ("cant_use_inventory_arena","Can't access inventory in the arena."),
   ("cant_use_inventory_disguised","Can't access inventory while you're disguised."),
   ("cant_use_inventory_tutorial","Can't access inventory in the training camp."),
-  ("1_denar", "1 denar"),
-  ("reg1_denars", "{reg1} denars"),
+  ("1_denar", "1 denarius"),
+  ("reg1_denars", "{reg1} denarii"),
   ("january_reg1_reg2", "Ianuarius {reg1}, {reg2}"),
   ("february_reg1_reg2", "Februarius {reg1}, {reg2}"),
   ("march_reg1_reg2", "Martius {reg1}, {reg2}"),
@@ -708,6 +712,9 @@ strings = [
   ("rob_caravan", "rob a merchant caravan"), # possibly remove
   ("sell_slavery", "sell people into slavery"),
 
+  ("flog_slave", "senselessly flogging and torturing slaves"),
+  ("kill_slave", "senselessly murdering slaves"),
+
 # egalitarian
   ("men_hungry", "run out of food"), ##Done - simple triggers
   ("men_unpaid", "not be able to pay the men"),
@@ -759,7 +766,7 @@ strings = [
 
 #NPC strings
   ("npc1_intro", "Ho there, traveller. You wouldn't by chance be in the market for a tracker, would you?"),
-  ("npc2_intro", "Salve! Would you be so kind as to have a cup with me? I'm down to my last five denars and I'd rather not drink alone."),
+  ("npc2_intro", "Salve! Would you be so kind as to have a cup with me? I'm down to my last five denarii and I'd rather not drink alone."),
   ("npc3_intro", "Salve and good day to you!"),
   ("npc4_intro", "Greetings, stranger. You want a drink?"),
   ("npc5_intro", "Greetings, traveller. Would you join me for a drink?"),
@@ -803,7 +810,7 @@ strings = [
   ("npc42_intro", "Aye, stranger. How can I help you?"),
 
   ("npc1_intro_response_1", "Perhaps. What's the urgency?"),
-  ("npc2_intro_response_1", "Your last five denars? What happened to you?"),
+  ("npc2_intro_response_1", "Your last five denarii? What happened to you?"),
   ("npc3_intro_response_1", "Ave! What's a clearly well-brought up young lady like you doing in a place like this?"),
   ("npc4_intro_response_1", "May I ask who you are?"),
   ("npc5_intro_response_1", "Certainly. With whom do I have the pleasure of drinking?"),
@@ -986,7 +993,7 @@ strings = [
 	+" hunted runaway slaves. But then one day, one of my man said I have become to old to be their leader."
 	+" He challenged me to a fight and defeated me."),
   ("npc11_backstory_b", "For 30 years I followed the armies, selling them victuals and drink, watching their games of dice and"
-	+" finding them girls, and nary a denar was left in my purse at the end."),
+	+" finding them girls, and nary a denarius was left in my purse at the end."),
   ("npc12_backstory_b", "I am by training a natural philosopher, but condemned by the jealousy of the thick-headed doctors"
 	+" to make my living as an itinerant surgeon. I was hired by a nobleman of this city to cure his son, who fell into a coma after a fall"
 	+" from his balcony. I successfully trepanned the patient's skull to reduce the cranial swelling, but the family ignored my advice to treat"
@@ -1094,7 +1101,7 @@ strings = [
 
   ### use these if there is a short period of time between the last meeting
   ("npc1_backstory_later", "I've been here and about, you know, doing my best to keep out of trouble. I'm desperately in need of work, however."),
-  ("npc2_backstory_later", "I sold my boots and have managed to make a few denars peddling goods from town to town, but it's a hard living."),
+  ("npc2_backstory_later", "I sold my boots and have managed to make a few denarii peddling goods from town to town, but it's a hard living."),
   ("npc3_backstory_later", "I hired myself on as a cook for some passing caravans, and that at least keeps me fed."
 	+" But it is rough company on the road, and I grow weary of fighting off guards and others who would try to take liberties."
 	+" I was thinking that if I could find work as a warrior, men would know to leave me alone."),
@@ -1114,7 +1121,7 @@ strings = [
   ("npc11_backstory_later", "I've been around and about to find work in a mercenary band. But it's a rare captain who'll take on an old bag of bones like me as a fighter,"
 	+" even if I could whip half the boys in his outfit."),
   ("npc12_backstory_later", "I have been here and about, tending to the sick and taking what reward I can."
-	+" But the people of these parts are ignorant, and have little respect for my skills. The few denars I make are barely"
+	+" But the people of these parts are ignorant, and have little respect for my skills. The few denarii I make are barely"
 	+" enough for me to replenish my stock of medicine. I should be grateful for the chance to find other work."),
   ("npc13_backstory_later", "I have been wandering through the cities of the world, leaving a string of love-sick women and"
 	+" cuckolded husbands in my wake. But I grow weary of such simple challenges, and had been thinking of turning myself to more martial pastimes."),
@@ -1254,7 +1261,7 @@ strings = [
 	+" I can get my hands dirty."),
   ("npc13_signup", "Indeed? You would do well to enlist me."),
   ("npc14_signup", "I would be pleased to ride with you, at least for a little while, for pay and a share of any loot."),
-  ("npc15_signup", "A village near Rome, eventually, but I'd welcome the opportunity to get a few denars in my pocket,"
+  ("npc15_signup", "A village near Rome, eventually, but I'd welcome the opportunity to get a few denarii in my pocket,"
 	+" first, so I don't come home empty handed. So if you promise me food and a share of the loot, I'd be happy to fight with you for a while."),
   ("npc16_signup", "Well, friend, let me tell you. I may not know how to read and write,"
 	+" but I know the quickest way to a man's heart is between his fourth and fifth rib, if you understand me. "),
@@ -1436,107 +1443,107 @@ strings = [
   ("npc42_signup_response_2", "You should better take care of your family instead of joining my warband."),
 
   ("npc1_payment", "I will be very useful to you, master, you can bet on that. Just one more thing before we leave,"
-	+" would you mind lending me {reg3} denars? I am ashamed to say it, but I have made myself a bit of debt here,"
+	+" would you mind lending me {reg3} denarii? I am ashamed to say it, but I have made myself a bit of debt here,"
 	+" staying in this tavern over the last few weeks and the tavern owners no longer believe that I am loaded with gold as"
 	+" I used to tell them. You know, things could get ugly here if they see me leaving with you before paying them."),
   ("npc2_payment", "{!}."),
   ("npc3_payment", "{!}."),
-  ("npc4_payment", "Excellent. Before we depart, would you be so kind to lend me {reg3} denars? I have made some debts"
+  ("npc4_payment", "Excellent. Before we depart, would you be so kind to lend me {reg3} denarii? I have made some debts"
 	+" here in {s20}, and I would like to repay them before we leave."),
-  ("npc5_payment", "Thank you. Now, to seal off our agreement, I ask for {reg3} denars from you."
+  ("npc5_payment", "Thank you. Now, to seal off our agreement, I ask for {reg3} denarii from you."
 	+" It's an advice my father gave me. He told me 'Satibarzanes, never fight for a barbarian before {he/she} pays you your worth of gold first'."),
   ("npc6_payment", "{!}."),
-  ("npc7_payment", "All right then. I will come with you. But I want a payment of {reg3} denars first."
+  ("npc7_payment", "All right then. I will come with you. But I want a payment of {reg3} denarii first."
 	+" You aren't expecting me to work for free, do you?"),
-  ("npc8_payment", "Then I will fight your enemies for you. But first I want a bounty of {reg3} denars. If you are a worthy captain"
+  ("npc8_payment", "Then I will fight your enemies for you. But first I want a bounty of {reg3} denarii. If you are a worthy captain"
 	+" who can lead {his/her} company to riches and plunder, you should have no trouble paying. I cannot afford to follow a beggar."),
-  ("npc9_payment", "That's very good of you. And before I join, can you lend me {reg3} denars, so that I can buy some proper"
+  ("npc9_payment", "That's very good of you. And before I join, can you lend me {reg3} denarii, so that I can buy some proper"
 	+" clothing that befits a eques of noble birth such as myself. My clothes has been worn down badly due to my recent bad fortune,"
 	+" and I cannot let common soldiers mistake me as one of their own."),
   ("npc10_payment", "That's good news. But I'll ask for one last thing, captain. I have a woman here in {s20}, a tavern wench,"
 	+" and she says she has my child in her belly. I want to give her some money before I leave... for the child, you know."
-	+" Do you think you can spare {reg3} denars?"),
-  ("npc11_payment", "Hey thank you captain. But before joining up with you, I would ask for a payment of {reg3} denars."
+	+" Do you think you can spare {reg3} denarii?"),
+  ("npc11_payment", "Hey thank you captain. But before joining up with you, I would ask for a payment of {reg3} denarii."
 	+" I know that during campaigns soldiers can go on for weeks without seeing any wages. I am wise enough not to sign anywhere"
 	+" without having myself covered."),
   ("npc12_payment", "{!}."),
-  ("npc13_payment", "Before I sign up, there is the small matter of some expenses I have incurred while staying here -- {reg3} denars."
+  ("npc13_payment", "Before I sign up, there is the small matter of some expenses I have incurred while staying here -- {reg3} denarii."
 	+" Do you think that you could cover those for me, as a gesture of friendship?"),
-  ("npc14_payment", "Ah, one last thing. I would ask for an initial bounty of {reg3} denars before I join your command."
+  ("npc14_payment", "Ah, one last thing. I would ask for an initial bounty of {reg3} denarii before I join your command."
 	+" It's my principle never to enter someone's service without receiving the payment I deserve."),
   ("npc15_payment", "Good. By the way, as a skilled engineer I would expect a payment for my services."
-	+" A signing bonus of {reg3} denars would be fair, I think."),
+	+" A signing bonus of {reg3} denarii would be fair, I think."),
   ("npc16_payment", "Now, that's good news, captain. So, how about paying me a little something to seal off our agreement?"
 	+" A mere {reg3} would be enough. Please don't take this the wrong way, but I've had some bad luck with employers in the past. "),
   ("npc17_payment", "{!}"),
-  ("npc18_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc19_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc20_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc21_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc22_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc23_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc24_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc25_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc26_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc27_payment", "Very good. But before I join I need a payement of {reg3} denars. I have made a lot of debts with ... eih certain peoples. I must repay my debts first."),
-  ("npc28_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc29_payment", "But before I join I need a payement of {reg3} denars."),
-  ("npc30_payment", "But before I join I need a payement of {reg3} denars. You understand?"),
+  ("npc18_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc19_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc20_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc21_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc22_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc23_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc24_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc25_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc26_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc27_payment", "Very good. But before I join I need a payement of {reg3} denarii. I have made a lot of debts with ... eih certain peoples. I must repay my debts first."),
+  ("npc28_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc29_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc30_payment", "But before I join I need a payement of {reg3} denarii. You understand?"),
   ("npc31_payment", "{!}"),#special
   ("npc32_payment", "{!}"),
   ("npc33_payment", "{!}"),
   ("npc34_payment", "{!}"),
   ("npc35_payment", "{!}"),
   ("npc36_payment", "{!}."),
-  ("npc37_payment", "I will be very valuable to you, commander, that I promise. Just one more thing before we leave, would you mind lending me {reg3} denars? I need to buy more papyrus, ink and some more materials for the travels."),
-  ("npc38_payment", "I will be very useful to you, master, you can bet on that. Just one more thing before we leave, would you mind lending me {reg3} denars? I am ashamed to say it, but I have made myself a bit of debt here, staying in this tavern over the last few weeks and the tavern owners no longer believe that I am loaded with gold as I used to tell them. You know, things could get ugly here if they see me leaving with you before paying them."),
+  ("npc37_payment", "I will be very valuable to you, commander, that I promise. Just one more thing before we leave, would you mind lending me {reg3} denarii? I need to buy more papyrus, ink and some more materials for the travels."),
+  ("npc38_payment", "I will be very useful to you, master, you can bet on that. Just one more thing before we leave, would you mind lending me {reg3} denarii? I am ashamed to say it, but I have made myself a bit of debt here, staying in this tavern over the last few weeks and the tavern owners no longer believe that I am loaded with gold as I used to tell them. You know, things could get ugly here if they see me leaving with you before paying them."),
   ("npc39_payment", "{!}"),
-  ("npc40_payment", "Just one more thing before we leave, would you mind lending me {reg3} denars? I am ashamed, but I have made myself a bit of debt in {s20} as I was workless for half a year.... But I still had to pay all the bills and buy food. So I had to take a loan ..."),
+  ("npc40_payment", "Just one more thing before we leave, would you mind lending me {reg3} denarii? I am ashamed, but I have made myself a bit of debt in {s20} as I was workless for half a year.... But I still had to pay all the bills and buy food. So I had to take a loan ..."),
   ("npc41_payment", "{!}"),
-  ("npc42_payment", "Just one moment. I am ashamed to mention it, but I have debts in {s20}… Some unpaid bills. I ask you for {reg3} denars. I know it's much, but I don't want to leave my mother and sisters with debts."),
+  ("npc42_payment", "Just one moment. I am ashamed to mention it, but I have debts in {s20}… Some unpaid bills. I ask you for {reg3} denarii. I know it's much, but I don't want to leave my mother and sisters with debts."),
 
-  ("npc1_payment_response", "Very well, here's {reg3} denars. Now, fall in with the rest."),
+  ("npc1_payment_response", "Very well, here's {reg3} denarii. Now, fall in with the rest."),
   ("npc2_payment_response", "{!}."),
   ("npc3_payment_response", "{!}."),
-  ("npc4_payment_response", "Certainly. Here's {reg3} denars."),
-  ("npc5_payment_response", "Well... here's {reg3} denars, then. Your first payment."),
+  ("npc4_payment_response", "Certainly. Here's {reg3} denarii."),
+  ("npc5_payment_response", "Well... here's {reg3} denarii, then. Your first payment."),
   ("npc6_payment_response", "{!}."),
-  ("npc7_payment_response", "No, of course not. Here's {reg3} denars."),
-  ("npc8_payment_response", "Oh, I am no pauper! Here's {reg3} denars for you."),
-  ("npc9_payment_response", "Very well, here's {reg3} denars."),
-  ("npc10_payment_response", "Of course. Here, {reg3} denars."),
-  ("npc11_payment_response", "Very well, here's {reg3} denars. Make yourself ready. We leave soon."),
+  ("npc7_payment_response", "No, of course not. Here's {reg3} denarii."),
+  ("npc8_payment_response", "Oh, I am no pauper! Here's {reg3} denarii for you."),
+  ("npc9_payment_response", "Very well, here's {reg3} denarii."),
+  ("npc10_payment_response", "Of course. Here, {reg3} denarii."),
+  ("npc11_payment_response", "Very well, here's {reg3} denarii. Make yourself ready. We leave soon."),
   ("npc12_payment_response", "{!}."),
-  ("npc13_payment_response", "Of course, here's {reg3} denars. Make ready to leave soon."),
-  ("npc14_payment_response", "All right, here's {reg3} denars. You are most welcome in our company."),
-  ("npc15_payment_response", "Yes, here's {reg3} denars. Glad to have you with us."),
-  ("npc16_payment_response", "Well, here's {reg3} denars for you. Make yourself ready."),
+  ("npc13_payment_response", "Of course, here's {reg3} denarii. Make ready to leave soon."),
+  ("npc14_payment_response", "All right, here's {reg3} denarii. You are most welcome in our company."),
+  ("npc15_payment_response", "Yes, here's {reg3} denarii. Glad to have you with us."),
+  ("npc16_payment_response", "Well, here's {reg3} denarii for you. Make yourself ready."),
   ("npc17_payment_response", "{!}"),
-  ("npc18_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc19_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc20_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc21_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc22_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc23_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc24_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc25_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc26_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc27_payment_response", "Very well, {reg3} denars for you."),
-  ("npc28_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc29_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
-  ("npc30_payment_response", "All right, here's {reg3} denars for you. Make yourself ready."),
+  ("npc18_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc19_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc20_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc21_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc22_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc23_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc24_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc25_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc26_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc27_payment_response", "Very well, {reg3} denarii for you."),
+  ("npc28_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc29_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc30_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
   ("npc31_payment_response", "{!}."),##special
   ("npc32_payment_response", "{!}."),
   ("npc33_payment_response", "{!}."),
   ("npc34_payment_response", "{!}"),
   ("npc35_payment_response", "{!}"),
   ("npc36_payment_response", "{!}."),
-  ("npc37_payment_response", "Very well, here's {reg3} denars. Now, go buy your stuff, we leave at dawn."),
-  ("npc38_payment_response", "Very well, here's {reg3} denars. Now, fall in with the rest."),
+  ("npc37_payment_response", "Very well, here's {reg3} denarii. Now, go buy your stuff, we leave at dawn."),
+  ("npc38_payment_response", "Very well, here's {reg3} denarii. Now, fall in with the rest."),
   ("npc39_payment_response", "{!}"),
-  ("npc40_payment_response", "Here's {reg3} denars. Now, fall in with the rest."),
+  ("npc40_payment_response", "Here's {reg3} denarii. Now, fall in with the rest."),
   ("npc41_payment_response", "{!}"),
-  ("npc42_payment_response", "Well. {reg3} denars for you. I am sure you are worth it."),
+  ("npc42_payment_response", "Well. {reg3} denarii for you. I am sure you are worth it."),
 
   ("npc1_morality_speech", "Oy -- master. Please don't take this the wrong way, but it's a hard life and it's a bit much that we {s21}."
 	+" Take a little more care in the future, captain, if you don't mind my saying."),
@@ -1657,7 +1664,7 @@ strings = [
   ("npc3_personalityclash_speech", "Captain -- in my opinion, {s11} is a hard and cruel man. He speaks of nothing but the need to flog,"
 	+" beat, and hang his fellow soldiers."),
   ("npc4_personalityclash_speech", "Warlord. My Clan is one of the most ancient and respected families in Scandia,"
-	+" and we are even known in the Magna Germania. Yet {s11} openly shows me disrespect, and smears the reputation of my Clan and family."),
+	+" and we are even known in Magna Germania. Yet {s11} openly shows me disrespect, and smears the reputation of my Clan and family."),
   ("npc5_personalityclash_speech", "A moment of your time, captain. {s11} seems to think me a common bandit, just because"
 	+" I have rewarded myself in the past to the legitimate spoils of war from caravans passing through my family's lands."),
   ("npc6_personalityclash_speech", "Your pardon, Commander, but I cannot keep my tongue stilled any longer."
@@ -2312,7 +2319,7 @@ strings = [
   ("npc37_home_description", "Well this city was build thousands of years ago by the Jebbusites, it was called Jebbus back in the days, after King David conquered it he chose it to be the capital of the Kingdom of Israel. There his son Solomon built a Temple in honor to our G-D which due to the sins of the people was destroyed centuries after by the Babylonians, damned be them!"),
   ("npc38_home_description", "Well, as you can imagine Romans not always ruled this area, before Rome conquered it, this land used to be the center of an important Phoenician Thalassocracy. Eventually the maritime empire of Carthage entered in conflict with the growing power of Rome, many battles were fought for a hundred of years but eventually Carthage began losing more and more, then Scipio Aemelianus managed to siege and conquer the city, thus ending the Punic Wars."),
   ("npc39_home_description", "{!}"),
-  ("npc40_home_description", "The Nihle Delta, nestled in our vibrant homeland, is a breathtaking tapestry of winding waterways and lush greenery. It's our lifeblood, a sanctuary where nature's rhythm orchestrates a dance of diverse wildlife. The delta mirrors our spirit, resilient and interconnected, embodying the heart and soul of our cherished community."),
+  ("npc40_home_description", "The Nile Delta, nestled in our vibrant homeland, is a breathtaking tapestry of winding waterways and lush greenery. It's our lifeblood, a sanctuary where nature's rhythm orchestrates a dance of diverse wildlife. The delta mirrors our spirit, resilient and interconnected, embodying the heart and soul of our cherished community."),
   ("npc41_home_description", "{!}"),
   ("npc42_home_description", "Under the endless skies, a sea of golden grasses stretches as far as the eye can see, undulating like waves beneath the caress of the wind. This is where we Sarmatians graze our cattle and horse herds. Occasionally, round huts appear on the horizon,  testaments to the resilient spirit of the Sarmatian people who have called these steppes home for generations. "),
 
@@ -2321,7 +2328,7 @@ strings = [
 	+" For example, long ago, as the Persians ruled over the world, the Scythians pillaged their lands."
 	+" Then the Persians, lead by Darius, crossed the Danube and invaded Scythian lands. But the Scythians avoided any combat. Haha, the Persian army marched"
 	+" through all their land, but never fought any battle!"),
-  ("npc2_home_description_2", "I had loaded up on saffron, cinnamon, cloves, pepper and other spices and a chest full of denars."
+  ("npc2_home_description_2", "I had loaded up on saffron, cinnamon, cloves, pepper and other spices and a chest full of denarii."
 	+" I estimated that I could buy linens, furs, velvet, iron and wool, and the extra horses to carry them back, and I'd still make a profit."
 	+" I just hadn't figured in the Parthian raiders, who apparently don't care for others cutting in on their monopoly."),
   ("npc3_home_description_2", "Maybe, sometime in the future I will also marry a Thracian man? Who knows, what fate brings."),
@@ -2371,7 +2378,7 @@ strings = [
   ("npc25_home_description_2", "Only the great Julius Caesar managed to rebuild it properly. And now, it's the biggest city West of Rome! Some say we are half a million people here. Only Rome has more. We have great temples, amphitheaters, grain, elephants and lions, and did I mention the dates?! It's hard to believe this land was once Rome's greatest enemy."),
   ("npc26_home_description_2", "Bosphorus was been a good vassal state. They kept good order here, controlled trade, sent riches back to Rome. Most of the time, they kept the Scythians up North in check and that's no easy feat, let me tell you that!^Those barbarians are born in the saddle. They have horses for all, man, woman and child. They don't stand and fight like civilized armies. But holding this place is worth it, though. The two rivers on either side of Taurica go far, far inland. Lots of trade flowing down these rivers. And the horse barbarians are no match for our heavy infantry on top of city walls."),
   ("npc27_home_description_2", "So you can imagine the kind of folk who live here. Heh, I'd take the cowardliest fishmonger from Emerita to hold the line next to me before I'd take any of those soft rich boys from Rome. Present company excluded, of course.^We know how to party here, too. See that amphitheater? The whole town can fit in the stands. And you haven't seen a four-horse chariot race until you've seen one in Emerita, that's for sure!"),
-  ("npc28_home_description_2", "Every last denar with Nero's damn fat mug on it is a shiny bit of suffering and despair. It's a sick man's life slowly suffocating after he's given up.^^Gods, I hate silver! You promise me, Dominus. If I ever fall in battle and all is lost, you drive this gladius straight through my heart. I will not die a slave."),
+  ("npc28_home_description_2", "Every last denarius with Nero's damn fat mug on it is a shiny bit of suffering and despair. It's a sick man's life slowly suffocating after he's given up.^^Gods, I hate silver! You promise me, Dominus. If I ever fall in battle and all is lost, you drive this gladius straight through my heart. I will not die a slave."),
   ("npc29_home_description_2", "It's not his Garum I want you to try, though. This man makes the best gourmet dishes from his finest catch, too. Just picture it: prime giant red mullet, the kind you can pay thousands of sesterces for, freshly grilled and sizzling, with charred onions, pine nuts, topped with fresh herbs. Mmm, that's a meal fit for a Caesar!"),
   ("npc30_home_description_2", "This frontier might be colored Roman on paper, but the Empire is not rooted as deep here as in Italia or Graecia. We were always ready for revolts here. When we weren't chasing bandits, that is.^"
 	+" Some would use the bogs to flee from us. And we let them. No shame in that, Dominus. I led a pursuit in there once. The things we saw cannot be unseen. The gods reigning dominion over these bogs are pure evil, and no mortal dare ire them. Even the birds don't fly there, and what more omen does anyone need?"),
@@ -2545,7 +2552,7 @@ strings = [
 	+" particularly us poor folk. If you would, as new Princeps, who took the throne, issue a great amnesty"
 	+" for all but the worst prisoners in his dungeons, giving people a second chance to make something of themselves --"
 	+" like you gave me a second chance, Master."), #Pravare Ytarim
-  ("npc2_kingsupport_2", "Most of the nobles of this land -- well, let's just say that they never held a denar that they didn't"
+  ("npc2_kingsupport_2", "Most of the nobles of this land -- well, let's just say that they never held a denarius that they didn't"
 	+" collect as rent or take as pillage. You, on the other hand, have some experience of commerce and trade, of the effort and risk"
 	+" involved in making sure that men don't go hungry in Alexandria while there's a glut of grain in Rome, to give an example...."
 	+" If you like, captain, I reckon I could find some support for you among the merchants of this realm."), #Marius Gaius
@@ -2570,7 +2577,7 @@ strings = [
 	+" settle it sword to sword, according to the old ways, and let the gods decide who is in the right."), #Hildr
   ("npc9_kingsupport_2", "I would and others would too. But here's what I think -- you need to show the noble Romans that you'll uphold their"
 	+" ancient rights. Right now, the Empire is a mess -- the Princeps spits on the mos maiorum and ignores old traditions."
-	+" He does what ever he wants, celebrates extravagant parties, wastes tons of denars for nothing but his pleasures."
+	+" He does what ever he wants, celebrates extravagant parties, wastes tons of denarii for nothing but his pleasures."
 	+" So I say you make things, like it was in Augustian times -- restoration of the old traditions and values."), #Aturius Spurus
   ("npc10_kingsupport_2", "Certainly, {Brother/Sister}. But I'd ask that you consider a thought of mine. If you became Princeps,"
 	+" then I'd ask you open your court to the common folks, and not just to the nobles, the rich and the powerful."
@@ -2714,7 +2721,7 @@ strings = [
 	+" kinfolk -- well, they would start talking of you as a Caesar, and that would pave your way to the throne. Shall I do that, Master?"), #Pravare Ytarim
   ("npc2_kingsupport_3", "If you like, captain, I can take a few weeks to visit the townhalls and caravanseries"
 	+" where I have contacts, and explain to them that, in you, they will have a Princeps who will check the rapacious nobles,"
-	+" who, with their tariffs and taxes, would strangle commerce for the sake of a few extra denars to spend on their wars and their feasts."
+	+" who, with their tariffs and taxes, would strangle commerce for the sake of a few extra denarii to spend on their wars and their feasts."
 	+" What do you say to that, captain?"), #Marius Gaius
   ("npc3_kingsupport_3", "If you were to make such a pledge, Commander, I think that it would help many of the nobles of this land overcome"
 	+" any reluctance that they might have. If your aim is to restore the old Roman system, then arguably you are a more legitimate Caesar"
@@ -3421,7 +3428,7 @@ strings = [
 
   ##diplomacy start+
   #Make gender correct, using reg4 for the gender of s54.  Making this work required altering script_get_relevant_comment_to_s42
-  ("comment_you_captured_a_lord_allied_friendly_spiteful",   "I heard that you captured {s54}. I hope that you squeezed {reg4?her:him} for every denar."),
+  ("comment_you_captured_a_lord_allied_friendly_spiteful",   "I heard that you captured {s54}. I hope that you squeezed {reg4?her:him} for every denarius."),
   ("comment_you_captured_a_lord_allied_unfriendly_spiteful", "I heard that you captured {s54}. Your coffers must be well-bloated with ransom by now. Such a pity that money cannot transform a low-born cur into a {gentleman/gentlewoman}!"),#also gentleman -> {gentleman/gentlewoman}
   ("comment_you_captured_a_lord_allied_chivalrous",          "I heard that you captured {s54}. Well done. I assume, of course, that {reg4?she:he} has been been treated with the honours due {reg4?her:his} rank."),
   ("comment_you_captured_a_lord_allied",                     "I heard that you captured {s54}. Well done. {reg4?Her:His} ransom must be worth quite something."),
@@ -4679,6 +4686,9 @@ strings = [
   ("romans", "Romans"),
   ("judean", "Judeans"),
   ("bosporans", "Bosporans"),
+  ("syrians", "Syrians"),
+  ("egyptians", "Egyptians"),
+  ("greeks", "Greeks"),
   ("bandits", "bandits"),
   ("deserters", "deserters"),
   ("your_followers", "your followers"),
@@ -5074,7 +5084,7 @@ strings = [
   ("s12s15_has_no_particular_reason_to_continue_the_war_with_s16_and_would_probably_make_peace_if_given_the_opportunity", "{s12}{s15} has no particular reason to continue the war with {s16}, and would probably make peace if given the opportunity."),
   ("s12s15_seems_to_be_willing_to_improve_relations_with_s16", "{s12}{s15} seems to be willing to improve relations with {s16}."),
   ("excuse_me_how_can_you_possibly_imagine_yourself_worthy_to_marry_into_our_family", "Excuse me? How can you possibly imagine yourself worthy to marry into our family?"),
-  ("em_with_regard_to_her_ladyship_we_were_looking_specifically_for_a_groom_of_some_distinction_fight_hard_count_your_dinars_and_perhaps_some_day_in_the_future_we_may_speak_of_such_things_my_good_man", "Em... With regard to her ladyship, we were looking specifically for a {groom/bride} of some distinction. Fight hard, count your denars, and perhaps some day in the future we may speak of such things, my good {man/woman}!"), #dckplmc start+
+  ("em_with_regard_to_her_ladyship_we_were_looking_specifically_for_a_groom_of_some_distinction_fight_hard_count_your_dinars_and_perhaps_some_day_in_the_future_we_may_speak_of_such_things_my_good_man", "Em... With regard to her ladyship, we were looking specifically for a {groom/bride} of some distinction. Fight hard, count your denarii, and perhaps some day in the future we may speak of such things, my good {man/woman}!"), #dckplmc start+
   ("em_with_regard_to_her_ladyship_we_were_looking_specifically_for_a_groom_of_some_distinction", "Em... With regard to her ladyship, we were looking specifically for a {groom/bride} of some distinction."),
   ("it_is_too_early_for_you_to_be_speaking_of_such_things_you_are_still_making_your_mark_in_the_world", "It is too early for you to be speaking of such things. You are still making your mark in the world."),
   ("you_dont_serve_the_s4_so_id_say_no_one_day_we_may_be_at_war_and_i_prefer_not_to_have_to_kill_my_inlaws_if_at_all_possible", "You don't serve the {s4}, so I'd say no. One day we may be at war, and I prefer not to have to kill my in-laws, if at all possible."),
@@ -5085,7 +5095,7 @@ strings = [
   ("hmm_young_girls_may_easily_be_led_astray_so_out_of_a_sense_of_duty_to_the_ladies_of_my_household_i_think_i_would_like_to_get_to_know_you_a_bit_better_we_may_speak_of_this_at_a_later_date", "Hmm. Young girls may easily be led astray, so out of a sense of duty to the ladies of my household, I think I would like to get to know you a bit better. We may speak of this at a later date."), #dckplmc end+
   ("you_may_indeed_make_a_fine_match_for_the_young_mistress", "You may indeed make a fine match for the young mistress."),
 #diplomacy start+ (players of either gender may marry opposite-gender lords)
-  ("madame__given_our_relations_in_the_past_this_proposal_is_most_surprising_i_do_not_think_that_you_are_the_kind_of_woman_who_can_be_bent_to_a_hushands_will_and_i_would_prefer_not_to_have_our_married_life_be_a_source_of_constant_acrimony", "{Sir/Madame} -- given our relations in the past, this proposal is most surprising. I do not think that you are the kind of {man/woman} who can be bent to a {wife/husband}'s will, and I would prefer not to have our married life be a source of constant acrimony."),
+  ("madame__given_our_relations_in_the_past_this_proposal_is_most_surprising_i_do_not_think_that_you_are_the_kind_of_woman_who_can_be_bent_to_a_hushands_will_and_i_would_prefer_not_to_have_our_married_life_be_a_source_of_constant_acrimony", "{Dominus/Domina} -- given our relations in the past, this proposal is most surprising. I do not think that you are the kind of {man/woman} who can be bent to a {wife/husband}'s will, and I would prefer not to have our married life be a source of constant acrimony."),
   ("i_would_prefer_to_marry_a_proper_maiden_who_will_obey_her_husband_and_is_not_likely_to_split_his_head_with_a_sword", "I would prefer to marry a proper {lord/maiden} who will {cherish/obey} {his/her} {wife/husband}, and is not likely to split {her/his} head with a sword."),
   ("my_lady_while_i_admire_your_valor_you_will_forgive_me_if_i_tell_you_that_a_woman_like_you_does_not_uphold_to_my_ideal_of_the_feminine_of_the_delicate_and_of_the_pure", "My {lord/lady}, while I admire your valor and your beauty, you will forgive me if I tell you that a {man/woman} like you does not uphold to my ideal of a {husband/wife}: {masculine/feminine}, delicate, and pure."),#this sounds ridiculous -- don't use the male version
   ("nah_i_want_a_woman_wholl_keep_quiet_and_do_what_shes_told_i_dont_think_thats_you", "Nah. I want a {man/woman} who'll keep quiet and do what {he/she}'s told. I don't think that's you."),
@@ -5094,7 +5104,7 @@ strings = [
   ("my_lady__forgive_me__the_quality_of_our_bond_is_not_of_the_sort_which_the_poets_tell_us_is_necessary_to_sustain_a_happy_marriage", "My {lord/lady} -- forgive me -- the quality of our bond is not of the sort which the poets tell us is necessary to sustain a happy marriage."),
   ("um_i_think_that_if_i_want_to_stay_on_s4s_good_side_id_best_not_marry_you", "Um, I think that if I want to stay on {s4}'s good side, I'd best not marry you."),
   ("you_serve_another_realm_i_dont_see_s4_granting_reg4herhis_blessing_to_our_union", "You serve another realm. I don't see {s4} granting {reg4?her:his} blessing to our union."),
-  ("madame_my_heart_currently_belongs_to_s4", "{Sir/Madame}, my heart currently belongs to {s4}."),
+  ("madame_my_heart_currently_belongs_to_s4", "{Dominus/Domina}, my heart currently belongs to {s4}."),
   ("my_lady_you_are_a_woman_of_great_spirit_and_bravery_possessed_of_beauty_grace_and_wit_i_shall_give_your_proposal_consideration", "My {lord/lady}, you are a {man/woman} of great spirit and bravery, possessed of {strength/beauty}, {courage/grace}, and wit. I shall give your proposal consideration."),
   ("my_lady_you_are_a_woman_of_great_spirit_and_bravery_possessed_of_beauty_grace_and_wit_i_would_be_most_honored_were_you_to_become_my_wife", "My {lord/lady}, you are a {man/woman} of great spirit and bravery, possessed of {strength/beauty}, {courage/grace}, and wit. I would be most honored were you to become my {husband/wife}."),
 #diplomacy end+
@@ -5127,6 +5137,7 @@ strings = [
   ("s9_of_drink_which_guests_will_expect_in_great_abundance_the_amount_is_s8", "{s9} Of drink, which guests will expect in great abundance, the amount is {s8}"),
   ("s9_of_spice_which_is_essential_to_demonstrate_that_we_spare_no_expense_as_hosts_the_amount_is_s8_", "{s9} Of spice, which is essential to demonstrate that we spare no expense as hosts, the amount is {s8}. "),
   ("s9_of_oil_which_we_shall_require_to_light_the_lamps_the_amount_is_s8", "{s9} Of oil, which we shall require to light the lamps, the amount is {s8}."),
+  ("s9_cooks_s8", "{s9} And let us not forget our cooks, the meal has to be prepared by someone. {s8}"),
   ("s9_overall_our_table_will_be_considered_s8", "{s9} Overall, our table will be considered {s8}."),
   ("rebel", "rebel"),
   ("bandit", "bandit"),
@@ -5645,7 +5656,7 @@ strings = [
   ("mulberry_groves", "acres of mulberry groves"),
   ("olive_groves", "acres of olive groves"),
   ("acres_flax", "acres of flax fields"),
-  ("enterprise_enemy_realm", "{Sir/Madame}, you are an enemy of this realm. We cannot allow you to buy land here."),
+  ("enterprise_enemy_realm", "{Dominus/Domina}, you are an enemy of this realm. We cannot allow you to buy land here."),
   ("intrigue_success_chance", "{!}Your modified relation: {reg5}, {s4}'s relation: {reg4}"),
 
   ("you_intend_to_denounce_s14_to_s13_on_behalf_of_s12", "You intend to privately denounce {s14} to {s13} on behalf of {s12}"),
@@ -5699,7 +5710,7 @@ strings = [
   ("faction_title_female_player", "Domina {s0}"),
   ("faction_title_female_1", "{s0}"),
   ("faction_title_female_2", "{s0}"),
-  ("faction_title_female_3", "Domina {s0}"),
+  ("faction_title_female_3", "{s0}"),
   ("faction_title_female_4", "{s0}"),
   ("faction_title_female_5", "{s0}"),
   ("faction_title_female_6", "{s0}"),
@@ -5719,7 +5730,7 @@ strings = [
   ("faction_title_female_20", "{s0}"),
   ("faction_title_female_21", "{s0}"),
   ("faction_title_female_22", "{s0}"),
-  ("faction_title_female_23", "{s0}"),
+  ("faction_title_female_23", "Morto {s0}"),
   ("faction_title_female_24", "Domina {s0}"),
   ("faction_title_female_25", "Domina {s0}"),
   ("faction_title_female_26", "Domina {s0}"),
@@ -5748,7 +5759,7 @@ strings = [
   ("faction_leader_title_male_20", "Shah {s0}"),
   ("faction_leader_title_male_21", "Shah {s0}"),
   ("faction_leader_title_male_22", "Basileus {s0}"),
-  ("faction_leader_title_male_23", "Malko {s0}"),
+  ("faction_leader_title_male_23", "Malka {s0}"),
   ("faction_leader_title_male_24", "Imperator {s0}"),
   ("faction_leader_title_male_25", "Imperator {s0}"),
   ("faction_leader_title_male_26", "Imperator {s0}"),
@@ -5777,7 +5788,7 @@ strings = [
   ("faction_leader_title_female_20", "Shahbanu {s0}"),
   ("faction_leader_title_female_21", "Shahbanu {s0}"),
   ("faction_leader_title_female_22", "Basileia {s0}"),
-  ("faction_leader_title_female_23", "Shahbanu {s0}"),
+  ("faction_leader_title_female_23", "Malkto {s0}"),
   ("faction_leader_title_female_24", "Domina {s0}"),
   ("faction_leader_title_female_25", "Domina {s0}"),
   ("faction_leader_title_female_26", "Domina {s0}"),
@@ -6120,7 +6131,7 @@ strings = [
   ("velvet_site", "dyeworks"),
 
   ("under_sequestration", "Under sequestration"),
-  ("describe_secondary_input", " In addition, you will also need to purchase {s11} worth {reg10} denars."),
+  ("describe_secondary_input", " In addition, you will also need to purchase {s11} worth {reg10} denarii."),
   ("profit", "profit"),
   ("loss", "loss"),
 
@@ -6331,10 +6342,10 @@ strings = [
   ("dplmc_fief_exchange_refuse_s14_attack", "Speak of this to me later when {s14} is not under attack."),
 
   ("dplmc_fief_exchange_accept", "That exchange is acceptable to me."),
-  ("dplmc_fief_exchange_accept_reg3_denars", "That exchange is acceptable to me, if you are willing to provide {reg3} denars to cover my expenses from the relocation."),
+  ("dplmc_fief_exchange_accept_reg3_denars", "That exchange is acceptable to me, if you are willing to provide {reg3} denarii to cover my expenses from the relocation."),
 
   ("dplmc_fief_exchange_confirm","It is settled then."),
-  ("dplmc_fief_exchange_confirm_reg3_denars","It is settled then.  Here are your {reg3} denars."),
+  ("dplmc_fief_exchange_confirm_reg3_denars","It is settled then.  Here are your {reg3} denarii."),
   #Other dialog
   ("dplmc_your_s11_s10", "Your {s11}, {s10}"),
   ("dplmc_reg6my_reg7spouse", "{reg6?M:m}y {reg7?love:{husband/wife}}"),
@@ -6695,9 +6706,9 @@ strings = [
   ("pcamp_near_s9", "near {s9}"),
   ("pcamp_too_many_camps", "You already have too many active permanent camps."),
   ("pcamp_no_free_companions", "You don't have any companions available to command a permanent camp."),
-  ("pcamp_no_reg7_denars", "You don't have {reg7} denars needed to start a permanent camp."),
+  ("pcamp_no_reg7_denars", "You don't have {reg7} denarii needed to start a permanent camp."),
   ("pcamp_too_far_from_s0", "You are too far from {s0} for the camp to supply itself."),
-  ("pcamp_can_start_camp_s0_reg5_reg6_reg7", "You can leave a companion to manage a camp near {s0} with a part of your troops until you return. He will require {reg7} denars for initial expenses.^^You can create {reg5} more camps and have {reg6} denars available."),
+  ("pcamp_can_start_camp_s0_reg5_reg6_reg7", "You can leave a companion to manage a camp near {s0} with a part of your troops until you return. He will require {reg7} denarii for initial expenses.^^You can create {reg5} more camps and have {reg6} denarii available."),
   ("pcamp_s0_destroyed", "{s0} has been destroyed!"),
   ("pcamp_is_commanding_near_s5", "Is commanding a camp near {s5}."),
   ("pcamp_s0s_camp", "{s0}'s Camp"),
@@ -6714,10 +6725,10 @@ strings = [
 ("decree_beggingban_name", "Ban on begging"),
 
 ##decree explanation strings
-("decree_curfew", "It is no longer allowed to walk around the streets during night time. This may lower criminality and may helps to destroy smuggler gangs. It will also produce costs of 500 denars for the additional night watch."),
-("decree_control", "Controlling who enters and leaves a town can help to lower banditry. The additional controls will cost 500 denars directly taken from the local center rents."),
-("decree_garbage_collection", "Founding a proper troop to collect garbage that lies around the street will increase health and prevent diseases. It will cost 1000 denars to maintain."),
-("decree_housing", "To reduce poverty it is not unusual that the ruler of a town founds special 'almshouses' in which the poor can life. There will be also additional costs of 5000 denars to maintain the houses. But it can also prevent poor people from slipping into crime."),
+("decree_curfew", "It is no longer allowed to walk around the streets during night time. This may lower criminality and may helps to destroy smuggler gangs. It will also produce costs of 500 denarii for the additional night watch."),
+("decree_control", "Controlling who enters and leaves a town can help to lower banditry. The additional controls will cost 500 denarii directly taken from the local center rents."),
+("decree_garbage_collection", "Founding a proper troop to collect garbage that lies around the street will increase health and prevent diseases. It will cost 1000 denarii to maintain."),
+("decree_housing", "To reduce poverty it is not unusual that the ruler of a town founds special 'almshouses' in which the poor can life. There will be also additional costs of 5000 denarii to maintain the houses. But it can also prevent poor people from slipping into crime."),
 ("decree_enforcement_law", "Sometimes the town watch is a bit too soft with criminals. By ordering to enforce law strictly banditry may be reduced."),
 ("decree_beggingban", "Beggars are an annoying and common thing in every center. Banning will not help to ease poverty but it will remove those scums from public places."),
 ##kreta
@@ -7001,9 +7012,9 @@ strings = [
 ("offense_of_empress_6", "It is said she loves wine, food and parties. The extravagance of her meals are legendary, as her weight."),
 ("offense_of_empress_end", "end"),
 
-("parties_of_wife_1", "used {reg30} denars from the treasury for extravagant meals, food, wine etc. It seems she really like dinner."),
-("parties_of_wife_2", "used {reg30} denars from the treasury for extravagant parties. It seems she has not informed you about those events. The letter contains a guest list. This list consists mostly of young noblemen, who are famous for their love affairs."),
-("parties_of_wife_3", "has spend {reg30} denars from the treasury for expensive and extravagant meals. For her dinner parties she has invited young nobles."),
+("parties_of_wife_1", "used {reg30} denarii from the treasury for extravagant meals, food, wine etc. It seems she really like dinner."),
+("parties_of_wife_2", "used {reg30} denarii from the treasury for extravagant parties. It seems she has not informed you about those events. The letter contains a guest list. This list consists mostly of young noblemen, who are famous for their love affairs."),
+("parties_of_wife_3", "has spend {reg30} denarii from the treasury for expensive and extravagant meals. For her dinner parties she has invited young nobles."),
 ("parties_of_wife_end", "end"),
 
 ("building_1", "aqueduct"),
@@ -7053,7 +7064,7 @@ strings = [
 ("s24_coma_s21", "{s24}, {s21}"),
 ("s17_and_s67", "{s17} and {s67}"),
 ("s17_coma_s67", "{s17}, {s67}"),
-("nobles_at_hall", "{reg0?Nobles at hall {reg0}.{reg1? Commanders {reg1} ({s67}).:} {reg2?Ladies {reg2} ({s19}).:}:}{reg4? pretenders to the throne {reg4} ({s21}).:} {reg3?Heroes {reg3} ({s20}).:}"),
+("nobles_at_hall", "{reg0?Nobles at hall {reg0}.{reg1? Commanders {reg1} ({s67}).:} {reg2?Ladies {reg2} ({s19}).:}:} {reg3?Heroes {reg3} ({s20}).:}"),
 
 ###########
 ### NEW OPTIONS MENUS strings
@@ -7264,13 +7275,17 @@ strings = [
   ("scythia", "Scythia"),
   ("armenia", "Armenia"),
   ("mesopotamia", "Mesopotamia"),
-  ("assyria", "Assyria"),
+  ("assyria", "Media Atropatene"),
   ("sadinia", "Corsica et Sardinia"),
   ("cyprus", "Cyprus"),
   ("caucasia", "Caucasia"),
   ("persia", "Persia"),
   ("parthia", "Parthia"),
   ("media", "Media Magna"),
+  ("nubia", "Nubia"),
+  ("garamantia", "Garamantia"),
+  ("chorasmia", "Chorasmia"),
+  ("osreon", "Osreon"),
 
   ("simple_names_begin","No region"),
   ("hispania_simple","HS"),
@@ -7498,7 +7513,7 @@ strings = [
 ("patrol_nothing_vignette11", "a dead bird, decomposing on the ground, definitely a bad omen."),
 ("patrol_end", "patrol end"),
 ("patrol_text_peaceful", "March, march, march. The potentially dangerous task of patrolling with a small force turned typically uneventful again. The unit covered its designated route, taking great care to avoid potential ambushes. You saw {s2} After hours have passed you return to the legion."),
-("village_x_has_been_raided_player_pay", "You have to pay {reg23} denars for repair works in {s31}, which has been raided."),
+("village_x_has_been_raided_player_pay", "You have to pay {reg23} denarii for repair works in {s31}, which has been raided."),
 ("fake_rumor_1", "You hear that {s32} has been involved in the murder of a senator, who was a supporter of your case."),
 ("fake_rumor_2", "You hear rumors about {s32} wicked character. Terrible rumors are spreading through Rome about his awful habits."
 	+" He seems to enjoy himself with various slaves during parties he celebrate in the name of Bachus."),
@@ -7531,7 +7546,7 @@ strings = [
 
 ("start_emperor_1", "You are near Rome, the eternal city, and the capital of the Imperium Romanum, your Empire."),
 ("start_tribune_1", "You have been assigned an auxiliary cohort to command. Wages for your troops are paid"
-	+" from the imperial treasury, and with your current rank, you receive a salary of 1000 denars. Since you are not married, you must"
+	+" from the imperial treasury, and with your current rank, you receive a salary of 1000 denarii. Since you are not married, you must"
 	+" pay a punitive tax (Lex Iulia et Papia)."),
 ("start_slave_1", "You are brought to the slave market. As a strong man, you are on track to spend the rest of your life making yourself an early grave in a quarry or mine. But Fortuna had something else in mind. The spoiled daughter of the landowner Marcus Gaius Crachius saw you on the slave market and was impressed by your muscles. She immediately bought you as a 'toy'.^Your new life turned out to be a nightmare. You had to satisfy her darkest desires, and if you didn't act as she demanded, you were punished and tortured.^As you cannot stand this life, you decide to act. You rally support among the slaves. Since the master is incredibly unpopular, every last slave agrees to your plan to revolt. The slaves carefully collect any tool which can be used as a weapon. On the day of reckoning, the slaves gather in front of the master's house. The time has come to fight for your future!"),
 
@@ -7767,7 +7782,7 @@ strings = [
 ("battle_of_bedriacum_default", "The news of your victory at the battle of Bedriacum echoes through each corner of the Empire. This bloodshed will surely end the struggle. May your reign be long and blessed by the gods!"),
 
 ##buisness
-("comment_you_attacked_buisness_enemy_benevolent",    "You have interfered my business and caused me a lot of trouble and denars. I will not forget this!"),
+("comment_you_attacked_buisness_enemy_benevolent",    "You have interfered my business and caused me a lot of trouble and denarii. I will not forget this!"),
 ("comment_you_attacked_buisness_enemy_spiteful",      "You have attacked my business and caused much trouble. You will pay for that one day."),
 ("comment_you_attacked_buisness_enemy_coldblooded",   "You have interfered my business and caused much trouble. I lost a large sum. I will make you think twice before you disrupt my revenues like that again."),
 ("comment_you_attacked_buisness_enemy",               "You interfered my business, caused trouble and costs. You will pay that back in one way or the other I will make sure!"),
@@ -7790,6 +7805,9 @@ strings = [
 
 ("all_enemies_routed","All enemies are routing. Press tab key to leave or continue chasing them!"),
 ("nero_explain_action","I am Divine Caesar! I need to deal with matters of state. I have no time for war and all that unpleasant stuff. For what do I have my legions?"),
+
+("nero_tour_greece_thessaolonica_1","Hurry up and talk with that praefect! I will be resting in this town till the Actian Games may begin."),
+
 
 #######################
 ###################ITEM STRINGS FOR MESHES AND MATERIALS
@@ -7975,7 +7993,7 @@ strings = [
 ("hyroglyphs_2", "Echnaton, son of Aton, praises his name... Aten bends low, near the earth, to watch over his creation; he takes his place in the sky for the same purpose; he wearies himself in the service of the creatures; he shines for them all; he gives them sun and sends them rain. The unborn child and the baby chick are cared for; and Akhenaten asks his divine father to 'lift up' the creatures for his sake so that they might aspire to the condition of perfection of his father, Aten..."),
 
 ("reg0_reg2", "{!}{reg0} (netto change: {reg2})"),
-("reg0_reg3", "{!}{reg0} ({reg3} denars are reinvested)"),
+("reg0_reg3", "{!}{reg0} ({reg3} denarii are reinvested)"),
 
 ("salary_string_1", "Salary (tribunus)"),
 ("salary_string_2", "Salary (praefectus)"),
@@ -7986,9 +8004,9 @@ strings = [
 ("extort_toll", "Raise special tariffs"),
 ("extort_concile", "Raid the town counsel"),
 
-("extort_tax_xp", "You can raise a special tax. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect this tax and would give you {reg30} denars: But it will upset the citizens of {s39}."),
-("extort_toll_xp", "You can raise a special toll on goods which are traded today. This would upset the merchants of {s39} and the villagers of the surrounding villages, who come here to sell their goods. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect the toll and would give you {reg30} denars."),
-("extort_concile_xp", "The town counsel has {reg31} in their treasury. You can force them to take over their funds. It would take you 2 hours and you would gain {reg31} denars."),
+("extort_tax_xp", "You can raise a special tax. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect this tax and would give you {reg30} denarii: But it will upset the citizens of {s39}."),
+("extort_toll_xp", "You can raise a special toll on goods which are traded today. This would upset the merchants of {s39} and the villagers of the surrounding villages, who come here to sell their goods. As the party member with the highest trade skill ({reg2}), {reg3?you expect:{s1} expects} it would take {reg40} hours to collect the toll and would give you {reg30} denarii."),
+("extort_concile_xp", "The town counsel has {reg31} in their treasury. You can force them to take over their funds. It would take you 2 hours and you would gain {reg31} denarii."),
 
 
 ("center_manage_denied", "You need to be either the governor of the town or increase faction centralization."),
@@ -8146,6 +8164,7 @@ strings = [
 # ("roman_focale_brown",  "roman_focale_brown"),
 # ("roman_focale_end",  "end"),
 
+("won_chariot",  "Chariot race"),
 ("won_horse",  "Horse race"),
 ("won_mule",  "Mule race"),
 ("won_throwing",  "Spear throw"),
@@ -8208,10 +8227,10 @@ strings = [
 ("irigation_description_rome", "Improving the irrigation of farms and pasture land will improve the fertility of the lands. It will also lower probability of droughts."),
 
 ("manor_name_rome", "Manor"),
-("manor_description_rome", "A manor lets you rest at the village and pay your troops half wages while you rest. You can also garrison troops in your manor to protect the village from raiding. You won't have to pay for the upkeep of stationed troops, but you can only add up to maximal 150 men. Furthermore, you can add prisoners, who will work in your village and generate additional wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("manor_description_rome", "A manor lets you rest at the village and pay your troops half wages while you rest. You can also garrison troops in your manor to protect the village from raiding. You won't have to pay for the upkeep of stationed troops, but you can only add up to maximal 150 men. Furthermore, you can add prisoners, who will work in your village and generate additional wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 
 ("guard_posts_name_rome", "Guard Posts"),
-("guard_posts_description_rome", "Additional guard posts will help fighting banditry. Bandits will no longer be able to infest the settlement at night and looter will no longer spawn near the settlement. It will cost 300 denars upkeep which will be taken directly from the rents."),
+("guard_posts_description_rome", "Additional guard posts will help fighting banditry. Bandits will no longer be able to infest the settlement at night and looter will no longer spawn near the settlement. It will cost 300 denarii upkeep which will be taken directly from the rents."),
 
 ("sewers_name_rome", "Sewers"),
 ("sewers_description_rome", "Building sewers and keeping the poop out of the streets will improve the health of the population and decrease probability of diseases."),
@@ -8266,47 +8285,47 @@ strings = [
 ("smithies_description_nomadic", "Smithies will increase production of tools and other metal goods and thus increase wealth and rents."),
 
 ("fishing_name_rome", "Fishing Port"),
-("fishing_description_rome", "Building an own port for a fishing fleet will increase the production of fish and thus increase rents. It will also generate 500 denars which are added to the rents (tolls)."),
+("fishing_description_rome", "Building an own port for a fishing fleet will increase the production of fish and thus increase rents. It will also generate 500 denarii which are added to the rents (tolls)."),
 
 ("roads_name_rome", "Paved Roads"),
-("roads_description_rome", "Roads simplify transportation and will increase trade and prosperity. It will also generate 2,000 denars which are added to the rents (tolls)."),
+("roads_description_rome", "Roads simplify transportation and will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
 ("roads_name_eastern", "Royal Toll Roads"),
-("roads_description_eastern", "Roads simplify transportation and will increase trade and prosperity. It will also generate 2,000 denars which are added to the rents (tolls)."),
+("roads_description_eastern", "Roads simplify transportation and will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
 ("roads_name_germanic", "Meadhall"),
-("roads_description_germanic", "Building a large meadhall will increase trade and prosperity as people from nearby villages will come to spend their time there. It will also generate 2,000 denars which are added to the rents."),
+("roads_description_germanic", "Building a large meadhall will increase trade and prosperity as people from nearby villages will come to spend their time there. It will also generate 2,000 denarii which are added to the rents."),
 ("roads_name_british", "Farmer's Market"),
-("roads_description_british", "A large marketplace will increase trade and prosperity. It will also generate 2,000 denars which are added to the rents."),
+("roads_description_british", "A large marketplace will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents."),
 ("roads_name_dacian", "Royal Treasury"),
-("roads_description_dacian", "Minting coins and additional tax collectors will increase your income from trade and it will also generate 2,000 denars which are added to the rents."),
+("roads_description_dacian", "Minting coins and additional tax collectors will increase your income from trade and it will also generate 2,000 denarii which are added to the rents."),
 
 ("roads_name_nomadic", "Marketplace"),
-("roads_description_nomadic", "A marketplace will increase trade and prosperity. It will also generate 2,000 denars which are added to the rents (tolls)."),
+("roads_description_nomadic", "A marketplace will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
 
 ("hospital_name_rome", "Hospital"),
-("hospital_description_rome", "A hospital will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_rome", "A hospital will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_eastern", "Shabestans"),
-("hospital_description_eastern", "Shabestans are an underground floor with windcatchers to provide a cool environment. Thus, they will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_eastern", "Shabestans are an underground floor with windcatchers to provide a cool environment. Thus, they will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_germanic", "Healer"),
-("hospital_description_germanic", "A healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_germanic", "A healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_british", "Druid Healer"),
-("hospital_description_british", "A druidic healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_british", "A druidic healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_dacian", "Grove of Derzelas"),
-("hospital_description_dacian", "Gaining the blessing of Derzelas will increase the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_dacian", "Gaining the blessing of Derzelas will increase the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_nomadic", "Shaman's Hut"),
-("hospital_description_nomadic", "A shaman will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denars which will be taken from the rents."),
+("hospital_description_nomadic", "A shaman will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 
 ("habour_name_rome", "Great Harbour"),
-("habour_description_rome", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_rome", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_eastern", "Grand Merchant Port"),
-("habour_description_eastern", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_eastern", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_germanic", "Docks"),
-("habour_description_germanic", "Building docks and a proper port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_germanic", "Building docks and a proper port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_british", "Port"),
-("habour_description_british", "Building a port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_british", "Building a port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_dacian", "Harbour"),
-("habour_description_dacian", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_dacian", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_nomadic", "Basic Port"),
-("habour_description_nomadic", "Building a basic port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denars of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_description_nomadic", "Building a basic port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 
 
 ("farming_name_rome", "Provincial Farming"),
@@ -8338,17 +8357,17 @@ strings = [
 
 
 ("trader_name_rome", "Provincial Trader"),
-("trader_description_rome", "Investment into local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_rome", "Investment into local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_eastern", "Bazaar"),
-("trader_description_eastern", "Investment into local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_eastern", "Investment into local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_germanic", "Fair"),
-("trader_description_germanic", "Greating a place for fairs and markets will increase local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_germanic", "Greating a place for fairs and markets will increase local trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_british", "Tavern"),
-("trader_description_british", "By building a tavern people from nearby villages will come and thus increases trade and wealth. Additionally you will get 1,000 denars per month added to your rents."),
+("trader_description_british", "By building a tavern people from nearby villages will come and thus increases trade and wealth. Additionally you will get 1,000 denarii per month added to your rents."),
 ("trader_name_dacian", "Public Markets"),
-("trader_description_dacian", "Investment into regional trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_dacian", "Investment into regional trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_nomadic", "Trading Post"),
-("trader_description_nomadic", "A trading post will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denars per month added to your rents (tolls)."),
+("trader_description_nomadic", "A trading post will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 
 
 ("ironmine_name_rome", "Iron mine"),
@@ -8362,42 +8381,42 @@ strings = [
 
 #house of strength - for easterns
 ("training_name_rome", "Training Ground"),
-("training_description_rome", "A training ground allows your troops to train while garrisoned in the center. It will cost 1000 denars a month to maintain (costs will be paid from rents)."),
+("training_description_rome", "A training ground allows your troops to train while garrisoned in the center. It will cost 1000 denarii a month to maintain (costs will be paid from rents)."),
 
 ("mill_simple_name_rome", "Mill"),
-("mill_simple_description_rome", "A mill increases village prosperity every month. And it will also add an additional income of 600 denars to the center rents (fees)."),
+("mill_simple_description_rome", "A mill increases village prosperity every month. And it will also add an additional income of 600 denarii to the center rents (fees)."),
 
 ("firefighters_name_rome", "Fire Department"),
-("firefighters_description_rome", "Organizing a professional fire department can decrease the chance of devastating fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_rome", "Organizing a professional fire department can decrease the chance of devastating fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_eastern", "Windcatchers"),
-("firefighters_description_eastern", "Windcatchers are special buildings designed to decrease temprature in the city. Hence they decreases the chance of devastating fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_eastern", "Windcatchers are special buildings designed to decrease temprature in the city. Hence they decreases the chance of devastating fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_germanic", "Sanctuary of Wodanaz"),
-("firefighters_description_germanic", "Creating a sacred grove for Wodanaz to honour him will decrease the chance of devastating events like fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_germanic", "Creating a sacred grove for Wodanaz to honour him will decrease the chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_british", "Sanctuary of Epona"),
-("firefighters_description_british", "Creating a large sanctuary for Epona will appease her and decrease the chance of devastating events like fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_british", "Creating a large sanctuary for Epona will appease her and decrease the chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_dacian", "Basic Sanitations"),
-("firefighters_description_dacian", "Make waster disposal more efficient to decrease chance of devastating events like fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_dacian", "Make waster disposal more efficient to decrease chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_nomadic", "Altar"),
-("firefighters_description_nomadic", "Build an altar to honor the gods. This will decrease chance of devastating events like fires. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("firefighters_description_nomadic", "Build an altar to honor the gods. This will decrease chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 
 ("watchtower_name_rome", "Watch Tower"),
 ("watchtower_description_rome", "A watch tower lets the villagers raise alarm earlier. The time it takes for enemies to loot the village increases by 50%."),
 
 ("school_name_rome", "School"),
-("school_description_rome", "A school increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_rome", "A school increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_eastern", "Archery Games"),
-("school_description_eastern", "Games will entertain the population and thus increase your relation by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_eastern", "Games will entertain the population and thus increase your relation by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_germanic", "Storyteller"),
-("school_description_germanic", "Building a house for a storyteller will entertain the population and thus increase the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_germanic", "Building a house for a storyteller will entertain the population and thus increase the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_british", "Hall of the Elders"),
-("school_description_british", "Building a hall where the elders can gather will increase your realtion by +1 each month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_british", "Building a hall where the elders can gather will increase your realtion by +1 each month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_dacian", "School of Nobles"),
-("school_description_dacian", "A school to teach the local aristocracy will increases the loyality by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_dacian", "A school to teach the local aristocracy will increases the loyality by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_nomadic", "Learning Grove"),
-("school_description_nomadic", "A learning grove increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denars a month to maintain (costs will be paid from rents)."),
+("school_description_nomadic", "A learning grove increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 
 ("messenger_post_name_rome", "Messenger Post"),
-("messenger_post_description_rome", "A messenger post lets the inhabitants send you a message whenever enemies are nearby, even if you are far away from here. It will cost 250 denars a month to maintain (costs will be paid from rents)."),
+("messenger_post_description_rome", "A messenger post lets the inhabitants send you a message whenever enemies are nearby, even if you are far away from here. It will cost 250 denarii a month to maintain (costs will be paid from rents)."),
 ("prison_tower_name_rome", "Prison"),
 ("prison_tower_description_rome", "A prison reduces the chance of captives held here running away successfully. A prisoner tower also allows you to torture your prisoners."),
 
@@ -8586,6 +8605,7 @@ strings = [
 ("region_mountain_europe_spain_france","Mountain Hispania"),
 ("region_mountain_europe_romania","Mountain Dacia"),
 ("region_mountain_europe_bohemia","Mountain Germania"),
+("region_africa_green","Africa Grassland"),
 ("other","other region"),
 
 ("rt_water", "Ocean"),
@@ -8701,17 +8721,25 @@ strings = [
 ("custom_cavalry_retinue","Cavalry retinue (custom)"),
 ("custom_skirmisher_retinue","Skirmisher retinue (custom)"),
 
-("kingdom_1_town_watch","Local Townwatch(Dacian)"),
-("kingdom_2_town_watch","Local Townwatch (Celtic)"),
-("kingdom_2_1_town_watch","Local Townwatch (Caledonian)"),
-("kingdom_3_town_watch","Local Townwatch (Sarmatian)"),
-("kingdom_4_town_watch","Local Townwatch (Germanic)"),
-("kingdom_5_town_watch","Local Townwatch (Armenian)"),
-("kingdom_6_town_watch","Local Townwatch (Persian)"),
-("kingdom_7_town_watch","Local Townwatch (Roman)"),
-("kingdom_8_town_watch","Local Townwatch (Judean)"),
-("kingdom_9_town_watch","Local Townwatch (Bosphoran)"),
-("kingdom_19_town_watch","Local Townwatch (Batavan)"),
+("culture_1_town_watch","Local Townwatch(Dacian)"),
+("culture_2_town_watch","Local Townwatch (Celtic)"),
+("culture_2_1_town_watch","Local Townwatch (Caledonian)"),
+("culture_3_town_watch","Local Townwatch (Sarmatian)"),
+("culture_4_town_watch","Local Townwatch (Germanic)"),
+("culture_5_town_watch","Local Townwatch (Armenian)"),
+("culture_6_town_watch","Local Townwatch (Persian)"),
+("culture_7_town_watch","Local Townwatch (Roman)"),
+("culture_8_town_watch","Local Townwatch (Judean)"),
+("culture_9_town_watch","Local Townwatch (Bosporan)"),
+("culture_10_town_watch","Local Townwatch (Arabian)"),
+("culture_11_town_watch","Local Townwatch (Berber)"),
+("culture_12_town_watch","Local Townwatch (Garamantian)"),
+("culture_13_town_watch","Local Townwatch (Nubian)"),
+("culture_14_town_watch","Local Townwatch (Saka)"),
+("culture_15_town_watch","Local Townwatch (Syrian)"),
+("culture_4_1_town_watch","Local Townwatch (Batavan)"),
+("culture_16_town_watch","Local Townwatch (Egyptian)"),
+("culture_17_town_watch","Local Townwatch (Greek)"),
 
 ("kingdom_1_reinforcements_a","Dacian Levies"),
 ("kingdom_1_reinforcements_b","Dacian Lordly Retinue"),
@@ -8761,6 +8789,9 @@ strings = [
 ("kingdom_19_reinforcements_b","Batavan Cohort"),
 ("kingdom_19_reinforcements_c","Batavan Retinue"),
 
+("kingdom_23_reinforcements_a","Syrian Levies"),
+("kingdom_23_reinforcements_b","Syrian Lordly Retinue"),
+("kingdom_23_reinforcements_c","Syrian Royal Retinue"),
 
 ("hair_1","hair_1"),
 # ("hair_2","hair_2"),
@@ -8784,7 +8815,7 @@ strings = [
 ("diplo_provocations","provocations"),
 ("diplo_strings_end","diplo_strings_end"),
 
-("diplo_casus_expired_reparations_accepted","In order to avoid war they decide to accept the demand. A sum of {reg40} denars has been paid as tribute."),
+("diplo_casus_expired_reparations_accepted","In order to avoid war they decide to accept the demand. A sum of {reg40} denarii has been paid as tribute."),
 ("diplo_casus_expired_reparations_refused_war","They refuse the demand and declare war!"),
 
 ("minor_faction_description_garamantes",
@@ -9048,7 +9079,7 @@ strings = [
 ("mcc_skl_persuasion", "Persuasion"),
 ("mcc_skl_prisonermanagement", "Prisoner Mgmt."),
 ("mcc_skl_leadership", "Leadership"),
-("mcc_skl_trade", "Trade"),
+("mcc_skl_trade", "Trade & Management"),
 ("mcc_skl_oratory", "Oratory"),
 
 ("antonia_speech_1", "Soldiers of Rome!^^Today, you stand on the precipice of destiny, ready to write your names in the annals of history. You march forth not just as men, but as warriors imbued with the spirit of heroes who have come before us. Like the mighty Aeneas, you carry the weight of our empire's future upon your shoulders."),
@@ -9089,7 +9120,7 @@ strings = [
 ("description_laurel_gold", "Description:^^A laurel wreath made of gold, fitting for a Caesar.^^Background:^^In Greek mythology, the god Apollo is usually depicted wearing a laurel wreath on his head. Wreaths were awarded to victors in athletic competitions, including the ancient Olympics. In Rome they were symbols of martial victory, crowning a successful commander during his triumph. Usually, a slave was holding a golden laurel wreath over the head of the triumphator."),
 ("description_female_crown", "Description:^^A diadem made out of gold decorated with plenty of gemstones, perfectly fitting for a queen or Augusta.^^Background:^^Diadem comes from the Greek diadema, originally denoting an embroidered silk ribbon signifying a king's authority. It evolved to include metal crowns and jeweled ornaments like tiaras. Ancient examples are found in Egypt and the Aegean world. It can also symbolize regal power. Roman emperors wore diadems, and Odoacer returned one to Emperor Zeno in 476 AD after expelling Romulus Augustus."),
 ("description_laurel_silver", "Description:^^A laurel wreath made of silver.^^Background:^^In Greek mythology, the god Apollo is usually depicted wearing a laurel wreath on his head. Wreaths were awarded to victors in athletic competitions, including the ancient Olympics. In Rome they were symbols of martial victory, crowning a successful commander during his triumph. Usually, a slave was holding a golden laurel wreath over the head of the triumphator."),
-("description_pharaoh_crown", "Descirption:^^The double crown of Egypt worn by the pharaoh, divine ruler of Kemet.^^Background:^^The Pschent represented the pharaoh's power over all of unified Egypt. It bore two animal^Emblem:s: an Egyptian cobra, known as the uraeus, ready to strike, which symbolized the Lower Egyptian goddess Wadjet; and a vulture representing the Upper Egyptian tutelary goddess Nekhbet. These were fastened to the front of the Pschent and referred to as the Two Ladies."),
+("description_pharaoh_crown", "Descirption:^^The double crown of Egypt worn by the pharaoh, divine ruler of Kemet.^^Background:^^The Pschent represented the pharaoh's power over all of unified Egypt. It bore two animal^emblems: An Egyptian cobra, known as the uraeus, ready to strike, which symbolized the Lower Egyptian goddess Wadjet; and a vulture representing the Upper Egyptian tutelary goddess Nekhbet. These were fastened to the front of the Pschent and referred to as the Two Ladies."),
 ("description_pilos_ultimate", "Description:^^This Ancient Greek Pilos helmet has been restored with great skill. It is the ultimate symbol of power. Glory to PILOS!^^Background:^^The pilos together with the petasos were the most common types of hats in Archaic and Classical era Greece. In the 5th century BC, a bronze version began to appear in Ancient Greece and it became a popular infantry helmet. It occasionally had a horsehair crest. The Greek pilos resembled the Roman and Etruscan pileus, which were typically made of felt. The Greek pilidion and Latin pilleolus were smaller versions, similar to a skullcap.^In modern times the Pilos helmet became an object of worship. Spreading from discord, the PILOS cult slowly conquers the world."),
 ("description_felt_steppe_cap", "Description:^^This is just a funny looking cap.^^Background:^^This Santa cap (in German called 'Zipfelmuetze') is nothing more than a modern successor of the legendary Pilos helmet and thus a sign of the greatness of PILOS. It is usually worn during Christmas events."),
 ("description_laurel_wreath", "Description:^^A laurel wreath, typical award for the victor of competitions.^^Background:^^In Greek mythology, the god Apollo is usually depicted wearing a laurel wreath on his head. Wreaths were awarded to victors in athletic competitions, including the ancient Olympics. In Rome they were symbols of martial victory, crowning a successful commander during his triumph. Usually, a slave was holding a golden laurel wreath over the head of the triumphator."),
@@ -9107,6 +9138,8 @@ strings = [
 ("description_african_longbow", "Description:^^Mighty bow blessed by the god Nyame.^^Background:^^Nyame is a North African deity worshipped by the Akan people of Ghana. However, this bow is purely fictional."),
 ("description_dragon_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'dragon'.^^Background:^^This arrows are purely fictional."),
 ("description_thunder_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'thunder'.^^Background:^^This arrows are purely fictional."),
+("description_sling_David", "Description:^^The legendary sling with which David killed Goliat. A perfect weapon for fighting a superior enemy.^^Background:^^According to religious texts, David defeated the stronger Goliat with a sling."),
+("description_jupiters_throwing_spear", "Description:^^A throwing spear so powerfull that it could be a lightning bolt of Jupiter.^^Background:^^Jupiter (Zeus) has as symbol a lightning bolt. The mod links it with Queen Rhodogune, who crushed a revolt in Media."),
 ("description_linothorax_alexander", "Description:^^This is the armour worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
 ("description_alexanders_helm", "Description:^^This is the helmet worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
 ("description_armor_of_african_gods", "Description:^^A strong hamata over a tunic together with a lionskin. Somehow it offers much more protection than one would expect.^^Background:^^This armour set is purely fictional."),
@@ -9114,6 +9147,7 @@ strings = [
 ("description_holy_lance", "Description:^^This lance belonged to Longinius, who pierced Christus side with it.^^Background:^^Longinus is the name given to the unnamed Roman soldier who pierced the side of Christus with a lance. This lance is called the 'Holy Lance'."),
 ("description_gallic_spear_4", "Description:^^This is the legendary spear of Olyndicus, a Celtiberian war chief who lead a rebellion against Rome. Olyndicus was said to have behaved like a prophet and to have led his troops wielding a magical silver lance, sent to him by the gods from the sky.^^Background:^^Olyndicus (also known as Olonicus) lived around 170 BC and was a Celtiberian war chief who led a rebellion against Rome, fighting against the praetor Lucius Canuleyus and his troops, in the province of Hispania Ulterior. According to Florus, he was a great leader, and a cunning and daring warrior. Legends also say he had a silver spear gifted to him by the gods of the sky."),
 ("description_ancient_spatha", "Description:^^This spatha is lavishly decorated. It belonged to Augustus, the first Princeps.^^Background:^^I claim that Augustus (Ocatvian) yielded a spatha. And I also claim it was decorated."),
+("description_ancient_spatha_melee", "Description:^^This spatha is lavishly decorated. It belonged to Augustus, the first Princeps.^^Background:^^I claim that Augustus (Ocatvian) yielded a spatha. And I also claim it was decorated."),
 ("description_augustus_armor",
   "Description:^^This breastplate is lavishly decorated. It belonged to Augustus, the first Princeps.^^Background:^^The breastplate is paste on the statue 'Augustus of Prima Porta'. The imagery on the lorica musculata cuirass (typical of legates) refers to the Parthian restitution of the Roman eagles, or insignia, in 20 BC, one of Augustus' most significant diplomatic accomplishments. "
   +"^Description of the breastplate of the statue:^^The figure in the centre, according to the most common interpretation, is the subjected Parthian king (Phraates IV) returning Crassus's standard to an armored Roman (possibly Tiberius, or symbolically Mars Ultor or the incarnation of the ideal legionary). Other theory sees in the male figure the ideal incarnation of the Roman legions. This was a very popular subject in Augustan propaganda, as one of his greatest international successes, and had to be especially strongly emphasized, since Augustus had been deterred by Parthian military strength from the war which the Roman people had expected and had instead opted for diplomacy. Below the armed figure we can see a dog, or probably a wolf or, according to archaeologist Ascanio Modena Altieri, a she-wolf, nurse of Romulus and Remus. To the left and right sit mourning female figures. A figure to one side with a sheathed sword personifies the peoples in the East (and possibly the Teutons) forced to pay tribute to Rome, and one on the other side with an unsheathed sword personifies the subjected peoples (the Celts). From the top, clockwise, we see: "
@@ -9556,7 +9590,7 @@ strings = [
   +" Your standing within the Senate has undoubtedly improved.^^Yet, whispers from the Palatine indicate that the Princeps views your independent actions with a degree of displeasure,"
   +" posibly concerned by the precedent set or the political implications of your success."
 ),
-("grain_success_2",  
+("grain_success_2",
   "Word of your successful grain delivery spreads quickly! Amidst cheers and gratitude, the vital supplies are distributed to the populace on the Campus Martius."
   +" The Senate is visibly pleased with your decisive action and generosity."
   +"^^However, reports suggest the Princeps, Caesar Augustus, is less than amused by this turn of events, perhaps seeing it as an unwelcome spotlight on his"
@@ -9564,6 +9598,377 @@ strings = [
 ),
 ("grain_success_end",  "end"),
 
+# Subculture Strings
+("subculture_hispanic_tarraconensian", "Iberian"),
+("subculture_hispanic_baetican", "Iberian"),
+("subculture_hispanic_lusitanian", "Iberian"),
+("subculture_african_mauretanian", "Berber"), # Could also be "Moorish" or "Numidian" depending on nuance
+("subculture_african_proconsular", "Berber"), # For Africa Proconsularis
+("subculture_african_cyrenaican", "Garamantian"),
+("subculture_african_egyptian", "Egyptian"),
+("subculture_asian_arabian_petraea", "Arabian"), # Arabia Petraea
+("subculture_asian_judean", "Judean"), # Or Syro-Palestinian if broader
+("subculture_asian_syrian", "Syrian"),
+("subculture_asian_osreon", "Syrian"),
+("subculture_asian_cilician", "Greek"),
+("subculture_asian_cappadocian", "Galatian"),
+("subculture_asian_pontic", "Pontic"),
+("subculture_asian_anatolian", "Greek"), # For Asia Minor
+("subculture_balkan_thracian", "Thracian"),
+("subculture_balkan_moesian_superior", "Thracian"),
+("subculture_balkan_moesian_inferior", "Thracian"),
+("subculture_balkan_achaean_greek", "Greek"),
+("subculture_balkan_epirote_greek", "Greek"),
+("subculture_balkan_macedonian_greek", "Greek"),
+("subculture_balkan_dalmatian_illyrian", "Illyrian"),
+("subculture_italian_sicilian", "Greek"),
+("subculture_italian_magna_graecian", "Roman"), # Greek in Southern Italy
+("subculture_italian_italic", "Roman"), # Central Italy
+("subculture_italian_cisalpine", "Roman"), # Northern Italy (often Gallic/Celtic influences)
+("subculture_gaulish_narbonensian", "Gaulish"),
+("subculture_gaulish_aquitanian", "Gaulish"),
+("subculture_gaulish_lugdunensian", "Gaulish"),
+("subculture_gaulish_belgic", "Gaulish"),
+("subculture_germanic_inferior", "Germanic"), # Along the Rhine
+("subculture_germanic_superior", "Germanic"), # Along the Rhine
+("subculture_germanic_raetian", "Celtic"), # Alpine
+("subculture_germanic_norican", "Celtic"), # Alpine Celtic/Illyrian, Romanized
+("subculture_central_pannonian", "Celtic"), # Illyrian/Celtic
+("subculture_britannic_britannian", "Britannic"), # Southern Britain
+("subculture_britannic_caledonian", "Caledonian"), # Northern Britain/Scotland
+("subculture_magna_germanian", "Germanic"), # General for Germania Libera
+("subculture_hercynian_germanian", "Hercynian"), # Forest Germans
+("subculture_suebian_germanian", "Suebian"),
+("subculture_dacian", "Dacian"),
+("subculture_sarmatian_plains", "Sarmatian"),
+("subculture_bosporan_kingdom", "Bosporan"), # Greek/Scythian mix
+("subculture_scythian_steppe", "Scythian"),
+("subculture_armenian_highlands", "Armenian"),
+("subculture_mesopotamian", "Mesopotamian"),
+("subculture_assyrian", "Median"),
+("subculture_mediterranean_western_isles", "Sardinian"),
+("subculture_mediterranean_eastern_isles", "Greek"), # e.g., Cretan, Cypriot, Rhodian
+("subculture_caucasian_mountain", "Caucasian"),
+("subculture_persian_plateau", "Persian"),
+("subculture_parthian_iranian", "Partho-Iranian"),
+("subculture_median", "Median"),
+("subculture_nubian", "Nubian"),
+("subculture_garamantian", "Garamantian"),
+("subculture_saka", "Saka"),
+("subculture_unknown", "American Chungus"), # Fallback
+
+("culture_1_rized", "Daco"),
+("culture_2_rized", "Celto"),
+("culture_2_1_rized", "Caledonian"),
+("culture_3_rized", "Sarmato"),
+("culture_4_rized", "Germano"),
+("culture_5_rized", "Caucasian"),
+("culture_6_rized", "Partho"),
+("culture_7_rized", "Romanized"),
+("culture_8_rized", "Judeo"),
+("culture_9_rized", "Bosperan"),
+("culture_10_rized", "Arabo"),
+("culture_11_rized", "Berber"),
+("culture_12_rized", "Garamanto"),
+("culture_13_rized", "Nubian"),
+("culture_14_rized", "Saka"),
+("culture_15_rized", "Syrian"),
+("culture_16_rized", "Egyptian"),
+("culture_17_rized", "Hellenized"),
+
+("here_is_what_i_have_on_offer", "Here's what I have on offer:^^{s3}"),
+("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),
+("i_will_take_the_reg1_s1_for_reg2_denars", "I'll take the {reg1} {s1} for {reg2} denarii."),
+("reg1_s1_have_been_added_to_your_party_as_prisoners", "{reg1} {s1} have been added to your party as prisoners."),
+
+("household_mod_latifunida_limit_name", "Latifundia Limit"),
+("household_mod_workshop_limit_name", "Workshop Limit"),
+("household_mod_corruption_name", "Corruption"),
+("household_mod_cook_quality_name", "Cook Quality"),
+("household_mod_admin_eff_name", "Administrative Efficiency"),
+("household_mod_engineering_eff_name", "Engineering Efficiency"),
+
+("household_mod_latifunida_limit_descr", "The maximum number of latifundia you can own. Latifundia are large estates that provide income but require substantial management."),
+("household_mod_workshop_limit_descr", "The maximum number of workshops you can own. Workshops generate income through production, but require management."),
+("household_mod_corruption_descr", "The level of corruption in your administration. High corruption can lead to reduced income."),
+("household_mod_cook_quality_descr", "The quality of food prepared by your household cook. Higher quality food improves feasts."),
+("household_mod_admin_eff_descr", "The efficiency of your administrative staff. Higher efficiency leads to better management of your estates."),
+("household_mod_engineering_eff_descr", "The efficiency of your engineering staff. Higher efficiency leads to better construction and maintenance of your properties."),
+
+## Cook Quality Descriptions (MUST BE IN THIS EXACT ORDER)
+# Tier 5 (God-Tier)
+("cook_quality_5_tooltip", "- A true culinary artist. Their feasts could appease angry gods or sway the Senate's vote. An invaluable asset."),
+("cook_quality_5_host",    "Your cooks are true culinary artists; their feasts could appease angry gods or sway the Senate's vote."),
+("cook_quality_5_guest_m", "By the gods, this is a feast worthy of Olympus! My compliments to your chefs!"),
+("cook_quality_5_guest_f", "This is simply divine! Your household will be the talk of the city. Such artistry is rarely seen outside Caesar's own table!"),
+("cook_quality_5_spouse",  "My love, our guests will speak of our feast for months! Our cooks will bring great honor to our house."),
+# Tier 4 (Excellent)
+("cook_quality_4_tooltip", "- An excellent cook, able to create delicious meals from humble ingredients."),
+("cook_quality_4_host",    "Your cooks are excellent and can turn even humble ingredients into a delicious meal."),
+("cook_quality_4_guest_m", "This is truly a remarkable meal! The flavors are exquisite. You have some very talented cooks in your household."),
+("cook_quality_4_guest_f", "What a delightful meal! Everything is cooked to perfection. Your cooks have truly outdone themselves."),
+("cook_quality_4_spouse",  "I must say, my dear, our cooks are worth every denarius. Their meals are simply wonderful."),
+# Tier 3 (Competent)
+("cook_quality_3_tooltip", "- A competent cook, capable of turning mundane ingredients into a respectable meal."),
+("cook_quality_3_host",    "Your cooks are competent and capable of preparing a respectable meal that should please your guests."),
+("cook_quality_3_guest_m", "A most respectable meal. It is simple, yet skillfully prepared. You feed your guests well."),
+("cook_quality_3_guest_f", "A very pleasant repast. Simple, yet elegant. It is a credit to your household management."),
+("cook_quality_3_spouse",  "Our cooks can prepare fine meals, my dear. They are simple but well-made, and it will make our guests content."),
+# Tier 2 (Basic)
+("cook_quality_2_tooltip", "- Can prepare basic rations that won't kill you. Probably. Do not expect any flavor."),
+("cook_quality_2_host",    "Your cooks can prepare basic, uninspired rations. It should be enough to fill bellies, but do not expect praise."),
+("cook_quality_2_guest_m", "Ah... a simple, straightforward meal. It fills the belly, which is what matters, is it not?"),
+("cook_quality_2_guest_f", "How... authentic. It is certainly... a nourishing meal."),
+("cook_quality_2_spouse",  "My dear, let us make a note to... *encourage* the kitchen staff. Their meals are edible, at least. No one will collapse."),
+# Tier 1 (Disaster)
+("cook_quality_1_tooltip", "- A culinary disaster. Useful for poisoning enemies, but should be kept away from your personal kitchen at all costs."),
+("cook_quality_1_host",    "Your so-called 'cooks' are a culinary disaster. They might be useful for poisoning a besieging army, but they should be kept away from our own kitchen."),
+("cook_quality_1_guest_m", "Forgive my candor, but... is this meant to be consumed? I've had better fare in a legionary marching camp."),
+("cook_quality_1_guest_f", "My dear, I believe my field slaves eat better than this. How... quaint."),
+("cook_quality_1_spouse",  "By all the gods, this is a catastrophe! We must find new cooks immediately, my love. Our cooks are only useful for poisoning enemies!"),
+
+("merchant_greeting_very_dishonorable", "I know your reputation, and frankly, I'd rather not do business. But coin is coin. State your purpose quickly."),
+("merchant_greeting_dishonorable", "Ave... I suppose. Be aware, I'll be watching you closely. Now, what do you want?"),
+("merchant_greeting_neutral", "Ave, citizen. Are you interested in my wares?"),
+("merchant_greeting_honorable", "Greetings, a pleasure to see a reputable customer. How may I be of service?"),
+("merchant_greeting_very_honorable", "An honor to receive you! A person of your standing is always welcome here. Please, browse my finest goods at your leisure."),
+
+
+("christian_priest_greet_first_meeting_vhonorable", "Peace be with you. I sense a kindred spirit in you, a soul searching for truth. I am a servant of the One True God and His Son. What guidance do you seek, my friend?"),
+("christian_priest_greet_first_meeting_honorable", "May you walk in peace, traveler. I am a presbyter for the followers of the Way. If you come with an open heart, you may find the answers you seek here."),
+("christian_priest_greet_first_meeting_neutral", "Greetings. I am a teacher of the good news. People come here for solace and guidance. What is your purpose in coming here?"),
+("christian_priest_greet_first_meeting_dishonorable", "This is a place of peace. Your reputation suggests you are a stranger to it. State your business plainly."),
+("christian_priest_greet_first_meeting_vdisponorable", "I know of you by your deeds. Whatever darkness you serve, do not bring it here. What do you want?"),
+
+("christian_priest_greet_later_positive", "Brother, it is good to see you again. May God's peace be with you. How can I help our community today?"),
+("christian_priest_greet_later_neutral", "Welcome back, {playername}. How may I help you this day?"),
+("christian_priest_greet_later_negative", "You have returned. I pray you come with better intentions this time. What is it now?"),
+
+# module_strings.py
+
+## Flirtation outcome text
+# module_strings.py
+
+## Flirtation outcome text (REVISED - Spoken Dialogue)
+# Poppaea Sabina (special)
+("flirt_poppaea_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^You... amuse me. In the way a particularly clumsy beetle might. Run along now, I have important matters to attend to."),
+("flirt_poppaea_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^A pleasant enough conversation. You have a certain... rustic charm. Do excuse me."),
+("flirt_poppaea_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^You are more interesting than most of the dullards in this court. Your words have wit. Do not be a stranger."),
+("flirt_poppaea_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She leans closer, her voice a low purr. --^^ You have a dangerous spark in your eyes. I find it... compelling. We will speak again. Soon."),
+
+# Statilia Messalina (special)
+("flirt_messalina_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^I'm sorry, were you saying something? My apologies, my attention was elsewhere. Good day."),
+("flirt_messalina_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^A pleasure to make your acquaintance. One must always be seen to be sociable."),
+("flirt_messalina_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^You speak with the confidence of a person who achieves their goals. I find that... admirable. I will be watching your career with interest."),
+("flirt_messalina_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She smiles, a calculating glint in her eyes. --^^ A man of your ambition could achieve great things with the right allies. We should discuss what the future might hold for us both."),
+
+# Conventional Personality
+("flirt_conventional_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Oh! My good sir, your forwardness is... quite unbecoming. I must ask that you maintain a proper distance."),
+("flirt_conventional_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^You are a most courteous conversationalist. Thank you for the pleasant diversion."),
+("flirt_conventional_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^It is a relief to speak with a true gentleman. You have a way with words that is most charming."),
+("flirt_conventional_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She blushes and touches your arm lightly. --^^ My goodness, you'll make me forget all my courtly manners! It has been a true delight speaking with you."),
+
+# Adventurous Personality
+("flirt_adventurous_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Is that all? Forgive me, but I find courtly chatter dreadfully dull. I must go see to... anything else."),
+("flirt_adventurous_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^Your stories of battle are interesting. Much better than discussing the price of silk, at least."),
+("flirt_adventurous_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^Finally, someone who has seen the world beyond these suffocating walls! Tell me more of your travels!"),
+("flirt_adventurous_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^To ride across the steppes... oh, what I would give for such freedom! You have truly lived. Perhaps one day, you could show me what lies beyond the horizon?"),
+
+# Otherworldly Personality
+("flirt_otherworldly_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^...I'm sorry, I was listening to the wind. It carries such sorrowful tales today. What were you saying?"),
+("flirt_otherworldly_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^Your words are like stones in a river... they make ripples, but the stream flows on. An interesting diversion."),
+("flirt_otherworldly_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^You speak of things that resonate with my own soul. It feels as if we have spoken before, perhaps in a dream."),
+("flirt_otherworldly_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She looks at you with unnerving intensity. --^^ The threads of our fates are entwined, I can see them now. This meeting was not by chance. We must speak again when the moon is full."),
+
+# Ambitious Personality
+("flirt_ambitious_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Yes, yes, very charming. Now, if you'll excuse me, I see someone of consequence I must speak with."),
+("flirt_ambitious_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^You have a certain... potential. It will be interesting to see if you live up to it."),
+("flirt_ambitious_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^You are clearly a person of influence and power. Such qualities are... very appealing. I believe we may have much to discuss."),
+("flirt_ambitious_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^Do not waste your time with pleasantries. You and I both know what we want. An alliance between us could be... immensely profitable. For us both."),
+
+# Moralist Personality
+("flirt_moralist_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Dominus! Such frivolous talk is unbefitting of our station. We have duties to our people, not time for idle flattery."),
+("flirt_moralist_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^It is good to speak with someone who understands the weight of responsibility we carry."),
+("flirt_moralist_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^Your dedication to justice and honor is truly commendable. It is refreshing to meet a kindred spirit in these trying times."),
+("flirt_moralist_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^Finally, someone who speaks of virtue and means it! Your words give me hope for the future of this realm. It is an honor to know you."),
+
+
+("tetraites_intro", "I am Tetraites, a name that echoes in every arena from Britannia to Aegyptus. They say my skill with the gladius is a gift from Mars himself. Perhaps you have heard the tales of my victories?"),
+("tetraites_greeting", "Hail, {playername}. Good to see you again. The baths are a fine place to ease the aches of the arena."),
+
+("spiculus_intro", "Spiculus. Remember that name, for it is the one whispered in fear by my opponents and roared in adoration by the crowds. Caesar Nero himself has shown me great favor. I am a murmillo of some renown, and my victories have earned me more than just my freedom."),
+("spiculus_greeting", "Well met, {playername}. Taking in the splendors of Rome, I see."),
+
+("hermes_intro", "They call me Hermes, swift of foot and deadly with the blade. I have been lauded in the verses of the poet Martial, a testament to my prowess. For a century, I have been the darling of the games. What brings you to a humble gladiator?"),
+("hermes_greeting", "Greetings, {playername}. The steam does wonders for the muscles."),
+
+("flamma_intro", "I am Flamma, a Syrian by birth, but a Roman by the bloody rites of the arena. Four times I have been offered the rudis, the wooden sword that grants a gladiator his freedom, and four times I have refused it. The life of a fighter is the only life I know."),
+("flamma_greeting", "{playername}. Still walking among the living, I see."),
+
+("marcus_attilius_intro", "I am Marcus Attilius, a citizen of Rome who chose the life of a gladiator. I was a novice, a tiro, when I first stepped into the arena. I faced Hilarus, a veteran of Nero's ludus, a man with thirteen victories to his name. And I defeated him. My name is now etched in the graffiti of Pompeii, a testament to my unexpected triumph."),
+("marcus_attilius_greeting", "Hail, {playername}. Another day in the eternal city."),
+
+("diocles_intro", "You stand before Appuleius Diocles, a Lusitanian, but known throughout the Empire as the master of the Circus Maximus. They call me the 'Lamecus', and my victories for the Red faction are legendary. I have won over a thousand races and earned more sesterces than most senators will see in a lifetime. What business have you with me?"),
+("diocles_greeting", "Well met, {playername}. The roar of the crowd still rings in my ears, but the calm of the baths is a welcome change."),
+
+("scorpus_intro", "I am Scorpus, the pride of the Green faction! The crowds adore me, and Caesar himself has gifted me my freedom and a fortune. They say I am the master of the final turn, snatching victory from the jaws of defeat. With over two thousand victories, my name will be remembered for eternity."),
+("scorpus_greeting", "Hail, {playername}! Always a pleasure to see a friendly face."),
+
+
+("desc_ludi_romani_emperor", "Ludi Romani!^^As Princeps and Pontifex Maximus, the sacred duty falls to you to inaugurate the Ludi Romani. The city looks to you to lead the grand procession and perform the necessary sacrifices to Jupiter Optimus Maximus, ensuring the gods' favor for another year. After your duties are complete, the spectacles you have sponsored—chariot races, gladiatorial combats, and theatrical plays—will entertain the masses. The games will last for seven days; you must ensure they are a worthy tribute to the father of the gods."),
+
+("desc_ludi_romani", "Ludi Romani!^^The city of Rome buzzes with anticipation, for the Ludi Romani are upon you! The most ancient and grand of all the games, held in honor of Jupiter Optimus Maximus, are about to begin. Chariot races will thunder through the Circus Maximus, gladiators will test their mettle in the arena, and actors will perform on every stage. The festivities will last for seven days. You have this time to witness the spectacles and honor the gods."),
+
+("desc_saturnalia_emperor", "Saturnalia!^^The time of Saturnalia is here, a period of celebrated chaos that even you, as Princeps, must embrace. As Pontifex Maximus, it is your duty to offer the state sacrifices to Saturn to inaugurate the festival and usher in the Golden Age, if only for a short time. Afterward, you are expected to participate in the revelry, setting aside your diadem to join in the feasting and gift-giving. For seven days, you are not only a ruler, but a participant in the joyful inversion of the social order."),
+
+("desc_saturnalia", "Saturnalia!^^A spirit of revelry and joyful chaos descends upon the Empire, announcing the arrival of Saturnalia! For seven days, the old order is overturned in honor of the god Saturn. Slaves will speak their minds freely, masters will serve their servants, and dice will be cast in the streets without fear of reprisal. Feasting, drinking, and gift-giving are the order of the day. You have seven days to take part in this cherished tradition and celebrate the memory of the Golden Age."),
+
+("quest_desc_ludi_romani_emperor", "As Princeps and Pontifex Maximus, the sacred duty falls to you to inaugurate the Ludi Romani. Travel to {s44} as soon as possible."),
+("quest_obj_ludi_romani_emperor", "Perform a state sacrifice, ideally in person."),
+
+("quest_desc_ludi_romani", "The city of Rome buzzes with anticipation, for the Ludi Romani are upon you! Travel to {s44} to participate."),
+("quest_obj_ludi_romani", "Perform at least one small sacrifice at the temple of Jupiter."),
+
+("quest_desc_saturnalia_emperor", "Saturnalia!^^The time of Saturnalia is here and as Pontifex Maximus, it is your duty to offer the state sacrifices to Saturn to inaugurate the festival and usher in the Golden Age. Travel to {s44} as soon as possible."),
+("quest_obj_saturnalia_emperor", "Perform a state sacrifice, ideally in person"),
+
+("quest_desc_saturnalia", "Saturnalia!^^A spirit of revelry and joyful chaos descends upon the Empire, announcing the arrival of Saturnalia! Travel to {s44} to participate."),
+("quest_obj_saturnalia", "Perform at least one small sacrifice at the temple of Saturn."),
+
+
+("ludi_romani_dialogue_1", "Greetings, {s0}. Are you heading to the Circus Maximus? I've got my money on the Greens today!"),
+("ludi_romani_dialogue_2", "Greetings, {s0}. By the gods, you can barely move in the Forum! The whole world has come to Rome for the games."),
+("ludi_romani_dialogue_3", "Greetings, {s0}. The procession this morning was magnificent. A truly grand tribute to Jupiter Optimus Maximus."),
+("ludi_romani_dialogue_4", "Greetings, {s0}. The races are for the mob. I'm hoping to see a good, skillful gladiatorial match in the arena."),
+("ludi_romani_dialogue_5", "Greetings, {s0}. Let's hope the sacrifices were pleasing to the gods. The city's fortune depends on it."),
+("ludi_romani_dialogue_6", "Greetings, {s0}. Forget the arena, the tragedies at the Theatre of Pompey are the real spectacle."),
+("ludi_romani_dialogue_7", "Greetings, {s0}. I saw a senator lose a fortune betting on the Reds. A glorious day!"),
+("ludi_romani_dialogue_end", "End"),
+
+("saturnalia_dialogue_1", "Io, Saturnalia, {s0}! Don't just stand there, have some wine!"),
+("saturnalia_dialogue_2", "Greetings, {s0}. My master served me my dinner last night. Tasted awful, but it's the principle of the thing!"),
+("saturnalia_dialogue_3", "Greetings, {s0}. I just called a magistrate a blockhead and all he did was laugh! What a wonderful time of year!"),
+("saturnalia_dialogue_4", "Greetings, {s0}. Lost all my money playing dice, but who cares? It's Saturnalia! Gambling is the rule of the day!"),
+("saturnalia_dialogue_5", "Greetings, {s0}. Don't forget to buy some wax candles and little clay figures for the children. The market is a madhouse."),
+("saturnalia_dialogue_6", "Greetings, {s0}. Why aren't you wearing the pileus, the cap of freedom? Are you even celebrating?"),
+("saturnalia_dialogue_7", "Greetings, {s0}. The whole city is drunk! It feels like the Golden Age has returned! Io, Saturnalia!"),
+("saturnalia_dialogue_end", "End"),
+
+("default_town_walker_dialogue", "Greetings, {s0}. Just another day in the city."),
+
+("saturnalia", "Saturnalia"),
+("ludi_romani", "Ludi Romani"),
+
+("sacrifice_success_small_desc", "You conduct the rites for the offering with proper reverence. The entrails of the sacrificed lamb are unblemished, and the augurs note no ill omens in the sky. The crowd murmurs in satisfaction as the priests declare that the gods have accepted your offering, fulfilling the state's obligation."),
+
+("sacrifice_success_medium_desc", "You perform the rites with solemn dignity. The auspices are favorable, the entrails of the sacrificed bull are perfect, and a wave of approval ripples through the crowd. The priests declare that the gods are pleased with your devotion."),
+
+("sacrifice_success_large_desc", "You preside over the grand sacrifice, offering the finest white bulls from across Italia. As the smoke from the pyres rises straight to the heavens, the senior augur cries out, pointing to an eagle circling directly overhead. The entrails are declared not merely perfect, but to show signs of immense future prosperity. An ecstatic roar erupts from the crowd as the priests proclaim that the gods have shown their undeniable favor upon you and all of Rome."),
+
+("sacrifice_delegated_desc", "You delegate the duty to the college of priests. They perform the rites competently in your name. While the sacrifice is technically valid, some whisper that Caesar lacks the personal piety of his predecessors. The gods are appeased, but the people are not inspired."),
+
+("sacrifice_refused_desc", "You refuse to perform the sacrifice, citing more important matters of state. A shocked silence falls over the priests and the gathered public. To neglect the gods so openly is seen as a terrible omen. The festival begins under a cloud of uncertainty and divine disapproval."),
+
+("nero_greece_arrival_menu_text", "After a long voyage across the Ionian Sea, your ship finally docks at the port of Dyrrachium. The city is in a state of controlled chaos, with local officials scrambling to accommodate the unexpected arrival of Caesar and his entourage. Before you can even get your bearings, a Praetorian Guard approaches you with a curt message: 'The Princeps demands your immediate presence at the governor's villa. Do not keep him waiting.'"),
+
+("feast_preparation_intro", "The Actian Games have concluded, and Nero, crowned with more laurels than a victorious general, has declared it is time for his triumph. The priceless ingredients you gathered are now ready to be transformed. The governor's kitchens, its staff, and its resources are at your disposal. The success of this legendary feast rests entirely on how it is prepared."),
+
+("feast_prep_player_cooks_desc", "{s8}^^With no skilled cook in your retinue, the immense task of preparing the feast falls to you. You spend hours in the governor's kitchens, a chaotic symphony of sizzling pans, fragrant saffron, and the occasional plume of smoke. You direct the kitchen slaves with the authority of a centurion, improvising where culinary technique is lacking. The result is surprisingly impressive—a hearty, rustic meal rather than a refined masterpiece, but one clearly prepared with great effort."),
+
+("feast_prep_good_cook_desc", "{s8}^^You entrust the preparations to your skilled cook, who takes command of the governor's kitchens with the calm authority of a master. It is a symphony of culinary artistry. The Falernian wine is perfectly chilled, the sauces glow with a golden saffron hue, and the peacocks are roasted to such perfection they look as if they might fly from the platters. A true masterpiece is in the making."),
+
+("feast_prep_bad_cook_desc", "{s8}^^You assign the task to your cook, whose enthusiasm unfortunately outweighs their talent. The governor's kitchen quickly descends into chaos. One of the priceless peacocks is slightly burnt, the saffron is applied so heavily that the sauce is almost bitter, and a concerning amount of the Falernian wine seems to have 'evaporated' during tasting. It is a valiant, if clumsy, effort to turn gold into lead."),
+
+("feast_begins", "{s9}^^With the preparations complete, the guests begin to arrive. The governor's villa is filled with the sounds of music and conversation as Nero prepares to make his grand entrance. It is time for the feast to begin."),
+
+("nero_reaction_good_meal", "Ambrosia! The food of the gods! A feast truly worthy of my victory! Well done, {playername}. You have a fine eye for talent."),
+("nero_reaction_player_meal", "Hmm. Rustic. It has a certain... vigorous honesty, I suppose. It lacks the refined touch of a true master, but it is acceptable for a provincial celebration. Your effort is noted."),
+
+("nero_reaction_bad_meal", "What is this!? Are you trying to poison me with mediocrity? This is an insult to my palate and a stain upon my triumph! This slop is barely fit for the slaves who cooked it."),
+
+("neros_tomb_arrival_menu_text", "The journey through the rugged heart of Macedonia has been arduous, but at last, you reach your destination. The landscape opens dramatically onto a deep, verdant ravine carved by a powerful river. A narrow, winding path leads your party downwards along the face of a sheer cliff. As you reach the riverbank, the scene resolves itself. To your right, a magnificent waterfall crashes into a clear pool, its roar softened by the mist. To your left, carved directly into the stone, stand a series of imposing, ancient facades—the Royal Tombs of Aigai. Nero is silent for a moment, his eyes scanning the scene, a mixture of artistic appreciation and competitive envy on his face. He turns to you, ready to speak."),
+
+("nero_reaction_flattery", "Ha! Precisely! A man who understands the proper order of things. Well said."),
+
+("nero_reaction_pragmatic", "A soldier's eye sees only fortresses. Predictable, but honest. You see the stone, I see the soul."),
+
+("nero_reaction_philosophical", "How somber. You sound like Seneca on a bad day. We are here to be inspired by the past, not buried by it!"),
+
+("neros_delphi_arrival_menu_text", "The road to Delphi winds ever upwards, climbing the sacred slopes of Mount Parnassus. As you arrive at the sanctuary, a hush falls over even the most cynical members of your entourage. The ancient stones of the treasuries and temples seem to whisper with the weight of centuries of prophecy.^^Without a moment's hesitation, Nero, in his self-proclaimed role as the new Apollo, imperiously brushes past the awestruck priests and makes his way towards the adyton, the inner sanctum where he will consult the Pythian Oracle in private.^^You and the rest of the retinue are left to wait in the great courtyard before the Temple of Apollo. It is then that Poppaea Sabina separates herself from the other courtiers. Her expression is unreadable as she approaches you with slow, deliberate steps."),
+
+("neros_olympia_arrival_menu_text", "After the long journey from Delphi, you finally arrive at the hallowed grounds of Olympia. Unlike other sanctuaries, this place feels different—a sprawling grove dedicated not just to the gods, but to the pure, sweat-soaked glory of athletic competition. The air itself seems to thrum with the echoes of a thousand past victories.^^Nero orchestrates your arrival as a full-blown triumph. He rides in a gilded chariot, not drawn by warhorses, but by four pristine white stallions. He is clad in the purple of a victor, a golden laurel wreath already on his head, as if he has won before the competition has even begun.^^The local populace lines the path, their cheers sounding more dutiful than ecstatic. A delegation in white robes—the Hellanodikai, the sacred judges of the Games—steps forward to formally receive the Princeps. It is clear from their composed expressions that they are well-prepared for this moment. You dismount and follow Caesar as he prepares to receive their welcome."),
+
+("eystachus_seeks_audience_menu_text", "Several days pass in Olympia as preparations for the unique 'Imperial Games' reach a fever pitch. While overseeing the security of the Nero's villa, you are approached by a man whose face is etched with worry. He introduces himself as Eystachus, the agonothetes—the chief organizer and sponsor of the games.^^'A word, if I may,' he says in a hushed, urgent tone, glancing nervously towards the Praetorian guards. 'A matter of... mutual interest. For the good of Olympia. Please, walk with me where we will not be overheard.'"),
+
+("wrestler_refusal", "From the moment I could walk, I was taught that victory in these games is the highest honor one can achieve. You ask me to throw away my entire life's purpose. I refuse."),
+
+("runner_refusal", "Win the footrace, and you are a hero for life. Statues are built, poems are written, and the wealthy pay you a fortune. You ask me to give that up? My price will not be cheap."),
+
+("charioteer_refusal", "My horses, my chariot... this is a professional enterprise. My reputation earns me purses from Corinth to Alexandria. A loss, even to Caesar, is bad for business."),
+
+("boxer_refusal", "I fight. I win. It's all I know. Words are for senators. I understand fists."),
+
+("pankratiast_refusal", "I am a three-time victor of these games. I have a duty to the gods and to the spirit of Olympia to compete with all my strength. What you ask is sacrilege."),
+
+("eystachus_progress_none", "None? By the gods, you have convinced none of them? The opening ceremony is almost upon us! You must make them see reason, and soon!"),
+
+("eystachus_progress_some", "You have convinced {reg1}? It is a start, but only a start. The most stubborn champions remain. Please, do not relent. The fate of this sacred place depends on your success."),
+
+("eystachus_progress_many", "{reg1} convinced... Truly? That is a great relief! You are nearly there. Just a few more, and we can all breathe again. The gods favor your efforts!"),
+
+("olympic_games_progress_menu_text", "The Imperial Games begin with a spectacle of unimaginable grandeur. For three days, Olympia is a whirlwind of contrived competition and delirious celebration. Nero, as predicted, is showered with victories. He wins the chariot race after his opponents' chariots mysteriously break down. He is declared the victor in wrestling after his rival yields without a fight. His poetry recitals and lyre performances are met with thunderous, pre-arranged applause.^^While Caesar basks in his manufactured glory, you are consumed by the boring reality of your duties. You spend your days organizing the Praetorian patrols, vetting the food and wine for poison, and watching the tense, silent crowds for any sign of dissent. The atmosphere is less a celebration and more a powder keg waiting for a spark.^^On the evening of the final day, as you stand guard in a secluded portico of the Nero's villa, you see Poppaea Sabina approaching. She has dismissed her handmaidens, and her expression is one of quiet intensity. It is clear she wishes to speak with you alone."),
+
+("neros_olympia_failure_menu_text", "The Imperial Games begin not with a spectacle of glory, but with a palpable sense of dread. For three days, Olympia is a whirlwind of public humiliation and barely suppressed panic.^^Nero's performance is a catastrophe. He is thrown from his chariot during a sharp turn; while his Praetorians rush to his aid, an athlete from Sparta crosses the finish line to stunned silence. In the wrestling, a hulking Boeotian champion, trying his best not to win too obviously, still manages to pin Caesar's shoulders to the dust with an apologetic grunt. His lyre performances are met with polite, scattered applause, the judges offering faint, sweating praise for his 'passionate effort.'^^While the Caesar's mood darkens to a thunderous black, your duties have become a frantic exercise in crisis management. You are not just providing security; you are suppressing potential riots, silencing mocking laughter with the hard stares of your men, and watching the governor's villa transform into a den of paranoia and fear.^^On the evening of the final day, as you coordinate the guard rotations, Poppaea Sabina finds you. She has dismissed her handmaidens, and her face is a mask of cold, controlled fury. The time for games is over. It is clear she wishes to speak with you alone."),
+
+("nero_athens_proclamation_menu_text", "The day after the games conclude, Nero summons you and the entire entourage to the steps of the Temple of Zeus. He is radiating an almost blinding aura of self-satisfaction, wearing the purple of a triumphator and holding a golden lyre.^^'Herakles founded these games with his brute strength,' he declares to the assembly, his voice echoing across the sacred grove. 'But I... I have perfected them with divine artistry! I have shown Greece that the truest victory lies not in the straining of muscles, but in the purity of the soul!'^^He pauses for dramatic effect. 'Such a victory cannot be celebrated in this humble grove. No! A triumph of this magnitude demands a worthy stage! The heart of wisdom and philosophy itself... Athens! We shall hold a final, magnificent feast beneath the shadow of the Acropolis. It will be the crowning jewel of our grand tour, a final tribute to the Muses before we return to Rome.'^^The courtiers erupt in practiced applause. The matter is decided. The journey's final leg is set."),
+
+("nero_athens_departure_failure_text", "Following the humiliating conclusion of the games, a palpable tension hangs over the Imperial entourage. The villa at Olympia has become a place of whispered accusations and fearful silence. On the Poppaea's command, the camp is struck with hurried efficiency. The journey to Athens is not a procession, but an escape. You lead the somber party eastward, eager to leave the scene of your master's failure and the angry silence he now radiates like a plague."),
+
+("nero_athens_arrival_success_text", "The triumphal procession arrives at Athens, the jewel of Hellas. Nero, buoyed by his victories at Olympia, is in his element. He sees himself as the heir to Perikles, a patron of the arts come to grace the city with his divine presence.^^'Behold, {playername}!' he proclaims as the Acropolis comes into view. 'The city of philosophers and poets! They built with marble, but I shall build with soul! Here, we will host a feast that will make the Symposium of Plato look like a gathering of peasants!'^^The city receives him with all the formal pomp required for an emperor, though the learned men in the agora whisper behind their hands. For Nero, this is the grand finale—the ultimate stage for his artistic conquest of Greece."),
+
+("nero_athens_arrival_failure_text", "The entry into Athens is not the grand procession you had imagined. The mood of the entourage is somber and tense, a perfect reflection of Caesar's silent, simmering fury. Rumors of his disastrous performance at Olympia have already reached the city, and the welcoming delegation of archons is visibly nervous.^^Nero barely acknowledges their greeting, his eyes fixed on the Acropolis with a grim look. He has not come here to be judged by philosophers, but to issue a final, undeniable statement of his own greatness.^^He has declared that a grand feast will be held, not as a celebration, but as a display of Imperial magnificence designed to erase all memory of his recent athletic shortcomings. This is not a party; it is an act of political theater, and its success is paramount."),
+
+("drinking_game_intro_sober", "-- The cups are full. The mood is high. --"),
+("drinking_game_intro_tipsy", "-- The room is spinning pleasantly. Vitellius is starting to list every sauce he's ever tasted. --"),
+("drinking_game_intro_drunk", "-- Everything is... shiny. Crispinilla is laughing at a joke Nero hasn't told yet. --"),
+
+("nero_banter_sober", "-- Nero raises his cup. --^^ To us! The poets! The true conquerors! Alexander took cities, but I... I capture souls!"),
+("nero_banter_drunk", "-- Nero slams his cup down, spilling wine.--^^ I invented... -- hic --... the color purple! Did you know that? It's true! The gods told me."),
+
+("vitellius_banter_sober", "-- Vitellius swishes the wine in his cup.--^^ An excellent vintage. It has notes of... victory. And perhaps a hint of honey from Hymettus. It would pair well with roasted dormice."),
+("vitellius_banter_drunk", "-- Vitellius stares intently at a platter of fruit.--^^ The grapes... they're watching me. I think... I think I should eat them... to assert my dominance.'"),
+
+("crispinilla_banter_sober", "-- Crispinilla leans towards you, her eyes sparkling.--^^ Divine Nero is in fine form tonight, is he not? Such passion. It's quite... inspiring."),
+("crispinilla_banter_drunk", "-- Crispinilla giggles, pointing at a statue.--^^ 'He looks like my third husband! -- hic --... Or was it the fourth? So hard to keep track..."),
+
+("poppaea_response_honor", "Honor? Honor is a luxury we cannot afford! Your duty is to the stability of the Empire, and that stability rests entirely on my husband's fragile mood. His pride IS his safety—and ours!"),
+
+("poppaea_response_pragmatic", "Riots? A few broken stalls in the agora? I would trade a hundred riots for the silence that is now in my husband's villa! You prevented a small fire by inviting an earthquake."),
+
+("poppaea_response_blunt", "The truth? The truth is a weapon, {playername}, and you have just handed it to our enemies. The truth is that the Emperor is fallible, and that is a truth Rome cannot bear to hear. This is about survival, not philosophy!"),
+
+("feast_end_drinking_text", "You join Vespasian in a corner, and as the night deepens and the feast descends into a blur of wine and sycophantic laughter, you and the old soldier fall into a quiet rhythm. He doesn't speak much, but when he does, it's with the dry wit of a man who has seen a dozen Caesars and expects to see a dozen more.^^'Look at them,' he mutters at one point, gesturing with his cup towards a senator attempting to dance. 'They think this is power. Power is holding a line when the barbarians are charging. This... this is just noise.'^^You share stories of old campaigns and watch the spectacle with a shared, detached amusement until, finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
+("feast_end_watching_text", "You find a quiet alcove near the colonnade, a perfect vantage point to observe without being drawn into the chaos. From the shadows, you watch the grand play of the Neronian court unfold. Nero is the sun around which all these lesser planets orbit, reciting poetry to a captive audience, his eyes alight with self-adoration. You see Crispinilla whispering in one senator's ear, while Locusta watches another with an unnerving, analytical gaze. The Augusta Poppaea moves through the crowd like a goddess, a kind word here, a cold glance there, managing the entire affair with invisible threads.^^You remain a silent, sober ghost amidst the revelry, your duty fulfilled by your presence alone. Finally, as the sky begins to lighten and the last of the drunken courtiers stumble away, you are left alone in the silent, debris-strewn hall. The feast, and the grand tour, are at last concluded.^^{s13}"),
+
+("nero_dismissal_epilogue_text", "The following morning, as the city of Athens awakens, a messenger from the Imperial household finds you. He bears a simple, final command from Nero.^^'The Princeps has declared the Grand Tour of Hellas a historic success. He and his immediate court will return to Rome aboard his personal vessel. Your service as an escort is concluded.'^^There is no formal farewell, no final audience. The grand, chaotic play is over. With Caesar's departure, you are now free to pursue your own affairs in Greece."),
+
+("locusta_romance_outcome", "The cool night air of the balcony is a stark contrast to the heat of the feast. Locusta says nothing. Her hands, surprisingly strong and clinical, find your throat. Her grip is a mix of passion and cold, measured pressure. She is not kissing you; she is observing an experiment.^The world narrows to the pulse beating in your neck, the air thinning in your lungs. You are on a razor's edge between a terrifying ecstasy and oblivion. A flicker of what might be pleasure—or perhaps just scientific curiosity—crosses her face as your vision begins to cloud.^Just as the darkness threatens to take you, she releases her grip. You gasp for air, the world rushing back in a dizzying wave. She watches your recovery with the same detached interest...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
+("crispinilla_romance_outcome", "The storeroom is dark, the air thick with the smell of spilled wine and old clay. There's no pretense, no romance. Just the clumsy, urgent fumbling of two people lost in hedonism. Crispinilla drops to her knees without a word, her eyes glinting in the sliver of moonlight from a high window as she eagerly takes your private gladius into her mouth.^Her actions are a messy, passionate, and thoroughly drunken display of desires. It's over quickly, ending in a shared, breathless laugh in the darkness.^You both stumble back to the noise of the feast separately, leaving no trace of the encounter but the faint, lingering scent of olive oil on your tunic...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
+("messalina_romance_outcome", "The private triclinium is quiet, lit by a single oil lamp. Statilia reclines on a couch, her eyes half-closed in anticipation. You pick up a plump, honey-soaked date from the platter.^You bring the fruit to her lips. She doesn't take it from you. She parts her lips slightly, her gaze locked on yours, waiting. As you gently press it into her mouth, your fingers brushing against her soft, wet lips, a soft moan escapes her throat. Her eyes close in bliss as she savors the taste.^This continues, one piece of fruit at a time. The act is slow, intimate, and intensely sensual. It's not about hunger; it's about the surrendering of control, the pleasure of being served and satisfied. She guides your hand, her own fingers tracing patterns on your arm as you feed her figs, grapes, and sweet cakes, her soft sounds of pleasure filling the small room...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
+("sulpicia_romance_outcome", "The servants' bath is a small, steamy room, quiet and far from the noise of the feast. Sulpicia sits on a marble bench, dipping her tired feet into the warm, scented water with a soft sigh of relief. She looks at you, an expectant, vulnerable expression on her face.^You kneel before her without a word. You lift one of her feet from the water, cradling its soft, elegant arch in your hands. A sharp intake of breath is her only response as you press your lips to her instep, your tongue tracing the delicate bones beneath the wet skin. Her toes curl as you move to her other foot, kissing the sole, the heel, the delicate ankle.^It's a slow, reverent act of worship. Her soft, shivering sighs are the only sounds in the room. The water grows cool, but the air in the small room grows thick and hot. Her hands find your hair, not pulling, but gently guiding as your attention moves from her feet slowly, deliberately, upwards...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
+("plautilla_romance_outcome", "The room is dark. The moment the door is closed, Plautilla pushes you against a heavy depiction of the Trojan War and turns her back to you. 'Don't be gentle,' she whispers, her voice a mix of wine and desperate need. 'I am so tired of being gentle.'^Your teeth find the soft skin of her shoulder. You bite down, hard enough to bruise. Her response isn't a scream of pain, but a sharp, shuddering gasp of pure pleasure, her hands gripping the rough wall.^She turns to face you, her eyes blazing in the dark, a challenge in them. A hard slap across her cheek. Her head whips to the side, but she turns back to you instantly, a red handprint blooming on her skin, a wild, ecstatic smile on her lips. 'More,' she breathes, the word a command.^The rest is a blur of rough hands, sharp nails, and the sweet, metallic taste of a bitten lip. It's a frantic, desperate exploration of the line between agony and ecstasy, a storm of shared, drunken abandon. You leave her leaning against the wall, bruised and smiling, her earlier boredom completely erased...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
+("fabia_romance_outcome", "You stumble down the hall and find the study. The door is slightly ajar. Inside, Fabia is waiting. She has already locked the door behind you and is leaning over a large mahogany desk, her tunic already hitched up to her waist. Her scent, a mix of wine and expensive perfume, fills the small space. She looks over her shoulder at you, her expression a mix of command and hungry anticipation.^^'I grow tired of waiting,' she says, her voice low and steady.^^Your drunken fumbling at your belt is a clumsy counterpoint to her poised readiness. She guides you with a firm hand, positioning you behind her. There is no kiss, no embrace, only a sharp, commanding whisper. 'Now.'^You push into her. There is not a sound of pain, but a low, guttural moan of deep satisfaction. Her hands grip the edge of the desk, knuckles white, as you move within her. It's a fierce, almost brutal act, over as quickly as it began...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
+("verania_romance_outcome", "The study is dimly lit, dominated by a large desk and the imposing sight of a full lion's pelt draped over a chair. Verania closes the door and turns to you, her eyes gleaming. 'Put it on,' she commands, her voice a low whisper.^^The heavy fur settles over your shoulders, its musky scent filling your senses. The weight, the smell, the drunken haze in your mind... they combine to strip away the last vestiges of your civilized self. You feel a low growl rumble in your chest, and it feels natural.^^Verania watches the transformation, her breath quickening. She is not afraid. She is aroused. She slowly lowers herself onto a plush rug, her posture submissive, yet her eyes are filled with a hungry, challenging fire. She is the prey who has lured the predator into her trap.^^You descend on all fours, the lion's mane mingling with your own hair. There are no words, only the primal sounds of the hunt. Your hands, now claws, grip her haunches. It is a brutal, wordless act of dominance, a release of pure, animal instinct. You are no longer a soldier or Nero's companion; you are the beast, and she is your prize.^When it is over, you are just a drunken man wrapped in a dead animal's skin, breathing heavily on the floor...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
+("poppaea_romance_outcome", "Augusta's chambers are a world away from the feast—an opulent, silent space where the air is thick with the scent of Egyptian perfume. Poppaea turns to you, her movements fluid and deliberate as she unpins her stola, letting it fall to the floor in a silken heap. Her body, revealed in the soft lamplight, is like a living statue, flawless and imperious.^She reclines on a divan, her gaze never leaving yours. 'You spoke of worship,' she whispers, her voice a soft command. 'Begin.'^You approach not as a drunken soldier, but with a sudden, clear-headed reverence. Your hands and lips become instruments of adoration. You whisper praises against her skin—for her eyes, her lips, the curve of her hip. You are not taking a lover; you are paying tribute to a masterpiece.^Her response is not the frantic passion of the others, but a deep, purring satisfaction. She is a goddess accepting a worthy offering. She pulls you into her, her body moving with a languid, confident grace. It is an act of supreme, unhurried pleasure, a testament to her own perfect beauty. She is not just being pleasured; she is being proven right.^Afterwards, you lie in the quiet, the chaos of the feast forgotten. She traces a line on your chest with a single finger, a look of serene contentment on her face...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
-] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black
+] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

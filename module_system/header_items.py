@@ -6,8 +6,10 @@
 
 
 
+from __future__ import absolute_import
 from header_common import *
 from header_item_modifiers import *
+from six.moves import range
 
 #item flags
 itp_type_horse           = 0x0000000000000001
@@ -474,7 +476,7 @@ from module_constants import slot_item_alternate
 #cross refs for alternate versions of weapons
 def make_noswing_weapons(items):
   noswing_weapons = []
-  for i_item in xrange(len(items)):
+  for i_item in range(len(items)):
     noswing_name = 'noswing_' + items[i_item][0]
     i_noswing = find_object (items, noswing_name)
     if i_noswing > -1:

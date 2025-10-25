@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_music import *
 
 #from compiler import *

@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from IDs.ID_items import *
 from IDs.ID_quests import *
 from IDs.ID_factions import *
@@ -73,6 +74,9 @@ slot_agent_is_in_scripted_mode    = 1
 slot_agent_is_running_away        = 2
 slot_agent_courage_score          = 3
 slot_agent_recently_decided       = 4
+
+# horse slots
+slot_agent_chariot_prop_instance = 3
 
 #battle feature slot
 slot_agent_shieldbash_cooldown    = 5
@@ -350,6 +354,8 @@ slot_party_ai_rationale        = 6 #Currently unused, but can be used to save a 
 slot_town_lord                 = 7
 slot_party_ai_substate         = 8
 # slot_town_claimed_by_player    = 9 # this slot number is free
+
+slot_center_slave_trader = 9
 
 slot_cattle_driven_by_player = slot_town_lord #hack
 
@@ -1170,6 +1176,9 @@ slot_troop_prisoner_of_party   = 8  # important for heroes only
 
 slot_troop_present_at_event    = 9
 
+## for household slaves:
+slot_slave_template_troop = 10
+
 slot_troop_leaded_party         = 10 # important for kingdom heroes only
 slot_troop_wealth               = 11 # important for kingdom heroes only
 slot_troop_cur_center           = 12 # important for royal family members only (non-kingdom heroes)
@@ -1297,17 +1306,18 @@ slot_troop_last_comment_slot   = 29
 
 #olympia slots for organiser
 won_horse = 30
-won_mule  = 31
-won_throwing  = 32
-won_fighting  = 33
-won_running_tunic  = 34
-won_running_hoplit  = 35
-won_throwing_2       = 36
-current_opponent_1  = 37
-rest_olympia        = 38
-olympia_progress    = 39
-olympia_auto_menu    = 40
-olympia_easter_egg    = 41
+won_chariot = 31
+won_mule  = 32
+won_throwing  = 33
+won_fighting  = 34
+won_running_tunic  = 35
+won_running_hoplit  = 36
+won_throwing_2       = 37
+current_opponent_1  = 38
+rest_olympia        = 39
+olympia_progress    = 40
+olympia_auto_menu    = 41
+olympia_easter_egg    = 42
 
 slot_troop_spouse              = 30
 slot_troop_father              = 31
@@ -1484,6 +1494,7 @@ slot_player_embezzeled_founds           = 102 #use this instead of a global
 slot_troop_recently_bribed              = 102
 slot_player_takes_money_from_treasury   = 103
 
+# for companions
 slot_troop_intro_response_2 			= 103
 slot_troop_backstory_a 					= 104
 slot_troop_backstory_b 				  	= 105
@@ -1538,6 +1549,65 @@ slot_troop_kingsupport_objection_state  = 145 #0, default, 1, needs to voice, 2,
 slot_troop_player_routed_agents                 = 146
 slot_troop_ally_routed_agents                   = 147
 slot_troop_enemy_routed_agents                  = 148
+
+# special slots for slave traders
+slot_troop_slaves_begin = 102
+
+# Male Slaves
+slot_troop_slave                = 102
+slot_troop_slave_roman          = 103
+slot_troop_slave_dacian         = 104
+slot_troop_slave_thracian       = 105
+slot_troop_slave_celt           = 106
+slot_troop_slave_sarmatian      = 107
+slot_troop_slave_germanic       = 108
+slot_troop_slave_caucasian      = 109
+slot_troop_slave_parthian       = 110
+slot_troop_slave_persian        = 111
+slot_troop_slave_judean         = 112
+slot_troop_slave_bosporan       = 113
+slot_troop_slave_arabian        = 114
+slot_troop_slave_berber         = 115
+slot_troop_slave_garamantian    = 116
+slot_troop_slave_nubian         = 117
+slot_troop_slave_saka           = 118
+slot_troop_slave_greek          = 119
+slot_troop_slave_illyrian       = 120
+slot_troop_slave_hispanic       = 121
+slot_troop_slave_gaul           = 122
+slot_troop_slave_egyptian       = 123
+slot_troop_slave_syrian         = 124
+slot_troop_slave_eastern        = 125
+slot_troop_slave_galatian       = 126
+
+# Female Slaves (Offset by 23 from male counterparts)
+slot_troop_slave_female                = 127
+slot_troop_slave_female_roman          = 128
+slot_troop_slave_female_dacian         = 129
+slot_troop_slave_female_thracian       = 130
+slot_troop_slave_female_celt           = 131
+slot_troop_slave_female_sarmatian      = 132
+slot_troop_slave_female_germanic       = 133
+slot_troop_slave_female_caucasian      = 134
+slot_troop_slave_female_parthian       = 135
+slot_troop_slave_female_persian        = 136
+slot_troop_slave_female_judean         = 137
+slot_troop_slave_female_bosporan       = 138
+slot_troop_slave_female_arabian        = 139
+slot_troop_slave_female_berber         = 140
+slot_troop_slave_female_garmantian     = 141
+slot_troop_slave_female_nubian         = 142
+slot_troop_slave_female_saka           = 143
+slot_troop_slave_female_greek          = 144
+slot_troop_slave_female_illyrian       = 145
+slot_troop_slave_female_hispanic       = 146
+slot_troop_slave_female_gaul           = 147
+slot_troop_slave_female_egyptian       = 148
+slot_troop_slave_female_syrian         = 149
+slot_troop_slave_female_eastern        = 150
+slot_troop_slave_female_galatian       = 151
+
+slot_troop_slaves_end = slot_troop_slave_female_galatian + 1
 
 #Special quest slots
 slot_troop_mission_participation        = 149
@@ -1947,13 +2017,18 @@ slot_party_template_lair_next_spawn = 6
 ##  SCENE PROP SLOTS       #############################
 ########################################################
 
-scene_prop_open_or_close_slot       = 1
-scene_prop_smoke_effect_done        = 2
-scene_prop_number_of_agents_pushing = 3 #for belfries only
-scene_prop_next_entry_point_id      = 4 #for belfries only
-scene_prop_belfry_platform_moved    = 5 #for belfries only
-scene_prop_slots_end                = 6
-scene_prop_timer					          = 7
+scene_prop_timer       = 1
+slot_scene_prop_moving = 2 # for chariots only
+
+#possible values of slot_scene_prop_moving
+prop_moving_forward = 1
+prop_moving_backward = -1
+prop_disabled = -2
+prop_not_moving = 0
+# end
+
+slot_attached_horse    = 3
+slot_scene_prop_init   = 4
 
 ########################################################
 rel_enemy   = 0
@@ -2020,6 +2095,10 @@ tc_poppaea_event_1          = 44
 tc_poppaea_event_2          = 45
 
 tc_main_story_fleet         = 46
+
+tc_bandit_lair              = 47
+
+tc_nero_quest_failed        = 48
 
 #Troop Commentaries begin
 #Log entry types
@@ -2299,11 +2378,32 @@ minor_queens_end   = "trp_arab_richmerchant"
 companions_begin = "trp_npc1"
 companions_end = kings_begin
 
+slave_traders_centers_begin = "trp_town_1_slave_trader"
+slave_traders_centers_end = "trp_town_1_seneschal"
+
 seneschal_begin = "trp_town_1_seneschal"
 seneschal_end = "trp_town_1_arena_master"
 
 special_roman_merchants_begin = "trp_merchant1"
 special_roman_merchants_end = "trp_merchant5"
+
+slave_traders_begin = "trp_slave_trader_judean"
+slave_traders_end   = trp_slave_trader_bandit + 1
+
+slaves_begin    = "trp_slave"
+slaves_end      = "trp_orgie_fem1"
+
+male_slaves_begin = "trp_slave"
+male_slaves_end = "trp_slave_female"
+
+female_slaves_begin = "trp_slave_female"
+female_slaves_end = slaves_end
+
+household_slaves_begin = "trp_household_slave_1"
+household_slaves_end = "trp_household_cook_1"
+
+cook_slaves_begin = "trp_household_cook_1"
+cook_slaves_end = "trp_household_end"
 
 special_eastern_merchants_begin = "trp_merchant5"
 special_eastern_merchants_end = "trp_prisoner"
@@ -2391,6 +2491,10 @@ quick_battle_scene_names_begin = "str_quick_battle_scene_1"
 
 lord_quests_begin = "qst_deliver_message"
 lord_quests_end   = "qst_follow_army"
+
+
+festival_quests_begin = "qst_saturnalia"
+festival_quests_end   = "qst_quests_end"
 
 lord_quests_begin_2 = "qst_destroy_bandit_lair"
 lord_quests_end_2   = "qst_blank_quest_2"
@@ -2519,7 +2623,7 @@ village_elders_end     = "trp_merchants_end"
 # startup_merchants_end = "trp_superbus"
 
 ##diplomacy start+
-tournament_champions_begin = "trp_Xerina"
+tournament_champions_begin = "trp_tetraites"
 tournament_champions_end   = "trp_tutorial_trainer"
 
 merchants_begin = armor_merchants_begin
@@ -3421,7 +3525,7 @@ num_disguises = 6
 disguise_none = 0
 disguise_pilgrim = 1 #default
 disguise_farmer = 2 #trp_farmer
-disguise_hunter = 4 #trp_forest_bandit
+disguise_hunter = 4 #trp_hispanic_bandit
 disguise_guard = 8 #trp_caravan_guard
 disguise_merchant = 16 #trp_caravan_master
 disguise_bard = 32
@@ -3736,7 +3840,8 @@ Troop_Tree_Area_Height = Screen_Title_Height-4*Screen_Text_Height
 Troop_Tree_Area_Width = Screen_Width-2*Screen_Border_Width
 Troop_Tree_Line_Color = 0x001380
 Troop_Tree_Tableau_Height = 800
-Troop_Tree_Tableau_Width = Troop_Tree_Tableau_Height*Screen_Undistort_Width_Num/Screen_Undistort_Width_Den
+## Ensure width is an integer (Python 3 safe). Use integer division to avoid float result.
+Troop_Tree_Tableau_Width = (Troop_Tree_Tableau_Height * Screen_Undistort_Width_Num) // Screen_Undistort_Width_Den
 ##For Player Legion
 
 # Custom Troops begin
@@ -3913,7 +4018,13 @@ g_corruption_check = 79
 
 g_last_week_income = 80
 
-#Spain
+g_slave_contract = 81
+
+g_acan_version = 82
+
+ACAN_VERSION = 1006
+
+## hispania
 p_hisp_tarraco = 1
 p_hisp_baetica = 2
 p_hisp_lusit   = 3
@@ -3922,7 +4033,7 @@ p_afrc_maur = 4
 p_afrc_afrc = 5
 p_afrc_cyre = 6 #
 p_afrc_egyp = 7 #
-##Asien
+## asia
 p_asia_arab   = 8 #
 p_asia_jude   = 9 #
 p_asia_syr    = 10 #
@@ -3930,7 +4041,7 @@ p_asia_cili   = 11 #
 p_asia_capa   = 12 #
 p_asia_pontus = 13 #
 p_asia_minor  = 14 #
-##Balkan
+## balkan
 p_balk_thrac      = 15
 p_balk_moesia_sup = 16
 p_balk_moesia_inf = 17
@@ -3938,54 +4049,68 @@ p_balk_acha       = 18
 p_balk_epir       = 19
 p_balk_mac        = 20
 p_balk_dalm       = 21
-##italy
+## italy
 p_ita_sici    = 22
 p_ita_magna   = 23
 p_ita_ital    = 24
 p_ita_cis     = 25
-##Gaul
+## Gaul
 p_gaul_narab  = 26
 p_gaul_aqua   = 27
 p_gaul_lugd   = 28
 p_gaul_belg   = 29
-#Germania
+## Germania
 p_germ_inf    = 30
 p_germ_sup    = 31
 p_germ_reat   = 32
 p_germ_noric  = 33
-##central europe
+## central europe
 p_cent_panno  = 34
 
-##britannia
+## britannia
 p_brit_brita  = 35
 p_brit_cale   = 36
-##magna germania
+## magna germania
 p_germ_magna  = 37
 p_germ_herc   = 38
 p_germ_sueb   = 39
-##dacia
+## dacia
 p_cent_dac    = 40
-##samatia
+## samatia
 p_east_sam    = 41
-#krim
+## bosporean
 p_east_bos    = 42
-#scythia, caucaus
+## scythia
 p_cauc_scyth  = 43
+
+#armenia
 p_asia_arme   = 44
+
+# mespotamia and assyria
 p_asia_meso   = 45
 p_asia_assy   = 46
 
-##isle
+##isles in mediteranian sea
 p_ins_oc  = 47
 p_ins_or  = 48 #
 
+# caucasus
 p_asia_cauc = 49
 
+# persia and parthia
 p_asia_persia = 50
 p_asia_parthia = 51
 p_asia_media = 52
 
-p_provinces_end = p_asia_media + 1
+p_afrc_nubia = 53
+
+p_afrc_garamantia = 54
+
+p_asia_chor = 55
+
+p_asia_osreon = 56
+
+p_provinces_end = p_asia_osreon + 1
 
 
 #new province system:
@@ -4081,6 +4206,7 @@ region_mountain_europe_alps             =14
 region_mountain_europe_spain_france     =15
 region_mountain_europe_romania          =16
 region_mountain_europe_bohemia          =17
+region_africa_green                     =18
 
 color_region_spain                            = 0xB6FF00
 color_region_north_africa                     = 0xFFD800
@@ -4099,6 +4225,7 @@ color_region_mountain_europe_alps             = 0x009399
 color_region_mountain_europe_spain_france     = 0x287776
 color_region_mountain_europe_romania          = 0x296850
 color_region_mountain_europe_bohemia          = 0x486660
+color_africa_green                            = 0xFFFF99
 
 color_rt_water 		        = 0x0000FF
 color_rt_mountain 		    = 0x646464
@@ -4119,6 +4246,12 @@ salary_legate = 6000
 salary_aux_2 = 4000
 salary_aux_1 = 2250
 
+minister_salary = 3000
+praefectus_urbi_salary = 5000
+chamberlain_salary = 1500
+constable_salary = 1500
+chancellor_salary = 2000
+tax_control_costs = 7000
 
 ACAN_CORRUPT_SAVE_CHECK = 103940214
 
@@ -4150,6 +4283,9 @@ male_britannic_names_end   = "str_britannic_name_end"
 male_dacian_names_begin = "str_dacian_name_01"
 male_dacian_names_end   = "str_dacian_name_end"
 
+male_greek_names_begin = "str_sarmatian_name_01"
+male_greek_names_end   = "str_sarmatian_name_end"
+
 male_sarmatian_names_begin = "str_sarmatian_name_01"
 male_sarmatian_names_end   = "str_sarmatian_name_end"
 
@@ -4164,6 +4300,9 @@ male_persian_names_end   = "str_persian_name_end"
 
 male_arabian_names_begin = "str_arabian_name_01"
 male_arabian_names_end   = "str_arabian_name_end"
+
+male_egyptian_names_begin = "str_egyptian_name_01"
+male_egyptian_names_end   = "str_egyptian_name_end"
 
 male_hebrew_names_begin = "str_hebrew_name_01"
 male_hebrew_names_end   = "str_hebrew_name_end"
@@ -4205,8 +4344,15 @@ female_persian_names_end   = "str_persian_female_name_end"
 female_arabian_names_begin = "str_arabian_female_name_01"
 female_arabian_names_end   = "str_arabian_female_name_end"
 
+female_egyptian_names_begin = "str_egyptian_female_name_01"
+female_egyptian_names_end   = "str_egyptian_female_name_end"
+
 female_hebrew_names_begin = "str_hebrew_female_name_01"
 female_hebrew_names_end   = "str_hebrew_female_name_end"
+
+female_greek_names_begin = "str_greek_female_name_01"
+female_greek_names_end   = "str_greek_female_name_end"
+
 
 female_north_african_names_begin = "str_north_african_female_name_01"
 female_north_african_names_end   = "str_north_african_female_name_end"
@@ -4268,3 +4414,17 @@ remove_all = 3
 event_governor = 1
 event_honorary = 2
 event_fake     = 3
+
+walker_noble   = 1
+walker_peasant = 2
+walker_slave   = 3
+walker_peasant_warrior = 4
+
+# household modifers
+household_mod_latifunida_limit  = 0
+household_mod_workshop_limit    = 1
+household_mod_corruption        = 2
+household_mod_cook_quality      = 3
+household_mod_admin_eff         = 4
+household_mod_engineering_eff   = 5
+household_mod_ends              = 6

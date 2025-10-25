@@ -1,38 +1,93 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy website to github pages
+name: Deploy static content to Pages
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["develop", "main"]
+    paths:
+      - 'website/**'
+  workflow_run:
+    workflows: ["Create Pre-Release"]
+    types:
+      - completed
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Generate Download Sections and final index.html
+        id: build_html
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+
+          # --- PROCESS STABLE RELEASE ---
+          # This section now writes to all_blocks.html, overwriting any previous content.
+          STABLE_TAG=$(gh release list --limit 1 --exclude-pre-releases --json tagName | jq -r '.[0].tagName')
+          if [[ -n "$STABLE_TAG" && "$STABLE_TAG" != "null" ]]; then
+            RELEASE_INFO=$(gh release view "$STABLE_TAG" --json publishedAt,assets)
+            VERSION=${STABLE_TAG#v}
+            MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url') # CORRECTED .url
+            MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url') # CORRECTED
+            RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
+            UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")
+
+            cat website/_blocks/stable_available.html | \
+              sed "s|__VERSION__|$VERSION|g" | \
+              sed "s|__UPDATE_DATE__|$UPDATE_DATE|g" | \
+              sed "s|__MOD_URL__|$MOD_URL|g" | \
+              sed "s|__MANUAL_URL__|$MANUAL_URL|g" > all_blocks.html
+          else
+            cp website/_blocks/stable_unavailable.html all_blocks.html
+          fi
+
+          # --- PROCESS PRE-RELEASE ---
+          # This section now APPENDS (>>) to all_blocks.html.
+          PRERELEASE_TAG=$(gh release list --limit 10 --json tagName,isPrerelease | jq -r '(.[] | select(.isPrerelease == true) | .tagName)' | head -n 1)
+          if [[ -n "$PRERELEASE_TAG" && "$PRERELEASE_TAG" != "null" ]]; then
+            RELEASE_INFO=$(gh release view "$PRERELEASE_TAG" --json publishedAt,assets)
+            VERSION=${PRERELEASE_TAG#v}
+            MOD_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | startswith("ACAN")).url') # CORRECTED
+            MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url') # CORRECTED
+            RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
+            UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")
+
+            cat website/_blocks/prerelease_available.html | \
+              sed "s|__VERSION__|$VERSION|g" | \
+              sed "s|__UPDATE_DATE__|$UPDATE_DATE|g" | \
+              sed "s|__MOD_URL__|$MOD_URL|g" | \
+              sed "s|__MANUAL_URL__|$MANUAL_URL|g" >> all_blocks.html
+          else
+            cp website/_blocks/prerelease_unavailable.html >> all_blocks.html
+          fi
+
+          # --- ASSEMBLE THE FINAL index.html ---
+          cp website/index.template.html website/index.html
+          # Inject the combined blocks into the single placeholder
+          sed -i -e "/__DOWNLOAD_SECTIONS__/r all_blocks.html" -e "/__DOWNLOAD_SECTIONS__/d" website/index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './website' 
+          path: './website'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
