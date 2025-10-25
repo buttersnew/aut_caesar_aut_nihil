@@ -52,11 +52,12 @@ Short, actionable guidance for AI coding agents working on this repository (Moun
 
 ## Deployment / CI (GitHub Actions)
 - The repo contains two GitHub Actions workflows in `.github/workflows/` that automate releases and the website:
-  - `create-release.yml` — triggered when `version.txt` changes on `develop`.
+  - `create-pre-release.yml` — triggered when `version.txt` changes on `develop`.
     - Reads `version.txt`, zips `Aut_Caesar_Aut_Nihil` into `ACAN-v${TAG}.zip`, creates a **pre-release** with tag `v${TAG}` and uploads:
       - `ACAN-v${TAG}.zip` (mod zip)
       - `handbook/aut_ceasar_aut_nihil_handbook.pdf` (PDF asset)
     - Trigger it by bumping `version.txt` and pushing to `develop`.
+  - `create-release.yml` — will generate a **stable-release**, process similar to `create-pre-release.yml`.
   - `static.yml` — deploys the `website/` folder to GitHub Pages.
     - Triggers: push to `develop` that touches `website/**`, manual dispatch, or runs after `Create Pre-Release` completes.
     - It generates `website/index.html` by querying releases (uses `gh` and `jq` on the runner), injects download blocks and deploys via the Pages actions.

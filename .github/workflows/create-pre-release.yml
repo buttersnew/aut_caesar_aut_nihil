@@ -1,8 +1,8 @@
-name: Create Release
+name: Create Pre-Release
 
 on:
   push:
-    branches: ["main"]
+    branches: ["develop"]
     paths:
       - 'version.txt' # Only run when the version file changes
 
@@ -27,21 +27,21 @@ jobs:
       - name: List files in workspace
         run: ls -R
 
-      - name: Create Release
+      - name: Create Pre-Release
         id: create_prerelease
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ steps.version.outputs.TAG }}
-          release_name: Version ${{ steps.version.outputs.TAG }} (release)
+          release_name: Version ${{ steps.version.outputs.TAG }} (Pre-release)
           body: |
-            Automated release based on changes to the version file.
+            Automated pre-release based on changes to the version file.
             These are development builds and may be unstable.
           draft: false
-          prerelease: false # This marks it as a release!
+          prerelease: true # This marks it as a pre-release!
 
-      - name: Upload Mod Zip to Release
+      - name: Upload Mod Zip to Pre-Release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
           asset_name: ACAN-v${{ steps.version.outputs.TAG }}.zip
           asset_content_type: application/zip
 
-      - name: Upload Handbook PDF to Release
+      - name: Upload Handbook PDF to Pre-Release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

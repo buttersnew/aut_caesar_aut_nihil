@@ -95,10 +95,14 @@ The repository is organized into several key directories:
 
 This repository uses GitHub Actions to automate releases and website deployment.
 
+*   **`create-pre-release.yml`:**
+    *   **Trigger:** Pushing a change to `version.txt` on the `develop` branch.
+    *   **Action:** Automatically creates a zipped archive of the `Aut_Caesar_Aut_Nihil` folder, drafts a new pre-release on GitHub, and uploads the mod zip and the handbook PDF as assets.
+
 *   **`create-release.yml`:**
-    *   **Trigger:** Pushing a change to `version.txt` on the `develop` or `main` branch.
-    *   **Action:** Automatically creates a zipped archive of the `Aut_Caesar_Aut_Nihil` folder, drafts a new pre-release (or release) on GitHub, and uploads the mod zip and the handbook PDF as assets.
+    *   **Trigger:** Pushing a change to `version.txt` on the `main` branch.
+    *   **Action:** Automatically creates a zipped archive of the `Aut_Caesar_Aut_Nihil` folder, drafts a new stable release on GitHub, and uploads the mod zip and the handbook PDF as assets.
 
 *   **`static.yml`:**
-    *   **Trigger:** A push to the `website/` directory, the completion of the `create-release` workflow, or manual dispatch.
-    *   **Action:** Deploys the `website/` folder to GitHub Pages. It dynamically generates download links on the website based on the latest GitHub release.
+    *   **Trigger:** A push to the `website/` directory, the completion of the `create-release`/`create-pre-release` workflow, or manual dispatch.
+    *   **Action:** Deploys the `website/` folder to GitHub Pages. It dynamically generates download links on the website based on the latest GitHub releases (one for pre-releases, one for stable releases).
