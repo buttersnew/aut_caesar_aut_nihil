@@ -37,7 +37,7 @@ jobs:
           release_name: Version ${{ steps.version.outputs.TAG }} (release)
           body: |
             Automated release based on changes to the version file.
-            These are development builds and may be unstable.
+            This is the stable release from main branch.
           draft: false
           prerelease: false # This marks it as a release!
 
