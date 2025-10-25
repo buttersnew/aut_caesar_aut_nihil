@@ -2,7 +2,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["develop", "main"]
     paths:
       - 'website/**'
   workflow_run:
@@ -47,7 +47,7 @@ jobs:
             MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url') # CORRECTED
             RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
             UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")
-            
+
             cat website/_blocks/stable_available.html | \
               sed "s|__VERSION__|$VERSION|g" | \
               sed "s|__UPDATE_DATE__|$UPDATE_DATE|g" | \
@@ -67,7 +67,7 @@ jobs:
             MANUAL_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name == "aut_ceasar_aut_nihil_handbook.pdf").url') # CORRECTED
             RELEASE_DATE_ISO=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
             UPDATE_DATE=$(date -d "$RELEASE_DATE_ISO" +"%d.%m.%Y")
-            
+
             cat website/_blocks/prerelease_available.html | \
               sed "s|__VERSION__|$VERSION|g" | \
               sed "s|__UPDATE_DATE__|$UPDATE_DATE|g" | \

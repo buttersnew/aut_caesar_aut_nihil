@@ -2,8 +2,7 @@ name: Create Pre-Release
 
 on:
   push:
-    branches:
-      - 'develop'
+    branches: ["develop", "main"]
     paths:
       - 'version.txt' # Only run when the version file changes
 

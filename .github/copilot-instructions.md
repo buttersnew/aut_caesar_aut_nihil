@@ -6,7 +6,7 @@ Short, actionable guidance for AI coding agents working on this repository (Moun
   - `Aut_Caesar_Aut_Nihil/` — module data and assets (exported text files, shaders, music, textures, etc.). Examples: `troops.txt`, `items.txt`, `mb.fx`, `mb_src.fx`.
   - `module_system/` — the compiler and helpers: `compile.py`, `compiler.py`, `header_*.py`, `module_*.py`, and `process_*.py` scripts. This directory defines the game data and performs export.
   - `handbook/` — the official handbook of the mod as pdf document.
-  - `NERO_DATA/` — flora and skybox definitions.
+  - `data_sourcefiles/` — flora and skybox definitions.
   - `website/` — code for the official website of the mod.
 
 ## How to build / developer workflows (exact commands)
@@ -15,7 +15,7 @@ Short, actionable guidance for AI coding agents working on this repository (Moun
    - On Windows, `fxc` (HLSL compiler) is required for `compile_fx.bat` (shaders compilation).
 
 - Common commands (run from repository root or the named folder):
-  - Compile by executing `module_system\compile.bat` (W.R.E.C.K)
+  - Compile by executing `module_system\compile.bat` ([W.R.E.C.K version 1.14](https://forums.taleworlds.com/index.php?threads/warband-refined-enhanced-compiler-kit-v1-0-0-mar-01-2015.325102/post-9791153))
   - The compiler `module_system\build_module.bat` is deprecated.
   - Shader compile: go to `Aut_Caesar_Aut_Nihil` and run `compile_fx.bat` (requires `fxc` on PATH), it will compile the source file `mb_src.fx`.
 
@@ -50,7 +50,30 @@ Short, actionable guidance for AI coding agents working on this repository (Moun
 - The shader pipeline depends on `fxc` (DirectX HLSL compiler). If shader compilation fails, ensure the Microsoft DirectX / Windows SDK toolchain is installed and `fxc.exe` is on PATH.
  - The module system has been updated for Python 3. Use a Python 3 virtual environment for builds.
 
-## Where AI agents should look for patterns/examples
+## Deployment / CI (GitHub Actions)
+- The repo contains two GitHub Actions workflows in `.github/workflows/` that automate releases and the website:
+  - `create-release.yml` — triggered when `version.txt` changes on `develop`.
+    - Reads `version.txt`, zips `Aut_Caesar_Aut_Nihil` into `ACAN-v${TAG}.zip`, creates a **pre-release** with tag `v${TAG}` and uploads:
+      - `ACAN-v${TAG}.zip` (mod zip)
+      - `handbook/aut_ceasar_aut_nihil_handbook.pdf` (PDF asset)
+    - Trigger it by bumping `version.txt` and pushing to `develop`.
+  - `static.yml` — deploys the `website/` folder to GitHub Pages.
+    - Triggers: push to `develop` that touches `website/**`, manual dispatch, or runs after `Create Pre-Release` completes.
+    - It generates `website/index.html` by querying releases (uses `gh` and `jq` on the runner), injects download blocks and deploys via the Pages actions.
+
+Notes and tips:
+- `GITHUB_TOKEN` (available in Actions) is used to create releases and upload assets; no extra secrets are required for the default flows.
+- `static.yml` relies on the `gh` CLI and `jq` on the runner (these are available on the Ubuntu hosted runner used in the workflow).
+- `version.txt` should contain the version string used for the release tag (example in repo: `1.0.0.7-beta`). Update that file to trigger the pre-release workflow.
+- To deploy the website after a release, either push website changes to `develop` or let `static.yml` run automatically after the `Create Pre-Release` workflow completes.
+
+Optional local/testing commands (developer convenience):
+  - Create a pre-release from local (requires `gh` CLI authenticated):
+    gh release create v1.2.3 --prerelease --title "Version 1.2.3 (Pre-release)" --notes "Automated pre-release"
+  - Upload an asset to an existing release (gh CLI):
+    gh release upload v1.2.3 ACAN-v1.2.3.zip aut_ceasar_aut_nihil_handbook.pdf
+
+## Where AI agents should look for patterns/examples of MBScript code
 - To learn data layout examples, open these files:
   - `module_system/module_items.py` (item tuples/lists)
   - `module_system/module_troops.py` (troop structures and upgrade patterns)
@@ -60,7 +83,7 @@ Short, actionable guidance for AI coding agents working on this repository (Moun
   - `module_system/module_presentations.py` (definitions of presentations, which allow advanced display)
 - For constants and opcodes check header files: `module_system/header_operations.py`, `module_system/header_triggers.py`, `module_system/header_common.py`.
 
-## Quick debugging tips for AI agents
+## Quick debugging tips for AI agents for compiler errors
 - If compile fails with TypeError complaining about 'object is not callable' or 'indices must be integers', the compiler hints that a missing comma is the likely cause and prints the `module` and approximate code snippet near the offending line.
 - Look at compiler warnings about `unassigned local` (l.x) or `local declared but never used` — these point to script-level variable handling.
 
