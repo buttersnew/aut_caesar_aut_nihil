@@ -1,3 +1,5 @@
+from __future__ import print_function
+from six.moves import range
 gtf_overlay = 0x00000001 #deprecated
 gtf_dusty   = 0x00000002 #controls dustiness of the ground for foot dust particle systems 
 gtf_has_color  = 0x00000004 #you can overwrite the ambient color of the ground spec (default: 0.61, 0.72, 0.15)
@@ -49,13 +51,13 @@ def save_c_header():
   
 def save_python_header():
   file = open("../Module_system/header_ground_types.py","w")
-  for ig in xrange(len(ground_specs)):
+  for ig in range(len(ground_specs)):
     ground_spec = ground_specs[ig]
     file.write("ground_%s = %d\n"%(ground_spec[0], ig))
   file.write("\n\n")
   file.close()
 
-print "Exporting ground_spec data..."
+print("Exporting ground_spec data...")
 save_ground_specs()
 save_c_header()
 save_python_header()

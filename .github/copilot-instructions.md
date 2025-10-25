@@ -12,19 +12,23 @@ Short, actionable guidance for AI coding agents working on this repository (Moun
 ## How to build / developer workflows (exact commands)
  - Environment requirements:
    - Python 3.x (the module system in this repo has been updated to be compatible with Python 3). Use a modern Python 3 interpreter (3.8+ recommended). If you previously used Python 2, update your virtual environment and tooling accordingly.
-   - On Windows, `fxc` (HLSL compiler) is required for `compile_fx.bat`.
+   - On Windows, `fxc` (HLSL compiler) is required for `compile_fx.bat` (shaders compilation).
 
 - Common commands (run from repository root or the named folder):
-  - Compile via wrapper: open PowerShell, cd to `module_system` and run `./compile.bat` — this runs `python compile.py tag` and pauses.
-  - Full generator pipeline: `module_system\build_module.bat` (runs each `process_*.py` in sequence and produces the module exports).
-  - Shader compile: go to `Aut_Caesar_Aut_Nihil` and run `compile_fx.bat` (requires `fxc` on PATH).
-  - Direct Python run (if you prefer): `python module_system/compile.py tag` (uses the system `python` interpreter — ensure it points to Python 3 in your environment).
+  - Compile by executing `module_system\compile.bat` (W.R.E.C.K)
+  - The compiler `module_system\build_module.bat` is deprecated.
+  - Shader compile: go to `Aut_Caesar_Aut_Nihil` and run `compile_fx.bat` (requires `fxc` on PATH), it will compile the source file `mb_src.fx`.
 
 ## Key files to read first (where to look for authoritative behavior)
 - `module_system/compile.py` — top-level compiler runner; prints helpful hints when parse/syntax errors occur (missing commas / bracket mismatches).
 - `module_system/compiler.py` — the W.R.E.C.K. implementation: identifier handling, parsing rules and validation. Most logic that enforces conventions lives here.
 - `module_system/module_*.py` — the mod data you edit (troops, items, scenes, dialogs, etc.).
 - `module_system/header_*.py` — constants and opcode definitions referenced by the compiler.
+- `module_system/IDs` — contains ID files, can be ignored, only relevant for compiler.
+- `module_system/Process` — contains additional files for the compiler, can be ignored.
+- `module_system/colorama` — contains additional files for the compiler, can be ignored.
+- `module_system/strings_character_names` — contains character name strings.
+- `module_system/strings_face_keys` — contains face key strings.
 - `Aut_Caesar_Aut_Nihil/` — the output/export folder and shader source(s).
 
 ## Project-specific conventions (concrete, not generic)
@@ -44,7 +48,7 @@ Short, actionable guidance for AI coding agents working on this repository (Moun
 
 ## Integration & dependency notes
 - The shader pipeline depends on `fxc` (DirectX HLSL compiler). If shader compilation fails, ensure the Microsoft DirectX / Windows SDK toolchain is installed and `fxc.exe` is on PATH.
- - The module system has been updated for Python 3. Use a Python 3 virtual environment for builds. `colorama` is optional but still useful for colored output; install it into your venv if desired (pip install colorama).
+ - The module system has been updated for Python 3. Use a Python 3 virtual environment for builds.
 
 ## Where AI agents should look for patterns/examples
 - To learn data layout examples, open these files:

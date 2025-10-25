@@ -1,4 +1,7 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import string
+from six.moves import range
 
 dword      = 0x8000000000000000
 dword_mask = 0xffffffffffffffff
@@ -266,7 +269,7 @@ def save_fauna_kinds():
 
 def two_to_pow(x):
   result = 1
-  for i in xrange(x):
+  for i in range(x):
     result = result * 2
   return result
 
@@ -274,7 +277,7 @@ fauna_mask = 0x80000000000000000000000000000000
 low_fauna_mask =             0x8000000000000000
 def save_python_header():
   file = open("./fauna_codes.py","w")
-  for i_fauna_kind in xrange(len(fauna_kinds)):
+  for i_fauna_kind in range(len(fauna_kinds)):
     file.write("%s_1 = 0x"%(fauna_kinds[i_fauna_kind][0]))
     file.write("%x\n"%(fauna_mask | two_to_pow(i_fauna_kind)))
     file.write("%s_2 = 0x"%(fauna_kinds[i_fauna_kind][0]))
@@ -283,5 +286,5 @@ def save_python_header():
     file.write("%x\n"%(fauna_mask | ((low_fauna_mask|two_to_pow(i_fauna_kind)) << 64) | two_to_pow(i_fauna_kind)))
   file.close()
 
-print "Exporting flora data..."
+print("Exporting flora data...")
 save_fauna_kinds()
