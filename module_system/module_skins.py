@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_skins import *
 from IDs.ID_particle_systems import *
 

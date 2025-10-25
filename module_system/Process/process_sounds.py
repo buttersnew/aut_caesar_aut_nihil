@@ -1,10 +1,13 @@
+from __future__ import absolute_import
+from __future__ import print_function
 from header_common import *
 from module_info import *
 from module_sounds import *
+from six.moves import range
 
 def write_python_header(sounds):
   file = open("./ID_sounds.py","w")
-  for i_sound in xrange(len(sounds)):
+  for i_sound in range(len(sounds)):
     file.write("snd_%s = %d\n"%(sounds[i_sound][0],i_sound))
   file.write("\n\n")
   file.close()
@@ -29,7 +32,7 @@ def compile_sounds(sounds):
   for sound in sounds:
     sound_files = sound[2]
     sound_flags = sound[1]
-    for i_sound_file in xrange(len(sound_files)):
+    for i_sound_file in range(len(sound_files)):
       sound_file = sound_files[i_sound_file]
       if (type(sound_file) != type([])):
         sound_file = [sound_file, 0]
@@ -46,7 +49,7 @@ def compile_sounds(sounds):
       sound_files[i_sound_file] = [sound_no, sound_file[1]]
   return all_sounds
 
-print "Exporting sounds..."
+print("Exporting sounds...")
 sound_samples = compile_sounds(sounds)
 write_sounds(sound_samples, sounds)
 write_python_header(sounds)

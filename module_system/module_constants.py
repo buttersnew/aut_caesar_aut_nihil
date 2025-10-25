@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from IDs.ID_items import *
 from IDs.ID_quests import *
 from IDs.ID_factions import *
@@ -3839,7 +3840,8 @@ Troop_Tree_Area_Height = Screen_Title_Height-4*Screen_Text_Height
 Troop_Tree_Area_Width = Screen_Width-2*Screen_Border_Width
 Troop_Tree_Line_Color = 0x001380
 Troop_Tree_Tableau_Height = 800
-Troop_Tree_Tableau_Width = Troop_Tree_Tableau_Height*Screen_Undistort_Width_Num/Screen_Undistort_Width_Den
+## Ensure width is an integer (Python 3 safe). Use integer division to avoid float result.
+Troop_Tree_Tableau_Width = (Troop_Tree_Tableau_Height * Screen_Undistort_Width_Num) // Screen_Undistort_Width_Den
 ##For Player Legion
 
 # Custom Troops begin
@@ -4204,6 +4206,7 @@ region_mountain_europe_alps             =14
 region_mountain_europe_spain_france     =15
 region_mountain_europe_romania          =16
 region_mountain_europe_bohemia          =17
+region_africa_green                     =18
 
 color_region_spain                            = 0xB6FF00
 color_region_north_africa                     = 0xFFD800
@@ -4222,6 +4225,7 @@ color_region_mountain_europe_alps             = 0x009399
 color_region_mountain_europe_spain_france     = 0x287776
 color_region_mountain_europe_romania          = 0x296850
 color_region_mountain_europe_bohemia          = 0x486660
+color_africa_green                            = 0xFFFF99
 
 color_rt_water 		        = 0x0000FF
 color_rt_mountain 		    = 0x646464

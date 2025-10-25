@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from module_constants import *
 from IDs.ID_factions import *
 from header_items import  *
@@ -120,7 +121,7 @@ def get_barmour_price (body_a, leg_a):
   if body_a >= 30 and body_a < 50:
     price = price - price/5
   if body_a < 35: #tom reduce - basic armor should be almost free
-	price = price/3
+    price = price/3
   return (int) (round(price))
 
 # def tier_6_body_armor_price:
@@ -130,7 +131,7 @@ def get_barmour_price (body_a, leg_a):
 def get_footwear_price (armour):
   price = armour * 31
   if armour < 30:
-	price = price/4
+    price = price/4
   return (int(round(price)))
 
 def get_headgear_price (armour):
@@ -1423,18 +1424,18 @@ pants_price, pants_armor, imodbits_cloth, [(ti_on_init_item,[
 (store_trigger_param_2, ":troop_no"),
 (try_begin),
     (agent_is_active, ":agent"),
-	(neq, ":troop_no", "trp_player"),
-	(neq, ":troop_no", "trp_slave"),
-	(neq, ":troop_no", "trp_slave_mine"),
-	(store_random_in_range, ":r", 0, 5),
-	(try_begin),
-		(lt, ":r", 3),
-		(str_clear, s2),
-		(cur_item_add_mesh, "str_o_greek_fibule_2"),
-		(store_random_in_range, ":rand", "str_a_greek_cape_purple_2", "str_cape_end"),
-		(str_store_string, s2, ":rand"),
-		(cur_item_add_mesh, s2),
-	(try_end),
+    (neq, ":troop_no", "trp_player"),
+    (neq, ":troop_no", "trp_slave"),
+    (neq, ":troop_no", "trp_slave_mine"),
+    (store_random_in_range, ":r", 0, 5),
+    (try_begin),
+        (lt, ":r", 3),
+        (str_clear, s2),
+        (cur_item_add_mesh, "str_o_greek_fibule_2"),
+        (store_random_in_range, ":rand", "str_a_greek_cape_purple_2", "str_cape_end"),
+        (str_store_string, s2, ":rand"),
+        (cur_item_add_mesh, s2),
+    (try_end),
 (try_end),]),], [fac_culture_6] ],
 ["indian_pants_1", "Eastern Loincloth", [("indian_tunic_blue",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_price, pants_armor, imodbits_cloth, [(ti_on_init_item,[
@@ -1443,18 +1444,18 @@ pants_price, pants_armor, imodbits_cloth, [(ti_on_init_item,[
 (store_trigger_param_2, ":troop_no"),
 (try_begin),
     (agent_is_active, ":agent"),
-	(neq, ":troop_no", "trp_player"),
-	(neq, ":troop_no", "trp_slave"),
-	(neq, ":troop_no", "trp_slave_mine"),
-	(store_random_in_range, ":r", 0, 5),
-	(try_begin),
-		(lt, ":r", 3),
-		(str_clear, s2),
-		(cur_item_add_mesh, "str_o_greek_fibule_2"),
-		(store_random_in_range, ":rand", "str_a_greek_cape_purple_2", "str_cape_end"),
-		(str_store_string, s2, ":rand"),
-		(cur_item_add_mesh, s2),
-	(try_end),
+    (neq, ":troop_no", "trp_player"),
+    (neq, ":troop_no", "trp_slave"),
+    (neq, ":troop_no", "trp_slave_mine"),
+    (store_random_in_range, ":r", 0, 5),
+    (try_begin),
+        (lt, ":r", 3),
+        (str_clear, s2),
+        (cur_item_add_mesh, "str_o_greek_fibule_2"),
+        (store_random_in_range, ":rand", "str_a_greek_cape_purple_2", "str_cape_end"),
+        (str_store_string, s2, ":rand"),
+        (cur_item_add_mesh, s2),
+    (try_end),
 (try_end),]),], [fac_culture_6] ],
 ["indian_pants_2", "Eastern Loincloth with Breastplate", [("indian_tunic_red",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
@@ -1463,18 +1464,18 @@ breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_in
 (store_trigger_param_2, ":troop_no"),
 (try_begin),
     (agent_is_active, ":agent"),
-	(neq, ":troop_no", "trp_player"),
-	(neq, ":troop_no", "trp_slave"),
-	(neq, ":troop_no", "trp_slave_mine"),
-	(store_random_in_range, ":r", 0, 5),
-	(try_begin),
-		(lt, ":r", 3),
-		(str_clear, s2),
-		(cur_item_add_mesh, "str_o_greek_fibule_2"),
-		(store_random_in_range, ":rand", "str_a_greek_cape_purple_2", "str_cape_end"),
-		(str_store_string, s2, ":rand"),
-		(cur_item_add_mesh, s2),
-	(try_end),
+    (neq, ":troop_no", "trp_player"),
+    (neq, ":troop_no", "trp_slave"),
+    (neq, ":troop_no", "trp_slave_mine"),
+    (store_random_in_range, ":r", 0, 5),
+    (try_begin),
+        (lt, ":r", 3),
+        (str_clear, s2),
+        (cur_item_add_mesh, "str_o_greek_fibule_2"),
+        (store_random_in_range, ":rand", "str_a_greek_cape_purple_2", "str_cape_end"),
+        (str_store_string, s2, ":rand"),
+        (cur_item_add_mesh, s2),
+    (try_end),
 (try_end),]),], [fac_culture_6] ],
 
 ##############
@@ -6154,15 +6155,15 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
    [
     (particle_system_burst, "psys_fireplace_fire_big", pos1, 100),
     (particle_system_burst, "psys_village_fire_big", pos1, 7),
-	  (particle_system_burst, "psys_village_fire_smoke_big", pos1, 50),
+      (particle_system_burst, "psys_village_fire_smoke_big", pos1, 50),
    ]),]],
 ["stones_siege","Large Stone", [("siegestone",0)], itp_type_thrown|itp_primary|itp_no_pick_up_from_ground|itp_can_knock_down|itp_can_penetrate_shield|itp_remove_item_on_use|itp_merchandise, itcf_throw_axe,
 50, weight(3)|abundance(20)|difficulty(4)|spd_rtng(70) | shoot_speed(14) | thrust_damage(50 ,  blunt)|max_ammo(2)|weapon_length(14),imodbits_none, #chief cambiado
 [
     (ti_on_missile_hit,
       [
-	  (try_begin),
-		#Solid Round Script
+      (try_begin),
+        #Solid Round Script
         #pos1 - Missile hit position
         #param_1 - Shooter agent
       (this_or_next|multiplayer_is_server),

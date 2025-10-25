@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_particle_systems import *
 #psf_always_emit         = 0x0000000002
 #psf_global_emit_dir     = 0x0000000010

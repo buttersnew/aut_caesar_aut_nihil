@@ -1,10 +1,13 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import string
 
 from module_info import *
 from module_scripts import *
 
-from process_common import *
-from process_operations import *
+from .process_common import *
+from .process_operations import *
+from six.moves import range
 
 def save_scripts(variable_list,variable_uses,scripts,tag_uses,quick_strings):
   file = open(export_dir + "scripts.txt","w")
@@ -12,7 +15,7 @@ def save_scripts(variable_list,variable_uses,scripts,tag_uses,quick_strings):
   file.write("%d\n"%len(scripts))
   temp_list = []
   list_type = type(temp_list)
-  for i_script in xrange(len(scripts)):
+  for i_script in range(len(scripts)):
     func = scripts[i_script]
     if (type(func[1]) == list_type):
       file.write("%s -1\n"%(convert_to_identifier(func[0])))
@@ -25,13 +28,13 @@ def save_scripts(variable_list,variable_uses,scripts,tag_uses,quick_strings):
 
 def save_python_header():
   file = open("./ID_scripts.py","w")
-  for i_script in xrange(len(scripts)):
+  for i_script in range(len(scripts)):
     file.write("script_%s = %d\n"%(convert_to_identifier(scripts[i_script][0]),i_script))
   file.write("\n\n")
   file.close()
 
 
-print "Exporting scripts..."
+print("Exporting scripts...")
 save_python_header()
 variable_uses = []
 variables = load_variables(export_dir, variable_uses)

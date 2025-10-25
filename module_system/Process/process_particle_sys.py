@@ -1,6 +1,9 @@
+from __future__ import absolute_import
+from __future__ import print_function
 from module_info import *
 from module_particle_systems import *
-from process_common import *
+from .process_common import *
+from six.moves import range
 
 id_pos        = 0
 flags_pos     = 1
@@ -53,10 +56,10 @@ def save_particle_systems():
 
 def save_python_header():
   ofile = open("./ID_particle_systems.py","w")
-  for i_particle_system in xrange(len(particle_systems)):
+  for i_particle_system in range(len(particle_systems)):
     ofile.write("psys_%s = %d\n"%(particle_systems[i_particle_system][0],i_particle_system))
   ofile.close()
 
-print "Exporting particle data..."
+print("Exporting particle data...")
 save_particle_systems()
 save_python_header()

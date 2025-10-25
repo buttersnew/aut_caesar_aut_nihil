@@ -1,4 +1,5 @@
 # -*- coding: cp1254 -*-
+from __future__ import absolute_import
 from header_common import *
 from header_operations import *
 from module_constants import *
@@ -23,6 +24,7 @@ from module_factions import dplmc_factions_begin, dplmc_factions_end, dplmc_non_
 
 from module_scripts_hardcoded import *
 from module_scripts_wse2 import *
+from six.moves import range
 
 ####################################################################################################################
 # scripts is a list of script records.
@@ -33,7 +35,7 @@ from module_scripts_wse2 import *
 
 def keys_array():
   keys_list = []
-  for key_no in xrange(len(keys)):
+  for key_no in range(len(keys)):
     keys_list.append((troop_set_slot, "trp_temp_array_a", key_no, keys[key_no]))
     keys_list.append((troop_set_slot, "trp_temp_array_b", key_no, str_key_0+key_no))
   return keys_list[:]
@@ -20349,6 +20351,9 @@ scripts = scripts_hardcoded + [
         (le, ":distance", 5),
         (assign, ":scene_to_use", "scn_valley_of_elah"),
     (else_try),
+        (eq, ":cur_region", region_africa_green),
+        (store_random_in_range, ":scene_to_use", "scn_north_africa_sudan_1", "scn_river_battle_north_africa"),
+    (else_try),
         (eq, ":cur_region", region_north_africa),
         (store_random_in_range, ":scene_to_use", "scn_river_battle_north_africa", "scn_random_scene_new_steppe_custom_1"),
     (else_try),
@@ -20390,7 +20395,7 @@ scripts = scripts_hardcoded + [
     (else_try),
         (this_or_next|eq, ":cur_region", region_greece),
         (eq, ":cur_region", region_southitaly),
-        (store_random_in_range, ":scene_to_use", "scn_battle_italian_greek", "scn_river_battle_north_africa"),
+        (store_random_in_range, ":scene_to_use", "scn_battle_italian_greek", "scn_north_africa_sudan_1"),
     (else_try),
         (this_or_next|eq, ":terrain_type", rt_plain),#its a plain river map
         (eq, ":terrain_type", rt_forest),
@@ -52628,7 +52633,7 @@ scripts = scripts_hardcoded + [
         (troop_set_face_keys, "trp_dplmc_chamberlain", "@00000000001144cc172ad258e2714d2b000000000015b4db0000000000000000"),
     (else_try),
         (eq, ":culture", "fac_culture_16"),
-        (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_body, "itm_numidian_wig"),
+        (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_head, "itm_numidian_wig"),
         (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_body, "itm_judean_tunic_4"),
         (troop_set_inventory_slot, "trp_dplmc_chamberlain", ek_foot, "itm_caligea"),
         (troop_set_face_keys, "trp_dplmc_chamberlain", "@000000001d09400138c945269b71ad3400000000001d9b2b0000000000000000"),
@@ -55936,13 +55941,13 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_3"),#Khergit
             (str_store_string, ":string_register", "@Khan, scourge of the gods"),
         (else_try),
-            (this_or_next|eq, ":culture", "fac_culture_15"),
+            (eq, ":culture", "fac_culture_15"),
             (str_store_string, ":string_register", "@Malka, great king"),
         (else_try),
-            (this_or_next|eq, ":culture", "fac_culture_16"),
+            (eq, ":culture", "fac_culture_16"),
             (str_store_string, ":string_register", "@Pharaoh"),
         (else_try),
-            (this_or_next|eq, ":culture", "fac_culture_17"),
+            (eq, ":culture", "fac_culture_17"),
             (str_store_string, ":string_register", "@Basileus"),
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_5"),#Sarranid
@@ -84697,6 +84702,15 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":terrain_type", rt_snow),
         (eq, ":terrain_type", rt_snow_forest),
         (assign, reg1, region_nile),
+    (else_try), # sudan/savane
+        (le, ":y", -17500),
+        (this_or_next|eq, ":terrain_type", rt_steppe),
+        (this_or_next|eq, ":terrain_type", rt_steppe_forest),
+        (this_or_next|eq, ":terrain_type", rt_plain),
+        (this_or_next|eq, ":terrain_type", rt_forest),
+        (this_or_next|eq, ":terrain_type", rt_snow),
+        (eq, ":terrain_type", rt_snow_forest),
+        (assign, reg1, region_africa_green),
     (else_try),#Greece Zypern
         (is_between, ":x", 4900, 6900),(is_between, ":y", -3600, -1700),
         (this_or_next|eq, ":terrain_type", rt_plain),
@@ -84844,6 +84858,7 @@ scripts = scripts_hardcoded + [
         (eq, ":terrain_type", rt_snow_forest),
         (assign, reg1, region_north_africa),
     (try_end),
+
     (try_begin),
         (ge, "$cheat_mode", 1),
         (neq, reg1,-1),
@@ -84879,6 +84894,12 @@ scripts = scripts_hardcoded + [
     # (this_or_next|eq, ":terrain", rt_snow_forest),
     (this_or_next|eq, ":terrain", rt_desert_forest),
     (this_or_next|eq, ":terrain", rt_desert),
+    (this_or_next|eq, ":cur_region", region_mesopotamia),
+    (this_or_next|eq, ":cur_region", region_nile_delta),
+    (this_or_next|eq, ":cur_region", region_greece),
+    (this_or_next|eq, ":cur_region", region_north_africa),
+    (this_or_next|eq, ":cur_region", region_africa_green),
+    (this_or_next|eq, ":cur_region", region_southitaly),
     (this_or_next|eq, ":cur_region", region_anatolia_central),
     (this_or_next|eq, ":cur_region", region_anatolia_coastal),
     (this_or_next|eq, ":cur_region", region_persianhill_desert),
@@ -87933,6 +87954,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":cur_region", region_anatolia_central),
         (this_or_next|eq, ":cur_region", region_mesopotamia),
         (this_or_next|eq, ":cur_region", region_north_africa),
+        (this_or_next|eq, ":cur_region", region_africa_green),
         (this_or_next|eq, ":cur_region", region_southitaly),
         (this_or_next|eq, ":cur_region", region_nile),
         (eq, ":cur_region", region_syria_palestine),
@@ -93779,6 +93801,9 @@ scripts = scripts_hardcoded + [
     (else_try),
         (eq, ":region", region_mountain_europe_bohemia),
         (assign, reg2, color_region_mountain_europe_bohemia),
+    (else_try),
+        (eq, ":region", region_africa_green),
+        (assign, reg2, color_africa_green),
     (try_end),
 ]),
 

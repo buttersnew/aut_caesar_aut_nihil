@@ -6,6 +6,7 @@
 #
 ####################################################################################################################
 ##diplomacy start+
+from __future__ import absolute_import
 from module_constants import DPLMC_DIPLOMACY_VERSION_STRING, triumph_threshold
 ##diplomacy end+
 

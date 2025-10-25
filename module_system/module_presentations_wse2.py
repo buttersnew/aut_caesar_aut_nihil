@@ -1,4 +1,5 @@
 # -*- coding: cp1254 -*-
+from __future__ import absolute_import
 import string
 from header_common import *
 from header_presentations import *

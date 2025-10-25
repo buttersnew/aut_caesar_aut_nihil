@@ -1,4 +1,5 @@
 # -*- coding: cp1254 -*-
+from __future__ import absolute_import
 from module_skills import *
 
 from strings_character_names.module_names_britannic import *
@@ -19,6 +20,7 @@ from strings_character_names.module_names_greek import *
 from strings_face_keys.female_white import *
 from strings_face_keys.female_brown import *
 from strings_face_keys.female_black import *
+from six.moves import range
 
 #from compiler import *
 #SB : skill strings from CC, see bottom
@@ -8603,6 +8605,7 @@ strings = [
 ("region_mountain_europe_spain_france","Mountain Hispania"),
 ("region_mountain_europe_romania","Mountain Dacia"),
 ("region_mountain_europe_bohemia","Mountain Germania"),
+("region_africa_green","Africa Grassland"),
 ("other","other region"),
 
 ("rt_water", "Ocean"),

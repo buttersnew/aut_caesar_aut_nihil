@@ -1,4 +1,5 @@
 # -*- coding: cp1252 -*-
+from __future__ import absolute_import
 from header_common import *
 from header_scene_props import *
 from header_operations import *

@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_common import *
 from header_operations import *
 from header_triggers import *
@@ -519,6 +520,12 @@ scenes = [
   ("battle_italian_greek_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000012400007e300599a6400007ec300000ad900006f54 ",[], [], "outer_terrain_plain_2"),
   #from oliver
   ("bridge_battle_mediterranean", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000001300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain_2"),
+
+  ("north_africa_sudan_1", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000230000ee30008de3900002a3b00001b8c00000cca",[], [], "outer_terrain_steppe"),
+  ("north_africa_sudan_2", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000249000ee30008de390000747f0000717e0000799b",[], [], "outer_terrain_steppe"),
+  ("north_africa_sudan_3", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000249000ee30008de390000400a0000003d00007e70",[], [], "outer_terrain_steppe"),
+  ("north_africa_sudan_4", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002490009e30008de39000076ce0000155a00002330",[], [], "outer_terrain_steppe"),
+  ("north_africa_sudan_5", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x00000002490009e30008de39000010c00000085500002606",[], [], "outer_terrain_steppe"),
 
   #NORTH AFRICA
   ("river_battle_north_africa", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x0000000248600500000b0ac6000016a200000dff00007268 ",[], [], "outer_terrain_steppe"),

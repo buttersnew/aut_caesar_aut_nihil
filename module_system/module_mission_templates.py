@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_common import *
 from header_operations import *
 from header_mission_templates import *
@@ -2320,9 +2321,10 @@ thunder_storm =	[		# 4 trigger
     # (display_message, "@Thunderstorm. Check I"),
     (assign, "$lightning_cycle", -1),
     (try_begin),
-      (store_current_scene, ":scene"),
-      (this_or_next|eq, ":scene", "scn_ruins_of_carthage"),# exclude certain scenes
       (call_script, "script_cf_is_desert", "p_main_party"),
+    (else_try),
+      (store_current_scene, ":scene"),
+      (eq, ":scene", "scn_ruins_of_carthage"),# exclude certain scenes
     (else_try),
       (store_time_of_day, ":day_time"),
       (neg|is_between, ":day_time", 4, 20),
@@ -7020,7 +7022,7 @@ mission_templates = [
     (43,mtef_visitor_source,af_override_weapons|af_override_head|af_override_horse,0,1,[]),
     (44,mtef_visitor_source,af_override_weapons|af_override_head|af_override_horse,0,1,[]),
     (45,mtef_visitor_source,af_override_weapons|af_override_head|af_override_horse,0,1,[]),
-  ], global_common_triggers + p_wetter +
+  ],  p_wetter +
   [
     can_spawn_commoners,
 
@@ -7316,7 +7318,7 @@ mission_templates = [
     (47,mtef_visitor_source,af_override_fullhelm,0,1,[]),
     (48,mtef_visitor_source,af_override_fullhelm,0,1,[]),
     (49,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -7464,7 +7466,7 @@ mission_templates = [
     (68,mtef_visitor_source,af_override_fullhelm,0,1,[]),
     (69,mtef_visitor_source,af_override_fullhelm,0,1,[]),
     (70,mtef_visitor_source,af_override_fullhelm,0,1,[]),
-  ], p_wetter +global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     (ti_tab_pressed, 0, 0,[
@@ -7578,10 +7580,8 @@ mission_templates = [
     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
     (59,mtef_visitor_source,af_override_horse,0,1,[]),
     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
-    can_spawn_commoners,
-    improved_lightning,
     (1,0,ti_once, [
       (eq, "$current_town","p_town_6"),
       (troop_slot_eq, "trp_christ",slot_troop_days_on_mission, 0),
@@ -7625,7 +7625,6 @@ mission_templates = [
           (try_end),
       (try_end),
     ]),
-
     (0, 0, ti_once, [
     ],[
       (neq, "$talk_context", tc_escape),
@@ -7839,6 +7838,9 @@ mission_templates = [
       (try_end),
     ]),
 
+    can_spawn_commoners,
+    improved_lightning,
+
     ambient_scene_play_loop,
     ambient_scene_play_random_sound,
     ambient_set_agents_for_sounds,
@@ -7896,7 +7898,7 @@ mission_templates = [
     (45,mtef_visitor_source,af_override_horse,0,1,[]),
     (46,mtef_visitor_source,af_override_horse,0,1,[]),
     (47,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -8201,7 +8203,7 @@ mission_templates = [
     (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (11,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms +
   [
     (0, 0, ti_once,[
       (gt, "$temp_troop", 0),
@@ -8286,7 +8288,7 @@ mission_templates = [
     (32,mtef_visitor_source,af_override_horse,0,1,[]),(33,mtef_visitor_source,af_override_horse,0,1,[]),(34,mtef_visitor_source,af_override_horse,0,1,[]),(35,mtef_visitor_source,af_override_horse,0,1,[]),(36,mtef_visitor_source,af_override_horse,0,1,[]),(37,mtef_visitor_source,af_override_horse,0,1,[]),(38,mtef_visitor_source,af_override_horse,0,1,[]),(39,mtef_visitor_source,af_override_horse,0,1,[]),
     (40,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(41,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(42,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(43,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     (44,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(45,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(46,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),(47,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     common_nobody_stalls,
     cannot_spawn_commoners,
@@ -8356,7 +8358,7 @@ mission_templates = [
     "village_training",
     [(2,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
      (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
-     ], p_wetter + storms +global_common_triggers +
+     ], p_wetter + storms +
     [
     improved_lightning,
       (ti_before_mission_start, 0, 0, [],
@@ -8474,7 +8476,7 @@ mission_templates = [
     (78,mtef_visitor_source,af_override_body,0,1,[]),
     (79,mtef_visitor_source,af_override_body,0,1,[]),
     (80,mtef_visitor_source,af_override_body,0,1,[]),
-  ], p_wetter +global_common_triggers +
+  ], p_wetter +
   [
     (0, 0, ti_once, [
       (gt, "$auto_speak_troop", -1),
@@ -8682,7 +8684,7 @@ mission_templates = [
   "You enter the back alley",[
     (0,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
     (1,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[]),
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -8806,7 +8808,7 @@ mission_templates = [
      (9,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[]),
      (10,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[]),
      (11,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[itm_knife,itm_pitch_fork,itm_sickle,itm_club,itm_stones]),
-     ], p_wetter + storms +global_common_triggers +
+     ], p_wetter + storms +
     [
     cannot_spawn_commoners,
     improved_lightning,
@@ -8858,7 +8860,7 @@ mission_templates = [
     (61,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),#9
     (62,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,30,[]),#10
     (63,mtef_enemy_party|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),#11
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms +
   [
 
     common_maritime_drowning,
@@ -9091,7 +9093,7 @@ mission_templates = [
     (0,mtef_defenders|mtef_team_0,0,aif_start_alarmed,0,[]),
     (4,mtef_attackers|mtef_team_1,0,aif_start_alarmed,65,[]),
     (4,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     small_battle_check,
@@ -9255,7 +9257,7 @@ mission_templates = [
     ##additional cav reinforcement spawnpoints
     # (29,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
     # (30,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
 
@@ -9424,7 +9426,7 @@ mission_templates = [
     ##additional cav reinforcement spawnpoints
     # (29,mtef_defenders|mtef_team_0|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
     # (30,mtef_attackers|mtef_team_1|mtef_cavalry_first,0,aif_start_alarmed,0,[]),
-  ], p_wetter + fireball_trigger + storms +global_common_triggers +
+  ], p_wetter + fireball_trigger + storms +
   [
     cannot_spawn_commoners,
     (ti_before_mission_start, 0, ti_once,[],[
@@ -9679,7 +9681,7 @@ mission_templates = [
     (26,mtef_ally_party|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
     (27,mtef_ally_party|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
     (28,mtef_ally_party|mtef_team_0|mtef_archers_first,0,aif_start_alarmed,5,[]),
-  ], p_wetter + fireball_trigger + storms +global_common_triggers +
+  ], p_wetter + fireball_trigger + storms +
   [
     # hold position
     (0, 0, ti_once, [],[
@@ -9894,7 +9896,7 @@ mission_templates = [
     (3,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
     (1,mtef_team_0|mtef_use_exact_number,0,aif_start_alarmed, 7,[]),
     (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,1,[]),
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -9986,7 +9988,7 @@ mission_templates = [
      (3,mtef_defenders|mtef_team_0,0,aif_start_alarmed,0,[]),
      (1,mtef_attackers|mtef_team_1,0,aif_start_alarmed,35,[]),
      (1,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
-     ], p_wetter + storms +global_common_triggers +
+     ], p_wetter + storms +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -10129,7 +10131,7 @@ mission_templates = [
      (18, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
      (19, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
      (20, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-     ], p_wetter +global_common_triggers +
+     ], p_wetter +
     [
       cannot_spawn_commoners,
       (ti_before_mission_start, 0, 0, [],[(call_script, "script_change_banners_and_chest")]),
@@ -10216,7 +10218,7 @@ mission_templates = [
      (26, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,4,[]),
      (27, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,4,[]),
      (28, mtef_defenders|mtef_use_exact_number|mtef_team_0,af_override_horse,aif_start_alarmed,6,[]),
-     ], p_wetter + storms +global_common_triggers +
+     ], p_wetter + storms +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -10300,7 +10302,7 @@ mission_templates = [
      (0,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
      (3,mtef_defenders|mtef_team_0,0,aif_start_alarmed,50,[]), #dckplmc - allow defenders to use horses
      (3,mtef_defenders|mtef_team_0,0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -10529,7 +10531,7 @@ mission_templates = [
     (47,mtef_defenders|mtef_team_0|mtef_archers_first,af_override_horse,aif_start_alarmed,3,[]),
     #attacker archer positions are from 60 to 65
     #3 and 0 for sally
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     (ti_on_agent_spawn, 0, 0, [],[
@@ -11243,7 +11245,7 @@ mission_templates = [
     (44,mtef_visitor_source,af_override_horse,0,1,[]),
     (45,mtef_visitor_source,af_override_horse,0,1,[]),
     (46,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms +global_common_triggers +
+  ], p_wetter + storms +
   [
     improved_lightning,
     can_spawn_commoners,
@@ -11469,7 +11471,7 @@ mission_templates = [
 	  (19,mtef_visitor_source|mtef_team_0,0,0,1,[]),
 	  (20,mtef_visitor_source|mtef_team_0,0,0,1,[]),
 	  (21,mtef_visitor_source|mtef_team_2,af_override_all,aif_start_alarmed,1,[itm_dreizack2, itm_arena_armor_red, itm_tourney_helm_red]),
-  ], p_wetter +global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -11534,7 +11536,7 @@ mission_templates = [
       (18, mtef_visitor_source|mtef_team_2,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
       (19, mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_heavy_practice_sword]),
       (20, mtef_visitor_source,0,0,1,[]),
-    ], p_wetter +global_common_triggers +
+    ], p_wetter +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -11668,7 +11670,7 @@ mission_templates = [
       (13,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
       (14,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
       (15,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
-    ], p_wetter +global_common_triggers +
+    ], p_wetter +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -12020,7 +12022,7 @@ mission_templates = [
      # (30,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
      # (31,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
      # (32,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -12208,7 +12210,7 @@ mission_templates = [
   "You start training.",[
     (0,mtef_scene_source,0,aif_start_alarmed,1,[]),
     (1,mtef_visitor_source,0,aif_start_alarmed,1,[]),
-  ], global_common_triggers +
+  ],
   [
     can_spawn_commoners,
     (0, 0, ti_once, [(neg|conversation_screen_is_active),],[
@@ -12229,7 +12231,7 @@ mission_templates = [
     "camera Test.",
     [
 #     (0,mtef_attackers,0,aif_start_alarmed,5,[]),
-     ], p_wetter + global_common_triggers +
+     ], p_wetter +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -12316,7 +12318,7 @@ mission_templates = [
     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
     (59,mtef_visitor_source,af_override_horse,0,1,[]),
     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   tournament_triggers
 ),
 
@@ -12394,7 +12396,7 @@ mission_templates = [
     (58,mtef_visitor_source,af_override_horse|af_castle_lord,0,1,[]),
     (59,mtef_visitor_source,af_override_horse,0,1,[]),
     (60,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   tournament_triggers
 ),
 
@@ -12404,7 +12406,7 @@ mission_templates = [
     [
       (56, mtef_visitor_source|mtef_team_0, 0, aif_start_alarmed, 1, []),
       (58, mtef_visitor_source|mtef_team_2, 0, aif_start_alarmed, 1, []),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -12478,7 +12480,7 @@ mission_templates = [
       (23, mtef_visitor_source|mtef_team_0,af_override_weapons|af_override_horse,aif_start_alarmed,1,[itm_roman_spatha]),
       (24, mtef_visitor_source|mtef_team_1,af_override_weapons|af_override_horse,aif_start_alarmed,1,[itm_roman_spatha]),
 
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -12570,7 +12572,7 @@ mission_templates = [
     (29,mtef_visitor_source,af_castle_lord,0,1,[]),
     (30,mtef_visitor_source,af_castle_lord,0,1,[]),
     (31,mtef_visitor_source,af_castle_lord,0,1,[]),
-  ], global_common_triggers +
+  ],
   [
     cannot_spawn_commoners,
     (ti_tab_pressed, 0, 0, [],[
@@ -12921,7 +12923,7 @@ mission_templates = [
     (29,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
     (30,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
     (31,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -13159,7 +13161,7 @@ mission_templates = [
     (125,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (126,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (127,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -13334,7 +13336,7 @@ mission_templates = [
     (8,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
     (9,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
     (10,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     common_nobody_stalls,
     cannot_spawn_commoners,
@@ -13731,7 +13733,7 @@ mission_templates = [
     (1,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
     (2,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,20,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -13867,7 +13869,7 @@ mission_templates = [
     (7,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
     (8,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
     (9,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     (ti_on_agent_spawn, 0, 0, [],[
@@ -14015,7 +14017,7 @@ mission_templates = [
 	  (45,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
 	  (46,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
 	  (47,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -14270,7 +14272,7 @@ mission_templates = [
     (47,mtef_visitor_source,af_override_everything,0,1,[]), #prisoners
     (48,mtef_visitor_source,af_override_everything,0,1,[]), #punish
     (49,mtef_visitor_source,af_override_everything,0,1,[]), #punish
-  ], p_wetter + storms + global_common_triggers + vc_water +
+  ], p_wetter + storms +  vc_water +
   [
     spawn_alexandria_lighthouse,
 
@@ -14397,7 +14399,7 @@ mission_templates = [
     (29,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
     (30,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
     (31,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -14574,7 +14576,7 @@ mission_templates = [
       # (30,mtef_visitor_source|mtef_team_1,af_override_horse, 0, 12,[]),
       # (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
       # (1,mtef_team_0, 0,aif_start_alarmed,12,[]),
-    ], p_wetter + global_common_triggers +
+    ], p_wetter +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -14873,7 +14875,7 @@ mission_templates = [
     (20,mtef_visitor_source,af_override_horse,0,1,[]),
     (21,mtef_visitor_source,af_override_horse,0,1,[]),
     (22,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     (ti_before_mission_start, 0, 0, [ ],[
@@ -14985,7 +14987,7 @@ mission_templates = [
     (47,mtef_visitor_source,af_override_horse,0,1,[]),
     (48,mtef_visitor_source,af_override_horse,0,1,[]),
     (49,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     (ti_after_mission_start, 0, ti_once, [],[
       (mission_cam_set_screen_color, 0xFF736252), #roughly the colour of the menu bg
@@ -15131,7 +15133,7 @@ mission_templates = [
     (38,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
     (39,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
     (40,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     common_inventory_not_available,
@@ -15254,7 +15256,7 @@ mission_templates = [
     (43,mtef_visitor_source,af_override_horse,0,1,[]),
     (44,mtef_visitor_source,af_override_horse,0,1,[]),
     (45,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     improved_lightning,
     (ti_before_mission_start, 0, 0, [
@@ -15402,7 +15404,7 @@ mission_templates = [
 ("slave_hideout", mtf_battle_mode, 0,
   "You visit the slave hideout.",[
     (0,mtef_leader_only, 0, 0, 1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     improved_lightning,
     cannot_spawn_commoners,
@@ -15531,7 +15533,7 @@ mission_templates = [
     (38,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
     (39,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
     (40,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]), #castle chief walkers
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -15659,7 +15661,7 @@ mission_templates = [
     (69,mtef_visitor_source,af_override_horse,0,1,[]),
     (70,mtef_visitor_source,af_override_horse,0,1,[]),
   ],
-    p_wetter + global_common_triggers +
+    p_wetter +
   [
     (ti_before_mission_start, 0, 0, [],[
       (call_script, "script_change_banners_and_chest"),
@@ -15916,7 +15918,7 @@ mission_templates = [
     (43,mtef_visitor_source,af_castle_lord,0,1,[]),
     (44,mtef_visitor_source,af_castle_lord,0,1,[]),
     (45,mtef_visitor_source,af_castle_lord,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
 
@@ -16044,7 +16046,7 @@ mission_templates = [
     (67,mtef_visitor_source,af_castle_lord,0,1,[]),
     (68,mtef_visitor_source,af_castle_lord,0,1,[]),
     (69,mtef_visitor_source,af_castle_lord,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     (ti_on_agent_spawn,1,0,[
@@ -16095,7 +16097,7 @@ mission_templates = [
     (8,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
     (9,mtef_visitor_source,0,0,1,[]),
     (10,mtef_visitor_source,af_override_horse|af_override_head,0,1,[]),
-  ], global_common_triggers +
+  ],
   [
     cannot_spawn_commoners,
     (ti_after_mission_start, 0, ti_once, [],[
@@ -16275,7 +16277,7 @@ mission_templates = [
 	 (7,mtef_visitor_source,af_override_horse,0,1,[]),
 	 (8,mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
 
-    ],  p_wetter + global_common_triggers +
+    ],  p_wetter +
     [
       cannot_spawn_commoners,
         (0, 0, 0,[(key_clicked, key_k),
@@ -16307,7 +16309,7 @@ mission_templates = [
     (30,mtef_visitor_source|mtef_team_1,af_override_horse, 0, 10,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,10,[]),
     (1,mtef_team_0, af_override_horse,aif_start_alarmed,15,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -16430,7 +16432,7 @@ mission_templates = [
     [
       (0,mtef_scene_source,0,0,1,[]),
       (1,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -16498,7 +16500,7 @@ mission_templates = [
       (2,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
       (3,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
       (4,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -16643,7 +16645,7 @@ mission_templates = [
       (42,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(43,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
       (44,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(45,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
       (46,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(47,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       can_spawn_commoners,
       (ti_before_mission_start, 0, 0,[
@@ -16781,7 +16783,7 @@ mission_templates = [
     (30,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed, 12,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
     (1,mtef_team_0,af_override_horse,aif_start_alarmed,60,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     (0.5, 0, ti_once, [],[
@@ -16958,7 +16960,7 @@ mission_templates = [
       (24,mtef_visitor_source,af_override_horse,0,1,[]),
       (25,mtef_visitor_source,af_override_horse,0,1,[]),
       (26,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -17131,7 +17133,7 @@ mission_templates = [
       (28,mtef_visitor_source,af_override_horse,0,1,[]),
       (29,mtef_visitor_source,af_override_horse,0,1,[]),
       (30,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -17290,7 +17292,7 @@ mission_templates = [
       (28,mtef_visitor_source,af_override_horse,0,1,[]),
       (29,mtef_visitor_source,af_override_horse,0,1,[]),
       (30,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -17399,7 +17401,7 @@ mission_templates = [
     [
       (0,mtef_scene_source,af_override_horse|af_override_head,0,1,[]),
       (1,mtef_visitor_source,af_override_horse,0,1,[]),
-    ],  global_common_triggers +
+    ],
     [
 
       common_inventory_not_available,
@@ -17494,7 +17496,7 @@ mission_templates = [
       (48,mtef_visitor_source,af_override_horse,0,1,[]),
       (49,mtef_visitor_source,af_override_horse,0,1,[]),
       (50,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       can_spawn_commoners,
     improved_lightning,
@@ -17623,7 +17625,7 @@ mission_templates = [
     (17,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
     (18,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
     (19,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,2,[]),
-  ],  p_wetter + storms + global_common_triggers + vc_water +
+  ],  p_wetter + storms +  vc_water +
   [
     common_nobody_stalls,
 
@@ -17873,7 +17875,7 @@ mission_templates = [
     (34,mtef_visitor_source,af_override_horse,0,1,[]),
     (35,mtef_visitor_source,af_override_horse,0,1,[]),
     (36,mtef_scene_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     (ti_on_agent_spawn,0,0,[
       (store_current_scene, ":scn"),
@@ -18011,7 +18013,7 @@ mission_templates = [
     (10,mtef_visitor_source,af_override_horse,0,1,[]),
     (11,mtef_visitor_source,af_override_horse,0,1,[]),
     (12,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     improved_lightning,
     can_spawn_commoners,
@@ -18082,7 +18084,7 @@ mission_templates = [
       (14,mtef_visitor_source,af_override_horse,0,1,[]),
       (15,mtef_visitor_source,af_override_horse,0,1,[]),
 
-    ],  p_wetter + global_common_triggers +
+    ],  p_wetter +
     [
       can_spawn_commoners,
  common_inventory_not_available,
@@ -18293,7 +18295,7 @@ mission_templates = [
     (125,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (126,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (127,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-  ], global_common_triggers +
+  ],
   [
     (ti_before_mission_start, 0, 0, [],[
       (scene_set_day_time, 12),
@@ -18701,7 +18703,7 @@ mission_templates = [
       (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
       (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
       (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-    ],p_wetter + global_common_triggers +
+    ],p_wetter +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -18900,7 +18902,7 @@ mission_templates = [
     (58,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (59,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
     (60,mtef_visitor_source,af_override_horse,0,1,[]),#spectators
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -19110,7 +19112,7 @@ mission_templates = [
       (58,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
       (59,mtef_attackers|mtef_team_0,0,aif_start_alarmed,9,[]),
 
-     ], p_wetter + storms + global_common_triggers +
+     ], p_wetter + storms +
     [
       cannot_spawn_commoners,
         improved_lightning,
@@ -19306,7 +19308,7 @@ mission_templates = [
     (33,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     (34,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     (35,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -19384,7 +19386,7 @@ mission_templates = [
       (42,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(43,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
       (44,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(45,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
       (46,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),(47,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-    ], p_wetter + global_common_triggers +
+    ], p_wetter +
     [
       can_spawn_commoners,
       #can_spawn_commoners,
@@ -19464,7 +19466,7 @@ mission_templates = [
     (2, mtef_visitor_source|mtef_team_1, af_override_horse, 0, 1, []), #start enemy spectators
     (3, mtef_visitor_source|mtef_team_1, af_override_horse, 0, 1, []),
     (4, mtef_visitor_source|mtef_team_1, af_override_horse, 0, 1, []),
-  ], global_common_triggers +
+  ],
   [
     cannot_spawn_commoners,
     custom_commander_critical_strike,
@@ -19613,7 +19615,7 @@ mission_templates = [
   (24, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
   (25, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
   (26, mtef_visitor_source|mtef_team_0, af_override_everything, 0, 1, [itm_graves_simple_2,itm_roman_poor1]),
-], p_wetter + storms + global_common_triggers +
+], p_wetter + storms +
 [
   can_spawn_commoners,
   improved_lightning,
@@ -19664,7 +19666,7 @@ mission_templates = [
   "You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
     (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -19711,7 +19713,7 @@ mission_templates = [
   "You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, 0, 0, 1, []), #player start
     (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     ambient_scene_play_loop,
@@ -19733,7 +19735,7 @@ mission_templates = [
   "You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, 0, 0, 1, []), #player start
   ],
-  p_wetter + storms + global_common_triggers +
+  p_wetter + storms +
   [
     cannot_spawn_commoners,
     (0, 0, ti_once, [
@@ -19845,7 +19847,7 @@ mission_templates = [
   "You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []), #player start
     (1, mtef_visitor_source|mtef_team_1, af_override_horse, aif_start_alarmed, 1, []), #opponent start
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
 
@@ -19912,7 +19914,7 @@ mission_templates = [
 ("apostel_paul",0,-1,"You will fight a match in the holmgang.",[
     (0, mtef_scene_source|mtef_team_0, af_override_horse, 0, 1, []), #player start
     (1, mtef_visitor_source|mtef_team_0, af_override_horse, 0, 1, []), #opponent start
-  ], global_common_triggers +p_wetter+
+  ], p_wetter+
   [
     cannot_spawn_commoners,
     ambient_set_agents_for_sounds,
@@ -19985,7 +19987,7 @@ mission_templates = [
     (57,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[itm_roman_gladius]),
     (58,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[itm_roman_gladius]),
     (59,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[itm_roman_gladius]),
-  ], global_common_triggers +
+  ],
   [
     cannot_spawn_commoners,
     common_inventory_not_available,
@@ -20070,7 +20072,7 @@ mission_templates = [
     (1,mtef_visitor_source|mtef_team_1, af_override_horse,aif_start_alarmed,1,[]),
     (2,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed, 1,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-  ], global_common_triggers + p_wetter +
+  ],  p_wetter +
   [
     cannot_spawn_commoners,
     (ti_before_mission_start, 0, ti_once, [],[
@@ -20153,7 +20155,7 @@ mission_templates = [
       (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
       (4,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
 
-    ], global_common_triggers + p_wetter +
+    ],  p_wetter +
     [
       cannot_spawn_commoners,
       remove_banners,
@@ -20206,7 +20208,7 @@ mission_templates = [
       (9,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
       (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
 
-    ], global_common_triggers + p_wetter +
+    ],  p_wetter +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -20479,7 +20481,7 @@ mission_templates = [
       (36,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[]),
       (37,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[itm_caligea,itm_roman_gladius,itm_generic_poor1,itm_simple_hood_1]),
       (38,mtef_visitor_source|mtef_team_0,af_override_all,aif_start_alarmed,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -20524,7 +20526,7 @@ mission_templates = [
     (20,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
     (21,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[itm_knife]),
     (22,mtef_visitor_source|mtef_team_0,af_override_weapons,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -20636,7 +20638,7 @@ mission_templates = [
     (4,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
     (5,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
     (6,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -20719,7 +20721,7 @@ mission_templates = [
       (4,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
       (5,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
       (6,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-    ], p_wetter + global_common_triggers +
+    ], p_wetter +
     [
       cannot_spawn_commoners,
     improved_lightning,
@@ -20854,7 +20856,7 @@ mission_templates = [
       (2,mtef_visitor_source,af_override_weapons|af_override_horse,0,1,[]),
       (3,mtef_visitor_source,af_override_weapons|af_override_horse,0,1,[]),
       (4,mtef_visitor_source,af_override_weapons|af_override_horse,0,1,[]),
-    ], global_common_triggers +
+    ],
     [
       cannot_spawn_commoners,
     ###BEGIN THUNDER STORM
@@ -21025,7 +21027,7 @@ mission_templates = [
       (2,mtef_visitor_source,af_override_weapons|af_override_horse,0,1,[]),
       (3,mtef_visitor_source,af_override_weapons|af_override_horse,0,1,[]),
       (4,mtef_visitor_source,af_override_weapons|af_override_horse,0,1,[]),
-    ], global_common_triggers +
+    ],
     [
         cannot_spawn_commoners,
         (ti_before_mission_start, 0, 0, [],
@@ -21128,7 +21130,7 @@ mission_templates = [
 ("roman_even_fire", mtf_battle_mode,charge,
   "monasterio",[
     (0,mtef_visitor_source,af_override_weapons|af_override_horse,aif_start_alarmed,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
 
@@ -21308,7 +21310,7 @@ mission_templates = [
     (19, mtef_visitor_source|mtef_team_3, af_override_horse, 0, 1, []),
     (20, mtef_visitor_source|mtef_team_3, af_override_horse, 0, 1, []),
     (21, mtef_visitor_source|mtef_team_3, af_override_horse, 0, 1, []),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -21445,7 +21447,7 @@ mission_templates = [
     (38, mtef_team_1|mtef_visitor_source, 0, 0, 1, []),
     (39, mtef_team_1|mtef_visitor_source, 0, 0, 1, []),
     (40, mtef_team_1|mtef_visitor_source, 0, 0, 1, []),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -21607,7 +21609,7 @@ mission_templates = [
       (55, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_weapons, 0, 1, []), #opponent start
       (56, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_weapons, 0, 1, []), #opponent start
 
-     ], global_common_triggers + vc_menu +
+     ],  vc_menu +
      [
       cannot_spawn_commoners,
       (ti_inventory_key_pressed, 0, 0,[
@@ -21865,7 +21867,7 @@ mission_templates = [
       (63, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_weapons, 0, 1, []), #opponent start
       (64, mtef_visitor_source|mtef_team_0, af_override_horse|af_override_weapons, 0, 1, []), #opponent start
 
-    ], global_common_triggers +
+    ],
     [
       cannot_spawn_commoners,
   (ti_before_mission_start, 0, 0, [ ],
@@ -22114,7 +22116,7 @@ mission_templates = [
     (75, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (76, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (77, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
-  ], global_common_triggers + p_wetter +
+  ],  p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -22773,7 +22775,7 @@ mission_templates = [
     (75, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (76, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (77, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
-  ], global_common_triggers +
+  ],
    p_wetter +[
     cannot_spawn_commoners,
    improved_lightning,
@@ -23081,7 +23083,7 @@ mission_templates = [
     (75, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (76, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (77, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -23198,7 +23200,7 @@ mission_templates = [
     (13, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
     (14, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
     (15, mtef_team_0|mtef_visitor_source, af_override_horse, 0, 1, []),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -23291,7 +23293,7 @@ mission_templates = [
     (39, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_3]),
     (40, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_4]),
     (41, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, [itm_roman_gladius]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -23380,7 +23382,7 @@ mission_templates = [
     (47, mtef_team_0|mtef_visitor_source, af_override_head|af_override_horse|af_override_weapons|af_override_body, 0, 1, [itm_tutorial_sword,itm_arena_shield_red,itm_practice_javelin_amo4,itm_military_tunic_1]),
     (48, mtef_team_1|mtef_visitor_source, af_override_head|af_override_horse|af_override_weapons|af_override_body, 0, 1, [itm_tutorial_sword,itm_arena_shield_blue,itm_practice_javelin_amo4,itm_military_tunic_2]),
     (49, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, []),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -23487,7 +23489,7 @@ mission_templates = [
     (44, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_2]),#special recruit
     (45, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_3]),#recruit
     (46, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_4]),#recruit
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     (ti_before_mission_start, 0, 0, [],[
       (scene_set_day_time, 9),
@@ -23536,7 +23538,7 @@ mission_templates = [
     (31,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_graves_simple_2,itm_military_tunic_3]),
     (32,mtef_visitor_source|mtef_team_4,af_override_everything,aif_start_alarmed,1,[itm_graves_simple_2,itm_military_tunic_2]),
     (33,mtef_visitor_source|mtef_team_3,af_override_everything,aif_start_alarmed,1,[itm_graves_simple_2,itm_military_tunic_1]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -23673,7 +23675,7 @@ mission_templates = [
     (40, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_2]),
     (41, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_4]),
     (42, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, [itm_graves_simple_2,itm_military_tunic_1]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23768,7 +23770,7 @@ mission_templates = [
     (16, mtef_team_0|mtef_visitor_source, af_castle_lord, 0, 1, []),
     (17, mtef_team_0|mtef_visitor_source, af_castle_lord, 0, 1, []),
     (18, mtef_team_0|mtef_visitor_source, af_castle_lord, 0, 1, []),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23799,7 +23801,7 @@ mission_templates = [
     (0, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, [itm_roman_gladius]),
     (1, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, [itm_roman_gladius]),
     (2, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, [itm_dagger]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23890,7 +23892,7 @@ mission_templates = [
     (10, mtef_team_2|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
     (11, mtef_team_2|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
     (12, mtef_team_2|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
-  ], p_wetter + global_common_triggers  +
+  ], p_wetter  +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -23995,7 +23997,7 @@ mission_templates = [
     (10, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
     (11, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
     (12, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -24022,7 +24024,7 @@ mission_templates = [
     (2, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head|af_override_weapons, 0, 1, []),
     (3, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head, 0, 1, []),
     (4, mtef_team_0|mtef_visitor_source, af_override_horse|af_override_head, 0, 1, []),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -24055,7 +24057,7 @@ mission_templates = [
     (8,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ],p_wetter+ global_common_triggers +
+  ],p_wetter+
   [
     improved_lightning,
     cannot_spawn_commoners,
@@ -24238,7 +24240,7 @@ mission_templates = [
       (18,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_knife,itm_wooden_stick,itm_pitch_fork]),
       (19,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_old_gladius_1,itm_knife,itm_wooden_stick,itm_pitch_fork]),
       (20,mtef_visitor_source|mtef_team_1,af_override_weapons,0,1,[itm_dagger,itm_old_gladius_1,itm_knife,itm_wooden_stick,itm_pitch_fork]),
-  ],p_wetter+ global_common_triggers +
+  ],p_wetter+
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -24336,7 +24338,7 @@ mission_templates = [
       (18,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
       (19,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
       (20,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
-    ],p_wetter+ global_common_triggers +
+    ],p_wetter+
     [
       cannot_spawn_commoners,
     remove_banners,
@@ -24414,7 +24416,7 @@ mission_templates = [
       (2,mtef_visitor_source|mtef_team_2,af_override_horse,0, 1,[]),
       (3,mtef_visitor_source|mtef_team_3,af_override_horse,0,1,[]),
     ],
-    p_wetter+ global_common_triggers +
+    p_wetter+
     [
       cannot_spawn_commoners,
         remove_banners,
@@ -24557,7 +24559,7 @@ mission_templates = [
     (5,mtef_visitor_source,af_override_horse,0,1,[]),#unused
     (6,mtef_visitor_source,af_override_horse,0,1,[]),#unused
     (7,mtef_visitor_source,af_override_horse,0,1,[]),#unused
-  ], p_wetter + # global_common_triggers + # not needed and conflicts
+  ], p_wetter + #  # not needed and conflicts
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -24714,7 +24716,7 @@ mission_templates = [
     (8,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
     (9,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
     (10,mtef_visitor_source|mtef_team_0, 0,aif_start_alarmed,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -24867,7 +24869,7 @@ mission_templates = [
       (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
       (10,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
       (11,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,12,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -24938,7 +24940,7 @@ mission_templates = [
     (7,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),
     (8,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),
     (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     improved_lightning,
     cannot_spawn_commoners,
@@ -25020,7 +25022,7 @@ mission_templates = [
     (7,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,0,[]),
     (8,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,0,[itm_knife,itm_butchering_knife]),
     (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,0,[itm_staff,itm_knife,itm_butchering_knife]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -25091,7 +25093,7 @@ mission_templates = [
     (2,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
     (3,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
     (4,mtef_visitor_source|mtef_team_1,0,aif_start_alarmed,0,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -25257,7 +25259,7 @@ mission_templates = [
 ("hunting", mtf_battle_mode, 0,
   "You go hunting.",[
       (0,mtef_leader_only, af_override_horse|af_override_head, 0,1,[]),		#|af_override_weapons|af_override_head	#[itm_practice_bow_2,itm_barbed_arrows,itm_practice_lance,itm_practice_dagger]
-  ], p_wetter + storms + creeping + global_common_triggers +
+  ], p_wetter + storms + creeping +
   [
     improved_lightning,
     cannot_spawn_commoners,
@@ -25576,7 +25578,7 @@ mission_templates = [
   "You go hunting.",[
     (0,mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head|af_override_weapons, aif_start_alarmed,1,[itm_throwing_spears,itm_jarid,itm_throwing_spears,itm_boar_spear]),
     (1,mtef_visitor_source|mtef_team_1, 0, aif_start_alarmed,1,[]),
-  ], p_wetter + creeping + storms + global_common_triggers +
+  ], p_wetter + creeping + storms +
   [
     improved_lightning,
     cannot_spawn_commoners,
@@ -25973,7 +25975,7 @@ mission_templates = [
     (27,mtef_visitor_source,af_override_horse,aif_start_alarmed,0,[]),
     (28,mtef_visitor_source,af_override_horse,aif_start_alarmed,0,[]),
     (29,mtef_visitor_source,af_override_horse,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -26306,7 +26308,7 @@ mission_templates = [
     (0,mtef_ally_party|mtef_team_0,0,aif_start_alarmed,0,[]),
     (4,mtef_visitor_source,0,aif_start_alarmed,65,[]),
     (4,mtef_visitor_source,0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -26712,7 +26714,7 @@ mission_templates = [
     (43,mtef_visitor_source,af_override_horse,0,1,[]),
     (44,mtef_visitor_source,af_override_horse,0,1,[]),
     (45,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     improved_lightning,
     can_spawn_commoners,
@@ -26814,7 +26816,7 @@ mission_templates = [
     (9,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (11,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     (0, 0, 0,[
@@ -26918,7 +26920,7 @@ mission_templates = [
     (9,mtef_visitor_source,af_override_horse,0,1,[]),
     (10,mtef_visitor_source,af_override_horse,0,1,[]),
     (11,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     (0, 0, 0,[
@@ -27001,7 +27003,7 @@ mission_templates = [
   "You visit the caves.",[
     (0,mtef_visitor_source,0,0,1,[]),
     (1,mtef_visitor_source,0,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [ improved_lightning,
     cannot_spawn_commoners,
     (ti_tab_pressed, 0, 0,[
@@ -27088,7 +27090,7 @@ mission_templates = [
     (70,mtef_visitor_source,af_override_horse,0,1,[]),
     (71,mtef_visitor_source,af_override_horse,0,1,[]),
     (72,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -27731,7 +27733,7 @@ mission_templates = [
     (0,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (1,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (2,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     dedal_shield_bash,
@@ -27837,7 +27839,7 @@ mission_templates = [
     (20,mtef_visitor_source,af_override_horse,0,1,[]),
     (21,mtef_visitor_source,af_override_body|af_override_foot,0,1,[itm_new_dress_2,itm_female_caligea_gold]),
     (22,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -27940,7 +27942,7 @@ mission_templates = [
     (10,mtef_visitor_source|mtef_team_0,0,0,1,[]),
     (11,mtef_scene_source|mtef_team_0,af_override_horse,0,1,[]),
     (12,mtef_visitor_source|mtef_team_0,0,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     (0, 0, 0,[
@@ -28154,7 +28156,7 @@ mission_templates = [
     (28,mtef_visitor_source,af_override_horse,0,1,[]),
     (29,mtef_visitor_source,af_override_horse,0,1,[]),
     (30,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     remove_banners,
@@ -28284,7 +28286,7 @@ mission_templates = [
     (50,mtef_visitor_source,af_override_horse,0,1,[]),
     (51,mtef_visitor_source,af_override_horse,0,1,[]),
     (52,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     improved_lightning,
@@ -28471,7 +28473,7 @@ mission_templates = [
     (2,mtef_visitor_source,af_override_horse,0,1,[]),
     (3,mtef_visitor_source,af_override_horse,0,1,[]),
     (4,mtef_visitor_source,af_override_horse,0,1,[]),
-    ], p_wetter + global_common_triggers +
+    ], p_wetter +
     [
       cannot_spawn_commoners,
       improved_lightning,
@@ -28508,7 +28510,7 @@ mission_templates = [
     (5,mtef_visitor_source,af_override_everything,0,1,[]),#unused
     (6,mtef_visitor_source,af_override_everything,0,1,[]),#unused
     (7,mtef_visitor_source,af_override_everything,0,1,[]),#unused
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     (ti_on_agent_spawn,0,0,[
@@ -28568,7 +28570,7 @@ mission_templates = [
     (1,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_seiden_dress,itm_female_crown]),#
     (2,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
     (3,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_seiden_dress,itm_female_crown]),#
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     (0,0,ti_once, [],[
@@ -28608,7 +28610,7 @@ mission_templates = [
     (0,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),#player
     (1,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_seiden_dress,itm_female_crown]),#
     (2,mtef_visitor_source,0,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     (0,0,ti_once, [],[
@@ -28651,7 +28653,7 @@ mission_templates = [
     (10,mtef_visitor_source,af_override_horse,0,1,[]),
     (11,mtef_visitor_source,af_override_horse,0,1,[]),
     (12,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -28783,7 +28785,7 @@ mission_templates = [
     (9,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     (10,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     (11,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -29219,7 +29221,7 @@ mission_templates = [
     (34,mtef_visitor_source|mtef_team_2,af_override_horse,aif_start_alarmed,1,[]),
     (35,mtef_visitor_source|mtef_team_2,af_override_everything|af_override_foot,0,1,[itm_female_caligea_gold,itm_roman_femal_rich3_new,itm_flower_crown]),
     (36,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     cannot_spawn_commoners,
     dedal_shield_bash,
@@ -29541,7 +29543,7 @@ mission_templates = [
     (8,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ],p_wetter + global_common_triggers +
+  ],p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -29697,7 +29699,7 @@ mission_templates = [
     (58,mtef_visitor_source,0,0,1,[]),
     (59,mtef_visitor_source,0,0,1,[]),
 
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     remove_banners,
 
@@ -29936,7 +29938,7 @@ mission_templates = [
     (2,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
     (3,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
     (4,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -30097,7 +30099,7 @@ mission_templates = [
     (45,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
     (46,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
     (47,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     common_siege_attacker_do_not_stall,
     cannot_spawn_commoners,
@@ -30286,7 +30288,7 @@ mission_templates = [
     (45,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
     (46,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
     (47,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     common_siege_attacker_do_not_stall,
     cannot_spawn_commoners,
@@ -30675,7 +30677,7 @@ mission_templates = [
     (43,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
     (44,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
     (45,mtef_visitor_source|mtef_team_1, 0,aif_start_alarmed,0,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     (0, 0, ti_once, [],[# Let it burn
@@ -30817,7 +30819,7 @@ mission_templates = [
     (28,mtef_visitor_source,0,0,1,[]),#spectators
     (29,mtef_visitor_source,0,0,1,[]),#spectators
     (30,mtef_visitor_source,0,0,1,[]),#spectators
-  ],p_wetter + global_common_triggers +
+  ],p_wetter +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -31057,7 +31059,7 @@ mission_templates = [
     (28,mtef_visitor_source,0,0,1,[]),#
     (29,mtef_visitor_source,0,0,1,[]),#
     (30,mtef_visitor_source,0,0,1,[]),
-    ],p_wetter + global_common_triggers +
+    ],p_wetter +
     [
     improved_lightning,
     cannot_spawn_commoners,
@@ -31254,7 +31256,7 @@ mission_templates = [
     (9,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (11,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     common_maritime_drowning,
     (1, 0, 0,[
@@ -31608,7 +31610,7 @@ mission_templates = [
     (44,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (45,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (46,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
-    ], p_wetter + global_common_triggers +
+    ], p_wetter +
     [
       cannot_spawn_commoners,
     (ti_before_mission_start, 0, 0, [],
@@ -31655,7 +31657,7 @@ mission_templates = [
       (0,mtef_visitor_source,af_override_horse,0,1,[]),
       (1,mtef_visitor_source,af_override_all,0,1,[itm_caligea,itm_roman_lupa_dress_2,itm_cloak_4]),
       (2,mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
         improved_lightning,
@@ -31712,7 +31714,7 @@ mission_templates = [
       (0,mtef_visitor_source,af_override_horse|af_override_weapons|af_override_head,0,1,[]),
       (1,mtef_visitor_source,af_override_all,0,1,[itm_caligea,itm_roman_lupa_dress_2,itm_cloak_4]),
       (2,mtef_visitor_source,af_override_all,0,1,[itm_caligea,itm_roman_lupa_dress_2]),
-    ], p_wetter + storms + global_common_triggers +
+    ], p_wetter + storms +
     [
       cannot_spawn_commoners,
         improved_lightning,
@@ -31794,7 +31796,7 @@ mission_templates = [
     (4,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_poor2]),
     (5,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_lupa_dress_2]),
     (6,mtef_visitor_source,af_override_everything,0,1,[itm_caligea,itm_roman_poor2]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     cannot_spawn_commoners,
     improved_lightning,
@@ -31894,7 +31896,7 @@ mission_templates = [
   "Test.",[
     (0,mtef_visitor_source,af_override_horse,0,1,[]),
     (1,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], global_common_triggers +
+  ],
   [
     cannot_spawn_commoners,
 
@@ -31990,7 +31992,7 @@ mission_templates = [
     (27,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
     (28,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
     (29,mtef_visitor_source|mtef_team_0,af_castle_lord,0,1,[]),
-  ], global_common_triggers +
+  ],
   [
     (0, 0, ti_once, [],[
       (call_script, "script_music_set_situation_with_culture", mtf_sit_thermae),
@@ -32029,7 +32031,7 @@ mission_templates = [
     (7,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (8,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
-  ], global_common_triggers +
+  ],
   [
     (0, 0, ti_once, [],[
       (mission_cam_set_screen_color, 0xFF000000),
@@ -32102,7 +32104,7 @@ mission_templates = [
     (9,mtef_visitor_source,af_override_horse,0,1,[]),
     (10,mtef_visitor_source,af_override_horse,0,1,[]),
     (11,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     (ti_before_mission_start, 0, 0, [
       (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 10),
@@ -32387,7 +32389,7 @@ mission_templates = [
     (3,mtef_visitor_source,af_override_horse,0,1,[]),
     (4,mtef_visitor_source,af_override_horse,0,1,[]),
     (5,mtef_visitor_source,af_override_horse,0,1,[]),
-  ], p_wetter + storms + global_common_triggers +
+  ], p_wetter + storms +
   [
     (ti_on_agent_killed_or_wounded, 0, 0, [],[
       (store_trigger_param_1, ":dead_agent_no"),
@@ -32430,7 +32432,7 @@ mission_templates = [
     (3,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
     (4,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
     (5,mtef_visitor_source,af_override_horse|af_override_head|af_override_weapons,0,1,[]),
-  ], global_common_triggers +
+  ],
   [
     cannot_spawn_commoners,
     (0, 0, ti_once, [],[
@@ -32451,7 +32453,7 @@ mission_templates = [
   "Test.",[
     (0,mtef_scene_source,0,0,1,[]),
     (1,mtef_scene_source,0,0,1,[]),
-  ], global_common_triggers +
+  ],
   [
     cannot_spawn_commoners,
     (ti_before_mission_start, 0, 0, [],[
@@ -32507,7 +32509,7 @@ mission_templates = [
     (23,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_female_slave1,itm_flower_crown]),
     (24,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_female_slave2,itm_flower_crown]),
     (25,mtef_visitor_source,af_override_everything,0,1,[itm_nothing_legs,itm_female_slave3,itm_flower_crown]),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     (0, 0, ti_once, [],[
@@ -32648,7 +32650,7 @@ mission_templates = [
     (77, mtef_visitor_source, 0, 0, 1, []),
     (78, mtef_visitor_source, 0, 0, 1, []),
     (79, mtef_visitor_source, 0, 0, 1, []),
-  ], p_wetter + global_common_triggers +
+  ], p_wetter +
   [
     can_spawn_commoners,
     (0,0,0,[
@@ -33751,7 +33753,7 @@ mission_templates = [
     (47,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
     (48,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
     (49,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
-  ], global_common_triggers + p_wetter +
+  ],  p_wetter +
   [
     common_inventory_not_available,
     cannot_spawn_commoners,
@@ -33843,3 +33845,28 @@ mission_templates = [
 		]),
 ]),
 ]###end of file
+
+## add common triggers to all missions (only when running under the compiler)
+import __main__
+import os
+# When this file is imported by the W.R.E.C.K. compiler, __main__.__file__ may be an
+# absolute path. Use basename to detect the compiler invocation reliably.
+if os.path.basename(getattr(__main__, '__file__', '')) == 'compile.py':
+  # print("Added global common triggers to mission templates")
+  for mission in mission_templates:
+    # mission[5] is expected to be the triggers list for the mission template.
+    if len(mission) <= 5:
+      # unexpected shape, skip safely
+      continue
+    trg_list = mission[5]
+    # If global_common_triggers is a list/tuple of triggers, extend the mission list.
+    # If it's a single trigger (tuple), append it.
+    if isinstance(global_common_triggers, (list, tuple)):
+      # If it's a sequence of triggers (list of tuples), extend; but if it's a single
+      # trigger represented as a tuple of scalars, append it instead.
+      if len(global_common_triggers) > 0 and isinstance(global_common_triggers[0], (list, tuple)):
+        trg_list.extend(global_common_triggers)
+      else:
+        trg_list.append(global_common_triggers)
+    else:
+      trg_list.append(global_common_triggers)

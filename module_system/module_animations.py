@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_common import *
 from header_animations import *
 #from compiler import *

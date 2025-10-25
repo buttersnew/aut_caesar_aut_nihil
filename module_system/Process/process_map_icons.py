@@ -1,9 +1,12 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import string
 from module_info import *
 from module_map_icons import *
 
-from process_common import *
-from process_operations import *
+from .process_common import *
+from .process_operations import *
+from six.moves import range
 
 def save_map_icons(variable_list,variable_uses,tag_uses,quick_strings):
   ofile = open(export_dir + "map_icons.txt","w")
@@ -25,11 +28,11 @@ def save_map_icons(variable_list,variable_uses,tag_uses,quick_strings):
 
 def save_python_header():
   ofile = open("./ID_map_icons.py","w")
-  for i_map_icon in xrange(len(map_icons)):
+  for i_map_icon in range(len(map_icons)):
     ofile.write("icon_%s = %d\n"%(map_icons[i_map_icon][0],i_map_icon))
   ofile.close()
 
-print "Exporting map icons..."
+print("Exporting map icons...")
 save_python_header()
 variable_uses = []
 variables = load_variables(export_dir,variable_uses)

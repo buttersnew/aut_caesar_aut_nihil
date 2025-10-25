@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from header_common import *
 from IDs.ID_animations import *
 from header_mission_templates import *
@@ -50,25 +51,22 @@ tableaus = [
     (position_set_z, pos1, 300),
 ]),
 
-  ("game_inventory_window", 0, "tableau_with_transparency", 1024, 1024, 0, 0, 180, 270,
-   [(assign, "$tableau_active", 1),
-    (store_script_param, ":troop_no", 1),
-    (cur_tableau_set_background_color, 0xFF888888),
-    (cur_tableau_set_ambient_light, 10,11,15),
-    (set_fixed_point_multiplier, 100),
-    (cur_tableau_set_camera_parameters, 0, 40, 40, 0, 100000),
-
-    (init_position, pos1),
-    (position_set_z, pos1, 100),
-    (position_set_x, pos1, -20),
-    (position_set_y, pos1, -20),
-    (cur_tableau_add_tableau_mesh, "tableau_troop_inventory_color", ":troop_no", pos1, 0, 0),
-    (position_set_z, pos1, 200),
-    (cur_tableau_add_tableau_mesh, "tableau_troop_inventory_alpha_mask", ":troop_no", pos1, 0, 0),
-    (position_set_z, pos1, 300),
-
-
-       ]),
+("game_inventory_window", 0, "tableau_with_transparency", 1024, 1024, 0, 0, 180, 270,[
+  (assign, "$tableau_active", 1),
+  (store_script_param, ":troop_no", 1),
+  (cur_tableau_set_background_color, 0xFF888888),
+  (cur_tableau_set_ambient_light, 10,11,15),
+  (set_fixed_point_multiplier, 100),
+  (cur_tableau_set_camera_parameters, 0, 40, 40, 0, 100000),
+  (init_position, pos1),
+  (position_set_z, pos1, 100),
+  (position_set_x, pos1, -20),
+  (position_set_y, pos1, -20),
+  (cur_tableau_add_tableau_mesh, "tableau_troop_inventory_color", ":troop_no", pos1, 0, 0),
+  (position_set_z, pos1, 200),
+  (cur_tableau_add_tableau_mesh, "tableau_troop_inventory_alpha_mask", ":troop_no", pos1, 0, 0),
+  (position_set_z, pos1, 300),
+]),
 
   ("game_profile_window", 0, "tableau_with_transparency", 1024, 1024, 0, 0, 320, 480, [
 
@@ -96,12 +94,9 @@ tableaus = [
     (cur_tableau_add_tableau_mesh, "tableau_troop_profile_color", ":troop_no", pos1, 0, 0),
     (position_set_z, pos1, 200),
     (cur_tableau_add_tableau_mesh, "tableau_troop_profile_alpha_mask", ":troop_no", pos1, 0, 0),
+]),
 
-
-    ]),
-
-  ("game_party_window", 0, "tableau_with_transparency", 1024, 1024, 0, 0, 300, 300,
-   [
+("game_party_window", 0, "tableau_with_transparency", 1024, 1024, 0, 0, 300, 300,[
     (assign, "$tableau_active", 1),
     (store_script_param, ":troop_no", 1),
     (cur_tableau_set_background_color, 0xFF888888),
@@ -117,9 +112,7 @@ tableaus = [
     (position_set_z, pos1, 200),
     (cur_tableau_add_tableau_mesh, "tableau_troop_party_alpha_mask", ":troop_no", pos1, 0, 0),
     (position_set_z, pos1, 300),
-
-
-       ]),
+]),
 
   ("game_troop_label_banner", 0, "tableau_with_transparency", 256, 256, -128, 0, 128, 256,[
     (assign, "$tableau_active", 1),
@@ -141,25 +134,21 @@ tableaus = [
     (try_end),
   ]),
 
-  ("troop_tree_pic", 0, "tableau_with_transparency", 1024, 1024, 0, 0, Troop_Tree_Tableau_Width, Troop_Tree_Tableau_Height, [
-   (assign, "$tableau_active", 1),
-    (store_script_param, ":troop_no", 1),
-    (cur_tableau_set_background_color, 0x00888888),
-    (cur_tableau_set_ambient_light, 10,11,15),
-    (call_script, "script_add_troop_to_cur_tableau_for_party", ":troop_no"),
+("troop_tree_pic", 0, "tableau_with_transparency", 1024, 1024, 0, 0, Troop_Tree_Tableau_Width, Troop_Tree_Tableau_Height, [
+  (assign, "$tableau_active", 1),
+  (store_script_param, ":troop_no", 1),
+  (cur_tableau_set_background_color, 0x00888888),
+  (cur_tableau_set_ambient_light, 10,11,15),
+  (call_script, "script_add_troop_to_cur_tableau_for_party", ":troop_no"),
+]),
 
-
-  ]),
-  ("troop_detail_dummy_pic", 0, "tableau_with_transparency", 1024, 1024, 0, 0, Troop_Tree_Tableau_Width, Troop_Tree_Tableau_Height, [
-
-   (assign, "$tableau_active", 1),
-    (store_script_param, ":troop_no", 1),
-    (cur_tableau_set_background_color, 0x00888888),
-    (cur_tableau_set_ambient_light, 10,11,15),
-    (call_script, "script_add_troop_to_cur_tableau_for_troop_detail_dummy", ":troop_no"),
-
-
-  ]),
+("troop_detail_dummy_pic", 0, "tableau_with_transparency", 1024, 1024, 0, 0, Troop_Tree_Tableau_Width, Troop_Tree_Tableau_Height, [
+  (assign, "$tableau_active", 1),
+  (store_script_param, ":troop_no", 1),
+  (cur_tableau_set_background_color, 0x00888888),
+  (cur_tableau_set_ambient_light, 10,11,15),
+  (call_script, "script_add_troop_to_cur_tableau_for_troop_detail_dummy", ":troop_no"),
+]),
 
   ("troop_note_color", 0, "mat_troop_portrait_color", 1024, 1024, 0, 0, 400, 400,
    [ (assign, "$tableau_active", 1),

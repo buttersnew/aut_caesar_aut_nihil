@@ -1,4 +1,5 @@
 # -*- coding: cp1254 -*-
+from __future__ import absolute_import
 from header_game_menus import *
 from header_parties import *
 from header_items import *
@@ -9,6 +10,7 @@ from header_terrain_types import *
 #SB : optional menu toggles
 from header_triggers import key_left_shift, key_right_shift
 from module_constants import *
+from six.moves import range
 
 #from compiler import *
 ####################################################################################################################

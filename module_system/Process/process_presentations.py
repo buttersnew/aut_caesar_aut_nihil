@@ -1,11 +1,14 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import string
 
 from module_info import *
 from module_presentations import *
 from IDs.ID_meshes import *
 
-from process_common import *
-from process_operations import *
+from .process_common import *
+from .process_operations import *
+from six.moves import range
 
 def save_presentations(variable_list,variable_uses,tag_uses,quick_strings):
   ofile = open(export_dir + "presentations.txt","w")
@@ -20,11 +23,11 @@ def save_presentations(variable_list,variable_uses,tag_uses,quick_strings):
 
 def save_python_header():
   file = open("./ID_presentations.py","w")
-  for i_presentation in xrange(len(presentations)):
+  for i_presentation in range(len(presentations)):
     file.write("prsnt_%s = %d\n"%(presentations[i_presentation][0],i_presentation))
   file.close()
 
-print "Exporting presentations..."
+print("Exporting presentations...")
 save_python_header()
 variable_uses = []
 variables = load_variables(export_dir,variable_uses)

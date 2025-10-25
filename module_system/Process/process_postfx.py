@@ -1,10 +1,13 @@
+from __future__ import absolute_import
+from __future__ import print_function
 from header_common import *
 from module_info import *
 from module_postfx import *
+from six.moves import range
 
 def write_python_header(postfx_params_list):
   file = open("./ID_postfx_params.py","w")
-  for i_postfx_param in xrange(len(postfx_params_list)):
+  for i_postfx_param in range(len(postfx_params_list)):
     file.write("pfx_%s = %d\n"%(postfx_params_list[i_postfx_param][0],i_postfx_param))
   file.write("\n\n")
   file.close()
@@ -23,6 +26,6 @@ def write_postfx_params(postfx_params_list):
     ofile.write("  %f %f %f %f\n"%(params_list3[0], params_list3[1], params_list3[2], params_list3[3]))
   ofile.close()
 
-print "Exporting postfx_params..."
+print("Exporting postfx_params...")
 write_postfx_params(postfx_params)
 write_python_header(postfx_params)

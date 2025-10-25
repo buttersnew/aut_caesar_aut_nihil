@@ -1,6 +1,8 @@
 #import string
 #import types
 
+from __future__ import absolute_import
+from __future__ import print_function
 from module_info import *
 from module_triggers import *
 from module_dialogs import *
@@ -8,8 +10,9 @@ from module_simple_triggers import *
 from module_presentations import *
 from module_variables import *
 
-from process_common import *
-from process_operations import *
+from .process_common import *
+from .process_operations import *
+from six.moves import range
 
 
 
@@ -22,16 +25,16 @@ def compile_all_global_vars(variable_list,variable_uses, triggers, sentences, ga
     try:
 	  add_variable(varb, variable_list, variable_uses)
     except:
-      print "Error in variable:"
-      print variable
-  
+      print("Error in variable:")
+      print(variable)
+
   for trigger in triggers:
     try:
       compile_global_vars(trigger[3], variable_list,variable_uses),
       compile_global_vars(trigger[4], variable_list,variable_uses),
     except:
-      print "Error in trigger:"
-      print trigger
+      print("Error in trigger:")
+      print(trigger)
 
   for scene_prop in scene_props:
     try:
@@ -39,16 +42,16 @@ def compile_all_global_vars(variable_list,variable_uses, triggers, sentences, ga
       for sp_trigger in sp_triggers:
         compile_global_vars(sp_trigger[1], variable_list,variable_uses)
     except:
-      print "Error in scene prop:"
-      print scene_prop
-      
+      print("Error in scene prop:")
+      print(scene_prop)
+
   for sentence in sentences:
     try:
       compile_global_vars(sentence[2], variable_list,variable_uses),
       compile_global_vars(sentence[5], variable_list,variable_uses),
     except:
-      print "Error in dialog line:"
-      print sentence
+      print("Error in dialog line:")
+      print(sentence)
 
   for game_menu in game_menus:
     try:
@@ -58,8 +61,8 @@ def compile_all_global_vars(variable_list,variable_uses, triggers, sentences, ga
         compile_global_vars(menu_item[1], variable_list,variable_uses)
         compile_global_vars(menu_item[3], variable_list,variable_uses)
     except:
-      print "Error in game menu:"
-      print game_menu
+      print("Error in game menu:")
+      print(game_menu)
 
   for mission_template in mission_templates:
     try:
@@ -68,8 +71,8 @@ def compile_all_global_vars(variable_list,variable_uses, triggers, sentences, ga
         compile_global_vars(mt_trigger[3], variable_list,variable_uses)
         compile_global_vars(mt_trigger[4], variable_list,variable_uses)
     except:
-      print "Error in mission template:"
-      print mission_template
+      print("Error in mission template:")
+      print(mission_template)
 
   for presentation in presentations:
     try:
@@ -77,10 +80,10 @@ def compile_all_global_vars(variable_list,variable_uses, triggers, sentences, ga
       for prsnt_trigger in prsnt_triggers:
         compile_global_vars(prsnt_trigger[1], variable_list,variable_uses)
     except:
-      print "Error in presentation:"
-      print presentation
+      print("Error in presentation:")
+      print(presentation)
 
-  for i_script in xrange(len(scripts)):
+  for i_script in range(len(scripts)):
     try:
       func = scripts[i_script]
       if (type(func[1]) == list_type):
@@ -88,18 +91,18 @@ def compile_all_global_vars(variable_list,variable_uses, triggers, sentences, ga
       else:
         compile_global_vars(func[2], variable_list,variable_uses)
     except:
-      print "Error in script:"
-      print func
+      print("Error in script:")
+      print(func)
 
   for simple_trigger in simple_triggers:
     try:
       compile_global_vars(simple_trigger[1]  , variable_list,variable_uses)
     except:
-      print "Error in simple trigger:"
-      print simple_trigger
+      print("Error in simple trigger:")
+      print(simple_trigger)
 
 
-print "Compiling all global variables..."
+print("Compiling all global variables...")
 variable_uses = []
 variables = load_variables(export_dir, variable_uses)
 compile_all_global_vars(variables, variable_uses,triggers, dialogs, game_menus, mission_templates, scripts, simple_triggers)

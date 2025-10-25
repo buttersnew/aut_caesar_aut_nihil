@@ -1,4 +1,5 @@
 # -*- coding: utf8 -*-
+from __future__ import absolute_import
 from module_constants import *
 from IDs.ID_troops import *
 from IDs.ID_party_templates import *
@@ -20152,6 +20153,27 @@ dialogs =[
 
 [trp_fortuna|plyr, "fortuna",[
 ],"Nothing", "close_window",[
+]],
+
+[trp_fortuna|plyr|repeat_for_100, "fortuna",[
+  (store_repeat_object, ":scene"),
+  (store_add, reg40, "scn_north_africa_sudan_1", ":scene"),
+  (is_between, reg40, "scn_north_africa_sudan_1", "scn_river_battle_north_africa"),
+  (scene_get_slot, ":visit", reg40, slot_scene_visited),
+  (try_begin),
+    (ge, ":visit", 1),
+    (str_store_string, s30, "@visited"),
+  (else_try),
+    (str_store_string, s30, "@not visited"),
+  (try_end),
+ ],"Sudan Scene {reg40} ({s30}) ",
+ "close_window",[
+  (store_repeat_object, ":scene"),
+  (store_add, reg40, "scn_north_africa_sudan_1", ":scene"),
+  (scene_set_slot, reg40, slot_scene_visited, 1),
+	(jump_to_scene, reg40),
+  (set_jump_mission,"mt_ai_training"),
+	(change_screen_mission),
 ]],
 
 [trp_fortuna|plyr|repeat_for_100, "fortuna",[
@@ -81373,7 +81395,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (assign, "$g_leave_encounter",1),
 ]],
 
-[anyone,"hired_aux",[], "Good. We are at your service from now on.",
+[anyone,"hired_aux",[
+], "Good. We are at your service from now on.",
 "close_window",[
   (call_script, "script_party_add_party", "p_main_party", "$g_encountered_party"),
   (party_detach, "$g_encountered_party"),
@@ -81398,7 +81421,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (assign, "$g_leave_encounter", 1),
 ]],
 
-[anyone|plyr,"hire",[], "This present shall be a sign of my friendship to your tribe.",
+[anyone|plyr,"hire",[
+], "This present shall be a sign of my friendship to your tribe.",
 "hire2",[
 ]],
 

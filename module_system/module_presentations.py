@@ -1,4 +1,5 @@
 # -*- coding: cp1254 -*-
+from __future__ import absolute_import
 import string
 from header_common import *
 from header_presentations import *
@@ -17957,7 +17958,7 @@ presentations = presentations_wse2 + [
       (overlay_set_area_size, "$g_presentation_obj_bugdet_report_container", pos1),
       (set_container_overlay, "$g_presentation_obj_bugdet_report_container"),
 
-      (try_for_range, ":region", 1, region_mountain_europe_bohemia + 1),
+      (try_for_range, ":region", 1, region_africa_green + 1),
         (store_add, ":text_x", ":pos_x", 40),
         (store_add, ":text_y", ":pos_y", 12),
         (store_add, ":region_string", "str_region_strings_begin", ":region"),

@@ -1,11 +1,14 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import string
 import types
 
 from module_info import *
 from module_mission_templates import *
 
-from process_common import *
-from process_operations import *
+from .process_common import *
+from .process_operations import *
+from six.moves import range
 
 mission_template_name_pos = 0
 mission_template_flags_pos = 1
@@ -16,7 +19,7 @@ mission_template_triggers_pos = 5
 
 def save_triggers(file,template_name,triggers,variable_list,variable_uses,tag_uses,quick_strings):
   file.write("%d\n"%len(triggers))
-  for i in xrange(len(triggers)):
+  for i in range(len(triggers)):
     trigger = triggers[i]
     file.write("%f %f %f "%(trigger[trigger_check_pos],trigger[trigger_delay_pos],trigger[trigger_rearm_pos]))
     save_statement_block(file, 0, 1, trigger[trigger_conditions_pos]  , variable_list,variable_uses,tag_uses,quick_strings, "mission template " + str(i) + " condition block")
@@ -26,7 +29,7 @@ def save_triggers(file,template_name,triggers,variable_list,variable_uses,tag_us
 
 def save_mission_template_group(file,entry):
   if (len(entry[5]) > 8):
-    print "ERROR: Too many item_overrides!"
+    print("ERROR: Too many item_overrides!")
     error()
   file.write("%d %d %d %d %d %d  "%(entry[0],entry[1],entry[2],entry[3],entry[4], len(entry[5])))
   for item_override in entry[5]:
@@ -51,11 +54,11 @@ def save_mission_templates(variables,variable_uses,tag_uses,quick_strings):
 
 def save_python_header():
   file = open("./ID_mission_templates.py","w")
-  for i_mission_template in xrange(len(mission_templates)):
+  for i_mission_template in range(len(mission_templates)):
     file.write("mst_%s = %d\n"%(mission_templates[i_mission_template][0],i_mission_template))
   file.close()
 
-print "Exporting mission_template data..."
+print("Exporting mission_template data...")
 save_python_header()
 variable_uses = []
 variables = load_variables(export_dir, variable_uses)
