@@ -4022,7 +4022,26 @@ g_slave_contract = 81
 
 g_acan_version = 82
 
-ACAN_VERSION = 1006
+# Load version from repository `version.txt` if present and convert to an integer
+# by removing any non-numeric characters (dots, hyphens, letters). Example:
+#  "1.0.0.7-beta" -> "1007" -> 1007
+try:
+    import os, re
+    version_path = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'version.txt'))
+    try:
+        with open(version_path, 'r') as vf:
+            ver_raw = vf.read().strip()
+    except Exception:
+        ver_raw = None
+    if ver_raw:
+        digits = re.sub(r'[^0-9]', '', ver_raw)
+        ACAN_VERSION = int(digits) if digits else 0
+    else:
+        # fallback hardcoded value if version file not found or empty
+        ACAN_VERSION = 0
+except Exception:
+    # If imports or IO fail for any reason, fall back to hardcoded value
+    ACAN_VERSION = 0
 
 ## hispania
 p_hisp_tarraco = 1

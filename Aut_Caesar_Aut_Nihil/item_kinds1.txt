@@ -152,22 +152,22 @@ itemsfile version 3
  0
 0
 
- itm_arena_shield_red Red_Scutum Red_Scutum 1  s_etruscan_scutum_old_red 0  327687 4831838208 282 167772194 2.000000 100 0 22 0 0 340 100 90 50 0 0 0
+ itm_arena_shield_red Red_Scutum Red_Scutum 1  s_etruscan_scutum_old_red 0  327687 4831838208 287 167772194 2.000000 100 0 22 0 0 340 100 90 50 0 0 0
  2
  13 23
 0
 
- itm_arena_shield_blue Brown_Scutum Brown_Scutum 1  s_etruscan_scutum_old_brown 0  327687 4831838208 282 167772194 2.000000 100 0 22 0 0 340 100 90 50 0 0 0
+ itm_arena_shield_blue Brown_Scutum Brown_Scutum 1  s_etruscan_scutum_old_brown 0  327687 4831838208 287 167772194 2.000000 100 0 22 0 0 340 100 90 50 0 0 0
  2
  13 23
 0
 
- itm_arena_shield_green Green_Scutum Green_Scutum 1  s_etruscan_scutum_old_green 0  327687 4831838208 282 167772194 2.000000 100 0 22 0 0 340 100 90 50 0 0 0
+ itm_arena_shield_green Green_Scutum Green_Scutum 1  s_etruscan_scutum_old_green 0  327687 4831838208 287 167772194 2.000000 100 0 22 0 0 340 100 90 50 0 0 0
  2
  13 23
 0
 
- itm_arena_shield_yellow White_Scutum White_Scutum 1  s_etruscan_scutum_old_white 0  327687 4831838208 282 167772194 2.000000 100 0 22 0 0 340 100 90 50 0 0 0
+ itm_arena_shield_yellow White_Scutum White_Scutum 1  s_etruscan_scutum_old_white 0  327687 4831838208 287 167772194 2.000000 100 0 22 0 0 340 100 90 50 0 0 0
  2
  13 23
 0
@@ -192,22 +192,22 @@ itemsfile version 3
  13 23
 0
 
- itm_tourney_helm_red Gladiator_Helm Gladiator_Helm 1  gladiator_helm 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_tourney_helm_red Gladiator_Helm Gladiator_Helm 1  gladiator_helm 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_tourney_helm_blue Gladiator_Helm Gladiator_Helm 1  gladiator_helm3 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_tourney_helm_blue Gladiator_Helm Gladiator_Helm 1  gladiator_helm3 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_tourney_helm_green Gladiator_Helm Gladiator_Helm 1  gladiator_helm4 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_tourney_helm_green Gladiator_Helm Gladiator_Helm 1  gladiator_helm4 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_tourney_helm_yellow Gladiator_Helm Gladiator_Helm 1  gladiator_helm9 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_tourney_helm_yellow Gladiator_Helm Gladiator_Helm 1  gladiator_helm9 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  13 23
 0
@@ -1124,49 +1124,49 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_segmentata_manica_1 Lorica_Segmentata_with_Subarmalis_and_Manica Lorica_Segmentata_with_Subarmalis_and_Manica 1  legion_segmentata_manica_1 0  16777229 0 6733 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
+ itm_legion_segmentata_manica_1 Lorica_Segmentata_with_Subarmalis_and_Manica Lorica_Segmentata_with_Subarmalis_and_Manica 1  legion_segmentata_manica_1 0  16777229 0 6734 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064004 
 
- itm_legion_segmentata_manica_2 Lorica_Segmentata_with_Subarmalis_and_Manica Lorica_Segmentata_with_Subarmalis_and_Manica 1  legion_segmentata_manica_2 0  16777229 0 6733 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
+ itm_legion_segmentata_manica_2 Lorica_Segmentata_with_Subarmalis_and_Manica Lorica_Segmentata_with_Subarmalis_and_Manica 1  legion_segmentata_manica_2 0  16777229 0 6734 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064004 
 
- itm_legion_segmentata_manica_3 Lorica_Segmentata_with_Subarmalis_and_Manica Lorica_Segmentata_with_Subarmalis_and_Manica 1  legion_segmentata_manica_3 0  16777229 0 6733 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
+ itm_legion_segmentata_manica_3 Lorica_Segmentata_with_Subarmalis_and_Manica Lorica_Segmentata_with_Subarmalis_and_Manica 1  legion_segmentata_manica_3 0  16777229 0 6734 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064004 
 
- itm_legion_segmentata_manica_4 Lorica_Segmentata_with_Subarmalis_and_Manica Lorica_Segmentata_with_Subarmalis_and_Manica 1  legion_segmentata_manica_4 0  16777229 0 6733 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
+ itm_legion_segmentata_manica_4 Lorica_Segmentata_with_Subarmalis_and_Manica Lorica_Segmentata_with_Subarmalis_and_Manica 1  legion_segmentata_manica_4 0  16777229 0 6734 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064004 
 
- itm_legion_segmentata_manica_5 Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica 1  legion_segmentata_manica_5 0  16777229 0 6733 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
+ itm_legion_segmentata_manica_5 Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica 1  legion_segmentata_manica_5 0  16777229 0 6734 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064004 
 
- itm_legion_segmentata_manica_6 Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica 1  legion_segmentata_manica_6 0  16777229 0 6733 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
+ itm_legion_segmentata_manica_6 Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica 1  legion_segmentata_manica_6 0  16777229 0 6734 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064004 
 
- itm_legion_segmentata_manica_7 Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica 1  legion_segmentata_manica_7 0  16777229 0 6733 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
+ itm_legion_segmentata_manica_7 Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica 1  legion_segmentata_manica_7 0  16777229 0 6734 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064004 
 
- itm_legion_segmentata_manica_8 Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica 1  legion_segmentata_manica_8 0  16777229 0 6733 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
+ itm_legion_segmentata_manica_8 Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica Lorica_Segmentata_with_Subarmalis,_Cape_and_Manica 1  legion_segmentata_manica_8 0  16777229 0 6734 704643236 44.750000 75 0 53 14 9 0 0 0 0 0 0 0
  2
  13 23
 1
@@ -1208,115 +1208,115 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_auxilia_cavalry_squamata_1 Lorica_Squamata Lorica_Squamata 1  auxilia_cavalry_squamata_1 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_auxilia_cavalry_squamata_1 Lorica_Squamata Lorica_Squamata 1  auxilia_cavalry_squamata_1 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_auxilia_cavalry_squamata_2 Lorica_Squamata Lorica_Squamata 1  auxilia_cavalry_squamata_2 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_auxilia_cavalry_squamata_2 Lorica_Squamata Lorica_Squamata 1  auxilia_cavalry_squamata_2 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_1 Lorica_Squamata Lorica_Squamata 1  legion_squamata_1 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_1 Lorica_Squamata Lorica_Squamata 1  legion_squamata_1 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_2 Lorica_Squamata Lorica_Squamata 1  legion_squamata_2 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_2 Lorica_Squamata Lorica_Squamata 1  legion_squamata_2 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_3 Lorica_Squamata Lorica_Squamata 1  legion_squamata_3 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_3 Lorica_Squamata Lorica_Squamata 1  legion_squamata_3 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_4 Lorica_Squamata Lorica_Squamata 1  legion_squamata_4 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_4 Lorica_Squamata Lorica_Squamata 1  legion_squamata_4 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_5 Lorica_Squamata Lorica_Squamata 1  legion_squamata_5 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_5 Lorica_Squamata Lorica_Squamata 1  legion_squamata_5 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_6 Lorica_Squamata Lorica_Squamata 1  legion_squamata_6 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_6 Lorica_Squamata Lorica_Squamata 1  legion_squamata_6 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_7 Lorica_Squamata Lorica_Squamata 1  legion_squamata_7 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_7 Lorica_Squamata Lorica_Squamata 1  legion_squamata_7 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_8 Lorica_Squamata Lorica_Squamata 1  legion_squamata_8 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_8 Lorica_Squamata Lorica_Squamata 1  legion_squamata_8 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_9 Lorica_Squamata Lorica_Squamata 1  legion_squamata_9 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_9 Lorica_Squamata Lorica_Squamata 1  legion_squamata_9 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_auxilia_squamata_east_1 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  auxilia_squamata_east_1 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_auxilia_squamata_east_1 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  auxilia_squamata_east_1 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_auxilia_squamata_east_2 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  auxilia_squamata_east_2 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_auxilia_squamata_east_2 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  auxilia_squamata_east_2 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_auxilia_squamata_east_3 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  auxilia_squamata_east_3 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_auxilia_squamata_east_3 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  auxilia_squamata_east_3 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_auxilia_squamata_east_4 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  auxilia_squamata_east_4 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_auxilia_squamata_east_4 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  auxilia_squamata_east_4 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_oriental_squamata_1 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  oriental_squamata_1 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_oriental_squamata_1 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  oriental_squamata_1 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_oriental_squamata_2 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  oriental_squamata_2 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_oriental_squamata_2 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  oriental_squamata_2 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_oriental_squamata_3 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  oriental_squamata_3 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_oriental_squamata_3 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  oriental_squamata_3 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_oriental_squamata_4 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  oriental_squamata_4 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_oriental_squamata_4 Lorica_Squamata_Orientalis Lorica_Squamata_Orientalis 1  oriental_squamata_4 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
@@ -1352,19 +1352,19 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_cape_1 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_1 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_cape_1 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_1 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_cape_2 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_2 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_cape_2 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_2 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064003 
 
- itm_legion_squamata_cape_3 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_3 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_cape_3 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_3 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
@@ -1568,25 +1568,25 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064009 
 
- itm_legion_squamata_cape_pants_long_1 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_pants_long_1 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_cape_pants_long_1 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_pants_long_1 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064005 
 
- itm_legion_squamata_cape_pants_long_2 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_pants_long_2 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_cape_pants_long_2 Lorica_Squamata_with_Cape Lorica_Squamata_with_Cape 1  legion_squamata_cape_pants_long_2 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064005 
 
- itm_legion_squamata_pants_long_1 Lorica_Squamata Lorica_Squamata 1  legion_squamata_pants_long_1 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_pants_long_1 Lorica_Squamata Lorica_Squamata 1  legion_squamata_pants_long_1 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493064005 
 
- itm_legion_squamata_pants_long_2 Lorica_Squamata Lorica_Squamata 1  legion_squamata_pants_long_2 0  16777229 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_legion_squamata_pants_long_2 Lorica_Squamata Lorica_Squamata 1  legion_squamata_pants_long_2 0  16777229 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  2
  13 23
 1
@@ -2196,37 +2196,37 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_dacian_medium1 Dacian_Squamata Dacian_Squamata 1  dcstudded1 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_dacian_medium1 Dacian_Squamata Dacian_Squamata 1  dcstudded1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  6
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_dacian_medium2 Dacian_Squamata Dacian_Squamata 1  dcstudded2 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_dacian_medium2 Dacian_Squamata Dacian_Squamata 1  dcstudded2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  6
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_dacian_medium3 Dacian_Squamata Dacian_Squamata 1  dcstudded3 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_dacian_medium3 Dacian_Squamata Dacian_Squamata 1  dcstudded3 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  6
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_dacian_medium4 Dacian_Hamata Dacian_Hamata 1  dcstudded4 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_dacian_medium4 Dacian_Hamata Dacian_Hamata 1  dcstudded4 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  6
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_dacian_medium5 Dacian_Hamata Dacian_Hamata 1  dcstudded5 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_dacian_medium5 Dacian_Hamata Dacian_Hamata 1  dcstudded5 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  6
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_dacian_medium6 Dacian_Hamata Dacian_Hamata 1  dcstudded6 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_dacian_medium6 Dacian_Hamata Dacian_Hamata 1  dcstudded6 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  6
 1
@@ -2490,13 +2490,13 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_germanic_heavy1 Germanic_Hamata Germanic_Hamata 1  grsmalshirt5 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_germanic_heavy1 Germanic_Hamata Germanic_Hamata 1  grsmalshirt5 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  10
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_germanic_heavy2 Germanic_Hamata Germanic_Hamata 1  grsmalshirt6 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_germanic_heavy2 Germanic_Hamata Germanic_Hamata 1  grsmalshirt6 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  10
 1
@@ -2580,13 +2580,13 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_alan_heavy_1 Alan_Heavy_Lamellar_Armor Alan_Heavy_Lamellar_Armor 1  alan_lamellar_armour_full 0  16842765 0 5228 123731968 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
+ itm_alan_heavy_1 Alan_Heavy_Lamellar_Armor Alan_Heavy_Lamellar_Armor 1  alan_lamellar_armour_full 0  16842765 0 5227 123731968 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
  1
  9
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_alan_heavy_2 Alan_Heavy_Lamellar_Armor Alan_Heavy_Lamellar_Armor 1  alan_lamellar_armour_full_2 0  16842765 0 5228 123731968 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
+ itm_alan_heavy_2 Alan_Heavy_Lamellar_Armor Alan_Heavy_Lamellar_Armor 1  alan_lamellar_armour_full_2 0  16842765 0 5227 123731968 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
  1
  9
 1
@@ -2652,25 +2652,25 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_sarmatian_mail_1 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_1 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_sarmatian_mail_1 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_sarmatian_mail_2 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_2 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_sarmatian_mail_2 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_sarmatian_mail_3 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_3 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_sarmatian_mail_3 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_3 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_sarmatian_mail_4 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_4 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_sarmatian_mail_4 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_4 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
@@ -2790,13 +2790,13 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_scythian_heavy1 Scythian_Scale_Armor Scythian_Scale_Armor 1  ad_linothorax_heavy_scythian_04 0  16842765 0 5228 704643236 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
+ itm_scythian_heavy1 Scythian_Scale_Armor Scythian_Scale_Armor 1  ad_linothorax_heavy_scythian_04 0  16842765 0 5227 704643236 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
  1
  15
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_scythian_heavy2 Scythian_Scale_Armor Scythian_Scale_Armor 1  ad_linothorax_heavy_scythian_05 0  16842765 0 5228 704643236 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
+ itm_scythian_heavy2 Scythian_Scale_Armor Scythian_Scale_Armor 1  ad_linothorax_heavy_scythian_05 0  16842765 0 5227 704643236 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
  1
  15
 1
@@ -2850,19 +2850,19 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_bosporan_mail_1 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_1 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_bosporan_mail_1 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  15
 1
 -50.000000  20 1 1 936748722493064012 2071 1 1224979098644774912 2072 1 1224979098644774913 4 0 31 2 1224979098644774913 360287970189639680 1964 1 216172782113789280 1964 1 216172782113789277 5 0 1712 1 1224979098644774912 2147483679 2 1224979098644774913 360287970189639680 2136 3 1224979098644774914 0 100 4 0 2147483678 2 1224979098644774914 65 2319 1 2 2136 3 1224979098644774915 216172782113789278 216172782113789285 2320 2 2 1224979098644774915 1964 1 2 1964 1 216172782113789277 3 0 3 0 
 
- itm_bosporan_mail_2 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_2 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_bosporan_mail_2 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  15
 1
 -50.000000  20 1 1 936748722493064012 2071 1 1224979098644774912 2072 1 1224979098644774913 4 0 31 2 1224979098644774913 360287970189639680 1964 1 216172782113789278 1964 1 216172782113789277 5 0 1712 1 1224979098644774912 2147483679 2 1224979098644774913 360287970189639680 2136 3 1224979098644774914 0 100 4 0 2147483678 2 1224979098644774914 65 2319 1 2 2136 3 1224979098644774915 216172782113789278 216172782113789285 2320 2 2 1224979098644774915 1964 1 2 1964 1 216172782113789277 3 0 3 0 
 
- itm_bosporan_mail_3 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_3 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_bosporan_mail_3 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_3 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  15
 1
@@ -2880,13 +2880,13 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_caucasian_scale_1 Caucasian_Scale_Armor Caucasian_Scale_Armor 1  caucasian_scale_1 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_caucasian_scale_1 Caucasian_Scale_Armor Caucasian_Scale_Armor 1  caucasian_scale_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_caucasian_scale_2 Caucasian_Scale_Armor Caucasian_Scale_Armor 1  caucasian_scale_2 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_caucasian_scale_2 Caucasian_Scale_Armor Caucasian_Scale_Armor 1  caucasian_scale_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
@@ -2916,25 +2916,25 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_armenian_mail_1 Armenian_Mail_Armor Armenian_Mail_Armor 1  armenian_lamellar_1 0  16842765 0 3500 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_armenian_mail_1 Armenian_Mail_Armor Armenian_Mail_Armor 1  armenian_lamellar_1 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_armenian_mail_2 Armenian_Mail_Armor Armenian_Mail_Armor 1  armenian_lamellar_2 0  16842765 0 3500 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_armenian_mail_2 Armenian_Mail_Armor Armenian_Mail_Armor 1  armenian_lamellar_2 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_armenian_scale_1 Armenian_Scale_Armor Armenian_Scale_Armor 1  armenian_scale_1 0  16842765 0 3764 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_armenian_scale_1 Armenian_Scale_Armor Armenian_Scale_Armor 1  armenian_scale_1 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_armenian_scale_2 Armenian_Scale_Armor Armenian_Scale_Armor 1  armenian_scale_2 0  16842765 0 3764 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_armenian_scale_2 Armenian_Scale_Armor Armenian_Scale_Armor 1  armenian_scale_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  2
  12 11
 1
@@ -3012,25 +3012,25 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_parthian_mail_1 Parthian_Mail_Armor Parthian_Mail_Armor 1  parthian_lamellar_1 0  16842765 0 3500 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_parthian_mail_1 Parthian_Mail_Armor Parthian_Mail_Armor 1  parthian_lamellar_1 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_parthian_mail_2 Parthian_Mail_Armor Parthian_Mail_Armor 1  parthian_lamellar_2 0  16842765 0 3500 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_parthian_mail_2 Parthian_Mail_Armor Parthian_Mail_Armor 1  parthian_lamellar_2 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_parthian_scale_1 Parthian_Scale_Armor Parthian_Scale_Armor 1  parthian_scale_1 0  16842765 0 3764 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_parthian_scale_1 Parthian_Scale_Armor Parthian_Scale_Armor 1  parthian_scale_1 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_parthian_scale_2 Parthian_Scale_Armor Parthian_Scale_Armor 1  parthian_scale_2 0  16842765 0 3764 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_parthian_scale_2 Parthian_Scale_Armor Parthian_Scale_Armor 1  parthian_scale_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  2
  12 11
 1
@@ -3048,27 +3048,27 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_cataphract_eastern Cataphract_Scale_Armor Cataphract_Scale_Armor 1  armor_cataphract_1 0  16842765 0 7561 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_cataphract_eastern Cataphract_Scale_Armor Cataphract_Scale_Armor 1  armor_cataphract_1 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  12 11
 0
 
- itm_sarranid_elite_armor Cataphract_Scale_Armor Cataphract_Scale_Armor 1  armor_cataphract_2 0  16842765 0 7561 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_sarranid_elite_armor Cataphract_Scale_Armor Cataphract_Scale_Armor 1  armor_cataphract_2 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  11 12
 0
 
- itm_sarranid_elite_armor_2 Cataphract_Lamellar_Armor Cataphract_Lamellar_Armor 1  armor_cataphract_3 0  16842765 0 7561 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_sarranid_elite_armor_2 Cataphract_Lamellar_Armor Cataphract_Lamellar_Armor 1  armor_cataphract_3 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  11 12
 0
 
- itm_sarranid_elite_armor_3 Cataphract_Lamellar_Armor Cataphract_Lamellar_Armor 1  armor_cataphract_4 0  16842765 0 7561 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_sarranid_elite_armor_3 Cataphract_Lamellar_Armor Cataphract_Lamellar_Armor 1  armor_cataphract_4 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  11 12
 0
 
- itm_mamluke_mail Cataphract_Mail_Armor Cataphract_Mail_Armor 1  sarranid_elite_cavalary 0  16842765 0 7561 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_mamluke_mail Cataphract_Mail_Armor Cataphract_Mail_Armor 1  sarranid_elite_cavalary 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  11 12
 0
@@ -3199,31 +3199,31 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_arabian_armor_b Arabian_Lamella_Armor Arabian_Lamella_Armor 1  arabian_armor_b 0  16842765 0 3500 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_arabian_armor_b Arabian_Lamella_Armor Arabian_Lamella_Armor 1  arabian_armor_b 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493064013 
 
- itm_sarranid_mail_shirt Arabian_Lamella_Armor Arabian_Lamella_Armor 1  sarranian_mail_shirt 0  16842765 0 3500 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_sarranid_mail_shirt Arabian_Lamella_Armor Arabian_Lamella_Armor 1  sarranian_mail_shirt 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493064013 
 
- itm_syrian_scale_1 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_1 0  16777229 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_syrian_scale_1 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_1 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493064005 
 
- itm_syrian_scale_2 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_2 0  16777229 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_syrian_scale_2 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_2 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493064005 
 
- itm_syrian_scale_3 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_3 0  16777229 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_syrian_scale_3 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_3 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
@@ -3247,19 +3247,19 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_palmyran_lamellar_armor Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor 0  16842765 0 3764 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_palmyran_lamellar_armor_2 Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_2 0  16842765 0 3764 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor_2 Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_palmyran_lamellar_armor_3 Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_3 0  16842765 0 3764 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor_3 Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_3 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
@@ -3319,49 +3319,49 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064015 
 
- itm_judean_mail_1 Judean_Hamata Judean_Hamata 1  judean_mail_1 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_judean_mail_1 Judean_Hamata Judean_Hamata 1  judean_mail_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_judean_mail_2 Judean_Hamata Judean_Hamata 1  judean_mail_2 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_judean_mail_2 Judean_Hamata Judean_Hamata 1  judean_mail_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_judean_mail_3 Judean_Hamata Judean_Hamata 1  judean_mail_3 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_judean_mail_3 Judean_Hamata Judean_Hamata 1  judean_mail_3 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_judean_mail_4 Judean_Hamata Judean_Hamata 1  judean_mail_4 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_judean_mail_4 Judean_Hamata Judean_Hamata 1  judean_mail_4 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_judean_mail_5 Judean_Hamata Judean_Hamata 1  judean_mail_5 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_judean_mail_5 Judean_Hamata Judean_Hamata 1  judean_mail_5 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_judean_mail_6 Judean_Hamata Judean_Hamata 1  judean_mail_6 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_judean_mail_6 Judean_Hamata Judean_Hamata 1  judean_mail_6 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_judean_scale_1 Judean_Squamata Judean_Squamata 1  judean_scale_1 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_judean_scale_1 Judean_Squamata Judean_Squamata 1  judean_scale_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_judean_scale_2 Judean_Squamata Judean_Squamata 1  judean_scale_2 0  16842765 0 3764 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_judean_scale_2 Judean_Squamata Judean_Squamata 1  judean_scale_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  14
 1
@@ -3798,7 +3798,7 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064013 
 
- itm_sarranid_cavalry_robe Eastern_Mail_Armor Eastern_Mail_Armor 1  arabian_armor_a 0  16842765 0 3500 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_sarranid_cavalry_robe Eastern_Mail_Armor Eastern_Mail_Armor 1  arabian_armor_a 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
@@ -3856,37 +3856,37 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_lamellar_armor Scale_Armor Scale_Armor 1  lamellar_armor_b 0  16842765 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_lamellar_armor Scale_Armor Scale_Armor 1  lamellar_armor_b 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_khergit_elite_armor Scale_Armor Scale_Armor 1  lamellar_armor_d 0  16842765 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_khergit_elite_armor Scale_Armor Scale_Armor 1  lamellar_armor_d 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_scale_armor Scale_Armor Scale_Armor 1  lamellar_armor_e 0  16842765 0 3764 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_scale_armor Scale_Armor Scale_Armor 1  lamellar_armor_e 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  6
  13 23 11 12 14 15
 1
 -50.000000  1 1 1 936748722493064012 
 
- itm_banded_armor Leather_Armor Leather_Armor 1  banded_armor_a 0  16842765 0 547 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
+ itm_banded_armor Leather_Armor Leather_Armor 1  banded_armor_a 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_banded_armor_2 Leather_Armor Leather_Armor 1  banded_armor_b 0  16842765 0 547 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
+ itm_banded_armor_2 Leather_Armor Leather_Armor 1  banded_armor_b 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
 -50.000000  1 1 1 936748722493064016 
 
- itm_banded_armor_3 Leather_Armor Leather_Armor 1  banded_armor_c 0  16842765 0 547 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
+ itm_banded_armor_3 Leather_Armor Leather_Armor 1  banded_armor_c 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
@@ -3932,22 +3932,22 @@ itemsfile version 3
  9
 0
 
- itm_alan_helm_1 Alan_Lamellar_Helm Alan_Lamellar_Helm 1  alan_lamellar_1 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_alan_helm_1 Alan_Lamellar_Helm Alan_Lamellar_Helm 1  alan_lamellar_1 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  9
 0
 
- itm_alan_helm_2 Alan_Lamellar_Helm Alan_Lamellar_Helm 1  alan_lamellar_2 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_alan_helm_2 Alan_Lamellar_Helm Alan_Lamellar_Helm 1  alan_lamellar_2 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  9
 0
 
- itm_alan_helm_3 Alan_Lamellar_Helm Alan_Lamellar_Helm 1  alan_lamellar_3 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_alan_helm_3 Alan_Lamellar_Helm Alan_Lamellar_Helm 1  alan_lamellar_3 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  9
 0
 
- itm_alan_helm_4 Alan_Lamellar_Helm Alan_Lamellar_Helm 1  alan_lamellar_4 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_alan_helm_4 Alan_Lamellar_Helm Alan_Lamellar_Helm 1  alan_lamellar_4 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  9
 0
@@ -4017,52 +4017,52 @@ itemsfile version 3
  9 15 11
 0
 
- itm_sarmatian_heavy_helm1 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_heavy_helm 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_sarmatian_heavy_helm1 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_heavy_helm 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  9 15 11
 0
 
- itm_sarmatian_heavy_helm2 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_heavy_helm1 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_sarmatian_heavy_helm2 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_heavy_helm1 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  9 15 11
 0
 
- itm_sarmatian_heavy_helm3 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_heavy_helm2 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_sarmatian_heavy_helm3 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_heavy_helm2 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  9 15 11
 0
 
- itm_sarmatian_heavy_helm4 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_heavy_helm3 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_sarmatian_heavy_helm4 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_heavy_helm3 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  9 15 11
 0
 
- itm_sarmatian_heavy_helm5 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_noble_helm 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_sarmatian_heavy_helm5 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_noble_helm 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  9 15 11
 0
 
- itm_sarmatian_heavy_helm6 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_noble_helm1 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_sarmatian_heavy_helm6 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_noble_helm1 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  9 15 11
 0
 
- itm_sarmatian_heavy_helm7 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_noble_helm2 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_sarmatian_heavy_helm7 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_noble_helm2 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  9 15 11
 0
 
- itm_sarmatian_heavy_helm8 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_noble_helm3 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_sarmatian_heavy_helm8 Sarmatian_Noble_Helm Sarmatian_Noble_Helm 1  bospor_noble_helm3 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  9 15 11
 0
 
- itm_bosporan_spangenhelm_1 Sarmatian_Spangenhelm Sarmatian_Spangenhelm 1  bosporan_spangenhelm_cheek 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_bosporan_spangenhelm_1 Sarmatian_Spangenhelm Sarmatian_Spangenhelm 1  bosporan_spangenhelm_cheek 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  15 9
 0
 
- itm_bosporan_spangenhelm_2 Sarmatian_Spangenhelm Sarmatian_Spangenhelm 1  bosporan_spangenhelm_aven 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_bosporan_spangenhelm_2 Sarmatian_Spangenhelm Sarmatian_Spangenhelm 1  bosporan_spangenhelm_aven 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  15 9
 0
@@ -4077,22 +4077,22 @@ itemsfile version 3
  15 9
 0
 
- itm_bosporan_pointed_helm Sarmatian_Pointed_Helm Sarmatian_Pointed_Helm 1  bosporan_pointed_helm 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_bosporan_pointed_helm Sarmatian_Pointed_Helm Sarmatian_Pointed_Helm 1  bosporan_pointed_helm 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  15 9
 0
 
- itm_bosporan_pointed_helm_2 Sarmatian_Pointed_Helm Sarmatian_Pointed_Helm 1  bosporan_pointed_helm_2 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_bosporan_pointed_helm_2 Sarmatian_Pointed_Helm Sarmatian_Pointed_Helm 1  bosporan_pointed_helm_2 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  15 9
 0
 
- itm_bosporan_pointed_helm_3 Sarmatian_Pointed_Helm Sarmatian_Pointed_Helm 1  bosporan_pointed_helm2 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_bosporan_pointed_helm_3 Sarmatian_Pointed_Helm Sarmatian_Pointed_Helm 1  bosporan_pointed_helm2 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  15 9
 0
 
- itm_bosporan_pointed_helm_4 Sarmatian_Pointed_Helm Sarmatian_Pointed_Helm 1  bosporan_pointed_helm3 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_bosporan_pointed_helm_4 Sarmatian_Pointed_Helm Sarmatian_Pointed_Helm 1  bosporan_pointed_helm3 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  15 9
 0
@@ -4144,77 +4144,77 @@ itemsfile version 3
  6
 0
 
- itm_dacian_heavy_helm1 Dacian_Helm Dacian_Helm 1  dac_helm 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm1 Dacian_Helm Dacian_Helm 1  dac_helm 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm2 Dacian_Helm Dacian_Helm 1  dac_helm1 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm2 Dacian_Helm Dacian_Helm 1  dac_helm1 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm3 Dacian_Helm Dacian_Helm 1  dac_helm3 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm3 Dacian_Helm Dacian_Helm 1  dac_helm3 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm4 Dacian_Noble_Helm Dacian_Noble_Helm 1  dac_helm4 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm4 Dacian_Noble_Helm Dacian_Noble_Helm 1  dac_helm4 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm5 Dacian_Helm Dacian_Helm 1  dac_noble_helm 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm5 Dacian_Helm Dacian_Helm 1  dac_noble_helm 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm_noble_1 Dacian_Noble_Helm Dacian_Noble_Helm 1  dac_helm_noble 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm_noble_1 Dacian_Noble_Helm Dacian_Noble_Helm 1  dac_helm_noble 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm_noble_2 Dacian_Noble_Helm Dacian_Noble_Helm 1  dac_noble_helm1 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm_noble_2 Dacian_Noble_Helm Dacian_Noble_Helm 1  dac_noble_helm1 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm7 Dacian_Helm Dacian_Helm 1  dac_noble_helm2 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm7 Dacian_Helm Dacian_Helm 1  dac_noble_helm2 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm8 Dacian_Helm_with_Plume Dacian_Helm_with_Plume 1  dac_noble_helm3 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm8 Dacian_Helm_with_Plume Dacian_Helm_with_Plume 1  dac_noble_helm3 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm9 Dacian_Helm_with_Plume Dacian_Helm_with_Plume 1  dac_noble_helm4 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm9 Dacian_Helm_with_Plume Dacian_Helm_with_Plume 1  dac_noble_helm4 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm10 Dacian_Helm_with_Plume Dacian_Helm_with_Plume 1  dac_noble_helm5 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm10 Dacian_Helm_with_Plume Dacian_Helm_with_Plume 1  dac_noble_helm5 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm11 Dacian_Helm Dacian_Helm 1  dac_noble_helm6 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm11 Dacian_Helm Dacian_Helm 1  dac_noble_helm6 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm12 Dacian_Helm Dacian_Helm 1  dac_noble_helm7 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm12 Dacian_Helm Dacian_Helm 1  dac_noble_helm7 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm13 Dacian_Helm Dacian_Helm 1  dac_noble_helm8 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm13 Dacian_Helm Dacian_Helm 1  dac_noble_helm8 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
 
- itm_dacian_heavy_helm14 Dacian_Helm Dacian_Helm 1  dac_noble_helm9 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_dacian_heavy_helm14 Dacian_Helm Dacian_Helm 1  dac_noble_helm9 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  6
 0
@@ -4239,7 +4239,7 @@ itemsfile version 3
  6
 0
 
- itm_germanic_helm_noble Germanic_Noble_Helmet Germanic_Noble_Helmet 1  german_helm_noble 0  550829625100 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_germanic_helm_noble Germanic_Noble_Helmet Germanic_Noble_Helmet 1  german_helm_noble 0  550829625100 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  10
 0
@@ -4269,28 +4269,28 @@ itemsfile version 3
  10
 0
 
- itm_eastern_band_helmet_mail Band_Helmet_with_Chain Band_Helmet_with_Chain 1  eastern_band_helmet_mail 0  550829625100 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_eastern_band_helmet_mail Band_Helmet_with_Chain Band_Helmet_with_Chain 1  eastern_band_helmet_mail 0  550829625100 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  1
  10
 0
 
- itm_wolf_skin_1 Wolfskin Wolfskin 1  wolf_skin_1 0  1090588428 0 120 704643236 1.250000 50 10 5 0 8 0 0 0 0 0 0 0
+ itm_wolf_skin_1 Wolfskin Wolfskin 1  wolf_skin_1 0  1090588428 0 121 704643236 1.250000 50 10 5 0 8 0 0 0 0 0 0 0
  0
 0
 
- itm_wolf_skin_2 Wolfskin Wolfskin 1  wolf_skin_2 0  1090588428 0 120 704643236 1.250000 50 10 5 0 8 0 0 0 0 0 0 0
+ itm_wolf_skin_2 Wolfskin Wolfskin 1  wolf_skin_2 0  1090588428 0 121 704643236 1.250000 50 10 5 0 8 0 0 0 0 0 0 0
  0
 0
 
- itm_bear_skin_1 Bearskin Bearskin 1  bear_skin_1 0  1090588428 0 120 704643236 1.250000 50 10 5 0 8 0 0 0 0 0 0 0
+ itm_bear_skin_1 Bearskin Bearskin 1  bear_skin_1 0  1090588428 0 121 704643236 1.250000 50 10 5 0 8 0 0 0 0 0 0 0
  0
 0
 
- itm_bear_skin_2 Bearskin Bearskin 1  bear_skin_2 0  1090588428 0 120 704643236 1.250000 50 10 5 0 8 0 0 0 0 0 0 0
+ itm_bear_skin_2 Bearskin Bearskin 1  bear_skin_2 0  1090588428 0 121 704643236 1.250000 50 10 5 0 8 0 0 0 0 0 0 0
  0
 0
 
- itm_mak_helm_1 Phrygian_Helm Phrygian_Helm 1  h3_mak2 0  1073745676 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_mak_helm_1 Phrygian_Helm Phrygian_Helm 1  h3_mak2 0  1073745676 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  1
  73
 0
@@ -4305,7 +4305,7 @@ itemsfile version 3
  73
 0
 
- itm_mak_helm_4 Phrygian_Helm Phrygian_Helm 1  h3_mak2d 0  1073745676 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_mak_helm_4 Phrygian_Helm Phrygian_Helm 1  h3_mak2d 0  1073745676 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  1
  73
 0
@@ -4315,32 +4315,32 @@ itemsfile version 3
  73
 0
 
- itm_boeotian_1 Boetian_Helm Boetian_Helm 1  h_boiotian 0  1073745676 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_boeotian_1 Boetian_Helm Boetian_Helm 1  h_boiotian 0  1073745676 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  1
  73
 0
 
- itm_boeotian_2 Boetian_Helm Boetian_Helm 1  h_boiotian_plume 0  1073745676 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_boeotian_2 Boetian_Helm Boetian_Helm 1  h_boiotian_plume 0  1073745676 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  1
  73
 0
 
- itm_illyrian_hevy_helmet_plume2 Ancient_Illyrian_Helmet Ancient_Illyrian_Helmet 1  h_illyrian_t2_v2_2 0  12 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_illyrian_hevy_helmet_plume2 Ancient_Illyrian_Helmet Ancient_Illyrian_Helmet 1  h_illyrian_t2_v2_2 0  12 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  1
  73
 0
 
- itm_illyrian_hevy_helmet_plume1 Ancient_Illyrian_Helmet Ancient_Illyrian_Helmet 1  h_illyrian_t2_v2_1 0  12 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_illyrian_hevy_helmet_plume1 Ancient_Illyrian_Helmet Ancient_Illyrian_Helmet 1  h_illyrian_t2_v2_1 0  12 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  1
  73
 0
 
- itm_illyrian_hevy_helmet Ancient_Illyrian_Helmet Ancient_Illyrian_Helmet 1  h_illyrian_t2_v2 0  12 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_illyrian_hevy_helmet Ancient_Illyrian_Helmet Ancient_Illyrian_Helmet 1  h_illyrian_t2_v2 0  12 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  1
  73
 0
 
- itm_illyrian_leader_cap Illyrian_Padded_Coif Illyrian_Padded_Coif 1  illyrian_helm 0  12 0 642 123731968 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_illyrian_leader_cap Illyrian_Padded_Coif Illyrian_Padded_Coif 1  illyrian_helm 0  12 0 643 123731968 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  0
 0
 
@@ -4369,52 +4369,52 @@ itemsfile version 3
  12
 0
 
- itm_britton_helm1 Celtic_Helm Celtic_Helm 1  celtic_helm_port 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm1 Celtic_Helm Celtic_Helm 1  celtic_helm_port 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm2 Celtic_Helm Celtic_Helm 1  celtic_helm_conical 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm2 Celtic_Helm Celtic_Helm 1  celtic_helm_conical 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm3 Celtic_Helm Celtic_Helm 1  celtic_helm_conical_2 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm3 Celtic_Helm Celtic_Helm 1  celtic_helm_conical_2 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm4 Celtic_Helm Celtic_Helm 1  celtic_helm_montefortino_iron 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm4 Celtic_Helm Celtic_Helm 1  celtic_helm_montefortino_iron 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm5 Celtic_Helm Celtic_Helm 1  celtic_helm_montefortino_brass 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm5 Celtic_Helm Celtic_Helm 1  celtic_helm_montefortino_brass 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm1_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_port_plume_black 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm1_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_port_plume_black 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm2_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_with_plume_conical 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm2_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_with_plume_conical 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm3_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_with_plume_conical_2 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm3_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_with_plume_conical_2 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm4_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_with_plume_montefortino_iron 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm4_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_with_plume_montefortino_iron 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm5_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_with_plume_montefortino_brass 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm5_plume Celtic_Helm_with_Plume Celtic_Helm_with_Plume 1  celtic_helm_with_plume_montefortino_brass 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
@@ -4424,12 +4424,12 @@ itemsfile version 3
  7 8
 0
 
- itm_britton_coolus Celtic_Old_Helm Celtic_Old_Helm 1  british_coolus 0  549755879436 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_britton_coolus Celtic_Old_Helm Celtic_Old_Helm 1  british_coolus 0  549755879436 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_coolus_2 Celtic_Old_Helm_with_Plume Celtic_Old_Helm_with_Plume 1  british_coolus_plume 0  549755879436 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_britton_coolus_2 Celtic_Old_Helm_with_Plume Celtic_Old_Helm_with_Plume 1  british_coolus_plume 0  549755879436 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  2
  7 8
 0
@@ -4449,87 +4449,87 @@ itemsfile version 3
  7 8
 0
 
- itm_britton_helm_noble Celtic_Noble_Helm Celtic_Noble_Helm 1  brit_waterloo_helm 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm_noble Celtic_Noble_Helm Celtic_Noble_Helm 1  brit_waterloo_helm 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm_noble_2 Celtic_Noble_Helm Celtic_Noble_Helm 1  celtic_helm_boar_feather_white 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm_noble_2 Celtic_Noble_Helm Celtic_Noble_Helm 1  celtic_helm_boar_feather_white 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm_noble_crest_1 Celtic_Noble_Helm_with_Crest Celtic_Noble_Helm_with_Crest 1  celtic_chief_helmet_1 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm_noble_crest_1 Celtic_Noble_Helm_with_Crest Celtic_Noble_Helm_with_Crest 1  celtic_chief_helmet_1 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_britton_helm_noble_crest_2 Celtic_Noble_Helm_with_Crest Celtic_Noble_Helm_with_Crest 1  celtic_chief_helmet_2 0  549755879436 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_britton_helm_noble_crest_2 Celtic_Noble_Helm_with_Crest Celtic_Noble_Helm_with_Crest 1  celtic_chief_helmet_2 0  549755879436 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  7 8
 0
 
- itm_cataphract_helm1 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm 0  68719542284 0 1857 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
+ itm_cataphract_helm1 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm 0  68719542284 0 1858 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_cataphract_helm2 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm10 0  68719542284 0 1857 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
+ itm_cataphract_helm2 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm10 0  68719542284 0 1858 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_cataphract_helm4 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm4 0  68719542284 0 1857 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
+ itm_cataphract_helm4 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm4 0  68719542284 0 1858 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_cataphract_helm6 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm8 0  68719542284 0 1857 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
+ itm_cataphract_helm6 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm8 0  68719542284 0 1858 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_cataphract_helm7 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm9 0  68719542284 0 1857 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
+ itm_cataphract_helm7 Cataphract_Helm Cataphract_Helm 1  parf_havy_helm9 0  68719542284 0 1858 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_sarranid_veiled_helmet Cataphract_Helmet Cataphract_Helmet 1  sar_helmet4 0  68719542284 0 1857 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
+ itm_sarranid_veiled_helmet Cataphract_Helmet Cataphract_Helmet 1  sar_helmet4 0  68719542284 0 1858 704643238 3.250000 50 51 0 0 12 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 0
 
- itm_cataphract_sallet_1 Parthian_Sallet Parthian_Sallet 2  parthian_sallet_1 0  parthian_sallet_1_inv 1152921504606846976  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_cataphract_sallet_1 Parthian_Sallet Parthian_Sallet 2  parthian_sallet_1 0  parthian_sallet_1_inv 1152921504606846976  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_cataphract_sallet_2 Parthian_Sallet Parthian_Sallet 2  parthian_sallet_2 0  parthian_sallet_2_inv 1152921504606846976  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_cataphract_sallet_2 Parthian_Sallet Parthian_Sallet 2  parthian_sallet_2 0  parthian_sallet_2_inv 1152921504606846976  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_parthian_pointed_helm Parthian_Pointed_Helm Parthian_Pointed_Helm 1  parthian_helm_1 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_parthian_pointed_helm Parthian_Pointed_Helm Parthian_Pointed_Helm 1  parthian_helm_1 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  2
  15 9
 0
 
- itm_parthian_helm_inf_heavy_1 Eastern_Hellenistic_Helm Eastern_Hellenistic_Helm 2  parthian_helmet_1 0  parthian_helmet_1_inv 1152921504606846976  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_parthian_helm_inf_heavy_1 Eastern_Hellenistic_Helm Eastern_Hellenistic_Helm 2  parthian_helmet_1 0  parthian_helmet_1_inv 1152921504606846976  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_parthian_helm_inf_heavy_2 Eastern_Hellenistic_Helm Eastern_Hellenistic_Helm 2  parthian_helmet_2 0  parthian_helmet_2_inv 1152921504606846976  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_parthian_helm_inf_heavy_2 Eastern_Hellenistic_Helm Eastern_Hellenistic_Helm 2  parthian_helmet_2 0  parthian_helmet_2_inv 1152921504606846976  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_parthian_helm_inf_heavy_3 Eastern_Hellenistic_Helm Eastern_Hellenistic_Helm 1  parthian_helmet_3 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_parthian_helm_inf_heavy_3 Eastern_Hellenistic_Helm Eastern_Hellenistic_Helm 1  parthian_helmet_3 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_parthian_helm_inf_heavy_4 Eastern_Hellenistic_Helm Eastern_Hellenistic_Helm 1  parthian_helmet_4 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_parthian_helm_inf_heavy_4 Eastern_Hellenistic_Helm Eastern_Hellenistic_Helm 1  parthian_helmet_4 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  12 14 11
 0
@@ -4559,12 +4559,12 @@ itemsfile version 3
  12 14 11
 0
 
- itm_parthian_helm_cavalry_heavy_1 Eastern_Phyrgian_Helm Eastern_Phyrgian_Helm 2  parthian_kedaris_2 0  parthian_kedaris_2_inv 1152921504606846976  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_parthian_helm_cavalry_heavy_1 Eastern_Phyrgian_Helm Eastern_Phyrgian_Helm 2  parthian_kedaris_2 0  parthian_kedaris_2_inv 1152921504606846976  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  12 14 11
 0
 
- itm_parthian_helm_cavalry_heavy_2 Eastern_Phyrgian_Helm Eastern_Phyrgian_Helm 2  parthian_kedaris_5 0  parthian_kedaris_5_inv 1152921504606846976  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_parthian_helm_cavalry_heavy_2 Eastern_Phyrgian_Helm Eastern_Phyrgian_Helm 2  parthian_kedaris_5 0  parthian_kedaris_5_inv 1152921504606846976  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  3
  12 14 11
 0
@@ -4589,27 +4589,27 @@ itemsfile version 3
  12 14 11
 0
 
- itm_armenian_helm_heavy_1 Pointed_Helm Pointed_Helm 1  armenian_helm 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_armenian_helm_heavy_1 Pointed_Helm Pointed_Helm 1  armenian_helm 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  5
  12 14 21 22 11
 0
 
- itm_armenian_helm_heavy_2 Pointed_Helm Pointed_Helm 1  armenian_helm_2 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_armenian_helm_heavy_2 Pointed_Helm Pointed_Helm 1  armenian_helm_2 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  5
  12 14 21 22 11
 0
 
- itm_armenian_helm_heavy_3 Pointed_Helm Pointed_Helm 1  armenian_helm_3 0  1073811212 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_armenian_helm_heavy_3 Pointed_Helm Pointed_Helm 1  armenian_helm_3 0  1073811212 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  5
  12 14 21 22 11
 0
 
- itm_pilos_chad Syrian_Helm Syrian_Helm 1  chad_pilos 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_pilos_chad Syrian_Helm Syrian_Helm 1  chad_pilos 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  5
  12 14 21 22 11
 0
 
- itm_pilos_chad_2 Syrian_Helm Syrian_Helm 1  chad_pilos2 0  65548 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_pilos_chad_2 Syrian_Helm Syrian_Helm 1  chad_pilos2 0  65548 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  5
  12 14 21 22 11
 0
@@ -4649,127 +4649,127 @@ itemsfile version 3
  12 14 21 22 11
 0
 
- itm_eastern_helm5 Eastern_Helm Eastern_Helm 1  ude_helm8 0  65548 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_eastern_helm5 Eastern_Helm Eastern_Helm 1  ude_helm8 0  65548 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  5
  12 14 21 22 11
 0
 
- itm_eastern_helm6 Eastern_Helm Eastern_Helm 1  ude_helm9 0  65548 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_eastern_helm6 Eastern_Helm Eastern_Helm 1  ude_helm9 0  65548 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  5
  12 14 21 22 11
 0
 
- itm_roman_townguard_helm Galea Galea 1  gallic_helmet_brass_2 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_townguard_helm Galea Galea 1  gallic_helmet_brass_2 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_1 Galea_Gallorum_with_plume Galea_Gallorum_with_plume 1  gallic_a_plume 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_1 Galea_Gallorum_with_plume Galea_Gallorum_with_plume 1  gallic_a_plume 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_2 Galea_Gallorum Galea_Gallorum 1  coolus_c 0  1073807372 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_2 Galea_Gallorum Galea_Gallorum 1  coolus_c 0  1073807372 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_centurio Galea_Gallorum_Centurio Galea_Gallorum_Centurio 1  coolus_c_centurio 0  1073807372 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_centurio Galea_Gallorum_Centurio Galea_Gallorum_Centurio 1  coolus_c_centurio 0  1073807372 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_3 Galea_Gallorum Galea_Gallorum 1  gallic_a_plume_2 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_3 Galea_Gallorum Galea_Gallorum 1  gallic_a_plume_2 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_4 Galea_Gallorum_with_plume Galea_Gallorum_with_plume 1  gallic_a_plume_3 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_4 Galea_Gallorum_with_plume Galea_Gallorum_with_plume 1  gallic_a_plume_3 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_5 Galea Galea 1  gallic_helmet_iron_4 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_5 Galea Galea 1  gallic_helmet_iron_4 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_6 Galea Galea 1  gallic_helmet_iron_1 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_6 Galea Galea 1  gallic_helmet_iron_1 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_7 Galea Galea 1  gallic_helmet_iron_2 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_7 Galea Galea 1  gallic_helmet_iron_2 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_8 Galea Galea 1  gallic_helmet_brass_1 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_8 Galea Galea 1  gallic_helmet_brass_1 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_9 Galea Galea 1  coolus_helmet_iron_1 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_9 Galea Galea 1  coolus_helmet_iron_1 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_10 Galea Galea 1  coolus_helmet_iron_2 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_10 Galea Galea 1  coolus_helmet_iron_2 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_aux_helm_11 Galea Galea 1  coolus_helmet_brass_2 0  1073811212 0 1320 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_roman_aux_helm_11 Galea Galea 1  coolus_helmet_brass_2 0  1073811212 0 1321 704643238 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_aux_archer_syorum_helm Galea_Syrorum Galea_Syrorum 1  syrian_auxiliary_helmet_1 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_aux_archer_syorum_helm Galea_Syrorum Galea_Syrorum 1  syrian_auxiliary_helmet_1 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_aux_archer_syorum_helm1 Galea_Syrorum Galea_Syrorum 1  syrian_auxiliary_helmet_2 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_aux_archer_syorum_helm1 Galea_Syrorum Galea_Syrorum 1  syrian_auxiliary_helmet_2 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_imp_aux_cav_weiler_brass_c Galea Galea 1  imp_aux_cav_weiler_brass_c 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_imp_aux_cav_weiler_brass_c Galea Galea 1  imp_aux_cav_weiler_brass_c 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_imp_aux_cav_weiler_brass_b Galea Galea 1  imp_aux_cav_weiler_brass_b 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_imp_aux_cav_weiler_brass_b Galea Galea 1  imp_aux_cav_weiler_brass_b 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_imp_aux_cav_weiler_brass_a Galea Galea 1  imp_aux_cav_weiler_brass_a 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_imp_aux_cav_weiler_brass_a Galea Galea 1  imp_aux_cav_weiler_brass_a 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_imp_aux_cav_weiler_brass_mask_c Galea_with_Mask Galea_with_Mask 1  imp_aux_cav_weiler_brass_mask_c 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_imp_aux_cav_weiler_brass_mask_c Galea_with_Mask Galea_with_Mask 1  imp_aux_cav_weiler_brass_mask_c 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_imp_aux_cav_weiler_brass_mask_b Galea_with_Mask Galea_with_Mask 1  imp_aux_cav_weiler_brass_mask_b 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_imp_aux_cav_weiler_brass_mask_b Galea_with_Mask Galea_with_Mask 1  imp_aux_cav_weiler_brass_mask_b 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_imp_aux_cav_weiler_brass_mask_a Galea_with_Mask Galea_with_Mask 1  imp_aux_cav_weiler_brass_mask_a 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_imp_aux_cav_weiler_brass_mask_a Galea_with_Mask Galea_with_Mask 1  imp_aux_cav_weiler_brass_mask_a 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_1_imp_gallic_b Galea Galea 1  1_Imp_Gallic_B 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_1_imp_gallic_b Galea Galea 1  1_Imp_Gallic_B 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_1_imp_gallic_a Galea Galea 1  1_Imp_Gallic_A 0  65548 0 1320 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
+ itm_1_imp_gallic_a Galea Galea 1  1_Imp_Gallic_A 0  65548 0 1321 704643236 2.750000 80 43 0 0 7 0 0 0 0 0 0 0
  2
  13 23
 0
@@ -4784,82 +4784,82 @@ itemsfile version 3
  13 23
 0
 
- itm_roman_legatus_helm Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry23 0  65548 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry23 0  65548 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_legatus_helm_2 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry23_2 0  65548 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm_2 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry23_2 0  65548 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_legatus_helm_3 Cassis_with_Plume Cassis_with_Plume 1  new_legatus_helm_6 0  1073811212 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm_3 Cassis_with_Plume Cassis_with_Plume 1  new_legatus_helm_6 0  1073811212 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_legatus_helm_4 Cassis_with_Plume Cassis_with_Plume 1  new_legatus_helm_7 0  1073811212 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm_4 Cassis_with_Plume Cassis_with_Plume 1  new_legatus_helm_7 0  1073811212 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_legatus_helm_5 Cassis_with_Plume Cassis_with_Plume 1  new_legatus_helm_8 0  1073811212 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm_5 Cassis_with_Plume Cassis_with_Plume 1  new_legatus_helm_8 0  1073811212 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_legatus_helm_6 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry23_3 0  65548 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm_6 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry23_3 0  65548 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_legatus_helm_7 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry24 0  65548 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm_7 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry24 0  65548 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_legatus_helm_8 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry24_2 0  65548 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm_8 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry24_2 0  65548 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_roman_legatus_helm_9 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry24_3 0  65548 0 1645 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_roman_legatus_helm_9 Cassis_with_Plume Cassis_with_Plume 1  helm_praetorian_cavalry24_3 0  65548 0 1646 704643238 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_legatus_legionis_helm Cassis_with_Plume Cassis_with_Plume 1  legatus_west_new_helm 0  1073811212 0 1645 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_legatus_legionis_helm Cassis_with_Plume Cassis_with_Plume 1  legatus_west_new_helm 0  1073811212 0 1646 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_legatus_legionis_helm_2 Cassis_with_Plume Cassis_with_Plume 1  legatus_west_new_helm_2 0  1073811212 0 1645 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_legatus_legionis_helm_2 Cassis_with_Plume Cassis_with_Plume 1  legatus_west_new_helm_2 0  1073811212 0 1646 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_legatus_legionis_helm_3 Cassis_with_Plume Cassis_with_Plume 1  legatus_west_new_helm_3 0  1073811212 0 1645 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_legatus_legionis_helm_3 Cassis_with_Plume Cassis_with_Plume 1  legatus_west_new_helm_3 0  1073811212 0 1646 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_legatus_legionis_helm_4 Cassis_with_Plume Cassis_with_Plume 1  rome_helm_general 0  65548 0 1645 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_legatus_legionis_helm_4 Cassis_with_Plume Cassis_with_Plume 1  rome_helm_general 0  65548 0 1646 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_cav_decurio_helm Cassis_with_Plume Cassis_with_Plume 1  decurion_cavalry_helm 0  1073811212 0 1645 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_cav_decurio_helm Cassis_with_Plume Cassis_with_Plume 1  decurion_cavalry_helm 0  1073811212 0 1646 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_cav_decurio_helm_2 Cassis_with_Plume Cassis_with_Plume 1  decurion_cavalry_helm_2 0  1073811212 0 1645 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_cav_decurio_helm_2 Cassis_with_Plume Cassis_with_Plume 1  decurion_cavalry_helm_2 0  1073811212 0 1646 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_cav_decurio_helm_3 Cassis_with_Plume Cassis_with_Plume 1  decurion_cavalry_helm_3 0  1073811212 0 1645 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
+ itm_cav_decurio_helm_3 Cassis_with_Plume Cassis_with_Plume 1  decurion_cavalry_helm_3 0  1073811212 0 1646 704643236 3.000000 50 48 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
@@ -4989,67 +4989,67 @@ itemsfile version 3
  13 23
 0
 
- itm_praetorian_helm_2 Galea_with_Plume Galea_with_Plume 1  praetorian_helm_2 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_praetorian_helm_2 Galea_with_Plume Galea_with_Plume 1  praetorian_helm_2 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_praetorian_helm_1 Galea_with_Plume Galea_with_Plume 1  praetorian_helm_1 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_praetorian_helm_1 Galea_with_Plume Galea_with_Plume 1  praetorian_helm_1 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_praetorian_helm_mask_1 Galea_with_Plume Galea_with_Plume 1  praetorian_helm_mask_1 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_praetorian_helm_mask_1 Galea_with_Plume Galea_with_Plume 1  praetorian_helm_mask_1 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_auxilia_cent_helmet_3 Galea_with_Plume Galea_with_Plume 1  auxilia_cent_helmet_3 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_auxilia_cent_helmet_3 Galea_with_Plume Galea_with_Plume 1  auxilia_cent_helmet_3 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_auxilia_cent_helmet_2 Galea_with_Plume Galea_with_Plume 1  auxilia_cent_helmet_2 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_auxilia_cent_helmet_2 Galea_with_Plume Galea_with_Plume 1  auxilia_cent_helmet_2 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_auxilia_cent_helmet_1 Galea_with_Plume Galea_with_Plume 1  auxilia_cent_helmet_1 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_auxilia_cent_helmet_1 Galea_with_Plume Galea_with_Plume 1  auxilia_cent_helmet_1 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_centurio_helm_3 Galea_with_Plume Galea_with_Plume 1  centurio_helm_3 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_centurio_helm_3 Galea_with_Plume Galea_with_Plume 1  centurio_helm_3 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_centurio_helm_2 Galea_with_Plume Galea_with_Plume 1  centurio_helm_2 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_centurio_helm_2 Galea_with_Plume Galea_with_Plume 1  centurio_helm_2 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_centurio_helm_1 Galea_with_Plume Galea_with_Plume 1  centurio_helm_1 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_centurio_helm_1 Galea_with_Plume Galea_with_Plume 1  centurio_helm_1 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_praetorian_cent_helmet4 Galea_with_Plume Galea_with_Plume 1  praetorian_cent_helmet4 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_praetorian_cent_helmet4 Galea_with_Plume Galea_with_Plume 1  praetorian_cent_helmet4 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_praetorian_cent_helmet3 Galea_with_Plume Galea_with_Plume 1  praetorian_cent_helmet3 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_praetorian_cent_helmet3 Galea_with_Plume Galea_with_Plume 1  praetorian_cent_helmet3 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_praetorian_cent_helmet2 Galea_with_Plume Galea_with_Plume 1  praetorian_cent_helmet2 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_praetorian_cent_helmet2 Galea_with_Plume Galea_with_Plume 1  praetorian_cent_helmet2 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_praetorian_cent_helmet Galea_with_Plume Galea_with_Plume 1  praetorian_cent_helmet 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_praetorian_cent_helmet Galea_with_Plume Galea_with_Plume 1  praetorian_cent_helmet 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
@@ -5064,17 +5064,17 @@ itemsfile version 3
  13 23
 0
 
- itm_pretorian_cavalry_helm_2 Galea_with_Mask Galea_with_Mask 1  pretorian_cavalry_helm_2 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_pretorian_cavalry_helm_2 Galea_with_Mask Galea_with_Mask 1  pretorian_cavalry_helm_2 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_pretorian_cavalry_helm_3 Galea_with_Mask Galea_with_Mask 1  pretorian_cavalry_helm_3 0  65548 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_pretorian_cavalry_helm_3 Galea_with_Mask Galea_with_Mask 1  pretorian_cavalry_helm_3 0  65548 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
 
- itm_auxiliary_cavalry_vecsilary_pretorian_helm Galea_with_Leopardskin Galea_with_Leopardskin 1  auxiliary_cavalry_vecsilary_pretorian_helm 0  1073811212 0 1577 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
+ itm_auxiliary_cavalry_vecsilary_pretorian_helm Galea_with_Leopardskin Galea_with_Leopardskin 1  auxiliary_cavalry_vecsilary_pretorian_helm 0  1073811212 0 1578 704643236 3.000000 60 47 0 0 8 0 0 0 0 0 0 0
  2
  13 23
 0
@@ -5209,7 +5209,7 @@ itemsfile version 3
  0
 0
 
- itm_footman_helmet Leather_Warrior_Cap Leather_Warrior_Cap 1  skull_cap_new_b 0  65548 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_footman_helmet Leather_Warrior_Cap Leather_Warrior_Cap 1  skull_cap_new_b 0  65548 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  0
 0
 
@@ -5273,12 +5273,12 @@ itemsfile version 3
  13 23 11 12 14
 0
 
- itm_desert_padded_hat_a Padded_Cap Padded_Cap 1  padded_hat_a 0  68719542284 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_desert_padded_hat_a Padded_Cap Padded_Cap 1  padded_hat_a 0  68719542284 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 0
 
- itm_sarranid_warrior_cap Warrior_Cap Warrior_Cap 1  tuareg_helmet 0  68719542284 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_sarranid_warrior_cap Warrior_Cap Warrior_Cap 1  tuareg_helmet 0  68719542284 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 0
@@ -5288,7 +5288,7 @@ itemsfile version 3
  13 23 11 12 14
 0
 
- itm_sarranid_helmet1 Keffiyeh_Helmet Keffiyeh_Helmet 1  sar_helmet1 0  65548 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_sarranid_helmet1 Keffiyeh_Helmet Keffiyeh_Helmet 1  sar_helmet1 0  65548 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 0
@@ -5313,67 +5313,67 @@ itemsfile version 3
  itm_new_sarranid_head_cloth Veil Veil 1  new_tulbent 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  0
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_new_sarranid_head_cloth_2 Veil Veil 1  new_tulbent_2 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  0
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_new_sarranid_head_cloth_3 Veil Veil 1  new_tulbent_3 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  0
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_sarranid_head_cloth Lady_Head_Cloth Lady_Head_Cloth 1  tulbent 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  0
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_sarranid_head_cloth_b Lady_Head_Cloth Lady_Head_Cloth 1  tulbent_b 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  0
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_sarranid_head_cloth_c Lady_Head_Cloth Lady_Head_Cloth 1  tulbent_blue 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  0
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_sarranid_head_cloth_d Lady_Head_Cloth Lady_Head_Cloth 1  tulbent_red 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  0
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_roman_noble_shawl_1 Roman_Shal Roman_Shal 1  roman_noble_shawl_1 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  2
  13 23
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_roman_noble_shawl_2 Roman_Shal Roman_Shal 1  roman_noble_shawl_2 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  2
  13 23
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_roman_noble_shawl_3 Roman_Shal Roman_Shal 1  roman_noble_shawl_3 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  2
  13 23
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_roman_noble_shawl_4 Roman_Shal Roman_Shal 1  roman_noble_shawl_4 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  2
  13 23
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_roman_noble_shawl_5 Roman_Shal Roman_Shal 1  roman_noble_shawl_5 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  2
  13 23
 1
--50.000000  2 2136 3 1224979098644774912 216172782113790061 216172782113790062 1964 1 1224979098644774912 
+-50.000000  2 2136 3 1224979098644774912 216172782113790062 216172782113790063 1964 1 1224979098644774912 
 
  itm_sarranid_felt_head_cloth Head_Cloth Head_Cloth 1  common_tulbent 0  1610682124 0 19 123731968 0.750000 80 6 0 0 0 0 0 0 0 0 0 0
  0
@@ -5733,7 +5733,7 @@ itemsfile version 3
  73
 0
 
- itm_sarissa Sarissa Sarissa 1  macedoniansarissa 0  11821949437165572 27021597965549824 157 8202 7.000000 100 0 0 0 14 0 75 0 400 0 281 281
+ itm_sarissa Sarissa Sarissa 1  macedoniansarissa 0  11821949437165572 27021597965549824 158 8202 7.000000 100 0 0 0 14 0 75 0 400 0 281 281
  1
  73
 0
@@ -5793,12 +5793,12 @@ itemsfile version 3
  21 22 12 14 11
 0
 
- itm_bamboo_spear Bamboo_Spear Bamboo_Spear 1  arabian_spear_a_3m 0  11821950108499972 31243722616209664 226 8202 3.500000 100 0 0 0 10 0 94 0 200 0 284 284
+ itm_bamboo_spear Bamboo_Spear Bamboo_Spear 1  arabian_spear_a_3m 0  11821950108499972 31243722616209664 227 8202 3.500000 100 0 0 0 10 0 94 0 200 0 284 284
  4
  21 22 12 14
 0
 
- itm_eastern_spear_149 Eastern_Spear Eastern_Spear 1  eastern_spear_149 0  11259000155078660 31243722616209664 332 8202 2.500000 100 0 0 0 7 0 100 0 149 0 286 286
+ itm_eastern_spear_149 Eastern_Spear Eastern_Spear 1  eastern_spear_149 0  11259000155078660 31243722616209664 335 8202 2.500000 100 0 0 0 7 0 100 0 149 0 286 286
  5
  21 22 11 12 14
 0
@@ -5808,7 +5808,7 @@ itemsfile version 3
  21 22 11 12 14
 0
 
- itm_syrian_spear_1_145 Eastern_Spear Eastern_Spear 1  syrian_spear_1_145 0  11259000155078660 31243722616209664 330 8202 2.500000 100 0 0 0 7 0 100 0 145 0 286 286
+ itm_syrian_spear_1_145 Eastern_Spear Eastern_Spear 1  syrian_spear_1_145 0  11259000155078660 31243722616209664 335 8202 2.500000 100 0 0 0 7 0 100 0 145 0 286 286
  4
  21 22 12 14
 0
@@ -5878,7 +5878,7 @@ itemsfile version 3
  6 13 23 12 14 11
 0
 
- itm_dacian_short_spear Dacian_Spear Dacian_Spear 1  dacian_short_spear 0  11259000155078660 31243722616209664 343 8202 2.250000 100 0 0 0 7 0 102 0 127 0 286 286
+ itm_dacian_short_spear Dacian_Spear Dacian_Spear 1  dacian_short_spear 0  11259000155078660 31243722616209664 348 8202 2.250000 100 0 0 0 7 0 102 0 127 0 286 286
  1
  6
 0
@@ -5962,17 +5962,17 @@ itemsfile version 3
  10
 0
 
- itm_germanic_war_spear Germanic_Spear Germanic_Spear 1  spjot 0  2251800900337668 31243722616209664 122 8202 2.000000 100 0 0 0 8 0 102 0 119 0 285 285
+ itm_germanic_war_spear Germanic_Spear Germanic_Spear 1  spjot 0  2251800900337668 31243722616209664 124 8202 2.000000 100 0 0 0 8 0 102 0 119 0 285 285
  1
  10
 0
 
- itm_germanic_war_spear_2 Germanic_Spear Germanic_Spear 1  langr_bryntvari 0  2251800900337668 31243722616209664 245 8202 3.000000 100 0 0 0 9 0 98 0 170 0 285 285
+ itm_germanic_war_spear_2 Germanic_Spear Germanic_Spear 1  langr_bryntvari 0  2251800900337668 31243722616209664 247 8202 3.000000 100 0 0 0 9 0 98 0 170 0 285 285
  1
  10
 0
 
- itm_germanic_war_spear_3 Germanic_Spear Germanic_Spear 1  spjotkesja 0  2251800900337668 31243722616209664 269 8202 3.000000 100 0 0 0 9 0 98 0 170 0 286 286
+ itm_germanic_war_spear_3 Germanic_Spear Germanic_Spear 1  spjotkesja 0  2251800900337668 31243722616209664 270 8202 3.000000 100 0 0 0 9 0 98 0 170 0 286 286
  1
  10
 0
@@ -5992,12 +5992,12 @@ itemsfile version 3
  11
 0
 
- itm_numidian_spear_2 Numidian_War_Spear Numidian_War_Spear 1  numidian_spear_2 0  11259000155078660 31243722616209664 320 8202 3.000000 100 0 0 0 7 0 98 0 167 0 286 286
+ itm_numidian_spear_2 Numidian_War_Spear Numidian_War_Spear 1  numidian_spear_2 0  11259000155078660 31243722616209664 321 8202 3.000000 100 0 0 0 7 0 98 0 167 0 286 286
  1
  11
 0
 
- itm_numidian_spear_1 Numidian_Spear Numidian_Spear 1  numidian_spear_1 0  11259000155078660 31243722616209664 277 8202 2.500000 100 0 0 0 7 0 100 0 142 0 284 284
+ itm_numidian_spear_1 Numidian_Spear Numidian_Spear 1  numidian_spear_1 0  11259000155078660 31243722616209664 281 8202 2.500000 100 0 0 0 7 0 100 0 142 0 284 284
  1
  11
 0
@@ -6032,7 +6032,7 @@ itemsfile version 3
  11
 0
 
- itm_armenian_war_spear Armenian_War_Spear Armenian_War_Spear 1  armenian_war_spear 0  11259000155078660 31243722616209664 297 8202 2.750000 100 0 0 0 7 0 99 0 160 0 285 285
+ itm_armenian_war_spear Armenian_War_Spear Armenian_War_Spear 1  armenian_war_spear 0  11259000155078660 31243722616209664 301 8202 2.750000 100 0 0 0 7 0 99 0 160 0 285 285
  1
  11
 0
@@ -6042,7 +6042,7 @@ itemsfile version 3
  11
 0
 
- itm_caucasian_spear_145 Caucasian_Spear Caucasian_Spear 1  caucasian_spear_145 0  11259000155078660 31243722616209664 277 8202 2.500000 100 0 0 0 7 0 100 0 145 0 284 284
+ itm_caucasian_spear_145 Caucasian_Spear Caucasian_Spear 1  caucasian_spear_145 0  11259000155078660 31243722616209664 281 8202 2.500000 100 0 0 0 7 0 100 0 145 0 284 284
  1
  11
 0
@@ -6146,7 +6146,7 @@ itemsfile version 3
  13 23
 0
 
- itm_hasta1 Long_Hasta Long_Hasta 1  roman_spear_178 0  2251800900337668 31243722616209664 368 8202 3.000000 100 0 0 0 9 0 97 0 178 0 286 286
+ itm_hasta1 Long_Hasta Long_Hasta 1  roman_spear_178 0  2251800900337668 31243722616209664 372 8202 3.000000 100 0 0 0 9 0 97 0 178 0 286 286
  2
  13 23
 0
@@ -6236,7 +6236,7 @@ itemsfile version 3
  11 9
 0
 
- itm_sarmatian_spear_169 Sarmatian_Spear Sarmatian_Spear 1  sarmatian_spear_169 0  11259000155078660 31243722616209664 318 8202 2.250000 100 0 0 0 7 0 98 0 169 0 286 286
+ itm_sarmatian_spear_169 Sarmatian_Spear Sarmatian_Spear 1  sarmatian_spear_169 0  11259000155078660 31243722616209664 321 8202 2.250000 100 0 0 0 7 0 98 0 169 0 286 286
  1
  9
 0
@@ -6245,7 +6245,7 @@ itemsfile version 3
  0
 0
 
- itm_pitch_fork Pitch_Fork Pitch_Fork 1  pitchfork23 0  11259000289296388 4222124851990272 79 8202 2.750000 100 0 0 0 7 0 99 0 154 0 275 526
+ itm_pitch_fork Pitch_Fork Pitch_Fork 1  pitchfork23 0  11259000289296388 4222124851990272 80 8202 2.750000 100 0 0 0 7 0 99 0 154 0 275 526
  0
 0
 
@@ -6253,11 +6253,11 @@ itemsfile version 3
  0
 0
 
- itm_staff Staff Staff 1  wooden_staff_swup 0  2251801034686468 4222129415393024 133 8202 2.250000 100 0 0 0 6 0 102 0 128 0 531 530
+ itm_staff Staff Staff 1  wooden_staff_swup 0  2251801034686468 4222129415393024 134 8202 2.250000 100 0 0 0 6 0 102 0 128 0 531 530
  0
 0
 
- itm_quarter_staff Quarter_Staff Quarter_Staff 1  quarter_staff_swup 0  2251800900468740 4222129415393024 178 8202 2.250000 100 0 0 0 7 0 101 0 137 0 532 532
+ itm_quarter_staff Quarter_Staff Quarter_Staff 1  quarter_staff_swup 0  2251800900468740 4222129415393024 179 8202 2.250000 100 0 0 0 7 0 101 0 137 0 532 532
  0
 0
 
@@ -6265,16 +6265,16 @@ itemsfile version 3
  0
 0
 
- itm_boar_spear Boar_Spear Boar_Spear 1  german_hunting_spear 0  11821950108499972 4222124851990272 383 8202 2.750000 100 0 0 0 9 0 99 0 157 0 282 26
+ itm_boar_spear Boar_Spear Boar_Spear 1  german_hunting_spear 0  11821950108499972 4222124851990272 388 8202 2.750000 100 0 0 0 9 0 99 0 157 0 282 26
  0
 0
 
- itm_old_spear_1 Hasta Hasta 1  spear_4_133 0  2251800900337668 31243722616209664 336 8202 2.250000 100 0 0 0 8 0 101 0 133 0 285 285
+ itm_old_spear_1 Hasta Hasta 1  spear_4_133 0  2251800900337668 31243722616209664 341 8202 2.250000 100 0 0 0 8 0 101 0 133 0 285 285
  2
  13 23
 0
 
- itm_old_spear_2 Hasta Hasta 1  spear_6_154 0  2251800900337668 31243722616209664 297 8202 2.750000 100 0 0 0 7 0 99 0 154 0 285 285
+ itm_old_spear_2 Hasta Hasta 1  spear_6_154 0  2251800900337668 31243722616209664 301 8202 2.750000 100 0 0 0 7 0 99 0 154 0 285 285
  2
  13 23
 0
@@ -6283,11 +6283,11 @@ itemsfile version 3
  0
 0
 
- itm_spear Spear Spear 1  spear_h_2-15m 0  11259000155078660 31243722616209664 277 8202 2.500000 100 0 0 0 9 0 100 0 145 0 285 285
+ itm_spear Spear Spear 1  spear_h_2-15m 0  11259000155078660 31243722616209664 281 8202 2.500000 100 0 0 0 9 0 100 0 145 0 285 285
  0
 0
 
- itm_war_spear War_Spear War_Spear 1  hoggkesja 0  11259000155078660 31243722616209664 345 8202 2.000000 100 0 0 0 7 0 102 0 122 0 286 286
+ itm_war_spear War_Spear War_Spear 1  hoggkesja 0  11259000155078660 31243722616209664 348 8202 2.000000 100 0 0 0 7 0 102 0 122 0 286 286
  0
 0
 
@@ -6295,12 +6295,12 @@ itemsfile version 3
  0
 0
 
- itm_greek_spear_1 Spear Spear 1  greek_spear_doru_steel 0  11259000155078660 31243722616209664 297 8202 2.750000 100 0 0 0 9 0 99 0 160 0 285 285
+ itm_greek_spear_1 Spear Spear 1  greek_spear_doru_steel 0  11259000155078660 31243722616209664 301 8202 2.750000 100 0 0 0 9 0 99 0 160 0 285 285
  4
  13 23 11 12
 0
 
- itm_greek_spear_2 Spear Spear 1  greek_spear_doru_2_steel 0  11259000155078660 31243722616209664 293 8202 3.000000 100 0 0 0 9 0 98 0 170 0 285 285
+ itm_greek_spear_2 Spear Spear 1  greek_spear_doru_2_steel 0  11259000155078660 31243722616209664 295 8202 3.000000 100 0 0 0 9 0 98 0 170 0 285 285
  4
  13 23 11 12
 0
@@ -6309,7 +6309,7 @@ itemsfile version 3
  0
 0
 
- itm_heavy_lance Long_Kontos Long_Kontos 1  spear_f_2-9m 0  11821952258080772 31243722616209664 203 8202 6.250000 100 0 0 0 10 0 78 0 350 0 284 284
+ itm_heavy_lance Long_Kontos Long_Kontos 1  spear_f_2-9m 0  11821952258080772 31243722616209664 204 8202 6.250000 100 0 0 0 10 0 78 0 350 0 284 284
  0
 0
 
@@ -6349,7 +6349,7 @@ itemsfile version 3
  0
 0
 
- itm_ad_mixed_round_shields_08 Round_Shield Round_Shield 1  ad_mixed_round_shields_08 0  327687 5100273664 68 167772194 0.500000 100 0 19 0 0 310 95 0 47 0 0 0
+ itm_ad_mixed_round_shields_08 Round_Shield Round_Shield 1  ad_mixed_round_shields_08 0  327687 5100273664 71 167772194 0.500000 100 0 19 0 0 310 95 0 47 0 0 0
  0
 0
 
@@ -6357,7 +6357,7 @@ itemsfile version 3
  0
 0
 
- itm_ad_mixed_round_shields_14 Round_Shield Round_Shield 1  ad_mixed_round_shields_14 0  327687 5100273664 74 167772194 0.500000 100 0 19 0 0 310 95 0 49 0 0 0
+ itm_ad_mixed_round_shields_14 Round_Shield Round_Shield 1  ad_mixed_round_shields_14 0  327687 5100273664 78 167772194 0.500000 100 0 19 0 0 310 95 0 49 0 0 0
  0
 0
 
@@ -6369,316 +6369,316 @@ itemsfile version 3
  0
 0
 
- itm_bosphoran_shield_new_1 Bosporan_Thuros Bosporan_Thuros 1  bosphoran_shield_new_1 0  327687 4831838208 84 167772194 0.500000 116 0 22 0 0 340 90 50 28 0 0 0
+ itm_bosphoran_shield_new_1 Bosporan_Thuros Bosporan_Thuros 1  bosphoran_shield_new_1 0  327687 4831838208 89 167772194 0.500000 116 0 22 0 0 340 90 50 28 0 0 0
  1
  15
 0
 
- itm_bosphoran_shield_new_2 Bosporan_Thuros Bosporan_Thuros 1  bosphoran_shield_new_2 0  327687 4831838208 84 167772194 0.500000 116 0 22 0 0 340 90 50 28 0 0 0
+ itm_bosphoran_shield_new_2 Bosporan_Thuros Bosporan_Thuros 1  bosphoran_shield_new_2 0  327687 4831838208 89 167772194 0.500000 116 0 22 0 0 340 90 50 28 0 0 0
  1
  15
 0
 
- itm_bosphoran_shield_new_3 Bosporan_Thuros Bosporan_Thuros 1  bosphoran_shield_new_3 0  327687 4831838208 84 167772194 0.500000 116 0 22 0 0 340 90 50 28 0 0 0
+ itm_bosphoran_shield_new_3 Bosporan_Thuros Bosporan_Thuros 1  bosphoran_shield_new_3 0  327687 4831838208 89 167772194 0.500000 116 0 22 0 0 340 90 50 28 0 0 0
  1
  15
 0
 
- itm_bosphoran_shield_new_4 Bosporan_Thuros Bosporan_Thuros 1  bosphoran_shield_new_4 0  327687 4831838208 84 167772194 0.500000 116 0 22 0 0 340 90 50 28 0 0 0
+ itm_bosphoran_shield_new_4 Bosporan_Thuros Bosporan_Thuros 1  bosphoran_shield_new_4 0  327687 4831838208 89 167772194 0.500000 116 0 22 0 0 340 90 50 28 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_1 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_blue 0  327687 4831838208 156 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_1 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_blue 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_2 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_red 0  327687 4831838208 156 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_2 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_red 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_3 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_yellow 0  327687 4831838208 156 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_3 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_yellow 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_4 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_green 0  327687 4831838208 156 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_4 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_green 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_5 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_leather 0  327687 4831838208 156 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_5 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_leather 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_caucasian_shield_1 North_Caucasian_Wicker_Shield North_Caucasian_Wicker_Shield 1  caucasian_shield_1 0  327687 5100273664 102 167772194 0.750000 100 0 22 0 0 340 95 66 25 0 0 0
+ itm_caucasian_shield_1 North_Caucasian_Wicker_Shield North_Caucasian_Wicker_Shield 1  caucasian_shield_1 0  327687 5100273664 105 167772194 0.750000 100 0 22 0 0 340 95 66 25 0 0 0
  1
  11
 0
 
- itm_caucasian_shield_2 North_Caucasian_Wicker_Shield North_Caucasian_Wicker_Shield 1  caucasian_shield_2 0  327687 5100273664 102 167772194 0.750000 100 0 22 0 0 340 95 66 25 0 0 0
+ itm_caucasian_shield_2 North_Caucasian_Wicker_Shield North_Caucasian_Wicker_Shield 1  caucasian_shield_2 0  327687 5100273664 105 167772194 0.750000 100 0 22 0 0 340 95 66 25 0 0 0
  1
  11
 0
 
- itm_hoplon_1 Old_Hoplon Old_Hoplon 1  s_hoplon10 0  262151 5100273664 453 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
+ itm_hoplon_1 Old_Hoplon Old_Hoplon 1  s_hoplon10 0  262151 5100273664 466 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
  1
  73
 0
 
- itm_hoplon_2 Old_Hoplon Old_Hoplon 1  s_hoplon11 0  262151 5100273664 453 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
+ itm_hoplon_2 Old_Hoplon Old_Hoplon 1  s_hoplon11 0  262151 5100273664 466 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
  1
  73
 0
 
- itm_hoplon_4 Old_Hoplon Old_Hoplon 1  s_hoplon7 0  262151 5100273664 453 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
+ itm_hoplon_4 Old_Hoplon Old_Hoplon 1  s_hoplon7 0  262151 5100273664 466 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
  1
  73
 0
 
- itm_hoplon_5 Old_Hoplon Old_Hoplon 1  s_hoplon8 0  262151 5100273664 453 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
+ itm_hoplon_5 Old_Hoplon Old_Hoplon 1  s_hoplon8 0  262151 5100273664 466 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
  1
  73
 0
 
- itm_hoplon_6 Old_Hoplon Old_Hoplon 1  s_hoplon9 0  262151 5100273664 453 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
+ itm_hoplon_6 Old_Hoplon Old_Hoplon 1  s_hoplon9 0  262151 5100273664 466 167772194 2.750000 100 0 26 0 0 375 90 0 75 0 0 0
  1
  73
 0
 
- itm_s_parma_mak_plain_16 Old_Parma Old_Parma 1  s_parma_mak_plain_16 0  262151 5368709120 107 167772194 0.500000 100 0 26 0 0 375 97 0 37 0 0 0
+ itm_s_parma_mak_plain_16 Old_Parma Old_Parma 1  s_parma_mak_plain_16 0  262151 5368709120 113 167772194 0.500000 100 0 26 0 0 375 97 0 37 0 0 0
  1
  73
 0
 
- itm_s_parma_mak_plain_15 Old_Parma Old_Parma 1  s_parma_mak_plain_15 0  262151 5368709120 107 167772194 0.500000 100 0 26 0 0 375 97 0 37 0 0 0
+ itm_s_parma_mak_plain_15 Old_Parma Old_Parma 1  s_parma_mak_plain_15 0  262151 5368709120 113 167772194 0.500000 100 0 26 0 0 375 97 0 37 0 0 0
  1
  73
 0
 
- itm_s_parma_mak_plain_14 Old_Parma Old_Parma 1  s_parma_mak_plain_14 0  262151 5368709120 107 167772194 0.500000 100 0 26 0 0 375 97 0 37 0 0 0
+ itm_s_parma_mak_plain_14 Old_Parma Old_Parma 1  s_parma_mak_plain_14 0  262151 5368709120 113 167772194 0.500000 100 0 26 0 0 375 97 0 37 0 0 0
  1
  73
 0
 
- itm_s_parma_mak_plain_13 Old_Parma Old_Parma 1  s_parma_mak_plain_13 0  262151 5368709120 107 167772194 0.500000 100 0 26 0 0 375 97 0 37 0 0 0
+ itm_s_parma_mak_plain_13 Old_Parma Old_Parma 1  s_parma_mak_plain_13 0  262151 5368709120 113 167772194 0.500000 100 0 26 0 0 375 97 0 37 0 0 0
  1
  73
 0
 
- itm_african_shield_1 African_Shield African_Shield 1  african_shield_2 0  327687 4831838208 210 167772194 1.500000 100 0 22 0 0 340 95 83 40 0 0 0
+ itm_african_shield_1 African_Shield African_Shield 1  african_shield_2 0  327687 4831838208 212 167772194 1.500000 100 0 22 0 0 340 95 83 40 0 0 0
  3
  12 14 11
 0
 
- itm_african_shield_2 African_Shield African_Shield 1  african_shield_3 0  327687 4831838208 216 167772194 1.500000 100 0 22 0 0 340 95 91 38 0 0 0
+ itm_african_shield_2 African_Shield African_Shield 1  african_shield_3 0  327687 4831838208 221 167772194 1.500000 100 0 22 0 0 340 95 91 38 0 0 0
  3
  12 14 11
 0
 
- itm_african_shield_3 African_Shield African_Shield 1  african_shield_1 0  327687 4831838208 216 167772194 1.500000 100 0 22 0 0 340 95 85 40 0 0 0
+ itm_african_shield_3 African_Shield African_Shield 1  african_shield_1 0  327687 4831838208 217 167772194 1.500000 100 0 22 0 0 340 95 85 40 0 0 0
  3
  12 14 11
 0
 
- itm_african_round_shield African_Round_Shield African_Round_Shield 1  african_round_shield 0  327687 5100273664 74 167772194 0.500000 100 0 19 0 0 310 95 0 49 0 0 0
+ itm_african_round_shield African_Round_Shield African_Round_Shield 1  african_round_shield 0  327687 5100273664 78 167772194 0.500000 100 0 19 0 0 310 95 0 49 0 0 0
  0
 0
 
- itm_nubian_kite_shield_1 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_1 0  262151 4831838208 228 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
+ itm_nubian_kite_shield_1 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_1 0  262151 4831838208 230 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
  0
 0
 
- itm_nubian_kite_shield_2 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_2 0  262151 4831838208 228 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
+ itm_nubian_kite_shield_2 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_2 0  262151 4831838208 230 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
  0
 0
 
- itm_nubian_kite_shield_3 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_3 0  262151 4831838208 228 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
+ itm_nubian_kite_shield_3 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_3 0  262151 4831838208 230 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
  0
 0
 
- itm_nubian_kite_shield_4 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_4 0  262151 4831838208 228 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
+ itm_nubian_kite_shield_4 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_4 0  262151 4831838208 230 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
  0
 0
 
- itm_nubian_kite_shield_5 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_5 0  262151 4831838208 228 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
+ itm_nubian_kite_shield_5 Nubian_Heater_Shield Nubian_Heater_Shield 1  nubian_kite_shield_5 0  262151 4831838208 230 167772194 1.500000 10 0 22 0 0 340 92 40 30 0 0 0
  0
 0
 
- itm_eastern_shield_inf_light1 Light_Eastern_Shield Light_Eastern_Shield 1  eovalspineless1 0  327687 4831838208 210 167772194 1.500000 70 0 22 0 0 340 95 83 40 0 0 0
+ itm_eastern_shield_inf_light1 Light_Eastern_Shield Light_Eastern_Shield 1  eovalspineless1 0  327687 4831838208 212 167772194 1.500000 70 0 22 0 0 340 95 83 40 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light2 Light_Eastern_Shield Light_Eastern_Shield 1  eovalspineless2 0  327687 4831838208 210 167772194 1.500000 70 0 22 0 0 340 95 83 40 0 0 0
+ itm_eastern_shield_inf_light2 Light_Eastern_Shield Light_Eastern_Shield 1  eovalspineless2 0  327687 4831838208 212 167772194 1.500000 70 0 22 0 0 340 95 83 40 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light3 Light_Eastern_Shield Light_Eastern_Shield 1  eovalspineless3 0  327687 4831838208 210 167772194 1.500000 70 0 22 0 0 340 95 83 40 0 0 0
+ itm_eastern_shield_inf_light3 Light_Eastern_Shield Light_Eastern_Shield 1  eovalspineless3 0  327687 4831838208 212 167772194 1.500000 70 0 22 0 0 340 95 83 40 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light4 Light_Eastern_Shield Light_Eastern_Shield 1  eovalspineless4 0  327687 4831838208 210 167772194 1.500000 70 0 22 0 0 340 95 83 40 0 0 0
+ itm_eastern_shield_inf_light4 Light_Eastern_Shield Light_Eastern_Shield 1  eovalspineless4 0  327687 4831838208 212 167772194 1.500000 70 0 22 0 0 340 95 83 40 0 0 0
  3
  12 14 11
 0
 
- itm_heavy_wicker_1 Eastern_Shield Eastern_Shield 1  heavy_wicker_1 0  327687 6442450944 750 167772194 4.750000 70 0 26 0 0 375 90 130 55 0 0 0
+ itm_heavy_wicker_1 Eastern_Shield Eastern_Shield 1  heavy_wicker_1 0  327687 6442450944 754 167772194 4.750000 70 0 26 0 0 375 90 130 55 0 0 0
  3
  12 14 11
 0
 
- itm_heavy_wicker_2 Eastern_Shield Eastern_Shield 1  heavy_wicker_2 0  327687 6442450944 750 167772194 4.750000 70 0 26 0 0 375 90 130 55 0 0 0
+ itm_heavy_wicker_2 Eastern_Shield Eastern_Shield 1  heavy_wicker_2 0  327687 6442450944 754 167772194 4.750000 70 0 26 0 0 375 90 130 55 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light5 Eastern_Shield Eastern_Shield 1  wicker1 0  327687 6442450944 456 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
+ itm_eastern_shield_inf_light5 Eastern_Shield Eastern_Shield 1  wicker1 0  327687 6442450944 457 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light6 Eastern_Shield Eastern_Shield 1  wicker2 0  327687 6442450944 456 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
+ itm_eastern_shield_inf_light6 Eastern_Shield Eastern_Shield 1  wicker2 0  327687 6442450944 457 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light7 Eastern_Shield Eastern_Shield 1  wicker3 0  327687 6442450944 456 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
+ itm_eastern_shield_inf_light7 Eastern_Shield Eastern_Shield 1  wicker3 0  327687 6442450944 457 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light8 Eastern_Shield Eastern_Shield 1  wicker4 0  327687 6442450944 456 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
+ itm_eastern_shield_inf_light8 Eastern_Shield Eastern_Shield 1  wicker4 0  327687 6442450944 457 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light9 Eastern_Shield Eastern_Shield 1  wicker5 0  327687 6442450944 456 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
+ itm_eastern_shield_inf_light9 Eastern_Shield Eastern_Shield 1  wicker5 0  327687 6442450944 457 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_light10 Eastern_Shield Eastern_Shield 1  wicker6 0  327687 6442450944 456 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
+ itm_eastern_shield_inf_light10 Eastern_Shield Eastern_Shield 1  wicker6 0  327687 6442450944 457 167772194 3.250000 80 0 22 0 0 375 90 130 55 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy1 Eastern_Shield Eastern_Shield 1  efoval1 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy1 Eastern_Shield Eastern_Shield 1  efoval1 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy2 Eastern_Shield Eastern_Shield 1  efoval2 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy2 Eastern_Shield Eastern_Shield 1  efoval2 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy3 Eastern_Shield Eastern_Shield 1  efoval3 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy3 Eastern_Shield Eastern_Shield 1  efoval3 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy4 Eastern_Shield Eastern_Shield 1  efoval4 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy4 Eastern_Shield Eastern_Shield 1  efoval4 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy5 Eastern_Shield Eastern_Shield 1  efoval5 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy5 Eastern_Shield Eastern_Shield 1  efoval5 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy6 Eastern_Shield Eastern_Shield 1  efoval6 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy6 Eastern_Shield Eastern_Shield 1  efoval6 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy7 Eastern_Shield Eastern_Shield 1  efoval7 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy7 Eastern_Shield Eastern_Shield 1  efoval7 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy8 Eastern_Shield Eastern_Shield 1  efoval8 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy8 Eastern_Shield Eastern_Shield 1  efoval8 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy9 Eastern_Shield Eastern_Shield 1  efoval9 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy9 Eastern_Shield Eastern_Shield 1  efoval9 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy10 Eastern_Shield Eastern_Shield 1  efovala 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy10 Eastern_Shield Eastern_Shield 1  efovala 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy11 Eastern_Shield Eastern_Shield 1  efovalb 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy11 Eastern_Shield Eastern_Shield 1  efovalb 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_eastern_shield_inf_heavy12 Eastern_Shield Eastern_Shield 1  efovalc 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_eastern_shield_inf_heavy12 Eastern_Shield Eastern_Shield 1  efovalc 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_scythian_shield_cav1 Light_Shield Light_Shield 1  alx1scythshield 0  327687 5100273664 146 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
+ itm_scythian_shield_cav1 Light_Shield Light_Shield 1  alx1scythshield 0  327687 5100273664 152 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
  2
  11 12
 0
 
- itm_scythian_shield_cav2 Light_Shield Light_Shield 1  alx2scythshield 0  327687 5100273664 146 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
+ itm_scythian_shield_cav2 Light_Shield Light_Shield 1  alx2scythshield 0  327687 5100273664 152 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
  2
  11 12
 0
 
- itm_scythian_shield_cav3 Light_Shield Light_Shield 1  alx3scythshield 0  327687 5100273664 146 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
+ itm_scythian_shield_cav3 Light_Shield Light_Shield 1  alx3scythshield 0  327687 5100273664 152 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
  2
  11 12
 0
 
- itm_scythian_shield_cav4 Light_Shield Light_Shield 1  alx4scythshield 0  327687 5100273664 146 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
+ itm_scythian_shield_cav4 Light_Shield Light_Shield 1  alx4scythshield 0  327687 5100273664 152 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
  2
  11 12
 0
 
- itm_scythian_shield_cav5 Light_Shield Light_Shield 1  alx5scythshield 0  327687 5100273664 146 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
+ itm_scythian_shield_cav5 Light_Shield Light_Shield 1  alx5scythshield 0  327687 5100273664 152 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
  2
  11 12
 0
 
- itm_scythian_shield_cav6 Light_Shield Light_Shield 1  alx6scythshield 0  327687 5100273664 146 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
+ itm_scythian_shield_cav6 Light_Shield Light_Shield 1  alx6scythshield 0  327687 5100273664 152 167772194 1.000000 70 0 22 0 0 340 95 0 55 0 0 0
  2
  11 12
 0
 
- itm_indian_shield_1 Eastern_Shield Eastern_Shield 1  indian_shield 0  327687 6442450944 378 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
+ itm_indian_shield_1 Eastern_Shield Eastern_Shield 1  indian_shield 0  327687 6442450944 380 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
  1
  12
 0
 
- itm_indian_shield_2 Eastern_Shield Eastern_Shield 1  indian_shield_a 0  327687 6442450944 378 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
+ itm_indian_shield_2 Eastern_Shield Eastern_Shield 1  indian_shield_a 0  327687 6442450944 380 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
  1
  12
 0
 
- itm_indian_shield_3 Eastern_Shield Eastern_Shield 1  indian_shield_b 0  327687 6442450944 378 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
+ itm_indian_shield_3 Eastern_Shield Eastern_Shield 1  indian_shield_b 0  327687 6442450944 380 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
  1
  12
 0
 
- itm_indian_shield_4 Eastern_Shield Eastern_Shield 1  indian_shield_c 0  327687 6442450944 378 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
+ itm_indian_shield_4 Eastern_Shield Eastern_Shield 1  indian_shield_c 0  327687 6442450944 380 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
  1
  12
 0
 
- itm_indian_shield_5 Eastern_Shield Eastern_Shield 1  indian_shield_d 0  327687 6442450944 378 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
+ itm_indian_shield_5 Eastern_Shield Eastern_Shield 1  indian_shield_d 0  327687 6442450944 380 167772194 2.250000 10 0 26 0 0 375 92 90 40 0 0 0
  1
  12
 0
@@ -6733,272 +6733,272 @@ itemsfile version 3
  8
 0
 
- itm_celtic_long_shild1 Long_Celtic_Shield Long_Celtic_Shield 1  long_celtic_shield2 0  327687 6442450944 444 167772194 2.500000 80 0 26 0 0 375 90 99 41 0 0 0
+ itm_celtic_long_shild1 Long_Celtic_Shield Long_Celtic_Shield 1  long_celtic_shield2 0  327687 6442450944 449 167772194 2.500000 80 0 26 0 0 375 90 99 41 0 0 0
  2
  7 8
 0
 
- itm_celtic_long_shild2 Long_Celtic_Shield Long_Celtic_Shield 1  long_celtic_shield3 0  327687 6442450944 426 167772194 2.500000 80 0 26 0 0 375 90 99 41 0 0 0
+ itm_celtic_long_shild2 Long_Celtic_Shield Long_Celtic_Shield 1  long_celtic_shield3 0  327687 6442450944 428 167772194 2.500000 80 0 26 0 0 375 90 99 41 0 0 0
  2
  7 8
 0
 
- itm_celtic_long_shild3 Long_Celtic_Shield Long_Celtic_Shield 1  long_celtic_shield4 0  327687 6442450944 426 167772194 2.500000 80 0 26 0 0 375 90 99 41 0 0 0
+ itm_celtic_long_shild3 Long_Celtic_Shield Long_Celtic_Shield 1  long_celtic_shield4 0  327687 6442450944 428 167772194 2.500000 80 0 26 0 0 375 90 99 41 0 0 0
  2
  7 8
 0
 
- itm_celtic_round_shild1 Celtic_Round_Shield Celtic_Round_Shield 1  ad_mixed_round_shields_09 0  327687 5100273664 146 167772194 1.000000 80 0 22 0 0 340 95 0 55 0 0 0
+ itm_celtic_round_shild1 Celtic_Round_Shield Celtic_Round_Shield 1  ad_mixed_round_shields_09 0  327687 5100273664 152 167772194 1.000000 80 0 22 0 0 340 95 0 55 0 0 0
  2
  7 8
 0
 
- itm_celtic_round_shild2 Celtic_Round_Shield Celtic_Round_Shield 1  ad_mixed_round_shields_10 0  327687 5100273664 146 167772194 1.000000 80 0 22 0 0 340 95 0 55 0 0 0
+ itm_celtic_round_shild2 Celtic_Round_Shield Celtic_Round_Shield 1  ad_mixed_round_shields_10 0  327687 5100273664 152 167772194 1.000000 80 0 22 0 0 340 95 0 55 0 0 0
  2
  7 8
 0
 
- itm_celtic_round_shild3 Celtic_Round_Shield Celtic_Round_Shield 1  ad_mixed_round_shields_11 0  327687 5100273664 146 167772194 1.000000 80 0 22 0 0 340 95 0 55 0 0 0
+ itm_celtic_round_shild3 Celtic_Round_Shield Celtic_Round_Shield 1  ad_mixed_round_shields_11 0  327687 5100273664 152 167772194 1.000000 80 0 22 0 0 340 95 0 55 0 0 0
  2
  7 8
 0
 
- itm_celtic_round_shild4 Celtic_Round_Shield Celtic_Round_Shield 1  ad_mixed_round_shields_12 0  327687 5100273664 146 167772194 1.000000 80 0 22 0 0 340 95 0 55 0 0 0
+ itm_celtic_round_shild4 Celtic_Round_Shield Celtic_Round_Shield 1  ad_mixed_round_shields_12 0  327687 5100273664 152 167772194 1.000000 80 0 22 0 0 340 95 0 55 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_1 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_1 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_1 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_1 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_2 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_2 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_2 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_2 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_3 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_3 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_3 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_3 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_4 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_4 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_4 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_4 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_5 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_5 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_5 Celtic_Shield Celtic_Shield 1  celtic_weird_shield_5 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_6 Celtic_Shield Celtic_Shield 1  celtic_shield_1 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_6 Celtic_Shield Celtic_Shield 1  celtic_shield_1 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_7 Celtic_Shield Celtic_Shield 1  celtic_shield_2 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_7 Celtic_Shield Celtic_Shield 1  celtic_shield_2 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_8 Celtic_Shield Celtic_Shield 1  celtic_shield_3 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_8 Celtic_Shield Celtic_Shield 1  celtic_shield_3 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_9 Celtic_Shield Celtic_Shield 1  celtic_shield_4 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_9 Celtic_Shield Celtic_Shield 1  celtic_shield_4 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_weird_shield_10 Celtic_Shield Celtic_Shield 1  celtic_shield_5 0  327687 5100273664 90 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
+ itm_celtic_weird_shield_10 Celtic_Shield Celtic_Shield 1  celtic_shield_5 0  327687 5100273664 91 167772194 1.000000 100 0 22 0 0 340 70 58 38 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large1 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_1 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_celtic_shield_large1 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_1 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large2 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_2 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_celtic_shield_large2 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_2 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large3 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_3 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_celtic_shield_large3 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_3 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large4 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_4 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_celtic_shield_large4 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_4 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large5 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_5 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_celtic_shield_large5 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_5 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large6 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_6 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_celtic_shield_large6 Celtic_Shield Celtic_Shield 1  celtic_hex_shield_6 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large7 Celtic_Shield Celtic_Shield 1  e1ovalscutum 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_celtic_shield_large7 Celtic_Shield Celtic_Shield 1  e1ovalscutum 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large8 Celtic_Shield Celtic_Shield 1  e2ovalscutum 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_celtic_shield_large8 Celtic_Shield Celtic_Shield 1  e2ovalscutum 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large9 Celtic_Shield Celtic_Shield 1  e3ovalscutum 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_celtic_shield_large9 Celtic_Shield Celtic_Shield 1  e3ovalscutum 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large10 Celtic_Shield Celtic_Shield 1  e4ovalscutum 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_celtic_shield_large10 Celtic_Shield Celtic_Shield 1  e4ovalscutum 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large11 Celtic_Shield Celtic_Shield 1  e5ovalscutum 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_celtic_shield_large11 Celtic_Shield Celtic_Shield 1  e5ovalscutum 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  2
  7 8
 0
 
- itm_celtic_shield_large12 Celtic_Shield Celtic_Shield 1  e6ovalscutum 0  327687 4831838208 522 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
+ itm_celtic_shield_large12 Celtic_Shield Celtic_Shield 1  e6ovalscutum 0  327687 4831838208 527 167772194 3.250000 80 0 26 0 0 375 90 100 50 0 0 0
  2
  7 8
 0
 
- itm_irish_shield_1 Irish_Shield Irish_Shield 1  ad_pict_shield_1 0  262151 6442450944 486 167772194 3.000000 70 0 26 0 0 375 90 80 45 0 0 0
+ itm_irish_shield_1 Irish_Shield Irish_Shield 1  ad_pict_shield_1 0  262151 6442450944 490 167772194 3.000000 70 0 26 0 0 375 90 80 45 0 0 0
  2
  7 8
 0
 
- itm_irish_shield_2 Irish_Shield Irish_Shield 1  ad_pict_shield_2 0  262151 6442450944 486 167772194 3.000000 70 0 26 0 0 375 90 80 45 0 0 0
+ itm_irish_shield_2 Irish_Shield Irish_Shield 1  ad_pict_shield_2 0  262151 6442450944 490 167772194 3.000000 70 0 26 0 0 375 90 80 45 0 0 0
  2
  7 8
 0
 
- itm_irish_shield_3 Irish_Shield Irish_Shield 1  ad_pict_shield_3 0  262151 6442450944 486 167772194 3.000000 70 0 26 0 0 375 90 80 45 0 0 0
+ itm_irish_shield_3 Irish_Shield Irish_Shield 1  ad_pict_shield_3 0  262151 6442450944 490 167772194 3.000000 70 0 26 0 0 375 90 80 45 0 0 0
  2
  7 8
 0
 
- itm_irish_shield_4 Irish_Shield Irish_Shield 1  ad_pict_shield_4 0  262151 6442450944 486 167772194 3.000000 70 0 26 0 0 375 90 80 45 0 0 0
+ itm_irish_shield_4 Irish_Shield Irish_Shield 1  ad_pict_shield_4 0  262151 6442450944 490 167772194 3.000000 70 0 26 0 0 375 90 80 45 0 0 0
  2
  7 8
 0
 
- itm_dacian_oval_shield_1 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_1 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_1 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_1 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_2 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_2 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_2 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_2 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_3 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_3 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_3 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_3 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_4 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_4 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_4 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_4 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_5 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_5 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_5 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_5 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_6 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_6 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_6 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_6 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_7 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_7 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_7 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_7 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_8 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_8 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_8 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_8 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_9 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_9 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_9 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_9 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_oval_shield_10 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_10 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_oval_shield_10 Dacian_Shield Dacian_Shield 1  dacian_oval_shield_10 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_medium_shield_1 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_1 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_medium_shield_1 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_1 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_medium_shield_2 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_2 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_medium_shield_2 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_2 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_medium_shield_3 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_3 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_medium_shield_3 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_3 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_medium_shield_4 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_4 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_medium_shield_4 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_4 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_medium_shield_5 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_5 0  327687 6442450944 402 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
+ itm_dacian_medium_shield_5 Dacian_Shield Dacian_Shield 1  dacian_medium_shield_5 0  327687 6442450944 406 167772194 2.500000 80 0 26 0 0 375 90 70 55 0 0 0
  1
  6
 0
 
- itm_dacian_shield_large1 Dacian_Shield Dacian_Shield 1  alx1dacilarge 0  327687 6442450944 486 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
+ itm_dacian_shield_large1 Dacian_Shield Dacian_Shield 1  alx1dacilarge 0  327687 6442450944 490 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
  1
  6
 0
 
- itm_dacian_shield_large2 Dacian_Shield Dacian_Shield 1  alx2dacilarge 0  327687 6442450944 486 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
+ itm_dacian_shield_large2 Dacian_Shield Dacian_Shield 1  alx2dacilarge 0  327687 6442450944 490 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
  1
  6
 0
 
- itm_dacian_shield_large3 Dacian_Shield Dacian_Shield 1  alx3dacilarge 0  327687 6442450944 486 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
+ itm_dacian_shield_large3 Dacian_Shield Dacian_Shield 1  alx3dacilarge 0  327687 6442450944 490 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
  1
  6
 0
 
- itm_dacian_shield_large4 Dacian_Shield Dacian_Shield 1  alx4dacilarge 0  327687 6442450944 486 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
+ itm_dacian_shield_large4 Dacian_Shield Dacian_Shield 1  alx4dacilarge 0  327687 6442450944 490 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
  1
  6
 0
 
- itm_dacian_shield_large5 Dacian_Shield Dacian_Shield 1  alx5dacilarge 0  327687 6442450944 486 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
+ itm_dacian_shield_large5 Dacian_Shield Dacian_Shield 1  alx5dacilarge 0  327687 6442450944 490 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
  1
  6
 0
 
- itm_dacian_shield_large6 Dacian_Shield Dacian_Shield 1  alx6dacilarge 0  327687 6442450944 486 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
+ itm_dacian_shield_large6 Dacian_Shield Dacian_Shield 1  alx6dacilarge 0  327687 6442450944 490 167772194 3.000000 80 0 26 0 0 375 90 93 50 0 0 0
  1
  6
 0
@@ -7033,232 +7033,232 @@ itemsfile version 3
  6
 0
 
- itm_scythisn_shield_inf5 Scythian_Shield Scythian_Shield 1  alx5scythinf 0  327687 6442450944 444 167772194 2.750000 70 0 26 0 0 375 90 85 50 0 0 0
+ itm_scythisn_shield_inf5 Scythian_Shield Scythian_Shield 1  alx5scythinf 0  327687 6442450944 448 167772194 2.750000 70 0 26 0 0 375 90 85 50 0 0 0
  1
  9
 0
 
- itm_scythisn_shield_inf6 Scythian_Shield Scythian_Shield 1  alx6scythinf 0  327687 6442450944 444 167772194 2.750000 70 0 26 0 0 375 90 85 50 0 0 0
+ itm_scythisn_shield_inf6 Scythian_Shield Scythian_Shield 1  alx6scythinf 0  327687 6442450944 448 167772194 2.750000 70 0 26 0 0 375 90 85 50 0 0 0
  1
  9
 0
 
- itm_scythisn_shield_inf1 Armenian_Shield Armenian_Shield 1  alx1scythinf 0  327687 6442450944 444 167772194 2.750000 80 0 26 0 0 375 90 85 50 0 0 0
+ itm_scythisn_shield_inf1 Armenian_Shield Armenian_Shield 1  alx1scythinf 0  327687 6442450944 448 167772194 2.750000 80 0 26 0 0 375 90 85 50 0 0 0
  1
  11
 0
 
- itm_scythisn_shield_inf2 Armenian_Shield Armenian_Shield 1  alx2scythinf 0  327687 6442450944 444 167772194 2.750000 80 0 26 0 0 375 90 85 50 0 0 0
+ itm_scythisn_shield_inf2 Armenian_Shield Armenian_Shield 1  alx2scythinf 0  327687 6442450944 448 167772194 2.750000 80 0 26 0 0 375 90 85 50 0 0 0
  1
  11
 0
 
- itm_scythisn_shield_inf3 Armenian_Shield Armenian_Shield 1  alx3scythinf 0  327687 6442450944 444 167772194 2.750000 80 0 26 0 0 375 90 85 50 0 0 0
+ itm_scythisn_shield_inf3 Armenian_Shield Armenian_Shield 1  alx3scythinf 0  327687 6442450944 448 167772194 2.750000 80 0 26 0 0 375 90 85 50 0 0 0
  1
  11
 0
 
- itm_scythisn_shield_inf4 Armenian_Shield Armenian_Shield 1  alx4scythinf 0  327687 6442450944 444 167772194 2.750000 80 0 26 0 0 375 90 85 50 0 0 0
+ itm_scythisn_shield_inf4 Armenian_Shield Armenian_Shield 1  alx4scythinf 0  327687 6442450944 448 167772194 2.750000 80 0 26 0 0 375 90 85 50 0 0 0
  1
  11
 0
 
- itm_eastern_germanic_shield_1 East_Germanic_Shield East_Germanic_Shield 1  eastern_germanic_shield_1 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_eastern_germanic_shield_1 East_Germanic_Shield East_Germanic_Shield 1  eastern_germanic_shield_1 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_eastern_germanic_shield_2 East_Germanic_Shield East_Germanic_Shield 1  eastern_germanic_shield_2 0  327687 6442450944 474 167772194 3.000000 80 0 26 0 0 375 90 90 50 0 0 0
+ itm_eastern_germanic_shield_2 East_Germanic_Shield East_Germanic_Shield 1  eastern_germanic_shield_2 0  327687 6442450944 475 167772194 3.000000 80 0 26 0 0 375 90 90 50 0 0 0
  1
  10
 0
 
- itm_eastern_germanic_shield_3 East_Germanic_Shield East_Germanic_Shield 1  eastern_germanic_shield_3 0  327687 6442450944 348 167772194 2.000000 80 0 26 0 0 375 85 83 40 0 0 0
+ itm_eastern_germanic_shield_3 East_Germanic_Shield East_Germanic_Shield 1  eastern_germanic_shield_3 0  327687 6442450944 350 167772194 2.000000 80 0 26 0 0 375 85 83 40 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large1 Germanic_Shield Germanic_Shield 1  e1german 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_large1 Germanic_Shield Germanic_Shield 1  e1german 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large2 Germanic_Shield Germanic_Shield 1  e2german 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_large2 Germanic_Shield Germanic_Shield 1  e2german 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large3 Germanic_Shield Germanic_Shield 1  e3german 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_large3 Germanic_Shield Germanic_Shield 1  e3german 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large4 Germanic_Shield Germanic_Shield 1  e4german 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_large4 Germanic_Shield Germanic_Shield 1  e4german 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large5 Germanic_Shield Germanic_Shield 1  e5german 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_large5 Germanic_Shield Germanic_Shield 1  e5german 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large6 Germanic_Shield Germanic_Shield 1  e6german 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_large6 Germanic_Shield Germanic_Shield 1  e6german 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_1 Germanic_Shield Germanic_Shield 1  germanic_shield_1 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_1 Germanic_Shield Germanic_Shield 1  germanic_shield_1 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_2 Germanic_Shield Germanic_Shield 1  germanic_shield_2 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_2 Germanic_Shield Germanic_Shield 1  germanic_shield_2 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_3 Germanic_Shield Germanic_Shield 1  germanic_shield_3 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_3 Germanic_Shield Germanic_Shield 1  germanic_shield_3 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_germanic_shield_4 Germanic_Shield Germanic_Shield 1  germanic_shield_4 0  327687 6442450944 384 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
+ itm_germanic_shield_4 Germanic_Shield Germanic_Shield 1  germanic_shield_4 0  327687 6442450944 390 167772194 2.250000 80 0 26 0 0 375 90 86 43 0 0 0
  1
  10
 0
 
- itm_german_night_shield_1 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_1 0  327687 4831838208 558 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
+ itm_german_night_shield_1 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_1 0  327687 4831838208 563 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
  1
  10
 0
 
- itm_german_night_shield_2 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_2 0  327687 4831838208 558 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
+ itm_german_night_shield_2 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_2 0  327687 4831838208 563 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
  1
  10
 0
 
- itm_german_night_shield_3 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_3 0  327687 4831838208 558 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
+ itm_german_night_shield_3 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_3 0  327687 4831838208 563 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
  1
  10
 0
 
- itm_german_night_shield_4 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_4 0  327687 4831838208 558 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
+ itm_german_night_shield_4 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_4 0  327687 4831838208 563 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
  1
  10
 0
 
- itm_german_night_shield_5 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_5 0  327687 4831838208 558 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
+ itm_german_night_shield_5 Germanic_Long_Shield Germanic_Long_Shield 1  german_night_shield_5 0  327687 4831838208 563 167772194 3.000000 100 0 29 0 0 400 90 70 55 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large7 Germanic_Shield Germanic_Shield 1  e1larscutum 0  327687 6442450944 468 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
+ itm_germanic_shield_large7 Germanic_Shield Germanic_Shield 1  e1larscutum 0  327687 6442450944 471 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large8 Germanic_Shield Germanic_Shield 1  e2larscutum 0  327687 6442450944 468 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
+ itm_germanic_shield_large8 Germanic_Shield Germanic_Shield 1  e2larscutum 0  327687 6442450944 471 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large9 Germanic_Shield Germanic_Shield 1  e3larscutum 0  327687 6442450944 468 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
+ itm_germanic_shield_large9 Germanic_Shield Germanic_Shield 1  e3larscutum 0  327687 6442450944 471 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large10 Germanic_Shield Germanic_Shield 1  e4larscutum 0  327687 6442450944 468 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
+ itm_germanic_shield_large10 Germanic_Shield Germanic_Shield 1  e4larscutum 0  327687 6442450944 471 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large11 Germanic_Shield Germanic_Shield 1  e5larscutum 0  327687 6442450944 468 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
+ itm_germanic_shield_large11 Germanic_Shield Germanic_Shield 1  e5larscutum 0  327687 6442450944 471 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
  1
  10
 0
 
- itm_germanic_shield_large12 Germanic_Shield Germanic_Shield 1  e6larscutum 0  327687 6442450944 468 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
+ itm_germanic_shield_large12 Germanic_Shield Germanic_Shield 1  e6larscutum 0  327687 6442450944 471 167772194 3.000000 80 0 26 0 0 375 90 95 47 0 0 0
  1
  10
 0
 
- itm_germanic_shield_hex_large1 Germanic_Shield Germanic_Shield 1  e1hexscutum 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_germanic_shield_hex_large1 Germanic_Shield Germanic_Shield 1  e1hexscutum 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  1
  10
 0
 
- itm_germanic_shield_hex_large2 Germanic_Shield Germanic_Shield 1  e2hexscutum 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_germanic_shield_hex_large2 Germanic_Shield Germanic_Shield 1  e2hexscutum 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  1
  10
 0
 
- itm_germanic_shield_hex_large3 Germanic_Shield Germanic_Shield 1  e3hexscutum 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_germanic_shield_hex_large3 Germanic_Shield Germanic_Shield 1  e3hexscutum 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  1
  10
 0
 
- itm_germanic_shield_hex_large4 Germanic_Shield Germanic_Shield 1  e4hexscutum 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_germanic_shield_hex_large4 Germanic_Shield Germanic_Shield 1  e4hexscutum 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  1
  10
 0
 
- itm_germanic_shield_hex_large5 Germanic_Shield Germanic_Shield 1  e5hexscutum 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_germanic_shield_hex_large5 Germanic_Shield Germanic_Shield 1  e5hexscutum 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  1
  10
 0
 
- itm_germanic_shield_hex_large6 Germanic_Shield Germanic_Shield 1  e6hexscutum 0  327687 6442450944 456 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
+ itm_germanic_shield_hex_large6 Germanic_Shield Germanic_Shield 1  e6hexscutum 0  327687 6442450944 460 167772194 2.750000 80 0 26 0 0 375 90 97 45 0 0 0
  1
  10
 0
 
- itm_simple_germanic_shield Simple_Germanic_Shield Simple_Germanic_Shield 1  shield_kite_n 0  327687 5100273664 108 167772194 0.750000 100 0 19 0 0 310 70 85 32 0 0 0
+ itm_simple_germanic_shield Simple_Germanic_Shield Simple_Germanic_Shield 1  shield_kite_n 0  327687 5100273664 112 167772194 0.750000 100 0 19 0 0 310 70 85 32 0 0 0
  1
  10
 0
 
- itm_arabian_oval_shield_1 Arabian_Shield Arabian_Shield 1  eastern_oval_shield_1 0  327687 4831838208 522 167772194 3.250000 60 0 26 0 0 375 90 100 50 0 0 0
+ itm_arabian_oval_shield_1 Arabian_Shield Arabian_Shield 1  eastern_oval_shield_1 0  327687 4831838208 527 167772194 3.250000 60 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_arabian_oval_shield_2 Arabian_Shield Arabian_Shield 1  eastern_oval_shield_2 0  327687 4831838208 522 167772194 3.250000 60 0 26 0 0 375 90 100 50 0 0 0
+ itm_arabian_oval_shield_2 Arabian_Shield Arabian_Shield 1  eastern_oval_shield_2 0  327687 4831838208 527 167772194 3.250000 60 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_arabian_oval_shield_3 Arabian_Shield Arabian_Shield 1  eastern_oval_shield_3 0  327687 4831838208 522 167772194 3.250000 60 0 26 0 0 375 90 100 50 0 0 0
+ itm_arabian_oval_shield_3 Arabian_Shield Arabian_Shield 1  eastern_oval_shield_3 0  327687 4831838208 527 167772194 3.250000 60 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_arabian_oval_shield_4 Arabian_Shield Arabian_Shield 1  eastern_oval_shield_4 0  327687 4831838208 522 167772194 3.250000 60 0 26 0 0 375 90 100 50 0 0 0
+ itm_arabian_oval_shield_4 Arabian_Shield Arabian_Shield 1  eastern_oval_shield_4 0  327687 4831838208 527 167772194 3.250000 60 0 26 0 0 375 90 100 50 0 0 0
  3
  12 14 11
 0
 
- itm_illyrian_shield_large1 Illyrian_Shield Illyrian_Shield 1  esquareillyrian1 0  327687 6442450944 306 167772194 3.250000 10 0 22 0 0 340 95 99 49 0 0 0
+ itm_illyrian_shield_large1 Illyrian_Shield Illyrian_Shield 1  esquareillyrian1 0  327687 6442450944 310 167772194 3.250000 10 0 22 0 0 340 95 99 49 0 0 0
  2
  13 23
 0
 
- itm_illyrian_shield_large2 Illyrian_Shield Illyrian_Shield 1  esquareillyrian2 0  327687 6442450944 306 167772194 3.250000 10 0 22 0 0 340 95 99 49 0 0 0
+ itm_illyrian_shield_large2 Illyrian_Shield Illyrian_Shield 1  esquareillyrian2 0  327687 6442450944 310 167772194 3.250000 10 0 22 0 0 340 95 99 49 0 0 0
  2
  13 23
 0
 
- itm_illyrian_shield_heavy1 Illyrian_Shield Illyrian_Shield 1  illyethureos1 0  327687 4831838208 408 167772194 2.500000 10 0 26 0 0 375 90 87 45 0 0 0
+ itm_illyrian_shield_heavy1 Illyrian_Shield Illyrian_Shield 1  illyethureos1 0  327687 4831838208 413 167772194 2.500000 10 0 26 0 0 375 90 87 45 0 0 0
  2
  13 23
 0
 
- itm_illyrian_shield_heavy2 Illyrian_Shield Illyrian_Shield 1  illyethureos2 0  327687 4831838208 408 167772194 2.500000 10 0 26 0 0 375 90 87 45 0 0 0
+ itm_illyrian_shield_heavy2 Illyrian_Shield Illyrian_Shield 1  illyethureos2 0  327687 4831838208 413 167772194 2.500000 10 0 26 0 0 375 90 87 45 0 0 0
  2
  13 23
 0
 
- itm_illyrian_shield_heavy3 Illyrian_Shield Illyrian_Shield 1  illyethureos3 0  327687 4831838208 408 167772194 2.500000 10 0 26 0 0 375 90 87 45 0 0 0
+ itm_illyrian_shield_heavy3 Illyrian_Shield Illyrian_Shield 1  illyethureos3 0  327687 4831838208 413 167772194 2.500000 10 0 26 0 0 375 90 87 45 0 0 0
  2
  13 23
 0
@@ -7284,22 +7284,22 @@ itemsfile version 3
  0
 0
 
- itm_old_scutum Old_Scutum Old_Scutum 1  old_roman_scutum 0  268763143 6442450944 624 167772194 4.000000 20 0 26 0 0 375 85 108 55 0 0 0
+ itm_old_scutum Old_Scutum Old_Scutum 1  old_roman_scutum 0  268763143 6442450944 626 167772194 4.000000 20 0 26 0 0 375 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_old_scutum_2 Old_Scutum Old_Scutum 1  old_roman_scutum_2 0  268763143 6442450944 624 167772194 4.000000 20 0 26 0 0 375 85 108 55 0 0 0
+ itm_old_scutum_2 Old_Scutum Old_Scutum 1  old_roman_scutum_2 0  268763143 6442450944 626 167772194 4.000000 20 0 26 0 0 375 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_old_scutum_3 Old_Scutum Old_Scutum 1  old_roman_scutum_3 0  268763143 6442450944 624 167772194 4.000000 20 0 26 0 0 375 85 108 55 0 0 0
+ itm_old_scutum_3 Old_Scutum Old_Scutum 1  old_roman_scutum_3 0  268763143 6442450944 626 167772194 4.000000 20 0 26 0 0 375 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_old_scutum_4 Old_Scutum Old_Scutum 1  old_roman_scutum_4 0  268763143 6442450944 624 167772194 4.000000 20 0 26 0 0 375 85 108 55 0 0 0
+ itm_old_scutum_4 Old_Scutum Old_Scutum 1  old_roman_scutum_4 0  268763143 6442450944 626 167772194 4.000000 20 0 26 0 0 375 85 108 55 0 0 0
  2
  13 23
 0
@@ -7542,112 +7542,112 @@ itemsfile version 3
  0
 0
 
- itm_scutum_legio_i Legio_I_Scutum Legio_I_Scutum 1  legio_i_adiutrix_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_i Legio_I_Scutum Legio_I_Scutum 1  legio_i_adiutrix_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_iii Legio_III_Scutum Legio_III_Scutum 1   legio_iii_augusta_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_iii Legio_III_Scutum Legio_III_Scutum 1   legio_iii_augusta_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_xxi Legio_XXI_Scutum Legio_XXI_Scutum 1  legio_rapaxxi_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_xxi Legio_XXI_Scutum Legio_XXI_Scutum 1  legio_rapaxxi_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_v Legio_V_Scutum Legio_V_Scutum 1  legio_v_alaudae_scutumm 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_v Legio_V_Scutum Legio_V_Scutum 1  legio_v_alaudae_scutumm 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_v_mac Legio_V_mac._Scutum Legio_V_mac._Scutum 1  legio_v_macedonica_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_v_mac Legio_V_mac._Scutum Legio_V_mac._Scutum 1  legio_v_macedonica_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_vi_ferr Legio_VI_Ferrata_Scutum Legio_VI_Ferrata_Scutum 1   legio_vi_ferr_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_vi_ferr Legio_VI_Ferrata_Scutum Legio_VI_Ferrata_Scutum 1   legio_vi_ferr_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_vii_galb Legio_VII_Scutum Legio_VII_Scutum 1   legio_vi_galb_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_vii_galb Legio_VII_Scutum Legio_VII_Scutum 1   legio_vi_galb_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_vi_vict Legio_VI_Victrix_Scutum Legio_VI_Victrix_Scutum 1  legio_vi_victrix_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_vi_vict Legio_VI_Victrix_Scutum Legio_VI_Victrix_Scutum 1  legio_vi_victrix_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_x Legio_X_Scutum Legio_X_Scutum 1   legio_x_fretensis_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_x Legio_X_Scutum Legio_X_Scutum 1   legio_x_fretensis_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_xi Legio_XI_Scutum Legio_XI_Scutum 1   legio_xi_claudia_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_xi Legio_XI_Scutum Legio_XI_Scutum 1   legio_xi_claudia_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_legio_xiii Legio_XIII_Scutum Legio_XIII_Scutum 1   legio_xiii_gemina_scutum 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_legio_xiii Legio_XIII_Scutum Legio_XIII_Scutum 1   legio_xiii_gemina_scutum 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_praetorian Praetoriani_Scutum Praetoriani_Scutum 1   praetorian_cohort_scutumm 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_praetorian Praetoriani_Scutum Praetoriani_Scutum 1   praetorian_cohort_scutumm 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_praetorian_2 Praetoriani_Scutum Praetoriani_Scutum 1   praetorian_cohort_scutumm_red 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_praetorian_2 Praetoriani_Scutum Praetoriani_Scutum 1   praetorian_cohort_scutumm_red 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_batavorum_cav Cetratus Cetratus 1   auxiliary_cavalry_bataviorum_cetratus 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_batavorum_cav Cetratus Cetratus 1   auxiliary_cavalry_bataviorum_cetratus 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_1 Cetratus Cetratus 1  cetratus1 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_1 Cetratus Cetratus 1  cetratus1 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_2 Cetratus Cetratus 1  cetratus2 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_2 Cetratus Cetratus 1  cetratus2 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_3 Cetratus Cetratus 1  cetratus3 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_3 Cetratus Cetratus 1  cetratus3 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_4 Cetratus Cetratus 1  cetratus4 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_4 Cetratus Cetratus 1  cetratus4 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_5 Cetratus Cetratus 1  cetratus5 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_5 Cetratus Cetratus 1  cetratus5 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_6 Cetratus Cetratus 1  cetratus6 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_6 Cetratus Cetratus 1  cetratus6 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_7 Cetratus Cetratus 1  cetratus7 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_7 Cetratus Cetratus 1  cetratus7 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_cetratus_aux_8 Cetratus Cetratus 1  cetratus8 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_8 Cetratus Cetratus 1  cetratus8 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
@@ -7762,184 +7762,184 @@ itemsfile version 3
  13 23
 0
 
- itm_cetratus_aux_batavorum_inf Cetratus Cetratus 1  cohort_bataviorum_cetratus 0  327687 6442450944 516 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
+ itm_cetratus_aux_batavorum_inf Cetratus Cetratus 1  cohort_bataviorum_cetratus 0  327687 6442450944 517 167772194 3.250000 60 0 26 0 0 375 90 98 50 0 0 0
  2
  13 23
 0
 
- itm_praetorian_cav_scutum Scutum_Preatoriani_Eques Scutum_Preatoriani_Eques 1  praetorian_cavalry_scutum 0  327687 6442450944 564 167772194 3.250000 30 0 29 0 0 400 85 88 44 0 0 0
+ itm_praetorian_cav_scutum Scutum_Preatoriani_Eques Scutum_Preatoriani_Eques 1  praetorian_cavalry_scutum 0  327687 6442450944 567 167772194 3.250000 30 0 29 0 0 400 85 88 44 0 0 0
  2
  13 23
 0
 
- itm_praetorian_cav_scutum_2 Scutum_Preatoriani_Eques Scutum_Preatoriani_Eques 1  praetorian_cavalry_scutum_2 0  327687 6442450944 564 167772194 3.250000 30 0 29 0 0 400 85 88 44 0 0 0
+ itm_praetorian_cav_scutum_2 Scutum_Preatoriani_Eques Scutum_Preatoriani_Eques 1  praetorian_cavalry_scutum_2 0  327687 6442450944 567 167772194 3.250000 30 0 29 0 0 400 85 88 44 0 0 0
  2
  13 23
 0
 
- itm_officer_shield Parma Parma 1  roman_noble_shielde1 0  327687 5100273664 311 167772194 1.750000 30 0 29 0 0 400 87 0 53 0 0 0
+ itm_officer_shield Parma Parma 1  roman_noble_shielde1 0  327687 5100273664 323 167772194 1.750000 30 0 29 0 0 400 87 0 53 0 0 0
  2
  13 23
 0
 
- itm_officer_shield_2 Parma Parma 1  roman_noble_shielde2 0  327687 5100273664 311 167772194 1.750000 30 0 29 0 0 400 87 0 53 0 0 0
+ itm_officer_shield_2 Parma Parma 1  roman_noble_shielde2 0  327687 5100273664 323 167772194 1.750000 30 0 29 0 0 400 87 0 53 0 0 0
  2
  13 23
 0
 
- itm_officer_shield_3 Parma Parma 1  roman_noble_shielde3 0  327687 5100273664 311 167772194 1.750000 30 0 29 0 0 400 87 0 53 0 0 0
+ itm_officer_shield_3 Parma Parma 1  roman_noble_shielde3 0  327687 5100273664 323 167772194 1.750000 30 0 29 0 0 400 87 0 53 0 0 0
  2
  13 23
 0
 
- itm_scutum_1 Scutum Scutum 1  scutum_4lightning 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_1 Scutum Scutum 1  scutum_4lightning 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_2 Scutum Scutum 1  scutum_roman_shield_yellow 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_2 Scutum Scutum 1  scutum_roman_shield_yellow 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_3 Scutum Scutum 1  scutum_blue 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_3 Scutum Scutum 1  scutum_blue 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_4 Scutum Scutum 1  roman_shield_boss 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_4 Scutum Scutum 1  roman_shield_boss 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_5 Scutum Scutum 1  scutum_roman_shield_cent1 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_5 Scutum Scutum 1  scutum_roman_shield_cent1 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_6 Scutum Scutum 1  scutum_roman_shield_cent2 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_6 Scutum Scutum 1  scutum_roman_shield_cent2 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_7 Scutum Scutum 1  roman_default 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_7 Scutum Scutum 1  roman_default 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_8 Scutum Scutum 1  scutum_griffon 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_8 Scutum Scutum 1  scutum_griffon 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_9 Scutum_Legio_VI_Victrix Scutum_Legio_VI_Victrix 1  scutum_roman_shield_vipf 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_9 Scutum_Legio_VI_Victrix Scutum_Legio_VI_Victrix 1  scutum_roman_shield_vipf 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_10 Scutum_Legio_XXII_Primigenia Scutum_Legio_XXII_Primigenia 1  scutum_roman_shield_xxiip 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_10 Scutum_Legio_XXII_Primigenia Scutum_Legio_XXII_Primigenia 1  scutum_roman_shield_xxiip 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_11 Scutum Scutum 1  scutum_lion 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_11 Scutum Scutum 1  scutum_lion 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_12 Scutum_Legio_IX_Hispania Scutum_Legio_IX_Hispania 1  trident 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_12 Scutum_Legio_IX_Hispania Scutum_Legio_IX_Hispania 1  trident 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_13 Scutum_Legio_XX Scutum_Legio_XX 1  scutum_xx 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_13 Scutum_Legio_XX Scutum_Legio_XX 1  scutum_xx 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_14 Scutum_Legio_XIIII_Gemina Scutum_Legio_XIIII_Gemina 1  scutum_gemina_large 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_14 Scutum_Legio_XIIII_Gemina Scutum_Legio_XIIII_Gemina 1  scutum_gemina_large 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_15 Scutum_Legio_XXII_Deiotariana Scutum_Legio_XXII_Deiotariana 1  scutum_roman_shield_xxiide 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_15 Scutum_Legio_XXII_Deiotariana Scutum_Legio_XXII_Deiotariana 1  scutum_roman_shield_xxiide 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_deitoriana Legio_XXII_Scutum Legio_XXII_Scutum 1   legio_deitoriana 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_deitoriana Legio_XXII_Scutum Legio_XXII_Scutum 1   legio_deitoriana 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_16 Scutum_Legio_XIIII_Gemina Scutum_Legio_XIIII_Gemina 1  roman_shield_scutum_xiiii 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_16 Scutum_Legio_XIIII_Gemina Scutum_Legio_XIIII_Gemina 1  roman_shield_scutum_xiiii 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_17 Scutum Scutum 1  roman_shield_new_1 0  268763143 6442450944 678 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
+ itm_scutum_17 Scutum Scutum 1  roman_shield_new_1 0  268763143 6442450944 681 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
  2
  13 23
 0
 
- itm_scutum_18 Scutum Scutum 1  roman_shield_new_2 0  268763143 6442450944 678 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
+ itm_scutum_18 Scutum Scutum 1  roman_shield_new_2 0  268763143 6442450944 681 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
  2
  13 23
 0
 
- itm_scutum_19 Scutum Scutum 1  roman_shield_new_3 0  268763143 6442450944 678 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
+ itm_scutum_19 Scutum Scutum 1  roman_shield_new_3 0  268763143 6442450944 681 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
  2
  13 23
 0
 
- itm_scutum_20 Scutum Scutum 1  roman_shield_new_4 0  268763143 6442450944 678 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
+ itm_scutum_20 Scutum Scutum 1  roman_shield_new_4 0  268763143 6442450944 681 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
  2
  13 23
 0
 
- itm_scutum_21 Scutum Scutum 1  scutum_roman_shield_new1 0  268763143 6442450944 678 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
+ itm_scutum_21 Scutum Scutum 1  scutum_roman_shield_new1 0  268763143 6442450944 681 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
  2
  13 23
 0
 
- itm_scutum_22 Scutum Scutum 1  scutum_roman_shield_new2 0  268763143 6442450944 678 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
+ itm_scutum_22 Scutum Scutum 1  scutum_roman_shield_new2 0  268763143 6442450944 681 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
  2
  13 23
 0
 
- itm_judean_shield_large_1 Judean_Scutum Judean_Scutum 1   judean_shield_1 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_judean_shield_large_1 Judean_Scutum Judean_Scutum 1   judean_shield_1 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  1
  14
 0
 
- itm_judean_shield_large_2 Judean_Scutum Judean_Scutum 1   judean_shield_2 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_judean_shield_large_2 Judean_Scutum Judean_Scutum 1   judean_shield_2 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  1
  14
 0
 
- itm_judean_shield_large_3 Judean_Scutum Judean_Scutum 1   judean_shield_3 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_judean_shield_large_3 Judean_Scutum Judean_Scutum 1   judean_shield_3 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  1
  14
 0
 
- itm_judean_shield_large_4 Judean_Scutum Judean_Scutum 1   judean_shield_4 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_judean_shield_large_4 Judean_Scutum Judean_Scutum 1   judean_shield_4 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  1
  14
 0
 
- itm_egyptian_shield_large_1 Egyptian_Scutum Egyptian_Scutum 1   egyptian_shield_1 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_egyptian_shield_large_1 Egyptian_Scutum Egyptian_Scutum 1   egyptian_shield_1 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  0
 0
 
- itm_egyptian_shield_large_2 Egyptian_Scutum Egyptian_Scutum 1   egyptian_shield_2 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_egyptian_shield_large_2 Egyptian_Scutum Egyptian_Scutum 1   egyptian_shield_2 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  0
 0
 
- itm_egyptian_shield_large_3 Egyptian_Scutum Egyptian_Scutum 1   egyptian_shield_3 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_egyptian_shield_large_3 Egyptian_Scutum Egyptian_Scutum 1   egyptian_shield_3 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  0
 0
 
- itm_egyptian_shield_large_4 Egyptian_Scutum Egyptian_Scutum 1   egyptian_shield_4 0  268763143 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_egyptian_shield_large_4 Egyptian_Scutum Egyptian_Scutum 1   egyptian_shield_4 0  268763143 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  0
 0
 
@@ -7953,35 +7953,35 @@ itemsfile version 3
  13 23
 0
 
- itm_scutum_christian_1 Christian_Scutum Christian_Scutum 1  scutum_christian3 0  268697607 6442450944 678 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
+ itm_scutum_christian_1 Christian_Scutum Christian_Scutum 1  scutum_christian3 0  268697607 6442450944 681 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
  2
  13 23
 0
 
- itm_scutum_mithras_1 Mithras_Scutum Mithras_Scutum 1  scutum_mithras3 0  268697607 6442450944 678 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
+ itm_scutum_mithras_1 Mithras_Scutum Mithras_Scutum 1  scutum_mithras3 0  268697607 6442450944 681 167772194 4.750000 10 0 29 0 0 400 85 95 49 0 0 0
  2
  13 23
 0
 
- itm_scutum_christian_2 Christian_Scutum Christian_Scutum 1  scutum_christian 0  268697607 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_christian_2 Christian_Scutum Christian_Scutum 1  scutum_christian 0  268697607 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_scutum_mithras_2 Mithras_Scutum Mithras_Scutum 1  scutum_mithras 0  268697607 6442450944 864 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
+ itm_scutum_mithras_2 Mithras_Scutum Mithras_Scutum 1  scutum_mithras 0  268697607 6442450944 869 167772194 4.750000 10 0 29 0 0 400 85 108 55 0 0 0
  2
  13 23
 0
 
- itm_simple_thraex_shield Simple_Shield Simple_Shield 1  thraex_shield 0  327687 5100273664 78 167772194 0.500000 100 0 19 0 0 310 100 50 40 0 0 0
+ itm_simple_thraex_shield Simple_Shield Simple_Shield 1  thraex_shield 0  327687 5100273664 82 167772194 0.500000 100 0 19 0 0 310 100 50 40 0 0 0
  0
 0
 
- itm_fur_covered_shield Simple_Shield Simple_Shield 1  shield_kite_m 0  327687 5100273664 90 167772194 0.750000 100 0 19 0 0 310 70 58 38 0 0 0
+ itm_fur_covered_shield Simple_Shield Simple_Shield 1  shield_kite_m 0  327687 5100273664 91 167772194 0.750000 100 0 19 0 0 310 70 58 38 0 0 0
  0
 0
 
- itm_leather_covered_round_shield Leather_Covered_Round_Shield Leather_Covered_Round_Shield 1  leathershield 0  327687 5100273664 146 167772194 1.000000 100 0 22 0 0 340 97 0 55 0 0 0
+ itm_leather_covered_round_shield Leather_Covered_Round_Shield Leather_Covered_Round_Shield 1  leathershield 0  327687 5100273664 152 167772194 1.000000 100 0 22 0 0 340 97 0 55 0 0 0
  0
 0
 
@@ -8548,15 +8548,15 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493064007 
 
- itm_chinese_helm_heavy Weird_Heavy_Helmet Weird_Heavy_Helmet 1  chinese_helm 0  1073745932 0 1645 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
+ itm_chinese_helm_heavy Weird_Heavy_Helmet Weird_Heavy_Helmet 1  chinese_helm 0  1073745932 0 1646 704643238 3.000000 70 48 0 0 9 0 0 0 0 0 0 0
  0
 0
 
- itm_chinese_cap_1 Weird_Military_Cap Weird_Military_Cap 1  chinese_cap_1 0  1073745932 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_chinese_cap_1 Weird_Military_Cap Weird_Military_Cap 1  chinese_cap_1 0  1073745932 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  0
 0
 
- itm_chinese_cap_2 Weird_Military_Cap Weird_Military_Cap 1  chinese_cap_2 0  1073745932 0 642 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
+ itm_chinese_cap_2 Weird_Military_Cap Weird_Military_Cap 1  chinese_cap_2 0  1073745932 0 643 704643238 2.000000 100 30 0 0 3 0 0 0 0 0 0 0
  0
 0
 
@@ -8568,15 +8568,15 @@ itemsfile version 3
  0
 0
 
- itm_chinese_hallbard Weird_Polearm Weird_Polearm 1  chinese_polearm 0  2251801168711684 4222124650663424 270 8202 4.000000 100 0 0 0 14 0 90 0 230 0 256 288
+ itm_chinese_hallbard Weird_Polearm Weird_Polearm 1  chinese_polearm 0  2251801168711684 4222124650663424 271 8202 4.000000 100 0 0 0 14 0 90 0 230 0 256 288
  0
 0
 
- itm_chinese_shield_1 Weird_Shield Weird_Shield 1  chinese_shield_1 0  266247 4831838208 234 167772194 1.500000 100 0 26 0 0 375 100 65 35 0 0 0
+ itm_chinese_shield_1 Weird_Shield Weird_Shield 1  chinese_shield_1 0  266247 4831838208 240 167772194 1.500000 100 0 26 0 0 375 100 65 35 0 0 0
  0
 0
 
- itm_chinese_shield_2 Weird_Shield Weird_Shield 1  chinese_shield_2 0  266247 4831838208 234 167772194 1.500000 100 0 26 0 0 375 100 65 35 0 0 0
+ itm_chinese_shield_2 Weird_Shield Weird_Shield 1  chinese_shield_2 0  266247 4831838208 240 167772194 1.500000 100 0 26 0 0 375 100 65 35 0 0 0
  0
 0
 
@@ -8722,7 +8722,7 @@ itemsfile version 3
  73
 0
 
- itm_noswing_sarissa Sarissa Sarissa 1  macedoniansarissa 0  11821949437100036 27021597965549825 157 8202 7.000000 100 0 0 0 14 0 75 0 400 0 281 0
+ itm_noswing_sarissa Sarissa Sarissa 1  macedoniansarissa 0  11821949437100036 27021597965549825 158 8202 7.000000 100 0 0 0 14 0 75 0 400 0 281 0
  1
  73
 0
@@ -8777,12 +8777,12 @@ itemsfile version 3
  21 22 12 14 11
 0
 
- itm_noswing_bamboo_spear Bamboo_Spear Bamboo_Spear 1  arabian_spear_a_3m 0  11821950108434436 31243722616209665 226 8202 3.500000 100 0 0 0 10 0 94 0 200 0 284 0
+ itm_noswing_bamboo_spear Bamboo_Spear Bamboo_Spear 1  arabian_spear_a_3m 0  11821950108434436 31243722616209665 227 8202 3.500000 100 0 0 0 10 0 94 0 200 0 284 0
  4
  21 22 12 14
 0
 
- itm_noswing_eastern_spear_149 Eastern_Spear Eastern_Spear 1  eastern_spear_149 0  11259000155013124 31243722616209665 332 8202 2.500000 100 0 0 0 7 0 100 0 149 0 286 0
+ itm_noswing_eastern_spear_149 Eastern_Spear Eastern_Spear 1  eastern_spear_149 0  11259000155013124 31243722616209665 335 8202 2.500000 100 0 0 0 7 0 100 0 149 0 286 0
  5
  21 22 11 12 14
 0
@@ -8792,7 +8792,7 @@ itemsfile version 3
  21 22 11 12 14
 0
 
- itm_noswing_syrian_spear_1_145 Eastern_Spear Eastern_Spear 1  syrian_spear_1_145 0  11259000155013124 31243722616209665 330 8202 2.500000 100 0 0 0 7 0 100 0 145 0 286 0
+ itm_noswing_syrian_spear_1_145 Eastern_Spear Eastern_Spear 1  syrian_spear_1_145 0  11259000155013124 31243722616209665 335 8202 2.500000 100 0 0 0 7 0 100 0 145 0 286 0
  4
  21 22 12 14
 0
@@ -8862,7 +8862,7 @@ itemsfile version 3
  6 13 23 12 14 11
 0
 
- itm_noswing_dacian_short_spear Dacian_Spear Dacian_Spear 1  dacian_short_spear 0  11259000155013124 31243722616209665 343 8202 2.250000 100 0 0 0 7 0 102 0 127 0 286 0
+ itm_noswing_dacian_short_spear Dacian_Spear Dacian_Spear 1  dacian_short_spear 0  11259000155013124 31243722616209665 348 8202 2.250000 100 0 0 0 7 0 102 0 127 0 286 0
  1
  6
 0
@@ -8896,17 +8896,17 @@ itemsfile version 3
  10
 0
 
- itm_noswing_germanic_war_spear Germanic_Spear Germanic_Spear 1  spjot 0  2251800900272132 31243722616209665 122 8202 2.000000 100 0 0 0 8 0 102 0 119 0 285 0
+ itm_noswing_germanic_war_spear Germanic_Spear Germanic_Spear 1  spjot 0  2251800900272132 31243722616209665 124 8202 2.000000 100 0 0 0 8 0 102 0 119 0 285 0
  1
  10
 0
 
- itm_noswing_germanic_war_spear_2 Germanic_Spear Germanic_Spear 1  langr_bryntvari 0  2251800900272132 31243722616209665 245 8202 3.000000 100 0 0 0 9 0 98 0 170 0 285 0
+ itm_noswing_germanic_war_spear_2 Germanic_Spear Germanic_Spear 1  langr_bryntvari 0  2251800900272132 31243722616209665 247 8202 3.000000 100 0 0 0 9 0 98 0 170 0 285 0
  1
  10
 0
 
- itm_noswing_germanic_war_spear_3 Germanic_Spear Germanic_Spear 1  spjotkesja 0  2251800900272132 31243722616209665 269 8202 3.000000 100 0 0 0 9 0 98 0 170 0 286 0
+ itm_noswing_germanic_war_spear_3 Germanic_Spear Germanic_Spear 1  spjotkesja 0  2251800900272132 31243722616209665 270 8202 3.000000 100 0 0 0 9 0 98 0 170 0 286 0
  1
  10
 0
@@ -8916,12 +8916,12 @@ itemsfile version 3
  10
 0
 
- itm_noswing_numidian_spear_2 Numidian_War_Spear Numidian_War_Spear 1  numidian_spear_2 0  11259000155013124 31243722616209665 320 8202 3.000000 100 0 0 0 7 0 98 0 167 0 286 0
+ itm_noswing_numidian_spear_2 Numidian_War_Spear Numidian_War_Spear 1  numidian_spear_2 0  11259000155013124 31243722616209665 321 8202 3.000000 100 0 0 0 7 0 98 0 167 0 286 0
  1
  11
 0
 
- itm_noswing_numidian_spear_1 Numidian_Spear Numidian_Spear 1  numidian_spear_1 0  11259000155013124 31243722616209665 277 8202 2.500000 100 0 0 0 7 0 100 0 142 0 284 0
+ itm_noswing_numidian_spear_1 Numidian_Spear Numidian_Spear 1  numidian_spear_1 0  11259000155013124 31243722616209665 281 8202 2.500000 100 0 0 0 7 0 100 0 142 0 284 0
  1
  11
 0
@@ -8941,7 +8941,7 @@ itemsfile version 3
  11
 0
 
- itm_noswing_armenian_war_spear Armenian_War_Spear Armenian_War_Spear 1  armenian_war_spear 0  11259000155013124 31243722616209665 297 8202 2.750000 100 0 0 0 7 0 99 0 160 0 285 0
+ itm_noswing_armenian_war_spear Armenian_War_Spear Armenian_War_Spear 1  armenian_war_spear 0  11259000155013124 31243722616209665 301 8202 2.750000 100 0 0 0 7 0 99 0 160 0 285 0
  1
  11
 0
@@ -8951,7 +8951,7 @@ itemsfile version 3
  11
 0
 
- itm_noswing_caucasian_spear_145 Caucasian_Spear Caucasian_Spear 1  caucasian_spear_145 0  11259000155013124 31243722616209665 277 8202 2.500000 100 0 0 0 7 0 100 0 145 0 284 0
+ itm_noswing_caucasian_spear_145 Caucasian_Spear Caucasian_Spear 1  caucasian_spear_145 0  11259000155013124 31243722616209665 281 8202 2.500000 100 0 0 0 7 0 100 0 145 0 284 0
  1
  11
 0
@@ -9055,7 +9055,7 @@ itemsfile version 3
  13 23
 0
 
- itm_noswing_hasta1 Long_Hasta Long_Hasta 1  roman_spear_178 0  2251800900272132 31243722616209665 368 8202 3.000000 100 0 0 0 9 0 97 0 178 0 286 0
+ itm_noswing_hasta1 Long_Hasta Long_Hasta 1  roman_spear_178 0  2251800900272132 31243722616209665 372 8202 3.000000 100 0 0 0 9 0 97 0 178 0 286 0
  2
  13 23
 0
@@ -9145,7 +9145,7 @@ itemsfile version 3
  11 9
 0
 
- itm_noswing_sarmatian_spear_169 Sarmatian_Spear Sarmatian_Spear 1  sarmatian_spear_169 0  11259000155013124 31243722616209665 318 8202 2.250000 100 0 0 0 7 0 98 0 169 0 286 0
+ itm_noswing_sarmatian_spear_169 Sarmatian_Spear Sarmatian_Spear 1  sarmatian_spear_169 0  11259000155013124 31243722616209665 321 8202 2.250000 100 0 0 0 7 0 98 0 169 0 286 0
  1
  9
 0
@@ -9154,7 +9154,7 @@ itemsfile version 3
  0
 0
 
- itm_noswing_pitch_fork Pitch_Fork Pitch_Fork 1  pitchfork23 0  11259000289230852 4222124851986689 79 8202 2.750000 100 0 0 0 7 0 99 0 154 0 275 0
+ itm_noswing_pitch_fork Pitch_Fork Pitch_Fork 1  pitchfork23 0  11259000289230852 4222124851986689 80 8202 2.750000 100 0 0 0 7 0 99 0 154 0 275 0
  0
 0
 
@@ -9162,11 +9162,11 @@ itemsfile version 3
  0
 0
 
- itm_noswing_staff Staff Staff 1  wooden_staff_swup 0  2251801034620932 4222129415389441 133 8202 2.250000 100 0 0 0 6 0 102 0 128 0 531 0
+ itm_noswing_staff Staff Staff 1  wooden_staff_swup 0  2251801034620932 4222129415389441 134 8202 2.250000 100 0 0 0 6 0 102 0 128 0 531 0
  0
 0
 
- itm_noswing_quarter_staff Quarter_Staff Quarter_Staff 1  quarter_staff_swup 0  2251800900403204 4222129415389441 178 8202 2.250000 100 0 0 0 7 0 101 0 137 0 532 0
+ itm_noswing_quarter_staff Quarter_Staff Quarter_Staff 1  quarter_staff_swup 0  2251800900403204 4222129415389441 179 8202 2.250000 100 0 0 0 7 0 101 0 137 0 532 0
  0
 0
 
@@ -9174,16 +9174,16 @@ itemsfile version 3
  0
 0
 
- itm_noswing_boar_spear Boar_Spear Boar_Spear 1  german_hunting_spear 0  11821950108434436 4222124851986689 383 8202 2.750000 100 0 0 0 9 0 99 0 157 0 282 0
+ itm_noswing_boar_spear Boar_Spear Boar_Spear 1  german_hunting_spear 0  11821950108434436 4222124851986689 388 8202 2.750000 100 0 0 0 9 0 99 0 157 0 282 0
  0
 0
 
- itm_noswing_old_spear_1 Hasta Hasta 1  spear_4_133 0  2251800900272132 31243722616209665 336 8202 2.250000 100 0 0 0 8 0 101 0 133 0 285 0
+ itm_noswing_old_spear_1 Hasta Hasta 1  spear_4_133 0  2251800900272132 31243722616209665 341 8202 2.250000 100 0 0 0 8 0 101 0 133 0 285 0
  2
  13 23
 0
 
- itm_noswing_old_spear_2 Hasta Hasta 1  spear_6_154 0  2251800900272132 31243722616209665 297 8202 2.750000 100 0 0 0 7 0 99 0 154 0 285 0
+ itm_noswing_old_spear_2 Hasta Hasta 1  spear_6_154 0  2251800900272132 31243722616209665 301 8202 2.750000 100 0 0 0 7 0 99 0 154 0 285 0
  2
  13 23
 0
@@ -9192,11 +9192,11 @@ itemsfile version 3
  0
 0
 
- itm_noswing_spear Spear Spear 1  spear_h_2-15m 0  11259000155013124 31243722616209665 277 8202 2.500000 100 0 0 0 9 0 100 0 145 0 285 0
+ itm_noswing_spear Spear Spear 1  spear_h_2-15m 0  11259000155013124 31243722616209665 281 8202 2.500000 100 0 0 0 9 0 100 0 145 0 285 0
  0
 0
 
- itm_noswing_war_spear War_Spear War_Spear 1  hoggkesja 0  11259000155013124 31243722616209665 345 8202 2.000000 100 0 0 0 7 0 102 0 122 0 286 0
+ itm_noswing_war_spear War_Spear War_Spear 1  hoggkesja 0  11259000155013124 31243722616209665 348 8202 2.000000 100 0 0 0 7 0 102 0 122 0 286 0
  0
 0
 
@@ -9204,12 +9204,12 @@ itemsfile version 3
  0
 0
 
- itm_noswing_greek_spear_1 Spear Spear 1  greek_spear_doru_steel 0  11259000155013124 31243722616209665 297 8202 2.750000 100 0 0 0 9 0 99 0 160 0 285 0
+ itm_noswing_greek_spear_1 Spear Spear 1  greek_spear_doru_steel 0  11259000155013124 31243722616209665 301 8202 2.750000 100 0 0 0 9 0 99 0 160 0 285 0
  4
  13 23 11 12
 0
 
- itm_noswing_greek_spear_2 Spear Spear 1  greek_spear_doru_2_steel 0  11259000155013124 31243722616209665 293 8202 3.000000 100 0 0 0 9 0 98 0 170 0 285 0
+ itm_noswing_greek_spear_2 Spear Spear 1  greek_spear_doru_2_steel 0  11259000155013124 31243722616209665 295 8202 3.000000 100 0 0 0 9 0 98 0 170 0 285 0
  4
  13 23 11 12
 0
@@ -9218,7 +9218,7 @@ itemsfile version 3
  0
 0
 
- itm_noswing_heavy_lance Long_Kontos Long_Kontos 1  spear_f_2-9m 0  11821952258015236 31243722616209664 203 8202 6.250000 100 0 0 0 10 0 78 0 350 0 284 0
+ itm_noswing_heavy_lance Long_Kontos Long_Kontos 1  spear_f_2-9m 0  11821952258015236 31243722616209664 204 8202 6.250000 100 0 0 0 10 0 78 0 350 0 284 0
  0
 0
 

@@ -1,5 +1,5 @@
 scenesfile version 1
- 881
+ 903
 scn_random_scene random_scene 1792 none none 0.000000 0.000000 240.000000 240.000000 -0.500000 0x300028000003e8fa0000034e00004b34000059be 
   0 
   0 
@@ -1216,6 +1216,10 @@ scn_battle_persian_hills_desert_7 battle_persian_hills_desert_7 256 none none 0.
   0 
   0 
  outer_terrain_desert_mountain 
+scn_battle_persian_hills_desert_9 battle_persian_hills_desert_9 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000350038a6300087a2200002428000058b70000373c 
+  0 
+  0 
+ outer_terrain_desert 
 scn_battle_persian_hills_desert_8 battle_persian_hills_desert_8 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x000000005a024714000d23480000076300004ce100002de9  
   0 
   0 
@@ -1380,6 +1384,14 @@ scn_battle_caucasian_mountains_10 battle_caucasian_mountains_10 256 none none 0.
   0 
   0 
  outer_terrain_mountain_2 
+scn_battle_caucasian_mountains_11 battle_caucasian_mountains_11 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x000000023019053200094d980000188b00004007000000fa 
+  0 
+  0 
+ outer_terrain_mountain 
+scn_battle_caucasian_mountains_12 battle_caucasian_mountains_12 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000003a0078c080007e5f900002ca400002efa00002938 
+  0 
+  0 
+ outer_terrain_mountain_2 
 scn_battle_central_anatolia battle_central_anatolia 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x00000002206006e30008be27000060d50000026e000003de 
   0 
   0 
@@ -1428,6 +1440,22 @@ scn_battle_europe_mountains_7 battle_europe_mountains_7 256 none none 0.000000 0
   0 
   0 
  outer_terrain_mountain_2 
+scn_battle_europe_mountains_9 battle_europe_mountains_9 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000003a61906470007a9ea00007c2b000046e6000000fa 
+  0 
+  0 
+ outer_terrain_mountain_3 
+scn_battle_europe_mountains_10 battle_europe_mountains_10 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000001300405630005d174000006ea0000442300001261 
+  0 
+  0 
+ outer_terrain_mountain_3 
+scn_battle_europe_mountains_11 battle_europe_mountains_11 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000001b1990900000695a800002d4d000061fc00004679 
+  0 
+  0 
+ outer_terrain_mountain_2 
+scn_battle_europe_mountains_12 battle_europe_mountains_12 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000003363906470007a9ea000003cd000046e6000000fa 
+  0 
+  0 
+ outer_terrain_mountain_3 
 scn_custom_battle_forest_1 custom_battle_forest_1 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x00000001bc61cee200093e53000056430000221c0000208f 
   0 
   0 
@@ -1496,6 +1524,26 @@ scn_bridge_battle_mediterranean bridge_battle_mediterranean 256 none none 0.0000
   0 
   0 
  outer_terrain_plain_2 
+scn_north_africa_sudan_1 north_africa_sudan_1 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x0000000230000ee30008de3900002a3b00001b8c00000cca 
+  0 
+  0 
+ outer_terrain_steppe 
+scn_north_africa_sudan_2 north_africa_sudan_2 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x0000000249000ee30008de390000747f0000717e0000799b 
+  0 
+  0 
+ outer_terrain_steppe 
+scn_north_africa_sudan_3 north_africa_sudan_3 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x0000000249000ee30008de390000400a0000003d00007e70 
+  0 
+  0 
+ outer_terrain_steppe 
+scn_north_africa_sudan_4 north_africa_sudan_4 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x00000002490009e30008de39000076ce0000155a00002330 
+  0 
+  0 
+ outer_terrain_steppe 
+scn_north_africa_sudan_5 north_africa_sudan_5 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x00000002490009e30008de39000010c00000085500002606 
+  0 
+  0 
+ outer_terrain_steppe 
 scn_river_battle_north_africa river_battle_north_africa 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x0000000248600500000b0ac6000016a200000dff00007268  
   0 
   0 
@@ -1676,6 +1724,14 @@ scn_random_scene_plain_custom_19 random_scene_plain_custom_19 256 none none 0.00
   0 
   0 
  outer_terrain_plain_2 
+scn_random_scene_plain_custom_21 random_scene_plain_custom_21 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000330000510000d2348000006ea00006f2100001f12 
+  0 
+  0 
+ outer_terrain_plain 
+scn_random_scene_plain_custom_22 random_scene_plain_custom_22 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000330000510000d23480000610c00001514000026de 
+  0 
+  0 
+ outer_terrain_plain 
 scn_custom_battle_plains_1 custom_battle_plains_1 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x00000000300012e30007c5f1000036660000112a00006486 
   0 
   0 
@@ -1733,6 +1789,18 @@ scn_random_scene_desert_custom_8 random_scene_desert_custom_8 256 none none 0.00
   0 
  outer_terrain_desert_b 
 scn_random_scene_desert_custom_9 random_scene_desert_custom_9 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x000000025019058000098a63000073c200002f6c000013be 
+  0 
+  0 
+ outer_terrain_desert_b 
+scn_random_scene_desert_custom_11 random_scene_desert_custom_11 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000003501906470007a9ea00000794000046e6000000fa 
+  0 
+  0 
+ outer_terrain_desert_b 
+scn_random_scene_desert_custom_12 random_scene_desert_custom_12 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000151400532000a729c0000b1070000292000007ff7 
+  0 
+  0 
+ outer_terrain_desert_b 
+scn_random_scene_desert_custom_13 random_scene_desert_custom_13 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002502006e30009c675000006ea00001afd000000fa 
   0 
   0 
  outer_terrain_desert_b 
@@ -1868,6 +1936,22 @@ scn_random_scene_plain_river_custom_4 random_scene_plain_river_custom_4 4352 non
   0 
   0 
  outer_terrain_river_1 
+scn_custom_battle_plains_10 custom_battle_plains_10 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000000300009e3800adabe00003816000006b600002608 
+  0 
+  0 
+ outer_terrain_plain 
+scn_custom_battle_plains_11 custom_battle_plains_11 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000330000563800d2348000006ea0000026b000036a6 
+  0 
+  0 
+ outer_terrain_plain 
+scn_custom_battle_plains_12 custom_battle_plains_12 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000003a00005000008f240000053fe00007b63000056b2 
+  0 
+  0 
+ outer_terrain_steppe 
+scn_custom_battle_plains_13 custom_battle_plains_13 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x000000023440054f8009c675000006ea0000212a000000fa 
+  0 
+  0 
+ outer_terrain_plain 
 scn_custom_battle_swamp_1 custom_battle_swamp_1 4352 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x00000000300005000007bdef0000750f000056d900005a07 
   0 
   0 
@@ -3524,3 +3608,7 @@ scn_rhodogune_temple rhodogune_temple 256 none none 0.000000 0.000000 100.000000
   0 
   1  1976 
  outer_terrain_steppe_3 
+scn_multi_cromlech_moors multi_cromlech_moors 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000130190a180005114900003f7500000162000000fa 
+  0 
+  0 
+ outer_terrain_plain 
