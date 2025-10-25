@@ -28419,11 +28419,11 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
   (neg|check_quest_active, "qst_four_emperors"),# not main story civil war
 ],
-"I wish to indict a disloyal commander for treason.", "minister_indict",
+"I wish to indict a disloyal commander for treason.",
+ "minister_indict",
 []],
 
-[anyone|plyr, "minister_talk",
-[
+[anyone|plyr, "minister_talk",[
 (faction_get_slot, ":current_marshal", "$players_kingdom", slot_faction_marshall),
 (ge, ":current_marshal", 0),
 (try_begin),
@@ -39955,22 +39955,21 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 [], "Grim news, {sire/my lady}. Who do you believe is planning to betray you?", "minister_indict_select",
 []],
 
-[anyone|plyr|repeat_for_troops, "minister_indict_select",
-[
-(store_repeat_object, ":troop_no"),
-(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-(store_faction_of_troop, ":faction", ":troop_no"),
-##diplomacy start+
-(troop_is_hero, ":troop_no"),
-(neq, ":troop_no", "trp_player"),
-#Prevent problems when the player is co-ruler of a kingdom.
-(neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, ":troop_no"),
-(neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, ":troop_no"),
-##diplomacy end+
-(eq, ":faction", "fac_player_supporters_faction"),
-(str_store_troop_name, s11, ":troop_no"),
-(call_script, "script_troop_get_player_relation", ":troop_no"),
-(assign, reg55, reg0),
+[anyone|plyr|repeat_for_troops, "minister_indict_select",[
+  (store_repeat_object, ":troop_no"),
+  (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+  (store_faction_of_troop, ":faction", ":troop_no"),
+  ##diplomacy start+
+  (troop_is_hero, ":troop_no"),
+  (neq, ":troop_no", "trp_player"),
+  #Prevent problems when the player is co-ruler of a kingdom.
+  (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, ":troop_no"),
+  (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, ":troop_no"),
+  ##diplomacy end+
+  (eq, ":faction", "fac_player_supporters_faction"),
+  (str_store_troop_name, s11, ":troop_no"),
+  (call_script, "script_troop_get_player_relation", ":troop_no"),
+  (assign, reg55, reg0),
 ], "{s11} (relation:{reg55})", "minister_indict_confirm",
 [
 (store_repeat_object, "$lord_selected"),
@@ -39982,17 +39981,12 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 [anyone, "minister_indict_confirm",
 [
-(str_store_troop_name, s4, "$lord_selected"),
-##diplomacy start+
-##OLD:
-#(troop_get_type, reg4, "$lord_selected"),
-##NEW:
-(assign, reg4, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", "$lord_selected"),
-	(assign, reg4, 1),
-(try_end),
-##diplomacy end+
+  (str_store_troop_name, s4, "$lord_selected"),
+  (assign, reg4, 0),
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", "$lord_selected"),
+    (assign, reg4, 1),
+  (try_end),
 ], "Think carefully on this, {sire/my lady}. If you indict {s4} for treason unjustly, you may find that others become nervous about serving you. On the other hand, if you truly believe that {reg4?she:he} is about to betray you, then perhaps it is best to move first, to secure control of {reg4?her:his} fortresses.", "minister_indict_confirm_answer",
 []],
 
@@ -40001,9 +39995,9 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 [anyone|plyr, "minister_indict_confirm_answer",[], "Perhaps I should wait a little while longer..", "minister_pretalk",[]],
 
 [anyone, "minister_indict_conclude",
-[], "It has been sent, {sire/my lady}.", "minister_pretalk",
-[
-(call_script, "script_indict_lord_for_treason", "$lord_selected", "fac_player_supporters_faction"),
+[], "It has been sent, {sire/my lady}.",
+"minister_pretalk",[
+  (call_script, "script_indict_lord_for_treason", "$lord_selected", "fac_player_supporters_faction"),
 ]],
 
 [anyone|plyr|repeat_for_troops, "center_captured_lord_advice",

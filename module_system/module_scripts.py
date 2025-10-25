@@ -12353,9 +12353,6 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":troop_no", 1),
     (store_script_param, ":faction_no", 2),
     (assign, ":save_reg0", reg0),
-
-    (str_clear, s0),
-    (str_store_troop_name, s1, ":troop_no"),
     (try_begin),
         (this_or_next|lt, ":troop_no", 0),# At best, the rename operation would fail.
         (this_or_next|eq, ":troop_no", "trp_heroes_end"),# This is used to store custom titles, so applying a title to this will mess them up.
@@ -12363,38 +12360,53 @@ scripts = scripts_hardcoded + [
         (this_or_next|troop_slot_ge, ":troop_no", slot_troop_occupation, dplmc_slto_exile),
         (is_between, ":troop_no", soldiers_begin, soldiers_end),
     (else_try),
-        (try_begin),
-            (call_script, "script_dplmc_store_troop_is_female", ":troop_no"),#<- dplmc+ altered
-            (assign, ":troop_is_female", reg0),
-            (is_between, ":faction_no", kingdoms_begin, kingdoms_end),
-            (faction_get_slot, ":faction_leader", ":faction_no", slot_faction_leader),
+        (is_between, ":faction_no", kingdoms_begin, kingdoms_end),
+        (faction_get_slot, ":culture", ":faction_no", slot_faction_culture),
+        (is_between, ":culture", cultures_begin, cultures_end),
 
-            (str_store_troop_name_plural, s0, ":troop_no"),
-            (store_sub, ":title_index", ":faction_no", kingdoms_begin),
+        (faction_get_slot, ":faction_leader", ":faction_no", slot_faction_leader),
+
+        (call_script, "script_dplmc_store_troop_is_female", ":troop_no"),#<- dplmc+ altered
+        (assign, ":troop_is_female", reg0),
+
+        (str_store_troop_name, s1, ":troop_no"),
+        (str_store_troop_name_plural, s0, ":troop_no"),
+        ## first faction leader logic and their spouses
+        (try_begin),
+            (store_sub, ":title_index", ":culture", cultures_begin),
 
             (assign, ":c", 0),# main story, poppaea
             (try_begin),
                 (eq, ":troop_no", "trp_kingdom_7_lady_1"),
                 (quest_slot_eq, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 0),
                 (this_or_next|eq, ":troop_no", ":faction_leader"),
-                (troop_slot_eq, ":troop_no", slot_troop_spouse, ":faction_leader"), #wife is now queen/khatun/sultana
+                (troop_slot_eq, ":troop_no", slot_troop_spouse, ":faction_leader"),
                 (assign, ":c", 1),
             (else_try),
                 (this_or_next|eq, ":troop_no", ":faction_leader"),
-                (troop_slot_eq, ":troop_no", slot_troop_spouse, ":faction_leader"), #wife is now queen/khatun/sultana
+                (troop_slot_eq, ":troop_no", slot_troop_spouse, ":faction_leader"),
                 (assign, ":c", 1),
             (try_end),
             (eq, ":c", 1),
-
-            (try_begin), # civil war player titles
-                (eq, ":troop_no", "trp_player"),
-                (ge, "$g_civil_war", 1),
-                (assign, ":title_index", "str_faction_leader_title_male_24"),
+            (try_begin),
+                (eq, ":troop_is_female", 0),
+                (is_between, ":faction_no", fac_kingdom_24, fac_kingdom_27+1),
+                (assign, ":title_index", "str_culture_7_title_male_leader_civil_war"),
+            (else_try),
+                (is_between, ":faction_no", fac_kingdom_24, fac_kingdom_27+1),
+                (assign, ":title_index", "str_culture_7_title_female"),
             (else_try),
                 (eq, ":troop_is_female", 0),
-                (val_add, ":title_index", "str_faction_leader_title_male_player"),
+                (eq, ":faction_no", "fac_kingdom_19"),
+                (assign, ":title_index", "str_culture_any_title_male_leader_roman"),
             (else_try),
-                (val_add, ":title_index", "str_faction_leader_title_female_player"),
+                (eq, ":faction_no", "fac_kingdom_19"),
+                (assign, ":title_index", "str_culture_any_title_female_leader_roman"),
+            (else_try),
+                (eq, ":troop_is_female", 0),
+                (val_add, ":title_index", "str_culture_1_title_male_leader"),
+            (else_try),
+                (val_add, ":title_index", "str_culture_1_title_female_leader"),
             (try_end),
             (str_store_string, s1, ":title_index"),
         (else_try),
@@ -12434,21 +12446,27 @@ scripts = scripts_hardcoded + [
             (str_store_troop_name_plural, s1, ":troop_no"),
             (str_store_string, s1, "str_s0_s1"),
         (else_try),
-            (is_between, ":faction_no", kingdoms_begin, kingdoms_end),
             (try_begin),
+                (eq, ":troop_is_female", 0),
+                (eq, ":faction_no", "fac_kingdom_19"),
+                (assign, ":title_index", "str_culture_any_title_male_roman"),
+            (else_try),
                 (eq, ":troop_is_female", 0), #<- dplmc+ altered
-                (val_add, ":title_index", kingdom_titles_male_begin),
+                (val_add, ":title_index", "str_culture_1_title_male"),
             (else_try),
                 (try_begin),
                     (is_between, ":troop_no", kingdom_ladies_begin, kingdom_ladies_end),
                     (this_or_next|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
                     (troop_slot_ge, ":troop_no", slot_troop_spouse, 0),
-                    (val_add, ":title_index", kingdom_titles_female_begin),
+                    (eq, ":faction_no", "fac_kingdom_19"),
+                    (assign, ":title_index", "str_culture_any_title_female_roman"),
                 (else_try),
-                    (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-                    (val_add, ":title_index", kingdom_titles_female_begin),
+                    (is_between, ":troop_no", kingdom_ladies_begin, kingdom_ladies_end),
+                    (this_or_next|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+                    (troop_slot_ge, ":troop_no", slot_troop_spouse, 0),
+                    (val_add, ":title_index", "str_culture_1_title_female"),
                 (else_try),
-                    (assign, ":title_index", kingdom_titles_female_begin), #unmarried or unlanded ladies should just be Lady
+                    (assign, ":title_index", "str_s0"),
                 (try_end),
             (try_end),
             (str_store_string, s1, ":title_index"),
@@ -48791,27 +48809,11 @@ scripts = scripts_hardcoded + [
 		(eq, ":troop_no", "trp_player"),
 		(str_store_string, s9, "str_you_have_been_indicted_for_treason_to_s7_your_properties_have_been_confiscated_and_you_would_be_well_advised_to_flee_for_your_life"),
 	(else_try),
-		# (str_store_troop_name_plural, s4, ":troop_no"), #this now holds the new faction title, need to be changed
 		(str_store_faction_name_link, s5, ":faction"),
 		(str_store_troop_name_link, s6, ":faction_leader"),
 
-		##diplomacy start+
-		#(troop_get_type, reg4, ":troop_no"),
-		(call_script, "script_dplmc_store_troop_is_female", ":troop_no"),
-		(assign, reg4, reg0),
-		(store_sub, ":title", ":faction", kingdoms_begin),
-		(try_begin),
-		  (eq, reg4, tf_male),
-		  (val_add, ":title", kingdom_titles_male_begin),
-		(else_try),
-	      (eq, reg4, tf_female),
-		  (val_add, ":title", kingdom_titles_female_begin),
-		(else_try), #default to lord
-		  (assign, ":title", kingdom_titles_male_begin),
-		(try_end),
-		(str_store_troop_name_plural, s0, ":troop_no"),
-		(str_store_string, s4, ":title"),
-		##diplomacy end+
+		(str_store_troop_name, s4, ":troop_no"),
+
 		(str_store_string, s9, "str_by_order_of_s6_s4_of_the_s5_has_been_indicted_for_treason_the_lord_has_been_stripped_of_all_reg4herhis_properties_and_has_fled_for_reg4herhis_life_he_is_rumored_to_have_gone_into_exile_s11"),
 	(try_end),
 	##diplomacy start+ important political events should be in the log
@@ -48825,21 +48827,72 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, ":troop_no", slot_troop_leaded_party, -1),
     (call_script, "script_destroy_party", ":led_party"),
 
+    # remove offices
+    (troop_get_slot, ":province", ":troop_no", slot_troop_govern),
+    (try_begin),
+        (is_between, ":province", p_hisp_tarraco, p_provinces_end),
+        (troop_set_slot, "trp_province_array", ":province", -1),
+        (call_script, "script_troop_set_rank", ":troop_no", slot_troop_govern, -1),
+        (str_store_troop_name_plural, s12, ":troop_no"),
+        (store_add, ":string", ":province", "str_province_begin"),
+        (str_store_string, s13, ":string"),
+        (display_message, "@{s12} is no longer governor of {s13}!"),
+    (try_end),
+
+    (troop_get_slot, ":legion", ":troop_no", slot_troop_legion),
+    (try_begin),
+        (ge, ":legion", 1),
+        (call_script, "script_troop_set_rank", ":troop_no", slot_troop_legion, -1),
+        (str_store_troop_name_plural, s12, ":troop_no"),
+        (try_begin),
+            (eq, ":legion", 13),
+            (troop_slot_eq, "trp_players_legion", 1,1),
+            (str_store_troop_name_plural, s13, "trp_players_legion"),
+        (else_try),
+            (store_add, ":legion_string", "str_legion_names_begin", ":legion"),
+            (str_store_string, s13, ":legion_string"),
+        (try_end),
+        (display_message, "@{s12} is no longer commander of {s13}."),
+        (call_script, "script_change_lord_party_to_fit_rank", ":troop_no"),
+        (store_add, ":slot_legion_commander", slot_legion_commanders_begin, ":legion"),
+        (troop_set_slot, "trp_province_array", ":slot_legion_commander", -1),#clear slot
+    (try_end),
+
+    (troop_get_slot, ":auxiliary", ":troop_no", slot_troop_aux),
+    (try_begin),
+        (ge, ":auxiliary", 1),
+        (val_sub, ":auxiliary", "pt_cohors_aux"),#slot_aux_legion_begin,slot_aux_commander_begin
+
+        (store_add, ":slot_aux_commander", ":auxiliary", slot_aux_commander_begin),
+        (troop_set_slot, "trp_province_array", ":slot_aux_commander", -1),#clear slot
+
+        (call_script, "script_troop_set_rank", ":troop_no", slot_troop_aux, -1),
+        (call_script, "script_change_lord_party_to_fit_rank", ":troop_no"),
+
+        (str_store_troop_name_plural, s12, ":troop_no"),
+        (val_add, ":auxiliary","str_cohors_aux"),
+        (try_begin),
+            (eq, ":auxiliary", "str_player_aux_cav"),
+            (str_store_troop_name, s1, "trp_players_aux_cav"),
+        (else_try),
+            (eq, ":auxiliary", "str_player_aux_inf"),
+            (str_store_troop_name, s1, "trp_players_aux_inf"),
+        (try_end),
+        (str_store_string, s13, ":auxiliary"),
+        (display_log_message, "@{s12} is no longer commander of {s23}."),
+    (try_end),
+
 	(try_begin),
 		(eq, "$cheat_mode", 1),
-		##diplomacy start+
 		(this_or_next|eq, ":faction", "fac_player_supporters_faction"),
 		(this_or_next|eq, ":new_faction", "fac_player_supporters_faction"),
-		##diplomacy end+
 		(this_or_next|eq, ":faction", "$players_kingdom"),
-    (eq, ":new_faction", "$players_kingdom"),
+        (eq, ":new_faction", "$players_kingdom"),
 		(call_script, "script_add_notification_menu", "mnu_notification_treason_indictment", ":troop_no", ":faction"),
 	(try_end),
-	##diplomacy start+
 	(assign, reg0, ":save_reg0"),
 	(assign, reg3, ":save_reg3"),
 	(assign, reg4, ":save_reg4"),
-	##diplomacy end+
 ]),
 
   # script_give_center_to_faction_while_maintaining_lord
@@ -88054,7 +88107,7 @@ scripts = scripts_hardcoded + [
             (party_get_slot, ":province", ":center_no", slot_center_province),
             (troop_get_slot, ":governor", "trp_province_array", ":province"),
 
-            (faction_get_slot, ":leader", ":faction",slot_faction_leader),
+            (faction_get_slot, ":leader", ":faction", slot_faction_leader),
             (try_begin),#if there already exists a governor
                 (ge, ":governor", 0),
                 (try_begin),
@@ -88081,7 +88134,7 @@ scripts = scripts_hardcoded + [
                 (assign, ":score", -100),
                 (assign, ":candiate", -1),
                 (try_for_range, ":active_npc", active_npcs_including_player_begin, heroes_end),
-                    (neq, ":leader", ":candiate"),
+                    (neq, ":leader", ":active_npc"),
                     (assign, ":c", 1),
                     (try_begin),
                         (eq, ":active_npc", active_npcs_including_player_begin),
@@ -92250,6 +92303,13 @@ scripts = scripts_hardcoded + [
         (str_store_faction_name, s2, ":faction"),
         (store_sub, ":aux_string", ":auxiliar", "pt_cohors_aux"),
         (val_add, ":aux_string", "str_cohors_aux"),
+        (try_begin),
+            (eq, ":aux_string", "str_player_aux_cav"),
+            (str_store_troop_name, s1, "trp_players_aux_cav"),
+        (else_try),
+            (eq, ":aux_string", "str_player_aux_inf"),
+            (str_store_troop_name, s1, "trp_players_aux_inf"),
+        (try_end),
         (str_store_string, s3, ":aux_string"),
         (display_log_message, "@{s1} ({s2}) is new commander of {s3}.", message_alert),
     (try_end),

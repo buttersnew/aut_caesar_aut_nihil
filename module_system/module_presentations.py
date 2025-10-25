@@ -14188,15 +14188,9 @@ presentations = presentations_wse2 + [
       (assign, reg1, reg0),
       (str_store_string, s2, "str_relation_reg1"),
       (str_clear, s0),
-      (try_begin), #too lazy to get custom vassal titles, use the nicely formatted presets
-        (call_script, "script_cf_dplmc_troop_is_female", "$temp_troop"),
-        (str_store_string, s1, "str_faction_title_female_player"),
-      (else_try),
-        (str_store_string, s1, "str_faction_title_male_player"),
-      (try_end),
       (call_script, "script_print_troop_owned_centers_in_numbers_to_s0", "$temp_troop"),
       (troop_get_slot, reg2, "$temp_troop", slot_troop_renown),
-      (str_store_string, s0, "@ Renown: {reg2}^{s2}^{s1}of {s0}"),
+      (str_store_string, s0, "@ Renown: {reg2}^{s2}^Rules in {s0}"),
     (try_end),
 
     (assign, ":cur_x", 0),
@@ -17356,28 +17350,28 @@ presentations = presentations_wse2 + [
 
     ## initialization part begin
     # presentation obj: begin from top left corner
-    (assign, ":init_pos_x", 10), # init x
-    (assign, ":init_pos_y", 710), # init y
+    (assign, ":init_pos_x", 15), # init x
+    (assign, ":init_pos_y", 725), # init y
 
     # world map, X: -180 t0 180  Y: -145 t0 145
     (assign, ":min_map_x", -297*1000),
     (assign, ":max_map_x", 310*1000),
-    (assign, ":min_map_y", -225*1000),
+    (assign, ":min_map_y", -275*1000),
     (assign, ":max_map_y", 210*1000),
     # also begin from top left corner
     (assign, ":init_map_x", ":min_map_x"), # init map_x
     (assign, ":init_map_y", ":max_map_y"), # init map_y
 
     # move length of p_temp_party, total_cols and total_rows
-    (assign, ":party_move_length_x", 2750*(520/360)),
-    (assign, ":party_move_length_y", 2750*(535/290)),
+    (assign, ":party_move_length_x", 2400*(520/360)),
+    (assign, ":party_move_length_y", 2400*(535/290)),
     (store_sub, ":total_cols", ":max_map_x", ":min_map_x"),
     (store_sub, ":total_rows", ":max_map_y", ":min_map_y"),
     (val_div, ":total_cols", ":party_move_length_x"),
     (val_div, ":total_rows", ":party_move_length_y"),
 
     # color_block_length
-    (assign, ":color_block_length", 4),
+    (assign, ":color_block_length", 5),
     (store_mul, ":color_block_size", ":color_block_length", 50),
     (position_set_x, pos2, ":color_block_size"),
     (position_set_y, pos2, ":color_block_size"),
@@ -17681,10 +17675,10 @@ presentations = presentations_wse2 + [
         # offset and size
         (try_begin),
           (party_slot_eq, ":center_no", slot_party_type, spt_town),
-          (assign, ":block_size", 20),
+          (assign, ":block_size", 15),
         (else_try),
           (party_slot_eq, ":center_no", slot_party_type, spt_castle),
-          (assign, ":block_size", 12),
+          (assign, ":block_size", 10),
         (else_try),
           (party_slot_eq, ":center_no", slot_party_type, spt_village),
           (assign, ":block_size", 8),
@@ -26629,10 +26623,12 @@ presentations = presentations_wse2 + [
                 (eq, ":auxiliar_cohort", "pt_player_aux_cav"),
                 (troop_slot_eq, "trp_players_aux_cav", 1, 0),
                 (str_store_string, s20, "@Not created yet."),
+                (assign, ":aux_cohort_commander", -1),
             (else_try),
                 (eq, ":auxiliar_cohort", "pt_player_aux_inf"),
                 (troop_slot_eq, "trp_players_aux_inf", 1, 0),
                 (str_store_string, s20, "@Not created yet."),
+                (assign, ":aux_cohort_commander", -1),
             (else_try),
                 (eq, ":aux_cohort_commander", 0),
                 (str_store_string, s20, "@You."),
@@ -26792,10 +26788,13 @@ presentations = presentations_wse2 + [
                 (store_mul, ":slot_2", ":slot", 2),
                 (troop_set_slot, "trp_temp_array_a", ":slot_2", reg10),
             (else_try),
+                (neq, ":auxiliar_cohort", "pt_player_aux_cav"),
+                (neq, ":auxiliar_cohort", "pt_player_aux_inf"),
+
                 (gt, ":legate", -1),
                 (eq, ":aux_cohort_commander", -1),
                 (eq, "$g_notification_menu_var1", 0),#is emperor
-                (create_text_overlay, reg0, "@Raise", tf_left_align),
+                (create_text_overlay, reg0, "@Raise", tf_left_align, tf_with_outline),
                 (overlay_set_color, reg0, 0x32CD32),
                 (position_set_x, pos1, ":x_name"),
                 (position_set_y, pos1, ":y_name"),
@@ -26902,6 +26901,13 @@ presentations = presentations_wse2 + [
                     (party_is_active, ":enemy"),
 
                     (val_add, ":auxiliary","str_cohors_aux"),
+                    (try_begin),
+                        (eq, ":auxiliary", "str_player_aux_cav"),
+                        (str_store_troop_name, s1, "trp_players_aux_cav"),
+                    (else_try),
+                        (eq, ":auxiliary", "str_player_aux_inf"),
+                        (str_store_troop_name, s1, "trp_players_aux_inf"),
+                    (try_end),
                     (str_store_string, s23, ":auxiliary"),
 
                     (display_log_message, "@The {s23}, which is attached to the legion, is still in battle. Legion can't be disbanded now!", message_alert),
@@ -26951,7 +26957,7 @@ presentations = presentations_wse2 + [
                 (try_end),
                 (display_log_message, "@The {s52} has been disbanded!"),
 
-                #also disband attached auxiliary forces
+                # also disband attached auxiliary forces
                 (try_for_range, ":auxiliary", "pt_cohors_aux", "pt_praetoriani_archer_cohors"),
                     (val_sub, ":auxiliary", "pt_cohors_aux"),#slot_aux_legion_begin,slot_aux_commander_begin
 
@@ -26994,6 +27000,13 @@ presentations = presentations_wse2 + [
                         (call_script, "script_change_lord_party_to_fit_rank", ":aux_cohort_commander"),
                     (try_end),
                     (val_add, ":auxiliary","str_cohors_aux"),
+                    (try_begin),
+                        (eq, ":auxiliary", "str_player_aux_cav"),
+                        (str_store_troop_name, s1, "trp_players_aux_cav"),
+                    (else_try),
+                        (eq, ":auxiliary", "str_player_aux_inf"),
+                        (str_store_troop_name, s1, "trp_players_aux_inf"),
+                    (try_end),
                     (str_store_string, s23, ":auxiliary"),
                     (display_log_message, "@The {s23} has been disbanded!"),
                 (try_end),
@@ -28402,45 +28415,47 @@ presentations = presentations_wse2 + [
     (try_end),
     (str_store_string, s1, ":string"),
     (str_store_party_name, s2, "$temp4"),
-    (create_text_overlay, reg1, "@You can change the headquarters of the {s1} by clicking on the respective town. Currently, it is in {s2} and marked with an eagle. The headquarters of other legions are marked with a golden dot.", tf_center_justify|tf_scrollable),
-    (position_set_x, pos1, 1100),
-    (position_set_y, pos1, 1100),
+    (create_text_overlay, reg1, "@You can change the headquarters of the {s1} by clicking on the respective town. Currently, it is in {s2} and marked with an eagle. The headquarters of other legions are marked with a golden dot.", tf_center_justify|tf_scrollable|tf_with_outline),
+    (overlay_set_color, reg1, color_information),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
     (overlay_set_size, reg1, pos1),
-    (position_set_x, pos1, 845),
-    (position_set_y, pos1, 460),
+    (position_set_x, pos1, 550),
+    (position_set_y, pos1, 50),
     (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 140),
-    (position_set_y, pos1, 250),
+    (position_set_x, pos1, 400),
+    (position_set_y, pos1, 75),
     (overlay_set_area_size, reg1, pos1),
-  ## initialization part begin
 
+    ## initialization part begin
     # presentation obj: begin from top left corner
     (assign, ":init_pos_x", 15), # init x
     (assign, ":init_pos_y", 725), # init y
 
-    # world map
-    (assign, ":min_map_x", -300*1000),
-    (assign, ":max_map_x", 270*1000),
-    (assign, ":min_map_y", -225*1000),
+    # world map, X: -180 t0 180  Y: -145 t0 145
+    (assign, ":min_map_x", -297*1000),
+    (assign, ":max_map_x", 310*1000),
+    (assign, ":min_map_y", -275*1000),
     (assign, ":max_map_y", 210*1000),
-
     # also begin from top left corner
     (assign, ":init_map_x", ":min_map_x"), # init map_x
     (assign, ":init_map_y", ":max_map_y"), # init map_y
 
     # move length of p_temp_party, total_cols and total_rows
-    (assign, ":party_move_length_x", 2750*(520/360)),
-    (assign, ":party_move_length_y", 2750*(535/290)),
+    (assign, ":party_move_length_x", 2300*(520/360)),
+    (assign, ":party_move_length_y", 2300*(535/290)),
     (store_sub, ":total_cols", ":max_map_x", ":min_map_x"),
     (store_sub, ":total_rows", ":max_map_y", ":min_map_y"),
     (val_div, ":total_cols", ":party_move_length_x"),
     (val_div, ":total_rows", ":party_move_length_y"),
 
     # color_block_length
-    (assign, ":color_block_length", 4),
-    (store_mul, ":color_block_size", ":color_block_length", 50),
+    (assign, ":color_block_length", 5),
+    (assign, ":block_size_factor", 50),
+    (store_mul, ":color_block_size", ":color_block_length", ":block_size_factor"),
     (position_set_x, pos2, ":color_block_size"),
     (position_set_y, pos2, ":color_block_size"),
+    ## initialization part end
 
 
     (try_for_range, ":i", walled_centers_begin, walled_centers_end),
@@ -28486,8 +28501,8 @@ presentations = presentations_wse2 + [
 
             ## draw borderlines begin [optional]
             # borderlines length and whidth
-            (store_add, ":line_length", ":color_block_size", 1*50),
-            (assign, ":line_whidth", 1*50),
+            (store_add, ":line_length", ":color_block_size", ":block_size_factor"),
+            (assign, ":line_whidth", ":block_size_factor"),
             # find bound_center
             (call_script, "script_get_closest_center_and_minor", "p_temp_party", 0),
             (assign, ":nearest_center", reg0),
@@ -28630,11 +28645,11 @@ presentations = presentations_wse2 + [
         # offset and size
         (try_begin),
             (party_slot_eq, ":center_no", slot_party_type, spt_town),
-            (assign, ":block_size", 20),
+            (assign, ":block_size", 15),
         (else_try),
-            (assign, ":block_size", 12),
+            (assign, ":block_size", 10),
         (try_end),
-        (val_mul, ":block_size", 50),
+        (val_mul, ":block_size", ":block_size_factor"),
         # block
         (try_begin),
             (eq, ":center_no", "$temp4"),
@@ -29197,8 +29212,10 @@ presentations = presentations_wse2 + [
         (store_add, ":slot", ":province", slot_province_senatorial_begin),
         (troop_get_slot, ":is_senatorial", "trp_province_array", ":slot"),
         (ge, ":is_senatorial", 1),
+
         (troop_get_slot, ":governor", "trp_province_array", ":province"),
-        (ge, ":governor", 0),
+        # (ge, ":governor", 0),
+
         (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, ":governor"),
 
         (assign, ":break", walled_centers_end),
@@ -29322,7 +29339,13 @@ presentations = presentations_wse2 + [
         (try_begin),
             (ge, ":is_senatorial", 1),
             (val_add, ":x_name", 100),
-            (create_text_overlay, reg0, "@Change Governor (senate support)", tf_left_align),
+            (try_begin),
+              (ge, ":governor", 0),
+              (str_store_string, s13, "@Change"),
+            (else_try),
+              (str_store_string, s13, "@Assign"),
+            (try_end),
+            (create_text_overlay, reg0, "@{s13} Governor (senate support)", tf_left_align),
             (overlay_set_color, reg0, 0x0000FF),
             (position_set_x, pos1, ":x_name"),
             (position_set_y, pos1, ":y_name"),
@@ -31422,9 +31445,14 @@ presentations = presentations_wse2 + [
 
     (store_add, ":string", "$g_notification_menu_var2", "str_province_begin"),
     (str_store_string, s22, ":string"),
-    (str_store_troop_name, s40, "$g_notification_menu_var1"),
+    (str_store_string, s13, "@{s22} has currently no governor."),
+    (try_begin),
+      (gt, "$g_notification_menu_var1", -1),
+      (str_store_troop_name, s40, "$g_notification_menu_var1"),
+      (str_store_string, s13, "@{s40} is currently governor of {s22}."),
+    (try_end),
     (call_script, "script_write_economic_info_to_s0", "$g_notification_menu_var2", 0),
-    (create_text_overlay, reg1, "@{s40} is currently governor of {s22}. You may use your senate support to assign a new governor. Economic information: {s0}", tf_scrollable_style_2|tf_center_justify),
+    (create_text_overlay, reg1, "@{s13} You may use your senate support to assign a new governor. Economic information: {s0}", tf_scrollable_style_2|tf_center_justify),
     (position_set_x, pos1, 950),
     (position_set_y, pos1, 950),
     (overlay_set_size, reg1, pos1),
@@ -31459,30 +31487,32 @@ presentations = presentations_wse2 + [
     (position_set_y, pos1, 1000),
     (overlay_set_size, reg1, pos1),
 
-    (troop_set_slot, "trp_global_variables", g_show_troop_banner, 1),
-    (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", "$g_notification_menu_var1"),
-    (position_set_x, pos1, 40),
-    (position_set_y, pos1, 580),
-    (overlay_set_position, reg0, pos1),
-    (position_set_x, pos1, 450),
-    (position_set_y, pos1, 450),
-    (overlay_set_size, reg0, pos1),
+    (try_begin),
+      (gt, "$g_notification_menu_var1", -1),
+      (troop_set_slot, "trp_global_variables", g_show_troop_banner, 1),
+      (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", "$g_notification_menu_var1"),
+      (position_set_x, pos1, 40),
+      (position_set_y, pos1, 580),
+      (overlay_set_position, reg0, pos1),
+      (position_set_x, pos1, 450),
+      (position_set_y, pos1, 450),
+      (overlay_set_size, reg0, pos1),
 
-    (troop_get_slot, ":personality", "$g_notification_menu_var1", slot_lord_reputation_type),
-    (store_add, ":string", ":personality", "str_personality_archetypes"),
-    (str_store_string, s22, ":string"),
-    # (troop_get_slot, reg20, "$g_notification_menu_var1", slot_troop_player_relation),
-    (call_script, "script_troop_get_player_relation", "$g_notification_menu_var1"),
-    (assign, reg20, reg0),
-    (str_store_troop_name_plural, s30, "$g_notification_menu_var1"),
-    (create_text_overlay, reg1, "@{s30}.^Relation: {reg20}.^Personality: {s22}", tf_center_justify),
-    (position_set_x, pos1, 110), # Higher, means more toward the right
-    (position_set_y, pos1, 515), # Higher, means more toward the top
-    (overlay_set_position, reg1, pos1),
-    (position_set_x, pos1, 950),
-    (position_set_y, pos1, 950),
-    (overlay_set_size, reg1, pos1),
-
+      (troop_get_slot, ":personality", "$g_notification_menu_var1", slot_lord_reputation_type),
+      (store_add, ":string", ":personality", "str_personality_archetypes"),
+      (str_store_string, s22, ":string"),
+      # (troop_get_slot, reg20, "$g_notification_menu_var1", slot_troop_player_relation),
+      (call_script, "script_troop_get_player_relation", "$g_notification_menu_var1"),
+      (assign, reg20, reg0),
+      (str_store_troop_name_plural, s30, "$g_notification_menu_var1"),
+      (create_text_overlay, reg1, "@{s30}.^Relation: {reg20}.^Personality: {s22}", tf_center_justify),
+      (position_set_x, pos1, 110), # Higher, means more toward the right
+      (position_set_y, pos1, 515), # Higher, means more toward the top
+      (overlay_set_position, reg1, pos1),
+      (position_set_x, pos1, 950),
+      (position_set_y, pos1, 950),
+      (overlay_set_size, reg1, pos1),
+    (try_end),
     # Back to menu - graphical button
     (create_game_button_overlay, reg1, "str_return"),
     (position_set_x, pos1, 450),
@@ -31798,25 +31828,24 @@ presentations = presentations_wse2 + [
     (assign, ":init_pos_y", 725), # init y
 
     # world map
-    (assign, ":min_map_x", -300*1000),
-    (assign, ":max_map_x", 270*1000),
-    (assign, ":min_map_y", -225*1000),
+    (assign, ":min_map_x", -297*1000),
+    (assign, ":max_map_x", 310*1000),
+    (assign, ":min_map_y", -275*1000),
     (assign, ":max_map_y", 210*1000),
-
     # also begin from top left corner
     (assign, ":init_map_x", ":min_map_x"), # init map_x
     (assign, ":init_map_y", ":max_map_y"), # init map_y
 
     # move length of p_temp_party, total_cols and total_rows
-    (assign, ":party_move_length_x", 2750*(520/360)),
-    (assign, ":party_move_length_y", 2750*(535/290)),
+    (assign, ":party_move_length_x", 2400*(520/360)),
+    (assign, ":party_move_length_y", 2400*(535/290)),
     (store_sub, ":total_cols", ":max_map_x", ":min_map_x"),
     (store_sub, ":total_rows", ":max_map_y", ":min_map_y"),
     (val_div, ":total_cols", ":party_move_length_x"),
     (val_div, ":total_rows", ":party_move_length_y"),
 
     # color_block_length
-    (assign, ":color_block_length", 4),
+    (assign, ":color_block_length", 5),
     (store_mul, ":color_block_size", ":color_block_length", 50),
     (position_set_x, pos2, ":color_block_size"),
     (position_set_y, pos2, ":color_block_size"),
@@ -32024,10 +32053,10 @@ presentations = presentations_wse2 + [
       # offset and size
       (try_begin),
         (party_slot_eq, ":center_no", slot_party_type, spt_town),
-        (assign, ":block_size", 20),
+        (assign, ":block_size", 15),
       (else_try),
         (party_slot_eq, ":center_no", slot_party_type, spt_castle),
-        (assign, ":block_size", 12),
+        (assign, ":block_size", 10),
       (else_try),
         (party_slot_eq, ":center_no", slot_party_type, spt_village),
         (assign, ":block_size", 8),
@@ -32148,8 +32177,8 @@ presentations = presentations_wse2 + [
     #List Lords
     (str_clear, s0),
     (create_text_overlay, "$list_lords", s0, tf_scrollable),
-    (position_set_x, pos1, 765),
-    (position_set_y, pos1, 260),
+    (position_set_x, pos1, 790),
+    (position_set_y, pos1, 450),
     (overlay_set_position, "$list_lords", pos1),
     (position_set_x, pos1, 200),
     (position_set_y, pos1, 4100),
@@ -32177,6 +32206,7 @@ presentations = presentations_wse2 + [
 
     (try_begin),
         (ge, "$g_player_chancellor", 1),
+
         #lords
         (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
             (this_or_next|troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
@@ -32199,24 +32229,25 @@ presentations = presentations_wse2 + [
     (assign, "$last_lord_btn", reg1),
     (set_container_overlay, -1),
 
-    #Checkbox show all unassigned
-    (create_check_box_overlay, "$chk_unassigned", "mesh_checkbox_off", "mesh_checkbox_on"),
-    (position_set_x, pos1, 840),
-    (position_set_y, pos1, 700),
-    (overlay_set_position, "$chk_unassigned", pos1),
-    (create_text_overlay, "$chk_unassigned_lbl", "@Show unassigned"),
-    (position_set_x, pos1, 880),
-    (position_set_y, pos1, 700),
-    (overlay_set_position, "$chk_unassigned_lbl", pos1),
-    (position_set_x, pos1, 780), (position_set_y, pos1, 780),
-    (overlay_set_size, "$chk_unassigned_lbl", pos1),
-
     #Show all toggle
     (create_game_button_overlay, "$g_btn_show_toggle", "@Show All/None"),
     (position_set_x, pos1, 915),
-    (position_set_y, pos1, 650),
+    (position_set_y, pos1, 705),
     (overlay_set_position, "$g_btn_show_toggle", pos1),
     (assign, "$show_toggle", 1),
+
+    #Checkbox show all unassigned
+    (create_check_box_overlay, "$chk_unassigned", "mesh_checkbox_off", "mesh_checkbox_on"),
+    (position_set_x, pos1, 165),
+    (position_set_y, pos1, 60),
+    (overlay_set_position, "$chk_unassigned", pos1),
+    (create_text_overlay, "$chk_unassigned_lbl", "@Show unassigned:", tf_with_outline),
+    (overlay_set_color, "$chk_unassigned_lbl", color_information),
+    (position_set_x, pos1, 60),
+    (position_set_y, pos1, 60),
+    (overlay_set_position, "$chk_unassigned_lbl", pos1),
+    (position_set_x, pos1, 780), (position_set_y, pos1, 780),
+    (overlay_set_size, "$chk_unassigned_lbl", pos1),
 
     #Owner name
     (create_text_overlay, "$lbl_name_color_lord", "@None2"),
@@ -32247,11 +32278,13 @@ presentations = presentations_wse2 + [
     (try_begin),
         (ge, "$g_player_chancellor", 1),
         #faction label
-        (create_text_overlay, "$show_faction_lbl", "@Show faction:"),
-        (position_set_x, pos1, 845),
-        (position_set_y, pos1, 610),
+        (create_text_overlay, "$show_faction_lbl", "@Show faction:", tf_with_outline),
+        (overlay_set_color, "$show_faction_lbl", color_information),
+        (position_set_x, pos1, 60),
+        (position_set_y, pos1, 160),
         (overlay_set_position, "$show_faction_lbl", pos1),
-        (position_set_x, pos1, 780), (position_set_y, pos1, 780),
+        (position_set_x, pos1, 780),
+        (position_set_y, pos1, 780),
         (overlay_set_size, "$show_faction_lbl", pos1),
 
         #Combo box factions (hardcoded because few)
@@ -32261,8 +32294,8 @@ presentations = presentations_wse2 + [
             (str_store_faction_name, s1, ":faction"),
             (overlay_add_item, "$factions", "@{s1}"),
         (try_end),
-        (position_set_x, pos1, 955),
-        (position_set_y, pos1, 575),
+        (position_set_x, pos1, 150),
+        (position_set_y, pos1, 125),
         (overlay_set_position, "$factions", pos1),
         (position_set_x, pos1, 575),
         (position_set_y, pos1, 700),
@@ -32272,9 +32305,10 @@ presentations = presentations_wse2 + [
     #label lord to grant fief
     (create_text_overlay, "$lbl_name_grant_lord", "@Grant fief to..."),
     (position_set_x, pos1, 840),
-    (position_set_y, pos1, 700),
+    (position_set_y, pos1, 150),
     (overlay_set_position, "$lbl_name_grant_lord", pos1),
-    (position_set_x, pos1, 780), (position_set_y, pos1, 780),
+    (position_set_x, pos1, 780),
+    (position_set_y, pos1, 780),
     (overlay_set_size, "$lbl_name_grant_lord", pos1),
     (overlay_set_color, "$lbl_name_grant_lord", 0x0000FF),
     (overlay_set_display, "$lbl_name_grant_lord", 0),
@@ -32312,9 +32346,11 @@ presentations = presentations_wse2 + [
     (overlay_set_val, "$cbo_grant", ":i"),
     (assign, "$last_indx_cbogrant", ":i"),
 
-    (position_set_x, pos1, 945), (position_set_y, pos1, 640),
+    (position_set_x, pos1, 945),
+    (position_set_y, pos1, 90),
     (overlay_set_position, "$cbo_grant", pos1),
-    (position_set_x, pos1, 550), (position_set_y, pos1, 700),
+    (position_set_x, pos1, 550),
+    (position_set_y, pos1, 700),
     (overlay_set_size, "$cbo_grant", pos1),
     (overlay_set_display, "$cbo_grant", 0),
 
@@ -32339,9 +32375,10 @@ presentations = presentations_wse2 + [
 
     #6. DESCRIPTION
     #headline
-    (create_text_overlay, reg1, "str_empty_string", tf_center_justify),
-    (position_set_x, pos1, 900),
-    (position_set_y, pos1, 200),
+    (create_text_overlay, reg1, "str_empty_string", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, message_alert),
+    (position_set_x, pos1, 800),
+    (position_set_y, pos1, 170),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 900),
     (position_set_y, pos1, 900),
@@ -32349,8 +32386,8 @@ presentations = presentations_wse2 + [
     (assign, "$g_presentation_obj_1", reg1),
 
     (create_text_overlay, reg1, "str_empty_string", tf_center_justify),
-    (position_set_x, pos1, 900),
-    (position_set_y, pos1, 120),
+    (position_set_x, pos1, 800),
+    (position_set_y, pos1, 95),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 900),
     (position_set_y, pos1, 900),
@@ -32551,15 +32588,19 @@ presentations = presentations_wse2 + [
             (overlay_set_color, ":lord_center", ":value"),
         (try_end),
 
-        (call_script, "script_search_lords_tmp", 0, "$id_color_lord"), (troop_get_slot, ":indx0", "trp_temp_array_c", 0),
-        (store_add, ":indx1", ":indx0", 1), (troop_set_slot, "trp_temp_array_b", ":indx1", ":value"),
+        (call_script, "script_search_lords_tmp", 0, "$id_color_lord"),
+        (troop_get_slot, ":indx0", "trp_temp_array_c", 0),
+        (store_add, ":indx1", ":indx0", 1),
+        (troop_set_slot, "trp_temp_array_b", ":indx1", ":value"),
     (else_try),
     #Click on lord's list
         (ge, ":object", "$first_lord_btn"),
         (le, ":object", "$last_lord_btn"),
         (call_script, "script_search_lords_tmp", 2, ":object"),
-        (troop_get_slot, ":indx0", "trp_temp_array_c", 0), (troop_get_slot, ":id_lord", "trp_temp_array_b", ":indx0"),
-        (store_add, ":indx1", ":indx0", 1), (troop_get_slot, ":color_lord", "trp_temp_array_b", ":indx1"),
+        (troop_get_slot, ":indx0", "trp_temp_array_c", 0),
+        (troop_get_slot, ":id_lord", "trp_temp_array_b", ":indx0"),
+        (store_add, ":indx1", ":indx0", 1),
+        (troop_get_slot, ":color_lord", "trp_temp_array_b", ":indx1"),
 
         (try_begin),
             (call_script, "script_search_fiefs_tmp", 4, ":id_lord"),
@@ -32773,6 +32814,10 @@ presentations = presentations_wse2 + [
         (troop_get_slot, "$fief_selected", "trp_temp_array_a", ":indx1"),
         (is_between, "$fief_selected", walled_centers_begin, walled_centers_end),
         (try_begin),
+            (store_faction_of_party, ":party_faction", "$fief_selected"),
+            (neq, ":party_faction", "fac_player_supporters_faction"),
+            (display_message, "@Settlement not part of your faction!", message_negative),
+        (else_try),
             (eq, "$g_player_court", "$fief_selected"),
             (display_message, "@Can't grant capital!"),
         (else_try),
@@ -32793,10 +32838,6 @@ presentations = presentations_wse2 + [
                 (assign, "$g_presentation_credits_obj_9_alpha", 0),
                 (start_presentation, "prsnt_governor_selection"),
             (try_end),
-        (else_try),
-            (store_faction_of_party, ":party_faction", "$fief_selected"),
-            (neq, ":party_faction", "fac_player_supporters_faction"),
-            (display_message, "@Unassigned settlement not part of your kingdom!"),
         (else_try),
             (call_script, "script_toggle_controls_worldmap", 0),
             (overlay_set_display, "$lbl_name_grant_lord", 1),
@@ -39217,18 +39258,8 @@ presentations = presentations_wse2 + [
         (try_end),
 
 
-        (str_store_troop_name_plural, s0, "$temp_troop"),
-        (store_sub, ":title_index", ":npc_faction", kingdoms_begin),
-        (call_script, "script_dplmc_store_troop_is_female", "$temp_troop"),#<- dplmc+ altered
-        (assign, ":troop_is_female", reg0),
-        (try_begin),
-            (eq, ":troop_is_female", 0), #<- dplmc+ altered
-            (val_add, ":title_index", "str_faction_leader_title_male_player"),
-        (else_try),
-            (val_add, ":title_index", "str_faction_leader_title_female_player"), #unmarried or unlanded ladies should just be Lady
-        (try_end),
-        (str_store_string, s1, ":title_index"),
-        (create_text_overlay, reg1, "@Selected: {s1}", 0),
+        (str_store_troop_name, s0, "$temp_troop"),
+        (create_text_overlay, reg1, "@Selected: {s0}", 0),
         (position_set_x, pos1, 25),
         (position_set_y, pos1, 715),
         (overlay_set_position, reg1, pos1),
@@ -39447,19 +39478,8 @@ presentations = presentations_wse2 + [
         (overlay_set_color, reg10, 0xDDDDDD),
         (troop_set_slot, "trp_temp_array_b", ":slot", reg10),
 
-        (str_store_troop_name_plural, s0, ":active_npc"),
-        (store_sub, ":title_index", ":faction", kingdoms_begin),
-        (call_script, "script_dplmc_store_troop_is_female", ":active_npc"),#<- dplmc+ altered
-        (assign, ":troop_is_female", reg0),
-        (try_begin),
-            (eq, ":troop_is_female", 0), #<- dplmc+ altered
-            (val_add, ":title_index", "str_faction_leader_title_male_player"),
-        (else_try),
-            (val_add, ":title_index", "str_faction_leader_title_female_player"), #unmarried or unlanded ladies should just be Lady
-        (try_end),
-        (str_store_string, s1, ":title_index"),
-
-        (create_text_overlay, reg1, "@{s1}", tf_left_align),
+        (str_store_troop_name, s0, ":active_npc"),
+        (create_text_overlay, reg1, "str_s0", tf_left_align),
         (position_set_x, pos1, ":x_name"),
         (store_sub, ":y_new", ":y_name", 20),
         (position_set_y, pos1, ":y_new"),

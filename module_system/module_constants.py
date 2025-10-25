@@ -2329,9 +2329,6 @@ countersigns_end = names_begin
 secret_signs_begin = "str_secret_sign_1"
 secret_signs_end = countersigns_begin
 
-kingdom_titles_male_begin = "str_faction_title_male_player"
-kingdom_titles_female_begin = "str_faction_title_female_player"
-
 ##diplomacy start+
 cultures_begin = "fac_culture_1"
 cultures_end   = "fac_player_faction"
