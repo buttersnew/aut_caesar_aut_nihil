@@ -42,8 +42,8 @@ Engage in deep political intrigue within the Roman Senate, manage your own latif
 
 ## Installation
 
-1.  Navigate to the [Releases](https://github.com/your-username/your-repo/releases) page.
-2.  Download the latest `ACAN-vX.X.X.X.zip` file.
+1.  Navigate to the official website [Aut Caesar Aut Nihil](https://buttersnew.github.io/aut_caesar_aut_nihil/).
+2.  Download the latest `ACAN-vX.X.X.X.zip` file (recommended to download the stable release).
 3.  Extract the contents of the zip file.
 4.  Move the resulting `Aut_Caesar_Aut_Nihil` folder into your Mount & Blade: Warband `Modules` directory (e.g., `C:\Program Files (x86)\Steam\steamapps\common\MountBlade Warband\Modules`).
 5.  Launch Mount & Blade: Warband, and select "Aut Caesar Aut Nihil" from the module dropdown menu.
