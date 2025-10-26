@@ -31,7 +31,7 @@ strings = [
   ("no", "No."),
 # Strings before this point are hardwired.
   ("blank_string", " "),
-  ("ERROR_string", "{!}ERROR!!!ERROR!!!!ERROR!!!ERROR!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!!"),
+  ("error_string", "{!}ERROR!!!ERROR!!!!ERROR!!!ERROR!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!!"),
 ##  ("none", "none"),
   ("noone", "no one"),
 ##  ("nothing", "nothing"),
@@ -3363,11 +3363,11 @@ strings = [
   ("comment_you_defeated_me_enemy_spiteful",   "I have been looking forward to meeting you again. Your tricks will not deceive me a second time, and I will relish hearing your cries for mercy."),
   ("comment_you_defeated_me_enemy",            "When last we met, {playername}, you had the better of me. But I assure you that it will not happen again!"),
 
-  ("comment_I_defeated_you_enemy_spiteful",          "Back for more? Make me fight you again, and I'll feed your bowels to my hounds."),
-  ("comment_I_defeated_you_enemy_chivalrous",        "Come to test your valor against me again, {playername}?"),
-  ("comment_I_defeated_you_enemy_benevolent",        "So once again you come at me? Will you ever learn?"),
-  ("comment_I_defeated_you_enemy_coldblooded",       "You are persistent, but a nuisance."),
-  ("comment_I_defeated_you_enemy",                   "How many times must I chastise you before you learn to keep your distance?"),
+  ("comment_i_defeated_you_enemy_spiteful",          "Back for more? Make me fight you again, and I'll feed your bowels to my hounds."),
+  ("comment_i_defeated_you_enemy_chivalrous",        "Come to test your valor against me again, {playername}?"),
+  ("comment_i_defeated_you_enemy_benevolent",        "So once again you come at me? Will you ever learn?"),
+  ("comment_i_defeated_you_enemy_coldblooded",       "You are persistent, but a nuisance."),
+  ("comment_i_defeated_you_enemy",                   "How many times must I chastise you before you learn to keep your distance?"),
 
   ##diplomacy start+
   #Make gender correct, using reg4 for the gender of s54.  Making this work required altering script_get_relevant_comment_to_s42
@@ -5458,7 +5458,7 @@ strings = [
   ("ive_decided_to_stick_with_s14_i_dont_want_to_talk_about_this_matter_any_more", "I've decided to stick with {s14}. I don't want to talk about this matter any more."),
   ("lord_pledges_to_s4", "{!}DEBUG : Lord pledges to {s4}"),
   ("lord_recruitment_provokes_home_faction", "{!}DEBUG : Lord recruitment provokes home faction"),
-  ("ERROR__wrong_quest_type", "{!}ERROR - Wrong quest type"),
+  ("error__wrong_quest_type", "{!}ERROR - Wrong quest type"),
   ("you_are_challenging_me_to_a_duel_how_droll_as_you_wish_playername_it_will_be_good_sport_to_bash_your_head_in", "You are challenging me to a duel? How droll! As you wish, {playername}, it will be good sport to bash your head in."),
   ("call_me_coward_very_well_you_leave_me_no_choice", "Call me coward? Very well, you leave me no choice."),
   ("reg3_hours", "{reg3} hours."),
@@ -5474,7 +5474,7 @@ strings = [
   ("very_well_an_alliance_with_you_could_be_valuable_go_chat_with_her_and_see_if_you_can_get_her_to_take_a_fancy_to_you_if_she_doesnt_and_if_we_still_want_to_conclude_this_business_then_i_can_make_her_see_reason", "Very well. An alliance with you could be valuable. Go chat with her, and see if you can get her to take a fancy to you. If she doesn't, and if we still want to conclude this business, then I can make her see reason."),
   ("you_have_my_blessing_to_pay_suit_to_her__so_long_as_your_intentions_are_honorable_of_course_depending_on_how_things_proceed_between_you_two_we_may_have_more_to_discuss_at_a_later_date", "You have my blessing to pay suit to her -- so long as your intentions are honorable, of course. Depending on how things proceed between you two, we may have more to discuss at a later date."),
   ("war_damage_inflicted_reg3_suffered_reg4_ratio_reg5", "{!}DEBUG : War damage inflicted: {reg3}, suffered: {reg4}, ratio: {reg5}"),
-  ("ERROR__did_not_calculate_war_progress_string_properly", "{!}ERROR - did not calculate war progress string properly"),
+  ("error__did_not_calculate_war_progress_string_properly", "{!}ERROR - did not calculate war progress string properly"),
   ("the_war_has_barely_begun_so_and_it_is_too_early_to_say_who_is_winning_and_who_is_losing", "The war has barely begun, so and it is too early to say who is winning and who is losing."),
   ("we_have_been_hitting_them_very_hard_and_giving_them_little_chance_to_recover", "We have been hitting them very hard, and giving them little chance to recover."),
   ("the_fighting_has_been_hard_but_we_have_definitely_been_getting_the_better_of_them", "The fighting has been hard, but we have definitely been getting the better of them."),
@@ -5509,7 +5509,7 @@ strings = [
   ("s9_asked_you_to_rescue_s13_who_is_prisoner_at_s24", "{s9} asked you to rescue {s13}, who is prisoner at {s24}."),
   ("s9_asked_you_to_attack_a_village_or_some_caravans_as_to_provoke_a_war_with_s13", "{s9} asked you to attack a village or some caravans as to provoke a war with {s13}."),
   ("s9_asked_you_to_catch_the_three_groups_of_runaway_serfs_and_bring_them_back_to_s4_alive_and_breathing_he_said_that_all_three_groups_are_heading_towards_s3", "{s9} asked you to catch the three groups of runaway slaves and bring them back to {s4}, alive and breathing. He said that all three groups are heading towards {s3}."),
-  ("ERROR__player_not_logged_as_groom", "{!}ERROR - Player not logged as groom"),
+  ("error__player_not_logged_as_groom", "{!}ERROR - Player not logged as groom"),
   ("you_intend_to_bring_goods_to_s9_in_preparation_for_the_feast_which_will_be_held_as_soon_as_conditions_permit", "You intend to bring goods to {s9} in preparation for the feast, which will be held as soon as conditions permit."),
   ("hello_playername", "Hello, {playername}"),
   ("ah_my_gentle_playername_how_much_good_it_does_my_heart_to_see_you_again", " How much good it does my heart to see you again! Sometimes, I feel that there is a mystic bond between us that transcends the distance."),
@@ -5580,7 +5580,7 @@ strings = [
   ("castle", "fortress"),
   ("_but_he_is_holding_there_as_a_prisoner_at_dungeon_of_s13", " But {reg4?she:he} is being held there as a prisoner in the {s13} dungeon."), #SB : the town/fortress
   ("log_entry_type_reg4_for_s4_total_entries_reg5", "{!}DEBUG : Log entry type: {reg4} for {s4}, total entries: {reg5}"),
-  ("ERROR__reputation_type_for_s9_not_within_range", "{!}ERROR - reputation type for {s9} not within range"),
+  ("error__reputation_type_for_s9_not_within_range", "{!}ERROR - reputation type for {s9} not within range"),
 ##diplomacy start+ make gender-flipped versions, using reg4 for gender of s9
 #xxx yyy zzz TODO: make sure you set reg4 before calling this!
   ("they_say_that_s9_is_a_most_conventional_maiden__devoted_to_her_family_of_a_kind_and_gentle_temperament_a_lady_in_all_her_way", "They say that {s9} is a most conventional {reg4?maiden:lad} - devoted to {reg4?her:his} family, of a kind and gentle temperament, a {reg4?lady:young gentleman} in all {reg4?her:his} way."),
@@ -5604,7 +5604,7 @@ strings = [
   ("they_say_that_s9_and_s11_have_wed", "They say that {s9} and {s11} have wed."),
   ("they_say_that_s9_was_recently_visited_by_s11_who_knows_where_that_might_lead", "They say that {s9} was recently visited by {s11}. Who knows where that might lead!"),
   ("there_is_not_much_to_tell_but_it_is_still_early_in_the_season", "There is not much to tell, but it is still early in the season"),
-  ("ERROR_lady_selected_=_s9", "{!}ERROR: lady selected = {s9}"),
+  ("error_lady_selected_=_s9", "{!}ERROR: lady selected = {s9}"),
   ("s12there_is_a_feast_of_the_s3_in_progress_at_s4_but_it_has_been_going_on_for_a_couple_of_days_and_is_about_to_end_", "{s12}There is a feast of the {s3} in progress at {s4}, but it has been going on for a couple of days and is about to end. "),
   ("s12there_is_a_feast_of_the_s3_in_progress_at_s4_which_should_last_for_at_least_another_day_", "{s12}There is a feast of the {s3} in progress at {s4}, which should last for at least another day. "),
   ("s12there_is_a_feast_of_the_s3_in_progress_at_s4_which_has_only_just_begun_", "{s12}There is a feast of the {s3} in progress at {s4}, which has only just begun. "),
@@ -6606,7 +6606,7 @@ strings = [
   # ("date_string", "789  Ab urbe condita (36 AD)"),
 # screen write ends
   ("s12s15_dominates_its_weaker_neighbor_s16", "{s12}{s15} attempts to dominate his weaker neighbor {s16}."),	#MOTO for new diplomatic result
-  ("s12s15_acts_to_drive_the_people_of_s16_and_their_like_out_of_the_Isles", "{s12}{s15} acts to kill the people of {s16}, because they are barbarians."),	#MOTO for new diplomatic result
+  ("s12s15_acts_to_drive_the_people_of_s16_and_their_like_out_of_the_isles", "{s12}{s15} acts to kill the people of {s16}, because they are barbarians."),	#MOTO for new diplomatic result
   ("deliver_message_improve_relation", "Delivering a message to the ruler (Improving relation)."),
   ("deliver_message_send_troops", "Delivering a message to the ruler (Asking for reinforcements)."),
   ("deliver_message_leave_faction", "Delivering a message to the ruler (Releasing oath of loyalty)."),
@@ -9104,7 +9104,7 @@ strings = [
 ("description_african_longbow", "Description:^^Mighty bow blessed by the god Nyame.^^Background:^^Nyame is a North African deity worshipped by the Akan people of Ghana. However, this bow is purely fictional."),
 ("description_dragon_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'dragon'.^^Background:^^This arrows are purely fictional."),
 ("description_thunder_arrows", "Description:^^This are the arrows perfectly fitting to the bow 'thunder'.^^Background:^^This arrows are purely fictional."),
-("description_sling_David", "Description:^^The legendary sling with which David killed Goliat. A perfect weapon for fighting a superior enemy.^^Background:^^According to religious texts, David defeated the stronger Goliat with a sling."),
+("description_sling_david", "Description:^^The legendary sling with which David killed Goliat. A perfect weapon for fighting a superior enemy.^^Background:^^According to religious texts, David defeated the stronger Goliat with a sling."),
 ("description_jupiters_throwing_spear", "Description:^^A throwing spear so powerfull that it could be a lightning bolt of Jupiter.^^Background:^^Jupiter (Zeus) has as symbol a lightning bolt. The mod links it with Queen Rhodogune, who crushed a revolt in Media."),
 ("description_linothorax_alexander", "Description:^^This is the armour worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),
 ("description_alexanders_helm", "Description:^^This is the helmet worn by Megas Alexandros.^^Background:^^This model is based on common depictions of Megas Alexandros."),

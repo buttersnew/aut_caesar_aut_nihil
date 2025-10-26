@@ -1,7 +1,6 @@
 # Aut Caesar Aut Nihil
 
 ![Aut Caesar Aut Nihil](https://raw.githubusercontent.com/buttersnew/aut_caesar_aut_nihil/main/website/acan_logo_gold.png)
-*Official Handbook Cover*
 
 **Aut Caesar Aut Nihil** (Latin for "Either Caesar or Nothing") is a comprehensive modification for Mount & Blade: Warband set in the Roman Empire as of 68 A.D. This mod offers a deeply immersive experience, allowing players to navigate the intricate political, economic, and military landscape of the era.
 

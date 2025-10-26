@@ -1055,3 +1055,4 @@ script_chariot_trigger = 1053
 script_chariot_on_destruction = 1054
 script_check_chariots_crashed = 1055
 script_init_chariot_item = 1056
+script_cf_agent_can_wear_cloak = 1057

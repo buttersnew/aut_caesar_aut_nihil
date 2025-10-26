@@ -7370,34 +7370,32 @@ scripts = scripts_hardcoded + [
      (assign, reg0, ":troop_no"),
     ]),
 
-  #script_remove_random_fit_party_member_from_stack_selection
-  # INPUT:
-  # none
-  #OUTPUT:
-  # reg0 = troop_no
-  # trp_stack_selection_amounts slots (slot 0 = number of stacks, 1 = number of men fit, 2..n = stack sizes (fit))
-  # trp_stack_selection_ids slots (2..n = stack troops)
-  ("remove_random_fit_party_member_from_stack_selection",
-   [
-     (troop_get_slot, ":total_amount", "trp_stack_selection_amounts", 1),
-     (store_random_in_range, ":random_troop", 0, ":total_amount"),
-     (troop_get_slot, ":num_slots", "trp_stack_selection_amounts", 0),
-     (store_add, ":end_cond", ":num_slots", 2),
-     (try_for_range, ":index", 2, ":end_cond"),
+#script_remove_random_fit_party_member_from_stack_selection
+# INPUT:
+# none
+#OUTPUT:
+# reg0 = troop_no
+# trp_stack_selection_amounts slots (slot 0 = number of stacks, 1 = number of men fit, 2..n = stack sizes (fit))
+# trp_stack_selection_ids slots (2..n = stack troops)
+("remove_random_fit_party_member_from_stack_selection",[
+    (troop_get_slot, ":total_amount", "trp_stack_selection_amounts", 1),
+    (store_random_in_range, ":random_troop", 0, ":total_amount"),
+    (troop_get_slot, ":num_slots", "trp_stack_selection_amounts", 0),
+    (store_add, ":end_cond", ":num_slots", 2),
+    (try_for_range, ":index", 2, ":end_cond"),
        (troop_get_slot, ":amount", "trp_stack_selection_amounts", ":index"),
        (val_sub, ":random_troop", ":amount"),
        (lt, ":random_troop", 0),
        (assign, ":end_cond", 0),
        (store_sub, ":slot_index", ":index", 2),
-     (try_end),
-     (call_script, "script_remove_fit_party_member_from_stack_selection", ":slot_index"),
-    ]),
+    (try_end),
+    (call_script, "script_remove_fit_party_member_from_stack_selection", ":slot_index"),
+]),
 
-  #script_add_routed_party
-  #INPUT: none
-  #OUTPUT: none
-  ("add_routed_party",
-   [
+#script_add_routed_party
+#INPUT: none
+#OUTPUT: none
+("add_routed_party",[
      (party_get_num_companion_stacks, ":num_stacks", "p_routed_enemies"), #question, I changed (total_enemy_casualties) with (p_routed_enemies) because this is not prisoner in p_routed_enemies party.
      (assign, ":num_regulars", 0),
      (assign, ":deleted_stacks", 0),
@@ -7497,7 +7495,7 @@ scripts = scripts_hardcoded + [
          (try_end),
        (try_end),
      (try_end),
-    ]), #ozan
+]), #ozan
 
   #script_cf_training_ground_sub_routine_1_for_melee_details
   # INPUT:
@@ -79728,21 +79726,15 @@ scripts = scripts_hardcoded + [
 
         (try_begin),
             (agent_is_active, ":agent"),
-            (neq, ":troop", "trp_player"),
-            (neg|is_between, ":troop", slaves_begin, slaves_end),
-            (neq, ":troop", "trp_slave_mine"),
-            (troop_get_inventory_slot, ":head_item", ":troop", ek_head),
-            (this_or_next|neg|troop_is_hero, ":troop"),
-            (eq, ":head_item", -1),
+            (call_script, "script_cf_agent_can_wear_cloak", ":troop"),
+
             (store_random_in_range, ":r", 0, 100),
-            (try_begin),
-                (lt, ":r", 65),
-                (str_clear, s2),
-                (cur_item_add_mesh, "str_o_greek_fibule_2"),
-                (store_random_in_range, ":rand", "str_a_greek_cape_purple_2", "str_cape_end"),
-                (str_store_string, s2, ":rand"),
-                (cur_item_add_mesh, s2),
-            (try_end),
+            (lt, ":r", 65),
+            (str_clear, s2),
+            (cur_item_add_mesh, "str_o_greek_fibule_2"),
+            (store_random_in_range, ":rand", "str_a_greek_cape_purple_2", "str_cape_end"),
+            (str_store_string, s2, ":rand"),
+            (cur_item_add_mesh, s2),
         (try_end),
     (try_end),
 ]),
@@ -100542,6 +100534,27 @@ scripts = scripts_hardcoded + [
         (try_end),
     (try_end),
 ]),
+
+# script_cf_agent_can_wear_cloak
+("cf_agent_can_wear_cloak",[
+    # (store_script_param, ":agent", 1),
+    (store_script_param, ":troop_no", 1),
+
+    (neg|troop_is_hero, ":troop_no"),
+    (neq, ":troop_no", "trp_player"),
+
+    (neg|is_between, ":troop_no", slaves_begin, slaves_end),
+    (neq, ":troop_no", "trp_slave_mine"),
+
+    (neq, ":troop_no", "trp_circus_1"),
+    (neq, ":troop_no", "trp_circus_2"),
+    (neq, ":troop_no", "trp_circus_3"),
+
+    (neq, ":troop_no", "trp_judean_rebel"),
+    (neq, ":troop_no", "trp_judean_sicarius"),
+
+]),
+
 ] + scripts_wse2
 
 #end of file

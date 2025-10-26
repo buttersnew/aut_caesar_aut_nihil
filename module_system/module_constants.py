@@ -98,7 +98,9 @@ slot_agent_positioned               = 13
 slot_agent_rank_closeness		    = 14
 
 #tournament slots
-slot_agent_tournament_point       = 15
+slot_agent_tournament_point       = 15 # only used for tournaments, not used in normal battles
+
+slot_agent_don_not_randomize      = slot_agent_tournament_point # not used in tournaments
 
 slot_agent_arena_team_set         = 16
 slot_agent_cur_animation          = 17

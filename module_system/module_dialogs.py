@@ -25922,41 +25922,39 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "{!}.", "merchant_quest_4_start",
 []],
 
-[trp_roman_start_merchant, "merchant_quest_4_start",
-[
-],
-"It's time, lads! Up and at them!", "close_window",
-[
-    (try_for_agents, ":agent_no"),
-      (agent_get_troop_id, ":agent_troop_id", ":agent_no"),
-      (is_between, ":agent_troop_id", "trp_looter", "trp_judean_rebel"),
-      (agent_set_team, ":agent_no", 1),
-    (try_end),
+[trp_roman_start_merchant, "merchant_quest_4_start",[
+],"It's time, lads! Up and at them!",
+"close_window",[
+  (try_for_agents, ":agent_no"),
+    (agent_get_troop_id, ":agent_troop_id", ":agent_no"),
+    (is_between, ":agent_troop_id", "trp_looter", "trp_judean_rebel"),
+    (agent_set_team, ":agent_no", 1),
+  (try_end),
 
   (get_player_agent_no, ":player_agent"),
 
   (assign, ":minimum_distance", 1000),
   (try_for_agents, ":agent_id_1"),
-  (neq, ":agent_id_1", ":player_agent"),
-  (agent_get_team, ":agent_team_1", ":agent_id_1"),
-  (eq, ":agent_team_1", 0),
-  (agent_get_position, pos0, ":agent_id_1"),
+    (neq, ":agent_id_1", ":player_agent"),
+    (agent_get_team, ":agent_team_1", ":agent_id_1"),
+    (eq, ":agent_team_1", 0),
+    (agent_get_position, pos0, ":agent_id_1"),
 
-  (try_for_agents, ":agent_id_2"),
-    (agent_get_team, ":agent_team_2", ":agent_id_2"),
-    (eq, ":agent_team_2", 1),
-    (agent_get_position, pos1, ":agent_id_2"),
+    (try_for_agents, ":agent_id_2"),
+      (agent_get_team, ":agent_team_2", ":agent_id_2"),
+      (eq, ":agent_team_2", 1),
+      (agent_get_position, pos1, ":agent_id_2"),
 
-    (get_distance_between_positions, ":dist", pos0, pos1),
+      (get_distance_between_positions, ":dist", pos0, pos1),
 
-    (le, ":dist", ":minimum_distance"),
-    (assign, ":minimum_distance", ":dist"),
-    (copy_position, pos2, pos1),
+      (le, ":dist", ":minimum_distance"),
+      (assign, ":minimum_distance", ":dist"),
+      (copy_position, pos2, pos1),
+    (try_end),
+
+    (agent_set_scripted_destination, ":agent_id_1", pos2, 0),
+    (agent_set_speed_limit, ":agent_id_1", 10),
   (try_end),
-
-  (agent_set_scripted_destination, ":agent_id_1", pos2, 0),
-  (agent_set_speed_limit, ":agent_id_1", 10),
-(try_end),
 ]],
 ##Start up merchant quest END
 

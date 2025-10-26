@@ -95,7 +95,7 @@ attrib_second_outfit = str_30 | agi_5 | int_4 | cha_4
 
 hero_attrib = str_30 | agi_30 | int_15 | cha_20
 
-knows_hero = knows_weapon_master_10|knows_riding_10|knows_ironflesh_10|knows_power_strike_10|knows_athletics_10|knows_tactics_6|knows_prisoner_management_3|knows_leadership_9|knows_power_throw_10|knows_power_draw_10|knows_shield_10|knows_looting_10
+knows_hero = knows_weapon_master_10|knows_riding_10|knows_ironflesh_10|knows_power_strike_10|knows_athletics_10|knows_tactics_6|knows_prisoner_management_3|knows_leadership_9|knows_power_throw_10|knows_power_draw_10|knows_shield_10|knows_looting_10|knows_inventory_management_10
 
 attrib_level_6 = str_14|agi_8|int_12|cha_12|level(6)
 
@@ -433,7 +433,6 @@ jew_spears = [itm_old_spear_1,itm_old_spear_2]
 
 jew_tunics_1 = [itm_judean_tunic_4,itm_judean_tunic_5,itm_judean_tunic_6]
 jew_tunics_2 = [itm_judean_tunic_1,itm_judean_tunic_2,itm_judean_tunic_3]
-jew_robes = [itm_sarranid_cloth_robe,itm_sarranid_cloth_robe_b,itm_sarranid_cloth_robe_c]
 
 jew_helm_cloth = [itm_headcloth,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]
 jew_helm_light = [itm_roman_aux_helm_old_1, itm_roman_aux_helm_old_2,itm_roman_aux_helm_2]
@@ -619,6 +618,10 @@ dacian_bow_2 = [itm_barbed_arrows, itm_khergit_bow]
 
 desert_turbans_1 = [itm_tuareg_new_1_green,itm_tuareg_new_1_blue,itm_tuareg_new_1_red,itm_tuareg_new_1_white,
 itm_tuareg_new_2_green,itm_tuareg_new_2_blue,itm_tuareg_new_2_red,itm_tuareg_new_2_white]
+
+desert_turbans_open = [itm_tuareg_new_1_green,itm_tuareg_new_1_blue,itm_tuareg_new_1_red,itm_tuareg_new_1_white,itm_turban,itm_turban_2]
+
+talits = [itm_tallit_red, itm_tallit_blue, itm_tallit_grey]
 
 desert_turbans_2 = [itm_turban,itm_turban_2,itm_desert_turban,itm_desert_turban_2]
 
@@ -1325,7 +1328,7 @@ attrib_level_26, wp_melee(180), knows_level_26, eastern_man_face_younger_1, east
 # attrib_level_18|level(40), wp_melee(130), knows_level_18, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 
 ["judean_light_clubman", "Judaioi Thureophores", "Judaioi Thureophoroi", tf_male_eastern|tf_guarantee_polearm|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_8,
-[]+jew_boots_simple+jew_tunics_2+jew_robes+jew_helm_light+jew_swords_old+jew_spears+jew_shields_simple, attrib_level_18, wp_melee(120), knows_level_18, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
+[]+jew_boots_simple+jew_tunics_2+jew_helm_light+jew_swords_old+jew_spears+jew_shields_simple, attrib_level_18, wp_melee(120), knows_level_18, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
 ["judean_light_clubman_exp", "Judaioi Thureophores (exp)", "Judaioi Thureophoroi (exp)", tf_male_eastern|tf_guarantee_polearm|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_8,
 []+jew_boots_simple+jew_tunics_1+jew_mail_1+jew_helm_light+jew_swords_old+jew_spears+jew_shields_simple, attrib_level_20, wp_melee(140), knows_level_20, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 ["judean_light_clubman_vet", "Judaioi Thureophores (vet)", "Judaioi Thureophoroi (vet)", tf_male_eastern|tf_guarantee_polearm|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_8,
@@ -1350,7 +1353,7 @@ attrib_level_23, wpe(120,175,175,175), knows_level_23, eastern_man_face_younger_
 attrib_level_26, wpe(130,190,190,190), knows_level_26, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 
 ["judean_slinger", "Ioudaioi Sphendonetes", "Ioudaioi Sphendonetai", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,
-[itm_sling,itm_sling_rock1,itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,itm_club,itm_club_2,itm_club_3]+jew_boots_simple+jew_robes+jew_tunics_1+jew_helm_cloth,
+[itm_sling,itm_sling_rock1,itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,itm_club,itm_club_2,itm_club_3]+jew_boots_simple+jew_tunics_1+jew_helm_cloth,
 attrib_level_12, wpe(90,160,160,160), knows_archer_basic, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
 ["judean_slinger_exp", "Ioudaioi Sphendonetes (exp)", "Ioudaioi Sphendonetai (exp)", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,
 [itm_sling,itm_sling_rock1,itm_sling_lead,itm_hide_covered_round_shield,itm_hide_covered_round_shield_2]+jew_boots_simple+jew_tunics_2+jew_tunics_1+jew_swords_old+jew_helm_cloth,
@@ -2877,12 +2880,12 @@ attrib_level_18, wp(110), knows_level_18, bandit_face1, bandit_face2 ],
 
 ["judean_sicarius", "Iudaicus Sicarius", "Iudaici Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,[itm_caligea, itm_eastern_sica, itm_eastern_sica_rusty,itm_sling_lead,itm_sling,
 itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2
-]+jew_tunics_1+jew_tunics_2+jew_robes + eastern_shields_wicker_smallround + desert_turbans_1 + desert_turbans_2 + eastern_shields_wicker,
+]+jew_tunics_1+jew_tunics_2 + eastern_shields_wicker_smallround + desert_turbans_open + talits + eastern_shields_wicker,
 attrib_level_18_warrior, wp(160), knows_level_18_warrior, arab_face_young, arab_face_old ],
 
 ["judean_rebel", "Iudaicus Rebellis", "Iudaici Rebellis", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_8,
 [itm_spiked_club,itm_sling_rock1,itm_sling_lead,itm_sling,itm_caligea,itm_javelin,itm_club,itm_club_2,itm_club_3,itm_ad_mixed_round_shields_07,
-itm_ad_mixed_round_shields_08,itm_old_gladius_1,itm_old_gladius_2,itm_eastern_helm1,itm_sarranid_felt_hat]+jew_tunics_1+jew_tunics_2+jew_robes,
+itm_ad_mixed_round_shields_08,itm_old_gladius_1,itm_old_gladius_2,itm_eastern_helm1,itm_sarranid_felt_hat]+jew_tunics_1+jew_tunics_2 + talits,
 attrib_level_16_warrior, wp(135), knows_level_16_warrior, arab_face_young, arab_face_old ],
 ["hispanic_bandit", "Hispanicus Rebellis", "Hispanici Rebellis", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_celtic_round_shild3,itm_celtic_round_shild2,itm_celtic_round_shild1,itm_iberian_light5,itm_iberian_light6,itm_iberian_heavy1,
@@ -2935,12 +2938,12 @@ attrib_level_16_warrior, wp_melee(135), knows_level_16_warrior, mercenary_face_1
 itm_old_gladius_2,itm_old_round_shield_1,itm_old_round_shield_2,itm_old_round_shield_3,itm_old_round_shield_4,itm_old_round_shield_5],
 attrib_level_18_warrior, wp_melee(150), attrib_level_18_warrior, mercenary_face_1, mercenary_face_2 ],
 
-["slave_warrior_3", "Seditiosus Hastatus", "Seditiosi Hastati", tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_outlaws,
+["slave_warrior_3", "Seditiosus Hastatus", "Seditiosi Hastati", tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_outlaws,
 [itm_roman_poor1,itm_legion_hamata_6,itm_legion_hamata_8,itm_legion_hamata_4,itm_roman_poor2,itm_caligea,itm_throwing_spears,
 itm_old_spear_1,itm_old_spear_2,itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4],
 attrib_level_20_warrior, wp_melee(165), knows_level_20_warrior, mercenary_face_1, mercenary_face_2 ],
 
-["slave_rebel", "Seditiosus Gladiator", "Seditiosi Gladiatores", tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_outlaws,
+["slave_rebel", "Seditiosus Gladiator", "Seditiosi Gladiatores", tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_outlaws,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_throwing_spears,itm_flax_onehanded1,itm_throwing_spears,itm_simple_thraex_shield,itm_leather_covered_round_shield,itm_cloak_2,itm_cloak_3,
 itm_old_gladius_1,itm_old_gladius_2,itm_butchering_knife,itm_torch2,itm_stones,itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,itm_old_spear_1,itm_old_spear_2],
 attrib_level_26_warrior, wp_melee(180), knows_level_26_warrior, mercenary_face_1, mercenary_face_2 ],
@@ -3693,7 +3696,7 @@ knight_attrib_2, wp(100), knight_skills_2, 0x00000001b90800113adb919962452999000
 [itm_ring_1,itm_germanic_noble_6,itm_germanic_helm4,itm_sword_viking_3,itm_germanic_shield_large10,itm_graves_simple_2,itm_germanic_noble_tunic_4], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_5, 0x00000001841003543ca651c4d47524ea00000000001950840000000000000000, ],
 
 ["kingdom_17_lord", "Melech Hanan ben Hanan", "Hanan ben Hanan", tf_hero, no_scene, reserved, fac_kingdom_17,
-[itm_ring_2,itm_judean_scale_2,itm_centurio_east_graves,itm_arabian_horse_b,itm_eastern_sword5,itm_eastern_helm6,itm_eastern_shield_inf_heavy6,itm_sarranid_cloth_robe_fancy_2,itm_eastern_shoe_r], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x00000000240cb2c325296a30246add3100000000001dab2d0000000000000000 ],
+[itm_ring_2,itm_judean_scale_2,itm_centurio_east_graves,itm_arabian_horse_b,itm_eastern_sword5,itm_eastern_helm6,itm_eastern_shield_inf_heavy6,itm_sarranid_cloth_robe_fancy_2,itm_tallit_red,itm_eastern_shoe_r], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x00000000240cb2c325296a30246add3100000000001dab2d0000000000000000 ],
 
 ["kingdom_18_lord", "Batesa Banadaspus", "Banadaspus", tf_hero, no_scene, reserved, fac_kingdom_18,
 [itm_ring_2,itm_cataphract_horse_steppe_2,itm_eastern_shoe_r,itm_sarmatian_light3,itm_scythian_shield_cav1,itm_sarmatian_heavy_helm6,itm_sarmatian_scale_5,itm_sarmatian_ringsword_4], knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x000000003908028e42da99a523af151c00000000001cb4e40000000000000000 ],
@@ -4017,11 +4020,11 @@ itm_arab_noble_tunic_1,itm_ring_2], knight_attrib_2,wp(150),knight_skills_2, 0x0
 [itm_leather_boots,itm_germanic_axe3,itm_germanic_shield_large12,itm_germanic_noble_6,itm_germanic_helm4,itm_jarid,itm_germanic_noble_tunic_2],knight_attrib_5|str_30,wp(240),knight_skills_5|knows_power_strike_10|knows_power_throw_10|knows_trainer_5, 0x0000000005012243245d6ae5236e35d200000000001e28cd0000000000000000, ],
 ##jews
 ["knight_17_1", "Judean Lord", "Joshua ben Gamla", tf_hero, no_scene, reserved, fac_kingdom_17,
-[itm_judean_scale_1,itm_legio_armored_caligea,itm_arabian_horse_b,itm_roman_spatha,itm_eastern_helm5,itm_old_round_shield_3,itm_sarranid_cloth_robe_fancy_3,itm_eastern_shoe_b], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x000000003108b2854954aca89135a96600000000000e12eb0000000000000000,],
+[itm_judean_scale_1,itm_legio_armored_caligea,itm_arabian_horse_b,itm_roman_spatha,itm_eastern_helm5,itm_old_round_shield_3,itm_sarranid_cloth_robe_fancy_3,itm_eastern_shoe_b, itm_tallit_blue], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x000000003108b2854954aca89135a96600000000000e12eb0000000000000000,],
 ["knight_17_2", "Judean Lord", "Eleazar ben Hanania", tf_hero, no_scene, reserved, fac_kingdom_17,
-[itm_judean_scale_2,itm_legio_armored_caligea,itm_arabian_horse_b,itm_roman_spatha_2,itm_eastern_helm5,itm_old_round_shield_4,itm_sarranid_cloth_robe_fancy_3,itm_eastern_shoe_r], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x000000001d10c20d16ee77529375369500000000001eb68e0000000000000000,],
+[itm_judean_scale_2,itm_legio_armored_caligea,itm_arabian_horse_b,itm_roman_spatha_2,itm_eastern_helm5,itm_old_round_shield_4,itm_sarranid_cloth_robe_fancy_3,itm_eastern_shoe_r, itm_tallit_blue], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x000000001d10c20d16ee77529375369500000000001eb68e0000000000000000,],
 ["knight_17_3", "Judean Lord", "Simon bar Giora", tf_hero, no_scene, reserved, fac_kingdom_17,
-[itm_judean_mail_6,itm_legio_armored_caligea,itm_arabian_horse_b,itm_roman_spatha_3,itm_eastern_helm5,itm_old_round_shield_5,itm_sarranid_cloth_robe_fancy_3,itm_eastern_shoe_y], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x000000002008d20e1d32a8f95a6adacb00000000001f48dd0000000000000000,],
+[itm_judean_mail_6,itm_legio_armored_caligea,itm_arabian_horse_b,itm_roman_spatha_3,itm_eastern_helm5,itm_old_round_shield_5,itm_sarranid_cloth_robe_fancy_3,itm_eastern_shoe_y, itm_tallit_blue], knight_attrib_5, wp(420), knight_skills_5|knows_trainer_4, 0x000000002008d20e1d32a8f95a6adacb00000000001f48dd0000000000000000,],
 
 ["knight_19_1", "Batava Lord", "Brinno", tf_hero, 0, reserved,fac_kingdom_19,
 [itm_cav_decurio_helm,itm_roman_spatha,itm_horse_3,itm_musculata_legatus_10,itm_legio_armored_caligea,itm_officer_shield_3,itm_calceus_3,itm_roman_toga],knight_attrib_5,wp(300),knight_skills_5, 0x000000000001640a5a4a61531a55ba9d00000000001eb1b50000000000000000, ],
@@ -5357,35 +5360,35 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_52_master_craftsman", "{!}Town 22 Craftsman", "{!}Town 14 Seneschal", tf_hero|tf_is_merchant, 0,reserved,fac_neutral,[],def_attrib|level(2),wp(20),knows_common, 0x000000001204d344659ab1a712ae5b1600000000001de3360000000000000000],
 
 # Chests
-["zendar_chest","{!}Zendar Chest","{!}Zendar Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_jewelry,itm_arminius_spatha,itm_arminius_mask],def_attrib|level(18),wp(60),knows_common,0],
-["tutorial_chest_1","{!}Melee Weapons Chest","{!}Melee Weapons Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry],def_attrib|level(18),wp(60),knows_common, 0],
-["tutorial_chest_2","{!}Ranged Weapons Chest","{!}Ranged Weapons Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral, [itm_dagger],def_attrib|level(18),wp(60),knows_common, 0],
+["zendar_chest","{!}Zendar Chest","{!}Zendar Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_jewelry,itm_arminius_spatha,itm_arminius_mask],hero_attrib|level(18),wp(60),knows_hero,0],
+["tutorial_chest_1","{!}Melee Weapons Chest","{!}Melee Weapons Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry],hero_attrib|level(18),wp(60),knows_hero, 0],
+["tutorial_chest_2","{!}Ranged Weapons Chest","{!}Ranged Weapons Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral, [itm_dagger],hero_attrib|level(18),wp(60),knows_hero, 0],
 #SB : move samurai back to Rivacheg (other chests were inaccessible
-["bonus_chest_1","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_dragon_arrows, itm_dragon, itm_temple_gold, itm_temple_gold, itm_jewelry, itm_silver, itm_silver, itm_silver, itm_ivory],def_attrib|level(18),wp(60),knows_common, 0],
-["bonus_chest_2","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_temple_gold,itm_temple_gold,itm_temple_gold,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_ivory,itm_ivory,itm_ivory,itm_ivory,itm_khopesh1],def_attrib|level(18),wp(60),knows_common, 0],
-["bonus_chest_3","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_velvet],def_attrib|level(18),wp(60),knows_common, 0],
-["bonus_chest_4","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_wine,itm_wine,itm_raw_grapes,itm_aegis,itm_maske],def_attrib|level(18),wp(60),knows_common, 0],
-["bonus_chest_5","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_gallic_spear_4,itm_jewelry],def_attrib|level(18),wp(60),knows_common, 0],
-["bonus_chest_6","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_caesars_sword,itm_jewelry],def_attrib|level(18),wp(60),knows_common, 0],
-["bonus_chest_7","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_velvet],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_8","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_velvet],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_9","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_10","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_temple_gold],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_11","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_temple_gold],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_12","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_velvet,itm_laurel_gold,itm_laurel_silver,itm_roman_rich_emperor,itm_roman_rich_emperor_2],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_13","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_velvet,itm_female_crown,itm_roman_female_augusta,itm_roman_female_augusta_2,itm_seiden_dress],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_14","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_temple_gold,itm_temple_gold],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_15","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_16","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_temple_gold],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_17","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry, itm_parthian_female_hat],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_18","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_female_slave1,itm_female_slave2,itm_female_slave3,itm_female_slave4],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_19","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_xylospongium],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_20","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_book_poop],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_21","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt,itm_didos_underwear],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_22","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_sling_david,itm_sling_rock1],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_23","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_silver],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_1","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_dragon_arrows, itm_dragon, itm_temple_gold, itm_temple_gold, itm_jewelry, itm_silver, itm_silver, itm_silver, itm_ivory],hero_attrib|level(18),wp(60),knows_hero, 0],
+["bonus_chest_2","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_temple_gold,itm_temple_gold,itm_temple_gold,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_ivory,itm_ivory,itm_ivory,itm_ivory,itm_khopesh1],hero_attrib|level(18),wp(60),knows_hero, 0],
+["bonus_chest_3","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_velvet],hero_attrib|level(18),wp(60),knows_hero, 0],
+["bonus_chest_4","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_wine,itm_wine,itm_raw_grapes,itm_aegis,itm_maske],hero_attrib|level(18),wp(60),knows_hero, 0],
+["bonus_chest_5","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_gallic_spear_4,itm_jewelry],hero_attrib|level(18),wp(60),knows_hero, 0],
+["bonus_chest_6","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_caesars_sword,itm_jewelry],hero_attrib|level(18),wp(60),knows_hero, 0],
+["bonus_chest_7","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_velvet],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_8","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_velvet],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_9","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt,itm_salt],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_10","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_temple_gold],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_11","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_temple_gold],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_12","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_velvet,itm_laurel_gold,itm_laurel_silver,itm_roman_rich_emperor,itm_roman_rich_emperor_2],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_13","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_velvet,itm_female_crown,itm_roman_female_augusta,itm_roman_female_augusta_2,itm_seiden_dress],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_14","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_temple_gold,itm_temple_gold],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_15","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver,itm_silver],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_16","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_temple_gold],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_17","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry, itm_parthian_female_hat],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_18","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_female_slave1,itm_female_slave2,itm_female_slave3,itm_female_slave4],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_19","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_xylospongium],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_20","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_book_poop],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_21","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt,itm_didos_underwear],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_22","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_sling_david,itm_sling_rock1],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_23","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_silver],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 
-["household_possessions","{!}household_possessions","{!}household_possessions",tf_hero|tf_inactive|tf_is_merchant, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["household_possessions","{!}household_possessions","{!}household_possessions",tf_hero|tf_inactive|tf_is_merchant, 0,reserved,fac_neutral,[],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 
 # These are used as arrays in the scripts.
 ["temp_array_a","{!}temp_array_a","{!}temp_array_a",tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows_common|knows_inventory_management_10, 0],
@@ -6229,98 +6232,98 @@ attrib_level_26,wp(120),knows_level_26,roman_face1,roman_face2],
 attrib_level_23, wp(140), knows_level_23,roman_face1,roman_face2],
 ["custom_infantry_equip","Footman (custom)","Footmen (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_infantry_exp","Footman (exp) (custom)","Footmen (exp) (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
 attrib_level_26,wp(160),knows_level_26,roman_face1,roman_face2],
 ["custom_infantry_exp_equip","Footman (exp) (custom)","Footmen (exp) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_infantry_vet","Footman (vet) (custom)","Footmen (vet) (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_29,wp(180),knows_level_29,roman_face1,roman_face2],
 ["custom_infantry_vet_equip","Footman (vet) (custom)","Footmen (vet) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_standard_bearer","Standardbearer (custom)","Standardbearers (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_31,wp(160),knows_level_31,roman_face1, roman_face2],
 ["custom_standard_bearer_equip","Standardbearer (custom)","Standardbearers (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_hornman","Hornman (custom)","Hornmen (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_29,wp(160),knows_level_29,roman_face1,roman_face2],
 ["custom_hornman_equip","Hornman (custom)","Hornmen (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_cav_barb","Melee Cavalry (custom)", "Melee Cavalry (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
 attrib_level_26, wp_melee(130),knows_level_26,roman_face1,roman_face2],
 ["custom_cav_barb_equip","Melee Cavalry (custom)","Melee Cavalry (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_cav_barb_vet","Melee Cavalry (vet) (custom)", "Melee Cavalry (vet) (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
 attrib_level_29, wp_melee(170),knows_level_29,roman_face1,roman_face2],
 ["custom_cav_barb_vet_equip","Melee Cavalry (vet) (custom)","Melee Cavalry (vet) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_standard_bearer_cav","Cavalry Standardbearer (custom)","Cavalry Standardbearers (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_31,wp(160),knows_level_31,roman_face1, roman_face2],
 ["custom_standard_bearer_cav_equip","Cavalry Standardbearer (custom)","Cavalry Standardbearers (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_skirmisher_cav","Skirmisher Cavalry (custom)", "Skirmisher Cavalry (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
  attrib_level_26,wpe(100,150,150,150),knows_archer_exp_eastern,roman_face1,roman_face2],
 ["custom_skirmisher_cav_equip","Skirmisher Cavalry (custom)","Skirmisher Cavalry (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_skirmisher_cav_vet","Skirmisher Cavalry (vet) (custom)", "Skirmisher Cavalry (vet) (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
  attrib_level_29,wpe(140,170,170,170),knows_archer_elit,roman_face1,roman_face2],
 ["custom_skirmisher_cav_vet_equip","Skirmisher Cavalry (vet) (custom)","Skirmisher Cavalry (vet) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 
 ["custom_skirmisher","Skirmisher (custom)", "Skirmishers (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_23,wp(150),knows_level_23,roman_face1,roman_face2],
 ["custom_skirmisher_equip","Skirmisher (custom)","Skirmishers (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_skirmisher_vet","Skirmisher (custom)", "Skirmishers (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_26,wp(170),knows_level_26,roman_face1,roman_face2],
 ["custom_skirmisher_vet_equip","Skirmisher (custom)","Skirmishers (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_archer","Archer (custom)", "Archers (custom)", tf_guarantee_soldier|tf_guarantee_ranged,0,0,fac_neutral,[],
  attrib_level_23,wpe(100,150,150,150),knows_archer_exp,roman_face1,roman_face2],
 ["custom_archer_equip","Archer (custom)","Archers (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_archer_vet","Archer (vet) (custom)", "Archers (vet) (custom)", tf_guarantee_soldier|tf_guarantee_ranged,0,0,fac_neutral,[],
  attrib_level_26,wpe(100,170,170,170),knows_archer_elit,roman_face1,roman_face2],
 ["custom_archer_vet_equip","Archer (vet) (custom)","Archers (vet) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_standard_bearer_skirmisher","Skirmisher Standardbearer (custom)","Skirmisher Standardbearers (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_31,wp(160),knows_level_31,roman_face1, roman_face2],
 ["custom_standard_bearer_skirmisher_equip","Skirmisher Standardbearer (custom)","Skirmisher Standardbearers (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_hornman_skirmisher","Skirmisher Hornman (custom)","Skirmisher Hornmen (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_29,wp(160),knows_level_29,roman_face1,roman_face2],
 ["custom_hornman_skirmisher_equip","Hornman (custom)","Hornmen (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ################### CUSTOM LEGION
 
@@ -6328,127 +6331,127 @@ def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
 attrib_level_23, wp(140), knows_level_23,roman_face1,roman_face2],
 ["custom_legionary_equip","Tiro Legionis (custom)","Tirones Legionis (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_graves_simple_2,itm_roman_gladius,itm_pilum,itm_scutum_1,itm_legion_segmentata_4,itm_1_imp_gallic_f_n],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_legionary_exp","Miles Legionis (custom)","Milites Legionis (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
 attrib_level_26,wp(160),knows_level_26,roman_face1,roman_face2],
 ["custom_legionary_exp_equip","Miles Legionis (custom)","Milites Legionis (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_graves_simple_2,itm_roman_gladius,itm_pilum,itm_scutum_1,itm_legion_segmentata_cape_1,itm_1_imp_gallic_f_n],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_legionary_vet","Evocatus Legionis (custom)","Evocati Legionis (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_29,wp(180),knows_level_29,roman_face1,roman_face2],
 ["custom_legionary_vet_equip","Evocatus Legionis (custom)","Evocati Legionis (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_graves_simple_2,itm_roman_gladius,itm_pilum,itm_scutum_1,itm_legion_segmentata_cape_4,itm_1_imp_gallic_f_plume],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_centurio","Centurio (custom)","Centurii (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_31,wp(160),knows_level_31,roman_face1,roman_face2],
 ["custom_centurio_equip","Centurio (custom)","Centurii (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_graves_simple_2,itm_roman_gladius,itm_officer_shield_2,itm_centurio_legion_hamata_1,itm_centurio_helm_2],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_aquilifer","Aquilifer (custom)","Aquilifer (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_31,wp(160),knows_level_31,roman_face1, roman_face2],
 ["custom_aquilifer_equip","Aquilifer (custom)","Aquilifer (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_aquilifer_legion_squamata_1,itm_aquilifer_helmet_mask,itm_graves_simple,itm_roman_gladius,itm_aquila6],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_signifer","Signifer (custom)","Signifer (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_29,wp(160),knows_level_29,roman_face1,roman_face2],
 ["custom_signifer_equip","Signifer (custom)","Signifer (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_signifer_legion_hamata,itm_graves_simple,itm_signum_signifer,itm_signifer_helm_1,itm_roman_gladius],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_vexilarius","Vexilarius (custom)","Vexilarii (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_31,wp(160),knows_level_31,roman_face1,roman_face2],
 ["custom_vexilarius_equip","Vexilarius (custom)","Vexilarii (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_graves_simple,itm_vexilum_legio_xx_dei,itm_roman_gladius,itm_vexilarius_legion_hamata_1,itm_vexilarius_helmet_mask],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_tribunus","Tribunus (custom)","Tribuni (custom)",tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_31,wp(175),knows_level_31,roman_face1,roman_face2],
 ["custom_tribunus_equip","Tribunus (custom)","Tribuni (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_officer_shield_2,itm_graves_simple_2,itm_musculata_2,itm_roman_gladius,itm_legatus_legionis_helm_2],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_primus_pilius","Primus Pilus (custom)", "Primi Pili (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_31,wp(185),knows_level_31,roman_face1,roman_face2],
 ["custom_primus_pilius_equip","Primus Pilus (custom)","Primi Pili (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_scutum_1,itm_roman_gladius,itm_centurio_legion_hamata_1,itm_graves_simple_2,itm_centurio_helm_1],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_cornicen","Cornicen (custom)", "Cornicines (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_29,wp(160),knows_level_29,roman_face1,roman_face2],
 ["custom_cornicen_equip","Cornicen (custom)","Cornicines (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_f_cornu,itm_roman_gladius,itm_graves_simple_2,itm_signifer_auxilia_hamata_1,itm_signifer_helm_1],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_aux_cornicern","Cornicen Auxiliari (custom)", "Cornicines Auxiliari (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_29,wp(160),knows_level_29,roman_face1,roman_face2],
 ["custom_aux_cornicern_equip","Cornicen Auxiliari (custom)","Cornicines Auxiliari (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_f_cornu,itm_roman_gladius,itm_graves_simple_2,itm_signifer_auxilia_hamata_1,itm_signifer_helm_2],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_cav_vex","Vexilarius Equitem (custom)", "Vexilarii Equitem (custom)", tf_guarantee_soldier|tf_mounted,0,0,fac_neutral,[],
  attrib_level_29,wp(160),knows_level_29,roman_face1,roman_face2],
 ["custom_cav_vex_equip","Vexilarius Equitem (custom)","Vexilarii Equitem (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_horse_3,itm_roman_spatha,itm_graves_simple_2,itm_signifer_auxilia_hamata_1,itm_signum_signifer,itm_signifer_helm_1],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_cav_of","Decurio (custom)", "Decurii (custom)", tf_guarantee_soldier|tf_mounted,0,0,fac_neutral,[],
  attrib_level_29,wp(170),knows_level_29,roman_face1,roman_face2],
 ["custom_cav_of_equip","Decurio (custom)","Decurii (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_horse_3, itm_graves_simple_2,itm_roman_spatha,itm_officer_shield_2,itm_musculata_1,itm_legatus_legionis_helm_2],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_aux_centurio","Centurio Auxiliari (custom)", "Centurii Auxiliari (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
 attrib_level_29, wp(160), knows_level_29,roman_face1,roman_face2],
 ["custom_aux_centurio_equip","Centurio Auxiliari (custom)","Centurii Auxiliari (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_aux_centurio_graves,itm_roman_gladius,itm_cetratus_aux_3,itm_auxilia_cent_helmet_1, itm_cenutrio_aux_squamata_1],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_aux_signifer","Signifer Auxiliari (custom)", "Signifer Auxiliari (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
 attrib_level_29, wp(160), knows_level_29,roman_face1,roman_face2],
 ["custom_aux_signifer_equip","Signifer Auxiliari (custom)","Signifer Auxiliari (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_signum_signifer,itm_graves_simple,itm_roman_gladius,itm_signifer_auxilia_hamata_1,itm_signifer_helm_1],
-def_attrib|int_30|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_30|level(30),wp(60),knows_hero,0],
 
 ["custom_aux_cav","Auxilia Eques (custom)", "Auxilia Equites (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
 attrib_level_26, wp_melee(135),knows_level_26,roman_face1,roman_face2],
 ["custom_aux_cav_equip","Auxilia Eques (custom)","Auxilia Equites (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_horse_3,itm_horse_2,itm_auxilia_cavalry_squamata_2,itm_graves_simple,itm_cetratus_aux_7,itm_cetratus_aux_8,itm_hasta2,itm_roman_spatha,itm_imp_aux_cav_weiler_brass_a],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_cav","Auxilia Equites Sagittarius (custom)", "Auxilia Equites Sagittarii (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
  attrib_level_26,wpe(100,160,160,160),knows_archer_exp_eastern,roman_face1,roman_face2],
 ["custom_cav_equip","Auxilia Equites Sagittarius (custom)","Auxilia Equites Sagittarii (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_horse_3,itm_roman_aux_helm_2,itm_roman_spatha,itm_graves_simple_2,itm_legion_hamata_5,itm_arrows,itm_persian_bow],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_aux_spear","Auxilia Hastatus (custom)", "Auxilia Hastati (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_23,wp(150),knows_level_23,roman_face1,roman_face2],
 ["custom_aux_spear_equip","Auxilia Hastatus (custom)","Auxilia Hastati (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_hasta2,itm_legion_hamata_8,itm_roman_aux_helm_1,itm_cetratus_aux_7,itm_graves_simple_2,itm_1_imp_gallic_a],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_aux_miles","Auxilia Miles (custom)", "Auxilia Milites (custom)", tf_guarantee_soldier,0,0,fac_neutral,[],
  attrib_level_23,wp(150),knows_level_23,roman_face1,roman_face2],
 ["custom_aux_miles_equip","Auxilia Miles (custom)","Auxilia Milites (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_roman_spatha,itm_legion_hamata_9,itm_cetratus_aux_7,itm_graves_simple_2,itm_pilum,itm_1_imp_gallic_a],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_balista","Ballistarius (custom)", "Ballistarii (custom)", tf_guarantee_soldier|tf_guarantee_ranged,0,0,fac_neutral,[],
 attrib_level_29, wpe(120,200,200,200), knows_level_29,roman_face1,roman_face2],
 ["custom_balista_equip","Ballistarius (custom)","Ballistarii (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_roman_gladius,itm_ballista,itm_ballista_bolts, itm_subarmalis_1,itm_graves_simple_2,itm_1_imp_gallic_a],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_sagitarius","Sagittarius (custom)", "Sagittarii (custom)", tf_guarantee_soldier|tf_guarantee_ranged,0,0,fac_neutral,[],
  attrib_level_23,wpe(100,170,170,170),knows_archer_exp,roman_face1,roman_face2],
 ["custom_sagitarius_equip","Sagittarius (custom)","Sagittarii (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_roman_spatha,itm_legion_hamata_4,itm_roman_aux_helm_2,itm_short_bow,itm_arrows,itm_graves_simple_2],
-def_attrib|int_29|level(30),wp(60),knows_inventory_management_10,0],
+hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_troops_end","na","na",0,0,0,fac_neutral,[itm_velvet],def_attrib|level(1),wp(60),knows_common,roman_face1, roman_face2],
 
