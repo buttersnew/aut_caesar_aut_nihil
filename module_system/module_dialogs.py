@@ -76137,78 +76137,94 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (str_store_item_name, s4, ":quest_target_item"),
 ]],
 
-[anyone,"merchant_quest_brief",[(eq,"$random_merchant_quest_no","qst_deliver_wine"),
+[anyone,"merchant_quest_brief",[
+  (eq,"$random_merchant_quest_no","qst_deliver_wine"),
   (quest_get_slot, ":quest_target_item", "qst_deliver_wine", slot_quest_target_item),
   (this_or_next|eq, ":quest_target_item", "itm_wine"),
   (this_or_next|eq, ":quest_target_item", "itm_ale"),
   (is_between, ":quest_target_item", food_begin, food_end),
- ],
-   "I have a cargo of {s6} that needs to be delivered to the tavern in {s4}.\
- If you can take {reg5} units of {s6} to {s4} in 7 days before any goes bad, you may earn {reg8} denarii.\
- What do you say?", "merchant_quest_brief_deliver_wine",
-[(quest_get_slot, reg5, "qst_deliver_wine", slot_quest_target_amount),
-    (quest_get_slot, reg8, "qst_deliver_wine", slot_quest_gold_reward),
-    (quest_get_slot, ":quest_target_item", "qst_deliver_wine", slot_quest_target_item),
-    (quest_get_slot, ":quest_target_center", "qst_deliver_wine", slot_quest_target_center),
-    (str_store_troop_name, s9, "$g_talk_troop"),
-    (str_store_party_name_link, s3, "$g_encountered_party"),
-    (str_store_party_name_link, s4, ":quest_target_center"),
-    (str_store_item_name, s6, ":quest_target_item"),
-    (setup_quest_text,"qst_deliver_wine"),
-    #SB : temp item count
-    (item_get_max_ammo, ":max_amount", ":quest_target_item"),
-    (store_div, "$temp", reg5, ":max_amount"),
-    (str_store_string, s2, "@{s9} of {s3} asked you to deliver {reg5} units of {s6} to the tavern in {s4} in 7 days."),
-    #s2 should not be changed until the decision is made
-   ]],
-
-[anyone,"merchant_quest_brief",[(eq,"$random_merchant_quest_no","qst_deliver_wine")],
-   "I have a shipment of {s6} that needs to be delivered to the goods merchant in {s4}.\
- If you can take {reg5} units of {s6} to {s4} in 7 days, you may earn {reg8} denarii.\
- What do you say?", "merchant_quest_brief_deliver_wine",
-[(quest_get_slot, reg5, "qst_deliver_wine", slot_quest_target_amount),
-    (quest_get_slot, reg8, "qst_deliver_wine", slot_quest_gold_reward),
-    (quest_get_slot, ":quest_target_item", "qst_deliver_wine", slot_quest_target_item),
-    (quest_get_slot, ":quest_target_center", "qst_deliver_wine", slot_quest_target_center),
-    (str_store_troop_name, s9, "$g_talk_troop"),
-    (str_store_party_name_link, s3, "$g_encountered_party"),
-    (str_store_party_name_link, s4, ":quest_target_center"),
-    (str_store_item_name, s6, ":quest_target_item"),
-    #SB : temp item count
-    (item_get_max_ammo, ":max_amount", ":quest_target_item"),
-    (store_div, "$temp", reg5, ":max_amount"),
-    (setup_quest_text,"qst_deliver_wine"),
-    (str_store_string, s2, "@{s9} of {s3} asked you to deliver {reg5} units of {s6} to the merchant's store in {s4} in 7 days."),
-    #s2 should not be changed until the decision is made
-   ]],
-[anyone|plyr,"merchant_quest_brief_deliver_wine",[(store_free_inventory_capacity,":capacity"),
-                         (ge, ":capacity", "$temp"),
-        ],
-      "Alright. I will make the delivery.", "merchant_quest_taken",
-[
-    # (quest_get_slot, ":quest_target_amount", "qst_deliver_wine", slot_quest_target_amount),
-    (quest_get_slot, ":quest_target_center", "qst_deliver_wine", slot_quest_target_center),
-    (quest_get_slot, ":quest_target_item", "qst_deliver_wine", slot_quest_target_item),
-    (troop_add_items, "trp_player", ":quest_target_item", "$temp"), #SB : use item count
-    (call_script, "script_start_quest", "qst_deliver_wine", "$g_talk_troop"),
-    #SB : magically empty stock of items at target center once quest is taken
-    (try_for_range, ":slots", slot_town_tavernkeeper, slot_center_player_relation),
-      (party_get_slot, ":troop_no", ":quest_target_center", ":slots"),
-      (gt, ":troop_no", 0),
-      (troop_get_inventory_capacity, ":inv_cap", ":troop_no"),
-      (try_for_range, ":i_slot", 10, ":inv_cap"),
-        (troop_get_inventory_slot, ":item_id", ":troop_no", ":i_slot"),
-        (eq, ":item_id", ":quest_target_item"),
-        (troop_set_inventory_slot, ":troop_no", ":i_slot", -1),
-      (try_end),
-    (try_end),
-
+],"I have a cargo of {s6} that needs to be delivered to the tavern in {s4}. If you can take {reg13} units of {s6} to {s4} in 7 days before any goes bad, you may earn {reg12} denarii. What do you say?",
+"merchant_quest_brief_deliver_wine",[
+  (quest_get_slot, reg13, "qst_deliver_wine", slot_quest_target_amount),
+  (try_begin),
+    (eq, reg13, 0),
+    (assign, reg13, 4),
+    (quest_set_slot, "qst_deliver_wine", slot_quest_target_amount, reg13),
+    (display_message, "@There was an issue with the target amount.", message_negative),
+  (try_end),
+  (quest_get_slot, reg12, "qst_deliver_wine", slot_quest_gold_reward),
+  (quest_get_slot, ":quest_target_item", "qst_deliver_wine", slot_quest_target_item),
+  (quest_get_slot, ":quest_target_center", "qst_deliver_wine", slot_quest_target_center),
+  (str_store_troop_name, s9, "$g_talk_troop"),
+  (str_store_party_name_link, s3, "$g_encountered_party"),
+  (str_store_party_name_link, s4, ":quest_target_center"),
+  (str_store_item_name, s6, ":quest_target_item"),
+  (setup_quest_text,"qst_deliver_wine"),
+  #SB : temp item count
+  (item_get_max_ammo, ":max_amount", ":quest_target_item"),
+  (store_div, "$temp", reg13, ":max_amount"),
+  (str_store_string, s2, "@{s9} of {s3} asked you to deliver {reg5} units of {s6} to the tavern in {s4} in 7 days."),
+  #s2 should not be changed until the decision is made
 ]],
 
-[anyone|plyr,"merchant_quest_brief_deliver_wine",[], "I am afraid I can't carry all that cargo now.", "merchant_quest_stall",[]],
+[anyone,"merchant_quest_brief",[
+  (eq,"$random_merchant_quest_no","qst_deliver_wine")
+],"I have a shipment of {s6} that needs to be delivered to the goods merchant in {s4}. If you can take {reg13} units of {s6} to {s4} in 7 days, you may earn {reg12} denarii. What do you say?",
+"merchant_quest_brief_deliver_wine",[
+  (quest_get_slot, reg13, "qst_deliver_wine", slot_quest_target_amount),
+  (try_begin),
+    (eq, reg13, 0),
+    (assign, reg13, 4),
+    (quest_set_slot, "qst_deliver_wine", slot_quest_target_amount, reg13),
+    (display_message, "@There was an issue with the target amount.", message_negative),
+  (try_end),
+
+  (quest_get_slot, reg12, "qst_deliver_wine", slot_quest_gold_reward),
+  (quest_get_slot, ":quest_target_item", "qst_deliver_wine", slot_quest_target_item),
+  (quest_get_slot, ":quest_target_center", "qst_deliver_wine", slot_quest_target_center),
+  (str_store_troop_name, s9, "$g_talk_troop"),
+  (str_store_party_name_link, s3, "$g_encountered_party"),
+  (str_store_party_name_link, s4, ":quest_target_center"),
+  (str_store_item_name, s6, ":quest_target_item"),
+
+  (item_get_max_ammo, ":max_amount", ":quest_target_item"),
+  (store_div, "$temp", reg13, ":max_amount"),
+  (setup_quest_text,"qst_deliver_wine"),
+  (str_store_string, s2, "@{s9} of {s3} asked you to deliver {reg13} units of {s6} to the merchant's store in {s4} in 7 days."),
+  #s2 should not be changed until the decision is made
+]],
+
+[anyone|plyr,"merchant_quest_brief_deliver_wine",[
+  (store_free_inventory_capacity,":capacity"),
+  (ge, ":capacity", "$temp"),
+],"Alright. I will make the delivery.",
+"merchant_quest_taken",[
+  # (quest_get_slot, ":quest_target_amount", "qst_deliver_wine", slot_quest_target_amount),
+  (quest_get_slot, ":quest_target_center", "qst_deliver_wine", slot_quest_target_center),
+  (quest_get_slot, ":quest_target_item", "qst_deliver_wine", slot_quest_target_item),
+  (troop_add_items, "trp_player", ":quest_target_item", "$temp"), #SB : use item count
+  (call_script, "script_start_quest", "qst_deliver_wine", "$g_talk_troop"),
+  #SB : magically empty stock of items at target center once quest is taken
+  (try_for_range, ":slots", slot_town_tavernkeeper, slot_center_player_relation),
+    (party_get_slot, ":troop_no", ":quest_target_center", ":slots"),
+    (gt, ":troop_no", 0),
+    (troop_get_inventory_capacity, ":inv_cap", ":troop_no"),
+    (try_for_range, ":i_slot", 10, ":inv_cap"),
+      (troop_get_inventory_slot, ":item_id", ":troop_no", ":i_slot"),
+      (eq, ":item_id", ":quest_target_item"),
+      (troop_set_inventory_slot, ":troop_no", ":i_slot", -1),
+    (try_end),
+  (try_end),
+]],
+
+[anyone|plyr,"merchant_quest_brief_deliver_wine",[
+], "I am afraid I can't carry all that cargo now.",
+"merchant_quest_stall",[]],
 
 #escort merchant caravan:
-[anyone,"merchant_quest_requested",[(eq,"$random_merchant_quest_no","qst_escort_merchant_caravan")], "You're looking for a job?\
+[anyone,"merchant_quest_requested",[
+  (eq,"$random_merchant_quest_no","qst_escort_merchant_caravan")
+], "You're looking for a job?\
  Actually I was looking for someone to escort a caravan.\
  Perhaps you can do that...", "merchant_quest_brief",
 []],
