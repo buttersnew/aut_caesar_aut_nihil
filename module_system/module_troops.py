@@ -3710,7 +3710,16 @@ str_16|agi_16|int_15|cha_15|level(25), wp(160),knows_archer_elit_eastern,  0x000
 
 #governers olgrel rasevasHorseBodywearFootwear_inFootwear_outArmor WeaponShieldHeadwaer
 ["kingdom_1_lord", "Rex Scorilo", "Scorilo", tf_hero, no_scene, reserved, fac_kingdom_1,
-[itm_ring_1,itm_dacian_noble1,itm_dacian_heavy1,itm_dacian_shield_small5,itm_dacian_heavy_helm_noble_1,itm_dacian_noble_sword,itm_celtic_boots,itm_steppe_horse_3], knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x000000057f10d30936db6db6db6db6db00000000001db6db0000000000000000 ],
+[
+  itm_dacian_noble_sword,
+  itm_dacian_shield_small5,
+  itm_dacian_heavy1,
+  itm_dacian_heavy_helm_noble_1,
+  itm_celtic_boots,
+  itm_dacian_noble1,
+  itm_ring_1,
+  itm_steppe_horse_3
+], knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x000000057f10d30936db6db6db6db6db00000000001db6db0000000000000000 ],
 ["kingdom_2_lord", "Ri Calgacus", "Calgacus", tf_hero, no_scene, reserved, fac_kingdom_2,
 [itm_ring_2,itm_horse_1,itm_celtic_boots,itm_celtic_heavy4,itm_celtic_light_noble_4,itm_celtic_round_shild4,itm_celtic_sword3,itm_britton_helm_noble_crest_1], knight_attrib_5, wp(320), knight_skills_5|knows_trainer_4, 0x00000008a21133c93b486c14d95403ef00000000001db6d90000000000000000 ],
 
@@ -3727,7 +3736,7 @@ knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x0000000d000051c1449
 [itm_ring_1,itm_mamluke_mail,itm_mail_mittens,itm_cataphract_boots,itm_cataphract_horse_parthian_2,itm_eastern_sword3,itm_crown_shah,itm_sarranid_cloth_robe_fancy_2,itm_eastern_shoe_r],
 knight_attrib_4, wp(270), knight_skills_5|knows_trainer_5, 0x00000006fd0042851713b2451a6e32f0000000000005b91c0000000000000000 ],
 ["kingdom_7_lord", "Nero Claudius", "Nero Claudius", tf_hero, no_scene, reserved, fac_kingdom_7,
-[itm_ring_1,itm_calceus_3,itm_laurel_gold,itm_roman_rich_emperor,itm_roman_legatus_helm,itm_musculata_legatus_3,itm_legio_armored_caligea_2,itm_roman_gladius_rich_2,itm_leopard_horse_2,itm_officer_shield],
+[itm_gauntles_1,itm_roman_legatus_helm,itm_musculata_legatus_3,itm_legio_armored_caligea_2,itm_roman_gladius_rich_2,itm_leopard_horse_2,itm_officer_shield,itm_ring_1,itm_calceus_3,itm_laurel_gold,itm_roman_rich_emperor],
 knight_attrib_2, wp(100), knight_skills_2, 0x00000001b90800113adb91996245299900000000001e5a6d0000000000000000 ],
 
 ["kingdom_8_lord", "Ri Egan", "Egan", tf_hero, no_scene, reserved, fac_kingdom_8,

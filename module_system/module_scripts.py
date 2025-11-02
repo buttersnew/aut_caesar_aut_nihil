@@ -84322,6 +84322,8 @@ scripts = scripts_hardcoded + [
         (troop_inventory_slot_set_item_amount, "trp_player", ":i_slot", ":amount"),
     (try_end),
 
+    (troop_equip_items, "trp_player"),
+
     #faction color
     (faction_get_color, ":faction_color", ":faction_no"),
     (faction_set_color, "fac_player_supporters_faction", ":faction_color"),
@@ -89074,10 +89076,11 @@ scripts = scripts_hardcoded + [
     (troop_raise_attribute,":target", ca_strength, -50),
 
     (try_for_range, ":skill", "skl_trade", "skl_reserved_14"),
-         (troop_raise_skill, ":target", ":skill", -50),
-         (store_skill_level, reg1, ":skill", ":source"),
-         (val_div, reg1, 2),
-         (troop_raise_skill, ":target", ":skill", reg1),
+        (troop_raise_skill, ":target", ":skill", -50),
+        (store_skill_level, reg1, ":skill", ":source"),
+        (val_mul, reg1, 2),
+        (val_div, reg1, 3),
+        (troop_raise_skill, ":target", ":skill", reg1),
     (try_end),
 
     (store_attribute_level, reg1, ":source", ca_intelligence),
@@ -89085,7 +89088,8 @@ scripts = scripts_hardcoded + [
     (troop_raise_attribute,":target", ca_intelligence, reg1),
 
     (store_attribute_level, reg1, ":source", ca_agility),
-    (val_div, reg1, 2),
+    (val_mul, reg1, 2),
+    (val_div, reg1, 3),
     (troop_raise_attribute,":target", ca_agility, reg1),
 
     (store_attribute_level, reg1, ":source", ca_charisma),
@@ -89093,7 +89097,8 @@ scripts = scripts_hardcoded + [
     (troop_raise_attribute,":target", ca_charisma, reg1),
 
     (store_attribute_level, reg1, ":source", ca_strength),
-    (val_div, reg1, 2),
+    (val_mul, reg1, 2),
+    (val_div, reg1, 3),
     (troop_raise_attribute,":target", ca_strength, reg1),
 
     (try_for_range, ":prof", 0, 7),
@@ -89103,6 +89108,7 @@ scripts = scripts_hardcoded + [
         (troop_raise_proficiency_linear, ":target", ":prof", reg1),
     (try_end),
 ]),
+
 #script_calculate_staff_salary
 ("calculate_staff_salary",[
     (assign, reg0, 0),
@@ -95975,47 +95981,47 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":wealth", 1), # Wealth passed as parameter
     # Check the bucket for wealth
     (try_begin),
-        (lt, ":wealth", wealth_bucket_1), # Bucket 1: 0-5000
-        (assign, reg0, 0xFFA9A9A9), # Dark Grey
+        (lt, ":wealth", wealth_bucket_1), # Bucket 1: 0-5000 (very poor)
+        (assign, reg0, 0xFF2B2B2B), # Very dark grey
         (assign, reg1, "str_bucket_0_5000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_2), # Bucket 2: 5000-10000
-        (assign, reg0, 0xFFD3D3D3), # Light Grey
+        (assign, reg0, 0xFF505050), # Dark grey
         (assign, reg1, "str_bucket_5000_10000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_3), # Bucket 3: 10000-15000
-        (assign, reg0, 0xFFFFB366), # Light Gold
+        (assign, reg0, 0xFF787878), # Medium grey
         (assign, reg1, "str_bucket_10000_15000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_4), # Bucket 4: 15000-20000
-        (assign, reg0, 0xFFFFCC33), # Gold
+        (assign, reg0, 0xFF9E9E9E), # Light grey
         (assign, reg1, "str_bucket_15000_20000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_5), # Bucket 5: 20000-30000
-        (assign, reg0, 0xFFFF9933), # Bright Gold
+        (assign, reg0, 0xFFBFA870), # Muted beige (start warm)
         (assign, reg1, "str_bucket_20000_30000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_6), # Bucket 6: 30000-40000
-        (assign, reg0, 0xFFFF6600), # Bright Yellow
+        (assign, reg0, 0xFFD1B26A), # Pale gold
         (assign, reg1, "str_bucket_30000_40000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_7), # Bucket 7: 40000-50000
-        (assign, reg0, 0xFFCC6600), # Yellow Gold
+        (assign, reg0, 0xFFE0B24A), # Warm gold
         (assign, reg1, "str_bucket_40000_50000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_8), # Bucket 8: 50000-60000
-        (assign, reg0, 0xFF996633), # Amber
+        (assign, reg0, 0xFFEDC35A), # Rich gold
         (assign, reg1, "str_bucket_50000_60000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_9), # Bucket 9: 60000-70000
-        (assign, reg0, 0xFF7F4F00), # Orange Gold
+        (assign, reg0, 0xFFF5CE3A), # Deeper gold
         (assign, reg1, "str_bucket_60000_70000"),
     (else_try),
         (lt, ":wealth", wealth_bucket_10), # Bucket 10: 70000-100000
-        (assign, reg0, 0xFFCC9900), # Golden Yellow
+        (assign, reg0, 0xFFFFD54D), # Pale gold (near top)
         (assign, reg1, "str_bucket_70000_100000"),
     (else_try),
-        (assign, reg0, 0xFFFFD700), # Full Gold
+        (assign, reg0, 0xFFFFD700), # Full gold (very rich)
         (assign, reg1, "str_bucket_over_100000"),
     (try_end),
 ]),
