@@ -1011,6 +1011,10 @@ scripts_hardcoded = [
         (party_set_slot, ":center_no", slot_center_ex_faction,  ":original_faction"),
     (try_end),
     # change culture for some occupied centers
+    # arabs
+    (party_set_slot, "p_castle_47", slot_center_culture, "fac_culture_arabian"),
+    (party_set_slot, "p_village_164", slot_center_culture, "fac_culture_arabian"),
+
     # judeans
     (party_set_slot, "p_town_19", slot_center_culture, "fac_culture_judean"),
     (party_set_slot, "p_castle_44", slot_center_culture, "fac_culture_judean"),
@@ -1078,10 +1082,40 @@ scripts_hardcoded = [
     (party_set_slot, "p_village_105", slot_center_culture, "fac_culture_berber"),
     (party_set_slot, "p_village_131", slot_center_culture, "fac_culture_berber"),
     (party_set_slot, "p_village_132", slot_center_culture, "fac_culture_berber"),
+    (party_set_slot, "p_village_228", slot_center_culture, "fac_culture_berber"),
 
     (party_set_slot, "p_village_134", slot_center_culture, "fac_culture_garmantian"),
     (party_set_slot, "p_village_135", slot_center_culture, "fac_culture_garmantian"),
     (party_set_slot, "p_village_137", slot_center_culture, "fac_culture_garmantian"),
+    (party_set_slot, "p_village_108", slot_center_culture, "fac_culture_garmantian"),
+    (party_set_slot, "p_village_102", slot_center_culture, "fac_culture_garmantian"),
+
+    #arbela, king of Adiabene, arabs as vassals of parthia
+    (party_set_slot, "p_castle_30", slot_center_culture, "fac_culture_syrian"),
+    (party_set_slot, "p_village_170", slot_center_culture, "fac_culture_syrian"),
+    (call_script, "script_give_center_to_lord2", "p_castle_30", "trp_knight_6_5", 0),
+    (troop_set_slot, "trp_knight_6_5", slot_troop_culture, "fac_culture_syrian"),
+    (troop_set_slot, "trp_kingdom_6_lady_5", slot_troop_culture, "fac_culture_syrian"),
+    (troop_set_slot, "trp_knight_6_13", slot_troop_culture, "fac_culture_syrian"),
+    (troop_set_slot, "trp_kingdom_6_lady_13", slot_troop_culture, "fac_culture_syrian"),
+
+    #duro europos, hatra kingdom
+    (party_set_slot, "p_town_40", slot_center_culture, "fac_culture_syrian"),
+    (party_set_slot, "p_village_171", slot_center_culture, "fac_culture_syrian"),
+    (party_set_slot, "p_village_99", slot_center_culture, "fac_culture_syrian"),
+    (party_set_slot, "p_village_168", slot_center_culture, "fac_culture_syrian"),
+    (party_set_slot, "p_village_167", slot_center_culture, "fac_culture_syrian"),
+    (call_script, "script_give_center_to_lord2", "p_town_40", "trp_knight_6_7", 0),
+    (troop_set_slot, "trp_knight_6_7", slot_troop_culture, "fac_culture_syrian"),
+    (troop_set_slot, "trp_kingdom_6_lady_7", slot_troop_culture, "fac_culture_syrian"),
+    (troop_set_slot, "trp_kingdom_6_lady_15", slot_troop_culture, "fac_culture_syrian"),
+
+    #kingdom of Characene
+    (party_set_slot, "p_castle_55", slot_center_culture, "fac_culture_syrian"),
+    (party_set_slot, "p_village_128", slot_center_culture, "fac_culture_syrian"),
+    (party_set_slot, "p_village_172", slot_center_culture, "fac_culture_syrian"),
+    (call_script, "script_give_center_to_lord2", "p_castle_55", "trp_knight_6_15", 0),
+    (troop_set_slot, "trp_knight_6_15", slot_troop_culture, "fac_culture_syrian"),
 
     # give centers to governors
     (try_for_range, ":province", p_hisp_tarraco, p_provinces_end),
@@ -1095,13 +1129,6 @@ scripts_hardcoded = [
         (try_end),
     (try_end),
 
-    #arbela, king of Adiabene, arabs as vassals of parthia
-    (party_set_slot, "p_castle_30", slot_center_culture, "fac_culture_syrian"),
-    (call_script, "script_give_center_to_lord2", "p_castle_30", "trp_knight_6_5", 0),
-    (troop_set_slot, "trp_knight_6_5", slot_troop_culture, "fac_culture_syrian"),
-    (troop_set_slot, "trp_kingdom_6_lady_5", slot_troop_culture, "fac_culture_syrian"),
-    (troop_set_slot, "trp_knight_6_13", slot_troop_culture, "fac_culture_syrian"),
-    (troop_set_slot, "trp_kingdom_6_lady_13", slot_troop_culture, "fac_culture_syrian"),
 
     (call_script, "script_give_center_to_lord2", "p_castle_69", "trp_kingdom_21_lord", 0),
     (call_script, "script_give_center_to_lord2", "p_castle_42", "trp_kingdom_23_lord", 0),

@@ -3764,25 +3764,25 @@ knight_attrib_2, wp(100), knight_skills_2, 0x00000001b90800113adb919962452999000
 [itm_sarmatian_shoes,itm_caucasian_scale_heavy_2,
 itm_sarmatian_heavy_helm6,itm_mail_mittens,itm_caucasian_longsword,itm_caucasian_spear_174,itm_cataphract_horse_parthian_1,
 itm_sarranid_cloth_robe_fancy_2,itm_ring_2,itm_eastern_shoe_r],
-knight_attrib_5, wp(270), knight_skills_5, 0x000000000005318d251b89d69d71d96c00000000001da8d30000000000000000, ],
+knight_attrib_5, wp(270), knight_skills_5, 0x000000092804d241491cb332dc6dc96500000000001eb6b40000000000000000, ],
 
 ["kingdom_21_lord", "Shah Oroezes", "Oroezes", tf_hero, no_scene, reserved, fac_kingdom_21,
 [itm_cataphract_boots,itm_cataphract_eastern,
 itm_cataphract_sallet_1,itm_mail_mittens,itm_parthian_cataphract_axe,itm_lance,itm_cataphract_horse_parthian_3,
 itm_sarranid_cloth_robe_fancy_2,itm_ring_2,itm_eastern_shoe_r],
-knight_attrib_4, wp(270), knight_skills_4, 0x000000000005318d251b89d69d71d96c00000000001da8d30000000000000000, ],
+knight_attrib_4, wp(270), knight_skills_4, 0x0000000910046541244c9a1b52874a6b00000000001e561c0000000000000000, ],
 
 ["kingdom_22_lord", "Basileus Aristarchus", "Aristarchus", tf_hero, no_scene, reserved, fac_kingdom_22,
 [itm_sarmatian_shoes,itm_caucasian_scale_heavy_1,
 itm_bosporan_pointed_helm,itm_mail_mittens,itm_caucasian_longsword,itm_caucasian_spear_174,itm_cataphract_horse_parthian_3,
 itm_sarranid_cloth_robe_fancy_2,itm_ring_2,itm_eastern_shoe_r],
-knight_attrib_3, wp(270), knight_skills_3, 0x000000000005318d251b89d69d71d96c00000000001da8d30000000000000000, ],
+knight_attrib_3, wp(270), knight_skills_3, 0x000000093604318b416d49bb04ac27a500000000001d9a9c0000000000000000, ],
 
 ["kingdom_23_lord", "Malka Ma'nu, son of Abgar", "Ma'nu, son of Abgar", tf_hero, no_scene, reserved, fac_kingdom_23,
 [itm_eastern_shoe_b,itm_heavy_syrian_scale_3,itm_pilos_chad_2,
 itm_leather_gloves,itm_palmyran_gladius_rich,itm_lance,itm_cataphract_horse_parthian_2,
 itm_arab_noble_tunic_2,itm_ring_2],
-knight_attrib_1, wp(270), knight_skills_1, 0x000000000005318d251b89d69d71d96c00000000001da8d30000000000000000, ],
+knight_attrib_1, wp(270), knight_skills_1, 0x000000091805318d251b89d69d71d96c00000000001da8d30000000000000000, ],
 
 ["knight_1_1", "Dacian Lord", "Avizina", tf_hero, no_scene, reserved, fac_kingdom_1,
 [itm_horse_1,itm_dacian_heavy1,itm_dacian_shield_large4,itm_dacian_heavy_helm_noble_1,itm_dacian_sword,itm_celtic_boots,itm_dacian_noble1],
@@ -3965,7 +3965,13 @@ itm_arab_noble_tunic_1,itm_ring_2], knight_attrib_2,wp(150),knight_skills_2, 0x0
 ], knight_attrib_5,wp(250),knight_skills_5, 0x000000002a084003330175aae175da9c00000000001e02150000000000000000, ],
 
 ["knight_6_6", "Parthian Lord", "Belesys", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_sarranid_mace_1,itm_cataphract_horse_parthian_3,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_y,itm_sarranid_cloth_robe_fancy_3],knight_attrib_1,wp(130),knight_skills_1, 0x00000001830043834733294c89b128e200000000001259510000000000000000, ],
-["knight_6_7", "Parthian Lord", "Dataphernes", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_1,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_b,itm_sarranid_cloth_robe_fancy_3], knight_attrib_2,wp(160),knight_skills_2, 0x000000001508c24133227e37ab46da9d000000000017a7150000000000000000, ],
+
+["knight_6_7", "King of Hatra", "Worod", tf_hero, 0, reserved,fac_kingdom_6, [
+  itm_eastern_shoe_b,itm_heavy_syrian_scale_3,itm_parthian_helm_cavalry_heavy_2,
+  itm_leather_gloves,itm_palmyran_gladius_rich,itm_lance,itm_cataphract_horse_parthian_2,
+  itm_arab_noble_tunic_2,itm_ring_1
+], knight_attrib_2,wp(160),knight_skills_2, 0x000000001508c24133227e37ab46da9d000000000017a7150000000000000000, ],
+
 ["knight_6_8", "Parthian Lord", "Histanes", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_sarranid_mace_1,itm_cataphract_horse_parthian_2,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_r,itm_sarranid_cloth_robe_fancy_3],knight_attrib_3,wp(190),knight_skills_3|knows_trainer_3, 0x0000000190044003336dcd3ca2cacae300000000001f47640000000000000000, ],
 ["knight_6_10", "Parthian Lord", "Kyros", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_sarranid_mace_1,itm_cataphract_horse_parthian_1,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_b,itm_sarranid_cloth_robe_fancy_3],knight_attrib_5,wp(250),knight_skills_5|knows_trainer_4, 0x00000004bf04f1d16ce99256b4ad4b3300000000001d392c0000000000000000, ],
 ["knight_6_11", "Parthian Lord", "Mazaios", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_2,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_r,itm_sarranid_cloth_robe_fancy_3], knight_attrib_1,wp(130),knight_skills_1, 0x0000000fff08134726c28af8dc96e4da00000000001e541d0000000000000000, ],
@@ -3978,7 +3984,14 @@ itm_arab_noble_tunic_1,itm_ring_2], knight_attrib_2,wp(150),knight_skills_2, 0x0
 ],knight_attrib_3,wp(190),knight_skills_3, 0x00000000001021435b734d4ad94eba9400000000001eb8eb0000000000000000, ],
 
 ["knight_6_14", "Parthian Lord", "Pherendates", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_2,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_r,itm_sarranid_cloth_robe_fancy_3],knight_attrib_4,wp(220),knight_skills_4, 0x000000000c0c45c63a5b921ac22db8e200000000001cca530000000000000000, ],
-["knight_6_15", "Parthian Lord", "Prexaspes", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_sarranid_mace_1,itm_cataphract_horse_parthian_3,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_y,itm_sarranid_cloth_robe_fancy_3], knight_attrib_5,wp(250),knight_skills_5, 0x000000001b0c4185369a6938cecde95600000000001f25210000000000000000, ],
+["knight_6_15", "King of Characane", "Attambelos", tf_hero, 0, reserved,fac_kingdom_6, [
+  itm_eastern_shoe_y,
+  itm_parthian_cataphract_axe,
+  itm_cataphract_horse_parthian_3,
+  itm_parthian_helm_cavalry_heavy_1,
+  itm_heavy_syrian_scale_2,
+  itm_sarranid_cloth_robe_fancy_3
+], knight_attrib_5,wp(250),knight_skills_5, 0x000000001b0c4185369a6938cecde95600000000001f25210000000000000000, ],
 
 ["knight_6_16", "Parthian Lord", "Sataspes", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_1,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_b,itm_sarranid_cloth_robe_fancy_3],knight_attrib_1,wp(120),knight_skills_1, 0x00000007770841c80a01e1c5eb51ffff00000000001f12d80000000000000000, ],
 ["knight_6_18", "Parthian Lord", "Arses", tf_hero, 0, reserved,fac_kingdom_6, [itm_cataphract_boots,itm_parthian_cataphract_axe,itm_cataphract_horse_parthian_3,itm_cataphract_helm6,itm_mamluke_mail,itm_mail_mittens,itm_eastern_shoe_y,itm_sarranid_cloth_robe_fancy_3],knight_attrib_3,wp(180),knight_skills_3, 0x000000003410410070d975caac91aca500000000001c27530000000000000000, ],
@@ -4396,7 +4409,7 @@ attrib_common_lady,wp(50),knows_common_lady,0x00000000100c004536e9a720567644b200
 [itm_eastern_shoe_r],attrib_common_lady,wp(50),knows_common_lady, 0x00000003f404428e5666495a5b68c55300000000000b67eb0000000000000000],
 ["kingdom_6_lady_6","Parthian Lady","Vardanidala",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_6,
 [itm_eastern_shoe_y],attrib_common_lady,wp(50),knows_common_lady,0x000000000d0820411693b142ca6a271a00000000001db6920000000000000000],
-["kingdom_6_lady_7","Parthian Lady","Karinidisa",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_6,
+["kingdom_6_lady_7","Parthian Lady","Amat-Nabu",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_6,
 [itm_eastern_shoe_b],attrib_common_lady,wp(50),knows_common_lady, 0x00000003ef0882d7191c65a6a46b66aa00000000001dc8da0000000000000000],
 ["kingdom_6_lady_8","Parthian Lady","Gobryasidisa",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_6,
 [itm_eastern_shoe_r],attrib_common_lady,wp(50),knows_common_lady,0x00000005e810210e6a91a544f24da12500000000000935a60000000000000000],
@@ -4410,7 +4423,7 @@ attrib_common_lady,wp(50),knows_common_lady,0x00000000100c004536e9a720567644b200
 [itm_eastern_shoe_b],attrib_common_lady,wp(50),knows_common_lady, 0x00000006a100b28d154bae396351c51a00000000001c92890000000000000000],
 ["kingdom_6_lady_14","Parthian Lady","Zandina Suren",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_6,
 [itm_eastern_shoe_r],attrib_common_lady,wp(50),knows_common_lady,0x000000053a0c3050358a5ff53c8e399400000000001d44dc0000000000000000],
-["kingdom_6_lady_15","Parthian Lady","Lulya Karinid",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_6,
+["kingdom_6_lady_15","Parthian Lady","Samiya",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_6,
 [itm_eastern_shoe_y],attrib_common_lady,wp(50),knows_common_lady, 0x000000067d0861d758adb3b72d75446a00000000001166990000000000000000],
 ["kingdom_6_lady_16","Parthian Lady","Aridisa",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_6,
 [itm_eastern_shoe_b],attrib_common_lady,wp(50),knows_common_lady,0x00000005c50c929235eb3138ebb1451300000000000e3d030000000000000000],

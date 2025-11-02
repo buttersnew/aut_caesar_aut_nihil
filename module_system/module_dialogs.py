@@ -43499,6 +43499,75 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 	# (change_screen_map),
 ]],
 
+
+[trp_knight_6_15|plyr, "lord_talk", [
+  (troop_slot_eq, "trp_global_variables", g_characane_intro, 0),
+  (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_parthian"),
+],"A King of a great port, yet a vassal to the Parthians. How do you reconcile those two things?",
+"attambelos_explains_position", [
+  (troop_set_slot, "trp_global_variables", g_characane_intro, 1),
+]],
+
+[anyone, "attambelos_explains_position", [
+], "'Vassal' is a word for warriors. I am a merchant. The world's riches flow through my ports—silks from the Seres, spices from India, pearls from the Gulf. I take my toll. In return for a share of that toll, the Shahanshah keeps the land routes clear of troublesome nomads and ensures my kingdom's security. It is not servitude; it is a profitable business arrangement.",
+"attambelos_player_reaction", []],
+
+[anyone|plyr, "attambelos_player_reaction", [],
+"You control a sea route, they control the land routes. A wise and profitable partnership.",
+"attambelos_reacts_to_respect", []],
+
+[anyone|plyr, "attambelos_player_reaction", [],
+"So you're little more than a wealthy tax collector for the Parthian king.",
+"attambelos_reacts_to_mockery", []],
+
+
+[trp_knight_6_15, "attambelos_reacts_to_respect", [
+], "-- He gives a slight, knowing smile. --^^You understand the true language of power. It is not spoken with swords, but with coin. A rare insight for one of your people.",
+"lord_pretalk", [
+    (call_script, "script_change_player_relation_with_troop", "trp_knight_6_15", 5),
+]],
+
+[trp_knight_6_15, "attambelos_reacts_to_mockery", [
+], "-- He laughs, a short, dismissive sound. --^^You think only in terms of armies, warriors and territory. So primitive. My 'taxes' can buy and sell entire armies while your soldiers are still marching. Gold is the only true king of kings, a lesson your people have yet to fully grasp.",
+"lord_pretalk", [
+    (call_script, "script_change_player_relation_with_troop", "trp_knight_6_15", -10),
+]],
+
+[trp_knight_6_7|plyr, "lord_talk", [
+  (troop_slot_eq, "trp_global_variables", g_hatra_intro, 0),
+  (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_parthian"),
+],"They call you a king, yet you serve the Parthians.",
+"hatra_intro_explains_position", [
+  (troop_set_slot, "trp_global_variables", g_hatra_intro, 1),
+]],
+
+[anyone, "hatra_intro_explains_position", [
+], "'Serve' is a harsh word. Hatra does not serve. Hatra endures. We are a fortress of stone and a river of gold in a sea of sand. The Shahanshah in Ctesiphon understands this. He protects our caravans from the desert tribes, and in return, my walls protect his western flank from Roman ambition. The Parthians understand business. The Romans only understand conquest.",
+"hatra_intro_player_reaction", []],
+
+[anyone|plyr, "hatra_intro_player_reaction", [],
+"A fortress for a friend, a wall against an enemy. A wise position to hold.",
+"hatra_intro_reacts_to_respect", []],
+
+[anyone|plyr, "hatra_intro_player_reaction", [],
+"So you're a glorified gatekeeper for the Parthian king.",
+"hatra_intro_reacts_to_mockery", []],
+
+[anyone, "hatra_intro_reacts_to_respect", [
+], "-- He nods, a look of grudging approval in his eyes. --^^You have the eye of a strategist. You see the board, not just the pieces. A rare thing these days. Remember that.",
+"lord_pretalk", [
+  (call_script, "script_change_player_relation_with_troop", "trp_knight_6_7", 5),
+]],
+
+[anyone, "hatra_intro_reacts_to_mockery", [
+], "-- He gives a cold, thin smile. --^^Many Roman generals have thought the same. Their legions broke against my 'gate' like waves against a cliff. Be careful your tongue does not meet a similar fate.",
+"lord_pretalk", [
+  (call_script, "script_change_player_relation_with_troop", "trp_knight_6_7", -10),
+]],
+
+
 [trp_knight_6_5|plyr, "lord_talk", [
   (troop_slot_eq, "trp_global_variables", g_adriabane_intro, 0),
   (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),

@@ -9597,22 +9597,22 @@ strings = [
 ("subculture_gaulish_aquitanian", "Gaulish"),
 ("subculture_gaulish_lugdunensian", "Gaulish"),
 ("subculture_gaulish_belgic", "Gaulish"),
-("subculture_germanic_inferior", "Germanic"), # Along the Rhine
-("subculture_germanic_superior", "Germanic"), # Along the Rhine
+("subculture_germanic_inferior", "Western Germanic"), # Along the Rhine
+("subculture_germanic_superior", "Southern Germanic"), # Along the Rhine
 ("subculture_germanic_raetian", "Celtic"), # Alpine
 ("subculture_germanic_norican", "Celtic"), # Alpine Celtic/Illyrian, Romanized
 ("subculture_central_pannonian", "Celtic"), # Illyrian/Celtic
 ("subculture_britannic_britannian", "Britannic"), # Southern Britain
 ("subculture_britannic_caledonian", "Caledonian"), # Northern Britain/Scotland
 ("subculture_magna_germanian", "Germanic"), # General for Germania Libera
-("subculture_hercynian_germanian", "Hercynian"), # Forest Germans
-("subculture_suebian_germanian", "Suebian"),
+("subculture_hercynian_germanian", "Southern Germanic"), # Forest Germans
+("subculture_suebian_germanian", "Eastern Germanic"),
 ("subculture_dacian", "Dacian"),
 ("subculture_sarmatian_plains", "Sarmatian"),
 ("subculture_bosporan_kingdom", "Bosporan"), # Greek/Scythian mix
 ("subculture_scythian_steppe", "Scythian"),
 ("subculture_armenian_highlands", "Armenian"),
-("subculture_mesopotamian", "Mesopotamian"),
+("subculture_mesopotamian", "Aramaic"),
 ("subculture_assyrian", "Median"),
 ("subculture_mediterranean_western_isles", "Sardinian"),
 ("subculture_mediterranean_eastern_isles", "Greek"), # e.g., Cretan, Cypriot, Rhodian
@@ -9630,7 +9630,7 @@ strings = [
 ("culture_2_1_rized", "Caledonian"),
 ("culture_3_rized", "Sarmato"),
 ("culture_4_rized", "Germano"),
-("culture_5_rized", "Caucasian"),
+("culture_5_rized", "Caucaso"),
 ("culture_6_rized", "Partho"),
 ("culture_7_rized", "Romanized"),
 ("culture_8_rized", "Judeo"),
@@ -9640,9 +9640,9 @@ strings = [
 ("culture_12_rized", "Garamanto"),
 ("culture_13_rized", "Nubian"),
 ("culture_14_rized", "Saka"),
-("culture_15_rized", "Syrian"),
-("culture_16_rized", "Egyptian"),
-("culture_17_rized", "Hellenized"),
+("culture_15_rized", "Syro"),
+("culture_16_rized", "Egypto"),
+("culture_17_rized", "Helleno"),
 
 ("here_is_what_i_have_on_offer", "Here's what I have on offer:^^{s3}"),
 ("unfortunately_i_have_no_slaves_to_offer_today", "Unfortunately, I have no slaves to offer today. Perhaps another time?"),

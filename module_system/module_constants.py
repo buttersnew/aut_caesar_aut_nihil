@@ -4023,6 +4023,10 @@ g_acan_version = 82
 
 g_adriabane_intro = 83
 
+g_hatra_intro = 84
+
+g_characane_intro = 85
+
 # Load version from repository `version.txt` if present and convert to an integer
 # by removing any non-numeric characters (dots, hyphens, letters). Example:
 #  "1.0.0.7-beta" -> "1007" -> 1007
