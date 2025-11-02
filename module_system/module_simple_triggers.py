@@ -402,15 +402,15 @@ simple_triggers = [
 (335,[
     (call_script, "script_execude_debug_message", 12),
     (try_begin),
-        #faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),# player is part of a roman faction
+        #faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),# player is part of a roman faction
         (troop_slot_ge, "trp_player", slot_troop_spouse, 1),
         (gt, "$g_player_chamberlain", 0),
         (troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
         (neg|troop_slot_ge, ":spouse", slot_troop_bachus, 1),
-        # (this_or_next|troop_slot_eq, ":spouse", slot_troop_culture, "fac_culture_8"),
-        # (this_or_next|troop_slot_eq, ":spouse", slot_troop_culture, "fac_culture_7"),
-        # (this_or_next|troop_slot_eq, ":spouse", slot_troop_culture, "fac_culture_5"),
-        # (troop_slot_eq, ":spouse", slot_troop_culture, "fac_culture_6"),
+        # (this_or_next|troop_slot_eq, ":spouse", slot_troop_culture, "fac_culture_judean"),
+        # (this_or_next|troop_slot_eq, ":spouse", slot_troop_culture, "fac_culture_roman"),
+        # (this_or_next|troop_slot_eq, ":spouse", slot_troop_culture, "fac_culture_caucasian"),
+        # (troop_slot_eq, ":spouse", slot_troop_culture, "fac_culture_parthian"),
         (assign, ":chance", "$player_honor"),
         (val_clamp, ":chance", -50, 50),
         (val_mul, ":chance", -1),
@@ -457,14 +457,14 @@ simple_triggers = [
     (store_faction_of_party, ":fac", "p_town_6"),
     (try_begin),
         (eq, ":fac", "$players_kingdom"),
-        (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
+        (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_roman"),
         (neg|check_quest_active, "qst_ludi_romani"),
         (neg|check_quest_active, "qst_saturnalia"),
         (eq, "$g_cur_month", 9),
         (call_script, "script_add_notification_menu", "mnu_religious_festival", "qst_ludi_romani", -1),
     (else_try),
         (eq, ":fac", "$players_kingdom"),
-        (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
+        (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_roman"),
         (neg|check_quest_active, "qst_saturnalia"),
         (neg|check_quest_active, "qst_ludi_romani"),
         (eq, "$g_cur_month", 12),
@@ -965,7 +965,7 @@ simple_triggers = [
         (else_try),
             (store_random_in_range, ":action", 0, 110),#make it less often
             (lt, ":action", ":chance"),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),#player is roman
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),#player is roman
             (troop_slot_ge, "trp_senator_dummy", slot_senate_support, 30),
             (party_get_slot, ":player_relation", "p_town_6", slot_center_player_relation),
             (assign, ":chance2", 80),
@@ -1169,7 +1169,7 @@ simple_triggers = [
         (try_end),
         (try_begin),
             (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
-            (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+            (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
             (store_random_in_range, ":r", 0, 10),
             (ge, ":r", 4),
             (call_script, "script_change_senate_support", 1,1),
@@ -1795,8 +1795,8 @@ simple_triggers = [
         (assign, ":block", 0),
         (try_begin),
             (troop_slot_eq, "trp_global_variables", g_civil_war_timer, -1),
-            (faction_slot_eq, ":acting_faction", slot_faction_culture, "fac_culture_7"),
-            (faction_slot_eq, ":target_faction", slot_faction_culture, "fac_culture_7"),
+            (faction_slot_eq, ":acting_faction", slot_faction_culture, "fac_culture_roman"),
+            (faction_slot_eq, ":target_faction", slot_faction_culture, "fac_culture_roman"),
             (assign, ":block", 1),
         (try_end),
         (eq, ":block", 0),
@@ -2658,7 +2658,7 @@ simple_triggers = [
         (val_div, ":num_cattle", 100),
 
         (try_begin),
-            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_3"),##only nomads have horses
+            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_sarmatian"),##only nomads have horses
             (val_mul, ":num_hores", 90), #10% decrease at number of horses
             (val_div, ":num_hores", 100),
         (try_end),
@@ -2674,7 +2674,7 @@ simple_triggers = [
         (val_add, ":num_sheep", 1),
 
         (try_begin),
-            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_3"),##only nomads have horses
+            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_sarmatian"),##only nomads have horses
             (val_mul, ":num_hores", 120), #20% increase at number of horses
             (val_div, ":num_hores", 100),
             (val_add, ":num_hores", 1),
@@ -2691,7 +2691,7 @@ simple_triggers = [
         (val_add, ":num_sheep", 1),
 
         (try_begin),
-            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_3"),##only nomads have horses
+            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_sarmatian"),##only nomads have horses
             (val_mul, ":num_hores", 110), #10% increase at number of horses
             (val_div, ":num_hores", 100),
             (val_add, ":num_hores", 1),
@@ -2715,7 +2715,7 @@ simple_triggers = [
         (try_end),
 
         (try_begin),
-            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_3"),##only nomads have horses
+            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_sarmatian"),##only nomads have horses
             (val_mul, ":num_hores", 105), #5% increase at number of horses
             (val_div, ":num_hores", 100),
             (try_begin), #if very low number of horses and there is good grazing then increase number of horses also by one
@@ -3110,7 +3110,7 @@ simple_triggers = [
             (assign, ":c", 0),
             (try_begin),
                 (ge, "$g_civil_war", 1),
-                (faction_slot_eq, ":cur_faction", slot_faction_culture, "fac_culture_7"),
+                (faction_slot_eq, ":cur_faction", slot_faction_culture, "fac_culture_roman"),
                 (faction_slot_eq, ":cur_faction", slot_faction_num_castles, 0),
                 (faction_slot_eq, ":cur_faction", slot_faction_num_towns, 0),
                 (assign, ":c", 1),
@@ -3129,7 +3129,7 @@ simple_triggers = [
                 (is_between, ":troop_no", kings_begin, kings_end),
                 (troop_set_slot, ":troop_no", slot_troop_change_to_faction, "fac_commoners"),
             (else_try),
-                (troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_8"), # judean rebels
+                (troop_slot_eq, ":troop_no", slot_troop_culture, "fac_culture_judean"), # judean rebels
                 (troop_set_slot, ":troop_no", slot_troop_change_to_faction, "fac_outlaws"),
             (else_try),
                 (faction_slot_eq, ":cur_faction", slot_faction_leader, ":troop_no"),
@@ -4145,7 +4145,7 @@ simple_triggers = [
             (this_or_next|faction_slot_eq, ":troop_faction", slot_faction_leader, ":stack_troop"),
             (this_or_next|troop_slot_ge, ":stack_troop", slot_troop_legion, 1),
             (troop_slot_ge, ":stack_troop", slot_troop_aux, 1),
-            (faction_slot_eq, ":troop_faction", slot_faction_culture, "fac_culture_7"),
+            (faction_slot_eq, ":troop_faction", slot_faction_culture, "fac_culture_roman"),
             (assign, ":random_no", -1),
         (try_end),
         (try_begin),
@@ -4576,7 +4576,7 @@ simple_triggers = [
 
     (try_begin),
         (neq, "$g_is_emperor", 1),
-        (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),#roman
+        (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),#roman
         (neg|check_quest_active, "qst_trial"),#quest not active
         (quest_slot_eq, "qst_trial", slot_quest_dont_give_again_remaining_days, 0),
         (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),#not faction leader
@@ -4653,7 +4653,7 @@ simple_triggers = [
         (val_add, ":num_active_factions", 1),
         (try_begin),
             (faction_slot_ge, ":cur_kingdom", slot_faction_number_of_parties, 1),
-            (faction_slot_eq, ":cur_kingdom", slot_faction_culture, "fac_culture_7"),
+            (faction_slot_eq, ":cur_kingdom", slot_faction_culture, "fac_culture_roman"),
             (val_add, ":num_roman_factions", 1),
         (try_end),
         (faction_slot_eq, ":cur_kingdom", slot_faction_number_of_parties, 0),
@@ -4729,7 +4729,7 @@ simple_triggers = [
         (assign, reg0, kingdoms_end),
         (try_for_range, ":faction", kingdoms_begin, reg0),
             (faction_slot_eq, ":faction", slot_faction_state, sfs_active),
-            (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_7"),
+            (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
             (assign, ":last_roman_faction", ":faction"),
             (assign, reg0, -1),
         (try_end),
@@ -4760,7 +4760,7 @@ simple_triggers = [
         (party_set_ai_behavior, ":party", ai_bhvr_patrol_location),
         (party_set_ai_object, ":party", "p_town_26"),
         (party_set_ai_patrol_radius, ":party", 25),
-        (party_set_slot, ":party", slot_center_culture, "fac_culture_3"),
+        (party_set_slot, ":party", slot_center_culture, "fac_culture_sarmatian"),
         (party_set_slot, ":party", slot_town_prosperity, 50),
     (try_end),
     (try_begin),
@@ -4770,7 +4770,7 @@ simple_triggers = [
         (party_set_ai_behavior, ":party", ai_bhvr_patrol_location),
         (party_set_ai_object, ":party", "p_town_25"),
         (party_set_ai_patrol_radius, ":party", 20),
-        (party_set_slot, ":party", slot_center_culture, "fac_culture_3"),
+        (party_set_slot, ":party", slot_center_culture, "fac_culture_sarmatian"),
         (party_set_slot, ":party", slot_town_prosperity, 50),
     (try_end),
     (assign, reg0, ":save_reg0"),
@@ -5293,7 +5293,7 @@ simple_triggers = [
         # manu tax
         (try_begin),
             (party_slot_eq, "$cur_village_weekly_on_average", slot_village_state, svs_normal),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
             (ge, "$edict11", 1),
             (store_mul, ":manu_tax", "$g_slave_manu", 10),
             (val_mul, ":manu_tax", reg20),
@@ -5656,7 +5656,7 @@ simple_triggers = [
     (try_end),
     (assign, ":block", 0),
     (try_begin),
-        (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+        (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
         (eq, "$g_rank", 0),
         (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
         (assign, ":block", 1),
@@ -8049,15 +8049,15 @@ simple_triggers = [
                     (val_add, "$g_random_eventnorepit", 1),  #no repit some random events
                 (else_try),
                     (this_or_next|eq, "$g_is_emperor", 1),
-                    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
-                    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+                    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
+                    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
                     (eq, "$g_random_eventnorepit", 6),  #no repit some random events
                     (jump_to_menu, "mnu_event_26_normal"),
                     (val_add, "$g_random_eventnorepit", 1),  #no repit some random events
                 (else_try),
                     (this_or_next|eq, "$g_is_emperor", 1),
-                    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
-                    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+                    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
+                    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
                     (eq, "$g_random_eventnorepit", 7),  #no repit some random events
                     (jump_to_menu, "mnu_event_25_normal"),
                     (val_add, "$g_random_eventnorepit", 1),  #no repit some random events
@@ -8301,7 +8301,7 @@ simple_triggers = [
             (store_current_hours, ":hours"),
             (call_script, "script_game_get_date_text", 0, ":hours"),
             (ge, reg2, 68),
-            ##(faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),# player is roman
+            ##(faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),# player is roman
             (call_script, "script_add_notification_menu", "mnu_event_jerusalem_4",0,0),
         (else_try),
             (gt, "$g_civil_war", 1),
@@ -8480,8 +8480,8 @@ simple_triggers = [
     ##fix player culture:
     (try_begin),
         (eq, "$g_is_emperor", 1),
-        (neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
-        (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_7"),
+        (neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
+        (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_roman"),
         (display_message, "@As you are now Caesar Augustus, Princeps of Rome, you change your culture to Roman."),
     (try_end),
     ##honory titles for player faction Rome
@@ -9285,19 +9285,19 @@ simple_triggers = [
     (try_begin),
         (le, ":rand", ":chance"),
         (try_begin),
-            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_1"),
+            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_dacian"),
             (assign, ":rebel_party_tem", "pt_dacians"),
         (else_try),
-            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_2"),
+            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_celtic"),
             (assign, ":rebel_party_tem", "pt_brits"),
         (else_try),
-            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_2_1"),
+            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_caledonian"),
             (assign, ":rebel_party_tem", "pt_cals"),
         (else_try),
-            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_3"),
+            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_sarmatian"),
             (assign, ":rebel_party_tem", "pt_nomads"),
         (else_try),
-            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_4"),
+            (faction_slot_eq, ":faction_org", slot_faction_culture, "fac_culture_germanic"),
             (assign, ":rebel_party_tem", "pt_germans"),
         (else_try),
             (display_log_message, "@Error on Rebellion simple trigger", message_negative),
@@ -9719,11 +9719,11 @@ simple_triggers = [
     (try_end),
 	(try_for_range, ":troop", active_npcs_begin, active_npcs_end),
 		(troop_slot_eq, ":troop", slot_troop_occupation, slto_kingdom_hero),
-		(this_or_next|troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_5"),
-		(this_or_next|troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_6"),
-		(this_or_next|troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_7"),
-		(this_or_next|troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_8"),
-		(troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_9"),
+		(this_or_next|troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_caucasian"),
+		(this_or_next|troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_parthian"),
+		(this_or_next|troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_roman"),
+		(this_or_next|troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_judean"),
+		(troop_slot_eq, ":troop", slot_troop_culture, "fac_culture_bosporan"),
 		(troop_get_slot, ":party", ":troop", slot_troop_leaded_party),
 		(party_is_active, ":party"),
 		(gt, ":party", 0),
@@ -10402,6 +10402,7 @@ simple_triggers = [
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_arab),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_syr),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_osreon),
+        (this_or_next|party_slot_eq, ":village", slot_center_province, p_adiabene),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_asia_jude),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_afrc_maur),
         (this_or_next|party_slot_eq, ":village", slot_center_province, p_afrc_afrc),
@@ -10525,7 +10526,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 167),
     ##senate system##there are 3 triggers, honor influence is the lowesd => weekly trigger
     (try_begin),
-        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
         (troop_slot_ge, "trp_senator_dummy", slot_senate_support, 10),
         (store_faction_of_party, ":fac", "p_town_6"),
         (eq, ":fac", "$players_kingdom"),
@@ -10585,7 +10586,7 @@ simple_triggers = [
 
     (try_begin),
         (store_faction_of_party, ":rome_faction", "p_town_6"),
-        (faction_slot_eq, ":rome_faction", slot_faction_culture, "fac_culture_7"),
+        (faction_slot_eq, ":rome_faction", slot_faction_culture, "fac_culture_roman"),
         (store_mul, ":probability", "$wind_power", 4),
         (val_add, ":probability", 5),
         (store_random_in_range, ":r", 0, 100),
@@ -11069,8 +11070,8 @@ simple_triggers = [
             (eq, ":val", 0),
             (neq, "$g_player_is_captive", 1),
             (display_message, "@The promised troops arrive", color_good_news),
-            (party_force_add_members, "p_main_party", "trp_sarranid_horseman", 200),
-            (party_force_add_members, "p_main_party", "trp_garamantien_noble_horseman", 100),
+            (party_force_add_members, "p_main_party", "trp_garamantian_horseman", 200),
+            (party_force_add_members, "p_main_party", "trp_garamantian_noble_horseman", 100),
         (else_try),
             (eq, ":val", 0),
             #(neq, "$g_player_is_captive", 1),
@@ -12122,7 +12123,7 @@ simple_triggers = [
         (faction_slot_eq, ":faction_a", slot_faction_rebelling_against, 0), # is not rebelling
         (faction_slot_eq, ":faction_a", slot_faction_state, sfs_active),#active
         #barbarian
-        (neg|faction_slot_eq, ":faction_a", slot_faction_culture, "fac_culture_7"),#not Roman
+        (neg|faction_slot_eq, ":faction_a", slot_faction_culture, "fac_culture_roman"),#not Roman
         (neq, ":faction_a", "fac_kingdom_19"),# not a rebel faction
         (neq, ":faction_a", "fac_kingdom_17"),# not a rebel faction
         (faction_get_slot, ":num_towns", ":faction_a", slot_faction_num_castles),
@@ -12147,7 +12148,7 @@ simple_triggers = [
                 (val_add, ":num_of_allies", 1),
             (try_end),
             (lt, ":relation", -1),#they are at war
-            #(neg|faction_slot_eq, ":faction_b", slot_faction_culture, "fac_culture_7"),#not allowed for Romans
+            #(neg|faction_slot_eq, ":faction_b", slot_faction_culture, "fac_culture_roman"),#not allowed for Romans
             (store_add, ":slot_war_damage_inflicted_on_a", ":faction_a", slot_faction_war_damage_inflicted_on_factions_begin),
             (val_sub, ":slot_war_damage_inflicted_on_a", kingdoms_begin),
             (faction_get_slot, ":war_damage_inflicted_by_b", ":faction_b", ":slot_war_damage_inflicted_on_a"),
@@ -12311,11 +12312,11 @@ simple_triggers = [
     (le, ":rand", 2),
     (troop_slot_ge, "trp_argentarius", slot_troop_met, 1),
     (quest_slot_eq, "qst_investment", slot_quest_dont_give_again_remaining_days, 0),
-    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
     (troop_slot_ge, "trp_player", slot_troop_renown, 200),
     (store_relation, ":relation", "fac_kingdom_7", "fac_player_faction"),
     (this_or_next|ge, ":relation", 0),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
     (store_troop_gold, ":gold", "trp_player"),
     (gt, ":gold", 75000),
     (jump_to_menu, "mnu_investment"),

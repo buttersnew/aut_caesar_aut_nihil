@@ -4830,18 +4830,18 @@ presentations = presentations_wse2 + [
     # (try_end),
     (try_begin),##punitive tax for not being married
         (neg|troop_slot_ge, "trp_player", slot_troop_spouse, 1),
-        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
         (eq, "$edict2", 1),
         (troop_slot_ge, "trp_player", slot_troop_renown, 200),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_1"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_2"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_2_1"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_3"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_4"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_5"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_6"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_8"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_9"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_dacian"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_celtic"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_caledonian"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_sarmatian"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_germanic"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_caucasian"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_parthian"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_judean"),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_bosporan"),
         (val_add, ":num_lines", 1), #
     (try_end),
 
@@ -4882,7 +4882,7 @@ presentations = presentations_wse2 + [
         (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
         (assign, ":player_tax_faction", "$players_kingdom"),
     (else_try),
-        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
         (assign, ":score_to_beat", 0),
         (try_for_range, ":kingdom", npc_kingdoms_begin, npc_kingdoms_end),
             (faction_slot_eq, ":kingdom", slot_faction_state, sfs_active),
@@ -9460,7 +9460,7 @@ presentations = presentations_wse2 + [
     ##Party info:
     (try_begin),
         (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
-        (neg|is_between, ":culture", "fac_culture_1", "fac_player_faction"),
+        (neg|is_between, ":culture", "fac_culture_dacian", "fac_player_faction"),
         (display_message, "@ERROR: You have no valid culture! Choose a culture in the 'Select a culture menu' under the reports menu!", message_negative),
     (try_end),
 
@@ -10578,7 +10578,7 @@ presentations = presentations_wse2 + [
     (val_sub, ":cur_y", 25),
 
     (try_begin),
-        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+        (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
         (str_store_string, s1, "@This includes Vexilarius, Aquilifer, Tribunus and Primus Pilus."),
     (else_try),
         (str_store_string, s1, "@This includes all kinds of Standard Bearer."),
@@ -11264,7 +11264,7 @@ presentations = presentations_wse2 + [
           (assign, "$temp", 0),
           (store_party_size_wo_prisoners, ":size", "p_main_party"),
           (ge, ":size", 40),
-          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+          (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
           (jump_to_menu, "mnu_camp_action_rest_fort"),
           #(troop_set_slot, "trp_global_variables", g_player_trench, 1),
         (else_try),
@@ -20467,7 +20467,7 @@ presentations = presentations_wse2 + [
     (overlay_set_size, "$g_presentation_obj_27", pos1),
 
     (try_begin),
-        (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
+        (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_roman"),
         (str_store_string, s12, "@officers"),
     (else_try),
         (str_store_string, s12, "@nobles"),
@@ -20531,7 +20531,7 @@ presentations = presentations_wse2 + [
 
     # (store_sub, ":y", 580, 15),
     # (try_begin),
-    #     (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
+    #     (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_roman"),
     #     (create_text_overlay, reg1, "@Lex militaris: reduces recruits by one quarter", tf_left_align),
     #     (position_set_x, pos1, 40),
     #     (position_set_y, pos1, ":y"),
@@ -20736,7 +20736,7 @@ presentations = presentations_wse2 + [
         (try_end),
 
         # (try_begin),
-        #     (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_8"),
+        #     (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_judean"),
         #     (create_text_overlay, reg1, "@Custom Troops:", 0),
         #     (overlay_set_color, reg1, 0x000000), #Black se ve bien
         #     (overlay_set_position, reg1, pos1),
@@ -22032,7 +22032,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_1"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_dacian"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -22125,7 +22125,7 @@ presentations = presentations_wse2 + [
     (ti_on_presentation_event_state_change,
       [
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_1"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_dacian"),
       ]),
   ]),
   ("upgrade_tree_2", 0, mesh_load_window, [
@@ -22134,7 +22134,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_2"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_celtic"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -22266,7 +22266,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_2"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_celtic"),
     ]),
 ]),
   ("upgrade_tree_2_1", 0, mesh_load_window, [
@@ -22275,7 +22275,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_2_1"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_caledonian"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -22407,7 +22407,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_2_1"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_caledonian"),
     ]),
 ]),
   ("upgrade_tree_3", 0, mesh_load_window, [
@@ -22416,7 +22416,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_3"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_sarmatian"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -22519,7 +22519,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_3"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_sarmatian"),
     ]),
 ]),
 
@@ -22529,7 +22529,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_4"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_germanic"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -22641,7 +22641,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_4"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_germanic"),
     ]),
 ]),
 
@@ -22651,7 +22651,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_5"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_caucasian"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -22775,7 +22775,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_5"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_caucasian"),
     ]),
 ]),
 
@@ -22784,7 +22784,7 @@ presentations = presentations_wse2 + [
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
-    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_6"),
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_parthian"),
 
     # clear the string globals that we'll use
     (str_clear, s0),
@@ -22931,7 +22931,7 @@ presentations = presentations_wse2 + [
 
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":object"),
-    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_6"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_parthian"),
   ]),
 ]),
 
@@ -22941,7 +22941,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_7"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_roman"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23061,7 +23061,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_7"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_roman"),
     ]),
 ]),
 
@@ -23071,7 +23071,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_8"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_judean"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23274,7 +23274,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_8"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_judean"),
     ]),
 ]),
 
@@ -23284,7 +23284,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_9"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_bosporan"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23382,7 +23382,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_9"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_bosporan"),
       ]),
  ]),
   ("upgrade_tree_10", 0, mesh_load_window, [
@@ -23391,7 +23391,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_10"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_arabian"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23474,7 +23474,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_10"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_arabian"),
       ]),
 ]),
 
@@ -23484,7 +23484,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_11"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_berber"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23594,7 +23594,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_11"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_berber"),
       ]),
 ]),
   # Mercenaries
@@ -23604,7 +23604,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_12"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_garmantian"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23715,7 +23715,7 @@ presentations = presentations_wse2 + [
     (ti_on_presentation_event_state_change,
       [
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_12"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_garmantian"),
       ]),
   ]),
  ("upgrade_tree_13", 0, mesh_load_window, [
@@ -23724,7 +23724,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_13"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_nubian"),
 
 
         # clear the string globals that we'll use
@@ -23803,8 +23803,8 @@ presentations = presentations_wse2 + [
       # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1610),##45 space for x
      # (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1610),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_sarranid_horseman", 60, 1310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_garamantien_noble_horseman", 210, 1310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_garamantian_horseman", 60, 1310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_garamantian_noble_horseman", 210, 1310),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_gaetuli_horseman", 560, 1310),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_gaetuli_noble_horseman", 710, 1310),
@@ -23874,7 +23874,7 @@ presentations = presentations_wse2 + [
 
     (ti_on_presentation_event_state_change,[
       (store_trigger_param_1, ":object"),
-      (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_13"),
+      (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_nubian"),
     ]),
 ]),
 
@@ -23883,7 +23883,7 @@ presentations = presentations_wse2 + [
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
-    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_14"),
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_saka"),
 
     # clear the string globals that we'll use
     (str_clear, s0),
@@ -23975,7 +23975,7 @@ presentations = presentations_wse2 + [
 
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":object"),
-    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_14"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_saka"),
   ]),
 ]),
 ##########TROOP TREE END
@@ -34423,7 +34423,7 @@ presentations = presentations_wse2 + [
                 # (display_message,"@The merchant sells this items. Buy it from him instead of ordering it to be crafted!",0x888888),#grey
             # (else_try),
                 # (neg|quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
-                # (neg|item_has_faction, "$selected_item", "fac_culture_1"),
+                # (neg|item_has_faction, "$selected_item", "fac_culture_dacian"),
                 # (item_has_faction, "$selected_item", "fac_minor_kingdoms_end"),
                 # (display_message,"@Greek items are locked. You need to find Pavel to activate it!",0x888888),#grey
             # (else_try),
@@ -34612,7 +34612,7 @@ presentations = presentations_wse2 + [
         (assign, ":c1", 1),
         (try_begin),
             (neg|quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
-            (neg|item_has_faction, ":item", "fac_culture_1"),
+            (neg|item_has_faction, ":item", "fac_culture_dacian"),
             (item_has_faction, ":item", "fac_minor_kingdoms_end"),
             # (display_message,"@Greek items are locked. You need to find Pavel to activate it!",0x888888),#grey
             (assign, ":c1", 0),
@@ -35536,7 +35536,7 @@ presentations = presentations_wse2 + [
         (eq, ":c1", 1),
         (assign, ":c1", 0),
         (try_begin),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
             (this_or_next|is_between, ":item", roman_noble_horses_begin, roman_noble_horses_end),
             (this_or_next|is_between, ":item", camels_begin, camels_end),
             (this_or_next|is_between, ":item", roman_horses_begin, roman_horses_end),
@@ -35587,8 +35587,8 @@ presentations = presentations_wse2 + [
             (is_between, ":item", ballista_begin, ballista_end),
             (assign, ":c1", 1),
         (else_try),
-            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_6"),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_5"),
+            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_parthian"),
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_caucasian"),
             (this_or_next|is_between, ":item", parthian_horses_begin, parthian_horses_end),
             (this_or_next|is_between, ":item", camels_begin, camels_end),
             (this_or_next|is_between, ":item", steppe_horses_begin, steppe_horses_end),
@@ -35654,8 +35654,8 @@ presentations = presentations_wse2 + [
 
             (assign, ":c1", 1),
         (else_try),
-            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_8"),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_10"),
+            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_judean"),
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_arabian"),
             (this_or_next|is_between, ":item", parthian_horses_begin, parthian_horses_end),
             (this_or_next|is_between, ":item", camels_begin, camels_end),
             (this_or_next|is_between, ":item", roman_horses_begin, roman_horses_end),
@@ -35718,9 +35718,9 @@ presentations = presentations_wse2 + [
             (assign, ":c1", 1),
 
         (else_try),
-            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_4"),
-            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_2_1"),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_2"),
+            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_germanic"),
+            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_caledonian"),
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_celtic"),
             (this_or_next|is_between, ":item", roman_noble_horses_begin, roman_noble_horses_end),
             (this_or_next|is_between, ":item", donkeys_begin, donkeys_end),
             (this_or_next|is_between, ":item", generic_horses_begin, generic_horses_end),
@@ -35765,7 +35765,7 @@ presentations = presentations_wse2 + [
             (assign, ":c1", 1),
 
         (else_try),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_1"),
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_dacian"),
 
             (this_or_next|is_between, ":item", roman_noble_horses_begin, roman_noble_horses_end),
             (this_or_next|is_between, ":item", steppe_horses_begin, steppe_horses_end),
@@ -35813,9 +35813,9 @@ presentations = presentations_wse2 + [
             (assign, ":c1", 1),
 
         (else_try),
-            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_9"),
-            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_14"),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_3"),
+            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_bosporan"),
+            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_saka"),
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_sarmatian"),
 
             (this_or_next|is_between, ":item", parthian_horses_begin, parthian_horses_end),
             (this_or_next|is_between, ":item", steppe_horses_begin, steppe_horses_end),
@@ -35868,9 +35868,9 @@ presentations = presentations_wse2 + [
             (assign, ":c1", 1),
 
         (else_try),
-            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_13"),
-            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_11"),
-            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_12"),
+            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_nubian"),
+            (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_berber"),
+            (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_garmantian"),
             (this_or_next|is_between, ":item", camels_begin, camels_end),
             (this_or_next|is_between, ":item", roman_horses_begin, roman_horses_end),
             (this_or_next|is_between, ":item", generic_horses_begin, generic_horses_end),
@@ -37312,7 +37312,7 @@ presentations = presentations_wse2 + [
             (this_or_next|le, ":peasants", 0),
             (eq, reg4, 0),
             (try_begin),
-                (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
+                (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_roman"),
                 (str_store_string, s4, "@officers"),
             (else_try),
                 (str_store_string, s4, "@nobles"),
@@ -39285,7 +39285,7 @@ presentations = presentations_wse2 + [
             (str_store_string, s0, ":string"),
         (else_try),
             (faction_get_slot, ":culture", ":npc_faction", slot_faction_culture),
-            (store_sub, ":string", ":culture", "fac_culture_1"),
+            (store_sub, ":string", ":culture", "fac_culture_dacian"),
             (val_add, ":string", "str_culture_1"),
             (str_store_string, s0, ":string"),
             (str_store_faction_name, s2, ":npc_faction"),
@@ -39669,7 +39669,7 @@ presentations = presentations_wse2 + [
         (str_store_faction_name, s1, ":culture"),
         (overlay_add_item, "$g_presentation_obj_region", "@{s1}"),
     (try_end),
-    (store_sub, ":value", "$background_answer_4", "fac_culture_1"),
+    (store_sub, ":value", "$background_answer_4", "fac_culture_dacian"),
     (overlay_set_val, "$g_presentation_obj_region", ":value"),
     (val_sub, ":cur_y", 40),
 
@@ -40079,7 +40079,7 @@ presentations = presentations_wse2 + [
     (else_try), ####### Culture #######
         (eq, ":object", "$g_presentation_obj_region"),
         (assign, "$g_presentation_obj_region", ":value"),
-        (store_add, "$background_answer_4", ":value", "fac_culture_1"),
+        (store_add, "$background_answer_4", ":value", "fac_culture_dacian"),
         (start_presentation, "prsnt_mcc_character_creation"),
     (try_end),
   ]),
@@ -40554,7 +40554,7 @@ presentations = presentations_wse2 + [
                 (set_jump_mission,"mt_ship_battle"),
                   # (try_begin),
                   # (store_faction_of_party, ":fac","$g_enemy_party"),
-                  # (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_7"),
+                  # (faction_slot_eq, ":fac", slot_faction_culture, "fac_culture_roman"),
                 (jump_to_scene, "scn_sea_roman"),
                   # (else_try),
                   # (jump_to_scene, "scn_sea_barbarian"),

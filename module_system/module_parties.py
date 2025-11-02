@@ -181,7 +181,9 @@ parties = [
 ("castle_69", "Shamakha", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (159.49, 65.53), []),
 ("castle_70", "Alashkert", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (124.49, 44.53), []),
 ("castle_71", "Phanagoria", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (61.44, 83.37), []),
-("castle_72", "Sebatum", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-117.44, 71.37), []),
+
+("castle_72", "Virunum", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-106.6, 74.32), []),
+
 ("castle_73", "Veldidena", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-130.03, 76.58), []),
 ("castle_74", "Istakhr", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (244.14, -24.25), []),
 ("castle_75", "Tabae", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (235.91, 1.25), []),
@@ -386,7 +388,9 @@ parties = [
 ("village_192", "Viadrus", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-95.8, 110.14), [], 40),
 ("village_193", "Carini", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-124.18, 133), [], 40),
 ("village_194", "Usbium", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-105.71, 97.38), [], 40),
-("village_195", "Virunum", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-98.51, 77.1), [], 40),
+
+("village_195", "Poetovio", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-91.8, 74.3), [], 60),
+
 ("village_196", "Biolindum", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-199.79, 59.38), [], 40),
 ("village_197", "Tolosa", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-205.92, 42.29), [], 40),
 ("village_198", "Hierapolis", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (101.3, -1.49), [], 40),
@@ -431,7 +435,9 @@ parties = [
 ("village_237", "Kacheti", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (138.6, 77.32), [], 176),
 ("village_238", "Gandzak", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (137.6, 61.32), [], 176),
 ("village_239", "Gorgippia", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (68.6, 80.32), [], 176),
-("village_240", "Teurnia", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-106.6, 74.32), [], 176),
+
+("village_240", "Teurnia", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-117.44, 71.37), [], 170),
+
 ("village_241", "Brigantium", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-138.49, 74.45), [], 176),
 ("village_242", "Ptolemais", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (63.49, -113.45), [], 176),
 ("village_243", "Darab-gird", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (260.49, -31.45), [], 176),
@@ -448,6 +454,7 @@ parties = [
 ("village_254", "Gurgan", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (219.71, 57.59), [], 56),
 ("village_255", "Bampur", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (303.71, -7.59), [], 134),
 ("village_256", "Ghazwin", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (186.89, 23.33), [], 203),
+("village_257", "Arawa", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (203.63, -20.45), [], 195),
 
 ("salt_mine", "Salt Mine", icon_village_barbarian|pf_village|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (14.2, -31), []),
 ("four_ways_inn", "Four Ways Inn", icon_village_barbarian|pf_village|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (4.8, -39.599998), []),

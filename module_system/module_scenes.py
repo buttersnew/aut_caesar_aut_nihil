@@ -188,10 +188,10 @@ scenes = [
   ("village_parthian_3",sf_generate,"none", "none",(0,0),(100,100),-100,"0x00000000a000050000091e4b0000683a00006fbb0000640c",[],[],"outer_terrain_steppe"),
   #end parthian villages
 
-  #fac_culture_2,fac_culture_1
+  #fac_culture_celtic,fac_culture_dacian
   ("village_7", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000023009629a0005615800005564000023590000579e",[], [], "outer_terrain_plain"),
   ("village_19", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002b00000000006e5be00008f330000e9130000533d",[], [], "outer_terrain_plain"),
-  #fac_culture_1 only
+  #fac_culture_dacian only
   ("village_95", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002314008e300098a6300005d7100001aac00005cb6",[], [], "outer_terrain_plain_2"),
 
   #Roman villages begin
@@ -202,14 +202,14 @@ scenes = [
   ("village_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000030081763000589620000338e00004f2c00005cfb",[], [], "outer_terrain_plain"),
   #Roman villages end
 
-  #fac_culture_3
+  #fac_culture_sarmatian
   ("village_42", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000220000500000811ff000072770000522d00001d47",[], [], "outer_terrain_steppe"),
   ("village_100", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000220000500000811ff000072770000522d00001d47",[], [], "outer_terrain_steppe"),
 
-  #fac_culture_5
+  #fac_culture_caucasian
   ("village_44", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001200513940005314c00001f6d00006d7700006698",[], [], "outer_terrain_steppe"),
 
-  #fac_culture_4
+  #fac_culture_germanic
   ("village_98", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000023000050000081204000034c4000020f200000e60",[], [], "outer_terrain_plain"),
   ("village_74", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013002541c00062d8b00000a01000068cb00006d9b",[], [], "outer_terrain_plain"),
 

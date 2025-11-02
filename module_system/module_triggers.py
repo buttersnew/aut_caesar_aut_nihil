@@ -129,7 +129,7 @@ triggers = [
     (ge, ":g", 200000),
     (troop_slot_ge, "trp_global_variables", g_number_of_lat, 5),
     (troop_slot_ge, "trp_player", slot_troop_renown, 200),
-    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
     (neg|is_between,"$players_kingdom", kingdoms_begin,kingdoms_end),
     (check_quest_active, "qst_blank_quest_19"),
     (check_quest_active, "qst_gain_renown"),
@@ -227,7 +227,7 @@ triggers = [
     (this_or_next|eq, "$g_campaign_type", g_campaign_king),
     (this_or_next|eq, "$g_campaign_type", g_campaign_lord),
     (eq, "$g_campaign_type", g_campaign_sandbox),
-    #(neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+    #(neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
 ],[
     (store_current_hours, ":hours"),
     (call_script, "script_game_get_date_text", 0, ":hours"),
@@ -336,7 +336,7 @@ triggers = [
 (48, 0, ti_once, [
     (neq, "$g_player_is_captive", 1),
     (eq, "$enlisted_party", -1),#not freelancing
-    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
     (troop_slot_ge, "trp_player", slot_troop_renown, 400),
     (store_troop_gold, ":gold", "trp_player"),
     (ge, ":gold", 40000),

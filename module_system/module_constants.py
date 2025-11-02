@@ -2332,7 +2332,7 @@ secret_signs_begin = "str_secret_sign_1"
 secret_signs_end = countersigns_begin
 
 ##diplomacy start+
-cultures_begin = "fac_culture_1"
+cultures_begin = "fac_culture_dacian"
 cultures_end   = "fac_player_faction"
 ##diplomacy end+
 
@@ -4021,6 +4021,8 @@ g_slave_contract = 81
 
 g_acan_version = 82
 
+g_adriabane_intro = 83
+
 # Load version from repository `version.txt` if present and convert to an integer
 # by removing any non-numeric characters (dots, hyphens, letters). Example:
 #  "1.0.0.7-beta" -> "1007" -> 1007
@@ -4128,7 +4130,9 @@ p_asia_chor = 55
 
 p_asia_osreon = 56
 
-p_provinces_end = p_asia_osreon + 1
+p_adiabene = 57
+
+p_provinces_end = p_adiabene + 1
 
 
 #new province system:

@@ -3254,7 +3254,7 @@ dialogs =[
     (this_or_next|eq, "$g_talk_troop", "trp_hispanic_bandit"),
     (this_or_next|eq, "$g_talk_troop", "trp_egyptian_infantry_heavy"),
     (this_or_next|eq, "$g_talk_troop", "trp_desert_bandit"),
-    (this_or_next|eq, "$g_talk_troop", "trp_sarranid_horseman"),
+    (this_or_next|eq, "$g_talk_troop", "trp_garamantian_horseman"),
     (this_or_next|eq, "$g_talk_troop", "trp_meroe_archers"),
     (this_or_next|eq, "$g_talk_troop", "trp_gaetuli_horseman"),
     (this_or_next|eq, "$g_talk_troop", "trp_judean_rebel"),
@@ -8341,7 +8341,7 @@ dialogs =[
 "werdheri_talk_1",[]],
 
 [anyone|plyr,"werdheri_talk_1",[
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
   (eq, "$g_talk_troop_met", 0),
 ],
 "Are you writing? You seem to be the most educated German I ever encountered!",
@@ -19234,7 +19234,7 @@ dialogs =[
 "commander_barracks_talk",[]],
 
 [trp_commander_barracks, "start",[
-  (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7")
+  (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_roman")
 ], "Ave! What can I do for you?",
 "commander_barracks_talk",[]],
 
@@ -19256,13 +19256,13 @@ dialogs =[
 [],"What are you actually doing?", "commander_barracks_talk_explain",[]],
 
 [anyone, "commander_barracks_talk_explain",
-[(faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7")],
+[(faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_roman")],
 "I am the commander of this small castra. My tasks are to train new recruits for Rome, and equipment them properly.",
 "commander_barracks_pretalk",[]],
 
 [anyone, "commander_barracks_talk_explain",[
-  (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_6"),
-  (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_5"),
+  (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_parthian"),
+  (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_caucasian"),
 ],
 "I am the commander of this small fortress. My tasks are to train new recruits and equipment them properly.",
 "commander_barracks_pretalk",[]],
@@ -19273,7 +19273,7 @@ dialogs =[
 "commander_barracks_pretalk",[]],
 
 [anyone|plyr, "commander_barracks_talk",[
-  (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_7"),
+  (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_roman"),
 ],"I would like to purchase equipment.",
 "commander_barracks_talk_equipment",[]],
 
@@ -19298,15 +19298,15 @@ dialogs =[
 
 # [anyone, "commander_barracks_talk_equipment_shields",[
 #   (troop_clear_inventory, "$g_talk_troop"),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_one_handed_wpn, 5),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_two_handed_wpn, 5),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_polearm, 5),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_shield, 6),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_bow, 2),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_crossbow, 3),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_thrown, 3),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_arrows, 1),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_bolts, 3),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_one_handed_wpn, 5),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_two_handed_wpn, 5),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_polearm, 5),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_shield, 6),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_bow, 2),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_crossbow, 3),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_thrown, 3),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_arrows, 1),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_bolts, 3),
 # ],"I show you what I have.",
 # "commander_leave",[
 #   (change_screen_trade),
@@ -19314,10 +19314,10 @@ dialogs =[
 
 # [anyone, "commander_barracks_talk_equipment_stuff",[
 #   (troop_clear_inventory, "$g_talk_troop"),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_body_armor, 16),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_head_armor, 16),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_foot_armor, 8),
-#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_7", itp_type_hand_armor, 4),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_body_armor, 16),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_head_armor, 16),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_foot_armor, 8),
+#   (troop_add_merchandise_with_faction, "$g_talk_troop", "fac_culture_roman", itp_type_hand_armor, 4),
 # ],"I show you what I have.",
 # "commander_leave",[
 #   (change_screen_trade),
@@ -19329,7 +19329,7 @@ dialogs =[
 "close_window",[]],
 
 [anyone|plyr, "commander_barracks_talk",[
-  (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (neg|troop_slot_eq, "trp_players_skirmisher", 1, 1),##legion is created
   (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
   (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
@@ -19358,7 +19358,7 @@ dialogs =[
 ]],
 
 [anyone|plyr, "commander_barracks_talk",[
-  (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (neg|troop_slot_eq, "trp_players_cavalry", 1, 1),##legion is created
   (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
   (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
@@ -19387,7 +19387,7 @@ dialogs =[
 ]],
 
 [anyone|plyr, "commander_barracks_talk",[
-  (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (neg|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (neg|troop_slot_eq, "trp_players_infantry", 1, 1),##legion is created
   (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
   (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
@@ -19416,7 +19416,7 @@ dialogs =[
 ]],
 
 [anyone|plyr, "commander_barracks_talk",[
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (neg|troop_slot_eq, "trp_players_aux_cav", 1, 1),##legion is created
   # (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
   (ge, "$g_is_emperor", 1),
@@ -19456,7 +19456,7 @@ dialogs =[
 ]],
 
 [anyone|plyr, "commander_barracks_talk",[
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (neg|troop_slot_eq, "trp_players_aux_inf", 1, 1),##legion is created
   # (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
   (ge, "$g_is_emperor", 1),
@@ -19469,7 +19469,7 @@ dialogs =[
 "commander_barracks_pretalk",[]],
 
 [anyone|plyr, "commander_barracks_talk",[
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (neg|troop_slot_eq, "trp_players_legion", 1, 1),##legion is created
   (neg|party_slot_eq, "$current_town", slot_town_lord, "trp_player"),# not lord
   (ge, "$g_is_emperor", 1), # but emperor
@@ -19477,7 +19477,7 @@ dialogs =[
 "commander_barracks_talk_legion",[]],
 
 [anyone|plyr, "commander_barracks_talk",[
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (neg|troop_slot_eq, "trp_players_legion", 1, 1),##legion is created
   (party_slot_eq, "$current_town", slot_town_lord, "trp_player"), # lord of it
 ],"I would like to found my own legion.",
@@ -19877,7 +19877,7 @@ dialogs =[
   (str_clear, s15),
   (try_begin),
     (eq, "$g_campaign_type", g_campaign_king),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_6"),# is parthian king
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_parthian"),# is parthian king
     (str_store_string, s15, "@ your father"),
   (try_end),
 ],"As I am bold, I just grabbed some useful things together and ran away. I managed to find a merchant whose wife needed a maid. The merchant was from Parthia and just wanted to leave town to return to Mesopotamia."
@@ -19900,7 +19900,7 @@ dialogs =[
 
 [anyone|plyr, "gardens_talk_task_5",[
   (eq, "$g_campaign_type", g_campaign_king),
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_6"),# is parthian king
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_parthian"),# is parthian king
 ],"Interesting. I heard rumors and tales about this incident. However, I am not sure what to think about you. You wanted to oust my mother, which would have meant that I wouldn't have inherited the throne",
 "gardens_talk_task_6_1",[]],
 
@@ -19934,7 +19934,7 @@ dialogs =[
 
 [anyone|plyr, "gardens_talk_task_9",[
   (eq, "$g_campaign_type", g_campaign_king),
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_6"),# is parthian king
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_parthian"),# is parthian king
 ],"Very well. I will forget what happened in the past. What do you want?",
 "gardens_talk_task_10",[]],
 
@@ -20018,7 +20018,7 @@ dialogs =[
 
 [anyone|plyr, "gardens_talk_1",[
   (eq, "$g_campaign_type", g_campaign_king),
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_6"),# is parthian king
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_parthian"),# is parthian king
 ],"This are the ruins of Babylon and I am the Shah!",
 "gardens_talk_1_3",[
   (assign, "$temp", 1),
@@ -20053,7 +20053,7 @@ dialogs =[
 
 [anyone|plyr, "gardens_talk_1",[
   (eq, "$g_campaign_type", g_campaign_king),
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_6"),# is parthian king
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_parthian"),# is parthian king
   (eq, "$temp", 1),
   (eq, "$temp1", 1),
 ],"And what's your name? Why are you living in the ruins of old Babylon? Why are you banished?",
@@ -20063,7 +20063,7 @@ dialogs =[
   (assign, ":block", 0),
   (try_begin),
     (eq, "$g_campaign_type", g_campaign_king),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_6"),# is parthian king
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_parthian"),# is parthian king
     (assign, ":block", 1),
   (try_end),
   (eq, ":block", 0),
@@ -20336,14 +20336,14 @@ dialogs =[
 #start hire of rome talk	END
 
 ###########WLOD ADVENTURES II
-[trp_sarranid_horseman,"start",[
+[trp_garamantian_horseman,"start",[
   (check_quest_active, "qst_wlodowiecus_adventure_2"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 5),
   (store_current_scene, ":scene"),
   (eq, ":scene", "scn_subsaharan_african_village"),
 ],"Let's celebrate our victory!",
 "close_window",[]],
-[trp_sarranid_horseman,"start",[
+[trp_garamantian_horseman,"start",[
   # (check_quest_active, "qst_wlodowiecus_adventure_2"),
   # (quest_slot_eq, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 5),
   (store_current_scene, ":scene"),
@@ -22505,7 +22505,7 @@ dialogs =[
 #TAVERN DRUNK DIALOGS
 [trp_belligerent_drunk, "start",[
   (is_between, "$g_encountered_party", walled_centers_begin, walled_centers_end),
-  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_7"),
+  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_roman"),
   (troop_slot_eq, "trp_global_variables", g_flavor_event_4, 0),
   (call_script, "script_deactivate_tavern_attackers"),
 ],"Oh, the agony! The injustice of it all! Curses on all bandits and their brutish fists.",
@@ -23251,7 +23251,7 @@ dialogs =[
  (call_script, "script_change_player_relation_with_center", "p_town_6", -30),
  (try_for_range, ":lord", active_npcs_begin, active_npcs_end),
    (neg|troop_slot_eq, ":lord", slot_troop_occupation, dplmc_slto_dead),
-   (troop_slot_eq, ":lord", slot_troop_culture, "fac_culture_7"),
+   (troop_slot_eq, ":lord", slot_troop_culture, "fac_culture_roman"),
    (store_faction_of_troop, ":fac", ":lord"),
    (eq, ":fac", "$players_kingdom"),
    (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_goodnatured),
@@ -23280,7 +23280,7 @@ dialogs =[
  (call_script, "script_change_player_relation_with_center", "p_town_6", -6),
  (try_for_range, ":lord", active_npcs_begin, active_npcs_end),
    (neg|troop_slot_eq, ":lord", slot_troop_occupation, dplmc_slto_dead),
-   (troop_slot_eq, ":lord", slot_troop_culture, "fac_culture_7"),
+   (troop_slot_eq, ":lord", slot_troop_culture, "fac_culture_roman"),
    (store_faction_of_troop, ":fac", ":lord"),
    (eq, ":fac", "$players_kingdom"),
    (this_or_next|troop_slot_eq, ":lord", slot_lord_reputation_type, lrep_goodnatured),
@@ -24723,13 +24723,13 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
 
 [anyone|plyr, "member_direct_send_message_to_realm_type",
 [
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
   (ge, ":relation", 0),
-  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_1"),
-  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_2"),
-  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_3"),
-  (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_4"),
+  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_dacian"),
+  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_celtic"),
+  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_sarmatian"),
+  (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_germanic"),
 ],
 "That I want to ask about a foederati contract.", "member_emissary_dispatch",
 [(assign, "$g_initiative_selected", npc_mission_foederati_request)]],
@@ -24740,8 +24740,8 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
   (lt, ":relation", 0),
   (assign, reg0, 0),
   (try_begin),
-      (faction_slot_eq, "fac_player_supporters_faction", slot_faction_culture, "fac_culture_7"),
-      (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_7"),
+      (faction_slot_eq, "fac_player_supporters_faction", slot_faction_culture, "fac_culture_roman"),
+      (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_roman"),
       (assign, reg0, 1),
   (try_end),
   (eq, reg0, 0),
@@ -25137,7 +25137,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 [anyone|plyr,"send_message_to_leader_2",[
 
 (try_begin),
-  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+  (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (str_store_string, s33, "@from service in the Roman army."),
 (else_try),
   (str_store_string, s33, "@being his vassal"),
@@ -25384,20 +25384,20 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
     (try_end),
     (eq, ":c", 1),
     (try_begin),
-      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_4"),
+      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_germanic"),
       (store_random_in_range, ":new_dress", germanic_dresses_noble_begin, germanic_dresses_noble_end),
     (else_try),
-      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_2"),
-      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_2_1"),
+      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_celtic"),
+      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_caledonian"),
       (store_random_in_range, ":new_dress", briton_dresses_begin, briton_dresses_end),
     (else_try),
-      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_7"),
-      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_9"),
+      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_roman"),
+      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_bosporan"),
       (store_random_in_range, ":new_dress", roman_dresses_noble_begin, roman_dresses_noble_end),
     (else_try),
-      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_5"),
-      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_6"),
-      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_8"),
+      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_caucasian"),
+      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_parthian"),
+      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_judean"),
       (store_random_in_range, ":new_dress", eastern_dresses_noble_begin, eastern_dresses_noble_end),
     (else_try),
       (store_random_in_range, ":new_dress", barbarian_dresses_noble_begin, barbarian_dresses_noble_end),
@@ -25417,13 +25417,13 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
     (try_end),
     (eq, ":c", 1),
     (try_begin),
-      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_7"),
-      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_9"),
+      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_roman"),
+      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_bosporan"),
       (assign, ":new_boots", "itm_caligea"),
     (else_try),
-      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_5"),
-      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_6"),
-      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_8"),
+      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_caucasian"),
+      (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_parthian"),
+      (troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_judean"),
       (assign, ":new_boots", "itm_eastern_shoe_b"),
     (else_try),
       (assign, ":new_boots", "itm_celtic_boots"),
@@ -26765,57 +26765,57 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (try_end),
 
   (try_begin),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_1"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_dacian"),
     (troop_add_item, "$g_talk_troop", "itm_celtic_boots"),
     (troop_add_item, "$g_talk_troop", "itm_dacian_noble3"),
   (else_try),
-    (this_or_next|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_2"),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_2_1"),
+    (this_or_next|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_celtic"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_caledonian"),
     (troop_add_item, "$g_talk_troop", "itm_celtic_boots"),
     (troop_add_item, "$g_talk_troop", "itm_celtic_light_noble_3"),
   (else_try),
-    (this_or_next|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_9"),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_3"),
+    (this_or_next|faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_bosporan"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_sarmatian"),
     (troop_add_item, "$g_talk_troop", "itm_sarmatian_shoes"),
     (troop_add_item, "$g_talk_troop", "itm_sarmatian_light6"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_4"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_germanic"),
     (troop_add_item, "$g_talk_troop", "itm_celtic_boots"),
     (troop_add_item, "$g_talk_troop", "itm_germanic_noble_tunic_4"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_5"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_caucasian"),
     (troop_add_item, "$g_talk_troop", "itm_eastern_shoe_b"),
     (troop_add_item, "$g_talk_troop", "itm_armenian_tunic_4"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_6"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_parthian"),
     (troop_add_item, "$g_talk_troop", "itm_eastern_shoe_r"),
     (troop_add_item, "$g_talk_troop", "itm_parthian_tunic_1"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
     (troop_add_item, "$g_talk_troop", "itm_graves_simple_2"),
     (troop_add_item, "$g_talk_troop", "itm_roman_toga"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_8"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_judean"),
     (troop_add_item, "$g_talk_troop", "itm_graves_simple_2"),
     (troop_add_item, "$g_talk_troop", "itm_judean_tunic_3"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_10"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_arabian"),
     (troop_add_item, "$g_talk_troop", "itm_graves_simple_2"),
     (troop_add_item, "$g_talk_troop", "itm_arabian_tunic_2"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_11"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_berber"),
     (troop_add_item, "$g_talk_troop", "itm_graves_simple_2"),
     (troop_add_item, "$g_talk_troop", "itm_numidian_armor_3"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_12"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_garmantian"),
     (troop_add_item, "$g_talk_troop", "itm_graves_simple_2"),
     (troop_add_item, "$g_talk_troop", "itm_garmantian_armor_2"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_13"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_nubian"),
     (troop_add_item, "$g_talk_troop", "itm_graves_simple_2"),
     (troop_add_item, "$g_talk_troop", "itm_nubian_kilt_3"),
   (else_try),
-    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_14"),
+    (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_saka"),
     (troop_add_item, "$g_talk_troop", "itm_sarmatian_shoes"),
     (troop_add_item, "$g_talk_troop", "itm_sarmatian_light4"),
   (try_end),
@@ -31666,7 +31666,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (faction_get_slot, ":template", "$players_kingdom", slot_faction_reinforcements_a),
   (call_script, "script_get_cohort_info_to_s5", ":template", "$players_kingdom"),
   (try_begin),
-      (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+      (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
       (str_store_string, s6, "@Mounted troops."),
   (else_try),
       (str_store_string, s6, "@Low quality patrol."),
@@ -31685,7 +31685,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (faction_get_slot, ":template", "$players_kingdom", slot_faction_reinforcements_b),
   (call_script, "script_get_cohort_info_to_s5", ":template", "$players_kingdom"),
   (try_begin),
-      (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+      (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
       (str_store_string, s6, "@Low Quality foot soldiers."),
   (else_try),
       (str_store_string, s6, "@Medium quality patrol."),
@@ -31704,7 +31704,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (faction_get_slot, ":template", "$players_kingdom", slot_faction_reinforcements_c),
   (call_script, "script_get_cohort_info_to_s5", ":template", "$players_kingdom"),
   (try_begin),
-      (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_7"),
+      (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
       (str_store_string, s6, "@Medium Quality foot soldiers."),
   (else_try),
       (str_store_string, s6, "@An patrol of elite troops."),
@@ -33858,7 +33858,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 # (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
 # (neg|party_slot_eq, "$diplomacy_var", slot_center_culture, ":culture"),
-# (val_sub, ":culture","fac_culture_1"),
+# (val_sub, ":culture","fac_culture_dacian"),
 # (store_add, ":string", ":culture", "str_culture_1"),
 # (str_store_string, s44, ":string"),
 
@@ -35097,7 +35097,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
     (neq, "$g_is_emperor", 1),#not emperor
     (eq, "$players_kingdom", 0),#not already in a faction
     (ge, "$g_talk_troop_faction_relation", 0),#not at war
-    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"), # only roman
+    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"), # only roman
 ],"Dominus, I would like to enlist service in your army.",
 "attach_player",[]],
 
@@ -37048,7 +37048,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (store_repeat_object, ":faction_no"),
   (is_between, ":faction_no", npc_kingdoms_begin, npc_kingdoms_end),
   (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
-  (neg|faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_7"),# not Roman
+  (neg|faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_roman"),# not Roman
   (str_store_faction_name, s11, ":faction_no"),
 ],
 "{s11}", "dplmc_minister_persuade_lord_ask",
@@ -39054,10 +39054,10 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 (eq, "$g_is_emperor", 1),
 (store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
 (ge, ":relation", 0),
-(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_1"),
-(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_2"),
-(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_3"),
-(faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_4"),
+(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_dacian"),
+(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_celtic"),
+(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_sarmatian"),
+(faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_germanic"),
 (neg|faction_slot_eq, "$g_faction_selected", slot_faction_tributary_of, "$players_kingdom"),
 ],
 "That I want to ask about a foederati contract.", "minister_diplomatic_emissary",
@@ -39069,8 +39069,8 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (lt, ":relation", 0),
   (assign, reg0, 0),
   (try_begin),
-      (faction_slot_eq, "fac_player_supporters_faction", slot_faction_culture, "fac_culture_7"),
-      (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_7"),
+      (faction_slot_eq, "fac_player_supporters_faction", slot_faction_culture, "fac_culture_roman"),
+      (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_roman"),
       (assign, reg0, 1),
   (try_end),
   (eq, reg0, 0),
@@ -41596,7 +41596,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
     (lt, ":relation", -1),#they are at war
 
-    #(neg|faction_slot_eq, ":faction_b", slot_faction_culture, "fac_culture_7"),#not allowed for Romans
+    #(neg|faction_slot_eq, ":faction_b", slot_faction_culture, "fac_culture_roman"),#not allowed for Romans
     (store_add, ":slot_war_damage_inflicted_on_a", ":faction_a", slot_faction_war_damage_inflicted_on_factions_begin),
     (val_sub, ":slot_war_damage_inflicted_on_a", kingdoms_begin),
     (faction_get_slot, ":war_damage_inflicted_by_b", ":faction_b", ":slot_war_damage_inflicted_on_a"),
@@ -42502,7 +42502,7 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 "close_window",[]],
 
 [anyone,"player_hostage_surrender",[
-  (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_8"),
+  (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_judean"),
   (this_or_next|eq, "$g_encountered_party_faction", "fac_kingdom_17"),
   (eq, "$g_encountered_party_faction", "fac_kingdom_19"),
   (party_get_slot, ":town_lord", "$g_encountered_party", slot_town_lord),
@@ -42512,7 +42512,7 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 "close_window",[]],
 
 [anyone,"player_siege_ask_surrender",[
-  (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_8"),
+  (this_or_next|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_judean"),
   (this_or_next|eq, "$g_encountered_party_faction", "fac_kingdom_17"),
   (eq, "$g_encountered_party_faction", "fac_kingdom_19"),
 ],"Surrender? Why should we surrender to anyone? We will not yield to tyranny! Our cause is just, and we will fight to defend our land and our people, even if it means facing overwhelming odds."
@@ -42883,7 +42883,7 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 ######
 ###tributo chief
 [anyone,"player_siege_tributo",[
-  (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_8"),
+  (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_judean"),
   (neq, "$g_encountered_party_faction", "fac_kingdom_19"),
   (neq, "$g_siege_tribute_paid", "$current_town"),
   (str_clear, s4),
@@ -43497,6 +43497,41 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 	# (assign, "$cant_leave_encounter", 0),
 	# (assign, "$g_leave_encounter", 1),
 	# (change_screen_map),
+]],
+
+[trp_knight_6_5|plyr, "lord_talk", [
+  (troop_slot_eq, "trp_global_variables", g_adriabane_intro, 0),
+  (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_parthian"),
+],
+"Tell me, what is a Syrian king doing serving the Parthian Shahanshah?",
+"monobaz_explains_position", [
+  (troop_set_slot, "trp_global_variables", g_adriabane_intro, 1),
+]],
+
+[anyone, "monobaz_explains_position", [
+], "Adiabene is a kingdom with a long and proud history. But we are a small kingdom, caught between two titans: Rome to the west, and Parthia to the east. A wise king knows when to bend, lest his kingdom break. We pay tribute to the Shahanshah in Ctesiphon in exchange for his protection and our autonomy.",
+"monobaz_player_reaction", []],
+
+[anyone|plyr, "monobaz_player_reaction", [],
+"A pragmatic solution to a difficult problem. Your wisdom is clear.",
+"monobaz_reacts_to_respect", []],
+
+[anyone|plyr, "monobaz_player_reaction", [],
+"So, 'King' is just another word for 'slave' in your part of the world.",
+"monobaz_reacts_to_mockery", []],
+
+
+[anyone, "monobaz_reacts_to_respect", [
+], "-- He gives a slight, dignified nod. --^^You understand the realities of power. It is a rare quality. It is through such wisdom that a kingdom endures.",
+"lord_pretalk", [
+    (call_script, "script_change_player_relation_with_troop", "trp_knight_6_5", 5),
+]],
+
+[anyone, "monobaz_reacts_to_mockery", [
+], "-- His eyes narrow, and his hand rests on the hilt of his sword. --^^Choose your next words with care! A man who rules from a saddle may call it slavery. A man who rules from a throne calls it survival. I am not your enemy ... but do not mistake my prudence for weakness.",
+"lord_pretalk", [
+  (call_script, "script_change_player_relation_with_troop", "trp_knight_6_5", -10),
 ]],
 
 ##
@@ -49925,7 +49960,7 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 
 [anyone|plyr,"lord_recruit_2",[
     (eq, "$g_talk_troop_faction", "$players_kingdom"),
-    (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_7"),
+    (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_roman"),
     # (troop_get_slot, ":wealth", "$g_talk_troop", slot_troop_wealth),
     # (ge, ":wealth", 80000),
 ],
@@ -50054,7 +50089,7 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 
 [anyone|plyr, "lord_recruit_2",[
 (eq, "$g_talk_troop_faction", "$players_kingdom"),
-(faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_7"),
+(faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_roman"),
 (eq, "$g_is_emperor", 0),
 # (troop_get_slot, ":wealth", "$g_talk_troop", slot_troop_wealth),
 # (lt, ":wealth", 45000),
@@ -50165,7 +50200,7 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 
 [anyone|plyr, "lord_recruit_2",[
   (eq, "$g_talk_troop_faction", "$players_kingdom"),
-  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_7"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_roman"),
   (eq, "$g_is_emperor", 0),
   # (troop_get_slot, ":wealth", "$g_talk_troop", slot_troop_wealth),
   # (lt, ":wealth", 45000),
@@ -57280,8 +57315,8 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 ]],
 
 [anyone,"party_encounter_lord_hostile_ultimatum_surrender2",[
-  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_4"),
-  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_8"),
+  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_germanic"),
+  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_culture, "fac_culture_judean"),
   (ge, "$g_ally_strength", "$g_enemy_strength"),
   (assign, ":continue", 0),
   (troop_get_slot, ":rep", "$g_talk_troop", slot_lord_reputation_type),
@@ -57874,10 +57909,10 @@ And to think I would offer you a place among my nobles. Begone, beggar, before I
 [anyone,"lord_ask_enter_service",[(lt, "$g_talk_troop_effective_relation", -5)], "I accept oaths only from those I can trust to keep them, {playername}.", "lord_pretalk",[]],
 
 [anyone,"lord_ask_enter_service",[
-  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_1"),
-  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_2"),
-  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_3"),
-  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_4"),
+  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_dacian"),
+  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_celtic"),
+  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_sarmatian"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_germanic"),
 
   (faction_get_slot, ":fac_culture", "$g_talk_troop_faction", slot_faction_culture),
   (neg|troop_slot_eq, "trp_player", slot_troop_culture, ":fac_culture"),
@@ -60698,26 +60733,26 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 [anyone|plyr,"lord_talk",
 [
     (faction_get_slot, ":culture", "$g_talk_troop_faction", slot_faction_culture),
-    (eq, ":culture", "fac_culture_7"),
+    (eq, ":culture", "fac_culture_roman"),
     (troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
  ], "I must leave now. Ave atque Vale!", "lord_leave_prison",[]],
 [anyone|plyr,"lord_talk",
 [
     (faction_get_slot, ":culture", "$g_talk_troop_faction", slot_faction_culture),
-    (neq, ":culture", "fac_culture_7"),
+    (neq, ":culture", "fac_culture_roman"),
     (troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
  ], "I must leave now.", "lord_leave_prison",[]],
 [anyone|plyr,"lord_talk",
 [
     (faction_get_slot, ":culture", "$g_talk_troop_faction", slot_faction_culture),
-    (eq, ":culture", "fac_culture_7"),
+    (eq, ":culture", "fac_culture_roman"),
     (lt, "$g_talk_troop_faction_relation", 0),
     (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
  ], "This audience is over. I leave now. Ave atque Vale!", "lord_leave",[]],
 [anyone|plyr,"lord_talk",
 [
     (faction_get_slot, ":culture", "$g_talk_troop_faction", slot_faction_culture),
-    (neq, ":culture", "fac_culture_7"),
+    (neq, ":culture", "fac_culture_roman"),
     (lt, "$g_talk_troop_faction_relation", 0),
     (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
  ], "This audience is over. I leave now.", "lord_leave",[]],
@@ -60949,7 +60984,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   (ge, "$g_talk_troop_faction_relation", 0),
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
 	(try_begin),
-    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+    (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
 		(str_store_string, s40, "@Ave atque Vale!"),
 	(else_try),
 		(str_store_string, s40, "@Farewell!"),
@@ -64717,8 +64752,8 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ]],
 
 [anyone,"lady_rumors",[
-  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_7"),
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_roman"),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
   (quest_slot_eq, "qst_widow", slot_quest_target_faction, 0),#some slot which isnt used by quest
   (ge, "$g_talk_troop_relation", 0),
   (troop_slot_ge, "trp_player", slot_troop_renown, 200),
@@ -67603,7 +67638,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (neq, "$g_is_emperor", 1),#not emperor
   (eq, "$players_kingdom", 0),#not already in a faction
   (ge, "$g_talk_troop_faction_relation", 0),#not at war
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_7"), # only roman
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"), # only roman
 ],"I would like to enlist service in one of the Roman legions.",
 "entlist_service",[]],
 
@@ -68291,7 +68326,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (party_prisoner_stack_get_troop_id, ":troop_id", "p_main_party", ":i_stack"),
     (neg|troop_is_hero, ":troop_id"),
     (store_faction_of_troop, ":troop_faction", ":troop_id"),
-    (is_between, ":troop_faction", "fac_culture_1", kingdoms_end),
+    (is_between, ":troop_faction", "fac_culture_dacian", kingdoms_end),
     (store_relation, ":relation", ":troop_faction", ":faction"),
     (this_or_next|lt, ":relation", 0),
     (eq, ":troop_faction", fac_roman_rebells),
@@ -70521,19 +70556,19 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
 [anyone,"tavernkeeper_rumor",[], "{s4}", "tavernkeeper_rumor2",[
 (try_begin),
-    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
+    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_roman"),
     (quest_slot_eq, "qst_philosopher", slot_quest_current_state, 0),
     (store_random_in_range, ":r", 0, 10),
     (le, ":r", 3),
     (str_store_string, s4, "str_solus_rumor"),
 (else_try),
-    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
+    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_roman"),
     (quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 0),
     (store_random_in_range, ":r", 0, 10),
     (le, ":r", 3),
     (str_store_string, s4, "str_oliver_rumor"),
 (else_try),
-    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
+    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_roman"),
     (quest_slot_eq, "qst_bacchhus_quest", slot_quest_current_state, 0),
     (store_random_in_range, ":r", 0, 10),
     (ge, ":r", 7),
@@ -70545,7 +70580,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (party_slot_eq, "$current_town", slot_center_decree_curfew, 1),
     (str_store_string, s4, "@The townlord has issued a nightly curfew. Now I make less sales, because I don't have guests at night anymore. Hopefully he will revoke this useless decree. It has in no way reduced crime."),
 (else_try),
-	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_1"),
+	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_dacian"),
 	(store_random_in_range, ":r", 0, 12),
 	(try_begin),
 		(eq, ":r", 0),
@@ -70596,7 +70631,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
   (else_try),
 
-	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_2"),
+	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_celtic"),
 	(store_random_in_range, ":r", 0, 12),
 	(try_begin),
 		(eq, ":r", 0),
@@ -70646,8 +70681,8 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 	(try_end),
 
   (else_try),
-	(this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_3"),
-	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_9"),
+	(this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_sarmatian"),
+	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_bosporan"),
 	(store_random_in_range, ":r", 0, 12),
 	(try_begin),
 		(eq, ":r", 0),
@@ -70698,7 +70733,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
   (else_try),
 
-	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_4"),
+	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_germanic"),
 	(store_random_in_range, ":r", 0, 12),
 	(try_begin),
 		(eq, ":r", 0),
@@ -70747,9 +70782,9 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 		(str_store_string, s4, "@I haven't heard anything interesting recently."),
 	(try_end),
   (else_try),
-    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_6"),
-    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_5"),
-    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_8"),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_parthian"),
+    (this_or_next|party_slot_eq, "$current_town", slot_center_culture, "fac_culture_caucasian"),
+    (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_judean"),
 	(store_random_in_range, ":r", 0, 12),
 	(try_begin),
 		(eq, ":r", 0),
@@ -70800,7 +70835,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
   (else_try),
 
-	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),
+	(party_slot_eq, "$current_town", slot_center_culture, "fac_culture_roman"),
 	(store_random_in_range, ":r", 0, 12),
 	(try_begin),
 		(eq, ":r", 0),
@@ -75141,7 +75176,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
   (troop_slot_eq, "$g_talk_troop", slot_troop_recently_bribed, 0),
   (neg|party_slot_ge, "$current_town", slot_center_player_relation, 50),# bribes stop after some point
-  (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),# is Roman town
+  (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_roman"),# is Roman town
 
   (store_random_in_range, ":r", 0, 100),
   (store_add, ":chance", "$g_unrest", 20),
@@ -78060,7 +78095,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone|plyr,"village_elder_talk", [
   (party_get_slot, ":culture", "$current_town", slot_center_culture),
-  (is_between, ":culture", "fac_culture_1", "fac_culture_5"),
+  (is_between, ":culture", "fac_culture_dacian", "fac_culture_caucasian"),
   (party_slot_eq, "$current_town", slot_center_has_latifundium, 0),
 ],"I would like to buy land next to the village.", "barb_estate_talk",[]],
 
@@ -78160,7 +78195,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (assign, reg44, 50000),
   (try_begin),
     (ge, "$edict7", 1),
-    (party_slot_eq, "$current_town", slot_faction_culture, "fac_culture_7"),
+    (party_slot_eq, "$current_town", slot_faction_culture, "fac_culture_roman"),
     (val_add, reg44, 15000),
   (try_end),
 ],
@@ -78192,7 +78227,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone|plyr,"village_elder_talk",[
   (party_get_slot, ":culture", "$current_town", slot_center_culture),
-  (is_between, ":culture", "fac_culture_7", "fac_culture_10"),
+  (is_between, ":culture", "fac_culture_roman", "fac_culture_arabian"),
   (party_slot_eq, "$current_town", slot_center_has_latifundium, 0),
 ],"I would like to buy land next to the village.",
 "lad_talk",[]],
@@ -78284,7 +78319,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
   (troop_slot_eq, "$g_talk_troop", slot_troop_recently_bribed, 0),
   (neg|party_slot_ge, "$current_town", slot_center_player_relation, 50),# bribes stop after some point
-  (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_7"),# is Roman town
+  (party_slot_eq, "$current_town", slot_center_culture, "fac_culture_roman"),# is Roman town
 
   (store_random_in_range, ":r", 0, 100),
   (store_add, ":chance", "$g_unrest", 20),
@@ -80993,7 +81028,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone|plyr,"egy_rebel_good_player_reply",[
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_16"),# player is egyptian
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_egyptian"),# player is egyptian
 ],"I need your help fighting the Romans. Can you join my warband?",
 "egy_rebel_good_player_join",[]],
 
@@ -81063,7 +81098,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [party_tpl|pt_egyptian_rebels,"start",[
   (eq, "$g_encountered_party_template", "pt_egyptian_rebels"),#to fix bug in dialog
   (eq,"$talk_context",tc_party_encounter),
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_16"),# player is egyptian
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_egyptian"),# player is egyptian
   (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
   (lt, ":bandit_relation", 0),# player hostile with rebels
 ],"Look at this one. The face of a son of the Nile, but the stench of Rome hangs on them like a shroud. You eat Roman bread and drink Roman wine while your people starve. You are a collaborator, a disgrace to your ancestors.", "egy_rebel_hostile_player_reply",[
@@ -81183,7 +81218,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone|plyr,"judean_talk",[
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_8"),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_judean"),
 ],"I need your help fighting the Romans. Can you join my warband?",
 "judean_talk_join",[]],
 
@@ -81465,7 +81500,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "battle_reason_stated",[]],
 [party_tpl|pt_pictonen,"start",[
   (eq, "$g_encountered_party_template", "pt_pictonen"),#to fix bug in dialog
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_2_1"),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_caledonian"),
 ],
   "What do you want, friend?",
   "pict_talk",[]],
@@ -81481,18 +81516,18 @@ I will need 500 denarii.", "bardo_sing2",[]],
 []],
 
 [anyone|plyr,"pict_talk",[
-    (neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_2_1"),
+    (neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_caledonian"),
  ], "Die scum!", "close_window",[
   (call_script, "script_make_kingdom_hostile_to_player", "$g_encountered_party_faction", -3),
   (encounter_attack)]],
 
 [anyone|plyr,"pict_talk",[
-    (neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_2_1"),
+    (neg|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_caledonian"),
  ], "Who are you?", "picton_ask",[]],
 [anyone,"picton_ask",[], "We are pictish youths. Our tradition is to go out and fight. Before we can get married and grow children we must loot, pillage and kill. Only the danger of battle can make a man from a boy.", "pict_talk",[]],
 
 [anyone|plyr,"pict_talk",[
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_2_1"),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_caledonian"),
 ],"I offer you to join my warband. I promise much gold and loot!", "pict_join_1",
 []],
 
@@ -81572,7 +81607,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone|plyr,"furor_teutonicus_talk",[
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_4"),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_germanic"),
 ],"I offer you to join my shieldwall. I promise much gold and loot!", "furor_teutonicus_join_1",
 []],
 
@@ -83767,7 +83802,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (store_character_level, ":level", "trp_player"),
   (ge, ":level", 20),
   (party_slot_ge, "$g_encountered_party", slot_troop_player_relation, 0),
-  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_4"),
+  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_germanic"),
 ],
   "I heard about the young Werdheri. He is known as a strong warrior and tough fighter. However, now he has decided to hang his shield on the wall, put his sword in its scabbard, and started composing verses."
   +" Great warriors are sometimes also great skalds, but people wonder why he halted his military career in the warband of our Lord so quickly. He now lives in Kalissia, which is east of Germania. People say he went there to find peace."
@@ -88896,7 +88931,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "pray_germanic",[]],
 
 [anyone,"pray_germanic",[
-  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_4"),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_germanic"),
 ],"Of course I can! Reapeat after me:^^"
 +" Ok fyrir pvi má hann heita Alfodr, at hann er fadir allra godanna ok manna ok alls þess, er af honum ok hans krafti var fullgert. Jordin var dottir hans ok kona hans."
 +" Eikpyrnir heitir hjortr, er stendr hollu a ok bitr af Laerads limum; en af hans hornum drypr i Hvergelmi, padan eigu votn oll vega.",
@@ -88935,7 +88970,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "pray_germanic4",[]],
 
 [anyone,"pray_germanic4",[
-  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_4"),
+  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_germanic"),
 ],"... Ok fyrir pvi má hann heita Alfodr, at hann er fadir allra godanna ok manna ok alls þess, er af honum ok hans krafti var fullgert. Jordin var dottir hans ok kona hans. ...",
 "pray_germanic5",[]],
 
@@ -89008,7 +89043,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone, "pagano2_action",[
-  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_4"),
+  (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_germanic"),
 ],"I will talk to your men about Wodanaz, Dunraz and Frijo and all the other gods and goddesses. It will encourage them to fight proudly by your side, to earn their seats at Walhalla.",
 "close_window",[
   (troop_remove_gold,"trp_player", 500),
@@ -91032,7 +91067,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (le, ":armor", 0),
     (item_has_property, ":itm", itp_civilian),
     (item_has_property, ":itm", itp_merchandise),
-    (item_has_faction, ":itm", "fac_culture_7"),
+    (item_has_faction, ":itm", "fac_culture_roman"),
     (item_has_property, ":itm", itp_type_body_armor),
     #(neg|item_has_property, ":itm", itp_type_head_armor),
     (troop_add_item,"$g_talk_troop",":itm"),
@@ -91054,7 +91089,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (le, ":armor", 35),
     (item_has_property, ":itm", itp_civilian),
     (item_has_property, ":itm", itp_merchandise),
-    (item_has_faction, ":itm", "fac_culture_7"),
+    (item_has_faction, ":itm", "fac_culture_roman"),
     # (neg|item_has_property, ":itm", itp_type_body_armor),
     (item_has_property, ":itm", itp_type_head_armor),
     (troop_add_item,"$g_talk_troop",":itm"),
@@ -94477,7 +94512,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 ]],
 
 [anyone|plyr,"building_details_temple2",[
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_8"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_judean"),
   (troop_slot_eq, "trp_player", slot_troop_religion, worships_yhwhe),
 ], "The only god: YHWH.",
 "building_details",[
@@ -94486,8 +94521,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_jupiter),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_9"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_7"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_bosporan"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_roman"),
 ], "The thunderer, Jupiter",
 "building_details",[
   (assign, "$temp3", worships_jupiter),
@@ -94495,8 +94530,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_mars),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_9"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_7"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_bosporan"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_roman"),
 ], "The god of war, Mars",
 "building_details",[
   (assign, "$temp3", worships_mars),
@@ -94504,8 +94539,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_castor_pollux),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_9"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_7"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_bosporan"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_roman"),
 ], "Castor and Pollux",
 "building_details",[
   (assign, "$temp3", worships_castor_pollux),
@@ -94513,8 +94548,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_saturn),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_9"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_7"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_bosporan"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_roman"),
 ], "The mighty Saturn",
 "building_details",[
   (assign, "$temp3", worships_saturn),
@@ -94522,8 +94557,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_aphrodite),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_9"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_7"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_bosporan"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_roman"),
 ], "The beautiful Aphrodite",
 "building_details",[
   (assign, "$temp3", worships_aphrodite),
@@ -94531,8 +94566,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_vest),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_9"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_7"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_bosporan"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_roman"),
 ], "Vesta",
 "building_details",[
   (assign, "$temp3", worships_vest),
@@ -94547,8 +94582,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_andraste),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_2"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_2_1"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_celtic"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_caledonian"),
 ], "Andraste",
 "building_details",[
   (assign, "$temp3", worships_andraste),
@@ -94556,8 +94591,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_maponos),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_2"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_2_1"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_celtic"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_caledonian"),
 ], "Maponos",
 "building_details",[
   (assign, "$temp3", worships_maponos),
@@ -94565,7 +94600,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_gebeleizis),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_1"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_dacian"),
 ], "Gebeleizis",
 "building_details",[
   (assign, "$temp3", worships_gebeleizis),
@@ -94573,7 +94608,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_zalmoxis),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_1"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_dacian"),
 ], "Zalmoxis",
 "building_details",[
   (assign, "$temp3", worships_zalmoxis),
@@ -94581,7 +94616,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_baduhenna),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_4"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_germanic"),
 ], "Baduhenna",
 "building_details",[
   (assign, "$temp3", worships_baduhenna),
@@ -94589,7 +94624,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_dunraz),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_4"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_germanic"),
 ], "Dunraz",
 "building_details",[
   (assign, "$temp3", worships_dunraz),
@@ -94597,7 +94632,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_frijo),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_4"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_germanic"),
 ], "Frijo",
 "building_details",[
   (assign, "$temp3", worships_frijo),
@@ -94605,7 +94640,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_alcis),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_4"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_germanic"),
 ], "Alcis",
 "building_details",[
   (assign, "$temp3", worships_alcis),
@@ -94613,8 +94648,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_goitosuros),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_9"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_3"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_bosporan"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_sarmatian"),
 ], "Goitosuros",
 "building_details",[
   (assign, "$temp3", worships_goitosuros),
@@ -94622,8 +94657,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_artimpasa),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_9"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_3"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_bosporan"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_sarmatian"),
 ], "Artimpasa",
 "building_details",[
   (assign, "$temp3", worships_artimpasa),
@@ -94631,8 +94666,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_mihr),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_6"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_5"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_parthian"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_caucasian"),
 ], "Mihr",
 "building_details",[
   (assign, "$temp3", worships_mihr),
@@ -94640,8 +94675,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_armazi),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_6"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_5"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_parthian"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_caucasian"),
 ], "Armazi",
 "building_details",[
   (assign, "$temp3", worships_armazi),
@@ -94649,8 +94684,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 [anyone|plyr,"building_details_temple2",[
   (neg|troop_slot_eq, "trp_player", slot_troop_religion, worships_mazda),
-  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_6"),
-  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_5"),
+  (this_or_next|troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_parthian"),
+  (troop_slot_eq, "trp_player",slot_troop_culture, "fac_culture_caucasian"),
 ], "Mazda",
 "building_details",[
   (assign, "$temp3", worships_mazda),
@@ -99147,7 +99182,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 "alwisus_talk_generic_pretalk",[
   (troop_clear_inventory, "$g_talk_troop"),
   (try_for_range, ":items", all_items_begin, all_items_end),
-    (item_has_faction, ":items", "fac_culture_4"),
+    (item_has_faction, ":items", "fac_culture_germanic"),
     (neg|item_has_faction, ":items", "fac_minor_kingdoms_end"),
     (troop_add_item,"$g_talk_troop",":items"),
   (try_end),
@@ -99469,7 +99504,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [anyone|plyr,"hadrian_talk",[], "Show me your wares.", "hadrian_pretalk",[
   (troop_clear_inventory, "$g_talk_troop"),
   (try_for_range, ":items", all_items_begin, all_items_end),
-    (neg|item_has_faction, ":items", "fac_culture_1"),
+    (neg|item_has_faction, ":items", "fac_culture_dacian"),
     (item_has_faction, ":items", "fac_minor_kingdoms_end"),
     (troop_add_item,"$g_talk_troop",":items"),
   (try_end),
