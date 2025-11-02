@@ -2552,6 +2552,7 @@ dialogs =[
     (try_end),
     (troop_add_item, "trp_bonus_chest_23", "itm_jupiters_throwing_spear"),
     (display_message, "str_quest_updated"),
+    (str_store_party_name, s10, "$g_encountered_party"),
     (add_quest_note_from_sreg, "qst_rhodogune", 4, "@Hint: The treasure is hidden somewhere in a chest in the temple complex of {s10}.", 0),
     (quest_set_slot, "qst_rhodogune", slot_quest_current_state, 2),
 ]],
@@ -11810,8 +11811,8 @@ dialogs =[
 "close_window",[
   (setup_quest_text,"qst_elysium"),
   (str_store_party_name_link, s10, "p_town_37"),
-  (str_store_party_name_link, s10, "p_town_35"),
-  (str_store_party_name_link, s10, "p_town_13"),
+  (str_store_party_name_link, s11, "p_town_35"),
+  (str_store_party_name_link, s12, "p_town_13"),
   (str_store_string, s2, "@You heard rumors about Elysium, a mysterious island in the Aegean Sea. Talk with a tavernkeeper in the taverns of {s10}, {s11} or {s12} to find out more about this tale."),
   (call_script, "script_start_quest", "qst_elysium", "trp_fortuna"),
   (quest_set_slot, "qst_elysium", slot_quest_current_state, 1),
