@@ -6059,64 +6059,8 @@ scripts = scripts_hardcoded + [
             (faction_get_slot, ":enemy_culture", ":enemy_faction", slot_faction_culture),
             (is_between, ":enemy_culture", cultures_begin, cultures_end),
 
-            (try_begin),
-                (eq, ":enemy_culture", ":player_culture"),
-                (assign, ":antipathy_penalty", -10),
-            (else_try),
-                (this_or_next|eq, ":enemy_culture", "fac_culture_bosporan"),
-                (this_or_next|eq, ":player_culture", "fac_culture_roman"),
-                (eq, ":player_culture", "fac_culture_parthian"),
-                (eq, ":enemy_culture", "fac_culture_greek"),
-                (assign, ":antipathy_penalty", 10),
-            (else_try),
-                (eq, ":player_culture", "fac_culture_greek"),
-                (this_or_next|eq, ":enemy_culture", "fac_culture_bosporan"),
-                (this_or_next|eq, ":enemy_culture", "fac_culture_roman"),
-                (eq, ":enemy_culture", "fac_culture_parthian"),
-                (assign, ":antipathy_penalty", 10),
-            (else_try),
-                (eq, ":player_culture", "fac_culture_roman"),
-                (eq, ":enemy_culture", "fac_culture_judean"),
-                (assign, ":antipathy_penalty", 70),
-            (else_try),
-                (eq, ":player_culture", "fac_culture_judean"),
-                (eq, ":enemy_culture", "fac_culture_roman"),
-                (assign, ":antipathy_penalty", 70),
-            (else_try),
-                (eq, ":player_culture", "fac_culture_parthian"),
-                (eq, ":enemy_culture", "fac_culture_roman"),
-                (assign, ":antipathy_penalty", 55),
-            (else_try),
-                (eq, ":player_culture", "fac_culture_roman"),
-                (eq, ":enemy_culture", "fac_culture_parthian"),
-                (assign, ":antipathy_penalty", 55),
-            (else_try),
-                (this_or_next|eq, ":enemy_culture", "fac_culture_roman"),
-                (this_or_next|eq, ":enemy_culture", "fac_culture_egyptian"),
-                (this_or_next|eq, ":enemy_culture", "fac_culture_greek"),
-                (this_or_next|eq, ":enemy_culture", "fac_culture_parthian"),
-                (eq, ":enemy_culture", "fac_culture_sarmatian"),
-
-                (this_or_next|eq, ":player_culture", "fac_culture_caledonian"),
-                (this_or_next|eq, ":player_culture", "fac_culture_celtic"),
-                (eq, ":player_culture", "fac_culture_germanic"),
-                (assign, ":antipathy_penalty", 45),
-            (else_try),
-                (this_or_next|eq, ":player_culture", "fac_culture_roman"),
-                (this_or_next|eq, ":player_culture", "fac_culture_egyptian"),
-                (this_or_next|eq, ":player_culture", "fac_culture_greek"),
-                (this_or_next|eq, ":player_culture", "fac_culture_parthian"),
-                (eq, ":player_culture", "fac_culture_sarmatian"),
-
-                (this_or_next|eq, ":enemy_culture", "fac_culture_caledonian"),
-                (this_or_next|eq, ":enemy_culture", "fac_culture_celtic"),
-                (eq, ":enemy_culture", "fac_culture_germanic"),
-                (assign, ":antipathy_penalty", 45),
-            (else_try),
-                (is_between, ":enemy_culture", cultures_begin, cultures_end),
-                (neq, ":player_culture", ":enemy_culture"),
-                (assign, ":antipathy_penalty", 35),
-            (try_end),
+            (call_script, "script_get_cultural_antiparty", ":player_culture", ":enemy_culture"),
+            (assign, ":antipathy_penalty", reg0),
         (try_end),
 
         (store_sub, ":mercy_threshold", 55, ":antipathy_penalty"),
@@ -18529,7 +18473,8 @@ scripts = scripts_hardcoded + [
 
     # (str_store_troop_name_link, s27, ":troop_no"),
     # (display_message, "@Entered script lord_find_alternative_faction for {s27}"),
-    # auxiliary troops will switch to legion faction
+    # auxiliary troops will switch to legion faction, if active and not the same
+    (assign, ":legate_faction", -1),
     (try_begin),
         (troop_get_slot, ":aux", ":troop_no", slot_troop_aux),
         (ge, ":aux", 1),
@@ -18539,66 +18484,85 @@ scripts = scripts_hardcoded + [
         (store_add, ":slot", ":legion", slot_legion_commanders_begin),
         (troop_get_slot, ":legate", "trp_province_array", ":slot"),
         (ge, ":legate", 0),
-        # (str_store_troop_name_link, s29, ":legate"),
-        (store_faction_of_troop, ":new_faction", ":legate"),
-    (else_try),
-        (try_for_range, ":faction_no", kingdoms_begin, kingdoms_end),
-            (neq, ":faction_no", ":orig_faction"),
-            (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
+        (store_faction_of_troop, ":legate_faction", ":legate"),
+    (try_end),
 
-            (assign, ":number_of_walled_centers", 0),
-            (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
-                (store_faction_of_party, ":center_faction", ":center_no"),
-                (eq, ":center_faction", ":faction_no"),
-                (try_begin),
-                    (party_slot_eq, ":center_no", slot_party_type, spt_town),
-                    (val_add, ":number_of_walled_centers", 2),
-                (else_try),
-                    (val_add, ":number_of_walled_centers", 1),
-                (try_end),
-            (try_end),
+    (troop_get_slot, ":troop_culture", ":troop_no", slot_troop_culture),
 
-            (assign, ":number_of_lords", 0),
-            (try_for_range, ":troop_id", original_kingdom_heroes_begin, active_npcs_end),
-                (store_troop_faction, ":faction_of_troop", ":troop_id"),
-                (eq, ":faction_of_troop", ":faction_no"),
-                (val_add, ":number_of_lords", 1),
-            (try_end),
-            (val_max, ":number_of_lords", 1),
+    (try_for_range, ":faction_no", kingdoms_begin, kingdoms_end),
+        (neq, ":faction_no", ":orig_faction"),
+        (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
 
-            (faction_get_slot, ":liege", ":faction_no", slot_faction_leader),
-            (call_script, "script_troop_get_relation_with_troop", ":troop_no", ":liege"),
-            (assign, ":relation_with_leader", reg0),
-
-            (store_mul, ":faction_score", ":number_of_walled_centers", 100),
-            (val_div, ":faction_score", ":number_of_lords"),
-            (val_add, ":faction_score", ":relation_with_leader"),
-
-            (try_begin), #add this to prevent factions from gaining fiefs (and starting wars) at far end of map
-                (store_add, ":slot", slot_faction_neighbors_begin, ":faction_no"),
-                (val_sub, ":slot", kingdoms_begin),
-                (this_or_next|faction_slot_eq, ":orig_faction", ":slot", 1),
-                (eq, ":faction_no", ":orig_faction"),
-                (val_add, ":faction_score", 200),
-            (try_end),
-
+        (assign, ":number_of_walled_centers", 0),
+        (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
+            (store_faction_of_party, ":center_faction", ":center_no"),
+            (eq, ":center_faction", ":faction_no"),
             (try_begin),
-                (eq, ":faction_no", "$players_kingdom"),
-                (val_sub, ":faction_score", 100),
-                (val_add, "$player_right_to_rule"),
+                (party_slot_eq, ":center_no", slot_party_type, spt_town),
+                (val_add, ":number_of_walled_centers", 2),
+            (else_try),
+                (val_add, ":number_of_walled_centers", 1),
             (try_end),
-
-            (try_begin),##if they have the same culture
-                (troop_get_slot, ":culture", ":troop_no", slot_troop_culture),
-                (faction_slot_eq, ":faction_no",slot_faction_culture, ":culture"),
-                (val_add, ":faction_score", 1000),
-            (try_end),
-
-            (gt, ":faction_score", ":score_to_beat"),
-
-            (assign, ":score_to_beat", ":faction_score"),
-            (assign, ":new_faction", ":faction_no"),
         (try_end),
+
+        (assign, ":number_of_lords", 0),
+        (try_for_range, ":troop_id", original_kingdom_heroes_begin, active_npcs_end),
+            (store_troop_faction, ":faction_of_troop", ":troop_id"),
+            (eq, ":faction_of_troop", ":faction_no"),
+            (val_add, ":number_of_lords", 1),
+        (try_end),
+        (val_max, ":number_of_lords", 1),
+
+        (faction_get_slot, ":liege", ":faction_no", slot_faction_leader),
+        (call_script, "script_troop_get_relation_with_troop", ":troop_no", ":liege"),
+        (assign, ":relation_with_leader", reg0),
+
+        (store_mul, ":faction_score", ":number_of_walled_centers", 100),
+        (val_div, ":faction_score", ":number_of_lords"),
+        (val_add, ":faction_score", ":relation_with_leader"),
+
+
+        # have auxiliary switch to legate faction
+        (try_begin),
+            (eq, ":faction_no", ":legate_faction"),
+            (val_add, ":faction_score", 50000),
+        (try_end),
+
+        (try_begin),
+        # switch to neighbor faction
+            (store_add, ":slot", slot_faction_neighbors_begin, ":faction_no"),
+            (val_sub, ":slot", kingdoms_begin),
+            (faction_slot_eq, ":orig_faction", ":slot", 1),
+            (val_add, ":faction_score", 500),
+        (try_end),
+
+        (try_begin),
+            (eq, ":faction_no", "$players_kingdom"),
+            (val_sub, ":faction_score", 100),
+            (val_add, "$player_right_to_rule"),
+        (try_end),
+
+        (try_begin),##if they have the same culture
+            (faction_get_slot, ":culture", ":faction_no", slot_faction_culture),
+            (call_script, "script_get_cultural_antiparty", ":troop_culture", ":culture"),
+            (store_mul, ":antipathy_penality", reg0, -10),
+            (val_add, ":faction_score", ":antipathy_penality"),
+        (try_end),
+
+        # (str_store_troop_name, s1, ":troop_no"),
+        # (str_store_faction_name, s2, ":faction_no"),
+        # (assign, reg1, ":faction_score"),
+        # (display_message, "@{s1} checks {s2}, score {reg1}"),
+
+        (gt, ":faction_score", ":score_to_beat"),
+
+        (assign, ":score_to_beat", ":faction_score"),
+        (assign, ":new_faction", ":faction_no"),
+    (try_end),
+
+    (try_begin),
+        (lt, ":score_to_beat", 50),
+        (assign, ":new_faction", "fac_outlaws"),
     (try_end),
 
     (assign, reg0, ":new_faction"),
@@ -100596,6 +100560,198 @@ scripts = scripts_hardcoded + [
     (neq, ":troop_no", "trp_judean_rebel"),
     (neq, ":troop_no", "trp_judean_sicarius"),
 
+]),
+
+# script_get_cultural_antiparty
+# Input: param1 = culture_1, param2 = culture_2
+# Output: reg0 = antipathy_score (-10 to 70)
+("get_cultural_antiparty",[
+    (store_script_param, ":culture", 1),
+    (store_script_param, ":other_culture", 2),
+
+    (assign, ":antipathy_penalty", 35), # Default antipathy for any two different cultures
+    (try_begin),
+        # SAME CULTURE: Affinity bonus
+        (eq, ":other_culture", ":culture"),
+        (assign, ":antipathy_penalty", -10),
+    (else_try),
+        # very similar culture
+        (this_or_next|eq, ":culture", "fac_culture_caledonian"),
+        (eq, ":other_culture", "fac_culture_caledonian"),
+        (this_or_next|eq, ":culture", "fac_culture_celtic"),
+        (eq, ":other_culture", "fac_culture_celtic"),
+
+        (assign, ":antipathy_penalty", -5),
+    # TIER 1: DEEP-SEATED HATRED (70)
+    (else_try),
+        # Roman vs Judean: The deepest cultural and religious conflict of the era.
+        (this_or_next|eq, ":culture", "fac_culture_roman"),
+        (eq, ":other_culture", "fac_culture_roman"),
+        (this_or_next|eq, ":culture", "fac_culture_judean"),
+        (eq, ":other_culture", "fac_culture_judean"),
+        (assign, ":antipathy_penalty", 70),
+
+    # TIER 2: EXISTENTIAL THREATS (65)
+    (else_try),
+        # Parthian vs Steppe Nomads (Saka/Sarmatians): A constant, existential threat to Parthia's eastern and northern borders.
+        (this_or_next|eq, ":culture", "fac_culture_parthian"),
+        (eq, ":other_culture", "fac_culture_parthian"),
+
+        (this_or_next|eq, ":culture", "fac_culture_saka"),
+        (this_or_next|eq, ":culture", "fac_culture_sarmatian"),
+        (this_or_next|eq, ":other_culture", "fac_culture_saka"),
+        (eq, ":other_culture", "fac_culture_sarmatian"),
+        (assign, ":antipathy_penalty", 65),
+
+    # TIER 3: BITTER REGIONAL ENEMIES (60)
+    (else_try),
+        # Dacian vs Sarmatian/Germanic: Vicious competition for land and resources north of the Danube.
+        (this_or_next|eq, ":culture", "fac_culture_dacian"),
+        (eq, ":other_culture", "fac_culture_dacian"),
+
+        (this_or_next|eq, ":culture", "fac_culture_sarmatian"),
+        (this_or_next|eq, ":culture", "fac_culture_germanic"),
+        (this_or_next|eq, ":other_culture", "fac_culture_sarmatian"),
+        (eq, ":other_culture", "fac_culture_germanic"),
+        (assign, ":antipathy_penalty", 60),
+
+    # TIER 4: SUPERPOWER RIVALRY (55)
+    (else_try),
+        # Roman vs Parthian: The two great superpowers in a state of cold (and sometimes hot) war.
+        (this_or_next|eq, ":culture", "fac_culture_roman"),
+        (eq, ":other_culture", "fac_culture_roman"),
+
+        (this_or_next|eq, ":culture", "fac_culture_parthian"),
+        (eq, ":other_culture", "fac_culture_parthian"),
+        (assign, ":antipathy_penalty", 55),
+
+    # TIER 5: ACTIVE WAR FRONTS (50)
+    (else_try),
+        # Roman vs Major "Barbarian" Threats (Germanic/Celtic/Dacian): Active, high-intensity conflict zones.
+        (this_or_next|eq, ":culture", "fac_culture_roman"),
+        (eq, ":other_culture", "fac_culture_roman"),
+
+        (this_or_next|eq, ":culture", "fac_culture_germanic"),
+        (this_or_next|eq, ":culture", "fac_culture_celtic"),
+        (this_or_next|eq, ":culture", "fac_culture_caledonian"),
+        (eq, ":culture", "fac_culture_dacian"),
+
+        (this_or_next|eq, ":other_culture", "fac_culture_germanic"),
+        (this_or_next|eq, ":other_culture", "fac_culture_celtic"),
+        (this_or_next|eq, ":other_culture", "fac_culture_caledonian"),
+        (eq, ":other_culture", "fac_culture_dacian"),
+        (assign, ":antipathy_penalty", 50),
+
+    # TIER 6: "CIVILIZED" VS "BARBARIAN" (45)
+    (else_try),
+        # General dislike between settled empires and tribal/nomadic peoples.
+        (this_or_next|eq, ":culture", "fac_culture_roman"),
+        (this_or_next|eq, ":culture", "fac_culture_greek"),
+        (this_or_next|eq, ":culture", "fac_culture_egyptian"),
+        (this_or_next|eq, ":culture", "fac_culture_caucasian"),
+        (this_or_next|eq, ":culture", "fac_culture_syrian"),
+        (eq, ":culture", "fac_culture_parthian"), # Civilized List
+
+        (this_or_next|eq, ":other_culture", "fac_culture_sarmatian"),
+        (this_or_next|eq, ":other_culture", "fac_culture_saka"),
+        (this_or_next|eq, ":other_culture", "fac_culture_berber"),
+        (this_or_next|eq, ":other_culture", "fac_culture_garmantian"),
+        (eq, ":other_culture", "fac_culture_nubian"), # Barbarian/Nomad List
+        (assign, ":antipathy_penalty", 45),
+    (else_try),
+        (this_or_next|eq, ":other_culture", "fac_culture_roman"),
+        (this_or_next|eq, ":other_culture", "fac_culture_greek"),
+        (this_or_next|eq, ":other_culture", "fac_culture_egyptian"),
+        (this_or_next|eq, ":other_culture", "fac_culture_syrian"),
+        (this_or_next|eq, ":other_culture", "fac_culture_caucasian"),
+        (eq, ":other_culture", "fac_culture_parthian"), # Civilized List
+
+        (this_or_next|eq, ":culture", "fac_culture_sarmatian"),
+        (this_or_next|eq, ":culture", "fac_culture_saka"),
+        (this_or_next|eq, ":culture", "fac_culture_berber"),
+        (this_or_next|eq, ":culture", "fac_culture_garmantian"),
+        (eq, ":culture", "fac_culture_nubian"), # Barbarian/Nomad List
+        (assign, ":antipathy_penalty", 45),
+
+    # TIER 7: CULTURAL/RELIGIOUS TENSION (40)
+    (else_try),
+        # Judean vs Hellenized Easterners (Greek/Syrian/Egyptian): Major internal friction within the eastern provinces.
+        (this_or_next|eq, ":culture", "fac_culture_judean"),
+        (eq, ":other_culture", "fac_culture_judean"),
+
+        (this_or_next|eq, ":culture", "fac_culture_greek"),
+        (this_or_next|eq, ":culture", "fac_culture_syrian"),
+        (eq, ":culture", "fac_culture_egyptian"),
+
+        (this_or_next|eq, ":other_culture", "fac_culture_greek"),
+        (this_or_next|eq, ":other_culture", "fac_culture_syrian"),
+        (eq, ":other_culture", "fac_culture_egyptian"),
+        (assign, ":antipathy_penalty", 40),
+
+    # TIER 8: REGIONAL RIVALRIES (30)
+    (else_try),
+        # Berber vs Garamantian: Rival desert federations.
+        (this_or_next|eq, ":culture", "fac_culture_berber"),
+        (eq, ":other_culture", "fac_culture_berber"),
+        (this_or_next|eq, ":culture", "fac_culture_garmantian"),
+        (eq, ":other_culture", "fac_culture_garmantian"),
+        (assign, ":antipathy_penalty", 30),
+
+    (else_try),
+        # Arabian vs Judean: Neighboring peoples with a history of conflict.
+        (this_or_next|eq, ":culture", "fac_culture_arabian"),
+        (eq, ":other_culture", "fac_culture_arabian"),
+        (this_or_next|eq, ":culture", "fac_culture_judean"),
+        (eq, ":other_culture", "fac_culture_judean"),
+        (assign, ":antipathy_penalty", 30),
+
+    # TIER 9: HELLENISTIC SPHERE (15)
+    (else_try),
+        # General affinity between the heavily Greek-influenced cultures of the East.
+        (this_or_next|eq, ":culture", "fac_culture_greek"),
+        (this_or_next|eq, ":culture", "fac_culture_syrian"),
+        (this_or_next|eq, ":culture", "fac_culture_egyptian"),
+        (eq, ":culture", "fac_culture_bosporan"),
+
+        (this_or_next|eq, ":other_culture", "fac_culture_greek"),
+        (this_or_next|eq, ":other_culture", "fac_culture_syrian"),
+        (this_or_next|eq, ":other_culture", "fac_culture_egyptian"),
+        (eq, ":other_culture", "fac_culture_bosporan"),
+        (assign, ":antipathy_penalty", -5),
+
+    # TIER 10: "CIVILIZED" RIVALRY / ALLIES OF CONVENIENCE (10)
+    (else_try),
+        # Roman relationship with its integrated, Hellenized provinces.
+        (this_or_next|eq, ":culture", "fac_culture_roman"),
+        (eq, ":other_culture", "fac_culture_roman"),
+
+        (this_or_next|eq, ":culture", "fac_culture_greek"),
+        (this_or_next|eq, ":culture", "fac_culture_syrian"),
+        (this_or_next|eq, ":culture", "fac_culture_egyptian"),
+        (this_or_next|eq, ":culture", "fac_culture_bosporan"),
+        (eq, ":culture", "fac_culture_arabian"), # Also includes key client kingdoms
+
+        (this_or_next|eq, ":other_culture", "fac_culture_greek"),
+        (this_or_next|eq, ":other_culture", "fac_culture_syrian"),
+        (this_or_next|eq, ":other_culture", "fac_culture_egyptian"),
+        (this_or_next|eq, ":other_culture", "fac_culture_bosporan"),
+        (eq, ":other_culture", "fac_culture_arabian"),
+
+        (assign, ":antipathy_penalty", 10),
+    (else_try),
+        # Parthian relationship with its vassals and spheres of influence.
+        (this_or_next|eq, ":culture", "fac_culture_parthian"),
+        (eq, ":other_culture", "fac_culture_parthian")
+        ,
+        (this_or_next|eq, ":culture", "fac_culture_caucasian"),
+        (eq, ":culture", "fac_culture_arabian"),
+
+        (this_or_next|eq, ":other_culture", "fac_culture_caucasian"),
+        (eq, ":other_culture", "fac_culture_arabian"),
+
+        (assign, ":antipathy_penalty", 10),
+    (try_end),
+    (assign, reg0, ":antipathy_penalty"),
 ]),
 
 ] + scripts_wse2

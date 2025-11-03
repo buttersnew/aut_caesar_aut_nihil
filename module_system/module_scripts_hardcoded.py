@@ -6418,10 +6418,10 @@ scripts_hardcoded = [
     (try_end),
 ]),
 
-  #script_game_get_faction_note
-  # This script is called from the game engine when the notes of a faction is needed.
-  # INPUT: arg1 = faction_no, arg2 = note_index
-  # OUTPUT: s0 = note
+# script_game_get_faction_note
+# This script is called from the game engine when the notes of a faction is needed.
+# INPUT: arg1 = faction_no, arg2 = note_index
+# OUTPUT: s0 = note
 ("game_get_faction_note",[
     (store_script_param_1, ":faction_no"),
     (store_script_param_2, ":note_index"),

@@ -1358,7 +1358,7 @@ def aggregate_map_icons(entities):
 	entities.append('')
 	return '\r\n'.join(entities)
 def process_scene_props(e, index):
-	output = ['spr_%s %s %s %s %s %d' % (compiled_identifier(e[0], 'scene_prop'), e[1], get_spr_hit_points(e[1]), e[2], e[3], len(e[4]))]
+	output = ['spr_%s %s %s %s %s %d' % (compiled_identifier(e[0], 'scene_prop', False), e[1], get_spr_hit_points(e[1]), e[2], e[3], len(e[4]))]
 	for trigger, code_block in e[4]:
 		try: output.append('%f  %s ' % (trigger, parse_module_code(code_block, 'spr.%s(#%d).%s' % (e[0], index, simple_trigger_to_string(trigger)))))
 		except MSException as er: raise MSException('failed to compile trigger for scene prop %s (#%d)' % (e[0], index), *er.args)
