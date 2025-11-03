@@ -1487,18 +1487,7 @@ scripts_hardcoded = [
         (store_div, ":xp_rounds", ":garrison_strength", 5),
         (val_add, ":xp_rounds", 5),
 
-        (options_get_campaign_ai, ":reduce_campaign_ai"),
-
-        (try_begin), #hard
-            (eq, ":reduce_campaign_ai", 0),
-            (assign, ":xp_addition_for_centers", 10000),
-        (else_try), #moderate
-            (eq, ":reduce_campaign_ai", 1),
-            (assign, ":xp_addition_for_centers", 7500),
-        (else_try), #easy
-            (eq, ":reduce_campaign_ai", 2),
-            (assign, ":xp_addition_for_centers", 5000),
-        (try_end),
+        (assign, ":xp_addition_for_centers", 7500),
 
         (try_for_range, ":unused", 0, ":xp_rounds"),
             (party_upgrade_with_xp, ":center_no", ":xp_addition_for_centers", 0),
@@ -3974,18 +3963,9 @@ scripts_hardcoded = [
                         ##(call_script, "script_troop_get_family_relation_to_troop", ":family_member", "$g_player_affiliated_troop"),
                         (call_script, "script_dplmc_is_affiliated_family_member", ":family_member"),
                         (gt, reg0, 0),
-                        (assign, ":relation_los", -2),
-                        (options_get_campaign_ai, ":reduce_campaign_ai"),
-                        (try_begin),
-                            (eq, ":reduce_campaign_ai", 0),#hard: -1
-                            (assign, ":relation_los", -1),
-                        (else_try),
-                            (eq, ":reduce_campaign_ai", 1),#medium: -1 or 0
-                            (store_random_in_range, ":relation_los", -1, 1),
-                        (else_try),
-                            (eq, ":reduce_campaign_ai", 2),#easy: 0
-                            (assign, ":relation_los", 0),
-                        (try_end),
+
+                        (store_random_in_range, ":relation_los", -2, 1),
+
                         (val_add, ":relation_los", ":mitigating_factors"),
                         (lt, ":relation_los", 0),
                         (call_script, "script_change_player_relation_with_troop", ":family_member", ":relation_los"),
@@ -4561,50 +4541,30 @@ scripts_hardcoded = [
             #ADD XP
             (try_begin),
                 (party_slot_eq, ":root_attacker_party", slot_party_type, spt_kingdom_hero_party),
-
-                (assign, ":xp_gained_attacker", 200),
-                (options_get_campaign_ai, ":reduce_campaign_ai"),
+                (assign, ":xp_gained_attacker", 500),
                 (store_faction_of_party, ":root_attacker_party_faction", ":root_attacker_party"),
                 (try_begin),
                     (this_or_next|eq, ":root_attacker_party", "p_main_party"),
                     (this_or_next|eq, ":root_attacker_party_faction", "fac_player_supporters_faction"),
                     (eq, ":root_attacker_party_faction", "$players_kingdom"),
-                    #same
                 (else_try),
-                    (eq, ":reduce_campaign_ai", 0), #hard (1.5x)
                     (val_mul, ":xp_gained_attacker", 3),
                     (val_div, ":xp_gained_attacker", 2),
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 1), #moderate (1.0x)
-                    #same
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 2), #easy (0.5x)
-                    (val_div, ":xp_gained_attacker", 2),
                 (try_end),
-
                 (gt, ":new_attacker_strength", 0),
                 (call_script, "script_upgrade_hero_party", ":root_attacker_party", ":xp_gained_attacker"),
             (try_end),
             (try_begin),
                 (party_slot_eq, ":root_defender_party", slot_party_type, spt_kingdom_hero_party),
 
-                (assign, ":xp_gained_defender", 200),
+                (assign, ":xp_gained_defender", 500),
                 (store_faction_of_party, ":root_defender_party_faction", ":root_defender_party"),
-                (options_get_campaign_ai, ":reduce_campaign_ai"),
                 (try_begin),
                     (this_or_next|eq, ":root_defender_party", "p_main_party"),
                     (this_or_next|eq, ":root_defender_party_faction", "fac_player_supporters_faction"),
                     (eq, ":root_defender_party_faction", "$players_kingdom"),
-                  #same
                 (else_try),
-                    (eq, ":reduce_campaign_ai", 0), #hard (1.5x)
                     (val_mul, ":xp_gained_defender", 3),
-                    (val_div, ":xp_gained_defender", 2),
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 1), #moderate (1.0x)
-                    #same
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 2), #easy (0.5x)
                     (val_div, ":xp_gained_defender", 2),
                 (try_end),
 

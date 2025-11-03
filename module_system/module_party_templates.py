@@ -60,11 +60,11 @@ party_templates = [
 ("taiga_bandits","Illyrian Rebels",icon_bandit|carries_goods(2),0,fac_illyrian_bandits,bandit_personality,[(trp_illyrian_bandit,14,58),(trp_illyrian_horseman, 3, 20), (trp_illyrian_infantry, 5, 50),]),
 ("desert_bandits","Arab Raiders",icon_arab|carries_goods(30),0,fac_arabian_bandits,bandit_personality,[(trp_desert_bandit,14,68),(trp_arab_noble_cav, 5,20),]),
 ("forest_bandits","Iberian Rebels",icon_bandithisp|carries_goods(2),0,fac_forest_bandits,bandit_personality,[(trp_hispanic_bandit,24,72), (trp_mercenary_horseman, 2, 30), (trp_hispanic_infantry, 2, 50), (trp_hispanic_heavy_infantry, 1, 30),]),
-("judean_rebels_party","Judean Rebels",icon_banditrom|carries_goods(2),0,fac_judean_rebels,judean_rebel_personality,[(trp_judean_rebel,4,80),(trp_judean_light_spearman,0,20),(trp_judean_sicarius, 1, 20)]),
+("judean_rebels_party","Judean Rebels",icon_banditrom|carries_goods(2),0,fac_judean_rebels,judean_rebel_personality,[(trp_judean_rebel,4,80),(trp_judean_light_spearman,0,30),(trp_judean_sicarius, 1, 40)]),
 ("sea_raiders","Sea Raiders",icon_bandit|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,75),(trp_sailor,5,10)]),
 ("black_sea_pirates","Pirates",icon_ship|pf_is_ship|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_black_sea_priate,75,110),(trp_sailor,10,25)]),
 
-("egyptian_rebels","Egyptian Rebels",icon_bandit|carries_goods(8),0,fac_egypt,bandit_personality,[(trp_egyptian_archers,15,40),(trp_egyptian_infantry_heavy,25,60),(trp_egyptian_infantry_light,25,60)]),
+("egyptian_rebels","Egyptian Rebels",icon_bandit|carries_goods(8),0,fac_egypt,bandit_personality,[(trp_egyptian_officer, 2, 4),(trp_egyptian_archers,15,40),(trp_egyptian_infantry_heavy,25,60),(trp_egyptian_infantry_light,25,60)]),
 
 ("garamantes","Garamantian Raiders",icon_numider|carries_goods(30),0,fac_garamantes,bandit_personality,[(trp_garamantian_horseman,50,120),(trp_garamantian_noble_horseman,30,70)]),
 ("gaetuli","Gaetulian Raiders",icon_numider|carries_goods(30),0,fac_gaetuli,bandit_personality,[(trp_gaetuli_horseman,50,120),(trp_gaetuli_noble_horseman,30,70)]),
@@ -177,7 +177,7 @@ party_templates = [
 ("mercenary_moreo", "Nubian Mercenaries", 0, 0, fac_commoners, 0,
 [("trp_meroe_archers", 30,30),("trp_meroe_infantry", 15,15),("trp_meroe_axemen", 15,15)] ),#60
 ("mercenary_egyptian", "Egyptian Mercenaries", 0, 0, fac_commoners, 0,
-[("trp_egyptian_archers", 20,20),("trp_egyptian_infantry_heavy", 20,20),("trp_egyptian_infantry_light", 20,20)] ),#60
+[("trp_egyptian_archers", 20,20),("trp_egyptian_infantry_heavy", 20,20),("trp_egyptian_infantry_light", 20,20),("trp_egyptian_officer", 2, 2)] ),#60
 ("mercenary_arab", "Arabian Mercenaries", 0, 0, fac_commoners, 0,
 [("trp_arab_noble_archers", 30,30),("trp_arab_spearmen", 30,30)] ),#60
 ("mercenary_arab_cav", "Arabian Cavalry Mercenaries", 0, 0, fac_commoners, 0,
@@ -234,7 +234,7 @@ party_templates = [
 [(trp_syrian_archer,10,10),(trp_syrian_spearman,40,40),(trp_syrian_horsearcher,20,20)] ),
 
 ("culture_16_town_watch", "Egyptian Townwatch", 0, 0, fac_commoners, 0,
-[(trp_egyptian_archers,25,25),(trp_egyptian_infantry_heavy,25,25),(trp_egyptian_infantry_light,30,30)] ),
+[(trp_egyptian_archers,25,25),(trp_egyptian_infantry_heavy,25,25),(trp_egyptian_infantry_light,30,30),("trp_egyptian_officer", 2, 2)] ),
 
 ("culture_17_town_watch", "Greek Townwatch", 0, 0, fac_commoners, 0,
 [(trp_aux_vigiles_centurio,2,2),(trp_vigilia,40,40),(trp_aux_archer,25,25),(trp_aux_inf,5,5),(trp_ballistarii,5,5)] ),
@@ -339,7 +339,7 @@ party_templates = [
 ("steppe_bandit_lair" ,"Alan Camp",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_alans,bandit_personality,[(trp_alannic_raider,30,90)]),
 ("taiga_bandit_lair","Illyrian Lair",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_illyrian_bandits,bandit_personality,[(trp_illyrian_bandit,30,90)]),
 ("desert_bandit_lair" ,"Arabic Camp",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_arabian_bandits,bandit_personality,[(trp_desert_bandit,30,90)]),
-("egyptian_bandit_lair" ,"Old Egyptian Fortress",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_egypt,bandit_personality,[(trp_egyptian_infantry_light,15,30),(trp_egyptian_archers,15,30),(trp_egyptian_infantry_heavy,15,30)]),
+("egyptian_bandit_lair" ,"Old Egyptian Fortress",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_egypt,bandit_personality,[("trp_egyptian_officer", 2, 2),(trp_egyptian_infantry_light,15,30),(trp_egyptian_archers,15,30),(trp_egyptian_infantry_heavy,15,30)]),
 ("nabatean_lair" ,"Nabataean Camp",icon_gaetulian_town|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_nabataea,bandit_personality,[(trp_desert_bandit,30,30)]),
 ("nubian_lair" ,"Nubian Village",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_kush,bandit_personality,[(trp_meroe_archers,10,40),(trp_meroe_infantry,20,50)]),
 ("numidian_bandit_lair" ,"Garamantian Village",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_garamantes,bandit_personality,[(trp_garamantian_horseman,30,90)]),

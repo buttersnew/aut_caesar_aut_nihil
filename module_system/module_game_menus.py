@@ -1961,6 +1961,23 @@ game_menus = [
         ]
        ),
 
+      ("camp_cheat_6",[
+        (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
+      ],"Test party creation limits",[
+
+        (call_script, "script_update_party_creation_random_limits"),
+
+        (set_spawn_radius, 5),
+        (try_for_range, ":unused", 0, 10),
+          (store_random_in_range, ":party_template", bandit_party_templates_begin, bandit_party_templates_end),
+          (call_script, "script_spawn_party", "p_main_party", ":party_template"),
+        (try_end),
+
+        (change_screen_map),
+      ]),
+
+
+
 	   ##nested diplomacy start+
 	  # ("camp_cheat_7",[
       # (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
@@ -2783,10 +2800,9 @@ game_menus = [
     ],"Take them.",[
       (remove_troops_from_prisoners, "$g_prisoner_recruit_troop_id", "$g_prisoner_recruit_size"),
       (party_add_members, "p_main_party", "$g_prisoner_recruit_troop_id", "$g_prisoner_recruit_size"),
-      #SB : change base morale reduction by difficulty
-      (game_get_reduce_campaign_ai, ":reduce"), #0 to 2
-      (val_sub, ":reduce", 4), #-4 to -2
-      (store_mul, ":morale_change", ":reduce", "$g_prisoner_recruit_size"),
+
+      (store_mul, ":morale_change", -4, "$g_prisoner_recruit_size"),
+
       (store_troop_faction, ":troop_faction", "$g_prisoner_recruit_troop_id"),
       (store_character_level, ":troop_level", "$g_prisoner_recruit_troop_id"),
 
@@ -19553,7 +19569,7 @@ game_menus = [
 				#Check spouse pays
 				(troop_get_slot, ":lord", "$g_ransom_offer_troop", slot_troop_spouse),
 				(this_or_next|is_between, ":lord", active_npcs_begin, active_npcs_end),
-					(troop_slot_eq, ":lord", slot_troop_occupation, slto_kingdom_hero),
+        (troop_slot_eq, ":lord", slot_troop_occupation, slto_kingdom_hero),
 				(store_troop_faction, ":lord_faction", ":lord"),
 				(eq, ":faction_no", ":lord_faction"),
 				(neg|troop_slot_ge, ":lord", slot_troop_occupation, slto_retirement),
@@ -19562,7 +19578,7 @@ game_menus = [
 				#Check father pays
 				(troop_get_slot, ":lord", "$g_ransom_offer_troop", slot_troop_father),
 				(this_or_next|is_between, ":lord", active_npcs_begin, active_npcs_end),
-					(troop_slot_eq, ":lord", slot_troop_occupation, slto_kingdom_hero),
+        (troop_slot_eq, ":lord", slot_troop_occupation, slto_kingdom_hero),
 				(store_troop_faction, ":lord_faction", ":lord"),
 				(eq, ":faction_no", ":lord_faction"),
 				(neg|troop_slot_ge, ":lord", slot_troop_occupation, slto_retirement),
@@ -19595,18 +19611,6 @@ game_menus = [
 			(ge, ":gold_paid", 0),
 			(ge, ":lord_who_pays", 1),
 			(troop_is_hero, ":lord_who_pays"),
-			#Remove the gold.  The lady has her own funds (e.g. from her dower)
-			#that will partially defray the expense to the lord, depending on
-			#the campaign difficulty.
-		    (game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
-		    (try_begin),
-			   (eq, ":reduce_campaign_ai", 0), #hard: lord pays 50%, lady's resources pay for 50%
-			   (val_div, ":gold_paid", 2),
-		    (else_try),
-			   (eq, ":reduce_campaign_ai", 1), #medium: lord pays 75%, lady's resources pay for 25%
-			   (val_mul, ":gold_paid", 3),
-			   (val_div, ":gold_paid", 4),
-		    (try_end),#easy: lord pays 100%, lady pays nothing
 			(call_script, "script_dplmc_remove_gold_from_lord_and_holdings", ":gold_paid", ":lord_who_pays"),
 		(try_end),
 		##diplomacy end+
@@ -26887,7 +26891,7 @@ game_menus = [
       "Next Faction.",
       [
         (val_add, "$diplomacy_var", 1),
-        (val_clamp, "$diplomacy_var", 0, 52),
+        (val_clamp, "$diplomacy_var", 0, fac_gladiators + 1),
         (jump_to_menu, "mnu_display_faction_slots"),
       ]),
 

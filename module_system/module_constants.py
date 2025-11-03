@@ -2760,9 +2760,9 @@ parthian_armoury_begin = "itm_parthian_tunic_1"
 parthian_armoury_end   = "itm_illyrian_medium1"
 
 illyrian_armoury_begin = "itm_illyrian_medium1"
-illyrian_armoury_end   = "itm_iberian_light1"
+illyrian_armoury_end   = "itm_illyrian_light1"
 
-ibarian_armoury_begin = "itm_iberian_light1"
+ibarian_armoury_begin = "itm_illyrian_light1"
 ibarian_armoury_end   = "itm_arabian_tunic_1"
 
 arabian_armoury_begin = "itm_arabian_tunic_1"

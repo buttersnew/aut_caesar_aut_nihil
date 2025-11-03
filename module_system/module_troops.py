@@ -881,7 +881,7 @@ attrib_level_6, wp(60), knows_level_6, mercenary_face_greek_1, mercenary_face_gr
 attrib_level_6, wp(60), knows_level_6, mercenary_face_greek_1, mercenary_face_greek_2 ],
 
 ["illyrian_peasant", "Illyricus Rusticus", "Illyrici Rustici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_roman,
-[itm_sling,itm_sling_rock1]+celtic_foot_peasant+iberian_tunic+celtic_head_peasant+celtic_weapons_peasant,
+[itm_sling,itm_sling_rock1,itm_illyrian_light1,itm_illyrian_light2]+celtic_foot_peasant +celtic_head_peasant+celtic_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
 
 ["hispanic_peasant", "Hispanus Rusticus", "Hispani Rustici", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_roman,
@@ -933,7 +933,7 @@ attrib_level_31, wp(140), knows_level_31, persian_face_young, persian_face_middl
 itm_spear,itm_war_spear,itm_kopis,itm_graves_simple_2,itm_illyrian_hevy_helmet_plume2]+horse_normal,
 attrib_level_23, wp(160), knows_level_23, barbarian_man_face_younger_1, barbarian_man_face_middle_2 ],
 ["illyrian_infantry", "Illyrioi Pezoi", "Illyrioi Pezoi", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_commoners,
-[itm_graves_simple,itm_illyrian_medium1,itm_illyrian_medium2,itm_iberian_light1,itm_iberian_light2,itm_illyrian_leader_cap,itm_illyrian_shield_large1,itm_illyrian_hevy_helmet,itm_illyrian_shield_large2,
+[itm_graves_simple,itm_illyrian_medium1,itm_illyrian_medium2,itm_illyrian_light1,itm_illyrian_light2,itm_illyrian_leader_cap,itm_illyrian_shield_large1,itm_illyrian_hevy_helmet,itm_illyrian_shield_large2,
 itm_illyrian_shield_heavy1,itm_illyrian_shield_heavy2,itm_illyrian_shield_heavy3,itm_war_spear,itm_spear,itm_throwing_spears,itm_one_handed_war_axe_a,itm_illyrian_hevy_helmet_plume1],
 attrib_level_23, wp(160), knows_level_23, barbarian_man_face_younger_1, barbarian_man_face_middle_2 ],
 ##rhodos
@@ -1206,6 +1206,12 @@ attrib_level_26, wp(160), knows_level_26, north_african_man_face_middle_1, north
 [itm_caligea,itm_hasta1,itm_pilum,itm_old_gladius_1,itm_numidian_wig,itm_judean_tunic_5,itm_judean_tunic_4,itm_judean_tunic_2,itm_roman_poor1,itm_roman_poor2,itm_egyptian_shield_large_1,itm_egyptian_shield_large_2,itm_egyptian_shield_large_3,itm_egyptian_shield_large_4,
 itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4],
 attrib_level_23, wp(140), knows_level_23,north_african_man_face_young_1, north_african_man_face_middle_2 ],
+
+["egyptian_officer", "Tzoeisu", "Tzoeisu-w",tf_male_north_african|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_egyptian,
+[itm_legio_armored_caligea,itm_roman_gladius,itm_roman_gladius_2,itm_roman_gladius_3,itm_pilum,itm_auxilia_squamata_east_5,itm_auxilia_squamata_east_6,itm_egyptian_shield_large_1,itm_egyptian_shield_large_2,itm_egyptian_shield_large_3,itm_egyptian_shield_large_4,itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4,
+itm_auxilia_cent_helmet_3,itm_auxilia_cent_helmet_1],
+attrib_level_29, wp(180), knows_level_29,north_african_man_face_young_1, north_african_man_face_middle_2 ],
+
 
 ##arabian mercenaries: p_town_19
 ["arab_noble_archers", "Hachar Hajar", "Hachar Hajar", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_helmet, no_scene, reserved, fac_nabataea,
@@ -2953,7 +2959,7 @@ itm_eastern_sica_rusty, itm_old_gladius_2
 ],
 attrib_level_23_warrior, wpe(130,130,130,180), knows_level_23, barbarian_man_face_younger_1, barbarian_man_face_young_2 ],
 ["sea_raider", "Pirata", "Piratae", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
-[itm_short_bow,itm_arrows,itm_spear,itm_kopis,itm_kopfband,itm_iberian_light4,itm_iberian_light1,itm_armenian_tunic_1,itm_bosporan_light1,itm_caligea,itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,
+[itm_short_bow,itm_arrows,itm_spear,itm_kopis,itm_kopfband,itm_iberian_light4,itm_illyrian_light1,itm_armenian_tunic_1,itm_bosporan_light1,itm_caligea,itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2,
 itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,itm_hide_covered_round_shield_3,itm_ad_mixed_round_shields_05,itm_ad_mixed_round_shields_06
 ],
 attrib_level_23_warrior, wp(130), knows_level_23_warrior, mercenary_face_1, mercenary_face_2 ],
@@ -2975,7 +2981,7 @@ itm_sarmatian_shoes,itm_alan_long_sword,itm_alan_long_sword_ring,itm_sarmatian_c
 attrib_level_23_warrior, wp(150), knows_archer_basic_eastern, scythian_face_21, scythian_face_22 ],
 
 ["illyrian_bandit", "Illyricus Sicarius", "Illyrici Sicarii", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
-[itm_spear,itm_javelin,itm_illyrian_medium3,itm_iberian_light1,itm_iberian_light2,
+[itm_spear,itm_javelin,itm_illyrian_medium3,itm_illyrian_light1,itm_illyrian_light2,
 itm_illyrian_medium4,itm_illyrian_medium1,itm_illyrian_shield_large1,itm_illyrian_shield_large2,
 itm_illyrian_shield_heavy1,itm_illyrian_shield_heavy2,
 itm_illyrian_shield_heavy3,itm_kopfband,itm_illyrian_leader_cap,itm_illyrian_hevy_helmet,itm_caligea,itm_ad_mixed_round_shields_04,itm_ad_mixed_round_shields_03,
@@ -5391,6 +5397,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["village_254_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d6b00d1c33d2a6da7377ae30c00000000000ecb0a0000000000000000],
 ["village_255_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d690cb142429b2ddb196a56ad00000000001f46e10000000000000000],
 ["village_256_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d660931c1446dee38db915b1a00000000001dece60000000000000000],
+["village_257_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x00000000311104861af54f4f55d1b6dc000000000012209e0000000000000000],
 
 # Place extra merchants before this point
 ["merchants_end","merchants_end","merchants_end",tf_hero, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0],
@@ -6602,7 +6609,7 @@ str_12|agi_12|int_20|cha_25|level(25),wp(30),knows_common,0x00000000ff00000436db
 
 ##sailors improve party speed on water
 ["sailor", "Nauta", "Nautae", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_neutral,
-[itm_arrows,itm_hunting_bow,itm_javelin,itm_kopis,itm_iberian_light4,itm_iberian_light1,itm_armenian_tunic_1,itm_roman_poor1,itm_roman_poor2,itm_caligea],
+[itm_arrows,itm_hunting_bow,itm_javelin,itm_kopis,itm_iberian_light4,itm_illyrian_light1,itm_armenian_tunic_1,itm_roman_poor1,itm_roman_poor2,itm_caligea],
 attrib_level_16, wp(110), knows_level_16, white_face_11, white_face_12 ],
 
 ###troops for latifundiae system

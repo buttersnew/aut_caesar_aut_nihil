@@ -1875,19 +1875,8 @@ simple_triggers = [
         (gt, ":hero_party", centers_end),
         (party_is_active, ":hero_party"),
 
-        #first make probability
-        (options_get_campaign_ai, ":reduce_campaign_ai"),
-        (try_begin),
-            (eq, ":reduce_campaign_ai", 0),
-            (assign, ":max_accepted_random_value", 42),
-        (else_try),
-            (eq, ":reduce_campaign_ai", 2),
-            (assign, ":max_accepted_random_value", 32),
-        (else_try),
-            (assign, ":max_accepted_random_value", 37),
-        (try_end),
         (store_random_in_range, ":rand", 0, 100),
-        (le, ":rand", ":max_accepted_random_value"),
+        (le, ":rand", 36),
 
         (store_skill_level, ":trainer_level", "skl_trainer", ":troop_no"),
         (val_add, ":trainer_level", 5), #worst : 5, best : 10
@@ -1905,30 +1894,8 @@ simple_triggers = [
 
     (assign, ":xp_gain", 3000), #xp gain in two days of period for each center, average : 3000.
 
-    (assign, ":max_accepted_random_value", 30),
-    (try_begin),
-        (assign, ":cur_center_lord_faction", -1),
-        (try_begin),
-            (ge, ":center_lord", 0),
-            (store_troop_faction, ":cur_center_lord_faction", ":center_lord"),
-        (try_end),
-        (neq, ":cur_center_lord_faction", "$players_kingdom"),
-
-        (options_get_campaign_ai, ":reduce_campaign_ai"),
-        (try_begin),
-            (eq, ":reduce_campaign_ai", 0), #hard (1.5x)
-            (assign, ":max_accepted_random_value", 35),
-            (val_mul, ":xp_gain", 3),
-            (val_div, ":xp_gain", 2),
-        (else_try),
-            (eq, ":reduce_campaign_ai", 2), #easy (0.5x)
-            (assign, ":max_accepted_random_value", 25),
-            (val_div, ":xp_gain", 2),
-        (try_end),
-    (try_end),
-
     (store_random_in_range, ":rand", 0, 100),
-    (le, ":rand", ":max_accepted_random_value"),
+    (le, ":rand", 33),
 
     (party_upgrade_with_xp, ":center_no", ":xp_gain", 0),
 ]),
@@ -3288,20 +3255,9 @@ simple_triggers = [
             (party_get_cur_town, ":cur_center", ":party_no"),
             (store_random_in_range, ":random_no", 0, 100),
             (assign, ":tariff_succeed_limit", 45), #SB : base amount for medium
-            (try_begin),
-                (this_or_next|party_slot_eq, ":cur_center", slot_town_lord, "trp_player"),
-                (eq, ":merchant_faction", "$players_kingdom"),
-                (options_get_campaign_ai, ":reduce_campaign_ai"), #SB : moved this up top
-                (val_sub, ":reduce_campaign_ai", 1),
-                (val_mul, ":reduce_campaign_ai", 10), #pre-calculate amount
-                (val_add, ":tariff_succeed_limit", ":reduce_campaign_ai"),
-            (try_end),
-
             (lt, ":random_no", ":tariff_succeed_limit"),
-
             #SB : todo queue caravans so they don't blob together, obvious if same destination
             (assign, ":can_leave", 1),
-
             (try_begin),
                 (is_between, ":cur_center", walled_centers_begin, walled_centers_end),
                 (neg|party_slot_eq, ":cur_center", slot_center_is_besieged_by, -1),
@@ -6726,26 +6682,9 @@ simple_triggers = [
                 (assign, reg0, ":gift_value"),#<-- see (1) below, store gold value of gift
                 (val_add, ":gift_value", ":random"),
                 (val_div, ":gift_value", 1000),
-                (options_get_campaign_ai, ":reduce_campaign_ai"),#store for use below
-                (try_begin),
-                    (eq, ":reduce_campaign_ai", 0), #hard: do not exceed 1/1000 efficiency
-                    (val_min, ":relation_boost", ":gift_value"),
-                    (try_begin),
-                        (eq, ":relation_boost", 0),
-                        (store_random_in_range, ":random", 0, 1000),
-                        (lt, ":random", reg0),#<-- (1) see above, has gold value of gift
-                        (assign, ":relation_boost", 1),
-                    (try_end),
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 1), #medium: use a blend of the two
-                    (lt, ":gift_value", ":relation_boost"),
-                    (val_add, ":relation_boost", ":gift_value"),
-                    (val_add, ":relation_boost", 1),
-                    (val_div, ":relation_boost", 2),
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 2), #easy: do not use
-                (try_end),
+
                 (val_max, ":gift_value", 1),
+
                 (val_min, ":relation_boost", ":gift_value"),
 
                 (try_begin),
@@ -6890,6 +6829,11 @@ simple_triggers = [
 # Constable training
 (24,[
     (call_script, "script_execude_debug_message", 118),
+
+    # pickpacking the update of party sizes
+    (call_script, "script_update_party_creation_random_limits"),
+
+
     (eq, "$g_player_constable", "trp_dplmc_constable"),
     (is_between, "$g_constable_training_center", walled_centers_begin, walled_centers_end),
     (party_slot_eq, "$g_constable_training_center", slot_town_lord, "trp_player"),

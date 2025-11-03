@@ -33859,7 +33859,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 # (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
 # (neg|party_slot_eq, "$diplomacy_var", slot_center_culture, ":culture"),
 # (val_sub, ":culture","fac_culture_dacian"),
-# (store_add, ":string", ":culture", "str_culture_1"),
+# (store_add, ":string", ":culture", "str_culture_dacian"),
 # (str_store_string, s44, ":string"),
 
 #],
@@ -38392,84 +38392,76 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 ##response to war request success
 [anyone, "dplmc_companion_war_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
-##diplomacy start+
-(this_or_next|lt, "$g_mission_result_with_target", 0),
-##diplomacy end+
-(eq, "$g_mission_result_with_target", 0), #undecided about war
-(ge, "$g_mission_result_with_player", 2), #doesn't want war with us
-(eq, "$g_concession_demanded", 0), #doesn't want a center from us
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
-(troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
-(str_store_faction_name, s31, ":war_target_faction"),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
-##diplomacy start+
-#Set the payment amount to something less arbitrary than a flat 5000.
-#For example, using the same mercenary payment calculation used for the player.
-(assign, ":total_fee", 0),
-(try_for_parties, ":party_no"),
-  (gt, ":party_no", centers_end),
-	(party_is_active, ":party_no"),
-  (store_faction_of_party, ":party_faction", ":party_no"),
-	(eq, ":party_faction", ":mission_object"),
-	(this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_kingdom_hero_party),
-  (party_slot_eq, ":party_no", slot_party_type, spt_patrol),
-	(try_begin),
-	  (eq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
-		(call_script, "script_dplmc_get_terrain_code_for_battle", -1, ":party_no"),
-		(call_script, "script_dplmc_party_calculate_strength_in_terrain", ":party_no", reg0, 0, 1),
-		#Cache terrain value, but use non-terrain value for cost
-		(assign, reg0, reg1),
-	(else_try),
-	  (call_script, "script_party_calculate_strength", ":party_no", 0),
-	(try_end),
-	(val_div, reg0, 2),
-	(val_add, reg0, 30),
-	(call_script, "script_round_value", reg0),
-	(val_max, reg0, 50),#at least 50 denarii per party
-	(val_add, ":total_fee", reg0),
-(try_end),
-(val_mul, ":total_fee", 4),#The mercenary fee for two weeks
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
+  (this_or_next|lt, "$g_mission_result_with_target", 0),
+  (eq, "$g_mission_result_with_target", 0), #undecided about war
+  (ge, "$g_mission_result_with_player", 2), #doesn't want war with us
+  (eq, "$g_concession_demanded", 0), #doesn't want a center from us
 
-(try_begin),
-	#Lessen the fee if the other kingdom particularly wants war
-	(lt, "$g_mission_result_with_target", 0),
-	(val_div, ":total_fee", 2),
-(try_end),
-(try_begin),
-	#Increase the fee if the player's faction is allied with the target
-	#(note: this should probably be disabled altogether...)
-	(call_script, "script_dplmc_get_faction_truce_length_with_faction", ":mission_object", "$players_kingdom"),
-	(ge, reg0, dplmc_treaty_defense_days_expire),
-	(val_mul, ":total_fee", 5),
-(else_try),
-	(store_relation, reg0, ":war_target_faction", "$players_kingdom"),
-	(val_mul, reg0, 2),
-(try_end),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
+  (ge, reg0, 0),  #player is at peace or truce with the mission_faction
+  (troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
+  (str_store_faction_name, s31, ":war_target_faction"),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
 
-(game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
-(try_begin),
-  (eq, ":reduce_campaign_ai", 0),#Hard: 300%
-	(val_mul, ":total_fee", 3),
-(else_try),
-  (eq, ":reduce_campaign_ai", 1),#Medium: 200%
-  (val_mul, ":total_fee", 2),
-(else_try),
-  (eq, ":reduce_campaign_ai", 2),#Easy: 100%
-(try_end),
+  ##diplomacy start+
+  #Set the payment amount to something less arbitrary than a flat 5000.
+  #For example, using the same mercenary payment calculation used for the player.
+  (assign, ":total_fee", 0),
+  (try_for_parties, ":party_no"),
+    (gt, ":party_no", centers_end),
+    (party_is_active, ":party_no"),
+    (store_faction_of_party, ":party_faction", ":party_no"),
+    (eq, ":party_faction", ":mission_object"),
+    (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_kingdom_hero_party),
+    (party_slot_eq, ":party_no", slot_party_type, spt_patrol),
+    (try_begin),
+      (eq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_ENABLE),
+      (call_script, "script_dplmc_get_terrain_code_for_battle", -1, ":party_no"),
+      (call_script, "script_dplmc_party_calculate_strength_in_terrain", ":party_no", reg0, 0, 1),
+      #Cache terrain value, but use non-terrain value for cost
+      (assign, reg0, reg1),
+    (else_try),
+      (call_script, "script_party_calculate_strength", ":party_no", 0),
+    (try_end),
+    (val_div, reg0, 2),
+    (val_add, reg0, 30),
+    (call_script, "script_round_value", reg0),
+    (val_max, reg0, 50),#at least 50 denarii per party
+    (val_add, ":total_fee", reg0),
+  (try_end),
+  (val_mul, ":total_fee", 4),# The mercenary fee for two weeks
 
-(val_clamp, ":total_fee", 10000,100001),
+  (try_begin),
+    #Lessen the fee if the other kingdom particularly wants war
+    (lt, "$g_mission_result_with_target", 0),
+    (val_div, ":total_fee", 2),
+  (try_end),
+  (try_begin),
+    #Increase the fee if the player's faction is allied with the target
+    #(note: this should probably be disabled altogether...)
+    (call_script, "script_dplmc_get_faction_truce_length_with_faction", ":mission_object", "$players_kingdom"),
+    (ge, reg0, dplmc_treaty_defense_days_expire),
+    (val_mul, ":total_fee", 5),
+  (else_try),
+    (store_relation, reg0, ":war_target_faction", "$players_kingdom"),
+    (val_mul, reg0, 2),
+  (try_end),
 
-(call_script, "script_dplmc_store_troop_is_female", ":mission_object"),
-(assign, reg1, ":total_fee"),
-(assign, "$temp_2", ":total_fee"),#save for later
+  (val_mul, ":total_fee", 3),
+
+  (val_clamp, ":total_fee", 10000,200001),
+
+  (call_script, "script_dplmc_store_troop_is_female", ":mission_object"),
+  (assign, reg1, ":total_fee"),
+  (assign, "$temp_2", ":total_fee"),#save for later
 ],
-#"{s4} is willing to start a war with {s31} but needs 5000 denarii to prepare his army.","dplmc_companion_war_pay",[
-"{s4} is willing to start a war with {s31} but needs {reg1} denarii to prepare {reg0?her:his} army.","dplmc_companion_war_pay",[
-     ]],
+"{s4} is willing to start a war with {s31} but needs {reg1} denarii to prepare {reg0?her:his} army.",
+"dplmc_companion_war_pay",[
+]],
+
 ##diplomacy end+
 
 ##option to pay for war
@@ -45021,67 +45013,54 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 
 ##diplomacy begin
 [anyone, "party_encounter_offer_dont_fight",[
-(troop_get_slot,":reputation", "$g_talk_troop", slot_lord_reputation_type),
-(neq, ":reputation", lrep_upstanding),
-(neq, ":reputation", lrep_debauched),
-##diplomacy start+
-(neq, ":reputation", lrep_moralist),
-#Martial does not accept when marshall
-(this_or_next|neq, ":reputation", lrep_martial),
-   (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_marshall, "$g_talk_troop"),
+  (troop_get_slot,":reputation", "$g_talk_troop", slot_lord_reputation_type),
+  (neq, ":reputation", lrep_upstanding),
+  (neq, ":reputation", lrep_debauched),
+  (neq, ":reputation", lrep_moralist),
 
-#Leaders of kingdoms never accept this (for lieges this shouldn't appear anyway)
-(this_or_next|neg|is_between, "$g_talk_troop_faction", kingdoms_begin, kingdoms_end),
-   (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+  #Martial does not accept when marshall
+  (this_or_next|neq, ":reputation", lrep_martial),
+  (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_marshall, "$g_talk_troop"),
 
-(assign, ":can_intrigue", 0),
-(try_begin),
-   (neg|is_between, "$g_talk_troop_faction", kingdoms_begin, kingdoms_end),
-   (assign, ":can_intrigue", 1),
-(else_try),
-   (call_script, "script_cf_troop_can_intrigue", "$g_talk_troop", 1),
-   (assign, ":can_intrigue", 1),
-(try_end),
-(eq, ":can_intrigue", 1),
-##diplomacy end+
+  #Leaders of kingdoms never accept this (for lieges this shouldn't appear anyway)
+  (this_or_next|neg|is_between, "$g_talk_troop_faction", kingdoms_begin, kingdoms_end),
+  (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
 
-(gt, "$g_talk_troop_effective_relation", 0),
-(store_mul, ":rel_sq", "$g_talk_troop_effective_relation", "$g_talk_troop_effective_relation"),
-(val_mul, ":rel_sq", 5),
-(store_random_in_range, ":random", 5000, 10000),
-(store_sub, ":amount", ":random", ":rel_sq"),
-(val_max, ":amount", 0),
-##diplomacy start+ Alternate calculation, since the player is effectively "ransoming himself"
-(call_script, "script_calculate_ransom_amount_for_troop", "trp_player"),
-(game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
-(try_begin),
-   (le, ":reduce_campaign_ai", 0),#Hard
-   (val_mul, reg0, 3),
-   (val_div, reg0, 4),
-(else_try),
-   (le, ":reduce_campaign_ai", 1),#Medium
-   (val_div, reg0, 2),
-(else_try),
-   (ge, ":reduce_campaign_ai", 2),#Easy
-   (val_div, reg0, 4),
-(try_end),
-(val_max, ":amount", reg0),
-##diplomacy end+
+  (assign, ":can_intrigue", 0),
+  (try_begin),
+    (neg|is_between, "$g_talk_troop_faction", kingdoms_begin, kingdoms_end),
+    (assign, ":can_intrigue", 1),
+  (else_try),
+    (call_script, "script_cf_troop_can_intrigue", "$g_talk_troop", 1),
+    (assign, ":can_intrigue", 1),
+  (try_end),
+  (eq, ":can_intrigue", 1),
+  ##diplomacy end+
 
-(party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
-(try_for_range, ":i_stack", 0, ":num_stacks"),
-(party_stack_get_size, ":stack_size", "p_main_party", ":i_stack"),
-(val_mul, ":stack_size", 12),
-(val_add, ":amount", ":stack_size"),
-(try_end),
+  (gt, "$g_talk_troop_effective_relation", 0),
+  (store_mul, ":rel_sq", "$g_talk_troop_effective_relation", "$g_talk_troop_effective_relation"),
+  (val_mul, ":rel_sq", 5),
+  (store_random_in_range, ":random", 5000, 25000),
+  (store_sub, ":amount", ":random", ":rel_sq"),
+  (val_max, ":amount", 0),
+  ##diplomacy start+ Alternate calculation, since the player is effectively "ransoming himself"
+  (call_script, "script_calculate_ransom_amount_for_troop", "trp_player"),
+  (val_max, ":amount", reg0),
+  ##diplomacy end+
 
-(val_div, ":amount", 10),
-(val_mul, ":amount", 10),
-(assign, reg0, ":amount"),
-],
-#SB : remove "cash"
-"If you pay me {reg0} denarii I will let you go, recreant.", "party_encounter_offer_money",[
- ]],
+  (party_get_num_companion_stacks, ":num_stacks", "p_main_party"),
+  (try_for_range, ":i_stack", 0, ":num_stacks"),
+    (party_stack_get_size, ":stack_size", "p_main_party", ":i_stack"),
+    (val_mul, ":stack_size", 12),
+    (val_add, ":amount", ":stack_size"),
+  (try_end),
+
+  (val_div, ":amount", 10),
+  (val_mul, ":amount", 10),
+  (assign, reg0, ":amount"),
+],"If you pay me {reg0} denarii I will let you go, recreant.",
+"party_encounter_offer_money",[
+]],
 
 [anyone|plyr,"party_encounter_offer_money",[
 (store_troop_gold, ":cur_gold", "trp_player"),
@@ -48635,7 +48614,7 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 [anyone,"lord_husband_auto_recruit",[
 	#Don't apply it to former comrades under arms
 	(this_or_next|neg|is_between, "$g_talk_troop", companions_begin, companions_end),
-		(troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_nonplayer_entry),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_nonplayer_entry),
 	#(this_or_next|neg|is_between, "$g_talk_troop", pretenders_begin, pretenders_end),
 	#	(troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_nonplayer_entry),
 	#Only apply reluctance when being recruited from an actual kingdom
@@ -48660,22 +48639,11 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 	(assign, ":new_score", "$g_talk_troop_effective_relation"),
 	(try_begin),
 		(this_or_next|eq, ":new_leader", "trp_player"),
-			(eq, "$players_kingdom", "fac_player_supporters_faction"),
+    (eq, "$players_kingdom", "fac_player_supporters_faction"),
 		(val_max, ":new_score", "$g_talk_troop_effective_relation"),
-		(game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
-		(assign, reg0, 20),#required right to rule
-		(try_begin),
-			(eq, ":reduce_campaign_ai", 0),#hard: penalty for every point below 75, bonus for every point above
-			(assign, reg0, 75),
-		(else_try),
-			(eq, ":reduce_campaign_ai", 1),#normal: penalty for every point below 50, bonus for every point above
-			(assign, reg0, 50),
-		(else_try),
-			(eq, ":reduce_campaign_ai", 2),#easy: penalty for every point below 25, bonus for every point above
-			(assign, reg0, 20),
-		(try_end),
+
 		(val_add, ":new_score", "$player_right_to_rule"),
-		(val_sub, ":new_score", reg0),
+		(val_sub, ":new_score", 75), # require 75 right to rule
 	(else_try),
 		(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":new_leader"),
 		(gt, reg0, "$g_talk_troop_relation"),
@@ -48685,7 +48653,7 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 		(store_skill_level, ":persuasion", "skl_persuasion", "trp_player"),
 		(ge, ":persuasion", 1),
 		(try_begin),
-   			(ge, ":new_score", 0),
+      (ge, ":new_score", 0),
 			(store_add, reg0, ":persuasion", 10),
 			(val_mul, ":new_score", reg0),
 			(val_div, ":new_score", 10),
@@ -49982,17 +49950,6 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
   (else_try),
     (store_add, ":score", ":persuasion", "$g_talk_troop_relation"),
     (val_add, ":score", ":willingness_to_intrigue"),
-    (game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
-    (try_begin),
-      (eq, ":reduce_campaign_ai", 0), #hard
-      (val_sub, ":score", 5),
-    (else_try),
-      (eq, ":reduce_campaign_ai", 1), #medium
-    (else_try),
-      (eq, ":reduce_campaign_ai", 2), #easy
-      (val_add, ":score", 5),
-    (try_end),
-
     (lt, ":score", 10),
 
     (str_store_string, s12, "str_s14"),
@@ -50521,44 +50478,34 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 ##Before, Upstanding and Martial lords never married the player.  This check has been
 ##added because it is now possible to marry them.
 [anyone,"lord_spouse_leave_faction_proclaim_queen",[
-   (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),#for promoted ladies
-   (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_upstanding),
-      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_martial),
+  (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),#for promoted ladies
+  (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_upstanding),
+  (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_martial),
 
-   (store_skill_level, ":persuasion_skill", "skl_persuasion", "trp_player"),
+  (store_skill_level, ":persuasion_skill", "skl_persuasion", "trp_player"),
 
-   (faction_get_slot, ":faction_liege", "$g_talk_troop_faction", slot_faction_leader),
-   (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":faction_liege"),
+  (faction_get_slot, ":faction_liege", "$g_talk_troop_faction", slot_faction_leader),
+  (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":faction_liege"),
+	(val_add, reg0, 10),
 
-   (game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
-   (try_begin),
-      (eq, ":reduce_campaign_ai", 0),#hard, fail if relation above -10
-	  (val_add, reg0, 10),
-   (else_try),
-      (eq, ":reduce_campaign_ai", 1),#normal, fail if relation above 0
-   (else_try),
-      (eq, ":reduce_campaign_ai", 2),#easy, fail if relation above 10
-	  (val_sub, reg0, 10),
-   (try_end),
+  #Must beat player's persuasion
+  (ge, reg0, ":persuasion_skill"),
 
-   #Must beat player's persuasion
-   (ge, reg0, ":persuasion_skill"),
-
-   #Store liege name and gender
-   (str_store_troop_name, s11, ":faction_liege"),
-   (call_script, "script_dplmc_store_troop_is_female", ":faction_liege"),
-], "I swore an oath to serve {s11}, and {reg0?she:he} has upheld {reg0?her:his} end of the bargain.  Let us have no more of this talk.",
-		"lord_pretalk",
-[
-		#(faction_get_slot, ":faction_liege", "$g_talk_troop_faction", slot_faction_leader),
-		#(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":faction_liege"),
-		#(try_begin),
-		#	(this_or_next|gt, reg0, "$g_talk_troop_effective_relation"),
-		#		(ge, reg0, 20),
-		#	(call_script, "script_change_player_relation_with_troop", ":faction_leader", -1),
-		#(try_end),
-		(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
-	]],
+  #Store liege name and gender
+  (str_store_troop_name, s11, ":faction_liege"),
+  (call_script, "script_dplmc_store_troop_is_female", ":faction_liege"),
+],
+"I swore an oath to serve {s11}, and {reg0?she:he} has upheld {reg0?her:his} end of the bargain.  Let us have no more of this talk.",
+"lord_pretalk",[
+  #(faction_get_slot, ":faction_liege", "$g_talk_troop_faction", slot_faction_leader),
+  #(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":faction_liege"),
+  #(try_begin),
+  #	(this_or_next|gt, reg0, "$g_talk_troop_effective_relation"),
+  #		(ge, reg0, 20),
+  #	(call_script, "script_change_player_relation_with_troop", ":faction_leader", -1),
+  #(try_end),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
+]],
 ##Not all lords are especially keen to betray.
 [anyone,"lord_spouse_leave_faction_proclaim_queen",[
 	(this_or_next|is_between, "$g_talk_troop", active_npcs_begin, active_npcs_end),
@@ -50566,24 +50513,12 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 
 	(assign, ":liege_bonus", 0),
 	(try_begin),
-		#Only apply this to the lord's first kingdom.
+		# Only apply this to the lord's first kingdom.
 		(troop_slot_eq, "$g_talk_troop", slot_troop_original_faction, "$g_talk_troop_faction"),
-		#Don't apply it to former comrades under arms
+		# Don't apply it to former comrades under arms
 		(this_or_next|neg|is_between, "$g_talk_troop", companions_begin, companions_end),
-			(troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_nonplayer_entry),
-	#	(this_or_next|neg|is_between, "$g_talk_troop", pretenders_begin, pretenders_end),
-		#	(troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_nonplayer_entry),
-		(game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
-		(try_begin),
-			(eq, ":reduce_campaign_ai", 0),#hard
-			(assign, ":liege_bonus", 75),
-		(else_try),
-			(eq, ":reduce_campaign_ai", 1),#medium
-			(assign, ":liege_bonus", 50),
-		(else_try),
-			(eq, ":reduce_campaign_ai", 2),#easy
-			(assign, ":liege_bonus", 25),
-		(try_end),
+    (troop_slot_eq, "$g_talk_troop", slot_troop_playerparty_history, dplmc_pp_history_nonplayer_entry),
+		(assign, ":liege_bonus", 75),
 	(try_end),
 
 	(call_script, "script_dplmc_get_troop_morality_value", "$g_talk_troop", tmt_honest),
@@ -51976,10 +51911,8 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
     (call_script, "script_change_player_right_to_rule", 5),
   (else_try), #SB : add renown, because why not
     (str_store_troop_name, s4, ":recruitment_candidate"),
-    (assign, ":renown_change", 20),
-    (options_get_campaign_ai, ":renown_change"),
-    (val_mul, ":renown_change", 10),
-    (val_add, ":renown_change", 30), #30 to 50
+
+    (store_random_in_range, ":renown_change", 75, 151),
     (call_script, "script_change_troop_renown", ":recruitment_candidate", ":renown_change"), #careful, this modifies reg4/5 as output
   (try_end),
 ]],
@@ -54353,58 +54286,47 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 ],
 "{s66}, I wish to be dismissed from service.", "lord_ask_leave_service_nero",[]],
 
-[anyone|plyr,"lord_talk",[##diplomacy start+
-          #Change the requirements.  Now, the player can grant troops to another lord if:
-    # - The player is the faction leader (this used to be the ONLY condition)
-    # - The player is the faction marshall
-    # - The lord is the player's spouse.
-    # - The lord is an affiliated family member.
-    # - The player is a former companion with good relations.
-    #There are additional details, for which you should check script_dplmc_player_can_give_troops_to_troop
-    (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
-    (ge, "$g_talk_troop_faction_relation", 0),
-    #Check really is leading a party
-    (troop_get_slot, ":party_no", "$g_talk_troop", slot_troop_leaded_party),
-    (ge, ":party_no", 1),
-    (party_get_attached_to, ":cur_attached_party", ":party_no"),
-    (lt, ":cur_attached_party", 0),
-    #Logic moved to separate script:
-    (call_script, "script_dplmc_player_can_give_troops_to_troop", "$g_talk_troop"),
-    (ge, reg0, 1),
-    ##diplomacy end+
-],
-"I want to give some troops to you.", "lord_give_troops",[]],
+[anyone|plyr,"lord_talk",[
+  ##diplomacy start+
+  #Change the requirements.  Now, the player can grant troops to another lord if:
+  # - The player is the faction leader (this used to be the ONLY condition)
+  # - The player is the faction marshall
+  # - The lord is the player's spouse.
+  # - The lord is an affiliated family member.
+  # - The player is a former companion with good relations.
+  #There are additional details, for which you should check script_dplmc_player_can_give_troops_to_troop
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+  (ge, "$g_talk_troop_faction_relation", 0),
+  #Check really is leading a party
+  (troop_get_slot, ":party_no", "$g_talk_troop", slot_troop_leaded_party),
+  (ge, ":party_no", 1),
+  (party_get_attached_to, ":cur_attached_party", ":party_no"),
+  (lt, ":cur_attached_party", 0),
+  #Logic moved to separate script:
+  (call_script, "script_dplmc_player_can_give_troops_to_troop", "$g_talk_troop"),
+  (ge, reg0, 1),
+  ##diplomacy end+
+],"I want to give some troops to you.",
+"lord_give_troops",[]],
 
 ##diplomacy start+
 #Lords will not accept troops when they are at twice their ordinary capacity
 #(on Medium; value is higher or lower depending on difficulty setting).
 [anyone,"lord_give_troops",[
-	(call_script, "script_party_get_ideal_size", "$g_talk_troop_party"),
-	(assign, ":limit", reg0),
-	(game_get_reduce_campaign_ai, ":reduce_campaign_ai"),
-	(try_begin),
-		(le, ":reduce_campaign_ai", 0),#Hard: maximum is 150% of normal size
-		(val_mul, ":limit", 3),
-		(val_add, ":limit", 1),
-		(val_div, ":limit", 2),
-		(val_max, ":limit", 100),#or 100 troops, whichever is more
-	(else_try),
-		(eq, ":reduce_campaign_ai", 1),#Medium: maximum is 200% of normal size
-		(val_mul, ":limit", 2),
-		(val_max, ":limit", 150),#or 150 troops, whichever is more
-	(else_try),
-		(ge, ":reduce_campaign_ai", 2),#Easy: maximum is 250% of normal size
-		(val_mul, ":limit", 5),
-		(val_add, ":limit", 1),
-		(val_div, ":limit", 2),
-		(val_max, ":limit", 200),#or 200 troops, whichever is more
-	(try_end),
+  (call_script, "script_party_get_ideal_size", "$g_talk_troop_party"),
+  (assign, ":limit", reg0),
 
-	(store_party_size_wo_prisoners, ":party_size", "$g_talk_troop_party"),
-	(ge, ":party_size", ":limit"),
+  (val_mul, ":limit", 3),
+  (val_add, ":limit", 1),
+  (val_div, ":limit", 2),
+  (val_max, ":limit", 100),
+
+  (store_party_size_wo_prisoners, ":party_size", "$g_talk_troop_party"),
+  (ge, ":party_size", ":limit"),
 ],
-"I can't accomodate any more {reg65?men:soldiers} right now.  My supply lines are overtaxed as it is.", "lord_pretalk",
-[]],
+"I can't accomodate any more {reg65?men:soldiers} right now.  My supply lines are overtaxed as it is.",
+"lord_pretalk",[
+]],
 
 [anyone,"lord_give_troops",[
 	#Same behavior as normal, but print a different message.
@@ -73704,25 +73626,24 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     # (troop_set_slot, "$g_talk_troop", slot_troop_trainer_num_opponents_to_beat, 99999),
    ]],
 
-[anyone,"trainer_practice_1",
-[(troop_slot_eq, "$g_talk_troop", slot_troop_trainer_num_opponents_to_beat, 0),
-   (troop_get_slot, ":diff", "$g_talk_troop", slot_troop_trainer_training_difficulty),
-   (neq, ":diff", 3),
-   (store_add, ":diffstr", ":diff", "str_tier_reg"),
-   (str_store_string, s2, ":diffstr"),
-  ], "{s2}", "trainer_practice_1",
-[#(troop_set_slot, "$g_talk_troop", slot_num_opponents_to_beat_in_a_row, 3),
-    (troop_get_slot, ":diff", "$g_talk_troop", slot_troop_trainer_training_difficulty),
-    (val_add, ":diff", 1),
-    (troop_set_slot,"$g_talk_troop", slot_troop_trainer_training_difficulty, ":diff"),
-    (store_add, ":opponent", fighters_begin, ":diff"),
-    (troop_set_slot, "$g_talk_troop", slot_troop_trainer_num_opponents_to_beat, 3),
-    (troop_set_slot, "$g_talk_troop", slot_troop_trainer_opponent_troop, ":opponent"),
-    #reward
-    (options_get_campaign_ai, ":reduce"),
-    (val_mul, ":diff", 50),
-    (store_mul, ":xp", ":diff", ":reduce"),
-    (add_xp_to_troop,":xp", "$g_player_troop"),
+[anyone,"trainer_practice_1",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_trainer_num_opponents_to_beat, 0),
+  (troop_get_slot, ":diff", "$g_talk_troop", slot_troop_trainer_training_difficulty),
+  (neq, ":diff", 3),
+  (store_add, ":diffstr", ":diff", "str_tier_reg"),
+  (str_store_string, s2, ":diffstr"),
+], "{s2}",
+"trainer_practice_1",[
+  (troop_get_slot, ":diff", "$g_talk_troop", slot_troop_trainer_training_difficulty),
+  (val_add, ":diff", 1),
+  (troop_set_slot,"$g_talk_troop", slot_troop_trainer_training_difficulty, ":diff"),
+  (store_add, ":opponent", fighters_begin, ":diff"),
+  (troop_set_slot, "$g_talk_troop", slot_troop_trainer_num_opponents_to_beat, 3),
+  (troop_set_slot, "$g_talk_troop", slot_troop_trainer_opponent_troop, ":opponent"),
+  #reward
+  (val_mul, ":diff", 50),
+  (store_mul, ":xp", ":diff", 2),
+  (add_xp_to_troop,":xp", "$g_player_troop"),
 ]],
 
 [anyone,"trainer_practice_1",

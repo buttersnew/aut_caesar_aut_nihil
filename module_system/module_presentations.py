@@ -19478,7 +19478,7 @@ presentations = presentations_wse2 + [
       (eq, ":object", "$g_presentation_obj_28"),
       (str_store_string,s2,"str_campaign_ai"),
       (str_store_string,s3,"str_difficulty_setting"),
-      (str_store_string,s4,"@Campaign AI affects many aspects of the game, like:^- size of bandit parties^- renown loss in battles^- chance of recruiting lords^- taxes^- how lords get reinforcements^- how lords respond to the player's requests"),
+      (str_store_string,s4,"@Effects size of bandit parties:^^-) Poor: 50% Size.^^-) Average: 75% Size.^^-) Good: 100% Size. THIS DOES NOT EFFECT EXISTING PARTIES!"),
       (overlay_set_display, "$g_presentation_obj_4", 0),
     (else_try),
       (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_29"),
@@ -19917,6 +19917,7 @@ presentations = presentations_wse2 + [
     (else_try),
       (eq, ":object", "$g_presentation_obj_28"),
       (options_set_campaign_ai, ":value"),
+      (call_script, "script_update_party_creation_random_limits"),
     (else_try),
       (eq, ":object", "$g_presentation_obj_29"),
       (options_set_combat_speed, ":value"),
@@ -23500,6 +23501,8 @@ presentations = presentations_wse2 + [
 
         (set_container_overlay, reg43),#start scroll
 
+
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 45, "trp_germanic_nightwarrior", 210, 2310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 44, "trp_saka_amazon", 60, 2310),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 43, "trp_saka_horse_archer", 210, 2110),
@@ -23512,7 +23515,7 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_egyptian_infantry_heavy", 560, 1910),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_egyptian_archers", 210, 1910),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_germanic_nightwarrior", 60, 1910),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_egyptian_officer", 60, 1910),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_palmyra_infantry", 560, 1710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_palmyra_cataphract", 710, 1710),
@@ -39286,7 +39289,7 @@ presentations = presentations_wse2 + [
         (else_try),
             (faction_get_slot, ":culture", ":npc_faction", slot_faction_culture),
             (store_sub, ":string", ":culture", "fac_culture_dacian"),
-            (val_add, ":string", "str_culture_1"),
+            (val_add, ":string", "str_culture_dacian"),
             (str_store_string, s0, ":string"),
             (str_store_faction_name, s2, ":npc_faction"),
             (str_store_faction_name, s1, ":culture"),

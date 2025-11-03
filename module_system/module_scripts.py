@@ -2856,8 +2856,13 @@ scripts = scripts_hardcoded + [
     (faction_set_slot, "fac_culture_syrian", slot_faction_town_spy_male_troop, "trp_spy_walker_1"),
     (faction_set_slot, "fac_culture_syrian", slot_faction_town_spy_female_troop, "trp_spy_walker_2"),
 
-    #i think this is necessary
-    (faction_set_slot, "fac_judean_rebels", slot_faction_culture, -1),
+    # rebel and bandit factions
+    (faction_set_slot, "fac_judean_rebels", slot_faction_culture, "fac_culture_judean"),
+    (faction_set_slot, "fac_furor_teutonicus", slot_faction_culture, "fac_culture_germanic"),
+    (faction_set_slot, "fac_egypt", slot_faction_culture, "fac_culture_egyptian"),
+    (faction_set_slot, "fac_picton", slot_faction_culture, "fac_culture_caledonian"),
+    (faction_set_slot, "fac_arabian_bandits", slot_faction_culture, "fac_culture_arabian"),
+    (faction_set_slot, "fac_roman_rebells", slot_faction_culture, "fac_culture_roman"),##roman peasant rebels
 
     # Factions:
     (faction_set_slot, "fac_kingdom_1", slot_faction_culture, "fac_culture_dacian"),
@@ -2969,12 +2974,9 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_kingdom_19_lord", slot_troop_renown, 300),
 
     (faction_set_slot, "fac_kingdom_7", slot_faction_culture, "fac_culture_roman"),
-    (faction_set_slot, "fac_roman_rebells", slot_faction_culture, "fac_culture_roman"),##roman peasant rebels
     (faction_set_slot, "fac_kingdom_7", slot_faction_leader, "trp_kingdom_7_lord"),
 
     (troop_set_slot, "trp_kingdom_7_lord", slot_troop_renown, 1500),
-
-    (faction_set_slot, "fac_picton", slot_faction_culture, "fac_culture_caledonian"),
 
     (assign, ":player_faction_culture", "fac_culture_roman"),
     (faction_set_slot, "fac_player_supporters_faction", slot_faction_culture, ":player_faction_culture"),
@@ -4949,19 +4951,35 @@ scripts = scripts_hardcoded + [
 ]),
 #NPC companion changes end
 
-  #script_update_party_creation_random_limits
-  # INPUT: none
-  ("update_party_creation_random_limits",
-    [
-    #use now game difficulty
-    # (options_get_campaign_ai, ":upper_limit"),
-    # (val_mul, ":upper_limit", -50),
-    # (val_add, ":upper_limit", 100),
-    # (val_clamp, ":upper_limit", 0, 100),
-    (assign, ":upper_limit", 50),
+#script_update_party_creation_random_limits
+# INPUT: none
+("update_party_creation_random_limits",[
+    # use now game difficulty = bandit party size
+    #0 = good, 1 = average, 2 = poor
+
+    (options_get_campaign_ai, ":difficulty"),
+    (try_begin),
+        (eq, ":difficulty", 0),
+        (assign, ":upper_limit", 85),
+    (else_try),
+        (eq, ":difficulty", 1),
+        (assign, ":upper_limit", 65),
+    (else_try),
+        (assign, ":upper_limit", 45),
+    (try_end),
+
+    (store_div, ":unrest_addition", "$g_unrest", 10),
+    (val_add, ":upper_limit", ":unrest_addition"),
+
+    # (assign, reg13, ":difficulty"),
+    # (assign, reg12, ":upper_limit"),
+    # (display_message, "@{reg12}, {reg13}"),
+
+    (val_min, ":upper_limit", 100),
+
     (set_party_creation_random_limits, 0, ":upper_limit"),
     (assign, reg0, ":upper_limit"),
-  ]),
+]),
 
 #script_set_trade_route_between_centers
 # INPUT:
@@ -5914,10 +5932,10 @@ scripts = scripts_hardcoded + [
     (party_set_slot, ":party", slot_party_cached_strength, reg0),
 ]),
 
-  #script_loot_player_items:
-  # INPUT: arg1 = enemy_party_no
-  # Output: none
-  ("loot_player_items",[
+#script_loot_player_items:
+# INPUT: arg1 = enemy_party_no
+# Output: none
+("loot_player_items",[
     (store_script_param, ":enemy_party_no", 1),
     ##diplomacy start+ some enemy lords will not loot the personal equipment of a player who surrendered
     (assign, ":save_reg0", reg0),
@@ -5935,7 +5953,6 @@ scripts = scripts_hardcoded + [
     # The enemy leader's looting skill will affect the amount of gold lootable.
     (assign, ":merciful", 0),
     (assign, ":party_leader", -1),
-    (options_get_campaign_ai, ":reduce_campaign_ai"),
     (try_begin),
 	    #Possibility the player's personal equipment will be untouched if he surrendered
         (ge, "$g_player_surrenders", 1),
@@ -6008,17 +6025,10 @@ scripts = scripts_hardcoded + [
                 (troop_slot_eq, ":party_leader", slot_lord_reputation_type, lrep_quarrelsome),
                 (val_min, ":probability_modifier", -10),#set to -10 unless already lower
             (try_end),
+
             #Now store into reg0 the percent chance of mercy
-            (try_begin),
-                (le, ":reduce_campaign_ai", 0),#Hard: base chance 25% + relation
-                (store_add, reg0, ":relation", 25),
-            (else_try),
-                (eq, ":reduce_campaign_ai", 1),#Medium: base chance 50% + relation
-                (store_add, reg0, ":relation", 50),
-            (else_try),
-                (ge, ":reduce_campaign_ai", 2),#Easy: base chance 75% + relation
-                (store_add, reg0, ":relation", 75),
-            (try_end),
+            (store_add, reg0, ":relation", 50),
+
             (val_add, reg0, ":probability_modifier"),#modify the chance based on the captor's personality
             (val_max, reg0, ":probability_modifier"),#at least this much of a chance
             (val_max, reg0, 5),#at least a 5% chance
@@ -6030,12 +6040,90 @@ scripts = scripts_hardcoded + [
         #Surrendered to a non-hero party
         (gt, ":enemy_party_no", 0),
         (ge, "$g_player_surrenders", 1),
+
+        # consider cultural antipathy when a non-hero party captured the player
+        # by default give ~50% base chance of mercy, but reduce it if cultures differ
+        (store_faction_of_party, ":enemy_faction", ":enemy_party_no"),
+        (assign, ":antipathy_penalty", 0),
+        # frist try to get player culture
+        (try_begin),
+            # if player belongs to a kingdom, compare cultures
+            (gt, "$players_kingdom", 0),
+            (faction_get_slot, ":player_culture", "$players_kingdom", slot_faction_culture),
+            (is_between, ":player_culture", cultures_begin, cultures_end),
+        (else_try),
+            (troop_get_slot, ":player_culture", "trp_player", slot_troop_culture),
+        (try_end),
+
+        (try_begin),
+            (faction_get_slot, ":enemy_culture", ":enemy_faction", slot_faction_culture),
+            (is_between, ":enemy_culture", cultures_begin, cultures_end),
+
+            (try_begin),
+                (eq, ":enemy_culture", ":player_culture"),
+                (assign, ":antipathy_penalty", -10),
+            (else_try),
+                (this_or_next|eq, ":enemy_culture", "fac_culture_bosporan"),
+                (this_or_next|eq, ":player_culture", "fac_culture_roman"),
+                (eq, ":player_culture", "fac_culture_parthian"),
+                (eq, ":enemy_culture", "fac_culture_greek"),
+                (assign, ":antipathy_penalty", 10),
+            (else_try),
+                (eq, ":player_culture", "fac_culture_greek"),
+                (this_or_next|eq, ":enemy_culture", "fac_culture_bosporan"),
+                (this_or_next|eq, ":enemy_culture", "fac_culture_roman"),
+                (eq, ":enemy_culture", "fac_culture_parthian"),
+                (assign, ":antipathy_penalty", 10),
+            (else_try),
+                (eq, ":player_culture", "fac_culture_roman"),
+                (eq, ":enemy_culture", "fac_culture_judean"),
+                (assign, ":antipathy_penalty", 70),
+            (else_try),
+                (eq, ":player_culture", "fac_culture_judean"),
+                (eq, ":enemy_culture", "fac_culture_roman"),
+                (assign, ":antipathy_penalty", 70),
+            (else_try),
+                (eq, ":player_culture", "fac_culture_parthian"),
+                (eq, ":enemy_culture", "fac_culture_roman"),
+                (assign, ":antipathy_penalty", 55),
+            (else_try),
+                (eq, ":player_culture", "fac_culture_roman"),
+                (eq, ":enemy_culture", "fac_culture_parthian"),
+                (assign, ":antipathy_penalty", 55),
+            (else_try),
+                (this_or_next|eq, ":enemy_culture", "fac_culture_roman"),
+                (this_or_next|eq, ":enemy_culture", "fac_culture_egyptian"),
+                (this_or_next|eq, ":enemy_culture", "fac_culture_greek"),
+                (this_or_next|eq, ":enemy_culture", "fac_culture_parthian"),
+                (eq, ":enemy_culture", "fac_culture_sarmatian"),
+
+                (this_or_next|eq, ":player_culture", "fac_culture_caledonian"),
+                (this_or_next|eq, ":player_culture", "fac_culture_celtic"),
+                (eq, ":player_culture", "fac_culture_germanic"),
+                (assign, ":antipathy_penalty", 45),
+            (else_try),
+                (this_or_next|eq, ":player_culture", "fac_culture_roman"),
+                (this_or_next|eq, ":player_culture", "fac_culture_egyptian"),
+                (this_or_next|eq, ":player_culture", "fac_culture_greek"),
+                (this_or_next|eq, ":player_culture", "fac_culture_parthian"),
+                (eq, ":player_culture", "fac_culture_sarmatian"),
+
+                (this_or_next|eq, ":enemy_culture", "fac_culture_caledonian"),
+                (this_or_next|eq, ":enemy_culture", "fac_culture_celtic"),
+                (eq, ":enemy_culture", "fac_culture_germanic"),
+                (assign, ":antipathy_penalty", 45),
+            (else_try),
+                (is_between, ":enemy_culture", cultures_begin, cultures_end),
+                (neq, ":player_culture", ":enemy_culture"),
+                (assign, ":antipathy_penalty", 35),
+            (try_end),
+        (try_end),
+
+        (store_sub, ":mercy_threshold", 55, ":antipathy_penalty"),
+        (val_max, ":mercy_threshold", 5),
+
         (store_random_in_range, reg0, 1, 101),
-        (this_or_next|lt, reg0, 25),#Hard: 25% chance
-        (ge, ":reduce_campaign_ai", 1),
-        (this_or_next|lt, reg0, 50),#Medium: 50% chance
-        (ge, ":reduce_campaign_ai", 2),
-        (lt, reg0, 75),#Easy: 75% chance
+        (lt, reg0, ":mercy_threshold"),
         (assign, ":merciful", 1),
     (try_end),
     (try_begin),
@@ -11392,7 +11480,7 @@ scripts = scripts_hardcoded + [
         (else_try),
             (assign, ":is_bandit", 0),
         (try_end),
-        (options_get_campaign_ai, ":join_sub"), #easier = smaller distance bandits
+
         (assign, ":join_distance", 3), #day/not bandit
         (try_begin),#Native behaviour
             (eq, "$g_dplmc_terrain_advantage", DPLMC_TERRAIN_ADVANTAGE_DISABLE),
@@ -11421,7 +11509,6 @@ scripts = scripts_hardcoded + [
             (try_begin),
                 (eq, ":is_bandit", 1),
                 (val_sub, ":join_distance", 1), #day/bandit, value of 3
-                (val_sub, ":join_distance", ":join_sub"), #can reduce it down to 1 on easy mode
                 (is_currently_night), #night/bandit
                 (val_add, ":join_distance", 1), #less sharp penalty, value of 2
             (try_end),
@@ -11433,7 +11520,7 @@ scripts = scripts_hardcoded + [
                     (get_party_ai_object, ":obj", ":party_no"),#just in case
                     (eq, ":behavior", ai_bhvr_escort_party),
                     (eq, ":obj", "p_main_party"),
-                    (val_add, ":join_distance", ":join_sub"),#they stray off easily
+                    (val_add, ":join_distance", 1),#they stray off easily
                 (try_end),
             (else_try), #representing preparedness to join battle
                 (this_or_next|eq, ":behavior", ai_bhvr_patrol_party),
@@ -11448,7 +11535,7 @@ scripts = scripts_hardcoded + [
                     (get_party_ai_object, ":obj", ":party_no"),#just in case
                     (eq, ":behavior", ai_bhvr_escort_party),
                     (eq, ":obj", "p_main_party"),
-                    (val_add, ":join_distance", ":join_sub"),#they stray off easily
+                    (val_add, ":join_distance", 1),#they stray off easily
                 (try_end),
             (try_end),
         (try_end),
@@ -11599,9 +11686,8 @@ scripts = scripts_hardcoded + [
 
             (troop_get_slot, ":limit", "$g_player_troop", slot_troop_renown),
             (val_sub, ":limit", dplmc_command_renown_limit),
-            (options_get_campaign_ai, ":bonus"),
-            (val_mul, ":bonus", "$player_right_to_rule"),
-            (val_add, ":limit", ":bonus"),
+
+            (val_add, ":limit", "$player_right_to_rule"),
 
             (assign, ":continue", -1), #by default, not under command
 
@@ -13984,17 +14070,8 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, ":troop_no", slot_troop_loses, ":loses"),
     (val_sub, ":cur_wealth", ":loses"),
 
-    #difficulty bonus
-    (options_get_campaign_ai, ":reduce_campaign_ai"),
-    (try_begin),
-        (eq, ":reduce_campaign_ai", 0),	#hard
-        (val_add, ":cur_wealth", 1500),
-    (else_try),
-        (eq, ":reduce_campaign_ai", 2),	#easy
-        (val_add, ":cur_wealth", 500),
-    (else_try),
-        (val_add, ":cur_wealth", 1000),
-    (try_end),
+    # general passive income
+    (val_add, ":cur_wealth", 2000),
 
     #addtional payment of Nero to ease the situation
     (try_begin),
@@ -14358,22 +14435,12 @@ scripts = scripts_hardcoded + [
             (call_script, "script_hire_men_to_kingdom_hero_party", ":troop_no", -1, ":cohort"),
         (try_end),
 
-        (assign, ":xp_rounds", 0),
-
-        (options_get_campaign_ai, ":reduce_campaign_ai"),
         (try_begin),
             (this_or_next|eq, ":troop_faction_no", "$players_kingdom"),
             (eq, ":troop_faction_no", "fac_player_supporters_faction"),
             (assign, ":xp_rounds", 0),
         (else_try),
-            (eq, ":reduce_campaign_ai", 0), #hard
             (assign, ":xp_rounds", 2),
-        (else_try),
-            (eq, ":reduce_campaign_ai", 1), #moderate
-            (assign, ":xp_rounds", 1),
-        (else_try),
-            (eq, ":reduce_campaign_ai", 2), #easy
-            (assign, ":xp_rounds", 0),
         (try_end),
 
         (troop_get_slot, ":renown", ":troop_no", slot_troop_renown),
@@ -14970,10 +15037,8 @@ scripts = scripts_hardcoded + [
 # Output: none
 # called from triggers every two hours
 ("process_village_raids",[
-    ##diplomacy start+
     (store_current_hours, ":hours"),
-    ##diplomacy end+
-    (options_get_campaign_ai, ":reduce_campaign_ai"), #SB: also move to top
+
     (try_for_range, ":village_no", villages_begin, villages_end),
         ##ICON
         (try_begin),
@@ -15069,10 +15134,6 @@ scripts = scripts_hardcoded + [
                     (party_slot_ge, ":village_no", slot_center_current_improvement, 1),
                     (party_get_slot, ":cur_improvement_end_time", ":village_no", slot_center_improvement_end_hour),
                     (store_div, ":delay", ":raid_progress_increase", 3),
-                    (try_begin),
-                        (party_slot_eq, ":village_no", slot_town_lord, "trp_player"),
-                        (val_sub, ":delay", ":reduce_campaign_ai"),
-                    (try_end),
                     (val_clamp, ":delay", 2, 8), #delayed for at least duration of raid
                     (val_add, ":cur_improvement_end_time", ":delay"),
                 (try_end),
@@ -15080,10 +15141,6 @@ scripts = scripts_hardcoded + [
                     (party_slot_ge, ":village_no", slot_center_current_improvement_2, 1),
                     (party_get_slot, ":cur_improvement_end_time", ":village_no", slot_center_improvement_2_end_hour),
                     (store_div, ":delay", ":raid_progress_increase", 3),
-                    (try_begin),
-                        (party_slot_eq, ":village_no", slot_town_lord, "trp_player"),
-                        (val_sub, ":delay", ":reduce_campaign_ai"),
-                    (try_end),
                     (val_clamp, ":delay", 2, 8), #delayed for at least duration of raid
                     (val_add, ":cur_improvement_end_time", ":delay"),
                 (try_end),
@@ -16764,8 +16821,7 @@ scripts = scripts_hardcoded + [
         # (party_add_members, ":led_party", ":troop_type", ":troop_amount"),
     # (else_try), ##do business in centers
         (is_between, ":center_no", towns_begin, towns_end),
-        (options_get_campaign_ai, ":reduce"), #0 to 2
-        (neq, ":reduce", 2), # do not hire mercs if campaign setting is poor
+
         (ge, ":troop_wealth", 15000),#has money to spare
         (try_begin), #hiring mercenaries
             (neq, ":troop_no", "trp_kingdom_7_lord"),##not nero!
@@ -23245,9 +23301,8 @@ scripts = scripts_hardcoded + [
         (party_get_num_attached_parties, ":attached", "$g_ally_party"),
         (troop_get_slot, ":limit", "$g_player_troop", slot_troop_renown),
         (val_sub, ":limit", dplmc_command_renown_limit),
-        (options_get_campaign_ai, ":bonus"),
-        (val_mul, ":bonus", "$player_right_to_rule"),
-        (val_add, ":limit", ":bonus"),
+
+        (val_add, ":limit", "$player_right_to_rule"),
 
         (assign, reg0, ":attached"),
         (val_add, ":attached", 1),
@@ -27825,107 +27880,100 @@ scripts = scripts_hardcoded + [
 # OUTPUT: none
 ("update_villages_infested_by_bandits",[
     (store_script_param, ":village_no", 1),
-    #SB : duration tweaks, remember that this is in a 72 hour slot
-    (options_get_campaign_ai, ":reduce"),
-    (val_add, ":reduce", 2), #default is 3
+
     (try_begin),
-        # (try_for_range, ":village_no", villages_begin, villages_end),
+        (check_quest_active, "qst_eliminate_bandits_infesting_village"),
+        (quest_slot_eq, "qst_eliminate_bandits_infesting_village", slot_quest_target_center, ":village_no"),
+        (quest_get_slot, ":cur_state", "qst_eliminate_bandits_infesting_village", slot_quest_current_state),
+        (val_add, ":cur_state", 1),
         (try_begin),
-            (check_quest_active, "qst_eliminate_bandits_infesting_village"),
-            (quest_slot_eq, "qst_eliminate_bandits_infesting_village", slot_quest_target_center, ":village_no"),
-            (quest_get_slot, ":cur_state", "qst_eliminate_bandits_infesting_village", slot_quest_current_state),
-            (val_add, ":cur_state", 1),
-            # (options_get_campaign_ai, ":reduce"),
-            # (val_add, ":reduce", 2), #default is 3
-            (try_begin),
-                (lt, ":cur_state", ":reduce"),
-                (quest_set_slot, "qst_eliminate_bandits_infesting_village", slot_quest_current_state, ":cur_state"),
-            (else_try),
-                (party_set_slot, ":village_no", slot_village_infested_by_bandits, 0),
-                (call_script, "script_abort_quest", "qst_eliminate_bandits_infesting_village", 2),
-            (try_end),
-        (else_try),
-            (check_quest_active, "qst_deal_with_bandits_at_lords_village"),
-            (neg|check_quest_succeeded, "qst_deal_with_bandits_at_lords_village"), #prevent failing after succeeding
-            (quest_slot_eq, "qst_deal_with_bandits_at_lords_village", slot_quest_target_center, ":village_no"),
-            (quest_get_slot, ":cur_state", "qst_deal_with_bandits_at_lords_village", slot_quest_current_state),
-            (val_add, ":cur_state", 1),
-            (try_begin),
-                (lt, ":cur_state", ":reduce"),
-                (quest_set_slot, "qst_deal_with_bandits_at_lords_village", slot_quest_current_state, ":cur_state"),
-            (else_try),
-                (party_set_slot, ":village_no", slot_village_infested_by_bandits, 0),
-                (call_script, "script_abort_quest", "qst_deal_with_bandits_at_lords_village", 2),
-            (try_end),
+            (lt, ":cur_state", 4),
+            (quest_set_slot, "qst_eliminate_bandits_infesting_village", slot_quest_current_state, ":cur_state"),
         (else_try),
             (party_set_slot, ":village_no", slot_village_infested_by_bandits, 0),
-            #SB : prosperity linked infestation
-            (party_get_slot, ":prosperity", ":village_no", slot_town_prosperity),
-            (val_div, ":prosperity", 2), #0 to 50
-            (val_add, ":prosperity", 75), #75 to 125
-            (store_random_in_range, ":random_no", 0, ":prosperity"),
+            (call_script, "script_abort_quest", "qst_eliminate_bandits_infesting_village", 2),
+        (try_end),
+    (else_try),
+        (check_quest_active, "qst_deal_with_bandits_at_lords_village"),
+        (neg|check_quest_succeeded, "qst_deal_with_bandits_at_lords_village"), #prevent failing after succeeding
+        (quest_slot_eq, "qst_deal_with_bandits_at_lords_village", slot_quest_target_center, ":village_no"),
+        (quest_get_slot, ":cur_state", "qst_deal_with_bandits_at_lords_village", slot_quest_current_state),
+        (val_add, ":cur_state", 1),
+        (try_begin),
+            (lt, ":cur_state", 4),
+            (quest_set_slot, "qst_deal_with_bandits_at_lords_village", slot_quest_current_state, ":cur_state"),
+        (else_try),
+            (party_set_slot, ":village_no", slot_village_infested_by_bandits, 0),
+            (call_script, "script_abort_quest", "qst_deal_with_bandits_at_lords_village", 2),
+        (try_end),
+    (else_try),
+        (party_set_slot, ":village_no", slot_village_infested_by_bandits, 0),
+        #SB : prosperity linked infestation
+        (party_get_slot, ":prosperity", ":village_no", slot_town_prosperity),
+        (val_div, ":prosperity", 2), #0 to 50
+        (val_add, ":prosperity", 75), #75 to 125
+        (store_random_in_range, ":random_no", 0, ":prosperity"),
 
-            (try_begin),
-                (check_quest_active, "qst_collect_taxes"),
-                (quest_slot_eq, "qst_collect_taxes", slot_quest_target_center, ":village_no"),
-                (assign, ":random_no", 100),
-            (else_try),
-                (check_quest_active, "qst_train_peasants_against_bandits"),
-                (quest_slot_eq, "qst_train_peasants_against_bandits", slot_quest_target_center, ":village_no"),
-                (assign, ":random_no", 100),
-            (else_try),
-                (party_slot_ge, ":village_no", slot_center_has_manor, 1),
-                (party_get_num_companions, ":num", ":village_no"),
-                (ge, ":num", 50),
-                (assign, ":random_no", 100),
-            (try_end),
-            # (eq, ":continue", 1),
-            ## SB : update bandit creation parameters
-            ##nero claudius
-            (assign, ":change", 3),
-            (try_begin),
-                (ge, "$g_unrest", 30),
-                (val_add, ":change", 1),
-            (else_try),
-                (ge, "$g_unrest", 60),
-                (val_add, ":change", 2),
-            (else_try),
-                (ge, "$g_unrest", 80),
-                (val_add, ":change", 3),
-            (try_end),
+        (try_begin),
+            (check_quest_active, "qst_collect_taxes"),
+            (quest_slot_eq, "qst_collect_taxes", slot_quest_target_center, ":village_no"),
+            (assign, ":random_no", 100),
+        (else_try),
+            (check_quest_active, "qst_train_peasants_against_bandits"),
+            (quest_slot_eq, "qst_train_peasants_against_bandits", slot_quest_target_center, ":village_no"),
+            (assign, ":random_no", 100),
+        (else_try),
+            (party_slot_ge, ":village_no", slot_center_has_manor, 1),
+            (party_get_num_companions, ":num", ":village_no"),
+            (ge, ":num", 50),
+            (assign, ":random_no", 100),
+        (try_end),
+        # (eq, ":continue", 1),
+        ## SB : update bandit creation parameters
+        ##nero claudius
+        (assign, ":change", 3),
+        (try_begin),
+            (ge, "$g_unrest", 30),
+            (val_add, ":change", 1),
+        (else_try),
+            (ge, "$g_unrest", 60),
+            (val_add, ":change", 2),
+        (else_try),
+            (ge, "$g_unrest", 80),
+            (val_add, ":change", 3),
+        (try_end),
 
-            (try_begin),
-                (party_slot_ge, ":village_no", slot_center_has_guard, 1),
-                (val_sub, ":change", 4),
-            (try_end),
-            (try_begin),
-                (party_slot_ge, ":village_no", slot_center_has_watch_tower,1),
-                (val_sub, ":change", 2),
-            (try_end),
+        (try_begin),
+            (party_slot_ge, ":village_no", slot_center_has_guard, 1),
+            (val_sub, ":change", 4),
+        (try_end),
+        (try_begin),
+            (party_slot_ge, ":village_no", slot_center_has_watch_tower,1),
+            (val_sub, ":change", 2),
+        (try_end),
 
-            (lt, ":random_no", ":change"),## change was 3
-            (call_script, "script_center_get_bandits", ":village_no", 0),
-            (assign, ":bandit_troop", reg0),
-            (party_set_slot, ":village_no", slot_village_infested_by_bandits, ":bandit_troop"),
+        (lt, ":random_no", ":change"),## change was 3
+        (call_script, "script_center_get_bandits", ":village_no", 0),
+        (assign, ":bandit_troop", reg0),
+        (party_set_slot, ":village_no", slot_village_infested_by_bandits, ":bandit_troop"),
 
-            (try_begin),
-                (party_get_slot, ":latifundium", ":village_no", slot_center_has_latifundium),
-                (ge, ":latifundium",1),
-                #(neg|party_slot_ge, ":latifundium", slot_lat_guards, 1),
-                (store_party_size_wo_prisoners, ":garrison_size", ":latifundium"),
-                (lt, ":garrison_size", 10),
-                (party_set_slot, ":latifundium", slot_center_accumulated_rents,0),
-                (str_store_party_name, s60, ":village_no"),
-                (display_message, "@{s60} is infested by bandits, you won't recieve taxes from your latifundium there."),
-            (try_end),
-            #Reduce prosperity of the village by 3: reduce to -1
-            (call_script, "script_change_center_prosperity", ":village_no", -1),
-            (val_add, "$newglob_total_prosperity_from_bandits", -1),
-            (try_begin),
-                (eq, "$cheat_mode", 2),
-                (str_store_party_name, s1, ":village_no"),
-                (display_message, "@{!}DEBUG --{s1} is infested by bandits."),
-            (try_end),
+        (try_begin),
+            (party_get_slot, ":latifundium", ":village_no", slot_center_has_latifundium),
+            (ge, ":latifundium",1),
+            #(neg|party_slot_ge, ":latifundium", slot_lat_guards, 1),
+            (store_party_size_wo_prisoners, ":garrison_size", ":latifundium"),
+            (lt, ":garrison_size", 10),
+            (party_set_slot, ":latifundium", slot_center_accumulated_rents,0),
+            (str_store_party_name, s60, ":village_no"),
+            (display_message, "@{s60} is infested by bandits, you won't recieve taxes from your latifundium there."),
+        (try_end),
+
+        (call_script, "script_change_center_prosperity", ":village_no", -1),
+        (val_add, "$newglob_total_prosperity_from_bandits", -1),
+        (try_begin),
+            (eq, "$cheat_mode", 2),
+            (str_store_party_name, s1, ":village_no"),
+            (display_message, "@{!}DEBUG --{s1} is infested by bandits."),
         (try_end),
     (try_end),
 ]),
@@ -41384,17 +41432,7 @@ scripts = scripts_hardcoded + [
             #Because players become confused when they see very less participation from AI lords to their campaigns.
             (try_begin),
                 (faction_slot_eq, ":faction_no", slot_faction_marshall, "trp_player"),
-                (options_get_campaign_ai, ":reduce_campaign_ai"),
-                (try_begin),
-                    (eq, ":reduce_campaign_ai", 0), #hard
-                    (assign, ":no_campaign_addition", 0),
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 1), #medium
-                    (assign, ":no_campaign_addition", -10),
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 2), #easy
-                    (assign, ":no_campaign_addition", -15),
-                (try_end),
+                (assign, ":no_campaign_addition", -10),
             (try_end),
         (try_end),
         (val_add, ":lowest_acceptable_strength_percentage", ":no_campaign_addition"),
@@ -43462,7 +43500,7 @@ scripts = scripts_hardcoded + [
             (val_add, ":information_radius", 75),
         (else_try),
             (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_parthian"),
-            (val_add, ":information_radius", 15),
+            (val_add, ":information_radius", 25),
         (else_try),
             (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_caucasian"),
             (val_add, ":information_radius", 10),
@@ -43472,7 +43510,7 @@ scripts = scripts_hardcoded + [
         (else_try),
             (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_caledonian"),
             (val_add, ":information_radius", 5),
-        (else_try),#because they are all mounted
+        (else_try),# because they are all mounted
             (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_sarmatian"),
             (val_add, ":information_radius", 45),
         (try_end),
@@ -43481,54 +43519,22 @@ scripts = scripts_hardcoded + [
             (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_gathering_army),
             (val_add, ":information_radius", 20),
         (try_end),
-        (options_get_campaign_ai, ":reduce_campaign_ai"),
+
         (try_begin),
             (neq, ":faction_no", "fac_player_supporters_faction"),
             (neq, ":faction_no", "$players_kingdom"),
             (try_begin),
-                (eq, ":reduce_campaign_ai", 2), #easy
-                (try_begin),
-                    (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_gathering_army),
-                    (val_add, ":information_radius", -4),
-                (else_try),
-                    (val_add, ":information_radius", -3),
-                (try_end),
-            (else_try),##no effects for moderate
-                (eq, ":reduce_campaign_ai", 1),
+                (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_gathering_army),
+                (val_add, ":information_radius", 5),
             (else_try),
-                (eq, ":reduce_campaign_ai", 0), #hard
-                (try_begin),
-                    (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_gathering_army),
-                    (val_add, ":information_radius", 4),
-                (else_try),
-                    (val_add, ":information_radius", 3),
-                (try_end),
+                (val_add, ":information_radius", 4),
             (try_end),
         (else_try),
             (try_begin),
-                (eq, ":reduce_campaign_ai", 2), #easy
-                (try_begin),
-                    (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_gathering_army),
-                    (val_add, ":information_radius", 25),
-                (else_try),
-                    (val_add, ":information_radius", 20),
-                (try_end),
+                (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_gathering_army),
+                (val_add, ":information_radius", 20),
             (else_try),
-                (eq, ":reduce_campaign_ai", 1), #moderate
-                (try_begin),
-                    (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_gathering_army),
-                    (val_add, ":information_radius", 15),
-                (else_try),
-                    (val_add, ":information_radius", 12),
-                (try_end),
-            (else_try),
-                (eq, ":reduce_campaign_ai", 0), #hard
-                (try_begin),
-                    (faction_slot_eq, ":faction_no", slot_faction_ai_state, sfai_gathering_army),
-                    (val_add, ":information_radius", 5),
-                (else_try),
-                    (val_add, ":information_radius", 4),
-                (try_end),
+                (val_add, ":information_radius", 16),
             (try_end),
         (try_end),
 
@@ -44010,8 +44016,6 @@ scripts = scripts_hardcoded + [
 
         (try_begin),
             (eq, ":potential_target_faction", "fac_player_supporters_faction"),
-            (options_get_campaign_ai, ":reduce_campaign_ai"),
-
             (assign, ":number_of_walled_centers_player_have", 0),
             (try_for_range, ":center_no", walled_centers_begin, walled_centers_end),
                 (store_faction_of_party, ":center_faction", ":center_no"),
@@ -44020,58 +44024,31 @@ scripts = scripts_hardcoded + [
             (try_end),
 
             (try_begin),
-                (eq, ":reduce_campaign_ai", 2), #easy
-
-                (try_begin),
-                    (le, ":number_of_walled_centers_player_have", 2),
-                    (assign, ":hardness_score", 0),
-                (else_try),
-                    (eq, ":number_of_walled_centers_player_have", 3),
-                    (assign, ":hardness_score", 20),
-                (else_try),
-                    (eq, ":number_of_walled_centers_player_have", 4),
-                    (assign, ":hardness_score", 40),
-                (else_try),
-                    (eq, ":number_of_walled_centers_player_have", 5),
-                    (eq, ":number_of_walled_centers_player_have", 6),
-                    (assign, ":hardness_score", 55),
-                (else_try),
-                    (eq, ":number_of_walled_centers_player_have", 7),
-                    (eq, ":number_of_walled_centers_player_have", 8),
-                    (eq, ":number_of_walled_centers_player_have", 9),
-                    (assign, ":hardness_score", 70),
-                (else_try),
-                    (assign, ":hardness_score", 85),
-                (try_end),
+                (le, ":number_of_walled_centers_player_have", 2),
+                (assign, ":hardness_score", 33),
             (else_try),
-                (eq, ":reduce_campaign_ai", 1), #medium
-                (try_begin),
-                    (le, ":number_of_walled_centers_player_have", 1),
-                    (assign, ":hardness_score", 25),
-                (else_try),
-                    (eq, ":number_of_walled_centers_player_have", 2),
-                    (assign, ":hardness_score", 45),
-                (else_try),
-                    (eq, ":number_of_walled_centers_player_have", 3),
-                    (assign, ":hardness_score", 60),
-                (else_try),
-                    (eq, ":number_of_walled_centers_player_have", 4),
-                    (eq, ":number_of_walled_centers_player_have", 5),
-                    (assign, ":hardness_score", 75),
-                (else_try),
-                    (eq, ":number_of_walled_centers_player_have", 6),
-                    (eq, ":number_of_walled_centers_player_have", 7),
-                    (eq, ":number_of_walled_centers_player_have", 8),
-                    (assign, ":hardness_score", 85),
-                (else_try),
-                    (assign, ":hardness_score", 92),
-                (try_end),
-            (else_try), #hard
+                (eq, ":number_of_walled_centers_player_have", 3),
+                (assign, ":hardness_score", 40),
+            (else_try),
+                (eq, ":number_of_walled_centers_player_have", 4),
+                (assign, ":hardness_score", 66),
+            (else_try),
+                (this_or_next|eq, ":number_of_walled_centers_player_have", 5),
+                (eq, ":number_of_walled_centers_player_have", 6),
+                (assign, ":hardness_score", 75),
+            (else_try),
+                (this_or_next|eq, ":number_of_walled_centers_player_have", 7),
+                (this_or_next|eq, ":number_of_walled_centers_player_have", 8),
+                (eq, ":number_of_walled_centers_player_have", 9),
+                (assign, ":hardness_score", 90),
+            (else_try),
                 (assign, ":hardness_score", 100),
             (try_end),
+
             (val_mul, ":target_score", ":hardness_score"),
             (val_div, ":target_score", 100),
         (try_end),
+
         (try_begin),
             (ge, "$cheat_mode", 1),
             (ge, ":target_score", -1),
@@ -51598,24 +51575,12 @@ scripts = scripts_hardcoded + [
 
     #Take into account campaign difficulty
     (assign, ":min_cost", reg0),
-    (options_get_campaign_ai, ":reduce_campaign_ai"),
-    (try_begin),
-        (eq, ":reduce_campaign_ai", 0), #hard (1.5x)
-        (val_mul, reg0, 3),
-        (val_div, reg0, 2),
-        (val_mul, ":min_cost", 87),#set min_cost to 87% of the original base_cost + center_cost
-        (val_div, ":min_cost", 100),
-    (else_try),
-        (eq, ":reduce_campaign_ai", 1), #moderate (1.0x)
-        (val_mul, ":min_cost", 3),
-        (val_div, ":min_cost", 4),#set min_cost to 75% (base cost + center cost)
-    (else_try),
-        (eq, ":reduce_campaign_ai", 2), #easy (0.75x)
-        (val_mul, reg0, 3),
-        (val_div, reg0, 4),
-        (val_mul, ":min_cost", 9),
-        (val_div, ":min_cost", 16),#set min_cost to (75% squared) of (base cost + center cost)
-    (try_end),
+
+    (val_mul, reg0, 3),
+    (val_div, reg0, 2),
+    (val_mul, ":min_cost", 87),#set min_cost to 87% of the original base_cost + center_cost
+    (val_div, ":min_cost", 100),
+
 
     (val_sub, reg0, ":prisoner_value"),
 
@@ -51635,13 +51600,9 @@ scripts = scripts_hardcoded + [
         (gt, ":concession_value", 0),
         (store_sub, reg1, reg0, ":concession_value"),
         (val_max, reg1, 0),
-        #Only accept cash alone in lieu of a fief if you don't partcularly
-        #want war, or if the AI is on "easy".
-        (try_begin),
-            (neq, ":reduce_campaign_ai", 2),#hard or medium
-            (lt, ":check_peace_war_result", 0),
-            (assign, reg0, -1),
-        (try_end),
+        #Only accept cash alone in lieu of a fief if you don't partcularly want war
+        (lt, ":check_peace_war_result", 0),
+        (assign, reg0, -1),
     (try_end),
 
     (try_begin), #debug
@@ -51756,21 +51717,9 @@ scripts = scripts_hardcoded + [
         (party_slot_eq, ":center_no", slot_party_type, spt_town),
         (assign, ":garrison_strength", 6),#easy: 103.5 for a town
     (try_end),
-    #Take into account campaign difficulty.
-    (options_get_campaign_ai, ":reduce_campaign_ai"),
-    (try_begin),
-        (eq, ":reduce_campaign_ai", 0), #hard 166% + 3 waves
-        (val_mul, ":garrison_strength", 5),
-        (val_div, ":garrison_strength", 3),
-        (val_add, ":garrison_strength", 3),
-    (else_try),
-        (eq, ":reduce_campaign_ai", 1), #moderate 166%
-        (val_mul, ":garrison_strength", 5),
-        (val_div, ":garrison_strength", 3),
-        #(else_try),
-        #   (eq, ":reduce_campaign_ai", 2), #easy 100%
-        #   (store_mul, ":garrison_strength", 1),
-    (try_end),
+
+    (val_mul, ":garrison_strength", 5),
+    (val_div, ":garrison_strength", 3),
 
     (try_for_range, ":party_template_slot", slot_cohort_town_begin, slot_cohort_town_end),
         (party_get_slot, ":party_template", ":center_no", ":party_template_slot"),
@@ -66557,7 +66506,10 @@ scripts = scripts_hardcoded + [
                     (eq, ":infantry_order", mordr_hold),
                     (gt, ":num_archers", 0),
                     # (copy_position, pos1, Archers_Pos),
-                    (team_get_order_position, pos1, ":team_no", grc_archers),	#anticipate archers
+                    # (team_get_order_position, pos1, ":team_no", grc_archers),	#anticipate archers
+                    # team get order position does not safe rotation
+                    (call_script, "script_get_formation_destination", pos1, ":team_no", grc_archers),
+
                     (position_move_x, pos1, -100, 0),
                     (try_begin),
                         (this_or_next | eq, ":enemy_agent_nearest_infantry_div", grc_cavalry),
@@ -84039,10 +83991,10 @@ scripts = scripts_hardcoded + [
     (try_begin),
         (call_script, "script_cf_dplmc_troop_is_female", "trp_player"),
         (store_sub, ":string", ":culture", "fac_culture_dacian"),
-        (val_add, ":string", "str_female_face_culture_1"),
+        (val_add, ":string", "str_female_face_culture_dacian"),
     (else_try),
         (store_sub, ":string", ":culture", "fac_culture_dacian"),
-        (val_add, ":string", "str_male_face_culture_1"),
+        (val_add, ":string", "str_male_face_culture_dacian"),
     (try_end),
     (str_store_string, s0, ":string"),
     (troop_set_face_keys, "trp_player", s0, 0),
@@ -89691,7 +89643,7 @@ scripts = scripts_hardcoded + [
     (assign, reg3, "$character_gender"),
     #culture
     (store_sub, ":string", "$background_answer_4", "fac_culture_dacian"),
-    (val_add, ":string", "str_culture_1"),
+    (val_add, ":string", "str_culture_dacian"),
     (str_store_string, s2, ":string"),
     (str_store_string,s1,"@{s2}"),
     #background
@@ -95566,22 +95518,23 @@ scripts = scripts_hardcoded + [
                 (val_add, ":accumulated_rents", ":cur_rents"), #cur rents changes between 23..1000
             (try_end), ### tax for ai end
 
-            (try_begin),###difficulty effects players tax
-                (party_slot_eq, ":trigger_center", slot_town_lord, "trp_player"),
-                (options_get_campaign_ai, ":reduce_campaign_ai"),
-                (try_begin),
-                    (eq, ":reduce_campaign_ai", 0), #hard (less money from rents)
-                    (val_mul, ":cur_rents", 5),
-                    (val_div, ":cur_rents", 6),
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 1), #medium (normal money from rents)
-                #same
-                (else_try),
-                    (eq, ":reduce_campaign_ai", 2), #easy (more money from rents)
-                    (val_mul, ":cur_rents", 4),
-                    (val_div, ":cur_rents", 3),
-                (try_end),
-            (try_end),
+            # (try_begin),###difficulty effects players tax
+            #     (party_slot_eq, ":trigger_center", slot_town_lord, "trp_player"),
+            #     (options_get_campaign_ai, ":reduce_campaign_ai"),
+            #     (try_begin),
+            #         (eq, ":reduce_campaign_ai", 0), #hard (less money from rents)
+            #         (val_mul, ":cur_rents", 5),
+            #         (val_div, ":cur_rents", 6),
+            #     (else_try),
+            #         (eq, ":reduce_campaign_ai", 1), #medium (normal money from rents)
+            #     #same
+            #     (else_try),
+            #         (eq, ":reduce_campaign_ai", 2), #easy (more money from rents)
+            #         (val_mul, ":cur_rents", 4),
+            #         (val_div, ":cur_rents", 3),
+            #     (try_end),
+            # (try_end),
+
             ##TAXES FOR THE PLAYER BEGIN
             (try_begin),
                 (party_slot_eq, ":trigger_center", slot_town_lord, "trp_player"),
