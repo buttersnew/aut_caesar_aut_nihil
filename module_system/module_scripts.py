@@ -80769,11 +80769,11 @@ scripts = scripts_hardcoded + [
             (store_faction_of_party, ":faction", "$g_set_center_upgrades"),
             (faction_get_slot, ":lord_culture", ":faction", slot_faction_culture),
         (else_try),
-            (is_between, ":lord_culture", kingdoms_begin, kingdoms_end),
+            (neg|is_between, ":lord_culture", cultures_begin, cultures_end),
             (gt, ":lord", -1),
             (troop_get_slot, ":lord_culture", ":lord", slot_troop_culture),
         (try_end),
-        (is_between, ":lord_culture", kingdoms_begin, kingdoms_end),
+        (is_between, ":lord_culture", cultures_begin, cultures_end),
         (call_script, "script_change_culture_of_center", "$g_set_center_upgrades", ":lord_culture"),
     (else_try),
         (eq, ":cur_improvement", slot_center_has_forum),
@@ -96055,6 +96055,15 @@ scripts = scripts_hardcoded + [
 ("change_culture_of_center",[
     (store_script_param, ":center_no", 1),
     (store_script_param, ":culture", 2),
+
+    (str_store_party_name, s0, ":center_no"),
+    (str_store_faction_name, s1, ":culture"),
+
+    (party_get_slot, ":orig_culture", ":center_no", slot_center_culture),
+    (str_store_faction_name, s2, ":orig_culture"),
+
+    (display_log_message, "@{s0} changed from {s2} to {s1} culture.", message_alert),
+
     (party_set_slot, ":center_no", slot_center_culture, ":culture"),
     (try_for_range, ":walker_no", 0, num_town_walkers),
         (call_script, "script_center_set_walker_to_type", ":center_no", ":walker_no", walkert_default),
