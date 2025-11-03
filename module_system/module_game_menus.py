@@ -1961,23 +1961,6 @@ game_menus = [
         ]
        ),
 
-      ("camp_cheat_6",[
-        (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
-      ],"Test party creation limits",[
-
-        (call_script, "script_update_party_creation_random_limits"),
-
-        (set_spawn_radius, 5),
-        (try_for_range, ":unused", 0, 10),
-          (store_random_in_range, ":party_template", bandit_party_templates_begin, bandit_party_templates_end),
-          (call_script, "script_spawn_party", "p_main_party", ":party_template"),
-        (try_end),
-
-        (change_screen_map),
-      ]),
-
-
-
 	   ##nested diplomacy start+
 	  # ("camp_cheat_7",[
       # (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
