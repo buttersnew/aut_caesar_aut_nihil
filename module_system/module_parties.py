@@ -536,17 +536,22 @@ parties = [
 ("delphi", "Delphi", icon_map_temple|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-39.56, -5.29), [],180),
 
 ("ferry_1a", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (6.31, 26.16), [], 35),
-("ferry_2a", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-19.52, -37.15), [], 45),
+("ferry_2a", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-20.503, -36.98), [], 200),
 ("ferry_3a", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-204.59, 106.1), []),
-("ferry_4a", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-94.12, -16.22), [], 90),
+("ferry_4a", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-93.48, -16.37), [], 90),
 ("ferry_5a", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-255.23, -39.66), []),
 ("ferry_1b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (12, 21.91), [], 35),
-("ferry_2b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-24.54, -20.77), [], 45),
+("ferry_2b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-23.8, -21.03), [], 45),
 ("ferry_3b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-206.12, 118.65), []),
-("ferry_4b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-90.41, -16.12), []),
+("ferry_4b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-91.15, -16.26), [], 270),
 ("ferry_5b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-249.5, -24.69), [], 135),
-("transporter", "Transporter", icon_ship|pf_disabled|pf_always_visible|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (0, 0), [(trp_mercenary_swordsman, 5, 0)]),
+
+("transporter", "Transporter", icon_ship|pf_disabled|pf_always_visible|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (0, 0), [
+    (trp_mercenary_swordsman, 5, 0)
+]),
+
 ("landing_point", "landing point", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-51.69, -43.86), []),
+
 ("jetty_1a", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (7.34, 19.46), [], 35),
 ("jetty_2a", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-20.46, -37.46), [], 45),
 ("jetty_3a", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-205.47, 104.21), []),

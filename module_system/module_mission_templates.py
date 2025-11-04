@@ -2548,7 +2548,7 @@ theoris_decapitation = [
         (scene_prop_set_slot, ":instance", scene_prop_timer, ":timer_1"),
       (else_try),
         (eq, ":timer_1", 1),
-        (scene_prop_fade_out, ":instance", 75),
+        (scene_prop_fade_out, ":instance", 5),
         (val_add, ":timer_1", 1),
         (scene_prop_set_slot, ":instance", scene_prop_timer, ":timer_1"),
       (try_end),
