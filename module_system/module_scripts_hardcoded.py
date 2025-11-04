@@ -4111,6 +4111,9 @@ scripts_hardcoded = [
                 (try_end),
             (else_try),#looting
                 (ge, ":collective_casualties", 0),
+
+                (neg|party_slot_ge, ":root_defeated_party", slot_party_looted_left_days, 1), # is not already looted
+
                 (party_get_slot, ":cur_party_type", ":root_defeated_party", slot_party_type),
                 (this_or_next|eq, ":cur_party_type", spt_town),
                 (eq, ":cur_party_type", spt_castle),
@@ -4438,6 +4441,9 @@ scripts_hardcoded = [
         ############
         (else_try), #stop barbarian empires
             (ge, ":collective_casualties", 0),
+
+            (neg|party_slot_ge, ":root_defeated_party", slot_party_looted_left_days, 1), # is not already looted
+
             (party_get_slot, ":cur_party_type", ":root_defeated_party", slot_party_type),
             (this_or_next|eq, ":cur_party_type", spt_town),
             (eq, ":cur_party_type", spt_castle),

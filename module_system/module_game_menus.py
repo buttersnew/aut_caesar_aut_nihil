@@ -17356,7 +17356,12 @@ game_menus = [
       (ge, "$g_encountered_party_relation", 0),
       (eq, "$players_kingdom", "$g_encountered_party_faction"),
     ],"Recruit troops.",[
-      (jump_to_menu, "mnu_barracks"),
+      (try_begin),
+        (neg|party_slot_eq, "$g_encountered_party", slot_center_is_besieged_by, -1),
+        (display_message, "@Not possible during a siege!", message_negative),
+      (else_try),
+        (jump_to_menu, "mnu_barracks"),
+      (try_end),
     ]),
 		("set_sail",[
       (eq, 1, 0),
@@ -45333,7 +45338,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("slave_steals_from_player", 0,
- "A Light Coin Pouch^^{s5} has been attending to your personal needs lately, and you've noticed your coin pouch feels lighter than it should."
+ "A Light Coin Pouch^^Your houshold slave {s5} has been attending to your personal needs lately, and you've noticed your coin pouch feels lighter than it should."
  +" You can't be certain, as the flow of denarii from your pocket is constant and chaotic, but a nagging suspicion remains."
  +"^^The slave is diligent, but his eyes sometimes linger on your purse for a moment too long. Is it mere admiration for your wealth, or the calculated assessment of a thief?"
  +" Without proof, any action would be based on instinct alone.",

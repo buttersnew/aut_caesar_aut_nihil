@@ -6130,64 +6130,64 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
 ##stuff for wedding end
 
 ##special siege weapons
-["greek_fire", "Vulcani ignis", [("oil_greek_fire",0)], itp_type_thrown|itp_can_penetrate_shield|itp_can_knock_down|itp_bonus_against_shield|itp_crush_through|itp_no_pick_up_from_ground|itp_primary|itp_remove_item_on_use ,itcf_throw_axe,
-7000 , weight(5.0)|difficulty(3)|spd_rtng(70)|shoot_speed(14)|thrust_damage(65 ,  blunt)|max_ammo(1)|weapon_length(0),imodbits_missile,
-[
-(ti_on_missile_hit, # when missile hits
-   [
-  (try_begin),
-    (this_or_next|multiplayer_is_server),
-    (neg|game_in_multiplayer_mode),
-    (store_trigger_param_1, ":shooter"),
-    (copy_position, pos63, pos1),
-    (set_fixed_point_multiplier, 1),
-    (try_for_agents,":agent",pos63, 3), # search all agents in 3 meters
-      (agent_is_alive,":agent"),
-      (agent_get_team, ":grenadiers_team", ":shooter"),
-      (agent_get_team, ":targets_team", ":agent"),
-      (teams_are_enemies, ":grenadiers_team", ":targets_team"),
-      (agent_set_animation, ":agent", "anim_rider_fall_roll"),
-      (agent_deliver_damage_to_agent, ":shooter", ":agent", 150),
-      (try_begin),
-        (get_player_agent_no, ":player_agent"),
-        (eq, ":agent", ":player_agent"),
-        (display_message, "@Recieved damage from fire!", color_terrible_news),
-      (try_end),
+["greek_fire", "Vulcani Ignis", [("oil_greek_fire",0)],
+itp_type_thrown|itp_can_penetrate_shield|itp_can_knock_down|itp_bonus_against_shield|itp_crush_through|itp_no_pick_up_from_ground|itp_primary|itp_remove_item_on_use,
+itcf_throw_axe,
+7000 , weight(5.0)|difficulty(3)|spd_rtng(70)|shoot_speed(14)|thrust_damage(65 ,  blunt)|max_ammo(1)|weapon_length(0),imodbits_missile,[
+    (ti_on_missile_hit, [
+        (try_begin),
+            (this_or_next|multiplayer_is_server),
+            (neg|game_in_multiplayer_mode),
+            (store_trigger_param_1, ":shooter"),
+            (copy_position, pos63, pos1),
+            (set_fixed_point_multiplier, 1),
+            (try_for_agents,":agent",pos63, 3), # search all agents in 3 meters
+                (agent_is_alive,":agent"),
+                (agent_get_team, ":grenadiers_team", ":shooter"),
+                (agent_get_team, ":targets_team", ":agent"),
+                (teams_are_enemies, ":grenadiers_team", ":targets_team"),
+                (agent_set_animation, ":agent", "anim_rider_fall_roll"),
+                (agent_deliver_damage_to_agent, ":shooter", ":agent", 150),
+                (try_begin),
+                    (get_player_agent_no, ":player_agent"),
+                    (eq, ":agent", ":player_agent"),
+                    (display_message, "@Recieved damage from fire!", color_terrible_news),
+                (try_end),
+            (try_end),
     (try_end),
-  (try_end),
-   ]),
-(ti_on_missile_hit,
-   [
-    (particle_system_burst, "psys_fireplace_fire_big", pos1, 100),
-    (particle_system_burst, "psys_village_fire_big", pos1, 7),
-      (particle_system_burst, "psys_village_fire_smoke_big", pos1, 50),
-   ]),]],
+    ]),
+    (ti_on_missile_hit,[
+        (particle_system_burst, "psys_fireplace_fire_big", pos1, 100),
+        (particle_system_burst, "psys_village_fire_big", pos1, 7),
+        (particle_system_burst, "psys_village_fire_smoke_big", pos1, 50),
+    ]),
+]],
 ["stones_siege","Large Stone", [("siegestone",0)], itp_type_thrown|itp_primary|itp_no_pick_up_from_ground|itp_can_knock_down|itp_can_penetrate_shield|itp_remove_item_on_use|itp_merchandise, itcf_throw_axe,
 50, weight(3)|abundance(20)|difficulty(4)|spd_rtng(70) | shoot_speed(14) | thrust_damage(50 ,  blunt)|max_ammo(2)|weapon_length(14),imodbits_none, #chief cambiado
 [
-    (ti_on_missile_hit,
-      [
-      (try_begin),
-        #Solid Round Script
-        #pos1 - Missile hit position
-        #param_1 - Shooter agent
-      (this_or_next|multiplayer_is_server),
-      (neg|game_in_multiplayer_mode),
-      (store_trigger_param_1,":shooter"),
-      (set_fixed_point_multiplier, 100),
-      (copy_position, pos63, pos1),
-      (particle_system_burst,"psys_piedra_dust",pos1,1),
-      (try_for_agents,":agent",pos63,100),
-        (agent_is_alive,":agent"),
-        (agent_get_team, ":grenadiers_team", ":shooter"),
-        (agent_get_team, ":targets_team", ":agent"),
-        (teams_are_enemies, ":grenadiers_team", ":targets_team"),
-        (neq,":agent",":shooter"),
-        (agent_deliver_damage_to_agent,":shooter",":agent", 50),
-        (play_sound,"snd_shield_broken"),
-      (try_end),
-    (try_end),
-]),]],
+    (ti_on_missile_hit, [
+        (try_begin),
+            #Solid Round Script
+            #pos1 - Missile hit position
+            #param_1 - Shooter agent
+            (this_or_next|multiplayer_is_server),
+            (neg|game_in_multiplayer_mode),
+            (store_trigger_param_1,":shooter"),
+            (set_fixed_point_multiplier, 100),
+            (copy_position, pos63, pos1),
+            (particle_system_burst,"psys_piedra_dust",pos1,1),
+            (try_for_agents,":agent",pos63,100),
+                (agent_is_alive,":agent"),
+                (agent_get_team, ":grenadiers_team", ":shooter"),
+                (agent_get_team, ":targets_team", ":agent"),
+                (teams_are_enemies, ":grenadiers_team", ":targets_team"),
+                (neq,":agent",":shooter"),
+                (agent_deliver_damage_to_agent,":shooter",":agent", 50),
+                (play_sound,"snd_shield_broken"),
+            (try_end),
+        (try_end),
+    ]),
+]],
 ##special siege weapons end
 
 ##other legendary items and treasures

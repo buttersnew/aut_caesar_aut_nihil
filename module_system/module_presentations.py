@@ -4529,7 +4529,8 @@ presentations = presentations_wse2 + [
 
     ##SETUP SCREEN
 
-    (create_text_overlay, reg1, "str_weekly_budget", tf_center_justify),
+    (create_text_overlay, reg1, "str_weekly_budget", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 1500),
     (position_set_y, pos1, 1500),
     (overlay_set_size, reg1, pos1),
@@ -8124,7 +8125,8 @@ presentations = presentations_wse2 + [
         # (overlay_set_position, reg1, pos1),
 
     # Presentation title, centered at the top
-    (create_text_overlay, reg1, "@_Faction Relations Report_", tf_center_justify),
+    (create_text_overlay, reg1, "@_Faction Relations Report_", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 670), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
