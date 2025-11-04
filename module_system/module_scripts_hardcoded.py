@@ -4352,6 +4352,7 @@ scripts_hardcoded = [
                                     (this_or_next|troop_slot_eq, ":party_leader", slot_lord_reputation_type, lrep_conventional),
                                     (this_or_next|troop_slot_eq, ":party_leader", slot_lord_reputation_type, lrep_otherworldly),
                                     (this_or_next|troop_slot_eq, ":party_leader", slot_lord_reputation_type, lrep_adventurous),
+                                    (this_or_next|troop_slot_eq, ":party_leader", slot_lord_reputation_type, lrep_hedonistic),
                                     ##diplomacy end+
                                     (this_or_next|troop_slot_eq, ":party_leader", slot_lord_reputation_type, lrep_goodnatured),
                                     (this_or_next|troop_slot_eq, ":party_leader", slot_lord_reputation_type, lrep_upstanding),
@@ -6027,14 +6028,16 @@ scripts_hardcoded = [
             #lord recruitment changes begin
             #This sends a bunch of political information to s47.
             (str_clear, s35),
+
             ##personality
-            (try_begin),
-                (troop_slot_ge, ":troop_no", slot_troop_met, 1),
-                (troop_get_slot, ":personality", ":troop_no", slot_lord_reputation_type),
-                (store_add, ":string", "str_personality_archetypes", ":personality"),
-                (str_store_string, s34, ":string"),
-                (str_store_string, s35, "@Personality: {reg3?She:He} seems to be a {s34} person."),
-            (try_end),
+            ##deactivate personality, player should ask around about rumors to get personality
+            # (try_begin),
+            #     (troop_slot_ge, ":troop_no", slot_troop_met, 1),
+            #     (troop_get_slot, ":personality", ":troop_no", slot_lord_reputation_type),
+            #     (store_add, ":string", "str_personality_archetypes", ":personality"),
+            #     (str_store_string, s34, ":string"),
+            #     (str_store_string, s35, "@Personality: {reg3?She:He} seems to be a {s34} person."),
+            # (try_end),
             (str_clear, s26),
             (try_begin),
                 (troop_get_slot,reg49, ":troop_no", slot_troop_loses),

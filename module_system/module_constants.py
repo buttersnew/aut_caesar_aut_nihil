@@ -2256,7 +2256,8 @@ lrep_adventurous     = 12 #Tomboyish. However, this basically means that she lik
 lrep_otherworldly    = 13 #Prone to mysticism, romantic.
 lrep_ambitious       = 14 #Lady Macbeth
 lrep_moralist        = 15 #Equivalent of upstanding or benefactor -- takes nobless oblige, and her traditional role as repository of morality, very seriously. Based loosely on Christine de Pisa
-lrep_end             = 16 #end of reputation slots
+lrep_hedonistic      = 16 #Mix of Party-girl and hedonistic femme fatale
+lrep_end             = 17 #end of reputation slots
 
 
 #a more complicated system of reputation could include the following...

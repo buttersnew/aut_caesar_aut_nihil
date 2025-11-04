@@ -50947,91 +50947,90 @@ You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, b
 (store_repeat_object, "$temp"),
 ]],
 
-[anyone,"lord_recruit_quarrel_describe",
-[
-##diplomacy start+
-(assign, ":other_lord_is_female", 0),
-(try_begin),
-  (call_script, "script_cf_dplmc_troop_is_female", "$temp"),
-  (assign, ":other_lord_is_female", 1),
-(try_end),
-(assign, reg3, ":other_lord_is_female"),
-(assign, reg4, ":other_lord_is_female"),
-##diplomacy end+
-(assign, ":specific_quarrel_found", 0),
-(store_add, ":log_entries_plus_one", "$num_log_entries", 1),
-(try_for_range, ":log_entry_no", 1, ":log_entries_plus_one"),
-  (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_ruler_intervenes_in_quarrel),
-  (troop_slot_eq, "trp_log_array_troop_object", ":log_entry_no", "$temp"),
-  (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$g_talk_troop"),
-  (troop_slot_eq, "trp_log_array_faction_object", ":log_entry_no", "$g_talk_troop_faction"),
-
-  (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
-  (str_store_string, s14, reg0),
-  (assign, ":specific_quarrel_found", 1),
-(else_try),
-  (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_lord_protests_marshall_appointment),
-  (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$g_talk_troop"),
-  (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$temp"),
-  (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
-  (str_store_string, s14, reg0),
-  (assign, ":specific_quarrel_found", 1),
-(else_try),
-  (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_lord_blames_defeat),
-  (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$g_talk_troop"),
-  (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$temp"),
-  (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
-  (str_store_string, s14, reg0),
-  (assign, ":specific_quarrel_found", 1),
-(else_try),
-  (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_troop_feels_cheated_by_troop_over_land),
-  (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$g_talk_troop"),
-  (troop_slot_eq, "trp_log_array_troop_object", ":log_entry_no",  "$temp"),
-  (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
-  (str_store_string, s14, reg0),
-  (assign, ":specific_quarrel_found", 1),
-(else_try),
-  (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_lords_quarrel_over_woman),
-  (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$g_talk_troop"),
-  (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$temp"),
-  (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
-  ##diplomacy start+ set gender for courted lady
-  (troop_get_slot, ":courted_lady", "trp_log_array_troop_object", ":log_entry_no"),
-  (call_script, "script_dplmc_store_troop_is_female_reg", ":courted_lady", 4),
-  ##diplomacy end+
-  #SB : rejoinder overwrote reg3
+[anyone,"lord_recruit_quarrel_describe",[
+  ##diplomacy start+
+  (assign, ":other_lord_is_female", 0),
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", "$temp"),
+    (assign, ":other_lord_is_female", 1),
+  (try_end),
   (assign, reg3, ":other_lord_is_female"),
-  (str_store_string, s14, reg0),
-  (assign, ":specific_quarrel_found", 1),
-(else_try),
-  (troop_slot_eq, "trp_log_array_entry_type",  ":log_entry_no", logent_lords_quarrel_over_woman),
-  (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$temp"),
-  (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$g_talk_troop"),
-  (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
-  #SB : rejoinder overwrites reg3
-  (assign, reg3, ":other_lord_is_female"),
-  ##diplomacy start+ set gender for courted lady
-  (troop_get_slot, ":courted_lady", "trp_log_array_troop_object", ":log_entry_no"),
-  # (assign, reg4, 0),
-  # (try_begin),
-  (call_script, "script_dplmc_store_troop_is_female_reg", ":courted_lady", 4),
-    # (assign, reg4, 1),
-  # (try_end),
+  (assign, reg4, ":other_lord_is_female"),
   ##diplomacy end+
-  (str_store_string, s14, reg0),
-  (assign, ":specific_quarrel_found", 1),
-(try_end),
+  (assign, ":specific_quarrel_found", 0),
+  (store_add, ":log_entries_plus_one", "$num_log_entries", 1),
+  (try_for_range, ":log_entry_no", 1, ":log_entries_plus_one"),
+    (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_ruler_intervenes_in_quarrel),
+    (troop_slot_eq, "trp_log_array_troop_object", ":log_entry_no", "$temp"),
+    (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$g_talk_troop"),
+    (troop_slot_eq, "trp_log_array_faction_object", ":log_entry_no", "$g_talk_troop_faction"),
 
-(try_begin),
-  # (eq, ":specific_quarrel_found", 1),
-  # (assign, reg3, ":other_lord_is_female"), #not always the case
-  # (str_store_string, s14, reg0),
-# (else_try),
-  (eq, ":specific_quarrel_found", 0),
-  (call_script, "script_troop_describes_quarrel_with_troop_to_s14", "$g_talk_troop", "$temp"),
-(try_end),
+    (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
+    (str_store_string, s14, reg0),
+    (assign, ":specific_quarrel_found", 1),
+  (else_try),
+    (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_lord_protests_marshall_appointment),
+    (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$g_talk_troop"),
+    (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$temp"),
+    (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
+    (str_store_string, s14, reg0),
+    (assign, ":specific_quarrel_found", 1),
+  (else_try),
+    (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_lord_blames_defeat),
+    (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$g_talk_troop"),
+    (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$temp"),
+    (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
+    (str_store_string, s14, reg0),
+    (assign, ":specific_quarrel_found", 1),
+  (else_try),
+    (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_troop_feels_cheated_by_troop_over_land),
+    (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$g_talk_troop"),
+    (troop_slot_eq, "trp_log_array_troop_object", ":log_entry_no",  "$temp"),
+    (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
+    (str_store_string, s14, reg0),
+    (assign, ":specific_quarrel_found", 1),
+  (else_try),
+    (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_lords_quarrel_over_woman),
+    (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$g_talk_troop"),
+    (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$temp"),
+    (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
+    ##diplomacy start+ set gender for courted lady
+    (troop_get_slot, ":courted_lady", "trp_log_array_troop_object", ":log_entry_no"),
+    (call_script, "script_dplmc_store_troop_is_female_reg", ":courted_lady", 4),
+    ##diplomacy end+
+    #SB : rejoinder overwrote reg3
+    (assign, reg3, ":other_lord_is_female"),
+    (str_store_string, s14, reg0),
+    (assign, ":specific_quarrel_found", 1),
+  (else_try),
+    (troop_slot_eq, "trp_log_array_entry_type",  ":log_entry_no", logent_lords_quarrel_over_woman),
+    (troop_slot_eq, "trp_log_array_actor", ":log_entry_no", "$temp"),
+    (troop_slot_eq, "trp_log_array_center_object", ":log_entry_no", "$g_talk_troop"),
+    (call_script, "script_get_relevant_comment_for_log_entry", ":log_entry_no"),
+    #SB : rejoinder overwrites reg3
+    (assign, reg3, ":other_lord_is_female"),
+    ##diplomacy start+ set gender for courted lady
+    (troop_get_slot, ":courted_lady", "trp_log_array_troop_object", ":log_entry_no"),
+    # (assign, reg4, 0),
+    # (try_begin),
+    (call_script, "script_dplmc_store_troop_is_female_reg", ":courted_lady", 4),
+      # (assign, reg4, 1),
+    # (try_end),
+    ##diplomacy end+
+    (str_store_string, s14, reg0),
+    (assign, ":specific_quarrel_found", 1),
+  (try_end),
 
-(call_script, "script_add_rumor_string_to_troop_notes", "$g_talk_troop", "$temp", s14),
+  (try_begin),
+    # (eq, ":specific_quarrel_found", 1),
+    # (assign, reg3, ":other_lord_is_female"), #not always the case
+    # (str_store_string, s14, reg0),
+  # (else_try),
+    (eq, ":specific_quarrel_found", 0),
+    (call_script, "script_troop_describes_quarrel_with_troop_to_s14", "$g_talk_troop", "$temp"),
+  (try_end),
+
+  (call_script, "script_add_rumor_string_to_troop_notes", "$g_talk_troop", "$temp", s14),
 ],
 "It is no secret. {s14}", "lord_recruit_2",[]],
 
@@ -59849,10 +59848,11 @@ gaining the right to choose a banner of your own and fight under it in battle.",
       (str_store_party_name_link, s34, ":center"),
       (str_store_string, s2, "@{s11} asked you to raid {s14}, near {s34}, and bring him {reg33} denarii."),]],
 
-[anyone,"lord_tell_mission",[(eq,"$random_quest_no","qst_spy_on_spouse")],
-  "Yes there is something bothering me. I think my wife has a love affair. Due to me being often absent I fear she as taken herself a lover. She is a little snake you should know."
-  +" I want you do find out if it's true or not. And most importantly, find out who this bastard is, so that I can break his bones. But be aware, I am sure my little sweet snake will try every trick to keep her little secret."
-  +" I would pay you {reg33} denarii if you bring me useful information.",
+[anyone,"lord_tell_mission",[
+  (eq,"$random_quest_no","qst_spy_on_spouse")
+],"Yes there is something bothering me. I think my wife has a love affair. Due to me being often absent I fear she as taken herself a lover. She is a little snake you should know."
++" I want you do find out if it's true or not. And most importantly, find out who this bastard is, so that I can break his bones. But be aware, I am sure my little sweet snake will try every trick to keep her little secret."
++" I would pay you {reg33} denarii if you bring me useful information.",
 "lord_mission_told",[
   (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
   (str_store_troop_name_link, s11, "$g_talk_troop"),
@@ -61445,45 +61445,95 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
    "What is my beloved wife doing all day long?", "spouse_talk_about_stuff",[
  ]],
 
-[anyone,"spouse_talk_about_stuff",
-[
-   (str_clear, s41),
- (try_begin),
-  (eq, "$g_player_minister", "$g_talk_troop"),
-  (str_store_string, s41, "@And of course, as your chief minister I have to handle various affairs concerning the realm."),
- (try_end),
+[anyone,"spouse_talk_about_stuff",[
+  (str_clear, s41),
+  (try_begin),
+    (eq, "$g_player_minister", "$g_talk_troop"),
+    (str_store_string, s41, "str_spouse_minister_addition"),
+  (try_end),
 
   (try_begin),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
-    (str_store_string, s40, "@Men usually don't pay that much attention to their wives, unless they want to have childs.^ -- She smiles. --^ But if you really want to know what I am doing:^\
-    I manage the household, that's a boring but necessary task we women have to do for our husbands. {s41}"),
+    (store_random_in_range, ":random_dialogue", 0, 3),
+    (try_begin),
+      (eq, ":random_dialogue", 0),
+      (str_store_string, s40, "str_spouse_ambitious_1"),
+    (else_try),
+      (eq, ":random_dialogue", 1),
+      (str_store_string, s40, "str_spouse_ambitious_2"),
+    (else_try),
+      (str_store_string, s40, "str_spouse_ambitious_3"),
+    (try_end),
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
-    (str_store_string, s40, "@My husband, as a good wife I spend my time managing the household. I sew clothes, I create little accessories, et cetera. {s41} I am not like other wives who waste their time\
-    with unnecessary tasks or waste the money of their husbands. I always try to be economical and obedient."),
+    (store_random_in_range, ":random_dialogue", 0, 3),
+    (try_begin),
+      (eq, ":random_dialogue", 0),
+      (str_store_string, s40, "str_spouse_moralist_1"),
+    (else_try),
+      (eq, ":random_dialogue", 1),
+      (str_store_string, s40, "str_spouse_moralist_2"),
+    (else_try),
+      (str_store_string, s40, "str_spouse_moralist_3"),
+    (try_end),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (store_random_in_range, ":random_dialogue", 0, 3),
+    (try_begin),
+      (eq, ":random_dialogue", 0),
+      (str_store_string, s40, "str_spouse_hedonistic_1"),
+    (else_try),
+      (eq, ":random_dialogue", 1),
+      (str_store_string, s40, "str_spouse_hedonistic_2"),
+    (else_try),
+      (str_store_string, s40, "str_spouse_hedonistic_3"),
+    (try_end),
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
-    (str_store_string, s40, "@Do really want to know more about the boring life of a wife? I would enjoy it more if you would take me with you on your adventurers then setting around here.^Well, most of the time I spend with managing the household. {s41}^\
-    When I finally have some free time, I spend it with reading books about adventurers, like Odysseus. I must say that I envy you, my love. You can ride out and do what you want and I have to stay here."),
+    (store_random_in_range, ":random_dialogue", 0, 3),
+    (try_begin),
+      (eq, ":random_dialogue", 0),
+      (str_store_string, s40, "str_spouse_adventurous_1"),
+    (else_try),
+      (eq, ":random_dialogue", 1),
+      (str_store_string, s40, "str_spouse_adventurous_2"),
+    (else_try),
+      (str_store_string, s40, "str_spouse_adventurous_3"),
+    (try_end),
     (agent_play_sound, "$g_talk_agent", "snd_female_annoyed"),
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
-    (str_store_string, s40, "@Oh, it is nice from you to show interest on my life. As a good wife, I spend most of the time managing the household, which means I oversee and organize meals, I sew cloths,\
-    I punish the slaves, etc. {s41} When I finally have free time I spend it with writing and reading poems. I like especially love poems."),
-  (else_try),
-    (str_store_string, s40, "@Oh, it is nice from you to show interest on my life. As a good wife, I spend most of the time managing the household, which means I oversee and organize meals, I sew cloths,\
-    I punish the slaves, etc. {s41} When I finally have free time I spend it withreading poems or books or with painting. It is nothing special."),
+    (store_random_in_range, ":random_dialogue", 0, 3),
+    (try_begin),
+      (eq, ":random_dialogue", 0),
+      (str_store_string, s40, "str_spouse_otherworldly_1"),
+    (else_try),
+      (eq, ":random_dialogue", 1),
+      (str_store_string, s40, "str_spouse_otherworldly_2"),
+    (else_try),
+      (str_store_string, s40, "str_spouse_otherworldly_3"),
+    (try_end),
+  (else_try), # Default case for all other personalities
+    (store_random_in_range, ":random_dialogue", 0, 3),
+    (try_begin),
+      (eq, ":random_dialogue", 0),
+      (str_store_string, s40, "str_spouse_default_1"),
+    (else_try),
+      (eq, ":random_dialogue", 1),
+      (str_store_string, s40, "str_spouse_default_2"),
+    (else_try),
+      (str_store_string, s40, "str_spouse_default_3"),
+    (try_end),
   (try_end),
-  ],
-   "{s40}", "spouse_pretalk",[
- ]],
+],"{s40}",
+"spouse_pretalk",[
+]],
 
-[anyone|plyr,"spouse_talk",
-[
-   (eq, "$g_player_minister", "$g_talk_troop"),
-  ],
-   "As you are my chief minister, I wish to speak about affairs of state", "minister_issues",[
- ]],
+[anyone|plyr,"spouse_talk",[
+  (eq, "$g_player_minister", "$g_talk_troop"),
+],"As you are my chief minister, I wish to speak about affairs of state",
+"minister_issues",[
+]],
 
 [anyone|plyr,"spouse_talk",[
   (check_quest_active, "qst_offer_gift"),
@@ -61588,6 +61638,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
     (str_store_string, s40, "str_spouse_lover_adventurous"),
   (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s40, "str_spouse_lover_hedonistic"),
+  (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
     (str_store_string, s40, "str_spouse_lover_otherworldly"),
   (else_try),
@@ -61628,6 +61681,9 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
     (str_store_string, s40, "str_spouse_divorce_adventurous"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s40, "str_spouse_divorce_hedonistic"),
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
     (str_store_string, s40, "str_spouse_divorce_otherworldly"),
@@ -62115,8 +62171,58 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 [anyone,"spouse_join",[
   (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
+  (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+],"Leave this place? To ride across the world with you, to see strange lands and meet dangerous people? To feel the wind and the rain and the thrill of the unknown, instead of the stale air of the forum? You're offering me an escape, my love. A true adventure. I accept! I accept absolutely! Thank you, {s0}!",
+"close_window",[
+  (call_script, "script_recruit_troop_as_companion", "$g_talk_troop"),
+
+  (assign, "$g_leave_encounter", 1),
+  (try_begin),
+    (troop_get_slot, ":encountered_town", "$g_talk_troop", slot_troop_first_encountered),
+    (neg|is_between, ":encountered_town", centers_begin, centers_end),
+    # let's add some objects to this adventurous wife
+    (troop_add_item, "$g_talk_troop","itm_horse_3", imod_spirited),
+    # # (troop_add_item, "$g_talk_troop","itm_", imod_lordly),
+    # (troop_add_item, "$g_talk_troop","itm_leather_boots", imod_lordly),
+    # (troop_add_item, "$g_talk_troop","itm_leather_gloves", imod_lordly),
+    # (troop_add_item, "$g_talk_troop","itm_hunting_bow", imod_masterwork),
+    # (troop_add_item, "$g_talk_troop","itm_arrows", imod_large_bag),
+
+  # ladies now have oroper stats anyway
+  #   # ..and some proficiencies
+  #   (try_begin),
+  #     (troop_raise_attribute, "$g_talk_troop", ca_strength, 2),
+  #     (troop_raise_attribute, "$g_talk_troop", ca_agility, 6),
+  #     (troop_raise_attribute, "$g_talk_troop", ca_intelligence, 4),
+  #     (troop_raise_attribute, "$g_talk_troop", ca_charisma, 3),
+
+  #     (troop_raise_skill, "$g_talk_troop", skl_power_draw, 2),
+  #     (troop_raise_skill, "$g_talk_troop", skl_weapon_master, 1),
+  #     (troop_raise_skill, "$g_talk_troop", skl_athletics, 3),
+  #     (troop_raise_skill, "$g_talk_troop", skl_riding, 2),
+  #     (troop_raise_skill, "$g_talk_troop", skl_trade, 2),
+  #     (troop_raise_skill, "$g_talk_troop", skl_tracking, 2),
+  #     (troop_raise_skill, "$g_talk_troop", skl_first_aid, 2),
+  #     (troop_raise_skill, "$g_talk_troop", skl_wound_treatment, 2),
+  #     (troop_raise_skill, "$g_talk_troop", skl_leadership, 2),
+  #   (try_end),
+  # #  (troop_raise_proficiency, "$g_talk_troop", wpt_archery, 20),
+
+    (add_xp_to_troop, 500, "$g_talk_troop"),
+    (troop_equip_items, "$g_talk_troop"),
+  (try_end),
+
+  (try_begin),
+    (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
+    (le, reg0, 50),
+    (call_script, "script_troop_change_relation_with_troop", "$g_talk_troop", "trp_player", 15),
+  (try_end),
+]],
+
+[anyone,"spouse_join",[
+  (call_script, "script_dplmc_print_player_spouse_says_my_husband_wife_to_s0", "$g_talk_troop", 0),
   (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
-],"Really?  You'd ask me to ride with your band like the old stories? To be with you in the field and watch your back in the wars?  I've dreamed about this since I was a little girl!  To see those dreams realized in this modern world would be so amazing! I shall make ready at once!  Thank you so much, {s0}!",
+],"Really?  You'd ask me to ride with your band? To be with you in the field and watch your back in the wars? I've dreamed about this since I was a little girl! To see those dreams realized in this modern world would be so amazing! I shall make ready at once! Thank you so much, {s0}!",
 "close_window",[
   (call_script, "script_recruit_troop_as_companion", "$g_talk_troop"),
 
@@ -64061,6 +64167,9 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
   (gt, "$g_talk_troop_relation", 0),
   (try_begin),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s11, "str_leave_them_wanting_more"),
+  (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
     (str_store_string, s11, "str_i_do_enjoy_speaking_to_you_but_i_am_sure_you_understand_that_our_people_cluck_their_tongues_at_a_woman_to_spend_too_long_conversing_with_a_man_outside_her_family__although_the_heavens_know_its_never_the_man_who_is_held_to_blame_"),
   (else_try),
@@ -64081,6 +64190,9 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (lt, "$g_time_since_last_talk", 24),
   (troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
   (try_begin),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s11, "str_youll_have_to_be_more_entertaining_than_that"),
+  (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
     (str_store_string, s11, "str_although_it_is_kind_of_you_to_pay_me_such_attentions_i_suspect_that_you_might_find_other_ladies_who_may_be_more_inclined_to_return_your_affection"),
   (else_try),
@@ -64116,6 +64228,9 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (else_try),
       (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
       (str_store_string, s12, "str_playername__i_am_so_glad_to_see_you_again_i_must_say_i_do_envy_your_freedom_to_ride_out_and_experience_the_world"),
+    (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s12, "str_playername__i_am_so_glad_to_see_you_again_i_must_say_i_do_envy_you_all_those_lonely_nights_on_the_road"),
     (else_try),
       (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
       (str_store_string, s12, "str_playername__i_am_so_glad_to_see_you_i_trust_that_you_have_been_behaving_honorably_since_last_we_met"),
@@ -64394,12 +64509,12 @@ But the peope here are either drunk or busy with other things, you know. Tell me
  ],  "I am about to retire for a little while, but perhaps we may have a chance to speak more later...", "lady_talk",[]],
 
 [anyone, "lady_meet_end",[
-    (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, -1),
-	(call_script, "script_troop_get_romantic_chemistry_with_troop", "$g_talk_troop", "trp_player"),
-	(le, reg0, 0),
-	(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
-	(le, reg0, 0),
-	],  "Now, if you will excuse me...", "lady_talk",[]],
+  (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, -1),
+  (call_script, "script_troop_get_romantic_chemistry_with_troop", "$g_talk_troop", "trp_player"),
+  (le, reg0, 0),
+  (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
+  (le, reg0, 0),
+],  "Now, if you will excuse me...", "lady_talk",[]],
 
 [anyone, "lady_meet_end",[],  "Can I help you with anything?", "lady_talk",[]],
 
@@ -64411,6 +64526,8 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (store_item_kind_count, ":perfume_special", "itm_perfume_special", "trp_player"),
     (store_item_kind_count, ":perfume", "itm_perfume", "trp_player"),
     (store_item_kind_count, ":ivory", "itm_ivory", "trp_player"),
+    (store_item_kind_count, ":furs", "itm_furs", "trp_player"),
+    (this_or_next|ge, ":furs", 1),
     (this_or_next|ge, ":amber", 1),
     (this_or_next|ge, ":jewelry", 1),
     (this_or_next|ge, ":perfume", 1),
@@ -64424,77 +64541,229 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone, "lady_present", [
     (try_begin),
         (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
-        (str_store_string, s20, "@Interesting. Hopefully, it is something from far away. I like such stuff."),
+        (store_random_in_range, ":random_line", 0, 3),
+        (try_begin),
+            (eq, ":random_line", 0),
+            (str_store_string, s20, "str_lady_gift_reaction_adventurous_1"),
+        (else_try),
+            (eq, ":random_line", 1),
+            (str_store_string, s20, "str_lady_gift_reaction_adventurous_2"),
+        (else_try),
+            (str_store_string, s20, "str_lady_gift_reaction_adventurous_3"),
+        (try_end),
     (else_try),
         (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
-        (str_store_string, s20, "@I like people who make me presents. Well, let's see what you have brought me."),
+        (store_random_in_range, ":random_line", 0, 3),
+        (try_begin),
+            (eq, ":random_line", 0),
+            (str_store_string, s20, "str_lady_gift_reaction_ambitious_1"),
+        (else_try),
+            (eq, ":random_line", 1),
+            (str_store_string, s20, "str_lady_gift_reaction_ambitious_2"),
+        (else_try),
+            (str_store_string, s20, "str_lady_gift_reaction_ambitious_3"),
+        (try_end),
     (else_try),
         (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
-        (str_store_string, s20, "@Actually, I do not think it is good that you bring me so many gifts. But I am nonetheless curious about what you have brought."),
+        (store_random_in_range, ":random_line", 0, 3),
+        (try_begin),
+            (eq, ":random_line", 0),
+            (str_store_string, s20, "str_lady_gift_reaction_moralist_1"),
+        (else_try),
+            (eq, ":random_line", 1),
+            (str_store_string, s20, "str_lady_gift_reaction_moralist_2"),
+        (else_try),
+            (str_store_string, s20, "str_lady_gift_reaction_moralist_3"),
+        (try_end),
     (else_try),
         (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional),
-        (str_store_string, s20, "@A present? Sounds good. I especially like expensive stuff."),
+        (store_random_in_range, ":random_line", 0, 3),
+        (try_begin),
+            (eq, ":random_line", 0),
+            (str_store_string, s20, "str_lady_gift_reaction_conventional_1"),
+        (else_try),
+            (eq, ":random_line", 1),
+            (str_store_string, s20, "str_lady_gift_reaction_conventional_2"),
+        (else_try),
+            (str_store_string, s20, "str_lady_gift_reaction_conventional_3"),
+        (try_end),
     (else_try),
         (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
-        (str_store_string, s20, "@How nice of you. I think it is important for a man to show his affection for a woman with presents. Now, let's see what it is."),
+        (store_random_in_range, ":random_line", 0, 3),
+        (try_begin),
+            (eq, ":random_line", 0),
+            (str_store_string, s20, "str_lady_gift_reaction_otherworldly_1"),
+          (else_try),
+            (eq, ":random_line", 1),
+            (str_store_string, s20, "str_lady_gift_reaction_otherworldly_2"),
+          (else_try),
+            (str_store_string, s20, "str_lady_gift_reaction_otherworldly_3"),
+        (try_end),
     (else_try),
-        (str_store_string, s20, "@I like presents, especially expensive ones. Well, let's see what you have brought me."),
+        (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+        (store_random_in_range, ":random_line", 0, 3),
+        (try_begin),
+            (eq, ":random_line", 0),
+            (str_store_string, s20, "str_lady_gift_reaction_hedonistic_1"),
+        (else_try),
+            (eq, ":random_line", 1),
+            (str_store_string, s20, "str_lady_gift_reaction_hedonistic_2"),
+        (else_try),
+          (str_store_string, s20, "str_lady_gift_reaction_hedonistic_3"),
+        (try_end),
+    (else_try), # Default case for any other personality
+        (store_random_in_range, ":random_line", 0, 3),
+        (try_begin),
+            (eq, ":random_line", 0),
+            (str_store_string, s20, "str_lady_gift_reaction_default_1"),
+        (else_try),
+            (eq, ":random_line", 1),
+            (str_store_string, s20, "str_lady_gift_reaction_default_2"),
+        (else_try),
+            (str_store_string, s20, "str_lady_gift_reaction_default_3"),
+        (try_end),
     (try_end),
 ], "{s20}", "lady_present2", []],
 
 [anyone|plyr, "lady_present2", [
+    (store_item_kind_count, ":amber", "itm_furs", "trp_player"),
+    (ge, ":amber", 1),
+], "This furs are from exotic animals.",
+"lady_present_response", [
+  (assign, "$temp", "itm_furs")
+]],
+
+[anyone|plyr, "lady_present2", [
     (store_item_kind_count, ":amber", "itm_amber", "trp_player"),
     (ge, ":amber", 1),
-], "This amber comes from faraway lands.", "lady_present_response", [(assign, "$temp", "itm_amber")]],
+], "This amber comes from faraway lands.",
+"lady_present_response", [
+  (assign, "$temp", "itm_amber")
+]],
 
 [anyone|plyr, "lady_present2", [
     (store_item_kind_count, ":jewelry", "itm_jewelry", "trp_player"),
     (ge, ":jewelry", 1),
-], "This jewelry will look beautiful on you.", "lady_present_response", [(assign, "$temp", "itm_jewelry")]],
+], "This jewelry will look beautiful on you.",
+"lady_present_response", [
+  (assign, "$temp", "itm_jewelry")
+]],
 
 [anyone|plyr, "lady_present2", [
     (store_item_kind_count, ":perfume", "itm_perfume", "trp_player"),
     (ge, ":perfume", 1),
-], "The sweet flowery smell of this perfume will suit you perfectly.", "lady_present_response", [(assign, "$temp", "itm_perfume")]],
+], "The sweet flowery smell of this perfume will suit you perfectly.",
+"lady_present_response", [
+  (assign, "$temp", "itm_perfume")
+]],
 
 [anyone|plyr, "lady_present2", [
     (store_item_kind_count, ":perfume_special", "itm_perfume_special", "trp_player"),
     (ge, ":perfume_special", 1),
     (str_store_item_name, s1, "itm_perfume_special"),
-], "The exotic flowery fragrance of this perfume called '{s1}' will make you smell like a goddess.", "lady_present_response", [(assign, "$temp", "itm_perfume_special")]],
+], "The exotic flowery fragrance of this perfume called '{s1}' will make you smell like a goddess.", "lady_present_response", [
+  (assign, "$temp", "itm_perfume_special")
+]],
 
 [anyone|plyr, "lady_present2", [
     (store_item_kind_count, ":ivory", "itm_ivory", "trp_player"),
     (ge, ":ivory", 1),
-], "This ivory is as mighty as you.", "lady_present_response", [(assign, "$temp", "itm_ivory")]],
+], "This ivory is as mighty as you.",
+"lady_present_response", [
+  (assign, "$temp", "itm_ivory")
+]],
 
 [anyone, "lady_present_response", [
+    (str_store_item_name, s21, "$temp"), # Store the item name for use in dialogue strings.
     (try_begin),
-        (eq, "$temp", "itm_perfume_special"),
-        (assign, ":mood", 9),
+        (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+        (try_begin),
+            (this_or_next|eq, "$temp", "itm_perfume_special"),
+            (eq, "$temp", "itm_furs"),
+            (str_store_string, s20, "str_lady_react_adventurous_love"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 9),
+        (else_try),
+            (this_or_next|eq, "$temp", "itm_ivory"),
+            (eq, "$temp", "itm_amber"),
+            (str_store_string, s20, "str_lady_react_adventurous_like"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+        (else_try),
+            (str_store_string, s20, "str_lady_react_adventurous_dislike"),
+        (try_end),
     (else_try),
-        (store_random_in_range, ":mood", 0, 10),
+        (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+        (try_begin),
+            (this_or_next|eq, "$temp", "itm_jewelry"),
+            (eq, "$temp", "itm_ivory"),
+            (str_store_string, s20, "str_lady_react_ambitious_love"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 9),
+        (else_try),
+            (eq, "$temp", "itm_perfume_special"),
+            (str_store_string, s20, "str_lady_react_ambitious_like"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+        (else_try),
+            (str_store_string, s20, "str_lady_react_ambitious_dislike"),
+        (try_end),
+    (else_try),
+        (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+        (try_begin),
+            (eq, "$temp", "itm_perfume_special"),
+            (str_store_string, s20, "str_lady_react_moralist_like"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+        (else_try),
+            (this_or_next|eq, "$temp", "itm_ivory"),
+            (this_or_next|eq, "$temp", "itm_furs"),
+            (eq, "$temp", "itm_perfume"),
+            (str_store_string, s20, "str_lady_react_moralist_love"), # Note: still uses the "love" text but gives less relation
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1), # Only a slight increase for being "generous"
+        (else_try),
+            (str_store_string, s20, "str_lady_react_moralist_dislike"),
+        (try_end),
+    (else_try),
+        (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+        (try_begin),
+            (eq, "$temp", "itm_perfume_special"),
+            (str_store_string, s20, "str_lady_react_hedonistic_love"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 9),
+        (else_try),
+            (this_or_next|eq, "$temp", "itm_perfume"),
+            (eq, "$temp", "itm_jewelry"),
+            (str_store_string, s20, "str_lady_react_hedonistic_like"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+        (else_try),
+            (str_store_string, s20, "str_lady_react_hedonistic_dislike"),
+        (try_end),
+    (else_try),
+        (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+        (try_begin),
+            (eq, "$temp", "itm_perfume_special"),
+            (str_store_string, s20, "str_lady_react_otherworldly_love"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 9),
+        (else_try),
+            (this_or_next|eq, "$temp", "itm_amber"),
+            (eq, "$temp", "itm_perfume"),
+            (str_store_string, s20, "str_lady_react_otherworldly_like"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+        (else_try),
+            (str_store_string, s20, "str_lady_react_otherworldly_dislike"),
+        (try_end),
+    (else_try), # Default and Conventional personalities
+        (try_begin),
+            (this_or_next|eq, "$temp", "itm_perfume_special"),
+            (eq, "$temp", "itm_jewelry"),
+            (str_store_string, s20, "str_lady_react_conventional_love"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 9),
+        (else_try),
+            (this_or_next|eq, "$temp", "itm_perfume"),
+            (this_or_next|eq, "$temp", "itm_amber"),
+            (eq, "$temp", "itm_ivory"),
+            (str_store_string, s20, "str_lady_react_conventional_like"),
+            (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+        (else_try),
+            (str_store_string, s20, "str_lady_react_conventional_dislike"),
+        (try_end),
     (try_end),
-    (try_begin),
-        (is_between, ":mood", 1, 3),
-        (str_store_item_name, s21, "$temp"),
-        (str_store_string, s20, "@I have seen so much {s21} lately. I can't stand to see it anymore, but well... I will take your present."),
-        (troop_remove_item, "trp_player", "$temp"),
-    (else_try),
-        (eq, ":mood", 0),
-        (str_store_item_name, s21, "$temp"),
-        (str_store_string, s20, "@Oh... Amber, how... nice. It has become so common; I imagine even the plebs have tired of seeing it. However, I suppose I will accept your present."),
-        (troop_remove_item, "trp_player", "$temp"),
-    (else_try),
-        (is_between, ":mood", 3, 8),
-        (str_store_string, s20, "@Thank you. It is always beautiful to see people's appreciation. Although, I hoped it would be something more 'special'."),
-        (troop_remove_item, "trp_player", "$temp"),
-        (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
-    (else_try),
-        (str_store_string, s20, "@Oh, thank you. I am sure it was dangerous to get or at least very expensive.^^(She hugs you.)"),
-        (troop_remove_item, "trp_player", "$temp"),
-        (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 9),
-    (try_end),
+    (troop_remove_item, "trp_player", "$temp"),
 ], "{s20}", "lady_pretalk", []],
 
 [anyone|plyr,"lady_talk",[
@@ -64543,7 +64812,8 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
 [anyone|plyr,"rumor_discover_lady6",[
 ],
-"I want you not to participate in any scheme against me, you understand?", "quest_for_lady",[]],
+"I want you not to participate in any scheme against me, you understand?",
+"quest_for_lady",[]],
 
 [anyone,"quest_for_lady",[
 ],
@@ -64869,9 +65139,295 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 			(try_end),
 		(try_end),
 	(try_end),
-],
-  "{s40}",
-"lady_talk",[]],
+],"{s40}",
+"lady_gossip_talk_1",[]],
+
+[anyone|plyr, "lady_gossip_talk_1",[
+],"Maybe you can tell me anything about the other ladies of the realm?",
+"lady_gossip_talk_2",[
+]],
+[anyone|plyr, "lady_gossip_talk_1",[
+],"Most interesting.",
+"lady_pretalk",[
+]],
+
+[anyone, "lady_gossip_talk_2",[
+  (le, "$g_talk_troop_effective_relation", 5),
+],"Maybe on another day, it is getting late...",
+"lady_pretalk",[]],
+
+[anyone, "lady_gossip_talk_2",
+[],"About whom did you wish to know more? Maybe I know something delicate.",
+"lady_gossip_talk_2_select",[]],
+
+[anyone|plyr,"lady_gossip_talk_2_select",
+[], "Never mind.", "minstrel_pretalk",[]],
+
+[anyone|plyr|repeat_for_troops,"lady_gossip_talk_2_select",[
+  (store_repeat_object, "$temp"),
+  (neq, "$temp", "$g_talk_troop"),
+  (troop_slot_eq, "$temp", slot_troop_occupation, slto_kingdom_lady),
+  # (troop_slot_eq, "$temp", slot_troop_spouse, -1),
+  (store_faction_of_troop, ":lady_faction", "$temp"),
+  (store_faction_of_party, ":town_faction", "$g_encountered_party"),
+  (eq, ":lady_faction", ":town_faction"),
+  (str_store_troop_name, s10, "$temp"),
+],"{s10}",
+"lady_gossip_talk_2_selected",[
+  (store_repeat_object, "$lady_selected"),
+]],
+
+
+[anyone,"lady_gossip_talk_2_selected",[
+  (try_begin),
+    (eq, "$cheat_mode", 1),
+    (assign, reg3, "$lady_selected"),
+    (display_message, "@{!}DEBUG: Gossip for troop {reg3}"),
+    (gt, reg3, -1),
+    (display_message, "@{!}DEBUG: {s3}"),
+  (try_end),
+
+  (try_begin),
+    (gt, "$lady_selected", -1),
+    (str_store_troop_name, s9, "$lady_selected"), #lady
+
+    ##diplomacy start+ Make gender-correct
+    (try_begin),
+        (call_script, "script_cf_dplmc_troop_is_female", "$lady_selected"),
+        (assign, reg4, 1),
+    (else_try),
+        (assign, reg4, 0),
+    (try_end),
+    #the strings below have been modified to use reg4 for gender
+    ##diplomacy end+
+    (str_store_string, s10, "str_error__reputation_type_for_s9_not_within_range"),
+    (try_begin),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_conventional),
+      (str_store_string, s16, "str_they_say_that_s9_is_a_most_conventional_maiden__devoted_to_her_family_of_a_kind_and_gentle_temperament_a_lady_in_all_her_way"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s16, "str_they_say_that_s9_is_a_bit_of_a_romantic_a_dreamer__of_a_gentle_temperament_yet_unpredictable_she_is_likely_to_be_led_by_her_passions_and_will_be_trouble_for_her_family_ill_wager"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s16, "str_they_say_that_s9_is_determined_to_marry_well_and_make_her_mark_in_the_world_she_may_be_a_tremendous_asset_for_her_husband__provided_he_can_satisfy_her_ambition"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s16, "str_they_say_that_s9_loves_to_hunt_and_ride_maybe_she_wishes_she_were_a_man_whoever_she_marries_will_have_a_tough_job_keeping_the_upper_hand_i_would_say"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s16, "str_gossip_hedonistic_decadent_spender"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s16, "str_they_say_that_s9_is_a_lady_of_the_highest_moral_standards_very_admirable_very_admirable__and_very_hard_to_please_ill_warrant"),
+    (try_end),
+
+    (call_script, "script_add_rumor_string_to_troop_notes", "$lady_selected", -1, s16),
+  (try_end),
+],"{s16}",
+"lady_gossip_talk_2_selected_2",[
+]],
+
+[anyone,"lady_gossip_talk_2_selected_2",[
+	(is_between, "$lady_selected", heroes_begin, kingdom_ladies_end),
+	(this_or_next|troop_slot_eq, "$lady_selected", slot_troop_spouse, "trp_player"),
+	(troop_slot_eq, "trp_player", slot_troop_spouse, "$lady_selected"),
+	(call_script, "script_dplmc_store_troop_is_female",  "$lady_selected"),#Add support for male version
+],"{reg0?She:He} is married to you, of course! Clearly, no one would dream that {reg0?she:he} would do anything to engender gossip.",
+"lady_gossip_talk_postgossip",[
+]],
+
+[anyone,"lady_gossip_talk_2_selected_2",[
+  (gt, "$lady_selected", -1),
+	(assign, ":lady", "$lady_selected"),
+	(neg|troop_slot_ge, ":lady", slot_troop_spouse, active_npcs_begin),
+	(troop_get_slot, ":betrothed", ":lady", slot_troop_betrothed),
+	(is_between, ":betrothed", active_npcs_begin, active_npcs_end),
+
+	(str_store_troop_name, s9, ":lady"),
+	(str_store_troop_name, s11, ":betrothed"),
+
+	(str_store_string, s12, "str_s9_is_now_betrothed_to_s11_soon_we_believe_there_shall_be_a_wedding"),
+	(try_begin),
+		(troop_slot_eq, ":lady", slot_troop_met, 2),
+		(assign, "$romantic_rival", ":betrothed"),
+	(try_end),
+],"{s12}.",
+"lady_gossip_talk_postgossip",[]],
+
+[anyone,"lady_gossip_talk_2_selected_2",[
+      ##diplomacy start+ Make gender-correct
+      #xxx TODO ensure this actually works, untangle how this is used
+      #The strings below have been modified to use reg4 for gender
+     (try_begin),
+        (call_script, "script_cf_dplmc_troop_is_female", "$lady_selected"),
+        (assign, reg4, 1),
+	 (else_try),
+        (assign, reg4, 0),
+     (try_end),
+      ##diplomacy end+
+    (try_begin),
+		(is_between, "$lady_selected", kingdom_ladies_begin, kingdom_ladies_end),
+	    (str_store_string, s12, "str_i_have_not_heard_any_news_about_her"),
+
+		(str_store_troop_name, s9, "$lady_selected"), #lady
+
+		(try_begin),
+			(eq, "$cheat_mode", 1), #for some reason, speaking to tavern merchant does not yield rumor. Try for Lady Baoth, Lord Etr
+			(display_message, "str_searching_for_rumors_for_s9"),
+		(try_end),
+
+		(assign, "$romantic_rival", -1),
+		(assign, ":last_lady_noted", 0),
+		(try_for_range, ":log_entry", 0, "$num_log_entries"),
+			(troop_slot_eq, "trp_log_array_actor", ":log_entry", "$lady_selected"),
+
+			#Presumably possible for some events involving a lady to not involve troops
+			(troop_get_slot, ":suitor", "trp_log_array_troop_object", ":log_entry"),
+			(str_clear, s11),
+			(try_begin),
+				(is_between, ":suitor", 0, kingdom_ladies_end),
+				(str_store_troop_name, s11, ":suitor"),
+			(try_end),
+
+			(troop_get_slot, ":third_party", "trp_log_array_center_object", ":log_entry"),
+			(str_clear, s10),
+			(try_begin),
+				(is_between, ":third_party", 0, kingdom_ladies_end),
+				(str_store_troop_name, s10, ":third_party"),
+			(try_end),
+
+			(assign, ":lady", "$lady_selected"),
+
+			(try_begin),
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_favors_suitor),
+				(str_store_string, s12, "str_they_say_that_s9_has_shown_favor_to_s11_perhaps_it_will_not_be_long_until_they_are_betrothed__if_her_family_permits"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+
+				(try_begin),
+					(troop_slot_eq, ":lady", slot_troop_met, 2),
+					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
+					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
+						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+					(assign, "$romantic_rival", ":suitor"),
+				(try_end),
+			(else_try),
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_betrothed_to_suitor_by_family),
+				(str_store_string, s12, "str_they_say_that_s9_has_been_forced_by_her_family_into_betrothal_with_s11"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+
+				(try_begin),
+					(troop_slot_eq, ":lady", slot_troop_met, 2),
+					(assign, "$romantic_rival", ":suitor"),
+				(try_end),
+			(else_try),
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_betrothed_to_suitor_by_choice),
+				(str_store_string, s12, "str_they_say_that_s9_has_agreed_to_s11s_suit_and_the_two_are_now_betrothed"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+
+				(try_begin),
+					(troop_slot_eq, ":lady", slot_troop_met, 2),
+					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
+					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
+						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+					(assign, "$romantic_rival", ":suitor"),
+				(try_end),
+
+			(else_try),
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_betrothed_to_suitor_by_pressure),
+				(str_store_string, s12, "str_they_say_that_s9_under_pressure_from_her_family_has_agreed_to_betrothal_with_s11"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+
+				(try_begin),
+					(troop_slot_eq, ":lady", slot_troop_met, 2),
+					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
+					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
+						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+					(assign, "$romantic_rival", ":suitor"),
+				(try_end),
+
+			(else_try),
+
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_rejects_suitor),
+				(str_store_string, s12, "str_they_say_that_s9_has_refused_s11s_suit"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+
+			(else_try),
+
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_rejected_by_suitor),
+				(str_store_string, s12, "str_they_say_that_s11_has_tired_of_pursuing_s9"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+
+			(else_try),
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_father_rejects_suitor),
+				(str_store_string, s12, "str_they_say_that_s9s_family_has_forced_her_to_renounce_s11_whom_she_much_loved"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+
+			(else_try),
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_elopes_with_lord),
+				(str_store_string, s12, "str_they_say_that_s9_has_run_away_with_s11_causing_her_family_much_grievance"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+
+			(else_try),
+				(troop_slot_eq, "trp_log_array_entry_type",  ":log_entry", logent_lady_marries_lord),
+				(str_store_string, s12, "str_they_say_that_s9_and_s11_have_wed"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+			(else_try),
+				(troop_get_slot, ":suitor", ":lady", slot_lady_last_suitor),
+				(is_between, ":suitor", active_npcs_begin, active_npcs_end),
+				(str_store_troop_name, s11, ":suitor"),
+
+				(str_store_string, s12, "str_they_say_that_s9_was_recently_visited_by_s11_who_knows_where_that_might_lead"),
+				(assign, ":last_lady_noted", ":lady"),
+				(assign, ":last_suitor_noted", ":suitor"),
+				(try_begin),
+					(troop_slot_eq, ":lady", slot_troop_met, 2),
+					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
+					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
+						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+					(assign, "$romantic_rival", ":suitor"),
+				(try_end),
+			(try_end),
+
+		(try_end),
+
+		(try_begin),
+			(neq, ":last_suitor_noted", "$romantic_rival"),
+			(assign, "$romantic_rival", -1),
+		(try_end),
+
+		(try_begin),
+			(gt, ":last_lady_noted", 0),
+			(call_script, "script_add_rumor_string_to_troop_notes", ":last_lady_noted", ":last_suitor_noted", s12),
+		(try_end),
+	(else_try),
+		(eq, "$lady_selected", -1),
+		(str_store_string, s12, "str_there_is_not_much_to_tell_but_it_is_still_early_in_the_season"),
+	(else_try),
+		(assign, reg4, "$lady_selected"),
+		(str_store_troop_name, s9, "$lady_selected"),
+		(str_store_string, s12, "str_error_lady_selected_=_s9"),
+	(try_end),
+],"{s12}.","lady_gossip_talk_postgossip",[]],
+
+[anyone|plyr, "lady_gossip_talk_postgossip",[],
+"Very interesting -- but let us speak of something else.",
+"lady_pretalk",[]],
+[anyone|plyr, "lady_gossip_talk_postgossip",[],
+"Very interesting -- maybe you know some other rumours.",
+"lady_gossip_talk_2",[]],
 
 [anyone|plyr,"lady_talk",[
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
@@ -65005,6 +65561,43 @@ But the peope here are either drunk or busy with other things, you know. Tell me
             (try_end),
         (try_end),
     (else_try),
+        (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+        (try_begin),
+            (lt, ":c", 28),
+            (try_begin),
+                (is_between, ":r2", 0, 80),
+                (assign, "$temp4_1", 1),
+            (else_try),
+                (is_between, ":r2", 80, 95),
+                (assign, "$temp4_1", 2),
+            (else_try),
+                (is_between, ":r2", 95, 100),
+                (assign, "$temp4_1", 0),
+            (try_end),
+        (else_try),
+            (ge, ":c", 28),
+            (try_begin),
+                (ge, ":love", -5),
+                (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
+                (assign, ":relation", reg0),
+                (store_random_in_range, ":r3", 0, 20),
+                (val_add, ":relation", ":r3"),
+                (val_add, ":relation", 15),
+                (val_add, ":relation", ":love"),
+                (ge, ":relation", 1),
+                (is_between, ":r2", 0, ":relation"),
+                (assign, "$temp4_1", 3),
+            (else_try),
+                (is_between, ":r2", 0, 38),
+                (assign, "$temp4_1", 1),
+            (else_try),
+                (is_between, ":r2", 38, 96),
+                (assign, "$temp4_1", 2),
+            (else_try),
+                (assign, "$temp4_1", 0),
+            (try_end),
+        (try_end),
+    (else_try),
         (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
         (try_begin),
             (lt, ":c", 28),
@@ -65128,6 +65721,20 @@ But the peope here are either drunk or busy with other things, you know. Tell me
                 (str_store_string, s40, "str_flirt_conventional_crit_success"),
             (try_end),
         (else_try),
+            (eq, ":lady_personality", lrep_hedonistic),
+            (try_begin),
+                (eq, "$temp4_1", 0),
+                (str_store_string, s40, "str_flirt_conventional_failure"),
+            (else_try),
+                (eq, "$temp4_1", 1),
+                (str_store_string, s40, "str_flirt_conventional_neutral"),
+            (else_try),
+                (eq, "$temp4_1", 2),
+                (str_store_string, s40, "str_flirt_conventional_success"),
+            (else_try),
+                (str_store_string, s40, "str_flirt_conventional_crit_success"),
+            (try_end),
+        (else_try),
             (eq, ":lady_personality", lrep_adventurous),
             (try_begin),
                 (eq, "$temp4_1", 0),
@@ -65201,16 +65808,56 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ],"{s40}",
 "flirt2",[]],
 
-[anyone,"flirt2",[(eq, "$temp4_1", 3),],
-"Come on I want you, now!^^-- She kisses you again, then she makes a step back and lookes at you. You look at her ... --^^Let's do it!", "close_window",[
-  (add_xp_as_reward, 400),
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
+[anyone,"flirt2",[
+  (eq, "$temp4_1", 3), # This is the condition for critical success
+],"Come on... I want you, now!^^-- She kisses you again, deeply this time, then takes a step back, her eyes alight with a mixture of desire and challenge. --^^Let's find somewhere more private.",
+"flirt_crit_success_player_choice",[
   (agent_play_sound,"$g_talk_agent","snd_female_laugh"),
-  (jump_to_menu, "mnu_funny_nights"),
 ]],
 
-[anyone,"flirt2",[(eq, "$temp4_1", 2),],
-  "You are so funny and amusing. I like that. But sadly time is running out.^^-- She looks amused. --",
+[anyone|plyr,"flirt_crit_success_player_choice",[
+],"Lead the way.",
+"flirt_crit_success_accepted",[
+]],
+
+[anyone|plyr,"flirt_crit_success_player_choice",[
+],"I am flattered, my lady, truly. But now is not the right time or place.",
+"flirt_crit_success_refused_politely",[
+]],
+
+[anyone|plyr,"flirt_crit_success_player_choice",[
+],"I think not.",
+"flirt_crit_success_refused_directly",[
+]],
+
+[anyone,"flirt_crit_success_accepted",[
+],"-- She smiles, a triumphant, knowing look in her eyes. --^^Follow me.",
+"close_window",[
+  (agent_play_sound,"$g_talk_agent","snd_female_laugh"),
+  (add_xp_as_reward, 400),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (agent_play_sound,"$g_talk_agent","snd_female_laugh"),
+  (jump_to_menu, "mnu_funny_nights"),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+  (mission_disable_talk),
+  (finish_mission, 3),
+]],
+
+[anyone,"flirt_crit_success_refused_politely",[
+],"-- Her expression flickers with surprise, then cools into a mask of indifference. --^^A pity. Your loss. Perhaps you will feel more... decisive... another time.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
+]],
+
+[anyone,"flirt_crit_success_refused_directly",[
+],"-- Her eyes narrow, the warmth instantly gone. --^^Indeed. I must have misjudged you. You are clearly not the man I thought you were. Do not waste my time again.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
+]],
+
+[anyone,"flirt2",[
+  (eq, "$temp4_1", 2),
+],"You are so funny and amusing. I like that. But sadly time is running out.^^-- She looks amused. --",
 "lady_talk",[
   (add_xp_as_reward, 300),
   (try_begin),
@@ -65407,12 +66054,11 @@ But the peope here are either drunk or busy with other things, you know. Tell me
  ]],
 
 #Info 2b: If a lady, show rumor (other)
-[anyone,"dplmc_lady_info_relative_2",
-[
-    (is_between,"$lord_selected",kingdom_ladies_begin,kingdom_ladies_end),
-    (assign, "$lady_selected", "$lord_selected"),
-    (try_begin),
-	    (str_store_string, s12, "str_i_have_not_heard_any_news_about_her"),
+[anyone,"dplmc_lady_info_relative_2",[
+  (is_between,"$lord_selected",kingdom_ladies_begin,kingdom_ladies_end),
+  (assign, "$lady_selected", "$lord_selected"),
+  (try_begin),
+    (str_store_string, s12, "str_i_have_not_heard_any_news_about_her"),
 
 		(str_store_troop_name, s9, "$lady_selected"), #lady
 
@@ -65565,9 +66211,8 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 		(str_store_troop_name, s9, "$lady_selected"),
 		(str_store_string, s12, "str_error_lady_selected_=_s9"),
 	(try_end),
-  ],
-   "{s12}.",
-   "lady_pretalk",[]],
+],"{s12}.",
+"lady_pretalk",[]],
 
 #Info 2: If a lord, show location
 [anyone,"dplmc_lady_info_relative_2",
@@ -65740,6 +66385,9 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
     (str_store_string, s40, "str_lady_time_spend_adventurous"),
   (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s40, "str_lady_time_spend_hedonistic"),
+  (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
     (str_store_string, s40, "str_lady_time_spend_otherworldly"),
   (else_try),
@@ -65837,6 +66485,9 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 	(else_try),
 		(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
 		(str_store_string, s11, "str_ah_well_they_all_say_that_but_no_matter_a_compliment_well_delivered_is_at_least_a_good_start_"),
+	(else_try),
+		(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+		(str_store_string, s11, "str_a_fine_opening_now_for_the_main_course"),
 	(else_try),
 		(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
 		(str_store_string, s11, "str_oh_do_you_mean_that_such_a_kind_thing_to_say"),
@@ -66943,18 +67594,21 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone,"lady_intrigue_influence",[
   (try_begin),
       (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
-      (str_store_string, s16, "@Oh, great! I would love it to be part of your schemes, then we can spend more time together my love."),
+      (str_store_string, s16, "str_lady_scheme_response_otherworldly"),
   (else_try),
       (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
-      (str_store_string, s16, "@It is good that you ask me for help to boost your political career. We deserve more, my love."),
+      (str_store_string, s16, "str_lady_scheme_response_ambitious"),
   (else_try),
       (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
-      (str_store_string, s16, "@Sounds like a nice adventure my love. I will do my best."),
+      (str_store_string, s16, "str_lady_scheme_response_adventurous"),
   (else_try),
       (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
-      (str_store_string, s16, "@I find such scheming amoral to be honest. However if you insist on it I will do my best to help you my love."),
+      (str_store_string, s16, "str_lady_scheme_response_moralist"),
   (else_try),
-      (str_store_string, s16, "@It would be a pleasure to help you my love."),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s16, "str_lady_scheme_response_hedonistic"),
+  (else_try),
+      (str_store_string, s16, "str_lady_scheme_response_default"),
   (try_end),
 ], "{s16} What are your exact plans?",
 "lady_intrigue_influence_2",[]],
@@ -71694,14 +72348,16 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   #Code credit to rubik's Custom Commander
   # CC
   #SB : minstrels
-[anyone|plyr, "tavern_traveler_talk",[], "I am looking for minstrels...", "tavern_traveler_minstrel_location",[]],
+[anyone|plyr, "tavern_traveler_talk",[], "I am looking for minstrels...",
+"tavern_traveler_minstrel_location",[]],
 
-[anyone, "tavern_traveler_minstrel_location",
-[
-        (call_script, "script_cf_no_known_taverngoers", tavern_minstrels_begin, tavern_minstrels_end),
+[anyone, "tavern_traveler_minstrel_location",[
+  (call_script, "script_cf_no_known_taverngoers", tavern_minstrels_begin, tavern_minstrels_end),
 ], "I am sorry, I'm not really a big fan of their music.", "tavern_traveler_pretalk",[]],
 
-[anyone, "tavern_traveler_minstrel_location",[], "I might have heard some ribald songs recently. For 30 denarii, I'll tell you where.", "tavern_traveler_minstrel_location_ask_money",[]],
+[anyone, "tavern_traveler_minstrel_location",[
+], "I might have heard some ribald songs recently. For 30 denarii, I'll tell you where.",
+"tavern_traveler_minstrel_location_ask_money",[]],
 
 [anyone|plyr, "tavern_traveler_minstrel_location_ask_money",
 [
@@ -71787,30 +72443,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone|plyr, "tavern_traveler_ransom_broker_location_ask_money",[
 ], "Never mind.", "tavern_traveler_pretalk",[]],
 
-[anyone, "tavern_traveler_npc_location_tell",[], "You can find them at {s11}.", "tavern_traveler_pretalk",
-[
-      # (assign, ":num_towns", 0),
-      # (try_for_range, ":town_no", towns_begin, towns_end),
-        # (neq, ":town_no", "p_town_2"),
-        # (neg|party_slot_eq, ":town_no", slot_center_ransom_broker, 0),
-        # (party_get_slot, ":broker", ":town_no", slot_center_ransom_broker),#addition - fixed 2011-03-29
-        # (troop_slot_ge, ":broker", slot_troop_met, 1),#addition # removed 2011-03-29
-        # (val_add, ":num_towns", 1),
-        # (try_begin),
-          # (eq, ":num_towns", 1),
-          # (str_store_party_name, s11, ":town_no"),
-        # (else_try),
-          # (str_store_party_name, s12, ":town_no"),
-          # (eq, ":num_towns", 2),
-          # (str_store_string, s11, "@{s12} and {s11}"),
-        # (else_try),
-          # (str_store_string, s11, "@{s12}, {s11}"),
-        # (try_end),
-      # (try_end),
-      # (display_message, "@You can find ransom brokers at {s11}."),
- ]],
-  # CC
-  ##diplomacy end+
+[anyone, "tavern_traveler_npc_location_tell",[], "You can find them at {s11}.",
+"tavern_traveler_pretalk",[
+]],
+
 
 ##diplomacy start+
 #Allow another method of retrieving dismissed employees
@@ -72206,57 +72842,52 @@ But the peope here are either drunk or busy with other things, you know. Tell me
    "minstrel_courtship_poem",[]],
 
 [anyone, "minstrel_courtship_poem",[
-      (eq, "$allegoric_poem_recitations", 0),
-      (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_1"),
-      (eq, "$g_talk_troop", "trp_tavern_minstrel_5"),
-],
-    "I can teach you the tale of Aeneas and Dido, from the Aeneid. It is an allegoric poem that describes how Dido, the Queen of Carthage, fell in love, under the influence of the gods, with the Trojan hero Aeneas. When reminded by Jupiter, he leaves his lover to fulfill his duty to found a new city, Dido commits suicide, cursing Aeneas and calling down revenge in a symbolic anticipation of the fierce wars between Carthage and Rome. Its theme -- of strong love separated by fate and cursed by suicide -- is appreciated by some noble ladies, but not all.",
-    "minstrel_courtship_poem_teach",[
-      (assign, "$poem_selected", courtship_poem_allegoric),
-  ]],
+  (eq, "$allegoric_poem_recitations", 0),
+  (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_1"),
+  (eq, "$g_talk_troop", "trp_tavern_minstrel_5"),
+],"I can teach you the tale of Aeneas and Dido, from the Aeneid. It is an allegoric poem that describes how Dido, the Queen of Carthage, fell in love, under the influence of the gods, with the Trojan hero Aeneas. When reminded by Jupiter, he leaves his lover to fulfill his duty to found a new city, Dido commits suicide, cursing Aeneas and calling down revenge in a symbolic anticipation of the fierce wars between Carthage and Rome. Its theme -- of strong love separated by fate and cursed by suicide -- is appreciated by some noble ladies, but not all.",
+"minstrel_courtship_poem_teach",[
+  (assign, "$poem_selected", courtship_poem_allegoric),
+]],
 
 [anyone, "minstrel_courtship_poem",[
-      (eq, "$mystic_poem_recitations", 0),
-      (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_3"),
-      (eq, "$g_talk_troop", "trp_tavern_minstrel_1"),
-],
-    "I can teach you The Voyage of Bran. This Goidelic saga can be interpreted either erotically or prophetically. Bran, son o Fedbal, and his expedition of twenty-one companions journey to a distant island of luxury and pleasure. Upon return, he learns that ages have passed, and he and his expedition have already passed into myth. He can never again touch the soil of his homeland and sails off again. I believe that it appeals to women of a certain romantic temperament, but you risk scandalizing or boring others.",
-    "minstrel_courtship_poem_teach",[
-      (assign, "$poem_selected", courtship_poem_mystic),
-  ]],
-  #chief cambiamos textos de bardos
-  #ashik poem
-[anyone, "minstrel_courtship_poem",[
-      (eq, "$tragic_poem_recitations", 0),
-      (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_3"),
-      (eq, "$g_talk_troop", "trp_tavern_minstrel_2"), ],
-    "I can teach you the tragic tale of Orpheus, son of Morpheus and the muse Calliope. It is a sad and powerful story. He travels to the Underworld to bring back Euridyce, his deceased wife, but is unable to obey the condition imposed by Hades and Persephone. Hear me.",
-    "minstrel_courtship_poem_teach",[
-      (assign, "$poem_selected", courtship_poem_tragic),
+  (eq, "$mystic_poem_recitations", 0),
+  (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_3"),
+  (eq, "$g_talk_troop", "trp_tavern_minstrel_1"),
+],"I can teach you the tale of Cupid and Psyche. It is a story beloved by philosophers and lovers alike. Psyche, a mortal woman of impossible beauty, is wed to a mysterious husband she is forbidden to look upon. He visits her only at night, a divine lover who she comes to adore. It is a story of faith, doubt, and a soul's arduous journey to be reunited with love. It appeals to those with a romantic and philosophical nature, but a more pragmatic mind may find it a fanciful and foolish tale.",
+"minstrel_courtship_poem_teach",[
+  (assign, "$poem_selected", courtship_poem_mystic),
+]],
 
-  ]],
+[anyone, "minstrel_courtship_poem",[
+  (eq, "$tragic_poem_recitations", 0),
+  (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_3"),
+  (eq, "$g_talk_troop", "trp_tavern_minstrel_2"),
+],
+"I can teach you the tragic tale of Orpheus, son of Morpheus and the muse Calliope. It is a sad and powerful story. He travels to the Underworld to bring back Euridyce, his deceased wife, but is unable to obey the condition imposed by Hades and Persephone. Hear me.",
+"minstrel_courtship_poem_teach",[
+  (assign, "$poem_selected", courtship_poem_tragic),
+]],
 
   #nord saga
 [anyone, "minstrel_courtship_poem",[
-      (eq, "$heroic_poem_recitations", 0),
-      (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_4"),
-      (eq, "$g_talk_troop", "trp_tavern_minstrel_2"),
-
+  (eq, "$heroic_poem_recitations", 0),
+  (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_4"),
+  (eq, "$g_talk_troop", "trp_tavern_minstrel_2"),
 ],
-    "I can teach the poem 'Shield of Heracles'. It tells the tale about Heracles fight with Cycnus. Heracles and Iolaus where on their way to the Greek city of Trachis when Cycnus, the son of Ares, challenged him to a fight. Hear me.",
-    "minstrel_courtship_poem_teach",[
-      (assign, "$poem_selected", courtship_poem_heroic),
-  ]],
+"I can teach the poem 'Shield of Heracles'. It tells the tale about Heracles fight with Cycnus. Heracles and Iolaus where on their way to the Greek city of Trachis when Cycnus, the son of Ares, challenged him to a fight. Hear me.",
+"minstrel_courtship_poem_teach",[
+  (assign, "$poem_selected", courtship_poem_heroic),
+]],
 
 [anyone, "minstrel_courtship_poem",[
-      (eq, "$comic_poem_recitations", 0),
-      (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_5"),
-      (eq, "$g_talk_troop", "trp_tavern_minstrel_4"),
-],
-    "I can teach you the Aesopica, the famous fables of Aesop. The tales of this slave and storyteller usually feature animals, and are both comical, satirizing man and animal, and moral, for its practical lessons on life. Pay you heed.",
-    "minstrel_courtship_poem_teach",[
-      (assign, "$poem_selected", courtship_poem_comic),
-  ]],
+  (eq, "$comic_poem_recitations", 0),
+  (this_or_next|eq, "$g_talk_troop", "trp_tavern_minstrel_5"),
+  (eq, "$g_talk_troop", "trp_tavern_minstrel_4"),
+],"I can teach you the Aesopica, the famous fables of Aesop. The tales of this slave and storyteller usually feature animals, and are both comical, satirizing man and animal, and moral, for its practical lessons on life. Pay you heed.",
+"minstrel_courtship_poem_teach",[
+    (assign, "$poem_selected", courtship_poem_comic),
+]],
 
 [anyone, "minstrel_courtship_poem_teach",[],
    "To teach it to you, I will need some hours of your time -- and, of course, a small fee for my services. About 300 denarii would suffice.",
@@ -72309,15 +72940,15 @@ But the peope here are either drunk or busy with other things, you know. Tell me
       (eq, "$poem_selected", courtship_poem_mystic),
 ],
     "Very well -- repeat after me:^" +
-    "There is a distant isle,^" +
-    "Around which sea-horses glisten^" +
-    "A fair course against the white-swelling surge,^" +
-    "Four feet uphold it.^" +
-    "A delight of the eyes, a glorious range,^" +
-    "Is the plain on which the hosts hold games^" +
-    "Coracle contends against chariot^" +
-    "In southern Mag Findargat...",
-    "minstrel_courtship_poem_teach_4",[]],
+    "At dusk he comes, a whisper in the night,^" +
+    "A husband's love, but hidden from her sight.^" +
+    "In halls unseen, by servants without face,^" +
+    "She lives a queen, in that enchanted place.^" +
+    "He gives her jewels, and robes of silken thread,^" +
+    "And all the world's delights upon her bed.^" +
+    "But asks one price, a vow she must embrace:^" +
+    "To never look upon her lover's face.",
+"minstrel_courtship_poem_teach_4",[]],
 
 [anyone, "minstrel_courtship_poem_teach_3",[
       (eq, "$poem_selected", courtship_poem_tragic),
@@ -72366,11 +72997,11 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone|plyr, "minstrel_courtship_poem_teach_4",[
       (eq, "$poem_selected", courtship_poem_mystic),
 ],
-    "'There is a distant isle...'",
-    "minstrel_learn_poem_continue",[
-      (troop_remove_gold, "trp_player", 300),
-      (val_add, "$mystic_poem_recitations", 1),
-  ]],
+  "'At dusk he comes, a whisper in the night...'",
+  "minstrel_learn_poem_continue",[
+    (troop_remove_gold, "trp_player", 300),
+    (val_add, "$mystic_poem_recitations", 1),
+]],
 
 [anyone|plyr, "minstrel_courtship_poem_teach_4",[
       (eq, "$poem_selected", courtship_poem_tragic),
@@ -72410,30 +73041,28 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     "minstrel_pretalk",[]],
 
 [anyone, "minstrel_learn_poem_continue",[
- ],
-   "Very good -- but there are many stanzas to go. Now, listen closely...", "close_window",
-[
-    (assign, "$g_leave_town",1),
-    (rest_for_hours, 2, 2, 0),
-    (finish_mission),
-   ]],
+],"Very good -- but there are many stanzas to go. Now, listen closely...",
+"close_window",[
+  (assign, "$g_leave_town",1),
+  (rest_for_hours, 2, 2, 0),
+  (finish_mission),
+]],
 
-[anyone|plyr, "minstrel_1",[(eq, "$minstrels_introduced", 1)],
-   "Can you tell me anything about the eligible maidens in this realm?",
-   "minstrel_gossip",[
-   ]],
+[anyone|plyr, "minstrel_1",[
+  (eq, "$minstrels_introduced", 1)
+],"Can you tell me anything about the eligible maidens in this realm?",
+"minstrel_gossip",[
+]],
 
 [anyone, "minstrel_gossip",
-[],
-   "About whom did you wish to know?",
-   "minstrel_gossip_select",[]],
+[],"About whom did you wish to know?",
+"minstrel_gossip_select",[]],
 
 [anyone|plyr,"minstrel_gossip_select",
-[],
-   "Just tell me the latest piece of gossip",
-   "minstrel_gossip_maiden_selected_2",[
+[],"Just tell me the latest piece of gossip",
+"minstrel_gossip_maiden_selected_2",[
 
-    (assign, "$lady_selected", -1),
+  (assign, "$lady_selected", -1),
 	(assign, "$romantic_rival", -1),
 
     (try_for_range, ":log_entry", 0, "$num_log_entries"),
@@ -72456,95 +73085,85 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 			(display_message, "str_log_entry_type_reg4_for_s4_total_entries_reg5"),
 		(try_end),
 	(try_end),
+]],
 
-   ]],
-
-[anyone|plyr|repeat_for_troops,"minstrel_gossip_select",
-[
-   (store_repeat_object, "$temp"),
-   (troop_slot_eq, "$temp", slot_troop_occupation, slto_kingdom_lady),
-   (troop_slot_eq, "$temp", slot_troop_spouse, -1),
-   (store_faction_of_troop, ":lady_faction", "$temp"),
-   (store_faction_of_party, ":town_faction", "$g_encountered_party"),
-   (eq, ":lady_faction", ":town_faction"),
-   (str_store_troop_name, s10, "$temp"),
-  ],
-   "{s10}",
-   "minstrel_gossip_maiden_selected",[
-    (store_repeat_object, "$lady_selected"),
-   ]],
+[anyone|plyr|repeat_for_troops,"minstrel_gossip_select",[
+  (store_repeat_object, "$temp"),
+  (troop_slot_eq, "$temp", slot_troop_occupation, slto_kingdom_lady),
+  (troop_slot_eq, "$temp", slot_troop_spouse, -1),
+  (store_faction_of_troop, ":lady_faction", "$temp"),
+  (store_faction_of_party, ":town_faction", "$g_encountered_party"),
+  (eq, ":lady_faction", ":town_faction"),
+  (str_store_troop_name, s10, "$temp"),
+],"{s10}",
+"minstrel_gossip_maiden_selected",[
+  (store_repeat_object, "$lady_selected"),
+]],
 
 [anyone|plyr,"minstrel_gossip_select",
 [], "Never mind.", "minstrel_pretalk",[]],
 
-[anyone,"minstrel_gossip_maiden_selected",
-[
-	(try_begin),
-		(eq, "$cheat_mode", 1),
-		(assign, reg3, "$lady_selected"),
-		(display_message, "@{!}DEBUG: Gossip for troop {reg3}"),
-		(gt, reg3, -1),
-		(display_message, "@{!}DEBUG: {s3}"),
-	(try_end),
+[anyone,"minstrel_gossip_maiden_selected",[
+  (try_begin),
+    (eq, "$cheat_mode", 1),
+    (assign, reg3, "$lady_selected"),
+    (display_message, "@{!}DEBUG: Gossip for troop {reg3}"),
+    (gt, reg3, -1),
+    (display_message, "@{!}DEBUG: {s3}"),
+  (try_end),
 
-	(try_begin),
-	   (gt, "$lady_selected", -1),
-	   (str_store_troop_name, s9, "$lady_selected"), #lady
+  (try_begin),
+    (gt, "$lady_selected", -1),
+    (str_store_troop_name, s9, "$lady_selected"), #lady
 
-      ##diplomacy start+ Make gender-correct
-      (try_begin),
-         (call_script, "script_cf_dplmc_troop_is_female", "$lady_selected"),
-         (assign, reg4, 1),
-      (else_try),
-         (assign, reg4, 0),
-      (try_end),
-      #the strings below have been modified to use reg4 for gender
-      ##diplomacy end+
-	   (str_store_string, s10, "str_error__reputation_type_for_s9_not_within_range"),
-	   (try_begin),
-			(troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_conventional),
-			(str_store_string, s16, "str_they_say_that_s9_is_a_most_conventional_maiden__devoted_to_her_family_of_a_kind_and_gentle_temperament_a_lady_in_all_her_way"),
-	   (else_try),
-			(troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_otherworldly),
-			(str_store_string, s16, "str_they_say_that_s9_is_a_bit_of_a_romantic_a_dreamer__of_a_gentle_temperament_yet_unpredictable_she_is_likely_to_be_led_by_her_passions_and_will_be_trouble_for_her_family_ill_wager"),
-	   (else_try),
-			(troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_ambitious),
-			(str_store_string, s16, "str_they_say_that_s9_is_determined_to_marry_well_and_make_her_mark_in_the_world_she_may_be_a_tremendous_asset_for_her_husband__provided_he_can_satisfy_her_ambition"),
-	   (else_try),
-			(troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_adventurous),
-			(str_store_string, s16, "str_they_say_that_s9_loves_to_hunt_and_ride_maybe_she_wishes_she_were_a_man_whoever_she_marries_will_have_a_tough_job_keeping_the_upper_hand_i_would_say"),
-	   (else_try),
-			(troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_moralist),
-			(str_store_string, s16, "str_they_say_that_s9_is_a_lady_of_the_highest_moral_standards_very_admirable_very_admirable__and_very_hard_to_please_ill_warrant"),
-	   (try_end),
+    ##diplomacy start+ Make gender-correct
+    (try_begin),
+        (call_script, "script_cf_dplmc_troop_is_female", "$lady_selected"),
+        (assign, reg4, 1),
+    (else_try),
+        (assign, reg4, 0),
+    (try_end),
+    #the strings below have been modified to use reg4 for gender
+    ##diplomacy end+
+    (str_store_string, s10, "str_error__reputation_type_for_s9_not_within_range"),
+    (try_begin),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_conventional),
+      (str_store_string, s16, "str_they_say_that_s9_is_a_most_conventional_maiden__devoted_to_her_family_of_a_kind_and_gentle_temperament_a_lady_in_all_her_way"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s16, "str_they_say_that_s9_is_a_bit_of_a_romantic_a_dreamer__of_a_gentle_temperament_yet_unpredictable_she_is_likely_to_be_led_by_her_passions_and_will_be_trouble_for_her_family_ill_wager"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s16, "str_they_say_that_s9_is_determined_to_marry_well_and_make_her_mark_in_the_world_she_may_be_a_tremendous_asset_for_her_husband__provided_he_can_satisfy_her_ambition"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s16, "str_they_say_that_s9_loves_to_hunt_and_ride_maybe_she_wishes_she_were_a_man_whoever_she_marries_will_have_a_tough_job_keeping_the_upper_hand_i_would_say"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s16, "str_gossip_hedonistic_decadent_spender"),
+    (else_try),
+      (troop_slot_eq, "$lady_selected", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s16, "str_they_say_that_s9_is_a_lady_of_the_highest_moral_standards_very_admirable_very_admirable__and_very_hard_to_please_ill_warrant"),
+    (try_end),
 
-	   (call_script, "script_add_rumor_string_to_troop_notes", "$lady_selected", -1, s16),
-   (try_end),
-  ],
-   "{s16}",
-   "minstrel_gossip_maiden_selected_2",[
-   ]],
+    (call_script, "script_add_rumor_string_to_troop_notes", "$lady_selected", -1, s16),
+  (try_end),
+],"{s16}",
+"minstrel_gossip_maiden_selected_2",[
+]],
 
-[anyone,"minstrel_gossip_maiden_selected_2",
-[
-	##diplomacy+
-	##OLD:
-	#(troop_slot_eq, "trp_player", slot_troop_spouse, "$lady_selected"),
-	#(is_between, "$lady_selected", kingdom_ladies_begin, kingdom_ladies_end),
-	##NEW:
+[anyone,"minstrel_gossip_maiden_selected_2",[
 	(is_between, "$lady_selected", heroes_begin, kingdom_ladies_end),
 	(this_or_next|troop_slot_eq, "$lady_selected", slot_troop_spouse, "trp_player"),
-		(troop_slot_eq, "trp_player", slot_troop_spouse, "$lady_selected"),
+	(troop_slot_eq, "trp_player", slot_troop_spouse, "$lady_selected"),
 	(call_script, "script_dplmc_store_troop_is_female",  "$lady_selected"),#Add support for male version
-	],#Next line, "She" -> {reg0?She:He} , "she" -> {reg0?she:he}
-	"{reg0?She:He} is married to you, of course! Clearly, no one would dream that {reg0?she:he} would do anything to engender gossip.",
-   "minstrel_postgossip",
-   ##diplomacy end+
-[]],
+],"{reg0?She:He} is married to you, of course! Clearly, no one would dream that {reg0?she:he} would do anything to engender gossip.",
+"minstrel_postgossip",[
+]],
 
 [anyone,"minstrel_gossip_maiden_selected_2",
 [
-    (gt, "$lady_selected", -1),
+  (gt, "$lady_selected", -1),
 	(assign, ":lady", "$lady_selected"),
 	(neg|troop_slot_ge, ":lady", slot_troop_spouse, active_npcs_begin),
 	(troop_get_slot, ":betrothed", ":lady", slot_troop_betrothed),
@@ -72558,12 +73177,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 		(troop_slot_eq, ":lady", slot_troop_met, 2),
 		(assign, "$romantic_rival", ":betrothed"),
 	(try_end),
-	],
-	"{s12}.",
-   "minstrel_postgossip",[]],
+],"{s12}.",
+"minstrel_postgossip",[]],
 
-[anyone,"minstrel_gossip_maiden_selected_2",
-[
+[anyone,"minstrel_gossip_maiden_selected_2",[
       ##diplomacy start+ Make gender-correct
       #xxx TODO ensure this actually works, untangle how this is used
       #The strings below have been modified to use reg4 for gender
@@ -72729,17 +73346,15 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 		(str_store_troop_name, s9, "$lady_selected"),
 		(str_store_string, s12, "str_error_lady_selected_=_s9"),
 	(try_end),
-  ],
-   "{s12}.",
-   "minstrel_postgossip",[]],
+],"{s12}.","minstrel_postgossip",[]],
 
 [anyone|plyr, "minstrel_postgossip",[],
-   "Very interesting -- but let us speak of something else.",
-   "minstrel_pretalk",[]],
+"Very interesting -- but let us speak of something else.",
+"minstrel_pretalk",[]],
 
 [anyone|plyr, "minstrel_postgossip",[],
-   "Very interesting -- is there any more news?",
-   "minstrel_gossip",[]],
+"Very interesting -- is there any more news?",
+"minstrel_gossip",[]],
 
 [anyone|plyr, "minstrel_postgossip",[
   (is_between, "$romantic_rival", active_npcs_begin, active_npcs_end),
@@ -72748,51 +73363,47 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   #diplomacy start+ extra check since the wife may be a lord
   (neg|troop_slot_ge, "trp_player", slot_troop_spouse, active_npcs_begin),
   #diplomacy end+
- ],
-   "What? I'll make that miscreant face my sword",
-   "minstrel_duel_confirm",[]],
+],"What? I'll make that miscreant face my sword",
+"minstrel_duel_confirm",[]],
 
 [anyone, "minstrel_duel_confirm",[
   (str_store_troop_name, s11, "$romantic_rival"),
- ],
-   "Do you mean that? {s11} will be honor-bound to fight you, but challenging a lord to duel over a woman is seen as a bit hot-headed, even in this warlike age.",
-   "minstrel_duel_confirm_2",[]],
+],"Do you mean that? {s11} will be honor-bound to fight you, but challenging a lord to duel over a woman is seen as a bit hot-headed, even in this warlike age.",
+"minstrel_duel_confirm_2",[]],
 
 [anyone|plyr, "minstrel_duel_confirm_2",[
   (str_store_troop_name, s11, "$romantic_rival"),
   (str_store_troop_name, s12, "$lady_selected"),
- ],
-   "Yes -- I intend to force {s11} to relinquish his suit of {s12}",
-   "minstrel_duel_issued",[]],
+],"Yes -- I intend to force {s11} to relinquish his suit of {s12}",
+"minstrel_duel_issued",[]],
 
 [anyone|plyr, "minstrel_duel_confirm_2",[
- ],
-   "No -- I let my passions run away with me, there",
-   "minstrel_pretalk",[]],
+],"No -- I let my passions run away with me, there",
+"minstrel_pretalk",[]],
 
 [anyone, "minstrel_duel_issued",[
- ],
-   "As you wish. I'll spead the word of your intentions, so that {s13} does not try to back out...",
-   "minstrel_pretalk",[
+],"As you wish. I'll spead the word of your intentions, so that {s13} does not try to back out...",
+"minstrel_pretalk",[
 	(str_store_troop_name, s11, "$lady_selected"),
-    (str_store_troop_name_link, s13, "$romantic_rival"),
-	 ##diplomacy start+ use correct pronoun for gender
-	 (call_script, "script_dplmc_store_troop_is_female_reg", "$romantic_rival", 4),
-	 ##diplomacy end+
-    (str_store_string, s2, "str_you_intend_to_challenge_s13_to_force_him_to_relinquish_his_suit_of_s11"),
-    (setup_quest_text, "qst_duel_courtship_rival"),
-    (call_script, "script_start_quest", "qst_duel_courtship_rival", "$lady_selected"),
-    (quest_set_slot, "qst_duel_courtship_rival", slot_quest_giver_troop, "$lady_selected"),
+  (str_store_troop_name_link, s13, "$romantic_rival"),
+  ##diplomacy start+ use correct pronoun for gender
+  (call_script, "script_dplmc_store_troop_is_female_reg", "$romantic_rival", 4),
+  ##diplomacy end+
+  (str_store_string, s2, "str_you_intend_to_challenge_s13_to_force_him_to_relinquish_his_suit_of_s11"),
+  (setup_quest_text, "qst_duel_courtship_rival"),
+  (call_script, "script_start_quest", "qst_duel_courtship_rival", "$lady_selected"),
+  (quest_set_slot, "qst_duel_courtship_rival", slot_quest_giver_troop, "$lady_selected"),
 
-    (quest_set_slot, "qst_duel_courtship_rival", slot_quest_target_troop, "$romantic_rival"),
-    (quest_set_slot, "qst_duel_courtship_rival", slot_quest_xp_reward, 400),
-    (quest_set_slot, "qst_duel_courtship_rival", slot_quest_expiration_days, 60),
-    (quest_set_slot, "qst_duel_courtship_rival", slot_quest_current_state, 0),
-   ]],
+  (quest_set_slot, "qst_duel_courtship_rival", slot_quest_target_troop, "$romantic_rival"),
+  (quest_set_slot, "qst_duel_courtship_rival", slot_quest_xp_reward, 400),
+  (quest_set_slot, "qst_duel_courtship_rival", slot_quest_expiration_days, 60),
+  (quest_set_slot, "qst_duel_courtship_rival", slot_quest_current_state, 0),
+]],
 
-[anyone|plyr, "minstrel_1",[(eq, "$minstrels_introduced", 1) ],
-   "Do you know of any ongoing feasts?",
-   "minstrel_courtship_locations",[]],
+[anyone|plyr, "minstrel_1",[
+  (eq, "$minstrels_introduced", 1)
+],"Do you know of any ongoing feasts?",
+"minstrel_courtship_locations",[]],
 
 [anyone, "minstrel_courtship_locations",[
 
@@ -89814,26 +90425,25 @@ I will need 500 denarii.", "bardo_sing2",[]],
    "I have a present for you, my Lady.", "desert_queen_present",[]],
 
 [anyone,"desert_queen_present",[
-   (try_begin),
-	 (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
-	 (str_store_string, s20, "@Interesting. Hopefully it is something from faraway. I like such stuff."),
-   (else_try),
-	 (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
-	 (str_store_string, s20, "@I like people who make me presents. Well lets see what you have brought me."),
-   (else_try),
-	 (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
-	 (str_store_string, s20, "@Actually I do not think that it is good that you bring me son many presents. Well but I am nonetheless curious what you have brought."),
-   (else_try),
-	 (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional),
-	 (str_store_string, s20, "@A present? Sounds good. I like especially expansice stuff."),
-   (else_try),
-	 (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
-	 (str_store_string, s20, "@How nice from you. I think it is important that man show their affection for women with presents. Now lets see what it is."),
-   (else_try),
-	 (str_store_string, s20, "@I like presents, especially expensive ones. Well lets see what you have brought me."),
-   (try_end),
- ],
-   "{s20}", "desert_queen_present2",[]],
+  (try_begin),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+    (str_store_string, s20, "@Interesting. Hopefully it is something from faraway. I like such stuff."),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+    (str_store_string, s20, "@I like people who make me presents. Well lets see what you have brought me."),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+    (str_store_string, s20, "@Actually I do not think that it is good that you bring me son many presents. Well but I am nonetheless curious what you have brought."),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional),
+    (str_store_string, s20, "@A present? Sounds good. I like especially expansice stuff."),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+    (str_store_string, s20, "@How nice from you. I think it is important that man show their affection for women with presents. Now lets see what it is."),
+  (else_try),
+    (str_store_string, s20, "@I like presents, especially expensive ones. Well lets see what you have brought me."),
+  (try_end),
+],"{s20}", "desert_queen_present2",[]],
 
 [anyone|plyr,"desert_queen_present2",[
 			(store_item_kind_count, ":amber", "itm_amber", "trp_player"),

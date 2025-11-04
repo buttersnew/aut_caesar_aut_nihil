@@ -3547,6 +3547,7 @@ strings = [
   ("otherworldly",             "otherworldly"),
   ("ambitious",                "ambitious"),
   ("moralist",                 "moralist"),
+  ("hedonistic",                 "hedonistic"),
 
   ("surrender_demand_default",        "Yield or die!"),
   ("surrender_demand_martial",        "The odds are not in your favor today. You may fight us, but there is also no shame if you yield now."),
@@ -4643,6 +4644,7 @@ strings = [
   ("reputation_cheat_mode_only_upstanding_", "{!}Reputation (cheat mode only): Upstanding^"),
   ("reputation_cheat_mode_only_conventional_", "{!}Reputation (cheat mode only): Conventional^"),
   ("reputation_cheat_mode_only_adventurous_", "{!}Reputation (cheat mode only): Adventurous^"),
+  ("reputation_cheat_mode_only_hedoinistic_", "{!}Reputation (cheat mode only): Hedonistic^"),
   ("reputation_cheat_mode_only_romantic_", "{!}Reputation (cheat mode only): Romantic^"),
   ("reputation_cheat_mode_only_moralist_", "{!}Reputation (cheat mode only): Moralist^"),
   ("reputation_cheat_mode_only_ambitious_", "{!}Reputation (cheat mode only): Ambitious^"),
@@ -4850,6 +4852,11 @@ strings = [
   ("s18_has_called_me_out_for_the_way_i_deal_with_my_tenants_well_so_be_it_if_i_teach_them_that_they_are_the_equal_of_anyone_with_socalled_gentle_blood_what_is_it_to_reg3herhim", "{s18} has called me out for the way I deal with my tenants. Well, so be it. If I teach them that they are the equal of anyone with so-called 'gentle' blood, what is it to {reg3?her:him}?"),
   ("a_most_gallant_gentleman_who_knows_how_to_treat_a_lady", "a most gallant {reg3?gentlewoman:gentleman}, who knows how to treat a {reg65?lady:young man}"),
   ("a_base_cad", "a base cad"),
+
+  ("appears_to_enjoy_the_chase_and_views_my_affections_as_the_ultimate_trophy", "appears to enjoy the chase and views my affections as the ultimate trophy"),
+  ("what_a_bore__i_can_feel_my_wine_turning_sour_just_looking_at_him", "what a bore... I can feel my wine turning sour just looking at {reg3?her:him}"),
+  ("now_he_looks_like_he_could_keep_me_from_being_bored_for_a_while", "{reg3?she:he} looks like {reg3?she:he} could keep me from being bored... for a while"),
+
   ("a_man_who_treats_me_as_his_equal_which_is_rare", "{reg3?{reg65?someone:a woman}:a man} who treats me as {reg3?her:his} equal, which is rare"),
   ("appears_to_value_me_with_his_estate_and_his_horse_as_prizes_worth_having", "appears to value me with {reg3?her:his} estate and {reg3?her:his} horse as prizes worth having"),
   ("a_bit_dull_but_what_can_you_expect", "a bit dull, but what can you expect..."),
@@ -5113,20 +5120,25 @@ strings = [
   ("kais_and_layali_three_hundred_stanzas_of_pathetic_sniveling_if_you_ask_me_if_kais_wanted_to_escape_heartbreak_he_should_have_learned_to_live_within_his_station_and_not_yearn_for_what_he_cannot_have", "'Orpheus and Calliope?' Three hundred stanzas of pathetic sniveling, if you ask me. If Orpheus had wanted to escape heartbreak, he should have learned to live within his station, and not yearn for what he cannot have."),
   ("kais_and_layali_no_one_should_ever_have_written_such_a_sad_poem_if_it_was_the_destiny_of_kais_and_layali_to_be_together_than_their_love_should_have_conquered_all_obstacles", "'Orpheus and Calliope?' No one should ever have written such a sad poem! If it had been the destiny of Orpheus and Calliope to be together, then their love should have conquered all obstacles!"),
   ("ah_kais_and_layali_a_very_old_standby_but_moving_in_its_way", "Ah, 'Orpheus and Calliope', A very old stand-by, but moving, in its way."),
+  ("orpheus_a_terrible_bargain", "'Orpheus and Eurydice?' The story of a man who walks into the Underworld, faces down death itself, and all he gets is the ghost of a woman he can't even look at? What a terrible bargain. He should have just stayed in the living world and found a new lover. There are plenty more where she came from."),
+  ("the_saga_of_heracles_all_about_hera_really", "Ah, the story of Heracles. Or, as I see it, the story of Hera. A powerful woman, married to a philandering god, who refused to be ignored. She couldn't touch her husband, so she broke his favorite toy. Heracles was just the blunt instrument she used to make her point. It shows that if you want something done, sometimes you have to drive a hero mad to do it. A valuable lesson, don't you think?"),
   ("the_saga_of_helgered_and_kara_such_happy_times_in_which_our_ancestors_lived_women_like_kara_could_venture_out_into_the_world_like_men_win_a_name_for_themselves_and_not_linger_in_their_husbands_shadow", "Ah, the 'Shield of Heracles'! Such happy times when men fought like heroes. Heracles was a strong warrior, but he also took care for his wives. On the other hand, he killed his first wife Megara and children but only because of Hera! This shows how vengeful a woman can be... and I am sure he was a handsome man..."), ("ah_the_saga_of_helgered_and_kara_now_there_was_a_lady_who_knew_what_she_wanted_and_was_not_afraid_to_obtain_it", "Ah, the 'Shield of Heracles'? This poem shows well how one can achieve his goals in battle. But even he was at the mercy of the gods."), ("the_saga_of_helgered_and_kara_a_terrible_tale__but_it_speaks_of_a_very_great_love_if_she_were_willing_to_make_war_on_her_own_family", "Ah, the 'Shield of Heracles'? A terrible poem, but it speaks of a very great warrior."), ("the_saga_of_helgered_and_kara_as_i_recall_kara_valued_her_own_base_passions_over_duty_to_her_family_that_she_made_war_on_her_own_father_i_have_no_time_for_a_poem_which_praises_such_a_woman", "Ah, the 'Shield of Heracles'? What a terrible poem describing a bloody fight..."),
   ("the_saga_of_helgered_and_kara_how_could_a_woman_don_armor_and_carry_a_sword_how_could_a_man_love_so_ungentle_a_creature", "The 'Shield of Heracles'? Bah!"),
   ("a_conversation_in_the_garden_i_cannot_understand_the_lady_in_that_poem_if_she_loves_the_man_why_does_she_tease_him_so", "'Aesopica?' I cannot understand the lady in that poem. If she loves the man, why does she tease him so?"),
+  ("aesopica_too_simple_for_my_tastes", "'Aesop's Fables?' Charming little stories for children, I suppose. A talking fox here, a clever stork there. It's all very... quaint. But where is the passion? The tragedy? The grand, ruinous desire? It's all so... bloodless. I prefer stories with a bit more wine and a lot less water."),
   ("a_conversation_in_the_garden_let_us_see__it_is_morally_unedifying_it_exalts_deception_it_ends_with_a_maiden_surrendering_to_her_base_passions_and_yet_i_cannot_help_but_find_it_charming_perhaps_because_it_tells_us_that_love_need_not_be_tragic_to_be_memorable", "'Aesopica?' Let us see -- it is morally unedifying, it exalts deception, it ends with a maiden surrendering to her base passions... And yet I cannot help but find it charming, perhaps because it tells us that love need not be tragic to be memorable."),
   ("a_conversation_in_the_garden_now_that_is_a_tale_every_lady_should_know_by_heart_to_learn_the_subtleties_of_the_politics_she_must_practice", "'Aesopica?' Now that is a tale every lady should know by heart, to learn the subtleties of the politics she must practice!"),
   ("a_conversation_in_the_garden_it_is_droll_i_suppose__although_there_is_nothing_there_that_truly_stirs_my_soul", "'Aesopica?' It is droll, I suppose -- although there is nothing there that truly stirs my soul."),
+  ("aeneas_and_dido_the_scandal_is_the_best_part", "Ah, the tale of Queen Dido! A powerful woman who built a city, seduced a foreign hero, and then threw the most spectacular suicide in history when he left her. She certainly knew how to make an exit! It's wonderfully dramatic. Aeneas and his tedious destiny are just a footnote to her fabulous tragedy."),
   ("storming_the_fortress_of_love_ah_yes_the_lady_sits_within_doing_nothing_while_the_man_is_the_one_who_strives_and_achieves_i_have_enough_of_that_in_my_daily_life_why_listen_to_poems_about_it", "'Aeneas and Dido?' Ah, yes. The lady sits within doing nothing, while the man is the one who strives and achieves. I have enough of that in my daily life. Why listen to poems about it?"),
   ("storming_the_fortress_of_love_ah_yes_an_uplifting_tribute_to_the_separate_virtues_of_man_and_woman", "'Aeneas and Dido?' Ah, yes. An uplifting tribute to the separate virtues of man and woman."),
   ("storming_the_fortress_of_love_ah_yes_but_although_it_is_a_fine_tale_of_virtues_it_speaks_nothing_of_passion", "'Aeneas and Dido?' Ah, yes, it is a fine tale of virtues, but it speaks nothing of passion!"),
   ("storming_the_fortress_of_love_ah_a_sermon_dressed_up_as_a_love_poem_if_you_ask_me", "'Aeneas and Dido?' Ah... A sermon dressed up as a love poem, if you ask me."),
-  ("a_hearts_desire_ah_such_a_beautiful_account_of_the_perfect_perfect_love_to_love_like_that_must_be_to_truly_know_rapture", "'A Voyage of Bran?' Ah, such a beautiful account of the perfect, perfect love! To love like that must be to truly know rapture!"),
-  ("a_hearts_desire_silly_if_you_ask_me_if_the_poet_desires_a_lady_then_he_should_endeavor_to_win_her__and_not_dress_up_his_desire_with_a_pretense_of_piety", "'A Voyage of Bran?' Silly, if you ask me. If the poet desires a lady, then he should endeavor to win her -- and not dress up his desire with a pretense of pietas!"),
-  ("a_hearts_desire_hmm__it_is_an_interesting_exploration_of_earthly_and_divine_love_it_does_speak_of_the_spiritual_quest_which_brings_out_the_best_in_man_but_i_wonder_if_the_poet_has_not_confused_his_yearning_for_higher_things_with_his_baser_passions", "'A Voyage of Bran?' Hmm -- it is an interesting exploration of earthly and divine love. It does speak of the spiritual quest that brings out the best in man, but I wonder if the poet has not confused his yearning for higher things with his baser passions."),
-  ("a_hearts_desire_oh_yes__it_is_very_worthy_and_philosophical_but_if_i_am_to_listen_to_a_bard_strum_a_lute_for_three_hours_i_personally_prefer_there_to_be_a_bit_of_a_story", "'A Voyage of Bran?' Oh, yes. It is very worthy and philosophical, but if I am to listen to a bard strum a harp for three hours, I personally prefer there to be a bit of a story."),
+  ("a_hearts_desire_ah_such_a_beautiful_account_of_the_perfect_perfect_love_to_love_like_that_must_be_to_truly_know_rapture", "'Cupid and Psyche?' Ah, what a beautiful, tragic tale! To love a husband you can only feel, but never see... It speaks of a love based on pure faith. How utterly romantic!"),
+  ("a_hearts_desire_silly_if_you_ask_me_if_the_poet_desires_a_lady_then_he_should_endeavor_to_win_her__and_not_dress_up_his_desire_with_a_pretense_of_piety", "'Cupid and Psyche?' Utterly foolish. She has a divine lover and a palace, and she throws it all away out of simple curiosity? A woman with any ambition would have secured her position instead of lighting a lamp. An illogical story."),
+  ("a_hearts_desire_hmm__it_is_an_interesting_exploration_of_earthly_and_divine_love_it_does_speak_of_the_spiritual_quest_which_brings_out_the_best_in_man_but_i_wonder_if_the_poet_has_not_confused_his_yearning_for_higher_things_with_his_baser_passions", "'Cupid and Psyche?' Hmm, an interesting allegory for the soul's journey to reunite with the divine. Psyche's trials show the path of virtue. However, one must be wary of the story's focus on forbidden passion. It teeters on the edge of impropriety."),
+  ("a_hearts_desire_psyche_hedonist", "'Cupid and Psyche?' A cautionary tale about the perils of curiosity. The girl had a palace, endless luxury, and a god for a lover every single night. And she risked it all just to see his face? Foolish. Some pleasures are best enjoyed in the dark. She should have just enjoyed the ride."),
+  ("a_hearts_desire_oh_yes__it_is_very_worthy_and_philosophical_but_if_i_am_to_listen_to_a_bard_strum_a_lute_for_three_hours_i_personally_prefer_there_to_be_a_bit_of_a_story", "'Cupid and Psyche?' Oh, I suppose it's a fine story. But all that weeping and sorting seeds... it does drag on. If you're going to tell a tale about gods and monsters, I personally prefer a bit more fighting and a bit less pining."),
   ("result_reg4_string_s11", "{!}Result: {reg4}. String: {s11}"),
   ("calculating_effect_for_policy_for_s3", "{!}Calculating effect for policy for {s3}"),
   ("reg3_units_of_s4_for_reg5_guests_and_retinue", "{reg3} units of {s4} for {reg5} guests and retinue"),
@@ -5518,10 +5530,13 @@ strings = [
   ("playername__i_am_so_glad_that_you_were_able_to_come", " I am so glad that you were able to come."),
 ##diplomacy start+ make both-gender versions (reg65 is speaker's gender)
   ("i_do_enjoy_speaking_to_you_but_i_am_sure_you_understand_that_our_people_cluck_their_tongues_at_a_woman_to_spend_too_long_conversing_with_a_man_outside_her_family__although_the_heavens_know_its_never_the_man_who_is_held_to_blame_", "I do enjoy speaking to you. But I am sure you understand that our people cluck their tongues at a {reg65?woman:boy} to spend too long conversing with a {man/woman} outside {reg65?her:his} family -- although the Gods know it's never the {man/woman} who is held to blame. "),
+  ("playername__i_am_so_glad_to_see_you_again_i_must_say_i_do_envy_you_all_those_lonely_nights_on_the_road", "I must say, I do envy you. All those long, lonely nights on the road... you must find all sorts of interesting ways to keep yourself warm. You must tell me all about your adventures; I am so dreadfully bored of mine."),
+  ("leave_them_wanting_more", "It is always best to end a delightful conversation before it becomes tedious, don't you think? It leaves one wanting more. Find me later... perhaps you'll have thought of a more entertaining way to hold my attention."),
   ("as_much_as_i_enjoy_speaking_to_you_i_do_not_care_to_be_gossiped_about_by_others_who_might_lack_my_grace_and_beauty_", "As much as I enjoy speaking to you, I do not care to be gossiped about by others who might lack my grace and beauty. "),
   ("i_do_so_enjoy_speaking_to_you_but_as_a_daughter_of_one_of_the_great_families_of_this_land_i_must_set_an_example_of_propriety_", "I do so enjoy speaking to you. But as a {reg65?daughter:scion} of one of the great families of this land, I must set an example of propriety. "),
   ("i_do_so_enjoy_speaking_to_you_but_as_a_daughter_of_good_family_i_must_protect_my_reputation_", "I do so enjoy speaking to you. But as a {reg65?daughter:son} of good family, I must protect my reputation. "),
   ("although_it_is_kind_of_you_to_pay_me_such_attentions_i_suspect_that_you_might_find_other_ladies_who_may_be_more_inclined_to_return_your_affection", "Although it is kind of you to pay me such attentions, I suspect that you might find other {reg65?ladies:young men} who may be more inclined to return your affection."),
+  ("youll_have_to_be_more_entertaining_than_that", "Oh, I'm sure I could return your affection. The question is, can you make it worth my while? You'll have to be far more entertaining than this to hold my interest."),
   ("as_flattered_as_i_am_by_your_attentions_perhaps_you_should_seek_out_another_lady_of_somewhat_shall_we_say_different_tastes", "As flattered as I am by your attentions, perhaps you should seek out another {reg65?lady:boy} of somewhat... shall we say... different tastes."),
   ("as_flattered_as_i_am_by_your_attentions_i_am_a_daughter_of_good_family_and_must_be_aware_of_my_reputation_it_is_not_seemly_that_i_converse_too_much_at_one_time_with_one_man_i_am_sure_you_understand_now_if_you_will_excuse_me", "As flattered as I am by your attentions, I am a {reg65?daughter:scion} of good family and must be aware of my reputation. It is not seemly that I converse too much at one time with one {man/woman}. I am sure you understand. Now, if you will excuse me..."),
 ##diplomacy end+ (making both-gender version)
@@ -5540,6 +5555,7 @@ strings = [
   ("you_are_most_courteous_and_courtesy_is_a_fine_virtue_", "You are most courteous, and courtesy is a fine virtue. "),
   ("hmm_youre_a_bold_one_but_i_like_that_", "Hmm. You're a bold one, but I like that. "),
   ("ah_well_they_all_say_that_but_no_matter_a_compliment_well_delivered_is_at_least_a_good_start_", "Ah, well, they all say that. But no matter. A compliment well delivered is at least a good start. "),
+  ("a_fine_opening_now_for_the_main_course", "Mmm, a well-turned phrase. I do appreciate a man who takes the time to craft a proper compliment. It's a promising start. I'm now quite curious to see if the rest of you is as... polished."),
   ("oh_do_you_mean_that_such_a_kind_thing_to_say", "Oh! Do you mean that? Such a kind thing to say!"),
 ##diplomacy start+ make gender correct
   ("you_are_a_most_gallant_young_man_", "You are a most gallant young {man/woman}. "),
@@ -5587,6 +5603,7 @@ strings = [
   ("they_say_that_s9_is_a_bit_of_a_romantic_a_dreamer__of_a_gentle_temperament_yet_unpredictable_she_is_likely_to_be_led_by_her_passions_and_will_be_trouble_for_her_family_ill_wager", "They say that {s9} is a bit of a romantic, a dreamer -- of a gentle temperament, yet unpredictable. {reg4?She:He} is likely to be led by {reg4?her:his} passions, and will be trouble for {reg4?her:his} family, I'll wager."),
   ("they_say_that_s9_is_determined_to_marry_well_and_make_her_mark_in_the_world_she_may_be_a_tremendous_asset_for_her_husband__provided_he_can_satisfy_her_ambition", "They say that {s9} is determined to marry well and make {reg4?her:his} mark in the world. {reg4?She:He} may be a tremendous asset for {reg4?her husband:his wife} -- provided {reg4?he:she} can satisfy {reg4?her:his} ambition!"),
   ("they_say_that_s9_loves_to_hunt_and_ride_maybe_she_wishes_she_were_a_man_whoever_she_marries_will_have_a_tough_job_keeping_the_upper_hand_i_would_say", "They say that {s9} loves to hunt and ride. Maybe {reg4?she:he} wishes {reg4?she:he} were a {reg4?man:woman}! Whoever {reg4?she:he} marries will have a tough job keeping the upper hand, I would say."),
+  ("gossip_hedonistic_decadent_spender", "I've heard that {s9} lives for the feast and the forum. They say {reg4?her:his} appetite for silk, perfume, and exotic pleasures is insatiable. Whoever marries {reg4?her:his} will need the treasury of a satrap just to keep {reg4?her:him} entertained."),
   ("they_say_that_s9_is_a_lady_of_the_highest_moral_standards_very_admirable_very_admirable__and_very_hard_to_please_ill_warrant", "They say that {s9} is a {reg4?lady:young gentleman} of the highest moral standards. Very admirable, very admirable -- and very hard to please, I'll warrant."),
   ("s9_is_now_betrothed_to_s11_soon_we_believe_there_shall_be_a_wedding", "{s9} is now betrothed to {s11}. Soon, we believe, there shall be a wedding!"),
   ("i_have_not_heard_any_news_about_her", "I have not heard any news about {reg4?her:him}."),
@@ -6226,6 +6243,7 @@ strings = [
   ("dplmc_reputation_upstanding", "It is said that {s46} is a upstanding person."),
   ("dplmc_reputation_conventional", "It is said that {s46} is a conventional person."),
   ("dplmc_reputation_adventurous", "It is said that {s46} is a adventurous person."),
+  ("dplmc_reputation_hedonistic", "It is said that {s46} is a hedonistic person."),
   ("dplmc_reputation_romantic", "It is said that {s46} is a romantic person."),
   ("dplmc_reputation_moralist", "It is said that {s46} is a moralist."),#Moralist -> moralist
   ("dplmc_reputation_ambitious", "It is said that {s46} is a ambitious person."),
@@ -7543,19 +7561,21 @@ strings = [
 ("gardens_otherworldly", "Ach {s0}, I spend so much time here with the followers. I sometimes watch the bees and think that I am like a queen bee. I life her in the middle of all those diligent bees and I am like their queen."),
 ("gardens_ambitious", "Yes, {s0}, a pleasure to see you. I decided to eat dinner in the gardens today. You may want to join our conversation about politics?"),
 ("gardens_moralist", "Oh {s0}, there are many temptations in the palace but here in the garden I feel a little bit save. I still try the best not to corrupt like a Poppaea or Crispinilla!"),
+("gardens_hedonist", "Ah, {s0}, the gardens. A perfect place for a private conversation, wouldn't you agree? Away from all the prying eyes of the court. One can be so much more... oneself... out here among the roses."),
 
 ("palace_conventional", "Yes, my {s0}? I was enjoying reading some verses from a new poet. It is said he is raising star. Unfortunately I forgot his name. Well anyway. What do you want?"),
 ("palace_adventurous", "Oh {s0}. I was currently planning to change the arrangement of the triclinium. Also I bought some new slaves, as the old ones were becoming, too old for my taste."),
 ("palace_otherworldly", "Yes, {s0}. I am feeling like one of those princess in the tales the merchants from the Eastern provinces always told me. By the way, Orchon has compared me with a gemstone. A most flatering compliment."),
 ("palace_ambitious", "Yes, {s0}. I had some nice conversation with senators lately and I was thinking to invite them to some dinner parties. They surely cannot resist my charm."),
 ("palace_moralist", "Oh {s0}, I must say, although there are many temptations for a woman in the palace, it is still a very elegant place. Nevertheless I can say I have conserved my virtue."),
+("palace_hedonist", "Oh, {s0}, isn't the palace divine? So many powerful men, so many secrets whispered in the corridors... It is a feast for the senses. 'Virtue' is for Vestals; I prefer to be where the real life is lived."),
 
 ("palace_meal_conventional", "I am currently preparing myself for dinner. If its not too important, we may talk later, my {s0}?"),
 ("palace_meal_adventurous", "Yes, {s0}. I was trying on cloths. Look at this necklace. It looks so cheap! You have to buy me a new one!"),
 ("palace_meal_otherworldly", "Yes, {s0}. I am preparing myself for dinner, but still couldn't figure out which dress I should use."),
 ("palace_meal_ambitious", "Yes, {s0}? I am preparing myself for a dinner with some senators, but haven't decided which dress I should use..."),
 ("palace_meal_moralist", "Yes,{s0}, I was preparing for lunch, please do not bother me too much. We can talk later."),
-
+("palace_meal_hedonist", "Ah, {s0}, you've caught me just as I was about to sample this delightful spiced wine. Unless your business is more intoxicating than this cup, it can surely wait."),
 
 ("christ_dialogue_1", "May Christus bless you. Hopefully they won't find us, or death will await us all. Well at least we will come to heaven and not to hell like they."),
 ("christ_dialogue_2", "I come here once a week to pray for my eternal soul. The end of all days is near. Christus will come and destroy the evil in the world."),
@@ -9301,6 +9321,7 @@ strings = [
 ("spouse_lover_adventurous", "Because you were always out. You neglected me. You were never here to talk with me. I needed someone to fill that void."),
 ("spouse_lover_otherworldly", "-- She cries. --^^I believed our relationship was meaningful and deep. But then you neglected me, and you were always away..."),
 ("spouse_lover_default", "-- She cries. --^^Please forgive me, please. I am truly sorry. I didn't know. I fell in love with him. You were always away, and he was so sweet to me..."),
+("spouse_lover_hedonistic", "Oh, darling, you were away on your dreary campaigns, and I was so dreadfully bored. Think of it as a game of knucklebones I played to pass the time. It was a pleasant distraction, but now the real game—you—has returned. You shouldn't worry about the discarded pieces."),
 
 ("spouse_divorce_low_rel", "If that's what you want! I also think it would be better if we divorce..."),
 ("spouse_divorce_ambitious", "Yes, I know. But it would break your alliance with my family. I believe you wouldn't want that."),
@@ -9309,6 +9330,7 @@ strings = [
 ("spouse_divorce_adventurous", "If this is what you want! But remember, don't come crawling back. Think twice; you can't mend it once it's broken."),
 ("spouse_divorce_otherworldly", "-- She cries. --^^I thought what we had was profound. I love you so much, and I am sorry for what I have done. But please, I don't want to be divorced from you."),
 ("spouse_divorce_default", "-- Tears run down her face. --^^Please, no divorce. I couldn't bear it. I love you, truly..."),
+("spouse_divorce_hedonistic", "Divorce? How wonderfully dramatic! Are you sure that's what you want? Think of all the fun you'd be missing. No one else will entertain you the way I do. Are you really prepared for a life of boring, dutiful spouses? This is your last chance to reconsider."),
 
 ("lady_time_spend_married", "The rest of my time I spend managing the household, a boring but important task."),
 ("lady_time_spend_single", "The rest of my time I spend with nothing special at all. The life of a lady can be very boring."),
@@ -9318,6 +9340,7 @@ strings = [
 ("lady_time_spend_adventurous", "About me? Normally, men don't ask what a woman does all day long. But if you want, I can tell you. I spend a lot of time thinking about how it would be to ride out and experience adventures like you men do. {s42}"),
 ("lady_time_spend_otherworldly", "Oh, how nice that you ask. I spend my free time reading and writing poems; it is a great pleasure, I think. I also sew a lot and sometimes paint. {s42}"),
 ("lady_time_spend_default", "Oh, I never met a man who wanted to know that. Well, most of the time, I spend sewing or painting. Sometimes I read, of course, only books that are suitable for women. {s42}"),
+("lady_time_spend_hedonistic", "How do I spend my time? Trying not to die of boredom, mostly. A little wine, a little gossip at the baths, perhaps a dalliance with a handsome lyre tutor to keep my senses sharp. One must do something to pass the dreary hours until the next proper party. {s42}"),
 
 ("intro_01", "Rome was founded the twin brothers, Romulus and Remus who were raised by a she-wolf and eventually returned to their birthplace to reclaim their rightful place as rulers. Under the rule of the seven kings, Rome grew into a powerful city-state. The kings became too arrogant, debauched and greedy. Thus the people of Rome drive them out and established the Republic. The senate and the people of Rome conquered and subjugated neighboring tribes and city states. The Romans reflected on their divine origin, that they shall rule the world with their authority."),
 ("intro_02", "Constant wars slowly brought order to the world. The city states and tribes of Southern Italy were subjugated. Other powers noted the conquests and tried to defeat Rome, but the march of the eagles could not be stopped."),
@@ -9746,6 +9769,12 @@ strings = [
 ("flirt_conventional_success", "-- You start talking with her. During your conversation you notice that she fells comfortable. She laughs about the jokes you make and listen carefully to you. --^^It is a relief to speak with a true gentleman. You have a way with words that is most charming."),
 ("flirt_conventional_crit_success", "-- You start talking with her. During your conversation you notice that she fells very comfortable. Only you know what you have done that she starts touching you softly. Then she kisses you. --^^-- She blushes and touches your arm lightly. --^^ My goodness, you'll make me forget all my courtly manners! It has been a true delight speaking with you."),
 
+# Hedonistic Personality
+("flirt_hedonistic_failure", "-- You start talking with her, but your attempts at charm are met with a look of profound boredom. She openly scans the room for a better distraction. --^^Gods, are you even trying? I've had more stimulating conversations with my own reflection. You are, in a word, a bore."),
+("flirt_hedonistic_neutral", "-- The conversation is a playful spar of wits. She seems amused by some of your lines, but you can see her weighing whether you are truly worth her time. --^^Amusing. You have a spark of something interesting, I'll grant you that. But a spark is not a fire. You'll have to do better to truly hold my attention."),
+("flirt_hedonistic_success", "-- She laughs, a genuine, throaty sound, and moves a step closer. Her eyes are locked on yours, filled with a new, predatory interest. --^^Well now. You're far more interesting than you look. You have a certain... wicked wit about you. I find myself wanting to hear more."),
+("flirt_hedonistic_crit_success", "-- The playful banter ceases. She moves close, her voice dropping to a low, husky whisper as her hand rests lightly on your arm. --^^Enough talk. I've decided you're far too amusing to waste on just conversation. My chambers are quiet, and this party has become a dreadful bore. Don't keep me waiting."),
+
 # Adventurous Personality
 ("flirt_adventurous_failure", "-- You start talking with her. During your conversation you notice that she feels not really comfortable. Everything you say upsets her and you have difficulty to talk. --^^Is that all? Forgive me, but I find courtly chatter dreadfully dull. I must go see to... anything else."),
 ("flirt_adventurous_neutral", "-- You start talking with her. During your conversation you notice that she feels quite comfortable. She laughs about some of the jokes you tell but she also yawn sometimes. --^^Your stories of battle are interesting. Much better than discussing the price of silk, at least."),
@@ -9947,6 +9976,113 @@ strings = [
 
 ("poppaea_romance_outcome", "Augusta's chambers are a world away from the feast—an opulent, silent space where the air is thick with the scent of Egyptian perfume. Poppaea turns to you, her movements fluid and deliberate as she unpins her stola, letting it fall to the floor in a silken heap. Her body, revealed in the soft lamplight, is like a living statue, flawless and imperious.^She reclines on a divan, her gaze never leaving yours. 'You spoke of worship,' she whispers, her voice a soft command. 'Begin.'^You approach not as a drunken soldier, but with a sudden, clear-headed reverence. Your hands and lips become instruments of adoration. You whisper praises against her skin—for her eyes, her lips, the curve of her hip. You are not taking a lover; you are paying tribute to a masterpiece.^Her response is not the frantic passion of the others, but a deep, purring satisfaction. She is a goddess accepting a worthy offering. She pulls you into her, her body moving with a languid, confident grace. It is an act of supreme, unhurried pleasure, a testament to her own perfect beauty. She is not just being pleasured; she is being proven right.^Afterwards, you lie in the quiet, the chaos of the feast forgotten. She traces a line on your chest with a single finger, a look of serene contentment on her face...^^Finally, the first light of dawn begins to filter through the windows, casting long shadows over the sleeping forms of the exhausted revelers. The feast, and the grand tour, are finally over.^^{s13}"),
 
+# This is the additional line for a spouse who is also your chief minister.
+("spouse_minister_addition", "And of course, as your chief minister, I also spend a great deal of time handling the tedious affairs of the realm in your name."),
+
+# --- Ambitious Personality ---
+("spouse_ambitious_1", "I spend my days ensuring our family's position is secure. I manage the household not as a chore, but as a stage for politics—hosting the right guests, gathering whispers of gossip... A well-run villa is a weapon, my love. {s41}"),
+("spouse_ambitious_2", "My time is spent cultivating our network. I write letters to our allies, receive reports from our agents, and ensure the family's name is spoken with respect in the right circles. The real battles for power are won with ink and influence, not just swords. {s41}"),
+("spouse_ambitious_3", "This house is the center of our web. I oversee it all, ensuring our wealth is displayed correctly and our servants are loyal... and observant. A careless word overheard by a slave can be more valuable than a bag of gold. {s41}"),
+
+# --- Moralist Personality ---
+("spouse_moralist_1", "I do my duty as a proper Roman matron. I manage the household with a firm hand, ensuring there is no waste. I oversee the weaving and teach the slaves the virtues of hard work and thrift. A respectable house is built on diligence, not extravagance. {s41}"),
+("spouse_moralist_2", "I spend my time upholding the mos maiorum. I tend to the lararium, I ensure the accounts are balanced to the last denarius, and I see that our home is a reflection of the piety and honor of our family. I am not like other wives who fritter away their husband's fortune on frivolous things. {s41}"),
+("spouse_moralist_3", "As your wife, my day is spent in service to this household. I manage the kitchens, I sew our clothes, and I ensure that everything is done with modesty and economy. A wife's duty is to be the bedrock upon which her husband's legacy is built. {s41}"),
+
+# --- Adventurous Personality ---
+("spouse_adventurous_1", "Do you really want to hear about my boring life? I would much rather be on the road with you, feeling the wind in my hair, than be trapped within these walls. But, since you ask... I manage the household. When I can, I read tales of great adventurers, like Odysseus or Alexander. I envy you, my love. You get to live those stories. {s41}"),
+("spouse_adventurous_2", "I try not to go mad with boredom. I oversee the household, of course. But in my free time, I practice with my bow in the gardens. The servants think I'm mad. Perhaps I am. I would rather be hunting boars in Caledonia than haggling with merchants in the forum. {s41}"),
+("spouse_adventurous_3", "I manage the household, yes. But I do it with the efficiency of a quartermaster. I organize the grain, manage the supplies, oversee the 'garrison' of slaves... I tell myself it is training, for the day you finally let me organize the baggage train of a real legion. {s41}"),
+
+# --- Otherworldly (Romantic/Artistic) Personality ---
+("spouse_otherworldly_1", "You are kind to ask, my love. I oversee the household, of course, but as soon as my duties are done, I lose myself in the world of poetry. I have been reading the most beautiful verses by Ovid. They remind me of the passion that makes this life worth living. {s41}"),
+("spouse_otherworldly_2", "My day is a simple one. I manage the household duties in the morning. In the afternoon, when I have time to myself, I spend it in the garden. Tending to the flowers, listening to the birds... their simple beauty is more honest than all the politics in Rome. {s41}"),
+("spouse_otherworldly_3", "I do what is required... managing the slaves and the meals. But my true life begins when I can take up my lyre. I have been trying to compose a new song, something that captures the feeling I had when you returned from your last campaign. {s41}"),
+
+# --- Default (Conventional) Personality ---
+("spouse_default_1", "It is kind of you to ask. My day is much like any other Roman wife's—I oversee the meals, manage the household slaves, and ensure our home is a comfortable and orderly place for you to return to. It is a simple life, but a content one. {s41}"),
+("spouse_default_2", "Oh, nothing special, my love. The usual domestic duties. I ensure the kitchens are well-stocked, the linen is clean, and the servants are not idle. When I have a moment, I enjoy reading letters from my family. {s41}"),
+("spouse_default_3", "I spend my time making sure our home runs smoothly. It is a greater challenge than you might think! From managing the budget to settling disputes among the slaves, there is always something that requires my attention. {s41}"),
+
+("spouse_hedonistic_1", "My dear, the day is merely the tedious prelude to the night. I rest, I bathe, I choose the perfect gown, and I listen to the city's whispers. You'd be amazed what one can learn while sampling wine with a talkative senator's wife. It's all about being prepared for the evening's entertainments. {s41}"),
+("spouse_hedonistic_2", "If you think I am managing the household ... you are wrong. I have slaves for that. I simply ensure they don't steal the good wine. Mostly, I try to stave off the crushing boredom of domestic life. A visit to the baths, a little dalliance with a handsome poetry tutor... nothing serious, of course. It keeps my mind sharp. {s41}"),
+("spouse_hedonistic_3", "My duty is to beauty, my love. And beauty requires maintenance. I visit the silk merchants, sample new perfumes from the East, I bath in milk, and ensure this house is a temple to pleasure, not a monument to drudgery. When our guests arrive, they should be dazzled, shouldn't they? It is all for our family's reputation, you see. {s41}"),
+
+#------------------------------------------------------------------
+# LADY GIFT REACTION DIALOGUES
+#------------------------------------------------------------------
+
+# --- Adventurous Personality ---
+("lady_gift_reaction_adventurous_1", "A gift? I hope it's something exotic, from a land I've only read about in stories. Let's see it!"),
+("lady_gift_reaction_adventurous_2", "For me? Is it a sharp knife from Damascus? A strong bow from the Scythian steppes? Oh, do show me!"),
+("lady_gift_reaction_adventurous_3", "How exciting! Every gift from a traveler has a story behind it. I can't wait to hear this one's tale."),
+
+# --- Ambitious Personality ---
+("lady_gift_reaction_ambitious_1", "A gift? A wise gesture. Such tokens are the grease that turns the wheels of power in this city. Let's see what you've brought."),
+("lady_gift_reaction_ambitious_2", "Presents are a measure of a person's respect... and their utility. Show me how much you value this relationship."),
+("lady_gift_reaction_ambitious_3", "An interesting development. Gifts are an investment in a future alliance. Let's appraise your offer."),
+
+# --- Moralist Personality ---
+("lady_gift_reaction_moralist_1", "A gift? You should not be so lavish, it can lead to expectations. However... it would be rude to refuse your kindness. I will look."),
+("lady_gift_reaction_moralist_2", "A virtuous woman should not be swayed by material things... but generosity is also a virtue. Very well, what is it?"),
+("lady_gift_reaction_moralist_3", "I hope this is a token of simple friendship, and not an attempt to purchase favor. Show me."),
+
+# --- Conventional Personality ---
+("lady_gift_reaction_conventional_1", "A present for me? How lovely! I do hope it's something I can show off at the next feast."),
+("lady_gift_reaction_conventional_2", "For me? You are too kind! I do love presents. What have you brought?"),
+("lady_gift_reaction_conventional_3", "Oh, a gift! Is it expensive? Do let me see!"),
+
+# --- Otherworldly (Romantic) Personality ---
+("lady_gift_reaction_otherworldly_1", "Oh, how thoughtful! A gift is like a small poem from the heart. I can't wait to see what verse you've written for me."),
+("lady_gift_reaction_otherworldly_2", "A present? It is not the value that matters, but the sentiment behind it. That you thought of me is the true gift. Please, show me."),
+("lady_gift_reaction_otherworldly_3", "How wonderful! A gift is like a captured memory. I wonder what feeling this one holds."),
+
+# --- Hedonistic Personality ---
+("lady_gift_reaction_hedonistic_1", "A gift? Is it wine, silk, or something else that delights the senses? Don't keep me in suspense!"),
+("lady_gift_reaction_hedonistic_2", "For me? How exciting! I do hope it's something amusing, and not another boring, practical thing. I have enough of those."),
+("lady_gift_reaction_hedonistic_3", "A present? Are you trying to buy my affection?^^-- She smiles. --^^ A fine start. Let's see if your taste in gifts is as good as your taste in company."),
+
+# --- Default Personality (if none of the above match) ---
+("lady_gift_reaction_default_1", "A present? How nice of you. Let's see what it is."),
+("lady_gift_reaction_default_2", "For me? Thank you. I am curious to see what you have brought."),
+("lady_gift_reaction_default_3", "I do like presents. Well, let's see it."),
+
+# --- Adventurous Personality ---
+("lady_react_adventurous_love", "{s21}! This feels so alive, it has a story. This is a true gift, not some trinket from a city market. Thank you!"),
+("lady_react_adventurous_like", "Ah, {s21}. A treasure from a distant land. It speaks of long journeys and forgotten places. I will cherish it."),
+("lady_react_adventurous_dislike", "Oh, {s21}. It is... pretty. I suppose. Forgive me, but I have little use for such delicate things. Still, I accept your gift."),
+
+# --- Ambitious Personality ---
+("lady_react_ambitious_love", "{s21}. This is not a gift; it is a statement. It speaks of power and influence. This will send a very clear message to my rivals. You have my gratitude."),
+("lady_react_ambitious_like", "This {s21} is a fine and valuable gift. It will serve as a useful symbol of our family's status. A wise investment."),
+("lady_react_ambitious_dislike", "{s21}? How... rustic. It lacks the political weight of a more... civilized gift. But, the gesture is noted."),
+
+# --- Moralist Personality ---
+("lady_react_moralist_love", "{s21}! This is far too extravagant! A gift should be a token of friendship, not a display of wealth. While I cannot in good conscience delight in such luxury, I will accept it so as not to cause offense. You are... generous."), # The best possible reaction from a moralist
+("lady_react_moralist_like", "Amber. A humble and traditional gift. It is beautiful in its simplicity. I can accept this with a clear conscience. Thank you."),
+("lady_react_moralist_dislike", "This {s21} is... opulent. Such luxury is the very thing that weakens the Roman spirit. I will accept it, but I must urge you to consider more modest tokens in the future."),
+
+# --- Hedonistic Personality ---
+("lady_react_hedonistic_love", "{s21} is divine! The scent alone promises a night of unforgettable pleasures. You have exceptional taste, and I shall have to reward it properly. You've made my evening."),
+("lady_react_hedonistic_like", "{s21}? An excellent choice. It speaks of beauty and indulgence. This will be put to very good use, I assure you. Thank you, darling."),
+("lady_react_hedonistic_dislike", "{s21}? It is... fine. But it lacks a certain... passion... and standard. Still, I will find a place for it."),
+
+# --- Otherworldly (Romantic) Personality ---
+("lady_react_otherworldly_love", "{s21}... it smells of forgotten gardens and moonlight. It is not a gift, but a poem in a bottle. How did you know? It is perfect. Thank you, from my heart."),
+("lady_react_otherworldly_like", "Oh, {s21}. How beautiful. It has a certain... soul to it. It reminds me of a line from a poem I once read. Thank you for this lovely thought."),
+("lady_react_otherworldly_dislike", "{s21}? It is valuable, I know, but it feels so... worldly. It speaks of wealth and conquest, not of the heart. But I appreciate the gesture."),
+
+# --- Conventional/Default Personality ---
+("lady_react_conventional_love", "{s21}! Oh, it is absolutely magnificent! I shall wear it to the next feast and be the envy of every woman in the town! Thank you, thank you!"),
+("lady_react_conventional_like", "Oh, {s21}, how lovely! It is a beautiful and thoughtful present. I will find the perfect place for it. Thank you so much."),
+("lady_react_conventional_dislike", "{s21}? It is... very practical, I suppose. Thank you for the thought. I will accept your gift."),
+
+("lady_scheme_response_otherworldly", "Oh, wonderful! If this scheme means we can spend more time together, my love, then my heart is already in it."),
+("lady_scheme_response_ambitious", "Good. It is right that you include me in your plans to advance our station. We deserve more power than we have, my love."),
+("lady_scheme_response_adventurous", "A scheme? It sounds like an adventure! Count me in, my love. I will do my best to help."),
+("lady_scheme_response_moralist", "I find such intrigue to be... dishonorable, to be honest. However, you are my husband. If you insist on this path, I will help you as best I can."),
+("lady_scheme_response_hedonistic", "A scheme? Oh, how deliciously wicked! I was growing so tired of all this tedious courtly nonsense. Count me in, my love. This sounds far more entertaining."),
+("lady_scheme_response_default", "It would be a pleasure to help you, my love."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names
