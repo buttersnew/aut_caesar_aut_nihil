@@ -5353,7 +5353,7 @@ scripts_hardcoded = [
     (store_script_param_1, ":troop_id"),
 
     (store_character_level, ":troop_level", ":troop_id"),
-    (store_add, ":ransom_amount", ":troop_level", 10),
+    (store_add, ":ransom_amount", ":troop_level", 8),
     (val_mul, ":ransom_amount", ":ransom_amount"),
 
     (try_begin),
@@ -5382,7 +5382,7 @@ scripts_hardcoded = [
     (store_script_param_1, ":troop_id"),
 
     (store_character_level, ":troop_level", ":troop_id"),
-    (store_add, ":ransom_amount", ":troop_level", 10),
+    (store_add, ":ransom_amount", ":troop_level", 8),
     (val_mul, ":ransom_amount", ":ransom_amount"),
 
     (try_begin),

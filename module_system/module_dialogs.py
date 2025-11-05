@@ -19094,137 +19094,167 @@ dialogs =[
 
 ##luccia talk
 [trp_lucia, "start",
-[(check_quest_active, "qst_widow")],"Are you anotherone who has come to bother me? Since my only son is dead,\
- it seems the whole Roman youth has come to make their proposals...", "lucia_talk_1",[]],
+[(check_quest_active, "qst_widow")],"Another one? Have you also come to offer condolences and propose marriage in the same breath? Since my son died, it seems every ambitious young man in Rome has beaten a path to my door.",
+"lucia_talk_1",[]],
+
 [trp_lucia, "start",
-[],"Leave me alone {playername}.", "close_window",[]],
+[],"We have nothing to discuss, {playername}.",
+"close_window",[]],
 
-[trp_lucia|plyr, "lucia_talk_1",[],"I have not come to make any proposals, I just wanted to visit you", "lucia_talk_1_angry_1",[]],
-[trp_lucia|plyr, "lucia_talk_1",[],"I heard you are lonely. I just wanted to give you some company.", "lucia_talk_1_angry_2",[]],
-[trp_lucia|plyr, "lucia_talk_1",[],"I want to be honest, this is exactly, what I wanted to do.", "lucia_talk_1_good",[]],
+[trp_lucia|plyr, "lucia_talk_1",[],"I have not come to make a proposal. I was simply passing by.",
+"lucia_talk_1_angry_1",[]],
 
-[trp_lucia, "lucia_talk_1_angry_1",[],"I shall believe this? Why haven't you not visited me before all this happened? Before my illness, the dead of my son...", "lucia_talk_2",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5)]],
-[trp_lucia, "lucia_talk_1_angry_2",[],"Lonely? Is this a joke? I am visited every day by dozens of young men. I can't stand them anymore!", "lucia_talk_2",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5)]],
-[trp_lucia, "lucia_talk_1_good",[],"Then you are the first one who is honest with me. And I must say, I appreciate that.", "lucia_talk_2",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1)]],
+[trp_lucia|plyr, "lucia_talk_1",[],"I heard you were grieving. I thought you might appreciate some company.",
+"lucia_talk_1_angry_2",[]],
 
-[trp_lucia, "lucia_talk_2",[],"However, I did not give you the opportunity to introduce yourself properly. So, with\
- whom I have the pleasure to talk?", "lucia_talk_3",[]],
-[trp_lucia|plyr, "lucia_talk_3",[],"{playername}, it is an honor to meet you.", "lucia_talk_3_1",[]],
-[trp_lucia|plyr, "lucia_talk_3",[],"The famous {playername}, I am sure, you have heard of my noble deeds.", "lucia_talk_3_2",[]],
+[trp_lucia|plyr, "lucia_talk_1",[],"I will be honest. That is exactly why I came.",
+"lucia_talk_1_good",[]],
 
-[trp_lucia, "lucia_talk_3_1",[],"Nice to meet you {playername}.", "lucia_talk_4",[]],
-[trp_lucia, "lucia_talk_3_2",[],"I must say, I never heard from any of your deeds.", "lucia_talk_4",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1)]],
+[trp_lucia, "lucia_talk_1_angry_1",[],"Am I to believe that? Where were you before my son died? Before this illness took hold? Your timing is... convenient.",
+"lucia_talk_2",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5)]],
 
-[trp_lucia, "lucia_talk_4",[],"So, {playername}, you thought you could come here and win my favor with your charm? To convince me to marry you so that you can inherit all my wealth? Is that true?", "lucia_talk_4_1",[]],
+[trp_lucia, "lucia_talk_1_angry_2",[],"Company? I am visited by a dozen vultures a day. The last thing I need is more company.",
+"lucia_talk_2",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5)]],
 
-[trp_lucia|plyr, "lucia_talk_4_1",[],"Yes, it is.", "lucia_talk_4_1_good",[]],
-[trp_lucia|plyr, "lucia_talk_4_1",[],"No, I am an honest person, I only wanted to visit you.", "lucia_talk_4_1_bad",[]],
+[trp_lucia, "lucia_talk_1_good",[],"Honesty. How refreshing. You are the first man to walk in here who hasn't tried to mask his greed with false sympathy. I appreciate that.",
+"lucia_talk_2",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1)]],
 
-[trp_lucia, "lucia_talk_4_1_bad",[],"Please, {playername} stop lying. It is ridiculous! Do you even know how much money I really have? How many land I own?", "lucia_talk_5",[
+[trp_lucia, "lucia_talk_2",[],"But you have not introduced yourself properly. To whom do I have the pleasure of speaking?",
+"lucia_talk_3",[]],
+
+[trp_lucia|plyr, "lucia_talk_3",[],"My name is {playername}. It is an honor to meet you.",
+"lucia_talk_3_1",[]],
+
+[trp_lucia|plyr, "lucia_talk_3",[],"I am the renowned {playername}. Surely you have heard tales of my deeds.",
+"lucia_talk_3_2",[]],
+
+[trp_lucia, "lucia_talk_3_1",[],"A pleasure, {playername}.",
+"lucia_talk_4",[]],
+
+[trp_lucia, "lucia_talk_3_2",[],"I must confess, your fame has not reached my ears.",
+"lucia_talk_4",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1)]],
+
+[trp_lucia, "lucia_talk_4",[],"So, {playername}, you came here to win my favor, marry me, and inherit my vast fortune. Is that the shape of it?",
+"lucia_talk_4_1",[]],
+
+[trp_lucia|plyr, "lucia_talk_4_1",[],"Yes. That was my intention.", "lucia_talk_4_1_good",[]],
+[trp_lucia|plyr, "lucia_talk_4_1",[],"No, of course not. I am an honorable man. I merely wished to pay my respects.", "lucia_talk_4_1_bad",[]],
+
+[trp_lucia, "lucia_talk_4_1_bad",[],"Please, {playername}, don't insult my intelligence. It is the only thing I have left. Do you have any idea what my 'vast fortune' actually consists of?",
+"lucia_talk_5",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5)
-  ]],
-[trp_lucia, "lucia_talk_4_1_good",[],"Well, {playername}, then, do you know how much money I have? How much land I own?", "lucia_talk_5",[]],
+]],
 
-[trp_lucia|plyr, "lucia_talk_5",[],"I only heard it is alot.", "lucia_talk_6",[]],
-[trp_lucia|plyr, "lucia_talk_5",[],"No, I don't know.", "lucia_talk_6",[]],
+[trp_lucia, "lucia_talk_4_1_good",[],"Honesty, again. Good. But tell me, do you have any idea what my 'vast fortune' actually consists of?",
+"lucia_talk_5",[]],
 
-[trp_lucia, "lucia_talk_6",[],"I will tell you a secret; The only land I own is this villa and I also have only a dozen of slaves and a debt of 200,000 denarii!", "lucia_talk_7",[]],
-[trp_lucia|plyr, "lucia_talk_7",[],"How could that happen?", "lucia_talk_8",[]],
-[trp_lucia, "lucia_talk_8",[],"I have an extravagant lifestyle. And after the death of my son, I had no source of income anymore. Now, since you know my secret"
-+" do you still want to marry me? You would inherit all my debts. That is Roman law. And you would have to sleep with me, else I wouldn't say, 'yes'."
-+" ^^-- You look at her closely. Her face is thickly covered with make-up to cover the wrinkles. She has lost some teeth... She doesn't look good at all. --",
+[trp_lucia|plyr, "lucia_talk_5",[],"I have heard you are very wealthy.",
+"lucia_talk_6",[]],
+
+[trp_lucia|plyr, "lucia_talk_5",[],"No, I do not.",
+"lucia_talk_6",[]],
+
+[trp_lucia, "lucia_talk_6",[],"Then let me tell you a secret. The only land I own is this villa. I have a dozen slaves, and a debt of two hundred thousand denarii.",
+"lucia_talk_7",[]],
+
+[trp_lucia|plyr, "lucia_talk_7",[],"How is that possible?",
+"lucia_talk_8",[]],
+
+[trp_lucia, "lucia_talk_8",[],"I have expensive tastes. After my son died, the income from his estates ceased. Now... knowing my secret, does the offer of marriage still stand? By Roman law, you would inherit my debts. And you would have to perform a husband's duties. I would insist on it."
++" ^^-- You look at her closely. The thick white makeup cannot hide the deep lines around her eyes, and when she smiles, you see the gaps where teeth are missing. She looks unwell. --",
 "lucia_talk_9",[]],
 
-[trp_lucia|plyr, "lucia_talk_9",[],"Not really.", "lucia_talk_10",[]],
-[trp_lucia|plyr, "lucia_talk_9",[],"Yes, because I love you.", "lucia_talk_10_1",[]],
+[trp_lucia|plyr, "lucia_talk_9",[],"Under the circumstances, no.",
+"lucia_talk_10",[]],
+[trp_lucia|plyr, "lucia_talk_9",[],"Yes. Because I love you.",
+"lucia_talk_10_1",[]],
 
 [trp_lucia, "lucia_talk_10_1",[
   (call_script, "script_troop_get_player_relation", "$g_talk_troop"),
   (le, reg0, -10)
- ],"I don't believe you {playername}. Please leave me alone. You have bothered me enough", "close_window",[
+],"Do not mock me, {playername}. I have had enough insults for one lifetime. Leave.",
+"close_window",[
   (call_script, "script_fail_quest", "qst_widow"),
   (call_script, "script_end_quest", "qst_widow"),
   (assign, "$temp", 0),
-  ]],
+]],
 
 [trp_lucia, "lucia_talk_10_1",[
- ],"I don't believe you {playername}. How stupid do you think I am? I know your indentions, so stop lying to me!", "lucia_talk_11",[
+ ],"Love? You think I am that foolish? I know your intentions. Stop lying. It's tiresome.",
+"lucia_talk_11",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5)
-  ]],
+]],
 
 [trp_lucia, "lucia_talk_10",[
- ],"Thank you for being honest {playername}, I really appreciate that!", "lucia_talk_11",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1)
+ ],"Thank you for your honesty, {playername}. It is a rare and precious thing.",
+ "lucia_talk_11",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1)
   ]],
 
 [trp_lucia, "lucia_talk_11",[
- ],"Nevertheless, I have a mission for you! And if you succeed I will reward you with something you may find useful.", "lucia_talk_12",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1)
+ ],"Now... I have a task for you. If you complete it, I will reward you with something far more valuable than a bankrupt estate.",
+ "lucia_talk_12",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1)
   ]],
 
 [trp_lucia|plyr, "lucia_talk_12",[
- ],"What shall I do for you, my Lady?", "lucia_talk_13",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1)
+ ],"What do you require of me, my lady?", "lucia_talk_13",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1)
   ]],
 [trp_lucia|plyr, "lucia_talk_12",[
- ],"I must refuse, this is a waste of time for me!", "lucia_talk_11_angry",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5)
+ ],"I am not interested. This has been a waste of my time.", "lucia_talk_11_angry",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5)
   ]],
 [trp_lucia, "lucia_talk_11_angry",[
- ],"I understand {playername}. Now leave my house and never come back!", "close_window",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
+ ],"I understand. Now leave my house and do not return.", "close_window",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
   (call_script, "script_fail_quest", "qst_widow"),
   (call_script, "script_end_quest", "qst_widow"),
   (assign, "$temp", 0),
   ]],
 
 [trp_lucia, "lucia_talk_13",[
- ],"Good. Now listen carefully. ", "lucia_talk_14",[]],
+ ],"Good. Now listen closely.", "lucia_talk_14",[]],
 
 [trp_lucia, "lucia_talk_14",[
- ],"I want you to sleep with me for at least two hours! You must know, all those young attractive men come to me, tell me how much they love me and all those things, but when I want them to ... you know, to sleep with me, they refuse.", "lucia_talk_15",[]],
+ ],"I want you to sleep with me. For two hours. All these handsome young vultures come here, whispering of love and devotion. But when I suggest they prove it in my bed... they flee.", "lucia_talk_15",[]],
 
 [trp_lucia|plyr, "lucia_talk_15",[
- ],"Then, let's get it done!", "lucia_talk_16",[]],
+ ],"Then let us not keep you waiting.", "lucia_talk_16",[]],
 [trp_lucia|plyr, "lucia_talk_15",[
- ],"No, I refuse", "lucia_talk_11_angry",[]],
+ ],"No. I refuse.", "lucia_talk_11_angry",[]],
 
 [trp_lucia, "lucia_talk_16",[
- ],"-- She takes your hand and you follow her into a bedroom. She quickly undresses and literally throws herself on you ... after two hours she has enough and you both dress again. Then you follow her back into the garden. --", "lucia_talk_17",[]],
+ ],"-- She takes your hand, her grip surprisingly strong, and leads you to her bedchamber. She undresses without a hint of modesty and pulls you down onto the bed... After two hours, she seems sated. You both dress and return to the garden. --", "lucia_talk_17",[]],
 
 [trp_lucia, "lucia_talk_17",[
- ],"I really needed this. It was fantastic! You must know, the last time I had sex is decades ago... ^Anyway, now I have a second task for you!", "lucia_talk_18",[
+ ],"That was... necessary. It has been a long time. You are a vigorous man. Now, for your real task.", "lucia_talk_18",[
 (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 40)
   ]],
 
 [trp_lucia|plyr, "lucia_talk_18",[
- ],"Whatever you wish", "lucia_talk_19",[]],
+ ],"Whatever you wish.", "lucia_talk_19",[]],
 [trp_lucia|plyr, "lucia_talk_18",[
- ],"You said only one task? Where is my reward", "lucia_talk_18_1",[]],
+ ],"You said one task. Where is my reward?", "lucia_talk_18_1",[]],
 
 [trp_lucia, "lucia_talk_18_1",[
- ],"You will get your reward, my handsome, but first you must do another task for me", "lucia_talk_19",[]],
+ ],"You will have your reward, handsome. But first, you must perform one final service.", "lucia_talk_19",[]],
 
 [trp_lucia, "lucia_talk_19",[
- ],"Now listen carefully. I want you to kill me! I have cancer, and the pain is getting unbearable.\
- But I can't kill myself. I tried it with poision and I tried to open my veins, but failed.\
- And it was very painful. I don't dare to try again. Thus, you have to do this for me!", "lucia_talk_20",[]],
+ ],"Now, listen. I want you to kill me. I have a cancer, deep in my belly. The physicians can do nothing, and the pain is becoming a living demon. I cannot do it myself. I have tried poison, I have tried the blade... I lack the courage. I need you to do it for me.", "lucia_talk_20",[]],
 [trp_lucia|plyr, "lucia_talk_20",[
- ],"Then I will redeem you from your suffering", "lucia_talk_21",[]],
+ ],"Then I will release you from your suffering.", "lucia_talk_21",[]],
 [trp_lucia|plyr, "lucia_talk_20",[
- ],"If it must be", "lucia_talk_21",[]],
+ ],"If that is what you truly want.", "lucia_talk_21",[]],
 
 [trp_lucia, "lucia_talk_21",[
- ],"Very good. Now I tell you my last secret. I have many debts and own no land, but I still have a little treasure here in my villa.\
- I have 100,000 denarii in cash in a little chest under my bed. After you have killed me, you can take this money, nobody knows that it exists, thus\
- nobody will consider you a thief. After you have killed me, you can unlock the chest with this key. Here take it.", "lucia_talk_22",[]],
+ ],"Good. Now, for my final secret. Though I am drowning in debt, I am not entirely without assets. There is a small chest beneath my bed. It contains one hundred thousand denarii in gold coin. After I am dead, you take it. No one knows it exists. It will be your reward. Here is the key.", "lucia_talk_22",[]],
 [trp_lucia, "lucia_talk_22",[
- ],"Now, kill me!", "lucia_talk_23",[]],
+ ],"Now. Kill me.", "lucia_talk_23",[]],
 [trp_lucia|plyr, "lucia_talk_23",[
- ],"But people will think I am a murderer! This guy Amorus Valentinus saw me entering your house.", "lucia_talk_24",[]],
+ ],"But they will call me a murderer. That boy, Amorus Valentinus, saw me enter your villa.", "lucia_talk_24",[]],
 [trp_lucia, "lucia_talk_24",[
- ],"Don't be silly. Simply tell everyone it was my slaves who killed me. They are only slaves, people will believe you! Now get it done.\
- I want you to decapitate me. This is the quickest way.^^-- She lowers her head and closes her eyes. --", "lucia_talk_25",[]],
+ ],"Don't be a fool. Blame the slaves. Who will believe a slave over a citizen? Tell the Vigiles they revolted. It happens all the time. Now, do it. Decapitate me. It will be the quickest way.^^-- She kneels, lowers her head, and closes her eyes. --", "lucia_talk_25",[]],
 [trp_lucia|plyr, "lucia_talk_25",[
- ],"What ever you wish.^^-- You draw your weapon and cut her head off. Her body collapses and falls on the floor. She is dead. --", "close_window",[
+ ],"As you wish.^^-- You draw your sword. With a single, swift motion, you sever her head from her body. Her corpse slumps to the floor. It is done. --", "close_window",[
   (jump_to_menu, "mnu_lucias_death"),
   (finish_mission),
-  ]],
+]],
  ##end luccia talk
 
 ##barrack commander talk
@@ -53981,12 +54011,12 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 ]],
 
 [anyone,"combined_political_quests",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
-(lt, "$g_talk_troop_effective_relation", -5),
-##diplomacy start+
-#For affiliated family members, increase willingness to intrigue
-(call_script, "script_dplmc_is_affiliated_family_member", "$g_talk_troop"),
-(lt, reg0, 1),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
+  (lt, "$g_talk_troop_effective_relation", -5),
+  ##diplomacy start+
+  #For affiliated family members, increase willingness to intrigue
+  (call_script, "script_dplmc_is_affiliated_family_member", "$g_talk_troop"),
+  (lt, reg0, 1),
 ##diplomacy end+
 ],
 "I do not imagine that you and I have many mutual interests.", "lord_pretalk",[]],
@@ -65143,7 +65173,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 "lady_gossip_talk_1",[]],
 
 [anyone|plyr, "lady_gossip_talk_1",[
-],"Maybe you can tell me anything about the other ladies of the realm?",
+],"Maybe you heard anything interesting about other ladies of the realm?",
 "lady_gossip_talk_2",[
 ]],
 [anyone|plyr, "lady_gossip_talk_1",[
@@ -65942,116 +65972,179 @@ But the peope here are either drunk or busy with other things, you know. Tell me
    (troop_set_slot, "$g_talk_troop", slot_troop_lover, "trp_player"),
    ]],
 
-[anyone|plyr,"lady_talk",
-[(neg|eq, "$g_talk_troop_met", 0),
-    (neg|troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
-  ],
-   "I wished to ask about one of your relatives.", "dplmc_lady_relations2",[]],
+[anyone|plyr,"lady_talk",[
+  (neg|eq, "$g_talk_troop_met", 0),
+  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
+],"I wished to ask about one of your relatives.",
+"dplmc_lady_relations2",[]],
 
-[anyone|plyr,"lady_talk",
-[
-    (troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
-  ],
-   "Do you have any affairs I should know?", "dplmc_lady_ask_daughter_love",[]],
+[anyone|plyr,"lady_talk",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
+],"Do you have any affairs I should know?",
+"dplmc_lady_ask_daughter_love",[]],
 
-[anyone,"dplmc_lady_ask_daughter_love",
-[
-   (assign, ":suitor", -1),
-   (try_for_range, ":lords", active_npcs_begin, active_npcs_end),
-      (try_for_range, ":love_interest_slot", slot_troop_love_interest_1, slot_troop_love_interests_end),
-        (troop_slot_eq, ":lords", ":love_interest_slot", "$g_talk_troop"),
-        (assign, ":suitor", ":lords"),
-      (try_end),
-   (try_end),
-   (this_or_next|troop_slot_ge, "$g_talk_troop", slot_troop_lover, 1),
-   (gt, ":suitor", -1),
-  ],
-   "-- She blushes. -- ^^ No, I don't have one...", "lady_pretalk",[]],
+[anyone,"dplmc_lady_ask_daughter_love",[
+  (assign, ":suitor", -1),
+  (try_for_range, ":lords", active_npcs_begin, active_npcs_end),
+    (try_for_range, ":love_interest_slot", slot_troop_love_interest_1, slot_troop_love_interests_end),
+      (troop_slot_eq, ":lords", ":love_interest_slot", "$g_talk_troop"),
+      (assign, ":suitor", ":lords"),
+    (try_end),
+  (try_end),
+  (this_or_next|troop_slot_ge, "$g_talk_troop", slot_troop_lover, 1),
+  (gt, ":suitor", -1),
+  (try_begin),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s13, "str_daughter_has_lover_adventurous"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s13, "str_daughter_has_lover_ambitious"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s13, "str_daughter_has_lover_moralist"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s13, "str_daughter_has_lover_hedonistic"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s13, "str_daughter_has_lover_otherworldly"),
+  (else_try),
+      (str_store_string, s13, "str_daughter_has_lover_default"),
+  (try_end),
+],
+"{s13}", # The selected string is displayed here.
+"lady_pretalk",[]],
 
-[anyone,"dplmc_lady_ask_daughter_love",
-[
+[anyone,"dplmc_lady_ask_daughter_love",[
+  (try_begin),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s13, "str_daughter_no_lover_adventurous"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s13, "str_daughter_no_lover_ambitious"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s13, "str_daughter_no_lover_moralist"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s13, "str_daughter_no_lover_hedonistic"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s13, "str_daughter_no_lover_otherworldly"),
+  (else_try),
+      (str_store_string, s13, "str_daughter_no_lover_default"),
+  (try_end),
+],
+"{s13}",
+"lady_pretalk",[]],
 
-  ],
-   "If I have one, do you really think I would tell it to you?", "lady_pretalk",[]],
+[anyone|plyr,"lady_talk",[
+  (ge, "$g_time_since_last_talk", 24),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
+],"What is my beloved daughter doing all day?",
+"dplmc_lady_ask_daughter",[]],
 
-[anyone|plyr,"lady_talk",
-[(ge, "$g_time_since_last_talk", 24),
-    (troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
-  ],
-   "What is my beloved daughter doing all day?", "dplmc_lady_ask_daughter",[]],
+[anyone,"dplmc_lady_ask_daughter",[
+  (try_begin),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s1, "str_daughter_activity_adventurous"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s1, "str_daughter_activity_ambitious"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s1, "str_daughter_activity_moralist"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s1, "str_daughter_activity_hedonistic"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s1, "str_daughter_activity_otherworldly"),
+  (else_try),
+      (str_store_string, s1, "str_daughter_activity_default"),
+  (try_end),
+],
+"{s1}", # This now displays the string selected by the logic block above.
+"lady_pretalk",[]],
 
-[anyone,"dplmc_lady_ask_daughter",
-[
-  ],
-   "It is kind that ask, father. I do what all young ladies do. I have to undergo the various steps of Roman education. Whenever I have free-time\
- I go out with my friends. We either visit the theatre or watch a gladiator fight.", "lady_pretalk",[]],
+[anyone,"dplmc_lady_relations2",[
+],"About whom do you want information?",
+"dplmc_lady_info_relative_select",[
+]],
 
-[anyone,"dplmc_lady_relations2",
-[
+[anyone|plyr|repeat_for_troops, "dplmc_lady_info_relative_select",[
+  (store_repeat_object, ":troop_no"),
+  (neq, "$g_talk_troop", ":troop_no"),
+  (is_between, ":troop_no", active_npcs_begin, kingdom_ladies_end),
+  (neq, ":troop_no", "trp_player"),#don't talk about the player
+  (neq, ":troop_no", "$g_talk_troop"),#don't talk about yourself
+  (troop_slot_ge, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+  (neg|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_retirement),
+  #Only give info on relatives
+  (call_script, "script_troop_get_family_relation_to_troop", ":troop_no", "$g_talk_troop"),
+  (assign, ":relation_strength", reg0),
+  (ge, ":relation_strength", 2),#2+: cousin, niece
+  (str_store_troop_name, s18, ":troop_no"),
+], "Your {s11} {s18}",
+"dplmc_lady_info_relative_1",[
+  (store_repeat_object, "$lord_selected"),
+]],
 
-  ],
-   "About whom do you want information?", "dplmc_lady_info_relative_select",[
- ]],
+[anyone|plyr, "dplmc_lady_info_relative_select",[
+],"Never mind.",
+"lady_pretalk",[
+]],
 
-[anyone|plyr|repeat_for_troops, "dplmc_lady_info_relative_select",
-[
-    (store_repeat_object, ":troop_no"),
-    (neq, "$g_talk_troop", ":troop_no"),
-    (is_between, ":troop_no", active_npcs_begin, kingdom_ladies_end),
-    (neq, ":troop_no", "trp_player"),#don't talk about the player
-    (neq, ":troop_no", "$g_talk_troop"),#don't talk about yourself
-    (troop_slot_ge, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-    (neg|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_retirement),
-    #Only give info on relatives
-    (call_script, "script_troop_get_family_relation_to_troop", ":troop_no", "$g_talk_troop"),
-    (assign, ":relation_strength", reg0),
-    (ge, ":relation_strength", 2),#2+: cousin, niece
-    (str_store_troop_name, s18, ":troop_no"),
-  ], "Your {s11} {s18}", "dplmc_lady_info_relative_1",
-[
-      (store_repeat_object, "$lord_selected"),
-   ]],
+[anyone,"dplmc_lady_info_relative_1",[
+  (lt, "$g_talk_troop_effective_relation", 10),
+  (try_begin),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s1, "str_lady_refuse_info_low_rel_moralist"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s1, "str_lady_refuse_info_low_rel_ambitious"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s1, "str_lady_refuse_info_low_rel_adventurous"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s1, "str_lady_refuse_info_low_rel_otherworldly"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s1, "str_lady_refuse_info_low_rel_hedonistic"),
+  (else_try),
+      (str_store_string, s1, "str_lady_refuse_info_low_rel_default"),
+  (try_end),
+],
+"{s1}",
+"lady_pretalk",[
+]],
 
-[anyone|plyr, "dplmc_lady_info_relative_select",
-[
-  ],
-   "Never mind.", "lady_pretalk",[
- ]],
-
-[anyone,"dplmc_lady_info_relative_1",
-[(lt,"$g_talk_troop_effective_relation",10),
-   ],
-   "Pardon, but I do not feel comfortable discussing such personal matters with you.", "lady_pretalk",[
- ]],
+# #Info 1a: If an unmarried lady, show rumor (betrothal)
+# [anyone,"dplmc_lady_info_relative_1",[
+#   (is_between,"$lord_selected",kingdom_ladies_begin,kingdom_ladies_end),
+#   (troop_slot_eq, "$lord_selected", slot_troop_spouse, -1),
+#   (assign,":lady","$lord_selected"),
+# 	(troop_get_slot, ":betrothed", ":lady", slot_troop_betrothed),
+# 	(is_between, ":betrothed", active_npcs_begin, active_npcs_end),
+# 	(str_store_troop_name, s9, ":lady"),
+# 	(str_store_troop_name, s11, ":betrothed"),
+# 	(str_store_string, s12, "str_s9_is_now_betrothed_to_s11_soon_we_believe_there_shall_be_a_wedding"),
+# 	(try_begin),
+# 		(troop_slot_eq, ":lady", slot_troop_met, 2),
+# 		(assign, "$romantic_rival", ":betrothed"),
+# 	(try_end),
+# ],"{12}",
+# "lady_pretalk",[
+# ]],
 
 #Info 1
-[anyone,"dplmc_lady_info_relative_1",
-[
-    (call_script, "script_dplmc_troop_political_notes_to_s47", "$lord_selected"),
-  ],
-   "{s47}", "dplmc_lady_info_relative_2",[
- ]],
-
-#Info 2a: If an unmarried lady, show rumor (betrothal)
-[anyone,"dplmc_lady_info_relative_1",
-[
-    (is_between,"$lord_selected",kingdom_ladies_begin,kingdom_ladies_end),
-    (troop_slot_eq, "$lord_selected", slot_troop_spouse, -1),
-    (assign,":lady","$lord_selected"),
-	(troop_get_slot, ":betrothed", ":lady", slot_troop_betrothed),
-	(is_between, ":betrothed", active_npcs_begin, active_npcs_end),
-
-	(str_store_troop_name, s9, ":lady"),
-	(str_store_troop_name, s11, ":betrothed"),
-
-	(str_store_string, s12, "str_s9_is_now_betrothed_to_s11_soon_we_believe_there_shall_be_a_wedding"),
-	(try_begin),
-		(troop_slot_eq, ":lady", slot_troop_met, 2),
-		(assign, "$romantic_rival", ":betrothed"),
-	(try_end),
-  ],
-   "{12}", "lady_pretalk",[
- ]],
+[anyone,"dplmc_lady_info_relative_1",[
+  (call_script, "script_dplmc_troop_political_notes_to_s47", "$lord_selected"),
+  (call_script, "script_add_rumor_string_to_troop_notes", "$lord_selected", -1, s47),
+],"{s47}",
+"dplmc_lady_info_relative_2",[
+]],
 
 #Info 2b: If a lady, show rumor (other)
 [anyone,"dplmc_lady_info_relative_2",[
@@ -66215,12 +66308,11 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 "lady_pretalk",[]],
 
 #Info 2: If a lord, show location
-[anyone,"dplmc_lady_info_relative_2",
-[
-     (call_script, "script_update_troop_location_notes", "$lord_selected", 1),
-     (call_script, "script_get_information_about_troops_position", "$lord_selected", 0),
- ],
-   "{s1}", "lady_pretalk",[]],
+[anyone,"dplmc_lady_info_relative_2",[
+  (call_script, "script_update_troop_location_notes", "$lord_selected", 1),
+  (call_script, "script_get_information_about_troops_position", "$lord_selected", 0),
+],"{s1}",
+"lady_pretalk",[]],
 
 #Ask kingdom ladies about feasts.
 [anyone|plyr, "lady_talk",[(neg|eq, "$g_talk_troop_met", 0),],
@@ -80051,7 +80143,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
      (str_store_party_name_link,s3,":giver_center"),
      (setup_quest_text,"$random_quest_no"),
      (str_store_party_name, s22, "p_town_6"),
-     (str_store_string, s2, "@Travel to {s22} and build support for {s3}'s case for water rights in the Senate."),
+     (str_store_string, s2, "@Travel to {s22} and build support for {s3}'s case for water rights in the Senate.^^Hint: Outcome will depend on your senate support and oratory skill."),
      (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
    ]],
 
@@ -91703,42 +91795,57 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ########################################
 [trp_amorus, "start",[
   (eq, "$talk_context", tc_campaign_talk),
-],"Ave! Do you want to visit the widow Lucia Sabina?",
+],"Ave. Are you here to see the widow, Lucia Sabina?",
 "amorus_talk",
 []],
-[anyone|plyr, "amorus_talk",[],"Yes, that's what I wanted.", "amorus_talk_2",[]],
-[anyone|plyr, "amorus_talk",[],"That's none of your business.", "amorus_talk_2",[]],
+[anyone|plyr, "amorus_talk",[],"I am. And who are you?", "amorus_talk_2",[]],
+[anyone|plyr, "amorus_talk",[],"That is none of your concern.", "amorus_talk_2",[]],
 
-[anyone, "amorus_talk_2",[],"Never visit her! She is mine! And if you should visit her, you will get real trouble!", "amorus_talk_3",[]],
+[anyone, "amorus_talk_2",[],"Stay away from her! She belongs to me! If I see you near her villa again, there will be serious trouble!", "amorus_talk_3",[]],
 
-[anyone|plyr, "amorus_talk_3",[],"And who are you to talk to me like that?", "amorus_talk_4",[]],
-[anyone, "amorus_talk_4",[],"I am Amorus Valentinus, son of the senator Lucratius Valentinus.\
- I warn you. I can cause you a lot of trouble since my father is an influential man.", "amorus_talk_5",[]],
-[anyone|plyr, "amorus_talk_5",[],"You are the greatest idiot of Rome! Haha", "amorus_talk_6",[]],
-[anyone|plyr, "amorus_talk_5",[],"I have never encountered someone as dumb as you.", "amorus_talk_6",[]],
-[anyone|plyr, "amorus_talk_5",[],"Okay, I will never visit her again.", "amorus_talk_6_never",[]],
+[anyone|plyr, "amorus_talk_3",[],"And who are you to give me orders?", "amorus_talk_4",[]],
 
-[anyone, "amorus_talk_6_never",[],"Very good. Now, get out of my way, you beggar.", "amorus_talk_6_never2",[]],
-[anyone|plyr, "amorus_talk_6_never2",[],"Yes, yes. I will leave.", "close_window",[(jump_to_menu, "mnu_town"),
+[anyone, "amorus_talk_4",[],"I am Amorus Valentinus, son of the Senator Lucratius Valentinus. My father is an influential man. I can make your life very difficult.", "amorus_talk_5",[]],
+[anyone|plyr, "amorus_talk_5",[],"You're the biggest fool in Rome!", "amorus_talk_6",[]],
+[anyone|plyr, "amorus_talk_5",[],"I've met smarter paving stones.", "amorus_talk_6",[]],
+[anyone|plyr, "amorus_talk_5",[],"Very well. I will stay away from her.", "amorus_talk_6_never",[]],
+
+[anyone, "amorus_talk_6_never",[],"A wise decision. Now get out of my sight, plebeian.", "amorus_talk_6_never2",[]],
+[anyone|plyr, "amorus_talk_6_never2",[],"Watch your tone, boy.", "amorus_talk_6_1",[]],
+[anyone|plyr, "amorus_talk_6_never2",[],"As you say.", "close_window",[
+  (jump_to_menu, "mnu_town"),
   (call_script, "script_fail_quest", "qst_widow"),
   (call_script, "script_end_quest", "qst_widow"),
-  ]],
-[anyone|plyr, "amorus_talk_6_never2",[],"How are you talking with me? You little rat.", "amorus_talk_6_1",[]],
+]],
 
-[anyone, "amorus_talk_6",[],"What did you say? I think I have misunderstood you, bastard! Apologize to me, or you will have serious problems in the future.", "amorus_talk_7",[]],
-[anyone, "amorus_talk_6_1",[],"What? I think I misunderstood you.", "amorus_talk_7",[]],
+[anyone, "amorus_talk_6",[],"What did you call me?! You insolent bastard! Apologize at once, or I'll see you flogged!",
+"amorus_talk_7",[]],
+[anyone, "amorus_talk_6_1",[],"What was that? Did you just threaten me?",
+"amorus_talk_7",[]],
 
-[anyone|plyr, "amorus_talk_7",[],"You little dwarf! I will say it only once to you: Don't bother me, and never visit Lucretia Sabina again.", "amorus_talk_8",[]],
-[anyone, "amorus_talk_8",[],"Nobody talks to me like that! I will tell it my daddy, then you will get in real trouble.", "amorus_talk_9",[]],
-[anyone|plyr, "amorus_talk_9",[],"(You pull your sword and put it on his throat)^^One word, and I cut your throat. Now, listen:\
- You will never visit Lucia Sabina again. You understand?", "amorus_talk_10",[]],
-[anyone, "amorus_talk_10",[],"Yes, yes. I do whatever you want. But please don't kill me, don't kill me.", "amorus_talk_11",[]],
-[anyone|plyr, "amorus_talk_11",[],"Haha, very good, you little coward. Now, away with you and I don't want to see you here again.", "amorus_talk_12",[]],
-[anyone, "amorus_talk_12",[],"I swear I won't come back.", "close_window",[
+[anyone|plyr, "amorus_talk_7",[],"You heard me. Now crawl back to whatever hole you came from and stay away from Lucia Sabina.",
+"amorus_talk_8",[]],
+
+[anyone, "amorus_talk_8",[],"No one speaks to me like that! I'll tell my father! You'll be ruined!",
+"amorus_talk_9",[]],
+
+[anyone|plyr, "amorus_talk_9",[],"-- You draw your pugio and press it to his throat. --^^Say one more word, and it will be your last. Now, listen. You will never bother Lucia Sabina again. You will not even walk down this street again. Do you understand me?",
+"amorus_talk_10",[]],
+
+[anyone, "amorus_talk_10",[],"Yes! Yes, anything you say! Please, just don't kill me!",
+"amorus_talk_11",[]],
+
+[anyone|plyr, "amorus_talk_11",[],"Hah. Pathetic. Now get out of here before I change my mind.",
+"amorus_talk_12",[]],
+[anyone|plyr, "amorus_talk_11",[],"Leave now.",
+"amorus_talk_12",[]],
+
+[anyone, "amorus_talk_12",[],"I swear, I'm gone! You'll never see me again!",
+"close_window",[
   (display_message, "str_quest_updated"),
   (add_quest_note_from_sreg, "qst_widow", 3, "@Amorus Valentinus doesn't seem to be a problem anymore.", 0),
   (jump_to_menu, "mnu_lucias_house_2")
-  ]],
+]],
 
 [trp_petronius, "start",
 [

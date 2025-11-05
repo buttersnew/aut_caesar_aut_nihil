@@ -546,9 +546,7 @@ parties = [
 ("ferry_4b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-91.15, -16.26), [], 270),
 ("ferry_5b", "ferry station", icon_ferry_station|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-249.5, -24.69), [], 135),
 
-("transporter", "Transporter", icon_ship|pf_disabled|pf_always_visible|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (0, 0), [
-    (trp_mercenary_swordsman, 5, 0)
-]),
+("transporter", "Transporter", icon_ship|pf_disabled|pf_always_visible|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (0, 0), [(trp_mercenary_swordsman, 5, 0)]),
 
 ("landing_point", "landing point", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-51.69, -43.86), []),
 

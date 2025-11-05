@@ -24,7 +24,7 @@ postfx_params = [
     ("sunny",   0, 0, [128.0, 0.9, 1.25, 10.0], [0.85, 1.50, 1.10, 0.18], [1.0, 1.0, 2.8, 1.0]),
 
     # Map: Brighter and more saturated to make details clear.
-    ("map_params", 0, 0, [128.0, 1.0, 1.25, 10.0], [0.70, 2.5, 1.20, 0.05], [1.0, 1.0, 2.4, 1.0]),
+    ("map_params", 0, 0, [128.0, 1.0, 1.25, 10.0], [0.70, 2.5, 1.20, 0.05], [1.0, 1.0, 2.4, 0.0]),
 
     # Indoors: Warmer and darker, with a soft bloom to simulate firelight.
     ("indoors", 0, 0, [128.0, 1.0, 1.25, 10.0], [0.60, 2.0, 1.5, 0.10], [0.48, 1.0, 1.6, 5.0]),

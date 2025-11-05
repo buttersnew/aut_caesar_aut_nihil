@@ -10083,6 +10083,34 @@ strings = [
 ("lady_scheme_response_moralist", "I find such intrigue to be... dishonorable, to be honest. However, you are my husband. If you insist on this path, I will help you as best I can."),
 ("lady_scheme_response_hedonistic", "A scheme? Oh, how deliciously wicked! I was growing so tired of all this tedious courtly nonsense. Count me in, my love. This sounds far more entertaining."),
 ("lady_scheme_response_default", "It would be a pleasure to help you, my love."),
+
+("lady_refuse_info_low_rel_moralist", "I barely know you. It would be highly improper to discuss private family affairs with an acquaintance. I am not one for idle gossip."),
+("lady_refuse_info_low_rel_ambitious", "Information is an asset, and I do not share my assets with those whose loyalty is unproven. We are not yet friends enough for such confidences."),
+("lady_refuse_info_low_rel_adventurous", "Words are cheap. I share my counsel with proven friends, not with strangers. We have not shared enough road or risk for that kind of talk."),
+("lady_refuse_info_low_rel_otherworldly", "My apologies, but my heart tells me that such confidences are not yet warranted between us. These are matters of the spirit, not for casual conversation."),
+("lady_refuse_info_low_rel_hedonistic", "Discussing my dreary relatives? What a dreadful bore. That sort of talk requires far more wine and a much better reason than you've given me."),
+("lady_refuse_info_low_rel_default", "Pardon me, but I do not know you well enough to discuss such personal family matters. It would not be right."),
+
+("daughter_activity_adventurous", "I practice with my bow in the gardens, father! The tutors say I should focus on weaving, but I'd rather learn to hunt. I also read all the scrolls I can find about your campaigns. I wish I could ride with you."),
+("daughter_activity_ambitious", "I spend my time observing the other noble families. I listen to the whispers in the forum and I make sure I am seen with the right people. A family's power is not just in its wealth and armies, but in its connections. I am learning who our friends are... and who our rivals might be."),
+("daughter_activity_moralist", "I do my duties, father. I study philosophy, I practice my letters, and I oversee the household slaves to ensure there is no waste. I do not engage in the frivolous gossip or decadent parties that so many other girls my age seem to enjoy."),
+("daughter_activity_hedonistic", "Oh, you know... trying not to be bored! I visit the baths, I shop for new silks with my friends, and we try to find the most exciting parties to attend. A girl must have her amusements, mustn't she?"),
+("daughter_activity_otherworldly", "I've been writing poetry, father. And trying to compose a song on the lyre about the myth of Cupid and Psyche. When I'm not with my tutors, I like to sit in the gardens and just... think. The world is so full of beauty, if you just stop to look."),
+("daughter_activity_default", "I do what all young ladies do, father. I attend to my studies with my tutors, and when I have free time, I go out with my friends. Sometimes we visit the theatre, or if there is a particularly exciting match, we go to the arena."),
+
+("daughter_has_lover_adventurous", "Father! That's... private. But... yes. There is someone. He has a fire in his eyes, a sense of adventure. He doesn't talk of estates, he talks of the world beyond the horizon."),
+("daughter_has_lover_ambitious", "-- She gives a small, strategic smile. -- ^^There is a suitor whose family has significant standing. An alliance could be very... advantageous for us. But it is still early."),
+("daughter_has_lover_moralist", "-- She blushes deeply. -- ^^Father, such questions are improper! I... I am a virtuous maiden. There is nothing to tell."),
+("daughter_has_lover_hedonistic", "-- She laughs, a playful, knowing sound. -- ^^Perhaps. There is someone who has managed to be... less boring than the others. For now. Don't worry, father, I am merely amusing myself."),
+("daughter_has_lover_otherworldly", "-- Her eyes seem to glaze over, a dreamy look on her face. -- ^^There is someone whose soul seems to... resonate with mine. When we speak, it is like a song I have always known."),
+("daughter_has_lover_default", "-- She blushes. -- ^^Oh, father... No, I don't have anyone special."),
+
+("daughter_no_lover_adventurous", "A suitor? Gods, no. They are all so dull. They want to talk about dowries and olive groves. I would rather have a good horse than a husband."),
+("daughter_no_lover_ambitious", "There have been offers, of course. But none have been politically suitable. A marriage is a dynasty's most important alliance; I will not waste it on a trivial match."),
+("daughter_no_lover_moralist", "No, father. I am focused on my duties to this household and my studies. Such matters are for when the time is right, and not a moment before."),
+("daughter_no_lover_hedonistic", "Am I in love? Heavens, no. I have yet to meet a man in this city who is not a crushing bore. The hunt is far more entertaining than the prize, in any case."),
+("daughter_no_lover_otherworldly", "No, father. I have not yet met anyone who speaks to my heart. I will wait for a love like in the poems, or I will wait forever."),
+("daughter_no_lover_default", "No, father. There is no one."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

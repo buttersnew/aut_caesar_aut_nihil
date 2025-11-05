@@ -52059,28 +52059,22 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]
   ),
 ##for new quests
-  (
-    "pick_up_gold",0,
-    "You have picked up a load of gold bars for {s15}.",
-    "none",
-    [(set_background_mesh, "mesh_pic_messenger"),
+("pick_up_gold",0,
+  "You have picked up a load of gold bars for {s15}.",
+  "none",[
+    (set_background_mesh, "mesh_pic_messenger"),
     (quest_get_slot, ":giver","qst_elusive_bandits", slot_quest_giver_center),
     (str_store_party_name, s15, ":giver"),
-    ],
-    [
-      ("continue",[],
-       "Continue.",
-       [
-        (change_screen_map),
-        ]),
+  ],[
+    ("continue",[],"Continue.",[
+      (change_screen_map),
+    ]),
+]),
 
-    ]
-  ),
-  (
-    "looby_for_water_rights",0,
-    "{s25}",
-    "none",
-    [(set_background_mesh, "mesh_pic_senators"),
+("looby_for_water_rights",0,
+  "{s25}",
+  "none",[
+    (set_background_mesh, "mesh_pic_senators"),
     (quest_get_slot, ":giver", "qst_water_dispute", slot_quest_giver_center),
     (str_store_party_name, s3, ":giver"),
     (store_skill_level, ":oratory", "skl_oratory", "trp_player"),
@@ -52088,6 +52082,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, ":c", 0),
     (try_begin),
       (this_or_next|eq, "$g_is_emperor", 1),
+      (this_or_next|eq, ":oratory", 10),
       (ge, ":support", 60),
       (assign, ":c", 1),
     (else_try),
@@ -52112,17 +52107,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #(call_script, "script_fail_quest", "qst_water_dispute"),
       (call_script, "script_abort_quest", "qst_water_dispute", 1),
     (try_end),
-    ],
-    [
-      ("continue",[],
-       "Continue.",
-       [
-        (add_xp_as_reward, 150),
-        (jump_to_menu, "mnu_senatus"),
-        ]),
-
-    ]
-  ),
+  ],[
+    ("continue",[],"Continue.",[
+      (add_xp_as_reward, 150),
+      (jump_to_menu, "mnu_senatus"),
+    ]),
+]),
 
   (
     "crushed_revolt",0,
