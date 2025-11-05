@@ -2369,6 +2369,7 @@ scripts_hardcoded = [
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_caucasian"),#eastern
         (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_judean"),#eastern
         (party_slot_eq, ":town_no", slot_center_culture, "fac_culture_parthian"),
+
         (party_set_slot,":town_no", slot_town_center, "scn_town_2_center"),
         (party_set_slot,":town_no", slot_town_castle, "scn_town_2_castle"),
         (party_set_slot,":town_no", slot_town_prison, "scn_town_2_prison"),
@@ -2671,7 +2672,7 @@ scripts_hardcoded = [
     #new generic scene: town_3, town_21, town_5, town_2
     #castle scenen
     (try_for_range, ":castle_no", castles_begin, castles_end),#ich verwend die selben scenen, sonst werd ich wahnsinnig
-        (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_greek"),
+        (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_greek"),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_roman"),
         (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_1_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_1_interior"),
@@ -2708,6 +2709,7 @@ scripts_hardcoded = [
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_caucasian"),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_judean"),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_parthian"),
+
         (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_6_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_6_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_6_prison"),
@@ -3133,11 +3135,12 @@ scripts_hardcoded = [
         (party_get_slot, ":scene", ":village_no", slot_castle_exterior),
         (lt, ":scene", "scn_training_ground_ranged_melee_5"),#not assigned yet
         (try_begin),
-            (this_or_next|party_slot_eq, ":town_no", slot_center_culture, "fac_culture_greek"),
-            (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_roman"),
-            (store_random_in_range, ":scene", "scn_village_41", "scn_village_42"),
-            (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
-        (else_try),
+            # (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_greek"),
+            # (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_berber"),
+            # (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_roman"),
+            # (store_random_in_range, ":scene", "scn_village_41", "scn_village_42"),
+            # (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+        # (else_try),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_dacian"),
             (store_random_in_range, ":scene", "scn_village_7", "scn_village_41"),
             (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
@@ -3166,6 +3169,9 @@ scripts_hardcoded = [
         (else_try),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_caucasian"),
             (party_set_slot,":village_no", slot_castle_exterior, "scn_village_44"),
+        (else_try),# use roman scene as fallback
+            (store_random_in_range, ":scene", "scn_village_41", "scn_village_42"),
+            (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
         (try_end),
     (try_end),
 ]),
