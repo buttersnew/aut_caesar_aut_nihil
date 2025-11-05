@@ -10111,6 +10111,11 @@ strings = [
 ("daughter_no_lover_hedonistic", "Am I in love? Heavens, no. I have yet to meet a man in this city who is not a crushing bore. The hunt is far more entertaining than the prize, in any case."),
 ("daughter_no_lover_otherworldly", "No, father. I have not yet met anyone who speaks to my heart. I will wait for a love like in the poems, or I will wait forever."),
 ("daughter_no_lover_default", "No, father. There is no one."),
+
+("mayor_refuse_info_low_rel_dishonorable", "Your reputation precedes you, traveler. They say you are a person of low character, with no regard for your oaths. I do not share confidences with those I cannot trust."),
+("mayor_refuse_info_low_rel_outlaw", "You have the stink of an outlaw about you. I will not discuss our city's lord with a common brigand. Be thankful I do not call the guards right now."),
+("mayor_refuse_info_low_rel_at_war", "You are an enemy of our town! Do you take me for a fool or a traitor? I would sooner cut out my own tongue than give you information about our lord."),
+("mayor_refuse_info_low_rel_generic", "Why should I share such information with a stranger? We are not friends. I have nothing more to say to you."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

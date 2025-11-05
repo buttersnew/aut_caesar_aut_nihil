@@ -70696,22 +70696,22 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
 #Tavernkeepers
 
-[anyone ,"start",[(is_between, "$g_talk_troop", tavernkeepers_begin, tavernkeepers_end),],
-   "{s4}", "tavernkeeper_talk",
-[
-
-   (str_store_string, s11, "@Welcome to my halls, where foreigners are welcome -- especially if they bring silver."),
-   (str_store_string, s12, "@My tavern is the biggest in town. You are welcome here."),
-   (str_store_string, s13, "@Make yourselves comfortable. I will give you drink, food and accommodation."),
-	 (try_begin),
-		 (store_faction_of_party, ":fac", "$current_town"),
-		 (this_or_next|faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
-		 (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
-		 (str_store_string, s4, "@Welcome your highness in my humble halls. What can I do for you?"),
-	 (else_try),
-		 (store_random_in_range, ":random", 11, 14),
-		 (str_store_string_reg, s4, ":random"),
-	 (try_end),
+[anyone ,"start",[
+  (is_between, "$g_talk_troop", tavernkeepers_begin, tavernkeepers_end),
+],"{s4}",
+"tavernkeeper_talk",[
+  (str_store_string, s11, "@Welcome to my halls, where foreigners are welcome -- especially if they bring silver."),
+  (str_store_string, s12, "@My tavern is the biggest in town. You are welcome here."),
+  (str_store_string, s13, "@Make yourselves comfortable. I will give you drink, food and accommodation."),
+  (try_begin),
+    (store_faction_of_party, ":fac", "$current_town"),
+    (this_or_next|faction_slot_eq, ":fac", slot_faction_leader, "trp_player"),
+    (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
+    (str_store_string, s4, "@Welcome your highness in my humble halls. What can I do for you?"),
+  (else_try),
+    (store_random_in_range, ":random", 11, 14),
+    (str_store_string_reg, s4, ":random"),
+  (try_end),
   (try_begin),
     (check_quest_active,"qst_deliver_wine"),
     (quest_slot_eq, "qst_deliver_wine", slot_quest_target_center, "$g_encountered_party"),
@@ -74605,9 +74605,12 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					],
    "Good day, {s0}.", "mayor_begin",[]],#Changed "my lord" to {s0}
    ##diplomacy end+
-[anyone ,"start",[(is_between,"$g_talk_troop",mayors_begin,mayors_end),(eq,"$g_talk_troop_met",0),
-                     (str_store_party_name, s9, "$current_town")],
-   "Hello stranger, you seem to be new to {s9}. I am the magister civium of the town.", "mayor_talk",[]],
+[anyone ,"start",[
+  (is_between,"$g_talk_troop",mayors_begin,mayors_end),
+  (eq,"$g_talk_troop_met",0),
+  (str_store_party_name, s9, "$current_town"),
+],"Hello stranger, you seem to be new to {s9}. I am the magister civium of the town.",
+"mayor_talk",[]],
 
 [anyone ,"start",[(is_between,"$g_talk_troop",mayors_begin,mayors_end)],
    "Good day, {playername}.", "mayor_begin",
@@ -75192,6 +75195,51 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone,"mayor_begin",[], "What can I do for you?", "mayor_talk",[]],
 [anyone,"mayor_friendly_pretalk",[], "Now... What else may I do for you?", "mayor_talk",[]],
 [anyone,"mayor_pretalk",[], "Yes?", "mayor_talk",[]],
+
+[anyone|plyr,"mayor_talk",[
+  (party_get_slot, ":lord", "$current_town", slot_town_lord),
+  (gt, ":lord", 0),
+  (str_store_troop_name, s13, ":lord"),
+], "What can you tell me about {s13}, the ruler of this place.",
+"mayor_talk_lord_infos_1",[
+]],
+
+[anyone,"mayor_talk_lord_infos_1",[
+  (neg|party_slot_ge, "$current_town", slot_center_player_relation, 4),
+  (try_begin),
+      (store_faction_of_party, ":center_faction", "$current_town"),
+      (store_relation, ":relation_to_center_faction", ":center_faction", "fac_player_supporters_faction"),
+      (lt, ":relation_to_center_faction", 0),
+      (str_store_string, s1, "str_mayor_refuse_info_low_rel_at_war"),
+  (else_try),
+      (party_slot_ge, "$current_town", slot_center_player_relation, -5),
+      (str_store_string, s1, "str_mayor_refuse_info_low_rel_generic"),
+  (else_try),
+      (party_slot_ge, "$current_town", slot_center_player_relation, -15),
+      (str_store_string, s1, "str_mayor_refuse_info_low_rel_dishonorable"),
+  (else_try),
+      (str_store_string, s1, "str_mayor_refuse_info_low_rel_outlaw"),
+  (try_end),
+],
+"{s1}", # This now displays the string selected by the logic block above.
+"mayor_pretalk",[
+]],
+
+[anyone,"mayor_talk_lord_infos_1",[
+  (party_get_slot, ":lord", "$current_town", slot_town_lord),
+  (call_script, "script_dplmc_troop_political_notes_to_s47", ":lord"),
+  (call_script, "script_add_rumor_string_to_troop_notes", ":lord", -1, s47),
+],"{s47}",
+"mayor_talk_lord_infos_2",[
+]],
+
+#Info 2: If a lord, show location
+[anyone,"mayor_talk_lord_infos_2",[
+  (party_get_slot, ":lord", "$current_town", slot_town_lord),
+  (call_script, "script_update_troop_location_notes", ":lord", 1),
+  (call_script, "script_get_information_about_troops_position", ":lord", 0),
+],"{s1}",
+"mayor_pretalk",[]],
 
 [trp_town_6_mayor|plyr, "mayor_talk",[
   (quest_slot_eq, "qst_town_trade_2", slot_quest_current_state, 10),],
@@ -76892,7 +76940,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   #SB : temp item count
   (item_get_max_ammo, ":max_amount", ":quest_target_item"),
   (store_div, "$temp", reg13, ":max_amount"),
-  (str_store_string, s2, "@{s9} of {s3} asked you to deliver {reg5} units of {s6} to the tavern in {s4} in 7 days."),
+  (str_store_string, s2, "@{s9} of {s3} asked you to deliver {reg13} units of {s6} to the tavern in {s4} in 7 days."),
   #s2 should not be changed until the decision is made
 ]],
 
