@@ -9005,6 +9005,7 @@ scripts = scripts_hardcoded + [
                 (faction_get_slot, ":culture", ":giver_center_faction_no", slot_faction_culture),
                 (call_script, "script_cf_get_random_town_of_culture", ":culture"),
                 (assign, ":quest_target_center", reg0),
+                (neq, ":giver_center_no", ":quest_target_center"),
                 (is_between, ":quest_target_center", centers_begin, centers_end),
 
                 (store_random_in_range, ":random_no", 0, 2),
@@ -51972,6 +51973,7 @@ scripts = scripts_hardcoded + [
     (party_set_slot, ":spawned_party", dplmc_slot_party_mission_parameter_1, ":original_amount"),
 ]),
 
+# script_dplmc_troop_political_notes_to_s47
 ("dplmc_troop_political_notes_to_s47",[
     (store_script_param, ":troop_no", 1),
     ##diplomacy start+
@@ -59546,8 +59548,8 @@ scripts = scripts_hardcoded + [
         (assign, "$talk_context", tc_tavern_talk),
         (party_get_slot, ":conversation_scene", "$current_town", slot_town_tavern),
     (else_try),
-        (call_script, "script_get_meeting_scene"),
-        (assign, ":conversation_scene", reg0),
+        # (call_script, "script_get_meeting_scene"),
+        (party_get_slot, ":conversation_scene", "$current_town", slot_town_tavern),
     (try_end),
 
     (modify_visitors_at_site, ":conversation_scene"),
