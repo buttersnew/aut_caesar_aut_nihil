@@ -34744,6 +34744,20 @@ presentations = presentations_wse2 + [
         (neq, ":item", "itm_torch"),
         (neq, ":item", "itm_torch2"),
         (neq, ":item", "itm_ballista_mounted"),
+        (neg|is_between, ":item", "itm_arena_armor_red", "itm_temple_gold"),#tournament items
+
+        # next item as melee
+        (neq, ":item", "itm_roman_gladius_melee"),
+        (neq, ":item", "itm_tutorial_sword_2"),
+        (neq, ":item", "itm_practice_javelin_melee"),
+        (neq, ":item", "itm_old_gladius_2_melee"),
+        (neq, ":item", "itm_roman_gladius_2_melee"),
+        (neq, ":item", "itm_roman_gladius_rich_2_melee"),
+        (neq, ":item", "itm_roman_gladius_3_melee"),
+        (neq, ":item", "itm_roman_gladius_rich_3_melee"),
+        (neq, ":item", "itm_ancient_spatha_melee"),
+        (neq, ":item", "itm_caesars_sword_melee"),
+
         (assign, ":c1", 1),
         (try_begin),
             (neg|quest_slot_eq, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),

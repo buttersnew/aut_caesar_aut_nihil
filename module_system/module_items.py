@@ -493,13 +493,13 @@ tunic_light_armor_price , tunic_light_armor_armor, imodbits_armor,[
     # (ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),
 ],[fac_culture_roman,fac_culture_greek] ],
 
-["tourney_helm_red", "Gladiator Helm", [("gladiator_helm",0)], itp_type_head_armor|itp_merchandise,0,
+["tourney_helm_red", "Gladiator Helm", [("gladiator_helm",0)], itp_type_head_armor|itp_unique,0,
 heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_roman,fac_culture_greek] ],
-["tourney_helm_blue", "Gladiator Helm", [("gladiator_helm3",0)], itp_type_head_armor|itp_merchandise,0,
+["tourney_helm_blue", "Gladiator Helm", [("gladiator_helm3",0)], itp_type_head_armor|itp_unique,0,
 heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_roman,fac_culture_greek] ],
-["tourney_helm_green", "Gladiator Helm", [("gladiator_helm4",0)], itp_type_head_armor|itp_merchandise,0,
+["tourney_helm_green", "Gladiator Helm", [("gladiator_helm4",0)], itp_type_head_armor|itp_unique,0,
 heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_roman,fac_culture_greek] ],
-["tourney_helm_yellow", "Gladiator Helm", [("gladiator_helm9",0)], itp_type_head_armor|itp_merchandise,0,
+["tourney_helm_yellow", "Gladiator Helm", [("gladiator_helm9",0)], itp_type_head_armor|itp_unique,0,
 heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_roman,fac_culture_greek] ],
 
 ##gold
@@ -6142,7 +6142,7 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
 ["greek_fire", "Vulcani Ignis", [("oil_greek_fire",0)],
 itp_type_thrown|itp_can_penetrate_shield|itp_can_knock_down|itp_bonus_against_shield|itp_crush_through|itp_primary|itp_remove_item_on_use,
 itcf_throw_stone,
-7000 , weight(5.0)|difficulty(3)|spd_rtng(70)|shoot_speed(14)|thrust_damage(65 ,  blunt)|max_ammo(1)|weapon_length(0),imodbits_missile,[
+7000, weight(5.0)|difficulty(3)|spd_rtng(70)|shoot_speed(14)|thrust_damage(65 ,  blunt)|max_ammo(1)|weapon_length(0),imodbits_missile,[
     (ti_on_missile_hit, [
         (store_trigger_param_1, ":shooter"),
         (copy_position, pos63, pos1),
