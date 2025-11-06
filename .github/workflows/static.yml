@@ -74,7 +74,7 @@ jobs:
               sed "s|__MOD_URL__|$MOD_URL|g" | \
               sed "s|__MANUAL_URL__|$MANUAL_URL|g" >> all_blocks.html
           else
-            cp website/_blocks/prerelease_unavailable.html >> all_blocks.html
+            cat website/_blocks/prerelease_unavailable.html >> all_blocks.html
           fi
 
           # --- ASSEMBLE THE FINAL index.html ---
