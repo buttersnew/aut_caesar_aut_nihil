@@ -12205,7 +12205,7 @@ scripts = scripts_hardcoded + [
             (troop_get_slot, ":commander", "trp_province_array", ":slot_legion"),
             (ge, ":commander", 0),
             # (str_store_troop_name, s22, ":commander"),
-            # (display_message, "@{s22}"),
+            # (display_message, "str_blank_s22"),
             (store_faction_of_troop, ":legion_faction", ":commander"),
             # (str_store_faction_name, s22, ":faction_no"),
             # (str_store_faction_name, s23, ":legion_faction"),
@@ -12745,7 +12745,7 @@ scripts = scripts_hardcoded + [
             (ge, ":commander", 0),
 
             # (str_store_troop_name, s22, ":commander"),
-            # (display_message, "@{s22}"),
+            # (display_message, "str_blank_s22"),
             (store_faction_of_troop, ":legion_faction", ":commander"),
             (eq, ":lord_troop_faction", ":legion_faction"),
             (call_script, "script_legion_hq_set_banner", ":center_no", ":legion"),
@@ -13150,7 +13150,7 @@ scripts = scripts_hardcoded + [
             (ge, ":commander", 0),
 
             # # (str_store_troop_name, s22, ":commander"),
-            # # (display_message, "@{s22}"),
+            # # (display_message, "str_blank_s22"),
             (store_faction_of_troop, ":legion_faction", ":commander"),
             (eq, ":lord_troop_faction", ":legion_faction"),
             (call_script, "script_legion_hq_set_banner", ":center_no", ":legion"),
@@ -20775,12 +20775,14 @@ scripts = scripts_hardcoded + [
         (try_begin),
             # (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_state, 17),
             (troop_slot_ge, "trp_sporus", slot_troop_betrothed, 0),
+            (neq, "trp_sporus", "$auto_speak_troop"),
             (set_visitor, 60, "trp_sporus"),
         (try_end),
 
         (try_begin),
             (this_or_next|eq, "$praefectus_urbani", "trp_tigellinus"),
             (is_between, "$praefectus_urbani", active_npcs_begin,active_npcs_end),
+            (neq, "$praefectus_urbani", "$auto_speak_troop"),
             (set_visitor, 40, "$praefectus_urbani"),
         (try_end),
 
@@ -20857,8 +20859,25 @@ scripts = scripts_hardcoded + [
 
     (try_begin),# selected troop should alwas spawn
         (is_between, "$auto_speak_troop", active_npcs_begin, kingdom_ladies_end),
-        (set_visitor, ":cur_pos", "$auto_speak_troop"),
-        (val_add,":cur_pos", 1),
+        (try_begin),
+            (eq, ":center_no", "p_town_6"),
+            (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
+            (troop_slot_eq, "trp_player", slot_troop_spouse, "$auto_speak_troop"),
+            # (eq, "$g_player_minister", "$auto_speak_troop"),
+            (set_visitor, 10, "$auto_speak_troop"),
+        (else_try),
+            (eq, ":center_no", "p_town_6"),
+            (party_slot_eq, ":center_no", slot_town_lord, "$auto_speak_troop"),
+            (set_visitor, 11, "$auto_speak_troop"),
+        (else_try),
+            (eq, ":center_no", "p_town_6"),
+            (troop_get_slot, ":speaker_spouse", "$auto_speak_troop", slot_troop_spouse),
+            (party_slot_eq, ":center_no", slot_town_lord, ":speaker_spouse"),
+            (set_visitor, 10, "$auto_speak_troop"),
+        (else_try),
+            (set_visitor, ":cur_pos", "$auto_speak_troop"),
+            (val_add,":cur_pos", 1),
+        (try_end),
     (try_end),
 
     (assign, ":spanned_minister", -1),
@@ -20867,6 +20886,7 @@ scripts = scripts_hardcoded + [
         (troop_get_slot, ":player_spouse", "trp_player", slot_troop_spouse),
         (is_between, ":player_spouse", kingdom_ladies_begin, kingdom_ladies_end),
         (troop_slot_eq, ":player_spouse", slot_troop_cur_center, ":center_no"),
+        (neq, ":player_spouse", "$auto_speak_troop"),
         (try_begin),#special spawn for empress  in Rome
             (ge, "$g_is_emperor", 1),
             (eq, ":center_no", "p_town_6"),
@@ -20902,6 +20922,7 @@ scripts = scripts_hardcoded + [
         (eq, "$g_player_court", ":center_no"),
         (this_or_next|is_between, "$g_player_minister", active_npcs_begin,kingdom_ladies_end),
         (eq, "$g_player_minister", "trp_temporary_minister"),
+        (neq, "$g_player_minister", "$auto_speak_troop"),
         (assign, ":spanned_minister", "$g_player_minister"),
         (set_visitor, ":cur_pos", "$g_player_minister"),
         (val_add,":cur_pos", 1),
@@ -31551,7 +31572,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc7", slot_troop_original_faction, 0), #swadia
     (troop_set_slot, "trp_npc7", slot_lord_reputation_type, lrep_custodian), #
     (troop_set_slot, "trp_npc7", slot_troop_age, 18),
-    (troop_set_slot, "trp_npc7", slot_troop_culture, "fac_culture_roman"),
+    (troop_set_slot, "trp_npc7", slot_troop_culture, "fac_culture_egyptian"),
 
     (troop_set_slot, "trp_npc8", slot_troop_morality_type, tmt_aristocratic), #matheld
     (troop_set_slot, "trp_npc8", slot_troop_morality_value, 3), #beheshtur
@@ -32096,7 +32117,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc40", slot_troop_kingsupport_opponent, "trp_npc34"), #
     (troop_set_slot, "trp_npc40", slot_troop_town_with_contacts, "p_town_48"), #Thebae
     (troop_set_slot, "trp_npc40", slot_lord_reputation_type, lrep_quarrelsome), #
-    (troop_set_slot, "trp_npc40", slot_troop_culture, "fac_culture_roman"),
+    (troop_set_slot, "trp_npc40", slot_troop_culture, "fac_culture_egyptian"),
     (troop_set_slot, "trp_npc40", slot_troop_age, 27),
 
     (troop_set_slot, "trp_turakina", slot_troop_morality_type, tmt_casualties), #
@@ -37429,61 +37450,56 @@ scripts = scripts_hardcoded + [
       (call_script, "script_music_set_situation_with_culture", ":situation"),
      ]),
 
-  # script_play_victorious_sound
-  # Input: none
-  # Output: none
-  ("play_victorious_sound",
-   [
-     (call_script, "script_music_set_situation_with_culture", mtf_sit_victorious),
-#      (play_cue_track, "track_victorious_neutral_1"),
-#      (play_track, "track_victorious_neutral_1", 1),
-     ]),
-  # script_set_items_for_tournament
-  # Input: arg1 = horse_chance, arg2 = lance_chance (with horse only), arg3 = sword_chance, arg4 = axe_chance, arg5 = bow_chance (without horse only), arg6 = javelin_chance (with horse only), arg7 = mounted_bow_chance (with horse only), arg8 = crossbow_sword_chance, arg9 = armor_item_begin, arg10 = helm_item_begin
-  # Output: none (sets mt_arena_melee_fight items)
-  ("set_items_for_tournament",
-    [
-  (try_for_range, ":i_ep", 0, 32),
-    (mission_tpl_entry_clear_override_items, "mt_arena_melee_fight", ":i_ep"),
-    (store_div, ":cur_team", ":i_ep", 8),
-    (store_add, ":cur_armor_item", "itm_arena_armor_red", ":cur_team"),
-    (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", ":cur_armor_item"),
-    (store_add, ":cur_helm_item", "itm_tourney_helm_red", ":cur_team"),
-    (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", ":cur_helm_item"),
+# script_play_victorious_sound
+# Input: none
+# Output: none
+("play_victorious_sound",[
+    (call_script, "script_music_set_situation_with_culture", mtf_sit_victorious),
+]),
 
-    (try_begin),
-      (eq, ":cur_team", 0),
-      (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_arena_sword"),
-      (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_arena_shield_red"),
-    (else_try),
-      (eq, ":cur_team", 1),
-      (store_random_in_range, ":r", 0, 2),
-      (try_begin),
-        (eq, ":r", 0),
-        (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_arena_sword_two_handed"),
-      (else_try),
-        (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_practice_arrows_100_amount"),
-        (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_practice_bow"),
-        (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_dagger"),
-      (try_end),
-    (else_try),
-      (eq, ":cur_team", 2),
-      (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_practice_axe"),
-      (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_arena_shield_green"),
-    (else_try),
-      (eq, ":cur_team", 3),
-      (store_random_in_range, ":r", 0, 2),
-      (try_begin),
-        (eq, ":r", 0),
-        (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_dreizack1"),
-      (else_try),
-        (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_dreizack2"),
-      (try_end),
-      (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_dagger"),
+# script_set_items_for_tournament
+# Input: arg1 = horse_chance, arg2 = lance_chance (with horse only), arg3 = sword_chance, arg4 = axe_chance, arg5 = bow_chance (without horse only), arg6 = javelin_chance (with horse only), arg7 = mounted_bow_chance (with horse only), arg8 = crossbow_sword_chance, arg9 = armor_item_begin, arg10 = helm_item_begin
+# Output: none (sets mt_arena_melee_fight items)
+("set_items_for_tournament",[
+    (try_for_range, ":i_ep", 0, 32),
+        (mission_tpl_entry_clear_override_items, "mt_arena_melee_fight", ":i_ep"),
+        (store_div, ":cur_team", ":i_ep", 8),
+        (store_add, ":cur_armor_item", "itm_arena_armor_red", ":cur_team"),
+        (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", ":cur_armor_item"),
+        (store_add, ":cur_helm_item", "itm_tourney_helm_red", ":cur_team"),
+        (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", ":cur_helm_item"),
+        (try_begin),
+            (eq, ":cur_team", 0),
+            (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_arena_sword"),
+            (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_arena_shield_red"),
+        (else_try),
+            (eq, ":cur_team", 1),
+            (store_random_in_range, ":r", 0, 2),
+            (try_begin),
+                (eq, ":r", 0),
+                (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_arena_sword_two_handed"),
+            (else_try),
+                (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_practice_arrows_100_amount"),
+                (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_practice_bow"),
+                (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_dagger"),
+            (try_end),
+        (else_try),
+            (eq, ":cur_team", 2),
+            (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_practice_axe"),
+            (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_arena_shield_green"),
+        (else_try),
+            (eq, ":cur_team", 3),
+            (store_random_in_range, ":r", 0, 2),
+            (try_begin),
+                (eq, ":r", 0),
+                (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_dreizack1"),
+            (else_try),
+                (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_dreizack2"),
+            (try_end),
+            (mission_tpl_entry_add_override_item, "mt_arena_melee_fight", ":i_ep", "itm_dagger"),
+        (try_end),
     (try_end),
-
-  (try_end),
-     ]),
+]),
 
 # script_custom_battle_end
 # Input: none
@@ -57927,8 +57943,12 @@ scripts = scripts_hardcoded + [
 
         # Get Reputation type - slot_lord_reputation_type
         (troop_get_slot, ":reputation", ":troop_no", slot_lord_reputation_type),
-        (assign, reg42, "str_personality_archetypes"),
-        (val_add, reg42, ":reputation"),
+        (try_begin),
+            (gt, "$g_player_chancellor", 0),
+            (store_add, reg42, ":reputation", "str_personality_archetypes"),
+        (else_try),
+            (assign, reg42, "str_censor_needed_to_show_personality"),
+        (try_end),
         (str_store_string, s42, reg42),
 
         (assign, reg42, ":reputation"),
@@ -73396,7 +73416,7 @@ scripts = scripts_hardcoded + [
     (try_end),
 
     # (str_store_faction_name, s22, ":roman_faction"),
-    # (display_message, "@{s22}"),
+    # (display_message, "str_blank_s22"),
     (call_script, "script_diplomacy_start_war_between_kingdoms", ":roman_faction", "fac_kingdom_19", 0),
 
     (troop_set_slot, "trp_global_variables", g_batava_event, 1),
@@ -78957,8 +78977,7 @@ scripts = scripts_hardcoded + [
     (try_end),
 ]),
 ##this code changes the skin of armors according to the skin of the troop
-("init_roman_slinger",
-[
+("init_roman_slinger",[
     (store_trigger_param_1, ":agent"),
     (store_trigger_param_2, ":troop"),
 

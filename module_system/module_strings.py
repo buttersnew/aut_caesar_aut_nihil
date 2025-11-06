@@ -10116,6 +10116,9 @@ strings = [
 ("mayor_refuse_info_low_rel_outlaw", "You have the stink of an outlaw about you. I will not discuss our city's lord with a common brigand. Be thankful I do not call the guards right now."),
 ("mayor_refuse_info_low_rel_at_war", "You are an enemy of our town! Do you take me for a fool or a traitor? I would sooner cut out my own tongue than give you information about our lord."),
 ("mayor_refuse_info_low_rel_generic", "Why should I share such information with a stranger? We are not friends. I have nothing more to say to you."),
+
+("blank_s22", "{!} {s22}"),
+("censor_needed_to_show_personality", "Unkown (Censor req.)"),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

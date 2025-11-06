@@ -476,14 +476,22 @@ get_shield_price(shield_armor_t2,50,90), weight(get_shield_weight(shield_armor_t
 ["arena_shield_yellow", "White Scutum", [("s_etruscan_scutum_old_white",0)], itp_type_shield|itp_wooden_parry|itp_merchandise, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2,50,90), weight(get_shield_weight(shield_armor_t2,50,90))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(100)|shield_width(50)|shield_height(90),imodbits_shield,[],[fac_culture_roman,fac_culture_greek] ],
 
-["arena_armor_red", "Loincloth with Manica", [("gladiator6",0)], itp_type_body_armor  |itp_force_show_body|itp_attach_armature|itp_merchandise ,0,
-tunic_light_armor_price, tunic_light_armor_armor, imodbits_armor,[],[fac_culture_roman,fac_culture_greek] ],
-["arena_armor_blue", "Loincloth with Manica", [("gladiator",0)], itp_type_body_armor  |itp_force_show_body|itp_attach_armature|itp_merchandise ,0,
-tunic_light_armor_price , tunic_light_armor_armor, imodbits_armor,[],[fac_culture_roman,fac_culture_greek] ],
-["arena_armor_green", "Loincloth with Manica", [("gladiator1",0)], itp_type_body_armor  |itp_force_show_body|itp_attach_armature|itp_merchandise ,0,
-tunic_light_armor_price , tunic_light_armor_armor, imodbits_armor,[],[fac_culture_roman,fac_culture_greek] ],
-["arena_armor_yellow", "Loincloth with Manica", [("gladiator7",0)], itp_type_body_armor  |itp_force_show_body|itp_attach_armature|itp_merchandise ,0,
-tunic_light_armor_price , tunic_light_armor_armor, imodbits_armor,[],[fac_culture_roman,fac_culture_greek] ],
+["arena_armor_red", "Loincloth with Manica", [("gladiator6",0)], itp_type_body_armor|itp_force_show_body|itp_attach_armature|itp_unique,0,
+tunic_light_armor_price, tunic_light_armor_armor, imodbits_armor,[
+    # (ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),
+],[fac_culture_roman,fac_culture_greek] ],
+["arena_armor_blue", "Loincloth with Manica", [("gladiator",0)], itp_type_body_armor|itp_force_show_body|itp_attach_armature|itp_unique ,0,
+tunic_light_armor_price , tunic_light_armor_armor, imodbits_armor,[
+    # (ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),
+],[fac_culture_roman,fac_culture_greek] ],
+["arena_armor_green", "Loincloth with Manica", [("gladiator1",0)], itp_type_body_armor|itp_force_show_body|itp_attach_armature|itp_unique,0,
+tunic_light_armor_price , tunic_light_armor_armor, imodbits_armor,[
+    # (ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),
+],[fac_culture_roman,fac_culture_greek] ],
+["arena_armor_yellow", "Loincloth with Manica", [("gladiator7",0)], itp_type_body_armor|itp_force_show_body|itp_attach_armature|itp_unique,0,
+tunic_light_armor_price , tunic_light_armor_armor, imodbits_armor,[
+    # (ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),
+],[fac_culture_roman,fac_culture_greek] ],
 
 ["tourney_helm_red", "Gladiator Helm", [("gladiator_helm",0)], itp_type_head_armor|itp_merchandise,0,
 heavy_head_price, heavy_head, imodbits_plate,[],[fac_culture_roman,fac_culture_greek] ],

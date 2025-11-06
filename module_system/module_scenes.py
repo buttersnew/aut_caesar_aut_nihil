@@ -411,7 +411,7 @@ scenes = [
   ("town_34_tavern", sf_indoors, "viking_interior_tavern_a", "bo_viking_interior_tavern_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("town_34_walls", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001300010c800054d5c00004af000005d3f00002ca0",[], [], "outer_terrain_plain"),
   ("town_20_arena", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0xa0001d9300031ccb0000156f000048ba0000361c",[], [], "outer_terrain_plain"),
-  ("town_20_castle", sf_indoors|sf_force_skybox, "viking_interior_keep_a", "bo_viking_interior_keep_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
+  ("town_20_castle", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0xa0001d9300031ccb0000156f000048ba0000361c",["exit"], []),
   ("town_20_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001300010c800054d5c00004af000005d3f00002ca0",[], [], "outer_terrain_desert"),
   ("town_20_prison", sf_indoors, "interior_prison_cell_a", "bo_interior_prison_cell_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("town_20_store", sf_indoors, "viking_interior_merchant_a", "bo_viking_interior_merchant_a", (-100, -100), (100, 100), -100, "0",["exit"], []),

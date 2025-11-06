@@ -2812,9 +2812,9 @@ scripts_hardcoded = [
     (party_set_slot,"p_castle_38", slot_town_castle, "scn_castle_30_interior"),
     (party_set_slot,"p_castle_38", slot_town_prison, "scn_castle_30_prison"),
 
-    (party_set_slot,"p_castle_26", slot_castle_exterior, "scn_castle_17_exterior"),
-    (party_set_slot,"p_castle_26", slot_town_castle, "scn_castle_17_interior"),
-    (party_set_slot,"p_castle_26", slot_town_prison, "scn_castle_17_prison"),
+    (party_set_slot,"p_castle_77", slot_castle_exterior, "scn_castle_17_exterior"),
+    (party_set_slot,"p_castle_77", slot_town_castle, "scn_castle_17_interior"),
+    (party_set_slot,"p_castle_77", slot_town_prison, "scn_castle_17_prison"),
 
     (party_set_slot,"p_castle_68", slot_castle_exterior,"scn_castle_caucasus_exterior"),
     (party_set_slot,"p_castle_68", slot_town_castle,    "scn_castle_caucasus_interior"),

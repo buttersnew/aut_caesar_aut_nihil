@@ -1953,7 +1953,7 @@ simple_triggers = [
             (troop_remove_item, "trp_player", ":item_id"),
             (str_store_item_name, s33, ":item_id"),
             (str_store_string, s22, "@It seems someone went through your inventory and stole some of your {s33}."),
-            (display_message, "@{s22}", color_bad_news),
+            (display_message, "str_blank_s22", color_bad_news),
         (try_end),
     (try_end),
 ]),

@@ -28944,6 +28944,10 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ],"Your orders, {s0}?",
 "dplmc_chancellor_talk",[]],
 
+[trp_dplmc_chancellor,"start",[
+],"I'll be leaving soon.",
+"close_window",[]],
+
 [anyone,"dplmc_chancellor_pretalk",
 [
 #SB : subordinate string replacing Sire
@@ -29340,9 +29344,9 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ],
 "About no one.", "dplmc_chancellor_pretalk",[]],
 
-[anyone,"dplmc_chancellor_info_person",
-[
-(call_script, "script_dplmc_troop_political_notes_to_s47", "$lord_selected"),
+[anyone,"dplmc_chancellor_info_person",[
+  (call_script, "script_dplmc_troop_political_notes_to_s47", "$lord_selected"),
+  (call_script, "script_add_rumor_string_to_troop_notes", "$lord_selected", -1, s47),
 ],
 "{s47}", "dplmc_chancellor_pretalk",[]],
 
@@ -30260,6 +30264,10 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 (eq, "$g_player_constable","$g_talk_troop"),
 ],
 "Always at your service!", "dplmc_constable_talk",[]],
+
+[trp_dplmc_constable,"start",[
+],"I'll be leaving soon.",
+"close_window",[]],
 
 [anyone,"dplmc_constable_pretalk",
 ##diplomacy start+ Replace "Sire" with {s0}
@@ -32182,6 +32190,10 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "dplmc_chamberlain_talk",[
   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
 ]],
+
+[trp_dplmc_chamberlain,"start",[
+],"I'll be leaving soon.",
+"close_window",[]],
 
 [anyone,"dplmc_chamberlain_pretalk",
 [],
@@ -98269,6 +98281,8 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
 ], "Your orders, {s0}?", "hall_guard_talk",[]],
 					#diplomacy end+
+
+
 [anyone,"start",[
   (this_or_next|eq, "$talk_context", tc_court_talk),
   (eq, "$talk_context", tc_pret_event_14),
