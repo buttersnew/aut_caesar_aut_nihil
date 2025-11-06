@@ -394,7 +394,7 @@ parties = [
 ("village_196", "Biolindum", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-199.79, 59.38), [], 40),
 ("village_197", "Tolosa", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-205.92, 42.29), [], 40),
 ("village_198", "Hierapolis", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (101.3, -1.49), [], 40),
-("village_199", "Cyrrhus", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (90.68, 6.68), [], 40),
+("village_199", "Komana", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (90.68, 6.68), [], 40),
 ("village_200", "Sura", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (116.59, -6.88), [], 140),
 ("village_201", "Issus", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (87.41, -5.55), [], 40),
 ("village_202", "Pharbaetus", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (57.16, -68.79), [], 40),

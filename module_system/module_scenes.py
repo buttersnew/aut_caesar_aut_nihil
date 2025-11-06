@@ -262,7 +262,6 @@ scenes = [
 
   ("village_bosporan", sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000004c13100001d3100006d4100001edd",  [],[],"outer_terrain_beach"),
 
-
   ("romanized_celt_village", sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300005000004c13100001d3100006d4100001edd",  [],[],"outer_terrain_plain_2"),
 
   ("village_spain_1", sf_generate,"none", "none", (0,0),(100,100),-100, "0x0000000020004500000719c400002bac000064fb00005e4a",  [],[],"outer_terrain_plain_2"),
@@ -277,6 +276,13 @@ scenes = [
   ("village_persia_3", sf_generate,"none", "none", (0,0),(100,100),-100,"0x000000002000050000059d670000359600004ac200003dcf",  [],[],"outer_terrain_plain"),
 
   ("roman_village_mountain", sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000300000000005194a000041ef00005ae800003c55",  [],[],"outer_terrain_mountain_2"),
+
+  ("village_emesa", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000002300012e30006c1b00000093900000b4500002b3b",[], [], "outer_terrain_steppe_desert"),
+
+  ("village_syria_1", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000000300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_steppe_desert"),
+  ("village_syria_2", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000000300000000005c577000041ef00005ae800003c55",[], [], "outer_terrain_steppe_desert"),
+  ("village_syria_3", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x000000003000050000090240000017ed0000346f0000649d",[], [], "outer_terrain_steppe_desert"),
+
 
   ("field_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000033a059a5a0009525600002005000060e300001175",[], [], "outer_terrain_plain"),
   ##useless
@@ -1215,7 +1221,6 @@ scenes = [
   ("ruins_of_carthage", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0x0000000040000532000741d00000705300003aad00000ac4", [], ["bonus_chest_21"], "outer_terrain_beach_desert_flat"),
 
   ("rhodogune_temple", sf_generate, "none", "none", (0, 0), (100, 100), -0.5, "0x000000023000050000087a1b000030dc00007b34000040d5",[], ["bonus_chest_23"], "outer_terrain_steppe_3"),
-
 
   # special scene with a stone circle
   ("multi_cromlech_moors",sf_generate,"none", "none", (0,0),(100,100),-100,"0x0000000130190a180005114900003f7500000162000000fa",

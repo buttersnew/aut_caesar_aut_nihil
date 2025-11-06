@@ -3019,8 +3019,17 @@ scripts_hardcoded = [
           (try_end),
     (try_end),
 
+    # emesa
+    (party_set_slot,"p_village_110", slot_castle_exterior, "scn_village_emesa"),
+
+    # some syrian and anatolian villages
+    (party_set_slot,"p_village_199", slot_castle_exterior, "scn_village_syria_1"),
+    (party_set_slot,"p_village_198", slot_castle_exterior, "scn_village_syria_2"),
+    (party_set_slot,"p_village_163", slot_castle_exterior, "scn_village_syria_3"),
+    (party_set_slot,"p_village_201", slot_castle_exterior, "scn_village_syria_2"),
+    (party_set_slot,"p_village_81", slot_castle_exterior, "scn_village_syria_3"),
+    (party_set_slot,"p_village_90", slot_castle_exterior, "scn_village_syria_1"),
     # romainzed celtic
-    (party_set_slot,"p_village_10", slot_castle_exterior, "scn_romanized_celt_village"),
 
     #otherwise set other special scenes
     (party_set_slot,"p_village_189", slot_castle_exterior, "scn_village_germanic_1"),
