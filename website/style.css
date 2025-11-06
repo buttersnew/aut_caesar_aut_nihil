@@ -5,7 +5,7 @@ body {
     background-position: center center;
     background-attachment: fixed; /* Keeps the image in place while scrolling */
     background-color: #141414; /* Fallback color */
-    
+
     color: #e5e5e5;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -171,15 +171,36 @@ p {
 /* Styles for Dynamic Download Cards         */
 /* ========================================= */
 
+/* Style for the Stable Release Card */
+.download-card:not(.prerelease) {
+    background-color: #2a2a2a; /* Slightly lighter background for stable */
+    border: 2px solid #00c853; /* A nice green color to indicate stability */
+    box-shadow: 0 4px 20px rgba(0, 200, 83, 0.2); /* Green glow */
+}
+
+.download-card:not(.prerelease):hover {
+    box-shadow: 0 8px 30px rgba(0, 200, 83, 0.4); /* Enhanced green glow on hover */
+}
+
+.download-card:not(.prerelease) .btn {
+    background-color: #00c853; /* Green button for stable */
+    font-size: 1.1rem; /* Slightly larger text */
+    padding: 16px 32px; /* Larger padding */
+}
+
+.download-card:not(.prerelease) .btn:hover {
+    background-color: #00e676; /* Brighter green on hover */
+    box-shadow: 0 0 20px rgba(0, 200, 83, 0.4); /* Glowing effect */
+}
+
 /* Style for the Pre-release Card */
 .download-card.prerelease {
-  /* Add a red border to signify it's a special "beta" version */
-  border: 2px solid #E50914; 
+    border: 2px solid #E50914;
 }
 
 /* Make the title of the pre-release card red to match the border */
 .download-card.prerelease h3 {
-  color: #E50914;
+    color: #E50914;
 }
 
 

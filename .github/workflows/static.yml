@@ -6,7 +6,7 @@ on:
     paths:
       - 'website/**'
   workflow_run:
-    workflows: ["Create Pre-Release"]
+    workflows: ["Create Pre-Release", "Create Release"]
     types:
       - completed
   workflow_dispatch:
