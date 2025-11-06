@@ -10119,6 +10119,62 @@ strings = [
 
 ("blank_s22", "{!} {s22}"),
 ("censor_needed_to_show_personality", "Unkown (Censor req.)"),
+
+("lady_gossip_lucia_sabina_adventurous", "It is a grim story. First her husband dies in the wilds of Germania, now her son in Britannia. To be left alone like that... I would rather die in battle than fade away in a lonely villa, surrounded by vultures fighting over my legacy. I hope she finds some peace."),
+("lady_gossip_lucia_sabina_ambitious", "It is the most significant political development in Rome right now. With her son dead, Lucia Sabina's estate is the single greatest prize in the city. Her choice of husband will shift the balance of power between several major families. Amorus Valentinus has the inside track; his father is playing the game well."),
+("lady_gossip_lucia_sabina_moralist", "It is a shameful spectacle! The poor woman is in mourning for her only son, and our city's youth behave like circling crows. They see only her fortune, not her grief. It is a sign of the moral decay of our times. I pray she finds a husband of good character, if she must find one at all."),
+("lady_gossip_lucia_sabina_hedonistic", "Oh, it's the most delicious drama! The city's wealthiest widow, wasting away while every handsome young fortune hunter in Rome tries to get into her bed before she dies. It's better than the theatre! My money is on Amorus Valentinus; he is utterly ruthless and quite charming. He'll get what he wants."),
+("lady_gossip_lucia_sabina_otherworldly", "What a heartbreaking tragedy. To lose both a husband and a son to the barbarous frontiers... her heart must be utterly broken. All this talk of her fortune and her suitors... they forget she is a woman in profound pain. I cannot imagine such sorrow."),
+("lady_gossip_lucia_sabina_default", "Have you not heard about Lucia Sabina? Her only son just died in Britannia, years after her husband was killed in Germania. She is the wealthiest woman in Rome now, with no heir! Every young nobleman is trying to marry her before her illness takes her. It is all anyone can talk about."),
+
+("lady_react_pursue_widow_adventurous", "So, you're entering the fray? Be careful. A cornered animal is the most dangerous. Her villa is on the Aventine Hill."),
+("lady_react_pursue_widow_ambitious", "-- She gives a sharp, appraising smile. -- ^^An ambitious move. Very ambitious. If you succeed, you will be one of the most powerful men in Rome overnight. She lives in a large villa on the Aventine Hill. Good luck, you will be competing with Amorus Valentinus."),
+("lady_react_pursue_widow_moralist", "You too? I had hoped you were a man of better character. To prey on a grieving woman... it is shameful. But if you must, her villa is on the Aventine Hill."),
+("lady_react_pursue_widow_hedonistic", "Of course you are! Why let Amorus have all the fun?^^-- She laughs. -- ^^I don't know whether to be appalled at your audacity or impressed by it. Go on, then. She's in a villa on the Aventine Hill. Do try to make it an interesting story."),
+("lady_react_pursue_widow_otherworldly", "Please... be gentle with her. Her heart is already broken. Do not add to her suffering for the sake of coin. Her villa is on the Aventine Hill."),
+("lady_react_pursue_widow_default", "So, you want to try your luck too? I can't say I blame you. Her villa is a large one on the Aventine Hill."),
+
+("lady_intro_adventurous", "You have the look of a traveler about you. Good. I was growing tired of the same dull faces. Who are you?"),
+("lady_intro_ambitious", "I do not recognize you. In this court, an unfamiliar face is either an opportunity or a threat. Which are you?"),
+("lady_intro_moralist", "Forgive my forwardness, but I do not believe we have been properly introduced. It would be improper to converse further without knowing your name."),
+("lady_intro_hedonistic", "Well now. A new face, and not an unpleasant one at that. Don't just stand there gawking, introduce yourself. Amuse me."),
+("lady_intro_otherworldly", "Pardon me... I was lost in thought. You have a rather... intense presence. I feel as though I should know you, but I do not. Who are you?"),
+("lady_intro_default", "I say, you don't look familiar. Have we met before?"),
+
+("lady_flirt_continue_adventurous", "I was hoping I would see you again. Perhaps later, you can tell me more of your travels..."),
+("lady_flirt_continue_ambitious", "It is good to see you. A continued acquaintance could prove... mutually beneficial. We will speak more later."),
+("lady_flirt_continue_moralist", "-- She gives a small, almost imperceptible nod of approval. -- ^^I am about to retire for a little while, but I would not be opposed to continuing our conversation at a more appropriate time."),
+("lady_flirt_continue_hedonistic", "Ah, the amusing one returns. I am occupied for the moment, but do find me later. I've decided I'm not bored of you yet."),
+("lady_flirt_continue_otherworldly", "I am so glad you are here. I was just thinking of the poem we discussed. We must speak again when I am not so occupied."),
+("lady_flirt_continue_default", "I am about to retire for a little while, but perhaps we may have a chance to speak more later..."),
+
+("lady_dislike_adventurous", "I am busy. Find someone else to bother."),
+("lady_dislike_ambitious", "You are of no use to me. Do not waste my time."),
+("lady_dislike_moralist", "{Dominus/Domina}, you are in danger of overstepping the bounds of propriety. I have nothing more to say to you."),
+("lady_dislike_hedonistic", "You again? I had hoped you'd have taken the hint. You are a bore. Go away."),
+("lady_dislike_otherworldly", "Please, forgive me, but I... I do not feel a connection between us. It would be best if you sought company elsewhere."),
+("lady_dislike_default", "Now, if you will excuse me..."),
+
+("lady_continue_adventurous", "So, what is the next great adventure? Or do you have business with me?"),
+("lady_continue_ambitious", "Very well. What can I do for you? Or, perhaps, what can you do for me?"),
+("lady_continue_moralist", "Now that we are properly introduced, how may I be of service?"),
+("lady_continue_hedonistic", "Alright, you have my attention... for now. What is it you want?"),
+("lady_continue_otherworldly", "It is a pleasure to make your acquaintance. Is there something on your mind?"),
+("lady_continue_default", "Can I help you with anything?"),
+
+("lady_meet_famous_adventurous", "Of course! I have heard the tales of your deeds. It is an honor to finally meet a fellow soul who understands that a life is meant to be lived, not just observed."),
+("lady_meet_famous_ambitious", "Your name is well known. You have become a significant player in the realm. It is a pleasure to make the acquaintance of a man of influence."),
+("lady_meet_famous_moralist", "I have heard your name, yes. It is my hope that your actions are as honorable as your reputation is great. It is a pleasure to meet you."),
+("lady_meet_famous_hedonistic", "Ah, the famous {playername}! The stories they tell of you are... quite entertaining. I am very curious to see if you are as amusing in person."),
+("lady_meet_famous_otherworldly", "Of course. Your name is already a thread in the grand tapestry of the bards' songs. It is as if I know you already."),
+("lady_meet_famous_default", "Of course. How splendid to finally make your acquaintance."),
+
+("lady_meet_unknown_adventurous", "{playername}? A new face. Every traveler has a story. What is yours?"),
+("lady_meet_unknown_ambitious", "{playername}? The name is not known to me. Should it be?"),
+("lady_meet_unknown_moralist", "It is a pleasure to make your acquaintance, {playername}. A good name is built through good deeds, not prior fame."),
+("lady_meet_unknown_hedonistic", "{playername}? I don't believe I've heard that name at any parties worth remembering. Are you... worth knowing?"),
+("lady_meet_unknown_otherworldly", "Your name is new to me, but there is a story in your eyes. It is a pleasure to meet you, {playername}."),
+("lady_meet_unknown_default", "{playername}? I do not believe I've heard of you before."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

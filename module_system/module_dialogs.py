@@ -43376,13 +43376,13 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 ],"We will fight you to the end!", "close_window",[]],
 
 [anyone|plyr,"party_encounter_lord_hostile_attacker_2",[
-##diplomacy start+ Support promoted ladies
-#(is_between, "$g_talk_troop", active_npcs_begin, active_npcs_end),
-(is_between, "$g_talk_troop", heroes_begin, kingdom_ladies_end),
-##diplomacy end+
-(neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-          ],
-"Stay your hand! There is something I must tell you in private.", "lord_recruit_1_relation",[]],
+  ##diplomacy start+ Support promoted ladies
+  #(is_between, "$g_talk_troop", active_npcs_begin, active_npcs_end),
+  (is_between, "$g_talk_troop", heroes_begin, kingdom_ladies_end),
+  ##diplomacy end+
+  (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+],"Stay your hand! There is something I must tell you in private.",
+"lord_recruit_1_relation",[]],
 
 [anyone|plyr,"party_encounter_lord_hostile_attacker_2",[
           ],
@@ -63938,19 +63938,18 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
 [anyone,"start",[
 	(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
-  	(troop_set_slot, "$g_talk_troop", slot_lady_no_messages, 0), #do this for all
-    (check_quest_active, "qst_visit_lady"),
-    (quest_slot_eq, "qst_visit_lady", slot_quest_giver_troop, "$g_talk_troop"),
-	], "Ah {playername} -- you must have received my message. How happy I am that you could come!", "lady_start",[
+  (troop_set_slot, "$g_talk_troop", slot_lady_no_messages, 0), #do this for all
+  (check_quest_active, "qst_visit_lady"),
+  (quest_slot_eq, "qst_visit_lady", slot_quest_giver_troop, "$g_talk_troop"),
+], "Ah {playername} -- you must have received my message. How happy I am that you could come!", "lady_start",[
 	(try_begin),
 		(eq, "$g_is_emperor", 1),
-		(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 4),
+		(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
 	(else_try),
 		(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
 	(try_end),
-    (call_script, "script_end_quest", "qst_visit_lady"),
-#	(assign, "$g_time_to_spare", 1),
-	]],
+  (call_script, "script_end_quest", "qst_visit_lady"),
+]],
 
 [anyone,"start",[
 	(troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
@@ -64052,11 +64051,31 @@ But the peope here are either drunk or busy with other things, you know. Tell me
    "You must be {playername}. My {s15} {s16} has spoken most highly of you. I am delighted to make your acquaintance.",
    "lady_meet_end",[]],
 
-[anyone ,"start",[(troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_lady),
-                     (eq, "$g_talk_troop_met", 0),
-                     (le,"$talk_context",tc_siege_commander),
-  ],
-   "I say, you don't look familiar...", "lady_premeet",[]],
+[anyone ,"start",[
+  (troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_lady),
+  (eq, "$g_talk_troop_met", 0),
+  (le,"$talk_context",tc_siege_commander),
+  (try_begin),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s13, "str_lady_intro_adventurous"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s13, "str_lady_intro_ambitious"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s13, "str_lady_intro_moralist"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s13, "str_lady_intro_hedonistic"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s13, "str_lady_intro_otherworldly"),
+  (else_try),
+      (str_store_string, s13, "str_lady_intro_default"),
+  (try_end),
+],
+"{s13}",
+"lady_premeet",[]],
 
    #default greet
 [anyone,"start",
@@ -64070,13 +64089,13 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ],
    "{playername} -- how good it is to see you. (Whispers:) I still remember your visits fondly.", "lady_start",[]],
 
-[anyone ,"start",[(troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_lady),
-                     (eq, "$g_talk_troop_met", 0),
-                     (gt, "$g_player_tournament_placement", 4),
-					 (ge, "$g_talk_troop_relation", 0),
-  ],
-   "Ah, {playername}. How spendid it was to see you distinguish yourself in the recent competition.",
-   "lady_meet_end",[]],
+[anyone ,"start",[
+  (troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_lady),
+  (eq, "$g_talk_troop_met", 0),
+  (gt, "$g_player_tournament_placement", 4),
+  (ge, "$g_talk_troop_relation", 0),
+],"Ah, {playername}. How spendid it was to see you distinguish yourself in the recent competition.",
+"lady_meet_end",[]],
 
 [anyone,"start",[
     (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
@@ -64119,33 +64138,32 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 "lady_betrothed",[
 ]],
 
-[anyone,"lady_start",
-[
-	  (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
-	  (troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
-	  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_met, 4),
-	  (neg|troop_slot_ge, "trp_player", slot_troop_spouse, active_npcs_begin),
-	  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_spouse, active_npcs_begin),
+[anyone,"lady_start",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_met, 2),
+  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_met, 4),
+  (neg|troop_slot_ge, "trp_player", slot_troop_spouse, active_npcs_begin),
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_spouse, active_npcs_begin),
 
-	  (gt, "$g_talk_troop_relation", 0),
-	  (assign, "$romantic_rival", -1),
+  (gt, "$g_talk_troop_relation", 0),
+  (assign, "$romantic_rival", -1),
 
-	  (try_for_range, ":rival_lord", lords_begin, lords_end),
-	    (this_or_next|troop_slot_eq, ":rival_lord", slot_troop_love_interest_1, "$g_talk_troop"),
-	    (this_or_next|troop_slot_eq, ":rival_lord", slot_troop_love_interest_2, "$g_talk_troop"),
-	    (troop_slot_eq, ":rival_lord", slot_troop_love_interest_2, "$g_talk_troop"),
-	    (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":rival_lord"),
-	    (le, reg0, -4),
+  (try_for_range, ":rival_lord", lords_begin, lords_end),
+    (this_or_next|troop_slot_eq, ":rival_lord", slot_troop_love_interest_1, "$g_talk_troop"),
+    (this_or_next|troop_slot_eq, ":rival_lord", slot_troop_love_interest_2, "$g_talk_troop"),
+    (troop_slot_eq, ":rival_lord", slot_troop_love_interest_2, "$g_talk_troop"),
+    (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":rival_lord"),
+    (le, reg0, -4),
 
-	    (this_or_next|troop_slot_eq, ":rival_lord", slot_lord_reputation_type, lrep_debauched),
-	    (this_or_next|troop_slot_eq, ":rival_lord", slot_lord_reputation_type, lrep_quarrelsome),
-	    (this_or_next|troop_slot_eq, ":rival_lord", slot_lord_reputation_type, lrep_roguish),
-	    (troop_slot_eq, ":rival_lord", slot_lord_reputation_type, lrep_selfrighteous),
+    (this_or_next|troop_slot_eq, ":rival_lord", slot_lord_reputation_type, lrep_debauched),
+    (this_or_next|troop_slot_eq, ":rival_lord", slot_lord_reputation_type, lrep_quarrelsome),
+    (this_or_next|troop_slot_eq, ":rival_lord", slot_lord_reputation_type, lrep_roguish),
+    (troop_slot_eq, ":rival_lord", slot_lord_reputation_type, lrep_selfrighteous),
 
-	    (assign, "$romantic_rival", ":rival_lord"),
-	  (try_end),
+    (assign, "$romantic_rival", ":rival_lord"),
+  (try_end),
 
-	  (gt, "$romantic_rival", 0),
+  (gt, "$romantic_rival", 0),
     ##diplomacy start+
 	#check pronouns to support the possibility of female rivals
 	(call_script, "script_dplmc_store_troop_is_female", "$romantic_rival"),
@@ -64537,18 +64555,80 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
 [anyone|plyr,"lady_generic_mission_succeeded",[], "Always an honour to serve, {s65}.", "lady_pretalk",[]],
 
-[anyone|plyr ,"lady_premeet",[],  "I am {playername}.", "lady_meet",[]],
-[anyone|plyr ,"lady_premeet",[],  "My name is {playername}. At your service.", "lady_meet",[]],
+[anyone|plyr ,"lady_premeet",[
+],  "I am {playername}.",
+"lady_meet",[]],
+
+[anyone|plyr ,"lady_premeet",[
+],  "My name is {playername}. At your service.",
+"lady_meet",[]],
 
 [anyone, "lady_meet",[
   (troop_slot_ge, "trp_player", slot_troop_renown, 200),
- ],  "Of course. How splendid to finally make your acquaintance.", "lady_meet_end",[]],
+  (try_begin),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s13, "str_lady_meet_famous_adventurous"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s13, "str_lady_meet_famous_ambitious"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s13, "str_lady_meet_famous_moralist"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s13, "str_lady_meet_famous_hedonistic"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s13, "str_lady_meet_famous_otherworldly"),
+  (else_try),
+      (str_store_string, s13, "str_lady_meet_famous_default"),
+  (try_end),
+],"{s13}",
+"lady_meet_end",[]],
 
-[anyone, "lady_meet",[],  "{playername}? I do not believe I've heard of you before.", "lady_meet_end",[]],
+[anyone, "lady_meet",[
+  (try_begin),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+      (str_store_string, s13, "str_lady_meet_unknown_adventurous"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+      (str_store_string, s13, "str_lady_meet_unknown_ambitious"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+      (str_store_string, s13, "str_lady_meet_unknown_moralist"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+      (str_store_string, s13, "str_lady_meet_unknown_hedonistic"),
+  (else_try),
+      (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+      (str_store_string, s13, "str_lady_meet_unknown_otherworldly"),
+  (else_try),
+      (str_store_string, s13, "str_lady_meet_unknown_default"),
+  (try_end),
+],"{s13}",
+"lady_meet_end",[]],
 
 [anyone, "lady_meet_end",[
 	(eq, "$lady_flirtation_location", "$g_encountered_party"),
- ],  "I am about to retire for a little while, but perhaps we may have a chance to speak more later...", "lady_talk",[]],
+  (try_begin),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+    (str_store_string, s13, "str_lady_flirt_continue_adventurous"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+    (str_store_string, s13, "str_lady_flirt_continue_ambitious"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+    (str_store_string, s13, "str_lady_flirt_continue_moralist"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s13, "str_lady_flirt_continue_hedonistic"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+    (str_store_string, s13, "str_lady_flirt_continue_otherworldly"),
+  (else_try),
+    (str_store_string, s13, "str_lady_flirt_continue_default"),
+  (try_end),
+],  "{s13}", "lady_talk",[]],
 
 [anyone, "lady_meet_end",[
   (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, -1),
@@ -64556,9 +64636,49 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (le, reg0, 0),
   (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", "trp_player"),
   (le, reg0, 0),
-],  "Now, if you will excuse me...", "lady_talk",[]],
 
-[anyone, "lady_meet_end",[],  "Can I help you with anything?", "lady_talk",[]],
+  (try_begin),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+    (str_store_string, s13, "str_lady_dislike_adventurous"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+    (str_store_string, s13, "str_lady_dislike_ambitious"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+    (str_store_string, s13, "str_lady_dislike_moralist"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s13, "str_lady_dislike_hedonistic"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+    (str_store_string, s13, "str_lady_dislike_otherworldly"),
+  (else_try),
+    (str_store_string, s13, "str_lady_dislike_default"),
+  (try_end),
+],  "{s13}",
+"lady_talk",[]],
+
+[anyone, "lady_meet_end",[
+  (try_begin),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+    (str_store_string, s13, "str_lady_continue_adventurous"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+    (str_store_string, s13, "str_lady_continue_ambitious"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+    (str_store_string, s13, "str_lady_continue_moralist"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s13, "str_lady_continue_hedonistic"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+    (str_store_string, s13, "str_lady_continue_otherworldly"),
+  (else_try),
+    (str_store_string, s13, "str_lady_continue_default"),
+  (try_end),
+],  "{s13}",
+"lady_talk",[]],
 
 [anyone|plyr, "lady_talk", [
     (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
@@ -65061,17 +65181,49 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (ge, "$g_talk_troop_relation", 0),
   (troop_slot_ge, "trp_player", slot_troop_renown, 200),
   (neq, "$g_is_emperor", 1),
-],"Haven't you not heard from Lucia Sabina's illness? All of Rome is talking about it! I must tell you: She is a old widow, her husband died years ago somewhere in Germania and now"
-+" her only son, died some days ago  in Britannia! It is said she is the wealthiest woman in Rome and now, she is without a heir for her fortune! So,"
-+" a lot of young Romans try their luck with her. But she refused all marriage proposals. Her doctor told me, she will probably die in the next month. And if she dies without a legitimate heir"
-+" all of her money will fall to the Roman state. It's so exciting. I am very curious who will manage to convince her to marry. It is said, Amorus Valentinus has the best chances.",
+
+  (try_begin),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+    (str_store_string, s13, "str_lady_gossip_lucia_sabina_adventurous"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+    (str_store_string, s13, "str_lady_gossip_lucia_sabina_ambitious"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+    (str_store_string, s13, "str_lady_gossip_lucia_sabina_moralist"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s13, "str_lady_gossip_lucia_sabina_hedonistic"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+    (str_store_string, s13, "str_lady_gossip_lucia_sabina_otherworldly"),
+  (else_try),
+    # Default for Conventional and any other personality
+    (str_store_string, s13, "str_lady_gossip_lucia_sabina_default"),
+  (try_end),
+
+],"Haven't you not heard about Lucia Sabina's illness? {s13}",
 "lady_rumors_widow",[
   (quest_set_slot, "qst_widow", slot_quest_expiration_days, 35),
   (setup_quest_text,"qst_widow"),
-  (str_store_string, s2, "@You heard about a widow living in Rome, called Lucia Sabina. If you convince her to marry you, you would inherit all her wealth. But you must hurry up, she may die soon. There are also other nobles, especially Amorus Valentinus, who have an eye on her."),
+  (str_store_party_name_link, s14, "p_town_6"),
+  (str_store_string, s2, "@You heard about a widow living in {s14}, called Lucia Sabina. If you convince her to marry you, you would inherit all her wealth. But you must hurry up, she may die soon. There are also other nobles, especially Amorus Valentinus, who have an eye on her."),
   (call_script, "script_start_quest", "qst_widow", "trp_fortuna"),
   (quest_set_slot, "qst_widow", slot_quest_target_faction, 1),#some slot which isnt used by quest
+
+  (add_quest_note_from_sreg, "qst_widow", 5, "@You need to find out where exactly in {s14} the widow lives. Ask the magister civium or the tavernkeepr.", 1),
+  (display_message, "@You need to find out where exactly in {s14} the widow lives. Ask the magister civium or the tavernkeeper."),
+  (quest_set_slot, "qst_widow", slot_quest_temp_slot, 1),
 ]],
+
+[anyone|plyr,"lady_talk",[
+  (check_quest_active, "qst_widow"),
+  (quest_slot_eq, "qst_widow", slot_quest_temp_slot, 1),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_roman"),
+  (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"),
+],
+"Do you know where Lucia Sabina lives?",
+"lady_rumors_widow_2",[]],
 
 [anyone|plyr,"lady_rumors_widow",[],
 "Do you know where she lives?",
@@ -65082,9 +65234,37 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 "lady_pretalk",[]],
 
 [anyone,"lady_rumors_widow_2",[
-],"So, you want to try your luck too? ^^-- She smiles. -- ^ I am not sure if I should despise your vileness or admire your sense for opportunity."
-  +" Nevertheless, she lifes in a large villa on the Aventine hill.",
-"lady_rumors_widow",[]],
+  (try_begin),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
+    (str_store_string, s13, "str_lady_react_pursue_widow_adventurous"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+    (str_store_string, s13, "str_lady_react_pursue_widow_ambitious"),
+    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+    (str_store_string, s13, "str_lady_react_pursue_widow_moralist"),
+    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_hedonistic),
+    (str_store_string, s13, "str_lady_react_pursue_widow_hedonistic"),
+    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
+    (play_sound, "snd_female_laugh"),
+  (else_try),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
+    (str_store_string, s13, "str_lady_react_pursue_widow_otherworldly"),
+    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
+  (else_try),
+    (str_store_string, s13, "str_lady_react_pursue_widow_default"),
+    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
+  (try_end),
+],
+"{s13}",
+"lady_pretalk",[
+  (str_store_party_name_link, s14, "p_town_6"),
+  (add_quest_note_from_sreg, "qst_widow", 5, "@The widow lives on the Aventine Hill. Hint: A new option has appeared in the 'Take an action' menu in {s14}", 1),
+  (quest_set_slot, "qst_widow", slot_quest_temp_slot, 2),
+]],
 
 [anyone,"lady_rumors",[
   ##just set up the string properly, so we have a fallback if everything fails
@@ -66397,49 +66577,46 @@ But the peope here are either drunk or busy with other things, you know. Tell me
    ]],
    ##diplomacy end+
 
-[anyone,"lady_relations",
-[
+[anyone,"lady_relations",[
     (str_store_string, s12, "str_i_am"),
     (assign, ":relation_found", 0),
     (assign, ":in_castle_of_relative", 0),
 
     (try_for_range, ":lord", active_npcs_begin, kingdom_ladies_end), #use this as the basis for "troop_describe_relation_with_troop"
-		(call_script, "script_troop_get_family_relation_to_troop", "$g_talk_troop", ":lord"), #The normal order is reversed, because the lady is describing herself
-		(this_or_next|gt, reg0, 5),
-    (party_slot_eq, "$g_encountered_party", slot_town_lord, ":lord"),
-		(gt, reg0, 0),
+      (call_script, "script_troop_get_family_relation_to_troop", "$g_talk_troop", ":lord"), #The normal order is reversed, because the lady is describing herself
+      (this_or_next|gt, reg0, 5),
+      (party_slot_eq, "$g_encountered_party", slot_town_lord, ":lord"),
+      (gt, reg0, 0),
 
-		(str_store_troop_name, s14, ":lord"),
-		(try_begin),
-			(eq, ":relation_found", 1),
-			(str_store_string, s12, "str_s12"),
-		(try_end),
-		(str_store_string, s12, "str_s12_s11_to_s14"),
-		(assign, ":relation_found", 1),
+      (str_store_troop_name, s14, ":lord"),
+      (try_begin),
+        (eq, ":relation_found", 1),
+        (str_store_string, s12, "str_s12"),
+      (try_end),
+      (str_store_string, s12, "str_s12_s11_to_s14"),
+      (assign, ":relation_found", 1),
 
-		(try_begin),
-			(party_slot_eq, "$g_encountered_party", slot_town_lord, ":lord"),
-			(assign, ":in_castle_of_relative", 1),
-		(try_end),
+      (try_begin),
+        (party_slot_eq, "$g_encountered_party", slot_town_lord, ":lord"),
+        (assign, ":in_castle_of_relative", 1),
+      (try_end),
     (try_end),
 
-	(try_begin),
-		(eq, ":in_castle_of_relative", 1),
-		(str_store_string, s12, "str_s12"),
-	(else_try),
-		(eq, ":in_castle_of_relative", 0),
-		(faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_state, sfai_feast),
-		(faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_object, "$g_encountered_party"),
-		(str_store_string, s12, "str_s12_i_am_here_for_the_feast"),
-	(else_try),
-		(str_store_string, s12, "str_s12"),
-	(try_end),
-
-  ],
-   "{s12}", "lady_player_ask",[
-   #diplomacy start+
-       (assign, "$g_talk_troop_met", 1),
-   ]],
+    (try_begin),
+      (eq, ":in_castle_of_relative", 1),
+      (str_store_string, s12, "str_s12"),
+    (else_try),
+      (eq, ":in_castle_of_relative", 0),
+      (faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_state, sfai_feast),
+      (faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_object, "$g_encountered_party"),
+      (str_store_string, s12, "str_s12_i_am_here_for_the_feast"),
+    (else_try),
+      (str_store_string, s12, "str_s12"),
+    (try_end),
+],"{s12}",
+"lady_player_ask",[
+  (assign, "$g_talk_troop_met", 1),
+]],
 
 [trp_kingdom_7_lady_26|plyr,"lady_player_ask",[],"I am a bit confused. You don't really look like your father...",
 "lady_player_ask_lady_26",[]],
@@ -70749,6 +70926,38 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ]],
 
 [anyone,"tavernkeeper_pretalk",[], "Anything else?", "tavernkeeper_talk",[]],
+
+# Add this as a player choice to the Roman tavern keeper's talk options.
+[anyone|plyr, "tavernkeeper_talk", [
+  (check_quest_active, "qst_widow"),
+  (quest_slot_eq, "qst_widow", slot_quest_temp_slot, 1),
+  # (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_roman"),
+  (eq, "$current_town", "p_town_6"),
+], "I need to find the villa of the widow Lucia Sabina. And I need discretion.",
+"tavern_keeper_demands_bribe_widow", []],
+
+[anyone, "tavern_keeper_demands_bribe_widow", [
+], "Discretion? In Rome? Hah! You're not the first to ask, and you won't be the last. Everyone wants a piece of that fortune. Information like that... it's a commodity. My commodity. It will cost you 25,000 denarii.",
+"tavern_keeper_bribe_choice_widow", []],
+
+[anyone|plyr, "tavern_keeper_bribe_choice_widow", [
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", 25000),
+], "That's an outrageous price. But fine. Here.",
+"tavern_keeper_accepts_bribe_widow", []],
+
+[anyone|plyr, "tavern_keeper_bribe_choice_widow", [],
+"I'm not paying that.",
+"close_window", []],
+
+[anyone, "tavern_keeper_accepts_bribe_widow", [],
+"--He expertly counts the coins before sweeping them into a hidden pouch.-- ^^A pleasure doing business. Her villa is the grand one on the Aventine Hill, overlooking the river. Now, was there anything else I can help you with? Another drink perhaps?",
+"close_window",[
+  (troop_remove_gold, "trp_player", 25000),
+  (str_store_party_name_link, s13, "p_town_6"),
+  (add_quest_note_from_sreg, "qst_widow", 5, "@The widow lives on the Aventine Hill. Hint: A new option has appeared in the 'Take an action' menu in {s13}", 1),
+  (quest_set_slot, "qst_widow", slot_quest_temp_slot, 2),
+]],
 
 
 [anyone|plyr, "tavernkeeper_talk", [
@@ -75207,6 +75416,38 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone,"mayor_begin",[], "What can I do for you?", "mayor_talk",[]],
 [anyone,"mayor_friendly_pretalk",[], "Now... What else may I do for you?", "mayor_talk",[]],
 [anyone,"mayor_pretalk",[], "Yes?", "mayor_talk",[]],
+
+[anyone|plyr, "mayor_talk", [
+  (check_quest_active, "qst_widow"),
+  (quest_slot_eq, "qst_widow", slot_quest_temp_slot, 1),
+  # (faction_slot_eq, "$g_encountered_party_faction", slot_faction_culture, "fac_culture_roman"),
+  (eq, "$current_town", "p_town_6"),
+], "Magister, I seek the location of the Lady Lucia Sabina's residence. It is a matter of some... delicacy.",
+"mayor_demands_bribe_widow", []],
+
+[anyone, "mayor_demands_bribe_widow", [
+], "Ah, the Lady Sabina. A tragic situation. Her estate is now a matter of significant state interest. To divulge such information... it would be improper. However, the city's treasury is always in need of contributions for public works. A generous donation of, say, 25,000 denarii from a concerned citizen such as yourself might... clarify my civic duties.",
+"mayor_bribe_choice_widow", []],
+
+[anyone|plyr, "mayor_bribe_choice_widow", [
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", 25000),
+], "I am always happy to contribute to the public good. Here is my donation.",
+"mayor_accepts_bribe_widow", []],
+
+[anyone|plyr, "mayor_bribe_choice_widow", [],
+"My generosity does not extend that far.",
+"mayor_pretalk", []],
+
+[anyone, "mayor_accepts_bribe_widow", [],
+"Your civic pride is commendable. The treasury thanks you. The Lady Sabina's villa is located on the southern slope of the Aventine Hill. I trust your business with her will be... discreet.",
+"mayor_pretalk", [
+  (troop_remove_gold, "trp_player", 25000),
+  (str_store_party_name_link, s13, "p_town_6"),
+  (add_quest_note_from_sreg, "qst_widow", 5, "@The widow lives on the Aventine Hill. Hint: A new option has appeared in the 'Take an action' menu in {s13}", 1),
+  (quest_set_slot, "qst_widow", slot_quest_temp_slot, 2),
+]],
+
 
 [anyone|plyr,"mayor_talk",[
   (party_get_slot, ":lord", "$current_town", slot_town_lord),
@@ -91903,7 +92144,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone, "amorus_talk_12",[],"I swear, I'm gone! You'll never see me again!",
 "close_window",[
   (display_message, "str_quest_updated"),
-  (add_quest_note_from_sreg, "qst_widow", 3, "@Amorus Valentinus doesn't seem to be a problem anymore.", 0),
+  (add_quest_note_from_sreg, "qst_widow", 3, "@Amorus Valentinus isn't a problem anymore.", 0),
   (jump_to_menu, "mnu_lucias_house_2")
 ]],
 

@@ -52248,6 +52248,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("bacchus",[
       (eq, "$current_town", "p_town_6"),
       (check_quest_active, "qst_widow"),
+      (quest_slot_eq, "qst_widow", slot_quest_temp_slot, 2),
     ],"Visit Lucia Sabina's house.",[
       (try_begin),
         (is_currently_night),
