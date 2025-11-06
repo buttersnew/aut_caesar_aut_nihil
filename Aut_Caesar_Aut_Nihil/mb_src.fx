@@ -4,10 +4,27 @@
 // LA_GRANDMASTER
 //
 // REFACTORED BY EXPERT AI ASSISTANT
-// - Fixed critical bugs causing potential graphical glitches (division by zero).
-// - Optimized for performance using half precision and faster math.
-// - Improved readability with named constants and additional comments.
-// - Preserved all original technique names and functionality.
+// The overarching goals were to fix critical visual bugs (white triangles appearing on screen, different rendering of bridge and ocean terrain on world map), improve performance on older hardware, enhance code readability, and implement specific visual tweaks you requested.
+// ---
+// ### 1. Critical Bug Fixes & Stability Improvements
+// These changes were focused on eliminating crashes and major graphical artifacts like the "white triangles."
+// *   **Fixed Division-by-Zero Errors:** The most critical bug was the potential for division by zero when calculating depth or reflection coordinates (`... / Out.Pos.w`). A safety check (`abs(Out.Pos.w) > 0.0001f`) was added to all these calculations in the shadow mapping and water shaders to prevent the creation of `NaN`/`INF` values that could cause severe glitches.
+// *   **Fixed Uninitialized Shader:** The `vs_main_shadowmap_light` vertex shader, which returned uninitialized data, was fixed to output a safe, off-screen coordinate, preventing it from ever causing artifacts.
+// *   **Made Water Shader Terrain-Independent:** The `map_water_new` shader was rendering "bridge" terrain differently from "ocean" terrain. We identified that the shader was incorrectly using the underlying terrain's vertex color (`In.Color.r`) to calculate the water's brightness and effects. This dependency was completely removed and replaced with a single `WATER_BRIGHTNESS_MULTIPLIER` constant, ensuring uniform water appearance everywhere.
+// *   **Added Water Reflection Fallback:** To make the water shader more robust, a fallback system was implemented. If the engine fails to provide valid real-time reflection data (as was suspected for the bridge terrain), the shader now automatically uses the skybox cubemap to generate plausible fake reflections, preventing jarring visual discontinuities.
+// ### 2. Performance & Optimization
+// These changes were aimed at making the shaders run faster on the target hardware without changing the visual output.
+// *   **Widespread Use of `half` Precision:** All variables that did not require 32-bit precision—such as colors, texture coordinates, normals, and other vectors passed between shader stages—were converted from `float` to `half`. This reduces memory bandwidth and improves arithmetic performance.
+// *   **Optimized Math Operations:** Computationally expensive `pow(x, y)` function calls were replaced with faster alternatives wherever possible. For example, `pow(x, 2)` was changed to `x * x`, and `pow(fresnel, 5)` was unrolled into a series of multiplications.
+// *   **Optimized Lighting Calculations:** In shaders like `bumpmap_interior`, vector normalization was moved from the per-pixel calculation in the pixel shader to the per-vertex calculation in the vertex shader, and attenuation was calculated using the faster `dot(vec, vec)` instead of `length(vec)`.
+// ### 3. Code Quality & Readability
+// These changes make the code easier to understand, debug, and maintain in the future.
+// *   **Elimination of "Magic Numbers":** Dozens of unnamed numerical constants throughout both shader files were replaced with named `static const` variables. This makes the code self-documenting. For example:
+//     *   Water effects are now controlled by `COASTAL_CONTRAST`, `FRESNEL_BASE`, etc.
+//     *   Wind and animation are controlled by `TREE_SWAY_AMPLITUDE`, `SAIL_WAVE_SPEED`, etc.
+//     *   Post-effects are controlled by `VIGNETTE_BLUR_STRENGTH`, `SATURATION_MULTIPLIER`, etc.
+// *   **Code Reorganization and Commenting:** Complex pixel shaders, particularly `ps_map_water_new` and `FinalScenePassPS`, were restructured with clear, commented sections (e.g., "1. PARALLAX," "2. LIGHTING," "3. COLOR CORRECTION") to make the rendering pipeline easier to follow.
+// *   **Removed Redundant Code:** Unused or debug-only code, such as the `ps_main_standart_sails` shader, was removed to clean up the file.
 //
 ///////////////////////////////////////////////////////////////////////////////////
 // APOLOGIES IN ADVANCE - DUE TO THE RUSH OF THE LAST FEW DAYS THIS HAS BECOME A BIT MESSY
@@ -7469,6 +7486,7 @@ struct VS_OUTPUT_MAP_WATER_NEW
 	float2 Depth    	 : TEXCOORD6; // .x = clip space depth, .y = view space length
 	half4  LightDir_Alpha: TEXCOORD1;
 	half4  LightDif		 : TEXCOORD2;
+	half3  ViewVec      : TEXCOORD7;
 };
 
 
@@ -7531,12 +7549,17 @@ VS_OUTPUT_MAP_WATER_NEW vs_map_water_new (uniform const bool reflections, float4
 	float d = length(P);
 	Out.Fog = get_fog_amount_new(d, vWorldPos.z);
 
+	Out.ViewVec = (half3)normalize(vWorldPos.xyz - vCameraPos.xyz);
+
 	return Out;
 }
 
 PS_OUTPUT ps_map_water_new(uniform const bool reflections, VS_OUTPUT_MAP_WATER_NEW In)
 {
 	PS_OUTPUT Output;
+
+    // --- Master brightness control for water ---
+    static const half WATER_BRIGHTNESS_MULTIPLIER = 0.60h; // Tweak this value (e.g., 0.7 to 1.0) to control brightness.
 
     // --- New Map Water PS Constants ---
     static const half PARALLAX_SCALE_FACTOR = 1.4h;
@@ -7590,14 +7613,32 @@ PS_OUTPUT ps_map_water_new(uniform const bool reflections, VS_OUTPUT_MAP_WATER_N
 	Output.RGBColor = 0.01h * NdotL * In.LightDif;
 
 	half3 vView = normalize(In.CameraDir);
-	float xw_depth = abs(In.PosWater.w) > 0.0001f ? (In.PosWater.x / In.PosWater.w) : 0;
-	half2 reflectcoords = (REFLECTION_NORMAL_DISTORTION * normal.xy) + half2(0.5h + 0.5h * xw_depth, 0.5h - 0.5h * (In.PosWater.y / In.PosWater.w));
-	half4 tex = tex2D(ReflectionTextureSampler, reflectcoords);
+	half4 tex;
+
+	if (In.PosWater.w > 0.01)
+	{
+		float xw_depth = In.PosWater.x / In.PosWater.w;
+		half2 reflectcoords = (REFLECTION_NORMAL_DISTORTION * normal.xy) + half2(0.5h + 0.5h * xw_depth, 0.5h - 0.5h * (In.PosWater.y / In.PosWater.w));
+		tex = tex2D(ReflectionTextureSampler, reflectcoords);
+	}
+	else
+	{
+		half3 reflectVec = reflect(In.ViewVec, normal);
+		tex = texCUBE(EnvTextureSampler, reflectVec);
+	}
+
 	INPUT_OUTPUT_GAMMA(tex.rgb);
 
 	half fresnel = 1.0h - saturate(dot(vView, normal));
-	fresnel = FRESNEL_BASE + FRESNEL_SCALE * (fresnel * fresnel * fresnel * fresnel * fresnel); // pow(fresnel, 5)
+	fresnel = FRESNEL_BASE + FRESNEL_SCALE * (fresnel * fresnel * fresnel * fresnel * fresnel);
 	half3 RefColor = saturate(tex.rgb * fresnel);
+
+	#if defined(DEBUG_DISABLE_WATER_REFLECTIONS)
+        RefColor = 0;
+    #endif
+
+	Output.RGBColor.a = 1.0h - 0.3h * In.CameraDir.z;
+	Output.RGBColor.a *= In.LightDir_Alpha.a;
 
 	// 4. DIFFUSE COLORING
 	half3 cWaterColor = 5.0h * half3(1.0h/255.0h, 5.0h/255.0h, 10.0h/255.0h);
@@ -7606,10 +7647,9 @@ PS_OUTPUT ps_map_water_new(uniform const bool reflections, VS_OUTPUT_MAP_WATER_N
 	cWaterColor = lerp(WaterColorLightDark, cWaterColor, dist);
 
 	half fresnel2 = 1.0h - saturate(dot(In.CameraDir, normal));
-	fresnel2 *= max(0.25h, (half)In.Color.r);
-	cWaterColor *= fresnel2;
+	fresnel2 *= WATER_BRIGHTNESS_MULTIPLIER; // Use our constant instead of vertex color
+	cWaterColor = cWaterColor * fresnel2;
 
-	half fog_fresnel_factor = saturate(dot(In.CameraDir, normal));
 	half3 DifColor = cWaterColor;
 
 	// 5. FINAL COMPOSITION
@@ -7623,7 +7663,7 @@ PS_OUTPUT ps_map_water_new(uniform const bool reflections, VS_OUTPUT_MAP_WATER_N
 	}
 
 	// 6. OCEAN FLOOR EFFECTS (Parallax, Caustics, Foam)
-	half coastheight = saturate((In.Color.w - 0.361h) * 2.0h);
+	half coastheight = saturate((In.Color.w - 0.51h) * 2.7h);
 	if (coastheight > 0.08h)
 	{
 		half2 oceanfloorcord = In.Tex0;
@@ -7641,21 +7681,21 @@ PS_OUTPUT ps_map_water_new(uniform const bool reflections, VS_OUTPUT_MAP_WATER_N
 
 		// Ocean Floor Texture
 		half3 oceanfloor_color = (coastheight - 0.08h) * tex2D(SpecularTextureSampler, oceanfloorcord).rgb;
-		half3 oceanfloorstrong = 0.5h * oceanfloor_color * max(0.25h, (half)In.Color.r);
-		half3 oceanfloorweak = 0.17h * oceanfloor_color * max(0.25h, (half)In.Color.r);
+		half3 oceanfloorstrong = 0.5h * oceanfloor_color * WATER_BRIGHTNESS_MULTIPLIER;
+		half3 oceanfloorweak = 0.17h * oceanfloor_color * WATER_BRIGHTNESS_MULTIPLIER;
 		Output.RGBColor.rgb = lerp(Output.RGBColor.rgb + oceanfloorstrong, Output.RGBColor.rgb + oceanfloorweak, saturate(dist * 1.8h));
 
 		// Caustics
 		half3 caustics = 0.5h * saturate((coastheight - 0.08h) * tex2D(SpecularTextureSampler, (0.4h * oceanfloorcord) + 0.075h * time_variable).a);
 		caustics += 0.5h * saturate((coastheight - 0.08h) * tex2D(SpecularTextureSampler, half2((0.4h * oceanfloorcord.x) - 0.08h * time_variable, (0.4h * oceanfloorcord.x) - 0.089h * time_variable)).a);
-		caustics *= 0.5h * half3(0.2h, 0.2h, 1.0h) * max(0.25h, (half)In.Color.r);
+		caustics *= 0.5h * half3(0.2h, 0.2h, 1.0h) * WATER_BRIGHTNESS_MULTIPLIER;
 		Output.RGBColor.rgb = lerp(Output.RGBColor.rgb + 0.95h * caustics, Output.RGBColor.rgb + 0.25h * caustics, saturate(dist * 1.5h));
 
 		// Coastal Foam
 		half2 FoamOffset = half2(2.0h * In.Tex0.x, 2.0h * In.Tex0.y - (0.1h * time_variable));
 		half foam_alpha = tex2D(MeshTextureSampler, FoamOffset).a;
 		half3 FoamColor = saturate(COASTAL_FOAM_STRENGTH * (coastheight - 0.08h) * (foam_alpha * foam_alpha));
-		FoamColor *= max(0.25h, (half)In.Color.r);
+		FoamColor *= WATER_BRIGHTNESS_MULTIPLIER;
 		Output.RGBColor.rgb = lerp(Output.RGBColor.rgb + 0.95h * FoamColor, Output.RGBColor.rgb + 0.10h * FoamColor, saturate(dist * 2.0h));
 	}
 

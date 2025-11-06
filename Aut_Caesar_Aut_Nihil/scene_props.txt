@@ -87,7 +87,7 @@ spr_ai_limiter_8m 16392 0 barrier_8m bo_barrier_8m 0
 spr_ai_limiter_16m 16392 0 barrier_16m bo_barrier_16m 0
 
 
-spr_shield 8192 0 0 boshield 0
+spr_Shield 8192 0 0 boshield 0
 
 
 spr_shelves 0 0 shelves boshelves 0
@@ -2325,7 +2325,7 @@ spr_battle_field_smoke 0 0 0 0 1
 -40.000000  1 1965 1 1008806316530991120 
 
 
-spr_village_fire_big 0 0 0 0 1
+spr_Village_fire_big 0 0 0 0 1
 -40.000000  4 1965 1 1008806316530991157 1955 3 0 0 100 1965 1 1008806316530991158 600 2 1152921504606847203 0 
 
 
@@ -3009,16 +3009,16 @@ spr_410_tent 0 0 410_tent bo_410_tent 0
 spr_vikinglonghouse1 0 0 vikinglonghouse1 0 0
 
 
-spr_kolba_a 0 0 Kolba_a bo_Kolba_a 0
+spr_Kolba_a 0 0 Kolba_a bo_Kolba_a 0
 
 
 spr_scene_prop_a 0 0 scene_prop_a bo_scene_prop_a 0
 
 
-spr_kolba_b 0 0 Kolba_b bo_Kolba_a 0
+spr_Kolba_b 0 0 Kolba_b bo_Kolba_a 0
 
 
-spr_kolba_c 0 0 Kolba_c bo_Kolba_a 0
+spr_Kolba_c 0 0 Kolba_c bo_Kolba_a 0
 
 
 spr_410_watch_tower 0 0 410_watch_tower bo_410_watch_tower 0
@@ -3147,7 +3147,7 @@ spr_castle_hlew2 0 0 question_mark 0 0
 spr_a_altar_1 0 0 a_altar_1 bo_a_altar_1 0
 
 
-spr_fyrkathouse 0 0 Fyrkathouse bo_Fyrkathouse 0
+spr_Fyrkathouse 0 0 Fyrkathouse bo_Fyrkathouse 0
 
 
 spr_lofotrinterior 0 0 lofotrinterior bo_lofotrInteriorCollision 0
@@ -3267,7 +3267,7 @@ spr_mp_burgh_wall_part_a 0 0 mp_burgh_wall_part_a bo_mp_burgh_wall_part_a 0
 spr_mp_burgh_wall_part_b 0 0 mp_burgh_wall_part_b bo_mp_burgh_wall_part_b 0
 
 
-spr_mp_compound_burgh_wall 0 0 mp_compound_Burgh_wall bo_mp_compound_Burgh_wall 0
+spr_mp_compound_Burgh_wall 0 0 mp_compound_Burgh_wall bo_mp_compound_Burgh_wall 0
 
 
 spr_mp_fence 0 0 mp_fence bo_mp_fence 0
@@ -3582,31 +3582,31 @@ spr_flower 0 0 fialka 0 0
 spr_beige_passagetworoof 0 0 beige_passagetworoof bo_beige_passagetworoof 0
 
 
-spr_italian_bldg01 0 0 Italian_bldg01 bo_Italian_bldg01 0
+spr_Italian_bldg01 0 0 Italian_bldg01 bo_Italian_bldg01 0
 
 
-spr_italian_bldg02 0 0 Italian_bldg02 bo_Italian_bldg02 0
+spr_Italian_bldg02 0 0 Italian_bldg02 bo_Italian_bldg02 0
 
 
-spr_italian_bldg03 0 0 Italian_bldg03 bo_Italian_bldg03 0
+spr_Italian_bldg03 0 0 Italian_bldg03 bo_Italian_bldg03 0
 
 
-spr_italian_bldg031 0 0 Italian_bldg031 bo_Italian_bldg031 0
+spr_Italian_bldg031 0 0 Italian_bldg031 bo_Italian_bldg031 0
 
 
-spr_italian_bldg032 0 0 Italian_bldg032 bo_Italian_bldg032 0
+spr_Italian_bldg032 0 0 Italian_bldg032 bo_Italian_bldg032 0
 
 
-spr_italian_bldg04 0 0 Italian_bldg04 bo_Italian_bldg04 0
+spr_Italian_bldg04 0 0 Italian_bldg04 bo_Italian_bldg04 0
 
 
-spr_italian_bldg05 0 0 Italian_bldg05 bo_Italian_bldg05 0
+spr_Italian_bldg05 0 0 Italian_bldg05 bo_Italian_bldg05 0
 
 
-spr_italian_fountain01 0 0 Italian_fountain01 bo_Italian_fountain01 0
+spr_Italian_fountain01 0 0 Italian_fountain01 bo_Italian_fountain01 0
 
 
-spr_italian_wall03 0 0 question_mark 0 0
+spr_Italian_wall03 0 0 question_mark 0 0
 
 
 spr_agorathree 0 0 agorathree bo_agorathree 0
@@ -3793,7 +3793,7 @@ spr_statue_postament 0 0 statue_postament bo_statue_postament 0
 spr_sundukk 0 0 sundukk 0 0
 
 
-spr_temple_iulius_caesar 0 0 temple_Iulius_caesar bo_temple_Iulius_caesar 0
+spr_temple_Iulius_caesar 0 0 temple_Iulius_caesar bo_temple_Iulius_caesar 0
 
 
 spr_temple_aphrodite 0 0 temple_aphrodite bo_temple_aphrodite 0
@@ -3886,16 +3886,16 @@ spr_x_jerusalem_2 0 0 agora_southstoa bo_agora_southstoa 0
 spr_pyramid 0 0 pyramid bo_pyramid 0
 
 
-spr_bireme_sail_of_red 0 0 bireme_sail_of_RED bo_bireme_sail_of_RED 0
+spr_bireme_sail_of_RED 0 0 bireme_sail_of_RED bo_bireme_sail_of_RED 0
 
 
-spr_boat_sail1000_of_red 0 0 boat_sail1000_of_RED bo_boat_sail1000_of_RED 0
+spr_boat_sail1000_of_RED 0 0 boat_sail1000_of_RED bo_boat_sail1000_of_RED 0
 
 
-spr_boat_sail1001_of_red 0 0 boat_sail1001_of_RED bo_boat_sail1001_of_RED 0
+spr_boat_sail1001_of_RED 0 0 boat_sail1001_of_RED bo_boat_sail1001_of_RED 0
 
 
-spr_ship_bull_of_red 0 0 question_mark 0 0
+spr_ship_bull_of_RED 0 0 question_mark 0 0
 
 
 spr_new_rome_gatehouse 0 0 new_rome_gatehouse bo_new_rome_gatehouse 0
@@ -4121,7 +4121,7 @@ spr_c_cave_tunnel_long_3g-01 0 0 cave_tunnel_long_3g-01 bo_cave_tunnel_long_3g-0
 spr_c_cave_tunnel_long_4g-01 0 0 cave_tunnel_long_4g-01 bo_cave_tunnel_long_4g-01 0
 
 
-spr_c_cave_tunnel_long_4g-v2-42 0 0 cave_tunnel_long_4g-V2-42 bo_cave_tunnel_long_4g-V2-42 0
+spr_c_cave_tunnel_long_4g-V2-42 0 0 cave_tunnel_long_4g-V2-42 bo_cave_tunnel_long_4g-V2-42 0
 
 
 spr_c_cave_tunnel_short_2g-01 0 0 cave_tunnel_short_2g-01 bo_cave_tunnel_short_2g-01 0
@@ -4321,15 +4321,15 @@ spr_artemis_statue 0 0 artemis_statue 0 0
 
 
 spr_wall_painting_heroglyphs 0 0 wall_painting_heroglyphs bo_wall_painting_heroglyphs 1
--44.000000  7 2172 3 1224979098644774912 360287970189639680 2 4 0 30 2 1224979098644774912 16 1120 1 216172782113789385 5 0 1120 1 216172782113789381 3 0 
+-44.000000  7 2172 3 1224979098644774912 360287970189639680 2 4 0 30 2 1224979098644774912 16 1120 1 216172782113789370 5 0 1120 1 216172782113789366 3 0 
 
 
 spr_arminius_tomb 65536 0 runestone bo_runestone 1
--44.000000  2 540 3 360287970189642069 10 0 1121 3 216172782113789384 216172782113789382 216172782113789383 
+-44.000000  2 540 3 360287970189642086 10 0 1121 3 216172782113789369 216172782113789367 216172782113789368 
 
 
 spr_wall_painting_heroglyphs2 0 0 wall_painting_heroglyphs2 bo_wall_painting_heroglyphs 1
--44.000000  7 2172 3 1224979098644774912 360287970189639680 2 4 0 30 2 1224979098644774912 16 1120 1 216172782113789386 5 0 1120 1 216172782113789381 3 0 
+-44.000000  7 2172 3 1224979098644774912 360287970189639680 2 4 0 30 2 1224979098644774912 16 1120 1 216172782113789371 5 0 1120 1 216172782113789366 3 0 
 
 
 spr_roman_palace_bed 0 0 roman_palace_bed bo_bed_e 0
@@ -4441,7 +4441,7 @@ spr_terrain_desert_cliff_05 0 0 terrain_desert_cliff_05 bo_terrain_cliff_05 0
 spr_terrain_desert_cliff_06 0 0 terrain_desert_cliff_06 bo_terrain_cliff_06 0
 
 
-spr_ancient_ruins_ruins_14 0 0 ancient_ruins_Ruins_14 bo_ancient_ruins_Ruins_14 0
+spr_ancient_ruins_Ruins_14 0 0 ancient_ruins_Ruins_14 bo_ancient_ruins_Ruins_14 0
 
 
 spr_roman_palace_ground_3 0 0 roman_palace_ground_3 bo_roman_palace_ground_2 0
@@ -4620,19 +4620,19 @@ spr_x_amphorae_9 0 0 x_amphorae_9 0 0
 spr_x_chair_1 0 0 x_chair_1 bo_x_chair_1 0
 
 
-spr_destroyed_temple_ruin_a 0 0 destroyed_Temple_Ruin_a bo_destroyed_Temple_Ruin_a 0
+spr_destroyed_Temple_Ruin_a 0 0 destroyed_Temple_Ruin_a bo_destroyed_Temple_Ruin_a 0
 
 
-spr_destroyed_temple_ruin_b 0 0 destroyed_Temple_Ruin_b bo_destroyed_Temple_Ruin_b 0
+spr_destroyed_Temple_Ruin_b 0 0 destroyed_Temple_Ruin_b bo_destroyed_Temple_Ruin_b 0
 
 
-spr_destroyed_temple_ruin_c 0 0 destroyed_Temple_Ruin_c bo_destroyed_Temple_Ruin_c 0
+spr_destroyed_Temple_Ruin_c 0 0 destroyed_Temple_Ruin_c bo_destroyed_Temple_Ruin_c 0
 
 
-spr_destroyed_temple_ruin_d 0 0 destroyed_Temple_Ruin_d bo_destroyed_Temple_Ruin_d 0
+spr_destroyed_Temple_Ruin_d 0 0 destroyed_Temple_Ruin_d bo_destroyed_Temple_Ruin_d 0
 
 
-spr_destroyed_temple_ruin_e 0 0 destroyed_Temple_Ruin_e bo_destroyed_Temple_Ruin_e 0
+spr_destroyed_Temple_Ruin_e 0 0 destroyed_Temple_Ruin_e bo_destroyed_Temple_Ruin_e 0
 
 
 spr_destroyed_column_broken1 0 0 destroyed_column_broken1 bo_destroyed_column_broken1 0
@@ -4771,7 +4771,7 @@ spr_odysseia_alexanders_tomb 0 0 odysseia_alexanders_tomb bo_roman_temple_new_b 
 
 
 spr_rescue_door 0 0 door_a bo_door_a 1
--44.000000  6 200 1 504403158265495679 546 3 504403158265495679 11 9 546 3 504403158265495679 7 0 1120 1 1585267068834414594 506 3 504403158265495679 7 1 1 3 936748722493063376 360287970189640391 10 
+-44.000000  6 200 1 504403158265495679 546 3 504403158265495679 11 9 546 3 504403158265495679 7 0 1120 1 1585267068834414594 506 3 504403158265495679 7 1 1 3 936748722493063376 360287970189640402 10 
 
 
 spr_z_entry_courtier 16384 0 entry_courtier 0 1
@@ -4858,7 +4858,7 @@ spr_roof_floor_wood 0 0 roof_floor_wood bo_roof_floor_concrete 0
 
 
 spr_roman_toilet_use 0 0 roman_toilet bo_roman_toilet 1
--44.000000  17 1700 1 1224979098644774912 1712 1 1224979098644774912 4 0 2147485377 2 1224979098644774912 288230376151713422 1120 1 1585267068834414595 5 0 2136 3 1224979098644774913 0 10 4 0 2147483680 2 1224979098644774913 1 1120 1 1585267068834420155 1 3 936748722493064159 360287970189639680 25 1528 2 360287970189639680 50 5 0 1120 1 1585267068834414597 1 3 936748722493064159 360287970189639680 25 3 0 3 0 
+-44.000000  17 1700 1 1224979098644774912 1712 1 1224979098644774912 4 0 2147485377 2 1224979098644774912 288230376151713427 1120 1 1585267068834414595 5 0 2136 3 1224979098644774913 0 10 4 0 2147483680 2 1224979098644774913 1 1120 1 1585267068834420155 1 3 936748722493064159 360287970189639680 25 1528 2 360287970189639680 50 5 0 1120 1 1585267068834414597 1 3 936748722493064159 360287970189639680 25 3 0 3 0 
 
 
 spr_roman_baths_1 0 0 roman_baths_1 bo_baths 0
@@ -4888,7 +4888,7 @@ spr_roman_bath_pool_3 0 0 roman_bath_pool_3 bo_bath_pool 0
 
 
 spr_roman_undress 268435456 0 chest_gothic_2 bochest_gothic 1
--44.000000  23 1700 1 1224979098644774912 1712 1 1224979098644774912 2133 2 1224979098644774913 0 6 3 1224979098644774914 0 8 1804 3 1224979098644774915 1224979098644774912 1224979098644774914 32 2 1224979098644774915 -1 1774 2 1224979098644774912 1224979098644774915 2105 2 1224979098644774913 1 3 0 4 0 31 2 1224979098644774913 0 4 0 1 1 936748722493063952 2133 2 1224979098644774916 360287970189641994 5 0 2133 2 1224979098644774916 360287970189639680 3 0 6 3 1224979098644774914 0 8 1541 3 1224979098644774915 1224979098644774916 1224979098644774914 32 2 1224979098644774915 -1 1779 2 1224979098644774912 1224979098644774915 3 0 3 0 
+-44.000000  23 1700 1 1224979098644774912 1712 1 1224979098644774912 2133 2 1224979098644774913 0 6 3 1224979098644774914 0 8 1804 3 1224979098644774915 1224979098644774912 1224979098644774914 32 2 1224979098644774915 -1 1774 2 1224979098644774912 1224979098644774915 2105 2 1224979098644774913 1 3 0 4 0 31 2 1224979098644774913 0 4 0 1 1 936748722493063952 2133 2 1224979098644774916 360287970189642011 5 0 2133 2 1224979098644774916 360287970189639680 3 0 6 3 1224979098644774914 0 8 1541 3 1224979098644774915 1224979098644774916 1224979098644774914 32 2 1224979098644774915 -1 1779 2 1224979098644774912 1224979098644774915 3 0 3 0 
 
 
 spr_box_a_open 0 0 box_a_open bo_box_a 0

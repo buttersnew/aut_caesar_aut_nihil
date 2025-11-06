@@ -434,13 +434,13 @@
  release_throwing_knife 1048576 572530703  1
   0.900000 throw_knife 30 70 1 0 0.0 0.0 0.0 0.0 
  ready_throwing_axe 1048576 606085130  1
-  0.600000 throw_boulder_overhead 0 26 7 0 0.0 0.0 0.0 0.0 
- release_throwing_axe 1048576 572530703  1
-  0.900000 throw_boulder_overhead 26 72 1 0 0.0 0.0 0.0 0.0 
- ready_stone 1048576 606085130  1
   0.600000 throwing_stone 0 20 7 0 0.0 0.0 0.0 0.0 
- release_stone 1048576 572530703  1
+ release_throwing_axe 1048576 572530703  1
   0.900000 throwing_stone 20 65 1 0 0.0 0.0 0.0 0.0 
+ ready_stone 1048576 606085130  1
+  0.600000 throw_boulder_overhead 0 26 7 0 0.0 0.0 0.0 0.0 
+ release_stone 1048576 572530703  1
+  0.900000 throw_boulder_overhead 26 72 1 0 0.0 0.0 0.0 0.0 
  ready_pistol 1048576 605036554  1
   0.900000 sling 0 31 268435463 0 0.0 0.0 0.0 0.0 
  release_pistol 1048576 572530703  1
