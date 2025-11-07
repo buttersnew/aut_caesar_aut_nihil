@@ -55988,13 +55988,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("sacred_grove",0,
   "It is said that Olyndicus, an Celtiberian war chief who led a rebellion against Rome a century ago, is buried here.",
-  "none",
-  [
+  "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
-    ("op3",[],
-      "Explore.",
-    [
+    ("op3",[],"Explore.",[
       (modify_visitors_at_site, "scn_sacred_grove"),
       (reset_visitors),
       (set_visitor, 0, "trp_player"),
@@ -56003,53 +56000,36 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_mission),
     ],"Leave the cave."),
 
-    ("op2",[],
-      "Leave.",
-      [
+    ("op2",[],"Leave.",[
       (change_screen_map),
     ]),
-
 ]),
 
- ("bacchus_escape",0,
-    "You awake in the middle of a small grove. Except from a headache, you seem to be fine.",
-    "none",
-    [(set_background_mesh, "mesh_pic_deserters"),
-    ],
+("bacchus_escape",0,
+  "You awake in the middle of a small grove. Except from a headache, you seem to be fine.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("op3",[],"Get up.",[
+      (add_xp_as_reward, 100),
+      (change_screen_map),
+    ]),
+]),
 
-    [
-
-      ("op3",[],
-       "Get up.",
-       [(add_xp_as_reward, 100),
-       (change_screen_map),
-        ]),
-
-    ]
- ),
-
- ("solus_end",0,
-    "You reach Ctesiphon. Solus thanks you for your support and teaches you his vast knowledge. You have difficulties to understand most of what he says but at least you tried your best.\
- After his last lecture he thanks you again and says goodbye. He joins a caravan to the lands behind the river of Indus. You will never see him again.",
-    "none",
-    [(set_background_mesh, "mesh_pic_desert"),
-    ],
-
-    [
-
-      ("op3",[],
-       "Continue.",
-       [
-       (add_xp_as_reward, 5000),
-       (troop_raise_attribute, "trp_player", ca_intelligence, 1),
-       (call_script, "script_succeed_quest", "qst_philosopher"),
-       (call_script, "script_end_quest", "qst_philosopher"),
-       (remove_member_from_party,"trp_solus", "p_main_party"),
-       (change_screen_map),
-        ]),
-
-    ]
- ),
+("solus_end",0,
+  "Upon reaching Ctesiphon, your real education begins. Solus, free from his demons, is a relentless and brilliant teacher. He speaks not of philosophy, but of the universe's mechanics: of geometry that measures the heavens, of atoms that build the world, of the very nature of light and matter. It is an avalanche of knowledge, and you struggle to keep up, your mind stretched to its breaking point. You do not understand it all, but you understand enough to see the world in a new, profound way.^^When he is finished, he simply packs his few scrolls. 'I have given you what I can,' he says. 'The rest of the journey is yours to walk.' He points to a caravan assembling for the long trek into the unknown East. 'Mine lies that way.' With that, he walks away, leaving you changed, the architect of a new way of thinking disappearing into the horizon.",
+  "none",[
+    (set_background_mesh, "mesh_pic_desert"),
+  ],[
+    ("op3",[],"Continue.",[
+      (add_xp_as_reward, 7500),
+      (troop_raise_attribute, "trp_player", ca_intelligence, 1),
+      (call_script, "script_succeed_quest", "qst_philosopher"),
+      (call_script, "script_end_quest", "qst_philosopher"),
+      (remove_member_from_party,"trp_solus", "p_main_party"),
+      (change_screen_map),
+    ]),
+]),
 
 ##event for governor asking player caesar for help
 ("governor_event_1",0,

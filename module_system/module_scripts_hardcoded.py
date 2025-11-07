@@ -3035,6 +3035,11 @@ scripts_hardcoded = [
     (party_set_slot,"p_village_90", slot_castle_exterior, "scn_village_syria_1"),
     # romainzed celtic
 
+
+    (party_set_slot,"p_village_10", slot_castle_exterior, "scn_romanized_celt_village"),
+    (party_set_slot,"p_village_27", slot_castle_exterior, "scn_romanized_celt_village"),
+    (party_set_slot,"p_village_84", slot_castle_exterior, "scn_romanized_celt_village"),
+
     #otherwise set other special scenes
     (party_set_slot,"p_village_189", slot_castle_exterior, "scn_village_germanic_1"),
     (party_set_slot,"p_village_79", slot_castle_exterior, "scn_village_germanic_1"),

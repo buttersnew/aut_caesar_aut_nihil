@@ -21201,71 +21201,69 @@ dialogs =[
 ]],
 
 [trp_greek_philosopher,"start",[],
-
-  "Let me continue.",
-  "greek_roman_talk_1",[]],
+"If I may continue.",
+"greek_roman_talk_1",[]],
 
 [trp_roman_philosopher,"start",[],
-
-  "Please, continue.",
-  "greek_roman_talk_1",[]],
+"Please, do.",
+"greek_roman_talk_1",[]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_1",[],
-  "I just wanted to remark that I don't think there are any good or bad situation. If I were to sum up my life to you, I would say that it's first and foremost through encounters. People who lended me a hand, maybe at a moment when I could not, when I was alone at home. And it's quite curious to see that such fortunes and encounters can forge a destiny. Because when you have a love of the thing, of a well-done deed, of the beautiful gesture, sometimes we don't find the interlocutor next to you, I say, or the mirror facing you allowing you to move forward. Well it's not my case, as I was saying there, since I, on the contrary, I was able to:  sing of life, I dance to life... I am only love! And finally when many people ask me: How can you have such humanity? Well, I answer very simply. I tell them that this is the desire of love.",
+  "I just wanted to remark that I don't think there are any good or bad situation. If I were to sum up my life to you, I would say that it's first and foremost through encounters. People who lended me a hand, maybe at a moment when I could not, when I was alone at home. And it's quite curious to see that such fortunes and encounters can forge a destiny. Because when you have a love of the thing, of a well-done deed, of the beautiful gesture, sometimes we don't find the interlocutor next to you, I say, or the mirror facing you allowing you to move forward. Well it's not my case, as I was saying there, since I, on the contrary, I was able to: sing of life, I dance to life... I am only love! And finally when many people ask me: How can you have such humanity? Well, I answer very simply. I tell them that this is the desire of love.",
   "greek_roman_talk_2",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_2",[],
-  "I think you are telling me just common nonsense, nothing more; like you Greeks are used to do. Yet, love is not even a real feeling. On the contrary, it is a mere instinct; even the most archaic creature has it. Its even a destructive thing. Imagine, some people believe they can find true love in Baiae! They travel there, some lupa catches them and then they get trapped in a lupanarnium. And vola! They have no money, no reputation and no renown anymore. Noble sons of patricians lose thousands of denarii to such women, plunging their families into ruin.",
+  "That is the most profound gibberish I have ever heard, which is exactly what I expect from a Greek. 'Love' is not some mystical force. It is a biological imperative, an instinct. Even a slug has it. In fact, it's a destructive weakness. Consider the fools who seek 'true love' in Baiae. They find a pretty little she-wolf, fall into a brothel, and emerge without a denarius to their name, their family's reputation in tatters.",
   "greek_roman_talk_3",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_3",[],
-  "Ha! First of all, you Romans are all horny goats! Secondly, and more seriously: When I speak about love, I mean not the love of a man for a woman. Such a love must be a primitive thing, because a woman is a primitive creature. No, I don't mean such a love. What I mean is the platonic love of a man for another man. This is the purest form of love: a friendship between two men.",
+  "Hah! First, you Romans are all rutting goats, so you are experts on the subject. Second, when I speak of 'love,' I am not speaking of the base grunting between a man and a woman. A woman is a simple creature, driven by emotion. No, I speak of Platonic love—the pure, intellectual bond between two men. That is the highest form of affection.",
   "greek_roman_talk_4",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_4",[],
-  "Of course, friendships are important. But the flesh is weak and desire is strong. It's just natural that a man wants to fuck a woman, sometimes man may have the desire to fuck a slave. And that's it. But, one should do everything with modesty and measure. In particular, a man needs the following: A good male friend, a wife to for his primitive desires, children to preserve his dynasty and finally a proper house, which should be neither too small nor too large, neither too extravagant nor too piteous.",
+  "Friendship is important, I grant you. But the flesh is weak. A man requires certain things for a stable life: a good friend for counsel, a wife for his... base urges and to produce heirs, and a proper house—not too grand, not too humble. That is the Roman way. Order and moderation.",
   "greek_roman_talk_5",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_5",[],
-  "I am confused now. Is the love towards a woman now a purely primitive or necessary and important? In Greece people usually think: Is Rome ruled by men, or by their wives? Is Nero ruling Rome? Or Poppaea? I am sure, she just plays around a little bit with her female parts and voila: Nero does what Poppaea wants! You Romans are weak, you let yourself be ruled by women. Poppaea was first married to the Praetorian prefect, then she divorced and married Otho. But we both know that Otho was just her ticket to get closer to Nero. In Greece such things would have been impossible, if you Romans wouldn't have introduced such customs. But I tell you: That's why Rome will fall at the end! Mark my words. In three to four centuries Rome will be sacked and the Roman Empire will be ruled by Barbarians. As it seems to me you Romans are putting more importance into the love towards a woman than we men in Greece too. Which is also a contradiction to what you said earlier.",
+  "I am confused. First you say love for a woman is a primitive urge, then you say she is a pillar of your stable life. Which is it? And who truly rules Rome? Augustus, or the Augusta? A few whispers from Poppaea in the bedchamber, and Nero declares war or builds a new palace! You Romans are weak, utterly bewitched by women. In Greece, such a thing would be unthinkable! Your obsession with women will be your downfall! Mark my words, in three centuries, barbarians will be sacking your precious city!",
   "greek_roman_talk_6",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_6",[],
-  "Nonsense. Nonsense! Spoken by a Greek. The gyros you have been stuffing your belly with every day has entered your brain.",
+  "Nonsense! Utter nonsense, spoken by a man whose brain has been pickled by cheap wine and roasted meat. All that gyros you Greeks stuff in your bellies has finally reached your head.",
   "greek_roman_talk_7",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_7",[],
-  "My belly is full of gryos, and so I am full of love. I tell you: Gyros is not just food, it is a lifestyle. A lifestyle you should also try Roman. In particular, I am in a platonic friendship with another Greek here in Alexandria who makes excellent gyros.",
+  "My belly is full of gyros, and thus it is full of life and love! Gyros is not merely food, my Roman friend, it is a philosophy! A way of life you should embrace. In fact, I have a dear platonic friend here in Alexandria who makes the most divine gyros.",
   "greek_roman_talk_8",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_8",[],
-  "To become Greek? No, no, no. But instead I will visit the lupanarnium. All the talk about love has increased my desire.",
+  "Become a Greek? I would rather drink hemlock. No, all this talk of 'love' has only reminded me of my own needs. I am going to the lupanar.",
   "greek_roman_talk_9",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_9",[],
-  "You are weak Roman.",
+  "You are a slave to your urges, Roman.",
   "greek_roman_talk_10",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_10",[],
-  "At least I am not a Greek. However, let us move to a more serious topic. Actually, I have a proposition you may want to hear.",
+  "And I am not a Greek. Now, on to a more serious matter. I have a proposition for you.",
   "player_decide",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
@@ -21279,87 +21277,85 @@ dialogs =[
   "close_window",[]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_11",[],
-  "Please continue. But I hope it is not another comment on my love for gyros.",
+  "Proceed. But I hope it does not involve insulting my diet.",
   "greek_roman_talk_12",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_12",[],
-  "I have to say: There is one point at which you are right. It is the moral decline that started to happen at the end of the republic and has now reached a peak. That being said, the current and the previous Caesars also share their part on this development.",
+  "I will concede one point. There has been a moral decline since the Republic fell. The current Caesar, and the ones before him, have not helped.",
   "greek_roman_talk_13",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_13",[],
-
-  "Of course I am right. I traveled around the world, from the shores of Britannia to the Nile river. From the pillars of Heracles to the Germanic forests. I studied all texts of philosophers, even the less important ones. When I tell you: the Roman society is wicked, then this is not just an empty assertion, this is a fact!",
+  "Of course I am right! I have traveled the known world, from the grey shores of Britannia to the sands of Aegyptus, from the pilars of Heracles to the Germanic limes. I have read every philosopher worth reading, even the unknown ones. When I say your society is decadent and rotting from within, it is not an opinion, it is a diagnosis!",
   "greek_roman_talk_14",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_14",[],
-  "(Roles his eyes.)^^Yes, yes, I agree that the people these days are lacking virtus, the old Roman values.",
+  "-- He rolls his eyes. --^^Yes, yes, I agree. We lack the virtus of our ancestors.",
   "greek_roman_talk_15",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_15",[],
-
-  "(Interrupts him.)^^We don't need to discuss that. Many already complained about it and are still complaining. There are even laws which are supposed to increase morals in the Roman society. But it seems they are useless. Just look at Poppaea. At the end, a Roman woman is just a whore. Am I not right?",
+  "-- Interrupts him. --^^We don't need to debate it. Men have been complaining about 'these days' since the beginning of time. It's pointless. Look at your Augusta Poppaea. At the end of the day, a Roman woman is a whore who rules her husband, is she not?",
   "greek_roman_talk_16",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_16",[],
-  "Stop calling our women whores! Arguing with you is terrible, just terrible. You are throwing around insults, but nothing more!",
+  "Do not call our women whores! Arguing with you is like wrestling with a pig in mud! All you do is sling insults!",
   "greek_roman_talk_17",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_17",[],
-  "Actually, all I want to know: Why do I get this impression of Roman weakness? Why do Romans do everything a woman wants once they are in love?",
+  "And yet, you have not answered my question. Why are Romans so weak when it comes to women?",
   "greek_roman_talk_18",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_18",[],
-  "First of all: How can you say Rome is weak? To whom you pay your taxes: to a Roman tax collector! Who rules over Egypt, Hispania, Gaul, Greece, Syria, Anatolia etc etc. It is Rome! No Greek Polis ever achieved what Rome achieved. Yet, the Greek city states where always subjects to other nations: The Persians, the Makedonians and now Rome. And finally let me tell you our secret: Rome conquered the world because it had men with virtus, that is men who are brave but not cocky, men who are proud but not arrogant, men who are generously but not wasteful! But also women of virtue. Women who are modest and chaste, helpful and obedient. That being said, today's men and women lack this attributes. But those where the attributes and virtues which made Rome great. But that are things Barbarians cannot understand, as they are usually cowards, wasteful, arrogant and finally they have to lock their wives up because they are neither modest nor obedient.",
+  "Weak? Who collects your taxes? A Roman. Who rules this city, and yours, and a hundred others? Rome! Your squabbling city-states were always subjects to someone—the Persians, the Macedonians, and now us. Rome conquered the world because we had men of virtus—brave but not reckless, proud but not arrogant! And women of virtue—modest, chaste, and obedient. These are things barbarians and Greeks cannot understand.",
   "greek_roman_talk_19",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_19",[],
-  "Whenever I walk through a town, be it Rome, be it Alexandria, I see prostitutes, female and male on each corner and brothels everywhere. Those Virtues may have existed in the past but they are long gone.",
+  "And yet I walk through any city in your great Empire, and I see prostitutes on every corner. Your famous virtues seem to be in short supply.",
   "greek_roman_talk_20",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_20",[],
-  "They are still there! The prostitutes you see in every corner are not Romans, they are Barbarians. The poor people who belong to the subjugated nations are floating around the towns and cities, seeking work. But they can't find anything so they start whoring around.",
+  "Those are not Romans! They are the poor refuse of the nations we have conquered, flocking to our cities for work and finding only the brothel!",
   "greek_roman_talk_21",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_21",[],
-  "Finally I have to note that Greece was never a subject of the Persians! We defeated them and finally we conquered their Empire.",
+  "A minor correction: Greece was never a subject of Persia. We defeated them, and then we conquered them.",
   "greek_roman_talk_22",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_22",[],
-  "And I have to remark that it was a Macedonian who conquered their Empire, not a Greek.",
+  "And I must remark that it was a Macedonian who conquered Persia, not a Greek.",
   "greek_roman_talk_23",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_23",[],
-  "But he had a Greek educator: Aristoteles!",
+  "And his teacher was Aristotle, a Greek!",
   "greek_roman_talk_24",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_24",[],
-  "I never said all Greeks are dumb, its mainly you! ...^^(They continue to quarrel like that)",
+  "I never said all Greeks were fools. Just you. ...^^-- They continue to quarrel like that. --",
   "close_window",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
@@ -98155,89 +98151,187 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   ############
 
 ##talk of philosopher in alexandria
-[trp_solus,"start",[(eq, "$g_talk_troop_met", 0)], "Have you come here to seek knowledge? Then I must disappoint you.", "solues_talk_1",[]],
-[anyone|plyr,"solues_talk_1",[], "How come? I thought the library has the knowledge of the whole world stored in many books.", "solues_talk_2",[]],
-[anyone,"solues_talk_2",[], "Ha. Yes it has. But the world's knowledge is mostly crap and with crap I actually mean shit. For example, there are thousands of books about cooking recipes. Who needs so many cooking recipes? Most of them are more or less the same at all. And honestly, cooking is actually pretty trivial. All you need is a good taste, high quality ingredients and time. The more interesting question would be: what does actually happen with the ingredients while you cook? Why does meat change its colour? Why makes eating raw meat you sick in most cases? You will find no book here answering such questions.", "solues_talk_3",[]],
-[anyone|plyr,"solues_talk_3",[], "Hm. I thought there are books explaining how the world is made. Like Democritus who says that everything is made out of atoms. That way one maybe can answer your questions.", "solues_talk_4",[]],
-[anyone,"solues_talk_4",[], "And can you answer them? Certainly not. A theory is totally useless if it doesn't helps you to describe actual nature. Many people have tried but they failed in most cases to predict the\
- outcome of an experiment. Probably also because they never actually do experiments. The philosophers of the past usually sit around and look. But you must also do an experiment to support your hypotheses.\
- An example: With the help of geometry you can calculate the circumference of the Earth.", "solues_talk_5",[]],
-[anyone|plyr,"solues_talk_5",[], "So the Earth is a round ball sitting around in a large space?", "solues_talk_6",[]],
-[anyone,"solues_talk_6",[], "Yes it is. If you don't believe me just watch the horizon while moving. Due to the curvature of the Earth you will see how objects appear on the horizon.\
- For example: You travel with a boat  to Alexandria. You will see how the lighthouse appears, then latter you will see how the rest of the city appears.", "solues_talk_7",[]],
-[anyone|plyr,"solues_talk_7",[], "Yes, yes. That makes totally sense. And how to calculate the circumference?", "solues_talk_8",[]],
-[anyone,"solues_talk_8",[], "Yes. It was done by Eratosthenes. You need to construct a triangle: You take two points on the surface of the Earth and the third point is the center of the Earth. You can measure the distance between the points on the Earth: For example, the distance between two cities. That's one side of the triangle. The other two sides have the length of the radius. Now its important that you choose the points in such way that for one of them at local noon on the summer solstice the Sun is directly overhead. Also the two points should be sufficiently far away from each other and on the same meridian. Lets say we have Alexandria and Syene. Both satisfy the assumptions.", "solues_talk_9",[]],
+[trp_solus,"start",[
+  (eq, "$g_talk_troop_met", 0),
+], "Have you come here to seek knowledge? Then I must disappoint you.",
+"solues_talk_1",[]],
 
-[anyone,"solues_talk_9",[], "Now you measure the Sun's angle of elevation at noon of the summer solstice in Alexandria, by using a vertical rod. From that you can obtain the angle of the Sun's ray.\
- The angle equals 1/50 of the circumference of a circle. Now given that, the circumference of the Earth is 50 times the distance between Alexandria and Syene.\
- Which is something like 250,000 stadia.^Anyway. As you can see: we used geometry to get something.", "solues_talk_10",[]],
-[anyone|plyr,"solues_talk_10",[], "Well yes, but it doesn't seem to be useful to me.", "solues_talk_11",[]],
-[anyone,"solues_talk_11",[], "If you want to make maps or find out how large your realm is it becomes useful. But it's not that important. You can also travel around without a map. And most maps are wrong anyway.\
- ^^But that all doesn't matter as I am done with my life anyway.", "solues_talk_12",[]],
-[anyone|plyr,"solues_talk_12",[], "Please don't say that. You seem an intelligent man and I am sure you have achieved much.", "solues_talk_13",[]],
-[anyone,"solues_talk_13",[], "Achieved much? Maybe, maybe not. I still know approximately nothing. There is much I saw and much I will never see. Much I experienced and much I will never experience.\
- If you like I can tell you my story? Hopefully it will teach you and you won't do the same mistakes I did.", "solues_talk_14",[]],
+[anyone|plyr,"solues_talk_1",[
+], "How can you say that? Surely the Great Library holds the accumulated knowledge of the entire world within its scrolls.",
+"solues_talk_2",[]],
 
-[trp_solus,"start",[], "Ave. What do you want?", "solues_ask_1",[]],
-[anyone|plyr,"solues_ask_1",[(troop_slot_eq, "$g_talk_troop", slot_troop_mother, 0),], "I want to know more about you.", "solues_talk_y",[]],
-[anyone|plyr,"solues_ask_1",[(troop_slot_eq, "$g_talk_troop", slot_troop_mother, 1),], "Tell me something about your recent troubles.", "solues_talk_z",[]],
-[anyone|plyr,"solues_ask_1",[(troop_slot_eq, "$g_talk_troop", slot_troop_mother, 2),], "I have decided, I will bring you to Ctesiphon.", "solues_talk_quest_given",[]],
-[anyone|plyr,"solues_ask_1",[], "Farewell.", "close_window",[]],
+[anyone,"solues_talk_2",[], "Ha! It holds the world's accumulated opinions, which is mostly useless rubbish. For every scroll of genuine insight, there are a thousand detailing cooking recipes. Who needs a thousand ways to roast a dormouse? Cooking is trivial. All you need is a good palate, fresh ingredients, and patience. The real question isn't the recipe, but what is happening to the ingredients. Why does raw meat turn brown when it touches a flame? Why does it sicken you? You will not find a single scroll in this entire library that can truly answer that question.",
+"solues_talk_3",[]],
 
-[anyone|plyr,"solues_talk_14",[], "Sure. I am interested.", "solues_talk_y",[]],
-[anyone|plyr,"solues_talk_14",[], "I am sorry, I currently don't have the time.", "solues_talk_14_n",[]],
-[anyone,"solues_talk_14_n",[], "Yes, yes of course. Who has the time to listen to an old man? ^^Farewell then.", "close_window",[]],
+[anyone|plyr,"solues_talk_3",[], "But surely the great philosophers have given us a foundation. Democritus claimed the world is made of atoms. Perhaps such a theory could answer your questions.",
+"solues_talk_4",[]],
 
-[anyone,"solues_talk_y",[], "I am Solus Monachus. The son of Lydia Tertia and Orestes Monachus. My mother was the daughter of a very poor landowner near Alexandria and my father is a freed slave. Ironically, monachus means 'the lonely one', which is a very fitting name for me, as I was most of the time of my life alone. I also had many aunts and uncles and my grandparents were also still alive. We all lived together in a suburb of Alexandria. My father was basically good for nothing. He let our house become dilapidated. My family was just horrible. Maybe that explains why I became so an odd character.", "solues_talk_y_1",[]],
-[anyone,"solues_talk_y_1",[], "Anyway. I also really have to thank my parents: They send me to school. I learned how to write and calculate. They even founded a higher education for me. After I graduated, I was able to work as scribe at the local administration. I started to visit the Museion regularly. As my work was easy and boring I had a lot time to study the great philosophers from Sokrates to Euklid.", "solues_talk_y_2",[]],
-[anyone,"solues_talk_y_2",[], "During that time I fell in love with a woman. Unfortunately, she was part of the Roman nobility. In particular, her family owned land near Alexandria. I tried my best to win her heart, but sadly I just could watch how she got corrupted by the Roman society.  Oh how I hate Romans: Their society makes their men to proud, dumb, brutal and ruthless villains and their women to stupid drunkards. To be brief, she became addicted to wine. She didn't even want to admit it. So I decided to forget her.", "solues_talk_y_3",[]],
-[anyone,"solues_talk_y_3",[], "Meanwhile I finished my studies and started to work at the Museion as a scriber. Most of the day I spend with copying books and scrolls, the rest I spend with discussions and experiments. I was the only one who did experiments. Since I live very modest I amassed a small fortune. Anyway. I meet another woman. She was different. She was from Parthia and beautiful. I fell in love with her. But she demanded much, very much. Soon I had gifted all my wealth to her and still she wanted more. I even gifted her my house. I lost everything to her and what did I got? Some kisses and the worst sex you can imagine.", "solues_talk_y_4",[]],
-[anyone,"solues_talk_y_4",[], "From that point I was homeless. Luckily, the director of the library allowed me to life there. And I am still living here, in the rooms of the library. But this is not the end of the story. Years past and I continued my research. I discovered many things. But I still understand so little. Then I met a woman again. Her parents were from Illyricum. They are traders came to Alexandria to trade with grain. In a decade they build up a business Empire. She was born in Alexandria. Her parents were intelligent. They didn't want that their daughter gets corrupted by society. They tried their best to allow her to live a normal life. But I am not sure if they succeed.", "solues_talk_y_5",[]],
-[anyone,"solues_talk_y_5",[], "We met each other during a festivity at the Museion. I immediately fell in love with her. As if I would have learned nothing from the past I just confessed my love to her. And although she said she had a husband she agreed that we should met each other regularly. Which we did. She is really remarkable: She is very intelligent, beautiful as Aphrodite and she has the ambitious spirit of Megas Alexandros. Although her parents were already rich she didn't want to rest on their success. She founded her own business by trading expensive goods, like incense, and drugs, like opium, from Arabia and Mesopotamia.", "solues_talk_y_6",[]],
-[anyone,"solues_talk_y_6",[], "She feels no pain, no hunger, fatigue, which allows her to work all day long without long breaks. She would have had potential. She even studied at the Museion, where I teached her everything I knew. Unfortunately, her husband found out about our meetings and accused her of adultery. Ironically, we never layed with each other. But he didn't want to believe. What followed is another story, which I won't tell you as I already talked enough. Well, to come to an end, she died, he inherited all her assets. But Fortuna didn't favored him much, a year later he lost everything to another woman. Probably the same who fooled me years ago.", "solues_talk_y_7",[]],
+[anyone,"solues_talk_4",[], "Can you answer them using his theory? Of course not. A theory is worthless if it cannot predict the results of an experiment. And that is the great failing of our philosophers! They sit and think, when they should be testing! An idea must be supported by an experiment. For example, any fool can prove the world is round with simple geometry and observation.",
+"solues_talk_5",[]],
 
-[anyone,"solues_talk_y_7",[], "Since then I focused on my worked and tried not to think that much about the past. But now I face again trouble. But this time it is not caused by a woman.", "solues_talk_y_8",[
+[anyone|plyr,"solues_talk_5",[], "So the Earth is truly a sphere, floating in space?",
+"solues_talk_6",[]],
+
+[anyone,"solues_talk_6",[], "Yes, it is. If you doubt me, watch a ship sail towards the horizon. You do not see it shrink to a dot; you see its hull disappear first, then its mast. That is the curvature of the Earth. When you sail to Alexandria, you see the great Pharos lighthouse long before you see the city at its feet.",
+"solues_talk_7",[]],
+
+[anyone|plyr,"solues_talk_7",[], "That... that does make sense. So how does one calculate the circumference?",
+"solues_talk_8",[]],
+
+[anyone|plyr,"solues_talk_7",[], "Hm... can one calculate the circumference?",
+"solues_talk_8",[]],
+
+[anyone,"solues_talk_8",[], "Eratosthenes did it centuries ago. It is a simple matter of a triangle. Two points on the surface of the Earth, and the third point is the Earth's very center. You measure the distance between two cities—say, Alexandria and Syene, which lie on the same meridian. At noon on the summer solstice, the sun is directly overhead in Syene. There are no shadows.",
+"solues_talk_9",[]],
+
+[anyone,"solues_talk_9",[], "At that exact same moment, you measure the length of a shadow cast by a rod in Alexandria. The angle of that shadow is the angle at the center of the Earth between the two cities. Eratosthenes found that angle to be about one-fiftieth of a full circle. Therefore, the circumference of the Earth must be fifty times the distance between Alexandria and Syene. About 250,000 stadia. Simple geometry, applied to the world.",
+"solues_talk_10",[
+]],
+[anyone|plyr,"solues_talk_10",[], "I don't think I understand, but is it of any use?",
+"solues_talk_11",[]],
+[anyone|plyr,"solues_talk_10",[], "Fascinating. But it doesn't seem very useful.",
+"solues_talk_11",[
+  (add_xp_as_reward, 500),
+]],
+
+[anyone,"solues_talk_11",[], "It is useful if you wish to draw an accurate map, or know the true size of your empire. But you are right. One can live their whole life without a map. Most are wrong anyway. But... it is all meaningless now. I am done with my life.",
+"solues_talk_12",[]],
+
+[anyone|plyr,"solues_talk_12",[], "Do not say that. You are clearly a brilliant man. Surely your life has been one of great achievement.",
+"solues_talk_13",[]],
+
+[anyone,"solues_talk_13",[], "Achievements? Perhaps. But for every question I have answered, a dozen more have appeared. I know nothing. The world is a vast ocean of ignorance, and I have merely tasted a single drop of its salt. If you have the patience for an old man's regrets, I will tell you my story. Perhaps you can avoid the mistakes I made.",
+"solues_talk_14",[]],
+
+[trp_solus,"start",[], "Ah, you have returned. What is on your mind?",
+"solues_ask_1",[]],
+
+[anyone|plyr,"solues_ask_1",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_mother, 0),
+], "You were about to tell me your story.",
+"solues_talk_y",[]],
+
+[anyone|plyr,"solues_ask_1",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_mother, 1),
+], "You were telling me about your recent troubles.",
+"solues_talk_z",[]],
+
+[anyone|plyr,"solues_ask_1",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_mother, 2),
+  (hero_can_join, "p_main_party"),
+], "I have thought about your offer. I will escort you to Ctesiphon.",
+"solues_talk_quest_given",[]],
+
+[anyone|plyr,"solues_ask_1",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_mother, 2),
+  (neg|hero_can_join, "p_main_party"),
+], "I want to escort you, but I do not have room in my party right now.",
+"solus_no_room",[]],
+
+[anyone,"solus_no_room",[], "I see. I will be here when you have made space. Do not take too long; I am not a patient man.",
+"close_window",[]],
+
+
+[anyone|plyr,"solues_ask_1",[
+], "Nothing for now. Farewell.",
+"close_window",[]],
+
+[anyone|plyr,"solues_talk_14",[], "I will listen. Tell me your story.",
+"solues_talk_y",[]],
+[anyone|plyr,"solues_talk_14",[], "I am sorry, but I do not have time for stories right now.",
+"solues_talk_14_n",[]],
+
+[anyone,"solues_talk_14_n",[], "Of course. No one ever has time for an old man's regrets. Farewell.",
+"close_window",[]],
+
+[anyone,"solues_talk_y",[], "I am Solus Monachus. My father was a freed slave; my mother, the daughter of a poor landowner. My name, 'Monachus,' means 'the lonely one.' A fitting irony, as I have been alone for most of my life, even when surrounded by the chaotic crowd of my family. We all lived together in a crumbling house on the outskirts of Alexandria. My father was a good man, but utterly useless. He let the house fall to ruin around us. My family was... loud, and grasping, and horrible. Perhaps that is why I retreated into the world of the mind.",
+"solues_talk_y_1",[]],
+
+[anyone,"solues_talk_y_1",[], "My parents did one thing right: they sent me to school. I learned my letters, my numbers. They even paid for a higher education. I became a scribe for the local administration—a mind-numbingly dull job that gave me ample time to haunt the halls of the Museion. I devoured the great thinkers, from Socrates to Euclid, searching for order in a chaotic world.",
+"solues_talk_y_2",[]],
+
+[anyone,"solues_talk_y_2",[], "It was during this time that I fell in love. She was a Roman noblewoman. I tried to win her heart with poetry and philosophy. But I was just a distraction for her. I watched as the decadent rot of Roman society consumed her. Oh, how I despise the Romans! Their society turns men into arrogant brutes and women into drunken fools. She became addicted to wine and denied it to the very end. I finally gave up and walked away.",
+"solues_talk_y_3",[]],
+
+[anyone,"solues_talk_y_3",[], "I buried myself in my work, eventually getting a position here at the Museion. I spent my days copying scrolls, and my nights conducting experiments. I was the only one who bothered. I lived modestly and saved a small fortune. And then... I met another woman. A Parthian. She was beautiful, exotic, and she knew it. I fell for her completely. She wanted gifts. I gave her my wealth. She wanted more. I gave her my house. I lost everything. And in return? A few kisses, and the most awkward, disappointing sex imaginable.",
+"solues_talk_y_4",[]],
+
+[anyone,"solues_talk_y_4",[], "So, I was homeless. The director of the library took pity on me and allowed me to live here, in these dusty rooms. Years passed. My research continued. I made discoveries, but understood little. And then, I met her. She was the daughter of Illyrian grain traders who had built an empire from nothing. She was born here, in Alexandria. Her parents were clever; they tried to shield her from the corrupting influence of high society. I am not sure they succeeded.",
+"solues_talk_y_5",[]],
+
+[anyone,"solues_talk_y_5",[], "We met at a festival at the Museion. I fell in love instantly. Having learned nothing from my past, I confessed my feelings. She told me she was married, but she agreed to meet with me. She was... remarkable. As intelligent as Hypatia, as beautiful as Aphrodite, with the ambition of Alexander himself. Her parents' wealth was not enough for her; she built her own trade network, dealing in incense and opium from the East.",
+"solues_talk_y_6",[]],
+
+[anyone,"solues_talk_y_6",[], "She seemed to feel no pain, no fatigue. She worked relentlessly. I taught her everything I knew. But her husband... he discovered our meetings. He accused her of adultery. It was ironic; our relationship was one of the mind, we had never touched. He refused to believe it. What happened next... is another story. But she died. He inherited everything. A year later, he lost it all to a woman who was likely the same Parthian who had ruined me. Fortuna has a cruel sense of humor.",
+"solues_talk_y_7",[]],
+
+[anyone,"solues_talk_y_7",[], "Since then, I have focused only on my work, trying to forget. But now, I face a new trouble. And for once, it is not caused by a woman.",
+"solues_talk_y_8",[
   (troop_set_slot, "$g_talk_troop", slot_troop_mother, 1),
-  ]],
-[anyone|plyr,"solues_talk_y_8",[], "A pathetic story. And your recent troubles?", "solues_talk_z",[]],
+]],
 
-[anyone|plyr,"solues_talk_y_8",[], "A sad tale, but now I have to leave", "solues_talk_y_leave",[]],
+[anyone|plyr,"solues_talk_y_8",[], "A pathetic story. Now, what is this new trouble of yours?", "solues_talk_z",[]],
 
-[anyone,"solues_talk_y_leave",[], "Thank you for listening to my story. Now farewell friend.", "close_window",[]],
+[anyone|plyr,"solues_talk_y_8",[], "That is a sad tale. But I must be on my way.", "solues_talk_y_leave",[]],
 
-[anyone,"solues_talk_z",[], "Very well. I will tell you. I have been accused by several people to be a Christ. Those people dislike me because I don't like to follow the old ways, like doing no experiments.\
- Several false rumors have been spread about me. It has become worse to the point where I have to fear for my life whenever I leave the library.\
- I tried to defend myself against these accusations, but I failed. I don't want to be kllied by a mob of fanatic idiots.", "solues_talk_z2",[]],
-[anyone|plyr,"solues_talk_z2",[], "Understandable. Is there anyway I could help you?", "solues_talk_z3",[]],
+[anyone,"solues_talk_y_leave",[], "Thank you for lending an old man your ear. Farewell.", "close_window",[]],
 
-[anyone,"solues_talk_z3",[], "Yes, yes. I have an offer for you: I will teach you my whole knowledge if you bring me opium.", "solues_talk_z4",[]],
+[anyone,"solues_talk_z",[], "Very well. I have been accused of being a 'Chrestian.' My colleagues, jealous of my methods and resentful of my refusal to honor their dusty traditions, have spread rumors. They whisper that my experiments are a form of dark magic. The whispers have grown to shouts. Now, I fear for my life every time I step outside this library. I do not wish to be torn apart by a mob of superstitious fools.",
+"solues_talk_z2",[]],
 
-[anyone|plyr,"solues_talk_z4",[], "Why do you need opium? And what is that actually?", "solues_talk_z5",[]],
+[anyone|plyr,"solues_talk_z2",[], "That's horrible. How can I help you?", "solues_talk_z3",[]],
+[anyone|plyr,"solues_talk_z2",[], "Maybe I can help you?", "solues_talk_z3",[]],
 
-[anyone,"solues_talk_z5",[], "Opium is obtained from the seed of the opium poppy. It is usually use as medicine. But I know how to get really, really high with it.\
- My plan is then as follows: I get as high as I can and then I will kill myself with poisoned wine.", "solues_talk_z6",[]],
+[anyone,"solues_talk_z3",[], "You can. I have a proposal. I will teach you everything I know—my discoveries, my theories, my life's work. In exchange, you will bring me opium.",
+"solues_talk_z4",[]],
 
-[anyone|plyr,"solues_talk_z6",[], "Fuck, what? Although you are old I am sure you still have some years left. I could help you to escape from Alexandria and buy you a small estate near Rome or so. Life is too valuable to just give up.", "solues_talk_z71",[]],
-[anyone,"solues_talk_z71",[], "Ah, you are right. I am a fool. But I can't go to Rome. Bring me to Ctesiphon, there I will join a caravan travelling East. I always wanted to visit the land behind the river Indus.", "solues_talk_z7",[]],
-[anyone|plyr,"solues_talk_z7",[(hero_can_join, "p_main_party"),], "Sure, I will bring you there.", "solues_talk_quest_given",[]],
+[anyone|plyr,"solues_talk_z4",[], "Why do you need opium? What is it?",
+"solues_talk_z5",[]],
+[anyone|plyr,"solues_talk_z4",[], "By the gods for what do you need that?",
+"solues_talk_z5",[]],
 
-[anyone,"solues_talk_quest_given",[], "Good. As reward, once we reached Ctesiphon, I will teach you everything I know.", "close_window",[
+[anyone,"solues_talk_z5",[], "It is the milk of the poppy, a powerful medicine. But in the right dose, it is also a key that unlocks the door from this world to the next. My plan is simple. I will use the opium to achieve a state of... blissful detachment. Then, I will drink a cup of poisoned wine and end this miserable existence on my own terms.",
+"solues_talk_z6",[]],
+
+[anyone|plyr,"solues_talk_z6",[], "What? No! Your life is not over. You are a brilliant man. To give up now is a waste. Let me help you escape Alexandria. I can buy you an estate near Rome.",
+"solues_talk_z71",[]],
+
+[anyone,"solues_talk_z71",[], "Ah... you are right. A moment of weakness. Forgive me. But I cannot go to Rome; it is the heart of the beast. No... take me east. Take me to Ctesiphon. From there, I can join a caravan and travel to the lands beyond the Indus. I have always wanted to see their stars.",
+"solues_talk_z7",[]],
+
+[anyone|plyr,"solues_talk_z7",[
+  (hero_can_join, "p_main_party"),
+], "Of course. I will take you to Ctesiphon.",
+"solues_talk_quest_given",[]],
+
+[anyone,"solues_talk_quest_given",[
+], "Thank you. When we reach Ctesiphon, I will give you my scrolls. My life's work will be yours.", "close_window",[
   (troop_set_slot, "$g_talk_troop", slot_troop_mother, 3),
-    (str_store_troop_name, s1, "$g_talk_troop"),
-    (str_store_string, s2, "@{s1} asked you to escort him to Ctesiphon. If you finish successfully, he will teach you his knowledge."),
-    (display_message, "str_quest_updated"),
-    (quest_set_slot, "qst_philosopher", slot_quest_current_state, 1),
-    (quest_set_slot, "qst_philosopher", slot_quest_expiration_days, 120),
-    (call_script, "script_start_quest", "qst_philosopher", "trp_fortuna"),
-    (troop_join, "$g_talk_troop"),
-    (jump_to_menu, "mnu_town"),
-    (finish_mission),
-  ]],
+  (str_store_troop_name, s1, "$g_talk_troop"),
+  (str_store_string, s2, "@{s1} asked you to escort him to Ctesiphon. If you finish successfully, he will teach you his knowledge."),
+  (display_message, "str_quest_updated"),
+  (quest_set_slot, "qst_philosopher", slot_quest_current_state, 1),
+  (quest_set_slot, "qst_philosopher", slot_quest_expiration_days, 120),
+  (call_script, "script_start_quest", "qst_philosopher", "$g_talk_troop"),
+  (troop_join, "$g_talk_troop"),
+  (jump_to_menu, "mnu_town"),
+  (mission_disable_talk),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+  (finish_mission, 4),
+]],
 
-[anyone|plyr,"solues_talk_z7",[(neg|hero_can_join, "p_main_party"),], "I don't have enough space in my party.", "solues_talk_z7_1",[(troop_set_slot, "$g_talk_troop", slot_troop_mother, 2),]],
+[anyone|plyr,"solues_talk_z7",[
+  (neg|hero_can_join, "p_main_party"),
+], "I do not have room in my party right now.", "solues_talk_z7_1",[
+  (troop_set_slot, "$g_talk_troop", slot_troop_mother, 2),
+]],
 
-[anyone|plyr,"solues_talk_z7",[], "I will have to think about it.", "solues_talk_z7_1",[(troop_set_slot, "$g_talk_troop", slot_troop_mother, 2),]],
-[anyone,"solues_talk_z7_1",[], "Well, then farewell.", "close_window",[]],
+[anyone|plyr,"solues_talk_z7",[], "I need to think on this.",
+"solues_talk_z7_1",[
+  (troop_set_slot, "$g_talk_troop", slot_troop_mother, 2),
+]],
+
+[anyone,"solues_talk_z7_1",[], "I understand. Farewell, then.", "close_window",[]],
 # end solus monachus
 
 ## tigellinius fall back
@@ -99213,7 +99307,9 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [anyone,"bacchus_2talk_4",[], "That shield was a present, but I am not a warrior. I hate war. It's so unpleasant for everybody. I am a person who likes pleasant and beautiful things. And war is certainly not beautiful. But as you've noted, the shield looks good and it serves me well as plate.",
   "bacchus_2talk_5",[]],
 
-[anyone|plyr,"bacchus_2talk_5",[], "Interesting. Might I ask, could I buy this shield? I am a warrior, a son of Mars, and I could use it in the field.",
+[anyone|plyr,"bacchus_2talk_5",[], "Might I ask, could I buy this shield?",
+  "bacchus_2talk_6",[]],
+[anyone|plyr,"bacchus_2talk_5",[], "I am a warrior, a son of Mars, and I could use it. Maybe you want to sell it?",
   "bacchus_2talk_6",[]],
 
 [anyone,"bacchus_2talk_6",[], "You want to buy my shield? I have no need of money. So I must refuse.",
@@ -99221,11 +99317,15 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [anyone|plyr,"bacchus_2talk_7",[], "Hmm, is there anything else I could do to get your shield?",
   "bacchus_2talk_8",[]],
+[anyone|plyr,"bacchus_2talk_7",[], "But is there not something else you may need?",
+  "bacchus_2talk_8",[]],
 
 [anyone,"bacchus_2talk_8",[], "You really want my shield, don't you? Well, there's something could do for me. If you succeed I will give you my shield as reward.",
   "bacchus_2talk_9",[]],
 
 [anyone|plyr,"bacchus_2talk_9",[], "That sounds fair. Anything you wish, Dominus.",
+  "bacchus_2talk_10",[]],
+[anyone|plyr,"bacchus_2talk_9",[], "Sounds like we found an agreement.",
   "bacchus_2talk_10",[]],
 
 [anyone,"bacchus_2talk_10",[], "I want that you revoke a law in the senate which would allow us to celebrate parties as we did in the past. Listen carefully {playername}, I want you to revoke the law: 'Senatus consultum de Bacchanalibus'",
