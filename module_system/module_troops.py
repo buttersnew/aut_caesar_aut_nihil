@@ -6770,7 +6770,7 @@ def_attrib|level(4), wp(60), knows_common, 0x00000001a000e043489149aba26926d3000
 [itm_sarranid_cloth_robe_fancy_2, itm_maske,itm_female_caligea_gold],
 knight_attrib_5, wp(300), knight_skills_5, 0x0000000004011143589d69571ceabea1000000000015b7350000000000000000 ],
 
-["thusnelda", "Thusnelda the beautiful", "Thusnelda the beautiful", tf_hero|tf_female, no_scene, reserved, fac_neutral,
+["thusnelda", "Thusnelda the Beautiful", "Thusnelda the Beautiful", tf_hero|tf_female, no_scene, reserved, fac_neutral,
 [itm_caligea, itm_female_3_barb],
 def_attrib|level(1), wp(50), knows_common, 0x000000000004631c6c209c425cee48eb00000000001dd7930000000000000000 ],
 
