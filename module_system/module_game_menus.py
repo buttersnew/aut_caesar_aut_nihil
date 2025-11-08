@@ -3471,7 +3471,7 @@ game_menus = [
         (party_get_slot, ":duel_scene", ":closest_town", slot_town_arena),
       # (else_try), #SB : duels at castle arena
         # (is_between, ":closest_town", castles_begin, castles_end),
-        # (party_get_slot, ":duel_scene", ":closest_town", slot_castle_exterior),
+        # (party_get_slot, ":duel_scene", ":closest_town", slot_town_center),
       (else_try),
         (party_get_current_terrain, ":terrain", "p_main_party"),
         (eq, ":terrain", rt_snow),
@@ -4242,12 +4242,12 @@ game_menus = [
     #   (else_try),
     #       (eq, "$g_encounter_type", enctype_fighting_against_village_raid),
     #       (set_jump_mission,"mt_village_raid"),
-    #       (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+    #       (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_town_center),
     #       (jump_to_scene, ":scene_to_use"),
     #   (else_try),
     #       (eq, "$g_encounter_type", enctype_catched_during_village_raid),
     #       (set_jump_mission,"mt_village_raid"),
-    #       (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+    #       (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_town_center),
     #       (jump_to_scene, ":scene_to_use"),
     # # (else_try),
     #   # (this_or_next|eq, ":terrain_type", rt_desert),
@@ -4317,12 +4317,12 @@ game_menus = [
     #   (try_begin),
     #       (eq, "$g_encounter_type", enctype_fighting_against_village_raid),
     #       (set_jump_mission,"mt_village_raid"),
-    #       (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+    #       (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_town_center),
     #       (jump_to_scene, ":scene_to_use"),
     #   (else_try),
     #       (eq, "$g_encounter_type", enctype_catched_during_village_raid),
     #       (set_jump_mission,"mt_village_raid"),
-    #       (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+    #       (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_town_center),
     #       (jump_to_scene, ":scene_to_use"),
     #   (else_try),
     #       (set_jump_mission,"mt_ship_battle"),
@@ -5964,12 +5964,12 @@ game_menus = [
     (try_begin),
       (eq, "$g_encounter_type", enctype_fighting_against_village_raid),
       (set_jump_mission,"mt_village_raid"),
-      (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+      (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_town_center),
       (jump_to_scene, ":scene_to_use"),
     (else_try),
       (eq, "$g_encounter_type", enctype_catched_during_village_raid),
       (set_jump_mission,"mt_village_raid"),
-      (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+      (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_town_center),
       (jump_to_scene, ":scene_to_use"),
     (else_try),
     #Wulf
@@ -6031,12 +6031,12 @@ game_menus = [
       (try_begin),
         (eq, "$g_encounter_type", enctype_fighting_against_village_raid),
         (set_jump_mission,"mt_village_raid"),
-        (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+        (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_town_center),
         (jump_to_scene, ":scene_to_use"),
       (else_try),
         (eq, "$g_encounter_type", enctype_catched_during_village_raid),
         (set_jump_mission,"mt_village_raid"),
-        (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_castle_exterior),
+        (party_get_slot, ":scene_to_use", "$g_encounter_is_in_village", slot_town_center),
         (jump_to_scene, ":scene_to_use"),
       # (else_try),
         # (this_or_next|eq, ":terrain_type", rt_desert),
@@ -6623,7 +6623,7 @@ game_menus = [
         (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
         (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_walls),
       (else_try),
-        (party_get_slot, ":battle_scene", "$g_encountered_party", slot_castle_exterior),
+        (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_center),
       (try_end),
       (call_script, "script_calculate_battle_advantage"),
       (val_mul, reg0, 2),
@@ -7546,7 +7546,7 @@ game_menus = [
             # (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
             # (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_walls),
           # (else_try),
-            # (party_get_slot, ":battle_scene", "$g_encountered_party", slot_castle_exterior),
+            # (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_center),
           # (try_end),
           (call_script, "script_calculate_battle_advantage"),
           (assign, ":battle_advantage", reg0),
@@ -8502,7 +8502,7 @@ game_menus = [
             (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
             (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_walls),
           (else_try),
-            (party_get_slot, ":battle_scene", "$g_encountered_party", slot_castle_exterior),
+            (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_center),
           (try_end),
 
           (call_script, "script_calculate_renown_value"),
@@ -9664,7 +9664,7 @@ game_menus = [
     ],
     [
       ##      ("lead_next_wave",[(eq, "$no_soldiers_left", 0)],"Lead the next wave of attack personally.", [
-      ##           (party_get_slot, ":battle_scene", "$g_encountered_party", slot_castle_exterior),
+      ##           (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_center),
       ##           (set_party_battle_mode),
       ##           (set_jump_mission,"mt_castle_attack_walls"),
       ##           (jump_to_scene,":battle_scene"),
@@ -9958,7 +9958,7 @@ game_menus = [
         (eq, "$plunder_battle_shown", 0),
         (assign, "$plunder_battle_shown", 1),
         (party_clear, "$g_encountered_party"),
-        (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_castle_exterior),
+        (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_town_center),
         (modify_visitors_at_site, ":exterior_scene"),
         (reset_visitors),
 		    (party_get_slot, ":wealthy_pop", "$g_encountered_party", slot_town_prosperity),#
@@ -10364,7 +10364,7 @@ game_menus = [
         (eq, "$plunder_battle_shown", 0),
         (assign, "$plunder_battle_shown", 1),
         (party_clear, "$g_encountered_party"),
-        (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_castle_exterior),
+        (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_town_center),
         (modify_visitors_at_site, ":exterior_scene"),
         (reset_visitors),
         (party_get_slot, ":wealthy_pop", "$g_encountered_party", slot_town_prosperity),#
@@ -11255,7 +11255,7 @@ game_menus = [
             (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
             (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_walls),
           (else_try),
-            (party_get_slot, ":battle_scene", "$g_encountered_party", slot_castle_exterior),
+            (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_center),
           (try_end),
           (call_script, "script_calculate_battle_advantage"),
           (val_mul, reg0, 2),
@@ -11283,7 +11283,7 @@ game_menus = [
         # (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
         # (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_walls),
       # (else_try),
-        # (party_get_slot, ":battle_scene", "$g_encountered_party", slot_castle_exterior),
+        # (party_get_slot, ":battle_scene", "$g_encountered_party", slot_town_center),
       # (try_end),
       (call_script, "script_calculate_battle_advantage"),
       (val_mul, reg0, 2),
@@ -11913,7 +11913,7 @@ game_menus = [
       (try_begin),
         (call_script, "script_cf_enter_center_location_bandit_check"),
       (else_try),
-        (party_get_slot, ":village_scene", "$current_town", slot_castle_exterior),
+        (party_get_slot, ":village_scene", "$current_town", slot_town_center),
         (modify_visitors_at_site,":village_scene"),
         (reset_visitors),
         (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
@@ -12002,7 +12002,7 @@ game_menus = [
       (try_begin),
         (call_script, "script_cf_enter_center_location_bandit_check"),
       (else_try),
-        (party_get_slot, ":village_scene", "$current_town", slot_castle_exterior),
+        (party_get_slot, ":village_scene", "$current_town", slot_town_center),
         (modify_visitors_at_site,":village_scene"),
         (reset_visitors),
         (party_get_slot, ":village_elder_troop", "$current_town",slot_town_elder),
@@ -12081,7 +12081,7 @@ game_menus = [
       (neg|party_slot_eq, "$current_town", slot_village_infested_by_bandits, "trp_peasant_woman"),
     ],"Attack the bandits.",[
       (party_get_slot, ":bandit_troop", "$current_town", slot_village_infested_by_bandits),
-      (party_get_slot, ":scene_to_use", "$current_town", slot_castle_exterior),
+      (party_get_slot, ":scene_to_use", "$current_town", slot_town_center),
       (modify_visitors_at_site,":scene_to_use"),
       (reset_visitors),
       (set_visitors, 0, ":bandit_troop", "$qst_eliminate_bandits_infesting_village_num_bandits"),
@@ -12199,7 +12199,7 @@ game_menus = [
       (set_party_battle_mode),
       (assign, "$g_battle_result", 0),
       (set_jump_mission,"mt_village_raid"),
-      (party_get_slot, ":scene_to_use", "$current_town", slot_castle_exterior),
+      (party_get_slot, ":scene_to_use", "$current_town", slot_town_center),
       (jump_to_scene, ":scene_to_use"),
       (assign, "$g_next_menu", "mnu_dplmc_village_riot_result"),
 
@@ -13696,7 +13696,7 @@ game_menus = [
           (set_party_battle_mode),
           (assign, "$g_battle_result", 0),
           (set_jump_mission,"mt_village_raid"),
-          (party_get_slot, ":scene_to_use", "$current_town", slot_castle_exterior),
+          (party_get_slot, ":scene_to_use", "$current_town", slot_town_center),
           (jump_to_scene, ":scene_to_use"),
           (assign, "$g_next_menu", "mnu_village_start_attack"),
 
@@ -14089,7 +14089,7 @@ game_menus = [
     ("test_scene",[
       (ge, "$cheat_mode", 1),
     ],"Test scene",[
-      (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_castle_exterior),
+      (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_town_center),
       (modify_visitors_at_site, ":exterior_scene"),
       (jump_to_scene, ":exterior_scene"),
       (change_screen_mission),
@@ -14110,7 +14110,7 @@ game_menus = [
     ],"Leave."),
     ("enter_hofho",[
     ],"Visit the sanctuary.",[
-      (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_castle_exterior),
+      (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_town_center),
       (modify_visitors_at_site, ":exterior_scene"),
       (reset_visitors),
       # Setup priest walkers
@@ -14265,7 +14265,7 @@ game_menus = [
   ],[
     ("attack", [], "Give order to attack!", [
       (party_clear, "$g_encountered_party"),
-      (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_castle_exterior),
+      (party_get_slot, ":exterior_scene", "$g_encountered_party", slot_town_center),
       (modify_visitors_at_site, ":exterior_scene"),
       (reset_visitors),
       (assign, ":num_priest", 5),
@@ -16234,7 +16234,7 @@ game_menus = [
           (eq, "$talk_context", tc_prison_break),
           (assign, "$talk_context", tc_escape),
 
-          (party_get_slot, ":cur_castle_exterior", "$current_town", slot_castle_exterior),
+          (party_get_slot, ":cur_castle_exterior", "$current_town", slot_town_center),
           (modify_visitors_at_site, ":cur_castle_exterior"),
           (reset_visitors),
 
@@ -16296,7 +16296,7 @@ game_menus = [
 
           (assign, "$g_mt_mode", tcm_default),
 
-          (party_get_slot, ":cur_castle_exterior", "$current_town", slot_castle_exterior),
+          (party_get_slot, ":cur_castle_exterior", "$current_town", slot_town_center),
           (modify_visitors_at_site,":cur_castle_exterior"),
           (reset_visitors),
 
@@ -18242,7 +18242,7 @@ game_menus = [
           (party_slot_eq, ":target_center", slot_party_type, spt_town),
           (party_get_slot, ":town_alley", ":target_center", slot_town_center),
         (else_try),
-          (party_get_slot, ":town_alley", ":target_center", slot_castle_exterior),
+          (party_get_slot, ":town_alley", ":target_center", slot_town_center),
         (try_end),
         (modify_visitors_at_site,":town_alley"),
         (reset_visitors),
@@ -18363,7 +18363,7 @@ game_menus = [
        [
          (set_jump_mission,"mt_village_training"),
          (quest_get_slot, ":target_center", "qst_train_peasants_against_bandits", slot_quest_target_center),
-         (party_get_slot, ":village_scene", ":target_center", slot_castle_exterior),
+         (party_get_slot, ":village_scene", ":target_center", slot_town_center),
          (modify_visitors_at_site, ":village_scene"),
          (reset_visitors),
          (set_visitor, 0, "trp_player"),
@@ -18432,7 +18432,7 @@ game_menus = [
         # (try_end),
         (call_script, "script_center_get_bandits", "$current_town", 0),
         (assign, ":bandit_troop", reg0),
-        (party_get_slot, ":scene_to_use", "$g_encountered_party", slot_castle_exterior),
+        (party_get_slot, ":scene_to_use", "$g_encountered_party", slot_town_center),
         (modify_visitors_at_site, ":scene_to_use"),
         (reset_visitors),
         (store_character_level, ":level", "trp_player"),
@@ -26686,7 +26686,7 @@ game_menus = [
         [
           # (try_begin),
             # (party_slot_eq, "$current_town",slot_party_type, spt_castle),
-            # (party_get_slot, ":scene", "$current_town", slot_castle_exterior),
+            # (party_get_slot, ":scene", "$current_town", slot_town_center),
           # (else_try),
             # (party_get_slot, ":scene", "$current_town", slot_town_center),
           # (try_end),
@@ -35718,7 +35718,7 @@ game_menus = [
   ],[
   ("answere_1",[
   ],"Explore.",[
-    #(party_get_slot, ":scene_to_use", "$g_encountered_party", slot_castle_exterior),
+    #(party_get_slot, ":scene_to_use", "$g_encountered_party", slot_town_center),
     (modify_visitors_at_site, "scn_sartemis"),
     (reset_visitors),
     (set_jump_mission, "mt_visit_sartemis"),
@@ -36228,7 +36228,7 @@ game_menus = [
               (assign, ":scene_to_use", "scn_mine_plain"),
           (try_end),
 
-          #(party_get_slot, ":scene_to_use", "$g_encountered_party", slot_castle_exterior),
+          #(party_get_slot, ":scene_to_use", "$g_encountered_party", slot_town_center),
           (modify_visitors_at_site, ":scene_to_use"),
           (reset_visitors),
           (set_visitor, 3, "trp_mine_boss"),
@@ -44239,7 +44239,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("deffend_yr",[],"Defend yourself.",[
       (try_begin),
         (party_slot_eq, "$current_town", slot_party_type, spt_village),
-        (party_get_slot, ":cur_scene", "$current_town", slot_castle_exterior),
+        (party_get_slot, ":cur_scene", "$current_town", slot_town_center),
       (else_try),
         (party_get_slot, ":cur_scene", "$current_town", slot_town_center),
       (try_end),
@@ -44410,7 +44410,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$plunder_battle_shown", 0),
       (assign, "$plunder_battle_shown", 1),
       (party_clear, "$current_town"),
-      (party_get_slot, ":exterior_scene", "$current_town", slot_castle_exterior),
+      (party_get_slot, ":exterior_scene", "$current_town", slot_town_center),
       (modify_visitors_at_site, ":exterior_scene"),
       (reset_visitors),
       (party_get_slot, ":wealthy_pop", "$current_town", slot_town_prosperity),#
@@ -48360,7 +48360,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ##61 mercenary in tavern
     ##62 quaestor
 
-    (party_get_slot, ":scene", "$g_encountered_party",  slot_castle_exterior),
+    (party_get_slot, ":scene", "$g_encountered_party",  slot_town_center),
     (modify_visitors_at_site,":scene"),
     (set_jump_mission,"mt_latifundium"),
     (reset_visitors, 0),
@@ -48629,7 +48629,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ("visit",[
     (ge, "$cheat_mode", 1),
   ],"Test the scene.",[
-    (party_get_slot, ":scene", "$g_encountered_party",  slot_castle_exterior),
+    (party_get_slot, ":scene", "$g_encountered_party",  slot_town_center),
     (jump_to_scene, ":scene"),
     (change_screen_mission),
   ]),
@@ -49201,7 +49201,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       # ],"Test Names",
       # [
       # (try_for_range, ":village", villages_begin, villages_end),
-        # (party_get_slot, reg4, ":village", slot_castle_exterior),
+        # (party_get_slot, reg4, ":village", slot_town_center),
         # (party_set_name, ":village", "@Scene_ {reg4}"),
       # (try_end),
         # ]
@@ -53653,7 +53653,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
     (assign, "$talk_context", 0),#fix a possible bug
 
-    (party_get_slot,":scene_to_use", ":center", slot_castle_exterior),
+    (party_get_slot,":scene_to_use", ":center", slot_town_center),
     (jump_to_scene, ":scene_to_use"),
     (modify_visitors_at_site,":scene_to_use"),
     (reset_visitors),

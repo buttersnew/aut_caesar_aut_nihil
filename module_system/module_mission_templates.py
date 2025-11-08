@@ -16924,7 +16924,9 @@ mission_templates = [
   ]
   + theoris_decapitation
   + ai_horn
-  + utility_triggers + battle_panel_triggers + extended_battle_menu
+  # + utility_triggers
+  + battle_panel_triggers
+  # + extended_battle_menu
   + dplmc_battle_mode_triggers
   + auxiliary_player
   + camera_controls
@@ -21166,10 +21168,9 @@ mission_templates = [
             (call_script, "script_change_senate_support", -100, 0),
         (try_end),
 
-        (try_begin),
-            (party_slot_eq, "p_town_6", slot_center_rome_rebuild, 0),
-            (party_set_icon, "p_town_6", "icon_town_rome_after_fire"),
-        (try_end),
+        (call_script, "script_set_icon_for_walled_center", "fac_culture_roman", "p_town_6"),
+
+
         (call_script, "script_get_event_details", event_fire_of_rome),
         (call_script, "script_change_center_prosperity", "p_town_6", reg1),
         (party_set_slot, "p_town_6", slot_center_event, event_fire_of_rome),

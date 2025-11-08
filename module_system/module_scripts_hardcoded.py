@@ -1177,115 +1177,25 @@ scripts_hardcoded = [
     (party_set_slot, "p_pyramids", slot_center_culture,  "fac_culture_parthian"),
     (party_set_slot, "p_forest", slot_center_culture,  "fac_culture_germanic"),
 
-    #icons
-    ###center rebellions (only for barbarians)
-    #centers that can rebell:
-    #germania: p_town_15, p_town_45, p_castle_50, p_castle_32, p_castle_33, p_castle_51, p_castle_52, p_town_23, p_castle_22, p_castle_49, p_castle_8, p_castle_36
-    #britannia: p_town_43, p_town_1, p_town_24, p_town_44, p_castle_14, p_castle_5
-    #steppelands: p_town_7, p_town_28, p_town_41, p_town_25, p_castle_21
-    #dacia: p_town_9, p_town_11, p_town_42, p_castle_19, p_castle_7, p_castle_18, p_castle_17
-    (try_for_range, ":party", towns_begin, towns_end),
-        (store_faction_of_party, ":faction2", ":party"),
-        (faction_get_slot, ":faction", ":faction2", slot_faction_culture),
+    #icons and rebellion flag
+    (try_for_range, ":party", walled_centers_begin, walled_centers_end),
+        (store_faction_of_party, ":cur_faction", ":party"),
+        (faction_get_slot, ":culture_no", ":cur_faction", slot_faction_culture),
         (try_begin),
-            (eq, ":party", "p_town_37"),
-            (party_set_icon, ":party", "icon_town_athen"),
-        (else_try),
-            (eq, ":party", "p_town_19"),
-            (party_set_icon, ":party", "icon_town_jerusalem_temple"),
-        (else_try),
-            (eq, ":party", "p_town_6"),
-            (party_set_icon, ":party", "icon_town_rome_before_fire"),
-        (else_try),
-            (eq, ":party", "p_town_20"),
-            (party_set_icon, ":party", "icon_town_alexandria"),
-        (else_try),
-            (eq, ":faction", "fac_culture_dacian"),
-            (party_set_icon, ":party", "icon_opidumn_rock_Reduced"),
+            (eq, ":culture_no", "fac_culture_dacian"),
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
-            (this_or_next|eq, ":faction", "fac_culture_celtic"),
-            (eq, ":faction", "fac_culture_caledonian"),
-            (party_set_icon, ":party", "icon_opidumn_wood_br1_Reduced"),
+            (this_or_next|eq, ":culture_no", "fac_culture_celtic"),
+            (eq, ":culture_no", "fac_culture_caledonian"),
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
-            (eq, ":faction", "fac_culture_sarmatian"),
-            (party_set_icon, ":party", "icon_opidumn_wood_dc1_Reduced"),
+            (eq, ":culture_no", "fac_culture_sarmatian"),
             (party_set_slot, ":party", slot_center_can_rebell, 1),
         (else_try),
-            (eq, ":faction", "fac_culture_germanic"),
-            (party_set_icon, ":party", "icon_opidumn_wood_gl1_Reduced"),
+            (eq, ":culture_no", "fac_culture_germanic"),
             (party_set_slot, ":party", slot_center_can_rebell, 1),
-        (else_try),
-            (this_or_next|eq, ":faction", "fac_culture_syrian"),
-            (this_or_next|eq, ":faction", "fac_culture_egyptian"),
-            (this_or_next|eq, ":faction", "fac_culture_greek"),
-            (eq, ":faction", "fac_culture_caucasian"),
-            (party_set_icon, ":party", "icon_town_greek"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (else_try),
-            (eq, ":faction", "fac_culture_parthian"),
-            (party_set_icon, ":party", "icon_town_persian"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (else_try),
-            (eq, ":faction", "fac_culture_roman"),
-            (party_set_icon, ":party", "icon_town_roman"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (else_try),
-            (eq, ":faction", "fac_culture_judean"),
-            (party_set_icon, ":party", "icon_town_greek"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (else_try),
-            (eq, ":faction", "fac_culture_bosporan"),
-            (party_set_icon, ":party", "icon_town_greek"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
         (try_end),
-    (try_end),
-
-    (try_for_range, ":party", castles_begin, castles_end),
-        (store_faction_of_party, ":faction2", ":party"),
-        (faction_get_slot, ":faction", ":faction2", slot_faction_culture),
-        (try_begin),
-            (eq, ":faction", "fac_culture_dacian"),
-            (party_set_icon, ":party", "icon_opidumn_rock1_Reduced"),
-            (party_set_slot, ":party", slot_center_can_rebell, 1),
-        (else_try),
-            (this_or_next|eq, ":faction", "fac_culture_celtic"),
-            (eq, ":faction", "fac_culture_caledonian"),
-            (party_set_icon, ":party", "icon_opidumn_wood_br_Reduced"),
-            (party_set_slot, ":party", slot_center_can_rebell, 1),
-        (else_try),
-            (eq, ":faction", "fac_culture_sarmatian"),
-            (party_set_icon, ":party", "icon_opidumn_wood_dc_Reduced"),
-            (party_set_slot, ":party", slot_center_can_rebell, 1),
-        (else_try),
-            (eq, ":faction", "fac_culture_germanic"),
-            (party_set_icon, ":party", "icon_opidumn_wood_gl_Reduced"),
-            (party_set_slot, ":party", slot_center_can_rebell, 1),
-        (else_try),
-            (this_or_next|eq, ":faction", "fac_culture_syrian"),
-            (this_or_next|eq, ":faction", "fac_culture_egyptian"),
-            (this_or_next|eq, ":faction", "fac_culture_greek"),
-            (eq, ":faction", "fac_culture_caucasian"),
-            (party_set_icon, ":party", "icon_fort_greek"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (else_try),
-            (eq, ":faction", "fac_culture_parthian"),
-            (party_set_icon, ":party", "icon_fort_persian"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (else_try),
-            (eq, ":faction", "fac_culture_roman"),
-            (party_set_icon, ":party", "icon_fort_roman"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (else_try),
-            (eq, ":faction", "fac_culture_judean"),
-            (party_set_icon, ":party", "icon_fort_greek"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (else_try),
-            (eq, ":faction", "fac_culture_bosporan"),
-            (party_set_icon, ":party", "icon_fort_greek"),
-            (party_set_slot, ":party", slot_center_can_rebell, 0),
-        (try_end),
+        (call_script, "script_set_icon_for_walled_center", ":culture_no", ":party"),
     (try_end),
 
     #set original factions
@@ -2674,33 +2584,33 @@ scripts_hardcoded = [
     (try_for_range, ":castle_no", castles_begin, castles_end),#ich verwend die selben scenen, sonst werd ich wahnsinnig
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_greek"),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_roman"),
-        (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_1_exterior"),
+        (party_set_slot,":castle_no", slot_town_center, "scn_castle_1_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_1_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_1_prison"),
     (else_try),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_dacian"),
-        (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_2_exterior"),
+        (party_set_slot,":castle_no", slot_town_center, "scn_castle_2_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_2_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_2_prison"),
     (else_try),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_sarmatian"),
-        (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_3_exterior"),
+        (party_set_slot,":castle_no", slot_town_center, "scn_castle_3_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_3_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_3_prison"),
     (else_try),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_bosporan"),
-        (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_bosporan_ex"),
+        (party_set_slot,":castle_no", slot_town_center, "scn_castle_bosporan_ex"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_bosporan_in"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_bosporan_prison"),
     (else_try),
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_celtic"),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_caledonian"),
-        (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_4_exterior"),
+        (party_set_slot,":castle_no", slot_town_center, "scn_castle_4_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_4_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_4_prison"),
     (else_try),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_germanic"),
-        (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_5_exterior"),
+        (party_set_slot,":castle_no", slot_town_center, "scn_castle_5_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_5_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_5_prison"),
     (else_try),
@@ -2710,39 +2620,39 @@ scripts_hardcoded = [
         (this_or_next|party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_judean"),
         (party_slot_eq, ":castle_no", slot_center_culture, "fac_culture_parthian"),
 
-        (party_set_slot,":castle_no", slot_castle_exterior, "scn_castle_6_exterior"),
+        (party_set_slot,":castle_no", slot_town_center, "scn_castle_6_exterior"),
         (party_set_slot,":castle_no", slot_town_castle, "scn_castle_6_interior"),
         (party_set_slot,":castle_no", slot_town_prison, "scn_castle_6_prison"),
  	  (try_end),
 
-    (party_set_slot,"p_castle_41", slot_castle_exterior, "scn_roman_african_castle_ex"),
+    (party_set_slot,"p_castle_41", slot_town_center, "scn_roman_african_castle_ex"),
     (party_set_slot,"p_castle_41", slot_town_castle, "scn_castle_bosporan_in"),
     (party_set_slot,"p_castle_41", slot_town_prison, "scn_roman_african_castle_prison"),
 
-    (party_set_slot,"p_castle_35", slot_castle_exterior, "scn_salona_ex"),
+    (party_set_slot,"p_castle_35", slot_town_center, "scn_salona_ex"),
     (party_set_slot,"p_castle_35", slot_town_castle, "scn_salona_in"),
     (party_set_slot,"p_castle_35", slot_town_prison, "scn_salona_prison"),
 
-    (party_set_slot,"p_castle_14", slot_castle_exterior, "scn_castle_56_exterior"),
+    (party_set_slot,"p_castle_14", slot_town_center, "scn_castle_56_exterior"),
     (party_set_slot,"p_castle_14", slot_town_castle, "scn_castle_56_interior"),
     (party_set_slot,"p_castle_14", slot_town_prison, "scn_castle_56_prison"),
 
-    (party_set_slot,"p_castle_57", slot_castle_exterior, "scn_commu_exterrior"),
+    (party_set_slot,"p_castle_57", slot_town_center, "scn_commu_exterrior"),
     (party_set_slot,"p_castle_57", slot_town_castle, "scn_commu_interior"),
     (party_set_slot,"p_castle_57", slot_town_prison, "scn_commu_prison"),
 
-    (party_set_slot,"p_castle_30", slot_castle_exterior, "scn_arbela_exterior"),
+    (party_set_slot,"p_castle_30", slot_town_center, "scn_arbela_exterior"),
     (party_set_slot,"p_castle_30", slot_town_castle, "scn_arbela_interior"),
 
-    (party_set_slot,"p_castle_79", slot_castle_exterior, "scn_samosata_exterior"),
+    (party_set_slot,"p_castle_79", slot_town_center, "scn_samosata_exterior"),
     (party_set_slot,"p_castle_79", slot_town_castle, "scn_samosata_interior"),
     (party_set_slot,"p_castle_79", slot_town_prison, "scn_samosata_prison"),
 
-    (party_set_slot,"p_castle_65", slot_castle_exterior, "scn_susa_exterior"),
+    (party_set_slot,"p_castle_65", slot_town_center, "scn_susa_exterior"),
     (party_set_slot,"p_castle_65", slot_town_castle, "scn_samosata_interior"),
     (party_set_slot,"p_castle_65", slot_town_prison, "scn_samosata_prison"),
 
-    (party_set_slot,"p_castle_42", slot_castle_exterior, "scn_parthian_castle_ex"),
+    (party_set_slot,"p_castle_42", slot_town_center, "scn_parthian_castle_ex"),
     (party_set_slot,"p_castle_42", slot_town_castle, "scn_parthian_castle_in"),
     (party_set_slot,"p_castle_42", slot_town_prison, "scn_parthian_castle_pr"),
     ##germanic castles:
@@ -2757,43 +2667,43 @@ scripts_hardcoded = [
     #p_castle_8#
     #p_castle_36#
     #p_castle_22, only 22 uses generic castle
-    (party_set_slot,"p_castle_50", slot_castle_exterior, "scn_castle_500_exterior"),#
+    (party_set_slot,"p_castle_50", slot_town_center, "scn_castle_500_exterior"),#
     (party_set_slot,"p_castle_50", slot_town_castle, "scn_castle_500_interior"),
     (party_set_slot,"p_castle_50", slot_town_prison, "scn_castle_500_prison"),
 
-    (party_set_slot,"p_castle_51", slot_castle_exterior, "scn_castle_10_exterior"),#
+    (party_set_slot,"p_castle_51", slot_town_center, "scn_castle_10_exterior"),#
     (party_set_slot,"p_castle_51", slot_town_castle, "scn_castle_10_interior"),
     (party_set_slot,"p_castle_51", slot_town_prison, "scn_castle_10_prison"),
 
-    (party_set_slot,"p_castle_52", slot_castle_exterior, "scn_castle_germanic_east_ex"),#
+    (party_set_slot,"p_castle_52", slot_town_center, "scn_castle_germanic_east_ex"),#
     (party_set_slot,"p_castle_52", slot_town_castle, "scn_castle_germanic_east_in"),
     (party_set_slot,"p_castle_52", slot_town_prison, "scn_castle_germanic_east_prison"),
 
-    (party_set_slot,"p_castle_60", slot_castle_exterior, "scn_castle_germanic_sea_1_ex"),#
+    (party_set_slot,"p_castle_60", slot_town_center, "scn_castle_germanic_sea_1_ex"),#
     (party_set_slot,"p_castle_60", slot_town_castle, "scn_castle_germanic_sea_1_in"),
     (party_set_slot,"p_castle_60", slot_town_prison, "scn_castle_germanic_sea_1_prison"),
 
-    (party_set_slot,"p_castle_32", slot_castle_exterior, "scn_castle_11_exterior"),#
+    (party_set_slot,"p_castle_32", slot_town_center, "scn_castle_11_exterior"),#
     (party_set_slot,"p_castle_32", slot_town_castle, "scn_castle_11_interior"),
     (party_set_slot,"p_castle_32", slot_town_prison, "scn_castle_11_prison"),
 
-    (party_set_slot,"p_castle_53", slot_castle_exterior, "scn_castle_12_exterior"),#
+    (party_set_slot,"p_castle_53", slot_town_center, "scn_castle_12_exterior"),#
     (party_set_slot,"p_castle_53", slot_town_castle, "scn_castle_12_interior"),
     (party_set_slot,"p_castle_53", slot_town_prison, "scn_castle_12_prison"),
 
-    (party_set_slot,"p_castle_49", slot_castle_exterior, "scn_castle_32_exterior"),#
+    (party_set_slot,"p_castle_49", slot_town_center, "scn_castle_32_exterior"),#
     (party_set_slot,"p_castle_49", slot_town_castle, "scn_castle_32_interior"),
     (party_set_slot,"p_castle_49", slot_town_prison, "scn_castle_32_prison"),
 
-    (party_set_slot,"p_castle_33", slot_castle_exterior, "scn_castle_34_exterior"),#
+    (party_set_slot,"p_castle_33", slot_town_center, "scn_castle_34_exterior"),#
     (party_set_slot,"p_castle_33", slot_town_castle, "scn_castle_34_interior"),
     (party_set_slot,"p_castle_33", slot_town_prison, "scn_castle_34_prison"),
 
-    (party_set_slot,"p_castle_8", slot_castle_exterior, "scn_germanic_castle_1_exterior"),#
+    (party_set_slot,"p_castle_8", slot_town_center, "scn_germanic_castle_1_exterior"),#
     (party_set_slot,"p_castle_8", slot_town_castle, "scn_germanic_castle_1_interior"),
     (party_set_slot,"p_castle_8", slot_town_prison, "scn_germanic_castle_1_prison"),
 
-    (party_set_slot,"p_castle_36", slot_castle_exterior, "scn_germanic_castle_1_exterior"),#
+    (party_set_slot,"p_castle_36", slot_town_center, "scn_germanic_castle_1_exterior"),#
     (party_set_slot,"p_castle_36", slot_town_castle, "scn_germanic_castle_1_interior"),
     (party_set_slot,"p_castle_36", slot_town_prison, "scn_germanic_castle_1_prison"),
 
@@ -2806,41 +2716,41 @@ scripts_hardcoded = [
     #p_castle_45
     #p_castle_46
     #p_castle_44
-    (party_set_slot,"p_castle_40", slot_castle_exterior, "scn_castle_47_exterior"),
+    (party_set_slot,"p_castle_40", slot_town_center, "scn_castle_47_exterior"),
 
-    (party_set_slot,"p_castle_38", slot_castle_exterior, "scn_castle_30_exterior"),
+    (party_set_slot,"p_castle_38", slot_town_center, "scn_castle_30_exterior"),
     (party_set_slot,"p_castle_38", slot_town_castle, "scn_castle_30_interior"),
     (party_set_slot,"p_castle_38", slot_town_prison, "scn_castle_30_prison"),
 
-    (party_set_slot,"p_castle_55", slot_castle_exterior, "scn_castle_17_exterior"),
+    (party_set_slot,"p_castle_55", slot_town_center, "scn_castle_17_exterior"),
     (party_set_slot,"p_castle_55", slot_town_castle, "scn_castle_17_interior"),
     (party_set_slot,"p_castle_55", slot_town_prison, "scn_castle_17_prison"),
 
-    (party_set_slot,"p_castle_77", slot_castle_exterior, "scn_castle_17_exterior"),
+    (party_set_slot,"p_castle_77", slot_town_center, "scn_castle_17_exterior"),
     (party_set_slot,"p_castle_77", slot_town_castle, "scn_castle_17_interior"),
     (party_set_slot,"p_castle_77", slot_town_prison, "scn_castle_17_prison"),
 
-    (party_set_slot,"p_castle_68", slot_castle_exterior,"scn_castle_caucasus_exterior"),
+    (party_set_slot,"p_castle_68", slot_town_center,"scn_castle_caucasus_exterior"),
     (party_set_slot,"p_castle_68", slot_town_castle,    "scn_castle_caucasus_interior"),
     (party_set_slot,"p_castle_68", slot_town_prison,    "scn_castle_caucasus_prison"),
 
-    (party_set_slot,"p_castle_69", slot_castle_exterior,"scn_castle_caucasus_exterior"),
+    (party_set_slot,"p_castle_69", slot_town_center,"scn_castle_caucasus_exterior"),
     (party_set_slot,"p_castle_69", slot_town_castle,    "scn_castle_caucasus_interior"),
     (party_set_slot,"p_castle_69", slot_town_prison,    "scn_castle_caucasus_prison"),
 
-    (party_set_slot,"p_castle_70", slot_castle_exterior,"scn_castle_caucasus_exterior"),
+    (party_set_slot,"p_castle_70", slot_town_center,"scn_castle_caucasus_exterior"),
     (party_set_slot,"p_castle_70", slot_town_castle,    "scn_castle_caucasus_interior"),
     (party_set_slot,"p_castle_70", slot_town_prison,    "scn_castle_caucasus_prison"),
 
-    (party_set_slot,"p_castle_44", slot_castle_exterior, "scn_castle_masada_ex"),
+    (party_set_slot,"p_castle_44", slot_town_center, "scn_castle_masada_ex"),
     (party_set_slot,"p_castle_44", slot_town_castle, "scn_castle_masada_in"),
     (party_set_slot,"p_castle_44", slot_town_prison, "scn_castle_masada_prison"),
 
-    (party_set_slot,"p_castle_45", slot_castle_exterior, "scn_jotopata_ex"),
+    (party_set_slot,"p_castle_45", slot_town_center, "scn_jotopata_ex"),
     (party_set_slot,"p_castle_45", slot_town_castle, "scn_jotopata_in"),
     (party_set_slot,"p_castle_45", slot_town_prison, "scn_jotopata_prison"),
 
-    (party_set_slot,"p_castle_46", slot_castle_exterior, "scn_ceasarea_ex"),
+    (party_set_slot,"p_castle_46", slot_town_center, "scn_ceasarea_ex"),
     (party_set_slot,"p_castle_46", slot_town_castle, "scn_ceasarea_in"),
     (party_set_slot,"p_castle_46", slot_town_prison, "scn_ceasarea_prison"),
 
@@ -2848,72 +2758,72 @@ scripts_hardcoded = [
     (party_set_icon, "p_castle_45", "icon_fort_greek"),
     (party_set_icon, "p_castle_44", "icon_fort_greek"),
 
-    (party_set_slot,"p_castle_23", slot_castle_exterior, "scn_romanized_celt_castle_ext"),#londinium
+    (party_set_slot,"p_castle_23", slot_town_center, "scn_romanized_celt_castle_ext"),#londinium
     (party_set_slot,"p_castle_23", slot_town_castle, "scn_romanized_celt_castle_int"),#londinium
     (party_set_slot,"p_castle_23", slot_town_prison, "scn_romanized_celt_castle_prison"),#londinium
 
-    (party_set_slot,"p_castle_9", slot_castle_exterior, "scn_londinium"),#
+    (party_set_slot,"p_castle_9", slot_town_center, "scn_londinium"),#
     (party_set_slot,"p_castle_9", slot_town_castle, "scn_londinium_castle"),#
     (party_set_slot,"p_castle_9", slot_town_prison, "scn_londinium_prison"),#
 
 
-    (party_set_slot,"p_castle_16", slot_castle_exterior, "scn_roman_castle_2_exterior"),#colonia aggrippina
+    (party_set_slot,"p_castle_16", slot_town_center, "scn_roman_castle_2_exterior"),#colonia aggrippina
     (party_set_slot,"p_castle_16", slot_town_castle, "scn_roman_castle_2_interior"),#colonia aggrippina
     (party_set_slot,"p_castle_16", slot_town_prison, "scn_londinium_prison"),#colonia aggrippina
 
-    (party_set_slot,"p_castle_24", slot_castle_exterior, "scn_roman_castle_1_exterior"),#Mogontiacum
+    (party_set_slot,"p_castle_24", slot_town_center, "scn_roman_castle_1_exterior"),#Mogontiacum
     (party_set_slot,"p_castle_24", slot_town_castle, "scn_roman_castle_1_interior"),#Mogontiacum
     (party_set_slot,"p_castle_24", slot_town_prison, "scn_londinium_prison"),#Mogontiacum
-    (party_set_slot,"p_castle_34", slot_castle_exterior, "scn_castellum"),#?
+    (party_set_slot,"p_castle_34", slot_town_center, "scn_castellum"),#?
 
-    (party_set_slot,"p_castle_4", slot_castle_exterior, "scn_castellum"),#?
+    (party_set_slot,"p_castle_4", slot_town_center, "scn_castellum"),#?
 
-    (party_set_slot,"p_castle_20", slot_castle_exterior, "scn_castellum"),#?
-    (party_set_slot,"p_castle_13", slot_castle_exterior, "scn_castellum"),#?
-    (party_set_slot,"p_castle_27", slot_castle_exterior, "scn_castellum"),#?
+    (party_set_slot,"p_castle_20", slot_town_center, "scn_castellum"),#?
+    (party_set_slot,"p_castle_13", slot_town_center, "scn_castellum"),#?
+    (party_set_slot,"p_castle_27", slot_town_center, "scn_castellum"),#?
 
-    (party_set_slot,"p_castle_12", slot_castle_exterior, "scn_carnuntum_ex"),#?
+    (party_set_slot,"p_castle_12", slot_town_center, "scn_carnuntum_ex"),#?
     (party_set_slot,"p_castle_12", slot_town_castle, "scn_carnuntum_in"),#?
     (party_set_slot,"p_castle_12", slot_town_prison, "scn_carnuntum_prison"),#?
 
     #brytenwalda castle 63
-    (party_set_slot,"p_castle_58", slot_castle_exterior, "scn_castle_caledonian_ex"),#?
+    (party_set_slot,"p_castle_58", slot_town_center, "scn_castle_caledonian_ex"),#?
     (party_set_slot,"p_castle_58", slot_town_castle, "scn_castle_caledonian_in"),#?
     (party_set_slot,"p_castle_58", slot_town_prison, "scn_castle_caledonian_prison"),#?
 
-    (party_set_slot,"p_castle_7", slot_castle_exterior, "scn_dacian_castle_ex"),
+    (party_set_slot,"p_castle_7", slot_town_center, "scn_dacian_castle_ex"),
     (party_set_slot,"p_castle_7", slot_town_castle, "scn_dacian_castle_in"),
     (party_set_slot,"p_castle_7", slot_town_prison, "scn_dacian_castle_prison"),
 
-    (party_set_slot,"p_castle_18", slot_castle_exterior, "scn_dacian_castle_ex"),
+    (party_set_slot,"p_castle_18", slot_town_center, "scn_dacian_castle_ex"),
     (party_set_slot,"p_castle_18", slot_town_castle, "scn_dacian_castle_in"),
     (party_set_slot,"p_castle_18", slot_town_prison, "scn_dacian_castle_prison"),
 
-    (party_set_slot,"p_castle_6", slot_castle_exterior, "scn_castle_island_ex"),
+    (party_set_slot,"p_castle_6", slot_town_center, "scn_castle_island_ex"),
     (party_set_slot,"p_castle_6", slot_town_castle, "scn_castle_island_in"),
     (party_set_slot,"p_castle_6", slot_town_prison, "scn_castle_island_prison"),
 
-    (party_set_slot,"p_castle_63", slot_castle_exterior, "scn_castle_island_2_ex"),
+    (party_set_slot,"p_castle_63", slot_town_center, "scn_castle_island_2_ex"),
     (party_set_slot,"p_castle_63", slot_town_castle, "scn_castle_island_2_in"),
     (party_set_slot,"p_castle_63", slot_town_prison, "scn_castle_island_prison"),
 
-    (party_set_slot,"p_castle_62", slot_castle_exterior, "scn_castle_island_ex"),
+    (party_set_slot,"p_castle_62", slot_town_center, "scn_castle_island_ex"),
     (party_set_slot,"p_castle_62", slot_town_castle, "scn_castle_island_in"),
     (party_set_slot,"p_castle_62", slot_town_prison, "scn_castle_island_prison"),
 
-    (party_set_slot,"p_castle_61", slot_castle_exterior, "scn_castle_island_ex"),
+    (party_set_slot,"p_castle_61", slot_town_center, "scn_castle_island_ex"),
     (party_set_slot,"p_castle_61", slot_town_castle, "scn_castle_island_in"),
     (party_set_slot,"p_castle_61", slot_town_prison, "scn_castle_island_prison"),
 
-    (party_set_slot,"p_castle_47", slot_castle_exterior, "scn_petra_ex"),
+    (party_set_slot,"p_castle_47", slot_town_center, "scn_petra_ex"),
     (party_set_slot,"p_castle_47", slot_town_castle, "scn_petra_in"),
     (party_set_slot,"p_castle_47", slot_town_prison, "scn_petra_prison"),
 
-    (party_set_slot,"p_castle_64", slot_castle_exterior, "scn_africa_roman_castle"),
+    (party_set_slot,"p_castle_64", slot_town_center, "scn_africa_roman_castle"),
     (party_set_slot,"p_castle_64", slot_town_castle, "scn_africa_in"),
     (party_set_slot,"p_castle_64", slot_town_prison, "scn_africa_prison"),
 
-    (party_set_slot,"p_castle_43", slot_castle_exterior, "scn_africa_roman_castle"),
+    (party_set_slot,"p_castle_43", slot_town_center, "scn_africa_roman_castle"),
     (party_set_slot,"p_castle_43", slot_town_castle, "scn_africa_in"),
     (party_set_slot,"p_castle_43", slot_town_prison, "scn_africa_prison"),
 
@@ -2927,28 +2837,28 @@ scripts_hardcoded = [
         #p_town_20, p_town_48, p_town_47, p_town_40, p_town_27
         (try_begin),
             (party_slot_eq, ":village_no", slot_village_market_town, "p_town_47"),#palmyra
-            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_palmyra"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_palmyra"),
         (else_try),
             (party_slot_eq, ":village_no", slot_village_market_town, "p_town_40"),#nisbis
-            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_euphrat"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_euphrat"),
         (else_try),
             (party_slot_eq, ":village_no", slot_village_market_town, "p_town_27"),#ctesiphon
-            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_94"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_94"),
         (else_try),
             (party_slot_eq, ":village_no", slot_village_market_town, "p_town_19"),#Hierosolyma
-            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_judea"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_judea"),
         (else_try),
             (party_slot_eq, ":village_no", slot_village_bound_center, "p_town_20"),
-            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_egypt_delta"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_egypt_delta"),
         (else_try),
             (party_slot_eq, ":village_no", slot_village_bound_center, "p_town_48"),
-            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_egypt"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_egypt"),
         (else_try),
          ##special for deserts###
             (party_get_current_terrain, ":terrain", ":village_no"),
             (this_or_next|eq, ":terrain", rt_desert),
             (eq, ":terrain", rt_desert_forest),
-            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_102"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_102"),
         # (else_try),
         # ###else check if water is near and assign a water scene
         #     (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_roman"),
@@ -2956,10 +2866,10 @@ scripts_hardcoded = [
         #     (map_get_water_position_around_position, pos2, pos1, 2),
         #     (party_set_position, "p_salt_mine", pos2),
         #     (store_distance_to_party_from_party, ":distance", "p_salt_mine", ":village_no"),
-        #     #(party_set_slot,":village_no", slot_castle_exterior, "scn_village_41"),
+        #     #(party_set_slot,":village_no", slot_town_center, "scn_village_41"),
         #     (try_begin),
         #       (le, ":distance", 2),
-        #       (party_set_slot,":village_no", slot_castle_exterior, "scn_village_1"),#passt
+        #       (party_set_slot,":village_no", slot_town_center, "scn_village_1"),#passt
         #     (try_end),
         # (else_try),
         #     (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_dacian"),
@@ -2968,10 +2878,10 @@ scripts_hardcoded = [
         #     (map_get_water_position_around_position, pos2, pos1, 2),
         #     (party_set_position, "p_salt_mine", pos2),
         #     (store_distance_to_party_from_party, ":distance", "p_salt_mine", ":village_no"),
-        #     #(party_set_slot,":village_no", slot_castle_exterior, "scn_village_19"),
+        #     #(party_set_slot,":village_no", slot_town_center, "scn_village_19"),
         #     (try_begin),
         #         (le, ":distance", 2),
-        #         (party_set_slot,":village_no", slot_castle_exterior, "scn_village_95"),#passt
+        #         (party_set_slot,":village_no", slot_town_center, "scn_village_95"),#passt
         #     (try_end),
         # (else_try),
         #     (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_sarmatian"),
@@ -2979,10 +2889,10 @@ scripts_hardcoded = [
         #     (map_get_water_position_around_position, pos2, pos1, 2),
         #     (party_set_position, "p_salt_mine", pos2),
         #     (store_distance_to_party_from_party, ":distance", "p_salt_mine", ":village_no"),
-        #     #(party_set_slot,":village_no", slot_castle_exterior, "scn_village_100"),
+        #     #(party_set_slot,":village_no", slot_town_center, "scn_village_100"),
         #     (try_begin),
         #         (le, ":distance", 2),
-        #         (party_set_slot,":village_no", slot_castle_exterior, "scn_village_42"),#passt
+        #         (party_set_slot,":village_no", slot_town_center, "scn_village_42"),#passt
         #     (try_end),
         # (else_try),
         #     (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_celtic"),
@@ -2991,10 +2901,10 @@ scripts_hardcoded = [
         #     (map_get_water_position_around_position, pos2, pos1, 2),
         #     (party_set_position, "p_salt_mine", pos2),
         #     (store_distance_to_party_from_party, ":distance", "p_salt_mine", ":village_no"),
-        #     #(party_set_slot,":village_no", slot_castle_exterior, "scn_village_19"),
+        #     #(party_set_slot,":village_no", slot_town_center, "scn_village_19"),
         #     (try_begin),
         #         (le, ":distance", 2),
-        #         (party_set_slot,":village_no", slot_castle_exterior, "scn_village_7"),#passt
+        #         (party_set_slot,":village_no", slot_town_center, "scn_village_7"),#passt
         #     (try_end),
         # (else_try),
         #     (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_germanic"),
@@ -3002,10 +2912,10 @@ scripts_hardcoded = [
         #     (map_get_water_position_around_position, pos2, pos1, 2),
         #     (party_set_position, "p_salt_mine", pos2),
         #     (store_distance_to_party_from_party, ":distance", "p_salt_mine", ":village_no"),
-        #     #(party_set_slot,":village_no", slot_castle_exterior, "scn_village_74"),
+        #     #(party_set_slot,":village_no", slot_town_center, "scn_village_74"),
         #     (try_begin),
         #         (le, ":distance", 2),
-        #         (party_set_slot,":village_no", slot_castle_exterior, "scn_village_98"),#passt
+        #         (party_set_slot,":village_no", slot_town_center, "scn_village_98"),#passt
         #     (try_end),
         # (else_try),
         #     (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_judean"),
@@ -3015,167 +2925,169 @@ scripts_hardcoded = [
         #     (map_get_water_position_around_position, pos2, pos1, 2),
         #     (party_set_position, "p_salt_mine", pos2),
         #     (store_distance_to_party_from_party, ":distance", "p_salt_mine", ":village_no"),
-        #     #(party_set_slot,":village_no", slot_castle_exterior, "scn_village_2"),
+        #     #(party_set_slot,":village_no", slot_town_center, "scn_village_2"),
         #     (try_begin),
         #         (le, ":distance", 2),
-        #         (party_set_slot,":village_no", slot_castle_exterior, "scn_village_43"),
+        #         (party_set_slot,":village_no", slot_town_center, "scn_village_43"),
         #     (try_end),
           (try_end),
     (try_end),
 
     # emesa
-    (party_set_slot,"p_village_110", slot_castle_exterior, "scn_village_emesa"),
+    (party_set_slot,"p_village_110", slot_town_center, "scn_village_emesa"),
 
     # some syrian and anatolian villages
-    (party_set_slot,"p_village_199", slot_castle_exterior, "scn_village_syria_1"),
-    (party_set_slot,"p_village_198", slot_castle_exterior, "scn_village_syria_2"),
-    (party_set_slot,"p_village_163", slot_castle_exterior, "scn_village_syria_3"),
-    (party_set_slot,"p_village_201", slot_castle_exterior, "scn_village_syria_2"),
-    (party_set_slot,"p_village_81", slot_castle_exterior, "scn_village_syria_3"),
-    (party_set_slot,"p_village_90", slot_castle_exterior, "scn_village_syria_1"),
+    (party_set_slot,"p_village_199", slot_town_center, "scn_village_syria_1"),
+    (party_set_slot,"p_village_198", slot_town_center, "scn_village_syria_2"),
+    (party_set_slot,"p_village_163", slot_town_center, "scn_village_syria_3"),
+    (party_set_slot,"p_village_201", slot_town_center, "scn_village_syria_2"),
+    (party_set_slot,"p_village_81", slot_town_center, "scn_village_syria_3"),
+    (party_set_slot,"p_village_90", slot_town_center, "scn_village_syria_1"),
     # romainzed celtic
 
 
-    (party_set_slot,"p_village_10", slot_castle_exterior, "scn_romanized_celt_village"),
-    (party_set_slot,"p_village_27", slot_castle_exterior, "scn_romanized_celt_village"),
-    (party_set_slot,"p_village_84", slot_castle_exterior, "scn_romanized_celt_village"),
+    (party_set_slot,"p_village_10", slot_town_center, "scn_romanized_celt_village"),
+    (party_set_slot,"p_village_27", slot_town_center, "scn_romanized_celt_village"),
+    (party_set_slot,"p_village_84", slot_town_center, "scn_romanized_celt_village"),
 
     #otherwise set other special scenes
-    (party_set_slot,"p_village_189", slot_castle_exterior, "scn_village_germanic_1"),
-    (party_set_slot,"p_village_79", slot_castle_exterior, "scn_village_germanic_1"),
-    (party_set_slot,"p_village_16", slot_castle_exterior, "scn_village_germanic_1"),
+    (party_set_slot,"p_village_189", slot_town_center, "scn_village_germanic_1"),
+    (party_set_slot,"p_village_79", slot_town_center, "scn_village_germanic_1"),
+    (party_set_slot,"p_village_16", slot_town_center, "scn_village_germanic_1"),
 
     #alps
-    (party_set_slot,"p_village_17", slot_castle_exterior, "scn_roman_village_mountain"),
-    (party_set_slot,"p_village_195", slot_castle_exterior, "scn_roman_village_mountain"),
-    (party_set_slot,"p_village_240", slot_castle_exterior, "scn_roman_village_mountain"),
-    (party_set_slot,"p_village_241", slot_castle_exterior, "scn_roman_village_mountain"),
-    (party_set_slot,"p_village_70", slot_castle_exterior, "scn_roman_village_mountain"),
-    (party_set_slot,"p_village_78", slot_castle_exterior, "scn_roman_village_mountain"),
+    (party_set_slot,"p_village_17", slot_town_center, "scn_roman_village_mountain"),
+    (party_set_slot,"p_village_195", slot_town_center, "scn_roman_village_mountain"),
+    (party_set_slot,"p_village_240", slot_town_center, "scn_roman_village_mountain"),
+    (party_set_slot,"p_village_241", slot_town_center, "scn_roman_village_mountain"),
+    (party_set_slot,"p_village_70", slot_town_center, "scn_roman_village_mountain"),
+    (party_set_slot,"p_village_78", slot_town_center, "scn_roman_village_mountain"),
 
     #african coastal villages
-    (party_set_slot,"p_village_106", slot_castle_exterior, "scn_village_africa_coastal"),
-    (party_set_slot,"p_village_104", slot_castle_exterior, "scn_village_africa_coastal"),
-    (party_set_slot,"p_village_103", slot_castle_exterior, "scn_village_africa_coastal"),
-    (party_set_slot,"p_village_137", slot_castle_exterior, "scn_village_africa_coastal"),
-    (party_set_slot,"p_village_108", slot_castle_exterior, "scn_village_africa_coastal"),
-    (party_set_slot,"p_village_51", slot_castle_exterior,  "scn_village_africa_coastal"),
+    (party_set_slot,"p_village_106", slot_town_center, "scn_village_africa_coastal"),
+    (party_set_slot,"p_village_104", slot_town_center, "scn_village_africa_coastal"),
+    (party_set_slot,"p_village_103", slot_town_center, "scn_village_africa_coastal"),
+    (party_set_slot,"p_village_137", slot_town_center, "scn_village_africa_coastal"),
+    (party_set_slot,"p_village_108", slot_town_center, "scn_village_africa_coastal"),
+    (party_set_slot,"p_village_51", slot_town_center,  "scn_village_africa_coastal"),
 
-    (party_set_slot,"p_village_12", slot_castle_exterior, "scn_village_bosporan"),
-    (party_set_slot,"p_village_28", slot_castle_exterior, "scn_village_bosporan"),
-    (party_set_slot,"p_village_25", slot_castle_exterior, "scn_village_bosporan"),
+    (party_set_slot,"p_village_12", slot_town_center, "scn_village_bosporan"),
+    (party_set_slot,"p_village_28", slot_town_center, "scn_village_bosporan"),
+    (party_set_slot,"p_village_25", slot_town_center, "scn_village_bosporan"),
 
-    (party_set_slot,"p_village_48", slot_castle_exterior, "scn_roman_village_african"),
-    (party_set_slot,"p_village_133", slot_castle_exterior, "scn_roman_village_african"),
-    (party_set_slot,"p_village_131", slot_castle_exterior, "scn_roman_village_african"),
-    (party_set_slot,"p_village_132", slot_castle_exterior, "scn_roman_village_african"),
-    (party_set_slot,"p_village_91", slot_castle_exterior, "scn_roman_village_african"),
+    (party_set_slot,"p_village_48", slot_town_center, "scn_roman_village_african"),
+    (party_set_slot,"p_village_133", slot_town_center, "scn_roman_village_african"),
+    (party_set_slot,"p_village_131", slot_town_center, "scn_roman_village_african"),
+    (party_set_slot,"p_village_132", slot_town_center, "scn_roman_village_african"),
+    (party_set_slot,"p_village_91", slot_town_center, "scn_roman_village_african"),
 
-    (party_set_slot,"p_village_135", slot_castle_exterior, "scn_roman_village_african"),
-    (party_set_slot,"p_village_102", slot_castle_exterior, "scn_roman_village_african"),
+    (party_set_slot,"p_village_135", slot_town_center, "scn_roman_village_african"),
+    (party_set_slot,"p_village_102", slot_town_center, "scn_roman_village_african"),
 
-    (party_set_slot,"p_village_134", slot_castle_exterior, "scn_village_garamantian"),
+    (party_set_slot,"p_village_134", slot_town_center, "scn_village_garamantian"),
 
-    (party_set_slot,"p_village_129", slot_castle_exterior, "scn_village_babylon"),#special scene for babylon
+    (party_set_slot,"p_village_129", slot_town_center, "scn_village_babylon"),#special scene for babylon
 
-    (party_set_slot,"p_village_229", slot_castle_exterior, "scn_village_palma"),
+    (party_set_slot,"p_village_229", slot_town_center, "scn_village_palma"),
 
-    (party_set_slot,"p_village_6", slot_castle_exterior, "scn_village_spain_1"),
-    (party_set_slot,"p_village_145", slot_castle_exterior, "scn_village_spain_2"),
-    (party_set_slot,"p_village_23", slot_castle_exterior, "scn_village_spain_3"),
+    (party_set_slot,"p_village_6", slot_town_center, "scn_village_spain_1"),
+    (party_set_slot,"p_village_2", slot_town_center, "scn_village_spain_1"),
+    (party_set_slot,"p_village_145", slot_town_center, "scn_village_spain_2"),
+    (party_set_slot,"p_village_23", slot_town_center, "scn_village_spain_3"),
 
-    (party_set_slot,"p_village_146", slot_castle_exterior, "scn_village_caesar_augusta"),
-    (party_set_slot,"p_village_13", slot_castle_exterior, "scn_village_spain_2"),
-    (party_set_slot,"p_village_139", slot_castle_exterior, "scn_village_spain_3"),
+    (party_set_slot,"p_village_146", slot_town_center, "scn_village_caesar_augusta"),
+    (party_set_slot,"p_village_13", slot_town_center, "scn_village_spain_2"),
+    (party_set_slot,"p_village_139", slot_town_center, "scn_village_spain_3"),
 
-    (party_set_slot,"p_village_144", slot_castle_exterior, "scn_village_spain_4"),
-    (party_set_slot,"p_village_141", slot_castle_exterior, "scn_village_spain"),
-    (party_set_slot,"p_village_148", slot_castle_exterior, "scn_village_spain_4"),
-    (party_set_slot,"p_village_138", slot_castle_exterior, "scn_village_spain_5"),
+    (party_set_slot,"p_village_144", slot_town_center, "scn_village_spain"), #too north of spain for this scene
+    (party_set_slot,"p_village_141", slot_town_center, "scn_village_spain"),
+    (party_set_slot,"p_village_148", slot_town_center, "scn_village_spain_4"),
+    (party_set_slot,"p_village_138", slot_town_center, "scn_village_spain_5"),
+    (party_set_slot,"p_village_4", slot_town_center, "scn_village_spain_4"),
 
-    (party_set_slot,"p_village_228", slot_castle_exterior, "scn_village_spain_5"),
+    (party_set_slot,"p_village_228", slot_town_center, "scn_village_spain_5"),
 
-    (party_set_slot,"p_village_152", slot_castle_exterior, "scn_village_152"),
-    (party_set_slot,"p_village_153", slot_castle_exterior, "scn_village_153"),
-    (party_set_slot,"p_village_154", slot_castle_exterior, "scn_village_154"),
-    (party_set_slot,"p_village_58", slot_castle_exterior, "scn_village_58"),
+    (party_set_slot,"p_village_152", slot_town_center, "scn_village_152"),
+    (party_set_slot,"p_village_153", slot_town_center, "scn_village_153"),
+    (party_set_slot,"p_village_154", slot_town_center, "scn_village_154"),
+    (party_set_slot,"p_village_58", slot_town_center, "scn_village_58"),
 
-    (party_set_slot,"p_village_93", slot_castle_exterior, "scn_village_persia_1"),
-    (party_set_slot,"p_village_169", slot_castle_exterior, "scn_village_persia_2"),
-    (party_set_slot,"p_village_216", slot_castle_exterior, "scn_village_persia_3"),
+    (party_set_slot,"p_village_93", slot_town_center, "scn_village_persia_1"),
+    (party_set_slot,"p_village_169", slot_town_center, "scn_village_persia_2"),
+    (party_set_slot,"p_village_216", slot_town_center, "scn_village_persia_3"),
 
-    (party_set_slot,"p_village_34", slot_castle_exterior, "scn_village_103"),
-    (party_set_slot,"p_village_30", slot_castle_exterior, "scn_village_104"),
-    (party_set_slot,"p_village_38", slot_castle_exterior, "scn_village_103"),
-    (party_set_slot,"p_village_54", slot_castle_exterior, "scn_village_104"),
-    (party_set_slot,"p_village_72", slot_castle_exterior, "scn_village_103"),
-    (party_set_slot,"p_village_196", slot_castle_exterior, "scn_village_104"),
-    (party_set_slot,"p_village_195", slot_castle_exterior, "scn_village_103"),
-    (party_set_slot,"p_village_61", slot_castle_exterior, "scn_village_104"),
+    (party_set_slot,"p_village_34", slot_town_center, "scn_village_103"),
+    (party_set_slot,"p_village_30", slot_town_center, "scn_village_104"),
+    (party_set_slot,"p_village_38", slot_town_center, "scn_village_103"),
+    (party_set_slot,"p_village_54", slot_town_center, "scn_village_104"),
+    (party_set_slot,"p_village_72", slot_town_center, "scn_village_103"),
+    (party_set_slot,"p_village_196", slot_town_center, "scn_village_104"),
+    (party_set_slot,"p_village_195", slot_town_center, "scn_village_103"),
+    (party_set_slot,"p_village_61", slot_town_center, "scn_village_104"),
 
-    (party_set_slot,"p_village_115", slot_castle_exterior, "scn_village_caledonian"),
-    (party_set_slot,"p_village_117", slot_castle_exterior, "scn_village_caledonian"),
-    (party_set_slot,"p_village_118", slot_castle_exterior, "scn_village_caledonian"),
+    (party_set_slot,"p_village_115", slot_town_center, "scn_village_caledonian"),
+    (party_set_slot,"p_village_117", slot_town_center, "scn_village_caledonian"),
+    (party_set_slot,"p_village_118", slot_town_center, "scn_village_caledonian"),
 
-    (party_set_slot,"p_village_40", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_89", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_178", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_177", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_179", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_92", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_176", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_19", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_21", slot_castle_exterior, "scn_village_dacian"),
-    (party_set_slot,"p_village_67", slot_castle_exterior, "scn_village_dacian"),
+    (party_set_slot,"p_village_40", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_89", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_178", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_177", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_179", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_92", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_176", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_19", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_21", slot_town_center, "scn_village_dacian"),
+    (party_set_slot,"p_village_67", slot_town_center, "scn_village_dacian"),
 
-    (party_set_slot,"p_village_112", slot_castle_exterior, "scn_village_east_germanic_coastal"),
-    (party_set_slot,"p_village_113", slot_castle_exterior, "scn_village_east_germanic_coastal"),
-    (party_set_slot,"p_village_26", slot_castle_exterior, "scn_village_east_germanic_coastal"),
+    (party_set_slot,"p_village_112", slot_town_center, "scn_village_east_germanic_coastal"),
+    (party_set_slot,"p_village_113", slot_town_center, "scn_village_east_germanic_coastal"),
+    (party_set_slot,"p_village_26", slot_town_center, "scn_village_east_germanic_coastal"),
 
-    (party_set_slot,"p_village_224", slot_castle_exterior, "scn_village_east_germanic"),
-    (party_set_slot,"p_village_223", slot_castle_exterior, "scn_village_east_germanic"),
-    (party_set_slot,"p_village_111", slot_castle_exterior, "scn_village_east_germanic"),
-    (party_set_slot,"p_village_114", slot_castle_exterior, "scn_village_east_germanic"),
-    (party_set_slot,"p_village_222", slot_castle_exterior, "scn_village_east_germanic"),
-    (party_set_slot,"p_village_101", slot_castle_exterior, "scn_village_east_germanic"),
+    (party_set_slot,"p_village_224", slot_town_center, "scn_village_east_germanic"),
+    (party_set_slot,"p_village_223", slot_town_center, "scn_village_east_germanic"),
+    (party_set_slot,"p_village_111", slot_town_center, "scn_village_east_germanic"),
+    (party_set_slot,"p_village_114", slot_town_center, "scn_village_east_germanic"),
+    (party_set_slot,"p_village_222", slot_town_center, "scn_village_east_germanic"),
+    (party_set_slot,"p_village_101", slot_town_center, "scn_village_east_germanic"),
 
-    (party_set_slot,"p_village_227", slot_castle_exterior, "scn_village_island"),
-    (party_set_slot,"p_village_73", slot_castle_exterior, "scn_village_island"),
-    (party_set_slot,"p_village_53", slot_castle_exterior, "scn_village_island"),
-    (party_set_slot,"p_village_226", slot_castle_exterior, "scn_village_island"),
+    (party_set_slot,"p_village_227", slot_town_center, "scn_village_island"),
+    (party_set_slot,"p_village_73", slot_town_center, "scn_village_island"),
+    (party_set_slot,"p_village_53", slot_town_center, "scn_village_island"),
+    (party_set_slot,"p_village_226", slot_town_center, "scn_village_island"),
 
-    (party_set_slot,"p_village_162", slot_castle_exterior, "scn_village_patrae"),
-    (party_set_slot,"p_village_166", slot_castle_exterior, "scn_village_ephesus"),
+    (party_set_slot,"p_village_162", slot_town_center, "scn_village_patrae"),
+    (party_set_slot,"p_village_166", slot_town_center, "scn_village_ephesus"),
 
     (party_set_extra_icon, "p_village_166","icon_wonder_artemis",0,0,0,0),
 
     (try_for_range, ":village_no", villages_begin, villages_end),#finally set all unassigned scenes yet
-        (party_get_slot, ":scene", ":village_no", slot_castle_exterior),
+        (party_get_slot, ":scene", ":village_no", slot_town_center),
         (lt, ":scene", "scn_training_ground_ranged_melee_5"),#not assigned yet
         (try_begin),
             # (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_greek"),
             # (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_berber"),
             # (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_roman"),
             # (store_random_in_range, ":scene", "scn_village_41", "scn_village_42"),
-            # (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+            # (party_set_slot,":village_no", slot_town_center, ":scene"),
         # (else_try),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_dacian"),
             (store_random_in_range, ":scene", "scn_village_7", "scn_village_41"),
-            (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+            (party_set_slot,":village_no", slot_town_center, ":scene"),
         (else_try),
             (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_bosporan"),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_sarmatian"),
             (store_random_in_range, ":scene", "scn_village_42", "scn_village_44"),
-            (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+            (party_set_slot,":village_no", slot_town_center, ":scene"),
         (else_try),
             (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_celtic"),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_caledonian"),
             (store_random_in_range, ":scene", "scn_village_7", "scn_village_95"),
-            (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+            (party_set_slot,":village_no", slot_town_center, ":scene"),
         (else_try),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_germanic"),
             (store_random_in_range, ":scene", "scn_village_98", "scn_village_94"),
-            (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+            (party_set_slot,":village_no", slot_town_center, ":scene"),
         (else_try),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_egyptian"),
             (store_random_in_range, ":scene", "scn_village_egypt", "scn_village_judea"),
@@ -3183,13 +3095,13 @@ scripts_hardcoded = [
             (this_or_next|party_slot_eq, ":village_no", slot_center_culture, "fac_culture_syrian"),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_parthian"),
             (store_random_in_range, ":scene", "scn_village_parthian_1", "scn_village_7"),
-            (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+            (party_set_slot,":village_no", slot_town_center, ":scene"),
         (else_try),
             (party_slot_eq, ":village_no", slot_center_culture, "fac_culture_caucasian"),
-            (party_set_slot,":village_no", slot_castle_exterior, "scn_village_44"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_44"),
         (else_try),# use roman scene as fallback
             (store_random_in_range, ":scene", "scn_village_41", "scn_village_42"),
-            (party_set_slot,":village_no", slot_castle_exterior, ":scene"),
+            (party_set_slot,":village_no", slot_town_center, ":scene"),
         (try_end),
     (try_end),
 ]),

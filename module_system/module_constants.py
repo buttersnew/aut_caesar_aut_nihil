@@ -476,8 +476,6 @@ slot_party_last_in_home_center         = 65 #used for AI
 slot_party_leader_last_courted         = 66 #used for AI
 slot_party_last_in_any_center          = 67 #used for AI
 
-slot_castle_exterior    = slot_town_center
-
 #SB : training ground scene slots
 slot_grounds_melee = slot_town_center
 slot_grounds_track = slot_town_castle
@@ -702,7 +700,7 @@ slot_center_ongoing_rebellion               = 254
 slot_center_auxilia 	                    = 255
 slot_center_has_recently_rebelled 	        = 256
 
-# 257 is free
+# 257 is free and 262
 
 slot_center_can_rebell                  = 258
 slot_rebellion_target                   = 259
@@ -965,47 +963,6 @@ slot_cohort_town_25  =405
 slot_cohort_town_begin   = slot_cohort_town_1
 slot_cohort_town_end     = slot_cohort_town_25 +1
 
-##diplomacy start+ Re-use those slots for other party types
-
-##diplomacy end+
-
-# dplmc_slot_town_trade_route_last_arrival_1        = 381
-# dplmc_slot_town_trade_route_last_arrival_2        = 382
-# dplmc_slot_town_trade_route_last_arrival_3        = 383
-# dplmc_slot_town_trade_route_last_arrival_4        = 384
-# dplmc_slot_town_trade_route_last_arrival_5        = 385
-# dplmc_slot_town_trade_route_last_arrival_6        = 386
-# dplmc_slot_town_trade_route_last_arrival_7        = 387
-# dplmc_slot_town_trade_route_last_arrival_8        = 388
-# dplmc_slot_town_trade_route_last_arrival_9        = 389
-# dplmc_slot_town_trade_route_last_arrival_10        = 390
-# dplmc_slot_town_trade_route_last_arrival_11        = 391
-# dplmc_slot_town_trade_route_last_arrival_12        = 392
-# dplmc_slot_town_trade_route_last_arrival_13        = 393
-# dplmc_slot_town_trade_route_last_arrival_14        = 394
-# dplmc_slot_town_trade_route_last_arrival_15        = 395
-# dplmc_slot_town_trade_route_last_arrival_16        = 396
-# dplmc_slot_town_trade_route_last_arrival_17        = 397
-# dplmc_slot_town_trade_route_last_arrival_18        = 398
-# dplmc_slot_town_trade_route_last_arrival_19        = 399
-# dplmc_slot_town_trade_route_last_arrival_20        = 400
-# dplmc_slot_town_trade_route_last_arrival_21        = 401
-# dplmc_slot_town_trade_route_last_arrival_22        = 402
-# dplmc_slot_town_trade_route_last_arrival_23        = 403
-# dplmc_slot_town_trade_route_last_arrival_24        = 404
-# dplmc_slot_town_trade_route_last_arrival_25        = 405
-# dplmc_slot_town_trade_route_last_arrival_26        = 406
-# dplmc_slot_town_trade_route_last_arrival_27        = 407
-# dplmc_slot_town_trade_route_last_arrival_28        = 408
-# dplmc_slot_town_trade_route_last_arrival_29        = 409
-# dplmc_slot_town_trade_route_last_arrival_30        = 410
-# dplmc_slot_town_trade_route_last_arrival_31        = 411
-# dplmc_slot_town_trade_route_last_arrivals_begin    = dplmc_slot_town_trade_route_last_arrival_1
-# dplmc_slot_town_trade_route_last_arrivals_end      = dplmc_slot_town_trade_route_last_arrival_31 + 1
-
-# dplmc_slot_village_trade_last_returned_from_market = dplmc_slot_town_trade_route_last_arrival_1#overlaps with dplmc_slot_town_trade_route_last_arrival_1
-# dplmc_slot_village_trade_last_arrived_to_market    = dplmc_slot_town_trade_route_last_arrival_2#overlaps with dplmc_slot_town_trade_route_last_arrival_2
-
 slot_town_trade_routes_begin = slot_town_trade_route_1
 slot_town_trade_routes_end = slot_town_trade_route_31 + 1
 slot_town_sea_trade_routes_begin = slot_town_sea_trade_route_1
@@ -1014,6 +971,14 @@ slot_town_sea_trade_routes_end = slot_town_sea_trade_route_15 + 1
 num_trade_goods = itm_siege_supply - itm_spice
 slot_town_trade_good_productions_begin          = 415 #a harmless number, until it can be deprecated
 
+
+slot_town_center_original           = 406
+slot_town_castle_original           = 407
+slot_town_prison_original           = 408
+slot_town_tavern_original           = 409
+slot_town_store_original            = 410
+slot_town_arena_original            = 411
+slot_town_walls_original            = 412
 
 # slot_center_last_reconnoitered_by_faction_time  = 515 #this generates a list
 

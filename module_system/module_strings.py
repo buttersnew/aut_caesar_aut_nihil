@@ -7967,6 +7967,7 @@ strings = [
 ("oliver_rumor", "I heard about a man who recently sent out an expedition to India to find marble but they haven't returned for awhile. He lives in Rome and is currently searching for an adventurer to help him."),
 ("bacchus_rumor", "It is said that wild orgies are celebrated in an extensive cave system somewhere in Italy. People say Dyonisus himself host those feasts."),
 ("solus_rumor", "I heard that the philosopher Solus Monachus is holding lectures in the library of Alexandria."),
+("pamphile_rumor", "I heard of a woman named Pamphile living in Athenae. She is doing research about famous historical women. She may be looking for an adventurer to help her."),
 
 ("hyroglyphs_no", "You are not able to read the hieroglyphs.^^(You need more intelligence.)"),
 
@@ -10175,6 +10176,140 @@ strings = [
 ("lady_meet_unknown_hedonistic", "{playername}? I don't believe I've heard that name at any parties worth remembering. Are you... worth knowing?"),
 ("lady_meet_unknown_otherworldly", "Your name is new to me, but there is a story in your eyes. It is a pleasure to meet you, {playername}."),
 ("lady_meet_unknown_default", "{playername}? I do not believe I've heard of you before."),
+
+("rumor_curfew", "The town lord has issued a nightly curfew. It's killing my business, and for what? The crime rate hasn't dropped one bit. Hopefully he comes to his senses and revokes the useless decree soon."),
+
+# --- DACIAN RUMORS ---
+("rumor_dacian_begin", "Did you know we Dacians call ourselves 'the wolves'? It's an old name. A proud name."),
+("rumor_dacian_1", "More and more Roman traders are coming into our lands. They smile and offer coin, but I don't trust them. What do they really want here? It's not like our mountains are made of gold... or are they?"),
+("rumor_dacian_2", "The harvest was good this year. The gods smiled on us. The price of grain should be dropping soon, which is good for everyone."),
+("rumor_dacian_3", "A priest of Zalmoxis told me the gods are angry. He said if we don't make the proper sacrifices, the next harvest will be a disaster. I hope he's just trying to scare us."),
+("rumor_dacian_4", "The tribes are supposed to be united under one king, but old rivalries die hard. I heard two clans had a skirmish over a grazing pasture just last week."),
+("rumor_dacian_5", "Those steppe nomads are a constant menace! Every traveler from the east has a new story of riders looting a village or stealing cattle. Will we ever be free of them?"),
+("rumor_dacian_6", "The forests are getting more dangerous. Hunters say the wolf packs are growing larger and bolder. Be careful if you're traveling at night."),
+("rumor_dacian_7", "Bandits are becoming a real problem on the main roads. Travel in a large group if you can."),
+("rumor_dacian_8", "They say our high priests have more influence over the king than his own war council. Some whisper that it's the priests who truly rule Dacia, not the king."),
+("rumor_dacian_9", "Our goldsmiths are the finest in the world. I heard one of the local smiths just finished a necklace so beautiful it would make a goddess weep."),
+("rumor_dacian_10", "Farmers on the edge of the woods are talking again... They swear they saw a werewolf in the moonlight. Superstitious fools, probably, but best to be careful."),
+("rumor_dacian_end", "I haven't heard anything interesting lately."), # MUST BE LAST
+
+# --- CELTIC RUMORS ---
+("rumor_celtic_begin", "We Celts are always fighting each other. But now that the Romans are here, at least we have a common enemy to hate."),
+("rumor_celtic_1", "Why are the Romans even here? This island is all mist and misery. Some say they're demons, sent by the old gods to punish us for some forgotten sin."),
+("rumor_celtic_2", "We had good rains this year, and the harvest was plentiful. At least we won't starve this winter, praise the gods."),
+("rumor_celtic_3", "A druidess warned that the harvest will be poor this year. Too much rain has rotted the crops in the field. Hard times are coming."),
+("rumor_celtic_4", "There's talk of a great confederacy, of all the tribes uniting to drive the Romans into the sea. But... we're Celts. We'll probably end up fighting each other before the battle even starts."),
+("rumor_celtic_5", "Some pilgrims passed through a few days ago, on their way to the great stone circle in the south. A strange, quiet bunch."),
+("rumor_celtic_6", "Watch yourself in the woods. The wolf packs are hungry."),
+("rumor_celtic_7", "They say the deep woods are home to the fair folk. They'll lead you astray with beautiful music and trick you into dancing for a hundred years. Best to stick to the road."),
+("rumor_celtic_8", "There was a murder just outside my tavern! A young girl, found dead in the road. It's a disaster for business, and no one knows who did it."),
+("rumor_celtic_9", "We are a proud people who love our freedom. When will the Romans finally understand that and leave our island for good?"),
+("rumor_celtic_10", "A farmer came in yesterday, white as a sheet. Swore he saw a demon in his fields. Said it had the eyes of a goat and the body of a man. Probably just drank too much beer."),
+("rumor_celtic_end", "I haven't heard anything interesting lately."), # MUST BE LAST
+
+# --- SARMATIAN/BOSPORAN RUMORS ---
+("rumor_sarmatian_begin", "The tribes are at it again. The Lipoxais raided the Arpoxais over some stolen horses. It's always something. We only stop fighting each other when there's a common enemy to raid."),
+("rumor_sarmatian_1", "We are the freest people in the world. We go where the grass is green and the water is sweet. No walls, no masters. Only the sky above us and the earth beneath."),
+("rumor_sarmatian_2", "The herds are fat and the pastures are green. The gods are pleased with us. Good times are ahead."),
+("rumor_sarmatian_3", "A plague struck the cattle in the east. A terrible omen. Many families will go hungry this winter."),
+("rumor_sarmatian_4", "Every spring, the young warriors gather for a raid. Last week, a war party returned from the Dacian lands heavy with plunder and slaves. It was a good haul."),
+("rumor_sarmatian_5", "Being nomads, we are always in conflict with the settled peoples at our borders. They have their lines on the ground; we have our herds. The two do not mix well."),
+("rumor_sarmatian_6", "There was an archery contest yesterday. The winner was a woman from the Amazones tribe. They say she can shoot an apple from a man's head at a full gallop."),
+("rumor_sarmatian_7", "My own brother won the horse-archery contest last month. Hit a shield boss from three hundred paces while at a full gallop. We have the best riders in the world."),
+("rumor_sarmatian_8", "A white stag was seen in the hills! The seers say the man who brings it down will unite all the tribes and conquer the world!"),
+("rumor_sarmatian_9", "The wise-women have seen bad omens in the smoke. They say a great war is coming, but they do not know from which direction."),
+("rumor_sarmatian_10", "The wise-women always stop here for a drink after their ceremonies. It is a great honor for my humble establishment."),
+("rumor_sarmatian_end", "I haven't heard anything interesting lately."), # MUST BE LAST
+
+# --- GERMANIC RUMORS ---
+("rumor_germanic_begin", "They sacrificed a murderer to the gods last week. Hanged him from a sacred oak. It is our custom."),
+("rumor_germanic_1", "We Germans love our freedom. We would rather die on our feet in these dark woods than live on our knees in a Roman city."),
+("rumor_germanic_2", "The gods are pleased. The harvest was good this year. There will be plenty of grain for bread and beer."),
+("rumor_germanic_3", "The wisewomen say the harvest will be poor. They demand more sacrifices to appease the gods. I fear it will be a hungry winter."),
+("rumor_germanic_4", "There are always feuds between the tribes. We are a warlike people. It is in our blood."),
+("rumor_germanic_5", "My sister's husband is a true champion. They say he fought off fifteen Roman scouts at once!"),
+("rumor_germanic_6", "A Roman trader was here last week. His wife was so small and pale, she looked like a child. Our women are strong and tall, fit to bear warriors!"),
+("rumor_germanic_7", "We have the best warriors in the world. A man is not a man here until he has killed a Roman."),
+("rumor_germanic_8", "Hunters are reporting more wolf attacks in the surrounding forests. Be careful if you travel alone."),
+("rumor_germanic_9", "The wisewomen say the gods are pleased with our recent victories. They promise us a good season for raiding."),
+("rumor_germanic_10", "The roads are thick with bandits, as usual. Keep your hand on your sword."),
+("rumor_germanic_end", "I haven't heard anything interesting lately."), # MUST BE LAST
+
+# --- PARTHIAN/EASTERN RUMORS ---
+("rumor_parthian_begin", "They say the wife of the Shahanshah has never cut her hair. It must be long enough to use as a rope."),
+("rumor_parthian_1", "A traveler told me a story about a Parthian queen, Rhodogune. She was in her bath when a rebellion broke out. She swore not to braid her hair until it was crushed, and rode into battle that very day, her wet hair flying behind her. A true warrior queen!"),
+("rumor_parthian_2", "The harvest was good this year, praise Ahura Mazda. The price of grain will be low."),
+("rumor_parthian_3", "A great swarm of locusts devoured the fields to the east. The priests say it is a sign of Ahriman's displeasure and demand more sacrifices."),
+("rumor_parthian_4", "The King of Armenia has minted new coins. One side shows his wife, the other shows an ear of grain. A symbol of fertility, they say."),
+("rumor_parthian_5", "There was a burglary at the silk merchant's shop last night. Hopefully the thieves don't get any ideas about my wine cellar."),
+("rumor_parthian_6", "A strange merchant passed through yesterday. His interpreter said he was from the land of the Seres, far to the east. He trades in the finest silk."),
+("rumor_parthian_7", "The only news I have is that my nephew broke his leg falling off a camel. The clumsy oaf."),
+("rumor_parthian_8", "I heard a lion attacked a shepherd in the mountains nearby. Be careful if you're traveling. The beasts are hungry."),
+("rumor_parthian_9", "Some Arabian traders stayed here last night, their camels laden with spices and incense. I always like seeing them; they pay in good silver."),
+("rumor_parthian_10", "A traveler was telling a wild tale about being attacked by twenty Arabian raiders and defeating them all with his bare hands. I think he'd had too much wine."),
+("rumor_parthian_end", "I haven't heard anything interesting lately."), # MUST BE LAST
+
+# --- ROMAN RUMORS ---
+("rumor_roman_begin", "Did you hear about the local magnate who was murdered? The whispers say his own wife hired the killer. He was cheating on her with a younger woman."),
+("rumor_roman_1", "A fire almost took my tavern yesterday! A sudden downpour put it out, praise Jupiter. My neighbor's workshop is just a pile of ash now."),
+("rumor_roman_2", "This year's harvest from Africa and Aegyptus is said to be plentiful. The grain dole will be secure, and the plebs will be happy."),
+("rumor_roman_3", "The omens are bad. The priests say the grain shipments will be delayed this year. If that happens, bread prices will skyrocket and there will be riots."),
+("rumor_roman_4", "They say that Pliny the Elder is still unmarried, and he's over fifty! A man of his standing... it's strange."),
+("rumor_roman_5", "It's been a quiet week. Not a single major fire in the entire city. The Vigiles must be doing something right for a change."),
+("rumor_roman_6", "That young poet, Marcus Tertius, is besotted with Lucia Tria. He's been writing 'Marcus loves Lucia' on walls all over the city. They say she had to hire men to scrub it all off. Must have cost her a fortune."),
+("rumor_roman_7", "Be wary of the town physician. I've had three guests complain that his 'cures' made them feel worse than the illness! The man is a charlatan."),
+("rumor_roman_8", "There's a new fad among the high-society ladies. They've decided that being thin is fashionable, so they're all starving themselves. If you ask me, it's long overdue. A little less feasting would do them good."),
+("rumor_roman_9", "A few slaves escaped from a senator's estate last week. Good for them. They say he's a cruel master. I hope they make it to Germania."),
+("rumor_roman_10", "A guest was complaining about a new 'toilet tax' being proposed in the Senate. A denarius per visit! Can you imagine? Utter nonsense."),
+("rumor_roman_end", "I haven't heard anything interesting lately."),
+
+# --- CAUCASIAN RUMORS (Armenia/Iberia) ---
+("rumor_caucasian_begin", "Our king is a clever man. He takes gold from the Romans and gifts from the Parthians, and promises loyalty to both. It is a dangerous game, walking a tightrope between two dragons."),
+("rumor_caucasian_1", "I heard another Roman legion is marching towards the Armenian border. The Shahanshah will not be pleased. I pray our lands do not become their battlefield again."),
+("rumor_caucasian_2", "A traveler from the high peaks told a strange tale. He swore he saw the great eagle that eternally devours the liver of the titan Prometheus, chained to the mountains by the gods of old."),
+("rumor_caucasian_3", "The mountain passes are treacherous this time of year. A whole merchant caravan was lost to an avalanche last week."),
+("rumor_caucasian_4", "Be wary of the warlord Artaxias. They say he is gathering warriors from the mountain tribes, and that he has ambitions beyond his station."),
+("rumor_caucasian_end", "I haven't heard anything interesting lately."), # MUST BE LAST
+
+# --- EGYPTIAN RUMORS ---
+("rumor_egyptian_begin", "The Nile flood was good this year, praise Serapis. The fields will be fertile, and the grain tax to Rome will be paid without too much pain."),
+("rumor_egyptian_1", "There was another brawl in the Delta Quarter of Alexandria between the Greeks and the Jews. The prefect had to call in the legionaries to restore order. This city is a simmering pot."),
+("rumor_egyptian_2", "Some fool tried to rob one of the old tombs near the Valley of the Kings. They found his body yesterday, covered in boils and his skin black as night. The old curses are real, I tell you."),
+("rumor_egyptian_3", "The Roman grain prefect is a leech. He takes the best of our harvest to feed the plebs in Rome and leaves us with the chaff. One day, the gods will punish his greed."),
+("rumor_egyptian_4", "A scholar at the Museion claims to have proven the world is round again. As if we didn't know that already. He should try inventing a way to keep the beer cold."),
+("rumor_egyptian_end", "I haven't heard anything interesting lately."), # MUST BE LAST
+
+# --- JUDEAN RUMORS ---
+("rumor_judean_begin", "Another prophet appeared on the Mount of Olives yesterday, claiming to be the Messiah. The Romans arrested him by noon. He's the third one this month."),
+("rumor_judean_1", "The Governor has levied a new tax on the Temple treasury to pay for an aqueduct. The priests are furious. The people are whispering of revolt. It is a dangerous time."),
+("rumor_judean_2", "The Sicarii struck in the lower market yesterday. A wealthy landowner, a known Roman sympathizer, was found with a dagger in his back. They vanished into the crowd. No one saw a thing."),
+("rumor_judean_3", "The Pharisees and the Sadducees were having another public argument in the Temple court, this time about whether angels have free will. As if that will help us pay our taxes."),
+("rumor_judean_4", "A holy man came out of the desert, thin as a reed and with fire in his eyes. He spoke of a coming day of judgment, when God will separate the wheat from the chaff. It was quite unsettling."),
+("rumor_judean_end", "I haven't heard anything interesting lately."), # MUST BE LAST
+
+# --- BERBER RUMORS (Gaetulian/Mauri) ---
+("rumor_berber_begin", "A Gaetulian war party crossed the frontier last week. They hit three Roman villas and were gone before the auxiliaries even saddled their horses. They say they vanished back into the desert like ghosts."),
+("rumor_berber_1", "A Roman legate is planning another 'punitive expedition' into the desert. He'll lose half his men to the heat and the sun, kill a few goats, and declare a great victory. It is the way of things."),
+("rumor_berber_2", "There is a new chieftain among the Musulamii tribe. They say he is a great warrior, and that he is trying to unite the desert clans under one banner. That could mean trouble for Rome."),
+("rumor_berber_3", "The salt caravan from the Garamantian lands is two weeks late. We fear they were lost in a sandstorm, or worse, fell prey to the desert demons."),
+("rumor_berber_4", "A Roman trader passed through on his way south. He was buying live lions and leopards for the arena in Carthage. A strange business."),
+("rumor_berber_end", "I haven't heard anything interesting lately."),
+
+("rumor_arabian_begin", "Another spice caravan from the south just arrived. The whole city smells of cinnamon and myrrh. It's the smell of money, friend."),
+("rumor_arabian_1", "They say the latest frankincense shipment from Arabia Felix was so large, our King could pave the streets with the silver he'll make from it."),
+("rumor_arabian_2", "Be careful on the desert roads. A merchant caravan was lost to Ghassanid raiders last month. Vanished without a trace, leaving only circling vultures."),
+("rumor_arabian_3", "The Roman governor has 'requested' a new 'contribution' from our King for the war in Judaea. We all know what that means. The price of being a 'friend' of Rome keeps going up."),
+("rumor_arabian_4", "A Parthian envoy passed through last week, heading south. They say the Shahanshah is trying to court the desert tribes. The Great Game between the empires never ends."),
+("rumor_arabian_5", "I saw a horse at the market yesterday, a purebred from the Najd. Black as night and fast as the desert wind. A sheikh paid a king's ransom for it without even haggling."),
+("rumor_arabian_end", "I haven't heard anything interesting lately."),
+
+("rumor_syrian_begin", "Another silk caravan from the East arrived yesterday. The merchants are paying in good Parthian silver, so the wine will be flowing freely tonight. A good day for business."),
+("rumor_syrian_1", "I hear the Legate is moving the Third Gallica legion closer to the Euphrates. The Parthians have been raiding across the border again, they say. Always trouble in the East."),
+("rumor_syrian_2", "Some of the legionaries stationed here have been involved in a strange new mystery cult. The Mithras cult, I think? They meet in underground temples and talk about a bull-slaying god. Very secretive."),
+("rumor_syrian_3", "The Blues and the Greens were at it again at the hippodrome in Antioch. A riot broke out after a disputed chariot race. Dozens were injured. Those factions are more fanatical than any religion."),
+("rumor_syrian_4", "A glassmaker down the street just perfected a new technique. They say he can make glass as clear as crystal. He'll be a rich man, until the Roman governor invents a new tax for it."),
+("rumor_syrian_5", "Be careful on the desert road to Palmyra. The trade route is rich, which means the Bedouin raiders are always watching, waiting for a slow or poorly guarded caravan."),
+("rumor_syrian_end", "I haven't heard anything interesting lately."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names
