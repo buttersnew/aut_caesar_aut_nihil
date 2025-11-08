@@ -119,6 +119,10 @@ map_icons = [
   ("fort_persian",mcn_no_shadow,"fort_persian", 0.35,0),
 
   ("town_roman",mcn_no_shadow,"town_roman", 0.35,0),
+
+  ("town_roman_port",mcn_no_shadow,"town_roman_port", 0.35,0),
+  ("town_roman_port_2",mcn_no_shadow,"town_roman_port_2", 0.35,0),
+
   ("town_greek",mcn_no_shadow,"town_greek", 0.35,0),
   ("town_persian",mcn_no_shadow,"town_persian", 0.35,0),
 
