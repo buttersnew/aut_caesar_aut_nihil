@@ -10310,6 +10310,14 @@ strings = [
 ("rumor_syrian_4", "A glassmaker down the street just perfected a new technique. They say he can make glass as clear as crystal. He'll be a rich man, until the Roman governor invents a new tax for it."),
 ("rumor_syrian_5", "Be careful on the desert road to Palmyra. The trade route is rich, which means the Bedouin raiders are always watching, waiting for a slow or poorly guarded caravan."),
 ("rumor_syrian_end", "I haven't heard anything interesting lately."),
+
+("rumor_greek_begin", "The Roman Proconsul has levied a new tax on olive oil exports. Another leech sent from Rome to bleed our land dry. We were the center of the world once."),
+("rumor_greek_1", "Two philosophers were arguing in the agora yesterday. One was a Stoic, the other an Epicurean. They almost came to blows over the nature of pleasure. Only in Greece, eh?"),
+("rumor_greek_2", "A ship from Alexandria docked this morning, carrying spices and papyrus. It's good to see trade is still alive, even if the coin all flows back to Rome in the end."),
+("rumor_greek_3", "They say the ghost of Leonidas still haunts the pass at Thermopylae on moonless nights, waiting for an army worthy of his sacrifice. We could use a man like him today."),
+("rumor_greek_4", "The olive harvest was good this year, praise Athena. It's the one thing the Romans haven't managed to ruin yet."),
+("rumor_greek_5", "Another 'oracle' has set up shop near the old temple of Apollo. For a few drachmae, she'll tell you your fortune. For a few more, she'll tell you the fortune you want to hear."),
+("rumor_greek_end", "I haven't heard anything interesting lately."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

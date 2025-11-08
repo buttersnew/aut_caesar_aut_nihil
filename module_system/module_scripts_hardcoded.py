@@ -1311,6 +1311,9 @@ scripts_hardcoded = [
     (call_script, "script_dplmc_start_tributary_between_kingdoms", "fac_kingdom_23", "fac_kingdom_7", 0),
     (call_script, "script_dplmc_start_tributary_between_kingdoms", "fac_kingdom_5", "fac_kingdom_6", 0),
 
+    (call_script, "script_dplmc_start_nonaggression_between_kingdoms", "fac_kingdom_21", "fac_kingdom_5", 0),#daughter married to king
+
+
     (store_add, ":slot_provocation_days", "fac_kingdom_7", slot_faction_provocation_days_with_factions_begin),
     (val_sub, ":slot_provocation_days", kingdoms_begin),
     (faction_get_slot, ":provocation_days", "fac_kingdom_7", ":slot_provocation_days"),
