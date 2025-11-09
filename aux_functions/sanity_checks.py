@@ -13,6 +13,10 @@ OPERATIONS_TO_CHECK = [
     "party_slot_ge",
     "scene_slot_ge",
     "scene_slot_eq",
+    "item_slot_eq",
+    "item_slot_ge",
+    "neg|item_slot_eq",
+    "neg|item_slot_ge",
     "neg|troop_slot_eq",
     "neg|party_slot_eq",
     "neg|faction_slot_eq",
@@ -21,6 +25,12 @@ OPERATIONS_TO_CHECK = [
     "neg|party_slot_ge",
     "neg|scene_slot_ge",
     "neg|scene_slot_eq",
+    "troop_get_slot",
+    "faction_get_slot",
+    "party_get_slot",
+    "scene_get_slot",
+    "item_get_slot",
+    "scene_prop_get_slot",
 ]
 
 # Add the names of the files you want to scan to this list.
@@ -63,6 +73,10 @@ class OperationScanner(ast.NodeVisitor):
             "party_slot_ge": self.validate_generic_slot_eq,
             "scene_slot_eq": self.validate_generic_slot_eq,
             "scene_slot_ge": self.validate_generic_slot_eq,
+            "item_slot_eq": self.validate_generic_slot_eq,
+            "item_slot_ge": self.validate_generic_slot_eq,
+            "neg|item_slot_eq": self.validate_generic_slot_eq,
+            "neg|item_slot_ge": self.validate_generic_slot_eq,
             "neg|troop_slot_eq": self.validate_generic_slot_eq,
             "neg|party_slot_eq": self.validate_generic_slot_eq,
             "neg|faction_slot_eq": self.validate_generic_slot_eq,
@@ -70,7 +84,13 @@ class OperationScanner(ast.NodeVisitor):
             "neg|faction_slot_ge": self.validate_generic_slot_eq,
             "neg|party_slot_ge": self.validate_generic_slot_eq,
             "neg|scene_slot_eq": self.validate_generic_slot_eq,
-            "neg|scene_slot_ge": self.validate_generic_slot_eq
+            "neg|scene_slot_ge": self.validate_generic_slot_eq,
+            "troop_get_slot": self.validate_generic_get_slot,
+            "faction_get_slot": self.validate_generic_get_slot,
+            "party_get_slot": self.validate_generic_get_slot,
+            "scene_get_slot": self.validate_generic_get_slot,
+            "item_get_slot": self.validate_generic_get_slot,
+            "scene_prop_get_slot": self.validate_generic_get_slot,
         }
 
     def visit_Tuple(self, node):
@@ -90,6 +110,32 @@ class OperationScanner(ast.NodeVisitor):
         self.generic_visit(node)
 
     # --- VALIDATION RULE METHODS ---
+    def validate_generic_get_slot(self, node, op_name):
+        """ Validates generic get_slot operations like (troop_get_slot, <destination>, <id>, <slot_no>). """
+        line_num = node.lineno
+        elements = node.elts
+
+        # CHECK 1: Argument Count
+        if len(elements) != 4:
+            print("ERROR in {}: line {}".format(self.filename, line_num))
+            print("  -> Invalid Argument Count for '{}'. Expected 4 elements, but found {}.".format(op_name, len(elements)))
+            self.error_count += 1
+            return
+
+        destination_node = elements[1]
+
+        # CHECK 2: <destination> should not be a slot
+        # This is the key check for this function.
+        is_error = False
+        if isinstance(destination_node, ast.Name) and destination_node.id.startswith('slot_'):
+            is_error = True
+        elif isinstance(destination_node, ast.Constant) and isinstance(destination_node.value, str) and destination_node.value.startswith('slot_'):
+            is_error = True
+
+        if is_error:
+            print("ERROR in {}: line {}".format(self.filename, line_num))
+            print("  -> Invalid <destination> for '{}'. The destination (first argument) must be a variable (e.g., ':my_var' or 'reg0'), not a slot.".format(op_name))
+            self.error_count += 1
 
     def validate_generic_slot_eq(self, node, op_name):
         """

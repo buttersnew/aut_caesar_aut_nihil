@@ -41178,21 +41178,21 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 					]],
 
 [anyone, "event_triggered",[
-         (store_conversation_troop, "$map_talk_troop"),
-         (is_between, "$map_talk_troop", companions_begin, companions_end),
-         (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-         (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_stage_revolt),
-         (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-         (troop_get_slot, ":center", "$g_talk_troop", slot_troop_mission_target),
-         (str_store_string, s21, ":string"),
+  (store_conversation_troop, "$map_talk_troop"),
+  (is_between, "$map_talk_troop", companions_begin, companions_end),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_stage_revolt),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (troop_get_slot, ":center", "$g_talk_troop", slot_troop_mission_target),
+  (str_store_string, s21, ":string"),
 
-         (str_store_party_name, s20, ":center"),
+  (str_store_party_name, s20, ":center"),
 
   (store_random_in_range, ":r", 0, 100),
   (str_clear, s24),
   (try_begin),
     (lt, ":r", 25),
-    (party_get_slot, ":lord", slot_town_lord),
+    (party_get_slot, ":lord", ":center", slot_town_lord),
     (ge, ":lord", 1),
     (str_store_troop_name, s23, ":lord"),
     (call_script, "script_change_player_relation_with_troop", ":lord", -15),
@@ -92972,52 +92972,69 @@ Amen.", "memercus_pretalk",
 [trp_mine_boss, "start",[
    # (party_get_slot, ":center", "$g_encountered_party", slot_village_bound_center),
   (party_get_slot, ":lord", "$current_town", slot_town_lord),
-
   (try_begin),
+    (eq, "$g_is_emperor", 1),
+	  (str_store_string, s30, "@--He looks at you, impressed by your greatness.-- What can I, a humble servant, do for you?"),
+  (else_try),
 	  (neq, ":lord", 0),
 	  (str_store_string, s30, "@What do you want? Can't you see that I am busy?"),
   (else_try),
-	  (eq, "$g_is_emperor", 1),
-	  (str_store_string, s30, "@--He looks at you, impressed by your greatness.-- What can I, a humble servant, do for you?"),
-  (else_try),
 	  (str_store_string, s30, "@Is there anything I can do for you? But please hurry up, I have a lot of work do to."),
   (try_end),
- ],
-    "{s30}", "capataz_talk",[]],
+ ],"{s30}",
+ "capataz_talk",[]],
+
 [anyone, "capataz_pretalk",[],
-    "Yes?", "capataz_talk",[]],
+"Yes?",
+"capataz_talk",[]],
+
 [anyone|plyr,"capataz_talk",[
   (troop_slot_eq, "$g_talk_troop", slot_troop_recently_blamed, 0),
   #(party_get_slot, ":center", "$g_encountered_party", slot_village_bound_center),
   (party_get_slot, ":lord", "$current_town", slot_town_lord),
   (neq, ":lord", 0),
- ],
-    "Watch how you speak to me, man, or I shall give you a painful reply.", "capataz_angry",[]],
+ ],"Watch how you speak to me, man, or I shall give you a painful reply.",
+"capataz_angry",[]],
+
 [anyone,"capataz_angry",[],
-    "Bah! I haven't insulted you, and the laws protect us. I have better things to do.", "mine_loot",[]],
+"Bah! I haven't insulted you, and the laws protect us. I have better things to do.",
+"mine_loot",[]],
+
 [anyone|plyr,"mine_loot",[],
-    "I see.", "close_window",[]],
+"I see.",
+"close_window",[]],
+
 [anyone|plyr,"mine_loot",[
   (neq, "$g_is_emperor", 1),
   (is_between, "$g_encountered_party_faction", kingdoms_begin, kingdoms_end),
   (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_leader, "trp_player"),
-],"I think you don't understand.", "mine_loot2",[
+],"I think you don't understand.",
+"mine_loot2",[
   (call_script, "script_change_player_honor", -5),
   (troop_set_slot, "$g_talk_troop", slot_troop_recently_blamed, 1),
 ]],
-[anyone|plyr,"mine_loot",[(eq, "$g_is_emperor", 1),(troop_set_slot, "$g_talk_troop", slot_troop_recently_blamed, 2),],
-    "Don't you know who I am?", "mine_emperor",[]],
+
+[anyone|plyr,"mine_loot",[
+  (eq, "$g_is_emperor", 1),
+  (troop_set_slot, "$g_talk_troop", slot_troop_recently_blamed, 2),
+],"Don't you know who I am?",
+"mine_emperor",[]],
 
 [anyone|plyr,"mine_emperor",[],
-    "I am Caesar Augustus, Princeps of Rome! I am the son of the gods! Kneel down befor me!", "mine_emperor2",[]],
+"I am Caesar Augustus, Princeps of Rome! I am the son of the gods! Kneel down befor me!", "mine_emperor2",[]],
+
 [anyone,"mine_emperor2",[],
-    "--Impressed by your greatness he kneels down. You see fear in his eyes.-- I ... I am sorry, please forgive me.", "mine_emperor3",[]],
+"--Impressed by your greatness he kneels down. You see fear in his eyes.-- I ... I am sorry, please forgive me.",
+"mine_emperor3",[]],
 
 [anyone|plyr,"mine_emperor3",[],
-    "I forgive you, now get out of my way!", "close_window",[]],
+"I forgive you, now get out of my way!",
+"close_window",[]],
 
 [anyone|plyr,"mine_loot2",[],
-    "I have a company of warriors with me and you don't seem to be well-protected. I do not care about laws, I stand over them! So rethink what you have said.", "mine_loot3",[]],
+"I have a company of warriors with me and you don't seem to be well-protected. I do not care about laws, I stand over them! So rethink what you have said.",
+"mine_loot3",[]],
+
 [anyone,"mine_loot3",[
   (call_script, "script_party_count_members_with_full_health", "p_main_party"),
   (gt, reg0, 50),
@@ -93025,44 +93042,48 @@ Amen.", "memercus_pretalk",
   (assign, reg20, "$temp"),
 ],"--He looks surprised and angry.-- ^^ Arrg! I will give you {reg20} denarii. I don't have more. But I will report this incident. Laws are enforced, criminals will hang!",
 "mine_loot4",[
-    (call_script, "script_troop_add_gold", "trp_player", "$temp"),
-    #(party_get_slot, ":center", "$g_encountered_party", slot_village_bound_center),
+  (call_script, "script_troop_add_gold", "trp_player", "$temp"),
+  #(party_get_slot, ":center", "$g_encountered_party", slot_village_bound_center),
+  (try_begin),
+    (is_between, "$g_encountered_party_faction", kingdoms_begin, kingdoms_end),
+    (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -1),
+    (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -5),
+    (call_script, "script_change_center_prosperity", "$g_encountered_party", -1),
+    (party_get_slot, ":lord", "$g_encountered_party", slot_town_lord),
     (try_begin),
-      (is_between, "$g_encountered_party_faction", kingdoms_begin, kingdoms_end),
-      (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -1),
-      (call_script, "script_change_player_relation_with_center", "$g_encountered_party", -5),
-      (call_script, "script_change_center_prosperity", "$g_encountered_party", -1),
-      (party_get_slot, ":lord", "$g_encountered_party", slot_town_lord),
-      (try_begin),
-        (ge, ":lord", 1),
-        (call_script, "script_change_player_relation_with_troop", ":lord", -5),
-      (try_end),
+      (ge, ":lord", 1),
+      (call_script, "script_change_player_relation_with_troop", ":lord", -5),
     (try_end),
+  (try_end),
 ]],
+
 [anyone|plyr,"mine_loot4",[],
-    "Very good.", "close_window",[]],
+"Very good.",
+"close_window",[]],
 
 [anyone,"mine_loot3",[],
-    "Ha, you have only some men! Stop kidding! We have more than 100 slaves working here, and we will defend ourselves.", "close_window",[]],
+"Ha, you have only some men! Stop kidding! We have more than 100 slaves working here, and we will defend ourselves.",
+"close_window",[]],
 
 [anyone|plyr, "capataz_talk",[],
-    "I want my slaves to work here.", "capataz_ayuda",[]],
+"I want my slaves to work here.",
+"capataz_ayuda",[]],
 
 [anyone, "capataz_ayuda",[
   (party_slot_eq, "$current_town", slot_town_lord, "trp_player"),
-  #(party_get_num_prisoners, reg20, "$current_town"),
- ],
-    "Of course, master. First of all you must build a manor, the you can add prisoners to the village.\
- Up to 100 prisoners can effectively work here. If you but more into it, they will much likely escape.\
- Each prisoner will generate a certain amount of wealth, which will be added to your income.", "close_window",[]],
+], "Of course, master. First of all you must build a manor, the you can add prisoners to the village. Up to 100 prisoners can effectively work here. If you but more into it, they will much likely escape. Each prisoner will generate a certain amount of wealth, which will be added to your income.",
+"close_window",[]],
 
-[anyone, "capataz_ayuda",[(party_get_slot, ":center", "$g_encountered_party", slot_village_bound_center),
-  (str_store_party_name, s30, ":center"),],
-    "Sorry, but this place is our place. This place belonged to our fathers and before them, our grandparents. Only men and slaves from {s30} work here.", "close_window",[]],
+[anyone, "capataz_ayuda",[
+  (party_get_slot, ":center", "$g_encountered_party", slot_village_bound_center),
+  (str_store_party_name, s30, ":center"),
+],"Sorry, but this place is our place. This place belonged to our fathers and before them, our grandparents. Only men and slaves from {s30} work here.",
+"close_window",[]],
 
-[anyone|plyr, "capataz_talk",[(neg|troop_slot_eq, "$g_talk_troop", slot_troop_recently_blamed, 1),],
-    "I'd like to buy some of whatever you're mining here.", "capataz_sins",
-[]],
+[anyone|plyr, "capataz_talk",[
+  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_recently_blamed, 1),
+],"I'd like to buy some of whatever you're mining here.",
+"capataz_sins",[]],
 
 [anyone,"capataz_sins",[
   (troop_slot_eq, "$g_talk_troop", slot_center_inventory, 0),
@@ -95568,7 +95589,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
 # --- Buy Slaves Logic ---
 [anyone, "admin_talk_slaves_1", [
-  (troop_get_slot, ":slaver", "trp_global_variables", g_slave_contract, 1),
+  (troop_get_slot, ":slaver", "trp_global_variables", g_slave_contract),
   (str_store_troop_name, s10, ":slaver"),
 ],"As you wish. I will write a letter to {s10} containing your order.",
 "close_window", [

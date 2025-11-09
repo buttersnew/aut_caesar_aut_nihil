@@ -33490,7 +33490,7 @@ game_menus = [
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
     ("choice_24_2",[
-      (troop_get_slot, ":g", "trp_player"),
+      (store_troop_gold, ":g", "trp_player"),
       (ge, ":g", 200000),
     ],"I will pay their debts with my own money. (cost: 200,000 denarii)",[
       (troop_remove_gold, "trp_player", 200000),

@@ -68309,7 +68309,7 @@ scripts = scripts_hardcoded + [
     (val_mul, ":persuasion", 3),
     (val_mul, ":leadership", 3),
     (store_div, ":half_honor", "$player_honor", 2),
-    (troop_get_slot, ":renown_factor", slot_troop_renown),
+    (troop_get_slot, ":renown_factor", "trp_player", slot_troop_renown),
     (val_div, ":renown_factor", 100),
     (assign, ":upper_bound", ":persuasion"),
     (val_add, ":upper_bound", ":leadership"),
