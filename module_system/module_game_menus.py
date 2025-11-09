@@ -39202,13 +39202,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("town_port",0,
-  "You visit the port of {s1}."
+  "You visit the {s1}."
   +" While you look around you feel the strong wind from the ocean pulling on your clothes."
   +" Many ships are anchored here and you notice that crews are already loading them with native goods, while a group of men is still discharging their cargo."
   +"^^{s22}",
   "none",[
 	  (set_background_mesh,"mesh_pic_harbor"),
-    (str_store_party_name,s1,"$current_town"),
+    (party_get_slot, ":port_praty", "$current_town", slot_party_port_party),
+    (str_store_party_name,s1,":port_praty"),
     (try_begin),
       (eq, "$players_ship", -1),
       (str_store_string, s22, "@You don't own a ship."),
@@ -39287,10 +39288,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("port_encounter",0,
-  "You encounter the port of {s2}. {s3}",
+  "You encounter the {s2}. {s3}",
   "none",[
     (party_get_slot, ":curr_town", "$g_encountered_party", slot_party_port_party),
-    (str_store_party_name, s2, ":curr_town"),
+    (str_store_party_name, s2, "$g_encountered_party"),
     (assign, "$temp", 0),
     #(party_get_slot, reg7, ":curr_town", slot_party_1_ship_type),
     (try_begin),
@@ -39320,47 +39321,40 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ]),
 ]),
 
-  (
-    "landing_point_encounter",0,
-    "Do you wish to disembark?",
-    "none",
-    [
+("landing_point_encounter",0,
+  "Do you wish to disembark?",
+  "none",[
+    (try_begin),
+      (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
+      (faction_slot_eq,  "$players_kingdom", slot_faction_marshall, "trp_player"),
+      (neg|faction_slot_eq, "$players_kingdom", slot_faction_ai_state, sfai_default),
+      (neg|faction_slot_eq, "$players_kingdom", slot_faction_ai_state, sfai_feast),
+      (jump_to_menu, "mnu_landing_point_encounter_as_marshal"),
+    (else_try),
+      (party_slot_eq, "p_main_party", slot_party_on_water, 1),
+      (party_get_position, pos1, "p_landing_point"),
+      (call_script, "script_get_next_land_position", 1),
+      (set_spawn_radius, 0),
+      (call_script, "script_spawn_party", "p_main_party", "pt_landet_ships"),
+      (assign, ":landet_ship_party", reg0),
 
-      (try_begin),
-        (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
-        (faction_slot_eq,  "$players_kingdom", slot_faction_marshall, "trp_player"),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_ai_state, sfai_default),
-        (neg|faction_slot_eq, "$players_kingdom", slot_faction_ai_state, sfai_feast),
-        (jump_to_menu, "mnu_landing_point_encounter_as_marshal"),
-      (else_try),
-        (party_slot_eq, "p_main_party", slot_party_on_water, 1),
-        (party_get_position, pos1, "p_landing_point"),
-        (call_script, "script_get_next_land_position", 1),
-        (set_spawn_radius, 0),
-        (call_script, "script_spawn_party", "p_main_party", "pt_landet_ships"),
-        (assign, ":landet_ship_party", reg0),
-
-        (str_store_troop_name, s1, "trp_player"),
-        (party_set_name, ":landet_ship_party", "@{s1}'s Ships"),
-        (party_set_slot, ":landet_ship_party", slot_party_type, spt_ship),
-        (party_set_position, ":landet_ship_party", pos2),
-       # (call_script, "script_give_player_ships_from_party_to_party", "p_main_party", ":landet_ship_party"),
-        (party_set_position, "p_main_party", pos2),
-        (call_script, "script_switch_to_land_consequences"),
-        (assign, "$players_ship", 0),
-        (change_screen_return),
-      (else_try),
-        (set_background_mesh, "mesh_pic_deserters"),
-      (try_end),
-
-    ],
-    [
-      ("disembark_no", [], "No.",
-        [
-          (change_screen_return),
-      ]),
-    ]
-  ),
+      (str_store_troop_name, s1, "trp_player"),
+      (party_set_name, ":landet_ship_party", "@{s1}'s Ships"),
+      (party_set_slot, ":landet_ship_party", slot_party_type, spt_ship),
+      (party_set_position, ":landet_ship_party", pos2),
+      # (call_script, "script_give_player_ships_from_party_to_party", "p_main_party", ":landet_ship_party"),
+      (party_set_position, "p_main_party", pos2),
+      (call_script, "script_switch_to_land_consequences"),
+      (assign, "$players_ship", 0),
+      (change_screen_return),
+    (else_try),
+      (set_background_mesh, "mesh_pic_deserters"),
+    (try_end),
+  ],[
+    ("disembark_no", [], "No.",[
+      (change_screen_return),
+    ]),
+]),
 
   (
     "landet_ships_encounter",0,

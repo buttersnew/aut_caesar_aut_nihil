@@ -511,7 +511,9 @@ party_templates = [
 ("ferry_port","port",icon_landing_point|pf_no_label|pf_is_static|pf_hide_defenders,0, 0, 0,[]),
 ("jetty_port","port",icon_landing_point|pf_no_label|pf_is_static|pf_hide_defenders,0, 0, 0,[]),
 ("landet_ships","your ships",icon_ship_on_land|pf_is_static|pf_always_visible|pf_hide_defenders|pf_is_ship|pf_label_large,0, 0, 0,[]),
-("traveller_ship","Traveller",icon_peasant|carries_goods(4)|pf_civilian,0,fac_commoners,merchant_personality,[(trp_mercenary_bowman,6,20),(trp_watchman, 5, 20), (trp_peasant_woman, 2, 15),]),
+("traveller_ship","Traveller",icon_peasant|carries_goods(4)|pf_civilian,0,fac_commoners,merchant_personality,[
+    (trp_mercenary_bowman,5,15),(trp_watchman,5,15),
+]),
 ("slave_trader_ship","Slave Trader",icon_ship_merchant|carries_goods(3)|pf_civilian,0,fac_commoners,merchant_personality,[(trp_caravan_master,1,2), (trp_mercenary_bowman,0,12), (trp_mercenary_swordsman,0,24), (trp_mercenary_horseman,4,48),]),
 ("sea_traders", "Traders",icon_mule|carries_goods(25)|pf_show_faction,0,fac_commoners,merchant_personality,[(trp_caravan_master,1,1),(trp_mercenary_swordsman,20,30),(trp_caravan_guard,5,20),(trp_hired_blade,5,10),(trp_mercenary_bowman,5,10),(trp_package_slave,3,10)]),
 #("mine","Mine",icon_map_bandit_lair|pf_is_static|pf_hide_defenders|pf_always_visible|pf_label_small,0,fac_neutral,courage_15,[]),

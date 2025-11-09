@@ -546,9 +546,9 @@ scripts_hardcoded = [
 
     (call_script, "script_give_village_to_center", "p_village_182", "p_town_1"),
 
-    (call_script, "script_give_village_to_center", "p_village_183", "p_castle_57"),
+    (call_script, "script_give_village_to_center", "p_village_55", "p_castle_57"),
 
-    (call_script, "script_give_village_to_center", "p_village_55", "p_town_1"),
+    (call_script, "script_give_village_to_center", "p_village_183", "p_town_1"),
     # (call_script, "script_give_village_to_center", "p_village_9", "p_town_1"),
 
     (call_script, "script_give_village_to_center", "p_village_184", "p_town_44"),

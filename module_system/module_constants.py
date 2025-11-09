@@ -1052,6 +1052,7 @@ spai_retreating_to_center       = 14
 ##spai_trading_within_kingdom     = 15
 spai_visiting_village           = 16 #same thing, I think. Recruiting differs from holding because NPC parties don't actually enter villages
 spai_starting_raid              = 17
+spai_travelling                 = 18
 
 #slot_village_state values
 svs_normal                      = 0

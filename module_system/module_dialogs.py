@@ -75219,10 +75219,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [trp_town_6_mayor|plyr, "mayor_talk_buy_gaius_villa2",[],
   "I will think about it.", "mayor_pretalk",[]],
 
-[anyone|plyr, "mayor_talk",[
-  (party_slot_eq, "$current_town", slot_town_port, 1),
-],"I want to travel to another port.",
-"port_chief_travel",[]],
+# [anyone|plyr, "mayor_talk",[
+#   (party_slot_eq, "$current_town", slot_town_port, 1),
+# ],"I want to travel to another port.",
+# "port_chief_travel",[]],
 
 [anyone|plyr, "mayor_talk",[
   (eq, "$current_town", "p_town_48"),
@@ -75340,49 +75340,49 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (add_quest_note_from_sreg, "qst_become_pharao", 7, "@Once you are ready speak to the magistrate civium of {s25} to initiate the next stage of your coronation ceremony.", 0),
 ]],
 
-[anyone, "port_chief_travel",[
-  (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
-  (faction_slot_eq,  "$players_kingdom", slot_faction_marshall, "trp_player"),
-],"I'm sorry. There are currently no passenger ships in this port that can transport a marshal and his whole army.",
-"close_window",[]],
+# [anyone, "port_chief_travel",[
+#   (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
+#   (faction_slot_eq,  "$players_kingdom", slot_faction_marshall, "trp_player"),
+# ],"I'm sorry. There are currently no passenger ships in this port that can transport a marshal and his whole army.",
+# "close_window",[]],
 
-[anyone, "port_chief_travel",[
-  (check_quest_active, "qst_escort_merchant_caravan"),
-  (quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
-  (party_is_active, ":quest_target_party"),
-  (eq, "$escort_merchant_caravan_mode", 0),
-],"I'm sorry. There are currently no passenger ships in this port that can transport your party and the trader with his whole cargo.",
-"close_window",[]],
+# [anyone, "port_chief_travel",[
+#   (check_quest_active, "qst_escort_merchant_caravan"),
+#   (quest_get_slot, ":quest_target_party", "qst_escort_merchant_caravan", slot_quest_target_party),
+#   (party_is_active, ":quest_target_party"),
+#   (eq, "$escort_merchant_caravan_mode", 0),
+# ],"I'm sorry. There are currently no passenger ships in this port that can transport your party and the trader with his whole cargo.",
+# "close_window",[]],
 
-[anyone, "port_chief_travel",[
-  (call_script, "script_cf_party_is_eastern_port", "$current_town"),
-],"From here, one may travel to ports in the Pontos Euxeinos.",
-"port_chief_travel_2",[]],
+# [anyone, "port_chief_travel",[
+#   (call_script, "script_cf_party_is_eastern_port", "$current_town"),
+# ],"From here, one may travel to ports in the Pontos Euxeinos.",
+# "port_chief_travel_2",[]],
 
-[anyone, "port_chief_travel",[
-  (call_script, "script_cf_party_is_western_port", "$current_town"),
-],"From here, one may travel to ports in Mare Mediterraneum.",
-"port_chief_travel_2",[]],
+# [anyone, "port_chief_travel",[
+#   (call_script, "script_cf_party_is_western_port", "$current_town"),
+# ],"From here, one may travel to ports in Mare Mediterraneum.",
+# "port_chief_travel_2",[]],
 
-[anyone, "port_chief_travel",[
-],"I am sorry. There are currently no passenger ships in this port.",
-"close_window",[]],
+# [anyone, "port_chief_travel",[
+# ],"I am sorry. There are currently no passenger ships in this port.",
+# "close_window",[]],
 
-[anyone|plyr|repeat_for_parties,"port_chief_travel_2",[
-  (store_repeat_object, ":party_no"),
-  (try_begin),
-    (call_script, "script_cf_party_is_eastern_port", "$current_town"),
-    (assign, ":script", "script_cf_party_is_eastern_port"),
-  (else_try),
-    (assign, ":script", "script_cf_party_is_western_port"),
-  (try_end),
-  (call_script, ":script", ":party_no"),
-  (neq, ":party_no", "$current_town"),
-  (str_store_party_name, s1, ":party_no"),
-],"{s1}",
-"port_chief_travel_3",[
-  (store_repeat_object, "$travel_town"),
-]],
+# [anyone|plyr|repeat_for_parties,"port_chief_travel_2",[
+#   (store_repeat_object, ":party_no"),
+#   (try_begin),
+#     (call_script, "script_cf_party_is_eastern_port", "$current_town"),
+#     (assign, ":script", "script_cf_party_is_eastern_port"),
+#   (else_try),
+#     (assign, ":script", "script_cf_party_is_western_port"),
+#   (try_end),
+#   (call_script, ":script", ":party_no"),
+#   (neq, ":party_no", "$current_town"),
+#   (str_store_party_name, s1, ":party_no"),
+# ],"{s1}",
+# "port_chief_travel_3",[
+#   (store_repeat_object, "$travel_town"),
+# ]],
 
   #[anyone|plyr|repeat_for_parties,"port_chief_travel_2_west",
   #[
@@ -75406,82 +75406,82 @@ I will need 500 denarii.", "bardo_sing2",[]],
   #],
   # "{s1}", "port_chief_travel_3",[(store_repeat_object, "$travel_town")]],
 
-[anyone|plyr, "port_chief_travel_2",[
-],"I changed my mind.",
-"close_window",[]],
+# [anyone|plyr, "port_chief_travel_2",[
+# ],"I changed my mind.",
+# "close_window",[]],
 
-[anyone, "port_chief_travel_3",[
-  (str_store_party_name, s1, "$travel_town"),
-  (try_begin),
-    (eq, "$travel_town", "$current_town"),
-    (str_store_string, s2, "@You are already in {s1}."),
-  (else_try),
-    (party_get_position, pos1, "$current_town"),
-    (party_get_position, pos2, "$travel_town"),
-    (get_distance_between_positions, "$current_dialog_cost", pos1, pos2),
-    (val_div, "$current_dialog_cost", 100),
-    (party_get_num_companions, ":num_companions", "p_main_party"),
-    (store_mul, ":companions_cost", "$current_dialog_cost", ":num_companions"),
-    (val_div, ":companions_cost", 5),
-    #(val_mul, "$current_dialog_cost", 3),	#= player cost
-    (val_add, "$current_dialog_cost", ":companions_cost"),	#= total cost
-    (assign, reg1, "$current_dialog_cost"),
-    (try_begin),
-      (str_clear, s3),
-      (gt, ":num_companions", 1),
-      (str_store_string, s3, "@ and your troops"),
-    (try_end),
-    (str_store_string, s2, "@There is a ship that can bring you{s3} to the port of {s1} for {reg1} denarii."),
-  (try_end),
-],"You want to travel to {s1}? {s2}",
-"port_chief_travel_4",[]],
+# [anyone, "port_chief_travel_3",[
+#   (str_store_party_name, s1, "$travel_town"),
+#   (try_begin),
+#     (eq, "$travel_town", "$current_town"),
+#     (str_store_string, s2, "@You are already in {s1}."),
+#   (else_try),
+#     (party_get_position, pos1, "$current_town"),
+#     (party_get_position, pos2, "$travel_town"),
+#     (get_distance_between_positions, "$current_dialog_cost", pos1, pos2),
+#     (val_div, "$current_dialog_cost", 100),
+#     (party_get_num_companions, ":num_companions", "p_main_party"),
+#     (store_mul, ":companions_cost", "$current_dialog_cost", ":num_companions"),
+#     (val_div, ":companions_cost", 5),
+#     #(val_mul, "$current_dialog_cost", 3),	#= player cost
+#     (val_add, "$current_dialog_cost", ":companions_cost"),	#= total cost
+#     (assign, reg1, "$current_dialog_cost"),
+#     (try_begin),
+#       (str_clear, s3),
+#       (gt, ":num_companions", 1),
+#       (str_store_string, s3, "@ and your troops"),
+#     (try_end),
+#     (str_store_string, s2, "@There is a ship that can bring you{s3} to the port of {s1} for {reg1} denarii."),
+#   (try_end),
+# ],"You want to travel to {s1}? {s2}",
+# "port_chief_travel_4",[]],
 
-[anyone|plyr, "port_chief_travel_4",	[
-  (store_troop_gold, reg7, "trp_player"),
-  (ge, reg7, "$current_dialog_cost"),
-],"Let's start!",
-"port_chief_travel_5",[
-  (troop_remove_gold, "trp_player", "$current_dialog_cost"),
-]],
-[anyone|plyr, "port_chief_travel_4",[
-],"I don't have enough money",
-"close_window",[
-]],
+# [anyone|plyr, "port_chief_travel_4",	[
+#   (store_troop_gold, reg7, "trp_player"),
+#   (ge, reg7, "$current_dialog_cost"),
+# ],"Let's start!",
+# "port_chief_travel_5",[
+#   (troop_remove_gold, "trp_player", "$current_dialog_cost"),
+# ]],
+# [anyone|plyr, "port_chief_travel_4",[
+# ],"I don't have enough money",
+# "close_window",[
+# ]],
 
-[anyone, "port_chief_travel_5",[],"Follow me!", "close_window",[
-  (party_get_slot, ":current_port", "$current_town", slot_party_port_party),
-  (party_get_slot, ":target_port", "$travel_town", slot_party_port_party),
+# [anyone, "port_chief_travel_5",[],"Follow me!", "close_window",[
+#   (party_get_slot, ":current_port", "$current_town", slot_party_port_party),
+#   (party_get_slot, ":target_port", "$travel_town", slot_party_port_party),
 
-  (enable_party, "p_transporter"),
-  (party_get_position, pos1, ":current_port"),
-  (party_set_position, "p_transporter", pos1),
+#   (enable_party, "p_transporter"),
+#   (party_get_position, pos1, ":current_port"),
+#   (party_set_position, "p_transporter", pos1),
 
-  (party_get_position, pos2, ":target_port"),
-  (party_set_slot, "p_transporter", slot_party_on_water, 1),
-  (party_set_flags, "p_transporter", pf_is_ship, 1),	#maybe necessary for old savegames
-  (party_set_ai_behavior, "p_transporter", ai_bhvr_travel_to_point),
-  (party_set_ai_target_position, "p_transporter", pos2),
+#   (party_get_position, pos2, ":target_port"),
+#   (party_set_slot, "p_transporter", slot_party_on_water, 1),
+#   (party_set_flags, "p_transporter", pf_is_ship, 1),	#maybe necessary for old savegames
+#   (party_set_ai_behavior, "p_transporter", ai_bhvr_travel_to_point),
+#   (party_set_ai_target_position, "p_transporter", pos2),
 
-  #(party_set_flags, "p_transporter", pf_is_ship, 1),	# This doesnt work...
+#   #(party_set_flags, "p_transporter", pf_is_ship, 1),	# This doesnt work...
 
-  # (assign, "$travel_town_port", ":target_port"),
-  # (party_set_slot, "p_transporter", slot_party_ai_object, ":target_port"),
-  # (party_set_ai_behavior, "p_transporter", ai_bhvr_travel_to_party),
-  # (party_set_ai_object, "p_transporter", ":target_port"),
+#   # (assign, "$travel_town_port", ":target_port"),
+#   # (party_set_slot, "p_transporter", slot_party_ai_object, ":target_port"),
+#   # (party_set_ai_behavior, "p_transporter", ai_bhvr_travel_to_party),
+#   # (party_set_ai_object, "p_transporter", ":target_port"),
 
-  # SEA TRAVEL
-  (assign, "$auto_menu", "mnu_start_sea_travel"),
-  # (rest_for_hours, 10 * 24, 5, 0),
-  # (set_camera_follow_party, "p_transporter"),
-  # (assign, "$g_player_is_captive", 1),
-  #(assign, "$vc_menu_result", slot_quest_menu_leave),	# = Leave
-  # (try_begin),
-    # (eq, "$curr_menu_slot", slot_quest_menu_auto_sea_travel),	#  if travel is started in menu
-    # (assign,  "$vc_menu_result", 0),
-  # (try_end),
-  (jump_to_menu, "mnu_auto_return"),
-  (finish_mission, 0),
-]],
+#   # SEA TRAVEL
+#   (assign, "$auto_menu", "mnu_start_sea_travel"),
+#   # (rest_for_hours, 10 * 24, 5, 0),
+#   # (set_camera_follow_party, "p_transporter"),
+#   # (assign, "$g_player_is_captive", 1),
+#   #(assign, "$vc_menu_result", slot_quest_menu_leave),	# = Leave
+#   # (try_begin),
+#     # (eq, "$curr_menu_slot", slot_quest_menu_auto_sea_travel),	#  if travel is started in menu
+#     # (assign,  "$vc_menu_result", 0),
+#   # (try_end),
+#   (jump_to_menu, "mnu_auto_return"),
+#   (finish_mission, 0),
+# ]],
 
 ##investment quest
 [anyone|plyr,"mayor_info_talk",[], "That's all I need to know. Thanks.", "mayor_pretalk",[]],

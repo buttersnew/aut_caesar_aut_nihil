@@ -122,9 +122,13 @@ map_icons = [
 
   ("town_roman_port",mcn_no_shadow,"town_roman_port", 0.35,0),
   ("town_roman_port_2",mcn_no_shadow,"town_roman_port_2", 0.35,0),
+  ("town_tarrentum",mcn_no_shadow,"town_tarrentum", 0.35,0),
 
   ("town_greek",mcn_no_shadow,"town_greek", 0.35,0),
+  ("town_greek_port",mcn_no_shadow,"town_greek_port", 0.35,0),
+
   ("town_persian",mcn_no_shadow,"town_persian", 0.35,0),
+  ("town_syrian",mcn_no_shadow,"town_syrian", 0.35,0),
 
   ("town_rome",mcn_no_shadow,"town_rome", 0.35,0),
   ("town_rome_after_fire",mcn_no_shadow,"town_rome_after_fire", 0.35,0),
