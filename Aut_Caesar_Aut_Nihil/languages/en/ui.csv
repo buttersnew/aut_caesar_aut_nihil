@@ -183,20 +183,20 @@ ui_level_limit_reached|Level Limit Reached!
 ui_explanation_level_limit|Hail Adventurer, Mount&Blade has not been activated yet and is running in trial mode. In this mode, the game is limited to Level 8. In order to continue playing, please restart the game and activate it with your 16-digit serial key which is included in your boxed copy. After activating, you can continue playing right from here. Now, Mount&Blade will save your game and exit.
 ui_time_limit_reached|Time Limit Reached!
 ui_explanation_time_limit|Hail Adventurer, Mount&Blade has not been activated yet and is running in trial mode. In this mode, the game is limited to 30 game days. In oder to continue playing, please restart the game and activate it with your 16-digit serial key which is included in your boxed copy. After activating, you can continue playing right from here. Now, Mount&Blade will save your game and exit.
-ui_target_lost|Target lost
+ui_target_lost|Target lost 
 ui_waiting|Waiting.
-ui_travelling_to|Travelling to
-ui_following|Following
-ui_accompanying|Accompanying
-ui_running_from|Running from
-ui_patrolling|Patrolling
-ui_patrolling_around|Patrolling around
-ui_holding|Holding
-ui_travelling|Travelling
-ui_fighting_against|Fighting against
+ui_travelling_to|Travelling to 
+ui_following|Following 
+ui_accompanying|Accompanying 
+ui_running_from|Running from 
+ui_patrolling|Patrolling 
+ui_patrolling_around|Patrolling around 
+ui_holding|Holding 
+ui_travelling|Travelling 
+ui_fighting_against|Fighting against 
 ui_speed_equals|Speed = %2.1f
-ui_defenders|Garrison:
-ui_prisoners|Prisoners:
+ui_defenders|Garrison: 
+ui_prisoners|Prisoners: 
 ui_1_hour|1 hour
 ui_n_hours|%d hours
 ui_between_hours|%d - %d hours

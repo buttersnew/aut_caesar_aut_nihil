@@ -493,8 +493,8 @@ half4 FinalScenePassPS(uniform const bool use_dof, uniform const int use_hdr, un
 		color = scene;
 
 		// 4. COLOR CORRECTION for "Antique/Roman" Look
-        static const half WARMTH_LERP = 0.25h;
-        static const half CONTRAST_POWER = 1.35h;
+        static const half WARMTH_LERP = 0.20h;
+        static const half CONTRAST_POWER = 1.325h;
 
 		half3 AlteredColor;
 		half greyscale = dot(color.rgb, LUMINANCE_WEIGHTS);

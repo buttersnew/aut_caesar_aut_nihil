@@ -4463,6 +4463,9 @@ deserter_barter_3b
 deserter_barter_2
 deserter_barter_3a
 tavernkeeper_talk
+tavern_keeper_demands_bribe_widow
+tavern_keeper_bribe_choice_widow
+tavern_keeper_accepts_bribe_widow
 player_asks_for_wine
 player_asks_for_exotics
 tavernkeeper_main_story_otho_1
@@ -4722,6 +4725,9 @@ merchant_ask_for_debts
 mayor_friendly_pretalk
 merchant_debts_paid
 merchant_debts_not_paid
+mayor_demands_bribe_widow
+mayor_bribe_choice_widow
+mayor_accepts_bribe_widow
 mayor_talk_lord_infos_1
 mayor_talk_lord_infos_2
 mayor_talk_buy_lucillus_villa
@@ -4730,7 +4736,6 @@ mayor_talk_buy_gaius_villa2
 mayor_talk_buy_lucillus_villa2
 mayor_talk_buy_lucillus_villa3
 mayor_talk_buy_gaius_villa3
-port_chief_travel
 mayor_talk_cermoney_1
 mayor_talk_cermoney_2
 mayor_talk_cermoney_3
@@ -4742,10 +4747,6 @@ mayor_talk_pharaoh_reaction_1
 mayor_talk_pharaoh_reaction_2
 mayor_talk_pharaoh_reaction_3
 mayor_talk_pharaoh_reaction_4
-port_chief_travel_2
-port_chief_travel_3
-port_chief_travel_4
-port_chief_travel_5
 mayor_talk_investment
 mayor_talk_investment2
 mayor_info_begin
@@ -6510,6 +6511,7 @@ solues_ask_1
 solues_talk_y
 solues_talk_z
 solues_talk_quest_given
+solus_no_room
 solues_talk_14_n
 solues_talk_y_1
 solues_talk_y_2

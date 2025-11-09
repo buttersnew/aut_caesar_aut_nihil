@@ -17334,7 +17334,6 @@ presentations = presentations_wse2 + [
     # mode
     (str_clear, s0),
     (create_combo_button_overlay, "$g_presentation_obj_6"),
-    (overlay_set_additional_render_height, "$g_presentation_obj_6", 9),
     (overlay_add_item, "$g_presentation_obj_6", "@Political Mode"),
     (overlay_add_item, "$g_presentation_obj_6", "@Terrain Mode"),
     (overlay_add_item, "$g_presentation_obj_6", "@Province Mode"),
@@ -17342,7 +17341,7 @@ presentations = presentations_wse2 + [
     (overlay_add_item, "$g_presentation_obj_6", "@Wealth Mode"),
     (store_sub, ":value", "$temp1", 1),
     (overlay_set_val, "$g_presentation_obj_6", ":value"),
-
+    (overlay_set_additional_render_height, "$g_presentation_obj_6", 9),
 
     (position_set_x, pos1, 150),
     (position_set_y, pos1, 720),
@@ -17712,7 +17711,7 @@ presentations = presentations_wse2 + [
           (try_end),
           (eq, ":break", -1),
           (create_mesh_overlay, reg0, "mesh_pic_standard"),
-          (overlay_set_additional_render_height, reg0, 6),
+          (overlay_set_additional_render_height, reg0, 3),
           (store_sub, ":new_center_x", ":center_x", 13),
           (store_sub, ":new_center_y", ":center_y", 0),
           (position_set_x, pos1, ":new_center_x"),
@@ -17726,7 +17725,7 @@ presentations = presentations_wse2 + [
           (assign, ":center_type", -1), #use -1 for legion headquarter
         (else_try),
           (create_image_button_overlay, reg0, "mesh_white_dot", "mesh_white_dot"),
-          (overlay_set_additional_render_height,reg0, 6),
+          (overlay_set_additional_render_height,reg0, 3),
           (overlay_set_color, reg0, 0),
           (position_set_x, pos1, ":center_x"),
           (position_set_y, pos1, ":center_y"),
@@ -17795,7 +17794,7 @@ presentations = presentations_wse2 + [
 
         # block
         (create_mesh_overlay, reg0, "mesh_white_plane"),
-        (overlay_set_additional_render_height, reg0, 6),
+        (overlay_set_additional_render_height, reg0, 3),
         (overlay_set_color, reg0, 0),
         (position_set_x, pos1, ":center_x"),
         (position_set_y, pos1, ":center_y"),

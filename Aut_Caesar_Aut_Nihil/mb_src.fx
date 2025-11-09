@@ -6466,31 +6466,66 @@ PS_OUTPUT ps_flora_map(VS_OUTPUT_FLORA_MAP In, uniform const int PcfMode)
 
     static const half MAP_FLORA_TEX_WAVE_FREQ = 10.9h;
     static const half MAP_FLORA_TEX_WAVE_SPEED = 0.7h;
-    static const float MAP_FLORA_SNOW_LATITUDE_THRESHOLD = 44.0f;
 
 	half2 TexCoord = In.Tex0.xy;
 	half wave_amp = saturate(tex2D(SpecularTextureSampler, In.Tex0.xy).r * 0.01h);
 	TexCoord.x += wave_amp * sin(MAP_FLORA_TEX_WAVE_FREQ * TexCoord.y + MAP_FLORA_TEX_WAVE_SPEED * time_var);
 
 	half4 tex_col = tex2D(MeshTextureSampler, TexCoord);
-	half4 tex_col_snow = tex2D(Diffuse2Sampler, TexCoord);
+	half4 tex_col_snow = tex2D(Diffuse2Sampler, TexCoord); // The snow texture for flora
 	INPUT_TEX_GAMMA(tex_col.rgb);
 
-	// Apply snow effect in winter based on height and latitude.
+	// --- SEASONAL SNOW (Logic synced with terrain shader) ---
 	float season = GetSeason();
-	half height = In.Tex0.z;
-	half height_y = In.WorldPos.y;
-	if ((season > 2.5) && (height_y > MAP_FLORA_SNOW_LATITUDE_THRESHOLD)) // winter in northern areas
+	if (season > 2.5) // winter
 	{
-		height *= 2.0h;
-		height -= 0.5h;
+		// --- Geographic Falloff Zones (Identical to terrain shader) ---
+		static const float SOUTHERN_BORDER_START = 20.0f; // Y-coord where snow is completely gone.
+		static const float SOUTHERN_BORDER_END = 40.0f;   // Y-coord where snow is at full strength.
+
+		static const float SE_BOX_X_START = 185.0f;
+		static const float SE_BOX_Y_END = 66.0f;
+		static const float SE_BOX_TRANSITION_WIDTH = 40.0f; // How wide
+
+		static const float NORTHERN_LATITUDE_START = 100.0f; // Y-coord where northern snow effect begins.
+		static const float NORTHERN_LATITUDE_END = 300.0f;   // Y-coord where northern snow effect is at full strength.
+		static const half NORTHERN_SNOW_BOOST = 1.5h;
+
+		// 1. Get world position from interpolators.
+		half world_pos_x = In.WorldPos.x;
+		half world_pos_y = In.WorldPos.y;
+
+		// 2. Calculate the geographic masks.
+		half southern_falloff = smoothstep(SOUTHERN_BORDER_START, SOUTHERN_BORDER_END, world_pos_y);
+		half se_falloff_x = 1.0h - smoothstep(SE_BOX_X_START - SE_BOX_TRANSITION_WIDTH, SE_BOX_X_START, world_pos_x);
+		half se_falloff_y = smoothstep(SE_BOX_Y_END, SE_BOX_Y_END + SE_BOX_TRANSITION_WIDTH, world_pos_y);
+		half southeastern_falloff = saturate(se_falloff_x + se_falloff_y);
+		half snow_mask = southern_falloff * southeastern_falloff;
+
+		if (snow_mask > 0.01h)
+		{
+			// --- Natural Snow Coverage for Flora ---
+			// We use slightly different values here to make snow appear on trees more easily than on the ground.
+			static const half SNOW_ALTITUDE_START = 0.45h;
+			static const half SNOW_ALTITUDE_FULL = 2.0h;
+			static const half SNOW_NOISE_INFLUENCE = 0.85h;
+			static const half SNOW_NOISE_SCALE = 0.2h;
+
+			// 3. Calculate base snow amount from altitude and noise.
+			half height_z = In.Tex0.z;
+			half snow_from_altitude = smoothstep(SNOW_ALTITUDE_START, SNOW_ALTITUDE_FULL, height_z);
+			// Note: We use SpecularTextureSampler for noise here as EnvTextureSampler isn't available in this technique.
+			half snow_from_noise = tex2D(SpecularTextureSampler, In.Tex0.xy * SNOW_NOISE_SCALE).a;
+			half base_snow_amount = saturate(snow_from_altitude + (snow_from_noise - 0.5h) * SNOW_NOISE_INFLUENCE);
+
+			// 4. Calculate and add the latitude-based snow boost.
+			half latitude_factor = smoothstep(NORTHERN_LATITUDE_START, NORTHERN_LATITUDE_END, world_pos_y);
+			half final_snow_amount = saturate(base_snow_amount + (latitude_factor * NORTHERN_SNOW_BOOST));
+
+			// 5. Apply the final combined snow amount, including the geographic mask.
+			tex_col = lerp(tex_col, tex_col_snow, final_snow_amount * snow_mask);
+		}
 	}
-	else
-	{
-		height *= 0.1h;
-	}
-	half snow_amount = saturate(height - 1.5h);
-	tex_col = lerp(tex_col, tex_col_snow, snow_amount);
 
 	clip(tex_col.a - ALPHA_CLIP_THRESHOLD);
 
@@ -6590,14 +6625,13 @@ static const float MAP_PARALLAX_BIAS_FACTOR = -0.5h;
 static const float MAP_FRESNEL_MIN_FACTOR = 0.6h;
 static const float MAP_FRESNEL_SCALE = 0.1h;
 static const float MAP_SNOW_HEIGHT_SCALE = 0.7h;
-static const float MAP_SNOW_LATITUDE_THRESHOLD = 155.0f; // World X-coordinate
 
 struct VS_OUTPUT_NEW_MAP
 {
 	float4 Pos					: POSITION;
 	half4  Color				: COLOR0;
 	half4  Tex0					: TEXCOORD0; // .z = height, .w = world x-pos
-	half3  CameraDir			: TEXCOORD1;
+	half4  CameraDir			: TEXCOORD1;
 	float4 ShadowTexCoord		: TEXCOORD2;
 	half2  ShadowTexelPos		: TEXCOORD3;
 	half   Fog				    : FOG;
@@ -6632,6 +6666,7 @@ VS_OUTPUT_NEW_MAP vs_new_map(uniform const int PcfMode, float4 vPosition : POSIT
 	#endif
 
 	Out.Color = (vMaterialColor * vColor * diffuse_light);
+
 	Out.SunLightDir = normalize(mul(TBNMatrix, -vSunDir));
 
 	if (PcfMode != PCF_NONE)
@@ -6644,7 +6679,10 @@ VS_OUTPUT_NEW_MAP vs_new_map(uniform const int PcfMode, float4 vPosition : POSIT
 	}
 
 	Out.ViewDir = (half3)normalize(vCameraPos.xyz - vWorldPos.xyz);
-	Out.CameraDir = mul(TBNMatrix, -Out.ViewDir);
+
+	Out.CameraDir.xyz = mul(TBNMatrix, -Out.ViewDir);
+	Out.CameraDir.w = vWorldPos.y;
+
 	Out.WorldNormal = vWorldN;
 
 	float3 P = mul(matWorldView, vPosition).xyz;
@@ -6661,7 +6699,7 @@ PS_OUTPUT ps_new_map(VS_OUTPUT_NEW_MAP In, uniform const int PcfMode)
 	parallaxcoords.x += 0.1h * sin(parallaxcoords.y);
 
 	// PARALLAX MAPPING
-	half3 viewVec = normalize(In.CameraDir);
+	half3 viewVec = normalize(In.CameraDir.xyz);
 	{
 		half factor = (0.01h * vSpecularColor.x);
 		half volume = factor * MAP_PARALLAX_SCALE_FACTOR;
@@ -6677,18 +6715,52 @@ PS_OUTPUT ps_new_map(VS_OUTPUT_NEW_MAP In, uniform const int PcfMode)
 
 	// SEASONAL SNOW
 	float season = GetSeason();
-	half height = In.Tex0.y;
-	half height_z = In.Tex0.z;
 	if (season > 2.5) // winter
 	{
-		height *= -0.5h * sin(height_z) * sin(height_z);
-		height += 0.5h;
+		// Geographic Rules: Read world position from the packed .w components.
+		half world_pos_x = In.Tex0.w;
+		half world_pos_y = In.CameraDir.w;
+
+		static const float SOUTHERN_BORDER_START = 20.0f; // Y-coord where snow is completely gone.
+		static const float SOUTHERN_BORDER_END = 40.0f;   // Y-coord where snow is at full strength.
+
+		static const float SE_BOX_X_START = 185.0f;
+		static const float SE_BOX_Y_END = 66.0f;
+		static const float SE_BOX_TRANSITION_WIDTH = 40.0f; // How wide
+
+		static const float NORTHERN_LATITUDE_START = 100.0f; // Y-coord where northern snow effect begins.
+		static const float NORTHERN_LATITUDE_END = 300.0f;   // Y-coord where northern snow effect is at full strength.
+		static const half NORTHERN_SNOW_BOOST = 1.5h;
+
+		// Calculate falloff factors using the correct variables.
+		half southern_falloff = smoothstep(SOUTHERN_BORDER_START, SOUTHERN_BORDER_END, world_pos_y);
+		half se_falloff_x = 1.0h - smoothstep(SE_BOX_X_START - SE_BOX_TRANSITION_WIDTH, SE_BOX_X_START, world_pos_x);
+		half se_falloff_y = smoothstep(SE_BOX_Y_END, SE_BOX_Y_END + SE_BOX_TRANSITION_WIDTH, world_pos_y);
+		half southeastern_falloff = saturate(se_falloff_x + se_falloff_y);
+
+		half snow_mask = southern_falloff * southeastern_falloff;
+
+
+		if (snow_mask > 0.01h)
+		{
+			// --- Natural Snow Coverage ---
+			static const half SNOW_ALTITUDE_START = 0.45h;
+			static const half SNOW_ALTITUDE_FULL = 3.0h;
+			static const half SNOW_NOISE_INFLUENCE = 0.85h;
+			static const half SNOW_NOISE_SCALE = 0.2h;
+
+			half height_z = In.Tex0.z;
+			half snow_from_altitude = smoothstep(SNOW_ALTITUDE_START, SNOW_ALTITUDE_FULL, height_z);
+			half snow_from_noise = tex2D(EnvTextureSampler, In.Tex0.xy * SNOW_NOISE_SCALE).a;
+			half base_snow_amount = saturate(snow_from_altitude + (snow_from_noise - 0.5h) * SNOW_NOISE_INFLUENCE);
+
+			half latitude_factor = smoothstep(NORTHERN_LATITUDE_START, NORTHERN_LATITUDE_END, world_pos_y);
+			half final_snow_amount = saturate(base_snow_amount + (latitude_factor * NORTHERN_SNOW_BOOST));
+
+			// Apply the final combined snow amount, including the geographic mask.
+			tex_col.rgb = lerp(tex_col.rgb, half3(1.0h, 1.0h, 1.0h), final_snow_amount * snow_mask);
+		}
 	}
-	else
-	{
-		height = 0.0h;
-	}
-	tex_col.rgb += saturate(height * tex_col.a - 1.5h);
 	tex_col.a = 1.0h;
 
 	// Parallax darkening effect
@@ -6726,80 +6798,6 @@ technique new_map_shader
 	{
 		VertexShader = vs_new_map_compiled_PCF_NONE;
 		PixelShader = compile PS_2_X ps_new_map(PCF_NONE);
-	}
-}
-
-PS_OUTPUT ps_new_map_2(VS_OUTPUT_NEW_MAP In, uniform const int PcfMode)
-{
-	PS_OUTPUT Output;
-
-	half2 parallaxcoords = 0.95h * In.Tex0.xy;
-	parallaxcoords.x += 0.1h * sin(parallaxcoords.y);
-
-	// PARALLAX MAPPING
-	half3 viewVec = normalize(In.CameraDir);
-	{
-		half factor = (0.01h * vSpecularColor.x);
-		half volume = factor * MAP_PARALLAX_SCALE_FACTOR;
-		half bias = factor * MAP_PARALLAX_BIAS_FACTOR;
-		half height = tex2D(EnvTextureSampler, parallaxcoords).a;
-		half offset = height * volume + bias;
-		In.Tex0.xy += offset * viewVec.xy;
-		parallaxcoords += offset * viewVec.xy;
-	}
-
-	half4 tex_col = tex2D(MeshTextureSampler, In.Tex0.xy);
-	INPUT_TEX_GAMMA(tex_col.rgb);
-
-	// SEASONAL SNOW
-	float season = GetSeason();
-	half height = In.Tex0.y;
-	half height_z = In.Tex0.z;
-	half latitude = In.Tex0.w + MAP_SNOW_LATITUDE_THRESHOLD;
-	if (season > 2.5) // winter
-	{
-		// Note: pow() is computationally expensive.
-		height *= -0.75h * sin(height_z) * sin(height_z);
-		height += 0.5h;
-	}
-	else
-	{
-		height = 0.0h;
-	}
-	tex_col.rgb += saturate(height * tex_col.a - 1.5h);
-	tex_col.a = 1.0h;
-
-	// Parallax darkening effect
-	tex_col.rgb = lerp(tex_col.rgb * half3(0.8h, 0.75h, 0.65h), tex_col.rgb * 1.30h, 1.0h - tex2D(EnvTextureSampler, parallaxcoords).a);
-
-	// LIGHTING
-	half3 normal = (2.0h * tex2D(NormalTextureSampler, In.Tex0.xy * map_normal_detail_factor).rgb - 1.0h);
-	half3 normalpara = (2.0h * tex2D(EnvTextureSampler, parallaxcoords).rgb - 1.0h);
-	half4 In_SunLight = saturate(dot(normal, In.SunLightDir)) * vSunColor * vMaterialColor;
-
-	half sun_amount = 1.0h;
-	if (PcfMode != PCF_NONE)
-	{
-		sun_amount = GetSunAmount(PcfMode, In.ShadowTexCoord, In.ShadowTexelPos);
-	}
-	Output.RGBColor =  tex_col * (In.Color + In_SunLight * sun_amount);
-
-	// FRESNEL TERM
-	half fresnel = 1.0h - saturate(dot(normalize(In.ViewDir), normalpara));
-	half fresnel2 = 1.0h - saturate(dot(normalize(In.ViewDir), normal));
-	fresnel *= fresnel2;
-	Output.RGBColor.rgb = lerp(Output.RGBColor.rgb, Output.RGBColor.rgb * fresnel, 0.5h);
-
-	OUTPUT_GAMMA(Output.RGBColor.rgb);
-	return Output;
-}
-
-technique new_map_shader_snow
-{
-	pass P0
-	{
-		VertexShader = vs_new_map_compiled_PCF_NONE;
-		PixelShader = compile PS_2_X ps_new_map_2(PCF_NONE);
 	}
 }
 

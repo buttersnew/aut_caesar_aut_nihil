@@ -1,5 +1,5 @@
 map_icons_file version 1
-175
+180
 player 0 slave 0.200000 17 0.160000 0.173000 0.000000 0
 
 
@@ -219,10 +219,25 @@ fort_persian 1 fort_persian 0.350000 0 0 0 0 0
 town_roman 1 town_roman 0.350000 0 0 0 0 0
 
 
+town_roman_port 1 town_roman_port 0.350000 0 0 0 0 0
+
+
+town_roman_port_2 1 town_roman_port_2 0.350000 0 0 0 0 0
+
+
+town_tarrentum 1 town_tarrentum 0.350000 0 0 0 0 0
+
+
 town_greek 1 town_greek 0.350000 0 0 0 0 0
 
 
+town_greek_port 1 town_greek_port 0.350000 0 0 0 0 0
+
+
 town_persian 1 town_persian 0.350000 0 0 0 0 0
+
+
+town_syrian 1 town_syrian 0.350000 0 0 0 0 0
 
 
 town_rome 1 town_rome 0.350000 0 0 0 0 0

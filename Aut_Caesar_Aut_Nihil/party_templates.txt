@@ -256,12 +256,12 @@ pt_dacians Dacian_Revolt 14073748839727162 0 1 79 250 250 350 0 235 350 450 0 23
 pt_jewish_revolt Great_Jewish_Revolt 562949953421366 0 56 360 507 550 650 0 59 30 50 0 51 30 50 0 137 100 200 0 131 100 200 0 -1 
 pt_slave_hideout Hideout 2098210 0 3 360 -1 -1 -1 -1 -1 -1 
 pt_player_camp Camp 1064984 0 24 15 -1 -1 -1 -1 -1 -1 
-pt_port port 6317151 0 0 0 -1 -1 -1 -1 -1 -1 
-pt_ferry_port port 2622559 0 0 0 -1 -1 -1 -1 -1 -1 
-pt_jetty_port port 2622559 0 0 0 -1 -1 -1 -1 -1 -1 
+pt_port port 6317156 0 0 0 -1 -1 -1 -1 -1 -1 
+pt_ferry_port port 2622564 0 0 0 -1 -1 -1 -1 -1 -1 
+pt_jetty_port port 2622564 0 0 0 -1 -1 -1 -1 -1 -1 
 pt_landet_ships your_ships 2123291 0 0 0 -1 -1 -1 -1 -1 -1 
-pt_traveller_ship Traveller 1125899973951494 0 1 7 53 6 20 0 49 5 20 0 523 2 15 0 -1 -1 -1 
-pt_slave_trader_ship Slave_Trader 844424997240924 0 1 7 524 1 2 0 53 0 12 0 51 0 24 0 54 4 48 0 -1 -1 
+pt_traveller_ship Traveller 1125899973951494 0 1 7 53 5 15 0 49 5 15 0 -1 -1 -1 -1 
+pt_slave_trader_ship Slave_Trader 844424997240929 0 1 7 524 1 2 0 53 0 12 0 51 0 24 0 54 4 48 0 -1 -1 
 pt_sea_traders Traders 7036874421960740 0 1 7 524 1 1 0 51 20 30 0 50 5 20 0 52 5 10 0 53 5 10 0 525 3 10 0 
 pt_rebels Rebels 562949953421321 0 54 360 49 15 55 0 505 12 24 0 516 30 70 0 513 30 70 0 514 20 40 0 515 10 20 0 
 pt_hord_siraken Horde 562949953421323 0 37 7 299 150 200 0 305 46 117 0 302 10 23 0 311 2 4 0 308 7 12 0 -1 
@@ -270,6 +270,6 @@ pt_crucified_slaves crucified_slaves 2638886 0 0 0 -1 -1 -1 -1 -1 -1
 pt_patrols_end Patrol 2 0 24 15 -1 -1 -1 -1 -1 -1 
 pt_slave_revolt Albus_party 562949953421321 0 3 31 505 20 25 0 504 10 15 0 516 50 60 0 -1 -1 -1 
 pt_grove Sacred_Grove 2098215 0 3 154 -1 -1 -1 -1 -1 -1 
-pt_latifundium Latifundium 1066080 0 3 154 -1 -1 -1 -1 -1 -1 
+pt_latifundium Latifundium 1066085 0 3 154 -1 -1 -1 -1 -1 -1 
 pt_parthian_exp Expedition_Force 56294995346325556 0 1 79 381 600 800 0 384 600 800 0 369 400 500 0 387 400 500 0 393 300 400 0 375 400 500 0 
 pt_barbarus_fleet Barbarus_Rufus_fleet 2533274790789146 0 3 31 509 80 120 0 2335 30 50 0 -1 -1 -1 -1 

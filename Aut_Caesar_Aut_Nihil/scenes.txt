@@ -1180,7 +1180,7 @@ scn_town_20_arena town_20_arena 256 none none 0.000000 0.000000 100.000000 100.0
   0 
   0 
  outer_terrain_plain 
-scn_town_20_castle town_20_castle 3 viking_interior_keep_a bo_viking_interior_keep_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+scn_town_20_castle town_20_castle 256 none none -100.000000 -100.000000 100.000000 100.000000 -100.000000 0xa0001d9300031ccb0000156f000048ba0000361c 
   1  100000 
   0 
  0 
