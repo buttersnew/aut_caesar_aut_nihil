@@ -4218,8 +4218,9 @@ scripts_hardcoded = [
 
                 (try_begin),#perform genocid on conquest
                     (is_between, ":original_faction", npc_kingdoms_begin, npc_kingdoms_end),
+                    (faction_get_slot, ":culture33", ":winner_faction", slot_faction_culture),
                     (is_between, ":culture33", "fac_culture_dacian", "fac_culture_caucasian"),
-                    (faction_get_slot, ":original_faction_culture", ":original_faction", slot_center_original_faction),
+                    (faction_get_slot, ":original_faction_culture", ":original_faction", slot_faction_culture),
                     (is_between, ":original_faction_culture", "fac_culture_dacian", "fac_culture_caucasian"),
                     (neg|party_slot_eq, ":root_defeated_party", slot_center_culture, ":original_faction_culture"),
                     (call_script, "script_change_culture_of_center", ":root_defeated_party", ":original_faction_culture"),
