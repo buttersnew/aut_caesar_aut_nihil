@@ -35315,7 +35315,7 @@ scripts = scripts_hardcoded + [
             (assign, ":suggested_relation_change", 0),
         (else_try),
             #Don't complain about your own spouse.
-            (troop_slot_eq, "$g_talk_troop", ":troop_object", slot_troop_spouse),
+            (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, ":troop_object"),
         (else_try),
             #Don't complain if you aren't actually a lord.
             (is_between, ":true_reputation", lrep_roguish, lrep_conventional),

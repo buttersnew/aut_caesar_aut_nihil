@@ -27210,7 +27210,7 @@ game_menus = [
             (call_script, "script_cohort_refil_garrison", "$g_encountered_party", ":party_template", ":party_template_slot",0),
         (try_end),
       (else_try),
-        (party_slot_eq, "$g_encountered_party", spt_kingdom_hero_party),
+        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_kingdom_hero_party),
 
         (try_for_range, ":party_template_slot", slot_cohort_begin, slot_cohort_end),
             (party_get_slot, ":party_template", "$g_encountered_party", ":party_template_slot"),
