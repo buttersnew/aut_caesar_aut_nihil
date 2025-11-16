@@ -1,0 +1,110 @@
+farmer,Rusticus,Rustici,Latin,Farmer
+sarmatian_peasant,Sarmata Tribulis,Sarmatae Tribules,Latin,Sarmatian Peasant
+bosporan_peasant,Bosporanus Rusticus,Bosporani Rustici,Latin,Bosporan Peasant
+judean_peasant,Iudaeus Rusticus,Iudaei Rustici,Latin,Judean Peasant
+parthian_peasant,Parthus Tribulis,Parthi Tribules,Latin,Parthian Peasant
+persian_peasant,Persa Rusticus,Persae Rustici,Latin,Persian Peasant
+roman_peasant,Romanus Rusticus,Romani Rustici,Latin,Roman Peasant
+celtic_peasant,Celticus Tribulis,Celtici Tribules,Latin,Celtic Peasant
+germanic_peasant,Germanus Tribulis,Germani Tribules,Latin,Germanic Peasant
+dacian_peasant,Dacus Rusticus,Daci Rustici,Latin,Dacian Peasant
+thracian_peasant,Thracicus Rusticus,Thracici Rustici,Latin,Thracian Peasant
+arab_peasant,Arabs Tribulis,Arabes Tribules,Latin,Arab Peasant
+syrian_peasant,Syrus Tribulis,Syri Tribules,Latin,Syrian Peasant
+eastern_peasant,Orientalis Tribulis,Orientales Tribules,Latin,Eastern Peasant
+berber_peasant,Maurus Tribulis,Mauri Tribules,Latin,Berber Peasant
+garamantian_peasant,Garamans Tribulis,Garamantes Tribules,Latin,Garamantian Peasant
+caucasian_peasant,Caucasicus Tribulis,Caucasici Tribules,Latin,Caucasian Peasant
+greek_peasant,Graecus Rusticus,Graeci Rustici,Latin,Greek Peasant
+galatian_peasant,Galaticus Rusticus,Galatici Rustici,Latin,Galatian Peasant
+illyrian_peasant,Illyricus Rusticus,Illyrici Rustici,Latin,Illyrian Peasant
+hispanic_peasant,Hispanus Rusticus,Hispani Rustici,Latin,Hispanic Peasant
+gaulish_peasant,Gallus Rusticus,Galli Rustici,Latin,Gaulish Peasant
+nubian_peasant,Nubianus Tribulis,Nubiani Tribules,Latin,Nubian Peasant
+saka_peasant,Sacae Tribulis,Sacae Tribules,Latin,Saka Peasant
+egyptian_peasant,Aegyptius Rusticus,Aegyptii Rustici,Latin,Egyptian Peasant
+watchman,Mercenarius Funditor,Mercenarii Funditores,Latin,Mercenary Slinger
+caravan_guard,Custos,Custodes,Latin,Guard
+mercenary_swordsman,Mercenarius Hastatus,Mercenarii Hastati,Latin,Mercenary Spearman
+hired_blade,Xenikos Peltastes,Xenikoi Peltastai,Greek,Mercenary Peltast
+mercenary_bowman,Mercenarius Sagittarius,Mercenarii Sagittarii,Latin,Mercenary Archer
+mercenary_horseman,Mercenarius Eques,Mercenarius Equites,Latin,Mercenary Horseman
+mercenary_cavalry,Mercenarius Cataphractus,Mercenarii Cataphracti,Latin,Mercenary Cataphract
+illyrian_horseman,Illyrios Hippeus,Illyrioi Hippeis,Greek,Illyrian Horseman
+illyrian_infantry,Illyrios Pezos,Illyrioi Pezoi,Greek,Illyrian Infantryman
+slinger_rhodos,Rhodios Sphendonetes,Rhodioi Sphendonetai,Greek,Rhodian Slinger
+kreta_archer,Kres Toxotes,Kretes Toxotai,Greek,Cretan Archer
+hoplit,Hoplites,Hoplitai,Greek,Hoplite
+phalanx,Phalangit,Phalangitai,Greek,Phalangite
+hoplit_2,Epilektos,Epilektoi,Greek,Chosen Hoplite / Elite
+hispanic_infantry,Scutarius,Scutarii,Latin,Shield-bearer (Hispanic Infantry)
+hispanic_heavy_infantry,Loricati Scutarius,Loricati Scutarii,Latin,Armored Shield-bearer (Hispanic Heavy Infantry)
+scythian_horse_archer,Skythikos Hippeus,Skythikoi Hippeis,Greek,Scythian Horseman
+scythian_amazon,Amazon,Amazones,Greek,Amazon
+scythian_medium_cavalry,Skythios Lonchophoros,Skythioi Lonchophoroi,Greek,Scythian Lancer
+scythian_cataphract,Skythikos Kataphraktos,Skythikoi Kataphraktoi,Greek,Scythian Cataphract
+alan_horse_archer,Alanno Badaro,Alanna Badarai,Old Iranian (Alanic),Alan Chieftain
+alan_heavy_horse_archer,Alanno Leazdaetta,Alanna Leazdaettae,Old Iranian (Alanic),Alan Shield-bearer
+celtic_freeman,Ambaktos,Ambaktoi,Proto-Celtic,Retainer / Vassal Warrior
+celtic_elite_swordsman,Arios,Arioi,Proto-Celtic,Noble / Freemen
+irish_skirmisher,Weidelos Iwerakos,Weideloi Iwerakoi,Proto-Celtic,Irish Seer
+irish_vetran,Ouxselos Iwerakos,Ouxseloi Iwerakoi,Proto-Celtic,High/Exalted Irish Warrior
+germanic_hunter,Sakandz,Sakandiz,Proto-Germanic,Contender / Fighter
+germanic_free_spearman,Gaizaz Frijaz,Gaizoz Frijoz,Proto-Germanic,Free Spearman
+germanic_nightwarrior,Hariaz Skaduganganaz,Harioz Skaduganganoz,Proto-Germanic,The Shadow-Walking War-band
+germanic_free_nobleman,Istaevonaz Druthinaz,Istaevonoz Druthinoz,Proto-Germanic,Istaevonic Lord
+baltic_hunter,Voinas,Voinai,Proto-Baltic/Slavic,Warrior
+danish_skirmisher,Stranjaz Druhtinaz,Stranjoz Druhtinoz,Proto-Germanic,Strong Retainer
+danish_vetran,Akwinaz,Akwinoz,Proto-Germanic,Axeman
+lombard_skirmisher,Winnilaz Slagandz,Winniloz Slagandiz,Proto-Germanic,Winnili Striker
+lombard_vetran,Winnilaz Wopandz,Winniloz Wopandiz,Proto-Germanic,Winnili Shouting Warrior
+slavic_skirmisher,Gaizaz Ridandz,Gaizoz Ridandiz,Proto-Germanic,Spear-Rider
+slavic_vetran,Toutaginos,Toutaginoi,Proto-Celtic,Tribesman
+georgian_light_archer,Moisari,Moisarebi,Kartvelian (Old Georgian),Archer
+georgian_noble_archer,Mtieli Shubosani,Mtieli Shubosnebi,Kartvelian (Old Georgian),Mountain Javelin-man
+persian_picaxe_man,Tabarzan Eranshahr,Tabarzanan Eranshahr,Pahlavi (Middle Persian),Axeman of the Empire
+persian_noble_cav,Asad Asavar,Asadan Asavaran,Pahlavi (with Arabic),Lion Horseman
+saka_horse_archer,Yukhuno Yasanino Puthro,Yukhuna Yasaninu Puthra,Old Iranian (Saka),Young Noble Son
+saka_heavy_cavalry,Sakayo Azaryanako,Sakaya Azaryanaka,Old Iranian (Saka),Golden Saka
+saka_amazon,Razma-Jani,Razma-Janya,Old Iranian (Saka),Battle-Woman
+indian_archer,Dhanurdhara,Dhanurdharah,Sanskrit,Archer
+indian_spearman,Patti Kauntika,Patti Kauntikah,Sanskrit,Infantry Spearman
+garamantian_horseman,Amhadi Garamanti,Imhaditen Garamantin,Libyco-Berber,Garamantian Guard
+garamantian_noble_horseman,Aballun Garamanti,Iballunen Garamantin,Libyco-Berber,Garamantian Spearman
+gaetuli_horseman,Amenay Amawri,Imnayen Imawriyen,Libyco-Berber,Moorish Horseman
+gaetuli_noble_horseman,Amhadi n Thugga,Imhaditen n Thugga,Libyco-Berber,Guard of Thugga
+meroe_archers,Neteke,Netekeli,Meroitic/Nubian,Nobleman
+meroe_infantry,Adke-tkk,Adkeli-tkkli,Meroitic/Nubian,Great Warrior
+meroe_axemen,Kukur,Kukurli,Meroitic/Nubian,Priest-Chief
+egyptian_archers,Reftksote,Reftksotew,Coptic/Late Egyptian,The Archer
+egyptian_infantry_heavy,Refbouts,Refboutew,Coptic/Late Egyptian,The Club-bearer
+egyptian_infantry_light,Refqenqen,Refqenqenew,Coptic/Late Egyptian,The Crusher
+egyptian_officer,Tzoeisu,Tzoeisu-w,Coptic/Late Egyptian,The Commander
+arab_noble_archers,Shomer Hajar,Shomrim Hajar,Semitic (Hebrew/Arabic),Guard of Hajar
+arab_spearmen,Muqrab,Muqrabeen,Semitic (Sabaean/Arabic),Dedicated Warrior
+desert_bandit,Faris,Farasin,Semitic (Arabic),Horseman
+arab_noble_cav,Abbir Faris,Abbirim Farisin,Semitic (Hebrew/Arabic),Mighty Horseman
+palmyra_infantry,Palmyraius Pedes,Palmyraii Pedites,Latin,Palmyrene Foot-soldier
+palmyra_cataphract,Palmyraius Cataphractus,Palmyraii Cataphracti,Latin,Palmyrene Cataphract
+bosporan_standard_bearer,Bosporanos Semeiophoros,Bosporanoi Semeiophoroi,Greek,Bosporan Standard-bearer
+bosporan_hornman,Bosporanos Salpinktes,Bosporanoi Salpinktai,Greek,Bosporan Horn-man
+judean_standard_bearer,Ioudaios Semeiophoros,Ioudaioi Semeiophoroi,Greek,Judean Standard-bearer
+judean_hornman,Ioudaios Salpinktes,Ioudaioi Salpinktai,Greek,Judean Horn-man
+germanic_standard_bearer,Markaz-berd,Markaz-berdnes,Proto-Germanic,Germanic Standard-bearer
+germanic_hornman,Hurnaz-blezd,Hurnaz-blezones,Proto-Germanic,Germanic Horn-man
+celtic_standard_bearer,Mergiforos,Mergifori,Proto-Celtic,Celtic Standard-bearer
+celtic_hornman,Carnoucos,Carnouci,Proto-Celtic,Celtic Horn-man
+dacian_standard_bearer,Dakos Semeiophoros,Daki Semeiophoroi,Greek,Dacian Standard-bearer
+dacian_hornman,Dakos Salpinktes,Daki Salpinktai,Greek,Dacian Horn-man
+armenian_standard_bearer,Armenikos Semeiophoros,Armenikoi Semeiophoroi,Greek,Armenian Standard-bearer
+armenian_hornman,Armenikos Salpinktes,Armenikoi Salpinktai,Greek,Armenian Horn-man
+caucasian_standard_bearer,Kaukasios Semeiophoros,Kaukasioi Semeiophoroi,Greek,Caucasian Standard-bearer
+caucasian_hornman,Kaukasios Salpinktes,Kaukasioi Salpinktai,Greek,Caucasian Horn-man
+parthian_standard_bearer,Drafs-bar,Drafs-baran,Pahlavi (Middle Persian),Parthian Standard-bearer
+parthian_hornman,Sur-dam,Sur-daman,Pahlavi (Middle Persian),Parthian Horn-man
+syrian_standard_bearer,Regalya D-Darpsa,Regalya D-Darpsa,Syriac,Syrian Standard-bearer
+syrian_hornman,Musiqara D-Gesa,Musiqara D-Gesa,Syriac,Syrian Horn-man
+egyptian_standard_bearer,Tjai-seryt,Tjaiu-seryt,Ancient Egyptian,Egyptian Standard-bearer
+egyptian_hornman,Weha-en-deb,Wehau-en-deb,Ancient Egyptian,Egyptian Horn-man
+hornman,Xenikos Moysikos,Xenikoi Moysikoi,Greek,Mercenary Musician
+judean_hornman,Antolikos Moysikos,Antolikoi Moysikoi,Greek,Eastern Musician

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Troop Translations</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .table-wrap { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+    table { width: 100%; border-collapse: collapse; background: #111; color: #eee; }
+    th, td { padding: 8px 10px; border: 1px solid #2a2a2a; text-align: left; }
+    th { background: #1e1e1e; position: sticky; top: 0; z-index:1; }
+    input.search { width: 100%; padding: 10px; margin-bottom: 14px; border-radius:6px; border:1px solid #333; background:#222; color:#eee; }
+    .meta { margin-bottom: 10px; color:#aaa; }
+    .download-btn { display:inline-block; margin-top:10px; padding:8px 14px; background:#E50914; color:#fff; text-decoration:none; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <div class="table-wrap container">
+    <h1>Troop Translations</h1>
+    <p class="meta">Loaded from <code>content/troop_translations.csv</code>. Use the filter box to search by id or name.</p>
+
+    <input class="search" id="filter" placeholder="Filter (id, singular, plural, english name)..." />
+
+    <div id="count" class="meta"></div>
+    <a class="download-btn" href="content/troop_translations.csv" download>Download CSV</a>
+
+    <div style="overflow:auto; margin-top:10px;">
+      <table id="troop-table">
+        <thead>
+          <tr><th>id</th><th>Singular</th><th>Plural</th><th>Source Lang</th><th>English</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Fetch and parse a simple CSV (no external libs)
+    async function loadCSV(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Failed to fetch CSV: ' + res.status);
+      const text = await res.text();
+      const lines = text.split(/\r?\n/).filter(Boolean);
+      // Split by commas, but handle quoted fields roughly
+      const rows = lines.map(line => {
+        const cols = [];
+        let cur = '';
+        let inQuote = false;
+        for (let i=0;i<line.length;i++) {
+          const ch = line[i];
+          if (ch === '"' || ch === "'") {
+            // toggle quote state (simple)
+            inQuote = !inQuote;
+            continue;
+          }
+          if (ch === ',' && !inQuote) {
+            cols.push(cur.trim());
+            cur = '';
+            continue;
+          }
+          cur += ch;
+        }
+        if (cur.length) cols.push(cur.trim());
+        return cols;
+      });
+      return rows;
+    }
+
+    function render(rows) {
+      const tbody = document.querySelector('#troop-table tbody');
+      tbody.innerHTML = '';
+      for (const r of rows) {
+        const tr = document.createElement('tr');
+        // ensure at least 5 columns, fill blanks if necessary
+        const [id='', singular='', plural='', lang='', english=''] = r.concat([]).slice(0,5);
+        tr.innerHTML = `<td>${escapeHTML(id)}</td><td>${escapeHTML(singular)}</td><td>${escapeHTML(plural)}</td><td>${escapeHTML(lang)}</td><td>${escapeHTML(english)}</td>`;
+        tbody.appendChild(tr);
+      }
+      document.getElementById('count').textContent = `${rows.length} rows`;
+    }
+
+    function escapeHTML(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    (async () => {
+      try {
+        const csvPath = 'content/troop_translations.csv';
+        const rows = await loadCSV(csvPath);
+        // If the CSV has a header row (doesn't in your sample), remove it.
+        // We'll check if the first row looks like a header by looking for non-id-like content:
+        const first = rows[0] || [];
+        const isHeader = first.length && !/^[a-z0-9_]+$/i.test(first[0]);
+        const data = isHeader ? rows.slice(1) : rows;
+        render(data);
+
+        // filtering
+        const input = document.getElementById('filter');
+        input.addEventListener('input', () => {
+          const q = input.value.trim().toLowerCase();
+          if (!q) return render(data);
+          const filtered = data.filter(cols => cols.join(' ').toLowerCase().includes(q));
+          render(filtered);
+        });
+      } catch (err) {
+        console.error(err);
+        document.querySelector('.table-wrap').innerHTML = '<p style="color:tomato">Error loading CSV: '+err.message+'</p>';
+      }
+    })();
+  </script>
+</body>
+</html>
