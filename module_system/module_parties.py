@@ -548,32 +548,32 @@ parties = [
 
 ("transporter", "Transporter", icon_ship|pf_disabled|pf_always_visible|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (0, 0), [(trp_mercenary_swordsman, 5, 0)]),
 
-("landing_point", "landing point", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-51.69, -43.86), []),
+("landing_point", "Landing Point", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-51.69, -43.86), []),
 
-("jetty_1a", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (7.34, 19.46), [], 35),
+("jetty_1a", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (7.34, 19.46), [], 35),
 
 # is now port
-# ("jetty_2a", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-20.46, -37.46), [], 45),
-("jetty_3a", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-205.47, 104.21), []),
-# ("jetty_4a", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-95.9, -31.47), [], 90),
-("jetty_3b", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-207.06, 118.92), []),
-("jetty_4c", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-253.36, -40.16), []),
-("jetty_5c", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-250.42, -24.89), []),
-("jetty_6d", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-143.43, 18.31), []),
+# ("jetty_2a", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-20.46, -37.46), [], 45),
+("jetty_3a", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-205.47, 104.21), []),
+# ("jetty_4a", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-95.9, -31.47), [], 90),
+("jetty_3b", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-207.06, 118.92), []),
+("jetty_4c", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-253.36, -40.16), []),
+("jetty_5c", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-250.42, -24.89), []),
+("jetty_6d", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-143.43, 18.31), []),
 # is now port
-# ("jetty_7e", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-140.73, -6.51), []),
-("jetty_8e", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (14.47, -27.2), []),
+# ("jetty_7e", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-140.73, -6.51), []),
+("jetty_8e", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (14.47, -27.2), []),
 # is now port
-# ("jetty_9e", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (64.61, -25.16), []),
-# ("jetty_10e", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (79.95, -44.25), []),
-("jetty_11e", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (3.84, -9.54), []),
-("jetty_12f", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-196.42, -1), []),
+# ("jetty_9e", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (64.61, -25.16), []),
+# ("jetty_10e", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (79.95, -44.25), []),
+("jetty_11e", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (3.84, -9.54), []),
+("jetty_12f", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-196.42, -1), []),
 # is now port
-# ("jetty_13", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (66.42, 44), []),
-# ("jetty_14", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-42.94, -71.81), []),
+# ("jetty_13", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (66.42, 44), []),
+# ("jetty_14", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-42.94, -71.81), []),
 # is now port
-# ("jetty_15", "jetty station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (59.45, 83.48), []),
-("jetty_end", "jetty station", icon_landing_point|pf_village|pf_disabled|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-129.850006, -18.719999), [], 135),
+# ("jetty_15", "Jetty Station", icon_landing_point|pf_village|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (59.45, 83.48), []),
+("jetty_end", "Jetty Station", icon_landing_point|pf_village|pf_disabled|pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-129.850006, -18.719999), [], 135),
 
 ("follower_party", "Follower Party", icon_town_alexandria_lighthouse|pf_village|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-23.879999, -71.629997), [], 135),
 
@@ -604,7 +604,7 @@ parties = [
 ("island", "Cythnus", icon_map_island|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-16.55, -17.71), [], 90),
 
 ("langobard_landing", "Lugian Camp", icon_forest|pf_is_static|pf_always_visible|pf_hide_defenders|pf_label_small|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-80.5,150.9), [], 90),
-("kurgan", "Old burial mound", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (276.077, 90.409), [(trp_saka_amazon, 100, 0)], 135),
+("kurgan", "Old Burial Mound", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (276.077, 90.409), [(trp_saka_amazon, 100, 0)], 135),
 ("temple_of_rhodogune", "Zamb", icon_forest|pf_village|pf_hide_defenders|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (163.638, 14.726), [], 105),
 
 ("vally_of_kings", "Valley of the Kings", icon_valley_of_kings_combined|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (72.67, -124.38), []),

@@ -1,0 +1,2475 @@
+troop_id,name_singular,name_plural
+
+# Farmers
+farmer,Rusticus,Rustici
+sarmatian_peasant,Sarmata Tribulis,Sarmatae Tribules
+bosporan_peasant,Bosporanus Rusticus,Bosporani Rustici
+judean_peasant,Iudaeus Rusticus,Iudaei Rustici
+parthian_peasant,Parthus Tribulis,Parthi Tribules
+persian_peasant,Persa Rusticus,Persae Rustici
+roman_peasant,Romanus Rusticus,Romani Rustici
+celtic_peasant,Celticus Tribulis,Celtici Tribules
+germanic_peasant,Germanus Tribulis,Germani Tribules
+dacian_peasant,Dacus Rusticus,Daci Rustici
+thracian_peasant,Thracicus Rusticus,Thracici Rustici
+arab_peasant,Arabs Tribulis,Arabes Tribules
+syrian_peasant,Syrus Tribulis,Syri Tribules
+eastern_peasant,Orientalis Tribulis,Orientales Tribules
+berber_peasant,Maurus Tribulis,Mauri Tribules
+garamantian_peasant,Garamans Tribulis,Garamantes Tribules
+caucasian_peasant,Caucasicus Tribulis,Caucasici Tribules
+greek_peasant,Graecus Rusticus,Graeci Rustici
+galatian_peasant,Galaticus Rusticus,Galatici Rustici
+illyrian_peasant,Illyricus Rusticus,Illyrici Rustici
+hispanic_peasant,Hispanus Rusticus,Hispani Rustici
+gaulish_peasant,Gallus Rusticus,Galli Rustici
+nubian_peasant,Nubianus Tribulis,Nubiani Tribules
+saka_peasant,Sacae Tribulis,Sacae Tribules
+egyptian_peasant,Aegyptius Rusticus,Aegyptii Rustici
+
+# Mercenaries
+watchman,Mercenarius Funditor,Mercenarii Funditores
+caravan_guard,Custos,Custodes
+mercenary_swordsman,Mercenarius Hastatus,Mercenarii Hastati
+hired_blade,Xenikos Peltastes,Xenikoi Peltastai
+mercenary_bowman,Mercenarius Sagittarius,Mercenarii Sagittarii
+mercenary_horseman,Mercenarius Eques,Mercenarius Equites
+mercenary_cavalry,Mercenarius Cataphractus,Mercenarii Cataphracti
+
+
+illyrian_horseman,Illyrios Hippeus,Illyrioi Hippeis
+illyrian_infantry,Illyrios Pezos,Illyrioi Pezoi
+
+
+slinger_rhodos,Rhodios Sphendonetes,Rhodioi Sphendonetai
+kreta_archer,Kres Toxotes,Kretes Toxotai
+hoplit,Hoplites,Hoplitai
+phalanx,Phalangit,Phalangitai
+hoplit_2,Epilektos,Epilektoi
+
+hispanic_infantry,Scutarius,Scutarii
+hispanic_heavy_infantry,Loricati Scutarius,Loricati Scutarii
+
+scythian_horse_archer,Skythikos Hippeus,Skythikoi Hippeis
+scythian_amazon,Amazon,Amazones
+scythian_medium_cavalry,Skythios Lonchophoros,Skythioi Lonchophoroi
+scythian_cataphract,Skythikos Kataphraktos,Skythikoi Kataphraktoi
+
+alan_horse_archer,Alanno Badaro,Alanna Badarai
+alan_heavy_horse_archer,Alanno Leazdaetta,Alanna Leazdaettae
+
+celtic_freeman,Ambaktos,Ambaktoi
+celtic_elite_swordsman,Arios,Arioi
+irish_skirmisher,Weidelos Iwerakos,Weideloi Iwerakoi
+irish_vetran,Ouxselos Iwerakos,Ouxseloi Iwerakoi
+
+germanic_hunter,Sakandz,Sakandiz
+germanic_free_spearman,Gaizaz Frijaz,Gaizoz Frijoz
+germanic_nightwarrior,Hariaz Skaduganganaz,Harioz Skaduganganoz
+germanic_free_nobleman,Istaevonaz Druthinaz,Istaevonoz Druthinoz
+baltic_hunter,Voinas,Voinai
+danish_skirmisher,Stranjaz Druhtinaz,Stranjoz Druhtinoz
+danish_vetran,Akwinaz,Akwinoz
+lombard_skirmisher,Winnilaz Slagandz,Winniloz Slagandiz
+lombard_vetran,Winnilaz Wopandz,Winniloz Wopandiz
+slavic_skirmisher,Gaizaz Ridandz,Gaizoz Ridandiz
+slavic_vetran,Toutaginos,Toutaginoi
+
+georgian_light_archer,Moisari,Moisarebi
+georgian_noble_archer,Mtieli Shubosani,Mtieli Shubosnebi
+
+persian_picaxe_man,Tabarzan Eranshahr,Tabarzanan Eranshahr
+persian_noble_cav,Asad Asavar,Asadan Asavaran
+
+saka_horse_archer,Yukhuno Yasanino Puthro,Yukhuna Yasaninu Puthra
+saka_heavy_cavalry,Sakayo Azaryanako,Sakaya Azaryanaka
+saka_amazon,Razma-Jani,Razma-Janya
+
+indian_archer,Dhanurdhara,Dhanurdharah
+indian_spearman,Patti Kauntika,Patti Kauntikah
+
+garamantian_horseman,Amhadi Garamanti,Imhaditen Garamantin
+garamantian_noble_horseman,Aballun Garamanti,Iballunen Garamantin
+
+gaetuli_horseman,Amenay Amawri,Imnayen Imawriyen
+gaetuli_noble_horseman,Amhadi n Thugga,Imḥaditen n Thugga
+
+meroe_archers,Neteke,Netekeli
+meroe_infantry,Adke-tkk,Adkeli-tkkli
+meroe_axemen,Kukur,Kukurli
+
+egyptian_archers,Reftksote,Reftksotew
+egyptian_infantry_heavy,Refbouts,Refboutew
+egyptian_infantry_light,Refqenqen,Refqenqenew
+egyptian_officer,Tzoeisu,Tzoeisu-w
+
+arab_noble_archers,Shomer Hajar,Shomrim Hajar
+arab_spearmen,Muqrab,Muqrabeen
+desert_bandit,Faris,Farasin
+arab_noble_cav,Abbir Faris,Abbirim Farisin
+
+palmyra_infantry,Palmyraius Pedes,Palmyraii Pedites
+palmyra_cataphract,Palmyraius Cataphractus,Palmyraii Cataphracti
+
+
+bosporan_standard_bearer,Bosporanos Semeiophoros,Bosporanoi Semeiophoroi
+bosporan_hornman,Bosporanos Salpinktes,Bosporanoi Salpinktai
+judean_standard_bearer,Ioudaios Semeiophoros,Ioudaioi Semeiophoroi
+judean_hornman,Ioudaios Salpinktes,Ioudaioi Salpinktai
+germanic_standard_bearer,Markaz-berd,Markaz-berdnes
+germanic_hornman,Hurnaz-blezd,Hurnaz-blezones
+celtic_standard_bearer,Mergiforos,Mergifori
+celtic_hornman,Carnoucos,Carnouci
+dacian_standard_bearer,Dakos Semeiophoros,Daki Semeiophoroi
+dacian_hornman,Dakos Salpinktes,Daki Salpinktai
+armenian_standard_bearer,Armenikos Semeiophoros,Armenikoi Semeiophoroi
+armenian_hornman,Armenikos Salpinktes,Armenikoi Salpinktai
+caucasian_standard_bearer,Kaukasios Semeiophoros,Kaukasioi Semeiophoroi
+caucasian_hornman,Kaukasios Salpinktes,Kaukasioi Salpinktai
+parthian_standard_bearer,Drafs-bar,Drafs-baran
+parthian_hornman,Sur-dam,Sur-daman
+syrian_standard_bearer,Regalya D-Darpsa,Regalya D-Darpsa
+syrian_hornman,Musiqara D-Gesa,Musiqara D-Gesa
+egyptian_standard_bearer,Tjai-seryt,Tjaiu-seryt
+egyptian_hornman,Weha-en-deb,Wehau-en-deb
+hornman,Xenikos Moysikos,Xenikoi Moysikoi
+judean_hornman,Antolikos Moysikos,Antolikoi Moysikoi
+
+judean_light_clubman,Judaios Thureophores,Judaioi Thureophoroi
+judean_light_clubman_exp,Judaios Thureophores (exp),Judaioi Thureophoroi (exp)
+judean_light_clubman_vet,Judaios Thureophores (vet),Judaioi Thureophoroi (vet)
+judean_light_spearman,Judaios Taxes,Ioudaioi Taxeis
+judean_light_spearman_exp,Judaios Taxes (exp),Ioudaioi Taxeis (exp)
+judean_light_spearman_vet,Judaios Taxes (vet),Ioudaioi Taxeis (vet)
+judean_skirmisher,Judaios Peltastes,Judaioi Peltastai
+judean_skirmisher_exp,Judaios Peltastes (exp),Judaioi Peltastai (exp)
+judean_skirmisher_vet,Judaios Peltastes (vet),Judaioi Peltastai (vet)
+judean_slinger,Judaios Sphendonetes,Ioudaioi Sphendonetai
+judean_slinger_exp,Judaios Sphendonetes (exp),Ioudaioi Sphendonetai (exp)
+judean_slinger_vet,Judaios Sphendonetes (vet),Ioudaioi Sphendonetai (vet)
+judean_archer,Judaios Toxotes,Ioudaioi Toxotai
+judean_archer_exp,Judaios Toxotes (exp),Ioudaioi Toxotai (exp)
+judean_archer_vet,Judaios Toxotes (vet),Ioudaioi Toxotai (vet)
+judean_elite,Judaios Thorakites,Ioudaioi Thorakitai
+judean_elite_exp,Judaios Thorakites (exp),Ioudaioi Thorakitai (exp)
+judean_elite_vet,Judaios Thorakites (vet),Ioudaioi Thorakitai (vet)
+judean_cav,Judaios Hippakontistes,Ioudaioi Hippakontistai
+judean_cav_exp,Judaios Hippakontistes (exp),Ioudaioi Hippakontistai (exp)
+judean_cav_vet,Judaios Hippakontistes (vet),Ioudaioi Hippakontistai (vet)
+judean_guard,Sebastenos Peltastes,Sebastenoi Peltastai
+judean_guard_vet,Sebastenos Peltastes,Sebastenoi Peltastai (vet)
+judean_guard_archer,Sebastenos Toxotes,Sebastenoi Toxotai
+judean_guard_archer_vet,Sebastenos Toxotes,Sebastenoi Toxotai (vet)
+
+bosporan_light_spearman,Bosporanos Entopios,Bosporanoi Entopioi
+bosporan_light_spearman_exp,Bosporanos Entopios (exp),Bosporanoi Entopioi (exp)
+bosporan_light_spearman_vet,Bosporanos Entopios (vet),Bosporanoi Entopioi (vet)
+bosporan_archer,Bosporanos Toxotes,Bosporanoi Toxotia
+bosporan_archer_exp,Bosporanos Toxotes (exp),Bosporanoi Toxotia (exp)
+bosporan_archer_vet,Bosporanos Toxotes (vet),Bosporanoi Toxotia (vet)
+bosporan_elite,Bosporanos Pezos,Bosporanoi Pezoi
+bosporan_elite_exp,Bosporanos Pezos (exp),Bosporanoi Pezoi (exp)
+bosporan_elite_vet,Bosporanos Pezos (vet),Bosporanoi Pezoi (vet)
+bosporan_cav,Sauromatikos Kataphraktos,Sauromatikoi Kataphraktoi
+bosporan_cav_exp,Sauromatikos Kataphraktos (exp),Sauromatikoi Kataphraktoi (exp)
+bosporan_cav_vet,Sauromatikos Kataphraktos (vet),Sauromatikoi Kataphraktoi (vet)
+
+germanic_light_clubman,Slagandz,Slagandiz
+germanic_light_clubman_exp,Slagandz (exp),Slagandiz (exp)
+germanic_light_clubman_vet,Slagandz (vet),Slagandiz (vet)
+germanic_light_spearman,Gaizafulkan Frijatoz,Gaizafulkan Frijato
+germanic_light_spearman_exp,Gaizafulkan Frijatoz (exp),Gaizafulkan Frijato (exp)
+germanic_light_spearman_vet,Gaizafulkan Frijatoz (vet),Gaizafulkan Frijato (vet)
+germanic_skirmisher,Jungaz,Jungoz
+germanic_skirmisher_exp,Jungaz (exp),Jungoz (exp)
+germanic_skirmisher_vet,Jungaz (vet),Jungoz (vet)
+germanic_slinger,Stainawerpandz,Stainawerpandiz
+germanic_slinger_exp,Stainawerpandz (exp),Stainawerpandiz (exp)
+germanic_slinger_vet,Stainawerpandz (vet),Stainawerpandiz (vet)
+germanic_archer,Sakato,Sakatonez
+germanic_archer_exp,Sakato (exp),Sakatonez (exp)
+germanic_archer_vet,Sakato (vet),Sakatonez (vet)
+germanic_berserker,Tiwisa Wigandz,Tiwisa Wigandiz
+germanic_noble_swordsman,Druthinaz Swebiskaz,Druthinoz Swebiskoz
+germanic_noble_swordsman_exp,Druthinaz Swebusku (exp),Druthinoz Swebiskoz (exp)
+germanic_noble_swordsman_vet,Druthinaz Swebusku (vet),Druthinoz Swebiskoz (vet)
+germanic_noble_spearman,Dugandz,Dugandiz
+germanic_noble_spearman_exp,Dugandz (exp),Dugandiz (exp)
+germanic_noble_spearman_vet,Dugandz (vet),Dugandiz (vet)
+germanic_cavalry,Ridandz,Ridandiz
+germanic_cavalry_exp,Ridandz (exp),Ridandiz (exp)
+germanic_cavalry_vet,Ridandz (vet),Ridandiz (vet)
+
+celtic_light_clubman,Lorgowiros,Lorgowiri
+celtic_light_clubman_exp,Lorgowiros (exp),Lorgowiri (exp)
+celtic_light_clubman_vet,Lorgowiros (vet),Lorgowiri (vet)
+celtic_light_spearman,Slegowiros,Slegowiri
+celtic_light_spearman_exp,Slegowiros (exp),Slegowiri (exp)
+celtic_light_spearman_vet,Slegowiros (vet),Slegowiri (vet)
+celtic_naked_swordman,Kladiwos,Kladiwoi
+celtic_naked_swordman_exp,Kladiwos (exp),Kladiwoi (exp)
+celtic_naked_swordman_vet,Kladiwos (vet),Kladiwoi (vet)
+celtic_skirmisher,Gaisowiros,Gaisowiri
+celtic_skirmisher_exp,Gaisowiros (exp),Gaisowiri(exp)
+celtic_skirmisher_vet,Gaisowiros (vet),Gaisowiri (vet)
+celtic_archer,Arkwios,Arkwioi
+celtic_archer_exp,Arkwios (exp),Arkwioi (exp)
+celtic_archer_vet,Arkwios (vet),Arkwioi (vet)
+celtic_horseman,Markakos Gaisowiros,Markakoi Gaisowiri
+celtic_horseman_exp,Markakos Gaisowiros (exp),Markakoi Gaisowiri (exp)
+celtic_horseman_vet,Markakos Gaisowiros (vet),Markakoi Gaisowiri (vet)
+celtic_noble_swords,Wenoi,Wenoi
+celtic_noble_swords_exp,Wenoi (exp),Wenoi (exp)
+celtic_noble_swords_vet,Wenoi (vet),Wenoi (vet)
+
+caledonian_light_clubman,Wenos,Lorgowiri
+caledonian_light_clubman_exp,Wenos (exp),Lorgowiri (exp)
+caledonian_light_clubman_vet,Wenos (vet),Lorgowiri (vet)
+caledonian_light_spearman,Kombrogos,Kombrogoi
+caledonian_light_spearman_exp,Kombrogos (exp),Kombrogoi (exp)
+caledonian_light_spearman_vet,Kombrogos (vet),Kombrogoi (vet)
+caledonian_naked_swordman,Teceitos,Teceitoi
+caledonian_naked_swordman_exp,Teceitos (exp),Teceitoi (exp)
+caledonian_naked_swordman_vet,Teceitos (vet),Teceitoi (vet)
+caledonian_skirmisher,Gaisowiros,Gaisowiri
+caledonian_skirmisher_exp,Gaisowiros (exp),Gaisowiri(exp)
+caledonian_skirmisher_vet,Gaisowiros (vet),Gaisowiri (vet)
+caledonian_archer,Arkwios,Arkwioi
+caledonian_archer_exp,Arkwios (exp),Arkwioi (exp)
+caledonian_archer_vet,Arkwios (vet),Arkwioi (vet)
+caledonian_horseman,Markakos Trummos,Markakoi Trummoi
+caledonian_horseman_exp,Markakos Trummos (exp),Markakoi Trummoi (exp)
+caledonian_horseman_vet,Markakos Trummos (vet),Markakoi Trummoi (vet)
+caledonian_noble_swords,Kluddobros,Kluddobroi
+caledonian_noble_swords_exp,Kluddobros (exp),Kluddobroi (exp)
+caledonian_noble_swords_vet,Kluddobros (vet),Kluddobroi (vet)
+
+dacian_light_spearman,Dakos Fyletikos Pezos,Daki Fyletikoi Pezoi
+dacian_light_spearman_exp,Dakos Fyletikos Pezos (exp),Daki Fyletikoi Pezoi (exp)
+dacian_light_spearman_vet,Dakos Fyletikos Pezos (vet),Daki Fyletikoi Pezoi (vet)
+dacian_light_swordman,Kometes Sicaphoros,Komatai Sicaphoroi
+dacian_light_swordman_exp,Kometes Sicaphoros (exp),Komatai Sicaphoroi (exp)
+dacian_light_swordman_vet,Kometes Sicaphoros (vet),Komatai Sicaphoroi (vet)
+dacian_flaxman,Drapanistes,Drapanistai
+dacian_flaxman_vet,Drapanistes (vet),Drapanistai (vet)
+dacian_flaxman_heavy,Epilektos Drapanistes,Epilektoi Drapanistai
+dacian_noble_cav,Dakos Aristos Hippeus,Daki Aristoi Hippeis
+dacian_noble_cav_exp,Dakos Aristos Hippeus (exp),Daki Aristoi Hippeis (exp)
+dacian_noble_cav_vet,Dakos Aristos Hippeus (vet),Daki Aristoi Hippeis (vet)
+dacian_heavy_inf,Sarmato-Dakos Toxotes,Sarmato-Daki Toxotai
+dacian_heavy_inf_exp,Sarmato-Dakos Toxotes (exp),Sarmato-Daki Toxotai (exp)
+dacian_heavy_inf_vet,Sarmato-Dakos Toxotes (vet),Sarmato-Daki Toxotai (vet)
+dacian_noble_inf,Ischyros Ordites,Ischyroi Orditai
+dacian_noble_inf_exp,Ischyros Ordites (exp),Ischyroi Orditai (exp)
+dacian_noble_inf_vet,Ischyros Ordites (vet),Ischyroi Orditai (vet)
+dacian_skirmishers,Dakos Toxotes,Daki Toxotai
+dacian_skirmishers_exp,Dakos Toxotes (exp),Daki Toxotai (exp)
+dacian_skirmishers_vet,Dakos Toxotes (vet),Daki Toxotai (vet)
+dacian_archers,Dakos Akontistes,Daki Akontistai
+dacian_archers_exp,Dakos Akontistes (exp),Daki Akontistai (exp)
+dacian_archers_vet,Dakos Akontistes (vet),Daki Akontistai (vet)
+
+sarmatian_light_spearman,Sauromates Kontophoros,Sauromatai Kontophoroi
+sarmatian_light_spearman_exp,Sauromates Kontophoros (exp),Sauromatai Kontophoroi (exp)
+sarmatian_light_spearman_vet,Sauromates Kontophoros (vet),Sauromatai Kontophoroi (vet)
+sarmatian_archers,Sauromates Hippotoxotes,Sauromatai Hippotoxotai
+sarmatian_archers_exp,Sauromates Hippotoxotes (exp),Sauromatai Hippotoxotai (exp)
+sarmatian_archers_vet,Sauromates Hippotoxotes (vet),Sauromatai Hippotoxotai (vet)
+sarmatian_light_horsearcher,Duno Asyo,Duna Asya
+sarmatian_light_horsearcher_exp,Duno Asyo (exp),Duna Asya (exp)
+sarmatian_light_horsearcher_vet,Duno Asyo (vet),Duna Asya (vet)
+sarmatian_heavy_horsearcher,Yasanino Aysno,Yasaninu Aysna
+sarmatian_heavy_horsearcher_exp,Yasanino Aysno (exp),Yasaninu Aysna (exp)
+sarmatian_heavy_horsearcher_vet,Yasanino Aysno (vet),Yasaninu Aysna (vet)
+sarmatian_light_horseman,Aeldaro Aemhalto,Aeldary Aemhaltae
+sarmatian_light_horseman_exp,Aeldaro Aemhalto (exp),Aeldary Aemhaltae (exp)
+sarmatian_light_horseman_vet,Aeldaro Aemhalto (vet),Aeldary Aemhaltae (vet)
+sarmatian_heavy_horseman,Rauxsa-alan Leazdaetta,Rauxsa-alanna Leazdaettae
+sarmatian_heavy_horseman_exp,Rauxsa-alan Leazdaetta (exp),Rauxsa-alanna Leazdaettae (exp)
+sarmatian_heavy_horseman_vet,Rauxsa-alan Leazdaetta (vet),Rauxsa-alanna Leazdaettae (vet)
+sarmatian_noble_horseman,Sahiyo Hadabaro,Sahiya Hadabara
+sarmatian_noble_horseman_exp,Sahiyo Hadabaro (exp),Sahiya Hadabara (exp)
+sarmatian_noble_horseman_vet,Sahiyo Hadabaro (vet),Sahiya Hadabara (vet)
+
+armenian_spear_levy,Kaukasios Doriphoros,Kaukasioi Doriphoroi
+armenian_spear_levy_exp,Kaukasios Doriphoros (exp),Kaukasioi Doriphoroi (exp)
+armenian_spear_levy_vet,Kaukasios Doriphoros (vet),Kaukasioi Doriphoroi (vet)
+armenian_light_axeman,Kaukasios Oresivios,Kaukasioi Oresivioi
+armenian_light_axeman_exp,Kaukasios Oresivios (exp),Kaukasioi Oresivioi (exp)
+armenian_light_axeman_vet,Kaukasios Oresivios (vet),Kaukasioi Oresivioi (vet)
+armenian_skrimisher,Kaukasios Akontistes,Kaukasioi Akontistai
+armenian_skrimisher_exp,Kaukasios Akontistes (exp),Kaukasioi Akontistai (exp)
+armenian_skrimisher_vet,Kaukasios Akontistes (vet),Kaukasioi Akontistai (vet)
+armenian_slinger,Kaukasios Sphendonetes,Kaukasioi Sphendonetai
+armenian_slinger_exp,Kaukasios Sphendonetes (exp),Kaukasioi Sphendonetai (exp)
+armenian_slinger_vet,Kaukasios Sphendonetes (vet),Kaukasioi Sphendonetai (vet)
+armenian_heavy_inf,Armenikos Legeonarios,Armenikoi Legeonarioi
+armenian_heavy_inf_exp,Armenikos Legeonarios (exp),Armenikoi Legeonarioi (exp)
+armenian_heavy_inf_vet,Armenikos Legeonarios (vet),Armenikoi Legeonarioi (vet)
+armenian_heavy_maceman,Armazis Mcveli,Armazis Mcvelebi
+armenian_heavy_maceman_exp,Armazis Mcveli (exp),Armazis Mcvelebi (exp)
+armenian_heavy_maceman_vet,Armazis Mcveli (vet),Armazis Mcvelebi (vet)
+caucasian_heavy_spearman,Kentronakan Doriphoros,Kentronakan Doriphoroi
+caucasian_heavy_spearman_exp,Kentronakan Doriphoros (exp),Kentronakan Doriphoroi (exp)
+caucasian_heavy_spearman_vet,Kentronakan Doriphoros (vet),Kentronakan Doriphoroi (vet)
+armenian_horsearcher,Kaukasios Hippotoxotes,Kaukasioi Hippotoxotai
+armenian_horsearcher_exp,Kaukasios Hippotoxotes (exp),Kaukasioi Hippotoxotai (exp)
+armenian_horsearcher_vet,Kaukasios Hippotoxotes (vet),Kaukasioi Hippotoxotai (vet)
+caucasian_medium_horsearcher,Asistavi,Asistavebi
+caucasian_medium_horsearcher_exp,Asistavi (exp),Asistavebi (exp)
+caucasian_medium_horsearcher_vet,Asistavi (vet),Asistavebi (vet)
+armenian_medium_horseman,Mkhedari,Mkhedrebi
+armenian_medium_horseman_exp,Mkhedari (exp),Mkhedrebi (exp)
+armenian_medium_horseman_vet,Mkhedari (vet),Mkhedrebi (vet)
+caucasian_cataphract,Kaukasios Basilikos Hippeus,Kaukasio Basilikoi Hippeis
+caucasian_cataphract_exp,Kaukasios Basilikos Hippeus (exp),Kaukasio Basilikoi Hippeis (exp)
+caucasian_cataphract_vet,Kaukasios Basilikos Hippeus (vet),Kaukasio Basilikoi Hippeis (vet)
+armenian_cataphract,Armenikos Kataphraktos,Armenikoi Kataphraktoi
+armenian_cataphract_exp,Armenikos Kataphraktos (exp),Armenikoi Kataphraktoi (exp)
+armenian_cataphract_vet,Armenikos Kataphraktos (vet),Armenikoi Kataphraktoi (vet)
+armenian_elite_infantry,Armenikos Epilektos Toxotes,Armenikoi Epilektoi Toxotai
+armenian_elite_infantry_exp,Armenikos Epilektos Toxotes (exp),Armenikoi Epilektoi Toxotai (exp)
+armenian_elite_infantry_vet,Armenikos Epilektos Toxotes (vet),Armenikoi Epilektoi Toxotai (vet)
+
+syrian_archer,Kassat,Kassata
+syrian_archer_exp,Kassat (exp),Kassata (exp)
+syrian_archer_vet,Kassat (vet),Kassata (vet)
+syrian_spearman,Regaly,Regalye
+syrian_spearman_exp,Regaly (exp),Regalye (exp)
+syrian_spearman_vet,Regaly (vet),Regalye (vet)
+syrian_horsearcher,Rakkba Kassat,Rakkba Kassata
+syrian_horsearcher_exp,Rakkba Kassat (exp),Rakkba Kassata (exp)
+syrian_horsearcher_vet,Rakkba Kassat (vet),Rakkba Kassata (vet)
+syrian_horseman,Rakkaba D-Dayyaqa,Rakkabe D-Dayyaqe
+syrian_horseman_exp,Rakkaba D-Dayyaqa (exp),Rakkabe D-Dayyaqe (exp)
+syrian_horseman_vet,Rakkaba D-Dayyaqa (vet),Rakkabe D-Dayyaqe (vet)
+syrian_heavy_cav,Rakkaba D-Zerya,Rakkabe D-Zerya
+syrian_heavy_cav_exp,Rakkaba D-Zerya (exp),Rakkabe D-Zerya (exp)
+syrian_heavy_cav_vet,Rakkaba D-Zerya (vet),Rakkabe D-Zerya (vet)
+
+eastern_light_archer,Thanvar Parsig,Thanvaran Parsig
+eastern_light_archer_exp,Thanvar Parsig (exp),Thanvaran Parsig (exp)
+eastern_light_archer_vet,Thanvar Parsig (vet),Thanvaran Parsig (vet)
+eastern_light_axeman,Nayzagdar Madaen,Nayzagdaran Madaen
+eastern_light_axeman_exp,Nayzagdar Madaen (exp),Nayzagdaran Madaen (exp)
+eastern_light_axeman_vet,Nayzagdar Madaen (vet),Nayzagdaran Madaen (vet)
+eastern_skrimisher,Verkhana Kofyar,Verkhana Kofyaren
+eastern_skrimisher_exp,Verkhana Kofyar (exp),Verkhana Kofyaren (exp)
+eastern_skrimisher_vet,Verkhana Kofyar (vet),Verkhana Kofyaren (vet)
+eastern_slinger,Palkhandar,Palkhandaran
+eastern_slinger_exp,Palkhandar (exp),Palkhandaran (exp)
+eastern_slinger_vet,Palkhandar (vet),Palkhandaran (vet)
+eastern_heavy_inf,Arteshtar Pahlavig,Arteshtaran Pahlavig
+eastern_heavy_inf_exp,Arteshtar Pahlavig (exp),Arteshtaran Pahlavig (exp)
+eastern_heavy_inf_vet,Arteshtar Pahlavig (vet),Arteshtaran Pahlavig (vet)
+eastern_heavy_spearman,Shipar Tukul,Shipari Tukul
+eastern_heavy_spearman_exp,Shipar Tukul (exp),Shipari Tukul (exp)
+eastern_heavy_spearman_vet,Shipar Tukul (vet),Shipari Tukul (vet)
+eastern_horsearcher,Shivatir Pahlavanig,Shivatiran Pahlavanig
+eastern_horsearcher_exp,Shivatir Pahlavanig (exp),Shivatiran Pahlavanig (exp)
+eastern_horsearcher_vet,Shivatir Pahlavanig (vet),Shivatiran Pahlavanig (vet)
+eastern_medium_horseman,Asavar Azat,Asavaran Azadan
+eastern_medium_horseman_exp,Asavar Azat (exp),Asavaran Azadan (exp)
+eastern_medium_horseman_vet,Asavar Azat (vet),Asavaran Azadan (vet)
+eastern_cataphract,Pahlavan Grivpanvar,Pahlavanan Grivpanvar
+eastern_cataphract_exp,Pahlavan Grivpanvar (exp),Pahlavanan Grivpanvar (exp)
+eastern_cataphract_vet,Pahlavan Grivpanvar (vet),Pahlavanan Grivpanvar (vet)
+eastern_elite_infantry,Kamandar Zhayad,Kamandaran Zhayadan
+eastern_elite_infantry_exp,Kamandar Zhayad (exp),Kamandaran Zhayadan (exp)
+eastern_elite_infantry_vet,Kamandar Zhayad (vet),Kamandaran Zhayadan (vet)
+
+legio_xxii_primigenia,Tiro Legionis (XXII Primigenia),Tirones Legionis (XXII Primigenia)
+legio_iii_augusta,Tiro Legionis (III Augusta),Tirones Legionis (III Augusta)
+legio_v_alaudae,Tiro Legionis (V Alaudae),Tirones Legionis (V Alaudae)
+legio_xxi_rapax,Tiro Legionis (XXI Rapax),Tirones Legionis (XXI Rapax)
+legio_xx_valeria_victrix,Tiro Legionis (XX Valeria Victrix),Tirones Legionis (XX Valeria Victrix)
+legio_vi_victrix,Tiro Legionis (VI Victrix),Tirones Legionis (VI Victrix)
+legio_xi_claudia,Tiro Legionis (XI Claudia),Tirones Legionis (XI Claudia)
+legio_xiii_gemina,Tiro Legionis (XIII Gemina),Tirones Legionis (XIII Gemina)
+legio_v_macedonia,Tiro Legionis (V Macedonia),Tirones Legionis (V Macedonia)
+legio_vi_ferrata,Tiro Legionis (VI Ferrata),Tirones Legionis (VI Ferrata)
+legio_x_fretensis,Tiro Legionis (X Fretensis),Tirones Legionis (X Fretensis)
+praetoriani_milites,Tiro Praetoriani,Tirones Praetoriani
+
+aquilifer_xxii,Aquilifer (XXII Primigenia),Aquilifer (XXII Primigenia)
+aquilifer_iii,Aquilifer (III Augusta),Aquilifer (III Augusta)
+aquilifer_v_alaudae,Aquilifer (V Alaudae),Aquilifer (V Alaudae)
+aquilifer_xxi,Aquilifer (XXI Rapax),Aquilifer (XXI Rapax)
+aquilifer_xx,Aquilifer (XX Valeria Victrix),Aquilifer (XX Valeria Victrix)
+aquilifer_vi_vict,Aquilifer (VI Victrix),Aquilifer (VI Victrix)
+aquilifer_xi,Aquilifer (XI Claudia),Aquilifer (XI Claudia)
+aquilifer_xiii,Aquilifer (XIII Gemina),Aquilifer (XIII Gemina)
+aquilifer_v_mac,Aquilifer (V Macedonia),Aquilifer (V Macedonia)
+aquilifer_vi_fer,Aquilifer (VI Ferrata),Aquilifer (VI Ferrata)
+aquilifer_x,Aquilifer (X Fretensis),Aquilifer (X Fretensis)
+aquilifer_praetoriani,Aquilifer Praetoriani,Aquilifer Praetoriani
+vexilarius_xxii,Vexillarius (XXII Primigenia),Vexillarii (XXII Primigenia)
+vexilarius_iii,Vexillarius (III Augusta),Vexillarii (III Augusta)
+vexilarius_v_alaudae,Vexillarius (V Alaudae),Vexillarii (V Alaudae)
+vexilarius_xxi,Vexillarius (XXI Rapax),Vexillarii (XXI Rapax)
+vexilarius_xx,Vexillarius (XX Valeria Victrix),Vexillarii (XX Valeria Victrix)
+vexilarius_vi_vict,Vexillarius (VI Victrix),Vexillarii (VI Victrix)
+vexilarius_xi,Vexillarius (XI Claudia),Vexillarii (XI Claudia)
+vexilarius_xiii,Vexillarius (XIII Gemina),Vexillarii (XIII Gemina)
+vexilarius_v_mac,Vexillarius (V Macedonia),Vexillarii (V Macedonia)
+vexilarius_vi_fer,Vexillarius (VI Ferrata),Vexillarii (VI Ferrata)
+vexilarius_x,Vexillarius (X Fretensis),Vexillarii (X Fretensis)
+vexilarius_praetoriani,Vexillarius Praetoriani,Vexillarii Praetoriani
+centurio_west,Centurio,Centurii
+centurio_preatoriani,Centurio Praetoriani,Centurii Praetoriani
+signifer,Signifer,Signifer
+cornicen,Cornicen,Cornicines
+legatus_legionis,Tribunus,Tribuni
+centurio_east,Primus Pilus,Primi Pili
+
+aux_vigiles_centurio,Centurio Vigiliarum,Centurii Vigiliarum
+aux_cav_decurio,Decurio,Decurii
+aux_cav_vexilarius,Vexilarius Equitem,Vexilarii Equitem
+aux_cav_vexilarius_praetorian,Vexilarius Equitem Praetoriani,Vexilarii Equitem Praetoriani
+aux_signifer,Signifer Auxiliari,Signifer Auxiliari
+aux_centurio,Centurio Auxiliari,Centurii Auxiliari
+aux_cav,Auxilia Eques,Auxilia Equites
+aux_cav_eastern,Auxilia Eques Orientalis,Auxilia Equites Orientales
+aux_cav_praetoriani,Eques Praetoriani,Eqites Praetoriani
+aux_cav_praetoriani_2,Germani Corporis Custos,Germani Corporis Custodes
+aux_inf_alporum,Miles Alpinorum,Milites Alpinorum
+aux_archer_alporum,Sagittarius Alpinorum,Sagittarii Alpinorum
+aux_inf_maurorum,Miles Maurorum,Milites Maurorum
+aux_archer_maurorum,Funditor Maurorum,Funditores Maurorum
+aux_inf_hispanorum,Miles Hispanorum,Milites Hispanorum
+aux_archer_hispanorum,Sagittarius Hispanorum,Sagittarii Hispanorum
+aux_inf_tungrorum,Miles Tungrorum,Milites Trungrorum
+aux_archer_tungrorum,Sagittarius Tungrorum,Sagittarii Trungrorum
+aux_inf_gallorum,Miles Gallorum,Milites Gallorum
+aux_archer_gallorum,Sagittarius Gallorum,Sagittarii Gallorum
+aux_inf_batavorum,Miles Batavorum,Milites Batavorum
+aux_archer_batavorum,Sagittarius Batavorum,Sagittarii Batavorum
+aux_inf_brittonum,Miles Brittonum,Milites Brittonum
+aux_archer_brittonum,Funditor Brittonum,Funditores Brittonum
+aux_inf_thracum,Miles Thracum,Milites Thracum
+aux_archer_thracum,Sagittarius Thracum,Sagittarii Thracum
+aux_inf_petreorum,Miles Petreorum,Milites Petreorum
+aux_cav_batavorum,Eques Batavorum,Equites Batavorum
+aux_cav_commagenorum,Eques Commagenorum,Equites Commagenorum
+aux_cav_gallorum,Eques Gallorum,Equites Gallorum
+aux_cav_ituraeorum,Eques Ituraeorum,Equites Ituraeorum
+aux_archer_sryrorum,Auxilia Sagittarius Syrorum,Auxilia Sagittarii Syrorum
+aux_archer,Auxilia Sagittarius,Auxilia Sagittarii
+aux_archer_praetoriana,Sagittarius Praetoriani,Sagittarii Praetoriani
+aux_slinger,Baleares Funditor,Baleares Funditores
+aux_inf,Miles Auxiliarum,Milites Auxiliarum
+vigilia,Vigilia,Vigiliae
+vigilia_exp,Vigilia (exp),Vigiliae (exp)
+vigilia_vet,Vigilia (vet),Vigiliae (vet)
+ballistarii,Ballistarius,Ballistarii
+
+legio_xxii_primigenia_exp,Miles Legionis (XXII Primigenia),Milites Legionis (XXII Primigenia)
+legio_iii_augusta_exp,Miles Legionis (III Augusta),Milites Legionis (III Augusta)
+legio_v_alaudae_exp,Miles Legionis (V Alaudae),Milites Legionis (V Alaudae)
+legio_xxi_rapax_exp,Miles Legionis (XXI Rapax),Milites Legionis (XXI Rapax)
+legio_xx_valeria_victrix_exp,Miles Legionis (XX Valeria Victrix),Milites Legionis (XX Valeria Victrix)
+legio_vi_victrix_exp,Miles Legionis (VI Victrix),Milites Legionis (VI Victrix)
+legio_xi_claudia_exp,Miles Legionis (XI Claudia),Milites Legionis (XI Claudia)
+legio_xiii_gemina_exp,Miles Legionis (XIII Gemina),Milites Legionis (XIII Gemina)
+legio_v_macedonia_exp,Miles Legionis (V Macedonia),Milites Legionis (V Macedonia)
+legio_vi_ferrata_exp,Miles Legionis (VI Ferrata),Milites Legionis (VI Ferrata)
+legio_x_fretensis_exp,Miles Legionis (X Fretensis),Milites Legionis (X Fretensis)
+praetoriani_milites_exp,Miles Praetoriani,Milites Praetoriani
+legio_xxii_primigenia_vet,Evocatus Legionis (XXII Primigenia),Evocati Legionis (XXII Primigenia)
+legio_iii_augusta_vet,Evocatus Legionis (III Augusta),Evocati Legionis (III Augusta)
+legio_v_alaudae_vet,Evocatus Legionis (V Alaudae),Evocati Legionis (V Alaudae)
+legio_xxi_rapax_vet,Evocatus Legionis (XXI Rapax),Evocati Legionis (XXI Rapax)
+legio_xx_valeria_victrix_vet,Evocatus Legionis (XX Valeria Victrix),Evocati Legionis (XX Valeria Victrix)
+legio_vi_victrix_vet,Evocatus Legionis (VI Victrix),Evocati Legionis (VI Victrix)
+legio_xi_claudia_vet,Evocatus Legionis (XI Claudia),Evocati Legionis (XI Claudia)
+legio_xiii_gemina_vet,Evocatus Legionis (XIII Gemina),Evocati Legionis (XIII Gemina)
+legio_v_macedonia_vet,Evocatus Legionis (V Macedonia),Evocati Legionis (V Macedonia)
+legio_vi_ferrata_vet,Evocatus Legionis (VI Ferrata),Evocati Legionis (VI Ferrata)
+legio_x_fretensis_vet,Evocatus Legionis (X Fretensis),Evocati Legionis (X Fretensis)
+praetoriani_milites_vet,Evocatus Praetoriani,Evocati Praetoriani
+
+looter,Latro,Latrones
+bandit,Leistes,Leistai
+brigand,Sicarius,Sicarii
+judean_sicarius,Iudaicus Sicarius,Iudaici Sicarii
+judean_rebel,Iudaicus Rebellis,Iudaici Rebellis
+hispanic_bandit,Hispanicus Rebellis,Hispanici Rebellis
+sea_raider,Pirata,Piratae
+black_sea_priate,Pirata Mare Euxinum,Piratae Mare Euxinum
+alannic_raider,Alanna Baragatae,Alan Baragatae
+illyrian_bandit,Illyricus Sicarius,Illyrici Sicarii
+slave_warrior,Seditiosus Servus,Seditiosi Servi
+slave_warrior_2,Seditiosus Pedes,Seditiosi Pedites
+slave_warrior_3,Seditiosus Hastatus,Seditiosi Hastati
+slave_rebel,Seditiosus Gladiator,Seditiosi Gladiatores
+slave_rebel_2,Seditiosus Evocatus,Seditiosi Evocati
+
+
+sarmatian_town_walker,Sarmaticus Nobilis Tribulis,Sarmatici Nobiles Tribules
+sarmatian_town_walker_female,Sarmatica Nobilis Mulier,Sarmaticae Nobiles Mulieres
+bosporan_town_walker,Bosporanus Nobilis,Bosporani Nobiles
+bosporan_town_walker_female,Bosporana Nobilis Mulier,Bosporanae Nobiles Mulieres
+judean_town_walker,Iudaeus Urbanus,Iudaei Urbani
+judean_town_walker_female,Iudaea Urbana Mulier,Iudaeae Urbanae Mulieres
+syrian_town_walker,Syrus Urbanus,Syri Urbani
+syrian_town_walker_female,Syra Urbana Mulier,Syrae Urbanae Mulieres
+galatian_town_walker,Galaticus Urbanus,Galatici Urbani
+galatian_town_walker_female,Galatica Urbana Mulier,Galaticae Urbanae Mulieres
+eastern_town_walker,Orientalis Urbanus,Orientales Urbani
+eastern_town_walker_female,Orientalis Urbana Mulier,Orientales Urbanae Mulieres
+parthian_town_walker,Parthicus Nobilis,Parthici Nobiles
+parthian_town_walker_female,Parthica Nobilis Mulier,Parthicae Nobiles Mulieres
+persian_town_walker,Persicus Nobilis,Persici Nobiles
+persian_town_walker_female,Persica Nobilis Mulier,Persicae Nobiles Mulieres
+roman_town_walker,Civis,Cives
+roman_town_walker_female,Civis Femina,Cives Feminae
+gallish_town_walker,Gallicus Nobilis,Gallici Nobiles
+gallish_town_walker_female,Gallica Nobilis Mulier,Gallicae Nobiles Mulieres
+greek_town_walker,Graecus Nobilis,Graeci Nobiles
+greek_town_walker_female,Graeca Nobilis Mulier,Graecae Nobiles Mulieres
+hispanic_town_walker,Hispanus Nobilis,Hispani Nobiles
+hispanic_town_walker_female,Hispana Nobilis Mulier,Hispanae Nobiles Mulieres
+illyrian_town_walker,Illyricus Nobilis,Illyrici Nobiles
+illyrian_town_walker_female,Illyrica Nobilis Mulier,Illyricae Nobiles Mulieres
+celtic_town_walker,Celticus Nobilis,Celtici Nobiles
+celtic_town_walker_female,Celtica Nobilis Mulier,Celticae Nobiles Mulieres
+germanic_town_walker,Germanicus Nobilis,Germanici Nobiles
+germanic_town_walker_female,Germanica Nobilis Mulier,Germanicae Nobiles Mulieres
+dacian_town_walker,Dacicus Nobilis,Dacici Nobiles
+dacian_town_walker_female,Dacica Nobilis Mulier,Dacicae Nobiles Mulieres
+thracian_town_walker,Thracicus Nobilis,Thracici Nobiles
+thracian_town_walker_female,Thracica Nobilis Mulier,Thracicae Nobiles Mulieres
+armenian_town_walker,Caucasicus Nobilis,Caucasici Nobiles
+armenian_town_walker_female,Caucasica Nobilis Mulier,Caucasicae Nobiles Mulieres
+arab_town_walker,Arabicus Nobilis,Arabici Nobiles
+arab_town_walker_female,Arabica Nobilis Mulier,Arabicae Nobiles Mulieres
+egyptian_town_walker,Aegyptius Nobilis,Aegyptii Nobiles
+egyptian_town_walker_female,Aegyptia Nobilis Mulier,Aegyptiae Nobiles Mulieres
+berber_town_walker,Berberus Nobilis,Berberi Nobiles
+berber_town_walker_female,Berbera Nobilis Mulier,Berberae Nobiles Mulieres
+garamantian_town_walker,Garamanticus Nobilis,Garamantici Nobiles
+garamantian_town_walker_female,Garamantica Nobilis Mulier,Garamanticae Nobiles Mulieres
+boy,Puer,Pueri
+girl,Puella,Puellae
+african_man,Nubianus Tribulis,Nubiani Tribules
+african_woman,Nubiana Tribulis Mulier,Nubianae Tribules Mulieres
+saka_man,Sacicus Tribulis,Sacici Tribules
+saka_woman,Sacica Tribulis Mulier,Sacicae Tribules Mulieres
+sarmatian_village_walker,Sarmaticus Tribulis,Sarmatici Tribules
+sarmatian_village_walker_female,Sarmatica Tribulis Mulier,Sarmaticae Tribules Mulieres
+bosporan_village_walker,Bosporanus Rusticus,Bosporani Rustici
+bosporan_village_walker_female,Bosporana Rustica,Bosporanae Rusticae
+judean_village_walker,Iudaeus Rusticus,Iudaei Rustici
+judean_village_walker_female,Iudaea Rustica,Iudaeae Rusticae
+eastern_village_walker,Orientalis Rusticus,Orientales Rustici
+eastern_village_walker_female,Orientalis Rustica,Orientales Rusticae
+galatian_village_walker,Galaticus Rusticus,Galatici Rustici
+galatian_village_walker_female,Galatica Rustica,Galaticae Rusticae
+syrian_village_walker,Syrus Rusticus,Syri Rustici
+syrian_village_walker_female,Syra Rustica,Syrae Rusticae
+greek_village_walker,Graecus Rusticus,Graeci Rustici
+greek_village_walker_female,Graeca Rustica,Graecae Rusticae
+illyrian_village_walker,Illyricus Rusticus,Illyrici Rustici
+illyrian_village_walker_female,Illyrica Rustica,Illyricae Rusticae
+parthian_village_walker,Parthicus Tribulis,Parthici Tribules
+parthian_village_walker_female,Parthica Tribulis Mulier,Parthicae Tribules Mulieres
+persian_village_walker,Persicus Rusticus,Persici Rustici
+persian_village_walker_female,Persica Rustica,Persicae Rusticae
+gaul_village_walker,Gallicus Rusticus,Gallici Rustici
+gaul_village_walker_female,Gallica Rustica,Gallicae Rusticae
+roman_village_walker,Romanus Rusticus,Romani Rustici
+roman_village_walker_female,Romana Rustica,Romanae Rusticae
+hispanic_village_walker,Hispanus Rusticus,Hispani Rustici
+hispanic_village_walker_female,Hispana Rustica,Hispanae Rusticae
+celtic_village_walker,Celticus Tribulis,Celtici Tribules
+celtic_village_walker_female,Celtica Tribulis Mulier,Celticae Tribules Mulieres
+germanic_village_walker,Germanicus Tribulis,Germanici Tribules
+germanic_village_walker_female,Germanica Tribulis Mulier,Germanicae Tribules Mulieres
+dacian_village_walker,Dacicus Rusticus,Dacicus Rusticus
+dacian_village_walker_female,Dacica Rustica,Dacicae Rusticae
+thracian_village_walker,Thracicus Rusticus,Thracicus Rusticus
+thracian_village_walker_female,Thracica Rustica,Thracicae Rusticae
+armenian_village_walker,Caucasicus Tribulis,Caucasici Tribules
+armenian_village_walker_female,Caucasica Tribulis Mulier,Caucasicae Tribules Mulieres
+arab_village_walker,Arabicus Tribulis,Arabici Tribules
+arab_village_walker_female,Arabica Tribulis Mulier,Arabicae Tribules Mulieres
+egyptian_village_walker,Aegyptius Rusticus,Aegyptii Rustici
+egyptian_village_walker_female,Aegyptia Rustica Mulier,Aegyptiae Rusticae Mulieres
+berber_village_walker,Berberus Tribulis,Berberi Tribules
+berber_village_walker_female,Berbera Tribulis Mulier,Berberae Tribules Mulieres
+garamantian_village_walker,Garamanticus Tribulis,Garamantici Tribules
+garamantian_village_walker_female,Garamantica Tribulis Mulier,Garamanticae Tribules Mulieres
+spy_walker_1,Nobilis,Nobiles
+spy_walker_2,Nobilis Mulier,Nobiles Mulieres
+
+ransom_broker_1,Venalicius Gaius Sextus,Venalicius Gaius Sextus
+ransom_broker_2,Doulon Emporos Aichaikos,Doulon Emporos Aichaikos
+ransom_broker_3,Venalicius Honorius,Venalicius Honorius
+ransom_broker_4,Doulon Emporos Nereus,Doulon Emporos Nereus
+ransom_broker_5,Venalicius Flavius,Venalicius Flavius
+ransom_broker_6,Doulon Emporos Parthos,Doulon Emporos Parthos
+ransom_broker_7,Venalicius Decimus,Venalicius Decimus
+ransom_broker_8,Doulon Emporos Phazinamos,Doulon Emporos Phazinamos
+ransom_broker_9,Venalicius Remus,Venalicius Remus
+ransom_broker_10,Doulon Emporos Blaikisa,Doulon Emporos Blaikisa
+tavern_traveler_1,Epelytes,Epelytes
+tavern_traveler_2,Epelytes,Epelytes
+tavern_traveler_3,Epelytes,Epelytes
+tavern_traveler_4,Epelytes,Epelytes
+tavern_traveler_5,Viator,Viator
+tavern_traveler_6,Viator,Viator
+tavern_traveler_7,Viator,Viator
+tavern_traveler_8,Epelytes,Epelytes
+tavern_traveler_9,Viator,Viator
+tavern_traveler_10,Carant,Carant
+tavern_traveler_11,Weljakwumo,Weljakwumo
+tavern_traveler_12,Viator,Viator
+tavern_traveler_13,Epelytes,Epelytes
+tavern_traveler_14,Epelytes,Epelytes
+tavern_traveler_15,Epelytes,Epelytes
+tavern_traveler_16,Epelytes,Epelytes
+tavern_traveler_17,Epelytes,Epelytes
+tavern_traveler_18,Epelytes,Epelytes
+tavern_traveler_19,Viator,Viator
+tavern_traveler_20,Viator,Viator
+tavern_bookseller_1,Librarius,Librarius
+tavern_bookseller_2,Librarius,Librarius
+tavern_bookseller_3,Biblos Emporos,Biblos Emporos
+tavern_bookseller_4,Librarius,Librarius
+tavern_minstrel_1,Bardos,Bardos
+tavern_minstrel_2,Poietes,Poietes
+tavern_minstrel_3,Poietes,Poietes
+tavern_minstrel_4,Poeta,Poeta
+tavern_minstrel_5,Poeta,Poeta
+
+npc1,Pravare Ytarim,Pravare Ytarim
+npc2,Marius Gaius,Marius Gaius
+npc3,Pulchra,Pulchra
+npc4,Abadutiker,Abadutiker
+npc5,Satibarzanes,Satibarzanes
+npc6,Firentrix,Firentix
+npc7,Lavia,Lavia
+npc8,Hildr,Hildr
+npc9,Aturius Spurus,Aturius Spurus
+npc10,Attaklos,Attaklos
+npc11,Dionysia,Dionysia
+npc12,Jeremus,Jeremus
+npc13,Chanakya,Chanakya
+npc14,Titus,Titus
+npc15,Artimenus,Artimenus
+npc16,Titocuna,Titocuna
+npc17,Anicetus,Anicetus
+npc18,Arminius Octavianus,Arminius Octavianus
+npc19,Tertius Maior,Tertius Maior
+npc20,Secundus Minor,Secundus Minor
+npc21,Drusus,Drusus
+npc22,Libertus Tiro,Libertus Tiro
+npc23,Marcus Tullius,Marcus Tullius
+npc24,Sidonius Apollinaris,Sidonius Apollinaris
+npc25,Sollius Modestus,Sollius Modestus
+npc26,Albinus Basilius,Albinus Basilius
+npc27,Lucullus Caepio,Lucullus Caepio
+npc28,Anicius,Anicius
+npc29,Fabianus,Fabianus
+npc30,Rombus,Rombus
+npc31,Ra Karak,Ra Karak
+npc32,Gaius Lemonius,Gaius Lemonius
+npc33,Lucius Modius minor,Lucius Modius minor
+npc34,Ligia,Ligia
+npc35,Ursus,Ursus
+npc36,Marcus Vinicius,Marcus Vinicius
+npc37,Josephus,Josephus
+npc38,Elazar Bar Yochai,Elazar Bar Yochai
+mathildiz,Mathildiz,Mathildiz
+npc40,Kara Boga,Kara Boga
+turakina,Eamane Turakina,Emane Turakina
+npc42,Chaditox,Chaditox
+kingdom_1_lord,Rex Scorilo,Scorilo
+kingdom_2_lord,Ri Calgacus,Calgacus
+kingdom_3_lord,Tiberius Julius Rhescuporis,Tiberius Julius Rhescuporis
+kingdom_4_lord,Kuningaz Berengar,Berengar
+kingdom_5_lord,Shah Trdat,Trdat
+kingdom_6_lord,Shahan Shah Vologaeses Arsacid,Vologaeses Arsacid
+kingdom_7_lord,Nero Claudius,Nero Claudius
+kingdom_8_lord,Ri Egan,Egan
+kingdom_9_lord,Ri Trahern,Trahern
+kingdom_10_lord,Ri Venutius,Venutius
+kingdom_11_lord,Batesa Farzoy,Farzoy
+kingdom_12_lord,Batesa Zorsines,Zorsines
+kingdom_13_lord,Kuningaz Assi,Assi
+kingdom_14_lord,Kuningaz Ballomar,Ballomar
+kingdom_15_lord,Kuningaz Lambert,Lambert
+kingdom_16_lord,Kuningaz Rigobert,Rigobert
+kingdom_17_lord,Melech Hanan ben Hanan,Hanan ben Hanan
+kingdom_18_lord,Batesa Banadaspus,Banadaspus
+kingdom_19_lord,Gaius Julius Civilis,Gaius Julius Civilis
+kingdom_20_lord,Shah Mihdrat,Mihdrat
+kingdom_21_lord,Shah Oroezes,Oroezes
+kingdom_22_lord,Basileus Aristarchus,Aristarchus
+kingdom_23_lord,"Malka Ma'nu, son of Abgar","Ma'nu, son of Abgar"
+knight_1_1,Dacian Lord,Avizina
+knight_1_2,Dacian Lord,Bastiza
+knight_1_3,Dacian Lord,Charnabon
+knight_1_4,Dacian Lord,Dadas
+knight_1_5,Dacian Lord,Damanais
+knight_1_6,Dacian Lord,Dapyx
+knight_1_7,Dacian Lord,Moskon
+knight_1_8,Dacian Lord,Rhemaxos
+knight_1_9,Dacian Lord,Roles
+knight_1_10,Dacian Lord,Rubobostes
+knight_1_11,Dacian Lord,Thiadicem
+knight_1_12,Dacian Lord,Thiamarkos
+knight_1_13,Dacian Lord,Tsiru
+knight_1_14,Dacian Lord,Gebeleixis
+knight_1_15,Dacian Lord,Zyraxes
+knight_1_16,Dacian Lord,Pieporus
+knight_1_17,Dacian Lord,Oroles
+knight_1_18,Dacian Lord,Natoporus
+knight_1_19,Dacian Lord,Cotiso
+knight_2_1,Celtic Lord,Acco
+knight_2_2,Celtic Lord,Carvilius
+knight_2_3,Celtic Lord,Bellicianus
+knight_2_4,Celtic Lord,Cunobelinus
+knight_2_5,Celtic Lord,Venutius
+knight_3_1,Bosporan Lord,Airawanta
+knight_3_2,Bosporan Lord,Achaios
+knight_3_3,Bosporan Lord,Demokritos
+knight_3_4,Bosporan Lord,Pleistarchos
+knight_3_5,Bosporan Lord,Phylarkhos
+knight_3_6,Bosporan Lord,Priyadeve
+knight_3_7,Bosporan Lord,Uposathe
+knight_3_8,Bosporan Lord,Philon
+knight_4_1,Germanic Lord,Tancram
+knight_4_2,Germanic Lord,Sunger
+knight_4_3,Germanic Lord,Marcwald
+knight_4_4,Germanic Lord,Hraugmund
+knight_4_4_1,Germanic Lord,Teutomer
+knight_5_1,Iberian Lord,Abulites
+knight_5_9,Iberian Lord,Mithradates
+knight_5_19,Iberian Lord,Ariabignes
+knight_5_2,Albanian Lord,Arsites
+knight_5_10,Albanian Lord,Mithrobuzanes
+knight_5_17,Albanian Lord,Anaphes
+knight_5_3,Kolchian Lord,Artochmes
+knight_5_12,Kolchian Lord,Orxines
+knight_5_18,Kolchian Lord,Arbupales
+knight_5_4,Armenian Lord,Barzanes
+knight_5_5,Armenian Lord,Chorienes
+knight_5_6,Armenian Lord,Harmamitres
+knight_5_7,Armenian Lord,Ithamitres
+knight_5_8,Armenian Lord,Masistes
+knight_5_11,Armenian Lord,Okontobates
+knight_5_13,Armenian Lord,Pharasmanes
+knight_5_14,Armenian Lord,Phrasaortes
+knight_5_15,Armenian Lord,Rhoisakes
+knight_5_16,Armenian Lord,Sisamnes
+knight_6_1,Osrhoenian Lord,Achaimenes
+knight_6_9,Osrhoenian Lord,Kophenes
+knight_6_17,Osrhoenian Lord,Spitamenes
+knight_6_2,Parthian Lord,Ariobarzanes
+knight_6_3,Parthian Lord,Artabazos
+knight_6_4,Parthian Lord,Artostes
+knight_6_5,King of Adriabane,Monobaz the Older
+knight_6_6,Parthian Lord,Belesys
+knight_6_7,King of Hatra,Worod
+knight_6_8,Parthian Lord,Histanes
+knight_6_10,Parthian Lord,Kyros
+knight_6_11,Parthian Lord,Mazaios
+knight_6_12,Parthian Lord,Ordanes
+knight_6_13,Parthian Lord,Monobaz the Younger
+knight_6_14,Parthian Lord,Pherendates
+knight_6_15,King of Characane,Attambelos
+knight_6_16,Parthian Lord,Sataspes
+knight_6_18,Parthian Lord,Arses
+knight_6_19,Parthian Lord,Baryaxes
+knight_6_20,Parthian Lord,Mardonios
+knight_2_6,Celtic Lord,Adiatuanus
+knight_2_7,Celtic Lord,Bellovesus
+knight_2_8,Celtic Lord,Cassivellaunus
+knight_2_9,Celtic Lord,Diviciacus
+knight_2_10,Celtic Lord,Prasutagus
+knight_2_11,Celtic Lord,Adminius
+knight_2_12,Celtic Lord,Boduognatus
+knight_2_13,Celtic Lord,Cattulanus
+knight_2_14,Celtic Lord,Divico
+knight_2_15,Celtic Lord,Segovax
+knight_2_16,Celtic Lord,Aiorix
+knight_2_17,Celtic Lord,Boiorix
+knight_2_18,Celtic Lord,Cartorites
+knight_2_19,Celtic Lord,Drappes
+knight_2_20,Celtic Lord,Immanuentius
+knight_3_9,Siracian Lord,Ambare
+knight_3_10,Siracian Lord,Kentarske
+knight_3_12,Siracian Lord,Uttaraphalguni
+knight_3_13,Siracian Lord,Kercapiske
+knight_3_15,Roxolanian Lord,Amratodane
+knight_3_16,Roxolanian Lord,Kereptanne
+knight_3_18,Roxolanian Lord,Varddhane
+knight_3_19,Roxolanian Lord,Anande
+knight_3_11,Iazyges Lord,Punaiyse
+knight_3_14,Iazyges Lord,Punaraksite
+knight_3_17,Iazyges Lord,Punyamitre
+knight_3_20,Iazyges Lord,Kimne
+knight_4_5,Germanic Lord,Ambri
+knight_4_6,Germanic Lord,Aktumer
+knight_4_7,Germanic Lord,Chariovalda
+knight_4_8,Germanic Lord,Hariowald
+knight_4_9,Germanic Lord,Arbomund
+knight_4_10,Germanic Lord,Baldogais
+knight_4_11,Germanic Lord,Eidric
+knight_4_12,Germanic Lord,Gundmar
+knight_4_12_1,Germanic Lord,Bauto
+knight_4_13,Germanic Lord,Ingbald
+knight_4_14,Germanic Lord,Eidgais
+knight_4_15,Germanic Lord,Geric
+knight_4_16,Germanic Lord,Siglaik
+knight_4_17,Germanic Lord,Sigric
+knight_4_18,Germanic Lord,Tramric
+knight_4_19,Germanic Lord,Waldmund
+knight_4_20,Germanic Lord,Walrauc
+knight_4_21,Germanic Lord,Eidgast
+knight_17_1,Judean Lord,Joshua ben Gamla
+knight_17_2,Judean Lord,Eleazar ben Hanania
+knight_17_3,Judean Lord,Simon bar Giora
+knight_19_1,Batava Lord,Brinno
+knight_19_2,Batava Lord,Julius Tutor
+knight_19_3,Batava Lord,Julius Classicus
+legatus_1,Legatus Lucius Calpurnius Licinianus,Lucius Calpurnius Licinianus
+legatus_2,Legatus Q. Sulpicius Camerinus,Q. Sulpicius Camerinus
+legatus_3,Legatus Aulus Germanicus Vitellius,Aulus Germanicus Vitellius
+legatus_4,Legatus Aulus Alienus Caecina,Aulus Alienus Caecina
+legatus_5,Legatus Mamercus Cornelius,Mamercus Cornelius
+legatus_6,Legatus Servius Cornelius,Servius Cornelius
+legatus_7,Legatus Sextus Fabius,Sextus Fabius
+legatus_8,Legatus P. Fabius Pio,P. Fabius Pio
+legatus_9,Legatus Salvius Otho Titianus,Salvius Otho Titianus
+legatus_10,Legatus Caesennius Paetus,Caesennius Paetus
+legatus_11,Legatus T. Flavius Vespasianus,T. Flavius Vespasianus
+legatus_12,Legatus Kaeso Flavius,Kaeso Flavius
+aux_commander_1,P. Verginius Ibericus,P. Verginius Ibericus
+aux_commander_2,Marcus Pontius,Marcus Pontius
+aux_commander_3,Tertius Paccius,Tertius Paccius
+aux_commander_12,Cornelius Scipio Asiaticus,Cornelius Scipio Asiaticus
+statthalter_1,Preator Lucius Sulpicius,Lucius Sulpicius
+statthalter_2,Preator Servius Sulpicius,Servius Sulpicius
+statthalter_3,Preator Lucius Vitellius,Lucius Vitellius
+statthalter_4,Preator Aulus Petronianus Vitellius,Aulus Petronianus Vitellius
+statthalter_5,Preator Primus Cornelius,Primus Cornelius
+statthalter_6,Preator Secundus Cornelius,Secundus Cornelius
+statthalter_7,Preator Manius Fabius,Manius Fabius
+statthalter_8,Preator Titus Fabius,Titus Fabius
+statthalter_9,Preator Marcus Salvius Otho,Marcus Salvius Otho
+statthalter_10,Preator Gnaeus Salvius Otho,Gnaeus Salvius Otho
+statthalter_11,Preator Flavius Sabinus minor,Flavius Sabinus minor
+statthalter_11_1,Preator Abronius Hostius,Abronius Hostius
+statthalter_11_2,Preator Caerellius Falminius,Caerellius Falminius
+statthalter_11_3,Preator Laenius Matius,Laenius Matius
+statthalter_12,Preator Hostus Flavius,Hostus Flavius
+senator_1,Proconsul Ocella Sulpicius Galba,Ocella Sulpicius Galba
+senator_2,Consul Aulus Vitellius,Aulus Vitellius
+senator_3,Proconsul P. Cornelius Scipio,P. Cornelius Scipio
+senator_4,Consul Primus Fabius,Primus Fabius
+senator_5,Proconsul Lucius Salvius Otho,Lucius Salvius Otho
+senator_6,Proconsul T. Flavius Sabinus,T. Flavius Sabinus
+senator_7,Proconsul Marcus maior Flavius,Marcus maior Flavius
+aux_commander_4,Quartus Mallius,Quartus Mallius
+aux_commander_5,Decimus Lucilius,Decimus Lucilius
+aux_commander_6,Spurius Gabinius,Spurius Gabinius
+aux_commander_7,Gallus Duilius,Gallus Duilius
+aux_commander_8,Quintus Fabricius,Quintus Fabricius
+aux_commander_9,Secundus Ateius,Secundus Ateius
+aux_commander_10,Primus Asinius,Primus Asinius
+aux_commander_11,Marcus Secundus Dulius,Marcus Secundus Dulius
+aux_commander_13,Vetus Africanus,Vetus Africanus
+aux_commander_14,Lucius Rimolus,Lucius Rimolus
+aux_commander_15,Sextus L. Totul,Sextus L. Totul
+statthalter_new_1,Marcus Cocceius Nerva,Marcus Cocceius Nerva
+statthalter_new_2,L. Verginius Rufus,L. Verginius Rufus
+statthalter_new_3,L. Asinius Verrucosus,L. Asinius Verrucosus
+statthalter_new_4,Q. Petillius Cerialis,Q. Petillius Cerialis
+statthalter_new_5,Caesius Nasica,Caesius Nasica
+statthalter_new_6,G. Suetonius Paulinus,G. Suetonius Paulinus
+statthalter_new_7,G. Alpinus Classicianus,G. Alpinus Classicianus
+statthalter_new_8,P. Petronius Turpilianus,P. Petronius Turpilianus
+statthalter_new_9,Aulus Marius Celsus,Aulus Marius Celsus
+statthalter_new_10,Aulus Ducenius Geminus,Aulus Ducenius Geminus
+statthalter_new_11,Fonteius Capito,Fonteius Capito
+statthalter_new_12,Caeselius Bassus,Caeselius Bassus
+aux_commander_new_1,Marcus Ambivulus,Marcus Ambivulus
+aux_commander_new_2,Baebius Massa,Baebius Massa
+aux_commander_new_3,Caius Largennius,Caius Largennius
+aux_commander_new_4,Calpurnius Fabatus,Calpurnius Fabatus
+aux_commander_new_5,G. Caristanius Fronto,G. Caristanius Fronto
+aux_commander_new_6,Cassius Chaerea,Cassius Chaerea
+aux_commander_new_7,Claudius Labeo,Claudius Labeo
+aux_commander_new_8,Lucius Clodius Macer,Lucius Clodius Macer
+aux_commander_new_9,Gnaeus Pinarius,Gnaeus Pinarius
+aux_commander_new_10,Bantius Caelius,Bantius Caelius
+aux_commander_new_11,Canutius Didius,Canutius Didius
+aux_commander_new_12,Durmius Hirrius,Durmius Hirrius
+aux_commander_new_13,Falcidius Marius,Falcidius Marius
+aux_commander_new_14,Fufius Ranius,Fufius Ranius
+aux_commander_new_15,Iunius Talius,Iunius Talius
+aux_commander_new_16,Nymphidius Sabinus,Nymphidius Sabinus
+aux_commander_new_17,Cornelius Laco,Cornelius Laco
+aux_commander_new_18,Titus Vespasianus,Titus Vespasianus
+knight_1_1_wife,Error - FUCKER should not appear in game,Error - FUCKER should not appear in game
+kingdom_1_lady_1,Dacian Lady,Duccidava
+kingdom_1_lady_2,Dacian Lady,Rescuturme
+kingdom_1_lady_3,Dacian Lady,Zina
+kingdom_1_lady_4,Dacian Lady,Petriturme
+kingdom_l_lady_5,Dacian Lady,Zinai
+kingdom_1_lady_6,Dacian Lady,Oriza
+kingdom_1_lady_7,Dacian Lady,Roibana
+kingdom_1_lady_8,Dacian Ladyl,Zindurme
+kingdom_1_lady_9,Dacian Lady,Raina
+kingdom_1_lady_10,Dacian Lady,Sanziana
+kingdom_1_lady_11,Dacian Lady,Claria
+kingdom_1_lady_12,Dacian Lady,Eccana
+kingdom_l_lady_13,Dacian Lady,Rescuturme Durasa
+kingdom_1_lady_14,Dacian Lady,Zina Komoza
+kingdom_1_lady_15,Dacian Lady,Boadila Zinnica
+kingdom_1_lady_16,Dacian Lady,Duccidava Tiata
+kingdom_1_lady_17,Dacian Lady,Petriturme Rholica
+kingdom_1_lady_18,Dacian Lady,Piepora
+kingdom_1_lady_19,Dacian Lady,Moskosa
+kingdom_1_lady_20,Dacian Lady,Tiata
+kingdom_2_lady_1,Celtic Lady,Aife
+kingdom_2_lady_2,Celtic Lady,Cingetessa
+kingdom_2_lady_3,Celtic Lady,Vassura
+kingdom_2_lady_4,Celtic Lady,Allauna
+kingdom_2_lady_5,Celtic Lady,Rhiannon
+kingdom_3_lady_1,Bosporan Lady,Ampratasene
+kingdom_3_lady_2,Bosporan Lady,Gepaepyris
+kingdom_3_lady_3,Bosporan Lady,Arjuna
+kingdom_3_lady_4,Bosporan Lady,Demetria
+kingdom_3_lady_5,Bosporan Lady,Eurydike
+kingdom_3_lady_6,Bosporan Lady,Apollonia
+kingdom_3_lady_7,Bosporan Lady,Julia Nephoris
+kingdom_3_lady_8,Bosporan Lady,Sudarsane
+kingdom_4_lady_1,Germanic Lady,Eidburg
+kingdom_4_lady_2,Germanic Lady,Actihild
+kingdom_4_lady_3,Germanic Lady,Gundhild
+kingdom_4_lady_4,Germanic Lady,Sigihild
+kingdom_5_lady_1,Iberian Lady,Amastris
+kingdom_5_lady_9,Iberian Lady,Artazostre
+kingdom_5_lady_18,Iberian Lady,Surena
+kingdom_5_lady_2,Albanian Lady,Barsine
+kingdom_5_lady_10,Albanian Lady,Parmys
+kingdom_5_lady_19,Albanian Lady,Artashidala
+kingdom_5_lady_3,Kolchian Lady,Rinu
+kingdom_5_lady_12,Armenian Lady,Sisygambis
+kingdom_5_lady_4,Armenian Lady,Arystone
+kingdom_5_lady_5,Armenian Lady,Amytis
+kingdom_5_lady_6,Armenian Lady,Damaspia
+kingdom_5_lady_7,Armenian Lady,Vashti
+kingdom_5_lady_8,Armenian Lady,Rhoxane
+kingdom_5_lady_11,Kolchian Lady,Artakama
+kingdom_5_lady_13,Armenian Lady,Artystone
+kingdom_5_lady_14,Armenian Lady,Parysatis
+kingdom_5_lady_15,Armenian Lady,Artanis
+kingdom_5_lady_16,Armenian Lady,Atossa
+kingdom_5_lady_17,Armenian Lady,Phaedymia
+kingdom_5_lady_20,Armenian Lady,Menida
+kingdom_6_lady_1,Osrhoenian Lady,Stateira
+kingdom_6_lady_9,Osrhoenian Lady,Ifar Mihranid
+kingdom_6_lady_2,Parthian Lady,Vashti Arkhid
+kingdom_6_lady_3,Parthian Lady,Theoxene
+kingdom_6_lady_4,Parthian Lady,Orypetis Pacorid
+kingdom_6_lady_5,Parthian Lady,Artadukht
+kingdom_6_lady_6,Parthian Lady,Vardanidala
+kingdom_6_lady_7,Parthian Lady,Amat-Nabu
+kingdom_6_lady_8,Parthian Lady,Gobryasidisa
+kingdom_6_lady_10,Parthian Lady,Chosroidaya
+kingdom_6_lady_11,Parthian Lady,Dula Bagabignid
+kingdom_6_lady_12,Parthian Lady,Rhoxane Cambysid
+kingdom_6_lady_13,Parthian Lady,Shamshia
+kingdom_6_lady_14,Parthian Lady,Zandina Suren
+kingdom_6_lady_15,Parthian Lady,Samiya
+kingdom_6_lady_16,Parthian Lady,Aridisa
+kingdom_6_lady_17,Parthian Lady,Orontidisa Arsacid
+kingdom_6_lady_18,Parthian Lady,Savacidisa Arsacid
+kingdom_6_lady_19,Parthian Lady,Artakamasa Arsacid
+kingdom_6_lady_20,Parthian Lady,Suridisa
+kingdom_7_lady_1,Poppaea Sabina,Poppaea Sabina
+kingdom_7_lady_2,Statilia Messalina,Statilia Messalina
+kingdom_7_lady_3,Aemilia Lepida,Aemilia Lepida
+kingdom_7_lady_4,Sulpicia Drusilla,Sulpicia Drusilla
+kingdom_7_lady_5,Galeria Fundana,Galeria Fundana
+kingdom_7_lady_6,Vitellia Aula,Vitellia Aula
+kingdom_7_lady_7,Messalina Tertia,Messalina Tertia
+kingdom_7_lady_8,Cornelia Maxima,Cornelia Maxima
+kingdom_7_lady_9,Fabrica,Fabrica
+kingdom_7_lady_10,Fabia Horatia,Fabia Horatia
+kingdom_7_lady_11,Albia Terentia,Albia Terentia
+kingdom_7_lady_0,Flavia Sabina,Flavia Sabina
+kingdom_7_lady_12,Valeria Victrix,Valeria Victrix
+kingdom_7_lady_13,Vespasia Polla,Vespasia Polla
+kingdom_7_lady_14,Sulpicia Achaica,Sulpicia Achaica
+kingdom_7_lady_15,Coponia,Coponia
+kingdom_7_lady_16,Vitellia Tertia,Vitellia Tertia
+kingdom_7_lady_17,Iunia Triaria,Iunia Triaria
+kingdom_7_lady_18,Cornelia Secunda,Cornelia Secunda
+kingdom_7_lady_19,Cornelia Quinta,Cornelia Quinta
+kingdom_7_lady_20,Fabia Pia,Fabia Pia
+kingdom_7_lady_21,Fabia Aura,Fabia Aura
+kingdom_7_lady_22,Salvia Minor,Salvia Minor
+kingdom_7_lady_23,Plautilla,Plautilla
+kingdom_7_lady_24,Flavia Vespasia,Flavia Vespasia
+kingdom_7_lady_25,Flavia Victrix,Flavia Victrix
+kingdom_7_lady_26,Abronia Tullia,Abronia Tullia
+kingdom_7_lady_27,Domitilla,Domitilla
+kingdom_7_lady_28,Domitilla minor,Domitilla minor
+kingdom_7_lady_new_1,Cocceia Prima,Cocceia Prima
+kingdom_7_lady_new_2,Verginia Aurora,Verginia Aurora
+kingdom_7_lady_new_3,Asinia Stulta,Asinia Stulta
+kingdom_7_lady_new_4,Verania Gemina,Verania Gemina
+kingdom_2_lady_6,Celtic Lady,Airmed
+kingdom_2_lady_7,Celtic Lady,Conna
+kingdom_2_lady_8,Celtic Lady,Vinoma
+kingdom_2_lady_9,Celtic Lady,Alatucca
+kingdom_2_lady_10,Celtic Lady,Andraste
+kingdom_2_lady_11,Celtic Lady,Banna
+kingdom_2_lady_12,Celtic Lady,Catia
+kingdom_2_lady_13,Celtic Lady,Vorvena
+kingdom_2_lady_14,Celtic Lady,Aessicunia
+kingdom_2_lady_15,Celtic Lady,Iouga
+kingdom_2_lady_16,Celtic Lady,Billica
+kingdom_2_lady_17,Celtic Lady,Carssouna
+kingdom_2_lady_18,Celtic Lady,Urca Veloriga
+kingdom_2_lady_19,Celtic Lady,Bodicacia
+kingdom_2_lady_20,Celtic Lady,Cartimandua
+kingdom_3_lady_9,Siracian Lady,Arunavati
+kingdom_3_lady_10,Siracian Lady,Canca
+kingdom_3_lady_12,Siracian Lady,Purnaya
+kingdom_3_lady_13,Siracian Lady,Santa
+kingdom_3_lady_14,Iazyges Lady,Sumagati
+kingdom_3_lady_11,Iazyges Lady,Maya
+kingdom_3_lady_17,Iazyges Lady,Kosthile
+kingdom_3_lady_20,Iazyges Lady,Sumaise
+kingdom_3_lady_15,Roxolanian Lady,Upatisye
+kingdom_3_lady_16,Roxolanian Lady,Yasaraksite
+kingdom_3_lady_18,Roxolanian Lady,Raknaska
+kingdom_3_lady_19,Roxolanian Lady,Vasisthe
+kingdom_4_lady_5,Germanic Lady,Aschild
+kingdom_4_lady_6,Germanic Lady,Eidhild
+kingdom_4_lady_7,Germanic Lady,Hildborg
+kingdom_4_lady_8,Germanic Lady,Ingiburg
+kingdom_4_lady_9,Germanic Lady,Baldhild
+kingdom_4_lady_10,Germanic Lady,Casthild
+kingdom_4_lady_11,Germanic Lady,Eidwalda
+kingdom_4_lady_12,Germanic Lady,Hramburga
+kingdom_4_lady_13,Germanic Lady,Richild
+kingdom_4_lady_14,Germanic Lady,Castiburga
+kingdom_4_lady_15,Germanic Lady,Gerrhild
+kingdom_4_lady_16,Germanic Lady,Thusnelda
+kingdom_4_lady_17,Germanic Lady,Sunhild
+kingdom_4_lady_18,Germanic Lady,Theothild
+kingdom_4_lady_19,Germanic Lady,Aschilda
+kingdom_4_lady_20,Germanic Lady,Thurishilda
+kingdom_19_lady_1,GermanicLady,Veleda
+gwenhwyfar,Gwenhwyfar,Gwenhwyfar
+thestia_tomitia,Thestia Domitia,Thestia Domitia
+antonia,Claudia Antonia,Claudia Antonia
+heroes_end,{!}heroes end,{!}heroes end
+town_1_slave_trader,Slave Trader,{!}Town 1 Slave Trader
+town_2_slave_trader,Slave Trader,{!}Town 2 Slave Trader
+town_3_slave_trader,Slave Trader,{!}Town 3 Slave Trader
+town_4_slave_trader,Slave Trader,{!}Town 4 Slave Trader
+town_5_slave_trader,Slave Trader,{!}Town 5 Slave Trader
+town_6_slave_trader,Slave Trader,{!}Town 6 Slave Trader
+town_7_slave_trader,Slave Trader,{!}Town 7 Slave Trader
+town_8_slave_trader,Slave Trader,{!}Town 8 Slave Trader
+town_9_slave_trader,Slave Trader,{!}Town 9 Slave Trader
+town_10_slave_trader,Slave Trader,{!}Town 10 Slave Trader
+town_11_slave_trader,Slave Trader,{!}Town 11 Slave Trader
+town_12_slave_trader,Slave Trader,{!}Town 12 Slave Trader
+town_13_slave_trader,Slave Trader,{!}Town 13 Slave Trader
+town_14_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_15_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_16_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_17_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_18_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_19_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_20_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_21_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_22_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_23_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_24_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_25_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_26_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_27_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_28_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_29_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_30_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_31_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_32_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_33_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_34_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_35_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_36_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_37_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_38_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_39_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_40_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_41_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_42_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_43_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_44_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_45_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_46_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_47_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_48_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_49_slave_trader,Slave Trader,{!}Town 14 Slave Trader
+town_1_seneschal,Praefectus,{!}Town 1 Seneschal
+town_2_seneschal,Praefectus,{!}Town 2 Seneschal
+town_3_seneschal,Praefectus,{!}Town 3 Seneschal
+town_4_seneschal,Praefectus,{!}Town 4 Seneschal
+town_5_seneschal,Praefectus,{!}Town 5 Seneschal
+town_6_seneschal,Praefectus Romulus,{!}Town 6 Seneschal
+town_7_seneschal,Praefectus,{!}Town7 Seneschal
+town_8_seneschal,Praefectus,{!}Town 8 Seneschal
+town_9_seneschal,Praefectus,{!}Town 9 Seneschal
+town_10_seneschal,Praefectus,{!}Town 10 Seneschal
+town_11_seneschal,Praefectus,{!}Town 11 Seneschal
+town_12_seneschal,Praefectus,{!}Town 12 Seneschal
+town_13_seneschal,Praefectus,{!}Town 13 Seneschal
+town_14_seneschal,Praefectus,{!}Town 14 Seneschal
+town_15_seneschal,Praefectus,{!}Town 14 Seneschal
+town_16_seneschal,Praefectus,{!}Town 14 Seneschal
+town_17_seneschal,Praefectus,{!}Town 14 Seneschal
+town_18_seneschal,Praefectus,{!}Town 14 Seneschal
+town_19_seneschal,Praefectus,{!}Town 14 Seneschal
+town_20_seneschal,Praefectus,{!}Town 14 Seneschal
+town_21_seneschal,Praefectus,{!}Town 14 Seneschal
+town_22_seneschal,Praefectus,{!}Town 14 Seneschal
+town_23_seneschal,Praefectus,{!}Town 14 Seneschal
+town_24_seneschal,Praefectus,{!}Town 14 Seneschal
+town_25_seneschal,Praefectus,{!}Town 14 Seneschal
+town_26_seneschal,Praefectus,{!}Town 14 Seneschal
+town_27_seneschal,Praefectus,{!}Town 14 Seneschal
+town_28_seneschal,Praefectus Scipio,{!}Town 14 Seneschal
+town_29_seneschal,Praefectus,{!}Town 14 Seneschal
+town_30_seneschal,Praefectus,{!}Town 14 Seneschal
+town_31_seneschal,Praefectus,{!}Town 14 Seneschal
+town_32_seneschal,Praefectus,{!}Town 14 Seneschal
+town_33_seneschal,Praefectus,{!}Town 14 Seneschal
+town_34_seneschal,Praefectus,{!}Town 14 Seneschal
+town_35_seneschal,Praefectus,{!}Town 14 Seneschal
+town_36_seneschal,Praefectus,{!}Town 14 Seneschal
+town_37_seneschal,Praefectus,{!}Town 14 Seneschal
+town_38_seneschal,Praefectus,{!}Town 14 Seneschal
+town_39_seneschal,Praefectus,{!}Town 14 Seneschal
+town_40_seneschal,Praefectus,{!}Town 14 Seneschal
+town_41_seneschal,Praefectus,{!}Town 14 Seneschal
+town_42_seneschal,Praefectus,{!}Town 14 Seneschal
+town_43_seneschal,Praefectus,{!}Town 14 Seneschal
+town_44_seneschal,Praefectus,{!}Town 14 Seneschal
+town_45_seneschal,Praefectus,{!}Town 14 Seneschal
+town_46_seneschal,Praefectus,{!}Town 14 Seneschal
+town_47_seneschal,Praefectus,{!}Town 14 Seneschal
+town_48_seneschal,Praefectus,{!}Town 14 Seneschal
+town_49_seneschal,Praefectus,{!}Town 14 Seneschal
+castle_1_seneschal,Praefectus Castrorum,{!}Castle 1 Seneschal
+castle_2_seneschal,Praefectus Castrorum,{!}Castle 2 Seneschal
+castle_3_seneschal,Praefectus Castrorum,{!}Castle 3 Seneschal
+castle_4_seneschal,Praefectus Castrorum,{!}Castle 4 Seneschal
+castle_5_seneschal,Praefectus Castrorum,{!}Castle 5 Seneschal
+castle_6_seneschal,Praefectus Castrorum,{!}Castle 6 Seneschal
+castle_7_seneschal,Praefectus Castrorum,{!}Castle 7 Seneschal
+castle_8_seneschal,Praefectus Castrorum,{!}Castle 8 Seneschal
+castle_9_seneschal,Praefectus Castrorum,{!}Castle 9 Seneschal
+castle_10_seneschal,Praefectus Castrorum,{!}Castle 10 Seneschal
+castle_11_seneschal,Praefectus Castrorum,{!}Castle 11 Seneschal
+castle_12_seneschal,Praefectus Castrorum,{!}Castle 2 Seneschal
+castle_13_seneschal,Praefectus Castrorum,{!}Castle 3 Seneschal
+castle_14_seneschal,Praefectus Castrorum,{!}Castle 4 Seneschal
+castle_15_seneschal,Praefectus Castrorum,{!}Castle 5 Seneschal
+castle_16_seneschal,Praefectus Castrorum,{!}Castle 6 Seneschal
+castle_17_seneschal,Praefectus Castrorum,{!}Castle 7 Seneschal
+castle_18_seneschal,Praefectus Castrorum,{!}Castle 8 Seneschal
+castle_19_seneschal,Praefectus Castrorum,{!}Castle 9 Seneschal
+castle_20_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_21_seneschal,Praefectus Castrorum,{!}Castle 11 Seneschal
+castle_22_seneschal,Praefectus Castrorum,{!}Castle 2 Seneschal
+castle_23_seneschal,Praefectus Castrorum,{!}Castle 3 Seneschal
+castle_24_seneschal,Praefectus Castrorum,{!}Castle 4 Seneschal
+castle_25_seneschal,Praefectus Castrorum,{!}Castle 5 Seneschal
+castle_26_seneschal,Praefectus Castrorum,{!}Castle 6 Seneschal
+castle_27_seneschal,Praefectus Castrorum,{!}Castle 7 Seneschal
+castle_28_seneschal,Praefectus Castrorum,{!}Castle 8 Seneschal
+castle_29_seneschal,Praefectus Castrorum,{!}Castle 9 Seneschal
+castle_30_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_31_seneschal,Praefectus Castrorum,{!}Castle 11 Seneschal
+castle_32_seneschal,Praefectus Castrorum,{!}Castle 2 Seneschal
+castle_33_seneschal,Praefectus Castrorum,{!}Castle 3 Seneschal
+castle_34_seneschal,Praefectus Castrorum,{!}Castle 4 Seneschal
+castle_35_seneschal,Praefectus Castrorum,{!}Castle 5 Seneschal
+castle_36_seneschal,Praefectus Castrorum,{!}Castle 6 Seneschal
+castle_37_seneschal,Praefectus Castrorum,{!}Castle 7 Seneschal
+castle_38_seneschal,Praefectus Castrorum,{!}Castle 8 Seneschal
+castle_39_seneschal,Praefectus Castrorum,{!}Castle 9 Seneschal
+castle_40_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_41_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_42_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_43_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_44_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_45_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_46_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_47_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_48_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_49_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_50_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_51_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_52_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_53_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_54_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_55_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_56_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_57_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_58_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_59_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_60_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_61_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_62_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_63_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_64_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_65_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_66_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_67_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_68_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_69_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_70_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_71_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_72_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_73_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_74_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_75_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_76_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_77_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_78_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_79_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+castle_80_seneschal,Praefectus Castrorum,{!}Castle 20 Seneschal
+town_1_arena_master,Auctor,{!}Auctor
+town_2_arena_master,Auctor,{!}Auctor
+town_3_arena_master,Auctor,{!}Auctor
+town_4_arena_master,Auctor,{!}Auctor
+town_5_arena_master,Auctor,{!}Auctor
+town_6_arena_master,Auctor Caracalla,{!}Auctor
+town_7_arena_master,Auctor,{!}Auctor
+town_8_arena_master,Auctor,{!}Auctor
+town_9_arena_master,Auctor,{!}Auctor
+town_10_arena_master,Auctor,{!}Auctor
+town_11_arena_master,Auctor,{!}Auctor
+town_12_arena_master,Auctor,{!}Auctor
+town_13_arena_master,Auctor,{!}Auctor
+town_14_arena_master,Auctor,{!}Auctor
+town_15_arena_master,Auctor,{!}Auctor
+town_16_arena_master,Auctor,{!}Auctor
+town_17_arena_master,Auctor,{!}Auctor
+town_18_arena_master,Auctor,{!}Auctor
+town_19_arena_master,Auctor,{!}Auctor
+town_20_arena_master,Auctor,{!}Auctor
+town_21_arena_master,Auctor,{!}Auctor
+town_22_arena_master,Auctor,{!}Auctor
+town_23_arena_master,Auctor,{!}Auctor
+town_24_arena_master,Auctor,{!}Auctor
+town_25_arena_master,Auctor,{!}Auctor
+town_26_arena_master,Auctor,{!}Auctor
+town_27_arena_master,Auctor,{!}Auctor
+town_28_arena_master,Auctor,{!}Auctor
+town_29_arena_master,Auctor,{!}Auctor
+town_30_arena_master,Auctor,{!}Auctor
+town_31_arena_master,Auctor,{!}Auctor
+town_32_arena_master,Auctor,{!}Auctor
+town_33_arena_master,Auctor,{!}Auctor
+town_34_arena_master,Auctor,{!}Auctor
+town_35_arena_master,Auctor,{!}Auctor
+town_36_arena_master,Auctor,{!}Auctor
+town_37_arena_master,Auctor,{!}Auctor
+town_38_arena_master,Auctor,{!}Auctor
+town_39_arena_master,Auctor,{!}Auctor
+town_40_arena_master,Auctor,{!}Auctor
+town_41_arena_master,Auctor,{!}Auctor
+town_42_arena_master,Auctor,{!}Auctor
+town_43_arena_master,Auctor,{!}Auctor
+town_44_arena_master,Auctor,{!}Auctor
+town_45_arena_master,Auctor,{!}Auctor
+town_46_arena_master,Auctor,{!}Auctor
+town_47_arena_master,Auctor,{!}Auctor
+town_48_arena_master,Auctor,{!}Auctor
+town_49_arena_master,Auctor,{!}Auctor
+town_50_arena_master,Auctor,{!}Auctor
+town_51_arena_master,Auctor,{!}Auctor
+town_52_arena_master,Auctor,{!}Auctor
+town_1_armorer,Armorer,{!}Armorer
+town_2_armorer,Armorer,{!}Armorer
+town_3_armorer,Armorer,{!}Armorer
+town_4_armorer,Armorer,{!}Armorer
+town_5_armorer,Armorer,{!}Armorer
+town_6_armorer,Armorer,{!}Armorer
+town_7_armorer,Armorer,{!}Armorer
+town_8_armorer,Armorer,{!}Armorer
+town_9_armorer,Armorer,{!}Armorer
+town_10_armorer,Armorer,{!}Armorer
+town_11_armorer,Armorer,{!}Armorer
+town_12_armorer,Armorer,{!}Armorer
+town_13_armorer,Armorer,{!}Armorer
+town_14_armorer,Armorer,{!}Armorer
+town_15_armorer,Armorer,{!}Armorer
+town_16_armorer,Armorer,{!}Armorer
+town_17_armorer,Armorer,{!}Armorer
+town_18_armorer,Armorer,{!}Armorer
+town_19_armorer,Armorer,{!}Armorer
+town_20_armorer,Armorer,{!}Armorer
+town_21_armorer,Armorer,{!}Armorer
+town_22_armorer,Armorer,{!}Armorer
+town_23_armorer,Armorer,{!}Armorer
+town_24_armorer,Armorer,{!}Armorer
+town_25_armorer,Armorer,{!}Armorer
+town_26_armorer,Armorer,{!}Armorer
+town_27_armorer,Armorer,{!}Armorer
+town_28_armorer,Armorer,{!}Armorer
+town_29_armorer,Armorer,{!}Armorer
+town_30_armorer,Armorer,{!}Armorer
+town_31_armorer,Armorer,{!}Armorer
+town_32_armorer,Armorer,{!}Armorer
+town_33_armorer,Armorer,{!}Armorer
+town_34_armorer,Armorer,{!}Armorer
+town_35_armorer,Armorer,{!}Armorer
+town_36_armorer,Armorer,{!}Armorer
+town_37_armorer,Armorer,{!}Armorer
+town_38_armorer,Armorer,{!}Armorer
+town_39_armorer,Armorer,{!}Armorer
+town_40_armorer,Armorer,{!}Armorer
+town_41_armorer,Armorer,{!}Armorer
+town_42_armorer,Armorer,{!}Armorer
+town_43_armorer,Armorer,{!}Armorer
+town_44_armorer,Armorer,{!}Armorer
+town_45_armorer,Armorer,{!}Armorer
+town_46_armorer,Armorer,{!}Armorer
+town_47_armorer,Armorer,{!}Armorer
+town_48_armorer,Armorer,{!}Armorer
+town_49_armorer,Armorer,{!}Armorer
+town_50_armorer,Armorer,{!}Armorer
+town_51_armorer,Armorer,{!}Armorer
+town_52_armorer,Armorer,{!}Armorer
+town_1_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_2_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_3_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_4_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_5_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_6_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_7_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_8_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_9_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_10_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_11_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_12_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_13_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_14_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_15_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_16_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_17_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_18_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_19_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_20_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_21_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_22_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_23_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_24_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_25_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_26_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_27_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_28_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_29_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_30_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_31_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_32_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_33_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_34_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_35_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_36_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_37_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_38_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_39_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_40_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_41_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_42_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_43_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_44_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_45_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_46_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_47_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_48_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_49_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_50_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_51_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_52_weaponsmith,Weaponsmith,{!}Weaponsmith
+town_1_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_2_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_3_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_4_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_5_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_6_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_7_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_8_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_9_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_10_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_11_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_12_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_13_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_14_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_15_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_16_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_17_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_18_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_19_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_20_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_21_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_22_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_23_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_24_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_25_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_26_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_27_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_28_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_29_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_30_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_31_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_32_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_33_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_34_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_35_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_36_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_37_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_38_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_39_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_40_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_41_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_42_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_43_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_44_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_45_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_46_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_47_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_48_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_49_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_50_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_51_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_52_tavernkeeper,Tavern_Keeper,{!}Tavern_Keeper
+town_1_merchant,Merchant,{!}Merchant
+town_2_merchant,Merchant,{!}Merchant
+town_3_merchant,Merchant,{!}Merchant
+town_4_merchant,Merchant,{!}Merchant
+town_5_merchant,Merchant,{!}Merchant
+town_6_merchant,Mamertinus Crachus from Roma,Mamertinus Crachus from Roma
+town_7_merchant,Merchant,{!}Merchant
+town_8_merchant,Merchant,{!}Merchant
+town_9_merchant,Merchant,{!}Merchant
+town_10_merchant,Merchant,{!}Merchant
+town_11_merchant,Merchant,{!}Merchant
+town_12_merchant,Merchant,{!}Merchant
+town_13_merchant,Merchant,{!}Merchant
+town_14_merchant,Merchant,{!}Merchant
+town_15_merchant,Merchant,{!}Merchant
+town_16_merchant,Merchant,{!}Merchant
+town_17_merchant,Merchant,{!}Merchant
+town_18_merchant,Merchant,{!}Merchant
+town_19_merchant,Merchant,{!}Merchant
+town_20_merchant,Bastet,{!}Bastet
+town_21_merchant,Merchant,{!}Merchant
+town_22_merchant,Merchant,{!}Merchant
+town_23_merchant,Merchant,{!}Merchant
+town_24_merchant,Merchant,{!}Merchant
+town_25_merchant,Merchant,{!}Merchant
+town_26_merchant,Merchant,{!}Merchant
+town_27_merchant,Merchant,{!}Merchant
+town_28_merchant,Merchant,{!}Merchant
+town_29_merchant,Merchant,{!}Merchant
+town_30_merchant,Merchant,{!}Merchant
+town_31_merchant,Merchant,{!}Merchant
+town_32_merchant,Merchant,{!}Merchant
+town_33_merchant,Merchant,{!}Merchant
+town_34_merchant,Merchant,{!}Merchant
+town_35_merchant,Merchant,{!}Merchant
+town_36_merchant,Merchant,{!}Merchant
+town_37_merchant,Merchant,{!}Merchant
+town_38_merchant,Merchant,{!}Merchant
+town_39_merchant,Merchant,{!}Merchant
+town_40_merchant,Merchant,{!}Merchant
+town_41_merchant,Merchant,{!}Merchant
+town_42_merchant,Merchant,{!}Merchant
+town_43_merchant,Merchant,{!}Merchant
+town_44_merchant,Merchant,{!}Merchant
+town_45_merchant,Merchant,{!}Merchant
+town_46_merchant,Merchant,{!}Merchant
+town_47_merchant,Merchant,{!}Merchant
+town_48_merchant,Sinue Migdue,{!}Sinue Migdue
+town_49_merchant,Merchant,{!}Merchant
+town_50_merchant,Merchant,{!}Merchant
+town_51_merchant,Merchant,{!}Merchant
+town_52_merchant,Merchant,{!}Merchant
+town_1_horse_merchant,Horse Merchant,{!}Town 1 Horse Merchant
+town_2_horse_merchant,Horse Merchant,{!}Town 2 Horse Merchant
+town_3_horse_merchant,Horse Merchant,{!}Town 3 Horse Merchant
+town_4_horse_merchant,Horse Merchant,{!}Town 4 Horse Merchant
+town_5_horse_merchant,Horse Merchant,{!}Town 5 Horse Merchant
+town_6_horse_merchant,Horse Merchant,{!}Town 6 Horse Merchant
+town_7_horse_merchant,Horse Merchant,{!}Town 7 Horse Merchant
+town_8_horse_merchant,Horse Merchant,{!}Town 8 Horse Merchant
+town_9_horse_merchant,Horse Merchant,{!}Town 9 Horse Merchant
+town_10_horse_merchant,Horse Merchant,{!}Town 10 Horse Merchant
+town_11_horse_merchant,Horse Merchant,{!}Town 11 Horse Merchant
+town_12_horse_merchant,Horse Merchant,{!}Town 12 Horse Merchant
+town_13_horse_merchant,Horse Merchant,{!}Town 13 Horse Merchant
+town_14_horse_merchant,Horse Merchant,{!}Town 14 Horse Merchant
+town_15_horse_merchant,Horse Merchant,{!}Town 15 Horse Merchant
+town_16_horse_merchant,Horse Merchant,{!}Town 16 Horse Merchant
+town_17_horse_merchant,Horse Merchant,{!}Town 17 Horse Merchant
+town_18_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_19_horse_merchant,Horse Merchant,{!}Town 15 Horse Merchant
+town_20_horse_merchant,Horse Merchant,{!}Town 16 Horse Merchant
+town_21_horse_merchant,Horse Merchant,{!}Town 17 Horse Merchant
+town_22_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_23_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_24_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_25_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_26_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_27_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_28_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_29_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_30_horse_merchant,Horse Merchant,{!}Town 13 Horse Merchant
+town_31_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_32_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_33_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_34_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_35_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_36_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_37_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_38_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_39_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_40_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_41_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_42_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_43_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_44_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_45_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_46_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_47_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_48_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_49_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_50_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_51_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_52_horse_merchant,Horse Merchant,{!}Town 18 Horse Merchant
+town_1_mayor,Magister Civium,{!}Magister Civium
+town_2_mayor,Magister Civium,{!}Magister Civium
+town_3_mayor,Magister Civium,{!}Magister Civium
+town_4_mayor,Magister Civium,{!}Magister Civium
+town_5_mayor,Magister Civium,{!}Magister Civium
+town_6_mayor,Magister Civium Traianus,{!}Magister Civium
+town_7_mayor,Magister Civium,{!}Magister Civium
+town_8_mayor,Magister Civium,{!}Magister Civium
+town_9_mayor,Magister Civium,{!}Magister Civium
+town_10_mayor,Magister Civium,{!}Magister Civium
+town_11_mayor,Magister Civium,{!}Magister Civium
+town_12_mayor,Magister Civium,{!}Magister Civium
+town_13_mayor,Magister Civium,{!}Magister Civium
+town_14_mayor,Magister Civium,{!}Magister Civium
+town_15_mayor,Magister Civium,{!}Magister Civium
+town_16_mayor,Magister Civium,{!}Magister Civium
+town_17_mayor,Magister Civium,{!}Magister Civium
+town_18_mayor,Magister Civium,{!}Magister Civium
+town_19_mayor,Magister Civium,{!}Magister Civium
+town_20_mayor,Magister Civium,{!}Magister Civium
+town_21_mayor,Magister Civium,{!}Magister Civium
+town_22_mayor,Magister Civium,{!}Magister Civium
+town_23_mayor,Magister Civium,{!}Magister Civium
+town_24_mayor,Magister Civium,{!}Magister Civium
+town_25_mayor,Magister Civium,{!}Magister Civium
+town_26_mayor,Magister Civium,{!}Magister Civium
+town_27_mayor,Magister Civium,{!}Magister Civium
+town_28_mayor,Magister Civium,{!}Magister Civium
+town_29_mayor,Magister Civium,{!}Magister Civium
+town_30_mayor,Magister Civium,{!}Magister Civium
+town_31_mayor,Magister Civium,{!}Magister Civium
+town_32_mayor,Magister Civium,{!}Magister Civium
+town_33_mayor,Magister Civium,{!}Magister Civium
+town_34_mayor,Magister Civium,{!}Magister Civium
+town_35_mayor,Magister Civium,{!}Magister Civium
+town_36_mayor,Magister Civium,{!}Magister Civium
+town_37_mayor,Magister Civium,{!}Magister Civium
+town_38_mayor,Magister Civium,{!}Magister Civium
+town_39_mayor,Magister Civium,{!}Magister Civium
+town_40_mayor,Magister Civium,{!}Magister Civium
+town_41_mayor,Magister Civium,{!}Magister Civium
+town_42_mayor,Magister Civium,{!}Magister Civium
+town_43_mayor,Magister Civium,{!}Magister Civium
+town_44_mayor,Magister Civium,{!}Magister Civium
+town_45_mayor,Magister Civium,{!}Magister Civium
+town_46_mayor,Magister Civium,{!}Magister Civium
+town_47_mayor,Magister Civium,{!}Magister Civium
+town_48_mayor,Magister Civium,{!}Magister Civium
+town_49_mayor,Magister Civium,{!}Magister Civium
+town_50_mayor,Magister Civium,{!}Magister Civium
+town_51_mayor,Magister Civium,{!}Magister Civium
+town_52_mayor,Magister Civium,{!}Magister Civium
+village_1_elder,Local_Leader,{!}village_1_elder
+village_2_elder,Local_Leader,{!}village_1_elder
+village_3_elder,Local_Leader,{!}village_1_elder
+village_4_elder,Local_Leader,{!}village_1_elder
+village_5_elder,Local_Leader,{!}village_1_elder
+village_6_elder,Local_Leader,{!}village_1_elder
+village_7_elder,Local_Leader,{!}village_1_elder
+village_8_elder,Local_Leader,{!}village_1_elder
+village_9_elder,Local_Leader,{!}village_1_elder
+village_10_elder,Local_Leader,{!}village_1_elder
+village_11_elder,Local_Leader,{!}village_1_elder
+village_12_elder,Local_Leader,{!}village_1_elder
+village_13_elder,Local_Leader,{!}village_1_elder
+village_14_elder,Local_Leader,{!}village_1_elder
+village_15_elder,Local_Leader,{!}village_1_elder
+village_16_elder,Local_Leader,{!}village_1_elder
+village_17_elder,Local_Leader,{!}village_1_elder
+village_18_elder,Local_Leader,{!}village_1_elder
+village_19_elder,Local_Leader,{!}village_1_elder
+village_20_elder,Local_Leader,{!}village_1_elder
+village_21_elder,Local_Leader,{!}village_1_elder
+village_22_elder,Local_Leader,{!}village_1_elder
+village_23_elder,Local_Leader,{!}village_1_elder
+village_24_elder,Local_Leader,{!}village_1_elder
+village_25_elder,Local_Leader,{!}village_1_elder
+village_26_elder,Local_Leader,{!}village_1_elder
+village_27_elder,Local_Leader,{!}village_1_elder
+village_28_elder,Local_Leader,{!}village_1_elder
+village_29_elder,Local_Leader,{!}village_1_elder
+village_30_elder,Local_Leader,{!}village_1_elder
+village_31_elder,Local_Leader,{!}village_1_elder
+village_32_elder,Local_Leader,{!}village_1_elder
+village_33_elder,Local_Leader,{!}village_1_elder
+village_34_elder,Local_Leader,{!}village_1_elder
+village_35_elder,Local_Leader,{!}village_1_elder
+village_36_elder,Local_Leader,{!}village_1_elder
+village_37_elder,Local_Leader,{!}village_1_elder
+village_38_elder,Local_Leader,{!}village_1_elder
+village_39_elder,Local_Leader,{!}village_1_elder
+village_40_elder,Local_Leader,{!}village_1_elder
+village_41_elder,Local_Leader,{!}village_1_elder
+village_42_elder,Local_Leader,{!}village_1_elder
+village_43_elder,Local_Leader,{!}village_1_elder
+village_44_elder,Local_Leader,{!}village_1_elder
+village_45_elder,Local_Leader,{!}village_1_elder
+village_46_elder,Local_Leader,{!}village_1_elder
+village_47_elder,Local_Leader,{!}village_1_elder
+village_48_elder,Local_Leader,{!}village_1_elder
+village_49_elder,Local_Leader,{!}village_1_elder
+village_50_elder,Local_Leader,{!}village_1_elder
+village_51_elder,Local_Leader,{!}village_1_elder
+village_52_elder,Local_Leader,{!}village_1_elder
+village_53_elder,Local_Leader,{!}village_1_elder
+village_54_elder,Local_Leader,{!}village_1_elder
+village_55_elder,Local_Leader,{!}village_1_elder
+village_56_elder,Local_Leader,{!}village_1_elder
+village_57_elder,Local_Leader,{!}village_1_elder
+village_58_elder,Local_Leader,{!}village_1_elder
+village_59_elder,Local_Leader,{!}village_1_elder
+village_60_elder,Local_Leader,{!}village_1_elder
+village_61_elder,Local_Leader,{!}village_1_elder
+village_62_elder,Local_Leader,{!}village_1_elder
+village_63_elder,Local_Leader,{!}village_1_elder
+village_64_elder,Local_Leader,{!}village_1_elder
+village_65_elder,Local_Leader,{!}village_1_elder
+village_66_elder,Local_Leader,{!}village_1_elder
+village_67_elder,Local_Leader,{!}village_1_elder
+village_68_elder,Local_Leader,{!}village_1_elder
+village_69_elder,Local_Leader,{!}village_1_elder
+village_70_elder,Local_Leader,{!}village_1_elder
+village_71_elder,Local_Leader,{!}village_1_elder
+village_72_elder,Local_Leader,{!}village_1_elder
+village_73_elder,Local_Leader,{!}village_1_elder
+village_74_elder,Local_Leader,{!}village_1_elder
+village_75_elder,Local_Leader,{!}village_1_elder
+village_76_elder,Local_Leader,{!}village_1_elder
+village_77_elder,Local_Leader,{!}village_1_elder
+village_78_elder,Local_Leader,{!}village_1_elder
+village_79_elder,Local_Leader,{!}village_1_elder
+village_80_elder,Local_Leader,{!}village_1_elder
+village_81_elder,Local_Leader,{!}village_1_elder
+village_82_elder,Local_Leader,{!}village_1_elder
+village_83_elder,Local_Leader,{!}village_1_elder
+village_84_elder,Local_Leader,{!}village_1_elder
+village_85_elder,Local_Leader,{!}village_1_elder
+village_86_elder,Local_Leader,{!}village_1_elder
+village_87_elder,Local_Leader,{!}village_1_elder
+village_88_elder,Local_Leader,{!}village_1_elder
+village_89_elder,Local_Leader,{!}village_1_elder
+village_90_elder,Local_Leader,{!}village_1_elder
+village_91_elder,Local_Leader,{!}village_1_elder
+village_92_elder,Local_Leader,{!}village_1_elder
+village_93_elder,Local_Leader,{!}village_1_elder
+village_94_elder,Local_Leader,{!}village_1_elder
+village_95_elder,Local_Leader,{!}village_1_elder
+village_96_elder,Local_Leader,{!}village_1_elder
+village_97_elder,Local_Leader,{!}village_1_elder
+village_98_elder,Local_Leader,{!}village_1_elder
+village_99_elder,Local_Leader,{!}village_1_elder
+village_100_elder,Local_Leader,{!}village_1_elder
+village_101_elder,Local_Leader,{!}village_1_elder
+village_102_elder,Local_Leader,{!}village_1_elder
+village_103_elder,Local_Leader,{!}village_1_elder
+village_104_elder,Local_Leader,{!}village_1_elder
+village_105_elder,Local_Leader,{!}village_1_elder
+village_106_elder,Local_Leader,{!}village_1_elder
+village_107_elder,Local_Leader,{!}village_1_elder
+village_108_elder,Local_Leader,{!}village_1_elder
+village_109_elder,Local_Leader,{!}village_1_elder
+village_110_elder,Local_Leader,{!}village_1_elder
+village_111_elder,Local_Leader,{!}village_1_elder
+village_112_elder,Local_Leader,{!}village_1_elder
+village_113_elder,Local_Leader,{!}village_1_elder
+village_114_elder,Local_Leader,{!}village_1_elder
+village_115_elder,Local_Leader,{!}village_1_elder
+village_117_elder,Local_Leader,{!}village_1_elder
+village_118_elder,Local_Leader,{!}village_1_elder
+village_120_elder,Local_Leader,{!}village_1_elder
+village_121_elder,Local_Leader,{!}village_1_elder
+village_122_elder,Local_Leader,{!}village_1_elder
+village_123_elder,Local_Leader,{!}village_1_elder
+village_124_elder,Local_Leader,{!}village_1_elder
+village_125_elder,Local_Leader,{!}village_1_elder
+village_126_elder,Local_Leader,{!}village_1_elder
+village_127_elder,Local_Leader,{!}village_1_elder
+village_128_elder,Local_Leader,{!}village_1_elder
+village_129_elder,Local_Leader,{!}village_1_elder
+village_130_elder,Local_Leader,{!}village_1_elder
+village_131_elder,Local_Leader,{!}village_1_elder
+village_132_elder,Local_Leader,{!}village_1_elder
+village_133_elder,Local_Leader,{!}village_1_elder
+village_134_elder,Local_Leader,{!}village_1_elder
+village_135_elder,Local_Leader,{!}village_1_elder
+village_136_elder,Local_Leader,{!}village_1_elder
+village_137_elder,Local_Leader,{!}village_1_elder
+village_138_elder,Local_Leader,{!}village_1_elder
+village_139_elder,Local_Leader,{!}village_1_elder
+village_140_elder,Local_Leader,{!}village_1_elder
+village_141_elder,Local_Leader,{!}village_1_elder
+village_142_elder,Local_Leader,{!}village_1_elder
+village_143_elder,Local_Leader,{!}village_1_elder
+village_144_elder,Local_Leader,{!}village_1_elder
+village_145_elder,Local_Leader,{!}village_1_elder
+village_146_elder,Local_Leader,{!}village_1_elder
+village_147_elder,Local_Leader,{!}village_1_elder
+village_148_elder,Local_Leader,{!}village_1_elder
+village_149_elder,Local_Leader,{!}village_1_elder
+village_150_elder,Local_Leader,{!}village_1_elder
+village_151_elder,Local_Leader,{!}village_1_elder
+village_152_elder,Local_Leader,{!}village_1_elder
+village_153_elder,Local_Leader,{!}village_1_elder
+village_154_elder,Local_Leader,{!}village_1_elder
+village_155_elder,Local_Leader,{!}village_1_elder
+village_156_elder,Local_Leader,{!}village_1_elder
+village_157_elder,Local_Leader,{!}village_1_elder
+village_158_elder,Local_Leader,{!}village_1_elder
+village_159_elder,Local_Leader,{!}village_1_elder
+village_160_elder,Local_Leader,{!}village_1_elder
+village_161_elder,Local_Leader,{!}village_1_elder
+village_162_elder,Local_Leader,{!}village_1_elder
+village_163_elder,Local_Leader,{!}village_1_elder
+village_164_elder,Local_Leader,{!}village_1_elder
+village_165_elder,Local_Leader,{!}village_1_elder
+village_166_elder,Local_Leader,{!}village_1_elder
+village_167_elder,Local_Leader,{!}village_1_elder
+village_168_elder,Local_Leader,{!}village_1_elder
+village_169_elder,Local_Leader,{!}village_1_elder
+village_170_elder,Local_Leader,{!}village_1_elder
+village_171_elder,Local_Leader,{!}village_1_elder
+village_172_elder,Local_Leader,{!}village_1_elder
+village_173_elder,Local_Leader,{!}village_1_elder
+village_174_elder,Local_Leader,{!}village_1_elder
+village_175_elder,Local_Leader,{!}village_1_elder
+village_176_elder,Local_Leader,{!}village_1_elder
+village_177_elder,Local_Leader,{!}village_1_elder
+village_178_elder,Local_Leader,{!}village_1_elder
+village_179_elder,Local_Leader,{!}village_1_elder
+village_180_elder,Local_Leader,{!}village_1_elder
+village_181_elder,Local_Leader,{!}village_1_elder
+village_182_elder,Local_Leader,{!}village_1_elder
+village_183_elder,Local_Leader,{!}village_1_elder
+village_184_elder,Local_Leader,{!}village_1_elder
+village_185_elder,Local_Leader,{!}village_1_elder
+village_186_elder,Local_Leader,{!}village_1_elder
+village_187_elder,Local_Leader,{!}village_1_elder
+village_188_elder,Local_Leader,{!}village_1_elder
+village_189_elder,Local_Leader,{!}village_1_elder
+village_190_elder,Local_Leader,{!}village_1_elder
+village_191_elder,Local_Leader,{!}village_1_elder
+village_192_elder,Local_Leader,{!}village_1_elder
+village_193_elder,Local_Leader,{!}village_1_elder
+village_194_elder,Local_Leader,{!}village_1_elder
+village_195_elder,Local_Leader,{!}village_1_elder
+village_196_elder,Local_Leader,{!}village_1_elder
+village_197_elder,Local_Leader,{!}village_1_elder
+village_198_elder,Local_Leader,{!}village_1_elder
+village_199_elder,Local_Leader,{!}village_1_elder
+village_200_elder,Local_Leader,{!}village_1_elder
+village_201_elder,Local_Leader,{!}village_1_elder
+village_202_elder,Local_Leader,{!}village_1_elder
+village_203_elder,Local_Leader,{!}village_1_elder
+village_204_elder,Local_Leader,{!}village_1_elder
+village_205_elder,Local_Leader,{!}village_1_elder
+village_206_elder,Local_Leader,{!}village_1_elder
+village_207_elder,Local_Leader,{!}village_1_elder
+village_208_elder,Local_Leader,{!}village_1_elder
+village_209_elder,Local_Leader,{!}village_1_elder
+village_210_elder,Local_Leader,{!}village_1_elder
+village_211_elder,Local_Leader,{!}village_1_elder
+village_212_elder,Local_Leader,{!}village_1_elder
+village_213_elder,Local_Leader,{!}village_1_elder
+village_214_elder,Local_Leader,{!}village_1_elder
+village_215_elder,Local_Leader,{!}village_1_elder
+village_216_elder,Local_Leader,{!}village_1_elder
+village_217_elder,Local_Leader,{!}village_1_elder
+village_218_elder,Local_Leader,{!}village_1_elder
+village_219_elder,Local_Leader,{!}village_1_elder
+village_220_elder,Local_Leader,{!}village_1_elder
+village_221_elder,Local_Leader,{!}village_1_elder
+village_222_elder,Local_Leader,{!}village_1_elder
+village_223_elder,Local_Leader,{!}village_1_elder
+village_224_elder,Local_Leader,{!}village_1_elder
+village_225_elder,Local_Leader,{!}village_1_elder
+village_226_elder,Local_Leader,{!}village_1_elder
+village_227_elder,Local_Leader,{!}village_1_elder
+village_228_elder,Local_Leader,{!}village_1_elder
+village_229_elder,Local_Leader,{!}village_1_elder
+village_230_elder,Local_Leader,{!}village_1_elder
+village_231_elder,Local_Leader,{!}village_1_elder
+village_232_elder,Local_Leader,{!}village_1_elder
+village_233_elder,Local_Leader,{!}village_1_elder
+village_234_elder,Local_Leader,{!}village_1_elder
+village_235_elder,Local_Leader,{!}village_1_elder
+village_236_elder,Local_Leader,{!}village_1_elder
+village_237_elder,Local_Leader,{!}village_1_elder
+village_238_elder,Local_Leader,{!}village_1_elder
+village_239_elder,Local_Leader,{!}village_1_elder
+village_240_elder,Local_Leader,{!}village_1_elder
+village_241_elder,Local_Leader,{!}village_1_elder
+village_242_elder,Local_Leader,{!}village_1_elder
+village_243_elder,Local_Leader,{!}village_1_elder
+village_244_elder,Local_Leader,{!}village_1_elder
+village_245_elder,Local_Leader,{!}village_1_elder
+village_246_elder,Local_Leader,{!}village_1_elder
+village_247_elder,Local_Leader,{!}village_1_elder
+village_248_elder,Local_Leader,{!}village_1_elder
+village_249_elder,Local_Leader,{!}village_1_elder
+village_250_elder,Local_Leader,{!}village_1_elder
+village_251_elder,Local_Leader,{!}village_1_elder
+village_252_elder,Local_Leader,{!}village_1_elder
+village_253_elder,Local_Leader,{!}village_1_elder
+village_254_elder,Local_Leader,{!}village_1_elder
+village_255_elder,Local_Leader,{!}village_1_elder
+village_256_elder,Local_Leader,{!}village_1_elder
+village_257_elder,Local_Leader,{!}village_1_elder
+merchants_end,merchants_end,merchants_end
+town_1_master_craftsman,{!}Town 1 Craftsman,{!}Town 1 Seneschal
+town_2_master_craftsman,{!}Town 2 Craftsman,{!}Town 2 Seneschal
+town_3_master_craftsman,{!}Town 3 Craftsman,{!}Town 3 Seneschal
+town_4_master_craftsman,{!}Town 4 Craftsman,{!}Town 4 Seneschal
+town_5_master_craftsman,{!}Town 5 Craftsman,{!}Town 5 Seneschal
+town_6_master_craftsman,{!}Town 6 Craftsman,{!}Town 6 Seneschal
+town_7_master_craftsman,{!}Town 7 Craftsman,{!}Town 7 Seneschal
+town_8_master_craftsman,{!}Town 8 Craftsman,{!}Town 8 Seneschal
+town_9_master_craftsman,{!}Town 9 Craftsman,{!}Town 9 Seneschal
+town_10_master_craftsman,{!}Town 10 Craftsman,{!}Town 10 Seneschal
+town_11_master_craftsman,{!}Town 11 Craftsman,{!}Town 11 Seneschal
+town_12_master_craftsman,{!}Town 12 Craftsman,{!}Town 12 Seneschal
+town_13_master_craftsman,{!}Town 13 Craftsman,{!}Town 13 Seneschal
+town_14_master_craftsman,{!}Town 14 Craftsman,{!}Town 14 Seneschal
+town_15_master_craftsman,{!}Town 15 Craftsman,{!}Town 14 Seneschal
+town_16_master_craftsman,{!}Town 16 Craftsman,{!}Town 14 Seneschal
+town_17_master_craftsman,{!}Town 17 Craftsman,{!}Town 14 Seneschal
+town_18_master_craftsman,{!}Town 18 Craftsman,{!}Town 14 Seneschal
+town_19_master_craftsman,{!}Town 19 Craftsman,{!}Town 14 Seneschal
+town_20_master_craftsman,{!}Town 20 Craftsman,{!}Town 14 Seneschal
+town_21_master_craftsman,{!}Town 21 Craftsman,{!}Town 14 Seneschal
+town_22_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_23_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_24_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_25_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_26_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_27_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_28_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_29_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_30_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_31_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_32_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_33_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_34_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_35_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_36_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_37_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_38_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_39_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_40_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_41_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_42_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_43_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_44_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_45_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_46_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_47_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_48_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_49_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_50_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_51_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+town_52_master_craftsman,{!}Town 22 Craftsman,{!}Town 14 Seneschal
+zendar_chest,{!}Zendar Chest,{!}Zendar Chest
+tutorial_chest_1,{!}Melee Weapons Chest,{!}Melee Weapons Chest
+tutorial_chest_2,{!}Ranged Weapons Chest,{!}Ranged Weapons Chest
+bonus_chest_1,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_2,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_3,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_4,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_5,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_6,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_7,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_8,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_9,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_10,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_11,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_12,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_13,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_14,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_15,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_16,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_17,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_18,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_19,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_20,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_21,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_22,{!}Bonus Chest,{!}Bonus Chest
+bonus_chest_23,{!}Bonus Chest,{!}Bonus Chest
+household_possessions,{!}household_possessions,{!}household_possessions
+temp_array_a,{!}temp_array_a,{!}temp_array_a
+temp_array_b,{!}temp_array_b,{!}temp_array_b
+temp_array_c,{!}temp_array_c,{!}temp_array_c
+province_array,{!}province_array,{!}province_array
+temp_array_olympia_a,{!}temp_array_a,{!}temp_array_a
+temp_array_olympia_b,{!}temp_array_b,{!}temp_array_b
+temp_array_olympia_c,{!}temp_array_c,{!}temp_array_c
+olympia_participants,{!}olympia_participants,{!}olympia_participants
+stack_selection_amounts,{!}stack_selection_amounts,{!}stack_selection_amounts
+stack_selection_ids,{!}stack_selection_ids,{!}stack_selection_ids
+notification_menu_types,{!}notification_menu_types,{!}notification_menu_types
+notification_menu_var1,{!}notification_menu_var1,{!}notification_menu_var1
+notification_menu_var2,{!}notification_menu_var2,{!}notification_menu_var2
+banner_background_color_array,{!}banner_background_color_array,{!}banner_background_color_array
+local_merchant,Local Merchant,Local Merchants
+tax_rebel,Peasant Rebel,Peasant Rebels
+trainee_peasant,Peasant,Peasants
+fugitive,Nervous Man,Nervous Men
+belligerent_drunk,Belligerent Drunk,Belligerent Drunks
+hired_assassin,Hired Assassin,Hired Assassin
+spy,Ordinary Townsman,Ordinary Townsmen
+spy_partner,Unremarkable Townsman,Unremarkable Townsmen
+nurse_for_lady,Nurse,Nurse
+temporary_minister,Minister Septimus Homunculus,Minister Septimus Homunculus
+quick_battle_6_player,Drop items (will be lost),Drop items (will be lost)
+multiplayer_end,{!}multiplayer_end,{!}multiplayer_end
+log_array_entry_type,{!}Local Merchant,{!}Local Merchant
+log_array_entry_time,{!}Local Merchant,{!}Local Merchant
+log_array_actor,{!}Local Merchant,{!}Local Merchant
+log_array_center_object,{!}Local Merchant,{!}Local Merchant
+log_array_center_object_lord,{!}Local Merchant,{!}Local Merchant
+log_array_center_object_faction,{!}Local Merchant,{!}Local Merchant
+log_array_troop_object,{!}Local Merchant,{!}Local Merchant
+log_array_troop_object_faction,{!}Local Merchant,{!}Local Merchant
+log_array_faction_object,{!}Local Merchant,{!}Local Merchant
+quick_battle_troop_1,Eques,Eques
+quick_battle_troop_2,Gladiatrix,Gladiatrix
+quick_battle_troop_3,Thraex,Thraex
+quick_battle_troop_4,Retiarius,Retiarius
+quick_battle_troop_5,Murmillo,Murmillo
+quick_battle_troop_6,Sagittarius,Sagittarius
+quick_battle_troop_7,Spartacus,Spartacus
+quick_battle_troop_8,Boudica,Boudica
+quick_battle_troop_9,Germanicus,Germanicus
+quick_battle_troop_10,Jugurtha,Jugurtha
+global_variables,trp_global_variables,trp_global_variables
+roman_start_merchant,Gaius Lucarius,Gaius Lucarius
+superbus,Superbus,Superbus
+avaritia,Avaritia,Avaritia
+quest_miles,Miles,Miles
+quest_primus_pilus,Primus Pilus,Primus Pilus
+quest_centurio_primus,Centurio Primi Ordinis,Centurio primi Ordinis
+quest_tiro,Tiro,Tiro
+looter_leader,Robber,Looters
+relative_of_merchant,Merchant's Brother,{!}Prominent
+dplmc_chamberlain,Quaestor,Quaestor
+dplmc_constable,Custos Publicus,Custos Publicus
+dplmc_chancellor,Censor,Censor
+dplmc_messenger,Messenger,Messengers
+dplmc_scout,Scout,Scouts
+slave,Servus,Servi
+slave_roman,Servus Romanus,Servi Romani
+slave_dacian,Servus Dacicus,Servi Dacici
+slave_thracian,Servus Thracicus,Servi Thracici
+slave_celt,Servus Celticus,Servi Celtici
+slave_sarmatian,Servus Sarmaticus,Servi Sarmatici
+slave_germanic,Servus Germanicus,Servi Germanici
+slave_caucasian,Servus Caucasicus,Servi Caucasici
+slave_parthian,Servus Parthicus,Servi Parthici
+slave_persian,Servus Persicus,Servi Persici
+slave_judean,Servus Iudaeus,Servi Iudaei
+slave_bosporan,Servus Bosporanus,Servi Bosporani
+slave_arabian,Servus Arabicus,Servi Arabici
+slave_berber,Servus Maurus,Servi Mauri
+slave_garmantian,Servus Garamanticus,Servi Garamantici
+slave_nubian,Servus Nubianus,Servi Nubiani
+slave_saka,Servus Sacae,Servi Sacae
+slave_greek,Servus Graecus,Servi Graeci
+slave_illyrian,Servus Illyricus,Servi Illyrici
+slave_hispanic,Servus Hispanicus,Servi Hispanici
+slave_gaul,Servus Gallicus,Servi Gallici
+slave_egyptian,Servus Aegyptius,Servi Aegyptii
+slave_syrian,Servus Syrus,Servi Syri
+slave_eastern,Servus Orientalis,Servi Orientales
+slave_galatian,Servus Galaticus,Servi Galatici
+slave_mine,Servus,Servi
+slave_female,Serva,Servae
+slave_female_roman,Serva Romana,Servae Romanae
+slave_female_dacian,Serva Dacica,Servae Dacicae
+slave_female_thracian,Serva Thracica,Servae Thracicae
+slave_female_celt,Serva Celtica,Servae Celticae
+slave_female_galatian,Serva Galatica,Servae Galaticae
+slave_female_sarmatian,Serva Sarmatica,Servae Sarmaticae
+slave_female_germanic,Serva Germanica,Servae Germanicae
+slave_female_caucasian,Serva Caucasica,Servae Caucasicae
+slave_female_parthian,Serva Parthica,Servae Parthicae
+slave_female_persian,Serva Persica,Servae Persicae
+slave_female_judean,Serva Iudaea,Servae Iudaeae
+slave_female_bosporan,Serva Bosporana,Servae Bosporanae
+slave_female_arabian,Serva Arabica,Servae Arabicae
+slave_female_berber,Serva Maura,Servae Maurae
+slave_female_garmantian,Serva Garamantica,Servae Garamanticae
+slave_female_nubian,Serva Nubiana,Servae Nubianae
+slave_female_saka,Serva Saca,Servae Sacae
+slave_female_greek,Serva Graeca,Servae Graecae
+slave_female_illyrian,Serva Illyrica,Servae Illyricae
+slave_female_hispanic,Serva Hispanica,Servae Hispanicae
+slave_female_gaul,Serva Gallica,Servae Gallicae
+slave_female_egyptian,Serva Aegyptia,Servae Aegyptiae
+slave_female_syrian,Serva Syra,Servae Syrae
+slave_female_eastern,Serva Orientalis,Servae Orientales
+orgie_fem1,Salvation,Salvation
+orgie_fem2,Participant in an orgy,Participants in an orgy
+orgie_fem3,Participant in an orgy,Participants in an orgy
+orgie_fem4,Incontinentia Buttocks,Incontinentia Buttocks
+orgie_male1,Participant in an orgy,Participants in an orgy
+dancer1,Dancer,Dancers
+orgie_male1_kissing,Noble,Noble
+orgie_fem_kissing,Dancer,Dancer
+tavern_npc1,Tavern Patron,Tavern Patrons
+tavern_npc1_afr,Tavern Patron,Tavern Patrons
+tavern_npc1_arab,Tavern Patron,Tavern Patrons
+whore,Lupa,Lupae
+groupie,Groupie,Groupies
+guest,Civis,Civis
+guest_female,Civis,Civis
+roman_priest_female,Sacerdos,Sacerdotes
+roman_priest,Sacerdos,Sacerdotes
+jewish_priest,Kohen,Kohanim
+christian_priest,Priest,Priests
+norse_priest,Gudjaen,Gudjaeniz
+celtic_druid,Draid,Draoidhean
+dacian_priest,Dacian Priest,Dacian Priest
+sarmatian_sky_priest,Sky-Priest,Sky-Priests
+sarmatian_priest,Enaree,Enarei
+caucasian_priest,Kadagi,Kadagi
+armenian_priest,Priest,Priest
+persian_priest,Mobad,Mobad
+arabian_priest,Afkal,Afkal
+berber_priest,Berber Priest,Berber Priest
+garamantian_priest,Ammon Priest,Ammon Priest
+nubian_priest,Ammon Priest,Ammon Priest
+healer,Physican,Physicans
+healer_2,Physican,Physicans
+guest_sitting,Civis,Civis
+dacian_deserter,Desertor Dacus,Desertores Daci
+briton_deserter,Desertor Celticus,Desertores Celtici
+sarmatian_deserter,Desertor Sarmata,Desertores Sarmatae
+germanic_deserter,Desertor Germanicus,Desertores Germani
+caucasian_deserter,Desertor Caucasicus,Desertores Caucasici
+parthian_deserter,Desertor Parthus,Desertores Parthi
+judean_deserter,Desertor Iudaeus,Desertores Iudaei
+roman_deserter,Desertor Romanus,Desertores Romani
+syrian_deserter,Desertor Syricus,Desertores Syrici
+arabian_deserter,Desertor Arabicus,Desertores Arabici
+berber_deserter,Desertor Maurus,Desertores Mauri
+garamantian_deserter,Desertor Garamans,Desertores Garamantes
+nubian_deserter,Desertor Nubianus,Desertores Nubiani
+saka_deserter,Sacae Desertor,Sacae Desertores
+egyptian_deserter,Desertor Aegyptius,Desertores Aegyptii
+asturias_veteran,Ghost,Ghosts
+greek_scholar,Archippus the Scholar,Archippus the Scholars
+roman_scholar,Marcus Gaius Cassius,Marcus Gaius Cassius
+military_adviser,"Titus Livius, Military Adviser",Titus Livius
+financial_adviser,"Primus Horatius, Financial Adviser",Primus Horatius
+diplomatic_adviser,"Servius Sextus, Political Adviser",Servius Sextus
+diplomat_parthia,Arsaces,Diplomats
+diplomat_eastern,Kashta,Diplomats
+diplomat_africa,Gar Daram Senur,Diplomats
+diplomat_india,Kanishka,Diplomats
+housholder,Housekeeper,Housekeepers
+player_camp_chest_1,player_camp_chest_1,player_camp_chest_1
+player_camp_chest_2,player_camp_chest_2,player_camp_chest_2
+player_camp_chest_3,player_camp_chest_3,player_camp_chest_3
+player_camp_chest_end,player_camp_chest_end,player_camp_chest_end
+sisyphus,Sisyphus,Sisyphus
+herakles,Herakles,Herakles
+achilleus,Achilleus,Achilleus
+agamemnon,Agamemnon,Agamemnon
+odysseus,Odysseus,Odysseus
+wahrsager,Teiresias,Teiresias
+doccinga_torturador,Torturer,Torturers
+petronius,Petronius,Petronius
+memercius,Memercius,Memercius
+muscullus,Musculus,Muscullus
+christ,Stranger,Stranger
+christ_fem,Stranger,Stranger
+merchant1,Ogolus the tailor,Ogolus the tailor
+merchant2,Merchant,Merchants
+merchant3,Merchant,Merchants
+merchant4,Gaius Marius,Gaius Marius
+merchant5,Merchant,Merchants
+merchant6,Merchant,Merchants
+merchant7,Merchant,Merchants
+merchant8,Merchant,Merchants
+prisoner,Prisoner,Prisoners
+kasius,Kasius,Kasius
+orchon,Orchon,Orchon
+mine_boss,Foreman,Foremen
+pythia,Pythia,Pythia
+lykos,Lykos,Lykos
+organiser,Eystachus,Eystachus
+housholder2,Marcus Tertius,Marcus Tertius
+household_villa,{!}household_possessions_villa,{!}household_possessions_villa
+array_villa_feast,{!}Local Merchant,{!}Local Merchant
+slavic_king,Karovit,Karovit
+danish_king,Arluf,Arluf
+irish_king,Mogha,Mogha
+nubian_king,Amanitore,Amanitore
+arabian_king,Malik Malichus,Malik Malichus
+garamantian_king,Gadarat,Gadarat
+gaetulian_king,Takfarin,Takfarin
+georgian_king,Khachik,Khachik
+saka_king,Skunxa the Great,Skunxa the Great
+gaetulian_queen,Farina,Farina
+arabian_queen,Sheikha Shaqilath,Sheikha Shaqilath
+garamantian_queen,Darta,Darta
+arab_richmerchant,Merchant,Merchants
+arab_poormerchant,Merchant,Merchants
+african_richmerchant,Merchant,Merchants
+african_poormerchant,Merchant,Merchants
+caucasian_richmerchant,Merchant,Merchants
+caucasian_poormerchant,Merchant,Merchants
+germanic_richmerchant,Merchant,Merchants
+germanic_poormerchant,Merchant,Merchants
+celtic_richmerchant,Merchant,Merchants
+celtic_poormerchant,Merchant,Merchants
+saka_richmerchant,Merchant,Merchants
+saka_poormerchant,Merchant,Merchants
+saka_tavernkeeper,Tavernkeeper,Tavernkeepers
+african_tavernkeeper,Tavernkeeper,Tavernkeepers
+arab_tavernkeeper,Tavernkeeper,Tavernkeepers
+celtic_tavernkeeper,Tavernkeeper,Tavernkeepers
+germanic_tavernkeeper,Tavernkeeper,Tavernkeepers
+caucasian_tavernkeeper,Tavernkeeper,Tavernkeepers
+nurse_african,Nurse,Nurse
+slave_trader_judean,Ioudaios Doulemporos,Ioudaioi Doulemporoi
+slave_trader_saka,Sakes Doulemporos,Sakai Doulemporoi
+slave_trader_alans,Alanos Doulemporos,Alanoi Doulemporoi
+slave_trader_hispanic,Iber Doulemporos,Iberes Doulemporoi
+slave_trader_illyrian,Illyrios Doulemporos,Illyrioi Doulemporoi
+slave_trader_sea_raiders,Peirates Doulemporos,Peiratai Doulemporoi
+slave_trader_black_sea,Pontikos Doulemporos,Pontikoi Doulemporoi
+slave_trader_arab,Araps Doulemporos,Arabes Doulemporoi
+slave_trader_egyptian,Aigyptios Doulemporos,Aigyptioi Doulemporoi
+slave_trader_nubian,Aithiops Doulemporos,Aithiopes Doulemporoi
+slave_trader_nabatean,Nabataios Doulemporos,Nabataioi Doulemporoi
+slave_trader_garamantian,Garamas Doulemporos,Garamantes Doulemporoi
+slave_trader_gaetulian,Gaitoulos Doulemporos,Gaitouloi Doulemporoi
+slave_trader_bandit,Lestes Doulemporos,Lestai Doulemporoi
+gladiator_euqes,Eques,Eques
+gladiator_murmillo,Murmillo,Murmillo
+gladiator_thraex,Thraex,Thraex
+gladiator_retiarius,Retiarius,Retiarius
+gladiator_gladiatrix,Gladiatrix,Gladiatrix
+gladiator_sagittarius,Sagittarius,Sagittarius
+martial,Marcus Valerius Martialis,Marcus Valerius Martialis
+iuvenal,Decimus Iunius Iuvenalis,Decimus Iunius Iuvenalis
+bard_end,New Month,New Month
+commander_barracks,Praetor,Praetor
+players_legion,Legio XXII Deiotariana,Legio XXII Deiotariana
+players_aux_cav,Ala Italica,Ala Italica
+players_aux_inf,Cohors Germania,Cohors Germania
+players_infantry,Infantry Retinue,Infantry Retinue
+players_cavalry,Cavalry Retinue,Cavalry Retinue
+players_skirmisher,Skirmisher Retinue,Skirmisher Retinue
+custom_infantry,Footman (custom),Footmen (custom)
+custom_infantry_equip,Footman (custom),Footmen (custom)
+custom_infantry_exp,Footman (exp) (custom),Footmen (exp) (custom)
+custom_infantry_exp_equip,Footman (exp) (custom),Footmen (exp) (custom)
+custom_infantry_vet,Footman (vet) (custom),Footmen (vet) (custom)
+custom_infantry_vet_equip,Footman (vet) (custom),Footmen (vet) (custom)
+custom_standard_bearer,Standardbearer (custom),Standardbearers (custom)
+custom_standard_bearer_equip,Standardbearer (custom),Standardbearers (custom)
+custom_hornman,Hornman (custom),Hornmen (custom)
+custom_hornman_equip,Hornman (custom),Hornmen (custom)
+custom_cav_barb,Melee Cavalry (custom),Melee Cavalry (custom)
+custom_cav_barb_equip,Melee Cavalry (custom),Melee Cavalry (custom)
+custom_cav_barb_vet,Melee Cavalry (vet) (custom),Melee Cavalry (vet) (custom)
+custom_cav_barb_vet_equip,Melee Cavalry (vet) (custom),Melee Cavalry (vet) (custom)
+custom_standard_bearer_cav,Cavalry Standardbearer (custom),Cavalry Standardbearers (custom)
+custom_standard_bearer_cav_equip,Cavalry Standardbearer (custom),Cavalry Standardbearers (custom)
+custom_skirmisher_cav,Skirmisher Cavalry (custom),Skirmisher Cavalry (custom)
+custom_skirmisher_cav_equip,Skirmisher Cavalry (custom),Skirmisher Cavalry (custom)
+custom_skirmisher_cav_vet,Skirmisher Cavalry (vet) (custom),Skirmisher Cavalry (vet) (custom)
+custom_skirmisher_cav_vet_equip,Skirmisher Cavalry (vet) (custom),Skirmisher Cavalry (vet) (custom)
+custom_skirmisher,Skirmisher (custom),Skirmishers (custom)
+custom_skirmisher_equip,Skirmisher (custom),Skirmishers (custom)
+custom_skirmisher_vet,Skirmisher (custom),Skirmishers (custom)
+custom_skirmisher_vet_equip,Skirmisher (custom),Skirmishers (custom)
+custom_archer,Archer (custom),Archers (custom)
+custom_archer_equip,Archer (custom),Archers (custom)
+custom_archer_vet,Archer (vet) (custom),Archers (vet) (custom)
+custom_archer_vet_equip,Archer (vet) (custom),Archers (vet) (custom)
+custom_standard_bearer_skirmisher,Skirmisher Standardbearer (custom),Skirmisher Standardbearers (custom)
+custom_standard_bearer_skirmisher_equip,Skirmisher Standardbearer (custom),Skirmisher Standardbearers (custom)
+custom_hornman_skirmisher,Skirmisher Hornman (custom),Skirmisher Hornmen (custom)
+custom_hornman_skirmisher_equip,Hornman (custom),Hornmen (custom)
+custom_legionary,Tiro Legionis (custom),Tirones Legionis (custom)
+custom_legionary_equip,Tiro Legionis (custom),Tirones Legionis (custom)
+custom_legionary_exp,Miles Legionis (custom),Milites Legionis (custom)
+custom_legionary_exp_equip,Miles Legionis (custom),Milites Legionis (custom)
+custom_legionary_vet,Evocatus Legionis (custom),Evocati Legionis (custom)
+custom_legionary_vet_equip,Evocatus Legionis (custom),Evocati Legionis (custom)
+custom_centurio,Centurio (custom),Centurii (custom)
+custom_centurio_equip,Centurio (custom),Centurii (custom)
+custom_aquilifer,Aquilifer (custom),Aquilifer (custom)
+custom_aquilifer_equip,Aquilifer (custom),Aquilifer (custom)
+custom_signifer,Signifer (custom),Signifer (custom)
+custom_signifer_equip,Signifer (custom),Signifer (custom)
+custom_vexilarius,Vexilarius (custom),Vexilarii (custom)
+custom_vexilarius_equip,Vexilarius (custom),Vexilarii (custom)
+custom_tribunus,Tribunus (custom),Tribuni (custom)
+custom_tribunus_equip,Tribunus (custom),Tribuni (custom)
+custom_primus_pilius,Primus Pilus (custom),Primi Pili (custom)
+custom_primus_pilius_equip,Primus Pilus (custom),Primi Pili (custom)
+custom_cornicen,Cornicen (custom),Cornicines (custom)
+custom_cornicen_equip,Cornicen (custom),Cornicines (custom)
+custom_aux_cornicern,Cornicen Auxiliari (custom),Cornicines Auxiliari (custom)
+custom_aux_cornicern_equip,Cornicen Auxiliari (custom),Cornicines Auxiliari (custom)
+custom_cav_vex,Vexilarius Equitem (custom),Vexilarii Equitem (custom)
+custom_cav_vex_equip,Vexilarius Equitem (custom),Vexilarii Equitem (custom)
+custom_cav_of,Decurio (custom),Decurii (custom)
+custom_cav_of_equip,Decurio (custom),Decurii (custom)
+custom_aux_centurio,Centurio Auxiliari (custom),Centurii Auxiliari (custom)
+custom_aux_centurio_equip,Centurio Auxiliari (custom),Centurii Auxiliari (custom)
+custom_aux_signifer,Signifer Auxiliari (custom),Signifer Auxiliari (custom)
+custom_aux_signifer_equip,Signifer Auxiliari (custom),Signifer Auxiliari (custom)
+custom_aux_cav,Auxilia Eques (custom),Auxilia Equites (custom)
+custom_aux_cav_equip,Auxilia Eques (custom),Auxilia Equites (custom)
+custom_cav,Auxilia Equites Sagittarius (custom),Auxilia Equites Sagittarii (custom)
+custom_cav_equip,Auxilia Equites Sagittarius (custom),Auxilia Equites Sagittarii (custom)
+custom_aux_spear,Auxilia Hastatus (custom),Auxilia Hastati (custom)
+custom_aux_spear_equip,Auxilia Hastatus (custom),Auxilia Hastati (custom)
+custom_aux_miles,Auxilia Miles (custom),Auxilia Milites (custom)
+custom_aux_miles_equip,Auxilia Miles (custom),Auxilia Milites (custom)
+custom_balista,Ballistarius (custom),Ballistarii (custom)
+custom_balista_equip,Ballistarius (custom),Ballistarii (custom)
+custom_sagitarius,Sagittarius (custom),Sagittarii (custom)
+custom_sagitarius_equip,Sagittarius (custom),Sagittarii (custom)
+custom_troops_end,na,na
+inventory_backup,Inventory,Inventory
+pseudo_troop_end,Second Outfit,pseudo_troop_end
+follower_party_mules,follower_party_mules,follower_party_mules
+senator,Senator,Senators
+senator_dummy,Speaker,Speakers
+sailor,Nauta,Nautae
+teacher,Magister Ludi,Magister Ludi
+administrator,Administrator,Administrator
+grape_master,Master of Grapes,Master of Grapes
+wine_master,Master of Wine,Master of Wine
+oil_master,Master of Oil,Master of Oil
+olives_master,Master of Olives,Master of Olives
+smith_master,Blacksmith,Blacksmith
+cattle_master,Cattle Master,Cattle Master
+butcher_master,Butcher,Butcher
+fish_master,Master of Fish,Master of Fish
+fruit_master,Master of Fruit,Master of Fruit
+grain_master,Master of Grain,Master of Grain
+master_baker,Baker,Baker
+master_pottery,Potter Master,Potter Master
+master_sheep,Shepherd,Shepherd
+master_breeder,Master Breeder,Master Breeder
+master_cheeser,Master Cheeser,Master Cheeser
+master_tanner,Master Tanner,Master Tanner
+master_weaver,Master Weaver,Master Weaver
+master_inn,Innkeeper,Innkeeper
+master_merchant,Merchant,Merchant
+master_silk,Master of Silk,Master of Silk
+courtier,Courtier,Courtiers
+courtier_female,Courtier,Courtiers
+courtier_locusta,Locusta,Locusta
+courtier_crispinilla,Calvia Crispinilla,Calvia Crispinilla
+director_akademia,Philo,Philo
+alexandrian_library,Tiberius Claudius Balbilus,Tiberius Claudius Balbilus
+elephant,Elephant,elephants
+wild_cat,Lion,lions
+wild_cat_2,Leopard,leopards
+wolf,Wolf,wolves
+argentarius,Argentarius,Argentarius
+suppliciant,Supplicant,Supplicantw
+suppliciant_female,Supplicant,Supplicantw
+minotau,Minotaur,Minotaur
+desperatius,Gaius Desperatius,Gaius Desperatius
+tristitia,Gaia Tristitia,Gaia Tristitia
+wlodowiecus,Wlodowiecus,Wlodowiecus
+olivarius,Olivarius,Olivarius
+hadrianus,Hadrianus Pavel,Hadrianus Pavel
+mancinellus,Mancinellus,Mancinellus
+varus,Varus,Varus
+old_mercenary,Old Mercenary,Old Mercenary
+yaaba,Yaaba,Yaaba
+bacchus,Dionysus,Dionysus
+thusnelda,Thusnelda the Beautiful,Thusnelda the Beautiful
+tigellinus,Ophonius Tigellinus,Ophonius Tigellinus
+gaius_petronius,Gaius Petronius,Gaius Petronius
+ybor,Ybor,Ybor
+agio,Agio,Agio
+gambara,Gambara,Gambara
+octavia,Octavia,Octavia
+seneca,Seneca,Seneca
+paulina,Pompeia Paulina,Pompeia Paulina
+agent_parthian,Suspicious Parthian,Suspicious Parthian
+invidia,Pulchra Invidia,Pulchra Invidia
+sporus,Sporus,Sporus
+pupienus,Pupienus Maximus,Pupienus Maximus
+plinius_elder,Plinius Secundus,Plinius Secundus
+solus,Solus Monachus,Solus Monachus
+albus,Albus,Albus
+amorus,Amorus Valentinus,Amorus Valentinus
+lucia,Lucia Sabina,Lucia Sabina
+paulus,Paulus,Paulus
+petrus,Petrus,Petrus
+lucillus,Lucillus,Lucillus
+diggus,Biggus Dickus,Biggus Dickus
+bannerlord,HOLY SOON,HOLY SOON
+billy,Billy the Beagle,The Beagle Billy
+witch,Hagatusja Hunna,Hagatusja Hunna
+scandia,Wikkon,Wikkon
+fortuna,Fortuna,Fortuna
+fake_nero,Nero Augustus,Nero Augustus
+sussus_amogus,Sussus Amogus,Sussus Amogus
+drunken_sailor,Drunken Sailor,Drunken Sailor
+random_idiot,Chulainn Makasius Aurelianus,Chulainn Makasius Aurelianus
+desiderius,Desiderius,Desiderius
+odius,Odius,Odius
+amalia,Animalia,Animalia
+fiducia,Fiducia,Fiducia
+alexander,Megas Alexandros,Megas Alexandros
+caesar,Gaius Julius Caesar,Gaius Julius Caesar
+aeneas,Aeneas,Aeneas
+agrippina,Agrippina,Agrippina
+sittius,Sittius Afer,Sittius Afer
+greek_philosopher,Kados Gigantos,Kados Gigantos
+roman_philosopher,Gigacus Chadus,Gigacus Chadus
+joesph_arimatrea,Joseph of Arimathea,Joseph of Arimathea
+old_man,Old Man,Old Man
+amokos,Amokos Impostos,Amokos Impostos
+claudia,Claudia Urgulanallia,Claudia Urgulanallia
+circus_1,Acrobat,Acrobat
+circus_2,Acrobat,Acrobat
+circus_3,Acrobat,Acrobat
+ascetic,Ascetic,Ascetic
+alwisus,Alwisus,Alwisus
+hludwig,Hludwig,Hludwig
+ekkebert,Ekkebert,Ekkebert
+egino,Egino,Egino
+pamphile,Pamphile,Pamphile
+zarinaia,Zarinaia,Zarinaia
+dj_pence,D.J. Pence,D.J. Pence
+han_footman,Han Archer,Han Archer
+han_hallbard_man,Han Spearman,Han Spearmen
+han_heavy_hallbard_man,Han Heavy Spearman,Han Heavy Spearmen
+lybian,The Libyan,The Libyan
+chinese_commander,Commander Lin Lee Shen Shen,Commander Lin Lee Shen Shen
+temur,"Temur, Tuqi King of the Right","Temur, Tuqi King of the Right"
+taichar,Taichar Khan,Taichar Khan
+xiao,Lei Li Xiao Qiu,Lei Li Xiao Qiu
+alan_guide,Ugly Alani Warrior,Ugly Alani Warrior
+ali,Ali Al-Nabatai,Ali Al-Nabatai
+phamanus,Phamanus,Phamanus
+xingnu_barbarian,Xiongnu Warrior,Xiongnu Warrior
+romanian,Tiganu Tate,Tiganu Tate
+spaniard,Heidus Knightus,Heidus Knightus
+dominican,Pyromaniacus,Pyromaniacus
+werdheri,Werdheri,Werdheri
+germanic_myth_hero_1,Heri,Heri
+germanic_myth_hero_2,Leikrauc,Leikrauc
+germanic_myth_hero_3,Malobald,Malobald
+germanic_myth_hero_4,Thorwald,Thorwald
+dacian_myth_hero_1,Decibalus,Decibalus
+dacian_myth_hero_2,Pierporus,Pierporus
+dacian_myth_hero_3,Zinna,Zinna
+dacian_myth_hero_4,Dromichaetes,Dromichaetes
+sarmatian_myth_hero_1,Asoke,Asoke
+sarmatian_myth_hero_2,Kentarske,Kentarske
+sarmatian_myth_hero_3,Wamsok,Wamsok
+sarmatian_myth_hero_4,Andromache,Andromache
+caucasian_myth_hero_1,Zariadres,Zariadres
+caucasian_myth_hero_2,Sames,Sames
+caucasian_myth_hero_3,Khosrow,Khosrow
+caucasian_myth_hero_4,Ashusha,Ashusha
+celtic_myth_hero_1,Idefix,Idefix
+celtic_myth_hero_2,Asterix,Asterix
+celtic_myth_hero_3,Obelix,Obelix
+celtic_myth_hero_4,Ricagambeda,Ricagambeda
+arabian_myth_hero_1,Khalkarib,Khalkarib
+arabian_myth_hero_2,Ali Baba,Ali Baba
+arabian_myth_hero_3,Yashhurmalik,Yashhurmalik
+arabian_myth_hero_4,Ghaylan,Ghaylan
+jewish_myth_hero_1,David,David
+jewish_myth_hero_2,Zachariah,Zachariah
+jewish_myth_hero_3,Levi,Levi
+jewish_myth_hero_4,Judah,Judah
+persian_myth_hero_1,Gobryas,Gobryas
+persian_myth_hero_2,Smerdomenes,Smerdomenes
+persian_myth_hero_3,Gilgamesh,Gilgamesh
+persian_myth_hero_4,Xerxes,Xerxes
+african_myth_hero_1,Amasus,Amasus
+african_myth_hero_2,Sinuhe,Sinuhe
+african_myth_hero_3,Pami,Pami
+african_myth_hero_4,Hannibal,Hannibal
+household_slave_1,{!}Slave,{!}Slave
+household_slave_2,{!}Slave,{!}Slave
+household_slave_3,{!}Slave,{!}Slave
+household_slave_4,{!}Slave,{!}Slave
+household_slave_5,{!}Slave,{!}Slave
+household_slave_6,{!}Slave,{!}Slave
+household_slave_7,{!}Slave,{!}Slave
+household_slave_8,{!}Slave,{!}Slave
+household_slave_9,{!}Slave,{!}Slave
+household_slave_10,{!}Slave,{!}Slave
+household_slave_11,{!}Slave,{!}Slave
+household_slave_12,{!}Slave,{!}Slave
+household_slave_13,{!}Slave,{!}Slave
+household_slave_14,{!}Slave,{!}Slave
+household_cook_1,{!}Cook,{!}Cook
+household_cook_2,{!}Cook,{!}Cook
+household_cook_3,{!}Cook,{!}Cook
+household_cook_4,{!}Cook,{!}Cook
+household_cook_5,{!}Cook,{!}Cook
+household_cook_6,{!}Cook,{!}Cook
+household_end,end of household,end of household
+troops_end,END OF THE WORLD,END OF THE WORLD
