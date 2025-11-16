@@ -6669,6 +6669,7 @@ scripts = scripts_hardcoded + [
     (party_get_num_companion_stacks, ":num_stacks",":source_party"),
     (try_for_range, ":stack_no", 0, ":num_stacks"),
         (party_stack_get_troop_id, ":stack_troop",":source_party",":stack_no"),
+        # (neq, ":stack_troop", "trp_player"),
         (this_or_next|neg|troop_is_hero, ":stack_troop"),
         (eq, "$g_move_heroes", 1),
         (party_stack_get_size, ":stack_size",":source_party",":stack_no"),
@@ -6742,19 +6743,16 @@ scripts = scripts_hardcoded + [
         (call_script, "script_clear_party_group", ":attached_party"),
     (try_end),
 ]),
-
-  #script_party_add_wounded_members_as_prisoners:
-  # INPUT:
-  # param1: Party-id to add the second party
-  # param2: Party-id which will be added to the first one.
-  # "$g_move_heroes" : controls if heroes will also be added.
-
-  ("party_add_wounded_members_as_prisoners",
-    [
-      (store_script_param_1, ":target_party"), #Target Party_id
-      (store_script_param_2, ":source_party"), #Source Party_id
-      (party_get_num_companion_stacks, ":num_stacks", ":source_party"),
-      (try_for_range, ":stack_no", 0, ":num_stacks"),
+#script_party_add_wounded_members_as_prisoners:
+# INPUT:
+# param1: Party-id to add the second party
+# param2: Party-id which will be added to the first one.
+# "$g_move_heroes" : controls if heroes will also be added.
+("party_add_wounded_members_as_prisoners",[
+    (store_script_param_1, ":target_party"), #Target Party_id
+    (store_script_param_2, ":source_party"), #Source Party_id
+    (party_get_num_companion_stacks, ":num_stacks", ":source_party"),
+    (try_for_range, ":stack_no", 0, ":num_stacks"),
         (party_stack_get_num_wounded, ":num_wounded", ":source_party", ":stack_no"),
         (ge, ":num_wounded", 1),
         (party_stack_get_troop_id, ":stack_troop", ":source_party", ":stack_no"),
@@ -6762,61 +6760,53 @@ scripts = scripts_hardcoded + [
         (eq, "$g_move_heroes", 1),
         #(party_prisoner_stack_get_size, ":stack_size",":source_party",":stack_no"),
         (party_add_prisoners, ":target_party", ":stack_troop", ":num_wounded"),
-      (try_end),
-  ]),
-
-  #script_get_nonempty_party_in_group:
-  # INPUT:
-  # param1: Party-id of the root of the group.
-  # OUTPUT: reg0: nonempy party-id
-
-  ("get_nonempty_party_in_group",
-    [
-      (store_script_param_1, ":party_no"),
-      (party_get_num_companion_stacks, ":num_companion_stacks", ":party_no"),
-      (try_begin),
+    (try_end),
+]),
+#script_get_nonempty_party_in_group:
+# INPUT:
+# param1: Party-id of the root of the group.
+# OUTPUT: reg0: nonempy party-id
+("get_nonempty_party_in_group",[
+    (store_script_param_1, ":party_no"),
+    (party_get_num_companion_stacks, ":num_companion_stacks", ":party_no"),
+    (try_begin),
         (gt, ":num_companion_stacks", 0),
         (assign, reg0, ":party_no"),
-      (else_try),
+    (else_try),
         (assign, reg0, -1),
-
         (party_get_num_attached_parties, ":num_attached_parties", ":party_no"),
         (try_for_range, ":attached_party_rank", 0, ":num_attached_parties"),
-          (lt, reg0, 0),
-          (party_get_attached_party_with_rank, ":attached_party", ":party_no", ":attached_party_rank"),
-          (call_script, "script_get_nonempty_party_in_group", ":attached_party"),
+            (lt, reg0, 0),
+            (party_get_attached_party_with_rank, ":attached_party", ":party_no", ":attached_party_rank"),
+            (call_script, "script_get_nonempty_party_in_group", ":attached_party"),
         (try_end),
-      (try_end),
-  ]),
+    (try_end),
+]),
+#script_collect_prisoners_from_empty_parties:
+# INPUT:
+# param1: Party-id of the root of the group.
+# param2: Party to collect prisoners in.
+# make sure collection party is cleared before calling this.
+("collect_prisoners_from_empty_parties",[
+    (store_script_param_1, ":party_no"),
+    (store_script_param_2, ":collection_party"),
 
-  #script_collect_prisoners_from_empty_parties:
-  # INPUT:
-  # param1: Party-id of the root of the group.
-  # param2: Party to collect prisoners in.
-  # make sure collection party is cleared before calling this.
-
-  ("collect_prisoners_from_empty_parties",
-    [
-      (store_script_param_1, ":party_no"),
-      (store_script_param_2, ":collection_party"),
-
-      (party_get_num_companions, ":num_companions", ":party_no"),
-      (try_begin),
+    (party_get_num_companions, ":num_companions", ":party_no"),
+    (try_begin),
         (eq, ":num_companions", 0), #party is empty (has no companions). Collect its prisoners.
         (party_get_num_prisoner_stacks, ":num_stacks",":party_no"),
         (try_for_range, ":stack_no", 0, ":num_stacks"),
-          (party_prisoner_stack_get_troop_id, ":stack_troop", ":party_no", ":stack_no"),
-          (troop_is_hero, ":stack_troop"),
-          (party_add_members, ":collection_party", ":stack_troop", 1),
+            (party_prisoner_stack_get_troop_id, ":stack_troop", ":party_no", ":stack_no"),
+            (troop_is_hero, ":stack_troop"),
+            (party_add_members, ":collection_party", ":stack_troop", 1),
         (try_end),
-      (try_end),
-      (party_get_num_attached_parties, ":num_attached_parties", ":party_no"),
-      (try_for_range, ":attached_party_rank", 0, ":num_attached_parties"),
+    (try_end),
+    (party_get_num_attached_parties, ":num_attached_parties", ":party_no"),
+    (try_for_range, ":attached_party_rank", 0, ":num_attached_parties"),
         (party_get_attached_party_with_rank, ":attached_party", ":party_no", ":attached_party_rank"),
         (call_script, "script_collect_prisoners_from_empty_parties", ":attached_party", ":collection_party"),
-      (try_end),
-  ]),
-
+    (try_end),
+]),
 #script_change_party_morale:
 # INPUT: party_no, morale_gained
 # OUTPUT: none
@@ -6838,7 +6828,6 @@ scripts = scripts_hardcoded + [
         (store_sub, reg1, ":new_morale", ":cur_morale"),
     (try_end),
 ]),
-
 # script_change_player_party_morale
 # Input: arg1 = morale difference
 # Output: none
@@ -8029,7 +8018,6 @@ scripts = scripts_hardcoded + [
         (val_add, reg0, ":stack_size"),
     (try_end),
 ]),
-
 #script_party_count_fit_for_battle:
 # Returns the number of unwounded companions in a party
 # INPUT:
@@ -8056,7 +8044,6 @@ scripts = scripts_hardcoded + [
         (val_add, reg0, ":num_fit"),
     (try_end),
 ]),
-
 #script_party_count_members_with_full_health
 # Returns the number of unwounded regulars, and heroes other than player with 100% hitpoints in a party
 # INPUT:
@@ -8086,7 +8073,6 @@ scripts = scripts_hardcoded + [
         (val_add, reg0, ":num_fit"),
     (try_end),
 ]),
-
 # script_inflict_casualties_to_party:
 # derived from script_simulate_battle_with_parties, but not dependent on a second party for damage levels (casualties are normalized to party's own strength)
 # Input: party
@@ -8112,21 +8098,18 @@ scripts = scripts_hardcoded + [
         (str_clear, s8),
     (try_end),
 ]),
-
-  #script_move_members_with_ratio:
-  # INPUT:
-  # param1: Source Party-id
-  # param2: Target Party-id
-  # pin_number = ratio of members to move, multiplied by 1000
-
-  #OUTPUT:
-  # This script doesn't return a value but moves some of the members of source party to target party according to the given ratio.
-  ("move_members_with_ratio",
-    [
-      (store_script_param_1, ":source_party"), #Source Party_id
-      (store_script_param_2, ":target_party"), #Target Party_id
-      (party_get_num_prisoner_stacks, ":num_stacks",":source_party"),
-      (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+#script_move_members_with_ratio:
+# INPUT:
+# param1: Source Party-id
+# param2: Target Party-id
+# pin_number = ratio of members to move, multiplied by 1000
+#OUTPUT:
+# This script doesn't return a value but moves some of the members of source party to target party according to the given ratio.
+("move_members_with_ratio",[
+    (store_script_param_1, ":source_party"), #Source Party_id
+    (store_script_param_2, ":target_party"), #Target Party_id
+    (party_get_num_prisoner_stacks, ":num_stacks",":source_party"),
+    (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
         (party_prisoner_stack_get_troop_id,    ":stack_troop",":source_party",":stack_no"),
         (party_prisoner_stack_get_size,   ":stack_size",":source_party",":stack_no"),
         (store_mul, ":number_to_move",":stack_size","$pin_number"),
@@ -8134,9 +8117,9 @@ scripts = scripts_hardcoded + [
         (party_remove_prisoners, ":source_party", ":stack_troop", ":number_to_move"),
         (assign, ":number_moved", reg0),
         (party_add_prisoners, ":target_party", ":stack_troop", ":number_moved"),
-      (try_end),
-      (party_get_num_companion_stacks, ":num_stacks",":source_party"),
-      (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
+    (try_end),
+    (party_get_num_companion_stacks, ":num_stacks",":source_party"),
+    (try_for_range_backwards, ":stack_no", 0, ":num_stacks"),
         (party_stack_get_troop_id,    ":stack_troop",":source_party",":stack_no"),
         (party_stack_get_size,   ":stack_size",":source_party",":stack_no"),
         (store_mul, ":number_to_move",":stack_size","$pin_number"),
@@ -8144,14 +8127,12 @@ scripts = scripts_hardcoded + [
         (party_remove_members, ":source_party", ":stack_troop", ":number_to_move"),
         (assign, ":number_moved", reg0),
         (party_add_members, ":target_party", ":stack_troop", ":number_moved"),
-      (try_end),
-  ]),
-
-  # script_count_parties_of_faction_and_party_type:
-  # counts number of active parties with a template and faction.
-  # Input: arg1 = faction_no, arg2 = party_type
-  # Output: reg0 = count
-
+    (try_end),
+]),
+# script_count_parties_of_faction_and_party_type:
+# counts number of active parties with a template and faction.
+# Input: arg1 = faction_no, arg2 = party_type
+# Output: reg0 = count
 ("count_parties_of_faction_and_party_type", [
     (store_script_param_1, ":faction_no"),
     (store_script_param_2, ":party_type"),
@@ -8165,7 +8146,6 @@ scripts = scripts_hardcoded + [
         (val_add, reg0, 1),
     (try_end),
 ]),
-
 # script_faction_get_number_of_armies
 # Input: arg1 = faction_no
 # Output: reg0 = number_of_armies
@@ -32707,33 +32687,35 @@ scripts = scripts_hardcoded + [
     (eq, ":continue", 1),
 ]),
 
-  # script_cf_party_remove_random_regular_troop
-  # Input: arg1 = party_no
-  # Output: troop_id that has been removed (can fail)
-  ("cf_party_remove_random_regular_troop",
-    [(store_script_param_1, ":party_no"),
-     (party_get_num_companion_stacks, ":num_stacks", ":party_no"),
-     (assign, ":num_troops", 0),
-     (try_for_range, ":i_stack", 0, ":num_stacks"),
-       (party_stack_get_troop_id, ":stack_troop", ":party_no", ":i_stack"),
-       (neg|troop_is_hero, ":stack_troop"),
-       (party_stack_get_size, ":stack_size", ":party_no", ":i_stack"),
-       (val_add, ":num_troops", ":stack_size"),
-     (try_end),
-     (assign, reg0, -1),
-     (gt, ":num_troops", 0),
-     (store_random_in_range, ":random_troop", 0, ":num_troops"),
-     (try_for_range, ":i_stack", 0, ":num_stacks"),
-       (party_stack_get_troop_id, ":stack_troop", ":party_no", ":i_stack"),
-       (neg|troop_is_hero, ":stack_troop"),
-       (party_stack_get_size, ":stack_size", ":party_no", ":i_stack"),
-       (val_sub, ":random_troop", ":stack_size"),
-       (lt, ":random_troop", 0),
-       (assign, ":num_stacks", 0), #break
-       (party_remove_members, ":party_no", ":stack_troop", 1),
-       (assign, reg0, ":stack_troop"),
-     (try_end),
-     ]),
+# script_cf_party_remove_random_regular_troop
+# Input: arg1 = party_no
+# Output: troop_id that has been removed (can fail)
+("cf_party_remove_random_regular_troop",[
+    (store_script_param_1, ":party_no"),
+    (party_get_num_companion_stacks, ":num_stacks", ":party_no"),
+    (assign, ":num_troops", 0),
+    (try_for_range, ":i_stack", 0, ":num_stacks"),
+        (party_stack_get_troop_id, ":stack_troop", ":party_no", ":i_stack"),
+        (gt, ":stack_troop", 0),
+        (neg|troop_is_hero, ":stack_troop"),
+        (party_stack_get_size, ":stack_size", ":party_no", ":i_stack"),
+        (val_add, ":num_troops", ":stack_size"),
+    (try_end),
+    (assign, reg0, -1),
+    (gt, ":num_troops", 0),
+    (store_random_in_range, ":random_troop", 0, ":num_troops"),
+    (try_for_range, ":i_stack", 0, ":num_stacks"),
+        (party_stack_get_troop_id, ":stack_troop", ":party_no", ":i_stack"),
+        (gt, ":stack_troop", 0),
+        (neg|troop_is_hero, ":stack_troop"),
+        (party_stack_get_size, ":stack_size", ":party_no", ":i_stack"),
+        (val_sub, ":random_troop", ":stack_size"),
+        (lt, ":random_troop", 0),
+        (assign, ":num_stacks", 0), #break
+        (party_remove_members, ":party_no", ":stack_troop", 1),
+        (assign, reg0, ":stack_troop"),
+    (try_end),
+]),
 
 # script_place_player_banner_near_inventory
 # Input: none
@@ -70467,7 +70449,6 @@ scripts = scripts_hardcoded + [
         (party_set_flags, ":curr_port", pf_no_label, 0),
         (party_set_faction, ":curr_port", ":cur_faction"),
     (try_end),
-    (party_set_flags, "p_landing_point", pf_no_label, 0),
 
     # new for VC-1644
     (assign, "$cattle_in_ship", 0),
@@ -90687,7 +90668,7 @@ scripts = scripts_hardcoded + [
         (try_end),
 
         # spawn player
-        (assign, ":end", "p_sartemis"),#also include minor towns
+        (assign, ":end", "p_hanging_gardens"),#also include minor towns
         (assign, "$current_town", "p_town_1"),
         (try_for_range, ":walled_center", walled_centers_begin, ":end"),
             (party_slot_eq, ":walled_center", slot_center_culture, "$background_answer_4"),
@@ -93738,7 +93719,7 @@ scripts = scripts_hardcoded + [
             (assign, ":block", 1), # no otherwise
         (try_end),
     (else_try),
-        (eq, ":scene", "scn_sartemis"),
+        (eq, ":scene", "scn_hanging_gardens"),
         (neg|quest_slot_ge, "qst_gardens_of_pleasure", slot_quest_current_state, 7),
         (assign, ":block", 1),
     (else_try),

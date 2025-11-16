@@ -35628,7 +35628,7 @@ game_menus = [
   ]),
 ]),
 
-("sartemis",0,
+("hanging_gardens",0,
   "Behind the ruins of the old city of Babylon you spot a large palace, overgrown with all kinds of plants. This must be the legendary hanging gardens of Semiramis.",
   "none",[
     (set_background_mesh, "mesh_pic_hanging_gardens"),
@@ -35636,7 +35636,7 @@ game_menus = [
   ("answere_1",[
   ],"Explore.",[
     #(party_get_slot, ":scene_to_use", "$g_encountered_party", slot_town_center),
-    (modify_visitors_at_site, "scn_sartemis"),
+    (modify_visitors_at_site, "scn_hanging_gardens"),
     (reset_visitors),
     (set_jump_mission, "mt_visit_sartemis"),
     (try_begin),
@@ -35691,7 +35691,7 @@ game_menus = [
     (else_try),
       (set_visitor, 0, "trp_player"),
     (try_end),
-    (jump_to_scene, "scn_sartemis"),
+    (jump_to_scene, "scn_hanging_gardens"),
     (change_screen_mission),
   ]),
   ("answere_2",[
@@ -51902,7 +51902,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
          (eq, "$temp_3",2),
          (quest_set_slot, "qst_thunder", slot_quest_current_state, 9),
          (display_message, "str_quest_updated"),
-         (add_quest_note_from_sreg, "qst_thunder", 7, "@You have slain the great Thundergod and destroyed a Parthian spy cell in Alexandria. You should report Nero.", 0),
+         (str_store_troop_name_link, s10, "trp_kingdom_7_lord"),
+         (add_quest_note_from_sreg, "qst_thunder", 7, "@You have slain the great Thundergod and destroyed a Parthian spy cell in Alexandria. You should report back to {s10}.", 0),
          (change_screen_map),
        (try_end),
         ]),

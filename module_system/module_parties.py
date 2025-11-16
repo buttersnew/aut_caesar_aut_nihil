@@ -511,12 +511,12 @@ parties = [
 ("underworld", "Claudia's House", icon_roman_house|pf_disabled|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-102.85, -22.08), [], 100),
 
 ("forest", "Dark Forest", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-222.84, 136.61), [], 180),
-("german_temple_1", "Baduhenna sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-158.96, 130.59), [], 60),
-("german_temple_2", "Dunraz sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-123.74, 104.27), [], 150),
-("german_temple_3", "Frijo sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-103.27, 126.48), [], 40),
+("german_temple_1", "Baduhenna Sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-158.96, 130.59), [], 60),
+("german_temple_2", "Dunraz Sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-123.74, 104.27), [], 150),
+("german_temple_3", "Frijo Sanctuary", icon_farmstead|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-103.27, 126.48), [], 40),
 ("slavic_holy_side_1", "Sleza", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-90.66, 115.06), [], 136),
-("stone_henge", "Andraste sanctuary", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-216.61, 124.92), [], 100),
-("stone_henge_2", "Maponos sanctuary", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-234.9, 133.15), [], 100),
+("stone_henge", "Andraste Sanctuary", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-216.61, 124.92), [], 100),
+("stone_henge_2", "Maponos Sanctuary", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-234.9, 133.15), [], 100),
 ("dacian_holy_side_1", "Temple of Gebeleizis", icon_map_temple|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-25.89, 75.08), [], 92),
 ("dacian_holy_side_2", "Temple of Zalmoxis", icon_map_temple|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-36.56, 90.24), [], 212),
 ("sarmatian_holy_side_1", "Altar of Goitosuros", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-3.24, 113.4), [], 180),
@@ -531,7 +531,7 @@ parties = [
 ("african_holy_side_3", "Lion-Temple of Apedemak", icon_map_temple|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (105.57, -181.18), [], 152),
 
 ("end_temple", "Sandlerland", icon_village_barbarian|pf_village|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (4.8, -39.599998), []),
-("pyramids", "Pyramids", icon_wonder_pyramids_egy|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (45.57, -87.08), []),
+("pyramids", "Pyramids of Giza", icon_wonder_pyramids_egy|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (45.57, -87.08), []),
 ("olympia", "Olympia", icon_wonder_parthenon|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-42.06, -15.62), []),
 ("delphi", "Delphi", icon_map_temple|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-39.56, -5.29), [],180),
 
@@ -582,7 +582,7 @@ parties = [
 ("caves_of_bacchus", "Caves of Dionysus", icon_map_bandit_lair|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-92.95, 20.74), [], 269),
 ("sacred_grove", "Old grave", icon_map_stone_circle|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-240.74, -15.01), [], 269),
 ("sacred_grove_2", "Sacred forest", icon_forest|pf_village|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-137.03, 107.23), [], 180),
-("royal_tombs", "Royal Macedonian tombs", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-43.48, 13.68), [], 180),
+("royal_tombs", "Royal Macedonian Tombs at Aigai", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-43.48, 13.68), [], 180),
 ("mount_olymp", "Mons Olympus", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-38.38, 7.96), [], 180),
 
 ("old_mine", "Old mine", icon_forest|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-275.72, 45.67), [(trp_mercenary_swordsman, 50, 0),(trp_hispanic_infantry, 50, 0), (trp_hispanic_heavy_infantry, 50, 0)], 180),
@@ -599,7 +599,7 @@ parties = [
 ("georgian_town_1", "Seraca", icon_village_barbarian|pf_town, no_menu, pt_none, fac_georgians, 0, ai_bhvr_hold, 0,  (124.38,80.7), []),
 ("dahae_town_1", "Kath", icon_village_barbarian|pf_town, no_menu, pt_none, fac_dahae, 0, ai_bhvr_hold, 0,  (233,87), []),
 
-("sartemis", "Hanging Gardens of Babylon", icon_sartemis_icon|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (164.16, -24.18), [], 90),
+("hanging_gardens", "Hanging Gardens of Babylon", icon_sartemis_icon|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (164.16, -24.18), [], 90),
 
 ("island", "Cythnus", icon_map_island|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-16.55, -17.71), [], 90),
 

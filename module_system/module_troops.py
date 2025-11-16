@@ -2860,7 +2860,7 @@ itm_legion_hamata_cape_7,itm_legion_hamata_2,itm_1_imp_gallic_i_ac_feather,itm_1
 attrib_level_26, wp(170), knows_level_26, roman_face1, roman_face2 ],
 #12
 ["praetoriani_milites_exp", "Miles Praetoriani", "Milites Praetoriani", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
-[itm_scutum_praetorian,itm_scutum_praetorian_2,itm_graves_simple,itm_roman_gladius_3,itm_pilum,itm_pilum_2,itm_pilum_3,
+[itm_scutum_praetorian,itm_scutum_praetorian_2,itm_legio_armored_caligea,itm_roman_gladius_3,itm_pilum,itm_pilum_2,itm_pilum_3,
 itm_praetorian_segmentata_1,itm_praetorian_segmentata_2,itm_praetorian_segmentata_3,itm_praetorian_helm_1,itm_praetorian_helm_2],
 attrib_level_29, wp(190), knows_level_29, roman_face1, roman_face2 ],
 
@@ -2871,57 +2871,57 @@ itm_legion_segmentata_7,itm_1_imp_gallic_c,itm_1_imp_gallic_f_b, itm_legion_segm
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #2
 ["legio_iii_augusta_vet", "Evocatus Legionis (III Augusta)", "Evocati Legionis (III Augusta)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_graves_simple,itm_scutum_legio_iii,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_legio_armored_caligea,itm_scutum_legio_iii,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_segmentata_8,itm_1_imp_gallic_f_b_feather,itm_1_imp_gallic_f_n, itm_legion_segmentata_manica_1,itm_legion_segmentata_manica_5],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #3
 ["legio_v_alaudae_vet", "Evocatus Legionis (V Alaudae)", "Evocati Legionis (V Alaudae)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_graves_simple,itm_scutum_legio_v,itm_legion_segmentata_cape_6,
+[itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_legio_armored_caligea,itm_scutum_legio_v,itm_legion_segmentata_cape_6,
 itm_legion_segmentata_6,itm_1_imp_gallic_f_s,itm_1_imp_gallic_g, itm_legion_segmentata_manica_4,itm_legion_segmentata_manica_8],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #4
 ["legio_xxi_rapax_vet", "Evocatus Legionis (XXI Rapax)", "Evocati Legionis (XXI Rapax)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_graves_simple,itm_scutum_legio_xxi,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_legio_armored_caligea,itm_scutum_legio_xxi,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_segmentata_cape_5,itm_1_imp_gallic_h,itm_1_imp_gallic_i_ac, itm_legion_segmentata_manica_3,itm_legion_segmentata_manica_7],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #5
 ["legio_xx_valeria_victrix_vet", "Evocatus Legionis (XX Valeria Victrix)", "Evocati Legionis (XX Valeria Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_13,itm_scutum_6,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legio_armored_caligea,itm_scutum_13,itm_scutum_6,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_segmentata_cape_1,itm_legion_squamata_14,itm_1_imp_gallic_i_ac_feather,itm_1_imp_gallic_i_ac_feather_plume, itm_legion_segmentata_manica_2,itm_legion_segmentata_manica_6],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #6
 ["legio_vi_victrix_vet", "Evocatus Legionis (VI Victrix)", "Evocati Legionis (VI Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_graves_simple,itm_scutum_legio_vi_vict,itm_scutum_9,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_legio_armored_caligea,itm_scutum_legio_vi_vict,itm_scutum_9,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_squamata_11,itm_1_imp_gallic_i,itm_1_imp_gallic_i_feather, itm_legion_segmentata_manica_1,itm_legion_segmentata_manica_5],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #7
 ["legio_xi_claudia_vet", "Evocatus Legionis (XI Claudia)", "Evocati Legionis (XI Claudia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_scutum_legio_xi,itm_graves_simple,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_1_imp_gallic_i_ac_plume,itm_1_imp_gallic_i_feather,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_scutum_legio_xi,itm_legio_armored_caligea,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_1_imp_gallic_i_ac_plume,itm_1_imp_gallic_i_feather,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_segmentata_cape_2],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #8
 ["legio_xiii_gemina_vet", "Evocatus Legionis (XIII Gemina)", "Evocati Legionis (XIII Gemina)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_graves_simple,itm_scutum_legio_xiii,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_legio_armored_caligea,itm_scutum_legio_xiii,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_squamata_10,itm_1_imp_gallic_i_plume,itm_1_imp_itallic_c, itm_legion_segmentata_manica_4,itm_legion_segmentata_manica_8],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #9
 ["legio_v_macedonia_vet", "Evocatus Legionis (V Macedonia)", "Evocati Legionis (V Macedonia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_legio_v_mac,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legio_armored_caligea,itm_scutum_legio_v_mac,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_segmentata_cape_3,itm_1_imp_itallic_d,itm_1_imp_gallic_f_s, itm_legion_segmentata_manica_3,itm_legion_segmentata_manica_7],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #10
 ["legio_vi_ferrata_vet", "Evocatus Legionis (VI Ferrata)", "Evocati Legionis (VI Ferrata)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_scutum_legio_vi_ferr,itm_graves_simple,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_scutum_legio_vi_ferr,itm_legio_armored_caligea,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_legion_segmentata_cape_4,itm_1_imp_itallic_g,itm_1_imp_gallic_f_n, itm_legion_segmentata_manica_2,itm_legion_segmentata_manica_6],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #11
 ["legio_x_fretensis_vet", "Evocatus Legionis (X Fretensis)", "Evocati Legionis (X Fretensis)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_graves_simple,itm_scutum_legio_x,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
+[itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_legio_armored_caligea,itm_scutum_legio_x,itm_legion_segmentata_cape_6,itm_legion_segmentata_6,
 itm_1_imp_gallic_i_ac_feather,itm_1_imp_gallic_c, itm_legion_segmentata_manica_1,itm_legion_segmentata_manica_5],
 attrib_level_29, wp(200), knows_level_29, roman_face1, roman_face2 ],
 #12
 ["praetoriani_milites_vet", "Evocatus Praetoriani", "Evocati Praetoriani", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet|tf_guarantee_gloves, no_scene, reserved, fac_culture_roman,
-[itm_scutum_praetorian,itm_scutum_praetorian_2,itm_graves_simple,itm_roman_gladius_3,itm_pilum,itm_pilum_2,itm_pilum_3,
+[itm_scutum_praetorian,itm_scutum_praetorian_2,itm_centurio_west_graves,itm_roman_gladius_3,itm_pilum,itm_pilum_2,itm_pilum_3,
 itm_praetorian_segmentata_1,itm_praetorian_segmentata_2,itm_praetorian_segmentata_3,itm_praetorian_helm_1,itm_gauntles_1,itm_praetorian_helm_2],
 attrib_level_31, wp(220), knows_level_31, roman_face1, roman_face2 ],
 ##############

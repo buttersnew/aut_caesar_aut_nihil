@@ -995,7 +995,7 @@ dialogs =[
 "poppaea_toasts", []],
 
 [anyone|other(trp_kingdom_7_lady_1), "poppaea_toasts", [],
-"To the Emperor, who graces this ancient land with new, living divinity.", "vitellius_toasts", [
+"To Caesar, who graces this ancient land with new, living divinity.", "vitellius_toasts", [
   (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
 ]],
 
@@ -1012,7 +1012,7 @@ dialogs =[
 ]],
 
 [anyone|other(trp_courtier_crispinilla), "crispinilla_toasts", [],
-"To the passions of our Emperor, which inspire us all!",
+"To the passions of our Princeps, which inspire us all!",
 "player_toasts", [
   (call_script, "script_set_conversation_troop", "trp_courtier_crispinilla"),
 ]],
@@ -1128,7 +1128,7 @@ dialogs =[
 ]],
 
 [anyone|plyr, "player_drinking_choice", [],
-"I would be honored to drink with my Emperor.",
+"I would be honored to drink with my Caesar.",
 "nero_pleased_by_acceptance", []],
 
 [anyone|plyr, "player_drinking_choice", [],
@@ -1140,7 +1140,7 @@ dialogs =[
 "drinking_game_hub", []],
 
 [anyone, "nero_forces_player", [],
-"Duties? Nonsense! Your duty right now is to your Emperor's good cheer! A man who cannot drink with his friends is a man who cannot be trusted. You will drink. That is an order.",
+"Duties? Nonsense! Your duty right now is to your Caesar's good cheer! A man who cannot drink with his friends is a man who cannot be trusted. You will drink. That is an order.",
 "drinking_game_hub", [
     (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -2),
 ]],
@@ -12545,7 +12545,7 @@ dialogs =[
 
 [trp_persian_village_walker,"start",[
   (store_current_scene, ":scene"),
-  (eq, ":scene", "scn_sartemis"),
+  (eq, ":scene", "scn_hanging_gardens"),
 ],
 "Greetings! I was on my way back to the village of Babylon and wanted to take a look at this beautiful place. Do you know, that ghosts live inside?", "sartemis_peasant_talk",
 []],
@@ -47965,47 +47965,43 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 
 ]],
 
-[anyone,"lord_start",[(party_slot_eq, "$g_encountered_party",slot_town_lord, "$g_talk_troop"),#we are talking to Town's Lord.
-                   (ge,"$g_talk_troop_faction_relation",0),
-                   (neq, "$g_ransom_offer_rejected", 1),
-                   (lt, "$g_encountered_party_2", 0), #town is not under siege
-                   (hero_can_join_as_prisoner, "$g_encountered_party"),
-                   (store_random_in_range, ":random_no", 0, 100),
-                   (lt, ":random_no", 10),#start this conversation with a 10% chance
-                   (party_get_num_prisoner_stacks,":num_prisoner_stacks","p_main_party"),
-                   (assign, "$prisoner_lord_to_buy", -1),
-                   (try_for_range,":i_pris_stack",0,":num_prisoner_stacks"),
-                     (party_prisoner_stack_get_troop_id, ":t_id", "p_main_party", ":i_pris_stack"),
-                     (troop_slot_eq, ":t_id", slot_troop_occupation, slto_kingdom_hero),
-                     (store_troop_faction, ":fac", ":t_id"),
-                     (store_relation, ":rel", ":fac", "$g_talk_troop_faction"),
-                     (lt,  ":rel", 0),
-                     (assign, "$prisoner_lord_to_buy", ":t_id"),
-                   (try_end),
-                   (gt, "$prisoner_lord_to_buy", 0), #we have a prisoner lord.
-                   (assign, ":continue", 1),
-                   (try_begin),
-                     (check_quest_active, "qst_capture_enemy_hero"),
-                     (store_troop_faction, ":prisoner_faction", "$prisoner_lord_to_buy"),
-                     (quest_slot_eq, "qst_capture_enemy_hero", slot_quest_target_faction, ":prisoner_faction"),
-                     (assign, ":continue", 0),
-                   (try_end),
-                   (eq, ":continue", 1),
-                   (str_store_troop_name, s3, "$prisoner_lord_to_buy"),
-                   (assign, reg5, "$prisoner_lord_to_buy"),
-                   (call_script, "script_calculate_ransom_amount_for_troop", "$prisoner_lord_to_buy"),
-                   (assign, reg6, reg0),
-                   (val_div, reg6, 2),
-                   (assign, "$temp", reg6),
-##diplomacy start+ use the correct pronoun for the enemy lord
-                   (call_script, "script_dplmc_store_troop_is_female",  "$prisoner_lord_to_buy"),
-],
-#"he" to "{reg0?she:he}", etc.
-"I heard that you have captured our enemy {s3} and {reg0?she:he} is with you at the moment.\
-I can pay you {reg6} denarii for {reg0?her:him} if you want to get rid of {reg0?her:him}.\
-You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, but there is no telling how long that will take, eh?\
-", "lord_buy_prisoner",[]],
-##diplomacy end+
+[anyone,"lord_start",[
+  (party_slot_eq, "$g_encountered_party",slot_town_lord, "$g_talk_troop"),#we are talking to Town's Lord.
+  (ge,"$g_talk_troop_faction_relation",0),
+  (neq, "$g_ransom_offer_rejected", 1),
+  (lt, "$g_encountered_party_2", 0), #town is not under siege
+  (hero_can_join_as_prisoner, "$g_encountered_party"),
+  (store_random_in_range, ":random_no", 0, 100),
+  (lt, ":random_no", 10),#start this conversation with a 10% chance
+  (party_get_num_prisoner_stacks,":num_prisoner_stacks","p_main_party"),
+  (assign, "$prisoner_lord_to_buy", -1),
+  (try_for_range,":i_pris_stack",0,":num_prisoner_stacks"),
+    (party_prisoner_stack_get_troop_id, ":t_id", "p_main_party", ":i_pris_stack"),
+    (gt, ":t_id", 0),
+    (troop_slot_eq, ":t_id", slot_troop_occupation, slto_kingdom_hero),
+    (store_troop_faction, ":fac", ":t_id"),
+    (store_relation, ":rel", ":fac", "$g_talk_troop_faction"),
+    (lt,  ":rel", 0),
+    (assign, "$prisoner_lord_to_buy", ":t_id"),
+  (try_end),
+  (gt, "$prisoner_lord_to_buy", 0), #we have a prisoner lord.
+  (assign, ":continue", 1),
+  (try_begin),
+    (check_quest_active, "qst_capture_enemy_hero"),
+    (store_troop_faction, ":prisoner_faction", "$prisoner_lord_to_buy"),
+    (quest_slot_eq, "qst_capture_enemy_hero", slot_quest_target_faction, ":prisoner_faction"),
+    (assign, ":continue", 0),
+  (try_end),
+  (eq, ":continue", 1),
+  (str_store_troop_name, s3, "$prisoner_lord_to_buy"),
+  (assign, reg5, "$prisoner_lord_to_buy"),
+  (call_script, "script_calculate_ransom_amount_for_troop", "$prisoner_lord_to_buy"),
+  (assign, reg6, reg0),
+  (val_div, reg6, 2),
+  (assign, "$temp", reg6),
+  (call_script, "script_dplmc_store_troop_is_female",  "$prisoner_lord_to_buy"),
+],"I heard that you have captured our enemy {s3} and {reg0?she:he} is with you at the moment. I can pay you {reg6} denarii for {reg0?her:him} if you want to get rid of {reg0?her:him}. You can wait for {reg0?her:his} family to pay {reg0?her:his} ransom of course, but there is no telling how long that will take, eh?",
+"lord_buy_prisoner",[]],
 
 [anyone|plyr,"lord_buy_prisoner",[],
 "I accept your offer. I'll leave {s3} to you for {reg6} denarii.", "lord_buy_prisoner_accept",[]],
@@ -58404,24 +58400,25 @@ You are free, {playername}.", "lord_ask_leave_service_end",
 [anyone,"lord_active_mission_1",[], "Yes, have you made any progress on it?", "lord_active_mission_2",[]],
 
 [anyone|plyr,"lord_active_mission_2",[#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-                         (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
-                         (check_quest_active,"qst_capture_prisoners"),
-                         (quest_slot_eq, "qst_capture_prisoners", slot_quest_giver_troop, "$g_talk_troop"),
-                         (quest_get_slot, ":quest_target_amount", "qst_capture_prisoners", slot_quest_target_amount),
-                         (quest_get_slot, ":quest_target_troop", "qst_capture_prisoners", slot_quest_target_troop),
-                         (party_count_prisoners_of_type, ":count_prisoners", "p_main_party", ":quest_target_troop"),
-                         (ge, ":count_prisoners", ":quest_target_amount"),
-                         (assign, reg1, ":quest_target_amount"),
-                         (str_store_troop_name_plural, s1, ":quest_target_troop")],
-"Indeed. I brought you {reg1} {s1} as prisoners.", "lord_generic_mission_thank",
-[(quest_get_slot, ":quest_target_amount", "qst_capture_prisoners", slot_quest_target_amount),
- (quest_get_slot, ":quest_target_troop", "qst_capture_prisoners", slot_quest_target_troop),
- (party_remove_prisoners, "p_main_party", ":quest_target_troop", ":quest_target_amount"),
- (party_add_prisoners, "$g_encountered_party", ":quest_target_troop", ":quest_target_amount"),
- (call_script, "script_finish_quest", "qst_capture_prisoners", 100)]],
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+  (check_quest_active,"qst_capture_prisoners"),
+  (quest_slot_eq, "qst_capture_prisoners", slot_quest_giver_troop, "$g_talk_troop"),
+  (quest_get_slot, ":quest_target_amount", "qst_capture_prisoners", slot_quest_target_amount),
+  (quest_get_slot, ":quest_target_troop", "qst_capture_prisoners", slot_quest_target_troop),
+  (party_count_prisoners_of_type, ":count_prisoners", "p_main_party", ":quest_target_troop"),
+  (ge, ":count_prisoners", ":quest_target_amount"),
+  (assign, reg1, ":quest_target_amount"),
+  (str_store_troop_name_plural, s1, ":quest_target_troop")
+],"Indeed. I brought you {reg1} {s1} as prisoners.",
+"lord_generic_mission_thank",[
+  (quest_get_slot, ":quest_target_amount", "qst_capture_prisoners", slot_quest_target_amount),
+  (quest_get_slot, ":quest_target_troop", "qst_capture_prisoners", slot_quest_target_troop),
+  (party_remove_prisoners, "p_main_party", ":quest_target_troop", ":quest_target_amount"),
+  (party_add_prisoners, "$g_encountered_party", ":quest_target_troop", ":quest_target_amount"),
+  (call_script, "script_finish_quest", "qst_capture_prisoners", 100)
+]],
 
-[anyone|plyr,"lord_active_mission_2",
-[
+[anyone|plyr,"lord_active_mission_2",[
   #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   (store_partner_quest, ":lords_quest"),
@@ -58440,9 +58437,9 @@ You are free, {playername}.", "lord_ask_leave_service_end",
   (try_end),
   (eq, ":has_prisoner", 1),
   (str_store_faction_name, s13, ":quest_target_faction")
- ],
-"Oh, indeed. I've captured a lord from {s13} for you.", "capture_enemy_hero_thank",
-[]],
+],"Oh, indeed. I've captured a lord from {s13} for you.",
+"capture_enemy_hero_thank",[
+]],
 
 [anyone,"capture_enemy_hero_thank",[],
 "Many thanks, my friend. He will serve very well for a bargain. You've done a fine work here. Please accept these {reg5} denarii for your help.", "capture_enemy_hero_thank_2",
@@ -59446,20 +59443,28 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 ], "As you command, Divine Caesar.", "lord_tell_mission_eagle3",
 []],
 [anyone,"lord_tell_mission_eagle3",[
-], "Very well. Go and find this god's weakness.", "lord_pretalk",
-[
-(str_store_string, s2, "@A new mysterious god is gaining support in the East. Caesar ordered you to investigate this."),
-(call_script, "script_start_quest", "qst_thunder", "$g_talk_troop"),
-(quest_set_slot, "qst_thunder", slot_quest_thunder_dont_give_again, 1),
-(quest_set_slot, "qst_thunder", slot_quest_current_state, 1),
-(quest_set_slot, "qst_thunder", slot_quest_menu_1, "p_town_10"),
-(quest_set_slot, "qst_thunder", slot_quest_menu_2, "p_town_22"),
-(quest_set_slot, "qst_thunder", slot_quest_menu_3, "p_town_47"),
-(quest_set_slot, "qst_thunder", slot_quest_menu_4, "p_town_8"),
-(quest_set_slot, "qst_thunder", slot_quest_menu_5, "p_town_20"),
-(quest_set_slot, "qst_thunder", slot_quest_menu_6, "p_town_48"),
-(quest_set_slot, "qst_thunder", slot_quest_menu_7, "p_town_19"),
-(add_quest_note_from_sreg, "qst_thunder",  7, "@First task: Talk to inn keepers in eastern Roman cities (Thebae, Alexandria, Antiochia, Hierosolyma, Palmyra, Ancyra, Tarsus) to learn more about the new Parthian Thundergod.", 0),
+], "Very well. Go and find this god's weakness.", "lord_pretalk",[
+  (str_store_string, s2, "@A new mysterious god is gaining support in the East. Caesar ordered you to investigate this."),
+  (call_script, "script_start_quest", "qst_thunder", "$g_talk_troop"),
+  (quest_set_slot, "qst_thunder", slot_quest_thunder_dont_give_again, 1),
+  (quest_set_slot, "qst_thunder", slot_quest_current_state, 1),
+  (quest_set_slot, "qst_thunder", slot_quest_menu_1, "p_town_10"),
+  (quest_set_slot, "qst_thunder", slot_quest_menu_2, "p_town_22"),
+  (quest_set_slot, "qst_thunder", slot_quest_menu_3, "p_town_47"),
+  (quest_set_slot, "qst_thunder", slot_quest_menu_4, "p_town_8"),
+  (quest_set_slot, "qst_thunder", slot_quest_menu_5, "p_town_20"),
+  (quest_set_slot, "qst_thunder", slot_quest_menu_6, "p_town_48"),
+  (quest_set_slot, "qst_thunder", slot_quest_menu_7, "p_town_19"),
+
+  (str_store_party_name_link, s10, "p_town_10"),
+  (str_store_party_name_link, s11, "p_town_22"),
+  (str_store_party_name_link, s12, "p_town_47"),
+  (str_store_party_name_link, s13, "p_town_8"),
+  (str_store_party_name_link, s14, "p_town_20"),
+  (str_store_party_name_link, s15, "p_town_48"),
+  (str_store_party_name_link, s16, "p_town_19"),
+
+  (add_quest_note_from_sreg, "qst_thunder",  7, "@First task: Talk to inn keepers in Eastern Roman cities ({s10}, {s11}, {s12}, {s13}, {s14}, {s15} and {s16}) to learn more about the new Parthian Thundergod.", 0),
 
 ]],
 
@@ -65061,13 +65066,14 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   # (store_random_in_range, reg31, 0, 16),
   # (ge, ":persuasion", reg31),
   (str_store_troop_name, s25, ":lover"),
+  (str_store_troop_name_link, s13, ":lover"),
   (quest_set_slot, "qst_spy_on_spouse", slot_quest_object_troop, ":lover"),
   (quest_get_slot, ":troop", "qst_spy_on_spouse", slot_quest_giver_troop),
-  (str_store_troop_name, s39, ":troop"),
+  (str_store_troop_name_link, s39, ":troop"),
   (display_message, "str_quest_updated"),
-  (add_quest_note_from_sreg, "qst_spy_on_spouse", 3, "@Now you know her secret. Go and talk with {s39}", 0),
+  (add_quest_note_from_sreg, "qst_spy_on_spouse", 3, "@Now you know her secret. She has an affair with {s13}. Go and talk with {s39}", 0),
 ],
-"You are funny {playername}. Well. I will tell you. But you haven't heard it from me, okay? It is {s25}",
+"You are funny {playername}. Well. I will tell you. But you haven't heard it from me, okay? It is {s25}!",
 "lady_pretalk",[]],
 
 [anyone,"lady_spy_on_spouse5",[
@@ -65397,7 +65403,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 "lady_gossip_talk_2_select",[]],
 
 [anyone|plyr,"lady_gossip_talk_2_select",
-[], "Never mind.", "minstrel_pretalk",[]],
+[], "Never mind.", "lady_pretalk",[]],
 
 [anyone|plyr|repeat_for_troops,"lady_gossip_talk_2_select",[
   (store_repeat_object, "$temp"),
@@ -71150,7 +71156,16 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ], "If you are eager to learn more, you should try to talk to people in all the great cities he visited.", "tavernkeeper_pretalk",[
   (quest_set_slot, "qst_thunder", slot_quest_current_state, 2),
   (display_message, "str_quest_updated"),
-  (add_quest_note_from_sreg, "qst_thunder", 7, "@Find now the Parthian spy, who's been asking questions in taverns of Eastern Roman cities (Thebae, Alexandria, Antiochia, Hierosolyma, Palmyra, Ancyra, Tarsus).",0),
+
+  (str_store_party_name_link, s10, "p_town_10"),
+  (str_store_party_name_link, s11, "p_town_22"),
+  (str_store_party_name_link, s12, "p_town_47"),
+  (str_store_party_name_link, s13, "p_town_8"),
+  (str_store_party_name_link, s14, "p_town_20"),
+  (str_store_party_name_link, s15, "p_town_48"),
+  (str_store_party_name_link, s16, "p_town_19"),
+
+  (add_quest_note_from_sreg, "qst_thunder", 7, "@Find now the Parthian spy, who's been asking questions in taverns of Eastern Roman cities ({s10}, {s11}, {s12}, {s13}, {s14}, {s15} and {s16}).",0),
 ]],
 
 [anyone|plyr,"tavernkeeper_talk",[
@@ -84281,10 +84296,12 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (call_script, "script_cf_dplmc_troop_is_female", ":slave"),
     (store_sub, ":other_gender_slave", ":slave", female_slaves_begin),
     (val_add, ":other_gender_slave", slaves_begin),
+    (is_between, ":other_gender_slave", slaves_begin, slaves_end),
     (party_add_prisoners, "p_main_party", ":other_gender_slave", reg50),
   (else_try),
     (store_sub, ":other_gender_slave", ":slave", slaves_begin),
     (val_add, ":other_gender_slave", female_slaves_begin),
+    (is_between, ":other_gender_slave", slaves_begin, slaves_end),
     (party_add_prisoners, "p_main_party", ":other_gender_slave", reg50),
   (try_end),
 
@@ -84330,10 +84347,12 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (call_script, "script_cf_dplmc_troop_is_female", ":slave"),
     (store_sub, ":other_gendeer_slave", ":slave", female_slaves_begin),
     (val_add, ":other_gendeer_slave", slaves_begin),
+    (is_between, ":other_gendeer_slave", slaves_begin, slaves_end),
     (party_add_prisoners, "p_main_party", ":other_gendeer_slave", reg50),
   (else_try),
     (store_sub, ":other_gendeer_slave", ":slave", slaves_begin),
     (val_add, ":other_gendeer_slave", female_slaves_begin),
+    (is_between, ":other_gendeer_slave", slaves_begin, slaves_end),
     (party_add_prisoners, "p_main_party", ":other_gendeer_slave", reg50),
   (try_end),
 
@@ -84948,19 +84967,20 @@ I will need 500 denarii.", "bardo_sing2",[]],
 #Code credit to rubik's Custom Commander, with minor string changes.
 ## CC view regular's equipment
 [anyone|plyr,"regular_member_talk",[
-    (check_quest_active, "qst_capture_prisoners"),
-    (quest_slot_eq, "qst_capture_prisoners", slot_quest_target_troop, "$g_talk_troop"),
-    (quest_get_slot, ":quest_amount", "qst_capture_prisoners", slot_quest_target_amount),
-    (party_count_prisoners_of_type, ":prisoner_amount", "p_main_party", "$g_talk_troop"),
-    (lt, ":prisoner_amount", ":quest_amount"),
-    (troops_can_join_as_prisoner, 1),
-    # (call_script, "script_faction_get_adjective_to_s10", "$g_talk_troop_faction"),
- ], "Place yourself under arrest, traitor...", "close_window",[
-    (party_remove_members, "p_main_party", "$g_talk_troop", 1),
-    (call_script, "script_change_faction_troop_morale", "$g_talk_troop_faction", -5, 1),
-    (call_script, "script_change_troop_renown", "trp_player", -1),
-    (party_add_prisoners, "p_main_party", "$g_talk_troop", 1),
-  ]],
+  (check_quest_active, "qst_capture_prisoners"),
+  (quest_slot_eq, "qst_capture_prisoners", slot_quest_target_troop, "$g_talk_troop"),
+  (quest_get_slot, ":quest_amount", "qst_capture_prisoners", slot_quest_target_amount),
+  (party_count_prisoners_of_type, ":prisoner_amount", "p_main_party", "$g_talk_troop"),
+  (lt, ":prisoner_amount", ":quest_amount"),
+  (troops_can_join_as_prisoner, 1),
+  # (call_script, "script_faction_get_adjective_to_s10", "$g_talk_troop_faction"),
+], "Place yourself under arrest, traitor...",
+"close_window",[
+  (party_remove_members, "p_main_party", "$g_talk_troop", 1),
+  (call_script, "script_change_faction_troop_morale", "$g_talk_troop_faction", -5, 1),
+  (call_script, "script_change_troop_renown", "trp_player", -1),
+  (party_add_prisoners, "p_main_party", "$g_talk_troop", 1),
+]],
  ##diplomacy end+
 [anyone|plyr,"regular_member_talk",[
   (is_between, "$g_talk_troop", "trp_centurio_west", "trp_aux_cav"),
@@ -84968,55 +84988,53 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"What is your function in the army?", "officer_talk_duty",[]
 ],
 [anyone,"officer_talk_duty",[
- ],
-   "I have one of the officer ranks. Every disciplined army needs officers to maintain order and the change of command. I keep an eye on the soldiers and look that the camp is always clean. When issue an order I will order the men to carry it out.", "do_regular_member_view_char",[]
- ],
+],"I have one of the officer ranks. Every disciplined army needs officers to maintain order and the change of command. I keep an eye on the soldiers and look that the camp is always clean. When issue an order I will order the men to carry it out.",
+"do_regular_member_view_char",[
+]],
+
 [anyone|plyr,"regular_member_talk",[
   (is_between, "$g_talk_troop", "trp_aquilifer_xxii", "trp_vexilarius_xxii"),
+],"What is your function in the army?",
+"banner_talk1",[]],
 
- ],
-   "What is your function in the army?", "banner_talk1",[]
- ],
 [anyone,"banner_talk1",[
- ],
-   "I carry the Aquila. This is the most important signum of a legion. To lose it, is a shame! On the battlefield, the men gain courage when they see me.", "do_regular_member_view_char",[]
- ],
+],"I carry the Aquila. This is the most important signum of a legion. To lose it, is a shame! On the battlefield, the men gain courage when they see me.",
+"do_regular_member_view_char",[]],
+
 [anyone|plyr,"regular_member_talk",[
   (is_between, "$g_talk_troop", "trp_vexilarius_xxii", "trp_centurio_west"),
- ],
-   "What is your function in the army?", "banner_talk2",[]
- ],
+],"What is your function in the army?",
+"banner_talk2",[]],
+
 [anyone,"banner_talk2",[
- ],
-   "I carry the vexillium. This signe is displaying the name and emblem of the legion. On the battlefield, the men gain courage when they see me.", "do_regular_member_view_char",[]
- ],
+],"I carry the vexillium. This signe is displaying the name and emblem of the legion. On the battlefield, the men gain courage when they see me.",
+"do_regular_member_view_char",[
+]],
+
 [anyone|plyr,"regular_member_talk",[
   (this_or_next|is_between, "$g_talk_troop", "trp_centurio_west", "trp_aux_cav"),
   (is_between, "$g_talk_troop", "trp_custom_centurio", "trp_custom_aux_cav"),
   (party_get_morale, ":morale", "p_main_party"),
   (lt, ":morale", 50),
   (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),
- ],
-   "The men are undisciplined and don't follow orders, what can we do?", "officer_talk_moral",[]
- ],
-[anyone,"officer_talk_moral",[
- ],
-   "I experienced the same thing commander. We have several possibilities to restore order. We could whip some soldiers, to set an example. Or we could order them shameful and useless duties to get them disciplined again.", "officer_talk_moral2",[]
- ],
-[anyone|plyr,"officer_talk_moral2",[
+],"The men are undisciplined and don't follow orders, what can we do?",
+"officer_talk_moral",[]],
 
- ],
-   "Whip every troublemaker!", "officer_whip",[]],
+[anyone,"officer_talk_moral",[
+],"I experienced the same thing commander. We have several possibilities to restore order. We could whip some soldiers, to set an example. Or we could order them shameful and useless duties to get them disciplined again.",
+"officer_talk_moral2",[]],
+
+[anyone|plyr,"officer_talk_moral2",[
+],"Whip every troublemaker!",
+"officer_whip",[]],
 
 [anyone,"officer_whip",[
- ],
-   "Classic and it will be a pleasure to watch, commander. I will make everything ready and act as ordered.", "close_window",[
-	  (display_message, "@The troublemakers of you army are whiped, the other men watch feared. Hopefully this will prefent them to desert."),
-    (call_script, "script_change_player_party_morale", 10),
-    (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
-
-   ]
- ],
+],"Classic and it will be a pleasure to watch, commander. I will make everything ready and act as ordered.",
+"close_window",[
+  (display_message, "@The troublemakers of you army are whiped, the other men watch feared. Hopefully this will prefent them to desert."),
+  (call_script, "script_change_player_party_morale", 10),
+  (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
+]],
 
 [anyone|plyr,"officer_talk_moral2",[
 
@@ -96600,7 +96618,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [trp_agent_parthian|plyr,"parthian_spy_talk_alex_ready",[
 ],
-" I need more time to prepare.", "close_window",[]],
+"I need more time to prepare.", "close_window",[]],
 
 [trp_agent_parthian,"start",[
 (quest_slot_eq, "qst_thunder", slot_quest_current_state, 6),
@@ -96626,7 +96644,8 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 ],
 "Very well.", "close_window",[
 (quest_set_slot, "qst_thunder", slot_quest_current_state, 7),
-(add_quest_note_from_sreg, "qst_thunder", 7, "@Prepare for battle. If you have more than 30 men talk to the Parthian Agent in Alexandria tavern.", 0),
+(str_store_party_name_link, s10, "p_town_20"),
+(add_quest_note_from_sreg, "qst_thunder", 7, "@Prepare for battle. If you have more than 30 men talk to the Parthian Agent in the tavern of {s10}.", 0),
 (display_message, "str_quest_updated"),
 ]],
 
@@ -96683,7 +96702,9 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 ],
 "Thanks, Roman, you are not so bad.", "close_window",[
 (quest_set_slot, "qst_thunder", slot_quest_current_state, 5),
-(add_quest_note_from_sreg, "qst_thunder", 7, "@Convince the governor of Alexandria to allow the Parthian Agent into the Great Library. Nero can also grant access.", 0),
+
+(str_store_party_name_link, s10, "p_town_20"),
+(add_quest_note_from_sreg, "qst_thunder", 7, "@Convince the governor of {s10} to allow the Parthian Agent into the Great Library. Nero can also grant access.", 0),
 (display_message, "str_quest_updated"),
 ]],
 
@@ -96718,9 +96739,12 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [trp_agent_parthian,"parther_talk_4_refuse",[
 ],
-"Suit yourself, Roman.", "close_window",[(quest_set_slot, "qst_thunder", slot_quest_current_state, 3),
-(add_quest_note_from_sreg, "qst_thunder", 7, "@You have rejected a Parthian agent's offer of cooperation on the Thundergod matter. Report to Nero.", 0),
-(display_message, "str_quest_updated"),
+"Suit yourself, Roman.",
+"close_window",[
+  (quest_set_slot, "qst_thunder", slot_quest_current_state, 3),
+  (str_store_troop_name_link, s13, "trp_kingdom_7_lord"),
+  (add_quest_note_from_sreg, "qst_thunder", 7, "@You have rejected a Parthian agent's offer of cooperation on the Thundergod matter. Report to {s13}.", 0),
+  (display_message, "str_quest_updated"),
 ]],
 
 [trp_agent_parthian|plyr,"parther_talk_4",[
@@ -96731,7 +96755,9 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 ],
 "Good. The disciples are taking the Thundergod to Thebae next. Meet me there.", "close_window",[
 (quest_set_slot, "qst_thunder", slot_quest_current_state, 4),
-(add_quest_note_from_sreg, "qst_thunder", 7, "@Meet the Parthian agent in Thebae.", 0),
+
+(str_store_party_name_link, s10, "p_town_48"),
+(add_quest_note_from_sreg, "qst_thunder", 7, "@Meet the Parthian agent in {s10}.", 0),
 (display_message, "str_quest_updated"),
 ]],
 
@@ -98363,38 +98389,45 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [anyone|plyr,"court_guard_ask_location",[
   (store_troop_gold, ":gold", "trp_player"),
-  (ge, ":gold", 500),
+  (ge, ":gold", 2500),
   (check_quest_active, "qst_spy_on_spouse"),
   (quest_get_slot, "$temp", "qst_spy_on_spouse", slot_quest_target_troop),
   (quest_slot_eq, "qst_spy_on_spouse", slot_quest_target_center, "$current_town"),
   (neg|troop_slot_eq, "$temp", slot_troop_lover, "trp_player"),
   (neg|quest_slot_ge, "qst_spy_on_spouse", slot_quest_current_state, 2),
-], "I need some information and I have 500 denarii for you ... ", "court_guard_bribe_for_info",[]],
+  (str_store_troop_name, s24, "$temp"),
+], "I need some information about {s24}. I have 2,500 denarii for you ... ", "court_guard_bribe_for_info",[]],
 
-[anyone,"court_guard_bribe_for_info",[], "500 denarii you say? What do you want?", "court_guard_bribe_for_info2",[]],
+[anyone,"court_guard_bribe_for_info",[], "2,500 denarii you say? What do you want?", "court_guard_bribe_for_info2",[]],
+
 [anyone|plyr,"court_guard_bribe_for_info2",[
   (str_store_troop_name, s24, "$temp"),
-], "I want information about {s24}. Especially I want to know whether she has a love affair or not.", "court_guard_bribe_for_info3",[]],
+], "Does {s24} has an love affair with someone? There are rumors but I need clear evidence.",
+"court_guard_bribe_for_info3",[]],
 
-[anyone,"court_guard_bribe_for_info3",[ (troop_remove_gold, "trp_player", 500),
+[anyone,"court_guard_bribe_for_info3",[
+  (troop_remove_gold, "trp_player", 2500),
   (troop_get_slot, ":lover", "$temp", slot_troop_lover),
   (ge, ":lover", 1),
   (quest_set_slot, "qst_spy_on_spouse", slot_quest_object_troop, ":lover"),
   (str_store_troop_name, s23, ":lover"),
+  (str_store_troop_name_link, s13, ":lover"),
   (quest_get_slot, ":troop", "qst_spy_on_spouse", slot_quest_giver_troop),
-  (str_store_troop_name, s39, ":troop"),
+  (str_store_troop_name_link, s39, ":troop"),
   (display_message, "str_quest_updated"),
-  (add_quest_note_from_sreg, "qst_spy_on_spouse", 3, "@Now you know her secret. Go and talk with {s39}", 0),
+  (add_quest_note_from_sreg, "qst_spy_on_spouse", 3, "@Now you know her secret. She has an affair with {s13}. Go and talk with {s39}.", 0),
   (quest_set_slot, "qst_spy_on_spouse", slot_quest_current_state, 2),
-], "-- You give him the money --^^{s23} always visits her. It seems he has an eye on her. The maids are already talking about it.", "close_window",[]],
+], "-- You give him the money --^^She is frequently visited by {s23}. The maids are talking about an affair too. So I assume she has an affair with {s23}. I hope this is enough evidence.",
+"close_window",[]],
 
-[anyone,"court_guard_bribe_for_info3",[ (troop_remove_gold, "trp_player", 500),
+[anyone,"court_guard_bribe_for_info3",[
 ], "-- You give him the money --^^I must disappoint you. I did not hear anything that could justify such an assertion.", "close_window",[
+  (troop_remove_gold, "trp_player", 2500),
   (quest_set_slot, "qst_spy_on_spouse", slot_quest_current_state, 2),
   (quest_get_slot, ":troop", "qst_spy_on_spouse", slot_quest_giver_troop),
-  (str_store_troop_name, s39, ":troop"),
+  (str_store_troop_name_link, s39, ":troop"),
   (display_message, "str_quest_updated"),
-  (add_quest_note_from_sreg, "qst_spy_on_spouse", 3, "@It is clear that she has no lover. Go and talk with {s39}", 0),
+  (add_quest_note_from_sreg, "qst_spy_on_spouse", 3, "@It is clear that she has no lover. Go and talk with {s39}.", 0),
 ]],
 
 [anyone|plyr,"court_guard_ask_location",[], "I'll be on my way, then.", "close_window",[]],

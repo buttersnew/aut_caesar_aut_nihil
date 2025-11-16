@@ -1122,45 +1122,16 @@ triggers = [
 ],[
     (assign,"$g_move_fast", 0)
 ]),
-##diplomacy end
-# #in exchange for the old "find landing points" trigger here is a new solution
+
+# remove landing points if too far away
 (0, 0, 0,[
     (key_clicked, key_left_mouse_button),
     (party_slot_eq, "p_main_party", slot_party_on_water, 1),
 
-    (set_fixed_point_multiplier, 100),
-    (party_get_position, pos1, "p_main_party"),
-    (party_get_position, pos2, "p_landing_point"),
-    (get_distance_between_positions, ":distance", pos1, pos2),
-    (gt, ":distance", 200),
-    #
-    (map_get_land_position_around_position, pos2, pos1, 1),
-    (party_set_position, "p_temp_party", pos2),
-    (party_get_current_terrain, ":terrain_type", "p_temp_party"),
-    (neq, ":terrain_type", 0),
-    (neq, ":terrain_type", 1), #cliffs
-    (neq, ":terrain_type", 7),
-    (neq, ":terrain_type", 8),
-
-    (assign, ":block", 0),
-    (try_for_range, ":curr_town", towns_begin, towns_end),	#avoid landing points next to ports
-        (party_slot_eq, ":curr_town", slot_town_port, 1),
-        (store_distance_to_party_from_party, ":dist", "p_temp_party", ":curr_town"),
-        (lt, ":dist", 5),
-        (assign, ":block", 1),
-    (try_end),
-    # (try_for_range, ":curr_bridge", "p_Bridge_1", "p_ferry_1a"),	#avoid landing points next to bridges
-      # (store_distance_to_party_from_party, ":dist", "p_temp_party", ":curr_bridge"),
-      # (lt, ":dist", 5),
-      # (assign, ":block", 1),
-    # (try_end),
-    (eq, ":block", 0),
+    (store_distance_to_party_from_party, ":distance", "p_main_party", "p_landing_point"),
+    (gt, ":distance", 5),
 ],[
-    (try_begin),
-        (party_get_position, pos1, "p_temp_party"),
-        (call_script, "script_get_next_water_position", 0, "p_temp_party"),
-        (party_set_position, "p_landing_point", pos2),
-    (try_end),
+  (party_set_flags, "p_landing_point", pf_no_label, 1),
 ]),
 
 ####siege warfare, player lose money each day while siege. Sieges are expensive.

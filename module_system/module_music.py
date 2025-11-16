@@ -104,6 +104,7 @@ tracks = [
   ("town_neutral_4", "birds_4.ogg", mtf_culture_all|mtf_sit_town|mtf_sit_travel|mtf_sit_siege|mtf_sit_fight|mtf_sit_ambushed, mtf_culture_all),
   ("town_neutral_5", "birds_5.ogg", mtf_culture_all|mtf_sit_town|mtf_sit_travel|mtf_sit_siege|mtf_sit_fight|mtf_sit_ambushed, mtf_culture_all),
   ("town_neutral_6", "birds_6.ogg", mtf_culture_all|mtf_sit_town|mtf_sit_travel|mtf_sit_siege|mtf_sit_fight|mtf_sit_ambushed, mtf_culture_all),
+  ("town_neutral_7", "rise_and_fall_of_an_empire.ogg", mtf_culture_all|mtf_sit_town|mtf_sit_travel|mtf_sit_siege|mtf_sit_fight|mtf_sit_ambushed, mtf_culture_all),
 
   ("town_khergit1", "lords_hall_caoyuan_01.ogg", mtf_culture_3|mtf_sit_town, mtf_sit_tavern|mtf_sit_night|mtf_continue_culture_3),
 

@@ -3859,7 +3859,7 @@ slot_expedition_start_time_1 = 19
 kingmarshal_gold_bon = 3000#bonus income for king and marshal
 
 minor_towns_begin = "p_gaetulian_town_1"
-minor_towns_end   = "p_sartemis"
+minor_towns_end   = "p_hanging_gardens"
 
 
 ##for strategic camera

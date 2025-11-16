@@ -12594,7 +12594,7 @@ simple_triggers = [
     (try_end),
 ]),
 
-(24,[
+(24*12,[
     (call_script, "script_execude_debug_message", 196),
     # check number of household troops player has
     (assign, ":number_household_slaves", 0),
@@ -12619,11 +12619,11 @@ simple_triggers = [
         (call_script, "script_get_cook_limit"),
         (assign, ":cook_limit", reg0),
 
-        (assign, reg1, ":cook_limit"),
-        (display_message, "@Cook Limit: {reg1}"),
+        # (assign, reg1, ":cook_limit"),
+        # (display_message, "@Cook Limit: {reg1}"),
 
-        (assign, reg1, ":slave_limit"),
-        (display_message, "@Slave Limit: {reg1}"),
+        # (assign, reg1, ":slave_limit"),
+        # (display_message, "@Slave Limit: {reg1}"),
         #check if the number exceeds the limit and remove troop if so
         (try_begin),
             (is_between, ":household_troop", household_slaves_begin, household_slaves_end),
