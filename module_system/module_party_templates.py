@@ -64,7 +64,7 @@ party_templates = [
 ("sea_raiders","Sea Raiders",icon_bandit|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_sea_raider,15,75),(trp_sailor,5,10)]),
 ("black_sea_pirates","Pirates",icon_ship|pf_is_ship|carries_goods(2),0,fac_outlaws,bandit_personality,[(trp_black_sea_priate,75,110),(trp_sailor,10,25)]),
 
-("egyptian_rebels","Egyptian Rebels",icon_bandit|carries_goods(8),0,fac_egypt,bandit_personality,[(trp_egyptian_officer, 2, 4),(trp_egyptian_archers,15,40),(trp_egyptian_infantry_heavy,25,60),(trp_egyptian_infantry_light,25,60)]),
+("egyptian_rebels","Egyptian Rebels",icon_bandit|carries_goods(8),0,fac_egypt,bandit_personality,[(trp_egyptian_officer, 2, 4),(trp_egyptian_archers,15,40),(trp_egyptian_infantry_heavy,25,60),(trp_egyptian_infantry_light,25,60),(trp_egyptian_hornman, 2, 4),(trp_egyptian_standard_bearer, 2, 4)]),
 
 ("garamantes","Garamantian Raiders",icon_numider|carries_goods(30),0,fac_garamantes,bandit_personality,[(trp_garamantian_horseman,50,120),(trp_garamantian_noble_horseman,30,70)]),
 ("gaetuli","Gaetulian Raiders",icon_numider|carries_goods(30),0,fac_gaetuli,bandit_personality,[(trp_gaetuli_horseman,50,120),(trp_gaetuli_noble_horseman,30,70)]),
@@ -177,7 +177,7 @@ party_templates = [
 ("mercenary_moreo", "Nubian Mercenaries", 0, 0, fac_commoners, 0,
 [("trp_meroe_archers", 30,30),("trp_meroe_infantry", 15,15),("trp_meroe_axemen", 15,15)] ),#60
 ("mercenary_egyptian", "Egyptian Mercenaries", 0, 0, fac_commoners, 0,
-[("trp_egyptian_archers", 20,20),("trp_egyptian_infantry_heavy", 20,20),("trp_egyptian_infantry_light", 20,20),("trp_egyptian_officer", 2, 2)] ),#60
+[("trp_egyptian_archers", 20,20),("trp_egyptian_infantry_heavy", 20,20),("trp_egyptian_infantry_light", 20,20),("trp_egyptian_officer", 1, 1),("trp_egyptian_hornman", 1, 1),("trp_egyptian_standard_bearer", 1, 1)] ),#60
 ("mercenary_arab", "Arabian Mercenaries", 0, 0, fac_commoners, 0,
 [("trp_arab_noble_archers", 30,30),("trp_arab_spearmen", 30,30)] ),#60
 ("mercenary_arab_cav", "Arabian Cavalry Mercenaries", 0, 0, fac_commoners, 0,

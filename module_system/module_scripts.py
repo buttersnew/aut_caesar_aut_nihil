@@ -81104,6 +81104,7 @@ scripts = scripts_hardcoded + [
 
 ("cf_is_high_officer",[
     (store_script_param_1, ":troop"),
+    (this_or_next|eq, ":troop", "trp_egyptian_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_celtic_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_judean_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_parthian_standard_bearer"),
@@ -81132,6 +81133,7 @@ scripts = scripts_hardcoded + [
         (assign, ":c", 1),
     (try_end),
 
+    (this_or_next|eq, ":troop", "trp_egyptian_officer"),
     (this_or_next|eq, ":troop", "trp_custom_cav_of"),
     (this_or_next|eq, ":troop", "trp_custom_cav_vex"),
     (this_or_next|eq, ":troop", "trp_custom_cornicen"),
@@ -81161,6 +81163,7 @@ scripts = scripts_hardcoded + [
 
 ("cf_troop_is_hornman",[
     (store_script_param_1, ":troop"),
+    (this_or_next|eq, ":troop", "trp_egyptian_hornman"),
     (this_or_next|eq, ":troop", "trp_celtic_hornman"),
     (this_or_next|eq, ":troop", "trp_judean_hornman"),
     (this_or_next|eq, ":troop", "trp_parthian_hornman"),
@@ -99820,6 +99823,7 @@ scripts = scripts_hardcoded + [
 ("get_slave_limit", [
     (assign, reg0, 0),
     (try_begin),#always 12 if player is faction leader
+        (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
         (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
         (faction_slot_eq, "$players_kingdom", slot_faction_state, sfs_active),
         (assign, reg0, 14),
@@ -99880,6 +99884,7 @@ scripts = scripts_hardcoded + [
 ("get_cook_limit", [
     (assign, reg0, 0),
     (try_begin),#always 6 if player is faction leader
+        (is_between, "$players_kingdom", kingdoms_begin, kingdoms_end),
         (faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),
         (faction_slot_eq, "$players_kingdom", slot_faction_state, sfs_active),
         (assign, reg0, 6),

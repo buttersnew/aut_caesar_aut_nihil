@@ -25178,10 +25178,37 @@ presentations = presentations_wse2 + [
     (overlay_set_size, reg1, pos1),
     (overlay_set_color, reg1, message_alert),
 
+    (create_text_overlay, reg1, "@Slave limits", tf_center_justify|tf_with_outline),
+    (overlay_set_color, reg1, color_information),
+    (position_set_x, pos1, 620), # Higher, means more toward the right
+    (position_set_y, pos1, 695), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 1000),
+    (position_set_y, pos1, 1000),
+    (overlay_set_size, reg1, pos1),
+
+    (troop_get_slot, reg10, "trp_player", slot_troop_renown),
+
+    (call_script, "script_get_slave_limit"),
+    (assign, reg11, reg0),
+    (call_script, "script_get_cook_limit"),
+    (assign, reg12, reg0),
+
+    (create_text_overlay, reg1, "@With renown {reg10} you can have {reg11} cooks and {reg12} household slaves!", tf_left_align|tf_scrollable),
+    (position_set_x, pos1, 530), # Higher, means more toward the right
+    (position_set_y, pos1, 570), # Higher, means more toward the top
+    (overlay_set_position, reg1, pos1),
+    (position_set_x, pos1, 900),
+    (position_set_y, pos1, 900),
+    (overlay_set_size, reg1, pos1),
+    (position_set_x, pos1, 200),
+    (position_set_y, pos1, 100),
+    (overlay_set_area_size, reg1, pos1),
+
     (create_text_overlay, reg1, "@Spouse", tf_center_justify|tf_with_outline),
     (overlay_set_color, reg1, color_purple),
     (position_set_x, pos1, 620), # Higher, means more toward the right
-    (position_set_y, pos1, 650), # Higher, means more toward the top
+    (position_set_y, pos1, 590), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1000),
     (position_set_y, pos1, 1000),
@@ -25192,7 +25219,7 @@ presentations = presentations_wse2 + [
         (gt, ":spouse", 0),
         (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_troop_note_mesh", ":spouse"),
         (position_set_x, pos1, 520),
-        (position_set_y, pos1, 450),
+        (position_set_y, pos1, 390),
         (overlay_set_position, reg0, pos1),
         (position_set_x, pos1, 500),
         (position_set_y, pos1, 500),
@@ -25200,7 +25227,7 @@ presentations = presentations_wse2 + [
         (str_store_troop_name_plural, s0, ":spouse"),
         (create_text_overlay, reg1, "str_s0", tf_center_justify),
         (position_set_x, pos1, 620), # Higher, means more toward the right
-        (position_set_y, pos1, 420), # Higher, means more toward the top
+        (position_set_y, pos1, 360), # Higher, means more toward the top
         (overlay_set_position, reg1, pos1),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -25214,7 +25241,7 @@ presentations = presentations_wse2 + [
         (overlay_set_tooltip, reg1, "@Marry to get a spouse!"),
     (try_end),
     (position_set_x, pos1, 540),
-    (position_set_y, pos1, 445),
+    (position_set_y, pos1, 385),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1750),
     (position_set_y, pos1, 1850),
@@ -25223,7 +25250,7 @@ presentations = presentations_wse2 + [
     (create_text_overlay, reg1, "@Effects", tf_center_justify|tf_with_outline),
     (overlay_set_color, reg1, color_information),
     (position_set_x, pos1, 620), # Higher, means more toward the right
-    (position_set_y, pos1, 390), # Higher, means more toward the top
+    (position_set_y, pos1, 330), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 1000),
     (position_set_y, pos1, 1000),
@@ -25235,7 +25262,7 @@ presentations = presentations_wse2 + [
     (position_set_y, pos1, 40),
     (overlay_set_position, reg1, pos1),
     (position_set_x, pos1, 220),
-    (position_set_y, pos1, 340),
+    (position_set_y, pos1, 280),
     (overlay_set_area_size, reg1, pos1),
     (assign, ":cur_y", 25),
 
@@ -25783,7 +25810,7 @@ presentations = presentations_wse2 + [
                 (gt, ":slave_count", reg0),
                 (call_script, "script_get_slave_slot_renown_threshold", ":slave_count"),
                 (assign, reg2, ":slave_count"),
-                (str_store_string, s0, "@You need {reg0} to have a {reg2}. household slave!"),
+                (str_store_string, s0, "@{reg0} renown required for a {reg2}. slave"),
                 (assign, ":allow", 0),
             (else_try),
                 (assign, reg2, ":slave_count"),
@@ -25925,7 +25952,7 @@ presentations = presentations_wse2 + [
                 (gt, ":cook_count", reg0),
                 (call_script, "script_get_cook_slot_renown_threshold", ":cook_count"),
                 (assign, reg2, ":cook_count"),
-                (str_store_string, s0, "@You need {reg0} to have a {reg2}. cook!"),
+                (str_store_string, s0, "@{reg0} renown required for a {reg2}. cook"),
                 (assign, ":allow", 0),
             (else_try),
                 (assign, reg2, ":cook_count"),

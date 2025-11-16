@@ -12594,7 +12594,7 @@ simple_triggers = [
     (try_end),
 ]),
 
-(24*12,[
+(24,[
     (call_script, "script_execude_debug_message", 196),
     # check number of household troops player has
     (assign, ":number_household_slaves", 0),
@@ -12611,21 +12611,34 @@ simple_triggers = [
             (le, ":r", ":corruption"),
             (assign, ":thief", ":household_troop"),
         (else_try),
+            (is_between, ":household_troop", cook_slaves_begin, cook_slaves_end),
             (val_add, ":number_household_cooks", 1),
         (try_end),
+        (call_script, "script_get_slave_limit"),
+        (assign, ":slave_limit", reg0),
+        (call_script, "script_get_cook_limit"),
+        (assign, ":cook_limit", reg0),
+
+        (assign, reg1, ":cook_limit"),
+        (display_message, "@Cook Limit: {reg1}"),
+
+        (assign, reg1, ":slave_limit"),
+        (display_message, "@Slave Limit: {reg1}"),
         #check if the number exceeds the limit and remove troop if so
         (try_begin),
+            (is_between, ":household_troop", household_slaves_begin, household_slaves_end),
             (call_script, "script_get_slave_limit"),
-            (gt, ":number_household_slaves", reg0),
+            (gt, ":number_household_slaves", ":slave_limit"),
             (troop_set_slot, ":household_troop", slot_slave_template_troop, 0),#remove troop
             (str_store_troop_name, s1, ":household_troop"),
-            (display_message, "@You have too many household slaves. {s1} has been freed.", color_bad_news),
+            (display_message, "@You have too many household slaves for you current renown. {s1} has been freed.", color_bad_news),
         (else_try),
+            (is_between, ":household_troop", cook_slaves_begin, cook_slaves_end),
             (call_script, "script_get_cook_limit"),
-            (gt, ":number_household_cooks", reg0),
+            (gt, ":number_household_cooks", ":cook_limit"),
             (troop_set_slot, ":household_troop", slot_slave_template_troop, 0),#remove troop
             (str_store_troop_name, s1, ":household_troop"),
-            (display_message, "@You have too many household cooks. {s1} has been freed.", color_bad_news),
+            (display_message, "@You have too many household cooks for you current renown. {s1} has been freed.", color_bad_news),
         (try_end),
     (try_end),
     (assign, ":gold", 0),

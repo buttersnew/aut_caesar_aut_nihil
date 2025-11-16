@@ -3102,21 +3102,26 @@ dialogs =[
 "slaver_pretalk", []],
 
 [anyone, "slaver_process_buy_specific_stack_action", [
-    (store_troop_gold, ":player_gold", "trp_player"),
-    (ge, ":player_gold", "$temp4"),
-    (call_script, "script_game_get_party_prisoner_limit", "p_main_party"),
-    (assign, ":capacity", reg0),
-    (party_get_num_prisoners, ":current_prisoners", "p_main_party"),
-    (store_sub, ":free_capacity", ":capacity", ":current_prisoners"),
-    (ge, ":free_capacity", "$temp3"),
-    # Actual transaction
-    (troop_remove_gold, "trp_player", "$temp4"),
-    (party_remove_prisoners, "p_temp_party_2", "$temp_troop", "$temp3"), # This removes the count from any stack of this troop_id.
-                                                                                                               # If multiple stacks of same troop_id, this is fine.
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", "$temp4"),
+  (call_script, "script_game_get_party_prisoner_limit", "p_main_party"),
+  (assign, ":capacity", reg0),
+  (party_get_num_prisoners, ":current_prisoners", "p_main_party"),
+  (store_sub, ":free_capacity", ":capacity", ":current_prisoners"),
+  (ge, ":free_capacity", "$temp3"),
+  # Actual transaction
+  (troop_remove_gold, "trp_player", "$temp4"),
+  (party_remove_prisoners, "p_temp_party_2", "$temp_troop", "$temp3"), # This removes the count from any stack of this troop_id.
+                                                                                                          # If multiple stacks of same troop_id, this is fine.
+  (try_begin),
+    (is_between, "$temp_troop", slaves_begin, slaves_end),
     (party_add_prisoners, "p_main_party", "$temp_troop", "$temp3"),
-    (assign, reg1, "$temp3"),
-    (str_store_troop_name_plural, s1, "$temp_troop"),
-    (display_message, "str_reg1_s1_have_been_added_to_your_party_as_prisoners"),
+  (else_try),
+    (display_message, "@Error, not a slave troop", message_negative),
+  (try_end),
+  (assign, reg1, "$temp3"),
+  (str_store_troop_name_plural, s1, "$temp_troop"),
+  (display_message, "str_reg1_s1_have_been_added_to_your_party_as_prisoners"),
 ],"A pleasure doing business with you. They're all yours now.",
 "slaver_pretalk", []],
 
@@ -3539,11 +3544,24 @@ dialogs =[
 ]],
 
 [anyone|plyr, "household_slave_talk",[
+],
+"I wish to rename you. I do not like your name.",
+"household_slave_talk_slave_rename",[]],
+
+[anyone, "household_slave_talk_slave_rename",[
+],"Of course, {Dominus/Domina}. Whatever you want.", "close_window",[
+    (assign, "$g_presentation_state", rename_companion),
+    (assign, "$g_player_troop", "$g_talk_troop"),
+    (start_presentation, "prsnt_name_kingdom"),
+]],
+
+
+[anyone|plyr, "household_slave_talk",[
 ],"I wish to see to your equipment.",
 "household_slave_change_equipment",[]],
 
 [anyone, "household_slave_change_equipment",[
-],"Of course, {s10}. I am ready for your inspection.", "household_slave_pretalk",[
+],"Of course, {s1Dominus/Domina0}. I am ready for your inspection.", "household_slave_pretalk",[
     (change_screen_equip_other),
 ]],
 
@@ -88442,27 +88460,25 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone, "player_camp_disband_recheck",[],
 		"Let me consider your changes for a while...", "player_camp_disband_test_join",[]],
 
-[anyone|plyr, "player_camp_disband_partial",
-	[
-			(try_begin),
-				(eq, "$g_emissary_selected", 0),
-				(str_store_string, s0, "str_pcamp_disband_leave"),
-			(else_try),
-				(eq, "$g_emissary_selected", 1),
-				(str_store_string, s0, "str_pcamp_disband_one"),
-			(else_try),
-				(eq, "$g_emissary_selected", -1),
-				(str_store_string, s0, "str_pcamp_disband_max_prisoners"),
-			(else_try),
-				(assign, reg0, "$g_emissary_selected"),
-				(str_store_string, s0, "str_pcamp_disband_top_reg0"),
-			(try_end),
-		],
-		"All right, {s0}.", "player_camp_disband_finish",
-	[
-			(assign, "$g_move_heroes", 1),
-			(call_script, "script_add_party_until_capacity", "p_main_party", "$g_talk_troop_party"),
-		]],
+[anyone|plyr, "player_camp_disband_partial",[
+  (try_begin),
+    (eq, "$g_emissary_selected", 0),
+    (str_store_string, s0, "str_pcamp_disband_leave"),
+  (else_try),
+    (eq, "$g_emissary_selected", 1),
+    (str_store_string, s0, "str_pcamp_disband_one"),
+  (else_try),
+    (eq, "$g_emissary_selected", -1),
+    (str_store_string, s0, "str_pcamp_disband_max_prisoners"),
+  (else_try),
+    (assign, reg0, "$g_emissary_selected"),
+    (str_store_string, s0, "str_pcamp_disband_top_reg0"),
+  (try_end),
+],"All right, {s0}.",
+"player_camp_disband_finish",[
+  (assign, "$g_move_heroes", 1),
+  (call_script, "script_add_party_until_capacity", "p_main_party", "$g_talk_troop_party"),
+]],
 
 [anyone|plyr, "player_camp_disband_partial",[],
 		"No, I changed my mind.", "player_camp_start",[]],
