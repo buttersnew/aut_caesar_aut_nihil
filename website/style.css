@@ -380,24 +380,6 @@ footer {
     z-index: 2;
 }
 
-.database-section h2 {
-    font-size: 3em;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-/* This creates the red underline */
-.database-section h2::after {
-    content: '';
-    display: block;
-    width: 250px;
-    height: 4px;
-    background-color: #E50914; /* Your site's red color */
-    margin: 20px auto 0;
-}
-
 .database-section p {
     font-size: 1.1em;
     margin-bottom: 30px;
