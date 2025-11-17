@@ -36,7 +36,7 @@ slinger_rhodos,Rhodios Sphendonetes,Rhodioi Sphendonetai,Greek,Rhodian Slinger
 kreta_archer,Kres Toxotes,Kretes Toxotai,Greek,Cretan Archer
 hoplit,Hoplites,Hoplitai,Greek,Hoplite
 phalanx,Phalangit,Phalangitai,Greek,Phalangite
-hoplit_2,Epilektos,Epilektoi,Greek,Chosen Hoplite/Elite
+hoplit_2,Epilektos,Epilektoi,Greek,Chosen Hoplite / Elite
 hispanic_infantry,Scutarius,Scutarii,Latin,Shield-bearer (Hispanic Infantry)
 hispanic_heavy_infantry,Loricati Scutarius,Loricati Scutarii,Latin,Armored Shield-bearer (Hispanic Heavy Infantry)
 scythian_horse_archer,Skythikos Hippeus,Skythikoi Hippeis,Greek,Scythian Horseman
@@ -45,15 +45,15 @@ scythian_medium_cavalry,Skythios Lonchophoros,Skythioi Lonchophoroi,Greek,Scythi
 scythian_cataphract,Skythikos Kataphraktos,Skythikoi Kataphraktoi,Greek,Scythian Cataphract
 alan_horse_archer,Alanno Badaro,Alanna Badarai,Old Iranian (Alanic),Alan Chieftain
 alan_heavy_horse_archer,Alanno Leazdaetta,Alanna Leazdaettae,Old Iranian (Alanic),Alan Shield-bearer
-celtic_freeman,Ambaktos,Ambaktoi,Proto-Celtic,Retainer/Vassal Warrior
-celtic_elite_swordsman,Arios,Arioi,Proto-Celtic,Noble/Freemen
+celtic_freeman,Ambaktos,Ambaktoi,Proto-Celtic,Retainer / Vassal Warrior
+celtic_elite_swordsman,Arios,Arioi,Proto-Celtic,Noble / Freemen
 irish_skirmisher,Weidelos Iwerakos,Weideloi Iwerakoi,Proto-Celtic,Irish Seer
-irish_vetran,Ouxselos Iwerakos,Ouxseloi Iwerakoi,Proto-Celtic,High/Exalted Irish Warrior
-germanic_hunter,Sakandz,Sakandiz,Proto-Germanic,Contender/Fighter
+irish_vetran,Ouxselos Iwerakos,Ouxseloi Iwerakoi,Proto-Celtic,High / Exalted Irish Warrior
+germanic_hunter,Sakandz,Sakandiz,Proto-Germanic,Contender / Fighter
 germanic_free_spearman,Gaizaz Frijaz,Gaizoz Frijoz,Proto-Germanic,Free Spearman
 germanic_nightwarrior,Hariaz Skaduganganaz,Harioz Skaduganganoz,Proto-Germanic,The Shadow-Walking War-band
 germanic_free_nobleman,Istaevonaz Druthinaz,Istaevonoz Druthinoz,Proto-Germanic,Istaevonic Lord
-baltic_hunter,Voinas,Voinai,Proto-Baltic/Slavic,Warrior
+baltic_hunter,Voinas,Voinai,Proto-Baltic / Slavic,Warrior
 danish_skirmisher,Stranjaz Druhtinaz,Stranjoz Druhtinoz,Proto-Germanic,Strong Retainer
 danish_vetran,Akwinaz,Akwinoz,Proto-Germanic,Axeman
 lombard_skirmisher,Winnilaz Slagandz,Winniloz Slagandiz,Proto-Germanic,Winnili Striker
@@ -73,17 +73,17 @@ garamantian_horseman,Amhadi Garamanti,Imhaditen Garamantin,Libyco-Berber,Garaman
 garamantian_noble_horseman,Aballun Garamanti,Iballunen Garamantin,Libyco-Berber,Garamantian Spearman
 gaetuli_horseman,Amenay Amawri,Imnayen Imawriyen,Libyco-Berber,Moorish Horseman
 gaetuli_noble_horseman,Amhadi n Thugga,Imhaditen n Thugga,Libyco-Berber,Guard of Thugga
-meroe_archers,Neteke,Netekeli,Meroitic/Nubian,Nobleman
-meroe_infantry,Adke-tkk,Adkeli-tkkli,Meroitic/Nubian,Great Warrior
-meroe_axemen,Kukur,Kukurli,Meroitic/Nubian,Priest-Chief
-egyptian_archers,Reftksote,Reftksotew,Coptic/Late Egyptian,The Archer
-egyptian_infantry_heavy,Refbouts,Refboutew,Coptic/Late Egyptian,The Club-bearer
-egyptian_infantry_light,Refqenqen,Refqenqenew,Coptic/Late Egyptian,The Crusher
-egyptian_officer,Tzoeisu,Tzoeisu-w,Coptic/Late Egyptian,The Commander
-arab_noble_archers,Shomer Hajar,Shomrim Hajar,Semitic (Hebrew/Arabic),Guard of Hajar
-arab_spearmen,Muqrab,Muqrabeen,Semitic (Sabaean/Arabic),Dedicated Warrior
+meroe_archers,Neteke,Netekeli,Meroitic / Nubian,Nobleman
+meroe_infantry,Adke-tkk,Adkeli-tkkli,Meroitic / Nubian,Great Warrior
+meroe_axemen,Kukur,Kukurli,Meroitic / Nubian,Priest-Chief
+egyptian_archers,Reftksote,Reftksotew,Coptic / Late Egyptian,The Archer
+egyptian_infantry_heavy,Refbouts,Refboutew,Coptic / Late Egyptian,The Club-bearer
+egyptian_infantry_light,Refqenqen,Refqenqenew,Coptic / Late Egyptian,The Crusher
+egyptian_officer,Tzoeisu,Tzoeisu-w,Coptic / Late Egyptian,The Commander
+arab_noble_archers,Shomer Hajar,Shomrim Hajar,Semitic (Hebrew / Arabic),Guard of Hajar
+arab_spearmen,Muqrab,Muqrabeen,Semitic (Sabaean / Arabic),Dedicated Warrior
 desert_bandit,Faris,Farasin,Semitic (Arabic),Horseman
-arab_noble_cav,Abbir Faris,Abbirim Farisin,Semitic (Hebrew/Arabic),Mighty Horseman
+arab_noble_cav,Abbir Faris,Abbirim Farisin,Semitic (Hebrew / Arabic),Mighty Horseman
 palmyra_infantry,Palmyraius Pedes,Palmyraii Pedites,Latin,Palmyrene Foot-soldier
 palmyra_cataphract,Palmyraius Cataphractus,Palmyraii Cataphracti,Latin,Palmyrene Cataphract
 bosporan_standard_bearer,Bosporanos Semeiophoros,Bosporanoi Semeiophoroi,Greek,Bosporan Standard-bearer
@@ -133,9 +133,9 @@ judean_guard,Sebastenos Peltastes,Sebastenoi Peltastai,Greek,Light Shield Bearer
 judean_guard_vet,Sebastenos Peltastes,Sebastenoi Peltastai (vet),Greek,Light Shield Bearer from Sebaste (Samaria, renamed to Sebaste by Herod in honour of Augustus) (Veteran)
 judean_guard_archer,Sebastenos Toxotes,Sebastenoi Toxotai,Greek,Archer from Sebaste
 judean_guard_archer_vet,Sebastenos Toxotes,Sebastenoi Toxotai (vet),Greek,Archer from Sebaste (Samaria, renamed to Sebaste by Herod in honour of Augustus) (Veteran)
-bosporan_light_spearman,Bosporanos Entopios,Bosporanoi Entopioi,Greek,Bosporan Local/Native Soldier
-bosporan_light_spearman_exp,Bosporanos Entopios (exp),Bosporanoi Entopioi (exp),Greek,Bosporan Local/Native Soldier (Experienced)
-bosporan_light_spearman_vet,Bosporanos Entopios (vet),Bosporanoi Entopioi (vet),Greek,Bosporan Local/Native Soldier (Veteran)
+bosporan_light_spearman,Bosporanos Entopios,Bosporanoi Entopioi,Greek,Bosporan Local / Native Soldier
+bosporan_light_spearman_exp,Bosporanos Entopios (exp),Bosporanoi Entopioi (exp),Greek,Bosporan Local / Native Soldier (Experienced)
+bosporan_light_spearman_vet,Bosporanos Entopios (vet),Bosporanoi Entopioi (vet),Greek,Bosporan Local / Native Soldier (Veteran)
 bosporan_archer,Bosporanos Toxotes,Bosporanoi Toxotia,Greek,Bosporan Archer
 bosporan_archer_exp,Bosporanos Toxotes (exp),Bosporanoi Toxotia (exp),Greek,Bosporan Archer (Experienced)
 bosporan_archer_vet,Bosporanos Toxotes (vet),Bosporanoi Toxotia (vet),Greek,Bosporan Archer (Veteran)
@@ -145,21 +145,21 @@ bosporan_elite_vet,Bosporanos Pezos (vet),Bosporanoi Pezoi (vet),Greek,Bosporan 
 bosporan_cav,Sauromatikos Kataphraktos,Sauromatikoi Kataphraktoi,Greek,Sarmatian Cataphract
 bosporan_cav_exp,Sauromatikos Kataphraktos (exp),Sauromatikoi Kataphraktoi (exp),Greek,Sarmatian Cataphract (Experienced)
 bosporan_cav_vet,Sauromatikos Kataphraktos (vet),Sauromatikoi Kataphraktoi (vet),Greek,Sarmatian Cataphract (Veteran)
-germanic_light_clubman,Slagandz,Slagandiz,Proto-Germanic,Striker/Slayer
-germanic_light_clubman_exp,Slagandz (exp),Slagandiz (exp),Proto-Germanic,Striker/Slayer (Experienced)
-germanic_light_clubman_vet,Slagandz (vet),Slagandiz (vet),Proto-Germanic,Striker/Slayer (Veteran)
+germanic_light_clubman,Slagandz,Slagandiz,Proto-Germanic,Striker / Slayer
+germanic_light_clubman_exp,Slagandz (exp),Slagandiz (exp),Proto-Germanic,Striker / Slayer (Experienced)
+germanic_light_clubman_vet,Slagandz (vet),Slagandiz (vet),Proto-Germanic,Striker / Slayer (Veteran)
 germanic_light_spearman,Gaizafulkan Frijatoz,Gaizafulkan Frijato,Proto-Germanic,The Freed Spear-Folk
 germanic_light_spearman_exp,Gaizafulkan Frijatoz (exp),Gaizafulkan Frijato (exp),Proto-Germanic,The Freed Spear-Folk (Experienced)
 germanic_light_spearman_vet,Gaizafulkan Frijatoz (vet),Gaizafulkan Frijato (vet),Proto-Germanic,The Freed Spear-Folk (Veteran)
-germanic_skirmisher,Jungaz,Jungoz,Proto-Germanic,Youth/Young Warrior
-germanic_skirmisher_exp,Jungaz (exp),Jungoz (exp),Proto-Germanic,Youth/Young Warrior (Experienced)
-germanic_skirmisher_vet,Jungaz (vet),Jungoz (vet),Proto-Germanic,Youth/Young Warrior (Veteran)
+germanic_skirmisher,Jungaz,Jungoz,Proto-Germanic,Youth / Young Warrior
+germanic_skirmisher_exp,Jungaz (exp),Jungoz (exp),Proto-Germanic,Youth / Young Warrior (Experienced)
+germanic_skirmisher_vet,Jungaz (vet),Jungoz (vet),Proto-Germanic,Youth / Young Warrior (Veteran)
 germanic_slinger,Stainawerpandz,Stainawerpandiz,Proto-Germanic,Stone-thrower
 germanic_slinger_exp,Stainawerpandz (exp),Stainawerpandiz (exp),Proto-Germanic,Stone-thrower (Experienced)
 germanic_slinger_vet,Stainawerpandz (vet),Stainawerpandiz (vet),Proto-Germanic,Stone-thrower (Veteran)
-germanic_archer,Skuttilaz,Skuttiloz,Proto-Germanic,Archer/Shooter
-germanic_archer_exp,Skuttilaz (exp),Skuttiloz (exp),Proto-Germanic,Archer/Arrow Shooter (Experienced)
-germanic_archer_vet,Skuttilaz (vet),Skuttiloz (vet),Proto-Germanic,Archer/Arrow Shooter (Veteran)
+germanic_archer,Skuttilaz,Skuttiloz,Proto-Germanic,Archer / Shooter
+germanic_archer_exp,Skuttilaz (exp),Skuttiloz (exp),Proto-Germanic,Archer / Arrow Shooter (Experienced)
+germanic_archer_vet,Skuttilaz (vet),Skuttiloz (vet),Proto-Germanic,Archer / Arrow Shooter (Veteran)
 germanic_berserker,Tiwisa Wigandz,Tiwisa Wigandiz,Proto-Germanic,Fighter of Tiwaz
 germanic_noble_swordsman,Druthinaz Swebiskaz,Druthinoz Swebiskoz,Proto-Germanic,Suebian Lord
 germanic_noble_swordsman_exp,Druthinaz Swebusku (exp),Druthinoz Swebiskoz (exp),Proto-Germanic,Suebian Lord (Experienced)
@@ -173,9 +173,9 @@ germanic_cavalry_vet,Ridandz (vet),Ridandiz (vet),Proto-Germanic,The Rider (Vete
 celtic_light_clubman,Lorgowiros,Lorgowiri,Proto-Celtic,Club-man
 celtic_light_clubman_exp,Lorgowiros (exp),Lorgowiri (exp),Proto-Celtic,Club-man (Experienced)
 celtic_light_clubman_vet,Lorgowiros (vet),Lorgowiri (vet),Proto-Celtic,Club-man (Veteran)
-celtic_light_spearman,Slegowiros,Slegowiri,Proto-Celtic,Striker/Slayer
-celtic_light_spearman_exp,Slegowiros (exp),Slegowiri (exp),Proto-Celtic,Striker/Slayer (Experienced)
-celtic_light_spearman_vet,Slegowiros (vet),Slegowiri (vet),Proto-Celtic,Striker/Slayer (Veteran)
+celtic_light_spearman,Slegowiros,Slegowiri,Proto-Celtic,Striker / Slayer
+celtic_light_spearman_exp,Slegowiros (exp),Slegowiri (exp),Proto-Celtic,Striker / Slayer (Experienced)
+celtic_light_spearman_vet,Slegowiros (vet),Slegowiri (vet),Proto-Celtic,Striker / Slayer (Veteran)
 celtic_naked_swordman,Kladiwos,Kladiwoi,Proto-Celtic,Swordsman
 celtic_naked_swordman_exp,Kladiwos (exp),Kladiwoi (exp),Proto-Celtic,Swordsman (Experienced)
 celtic_naked_swordman_vet,Kladiwos (vet),Kladiwoi (vet),Proto-Celtic,Swordsman (Veteran)
@@ -188,18 +188,18 @@ celtic_archer_vet,Arkwios (vet),Arkwioi (vet),Proto-Celtic,Archer (Veteran)
 celtic_horseman,Markakos Gaisowiros,Markakoi Gaisowiri,Proto-Celtic,Mounted Spearman
 celtic_horseman_exp,Markakos Gaisowiros (exp),Markakoi Gaisowiri (exp),Proto-Celtic,Mounted Spearman (Experienced)
 celtic_horseman_vet,Markakos Gaisowiros (vet),Markakoi Gaisowiri (vet),Proto-Celtic,Mounted Spearman (Veteran)
-celtic_noble_swords,Wenoi,Wenoi,Proto-Celtic,Kinsmen/Tribal Host
-celtic_noble_swords_exp,Wenoi (exp),Wenoi (exp),Proto-Celtic,Kinsmen/Tribal Host (Experienced)
-celtic_noble_swords_vet,Wenoi (vet),Wenoi (vet),Proto-Celtic,Kinsmen/Tribal Host (Veteran)
-caledonian_light_clubman,Wenos,Lorgowiri,Proto-Celtic,Kinsman/Club-men
-caledonian_light_clubman_exp,Wenos (exp),Lorgowiri (exp),Proto-Celtic,Kinsman/Club-men (Experienced)
-caledonian_light_clubman_vet,Wenos (vet),Lorgowiri (vet),Proto-Celtic,Kinsman/Club-men (Veteran)
+celtic_noble_swords,Wenoi,Wenoi,Proto-Celtic,Kinsmen / Tribal Host
+celtic_noble_swords_exp,Wenoi (exp),Wenoi (exp),Proto-Celtic,Kinsmen / Tribal Host (Experienced)
+celtic_noble_swords_vet,Wenoi (vet),Wenoi (vet),Proto-Celtic,Kinsmen / Tribal Host (Veteran)
+caledonian_light_clubman,Wenos,Lorgowiri,Proto-Celtic,Kinsman / Club-men
+caledonian_light_clubman_exp,Wenos (exp),Lorgowiri (exp),Proto-Celtic,Kinsman / Club-men (Experienced)
+caledonian_light_clubman_vet,Wenos (vet),Lorgowiri (vet),Proto-Celtic,Kinsman / Club-men (Veteran)
 caledonian_light_spearman,Kombrogos,Kombrogoi,Proto-Celtic,Fellow-countryman
 caledonian_light_spearman_exp,Kombrogos (exp),Kombrogoi (exp),Proto-Celtic,Fellow-countryman (Experienced)
 caledonian_light_spearman_vet,Kombrogos (vet),Kombrogoi (vet),Proto-Celtic,Fellow-countryman (Veteran)
-caledonian_naked_swordman,Teceitos,Teceitoi,Proto-Celtic,Household Warrior/Retainer
-caledonian_naked_swordman_exp,Teceitos (exp),Teceitoi (exp),Proto-Celtic,Household Warrior/Retainer (Experienced)
-caledonian_naked_swordman_vet,Teceitos (vet),Teceitoi (vet),Proto-Celtic,Household Warrior/Retainer (Veteran)
+caledonian_naked_swordman,Teceitos,Teceitoi,Proto-Celtic,Household Warrior / Retainer
+caledonian_naked_swordman_exp,Teceitos (exp),Teceitoi (exp),Proto-Celtic,Household Warrior / Retainer (Experienced)
+caledonian_naked_swordman_vet,Teceitos (vet),Teceitoi (vet),Proto-Celtic,Household Warrior / Retainer (Veteran)
 caledonian_skirmisher,Gaisowiros,Gaisowiri,Proto-Celtic,Spearman
 caledonian_skirmisher_exp,Gaisowiros (exp),Gaisowiri(exp),Proto-Celtic,Spearman (Experienced)
 caledonian_skirmisher_vet,Gaisowiros (vet),Gaisowiri (vet),Proto-Celtic,Spearman (Veteran)
@@ -209,9 +209,9 @@ caledonian_archer_vet,Arkwios (vet),Arkwioi (vet),Proto-Celtic,Archer (Veteran)
 caledonian_horseman,Markakos Trummos,Markakoi Trummoi,Proto-Celtic,Heavy Horseman
 caledonian_horseman_exp,Markakos Trummos (exp),Markakoi Trummoi (exp),Proto-Celtic,Heavy Horseman (Experienced)
 caledonian_horseman_vet,Markakos Trummos (vet),Markakoi Trummoi (vet),Proto-Celtic,Heavy Horseman (Veteran)
-caledonian_noble_swords,Kluddobros,Kluddobroi,Proto-Celtic,The Renowned One/Champion
-caledonian_noble_swords_exp,Kluddobros (exp),Kluddobroi (exp),Proto-Celtic,The Renowned One/Champion (Experienced)
-caledonian_noble_swords_vet,Kluddobros (vet),Kluddobroi (vet),Proto-Celtic,The Renowned One/Champion (Veteran)
+caledonian_noble_swords,Kluddobros,Kluddobroi,Proto-Celtic,The Renowned One / Champion
+caledonian_noble_swords_exp,Kluddobros (exp),Kluddobroi (exp),Proto-Celtic,The Renowned One / Champion (Experienced)
+caledonian_noble_swords_vet,Kluddobros (vet),Kluddobroi (vet),Proto-Celtic,The Renowned One / Champion (Veteran)
 dacian_light_spearman,Dakos Fyletikos Pezos,Daki Fyletikoi Pezoi,Greek,Dacian Tribal Foot-soldier
 dacian_light_spearman_exp,Dakos Fyletikos Pezos (exp),Daki Fyletikoi Pezoi (exp),Greek,Dacian Tribal Foot-soldier (Experienced)
 dacian_light_spearman_vet,Dakos Fyletikos Pezos (vet),Daki Fyletikoi Pezoi (vet),Greek,Dacian Tribal Foot-soldier (Veteran)
@@ -220,7 +220,7 @@ dacian_light_swordman_exp,Kometes Sicaphoros (exp),Komatai Sicaphoroi (exp),Gree
 dacian_light_swordman_vet,Kometes Sicaphoros (vet),Komatai Sicaphoroi (vet),Greek,Villager Dagger-man (Veteran)
 dacian_flaxman,Drapanistes,Drapanistai,Greek,Scythe-man
 dacian_flaxman_vet,Drapanistes (vet),Drapanistai (vet),Greek,Scythe-man (Veteran)
-dacian_flaxman_heavy,Epilektos Drapanistes,Epilektoi Drapanistai,Greek,Chosen/Elite Scythe-man
+dacian_flaxman_heavy,Epilektos Drapanistes,Epilektoi Drapanistai,Greek,Chosen / Elite Scythe-man
 dacian_noble_cav,Dakos Aristos Hippeus,Daki Aristoi Hippeis,Greek,Dacian Noble Horseman
 dacian_noble_cav_exp,Dakos Aristos Hippeus (exp),Daki Aristoi Hippeis (exp),Greek,Dacian Noble Horseman (Experienced)
 dacian_noble_cav_vet,Dakos Aristos Hippeus (vet),Daki Aristoi Hippeis (vet),Greek,Dacian Noble Horseman (Veteran)
@@ -245,9 +245,9 @@ sarmatian_archers_vet,Sauromates Hippotoxotes (vet),Sauromatai Hippotoxotai (vet
 sarmatian_light_horsearcher,Duno Asyo,Duna Asya,Old Iranian (Sarmatian),Horseman
 sarmatian_light_horsearcher_exp,Duno Asyo (exp),Duna Asya (exp),Old Iranian (Sarmatian),Horseman (Experienced)
 sarmatian_light_horsearcher_vet,Duno Asyo (vet),Duna Asya (vet),Old Iranian (Sarmatian),Horseman (Veteran)
-sarmatian_heavy_horsearcher,Sauromates Fat Aexsdzhyn,Sauromatae Fat Aexsdzhytae,Old Iranian (Sarmatian),Sarmatian Arrow Shooter/Archer
-sarmatian_heavy_horsearcher_exp,Sauromates Fat Aexsdzhyn (exp),Sauromatae Fat Aexsdzhytae (exp),Old Iranian (Sarmatian),Sarmatian Arrow Shooter/Archer (Experienced)
-sarmatian_heavy_horsearcher_vet,Sauromates Fat Aexsdzhyn (vet),Sauromatae Fat Aexsdzhytae (vet),Old Iranian (Sarmatian),Sarmatian Arrow Shooter/Archer (Veteran)
+sarmatian_heavy_horsearcher,Sauromates Fat Aexsdzhyn,Sauromatae Fat Aexsdzhytae,Old Iranian (Sarmatian),Sarmatian Arrow Shooter / Archer
+sarmatian_heavy_horsearcher_exp,Sauromates Fat Aexsdzhyn (exp),Sauromatae Fat Aexsdzhytae (exp),Old Iranian (Sarmatian),Sarmatian Arrow Shooter / Archer (Experienced)
+sarmatian_heavy_horsearcher_vet,Sauromates Fat Aexsdzhyn (vet),Sauromatae Fat Aexsdzhytae (vet),Old Iranian (Sarmatian),Sarmatian Arrow Shooter / Archer (Veteran)
 sarmatian_light_horseman,Aeldaro Aemhalto,Aeldary Aemhaltae,Old Iranian (Sarmatian),Noble Sworn-Brother
 sarmatian_light_horseman_exp,Aeldaro Aemhalto (exp),Aeldary Aemhaltae (exp),Old Iranian (Sarmatian),Noble Sworn-Brother (Experienced)
 sarmatian_light_horseman_vet,Aeldaro Aemhalto (vet),Aeldary Aemhaltae (vet),Old Iranian (Sarmatian),Noble Sworn-Brother (Veteran)
@@ -284,9 +284,9 @@ armenian_horsearcher_vet,Kaukasios Hippotoxotes (vet),Kaukasioi Hippotoxotai (ve
 caucasian_medium_horsearcher,Asistavi,Asistavebi,Kartvelian (Old Georgian),Caucasian Horsearche
 caucasian_medium_horsearcher_exp,Asistavi (exp),Asistavebi (exp),Kartvelian (Old Georgian),Caucasian Horsearche (Experienced)
 caucasian_medium_horsearcher_vet,Asistavi (vet),Asistavebi (vet),Kartvelian (Old Georgian),Caucasian Horsearche (Veteran)
-armenian_medium_horseman,Mkhedari,Mkhedrebi,Kartvelian (Old Georgian),Warrior/Horseman
-armenian_medium_horseman_exp,Mkhedari (exp),Mkhedrebi (exp),Kartvelian (Old Georgian),Warrior/Horseman (Experienced)
-armenian_medium_horseman_vet,Mkhedari (vet),Mkhedrebi (vet),Kartvelian (Old Georgian),Warrior/Horseman (Veteran)
+armenian_medium_horseman,Mkhedari,Mkhedrebi,Kartvelian (Old Georgian),Warrior / Horseman
+armenian_medium_horseman_exp,Mkhedari (exp),Mkhedrebi (exp),Kartvelian (Old Georgian),Warrior / Horseman (Experienced)
+armenian_medium_horseman_vet,Mkhedari (vet),Mkhedrebi (vet),Kartvelian (Old Georgian),Warrior / Horseman (Veteran)
 caucasian_cataphract,Kaukasios Basilikos Hippeus,Kaukasio Basilikoi Hippeis,Greek,Caucasian Royal Horseman
 caucasian_cataphract_exp,Kaukasios Basilikos Hippeus (exp),Kaukasio Basilikoi Hippeis (exp),Greek,Caucasian Royal Horseman (Experienced)
 caucasian_cataphract_vet,Kaukasios Basilikos Hippeus (vet),Kaukasio Basilikoi Hippeis (vet),Greek,Caucasian Royal Horseman (Veteran)
@@ -299,18 +299,18 @@ armenian_elite_infantry_vet,Armenikos Epilektos Toxotes (vet),Armenikoi Epilekto
 syrian_archer,Kassat,Kassata,Syriac,Archer
 syrian_archer_exp,Kassat (exp),Kassata (exp),Syriac,Archer (Experienced)
 syrian_archer_vet,Kassat (vet),Kassata (vet),Syriac,Archer (Veteran)
-syrian_spearman,Regaly,Regalye,Syriac,Foot-soldier/Infantryman
-syrian_spearman_exp,Regaly (exp),Regalye (exp),Syriac,Foot-soldier/Infantryman (Experienced)
-syrian_spearman_vet,Regaly (vet),Regalye (vet),Syriac,Foot-soldier/Infantryman (Veteran)
+syrian_spearman,Regaly,Regalye,Syriac,Foot-soldier / Infantryman
+syrian_spearman_exp,Regaly (exp),Regalye (exp),Syriac,Foot-soldier / Infantryman (Experienced)
+syrian_spearman_vet,Regaly (vet),Regalye (vet),Syriac,Foot-soldier / Infantryman (Veteran)
 syrian_horsearcher,Rakkba Kassat,Rakkba Kassata,Syriac,Horse Archer
 syrian_horsearcher_exp,Rakkba Kassat (exp),Rakkba Kassata (exp),Syriac,Horse Archer (Experienced)
 syrian_horsearcher_vet,Rakkba Kassat (vet),Rakkba Kassata (vet),Syriac,Horse Archer (Veteran)
-syrian_horseman,Rakkaba D-Dayyaqa,Rakkabe D-Dayyaqe,Syriac,Accurate Rider/Precision Horseman
-syrian_horseman_exp,Rakkaba D-Dayyaqa (exp),Rakkabe D-Dayyaqe (exp),Syriac, Rider/Horseman (Experienced)
-syrian_horseman_vet,Rakkaba D-Dayyaqa (vet),Rakkabe D-Dayyaqe (vet),Syriac, Rider/Horseman (Veteran)
-syrian_heavy_cav,Rakkaba D-Zerya,Rakkabe D-Zerya,Syriac,Armored Rider/Heavy Cavalry
-syrian_heavy_cav_exp,Rakkaba D-Zerya (exp),Rakkabe D-Zerya (exp),Syriac,Armored Rider/Heavy Cavalry (Experienced)
-syrian_heavy_cav_vet,Rakkaba D-Zerya (vet),Rakkabe D-Zerya (vet),Syriac,Armored Rider/Heavy Cavalry (Veteran)
+syrian_horseman,Rakkaba D-Dayyaqa,Rakkabe D-Dayyaqe,Syriac, Rider / Horseman
+syrian_horseman_exp,Rakkaba D-Dayyaqa (exp),Rakkabe D-Dayyaqe (exp),Syriac, Rider / Horseman (Experienced)
+syrian_horseman_vet,Rakkaba D-Dayyaqa (vet),Rakkabe D-Dayyaqe (vet),Syriac, Rider / Horseman (Veteran)
+syrian_heavy_cav,Rakkaba D-Zerya,Rakkabe D-Zerya,Syriac,Armored Rider / Heavy Cavalry
+syrian_heavy_cav_exp,Rakkaba D-Zerya (exp),Rakkabe D-Zerya (exp),Syriac,Armored Rider / Heavy Cavalry (Experienced)
+syrian_heavy_cav_vet,Rakkaba D-Zerya (vet),Rakkabe D-Zerya (vet),Syriac,Armored Rider / Heavy Cavalry (Veteran)
 
 eastern_light_archer,Thanvar Parsig,Thanvaran Parsig,Pahlavi (Middle Persian),Persian Archer
 eastern_light_archer_exp,Thanvar Parsig (exp),Thanvaran Parsig (exp),Pahlavi (Middle Persian),Persian Archer (Experienced)
@@ -336,9 +336,9 @@ eastern_horsearcher_vet,Shivatir Pahlavanig (vet),Shivatiran Pahlavanig (vet),Pa
 eastern_medium_horseman,Asavar Azat,Asavaran Azadan,Pahlavi (Middle Persian),Noble Cavalryman
 eastern_medium_horseman_exp,Asavar Azat (exp),Asavaran Azadan (exp),Pahlavi (Middle Persian),Noble Cavalryman (Experienced)
 eastern_medium_horseman_vet,Asavar Azat (vet),Asavaran Azadan (vet),Pahlavi (Middle Persian),Noble Cavalryman (Veteran)
-eastern_cataphract,Pahlavan Grivpanvar,Pahlavanan Grivpanvar,Pahlavi (Middle Persian),Parthian Heavy Guard / Cataphract
-eastern_cataphract_exp,Pahlavan Grivpanvar (exp),Pahlavanan Grivpanvar (exp),Pahlavi (Middle Persian),Parthian Heavy Guard / Cataphract (Experienced)
-eastern_cataphract_vet,Pahlavan Grivpanvar (vet),Pahlavanan Grivpanvar (vet),Pahlavi (Middle Persian),Parthian Heavy Guard / Cataphract (Veteran)
+eastern_cataphract,Pahlavan Grivpanvar,Pahlavanan Grivpanvar,Pahlavi (Middle Persian),Parthian Heavy GuardCataphract
+eastern_cataphract_exp,Pahlavan Grivpanvar (exp),Pahlavanan Grivpanvar (exp),Pahlavi (Middle Persian),Parthian Heavy GuardCataphract (Experienced)
+eastern_cataphract_vet,Pahlavan Grivpanvar (vet),Pahlavanan Grivpanvar (vet),Pahlavi (Middle Persian),Parthian Heavy GuardCataphract (Veteran)
 eastern_elite_infantry,Kamandar Zhayad,Kamandaran Zhayadan,Pahlavi (Middle Persian),Elite Archer
 eastern_elite_infantry_exp,Kamandar Zhayad (exp),Kamandaran Zhayadan (exp),Pahlavi (Middle Persian),Elite Archer (Experienced)
 eastern_elite_infantry_vet,Kamandar Zhayad (vet),Kamandaran Zhayadan (vet),Pahlavi (Middle Persian),Elite Archer (Veteran)
@@ -448,16 +448,16 @@ legio_v_macedonia_vet,Evocatus Legionis (V Macedonia),Evocati Legionis (V Macedo
 legio_vi_ferrata_vet,Evocatus Legionis (VI Ferrata),Evocati Legionis (VI Ferrata),Latin,Veteran of the 6th Legion Ferrata
 legio_x_fretensis_vet,Evocatus Legionis (X Fretensis),Evocati Legionis (X Fretensis),Latin,Veteran of the 10th Legion Fretensis
 praetoriani_milites_vet,Evocatus Praetoriani,Evocati Praetoriani,Latin,Praetorian Veteran
-looter,Latro,Latrones,Latin,Robber / Looter
-bandit,Leistes,Leistai,Greek,Bandit / Robber
-brigand,Sicarius,Sicarii,Latin,Assassin / Dagger-man
-judean_sicarius,Iudaicus Sicarius,Iudaici Sicarii,Latin,Judean Assassin / Dagger-man
+looter,Latro,Latrones,Latin,RobberLooter
+bandit,Leistes,Leistai,Greek,BanditRobber
+brigand,Sicarius,Sicarii,Latin,AssassinDagger-man
+judean_sicarius,Iudaicus Sicarius,Iudaici Sicarii,Latin,Judean AssassinDagger-man
 judean_rebel,Iudaicus Rebellis,Iudaici Rebellis,Latin,Judean Rebel
 hispanic_bandit,Hispanicus Rebellis,Hispanici Rebellis,Latin,Hispanic Rebel
-sea_raider,Pirata,Piratae,Latin,Pirate / Sea Raider
+sea_raider,Pirata,Piratae,Latin,PirateSea Raider
 black_sea_priate,Pirata Mare Euxinum,Piratae Mare Euxinum,Latin,Pirate of the Black Sea
 alannic_raider,Alanna Baragatae,Alan Baragatae,Old Iranian (Alanic),Alanic Raider
-illyrian_bandit,Illyricus Sicarius,Illyrici Sicarii,Latin,Illyrian Assassin / Dagger-man
+illyrian_bandit,Illyricus Sicarius,Illyrici Sicarii,Latin,Illyrian AssassinDagger-man
 slave_warrior,Seditiosus Servus,Seditiosi Servi,Latin,Mutinous Slave
 slave_warrior_2,Seditiosus Pedes,Seditiosi Pedites,Latin,Mutinous Foot-soldier
 slave_warrior_3,Seditiosus Hastatus,Seditiosi Hastati,Latin,Mutinous Spearman
@@ -569,24 +569,24 @@ ransom_broker_7,Venalicius Decimus,Venalicius Decimus,Latin,Slave Dealer Decimus
 ransom_broker_8,Doulon Emporos Phazinamos,Doulon Emporos Phazinamos,Greek,Slave Merchant Phazinamos
 ransom_broker_9,Venalicius Remus,Venalicius Remus,Latin,Slave Dealer Remus
 ransom_broker_10,Doulon Emporos Blaikisa,Doulon Emporos Blaikisa,Greek,Slave Merchant Blaikisa
-tavern_traveler_1,Epelytes,Epelytes,Greek,Traveler / Newcomer
-tavern_traveler_2,Epelytes,Epelytes,Greek,Traveler / Newcomer
-tavern_traveler_3,Epelytes,Epelytes,Greek,Traveler / Newcomer
-tavern_traveler_4,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_1,Epelytes,Epelytes,Greek,TravelerNewcomer
+tavern_traveler_2,Epelytes,Epelytes,Greek,TravelerNewcomer
+tavern_traveler_3,Epelytes,Epelytes,Greek,TravelerNewcomer
+tavern_traveler_4,Epelytes,Epelytes,Greek,TravelerNewcomer
 tavern_traveler_5,Viator,Viator,Latin,Traveler
 tavern_traveler_6,Viator,Viator,Latin,Traveler
 tavern_traveler_7,Viator,Viator,Latin,Traveler
-tavern_traveler_8,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_8,Epelytes,Epelytes,Greek,TravelerNewcomer
 tavern_traveler_9,Viator,Viator,Latin,Traveler
-tavern_traveler_10,Carant,Carant,Proto-Celtic,Friend / Kinsman
-tavern_traveler_11,Weljakwumo,Weljakwumo,Proto-Germanic,Guest / Welcome One
+tavern_traveler_10,Carant,Carant,Proto-Celtic,FriendKinsman
+tavern_traveler_11,Weljakwumo,Weljakwumo,Proto-Germanic,GuestWelcome One
 tavern_traveler_12,Viator,Viator,Latin,Traveler
-tavern_traveler_13,Epelytes,Epelytes,Greek,Traveler / Newcomer
-tavern_traveler_14,Epelytes,Epelytes,Greek,Traveler / Newcomer
-tavern_traveler_15,Epelytes,Epelytes,Greek,Traveler / Newcomer
-tavern_traveler_16,Epelytes,Epelytes,Greek,Traveler / Newcomer
-tavern_traveler_17,Epelytes,Epelytes,Greek,Traveler / Newcomer
-tavern_traveler_18,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_13,Epelytes,Epelytes,Greek,TravelerNewcomer
+tavern_traveler_14,Epelytes,Epelytes,Greek,TravelerNewcomer
+tavern_traveler_15,Epelytes,Epelytes,Greek,TravelerNewcomer
+tavern_traveler_16,Epelytes,Epelytes,Greek,TravelerNewcomer
+tavern_traveler_17,Epelytes,Epelytes,Greek,TravelerNewcomer
+tavern_traveler_18,Epelytes,Epelytes,Greek,TravelerNewcomer
 tavern_traveler_19,Viator,Viator,Latin,Traveler
 tavern_traveler_20,Viator,Viator,Latin,Traveler
 tavern_bookseller_1,Librarius,Librarius,Latin,Bookseller
@@ -668,15 +668,15 @@ roman_priest_female,Sacerdos,Sacerdotes,Latin,Priestess
 roman_priest,Sacerdos,Sacerdotes,Latin,PriesT
 jewish_priest,Kohen,Kohanim,Hebrew,Priest (of the Temple)
 christian_priest,Sacerdos,Sacerdotes,Latin,Priest
-norse_priest,Gudjaen,Gudjaeniz,Proto-Germanic,Priest / Chieftain
+norse_priest,Gudjaen,Gudjaeniz,Proto-Germanic,PriestChieftain
 celtic_druid,Draid,Draoidhean,Proto-Celtic,Druid
-dacian_priest,Ziratos,Ziratoi,Dacian (Reconstructed),Seer / Holy One
-sarmatian_sky_priest,Asman-magus,Asman-magun,Old Iranian (Sarmatian),Sky-Mage / Sky Priest
-sarmatian_priest,Enaree,Enarei,Greek (from Scythian),Shaman / Soothsayer
-caucasian_priest,Kadagi,Kadagi,Kartvelian (Old Georgian),Mage / Priest
+dacian_priest,Ziratos,Ziratoi,Thracian (Reconstructed),SeerHoly One
+sarmatian_sky_priest,Asman-magus,Asman-magun,Old Iranian (Sarmatian),Sky-MageSky Priest
+sarmatian_priest,Enaree,Enarei,Greek (from Scythian),ShamanSoothsayer
+caucasian_priest,Kadagi,Kadagi,Kartvelian (Old Georgian),MagePriest
 armenian_priest,K'urm,K'rmerk',Classical Armenian,Priest (Pagan)
-persian_priest,Mobad,Mobad,Pahlavi (Middle Persian),Mage / Zoroastrian Priest
-arabian_priest,Afkal,Afkal,Sabaean/Arabic,Sage / Priest
-berber_priest,Amussnaw,Imussnawen,Libyco-Berber,The Knower / Wise One
+persian_priest,Mobad,Mobad,Pahlavi (Middle Persian),MageZoroastrian Priest
+arabian_priest,Afkal,Afkal,Sabaean / Arabic,SagePriest
+berber_priest,Amussnaw,Imussnawen,Libyco-Berber,The KnowerWise One
 garamantian_priest,W'b n Jmn,W'bw n Jmn,Late Egyptian,Pure One (Priest) of Ammon
 nubian_priest,Pelmos Apedemakli,Pelmosli Apedemakli,Meroitic,Priest of Apedemak

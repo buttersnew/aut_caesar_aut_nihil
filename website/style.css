@@ -371,3 +371,52 @@ footer {
   left: 0;
   z-index: -1; /* This is the key: it places the canvas BEHIND all other content */
 }
+
+.database-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #141414; /* Or your standard section background */
+    position: relative;
+    z-index: 2;
+}
+
+.database-section h2 {
+    font-size: 3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* This creates the red underline */
+.database-section h2::after {
+    content: '';
+    display: block;
+    width: 250px;
+    height: 4px;
+    background-color: #E50914; /* Your site's red color */
+    margin: 20px auto 0;
+}
+
+.database-section p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+/* Styles for the new, larger, purple link */
+.database-link {
+    display: inline-block;
+    font-size: 1.4em;
+    color: #9370DB; /* A nice, clear purple */
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.database-link:hover {
+    color: #a991e8; /* A slightly lighter purple for hover */
+}
+
+.database-link i {
+    margin-right: 8px;
+}
