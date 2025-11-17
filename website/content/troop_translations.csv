@@ -579,7 +579,7 @@ tavern_traveler_7,Viator,Viator,Latin,Traveler
 tavern_traveler_8,Epelytes,Epelytes,Greek,TravelerNewcomer
 tavern_traveler_9,Viator,Viator,Latin,Traveler
 tavern_traveler_10,Carant,Carant,Proto-Celtic,FriendKinsman
-tavern_traveler_11,Weljakwumo,Weljakwumo,Proto-Germanic,GuestWelcome One
+tavern_traveler_11,Weljakwumo,Weljakwumo,Proto-Germanic,Guest / Welcome One
 tavern_traveler_12,Viator,Viator,Latin,Traveler
 tavern_traveler_13,Epelytes,Epelytes,Greek,TravelerNewcomer
 tavern_traveler_14,Epelytes,Epelytes,Greek,TravelerNewcomer
@@ -665,13 +665,13 @@ nubian_deserter,Desertor Nubianus,Desertores Nubiani,Latin,Nubian Deserter
 saka_deserter,Sacae Desertor,Sacae Desertores,Latin,Saka Deserter
 egyptian_deserter,Desertor Aegyptius,Desertores Aegyptii,Latin,Egyptian Deserter
 roman_priest_female,Sacerdos,Sacerdotes,Latin,Priestess
-roman_priest,Sacerdos,Sacerdotes,Latin,PriesT
+roman_priest,Sacerdos,Sacerdotes,Latin,Priest
 jewish_priest,Kohen,Kohanim,Hebrew,Priest (of the Temple)
 christian_priest,Sacerdos,Sacerdotes,Latin,Priest
-norse_priest,Gudjaen,Gudjaeniz,Proto-Germanic,PriestChieftain
+norse_priest,Gudjaen,Gudjaeniz,Proto-Germanic,Priest / Chieftain
 celtic_druid,Draid,Draoidhean,Proto-Celtic,Druid
 dacian_priest,Ziratos,Ziratoi,Thracian (Reconstructed),SeerHoly One
-sarmatian_sky_priest,Asman-magus,Asman-magun,Old Iranian (Sarmatian),Sky-MageSky Priest
+sarmatian_sky_priest,Asman-magus,Asman-magun,Old Iranian (Sarmatian),Sky-Mage / Sky Priest
 sarmatian_priest,Enaree,Enarei,Greek (from Scythian),ShamanSoothsayer
 caucasian_priest,Kadagi,Kadagi,Kartvelian (Old Georgian),MagePriest
 armenian_priest,K urm,K rmerk,Classical Armenian,Priest (Pagan)
