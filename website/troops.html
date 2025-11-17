@@ -13,12 +13,31 @@
     input.search { width: 100%; padding: 10px; margin-bottom: 14px; border-radius:6px; border:1px solid #333; background:#222; color:#eee; }
     .meta { margin-bottom: 10px; color:#aaa; }
     .download-btn { display:inline-block; margin-top:10px; padding:8px 14px; background:#E50914; color:#fff; text-decoration:none; border-radius:6px; }
+
+    /* NEW: Styles for clickable and sorted headers */
+    th.sortable {
+      cursor: pointer;
+      user-select: none; /* Prevents text selection when clicking */
+    }
+    th.sortable:hover {
+      background: #333;
+    }
+    /* NEW: Styles for the sort direction indicator arrow */
+    th.sort-asc::after,
+    th.sort-desc::after {
+      content: '';
+      display: inline-block;
+      margin-left: 5px;
+      opacity: 0.7;
+    }
+    th.sort-asc::after { content: ' ▲'; }
+    th.sort-desc::after { content: ' ▼'; }
   </style>
 </head>
 <body>
   <div class="table-wrap container">
     <h1>Troop Translations</h1>
-    <p class="meta">Loaded from <code>content/troop_translations.csv</code>. Use the filter box to search by id or name.</p>
+    <p class="meta">Loaded from <code>content/troop_translations.csv</code>. Use the filter box to search by id or name. Click on a column header to sort. Please take note with caution; there is no guarantee that the translations are correct.</p>
 
     <input class="search" id="filter" placeholder="Filter (id, singular, plural, english name)..." />
 
@@ -28,7 +47,14 @@
     <div style="overflow:auto; margin-top:10px;">
       <table id="troop-table">
         <thead>
-          <tr><th>id</th><th>Singular</th><th>Plural</th><th>Source Lang</th><th>English</th></tr>
+          <tr>
+            <!-- NEW: Added a class to make headers identifiable -->
+            <th class="sortable">Troop-ID</th>
+            <th class="sortable">Singular</th>
+            <th class="sortable">Plural</th>
+            <th class="sortable">Source Language</th>
+            <th class="sortable">English</th>
+          </tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -50,7 +76,6 @@
         for (let i=0;i<line.length;i++) {
           const ch = line[i];
           if (ch === '"' || ch === "'") {
-            // toggle quote state (simple)
             inQuote = !inQuote;
             continue;
           }
@@ -72,7 +97,6 @@
       tbody.innerHTML = '';
       for (const r of rows) {
         const tr = document.createElement('tr');
-        // ensure at least 5 columns, fill blanks if necessary
         const [id='', singular='', plural='', lang='', english=''] = r.concat([]).slice(0,5);
         tr.innerHTML = `<td>${escapeHTML(id)}</td><td>${escapeHTML(singular)}</td><td>${escapeHTML(plural)}</td><td>${escapeHTML(lang)}</td><td>${escapeHTML(english)}</td>`;
         tbody.appendChild(tr);
@@ -86,21 +110,65 @@
       try {
         const csvPath = 'content/troop_translations.csv';
         const rows = await loadCSV(csvPath);
-        // If the CSV has a header row (doesn't in your sample), remove it.
-        // We'll check if the first row looks like a header by looking for non-id-like content:
         const first = rows[0] || [];
         const isHeader = first.length && !/^[a-z0-9_]+$/i.test(first[0]);
         const data = isHeader ? rows.slice(1) : rows;
-        render(data);
 
-        // filtering
+        // NEW: State variables to track sorting
+        let sortColumn = -1; // -1 means no column is sorted
+        let sortDirection = 'asc'; // 'asc' or 'desc'
+
+        render(data); // Initial render
+
         const input = document.getElementById('filter');
-        input.addEventListener('input', () => {
+        const headers = document.querySelectorAll('#troop-table .sortable');
+
+        // NEW: Function to apply filter and re-render the table
+        // This is needed so both filtering and sorting can trigger a table update
+        function updateTable() {
           const q = input.value.trim().toLowerCase();
-          if (!q) return render(data);
-          const filtered = data.filter(cols => cols.join(' ').toLowerCase().includes(q));
-          render(filtered);
+          const filteredData = !q
+            ? data // If no filter, use the full (sorted) data
+            : data.filter(cols => cols.join(' ').toLowerCase().includes(q));
+          render(filteredData);
+        }
+
+        input.addEventListener('input', updateTable);
+
+        // NEW: Add click listeners to each sortable header
+        headers.forEach((header, index) => {
+          header.addEventListener('click', () => {
+            // Remove sort indicator classes from all other headers
+            headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+
+            // Determine sort direction
+            if (sortColumn === index) {
+              sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+              sortColumn = index;
+              sortDirection = 'asc';
+            }
+
+            // Add the appropriate class to the clicked header for visual feedback
+            header.classList.add(sortDirection === 'asc' ? 'sort-asc' : 'sort-desc');
+
+            // Sort the main data array
+            data.sort((a, b) => {
+              const valA = a[sortColumn] || '';
+              const valB = b[sortColumn] || '';
+
+              // Use localeCompare for robust string comparison
+              const comparison = valA.localeCompare(valB, undefined, { numeric: true, sensitivity: 'base' });
+
+              // Reverse the result if sorting in descending order
+              return comparison * (sortDirection === 'asc' ? 1 : -1);
+            });
+
+            // Re-apply the filter and render the newly sorted data
+            updateTable();
+          });
         });
+
       } catch (err) {
         console.error(err);
         document.querySelector('.table-wrap').innerHTML = '<p style="color:tomato">Error loading CSV: '+err.message+'</p>';

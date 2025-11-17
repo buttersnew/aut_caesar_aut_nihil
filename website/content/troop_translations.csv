@@ -1,4 +1,3 @@
-troop_id,name_singular,name_plural
 farmer,Rusticus,Rustici,Latin,Farmer
 sarmatian_peasant,Sarmata Tribulis,Sarmatae Tribules,Latin,Sarmatian Peasant
 bosporan_peasant,Bosporanus Rusticus,Bosporani Rustici,Latin,Bosporan Peasant
@@ -37,7 +36,7 @@ slinger_rhodos,Rhodios Sphendonetes,Rhodioi Sphendonetai,Greek,Rhodian Slinger
 kreta_archer,Kres Toxotes,Kretes Toxotai,Greek,Cretan Archer
 hoplit,Hoplites,Hoplitai,Greek,Hoplite
 phalanx,Phalangit,Phalangitai,Greek,Phalangite
-hoplit_2,Epilektos,Epilektoi,Greek,Chosen Hoplite / Elite
+hoplit_2,Epilektos,Epilektoi,Greek,Chosen Hoplite/Elite
 hispanic_infantry,Scutarius,Scutarii,Latin,Shield-bearer (Hispanic Infantry)
 hispanic_heavy_infantry,Loricati Scutarius,Loricati Scutarii,Latin,Armored Shield-bearer (Hispanic Heavy Infantry)
 scythian_horse_archer,Skythikos Hippeus,Skythikoi Hippeis,Greek,Scythian Horseman
@@ -46,11 +45,11 @@ scythian_medium_cavalry,Skythios Lonchophoros,Skythioi Lonchophoroi,Greek,Scythi
 scythian_cataphract,Skythikos Kataphraktos,Skythikoi Kataphraktoi,Greek,Scythian Cataphract
 alan_horse_archer,Alanno Badaro,Alanna Badarai,Old Iranian (Alanic),Alan Chieftain
 alan_heavy_horse_archer,Alanno Leazdaetta,Alanna Leazdaettae,Old Iranian (Alanic),Alan Shield-bearer
-celtic_freeman,Ambaktos,Ambaktoi,Proto-Celtic,Retainer / Vassal Warrior
-celtic_elite_swordsman,Arios,Arioi,Proto-Celtic,Noble / Freemen
+celtic_freeman,Ambaktos,Ambaktoi,Proto-Celtic,Retainer/Vassal Warrior
+celtic_elite_swordsman,Arios,Arioi,Proto-Celtic,Noble/Freemen
 irish_skirmisher,Weidelos Iwerakos,Weideloi Iwerakoi,Proto-Celtic,Irish Seer
 irish_vetran,Ouxselos Iwerakos,Ouxseloi Iwerakoi,Proto-Celtic,High/Exalted Irish Warrior
-germanic_hunter,Sakandz,Sakandiz,Proto-Germanic,Contender / Fighter
+germanic_hunter,Sakandz,Sakandiz,Proto-Germanic,Contender/Fighter
 germanic_free_spearman,Gaizaz Frijaz,Gaizoz Frijoz,Proto-Germanic,Free Spearman
 germanic_nightwarrior,Hariaz Skaduganganaz,Harioz Skaduganganoz,Proto-Germanic,The Shadow-Walking War-band
 germanic_free_nobleman,Istaevonaz Druthinaz,Istaevonoz Druthinoz,Proto-Germanic,Istaevonic Lord
@@ -109,3 +108,575 @@ egyptian_standard_bearer,Tjai-seryt,Tjaiu-seryt,Ancient Egyptian,Egyptian Standa
 egyptian_hornman,Weha-en-deb,Wehau-en-deb,Ancient Egyptian,Egyptian Horn-man
 hornman,Xenikos Moysikos,Xenikoi Moysikoi,Greek,Mercenary Musician
 judean_hornman,Antolikos Moysikos,Antolikoi Moysikoi,Greek,Eastern Musician
+judean_light_clubman,Judaios Thureophores,Judaioi Thureophoroi,Greek,Judean Large Shield Bearer
+judean_light_clubman_exp,Judaios Thureophores (exp),Judaioi Thureophoroi (exp),Greek,Judean Large Shield Bearer (Experienced)
+judean_light_clubman_vet,Judaios Thureophores (vet),Judaioi Thureophoroi (vet),Greek,Judean Large Shield Bearer (Veteran)
+judean_light_spearman,Judaios Taxes,Ioudaioi Taxeis,Greek,Judean Infantryman
+judean_light_spearman_exp,Judaios Taxes (exp),Ioudaioi Taxeis (exp),Greek,Judean Infantryman (Experienced)
+judean_light_spearman_vet,Judaios Taxes (vet),Ioudaioi Taxeis (vet),Greek,Judean Infantryman (Veteran)
+judean_skirmisher,Judaios Peltastes,Judaioi Peltastai,Greek,Judean Light Shield Bearer (Peltast)
+judean_skirmisher_exp,Judaios Peltastes (exp),Judaioi Peltastai (exp),Greek,Judean Light Shield Bearer (Peltast) (Experienced)
+judean_skirmisher_vet,Judaios Peltastes (vet),Judaioi Peltastai (vet),Greek,Judean Light Shield Bearer (Peltast) (Veteran)
+judean_slinger,Judaios Sphendonetes,Ioudaioi Sphendonetai,Greek,Judean Slinger
+judean_slinger_exp,Judaios Sphendonetes (exp),Ioudaioi Sphendonetai (exp),Greek,Judean Slinger (Experienced)
+judean_slinger_vet,Judaios Sphendonetes (vet),Ioudaioi Sphendonetai (vet),Greek,Judean Slinger (Veteran)
+judean_archer,Judaios Toxotes,Ioudaioi Toxotai,Greek,Judean Archer
+judean_archer_exp,Judaios Toxotes (exp),Ioudaioi Toxotai (exp),Greek,Judean Archer (Experienced)
+judean_archer_vet,Judaios Toxotes (vet),Ioudaioi Toxotai (vet),Greek,Judean Archer (Veteran)
+judean_elite,Judaios Thorakites,Ioudaioi Thorakitai,Greek,Judean Armored Infantry
+judean_elite_exp,Judaios Thorakites (exp),Ioudaioi Thorakitai (exp),Greek,Judean Armored Infantry (Experienced)
+judean_elite_vet,Judaios Thorakites (vet),Ioudaioi Thorakitai (vet),Greek,Judean Armored Infantry (Veteran)
+judean_cav,Judaios Hippakontistes,Ioudaioi Hippakontistai,Greek,Judean Horse Javelin-man
+judean_cav_exp,Judaios Hippakontistes (exp),Ioudaioi Hippakontistai (exp),Greek,Judean Horse Javelin-man (Experienced)
+judean_cav_vet,Judaios Hippakontistes (vet),Ioudaioi Hippakontistai (vet),Greek,Judean Horse Javelin-man (Veteran)
+judean_guard,Sebastenos Peltastes,Sebastenoi Peltastai,Greek,Light Shield Bearer from Sebaste (Samaria, renamed to Sebaste by Herod in honour of Augustus)
+judean_guard_vet,Sebastenos Peltastes,Sebastenoi Peltastai (vet),Greek,Light Shield Bearer from Sebaste (Samaria, renamed to Sebaste by Herod in honour of Augustus) (Veteran)
+judean_guard_archer,Sebastenos Toxotes,Sebastenoi Toxotai,Greek,Archer from Sebaste
+judean_guard_archer_vet,Sebastenos Toxotes,Sebastenoi Toxotai (vet),Greek,Archer from Sebaste (Samaria, renamed to Sebaste by Herod in honour of Augustus) (Veteran)
+bosporan_light_spearman,Bosporanos Entopios,Bosporanoi Entopioi,Greek,Bosporan Local/Native Soldier
+bosporan_light_spearman_exp,Bosporanos Entopios (exp),Bosporanoi Entopioi (exp),Greek,Bosporan Local/Native Soldier (Experienced)
+bosporan_light_spearman_vet,Bosporanos Entopios (vet),Bosporanoi Entopioi (vet),Greek,Bosporan Local/Native Soldier (Veteran)
+bosporan_archer,Bosporanos Toxotes,Bosporanoi Toxotia,Greek,Bosporan Archer
+bosporan_archer_exp,Bosporanos Toxotes (exp),Bosporanoi Toxotia (exp),Greek,Bosporan Archer (Experienced)
+bosporan_archer_vet,Bosporanos Toxotes (vet),Bosporanoi Toxotia (vet),Greek,Bosporan Archer (Veteran)
+bosporan_elite,Bosporanos Pezos,Bosporanoi Pezoi,Greek,Bosporan Infantryman
+bosporan_elite_exp,Bosporanos Pezos (exp),Bosporanoi Pezoi (exp),Greek,Bosporan Infantryman (Experienced)
+bosporan_elite_vet,Bosporanos Pezos (vet),Bosporanoi Pezoi (vet),Greek,Bosporan Infantryman (Veteran)
+bosporan_cav,Sauromatikos Kataphraktos,Sauromatikoi Kataphraktoi,Greek,Sarmatian Cataphract
+bosporan_cav_exp,Sauromatikos Kataphraktos (exp),Sauromatikoi Kataphraktoi (exp),Greek,Sarmatian Cataphract (Experienced)
+bosporan_cav_vet,Sauromatikos Kataphraktos (vet),Sauromatikoi Kataphraktoi (vet),Greek,Sarmatian Cataphract (Veteran)
+germanic_light_clubman,Slagandz,Slagandiz,Proto-Germanic,Striker/Slayer
+germanic_light_clubman_exp,Slagandz (exp),Slagandiz (exp),Proto-Germanic,Striker/Slayer (Experienced)
+germanic_light_clubman_vet,Slagandz (vet),Slagandiz (vet),Proto-Germanic,Striker/Slayer (Veteran)
+germanic_light_spearman,Gaizafulkan Frijatoz,Gaizafulkan Frijato,Proto-Germanic,The Freed Spear-Folk
+germanic_light_spearman_exp,Gaizafulkan Frijatoz (exp),Gaizafulkan Frijato (exp),Proto-Germanic,The Freed Spear-Folk (Experienced)
+germanic_light_spearman_vet,Gaizafulkan Frijatoz (vet),Gaizafulkan Frijato (vet),Proto-Germanic,The Freed Spear-Folk (Veteran)
+germanic_skirmisher,Jungaz,Jungoz,Proto-Germanic,Youth/Young Warrior
+germanic_skirmisher_exp,Jungaz (exp),Jungoz (exp),Proto-Germanic,Youth/Young Warrior (Experienced)
+germanic_skirmisher_vet,Jungaz (vet),Jungoz (vet),Proto-Germanic,Youth/Young Warrior (Veteran)
+germanic_slinger,Stainawerpandz,Stainawerpandiz,Proto-Germanic,Stone-thrower
+germanic_slinger_exp,Stainawerpandz (exp),Stainawerpandiz (exp),Proto-Germanic,Stone-thrower (Experienced)
+germanic_slinger_vet,Stainawerpandz (vet),Stainawerpandiz (vet),Proto-Germanic,Stone-thrower (Veteran)
+germanic_archer,Skuttilaz,Skuttiloz,Proto-Germanic,Archer/Shooter
+germanic_archer_exp,Skuttilaz (exp),Skuttiloz (exp),Proto-Germanic,Archer/Arrow Shooter (Experienced)
+germanic_archer_vet,Skuttilaz (vet),Skuttiloz (vet),Proto-Germanic,Archer/Arrow Shooter (Veteran)
+germanic_berserker,Tiwisa Wigandz,Tiwisa Wigandiz,Proto-Germanic,Fighter of Tiwaz
+germanic_noble_swordsman,Druthinaz Swebiskaz,Druthinoz Swebiskoz,Proto-Germanic,Suebian Lord
+germanic_noble_swordsman_exp,Druthinaz Swebusku (exp),Druthinoz Swebiskoz (exp),Proto-Germanic,Suebian Lord (Experienced)
+germanic_noble_swordsman_vet,Druthinaz Swebusku (vet),Druthinoz Swebiskoz (vet),Proto-Germanic,Suebian Lord (Veteran)
+germanic_noble_spearman,Dugandz,Dugandiz,Proto-Germanic,The Valiant One
+germanic_noble_spearman_exp,Dugandz (exp),Dugandiz (exp),Proto-Germanic,The Valiant One (Experienced)
+germanic_noble_spearman_vet,Dugandz (vet),Dugandiz (vet),Proto-Germanic,The Valiant One (Veteran)
+germanic_cavalry,Ridandz,Ridandiz,Proto-Germanic,The Rider
+germanic_cavalry_exp,Ridandz (exp),Ridandiz (exp),Proto-Germanic,The Rider (Experienced)
+germanic_cavalry_vet,Ridandz (vet),Ridandiz (vet),Proto-Germanic,The Rider (Veteran)
+celtic_light_clubman,Lorgowiros,Lorgowiri,Proto-Celtic,Club-man
+celtic_light_clubman_exp,Lorgowiros (exp),Lorgowiri (exp),Proto-Celtic,Club-man (Experienced)
+celtic_light_clubman_vet,Lorgowiros (vet),Lorgowiri (vet),Proto-Celtic,Club-man (Veteran)
+celtic_light_spearman,Slegowiros,Slegowiri,Proto-Celtic,Striker/Slayer
+celtic_light_spearman_exp,Slegowiros (exp),Slegowiri (exp),Proto-Celtic,Striker/Slayer (Experienced)
+celtic_light_spearman_vet,Slegowiros (vet),Slegowiri (vet),Proto-Celtic,Striker/Slayer (Veteran)
+celtic_naked_swordman,Kladiwos,Kladiwoi,Proto-Celtic,Swordsman
+celtic_naked_swordman_exp,Kladiwos (exp),Kladiwoi (exp),Proto-Celtic,Swordsman (Experienced)
+celtic_naked_swordman_vet,Kladiwos (vet),Kladiwoi (vet),Proto-Celtic,Swordsman (Veteran)
+celtic_skirmisher,Gaisowiros,Gaisowiri,Proto-Celtic,Spearman
+celtic_skirmisher_exp,Gaisowiros (exp),Gaisowiri(exp),Proto-Celtic,Spearman (Experienced)
+celtic_skirmisher_vet,Gaisowiros (vet),Gaisowiri (vet),Proto-Celtic,Spearman (Veteran)
+celtic_archer,Arkwios,Arkwioi,Proto-Celtic,Archer
+celtic_archer_exp,Arkwios (exp),Arkwioi (exp),Proto-Celtic,Archer (Experienced)
+celtic_archer_vet,Arkwios (vet),Arkwioi (vet),Proto-Celtic,Archer (Veteran)
+celtic_horseman,Markakos Gaisowiros,Markakoi Gaisowiri,Proto-Celtic,Mounted Spearman
+celtic_horseman_exp,Markakos Gaisowiros (exp),Markakoi Gaisowiri (exp),Proto-Celtic,Mounted Spearman (Experienced)
+celtic_horseman_vet,Markakos Gaisowiros (vet),Markakoi Gaisowiri (vet),Proto-Celtic,Mounted Spearman (Veteran)
+celtic_noble_swords,Wenoi,Wenoi,Proto-Celtic,Kinsmen/Tribal Host
+celtic_noble_swords_exp,Wenoi (exp),Wenoi (exp),Proto-Celtic,Kinsmen/Tribal Host (Experienced)
+celtic_noble_swords_vet,Wenoi (vet),Wenoi (vet),Proto-Celtic,Kinsmen/Tribal Host (Veteran)
+caledonian_light_clubman,Wenos,Lorgowiri,Proto-Celtic,Kinsman/Club-men
+caledonian_light_clubman_exp,Wenos (exp),Lorgowiri (exp),Proto-Celtic,Kinsman/Club-men (Experienced)
+caledonian_light_clubman_vet,Wenos (vet),Lorgowiri (vet),Proto-Celtic,Kinsman/Club-men (Veteran)
+caledonian_light_spearman,Kombrogos,Kombrogoi,Proto-Celtic,Fellow-countryman
+caledonian_light_spearman_exp,Kombrogos (exp),Kombrogoi (exp),Proto-Celtic,Fellow-countryman (Experienced)
+caledonian_light_spearman_vet,Kombrogos (vet),Kombrogoi (vet),Proto-Celtic,Fellow-countryman (Veteran)
+caledonian_naked_swordman,Teceitos,Teceitoi,Proto-Celtic,Household Warrior/Retainer
+caledonian_naked_swordman_exp,Teceitos (exp),Teceitoi (exp),Proto-Celtic,Household Warrior/Retainer (Experienced)
+caledonian_naked_swordman_vet,Teceitos (vet),Teceitoi (vet),Proto-Celtic,Household Warrior/Retainer (Veteran)
+caledonian_skirmisher,Gaisowiros,Gaisowiri,Proto-Celtic,Spearman
+caledonian_skirmisher_exp,Gaisowiros (exp),Gaisowiri(exp),Proto-Celtic,Spearman (Experienced)
+caledonian_skirmisher_vet,Gaisowiros (vet),Gaisowiri (vet),Proto-Celtic,Spearman (Veteran)
+caledonian_archer,Arkwios,Arkwioi,Proto-Celtic,Archer
+caledonian_archer_exp,Arkwios (exp),Arkwioi (exp),Proto-Celtic,Archer (Experienced)
+caledonian_archer_vet,Arkwios (vet),Arkwioi (vet),Proto-Celtic,Archer (Veteran)
+caledonian_horseman,Markakos Trummos,Markakoi Trummoi,Proto-Celtic,Heavy Horseman
+caledonian_horseman_exp,Markakos Trummos (exp),Markakoi Trummoi (exp),Proto-Celtic,Heavy Horseman (Experienced)
+caledonian_horseman_vet,Markakos Trummos (vet),Markakoi Trummoi (vet),Proto-Celtic,Heavy Horseman (Veteran)
+caledonian_noble_swords,Kluddobros,Kluddobroi,Proto-Celtic,The Renowned One/Champion
+caledonian_noble_swords_exp,Kluddobros (exp),Kluddobroi (exp),Proto-Celtic,The Renowned One/Champion (Experienced)
+caledonian_noble_swords_vet,Kluddobros (vet),Kluddobroi (vet),Proto-Celtic,The Renowned One/Champion (Veteran)
+dacian_light_spearman,Dakos Fyletikos Pezos,Daki Fyletikoi Pezoi,Greek,Dacian Tribal Foot-soldier
+dacian_light_spearman_exp,Dakos Fyletikos Pezos (exp),Daki Fyletikoi Pezoi (exp),Greek,Dacian Tribal Foot-soldier (Experienced)
+dacian_light_spearman_vet,Dakos Fyletikos Pezos (vet),Daki Fyletikoi Pezoi (vet),Greek,Dacian Tribal Foot-soldier (Veteran)
+dacian_light_swordman,Kometes Sicaphoros,Komatai Sicaphoroi,Greek,Villager Dagger-man
+dacian_light_swordman_exp,Kometes Sicaphoros (exp),Komatai Sicaphoroi (exp),Greek,Villager Dagger-man (Experienced)
+dacian_light_swordman_vet,Kometes Sicaphoros (vet),Komatai Sicaphoroi (vet),Greek,Villager Dagger-man (Veteran)
+dacian_flaxman,Drapanistes,Drapanistai,Greek,Scythe-man
+dacian_flaxman_vet,Drapanistes (vet),Drapanistai (vet),Greek,Scythe-man (Veteran)
+dacian_flaxman_heavy,Epilektos Drapanistes,Epilektoi Drapanistai,Greek,Chosen/Elite Scythe-man
+dacian_noble_cav,Dakos Aristos Hippeus,Daki Aristoi Hippeis,Greek,Dacian Noble Horseman
+dacian_noble_cav_exp,Dakos Aristos Hippeus (exp),Daki Aristoi Hippeis (exp),Greek,Dacian Noble Horseman (Experienced)
+dacian_noble_cav_vet,Dakos Aristos Hippeus (vet),Daki Aristoi Hippeis (vet),Greek,Dacian Noble Horseman (Veteran)
+dacian_heavy_inf,Sarmato-Dakos Toxotes,Sarmato-Daki Toxotai,Greek,Sarmato-Dacian Archer
+dacian_heavy_inf_exp,Sarmato-Dakos Toxotes (exp),Sarmato-Daki Toxotai (exp),Greek,Sarmato-Dacian Archer (Experienced)
+dacian_heavy_inf_vet,Sarmato-Dakos Toxotes (vet),Sarmato-Daki Toxotai (vet),Greek,Sarmato-Dacian Archer (Veteran)
+dacian_noble_inf,Ischyros Ordites,Ischyroi Orditai,Greek,Mighty Warrior
+dacian_noble_inf_exp,Ischyros Ordites (exp),Ischyroi Orditai (exp),Greek,Mighty Warrior (Experienced)
+dacian_noble_inf_vet,Ischyros Ordites (vet),Ischyroi Orditai (vet),Greek,Mighty Warrior (Veteran)
+dacian_skirmishers,Dakos Toxotes,Daki Toxotai,Greek,Dacian Archer
+dacian_skirmishers_exp,Dakos Toxotes (exp),Daki Toxotai (exp),Greek,Dacian Archer (Experienced)
+dacian_skirmishers_vet,Dakos Toxotes (vet),Daki Toxotai (vet),Greek,Dacian Archer (Veteran)
+dacian_archers,Dakos Akontistes,Daki Akontistai,Greek,Dacian Javelin-man
+dacian_archers_exp,Dakos Akontistes (exp),Daki Akontistai (exp),Greek,Dacian Javelin-man (Experienced)
+dacian_archers_vet,Dakos Akontistes (vet),Daki Akontistai (vet),Greek,Dacian Javelin-man (Veteran)
+sarmatian_light_spearman,Sauromates Kontophoros,Sauromatai Kontophoroi,Greek,Sarmatian Lancer
+sarmatian_light_spearman_exp,Sauromates Kontophoros (exp),Sauromatai Kontophoroi (exp),Greek,Sarmatian Lancer (Experienced)
+sarmatian_light_spearman_vet,Sauromates Kontophoros (vet),Sauromatai Kontophoroi (vet),Greek,Sarmatian Lancer (Veteran)
+sarmatian_archers,Sauromates Hippotoxotes,Sauromatai Hippotoxotai,Greek,Sarmatian Horse-Archer
+sarmatian_archers_exp,Sauromates Hippotoxotes (exp),Sauromatai Hippotoxotai (exp),Greek,Sarmatian Horse-Archer (Experienced)
+sarmatian_archers_vet,Sauromates Hippotoxotes (vet),Sauromatai Hippotoxotai (vet),Greek,Sarmatian Horse-Archer (Veteran)
+sarmatian_light_horsearcher,Duno Asyo,Duna Asya,Old Iranian (Sarmatian),Horseman
+sarmatian_light_horsearcher_exp,Duno Asyo (exp),Duna Asya (exp),Old Iranian (Sarmatian),Horseman (Experienced)
+sarmatian_light_horsearcher_vet,Duno Asyo (vet),Duna Asya (vet),Old Iranian (Sarmatian),Horseman (Veteran)
+sarmatian_heavy_horsearcher,Sauromates Fat Aexsdzhyn,Sauromatae Fat Aexsdzhytae,Old Iranian (Sarmatian),Sarmatian Arrow Shooter/Archer
+sarmatian_heavy_horsearcher_exp,Sauromates Fat Aexsdzhyn (exp),Sauromatae Fat Aexsdzhytae (exp),Old Iranian (Sarmatian),Sarmatian Arrow Shooter/Archer (Experienced)
+sarmatian_heavy_horsearcher_vet,Sauromates Fat Aexsdzhyn (vet),Sauromatae Fat Aexsdzhytae (vet),Old Iranian (Sarmatian),Sarmatian Arrow Shooter/Archer (Veteran)
+sarmatian_light_horseman,Aeldaro Aemhalto,Aeldary Aemhaltae,Old Iranian (Sarmatian),Noble Sworn-Brother
+sarmatian_light_horseman_exp,Aeldaro Aemhalto (exp),Aeldary Aemhaltae (exp),Old Iranian (Sarmatian),Noble Sworn-Brother (Experienced)
+sarmatian_light_horseman_vet,Aeldaro Aemhalto (vet),Aeldary Aemhaltae (vet),Old Iranian (Sarmatian),Noble Sworn-Brother (Veteran)
+sarmatian_heavy_horseman,Rauxsa-alan Baexdzhyn,Rauxsa-alanna Baexdzhyntae,Old Iranian (Sarmatian),Shining Alan Horseman
+sarmatian_heavy_horseman_exp,Rauxsa-alan Baexdzhyn (exp),Rauxsa-alanna Baexdzhyntae (exp),Old Iranian (Sarmatian),Shining Alan Horseman (Experienced)
+sarmatian_heavy_horseman_vet,Rauxsa-alan Baexdzhyn (vet),Rauxsa-alanna Baexdzhyntae (vet),Old Iranian (Sarmatian),Shining Alan Horseman (Veteran)
+sarmatian_noble_horseman,Sahiyo Hadabaro,Sahiya Hadabara,Old Iranian (Sarmatian),Royal Companion
+sarmatian_noble_horseman_exp,Sahiyo Hadabaro (exp),Sahiya Hadabara (exp),Old Iranian (Sarmatian),Royal Companion (Experienced)
+sarmatian_noble_horseman_vet,Sahiyo Hadabaro (vet),Sahiya Hadabara (vet),Old Iranian (Sarmatian),Royal Companion (Veteran)
+armenian_spear_levy,Kaukasios Doriphoros,Kaukasioi Doriphoroi,Greek,Caucasian Spear-bearer
+armenian_spear_levy_exp,Kaukasios Doriphoros (exp),Kaukasioi Doriphoroi (exp),Greek,Caucasian Spear-bearer (Experienced)
+armenian_spear_levy_vet,Kaukasios Doriphoros (vet),Kaukasioi Doriphoroi (vet),Greek,Caucasian Spear-bearer (Veteran)
+armenian_light_axeman,Kaukasios Oresivios,Kaukasioi Oresivioi,Greek,Caucasian Mountaineer
+armenian_light_axeman_exp,Kaukasios Oresivios (exp),Kaukasioi Oresivioi (exp),Greek,Caucasian Mountaineer (Experienced)
+armenian_light_axeman_vet,Kaukasios Oresivios (vet),Kaukasioi Oresivioi (vet),Greek,Caucasian Mountaineer (Veteran)
+armenian_skrimisher,Kaukasios Akontistes,Kaukasioi Akontistai,Greek,Caucasian Javelin-man
+armenian_skrimisher_exp,Kaukasios Akontistes (exp),Kaukasioi Akontistai (exp),Greek,Caucasian Javelin-man (Experienced)
+armenian_skrimisher_vet,Kaukasios Akontistes (vet),Kaukasioi Akontistai (vet),Greek,Caucasian Javelin-man (Veteran)
+armenian_slinger,Kaukasios Sphendonetes,Kaukasioi Sphendonetai,Greek,Caucasian Slinger
+armenian_slinger_exp,Kaukasios Sphendonetes (exp),Kaukasioi Sphendonetai (exp),Greek,Caucasian Slinger (Experienced)
+armenian_slinger_vet,Kaukasios Sphendonetes (vet),Kaukasioi Sphendonetai (vet),Greek,Caucasian Slinger (Veteran)
+armenian_heavy_inf,Armenikos Legeonarios,Armenikoi Legeonarioi,Greek,Armenian Legionary
+armenian_heavy_inf_exp,Armenikos Legeonarios (exp),Armenikoi Legeonarioi (exp),Greek,Armenian Legionary (Experienced)
+armenian_heavy_inf_vet,Armenikos Legeonarios (vet),Armenikoi Legeonarioi (vet),Greek,Armenian Legionary (Veteran)
+armenian_heavy_maceman,Armazis Mcveli,Armazis Mcvelebi,Kartvelian (Old Georgian),Guard of Armazi
+armenian_heavy_maceman_exp,Armazis Mcveli (exp),Armazis Mcvelebi (exp),Kartvelian (Old Georgian),Guard of Armazi (Experienced)
+armenian_heavy_maceman_vet,Armazis Mcveli (vet),Armazis Mcvelebi (vet),Kartvelian (Old Georgian),Guard of Armazi (Veteran)
+caucasian_heavy_spearman,Kentronakan Doriphoros,Kentronakan Doriphoroi,Greek,Central Spear-bearer (Royal Guard)
+caucasian_heavy_spearman_exp,Kentronakan Doriphoros (exp),Kentronakan Doriphoroi (exp),Greek,Central Spear-bearer (Royal Guard) (Experienced)
+caucasian_heavy_spearman_vet,Kentronakan Doriphoros (vet),Kentronakan Doriphoroi (vet),Greek,Central Spear-bearer (Royal Guard) (Veteran)
+armenian_horsearcher,Kaukasios Hippotoxotes,Kaukasioi Hippotoxotai,Greek,Caucasian Horse-Archer
+armenian_horsearcher_exp,Kaukasios Hippotoxotes (exp),Kaukasioi Hippotoxotai (exp),Greek,Caucasian Horse-Archer (Experienced)
+armenian_horsearcher_vet,Kaukasios Hippotoxotes (vet),Kaukasioi Hippotoxotai (vet),Greek,Caucasian Horse-Archer (Veteran)
+caucasian_medium_horsearcher,Asistavi,Asistavebi,Kartvelian (Old Georgian),Caucasian Horsearche
+caucasian_medium_horsearcher_exp,Asistavi (exp),Asistavebi (exp),Kartvelian (Old Georgian),Caucasian Horsearche (Experienced)
+caucasian_medium_horsearcher_vet,Asistavi (vet),Asistavebi (vet),Kartvelian (Old Georgian),Caucasian Horsearche (Veteran)
+armenian_medium_horseman,Mkhedari,Mkhedrebi,Kartvelian (Old Georgian),Warrior/Horseman
+armenian_medium_horseman_exp,Mkhedari (exp),Mkhedrebi (exp),Kartvelian (Old Georgian),Warrior/Horseman (Experienced)
+armenian_medium_horseman_vet,Mkhedari (vet),Mkhedrebi (vet),Kartvelian (Old Georgian),Warrior/Horseman (Veteran)
+caucasian_cataphract,Kaukasios Basilikos Hippeus,Kaukasio Basilikoi Hippeis,Greek,Caucasian Royal Horseman
+caucasian_cataphract_exp,Kaukasios Basilikos Hippeus (exp),Kaukasio Basilikoi Hippeis (exp),Greek,Caucasian Royal Horseman (Experienced)
+caucasian_cataphract_vet,Kaukasios Basilikos Hippeus (vet),Kaukasio Basilikoi Hippeis (vet),Greek,Caucasian Royal Horseman (Veteran)
+armenian_cataphract,Armenikos Kataphraktos,Armenikoi Kataphraktoi,Greek,Armenian Cataphract
+armenian_cataphract_exp,Armenikos Kataphraktos (exp),Armenikoi Kataphraktoi (exp),Greek,Armenian Cataphract (Experienced)
+armenian_cataphract_vet,Armenikos Kataphraktos (vet),Armenikoi Kataphraktoi (vet),Greek,Armenian Cataphract (Veteran)
+armenian_elite_infantry,Armenikos Epilektos Toxotes,Armenikoi Epilektoi Toxotai,Greek,Armenian Elite Archer
+armenian_elite_infantry_exp,Armenikos Epilektos Toxotes (exp),Armenikoi Epilektoi Toxotai (exp),Greek,Armenian Elite Archer (Experienced)
+armenian_elite_infantry_vet,Armenikos Epilektos Toxotes (vet),Armenikoi Epilektoi Toxotai (vet),Greek,Armenian Elite Archer (Veteran)
+syrian_archer,Kassat,Kassata,Syriac,Archer
+syrian_archer_exp,Kassat (exp),Kassata (exp),Syriac,Archer (Experienced)
+syrian_archer_vet,Kassat (vet),Kassata (vet),Syriac,Archer (Veteran)
+syrian_spearman,Regaly,Regalye,Syriac,Foot-soldier/Infantryman
+syrian_spearman_exp,Regaly (exp),Regalye (exp),Syriac,Foot-soldier/Infantryman (Experienced)
+syrian_spearman_vet,Regaly (vet),Regalye (vet),Syriac,Foot-soldier/Infantryman (Veteran)
+syrian_horsearcher,Rakkba Kassat,Rakkba Kassata,Syriac,Horse Archer
+syrian_horsearcher_exp,Rakkba Kassat (exp),Rakkba Kassata (exp),Syriac,Horse Archer (Experienced)
+syrian_horsearcher_vet,Rakkba Kassat (vet),Rakkba Kassata (vet),Syriac,Horse Archer (Veteran)
+syrian_horseman,Rakkaba D-Dayyaqa,Rakkabe D-Dayyaqe,Syriac,Accurate Rider/Precision Horseman
+syrian_horseman_exp,Rakkaba D-Dayyaqa (exp),Rakkabe D-Dayyaqe (exp),Syriac, Rider/Horseman (Experienced)
+syrian_horseman_vet,Rakkaba D-Dayyaqa (vet),Rakkabe D-Dayyaqe (vet),Syriac, Rider/Horseman (Veteran)
+syrian_heavy_cav,Rakkaba D-Zerya,Rakkabe D-Zerya,Syriac,Armored Rider/Heavy Cavalry
+syrian_heavy_cav_exp,Rakkaba D-Zerya (exp),Rakkabe D-Zerya (exp),Syriac,Armored Rider/Heavy Cavalry (Experienced)
+syrian_heavy_cav_vet,Rakkaba D-Zerya (vet),Rakkabe D-Zerya (vet),Syriac,Armored Rider/Heavy Cavalry (Veteran)
+
+eastern_light_archer,Thanvar Parsig,Thanvaran Parsig,Pahlavi (Middle Persian),Persian Archer
+eastern_light_archer_exp,Thanvar Parsig (exp),Thanvaran Parsig (exp),Pahlavi (Middle Persian),Persian Archer (Experienced)
+eastern_light_archer_vet,Thanvar Parsig (vet),Thanvaran Parsig (vet),Pahlavi (Middle Persian),Persian Archer (Veteran)
+eastern_light_axeman,Nayzagdar Madaen,Nayzagdaran Madaen,Pahlavi (Middle Persian),Median Spearman
+eastern_light_axeman_exp,Nayzagdar Madaen (exp),Nayzagdaran Madaen (exp),Pahlavi (Middle Persian),Median Spearman (Experienced)
+eastern_light_axeman_vet,Nayzagdar Madaen (vet),Nayzagdaran Madaen (vet),Pahlavi (Middle Persian),Median Spearman (Veteran)
+eastern_skrimisher,Verkhana Kofyar,Verkhana Kofyaren,Pahlavi (Middle Persian),Hyrcanian Mountaineer
+eastern_skrimisher_exp,Verkhana Kofyar (exp),Verkhana Kofyaren (exp),Pahlavi (Middle Persian),Hyrcanian Mountaineer (Experienced)
+eastern_skrimisher_vet,Verkhana Kofyar (vet),Verkhana Kofyaren (vet),Pahlavi (Middle Persian),Hyrcanian Mountaineer (Veteran)
+eastern_slinger,Palkhandar,Palkhandaran,Pahlavi (Middle Persian),Javelin-bearer
+eastern_slinger_exp,Palkhandar (exp),Palkhandaran (exp),Pahlavi (Middle Persian),Javelin-bearer (Experienced)
+eastern_slinger_vet,Palkhandar (vet),Palkhandaran (vet),Pahlavi (Middle Persian),Javelin-bearer (Veteran)
+eastern_heavy_inf,Arteshtar Pahlavig,Arteshtaran Pahlavig,Pahlavi (Middle Persian),Parthian Warrior
+eastern_heavy_inf_exp,Arteshtar Pahlavig (exp),Arteshtaran Pahlavig (exp),Pahlavi (Middle Persian),Parthian Warrior (Experienced)
+eastern_heavy_inf_vet,Arteshtar Pahlavig (vet),Arteshtaran Pahlavig (vet),Pahlavi (Middle Persian),Parthian Warrior (Veteran)
+eastern_heavy_spearman,Nizagdar Pahlavig,Nizagdaran Pahlavig,Pahlavi (Middle Persian),Parthian Spearman
+eastern_heavy_spearman_exp,Nizagdar Pahlavig (exp),Nizagdaran Pahlavig (exp),Pahlavi (Middle Persian),Parthian Spearman (Experienced)
+eastern_heavy_spearman_vet,Nizagdar Pahlavig (vet),Nizagdaran Pahlavig (vet),Pahlavi (Middle Persian),Parthian Spearman (Veteran)
+eastern_horsearcher,Shivatir Pahlavanig,Shivatiran Pahlavanig,Pahlavi (Middle Persian),Noble Parthian Horseman
+eastern_horsearcher_exp,Shivatir Pahlavanig (exp),Shivatiran Pahlavanig (exp),Pahlavi (Middle Persian),Noble Parthian Horseman (Experienced)
+eastern_horsearcher_vet,Shivatir Pahlavanig (vet),Shivatiran Pahlavanig (vet),Pahlavi (Middle Persian),Noble Parthian Horseman (Veteran)
+eastern_medium_horseman,Asavar Azat,Asavaran Azadan,Pahlavi (Middle Persian),Noble Cavalryman
+eastern_medium_horseman_exp,Asavar Azat (exp),Asavaran Azadan (exp),Pahlavi (Middle Persian),Noble Cavalryman (Experienced)
+eastern_medium_horseman_vet,Asavar Azat (vet),Asavaran Azadan (vet),Pahlavi (Middle Persian),Noble Cavalryman (Veteran)
+eastern_cataphract,Pahlavan Grivpanvar,Pahlavanan Grivpanvar,Pahlavi (Middle Persian),Parthian Heavy Guard / Cataphract
+eastern_cataphract_exp,Pahlavan Grivpanvar (exp),Pahlavanan Grivpanvar (exp),Pahlavi (Middle Persian),Parthian Heavy Guard / Cataphract (Experienced)
+eastern_cataphract_vet,Pahlavan Grivpanvar (vet),Pahlavanan Grivpanvar (vet),Pahlavi (Middle Persian),Parthian Heavy Guard / Cataphract (Veteran)
+eastern_elite_infantry,Kamandar Zhayad,Kamandaran Zhayadan,Pahlavi (Middle Persian),Elite Archer
+eastern_elite_infantry_exp,Kamandar Zhayad (exp),Kamandaran Zhayadan (exp),Pahlavi (Middle Persian),Elite Archer (Experienced)
+eastern_elite_infantry_vet,Kamandar Zhayad (vet),Kamandaran Zhayadan (vet),Pahlavi (Middle Persian),Elite Archer (Veteran)
+legio_xxii_primigenia,Tiro Legionis (XXII Primigenia),Tirones Legionis (XXII Primigenia),Latin,Recruit of the 22nd Legion Primigenia
+legio_iii_augusta,Tiro Legionis (III Augusta),Tirones Legionis (III Augusta),Latin,Recruit of the 3rd Legion Augusta
+legio_v_alaudae,Tiro Legionis (V Alaudae),Tirones Legionis (V Alaudae),Latin,Recruit of the 5th Legion Alaudae
+legio_xxi_rapax,Tiro Legionis (XXI Rapax),Tirones Legionis (XXI Rapax),Latin,Recruit of the 21st Legion Rapax
+legio_xx_valeria_victrix,Tiro Legionis (XX Valeria Victrix),Tirones Legionis (XX Valeria Victrix),Latin,Recruit of the 20th Legion Valeria Victrix
+legio_vi_victrix,Tiro Legionis (VI Victrix),Tirones Legionis (VI Victrix),Latin,Recruit of the 6th Legion Victrix
+legio_xi_claudia,Tiro Legionis (XI Claudia),Tirones Legionis (XI Claudia),Latin,Recruit of the 11th Legion Claudia
+legio_xiii_gemina,Tiro Legionis (XIII Gemina),Tirones Legionis (XIII Gemina),Latin,Recruit of the 13th Legion Gemina
+legio_v_macedonia,Tiro Legionis (V Macedonia),Tirones Legionis (V Macedonia),Latin,Recruit of the 5th Legion Macedonia
+legio_vi_ferrata,Tiro Legionis (VI Ferrata),Tirones Legionis (VI Ferrata),Latin,Recruit of the 6th Legion Ferrata
+legio_x_fretensis,Tiro Legionis (X Fretensis),Tirones Legionis (X Fretensis),Latin,Recruit of the 10th Legion Fretensis
+praetoriani_milites,Tiro Praetoriani,Tirones Praetoriani,Latin,Praetorian Recruit
+aquilifer_xxii,Aquilifer (XXII Primigenia),Aquilifer (XXII Primigenia),Latin,Eagle-bearer (of the 22nd Legion Primigenia)*
+aquilifer_iii,Aquilifer (III Augusta),Aquilifer (III Augusta),Latin,Eagle-bearer (of the 3rd Legion Augusta)*
+aquilifer_v_alaudae,Aquilifer (V Alaudae),Aquilifer (V Alaudae),Latin,Eagle-bearer (of the 5th Legion Alaudae)*
+aquilifer_xxi,Aquilifer (XXI Rapax),Aquilifer (XXI Rapax),Latin,Eagle-bearer (of the 21st Legion Rapax)*
+aquilifer_xx,Aquilifer (XX Valeria Victrix),Aquilifer (XX Valeria Victrix),Latin,Eagle-bearer (of the 20th Legion Valeria Victrix)*
+aquilifer_vi_vict,Aquilifer (VI Victrix),Aquilifer (VI Victrix),Latin,Eagle-bearer (of the 6th Legion Victrix)*
+aquilifer_xi,Aquilifer (XI Claudia),Aquilifer (XI Claudia),Latin,Eagle-bearer (of the 11th Legion Claudia)*
+aquilifer_xiii,Aquilifer (XIII Gemina),Aquilifer (XIII Gemina),Latin,Eagle-bearer (of the 13th Legion Gemina)*
+aquilifer_v_mac,Aquilifer (V Macedonia),Aquilifer (V Macedonia),Latin,Eagle-bearer (of the 5th Legion Macedonia)*
+aquilifer_vi_fer,Aquilifer (VI Ferrata),Aquilifer (VI Ferrata),Latin,Eagle-bearer (of the 6th Legion Ferrata)*
+aquilifer_x,Aquilifer (X Fretensis),Aquilifer (X Fretensis),Latin,Eagle-bearer (of the 10th Legion Fretensis)*
+aquilifer_praetoriani,Aquilifer Praetoriani,Aquilifer Praetoriani,Latin,Praetorian Eagle-bearer*
+vexilarius_xxii,Vexillarius (XXII Primigenia),Vexillarii (XXII Primigenia),Latin,Standard-bearer (of the 22nd Legion Primigenia)
+vexilarius_iii,Vexillarius (III Augusta),Vexillarii (III Augusta),Latin,Standard-bearer (of the 3rd Legion Augusta)
+vexilarius_v_alaudae,Vexillarius (V Alaudae),Vexillarii (V Alaudae),Latin,Standard-bearer (of the 5th Legion Alaudae)
+vexilarius_xxi,Vexillarius (XXI Rapax),Vexillarii (XXI Rapax),Latin,Standard-bearer (of the 21st Legion Rapax)
+vexilarius_xx,Vexillarius (XX Valeria Victrix),Vexillarii (XX Valeria Victrix),Latin,Standard-bearer (of the 20th Legion Valeria Victrix)
+vexilarius_vi_vict,Vexillarius (VI Victrix),Vexillarii (VI Victrix),Latin,Standard-bearer (of the 6th Legion Victrix)
+vexilarius_xi,Vexillarius (XI Claudia),Vexillarii (XI Claudia),Latin,Standard-bearer (of the 11th Legion Claudia)
+vexilarius_xiii,Vexillarius (XIII Gemina),Vexillarii (XIII Gemina),Latin,Standard-bearer (of the 13th Legion Gemina)
+vexilarius_v_mac,Vexillarius (V Macedonia),Vexillarii (V Macedonia),Latin,Standard-bearer (of the 5th Legion Macedonia)
+vexilarius_vi_fer,Vexillarius (VI Ferrata),Vexillarii (VI Ferrata),Latin,Standard-bearer (of the 6th Legion Ferrata)
+vexilarius_x,Vexillarius (X Fretensis),Vexillarii (X Fretensis),Latin,Standard-bearer (of the 10th Legion Fretensis)
+vexilarius_praetoriani,Vexillarius Praetoriani,Vexillarii Praetoriani,Latin,Praetorian Standard-bearer
+centurio_west,Centurio,Centurii,Latin,Centurion
+centurio_preatoriani,Centurio Praetoriani,Centurii Praetoriani,Latin,Praetorian Centurion
+signifer,Signifer,Signifer,Latin,Signifer (Standard-bearer of a Century)
+cornicen,Cornicen,Cornicines,Latin,Horn-blower
+legatus_legionis,Tribunus,Tribuni,Latin,Tribune
+centurio_east,Primus Pilus,Primi Pili,Latin,First File (Senior Centurion)
+aux_vigiles_centurio,Centurio Vigiliarum,Centurii Vigiliarum,Latin,Centurion of the Watchmen
+aux_cav_decurio,Decurio,Decurii,Latin,Decurion (Cavalry Officer)
+aux_cav_vexilarius,Vexilarius Equitem,Vexilarii Equitem,Latin,Standard-bearer of the Cavalry
+aux_cav_vexilarius_praetorian,Vexilarius Equitem Praetoriani,Vexilarii Equitem Praetoriani,Latin,Standard-bearer of the Praetorian Cavalry
+aux_signifer,Signifer Auxiliari,Signifer Auxiliari,Latin,Auxiliary Signifer
+aux_centurio,Centurio Auxiliari,Centurii Auxiliari,Latin,Auxiliary Centurion
+aux_cav,Auxilia Eques,Auxilia Equites,Latin,Auxiliary Horseman
+aux_cav_eastern,Auxilia Eques Orientalis,Auxilia Equites Orientales,Latin,Eastern Auxiliary Horseman
+aux_cav_praetoriani,Eques Praetoriani,Eqites Praetoriani,Latin,Praetorian Horseman
+aux_cav_praetoriani_2,Germani Corporis Custos,Germani Corporis Custodes,Latin,German Bodyguard
+aux_inf_alporum,Miles Alpinorum,Milites Alpinorum,Latin,Soldier of the Alps
+aux_archer_alporum,Sagittarius Alpinorum,Sagittarii Alpinorum,Latin,Archer of the Alps
+aux_inf_maurorum,Miles Maurorum,Milites Maurorum,Latin,Moorish Soldier
+aux_archer_maurorum,Funditor Maurorum,Funditores Maurorum,Latin,Moorish Slinger
+aux_inf_hispanorum,Miles Hispanorum,Milites Hispanorum,Latin,Hispanic Soldier
+aux_archer_hispanorum,Sagittarius Hispanorum,Sagittarii Hispanorum,Latin,Hispanic Archer
+aux_inf_tungrorum,Miles Tungrorum,Milites Trungrorum,Latin,Tungrian Soldier
+aux_archer_tungrorum,Sagittarius Tungrorum,Sagittarii Trungrorum,Latin,Tungrian Archer
+aux_inf_gallorum,Miles Gallorum,Milites Gallorum,Latin,Gallic Soldier
+aux_archer_gallorum,Sagittarius Gallorum,Sagittarii Gallorum,Latin,Gallic Archer
+aux_inf_batavorum,Miles Batavorum,Milites Batavorum,Latin,Batavian Soldier
+aux_archer_batavorum,Sagittarius Batavorum,Sagittarii Batavorum,Latin,Batavian Archer
+aux_inf_brittonum,Miles Brittonum,Milites Brittonum,Latin,British Soldier
+aux_archer_brittonum,Funditor Brittonum,Funditores Brittonum,Latin,British Slinger
+aux_inf_thracum,Miles Thracum,Milites Thracum,Latin,Thracian Soldier
+aux_archer_thracum,Sagittarius Thracum,Sagittarii Thracum,Latin,Thracian Archer
+aux_inf_petreorum,Miles Petreorum,Milites Petreorum,Latin,Soldier from Petra
+aux_cav_batavorum,Eques Batavorum,Equites Batavorum,Latin,Batavian Horseman
+aux_cav_commagenorum,Eques Commagenorum,Equites Commagenorum,Latin,Commagenian Horseman
+aux_cav_gallorum,Eques Gallorum,Equites Gallorum,Latin,Gallic Horseman
+aux_cav_ituraeorum,Eques Ituraeorum,Equites Ituraeorum,Latin,Ituraean Horseman
+aux_archer_sryrorum,Auxilia Sagittarius Syrorum,Auxilia Sagittarii Syrorum,Latin,Syrian Auxiliary Archer
+aux_archer,Auxilia Sagittarius,Auxilia Sagittarii,Latin,Auxiliary Archer
+aux_archer_praetoriana,Sagittarius Praetoriani,Sagittarii Praetoriani,Latin,Praetorian Archer
+aux_slinger,Baleares Funditor,Baleares Funditores,Latin,Balearic Slinger
+aux_inf,Miles Auxiliarum,Milites Auxiliarum,Latin,Auxiliary Soldier
+vigilia,Vigilia,Vigiliae,Latin,Watchman
+vigilia_exp,Vigilia (exp),Vigiliae (exp),Latin,Watchman (Experienced)
+vigilia_vet,Vigilia (vet),Vigiliae (vet),Latin,Watchman (Veteran)
+ballistarii,Ballistarius,Ballistarii,Latin,Ballista Operator
+legio_xxii_primigenia_exp,Miles Legionis (XXII Primigenia),Milites Legionis (XXII Primigenia),Latin,Soldier of the 22nd Legion Primigenia
+legio_iii_augusta_exp,Miles Legionis (III Augusta),Milites Legionis (III Augusta),Latin,Soldier of the 3rd Legion Augusta
+legio_v_alaudae_exp,Miles Legionis (V Alaudae),Milites Legionis (V Alaudae),Latin,Soldier of the 5th Legion Alaudae
+legio_xxi_rapax_exp,Miles Legionis (XXI Rapax),Milites Legionis (XXI Rapax),Latin,Soldier of the 21st Legion Rapax
+legio_xx_valeria_victrix_exp,Miles Legionis (XX Valeria Victrix),Milites Legionis (XX Valeria Victrix),Latin,Soldier of the 20th Legion Valeria Victrix
+legio_vi_victrix_exp,Miles Legionis (VI Victrix),Milites Legionis (VI Victrix),Latin,Soldier of the 6th Legion Victrix
+legio_xi_claudia_exp,Miles Legionis (XI Claudia),Milites Legionis (XI Claudia),Latin,Soldier of the 11th Legion Claudia
+legio_xiii_gemina_exp,Miles Legionis (XIII Gemina),Milites Legionis (XIII Gemina),Latin,Soldier of the 13th Legion Gemina
+legio_v_macedonia_exp,Miles Legionis (V Macedonia),Milites Legionis (V Macedonia),Latin,Soldier of the 5th Legion Macedonia
+legio_vi_ferrata_exp,Miles Legionis (VI Ferrata),Milites Legionis (VI Ferrata),Latin,Soldier of the 6th Legion Ferrata
+legio_x_fretensis_exp,Miles Legionis (X Fretensis),Milites Legionis (X Fretensis),Latin,Soldier of the 10th Legion Fretensis
+praetoriani_milites_exp,Miles Praetoriani,Milites Praetoriani,Latin,Praetorian Soldier
+legio_xxii_primigenia_vet,Evocatus Legionis (XXII Primigenia),Evocati Legionis (XXII Primigenia),Latin,Veteran of the 22nd Legion Primigenia
+legio_iii_augusta_vet,Evocatus Legionis (III Augusta),Evocati Legionis (III Augusta),Latin,Veteran of the 3rd Legion Augusta
+legio_v_alaudae_vet,Evocatus Legionis (V Alaudae),Evocati Legionis (V Alaudae),Latin,Veteran of the 5th Legion Alaudae
+legio_xxi_rapax_vet,Evocatus Legionis (XXI Rapax),Evocati Legionis (XXI Rapax),Latin,Veteran of the 21st Legion Rapax
+legio_xx_valeria_victrix_vet,Evocatus Legionis (XX Valeria Victrix),Evocati Legionis (XX Valeria Victrix),Latin,Veteran of the 20th Legion Valeria Victrix
+legio_vi_victrix_vet,Evocatus Legionis (VI Victrix),Evocati Legionis (VI Victrix),Latin,Veteran of the 6th Legion Victrix
+legio_xi_claudia_vet,Evocatus Legionis (XI Claudia),Evocati Legionis (XI Claudia),Latin,Veteran of the 11th Legion Claudia
+legio_xiii_gemina_vet,Evocatus Legionis (XIII Gemina),Evocati Legionis (XIII Gemina),Latin,Veteran of the 13th Legion Gemina
+legio_v_macedonia_vet,Evocatus Legionis (V Macedonia),Evocati Legionis (V Macedonia),Latin,Veteran of the 5th Legion Macedonia
+legio_vi_ferrata_vet,Evocatus Legionis (VI Ferrata),Evocati Legionis (VI Ferrata),Latin,Veteran of the 6th Legion Ferrata
+legio_x_fretensis_vet,Evocatus Legionis (X Fretensis),Evocati Legionis (X Fretensis),Latin,Veteran of the 10th Legion Fretensis
+praetoriani_milites_vet,Evocatus Praetoriani,Evocati Praetoriani,Latin,Praetorian Veteran
+looter,Latro,Latrones,Latin,Robber / Looter
+bandit,Leistes,Leistai,Greek,Bandit / Robber
+brigand,Sicarius,Sicarii,Latin,Assassin / Dagger-man
+judean_sicarius,Iudaicus Sicarius,Iudaici Sicarii,Latin,Judean Assassin / Dagger-man
+judean_rebel,Iudaicus Rebellis,Iudaici Rebellis,Latin,Judean Rebel
+hispanic_bandit,Hispanicus Rebellis,Hispanici Rebellis,Latin,Hispanic Rebel
+sea_raider,Pirata,Piratae,Latin,Pirate / Sea Raider
+black_sea_priate,Pirata Mare Euxinum,Piratae Mare Euxinum,Latin,Pirate of the Black Sea
+alannic_raider,Alanna Baragatae,Alan Baragatae,Old Iranian (Alanic),Alanic Raider
+illyrian_bandit,Illyricus Sicarius,Illyrici Sicarii,Latin,Illyrian Assassin / Dagger-man
+slave_warrior,Seditiosus Servus,Seditiosi Servi,Latin,Mutinous Slave
+slave_warrior_2,Seditiosus Pedes,Seditiosi Pedites,Latin,Mutinous Foot-soldier
+slave_warrior_3,Seditiosus Hastatus,Seditiosi Hastati,Latin,Mutinous Spearman
+slave_rebel,Seditiosus Gladiator,Seditiosi Gladiatores,Latin,Mutinous Gladiator
+slave_rebel_2,Seditiosus Evocatus,Seditiosi Evocati,Latin,Mutinous Veteran
+sarmatian_town_walker,Sarmaticus Nobilis Tribulis,Sarmatici Nobiles Tribules,Latin,Sarmatian Noble Tribesman
+sarmatian_town_walker_female,Sarmatica Nobilis Mulier,Sarmaticae Nobiles Mulieres,Latin,Sarmatian Noble Woman
+bosporan_town_walker,Bosporanus Nobilis,Bosporani Nobiles,Latin,Bosporan Nobleman
+bosporan_town_walker_female,Bosporana Nobilis Mulier,Bosporanae Nobiles Mulieres,Latin,Bosporan Noble Woman
+judean_town_walker,Iudaeus Urbanus,Iudaei Urbani,Latin,Judean City-dweller
+judean_town_walker_female,Iudaea Urbana Mulier,Iudaeae Urbanae Mulieres,Latin,Judean City Woman
+syrian_town_walker,Syrus Urbanus,Syri Urbani,Latin,Syrian City-dweller
+syrian_town_walker_female,Syra Urbana Mulier,Syrae Urbanae Mulieres,Latin,Syrian City Woman
+galatian_town_walker,Galaticus Urbanus,Galatici Urbani,Latin,Galatian City-dweller
+galatian_town_walker_female,Galatica Urbana Mulier,Galaticae Urbanae Mulieres,Latin,Galatian City Woman
+eastern_town_walker,Orientalis Urbanus,Orientales Urbani,Latin,Eastern City-dweller
+eastern_town_walker_female,Orientalis Urbana Mulier,Orientales Urbanae Mulieres,Latin,Eastern City Woman
+parthian_town_walker,Parthicus Nobilis,Parthici Nobiles,Latin,Parthian Nobleman
+parthian_town_walker_female,Parthica Nobilis Mulier,Parthicae Nobiles Mulieres,Latin,Parthian Noble Woman
+persian_town_walker,Persicus Nobilis,Persici Nobiles,Latin,Persian Nobleman
+persian_town_walker_female,Persica Nobilis Mulier,Persicae Nobiles Mulieres,Latin,Persian Noble Woman
+roman_town_walker,Civis,Cives,Latin,Citizen
+roman_town_walker_female,Civis Femina,Cives Feminae,Latin,Female Citizen
+gallish_town_walker,Gallicus Nobilis,Gallici Nobiles,Latin,Gallic Nobleman
+gallish_town_walker_female,Gallica Nobilis Mulier,Gallicae Nobiles Mulieres,Latin,Gallic Noble Woman
+greek_town_walker,Graecus Nobilis,Graeci Nobiles,Latin,Greek Nobleman
+greek_town_walker_female,Graeca Nobilis Mulier,Graecae Nobiles Mulieres,Latin,Greek Noble Woman
+hispanic_town_walker,Hispanus Nobilis,Hispani Nobiles,Latin,Hispanic Nobleman
+hispanic_town_walker_female,Hispana Nobilis Mulier,Hispanae Nobiles Mulieres,Latin,Hispanic Noble Woman
+illyrian_town_walker,Illyricus Nobilis,Illyrici Nobiles,Latin,Illyrian Nobleman
+illyrian_town_walker_female,Illyrica Nobilis Mulier,Illyricae Nobiles Mulieres,Latin,Illyrian Noble Woman
+celtic_town_walker,Celticus Nobilis,Celtici Nobiles,Latin,Celtic Nobleman
+celtic_town_walker_female,Celtica Nobilis Mulier,Celticae Nobiles Mulieres,Latin,Celtic Noble Woman
+germanic_town_walker,Germanicus Nobilis,Germanici Nobiles,Latin,Germanic Nobleman
+germanic_town_walker_female,Germanica Nobilis Mulier,Germanicae Nobiles Mulieres,Latin,Germanic Noble Woman
+dacian_town_walker,Dacicus Nobilis,Dacici Nobiles,Latin,Dacian Nobleman
+dacian_town_walker_female,Dacica Nobilis Mulier,Dacicae Nobiles Mulieres,Latin,Dacian Noble Woman
+thracian_town_walker,Thracicus Nobilis,Thracici Nobiles,Latin,Thracian Nobleman
+thracian_town_walker_female,Thracica Nobilis Mulier,Thracicae Nobiles Mulieres,Latin,Thracian Noble Woman
+armenian_town_walker,Caucasicus Nobilis,Caucasici Nobiles,Latin,Caucasian Nobleman
+armenian_town_walker_female,Caucasica Nobilis Mulier,Caucasicae Nobiles Mulieres,Latin,Caucasian Noble Woman
+arab_town_walker,Arabicus Nobilis,Arabici Nobiles,Latin,Arabian Nobleman
+arab_town_walker_female,Arabica Nobilis Mulier,Arabicae Nobiles Mulieres,Latin,Arabian Noble Woman
+egyptian_town_walker,Aegyptius Nobilis,Aegyptii Nobiles,Latin,Egyptian Nobleman
+egyptian_town_walker_female,Aegyptia Nobilis Mulier,Aegyptiae Nobiles Mulieres,Latin,Egyptian Noble Woman
+berber_town_walker,Berberus Nobilis,Berberi Nobiles,Latin,Berber Nobleman
+berber_town_walker_female,Berbera Nobilis Mulier,Berberae Nobiles Mulieres,Latin,Berber Noble Woman
+garamantian_town_walker,Garamanticus Nobilis,Garamantici Nobiles,Latin,Garamantian Nobleman
+garamantian_town_walker_female,Garamantica Nobilis Mulier,Garamanticae Nobiles Mulieres,Latin,Garamantian Noble Woman
+boy,Puer,Pueri,Latin,Boy
+girl,Puella,Puellae,Latin,Girl
+african_man,Nubianus Tribulis,Nubiani Tribules,Latin,Nubian Tribesman
+african_woman,Nubiana Tribulis Mulier,Nubianae Tribules Mulieres,Latin,Nubian Tribeswoman
+saka_man,Sacicus Tribulis,Sacici Tribules,Latin,Saka Tribesman
+saka_woman,Sacica Tribulis Mulier,Sacicae Tribules Mulieres,Latin,Saka Tribeswoman
+sarmatian_village_walker,Sarmaticus Tribulis,Sarmatici Tribules,Latin,Sarmatian Tribesman
+sarmatian_village_walker_female,Sarmatica Tribulis Mulier,Sarmaticae Tribules Mulieres,Latin,Sarmatian Tribeswoman
+bosporan_village_walker,Bosporanus Rusticus,Bosporani Rustici,Latin,Bosporan Peasant
+bosporan_village_walker_female,Bosporana Rustica,Bosporanae Rusticae,Latin,Bosporan Peasant Woman
+judean_village_walker,Iudaeus Rusticus,Iudaei Rustici,Latin,Judean Peasant
+judean_village_walker_female,Iudaea Rustica,Iudaeae Rusticae,Latin,Judean Peasant Woman
+eastern_village_walker,Orientalis Rusticus,Orientales Rustici,Latin,Eastern Peasant
+eastern_village_walker_female,Orientalis Rustica,Orientales Rusticae,Latin,Eastern Peasant Woman
+galatian_village_walker,Galaticus Rusticus,Galatici Rustici,Latin,Galatian Peasant
+galatian_village_walker_female,Galatica Rustica,Galaticae Rusticae,Latin,Galatian Peasant Woman
+syrian_village_walker,Syrus Rusticus,Syri Rustici,Latin,Syrian Peasant
+syrian_village_walker_female,Syra Rustica,Syrae Rusticae,Latin,Syrian Peasant Woman
+greek_village_walker,Graecus Rusticus,Graeci Rustici,Latin,Greek Peasant
+greek_village_walker_female,Graeca Rustica,Graecae Rusticae,Latin,Greek Peasant Woman
+illyrian_village_walker,Illyricus Rusticus,Illyrici Rustici,Latin,Illyrian Peasant
+illyrian_village_walker_female,Illyrica Rustica,Illyricae Rusticae,Latin,Illyrian Peasant Woman
+parthian_village_walker,Parthicus Tribulis,Parthici Tribules,Latin,Parthian Tribesman
+parthian_village_walker_female,Parthica Tribulis Mulier,Parthicae Tribules Mulieres,Latin,Parthian Tribeswoman
+persian_village_walker,Persicus Rusticus,Persici Rustici,Latin,Persian Peasant
+persian_village_walker_female,Persica Rustica,Persicae Rusticae,Latin,Persian Peasant Woman
+gaul_village_walker,Gallicus Rusticus,Gallici Rustici,Latin,Gallic Peasant
+gaul_village_walker_female,Gallica Rustica,Gallicae Rusticae,Latin,Gallic Peasant Woman
+roman_village_walker,Romanus Rusticus,Romani Rustici,Latin,Roman Peasant
+roman_village_walker_female,Romana Rustica,Romanae Rusticae,Latin,Roman Peasant Woman
+hispanic_village_walker,Hispanus Rusticus,Hispani Rustici,Latin,Hispanic Peasant
+hispanic_village_walker_female,Hispana Rustica,Hispanae Rusticae,Latin,Hispanic Peasant Woman
+celtic_village_walker,Celticus Tribulis,Celtici Tribules,Latin,Celtic Tribesman
+celtic_village_walker_female,Celtica Tribulis Mulier,Celticae Tribules Mulieres,Latin,Celtic Tribeswoman
+germanic_village_walker,Germanicus Tribulis,Germanici Tribules,Latin,Germanic Tribesman
+germanic_village_walker_female,Germanica Tribulis Mulier,Germanicae Tribules Mulieres,Latin,Germanic Tribeswoman
+dacian_village_walker,Dacicus Rusticus,Dacici Rustici,Latin,Dacian Peasant
+dacian_village_walker_female,Dacica Rustica,Dacicae Rusticae,Latin,Dacian Peasant Woman
+thracian_village_walker,Thracicus Rusticus,Thracici Rustici,Latin,Thracian Peasant
+thracian_village_walker_female,Thracica Rustica,Thracicae Rusticae,Latin,Thracian Peasant Woman
+armenian_village_walker,Caucasicus Tribulis,Caucasici Tribules,Latin,Caucasian Tribesman
+armenian_village_walker_female,Caucasica Tribulis Mulier,Caucasicae Tribules Mulieres,Latin,Caucasian Tribeswoman
+arab_village_walker,Arabicus Tribulis,Arabici Tribules,Latin,Arabian Tribesman
+arab_village_walker_female,Arabica Tribulis Mulier,Arabicae Tribules Mulieres,Latin,Arabian Tribeswoman
+egyptian_village_walker,Aegyptius Rusticus,Aegyptii Rustici,Latin,Egyptian Peasant
+egyptian_village_walker_female,Aegyptia Rustica Mulier,Aegyptiae Rusticae Mulieres,Latin,Egyptian Peasant Woman
+berber_village_walker,Berberus Tribulis,Berberi Tribules,Latin,Berber Tribesman
+berber_village_walker_female,Berbera Tribulis Mulier,Berberae Tribules Mulieres,Latin,Berber Tribeswoman
+garamantian_village_walker,Garamanticus Tribulis,Garamantici Tribules,Latin,Garamantian Tribesman
+garamantian_village_walker_female,Garamantica Tribulis Mulier,Garamanticae Tribules Mulieres,Latin,Garamantian Tribeswoman
+spy_walker_1,Nobilis,Nobiles,Latin,Nobleman
+spy_walker_2,Nobilis Mulier,Nobiles Mulieres,Latin,Noble Woman
+ransom_broker_1,Venalicius Gaius Sextus,Venalicius Gaius Sextus,Latin,Slave Dealer Gaius Sextus
+ransom_broker_2,Doulon Emporos Aichaikos,Doulon Emporos Aichaikos,Greek,Slave Merchant Aichaikos
+ransom_broker_3,Venalicius Honorius,Venalicius Honorius,Latin,Slave Dealer Honorius
+ransom_broker_4,Doulon Emporos Nereus,Doulon Emporos Nereus,Greek,Slave Merchant Nereus
+ransom_broker_5,Venalicius Flavius,Venalicius Flavius,Latin,Slave Dealer Flavius
+ransom_broker_6,Doulon Emporos Parthos,Doulon Emporos Parthos,Greek,Slave Merchant Parthos
+ransom_broker_7,Venalicius Decimus,Venalicius Decimus,Latin,Slave Dealer Decimus
+ransom_broker_8,Doulon Emporos Phazinamos,Doulon Emporos Phazinamos,Greek,Slave Merchant Phazinamos
+ransom_broker_9,Venalicius Remus,Venalicius Remus,Latin,Slave Dealer Remus
+ransom_broker_10,Doulon Emporos Blaikisa,Doulon Emporos Blaikisa,Greek,Slave Merchant Blaikisa
+tavern_traveler_1,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_2,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_3,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_4,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_5,Viator,Viator,Latin,Traveler
+tavern_traveler_6,Viator,Viator,Latin,Traveler
+tavern_traveler_7,Viator,Viator,Latin,Traveler
+tavern_traveler_8,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_9,Viator,Viator,Latin,Traveler
+tavern_traveler_10,Carant,Carant,Proto-Celtic,Friend / Kinsman
+tavern_traveler_11,Weljakwumo,Weljakwumo,Proto-Germanic,Guest / Welcome One
+tavern_traveler_12,Viator,Viator,Latin,Traveler
+tavern_traveler_13,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_14,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_15,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_16,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_17,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_18,Epelytes,Epelytes,Greek,Traveler / Newcomer
+tavern_traveler_19,Viator,Viator,Latin,Traveler
+tavern_traveler_20,Viator,Viator,Latin,Traveler
+tavern_bookseller_1,Librarius,Librarius,Latin,Bookseller
+tavern_bookseller_2,Librarius,Librarius,Latin,Bookseller
+tavern_bookseller_3,Biblos Emporos,Biblos Emporos,Greek,Book Merchant
+tavern_bookseller_4,Librarius,Librarius,Latin,Bookseller
+tavern_minstrel_1,Bardos,Bardos,Greek (from Celtic),Bard
+tavern_minstrel_2,Poietes,Poietes,Greek,Poet
+tavern_minstrel_3,Poietes,Poietes,Greek,Poet
+tavern_minstrel_4,Poeta,Poeta,Latin,Poet
+tavern_minstrel_5,Poeta,Poeta,Latin,Poet
+slave,Servus,Servi,Latin,Slave
+slave_roman,Servus Romanus,Servi Romani,Latin,Roman Slave
+slave_dacian,Servus Dacicus,Servi Dacici,Latin,Dacian Slave
+slave_thracian,Servus Thracicus,Servi Thracici,Latin,Thracian Slave
+slave_celt,Servus Celticus,Servi Celtici,Latin,Celtic Slave
+slave_sarmatian,Servus Sarmaticus,Servi Sarmatici,Latin,Sarmatian Slave
+slave_germanic,Servus Germanicus,Servi Germanici,Latin,Germanic Slave
+slave_caucasian,Servus Caucasicus,Servi Caucasici,Latin,Caucasian Slave
+slave_parthian,Servus Parthicus,Servi Parthici,Latin,Parthian Slave
+slave_persian,Servus Persicus,Servi Persici,Latin,Persian Slave
+slave_judean,Servus Iudaeus,Servi Iudaei,Latin,Judean Slave
+slave_bosporan,Servus Bosporanus,Servi Bosporani,Latin,Bosporan Slave
+slave_arabian,Servus Arabicus,Servi Arabici,Latin,Arabian Slave
+slave_berber,Servus Maurus,Servi Mauri,Latin,Berber (Moorish) Slave
+slave_garmantian,Servus Garamanticus,Servi Garamantici,Latin,Garamantian Slave
+slave_nubian,Servus Nubianus,Servi Nubiani,Latin,Nubian Slave
+slave_saka,Servus Sacae,Servi Sacae,Latin,Saka Slave
+slave_greek,Servus Graecus,Servi Graeci,Latin,Greek Slave
+slave_illyrian,Servus Illyricus,Servi Illyrici,Latin,Illyrian Slave
+slave_hispanic,Servus Hispanicus,Servi Hispanici,Latin,Hispanic Slave
+slave_gaul,Servus Gallicus,Servi Gallici,Latin,Gallic Slave
+slave_egyptian,Servus Aegyptius,Servi Aegyptii,Latin,Egyptian Slave
+slave_syrian,Servus Syrus,Servi Syri,Latin,Syrian Slave
+slave_eastern,Servus Orientalis,Servi Orientales,Latin,Eastern Slave
+slave_galatian,Servus Galaticus,Servi Galatici,Latin,Galatian Slave
+slave_mine,Servus,Servi,Latin,Slave
+slave_female,Serva,Servae,Latin,Female Slave
+slave_female_roman,Serva Romana,Servae Romanae,Latin,Roman Female Slave
+slave_female_dacian,Serva Dacica,Servae Dacicae,Latin,Dacian Female Slave
+slave_female_thracian,Serva Thracica,Servae Thracicae,Latin,Thracian Female Slave
+slave_female_celt,Serva Celtica,Servae Celticae,Latin,Celtic Female Slave
+slave_female_galatian,Serva Galatica,Servae Galaticae,Latin,Galatian Female Slave
+slave_female_sarmatian,Serva Sarmatica,Servae Sarmaticae,Latin,Sarmatian Female Slave
+slave_female_germanic,Serva Germanica,Servae Germanicae,Latin,Germanic Female Slave
+slave_female_caucasian,Serva Caucasica,Servae Caucasicae,Latin,Caucasian Female Slave
+slave_female_parthian,Serva Parthica,Servae Parthicae,Latin,Parthian Female Slave
+slave_female_persian,Serva Persica,Servae Persicae,Latin,Persian Female Slave
+slave_female_judean,Serva Iudaea,Servae Iudaeae,Latin,Judean Female Slave
+slave_female_bosporan,Serva Bosporana,Servae Bosporanae,Latin,Bosporan Female Slave
+slave_female_arabian,Serva Arabica,Servae Arabicae,Latin,Arabian Female Slave
+slave_female_berber,Serva Maura,Servae Maurae,Latin,Berber (Moorish) Female Slave
+slave_female_garmantian,Serva Garamantica,Servae Garamanticae,Latin,Garamantian Female Slave
+slave_female_nubian,Serva Nubiana,Servae Nubianae,Latin,Nubian Female Slave
+slave_female_saka,Serva Saca,Servae Sacae,Latin,Saka Female Slave
+slave_female_greek,Serva Graeca,Servae Graecae,Latin,Greek Female Slave
+slave_female_illyrian,Serva Illyrica,Servae Illyricae,Latin,Illyrian Female Slave
+slave_female_hispanic,Serva Hispanica,Servae Hispanicae,Latin,Hispanic Female Slave
+slave_female_gaul,Serva Gallica,Servae Gallicae,Latin,Gallic Female Slave
+slave_female_egyptian,Serva Aegyptia,Servae Aegyptiae,Latin,Egyptian Female Slave
+slave_female_syrian,Serva Syra,Servae Syrae,Latin,Syrian Female Slave
+slave_female_eastern,Serva Orientalis,Servae Orientales,Latin,Eastern Female Slave
+dacian_deserter,Desertor Dacus,Desertores Daci,Latin,Dacian Deserter
+briton_deserter,Desertor Celticus,Desertores Celtici,Latin,Celtic Deserter
+sarmatian_deserter,Desertor Sarmata,Desertores Sarmatae,Latin,Sarmatian Deserter
+germanic_deserter,Desertor Germanicus,Desertores Germani,Latin,Germanic Deserter
+caucasian_deserter,Desertor Caucasicus,Desertores Caucasici,Latin,Caucasian Deserter
+parthian_deserter,Desertor Parthus,Desertores Parthi,Latin,Parthian Deserter
+judean_deserter,Desertor Iudaeus,Desertores Iudaei,Latin,Judean Deserter
+roman_deserter,Desertor Romanus,Desertores Romani,Latin,Roman Deserter
+syrian_deserter,Desertor Syricus,Desertores Syrici,Latin,Syrian Deserter
+arabian_deserter,Desertor Arabicus,Desertores Arabici,Latin,Arabian Deserter
+berber_deserter,Desertor Maurus,Desertores Mauri,Latin,Berber (Moorish) Deserter
+garamantian_deserter,Desertor Garamans,Desertores Garamantes,Latin,Garamantian Deserter
+nubian_deserter,Desertor Nubianus,Desertores Nubiani,Latin,Nubian Deserter
+saka_deserter,Sacae Desertor,Sacae Desertores,Latin,Saka Deserter
+egyptian_deserter,Desertor Aegyptius,Desertores Aegyptii,Latin,Egyptian Deserter
+roman_priest_female,Sacerdos,Sacerdotes,Latin,Priestess
+roman_priest,Sacerdos,Sacerdotes,Latin,PriesT
+jewish_priest,Kohen,Kohanim,Hebrew,Priest (of the Temple)
+christian_priest,Sacerdos,Sacerdotes,Latin,Priest
+norse_priest,Gudjaen,Gudjaeniz,Proto-Germanic,Priest / Chieftain
+celtic_druid,Draid,Draoidhean,Proto-Celtic,Druid
+dacian_priest,Ziratos,Ziratoi,Dacian (Reconstructed),Seer / Holy One
+sarmatian_sky_priest,Asman-magus,Asman-magun,Old Iranian (Sarmatian),Sky-Mage / Sky Priest
+sarmatian_priest,Enaree,Enarei,Greek (from Scythian),Shaman / Soothsayer
+caucasian_priest,Kadagi,Kadagi,Kartvelian (Old Georgian),Mage / Priest
+armenian_priest,K'urm,K'rmerk',Classical Armenian,Priest (Pagan)
+persian_priest,Mobad,Mobad,Pahlavi (Middle Persian),Mage / Zoroastrian Priest
+arabian_priest,Afkal,Afkal,Sabaean/Arabic,Sage / Priest
+berber_priest,Amussnaw,Imussnawen,Libyco-Berber,The Knower / Wise One
+garamantian_priest,W'b n Jmn,W'bw n Jmn,Late Egyptian,Pure One (Priest) of Ammon
+nubian_priest,Pelmos Apedemakli,Pelmosli Apedemakli,Meroitic,Priest of Apedemak
