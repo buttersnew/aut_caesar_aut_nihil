@@ -372,19 +372,6 @@ footer {
   z-index: -1; /* This is the key: it places the canvas BEHIND all other content */
 }
 
-.database-section {
-    padding: 60px 0;
-    text-align: center;
-    background-color: #141414; /* Or your standard section background */
-    position: relative;
-    z-index: 2;
-}
-
-.database-section p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
-}
-
 /* Styles for the new, larger, purple link */
 .database-link {
     display: inline-block;
