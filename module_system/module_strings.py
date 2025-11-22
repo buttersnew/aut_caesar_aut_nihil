@@ -9162,9 +9162,11 @@ strings = [
   +"^-the sun god Sol"
   +"^-a Sphinx on each shoulder, representing the defeat of Cleopatra by Augustus"
 ),
+("description_hannibals_armor", "Description:^^This armour was once worn by Hannibal Barca - enemy of Rome.^^Background:^^Hannibal Barca was famous enemy of Rome, who crossed the Alps, won multiple battle against Rome - although outnumbered. Yet he was not able to win the war against the stubborn Romans. Finally he got defeated by Scipio Africanus."),
+("description_hannibals_helm", "Description:^^This helm was once worn by Hannibal Barca - enemy of Rome.^^Background:^^Hannibal Barca was famous enemy of Rome, who crossed the Alps, won multiple battle against Rome - although outnumbered. Yet he was not able to win the war against the stubborn Romans. Finally he got defeated by Scipio Africanus."),
 ("description_aslans_fur", "Description:^^This is the fur of the legendary lion Aslan, who lives in the caves near mount olymp. Player recieves it by killing Aslan.^^Background:^^The use of lion skins in Greek culture was often associated with heroes and warriors. Hercules, for example, was frequently depicted wearing the Nemean lion's skin, a mythical lion that he slayed as one of his Twelve Labors. This lion skin became an iconic symbol of his strength and heroism."),
-("description_ancient_helm_light", "Description:^^This helemt is thousands of years old and was made by Vulcanus.^^Background:^^Model is based on archiologically findings dated back to bronze age."),
-("description_ancient_helm_heavy", "Description:^^This helemt is thousands of years old and was forged by Vulcanus.^^Background:^^Model is based on archiologically findings dated back to bronze age."),
+("description_ancient_helm_light", "Description:^^This helmet is thousands of years old and was made by Vulcanus.^^Background:^^Model is based on archiologically findings dated back to bronze age."),
+("description_ancient_helm_heavy", "Description:^^This helmet is thousands of years old and was forged by Vulcanus.^^Background:^^Model is based on archiologically findings dated back to bronze age."),
 ("description_ancient_boots_heavy", "Description:^^This greaves are thousands of years old and were forged by Vulcanus.^^Background:^^Model is based on archiologically findings dated back to bronze age."),
 ("description_ancient_plate_armor", "Description:^^This bronze armour is thousands of years old and was forged by Vulcanus.^^Background:^^Model is based on archiologically findings dated back to bronze age."),
 ("description_ancient_plate_armor2", "Description:^^This bronze armour is thousands of years old and was forged by Vulcanus.^^Background:^^Model is based on archiologically findings dated back to bronze age."),

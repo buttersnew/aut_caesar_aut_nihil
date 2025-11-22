@@ -5499,7 +5499,7 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["bonus_chest_18","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_female_slave1,itm_female_slave2,itm_female_slave3,itm_female_slave4],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_19","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_xylospongium],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_20","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_book_poop],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
-["bonus_chest_21","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt,itm_didos_underwear],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
+["bonus_chest_21","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_salt,itm_salt,itm_didos_underwear,itm_hannibals_armor,itm_hannibals_helm],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_22","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_sling_david,itm_sling_rock1],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 ["bonus_chest_23","{!}Bonus Chest","{!}Bonus Chest",tf_hero|tf_inactive, 0,reserved,fac_neutral,[itm_jewelry,itm_silver],hero_attrib|level(18),wp(60),knows_inventory_management_10, 0],
 
@@ -7230,7 +7230,7 @@ itm_nubian_axe_2, itm_javelin_berber, itm_javelin_berber,
 ],hero_attrib|level(50), wp(400), knows_hero, 0x000000099f04e4c05ee1561c95d25ae300000000001e96e50000000000000000],
 
 ["african_myth_hero_4", "Hannibal", "Hannibal", tf_hero, no_scene, reserved, fac_commoners,[
-itm_centurio_east_graves, itm_gauntles_1, itm_armor_of_african_gods, itm_javelin_berber, itm_javelin_berber,
+itm_centurio_east_graves, itm_gauntles_1, itm_javelin_berber, itm_javelin_berber,itm_hannibals_armor,itm_hannibals_helm,
 itm_numidian_spear_1,itm_eastern_shield_inf_heavy5
 ],hero_attrib|level(50), wp(600), knows_hero, 0x0000000d770101517722ad827b84db6f00000000001e12f80000000000000000],
 

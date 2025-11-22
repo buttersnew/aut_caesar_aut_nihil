@@ -6324,6 +6324,11 @@ itc_gladius|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 150000, weight(42)|head_armor(0)|body_armor(55)|leg_armor(12)|difficulty(16) ,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),],  ],
 
+["hannibals_armor", "Lorica Musculata Hannibalis", [("ass_hannibal_armour",0)], itp_unique| itp_type_body_armor |itp_covers_legs,0,
+100000, weight(42)|head_armor(0)|body_armor(50)|leg_armor(11)|difficulty(16) ,imodbits_armor,
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),],  ],
+["hannibals_helm", "Hannibals Helm", [("ass_hannibal_helm",0)], itp_unique| itp_type_head_armor|itp_attach_armature|itp_fit_to_head,0,
+15000, weight(2.5)|head_armor(48)|body_armor(0)|leg_armor(0)|difficulty(9) ,imodbits_plate ],
 #quests
 ["aslans_fur", "Aslan's Fur", [("aslans_fur",0)], itp_unique | itp_type_head_armor|itp_attach_armature|itp_fit_to_head|itp_doesnt_cover_hair,0,
 30000, weight(5)|head_armor(30)|body_armor(20)|leg_armor(5)|difficulty(10) ,imodbits_cloth, [], [] ],
