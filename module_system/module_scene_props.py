@@ -3575,4 +3575,5 @@ scene_props = [
 	( "ado_wood_bridge_long_ramp"                  ,0,"ado_wood_bridge_long_ramp","bo_ado_wood_bridge_long_ramp",[]),
 # from 'additional_props.brf': end (OpenBRF)
 
+  ( "mp_mound_a_path_digg"                       ,sokf_moveable,"mp_mound_a_path","bo_mp_mound_a",[]),
 ]

@@ -1641,3 +1641,4 @@ spr_oppidum_wall = 1639
 spr_oppidum_wall_turn = 1640
 spr_ado_wood_bridge_long = 1641
 spr_ado_wood_bridge_long_ramp = 1642
+spr_mp_mound_a_path_digg = 1643

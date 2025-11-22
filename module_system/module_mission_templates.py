@@ -32117,12 +32117,7 @@ mission_templates = [
     (ti_before_mission_start, 0, 0, [
       (quest_slot_ge, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 10),
     ],[
-      (replace_scene_props, "spr_mp_mound_a_path", "spr_empty"),
-      (replace_scene_props, "spr_mp_mound_b_path", "spr_empty"),
-      (replace_scene_props, "spr_mp_mound_c_path", "spr_empty"),
-      (replace_scene_props, "spr_mp_mound_d_path", "spr_empty"),
-      (replace_scene_props, "spr_mp_mound_e_path", "spr_empty"),
-      (replace_scene_props, "spr_mp_mound_f_path", "spr_empty"),
+      (replace_scene_props, "spr_mp_mound_a_path_digg", "spr_empty"),
     ]),
     (ti_before_mission_start, 0, 0, [
       (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
@@ -32215,8 +32210,18 @@ mission_templates = [
       (jump_to_menu, "mnu_death_waits"),
       (finish_mission),
     ]),
-
-
+    (0, 0, 0, [
+      (key_is_down, key_f4),
+      (this_or_next|key_is_down, key_left_control),
+      (key_is_down, key_right_control),
+    ],[
+      (get_player_agent_no, ":player"),
+      (agent_deliver_damage_to_agent,":player",":player",10000,"itm_warhammer"),
+      (display_message, "@DIE CHEATER! DIE CHEATER! DIE CHEATER!"),
+      (assign, "$temp", 2),
+      (jump_to_menu, "mnu_death_waits"),
+      (finish_mission),
+    ]),
     (0.5, 0, 0, [
       (neg|conversation_screen_is_active),
       (check_quest_active, "qst_prophecy_of_caeselius_bassus"),
@@ -32354,7 +32359,7 @@ mission_templates = [
       (set_fixed_point_multiplier, 1000),
       (try_for_prop_instances, ":earth"),
           (prop_instance_get_scene_prop_kind, ":is_earth", ":earth"),
-          (is_between, ":is_earth", "spr_mp_mound_a_turf", "spr_mp_parts_a"),
+          (eq, ":is_earth", "spr_mp_mound_a_path_digg"),
           (prop_instance_get_position, pos11, ":earth"),
           (position_get_z, ":z", pos11),
           (assign, reg1, ":z"),
