@@ -101614,6 +101614,17 @@ scripts = scripts_hardcoded + [
         (str_store_string, s4, ":selected_string"),
     (try_end),
 ]),
+# script_intervene_treason
+("intervene_treason", [
+    (store_script_param, ":troop_no", 1),
+    (str_store_troop_name, s13, ":troop_no"),
+    (display_message, "str_quest_updated"),
+    (add_quest_note_from_sreg, "qst_player_treason", 5, "@{s13} has agreed to intervene on your behalf. Wait now till the trial concludes.", 0),
+    (quest_get_slot, ":giver", "qst_player_treason", slot_quest_giver_troop),
+    (troop_get_slot, ":relation", ":giver", slot_troop_player_relation),
+    (val_max, ":relation", 0),
+    (troop_set_slot, ":giver", slot_troop_player_relation, ":relation"),
+]),
 ] + scripts_wse2
 
 #end of file

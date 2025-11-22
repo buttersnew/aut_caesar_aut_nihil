@@ -17456,7 +17456,7 @@ game_menus = [
 ]),
 
 ("cannot_enter_court_treason",0,
-  "You are not allowed to enter. It is most likely due to the secret trial that is currently held against you.",
+  "You are not allowed to enter. It is most likely due to the secret trial that is currently held against you.^^Still, a closed door is often just an opportunity for a bribe. Perhaps you should speak to the guard.",
   "none",
   [
     (set_background_mesh, "mesh_pic_mb_warrior_3"),
@@ -30465,7 +30465,12 @@ game_menus = [
         (set_visitor,3, "trp_praetoriani_milites"),
         (set_visitor,4, "trp_praetoriani_milites"),
         (try_for_range, ":entry", 5, 45),
-            (set_visitor,":entry", "trp_senator"),
+            (try_begin),
+                (eq, ":entry", 8),
+                (set_visitor, ":entry", "trp_senator_trump"),
+            (else_try),
+                (set_visitor,":entry", "trp_senator"),
+            (try_end),
         (try_end),
         (set_visitor,50, "trp_senator_dummy"),
 

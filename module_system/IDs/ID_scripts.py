@@ -1060,3 +1060,4 @@ script_init_chariot_item = 1058
 script_cf_agent_can_wear_cloak = 1059
 script_get_cultural_antiparty = 1060
 script_get_generic_rumour_string_to_s4 = 1061
+script_intervene_treason = 1062

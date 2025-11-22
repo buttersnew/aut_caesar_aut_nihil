@@ -7278,6 +7278,10 @@ tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows
 ["household_end", "end of household", "end of household", 0, no_scene, reserved, fac_neutral, [], def_attrib, wp(0),
 knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
+["senator_trump","Aurantius Licinius Rumpus","Aurantius Licinius Rumpus",tf_hero,0,0,fac_neutral,
+[itm_caligea,itm_calceus,itm_calceus_4,itm_calceus_3,itm_calceus_2,itm_roman_toga,itm_dagger],
+str_12|agi_12|int_20|cha_25|level(5),wp(30),knows_common|knows_riding_3|knows_persuasion_10|knows_trade_3,0x0000000c8201900b3e2c49a8a2b12bb300000000001f2dba0000000000000000],
+
 ["troops_end", "END OF THE WORLD", "END OF THE WORLD", 0, no_scene, reserved, fac_neutral, [], def_attrib, wp(0), knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
 
 ]#end of file

@@ -18687,16 +18687,239 @@ dialogs =[
 ]],
 ##end witch hunna
 
-##senator talk
-[trp_senator, "start",
-[
+## Senator Aurantius (Trump) Talk
+
+# Entry Point - Friendly (Already Supported)
+[trp_senator_trump, "start",[
   (eq,"$temp",1),
   (agent_slot_eq, "$g_talk_agent", slot_agent_courage_score, 1),
- ],"Ave, my friend. What can I do for you?", "senate_talk_friendly",[]],
+],"Ave, my friend! The best friend! We're doing great things, aren't we? Everyone says so. What can I do for you? Maybe you want to tell me how great I am? Go ahead.",
+"senate_talk_friendly",[]],
 
-[trp_senator, "senate_pretalk",
-[
- ],"Anything else?", "senate_talk_friendly",[]],
+# Pre-talk Loop
+[trp_senator_trump, "senate_pretalk",[
+],"Anything else? I'm a busy man, very busy. Making deals.",
+"senate_talk_friendly",[]],
+
+# Question: Issues or Concerns?
+[trp_senator_trump|plyr, "senate_talk_friendly",[
+],"Has the Roman nobility any issues or concerns currently?",
+"senate_talk_about_issues",[]],
+
+# Issue Response: High Unrest
+[trp_senator_trump, "senate_talk_about_issues",[
+  (gt, "$g_unrest", 40),
+],"It's a disaster, a total disaster. We have revolts, we have slaves—bad hombres—killing masters. It's terrible. The streets are a mess. And the bandits? They're pouring in. We need law and order! We need to be tough! Nobody is tougher than me, believe me.",
+"senate_pretalk",[]],
+
+# Issue Response: High Prosperity
+[trp_senator_trump, "senate_talk_about_issues",[
+  (party_slot_ge, "$current_town", slot_town_prosperity, 70),
+  (lt, "$g_unrest", 20),
+],"Everything is perfect. Perfect! The economy is huge. The best it's ever been. People are eating, they're happy, they love me. It's a beautiful thing. We're winning so much, you're going to get tired of winning.",
+"senate_pretalk",[]],
+
+# Issue Response: Low Prosperity (Poverty)
+[trp_senator_trump, "senate_talk_about_issues",[
+  (neg|party_slot_ge, "$current_town", slot_town_prosperity, 49),
+],"It's sad. Very sad. No food, people are hungry. The previous administration, they ruined it. But we're going to fix it. We're going to make Rome rich again. But right now? It's a swamp. A total mess.",
+"senate_pretalk",[]],
+
+# Issue Response: Normal
+[trp_senator_trump, "senate_talk_about_issues",[
+],"Business as usual. Boring! But business is good. I'm building things, big things. The best villas. But not much news. Fake news, mostly.",
+"senate_pretalk",[]],
+
+# Player asks for support (Already friendly)
+[trp_senator_trump|plyr, "senate_talk_friendly",[
+],"I hope you will support me.",
+"senate_talk_friendly2",[]],
+
+[trp_senator_trump, "senate_talk_friendly2",[
+],"Support you? Of course! I have the best support. Tremendous support. And you're a winner, I can tell. We're going to do great things. Believe me.",
+"close_window",[]],
+
+[trp_senator_trump|plyr, "senate_talk_friendly",[
+],"Ave atque Vale.", "close_window",[]],
+## End Friendly Block
+
+## Senator Not Supporter / Neutral
+[trp_senator_trump, "start",[
+  (agent_slot_eq, "$g_talk_agent", slot_agent_courage_score, 0),
+  (eq,"$temp",1),
+],"Ave. Make it quick. I have very important people waiting. Very important.",
+"senate_talk",[]],
+
+## Dismissal (Already Failed)
+[trp_senator_trump, "start",[
+  (eq,"$temp",1),
+],"Get him out of here! Don't bother me piggy! You're fake news!",
+"close_window",[]],
+
+## Generic Busy (Shouldn't trigger if setup correctly, but good for safety)
+[trp_senator_trump, "start",[
+],"I have no time. I'm meeting with the best people.",
+"close_window",[]],
+
+
+## The Main Interaction Loop
+[trp_senator_trump|plyr, "senate_talk",[
+],"You should know something very important...",
+"senate_talk_bribe",[]],
+
+[trp_senator_trump, "senate_talk_bribe",[
+],"Important? Is it about me? Tell me.",
+"senate_talk_bribe2",[]],
+
+[trp_senator_trump|plyr, "senate_talk_bribe2",[
+],"I would offer you my support and some gifts as a token of our friendship if you would support me in the senate.","senate_talk_bribe3",[
+]],
+
+[trp_senator_trump, "senate_talk_bribe3",[
+  (agent_get_slot, reg37, "$g_talk_agent", slot_agent_fatiga),
+],"A gift? I like gifts. I have the best gifts. But for my support? It has to be huge. {reg37} denarii. That's the deal. Take it or leave it.",
+"senate_talk_bribe4",[]],
+
+[trp_senator_trump|plyr, "senate_talk_bribe4",[
+],"Maybe I can try to persuade you.",
+ "senate_talk_bribe_persuade",[]],
+
+[trp_senator_trump, "senate_talk_bribe_persuade",[
+],"Persuade me? Good luck. I'm the best at deals. But go ahead. I'm listening. ^^-- As he leans in, a wave of pungent air hits you - a mix of stale sweat, cheap perfume, and something like sulfur. It makes your eyes water. --",
+"senate_talk_bribe_persuade2",[]],
+
+[trp_senator_trump|plyr, "senate_talk_bribe_persuade2",[
+],"[Attempt to persuade]",
+"senator_convince_persuade",[
+    # ... (Insert the exact same persuasion script block here as in your original code) ...
+    # Since you asked to keep logic unchanged, copy the long block from your post.
+    (assign, "$convince_value", reg37),
+    (store_skill_level, ":persuasion_level", "skl_persuasion", "trp_player"),
+    (store_skill_level, ":oratory", "skl_oratory", "trp_player"),
+    (store_attribute_level, ":charisma", "trp_player", ca_charisma),
+    (store_add, ":persuasion_potential", ":persuasion_level", ":oratory"),
+    (val_add, ":persuasion_potential", ":charisma"),
+    (store_random_in_range, ":random_1", 0, ":persuasion_potential"),
+    (store_random_in_range, ":random_2", 0, ":persuasion_potential"),
+    (store_add, ":rand", ":random_1", ":random_2"),
+    (assign, ":persuasion_difficulty", "$convince_value"),
+    (convert_to_fixed_point, ":persuasion_difficulty"),
+    (store_sqrt, ":persuasion_difficulty", ":persuasion_difficulty"),
+    (convert_from_fixed_point, ":persuasion_difficulty"),
+    (val_div, ":persuasion_difficulty", 10),
+    (val_add, ":persuasion_difficulty", 4),
+    (store_sub, "$persuasion_strength", ":rand", ":persuasion_difficulty"),
+    (val_mul, "$persuasion_strength", 20),
+    (assign, reg5, "$persuasion_strength"),
+    (val_sub, "$convince_value", "$persuasion_strength"),
+    (try_begin),
+      (ge, "$convince_value", 6000),
+      (ge, "$persuasion_strength", 200),
+      (val_sub, "$convince_value", 5000),
+    (try_end),
+    (agent_set_slot, "$g_talk_agent", slot_agent_fatiga, "$convince_value"),
+    (str_store_troop_name, s50, "$g_talk_troop"),
+		(try_begin),
+			(call_script, "script_cf_dplmc_troop_is_female", "$g_talk_troop"),
+			(assign, reg51, 1),
+			(assign, reg65, 1),
+		(else_try),
+			(assign, reg51, 0),
+			(assign, reg65, 0),
+		(try_end),
+    (try_begin),
+      (lt, "$persuasion_strength", -30),
+      (str_store_string, s5, "str_persuasion_summary_very_bad"),
+    (else_try),
+      (lt, "$persuasion_strength", -10),
+      (str_store_string, s5, "str_persuasion_summary_bad"),
+    (else_try),
+      (lt, "$persuasion_strength", 100),
+      (str_store_string, s5, "str_persuasion_summary_average"),
+    (else_try),
+      (lt, "$persuasion_strength", 300),
+      (str_store_string, s5, "str_persuasion_summary_good"),
+    (else_try),
+      (str_store_string, s5, "str_persuasion_summary_very_good"),
+    (try_end),
+    (dialog_box, "@{s5} (Persuasion strength: {reg5})", "@Persuasion Attempt"),
+]],
+
+# Persuasion Success
+[trp_senator_trump,"senator_convince_persuade",[
+  (le, "$convince_value", 0)
+], "Okay, okay. You made a good point. A very strong point. I like it. I'll do it. We're going to have a beautiful friendship. The best!",
+"close_window",[
+  (call_script, "script_change_senate_support", 1,0),
+  (display_message, "@You gain support", color_good_news),
+  (agent_set_slot, "$g_talk_agent", slot_agent_courage_score, 1),
+]],
+
+# Persuasion Partial Success (Still wants money, but less)
+[trp_senator_trump,"senator_convince_persuade",[
+  (gt, "$persuasion_strength", 5)
+], "You know, you're not wrong. {playername}, you're smart. I like smart people. But business is business. I still need something. A token.",
+"senator_pretalk",[]],
+
+# Persuasion Failure (Mild)
+[trp_senator_trump,"senator_convince_persuade",[
+  (gt, "$persuasion_strength", -10)
+], "Wrong. Just wrong. You talk a lot, but you're not making sense. Not like me. I stand by my deal.",
+"senator_pretalk",[]],
+
+# Persuasion Failure (Critical - You made him angry)
+[trp_senator_trump,"senator_convince_persuade",[
+], "Terrible deal. The worst trade deal in the history of trade deals, maybe ever. You're wasting my time. Get out! ^^-- The smell of his agitation seems to fill the room, a sour, heavy odor that clings to your clothes. --",
+"close_window",[
+ (agent_set_slot, "$g_talk_agent", slot_agent_courage_score, -1),
+]],
+
+# Back to Money
+[trp_senator_trump, "senator_pretalk",[
+  (agent_get_slot, reg37, "$g_talk_agent", slot_agent_fatiga),
+],"I still want a gift. {reg37} denarii. It's a small loan, really. You understand.",
+"senate_talk_bribe4",[]],
+
+[trp_senator_trump|plyr, "senate_talk_bribe_persuade2",[
+],"Nevermind.", "senator_pretalk",[]],
+
+[trp_senator_trump|plyr, "senate_talk_bribe4",[
+  (store_troop_gold, ":g", "trp_player"),
+  (ge, ":g", reg37),
+],"Very well. I will hand it over to you if I have your support.",
+"senate_talk_bribe5",[]],
+
+[trp_senator_trump, "senate_talk_bribe5",[
+],"Of course! We have the best support. Now, give me the money. ^^-- His small hands grab the purse greedily. He counts it quickly, licking his fingers. --^^ A pleasure. We're going to do big things.",
+"close_window",[
+  (call_script, "script_change_senate_support", 1,1),
+  (display_message, "@You gain support", color_good_news),
+  (agent_set_slot, "$g_talk_agent", slot_agent_courage_score, 1),
+  (troop_remove_gold, "trp_player", reg37),
+]],
+
+[trp_senator_trump|plyr, "senate_talk_bribe4",[
+],"Nevermind",
+"close_window",[]],
+
+[trp_senator_trump|plyr, "senate_talk_bribe2",[
+],"Nevermind",
+"close_window",[]],
+
+[trp_senator_trump|plyr, "senate_talk",[
+],"I must apologize, I wanted to talk with someone else. Someone... less fragrant.",
+"close_window",[]],
+
+##senator talk
+[trp_senator, "start",[
+  (eq,"$temp",1),
+  (agent_slot_eq, "$g_talk_agent", slot_agent_courage_score, 1),
+],"Ave, my friend. What can I do for you?",
+"senate_talk_friendly",[]],
+
+[trp_senator, "senate_pretalk",[
+],"Anything else?",
+"senate_talk_friendly",[]],
 
 [trp_senator|plyr, "senate_talk_friendly",
 [
@@ -64373,8 +64596,51 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 "lady_talk",[]],
 
 [anyone|plyr,"lady_talk",[
-    (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-	],"There are some political matters I wish to discuss","lord_start",[]],
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+],"There are some political matters I wish to discuss","lord_start",[]],
+
+[anyone|plyr,"lady_talk",[
+  (check_quest_active, "qst_player_treason"),
+  (quest_get_slot, ":giver", "qst_player_treason", slot_quest_giver_troop),
+  (troop_slot_eq, ":giver", slot_troop_spouse, "$g_talk_troop"),
+  (str_store_troop_name, s13, ":giver"),
+],"May can I get your help convincing {s13} of my innocence?","lady_husband_treason_talk",[]],
+
+[anyone, "lady_husband_treason_talk", [
+    (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_roman"),
+], "This trial... it is a dangerous game. My husband is under immense pressure.",
+"lady_treason_relation_check_roman", []],
+
+[anyone, "lady_husband_treason_talk", [
+], "You speak of the accusations. It is a dark cloud over our hall. My husband's honor demands justice.",
+"lady_treason_relation_check_barbarian", []],
+
+# High Relation (>= 20)
+[anyone, "lady_treason_relation_check_roman", [
+    (ge, "$g_talk_troop_effective_relation", 20),
+], "But you have been a true friend to us. I cannot stand by while you are ruined by whispers. I will speak to him tonight. I will remind him of your value to Rome. Fear not.",
+"close_window", [
+    (call_script, "script_intervene_treason", "$g_talk_troop"),
+]],
+# Neutral/Low Relation (< 20)
+[anyone, "lady_treason_relation_check_roman", [
+], "I am sorry. I cannot risk my own standing for a mere acquaintance. In Rome, one must be careful whom one defends. I will not intervene.",
+"close_window", []],
+
+
+# --- Non-Roman Relation Check & Responses ---
+# High Relation (>= 20)
+[anyone, "lady_treason_relation_check_barbarian", [
+    (ge, "$g_talk_troop_effective_relation", 20),
+], "You are kin to us in spirit, if not in blood. I will not let a friend be treated like a dog. I will go to my husband now. He will hear the truth from my lips.",
+"close_window", [
+    (call_script, "script_intervene_treason", "$g_talk_troop"),
+]],
+
+# Neutral/Low Relation (< 20)
+[anyone, "lady_treason_relation_check_barbarian", [
+], "Loyalty is earned, not begged for. You are a stranger to my hearth. Why should I cloud my husband's mind for you? Fight your own battles.",
+"close_window", []],
 
 [anyone|plyr,"lady_talk",[
   (eq, "$talk_context", tc_feast),
@@ -69622,7 +69888,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone,"castle_guard_sneaked_intro_ask",[
  ], "Where do you think you're going?", "castle_guard_sneaked_intro_1",[]],
 
-[anyone|plyr,"castle_guard_sneaked_intro_1",[], "I want to enter the hall and speak to the lord.", "castle_guard_sneaked_intro_2",[]],
+[anyone|plyr,"castle_guard_sneaked_intro_1",[
+], "I want to enter the hall and speak to the lord.",
+"castle_guard_sneaked_intro_2",[]],
+
 [anyone|plyr,"castle_guard_sneaked_intro_1",[], "[Leave]", "close_window",[]],
 [anyone,"castle_guard_sneaked_intro_2",[
     (eq, "$sneaked_into_town",disguise_pilgrim),
@@ -69656,7 +69925,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 	(faction_slot_eq, "$g_encountered_party_faction", slot_faction_ai_object, "$current_town"),
 
 	(this_or_next|neq, "$players_kingdom", "$g_encountered_party_faction"),
-		(neg|troop_slot_ge, "trp_player", slot_troop_renown, 50),
+	(neg|troop_slot_ge, "trp_player", slot_troop_renown, 50),
 
 	(neg|troop_slot_ge, "trp_player", slot_troop_renown, 125),
 	(neq, "$g_player_eligible_feast_center_no", "$current_town"),
@@ -69665,12 +69934,41 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 	(neg|check_quest_active, "qst_wed_betrothed_female"),
 
 	(neg|troop_slot_ge, "trp_player", slot_troop_spouse, 1), #Married players always make the cut
-
-  ], "I'm afraid there is a feast in progress, and you are not invited.", "close_window",
+], "I'm afraid there is a feast in progress, and you are not invited.", "close_window",
 []],
 
-[anyone,"castle_guard_intro_2",[], "You can go in after leaving your weapons with me. No one is allowed to carry arms into the lord's hall.", "castle_guard_intro_3",
+[anyone,"castle_guard_intro_2",[
+  (check_quest_active, "qst_player_treason"),
+  (quest_get_slot, ":giver", "qst_player_treason", slot_quest_giver_troop),
+  (party_slot_eq, "$current_town", slot_town_lord, ":giver"),
+], "Hold! You are the one accused of treason. My orders are clear: you are barred from the hall until the trial is concluded. Leave now, before I arrest you myself.",
+"castle_guard_treason_blocked", []],
+[anyone|plyr, "castle_guard_treason_blocked", [],
+  "Surely there is a way for a loyal soldier to pass... perhaps 500 denarii would help you reconsider my 'loyalty'?",
+"castle_guard_treason_bribe", []],
+[anyone, "castle_guard_treason_bribe", [
+  (store_troop_gold, ":gold", "trp_player"),
+  (ge, ":gold", 500),
+], "Five hundred... well. Even a traitor deserves a chance to speak, I suppose. Go in quickly. If anyone asks, I never saw you.",
+"close_window", [
+  (troop_remove_gold, "trp_player", 500),
+  (call_script, "script_enter_court", "$current_town", -1),
+]],
+
+[anyone, "castle_guard_treason_bribe", [],
+    "You dare try to bribe me with empty pockets? Get out of here, scum!",
+"close_window", []],
+
+[anyone|plyr, "castle_guard_treason_blocked", [],
+    "Very well. I will go.",
+"close_window", []],
+
+
+[anyone,"castle_guard_intro_2",[
+], "You can go in after leaving your weapons with me. No one is allowed to carry arms into the lord's hall.",
+"castle_guard_intro_3",
 []],
+
 
 [anyone|plyr,"castle_guard_intro_3",[], "Here, take my arms. I'll go in.",
 "close_window",[
@@ -84768,33 +85066,132 @@ I will need 500 denarii.", "bardo_sing2",[]],
 []],
 
 [anyone, "crispinilla_talk_nero_4",
-[],
-  "It all transpired so quickly my Princeps. Nero was in a hurry to leave before the traitors would kill him, he said the people of Rome has no appreciation of arts, he said that his wife and Tigellinus were undependable traitors. I heard the word Greece being mentioned. One of the servants told Locusta to help them pack, so she probably knows more than me.",
-  "close_window",
-[
+[],"It all transpired so quickly my Princeps. Nero was in a hurry to leave before the traitors would kill him, he said the people of Rome has no appreciation of arts, he said that his wife and Tigellinus were undependable traitors. I heard the word Greece being mentioned. One of the servants told Locusta to help them pack, so she probably knows more than me.",
+"close_window",[
   (display_message, "str_quest_updated"),
   (quest_set_slot, "qst_neros_fate", slot_quest_current_state, 2),
   (add_quest_note_from_sreg, "qst_neros_fate", 4, "@Crispinilla said Nero escaped to Greece, but does not know more details.", 0),
   (add_quest_note_from_sreg, "qst_neros_fate", 5, "@Crispinilla said you should ask with Locusta.", 0),
 ]],
 
-[anyone|plyr, "courtier_talk",
-[],
-  "I like your appearance. I invite you to my bedchamber.", "close_window",
-[
+[anyone|plyr, "courtier_talk",[
+],"I like your appearance. I invite you to my bedchamber.", "close_window",[
   (jump_to_menu, "mnu_funny_nights"),
   (finish_mission),
 ]],
+
 [anyone|plyr, "courtier_talk",
 [],"Ave atque Vale!", "close_window",[]],
 
-[trp_courtier,"start",[], "Currently I have no time. If you would excuse me.", "close_window",[]],
+# --- Generic Male Courtier ---
+[trp_courtier, "start", [
+    (check_quest_active, "qst_player_treason"),
+    (quest_slot_eq, "qst_player_treason", slot_quest_giver_troop, "trp_kingdom_7_lord"),
+], "I know why you are here. Everyone whispers about your... situation. Do not speak to me. I cannot help you, and being seen with you is dangerous.",
+"courtier_treason_advice", []],
+[trp_courtier, "courtier_treason_advice", [],
+"If you want to save your neck, you need someone who has the Caesar's ear... someone who knows his darker moods. Seek out Locusta or Calvia Crispinilla. They are the only ones who probably can navigate this storm. Now go.",
+"close_window", []],
+[trp_courtier, "start", [
+], "Currently I have no time. If you would excuse me.", "close_window", []],
 
-[trp_courtier_female,"start",[], "Currently I have no time. If you would excuse me.", "close_window",[]],
 
-[trp_courtier_locusta,"start",[], "Currently I have no time. If you would excuse me.", "close_window",[]],
+# --- Generic Female Courtier ---
+[trp_courtier_female, "start", [
+    (check_quest_active, "qst_player_treason"),
+    (quest_slot_eq, "qst_player_treason", slot_quest_giver_troop, "trp_kingdom_7_lord"),
+], "Oh! You are bold to show your face here. The trial... it is all anyone talks about.",
+"courtier_female_treason_advice", []],
 
-[trp_courtier_crispinilla,"start",[], "Currently I have no time. If you would excuse me.", "close_window",[]],
+[trp_courtier_female, "courtier_female_treason_advice", [],
+"I have no influence with the Princeps. But Calvia Crispinilla... she knows his mind. Or perhaps Locusta. They say she can cure any 'problem' the Emperor has. Maybe she can cure yours.",
+"close_window", []],
+
+[trp_courtier_female, "start", [
+], "Currently I have no time. If you would excuse me.",
+"close_window", []],
+
+# --- Locusta (The Poisoner) ---
+[trp_courtier_locusta, "start", [
+    (check_quest_active, "qst_player_treason"),
+    (quest_slot_eq, "qst_player_treason", slot_quest_giver_troop, "trp_kingdom_7_lord"),
+], "You smell of fear. Or perhaps it is just the scent of a dead man walking. Why have you come to me?",
+"locusta_treason_talk", []],
+
+[trp_courtier_locusta, "start", [
+], "Currently I have no time. If you would excuse me.", "close_window", []],
+
+[anyone|plyr, "locusta_treason_talk", [],"I am innocent. You have the Caesar's trust. Speak for me.",
+"locusta_treason_demand", []],
+[anyone|plyr, "locusta_treason_talk", [],"I am not dead yet! I don't need your help.",
+"close_window", []],
+
+[trp_courtier_locusta, "locusta_treason_demand", [
+], "Innocence is a matter of perspective. The Princep's trust is a rare and expensive ingredient. To add my voice to the mixture... that will cost you. 100,000 denarii. A small price for your life, no?",
+"locusta_treason_choice", []],
+
+[anyone|plyr, "locusta_treason_choice", [
+    (store_troop_gold, ":gold", "trp_player"),
+    (ge, ":gold", 100000),
+], "I will pay. Here is the gold.",
+"locusta_treason_success", []],
+
+[anyone|plyr, "locusta_treason_choice", [],
+"That is extortion! I do not have that kind of money.",
+"locusta_treason_fail", []],
+
+[trp_courtier_locusta, "locusta_treason_success", [],
+"A wise investment. I shall whisper the right words in the right ear. The poison of suspicion will be... neutralized.",
+"close_window", [
+    (troop_remove_gold, "trp_player", 100000),
+    (call_script, "script_intervene_treason", "$g_talk_troop"),
+]],
+
+[trp_courtier_locusta, "locusta_treason_fail", [],
+"Then you are already a ghost. Do not waste my time.",
+"close_window", []],
+
+
+# --- Calvia Crispinilla (The Mistress of Pleasure) ---
+[trp_courtier_crispinilla, "start", [
+    (check_quest_active, "qst_player_treason"),
+    (quest_slot_eq, "qst_player_treason", slot_quest_giver_troop, "trp_kingdom_7_lord"),
+], "Well, well. The accused stands before me. You look surprisingly calm for someone whose head is on the block.",
+"crispinilla_treason_talk", []],
+
+[trp_courtier_crispinilla, "start", [
+], "Currently I have no time. If you would excuse me.",
+"close_window", []],
+
+[anyone|plyr, "crispinilla_treason_talk", [],
+"I need your help. Convince Nero of my loyalty.",
+"crispinilla_treason_demand", []],
+[anyone|plyr, "crispinilla_treason_talk", [],
+"I fear nothing! Begone wench!",
+"close_window", []],
+
+[trp_courtier_crispinilla, "crispinilla_treason_demand", [
+], "Loyalty? Such a boring concept. But influence... that is exciting. I can make the Emperor forget his anger, turn his mind to other... pleasures. But my time is precious, and my favor is not free. 100,000 denarii.",
+"crispinilla_treason_choice", []],
+
+[anyone|plyr, "crispinilla_treason_choice", [
+    (store_troop_gold, ":gold", "trp_player"),
+    (ge, ":gold", 100000),
+], "The price is high, but I have no choice. Take it.", "crispinilla_treason_success", []],
+
+[anyone|plyr, "crispinilla_treason_choice", [],
+    "I cannot pay such a sum.", "crispinilla_treason_fail", []],
+
+[trp_courtier_crispinilla, "crispinilla_treason_success", [],
+"Delicious. Don't worry, darling. Tonight, Nero will be thinking of many things, but your execution won't be one of them.",
+"close_window", [
+    (troop_remove_gold, "trp_player", 100000),
+    (call_script, "script_intervene_treason", "$g_talk_troop"),
+]],
+
+[trp_courtier_crispinilla, "crispinilla_treason_fail", [],
+"Then I suggest you start praying. Or running. Goodbye.",
+"close_window", []],
 ##courtier talk END
 
 ##supplicants talk

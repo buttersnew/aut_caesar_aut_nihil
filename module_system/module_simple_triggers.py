@@ -3694,17 +3694,20 @@ simple_triggers = [
     (try_begin),
         (check_quest_active, "qst_player_treason"),
         (quest_slot_eq, "qst_player_treason", slot_quest_current_state, 1),
+        # (display_message, "@Check 1"),
         (try_begin),
             (quest_get_slot, ":giver", "qst_player_treason", slot_quest_giver_troop),
             (store_faction_of_troop, ":giver_faction", ":giver"),
             (eq, ":giver_faction", "$players_kingdom"),
             (quest_get_slot, ":timer", "qst_player_treason", slot_quest_timer),
+            # (assign, reg13, ":timer"),
+            # (display_message, "@Check {reg13}"),
             (neq, ":timer", -1),
             (store_current_day, ":cur_day"),
             (val_sub, ":cur_day", ":timer"),
             (ge, ":cur_day", 10), ## 10 days
             (try_begin),
-                (troop_slot_ge, ":giver", slot_troop_player_relation, 0),
+                (troop_slot_ge, ":giver", slot_troop_player_relation, -20),
                 (dialog_box, "@Rumors reach you that the secret trial had no outcome.", "@Secret trial ends"),
                 (call_script, "script_fail_quest", "qst_player_treason"),
                 (call_script, "script_end_quest", "qst_player_treason"),
@@ -4820,13 +4823,13 @@ simple_triggers = [
         (neg|troop_slot_eq, ":faction_leader", slot_troop_spouse, "trp_player"),
 
         (call_script, "script_troop_get_relation_with_troop", "trp_player", ":faction_leader"),
-        (le, reg0, -75), #was -50
+        (le, reg0, -50), #was -50
 
         #The more centralized the faction, the greater the chance the liege will indict
         #the lord before he defects.
         (faction_get_slot, reg0, "$players_kingdom", dplmc_slot_faction_centralization),
         (val_clamp, reg0, -3, 4),
-        (val_add, reg0, 10),#7 minimum, 13 maximum
+        (val_add, reg0, 12),#7 minimum, 13 maximum
         (store_random_in_range, ":random", 0, reg0),
         #Random  < 5: The lord defects
         #Random >= 5: The liege indicts the lord for treason
@@ -4834,10 +4837,11 @@ simple_triggers = [
 
         (lt, ":random", 5),
         # (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
-        (str_store_troop_name, s22, ":faction_leader"),
-        (dialog_box, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship.", "@Treason"),
+        (str_store_troop_name_link, s22, ":faction_leader"),
+        (str_store_troop_name, s13, ":faction_leader"),
+        (dialog_box, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s13} chairmanship.", "@Treason"),
         (call_script, "script_change_player_relation_with_troop", ":faction_leader", -5),
-        (str_store_string, s2, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship."),
+        (str_store_string, s2, "@Rumors reach you that you have been indicted for treason! A secret trial is taking place under {s22} chairmanship.^^Hint: Try to raise your relation with {s22} to be at least above -20. Speak with {s22} spouse or courtiers for help."),
         (call_script, "script_start_quest", "qst_player_treason", ":faction_leader"),
         (quest_set_slot, "qst_player_treason", slot_quest_current_state, 1),
         (store_current_day, ":day"),

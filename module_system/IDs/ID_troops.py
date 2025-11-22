@@ -2511,4 +2511,5 @@ trp_household_cook_4 = 2509
 trp_household_cook_5 = 2510
 trp_household_cook_6 = 2511
 trp_household_end = 2512
-trp_troops_end = 2513
+trp_senator_trump = 2513
+trp_troops_end = 2514
