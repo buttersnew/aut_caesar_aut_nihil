@@ -4634,8 +4634,21 @@ simple_triggers = [
             (faction_get_slot, ":cur_culture", ":cur_kingdom", slot_faction_culture),
             (try_for_range, ":active_kingdoms", kingdoms_begin, kingdoms_end),
                 (neq, ":active_kingdoms", ":cur_kingdom"),#not the same!
-                (faction_slot_eq, ":active_kingdoms", slot_faction_culture, ":cur_culture"),
-                (call_script, "script_diplomacy_start_peace_between_kingdoms", ":active_kingdoms", ":cur_kingdom", 0),
+                # peace out with factions of same culture
+                (try_begin),
+                    (faction_slot_eq, ":active_kingdoms", slot_faction_culture, ":cur_culture"),
+                    (call_script, "script_diplomacy_start_peace_between_kingdoms", ":active_kingdoms", ":cur_kingdom", 0),
+                (try_end),
+                # give gravitas to marshal for faction defeating
+                (try_begin),
+                    (faction_slot_eq, ":active_kingdoms", slot_faction_state, sfs_active),
+                    (store_relation, ":relation", ":active_kingdoms", ":cur_kingdom"),
+                    (lt, ":relation", -1),
+                    (faction_slot_eq, ":active_kingdoms", slot_faction_government_type, gov_imperial),
+                    (faction_get_slot, ":marshal", ":active_kingdoms", slot_faction_marshal),
+                    (ge, ":marshal", 0),
+                    (call_script, "script_troop_change_triumph_points", ":marshal", 250),
+                (try_end),
             (try_end),
             (try_for_parties, ":cur_party"),
                 (party_is_active, ":cur_party"),

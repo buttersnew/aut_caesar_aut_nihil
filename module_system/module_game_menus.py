@@ -24784,7 +24784,7 @@ game_menus = [
     (assign, "$g_dont_give_marshalship_to_player_days", 15),
     (assign, reg5, ":denar_gain"),
 
-    (store_div, ":gravitas", ":denar_gain", 100),
+    (store_div, ":gravitas", ":denar_gain", 80),
     (call_script, "script_troop_change_triumph_points", "trp_player", ":gravitas"),
 
     (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
@@ -34529,92 +34529,81 @@ game_menus = [
 ("germania_conquered",0,    #modified motomataru chief
   "You have conquered Germania! You have taken revenge for this shameful massacre of Roman soldiers in the Teuteburger forest.\
   You have managed what nobody before did and subjected the freedom loving Germans. You gain the cognomen 'Germanicus'. You obtain Donar's golden club.",
-  "none",
-  [
-	(set_background_mesh, "mesh_pic_triumph"),
-   ],
-   [
-     ("continue",[],"Ave Caesar! Glory to the Princeps. Me he he...",
-     [
-     (troop_add_item, "trp_player", "itm_hercules_club", 0),
-     (add_xp_as_reward, 10000),
-     (display_log_message, "@Germania is now Roman, you gain the cognomen 'Germanicus'.^^Go to Rome to hold a triumph!"),
-     (quest_set_slot, "qst_blank_quest_22", slot_quest_target_dna, 1),
-     (val_sub, "$g_unrest", 20),
-     (display_message, "@Stability of the Empire increases", color_good_news),
-     (val_max, "$g_unrest", 0),
-		 (call_script, "script_change_troop_renown", "trp_player", 500),
-	   (complete_quest, "qst_blank_quest_22"),
-     (change_screen_map),
-     ]),
-   ]
- ),
-  ("britannia_conquered",0,    #modified motomataru chief
-  "You have conquered Britannia! This Isle now belongs to the Roman Empire. You gain the cognomen 'Britannicus'. You obtain a golden carnyx.^^Go to Rome to hold a triumph!",
-  "none",
-  [
-	(set_background_mesh, "mesh_pic_triumph"),
-   ],
-   [
-     ("continue",[],"Ave Caesar! Glory to the Princeps. Me he he...",
-     [
-     (troop_add_item, "trp_player", "itm_celtic_carnyx", 0),
-     (add_xp_as_reward, 10000),
-     (quest_set_slot, "qst_blank_quest_25", slot_quest_target_dna, 1),
-     (display_log_message, "@Britannia is now Roman, you gain the cognomen 'Britannicus'"),
-     (val_sub, "$g_unrest", 20),
-     (display_message, "@Stability of the Empire increases", color_good_news),
-     (val_max, "$g_unrest", 0),
-     (call_script, "script_change_troop_renown", "trp_player", 250),
-	 (complete_quest, "qst_blank_quest_25"),
-     (change_screen_map),
-     ]),
-   ]
- ),
-  ("dacia_conquered",0,    #modified motomataru chief
-  "You have conquered Dacia! This land now belongs to the Roman Empire. You gain the cognomen 'Dacicus'. You obtain the trasure of the Getae.^^Go to Rome to hold a triumph!",
-  "none",
-  [
-	(set_background_mesh, "mesh_pic_triumph"),
-   ],
-   [
-     ("continue",[],"Ave Caesar! Glory to the Princeps. Me he he...",
-     [
-     (troop_add_item, "trp_player", "itm_dacian_treasure", 0),
+  "none",[
+	  (set_background_mesh, "mesh_pic_triumph"),
+  ],[
+    ("continue",[],"Ave Caesar! Glory to the Princeps. Me he he...",[
+      (call_script, "script_troop_change_triumph_points", "trp_player", 750),
+      (troop_add_item, "trp_player", "itm_hercules_club", 0),
       (add_xp_as_reward, 10000),
-     (display_log_message, "@Dacia is now Roman, you gain the cognomen 'Dacicus'"),
-     (quest_set_slot, "qst_blank_quest_24", slot_quest_target_dna, 1),
-     (val_sub, "$g_unrest", 20),
-     (display_message, "@Stability of the Empire increases", color_good_news),
-     (val_max, "$g_unrest", 0),
-     (call_script, "script_change_troop_renown", "trp_player", 250),
-    (complete_quest, "qst_blank_quest_24"),
-     (change_screen_map),
-     ]),
-   ]
- ),
-  ("mesopotamia_conquered",0,    #modified motomataru chief
+      (display_log_message, "@Germania is now Roman, you gain the cognomen 'Germanicus'.^^Go to Rome to hold a triumph!"),
+      (quest_set_slot, "qst_blank_quest_22", slot_quest_target_dna, 1),
+      (val_sub, "$g_unrest", 20),
+      (display_message, "@Stability of the Empire increases", color_good_news),
+      (val_max, "$g_unrest", 0),
+      (call_script, "script_change_troop_renown", "trp_player", 500),
+      (complete_quest, "qst_blank_quest_22"),
+      (change_screen_map),
+    ]),
+]),
+
+("britannia_conquered",0,    #modified motomataru chief
+  "You have conquered Britannia! This Isle now belongs to the Roman Empire. You gain the cognomen 'Britannicus'. You obtain a golden carnyx.^^Go to Rome to hold a triumph!",
+  "none",[
+	  (set_background_mesh, "mesh_pic_triumph"),
+  ],[
+    ("continue",[],"Ave Caesar! Glory to the Princeps. Me he he...",[
+      (call_script, "script_troop_change_triumph_points", "trp_player", 750),
+      (troop_add_item, "trp_player", "itm_celtic_carnyx", 0),
+      (add_xp_as_reward, 10000),
+      (quest_set_slot, "qst_blank_quest_25", slot_quest_target_dna, 1),
+      (display_log_message, "@Britannia is now Roman, you gain the cognomen 'Britannicus'"),
+      (val_sub, "$g_unrest", 20),
+      (display_message, "@Stability of the Empire increases", color_good_news),
+      (val_max, "$g_unrest", 0),
+      (call_script, "script_change_troop_renown", "trp_player", 250),
+      (complete_quest, "qst_blank_quest_25"),
+      (change_screen_map),
+    ]),
+]),
+("dacia_conquered",0,    #modified motomataru chief
+  "You have conquered Dacia! This land now belongs to the Roman Empire. You gain the cognomen 'Dacicus'. You obtain the trasure of the Getae.^^Go to Rome to hold a triumph!",
+  "none",[
+	  (set_background_mesh, "mesh_pic_triumph"),
+  ],[
+    ("continue",[],"Ave Caesar! Glory to the Princeps. Me he he...",[
+      (call_script, "script_troop_change_triumph_points", "trp_player", 750),
+      (troop_add_item, "trp_player", "itm_dacian_treasure", 0),
+      (add_xp_as_reward, 10000),
+      (display_log_message, "@Dacia is now Roman, you gain the cognomen 'Dacicus'"),
+      (quest_set_slot, "qst_blank_quest_24", slot_quest_target_dna, 1),
+      (val_sub, "$g_unrest", 20),
+      (display_message, "@Stability of the Empire increases", color_good_news),
+      (val_max, "$g_unrest", 0),
+      (call_script, "script_change_troop_renown", "trp_player", 250),
+      (complete_quest, "qst_blank_quest_24"),
+      (change_screen_map),
+    ]),
+]),
+("mesopotamia_conquered",0,    #modified motomataru chief
   "You have conquered Mesopotamia! This fertile land between Euphrat and Tigris now belongs to the Roman Empire. You gain the cognomen 'Parthicus'. You also obtain the crown of the Shah.^^Go to Rome to hold a triumph!",
-  "none",
-  [
-	(set_background_mesh, "mesh_pic_triumph"),
-   ],
-   [
-     ("continue",[],"Ave Caesar! Glory to the Princeps. Me he he...",
-     [
-     (add_xp_as_reward, 10000),
-     (troop_add_item, "trp_player", "itm_crown_shah", 0),
-     (display_log_message, "@Mesopotamia is now Roman, you gain the cognomen 'Parthicus'"),
-     (quest_set_slot, "qst_blank_quest_23", slot_quest_target_dna, 1),
+  "none",[
+	  (set_background_mesh, "mesh_pic_triumph"),
+  ],[
+    ("continue",[],"Ave Caesar! Glory to the Princeps. Me he he...",[
+      (call_script, "script_troop_change_triumph_points", "trp_player", 750),
+      (add_xp_as_reward, 10000),
+      (troop_add_item, "trp_player", "itm_crown_shah", 0),
+      (display_log_message, "@Mesopotamia is now Roman, you gain the cognomen 'Parthicus'"),
+      (quest_set_slot, "qst_blank_quest_23", slot_quest_target_dna, 1),
       (val_sub, "$g_unrest", 20),
       (display_message, "@Stability of the Empire increases", color_good_news),
       (val_max, "$g_unrest", 0),
       (call_script, "script_change_troop_renown", "trp_player", 250),
       (complete_quest, "qst_blank_quest_23"),
-     (change_screen_map),
-     ]),
-   ]
- ),
+      (change_screen_map),
+    ]),
+]),
 
 ("ad_mortem",mnf_scale_picture,
   "You take a walk close to Rome. The sun touches your face softly. You see a couple sitting in the distance. You hear no birds, no wind, all is quiet...",
@@ -62146,6 +62135,7 @@ It is said, that she lives now together with the goat.",
   "none",[
     (str_store_string, s10, "@{!}An error has occured"),
     (set_background_mesh, "mesh_pic_omen_bird"),
+    (str_store_party_name_link, s44, "p_town_6"),
     (try_begin),
         (eq, "$g_notification_menu_var1", "qst_ludi_romani"),
         (try_begin),

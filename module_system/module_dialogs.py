@@ -1420,15 +1420,30 @@ dialogs =[
 "athlete_start_persuasion", []],
 
 # Dialogue for athletes who have already been convinced
-[trp_tetraites, "start", [], "We have an understanding. There is nothing more to discuss.",
+[trp_tetraites, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 17),
+], "We have an understanding. There is nothing more to discuss.",
 "close_window", []],
-[trp_spiculus, "start", [], "Our business is concluded. Good day.",
+[trp_spiculus, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 17),
+], "Our business is concluded. Good day.",
 "close_window", []],
-[trp_diocles, "start", [], "I remember our arrangement. Do not worry.",
+[trp_diocles, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 17),
+], "I remember our arrangement. Do not worry.",
 "close_window", []],
-[trp_scorpius, "start", [], "I know what I have to do. Leave me be.",
+[trp_scorpius, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 17),
+], "I know what I have to do. Leave me be.",
 "close_window", []],
-[trp_hermes, "start", [], "The fate of Olympia is what matters. I have not forgotten.",
+[trp_hermes, "start", [
+  (check_quest_active, "qst_nero_greece_tour"),
+  (quest_slot_ge, "qst_nero_greece_tour", slot_quest_current_state, 17),
+], "The fate of Olympia is what matters. I have not forgotten.",
 "close_window", []],
 
 # --- COMMON PERSUASION DIALOGUE ---
@@ -10512,7 +10527,7 @@ dialogs =[
 
 [anyone,"poppaea_gardens_feast_talk_4",[
   (try_begin),
-    (ge, "$g_talk_troop_met", 1),
+    (le, "$g_talk_troop_met", 1),
     (str_store_string, s17, "@I've been thinking about you ever since I heard all the talk about your fame and deeds. It's so great to finally meet you."),
   (else_try),
     (str_store_string, s17, "@I've been thinking about you ever since we last met."),
@@ -10548,13 +10563,23 @@ dialogs =[
 
 [anyone|plyr,"poppaea_gardens_feast_talk_9",[
 ],
-"Yes it is. But why does he want to punish you?",
+"Why does he want to punish you at all?",
 "poppaea_gardens_feast_talk_9_1",[]],
 
 [anyone|plyr,"poppaea_gardens_feast_talk_9",[
 ],
-"I see. But he is the Princeps. You shouldn't be that envious as he can do what he wants.",
+"He is the Princeps. You shouldn't be that envious as he can do what he wants.",
 "poppaea_gardens_feast_talk_9_2",[]],
+
+[anyone|plyr,"poppaea_gardens_feast_talk_9",[
+],
+"Perhaps he has simply found someone younger and more... exciting?",
+"poppaea_gardens_feast_talk_9_3",[]],
+
+[anyone|plyr,"poppaea_gardens_feast_talk_9",[
+],
+"Envy is an ugly trait, my lady. It does not suit an Augusta.",
+"poppaea_gardens_feast_talk_9_4",[]],
 
 [anyone,"poppaea_gardens_feast_talk_9_1",[
 ],
@@ -10568,10 +10593,47 @@ dialogs =[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
 ]],
 
+[anyone,"poppaea_gardens_feast_talk_9_3",[
+],
+"Younger? Exciting? How dare you! I am Poppaea Sabina! I am the most beautiful woman in the Empire! That little tart is nothing but a passing amusement. Get out of my sight before I have your tongue cut out for such insolence!",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),
+]],
+
+[anyone,"poppaea_gardens_feast_talk_9_4",[
+],
+"Ugly? You lecture me on what suits an Augusta? I didn't ask for a philosophy lesson from a soldier. My envy is what keeps me sharp. Your stupidity, however, is what will get you killed. Leave me.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -7),
+]],
+
+[anyone|plyr,"poppaea_gardens_feast_talk_10",[
+],
+"A loyal wife would praise her husband's art, no matter how terrible it is.",
+"poppaea_gardens_feast_talk_10_3",[]],
+[anyone,"poppaea_gardens_feast_talk_10_3",[
+],
+"Loyal? I have shared his bed, his secrets, and his crimes! Do not speak to me of loyalty, you insignificant worm. My loyalty keeps his crown on his head. My taste keeps him from looking like a fool. If I say his song is boring, then it is boring! Get out of my sight.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -7),
+]],
+
 [anyone|plyr,"poppaea_gardens_feast_talk_10",[
 ],
 "So you are not a fan of his art, all is just played?",
 "poppaea_gardens_feast_talk_10_1",[]],
+
+[anyone|plyr,"poppaea_gardens_feast_talk_10",[
+],
+"You must have been very drunk indeed. Nero is a genius. Everyone says so.",
+"poppaea_gardens_feast_talk_10_4",[]],
+
+[anyone,"poppaea_gardens_feast_talk_10_4",[
+],
+"Everyone says so because everyone is afraid of being executed! You are just another sycophant. 'Genius'... ha! If you truly believe that, you have the ears of a donkey. I have no patience for fools or liars tonight. Go away.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
+]],
 
 [anyone,"poppaea_gardens_feast_talk_10_1",[
 ],
@@ -46869,24 +46931,26 @@ But no, you were too damned honorable, weren't you?", "close_window",[
 ]],
 #TODO: NO GENERIC MISSION FAILED ANYMORE!!!!
 
-[anyone,"lord_start",[(store_partner_quest,":lords_quest"),
-                   (eq,":lords_quest","qst_meet_spy_in_enemy_town"),
-                   (check_quest_succeeded, "qst_meet_spy_in_enemy_town"),
+[anyone,"lord_start",[
+  (store_partner_quest,":lords_quest"),
+  (eq,":lords_quest","qst_meet_spy_in_enemy_town"),
+  (check_quest_succeeded, "qst_meet_spy_in_enemy_town"),
 ],
-"Have you brought me any news about that task I gave you? You know the one I mean...", "quest_meet_spy_in_enemy_town_completed",
+"Have you brought me any news about that task I gave you? You know the one I mean...",
+"quest_meet_spy_in_enemy_town_completed",
 []],
 
 [anyone|plyr, "quest_meet_spy_in_enemy_town_completed",[],
 "I have the reports you wanted right here.", "quest_meet_spy_in_enemy_town_completed_2",[]],
 
 [anyone, "quest_meet_spy_in_enemy_town_completed_2",[],
-"Ahh, well done. It's good to have competent {men/people} on my side. Here is the payment I promised you.", "lord_pretalk",
-[
-(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
-(add_xp_as_reward, 500),
-(quest_get_slot, ":gold", "qst_meet_spy_in_enemy_town", slot_quest_gold_reward),
-(call_script, "script_troop_add_gold", "trp_player", ":gold"),
-(call_script, "script_end_quest", "qst_meet_spy_in_enemy_town"),
+"Ahh, well done. It's good to have competent {men/people} on my side. Here is the payment I promised you.",
+"lord_pretalk",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+  (add_xp_as_reward, 1500),
+  (quest_get_slot, ":gold", "qst_meet_spy_in_enemy_town", slot_quest_gold_reward),
+  (call_script, "script_troop_add_gold", "trp_player", ":gold"),
+  (call_script, "script_end_quest", "qst_meet_spy_in_enemy_town"),
 ]],
 
 [anyone,"lord_start",[(store_partner_quest,":lords_quest"),
@@ -55168,6 +55232,18 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 "lord_talk_ask_location",[]],
 
 [anyone|plyr,"lord_talk_ask_something_2",[
+  (ge, "$cheat_mode", 1),
+],"CHEAT: What would you consider your home?",
+"lord_talk_ask_home",[]],
+
+[anyone,"lord_talk_ask_home",[
+],"It is {s13}!",
+"lord_pretalk",[
+  (call_script, "script_lord_get_home_center", "$g_talk_troop"),
+  (str_store_party_name, s13, reg0),
+]],
+
+[anyone|plyr,"lord_talk_ask_something_2",[
  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_leaded_party, -1)
 ],
 "What are you and your men doing?", "lord_tell_objective",[
@@ -59820,38 +59896,40 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 
   (assign, ":matched_any", 0),
   (try_begin),
-	#close or nominal superior:
-	(this_or_next|ge, ":is_close", 1),
+    #close or nominal superior:
+    (this_or_next|ge, ":is_close", 1),
     (ge, ":nominal_superior", 1),
     (this_or_next|eq, "$random_quest_no", "qst_deliver_message_to_prisoner_lord"),
     (this_or_next|eq, "$random_quest_no", "qst_meet_spy_in_enemy_town"),
-	(this_or_next|eq, "$random_quest_no", "qst_deliver_message"),
-	(this_or_next|eq, "$random_quest_no", "qst_collect_taxes"),
-	(this_or_next|eq, "$random_quest_no", "qst_follow_spy"),
-	(this_or_next|eq, "$random_quest_no", "qst_kill_local_merchant"),
-	(eq, "$random_quest_no", "qst_capture_prisoners"),
-	(assign, ":matched_any", 1),
+    (this_or_next|eq, "$random_quest_no", "qst_deliver_message"),
+    (this_or_next|eq, "$random_quest_no", "qst_collect_taxes"),
+    (this_or_next|eq, "$random_quest_no", "qst_follow_spy"),
+    (this_or_next|eq, "$random_quest_no", "qst_kill_local_merchant"),
+    (eq, "$random_quest_no", "qst_capture_prisoners"),
+    (assign, ":matched_any", 1),
   (else_try),
-	#close only:
-	(ge, ":is_close", 1),
+    #close only:
+    (ge, ":is_close", 1),
     (eq, "$random_quest_no", "qst_incriminate_loyal_commander"),
-	(assign, ":matched_any", 1),
+    (assign, ":matched_any", 1),
   (try_end),
   (eq, ":matched_any", 0),
   ##Get different text if the player is the faction leader or the faction leader's spouse
   (try_begin),
     (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
     (troop_get_slot, reg0, "trp_player", slot_troop_spouse),
-	(this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
-		(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, reg0),
-	(this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
-		(ge, reg0, 1),
-	(assign, reg0, 1),
+    (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
+    (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, reg0),
+    (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
+    (ge, reg0, 1),
+    (assign, reg0, 1),
   (else_try),
-	(assign, reg0, 0),
+    (assign, reg0, 0),
   (try_end),
- ],
-   "There are some minor errands which I need completed, but it would be more appropriate to give them to one of my own {reg65?servants:men}, not to {reg0?my liege:a loyal commander of the realm}.", "lord_tell_mission_sworn_vassal",[]],
+],
+"There are some minor errands which I need completed, but it would be more appropriate to give them to one of my own {reg65?servants:men}, not to {reg0?my liege:a loyal commander of the realm}",
+"lord_tell_mission_sworn_vassal",[]],
+
 ##diplomacy end+
 
 [anyone,"lord_tell_mission_sworn_vassal",[
@@ -60427,115 +60505,148 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (finish_mission),
 ]],
 
-[anyone,"lord_tell_mission",[(eq,"$random_quest_no","qst_meet_spy_in_enemy_town"),
-    (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-    (str_store_party_name, s13, ":quest_target_center"),
-    (store_faction_of_party,":quest_target_center_faction",":quest_target_center"),
-    (str_store_faction_name, s14, ":quest_target_center_faction"),
-     ],
-   "I have a sensitive matter which needs tending to, {playername}, and no trustworthy retainers to take care of it. The fact is that I have a spy in {s13} to keep an eye on things for me, and report anything that might warrant my attention. Every week I send someone to collect the spy's reports and bring them back to me. The job's yours if you wish it.", "lord_mission_told_meet_spy_in_enemy_town",
-[
-   ]],
-
-[anyone|plyr,"lord_mission_told_meet_spy_in_enemy_town",[], "I don't mind a bit of skullduggery. Count me in.", "quest_meet_spy_in_enemy_town_accepted",[]],
-[anyone|plyr,"lord_mission_told_meet_spy_in_enemy_town",[], "I must decline. This cloak-and-dagger work isn't fit for me.", "quest_meet_spy_in_enemy_town_rejected",[]],
-
-[anyone,"quest_meet_spy_in_enemy_town_accepted",[], "Excellent! Make your way to {s13} as soon as you can, the spy will be waiting.", "quest_meet_spy_in_enemy_town_accepted_response",
-[
-     (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-     (quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
-     (store_sub, ":countersign", ":secret_sign", secret_signs_begin),
-     (val_add, ":countersign", countersigns_begin),
-     (str_store_troop_name_link, s9, "$g_talk_troop"),
-     (str_store_string, s11, ":secret_sign"),
-     (str_store_string, s12, ":countersign"),
-     (str_store_party_name_link, s13, ":quest_target_center"),
-     (setup_quest_text, "$random_quest_no"),
-     (str_store_string, s2, "@{s9} has asked you to meet with a spy in {s13}."),
-     (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
-     (call_script, "script_cf_center_get_free_walker", ":quest_target_center"),
-     (call_script, "script_center_set_walker_to_type", ":quest_target_center", reg0, walkert_spy),
-	 (try_begin),
-		(lt, "$spy_item_worn", "itm_items_end"),
-		(str_store_item_name,s14,"$spy_item_worn"),
-	 (else_try),
-		(display_message, "@Error with Spy item. I think you can ignore this."),
-		(assign, "$spy_item_worn", "itm_headcloth"),
-		(str_store_item_name,s14,"$spy_item_worn"),
-	 (try_end),
-     #TODO: Change this value
-     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
-     (assign, "$g_leave_encounter",1),
+[anyone,"lord_tell_mission",[
+  (eq,"$random_quest_no","qst_meet_spy_in_enemy_town"),
+  (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
+  (str_store_party_name, s13, ":quest_target_center"),
+  (store_faction_of_party,":quest_target_center_faction",":quest_target_center"),
+  (str_store_faction_name, s14, ":quest_target_center_faction"),
+],"I have a sensitive matter which needs tending to, {playername}, and no trustworthy retainers to take care of it. The fact is that I have a spy in {s13} to keep an eye on things for me, and report anything that might warrant my attention. Every week I send someone to collect the spy's reports and bring them back to me. The job's yours if you wish it.",
+"lord_mission_told_meet_spy_in_enemy_town",[
 ]],
-[anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response",[(quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-(str_store_party_name_link, s13, ":quest_target_center")],
-   "{s13} is heavily defended. How can I get close without being noticed?", "quest_meet_spy_in_enemy_town_accepted_2",
-[]],
-[anyone,"quest_meet_spy_in_enemy_town_accepted_2",[], "You shall have to use stealth. Take care to avoid enemy strongholds, villages and patrols, and don't bring too many men with you. If you fail to sneak in the first time, give it a while for the garrison to lower its guard again, or you may have a difficult time infiltrating the town.", "quest_meet_spy_in_enemy_town_accepted_response",
-[]],
-[anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response",[], "How will I recognise the spy?", "quest_meet_spy_in_enemy_town_accepted_3",
-[]],
-[anyone,"quest_meet_spy_in_enemy_town_accepted_3",[(quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
-                          (str_store_party_name_link, s13, ":quest_target_center"),
-													  ##diplomacy start+ Use script for gender
-                          #(troop_get_type, reg7, "$spy_quest_troop"),
-													  (assign, reg7, 0),
-													  (try_begin),
-														(call_script, "script_cf_dplmc_troop_is_female", "$spy_quest_troop"),
-														(assign, reg7, 1),
-													  (try_end),
-													  ##diplomacy end+
-                          (quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
-                          (store_sub, ":countersign", ":secret_sign", secret_signs_begin),
-                          (val_add, ":countersign", countersigns_begin),
-                          (str_store_string, s11, ":secret_sign"),
-                          (str_store_string, s12, ":countersign"),],
-   "Once you get to {s13} you must talk to the locals, the spy will be one of them. If you think you've found the spy, say the phrase '{s11}' The spy will respond with the phrase '{s12}' Thus you will know the other, and {reg7?she:he} will give you any information {reg7?she:he}'s gathered in my service.", "quest_meet_spy_in_enemy_town_accepted_response",
-[]],
-[anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response",[], "Will I be paid?", "quest_meet_spy_in_enemy_town_accepted_4",
-[]],
-[anyone,"quest_meet_spy_in_enemy_town_accepted_4",[], "Of course, I have plenty of silver in my coffers for loyal {men/women} like you. Do well by me, {playername}, and you'll rise high.", "quest_meet_spy_in_enemy_town_accepted_response",
-[]],
-[anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response",[], "I know what to do. Ave atque Vale.", "quest_meet_spy_in_enemy_town_accepted_end",
-[]],
-[anyone,"quest_meet_spy_in_enemy_town_accepted_end",[(quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
-(store_sub, ":countersign", ":secret_sign", secret_signs_begin),
-(val_add, ":countersign", countersigns_begin),
-(str_store_string, s11, ":secret_sign"),
-(str_store_string, s12, ":countersign")],
-   "Good luck, {playername}. Remember, the secret phrase is '{s11}' The counterphrase is '{s12}' Bring any reports back to me, and I'll compensate you for your trouble.", "lord_pretalk",
-[]],
 
-[anyone,"quest_meet_spy_in_enemy_town_rejected",[], "As you wish, {playername}, but I strongly advise you to forget anything I told you about any spies. They do not exist, have never existed, and no one will ever find them. Remember that.", "lord_pretalk",
-[(troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)]],
+[anyone|plyr,"lord_mission_told_meet_spy_in_enemy_town",[
+], "I don't mind a bit of skullduggery. Count me in.", "quest_meet_spy_in_enemy_town_accepted",[]],
+[anyone|plyr,"lord_mission_told_meet_spy_in_enemy_town",[
+], "I must decline. This cloak-and-dagger work isn't fit for me.", "quest_meet_spy_in_enemy_town_rejected",[]],
 
-[anyone,"lord_tell_mission",[(eq,"$random_quest_no","qst_cause_provocation"),
-    (quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
-    (str_store_faction_name_link, s13, ":quest_target_faction")],
-   "This peace with {s13} ill suits me, {playername}. We've let those swine have their way for far too long.\
+[anyone,"quest_meet_spy_in_enemy_town_accepted",[
+], "Excellent! Make your way to {s13} as soon as you can, the spy will be waiting.",
+"quest_meet_spy_in_enemy_town_accepted_response",[
+  (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
+  (quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
+  (store_sub, ":countersign", ":secret_sign", secret_signs_begin),
+  (val_add, ":countersign", countersigns_begin),
+  (str_store_troop_name_link, s9, "$g_talk_troop"),
+  (str_store_string, s11, ":secret_sign"),
+  (str_store_string, s12, ":countersign"),
+  (str_store_party_name_link, s13, ":quest_target_center"),
+  (setup_quest_text, "$random_quest_no"),
+  (str_store_string, s2, "@{s9} has asked you to meet with a spy in {s13}."),
+  (call_script, "script_start_quest", "$random_quest_no", "$g_talk_troop"),
+  (call_script, "script_cf_center_get_free_walker", ":quest_target_center"),
+  (call_script, "script_center_set_walker_to_type", ":quest_target_center", reg0, walkert_spy),
+  (try_begin),
+    (lt, "$spy_item_worn", "itm_items_end"),
+    (str_store_item_name,s14,"$spy_item_worn"),
+  (else_try),
+    (display_message, "@Error with Spy item. I think you can ignore this."),
+    (assign, "$spy_item_worn", "itm_headcloth"),
+    (str_store_item_name,s14,"$spy_item_worn"),
+  (try_end),
+  #TODO: Change this value
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
+  (assign, "$g_leave_encounter",1),
+]],
+
+[anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response",[
+  (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
+  (str_store_party_name_link, s13, ":quest_target_center"),
+],"{s13} is heavily defended. How can I get close without being noticed?",
+"quest_meet_spy_in_enemy_town_accepted_2",[]],
+
+[anyone,"quest_meet_spy_in_enemy_town_accepted_2",[
+], "You shall have to use stealth. Take care to avoid enemy strongholds, villages and patrols, and don't bring too many men with you. If you fail to sneak in the first time, give it a while for the garrison to lower its guard again, or you may have a difficult time infiltrating the town.",
+"quest_meet_spy_in_enemy_town_accepted_response",[]],
+
+[anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response",[],
+"How will I recognise the spy?",
+"quest_meet_spy_in_enemy_town_accepted_3",[]],
+
+[anyone,"quest_meet_spy_in_enemy_town_accepted_3",[
+  (quest_get_slot, ":quest_target_center", "$random_quest_no", slot_quest_target_center),
+  (str_store_party_name_link, s13, ":quest_target_center"),
+  ##diplomacy start+ Use script for gender
+  #(troop_get_type, reg7, "$spy_quest_troop"),
+  (assign, reg7, 0),
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", "$spy_quest_troop"),
+    (assign, reg7, 1),
+  (try_end),
+  ##diplomacy end+
+  (quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
+  (store_sub, ":countersign", ":secret_sign", secret_signs_begin),
+  (val_add, ":countersign", countersigns_begin),
+  (str_store_string, s11, ":secret_sign"),
+  (str_store_string, s12, ":countersign"),
+],"Once you get to {s13} you must talk to the locals, the spy will be one of them. If you think you've found the spy, say the phrase '{s11}' The spy will respond with the phrase '{s12}' Thus you will know the other, and {reg7?she:he} will give you any information {reg7?she:he}'s gathered in my service.",
+"quest_meet_spy_in_enemy_town_accepted_response",[]],
+
+[anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response",[],
+"Will I be paid?",
+"quest_meet_spy_in_enemy_town_accepted_4",[]],
+
+[anyone,"quest_meet_spy_in_enemy_town_accepted_4",[],
+"Of course, I have plenty of silver in my coffers for loyal {men/women} like you. Do well by me, {playername}, and you'll rise high.",
+"quest_meet_spy_in_enemy_town_accepted_response",[]],
+
+[anyone|plyr,"quest_meet_spy_in_enemy_town_accepted_response",[], "I know what to do. Ave atque Vale.",
+"quest_meet_spy_in_enemy_town_accepted_end",[]],
+
+[anyone,"quest_meet_spy_in_enemy_town_accepted_end",[
+  (quest_get_slot, ":secret_sign", "$random_quest_no", slot_quest_target_amount),
+  (store_sub, ":countersign", ":secret_sign", secret_signs_begin),
+  (val_add, ":countersign", countersigns_begin),
+  (str_store_string, s11, ":secret_sign"),
+  (str_store_string, s12, ":countersign"),
+],"Good luck, {playername}. Remember, the secret phrase is '{s11}' The counterphrase is '{s12}' Bring any reports back to me, and I'll compensate you for your trouble.",
+"lord_pretalk",[]],
+
+[anyone,"quest_meet_spy_in_enemy_town_rejected",[],
+"As you wish, {playername}, but I strongly advise you to forget anything I told you about any spies. They do not exist, have never existed, and no one will ever find them. Remember that.",
+"lord_pretalk",[
+  (troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1)
+]],
+
+[anyone,"lord_tell_mission",[
+  (eq,"$random_quest_no","qst_cause_provocation"),
+  (quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
+  (str_store_faction_name_link, s13, ":quest_target_faction"),
+],"This peace with {s13} ill suits me, {playername}. We've let those swine have their way for far too long.\
  Now they get stronger with each passing and their arrogance knows no bounds.\
  I say, we must wage war on them before it's too late!\
  Unfortunately, some of the bleeding hearts among our realm's lords are blocking a possible declaration of war.\
- Witless cowards with no stomach for blood.", "lord_mission_told_raid_caravan_to_start_war",
-[
-   ]],
+ Witless cowards with no stomach for blood.",
+"lord_mission_told_raid_caravan_to_start_war",[]],
 
-[anyone|plyr,"lord_mission_told_raid_caravan_to_start_war",[], "You are right, {s65}, but what can we do?", "lord_mission_tell_raid_caravan_to_start_war_2",[]],
-[anyone|plyr,"lord_mission_told_raid_caravan_to_start_war",[], "I disagree, sir. It is better that there be peace.", "quest_raid_caravan_to_start_war_rejected_1",[]],
+[anyone|plyr,"lord_mission_told_raid_caravan_to_start_war",[
+], "You are right, {s65}, but what can we do?",
+"lord_mission_tell_raid_caravan_to_start_war_2",[]],
 
-[anyone,"lord_mission_tell_raid_caravan_to_start_war_2",[(quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
-    (str_store_faction_name_link, s13, ":quest_target_faction"),
-															(str_store_faction_name, s14, "$g_talk_troop_faction")],
-   "Ah, 'tis good to hear someone who understands!\
+[anyone|plyr,"lord_mission_told_raid_caravan_to_start_war",[
+], "I disagree, sir. It is better that there be peace.",
+"quest_raid_caravan_to_start_war_rejected_1",[]],
+
+[anyone,"lord_mission_tell_raid_caravan_to_start_war_2",[
+  (quest_get_slot, ":quest_target_faction", "$random_quest_no", slot_quest_target_faction),
+  (str_store_faction_name_link, s13, ":quest_target_faction"),
+  (str_store_faction_name, s14, "$g_talk_troop_faction"),
+],"Ah, 'tis good to hear someone who understands!\
  As a matter of fact, there is something we can do, {playername}. A little bit of provocation...\
  If one of our war parties managed to enter their territory and pillage one of their caravans, or raided one of their villages,\
  and perhaps left behind a little token or two of the {s14},\
  they would have ample cause to declare war on us.\
  And then, well, even the cowards among us must rise to defend themselves.\
- So what do you say? Are you interested?", "lord_mission_tell_raid_caravan_to_start_war_3",[]],
+ So what do you say? Are you interested?",
+"lord_mission_tell_raid_caravan_to_start_war_3",[]],
 
-[anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_3",[], "An excellent plan. Count me in.", "quest_raid_caravan_to_start_war_accepted",[]],
-[anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_3",[], "Why don't you do that yourself?", "lord_mission_tell_raid_caravan_to_start_war_4",[]],
+[anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_3",[
+], "An excellent plan. Count me in.",
+"quest_raid_caravan_to_start_war_accepted",[]],
+
+[anyone|plyr,"lord_mission_tell_raid_caravan_to_start_war_3",[
+], "Why don't you do that yourself?",
+"lord_mission_tell_raid_caravan_to_start_war_4",[]],
 
 [anyone,"lord_mission_tell_raid_caravan_to_start_war_4",[
   	], "Well, {playername}, some of the lords in our realm\
@@ -64615,29 +64726,29 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ], "You speak of the accusations. It is a dark cloud over our hall. My husband's honor demands justice.",
 "lady_treason_relation_check_barbarian", []],
 
-# High Relation (>= 20)
+# High Relation (>= 35)
 [anyone, "lady_treason_relation_check_roman", [
-    (ge, "$g_talk_troop_effective_relation", 20),
+    (ge, "$g_talk_troop_effective_relation", 35),
 ], "But you have been a true friend to us. I cannot stand by while you are ruined by whispers. I will speak to him tonight. I will remind him of your value to Rome. Fear not.",
 "close_window", [
     (call_script, "script_intervene_treason", "$g_talk_troop"),
 ]],
-# Neutral/Low Relation (< 20)
+# Neutral/Low Relation (< 35)
 [anyone, "lady_treason_relation_check_roman", [
 ], "I am sorry. I cannot risk my own standing for a mere acquaintance. In Rome, one must be careful whom one defends. I will not intervene.",
 "close_window", []],
 
 
 # --- Non-Roman Relation Check & Responses ---
-# High Relation (>= 20)
+# High Relation (>= 35)
 [anyone, "lady_treason_relation_check_barbarian", [
-    (ge, "$g_talk_troop_effective_relation", 20),
+    (ge, "$g_talk_troop_effective_relation", 35),
 ], "You are kin to us in spirit, if not in blood. I will not let a friend be treated like a dog. I will go to my husband now. He will hear the truth from my lips.",
 "close_window", [
     (call_script, "script_intervene_treason", "$g_talk_troop"),
 ]],
 
-# Neutral/Low Relation (< 20)
+# Neutral/Low Relation (< 35)
 [anyone, "lady_treason_relation_check_barbarian", [
 ], "Loyalty is earned, not begged for. You are a stranger to my hearth. Why should I cloud my husband's mind for you? Fight your own battles.",
 "close_window", []],

@@ -1656,7 +1656,7 @@ dplmc_slot_troop_affiliated                   = 164 ##notes: 0 is default, 1 is 
 # slot_troop_marriage_time 				      = 165
 slot_troop_triumph_points                = 165
 
-triumph_threshold = 800
+triumph_threshold = 750
 
 #CONTROVERSY
 #This is used to create a more "rational choice" model of faction politics, in which lords pick fights with other lords for gain, rather than simply because of clashing personalities
