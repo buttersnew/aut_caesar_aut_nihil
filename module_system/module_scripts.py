@@ -3444,11 +3444,11 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_book_odysseus", slot_item_intelligence_requirement, 16),
     (item_set_slot, "itm_book_poop", slot_item_intelligence_requirement, 20),
 
-    (item_set_slot, "itm_book_wound_treatment_reference", slot_item_intelligence_requirement, 18),
-    (item_set_slot, "itm_book_training_reference", slot_item_intelligence_requirement, 15),
+    (item_set_slot, "itm_book_wound_treatment_reference", slot_item_intelligence_requirement, 17),
+    (item_set_slot, "itm_book_training_reference", slot_item_intelligence_requirement, 12),
     (item_set_slot, "itm_book_surgery_reference", slot_item_intelligence_requirement, 15),
-    (item_set_slot, "itm_book_first_aid", slot_item_intelligence_requirement, 15),
-    (item_set_slot, "itm_book_pathfinding", slot_item_intelligence_requirement, 15),
+    (item_set_slot, "itm_book_first_aid", slot_item_intelligence_requirement, 14),
+    (item_set_slot, "itm_book_pathfinding", slot_item_intelligence_requirement, 10),
 
     (item_set_slot, "itm_mithras", slot_item_food_bonus, 5),#mithras statue
     (item_set_slot, "itm_allat", slot_item_food_bonus, 5),#allat statue

@@ -10351,6 +10351,25 @@ strings = [
 ("note_hanging_gardens", "The legendary Hanging Gardens of Babylon. Or rather, what remains of them. Scholars in Alexandria debate if they ever truly existed, but here are the ruins of a once-great ziggurat, its crumbling terraces still home to ancient, gnarled trees and hardy desert flowers. It is a ghost of a wonder, a monument to the immense ambition of the Babylonian kings and a testament to the power of time to humble even the greatest of empires."),
 ("note_tarquinii", "The Necropolis of Tarquinia. A silent, sprawling city built not for the living, but for the dead. Before Rome was an empire, the Etruscans held sway over these lands, and their legacy is whispered from the hundreds of burial mounds that dot the landscape. Each mound hides a subterranean tomb, its walls painted with vibrant, joyful scenes of a life and a people now lost to history."),
 ("note_aigai_tombs", "The Royal Tombs of Aigai, the ancient heart of the Macedonian kingdom. This is no mere graveyard; it is the final resting place of the Argead dynasty, the forebears of Alexander the Great. Here, in the quiet earth, lie the bones of kings, including the great Philip II himself. To stand here is to stand at the wellspring of an age of conquest that reshaped the entire world."),
+
+("book_desc_tactics", "Thucydides' 'History of the Peloponnesian War'.^A masterful account of the war between Athens^and Sparta, focusing on the brutal realities^of power, strategy, and political dynamics."),
+("book_desc_persuasion", "'Rhetorica ad Herennium', a comprehensive Roman^treatise on the art of rhetoric. It provides^practical instruction on public speaking,^argumentation, and the art of memory."),
+("book_desc_leadership", "A biography of 'Megas Alexandros'.^It chronicles the life and conquests of the^legendary king, offering lessons on inspiring^loyalty and leading men into the unknown."),
+("book_desc_intelligence", "'Paedeia' by Xenophon.^A semi-fictional biography of Cyrus the Great,^exploring the ideal education of a ruler and^the principles of wise governance and virtue."),
+("book_desc_trade", "'Oeconomica', a treatise attributed to Aristotle^or his students. It discusses the administration^of the household and the state, focusing on^the management of wealth and resources."),
+("book_desc_weapon_mastery", "'Polity of the Lacedaemonians' by Xenophon.^An examination of the laws and social^institutions of Sparta, detailing the rigorous^training that created their fearsome warriors."),
+("book_desc_engineering", "'De architectura' by Vitruvius.^The definitive guide to Roman architecture^and engineering, covering everything from^temples and aqueducts to siege engines."),
+("book_desc_economy", "'Rerum rusticarum libri tres' by Varro.^A practical guide to agriculture and estate^management, offering advice on maximizing the^productivity and profit of a Roman farm."),
+("book_desc_gallic_wars", "'De bello Gallico' by Julius Caesar.^A firsthand account of the conquest of Gaul,^detailing the military campaigns, the tribes^encountered, and the strategic brilliance of Caesar."),
+("book_desc_love", "'Ars Amatoria' by Ovid.^A witty and controversial instructional poem^on the art of love, offering advice on how^to find, win, and keep a lover in Rome."),
+("book_desc_sorrows", "'Tristia' by Ovid.^A collection of elegies written during the^poet's exile, expressing profound sorrow,^loneliness, and a plea for mercy."),
+("book_desc_odysseus", "'Odusia' by Livius Andronicus.^An early Latin translation of Homer's Odyssey,^recounting the epic ten-year journey of^Odysseus as he struggles to return home."),
+
+("book_desc_wound_treatment_reference", "'De Materia Medica' by Dioscorides.^An extensive encyclopedia of herbal medicine,^detailing the properties and uses of plants^for treating wounds and illnesses.^^+1 to Wound Treatment while in inventory"),
+("book_desc_training_reference", "'Epitoma Rei Militaris' by Vegetius.^A definitive manual on Roman warfare,^covering the recruitment, organization,^and rigorous training of the legions.^^+1 to Trainer skill while in inventory"),
+("book_desc_surgery_reference", "'Synopsis of Aelius Galenus'.^A compilation of medical knowledge from the^famous physician, focusing on anatomy,^surgical techniques, and the four humors.^^+1 to Surgery while in inventory"),
+("book_desc_pathfinding", "'Tabula Mundi' by Pomponius Mela.^A geographical treatise describing the known^world, offering valuable insights into^distant lands, trade routes, and travel.^^+1 to Pathfinding while in inventory"),
+("book_desc_first_aid", "'Corpus Hippocraticum'.^A collection of ancient Greek medical texts^establishing the ethical and practical^foundations of medicine and healing.^^+1 to First Aid while in inventory"),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names
