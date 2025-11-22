@@ -3651,8 +3651,9 @@ str_17|agi_15|int_14|cha_17|level(23), wp(170), knows_veteran_npc, 0x000000019b0
 str_17|agi_15|int_14|cha_17|level(23), wp(170), knows_veteran_npc, 0x00000001b704b0092d5d6dd2dd91d8a300000000001ee6510000000000000000 ],
 
 ["npc22", "Libertus Tiro", "Libertus Tiro", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
-[itm_graves_simple_2,itm_horse_3,itm_praetorian_cav_scutum,itm_roman_spatha,itm_hasta2,itm_legion_hamata_cape_5,itm_1_imp_gallic_i_plume],
+[itm_legio_armored_caligea, itm_old_gladius_2, itm_auxilia_cavalry_squamata_2, itm_old_scutum_3],
 str_17|agi_15|int_14|cha_17|level(23), wp(170),knows_veteran_npc, 0x000000019d093008449b51c852c9b73500000000001dca920000000000000000 ],
+
 ["npc23", "Lucius Varrus Drusus", "Lucius Varrus Drusus", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_horse_3,itm_praetorian_cav_scutum,itm_roman_spatha,itm_hasta2,itm_legion_hamata_cape_6,itm_1_imp_gallic_i_ac_plume],
 str_17|agi_15|int_14|cha_17|level(23), wp(170),knows_veteran_npc, 0x00000001b40035c847326e395f7648e300000000001f66c10000000000000000 ],

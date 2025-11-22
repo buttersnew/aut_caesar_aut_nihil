@@ -787,7 +787,8 @@ strings = [
   ("npc19_intro", "Ave! Vinum bonum deorum donum! I always say."),
   ("npc20_intro", "Ave! Here have a drink with me. Ergo bibamus!"),
   ("npc21_intro", "Ave! The wine here tastes awful if you ask me..."),
-  ("npc22_intro", "Ave! Here take a cup! Nunc est bibendum!"),
+  ("npc22_intro", "Salve, traveler. You look like someone who understands the value of a free man's labor. I am Tiro. I offer my shield and my sword, not as a slave, but as a partner. Nunc est bibendum!"),
+
   ("npc23_intro", "Leave me be. I have enough problems. No need to get tangled into whatever you are here for. I am not wanted here nor anyplace else, you don't want to know why."),
   ("npc24_intro", "Ave! How can I help?"),
   ("npc25_intro", "Ave! What do you want, stranger?"),
@@ -830,7 +831,7 @@ strings = [
   ("npc19_intro_response_1", "I am looking for men."),
   ("npc20_intro_response_1", "I am looking for men."),
   ("npc21_intro_response_1", "I am looking for men."),
-  ("npc22_intro_response_1", "I am looking for men."),
+  ("npc22_intro_response_1", "A partner? That depends on your skills."),
   ("npc23_intro_response_1", "On the contrary, I do. Tell me, you look like a legionary."),
   ("npc24_intro_response_1", "I am looking for men."),
   ("npc25_intro_response_1", "I am looking for men."),
@@ -873,7 +874,7 @@ strings = [
   ("npc19_intro_response_2", "Nothing."),
   ("npc20_intro_response_2", "Nothing."),
   ("npc21_intro_response_2", "Nothing."),
-  ("npc22_intro_response_2", "Nothing."),
+  ("npc22_intro_response_2", "I have no need for freedmen. Move along."),
   ("npc23_intro_response_2", "Gods did not give me boundless knowledge but I can tell you are a deserter. Begone!"),
   ("npc24_intro_response_2", "Nothing."),
   ("npc25_intro_response_2", "Nothing."),
@@ -925,7 +926,7 @@ strings = [
   ("npc19_backstory_a", "Very good and I am looking for a job."),
   ("npc20_backstory_a", "Very good and I am looking for a job."),
   ("npc21_backstory_a", "Very good and I am looking for a job."),
-  ("npc22_backstory_a", "Very good and I am looking for a job."),
+  ("npc22_backstory_a", "Fair enough. You want to know what I am worth. I was born in chains, on a latifundium near Carthago Nova..."),
   ("npc23_backstory_a", "By Juppiter! mentula! Keep your voice down unless you want me to cut your tongue! Ah, futoe ... Very well, since you got me to start, let me tell you who I am. The name I was given is Lucius Varrus Drusus. But I mostly call myself Vagus and so do others. I am restless and nervous all the time."),
   ("npc24_backstory_a", "Very good and I am looking for a job."),
   ("npc25_backstory_a", "Very good and I am looking for a job."),
@@ -1021,7 +1022,7 @@ strings = [
   ("npc19_backstory_b", "I am citizen of Rome and I have served the Roman Army for many years. Years after my retirement I miss the strains of war."),
   ("npc20_backstory_b", "I am citizen of Rome and I have served the Roman Army for many years. Years after my retirement I miss the strains of war."),
   ("npc21_backstory_b", "I am citizen of Rome and I have served the Roman Army for many years. Years after my retirement I miss the strains of war."),
-  ("npc22_backstory_b", "I am citizen of Rome and I have served the Roman Army for many years. Years after my retirement I miss the strains of war."),
+  ("npc22_backstory_b", "I earned my freedom the hard way. Not through coin, but through blood in the arena. I fought as a gladiator for five years. I survived. I won my wooden sword, my Rudis, and walked out a free man. But freedom in Rome is expensive. I find myself needing coin to maintain my... independence."),
   ("npc23_backstory_b", "I was born near Capua to a tenant farmer couple. Life was decent, my father was a evocatus. He served under Germanicus and he learned many things while on a campaign, including survival. This is a cruel world, if you cannot use a gladius you won't live long. Legion fed him but also owned him. We are all slaves of Rome. No ... not right to say that, Yes it is! no ... ahh. Well anyway. I left home when I became a man and wanted to enlist as my father had given me the best picture he could have about life in the service of the eagle. So, I did. By the time Nero took over, I had crossed the Euphrates, faced Parthian arrows and seen then blacken the sky and been surrounded by corpses in a campaign in Armenia."),
   ("npc24_backstory_b", "I am citizen of Rome and I have served the Roman Army for many years. Years after my retirement I miss the strains of war."),
   ("npc25_backstory_b", "I am citizen of Rome and I have served the Roman Army for many years. Years after my retirement I miss the strains of war."),
@@ -1077,7 +1078,9 @@ strings = [
   ("npc19_backstory_c", "Now I am travelling around and looking for a capable commander to serve him."),
   ("npc20_backstory_c", "Now I am travelling around and looking for a capable commander to serve him."),
   ("npc21_backstory_c", "Now I am travelling around and looking for a capable commander to serve him."),
-  ("npc22_backstory_c", "Now I am travelling around and looking for a capable commander to serve him."),
+
+  ("npc22_backstory_c", "I am not a common mercenary. I fight with discipline and I know how to hold a line. If you treat me with respect, I will fight for you as if you were my own brother."),
+
   ("npc23_backstory_c", "I did things, bloody things but nothing compared to my patrician, Verecondus ... stulta ... that imbecile of a commander named Gaius Cassius. Hated provincials, hoarded pay, treated the men like we were dogs. Then came that day, Parthian hamlet had surrendered, we had already marched past it, but our glorious leader wanted to go back and burn the huts. I saw this young girl lying on the ground, wounded, I did not understood her, but I could guess she begged me to not burn their homes. I refused, it was enough. Gaius then took the torch and was about to burn that one house but I ran him through with my gladius, straight to the throat, ran away ... as the men started chasing me ... didn't catch me ... too fast for them. After that I have been running and fleeing from place to place."),
   ("npc24_backstory_c", "Now I am travelling around and looking for a capable commander to serve him."),
   ("npc25_backstory_c", "Now I am travelling around and looking for a capable commander to serve him."),
@@ -1135,7 +1138,7 @@ strings = [
   ("npc19_backstory_later", "I have gone from land to land, but I have not yet found a commander who is to my liking."),
   ("npc20_backstory_later", "I have gone from land to land, but I have not yet found a commander who is to my liking."),
   ("npc21_backstory_later", "I have gone from land to land, but I have not yet found a commander who is to my liking."),
-  ("npc22_backstory_later", "I have gone from land to land, but I have not yet found a commander who is to my liking."),
+  ("npc22_backstory_later", "Still free, still hungry. The arena calls to me sometimes, but I'd rather fight under the open sky. Are you hiring?"),
   ("npc23_backstory_later", "Lingering about, still?"),
   ("npc24_backstory_later", "I have gone from land to land, but I have not yet found a commander who is to my liking."),
   ("npc25_backstory_later", "I have gone from land to land, but I have not yet found a commander who is to my liking."),
@@ -1178,7 +1181,7 @@ strings = [
   ("npc19_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
   ("npc20_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
   ("npc21_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
-  ("npc22_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
+  ("npc22_backstory_response_1", "A gladiator's discipline could be useful. I'm interested."),
   ("npc23_backstory_response_1", "A trained soldier I might find use for…maybe."),
   ("npc24_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
   ("npc25_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
@@ -1221,7 +1224,7 @@ strings = [
   ("npc19_backstory_response_2", "Actually I don't need more men."),
   ("npc20_backstory_response_2", "Actually I don't need more men."),
   ("npc21_backstory_response_2", "Actually I don't need more men."),
-  ("npc22_backstory_response_2", "Actually I don't need more men."),
+  ("npc22_backstory_response_2", "I prefer soldiers, not arena performers."),
   ("npc23_backstory_response_2", "You would betray me like you did your commander, viator! Away from my sight!"),
   ("npc24_backstory_response_2", "Actually I don't need more men."),
   ("npc25_backstory_response_2", "Actually I don't need more men."),
@@ -1270,7 +1273,7 @@ strings = [
   ("npc19_signup", "Very good. I am sure I can serve you well."),
   ("npc20_signup", "Very good. I am sure I can serve you well."),
   ("npc21_signup", "Very good. I am sure I can serve you well."),
-  ("npc22_signup", "Very good. I am sure I can serve you well."),
+  ("npc22_signup", "You have a good eye. You won't regret it. I fight for my own reasons now, and your cause seems... profitable."),
   ("npc23_signup", "I WILL NO LONGER BE USED!! I left that life - the life of a soldier. I realized that my father may have lied to me too, who knows what horrors he committed and didn't told me ... I seek a better life, better way. Something that does not require me to kill innocents. I know what makes an innocent is not so simply determined ... but I will not kill defenseless peasants for anyone's amusement. Rome wants me to wage war and subjugate her enemies but I'm done with that. But I do not want to waste my money here on wine and pleasures of the meretrix. I need to do something... something bigger"),
   ("npc24_signup", "Very good. I am sure I can serve you well."),
   ("npc25_signup", "Very good. I am sure I can serve you well."),
@@ -1334,7 +1337,7 @@ strings = [
   ("npc19_signup_2", "I will defend you with my life and I will help you to manage your army."),
   ("npc20_signup_2", "I will defend you with my life and I will help you to manage your army."),
   ("npc21_signup_2", "I will defend you with my life and I will help you to manage your army."),
-  ("npc22_signup_2", "I will defend you with my life and I will help you to manage your army."),
+  ("npc22_signup_2", "I am proficient with the gladius and shield, and I can train your raw recruits so they don't die in their first skirmish. What is your answer?"),
   ("npc23_signup_2", "I can kill, I can hurt ... I can torture ... NO ... Not that ... no or maybe yes? What am I saying?...Agh... what I mean is that I am fully capable of doing the deeds soldiers do, but you better if you want to hire me, order me to only attack those wo deserve it, latro for example. But I won't be hired for free, I need to eat too..."),
   ("npc24_signup_2", "I will defend you with my life and I will help you to manage your army."),
   ("npc25_signup_2", "I will defend you with my life and I will help you to manage your army."),
@@ -1377,7 +1380,7 @@ strings = [
   ("npc19_signup_response_1", "I will hire you."),
   ("npc20_signup_response_1", "I will hire you."),
   ("npc21_signup_response_1", "I will hire you."),
-  ("npc22_signup_response_1", "I will hire you."),
+  ("npc22_signup_response_1", "Welcome aboard, Tiro."),
   ("npc23_signup_response_1", "A soldier with clear morals can be more of a boon than a mercenary. It is a deal!"),
   ("npc24_signup_response_1", "I will hire you."),
   ("npc25_signup_response_1", "I will hire you."),
@@ -1420,7 +1423,7 @@ strings = [
   ("npc19_signup_response_2", "Actually I don't need more men."),
   ("npc20_signup_response_2", "Actually I don't need more men."),
   ("npc21_signup_response_2", "Actually I don't need more men."),
-  ("npc22_signup_response_2", "Actually I don't need more men."),
+  ("npc22_signup_response_2", "I've changed my mind. Farewell."),
   ("npc23_signup_response_2", "So, you can't follow an order. You are useless to me, consider becoming a scortum. All you are good for."),
   ("npc24_signup_response_2", "Actually I don't need more men."),
   ("npc25_signup_response_2", "Actually I don't need more men."),
@@ -1480,7 +1483,7 @@ strings = [
   ("npc19_payment", "But before I join I need a payement of {reg3} denarii."),
   ("npc20_payment", "But before I join I need a payement of {reg3} denarii."),
   ("npc21_payment", "But before I join I need a payement of {reg3} denarii."),
-  ("npc22_payment", "But before I join I need a payement of {reg3} denarii."),
+  ("npc22_payment", "I require a signing fee of {reg3} denarii. A man must eat, and I have debts to settle from my days celebrating my freedom."),
   ("npc23_payment", "A moment... I would need {reg3} denarii up front... I made some debts in this tavern..."),
   ("npc24_payment", "But before I join I need a payement of {reg3} denarii."),
   ("npc25_payment", "But before I join I need a payement of {reg3} denarii."),
@@ -1523,7 +1526,7 @@ strings = [
   ("npc19_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
   ("npc20_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
   ("npc21_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
-  ("npc22_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
+  ("npc22_payment_response", "Here is {reg3} denarii. Welcome to the company."),
   ("npc23_payment_response", "You shall have {reg3} denarii."),
   ("npc24_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
   ("npc25_payment_response", "All right, here's {reg3} denarii for you. Make yourself ready."),
@@ -1581,7 +1584,7 @@ strings = [
   ("npc19_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
   ("npc20_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
   ("npc21_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
-  ("npc22_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
+  ("npc22_morality_speech", "Captain, a word. I fought for my freedom. I did not fight so I could put chains on others or burn the homes of farmers. To {s21}... it turns my stomach. We are better than this."),
   ("npc23_morality_speech", "Do not give me tasks to {s21}. I am not that kind of a man, anymore! Ican't stand it! It makes me sick! All those crying woman and children ... their pain and suffering..."),
   ("npc24_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
   ("npc25_morality_speech", "Ave commander. I only want to note that any commander with sense will not let his company {s21}."),
@@ -1694,7 +1697,7 @@ strings = [
   ("npc19_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
   ("npc20_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
   ("npc21_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
-  ("npc22_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
+  ("npc22_personalityclash_speech", "Captain, I must speak about {s11}. The man has the eyes of a mad dog."),
   ("npc23_personalityclash_speech", "{!}"),
   ("npc24_personalityclash_speech", "{Dominus/Domina}, {s11} is a cowardly horse fucker."),
   ("npc25_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
@@ -1754,7 +1757,7 @@ strings = [
   ("npc19_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
   ("npc20_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
   ("npc21_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
-  ("npc22_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
+  ("npc22_personalityclash_speech_b", "He boasts of killing his own centurion. A man who murders his officer is a traitor to discipline and a danger to us all. I do not trust him at my back."),
   ("npc23_personalityclash_speech_b", "{!}"),
   ("npc24_personalityclash_speech_b", "During battle, I watched how he rode with our cavalry, but right before the cavalry clashed into the enemy formation he steered to the right. After the battle, I discovered that his pants were wet, but not from blood! I'm sure he peed his pants in fear. And that scum claims to be a proud and noble warrior!"),
   ("npc25_personalityclash_speech_b", "I don't think that it is good for a woman to fight. According to the Roman traditions women should only cook, treat wounds and ... 'play' with us real soldiers."),
@@ -1814,7 +1817,7 @@ strings = [
   ("npc19_personalityclash2_speech", "Ave commander. I think {s11} is a lazy bitch."),
   ("npc20_personalityclash2_speech", "Ave commander. I think {s11} is a lazy bitch."),
   ("npc21_personalityclash2_speech", "Ave commander. I think {s11} is a lazy bitch."),
-  ("npc22_personalityclash2_speech", "Ave commander. I think {s11} is a lazy bitch."),
+  ("npc22_personalityclash2_speech", "Captain, {s11} speaks to me as if I am still a slave. 'Fetch this, Tiro,' 'Clean that, Tiro.'"),
   ("npc23_personalityclash2_speech", "{!}"),
   ("npc24_personalityclash2_speech", "Ave commander. I think {s11} is a lazy bitch."),
   ("npc25_personalityclash2_speech", "Ave commander. I think {s11} is a lazy bitch."),
@@ -1885,7 +1888,7 @@ strings = [
   ("npc19_personalityclash2_speech_b", "As I told her to cook something for me, she said I should do it myself. And then last night, I wanted to play a little bit with her, but she said I am a pig."),
   ("npc20_personalityclash2_speech_b", "As I told her to cook something for me, she said I should do it myself. And then last night, I wanted to play a little bit with her, but she said I am a pig."),
   ("npc21_personalityclash2_speech_b", "As I told her to cook something for me, she said I should do it myself. And then last night, I wanted to play a little bit with her, but she said I am a pig."),
-  ("npc22_personalityclash2_speech_b", "As I told her to cook something for me, she said I should do it myself. And then last night, I wanted to play a little bit with her, but she said I am a pig."),
+  ("npc22_personalityclash2_speech_b", "I did not win my freedom to be ordered about by some puffed-up aristocrat who has never tasted his own blood."),
   ("npc23_personalityclash2_speech_b", "{!}"),
   ("npc24_personalityclash2_speech_b", "As I told her to cook something for me, she said I should do it myself. And then last night, I wanted to play a little bit with her, but she said I am a pig."),
   ("npc25_personalityclash2_speech_b", "As I told her to cook something for me, she said I should do it myself. And then last night, I wanted to play a little bit with her, but she said I am a pig."),
@@ -1938,7 +1941,7 @@ strings = [
   ("npc19_personalitymatch_speech", "{Domins/Domina}, {s11} is a good soldier."),
   ("npc20_personalitymatch_speech", "{Domins/Domina}, {s11} is a good soldier and a good addition to our cohort."),
   ("npc21_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
-  ("npc22_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
+  ("npc22_personalitymatch_speech", "Captain, Titocuna is a wild one, isn't she? A thief, yes, but she has a fire in her."),
   ("npc23_personalitymatch_speech", "{!}"),
   ("npc24_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
   ("npc25_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
@@ -2002,7 +2005,7 @@ strings = [
   ("npc19_personalitymatch_speech_b", "He told me he had worked mainly as scribe at the library and port administration, but despite his background is useful and a good solider. He knows how to cook, he helps with searching for firewood, he helps setting up the camp and he never complains! A nice addition to the cohort."),
   ("npc20_personalitymatch_speech_b", "At first I thought he would be a coward, but during the last battle he even saved my life! I was cut of from our main force and I was surround by twelve enemies, almost impossible to win this alone. But he appeared on horse, slain two of them, then I was able to jump on his horse and he brought me back to our main force."),
   ("npc21_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
-  ("npc22_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc22_personalitymatch_speech_b", "She lives by her own rules, takes what she wants. I admire that. There is an honesty in her rebellion that I find... compelling."),
   ("npc23_personalitymatch_speech_b", "{!}"),
   ("npc24_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
   ("npc25_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
@@ -2069,7 +2072,7 @@ strings = [
   ("npc19_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
   ("npc20_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
   ("npc21_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
-  ("npc22_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
+  ("npc22_retirement_speech", "I've had enough, Captain. The road is long and the pay is not worth the blood anymore. I'm going to buy a small farm, maybe train fighters. Live a quiet life as a free citizen."),
   ("npc23_retirement_speech", "Why did I ever think that going on as a lone soldier would be a salvation to me. What will I do now…maybe I ought to become a farmer."),
   ("npc24_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
   ("npc25_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
@@ -2162,7 +2165,7 @@ strings = [
   ("npc19_rehire_speech", "Commander, it is good to see you again. We had differences in the past, but I had difficulty to find work. I would fight with you again."),
   ("npc20_rehire_speech", "Commander, it is good to see you again. We had differences in the past, but I had difficulty to find work. I would fight with you again."),
   ("npc21_rehire_speech", "Commander, it is good to see you again. We had differences in the past, but I had difficulty to find work. I would fight with you again."),
-  ("npc22_rehire_speech", "Commander, it is good to see you again. We had differences in the past, but I had difficulty to find work. I would fight with you again."),
+  ("npc22_rehire_speech", "Captain. It seems the quiet life does not suit me after all. The farm is dull and the wine is sour. I miss the shield-wall. Will you take me back?"),
   ("npc23_rehire_speech", "You don't just pick up the pitchfork and begin to grow rye. What a fool I was to think it would be so easy. Take me back. I need more time and coins to get through this."),
   ("npc24_rehire_speech", "Commander, it is good to see you again. We had differences in the past, but I had difficulty to find work. I would fight with you again."),
   ("npc25_rehire_speech", "Commander, it is good to see you again. We had differences in the past, but I had difficulty to find work. I would fight with you again."),
@@ -2443,28 +2446,28 @@ strings = [
   ("npc41_home_recap", "{!}"),
   ("npc42_home_recap", "I am from {s21}."),
 
-  ("npc1_honorific", "master"), #Pravare Ytarim
+  ("npc1_honorific", "Master"), #Pravare Ytarim
   ("npc2_honorific", "{Dominus/Domina}"), #Marius Gaius
   ("npc3_honorific", "{Dominus/Domina}"), #Pulchra
   ("npc4_honorific", "Warlord"), #Abadutiker
   ("npc5_honorific", "Captain {playername}"), #Satibarzanes
   ("npc6_honorific", "Commander"), #Firentrix
-  ("npc7_honorific", "captain"), #Lavia
+  ("npc7_honorific", "Captain"), #Lavia
   ("npc8_honorific", "{playername}"), #Hildr
   ("npc9_honorific", "Commander {playername}"),
   ("npc10_honorific", "{Brother/Sister}"), #Attaklos
   ("npc11_honorific", "{laddie/lassie} -- I mean Captain"), #Dionysia
-  ("npc12_honorific", "captain"),
+  ("npc12_honorific", "Captain"),
   ("npc13_honorific", "oh valorous one"), #Chanakya
   ("npc14_honorific", "Commander"), #lazalit
   ("npc15_honorific", "Commander"), #Artimenus
-  ("npc16_honorific", "captain"),
+  ("npc16_honorific", "Captain"),
   ("npc17_honorific", "{Dominus/Domina}"), #new
   ("npc18_honorific", "{Dominus/Domina}"), #new
   ("npc19_honorific", "{Dominus/Domina}"), #new
   ("npc20_honorific", "{Dominus/Domina}"), #new
   ("npc21_honorific", "{Dominus/Domina}"), #new
-  ("npc22_honorific", "{Dominus/Domina}"), #new
+  ("npc22_honorific", "Captain"), #new
   ("npc23_honorific", "{Amicus/Amica}"), #new
   ("npc24_honorific", "{Dominus/Domina}"), #new
   ("npc25_honorific", "{Dominus/Domina}"), #new
@@ -2526,7 +2529,7 @@ strings = [
   ("npc19_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
   ("npc20_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
   ("npc21_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
-  ("npc22_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
+  ("npc22_kingsupport_1", "Captain, the Empire is built on the backs of men like me—slaves and freedmen. But we are treated with scorn. You could change that."),
   ("npc23_kingsupport_1", "I do not consider kingly matters, but you got my support. Don't expect me to kneel."),
   ("npc24_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
   ("npc25_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
@@ -2597,7 +2600,7 @@ strings = [
   ("npc14_kingsupport_2", "I would indeed. I think you can unite this land, and then we'll be able to raise an army such as"
 	+" the world has not seen for many generations -- and take it to subdue all the lands that the Roman emperors once not could conquer."), #lazalit
   ("npc15_kingsupport_2", "I would. People might say that you are of low birth. But as far as I've seen, noble blood"
-	+" makes you a skinflint. Emperors and the Roman nobility will take out loans or commission building projects without half a thought"
+	+" makes you a skinflint. Caesars and the Roman nobility will take out loans or commission building projects without half a thought"
 	+" to how they're ever going to pay back all those commoners who expect to eat after an honest day's work. If you ask me, an honest"
 	+" tongue makes a {man/woman} a {Caesar/Augusta}, not a fancy pedigree."), #Artimenus
   ("npc16_kingsupport_2", "Of course, Captain. And what's more, I figure a girl like me could do you a bit of a"
@@ -2609,7 +2612,7 @@ strings = [
   ("npc19_kingsupport_2", "I will support you, commander. I will travel through the world and raise support. Everybody shall now that you are the onley true Caesar Augustus, Princeps of Rome."), #new
   ("npc20_kingsupport_2", "I will support you, commander. I will travel through the world and raise support. Everybody shall now that you are the onley true Caesar Augustus, Princeps of Rome."), #new
   ("npc21_kingsupport_2", "I will support you, commander. I will travel through the world and raise support. Everybody shall now that you are the onley true Caesar Augustus, Princeps of Rome."), #new
-  ("npc22_kingsupport_2", "I will support you, commander. I will travel through the world and raise support. Everybody shall now that you are the onley true Caesar Augustus, Princeps of Rome."), #new
+  ("npc22_kingsupport_2", "If you were Caesar, you could declare that any man who fights for Rome for ten years earns his full citizenship and a plot of land, regardless of his birth. Freedom through service."),
   ("npc23_kingsupport_2", "You might not be a bad {king/queen}."), #new
   ("npc24_kingsupport_2", "I will support you, commander. I will travel through the world and raise support. Everybody shall now that you are the onley true Caesar Augustus, Princeps of Rome."), #new
   ("npc25_kingsupport_2", "I will support you, commander. I will travel through the world and raise support. Everybody shall now that you are the onley true Caesar Augustus, Princeps of Rome."), #new
@@ -2652,7 +2655,7 @@ strings = [
   ("npc19_kingsupport_2a", "Interesting... Please continue"), #
   ("npc20_kingsupport_2a", "Interesting... Please continue"), #
   ("npc21_kingsupport_2a", "Interesting... Please continue"), #
-  ("npc22_kingsupport_2a", "Interesting... Please continue"), #
+  ("npc22_kingsupport_2a", "An interesting proposal..."),#
   ("npc23_kingsupport_2a", "Keep talking..."), #
   ("npc24_kingsupport_2a", "Interesting... Please continue"), #
   ("npc25_kingsupport_2a", "Interesting... Please continue"), #
@@ -2695,7 +2698,7 @@ strings = [
   ("npc19_kingsupport_2b", "Let me think about it."),
   ("npc20_kingsupport_2b", "Let me think about it."),
   ("npc21_kingsupport_2b", "Let me think about it."),
-  ("npc22_kingsupport_2b", "Let me think about it."),
+  ("npc22_kingsupport_2b", "That would upset the social order too much."),
   ("npc23_kingsupport_2b", "Well, could have done better if you ask me."),
   ("npc24_kingsupport_2b", "Let me think about it."),
   ("npc25_kingsupport_2b", "Let me think about it."),
@@ -2777,7 +2780,7 @@ strings = [
   ("npc19_kingsupport_3", "Give me a few weeks and will travel through the Empire and rally support for you."), #new
   ("npc20_kingsupport_3", "Give me a few weeks, Dominus, and I will travel across the Empire, rallying support for your name and your cause. I will speak of a comet blazing across the heavens, a divine omen heralding the dawn of a new age - your age. People love a good story, and nothing stirs their hearts like the will of the gods made visible in the skies above. Now, perhaps there was no comet. Does it truly matter? The truth is what we make of it. "), #new
   ("npc21_kingsupport_3", "Give me a few weeks, and I'll march through the Empire like a true soldier of Rome, rallying support for your cause. I'll let it be known far and wide that your bloodline flows directly from Romulus himself, the founder of our great city! The legions respect strength and tradition, and there's no greater legacy than that of Romulus. Trust me, I'll see to it that the people speak your name with reverence and loyalty, from the bustling streets of Rome to the furthest outposts of the Empire. By the time I'm done, the gods themselves will hear of your right to rule!"), #new
-  ("npc22_kingsupport_3", "Give me a few weeks and will travel through the Empire and rally support for you."), #new
+  ("npc22_kingsupport_3", "Let me go to the cities and spread this word among the collegia and the common folk. They will flock to your banner if they know you offer them dignity."), #new
   ("npc23_kingsupport_3", "I have gotten around, {amicus/amica}. I know some ways I could gather more legality to your claim. It will take time but it will be worth it."), #new
   ("npc24_kingsupport_3", "Give me a few weeks and will travel through the Empire and rally support for you."), #new
   ("npc25_kingsupport_3", "Give me a few weeks and will travel through the Empire and rally support for you."), #new
@@ -2862,7 +2865,7 @@ strings = [
   ("npc19_kingsupport_objection", "{!}."),
   ("npc20_kingsupport_objection", "Commander, I don't mean to question your judgment, but sending Elazar Bar Yochai on such a mission? That man thinks words and chatter can win empires. 'Spreading the word,' he says, as if whispering your name in taverns and synagogues will somehow inspire legions of loyal followers. We're Romans! Our fame is built on deeds, not idle talk."),#Secundus Minor
   ("npc21_kingsupport_objection", "Dominus, forgive my boldness, but I must speak plainly. Sending a man like Elazar Bar Yochai on such an important mission was a mistake. A Jewish merchant's son-in-law, a priest at the Temple of Hierosolyma? That's what we're relying on? With respect, Dominus, such men talk too much and act too little. The promises he's made - to sway an entire people in exchange for autonomy in religious affairs? It's too grandiose, too risky."),#Drusus
-  ("npc22_kingsupport_objection", "{!}."),
+  ("npc22_kingsupport_objection", "Captain, I hear Lucius Varrus Drusus is telling people you will rule with an iron fist, enforcing martial law everywhere. Is this true? That is not the Rome I want to live in. We need laws, yes, but not the tyranny of the sword. A ruler should protect his people, not terrorize them."),
   ("npc23_kingsupport_objection", "{!}."),
   ("npc24_kingsupport_objection", "{Dominus/Domina}, I think it is a bad idea to gather support among barbarians! You need support among the people of Rome and, in particular, among it's nobility and the senate, not among smelly nomads, who don't even have real houses but live in huts together with their animals."),
   ("npc25_kingsupport_objection", "{!}."),
@@ -2946,7 +2949,7 @@ strings = [
   ("npc19_intel_mission", "Commander, I had a mind to pay a visit to distant relatives in {s17}. They may know the current political situation in Italia well and I think one of them holds a high office."),
   ("npc20_intel_mission", "Commander, I had a mind to pay a visit to distant relatives in {s17}. They may know the current political situation in Italia well and I think one of them holds a high office."),
   ("npc21_intel_mission", "Commander, I had a mind to pay a visit to distant relatives in {s17}. They may know the current political situation in Italia well and I think one of them holds a high office."),
-  ("npc22_intel_mission", "Commander, I had a mind to pay a visit to distant relatives in {s17}. They may know the current political situation in Italia well and I think one of them holds a high office."),
+  ("npc22_intel_mission", "I have contacts in {s17}, Captain. Old friends from the arena who now work as bodyguards for the nobility there. They hear everything that is whispered in the dark corners of the palaces. I can go there and see what secrets they have to sell."),
   ("npc23_intel_mission", "I am not a diplomat, and I don't have the coin for bribes. But I have a knife and quiet boots. Give me a night in {s17}, and I will steal whatever scrolls or dispatches the {s18} officials are trying to hide. Just don't ask how I got them."),
   ("npc24_intel_mission", "Commander, I had a mind to pay a visit to distant relatives in {s17}. They may know the current political situation in Italia well and I think one of them holds a high office."),
   ("npc25_intel_mission", "Commander, I had a mind to pay a visit to distant relatives in {s17}. They may know the current political situation in Italia well and I think one of them holds a high office."),
@@ -3013,7 +3016,7 @@ strings = [
   ("npc19_fief_acceptance", "Thank you, commander. I will govern this place well and maintain order and peace."), #new
   ("npc20_fief_acceptance", "Thank you, commander. I will govern this place well and maintain order and peace."), #new
   ("npc21_fief_acceptance", "Thank you, commander. I will govern this place well and maintain order and peace."), #new
-  ("npc22_fief_acceptance", "Thank you, commander. I will govern this place well and maintain order and peace."), #new
+  ("npc22_fief_acceptance", "You give {s17} to me? A former slave? Captain... this is more than I ever dreamed. I will rule with justice, remembering where I came from. Rome will see that a freedman can be as noble as any patrician."), #new
   ("npc23_fief_acceptance", "Primus? Primus of {s17}, {amicus/amica}? To be honest, I do not want to be any kind of a ruler or provincial captain. But if this is your wish, then I will accept it. Maybe it is time to try a bit of a kinder rule."), #new
   ("npc24_fief_acceptance", "Thank you, commander. I will govern this place well and maintain order and peace."), #new
   ("npc25_fief_acceptance", "Thank you, commander. I will govern this place well and maintain order and peace."), #new
@@ -3123,7 +3126,7 @@ strings = [
   ("npc19_turn_against", "This is a sad day. I never thought that I might meet my old commander on the field of battle. Even if I triumph, it will bring me no joy."), #
   ("npc20_turn_against", "This is a sad day. I never thought that I might meet my old commander on the field of battle. Even if I triumph, it will bring me no joy."), #
   ("npc21_turn_against", "This is a sad day. I never thought that I might meet my old commander on the field of battle. Even if I triumph, it will bring me no joy."), #
-  ("npc22_turn_against", "This is a sad day. I never thought that I might meet my old commander on the field of battle. Even if I triumph, it will bring me no joy."), #
+  ("npc22_turn_against", "We meet again, Captain. You gave me power, yes, but you also taught me to seize my destiny. I am a free man, beholden to no one, not even you. Today, we fight to see whose destiny is stronger."), #
   ("npc23_turn_against", "Fate has decreed you to be my enemy. I know we had some good times but we cannot fight against the inevitable. Draw your weapon, I will promise it will be over quickly!"), #
   ("npc24_turn_against", "This is a sad day. I never thought that I might meet my old commander on the field of battle. Even if I triumph, it will bring me no joy."), #
   ("npc25_turn_against", "This is a sad day. I never thought that I might meet my old commander on the field of battle. Even if I triumph, it will bring me no joy."), #
