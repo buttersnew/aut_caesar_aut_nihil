@@ -3653,7 +3653,7 @@ str_17|agi_15|int_14|cha_17|level(23), wp(170), knows_veteran_npc, 0x00000001b70
 ["npc22", "Libertus Tiro", "Libertus Tiro", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_horse_3,itm_praetorian_cav_scutum,itm_roman_spatha,itm_hasta2,itm_legion_hamata_cape_5,itm_1_imp_gallic_i_plume],
 str_17|agi_15|int_14|cha_17|level(23), wp(170),knows_veteran_npc, 0x000000019d093008449b51c852c9b73500000000001dca920000000000000000 ],
-["npc23", "Marcus Tullius", "Marcus Tullius", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
+["npc23", "Lucius Varrus Drusus", "Lucius Varrus Drusus", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_graves_simple_2,itm_horse_3,itm_praetorian_cav_scutum,itm_roman_spatha,itm_hasta2,itm_legion_hamata_cape_6,itm_1_imp_gallic_i_ac_plume],
 str_17|agi_15|int_14|cha_17|level(23), wp(170),knows_veteran_npc, 0x00000001b40035c847326e395f7648e300000000001f66c10000000000000000 ],
 ["npc24", "Sidonius Apollinaris", "Sidonius Apollinaris", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,

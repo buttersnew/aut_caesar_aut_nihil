@@ -31822,21 +31822,21 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc22", slot_troop_culture, "fac_culture_roman"),
     (troop_set_slot, "trp_npc22", slot_troop_age, 45),
 
-    (troop_set_slot, "trp_npc23", slot_troop_morality_type, tmt_aristocratic), #
+    (troop_set_slot, "trp_npc23", slot_troop_morality_type, tmt_humanitarian), #
     (troop_set_slot, "trp_npc23", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc23", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc23", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc23", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc23", slot_troop_personalityclash2_object, "trp_npc11"), #
-    (troop_set_slot, "trp_npc23", slot_troop_personalitymatch_object, "trp_npc24"), #
-    (troop_set_slot, "trp_npc23", slot_troop_home, "p_castle_15"), #Tomis
+    (troop_set_slot, "trp_npc23", slot_troop_personalityclash_object, -1), #
+    (troop_set_slot, "trp_npc23", slot_troop_personalityclash2_object, -1), #
+    (troop_set_slot, "trp_npc23", slot_troop_personalitymatch_object, -1), #
+    (troop_set_slot, "trp_npc23", slot_troop_home, "p_town_34"), #Neapolis
     (troop_set_slot, "trp_npc23", slot_troop_payment_request, 6000),
     (troop_set_slot, "trp_npc23", slot_troop_kingsupport_argument, argument_claim),
     (troop_set_slot, "trp_npc23", slot_troop_kingsupport_opponent, -1), #
-    (troop_set_slot, "trp_npc23", slot_troop_town_with_contacts, "p_town_34"), #
-    (troop_set_slot, "trp_npc23", slot_lord_reputation_type, lrep_martial), #
+    (troop_set_slot, "trp_npc23", slot_troop_town_with_contacts, "p_town_40"), #
+    (troop_set_slot, "trp_npc23", slot_lord_reputation_type, lrep_goodnatured), #
     (troop_set_slot, "trp_npc23", slot_troop_culture, "fac_culture_roman"),
-    (troop_set_slot, "trp_npc23", slot_troop_age, 47),
+    (troop_set_slot, "trp_npc23", slot_troop_age, 32),
 
     (troop_set_slot, "trp_npc24", slot_troop_morality_type, tmt_aristocratic), #
     (troop_set_slot, "trp_npc24", slot_troop_morality_value, 3),
