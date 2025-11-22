@@ -3735,7 +3735,16 @@ str_16|agi_16|int_15|cha_15|level(25), wp(160),knows_archer_elit_eastern,  0x000
   itm_steppe_horse_3
 ], knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x000000057f10d30936db6db6db6db6db00000000001db6db0000000000000000 ],
 ["kingdom_2_lord", "Ri Calgacus", "Calgacus", tf_hero, no_scene, reserved, fac_kingdom_2,
-[itm_ring_2,itm_horse_1,itm_celtic_boots,itm_celtic_heavy4,itm_celtic_light_noble_4,itm_celtic_round_shild4,itm_celtic_sword3,itm_britton_helm_noble_crest_1], knight_attrib_5, wp(320), knight_skills_5|knows_trainer_4, 0x00000008a21133c93b486c14d95403ef00000000001db6d90000000000000000 ],
+[
+  itm_ring_2,
+  itm_horse_1,
+  itm_celtic_boots,
+  itm_celtic_heavy4,
+  itm_celtic_light_noble_4,
+  itm_celtic_round_shild4,
+  itm_celtic_sword3,
+  itm_britton_helm_noble_crest_1
+], knight_attrib_5, wp(320), knight_skills_5|knows_trainer_4, 0x00000008a21133c93b486c14d95403ef00000000001db6d90000000000000000 ],
 
 ["kingdom_3_lord", "Tiberius Julius Rhescuporis", "Tiberius Julius Rhescuporis", tf_hero, no_scene, reserved, fac_kingdom_3,
 [itm_ring_2,itm_cataphract_horse_steppe_2,itm_eastern_shoe_r,itm_bosporan_light2,itm_scythian_shield_cav2,itm_bosphoran_scale_3,itm_bosporan_pointed_helm_4,itm_sarmatian_ringsword_3],
@@ -3747,7 +3756,7 @@ knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x0000000d000051c1449
 [itm_ring_2,itm_cataphract_boots,itm_cataphract_eastern,itm_cataphract_sallet_1,itm_mail_mittens,itm_parthian_cataphract_axe,itm_lance,itm_cataphract_horse_parthian_1,itm_sarranid_cloth_robe_fancy_2,itm_eastern_shoe_r], knight_attrib_4, wp(270), knight_skills_4|knows_trainer_5,
 0x0000000abf10b10f36dd2ec6d96db6cb00000000001db72b0000000000000000 ],
 ["kingdom_6_lord", "Shahan Shah Vologaeses Arsacid", "Vologaeses Arsacid", tf_hero, no_scene, reserved, fac_kingdom_6,
-[itm_ring_1,itm_mamluke_mail,itm_mail_mittens,itm_cataphract_boots,itm_cataphract_horse_parthian_2,itm_eastern_sword3,itm_crown_shah,itm_sarranid_cloth_robe_fancy_2,itm_eastern_shoe_r],
+[itm_mail_mittens,itm_mamluke_mail,itm_cataphract_sallet_2,itm_cataphract_boots,itm_cataphract_horse_parthian_2,itm_eastern_sword3,itm_ring_1,itm_crown_shah,itm_sarranid_cloth_robe_fancy_2,itm_eastern_shoe_r],
 knight_attrib_4, wp(270), knight_skills_5|knows_trainer_5, 0x00000006fd0042851713b2451a6e32f0000000000005b91c0000000000000000 ],
 ["kingdom_7_lord", "Nero Claudius", "Nero Claudius", tf_hero, no_scene, reserved, fac_kingdom_7,
 [itm_gauntles_1,itm_roman_legatus_helm,itm_musculata_legatus_3,itm_legio_armored_caligea_2,itm_roman_gladius_rich_2,itm_leopard_horse_2,itm_officer_shield,itm_ring_1,itm_calceus_3,itm_laurel_gold,itm_roman_rich_emperor],

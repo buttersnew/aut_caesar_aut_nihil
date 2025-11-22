@@ -8647,6 +8647,7 @@ mission_templates = [
       (assign, "$pool_troop", reg0),
       (start_presentation, "prsnt_deposit_withdraw_money"),
     ]),
+
     (2, 1.5, 1, [
       (scene_prop_get_instance, ":player_chest", "spr_player_chest", 0),
       (ge, ":player_chest", 0),
