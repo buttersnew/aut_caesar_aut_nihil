@@ -7118,6 +7118,8 @@ scripts_hardcoded = [
         (str_store_string, s0, "@List of companions, their locations and relations:^"),
         (try_for_range, ":companions", companions_begin, companions_end),
             (str_store_troop_name_link, s1, ":companions"),
+            (troop_get_slot, ":culture", ":companions", slot_troop_culture),
+            (str_store_faction_name, s13, ":culture"),
             (try_begin),
                 (main_party_has_troop, ":companions"),
                 (str_store_string, s4, "@In your party."),
@@ -7150,7 +7152,7 @@ scripts_hardcoded = [
             (else_try),
                 (str_store_string, s4, "@Joins during quest."),
             (try_end),
-            (str_store_string, s0, "@{s0}^{s1}: {s4}"),
+            (str_store_string, s0, "@{s0}^{s1} ({s13}): {s4}"),
 
             (troop_get_slot, ":hate_1", ":companions", slot_troop_personalityclash_object),
             (troop_get_slot, ":hate_2", ":companions", slot_troop_personalityclash2_object),

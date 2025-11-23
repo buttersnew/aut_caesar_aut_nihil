@@ -4535,7 +4535,7 @@ simple_triggers = [
 ]),
 
 # Spawn some bandits.
-(24*3,[
+(24*5,[
     (call_script, "script_execude_debug_message", 87),
 
     (try_begin),
@@ -4557,7 +4557,7 @@ simple_triggers = [
             (val_mul, reg1, 1000),
             (val_div, reg1, 50000), #=> 1 % per 50 000 stolen money
             (val_add, ":chance", reg1),# base chance of 3 %
-
+            (val_min, ":chance", 13),
             # (assign, reg20, ":chance"),
             # (assign, reg21, ":r"),
             # (display_message, "@Probability: {reg20}. Dice: {reg21}"),
@@ -4575,6 +4575,7 @@ simple_triggers = [
             (store_div, ":unrest_addition", "$g_unrest", 10),
 
             (val_add, ":chance", ":unrest_addition"),# base chance depends on unrest
+            (val_min, ":chance", 13),
 
             # (assign, reg20, ":chance"),
             # (assign, reg21, ":r"),

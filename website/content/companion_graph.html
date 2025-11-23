@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 900px;
+                 background-color: #222222;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#ffe6cc", "font": {"color": "white"}, "id": "Pravare Ytarim", "label": "Pravare Ytarim", "shape": "box", "title": "Pravare Ytarim\n------------------\nCulture: Parthian\nLocation: Likely in Chersonesus (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Marius Gaius", "label": "Marius Gaius", "shape": "box", "title": "Marius Gaius\n------------------\nCulture: Roman\nLocation: Likely in Antiochia (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Pulchra", "label": "Pulchra", "shape": "box", "title": "Pulchra\n------------------\nCulture: Roman\nLocation: Likely in Nicomedia (Tavern)."}, {"color": "#d5e8d4", "font": {"color": "white"}, "id": "Abadutiker", "label": "Abadutiker", "shape": "box", "title": "Abadutiker\n------------------\nCulture: Germanic\nLocation: Likely in Tur (Streets)."}, {"color": "#ffe6cc", "font": {"color": "white"}, "id": "Satibarzanes", "label": "Satibarzanes", "shape": "box", "title": "Satibarzanes\n------------------\nCulture: Parthian\nLocation: Likely in Ecbatana (Streets)."}, {"color": "#d5e8d4", "font": {"color": "white"}, "id": "Firentrix", "label": "Firentrix", "shape": "box", "title": "Firentrix\n------------------\nCulture: Britonic\nLocation: Likely in Corduba (Tavern)."}, {"color": "#fff2cc", "font": {"color": "white"}, "id": "Lavia", "label": "Lavia", "shape": "box", "title": "Lavia\n------------------\nCulture: Egyptian\nLocation: Likely in Alexandria (Streets)."}, {"color": "#d5e8d4", "font": {"color": "white"}, "id": "Hildr", "label": "Hildr", "shape": "box", "title": "Hildr\n------------------\nCulture: Germanic\nLocation: Likely in Uburzis (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Aturius Spurus", "label": "Aturius Spurus", "shape": "box", "title": "Aturius Spurus\n------------------\nCulture: Roman\nLocation: Likely in Lugdunum (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Attaklos", "label": "Attaklos", "shape": "box", "title": "Attaklos\n------------------\nCulture: Roman\nLocation: Likely in Athenae (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Dionysia", "label": "Dionysia", "shape": "box", "title": "Dionysia\n------------------\nCulture: Roman\nLocation: Likely in Thessalonica (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Jeremus", "label": "Jeremus", "shape": "box", "title": "Jeremus\n------------------\nCulture: Roman\nLocation: Likely in Lutetia (Tavern)."}, {"color": "#f8cecc", "font": {"color": "white"}, "id": "Chanakya", "label": "Chanakya", "shape": "box", "title": "Chanakya\n------------------\nCulture: Sarmatian\nLocation: Likely in Ctesiphon (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Titus", "label": "Titus", "shape": "box", "title": "Titus\n------------------\nCulture: Roman\nLocation: Likely in Mediolanum (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Artimenus", "label": "Artimenus", "shape": "box", "title": "Artimenus\n------------------\nCulture: Roman\nLocation: Likely in Vindobona (Hall)."}, {"color": "#d5e8d4", "font": {"color": "white"}, "id": "Titocuna", "label": "Titocuna", "shape": "box", "title": "Titocuna\n------------------\nCulture: Britonic\nLocation: Likely in Deva (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Anicetus", "label": "Anicetus", "shape": "box", "title": "Anicetus\n------------------\nCulture: Roman\nLocation: Likely in Phasis (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Arminius Octavianus", "label": "Arminius Octavianus", "shape": "box", "title": "Arminius Octavianus\n------------------\nCulture: Roman\nLocation: Likely in Palmyra (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Tertius Maior", "label": "Tertius Maior", "shape": "box", "title": "Tertius Maior\n------------------\nCulture: Roman\nLocation: Likely in Palmyra (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Secundus Minor", "label": "Secundus Minor", "shape": "box", "title": "Secundus Minor\n------------------\nCulture: Roman\nLocation: Likely in Dura Europos (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Drusus", "label": "Drusus", "shape": "box", "title": "Drusus\n------------------\nCulture: Roman\nLocation: Likely in Dyrrachium (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Libertus Tiro", "label": "Libertus Tiro", "shape": "box", "title": "Libertus Tiro\n------------------\nCulture: Roman\nLocation: Likely in Tarraco (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Lucius Varrus Drusus", "label": "Lucius Varrus Drusus", "shape": "box", "title": "Lucius Varrus Drusus\n------------------\nCulture: Roman\nLocation: Likely in Augusta Emerita (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Sidonius Apollinaris", "label": "Sidonius Apollinaris", "shape": "box", "title": "Sidonius Apollinaris\n------------------\nCulture: Roman\nLocation: Likely in Hierosolyma (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Sollius Modestus", "label": "Sollius Modestus", "shape": "box", "title": "Sollius Modestus\n------------------\nCulture: Roman\nLocation: Likely in Thebae (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Albinus Basilius", "label": "Albinus Basilius", "shape": "box", "title": "Albinus Basilius\n------------------\nCulture: Roman\nLocation: Likely in Mtskheta (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Lucullus Caepio", "label": "Lucullus Caepio", "shape": "box", "title": "Lucullus Caepio\n------------------\nCulture: Roman\nLocation: Likely in Thessalonica (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Anicius", "label": "Anicius", "shape": "box", "title": "Anicius\n------------------\nCulture: Roman\nLocation: Likely in Massilia (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Fabianus", "label": "Fabianus", "shape": "box", "title": "Fabianus\n------------------\nCulture: Roman\nLocation: Likely in Augusta (Tavern)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Rombus", "label": "Rombus", "shape": "box", "title": "Rombus\n------------------\nCulture: Roman\nLocation: Likely in Ancyra (Streets)."}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Ra Karak", "label": "Ra Karak", "shape": "box", "title": "Ra Karak\n------------------\nCulture: Berber\nLocation: Joins during quest."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Gaius Lemonius", "label": "Gaius Lemonius", "shape": "box", "title": "Gaius Lemonius\n------------------\nCulture: Roman\nLocation: Likely in Neapolis (Streets)."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Lucius Modius minor", "label": "Lucius Modius minor", "shape": "box", "title": "Lucius Modius minor\n------------------\nCulture: Roman\nLocation: Likely in Tarentum (Streets)."}, {"color": "#d5e8d4", "font": {"color": "white"}, "id": "Ligia", "label": "Ligia", "shape": "box", "title": "Ligia\n------------------\nCulture: Germanic\nLocation: Likely in Roma (Backstreets)."}, {"color": "#d5e8d4", "font": {"color": "white"}, "id": "Ursus", "label": "Ursus", "shape": "box", "title": "Ursus\n------------------\nCulture: Germanic\nLocation: Joins together with Ligia."}, {"color": "#e1d5e7", "font": {"color": "white"}, "id": "Marcus Vinicius", "label": "Marcus Vinicius", "shape": "box", "title": "Marcus Vinicius\n------------------\nCulture: Roman\nLocation: Likely in Roma (Tavern)."}, {"color": "#dae8fc", "font": {"color": "white"}, "id": "Josephus", "label": "Josephus", "shape": "box", "title": "Josephus\n------------------\nCulture: Judean\nLocation: Likely in Masada (Streets)."}, {"color": "#dae8fc", "font": {"color": "white"}, "id": "Elazar Bar Yochai", "label": "Elazar Bar Yochai", "shape": "box", "title": "Elazar Bar Yochai\n------------------\nCulture: Judean\nLocation: Likely in Leptis Magna (Streets)."}, {"color": "#d5e8d4", "font": {"color": "white"}, "id": "Mathildiz", "label": "Mathildiz", "shape": "box", "title": "Mathildiz\n------------------\nCulture: Germanic\nLocation: Joins during quest."}, {"color": "#fff2cc", "font": {"color": "white"}, "id": "Kara Boga", "label": "Kara Boga", "shape": "box", "title": "Kara Boga\n------------------\nCulture: Egyptian\nLocation: Likely in Alexandria (Tavern)."}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Eamane Turakina", "label": "Eamane Turakina", "shape": "box", "title": "Eamane Turakina\n------------------\nCulture: Saka\nLocation: Joins during quest."}, {"color": "#f8cecc", "font": {"color": "white"}, "id": "Chaditox", "label": "Chaditox", "shape": "box", "title": "Chaditox\n------------------\nCulture: Sarmatian\nLocation: Likely in Siracena (Streets)."}]);
+                  edges = new vis.DataSet([{"color": "#66ff66", "from": "Pravare Ytarim", "title": "Likes", "to": "Marius Gaius", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Pravare Ytarim", "title": "Hates", "to": "Lavia", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Pravare Ytarim", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Marius Gaius", "title": "Hates", "to": "Satibarzanes", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Marius Gaius", "title": "Hates", "to": "Aturius Spurus", "width": 1}, {"color": "#66ff66", "from": "Pulchra", "title": "Likes", "to": "Aturius Spurus", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Pulchra", "title": "Hates", "to": "Titus", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Pulchra", "title": "Hates", "to": "Hildr", "width": 1}, {"color": "#66ff66", "from": "Abadutiker", "title": "Likes", "to": "Satibarzanes", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Abadutiker", "title": "Hates", "to": "Attaklos", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Abadutiker", "title": "Hates", "to": "Lavia", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Satibarzanes", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Firentrix", "title": "Likes", "to": "Jeremus", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Firentrix", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Firentrix", "title": "Hates", "to": "Chanakya", "width": 1}, {"color": "#66ff66", "from": "Lavia", "title": "Likes", "to": "Titocuna", "width": 3}, {"color": "#66ff66", "from": "Hildr", "title": "Likes", "to": "Chanakya", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Hildr", "title": "Hates", "to": "Jeremus", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Aturius Spurus", "title": "Hates", "to": "Chanakya", "width": 1}, {"color": "#66ff66", "from": "Attaklos", "title": "Likes", "to": "Dionysia", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Attaklos", "title": "Hates", "to": "Titus", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Jeremus", "title": "Hates", "to": "Artimenus", "width": 1}, {"color": "#66ff66", "from": "Titus", "title": "Likes", "to": "Artimenus", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Artimenus", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#66ff66", "from": "Arminius Octavianus", "title": "Likes", "to": "Tertius Maior", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Arminius Octavianus", "title": "Hates", "to": "Josephus", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Arminius Octavianus", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Tertius Maior", "title": "Likes", "to": "Kara Boga", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Tertius Maior", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Tertius Maior", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Secundus Minor", "title": "Likes", "to": "Chaditox", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Secundus Minor", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Secundus Minor", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Drusus", "title": "Likes", "to": "Libertus Tiro", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Drusus", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Drusus", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Libertus Tiro", "title": "Likes", "to": "Titocuna", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Libertus Tiro", "title": "Hates", "to": "Lucius Varrus Drusus", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Libertus Tiro", "title": "Hates", "to": "Lucullus Caepio", "width": 1}, {"color": "#66ff66", "from": "Sidonius Apollinaris", "title": "Likes", "to": "Sollius Modestus", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Sidonius Apollinaris", "title": "Hates", "to": "Chaditox", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Sidonius Apollinaris", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Sollius Modestus", "title": "Likes", "to": "Albinus Basilius", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Sollius Modestus", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Sollius Modestus", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Albinus Basilius", "title": "Likes", "to": "Lucullus Caepio", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Albinus Basilius", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Albinus Basilius", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Lucullus Caepio", "title": "Likes", "to": "Lucius Modius minor", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Lucullus Caepio", "title": "Hates", "to": "Ra Karak", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Lucullus Caepio", "title": "Hates", "to": "Josephus", "width": 1}, {"color": "#66ff66", "from": "Anicius", "title": "Likes", "to": "Fabianus", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Anicius", "title": "Hates", "to": "Kara Boga", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Anicius", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Fabianus", "title": "Likes", "to": "Rombus", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Fabianus", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Fabianus", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#66ff66", "from": "Rombus", "title": "Likes", "to": "Pulchra", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Rombus", "title": "Hates", "to": "Titocuna", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Rombus", "title": "Hates", "to": "Dionysia", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Gaius Lemonius", "title": "Hates", "to": "Lucius Modius minor", "width": 1}, {"color": "#66ff66", "from": "Ligia", "title": "Likes", "to": "Marcus Vinicius", "width": 3}, {"color": "#ff6666", "dashes": true, "from": "Ligia", "title": "Hates", "to": "Elazar Bar Yochai", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Ligia", "title": "Hates", "to": "Kara Boga", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Ursus", "title": "Hates", "to": "Kara Boga", "width": 1}, {"color": "#ff6666", "dashes": true, "from": "Marcus Vinicius", "title": "Hates", "to": "Elazar Bar Yochai", "width": 1}, {"color": "#66ff66", "from": "Josephus", "title": "Likes", "to": "Satibarzanes", "width": 3}, {"color": "#66ff66", "from": "Elazar Bar Yochai", "title": "Likes", "to": "Josephus", "width": 3}, {"color": "#66ff66", "from": "Kara Boga", "title": "Likes", "to": "Arminius Octavianus", "width": 3}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -3000,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
