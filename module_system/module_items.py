@@ -3756,7 +3756,7 @@ signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_cul
 signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_culture_greek,fac_culture_egyptian] ],
 ["romano_attic_helm_3", "Galea with Mask", [("romano_attic_helm_III",0)],  itp_merchandise|itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
 signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_culture_greek,fac_culture_egyptian] ],
-["romano_attic_helm_3", "Galea with Mask and Plume", [("romano_attic_helm_IV",0)],  itp_merchandise|itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
+["romano_attic_helm_4", "Galea with Mask and Plume", [("romano_attic_helm_IV",0)],  itp_merchandise|itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
 signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_culture_greek,fac_culture_egyptian] ],
 ###END new helms
 

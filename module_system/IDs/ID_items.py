@@ -964,6 +964,7 @@ itm_vexilarius_helmet_mask = 962
 itm_romano_attic_helm_1 = 963
 itm_romano_attic_helm_2 = 964
 itm_romano_attic_helm_3 = 965
+itm_romano_attic_helm_4 = 966
 itm_straw_hat = 967
 itm_mediterranean_straw_hat = 968
 itm_mediterranean_straw_hat_1 = 969
