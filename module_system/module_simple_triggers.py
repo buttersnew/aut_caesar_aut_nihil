@@ -9121,7 +9121,7 @@ simple_triggers = [
 
     (try_begin),
         (store_num_parties_of_template, reg22, "pt_traveller_ship"),
-        (le,reg22, 10),
+        (le,reg22, 6),
         (neg|party_slot_eq, ":center", slot_center_decree_control, 1),
         (party_slot_eq, ":center", slot_center_is_besieged_by, -1),
 

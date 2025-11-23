@@ -38,6 +38,7 @@ party_templates = [
 ("village_defenders_rom", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_vigilia,10,20)] ),
 ("village_defenders_east", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_eastern_slinger,10,20)] ),
 ("village_defenders_syria", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_syrian_archer,10,20)] ),
+("village_defenders_arab", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_arab_spearmen,10,20)] ),
 ("village_defenders_egyptian", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_egyptian_archers,5,10),(trp_egyptian_infantry_light,5,10)] ),
 ("village_defenders_greek", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_vigilia,10,20)] ),
 ("village_defenders_celt", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_celtic_light_clubman,5,10),(trp_celtic_archer,1,4),(trp_celtic_skirmisher,3,6)] ),
@@ -105,6 +106,10 @@ party_templates = [
 ("village_syrian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_syrian_peasant,10,15),]),
 ("village_egyptian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_egyptian_peasant,10,15),]),
 ("village_greek","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_greek_peasant,10,15),]),
+("village_eastern","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_eastern_peasant,10,15),]),
+("village_galatian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_galatian_peasant,10,15),]),
+("village_gaulish","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_gaulish_peasant,10,15),]),
+("village_thracian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_thracian_peasant,10,15),]),
 
 ("spy_partners", "Unremarkable Travellers", icon_mercenary_infantry|carries_goods(10)|pf_default_behavior|pf_quest_party,0,fac_neutral,merchant_personality,[(trp_spy_partner,1,1),(trp_caravan_guard,5,11)]),
 ("runaway_serfs","Runaway slaves",icon_peasant|carries_goods(8)|pf_default_behavior|pf_quest_party,0,fac_neutral,merchant_personality,[(trp_slave,6,7), (trp_slave_female,3,3)]),
