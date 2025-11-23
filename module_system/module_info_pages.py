@@ -266,6 +266,6 @@ Similarly you can import horses from any horse merchant or your latifundia breed
 ("legio_9", "- Legio V Macedonica", "This legion has been disbanded."),#
 ("legio_10", "- Legio VI Ferrata", "This legion has been disbanded."),#
 ("legio_11", "- Legio X Fretensis", "This legion has been disbanded."),#
-("legio_12", "- Praetorian Guard", "This legion has been disbanded."),
+("legio_12", "- Cohortes Praetoriae", "This legion has been disbanded."),
 
 ]#end of file

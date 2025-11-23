@@ -143,7 +143,7 @@ parties = [
 ("castle_31", "Miletus", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (4.86, -8.88), [], 260),
 ("castle_32", "Sirmium", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-83.92, 96.56), [], 260),
 ("castle_33", "Ekolisma", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-94.77, 97.8), [], 80),
-("castle_34", "Augusta Raurica", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-145.54, 83.51), [], 260),
+("castle_34", "Vindonissa", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-145.54, 83.51), [], 260),
 ("castle_35", "Salona", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-82.381, 39.014), [], 260),
 ("castle_36", "Treva", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-145.17, 147.06), [], 260),
 ("castle_37", "Troesmis", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-0.850, 63.50), [], 260),

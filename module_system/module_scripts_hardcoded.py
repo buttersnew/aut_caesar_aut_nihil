@@ -7222,7 +7222,7 @@ scripts_hardcoded = [
                         (str_store_string, s28, ":aux"),
                     (try_end),
                     (str_store_troop_name_link, s10, ":aux_comander"),
-                    (str_store_string, s29, "@^ -) {s28}, commanded by {s10}."),
+                    (str_store_string, s29, "@{s29}^ -) {s28}, commanded by {s10}."),
                 (try_end),
                 (str_store_string, s0, "@{s0}^{s29}"),
 
