@@ -167,19 +167,34 @@ for line in lines:
         # Clean up location
         location = re.sub(r"<p=\d+>", "", raw_location).replace("</>", "")
 
-        # Plain text tooltip with newlines
+        # Tooltip content
         tooltip_text = f"{name}\n------------------\nCulture: {culture}\nLocation: {location}"
 
-        # Colors
-        color = '#97c2fc'
-        if 'Roman' in culture: color = '#e1d5e7'
-        elif 'Parthian' in culture: color = '#ffe6cc'
-        elif 'Germanic' in culture or 'Britonic' in culture: color = '#d5e8d4'
-        elif 'Egyptian' in culture: color = '#fff2cc'
-        elif 'Judean' in culture: color = '#dae8fc'
-        elif 'Sarmatian' in culture: color = '#f8cecc'
+        # Color Logic
+        color = '#3b82f6'                            # Default: Medium Blue
+        if 'Roman' in culture: color = '#8e44ad'     # Roman: Rich Purple
+        elif 'Parthian' in culture: color = '#d35400' # Parthian: Burnt Orange
+        elif 'Germanic' in culture or 'Britonic' in culture: color = '#27ae60' # Barbarian: Forest Green
+        elif 'Egyptian' in culture: color = '#f1c40f' # Egyptian: Gold
+        elif 'Judean' in culture: color = '#3498db'   # Judean: Dark Cyan
+        elif 'Sarmatian' in culture: color = '#c0392b' # Sarmatian: Deep Red
 
-        net.add_node(name, label=name, title=tooltip_text, color=color, shape='box')
+        #draw the node (companion)
+        net.add_node(
+            name,
+            label=name,
+            title=tooltip_text,
+            color=color,
+            shape='box',
+            borderWidth=1,
+            # size=35,
+            font={
+                'size': 40,
+                'color': 'white',
+                'strokeWidth': 4,
+                'strokeColor': 'black'
+            }
+        )
 
 # --- PASS 2: Create Relationships ---
 current_comp = None
@@ -207,5 +222,5 @@ for line in lines:
 
 # Settings
 net.barnes_hut(gravity=-3000, central_gravity=0.3, spring_length=200, spring_strength=0.05, damping=0.09)
-net.show_buttons(filter_=['physics'])
-net.show('companion_graph.html', notebook=False)
+# net.show_buttons(filter_=['physics'])
+net.show('website\content\companion_graph.html', notebook=False)
