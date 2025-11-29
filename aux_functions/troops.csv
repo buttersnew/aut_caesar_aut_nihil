@@ -1,6 +1,31 @@
 troop_id,name_singular,name_plural
-
-# Farmers
+player,Player,Player
+multiplayer_profile_troop_male,multiplayer_profile_troop_male,multiplayer_profile_troop_male
+multiplayer_profile_troop_female,multiplayer_profile_troop_female,multiplayer_profile_troop_female
+temp_troop,Temp Troop,Temp Troop
+game,Game,Game
+unarmed_troop,Unarmed Troop,Unarmed Troops
+find_item_cheat,find_item_cheat,find_item_cheat
+random_town_sequence,Random Town Sequence,Random Town Sequence
+tournament_participants,Tournament Participants,Tournament Participants
+tutorial_maceman,Maceman,Maceman
+tutorial_archer,Archer,Archer
+tutorial_swordsman,Swordsman,Swordsman
+novice_fighter,Novice Fighter,Novice Fighters
+regular_fighter,Regular Fighter,Regular Fighters
+veteran_fighter,Veteran Fighter,Veteran Fighters
+champion_fighter,Champion Fighter,Champion Fighters
+arena_training_fighter_1,Novice Fighter,Novice Fighters
+arena_training_fighter_2,Novice Fighter,Novice Fighters
+arena_training_fighter_3,Regular Fighter,Regular Fighters
+arena_training_fighter_4,Regular Fighter,Regular Fighters
+arena_training_fighter_5,Regular Fighter,Regular Fighters
+arena_training_fighter_6,Veteran Fighter,Veteran Fighters
+arena_training_fighter_7,Veteran Fighter,Veteran Fighters
+arena_training_fighter_8,Veteran Fighter,Veteran Fighters
+arena_training_fighter_9,Champion Fighter,Champion Fighters
+arena_training_fighter_10,Champion Fighter,Champion Fighters
+cattle,Cattle,Cattle
 farmer,Rusticus,Rustici
 sarmatian_peasant,Sarmata Tribulis,Sarmatae Tribules
 bosporan_peasant,Bosporanus Rusticus,Bosporani Rustici
@@ -26,8 +51,6 @@ gaulish_peasant,Gallus Rusticus,Galli Rustici
 nubian_peasant,Nubianus Tribulis,Nubiani Tribules
 saka_peasant,Sacae Tribulis,Sacae Tribules
 egyptian_peasant,Aegyptius Rusticus,Aegyptii Rustici
-
-# Mercenaries
 watchman,Mercenarius Funditor,Mercenarii Funditores
 caravan_guard,Custos,Custodes
 mercenary_swordsman,Mercenarius Hastatus,Mercenarii Hastati
@@ -35,34 +58,25 @@ hired_blade,Xenikos Peltastes,Xenikoi Peltastai
 mercenary_bowman,Mercenarius Sagittarius,Mercenarii Sagittarii
 mercenary_horseman,Mercenarius Eques,Mercenarius Equites
 mercenary_cavalry,Mercenarius Cataphractus,Mercenarii Cataphracti
-
-
 illyrian_horseman,Illyrios Hippeus,Illyrioi Hippeis
 illyrian_infantry,Illyrios Pezos,Illyrioi Pezoi
-
-
 slinger_rhodos,Rhodios Sphendonetes,Rhodioi Sphendonetai
 kreta_archer,Kres Toxotes,Kretes Toxotai
+hispanic_infantry,Scutarius,Scutarii
+hispanic_heavy_infantry,Loricati Scutarius,Loricati Scutarii
 hoplit,Hoplites,Hoplitai
 phalanx,Phalangit,Phalangitai
 hoplit_2,Epilektos,Epilektoi
-
-hispanic_infantry,Scutarius,Scutarii
-hispanic_heavy_infantry,Loricati Scutarius,Loricati Scutarii
-
 scythian_horse_archer,Skythikos Hippeus,Skythikoi Hippeis
 scythian_amazon,Amazon,Amazones
 scythian_medium_cavalry,Skythios Lonchophoros,Skythioi Lonchophoroi
 scythian_cataphract,Skythikos Kataphraktos,Skythikoi Kataphraktoi
-
 alan_horse_archer,Alanno Badaro,Alanna Badarai
 alan_heavy_horse_archer,Alanno Leazdaetta,Alanna Leazdaettae
-
 celtic_freeman,Ambaktos,Ambaktoi
 celtic_elite_swordsman,Arios,Arioi
 irish_skirmisher,Weidelos Iwerakos,Weideloi Iwerakoi
 irish_vetran,Ouxselos Iwerakos,Ouxseloi Iwerakoi
-
 germanic_hunter,Sakandz,Sakandiz
 germanic_free_spearman,Gaizaz Frijaz,Gaizoz Frijoz
 germanic_nightwarrior,Hariaz Skaduganganaz,Harioz Skaduganganoz
@@ -74,44 +88,33 @@ lombard_skirmisher,Winnilaz Slagandz,Winniloz Slagandiz
 lombard_vetran,Winnilaz Wopandz,Winniloz Wopandiz
 slavic_skirmisher,Gaizaz Ridandz,Gaizoz Ridandiz
 slavic_vetran,Toutaginos,Toutaginoi
-
 georgian_light_archer,Moisari,Moisarebi
 georgian_noble_archer,Mtieli Shubosani,Mtieli Shubosnebi
-
 persian_picaxe_man,Tabarzan Eranshahr,Tabarzanan Eranshahr
 persian_noble_cav,Asad Asavar,Asadan Asavaran
-
 saka_horse_archer,Yukhuno Yasanino Puthro,Yukhuna Yasaninu Puthra
 saka_heavy_cavalry,Sakayo Azaryanako,Sakaya Azaryanaka
 saka_amazon,Razma-Jani,Razma-Janya
-
 indian_archer,Dhanurdhara,Dhanurdharah
 indian_spearman,Patti Kauntika,Patti Kauntikah
-
 garamantian_horseman,Amhadi Garamanti,Imhaditen Garamantin
 garamantian_noble_horseman,Aballun Garamanti,Iballunen Garamantin
-
 gaetuli_horseman,Amenay Amawri,Imnayen Imawriyen
 gaetuli_noble_horseman,Amhadi n Thugga,Imḥaditen n Thugga
-
 meroe_archers,Neteke,Netekeli
 meroe_infantry,Adke-tkk,Adkeli-tkkli
 meroe_axemen,Kukur,Kukurli
-
 egyptian_archers,Reftksote,Reftksotew
 egyptian_infantry_heavy,Refbouts,Refboutew
 egyptian_infantry_light,Refqenqen,Refqenqenew
 egyptian_officer,Tzoeisu,Tzoeisu-w
-
 arab_noble_archers,Shomer Hajar,Shomrim Hajar
 arab_spearmen,Muqrab,Muqrabeen
 desert_bandit,Faris,Farasin
 arab_noble_cav,Abbir Faris,Abbirim Farisin
-
 palmyra_infantry,Palmyraius Pedes,Palmyraii Pedites
 palmyra_cataphract,Palmyraius Cataphractus,Palmyraii Cataphracti
-
-
+mercenaries_end,mercenaries_end,mercenaries_end
 bosporan_standard_bearer,Bosporanos Semeiophoros,Bosporanoi Semeiophoroi
 bosporan_hornman,Bosporanos Salpinktes,Bosporanoi Salpinktai
 judean_standard_bearer,Ioudaios Semeiophoros,Ioudaioi Semeiophoroi
@@ -134,9 +137,6 @@ egyptian_standard_bearer,Tjai-seryt,Tjaiu-seryt
 egyptian_hornman,Weha-en-deb,Wehau-en-deb
 hornman,Xenikos Moysikos,Xenikoi Moysikoi
 judean_hornman,Antolikos Moysikos,Antolikoi Moysikoi
-
-## STOP here
-
 judean_light_clubman,Judaios Thureophores,Judaioi Thureophoroi
 judean_light_clubman_exp,Judaios Thureophores (exp),Judaioi Thureophoroi (exp)
 judean_light_clubman_vet,Judaios Thureophores (vet),Judaioi Thureophoroi (vet)
@@ -162,7 +162,6 @@ judean_guard,Sebastenos Peltastes,Sebastenoi Peltastai
 judean_guard_vet,Sebastenos Peltastes,Sebastenoi Peltastai (vet)
 judean_guard_archer,Sebastenos Toxotes,Sebastenoi Toxotai
 judean_guard_archer_vet,Sebastenos Toxotes,Sebastenoi Toxotai (vet)
-
 bosporan_light_spearman,Bosporanos Entopios,Bosporanoi Entopioi
 bosporan_light_spearman_exp,Bosporanos Entopios (exp),Bosporanoi Entopioi (exp)
 bosporan_light_spearman_vet,Bosporanos Entopios (vet),Bosporanoi Entopioi (vet)
@@ -175,7 +174,6 @@ bosporan_elite_vet,Bosporanos Pezos (vet),Bosporanoi Pezoi (vet)
 bosporan_cav,Sauromatikos Kataphraktos,Sauromatikoi Kataphraktoi
 bosporan_cav_exp,Sauromatikos Kataphraktos (exp),Sauromatikoi Kataphraktoi (exp)
 bosporan_cav_vet,Sauromatikos Kataphraktos (vet),Sauromatikoi Kataphraktoi (vet)
-
 germanic_light_clubman,Slagandz,Slagandiz
 germanic_light_clubman_exp,Slagandz (exp),Slagandiz (exp)
 germanic_light_clubman_vet,Slagandz (vet),Slagandiz (vet)
@@ -188,9 +186,9 @@ germanic_skirmisher_vet,Jungaz (vet),Jungoz (vet)
 germanic_slinger,Stainawerpandz,Stainawerpandiz
 germanic_slinger_exp,Stainawerpandz (exp),Stainawerpandiz (exp)
 germanic_slinger_vet,Stainawerpandz (vet),Stainawerpandiz (vet)
-germanic_archer,Sakato,Sakatonez
-germanic_archer_exp,Sakato (exp),Sakatonez (exp)
-germanic_archer_vet,Sakato (vet),Sakatonez (vet)
+germanic_archer,Skuttilaz,Skuttiloz
+germanic_archer_exp,Skuttilaz (exp),Skuttiloz (exp)
+germanic_archer_vet,Skuttilaz (vet),Skuttiloz (vet)
 germanic_berserker,Tiwisa Wigandz,Tiwisa Wigandiz
 germanic_noble_swordsman,Druthinaz Swebiskaz,Druthinoz Swebiskoz
 germanic_noble_swordsman_exp,Druthinaz Swebusku (exp),Druthinoz Swebiskoz (exp)
@@ -201,7 +199,6 @@ germanic_noble_spearman_vet,Dugandz (vet),Dugandiz (vet)
 germanic_cavalry,Ridandz,Ridandiz
 germanic_cavalry_exp,Ridandz (exp),Ridandiz (exp)
 germanic_cavalry_vet,Ridandz (vet),Ridandiz (vet)
-
 celtic_light_clubman,Lorgowiros,Lorgowiri
 celtic_light_clubman_exp,Lorgowiros (exp),Lorgowiri (exp)
 celtic_light_clubman_vet,Lorgowiros (vet),Lorgowiri (vet)
@@ -223,7 +220,6 @@ celtic_horseman_vet,Markakos Gaisowiros (vet),Markakoi Gaisowiri (vet)
 celtic_noble_swords,Wenoi,Wenoi
 celtic_noble_swords_exp,Wenoi (exp),Wenoi (exp)
 celtic_noble_swords_vet,Wenoi (vet),Wenoi (vet)
-
 caledonian_light_clubman,Wenos,Lorgowiri
 caledonian_light_clubman_exp,Wenos (exp),Lorgowiri (exp)
 caledonian_light_clubman_vet,Wenos (vet),Lorgowiri (vet)
@@ -245,7 +241,6 @@ caledonian_horseman_vet,Markakos Trummos (vet),Markakoi Trummoi (vet)
 caledonian_noble_swords,Kluddobros,Kluddobroi
 caledonian_noble_swords_exp,Kluddobros (exp),Kluddobroi (exp)
 caledonian_noble_swords_vet,Kluddobros (vet),Kluddobroi (vet)
-
 dacian_light_spearman,Dakos Fyletikos Pezos,Daki Fyletikoi Pezoi
 dacian_light_spearman_exp,Dakos Fyletikos Pezos (exp),Daki Fyletikoi Pezoi (exp)
 dacian_light_spearman_vet,Dakos Fyletikos Pezos (vet),Daki Fyletikoi Pezoi (vet)
@@ -270,7 +265,40 @@ dacian_skirmishers_vet,Dakos Toxotes (vet),Daki Toxotai (vet)
 dacian_archers,Dakos Akontistes,Daki Akontistai
 dacian_archers_exp,Dakos Akontistes (exp),Daki Akontistai (exp)
 dacian_archers_vet,Dakos Akontistes (vet),Daki Akontistai (vet)
-
+dacian_prision_guard,Prison Guard,Prison Guards
+dacian_castle_guard,Castle Guard,Castle Guards
+celtic_prison_guard,Prison Guard,Prison Guards
+celtic_castle_guard,Castle Guard,Castle Guards
+sarmatian_prison_guard,Prison Guard,Prison Guards
+sarmatian_castle_guard,Castle Guard,Castle Guards
+bosporan_prison_guard,Prison Guard,Prison Guards
+bosporan_castle_guard,Castle Guard,Castle Guards
+germanic_prison_guard,Prison Guard,Prison Guards
+germanic_castle_guard,Castle Guard,Castle Guards
+batava_prison_guard,Prison Guard,Prison Guards
+batava_castle_guard,Castle Guard,Castle Guards
+eastern_prison_guard,Prison Guard,Prison Guards
+eastern_castle_guard,Castle Guard,Castle Guards
+caucasian_prison_guard,Prison Guard,Prison Guards
+caucasian_castle_guard,Castle Guard,Castle Guards
+roman_prison_guard,Prison Guard,Prison Guards
+roman_castle_guard,Castle Guard,Castle Guards
+jew_prison_guard,Prison Guard,Prison Guard
+jew_castle_guard,Castle Guard,Castle Guard
+egyptian_prison_guard,Prison Guard,Prison Guard
+egyptian_castle_guard,Castle Guard,Castle Guard
+syrian_prison_guard,Prison Guard,Prison Guard
+syrian_castle_guard,Castle Guard,Castle Guard
+arabian_prison_guard,Prison Guard,Prison Guard
+arabian_castle_guard,Castle Guard,Castle Guard
+berber_prison_guard,Prison Guard,Prison Guard
+berber_castle_guard,Castle Guard,Castle Guard
+nubian_prison_guard,Prison Guard,Prison Guard
+nubian_castle_guard,Castle Guard,Castle Guard
+saka_prison_guard,Prison Guard,Prison Guard
+saka_castle_guard,Castle Guard,Castle Guard
+garamantian_prison_guard,Prison Guard,Prison Guard
+garamantian_castle_guard,Castle Guard,Castle Guard
 sarmatian_light_spearman,Sauromates Kontophoros,Sauromatai Kontophoroi
 sarmatian_light_spearman_exp,Sauromates Kontophoros (exp),Sauromatai Kontophoroi (exp)
 sarmatian_light_spearman_vet,Sauromates Kontophoros (vet),Sauromatai Kontophoroi (vet)
@@ -280,19 +308,18 @@ sarmatian_archers_vet,Sauromates Hippotoxotes (vet),Sauromatai Hippotoxotai (vet
 sarmatian_light_horsearcher,Duno Asyo,Duna Asya
 sarmatian_light_horsearcher_exp,Duno Asyo (exp),Duna Asya (exp)
 sarmatian_light_horsearcher_vet,Duno Asyo (vet),Duna Asya (vet)
-sarmatian_heavy_horsearcher,Yasanino Aysno,Yasaninu Aysna
-sarmatian_heavy_horsearcher_exp,Yasanino Aysno (exp),Yasaninu Aysna (exp)
-sarmatian_heavy_horsearcher_vet,Yasanino Aysno (vet),Yasaninu Aysna (vet)
+sarmatian_heavy_horsearcher,Sauromates Fat Aexsdzhyn,Sauromatae Fat Aexsdzhytae
+sarmatian_heavy_horsearcher_exp,Sauromates Fat Aexsdzhyn (exp),Sauromatae Fat Aexsdzhytae (exp)
+sarmatian_heavy_horsearcher_vet,Sauromates Fat Aexsdzhyn (vet),Sauromatae Fat Aexsdzhytae (vet)
 sarmatian_light_horseman,Aeldaro Aemhalto,Aeldary Aemhaltae
 sarmatian_light_horseman_exp,Aeldaro Aemhalto (exp),Aeldary Aemhaltae (exp)
 sarmatian_light_horseman_vet,Aeldaro Aemhalto (vet),Aeldary Aemhaltae (vet)
-sarmatian_heavy_horseman,Rauxsa-alan Leazdaetta,Rauxsa-alanna Leazdaettae
-sarmatian_heavy_horseman_exp,Rauxsa-alan Leazdaetta (exp),Rauxsa-alanna Leazdaettae (exp)
-sarmatian_heavy_horseman_vet,Rauxsa-alan Leazdaetta (vet),Rauxsa-alanna Leazdaettae (vet)
+sarmatian_heavy_horseman,Rauxsa-alan Baexdzhyn,Rauxsa-alanna Baexdzhyntae
+sarmatian_heavy_horseman_exp,Rauxsa-alan Baexdzhyn (exp),Rauxsa-alanna Baexdzhyntae (exp)
+sarmatian_heavy_horseman_vet,Rauxsa-alan Baexdzhyn (vet),Rauxsa-alanna Baexdzhyntae (vet)
 sarmatian_noble_horseman,Sahiyo Hadabaro,Sahiya Hadabara
 sarmatian_noble_horseman_exp,Sahiyo Hadabaro (exp),Sahiya Hadabara (exp)
 sarmatian_noble_horseman_vet,Sahiyo Hadabaro (vet),Sahiya Hadabara (vet)
-
 armenian_spear_levy,Kaukasios Doriphoros,Kaukasioi Doriphoroi
 armenian_spear_levy_exp,Kaukasios Doriphoros (exp),Kaukasioi Doriphoroi (exp)
 armenian_spear_levy_vet,Kaukasios Doriphoros (vet),Kaukasioi Doriphoroi (vet)
@@ -317,9 +344,9 @@ caucasian_heavy_spearman_vet,Kentronakan Doriphoros (vet),Kentronakan Doriphoroi
 armenian_horsearcher,Kaukasios Hippotoxotes,Kaukasioi Hippotoxotai
 armenian_horsearcher_exp,Kaukasios Hippotoxotes (exp),Kaukasioi Hippotoxotai (exp)
 armenian_horsearcher_vet,Kaukasios Hippotoxotes (vet),Kaukasioi Hippotoxotai (vet)
-caucasian_medium_horsearcher,Asistavi,Asistavebi
-caucasian_medium_horsearcher_exp,Asistavi (exp),Asistavebi (exp)
-caucasian_medium_horsearcher_vet,Asistavi (vet),Asistavebi (vet)
+caucasian_medium_horsearcher,Tskhenosani Moisari,Tskhenosani Moisarebi
+caucasian_medium_horsearcher_exp,Tskhenosani Moisari (exp),Tskhenosani Moisarebi (exp)
+caucasian_medium_horsearcher_vet,Tskhenosani Moisari (vet),Tskhenosani Moisarebi (vet)
 armenian_medium_horseman,Mkhedari,Mkhedrebi
 armenian_medium_horseman_exp,Mkhedari (exp),Mkhedrebi (exp)
 armenian_medium_horseman_vet,Mkhedari (vet),Mkhedrebi (vet)
@@ -332,7 +359,6 @@ armenian_cataphract_vet,Armenikos Kataphraktos (vet),Armenikoi Kataphraktoi (vet
 armenian_elite_infantry,Armenikos Epilektos Toxotes,Armenikoi Epilektoi Toxotai
 armenian_elite_infantry_exp,Armenikos Epilektos Toxotes (exp),Armenikoi Epilektoi Toxotai (exp)
 armenian_elite_infantry_vet,Armenikos Epilektos Toxotes (vet),Armenikoi Epilektoi Toxotai (vet)
-
 syrian_archer,Kassat,Kassata
 syrian_archer_exp,Kassat (exp),Kassata (exp)
 syrian_archer_vet,Kassat (vet),Kassata (vet)
@@ -348,7 +374,6 @@ syrian_horseman_vet,Rakkaba D-Dayyaqa (vet),Rakkabe D-Dayyaqe (vet)
 syrian_heavy_cav,Rakkaba D-Zerya,Rakkabe D-Zerya
 syrian_heavy_cav_exp,Rakkaba D-Zerya (exp),Rakkabe D-Zerya (exp)
 syrian_heavy_cav_vet,Rakkaba D-Zerya (vet),Rakkabe D-Zerya (vet)
-
 eastern_light_archer,Thanvar Parsig,Thanvaran Parsig
 eastern_light_archer_exp,Thanvar Parsig (exp),Thanvaran Parsig (exp)
 eastern_light_archer_vet,Thanvar Parsig (vet),Thanvaran Parsig (vet)
@@ -364,9 +389,9 @@ eastern_slinger_vet,Palkhandar (vet),Palkhandaran (vet)
 eastern_heavy_inf,Arteshtar Pahlavig,Arteshtaran Pahlavig
 eastern_heavy_inf_exp,Arteshtar Pahlavig (exp),Arteshtaran Pahlavig (exp)
 eastern_heavy_inf_vet,Arteshtar Pahlavig (vet),Arteshtaran Pahlavig (vet)
-eastern_heavy_spearman,Shipar Tukul,Shipari Tukul
-eastern_heavy_spearman_exp,Shipar Tukul (exp),Shipari Tukul (exp)
-eastern_heavy_spearman_vet,Shipar Tukul (vet),Shipari Tukul (vet)
+eastern_heavy_spearman,Nizagdar Pahlavig,Nizagdaran Pahlavig
+eastern_heavy_spearman_exp,Nizagdar Pahlavig (exp),Nizagdaran Pahlavig (exp)
+eastern_heavy_spearman_vet,Nizagdar Pahlavig (vet),Nizagdaran Pahlavig (vet)
 eastern_horsearcher,Shivatir Pahlavanig,Shivatiran Pahlavanig
 eastern_horsearcher_exp,Shivatir Pahlavanig (exp),Shivatiran Pahlavanig (exp)
 eastern_horsearcher_vet,Shivatir Pahlavanig (vet),Shivatiran Pahlavanig (vet)
@@ -379,7 +404,6 @@ eastern_cataphract_vet,Pahlavan Grivpanvar (vet),Pahlavanan Grivpanvar (vet)
 eastern_elite_infantry,Kamandar Zhayad,Kamandaran Zhayadan
 eastern_elite_infantry_exp,Kamandar Zhayad (exp),Kamandaran Zhayadan (exp)
 eastern_elite_infantry_vet,Kamandar Zhayad (vet),Kamandaran Zhayadan (vet)
-
 legio_xxii_primigenia,Tiro Legionis (XXII Primigenia),Tirones Legionis (XXII Primigenia)
 legio_iii_augusta,Tiro Legionis (III Augusta),Tirones Legionis (III Augusta)
 legio_v_alaudae,Tiro Legionis (V Alaudae),Tirones Legionis (V Alaudae)
@@ -392,7 +416,6 @@ legio_v_macedonia,Tiro Legionis (V Macedonia),Tirones Legionis (V Macedonia)
 legio_vi_ferrata,Tiro Legionis (VI Ferrata),Tirones Legionis (VI Ferrata)
 legio_x_fretensis,Tiro Legionis (X Fretensis),Tirones Legionis (X Fretensis)
 praetoriani_milites,Tiro Praetoriani,Tirones Praetoriani
-
 aquilifer_xxii,Aquilifer (XXII Primigenia),Aquilifer (XXII Primigenia)
 aquilifer_iii,Aquilifer (III Augusta),Aquilifer (III Augusta)
 aquilifer_v_alaudae,Aquilifer (V Alaudae),Aquilifer (V Alaudae)
@@ -423,7 +446,6 @@ signifer,Signifer,Signifer
 cornicen,Cornicen,Cornicines
 legatus_legionis,Tribunus,Tribuni
 centurio_east,Primus Pilus,Primi Pili
-
 aux_vigiles_centurio,Centurio Vigiliarum,Centurii Vigiliarum
 aux_cav_decurio,Decurio,Decurii
 aux_cav_vexilarius,Vexilarius Equitem,Vexilarii Equitem
@@ -464,7 +486,6 @@ vigilia,Vigilia,Vigiliae
 vigilia_exp,Vigilia (exp),Vigiliae (exp)
 vigilia_vet,Vigilia (vet),Vigiliae (vet)
 ballistarii,Ballistarius,Ballistarii
-
 legio_xxii_primigenia_exp,Miles Legionis (XXII Primigenia),Milites Legionis (XXII Primigenia)
 legio_iii_augusta_exp,Miles Legionis (III Augusta),Milites Legionis (III Augusta)
 legio_v_alaudae_exp,Miles Legionis (V Alaudae),Milites Legionis (V Alaudae)
@@ -489,7 +510,6 @@ legio_v_macedonia_vet,Evocatus Legionis (V Macedonia),Evocati Legionis (V Macedo
 legio_vi_ferrata_vet,Evocatus Legionis (VI Ferrata),Evocati Legionis (VI Ferrata)
 legio_x_fretensis_vet,Evocatus Legionis (X Fretensis),Evocati Legionis (X Fretensis)
 praetoriani_milites_vet,Evocatus Praetoriani,Evocati Praetoriani
-
 looter,Latro,Latrones
 bandit,Leistes,Leistai
 brigand,Sicarius,Sicarii
@@ -505,8 +525,61 @@ slave_warrior_2,Seditiosus Pedes,Seditiosi Pedites
 slave_warrior_3,Seditiosus Hastatus,Seditiosi Hastati
 slave_rebel,Seditiosus Gladiator,Seditiosi Gladiatores
 slave_rebel_2,Seditiosus Evocatus,Seditiosi Evocati
-
-
+follower_woman,Focaria,Focariae
+african_follower_woman,Nubiana Focaria,Nubianae Focariae
+saka_follower_woman,Sacica Focaria,Sacicae Focariae
+sarmatian_follower_woman,Sarmatica Focaria,Sarmaticae Focariae
+bosporan_follower_woman,Bosporana Focaria,Bosporanae Focariae
+judean_follower_woman,Iudaea Focaria,Iudaeae Focariae
+eastern_follower_woman,Orientalis Focaria,Orientales Focariae
+galatian_follower_woman,Galatica Focaria,Galaticae Focariae
+syrian_follower_woman,Syra Focaria,Syrae Focariae
+greek_follower_woman,Graeca Focaria,Graecae Focariae
+illyrian_follower_woman,Illyrica Focaria,Illyricae Focariae
+parthian_follower_woman,Parthica Focaria,Parthicae Focariae
+persian_follower_woman,Persica Focaria,Persicae Focariae
+gaul_follower_woman,Gallica Focaria,Gallicae Focariae
+roman_follower_woman,Romana Focaria,Romanae Focariae
+hispanic_follower_woman,Hispana Focaria,Hispanae Focariae
+celtic_follower_woman,Celtica Focaria,Celticae Focariae
+germanic_follower_woman,Germanica Focaria,Germanicae Focariae
+dacian_follower_woman,Dacica Focaria,Dacicae Focariae
+thracian_follower_woman,Thracica Focaria,Thracicae Focariae
+armenian_follower_woman,Caucasica Focaria,Caucasicae Focariae
+arab_follower_woman,Arabica Focaria,Arabicae Focariae
+egyptian_follower_woman,Aegyptia Focaria,Aegyptiae Focariae
+berber_follower_woman,Berbera Focaria,Berberae Focariae
+garamantian_follower_woman,Garamantica Focaria,Garamanticae Focariae
+soldier_wife,Soldier Wife,Soldier Wifes
+african_soldier_wife,Nubiana Coniunx,Nubianae Coniuges
+saka_soldier_wife,Sacica Coniunx,Sacicae Coniuges
+sarmatian_soldier_wife,Sarmatica Coniunx,Sarmaticae Coniuges
+bosporan_soldier_wife,Bosporana Coniunx,Bosporanae Coniuges
+judean_soldier_wife,Iudaea Coniunx,Iudaeae Coniuges
+eastern_soldier_wife,Orientalis Coniunx,Orientales Coniuges
+galatian_soldier_wife,Galatica Coniunx,Galaticae Coniuges
+syrian_soldier_wife,Syra Coniunx,Syrae Coniuges
+greek_soldier_wife,Graeca Coniunx,Graecae Coniuges
+illyrian_soldier_wife,Illyrica Coniunx,Illyricae Coniuges
+parthian_soldier_wife,Parthica Coniunx,Parthicae Coniuges
+persian_soldier_wife,Persica Coniunx,Persicae Coniuges
+gaul_soldier_wife,Gallica Coniunx,Gallicae Coniuges
+roman_soldier_wife,Romana Coniunx,Romanae Coniuges
+hispanic_soldier_wife,Hispana Coniunx,Hispanae Coniuges
+celtic_soldier_wife,Celtica Coniunx,Celticae Coniuges
+germanic_soldier_wife,Germanica Coniunx,Germanicae Coniuges
+dacian_soldier_wife,Dacica Coniunx,Dacicae Coniuges
+thracian_soldier_wife,Thracica Coniunx,Thracicae Coniuges
+armenian_soldier_wife,Caucasica Coniunx,Caucasicae Coniuges
+arab_soldier_wife,Arabica Coniunx,Arabicae Coniuges
+egyptian_soldier_wife,Aegyptia Coniunx,Aegyptiae Coniuges
+berber_soldier_wife,Berbera Coniunx,Berberae Coniuges
+garamantian_soldier_wife,Garamantica Coniunx,Garamanticae Coniuges
+peasant_woman,Peasant Woman,Peasant Women
+caravan_master,Caravan Master,Caravan Masters
+package_slave,Slave,Slaves
+kidnapped_girl,Kidnapped Girl,Kidnapped Girls
+town_walker_1,Town_walker_begin,Town_walker_begin
 sarmatian_town_walker,Sarmaticus Nobilis Tribulis,Sarmatici Nobiles Tribules
 sarmatian_town_walker_female,Sarmatica Nobilis Mulier,Sarmaticae Nobiles Mulieres
 bosporan_town_walker,Bosporanus Nobilis,Bosporani Nobiles
@@ -551,7 +624,6 @@ berber_town_walker,Berberus Nobilis,Berberi Nobiles
 berber_town_walker_female,Berbera Nobilis Mulier,Berberae Nobiles Mulieres
 garamantian_town_walker,Garamanticus Nobilis,Garamantici Nobiles
 garamantian_town_walker_female,Garamantica Nobilis Mulier,Garamanticae Nobiles Mulieres
-
 boy,Puer,Pueri
 girl,Puella,Puellae
 african_man,Nubianus Tribulis,Nubiani Tribules
@@ -604,7 +676,26 @@ garamantian_village_walker,Garamanticus Tribulis,Garamantici Tribules
 garamantian_village_walker_female,Garamantica Tribulis Mulier,Garamanticae Tribules Mulieres
 spy_walker_1,Nobilis,Nobiles
 spy_walker_2,Nobilis Mulier,Nobiles Mulieres
-
+tournament_master,Spywalkers END,Spywalkers END
+ramun_the_slave_trader,Aulus Kapreilius Timotheus,Aulus Kapreilius Timotheus
+tetraites,Tetraites,Tetraites
+spiculus,Spiculus,Spiculus
+hermes,Hermes,Hermes
+flamma,Flamma,Flamma
+marcus_attilius,Marcus Attilius,Marcus Attilius
+diocles,Appuleius Diocles,Appuleius Diocles
+scorpius,Scorpus,Scorpus
+tutorial_trainer,Tournament Champions END,Tournament Champions END
+athlet_1,Novice Athlete,Novice Athlets
+athlet_2,Experienced Athlete,Experienced Athlets
+athlet_3,Famous Athlete,Famous Athlets
+athlet_4,Champion,Champions
+galeas,Undarum Dominus,Undarum Dominus
+trainer_1,Trainer,Trainer
+trainer_2,Trainer,Trainer
+trainer_3,Trainer,Trainer
+trainer_4,Trainer,Trainer
+trainer_5,Trainer,Trainer
 ransom_broker_1,Venalicius Gaius Sextus,Venalicius Gaius Sextus
 ransom_broker_2,Doulon Emporos Aichaikos,Doulon Emporos Aichaikos
 ransom_broker_3,Venalicius Honorius,Venalicius Honorius
@@ -644,7 +735,7 @@ tavern_minstrel_2,Poietes,Poietes
 tavern_minstrel_3,Poietes,Poietes
 tavern_minstrel_4,Poeta,Poeta
 tavern_minstrel_5,Poeta,Poeta
-
+kingdom_heroes_including_player_begin,kingdom_heroes_including_player_begin,kingdom_heroes_including_player_begin
 npc1,Pravare Ytarim,Pravare Ytarim
 npc2,Marius Gaius,Marius Gaius
 npc3,Pulchra,Pulchra
@@ -667,7 +758,7 @@ npc19,Tertius Maior,Tertius Maior
 npc20,Secundus Minor,Secundus Minor
 npc21,Drusus,Drusus
 npc22,Libertus Tiro,Libertus Tiro
-npc23,Marcus Tullius,Marcus Tullius
+npc23,Lucius Varrus Drusus,Lucius Varrus Drusus
 npc24,Sidonius Apollinaris,Sidonius Apollinaris
 npc25,Sollius Modestus,Sollius Modestus
 npc26,Albinus Basilius,Albinus Basilius
@@ -2084,16 +2175,16 @@ jewish_priest,Kohen,Kohanim
 christian_priest,Priest,Priests
 norse_priest,Gudjaen,Gudjaeniz
 celtic_druid,Draid,Draoidhean
-dacian_priest,Dacian Priest,Dacian Priest
-sarmatian_sky_priest,Sky-Priest,Sky-Priests
+dacian_priest,Ziratos,Ziratoi
+sarmatian_sky_priest,Asman-magus,Asman-magun
 sarmatian_priest,Enaree,Enarei
 caucasian_priest,Kadagi,Kadagi
-armenian_priest,Priest,Priest
+armenian_priest,K'urm,K'rmerk'
 persian_priest,Mobad,Mobad
 arabian_priest,Afkal,Afkal
-berber_priest,Berber Priest,Berber Priest
-garamantian_priest,Ammon Priest,Ammon Priest
-nubian_priest,Ammon Priest,Ammon Priest
+berber_priest,Amussnaw,Imussnawen
+garamantian_priest,W'b n Jmn,W'bw n Jmn
+nubian_priest,Pelmos Apedemakli,Pelmosli Apedemakli
 healer,Physican,Physicans
 healer_2,Physican,Physicans
 guest_sitting,Civis,Civis
@@ -2475,4 +2566,5 @@ household_cook_4,{!}Cook,{!}Cook
 household_cook_5,{!}Cook,{!}Cook
 household_cook_6,{!}Cook,{!}Cook
 household_end,end of household,end of household
+senator_trump,Aurantius Licinius Rumpus,Aurantius Licinius Rumpus
 troops_end,END OF THE WORLD,END OF THE WORLD

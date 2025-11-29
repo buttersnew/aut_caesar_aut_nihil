@@ -29,18 +29,11 @@ avatar_scale = 0.2
       # ])
 
 map_icons = [
-  ("player",0,"slave", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
-  ("player_horseman",0,"slave_donkey", avatar_scale, snd_gallop, 0.16, 0.173, 0),
-  ("gray_knight",0,"vexillifer_icon_combinedd", avatar_scale, snd_gallop, 0.16, 0.173, 0),
-  ("mercenary_infantry",0,"mercenary_infantry", avatar_scale, snd_gallop, 0.16, 0.173, 0),
-  ("flagbearer_a",0,"player_horseman1", avatar_scale, snd_gallop, 0.16, 0.173, 0),
   ("flagbearer_b",0,"flagbearer_b", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+
   ("peasant",0,"peasant_a", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-  ("arab",0,"arab", avatar_scale,snd_gallop, 0.16, 0.173, 0),
-  ("steppbandit",0,"steppbandit", avatar_scale,snd_gallop, 0.16, 0.173, 0),
-  ("bandit",0,"bandit", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
+
   ("woman",0,"woman_a", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-  ("hord",0,"horde", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
 
   ("wonder_pyramids_egy",mcn_no_shadow,"wonder_pyramids_egy", 0.50,0),
   ("wonder_parthenon",mcn_no_shadow,"wonder_parthenon", 0.16,0),
@@ -61,7 +54,9 @@ map_icons = [
   ("ship",mcn_no_shadow,"boat_sail", 0.23, snd_footstep_grass, 0.0, 0.05, 0),
   ("ship_on_land",mcn_no_shadow,"boat_sail_0", 0.23, 0),
 
-  ("horde_camp",mcn_no_shadow,"horde_camp", 0.15,0),
+  ("hord",0,"horde", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
+  ("horde_camp",mcn_no_shadow,"horde_camp", 0.35,0),
+
   ("farmstead",mcn_no_shadow,"farmstead", 0.42,0),
 
   ("map_island",mcn_no_shadow,"map_island", 0.5,0),
@@ -84,29 +79,40 @@ map_icons = [
   ("village_desert",mcn_no_shadow,"icon_village_desert",  0.30,0),
   ("nubian_town",mcn_no_shadow,"icon_nubia",  0.33,0),
 
-  ("mine",mcn_no_shadow,"mine", 0.45, 0),
-  ("kingdom_1_soldier_b",0,"dac1_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
-  ("kingdom_2_soldier_b",0,"brit2_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
-  ("kingdom_3_soldier_b",0,"sarm2_re", avatar_scale, snd_gallop, 0.16, 0.173, 0),
-  ("kingdom_4_soldier_b",0,"german1_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
-  ("kingdom_5_soldier_b",0,"eastern1_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
-  ("kingdom_6_soldier_b",0,"eastern1_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
-  ("kingdom_7_soldier_b",0,"rom_re", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  # ("mine",mcn_no_shadow,"mine", 0.45, 0),
 
-  ("banditrom",0,"banditrom", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
-  ("bandithisp",0,"bandithisp", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("african_cavalry",0,"african_cavalry", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("arab_camel",0,"arab_camel", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("celtic_noble",0,"celtic_noble", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("dacian_noble",0,"dacian_noble", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("eastern_cataphract",0,"eastern_cataphract", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("eastern_noble",0,"eastern_noble", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("generic_celitc_cav",0,"generic_celitc_cav", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("generic_slave_donkey",0,"generic_slave_donkey", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("germanic_cavalry",0,"germanic_cavalry", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("judean_noble",0,"judean_noble", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("roman_aux_cavalry",0,"roman_aux_cavalry", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("roman_legate",0,"roman_legate", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("roman_praetorian_cav",0,"roman_praetorian_cav", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("sarmatian_bandit",0,"sarmatian_bandit", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("sarmatian_cavalry",0,"sarmatian_cavalry", avatar_scale, snd_gallop, 0.16, 0.173, 0),
+  ("sarmatian_horsearcher",0,"sarmatian_horsearcher", avatar_scale, snd_gallop, 0.16, 0.173, 0),
 
-  ("german1",0,"german1", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-  ("brit1",0,"brit1", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-  ("dac1",0,"dac1", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-  ("eastern1",0,"eastern1", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-  ("sarm1",0,"sarm1", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-
-  ("numider",0,"numider", avatar_scale,snd_footstep_grass, 0.16, 0.173, 0),
-
-  ("pretorian_eques",0,"pretorian_eques", avatar_scale,snd_gallop, 0.16, 0.173, 0),
-  ("legat",0,"legat", avatar_scale,snd_gallop, 0.16, 0.173, 0),
-  ("aux2",0,"aux2", avatar_scale,snd_gallop, 0.16, 0.173, 0),
+  ("bosporan_foot",0,"bosporan_foot", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("british_archer",0,"british_archer", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("british_foot",0,"british_foot", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("dacian_foot",0,"dacian_foot", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("eastern_archer",0,"eastern_archer", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("generic_bandit",0,"generic_bandit", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("generic_mercenary_inf",0,"generic_mercenary_inf", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("generic_slave",0,"generic_slave", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("germanic_foot",0,"germanic_foot", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("germanic_noble",0,"germanic_noble", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("hispanic_bandit",0,"hispanic_bandit", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("judean_bandit",0,"judean_bandit", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("roman_aux_inf",0,"roman_aux_inf", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("roman_vexilarius",0,"roman_vexilarius", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
+  ("sarmatian_foot",0,"sarmatian_foot", avatar_scale, snd_footstep_grass, 0.16, 0.173, 0),
 
 
   ("opidumn_rock_Reduced",mcn_no_shadow,"opidumn_rock_Reduced", 0.30,0),
@@ -147,7 +153,7 @@ map_icons = [
   ("opidumn_rock_dc_Reduced",mcn_no_shadow,"opidumn_rock_dc_Reduced", 0.30,0),
   ("opidumn_rock_dc1_Reduced",mcn_no_shadow,"opidumn_rock_dc1_Reduced", 0.30,0),
   ("ferry_station",mcn_no_shadow,"ferry_station", 1.0,0),
-  ("grain_fields",mcn_no_shadow,"grain_fields", 0.35,0),
+  # ("grain_fields",mcn_no_shadow,"grain_fields", 0.35,0),
 
   ("camp_siege",mcn_no_shadow,"camp_siege", 0.13, 0),
   ("ship_merchant",mcn_no_shadow,"boat_sail_on7_Reduced", 0.23, snd_footstep_grass, 0.0, 0.05, 0),

@@ -597,7 +597,7 @@ parties = [
 ("danish_town_1", "Alabu", icon_village_barbarian|pf_town, no_menu, pt_none, fac_danish, 0, ai_bhvr_hold, 0,  (-144.94,165.81), []),
 ("slavic_town_1", "Gelonos", icon_village_barbarian|pf_town, no_menu, pt_none, fac_slavic, 0, ai_bhvr_hold, 0,  (-41.11,145.88), []),
 ("georgian_town_1", "Seraca", icon_village_barbarian|pf_town, no_menu, pt_none, fac_georgians, 0, ai_bhvr_hold, 0,  (124.38,80.7), []),
-("dahae_town_1", "Kath", icon_village_barbarian|pf_town, no_menu, pt_none, fac_dahae, 0, ai_bhvr_hold, 0,  (233,87), []),
+("dahae_town_1", "Kath", icon_horde_camp|pf_town, no_menu, pt_none, fac_dahae, 0, ai_bhvr_hold, 0,  (233,87), []),
 
 ("hanging_gardens", "Hanging Gardens of Babylon", icon_sartemis_icon|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (164.16, -24.18), [], 90),
 

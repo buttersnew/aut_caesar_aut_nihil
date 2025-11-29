@@ -41343,142 +41343,154 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ]],
 
 [anyone, "event_triggered",[
-         (store_conversation_troop, "$map_talk_troop"),
-         (is_between, "$map_talk_troop", companions_begin, companions_end),
-         (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-         (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_mercs),
-         (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-         (str_store_string, s21, ":string"),
-        (store_attribute_level, ":ca", "$g_talk_troop",ca_charisma),
-        (store_skill_level, ":per", "skl_persuasion", "$g_talk_troop"),
+  (store_conversation_troop, "$map_talk_troop"),
+  (is_between, "$map_talk_troop", companions_begin, companions_end),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_mercs),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (str_store_string, s21, ":string"),
+  (store_attribute_level, ":ca", "$g_talk_troop",ca_charisma),
+  (store_skill_level, ":per", "skl_persuasion", "$g_talk_troop"),
 
-        (val_add, ":per", 1),
-        (store_mul, ":success_chance", ":per", 6),
-        (val_add, ":success_chance", ":ca"),
-        (val_add, ":success_chance", 20),
-        (str_clear, s19),
+  (val_add, ":per", 1),
+  (store_mul, ":success_chance", ":per", 6),
+  (val_add, ":success_chance", ":ca"),
+  (val_add, ":success_chance", 20),
+  (str_clear, s19),
 
-        (try_begin),
-          (store_random_in_range, ":r", 1, 101),
-          (this_or_next|le, ":r", 10),
-          (ge, ":r", ":success_chance"),
-          (str_store_string, s19, "@Forgive me, {s21}. These warriors are not as able as I'd hoped, but after recent turmoils, this all there was. Maybe they can still be useful after a little training..."),
-          (party_force_add_members, "p_main_party", "trp_watchman", 25),
-        (else_try),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_roguish),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
-          (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_cunning),
-          (store_random_in_range, ":r", 1, 101),
-          (le, ":r", 50),
-          (str_store_string, s19, "@Forgive me, {s21}. These warriors are not as able as I'd hoped, but after recent turmoils, this all there was. Maybe they can still be useful after a little training..."),
-          (party_force_add_members, "p_main_party","trp_looter", 25),
-        (else_try),
-          (str_store_string, s19, "@Here they are, {s21}. Twenty five experienced fighters, motivated by your silver."),
-          (party_force_add_members, "p_main_party","trp_hired_blade", 25),
-        (try_end),
-     ],
-   "{s19}", "companion_rejoin_response",[
-		(assign, "$npc_to_rejoin_party", 0),
-					]],
+  (try_begin),
+    (store_random_in_range, ":r", 1, 101),
+    (this_or_next|le, ":r", 10),
+    (ge, ":r", ":success_chance"),
+    (str_store_string, s19, "@Forgive me, {s21}. These warriors are not as able as I'd hoped, but after recent turmoils, this all there was. Maybe they can still be useful after a little training..."),
+    (party_force_add_members, "p_main_party", "trp_watchman", 25),
+  (else_try),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_roguish),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_cunning),
+    (store_random_in_range, ":r", 1, 101),
+    (le, ":r", 50),
+    (str_store_string, s19, "@Forgive me, {s21}. These warriors are not as able as I'd hoped, but after recent turmoils, this all there was. Maybe they can still be useful after a little training..."),
+    (party_force_add_members, "p_main_party","trp_looter", 25),
+  (else_try),
+    (str_store_string, s19, "@Here they are, {s21}. Twenty five experienced fighters, motivated by your silver."),
+    (party_force_add_members, "p_main_party","trp_hired_blade", 25),
+  (try_end),
+],"{s19}",
+"companion_rejoin_response",[
+	(assign, "$npc_to_rejoin_party", 0),
+]],
+
 [anyone, "event_triggered",[
-         (store_conversation_troop, "$map_talk_troop"),
-         (is_between, "$map_talk_troop", companions_begin, companions_end),
-         (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-         (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_followers),
-         (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-         (str_store_string, s21, ":string"),
-        (store_attribute_level, ":ca", "$g_talk_troop",ca_charisma),
-        (store_skill_level, ":per", "skl_persuasion", "$g_talk_troop"),
+  (store_conversation_troop, "$map_talk_troop"),
+  (is_between, "$map_talk_troop", companions_begin, companions_end),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_followers),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (str_store_string, s21, ":string"),
+  (store_attribute_level, ":ca", "$g_talk_troop",ca_charisma),
+  (store_skill_level, ":per", "skl_persuasion", "$g_talk_troop"),
 
-        (val_add, ":per", 1),
-        (store_mul, ":success_chance", ":per", 6),
-        (val_add, ":success_chance", ":ca"),
-        (val_add, ":success_chance", 20),
-        (str_clear, s19),
+  (val_add, ":per", 1),
+  (store_mul, ":success_chance", ":per", 6),
+  (val_add, ":success_chance", ":ca"),
+  (val_add, ":success_chance", 20),
+  (str_clear, s19),
 
-        (try_begin),
-          (store_random_in_range, ":r", 1, 101),
-          (this_or_next|le, ":r", 10),
-          (ge, ":r", ":success_chance"),
-          (str_store_string, s19, "@Forgive my failure, {s21}. I've only found a couple of peasant girls to follow us. Here is what's left of your coin..."),
-          (party_force_add_members, "p_main_party", "trp_peasant_woman", 5),
-          (troop_add_gold, "trp_player", 5000),
-        (else_try),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_roguish),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
-          (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_cunning),
-          (store_random_in_range, ":r", 1, 101),
-          (le, ":r", 50),
-          (str_store_string, s19, "@Forgive my failure, {s21}. I've only found a couple of peasant girls to follow us. Here is what's left of your coin..."),
-          (party_force_add_members, "p_main_party","trp_peasant_woman", 5),
-          (troop_add_gold, "trp_player", 5000),
-        (else_try),
-          (str_store_string, s19, "@We are back!!! You'd better open our best wine, {s21}, or these fine witches will cast a spell on you! Look at their grace. I think I'm already enchanted. Haha."),
-          (party_force_add_members, "p_main_party","trp_follower_woman", 5),
-        (try_end),
-     ],
-   "{s19}", "companion_rejoin_response",[
-		(assign, "$npc_to_rejoin_party", 0),
-					]],
+  (call_script, "script_get_closest_center", "$g_encountered_party"),
+  (assign, ":closest_center", reg0),
+  (try_begin),
+    (store_random_in_range, ":r", 1, 101),
+    (this_or_next|le, ":r", 10),
+    (ge, ":r", ":success_chance"),
+    (str_store_string, s19, "@Forgive my failure, {s21}. I've only found a couple of peasant girls to follow us. Here is what's left of your coin..."),
+
+    (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+    (assign, ":troop_no", reg0),
+    (party_force_add_members, "p_main_party", ":troop_no", 5),
+    (troop_add_gold, "trp_player", 5000),
+  (else_try),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_roguish),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_cunning),
+    (store_random_in_range, ":r", 1, 101),
+    (le, ":r", 50),
+    (str_store_string, s19, "@Fuck it, {s21}! Such a shit! I've only found a couple of peasant girls to follow us. Here is what's left of your coin..."),
+
+    (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+    (assign, ":troop_no", reg0),
+    (party_force_add_members, "p_main_party",":troop_no", 5),
+    (troop_add_gold, "trp_player", 500),
+  (else_try),
+    (str_store_string, s19, "@We are back!!! You'd better open our best wine, {s21}, or these fine witches will cast a spell on you! Look at their grace. I think I'm already enchanted. Haha."),
+    (call_script, "script_get_walker_according_to_subculture", walker_follower, ":closest_center", tf_female),
+    (assign, ":troop_no", reg0),
+    (party_force_add_members, "p_main_party",":troop_no", 5),
+  (try_end),
+],"{s19}",
+"companion_rejoin_response",[
+	(assign, "$npc_to_rejoin_party", 0),
+]],
+
 [anyone, "event_triggered",[
-         (store_conversation_troop, "$map_talk_troop"),
-         (is_between, "$map_talk_troop", companions_begin, companions_end),
-         (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-         (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_resupply),
-         (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-         (str_store_string, s21, ":string"),
-        (store_attribute_level, ":int", "$g_talk_troop",ca_intelligence),
-        (store_attribute_level, ":ca", "$g_talk_troop",ca_charisma),
-        (store_skill_level, ":tac", "skl_tactics", "$g_talk_troop"),
-        (store_skill_level, ":trad", "skl_trade", "$g_talk_troop"),
+  (store_conversation_troop, "$map_talk_troop"),
+  (is_between, "$map_talk_troop", companions_begin, companions_end),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_resupply),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (str_store_string, s21, ":string"),
+  (store_attribute_level, ":int", "$g_talk_troop",ca_intelligence),
+  (store_attribute_level, ":ca", "$g_talk_troop",ca_charisma),
+  (store_skill_level, ":tac", "skl_tactics", "$g_talk_troop"),
+  (store_skill_level, ":trad", "skl_trade", "$g_talk_troop"),
 
-        (store_mul, ":success_chance_breakout", ":int", 6),
-        (val_add, ":tac", 1),
-        (val_mul, ":success_chance_breakout", ":tac"),
-        (val_add, ":success_chance_breakout", 20),
-        (store_mul, ":success_chance_shop", ":ca", 6),
-        (val_add, ":trad", 1),
-        (val_mul, ":success_chance_shop", ":trad"),
-        (val_add, ":success_chance_shop", 20),
-        (str_clear, s19),
+  (store_mul, ":success_chance_breakout", ":int", 6),
+  (val_add, ":tac", 1),
+  (val_mul, ":success_chance_breakout", ":tac"),
+  (val_add, ":success_chance_breakout", 20),
+  (store_mul, ":success_chance_shop", ":ca", 6),
+  (val_add, ":trad", 1),
+  (val_mul, ":success_chance_shop", ":trad"),
+  (val_add, ":success_chance_shop", 20),
+  (str_clear, s19),
 
-        (try_begin),
-          (store_random_in_range, ":r", 1, 101),
-          (this_or_next|le, ":r", 10),
-          (ge, ":r", ":success_chance_breakout"),
-          (str_store_string, s19, "@Forgive my failure, {s21}. There are too many hostile forces in the area. We could neither avoid them nor break through with the wagon train to bring in food."),
-          (call_script, "script_inflict_casualties_to_party", "p_main_party", 1),
-        (else_try),
-          (store_random_in_range, ":r", 1, 101),
-          (this_or_next|le, ":r", 10),
-          (ge, ":r", ":success_chance_shop"),
-          (str_store_string, s19, "@Forgive me, {s21}, but the friendly settlements are very short on food. We could only find some basics and had to pay a fortune."),
-          (troop_add_items, "trp_player", "itm_grain", 2),
-        (else_try),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_roguish),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
-          (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
-          (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_cunning),
-          (store_random_in_range, ":r", 1, 101),
-          (le, ":r", 50),
-          (str_store_string, s19, "@Forgive me, {s21}, but the friendly settlements are very short on food. We could only find some basics and had to pay a fortune."),
-          (troop_add_items, "trp_player", "itm_grain", 2),
-        (else_try),
-          (str_store_string, s19, "@Ave, {s21}! We feast tonight! I brought a whole flock of pigs to roast, and wine to chase it down with. The men deserve a treat!"),
-          (troop_add_items, "trp_player", "itm_grain", 5),
-          (troop_add_items, "trp_player", "itm_cheese", 3),
-          (troop_add_items, "trp_player", "itm_pork", 1),
-          (troop_add_items, "trp_player", "itm_wine", 1),
-        (try_end),
-     ],
-   "{s19}", "companion_rejoin_response",[
-		(assign, "$npc_to_rejoin_party", 0),
-					]],
+  (try_begin),
+    (store_random_in_range, ":r", 1, 101),
+    (this_or_next|le, ":r", 10),
+    (ge, ":r", ":success_chance_breakout"),
+    (str_store_string, s19, "@Forgive my failure, {s21}. There are too many hostile forces in the area. We could neither avoid them nor break through with the wagon train to bring in food."),
+    (call_script, "script_inflict_casualties_to_party", "p_main_party", 1),
+  (else_try),
+    (store_random_in_range, ":r", 1, 101),
+    (this_or_next|le, ":r", 10),
+    (ge, ":r", ":success_chance_shop"),
+    (str_store_string, s19, "@Forgive me, {s21}, but the friendly settlements are very short on food. We could only find some basics and had to pay a fortune."),
+    (troop_add_items, "trp_player", "itm_grain", 2),
+  (else_try),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_roguish),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
+    (this_or_next|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
+    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_cunning),
+    (store_random_in_range, ":r", 1, 101),
+    (le, ":r", 50),
+    (str_store_string, s19, "@Forgive me, {s21}, but the friendly settlements are very short on food. We could only find some basics and had to pay a fortune."),
+    (troop_add_items, "trp_player", "itm_grain", 2),
+  (else_try),
+    (str_store_string, s19, "@Ave, {s21}! We feast tonight! I brought a whole flock of pigs to roast, and wine to chase it down with. The men deserve a treat!"),
+    (troop_add_items, "trp_player", "itm_grain", 5),
+    (troop_add_items, "trp_player", "itm_cheese", 3),
+    (troop_add_items, "trp_player", "itm_pork", 1),
+    (troop_add_items, "trp_player", "itm_wine", 1),
+  (try_end),
+],"{s19}",
+"companion_rejoin_response",[
+	(assign, "$npc_to_rejoin_party", 0),
+]],
 
 [anyone, "event_triggered",[
   (store_conversation_troop, "$map_talk_troop"),
@@ -73170,16 +73182,18 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     "Joining an army, are you crazy? That's too dangerous for me, no I must refuse. But I know ten widows, who seek a new future, and would be interested in joining you. But this would cost you ... 1000 denarii.", "whore_join3",[]],
 [anyone|plyr, "whore_join3",[(store_troop_gold,":money","trp_player"),(gt,":money",1000),
   (troops_can_join, 10),
- ],
-    "1,000 denarii for you, women for me, we have a deal.", "quastuosa_pretalk",[
-	 (troop_set_slot, "$g_talk_troop", slot_troop_days_on_mission, 2),
+],"1,000 denarii for you, women for me, we have a deal.", "quastuosa_pretalk",[
+	(troop_set_slot, "$g_talk_troop", slot_troop_days_on_mission, 2),
 	(troop_remove_gold, "trp_player", 1000),
 	(call_script, "script_change_player_party_morale", 3),
-	  (display_message, "@A group of women joins your army."),
-	  (display_message, "@Your men are happy that they have something to 'play' with."),
-	  (party_add_members, "p_main_party", "trp_refugee", 5),
-	  (party_add_members, "p_main_party", "trp_peasant_woman", 5),
-	]],
+  (display_message, "@A group of women joins your army.", color_good_news),
+  (display_message, "@Your men are happy that they have something to 'play' with.", color_good_news),
+
+  (call_script, "script_get_walker_according_to_subculture", walker_follower, "$g_encountered_party", tf_female),
+  (assign, ":troop_no", reg0),
+  (party_add_members, "p_main_party", ":troop_no", 10),
+]],
+
 [anyone|plyr, "whore_join3",[(neg|troops_can_join, 10),],
     "It seems I don't have enough space in my party.", "close_window",[]],
 
@@ -85575,32 +85589,31 @@ I will need 500 denarii.", "bardo_sing2",[]],
  ],
 
 [anyone|plyr,"officer_talk_moral2",[
+],"I changed my mind, forget it.",
+"do_regular_member_view_char",[]
+],
 
- ],
-   "I changed my mind, forget it.", "do_regular_member_view_char",[]
- ],
-
-[trp_cornicen|plyr,"regular_member_talk",[],
-    "What is your function in the army?", "cornicen_talk",[]],
+[anyone|plyr,"regular_member_talk",[
+  (call_script, "script_cf_troop_is_hornman", "$g_talk_troop"),
+],"What is your function in the army?",
+"cornicen_talk",[]],
 
 [anyone, "cornicen_talk",[],
-    "I am part of the Aeneatores, a bugler. On the battlefield, I play the horn, or bugle. It is important for transmission of commands.", "regular_member_talk",[
-  ]],
+"I am part of the Aeneatores, a bugler. On the battlefield, I play the horn, or bugle. It is important for transmission of commands.",
+"regular_member_talk",[
+]],
 
 [anyone|plyr,"regular_member_talk",[
   (check_quest_active, "qst_blank_quest_6"),
 
   (assign, ":c", 0),
   (try_begin),
-    (is_between, "$g_talk_troop", slaves_begin, slaves_end),# maybe add manumission dialogue later
-    (call_script, "script_dplmc_store_troop_is_female", "$g_talk_troop"),
-    (eq, reg0, 1),# false, not female
+    (call_script, "script_cf_is_female_walker", "$g_talk_troop"),
     (assign, ":c", 1),
   (try_end),
-  (this_or_next|eq, ":c", 1),
-  (this_or_next|eq, "$g_talk_troop", "trp_follower_woman"),
-  (this_or_next|eq, "$g_talk_troop", "trp_peasant_woman"),
-  (eq, "$g_talk_troop", "trp_refugee"),
+  (this_or_next|is_between, "$g_talk_troop", female_slaves_begin, female_slaves_end),
+  (this_or_next|is_between, "$g_talk_troop", follower_woman_begin, follower_woman_end),
+  (eq, ":c", 1),
 
   (quest_get_slot, ":quest_target_amount", "qst_blank_quest_6", slot_quest_target_amount),
   (party_count_prisoners_of_type, ":prisoner_2", "p_main_party", "trp_slave_female"),
@@ -85610,144 +85623,109 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
   (quest_get_slot, ":target", "qst_blank_quest_6", slot_quest_target_center),
   (str_store_party_name, s20, ":target"),
- ],
-    "The village of {s20} needs women to marry them for their men. You would be perfect for this task.", "follower_woman_blank_quest_6",[]],
-
+],"The village of {s20} needs women to marry them for their men. You would be perfect for this task.",
+"follower_woman_blank_quest_6",[]],
 [anyone,"follower_woman_blank_quest_6",[
- ],
-    "Oh that sounds perfect! No longer the fear to die in battle. I no longer have to endure the stupid talk of the soldiers. That would be wonderful.", "follower_woman_blank_quest_6_1",[]],
+],"Oh that sounds perfect! No longer the fear to die in battle. I no longer have to endure the stupid talk of the soldiers. That would be wonderful.",
+"follower_woman_blank_quest_6_1",[]],
 [anyone|plyr,"follower_woman_blank_quest_6_1",[
- ],
-    "Aye. But I will take you prisoner just to make sure you don't change your mind...", "close_window",[
-    (party_remove_members, "p_main_party", "$g_talk_troop", 1),
-    (party_add_prisoners, "p_main_party", "trp_slave_female", 1),
+],"Aye. But I will take you prisoner just to make sure you don't change your mind...",
+"close_window",[
+  (party_remove_members, "p_main_party", "$g_talk_troop", 1),
+  (party_add_prisoners, "p_main_party", "trp_slave_female", 1),
 ]],
 [anyone|plyr,"follower_woman_blank_quest_6_1",[
+],"Forget it.",
+"close_window",[]],
+
+
+[anyone|plyr,"regular_member_talk",[
+  (is_between, "$g_talk_troop", soldiers_wifes_begin, soldiers_wifes_end),
+
+  (check_quest_active, "qst_blank_quest_6"),
+
+  (quest_get_slot, ":quest_target_amount", "qst_blank_quest_6", slot_quest_target_amount),
+  (party_count_prisoners_of_type, ":prisoner_2", "p_main_party", "trp_slave_female"),
+  (party_count_prisoners_of_type, ":prisoner", "p_main_party", "trp_peasant_woman"),
+  (val_add, ":prisoner", ":prisoner_2"),
+  (lt, ":prisoner", ":quest_target_amount"),
+
+  (quest_get_slot, ":target", "qst_blank_quest_6", slot_quest_target_center),
+  (str_store_party_name, s20, ":target"),
+],"The village of {s20} needs women to marry them for their men. You would be perfect for this task.",
+"soldier_wife_blank_quest_6",[]],
+
+[anyone,"soldier_wife_blank_quest_6",[
+],"I am already married to one of your soldiers. I will not be the wife of a smelly peasant!",
+"soldier_wife_blank_quest_6_1",[]],
+[anyone|plyr,"soldier_wife_blank_quest_6_1",[
+],"I don't care. I will take you prisoner, to make sure you don't escape...",
+"close_window",[
+  (party_remove_members, "p_main_party", "$g_talk_troop", 1),
+  (party_add_prisoners, "p_main_party", "trp_slave_female", 1),
+  (call_script, "script_change_player_party_morale", -10),
+]],
+
+[anyone|plyr,"soldier_wife_blank_quest_6_1",[
  ],
     "Forget it.", "close_window",[]],
 
 [anyone|plyr,"regular_member_talk",[
-  (this_or_next|eq, "$g_talk_troop", "trp_hunter_woman"),
-  (eq, "$g_talk_troop", "trp_camp_defender"),
+  (is_between, "$g_talk_troop", follower_woman_begin, follower_woman_end),
+  (store_troop_gold,":money","trp_player"),
+  (gt,":money",500),
+  (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),
+],"I need you help me to raise the morale of my men. I pay 500 denarii for your efforts.",
+"follower_woman_action",[]],
 
-  (check_quest_active, "qst_blank_quest_6"),
-
-  (quest_get_slot, ":quest_target_amount", "qst_blank_quest_6", slot_quest_target_amount),
-  (party_count_prisoners_of_type, ":prisoner_2", "p_main_party", "trp_slave_female"),
-  (party_count_prisoners_of_type, ":prisoner", "p_main_party", "trp_peasant_woman"),
-  (val_add, ":prisoner", ":prisoner_2"),
-  (lt, ":prisoner", ":quest_target_amount"),
-
-  (quest_get_slot, ":target", "qst_blank_quest_6", slot_quest_target_center),
-  (str_store_party_name, s20, ":target"),
- ],
-    "The village of {s20} needs women to marry them for their men. You would be perfect for this task.", "hunter_woman_blank_quest_6",[]],
-
-[anyone,"hunter_woman_blank_quest_6",[
- ],
-    "I started to enjoy the life in the army. I don't want to be the wife of some smelling peasant, I rather enjoy the freedom in your party. Although it is sometimes harsh.", "hunter_woman_blank_quest_6_1",[]],
-[anyone|plyr,"hunter_woman_blank_quest_6_1",[
- ],
-    "I don't care. I will take you prisoner, to make sure you don't escape...", "close_window",[
-    (party_remove_members, "p_main_party", "$g_talk_troop", 1),
-    (party_add_prisoners, "p_main_party", "trp_slave_female", 1),
-    (call_script, "script_change_player_party_morale", -3),
+[anyone, "follower_woman_action",[],
+"Your men are 'playing' with me since I joined ... I will do my best.",
+"regular_member_talk",[
+    (troop_remove_gold, "trp_player", 500),
+    (call_script, "script_change_player_party_morale", 3),
+    (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
 ]],
 
-[anyone|plyr,"hunter_woman_blank_quest_6_1",[
- ],
-    "Forget it.", "close_window",[]],
+[anyone|plyr,"regular_member_talk",[
+  (is_between, "$g_talk_troop", soldiers_wifes_begin, soldiers_wifes_end),
+  (store_troop_gold,":money","trp_player"),
+  (gt,":money",500),
+  (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),
+],"I want to donate 500 denarii for your family.",
+"wife_solder_action",[]],
 
-[trp_soldier_wife|plyr,"regular_member_talk",[
-
-  (check_quest_active, "qst_blank_quest_6"),
-
-  (quest_get_slot, ":quest_target_amount", "qst_blank_quest_6", slot_quest_target_amount),
-  (party_count_prisoners_of_type, ":prisoner_2", "p_main_party", "trp_slave_female"),
-  (party_count_prisoners_of_type, ":prisoner", "p_main_party", "trp_peasant_woman"),
-  (val_add, ":prisoner", ":prisoner_2"),
-  (lt, ":prisoner", ":quest_target_amount"),
-
-  (quest_get_slot, ":target", "qst_blank_quest_6", slot_quest_target_center),
-  (str_store_party_name, s20, ":target"),
- ],
-    "The village of {s20} needs women to marry them for their men. You would be perfect for this task.", "soldier_wife_blank_quest_6",[]],
-
-[anyone,"soldier_wife_blank_quest_6",[
- ],
-    "I am already married to one of your soldiers. I will not be the wife of a smelly peasant!", "soldier_wife_blank_quest_6_1",[]],
-[anyone|plyr,"soldier_wife_blank_quest_6_1",[
- ],
-  "I don't care. I will take you prisoner, to make sure you don't escape...", "close_window",[
-  (party_remove_members, "p_main_party", "$g_talk_troop", 1),
-  (party_add_prisoners, "p_main_party", "trp_slave_female", 1),
-  (call_script, "script_change_player_party_morale", -6),
+[anyone, "wife_solder_action",[],
+"Thank you. It is nice to see that a commander take care of his men.",
+"regular_member_talk",[
+  (troop_remove_gold, "trp_player", 500),
+  (call_script, "script_change_player_party_morale", 3),
+  (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
 ]],
 
-[anyone|plyr,"soldier_wife_blank_quest_6_1",[
- ],
-    "Forget it.", "close_window",[]],
+[anyone|plyr, "regular_member_talk",[
+  (is_between, "$g_talk_troop", soldiers_wifes_begin, soldiers_wifes_end),
+],
+"Hey, what can you do for my men?", "porta1_presentacion",[]],
 
-[trp_follower_woman|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
-    "I need you help me to raise the morale of my men. I pay 500 denarii for your efforts.", "follower_woman_action",[]],
+[anyone, "porta1_presentacion",[], "Me? " +
+"I am important to you. I am the wife of one of your soldiers. If you have wives (30) in your party, your men will gain morale (every 48 hours). Additionally, I help tending wounds (improves surgery skill and wound treatment skill up to max. 3)",
+"regular_member_talk",[]],
 
-[trp_follower_woman, "follower_woman_action",[],
-    "Your men are 'playing' with me since I joined ... I will do my best.", "regular_member_talk",[
-      (troop_remove_gold, "trp_player", 500),
-      (call_script, "script_change_player_party_morale", 3),
-      (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
-  ]],
-[trp_hunter_woman|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
-    "I need you help me to raise the morale of my men. I pay 500 denarii for your efforts.", "hunter_woman_action",[]],
+[anyone|plyr,"regular_member_talk",[
+  (call_script, "script_cf_is_female_walker", "$g_talk_troop"),
+  (store_troop_gold,":money","trp_player"),
+  (gt,":money",500),
+  (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),
+],"I need you help me to raise the morale of my men. I pay 500 denarii for your efforts.",
+"peasant_woman_action",[]],
 
-[trp_hunter_woman, "hunter_woman_action",[],
-    "Well, it's always important to help.", "regular_member_talk",[
-      (troop_remove_gold, "trp_player", 500),
-      (call_script, "script_change_player_party_morale", 3),
-      (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
-  ]],
-[trp_camp_defender|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
-    "I need you help me to raise the morale of my men. I pay 500 denarii for your efforts.", "fighter_woman_action",[]],
-
-[trp_camp_defender, "fighter_woman_action",[],
-    "As you wish, I will 'play' with them.^^-- She winks. --", "regular_member_talk",[
-      (troop_remove_gold, "trp_player", 500),
-      (call_script, "script_change_player_party_morale", 3),
-      (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
-  ]],
-[trp_soldier_wife|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
-    "I want to donate 500 denarii for your family.", "wife_solder_action",[]],
-
-[trp_soldier_wife, "wife_solder_action",[],
-    "Thank you. It is nice to see that a commander take care of his men.", "regular_member_talk",[
-      (troop_remove_gold, "trp_player", 500),
-      (call_script, "script_change_player_party_morale", 3),
-      (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
-  ]],
-[trp_soldier_wife|plyr, "regular_member_talk",[],
-    "Hey, what can you do for my men?", "porta1_presentacion",[]],
-[trp_soldier_wife, "porta1_presentacion",[], "Me? " +
-    "I am important to you. I am the wife of one of your soldiers. If you have wives (30) in your party, your men will gain morale (every 48 hours).\
- Additionally, I help tending wounds (improves surgery skill and wound treatment skill up to max. 3)", "regular_member_talk",[]],
-[trp_peasant_woman|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
-    "I need you help me to raise the morale of my men. I pay 500 denarii for your efforts.", "peasant_woman_action",[]],
-
-[trp_peasant_woman, "peasant_woman_action",[],
-    "What? I hope I have misunderstood you. I don't want to be a whore! -- You look at her angry and point on your weapon. -- I see, I have no choice. Oh gods! ^^-- She cries. --", "close_window",[
-      (troop_remove_gold, "trp_player", 500),
-      (call_script, "script_change_player_party_morale", 3),
-      (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
-  ]],
-[trp_refugee|plyr,"regular_member_talk",[(store_troop_gold,":money","trp_player"), (gt,":money",500), (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),],
-    "I need you help me to raise the morale of my men. I pay 500 denarii for your efforts.", "refugee_action",[]],
-
-[trp_refugee, "refugee_action",[],
-    "What? I hope I have misunderstood you, I don't want to be a whore! -- You look at her angry and point on your weapon. -- I see I have no choice, Oh gods! ^^-- She cries. --", "close_window",[
-      (troop_remove_gold, "trp_player", 500),
-
-      (call_script, "script_change_player_party_morale", 3),
-      (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
-  ]],
+[anyone, "peasant_woman_action",[],
+  "What? I hope I have misunderstood you. I don't want to be a whore! -- You look at her angry and point on your weapon. -- I see, I have no choice. Oh gods! ^^-- She cries. --",
+"close_window",[
+    (troop_remove_gold, "trp_player", 500),
+    (call_script, "script_change_player_party_morale", 3),
+    (troop_set_slot,"$g_talk_troop",slot_troop_days_on_mission,3),
+]],
 
 [anyone|plyr,"regular_member_talk",[
   (neg|faction_slot_eq, "$players_kingdom", slot_faction_guard_troop, "$g_talk_troop"),
@@ -85760,9 +85738,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone,"regular_member_talk_stand_guard",[
   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
- ], "I will, {s0}.", "close_window",[
+], "I will, {s0}.",
+"close_window",[
   (faction_set_slot, "$players_kingdom", slot_faction_guard_troop, "$g_talk_troop"),
-  ]],
+]],
 
 [anyone|plyr,"regular_member_talk",[], "Nothing. Keep moving.", "close_window",[]],
 
@@ -93423,12 +93402,13 @@ Amen.", "memercus_pretalk",
 #Orhon talk END
 
 ##woman in pyramids scene
-[trp_refugee, "start",
-[(store_current_scene, ":scene"),
-  (eq, ":scene", "scn_pyramid"),],
-  "I am not allowed to talk with strangers. If anyone see us talking, I will be punished. So go and leave me alone.", "close_window",
-[
-  ]],
+[trp_egyptian_follower_woman, "start",[
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_pyramid"),
+],"I am not allowed to talk with strangers. If anyone see us talking, I will be punished. So go and leave me alone.",
+"close_window",[
+]],
+
 ##woman in pyramids scene END
 
 ##kasius talk

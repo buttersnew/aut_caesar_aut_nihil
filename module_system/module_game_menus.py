@@ -1009,8 +1009,15 @@ game_menus = [
 
     (try_for_range, ":i", 0, ":num_of_stacks"),
       (party_stack_get_troop_id, ":stack_troop", "p_main_party", ":i"),
-      (is_between, ":stack_troop", "trp_follower_woman", "trp_caravan_master"),
-
+      (assign, ":c", 0),
+      (try_begin),
+        (is_between, ":stack_troop", follower_troops_begin, follower_troops_end),
+        (assign, ":c", 1),
+      (else_try),
+        (call_script, "script_cf_is_female_walker", ":stack_troop"),
+        (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
       (party_stack_get_size, ":stack_size", "p_main_party", ":i"),
       (party_stack_get_num_wounded, ":stack_wounded", "p_main_party", ":i"),
       (val_sub, ":stack_size", ":stack_wounded"),
@@ -1028,7 +1035,15 @@ game_menus = [
       (ge, ":stack_size", 1),
 
       (party_stack_get_troop_id, ":stack_troop", "p_main_party", ":i"),
-      (is_between, ":stack_troop", "trp_follower_woman", "trp_caravan_master"),
+      (assign, ":c", 0),
+      (try_begin),
+        (is_between, ":stack_troop", follower_troops_begin, follower_troops_end),
+        (assign, ":c", 1),
+      (else_try),
+        (call_script, "script_cf_is_female_walker", ":stack_troop"),
+        (assign, ":c", 1),
+      (try_end),
+      (eq, ":c", 1),
 
       (party_add_members,"p_follower_party", ":stack_troop", ":stack_size"),
       (party_remove_members, "p_main_party", ":stack_troop", ":stack_size"),
@@ -1054,9 +1069,19 @@ game_menus = [
     (party_get_num_companion_stacks, ":num_of_stacks", "p_follower_party"),
     (try_for_range_backwards, ":i", 0, ":num_of_stacks"),
       (party_stack_get_troop_id, ":stack_troop", "p_follower_party", ":i"),
-      (neg|is_between, ":stack_troop", "trp_follower_woman", "trp_caravan_master"),
-      (neq, ":stack_troop", "trp_sailor"),#can give sailors to follower party too
       (gt, ":stack_troop", 0),
+      (assign, ":block", 0),
+      (try_begin),
+          (is_between, ":stack_troop", follower_troops_begin, follower_troops_end),
+          (assign, ":block", 1),
+      (else_try),
+          (eq, ":stack_troop", "trp_sailor"),#can give sailors to follower party too
+          (assign, ":block", 1),
+      (else_try),
+          (call_script, "script_cf_is_female_walker", ":stack_troop"),
+          (assign, ":block", 1),
+      (try_end),
+      (eq, ":block", 0),
       (party_stack_get_size, ":stack_size", "p_follower_party", ":i"),
       (party_add_members, "p_main_party", ":stack_troop", ":stack_size"),
       (party_remove_members, "p_follower_party", ":stack_troop", ":stack_size"),
@@ -8920,49 +8945,54 @@ game_menus = [
       ]),
     ],
   ),
-  #resultado
-  ("emboscada_player",0,
-    "Moving through the vegetation, you have taken your enemies by surprise and have given a good account of yourselves. Now the garrison will think twice before sending men out.",
-    "none", [ (set_background_mesh, "mesh_pic_mb_warrior_3"),
-    ],
-    [
-      ("emboscada_playerok",[],"Victory!",
-        [
-        (leave_encounter),
-        (jump_to_menu, "mnu_auto_return_map"),
-      ]),
-    ],
-  ),
-  #
-  ("emboscada_nada",0,
-    "Your men move under the cover of the vegetation, away from the watchful eyes on the wall, but when they come to the meeting point, there is nobody. The alleged traitor has been discovered or has repented. Your men return disappointed.",
-    "none", [ (set_background_mesh, "mesh_pic_mb_warrior_3"),
-    ],
-    [
-      ("emboscada_nanai",[],"Do not worry. There will be another chance.",
-        [
-          (assign, "$g_traicion_interna", 3), #failed
-          (jump_to_menu,"mnu_siege_plan"),
-      ]),
-    ],
-  ),
-  #
-  ("emboscada_lose",0,
-    "Alarm! Treason! The alleged traitor led your men into an ambush. They are fighting desperately, leaving many men on the field.",
-    "none", [ (set_background_mesh, "mesh_pic_mb_warrior_3"),
-      (store_random_in_range, ":p_leave", 8, 12),
-      (assign, ":num_troops", ":p_leave"),
-      (try_for_range, ":unused", 0, ":num_troops"),
-        (call_script, "script_cf_party_remove_random_regular_troop", "p_main_party"),
-      (try_end),
-    ],
-    [("regreso_lucha",[],"Your worst fears have come true.",
-        [
-          (assign, "$g_traicion_interna", 3), #failed
-          (jump_to_menu,"mnu_siege_plan"),
-      ]),
-    ],
-  ),
+#resultado
+("emboscada_player",0,
+  "Moving through the vegetation, you have taken your enemies by surprise and have given a good account of yourselves. Now the garrison will think twice before sending men out.",
+  "none", [
+    (set_background_mesh, "mesh_pic_mb_warrior_3"),
+  ],[
+    ("emboscada_playerok",[],"Victory!",[
+      (leave_encounter),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
+("emboscada_player_lost",0,
+  "Your ambush has failed. Despite the element of surprise, the enemy rallied fiercely, turning the tide against you. Your men are scattered, and the advantage is lost. Realizing the battle is unwinnable, you signal a hasty retreat, melting back into the wilderness before the garrison can organize a pursuit. You have escaped with your freedom, but your men have paid a price.",
+  "none", [
+    (set_background_mesh, "mesh_pic_mb_warrior_3"),
+  ],[
+    ("emboscada_playerok",[],"Retreat in shame.",[
+      (leave_encounter),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
+
+("emboscada_nada",0,
+  "Your men move under the cover of the vegetation, away from the watchful eyes on the wall, but when they come to the meeting point, there is nobody. The alleged traitor has been discovered or has repented. Your men return disappointed.",
+  "none", [
+    (set_background_mesh, "mesh_pic_mb_warrior_3"),
+  ],[
+    ("emboscada_nanai",[],"Do not worry. There will be another chance.",[
+      (assign, "$g_traicion_interna", 3), #failed
+      (jump_to_menu,"mnu_siege_plan"),
+    ]),
+]),
+
+("emboscada_lose",0,
+  "Alarm! Treason! The alleged traitor led your men into an ambush. They are fighting desperately, leaving many men on the field.",
+  "none", [
+    (set_background_mesh, "mesh_pic_mb_warrior_3"),
+    (store_random_in_range, ":p_leave", 8, 12),
+    (assign, ":num_troops", ":p_leave"),
+    (try_for_range, ":unused", 0, ":num_troops"),
+      (call_script, "script_cf_party_remove_random_regular_troop", "p_main_party"),
+    (try_end),
+  ],[
+    ("regreso_lucha",[],"Your worst fears have come true.",[
+      (assign, "$g_traicion_interna", 3), #failed
+      (jump_to_menu,"mnu_siege_plan"),
+    ]),
+]),
 
   ("emboscada_victory",0,
     "The traitor leads your men through the night to a hill that controls the path to a well. Your men take up positions in the vegetation, in silence, their faces stained black. At daybreak, your men spot a large group of enemies by the water.^^A battle cry fills the valley as your soldiers fall like a tide of death on the enemy... killing many.",
@@ -9846,8 +9876,15 @@ game_menus = [
             (party_stack_get_size, ":stack_size","p_main_party",":i_stack"),
             (party_stack_get_troop_id, ":stack_troop","p_main_party",":i_stack"),
             (try_begin),#peasants not
+              (assign, ":c", 0),
+              (try_begin),
+                (call_script, "script_cf_is_female_walker", ":stack_troop"),
+                (assign, ":c", 1),
+              (try_end),
               (this_or_next|is_between, ":stack_troop", "trp_sarmatian_peasant", "trp_watchman"),
-              (is_between, ":stack_troop", "trp_follower_woman", "trp_kidnapped_girl"),
+              (this_or_next|is_between, ":stack_troop", follower_troops_begin, follower_troops_end),
+              (eq, ":c", 1),
+
               (val_add, ":num_cmen", ":stack_size"),
             (else_try),##soldiers like looting
               (this_or_next|is_between, ":stack_troop", "trp_mercenaries_end", "trp_garamantian_horseman"),
@@ -14066,8 +14103,12 @@ game_menus = [
           (try_for_range, ":visiterator", 19, 25),
               (set_visitor, ":visiterator", ":troop"),
           (try_end),
+          (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+          (assign, ":closest_center", reg0),
+          (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+          (assign, ":troop_no", reg0),
           (try_for_range, ":visiterator", 26, 32),
-              (set_visitor, ":visiterator", "trp_refugee"),
+              (set_visitor, ":visiterator", ":troop_no"),
           (try_end),
           # (call_script, "script_init_town_walkers"),
           (set_visitor, 33, ":rich_merchant"),
@@ -28561,7 +28602,13 @@ game_menus = [
     ("choice_18_1b",[],"You allow it and ask for the most beautiful woman.",[
       (call_script, "script_change_player_honor", -5),
       (call_script, "script_change_player_party_morale", 5),
-      (party_add_members, "p_main_party", "trp_refugee", 6),
+
+      (call_script, "script_get_closest_center_and_minor", "p_main_party"),
+      (assign, ":closest_center", reg0),
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no",6),
+
       (call_script, "script_change_troop_health", "trp_player", 25),
       (jump_to_menu,"mnu_no_paymentandkill"),
     ]),
@@ -29016,7 +29063,13 @@ game_menus = [
       (call_script, "script_change_player_honor", -20),
       (call_script, "script_change_player_party_morale", 5),
       #		(call_script, "script_change_troop_renown", "trp_player", -15),
-      (party_add_members, "p_main_party", "trp_refugee", 8),
+
+      (call_script, "script_get_closest_center_and_minor", "p_main_party"),
+      (assign, ":closest_center", reg0),
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no", 15),
+
       (change_screen_return),
     ]),
     ("choice_28_2b",[(store_troop_gold, ":gold", "trp_player"),(ge, ":gold", 1000),],"Buy food for them (1000 denarii). Then let them leave.",[
@@ -32215,7 +32268,13 @@ game_menus = [
   ],[
     ("choice_9_1nor",[],"They are welcome.",[
       (display_message, "@A group of women joins your army."),
-      (party_add_members, "p_main_party", "trp_refugee", 6),
+
+      (call_script, "script_get_closest_center_and_minor", "p_main_party"),
+      (assign, ":closest_center", reg0),
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no", 6),
+
       (party_add_members, "p_main_party", "trp_peasant_woman", 6),
       (change_screen_return, 0),
     ]),
@@ -32238,7 +32297,13 @@ game_menus = [
   ],[
     ("choice_10_1nor",[],"They are welcome.",[
       (display_message, "@A group of six women joins your army."),
-      (party_add_members, "p_main_party", "trp_follower_woman", 6),
+
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (assign, ":closest_center", reg0),
+      (call_script, "script_get_walker_according_to_subculture", walker_follower, ":closest_center", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no", 6),
+
       (change_screen_return, 0),
     ]),
     ("choice_10_2nor",[],"I do not need more mouths to feed.",[
@@ -32252,8 +32317,13 @@ game_menus = [
     (set_background_mesh, "mesh_pic_camp"),
   ],[
     ("choice_11_1no",[],"They are welcome.",[
-      (party_add_members, "p_main_party", "trp_camp_defender", 3),
-      (party_add_members, "p_main_party", "trp_hunter_woman", 3),
+
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (assign, ":closest_center", reg0),
+      (call_script, "script_get_walker_according_to_subculture", walker_follower, ":closest_center", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no", 6),
+
       (change_screen_return, 0),
     ]),
     ("choice_11_2no",[],"I do not need more troops.",[
@@ -34705,7 +34775,7 @@ game_menus = [
         (try_end),
 
         # Find closest center
-        (call_script, "script_get_closest_center", "p_main_party"),
+        (call_script, "script_get_closest_center_and_minor", "p_main_party"),
         (assign, "$g_talk_troop_faction", reg0),
         (store_distance_to_party_from_party, ":center_distance", "p_main_party", reg0),
 
@@ -35568,9 +35638,9 @@ game_menus = [
 	  (reset_visitors),
 	  (set_visitor, 1, "trp_kasius"),
 	  (set_visitor, 2, "trp_orchon"),
-	  (set_visitor, 3, "trp_refugee"),
-	  (set_visitor, 4, "trp_refugee"),
-	  (set_visitor, 5, "trp_refugee"),
+	  (set_visitor, 3, "trp_egyptian_follower_woman"),
+	  (set_visitor, 4, "trp_egyptian_follower_woman"),
+	  (set_visitor, 5, "trp_egyptian_follower_woman"),
 	  (set_visitors, 6, "trp_slave",3),
 	  (set_visitors, 7, "trp_slave",2),
 	  (set_visitors, 8, "trp_slave",2),
@@ -38934,8 +39004,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 20),
     ], "Hire them. (20 denarii)",[
-      (party_add_members,"p_main_party","trp_refugee",2),
-      (party_add_members,"p_main_party","trp_peasant_woman",2),
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (assign, ":closest_center", reg0),
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no",4),
+
       (troop_remove_gold,"trp_player", 20),
       #(assign, "$reclutar_puede_refuges", 1),
       (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
@@ -38961,59 +39035,67 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ]
   ),
 
-  ("refugee_recruit_troops32",0,
-    "Some refugees volunteer to follow you.",
-    "none", [
+("refugee_recruit_troops32",0,
+  "Some refugees volunteer to follow you.",
+  "none", [
     (try_begin),
         (neg|troops_can_join, 5),
         (jump_to_menu, "mnu_refugee_recruit_troops22"),
     (try_end),
     (set_background_mesh, "mesh_pic_payment"),
+  ],[
+    ("acept_themmo2",[
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge, ":gold", 60),
+    ], "Hire them. (60 denarii)",[
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (assign, ":closest_center", reg0),
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no",4),
 
-    ],
-    [("acept_themmo2",[ (store_troop_gold, ":gold", "trp_player"),
-          (ge, ":gold", 60),], "Hire them. (60 denarii)",
-        [
-          (party_add_members,"p_main_party","trp_refugee",5),
-          (troop_remove_gold,"trp_player", 60),
-          #(assign, "$reclutar_puede_refuges", 1),
-          (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
-          (change_screen_map),
-      ]),
-      ("back_to_town_menumo",[],"Head back.",
-        [
-          #(assign, "$reclutar_puede_refuges", 1),
-          (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
-          (change_screen_map),
-      ]),
-    ]
-  ),
+      (troop_remove_gold,"trp_player", 60),
+      #(assign, "$reclutar_puede_refuges", 1),
+      (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
+      (change_screen_map),
+    ]),
+    ("back_to_town_menumo",[],"Head back.",[
+      #(assign, "$reclutar_puede_refuges", 1),
+      (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
+      (change_screen_map),
+    ]),
+]),
 
-  ("refugee_recruit_troops42",0,
-    "There is a large group of 15 women interested in joining you.",
-    "none", [ (set_background_mesh, "mesh_pic_payment"),
+("refugee_recruit_troops42",0,
+  "There is a large group of 15 women interested in joining you.",
+  "none", [
+    (set_background_mesh, "mesh_pic_payment"),
     (try_begin),
         (neg|troops_can_join, 15),
         (jump_to_menu, "mnu_refugee_recruit_troops22"),
     (try_end),
-    ],
-    [("acept_themmo3",[(store_troop_gold, ":gold", "trp_player"),
-          (ge, ":gold", 500),], "Hire them. (500 denarii)",
-        [
-          (party_add_members,"p_main_party","trp_follower_woman",15),
-          (troop_remove_gold,"trp_player", 500),
-          #(assign, "$reclutar_puede_refuges", 1),
-          (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
-          (change_screen_map),
-      ]),
-      ("back_to_town_menumo",[],"Head back.",
-        [
-          #(assign, "$reclutar_puede_refuges", 1),
-          (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
-           (change_screen_map),
-      ]),
-    ]
-  ),
+  ],[
+    ("acept_themmo3",[
+      (store_troop_gold, ":gold", "trp_player"),
+      (ge, ":gold", 500),
+    ], "Hire them. (500 denarii)",[
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (assign, ":closest_center", reg0),
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no",15),
+
+      (troop_remove_gold,"trp_player", 500),
+      #(assign, "$reclutar_puede_refuges", 1),
+      (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
+      (change_screen_map),
+    ]),
+    ("back_to_town_menumo",[],"Head back.",[
+      #(assign, "$reclutar_puede_refuges", 1),
+      (party_set_slot,"$g_encountered_party",slot_center_volunteer_troop_type,5),#5 days cooldown
+      (change_screen_map),
+    ]),
+]),
 
 ("ferry_encounter",0,
   "The ferry captain will carry you to the other side for {reg7} denarii.",
@@ -43125,7 +43207,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_player_honor", 2),
       (call_script, "script_change_troop_renown", "trp_player", 10),
       (call_script, "script_change_party_morale", "p_main_party", 5),
-      (party_add_members, "p_main_party", "trp_refugee", 1),
+
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, "$current_town", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no", 1),
+
       (str_clear,s29),
       (str_store_string,s29,"@People in {s4} are happy because you responded to their needs and you helped to prevent divine anger. Your troops are also happy about you protection of their offsprings."),
       (display_message, "@{s29}"),
@@ -43136,7 +43222,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_player_honor", -5),
       (call_script, "script_change_troop_renown", "trp_player", -50),
       (call_script, "script_change_party_morale", "p_main_party", 5),
-      (party_add_members, "p_main_party", "trp_refugee", 1),
+
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, "$current_town", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no", 1),
+
       (str_clear,s29),
       (str_store_string,s29,"@People, superstitious, are angry with you and fear the anger of divine authorities. Some time later, you find out that another girl was sacrificed. Your troops are happy that you protect their offsprings."),
       (display_message, "@{s29}"),
@@ -44115,7 +44205,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (call_script, "script_cf_party_remove_random_regular_troop", "p_main_party"),
       (try_end),
       (call_script, "script_change_player_party_morale", 5),
-      (party_add_members,"p_main_party","trp_refugee",1),
+
+      (call_script, "script_get_walker_according_to_subculture", walker_peasant, "$current_town", tf_female),
+      (assign, ":troop_no", reg0),
+      (party_add_members,"p_main_party",":troop_no", 1),
+
       (str_clear,s29),
       (str_store_string,s29,"@The poor people in {s4} get angry when you give the child to a rich woman without making a sincere determination. " +
       "Some disturbances ending in violence occur. During the fighting, many citizens die before retiring, but you also lose some men."),
@@ -52944,121 +53038,121 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
 ("freelancer_task_patrol_1",0,
   "{s1}",
-  "none",
-    [
-      (str_clear, s1),
-      (store_random_in_range, "$temp1", 0, 5),
-      (try_begin),
-          (eq, "$temp1", 0),
-          (str_clear, s2),
-          (try_begin),
-              (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-              (str_store_string, s2, "@The unit commander proceeds with caution, keeping the force together. As the patrol slowly advances, the enemies return with more troops and attack."),
-          (try_end),
-          (str_store_string, s1, "@A small group of armed men suddenly turned around as your unit approached and moved briskly, putting more distance between you until they disappeared from view.^^{s2}"),
-        # (jump_to_menu, "mnu_freelancer_task_patrol"),
-      (else_try),
-          (eq, "$temp1", 1),
-          (store_random_in_range, ":string", "str_patrol_nothing_vignette0", "str_patrol_end"),
-          (str_store_string, s2, ":string"),
-          (str_store_string, s1, "str_patrol_text_peaceful"),
-      (else_try),
-          (eq, "$temp1", 2),
-          (str_store_string, s1, "@While patrolling the area, your patrol spots a lonely rider on the horizon, who seems to be watching your advance. He could either be a scout for rebels or bandits, or just a common peasant."),
-      (else_try),
-          (eq, "$temp1", 3),
-          (str_store_string, s1, "@While patrolling the area, local peasants approach and tell that they where raided by bandits recently. They also inform you about the exact location of the bandit party."),
-      (else_try),
-          (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-          (store_random_in_range, ":r", 0, 2),
-          (try_begin),
-              (eq, ":r", 0),
-              (jump_to_menu, "mnu_freelancer_task_patrol_peasant"),
-          (else_try),
-              (jump_to_menu, "mnu_freelancer_task_patrol_cattle"),
-          (try_end),
-      (else_try),##fall back
-          (str_store_string, s1, "@While patrolling the area, local peasants approach and tell that they where raided by bandits recently. They also inform you about the exact location of the bandit party."),
-          (assign, "$temp1", 3),
-      (try_end),
-      (set_background_mesh, "mesh_pic_deserters"),
-    ],[
-      ("continue",[(eq, "$temp1", 0),
-        (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-      ],"Continue.",
-      [
-        (jump_to_menu, "mnu_freelancer_task_patrol"),
-      ]),
-   ("continue",[(eq, "$temp1", 0),
-      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-      ],"Try to avoid them.",
-       [
-       (store_random_in_range, ":r", 0, 10),
-       (try_begin),
-         (le, ":r", 3),
-         (jump_to_menu, "mnu_freelancer_task_patrol"),
-       (else_try),
-         (jump_to_menu, "mnu_freelancer_task_patrol_avoided"),
-       (try_end),
-        ]),
-  ("continue",[(eq, "$temp1", 0),
-      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-      ],"Try to engage them.",
-       [
-       (store_random_in_range, ":r", 0, 10),
-       (try_begin),
-         (eq, ":r", 0),
-         (jump_to_menu, "mnu_freelancer_task_patrol_nothing"),
-       (else_try),
-         (le, ":r", 8),
-         (jump_to_menu, "mnu_freelancer_task_patrol"),
-       (else_try),
-         (jump_to_menu, "mnu_freelancer_task_patrol_avoided"),
-       (try_end),
-        ]),
-
-      ("continue",[(eq, "$temp1", 3),
+  "none",[
+    (str_clear, s1),
+    (store_random_in_range, "$temp1", 0, 5),
+    (try_begin),
+        (eq, "$temp1", 0),
+        (str_clear, s2),
+        (try_begin),
+            (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+            (str_store_string, s2, "@The unit commander proceeds with caution, keeping the force together. As the patrol slowly advances, the enemies return with more troops and attack."),
+        (try_end),
+        (str_store_string, s1, "@A small group of armed men suddenly turned around as your unit approached and moved briskly, putting more distance between you until they disappeared from view.^^{s2}"),
+      # (jump_to_menu, "mnu_freelancer_task_patrol"),
+    (else_try),
+        (eq, "$temp1", 1),
+        (store_random_in_range, ":string", "str_patrol_nothing_vignette0", "str_patrol_end"),
+        (str_store_string, s2, ":string"),
+        (str_store_string, s1, "str_patrol_text_peaceful"),
+    (else_try),
+        (eq, "$temp1", 2),
+        (str_store_string, s1, "@While patrolling the area, your patrol spots a lonely rider on the horizon, who seems to be watching your advance. He could either be a scout for rebels or bandits, or just a common peasant."),
+    (else_try),
+        (eq, "$temp1", 3),
+        (str_store_string, s1, "@While patrolling the area, local peasants approach and tell that they where raided by bandits recently. They also inform you about the exact location of the bandit party."),
+    (else_try),
+        (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+        (store_random_in_range, ":r", 0, 2),
+        (try_begin),
+            (eq, ":r", 0),
+            (jump_to_menu, "mnu_freelancer_task_patrol_peasant"),
+        (else_try),
+            (jump_to_menu, "mnu_freelancer_task_patrol_cattle"),
+        (try_end),
+    (else_try),##fall back
+        (str_store_string, s1, "@While patrolling the area, local peasants approach and tell that they where raided by bandits recently. They also inform you about the exact location of the bandit party."),
+        (assign, "$temp1", 3),
+    (try_end),
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("continue",[
+      (eq, "$temp1", 0),
       (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-      ],"Your commander decides to attack them...",
-       [
-       (jump_to_menu, "mnu_freelancer_task_patrol"),
-        ]),
-      ("continue",[(eq, "$temp1", 3),
-    (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-    ],"We will hunt them down...",
-       [
-      (call_script, "script_get_closest_center", "$enlisted_party"),
+    ],"Continue.",[
+      (jump_to_menu, "mnu_freelancer_task_patrol"),
+    ]),
+    ("continue",[
+      (eq, "$temp1", 0),
+      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+    ],"Try to avoid them.",[
+      (store_random_in_range, ":r", 0, 10),
+      (try_begin),
+        (le, ":r", 3),
+        (jump_to_menu, "mnu_freelancer_task_patrol"),
+      (else_try),
+        (jump_to_menu, "mnu_freelancer_task_patrol_avoided"),
+      (try_end),
+    ]),
+
+    ("continue",[
+      (eq, "$temp1", 0),
+      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+    ],"Try to engage them.",[
+      (store_random_in_range, ":r", 0, 10),
+      (try_begin),
+        (eq, ":r", 0),
+        (jump_to_menu, "mnu_freelancer_task_patrol_nothing"),
+      (else_try),
+        (le, ":r", 8),
+        (jump_to_menu, "mnu_freelancer_task_patrol"),
+      (else_try),
+        (jump_to_menu, "mnu_freelancer_task_patrol_avoided"),
+      (try_end),
+    ]),
+    ("continue",[
+      (eq, "$temp1", 3),
+      (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+    ],"Your commander decides to attack them...",[
+      (jump_to_menu, "mnu_freelancer_task_patrol"),
+    ]),
+    ("continue",[
+      (eq, "$temp1", 3),
+      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+    ],"We will hunt them down...",[
+      (call_script, "script_get_closest_center_and_minor", "$enlisted_party"),
       (assign, ":center", reg0),
       (try_begin),
         (is_between, ":center", centers_begin, centers_end),
         (call_script, "script_change_player_relation_with_center", ":center", 1),
       (try_end),
-       (jump_to_menu, "mnu_freelancer_task_patrol"),
-        ]),
+      (jump_to_menu, "mnu_freelancer_task_patrol"),
+    ]),
 
-      ("continue",[(eq, "$temp1", 3),
-    (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-    ],"Well, the bandits are too far away...",
-       [
+    ("continue",[
+      (eq, "$temp1", 3),
+      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+    ],"Well, the bandits are too far away...",[
       # (call_script, "script_freelancer_add_progress", 2),
-       (jump_to_menu, "mnu_freelancer_task_patrol_peasant_ignored"),
-        ]),
+      (jump_to_menu, "mnu_freelancer_task_patrol_peasant_ignored"),
+    ]),
 
-      ("continue",[(eq, "$temp1", 1),],"Continue.",
-       [
-       (call_script, "script_freelancer_add_progress", 5),
-       (change_screen_map),
-        ]),
-      ("continue",[(eq, "$temp1", 2),
-    (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-    ],"Interrogate him.",
-       [
-       (jump_to_menu, "mnu_freelancer_task_patrol_rider_interrogate"),
-        ]),
-      ("continue",[(eq, "$temp1", 2),
-    (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-    ],"Ignore him.",
-       [
+    ("continue",[
+      (eq, "$temp1", 1),
+    ],"Continue.",[
+      (call_script, "script_freelancer_add_progress", 5),
+      (change_screen_map),
+    ]),
+    ("continue",[
+      (eq, "$temp1", 2),
+      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+    ],"Interrogate him.",[
+      (jump_to_menu, "mnu_freelancer_task_patrol_rider_interrogate"),
+    ]),
+    ("continue",[
+      (eq, "$temp1", 2),
+      (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+    ],"Ignore him.",[
       (store_random_in_range, ":r", 0, 10),
       (try_begin),
         (le, ":r", 6),
@@ -53067,12 +53161,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (else_try),
         (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
       (try_end),
-        ]),
-
-    ("continue",[(eq, "$temp1", 2),
-    (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
-    ],"Your commander decides to ignore him...",
-       [
+    ]),
+    ("continue",[
+      (eq, "$temp1", 2),
+      (neg|quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
+    ],"Your commander decides to ignore him...",[
       (store_random_in_range, ":r", 0, 10),
       (try_begin),
         (le, ":r", 6),
@@ -53081,18 +53174,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (else_try),
         (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
       (try_end),
-        ]),
+    ]),
 ]),
 
-(
-    "freelancer_task_patrol_cattle",0,
-    "Earlier on the patrol, you passed through a village that complained about their cattle getting stolen overnight. Now your unit catches up to a couple of shady characters herding cattle, who run at the sight of you. ^^The thieves escaped, but you do have the cattle now.",
-    "none",
-    [  (set_background_mesh, "mesh_pic_cattle"),
-      ],
-    [
-      ("continue",[],"Bring it back to the legion's camp. ",
-       [
+("freelancer_task_patrol_cattle",0,
+  "Earlier on the patrol, you passed through a village that complained about their cattle getting stolen overnight. Now your unit catches up to a couple of shady characters herding cattle, who run at the sight of you. ^^The thieves escaped, but you do have the cattle now.",
+  "none",[
+    (set_background_mesh, "mesh_pic_cattle"),
+  ],[
+    ("continue",[],"Bring it back to the legion's camp. ",[
       (try_begin),
         (gt, "$player_honor", -10),
         (call_script, "script_change_player_honor", -1),
@@ -53100,23 +53190,21 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_freelancer_add_progress", 25),
       (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
       (call_script, "script_change_player_relation_with_troop", ":lord", 2),
-       (str_store_string, s1, "@You detach a couple of equites and have them herd the cattle back to camp, while the rest of the unit completes the patrol. Your commander is impressed by your flexibility and taking emerging opportunities without compromising your mission. It doesn't hurt that the commander will save thousands of coins on legion provisions now either."),
-       (assign, "$temp", "mesh_pic_camp"),
-       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
-        ]),
-      ("continue",[],"Return it to the village.",
-       [
+      (str_store_string, s1, "@You detach a couple of equites and have them herd the cattle back to camp, while the rest of the unit completes the patrol. Your commander is impressed by your flexibility and taking emerging opportunities without compromising your mission. It doesn't hurt that the commander will save thousands of coins on legion provisions now either."),
+      (assign, "$temp", "mesh_pic_camp"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("continue",[],"Return it to the village.",[
       (try_begin),
         (lt, "$player_honor", 10),
         (call_script, "script_change_player_honor", 1),
       (try_end),
       (call_script, "script_freelancer_add_progress", 5),
-       (str_store_string, s1, "@You take a detour to bring the cattle back to the village. The peasants are grateful for your help."),
-       (assign, "$temp", "mesh_pic_villa"),
-       (jump_to_menu, "mnu_freelancer_event_8_reaction"),
-        ]),
-      ("continue",[],"Sell it at the nearest market and divide up the money with your soldiers.",
-       [
+      (str_store_string, s1, "@You take a detour to bring the cattle back to the village. The peasants are grateful for your help."),
+      (assign, "$temp", "mesh_pic_villa"),
+      (jump_to_menu, "mnu_freelancer_event_8_reaction"),
+    ]),
+    ("continue",[],"Sell it at the nearest market and divide up the money with your soldiers.",[
       (try_begin),
         (lt, "$player_honor", -10),
         (call_script, "script_change_player_honor", -1),
@@ -53126,12 +53214,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        (str_store_string, s1, "@After selling off the animals, all of you are slightly heavier with silver. You make up a story to explain the delay in completing your mission and the denarii in your soldiers' pockets helps everyone back it up. Cattle? What cattle? We didn't see any cattle."),
        (assign, "$temp", "mesh_pic_cattle"),
        (jump_to_menu, "mnu_freelancer_event_8_reaction"),
-        ]),
+    ]),
+]),
 
-     ]
-),
-(
-    "freelancer_task_patrol_peasant",0,
+("freelancer_task_patrol_peasant",0,
     "The patrol is uneventful, until a fellow soldier points to a man, hiding in the shrubs along your route. He tries to flee, almost getting to his nearby horse before your soldiers apprehend him. ^^When questioned, he claims to be a peasant from the nearby village, just out collecting firewood. No firewood is found, which he explains by saying he just got here when he heard you marching and wanted to look.",
     "none",
     [  (set_background_mesh, "mesh_pic_deserters"),
@@ -53158,29 +53244,23 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu, "mnu_freelancer_task_patrol_peasant_bandit"),
       (try_end),
         ]),
+]),
+("freelancer_task_patrol_peasant_bandit",0,
+  "The fake peasant is actually an enemy scout and confesses everything after enough pain. Once you know the location of their ambush, you carefully flank it and attack them unexpectedly from behind. Before the battle can really get underway, the entire bandit contingent surrenders in horror. Your unit is given a hero's welcome back at camp, as you parade the captives along the castra's main street.",
+  "none",[
+    (set_background_mesh, "mesh_pic_victory"),
+  ],[
+  ("continue",[],"Continue.",[
+    (add_xp_as_reward, 150),
+    (try_begin),
+      (gt, "$player_honor", -20),
+      (call_script, "script_change_player_honor", -1),
+    (try_end),
+    (call_script, "script_freelancer_add_progress", 25),
+    (change_screen_map),
+  ]),
+]),
 
-     ]
-),
- (
-    "freelancer_task_patrol_peasant_bandit",0,
-    "The fake peasant is actually an enemy scout and confesses everything after enough pain. Once you know the location of their ambush, you carefully flank it and attack them unexpectedly from behind. Before the battle can really get underway, the entire bandit contingent surrenders in horror. Your unit is given a hero's welcome back at camp, as you parade the captives along the castra's main street.",
-    "none",
-    [
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
-      (add_xp_as_reward, 150),
-      (try_begin),
-        (gt, "$player_honor", -20),
-        (call_script, "script_change_player_honor", -1),
-      (try_end),
-      (call_script, "script_freelancer_add_progress", 25),
-      (change_screen_map),
-        ]),
-
-     ]
-),
 (
     "freelancer_task_patrol_peasant_innocent",0,
     "The peasant thanks you and offers endless apologies for behaving suspiciously without realizing it. Your patrol finishes without further incident.",
@@ -53222,15 +53302,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
      ]
 ),
 
-(
-    "freelancer_task_patrol_peasant_ignored",0,
-    "You send the peasants away. They seem to be angry about your laziness. Your boring patrol continues and soon you march back to the legion.",
-    "none",
-    [  (set_background_mesh, "mesh_pic_deserters"),
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
+("freelancer_task_patrol_peasant_ignored",0,
+  "You send the peasants away. They seem to be angry about your laziness. Your boring patrol continues and soon you march back to the legion.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("continue",[],"Continue.",[
       (call_script, "script_get_closest_center", "$enlisted_party"),
       (assign, ":center", reg0),
       (try_begin),
@@ -53239,29 +53316,21 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
       (call_script, "script_freelancer_add_progress", 5),
       (change_screen_map),
-        ]),
-
-     ]
-),
-(
-    "freelancer_task_patrol_rider_ignored",0,
-    "Either the rider was just a common traveler, or the enemies consider your force as to strong to ambush it. In any case, after hours of marching around in the wilderness your patrol task comes to an end.",
-    "none",
-    [  (set_background_mesh, "mesh_pic_deserters"),
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
+    ]),
+]),
+("freelancer_task_patrol_rider_ignored",0,
+  "Either the rider was just a common traveler, or the enemies consider your force as to strong to ambush it. In any case, after hours of marching around in the wilderness your patrol task comes to an end.",
+  "none",[
+    (set_background_mesh, "mesh_pic_deserters"),
+  ],[
+    ("continue",[],"Continue.",[
       (call_script, "script_freelancer_add_progress", 5),
       (change_screen_map),
-        ]),
-
-     ]
-),
-(   "freelancer_task_patrol_rider_interrogate",0,
-    "As you approach the rider {s1}",
-    "none",
-    [
+    ]),
+]),
+("freelancer_task_patrol_rider_interrogate",0,
+  "As you approach the rider {s1}",
+  "none",[
     (set_background_mesh, "mesh_pic_deserters"),
     (store_random_in_range, "$temp1", 0, 3),
     (try_begin),
@@ -53274,10 +53343,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$temp1", 2),
       (str_store_string, s1, "@he gallops away. You can only watch him disappear at the horizon."),
     (try_end),
-      ],
-    [
-      ("continue",[(eq, "$temp1", 2),],"Hopefully he wasn't an enemy scout.",
-       [
+  ],[
+    ("continue",[
+      (eq, "$temp1", 2),
+    ],"Hopefully he wasn't an enemy scout.",[
       (store_random_in_range, ":r", 0, 10),
       (try_begin),
         (le, ":r", 7),
@@ -53286,56 +53355,56 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (else_try),
         (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
       (try_end),
-        ]),
-      ("continue",[(neq, "$temp1", 2),],"Let him go, he seems to be a commoner.",
-       [
-     (try_begin),
-      (eq, "$temp1", 1),
-      (store_random_in_range, ":r", 0, 10),
+    ]),
+    ("continue",[
+      (neq, "$temp1", 2),
+    ],"Let him go, he seems to be a commoner.",[
       (try_begin),
-        (le, ":r", 7),
-        (display_message, "@The rider was probably an enemy scout. Your patrol is ambushed.", color_bad_news),
-        (jump_to_menu, "mnu_freelancer_task_patrol"),
+        (eq, "$temp1", 1),
+        (store_random_in_range, ":r", 0, 10),
+        (try_begin),
+          (le, ":r", 7),
+          (display_message, "@The rider was probably an enemy scout. Your patrol is ambushed.", color_bad_news),
+          (jump_to_menu, "mnu_freelancer_task_patrol"),
+        (else_try),
+          (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
+        (try_end),
       (else_try),
-        (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
+        (eq, "$temp1", 0),
+        (store_random_in_range, ":r", 0, 10),
+        (try_begin),
+          (le, ":r", 1),
+          (display_message, "@Nevertheless, the rider seems to have been an enemy scout!", color_bad_news),
+          (jump_to_menu, "mnu_freelancer_task_patrol"),
+        (else_try),
+          (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
+        (try_end),
       (try_end),
-    (else_try),
-      (eq, "$temp1", 0),
-      (store_random_in_range, ":r", 0, 10),
+    ]),
+    ("continue",[
+      (neq, "$temp1", 2),
+    ],"Imprison him. He is clearly a bandit.",[
       (try_begin),
-        (le, ":r", 1),
-        (display_message, "@Nevertheless, the rider seems to have been an enemy scout!", color_bad_news),
-        (jump_to_menu, "mnu_freelancer_task_patrol"),
+        (eq, "$temp1", 1),
+        (store_random_in_range, ":r", 0, 10),
+        (try_begin),
+          (le, ":r", 1),
+          (jump_to_menu, "mnu_freelancer_task_patrol_rider_commoner"),
+        (else_try),
+          (jump_to_menu, "mnu_freelancer_task_patrol_rider_bandit"),
+        (try_end),
       (else_try),
-        (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
+        (eq, "$temp1", 0),
+        (store_random_in_range, ":r", 0, 10),
+        (try_begin),
+          (le, ":r", 8),
+          (jump_to_menu, "mnu_freelancer_task_patrol_rider_commoner"),
+        (else_try),
+          (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
+        (try_end),
       (try_end),
-    (try_end),
-        ]),
-     ("continue",[(neq, "$temp1", 2),],"Imprison him. He is clearly a bandit.",
-       [
-    (try_begin),
-      (eq, "$temp1", 1),
-      (store_random_in_range, ":r", 0, 10),
-      (try_begin),
-        (le, ":r", 1),
-        (jump_to_menu, "mnu_freelancer_task_patrol_rider_commoner"),
-      (else_try),
-        (jump_to_menu, "mnu_freelancer_task_patrol_rider_bandit"),
-      (try_end),
-    (else_try),
-      (eq, "$temp1", 0),
-      (store_random_in_range, ":r", 0, 10),
-      (try_begin),
-        (le, ":r", 8),
-        (jump_to_menu, "mnu_freelancer_task_patrol_rider_commoner"),
-      (else_try),
-        (jump_to_menu, "mnu_freelancer_task_patrol_rider_ignored"),
-      (try_end),
-    (try_end),
-        ]),
-
-     ]
-),
+    ]),
+]),
 
 ("freelancer_task_patrol_avoided",0,
     "Either due to your caution or the fact that the hostile party don't want to fight today you manage to avoid an encounter. No fight means no wounds and no risk to die. But you also lose a chance to proof yourself.",

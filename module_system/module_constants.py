@@ -2318,9 +2318,6 @@ quick_battle_kingdoms_end = "fac_kingdom_8"
 bandits_begin = "trp_looter"
 bandits_end = "trp_follower_woman"
 
-follower_troops_begin = "trp_follower_woman"
-follower_troops_end = "trp_town_walker_1"
-
 kingdom_ladies_begin = "trp_knight_1_1_wife"
 kingdom_ladies_end = "trp_heroes_end"
 
@@ -2355,6 +2352,15 @@ special_roman_merchants_end = "trp_merchant5"
 
 slave_traders_begin = "trp_slave_trader_judean"
 slave_traders_end   = trp_slave_trader_bandit + 1
+
+follower_woman_begin    = "trp_follower_woman"
+follower_woman_end      = "trp_soldier_wife"
+
+soldiers_wifes_begin = "trp_soldier_wife"
+soldiers_wifes_end   = "trp_caravan_master"
+
+follower_troops_begin = "trp_follower_woman"
+follower_troops_end = "trp_caravan_master"
 
 slaves_begin    = "trp_slave"
 slaves_end      = "trp_orgie_fem1"
@@ -4412,6 +4418,7 @@ walker_noble   = 1
 walker_peasant = 2
 walker_slave   = 3
 walker_peasant_warrior = 4
+walker_follower = 5
 
 # household modifers
 household_mod_latifunida_limit  = 0

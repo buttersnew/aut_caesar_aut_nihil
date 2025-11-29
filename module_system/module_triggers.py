@@ -1179,10 +1179,10 @@ triggers = [
             (neq, "$g_player_besiege_town", "$g_encountered_party"),
             (neq, "$g_player_is_captive", 1),
             #(neg|key_is_down, key_space),
-            (store_random_in_range, ":r",0,2),
-            (eq, ":r", 0),
+            (store_random_in_range, ":r",0,10),
+            (le, ":r", 6),
             (val_add, reg0, 1),
-            (val_clamp, reg0, 0, 31),
+            (val_clamp, reg0, 0, 41),
             (party_set_slot, "p_main_party", slot_party_unrested_morale_penalty, reg0),
             #minor recovery from not marching or fighting
         (else_try),
@@ -1217,8 +1217,8 @@ triggers = [
     (else_try),
         (store_time_of_day, reg0),
         (is_between, reg0, 6, 8),
-        (party_get_slot, reg0, "p_main_party", slot_party_unrested_morale_penalty),
 
+        (party_get_slot, reg0, "p_main_party", slot_party_unrested_morale_penalty),
         (try_begin),
             (gt, reg0, 4),  #more than 1 night without rest?
             (lt, reg0, 6),  #more than 1 night without rest?
