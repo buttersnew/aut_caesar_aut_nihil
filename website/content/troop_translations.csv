@@ -680,3 +680,45 @@ arabian_priest,Afkal,Afkal,Sabaean / Arabic,SagePriest
 berber_priest,Amussnaw,Imussnawen,Libyco-Berber,The KnowerWise One
 garamantian_priest,W'b n Jmn,W'bw n Jmn,Late Egyptian,Pure One (Priest) of Ammon
 nubian_priest,Pelmos Apedemakli,Pelmosli Apedemakli,Meroitic,Priest of Apedemak
+follower_woman,Focaria,Focariae,Latin,Camp Follower
+african_follower_woman,Nubiana Focaria,Nubianae Focariae,Latin,Nubian Camp Follower
+saka_follower_woman,Sacica Focaria,Sacicae Focariae,Latin,Saka Camp Follower
+sarmatian_follower_woman,Sarmatica Focaria,Sarmaticae Focariae,Latin,Sarmatian Camp Follower
+bosporan_follower_woman,Bosporana Focaria,Bosporanae Focariae,Latin,Bosporan Camp Follower
+judean_follower_woman,Iudaea Focaria,Iudaeae Focariae,Latin,Judean Camp Follower
+eastern_follower_woman,Orientalis Focaria,Orientales Focariae,Latin,Eastern Camp Follower
+galatian_follower_woman,Galatica Focaria,Galaticae Focariae,Latin,Galatian Camp Follower
+syrian_follower_woman,Syra Focaria,Syrae Focariae,Latin,Syrian Camp Follower
+greek_follower_woman,Graeca Focaria,Graecae Focariae,Latin,Greek Camp Follower
+illyrian_follower_woman,Illyrica Focaria,Illyricae Focariae,Latin,Illyrian Camp Follower
+parthian_follower_woman,Parthica Focaria,Parthicae Focariae,Latin,Parthian Camp Follower
+persian_follower_woman,Persica Focaria,Persicae Focariae,Latin,Persian Camp Follower
+gaul_follower_woman,Gallica Focaria,Gallicae Focariae,Latin,Gallic Camp Follower
+roman_follower_woman,Romana Focaria,Romanae Focariae,Latin,Roman Camp Follower
+hispanic_follower_woman,Hispana Focaria,Hispanae Focariae,Latin,Hispanic Camp Follower
+celtic_follower_woman,Celtica Focaria,Celticae Focariae,Latin,Celtic Camp Follower
+germanic_follower_woman,Germanica Focaria,Germanicae Focariae,Latin,Germanic Camp Follower
+dacian_follower_woman,Dacica Focaria,Dacicae Focariae,Latin,Dacian Camp Follower
+thracian_follower_woman,Thracica Focaria,Thracicae Focariae,Latin,Thracian Camp Follower
+armenian_follower_woman,Caucasica Focaria,Caucasicae Focariae,Latin,Caucasian Camp Follower
+soldier_wife,Soldier Wife,Soldier Wifes,English,Soldier Wife
+african_soldier_wife,Nubiana Coniunx,Nubianae Coniuges,Latin,Nubian Soldier Wife
+saka_soldier_wife,Sacica Coniunx,Sacicae Coniuges,Latin,Saka Soldier Wife
+sarmatian_soldier_wife,Sarmatica Coniunx,Sarmaticae Coniuges,Latin,Sarmatian Soldier Wife
+bosporan_soldier_wife,Bosporana Coniunx,Bosporanae Coniuges,Latin,Bosporan Soldier Wife
+judean_soldier_wife,Iudaea Coniunx,Iudaeae Coniuges,Latin,Judean Soldier Wife
+eastern_soldier_wife,Orientalis Coniunx,Orientales Coniuges,Latin,Eastern Soldier Wife
+galatian_soldier_wife,Galatica Coniunx,Galaticae Coniuges,Latin,Galatian Soldier Wife
+syrian_soldier_wife,Syra Coniunx,Syrae Coniuges,Latin,Syrian Soldier Wife
+greek_soldier_wife,Graeca Coniunx,Graecae Coniuges,Latin,Greek Soldier Wife
+illyrian_soldier_wife,Illyrica Coniunx,Illyricae Coniuges,Latin,Illyrian Soldier Wife
+parthian_soldier_wife,Parthica Coniunx,Parthicae Coniuges,Latin,Parthian Soldier Wife
+persian_soldier_wife,Persica Coniunx,Persicae Coniuges,Latin,Persian Soldier Wife
+gaul_soldier_wife,Gallica Coniunx,Gallicae Coniuges,Latin,Gallic Soldier Wife
+roman_soldier_wife,Romana Coniunx,Romanae Coniuges,Latin,Roman Soldier Wife
+hispanic_soldier_wife,Hispana Coniunx,Hispanae Coniuges,Latin,Hispanic Soldier Wife
+celtic_soldier_wife,Celtica Coniunx,Celticae Coniuges,Latin,Celtic Soldier Wife
+germanic_soldier_wife,Germanica Coniunx,Germanicae Coniuges,Latin,Germanic Soldier Wife
+dacian_soldier_wife,Dacica Coniunx,Dacicae Coniuges,Latin,Dacian Soldier Wife
+thracian_soldier_wife,Thracica Coniunx,Thracicae Coniuges,Latin,Thracian Soldier Wife
+armenian_soldier_wife,Caucasica Coniunx,Caucasicae Coniuges,Latin,Caucasian Soldier Wife

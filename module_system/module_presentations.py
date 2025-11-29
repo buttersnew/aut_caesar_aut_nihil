@@ -23727,58 +23727,42 @@ presentations = presentations_wse2 + [
       ]),
   ]),
  ("upgrade_tree_13", 0, mesh_load_window, [
-    (ti_on_presentation_load,
-      [
-        (presentation_set_duration, 999999),
-        (set_fixed_point_multiplier, 1000),
+    (ti_on_presentation_load,[
+      (presentation_set_duration, 999999),
+      (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_nubian"),
+      (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_nubian"),
 
 
-        # clear the string globals that we'll use
-        (str_clear, s0),
+      # clear the string globals that we'll use
+      (str_clear, s0),
 
-        # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
-        (create_text_overlay, reg43, s0, tf_scrollable_style_2),
-        (position_set_x, pos1, 50),
-        (position_set_y, pos1, 70),
-        (overlay_set_position, reg43, pos1),
-        (position_set_x, pos1, 970),
-        (position_set_y, pos1, 527),
-        (overlay_set_area_size, reg43, pos1),
+      # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
+      (create_text_overlay, reg43, s0, tf_scrollable_style_2),
+      (position_set_x, pos1, 50),
+      (position_set_y, pos1, 70),
+      (overlay_set_position, reg43, pos1),
+      (position_set_x, pos1, 970),
+      (position_set_y, pos1, 527),
+      (overlay_set_area_size, reg43, pos1),
 
       (set_container_overlay, reg43),#start scroll
 
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_slave", 115, 2100),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_slave_warrior", 265, 2100),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_slave_warrior_2", 415, 2100),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_slave_warrior_3", 565, 2100),
+      # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_slaver_chief", 715, 2100),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_refugee", 115, 2300),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_peasant_woman", 115, 2500),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_follower_woman", 265, 2400),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_hunter_woman", 415, 2400),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_camp_defender", 565, 2400),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_soldier_wife", 715, 2400),
+      (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 170, 2190),
+      (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 320, 2190),
+      (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 470, 2190),
+      # (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 620, 2190),
+      ##### - lines
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_slave", 115, 2100),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_slave_warrior", 265, 2100),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_slave_warrior_2", 415, 2100),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_slave_warrior_3", 565, 2100),
-        # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_slaver_chief", 715, 2100),
-
-        ##### - lines
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 170, 2590),
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 170, 2390),
-        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 195, 2490),
-        (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 320, 2490),
-        (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 470, 2490),
-        (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 620, 2490),
-        (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 170, 2190),
-        (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 320, 2190),
-        (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 470, 2190),
-        # (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 620, 2190),
-        ##### - lines
-
-        ##### | lines
-        (call_script, "script_prsnt_upgrade_tree_lines", 4, 204, 193, 2390),
-        ##### | lines
+      ##### | lines
+      (call_script, "script_prsnt_upgrade_tree_lines", 4, 204, 193, 2390),
+      ##### | lines
 
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 0, "trp_alannic_raider", 60, 1910),
@@ -23788,7 +23772,7 @@ presentations = presentations_wse2 + [
       # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_judean_hornman", 710, 1910),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_slave_female", 60, 1710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_refugee", 210, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_follower_woman", 210, 1710),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_sea_raider", 560, 1710),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_hispanic_bandit", 710, 1710),
