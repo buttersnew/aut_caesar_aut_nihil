@@ -1121,7 +1121,7 @@ attrib_level_29_warrior, wp(170), knows_archer_elit, scythian_face_21, scythian_
 
 
 ##new Eastern mercenaries (parthia et armenia) p_town_22 p_town_10
-["persian_picaxe_man", "Tabarzan Eranshahr", "Tabarzanan Eranshahr", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_commoners
+["persian_picaxe_man", "Tabarzan Eranshahr", "Tabarzanan Eranshahr", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_commoners,
 [itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,itm_military_hammer,itm_throwing_spears_east,itm_throwing_spears_east]+eastern_boots_light+eastern_armor_furarmor+persian_helm_light+scythian_shields_1,
 attrib_level_18, wp(140), knows_level_18, persian_face_young_2, persian_face_middle_2 ],
 ["persian_noble_cav", "Asad Asavar", "Asadan Asavaran", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_commoners,
