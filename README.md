@@ -14,6 +14,7 @@ Empires, like humans, are born, grow, and eventually die. But their ideas can su
 - [Installation](#installation)
 - [Official Handbook](#official-handbook)
 - [Official Website](#official-website)
+- [Credits](#credits)
 - [For Developers](#for-developers)
   - [Repository Structure](#repository-structure)
   - [Build Process](#build-process)
@@ -54,6 +55,56 @@ For a complete and detailed guide to every feature in the mod, please refer to t
 ## Official Website
 
 The official website of [Aut Caesar Aut Nihil](https://buttersnew.github.io/aut_caesar_aut_nihil/) contains the download links of the latest stable release and the latest development release. it is hosted with github-pages.
+
+---
+
+## Credits
+
+### Core Team & Contributors
+A huge thank you to everyone who has contributed to the development of *Aut Caesar Aut Nihil*:
+
+*   **@BanDHMO:** Writing (Quests, Events)
+*   **@adriankowaty:** Writing, Overall Support
+*   **@federicomancinelli:** Quest Writing, Support
+*   **@migdeu19:** Models, Research, Historical Advice
+*   **@wlodoviecus:** Scenes, Research, Historical Advice
+*   **@oliver:** Models, Scenes
+*   **@ali04681:** Writing
+*   **@Northwind:** Writing
+*   And to **everybody** who ever wrote a meaningful bug report!
+
+### Inspiration & Acknowledgements
+We stand on the shoulders of giants. Special thanks to the creators of these mods for their inspiration and resources:
+
+*   [457AD Last year of the Western Empire](https://www.moddb.com/mods/457ad)
+*   [ANCESTORS 2112BC](https://www.moddb.com/mods/time-of-new-chances-ancestors-2112-bc-bronze-age-mod)
+*   [Bellum Imperii](https://www.moddb.com/mods/bellum-imperii)
+*   [Imperial Rome](https://forums.taleworlds.com/index.php/topic,333982.0.html)
+*   [Mount and Gladius](https://www.moddb.com/mods/mount-and-gladius)
+*   [Romae Bellum](https://forums.taleworlds.com/index.php/board,318.0.html)
+*   [Rome at War](https://forums.taleworlds.com/index.php/board,307.0.html)
+*   [Brytenwalda](https://forums.taleworlds.com/index.php/board,189.0.html)
+*   [Diplomacy](https://forums.taleworlds.com/index.php/board,176.0.html)
+
+### Open Source Projects (OSP) & Assets
+This mod utilizes various Open Source Projects and assets from the community:
+
+*   **Polished Landscapes** ([Link](https://forums.taleworlds.com/index.php?topic=122423.0))
+*   **Gold and Iron Mines** ([Link](https://forums.taleworlds.com/index.php/topic,322815.0.html))
+*   **rubik's worldmap** ([Link](https://forums.taleworlds.com/index.php/topic,251355.0.html))
+*   **Native Scene Replacement** ([Link](https://forums.taleworlds.com/index.php/topic,320580.0.html))
+*   **9 Timurid Yurts** ([Link](https://forums.taleworlds.com/index.php/topic,379895.0.html))
+*   **Crusaders Way to Expiation** ([Link](https://forums.taleworlds.com/index.php/topic,337081.0.html))
+*   **AlphaDelta's Ancient warriors pack**
+*   **Ambient Soundtrack Warband**
+*   **Map Icons Pack**
+*   **I want to eat food**
+*   **ULTIMATE COMBAT OSP**
+*   **Grandmasters Shaders** (Basic Seasons & Wind effects)
+*   **Spec life 0.8**
+*   **Stylize HUD mini-interface** by FALX
+*   **box prop** by Red_Serf
+*   **Roman Models Extravaganza 1.0.9** ([Link](https://steamcommunity.com/sharedfiles/filedetails/?id=1506238217&searchtext=models))
 
 ---
 

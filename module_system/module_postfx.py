@@ -16,7 +16,7 @@ from header_postfx import *
 #  4) shader parameters1 [ HDRRange, HDRExposureScaler, LuminanceAverageScaler, LuminanceMaxScaler ]
 #  5) shader parameters2 [ BrightpassTreshold, BrightpassPostPower, BlurStrenght, BlurAmount ]
 #  6) shader parameters3 [ Not used by this shader, but kept for compatibility ]
-####################################################################################################################
+#################################################################################################
 
 postfx_params = [
     # Default/Sunny: Increased contrast and warmth, subtle bloom.
@@ -41,4 +41,5 @@ postfx_params = [
 
     # High Contrast: Kept for artistic effect.
     ("high_contrast",  0, 3, [128.0, 1.0, 1.29, 10.0], [0.43, 2.0, 1.05, 0.05], [1.0, 1.0, 4.8, 1.0]),
+
 ]
