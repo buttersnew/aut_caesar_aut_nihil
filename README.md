@@ -60,7 +60,7 @@ The official website of [Aut Caesar Aut Nihil](https://buttersnew.github.io/aut_
 
 ## Credits
 
-### Core Team & Contributors
+### Contributors
 A huge thank you to everyone who has contributed to the development of *Aut Caesar Aut Nihil*:
 
 *   **@BanDHMO:** Writing (Quests, Events)
@@ -70,6 +70,7 @@ A huge thank you to everyone who has contributed to the development of *Aut Caes
 *   **@wlodoviecus:** Scenes, Research, Historical Advice
 *   **@oliver:** Models, Scenes
 *   **@ali04681:** Writing
+*   **@odysseus** Faces, writing
 *   **@Northwind:** Writing
 *   And to **everybody** who ever wrote a meaningful bug report!
 
