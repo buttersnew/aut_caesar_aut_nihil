@@ -63,6 +63,7 @@ The official website of [Aut Caesar Aut Nihil](https://buttersnew.github.io/aut_
 ### Contributors
 A huge thank you to everyone who has contributed to the development of *Aut Caesar Aut Nihil*:
 
+*   **@lib:** 2D art
 *   **@BanDHMO:** Writing (Quests, Events)
 *   **@adriankowaty:** Writing, Overall Support
 *   **@federicomancinelli:** Quest Writing, Support
