@@ -3271,14 +3271,14 @@ dialogs =[
     (eq, "$talk_context", tc_bandit_lair),
     (this_or_next|eq, "$g_talk_troop", "trp_black_sea_priate"),
     (this_or_next|eq, "$g_talk_troop", "trp_sea_raider"),
-    (this_or_next|eq, "$g_talk_troop", "trp_hispanic_bandit"),
+    (this_or_next|eq, "$g_talk_troop", "trp_hispanic_rebell"),
     (this_or_next|eq, "$g_talk_troop", "trp_egyptian_infantry_heavy"),
     (this_or_next|eq, "$g_talk_troop", "trp_desert_bandit"),
     (this_or_next|eq, "$g_talk_troop", "trp_garamantian_horseman"),
     (this_or_next|eq, "$g_talk_troop", "trp_meroe_archers"),
     (this_or_next|eq, "$g_talk_troop", "trp_gaetuli_horseman"),
     (this_or_next|eq, "$g_talk_troop", "trp_judean_rebel"),
-    (this_or_next|eq, "$g_talk_troop", "trp_illyrian_bandit"),
+    (this_or_next|eq, "$g_talk_troop", "trp_illyrian_rebell"),
     (this_or_next|eq, "$g_talk_troop", "trp_alannic_raider"),
     (this_or_next|eq, "$g_talk_troop", "trp_saka_horse_archer"),
     (eq, "$g_talk_troop", "trp_looter"),
@@ -11027,60 +11027,60 @@ dialogs =[
 
 ############################################################################################################
 ####################jew dialogue
-[trp_arab_poormerchant|auto_proceed,"start",[(eq, "$talk_context", tc_tavern_talk),
+[trp_arabian_poormerchant|auto_proceed,"start",[(eq, "$talk_context", tc_tavern_talk),
 (eq, "$current_town", "p_town_19"),
 (troop_slot_eq, "trp_global_variables", g_flavor_event_2, 0),
 ],
 "Proceed",
 "jew_talk_1_1",[]],
 
-[trp_arab_richmerchant|auto_proceed,"start",[(eq, "$talk_context", tc_tavern_talk),
+[trp_arabian_richmerchant|auto_proceed,"start",[(eq, "$talk_context", tc_tavern_talk),
 (eq, "$current_town", "p_town_19"),
 (troop_slot_eq, "trp_global_variables", g_flavor_event_2, 0),
 ],
 "Proceed",
 "jew_talk_1_1",[]],
 
-[anyone|other(trp_arab_poormerchant),"jew_talk_1_1",[
+[anyone|other(trp_arabian_poormerchant),"jew_talk_1_1",[
 ],
 "I am sad. My son was captured by guards. Some idiot claimed he is part of one of the many rebel groups roaming around. All lies! But its pointless, I tried everything in my power to save him. Today he was nailed to the cross.",
 "jew_talk_1",[(troop_set_slot, "trp_global_variables", g_flavor_event_2, 1),
-    (call_script, "script_set_conversation_troop", "trp_arab_poormerchant"),
+    (call_script, "script_set_conversation_troop", "trp_arabian_poormerchant"),
 ]],
 
-[anyone|other(trp_arab_richmerchant),"jew_talk_1",[],
+[anyone|other(trp_arabian_richmerchant),"jew_talk_1",[],
 "I am sorry my friend. But one day we may can live a life in peace in our land. One day... when the Messiah comes to establish a Jewish kingdom.",
 "jew_talk_2",
-[   (call_script, "script_set_conversation_troop", "trp_arab_richmerchant"),
+[   (call_script, "script_set_conversation_troop", "trp_arabian_richmerchant"),
 ]],
 
-[anyone|other(trp_arab_poormerchant),"jew_talk_2",[],
+[anyone|other(trp_arabian_poormerchant),"jew_talk_2",[],
 "I don't believe in this nonsense. Messiahes came and went and nothing changed. With every Messiah who appears things become worse and worse. Such a madman always gathers a group of troublemakers, who also make life difficult for us common folk. For us people who don't want to get involved into politics. People like me, who just want to live a peaceful life are the ones who suffer the most from this nonsense.",
 "jew_3",
-[    (call_script, "script_set_conversation_troop", "trp_arab_poormerchant"),]],
+[    (call_script, "script_set_conversation_troop", "trp_arabian_poormerchant"),]],
 
-[anyone|other(trp_arab_richmerchant),"jew_3",[],
+[anyone|other(trp_arabian_richmerchant),"jew_3",[],
 "You are right. But, we shouldn't give up hope. What else can we do?",
 "jew_4",
-[    (call_script, "script_set_conversation_troop", "trp_arab_richmerchant"),
+[    (call_script, "script_set_conversation_troop", "trp_arabian_richmerchant"),
 ]],
 
-[anyone|other(trp_arab_poormerchant),"jew_4",[],
+[anyone|other(trp_arabian_poormerchant),"jew_4",[],
 "Indeed. I just hope it will get better. Hm, I spend enough time in the tavern, I must prepare the funeral for my son. I will leave now. Farewell and peace be with you, friend!",
 "jew_5",
-[ (call_script, "script_set_conversation_troop", "trp_arab_poormerchant"), ]],
+[ (call_script, "script_set_conversation_troop", "trp_arabian_poormerchant"), ]],
 
-[anyone|other(trp_arab_richmerchant),"jew_5",[],
+[anyone|other(trp_arabian_richmerchant),"jew_5",[],
 "Peace be with you!",
 "close_window",[
-  (call_script, "script_set_conversation_troop", "trp_arab_richmerchant"),
+  (call_script, "script_set_conversation_troop", "trp_arabian_richmerchant"),
   (add_xp_as_reward, 250),
   (assign, "$g_belligerent_drunk_leaving", -1),
   (try_for_agents,":agent_no"),
       (agent_is_alive,":agent_no"),
       (agent_is_human,":agent_no"),
       (agent_get_troop_id, ":agent_troop_no", ":agent_no"),
-      (eq, ":agent_troop_no", "trp_arab_richmerchant"),
+      (eq, ":agent_troop_no", "trp_arabian_richmerchant"),
       (assign, "$g_belligerent_drunk_leaving", ":agent_no"),
   (try_end),
   (try_begin),
@@ -11090,7 +11090,7 @@ dialogs =[
   (try_end),
 ]],
 
-[trp_arab_poormerchant,"start",[(eq, "$talk_context", tc_tavern_talk),
+[trp_arabian_poormerchant,"start",[(eq, "$talk_context", tc_tavern_talk),
 (eq, "$current_town", "p_town_19"),
 (troop_slot_eq, "trp_global_variables", g_flavor_event_2, 1), ],
 "Can't you see I am busy.",
@@ -12391,12 +12391,12 @@ dialogs =[
   (assign, "$temp", 2),
 ]],
 
-[trp_brigand,"start",[
+[trp_roman_bandit,"start",[
   (store_current_scene, ":scene"),
   (eq, ":scene", "scn_greek_game"),
 ],"Blasphemer!", "game_cave_talk_2",[]],
 
-[trp_brigand|plyr,"game_cave_talk_2",[],
+[trp_roman_bandit|plyr,"game_cave_talk_2",[],
 "Fuck off, brigand!", "close_window",[
   (assign, "$temp", 4),
   (try_for_agents, ":agent_no"),
@@ -12407,7 +12407,7 @@ dialogs =[
       (this_or_next|eq, ":troop_no", "trp_guest"),
       (this_or_next|eq, ":troop_no", "trp_guest"),
       (this_or_next|eq, ":troop_no", "trp_bandit"),
-      (eq, ":troop_no", "trp_brigand"),
+      (eq, ":troop_no", "trp_roman_bandit"),
       (agent_set_team, ":agent_no", 1),
       (agent_ai_set_aggressiveness, ":agent_no", 1000),
       (agent_force_rethink, ":agent_no"),
@@ -12415,7 +12415,7 @@ dialogs =[
   (try_end),
 ]],
 
-[trp_brigand|plyr,"game_cave_talk_2",[],
+[trp_roman_bandit|plyr,"game_cave_talk_2",[],
 "Taste my steal, scum!", "close_window",[
   (assign, "$temp", 4),
   (try_for_agents, ":agent_no"),
@@ -12426,7 +12426,7 @@ dialogs =[
       (this_or_next|eq, ":troop_no", "trp_guest"),
       (this_or_next|eq, ":troop_no", "trp_guest"),
       (this_or_next|eq, ":troop_no", "trp_bandit"),
-      (eq, ":troop_no", "trp_brigand"),
+      (eq, ":troop_no", "trp_roman_bandit"),
       (agent_set_team, ":agent_no", 1),
       (agent_ai_set_aggressiveness, ":agent_no", 1000),
       (agent_force_rethink, ":agent_no"),
@@ -12685,7 +12685,7 @@ dialogs =[
 
 ##african merchant
 [anyone, "start",[
-  (is_between, "$g_talk_troop", "trp_arab_richmerchant", "trp_saka_tavernkeeper"),
+  (is_between, "$g_talk_troop", "trp_arabian_richmerchant", "trp_saka_tavernkeeper"),
   (store_random_in_range, ":rand", "str_minor_faction_merchant_intro_0", "str_minor_faction_merchant_intro_end"),
   (str_store_string, s20, ":rand"),
 ],"{s20}",
@@ -41407,7 +41407,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
     (ge, ":r", ":success_chance"),
     (str_store_string, s19, "@Forgive my failure, {s21}. I've only found a couple of peasant girls to follow us. Here is what's left of your coin..."),
 
-    (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+    (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
     (assign, ":troop_no", reg0),
     (party_force_add_members, "p_main_party", ":troop_no", 5),
     (troop_add_gold, "trp_player", 5000),
@@ -41421,13 +41421,13 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
     (le, ":r", 50),
     (str_store_string, s19, "@Fuck it, {s21}! Such a shit! I've only found a couple of peasant girls to follow us. Here is what's left of your coin..."),
 
-    (call_script, "script_get_walker_according_to_subculture", walker_peasant, ":closest_center", tf_female),
+    (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
     (assign, ":troop_no", reg0),
     (party_force_add_members, "p_main_party",":troop_no", 5),
     (troop_add_gold, "trp_player", 500),
   (else_try),
     (str_store_string, s19, "@We are back!!! You'd better open our best wine, {s21}, or these fine witches will cast a spell on you! Look at their grace. I think I'm already enchanted. Haha."),
-    (call_script, "script_get_walker_according_to_subculture", walker_follower, ":closest_center", tf_female),
+    (call_script, "script_get_unit_according_to_subculture", walker_follower, ":closest_center", tf_female),
     (assign, ":troop_no", reg0),
     (party_force_add_members, "p_main_party",":troop_no", 5),
   (try_end),
@@ -41522,13 +41522,13 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
     (party_slot_eq, ":center", slot_party_type, spt_town),
     (str_store_string, s29, "@I bribed some thugs and bandits to attack travellers. I also bribed some workless people to attack the garrison and merchants and they also caused some riots.\
  I also bribed some people to lay fires."),
-    (call_script, "script_center_get_bandits", ":center", 1),
+    (call_script, "script_center_get_bandits", ":center"),
     (assign, ":bandit_troop", reg0),
     (party_set_slot, ":center", slot_center_has_bandits, ":bandit_troop"),
   (else_try),
     (party_slot_eq, ":center", slot_party_type, spt_village),
     (str_store_string, s29, "@I bribed some thugs and bandits to attack the village and to lay fires."),
-    (call_script, "script_center_get_bandits", ":center", 0),
+    (call_script, "script_center_get_bandits", ":center"),
     (assign, ":bandit_troop", reg0),
     (party_set_slot, ":center", slot_village_infested_by_bandits, ":bandit_troop"),
     (party_set_slot, ":center", slot_center_has_bandits, ":bandit_troop"),
@@ -73189,7 +73189,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (display_message, "@A group of women joins your army.", color_good_news),
   (display_message, "@Your men are happy that they have something to 'play' with.", color_good_news),
 
-  (call_script, "script_get_walker_according_to_subculture", walker_follower, "$g_encountered_party", tf_female),
+  (call_script, "script_get_unit_according_to_subculture", walker_follower, "$g_encountered_party", tf_female),
   (assign, ":troop_no", reg0),
   (party_add_members, "p_main_party", ":troop_no", 10),
 ]],
@@ -75270,21 +75270,23 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [
 ]],
 
-[anyone|plyr,"mayor_looters_quest_response",
-[
-     (store_num_parties_destroyed_by_player, ":num_looters_destroyed", "pt_looters"),
-     (party_template_get_slot,":previous_looters_destroyed","pt_looters",slot_party_template_num_killed),
-     (val_sub,":num_looters_destroyed",":previous_looters_destroyed"),
-     (quest_get_slot,":looters_paid_for","qst_deal_with_looters",slot_quest_current_state),
-     (lt,":looters_paid_for",":num_looters_destroyed"),
- ],
-   "I've killed some looters.", "mayor_looters_quest_destroyed",[]],
-[anyone|plyr,"mayor_looters_quest_response",[(eq,1,0)
- ],
-   "I've brought you some goods.", "mayor_looters_quest_goods",[]],
 [anyone|plyr,"mayor_looters_quest_response",[
- ],
-   "Not yet, sir. Farewell.", "close_window",[]],
+  (store_num_parties_destroyed_by_player, ":num_looters_destroyed", "pt_looters"),
+  (party_template_get_slot,":previous_looters_destroyed","pt_looters",slot_party_template_num_killed),
+  (val_sub,":num_looters_destroyed",":previous_looters_destroyed"),
+  (quest_get_slot,":looters_paid_for","qst_deal_with_looters",slot_quest_current_state),
+  (lt,":looters_paid_for",":num_looters_destroyed"),
+],"I've killed some looters.",
+"mayor_looters_quest_destroyed",[]],
+
+[anyone|plyr,"mayor_looters_quest_response",[
+  (eq,1,0)
+],"I've brought you some goods.",
+"mayor_looters_quest_goods",[]],
+
+[anyone|plyr,"mayor_looters_quest_response",[
+],"Not yet, sir. Farewell.",
+"close_window",[]],
 
 [anyone,"mayor_looters_quest_destroyed",[],
    "Yes, my scouts saw the whole thing. That should make anyone else think twice before turning outlaw!\
@@ -77008,7 +77010,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
    (try_for_range,":unused",0,":random_num_looters"),
      (store_random_in_range,":random_radius",1,11),
      (set_spawn_radius,":random_radius"),
-     (call_script, "script_spawn_party","$g_encountered_party","pt_looters"),
+
+     (call_script, "script_create_looter_party","$g_encountered_party",25000),
+
      (assign, ":party", reg0),
      (party_set_flags, ":party", pf_quest_party, 1),
      (party_set_flags, ":party", pf_always_visible, 1),
@@ -86227,7 +86231,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
         (set_visitor, 18, "trp_guest"),
 
         (set_visitor, 19, "trp_bandit"),
-        (set_visitor, 20, "trp_brigand"),
+        (set_visitor, 20, "trp_roman_bandit"),
 
         (set_visitor, 21, "trp_vigilia"),
         (set_visitor, 22, "trp_vigilia"),
@@ -97984,7 +97988,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
       (try_for_range, ":entry", 5, 20),
          (set_visitors, ":entry", "trp_bandit", 1),
-         (set_visitors, ":entry", "trp_brigand", 2),
+         (set_visitors, ":entry", "trp_roman_bandit", 2),
          (set_visitors, ":entry", "trp_looter", 3),
       (try_end),
       (jump_to_scene, "scn_town_riot_rome"),

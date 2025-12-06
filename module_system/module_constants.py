@@ -2336,7 +2336,7 @@ minor_kings_begin = "trp_slavic_king"
 minor_kings_end = "trp_gaetulian_queen"
 
 minor_queens_begin = minor_kings_end
-minor_queens_end   = "trp_arab_richmerchant"
+minor_queens_end   = "trp_arabian_richmerchant"
 
 companions_begin = "trp_npc1"
 companions_end = kings_begin
@@ -3497,7 +3497,7 @@ num_disguises = 6
 disguise_none = 0
 disguise_pilgrim = 1 #default
 disguise_farmer = 2 #trp_farmer
-disguise_hunter = 4 #trp_hispanic_bandit
+disguise_hunter = 4 #trp_hispanic_rebell
 disguise_guard = 8 #trp_caravan_guard
 disguise_merchant = 16 #trp_caravan_master
 disguise_bard = 32
@@ -4419,6 +4419,10 @@ walker_peasant = 2
 walker_slave   = 3
 walker_peasant_warrior = 4
 walker_follower = 5
+walker_bandit = 6
+
+party_template_villagers = 7
+party_template_looters = 8
 
 # household modifers
 household_mod_latifunida_limit  = 0

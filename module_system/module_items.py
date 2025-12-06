@@ -4288,11 +4288,11 @@ weight(get_w_weight(97))|difficulty(10)|spd_rtng(get_1hw_speed(97)) | weapon_len
 get_w_price(97, get_w_weight(97), get_1hw_speed(97), 27, 15),
 weight(get_w_weight(97))|difficulty(10)|spd_rtng(get_1hw_speed(97)) | weapon_length(97)|swing_damage(29 , cut) | thrust_damage(15 ,  pierce),imodbits_sword_high, [], [fac_culture_dacian] ],
 
-["flax_onehanded1", "Onehanded Falx", [("falx58_one",0)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_cleaver|itc_parry_onehanded,
+["flax_onehanded1", "Dacian Sica", [("falx58_one",0)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_cleaver|itc_parry_onehanded,
 get_w_price(58, get_w_weight(58), get_1hw_speed(58), 28, 10),
 weight(get_w_weight(58))|difficulty(9)|spd_rtng(get_1hw_speed(58))|weapon_length(58)|swing_damage(28 , cut) | thrust_damage(10 ,  pierce),imodbits_sword_high, [], [fac_culture_dacian] ],
 
-["flax_onehanded2", "Onehanded Falx", [("falx60_one",0)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_cleaver|itc_parry_onehanded,
+["flax_onehanded2", "Dacian Sica", [("falx60_one",0)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_cleaver|itc_parry_onehanded,
 get_w_price(60, get_w_weight(60), get_1hw_speed(60), 28, 10),
 weight(get_w_weight(60))|difficulty(9)|spd_rtng(get_1hw_speed(60)) | weapon_length(60)|swing_damage(28 , cut) | thrust_damage(10 ,  pierce),imodbits_sword_high, [], [fac_culture_dacian]  ],
 

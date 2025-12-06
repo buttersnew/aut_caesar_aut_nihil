@@ -9232,7 +9232,11 @@ simple_triggers = [
         (set_spawn_radius, 3),
         (call_script, "script_spawn_party",":center", "pt_traveller_ship"),
         (assign, ":new_party", reg0),
-        (call_script, "script_add_villager_party_template_according_to_culture", ":center", ":new_party"),
+
+        (call_script, "script_get_unit_according_to_subculture", party_template_villagers, ":center", -1),
+        (assign, ":template_to_add", reg0),
+        (party_add_template, ":new_party", ":template_to_add"),
+
         (party_set_slot, ":new_party", slot_party_home_center, ":center"),
         (party_set_slot, ":new_party", slot_party_ai_state, spai_travelling),
 

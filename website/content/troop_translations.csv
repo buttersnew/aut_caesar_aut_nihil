@@ -215,9 +215,9 @@ caledonian_noble_swords_vet,Kluddobros (vet),Kluddobroi (vet),Proto-Celtic,The R
 dacian_light_spearman,Dakos Fyletikos Pezos,Daki Fyletikoi Pezoi,Greek,Dacian Tribal Foot-soldier
 dacian_light_spearman_exp,Dakos Fyletikos Pezos (exp),Daki Fyletikoi Pezoi (exp),Greek,Dacian Tribal Foot-soldier (Experienced)
 dacian_light_spearman_vet,Dakos Fyletikos Pezos (vet),Daki Fyletikoi Pezoi (vet),Greek,Dacian Tribal Foot-soldier (Veteran)
-dacian_light_swordman,Kometes Sicaphoros,Komatai Sicaphoroi,Greek,Villager Dagger-man
-dacian_light_swordman_exp,Kometes Sicaphoros (exp),Komatai Sicaphoroi (exp),Greek,Villager Dagger-man (Experienced)
-dacian_light_swordman_vet,Kometes Sicaphoros (vet),Komatai Sicaphoroi (vet),Greek,Villager Dagger-man (Veteran)
+dacian_light_swordman,Kometes Sicaphoros,Komatai Sicaphoroi,Greek,Peasant Sica Bearers
+dacian_light_swordman_exp,Kometes Sicaphoros (exp),Komatai Sicaphoroi (exp),Greek,Peasant Sica Bearers (Experienced)
+dacian_light_swordman_vet,Kometes Sicaphoros (vet),Komatai Sicaphoroi (vet),Greek,Peasant Sica Bearers (Veteran)
 dacian_flaxman,Drapanistes,Drapanistai,Greek,Scythe-man
 dacian_flaxman_vet,Drapanistes (vet),Drapanistai (vet),Greek,Scythe-man (Veteran)
 dacian_flaxman_heavy,Epilektos Drapanistes,Epilektoi Drapanistai,Greek,Chosen / Elite Scythe-man
@@ -448,16 +448,63 @@ legio_v_macedonia_vet,Evocatus Legionis (V Macedonia),Evocati Legionis (V Macedo
 legio_vi_ferrata_vet,Evocatus Legionis (VI Ferrata),Evocati Legionis (VI Ferrata),Latin,Veteran of the 6th Legion Ferrata
 legio_x_fretensis_vet,Evocatus Legionis (X Fretensis),Evocati Legionis (X Fretensis),Latin,Veteran of the 10th Legion Fretensis
 praetoriani_milites_vet,Evocatus Praetoriani,Evocati Praetoriani,Latin,Praetorian Veteran
-looter,Latro,Latrones,Latin,RobberLooter
-bandit,Leistes,Leistai,Greek,BanditRobber
-brigand,Sicarius,Sicarii,Latin,AssassinDagger-man
-judean_sicarius,Iudaicus Sicarius,Iudaici Sicarii,Latin,Judean AssassinDagger-man
+looter,Latro,Latrones,Latin,Robber / Looter
+bandit,Leistes,Leistai,Greek,Bandit / Robber
+judean_sicarius,Iudaicus Sicarius,Iudaici Sicarii,Latin,Judean Assassin / Bandit
 judean_rebel,Iudaicus Rebellis,Iudaici Rebellis,Latin,Judean Rebel
-hispanic_bandit,Hispanicus Rebellis,Hispanici Rebellis,Latin,Hispanic Rebel
-sea_raider,Pirata,Piratae,Latin,PirateSea Raider
+hispanic_rebell,Hispanicus Rebellis,Hispanici Rebellis,Latin,Hispanic Rebel
+sea_raider,Pirata,Piratae,Latin,Pirate / Sea Raider
 black_sea_priate,Pirata Mare Euxinum,Piratae Mare Euxinum,Latin,Pirate of the Black Sea
 alannic_raider,Alanna Baragatae,Alan Baragatae,Old Iranian (Alanic),Alanic Raider
-illyrian_bandit,Illyricus Sicarius,Illyrici Sicarii,Latin,Illyrian AssassinDagger-man
+illyrian_rebell,Illyricus Sicarius,Illyrici Sicarii,Latin,Illyrian Assassin / Bandit
+sarmatian_looter,Sarmata Latro,Sarmatae Latrones, Latin, Sarmatian Looter
+bosporan_looter,Bosporanus Latro,Bosporani Latrones, Latin, Bosporan Looter
+judean_looter,Iudaeus Latro,Iudaei Latrones, Latin, Judean Looter
+parthian_looter,Parthus Latro,Parthi Latrones, Latin, Parthian Looter
+persian_looter,Persa Latro,Persae Latrones, Latin, Persian Looter
+roman_looter,Romanus Latro,Romani Latrones, Latin, Roman Looter
+celtic_looter,Celticus Latro,Celtici Latrones, Latin, Celtic Looter
+germanic_looter,Germanus Latro,Germani Latrones, Latin, Germanic Looter
+dacian_looter,Dacus Latro,Daci Latrones, Latin, Dacian Looter
+thracian_looter,Thracicus Latro,Thracici Latrones, Latin, Thracian Looter
+arabian_looter,Arabs Latro,Arabes Latrones, Latin, Arabian Looter
+syrian_looter,Syrus Latro,Syri Latrones, Latin, Syrian Looter
+eastern_looter,Orientalis Latro,Orientales Latrones, Latin, Eastern Looter
+berber_looter,Maurus Latro,Mauri Latrones, Latin, Berber Looter
+garamantian_looter,Garamans Latro,Garamantes Latrones, Latin, Garamantian Looter
+caucasian_looter,Caucasicus Latro,Caucasici Latrones, Latin, Caucasian Looter
+greek_looter,Graecus Latro,Graeci Latrones, Latin, Greek Looter
+galatian_looter,Galaticus Latro,Galatici Latrones, Latin, Galatian Looter
+illyrian_looter,Illyricus Latro,Illyrici Latrones, Latin, Illyrian Looter
+hispanic_looter,Hispanus Latro,Hispani Latrones, Latin, Hispanic Looter
+gaulish_looter,Gallus Latro,Galli Latrones, Latin, Gaulish Looter
+nubian_looter,Nubianus Latro,Nubiani Latrones, Latin, Nubian Looter
+saka_looter,Sacae Latro,Sacae Latrones, Latin, Saka Looter
+egyptian_looter,Aegyptius Latro,Aegyptii Latrones, Latin, Egyptian Looter
+sarmatian_bandit,Sarmata Leistes,Sarmatae Leistai, Latin, Sarmatian Bandit
+bosporan_bandit,Bosporanus Leistes,Bosporani Leistai, Latin, Bosporan Bandit
+judean_bandit,Iudaeus Leistes,Iudaei Leistai, Latin, Judean Bandit
+parthian_bandit,Parthus Leistes,Parthi Leistai, Latin, Parthian Bandit
+persian_bandit,Persa Leistes,Persae Leistai, Latin, Persian Bandit
+roman_bandit,Romanus Leistes,Romani Leistai, Latin, Roman Bandit
+celtic_bandit,Celticus Leistes,Celtici Leistai, Latin, Celtic Bandit
+germanic_bandit,Germanus Leistes,Germani Leistai, Latin, Germanic Bandit
+dacian_bandit,Dacus Leistes,Daci Leistai, Latin, Dacian Bandit
+thracian_bandit,Thracicus Leistes,Thracici Leistai, Latin, Thracian Bandit
+arabian_bandit,Arabs Leistes,Arabes Leistai, Latin, Arabian Bandit
+syrian_bandit,Syrus Leistes,Syri Leistai, Latin, Syrian Bandit
+eastern_bandit,Orientalis Leistes,Orientales Leistai, Latin, Eastern Bandit
+berber_bandit,Maurus Leistes,Mauri Leistai, Latin, Berber Bandit
+garamantian_bandit,Garamans Leistes,Garamantes Leistai, Latin, Garamantian Bandit
+caucasian_bandit,Caucasicus Leistes,Caucasici Leistai, Latin, Caucasian Bandit
+greek_bandit,Graecus Leistes,Graeci Leistai, Latin, Greek Bandit
+galatian_bandit,Galaticus Leistes,Galatici Leistai, Latin, Galatian Bandit
+illyrian_bandit,Illyricus Leistes,Illyrici Leistai, Latin, Illyrian Bandit
+hispanic_bandit,Hispanus Leistes,Hispani Leistai, Latin, Hispanic Bandit
+gaulish_bandit,Gallus Leistes,Galli Leistai, Latin, Gaulish Bandit
+nubian_bandit,Nubianus Leistes,Nubiani Leistai, Latin, Nubian Bandit
+saka_bandit,Sacae Leistes,Sacae Leistai, Latin, Saka Bandit
+egyptian_bandit,Aegyptius Leistes,Aegyptii Leistai, Latin, Egyptian Bandit
 slave_warrior,Seditiosus Servus,Seditiosi Servi,Latin,Mutinous Slave
 slave_warrior_2,Seditiosus Pedes,Seditiosi Pedites,Latin,Mutinous Foot-soldier
 slave_warrior_3,Seditiosus Hastatus,Seditiosi Hastati,Latin,Mutinous Spearman
