@@ -596,7 +596,7 @@ presentations = presentations_wse2 + [
         (eq, "$g_quick_battle_team_2_faction", "fac_gladiators"),
         (assign, ":cur_troop", "trp_gladiator_murmillo"),
 	  (else_try),
-        (assign, ":cur_troop", "trp_illyrian_bandit"),
+        (assign, ":cur_troop", "trp_illyrian_rebell"),
       (try_end),
       (val_mul, ":cur_troop", 2), #with weapons
       (create_mesh_overlay_with_tableau_material, reg0, -1, "tableau_game_party_window", ":cur_troop"),
@@ -23726,7 +23726,8 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_garmantian"),
       ]),
   ]),
- ("upgrade_tree_13", 0, mesh_load_window, [
+
+("upgrade_tree_13", 0, mesh_load_window, [
     (ti_on_presentation_load,[
       (presentation_set_duration, 999999),
       (set_fixed_point_multiplier, 1000),
@@ -23748,190 +23749,140 @@ presentations = presentations_wse2 + [
 
       (set_container_overlay, reg43),#start scroll
 
-      # --- Female Troop Trees ---
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 4420),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 4420),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 4220),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 4220),
+      # Hispanic (Left) and Gaulish (Right) - Y: 1410
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 56, "trp_hispanic_bandit", 210, 1410),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 55, "trp_hispanic_looter", 60, 1410),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1510),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 124, "trp_syrian_village_walker_female", 60, 4310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 125, "trp_syrian_follower_woman", 210, 4310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 126, "trp_syrian_soldier_wife", 360, 4310),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 4220),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 4220),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 54, "trp_gaulish_bandit", 710, 1410),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 53, "trp_gaulish_looter", 560, 1410),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1510),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_peasant_woman", 60, 4110),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_follower_woman", 210, 4110),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_soldier_wife", 360, 4110),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 4020),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 4020),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 103, "trp_african_woman", 510, 4110),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 104, "trp_african_follower_woman", 660, 4110),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 105, "trp_african_soldier_wife", 810, 4110),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 4020),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 4020),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 106, "trp_saka_woman", 60, 3910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 107, "trp_saka_follower_woman", 210, 3910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 108, "trp_saka_soldier_wife", 360, 3910),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 3820),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 3820),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 109, "trp_sarmatian_village_walker_female", 510, 3910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 110, "trp_sarmatian_follower_woman", 660, 3910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 111, "trp_sarmatian_soldier_wife", 810, 3910),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 3820),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 3820),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 112, "trp_bosporan_village_walker_female", 60, 3710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 113, "trp_bosporan_follower_woman", 210, 3710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 114, "trp_bosporan_soldier_wife", 360, 3710),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 3620),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 3620),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 115, "trp_judean_village_walker_female", 510, 3710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 116, "trp_judean_follower_woman", 660, 3710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 117, "trp_judean_soldier_wife", 810, 3710),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 3620),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 3620),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 118, "trp_eastern_village_walker_female", 60, 3510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 119, "trp_eastern_follower_woman", 210, 3510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 120, "trp_eastern_soldier_wife", 360, 3510),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 3420),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 3420),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 121, "trp_galatian_village_walker_female", 510, 3510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 122, "trp_galatian_follower_woman", 660, 3510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 123, "trp_galatian_soldier_wife", 810, 3510),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 3420),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 3420),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 127, "trp_greek_village_walker_female", 510, 3310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 128, "trp_greek_follower_woman", 660, 3310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 129, "trp_greek_soldier_wife", 810, 3310),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 3220),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 3220),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 130, "trp_illyrian_village_walker_female", 60, 3310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 131, "trp_illyrian_follower_woman", 210, 3310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 132, "trp_illyrian_soldier_wife", 360, 3310),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 3220),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 3220),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 133, "trp_parthian_village_walker_female", 510, 3110),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 134, "trp_parthian_follower_woman", 660, 3110),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 135, "trp_parthian_soldier_wife", 810, 3110),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 3020),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 3020),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 136, "trp_persian_village_walker_female", 60, 3110),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 137, "trp_persian_follower_woman", 210, 3110),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 138, "trp_persian_soldier_wife", 360, 3110),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 3020),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 3020),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 139, "trp_gaul_village_walker_female", 510, 2910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 140, "trp_gaul_follower_woman", 660, 2910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 141, "trp_gaul_soldier_wife", 810, 2910),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 2820),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 2820),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 142, "trp_roman_village_walker_female", 60, 2910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 143, "trp_roman_follower_woman", 210, 2910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 144, "trp_roman_soldier_wife", 360, 2910),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2820),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 2820),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 145, "trp_hispanic_village_walker_female", 510, 2710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 146, "trp_hispanic_follower_woman", 660, 2710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 147, "trp_hispanic_soldier_wife", 810, 2710),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 2620),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 2620),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 148, "trp_celtic_village_walker_female", 60, 2710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 149, "trp_celtic_follower_woman", 210, 2710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 150, "trp_celtic_soldier_wife", 360, 2710),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2620),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 2620),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 151, "trp_germanic_village_walker_female", 510, 2510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 152, "trp_germanic_follower_woman", 660, 2510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 153, "trp_germanic_soldier_wife", 810, 2510),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 2420),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 2420),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 154, "trp_dacian_village_walker_female", 60, 2510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 155, "trp_dacian_follower_woman", 210, 2510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 156, "trp_dacian_soldier_wife", 360, 2510),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2420),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 2420),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 157, "trp_thracian_village_walker_female", 510, 2310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 158, "trp_thracian_follower_woman", 660, 2310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 159, "trp_thracian_soldier_wife", 810, 2310),
+      # Germanic (Left) and Dacian (Right) - Y: 1610
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 52, "trp_germanic_bandit", 210, 1610),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 51, "trp_germanic_looter", 60, 1610),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1710),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 160, "trp_armenian_village_walker_female", 60, 2310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 161, "trp_armenian_follower_woman", 210, 2310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 162, "trp_armenian_soldier_wife", 360, 2310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 50, "trp_dacian_bandit", 710, 1610),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 49, "trp_dacian_looter", 560, 1610),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1710),
+
+      # Thracian (Left) and Caucasian (Right) - Y: 1810
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 48, "trp_thracian_bandit", 210, 1810),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 47, "trp_thracian_looter", 60, 1810),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1910),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 46, "trp_caucasian_bandit", 710, 1810),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 45, "trp_caucasian_looter", 560, 1810),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1910),
+
+      # Arabian (Left) and Egyptian (Right) - Y: 2010
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 44, "trp_arabian_bandit", 210, 2010),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 43, "trp_arabian_looter", 60, 2010),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2110),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 42, "trp_egyptian_bandit", 710, 2010),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 41, "trp_egyptian_looter", 560, 2010),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 2110),
+
+      # Berber (Left) and Garamantian (Right) - Y: 2210
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 40, "trp_berber_bandit", 210, 2210),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 39, "trp_berber_looter", 60, 2210),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2310),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 39, "trp_garamantian_bandit", 710, 2210),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 38, "trp_garamantian_looter", 560, 2210),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 2310),
+
+      # Saka (Left) and Sarmatian (Right) - Y: 2410
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_saka_bandit", 210, 2410),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_saka_looter", 60, 2410),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2510),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 35, "trp_sarmatian_bandit", 710, 2410),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 34, "trp_sarmatian_looter", 560, 2410),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 2510),
+
+      # Bosporan (Left) and Judean (Right) - Y: 2610
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_bosporan_bandit", 210, 2610),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_bosporan_looter", 60, 2610),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2710),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_judean_bandit", 710, 2610),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_judean_looter", 560, 2610),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 2710),
+
+      # Eastern (Left) and Galatian (Right) - Y: 2810
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_eastern_bandit", 210, 2810),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_eastern_looter", 60, 2810),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2910),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_galatian_bandit", 710, 2810),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_galatian_looter", 560, 2810),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 2910),
+
+      # Parthian (Left) and Persian (Right) - Y: 3010
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_parthian_bandit", 210, 3010),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_parthian_looter", 60, 3010),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 3110),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_persian_bandit", 710, 3010),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_persian_looter", 560, 3010),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 3110),
+
+      # Greek (Left) and Illyrian (Right) - Y: 1210
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 60, "trp_greek_bandit", 210, 3210),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 59, "trp_greek_looter", 60, 3210),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 3310),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 58, "trp_illyrian_bandit", 710, 3210),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 57, "trp_illyrian_looter", 560, 3210),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 3310),
 
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_slave", 115, 2100),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_slave_warrior", 265, 2100),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_slave_warrior_2", 415, 2100),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_slave_warrior_3", 565, 2100),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_roman_bandit", 710, 1210),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_roman_looter", 560, 1210),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1310),
 
-      (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 170, 2190),
-      (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 320, 2190),
-      (call_script, "script_prsnt_upgrade_tree_lines", 50, 4, 470, 2190),
-
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_bandit", 210, 1210),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_looter", 60, 1210),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1310),
 
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_alannic_raider", 60, 1910),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_illyrian_bandit", 210, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_alannic_raider", 60, 1210),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_black_sea_priate", 560, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_illyrian_rebell", 60, 1010),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_black_sea_priate", 210, 1010),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_slave_female", 60, 1710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_follower_woman", 210, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_sea_raider", 560, 1010),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_hispanic_bandit", 710, 1010),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_sea_raider", 560, 1710),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_hispanic_bandit", 710, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_desert_bandit", 60, 810),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_arab_noble_cav", 210, 810),
 
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_slave_rebel", 560, 810),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 9, "trp_slave_rebel_2", 710, 810),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 910), #upgrade slave rebel to slave rebel 2
 
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1810),##45 space for x
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 8, "trp_garamantian_horseman", 60, 610),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 7, "trp_garamantian_noble_horseman", 210, 610),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 12, "trp_desert_bandit", 60, 1510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_arab_noble_cav", 210, 1510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 6, "trp_gaetuli_horseman", 560, 610),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 5, "trp_gaetuli_noble_horseman", 710, 610),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_slave_rebel", 560, 1510),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_slave_rebel_2", 710, 1510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 4, "trp_judean_rebel", 255, 200),#850
 
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1610),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_judean_sicarius", 365, 200),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_judean_light_clubman_exp", 515, 350),#1000
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_judean_light_spearman_exp", 515, 50),#700
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_garamantian_horseman", 60, 1310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_garamantian_noble_horseman", 210, 1310),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 300, 290),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_gaetuli_horseman", 560, 1310),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_gaetuli_noble_horseman", 710, 1310),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 420, 290),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 445, 440),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 445, 140),
 
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 20, "trp_judean_rebel", 255, 850),
-
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 21, "trp_judean_sicarius", 365, 850),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_judean_light_clubman_exp", 515, 1000),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_judean_light_spearman_exp", 515, 700),
-
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 300, 940),
-
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 420, 940),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 445, 1090),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 445, 790),
-
-      (call_script, "script_prsnt_upgrade_tree_lines", 4, 304, 443, 790),
-
-
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_looter", 165, 250),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_bandit", 315, 400),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 26, "trp_slave_rebel", 315, 100),
-
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 27, "trp_brigand", 465, 550),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_mercenary_swordsman", 465, 250),
-
-      #looter
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 220, 340),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 245, 490),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 245, 190),
-
-      (call_script, "script_prsnt_upgrade_tree_lines", 4, 304, 243, 190),
-      #bandit
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 370, 490),#
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 395, 640),
-      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 395, 340),
-
-      (call_script, "script_prsnt_upgrade_tree_lines", 4, 304, 393, 340),
+      (call_script, "script_prsnt_upgrade_tree_lines", 4, 304, 443, 140),
 
       (set_container_overlay, -1),#end scroll
     ]),
@@ -23957,12 +23908,167 @@ presentations = presentations_wse2 + [
     ]),
 ]),
 
+("upgrade_tree_13_1", 0, mesh_load_window, [
+    (ti_on_presentation_load,[
+      (presentation_set_duration, 999999),
+      (set_fixed_point_multiplier, 1000),
+
+      (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_saka"),
+
+
+      # clear the string globals that we'll use
+      (str_clear, s0),
+
+      # Scrollable area (all the next overlay will be contained in this, s0 sets the scrollbar)
+      (create_text_overlay, reg43, s0, tf_scrollable_style_2),
+      (position_set_x, pos1, 50),
+      (position_set_y, pos1, 70),
+      (overlay_set_position, reg43, pos1),
+      (position_set_x, pos1, 970),
+      (position_set_y, pos1, 527),
+      (overlay_set_area_size, reg43, pos1),
+
+      (set_container_overlay, reg43),#start scroll
+
+      # --- Female Troop Trees ---
+
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 2220),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 2220),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2220),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 2220),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_peasant_woman", 60, 2110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_follower_woman", 210, 2110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_soldier_wife", 360, 2110),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 2020),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 2020),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 103, "trp_african_woman", 510, 2110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 104, "trp_nubian_follower_woman", 660, 2110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 105, "trp_nubian_african_soldier_wife", 810, 2110),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 2020),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 2020),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 106, "trp_saka_woman", 60, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 107, "trp_saka_follower_woman", 210, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 108, "trp_saka_soldier_wife", 360, 1910),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1820),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 1820),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 109, "trp_sarmatian_village_walker_female", 510, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 110, "trp_sarmatian_follower_woman", 660, 1910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 111, "trp_sarmatian_soldier_wife", 810, 1910),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 1820),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 1820),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 112, "trp_bosporan_village_walker_female", 60, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 113, "trp_bosporan_follower_woman", 210, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 114, "trp_bosporan_soldier_wife", 360, 1710),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1620),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 1620),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 115, "trp_judean_village_walker_female", 510, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 116, "trp_judean_follower_woman", 660, 1710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 117, "trp_judean_soldier_wife", 810, 1710),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 1620),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 1620),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 118, "trp_eastern_village_walker_female", 60, 1510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 119, "trp_eastern_follower_woman", 210, 1510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 120, "trp_eastern_soldier_wife", 360, 1510),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1420),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 1420),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 121, "trp_galatian_village_walker_female", 510, 1510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 122, "trp_galatian_follower_woman", 660, 1510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 123, "trp_galatian_soldier_wife", 810, 1510),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 1420),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 1420),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 127, "trp_greek_village_walker_female", 510, 1310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 128, "trp_greek_follower_woman", 660, 1310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 129, "trp_greek_soldier_wife", 810, 1310),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 1220),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 1220),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 130, "trp_illyrian_village_walker_female", 60, 1310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 131, "trp_illyrian_follower_woman", 210, 1310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 132, "trp_illyrian_soldier_wife", 360, 1310),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1220),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 1220),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 133, "trp_parthian_village_walker_female", 510, 1110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 134, "trp_parthian_follower_woman", 660, 1110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 135, "trp_parthian_soldier_wife", 810, 1110),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 1020),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 1020),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 136, "trp_persian_village_walker_female", 60, 1110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 137, "trp_persian_follower_woman", 210, 1110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 138, "trp_persian_soldier_wife", 360, 1110),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1020),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 1020),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 139, "trp_gaulish_village_walker_female", 510, 910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 140, "trp_gaulish_follower_woman", 660, 910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 141, "trp_gaulish_soldier_wife", 810, 910),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 820),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 820),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 142, "trp_roman_village_walker_female", 60, 910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 143, "trp_roman_follower_woman", 210, 910),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 144, "trp_roman_soldier_wife", 360, 910),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 820),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 820),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 145, "trp_hispanic_village_walker_female", 510, 710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 146, "trp_hispanic_follower_woman", 660, 710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 147, "trp_hispanic_soldier_wife", 810, 710),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 620),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 620),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 148, "trp_celtic_village_walker_female", 60, 710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 149, "trp_celtic_follower_woman", 210, 710),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 150, "trp_celtic_soldier_wife", 360, 710),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 620),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 620),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 151, "trp_germanic_village_walker_female", 510, 510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 152, "trp_germanic_follower_woman", 660, 510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 153, "trp_germanic_soldier_wife", 810, 510),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 565, 420),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 715, 420),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 154, "trp_dacian_village_walker_female", 60, 510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 155, "trp_dacian_follower_woman", 210, 510),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 156, "trp_dacian_soldier_wife", 360, 510),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 420),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 420),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 157, "trp_thracian_village_walker_female", 510, 310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 158, "trp_thracian_follower_woman", 660, 310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 159, "trp_thracian_soldier_wife", 810, 310),
+
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 160, "trp_armenian_village_walker_female", 60, 310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 161, "trp_armenian_follower_woman", 210, 310),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 162, "trp_armenian_soldier_wife", 360, 310),
+
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 220),
+      (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 265, 220),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 124, "trp_syrian_village_walker_female", 60, 110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 125, "trp_syrian_follower_woman", 210, 110),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 126, "trp_syrian_soldier_wife", 360, 110),
+
+      (set_container_overlay, -1),#end scroll
+    ]),
+
+    (ti_on_presentation_mouse_enter_leave,[
+      (store_trigger_param_1, ":object"),
+      (store_trigger_param_2, ":enter_leave"),
+
+      (try_begin),
+        (this_or_next|eq, ":object", "$g_presentation_obj_1"),
+        (eq, ":object", "$g_presentation_obj_3"),
+        (overlay_set_display, "$g_presentation_obj_3", ":enter_leave"),
+      (else_try),
+        (this_or_next|eq, ":object", "$g_presentation_obj_2"),
+        (eq, ":object", "$g_presentation_obj_4"),
+        (overlay_set_display, "$g_presentation_obj_4", ":enter_leave"),
+      (try_end),
+    ]),
+
+    (ti_on_presentation_event_state_change,[
+      (store_trigger_param_1, ":object"),
+      (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_saka"),
+    ]),
+]),
 ("upgrade_tree_14", 0, mesh_load_window,[
   (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
-    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_saka"),
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_syrian"),
 
     # clear the string globals that we'll use
     (str_clear, s0),
@@ -24054,7 +24160,7 @@ presentations = presentations_wse2 + [
 
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":object"),
-    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_saka"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_syrian"),
   ]),
 ]),
 ##########TROOP TREE END

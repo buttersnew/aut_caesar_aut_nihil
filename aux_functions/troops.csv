@@ -512,14 +512,61 @@ legio_x_fretensis_vet,Evocatus Legionis (X Fretensis),Evocati Legionis (X Freten
 praetoriani_milites_vet,Evocatus Praetoriani,Evocati Praetoriani
 looter,Latro,Latrones
 bandit,Leistes,Leistai
-brigand,Sicarius,Sicarii
+sarmatian_looter,Sarmata Latro,Sarmatae Latrones
+bosporan_looter,Bosporanus Latro,Bosporani Latrones
+judean_looter,Iudaeus Latro,Iudaei Latrones
+parthian_looter,Parthus Latro,Parthi Latrones
+persian_looter,Persa Latro,Persae Latrones
+roman_looter,Romanus Latro,Romani Latrones
+celtic_looter,Celticus Latro,Celtici Latrones
+germanic_looter,Germanus Latro,Germani Latrones
+dacian_looter,Dacus Latro,Daci Latrones
+thracian_looter,Thracicus Latro,Thracici Latrones
+arabian_looter,Arabs Latro,Arabes Latrones
+syrian_looter,Syrus Latro,Syri Latrones
+eastern_looter,Orientalis Latro,Orientales Latrones
+berber_looter,Maurus Latro,Mauri Latrones
+garamantian_looter,Garamans Latro,Garamantes Latrones
+caucasian_looter,Caucasicus Latro,Caucasici Latrones
+greek_looter,Graecus Latro,Graeci Latrones
+galatian_looter,Galaticus Latro,Galatici Latrones
+illyrian_looter,Illyricus Latro,Illyrici Latrones
+hispanic_looter,Hispanus Latro,Hispani Latrones
+gaulish_looter,Gallus Latro,Galli Latrones
+nubian_looter,Nubianus Latro,Nubiani Latrones
+saka_looter,Sacae Latro,Sacae Latrones
+egyptian_looter,Aegyptius Latro,Aegyptii Latrones
+sarmatian_bandit,Sarmata Leistes,Sarmatae Leistai
+bosporan_bandit,Bosporanus Leistes,Bosporani Leistai
+judean_bandit,Iudaeus Leistes,Iudaei Leistai
+parthian_bandit,Parthus Leistes,Parthi Leistai
+persian_bandit,Persa Leistes,Persae Leistai
+roman_bandit,Romanus Leistes,Romani Leistai
+celtic_bandit,Celticus Leistes,Celtici Leistai
+germanic_bandit,Germanus Leistes,Germani Leistai
+dacian_bandit,Dacus Leistes,Daci Leistai
+thracian_bandit,Thracicus Leistes,Thracici Leistai
+arabian_bandit,Arabs Leistes,Arabes Leistai
+syrian_bandit,Syrus Leistes,Syri Leistai
+eastern_bandit,Orientalis Leistes,Orientales Leistai
+berber_bandit,Maurus Leistes,Mauri Leistai
+garamantian_bandit,Garamans Leistes,Garamantes Leistai
+caucasian_bandit,Caucasicus Leistes,Caucasici Leistai
+greek_bandit,Graecus Leistes,Graeci Leistai
+galatian_bandit,Galaticus Leistes,Galatici Leistai
+illyrian_bandit,Illyricus Leistes,Illyrici Leistai
+hispanic_bandit,Hispanus Leistes,Hispani Leistai
+gaulish_bandit,Gallus Leistes,Galli Leistai
+nubian_bandit,Nubianus Leistes,Nubiani Leistai
+saka_bandit,Sacae Leistes,Sacae Leistai
+egyptian_bandit,Aegyptius Leistes,Aegyptii Leistai
 judean_sicarius,Iudaicus Sicarius,Iudaici Sicarii
 judean_rebel,Iudaicus Rebellis,Iudaici Rebellis
-hispanic_bandit,Hispanicus Rebellis,Hispanici Rebellis
+hispanic_rebell,Hispanicus Rebellis,Hispanici Rebellis
 sea_raider,Pirata,Piratae
 black_sea_priate,Pirata Mare Euxinum,Piratae Mare Euxinum
 alannic_raider,Alanna Baragatae,Alan Baragatae
-illyrian_bandit,Illyricus Sicarius,Illyrici Sicarii
+illyrian_rebell,Illyricus Sicarius,Illyrici Sicarii
 slave_warrior,Seditiosus Servus,Seditiosi Servi
 slave_warrior_2,Seditiosus Pedes,Seditiosi Pedites
 slave_warrior_3,Seditiosus Hastatus,Seditiosi Hastati
@@ -538,7 +585,7 @@ greek_follower_woman,Graeca Focaria,Graecae Focariae
 illyrian_follower_woman,Illyrica Focaria,Illyricae Focariae
 parthian_follower_woman,Parthica Focaria,Parthicae Focariae
 persian_follower_woman,Persica Focaria,Persicae Focariae
-gaul_follower_woman,Gallica Focaria,Gallicae Focariae
+gaulish_follower_woman,Gallica Focaria,Gallicae Focariae
 roman_follower_woman,Romana Focaria,Romanae Focariae
 hispanic_follower_woman,Hispana Focaria,Hispanae Focariae
 celtic_follower_woman,Celtica Focaria,Celticae Focariae
@@ -563,7 +610,7 @@ greek_soldier_wife,Graeca Coniunx,Graecae Coniuges
 illyrian_soldier_wife,Illyrica Coniunx,Illyricae Coniuges
 parthian_soldier_wife,Parthica Coniunx,Parthicae Coniuges
 persian_soldier_wife,Persica Coniunx,Persicae Coniuges
-gaul_soldier_wife,Gallica Coniunx,Gallicae Coniuges
+gaulish_soldier_wife,Gallica Coniunx,Gallicae Coniuges
 roman_soldier_wife,Romana Coniunx,Romanae Coniuges
 hispanic_soldier_wife,Hispana Coniunx,Hispanae Coniuges
 celtic_soldier_wife,Celtica Coniunx,Celticae Coniuges
@@ -651,7 +698,7 @@ parthian_village_walker_female,Parthica Tribulis Mulier,Parthicae Tribules Mulie
 persian_village_walker,Persicus Rusticus,Persici Rustici
 persian_village_walker_female,Persica Rustica,Persicae Rusticae
 gaul_village_walker,Gallicus Rusticus,Gallici Rustici
-gaul_village_walker_female,Gallica Rustica,Gallicae Rusticae
+gaulish_village_walker_female,Gallica Rustica,Gallicae Rusticae
 roman_village_walker,Romanus Rusticus,Romani Rustici
 roman_village_walker_female,Romana Rustica,Romanae Rusticae
 hispanic_village_walker,Hispanus Rusticus,Hispani Rustici
@@ -2260,8 +2307,8 @@ saka_king,Skunxa the Great,Skunxa the Great
 gaetulian_queen,Farina,Farina
 arabian_queen,Sheikha Shaqilath,Sheikha Shaqilath
 garamantian_queen,Darta,Darta
-arab_richmerchant,Merchant,Merchants
-arab_poormerchant,Merchant,Merchants
+arabian_richmerchant,Merchant,Merchants
+arabian_poormerchant,Merchant,Merchants
 african_richmerchant,Merchant,Merchants
 african_poormerchant,Merchant,Merchants
 caucasian_richmerchant,Merchant,Merchants

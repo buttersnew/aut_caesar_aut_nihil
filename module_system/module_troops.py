@@ -456,8 +456,10 @@ parthian_helm_cavalry = [itm_parthian_helm_cavalry_1, itm_parthian_helm_cavalry_
 parthian_helm_cavalry_heavy = [itm_parthian_helm_cavalry_heavy_1, itm_parthian_helm_cavalry_heavy_2]
 parthian_helm_infantry = [itm_parthian_helm_inf_1, itm_parthian_helm_inf_2]
 parthian_helm_infantry_heavy = [itm_parthian_helm_inf_heavy_1, itm_parthian_helm_inf_heavy_2,itm_parthian_helm_inf_heavy_3,itm_parthian_helm_inf_heavy_4]
-parthian_helm_phyrgian = [itm_phrygian_cap,itm_phrygian_cap_yellow,itm_phrygian_cap_white,itm_phrygian_cap_red,itm_phrygian_cap_black,itm_phrygian_cap_green,itm_phrygian_cap_blue,]
+parthian_helm_phyrgian = [itm_phrygian_cap,itm_phrygian_cap_yellow,itm_phrygian_cap_white,itm_phrygian_cap_red,itm_phrygian_cap_black,itm_phrygian_cap_green,itm_phrygian_cap_blue]
 armenian_helm_heavy = [itm_armenian_helm_heavy_1,itm_armenian_helm_heavy_2,itm_armenian_helm_heavy_3]
+
+phyrigan_caps = [itm_phrygian_cap,itm_phrygian_cap_yellow,itm_phrygian_cap_white,itm_phrygian_cap_red,itm_phrygian_cap_black,itm_phrygian_cap_green,itm_phrygian_cap_blue]
 
 persian_helm_light = [itm_perisan_headcloth_1,itm_perisan_headcloth_2,itm_perisan_headcloth_3,itm_perisan_headcloth_4]
 
@@ -768,6 +770,19 @@ syrian_head_peasant = [itm_tuareg_new_1_blue,itm_tuareg_new_1_red,itm_tuareg_new
 gladiator_armors = [itm_arena_armor_yellow,itm_arena_armor_red,itm_arena_armor_blue,itm_arena_armor_green]
 gladiator_shields = [itm_arena_shield_red,itm_arena_shield_blue,itm_arena_shield_green,itm_arena_shield_yellow]
 
+generic_bandit_armour = [
+  itm_generic_poor1,itm_generic_poor2
+]
+generic_bandit_shields = [
+  itm_hide_covered_round_shield,itm_wooden_shield,itm_hide_covered_round_shield_2
+]
+generic_clubs = [
+  itm_club,itm_club_2,itm_club_3,itm_spiked_club
+]
+generic_poor_head_cloths = [
+  itm_head_wrappings,itm_headcloth,itm_simple_hood_1,itm_simple_hood_2
+]
+
 troops = [
 ["player","Player","Player",tf_hero|tf_unmoveable_in_party_window,no_scene,reserved,fac_player_faction,[],str_4|agi_4|int_4|cha_4,wp(15),0,0x000000002708300432db74b65b71badb00000000001db6d20000000000000000],
 ["multiplayer_profile_troop_male","multiplayer_profile_troop_male","multiplayer_profile_troop_male", tf_hero|tf_guarantee_all, 0, 0,fac_commoners,[],hero_attrib,0,knows_hero,0x000000018000000136db6db6db6db6db00000000001db6db0000000000000000],
@@ -859,7 +874,7 @@ attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_fa
 attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
 
 ["eastern_peasant", "Orientalis Tribulis", "Orientales Tribules",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
-[itm_sling,itm_sling_rock1]+desert_head_peasant+eastern_roman_tunic+roman_foot_peasant+roman_weapons_peasant+caucasian_head_peasant,
+[itm_sling,itm_sling_rock1]+phyrigan_caps+eastern_roman_tunic+roman_foot_peasant+roman_weapons_peasant+caucasian_head_peasant,
 attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
 
 ["berber_peasant", "Maurus Tribulis", "Mauri Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_berber,
@@ -2935,18 +2950,249 @@ attrib_level_31, wp(220), knows_level_31, roman_face1, roman_face2 ],
 itm_club,itm_club_2,itm_club_3,itm_spiked_club,itm_head_wrappings,itm_headcloth,itm_woolen_cap,itm_hand_axe,itm_hammer,
 itm_simple_hood_1,itm_simple_hood_2,itm_generic_poor1,itm_generic_poor2],
 attrib_level_6, wp(50), knows_level_6, bandit_face1, bandit_face2 ],
+
 ["bandit", "Leistes", "Leistai", tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_wooden_shield,itm_hide_covered_round_shield,itm_hide_covered_round_shield_2,
 itm_leather_boots,itm_rawhide_coat,itm_pelt_coat,
 itm_fur_hat,itm_nomad_cap,itm_footman_helmet,itm_mace_1,itm_boar_spear,itm_hand_axe,itm_hammer,
 itm_simple_hood_1,itm_simple_hood_2,itm_generic_poor1,itm_generic_poor2],
 attrib_level_12, wp(80), knows_level_12, bandit_face1, bandit_face2 ],
-["brigand", "Sicarius", "Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
-[itm_throwing_spears,itm_wooden_shield,itm_hide_covered_round_shield,itm_eastern_sica_rusty,itm_hide_covered_round_shield_2,
-itm_leather_boots,itm_rawhide_coat,itm_pelt_coat,
-itm_fur_hat,itm_nomad_cap,itm_footman_helmet,itm_hand_axe,itm_mace_1,itm_boar_spear,
-itm_simple_hood_1,itm_simple_hood_2,itm_generic_poor1,itm_generic_poor2],
-attrib_level_18, wp(110), knows_level_18, bandit_face1, bandit_face2 ],
+
+["sarmatian_looter", "Sarmata Latro", "Sarmatae Latrones", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
+[itm_sling,itm_sling_rock1]+nomadic_tunic+nomadic_foot_peasant+nomadic_head_peasant+nomadic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, scythian_face_11, scythian_face_12 ],
+
+["bosporan_looter", "Bosporanus Latro", "Bosporani Latrones", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_bosporan,
+[itm_sling,itm_sling_rock1]+bosporan_tunic+bosporan_foot_peasant+bosporan_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, scythian_face_11, scythian_face_12 ],
+
+["judean_looter","Iudaeus Latro","Iudaei Latrones",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_culture_judean,
+[itm_sling,itm_sling_rock1]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6,wp(100),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
+
+["parthian_looter","Parthus Latro","Parthi Latrones",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_culture_parthian,
+[itm_sling,itm_sling_rock1]+parthian_tunic+persian_tunic_sheepskin+parthian_foot_peasant+parthian_head_peasant+parthian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6,wp(100),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
+
+["persian_looter","Persa Latro","Persae Latrones",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_commoners,
+[itm_sling,itm_sling_rock1]+persian_tunic+persian_tunic_sheepskin+persian_foot_peasant+persian_head_peasant+parthian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6,wp(100),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
+
+["roman_looter", "Romanus Latro", "Romani Latrones", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_roman,
+[itm_sling,itm_sling_rock1]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
+
+["celtic_looter", "Celticus Latro", "Celtici Latrones", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_celtic,
+[itm_sling,itm_sling_rock1]+celtic_foot_peasant+celtic_tunic+celtic_head_peasant+celtic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["germanic_looter", "Germanus Latro", "Germani Latrones", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_germanic,
+[itm_sling,itm_sling_rock1]+germanic_foot_peasant+germanic_tunic+germanic_head_peasant+germanic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["dacian_looter", "Dacus Latro", "Daci Latrones", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_dacian,
+[itm_sling,itm_sling_rock1]+dacian_tunic+dacian_foot_peasant+dacian_head_peasant+dacian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["thracian_looter", "Thracicus Latro", "Thracici Latrones", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[itm_sling,itm_sling_rock1]+dacian_tunic+dacian_foot_peasant+dacian_head_peasant+dacian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["arabian_looter", "Arabs Latro", "Arabes Latrones",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_arabian,
+[itm_sling,itm_sling_rock1]+desert_head_peasant+desert_tunic+eastern_foot_peasant+desert_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
+
+["syrian_looter", "Syrus Latro", "Syri Latrones",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_syrian,
+[itm_sling,itm_sling_rock1]+syrian_head_peasant+syria_foot_peasant+syrian_weapons_peasant+syrian_tunic+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
+
+["eastern_looter", "Orientalis Latro", "Orientales Latrones",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[itm_sling,itm_sling_rock1]+desert_head_peasant+eastern_roman_tunic+roman_foot_peasant+roman_weapons_peasant+caucasian_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_face_old_2 ],
+
+["berber_looter", "Maurus Latro", "Mauri Latrones",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_berber,
+[itm_sling,itm_sling_rock1]+berber_foot_peasant+berber_tunic+berber_head_peasant+berber_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
+
+["garamantian_looter", "Garamans Latro", "Garamantes Latrones",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_garmantian,
+[itm_sling,itm_sling_rock1]+garamantian_foot_peasant+garamantian_tunic+garamantian_head_peasant+garamantian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
+
+["caucasian_looter", "Caucasicus Latro", "Caucasici Latrones", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_caucasian,
+[itm_sling,itm_sling_rock1]+caucasian_foot_peasant+caucasian_tunic+caucasian_head_peasant+caucasian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, armenian_face_young, armenian_face_middle ],
+
+["greek_looter", "Graecus Latro", "Graeci Latrones", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_greek,
+[itm_sling,itm_sling_rock1]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(60), knows_level_6, mercenary_face_greek_1, mercenary_face_greek_2 ],
+
+["galatian_looter", "Galaticus Latro", "Galatici Latrones", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[itm_sling,itm_sling_rock1]+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(60), knows_level_6, mercenary_face_greek_1, mercenary_face_greek_2 ],
+
+["illyrian_looter", "Illyricus Latro", "Illyrici Latrones", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[itm_sling,itm_sling_rock1,itm_illyrian_light1,itm_illyrian_light2]+celtic_foot_peasant +celtic_head_peasant+celtic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["hispanic_looter", "Hispanus Latro", "Hispani Latrones", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[itm_sling,itm_sling_rock1]+celtic_foot_peasant+iberian_tunic+celtic_head_peasant+celtic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["gaulish_looter", "Gallus Latro", "Galli Latrones", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[itm_sling,itm_sling_rock1]+celtic_foot_peasant+celtic_tunic+celtic_head_peasant+celtic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["nubian_looter", "Nubianus Latro", "Nubiani Latrones", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_nubian,
+[itm_sling,itm_sling_rock1]+garamantian_foot_peasant+[itm_nubian_kilt_3, itm_nubian_kilt_2, itm_nubian_kilt]+garamantian_head_peasant+garamantian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
+
+["saka_looter", "Sacae Latro", "Sacae Latrones", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_saka,
+[itm_sling,itm_sling_rock1]+nomadic_foot_peasant+nomadic_tunic+nomadic_head_peasant+nomadic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(100), knows_level_6, saka_face_1, saka_face_2 ],
+
+["egyptian_looter", "Aegyptius Latro", "Aegyptii Latrones", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_egyptian,
+[itm_sling,itm_sling_rock1]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_6, wp(60), knows_level_6, north_african_man_face_younger_1, north_african_man_face_older_2 ],
+
+["sarmatian_bandit", "Sarmata Leistes", "Sarmatae Leistai", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
+[
+    itm_nomad_bow, itm_arrows, itm_sarmatian_ringsword_1
+]+nomadic_tunic+nomadic_foot_peasant+nomadic_head_peasant+generic_bandit_armour+generic_poor_head_cloths+generic_clubs,
+attrib_level_12, wp(150), knows_level_12, scythian_face_11, scythian_face_12 ],
+
+["bosporan_bandit", "Bosporanus Leistes", "Bosporani Leistai", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_bosporan,
+[
+    itm_bosporan_oval_color_1,itm_bosporan_oval_color_2, itm_shortened_spear, itm_spear, itm_throwing_spears
+]+bosporan_tunic+bosporan_foot_peasant+generic_bandit_shields+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(150), knows_level_12, scythian_face_11, scythian_face_12 ],
+
+["judean_bandit","Iudaeus Leistes","Iudaei Leistai",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_culture_judean,
+[
+    itm_old_gladius_2, itm_old_gladius_1,itm_sling,itm_sling_lead, itm_old_round_shield_5, itm_old_round_shield_4
+]+eastern_roman_tunic+eastern_foot_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12,wp(150),knows_level_12,eastern_man_face_younger_1,eastern_man_face_older_2],
+
+["parthian_bandit","Parthus Leistes","Parthi Leistai",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_culture_parthian,
+[
+    itm_eastern_spear_149,itm_persian_bow,itm_arrows
+]+parthian_tunic+persian_tunic_sheepskin+parthian_foot_peasant+parthian_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12,wp(150),knows_level_12,eastern_man_face_younger_1,eastern_man_face_older_2],
+
+["persian_bandit","Persa Leistes","Persae Leistai",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged,0,0,fac_commoners,
+[
+    itm_eastern_spear_149
+]+persian_tunic+persian_tunic_sheepskin+persian_foot_peasant+persian_head_peasant+eastern_shields_wicker_oval+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12,wp(150),knows_level_12,eastern_man_face_younger_1,eastern_man_face_older_2],
+
+["roman_bandit", "Romanus Leistes", "Romani Leistai", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_roman,
+[
+    itm_sling,itm_sling_lead, itm_old_gladius_2, itm_old_gladius_1, itm_old_round_shield_3, itm_old_round_shield_2
+]+roman_tunic+roman_foot_peasant+roman_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+generic_bandit_shields,
+attrib_level_12, wp(60), knows_level_12, white_face_21, white_face_22 ],
+
+["celtic_bandit", "Celticus Leistes", "Celtici Leistai", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_celtic,
+[]+celtic_foot_peasant+celtic_tunic+celtic_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+generic_bandit_shields+celtic_spear+celtic_shield_round,
+attrib_level_12, wp(150), knows_level_12, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["germanic_bandit", "Germanus Leistes", "Germani Leistai", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_germanic,
+[
+    itm_short_bow, itm_arrows, itm_germanic_shield_1, itm_germanic_shield_2, itm_germanic_shield_3, itm_shortened_spear
+
+]+germanic_foot_peasant+germanic_tunic+germanic_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+generic_bandit_shields,
+attrib_level_12, wp(150), knows_level_12, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["dacian_bandit", "Dacus Leistes", "Daci Leistai", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_dacian,
+[
+    itm_short_bow, itm_arrows, itm_flax_onehanded2, itm_flax_onehanded1
+]+dacian_tunic+dacian_foot_peasant+dacian_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+generic_bandit_shields+dacian_shield_round,
+attrib_level_12, wp(150), knows_level_12, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["thracian_bandit", "Thracicus Leistes", "Thracici Leistai", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[
+    itm_sling,itm_sling_lead, itm_eastern_sica_rusty,
+]+dacian_tunic+dacian_foot_peasant+dacian_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+generic_bandit_shields,
+attrib_level_12, wp(150), knows_level_12, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["arabian_bandit", "Arabs Leistes", "Arabes Leistai",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_arabian,
+[
+    itm_arrows, itm_shortened_spear, itm_arabian_bow_1, itm_arabian_oval_shield_2, itm_arabian_oval_shield_1
+]+desert_head_peasant+desert_tunic+eastern_foot_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(150), knows_level_12, eastern_man_face_young_1, eastern_man_face_old_2 ],
+
+["syrian_bandit", "Syrus Leistes", "Syri Leistai",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_syrian,
+[
+    itm_arrows, itm_shortened_spear, itm_arabian_bow_1, itm_arabian_oval_shield_2, itm_arabian_oval_shield_1
+]+syrian_head_peasant+syria_foot_peasant+syrian_tunic+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+eastern_shields_wicker_smallround,
+attrib_level_12, wp(150), knows_level_12, eastern_man_face_young_1, eastern_man_face_old_2 ],
+
+["eastern_bandit", "Orientalis Leistes", "Orientales Leistai",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[
+    itm_sling,itm_sling_rock1,itm_old_gladius_1, itm_eastern_sica_rusty
+]+phyrigan_caps+eastern_roman_tunic+roman_foot_peasant+caucasian_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+eastern_shields_wicker_smallround,
+attrib_level_12, wp(150), knows_level_12, eastern_man_face_young_1, eastern_man_face_old_2 ],
+
+["berber_bandit", "Maurus Leistes", "Mauri Leistai",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_berber,
+[
+    itm_numidian_spear_1,itm_javelin_berber
+]+berber_foot_peasant+berber_tunic+berber_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+eastern_shields_wicker_smallround,
+attrib_level_12, wp(150), knows_level_12, north_african_man_face_middle_1, north_african_man_face_older_2 ],
+
+["garamantian_bandit", "Garamans Leistes", "Garamantes Leistai",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_garmantian,
+[
+    itm_numidian_spear_1,itm_javelin_berber
+]+garamantian_foot_peasant+garamantian_tunic+garamantian_head_peasant+eastern_shields_wicker_smallround+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(150), knows_level_12, north_african_man_face_middle_1, north_african_man_face_older_2 ],
+
+["caucasian_bandit", "Caucasicus Leistes", "Caucasici Leistai", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_caucasian,
+[
+    itm_short_bow, itm_arrows, itm_caucasian_spear_145, itm_armenian_axe_1
+]+caucasian_foot_peasant+caucasian_tunic+caucasian_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+generic_bandit_shields+eastern_shields_wicker_smallround,
+attrib_level_12, wp(150), knows_level_12, armenian_face_young, armenian_face_middle ],
+
+["greek_bandit", "Graecus Leistes", "Graeci Leistai", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_greek,
+[itm_sling,itm_sling_lead,itm_old_gladius_1,itm_old_gladius_2,itm_old_round_shield_1,itm_old_round_shield_2, itm_roman_work_axe
+]+roman_tunic+roman_foot_peasant+roman_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(60), knows_level_12, mercenary_face_greek_1, mercenary_face_greek_2 ],
+
+["galatian_bandit", "Galaticus Leistes", "Galatici Leistai", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[
+    itm_roman_work_axe, itm_old_gladius_1, itm_old_gladius_2,itm_old_round_shield_3,itm_old_round_shield_4
+]+roman_tunic+roman_foot_peasant+roman_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(60), knows_level_12, mercenary_face_greek_1, mercenary_face_greek_2 ],
+
+["illyrian_bandit", "Illyricus Leistes", "Illyrici Leistai", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[
+    itm_illyrian_light1,itm_illyrian_light2, itm_illyrian_medium3, itm_illyrian_leader_cap,itm_leather_covered_round_shield,itm_spear,itm_war_spear,itm_eastern_sica_rusty
+]+celtic_foot_peasant +celtic_head_peasant+generic_bandit_shields+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(150), knows_level_12, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["hispanic_bandit", "Hispanus Leistes", "Hispani Leistai", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[
+    itm_old_gladius_1,itm_old_gladius_2,itm_sling,itm_sling_lead,itm_celtic_round_shild3,itm_celtic_round_shild2,itm_celtic_round_shild1,itm_kopfband
+]+celtic_foot_peasant+iberian_tunic+celtic_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(150), knows_level_12, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["gaulish_bandit", "Gallus Leistes", "Galli Leistai", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_commoners,
+[itm_sling,itm_sling_rock1]+celtic_foot_peasant+celtic_tunic+celtic_head_peasant+celtic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(150), knows_level_12, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
+
+["nubian_bandit", "Nubianus Leistes", "Nubiani Leistai", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_nubian,
+[
+    itm_african_shield_1,itm_african_shield_2,itm_african_shield_3, itm_shortened_spear
+]+garamantian_foot_peasant+[itm_nubian_kilt_3, itm_nubian_kilt_2, itm_nubian_kilt]+garamantian_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(150), knows_level_12, nubian_man_face_younger_1, nubian_man_face_older_2 ],
+
+["saka_bandit", "Sacae Leistes", "Sacae Leistai", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_saka,
+[
+   itm_khergit_bow_2 , itm_sarmatian_arrows_1, itm_sarmatian_ringsword_1
+]+nomadic_foot_peasant+nomadic_tunic+nomadic_head_peasant+nomadic_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(150), knows_level_12, saka_face_1, saka_face_2 ],
+
+["egyptian_bandit", "Aegyptius Leistes", "Aegyptii Leistai", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_egyptian,
+[
+    itm_old_gladius_1, itm_old_gladius_2,itm_short_bow,itm_arrows, itm_old_round_shield_4, itm_old_round_shield_5
+]+eastern_roman_tunic+eastern_foot_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+attrib_level_12, wp(60), knows_level_12, north_african_man_face_younger_1, north_african_man_face_older_2 ],
 
 ["judean_sicarius", "Iudaicus Sicarius", "Iudaici Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_judean,[itm_caligea, itm_eastern_sica, itm_eastern_sica_rusty,itm_sling_lead,itm_sling,
 itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2
@@ -2957,7 +3203,8 @@ attrib_level_18_warrior, wp(160), knows_level_18_warrior, arab_face_young, arab_
 [itm_spiked_club,itm_sling_rock1,itm_sling_lead,itm_sling,itm_caligea,itm_javelin,itm_club,itm_club_2,itm_club_3,itm_ad_mixed_round_shields_07,
 itm_ad_mixed_round_shields_08,itm_old_gladius_1,itm_old_gladius_2,itm_eastern_helm1,itm_sarranid_felt_hat]+jew_tunics_1+jew_tunics_2 + talits,
 attrib_level_16_warrior, wp(135), knows_level_16_warrior, arab_face_young, arab_face_old ],
-["hispanic_bandit", "Hispanicus Rebellis", "Hispanici Rebellis", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
+
+["hispanic_rebell", "Hispanicus Rebellis", "Hispanici Rebellis", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_celtic_round_shild3,itm_celtic_round_shild2,itm_celtic_round_shild1,itm_iberian_light5,itm_iberian_light6,itm_iberian_heavy1,
 itm_iberian_medium2,itm_iberian_medium3,itm_caligea,itm_spear,itm_war_spear,itm_javelin,itm_hand_axe,itm_throwing_spears,
 itm_footman_helmet,itm_ad_mixed_round_shields_02,itm_ad_mixed_round_shields_01,
@@ -2988,7 +3235,7 @@ itm_sarmatian_shoes,itm_alan_long_sword,itm_alan_long_sword_ring,itm_sarmatian_c
 ]+horse_steppe,
 attrib_level_23_warrior, wp(150), knows_archer_basic_eastern, scythian_face_21, scythian_face_22 ],
 
-["illyrian_bandit", "Illyricus Sicarius", "Illyrici Sicarii", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
+["illyrian_rebell", "Illyricus Sicarius", "Illyrici Sicarii", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_spear,itm_javelin,itm_illyrian_medium3,itm_illyrian_light1,itm_illyrian_light2,
 itm_illyrian_medium4,itm_illyrian_medium1,itm_illyrian_shield_large1,itm_illyrian_shield_large2,
 itm_illyrian_shield_heavy1,itm_illyrian_shield_heavy2,
@@ -3028,7 +3275,7 @@ attrib_level_29_warrior, wp_melee(195), knows_level_29_warrior, mercenary_face_1
 itm_butchering_knife,itm_butchering_knife_2,itm_hammer,itm_hand_axe,itm_stones],
 attrib_level_6, wp(50), knows_level_6, refugee_face1, refugee_face2 ],
 
-["african_follower_woman","Nubiana Focaria", "Nubianae Focariae", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
+["nubian_follower_woman","Nubiana Focaria", "Nubianae Focariae", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
 [itm_arrows, itm_short_bow, itm_spear, itm_knife,itm_sarranid_common_dress,itm_head_wrappings,itm_caligea],
 attrib_level_6, wp(40), knows_level_6, african_face_female, african_face_female2 ],
 ["saka_follower_woman","Sacica Focaria", "Sacicae Focariae", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_saka,
@@ -3064,7 +3311,7 @@ attrib_level_6,wp(40),knows_level_6,woman_face_1,woman_face_2],
 ["persian_follower_woman","Persica Focaria","Persicae Focariae",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 [itm_arrows, itm_short_bow, itm_spear]+persian_dress_peasant+persian_foot_peasant+parthian_weapons_peasant,
 attrib_level_6,wp(40),knows_level_6,woman_face_1,woman_face_2],
-["gaul_follower_woman", "Gallica Focaria", "Gallicae Focariae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["gaulish_follower_woman", "Gallica Focaria", "Gallicae Focariae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_arrows, itm_short_bow, itm_spear]+roman_dress_peasant+roman_foot_peasant+roman_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 ["roman_follower_woman", "Romana Focaria", "Romanae Focariae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_roman,
@@ -3106,7 +3353,7 @@ attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 itm_spear, itm_arrows,itm_short_bow,itm_fur_covered_shield,itm_simple_thraex_shield,itm_sword_akinakes],
 attrib_level_12, wp(120), knows_level_12, refugee_face1, refugee_face2 ],
 
-["african_soldier_wife","Nubiana Coniunx", "Nubianae Coniuges", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
+["nubian_african_soldier_wife","Nubiana Coniunx", "Nubianae Coniuges", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
 [itm_arrows, itm_short_bow, itm_spear, itm_knife,itm_sarranid_common_dress,itm_head_wrappings,itm_caligea],
 attrib_level_12, wp(80), knows_level_12, african_face_female, african_face_female2 ],
 ["saka_soldier_wife","Sacica Coniunx", "Sacicae Coniuges", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_saka,
@@ -3142,7 +3389,7 @@ attrib_level_12,wp(80),knows_level_12,woman_face_1,woman_face_2],
 ["persian_soldier_wife","Persica Coniunx","Persicae Coniuges",tf_female|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 [itm_arrows, itm_short_bow, itm_spear]+persian_dress_peasant+persian_foot_peasant+parthian_weapons_peasant,
 attrib_level_12,wp(80),knows_level_12,woman_face_1,woman_face_2],
-["gaul_soldier_wife", "Gallica Coniunx", "Gallicae Coniuges", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["gaulish_soldier_wife", "Gallica Coniunx", "Gallicae Coniuges", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_arrows, itm_short_bow, itm_spear]+roman_dress_peasant+roman_foot_peasant+roman_weapons_peasant,
 attrib_level_12, wp(80), knows_level_12, woman_face_1, woman_face_2 ],
 ["roman_soldier_wife", "Romana Coniunx", "Romanae Coniuges", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_roman,
@@ -3396,7 +3643,7 @@ attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_
 attrib_level_6, wp(40), knows_level_6, arab_face_female, arab_face_female2],
 
 ["eastern_village_walker","Orientalis Rusticus","Orientales Rustici",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
-[]+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
+[]+phyrigan_caps+eastern_roman_tunic+eastern_foot_peasant+roman_weapons_peasant,
 attrib_level_6,wp(60),knows_level_6,eastern_man_face_younger_1,eastern_man_face_older_2],
 ["eastern_village_walker_female", "Orientalis Rustica", "Orientales Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+eastern_dress_peasant+eastern_foot_peasant+roman_weapons_peasant,
@@ -3447,7 +3694,7 @@ attrib_level_6,wp(40),knows_level_6,woman_face_1,woman_face_2],
 ["gaul_village_walker", "Gallicus Rusticus", "Gallici Rustici", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 []+roman_tunic+roman_foot_peasant+roman_weapons_peasant+roman_head_peasant,
 attrib_level_6, wp(60), knows_level_6, white_face_21, white_face_22 ],
-["gaul_village_walker_female", "Gallica Rustica", "Gallicae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["gaulish_village_walker_female", "Gallica Rustica", "Gallicae Rusticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 []+roman_dress_peasant+roman_foot_peasant+roman_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, woman_face_1, woman_face_2 ],
 
@@ -6339,10 +6586,10 @@ def_attrib|level(4), wp(60), knows_common, 0x000000079100a19b3f137236e394da63000
 [itm_eastern_shoe_y,itm_sarranid_lady_dress_b],
 def_attrib|level(4), wp(60), knows_common, 0x00000003ff00b1961c90b4c262b1689900000000001f34dc0000000000000000 ],
 
-["arab_richmerchant","Merchant","Merchants", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
+["arabian_richmerchant","Merchant","Merchants", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
 [itm_eastern_shoe,itm_archers_vest_2],
 def_attrib|level(18),wp(60),knows_inventory_management_10,arab_face_young, arab_face_old],
-["arab_poormerchant","Merchant","Merchants", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
+["arabian_poormerchant","Merchant","Merchants", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
 [itm_sarranid_cloth_robe,itm_caligea],
 def_attrib|level(18),wp(60),knows_inventory_management_10,arab_face_young, arab_face_old],
 
@@ -6453,8 +6700,7 @@ def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_
   itm_caligea,itm_numidian_armor_2],
 def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_african_man_face_old_1], # Gaetulian Slave Trader
 
-["slave_trader_bandit","Lestes Doulemporos","Lestai Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_caligea,itm_roman_poor1], # Generic bandit gear
+["slave_trader_bandit","Lestes Doulemporos","Lestai Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[itm_caligea,itm_roman_poor1],
 def_attrib|level(18),wp(60),knows_common,bandit_face1, bandit_face2], # Bandit Slave Trader
 
 ["gladiator_euqes","Eques","Eques",tf_guarantee_boots|tf_guarantee_horse|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm,no_scene,reserved,fac_gladiators,
@@ -7509,8 +7755,6 @@ upgrade(troops,"judean_rebel","judean_sicarius")
 # upgrade(troops,"mercenary_swordsman","hired_blade")
 # upgrade(troops,"mercenary_horseman","mercenary_cavalry")
 
-upgrade2(troops,"bandit","brigand","mercenary_swordsman")
-
 upgrade2(troops,"egyptian_infantry_light","egyptian_infantry_heavy","egyptian_archers")
 upgrade(troops,"egyptian_town_walker","egyptian_infantry_light")
 upgrade(troops,"egyptian_peasant","egyptian_infantry_light")
@@ -7525,7 +7769,7 @@ upgrade(troops,"egyptian_village_walker","egyptian_infantry_light")
 upgrade(troops,"follower_woman","soldier_wife")
 
 
-upgrade(troops,"african_follower_woman", "african_soldier_wife")
+upgrade(troops,"nubian_follower_woman", "nubian_african_soldier_wife")
 upgrade(troops,"saka_follower_woman", "saka_soldier_wife")
 upgrade(troops,"sarmatian_follower_woman", "sarmatian_soldier_wife")
 upgrade(troops,"bosporan_follower_woman", "bosporan_soldier_wife")
@@ -7537,7 +7781,7 @@ upgrade(troops,"greek_follower_woman", "greek_soldier_wife")
 upgrade(troops,"illyrian_follower_woman", "illyrian_soldier_wife")
 upgrade(troops,"parthian_follower_woman", "parthian_soldier_wife")
 upgrade(troops,"persian_follower_woman", "persian_soldier_wife")
-upgrade(troops,"gaul_follower_woman", "gaul_soldier_wife")
+upgrade(troops,"gaulish_follower_woman", "gaulish_soldier_wife")
 upgrade(troops,"roman_follower_woman", "roman_soldier_wife")
 upgrade(troops,"hispanic_follower_woman", "hispanic_soldier_wife")
 upgrade(troops,"celtic_follower_woman", "celtic_soldier_wife")
@@ -7550,7 +7794,7 @@ upgrade(troops,"egyptian_follower_woman", "egyptian_soldier_wife")
 upgrade(troops,"berber_follower_woman", "berber_soldier_wife")
 upgrade(troops,"garamantian_follower_woman", "garamantian_soldier_wife")
 
-upgrade(troops,"african_woman", "african_follower_woman")
+upgrade(troops,"african_woman", "nubian_follower_woman")
 upgrade(troops,"saka_woman", "saka_follower_woman")
 upgrade(troops,"sarmatian_village_walker_female", "sarmatian_follower_woman")
 upgrade(troops,"bosporan_village_walker_female", "bosporan_follower_woman")
@@ -7562,7 +7806,7 @@ upgrade(troops,"greek_village_walker_female", "greek_follower_woman")
 upgrade(troops,"illyrian_village_walker_female", "illyrian_follower_woman")
 upgrade(troops,"parthian_village_walker_female", "parthian_follower_woman")
 upgrade(troops,"persian_village_walker_female", "persian_follower_woman")
-upgrade(troops,"gaul_village_walker_female", "gaul_follower_woman")
+upgrade(troops,"gaulish_village_walker_female", "gaulish_follower_woman")
 upgrade(troops,"roman_village_walker_female", "roman_follower_woman")
 upgrade(troops,"hispanic_village_walker_female", "hispanic_follower_woman")
 upgrade(troops,"celtic_village_walker_female", "celtic_follower_woman")
@@ -7580,8 +7824,33 @@ upgrade(troops,"alan_horse_archer","alan_heavy_horse_archer")
 
 upgrade(troops,"peasant_woman","follower_woman")
 upgrade(troops,"slave_female","follower_woman")
-upgrade(troops,"slave","slave_warrior")
 
+upgrade(troops,"slave_female_nubian", "nubian_follower_woman")
+upgrade(troops,"slave_female_saka", "saka_follower_woman")
+upgrade(troops,"slave_female_sarmatian", "sarmatian_follower_woman")
+upgrade(troops,"slave_female_bosporan", "bosporan_follower_woman")
+upgrade(troops,"slave_female_judean", "judean_follower_woman")
+upgrade(troops,"slave_female_eastern", "eastern_follower_woman")
+upgrade(troops,"slave_female_galatian", "galatian_follower_woman")
+upgrade(troops,"slave_female_syrian", "syrian_follower_woman")
+upgrade(troops,"slave_female_greek", "greek_follower_woman")
+upgrade(troops,"slave_female_illyrian", "illyrian_follower_woman")
+upgrade(troops,"slave_female_parthian", "parthian_follower_woman")
+upgrade(troops,"slave_female_persian", "persian_follower_woman")
+upgrade(troops,"slave_female_gaul", "gaulish_follower_woman")
+upgrade(troops,"slave_female_roman", "roman_follower_woman")
+upgrade(troops,"slave_female_hispanic", "hispanic_follower_woman")
+upgrade(troops,"slave_female_celt", "celtic_follower_woman")
+upgrade(troops,"slave_female_germanic", "germanic_follower_woman")
+upgrade(troops,"slave_female_dacian", "dacian_follower_woman")
+upgrade(troops,"slave_female_thracian", "thracian_follower_woman")
+upgrade(troops,"slave_female_caucasian", "armenian_follower_woman")
+upgrade(troops,"slave_female_arabian", "arab_follower_woman")
+upgrade(troops,"slave_female_egyptian", "egyptian_follower_woman")
+upgrade(troops,"slave_female_berber", "berber_follower_woman")
+upgrade(troops,"slave_female_garmantian", "garamantian_follower_woman")
+
+upgrade(troops,"slave","slave_warrior")
 upgrade(troops,"slave_roman","slave_warrior")
 upgrade(troops,"slave_dacian","slave_warrior")
 upgrade(troops,"slave_thracian","slave_warrior")
@@ -7743,13 +8012,6 @@ upgrade(troops,"eastern_skrimisher_exp","eastern_skrimisher_vet")
 upgrade(troops,"eastern_slinger_exp","eastern_slinger_vet")
 upgrade(troops,"vigilia","vigilia_exp")
 upgrade(troops,"vigilia_exp","vigilia_vet")
-# upgrade(troops,"vigilia_vet","aux_inf")
-# #upgrade(troops,"aux_inf","ballistarii")
-upgrade2(troops,"looter","bandit","slave_rebel")
-# upgrade(troops,"garamantian_horseman","garamantian_noble_horseman")
-# upgrade(troops,"gaetuli_horseman","gaetuli_noble_horseman")
-# upgrade(troops,"desert_bandit","arab_noble_cav")
-# # upgrade(troops,"aux_cav_praetoriani","aux_cav_praetoriani_2")
 
 upgrade(troops,"eastern_elite_infantry","eastern_elite_infantry_exp")
 upgrade(troops,"eastern_elite_infantry_exp","eastern_elite_infantry_vet")
@@ -7771,3 +8033,26 @@ upgrade(troops,"custom_skirmisher_cav","custom_skirmisher_cav_vet")
 
 upgrade(troops,"custom_skirmisher","custom_skirmisher_vet")
 upgrade(troops,"custom_archer","custom_archer_vet")
+
+upgrade(troops,"looter","bandit")
+upgrade(troops,"roman_looter","roman_bandit")
+upgrade(troops,"greek_looter","greek_bandit")
+upgrade(troops,"illyrian_looter","illyrian_bandit")
+upgrade(troops,"hispanic_looter","hispanic_bandit")
+upgrade(troops,"gaulish_looter","gaulish_bandit")
+upgrade(troops,"germanic_looter","germanic_bandit")
+upgrade(troops,"dacian_looter","dacian_bandit")
+upgrade(troops,"thracian_looter","thracian_bandit")
+upgrade(troops,"caucasian_looter","caucasian_bandit")
+upgrade(troops,"arabian_looter","arabian_bandit")
+upgrade(troops,"egyptian_looter","egyptian_bandit")
+upgrade(troops,"berber_looter","berber_bandit")
+upgrade(troops,"garamantian_looter","garamantian_bandit")
+upgrade(troops,"saka_looter","saka_bandit")
+upgrade(troops,"sarmatian_looter","sarmatian_bandit")
+upgrade(troops,"bosporan_looter","bosporan_bandit")
+upgrade(troops,"judean_looter","judean_bandit")
+upgrade(troops,"eastern_looter","eastern_bandit")
+upgrade(troops,"galatian_looter","galatian_bandit")
+upgrade(troops,"parthian_looter","parthian_bandit")
+upgrade(troops,"persian_looter","persian_bandit")

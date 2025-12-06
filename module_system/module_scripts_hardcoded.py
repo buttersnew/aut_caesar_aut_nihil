@@ -1557,50 +1557,6 @@ scripts_hardcoded = [
 
     (store_random_in_range, "$romantic_attraction_seed", 0, 5),
 
-    ##set slots, do it only once at game start
-    (party_template_set_slot, "pt_sakas", slot_party_template_lair_type, "pt_saka_camp"),
-    (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_type, "pt_steppe_bandit_lair"),
-    (party_template_set_slot, "pt_taiga_bandits", slot_party_template_lair_type, "pt_taiga_bandit_lair"),
-    (party_template_set_slot, "pt_judean_rebels_party", slot_party_template_lair_type, "pt_mountain_bandit_lair"),
-    (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_type, "pt_forest_bandit_lair"),
-    (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_type, "pt_sea_raider_lair"),
-    (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_type, "pt_black_sea_pirates_lair"),
-
-    (party_template_set_slot, "pt_desert_bandits", slot_party_template_lair_type, "pt_desert_bandit_lair"),
-    (party_template_set_slot, "pt_egyptian_rebels", slot_party_template_lair_type, "pt_egyptian_bandit_lair"),
-    (party_template_set_slot, "pt_nubian", slot_party_template_lair_type, "pt_nubian_lair"),
-    (party_template_set_slot, "pt_nabatean", slot_party_template_lair_type, "pt_nabatean_lair"),
-    (party_template_set_slot, "pt_garamantes", slot_party_template_lair_type, "pt_numidian_bandit_lair"),
-    (party_template_set_slot, "pt_gaetuli", slot_party_template_lair_type, "pt_gaetuli_bandit_lair"),
-
-    (party_template_set_slot, "pt_sakas", slot_party_template_lair_spawnpoint, "p_saka_spawn"),
-    (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_spawnpoint, "p_steppe_bandit_spawn_point"), #the stepp
-    (party_template_set_slot, "pt_taiga_bandits", slot_party_template_lair_spawnpoint, "p_taiga_bandit_spawn_point1"), #illyricum
-    (party_template_set_slot, "pt_judean_rebels_party", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point1"), # judea
-    (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_spawnpoint, "p_forest_bandit_spawn_point"), #hispania
-    (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_1"), # the coast
-    (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_spawnpoint, "p_black_sea_pirates_spawn_1"), # the coast
-    (party_template_set_slot, "pt_garamantes", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_23"), # africa
-    (party_template_set_slot, "pt_nubian", slot_party_template_lair_spawnpoint, "p_desert_bandit_spawn_point3"), # africa
-    (party_template_set_slot, "pt_gaetuli", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_2"), # mauretania
-    (party_template_set_slot, "pt_desert_bandits", slot_party_template_lair_spawnpoint, "p_desert_bandit_spawn_point2"), #arabia
-    (party_template_set_slot, "pt_nabatean", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point"), #nabatea
-    (party_template_set_slot, "pt_egyptian_rebels", slot_party_template_lair_spawnpoint, "p_egyptian_spawn"), #egypt
-
-    (party_set_slot, "p_black_sea_pirates_spawn_1", slot_party_on_water, 1),
-
-    (try_for_range, ":unused", 0, 40),#was 25
-        (call_script, "script_spawn_bandits"),
-    (try_end),
-
-    #we are adding looter parties around each village with 1/5 probability.
-    (set_spawn_radius, 5),
-    (try_for_range, ":cur_village", villages_begin, villages_end),
-        (store_random_in_range, ":random_value", 0, 6),
-        (eq, ":random_value", 0),
-        (call_script, "script_spawn_party", ":cur_village", "pt_looters"),
-    (try_end),
-
     (call_script, "script_init_desert_cities"),
     (call_script, "script_add_ports_jetty_and_ferry_system"),
 
@@ -2016,6 +1972,52 @@ scripts_hardcoded = [
     (troop_set_slot, "trp_players_legion", slot_troop_banner_scene_prop, "spr_banner_legion_vexilium_deitoriana_xxi"),
     (troop_set_name, "trp_players_legion", "@Legio XXII Deiotariana"),
     (troop_set_plural_name, "trp_players_legion", "@Legio XXII Deiotariana"),
+
+    # init bandits
+    ##set slots, do it only once at game start
+    (party_template_set_slot, "pt_sakas", slot_party_template_lair_type, "pt_saka_camp"),
+    (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_type, "pt_steppe_bandit_lair"),
+    (party_template_set_slot, "pt_taiga_bandits", slot_party_template_lair_type, "pt_taiga_bandit_lair"),
+    (party_template_set_slot, "pt_judean_rebels_party", slot_party_template_lair_type, "pt_mountain_bandit_lair"),
+    (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_type, "pt_forest_bandit_lair"),
+    (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_type, "pt_sea_raider_lair"),
+    (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_type, "pt_black_sea_pirates_lair"),
+
+    (party_template_set_slot, "pt_desert_bandits", slot_party_template_lair_type, "pt_desert_bandit_lair"),
+    (party_template_set_slot, "pt_egyptian_rebels", slot_party_template_lair_type, "pt_egyptian_bandit_lair"),
+    (party_template_set_slot, "pt_nubian", slot_party_template_lair_type, "pt_nubian_lair"),
+    (party_template_set_slot, "pt_nabatean", slot_party_template_lair_type, "pt_nabatean_lair"),
+    (party_template_set_slot, "pt_garamantes", slot_party_template_lair_type, "pt_numidian_bandit_lair"),
+    (party_template_set_slot, "pt_gaetuli", slot_party_template_lair_type, "pt_gaetuli_bandit_lair"),
+
+    (party_template_set_slot, "pt_sakas", slot_party_template_lair_spawnpoint, "p_saka_spawn"),
+    (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_spawnpoint, "p_steppe_bandit_spawn_point"), #the stepp
+    (party_template_set_slot, "pt_taiga_bandits", slot_party_template_lair_spawnpoint, "p_taiga_bandit_spawn_point1"), #illyricum
+    (party_template_set_slot, "pt_judean_rebels_party", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point1"), # judea
+    (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_spawnpoint, "p_forest_bandit_spawn_point"), #hispania
+    (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_1"), # the coast
+    (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_spawnpoint, "p_black_sea_pirates_spawn_1"), # the coast
+    (party_template_set_slot, "pt_garamantes", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_23"), # africa
+    (party_template_set_slot, "pt_nubian", slot_party_template_lair_spawnpoint, "p_desert_bandit_spawn_point3"), # africa
+    (party_template_set_slot, "pt_gaetuli", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_2"), # mauretania
+    (party_template_set_slot, "pt_desert_bandits", slot_party_template_lair_spawnpoint, "p_desert_bandit_spawn_point2"), #arabia
+    (party_template_set_slot, "pt_nabatean", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point"), #nabatea
+    (party_template_set_slot, "pt_egyptian_rebels", slot_party_template_lair_spawnpoint, "p_egyptian_spawn"), #egypt
+
+    (party_set_slot, "p_black_sea_pirates_spawn_1", slot_party_on_water, 1),
+
+    (try_for_range, ":unused", 0, 40),#was 25
+        (call_script, "script_spawn_bandits"),
+    (try_end),
+
+    #we are adding looter parties around each village with 1/5 probability.
+    (set_spawn_radius, 5),
+    (try_for_range, ":cur_village", villages_begin, villages_end),
+        (store_random_in_range, ":random_value", 0, 6),
+        (eq, ":random_value", 0),
+        (store_random_in_range, ":random_xp", 0, 50001),
+        (call_script, "script_create_looter_party", ":cur_village", ":random_xp"),
+    (try_end),
 ]),
 #script_game_get_use_string
 # This script is called from the game engine for getting using information text
@@ -2138,8 +2140,8 @@ scripts_hardcoded = [
 
     (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_infantry, "trp_judean_rebel"),
     (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_infantry, "trp_sea_raider"),
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_archer, "trp_hispanic_bandit"),
-    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_archer, "trp_illyrian_bandit"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_archer, "trp_hispanic_rebell"),
+    (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_archer, "trp_illyrian_rebell"),
     (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_1_cavalry, "trp_alannic_raider"),
     (faction_set_slot, "fac_outlaws", slot_faction_quick_battle_tier_2_cavalry, "trp_desert_bandit"),
     (faction_set_slot, "fac_kingdom_1", slot_faction_quick_battle_tier_1_infantry, "trp_dacian_flaxman_heavy"),
