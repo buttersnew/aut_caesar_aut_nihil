@@ -7889,25 +7889,31 @@ strings = [
 
 ("woman_dress_arms","woman_dress_arms"),
 ("woman_dress_arms_black","woman_dress_arms_black"),
+("woman_dress_arms_very_black","woman_dress_arms_very_black"),
 ("woman_dress_arms_brown","woman_dress_arms_brown"),
 
 ("woman_dress_arms2","woman_dress_arms2"),
 ("woman_dress_arms2_black","woman_dress_arms2_black"),
+("woman_dress_arms2_very_black","woman_dress_arms2_very_black"),
 ("woman_dress_arms2_brown","woman_dress_arms2_brown"),
 
 ("woman_dress_arms3","woman_dress_arms3"),
 ("woman_dress_arms3_black","woman_dress_arms3_black"),
+("woman_dress_arms3_very_black","woman_dress_arms3_very_black"),
 ("woman_dress_arms3_brown","woman_dress_arms3_brown"),
 
 ("woman_dress_arms3_fat","woman_dress_arms3_fat"),
 ("woman_dress_arms3_black_fat","woman_dress_arms3_black_fat"),
+("woman_dress_arms3_very_black_fat","woman_dress_arms3_very_black_fat"),
 ("woman_dress_arms3_brown_fat","woman_dress_arms3_brown_fat"),
 
 ("woman_dress_foot_brown","woman_dress_foot_brown"),
 ("woman_dress_foot_black","woman_dress_foot_black"),
+("woman_dress_foot_very_black","woman_dress_foot_very_black"),
 
 ("woman_dress_arms_sarmatian","woman_dress_arms_sarmatian"),
 ("woman_dress_arms_sarmatian_black","woman_dress_arms_sarmatian_black"),
+("woman_dress_arms_sarmatian_very_black","woman_dress_arms_sarmatian_very_black"),
 ("woman_dress_arms_sarmatian_brown","woman_dress_arms_sarmatian_brown"),
 
 #schmuck fur kleider
@@ -7921,14 +7927,18 @@ strings = [
 ("female_body", "female_body"),
 ("female_body_feet", "female_body_feet"),
 ("female_body_boobs_black", "female_body_boobs_black"),
+("female_body_boobs_very_black", "female_body_boobs_very_black"),
 ("female_body_black", "female_body_black"),
+("female_body_very_black", "female_body_very_black"),
 ("female_body_black_feet", "female_body_black_feet"),
+("female_body_very_black_feet", "female_body_very_black_feet"),
 ("female_body_boobs_brown", "female_body_boobs_brown"),
 ("female_body_brown", "female_body_brown"),
 ("female_body_brown_feet", "female_body_brown_feet"),
 
 ("female_upper_body", "female_upper_body"),
 ("female_upper_body_black", "female_upper_body_black"),
+("female_upper_body_very_black", "female_upper_body_very_black"),
 ("female_upper_body_brown", "female_upper_body_brown"),
 
 
