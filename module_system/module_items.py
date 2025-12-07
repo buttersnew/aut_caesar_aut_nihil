@@ -2953,6 +2953,43 @@ rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
 [(ti_on_init_item,[  (call_script, "script_init_dress_new"),]), ],[fac_culture_roman,fac_culture_greek] ],
 
+["nubian_noble_dress_1", "Nubian Noble Dress", [("nubian_noble_dress_1",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms_nubian"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_noble_dress_2", "Nubian Noble Dress", [("nubian_noble_dress_2",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms_nubian"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_peasant_dress_4", "Nubian Dress", [("nubian_peasant_dress_4",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms_nubian"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_peasant_dress_3", "Nubian Dress", [("nubian_peasant_dress_3",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms_nubian"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_peasant_dress_2", "Nubian Dress", [("nubian_peasant_dress_2",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms_nubian"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_peasant_dress_1", "Nubian Dress", [("nubian_peasant_dress_1",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms_nubian"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+
 #germanic dresses
 ["german_femal_rich_1", "Germanic Noble Dress", [("germanic_dress_red",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 rich_dress_b_armor_price,rich_dress_b_armor,imodbits_none,

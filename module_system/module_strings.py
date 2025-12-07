@@ -7927,6 +7927,11 @@ strings = [
 ("female_body_brown", "female_body_brown"),
 ("female_body_brown_feet", "female_body_brown_feet"),
 
+("female_upper_body", "female_upper_body"),
+("female_upper_body_black", "female_upper_body_black"),
+("female_upper_body_brown", "female_upper_body_brown"),
+
+
 ("celt_cape_1", "celt_cape_1"),
 ("celt_cape_2", "celt_cape_2"),
 ("celt_cape_3", "celt_cape_3"),

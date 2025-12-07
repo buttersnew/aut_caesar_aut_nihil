@@ -738,6 +738,8 @@ caucasian_dress_peasant = [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb
 persian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b]
 bosporan_dress_peasant = [itm_female_1,itm_female_2,itm_female_3]
 syrian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b] + roman_dress_peasant
+nubian_peasant_dress = [itm_nubian_peasant_dress_1,itm_nubian_peasant_dress_2,itm_nubian_peasant_dress_3,itm_nubian_peasant_dress_4]
+nubian_noble_dress = [itm_nubian_noble_dress_1,itm_nubian_noble_dress_2]
 
 roman_dress_cives = [itm_roman_noble_dress_7,itm_roman_noble_dress_6,itm_roman_noble_dress_5,itm_roman_noble_dress_4,itm_roman_noble_dress_3,itm_roman_noble_dress_2,itm_roman_noble_dress_1]
 berber_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_dress_b]
@@ -3276,7 +3278,7 @@ itm_butchering_knife,itm_butchering_knife_2,itm_hammer,itm_hand_axe,itm_stones],
 attrib_level_6, wp(50), knows_level_6, refugee_face1, refugee_face2 ],
 
 ["nubian_follower_woman","Nubiana Focaria", "Nubianae Focariae", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
-[itm_arrows, itm_short_bow, itm_spear, itm_knife,itm_sarranid_common_dress,itm_head_wrappings,itm_caligea],
+[itm_arrows, itm_short_bow, itm_spear, itm_knife,itm_head_wrappings,itm_caligea]+nubian_peasant_dress,
 attrib_level_6, wp(40), knows_level_6, african_face_female, african_face_female2 ],
 ["saka_follower_woman","Sacica Focaria", "Sacicae Focariae", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_saka,
 [itm_arrows, itm_short_bow, itm_spear,itm_saka_hat_2,itm_saka_hat_3,itm_saka_hat_1]+nomadic_dress_peasant+nomadic_foot_peasant+nomadic_weapons_peasant,
@@ -3354,7 +3356,7 @@ itm_spear, itm_arrows,itm_short_bow,itm_fur_covered_shield,itm_simple_thraex_shi
 attrib_level_12, wp(120), knows_level_12, refugee_face1, refugee_face2 ],
 
 ["nubian_african_soldier_wife","Nubiana Coniunx", "Nubianae Coniuges", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
-[itm_arrows, itm_short_bow, itm_spear, itm_knife,itm_sarranid_common_dress,itm_head_wrappings,itm_caligea],
+[itm_arrows, itm_short_bow, itm_spear, itm_knife,itm_head_wrappings,itm_caligea]+nubian_peasant_dress,
 attrib_level_12, wp(80), knows_level_12, african_face_female, african_face_female2 ],
 ["saka_soldier_wife","Sacica Coniunx", "Sacicae Coniuges", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_saka,
 [itm_arrows, itm_short_bow, itm_spear,itm_saka_hat_2,itm_saka_hat_3,itm_saka_hat_1]+nomadic_dress_peasant+nomadic_foot_peasant+nomadic_weapons_peasant,
@@ -3445,6 +3447,13 @@ def_attrib|level(2), wp(50), knows_common|knows_riding_2, woman_face_1, woman_fa
 ["town_walker_1","Town_walker_begin","Town_walker_begin",tf_guarantee_boots|tf_guarantee_armor,0,0,fac_commoners,
 [],
 def_attrib|level(4),wp(60),knows_common,germanic_face_11,germanic_face_12],
+
+["nubian_town_walker","Nubianus Nobilis", "Nubiani Nobiles", tf_male_black|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
+[itm_knife,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_headcloth,itm_turban,itm_caligea,itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_numidian_armor_5],
+attrib_level_6, wp(60), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
+["nubian_town_walker_female","Nubiana Nobilis Mulier", "Nubianae Nobiles Mulieres", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
+[itm_knife,itm_caligea]+nubian_noble_dress,
+attrib_level_6, wp(40), knows_riding_2, african_face_female, african_face_female2 ],
 
 ["sarmatian_town_walker", "Sarmaticus Nobilis Tribulis", "Sarmatici Nobiles Tribules", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_ringsword_1]+nomadic_cives+nomadic_foot_cives,
@@ -3611,7 +3620,7 @@ def_attrib|level(1)|agi_18, wp(10), knows_common|knows_athletics_5, 0x0000000000
 [itm_knife,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_headcloth,itm_turban,itm_caligea,itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_numidian_armor_5],
 attrib_level_6, wp(60), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
 ["african_woman","Nubiana Tribulis Mulier", "Nubianae Tribules Mulieres", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
-[itm_knife,itm_sarranid_common_dress,itm_head_wrappings,itm_caligea],
+[itm_knife,itm_head_wrappings,itm_caligea]+nubian_peasant_dress,
 attrib_level_6, wp(40), knows_riding_2, african_face_female, african_face_female2 ],
 
 ["saka_man","Sacicus Tribulis", "Sacici Tribules", tf_male|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_saka,
