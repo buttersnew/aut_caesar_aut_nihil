@@ -1,6 +1,6 @@
 ---
 name: Linguist
-description: Agent for Ancient languages (focues 1st cenutry AD)
+description: Agent for Ancient languages (focus 1st century AD)
 ---
 
 # 1st century AD Linguist
