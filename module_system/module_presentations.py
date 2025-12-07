@@ -23506,8 +23506,9 @@ presentations = presentations_wse2 + [
 
         (set_container_overlay, reg43),#start scroll
 
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 46, "trp_meroe_guard", 560, 2310),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 45, "trp_germanic_nightwarrior", 210, 2310),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 45, "trp_scythian_amazon", 210, 2310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 44, "trp_saka_amazon", 60, 2310),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 43, "trp_saka_horse_archer", 210, 2110),
@@ -23528,7 +23529,7 @@ presentations = presentations_wse2 + [
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 36, "trp_lombard_skirmisher", 560, 1910),
         # (call_script, "script_prsnt_upgrade_tree_troop_and_name", 37, "trp_lombard_vetran", 710, 1910),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_scythian_amazon", 210, 1710),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 33, "trp_germanic_nightwarrior", 210, 1710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 32, "trp_germanic_free_nobleman", 60, 1710),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_slavic_vetran", 60, 1510),
@@ -23561,7 +23562,7 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_hispanic_infantry", 560, 710),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_hispanic_heavy_infantry", 710, 710),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_kreta_archer", 60, 510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 10, "trp_scythian_medium_cavalry", 60, 510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 11, "trp_meroe_axemen", 210, 510),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_lombard_skirmisher", 560, 510),
@@ -23579,7 +23580,7 @@ presentations = presentations_wse2 + [
 
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_slinger_rhodos", 560, 110),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_scythian_medium_cavalry", 710, 110),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_kreta_archer", 710, 110),
 
         (set_container_overlay, -1),#end scroll
       ]),

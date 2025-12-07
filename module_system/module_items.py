@@ -1373,62 +1373,83 @@ roman_mail_armor_price, roman_mail_armor,imodbits_armor,
 #Garamantian
 ["garmantian_armor_1", "Garamantian Loincloth with Leopardskin", [("garmantian_armor_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_garmantian] ],
 ["garmantian_armor_2", "Garamantian Loincloth with Leopardskin", [("garmantian_armor_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_garmantian] ],
 ["garmantian_armor_3", "Garamantian Loincloth with Leathercoat", [("garmantian_armor_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_garmantian] ],
 ["garmantian_armor_4", "Garamantian Loincloth with Leathercoat", [("garmantian_armor_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),]),], [] ],
+(call_script, "script_init_pants_long"),]),], [fac_culture_garmantian] ],
 ["garmantian_armor_5", "Garamantian Loincloth", [("garmantian_armor_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_price, pants_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),]),], [] ],
+(call_script, "script_init_pants_long"),]),], [fac_culture_garmantian] ],
 
-["numidian_armor", "Berber Loincloth", [("nubian_shirtless",0)], itp_unique|itp_type_body_armor|itp_force_show_body|itp_attach_armature|itp_civilian,0,
-1500, weight(1)|head_armor(0)|body_armor(5)|leg_armor(24)|difficulty(0) ,imodbits_cloth, [], [] ],
 ["numidian_armor_1", "Berber Tunic", [("berber_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_roman_slinger"),],),], [] ],
+(call_script, "script_init_roman_slinger"),],),], [fac_culture_berber] ],
 ["numidian_armor_2", "Berber Tunic", [("berber_tunic_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_roman_slinger"),],),], [] ],
+(call_script, "script_init_roman_slinger"),],),], [fac_culture_berber] ],
 ["numidian_armor_3", "Berber Tunic", [("berber_tunic_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_roman_slinger"),],),], [] ],
+(call_script, "script_init_roman_slinger"),],),], [fac_culture_berber] ],
 ["numidian_armor_4", "Berber Mail Shirt with Leopardskin", [("berber_tunic_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-breastplate_iron_armor_price, breastplate_iron_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_armor_merc"),],),], [] ],
+breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_armor_merc"),],),], [fac_culture_berber,] ],
 ["numidian_armor_5", "Berber Tunic with Leopardskin", [("berber_tunic_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_armor_merc"),],),], [] ],
+(call_script, "script_init_armor_merc"),],),], [fac_culture_berber] ],
 
 ["nubian_tunic", "Nubian Tunic", [("nubian_tunic",0)], itp_unique|itp_type_body_armor|itp_civilian|itp_covers_legs,0,
 tunic_armor_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_roman_slinger"),],),], [] ],
+(call_script, "script_init_roman_slinger"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 ["nubian_kilt", "Nubian Loincloth", [("nubian_kilt",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
 pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 ["nubian_kilt_2", "Nubian Loincloth with Leopardskin", [("nubian_kilt_2",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor,imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 ["nubian_kilt_3", "Nubian Leopard Loincloth", [("nubian_kilt_3",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
 pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_kilt_4", "Nubian Leopard Loincloth", [("nubian_kilt_4",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
+pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
+(call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 ["kilt_a", "Loincloth", [("kilt_a",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
 pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 ["kilt_b", "Loincloth", [("kilt_b",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
 pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 ["kilt_c", "Loincloth", [("kilt_c",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
 pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 ["kilt_d", "Loincloth", [("kilt_d",0)], itp_unique|itp_type_body_armor|itp_civilian,0,
 pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_pants_long"),],),], [] ],
+(call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+
+["numidian_armor_mail_1", "Nubian Mail Armour", [("nubian_armor",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+["numidian_armor_mail_2", "Nubian Mail Armour", [("nubian_armor_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+["numidian_armor_mail_3", "Nubian Scale Armour", [("nubian_armor_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+["numidian_armor_mail_4", "Nubian Scale Armour", [("nubian_armor_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+
+["nubian_padded_armour_1", "Nubian Padded Armour", [("nubian_padded_armour_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_light_armor_price, tunic_light_armor_armor, imodbits_cloth, [(ti_on_init_item,[
+(call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_padded_armour_2", "Nubian Padded Armour", [("nubian_padded_armour_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_light_armor_price, tunic_light_armor_armor, imodbits_cloth, [(ti_on_init_item,[
+(call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 
 ##indian
 ["indian_pants", "Eastern Loincloth", [("indian_tunic",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
@@ -3325,10 +3346,19 @@ heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_bosporan,fac_cultur
 light_super_head_price,light_super_head,imodbits_plate, [], [fac_culture_sarmatian] ],
 ["african_feather_band", "Bandana with Feathers", [("african_feather_band",0)], itp_type_head_armor|itp_doesnt_cover_hair ,0,
 light_super_head_price,light_super_head,imodbits_plate, [], [] ],
+["african_feather_band_2", "Bandana with Feathers", [("african_feather_band_2",0)], itp_type_head_armor|itp_doesnt_cover_hair ,0,
+light_super_head_price,light_super_head,imodbits_plate, [], [] ],
 ["numidian_helm", "Earings", [("nubian_helmet",0)], itp_unique|itp_type_head_armor|itp_civilian,0,
 100, weight(0.1)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_plate, [], []  ],
 ["numidian_wig", "Wig", [("wig_nubian_bl",0)], itp_type_head_armor|itp_civilian|itp_covers_beard,0,
 100, weight(0.2)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_plate, [], []  ],
+
+["nubian_helm_1", "Nubian Helm", [("nubian_helm_1",0)], itp_merchandise| itp_type_head_armor ,0,
+light_head_price,light_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_helm_2", "Nubian Helm", [("nubian_helm_2",0)], itp_merchandise| itp_type_head_armor ,0,
+light_head_price,light_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_helm_3", "Nubian Helm", [("nubian_helm_3",0)], itp_merchandise| itp_type_head_armor ,0,
+light_head_price,light_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
 
 #dacian
 ["dacian_pileus_a_1", "Dacian Cap", [("dacian_pileus_a_1",0)],itp_merchandise|itp_type_head_armor|itp_covers_hair,0,
@@ -4446,19 +4476,41 @@ weight(get_w_weight(126))|difficulty(7)|spd_rtng(get_polew_speed(126)) | weapon_
 #End Germanic
 
 #Nubian
+["nubian_short_sword", "Nubian Short Sword", [("nubian_short_sword",0),("nubian_short_sword_scarb",ixmesh_carry)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_primary,
+itc_gladius|itcf_carry_dagger_front_left|itcf_show_holster_when_drawn,
+get_w_price(64,get_w_weight(64),get_1hw_speed(64),27,27),
+weight(get_w_weight(64))|difficulty(7)|abundance(70)|spd_rtng(get_1hw_speed(64))|weapon_length(64)|swing_damage(27,pierce)|thrust_damage(27,pierce), imodbits_sword_high, [],
+ [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_short_sword_noble", "Noble Nubian Short Sword", [("nubian_short_sword_noble",0),("nubian_short_sword_noble_scarb",ixmesh_carry)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_primary,
+itc_gladius|itcf_carry_dagger_front_left|itcf_show_holster_when_drawn,
+get_w_price(64,get_w_weight(64),get_1hw_speed(64),28,28),
+weight(get_w_weight(64))|difficulty(7)|abundance(70)|spd_rtng(get_1hw_speed(64))|weapon_length(64)|swing_damage(28,pierce)|thrust_damage(28,pierce), imodbits_sword_high, [],
+ [fac_culture_nubian,fac_culture_egyptian] ],
+
 ["nubian_axe", "Nubian Axe", [("nubian_axe",0)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_secondary|itp_primary|itp_bonus_against_shield|itp_wooden_parry|itp_no_blur, itc_scimitar|itcf_carry_axe_left_hip,
 get_w_price(68,get_axe_weight(68),get_1haxe_speed(68),28,10),
-weight(get_axe_weight(68))|abundance(50)|difficulty(10)|spd_rtng(get_1haxe_speed(68)) | weapon_length(68)|swing_damage(28 , cut) | thrust_damage(0 ,  pierce),imodbits_axe, [], [fac_culture_caucasian] ],
+weight(get_axe_weight(68))|abundance(50)|difficulty(10)|spd_rtng(get_1haxe_speed(68)) | weapon_length(68)|swing_damage(28 , cut) | thrust_damage(0 ,  pierce),imodbits_axe, [], [fac_culture_nubian,fac_culture_egyptian] ],
 ["nubian_axe_2", "Nubian Axe", [("nubian_axe_2",0)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_secondary|itp_primary|itp_bonus_against_shield|itp_wooden_parry|itp_no_blur, itc_scimitar|itcf_carry_axe_left_hip,
 get_w_price(55,get_axe_weight(55),get_1haxe_speed(55),28,10),
-weight(get_axe_weight(55))|abundance(50)|difficulty(10)|spd_rtng(get_1haxe_speed(55)) | weapon_length(55)|swing_damage(28 , cut) | thrust_damage(0 ,  pierce),imodbits_axe, [], [fac_culture_caucasian] ],
+weight(get_axe_weight(55))|abundance(50)|difficulty(10)|spd_rtng(get_1haxe_speed(55)) | weapon_length(55)|swing_damage(28 , cut) | thrust_damage(0 ,  pierce),imodbits_axe, [], [fac_culture_nubian,fac_culture_egyptian] ],
+
+["nubian_spear_1", "Nubian War Spear", [("nubian_spear_1",0)], itp_type_polearm|itp_merchandise|itp_cant_use_on_horseback|itp_offset_lance|itp_primary|itp_crush_through|itp_two_handed|itp_wooden_parry, itc_sword_spear,800 , weight(3)|abundance(20)|difficulty(10)|spd_rtng(86) | weapon_length(174)|swing_damage(34 , cut) | thrust_damage(26 ,  pierce),imodbits_polearm, [], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_spear_2", "Nubian War Spear", [("nubian_spear_2",0)], itp_type_polearm|itp_merchandise|itp_cant_use_on_horseback|itp_offset_lance|itp_primary|itp_crush_through|itp_two_handed|itp_wooden_parry, itc_sword_spear,800 , weight(4)|abundance(20)|difficulty(10)|spd_rtng(84) | weapon_length(181)|swing_damage(36 , cut) | thrust_damage(24 ,  pierce),imodbits_polearm, [], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_spear_3", "Nubian War Spear", [("nubian_spear_3",0)], itp_type_polearm|itp_merchandise|itp_cant_use_on_horseback|itp_offset_lance|itp_primary|itp_crush_through|itp_two_handed|itp_wooden_parry, itc_sword_spear,800 , weight(3)|abundance(20)|difficulty(10)|spd_rtng(87) | weapon_length(169)|swing_damage(33 , cut) | thrust_damage(28 ,  pierce),imodbits_polearm, [], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_spear_4", "Long Nubian War Spear", [("nubian_spear_4",0)], itp_type_polearm|itp_merchandise|itp_cant_use_on_horseback|itp_offset_lance|itp_primary|itp_crush_through|itp_two_handed|itp_wooden_parry, itc_sword_spear,800 , weight(5)|abundance(20)|difficulty(10)|spd_rtng(82) | weapon_length(200)|swing_damage(30 , cut) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_spear_5",         "Shortened Nubian Spear", [("nubian_spear_5",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
+get_polarm_price(126,get_w_weight(126),get_polew_speed(126),14,27),
+weight(get_w_weight(126))|difficulty(7)|spd_rtng(get_polew_speed(126)) | weapon_length(126)|swing_damage(27 , pierce) | thrust_damage(27 ,  pierce),imodbits_polearm, [], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_spear_6",         "Shortened Nubian Spear", [("nubian_spear_6",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
+get_polarm_price(126,get_w_weight(126),get_polew_speed(126),14,27),
+weight(get_w_weight(126))|difficulty(7)|spd_rtng(get_polew_speed(126)) | weapon_length(126)|swing_damage(27 , pierce) | thrust_damage(27 ,  pierce),imodbits_polearm, [], [fac_culture_nubian,fac_culture_egyptian] ],
 
 ["numidian_spear_2",         "Numidian War Spear", [("numidian_spear_2",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
 get_polarm_price(167,get_w_weight(167),get_polew_speed(167),17,30),
-weight(get_w_weight(167))|difficulty(7)|spd_rtng(get_polew_speed(167)) | weapon_length(167)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_caucasian] ],
+weight(get_w_weight(167))|difficulty(7)|spd_rtng(get_polew_speed(167)) | weapon_length(167)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_berber, fac_culture_garmantian] ],
 ["numidian_spear_1",         "Numidian Spear", [("numidian_spear_1",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
 get_polarm_price(142,get_w_weight(142),get_polew_speed(142),17,28),
-weight(get_w_weight(142))|difficulty(7)|spd_rtng(get_polew_speed(142)) | weapon_length(142)|swing_damage(28 , pierce) | thrust_damage(28 ,  pierce),imodbits_polearm, [], [fac_culture_caucasian] ],
+weight(get_w_weight(142))|difficulty(7)|spd_rtng(get_polew_speed(142)) | weapon_length(142)|swing_damage(28 , pierce) | thrust_damage(28 ,  pierce),imodbits_polearm, [], [fac_culture_berber, fac_culture_garmantian] ],
 #End nubian
 
 #Caucasian

@@ -23865,6 +23865,7 @@ game_menus = [
         (eq, ":bandit_type", "trp_desert_bandit"),
         (str_store_string, s5, "str_bandit_approach_defile"),
       (else_try),
+        (this_or_next|eq, ":bandit_type", "trp_meroe_guard"),
         (this_or_next|eq, ":bandit_type", "trp_meroe_infantry"),
         (eq, ":bandit_type", "trp_meroe_archers"),
         (str_store_string, s5, "str_bandit_approach_desert"),

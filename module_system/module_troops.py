@@ -697,6 +697,8 @@ garamantian_weapons_peasant = [itm_hand_axe, itm_hammer,itm_knife,itm_knife_2,it
 desert_weapons_peasant = [itm_hand_axe,itm_roman_work_axe,itm_roman_hammer,itm_hammer,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2]
 syrian_weapons_peasant = [itm_roman_work_axe,itm_roman_hammer]+weapons_peasant_generic
 
+nubian_weapons_peasant = [itm_nubian_spear_6,itm_nubian_spear_5, itm_hand_axe, itm_hammer,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2]
+
 roman_foot_peasant = [itm_caligea]
 berber_foot_peasant = [itm_caligea]
 garamantian_foot_peasant = [itm_caligea]
@@ -766,7 +768,7 @@ celtic_head_peasant = [itm_black_hood,itm_simple_hood_1,itm_simple_hood_2]
 bosphoran_head_peasant = [itm_black_hood,itm_simple_hood_1,itm_simple_hood_2]
 desert_head_peasant = desert_turbans_1
 berber_head_peasant = desert_turbans_2
-garamantian_head_peasant = desert_turbans_2 + [itm_african_feather_band]
+garamantian_head_peasant = desert_turbans_2 + [itm_african_feather_band,itm_african_feather_band_2]
 syrian_head_peasant = [itm_tuareg_new_1_blue,itm_tuareg_new_1_red,itm_tuareg_new_1_white,itm_tuareg_new_2_blue,itm_tuareg_new_2_red,itm_tuareg_new_2_white,itm_phrygian_cap_red,itm_phrygian_cap_blue,itm_phrygian_cap_white]
 
 gladiator_armors = [itm_arena_armor_yellow,itm_arena_armor_red,itm_arena_armor_blue,itm_arena_armor_green]
@@ -912,7 +914,7 @@ attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_
 attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
 
 ["nubian_peasant", "Nubianus Tribulis", "Nubiani Tribules", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_nubian,
-[itm_sling,itm_sling_rock1]+garamantian_foot_peasant+[itm_nubian_kilt_3, itm_nubian_kilt_2, itm_nubian_kilt]+garamantian_head_peasant+garamantian_weapons_peasant,
+[itm_sling,itm_sling_rock1]+garamantian_foot_peasant+[itm_nubian_kilt_3, itm_nubian_kilt_2, itm_nubian_kilt]+garamantian_head_peasant+nubian_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
 
 ["saka_peasant", "Sacae Tribulis", "Sacae Tribules", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_saka,
@@ -1180,11 +1182,11 @@ attrib_level_23_warrior, wp(170), knows_level_23_warrior, eastern_man_face_middl
 
 ##new african mercenaries	avaible in: p_town_21	p_town_28	p_town_29
 ["garamantian_horseman","Amhadi Garamanti", "Imhaditen Garamantin", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_horse|tf_mounted, no_scene, reserved, fac_culture_garmantian,
-[itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_headcloth,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_african_round_shield,itm_african_shield_2,itm_sarranid_felt_hat,itm_african_feather_band]+horse_numidian+desert_turbans_2,
+[itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_headcloth,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_african_round_shield,itm_african_shield_2,itm_sarranid_felt_hat,itm_african_feather_band,itm_african_feather_band_2]+horse_numidian+desert_turbans_2,
 attrib_level_18_warrior, wp_melee(165), knows_level_18_warrior|knows_riding_5, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 ["garamantian_noble_horseman","Aballun Garamanti", "Iballunen Garamantin",tf_male_north_african|tf_guarantee_boots|tf_guarantee_ranged|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_horse|tf_mounted, no_scene, reserved, fac_culture_garmantian,
-[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,
+[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
 itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+horse_numidian+desert_turbans_2,
 attrib_level_23_warrior, wp_melee(185), knows_level_23_warrior|knows_riding_7, north_african_man_face_young_1, north_african_man_face_old_2 ],
 
@@ -1200,13 +1202,16 @@ attrib_level_23_warrior, wp(185), knows_level_23_warrior|knows_riding_8, north_a
 
 ##new kush mercenaries avaible in: p_town_48, p_town_20
 ["meroe_archers", "Neteke", "Netekeli", tf_male_black|tf_guarantee_ranged|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_nubian,
-[itm_bodkin_arrows,itm_gauntles_1,itm_nubian_war_bow,itm_eastern_sword1,itm_numidian_armor,itm_numidian_helm,itm_numidian_wig,itm_nubian_kilt_3,
+[itm_bodkin_arrows,itm_gauntles_1,itm_nubian_war_bow,itm_nubian_short_sword,itm_nubian_kilt_4,itm_numidian_helm,itm_numidian_wig,itm_nubian_kilt_3,itm_nubian_short_sword_noble,
 itm_african_round_shield,itm_nubian_kilt_2],
 attrib_level_26_warrior, wpe(145,170,170,170), knows_archer_elit_eastern, nubian_man_face_younger_1, nubian_man_face_middle_2],
 ["meroe_infantry", "Adke-tkk", "Adkeli-tkkli", tf_male_black|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_nubian,
-[itm_throwing_spears,itm_gauntles_1,itm_throwing_spears,itm_african_shield_1,itm_african_shield_2,itm_african_shield_3,itm_numidian_wig,
-itm_eastern_sword4,itm_eastern_sword1,itm_numidian_armor,itm_numidian_helm],
+[itm_throwing_spears,itm_gauntles_1,itm_throwing_spears,itm_african_shield_1,itm_african_shield_2,itm_african_shield_3,itm_numidian_wig,itm_nubian_spear_5,itm_nubian_spear_6,itm_nubian_padded_armour_1,itm_nubian_padded_armour_2,
+itm_nubian_short_sword_noble,itm_nubian_short_sword,itm_nubian_kilt_4,itm_numidian_helm],
 attrib_level_26_warrior, wp(170), knows_level_26_warrior, nubian_man_face_younger_1, nubian_man_face_middle_2 ],
+["meroe_guard", "Adke Qore-li", "Adkeli Qore-li", tf_male_black|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_nubian,
+[itm_gauntles_1,itm_numidian_wig,itm_nubian_spear_1,itm_nubian_spear_2,itm_nubian_spear_3,itm_nubian_padded_armour_1,itm_nubian_padded_armour_2,itm_nubian_spear_4,itm_numidian_armor_mail_1, itm_numidian_armor_mail_2, itm_desert_padded_hat_a,itm_nubian_helm_1,itm_nubian_helm_2,itm_nubian_helm_3],
+attrib_level_29_warrior, wp(190), knows_level_29_warrior, nubian_man_face_younger_1, nubian_man_face_middle_2 ],
 ["meroe_axemen", "Kukur", "Kukurli", tf_male_black|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_nubian,
 [itm_nubian_kilt,itm_nubian_tunic,itm_numidian_wig,itm_numidian_helm,itm_kilt_a,itm_kilt_b,itm_kilt_c,itm_kilt_d,
 itm_nubian_kite_shield_1,itm_nubian_kite_shield_2,itm_nubian_kite_shield_3,itm_nubian_kite_shield_4,itm_nubian_kite_shield_5,
@@ -2024,7 +2029,7 @@ itm_nubian_axe,itm_nubian_axe_2],
 attrib_level_31, wp(180), knows_level_31, african_face_younger, african_face_older ],
 ["nubian_castle_guard", "Castle Guard", "Castle Guard", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_nubian,
 [itm_gauntles_1,itm_african_shield_1,itm_african_shield_2,itm_african_shield_3,itm_numidian_wig,
-itm_eastern_sword4,itm_eastern_sword1,itm_numidian_armor,itm_numidian_helm],
+itm_eastern_sword4,itm_eastern_sword1,itm_nubian_kilt_4,itm_numidian_helm],
 attrib_level_31, wp(180), knows_level_31, african_face_younger, african_face_older ],
 
 ["saka_prison_guard", "Prison Guard", "Prison Guard", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_saka,
@@ -2043,11 +2048,11 @@ itm_saka_armour_1,itm_saka_armour_2,itm_saka_armour_3,itm_saka_armour_4,
 attrib_level_31, wp(180), knows_level_31, saka_face_1, saka_face_2 ],
 
 ["garamantian_prison_guard", "Prison Guard", "Prison Guard", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garmantian,
-[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,
+[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
 itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+horse_numidian+desert_turbans_2,
 attrib_level_31, wp(180), knows_level_31, north_african_man_face_middle_1, north_african_man_face_old_1 ],
 ["garamantian_castle_guard", "Castle Guard", "Castle Guard", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garmantian,
-[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,
+[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
 itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+horse_numidian+desert_turbans_2,
 attrib_level_31, wp(180), knows_level_31, north_african_man_face_middle_2, north_african_man_face_old_2 ],
 ##end
@@ -3045,7 +3050,7 @@ attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_
 attrib_level_6, wp(100), knows_level_6, barbarian_man_face_younger_1, barbarian_man_face_older_2 ],
 
 ["nubian_looter", "Nubianus Latro", "Nubiani Latrones", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_nubian,
-[itm_sling,itm_sling_rock1]+garamantian_foot_peasant+[itm_nubian_kilt_3, itm_nubian_kilt_2, itm_nubian_kilt]+garamantian_head_peasant+garamantian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
+[itm_sling,itm_sling_rock1]+garamantian_foot_peasant+[itm_nubian_kilt_3, itm_nubian_kilt_2, itm_nubian_kilt]+garamantian_head_peasant+nubian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
 attrib_level_6, wp(100), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
 
 ["saka_looter", "Sacae Latro", "Sacae Latrones", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_saka,
@@ -3180,7 +3185,7 @@ attrib_level_12, wp(150), knows_level_12, barbarian_man_face_younger_1, barbaria
 
 ["nubian_bandit", "Nubianus Leistes", "Nubiani Leistai", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_nubian,
 [
-    itm_african_shield_1,itm_african_shield_2,itm_african_shield_3, itm_shortened_spear
+    itm_african_shield_1,itm_african_shield_2,itm_african_shield_3, itm_nubian_axe, itm_nubian_spear_5, itm_nubian_spear_6
 ]+garamantian_foot_peasant+[itm_nubian_kilt_3, itm_nubian_kilt_2, itm_nubian_kilt]+garamantian_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
 attrib_level_12, wp(150), knows_level_12, nubian_man_face_younger_1, nubian_man_face_older_2 ],
 
@@ -3278,7 +3283,7 @@ itm_butchering_knife,itm_butchering_knife_2,itm_hammer,itm_hand_axe,itm_stones],
 attrib_level_6, wp(50), knows_level_6, refugee_face1, refugee_face2 ],
 
 ["nubian_follower_woman","Nubiana Focaria", "Nubianae Focariae", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
-[itm_arrows, itm_short_bow, itm_spear, itm_knife,itm_head_wrappings,itm_caligea]+nubian_peasant_dress,
+[itm_arrows, itm_short_bow,itm_head_wrappings,itm_caligea]+nubian_peasant_dress+nubian_weapons_peasant,
 attrib_level_6, wp(40), knows_level_6, african_face_female, african_face_female2 ],
 ["saka_follower_woman","Sacica Focaria", "Sacicae Focariae", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_saka,
 [itm_arrows, itm_short_bow, itm_spear,itm_saka_hat_2,itm_saka_hat_3,itm_saka_hat_1]+nomadic_dress_peasant+nomadic_foot_peasant+nomadic_weapons_peasant,
@@ -3356,7 +3361,7 @@ itm_spear, itm_arrows,itm_short_bow,itm_fur_covered_shield,itm_simple_thraex_shi
 attrib_level_12, wp(120), knows_level_12, refugee_face1, refugee_face2 ],
 
 ["nubian_african_soldier_wife","Nubiana Coniunx", "Nubianae Coniuges", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
-[itm_arrows, itm_short_bow, itm_spear, itm_knife,itm_head_wrappings,itm_caligea]+nubian_peasant_dress,
+[itm_arrows, itm_short_bow,itm_head_wrappings,itm_caligea]+nubian_peasant_dress+nubian_weapons_peasant,
 attrib_level_12, wp(80), knows_level_12, african_face_female, african_face_female2 ],
 ["saka_soldier_wife","Sacica Coniunx", "Sacicae Coniuges", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_saka,
 [itm_arrows, itm_short_bow, itm_spear,itm_saka_hat_2,itm_saka_hat_3,itm_saka_hat_1]+nomadic_dress_peasant+nomadic_foot_peasant+nomadic_weapons_peasant,
@@ -3449,7 +3454,7 @@ def_attrib|level(2), wp(50), knows_common|knows_riding_2, woman_face_1, woman_fa
 def_attrib|level(4),wp(60),knows_common,germanic_face_11,germanic_face_12],
 
 ["nubian_town_walker","Nubianus Nobilis", "Nubiani Nobiles", tf_male_black|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
-[itm_knife,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_headcloth,itm_turban,itm_caligea,itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_numidian_armor_5],
+[itm_knife,itm_nubian_kilt,itm_nubian_kilt_2,itm_nubian_kilt_3,itm_nubian_kilt_4, itm_numidian_wig, itm_caligea],
 attrib_level_6, wp(60), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
 ["nubian_town_walker_female","Nubiana Nobilis Mulier", "Nubianae Nobiles Mulieres", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
 [itm_knife,itm_caligea]+nubian_noble_dress,
@@ -3617,10 +3622,10 @@ def_attrib|level(1)|agi_22, wp(10), knows_common|knows_athletics_8, 0x0000000004
 def_attrib|level(1)|agi_18, wp(10), knows_common|knows_athletics_5, 0x000000000000300136db4db6071fffff00000000001db6c00000000000000000, 0x000000000000500236db6db6db7c000000000000001dbadb0000000000000000 ],
 
 ["african_man","Nubianus Tribulis", "Nubiani Tribules", tf_male_black|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
-[itm_knife,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_headcloth,itm_turban,itm_caligea,itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_numidian_armor_5],
+[itm_knife,itm_kilt_a,itm_kilt_b,itm_kilt_c,itm_kilt_d, itm_caligea],
 attrib_level_6, wp(60), knows_level_6, nubian_man_face_younger_1, nubian_man_face_older_2 ],
 ["african_woman","Nubiana Tribulis Mulier", "Nubianae Tribules Mulieres", tf_female|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_nubian,
-[itm_knife,itm_head_wrappings,itm_caligea]+nubian_peasant_dress,
+[itm_knife,itm_caligea]+nubian_peasant_dress,
 attrib_level_6, wp(40), knows_riding_2, african_face_female, african_face_female2 ],
 
 ["saka_man","Sacicus Tribulis", "Sacici Tribules", tf_male|tf_guarantee_armor|tf_guarantee_boots, no_scene, reserved, fac_culture_saka,
@@ -6418,13 +6423,13 @@ itm_leather_covered_round_shield,itm_ad_mixed_round_shields_14,itm_ad_mixed_roun
 itm_sarranid_cloth_robe_b,itm_ad_mixed_round_shields_07,itm_ad_mixed_round_shields_08,itm_sarranid_felt_hat]+horse_numidian+desert_turbans_2, attrib_level_23, wp_melee(160), knows_level_23, north_african_man_face_young_1, north_african_man_face_middle_1 ],
 
 ["garamantian_deserter", "Desertor Garamans", "Desertores Garamantes", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garmantian,
-[itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_headcloth,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_african_round_shield,itm_african_shield_2,itm_sarranid_felt_hat,itm_african_feather_band]+horse_numidian+desert_turbans_2, attrib_level_23, wp_melee(160), knows_level_23, north_african_man_face_young_2, north_african_man_face_middle_2 ],
+[itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_headcloth,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_african_round_shield,itm_african_shield_2,itm_sarranid_felt_hat,itm_african_feather_band,itm_african_feather_band_2]+horse_numidian+desert_turbans_2, attrib_level_23, wp_melee(160), knows_level_23, north_african_man_face_young_2, north_african_man_face_middle_2 ],
 
 ["nubian_deserter", "Desertor Nubianus", "Desertores Nubiani", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_nubian,
 [itm_nubian_kilt,itm_nubian_tunic,itm_numidian_wig,itm_numidian_helm,itm_kilt_a,itm_kilt_b,itm_kilt_c,itm_kilt_d,
 itm_nubian_kite_shield_1,itm_nubian_kite_shield_2,itm_nubian_kite_shield_3,itm_nubian_kite_shield_4,itm_nubian_kite_shield_5,
-itm_nubian_axe,itm_nubian_axe_2,itm_throwing_spears,itm_gauntles_1,itm_throwing_spears,itm_african_shield_1,itm_african_shield_2,itm_african_shield_3,itm_numidian_wig,
-itm_eastern_sword4,itm_eastern_sword1,itm_numidian_armor], attrib_level_23, wp_melee(160), knows_level_23, african_face_younger, african_face_older ],
+itm_nubian_axe,itm_nubian_axe_2,itm_throwing_spears,itm_gauntles_1,itm_throwing_spears,itm_african_shield_1,itm_african_shield_2,itm_african_shield_3,itm_numidian_wig,itm_nubian_spear_1,itm_nubian_spear_2,itm_nubian_spear_3,itm_nubian_spear_4,itm_nubian_spear_5,itm_nubian_spear_6,
+itm_nubian_short_sword,itm_nubian_kilt_4], attrib_level_23, wp_melee(160), knows_level_23, african_face_younger, african_face_older ],
 
 ["saka_deserter", "Sacae Desertor", "Sacae Desertores", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_nubian,
 [itm_lance,itm_alan_long_sword,itm_alan_long_sword_ring,
@@ -7172,7 +7177,7 @@ knight_attrib_5, wp(300), knight_skills_5,0x000000003f00159236db6db6db6db6db0000
 knight_attrib_5, wp(300), knight_skills_5,0x0000000cee11214556dc6dc9256ecae300000000001da8db0000000000000000],
 
 ["yaaba", "Yaaba", "Yaaba", tf_hero|tf_female|tf_is_merchant, no_scene, reserved, fac_gaetuli,
-[itm_eastern_shoe_r,itm_sarranid_lady_dress],
+[itm_caligea, itm_nubian_noble_dress_2],
 def_attrib|level(4), wp(60), knows_common, 0x00000001a000e043489149aba26926d300000000001d50d10000000000000000],
 
 ["bacchus", "Dionysus", "Dionysus", tf_hero, no_scene, reserved, fac_neutral,

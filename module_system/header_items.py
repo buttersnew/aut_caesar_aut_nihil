@@ -434,6 +434,8 @@ itc_gladius = itcf_force_64_bits | (itcf_horseback_slashright_onehanded|itcf_hor
 
 itc_gladius_2 = itcf_force_64_bits | (itcf_slashright_onehanded|itcf_slashleft_onehanded|itcf_horseback_slashright_onehanded|itcf_horseback_slashleft_onehanded)|itcf_thrust_musket|itc_parry_onehanded|itcf_overswing_onehanded
 
+itc_sword_spear    = itc_parry_polearm|itcf_thrust_onehanded_lance_horseback|itcf_thrust_musket|itcf_thrust_onehanded_lance|itcf_overswing_polearm|itcf_thrust_polearm|itcf_slashright_polearm|itcf_slashleft_polearm|itcf_horseback_slashright_onehanded|itcf_horseback_slashleft_onehanded|itcf_horseback_slash_polearm
+
 #EXtra Mesh IDs
 ixmesh_inventory   = 0x1000000000000000
 ixmesh_flying_ammo = 0x2000000000000000
