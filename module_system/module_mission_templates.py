@@ -2979,7 +2979,7 @@ AI_triggers = [
   (0, 0, ti_once, [
       (call_script, "script_cf_division_data_available"),
       (ge, "$battle_phase", BP_Setup),	#wait 'til player deploys
-      ],[
+  ],[
       (call_script, "script_field_tactics", 1),
   ]),
 
@@ -3651,6 +3651,11 @@ common_division_data = [  #4 triggers
               (val_add, ":team_faction", kingdoms_begin),
             (try_end),
           (try_end),
+          (try_begin),
+            (is_between, ":team_faction", kingdoms_begin, kingdoms_end),
+            (faction_get_slot, ":culture", ":team_faction", slot_faction_culture),
+            (assign, ":team_faction", ":culture"),	#use culture as faction
+          (try_end),
           (team_set_slot, ":team", slot_team_faction, ":team_faction"),
         (try_end),
       (try_end),
@@ -4218,7 +4223,7 @@ jacobhinds_ranged_melee_morale_penalty = (
 			(neq, ":troop_id", "trp_judean_rebel"),
 			(neq, ":troop_id", "trp_hispanic_rebell"),
 			(neq, ":troop_id", "trp_alannic_raider"),
-			(neq, ":troop_id", "trp_black_sea_priate"),
+			(neq, ":troop_id", "trp_black_sea_pirate"),
       (neq, ":troop_id", "trp_sea_raider"),
 			(neq, ":troop_id", "trp_illyrian_rebell"),
 			(neq, ":troop_id", "trp_custom_sagitarius"),
@@ -13329,16 +13334,16 @@ mission_templates = [
 ("bandit_lair",mtf_battle_mode|mtf_synch_inventory,charge,
   "Ambushing a bandit lair",[
     (0,mtef_team_0|mtef_use_exact_number,af_override_horse, aif_start_alarmed, 40,[]),
-    (1,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (2,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (3,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (4,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (5,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (6,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (7,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (8,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (9,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
-    (10,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,20,[]),
+    (1,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (2,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (3,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (4,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (5,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (6,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (7,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (8,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (9,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
+    (10,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed,25,[]),
   ], p_wetter + storms +
   [
     common_nobody_stalls,
@@ -13480,7 +13485,7 @@ mission_templates = [
 
       (try_begin),
         (eq, ":template", "pt_black_sea_pirates_lair"),
-        (assign, ":bandit_troop", "trp_black_sea_priate"),
+        (assign, ":bandit_troop", "trp_black_sea_pirate"),
       (else_try),
         (eq, ":template", "pt_sea_raider_lair"),
         (assign, ":bandit_troop", "trp_sea_raider"),
@@ -13622,7 +13627,7 @@ mission_templates = [
 
         (try_begin),
           (eq, ":template", "pt_black_sea_pirates_lair"),
-          (assign, ":bandit_troop", "trp_black_sea_priate"),
+          (assign, ":bandit_troop", "trp_black_sea_pirate"),
         (else_try),
           (eq, ":template", "pt_sea_raider_lair"),
           (assign, ":bandit_troop", "trp_sea_raider"),
@@ -13666,7 +13671,7 @@ mission_templates = [
         (modify_visitors_at_site, ":cur_scene"),
         (try_for_range, ":unused", 0, ":number_of_bandits_will_be_spawned_at_each_period"),
           (store_random_in_range, ":random_entry_point", 2, 11),
-          (add_visitors_to_current_scene, ":random_entry_point", ":bandit_troop", 1),
+          (add_visitors_to_current_scene, ":random_entry_point", ":bandit_troop", 2),
         (try_end),
       (try_end),
     ]),

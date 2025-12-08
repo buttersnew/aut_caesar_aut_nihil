@@ -605,15 +605,15 @@ scripts_hardcoded = [
     (call_script, "script_give_village_to_center", "p_village_92", "p_town_9"),
 
     (call_script, "script_give_village_to_center", "p_village_20", "p_town_42"),
-    (call_script, "script_give_village_to_center", "p_village_176", "p_town_42"),
+    (call_script, "script_give_village_to_center", "p_village_177", "p_town_42"),
     (call_script, "script_give_village_to_center", "p_village_40", "p_town_42"),
 
     (call_script, "script_give_village_to_center", "p_village_89", "p_town_11"),
     (call_script, "script_give_village_to_center", "p_village_178", "p_town_11"),
-    (call_script, "script_give_village_to_center", "p_village_177", "p_town_11"),
     (call_script, "script_give_village_to_center", "p_village_21", "p_town_11"),
+    (call_script, "script_give_village_to_center", "p_village_231", "p_town_11"),
 
-    (call_script, "script_give_village_to_center", "p_village_19", "p_castle_19"),
+    (call_script, "script_give_village_to_center", "p_village_176", "p_castle_19"),
     (call_script, "script_give_village_to_center", "p_village_179", "p_castle_18"),
     (call_script, "script_give_village_to_center", "p_village_11", "p_castle_17"),
     (call_script, "script_give_village_to_center", "p_village_18", "p_castle_7"),
@@ -697,7 +697,7 @@ scripts_hardcoded = [
     (call_script, "script_give_village_to_center", "p_village_227", "p_castle_62"),
     (call_script, "script_give_village_to_center", "p_village_73", "p_castle_63"),
     (call_script, "script_give_village_to_center", "p_village_228", "p_castle_64"),
-    (call_script, "script_give_village_to_center", "p_village_231", "p_castle_67"),
+    (call_script, "script_give_village_to_center", "p_village_19", "p_castle_67"),
 
     (call_script, "script_give_village_to_center", "p_village_250", "p_town_51"),
     (call_script, "script_give_village_to_center", "p_village_249", "p_town_51"),
@@ -8384,7 +8384,7 @@ scripts_hardcoded = [
                     (party_count_companions_of_type, ":num_sailors_follower", "p_follower_party", "trp_sailor"),
                     (party_count_companions_of_type, ":num_sailors", "p_main_party", "trp_sailor"),
                     (party_count_companions_of_type, ":num_sailors1", "p_main_party", "trp_sea_raider"),
-                    (party_count_companions_of_type, ":num_sailors2", "p_main_party", "trp_black_sea_priate"),
+                    (party_count_companions_of_type, ":num_sailors2", "p_main_party", "trp_black_sea_pirate"),
                     (val_add, ":num_sailors", ":num_sailors1"),
                     (val_add, ":num_sailors", ":num_sailors2"),
                     (val_add, ":num_sailors", ":num_sailors_follower"),
@@ -8477,7 +8477,7 @@ scripts_hardcoded = [
                     (gt, ":party_size", 0),
                     (party_count_companions_of_type, ":num_sailors", ":party_no", "trp_sailor"),
                     (party_count_companions_of_type, ":num_sailors1", ":party_no", "trp_sea_raider"),
-                    (party_count_companions_of_type, ":num_sailors2", ":party_no", "trp_black_sea_priate"),
+                    (party_count_companions_of_type, ":num_sailors2", ":party_no", "trp_black_sea_pirate"),
                     (val_add, ":num_sailors", ":num_sailors1"),
                     (val_add, ":num_sailors", ":num_sailors2"),
 

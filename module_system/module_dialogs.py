@@ -3269,7 +3269,7 @@ dialogs =[
 ## Household Slave Talk
 [anyone,"start",[
     (eq, "$talk_context", tc_bandit_lair),
-    (this_or_next|eq, "$g_talk_troop", "trp_black_sea_priate"),
+    (this_or_next|eq, "$g_talk_troop", "trp_black_sea_pirate"),
     (this_or_next|eq, "$g_talk_troop", "trp_sea_raider"),
     (this_or_next|eq, "$g_talk_troop", "trp_hispanic_rebell"),
     (this_or_next|eq, "$g_talk_troop", "trp_egyptian_infantry_heavy"),
@@ -26497,7 +26497,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 (check_quest_active, "qst_collect_men"),
 (neg|check_quest_succeeded, "qst_collect_men"),
 
-(lt, ":total_party_size", 5),
+(lt, ":total_party_size", 10),
 
 (try_begin),
   (le, ":total_party_size", 1),
@@ -26530,7 +26530,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 (check_quest_active, "qst_collect_men"),
 (neg|check_quest_succeeded, "qst_duel_for_lady"),
 (call_script, "script_party_count_members_with_full_health", "p_main_party"),
-(ge, reg0, 5), #player not included, minus 1 from requirement
+(ge, reg0, 10), #player not included, minus 1 from requirement
 
 (str_store_party_name, s9, "$current_town"),
 ],
@@ -86032,7 +86032,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [],
   "{!}Okay.  I'll just give you the reward, and we can assume that all of this already happened.", "close_window",
 [
-	#Setup quest 1: recruit 5 men
+	#Setup quest 1: recruit 10 men
 	(troop_add_gold, "trp_player", 100),
   (str_store_troop_name, s9, "$g_talk_troop"),
   (str_store_party_name, s1, "$g_starting_town"),
@@ -86097,9 +86097,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
   +" the hunter will become the hunted, I'll warrant. You'll first need to round up a group of volunteers."
   +" It is best to search the taverns of nearby towns to hire some cheap mercenaries, like slingers or sailors."
   +" But you can also take a look at nearby villages, though you won't be allowed to recruit good troops there sometimes, some shepherds volunteer to join."
-  +" And of course, you also need proper equipment. So, take these 1,500 denarii, buy yourself some weapons and gather some men.",
+  +" And of course, you also need proper equipment. So, take these 2,000 denarii, buy yourself some weapons and gather some men.",
 "merchant_quest_1c",[
-  (call_script, "script_troop_add_gold", "trp_player", 1500),
+  (call_script, "script_troop_add_gold", "trp_player", 2000),
 
   (str_store_troop_name, s9, "$g_talk_troop"),
   (str_store_party_name_link, s1, "$g_starting_town"), #SB : link center

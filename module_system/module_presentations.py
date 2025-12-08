@@ -12468,30 +12468,27 @@ presentations = presentations_wse2 + [
                 # (store_sub, ":num_prisoners_modifier", 100, ":num_prisoners"),
 
                 (call_script, "script_get_labour_slave_skill_modifier", "$g_encountered_party", "skl_power_strike"),
-                (assign, ":num_prisoners",reg0),
+                (assign, ":num_prisoners", reg0),
+                (str_clear, s13),
                 (try_begin),
                     (gt, ":num_prisoners",0),
                     # (assign, reg10, ":modifier"),
                     # (assign, reg11, ":total_slaves"),
                     # (display_message, "@weighted_number_slaves: {reg10} | total_slaves: {reg11}"),
-                    (val_div, ":num_prisoners", 5),
+                    (val_div, ":num_prisoners", 10),
                     (val_clamp, ":num_prisoners", 1, 31),
                 (else_try),
-                    (assign, ":num_prisoners", -4),
+                    (assign, ":num_prisoners", -15),
+                    (str_store_string, s13, "@ (None or incompetent slaves available)"),
                 (try_end),
-                (store_add, ":num_prisoners_modifier", ":num_prisoners", 100),
+                (store_sub, ":num_prisoners_modifier", 100, ":num_prisoners"),
 
-
-                ##new code:
-                ##same code applies for CAI
-                ## only the engineering efficieny is player only
                 (store_faction_of_party, ":faction_no", "$g_encountered_party"),
                 (faction_get_slot, ":serfdom", ":faction_no", dplmc_slot_faction_serfdom),
 
                 (val_add, ":serfdom", 3),
                 (store_sub, ":modifer", 100, ":serfdom"),
-                (val_mul, ":max_skill", 2),##20 or so
-                (store_sub, ":modifer2", 160, ":max_skill"),
+                (store_sub, ":modifer2", 100, ":max_skill"),
 
                 (val_mul, ":improvement_time", ":modifer"),
                 (val_div, ":improvement_time", 100),
@@ -12502,9 +12499,9 @@ presentations = presentations_wse2 + [
                 (val_div, ":improvement_time", 100),
 
                 (val_mul, ":improvement_time", ":modifer2"),
-                (val_div, ":improvement_time", 160),
+                (val_div, ":improvement_time", 100),
                 (val_mul, ":improvement_cost", ":modifer2"),
-                (val_div, ":improvement_cost", 160),
+                (val_div, ":improvement_cost", 100),
 
                 (call_script, "script_get_household_modifier", household_mod_engineering_eff),
                 (assign, ":engin_eff", reg0),
@@ -12542,7 +12539,7 @@ presentations = presentations_wse2 + [
                 (str_store_string, s10, s0),
                 (str_store_string, s11, s1),
 
-                (str_store_string, s11, "@{s11}^^As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you {reg5} denarii (base cost {reg0}) and will take {reg6} days  (base time {reg40}).^^The building time and costs are modified by: Skill: {reg44}%, slave politic of the realm: {reg45}% and engineering efficiency of your household slaves: {reg47}%. Number of slaves in prison: {reg46}%."),
+                (str_store_string, s11, "@{s11}^^As the party member with the highest engineer skill ({reg2}), {reg3?you reckon:{s3} reckons} that building the {s4} will cost you {reg5} denarii (base cost {reg0}) and will take {reg6} days  (base time {reg40}).^^The building time and costs are modified by: Skill: {reg44}%, slave politic of the realm: {reg45}% and engineering efficiency of your household slaves: {reg47}%. Number of slaves in prison: {reg46}%{s13}."),
                 (assign, ":value", 1),
                 (call_script, "script_get_improvement_picture", ":building", "trp_player", "$g_encountered_party"),
                 (assign, ":material", reg0),
@@ -23853,7 +23850,7 @@ presentations = presentations_wse2 + [
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_alannic_raider", 60, 1210),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_illyrian_rebell", 60, 1010),
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_black_sea_priate", 210, 1010),
+      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_black_sea_pirate", 210, 1010),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 14, "trp_sea_raider", 560, 1010),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 13, "trp_hispanic_bandit", 710, 1010),

@@ -5984,7 +5984,7 @@ strings = [
   ("good_you_have_enough_men", "Good, good. You did well. You have enough men. Now, go and knock some of those robbers over the head, and make them tell you how to find their hideout."),
   ("do_not_waste_time_go_and_learn_where_my_brother_is", "Look, {sir/my lady}. Time is at a bit of premium, here. Now, if you could go find out where they are hiding my brother, that would be appreciated."),
 
-  ("start_up_quest_message_1", "{s9} wants you to collect at least five men. Either cheap mercenaries, like slingers, or from nearby villages. After you collect these men, find and speak with him. He is in the tavern at {s1}"),
+  ("start_up_quest_message_1", "{s9} wants you to collect at least ten men. Either cheap mercenaries, like slingers, or from nearby villages. After you collect these men, find and speak with him. He is in the tavern at {s1}"),
   ("start_up_quest_message_2", "Find and defeat a group of bandits lurking near {s9}, and learn where your employer's brother has been taken."),
   ("start_up_quest_message_3", "Rescue the merchant's brother from the robber's hideout located near {s9}."),
   ("start_up_first_quest", "You have taken your first quest. You may view your quest log by pressing 'Q' anytime in the game."),

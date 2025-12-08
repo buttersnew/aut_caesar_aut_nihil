@@ -16685,31 +16685,31 @@ scripts = scripts_hardcoded + [
             (faction_get_slot, ":serfdom", ":center_faction", dplmc_slot_faction_serfdom),
 
             (val_add, ":serfdom", 3),
-            (store_sub, ":modifer", 100, ":serfdom"),
+            (store_sub, ":modifer", 150, ":serfdom"),
             (val_mul, ":skill", 2),
-            (store_sub, ":modifer2", 160, ":skill"),##may needs tweaking
+            (store_sub, ":modifer2", 180, ":skill"),##may needs tweaking
 
             (val_mul, ":improvement_time", ":modifer"),
-            (val_div, ":improvement_time", 100),
+            (val_div, ":improvement_time", 150),
             (val_mul, ":improvement_cost", ":modifer"),
-            (val_div, ":improvement_cost", 100),
+            (val_div, ":improvement_cost", 150),
 
             (val_mul, ":improvement_time", ":modifer2"),
-            (val_div, ":improvement_time", 160),
+            (val_div, ":improvement_time", 180),
             (val_mul, ":improvement_cost", ":modifer2"),
-            (val_div, ":improvement_cost", 160),
+            (val_div, ":improvement_cost", 180),
 
             (party_get_num_prisoners, ":num_prisoners", ":center_no"), #possibly up to 100
-            (val_div, ":num_prisoners", 10), ##10 prisoners improve by 1% for AI
+            (val_div, ":num_prisoners", 15), ##15 prisoners improve by 1% for AI
             #=> 100 prisoners improve by 20%, maximum of 30%, only effects building time
-            (val_clamp, ":num_prisoners", 0, 31),
+            (val_clamp, ":num_prisoners", 0, 21),
             (store_sub, ":num_prisoners_modifier", 100, ":num_prisoners"),
 
             (val_mul, ":improvement_time", ":num_prisoners_modifier"),
             (val_div, ":improvement_time", 100),
 
             (lt, ":improvement_time", 365), #feasible
-            (val_max, ":improvement_time", 7), #not instantaneous
+            (val_max, ":improvement_time", 14), #not instantaneous
 
             (gt, ":troop_wealth", ":improvement_cost"),
             (val_sub, ":troop_wealth", ":improvement_cost"),
@@ -30098,7 +30098,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 80000),
-        (assign, reg40, 50),
+        (assign, reg40, 55),
     (else_try),
         (eq, ":improvement_no", slot_center_has_manor),
         (assign, ":string_name", "str_manor_name_rome"),
@@ -30106,13 +30106,13 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 60000),
-        (assign, reg40, 42),
+        (assign, reg40, 45),
     (else_try),
         (eq, ":improvement_no", slot_center_has_guard),
         (str_store_string, s0, "str_guard_posts_name_rome"),
         (str_store_string, s1, "str_guard_posts_description_rome"),
         (assign, reg0, 15000),
-        (assign, reg40, 23),
+        (assign, reg40, 30),
     (else_try),
         (eq, ":improvement_no", slot_center_has_sewers),
 
@@ -30152,7 +30152,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 60000),
-        (assign, reg40, 50),
+        (assign, reg40, 60),
     (else_try),
         (eq, ":improvement_no", slot_center_has_industry),
         (try_begin),
@@ -30192,7 +30192,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s1, ":string_description"),
 
         (assign, reg0, 80000),
-        (assign, reg40, 60),
+        (assign, reg40, 70),
     (else_try),
         (eq, ":improvement_no", slot_center_has_loom),
         (try_begin),
@@ -30231,7 +30231,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 80000),
-        (assign, reg40, 60),
+        (assign, reg40, 70),
     (else_try),
         (eq, ":improvement_no", slot_center_has_smith),
         (try_begin),
@@ -30269,13 +30269,13 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 80000),
-        (assign, reg40, 60),
+        (assign, reg40, 70),
     (else_try),
         (eq, ":improvement_no", slot_center_has_fishport),
         (str_store_string, s0, "str_fishing_name_rome"),
         (str_store_string, s1, "str_fishing_description_rome"),
         (assign, reg0, 30000),
-        (assign, reg40, 40),
+        (assign, reg40, 50),
     (else_try),
         (eq, ":improvement_no", slot_center_has_roads),
         (try_begin),
@@ -30313,7 +30313,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 55000),
-        (assign, reg40, 70),
+        (assign, reg40, 80),
     (else_try),
         (eq, ":improvement_no", slot_center_has_hosptial),
         (try_begin),
@@ -30351,7 +30351,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 68000),
-        (assign, reg40, 42),
+        (assign, reg40, 52),
     (else_try),
         (eq, ":improvement_no", slot_center_has_port),
         (try_begin),
@@ -30389,7 +30389,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 150000),
-        (assign, reg40, 120),
+        (assign, reg40, 130),
     (else_try),
         (eq, ":improvement_no", slot_center_has_farms),
         (try_begin),
@@ -30427,7 +30427,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 35000),
-        (assign, reg40, 45),
+        (assign, reg40, 55),
     (else_try),
         (eq, ":improvement_no", slot_center_has_cattle),
         (try_begin),
@@ -30465,7 +30465,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 35000),
-        (assign, reg40, 45),
+        (assign, reg40, 55),
     (else_try),
         (eq, ":improvement_no", slot_center_has_trader),
         (try_begin),
@@ -30503,25 +30503,25 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 30000),
-        (assign, reg40, 35),
+        (assign, reg40, 45),
     (else_try),
         (eq, ":improvement_no", slot_center_has_iron_mine),
         (str_store_string, s0, "str_ironmine_name_rome"),
         (str_store_string, s1, "str_ironmine_description_rome"),
         (assign, reg0, 80000),
-        (assign, reg40, 56),
+        (assign, reg40, 66),
     (else_try),
         (eq, ":improvement_no", slot_center_has_quarry),
         (str_store_string, s0, "str_quarry_name_rome"),
         (str_store_string, s1, "str_quarry_description_rome"),
         (assign, reg0, 70000),
-        (assign, reg40, 53),
+        (assign, reg40, 63),
     (else_try),
         (eq, ":improvement_no", slot_center_has_slave_market),
         (str_store_string, s0, "str_slave_market_name_rome"),
         (str_store_string, s1, "str_slave_market_description_rome"),
         (assign, reg0, 60000),
-        (assign, reg40, 48),
+        (assign, reg40, 58),
     (else_try),
         (eq, ":improvement_no", slot_center_has_silver_mine),
         (str_store_string, s0, "str_silvermine_name_rome"),
@@ -30533,13 +30533,13 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, "str_training_name_rome"),
         (str_store_string, s1, "str_training_description_rome"),
         (assign, reg0, 80000),
-        (assign, reg40, 49),
+        (assign, reg40, 59),
     (else_try),
         (eq, ":improvement_no", slot_center_has_fish_pond),
         (str_store_string, s0, "str_mill_simple_name_rome"),
         (str_store_string, s1, "str_mill_simple_description_rome"),
         (assign, reg0, 34000),
-        (assign, reg40, 35),
+        (assign, reg40, 45),
     (else_try),
         (eq, ":improvement_no", slot_center_has_fire_fighter),
         (try_begin),
@@ -30577,13 +30577,13 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 30000),
-        (assign, reg40, 21),
+        (assign, reg40, 31),
     (else_try),
         (eq, ":improvement_no", slot_center_has_watch_tower),
         (str_store_string, s0, "str_watchtower_name_rome"),
         (str_store_string, s1, "str_watchtower_description_rome"),
         (assign, reg0, 10000),
-        (assign, reg40, 21),
+        (assign, reg40, 31),
     (else_try),
         (eq, ":improvement_no", slot_center_has_school),
         (try_begin),
@@ -30621,25 +30621,25 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 40000),
-        (assign, reg40, 42),
+        (assign, reg40, 52),
     (else_try),
         (eq, ":improvement_no", slot_center_has_messenger_post),
         (str_store_string, s0, "str_messenger_post_name_rome"),
         (str_store_string, s1, "str_messenger_post_description_rome"),
         (assign, reg0, 10000),
-        (assign, reg40, 21),
+        (assign, reg40, 31),
     (else_try),
         (eq, ":improvement_no", slot_center_has_prisoner_tower),
         (str_store_string, s0, "str_prison_tower_name_rome"),
         (str_store_string, s1, "str_prison_tower_description_rome"),
         (assign, reg0, 55000),
-        (assign, reg40, 63),
+        (assign, reg40, 73),
     (else_try),
         (eq, ":improvement_no", slot_center_rome_rebuild),
         (str_store_string, s0, "str_rome_rebuild"),
         (str_store_string, s1, "str_rome_rebuild_description"),
         (assign, reg0, 2000000),
-        (assign, reg40, 252),#3 years, one year are 84 days
+        (assign, reg40, 260),#>3 years, one year are 84 days
     (else_try),
         (eq, ":improvement_no", slot_center_has_forum),
         (try_begin),
@@ -30677,7 +30677,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 250000),
-        (assign, reg40, 150),
+        (assign, reg40, 160),
     (else_try),
         (eq, ":improvement_no", slot_center_has_temple),
         (store_add, ":string", "$temp4_1", "str_gods_begin"),
@@ -30685,7 +30685,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, "str_temple_name_rome"),
         (str_store_string, s1, "str_temple_description_rome"),
         (assign, reg0, 100000),
-        (assign, reg40, 65),
+        (assign, reg40, 75),
     (else_try),
         (eq, ":improvement_no", slot_center_has_theatre),
         (try_begin),
@@ -30723,7 +30723,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 225000),
-        (assign, reg40, 140),# 2 years are 168 days
+        (assign, reg40, 150),# 2 years are 168 days
     (else_try),
         (eq, ":improvement_no", slot_center_has_water),
         (try_begin),
@@ -30761,7 +30761,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 300000),
-        (assign, reg40, 168),
+        (assign, reg40, 178),
     (else_try),
         (eq, ":improvement_no", slot_center_has_triumph),
         (try_begin),
@@ -30799,7 +30799,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 150000),
-        (assign, reg40, 120),
+        (assign, reg40, 130),
     (else_try),
         (eq, ":improvement_no", slot_center_has_barracks),
         (try_begin),
@@ -30840,7 +30840,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 90000),
-        (assign, reg40, 49),
+        (assign, reg40, 55),
     (else_try),
         (eq, ":improvement_no", slot_center_change_culture_village),
         (try_begin),
@@ -30878,7 +30878,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 185000),
-        (assign, reg40, 80),
+        (assign, reg40, 90),
     (else_try),
         (eq, ":improvement_no", slot_center_change_culture_town),
         (try_begin),
@@ -30916,7 +30916,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
         (assign, reg0, 350000),
-        (assign, reg40, 115),
+        (assign, reg40, 125),
     (try_end),
 ]),
 
@@ -52824,36 +52824,36 @@ scripts = scripts_hardcoded + [
 ]),
 
 # #Formations Scripts
-  # script_field_start_position by motomataru
-  # Input: team
-  # Output: pos2 = current army position advanced by cavalry wedge depth over
-  # infantry formation depth
-  # Originally written to prevent map border accidents when setting up player
-  # army at its spawn point
-  ("field_start_position", [
-      (store_script_param, ":fteam", 1),
+# script_field_start_position by motomataru
+# Input: team
+# Output: pos2 = current army position advanced by cavalry wedge depth over
+# infantry formation depth
+# Originally written to prevent map border accidents when setting up player
+# army at its spawn point
+("field_start_position", [
+    (store_script_param, ":fteam", 1),
 
-      (assign, ":depth_cavalry", 0),
-      (assign, ":largest_mounted_division_size", 0),
-      (team_get_leader, ":fleader", ":fteam"),
+    (assign, ":depth_cavalry", 0),
+    (assign, ":largest_mounted_division_size", 0),
+    (team_get_leader, ":fleader", ":fteam"),
 
-      (try_begin),
+    (try_begin),
         (ge, ":fleader", 0),
         (agent_get_position, pos2, ":fleader"),
-      (else_try),
+    (else_try),
         (call_script, "script_battlegroup_get_position", pos2, ":fteam", grc_everyone),
-      (try_end),
+    (try_end),
 
-      (try_for_range, ":division", 0, 9),
+    (try_for_range, ":division", 0, 9),
         (store_add, ":slot", slot_team_d0_type, ":division"),
         (team_slot_eq, ":fteam", ":slot", sdt_cavalry),
         (store_add, ":slot", slot_team_d0_size, ":division"),
         (team_get_slot, reg0, ":fteam", ":slot"),
         (lt, ":largest_mounted_division_size", reg0),
         (assign, ":largest_mounted_division_size", reg0),
-      (try_end),
+    (try_end),
 
-      (try_begin),
+    (try_begin),
         (gt, ":largest_mounted_division_size", 0),
         (val_mul, ":largest_mounted_division_size", 2),
         (convert_to_fixed_point, ":largest_mounted_division_size"),
@@ -52874,7 +52874,8 @@ scripts = scripts_hardcoded + [
         (call_script, "script_team_get_position_of_enemies", Enemy_Team_Pos, ":fteam", grc_everyone),
         (call_script, "script_point_y_toward_position", pos2, Enemy_Team_Pos),
         (position_move_y, pos2, ":depth_cavalry"),
-      (try_end),]),
+    (try_end),
+]),
 
   # script_division_reset_places by motomataru
   # Input: none
@@ -52909,44 +52910,44 @@ scripts = scripts_hardcoded + [
         (call_script, "script_battlegroup_place_around_pos1", ":fteam", ":fdivision", ":fleader"),
       (try_end),]),
 
-  # script_battlegroup_place_around_pos1 by motomataru
-  # Input: team, division
-  # Output: pos61 division position, moves pos1
-  ("battlegroup_place_around_pos1", [
-      (store_script_param, ":fteam", 1),
-      (store_script_param, ":fdivision", 2),
-      (store_script_param, ":fleader", 3),
+# script_battlegroup_place_around_pos1 by motomataru
+# Input: team, division
+# Output: pos61 division position, moves pos1
+("battlegroup_place_around_pos1", [
+    (store_script_param, ":fteam", 1),
+    (store_script_param, ":fdivision", 2),
+    (store_script_param, ":fleader", 3),
 
-      (assign, ":store_fpm", 1),
-      (convert_to_fixed_point, ":store_fpm"),
-      (set_fixed_point_multiplier, 100),
+    (assign, ":store_fpm", 1),
+    (convert_to_fixed_point, ":store_fpm"),
+    (set_fixed_point_multiplier, 100),
 
-      (store_sub, ":player_division", "$form_ai_player_in_division", 1),
-      (try_begin),
+    (store_sub, ":player_division", "$form_ai_player_in_division", 1),
+    (try_begin),
         (eq, ":player_division", ":fdivision"),
         (assign, ":first_member_is_player", 1),
-      (else_try),
+    (else_try),
         (assign, ":first_member_is_player", 0),
-      (try_end),
+    (try_end),
 
-      (try_begin),
+    (try_begin),
         (eq, "$form_ai_autorotate", 1),
         (call_script, "script_team_get_position_of_enemies", Enemy_Team_Pos, ":fteam", grc_everyone),
         (neq, reg0, 0),	#more than 0 enemies still alive?
         (call_script, "script_point_y_toward_position", pos1, Enemy_Team_Pos),
-      (try_end),
+    (try_end),
 
-      (store_add, ":slot", slot_team_d0_type, ":fdivision"),
-      (team_get_slot, ":sd_type", ":fteam", ":slot"),
-      (store_add, ":slot", slot_team_d0_size, ":fdivision"),
-      (team_get_slot, ":num_troops", ":fteam", ":slot"),
-      (store_add, ":slot", slot_team_d0_formation, ":fdivision"),
-      (team_get_slot, ":fformation", ":fteam", ":slot"),
-      (store_add, ":slot", slot_team_d0_formation_space, ":fdivision"),
-      (team_get_slot, ":formation_extra_spacing", ":fteam", ":slot"),
+    (store_add, ":slot", slot_team_d0_type, ":fdivision"),
+    (team_get_slot, ":sd_type", ":fteam", ":slot"),
+    (store_add, ":slot", slot_team_d0_size, ":fdivision"),
+    (team_get_slot, ":num_troops", ":fteam", ":slot"),
+    (store_add, ":slot", slot_team_d0_formation, ":fdivision"),
+    (team_get_slot, ":fformation", ":fteam", ":slot"),
+    (store_add, ":slot", slot_team_d0_formation_space, ":fdivision"),
+    (team_get_slot, ":formation_extra_spacing", ":fteam", ":slot"),
 
-      #handle memorized placement
-      (try_begin),
+    #handle memorized placement
+    (try_begin),
         (eq, ":first_member_is_player", 0),
         (store_add, ":slot", slot_faction_d0_mem_relative_x_flag, ":fdivision"),
         (faction_get_slot, ":value", "fac_player_faction", ":slot"),	#only used for player now
@@ -52976,8 +52977,8 @@ scripts = scripts_hardcoded + [
           (try_end),
         (try_end),
 
-      #default placement per division type
-      (else_try),
+    #default placement per division type
+    (else_try),
         (this_or_next | eq, ":sd_type", sdt_cavalry),
         (eq, ":sd_type", sdt_harcher),
         (try_begin),
@@ -53038,7 +53039,7 @@ scripts = scripts_hardcoded + [
           (val_add, "$next_cavalry_place", formation_minimum_spacing_horse_width),
         (try_end),
 
-      (else_try),
+    (else_try),
         (eq, ":sd_type", sdt_archer),
         (try_begin),
           (eq, ":first_member_is_player", 0),
@@ -53054,7 +53055,7 @@ scripts = scripts_hardcoded + [
           (call_script, "script_form_archers", ":fteam", ":fdivision", ":fleader", ":formation_extra_spacing", ":first_member_is_player", ":fformation"),
         (try_end),
 
-      (else_try),
+    (else_try),
         (eq, ":sd_type", sdt_skirmisher),
         (try_begin),
           (eq, ":first_member_is_player", 0),
@@ -53069,7 +53070,7 @@ scripts = scripts_hardcoded + [
           (call_script, "script_form_infantry", ":fteam", ":fdivision", ":fleader", ":formation_extra_spacing", ":first_member_is_player", ":fformation"),
         (try_end),
 
-      (else_try),
+    (else_try),
         (try_begin),
           (eq, ":first_member_is_player", 0),
           (position_move_x, pos1, "$next_infantry_place", 0),
@@ -53125,19 +53126,20 @@ scripts = scripts_hardcoded + [
           (val_sub, "$next_infantry_place", ":formation_width"),	#next infantry 1m LEFT of these
           (val_sub, "$next_infantry_place", 100),
         (try_end),
-      (try_end),
+    (try_end),
 
-      (store_add, ":slot", slot_team_d0_move_order, ":fdivision"),
-      (team_set_slot, ":fteam", ":slot", mordr_hold),
-      (set_show_messages, 0),
-      (team_get_movement_order, reg0, ":fteam", ":fdivision"),
-      (try_begin),
+    (store_add, ":slot", slot_team_d0_move_order, ":fdivision"),
+    (team_set_slot, ":fteam", ":slot", mordr_hold),
+    (set_show_messages, 0),
+    (team_get_movement_order, reg0, ":fteam", ":fdivision"),
+    (try_begin),
         (neq, reg0, mordr_hold),
         (team_give_order, ":fteam", ":fdivision", mordr_hold),
-      (try_end),
-      (call_script, "script_set_formation_destination", ":fteam", ":fdivision", pos61),
-      (set_show_messages, 1),
-      (set_fixed_point_multiplier, ":store_fpm"),]),
+    (try_end),
+    (call_script, "script_set_formation_destination", ":fteam", ":fdivision", pos61),
+    (set_show_messages, 1),
+    (set_fixed_point_multiplier, ":store_fpm"),
+]),
 
   # script_form_cavalry by motomataru
   # Input: (pos1), team, division, agent number of team leader, spacing, flag
@@ -53931,66 +53933,82 @@ scripts = scripts_hardcoded + [
       (try_end),
   ]),
 
-  ("get_default_formation", [(store_script_param, ":fteam", 1),
-      (team_get_slot, ":ffaction", ":fteam", slot_team_faction),
-      (try_begin),
+("get_default_formation", [
+    (store_script_param, ":fteam", 1),
+    (team_get_slot, ":ffaction", ":fteam", slot_team_faction),
+    (try_begin),
         (this_or_next | eq, ":ffaction", fac_player_supporters_faction),
         (eq, ":ffaction", fac_player_faction),
         (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
         (assign, ":ffaction", "$players_kingdom"),
-      (try_end),
+    (try_end),
 
-      (try_begin),
-        (is_between, ":ffaction", "fac_player_faction", kingdoms_end),
+    (try_begin),
+        (is_between, ":ffaction", kingdoms_begin, kingdoms_end),
         (faction_slot_ge, ":ffaction", slot_faction_culture, 1),
         (faction_get_slot, ":ffaction", ":ffaction", slot_faction_culture),
-      (try_end),
+    (try_end),
 
-      #assign default formation
-      (try_begin),
+    #assign default formation
+    (try_begin),
         (eq, ":ffaction", "fac_culture_dacian"),
         (assign, reg0, formation_shield),
-      (else_try),
+    (else_try),
         (eq, ":ffaction", "fac_culture_celtic"),
         (assign, reg0, formation_ranks),
-      (else_try),
+    (else_try),
         (eq, ":ffaction", "fac_culture_caledonian"),
         (assign, reg0, formation_ranks),
-      (else_try),
+    (else_try),
         (eq, ":ffaction", "fac_culture_sarmatian"),
-        (assign, reg0, formation_none),
-      (else_try),
+        (assign, reg0, formation_ranks),
+    (else_try),
         (eq, ":ffaction", "fac_culture_germanic"),
         (assign, reg0, formation_shield),
-      (else_try),
+    (else_try),
         (eq, ":ffaction", "fac_culture_caucasian"),
         (assign, reg0, formation_shield),
-      (else_try),
+    (else_try),
+        (eq, ":ffaction", "fac_culture_arabian"),
+        (assign, reg0, formation_square),
+    (else_try),
         (eq, ":ffaction", "fac_culture_syrian"),
-        (assign, reg0, formation_ranks),
-      (else_try),
+        (assign, reg0, formation_square),
+    (else_try),
         (eq, ":ffaction", "fac_culture_egyptian"),
         (assign, reg0, formation_square),
-      (else_try),
+    (else_try),
         (eq, ":ffaction", "fac_culture_greek"),
         (assign, reg0, formation_square),
-      (else_try),
+    (else_try),
         (eq, ":ffaction", "fac_culture_parthian"),
         (assign, reg0, formation_ranks),
-      (else_try),
+    (else_try),
+        (eq, ":ffaction", "fac_culture_berber"),
+        (assign, reg0, formation_ranks),
+    (else_try),
+        (eq, ":ffaction", "fac_culture_garmantian"),
+        (assign, reg0, formation_ranks),
+    (else_try),
+        (eq, ":ffaction", "fac_culture_nubian"),
+        (assign, reg0, formation_ranks),
+    (else_try),
+        (eq, ":ffaction", "fac_culture_saka"),
+        (assign, reg0, formation_ranks),
+    (else_try),
         (eq, ":ffaction", "fac_culture_roman"),
         (assign, reg0, formation_shield),
-      (else_try),
+    (else_try),
         (eq, ":ffaction", "fac_culture_judean"),
-        (assign, reg0, formation_square),
-      (else_try),
-        (eq, ":ffaction", "fac_culture_bosporan"),
         (assign, reg0, formation_shield),
-      (else_try),
+    (else_try),
+        (eq, ":ffaction", "fac_culture_bosporan"),
+        (assign, reg0, formation_square),
+    (else_try),
         (this_or_next | eq, ":ffaction", "fac_player_supporters_faction"),
         (eq, ":ffaction", "fac_player_faction"),	#independent player
         (assign, reg0, formation_shield),
-      (else_try),
+    (else_try),
         (this_or_next | eq, ":ffaction", "fac_egypt"),
         (this_or_next | eq, ":ffaction", "fac_roman_rebells"),
         (this_or_next | eq, ":ffaction", "fac_deserters"),
@@ -54000,9 +54018,10 @@ scripts = scripts_hardcoded + [
         (this_or_next | eq, ":ffaction", "fac_arabian_bandits"),
         (is_between, ":ffaction", minor_kingdoms_begin,minor_kingdoms_end),
         (assign, reg0, formation_shield),
-      (else_try),
+    (else_try),
         (assign, reg0, formation_none),	#riffraff don't use formations
-      (try_end),]),
+    (try_end),
+]),
 
   # script_switch_to_noswing_weapons by motomataru
   # Input: agent, formation spacing
@@ -54441,15 +54460,15 @@ scripts = scripts_hardcoded + [
       (agent_is_human, ":agent"),
       (agent_slot_eq, ":agent", slot_agent_is_running_away, 0),]),
 
-  # #Player team formations functions
-  # script_player_attempt_formation
-  # Inputs: arg1: division
-  #			arg2: formation identifier (formation_*)
-  #         arg3: flag 1 to form at current location (rather than next to
-  #         player), flag 2 to form as if player were at Target_Pos
-  # Output: none
-  # Designed JUST for infantry
-  ("player_attempt_formation", [
+# #Player team formations functions
+# script_player_attempt_formation
+# Inputs: arg1: division
+#			arg2: formation identifier (formation_*)
+#         arg3: flag 1 to form at current location (rather than next to
+#         player), flag 2 to form as if player were at Target_Pos
+# Output: none
+# Designed JUST for infantry
+("player_attempt_formation", [
       (store_script_param, ":fdivision", 1),
       (store_script_param, ":fformation", 2),
       (store_script_param, ":form_on_spot", 3),
@@ -54534,7 +54553,8 @@ scripts = scripts_hardcoded + [
         (eq, ":form_on_spot", 2),
         (copy_position, pos1, Target_Pos),
         (call_script, "script_battlegroup_place_around_pos1", "$fplayer_team_no", ":fdivision", "$fplayer_agent_no"),
-      (try_end),]),
+      (try_end),
+]),
 
   # script_player_formation_end
   # Input: division
@@ -55872,7 +55892,7 @@ scripts = scripts_hardcoded + [
 
         (agent_get_division, ":division", ":agent"),
         (neq, ":division", ":target_division"),
-        (neq, ":division", sdt_harcher),#do not apply for horse archers
+        # (neq, ":division", sdt_harcher),#do not apply for horse archers
         (agent_set_division, ":agent", ":target_division"),
         (agent_set_slot, ":agent", slot_agent_new_division, ":target_division"),
     (try_end),
@@ -57514,11 +57534,10 @@ scripts = scripts_hardcoded + [
     # end formations additions
 ]),
 
-  # script_formation_battle_tactic_apply_aux #CABA - OK; Need expansion when new AI divisions to work with
-  # Input: team_no, battle_tactic
-  # Output: battle_tactic
-  ("formation_battle_tactic_apply_aux",
-    [
+# script_formation_battle_tactic_apply_aux #CABA - OK; Need expansion when new AI divisions to work with
+# Input: team_no, battle_tactic
+# Output: battle_tactic
+("formation_battle_tactic_apply_aux",[
       (store_script_param, ":team_no", 1),
       (store_script_param, ":battle_tactic", 2),
       (store_mission_timer_a, ":mission_time"),
@@ -57638,7 +57657,7 @@ scripts = scripts_hardcoded + [
         (agent_set_speed_limit, ":ai_leader", 60),
       (try_end),
       (assign, reg0, ":battle_tactic"),
-  ]),
+]),
 
 # Replacement script for battle_tactic_init_aux to switch between using
 # M&B Standard AI with changes for formations and original based on
@@ -57752,7 +57771,6 @@ scripts = scripts_hardcoded + [
                 (neq, reg0, mordr_charge),
                 (team_give_order, ":team_no", ":division", mordr_charge),
             (try_end),
-
         (else_try),
             (ge, "$battle_phase", BP_Fight),
             (eq, ":is_firing", 0),
@@ -57931,6 +57949,8 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":battle_presence", 3),
     (call_script, "script_calculate_decision_numbers", ":team_no", ":battle_presence"),
 
+    # (display_message, "@DEBUG (FormAI): In team_field_melee_tactics"),
+
     #mop up if outnumber enemies more than 6:1
     (try_begin),
         (gt, reg0, 86),
@@ -58004,6 +58024,12 @@ scripts = scripts_hardcoded + [
             (eq, ":enemy_agent_nearest_cavalry_dist", 0),	#happens when player turns off closest agent mechanism (see mod options)
             (assign, ":enemy_agent_nearest_cavalry_dist", ":enemy_bg_nearest_infantry_dist"),
         (try_end),
+
+        # print num_archers, num_cavalry, num_infantry
+        # (assign, reg1, ":num_archers"),
+        # (assign, reg2, ":num_cavalry"),
+        # (assign, reg3, ":num_infantry"),
+        # (display_message, "@DEBUG (FormAI): Num Archers: {reg1}, Num Cavalry: {reg2}, Num Infantry: {reg3}"),
 
         (try_begin),
             (lt, "$battle_phase", BP_Fight),
@@ -58468,8 +58494,7 @@ scripts = scripts_hardcoded + [
             (try_end),
             (store_add, ":slot", slot_team_d0_percent_ranged, grc_cavalry),
             (team_get_slot, reg0, ":team_no", ":slot"),
-
-            #horse archers don't use wedge
+            # horse archers charge no formation
             (try_begin),
                 (ge, reg0, 50),
                 (call_script, "script_formation_end", ":team_no", grc_cavalry),
@@ -58713,7 +58738,7 @@ scripts = scripts_hardcoded + [
     (try_end),
 
     #apply tactics to every AI team
-    (set_show_messages, 0),
+    # (set_show_messages, 0),
     (try_for_range, ":ai_team", 0, 4),
         (team_get_slot, ":ai_team_size", ":ai_team", slot_team_adj_size),
         (gt, ":ai_team_size", 0),
@@ -58729,29 +58754,37 @@ scripts = scripts_hardcoded + [
         (try_end),
         (eq, ":do_it", 1),
 
-        (team_get_slot, ":ai_faction", ":ai_team", slot_team_faction),
+        # (team_get_slot, ":ai_faction", ":ai_team", slot_team_faction),
         (try_begin),
-            (neq, AI_for_kingdoms_only, 0),
-            (neq, ":ai_faction", "fac_egypt"),
-            (neq, ":ai_faction", "fac_roman_rebells"),
-            (neq, ":ai_faction", "fac_deserters"),
-            (neq, ":ai_faction", "fac_judean_rebels"),
-            (neq, ":ai_faction", "fac_forest_bandits"),
-            (neq, ":ai_faction", "fac_illyrian_bandits"),
-            (neq, ":ai_faction", "fac_arabian_bandits"),
-            (neq, ":ai_faction", "fac_picton"),
-            (neg | is_between, ":ai_faction", kingdoms_begin, kingdoms_end),
-            (neg | is_between, ":ai_faction", minor_kingdoms_begin, minor_kingdoms_end),
+        #     # (neq, AI_for_kingdoms_only, 0),
+        #     (neq, ":ai_faction", "fac_egypt"),
+        #     (neq, ":ai_faction", "fac_roman_rebells"),
+        #     (neq, ":ai_faction", "fac_deserters"),
+        #     (neq, ":ai_faction", "fac_judean_rebels"),
+        #     (neq, ":ai_faction", "fac_forest_bandits"),
+        #     (neq, ":ai_faction", "fac_illyrian_bandits"),
+        #     (neq, ":ai_faction", "fac_arabian_bandits"),
+        #     (neq, ":ai_faction", "fac_picton"),
+        #     (neg | is_between, ":ai_faction", cultures_begin, cultures_end),
+        #     (neg | is_between, ":ai_faction", kingdoms_begin, kingdoms_end),
+        #     (neg | is_between, ":ai_faction", minor_kingdoms_begin, minor_kingdoms_end),
 
-            (call_script, "script_formation_end", ":ai_team", grc_everyone),
-            (team_get_movement_order, reg0, ":ai_team", grc_everyone),
-            (try_begin),
-                (neq, reg0, mordr_charge),
-                (team_give_order, ":ai_team", grc_everyone, mordr_charge),
-            (try_end),
+        #     (display_message, "@AI field tactics skipped for non-kingdom/ culture faction."),
 
-        #uses tactics
-        (else_try),
+        #     (call_script, "script_formation_end", ":ai_team", grc_everyone),
+        #     (store_mission_timer_a, ":time"),
+        #     (try_begin),
+        #         (le, ":time", 10),
+        #         (call_script, "script_field_start_position", ":ai_team"),	#returns pos2
+        #         (team_set_order_position, ":ai_team", grc_everyone, pos2),
+        #         (team_give_order, ":ai_team", grc_everyone, mordr_hold),
+        #     (else_try),
+        #         (team_get_movement_order, reg0, ":ai_team", grc_everyone),
+        #         (neq, reg0, mordr_charge),
+        #         (team_give_order, ":ai_team", grc_everyone, mordr_charge),
+        #     (try_end),
+        # #uses tactics
+        # (else_try),
             (val_mul, ":ai_team_size", 100),
             (store_div, ":team_percentage", ":ai_team_size", ":largest_team_size"),
             (store_div, ":team_battle_presence", ":ai_team_size", ":battle_size"),
@@ -58796,19 +58829,19 @@ scripts = scripts_hardcoded + [
             (eq, reg0, ":time_slice"),
             (call_script, "script_team_field_melee_tactics", ":ai_team", ":team_percentage", ":team_battle_presence"),
 
-            #let horse archers just charge once the battle started
-            (try_begin),
-                (le, "$battle_phase", BP_Setup),
-                (team_give_order, ":ai_team", sdt_harcher, mordr_mount),#just let horse archers charge
-                # (team_give_order, ":ai_team", sdt_harcher, mordr_advance),#just let horse archers charge
-            (else_try),
-                (team_get_movement_order, ":cur_movement_order", ":ai_team", sdt_harcher),
-                (neq, ":cur_movement_order", mordr_charge),
-                (team_give_order, ":ai_team", sdt_harcher, mordr_charge),#just let horse archers charge
-            (try_end),
+            # #let horse archers just charge once the battle started
+            # (try_begin),
+            #     (le, "$battle_phase", BP_Setup),
+            #     (team_give_order, ":ai_team", sdt_harcher, mordr_mount),#just let horse archers charge
+            #     (team_give_order, ":ai_team", sdt_harcher, mordr_advance),#just let horse archers charge
+            # (else_try),
+            #     (team_get_movement_order, ":cur_movement_order", ":ai_team", sdt_harcher),
+            #     (neq, ":cur_movement_order", mordr_charge),
+            #     (team_give_order, ":ai_team", sdt_harcher, mordr_charge),#just let horse archers charge
+            # (try_end),
         (try_end),
     (try_end),
-    (set_show_messages, 1),
+    # (set_show_messages, 1),
 ]),
 # # Utilities used by AI by motomataru
 
@@ -89305,6 +89338,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":troop_no", "trp_hired_blade"),
         (this_or_next|eq, ":troop_no", "trp_eastern_looter"),
         (this_or_next|eq, ":troop_no", "trp_eastern_bandit"),
+        (this_or_next|eq, ":troop_no", "trp_black_sea_pirate"),
         (eq, ":troop_no", "trp_mercenary_cavalry"),
         (try_begin),
             (eq, ":is_female", 1),
@@ -94239,9 +94273,9 @@ scripts = scripts_hardcoded + [
 
     (party_upgrade_with_xp, ":new_party", ":additional_xp", 0),
 
-    (str_store_party_name, s10, ":new_party"),
-    (str_store_party_name, s11, ":spawn_center"),
-    (party_set_name, ":new_party", "@{s10} from {s11}"),
+    # (str_store_party_name, s10, ":new_party"),
+    # (str_store_party_name, s11, ":spawn_center"),
+    # (party_set_name, ":new_party", "@{s10} from {s11}"),
 ]),
 ] + scripts_wse2 + scripts_dplmc
 

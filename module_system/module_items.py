@@ -1431,10 +1431,10 @@ pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
 pants_price, pants_armor,imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 
-["numidian_armor_mail_1", "Nubian Mail Armour", [("nubian_armor",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["numidian_armor_mail_1", "Nubian Scale Armour", [("nubian_armor",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
 (call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
-["numidian_armor_mail_2", "Nubian Mail Armour", [("nubian_armor_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["numidian_armor_mail_2", "Nubian Scale Armour", [("nubian_armor_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
 (call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 ["numidian_armor_mail_3", "Nubian Scale Armour", [("nubian_armor_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,

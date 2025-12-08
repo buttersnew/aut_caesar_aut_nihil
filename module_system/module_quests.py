@@ -392,8 +392,8 @@ quests = [
   ),
 
   ### this here are the start up quests
-  ("collect_men", "Main Story: Recruit five men", 0,
-  "{!}{s9} asked you to collect at least 5 more men before you move against the bandits threatening the townsmen. You can recruit soldiers from villages as well as town taverns. You can find {s9} at the tavern in {s4} when you have think you have enough men."
+  ("collect_men", "Main Story: Recruit ten men", 0,
+  "{!}{s9} asked you to collect at least 10 more men before you move against the bandits threatening the townsmen. You can recruit soldiers from villages as well as town taverns. You can find {s9} at the tavern in {s4} when you have think you have enough men."
   ),
 
   ("learn_where_merchant_brother_is", "Main Story: Learn where the Hostages are held.", 0,
