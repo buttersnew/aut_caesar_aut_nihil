@@ -2986,6 +2986,18 @@ rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
     (call_script, "script_init_dress_arms_nubian"),
 ]),
 ], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_noble_dress_3", "Nubian Noble Dress", [("nubian_noble_dress_3",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms_nubian"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["nubian_noble_dress_4", "Nubian Noble Dress", [("nubian_noble_dress_4",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms_nubian"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
 ["nubian_peasant_dress_4", "Nubian Dress", [("nubian_peasant_dress_4",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
 (ti_on_init_item,[

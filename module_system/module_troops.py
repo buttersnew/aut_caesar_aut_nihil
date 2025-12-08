@@ -741,7 +741,7 @@ persian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b]
 bosporan_dress_peasant = [itm_female_1,itm_female_2,itm_female_3]
 syrian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b] + roman_dress_peasant
 nubian_peasant_dress = [itm_nubian_peasant_dress_1,itm_nubian_peasant_dress_2,itm_nubian_peasant_dress_3,itm_nubian_peasant_dress_4]
-nubian_noble_dress = [itm_nubian_noble_dress_1,itm_nubian_noble_dress_2]
+nubian_noble_dress = [itm_nubian_noble_dress_1,itm_nubian_noble_dress_2,itm_nubian_noble_dress_3,itm_nubian_noble_dress_4]
 
 roman_dress_cives = [itm_roman_noble_dress_7,itm_roman_noble_dress_6,itm_roman_noble_dress_5,itm_roman_noble_dress_4,itm_roman_noble_dress_3,itm_roman_noble_dress_2,itm_roman_noble_dress_1]
 berber_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_dress_b]
