@@ -157,7 +157,7 @@ The repository is organized into several key directories:
 4.  **Compile Shaders (if needed):** If you've edited `mb_src.fx`, run `Aut_Caesar_Aut_Nihil\compile_fx.bat`.
 5.  **Test:** Launch the mod in Warband to test your changes.
 
-### Continuous Integration (GitHub Actions)
+### Deployment (GitHub Actions)
 
 This repository uses GitHub Actions to automate releases and website deployment.
 
