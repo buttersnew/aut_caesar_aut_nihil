@@ -3398,9 +3398,9 @@ medium_head_price,medium_head,imodbits_plate, [], [fac_culture_nubian,fac_cultur
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
 
 ["nubian_helm_croc_1", "Nubian Crocodile Leather Cap with Feather", [("nubian_helm_croc_1",0)], itp_merchandise| itp_type_head_armor | itp_covers_beard  ,0,
-light_head_price,light_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+light_head_price,light_head,imodbits_cloth, [], [fac_culture_nubian,fac_culture_egyptian] ],
 ["nubian_helm_croc_2", "Nubian Crocodile Leather Cap", [("nubian_helm_croc_2",0)], itp_merchandise| itp_type_head_armor | itp_covers_beard  ,0,
-light_head_price,light_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+light_head_price,light_head,imodbits_cloth, [], [fac_culture_nubian,fac_culture_egyptian] ],
 
 #dacian
 ["dacian_pileus_a_1", "Dacian Cap", [("dacian_pileus_a_1",0)],itp_merchandise|itp_type_head_armor|itp_covers_hair,0,

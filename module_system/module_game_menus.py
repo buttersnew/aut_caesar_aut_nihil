@@ -47824,7 +47824,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
     (set_background_mesh, "mesh_pic_race"),
     (assign, reg20, "$g_tournament_bet_placed"),
-    # (party_set_slot, "$current_town", slot_town_has_tournament, 0), #No way to return back if this menu is left
+    (party_set_slot, "$current_town", slot_town_has_tournament, 0), #No way to return back if this menu is left
    ],[
     ("leave",[],"Start the race.",[
       (try_begin),
