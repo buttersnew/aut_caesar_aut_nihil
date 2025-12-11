@@ -2239,16 +2239,16 @@ noble_mail_price, noble_mail_armor,imodbits_armor,
 
 ["saka_armour_1", "Saka Lamellar Armour", [("saka_armour_1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, pants_with_mail_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_dahae] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_saka] ],
 ["saka_armour_2", "Saka Lamellar Armour", [("saka_armour_2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, pants_with_mail_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_dahae] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_saka] ],
 ["saka_armour_3", "Saka Lamellar Armour", [("saka_armour_3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, pants_with_mail_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_dahae] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_saka] ],
 ["saka_armour_4", "Saka Lamellar Armour", [("saka_armour_4",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 noble_mail_price, pants_with_mail_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_dahae] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_saka] ],
 
 #scythian
 ["scythian_light1", "Scythian Clothing", [("ad_scythian_01",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
@@ -3228,16 +3228,16 @@ pants_linothorax_price,pants_linothorax_armor,imodbits_armor,
 ###GREEK SHIT, use fac_minor_kingdoms_end for greek culture
 ["linothorax_greek1", "Greek Linothorax", [("a_linothorax_v3",0)], itp_type_body_armor  |itp_covers_legs ,0,
 linothorax_armor_price,linothorax_armor,imodbits_armor,
- [(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_minor_kingdoms_end] ],
+ [(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["linothorax_greek2", "Greek Linothorax", [("a_linothorax_v2",0)], itp_type_body_armor  |itp_covers_legs ,0,
 linothorax_armor_price,linothorax_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_minor_kingdoms_end]  ],
+[(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_minor_kingdoms_end,fac_culture_greek]  ],
 ["linothorax_greek3", "Greek Linothorax", [("a_linothorax",0)], itp_unique|itp_type_body_armor|itp_covers_legs ,0,
 linothorax_armor_price,linothorax_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_minor_kingdoms_end]  ],
+[(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_minor_kingdoms_end,fac_culture_greek]  ],
 ["linothorax_greek4", "Greek Linothorax", [("a_parmenion",0)], itp_type_body_armor  |itp_covers_legs ,0,
 linothorax_armor_price,linothorax_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_minor_kingdoms_end]  ],
+[(ti_on_init_item,[(call_script, "script_init_roman_slinger"),]),], [fac_minor_kingdoms_end,fac_culture_greek]  ],
 ##END GREEK SHIT
 
 ["rawhide_coat", "Fur Armor", [("coat_of_plates_b",0)], itp_merchandise| itp_type_body_armor |itp_civilian |itp_covers_legs ,0,
@@ -3249,59 +3249,59 @@ bandit_armor_price,bandit_armor,imodbits_cloth,[(ti_on_init_item,[(call_script, 
 
 ["mail_shirt", "Heavy Armor", [("mail_shirt_a",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_iron_armor_price,breastplate_iron_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_roman,fac_culture_greek,fac_culture_caucasian,fac_culture_parthian,fac_culture_judean,fac_minor_kingdoms_end] ],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_roman,fac_culture_greek,fac_culture_caucasian,fac_culture_parthian,fac_culture_judean,fac_culture_syrian] ],
 
 ["mail_hauberk", "Heavy Armor", [("hauberk_a_new",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_iron_armor_price,breastplate_iron_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),] ),], [fac_culture_roman,fac_culture_greek,fac_culture_caucasian,fac_culture_parthian,fac_culture_judean,fac_minor_kingdoms_end]],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),] ),], [fac_culture_roman,fac_culture_greek,fac_culture_caucasian,fac_culture_parthian,fac_culture_judean,fac_culture_syrian]],
 
 ["haubergeon", "Heavy Armor", [("haubergeon_c",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_iron_armor_price,breastplate_iron_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),] ),], [fac_culture_roman,fac_culture_greek,fac_culture_caucasian,fac_culture_parthian,fac_culture_judean,fac_minor_kingdoms_end] ],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),] ),], [fac_culture_roman,fac_culture_greek,fac_culture_caucasian,fac_culture_parthian,fac_culture_judean,fac_culture_syrian] ],
 
 ["lamellar_armor", "Scale Armor", [("lamellar_armor_b",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 roman_scale_armor_price,roman_scale_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),],),],[fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),],),],[fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_syrian]  ],
 
 ["khergit_elite_armor", "Scale Armor", [("lamellar_armor_d",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 roman_scale_armor_price,roman_scale_armor,imodbits_armor,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),],),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),],),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_syrian] ],
 
 ["scale_armor", "Scale Armor", [("lamellar_armor_e",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 roman_scale_armor_price,roman_scale_armor,imodbits_armor,[
 (ti_on_init_item,[(call_script, "script_init_eastern_troop"),],)
-],[fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_bosporan] ],
+],[fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_bosporan,fac_culture_syrian] ],
 
 ["banded_armor", "Leather Armor", [("banded_armor_a",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_leather_armor_price,breastplate_leather_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_syrian] ],
 
 ["banded_armor_2", "Leather Armor", [("banded_armor_b",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_leather_armor_price,breastplate_leather_armor,imodbits_cloth,
- [(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+ [(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_syrian] ],
 
 ["banded_armor_3", "Leather Armor", [("banded_armor_c",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 breastplate_leather_armor_price,breastplate_leather_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+[(ti_on_init_item,[(call_script, "script_init_armor_merc"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_syrian] ],
 ################## END OF ARMOURS
 ##################################################################################################################################################################
 
 ##################################################################################################################################################################
 ################## BEGIN OF HELMETS
 ["phrygian_cap", "Phrygian Cap", [("parthian_phyrian",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian,fac_culture_syrian]],
 ["phrygian_cap_yellow", "Yellow Phrygian Cap", [("parthian_phyrian_yello",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian,fac_culture_syrian]],
 ["phrygian_cap_white", "White Phrygian Cap", [("parthian_phyrian_white",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian,fac_culture_syrian]],
 ["phrygian_cap_red", "Red Phrygian Cap", [("parthian_phyrian_red",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian,fac_culture_syrian]],
 ["phrygian_cap_black", "Black Phrygian Cap", [("parthian_phyrian_black",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian,fac_culture_syrian]],
 ["phrygian_cap_green", "Green Phrygian Cap", [("parthian_phyrian_green",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian,fac_culture_syrian]],
 ["phrygian_cap_blue", "Blue Phrygian Cap", [("parthian_phyrian_blue",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth,[],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian]],
+phrygian_head_price,phrygian_head,imodbits_cloth,[],[fac_culture_roman,fac_culture_greek,fac_culture_parthian,fac_culture_caucasian,fac_culture_syrian]],
 
 #alan
 ["alan_light_helm", "Alan Helm", [("alan_light_helm",0)], itp_merchandise| itp_type_head_armor ,0,
@@ -3317,24 +3317,24 @@ heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_sarmatian] ],
 
 #sarmatian
 ["saka_cap_1", "White Saka Cap", [("saka_cap_1",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_dahae]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_saka]],
 ["saka_hat_1", "White Saka Hat", [("saka_hat_1",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_dahae]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_saka]],
 ["saka_cap_2", "Blue Saka Cap", [("saka_cap_2",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_dahae]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_saka]],
 ["saka_hat_2", "Blue Saka Hat", [("saka_hat_2",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_dahae]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_saka]],
 ["saka_cap_3", "Red Saka Cap", [("saka_cap_3",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_dahae]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_saka]],
 ["saka_hat_3", "Red Saka Hat", [("saka_hat_3",0)],itp_merchandise|itp_type_head_armor,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_dahae]],
+phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_saka]],
 
 ["saka_helmet_1", "Red Saka Helmet", [("saka_helmet_1",0)],itp_merchandise|itp_type_head_armor,0,
-medium_head_price,medium_head,imodbits_cloth, [],[fac_dahae]],
+medium_head_price,medium_head,imodbits_cloth, [],[fac_culture_saka]],
 ["saka_helmet_2", "Blue Saka Helmet", [("saka_helmet_2",0)],itp_merchandise|itp_type_head_armor,0,
-medium_head_price,medium_head,imodbits_cloth, [],[fac_dahae]],
+medium_head_price,medium_head,imodbits_cloth, [],[fac_culture_saka]],
 ["saka_helmet_3", "Yellow Saka Helmet", [("saka_helmet_3",0)],itp_merchandise|itp_type_head_armor,0,
-medium_head_price,medium_head,imodbits_cloth, [],[fac_dahae]],
+medium_head_price,medium_head,imodbits_cloth, [],[fac_culture_saka]],
 
 ["sarmatian_cap_1", "Sarmatian Cap", [("sarmatian_cap_1",0)],itp_merchandise|itp_type_head_armor,0,
 phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_sarmatian,fac_culture_bosporan,fac_culture_caucasian]],
@@ -3381,14 +3381,16 @@ heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_bosporan,fac_cultur
 
 ["kopfband", "Bandana", [("sarmat_bandeau",0)], itp_merchandise| itp_type_head_armor|itp_doesnt_cover_hair ,0,
 light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_sarmatian] ],
-["african_feather_band", "Bandana with Feathers", [("african_feather_band",0)], itp_type_head_armor|itp_doesnt_cover_hair ,0,
-light_super_head_price,light_super_head,imodbits_cloth, [], [] ],
-["african_feather_band_2", "Bandana with Feathers", [("african_feather_band_2",0)], itp_type_head_armor|itp_doesnt_cover_hair ,0,
-light_super_head_price,light_super_head,imodbits_cloth, [], [] ],
-["numidian_helm", "Earings", [("nubian_helmet",0)], itp_unique|itp_type_head_armor|itp_civilian,0,
-100, weight(0.1)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_plate, [], []  ],
-["numidian_wig", "Wig", [("wig_nubian_bl",0)], itp_type_head_armor|itp_civilian|itp_covers_beard,0,
-100, weight(0.2)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_cloth, [], []  ],
+
+["african_feather_band", "Bandana with Feathers", [("african_feather_band",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
+light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garmantian,fac_culture_nubian] ],
+["african_feather_band_2", "Bandana with Feathers", [("african_feather_band_2",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
+light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garmantian,fac_culture_nubian] ],
+
+["numidian_helm", "Nubian Earings", [("nubian_helmet",0)], itp_merchandise|itp_type_head_armor|itp_civilian,0,
+100, weight(0.1)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_plate, [], [fac_culture_nubian]  ],
+["numidian_wig", "Wig", [("wig_nubian_bl",0)], itp_merchandise|itp_type_head_armor|itp_civilian|itp_covers_beard,0,
+100, weight(0.2)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_cloth, [], [fac_culture_nubian,fac_culture_egyptian]  ],
 
 ["nubian_helm_1", "Nubian Helm", [("nubian_helm_1",0)], itp_merchandise| itp_type_head_armor ,0,
 medium_head_price,medium_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
@@ -3483,27 +3485,27 @@ fur_head_price,fur_head,imodbits_armor, [], [] ],
 
 #GREEK SHIT, use fac_minor_kingdoms_end for greek culture
 ["mak_helm_1", "Phrygian Helm", [("h3_mak2",0)], itp_type_head_armor|itp_attach_armature|itp_fit_to_head   ,0,
-aux_head_price,aux_head,imodbits_plate, [], [fac_minor_kingdoms_end] ],
+aux_head_price,aux_head,imodbits_plate, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["mak_helm_2", "Phrygian Helm", [("h3_mak2b1",0)], itp_type_head_armor|itp_attach_armature|itp_fit_to_head   ,0,
-legio_head_price,legio_head,imodbits_plate, [], [fac_minor_kingdoms_end] ],
+legio_head_price,legio_head,imodbits_plate, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["mak_helm_3", "Phrygian Helm", [("h3_mak2c",0)], itp_type_head_armor|itp_attach_armature|itp_fit_to_head   ,0,
-medium_head_price,medium_head,imodbits_plate, [], [fac_minor_kingdoms_end] ],
+medium_head_price,medium_head,imodbits_plate, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["mak_helm_4", "Phrygian Helm", [("h3_mak2d",0)], itp_type_head_armor|itp_attach_armature|itp_fit_to_head   ,0,
-aux_head_price,aux_head,imodbits_plate, [], [fac_minor_kingdoms_end] ],
+aux_head_price,aux_head,imodbits_plate, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["boeotian_cheeks", "Boetian Helm", [("h_boeotian_cheeks",0)], itp_type_head_armor|itp_attach_armature|itp_fit_to_head   ,0,
-legio_head_price,legio_head,imodbits_plate,[], [fac_minor_kingdoms_end] ],
+legio_head_price,legio_head,imodbits_plate,[], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["boeotian_1", "Boetian Helm", [("h_boiotian",0)], itp_type_head_armor|itp_attach_armature|itp_fit_to_head   ,0,
-aux_head_price,aux_head,imodbits_plate,[], [fac_minor_kingdoms_end] ],
+aux_head_price,aux_head,imodbits_plate,[], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["boeotian_2", "Boetian Helm", [("h_boiotian_plume",0)], itp_type_head_armor|itp_attach_armature|itp_fit_to_head   ,0,
-aux_head_price,aux_head ,imodbits_plate,[], [fac_minor_kingdoms_end] ],
+aux_head_price,aux_head ,imodbits_plate,[], [fac_minor_kingdoms_end,fac_culture_greek] ],
 #GREEK SHIT END
 #Illyrian shit
 ["illyrian_hevy_helmet_plume2", "Ancient Illyrian Helmet", [("h_illyrian_t2_v2_2",0)], itp_type_head_armor   ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_minor_kingdoms_end] ],
+light_head_price,light_head,imodbits_plate, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["illyrian_hevy_helmet_plume1", "Ancient Illyrian Helmet", [("h_illyrian_t2_v2_1",0)], itp_type_head_armor   ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_minor_kingdoms_end] ],
+light_head_price,light_head,imodbits_plate, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["illyrian_hevy_helmet", "Ancient Illyrian Helmet", [("h_illyrian_t2_v2",0)], itp_type_head_armor   ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_minor_kingdoms_end] ],
+light_head_price,light_head,imodbits_plate, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ["illyrian_leader_cap", "Illyrian Padded Coif", [("illyrian_helm",0)], itp_type_head_armor, 0,
 light_head_price,light_head,imodbits_cloth ],
 #end illyrian shit
@@ -4298,23 +4300,23 @@ weight(get_w_weight(156))|difficulty(9)|abundance(100)|spd_rtng(get_polew_speed(
 ##GREEK SHIT, use fac_minor_kingdoms_end for greek culture
 ["sword_akinakes", "Akinakes", [("sword_akinakes",0)], itp_type_one_handed_wpn|itp_secondary|itp_primary, itc_longsword|itcf_carry_sword_left_hip,
 get_w_price(52, get_w_weight(52), get_1hw_speed(52), 25, 25),
-weight(get_w_weight(52))|difficulty(8)|spd_rtng(get_1hw_speed(52))|weapon_length(52)|swing_damage(25,cut) | thrust_damage(25 ,  pierce),imodbits_sword_high, [], [fac_minor_kingdoms_end] ],
+weight(get_w_weight(52))|difficulty(8)|spd_rtng(get_1hw_speed(52))|weapon_length(52)|swing_damage(25,cut) | thrust_damage(25 ,  pierce),imodbits_sword_high, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["sword_kopis", "Kopis", [("sword_kopis",0)], itp_type_one_handed_wpn|itp_secondary|itp_primary, itc_longsword|itcf_carry_sword_left_hip,
 get_w_price(63, get_w_weight(63), get_1hw_speed(63), 27, 20),
-weight(get_w_weight(63))|difficulty(9)|spd_rtng(get_1hw_speed(63)) | weapon_length(63)|swing_damage(27 , cut)|thrust_damage(20 ,  pierce),imodbits_sword_high, [], [fac_minor_kingdoms_end] ],
+weight(get_w_weight(63))|difficulty(9)|spd_rtng(get_1hw_speed(63)) | weapon_length(63)|swing_damage(27 , cut)|thrust_damage(20 ,  pierce),imodbits_sword_high, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["sword_laconian_dagger", "Makhaira", [("sword_laconian_dagger",0)], itp_type_one_handed_wpn|itp_secondary|itp_primary, itc_longsword|itcf_carry_sword_left_hip,
 get_w_price(49, get_w_weight(49), get_1hw_speed(49), 28, 21),
-weight(get_w_weight(49))|difficulty(8)|spd_rtng(get_1hw_speed(49)) | weapon_length(49)|swing_damage(28 , cut) | thrust_damage(21 ,  pierce),imodbits_sword_high, [], [fac_minor_kingdoms_end] ],
+weight(get_w_weight(49))|difficulty(8)|spd_rtng(get_1hw_speed(49)) | weapon_length(49)|swing_damage(28 , cut) | thrust_damage(21 ,  pierce),imodbits_sword_high, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["sword_xiphos_greek", "Xiphos", [("sword_xiphos_greek",0)], itp_type_one_handed_wpn|itp_secondary|itp_primary, itc_longsword|itcf_carry_sword_left_hip,
 get_w_price(75, get_w_weight(75), get_1hw_speed(75), 28, 23),
-weight(get_w_weight(75))|difficulty(9)|spd_rtng(get_1hw_speed(75)) | weapon_length(75)|swing_damage(28 , cut) | thrust_damage(23 ,  pierce),imodbits_sword_high, [], [fac_minor_kingdoms_end] ],
+weight(get_w_weight(75))|difficulty(9)|spd_rtng(get_1hw_speed(75)) | weapon_length(75)|swing_damage(28 , cut) | thrust_damage(23 ,  pierce),imodbits_sword_high, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["sarissa",         "Sarissa", [("macedoniansarissa",0)], itp_type_polearm|itp_merchandise|itp_penalty_with_shield|itp_cant_use_on_horseback|itp_primary|itp_secondary|itp_no_parry|itp_is_pike|itp_has_upper_stab|itp_no_blur, itc_pike,
 get_polarm_price(400,get_w_weight(400),get_polew_speed(315),18,27),
-weight(get_w_weight(400))|difficulty(14)|spd_rtng(get_polew_speed(315)) | weapon_length(400)|swing_damage(25 , pierce) | thrust_damage(25 ,  pierce),imodbits_polearm, [], [fac_minor_kingdoms_end] ],
+weight(get_w_weight(400))|difficulty(14)|spd_rtng(get_polew_speed(315)) | weapon_length(400)|swing_damage(25 , pierce) | thrust_damage(25 ,  pierce),imodbits_polearm, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ##END GREEK SHIT
 
 # SEPCIAL
@@ -4947,39 +4949,39 @@ weight(get_shield_weight(shield_armor_t2,25,66))|hit_points(shield_hitpoints_t2)
 ##GREEK SHIT us fac_minor_kingdoms_end for greek culture
 ["hoplon_1", "Old Hoplon", [("s_hoplon10",0)], itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t3, 75, 0),
-weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["hoplon_2", "Old Hoplon", [("s_hoplon11",0)], itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t3, 75, 0),
-weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["hoplon_4", "Old Hoplon", [("s_hoplon7",0)], itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t3, 75, 0),
-weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["hoplon_5", "Old Hoplon", [("s_hoplon8",0)], itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t3, 75, 0),
-weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["hoplon_6", "Old Hoplon", [("s_hoplon9",0)], itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t3, 75, 0),
-weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,75,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(75),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["s_parma_mak_plain_16", "Old Parma", [("s_parma_mak_plain_16",0)], itp_type_shield|itp_wooden_parry, itcf_carry_buckler_left,
 get_shield_price(shield_armor_t3, 37, 0),
-weight(get_shield_weight(shield_armor_t3,37,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(37),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,37,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(37),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["s_parma_mak_plain_15", "Old Parma", [("s_parma_mak_plain_15",0)], itp_type_shield|itp_wooden_parry, itcf_carry_buckler_left,
 get_shield_price(shield_armor_t3, 37, 0),
-weight(get_shield_weight(shield_armor_t3,37,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(37),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,37,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(37),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["s_parma_mak_plain_14", "Old Parma", [("s_parma_mak_plain_14",0)], itp_type_shield|itp_wooden_parry, itcf_carry_buckler_left,
 get_shield_price(shield_armor_t3, 37, 0),
-weight(get_shield_weight(shield_armor_t3,37,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(37),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,37,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(37),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 
 ["s_parma_mak_plain_13", "Old Parma", [("s_parma_mak_plain_13",0)], itp_type_shield|itp_wooden_parry, itcf_carry_buckler_left,
 get_shield_price(shield_armor_t3, 37, 0),
-weight(get_shield_weight(shield_armor_t3,37,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(37),imodbits_shield, [], [fac_minor_kingdoms_end] ],
+weight(get_shield_weight(shield_armor_t3,37,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(37),imodbits_shield, [], [fac_minor_kingdoms_end,fac_culture_greek] ],
 ##END GREEK SHIT
 
 # north african shields

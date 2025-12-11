@@ -2649,6 +2649,9 @@ camels_end   = "itm_donkey_mount"
 donkeys_begin = "itm_donkey_mount"
 donkeys_end   = "itm_arrows"
 
+chariots_begin = "itm_basic_chariot_horse"
+chariots_end = "itm_sumpter_horse"
+
 arabian_horses_begin = "itm_arabian_horse_a"
 arabian_horses_end   = "itm_parthian_horse_a"
 
@@ -2760,7 +2763,16 @@ roman_toga_begin = "itm_roman_toga"
 roman_toga_end   = "itm_roman_noble_dress_1"
 
 roman_dresses_noble_begin = "itm_roman_noble_dress_1"
-roman_dresses_noble_end   = "itm_german_femal_rich_1"
+roman_dresses_noble_end   = "itm_egyptian_noble_dress_1"
+
+egyptian_noble_dresses_begin = "itm_egyptian_noble_dress_1"
+egyptian_noble_dresses_end   = "itm_nubian_noble_dress_1"
+
+nubian_noble_dresses_begin = "itm_nubian_noble_dress_1"
+nubian_noble_dresses_end   = "itm_nubian_peasant_dress_4"
+
+nubian_peasant_dresses_begin = "itm_nubian_peasant_dress_4"
+nubian_peasant_dresses_end   = "itm_german_femal_rich_1"
 
 germanic_dresses_noble_begin = "itm_german_femal_rich_1"
 germanic_dresses_noble_end   = "itm_barb_femal_rich1"
@@ -2855,7 +2867,7 @@ turbans_begin   = "itm_turban"
 turbans_end     = "itm_desert_padded_hat_a"
 
 female_head_cloth_begin   = "itm_flower_crown"
-female_head_cloth_end     = "desert_celtic_boots"
+female_head_cloth_end     = "itm_celtic_boots"
 # head cloths end
 
 # boots

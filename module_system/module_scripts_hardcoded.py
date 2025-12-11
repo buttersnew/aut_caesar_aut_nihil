@@ -7711,7 +7711,7 @@ scripts_hardcoded = [
             (set_trigger_result, 0xFFEEDD),
         (try_end),
     (else_try),
-        (is_between, ":item_no", "itm_basic_chariot_horse", "itm_sumpter_horse"),
+        (is_between, ":item_no", chariots_begin, chariots_end),
         (try_begin),
             (eq, ":extra_text_id", 0),
             (set_result_string, "@If WSE2 is enabled, a chariot will spawn attached to the horse.^Keep in mind, the chariot behaves like a horse.^You need to walk towards the horses to mount the chariot."),

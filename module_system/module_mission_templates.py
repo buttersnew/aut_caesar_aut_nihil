@@ -368,9 +368,7 @@ chariot_triggers = [
     (agent_is_alive, ":rider"),
     (agent_is_active, ":horse"),
     (agent_get_item_id, ":chariot", ":horse"),
-    (this_or_next|eq, ":chariot", "itm_quadriga_chariot_horse"),
-    (this_or_next|eq, ":chariot", "itm_basic_chariot_b_horse"),
-    (eq, ":chariot", "itm_basic_chariot_horse"),
+    (is_between, ":chariot", chariots_begin, chariots_end),
     (agent_get_slot, ":instance", ":horse", slot_agent_chariot_prop_instance),
     (scene_prop_set_slot, ":instance", slot_scene_prop_init, 1),
   ]),
@@ -383,9 +381,7 @@ chariot_triggers = [
     (agent_is_alive, ":rider"),
     (agent_is_active, ":horse"),
     (agent_get_item_id, ":chariot", ":horse"),
-    (this_or_next|eq, ":chariot", "itm_quadriga_chariot_horse"),
-    (this_or_next|eq, ":chariot", "itm_basic_chariot_b_horse"),
-    (eq, ":chariot", "itm_basic_chariot_horse"),
+    (is_between, ":chariot", chariots_begin, chariots_end),
     (agent_set_animation, ":rider", "anim_rider_fall_roll",0),
     (try_begin),# disable camera on dismount for player
         (neg|agent_is_non_player, ":rider"),
@@ -431,9 +427,7 @@ chariot_triggers = [
     (agent_is_alive, "$g_player_chariot_agent"),
 
     (agent_get_item_id, ":chariot", "$g_player_chariot_agent"),
-    (this_or_next|eq, ":chariot", "itm_quadriga_chariot_horse"),
-    (this_or_next|eq, ":chariot", "itm_basic_chariot_b_horse"),
-    (eq, ":chariot", "itm_basic_chariot_horse"),
+    (is_between, ":chariot", chariots_begin, chariots_end),
 
     # (agent_start_running_away, "$g_player_chariot_agent"),
     (agent_set_horse, ":player", -1),
