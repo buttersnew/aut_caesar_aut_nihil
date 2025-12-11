@@ -7936,6 +7936,11 @@ strings = [
 ("female_body_brown", "female_body_brown"),
 ("female_body_brown_feet", "female_body_brown_feet"),
 
+("female_legs_long", "female_legs_long"),
+("female_legs_long_black", "female_legs_long_black"),
+("female_legs_long_very_black", "female_legs_long_very_black"),
+("female_legs_long_brown", "female_legs_long_brown"),
+
 ("female_upper_body", "female_upper_body"),
 ("female_upper_body_black", "female_upper_body_black"),
 ("female_upper_body_very_black", "female_upper_body_very_black"),

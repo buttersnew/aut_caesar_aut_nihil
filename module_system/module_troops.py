@@ -668,7 +668,9 @@ persian_tunic = [itm_persian_tunic_1,itm_persian_tunic_2,itm_persian_tunic_3,itm
 parthian_tunic = [itm_parthian_tunic_1,itm_parthian_tunic_2,itm_parthian_tunic_3,itm_parthian_tunic_4]
 celtic_tunic = celtic_tunics_1+celtic_tunics_2
 syrian_tunic = [itm_arabian_tunic_1,itm_arabian_tunic_2,itm_arabian_tunic_3,itm_sarranid_cloth_robe,itm_sarranid_cloth_robe_b,itm_sarranid_cloth_robe_c,itm_judean_tunic_1,itm_judean_tunic_4]
+egyptian_tunic = [itm_judean_tunic_1,itm_judean_tunic_2,itm_judean_tunic_3,itm_judean_tunic_4,itm_judean_tunic_5,itm_judean_tunic_6,itm_roman_poor1,itm_roman_poor4,itm_roman_poor5,itm_roman_poor6,itm_roman_poor7,itm_roman_poor2,itm_roman_poor3]
 
+egyptian_cives = [itm_judean_tunic_1,itm_judean_tunic_2,itm_judean_tunic_3,itm_judean_tunic_4,itm_judean_tunic_5,itm_judean_tunic_6,itm_roman_toga,itm_roman_toga_2,itm_roman_toga_3]
 roman_cives= [itm_roman_toga,itm_roman_toga_2,itm_roman_toga_3]
 dacian_cives = [itm_dacian_noble1,itm_dacian_noble2,itm_dacian_noble3,itm_dacian_noble4,itm_dacian_noble5,itm_dacian_noble6]
 germanic_cives= [itm_germanic_noble_tunic_1,itm_germanic_noble_tunic_2,itm_germanic_noble_tunic_3,itm_germanic_noble_tunic_4]
@@ -685,6 +687,7 @@ syrian_cives = [itm_arab_noble_tunic_1,itm_arab_noble_tunic_2,itm_sarranid_cloth
 
 weapons_peasant_generic = [itm_shepherds_crook,itm_scythe,itm_pitch_fork,itm_sickle,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2]
 roman_weapons_peasant = [itm_roman_work_axe,itm_roman_hammer]+weapons_peasant_generic
+egyptian_weapons_peasant = [itm_roman_work_axe,itm_roman_hammer, itm_scythe, itm_sickle,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2]
 dacian_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
 celtic_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
 germanic_weapons_peasant = [itm_hand_axe, itm_hammer]+weapons_peasant_generic
@@ -712,6 +715,7 @@ persian_foot_peasant = [itm_eastern_shoe,itm_leather_boots]
 bosporan_foot_peasant = [itm_leather_boots,itm_sarmatian_shoes]
 nomadic_foot_peasant = [itm_sarmatian_shoes,itm_leather_boots]
 syria_foot_peasant = [itm_caligea]
+egyptian_foot_peasant = [itm_caligea]
 
 roman_foot_cives = [itm_caligea,itm_calceus_2,itm_calceus_3,itm_calceus_4]
 berber_foot_cives = [itm_caligea]
@@ -726,6 +730,7 @@ persian_foot_cives = [itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y]
 bosporan_foot_cives = [itm_sarmatian_shoes]
 nomadic_foot_cives = [itm_sarmatian_shoes]
 syria_foot_cives = [itm_eastern_shoe,itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y]
+egyptian_foot_cives = [itm_caligea]
 
 roman_dress_peasant = [itm_female_1,itm_female_2,itm_female_3]
 berber_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b]
@@ -742,7 +747,9 @@ bosporan_dress_peasant = [itm_female_1,itm_female_2,itm_female_3]
 syrian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b] + roman_dress_peasant
 nubian_peasant_dress = [itm_nubian_peasant_dress_1,itm_nubian_peasant_dress_2,itm_nubian_peasant_dress_3,itm_nubian_peasant_dress_4]
 nubian_noble_dress = [itm_nubian_noble_dress_1,itm_nubian_noble_dress_2,itm_nubian_noble_dress_3,itm_nubian_noble_dress_4]
+egyptian_dress_peasant = [itm_sarranid_common_dress,itm_sarranid_common_dress_b]
 
+egyptian_dress_cives = [itm_egyptian_noble_dress_1,itm_egyptian_noble_dress_2,itm_egyptian_noble_dress_3,itm_egyptian_noble_dress_4,itm_roman_noble_dress_7,itm_roman_noble_dress_2,itm_roman_noble_dress_1]
 roman_dress_cives = [itm_roman_noble_dress_7,itm_roman_noble_dress_6,itm_roman_noble_dress_5,itm_roman_noble_dress_4,itm_roman_noble_dress_3,itm_roman_noble_dress_2,itm_roman_noble_dress_1]
 berber_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_dress_b]
 garamantian_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_dress_b]
@@ -756,6 +763,8 @@ caucasian_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady
 persian_dress_cives = [itm_sarranid_lady_dress,itm_sarranid_lady_dress_b]
 bosporan_dress_cives = [itm_barb_femal_rich1,itm_barb_femal_rich2,itm_barb_femal_rich3,itm_barb_femal_rich5]
 syrian_dress_cives = [itm_green_dress,itm_khergit_lady_dress,itm_khergit_lady_dress_b,itm_sarranid_lady_dress,itm_sarranid_lady_dress_b]
+
+egyptian_head_cives = [itm_numidian_wig]
 
 roman_head_peasant = [itm_straw_hat,itm_mediterranean_straw_hat,itm_mediterranean_straw_hat_1,itm_mediterranean_straw_hat_2]
 persian_head_peasant = [itm_perisan_headcloth_1,itm_perisan_headcloth_2,itm_perisan_headcloth_3,itm_perisan_headcloth_4,itm_headcloth]
@@ -1210,7 +1219,7 @@ attrib_level_26_warrior, wpe(145,170,170,170), knows_archer_elit_eastern, nubian
 itm_nubian_short_sword_noble,itm_nubian_short_sword,itm_nubian_kilt_4,itm_numidian_helm],
 attrib_level_26_warrior, wp(170), knows_level_26_warrior, nubian_man_face_younger_1, nubian_man_face_middle_2 ],
 ["meroe_guard", "Adke Qore-li", "Adkeli Qore-li", tf_male_black|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_nubian,
-[itm_gauntles_1,itm_numidian_wig,itm_nubian_spear_1,itm_nubian_spear_2,itm_nubian_spear_3,itm_nubian_padded_armour_1,itm_nubian_padded_armour_2,itm_nubian_spear_4,itm_numidian_armor_mail_1, itm_numidian_armor_mail_2, itm_desert_padded_hat_a,itm_nubian_helm_1,itm_nubian_helm_2,itm_nubian_helm_3],
+[itm_gauntles_1,itm_numidian_wig,itm_nubian_spear_1,itm_nubian_spear_2,itm_nubian_spear_3,itm_nubian_padded_armour_1,itm_nubian_padded_armour_2,itm_nubian_spear_4,itm_numidian_armor_mail_1, itm_numidian_armor_mail_2, itm_nubian_helm_croc_1,itm_nubian_helm_croc_2,itm_nubian_helm_1,itm_nubian_helm_2,itm_nubian_helm_3],
 attrib_level_29_warrior, wp(190), knows_level_29_warrior, nubian_man_face_younger_1, nubian_man_face_middle_2 ],
 ["meroe_axemen", "Kukur", "Kukurli", tf_male_black|tf_guarantee_shield|tf_guarantee_armor|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_nubian,
 [itm_nubian_kilt,itm_nubian_tunic,itm_numidian_wig,itm_numidian_helm,itm_kilt_a,itm_kilt_b,itm_kilt_c,itm_kilt_d,
@@ -3594,10 +3603,10 @@ attrib_level_6, wp(60), knows_level_6, eastern_man_face_young_1, eastern_man_fac
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
 ["egyptian_town_walker", "Aegyptius Nobilis", "Aegyptii Nobiles",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_egyptian,
-[itm_dagger,itm_numidian_wig, itm_judean_tunic_5,itm_judean_tunic_4,itm_judean_tunic_3,itm_judean_tunic_2,itm_judean_tunic_1]+roman_foot_cives,
+[]+egyptian_foot_cives+egyptian_head_cives+egyptian_cives,
 attrib_level_6, wp(60), knows_level_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["egyptian_town_walker_female", "Aegyptia Nobilis Mulier", "Aegyptiae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_egyptian,
-[itm_dagger]+eastern_dress_cives+eastern_foot_cives,
+[itm_dagger]+egyptian_dress_cives+egyptian_foot_cives,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
 ["berber_town_walker", "Berberus Nobilis", "Berberi Nobiles",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_berber,
@@ -3769,10 +3778,10 @@ attrib_level_6, wp(60), knows_level_6, eastern_man_face_young_1, eastern_man_fac
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
 ["egyptian_village_walker", "Aegyptius Rusticus", "Aegyptii Rustici",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_egyptian,
-[itm_judean_tunic_5,itm_judean_tunic_4,itm_judean_tunic_2,itm_roman_poor1,itm_roman_poor2]+desert_tunic+roman_foot_peasant+desert_weapons_peasant,
+[]+egyptian_tunic+egyptian_foot_peasant+egyptian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["egyptian_village_walker_female", "Aegyptia Rustica Mulier", "Aegyptiae Rusticae Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_egyptian,
-[]+eastern_dress_peasant+eastern_foot_peasant+desert_weapons_peasant,
+[]+egyptian_dress_peasant+egyptian_foot_peasant+egyptian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
 ["berber_village_walker", "Berberus Tribulis", "Berberi Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_berber,

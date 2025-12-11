@@ -2974,6 +2974,31 @@ rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none,
 [(ti_on_init_item,[  (call_script, "script_init_dress_new"),]), ],[fac_culture_roman,fac_culture_greek] ],
 
+["egyptian_noble_dress_1", "Egyptian Noble Dress", [("egyptian_noble_dress_1",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms2_long_legs"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["egyptian_noble_dress_2", "Egyptian Noble Dress", [("egyptian_noble_dress_2",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms2_long_legs"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["egyptian_noble_dress_3", "Egyptian Noble Dress", [("egyptian_noble_dress_3",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms2_long_legs"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+["egyptian_noble_dress_4", "Egyptian Noble Dress", [("egyptian_noble_dress_4",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
+rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
+(ti_on_init_item,[
+    (call_script, "script_init_dress_arms2_long_legs"),
+]),
+], [fac_culture_nubian,fac_culture_egyptian] ],
+
 ["nubian_noble_dress_1", "Nubian Noble Dress", [("nubian_noble_dress_1",0)], itp_merchandise|itp_type_body_armor|itp_civilian,0,
 rich_dress_r_armor_price,rich_dress_r_armor,imodbits_none, [
 (ti_on_init_item,[
@@ -3355,22 +3380,27 @@ heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_bosporan,fac_cultur
 heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_bosporan,fac_culture_sarmatian] ],
 
 ["kopfband", "Bandana", [("sarmat_bandeau",0)], itp_merchandise| itp_type_head_armor|itp_doesnt_cover_hair ,0,
-light_super_head_price,light_super_head,imodbits_plate, [], [fac_culture_sarmatian] ],
+light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_sarmatian] ],
 ["african_feather_band", "Bandana with Feathers", [("african_feather_band",0)], itp_type_head_armor|itp_doesnt_cover_hair ,0,
-light_super_head_price,light_super_head,imodbits_plate, [], [] ],
+light_super_head_price,light_super_head,imodbits_cloth, [], [] ],
 ["african_feather_band_2", "Bandana with Feathers", [("african_feather_band_2",0)], itp_type_head_armor|itp_doesnt_cover_hair ,0,
-light_super_head_price,light_super_head,imodbits_plate, [], [] ],
+light_super_head_price,light_super_head,imodbits_cloth, [], [] ],
 ["numidian_helm", "Earings", [("nubian_helmet",0)], itp_unique|itp_type_head_armor|itp_civilian,0,
 100, weight(0.1)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_plate, [], []  ],
 ["numidian_wig", "Wig", [("wig_nubian_bl",0)], itp_type_head_armor|itp_civilian|itp_covers_beard,0,
-100, weight(0.2)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_plate, [], []  ],
+100, weight(0.2)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_cloth, [], []  ],
 
 ["nubian_helm_1", "Nubian Helm", [("nubian_helm_1",0)], itp_merchandise| itp_type_head_armor ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
+medium_head_price,medium_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
 ["nubian_helm_2", "Nubian Helm", [("nubian_helm_2",0)], itp_merchandise| itp_type_head_armor ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
+medium_head_price,medium_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
 ["nubian_helm_3", "Nubian Helm", [("nubian_helm_3",0)], itp_merchandise| itp_type_head_armor ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
+medium_head_price,medium_head,imodbits_plate, [], [fac_culture_nubian,fac_culture_egyptian] ],
+
+["nubian_helm_croc_1", "Nubian Crocodile Leather Cap with Feather", [("nubian_helm_croc_1",0)], itp_merchandise| itp_type_head_armor | itp_covers_beard  ,0,
+light_head_price,light_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+["nubian_helm_croc_2", "Nubian Crocodile Leather Cap", [("nubian_helm_croc_2",0)], itp_merchandise| itp_type_head_armor | itp_covers_beard  ,0,
+light_head_price,light_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
 
 #dacian
 ["dacian_pileus_a_1", "Dacian Cap", [("dacian_pileus_a_1",0)],itp_merchandise|itp_type_head_armor|itp_covers_hair,0,
