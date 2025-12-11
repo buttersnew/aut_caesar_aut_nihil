@@ -18291,7 +18291,7 @@ presentations = presentations_wse2 + [
       (assign,"$g_presentations_next_presentation",-1),
       (presentation_set_duration,0),
       (str_clear,s1),
-      (assign, "$g_permitted_to_center",0),
+      # (assign, "$g_permitted_to_center",0),
       # (change_screen_return,0),
       # (change_screen_map),
       (jump_to_menu, "mnu_auto_return_map"),#phaiak

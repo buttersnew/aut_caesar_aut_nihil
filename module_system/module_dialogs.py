@@ -70101,176 +70101,152 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone|plyr,"castle_guard_intro_3",[], "No, I give my arms to no one.", "castle_guard_intro_2b",[]],
 [anyone,"castle_guard_intro_2b",[], "Then you can't go in.", "close_window",[]],
 
-##[anyone|plyr,"castle_guard_intro_1",[],
-##   "Never mind.", "close_window",[]],
-##[anyone,"castle_guard_intro_2",[],
-##   "Does the lord expect you?", "castle_guard_intro_3",[]],
-##[anyone|plyr,"castle_guard_intro_3",[], "Yes.", "castle_guard_intro_check",[]],
-##[anyone|plyr,"castle_guard_intro_3",[], "No.", "castle_guard_intro_no",[]],
-##[anyone,"castle_guard_intro_check",[], "Hmm. All right {sir/madam}.\
-## You can go in. But you must leave your weapons with me. Noone's allowed into the court with weapons.", "close_window",[]],
-##[anyone,"castle_guard_intro_check",[], "You liar!\
-## Our lord would have no business with a filthy vagabond like you. Get lost now before I kick your butt.", "close_window",[]],
-##[anyone,"castle_guard_intro_no",[], "Well... What business do you have here then?", "castle_guard_intro_4",[]],
-##[anyone|plyr,"castle_guard_intro_4",[], "I wish to present the lord some gifts.", "castle_guard_intro_gifts",[]],
-##[anyone|plyr,"castle_guard_intro_4",[], "I have an important matter to discuss with the lord. Make way now.", "castle_guard_intro_check",[]],
-##[anyone,"castle_guard_intro_gifts",[], "Really? What gifts?", "castle_guard_intro_5",[]],
-##[anyone|plyr,"castle_guard_intro_4",[], "Many gifts. For example, I have a gift of 20 denarii here for his loyal servants.", "castle_guard_intro_gifts",[]],
-##[anyone|plyr,"castle_guard_intro_4",[], "My gifts are of no concern to you. They are for your lords and ladies..", "castle_guard_intro_check",[]],
-##[anyone,"castle_guard_intro_gifts",[], "Oh! you can give those 20 denarii to me. I can distribute them for you.\
-## You can enter the court and present your gifts to the lord. I'm sure he'll be pleased.\
-## But you must leave your weapons with me. Noone's allowed into the court with weapons.", "close_window",[]],
+# [anyone,"start",[
+#   (eq, "$talk_context", tc_castle_gate)
+# ],"What do you want?",
+# "castle_gate_guard_talk",[]],
 
-#Kingdom Parties
-#[anyone,"start",[(this_or_next|eq,"$g_encountered_party_template","pt_swadian_foragers"),
-#                    (eq,"$g_encountered_party_template","pt_vaegir_foragers"),
-##[anyone,"start",[(this_or_next|party_slot_eq,"$g_encountered_party",slot_party_type, spt_forager),
-##                    (this_or_next|party_slot_eq,"$g_encountered_party",slot_party_type, spt_scout),
-##                    (party_slot_eq,"$g_encountered_party",slot_party_type, spt_patrol),
-##                    (str_store_faction_name,5,"$g_encountered_party_faction")],
-##   "In the name of the {s5}.", "kingdom_party_encounter",[]],
-##
-##[anyone,"kingdom_party_encounter",[(le,"$g_encountered_party_relation",-10)],
-##   "Surrender now, and save yourself the indignity of defeat!", "kingdom_party_encounter_war",[]],
-##[anyone|plyr,"kingdom_party_encounter_war",[],  "[Go to Battle]", "close_window",[(encounter_attack)]],
-##
-##[anyone,"kingdom_party_encounter",[(ge,"$g_encountered_party_relation",10)],
-##   "Greetings, fellow warrior.", "close_window",[(eq,"$talk_context",tc_party_encounter),(assign, "$g_leave_encounter", 1)]],
-##
-##[anyone,"kingdom_party_encounter",[],
-##   "You can go.", "close_window",[]],
+# [anyone,"castle_gate_guard_pretalk",[
+# ],"Yes?",
+# "castle_gate_guard_talk",[]],
 
-#Player Parties
-##[party_tpl|pt_old_garrison,"start",[],
-##   "They told us to leave the castle to the new garrison {sir/madam}. So we left and came to rejoin you.", "player_old_garrison_encounter",[]],
-##
-##[anyone|plyr,"player_old_garrison_encounter",[(party_can_join)],
-##   "You have done well. You'll join my command now.", "close_window",[(assign, "$g_move_heroes", 1),
-##            (call_script, "script_party_add_party", "p_main_party", "$g_encountered_party"),
-##            (remove_party, "$g_encountered_party"),
-##            (assign, "$g_leave_encounter", 1)]],
-##[anyone|plyr,"player_old_garrison_encounter",[(assign, reg1, 0),
-##                     (try_begin),
-##                       (neg|party_can_join),
-##                       (assign, reg1, 1),
-##                     (try_end)],
-##   "You can't join us now{reg1?, I can't command all the lot of you:}. Follow our lead.", "close_window",[(party_set_ai_behavior, "$g_encountered_party", ai_bhvr_attack_party),
-##       (party_set_ai_object, "$g_encountered_party", "p_main_party"),
-##       (party_set_flags, "$g_encountered_party", pf_default_behavior, 0),
-##       (assign, "$g_leave_encounter", 1)]],
-##
-##[anyone|plyr,"player_old_garrison_encounter",[(assign, reg1, 0),
-##                     (try_begin),
-##                       (neg|party_can_join),
-##                       (assign, reg1, 1),
-##                     (try_end)],
-##   "You can't join us now{reg1?, I can't command all the lot of you:}. Stay here and wait for me.", "close_window",[
-##       (party_set_ai_behavior, "$g_encountered_party", ai_bhvr_travel_to_point),
-##       (party_get_position, pos1, "$g_encountered_party"),
-##       (party_set_ai_target_position, "$g_encountered_party", pos1),
-##       (party_set_flags, "$g_encountered_party", pf_default_behavior, 0),
-##       (assign, "$g_leave_encounter", 1)]],
-##
+# [anyone|plyr,"castle_gate_guard_talk",[
+#   (ge, "$g_encountered_party_relation", 0)
+# ],"We need shelter for the night. Will you let us in?",
+# "castle_gate_open",[]],
 
-[anyone,"start",[(eq, "$talk_context", tc_castle_gate)],
-   "What do you want?", "castle_gate_guard_talk",[]],
+# [anyone|plyr,"castle_gate_guard_talk",[
+#   (party_slot_ge, "$g_encountered_party", slot_town_lord, 1)
+# ], "I want to speak with the lord of the castle.",
+# "request_meeting_castle_lord",[]],
 
-[anyone,"castle_gate_guard_pretalk",[],
-   "Yes?", "castle_gate_guard_talk",[]],
+# [anyone|plyr,"castle_gate_guard_talk",[
+# ], "I want to speak with someone in the fortress.",
+# "request_meeting_other",[]],
 
-[anyone|plyr,"castle_gate_guard_talk",[(ge, "$g_encountered_party_relation", 0)],
-  "We need shelter for the night. Will you let us in?", "castle_gate_open",[]],
-[anyone|plyr,"castle_gate_guard_talk",[(party_slot_ge, "$g_encountered_party", slot_town_lord, 1)], "I want to speak with the lord of the castle.", "request_meeting_castle_lord",[]],
-[anyone|plyr,"castle_gate_guard_talk",[], "I want to speak with someone in the fortress.", "request_meeting_other",[]],
+# [anyone|plyr,"castle_gate_guard_talk",[
+# ], "[Leave]",
+# "close_window",[]],
 
-[anyone|plyr,"castle_gate_guard_talk",[], "[Leave]", "close_window",[]],
+# [anyone,"request_meeting_castle_lord",[
+#   (party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+#   (call_script, "script_get_troop_attached_party", ":castle_lord"),
+#   (eq, "$g_encountered_party", reg0),
+#   (str_store_troop_name, s2, ":castle_lord"),
+#   (assign, "$lord_requested_to_talk_to", ":castle_lord"),
+# ],  "Wait here. {s2} will see you.",
+# "close_window",[]],
 
-[anyone,"request_meeting_castle_lord",[(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
-             (call_script, "script_get_troop_attached_party", ":castle_lord"),
-             (eq, "$g_encountered_party", reg0),
-             (str_store_troop_name, s2, ":castle_lord"),
-             (assign, "$lord_requested_to_talk_to", ":castle_lord"),
-],  "Wait here. {s2} will see you.", "close_window",[]],
+# [anyone,"request_meeting_castle_lord",[
+# ], "My lord is not here now.",
+# "castle_gate_guard_pretalk",[]],
 
-[anyone,"request_meeting_castle_lord",[],  "My lord is not here now.", "castle_gate_guard_pretalk",[]],
+# [anyone,"request_meeting_other",[
+# ],  "Who is that?",
+# "request_meeting_3",[]],
 
-[anyone,"request_meeting_other",[],  "Who is that?", "request_meeting_3",[]],
+# [anyone|plyr|repeat_for_troops,"request_meeting_3",[
+#   (store_repeat_object, ":troop_no"),
+#   (troop_is_hero, ":troop_no"),
+#   (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+#   (call_script, "script_get_troop_attached_party", ":troop_no"),
+#   (eq, "$g_encountered_party", reg0),
+#   (str_store_troop_name, s3, ":troop_no"),
+# ],"{s3}",
+# "request_meeting_4",[
+#   (store_repeat_object, "$lord_requested_to_talk_to")
+# ]],
 
-[anyone|plyr|repeat_for_troops,"request_meeting_3",[(store_repeat_object, ":troop_no"),
-                           (troop_is_hero, ":troop_no"),
-                           (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-                           (call_script, "script_get_troop_attached_party", ":troop_no"),
-                           (eq, "$g_encountered_party", reg0),
-                           (str_store_troop_name, s3, ":troop_no"),
-          ],
-   "{s3}", "request_meeting_4",[(store_repeat_object, "$lord_requested_to_talk_to")]],
+# [anyone|plyr,"request_meeting_3",[
+# ], "Never mind.",
+# "close_window",[
+#   (assign, "$lord_requested_to_talk_to", 0)
+# ]],
 
-[anyone|plyr,"request_meeting_3",[], "Never mind.", "close_window",[(assign, "$lord_requested_to_talk_to", 0)]],
+# [anyone,"request_meeting_4",[
+#   (call_script, "script_dplmc_store_troop_is_female",  "$lord_requested_to_talk_to"),
+# ], "Wait there. I'll send {reg0?her:him} your request.",
+# "request_meeting_5",[]],
 
-[anyone,"request_meeting_4",[##diplomacy start+ correct pronoun
-  (call_script, "script_dplmc_store_troop_is_female",  "$lord_requested_to_talk_to"),
-], "Wait there. I'll send {reg0?her:him} your request.", "request_meeting_5",[]],#"him" to "{reg0?her:him}"
-##diplomacy end+
+# [anyone|plyr,"request_meeting_5",[
+# ], "I'm waiting...",
+# "request_meeting_6",[]],
 
-[anyone|plyr,"request_meeting_5",[], "I'm waiting...", "request_meeting_6",[]],
+# [anyone,"request_meeting_6",[
+#   (call_script, "script_troop_get_player_relation", "$lord_requested_to_talk_to"),
+#   (assign, ":lord_relation", reg0),
+#   (gt, ":lord_relation", -20),
+# ], "All right. {s2} will talk to you now.",
+# "close_window",[
+#   (str_store_troop_name, s2, "$lord_requested_to_talk_to")
+# ]],
 
-[anyone,"request_meeting_6",
-[
-     (call_script, "script_troop_get_player_relation", "$lord_requested_to_talk_to"),
-     (assign, ":lord_relation", reg0),
-     (gt, ":lord_relation", -20),
-], "All right. {s2} will talk to you now.", "close_window",[(str_store_troop_name, s2, "$lord_requested_to_talk_to")]],
+# [anyone,"request_meeting_6",[
+#   (str_store_troop_name, s2, "$lord_requested_to_talk_to"),
+#   (call_script, "script_dplmc_store_troop_is_female",  "$lord_requested_to_talk_to"),
+#  ], "{s2} says {reg0?she:he} will not see you. Begone now.",
+#  "close_window",[]],
 
-[anyone,"request_meeting_6",[(str_store_troop_name, s2, "$lord_requested_to_talk_to"),
-  ##diplomacy start+ correct pronoun
-  (call_script, "script_dplmc_store_troop_is_female",  "$lord_requested_to_talk_to"),
- ], "{s2} says {reg0?she:he} will not see you. Begone now.", "close_window",[]],#"he" to "{reg0?she:he}"
-  ##diplomacy end+
+# [anyone,"castle_gate_open",[
+#   (party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+#   (call_script, "script_get_troop_attached_party", ":castle_lord"),
+#   (eq, "$g_encountered_party", reg0),
+#   (ge, "$g_encountered_party_relation", 0),
+#   (call_script, "script_troop_get_player_relation", ":castle_lord"),
+#   (assign, ":castle_lord_relation", reg0),
+#   #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
+#   (ge, ":castle_lord_relation", 5),
+#   (str_store_troop_name, s2, ":castle_lord")
+# ],
+# "My lord {s2} will be happy to see you {sir/madam}. Come on in. I am opening the gates for you.",
+# "close_window",[
+#   (assign,"$g_permitted_to_center",1)
+# ]],
 
-[anyone,"castle_gate_open",[(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
-             (call_script, "script_get_troop_attached_party", ":castle_lord"),
-             (eq, "$g_encountered_party", reg0),
-             (ge, "$g_encountered_party_relation", 0),
-             (call_script, "script_troop_get_player_relation", ":castle_lord"),
-             (assign, ":castle_lord_relation", reg0),
-             #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
-             (ge, ":castle_lord_relation", 5),
-             (str_store_troop_name, s2, ":castle_lord")
-              ],  "My lord {s2} will be happy to see you {sir/madam}.\
- Come on in. I am opening the gates for you.", "close_window",[(assign,"$g_permitted_to_center",1)]],
+# [anyone,"castle_gate_open",[
+#   (party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+#   (call_script, "script_get_troop_attached_party", ":castle_lord"),
+#   (neq, "$g_encountered_party", reg0),
+#   (ge, "$g_encountered_party_relation", 0),
+#   (call_script, "script_troop_get_player_relation", ":castle_lord"),
+#   (assign, ":castle_lord_relation", reg0),
+#   #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
+#   (ge, ":castle_lord_relation", 5),
+#   (str_store_troop_name, s2, ":castle_lord"),
+# ],  "My lord {s2} is not in the fortress now. But I think he would approve of you taking shelter here. Come on in. I am opening the gates for you.",
+# "close_window",[
+#   (assign,"$g_permitted_to_center",1)
+# ]],
 
-[anyone,"castle_gate_open",[(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
-             (call_script, "script_get_troop_attached_party", ":castle_lord"),
-             (neq, "$g_encountered_party", reg0),
-             (ge, "$g_encountered_party_relation", 0),
-             (call_script, "script_troop_get_player_relation", ":castle_lord"),
-             (assign, ":castle_lord_relation", reg0),
-             #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
-             (ge, ":castle_lord_relation", 5),
-             (str_store_troop_name, s2, ":castle_lord")
-              ],  "My lord {s2} is not in the fortress now.\
- But I think he would approve of you taking shelter here.\
- Come on in. I am opening the gates for you.", "close_window",[(assign,"$g_permitted_to_center",1)]],
+# [anyone,"castle_gate_open",[
+#   (party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+#   (call_script, "script_troop_get_player_relation", ":castle_lord"),
+#   (assign, ":castle_lord_relation", reg0),
+#   #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
+#   (ge, ":castle_lord_relation", -2),
+# ], "Come on in. I am opening the gates for you.",
+# "close_window",[
+#   (assign,"$g_permitted_to_center",1)
+# ]],
 
-[anyone,"castle_gate_open",[(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
-   (call_script, "script_troop_get_player_relation", ":castle_lord"),
-   (assign, ":castle_lord_relation", reg0),
-   #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
-   (ge, ":castle_lord_relation", -2),
-              ],  "Come on in. I am opening the gates for you.", "close_window",[(assign,"$g_permitted_to_center",1)]],
+# [anyone,"castle_gate_open",[
+#   (party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+#   (call_script, "script_troop_get_player_relation", ":castle_lord"),
+#   (assign, ":castle_lord_relation", reg0),
+#   #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
+#   (ge, ":castle_lord_relation", -19),
+#   (str_store_troop_name, s2, ":castle_lord")
+# ],  "Come on in. But make sure your men behave sensibly within the walls. My lord {s2} does not want trouble here.",
+# "close_window",[
+#   (assign,"$g_permitted_to_center",1)
+# ]],
 
-[anyone,"castle_gate_open",[(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
-   (call_script, "script_troop_get_player_relation", ":castle_lord"),
-   (assign, ":castle_lord_relation", reg0),
-   #(troop_get_slot, ":castle_lord_relation", ":castle_lord", slot_troop_player_relation),
-   (ge, ":castle_lord_relation", -19),
-   (str_store_troop_name, s2, ":castle_lord")
-              ],  "Come on in. But make sure your men behave sensibly within the walls.\
- My lord {s2} does not want trouble here.", "close_window",[(assign,"$g_permitted_to_center",1)]],
-
-[anyone,"castle_gate_open",[(party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
-   (str_store_troop_name, s2, ":castle_lord"),
- ],  "My lord {s2} does not want you here. Begone now.", "close_window",[]],
+# [anyone,"castle_gate_open",[
+#   (party_get_slot, ":castle_lord", "$g_encountered_party", slot_town_lord),
+#   (str_store_troop_name, s2, ":castle_lord"),
+# ], "My lord {s2} does not want you here. Begone now.",
+# "close_window",[
+# ]],
 
 #Enemy Kingdom Meetings
 
