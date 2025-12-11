@@ -22131,7 +22131,7 @@ mission_templates = [
     ]),
     (ti_before_mission_start, 0, 0,[],[
       (play_sound, "snd_arena_ambiance", sf_looping),
-      (call_script, "script_music_set_situation_with_culture", mtf_sit_thermae),
+      (call_script, "script_music_set_situation_with_culture", mtf_sit_racing),
       (assign, "$temp", -1),
       (assign, "$temp_2", 0),
       (assign, "$temp_3", 999999),

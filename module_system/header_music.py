@@ -49,6 +49,7 @@ mtf_sit_main_title                     = 0x00400000
 mtf_sit_victorious                     = 0x00800000
 mtf_sit_feast                          = 0x01000000
 mtf_sit_ambient_music                  = 0x02000000
-mtf_sit_thermae			       = mtf_sit_ambient_music
+mtf_sit_thermae			               = mtf_sit_ambient_music
+mtf_sit_racing                         = 0x04000000
 
 mtf_module_track                       = 0x10000000 ##set this flag for tracks placed under module folder
