@@ -63,16 +63,25 @@ The official website of [Aut Caesar Aut Nihil](https://buttersnew.github.io/aut_
 ### Contributors
 A huge thank you to everyone who has contributed to the development of *Aut Caesar Aut Nihil*:
 
-*   **@lib:** 2D art
-*   **@BanDHMO:** Writing (Quests, Events)
-*   **@adriankowaty:** Writing, Overall Support
-*   **@federicomancinelli:** Quest Writing, Support
+*   **@lilibyiumb:** 2D art and textures
 *   **@migdeu19:** Models, Research, Historical Advice
 *   **@wlodoviecus:** Scenes, Research, Historical Advice
-*   **@oliver:** Models, Scenes
+*   **@oliver:** Models, Scenes, Support
 *   **@ali04681:** Writing
-*   **@odysseus** Faces, writing
+*   **@odysseus** Faces, Writing
 *   **@Northwind:** Writing
+*   **@swissgoblin:** Sounds and Writting
+*   **@minuucios:** Models, Textures
+*   **@possiblyyourgrandpa:** Sounds (Voice Orders)
+*   **@rafa666:** Scenes, Models
+*   **@Arzelle:** Models
+*   **@Dmitry1945:** Scenes
+*   **@mamonexus:** Textures
+*   **@tocan:** Coding
+*   **@frankbourne:** Testing
+*   **@BanDHMO:** Writing (Quests, Events)
+*   **@adriankowaty:** Writing, Support
+*   **@federicomancinelli:** Quest Writing, Support
 *   And to **everybody** who ever wrote a meaningful bug report!
 
 ### Inspiration & Acknowledgements
