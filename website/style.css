@@ -42,7 +42,7 @@ body {
 }
 
 /* General Section Styling */
-.content-section, .download-section, .community-section, .screenshot-section, .video-section {
+.content-section, .download-section, .community-section, .screenshot-section, .video-section, .wse2-section {
     padding: 60px 0;
     text-align: center;
 }
@@ -388,4 +388,29 @@ footer {
 
 .database-link i {
     margin-right: 8px;
+}
+
+/* WSE2 Section */
+.wse2-section {
+    background-color: rgba(20, 20, 20, 0.8); /* Slightly darker background to distinguish it */
+}
+
+.wse2-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #E50914; /* Netflix Red to match theme */
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.wse2-link:hover {
+    background-color: #b20710; /* Darker red on hover */
+}
+
+.wse2-link i {
+    margin-right: 10px;
 }
