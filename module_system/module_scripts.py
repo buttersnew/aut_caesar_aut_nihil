@@ -76491,7 +76491,7 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_2"),
     (else_try),
         (eq, ":king", "trp_kingdom_13_lord"), # Assi
-        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_sword_viking_2"),
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_germanic_spatha_2"),
         (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_germanic_shield_large10"),
         (troop_set_inventory_slot, "trp_player", ek_head, "itm_germanic_helm4"),
         (troop_set_inventory_slot, "trp_player", ek_body, "itm_germanic_noble_6"),
@@ -76513,7 +76513,7 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_3"),
     (else_try),
         (eq, ":king", "trp_kingdom_15_lord"), # Lambert
-        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_sword_viking_2"),
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_germanic_spatha_2"),
         (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_germanic_shield_large10"),
         (troop_set_inventory_slot, "trp_player", ek_head, "itm_germanic_helm_noble"),
         (troop_set_inventory_slot, "trp_player", ek_body, "itm_germanic_noble_9"),
@@ -79406,7 +79406,7 @@ scripts = scripts_hardcoded + [
             (ge, ":money", 0),
             (play_sound, "snd_money_received"),
             (assign, reg0, ":money"),
-            (display_message, "@{reg0} denarii have been added to the imperial treasury", message_negative),
+            (display_message, "@{reg0} denarii have been added to the imperial treasury", message_positive),
         (else_try),
             (lt, ":money", 0),
             (play_sound, "snd_money_paid"),
@@ -85291,7 +85291,7 @@ scripts = scripts_hardcoded + [
         (troop_add_item, "trp_custom_infantry_vet_equip", "itm_germanic_noble_2"),#body
         (troop_add_item, "trp_custom_infantry_vet_equip", "itm_celtic_boots"),#boots
         (troop_add_item, "trp_custom_infantry_vet_equip", "itm_germanic_helm_noble"),#helm
-        (troop_add_item, "trp_custom_infantry_vet_equip", "itm_sword_viking_1"),
+        (troop_add_item, "trp_custom_infantry_vet_equip", "itm_germanic_spatha_1"),
         (troop_add_item, "trp_custom_infantry_vet_equip", "itm_germanic_shield_large3"),
         (troop_add_item, "trp_custom_infantry_vet_equip", "itm_throwing_spears_germanic"),# throwing
 
@@ -85327,7 +85327,7 @@ scripts = scripts_hardcoded + [
         (troop_add_item, "trp_custom_skirmisher_cav_equip", "itm_germanic_cap_3"),#helm
         (troop_add_item, "trp_custom_skirmisher_cav_equip", "itm_javelin"),
         (troop_add_item, "trp_custom_skirmisher_cav_equip", "itm_javelin"),
-        (troop_add_item, "trp_custom_skirmisher_cav_equip", "itm_sword_viking_1"),
+        (troop_add_item, "trp_custom_skirmisher_cav_equip", "itm_germanic_spatha_1"),
         (troop_add_item, "trp_custom_skirmisher_cav_equip", "itm_germanic_shield_hex_large6"),
         (troop_add_item, "trp_custom_skirmisher_cav_equip", "itm_horse_4"), # dacian_shield_small1
 
@@ -85336,7 +85336,7 @@ scripts = scripts_hardcoded + [
         (troop_add_item, "trp_custom_skirmisher_cav_vet_equip", "itm_germanic_helm1"),#helm
         (troop_add_item, "trp_custom_skirmisher_cav_vet_equip", "itm_javelin"),
         (troop_add_item, "trp_custom_skirmisher_cav_vet_equip", "itm_javelin"),
-        (troop_add_item, "trp_custom_skirmisher_cav_vet_equip", "itm_sword_viking_2"),
+        (troop_add_item, "trp_custom_skirmisher_cav_vet_equip", "itm_germanic_spatha_2"),
         (troop_add_item, "trp_custom_skirmisher_cav_vet_equip", "itm_germanic_shield_hex_large5"),
         (troop_add_item, "trp_custom_skirmisher_cav_vet_equip", "itm_horse_1"),
 

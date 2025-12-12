@@ -4484,11 +4484,11 @@ weight(get_axe_weight(71))|abundance(60)|difficulty(9)|spd_rtng(get_1haxe_speed(
 get_w_price(85, get_w_weight(85), get_1hw_speed(85), 30, 20),
 weight(get_w_weight(85))|abundance(10)|difficulty(10)|spd_rtng(get_1hw_speed(85))|weapon_length(85)|swing_damage(30 , cut)|thrust_damage(0 ,  pierce),imodbits_sword_high, [], [fac_culture_germanic] ],
 
-["sword_viking_1", "Germanic Spatha", [("germanic_spatha_1",0),("germanic_spatha_1_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
+["germanic_spatha_1", "Germanic Spatha", [("germanic_spatha_1",0),("germanic_spatha_1_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 get_w_price(83,get_w_weight(83),get_1hw_speed(83),28,20),
 weight(get_w_weight(83))|abundance(60)|difficulty(10)|spd_rtng(get_1hw_speed(83)) | weapon_length(83)|swing_damage(27 , cut) | thrust_damage(12 ,  pierce),imodbits_sword_high, [], [fac_culture_germanic] ],
 
-["sword_viking_2", "Germanic Spatha", [("germanic_spatha_2",0),("germanic_spatha_2_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
+["germanic_spatha_2", "Germanic Spatha", [("germanic_spatha_2",0),("germanic_spatha_2_scab", ixmesh_carry)], itp_type_one_handed_wpn|itp_merchandise|itp_primary, itc_longsword|itcf_carry_sword_left_hip|itcf_show_holster_when_drawn,
 get_w_price(83,get_w_weight(83),get_1hw_speed(83),28,20),
 weight(get_w_weight(83))|abundance(60)|difficulty(10)|spd_rtng(get_1hw_speed(83)) | weapon_length(83)|swing_damage(27 , cut) | thrust_damage(12 ,  pierce),imodbits_sword_high, [], [fac_culture_germanic] ],
 

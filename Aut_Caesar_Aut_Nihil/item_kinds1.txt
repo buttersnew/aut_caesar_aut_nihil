@@ -5965,12 +5965,12 @@ itemsfile version 3
  10
 0
 
- itm_sword_viking_1 Germanic_Spatha Germanic_Spatha 2  germanic_spatha_1 0  germanic_spatha_1_scab 3458764513820540928  4259842 9223388564182532111 1705 155668 1.250000 60 0 0 0 10 0 102 0 83 0 268 27
+ itm_germanic_spatha_1 Germanic_Spatha Germanic_Spatha 2  germanic_spatha_1 0  germanic_spatha_1_scab 3458764513820540928  4259842 9223388564182532111 1705 155668 1.250000 60 0 0 0 10 0 102 0 83 0 268 27
  1
  10
 0
 
- itm_sword_viking_2 Germanic_Spatha Germanic_Spatha 2  germanic_spatha_2 0  germanic_spatha_2_scab 3458764513820540928  4259842 9223388564182532111 1705 155668 1.250000 60 0 0 0 10 0 102 0 83 0 268 27
+ itm_germanic_spatha_2 Germanic_Spatha Germanic_Spatha 2  germanic_spatha_2 0  germanic_spatha_2_scab 3458764513820540928  4259842 9223388564182532111 1705 155668 1.250000 60 0 0 0 10 0 102 0 83 0 268 27
  1
  10
 0
