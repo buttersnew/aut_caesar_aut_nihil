@@ -14074,7 +14074,7 @@ game_menus = [
           (try_for_range, ":visiterator", 19, 25),
               (set_visitor, ":visiterator", ":troop"),
           (try_end),
-          (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+          (call_script, "script_get_closest_center_and_minor", "$g_encountered_party", 0),
           (assign, ":closest_center", reg0),
           (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
           (assign, ":troop_no", reg0),
@@ -28460,7 +28460,7 @@ game_menus = [
       (call_script, "script_change_player_honor", -5),
       (call_script, "script_change_player_party_morale", 5),
 
-      (call_script, "script_get_closest_center_and_minor", "p_main_party"),
+      (call_script, "script_get_closest_center_and_minor", "p_main_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -28921,7 +28921,7 @@ game_menus = [
       (call_script, "script_change_player_party_morale", 5),
       #		(call_script, "script_change_troop_renown", "trp_player", -15),
 
-      (call_script, "script_get_closest_center_and_minor", "p_main_party"),
+      (call_script, "script_get_closest_center_and_minor", "p_main_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -32126,7 +32126,7 @@ game_menus = [
     ("choice_9_1nor",[],"They are welcome.",[
       (display_message, "@A group of women joins your army."),
 
-      (call_script, "script_get_closest_center_and_minor", "p_main_party"),
+      (call_script, "script_get_closest_center_and_minor", "p_main_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -32155,7 +32155,7 @@ game_menus = [
     ("choice_10_1nor",[],"They are welcome.",[
       (display_message, "@A group of six women joins your army."),
 
-      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_follower, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -32175,7 +32175,7 @@ game_menus = [
   ],[
     ("choice_11_1no",[],"They are welcome.",[
 
-      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_follower, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -34632,7 +34632,7 @@ game_menus = [
         (try_end),
 
         # Find closest center
-        (call_script, "script_get_closest_center_and_minor", "p_main_party"),
+        (call_script, "script_get_closest_center_and_minor", "p_main_party", 0),
         (assign, "$g_talk_troop_faction", reg0),
         (store_distance_to_party_from_party, ":center_distance", "p_main_party", reg0),
 
@@ -35474,18 +35474,12 @@ game_menus = [
     ]),
 ]),
 
-  (
-    "pyramids",0,
-    "It's hot, too hot. You see huge stone buildings in the distance.",
-    "none",
-    [(set_background_mesh, "mesh_pic_pyramid"),
-
-      ],
-    [
-      ("answere_1",[
-	  ],
-	  "Visit this place.",
-	  [
+("pyramids",0,
+  "It's hot, too hot. You see huge stone buildings in the distance.",
+  "none",[
+    (set_background_mesh, "mesh_pic_pyramid"),
+  ],[
+  ("answere_1",[],"Visit this place.",[
 	  #special persons
 	  #entry: 1, 2
 	  #persons sitting: entry 3,4,5
@@ -35495,9 +35489,9 @@ game_menus = [
 	  (reset_visitors),
 	  (set_visitor, 1, "trp_kasius"),
 	  (set_visitor, 2, "trp_orchon"),
-	  (set_visitor, 3, "trp_egyptian_follower_woman"),
-	  (set_visitor, 4, "trp_egyptian_follower_woman"),
-	  (set_visitor, 5, "trp_egyptian_follower_woman"),
+	  # (set_visitor, 3, "trp_egyptian_follower_woman"),
+	  # (set_visitor, 4, "trp_egyptian_follower_woman"),
+	  # (set_visitor, 5, "trp_egyptian_follower_woman"),
 	  (set_visitors, 6, "trp_slave",3),
 	  (set_visitors, 7, "trp_slave",2),
 	  (set_visitors, 8, "trp_slave",2),
@@ -35519,15 +35513,11 @@ game_menus = [
 	  (set_jump_mission, "mt_visit_pyramid"),
 	  (jump_to_scene, "scn_pyramid"),
 	  (change_screen_mission),
-      ]),
-      ("answere_2",[
-	  ],
-	  "Leave",
-	  [
+  ]),
+  ("answere_2",[],"Leave",[
 		(change_screen_map),
-      ]),
-	],
-  ),
+  ]),
+]),
 
 ("vally_of_kings",0,
   "The valley stands on the west bank of the Nile, opposite Thebes. Many pharaohs have been buried in the valley. Rumors say the tombs are full of treasures. Thus, many grave robbers tried their luck to search for them. But legends say everybody, who disturbs the mummy of a pharaoh is cased by a curse! Beware, as anybody who has entered a tomb never left it alive...",  "none",[
@@ -38861,7 +38851,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 20),
     ], "Hire them. (20 denarii)",[
-      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -38905,7 +38895,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 60),
     ], "Hire them. (60 denarii)",[
-      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -38936,7 +38926,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (store_troop_gold, ":gold", "trp_player"),
       (ge, ":gold", 500),
     ], "Hire them. (500 denarii)",[
-      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party"),
+      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_peasant, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -52939,7 +52929,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (eq, "$temp1", 3),
       (quest_slot_ge, "qst_freelancing", slot_quest_freelancer_rank, 3),
     ],"We will hunt them down...",[
-      (call_script, "script_get_closest_center_and_minor", "$enlisted_party"),
+      (call_script, "script_get_closest_center_and_minor", "$enlisted_party", 0),
       (assign, ":center", reg0),
       (try_begin),
         (is_between, ":center", centers_begin, centers_end),
