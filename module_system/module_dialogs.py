@@ -21437,7 +21437,7 @@ dialogs =[
     (get_player_agent_no, ":player_agent"),
     (agent_set_hit_points, ":player_agent", 95),
     (troop_set_health, "trp_player", 95),
-	  (store_random_in_range, ":r", 0, 5),
+	  (store_random_in_range, ":r", 1, 5),
     (val_mul, ":r", -1),
     (call_script, "script_change_troop_health", "trp_player", ":r"),
   ]],
@@ -80616,16 +80616,15 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ##    (troop_set_slot, "$g_talk_troop", slot_troop_does_not_give_quest, 1),
 ##]],
 
-[anyone ,"start",[
+[trp_town_6_merchant ,"start",[
   (is_between,"$g_talk_troop",goods_merchants_begin,goods_merchants_end),
-  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
   (eq, "$g_talk_troop", "trp_town_6_merchant"),
   (check_quest_active, "qst_town_trade"),
 ],"You! You useless sack of flesh! Didn't I tell you to move that wine to the cellar an hour ago? By the gods, I should have you whipped for your incompetence.",
 "special_merchant_talk",[]],
 
 [anyone|plyr,"special_merchant_talk",[
-],"I am not your slave. My name is {playername}. I was told you wanted to see me. And that there was a purse of 1,000 denarii involved...",
+],"I am not your slave. My name is {playername}. I was told that there was a purse of 1,000 denarii involved...",
 "goods_merchant_talk2",[]],
 [anyone|plyr,"special_merchant_talk",[
 ],"Watch out, I am {playername} and not your slave. I was promised 1,000 denarii if I meet you...",
@@ -80657,9 +80656,13 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"You want me to wreck his shop?",
 "goods_merchant_talk6",[
 ]],
+[anyone|plyr,"goods_merchant_talk5",[
+],"I should kill him?",
+"goods_merchant_talk6",[
+]],
 
 [anyone,"goods_merchant_talk6",[
-],"No. I want you to kill him. A shop can be rebuilt. Guards can be hired. A corpse, however, is a permanent solution. I will pay you ten thousand denarii for this service.",
+],"I want you to kill him. A shop can be rebuilt. Guards can be hired. A corpse, however, is a permanent solution. I will pay you ten thousand denarii for this service.",
 "goods_merchant_talk7",[
 ]],
 
@@ -80977,7 +80980,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
    (troop_add_item, "trp_player", "itm_mak_helm_2", imodbit_cracked),
    (troop_add_item, "trp_player", "itm_mail_hauberk", imodbit_cracked),
    (display_message, "str_quest_updated"),
-   (add_quest_note_from_sreg, "qst_town_trade_2", 4, "@Go to the villa of Lucillus in Rome, and kill him.^(Hint: you find the villa under the 'Take an Action' menu. Your companions can help you.)", 0),
+   (str_store_party_name_link, s13, "p_town_6"),
+   (add_quest_note_from_sreg, "qst_town_trade_2", 4, "@Go to the villa of Lucillus in Rome, and kill him.^(Hint: you find the villa under the 'Take an Action' submenu in {s13}. Your companions can help you.)", 0),
 ]],
 
 [anyone ,"start",[

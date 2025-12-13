@@ -1,4 +1,4 @@
-5871
+5872
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -5870,3 +5870,4 @@ qstr_Cavalry_AI:_Number_o Cavalry_AI:_Number_of_Cavalry_=_{reg1}
 qstr_DEBUG__FormAI_:_In_t DEBUG_(FormAI):_In_team_field_melee_tactics
 qstr_DEBUG__FormAI_:_Num_ DEBUG_(FormAI):_Num_Archers:_{reg1},_Num_Cavalry:_{reg2},_Num_Infantry:_{reg3}
 qstr_You_could_have_purcha You_could_have_purchased_proper_clothing_from_one_of_our_skilled_tailors._Instead,_you're_dressed_like_a_barbarian!
+qstr_Go_to_the_villa_of_Luci Go_to_the_villa_of_Lucillus_in_Rome,_and_kill_him.^(Hint:_you_find_the_villa_under_the_'Take_an_Action'_submenu_in_{s13}._Your_companions_can_help_you.)

@@ -2765,6 +2765,9 @@ roman_toga_end   = "itm_roman_noble_dress_1"
 roman_dresses_noble_begin = "itm_roman_noble_dress_1"
 roman_dresses_noble_end   = "itm_egyptian_noble_dress_1"
 
+roman_dresses_feast_begin = "itm_new_dress_1"
+roman_dresses_noble_end = "itm_egyptian_noble_dress_1"
+
 egyptian_noble_dresses_begin = "itm_egyptian_noble_dress_1"
 egyptian_noble_dresses_end   = "itm_nubian_noble_dress_1"
 

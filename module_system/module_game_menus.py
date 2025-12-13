@@ -44947,8 +44947,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       ("Continue.",[],"Continue.",[
         (add_xp_as_reward, 100),
         (store_random_in_range, ":r", -25, 25),
-        (val_max, ":r", 0),
-        (call_script, "script_change_troop_health", "trp_player", ":r"),
+        (try_begin),
+          (neq, ":r", 0),
+          (call_script, "script_change_troop_health", "trp_player", ":r"),
+        (try_end),
         (display_message, "@You enjoy the time", color_good_news),
         (troop_set_health, "trp_player", 100),
         (try_begin),##only if you are not freelancing, i.e. if you are part of an army
