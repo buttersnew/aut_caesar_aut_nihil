@@ -1,39 +1,12 @@
 map_icons_file version 1
-180
-player 0 slave 0.200000 17 0.160000 0.173000 0.000000 0
-
-
-player_horseman 0 slave_donkey 0.200000 114 0.160000 0.173000 0.000000 0
-
-
-gray_knight 0 vexillifer_icon_combinedd 0.200000 114 0.160000 0.173000 0.000000 0
-
-
-mercenary_infantry 0 mercenary_infantry 0.200000 114 0.160000 0.173000 0.000000 0
-
-
-flagbearer_a 0 player_horseman1 0.200000 114 0.160000 0.173000 0.000000 0
-
-
+183
 flagbearer_b 0 flagbearer_b 0.200000 114 0.160000 0.173000 0.000000 0
 
 
 peasant 0 peasant_a 0.200000 17 0.160000 0.173000 0.000000 0
 
 
-arab 0 arab 0.200000 114 0.160000 0.173000 0.000000 0
-
-
-steppbandit 0 steppbandit 0.200000 114 0.160000 0.173000 0.000000 0
-
-
-bandit 0 bandit 0.200000 17 0.160000 0.173000 0.000000 0
-
-
 woman 0 woman_a 0.200000 17 0.160000 0.173000 0.000000 0
-
-
-hord 0 horde 0.200000 17 0.160000 0.173000 0.000000 0
 
 
 wonder_pyramids_egy 1 wonder_pyramids_egy 0.500000 0 0 0 0 0
@@ -84,7 +57,10 @@ ship 1 boat_sail 0.230000 17 0.000000 0.050000 0.000000 0
 ship_on_land 1 boat_sail_0 0.230000 0 0 0 0 0
 
 
-horde_camp 1 horde_camp 0.150000 0 0 0 0 0
+hord 0 horde 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+horde_camp 1 horde_camp 0.350000 0 0 0 0 0
 
 
 farmstead 1 farmstead 0.420000 0 0 0 0 0
@@ -138,61 +114,97 @@ village_desert 1 icon_village_desert 0.300000 0 0 0 0 0
 nubian_town 1 icon_nubia 0.330000 0 0 0 0 0
 
 
-mine 1 mine 0.450000 0 0 0 0 0
+african_cavalry 0 african_cavalry 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-kingdom_1_soldier_b 0 dac1_re 0.200000 17 0.160000 0.173000 0.000000 0
+arab_camel 0 arab_camel 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-kingdom_2_soldier_b 0 brit2_re 0.200000 17 0.160000 0.173000 0.000000 0
+celtic_noble 0 celtic_noble 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-kingdom_3_soldier_b 0 sarm2_re 0.200000 114 0.160000 0.173000 0.000000 0
+dacian_noble 0 dacian_noble 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-kingdom_4_soldier_b 0 german1_re 0.200000 17 0.160000 0.173000 0.000000 0
+eastern_cataphract 0 eastern_cataphract 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-kingdom_5_soldier_b 0 eastern1_re 0.200000 17 0.160000 0.173000 0.000000 0
+eastern_noble 0 eastern_noble 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-kingdom_6_soldier_b 0 eastern1_re 0.200000 17 0.160000 0.173000 0.000000 0
+generic_celitc_cav 0 generic_celitc_cav 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-kingdom_7_soldier_b 0 rom_re 0.200000 17 0.160000 0.173000 0.000000 0
+generic_slave_donkey 0 generic_slave_donkey 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-banditrom 0 banditrom 0.200000 17 0.160000 0.173000 0.000000 0
+germanic_cavalry 0 germanic_cavalry 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-bandithisp 0 bandithisp 0.200000 17 0.160000 0.173000 0.000000 0
+judean_noble 0 judean_noble 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-german1 0 german1 0.200000 17 0.160000 0.173000 0.000000 0
+roman_aux_cavalry 0 roman_aux_cavalry 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-brit1 0 brit1 0.200000 17 0.160000 0.173000 0.000000 0
+roman_legate 0 roman_legate 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-dac1 0 dac1 0.200000 17 0.160000 0.173000 0.000000 0
+roman_praetorian_cav 0 roman_praetorian_cav 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-eastern1 0 eastern1 0.200000 17 0.160000 0.173000 0.000000 0
+sarmatian_bandit 0 sarmatian_bandit 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-sarm1 0 sarm1 0.200000 17 0.160000 0.173000 0.000000 0
+sarmatian_cavalry 0 sarmatian_cavalry 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-numider 0 numider 0.200000 17 0.160000 0.173000 0.000000 0
+sarmatian_horsearcher 0 sarmatian_horsearcher 0.200000 114 0.160000 0.173000 0.000000 0
 
 
-pretorian_eques 0 pretorian_eques 0.200000 114 0.160000 0.173000 0.000000 0
+bosporan_foot 0 bosporan_foot 0.200000 17 0.160000 0.173000 0.000000 0
 
 
-legat 0 legat 0.200000 114 0.160000 0.173000 0.000000 0
+british_archer 0 british_archer 0.200000 17 0.160000 0.173000 0.000000 0
 
 
-aux2 0 aux2 0.200000 114 0.160000 0.173000 0.000000 0
+british_foot 0 british_foot 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+dacian_foot 0 dacian_foot 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+eastern_archer 0 eastern_archer 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+generic_bandit 0 generic_bandit 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+generic_mercenary_inf 0 generic_mercenary_inf 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+generic_slave 0 generic_slave 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+germanic_foot 0 germanic_foot 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+germanic_noble 0 germanic_noble 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+hispanic_bandit 0 hispanic_bandit 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+judean_bandit 0 judean_bandit 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+roman_aux_inf 0 roman_aux_inf 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+roman_vexilarius 0 roman_vexilarius 0.200000 17 0.160000 0.173000 0.000000 0
+
+
+sarmatian_foot 0 sarmatian_foot 0.200000 17 0.160000 0.173000 0.000000 0
 
 
 opidumn_rock_Reduced 1 opidumn_rock_Reduced 0.300000 0 0 0 0 0
@@ -283,9 +295,6 @@ opidumn_rock_dc1_Reduced 1 opidumn_rock_dc1_Reduced 0.300000 0 0 0 0 0
 
 
 ferry_station 1 ferry_station 1.000000 0 0 0 0 0
-
-
-grain_fields 1 grain_fields 0.350000 0 0 0 0 0
 
 
 camp_siege 1 camp_siege 0.130000 0 0 0 0 0

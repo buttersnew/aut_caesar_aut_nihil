@@ -94,7 +94,7 @@ qst_blank_quest_24 Special_Quest:_Conquest_of_Dacia 2 {!}placeholder
 qst_blank_quest_25 Special_Quest:_Conquest_of_Britannia 2 {!}placeholder 
 qst_blank_quest_26 Optional_Quest:_Talk_with_{s30} 2 {!}placeholder 
 qst_blank_quest_27 Optional_Quest:_Talk_with_{s31} 2 {!}placeholder 
-qst_collect_men Main_Story:_Recruit_five_men 0 {!}{s9}_asked_you_to_collect_at_least_5_more_men_before_you_move_against_the_bandits_threatening_the_townsmen._You_can_recruit_soldiers_from_villages_as_well_as_town_taverns._You_can_find_{s9}_at_the_tavern_in_{s4}_when_you_have_think_you_have_enough_men. 
+qst_collect_men Main_Story:_Recruit_ten_men 0 {!}{s9}_asked_you_to_collect_at_least_10_more_men_before_you_move_against_the_bandits_threatening_the_townsmen._You_can_recruit_soldiers_from_villages_as_well_as_town_taverns._You_can_find_{s9}_at_the_tavern_in_{s4}_when_you_have_think_you_have_enough_men. 
 qst_learn_where_merchant_brother_is Main_Story:_Learn_where_the_Hostages_are_held. 0 {!}placeholder. 
 qst_save_relative_of_merchant Main_Story:_Attack_the_Bandit_Lair 0 {!}placeholder. 
 qst_save_town_from_bandits Main_Story:_Bandit_Cartel 0 {!}placeholder. 
