@@ -5759,7 +5759,7 @@ game_menus = [
       ##diplomacy end+
       (try_end),
     ],"{s0}",[
-      (call_script, "script_change_troop_health", "trp_player", 25),
+      (call_script, "script_change_troop_health", "trp_player", 50),
       (try_begin),
         (eq, "$g_next_menu", -1),
         (leave_encounter),
@@ -33200,17 +33200,17 @@ game_menus = [
     ("choice_05_1n",[],"Eat more food and change your physician.",[
       (troop_add_item, "trp_player","itm_dried_meat",0),
       (troop_add_item, "trp_player","itm_sausages",0),
-      (try_begin),
-          (store_attribute_level, ":str","trp_player", ca_strength),
-          (gt, ":str", 13),
-          (troop_raise_attribute, "trp_player", ca_strength, -2),
-      (try_end),
-      (try_begin),
-          (store_attribute_level, ":ag","trp_player", ca_agility),
-          (gt, ":ag", 13),
-          (troop_raise_attribute, "trp_player", ca_agility, -2),
-      (try_end),
-      (call_script, "script_change_troop_health", "trp_player", 50),
+      # (try_begin),
+      #     (store_attribute_level, ":str","trp_player", ca_strength),
+      #     (gt, ":str", 13),
+      #     (troop_raise_attribute, "trp_player", ca_strength, -2),
+      # (try_end),
+      # (try_begin),
+      #     (store_attribute_level, ":ag","trp_player", ca_agility),
+      #     (gt, ":ag", 13),
+      #     (troop_raise_attribute, "trp_player", ca_agility, -2),
+      # (try_end),
+      (call_script, "script_change_troop_health", "trp_player", 75),
       (change_screen_return),
     ]),
     ("choice_05_2n",[],"Go to the Agrippa-Therma, to enjoy the water baths there whilst exercising regularly.",[
@@ -34947,30 +34947,26 @@ game_menus = [
 ),
 
 ("caputred_by_mob",0,
-    "You fall and hit the earth. Then the mob surrounds you. Stones are hitting your body. You feel pain, only pain ...",
-    "none",
-    [
-	(store_random_in_range, ":pain", 0, 100),
-	(try_begin),
-		(lt, ":pain", 20),
-		(troop_raise_attribute, "trp_player", ca_strength, -1),
-    (display_message, "@Your arms have been injured.", color_bad_news),
-	(else_try),
-		(lt, ":pain", 40),
-		(troop_raise_attribute, "trp_player", ca_agility, -1),
-    (display_message, "@Your legs have been injured.", color_bad_news),
-	(try_end),
-
-      ],
-    [
-      ("answere_1",[],
-	  "... and all becomes black ...",
-	  [
-	  (rest_for_hours_interactive, 6, 5, 0),
-	  (change_screen_map),
-      ]),
-	],
-),
+  "You collapse to the ground, the roar of the mob deafening as they close in. A hail of stones strikes your body, each blow a fresh agony. The world dissolves into a blur of violence and pain...",
+  "none",[
+    (set_background_mesh, "mesh_pic_defeat"),
+    # (store_random_in_range, ":pain", 0, 100),
+    # (try_begin),
+    #   (lt, ":pain", 20),
+    #   (troop_raise_attribute, "trp_player", ca_strength, -1),
+    #   (display_message, "@Your arms have been injured.", color_bad_news),
+    # (else_try),
+    #   (lt, ":pain", 40),
+    #   (troop_raise_attribute, "trp_player", ca_agility, -1),
+    #   (display_message, "@Your legs have been injured.", color_bad_news),
+    # (try_end),
+  ],[
+    ("continue",[],"... until darkness takes you.",[
+      (call_script, "script_change_troop_health", "trp_player", 150),
+      (rest_for_hours_interactive, 6, 5, 0),
+      (change_screen_map),
+    ]),
+]),
 
 ("library_alexandria",0,
   "The knowledge of the whole world can be found here. Safely guarded by walls.^^"
@@ -40127,8 +40123,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 	],[
     ("choice_16_1",[],"Pick them up and eat.",[
       (display_message, "@The mushrooms were really tasteless. You have diarrhoea and feel very bad."),
-      (troop_raise_attribute, "trp_player",ca_strength,-1),
-      (troop_raise_attribute, "trp_player",ca_agility,-1),
+
+      (call_script, "script_change_troop_health", "trp_player", 150),
+
+      # (troop_raise_attribute, "trp_player",ca_strength,-1),
+      # (troop_raise_attribute, "trp_player",ca_agility,-1),
       (change_screen_return),
       (add_xp_as_reward, 500),
     ]),
@@ -40159,8 +40158,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 	],[
     ("choice_17_1",[],"Pick them up and eat.",[
       (display_message, "@The mushrooms were really tasteless. You have diarrhoea and feel very bad. You call the mushroom 'Amanita virosa'."),
-      (troop_raise_attribute, "trp_player",ca_strength,-1),
-      (troop_raise_attribute, "trp_player",ca_agility,-1),
+      (call_script, "script_change_troop_health", "trp_player", 150),
+      # (troop_raise_attribute, "trp_player",ca_strength,-1),
+      # (troop_raise_attribute, "trp_player",ca_agility,-1),
       (change_screen_return),
       (add_xp_as_reward, 500),
     ]),
