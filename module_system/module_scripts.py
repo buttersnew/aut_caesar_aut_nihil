@@ -41115,6 +41115,11 @@ scripts = scripts_hardcoded + [
     (try_begin),
 	# nero claudius ai changes
         (check_quest_active, "qst_nero_greece_tour"),
+        (quest_slot_eq, "qst_nero_greece_tour", slot_quest_giver_troop, ":troop_no"),
+        (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 8),
+        (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 7),
+        (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+        (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 5),
         (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 4),
         (quest_slot_eq, "qst_nero_greece_tour", slot_quest_target_center, "p_town_36"),
 		(assign, ":action", spai_holding_center),
