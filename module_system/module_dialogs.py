@@ -71769,24 +71769,28 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ]],
 
 [anyone|plyr, "tavernkeeper_talk",[
-  ], "I want to buy something to eat.", "eat_food",[]],
+], "I want to buy something to eat.",
+"eat_food",[]],
 
 [anyone, "eat_food",[
-	], "I can offer you a full meal of regional specialties. It costs 100 denarii.", "tavernkeeper_talk2",[
-	]],
+], "I can offer you a full meal of regional specialties. It costs 100 denarii.",
+"tavernkeeper_talk2",[
+]],
+
 [anyone|plyr, "tavernkeeper_talk2",[(store_troop_gold, ":g", "trp_player"),
 	(ge, ":g", 100),
-	], "Here are the coins.", "tavernkeeper_talk233",[
-	 (troop_remove_gold, "trp_player", 100),
+], "Here are the coins.", "tavernkeeper_talk233",[
+	(troop_remove_gold, "trp_player", 100),
+]],
 
-	]],
 [anyone, "tavernkeeper_talk233",[
-	], "Very well. Enjoy your meal.^^-- With a greedy smile the tavernkeeper takes your money. Then you take a seat. After several minutes two sevants bring your meal. --", "close_window",[
+], "Very well. Enjoy your meal.^^-- With a greedy smile the tavernkeeper takes your money. Then you take a seat. After several minutes two sevants bring your meal. --",
+"close_window",[
 	(display_message, "@You enjoy your meal.", message_positive),
 	(store_troop_health, ":troop_hp", "trp_player"),
 	(val_add, ":troop_hp", 5),
 	(troop_set_health, "trp_player", ":troop_hp"),
-	]],
+]],
 
 [anyone|plyr, "tavernkeeper_talk2",[], "Hmm, forget it.", "close_window",[]],
 
@@ -94807,48 +94811,69 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
   ], "I want to buy something to eat.", "inn_talk_2",[]],
 
 [anyone, "inn_talk_2",[
-	], "I can offer you a full meal of our regional specialties. It would cost you only 25 denarii, because its you, Dominus.", "inn_talk_3",[
-	]],
-[anyone|plyr, "inn_talk_3",[(store_troop_gold, ":g", "trp_player"),
-	(ge, ":g", 100),
-	], "Here are the coins.", "inn_talk_4",[
-	 (troop_remove_gold, "trp_player", 100),
+], "I can offer you a full meal of our regional specialties. It would cost you only 100 denarii, because its you, Dominus.",
+"inn_talk_3",[
+]],
 
-	]],
 [anyone|plyr, "inn_talk_3",[
-	], "Nevermind.", "inn_pretalk",[
-	]],
+  (store_troop_gold, ":g", "trp_player"),
+	(ge, ":g", 100),
+], "Here are the coins.",
+"inn_talk_4",[
+  (troop_remove_gold, "trp_player", 100),
+]],
+
+[anyone|plyr, "inn_talk_3",[
+], "Nevermind.",
+"inn_pretalk",[
+]],
+
 [anyone, "inn_talk_4",[
-	], "Very well. Enjoy your meal.^^-- She shows you a free chair. Then you take a seat. After several minutes she brings your meal. --", "close_window",[
+], "Very well. Enjoy your meal.^^-- She shows you a free chair. Then you take a seat. After several minutes she brings your meal. --",
+"close_window",[
 	(display_message, "@You enjoy your meal.", message_positive),
 	(store_troop_health, ":troop_hp", "trp_player"),
 	(val_add, ":troop_hp", 5),
 	(troop_set_health, "trp_player", ":troop_hp"),
-	]],
+]],
 
-[anyone|plyr, "inn_talk",[], "If you have some free-time I would like to invite you to the villa, for a 'private' conversation...", "inn_talk_se",[]],
+[anyone|plyr, "inn_talk",[], "If you have some free-time I would like to invite you to the villa, for a 'private' conversation...",
+"inn_talk_se",[]],
 
-[anyone, "inn_talk_se",[], "I hoped you would ask me that, Dominus. Its getting boring here...^^-- She follows you to the villa. --", "close_window",[
+[anyone, "inn_talk_se",[], "I hoped you would ask me that, Dominus. Its getting boring here...^^-- She follows you to the villa. --",
+"close_window",[
   (jump_to_menu, "mnu_funny_nights"),
   (finish_mission),
-  ]],
+]],
 
-[anyone|plyr, "inn_talk",[], "Farewell.", "close_window",[]],
+[anyone|plyr, "inn_talk",[
+], "Farewell.",
+"close_window",[]],
 
-[trp_master_silk,"start",[(eq,"$g_talk_troop_met",0),
- ], "Ave, I am responsible for the production of silk and velvet.^^Look at this beautiful colorful velvet. If you want to impress a woman you should gift her such a fabric.", "grape_talk",[]],
 [trp_master_silk,"start",[
- ], "Ave, Dominus. Is there anything I can do for you?", "grape_talk",[]],
+  (eq,"$g_talk_troop_met",0),
+], "Ave, I am responsible for the production of silk and velvet.^^Look at this beautiful colorful velvet. If you want to impress a woman you should gift her such a fabric.", "grape_talk",[]],
 
-[trp_grape_master,"start",[(eq,"$g_talk_troop_met",0),
- ], "Ave, I am responsible for the vineyard, Dominus. Is there anything I can do for you.", "grape_talk",[]],
+[trp_master_silk,"start",[
+], "Ave, Dominus. Is there anything I can do for you?",
+"grape_talk",[]],
+
 [trp_grape_master,"start",[
- ], "Ave, Dominus. Is there anything I can do for you?", "grape_talk",[]],
+  (eq,"$g_talk_troop_met",0),
+], "Ave, I am responsible for the vineyard, Dominus. Is there anything I can do for you.",
+"grape_talk",[]],
 
-[trp_wine_master,"start",[(eq,"$g_talk_troop_met",0),
- ], "Ave, I am responsible for the winepress, Dominus. You should taste the wine, its delicious. And no, what Lochus says is wrong, I am not drinking it! Is there anything I can do for you.", "grape_talk",[]],
+[trp_grape_master,"start",[
+], "Ave, Dominus. Is there anything I can do for you?",
+"grape_talk",[]],
+
 [trp_wine_master,"start",[
- ], "Ave, Dominus. Is there anything I can do for you?^^-- You notice he looks a bit drunk. --", "grape_talk",[]],
+(eq,"$g_talk_troop_met",0),
+ ], "Ave, I am responsible for the winepress, Dominus. You should taste the wine, its delicious. And no, what Lochus says is wrong, I am not drinking it! Is there anything I can do for you.",
+ "grape_talk",[]],
+
+[trp_wine_master,"start",[
+], "Ave, Dominus. Is there anything I can do for you?^^-- You notice he looks a bit drunk. --", "grape_talk",[]],
 
 [trp_oil_master,"start",[(eq,"$g_talk_troop_met",0),
  ], "Ave, I am responsible for the oilpress, Dominus. You should taste it, its very delicious. Is there anything I can do for you.", "grape_talk",[]],
