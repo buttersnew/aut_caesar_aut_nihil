@@ -23372,7 +23372,7 @@ game_menus = [
             (str_store_troop_name, s42, "trp_legatus_11"),
             (str_store_string, s43, "@The Jewish revolt has been defeated. Report back to {s42} as fast as possible."),
             (quest_set_slot, "qst_four_emperors", slot_quest_target_center, 2),
-            (display_message, "str_quest_updated"),
+            (display_message, "str_quest_updated", message_alert),
             (add_quest_note_from_sreg, "qst_four_emperors", 4, "@You defeated the Jewish revolt. Report back to {s42} as fast as possible.", 1),
             (add_xp_as_reward, 2000),
         (try_end),
@@ -29683,7 +29683,7 @@ game_menus = [
     (str_store_troop_name, s21, ":other_goy"),
     (set_background_mesh, "mesh_pic_emperor"),
 
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (str_store_troop_name_link, s24, ":other_goy"),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 9, "@You have been declared Caesar Augustus by the Praetorian guard.", 1),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 10, "@{s24} is challenging your claim and has been declared Caesar by the Rhine legions.", 1),
@@ -29923,7 +29923,7 @@ game_menus = [
     (str_store_troop_name, s22, ":other_goy"),
     (set_background_mesh, "mesh_pic_emperor"),
 
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (str_store_party_name_link, s10, "p_town_6"),
     (str_store_troop_name_link, s24, ":other_goy"),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 9, "@You have been declared Caesar Augustus by the Praetorian guard. However, {s24} is challenging your claim and marching towards {s10}. Travel to {s10} as fast as possible.", 1),
@@ -31084,7 +31084,7 @@ game_menus = [
       (add_quest_note_from_sreg, "qst_poking_the_lion", 4, "@Travel to {s22} to convince Nero to confiscate the temple treasury of Hierosolyma.", 1),
 
       (quest_set_slot,"qst_poking_the_lion",slot_quest_current_state, 1),
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
 
       (change_screen_map),
     ],"Leave."),
@@ -31199,7 +31199,7 @@ game_menus = [
         (try_end),
         (str_store_string, s40, "@A shimmering light appears in the distance. The gates of the underworld open before you. There emerges a quiet commotion from the long dark passage behind the gates. The underworld is awakening."),
 
-        (display_message, "str_quest_updated"),
+        (display_message, "str_quest_updated", message_alert),
         (add_quest_note_from_sreg, "qst_blank_quest_5", 3, "@While you performed your task you have fallen into the entrance! You need to find a way out.", 0),
     (else_try),
         (set_background_mesh, "mesh_pic_deserters"),
@@ -45438,7 +45438,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("Continue.",[],"Continue.",[
       (call_script, "script_change_player_relation_with_troop", "trp_antonia", 5),
       (add_xp_as_reward, 2500),
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
       (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 1),
       (change_screen_map),
@@ -45464,7 +45464,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
   ("Continue.",[],"Continue.",[
     (call_script, "script_change_player_relation_with_troop", "trp_antonia", -5),
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
     (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 1),
     (change_screen_map),
@@ -51821,7 +51821,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
        (else_try),
          (eq, "$temp_3",2),
          (quest_set_slot, "qst_thunder", slot_quest_current_state, 9),
-         (display_message, "str_quest_updated"),
+         (display_message, "str_quest_updated", message_alert),
          (str_store_troop_name_link, s10, "trp_kingdom_7_lord"),
          (add_quest_note_from_sreg, "qst_thunder", 7, "@You have slain the great Thundergod and destroyed a Parthian spy cell in Alexandria. You should report back to {s10}.", 0),
          (change_screen_map),
@@ -54454,7 +54454,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
     ("continue",[],"Continue.",[
       (quest_set_slot, "qst_money_stinks", slot_quest_current_state, -1),
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (add_quest_note_from_sreg, "qst_money_stinks", 2, "@The Princeps has called you to Rome immediately. Speak to Nero at the palace.", 0),
       (change_screen_map),
     ]),
@@ -54497,7 +54497,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (str_store_party_name_link, s2, "p_town_14"),
       (str_store_party_name_link, s3, "p_town_13"),
       (str_store_string, s2, "@Ask about legendary craftsman Farbius in taverns of {s1}, {s2} and {s3}."),
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (call_script, "script_start_quest", "qst_pirates", "trp_fortuna"),
       (quest_set_slot, "qst_pirates", slot_quest_current_state, 1),
       (change_screen_map),
@@ -54653,7 +54653,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("op2",[
     ],"Continue.",[
       (add_xp_as_reward, 2500),
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (quest_set_slot, "qst_zarinaia", slot_quest_current_state, 6),
       (party_set_flags, "p_kurgan", pf_disabled, 1),
       (party_set_flags, "p_kurgan", pf_always_visible, 0),
@@ -56790,7 +56790,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 6),
     (str_store_party_name_link, s23, "p_village_155"),
     (add_quest_note_from_sreg, "qst_amor_quest", 2, "@Return to the local leader of {s23} to obtain the arrow of Cupid.", 0),
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (play_sound, "snd_quest_concluded"),
   ],[
   ("option_1",[],"Continue.",[
@@ -56809,7 +56809,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 9),
     (str_store_party_name_link, s23, "p_town_3"),
     (add_quest_note_from_sreg, "qst_amor_quest", 2, "@Return to {s23} and confront Desperatius with the information you collected.", 0),
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (play_sound, "snd_quest_concluded"),
   ],[
     ("option_1",[],"Continue.",[
@@ -56830,7 +56830,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (add_quest_note_from_sreg, "qst_amor_quest", 2, "@Travel to {s23} and inform Tristitia about Desperatius scheme.^^(Hint: Walk around the village and find Tristitia.)", 0),
     (assign, reg0, 2),
     (add_quest_note_from_sreg, "qst_amor_quest", 7, "@You have {reg0} days to finish this quest.", 0),
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (play_sound, "snd_quest_concluded"),
   ],[
   ("option_1",[],"Continue.",[
@@ -56948,7 +56948,7 @@ It is said, that she lives now together with the goat.",
     (add_xp_as_reward, 2500),
     (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You arrived at Sagala. Try to find Wlodowiecus.", 0),
     (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Ask a guard for an audience with Queen Karishma. She probably knows more about Wlodowiecus.", 0),
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (play_sound, "snd_quest_concluded"),
 
     (assign, "$talk_context", -1),
@@ -57047,7 +57047,7 @@ It is said, that she lives now together with the goat.",
       (quest_set_slot, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 5),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 3, "@You found Wlodowiecus and escaped from Sagala.", 0),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Now you need to find the special marble and a way back.", 0),
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (play_sound, "snd_quest_concluded"),
       (assign, "$g_start_belligerent_drunk_fight", 0),
 
@@ -57079,7 +57079,7 @@ It is said, that she lives now together with the goat.",
 
       (str_store_party_name, s22, "p_town_6"),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_1", 4, "@Travel to {s22} and meet Olivarius to claim your reward.", 0),
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (play_sound, "snd_quest_concluded"),
       (troop_add_items, "trp_player", "itm_spice", 10),
       (assign, "$auto_menu", -1),
@@ -57128,7 +57128,7 @@ It is said, that she lives now together with the goat.",
       (quest_set_slot, "qst_bacchhus_quest", slot_quest_current_state, 3),
       (add_quest_note_from_sreg, "qst_bacchhus_quest", 2, "@It seems Dionysius fooled you and fled back to the cave.", 0),
       (add_quest_note_from_sreg, "qst_bacchhus_quest", 3, "@Return to the cave and confront him.", 0),
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (play_sound, "snd_quest_concluded"),
       (change_screen_map),
     ]),
@@ -58926,7 +58926,7 @@ It is said, that she lives now together with the goat.",
   ],[
     ("option_1",[],"Continue.",[
 
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (str_store_party_name_link, s33, "p_castle_12"),
       (str_store_party_name_link, s34, "p_town_49"),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_3", 3, "@Your party travelled from {s33} and finally reached {s34}.", 0),
@@ -58988,7 +58988,7 @@ It is said, that she lives now together with the goat.",
   ],[
     ("option_1",[],"Continue.",[
 
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_3", 4, "@Your party reached the village were Hadrianus' cousin Alwisus lives.", 0),
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 5),
 
@@ -59152,7 +59152,7 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_castlesnow"),
   ],[
     ("option_1",[],"Continue.",[
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_3", 5, "@Your party reached the village of the Sciri.", 0),
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 6),
 
@@ -59408,7 +59408,7 @@ It is said, that she lives now together with the goat.",
   ],[
     ("option_1",[],"Continue.",[
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 12), ## looted
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_3", 6, "@The trade deal failed. You defeated the Sciri and decide to load their capital.", 0),
 
       (troop_add_gold,"trp_player", 10000),
@@ -59481,7 +59481,7 @@ It is said, that she lives now together with the goat.",
   ],[
     ("option_1",[],"Continue.",[
       (quest_set_slot, "qst_wlodowiecus_adventure_3", slot_quest_current_state, 11), ## subjugated
-      (display_message, "str_quest_updated"),
+      (display_message, "str_quest_updated", message_alert),
       (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_3", 6, "@The trade deal failed. You defeated the Sciri and decide to spare the lives of the survivors.", 0),
 
       (try_begin),

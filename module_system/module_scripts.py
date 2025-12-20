@@ -94327,7 +94327,7 @@ scripts = scripts_hardcoded + [
 ("intervene_treason", [
     (store_script_param, ":troop_no", 1),
     (str_store_troop_name, s13, ":troop_no"),
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (add_quest_note_from_sreg, "qst_player_treason", 5, "@{s13} has agreed to intervene on your behalf. Wait now till the trial concludes.", 0),
     (quest_get_slot, ":giver", "qst_player_treason", slot_quest_giver_troop),
     (troop_get_slot, ":relation", ":giver", slot_troop_player_relation),
