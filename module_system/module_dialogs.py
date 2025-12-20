@@ -71062,6 +71062,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone|plyr,"runaway_serf_talk_caught",[
 ], "Do not test my patience. You are going back now!",
 "runaway_serf_go_back",[]],
+
 [anyone|plyr,"runaway_serf_talk_caught",[
 ], "Well, if you are that eager to go, then go.",
 "runaway_serf_let_go",[
@@ -71823,7 +71824,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ]],
 
 [anyone, "tavernkeeper_talk233",[
-], "Very well. Enjoy your meal.^^-- With a greedy smile the tavernkeeper takes your money. Then you take a seat. After several minutes two sevants bring your meal. --",
+], "Very well. Bene sapiat.^^-- The tavernkeeper accepts your payment with a greedy smile. You find a seat, and moments later, two servants bring out your food. --",
 "close_window",[
 	(display_message, "@You enjoy your meal.", message_positive),
 	(store_troop_health, ":troop_hp", "trp_player"),
