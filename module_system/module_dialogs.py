@@ -2568,7 +2568,7 @@ dialogs =[
     (troop_add_item, "trp_bonus_chest_23", "itm_jupiters_throwing_spear"),
     (display_message, "str_quest_updated", message_alert),
     (str_store_party_name, s10, "$g_encountered_party"),
-    (add_quest_note_from_sreg, "qst_rhodogune", 4, "@Hint: The treasure is hidden somewhere in a chest in the temple complex of {s10}.", 0),
+    (add_quest_note_from_sreg, "qst_rhodogune", 4, "@Hint: The treasure is hidden somewhere in a chest in the temple complex of {s10}. Once you found the spear return back to Pamphile.", 0),
     (quest_set_slot, "qst_rhodogune", slot_quest_current_state, 2),
 ]],
 
