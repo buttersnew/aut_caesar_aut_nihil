@@ -1,9 +1,12 @@
 
 from __future__ import absolute_import
-export_dir = "C:/Users/maxim/Dropbox/ACAN Modding/Current PILOS/MB Warband - ACAN/Modules/Aut Caesar aut nihil/"
+import os
+# Original Windows path for development
+#export_dir = "C:/Users/maxim/Dropbox/ACAN Modding/Current PILOS/MB Warband - ACAN/Modules/Aut Caesar aut nihil/"
 
-## Build release txt files in the <Module> subfolder
-#export_dir = path + "/Module/"
+# Use relative path that works on any platform
+module_system_dir = os.path.dirname(os.path.abspath(__file__))
+export_dir = os.path.join(os.path.dirname(module_system_dir), "Aut_Caesar_Aut_Nihil") + "/"
 
 ###################################
 #   W.R.E.C.K. Compiler Options   #

@@ -4397,6 +4397,15 @@ castle_guard_treason_blocked
 castle_guard_treason_bribe
 castle_guard_intro_3
 castle_guard_intro_2b
+castle_gate_guard_talk
+castle_gate_open
+request_meeting_castle_lord
+request_meeting_other
+castle_gate_guard_pretalk
+request_meeting_3
+request_meeting_4
+request_meeting_5
+request_meeting_6
 ally_thanks_meet
 ally_thanks_meet_2
 kidnapped_girl_liberated_battle
