@@ -76471,6 +76471,18 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_celtic_light_noble_2"),
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_celtic_boots"),
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_3"),
+    (else_try), # Cartimandua
+        (eq, ":king", "trp_kingdom_2_lady_20"), # Venutius
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_celtic_sword3"),
+        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_celtic_round_shild4"),
+        (troop_set_inventory_slot, "trp_player", ek_head, "itm_britton_helm_noble_2"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_celtic_heavy4"),
+        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_celtic_boots"),
+        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_horse_1"),
+        ## civilian
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_female_2_celt"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_celtic_boots"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_2"),
     (else_try),
         (eq, ":king", "trp_kingdom_10_lord"), # Venutius
         (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_celtic_sword3"),
