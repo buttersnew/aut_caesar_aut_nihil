@@ -6421,10 +6421,12 @@ scripts = scripts_hardcoded + [
     # Defensive check: ensure the party is valid and has at least one troop stack
     (try_begin),
         (neg|party_is_active, ":meeting_party"),
+        (display_message, "@{!} ERROR: setup_party_meeting aborted - invalid party."),
         (change_screen_map), # abort gracefully if party is invalid
     (else_try),
         (party_get_num_companion_stacks, ":num_stacks", ":meeting_party"),
         (le, ":num_stacks", 0),
+        (display_message, "@{!} ERROR: setup_party_meeting aborted - party has no troops."),
         (change_screen_map), # abort gracefully if party has no troops
     (else_try),
         # party_meeting used as an indicator that conversation is with party
