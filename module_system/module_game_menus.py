@@ -5581,6 +5581,27 @@ game_menus = [
 ("total_defeat",0,
   "{!}You shouldn't be reading this...",
   "none",[
+    # fail nero quest if nero part of player party
+    (try_begin),
+        (check_quest_active, "qst_nero_greece_tour"),
+        (try_begin),
+            (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
+            (ge, ":num_attached_parties", 1),
+            (try_for_range, ":attached_party_rank", 0, ":num_attached_parties"),
+                (party_get_attached_party_with_rank, ":attached_party", "p_main_party", ":attached_party_rank"),
+
+                (party_slot_eq, ":attached_party", slot_party_type, spt_kingdom_hero_party),
+                (party_stack_get_troop_id, ":leader",":attached_party",0),
+                (eq, ":leader", "trp_kingdom_7_lord"),
+
+                (call_script, "script_fail_quest", "qst_nero_greece_tour"),
+                (call_script, "script_end_quest", "qst_nero_greece_tour"),
+
+                (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lord", -30),
+            (try_end),
+        (try_end),
+    (try_end),
+
     # lost main battle of main quest
     (try_begin),
         (check_quest_active, "qst_four_emperors"),
