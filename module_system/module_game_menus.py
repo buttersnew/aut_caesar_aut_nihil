@@ -59584,7 +59584,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("wlodowiecus_adventure_1_2_start",mnf_scale_picture,
-  "You follow Wlodowiecus outside of Leptis Magna, near the front game to the city there's a pair of tents that belong to the travelling Garamantians. Hadrianus, Varus and the old mercenary were standing nearby, talking with the oddly friendly Berbers; Mancinellus can be seen talking with the eldest member of the caravan, whose wizened face formed a wide grin as the Roman handed him a bag full of coins. After an hour of preparation, the caravan departs Leptis Magna and heads into the hot desert ahead of you.",
+  "You follow Wlodowiecus outside of Leptis Magna. Near the front gate to the city there is a pair of tents that belong to the travelling Garamantians. Hadrianus, Varus and the old mercenary were standing nearby, talking with the oddly friendly Berbers; Mancinellus can be seen talking with the eldest member of the caravan, whose wizened face formed a wide grin as the Roman handed him a bag full of coins. After an hour of preparation, the caravan departs Leptis Magna and heads into the hot desert ahead of you.",
   "none", [
     (troop_set_inventory_slot, "trp_wlodowiecus", ek_horse, "itm_horse_3"),
     (troop_set_inventory_slot, "trp_hadrianus",  ek_horse, "itm_horse_3"),
