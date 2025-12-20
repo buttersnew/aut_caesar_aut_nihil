@@ -51331,7 +51331,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party", "$enlisted_party"),
     (assign, "$g_encountered_party_type", spt_kingdom_hero_party),
   ],[
-    ("enter_town",[
+    ("take_action",[
       (party_get_battle_opponent, ":commander_opponent", "$enlisted_party"),
       (lt, ":commander_opponent", 0),
       (party_get_attached_to, ":town", "$enlisted_party"),
@@ -51357,7 +51357,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     [
       (jump_to_menu, "mnu_commander_aud"),
     ]),
-    ("commander",[
+    ("wounds_treating",[
       (party_get_battle_opponent, ":commander_opponent", "$enlisted_party"),
       (lt, ":commander_opponent", 0),
       (store_party_size, ":size", "$enlisted_party"),
@@ -51386,7 +51386,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #(assign, "$talk_context", tc_siege_commander),
       (change_screen_map_conversation, "trp_healer_2")
     ]),
-    ("commander",[
+    ("weapon_maintenance",[
       (party_get_battle_opponent, ":commander_opponent", "$enlisted_party"),
       (lt, ":commander_opponent", 0),
       (store_party_size, ":size", "$enlisted_party"),
@@ -51413,7 +51413,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #(assign, "$talk_context", tc_siege_commander),
       (change_screen_map_conversation, "trp_smith_master")
     ]),
-	  ("join_wounded",[
+	  ("marching_camp",[
       (neg|party_slot_eq, "$enlisted_party", slot_party_on_water, 1),#not on water
       (party_get_battle_opponent, ":commander_opponent", "$enlisted_party"),
       (lt, ":commander_opponent", 0),
@@ -51506,12 +51506,12 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 		],"March with the soldiers.",[
       (jump_to_menu, "mnu_freelancer_event_marsh"),
 		]),
-    ("return_to_duty",[
+    ("skip_freelancing_cheat",[
       (ge, "$cheat_mode", 1),
 		],"Skip freelancing: Last promotion to tribune.",[
       (jump_to_menu, "mnu_last_promotion"),
 		]),
-    ("return_to_duty",[],"Continue.",[
+    ("continue",[],"Continue.",[
       (change_screen_map),
     ]),
 ]),
