@@ -1932,7 +1932,7 @@ dialogs =[
 "close_window", [
   (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 13),
   (quest_set_slot, "qst_nero_greece_tour", slot_quest_target_center, "p_olympia"),
-
+  (display_message, "str_quest_updated", message_alert),
   (jump_to_menu, "mnu_auto_return"),
 
   (finish_mission, 3),

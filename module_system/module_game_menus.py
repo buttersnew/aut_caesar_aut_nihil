@@ -62582,9 +62582,13 @@ It is said, that she lives now together with the goat.",
     (set_background_mesh, "mesh_pic_omen_bird"),
   ],[
     ("continue", [], "Continue.",[
+      (quest_set_slot, "qst_nero_greece_tour", slot_quest_current_state, 13),
+      (quest_set_slot, "qst_nero_greece_tour", slot_quest_target_center, "p_olympia"),
       (call_script, "script_change_player_relation_with_troop", "trp_kingdom_7_lady_1", 5),
       (add_xp_as_reward, 1000),
       (jump_to_menu, "mnu_auto_return_map"),
+
+      (display_message, "str_quest_updated", message_alert),
     ]),
 ]),
 
