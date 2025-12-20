@@ -98869,7 +98869,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   (try_end),
   (eq,":is_here",0),
   (assign,"$hero_requested_to_learn_location",":lord"),
-  (call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$current_town"),
+  (call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$g_encountered_party"),
 ], "We are not supposed to talk while on guard, {s0}.",
 "court_guard_ask_location",[]],
 
@@ -98878,11 +98878,12 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   (eq, "$talk_context", tc_pret_event_14),
   (this_or_next|is_between,"$g_talk_troop",regular_troops_begin, regular_troops_end),
   (is_between,"$g_encountered_party_faction",kingdoms_begin, kingdoms_end),
-  (call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$current_town"),
+  (call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$g_encountered_party"),
 ], "We are not supposed to talk while on guard, {s0}.",
 "court_guard_talk",[]],
 
-[anyone|plyr,"court_guard_ask_location",[], "I just wanted to ask about your lord. Do you know where he is now?", "court_guard_ask_location_2",[]],
+[anyone|plyr,"court_guard_ask_location",[], "I just wanted to ask about your lord. Do you know where he is now?",
+"court_guard_ask_location_2",[]],
 
 [anyone|plyr,"court_guard_ask_location",[
   (store_troop_gold, ":gold", "trp_player"),
