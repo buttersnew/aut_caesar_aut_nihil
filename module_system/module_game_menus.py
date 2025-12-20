@@ -31402,7 +31402,7 @@ game_menus = [
       (assign, "$g_town_visit_after_rest", 1),
       (assign, "$g_last_rest_center", "$current_town"),
       (assign, "$g_last_rest_payment_until", -1),
-      (rest_for_hours, 6, 4, 0),
+      (rest_for_hours, 6, 15, 0),
       (change_screen_map),
     ]),
     ("visit_thermae",[

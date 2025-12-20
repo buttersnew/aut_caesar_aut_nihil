@@ -1866,13 +1866,13 @@ attrib_level_31_warrior, wp_melee(200), knows_level_31_warrior, barbarian_man_fa
 
 ["dacian_heavy_inf", "Sarmato-Dakos Toxotes", "Sarmato-Daki Toxotai",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_dacian,
 [itm_leather_boots,itm_celtic_boots]+dacian_bow_2+sarmatian_helm_spangen+dacian_sword+sarmatian_ringswords_short+dacian_shield_round+dacian_helm_normal+dacian_mail_light+dacian_scale_light,
-attrib_level_23_warrior, wp_melee(160), knows_level_23_warrior, barbarian_man_face_younger_1, barbarian_man_face_middle_2 ],
+attrib_level_23_warrior, wpe(150,165,165,165), knows_level_23_warrior, barbarian_man_face_younger_1, barbarian_man_face_middle_2 ],
 ["dacian_heavy_inf_exp", "Sarmato-Dakos Toxotes (exp)", "Sarmato-Daki Toxotai (exp)",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_dacian,
 [itm_leather_boots,itm_celtic_boots]+dacian_bow_2+sarmatian_helm_spangen+dacian_sword+sarmatian_ringswords_short+dacian_shield_round+dacian_helm_normal+dacian_mail_light+dacian_scale_light,
-attrib_level_26_warrior, wp_melee(180), knows_level_26_warrior, barbarian_man_face_young_1, barbarian_man_face_middle_2 ],
+attrib_level_26_warrior, wpe(165,175,175,175), knows_level_26_warrior, barbarian_man_face_young_1, barbarian_man_face_middle_2 ],
 ["dacian_heavy_inf_vet", "Sarmato-Dakos Toxotes (vet)", "Sarmato-Daki Toxotai (vet)",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_dacian,
 [itm_leather_boots,itm_celtic_boots]+dacian_bow_2+sarmatian_helm_spangen+dacian_sword+sarmatian_ringswords_short+dacian_shield_round+dacian_helm_normal+dacian_mail_light+dacian_scale_light,
-attrib_level_29_warrior, wp_melee(200), knows_level_29_warrior, barbarian_man_face_young_1, barbarian_man_face_old_2 ],
+attrib_level_29_warrior, wpe(190,185,185,185), knows_level_29_warrior, barbarian_man_face_young_1, barbarian_man_face_old_2 ],
 
 ["dacian_noble_inf", "Ischyros Ordites", "Ischyroi Orditai",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_culture_dacian,
 [itm_leather_boots,itm_celtic_boots]+dacian_throwing+dacian_sword+dacian_sword_noble+dacian_shield_inf_2+dacian_helm_decorate+dacian_mail_heavy+dacian_scale_heavy,
