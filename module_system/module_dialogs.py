@@ -71054,7 +71054,8 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (party_slot_eq, "$g_encountered_party", slot_town_castle, 0),
   (get_party_ai_object, ":cur_ai_object"),
   (quest_get_slot, ":home_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
-  (neq, ":home_center", ":cur_ai_object")
+  (neq, ":home_center", ":cur_ai_object"),
+  (str_store_party_name, s5, ":home_center"),
 ],"Good day {Dominus/Domina}. We were heading back to {s5}, but I am afraid we lost our way.",
 "runaway_serf_talk_caught",[]],
 
@@ -71068,14 +71069,25 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (call_script, "script_change_player_relation_with_center", ":quest_object_center", 1)
 ]],
 
-[party_tpl|pt_runaway_serfs,"start",
-[(quest_get_slot, ":home_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
-    (str_store_party_name, s5, ":home_center")], "We are on our way back to {s5} {Dominus/Domina}.", "runaway_serf_talk_again_return",[]],
+[party_tpl|pt_runaway_serfs,"start",[
+  (quest_get_slot, ":home_center", "qst_bring_back_runaway_serfs", slot_quest_object_center),
+  (str_store_party_name, s5, ":home_center"),
+], "We are on our way back to {s5} {Dominus/Domina}.",
+"runaway_serf_talk_again_return",[]],
 
-[anyone|plyr,"runaway_serf_talk_again_return",[], "Make haste now. The sooner you return the better.", "runaway_serf_talk_again_return_2",[]],
-[anyone|plyr,"runaway_serf_talk_again_return",[], "Good. Keep going.", "runaway_serf_talk_again_return_2",[]],
+[anyone|plyr,"runaway_serf_talk_again_return",[
+], "Make haste now. The sooner you return the better.",
+"runaway_serf_talk_again_return_2",[]],
 
-[anyone|plyr,"runaway_serf_talk_again_return_2",[], "Yes {Dominus/Domina}. As you wish.", "close_window",[(assign, "$g_leave_encounter",1)]],
+[anyone|plyr,"runaway_serf_talk_again_return",[
+], "Good. Keep going.",
+"runaway_serf_talk_again_return_2",[]],
+
+[anyone|plyr,"runaway_serf_talk_again_return_2",[
+], "Yes {Dominus/Domina}. As you wish.",
+"close_window",[
+  (assign, "$g_leave_encounter",1),
+]],
 
 #Quest bandits
 [anyone,"start",[
