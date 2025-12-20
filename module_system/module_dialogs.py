@@ -94811,7 +94811,7 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
   ], "I want to buy something to eat.", "inn_talk_2",[]],
 
 [anyone, "inn_talk_2",[
-], "I can offer you a full meal of our regional specialties. It would cost you only 100 denarii, because its you, Dominus.",
+], "I can offer you a full meal of our regional specialties. It would be 100 denarii, and I'll make sure it's prepared especially well for you, Dominus.",
 "inn_talk_3",[
 ]],
 
