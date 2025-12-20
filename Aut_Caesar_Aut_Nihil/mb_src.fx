@@ -385,7 +385,7 @@ float2 rotatevector (float2 originalvector, float d)
 float GetWindAmount(float e)
 {
 	float wind = vWindStrength * e;
-	wind = max(1.5,wind);
+	wind = 1.5 + max(0.0, wind - 1.5) * 0.75;
 
 	return wind;
 }
@@ -393,7 +393,7 @@ float GetWindAmount(float e)
 float GetWindAmountNew(float e, float position_z)
 {
 	float wind = vWindStrength * e;
-	wind = max(1.5,wind);
+	wind = 1.5 + max(0.0, wind - 1.5) * 0.75;
 
 	float z_factor = clamp(position_z * 0.03 - 0.01, 0.0, 0.5);
 
