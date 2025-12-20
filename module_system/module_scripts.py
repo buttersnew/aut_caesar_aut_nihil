@@ -6417,38 +6417,52 @@ scripts = scripts_hardcoded + [
 # param1: Party-id with which meeting will be made.
 ("setup_party_meeting",[
     (store_script_param_1, ":meeting_party"),
-    (try_begin), # party_meeting used as an indicator that conversation is with party
-        (lt, "$g_encountered_party_relation", 0), #hostile
-        (assign,"$party_meeting",-1),
+
+    # Defensive check: ensure the party is valid and has at least one troop stack
+    (try_begin),
+        (neg|party_is_active, ":meeting_party"),
+        (display_message, "@{!} ERROR: setup_party_meeting aborted - invalid party."),
+        (change_screen_map), # abort gracefully if party is invalid
     (else_try),
-        (assign,"$party_meeting",1),
-        #        (call_script, "script_music_set_situation_with_culture", mtf_sit_encounter_hostile),
+        (party_get_num_companion_stacks, ":num_stacks", ":meeting_party"),
+        (le, ":num_stacks", 0),
+        (display_message, "@{!} ERROR: setup_party_meeting aborted - party has no troops."),
+        (change_screen_map), # abort gracefully if party has no troops
+    (else_try),
+        # party_meeting used as an indicator that conversation is with party
+        (try_begin),
+            (lt, "$g_encountered_party_relation", 0), #hostile
+            (assign,"$party_meeting",-1),
+        (else_try),
+            (assign,"$party_meeting",1),
+            #        (call_script, "script_music_set_situation_with_culture", mtf_sit_encounter_hostile),
+        (try_end),
+
+        (call_script, "script_get_meeting_scene"),
+        (assign, ":conversation_scene", reg0),
+        (modify_visitors_at_site,":conversation_scene"),
+        (reset_visitors),
+        (set_visitor,0,"trp_player"),
+        (party_stack_get_troop_id, ":meeting_troop",":meeting_party",0),
+        (party_stack_get_troop_dna,":troop_dna",":meeting_party",0),
+        (troop_equip_items, ":meeting_troop"),
+
+        (set_visitor,17,":meeting_troop",":troop_dna"),
+
+        (call_script, "script_party_copy", "p_encountered_party_backup", ":meeting_party"),
+        (party_remove_members,"p_encountered_party_backup",":meeting_troop",1),
+
+        #add company to an opponent talker cf_party_remove_random_regular_troop
+        (try_for_range, ":entry", 19, 30),
+            (call_script, "script_cf_party_remove_random_regular_troop", "p_encountered_party_backup"),
+            (store_random_in_range, ":rnd",1, 100000), # some random faces/equip for background troops
+            (set_visitor,":entry",reg0,":rnd"),
+        (try_end),
+
+        (set_jump_mission,"mt_conversation_encounter"),
+        (jump_to_scene, ":conversation_scene"),
+        (change_screen_map_conversation, ":meeting_troop"),
     (try_end),
-
-    (call_script, "script_get_meeting_scene"),
-    (assign, ":conversation_scene", reg0),
-    (modify_visitors_at_site,":conversation_scene"),
-    (reset_visitors),
-    (set_visitor,0,"trp_player"),
-    (party_stack_get_troop_id, ":meeting_troop",":meeting_party",0),
-    (party_stack_get_troop_dna,":troop_dna",":meeting_party",0),
-    (troop_equip_items, ":meeting_troop"),
-
-    (set_visitor,17,":meeting_troop",":troop_dna"),
-
-    (call_script, "script_party_copy", "p_encountered_party_backup", ":meeting_party"),
-    (party_remove_members,"p_encountered_party_backup",":meeting_troop",1),
-
-    #add company to an opponent talker cf_party_remove_random_regular_troop
-    (try_for_range, ":entry", 19, 30),
-        (call_script, "script_cf_party_remove_random_regular_troop", "p_encountered_party_backup"),
-        (store_random_in_range, ":rnd",1, 100000), # some random faces/equip for background troops
-        (set_visitor,":entry",reg0,":rnd"),
-    (try_end),
-
-    (set_jump_mission,"mt_conversation_encounter"),
-    (jump_to_scene, ":conversation_scene"),
-    (change_screen_map_conversation, ":meeting_troop"),
 ]),
 
 #script_get_meeting_scene:
