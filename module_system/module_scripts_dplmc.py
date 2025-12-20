@@ -4293,6 +4293,7 @@ scripts_dplmc = [
 
       ##Special cases
     (try_begin),
+        (gt, ":player_spouse", 0),
         (eq, ":player_spouse", "$g_talk_troop"),
         (str_store_string, s0, "@my love"),
     (else_try),
@@ -6919,7 +6920,7 @@ scripts_dplmc = [
 			(this_or_next|eq, ":culture", "fac_culture_caledonian"),
             (this_or_next|eq, ":culture", "fac_culture_dacian"),
             (eq, ":culture", "fac_culture_celtic"),
-			(str_store_string, ":string_register", "@bear"),
+			(str_store_string, ":string_register", "@beer"),
 		(else_try),
 			(eq, ":culture", "fac_culture_sarmatian"),
 			(str_store_string, ":string_register", "@kumis"),

@@ -6417,38 +6417,52 @@ scripts = scripts_hardcoded + [
 # param1: Party-id with which meeting will be made.
 ("setup_party_meeting",[
     (store_script_param_1, ":meeting_party"),
-    (try_begin), # party_meeting used as an indicator that conversation is with party
-        (lt, "$g_encountered_party_relation", 0), #hostile
-        (assign,"$party_meeting",-1),
+
+    # Defensive check: ensure the party is valid and has at least one troop stack
+    (try_begin),
+        (neg|party_is_active, ":meeting_party"),
+        (display_message, "@{!} ERROR: setup_party_meeting aborted - invalid party."),
+        (change_screen_map), # abort gracefully if party is invalid
     (else_try),
-        (assign,"$party_meeting",1),
-        #        (call_script, "script_music_set_situation_with_culture", mtf_sit_encounter_hostile),
+        (party_get_num_companion_stacks, ":num_stacks", ":meeting_party"),
+        (le, ":num_stacks", 0),
+        (display_message, "@{!} ERROR: setup_party_meeting aborted - party has no troops."),
+        (change_screen_map), # abort gracefully if party has no troops
+    (else_try),
+        # party_meeting used as an indicator that conversation is with party
+        (try_begin),
+            (lt, "$g_encountered_party_relation", 0), #hostile
+            (assign,"$party_meeting",-1),
+        (else_try),
+            (assign,"$party_meeting",1),
+            #        (call_script, "script_music_set_situation_with_culture", mtf_sit_encounter_hostile),
+        (try_end),
+
+        (call_script, "script_get_meeting_scene"),
+        (assign, ":conversation_scene", reg0),
+        (modify_visitors_at_site,":conversation_scene"),
+        (reset_visitors),
+        (set_visitor,0,"trp_player"),
+        (party_stack_get_troop_id, ":meeting_troop",":meeting_party",0),
+        (party_stack_get_troop_dna,":troop_dna",":meeting_party",0),
+        (troop_equip_items, ":meeting_troop"),
+
+        (set_visitor,17,":meeting_troop",":troop_dna"),
+
+        (call_script, "script_party_copy", "p_encountered_party_backup", ":meeting_party"),
+        (party_remove_members,"p_encountered_party_backup",":meeting_troop",1),
+
+        #add company to an opponent talker cf_party_remove_random_regular_troop
+        (try_for_range, ":entry", 19, 30),
+            (call_script, "script_cf_party_remove_random_regular_troop", "p_encountered_party_backup"),
+            (store_random_in_range, ":rnd",1, 100000), # some random faces/equip for background troops
+            (set_visitor,":entry",reg0,":rnd"),
+        (try_end),
+
+        (set_jump_mission,"mt_conversation_encounter"),
+        (jump_to_scene, ":conversation_scene"),
+        (change_screen_map_conversation, ":meeting_troop"),
     (try_end),
-
-    (call_script, "script_get_meeting_scene"),
-    (assign, ":conversation_scene", reg0),
-    (modify_visitors_at_site,":conversation_scene"),
-    (reset_visitors),
-    (set_visitor,0,"trp_player"),
-    (party_stack_get_troop_id, ":meeting_troop",":meeting_party",0),
-    (party_stack_get_troop_dna,":troop_dna",":meeting_party",0),
-    (troop_equip_items, ":meeting_troop"),
-
-    (set_visitor,17,":meeting_troop",":troop_dna"),
-
-    (call_script, "script_party_copy", "p_encountered_party_backup", ":meeting_party"),
-    (party_remove_members,"p_encountered_party_backup",":meeting_troop",1),
-
-    #add company to an opponent talker cf_party_remove_random_regular_troop
-    (try_for_range, ":entry", 19, 30),
-        (call_script, "script_cf_party_remove_random_regular_troop", "p_encountered_party_backup"),
-        (store_random_in_range, ":rnd",1, 100000), # some random faces/equip for background troops
-        (set_visitor,":entry",reg0,":rnd"),
-    (try_end),
-
-    (set_jump_mission,"mt_conversation_encounter"),
-    (jump_to_scene, ":conversation_scene"),
-    (change_screen_map_conversation, ":meeting_troop"),
 ]),
 
 #script_get_meeting_scene:
@@ -41115,6 +41129,11 @@ scripts = scripts_hardcoded + [
     (try_begin),
 	# nero claudius ai changes
         (check_quest_active, "qst_nero_greece_tour"),
+        (quest_slot_eq, "qst_nero_greece_tour", slot_quest_giver_troop, ":troop_no"),
+        (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 8),
+        (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 7),
+        (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 6),
+        (this_or_next|quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 5),
         (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 4),
         (quest_slot_eq, "qst_nero_greece_tour", slot_quest_target_center, "p_town_36"),
 		(assign, ":action", spai_holding_center),
@@ -76452,6 +76471,18 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_celtic_light_noble_2"),
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_celtic_boots"),
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_3"),
+    (else_try), # Cartimandua
+        (eq, ":king", "trp_kingdom_2_lady_20"), # Venutius
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_celtic_sword3"),
+        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_celtic_round_shild4"),
+        (troop_set_inventory_slot, "trp_player", ek_head, "itm_britton_helm_noble_2"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_celtic_heavy4"),
+        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_celtic_boots"),
+        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_horse_1"),
+        ## civilian
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_female_2_celt"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_celtic_boots"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_2"),
     (else_try),
         (eq, ":king", "trp_kingdom_10_lord"), # Venutius
         (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_celtic_sword3"),
@@ -94296,7 +94327,7 @@ scripts = scripts_hardcoded + [
 ("intervene_treason", [
     (store_script_param, ":troop_no", 1),
     (str_store_troop_name, s13, ":troop_no"),
-    (display_message, "str_quest_updated"),
+    (display_message, "str_quest_updated", message_alert),
     (add_quest_note_from_sreg, "qst_player_treason", 5, "@{s13} has agreed to intervene on your behalf. Wait now till the trial concludes.", 0),
     (quest_get_slot, ":giver", "qst_player_treason", slot_quest_giver_troop),
     (troop_get_slot, ":relation", ":giver", slot_troop_player_relation),
