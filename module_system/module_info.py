@@ -6,7 +6,10 @@ import os
 
 # Use relative path that works on any platform
 module_system_dir = os.path.dirname(os.path.abspath(__file__))
-export_dir = os.path.join(os.path.dirname(module_system_dir), "Aut_Caesar_Aut_Nihil") + "/"
+export_dir = os.path.join(os.path.dirname(module_system_dir), "Aut_Caesar_Aut_Nihil")
+# Ensure trailing slash for compatibility with compile.py path formatting
+if not export_dir.endswith(('/', '\\')):
+    export_dir += "/"
 
 ###################################
 #   W.R.E.C.K. Compiler Options   #
