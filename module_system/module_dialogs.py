@@ -32459,7 +32459,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ],
 "The debts of the imperial treasury have reached an alarming level. People start to doubt our solvency."
 +" I recommend to lower spending and increase revenues. You may also ask a wealthy lord of the realm for some cash, but keep in mind that he will demand a favor in return."
-+" It is necessary to act quickly to avoid any problems. We should stop any unnecessary spending. If our debts grow to high ... let's not thing about that.",
++" It is necessary to act quickly to avoid any problems. We should stop any unnecessary spending. If our debts grow to high ... let's not think about that.",
 "dplmc_chamberlain_talk",[]],
 
 [anyone,"start",[
@@ -32468,7 +32468,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ],
 "The debts of your personal treasury have reached an alarming level. People start to doubt our solvency."
 +" I recommend to lower spending and increase revenues. You may also ask a wealthy lord of the realm for some cash, but keep in mind that he will demand a favor in return."
-+" It is necessary to act quickly to avoid any problems. We should stop any unnecessary spending. If our debts grow to high ... let's not thing about that.",
++" It is necessary to act quickly to avoid any problems. We should stop any unnecessary spending. If our debts grow to high ... let's not think about that.",
 "dplmc_chamberlain_talk",[]],
 
 [anyone,"start",
@@ -54584,7 +54584,7 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 [anyone,"join_army4",[],
 "It is good to have you back, {playername}.", "lord_pretalk",[]],
 [anyone|plyr,"join_army2",[],
-"I must thing about it.", "lord_pretalk",[]],
+"I must think about it.", "lord_pretalk",[]],
 
 [anyone|plyr,"lord_talk",[
   (le,"$talk_context", tc_party_encounter),
@@ -59641,7 +59641,7 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 
 [anyone|plyr,"lord_tell_mission_longbards",[],
 
-"I have to thing about it.", "lord_pretalk",
+"I have to think about it.", "lord_pretalk",
 []],
 
 [anyone|plyr,"lord_tell_mission_longbards",[],
