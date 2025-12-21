@@ -172,7 +172,6 @@ info_pages = [
 +"As Emperor, you must answer petitions regularly. If you don't want to do this, talk with your political advisor, who can be found in the Domus Augustus in Rome.^^"
 +"The gold item can used to hire warbands from the Nabateans, Garmantians and Gaetulians, by talking with their respective kings.^^"
 +"You can order your companions to establish permanent camps (option in the camp menu) and to create their own parties (by talking with them via the party screen):^"
-+"The maximal amount of troops you can give depends on the following: base is 100 men + additional two men per charisma attribute and additional 10 men per leadership skill."
 +"You can also store items and prisoners in the camp. But be aware, the camp can be attacked by enemy parties and if it is destroyed all items and prisoners will be lost.^^"
 +"You can get honorary titles if you ask Emperor Nero for a reward. You need high relation with him for this dialogue option to become available.^^"
 +"Freelancing is only available for Roman legions, talk either with a legate commanding a legion directly or with a Praefectus Castrorum or Praefectus, who can be found in the scriptorium.^^"
