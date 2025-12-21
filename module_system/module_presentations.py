@@ -37698,6 +37698,7 @@ presentations = presentations_wse2 + [
             (eq, reg3, 0),
             (display_message, "@Not enough recruits available in province."),
         (else_try),
+            (gt, reg7, 0),
             (le, ":mercenaries", 0),
             (display_message, "@Not enough mercenaries available in province."),
         (else_try),
