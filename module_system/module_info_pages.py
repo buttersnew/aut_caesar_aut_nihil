@@ -138,7 +138,7 @@ info_pages = [
  PR - Persia and Media"
 ),
 
-("q_and_q", "Important informations",
+("q_and_q", "Useful informations",
 "Triumphs:^As Roman player may gets a triumph awarded. For this you need at least " + str(triumph_threshold) + " gravitas. You obtain gravitas by winning battles as marshal. Gravitas will decline over time though. You can see your current gravitas in the character notes. As Emperor you can also hold a triumph with less gravitas but this will upset the Romans."
 +"^^Battle field fortifications: ^As Roman you can fortify your camp. It requires a set of tools inside your inventory and an engineer skill higher than 5. Once fortified you can no longer move. It is also possible during sieges."
 +"^^Lending out money: ^Visit an argentarii (who can be found inside a scriptorium) to lend out money or to just store your money in a safe place. You can lend out a loans between 5,000 and 500,000 denarii. The loan will expire after a week. Once it expires the money will be added TO THE NEXT budget report."
