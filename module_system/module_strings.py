@@ -9724,36 +9724,75 @@ strings = [
 ("household_mod_engineering_eff_descr", "The efficiency of your engineering staff. Higher efficiency leads to better construction and maintenance of your properties."),
 
 ## Cook Quality Descriptions (MUST BE IN THIS EXACT ORDER)
-# Tier 5 (God-Tier)
-("cook_quality_5_tooltip", "- A true culinary artist. Their feasts could appease angry gods or sway the Senate's vote. An invaluable asset."),
-("cook_quality_5_host",    "Your cooks are true culinary artists; their feasts could appease angry gods or sway the Senate's vote."),
-("cook_quality_5_guest_m", "By the gods, this is a feast worthy of Olympus! My compliments to your chefs!"),
-("cook_quality_5_guest_f", "This is simply divine! Your household will be the talk of the city. Such artistry is rarely seen outside Caesar's own table!"),
-("cook_quality_5_spouse",  "My love, our guests will speak of our feast for months! Our cooks will bring great honor to our house."),
-# Tier 4 (Excellent)
-("cook_quality_4_tooltip", "- An excellent cook, able to create delicious meals from humble ingredients."),
-("cook_quality_4_host",    "Your cooks are excellent and can turn even humble ingredients into a delicious meal."),
-("cook_quality_4_guest_m", "This is truly a remarkable meal! The flavors are exquisite. You have some very talented cooks in your household."),
-("cook_quality_4_guest_f", "What a delightful meal! Everything is cooked to perfection. Your cooks have truly outdone themselves."),
-("cook_quality_4_spouse",  "I must say, my dear, our cooks are worth every denarius. Their meals are simply wonderful."),
-# Tier 3 (Competent)
-("cook_quality_3_tooltip", "- A competent cook, capable of turning mundane ingredients into a respectable meal."),
-("cook_quality_3_host",    "Your cooks are competent and capable of preparing a respectable meal that should please your guests."),
-("cook_quality_3_guest_m", "A most respectable meal. It is simple, yet skillfully prepared. You feed your guests well."),
-("cook_quality_3_guest_f", "A very pleasant repast. Simple, yet elegant. It is a credit to your household management."),
-("cook_quality_3_spouse",  "Our cooks can prepare fine meals, my dear. They are simple but well-made, and it will make our guests content."),
-# Tier 2 (Basic)
-("cook_quality_2_tooltip", "- Can prepare basic rations that won't kill you. Probably. Do not expect any flavor."),
-("cook_quality_2_host",    "Your cooks can prepare basic, uninspired rations. It should be enough to fill bellies, but do not expect praise."),
-("cook_quality_2_guest_m", "Ah... a simple, straightforward meal. It fills the belly, which is what matters, is it not?"),
-("cook_quality_2_guest_f", "How... authentic. It is certainly... a nourishing meal."),
-("cook_quality_2_spouse",  "My dear, let us make a note to... *encourage* the kitchen staff. Their meals are edible, at least. No one will collapse."),
-# Tier 1 (Disaster)
-("cook_quality_1_tooltip", "- A culinary disaster. Useful for poisoning enemies, but should be kept away from your personal kitchen at all costs."),
-("cook_quality_1_host",    "Your so-called 'cooks' are a culinary disaster. They might be useful for poisoning a besieging army, but they should be kept away from our own kitchen."),
-("cook_quality_1_guest_m", "Forgive my candor, but... is this meant to be consumed? I've had better fare in a legionary marching camp."),
-("cook_quality_1_guest_f", "My dear, I believe my field slaves eat better than this. How... quaint."),
-("cook_quality_1_spouse",  "By all the gods, this is a catastrophe! We must find new cooks immediately, my love. Our cooks are only useful for poisoning enemies!"),
+# Level 10 (Legendary)
+("cook_quality_10_tooltip", "- A culinary god. Their feasts are the stuff of legend, fit for the Emperor himself."),
+("cook_quality_10_host",    "Your cooks are culinary gods; their feasts are the stuff of legend, fit for the Emperor himself."),
+("cook_quality_10_guest_m", "By Jupiter! I have never tasted such ambrosia! Your chef must be Bacchus in disguise!"),
+("cook_quality_10_guest_f", "This... this is transcendence on a plate. I am utterly speechless. You have the finest table in the Empire."),
+("cook_quality_10_spouse",  "My love, we are the envy of Rome! The Emperor himself would beg for an invitation to our table!"),
+
+# Level 9 (Master)
+("cook_quality_9_tooltip", "- A true master of the culinary arts. Every meal is a masterpiece."),
+("cook_quality_9_host",    "Your cooks are true masters of the culinary arts. Every meal they prepare is a masterpiece."),
+("cook_quality_9_guest_m", "Exquisite! Truly exquisite! I must have the recipe for this sauce, though I doubt my own cooks could replicate it."),
+("cook_quality_9_guest_f", "A delightful symphony of flavors! You spoil us, truly. This is dining at its absolute peak."),
+("cook_quality_9_spouse",  "Our feasts are becoming legendary, my dear. Everyone is clamoring for an invitation."),
+
+# Level 8 (Expert)
+("cook_quality_8_tooltip", "- An expert chef, capable of impressing even the most critical gourmand."),
+("cook_quality_8_host",    "Your cooks are experts, capable of impressing even the most critical gourmand."),
+("cook_quality_8_guest_m", "A splendid meal! Your kitchen staff is clearly of the highest caliber."),
+("cook_quality_8_guest_f", "Simply delicious! The presentation, the taste... everything is just perfect."),
+("cook_quality_8_spouse",  "I am so proud of our household, my love. The dinner was a triumph."),
+
+# Level 7 (Skilled)
+("cook_quality_7_tooltip", "- A highly skilled cook. Meals are consistently delicious and well-presented."),
+("cook_quality_7_host",    "Your cooks are highly skilled. Their meals are consistently delicious and well-presented."),
+("cook_quality_7_guest_m", "Very good indeed! A hearty and flavorful meal. My compliments."),
+("cook_quality_7_guest_f", "A lovely dinner. Your cook certainly knows how to bring out the best in these ingredients."),
+("cook_quality_7_spouse",  "Another wonderful evening, my dear. Our guests seem quite pleased with the fare."),
+
+# Level 6 (Competent)
+("cook_quality_6_tooltip", "- A competent chef. The food is good, if not revolutionary."),
+("cook_quality_6_host",    "Your cooks are competent. The food is good and reliable, if not revolutionary."),
+("cook_quality_6_guest_m", "A solid meal. Good, honest food. I am well satisfied."),
+("cook_quality_6_guest_f", "Quite nice. A very respectable spread you've laid out for us."),
+("cook_quality_6_spouse",  "The dinner went well, I think. The food was tasty and plentiful."),
+
+# Level 5 (Average)
+("cook_quality_5_tooltip", "- An average cook. Can prepare standard meals without major mishaps."),
+("cook_quality_5_host",    "Your cooks are average. They can prepare standard meals without major mishaps."),
+("cook_quality_5_guest_m", "Not bad. A decent meal to fill the stomach."),
+("cook_quality_5_guest_f", "It was... fine. A perfectly adequate dinner."),
+("cook_quality_5_spouse",  "The food was acceptable, my love. Nothing to complain about, but perhaps nothing to write home about either."),
+
+# Level 4 (Basic)
+("cook_quality_4_tooltip", "- A basic cook. Edible, but uninspired."),
+("cook_quality_4_host",    "Your cooks are basic. The food is edible, but uninspired."),
+("cook_quality_4_guest_m", "Well, it's food. It will keep us going, I suppose."),
+("cook_quality_4_guest_f", "A simple meal. Rustic, one might say."),
+("cook_quality_4_spouse",  "At least no one got sick, my dear. But perhaps we should look for someone with a bit more... flair?"),
+
+# Level 3 (Poor)
+("cook_quality_3_tooltip", "- A poor cook. Burnt edges and soggy centers are common."),
+("cook_quality_3_host",    "Your cooks are poor. Burnt edges and soggy centers are all too common."),
+("cook_quality_3_guest_m", "Hrm. A bit... overdone, isn't it? And underdone in the middle..."),
+("cook_quality_3_guest_f", "Oh my. This is... certainly an interesting texture."),
+("cook_quality_3_spouse",  "My love, perhaps we should stick to bread and cheese next time? This stew is rather... challenging."),
+
+# Level 2 (Terrible)
+("cook_quality_2_tooltip", "- A terrible cook. The food is barely recognizable."),
+("cook_quality_2_host",    "Your cooks are terrible. The food is barely recognizable as such."),
+("cook_quality_2_guest_m", "What is this? Gruel? I wouldn't feed this to my dogs."),
+("cook_quality_2_guest_f", "I... I'm not feeling very hungry, actually. I think I'll pass."),
+("cook_quality_2_spouse",  "This is embarrassing, my love. We cannot serve this slop to guests!"),
+
+# Level 1 (Disaster)
+("cook_quality_1_tooltip", "- A culinary disaster. Useful for poisoning enemies, but keep away from your own table."),
+("cook_quality_1_host",    "Your so-called 'cooks' are a culinary disaster. Useful for poisoning enemies, but keep them away from your own table."),
+("cook_quality_1_guest_m", "By the gods! Is this an assassination attempt?"),
+("cook_quality_1_guest_f", "I feel faint... surely this meat has turned?"),
+("cook_quality_1_spouse",  "We are going to be the laughing stock of Rome! Fire them! Fire them all immediately!"),
 
 ("merchant_greeting_very_dishonorable", "I know your reputation, and frankly, I'd rather not do business. But coin is coin. State your purpose quickly."),
 ("merchant_greeting_dishonorable", "Ave... I suppose. Be aware, I'll be watching you closely. Now, what do you want?"),
@@ -10393,6 +10432,71 @@ strings = [
 ("book_desc_surgery_reference", "'Synopsis of Aelius Galenus'.^A compilation of medical knowledge from the^famous physician, focusing on anatomy,^surgical techniques, and the four humors.^^+1 to Surgery while in inventory"),
 ("book_desc_pathfinding", "'Tabula Mundi' by Pomponius Mela.^A geographical treatise describing the known^world, offering valuable insights into^distant lands, trade routes, and travel.^^+1 to Pathfinding while in inventory"),
 ("book_desc_first_aid", "'Corpus Hippocraticum'.^A collection of ancient Greek medical texts^establishing the ethical and practical^foundations of medicine and healing.^^+1 to First Aid while in inventory"),
+
+
+  # Slave Skills Descriptions
+  ("slave_skill_header", "--- Attributes ---"),
+  ("slave_skill_fallback", "This one seems suited only for the most basic, unskilled tasks."),
+
+  # Athletics
+  ("slave_skill_athletics_10", "- Legendary endurance; could plow a field alone without breaking a sweat."),
+  ("slave_skill_athletics_9", "- A powerhouse of stamina, perfect for the most grueling labor."),
+  ("slave_skill_athletics_8", "- Exceptionally fit, can outwork two ordinary men."),
+  ("slave_skill_athletics_7", "- Tireless and swift, a prime candidate for head field hand."),
+  ("slave_skill_athletics_6", "- Possesses impressive endurance, ideal for heavy plowing."),
+  ("slave_skill_athletics_5", "- Quite athletic, well-suited for demanding farm tasks."),
+  ("slave_skill_athletics_4", "- Strong-legged and energetic, good for general labor."),
+  ("slave_skill_athletics_3", "- Fit enough for a full day's work in the fields."),
+  ("slave_skill_athletics_2", "- Has decent legs, can handle basic farm chores."),
+  ("slave_skill_athletics_1", "- Shows a glimmer of stamina, suitable for light field work."),
+
+  # Power Strike
+  ("slave_skill_power_strike_10", "- Unearthly power; could probably mine a tunnel with bare hands."),
+  ("slave_skill_power_strike_9", "- Mountainous strength, a true asset for any construction."),
+  ("slave_skill_power_strike_8", "- Immensely strong, capable of moving boulders."),
+  ("slave_skill_power_strike_7", "- A brute of a worker, perfect for deep mining operations."),
+  ("slave_skill_power_strike_6", "- Imposing strength, can swing a pickaxe all day."),
+  ("slave_skill_power_strike_5", "- Powerful arms, suited for heavy mining work."),
+  ("slave_skill_power_strike_4", "- Well-built and forceful, good for breaking rocks."),
+  ("slave_skill_power_strike_3", "- Shows promise for the quarry, has a sturdy build."),
+  ("slave_skill_power_strike_2", "- Stronger than average, useful for hauling stone."),
+  ("slave_skill_power_strike_1", "- Has a bit of muscle, can lift moderate loads."),
+
+  # Trade
+  ("slave_skill_trade_10", "- Golden touch; could sell sand in the desert at a premium."),
+  ("slave_skill_trade_9", "- A financial wizard, capable of running a trade empire."),
+  ("slave_skill_trade_8", "- Masterful with money, can oversee complex logistics."),
+  ("slave_skill_trade_7", "- A shrewd negotiator, excellent for managing accounts."),
+  ("slave_skill_trade_6", "- Experienced in commerce, a reliable steward."),
+  ("slave_skill_trade_5", "- Sharp-witted in trade, can manage a small shop."),
+  ("slave_skill_trade_4", "- Has a knack for deals, good for market tasks."),
+  ("slave_skill_trade_3", "- Good with numbers, suitable for clerk work."),
+  ("slave_skill_trade_2", "- Understands basic barter, can watch a stall."),
+  ("slave_skill_trade_1", "- Can count coins, useful for simple errands."),
+
+  # Engineering
+  ("slave_skill_engineer_10", "- Unrivaled genius; could build a castle from a sketch."),
+  ("slave_skill_engineer_9", "- Visionary architect, creates wonders of construction."),
+  ("slave_skill_engineer_8", "- Brilliant engineer, can design complex machinery."),
+  ("slave_skill_engineer_7", "- Master builder, capable of planning fortifications."),
+  ("slave_skill_engineer_6", "- Expert carpenter and mason, valuable for construction."),
+  ("slave_skill_engineer_5", "- Skilled builder, understands blueprints."),
+  ("slave_skill_engineer_4", "- Knowledgeable in building, can lead a work crew."),
+  ("slave_skill_engineer_3", "- Handy with tools, suitable for framing."),
+  ("slave_skill_engineer_2", "- Understands basic structures, good for fence mending."),
+  ("slave_skill_engineer_1", "- Can hammer a nail, useful for repairs."),
+
+  # Looting
+  ("slave_skill_looting_10", "- Living embodiment of greed; will steal the very foundations."),
+  ("slave_skill_looting_9", "- Prince of thieves, nothing is safe."),
+  ("slave_skill_looting_8", "- Grand larcenist, can steal the shirt off your back."),
+  ("slave_skill_looting_7", "- Master of corruption, will rot an organization from within."),
+  ("slave_skill_looting_6", "- Expert embezzler, dangerous in a position of trust."),
+  ("slave_skill_looting_5", "- Professional crook, knows how to cook the books."),
+  ("slave_skill_looting_4", "- Skilled pilferer, will skim off the top."),
+  ("slave_skill_looting_3", "- Practiced thief, keep away from the till."),
+  ("slave_skill_looting_2", "- Sneaky, likely to pocket loose change."),
+  ("slave_skill_looting_1", "- Has sticky fingers, watch small items."),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

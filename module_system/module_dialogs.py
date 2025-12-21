@@ -3314,7 +3314,9 @@ dialogs =[
 "household_slave_attributes_display",[]],
 
 [anyone, "household_slave_attributes_display",[
-  (call_script, "script_describe_slave_skills_to_s0", "$g_talk_troop"),
+  (troop_get_slot, ":slave_dna", "$g_talk_troop", slot_slave_template_troop),
+  # (str_store_troop_name, s13, ":slave_dna"),
+  (call_script, "script_describe_slave_skills_to_s0", ":slave_dna"),
 ],"{s0}",
 "household_slave_pretalk",[]],
 
