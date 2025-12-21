@@ -87135,6 +87135,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (neg|troop_slot_eq, "trp_array_villa_feast" , 4, ":troop_no"),
   (neg|troop_slot_eq, "trp_array_villa_feast" , 5, ":troop_no"),
   (str_store_troop_name, s1, ":troop_no"),
+
+  # no dead men
+  (this_or_next|troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+  (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_lady),
 ],"{s1} (relation: {reg0})",
 "household_feast_invite",[
   (store_repeat_object, "$temp")
