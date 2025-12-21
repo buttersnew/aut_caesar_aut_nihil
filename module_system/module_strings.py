@@ -10497,6 +10497,9 @@ strings = [
   ("slave_skill_looting_3", "- Practiced thief, keep away from the till."),
   ("slave_skill_looting_2", "- Sneaky, likely to pocket loose change."),
   ("slave_skill_looting_1", "- Has sticky fingers, watch small items."),
+
+  ("married", "Married"),
+  ("single", "Single"),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

@@ -42042,7 +42042,14 @@ presentations = presentations_wse2 + [
             (str_store_troop_name, 20, ":cur_troop"),
             (call_script, "script_troop_get_player_relation", ":cur_troop"),
 
-            (create_button_overlay, reg1, "@{s20} (rel: {reg0})", tf_with_outline),
+            (try_begin),
+              (troop_slot_ge, ":cur_troop", slot_troop_spouse, 0),
+              (str_store_string, s13, "str_married"),
+            (else_try),
+              (str_store_string, s13, "str_single"),
+            (try_end),
+
+            (create_button_overlay, reg1, "@{s20} (rel: {reg0}), {s13}", tf_with_outline),
             (position_set_y, pos1, ":y_name"),
             (overlay_set_position, reg1, pos1),
             (overlay_set_color, reg1, color_purple),
