@@ -39055,25 +39055,25 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 ##we can pay him or give the center
 [anyone, "companion_embassy_results",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s12, ":emissary_object"),
-(is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0
-##diplomacy start+
-#(call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", ":mission_object", "$g_mission_result"),
-(gt, "$temp", 0),
-(eq, "$temp_2", 0),
-(assign, reg0, "$temp"),
-(str_store_party_name, s18, "$g_concession_demanded"),
-(assign, reg4, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
-	(assign, reg4, 1),
-(try_end),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s12, ":emissary_object"),
+  (is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0
+  ##diplomacy start+
+  #(call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", ":mission_object", "$g_mission_result"),
+  (gt, "$temp", 0),
+  (eq, "$temp_2", 0),
+  (assign, reg0, "$temp"),
+  (str_store_party_name, s18, "$g_concession_demanded"),
+  (assign, reg4, 0),
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
+    (assign, reg4, 1),
+  (try_end),
 ],#Next line gender from reg4
 "{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you pay {reg4?her:him} {reg0} or give {reg4?her:him} {s18}.","dplmc_companion_truce_pay",[
-     ]],
+]],
 
 #This was bugged, and should logically never occur.
 ##we have so many prisoners we don't have to pay
@@ -39093,22 +39093,60 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 ##option to pay him
 [anyone|plyr, "dplmc_companion_truce_pay",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(str_store_faction_name, s4, ":mission_object"),
-(store_troop_gold, ":gold", "trp_player"),#
-##diplomacy start+
-(assign, reg0, "$temp"),
-(gt, reg0, 0),
-(ge, ":gold", reg0),
+  (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
 ],
-"Pay {reg0} denarii and let the truce with the {s4} be concluded","companion_rejoin_response",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(troop_remove_gold, "trp_player", "$temp"),#todo change amount
-#actually give gold to other kingdom
-(call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
-##diplomacy end+
-(call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
-(str_store_faction_name, s4, ":mission_object"),
+"Pay {reg0} denarii from the imperial treasury and let the truce with the {s4} be concluded","companion_rejoin_response",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+
+  (val_abs, "$temp"),
+  (val_mul, "$temp", -1),
+  (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", "$temp"),#todo change amount
+
+  (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
+  (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (str_store_faction_name, s4, ":mission_object"),
+]],
+
+[anyone|plyr, "dplmc_companion_truce_pay",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
+  (store_troop_gold, ":gold", "trp_household_possessions"),#
+  ##diplomacy start+
+  (assign, reg0, "$temp"),
+  (gt, reg0, 0),
+  (ge, ":gold", reg0),
+],
+"Pay {reg0} denarii from your personal treasury and let the truce with the {s4} be concluded","companion_rejoin_response",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+
+  (val_abs, "$temp"),
+  (call_script, "script_dplmc_withdraw_from_treasury", "$temp"),#todo change amount
+  #actually give gold to other kingdom
+  (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
+  ##diplomacy end+
+  (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (str_store_faction_name, s4, ":mission_object"),
+]],
+
+[anyone|plyr, "dplmc_companion_truce_pay",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
+  (store_troop_gold, ":gold", "trp_player"),#
+  ##diplomacy start+
+  (assign, reg0, "$temp"),
+  (gt, reg0, 0),
+  (ge, ":gold", reg0),
+],
+"Pay {reg0} denarii from your own coffers and let the truce with the {s4} be concluded","companion_rejoin_response",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (troop_remove_gold, "trp_player", "$temp"),#todo change amount
+  #actually give gold to other kingdom
+  (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
+  ##diplomacy end+
+  (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (str_store_faction_name, s4, ":mission_object"),
 ]],
 
 ##option to pay him and give him a center
