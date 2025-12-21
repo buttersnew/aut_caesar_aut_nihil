@@ -1,4 +1,4 @@
-5876
+5878
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -5875,3 +5875,5 @@ qstr_Debug:_{reg0} Debug:_{reg0}
 qstr_{!}_ERROR:_setup_par {!}_ERROR:_setup_party_meeting_aborted_-_invalid_party.
 qstr_{!}_ERROR:_setup_part {!}_ERROR:_setup_party_meeting_aborted_-_party_has_no_troops.
 qstr_beer beer
+qstr_Hint:_The_treasure_is Hint:_The_treasure_is_hidden_somewhere_in_a_chest_in_the_temple_complex_of_{s10}._Once_you_found_the_spear_return_back_to_Pamphile.
+qstr_{s20}__rel:_{reg0}__ {s20}_(rel:_{reg0}),_{s13}
