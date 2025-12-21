@@ -275,6 +275,12 @@ poisoned_arrows_hit = (ti_on_agent_hit, 0, 0, [],[
     (store_trigger_param, ":missile", 5),
 
     (eq, ":missile", "itm_poisoned_arrows"),
+
+    (agent_is_active, ":victim"),
+    (agent_get_troop_id, ":victim_troop", ":victim"),
+    # victim is no a legendary hero
+    (neg|is_between, ":victim_troop", myth_heroes_begin, myth_heroes_end),
+
     # (try_begin),
         # (agent_get_slot, ":is_poisoned", ":victim", slot_agent_is_poisoned),
     (get_player_agent_no, ":player"),

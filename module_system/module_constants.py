@@ -2445,6 +2445,9 @@ baltic_mercenary_troops_end = "trp_danish_skirmisher"
 quick_battle_troops_begin = "trp_quick_battle_troop_1"
 quick_battle_troops_end = "trp_global_variables"
 
+myth_heroes_begin = "trp_germanic_myth_hero_1"
+myth_heroes_end = "trp_household_slave_1"
+
 quick_battle_troop_texts_begin = "str_quick_battle_troop_1"
 quick_battle_troop_texts_end = "trp_global_variables"
 
