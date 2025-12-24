@@ -1,4 +1,4 @@
-5878
+5886
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -5877,3 +5877,11 @@ qstr_{!}_ERROR:_setup_part {!}_ERROR:_setup_party_meeting_aborted_-_party_has_no
 qstr_beer beer
 qstr_Hint:_The_treasure_is Hint:_The_treasure_is_hidden_somewhere_in_a_chest_in_the_temple_complex_of_{s10}._Once_you_found_the_spear_return_back_to_Pamphile.
 qstr_{s20}__rel:_{reg0}__ {s20}_(rel:_{reg0}),_{s13}
+qstr_The_feast_concludes_ The_feast_concludes_while_you_lead_your_lady_to_a_more_private_setting...
+qstr_You_can_only_change_ You_can_only_change_the_legate_of_a_legion_or_disband_it_while_talking_with_your_military_advisor_(who_can_be_found_in_the_Domus_Augusti).
+qstr_You_can_only_make_ch You_can_only_make_changes_while_talking_with_your_military_advisor_(who_can_be_found_in_the_Domus_Augusti).
+qstr_legion:_{reg0} legion:_{reg0}
+qstr_{s1}_entered_remove_ {s1}_entered_remove_office_script
+qstr_Fac:_{s1} Fac:_{s1}
+qstr_Remove_military_offi Remove_military_office
+qstr_You_have_entered_the You_have_entered_the_town.
