@@ -14870,10 +14870,13 @@ scripts = scripts_hardcoded + [
 
         (try_begin), #SB : upgrade into watchmen, each template had at least 10 farmers
             (party_slot_ge, ":village_no", slot_center_has_watch_tower, 1),
-            (party_count_companions_of_type, ":count", ":village_no", "trp_watchman"),
+
+            (faction_get_slot, ":tier1", ":culture", slot_faction_tier_1_troop),
+            (gt, ":tier1", 0),
+            (party_count_companions_of_type, ":count", ":village_no", ":tier1"),
             (lt, ":count", 10),
             (store_random_in_range, ":random_no", 2, 5),
-            (party_add_members, ":village_no", "trp_watchman", ":random_no"),
+            (party_add_members, ":village_no", ":tier1", ":random_no"),
         (try_end),
         (try_begin), #SB : add messenger
             (party_slot_ge, ":village_no", slot_center_has_messenger_post, 1),

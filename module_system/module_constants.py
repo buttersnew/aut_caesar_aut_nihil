@@ -3468,22 +3468,22 @@ dplmc_marshal_party_bonus       = 50
 dplmc_monarch_party_bonus       = 100
 
 #increase/decrease in relation, renown, etc
-message_positive = 0x33FF33
-message_neutral  = 0xFFFF33
-message_negative = 0xFF3333
+message_positive = 0x006400
+message_neutral  = 0x806000
+message_negative = 0x8B0000
 #notifying defeat of player kingdom messengers, caravans etc
-message_defeated = 0xFF0000
+message_defeated = 0x500000
 #other messages of note
-message_alert = 0xF0DD33
-message_locked = 0xFFAAAA
+message_alert = 0x9C7C00
+message_locked = 0x502020
 ###for vc compatibility
-color_great_news = 0xCCFFCC
-color_good_news = 0xCCFFCC
-color_terrible_news = 0xFFCCCC  #0xFF2222
-color_bad_news = 0xFFCCCC
-color_neutral_news = 0xFFFFFF
-color_quest_and_faction_news = 0xCCCCFF
-color_hero_news = 0xFFFF99
+color_great_news = 0x006400
+color_good_news = 0x006400
+color_terrible_news = 0x8B0000  #0xFF2222
+color_bad_news = 0x8B0000
+color_neutral_news = 0x000000
+color_quest_and_faction_news = 0x00008B
+color_hero_news = 0x806000
 color_information = 0x00007F
 color_purple = 0x802552
 
