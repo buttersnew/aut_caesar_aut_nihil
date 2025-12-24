@@ -66483,6 +66483,17 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (eq, "$temp4_1", 3), # This is the condition for critical success
 ],"Come on... I want you, now!^^-- She kisses you again, deeply this time, then takes a step back, her eyes alight with a mixture of desire and challenge. --^^Let's find somewhere more private.",
 "flirt_crit_success_player_choice",[
+  # conclude feasts in player villa
+  (try_begin),
+    (eq, "$talk_context", tc_feast),
+    (store_current_scene, ":scene"),
+    (eq, ":scene", "scn_villa_player"),
+    (troop_slot_eq, "trp_array_villa_feast", 9, 0),
+    (try_for_range, ":guest", 0, 11),
+      (troop_set_slot, "trp_array_villa_feast", ":guest", -1),
+    (try_end),
+    (display_message, "@The feast concludes while you lead your lady to a more private setting...", message_alert),
+  (try_end),
   (agent_play_sound,"$g_talk_agent","snd_female_laugh"),
 ]],
 
