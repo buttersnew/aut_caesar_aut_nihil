@@ -36994,7 +36994,7 @@ presentations = presentations_wse2 + [
                 (eq, ":value", 2),
                 (assign, "$temp4_1", imod_champion),
             (else_try),
-                (assign, "$temp4_1", -1),
+                (assign, "$temp4_1", 0),
             (try_end),
         (else_try),
             (eq, "$temp1", itp_type_shield),
@@ -37006,7 +37006,7 @@ presentations = presentations_wse2 + [
                 (assign, "$temp4_1", imod_reinforced),
             (else_try),
                 (eq, ":value", 2),
-                (assign, "$temp4_1", -1),
+                (assign, "$temp4_1", 0),
             (try_end),
         (else_try),
             (ge, "$temp1", itp_type_head_armor),
@@ -37027,7 +37027,7 @@ presentations = presentations_wse2 + [
                 (eq, ":value", 4),
                 (assign, "$temp4_1", imod_lordly),
             (else_try),
-                (assign, "$temp4_1", -1),
+                (assign, "$temp4_1", 0),
             (try_end),
         (else_try),
             (this_or_next | eq, "$temp1", itp_type_one_handed_wpn),
@@ -37053,7 +37053,7 @@ presentations = presentations_wse2 + [
                 (eq, ":value", 4),
                 (assign, "$temp4_1", imod_masterwork),
             (else_try),
-                (assign, "$temp4_1", -1),
+                (assign, "$temp4_1", 0),
             (try_end),
         (else_try),
             (this_or_next | eq, "$temp1", itp_type_arrows),
@@ -37070,11 +37070,11 @@ presentations = presentations_wse2 + [
                 (eq, ":value", 2),
                 (assign, "$temp4_1", imod_balanced),
             (else_try),
-                (assign, "$temp4_1", -1),
+                (assign, "$temp4_1", 0),
             (try_end),
         (else_try),
             (eq, "$temp", -1),
-            (assign, "$temp4_1", -1),
+            (assign, "$temp4_1", 0),
         (try_end),
         (start_presentation, "prsnt_custom_troop_weapon_selection"),
     (try_end),
@@ -37180,6 +37180,8 @@ presentations = presentations_wse2 + [
                     (troop_remove_item, ":inventory_troop", ":slot_item"),
 
                     #adding new item
+                    (val_max, "$temp4_1", 0),
+
                     (troop_add_item, ":inventory_troop", "$current_item", "$temp4_1"),
                     (troop_add_item, "$temp_troop", "$current_item", "$temp4_1"),
                     (troop_equip_items, "$temp_troop"),
@@ -37193,8 +37195,10 @@ presentations = presentations_wse2 + [
                     (troop_set_slot, "trp_temp_array_olympia_c", ":slot_no", "$current_item"),
 
                     #adding new item
-                    (troop_add_item, ":inventory_troop", "$current_item"),
-                    (troop_add_item, "$temp_troop", "$current_item"),
+
+                    (val_max, "$temp4_1", 0),
+                    (troop_add_item, ":inventory_troop", "$current_item", "$temp4_1"),
+                    (troop_add_item, "$temp_troop", "$current_item", "$temp4_1"),
                     (troop_equip_items, "$temp_troop"),
 
                     (assign,"$g_presentation_credits_obj_1",-1),
