@@ -10184,7 +10184,7 @@ strings = [
 ("mayor_refuse_info_low_rel_generic", "Why should I share such information with a stranger? We are not friends. I have nothing more to say to you."),
 
 ("blank_s22", "{!} {s22}"),
-("censor_needed_to_show_personality", "Unkown (Censor req.)"),
+("censor_needed_to_show_personality", "Unkown (Censor)"),
 
 ("lady_gossip_lucia_sabina_adventurous", "It is a grim story. First her husband dies in the wilds of Germania, now her son in Britannia. To be left alone like that... I would rather die in battle than fade away in a lonely villa, surrounded by vultures fighting over my legacy. I hope she finds some peace."),
 ("lady_gossip_lucia_sabina_ambitious", "It is the most significant political development in Rome right now. With her son dead, Lucia Sabina's estate is the single greatest prize in the city. Her choice of husband will shift the balance of power between several major families. Amorus Valentinus has the inside track; his father is playing the game well."),

@@ -88929,12 +88929,19 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":troop_id", 1),
     (store_script_param, ":office", 2),
 
+    #debuging message
+    # (str_store_troop_name, s1, ":troop_id"),
+    # (display_message, "@{s1} entered remove office script"),
+
     (try_begin),
         (eq, ":troop_id", "trp_player"),
         (assign, ":troop_faction", "$players_kingdom"),
     (else_try),
         (store_faction_of_troop, ":troop_faction", ":troop_id"),
     (try_end),
+
+    # (str_store_faction_name, s1, ":troop_faction"),
+    # (display_message, "@Fac: {s1}"),
 
     (try_begin),
         (this_or_next|eq, ":office", remove_all),
@@ -88966,6 +88973,8 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":office", remove_all),
         (eq, ":office", remove_military),
 
+        # (display_message, "@Remove military office"),
+
         (troop_set_slot, "trp_global_variables", g_global_player_office, "$g_rank"),
         (try_begin),
             (eq, ":troop_id", "trp_player"),
@@ -88975,10 +88984,13 @@ scripts = scripts_hardcoded + [
         (try_end),
         (try_begin),
             (troop_get_slot, ":auxiliar", ":troop_id", slot_troop_aux),
+            (gt, ":auxiliar", -1),
             (call_script, "script_troop_set_rank", ":troop_id", slot_troop_aux, -1),
             (call_script, "script_find_new_commander_for_aux", ":auxiliar", ":troop_faction"),
-        (else_try),
+        (try_end),
+        (try_begin),
             (troop_get_slot, ":legion", ":troop_id", slot_troop_legion),
+            (gt, ":legion", -1),
             (call_script, "script_troop_set_rank", ":troop_id", slot_troop_legion, -1),
             (call_script, "script_find_new_commander_for_legion", ":legion", ":troop_faction"),
         (try_end),

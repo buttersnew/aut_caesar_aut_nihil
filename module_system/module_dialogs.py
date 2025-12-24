@@ -54657,24 +54657,28 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 ],
 "{s66}, I wish to be released from my oath to you.", "lord_ask_leave_service",[]],
 
-[trp_kingdom_7_lord|plyr,"lord_talk",[(le,"$talk_context", tc_party_encounter),
-        (ge, "$g_talk_troop_faction_relation", 0),
-        #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-        (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
-        (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-        (eq, "$players_kingdom", "$g_talk_troop_faction"),
-        (eq, "$player_has_homage", 1),#
-        (ge, "$g_rank",1),
-        ##diplomacy start+
-        #Disable leaving the faction if you're the co-leader.  Writing separate logic
-        #to enable doing that is a low priority.
-        (neg|troop_slot_eq,"trp_player",slot_troop_spouse,"$g_talk_troop"),
-        (neg|troop_slot_eq,"$g_talk_troop",slot_troop_spouse,"trp_player"),
-        (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$g_talk_troop_faction"),
-        (lt, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-       ##diplomacy end+
+[trp_kingdom_7_lord|plyr,"lord_talk",[
+  (le,"$talk_context", tc_party_encounter),
+  (ge, "$g_talk_troop_faction_relation", 0),
+  #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+  (eq, "$players_kingdom", "$g_talk_troop_faction"),
+  (eq, "$player_has_homage", 1),#
+
+  (this_or_next|ge, "$g_rank",1),
+  (this_or_next|troop_slot_ge, "trp_player", slot_troop_legion, 1),
+  (troop_slot_ge, "trp_player", slot_troop_aux, 1),
+
+  #Disable leaving the faction if you're the co-leader.  Writing separate logic
+  #to enable doing that is a low priority.
+  (neg|troop_slot_eq,"trp_player",slot_troop_spouse,"$g_talk_troop"),
+  (neg|troop_slot_eq,"$g_talk_troop",slot_troop_spouse,"trp_player"),
+  (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$g_talk_troop_faction"),
+  (lt, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
 ],
-"{s66}, I wish to be dismissed from service.", "lord_ask_leave_service_nero",[]],
+"{s66}, I wish to be dismissed from service.",
+"lord_ask_leave_service_nero",[]],
 
 [anyone|plyr,"lord_talk",[
   ##diplomacy start+
@@ -58679,7 +58683,10 @@ I know you shall prove yourself worthy of the trust I have placed in you.", "clo
 ],"I charge you with rooting out and destroying the forces of our enemies wherever you may find them."
 +" Moreover, I will have special tasks for you from time to time, as may some of my other loyal commanders and lords."
 +" Serve, fight, and honour your oaths. These things will take you far, if you've a mind for promotion."
-+" May the grant us long lives and many victories to toast in my hall!", "close_window",[(assign, "$g_leave_encounter",1)]],
++" May the grant us long lives and many victories to toast in my hall!",
+"close_window",[
+  (assign, "$g_leave_encounter",1)
+]],
 
 [trp_kingdom_7_lord,"lord_ask_leave_service_nero",[
 ], "Was the fighting on the frontier too much for you? Have you become a coward? Well if that's the case you can leave service if you want."
@@ -58691,9 +58698,13 @@ I know you shall prove yourself worthy of the trust I have placed in you.", "clo
 "lord_ask_leave_service_22",[
   (call_script, "script_remove_office_from_troop", "trp_player", remove_military),
 ]],
-[anyone ,"lord_ask_leave_service_22",[], "I understand {playername}. I am looking forward to see you more often in my palace and at my feasts.", "lord_pretalk",[]],
+[anyone ,"lord_ask_leave_service_22",[
+], "I understand {playername}. I am looking forward to see you more often in my palace and at my feasts.",
+"lord_pretalk",[]],
 
-[anyone|plyr ,"lord_ask_leave_service_verify2",[], "{s66}, my place is in the army.", "lord_pretalk",[]],
+[anyone|plyr ,"lord_ask_leave_service_verify2",[
+], "{s66}, my place is in the army.",
+"lord_pretalk",[]],
 
 [anyone,"lord_ask_leave_service",[(ge, "$g_talk_troop_relation", 1)], "Hrm.\
 Has your oath become burdensome, {playername}? It is unusual to request release from homage,\

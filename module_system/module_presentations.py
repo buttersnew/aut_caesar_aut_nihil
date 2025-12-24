@@ -26681,7 +26681,7 @@ presentations = presentations_wse2 + [
         (overlay_set_position, reg1, pos1),
         (overlay_set_size, reg1, pos2),
 
-        (val_add, ":x_name", 85),
+        (val_add, ":x_name", 75),
 
         (try_begin),
             (gt, ":legate", 0),
@@ -26708,7 +26708,7 @@ presentations = presentations_wse2 + [
         (overlay_set_position, reg0, pos1),
         (overlay_set_size, reg0, pos2),
 
-        (val_add, ":x_name", 95),
+        (val_add, ":x_name", 100),
 
         (store_add, ":slot_hq", ":legion", slot_legion_home_begin),
         (troop_get_slot, ":headquarter", "trp_province_array", ":slot_hq"),
@@ -26902,7 +26902,7 @@ presentations = presentations_wse2 + [
             (overlay_set_position, reg1, pos1),
             (overlay_set_size, reg1, pos2),
 
-            (val_add, ":x_name", 85),
+            (val_add, ":x_name", 75),
 
             (try_begin),
                 (gt, ":aux_cohort_commander", 0),
@@ -26925,7 +26925,7 @@ presentations = presentations_wse2 + [
             (overlay_set_position, reg0, pos1),
             (overlay_set_size, reg0, pos2),
 
-            (val_add, ":x_name", 115),
+            (val_add, ":x_name", 120),
 
             # (store_add, ":slot_hq", ":legion", slot_legion_home_begin),
             # (troop_get_slot, ":headquarter", "trp_province_array", ":slot_hq"),
