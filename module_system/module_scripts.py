@@ -87765,8 +87765,7 @@ scripts = scripts_hardcoded + [
                 # (else_try),
                 (eq, "$g_slave_manu", 2),
                 (eq, "$g_slave_treatment", 2),
-                (party_remove_prisoners, ":latifundium", "trp_slave", 1),
-                (party_remove_prisoners, ":latifundium", "trp_slave_female", 1),
+                (call_script, "script_remove_slaves_from_party", "p_main_party", 2, 0),# any gender
             (try_end),
             ##add mercenaries to tavern
             (try_begin),
