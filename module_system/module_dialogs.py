@@ -79430,7 +79430,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone|plyr,"village_elder_talk",[
   (party_get_slot, ":culture", "$current_town", slot_center_culture),
-  (is_between, ":culture", "fac_culture_roman", "fac_culture_arabian"),
+  (is_between, ":culture", "fac_culture_roman", cultures_end),
   (party_slot_eq, "$current_town", slot_center_has_latifundium, 0),
 ],"I would like to buy land next to the village.",
 "lad_talk",[]],
