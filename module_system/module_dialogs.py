@@ -85459,13 +85459,13 @@ I will need 500 denarii.", "bardo_sing2",[]],
 #
 [anyone|plyr,"court_guard_talk",[
   (store_troop_gold, ":gold", "trp_player"),
-  (ge, ":gold", 500),
+  (ge, ":gold", 2500),
   (check_quest_active, "qst_spy_on_spouse"),
   (quest_get_slot, "$temp", "qst_spy_on_spouse", slot_quest_target_troop),
   (quest_slot_eq, "qst_spy_on_spouse", slot_quest_target_center, "$current_town"),
   (neg|troop_slot_eq, "$temp", slot_troop_lover, "trp_player"),
  # (neg|quest_slot_ge, "qst_spy_on_spouse", slot_quest_current_state, 2),
-], "I need information and I have 500 denarii for you ... ", "court_guard_bribe_for_info",[]],
+], "I need information and I have 2,500 denarii for you ... ", "court_guard_bribe_for_info",[]],
 
 [anyone|plyr,"court_guard_talk",[
 ], "Farewell then", "close_window",[]],
