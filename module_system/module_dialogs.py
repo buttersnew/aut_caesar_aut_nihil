@@ -23367,6 +23367,18 @@ dialogs =[
 "traveller_ship_talk",[
 ]],
 
+[anyone|plyr,"traveller_ship_talk",[
+  (eq, "$g_encountered_party_template", "pt_slave_trader_ship"),
+],"I would like to trade slaves with you.",
+"slave_trade_ask",[
+]],
+
+[anyone,"slave_trade_ask",[
+  (party_get_slot, ":target_town", "$g_encountered_party", slot_party_ai_object),
+  (str_store_party_name, s12, ":target_town"),
+],"I am afraid I cannot do that. All my slaves are already promised to merchants in {s12}.", "traveller_ship_talk",[
+]],
+
 [party_tpl|pt_looters|auto_proceed,"start",[(eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker),], "{!}Warning: This line should never be displayed.", "looters_1",[
 (str_store_string, s10, "@We are landless, poor and persecuted. Life has led us to this, {mate/girlie}. No sudden moves or we'll run you through."),
 (str_store_string, s11, "@It's your money or your life, {mate/girlie}. No sudden moves or we'll run you through."),
