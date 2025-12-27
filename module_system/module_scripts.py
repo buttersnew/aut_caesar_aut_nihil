@@ -93362,6 +93362,9 @@ scripts = scripts_hardcoded + [
         (troop_set_slot, ":slave_trader", slot_troop_slave_saka, 10),
     (try_end),
 
+    # generic slaves:
+    (troop_set_slot, ":slave_trader", slot_troop_slave, 5),
+
     # Add female counterparts and apply randomization
     (try_for_range, ":male_slot", slot_troop_slaves_begin, slot_troop_slave_female),
         (troop_get_slot, ":amount", ":slave_trader", ":male_slot"),
@@ -93528,6 +93531,9 @@ scripts = scripts_hardcoded + [
         (troop_set_slot, ":slave_trader", slot_troop_slave_galatian, 1),
     (try_end),
 
+    # generic slaves:
+    (troop_set_slot, ":slave_trader", slot_troop_slave, 5),
+
     # Add female counterparts and apply randomization
     (try_for_range, ":male_slot", slot_troop_slaves_begin, slot_troop_slave_female),
         (troop_get_slot, ":amount", ":slave_trader", ":male_slot"),
@@ -93613,6 +93619,9 @@ scripts = scripts_hardcoded + [
         (troop_set_slot, ":slave_trader", slot_troop_slave_eastern, 2),
         (troop_set_slot, ":slave_trader", slot_troop_slave_galatian, 2),
     (try_end),
+
+    # generic slaves:
+    (troop_set_slot, ":slave_trader", slot_troop_slave, 5),
 
     # Add female counterparts and apply randomization
     (try_for_range, ":male_slot", slot_troop_slaves_begin, slot_troop_slave_female),
