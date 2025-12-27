@@ -9116,6 +9116,7 @@ mission_templates = [
     ]),
 
     improved_lightning,
+
     (2, 0, ti_once,[
       (store_mission_timer_a, reg1),
       (gt, reg1, 2),],[
@@ -9123,8 +9124,10 @@ mission_templates = [
       (try_for_range, ":team", 0, 4),
         (team_give_order, ":team", grc_cavalry, mordr_mount),
         (team_give_order, ":team", sdt_harcher, mordr_mount),
+        (team_give_order, ":team", grc_everyone, mordr_use_any_weapon),
       (try_end),
       (set_show_messages, 1),
+
     ]),
 
     common_battle_init_banner,
@@ -9292,6 +9295,7 @@ mission_templates = [
       (try_for_range, ":team", 0, 4),
         (team_give_order, ":team", grc_cavalry, mordr_mount),
         (team_give_order, ":team", sdt_harcher, mordr_mount),
+        (team_give_order, ":team", grc_everyone, mordr_use_any_weapon),
       (try_end),
       (set_show_messages, 1),
     ]),
@@ -9455,6 +9459,7 @@ mission_templates = [
       (try_for_range, ":team", 0, 4),
           (team_give_order, ":team", grc_cavalry, mordr_mount),
           (team_give_order, ":team", sdt_harcher, mordr_mount),
+          (team_give_order, ":team", grc_everyone, mordr_use_any_weapon),
       (try_end),
       (set_show_messages, 1),
     ]),
@@ -9721,7 +9726,8 @@ mission_templates = [
       (set_show_messages, 0),
       (try_for_range, ":team", 0, 4),
         (team_give_order, ":team", grc_cavalry, mordr_mount),
-          (team_give_order, ":team", sdt_harcher, mordr_mount),
+        (team_give_order, ":team", sdt_harcher, mordr_mount),
+        (team_give_order, ":team", grc_everyone, mordr_use_any_weapon),
       (try_end),
       (set_show_messages, 1),
     ]),
