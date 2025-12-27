@@ -12549,16 +12549,15 @@ presentations = presentations_wse2 + [
                 (str_store_string, s11, s1),
 
                 (str_clear, s33),
+                (party_get_slot, ":builder", "$g_encountered_party", ":building"),
                 (try_begin),
                     (eq, ":building", slot_center_has_barracks),
-                    (party_get_slot, ":builder", "$g_encountered_party", ":building"),
                     (ge, ":builder", 1),
-                    (try_begin),
-                        (eq, ":builder", 1),
-                        (assign, ":builder", "trp_player"),
-                    (try_end),
+                    (call_script, "script_get_building_culture", "$g_encountered_party", ":builder"),
+                    (assign, ":building_culture", reg0),
+
                     (troop_get_slot, ":player_culture", "trp_player", slot_troop_culture),
-                    (neg|troop_slot_eq, ":builder", slot_troop_culture, ":player_culture"),
+                    (neq, ":building_culture", ":player_culture"),
                     (str_store_string, s33, "@WRONG CULTURE. NO BUILDING EFFECTS!^^Destroy the building and build an equivalent building of your culture!"),
                 (try_end),
 
@@ -12566,7 +12565,6 @@ presentations = presentations_wse2 + [
                 (assign, "$temp", 1),#build it
                 (assign, "$g_improvement_type", ":building"),
                 (assign, ":value", 1),
-                (party_get_slot, ":builder", "$g_encountered_party", ":building"),
                 (call_script, "script_get_improvement_picture", ":building", ":builder", "$g_encountered_party"),
                 (assign, ":material", reg0),
             (try_end),
