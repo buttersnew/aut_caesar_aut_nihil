@@ -4596,7 +4596,7 @@ weight(get_w_weight(145))|difficulty(7)|spd_rtng(get_polew_speed(145)) | weapon_
 #End Caucasian
 
 # ROMAN
-["dagger",         "Puggio", [("dagger_b",0),("dagger_b_scabbard",ixmesh_carry)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_secondary|itp_primary|itp_no_parry, itcf_force_64_bits|itcf_thrust_onehanded|itcf_carry_dagger_front_left|itcf_show_holster_when_drawn,
+["dagger",         "Pugio", [("dagger_b",0),("dagger_b_scabbard",ixmesh_carry)], itp_extra_penetration|itp_type_one_handed_wpn|itp_merchandise|itp_secondary|itp_primary|itp_no_parry, itcf_force_64_bits|itcf_thrust_onehanded|itcf_carry_dagger_front_left|itcf_show_holster_when_drawn,
 get_w_price(37,get_w_weight(37),get_1hw_speed(37),10,20),
 weight(get_w_weight(37))|difficulty(3)|spd_rtng(get_1hw_speed(37)) | weapon_length(37)|swing_damage(0 , cut) | thrust_damage(20 ,  pierce),imodbits_sword_high ],
 

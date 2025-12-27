@@ -6380,9 +6380,9 @@ attrib_level_12,wp(100),knows_level_12,north_african_man_face_middle_1,north_afr
 [itm_caligea, itm_dagger] + garamantian_cives,
 attrib_level_12,wp(100),knows_level_12,nubian_man_face_old_1, nubian_man_face_older_2],
 
-["healer", "Physican", "Physicans", tf_hero|tf_randomize_face, no_scene, reserved, fac_commoners,
+["healer", "Physician", "Physicians", tf_hero|tf_randomize_face, no_scene, reserved, fac_commoners,
 [itm_caligea,itm_robe], def_attrib|str_15|level(4), wp(60), knows_common, white_face_11, white_face_12 ],
-["healer_2", "Physican", "Physicans", tf_hero|tf_randomize_face, no_scene, reserved, fac_commoners,
+["healer_2", "Physician", "Physicians", tf_hero|tf_randomize_face, no_scene, reserved, fac_commoners,
 [itm_caligea,itm_robe], def_attrib|str_15|level(4), wp(60), knows_common, white_face_21, white_face_22 ],
 ["guest_sitting", "Civis", "Civis", tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_caligea,itm_roman_poor1,itm_roman_poor2,itm_roman_poor3,itm_roman_poor4,itm_roman_poor5,itm_roman_toga],
