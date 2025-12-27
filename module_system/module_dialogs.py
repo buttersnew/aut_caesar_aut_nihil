@@ -15334,7 +15334,7 @@ dialogs =[
 [anyone,"alexander_tomb_talk_final_2",[
   (troop_slot_ge, "$g_talk_troop", slot_troop_player_relation, 75),
 ],
-"Wait a moment. There is something I want to tell you in private.^^--She strokes over the statue.--^^{playername}, two kind of humans live on Earth: Actual humans and material. Most people are material. For instance take you average Roman citizen: They live their lives but they are empty. They raise children, they complain about taxes, they are never satisfied and always angry about something. They are nothing more than vessels, which have to be filled with shallow entertainment and food. But don't think that all citizens are like that. Some find satisfaction and reach humanity.",
+"Wait a moment. There is something I want to tell you in private.^^--She strokes over the statue.--^^{playername}, two kinds of humans live on Earth: Actual humans and material. Most people are material. For instance take your average Roman citizen: They live their lives but they are empty. They raise children, they complain about taxes, they are never satisfied and always angry about something. They are nothing more than vessels, which have to be filled with shallow entertainment and food. But don't think that all citizens are like that. Some find satisfaction and reach humanity.",
 "alexander_tomb_talk_final_3",
 []],
 
@@ -15361,7 +15361,7 @@ dialogs =[
 
 [anyone,"alexander_tomb_talk_final_5",[
 ],
-"If you don't kill him, I will do it. Later he will only cause trouble because he will never be satisfied. A bottomless pit that you constantly have to purge money into is not a good ally.",
+"If you don't kill him, I will do it. Later he will only cause trouble because he will never be satisfied. A bottomless pit that you constantly have to pour money into is not a good ally.",
 "alexander_tomb_talk_final_6",[]],
 
 [anyone|plyr,"alexander_tomb_talk_final_6",[
@@ -15371,7 +15371,7 @@ dialogs =[
 
 [anyone,"alexander_tomb_talk_final_end",[
 ],
-"--She somes closer until you can feel her breath.--^^{playername}. We have to go now.",
+"--She comes closer until you can feel her breath.--^^{playername}. We have to go now.",
 "alexander_tomb_talk_final_end_1",[]],
 
 [anyone|plyr,"alexander_tomb_talk_final_end_1",[
@@ -58874,107 +58874,94 @@ You are free, {playername}.", "lord_ask_leave_service_end",
 ]],
 
 [anyone,"lord_raise_troops_thank",[], #SB : gender string
-   "These {reg13?brave women:skilled men} will be a good workforce, {playername}.\
- I am confident you've done a great job. My thanks and my compliments to you.", "lord_raise_troops_thank_2",[]],
+"These {reg13?brave women:skilled men} will be a good workforce, {playername}. I am confident you've done a great job. My thanks and my compliments to you.",
+"lord_raise_troops_thank_2",[]],
 
 [anyone|plyr,"lord_raise_troops_thank_2",[], #SB : gender string
-   "Well, the {reg13?gals:lads} are at your service now. I am sure you will take good care of them.", "lord_pretalk",[]],
+"Well, the {reg13?gals:lads} are at your service now. I am sure you will take good care of them.",
+"lord_pretalk",[]],
 
-[anyone|plyr,"lord_active_mission_2",[#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-             (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
-
-    #             (store_partner_quest,":lords_quest"),
-    #             (eq, ":lords_quest", "qst_collect_taxes"),
-             (check_quest_active, "qst_collect_taxes"),
-             (quest_slot_eq, "qst_collect_taxes", slot_quest_giver_troop, "$g_talk_troop"),
-
-             (check_quest_succeeded, "qst_collect_taxes"),
-             (eq, "$qst_collect_taxes_halve_taxes", 0),
-             (quest_get_slot, ":quest_gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
-             (store_mul, ":required_gold", ":quest_gold_reward", 8),
-             (val_div, ":required_gold", 10),
-             (store_troop_gold, ":gold", "trp_player"),
-             (ge, ":gold", ":required_gold"),
-             (assign, reg19, ":quest_gold_reward"),
-             (quest_get_slot, ":quest_target_center", "qst_collect_taxes", slot_quest_target_center),
-             (str_store_party_name, s3, ":quest_target_center"),
-              ],
-   "Here are all the taxes from {s3}. It comes up to {reg19} denarii.", "lord_collect_taxes_success",
+[anyone|plyr,"lord_active_mission_2",[
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+  (check_quest_active, "qst_collect_taxes"),
+  (quest_slot_eq, "qst_collect_taxes", slot_quest_giver_troop, "$g_talk_troop"),
+  (check_quest_succeeded, "qst_collect_taxes"),
+  (eq, "$qst_collect_taxes_halve_taxes", 0),
+  (quest_get_slot, ":quest_gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
+  (store_mul, ":required_gold", ":quest_gold_reward", 8),
+  (val_div, ":required_gold", 10),
+  (store_troop_gold, ":gold", "trp_player"),
+  (ge, ":gold", ":required_gold"),
+  (assign, reg19, ":quest_gold_reward"),
+  (quest_get_slot, ":quest_target_center", "qst_collect_taxes", slot_quest_target_center),
+  (str_store_party_name, s3, ":quest_target_center"),
+],
+"Here are all the taxes from {s3}. It comes up to {reg19} denarii.",
+"lord_collect_taxes_success",
 []],
 
-[anyone|plyr,"lord_active_mission_2",[#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-             (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
-										  (check_quest_active, "qst_collect_taxes"),
-										  (quest_slot_eq, "qst_collect_taxes", slot_quest_giver_troop, "$g_talk_troop"),
-
-#             (store_partner_quest,":lords_quest"),
-#             (eq, ":lords_quest", "qst_collect_taxes"),
-             (check_quest_succeeded, "qst_collect_taxes"),
-             (eq, "$qst_collect_taxes_halve_taxes", 1),
-             (quest_get_slot, ":quest_gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
-             (store_mul, ":required_gold", ":quest_gold_reward", 95),
-             (val_div, ":required_gold", 100),
-             (store_troop_gold, ":gold", "trp_player"),
-             (ge, ":gold", ":required_gold"),
-             (assign, reg19, ":quest_gold_reward"),
-             (quest_get_slot, ":quest_target_center", "qst_collect_taxes", slot_quest_target_center),
-             (str_store_party_name, s3, ":quest_target_center"),
-              ],
-   "Here are the taxes from {s3}. It comes up to {reg19} denarii.", "lord_collect_taxes_half_success",
+[anyone|plyr,"lord_active_mission_2",[
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+  (check_quest_active, "qst_collect_taxes"),
+  (quest_slot_eq, "qst_collect_taxes", slot_quest_giver_troop, "$g_talk_troop"),
+  (check_quest_succeeded, "qst_collect_taxes"),
+  (eq, "$qst_collect_taxes_halve_taxes", 1),
+  (quest_get_slot, ":quest_gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
+  (store_mul, ":required_gold", ":quest_gold_reward", 95),
+  (val_div, ":required_gold", 100),
+  (store_troop_gold, ":gold", "trp_player"),
+  (ge, ":gold", ":required_gold"),
+  (assign, reg19, ":quest_gold_reward"),
+  (quest_get_slot, ":quest_target_center", "qst_collect_taxes", slot_quest_target_center),
+  (str_store_party_name, s3, ":quest_target_center"),
+],
+"Here are the taxes from {s3}. It comes up to {reg19} denarii.",
+"lord_collect_taxes_half_success",
 []],
 
-[anyone|plyr,"lord_active_mission_2",[#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-										 (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
-										  (check_quest_active, "qst_collect_taxes"),
-										  (quest_slot_eq, "qst_collect_taxes", slot_quest_giver_troop, "$g_talk_troop"),
-
-#             (store_partner_quest,":lords_quest"),
-#             (eq, ":lords_quest", "qst_collect_taxes"),
-             (check_quest_failed, "qst_collect_taxes"),
-             (quest_get_slot, ":quest_gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
-             (store_troop_gold, ":gold", "trp_player"),
-             (ge, ":gold", ":quest_gold_reward"),
-             (assign, reg19, ":quest_gold_reward"),
-             (quest_get_slot, ":quest_target_center", "qst_collect_taxes", slot_quest_target_center),
-             (str_store_party_name, s3, ":quest_target_center"),
-              ],
-   "Unfortunately, a revolt broke up while I was collecting the taxes.\
- I could only collect {reg19} denarii.", "lord_collect_taxes_fail",
+[anyone|plyr,"lord_active_mission_2",[
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+  (check_quest_active, "qst_collect_taxes"),
+  (quest_slot_eq, "qst_collect_taxes", slot_quest_giver_troop, "$g_talk_troop"),
+  (check_quest_failed, "qst_collect_taxes"),
+  (quest_get_slot, ":quest_gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
+  (store_troop_gold, ":gold", "trp_player"),
+  (ge, ":gold", ":quest_gold_reward"),
+  (assign, reg19, ":quest_gold_reward"),
+  (quest_get_slot, ":quest_target_center", "qst_collect_taxes", slot_quest_target_center),
+  (str_store_party_name, s3, ":quest_target_center"),
+],
+"Unfortunately, a revolt broke up while I was collecting the taxes. I could only collect {reg19} denarii.",
+"lord_collect_taxes_fail",
 []],
 
-[anyone,"lord_collect_taxes_success",[(quest_get_slot, ":total_revenue", "qst_collect_taxes", slot_quest_gold_reward),
-             (store_mul, ":owner_share", ":total_revenue", 8),
-             (val_div, ":owner_share", 10),
-             (assign, reg20, ":owner_share"),
-             (store_sub, reg21, ":total_revenue", ":owner_share")],
-   "Well done, {playername}, very well done indeed! You were truly the right {man/person} for the job.\
- I promised you a fifth of the taxes, so that amounts to {reg21} denarii.\
- If you give me {reg20} denarii, you may keep the difference.\
- A good result for everyone, eh?", "lord_pretalk",
-[
-    (troop_remove_gold, "trp_player", reg20),
-    ##diplomacy start+ actually give taxes to NPC
-    (call_script, "script_dplmc_distribute_gold_to_lord_and_holdings", reg20, "$g_talk_troop"),
-    ##diplomacy end+
-    (quest_set_slot, "qst_collect_taxes", slot_quest_gold_reward, 0),
-    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
-    (call_script, "script_end_quest", "qst_collect_taxes"),
+[anyone,"lord_collect_taxes_success",[
+  (quest_get_slot, ":total_revenue", "qst_collect_taxes", slot_quest_gold_reward),
+  (store_mul, ":owner_share", ":total_revenue", 8),
+  (val_div, ":owner_share", 10),
+  (assign, reg20, ":owner_share"),
+  (store_sub, reg21, ":total_revenue", ":owner_share"),
+],
+"Well done, {playername}, very well done indeed! You were truly the right {man/person} for the job. I promised you a fifth of the taxes, so that amounts to {reg21} denarii. If you give me {reg20} denarii, you may keep the difference. A good result for everyone, eh?",
+"lord_pretalk",[
+  (troop_remove_gold, "trp_player", reg20),
+  (call_script, "script_dplmc_distribute_gold_to_lord_and_holdings", reg20, "$g_talk_troop"),
+  (quest_set_slot, "qst_collect_taxes", slot_quest_gold_reward, 0),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (call_script, "script_end_quest", "qst_collect_taxes"),
 ]],
 
-[anyone,"lord_collect_taxes_half_success",[(quest_get_slot, ":gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
-             (val_mul, ":gold_reward", 95),
-             (val_div, ":gold_reward", 100),
-             (assign, reg20, ":gold_reward")],
-   "What?! Is this some scheme of yours, {playername}? That's less than half the taxes I'm owed!\
- You have let them get away with murder as well as my money. What a farce!\
- You can forget the money I promised you, I'm taking {reg20} denarii from what you collected,\
- and you're lucky I'm leaving you a few coins for honour's sake.", "lord_pretalk",
-[(troop_remove_gold, "trp_player", reg20),
-    ##diplomacy start+ actually give taxes to NPC
-    (call_script, "script_dplmc_distribute_gold_to_lord_and_holdings", reg20, "$g_talk_troop"),
-    ##diplomacy end+
-    (quest_set_slot, "qst_collect_taxes", slot_quest_gold_reward, 0),
-    (call_script, "script_end_quest", "qst_collect_taxes"),
+[anyone,"lord_collect_taxes_half_success",[
+  (quest_get_slot, ":gold_reward", "qst_collect_taxes", slot_quest_gold_reward),
+  (val_mul, ":gold_reward", 95),
+  (val_div, ":gold_reward", 100),
+  (assign, reg20, ":gold_reward"),
+],"What?! Is this some scheme of yours, {playername}? That's less than half the taxes I'm owed! You have let them get away with murder as well as my money. What a farce! You can forget the money I promised you, I'm taking {reg20} denarii from what you collected, and you're lucky I'm leaving you a few coins for honour's sake.",
+"lord_pretalk",[
+  (troop_remove_gold, "trp_player", reg20),
+  (call_script, "script_dplmc_distribute_gold_to_lord_and_holdings", reg20, "$g_talk_troop"),
+  (quest_set_slot, "qst_collect_taxes", slot_quest_gold_reward, 0),
+  (call_script, "script_end_quest", "qst_collect_taxes"),
 ]],
 
 [anyone,"lord_collect_taxes_fail",[],
