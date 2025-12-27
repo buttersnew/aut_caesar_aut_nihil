@@ -1203,3 +1203,4 @@ mnu_religious_festival = 1201
 mnu_state_sacrifice_prompt = 1202
 mnu_nero_tour_greece = 1203
 mnu_meadow_romance = 1204
+mnu_temples_submenu = 1205

@@ -52051,86 +52051,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu, "mnu_lucias_house"),
       (try_end),
     ]),
-    ("bacchus",[
+    ("temples",[
       (eq, "$current_town", "p_town_6"),
-      (troop_slot_eq, "trp_player", slot_troop_religion, worships_christus),
-    ],"Visit the Christian underground temple.",[
-      (call_script, "script_enter_secret_christian_church", 1),
-    ]),
-    # ("bacchus",[
-    #   (eq, 0, 1),
-    # ],"Visit the gardens of pleasures.",[
-    #   (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
-    #   (try_begin),
-    #     (ge, ":renown", 250),
-    #     (display_message, "@You are welcomed and you undress."),
-    #     (modify_visitors_at_site,"scn_temple_of_bacchus"),
-    #     (reset_visitors),
-    #     (set_visitor,1,"trp_player"), #player
-
-    #     (set_visitor,6,"trp_orgie_male1"),
-    #     (set_visitor,7,"trp_orgie_male1"),
-    #     (set_visitor,8,"trp_orgie_male1"),
-    #     (set_visitor,9,"trp_orgie_male1"),
-    #     (set_visitor,10,"trp_orgie_male1"),
-    #     (set_visitor,11,"trp_orgie_male1"),
-    #     (set_visitor,12,"trp_orgie_male1"),
-    #     (set_visitor,13,"trp_orgie_male1"),
-    #     (set_visitor,14,"trp_orgie_fem2"),
-    #     (set_visitor,15,"trp_orgie_fem3"),
-    #     (set_visitor,16,"trp_orgie_fem1"),
-
-    #     #some music guys
-    #     (store_random_in_range, ":music_guy", tavern_minstrels_begin, tavern_minstrels_end),
-    #     (set_visitor,21,":music_guy"),
-    #     (store_random_in_range, ":music_guy2", tavern_minstrels_begin, tavern_minstrels_end),
-    #     (set_visitor,22,":music_guy2"),
-
-    #     (set_jump_mission,"mt_orgie"),
-    #     (jump_to_scene, "scn_temple_of_bacchus"),
-    #     (change_screen_mission),
-    #   (else_try),
-    #     (display_message, "@You are not allowed to enter! (need more renown)"),
-    #     (jump_to_menu, "mnu_town"),
-    #   (try_end),
-    # ]),
-    ###for temples: entry 1 player, entry 2 to 4 for priests use 3 for one priest
-    ### entry 5 to 23 for people clapping and applauding, entry 24 to 28 are for town_walkers
-    ("jupiter",[
-      (eq, "$current_town", "p_town_6"),
-    ],"Visit the Temple of Jupiter.",[
-      (call_script, "script_visit_temple", "scn_temple_of_jupiter", "trp_roman_priest"),
-    ]),
-    ("mars",[
-      (eq, "$current_town", "p_town_6"),
-    ],"Visit the Temple of Mars.",[
-      (call_script, "script_visit_temple", "scn_temple_of_mars", "trp_roman_priest"),
-    ]),
-    ("aphrodite",[
-      (eq, "$current_town", "p_town_6"),
-    ],"Visit the Temple of Aphrodite.",[
-      (call_script, "script_visit_temple", "scn_temple_of_aphrodite", "trp_roman_priest_female"),
-    ]),
-    ("sons_of_zeus",[
-      (eq, "$current_town", "p_town_6"),
-    ],"Visit the Temple of Castor and Pollux.",[
-      (call_script, "script_visit_temple", "scn_temple_of_castorpollux", "trp_roman_priest"),
-    ]),
-    ("saturn",[
-      (eq, "$current_town", "p_town_6"),
-    ],"Visit the Temple of Saturn.",[
-      (call_script, "script_visit_temple", "scn_temple_of_saturn", "trp_roman_priest"),
-    ]),
-    ("vesta",[
-      (eq, "$current_town", "p_town_6"),
-    ],"Visit the Temple of Vesta.",[
-      (call_script, "script_visit_temple", "scn_temple_of_vesta", "trp_roman_priest_female"),
-    ]),
-    ("mithras",[
-      (eq, "$current_town", "p_town_6"),
-      (quest_slot_ge, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
-    ],"Visit the Temple of Mithras.",[
-      (call_script, "script_visit_temple", "scn_temple_of_mithras", "trp_roman_priest"),
+    ], "Visit the temples", [
+      (jump_to_menu, "mnu_temples_submenu"),
     ]),
     ("senate",[
       (eq, "$current_town", "p_town_6"),
@@ -62589,4 +62513,95 @@ It is said, that she lives now together with the goat.",
     ]),
 ]),
 
+("temples_submenu", mnf_disable_all_keys,
+  "Which temple would you like to visit?",
+  "none",[
+    (set_background_mesh, "mesh_pic_roma"),
+  ],[
+    ("bacchus",[
+      (eq, "$current_town", "p_town_6"),
+      (troop_slot_eq, "trp_player", slot_troop_religion, worships_christus),
+    ],"Visit the Christian underground temple.",[
+      (call_script, "script_enter_secret_christian_church", 1),
+    ]),
+    # ("bacchus",[
+    #   (eq, 0, 1),
+    # ],"Visit the gardens of pleasures.",[
+    #   (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
+    #   (try_begin),
+    #     (ge, ":renown", 250),
+    #     (display_message, "@You are welcomed and you undress."),
+    #     (modify_visitors_at_site,"scn_temple_of_bacchus"),
+    #     (reset_visitors),
+    #     (set_visitor,1,"trp_player"), #player
+
+    #     (set_visitor,6,"trp_orgie_male1"),
+    #     (set_visitor,7,"trp_orgie_male1"),
+    #     (set_visitor,8,"trp_orgie_male1"),
+    #     (set_visitor,9,"trp_orgie_male1"),
+    #     (set_visitor,10,"trp_orgie_male1"),
+    #     (set_visitor,11,"trp_orgie_male1"),
+    #     (set_visitor,12,"trp_orgie_male1"),
+    #     (set_visitor,13,"trp_orgie_male1"),
+    #     (set_visitor,14,"trp_orgie_fem2"),
+    #     (set_visitor,15,"trp_orgie_fem3"),
+    #     (set_visitor,16,"trp_orgie_fem1"),
+
+    #     #some music guys
+    #     (store_random_in_range, ":music_guy", tavern_minstrels_begin, tavern_minstrels_end),
+    #     (set_visitor,21,":music_guy"),
+    #     (store_random_in_range, ":music_guy2", tavern_minstrels_begin, tavern_minstrels_end),
+    #     (set_visitor,22,":music_guy2"),
+
+    #     (set_jump_mission,"mt_orgie"),
+    #     (jump_to_scene, "scn_temple_of_bacchus"),
+    #     (change_screen_mission),
+    #   (else_try),
+    #     (display_message, "@You are not allowed to enter! (need more renown)"),
+    #     (jump_to_menu, "mnu_town"),
+    #   (try_end),
+    # ]),
+    ###for temples: entry 1 player, entry 2 to 4 for priests use 3 for one priest
+    ### entry 5 to 23 for people clapping and applauding, entry 24 to 28 are for town_walkers
+    ("jupiter",[
+      (eq, "$current_town", "p_town_6"),
+    ],"Visit the Temple of Jupiter.",[
+      (call_script, "script_visit_temple", "scn_temple_of_jupiter", "trp_roman_priest"),
+    ]),
+    ("mars",[
+      (eq, "$current_town", "p_town_6"),
+    ],"Visit the Temple of Mars.",[
+      (call_script, "script_visit_temple", "scn_temple_of_mars", "trp_roman_priest"),
+    ]),
+    ("aphrodite",[
+      (eq, "$current_town", "p_town_6"),
+    ],"Visit the Temple of Aphrodite.",[
+      (call_script, "script_visit_temple", "scn_temple_of_aphrodite", "trp_roman_priest_female"),
+    ]),
+    ("sons_of_zeus",[
+      (eq, "$current_town", "p_town_6"),
+    ],"Visit the Temple of Castor and Pollux.",[
+      (call_script, "script_visit_temple", "scn_temple_of_castorpollux", "trp_roman_priest"),
+    ]),
+    ("saturn",[
+      (eq, "$current_town", "p_town_6"),
+    ],"Visit the Temple of Saturn.",[
+      (call_script, "script_visit_temple", "scn_temple_of_saturn", "trp_roman_priest"),
+    ]),
+    ("vesta",[
+      (eq, "$current_town", "p_town_6"),
+    ],"Visit the Temple of Vesta.",[
+      (call_script, "script_visit_temple", "scn_temple_of_vesta", "trp_roman_priest_female"),
+    ]),
+    ("mithras",[
+      (eq, "$current_town", "p_town_6"),
+      (quest_slot_ge, "qst_wlodowiecus_adventure_1", slot_quest_current_state, 6),
+    ],"Visit the Temple of Mithras.",[
+      (call_script, "script_visit_temple", "scn_temple_of_mithras", "trp_roman_priest"),
+    ]),
+    #go back
+    ("leave",[], "Go Back.",[
+      (jump_to_menu, "mnu_town_action"),
+    ]),
+]),
 ]#end of file
