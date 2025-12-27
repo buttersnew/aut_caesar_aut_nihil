@@ -2522,37 +2522,37 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_germanic_medium1 Germanic_Fur_Armor Germanic_Fur_Armor 1  grsmalshirt7 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
+ itm_germanic_medium1 Germanic_Fur_Armour Germanic_Fur_Armour 1  grsmalshirt7 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
  1
  10
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_germanic_medium2 Germanic_Fur_Armor Germanic_Fur_Armor 1  grsmalshirt8 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
+ itm_germanic_medium2 Germanic_Fur_Armour Germanic_Fur_Armour 1  grsmalshirt8 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
  1
  10
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_germanic_medium3 Germanic_Fur_Armor Germanic_Fur_Armor 1  grsmalshirt1 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
+ itm_germanic_medium3 Germanic_Fur_Armour Germanic_Fur_Armour 1  grsmalshirt1 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
  1
  10
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_germanic_medium4 Germanic_Fur_Armor Germanic_Fur_Armor 1  grsmalshirt2 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
+ itm_germanic_medium4 Germanic_Fur_Armour Germanic_Fur_Armour 1  grsmalshirt2 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
  1
  10
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_germanic_medium5 Germanic_Fur_Armor Germanic_Fur_Armor 1  grsmalshirt3 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
+ itm_germanic_medium5 Germanic_Fur_Armour Germanic_Fur_Armour 1  grsmalshirt3 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
  1
  10
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_germanic_medium6 Germanic_Fur_Armor Germanic_Fur_Armor 1  grsmalshirt4 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
+ itm_germanic_medium6 Germanic_Fur_Armour Germanic_Fur_Armour 1  grsmalshirt4 0  553713677 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
  1
  10
 1
@@ -2648,13 +2648,13 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_alan_heavy_1 Alan_Heavy_Lamellar_Armor Alan_Heavy_Lamellar_Armor 1  alan_lamellar_armour_full 0  16842765 0 5227 123731968 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
+ itm_alan_heavy_1 Alan_Heavy_Lamellar_Armour Alan_Heavy_Lamellar_Armour 1  alan_lamellar_armour_full 0  16842765 0 5227 123731968 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
  1
  9
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_alan_heavy_2 Alan_Heavy_Lamellar_Armor Alan_Heavy_Lamellar_Armor 1  alan_lamellar_armour_full_2 0  16842765 0 5227 123731968 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
+ itm_alan_heavy_2 Alan_Heavy_Lamellar_Armour Alan_Heavy_Lamellar_Armour 1  alan_lamellar_armour_full_2 0  16842765 0 5227 123731968 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
  1
  9
 1
@@ -2720,85 +2720,85 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_mail_1 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_sarmatian_mail_1 Sarmatian_Mail_Armour Sarmatian_Mail_Armour 1  sarmatian_mail_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_mail_2 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_sarmatian_mail_2 Sarmatian_Mail_Armour Sarmatian_Mail_Armour 1  sarmatian_mail_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_mail_3 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_3 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_sarmatian_mail_3 Sarmatian_Mail_Armour Sarmatian_Mail_Armour 1  sarmatian_mail_3 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_mail_4 Sarmatian_Mail_Armor Sarmatian_Mail_Armor 1  sarmatian_mail_4 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_sarmatian_mail_4 Sarmatian_Mail_Armour Sarmatian_Mail_Armour 1  sarmatian_mail_4 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_1 Sarmatian_Mail_with_Scale_Armor Sarmatian_Mail_with_Scale_Armor 1  sarmatian_mail_and_scale_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_1 Sarmatian_Mail_with_Scale_Armour Sarmatian_Mail_with_Scale_Armour 1  sarmatian_mail_and_scale_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_2 Sarmatian_Mail_with_Scale_Armor Sarmatian_Mail_with_Scale_Armor 1  sarmatian_mail_and_scale_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_2 Sarmatian_Mail_with_Scale_Armour Sarmatian_Mail_with_Scale_Armour 1  sarmatian_mail_and_scale_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_3 Sarmatian_Mail_with_Scale_Armor Sarmatian_Mail_with_Scale_Armor 1  sarmatian_mail_and_scale_3 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_3 Sarmatian_Mail_with_Scale_Armour Sarmatian_Mail_with_Scale_Armour 1  sarmatian_mail_and_scale_3 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_4 Sarmatian_Mail_with_Scale_Armor Sarmatian_Mail_with_Scale_Armor 1  sarmatian_mail_and_scale_4 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_4 Sarmatian_Mail_with_Scale_Armour Sarmatian_Mail_with_Scale_Armour 1  sarmatian_mail_and_scale_4 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_9 Sarmatian_Mail_with_Scale_Armor Sarmatian_Mail_with_Scale_Armor 1  sarmatian_mail_and_scale_5 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_9 Sarmatian_Mail_with_Scale_Armour Sarmatian_Mail_with_Scale_Armour 1  sarmatian_mail_and_scale_5 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_10 Sarmatian_Mail_with_Scale_Armor Sarmatian_Mail_with_Scale_Armor 1  sarmatian_mail_and_scale_6 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_10 Sarmatian_Mail_with_Scale_Armour Sarmatian_Mail_with_Scale_Armour 1  sarmatian_mail_and_scale_6 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_5 Sarmatian_Scale_Armor Sarmatian_Scale_Armor 1  sarmatian_scale_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_5 Sarmatian_Scale_Armour Sarmatian_Scale_Armour 1  sarmatian_scale_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_6 Sarmatian_Scale_Armor Sarmatian_Scale_Armor 1  sarmatian_scale_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_6 Sarmatian_Scale_Armour Sarmatian_Scale_Armour 1  sarmatian_scale_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_7 Sarmatian_Scale_Armor Sarmatian_Scale_Armor 1  sarmatian_scale_3 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_7 Sarmatian_Scale_Armour Sarmatian_Scale_Armour 1  sarmatian_scale_3 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_sarmatian_scale_8 Sarmatian_Scale_Armor Sarmatian_Scale_Armor 1  sarmatian_scale_4 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_sarmatian_scale_8 Sarmatian_Scale_Armour Sarmatian_Scale_Armour 1  sarmatian_scale_4 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
@@ -2858,13 +2858,13 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_scythian_heavy1 Scythian_Scale_Armor Scythian_Scale_Armor 1  ad_linothorax_heavy_scythian_04 0  16842765 0 5227 704643236 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
+ itm_scythian_heavy1 Scythian_Scale_Armour Scythian_Scale_Armour 1  ad_linothorax_heavy_scythian_04 0  16842765 0 5227 704643236 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
  1
  15
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_scythian_heavy2 Scythian_Scale_Armor Scythian_Scale_Armor 1  ad_linothorax_heavy_scythian_05 0  16842765 0 5227 704643236 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
+ itm_scythian_heavy2 Scythian_Scale_Armour Scythian_Scale_Armour 1  ad_linothorax_heavy_scythian_05 0  16842765 0 5227 704643236 44.750000 100 0 48 18 8 0 0 0 0 0 0 0
  1
  15
 1
@@ -2894,67 +2894,67 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_bosphoran_scale_1 Bosphoran_Mail_with_Scale_Armor Bosphoran_Mail_with_Scale_Armor 1  bosphoran_mail_and_scale_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_bosphoran_scale_1 Bosphoran_Mail_with_Scale_Armour Bosphoran_Mail_with_Scale_Armour 1  bosphoran_mail_and_scale_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_bosphoran_scale_2 Bosphoran_Mail_with_Scale_Armor Bosphoran_Mail_with_Scale_Armor 1  bosphoran_mail_and_scale_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_bosphoran_scale_2 Bosphoran_Mail_with_Scale_Armour Bosphoran_Mail_with_Scale_Armour 1  bosphoran_mail_and_scale_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_bosphoran_scale_3 Bosphoran_Scale_Armor Bosphoran_Scale_Armor 1  bosphoran_scale_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_bosphoran_scale_3 Bosphoran_Scale_Armour Bosphoran_Scale_Armour 1  bosphoran_scale_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_bosphoran_scale_4 Bosphoran_Scale_Armor Bosphoran_Scale_Armor 1  bosphoran_scale_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_bosphoran_scale_4 Bosphoran_Scale_Armour Bosphoran_Scale_Armour 1  bosphoran_scale_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_bosporan_mail_1 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_bosporan_mail_1 Bosporan_Mail_Armour Bosporan_Mail_Armour 1  bosphoran_mail_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  15
 1
 -50.000000  19 1 1 936748722493063924 2071 1 1224979098644774912 2072 1 1224979098644774913 4 0 31 2 1224979098644774913 360287970189639680 1964 1 216172782113789265 1964 1 216172782113789262 5 0 1712 1 1224979098644774912 1 2 936748722493064139 1224979098644774913 2147483679 2 1224979098644774913 360287970189639680 2136 3 1224979098644774914 0 100 2147483678 2 1224979098644774914 65 2319 1 2 2136 3 1224979098644774915 216172782113789263 216172782113789270 2320 2 2 1224979098644774915 1964 1 2 1964 1 216172782113789262 3 0 
 
- itm_bosporan_mail_2 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_bosporan_mail_2 Bosporan_Mail_Armour Bosporan_Mail_Armour 1  bosphoran_mail_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  15
 1
 -50.000000  19 1 1 936748722493063924 2071 1 1224979098644774912 2072 1 1224979098644774913 4 0 31 2 1224979098644774913 360287970189639680 1964 1 216172782113789263 1964 1 216172782113789262 5 0 1712 1 1224979098644774912 1 2 936748722493064139 1224979098644774913 2147483679 2 1224979098644774913 360287970189639680 2136 3 1224979098644774914 0 100 2147483678 2 1224979098644774914 65 2319 1 2 2136 3 1224979098644774915 216172782113789263 216172782113789270 2320 2 2 1224979098644774915 1964 1 2 1964 1 216172782113789262 3 0 
 
- itm_bosporan_mail_3 Bosporan_Mail_Armor Bosporan_Mail_Armor 1  bosphoran_mail_3 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_bosporan_mail_3 Bosporan_Mail_Armour Bosporan_Mail_Armour 1  bosphoran_mail_3 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  1
  15
 1
 -50.000000  19 1 1 936748722493063924 2071 1 1224979098644774912 2072 1 1224979098644774913 4 0 31 2 1224979098644774913 360287970189639680 1964 1 216172782113789265 1964 1 216172782113789262 5 0 1712 1 1224979098644774912 1 2 936748722493064139 1224979098644774913 2147483679 2 1224979098644774913 360287970189639680 2136 3 1224979098644774914 0 100 2147483678 2 1224979098644774914 65 2319 1 2 2136 3 1224979098644774915 216172782113789267 216172782113789270 2320 2 2 1224979098644774915 1964 1 2 1964 1 216172782113789262 3 0 
 
- itm_caucasian_scale_heavy_1 Caucasian_Heavy_Scale_Armor Caucasian_Heavy_Scale_Armor 1  caucasian_scale_heavy_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_caucasian_scale_heavy_1 Caucasian_Heavy_Scale_Armour Caucasian_Heavy_Scale_Armour 1  caucasian_scale_heavy_1 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_caucasian_scale_heavy_2 Caucasian_Heavy_Scale_Armor Caucasian_Heavy_Scale_Armor 1  caucasian_scale_heavy_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_caucasian_scale_heavy_2 Caucasian_Heavy_Scale_Armour Caucasian_Heavy_Scale_Armour 1  caucasian_scale_heavy_2 0  16842765 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_caucasian_scale_1 Caucasian_Scale_Armor Caucasian_Scale_Armor 1  caucasian_scale_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_caucasian_scale_1 Caucasian_Scale_Armour Caucasian_Scale_Armour 1  caucasian_scale_1 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_caucasian_scale_2 Caucasian_Scale_Armor Caucasian_Scale_Armor 1  caucasian_scale_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_caucasian_scale_2 Caucasian_Scale_Armour Caucasian_Scale_Armour 1  caucasian_scale_2 0  16842765 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  3
  9 15 11
 1
@@ -2984,25 +2984,25 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_armenian_mail_1 Armenian_Mail_Armor Armenian_Mail_Armor 1  armenian_lamellar_1 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_armenian_mail_1 Armenian_Mail_Armour Armenian_Mail_Armour 1  armenian_lamellar_1 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_armenian_mail_2 Armenian_Mail_Armor Armenian_Mail_Armor 1  armenian_lamellar_2 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_armenian_mail_2 Armenian_Mail_Armour Armenian_Mail_Armour 1  armenian_lamellar_2 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_armenian_scale_1 Armenian_Scale_Armor Armenian_Scale_Armor 1  armenian_scale_1 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_armenian_scale_1 Armenian_Scale_Armour Armenian_Scale_Armour 1  armenian_scale_1 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_armenian_scale_2 Armenian_Scale_Armor Armenian_Scale_Armor 1  armenian_scale_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_armenian_scale_2 Armenian_Scale_Armour Armenian_Scale_Armour 1  armenian_scale_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  2
  12 11
 1
@@ -3080,92 +3080,92 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_parthian_mail_1 Parthian_Mail_Armor Parthian_Mail_Armor 1  parthian_lamellar_1 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_parthian_mail_1 Parthian_Mail_Armour Parthian_Mail_Armour 1  parthian_lamellar_1 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_parthian_mail_2 Parthian_Mail_Armor Parthian_Mail_Armor 1  parthian_lamellar_2 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_parthian_mail_2 Parthian_Mail_Armour Parthian_Mail_Armour 1  parthian_lamellar_2 0  16842765 0 3499 123731968 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_parthian_scale_1 Parthian_Scale_Armor Parthian_Scale_Armor 1  parthian_scale_1 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_parthian_scale_1 Parthian_Scale_Armour Parthian_Scale_Armour 1  parthian_scale_1 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_parthian_scale_2 Parthian_Scale_Armor Parthian_Scale_Armor 1  parthian_scale_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_parthian_scale_2 Parthian_Scale_Armour Parthian_Scale_Armour 1  parthian_scale_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_parthian_scale_heavy_1 Parthian_Heavy_Scale_Armor Parthian_Heavy_Scale_Armor 1  parthian_heavy_scale_1 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_parthian_scale_heavy_1 Parthian_Heavy_Scale_Armour Parthian_Heavy_Scale_Armour 1  parthian_heavy_scale_1 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_parthian_scale_heavy_2 Parthian_Heavy_Scale_Armor Parthian_Heavy_Scale_Armor 1  parthian_heavy_scale_2 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_parthian_scale_heavy_2 Parthian_Heavy_Scale_Armour Parthian_Heavy_Scale_Armour 1  parthian_heavy_scale_2 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  2
  12 11
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_cataphract_eastern Cataphract_Scale_Armor Cataphract_Scale_Armor 1  armor_cataphract_1 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_cataphract_eastern Cataphract_Scale_Armour Cataphract_Scale_Armour 1  armor_cataphract_1 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  12 11
 0
 
- itm_sarranid_elite_armor Cataphract_Scale_Armor Cataphract_Scale_Armor 1  armor_cataphract_2 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_sarranid_elite_armor Cataphract_Scale_Armour Cataphract_Scale_Armour 1  armor_cataphract_2 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  11 12
 0
 
- itm_sarranid_elite_armor_2 Cataphract_Lamellar_Armor Cataphract_Lamellar_Armor 1  armor_cataphract_3 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_sarranid_elite_armor_2 Cataphract_Lamellar_Armour Cataphract_Lamellar_Armour 1  armor_cataphract_3 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  11 12
 0
 
- itm_sarranid_elite_armor_3 Cataphract_Lamellar_Armor Cataphract_Lamellar_Armor 1  armor_cataphract_4 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_sarranid_elite_armor_3 Cataphract_Lamellar_Armour Cataphract_Lamellar_Armour 1  armor_cataphract_4 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  11 12
 0
 
- itm_mamluke_mail Cataphract_Mail_Armor Cataphract_Mail_Armor 1  sarranid_elite_cavalary 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
+ itm_mamluke_mail Cataphract_Mail_Armour Cataphract_Mail_Armour 1  sarranid_elite_cavalary 0  16842765 0 7562 704643236 56.250000 70 0 56 15 18 0 0 0 0 0 0 0
  2
  11 12
 0
 
- itm_illyrian_medium1 Illyrian_Armor Illyrian_Armor 1  ad_celto_illyrian_armours_01 0  16842765 0 280 123731968 8.250000 110 0 20 9 6 0 0 0 0 0 0 0
+ itm_illyrian_medium1 Illyrian_Armour Illyrian_Armour 1  ad_celto_illyrian_armours_01 0  16842765 0 280 123731968 8.250000 110 0 20 9 6 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_illyrian_medium2 Illyrian_Armor Illyrian_Armor 1  ad_celto_illyrian_armours_02 0  16842765 0 280 123731968 8.250000 110 0 20 9 6 0 0 0 0 0 0 0
+ itm_illyrian_medium2 Illyrian_Armour Illyrian_Armour 1  ad_celto_illyrian_armours_02 0  16842765 0 280 123731968 8.250000 110 0 20 9 6 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_illyrian_medium3 Illyrian_Armor Illyrian_Armor 1  ad_celto_illyrian_armours_03 0  16842765 0 280 123731968 8.250000 110 0 20 9 6 0 0 0 0 0 0 0
+ itm_illyrian_medium3 Illyrian_Armour Illyrian_Armour 1  ad_celto_illyrian_armours_03 0  16842765 0 280 123731968 8.250000 110 0 20 9 6 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_illyrian_medium4 Illyrian_Armor Illyrian_Armor 1  ad_illyrian_tunic_round_pectoral_01 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
+ itm_illyrian_medium4 Illyrian_Armour Illyrian_Armour 1  ad_illyrian_tunic_round_pectoral_01 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063927 
 
- itm_illyrian_medium5 Illyrian_Armor Illyrian_Armor 1  ad_illyrian_tunic_round_pectoral_02 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
+ itm_illyrian_medium5 Illyrian_Armour Illyrian_Armour 1  ad_illyrian_tunic_round_pectoral_02 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
  2
  13 23
 1
@@ -3207,31 +3207,31 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063927 
 
- itm_iberian_heavy1 Iberian_Armor Iberian_Armor 1  ad_iberian_scale_vest_01 0  16842765 0 176 704643236 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
+ itm_iberian_heavy1 Iberian_Armour Iberian_Armour 1  ad_iberian_scale_vest_01 0  16842765 0 176 704643236 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063927 
 
- itm_iberian_heavy2 Iberian_Armor Iberian_Armor 1  ad_iberian_scale_vest_02 0  16842765 0 176 704643236 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
+ itm_iberian_heavy2 Iberian_Armour Iberian_Armour 1  ad_iberian_scale_vest_02 0  16842765 0 176 704643236 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063927 
 
- itm_iberian_medium1 Iberian_Armor Iberian_Armor 1  ad_iberian_tunic_round_pectoral_01 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
+ itm_iberian_medium1 Iberian_Armour Iberian_Armour 1  ad_iberian_tunic_round_pectoral_01 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063927 
 
- itm_iberian_medium2 Iberian_Armor Iberian_Armor 1  ad_iberian_tunic_round_pectoral_02 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
+ itm_iberian_medium2 Iberian_Armour Iberian_Armour 1  ad_iberian_tunic_round_pectoral_02 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063927 
 
- itm_iberian_medium3 Iberian_Armor Iberian_Armor 1  ad_iberian_tunic_round_pectoral_03 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
+ itm_iberian_medium3 Iberian_Armour Iberian_Armour 1  ad_iberian_tunic_round_pectoral_03 0  16842765 0 176 123731968 5.250000 110 0 20 3 6 0 0 0 0 0 0 0
  2
  13 23
 1
@@ -3267,85 +3267,85 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_arabian_armor_b Arabian_Lamella_Armor Arabian_Lamella_Armor 1  arabian_armor_b 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_arabian_armor_b Arabian_Lamella_Armour Arabian_Lamella_Armour 1  arabian_armor_b 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493063925 
 
- itm_sarranid_mail_shirt Arabian_Lamella_Armor Arabian_Lamella_Armor 1  sarranian_mail_shirt 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_sarranid_mail_shirt Arabian_Lamella_Armour Arabian_Lamella_Armour 1  sarranian_mail_shirt 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493063925 
 
- itm_syrian_scale_1 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_1 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_syrian_scale_1 Syrian_Scale_Armour Syrian_Scale_Armour 1  syrian_scale_1 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_syrian_scale_2 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_2 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_syrian_scale_2 Syrian_Scale_Armour Syrian_Scale_Armour 1  syrian_scale_2 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_syrian_scale_3 Syrian_Scale_Armor Syrian_Scale_Armor 1  syrian_scale_3 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_syrian_scale_3 Syrian_Scale_Armour Syrian_Scale_Armour 1  syrian_scale_3 0  16777229 0 3763 704643236 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_heavy_syrian_scale_1 Heavy_Syrian_Scale_Armor Heavy_Syrian_Scale_Armor 1  syrian_scale_4 0  16777229 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_heavy_syrian_scale_1 Heavy_Syrian_Scale_Armour Heavy_Syrian_Scale_Armour 1  syrian_scale_4 0  16777229 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_heavy_syrian_scale_2 Heavy_Syrian_Scale_Armor Heavy_Syrian_Scale_Armor 1  syrian_scale_5 0  16777229 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_heavy_syrian_scale_2 Heavy_Syrian_Scale_Armour Heavy_Syrian_Scale_Armour 1  syrian_scale_5 0  16777229 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_heavy_syrian_scale_3 Heavy_Syrian_Scale_Armor Heavy_Syrian_Scale_Armor 1  syrian_scale_6 0  16777229 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_heavy_syrian_scale_3 Heavy_Syrian_Scale_Armour Heavy_Syrian_Scale_Armour 1  syrian_scale_6 0  16777229 0 5400 704643236 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  6
  13 23 21 22 12 14
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_palmyran_lamellar_armor Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor Palmyrene_Lamellar_Armour Palmyrene_Lamellar_Armour 1  palmyran_lamellar_armor 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_palmyran_lamellar_armor_2 Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor_2 Palmyrene_Lamellar_Armour Palmyrene_Lamellar_Armour 1  palmyran_lamellar_armor_2 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_palmyran_lamellar_armor_3 Palmyrene_Lamellar_Armor Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_3 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor_3 Palmyrene_Lamellar_Armour Palmyrene_Lamellar_Armour 1  palmyran_lamellar_armor_3 0  16842765 0 3763 123731968 31.250000 110 0 46 10 10 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_palmyran_lamellar_armor_heavy_1 Heavy_Palmyrene_Lamellar_Armor Heavy_Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_heavy 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor_heavy_1 Heavy_Palmyrene_Lamellar_Armour Heavy_Palmyrene_Lamellar_Armour 1  palmyran_lamellar_armor_heavy 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_palmyran_lamellar_armor_heavy_2 Heavy_Palmyrene_Lamellar_Armor Heavy_Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_heavy_2 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor_heavy_2 Heavy_Palmyrene_Lamellar_Armour Heavy_Palmyrene_Lamellar_Armour 1  palmyran_lamellar_armor_heavy_2 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_palmyran_lamellar_armor_heavy_3 Heavy_Palmyrene_Lamellar_Armor Heavy_Palmyrene_Lamellar_Armor 1  palmyran_lamellar_armor_heavy_3 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
+ itm_palmyran_lamellar_armor_heavy_3 Heavy_Palmyrene_Lamellar_Armour Heavy_Palmyrene_Lamellar_Armour 1  palmyran_lamellar_armor_heavy_3 0  16842765 0 5400 123731968 36.000000 90 0 50 10 12 0 0 0 0 0 0 0
  5
  12 21 22 13 23
 1
@@ -3914,7 +3914,7 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_skirmisher_armor Eastern_Leather_Armor Eastern_Leather_Armor 1  skirmisher_armor 0  16842765 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
+ itm_skirmisher_armor Eastern_Leather_Armour Eastern_Leather_Armour 1  skirmisher_armor 0  16842765 0 774 123731968 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
@@ -3932,13 +3932,13 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063925 
 
- itm_sarranid_leather_armor Eastern_Leather_Armor Eastern_Leather_Armor 1  sarranid_leather_armor 0  16842765 0 774 704643236 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
+ itm_sarranid_leather_armor Eastern_Leather_Armour Eastern_Leather_Armour 1  sarranid_leather_armor 0  16842765 0 774 704643236 19.250000 100 0 32 12 7 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
 -50.000000  1 1 1 936748722493063925 
 
- itm_sarranid_cavalry_robe Eastern_Mail_Armor Eastern_Mail_Armor 1  arabian_armor_a 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
+ itm_sarranid_cavalry_robe Eastern_Mail_Armour Eastern_Mail_Armour 1  arabian_armor_a 0  16842765 0 3499 704643236 29.000000 100 0 44 10 6 0 0 0 0 0 0 0
  5
  13 23 11 12 14
 1
@@ -3968,7 +3968,7 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063921 
 
- itm_rawhide_coat Fur_Armor Fur_Armor 1  coat_of_plates_b 0  553713677 0 456 123731968 16.000000 30 0 27 10 6 0 0 0 0 0 0 0
+ itm_rawhide_coat Fur_Armour Fur_Armour 1  coat_of_plates_b 0  553713677 0 456 123731968 16.000000 30 0 27 10 6 0 0 0 0 0 0 0
  0
 1
 -50.000000  1 1 1 936748722493063924 
@@ -3978,55 +3978,55 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_mail_shirt Heavy_Armor Heavy_Armor 1  mail_shirt_a 0  16842765 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
+ itm_mail_shirt Heavy_Armour Heavy_Armour 1  mail_shirt_a 0  16842765 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
  6
  13 23 11 12 14 21
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_mail_hauberk Heavy_Armor Heavy_Armor 1  hauberk_a_new 0  16842765 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
+ itm_mail_hauberk Heavy_Armour Heavy_Armour 1  hauberk_a_new 0  16842765 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
  6
  13 23 11 12 14 21
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_haubergeon Heavy_Armor Heavy_Armor 1  haubergeon_c 0  16842765 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
+ itm_haubergeon Heavy_Armour Heavy_Armour 1  haubergeon_c 0  16842765 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
  6
  13 23 11 12 14 21
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_lamellar_armor Scale_Armor Scale_Armor 1  lamellar_armor_b 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_lamellar_armor Scale_Armour Scale_Armour 1  lamellar_armor_b 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  6
  13 23 11 12 14 21
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_khergit_elite_armor Scale_Armor Scale_Armor 1  lamellar_armor_d 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_khergit_elite_armor Scale_Armour Scale_Armour 1  lamellar_armor_d 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  6
  13 23 11 12 14 21
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_scale_armor Scale_Armor Scale_Armor 1  lamellar_armor_e 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
+ itm_scale_armor Scale_Armour Scale_Armour 1  lamellar_armor_e 0  16842765 0 3763 704643236 31.250000 80 0 45 11 7 0 0 0 0 0 0 0
  7
  13 23 11 12 14 15 21
 1
 -50.000000  1 1 1 936748722493063924 
 
- itm_banded_armor Leather_Armor Leather_Armor 1  banded_armor_a 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
+ itm_banded_armor Leather_Armour Leather_Armour 1  banded_armor_a 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
  6
  13 23 11 12 14 21
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_banded_armor_2 Leather_Armor Leather_Armor 1  banded_armor_b 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
+ itm_banded_armor_2 Leather_Armour Leather_Armour 1  banded_armor_b 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
  6
  13 23 11 12 14 21
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_banded_armor_3 Leather_Armor Leather_Armor 1  banded_armor_c 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
+ itm_banded_armor_3 Leather_Armour Leather_Armour 1  banded_armor_c 0  16842765 0 548 123731968 13.500000 85 0 32 5 6 0 0 0 0 0 0 0
  6
  13 23 11 12 14 21
 1
@@ -6295,7 +6295,7 @@ itemsfile version 3
  11
 0
 
- itm_dagger Puggio Puggio 2  dagger_b 0  dagger_b_scabbard 3458764513820540928  17592198709250 9223372072019820545 276 155668 0.500000 100 0 0 0 3 0 105 0 37 0 276 0
+ itm_dagger Pugio Pugio 2  dagger_b 0  dagger_b_scabbard 3458764513820540928  17592198709250 9223372072019820545 276 155668 0.500000 100 0 0 0 3 0 105 0 37 0 276 0
  0
 0
 
@@ -6637,27 +6637,27 @@ itemsfile version 3
  15
 0
 
- itm_bosporan_oval_color_1 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_blue 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_1 Bosporan_Thuros Bosporan_Thuros 1  juice_oval_shield_blue 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_2 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_red 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_2 Bosporan_Thuros Bosporan_Thuros 1  juice_oval_shield_red 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_3 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_yellow 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_3 Bosporan_Thuros Bosporan_Thuros 1  juice_oval_shield_yellow 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_4 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_green 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_4 Bosporan_Thuros Bosporan_Thuros 1  juice_oval_shield_green 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
 
- itm_bosporan_oval_color_5 Heavy_Bosporan_Thuros Heavy_Bosporan_Thuros 1  juice_oval_shield_leather 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
+ itm_bosporan_oval_color_5 Bosporan_Thuros Bosporan_Thuros 1  juice_oval_shield_leather 0  327687 4831838208 158 167772194 1.000000 116 0 26 0 0 375 90 50 30 0 0 0
  1
  15
 0
@@ -8249,7 +8249,7 @@ itemsfile version 3
  0
 0
 
- itm_jarid Heavy_Throwing_Spears Heavy_Throwing_Spears 1  bryntvari2 0  17592265801738 262144 500 4398046781448 3.000000 70 0 0 90 3 0 80 23 100 2 287 0
+ itm_jarid Throwing_Spears Throwing_Spears 1  bryntvari2 0  17592265801738 262144 500 4398046781448 3.000000 70 0 0 90 3 0 80 23 100 2 287 0
  0
 0
 
@@ -8275,7 +8275,7 @@ itemsfile version 3
  6
 0
 
- itm_jarid_celt Heavy_Throwing_Spears Heavy_Throwing_Spears 1  celtic_throwing_spear 0  17592265801738 262144 500 4398046781448 3.000000 70 0 0 95 3 0 80 23 123 2 287 0
+ itm_jarid_celt Throwing_Spears Throwing_Spears 1  celtic_throwing_spear 0  17592265801738 262144 500 4398046781448 3.000000 70 0 0 95 3 0 80 23 123 2 287 0
  2
  7 8
 0
@@ -8290,7 +8290,7 @@ itemsfile version 3
  13 23
 0
 
- itm_pilum_2 Heavy_Pilum Heavy_Pilum 1  roman_pilum_100_h 0  17592282578954 262144 500 4398046781448 2.000000 70 0 0 90 4 0 80 25 100 1 291 0
+ itm_pilum_2 Pilum Pilum 1  roman_pilum_100_h 0  17592282578954 262144 500 4398046781448 2.000000 70 0 0 90 4 0 80 25 100 1 291 0
  2
  13 23
 0
@@ -8654,17 +8654,17 @@ itemsfile version 3
  0
 0
 
- itm_ancient_plate_armor Ancient_Plate_Armor Ancient_Plate_Armor 1  corselet1 0  553652237 0 100000 704643236 42.000000 100 0 55 12 19 0 0 0 0 0 0 0
+ itm_ancient_plate_armor Ancient_Plate_Armour Ancient_Plate_Armour 1  corselet1 0  553652237 0 100000 704643236 42.000000 100 0 55 12 19 0 0 0 0 0 0 0
  0
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_ancient_plate_armor2 Ancient_Plate_Armor Ancient_Plate_Armor 1  corselet2 0  553652237 0 100000 704643236 42.000000 100 0 55 12 19 0 0 0 0 0 0 0
+ itm_ancient_plate_armor2 Ancient_Plate_Armour Ancient_Plate_Armour 1  corselet2 0  553652237 0 100000 704643236 42.000000 100 0 55 12 19 0 0 0 0 0 0 0
  0
 1
 -50.000000  1 1 1 936748722493063928 
 
- itm_ancient_leather_armor Ancient_Leather_Armor Ancient_Leather_Armor 1  lcuirass1 0  553652237 0 70000 123731968 25.000000 100 0 46 6 12 0 0 0 0 0 0 0
+ itm_ancient_leather_armor Ancient_Leather_Armour Ancient_Leather_Armour 1  lcuirass1 0  553652237 0 70000 123731968 25.000000 100 0 46 6 12 0 0 0 0 0 0 0
  0
 1
 -50.000000  1 1 1 936748722493063928 
@@ -9252,7 +9252,7 @@ itemsfile version 3
  11
 0
 
- itm_noswing_dagger Puggio Puggio 2  dagger_b 0  dagger_b_scabbard 3458764513820540928  17592198643714 9223372072019820545 276 155668 0.500000 100 0 0 0 3 0 105 0 37 0 276 0
+ itm_noswing_dagger Pugio Pugio 2  dagger_b 0  dagger_b_scabbard 3458764513820540928  17592198643714 9223372072019820545 276 155668 0.500000 100 0 0 0 3 0 105 0 37 0 276 0
  0
 0
 

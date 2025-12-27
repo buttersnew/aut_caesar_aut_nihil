@@ -1,4 +1,4 @@
-5886
+5889
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -5885,3 +5885,6 @@ qstr_{s1}_entered_remove_ {s1}_entered_remove_office_script
 qstr_Fac:_{s1} Fac:_{s1}
 qstr_Remove_military_offi Remove_military_office
 qstr_You_have_entered_the You_have_entered_the_town.
+qstr_You_have_lost_your_g You_have_lost_your_governorship.
+qstr__Built_by_{s33}. _Built_by_{s33}.
+qstr_Built_by_{s33}._WRON Built_by_{s33}._WRONG_CULTURE._NO_BUILDING_EFFECTS!^^Destroy_the_building_and_build_an_equivalent_building_of_your_culture!

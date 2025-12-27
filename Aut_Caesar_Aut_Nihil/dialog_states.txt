@@ -2338,6 +2338,7 @@ nurse_talk_angry33
 nurse_talk_angry33_end
 nurse_deal2
 traveller_ship_talk
+slave_trade_ask
 looters_1
 looters_2
 village_farmer_talk
