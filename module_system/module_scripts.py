@@ -84225,6 +84225,9 @@ scripts = scripts_hardcoded + [
     # switch player province if any
     (try_begin),
         (ge, ":players_province", 1),
+
+        (display_message, "@You have lost your governorship.", message_alert),
+
         (try_for_range, ":center", walled_centers_begin, walled_centers_end),
             (store_faction_of_party, ":fac", ":center"),
             (eq, ":fac", "fac_kingdom_7"),
@@ -84235,6 +84238,12 @@ scripts = scripts_hardcoded + [
         (assign, ":score", -200),
         (assign, ":candiate", -1),
         (try_for_range, ":active_npc", active_npcs_begin, active_npcs_end),
+            # (call_script, "script_cf_is_no_goy", ":active_npc"),
+            (neq, ":active_npc", "trp_statthalter_9"),
+            (neq, ":active_npc", "trp_senator_2"),
+            (neq, ":active_npc", "trp_senator_1"),
+            (neq, ":active_npc", "trp_legatus_11"),
+
             (store_faction_of_troop, ":npc_faction", ":active_npc"),
             (eq, ":npc_faction", "fac_kingdom_7"),
             (troop_slot_eq, ":active_npc", slot_troop_occupation, slto_kingdom_hero),
