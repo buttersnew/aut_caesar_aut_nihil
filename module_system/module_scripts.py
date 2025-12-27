@@ -48730,9 +48730,12 @@ scripts = scripts_hardcoded + [
     (try_begin),
         (ge, "$g_is_emperor", 1),
         (eq, "$g_has_senat_sup", 0),
-        (assign, ":max", 40),
+        (assign, ":max", 41),
     (else_try),
-        (assign, ":max", 100),
+        (neg|faction_slot_eq, "$players_kingdom", slot_faction_leader, "trp_player"),# player is not faction leader
+        (assign, ":max", 31),
+    (else_try),
+        (assign, ":max", 101),
     (try_end),
 
     (val_clamp, "$player_right_to_rule", 0, ":max"),
