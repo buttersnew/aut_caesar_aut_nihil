@@ -50216,7 +50216,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_2", -1),#to fix bug in dialog
     (assign, "$g_encountered_party_faction", "fac_kingdom_7"),#to fix bug in dialog
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
-    (assign, "$talk_context", 0),#to fix bug in dialog
+    # (assign, "$talk_context", 0),#to fix bug in dialog
   ],[
     ("continue",[],"Talk with her.",[
       (quest_set_slot, "qst_freelancing", slot_quest_freelancer_state, 16),
@@ -50396,7 +50396,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (assign, "$g_encountered_party_2", -1),#to fix bug in dialog
     (assign, "$g_encountered_party_faction", "fac_kingdom_7"),#to fix bug in dialog
     (assign, "$g_encountered_party_relation", 10),#to fix bug in dialog
-    (assign, "$talk_context", 0),#to fix bug in dialog
+    # (assign, "$talk_context", 0),#to fix bug in dialog
     (set_background_mesh, "mesh_pic_camp"),
   ],[
     ("continue",[],"Continue.",[
@@ -51682,7 +51682,8 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("continue",[],"Continue.",[
       (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
       (assign, "$g_encountered_party_template", -1),#to fix bug in dialog
-      (assign, "$talk_context", 0),#to fix bug in dialog
+      # (assign, "$talk_context", 0),#to fix bug in dialog
+      (assign, "$talk_context", tc_last_promotion),
       (set_show_messages, 0),
       (try_for_range, ":slot", ek_item_0, ek_food),##to avoid duplication of items
           (this_or_next|eq, ":slot", ek_item_0),
@@ -51723,7 +51724,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (try_end),
       (add_xp_as_reward, 1500),
       (set_show_messages, 1),
-      (assign, "$talk_context", tc_last_promotion),
 		  (call_script, "script_setup_party_meeting", "$g_encountered_party"),
     ]),
 ]),
