@@ -29039,7 +29039,7 @@ mission_templates = [
                       (ge, reg5, decree_cost),
                       (store_mul, ":take", decree_cost, -1),
                       (call_script, "script_add_to_faction_treasury", ":take", "$g_encountered_party_faction"),
-                      (party_set_slot, "$g_encountered_party", "$g_improvement_type", 0),
+                      (party_set_slot, "$g_encountered_party", "$g_improvement_type", 1),
                   (else_try),
                       (store_troop_gold, ":private_treasury", "trp_household_possessions"),
                       (store_troop_gold, ":player_gold", "trp_player"),
