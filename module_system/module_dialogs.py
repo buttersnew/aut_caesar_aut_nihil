@@ -21817,7 +21817,7 @@ dialogs =[
   "sittius_agrippina_talk_14",[]],
 
 [anyone|other(trp_agrippina),"sittius_agrippina_talk_14",[],
-  "Lightning rarely strikes twice.",
+  "Lightning rarely strikes the same place twice.",
   "sittius_agrippina_talk_15",[
     (call_script, "script_set_conversation_troop", "trp_agrippina"),
   ]],
@@ -21861,6 +21861,12 @@ dialogs =[
 
 [trp_agrippina,"start",[(quest_slot_eq, "qst_rags_to_riches", slot_quest_current_state, 2),],
   "Have you talked with the merchant, {playername}?",
+  "agrippina_not_yet",[]],
+[trp_agrippina|plyr,"agrippina_not_yet",[],
+  "I will do soon.",
+  "close_window",[]],
+[trp_agrippina|plyr,"agrippina_not_yet",[],
+  "Not yet.",
   "close_window",[]],
 
 [trp_agrippina,"start",[],

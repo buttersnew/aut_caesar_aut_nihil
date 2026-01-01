@@ -61041,10 +61041,10 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("rags_to_riches_2",0,
-  "A lightning doesn't strike at the same place twice she said.  However, right after you and Sittius Afer left the tavern, the whole place bursts into flames. Surprised, you turn around and want "+
-  "to rescue Agrippina from the tavern, but you could only watch as she perishes in agony in the flames. You will always remember her piercing cry of pain. Meanwhile Sittius reports that he "+
-  "spotted several armed men who managed to escaped. Soon the vigila arrives and the fire is extinguished. At least it caused no other deads.^^With Agrippas dead, her are promises are null and void. "+
-  "It may be better: Staying together with her would have caused only problems for you at the long turn. You can only hope that nobody noticed your conversations with her.",
+  "Lightning doesn't strike the same place twice, she said. However, right after you and Sittius Afer left the tavern, the whole place burst into flames. Surprised, you turned around and wanted "+
+  "to rescue Agrippina from the tavern, but you could only watch as she perished in agony in the flames. You will always remember her piercing cry of pain. Meanwhile, Sittius reported that he "+
+  "spotted several armed men who managed to escape. Soon the vigiles arrived and the fire was extinguished. At least it caused no other deaths.^^With Agrippina dead, her promises are null and void. "+
+  "It may be for the best: Staying with her would have only caused problems for you in the long run. You can only hope that nobody noticed your conversations with her.",
   "none", [
     (set_background_mesh, "mesh_pic_wildfire"),
   ],[
