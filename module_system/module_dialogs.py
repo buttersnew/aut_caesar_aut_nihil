@@ -77403,6 +77403,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (setup_quest_text,"qst_deliver_wine"),
   #SB : temp item count
   (item_get_max_ammo, ":max_amount", ":quest_target_item"),
+  (try_begin),
+    (le, ":max_amount", 0),
+    (assign, ":max_amount", 1),
+    (display_message, "@There was an issue with the max amount.", message_negative),
+  (try_end),
   (store_div, "$temp", reg13, ":max_amount"),
   (str_store_string, s2, "@{s9} of {s3} asked you to deliver {reg13} units of {s6} to the tavern in {s4} in 7 days."),
   #s2 should not be changed until the decision is made
