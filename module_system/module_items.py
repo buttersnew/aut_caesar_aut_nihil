@@ -6167,13 +6167,13 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
 #roman
 ["throwing_spears_roman",         "Throwing Spears", [("roman_jav",0)], itp_extra_penetration|itp_type_thrown |itp_merchandise|itp_primary|itp_secondary|itp_bonus_against_shield ,itcf_throw_javelin,
 425 , abundance(80)|weight(2)|difficulty(2)|spd_rtng(85)|shoot_speed(25) | thrust_damage(29 ,  pierce)|max_ammo(4)|weapon_length(85)|accuracy(90),imodbits_thrown, [],[fac_culture_germanic,fac_culture_caucasian,fac_culture_parthian,fac_culture_roman,fac_culture_greek,fac_culture_judean,fac_culture_bosporan] ], #cambiado chief
-["pilum", "Pilum", [("roman_pilum_100",0)], itp_extra_penetration|itp_type_thrown|itp_merchandise|itp_primary|itp_secondary|itp_can_penetrate_shield|itp_bonus_against_shield, itcf_throw_javelin,
+["pilum", "Pilum", [("roman_pilum_100",0)], itp_extra_penetration|itp_crush_through|itp_type_thrown|itp_merchandise|itp_primary|itp_secondary|itp_can_penetrate_shield|itp_bonus_against_shield, itcf_throw_javelin,
 500, abundance(70)|weight(2)|difficulty(3)|spd_rtng(80)|shoot_speed(25)|thrust_damage(33,pierce)|max_ammo(1)|weapon_length(100)|accuracy(90), imodbits_thrown, [
 ], [fac_culture_roman,fac_culture_greek] ],
-["pilum_2", "Pilum", [("roman_pilum_100_h",0)], itp_extra_penetration|itp_type_thrown|itp_merchandise|itp_primary|itp_secondary|itp_can_penetrate_shield|itp_bonus_against_shield, itcf_throw_javelin,
+["pilum_2", "Pilum", [("roman_pilum_100_h",0)], itp_extra_penetration|itp_crush_through|itp_type_thrown|itp_merchandise|itp_primary|itp_secondary|itp_can_penetrate_shield|itp_bonus_against_shield, itcf_throw_javelin,
 500, abundance(70)|weight(2)|difficulty(4)|spd_rtng(80)|shoot_speed(25)|thrust_damage(35,pierce)|max_ammo(1)|weapon_length(100)|accuracy(90), imodbits_thrown, [
 ], [fac_culture_roman,fac_culture_greek] ],
-["pilum_3", "Pilum", [("roman_pilum_87",0)], itp_extra_penetration|itp_type_thrown|itp_merchandise|itp_primary|itp_secondary|itp_can_penetrate_shield|itp_bonus_against_shield, itcf_throw_javelin,
+["pilum_3", "Pilum", [("roman_pilum_87",0)], itp_extra_penetration|itp_crush_through|itp_type_thrown|itp_merchandise|itp_primary|itp_secondary|itp_can_penetrate_shield|itp_bonus_against_shield, itcf_throw_javelin,
 500,  abundance(70)|weight(2)|difficulty(3)|spd_rtng(80)|shoot_speed(25)|thrust_damage(33,pierce)|max_ammo(1)|weapon_length(87)|accuracy(90), imodbits_thrown, [
 ], [fac_culture_roman,fac_culture_greek] ],
 
