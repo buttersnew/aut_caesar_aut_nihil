@@ -39450,9 +39450,10 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "You are starting a sea travel.",
   "none",[
     (set_camera_follow_party, "p_transporter"),
+    (assign, "$capturer_party", "p_transporter"),
     (assign, "$g_player_is_captive", 1),
     #(call_script, "script_stay_captive_for_hours", 10 * 24),
-    (rest_for_hours, 10 * 24, 4, 0),
+    (rest_for_hours, 30 * 24, 10, 0),
     (assign,"$auto_menu","mnu_auto_return"),
     (change_screen_return),
   ],[

@@ -55,13 +55,17 @@ simple_triggers = [
         (store_mul, ":renown", "$g_siege_method", dplmc_companion_skill_renown + 1),
         (call_script, "script_change_troop_renown", ":troop_no", ":renown"),
     (try_end),
+
+    # (display_message, "@The siege works are complete. Your army is ready to assault the town."),
+
     (rest_for_hours, 0, 0, 0), #stop resting
 ]),
 
 (0,[
     (call_script, "script_execude_debug_message", 4),
     (try_begin),
-        (eq,"$g_player_is_captive",1),
+        (eq, "$g_player_is_captive", 1),
+        (neq, "$capturer_party", "p_transporter"),# player is not travelling via sea
         (gt, "$capturer_party", 0),
         (party_is_active, "$capturer_party"),
         (party_relocate_near_party, "p_main_party", "$capturer_party", 0),
@@ -6432,6 +6436,7 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 111),
     (try_begin),
         (eq, "$g_player_is_captive", 1),
+        (neq, "$capturer_party", "p_transporter"),# player is not travelling via sea
         (neg|party_is_active, "$capturer_party"),
         (rest_for_hours, 0, 0, 0),
     (try_end),
@@ -11476,11 +11481,9 @@ simple_triggers = [
         (get_distance_between_positions, ":distance", pos31, pos32),
         (try_begin),
             (le, ":distance", 500),
-
             (init_position, pos33),
             (position_set_x, pos33, -13300),
             (position_set_y, pos33, 4900),
-
             (party_set_position, "p_main_party", pos33),
             (set_camera_follow_party, "p_main_party"),
             (rest_for_hours, 0, 0, 0),
@@ -11493,6 +11496,7 @@ simple_triggers = [
             (assign, "$auto_menu", -1),
             #(store_current_hours, "$g_check_autos_at_hour"),	#new 02.01.14
         (else_try),
+            (assign, "$capturer_party", "p_transporter"),
             (set_camera_follow_party, "p_transporter"),
         (try_end),
     (else_try),
@@ -11501,27 +11505,31 @@ simple_triggers = [
         (eq, "$g_player_is_captive", 1),
         (set_fixed_point_multiplier, 100),
         (party_get_slot, ":target_port", "$travel_town", slot_party_port_party),
-        (party_get_position, pos2, ":target_port"),
-        (party_get_position, pos1, "p_transporter"),
-        (get_distance_between_positions, ":distance", pos1, pos2),
-        (le, ":distance", 150),
-        (party_get_position, pos3, "$travel_town"),
-        (party_set_position, "p_main_party", pos3),
-        (set_camera_follow_party, "p_main_party"),
-        (rest_for_hours, 0, 0, 0),
-        (assign, "$g_player_is_captive", 0),
-        #(party_set_flags, "p_transporter", pf_is_ship, 0),
-        (disable_party, "p_transporter"),
-        #(change_screen_return),
+        (party_get_position, pos32, ":target_port"),
+        (party_get_position, pos31, "p_transporter"),
+        (get_distance_between_positions, ":distance", pos31, pos32),
         (try_begin),
-            (is_between, "$travel_town", towns_begin, towns_end),
-            (store_faction_of_party, ":faction","$travel_town"),
-            (store_relation, ":relation", ":faction", "fac_player_faction"),
-            (ge, ":relation", 0),	#VC-2270
-            (assign, "$auto_enter_town", "$travel_town"),
+            (le, ":distance", 150),
+            (party_get_position, pos33, "$travel_town"),
+            (party_set_position, "p_main_party", pos33),
+            (set_camera_follow_party, "p_main_party"),
+            (rest_for_hours, 0, 0, 0),
+            (assign, "$g_player_is_captive", 0),
+            #(party_set_flags, "p_transporter", pf_is_ship, 0),
+            (disable_party, "p_transporter"),
+            #(change_screen_return),
+            (try_begin),
+                (is_between, "$travel_town", towns_begin, towns_end),
+                (store_faction_of_party, ":faction","$travel_town"),
+                (store_relation, ":relation", ":faction", "fac_player_faction"),
+                (ge, ":relation", 0),	#VC-2270
+                (assign, "$auto_enter_town", "$travel_town"),
+            (try_end),
+            (assign, "$travel_town", 0),
+        (else_try),
+            (assign, "$capturer_party", "p_transporter"),
+            (set_camera_follow_party, "p_transporter"),
         (try_end),
-        (assign, "$travel_town", 0),
-        #(store_current_hours, "$g_check_autos_at_hour"),	#new 02.01.14
     (try_end),
     # Piggybacking:
     (call_script, "script_map_sea_ai_2"),
