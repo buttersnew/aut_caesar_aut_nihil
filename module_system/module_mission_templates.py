@@ -27938,12 +27938,12 @@ mission_templates = [
   [
     cannot_spawn_commoners,
     (0, 0, 0,[
-        (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
-        (neg|quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
-        (eq, "$g_start_belligerent_drunk_fight", 0),
-	      (neg|conversation_screen_is_active),
-    ],
-	  [
+      (check_quest_active, "qst_amor_quest"),
+      (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
+      (neg|quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
+      (eq, "$g_start_belligerent_drunk_fight", 0),
+      (neg|conversation_screen_is_active),
+    ],[
       (try_for_agents, ":agent"),
           (agent_get_troop_id, ":troop", ":agent"),
           (eq, ":troop", "trp_wild_cat"),
@@ -27954,7 +27954,7 @@ mission_templates = [
           (agent_get_position, pos0, ":player_agent"),
           (agent_get_position, pos1, ":agent"),
           (get_distance_between_positions_in_meters, ":dist", pos0, pos1),
-          (le, ":dist", 7),
+          (le, ":dist", 10),
           (start_mission_conversation, "trp_wild_cat"),
           (assign, "$g_start_belligerent_drunk_fight", 1),
       (try_end),
@@ -27980,38 +27980,78 @@ mission_templates = [
 
     # Animals move and attack
     (1, 0, 0,[
+      (check_quest_active, "qst_amor_quest"),
       (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
       (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
       (agent_is_alive, "$alpha_animal"),
     ],[
       (set_fixed_point_multiplier, 100),
-      (agent_get_position, pos1, "$alpha_animal"),
+      (agent_get_position, pos11, "$alpha_animal"),
 
-      (store_random_in_range, ":entry", 1, 9),
-      (entry_point_get_position, pos2, ":entry"),
-      (get_distance_between_positions, ":distance", pos1, pos2),
+      (store_random_in_range, ":entry", 1, 31),
+      (get_player_agent_no, ":player"),
+      (try_begin),
+        (ge, ":entry", 15),
+        (agent_get_position, pos12, ":player"),
+      (else_try),
+        (entry_point_get_position, pos12, ":entry"),
+      (try_end),
+      (get_distance_between_positions, ":distance", pos11, pos12),
 
       (try_for_agents, ":agent"),
           (agent_get_troop_id, ":troop", ":agent"),
           (eq, ":troop", "trp_wild_cat"),
           (agent_is_human, ":agent"),
           (agent_is_active, ":agent"),
-          (agent_get_position, pos1, ":agent"),
-          (copy_position, pos3, pos1),
-          (position_move_y, pos3, -10),	#-10cm
-          (get_distance_between_positions, ":back_distance", pos2, pos3),
-          (position_move_y, pos3, 25),	#+15cm
-          (get_distance_between_positions, ":front_distance", pos2, pos3),
+          (agent_get_position, pos11, ":agent"),
+          (copy_position, pos13, pos11),
+          (position_move_y, pos13, -10),	#-10cm
+          (get_distance_between_positions, ":back_distance", pos12, pos13),
+          (position_move_y, pos13, 25),	#+15cm
+          (get_distance_between_positions, ":front_distance", pos12, pos13),
           (this_or_next|lt, ":front_distance", ":back_distance"),
           (gt, ":distance", 1000),
-          (call_script, "script_point_y_toward_position", pos1, pos2),
+          (call_script, "script_point_y_toward_position", pos11, pos12),
           (set_fixed_point_multiplier, 100),
-          (position_move_y, pos1, 1000),	#20m,
-          (agent_set_scripted_destination, ":agent", pos1),
+          (position_move_y, pos11, 1000),	#20m,
+          (agent_set_scripted_destination, ":agent", pos11),
       (try_end),
     ]),
 
-      # Kill rider
+    (ti_on_agent_hit, 0, 0, [
+      (check_quest_active, "qst_amor_quest"),
+      (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
+      (neg|quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
+      (eq, "$g_start_belligerent_drunk_fight", 0),
+      (neg|conversation_screen_is_active),
+    ],[
+      (store_trigger_param, ":victim", 1),
+      (store_trigger_param, ":attacker", 2),
+
+      (agent_is_active, ":victim"),
+      (agent_is_alive, ":victim"),
+
+      (agent_is_active, ":attacker"),
+      (agent_is_alive, ":attacker"),
+
+      (agent_is_non_player, ":victim"),# is not player
+      (neg|agent_is_non_player, ":attacker"),#isplayer
+
+      (neg|agent_is_human, ":victim"),
+      (agent_get_rider, ":rider", ":victim"),
+      (agent_get_troop_id, ":troop", ":rider"),
+      (eq, ":troop", "trp_wild_cat"),
+
+      (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 5),
+      (quest_set_slot, "qst_amor_quest", slot_quest_gold_reward, -1),
+
+      (mission_disable_talk),
+      (team_set_relation, 1, 0, -1),
+
+      (assign, "$g_start_belligerent_drunk_fight", 1),
+    ]),
+
+    # Kill rider
     (ti_on_agent_killed_or_wounded, 0, 0, [],[
       (store_trigger_param, ":agent_no", 1),
       (agent_get_troop_id, ":troop", ":agent_no"),
@@ -28020,23 +28060,27 @@ mission_templates = [
           (set_trigger_result, 1),
           (try_begin),
               (eq, ":troop", "trp_player"),
-              (finish_mission, 3),
               (assign, "$temp", 2),
               (jump_to_menu, "mnu_death_waits"),
+              (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+              (finish_mission, 3),
           (try_end),
       (else_try),
-          #kill rider
+          # kill rider
           (agent_get_slot, ":rider", ":agent_no", slot_agent_bought_horse),
           (agent_set_no_death_knock_down_only,":rider", 0),
           (agent_deliver_damage_to_agent, ":rider", ":rider", 1000),
-          (finish_mission, 3),
+          (quest_set_slot, "qst_amor_quest", slot_quest_gold_reward, -1),
           (jump_to_menu, "mnu_aslan_end"),
+          (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+          (finish_mission, 3),
       (try_end),
     ]),
 
     (ti_tab_pressed, 0, 0,[
     ],[
       (try_begin),
+          (check_quest_active, "qst_amor_quest"),
           (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
           (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
           (display_message, "str_cannot_leave_now"),
@@ -28044,7 +28088,8 @@ mission_templates = [
           (set_trigger_result, 1),
       (try_end),
     ]),
-    (2, 0, 0,[
+    (0.25, 0, 0,[
+      (check_quest_active, "qst_amor_quest"),
       (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
       (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
       (try_for_agents, ":tigger"),
@@ -28104,6 +28149,7 @@ mission_templates = [
       (tutorial_message, -1),
     ],[]),
 	  (1,0,ti_once,[
+      (check_quest_active, "qst_amor_quest"),
       (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 5),
       (neg|conversation_screen_is_active),
     ],[

@@ -52096,7 +52096,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         #   (display_message, "@Check1"),
           (troop_slot_ge, "trp_senator_dummy", slot_senate_support, 50),
           (neq, "$g_is_emperor", 1),
-          (ge, "$g_rank", 1),
+          # (ge, "$g_rank", 1),
         #  (display_message, "@Check2"),
           (call_script, "script_troop_get_player_relation", "trp_kingdom_7_lord"),
           (ge, reg0, 10),

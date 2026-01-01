@@ -6117,7 +6117,7 @@ strings = [
   ("velvet_site", "dyeworks"),
 
   ("under_sequestration", "Under sequestration"),
-  ("describe_secondary_input", " In addition, you will also need to purchase {s11} worth {reg10} denarii."),
+  ("describe_secondary_input", " In addition, you will also need to purchase {reg14} units of {s11} worth {reg10} denarii."),
   ("profit", "profit"),
   ("loss", "loss"),
 

@@ -4990,14 +4990,14 @@ presentations = presentations_wse2 + [
             (try_begin),
             #input present in inventory: reimburse for input cost and remove one good
                 (troop_get_inventory_capacity, ":total_capacity", ":craftsman_troop"),
-                (try_for_range, ":capacity_iterator", 0, ":total_capacity"),
-                (troop_get_inventory_slot, ":item_in_slot", ":craftsman_troop", ":capacity_iterator"),
+                    (try_for_range, ":capacity_iterator", 0, ":total_capacity"),
+                    (troop_get_inventory_slot, ":item_in_slot", ":craftsman_troop", ":capacity_iterator"),
 
-                (lt, ":inputs_taken_from_warehouse", ":inputs_taken_from_market"),
-                (item_slot_eq, ":enterprise_output", slot_item_primary_raw_material, ":item_in_slot"),
-            #(troop_inventory_slot_get_item_amount, ":item_ammo", ":craftsman_troop", ":capacity_iterator"),
-            #(troop_inventory_slot_get_item_max_amount, ":item_max_ammo", ":craftsman_troop", ":capacity_iterator"),
-                #(eq, ":item_ammo", ":item_max_ammo"),
+                    (lt, ":inputs_taken_from_warehouse", ":inputs_taken_from_market"),
+                    (item_slot_eq, ":enterprise_output", slot_item_primary_raw_material, ":item_in_slot"),
+                #(troop_inventory_slot_get_item_amount, ":item_ammo", ":craftsman_troop", ":capacity_iterator"),
+                #(troop_inventory_slot_get_item_max_amount, ":item_max_ammo", ":craftsman_troop", ":capacity_iterator"),
+                    #(eq, ":item_ammo", ":item_max_ammo"),
 
                     (val_add, ":inputs_taken_from_warehouse", 1),
                 (else_try),

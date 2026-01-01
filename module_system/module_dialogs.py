@@ -18230,7 +18230,9 @@ dialogs =[
 [],"Very well {playername}. What can I do for you?", "bannerlord_talk2",[]],
 
 [trp_bannerlord|plyr, "bannerlord_talk2",
-[],"I also want such a fancy cap!", "bannerlord_cap",[]],
+[
+  (neg|player_has_item, "itm_felt_steppe_cap"),
+],"I also want such a fancy cap!", "bannerlord_cap",[]],
 [trp_bannerlord, "bannerlord_cap",
 [],"Very well, here take one.", "bannerlord_talk2",[
   (troop_add_item, "trp_player", "itm_felt_steppe_cap"),
@@ -74898,7 +74900,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
    ]],
 
 [anyone,"master_craftsman_accounts",[
- ], "We currently produce {s3} worth {reg1} denarii each week, while the quantity of {s4} needed to manufacture it costs {reg2}, and labor and upkeep are {reg3}.{s9} This means that we theoretically make a {s12} of {reg0} denarii a week, assuming that we have no raw materials in the inventories, and that we sell directly to the market.", "master_craftsman_pretalk",
+ ], "We currently produce {s3} worth {reg1} denarii each week, while the quantity of {reg13} units of {s4} needed to manufacture it costs {reg2}, and labor and upkeep are {reg3}.{s9} This means that we theoretically make a {s12} of {reg0} denarii a week, assuming that we have no raw materials in the inventories, and that we sell directly to the market.", "master_craftsman_pretalk",
 [
     (party_get_slot, ":item_produced", "$g_encountered_party", slot_center_player_enterprise),
     (call_script, "script_process_player_enterprise", ":item_produced", "$g_encountered_party"),
@@ -74919,8 +74921,12 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (try_begin),
       (gt, ":secondary_raw_material", 0),
       (str_store_item_name, s11, ":secondary_raw_material"),
+      (item_get_slot, reg14, ":item_produced", slot_item_input_number),
       (str_store_string, s9, "str_describe_secondary_input"),
     (try_end),
+
+    (item_get_slot, reg13, ":item_produced", slot_item_input_number),
+
   ]],
 
   #SB : disguise_merchant
@@ -78216,77 +78222,83 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 #Village elders
 
-[anyone,"start",[(is_between,"$g_talk_troop",village_elders_begin,village_elders_end),
-                    (check_quest_active, "qst_amor_quest"),
-                    (eq, "$current_town", "p_village_155"),
-                    (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 6),
-                    (this_or_next|quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, 1),
-                    (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
-                    (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0")
- ],
-   "Thank you {s0}. No cattle has been killed in the last days. You have defeated this creature. I keep my promise and gift you this arrow. It is said, whoever is stung with it will fall in love with the first person he sees.\
- And the arrow can only be used once. After you stung someone, the arrow will disappear.", "aslan_village_end",
-[(add_xp_as_reward, 1000),
-
-    (call_script, "script_change_center_prosperity", "$current_town", 3),
-    (call_script, "script_change_player_relation_with_center", "$current_town", 3),
-#Troop commentaries begin
-    (call_script, "script_add_log_entry", logent_helped_peasants, "trp_player",  "$current_town", -1, -1),
-#Troop commentaries end
-    (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 7),
-    (str_store_party_name_link, s23, "p_town_3"),
-    (add_quest_note_from_sreg, "qst_amor_quest", 2, "@Return to the Desperatius in {s23} to claim your reward.", 0),
-    (display_message, "str_quest_updated", message_alert),
+[anyone,"start",[
+  (is_between,"$g_talk_troop",village_elders_begin,village_elders_end),
+  (check_quest_active, "qst_amor_quest"),
+  (eq, "$current_town", "p_village_155"),
+  (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 6),
+  (this_or_next|quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, 1),
+  (quest_slot_eq, "qst_amor_quest", slot_quest_gold_reward, -1),
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+],"Thank you, {s0}. No cattle have been killed in the last few days. You have defeated this creature. I keep my promise and gift you this arrow. It is said that whoever is struck by it will fall in love with the first person they see. The arrow can only be used once. After you strike someone, the arrow will disappear.",
+"aslan_village_end",[
+  (add_xp_as_reward, 1000),
+  (call_script, "script_change_center_prosperity", "$current_town", 3),
+  (call_script, "script_change_player_relation_with_center", "$current_town", 3),
+  #Troop commentaries begin
+  (call_script, "script_add_log_entry", logent_helped_peasants, "trp_player",  "$current_town", -1, -1),
+  #Troop commentaries end
+  (quest_set_slot, "qst_amor_quest", slot_quest_current_state, 7),
+  (str_store_party_name_link, s23, "p_town_3"),
+  (add_quest_note_from_sreg, "qst_amor_quest", 2, "@Return to the Desperatius in {s23} to claim your reward.", 0),
+  (display_message, "str_quest_updated", message_alert),
 ]],
+
 [anyone|plyr,"aslan_village_end",[
- ],
-   "Thank you. I can guarantee you, your village will be save from now on.", "aslan_village_end_2",
+],
+"Thank you. I can guarantee you, your village will be safe from now on.",
+"aslan_village_end_2",
 []],
+
 [anyone|plyr,"aslan_village_end",[],
-   "Thank you. I will use it wisely.", "aslan_village_end_2",[]],
+"Thank you. I will use it wisely.",
+"aslan_village_end_2",[]],
 
 [anyone,"aslan_village_end_2",[],
-   "I may ask what you suppose to do with the arrow? Is there a special lady you have in mind?", "aslan_village_end_3",[]],
+"May I ask what you intend to do with the arrow? Is there a special lady you have in mind?",
+"aslan_village_end_3",[]],
 
 [anyone|plyr,"aslan_village_end_3",[],
-   "It is for a friend. I will get a reward for delivering it.", "village_elder_pretalk",[]],
+"It is for a friend. I will get a reward for delivering it.",
+"village_elder_pretalk",[]],
 
 [anyone|plyr,"aslan_village_end_3",[],
-   "I most likely will sell it for a good price.", "village_elder_pretalk",[]],
+"I will most likely sell it for a good price.",
+"village_elder_pretalk",[]],
 
-[anyone,"start",[(is_between,"$g_talk_troop",village_elders_begin,village_elders_end),
-                    (store_partner_quest,":elder_quest"),
-                    (eq,":elder_quest","qst_need_tools"),
-                    (quest_get_slot, ":amount", "qst_need_tools", slot_quest_target_amount),
-                    (store_item_kind_count, ":item_number", "itm_tools", "trp_player"),
-                    (ge, ":item_number", ":amount"),
-                    (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0")
- ],
-   "Welcome back, {s0}. Thank you so much for bringing us the tools.\
- Here take the promised reward.", "village_elder_qst_need_tools",
-[(add_xp_as_reward, 300),
-    (quest_get_slot, "$temp4", "qst_need_tools", slot_quest_gold_reward),
-    (quest_get_slot, ":amount", "qst_need_tools", slot_quest_target_amount),
-    (troop_remove_items, "trp_player", "itm_tools", ":amount"),
-    (troop_add_gold, "trp_player", "$temp4"),
-    (call_script, "script_change_center_prosperity", "$current_town", 3),
-    (call_script, "script_change_player_relation_with_center", "$current_town", 3),
-    (call_script, "script_succeed_quest", "qst_need_tools"),
-    (call_script, "script_end_quest", "qst_need_tools"),
-#Troop commentaries begin
-    (call_script, "script_add_log_entry", logent_helped_peasants, "trp_player",  "$current_town", -1, -1),
-#Troop commentaries end
+[anyone,"start",[
+  (is_between,"$g_talk_troop",village_elders_begin,village_elders_end),
+  (store_partner_quest,":elder_quest"),
+  (eq,":elder_quest","qst_need_tools"),
+  (quest_get_slot, ":amount", "qst_need_tools", slot_quest_target_amount),
+  (store_item_kind_count, ":item_number", "itm_tools", "trp_player"),
+  (ge, ":item_number", ":amount"),
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+],
+"Welcome back, {s0}. Thank you so much for bringing us the tools. Here take the promised reward.",
+"village_elder_qst_need_tools",[
+  (add_xp_as_reward, 300),
+  (quest_get_slot, "$temp4", "qst_need_tools", slot_quest_gold_reward),
+  (quest_get_slot, ":amount", "qst_need_tools", slot_quest_target_amount),
+  (troop_remove_items, "trp_player", "itm_tools", ":amount"),
+  (troop_add_gold, "trp_player", "$temp4"),
+  (call_script, "script_change_center_prosperity", "$current_town", 3),
+  (call_script, "script_change_player_relation_with_center", "$current_town", 3),
+  (call_script, "script_succeed_quest", "qst_need_tools"),
+  (call_script, "script_end_quest", "qst_need_tools"),
+  (call_script, "script_add_log_entry", logent_helped_peasants, "trp_player",  "$current_town", -1, -1),
 ]],
 
 [anyone|plyr,"village_elder_qst_need_tools",[
- ],
-   "I am flattered, but I don't need the money. I want to gift it to your village.", "village_elder_deliver_cattle_thank",
-[(troop_remove_gold, "trp_player", "$temp4"),
-   (call_script, "script_change_player_honor", 3),
-   (call_script, "script_change_player_relation_with_center", "$current_town", 1),
+],"I am flattered, but I don't need the money. I want to gift it to your village.",
+"village_elder_deliver_cattle_thank",[
+  (troop_remove_gold, "trp_player", "$temp4"),
+  (call_script, "script_change_player_honor", 3),
+  (call_script, "script_change_player_relation_with_center", "$current_town", 1),
 ]],
+
 [anyone|plyr,"village_elder_qst_need_tools",[],
-   "An easy task.", "village_elder_deliver_cattle_thank",[]],
+"An easy task.", "village_elder_deliver_cattle_thank",[]],
 
 [anyone,"start",[(is_between,"$g_talk_troop",village_elders_begin,village_elders_end),
                     (store_partner_quest,":elder_quest"),
