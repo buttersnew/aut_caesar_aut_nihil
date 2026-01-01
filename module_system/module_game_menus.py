@@ -2376,10 +2376,19 @@ game_menus = [
       (start_presentation, "prsnt_display_special_items"),
     ]),
 
-    # ("camp_action",[
-    # ],"Debug sulla event.",[
-    #   (jump_to_menu, "mnu_freelancer_event_pret_9"),
-    # ]),
+    ("camp_action",[
+    ],"Debug script_change_player_relation_with_faction_ex.",[
+      (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
+        (str_store_faction_name_link, s0, ":faction"),
+        (display_message, "@Decreasing relation with {s0} by 2."),
+        (call_script, "script_change_player_relation_with_faction_ex", ":faction", -2),
+      (try_end),
+      (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
+        (str_store_faction_name_link, s0, ":faction"),
+        (display_message, "@Increasing relation with {s0} by 2."),
+        (call_script, "script_change_player_relation_with_faction_ex", ":faction", 2),
+      (try_end),
+    ]),
 
     # ("camp_action",[
     # ],"Export volunteer limits.",[

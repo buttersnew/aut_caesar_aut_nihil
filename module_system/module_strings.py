@@ -10500,6 +10500,12 @@ strings = [
 
   ("married", "Married"),
   ("single", "Single"),
+
+
+  ("faction_relation_increased_details_s13", "Your relation with {s1} has increased from {reg1} to {reg2}, as they have {s13} relations with the {s2}."),
+  ("faction_relation_detoriated_details_s13", "Your relation with {s1} has deteriorated from {reg1} to {reg2}, as they have {s13} relations with the {s2}."),
+  ("good", "good"),
+  ("bad", "bad"),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

@@ -18447,32 +18447,72 @@ scripts = scripts_hardcoded + [
         (neq, ":faction_no", ":other_faction"),
         (store_relation, ":other_faction_relation", ":faction_no", ":other_faction"),
         (store_relation, ":player_relation", ":other_faction", "fac_player_supporters_faction"),
+
         (store_mul, ":relation_change", ":difference", ":other_faction_relation"),
         (val_div, ":relation_change", 100),
         (val_add, ":player_relation", ":relation_change"),
-        ##diplomacy start
-        (try_begin),
-            (store_add, ":truce_slot", "fac_player_supporters_faction", slot_faction_truce_days_with_factions_begin),
-            (val_sub, ":truce_slot", kingdoms_begin),
-            (faction_get_slot, ":truce_days", ":other_faction", ":truce_slot"),
-            ##nested diplomacy start+ Changed "eq 0", to "le 0", since now negative truce days track war length
-            (this_or_next|le, ":truce_days", 0), #other faction only affected if no truce
-            ##nested diplomacy end+
-            (gt, ":difference", 0), #or change > 0
-            (store_relation, ":cur_relation", ":other_faction", "fac_player_supporters_faction"),
 
-            #display relation change message
-            (store_sub, ":relation_change", ":player_relation", ":cur_relation"),
+        (store_add, ":truce_slot", "fac_player_supporters_faction", slot_faction_truce_days_with_factions_begin),
+        (val_sub, ":truce_slot", kingdoms_begin),
+        (faction_get_slot, ":truce_days", ":other_faction", ":truce_slot"),
+        ##nested diplomacy start+ Changed "eq 0", to "le 0", since now negative truce days track war length
+        (this_or_next|le, ":truce_days", 0), #other faction only affected if no truce
+        ##nested diplomacy end+
+        (gt, ":difference", 0), #or change > 0
+        (store_relation, ":cur_relation", ":other_faction", "fac_player_supporters_faction"),
+
+        (assign, ":c", 0),
+        (store_sub, ":relation_change", ":player_relation", ":cur_relation"),
+
+        (try_begin),# allow change if player relation is negative and change is negative
+            (lt, ":cur_relation", 0),
+            (lt, ":relation_change", 0),
+            (assign, ":c", 1),
+        (else_try),# allow change if player relation is positive and change is positive
+            (gt, ":cur_relation", 0),
+            (gt, ":relation_change", 0),
+            (assign, ":c", 1),
+        (else_try),# if player relation is positive and change is negative ensure it wont become negative
+            (gt, ":cur_relation", 0),
+            (lt, ":relation_change", 0),
+            (val_max, ":player_relation", 0),
+            (assign, ":c", 1),
+        (else_try),# if player relation is negative and change is positive ensure it wont become positive
+            (lt, ":cur_relation", 0),
+            (gt, ":relation_change", 0),
+            (val_min, ":player_relation", -1),
+            (assign, ":c", 1),
+        # (else_try),
+            # display_message, "@No change in relations with {s1} as it would cross the neutral point."),
+            # (assign, reg1, ":cur_relation"),
+            # (assign, reg2, ":player_relation"),
+            # (assign, reg3, ":relation_change"),
+            # (str_store_faction_name, s1, ":other_faction"),
+            # (display_message, "@DEBUG No change in relations with {s1} as it would cross the neutral point. Cur Relation = {reg1}, New Relation = {reg2}, Change = {reg3}."),
+        (try_end),
+
+        (try_begin),
+            (eq, ":c", 1),
+
             (str_store_faction_name_link, s1, ":other_faction"),
+            (str_store_faction_name_link, s2, ":faction_no"),
             (assign, reg1, ":cur_relation"),
             (assign, reg2, ":player_relation"),
             (try_begin),
+                (ge, ":other_faction_relation", 0),
+                (str_store_string, s13, "str_good"),
+            (else_try),
+                (str_store_string, s13, "str_bad"),
+            (try_end),
+            (try_begin),
                 (gt, ":relation_change", 0),
-                (display_message, "str_faction_relation_increased", message_positive),
+                (display_message, "str_faction_relation_increased_details_s13", message_positive),
             (else_try),
                 (lt, ":relation_change", 0),
-                (display_message, "str_faction_relation_detoriated", message_negative),
+                (display_message, "str_faction_relation_detoriated_details_s13", message_negative),
             (try_end),
+
+
             #display war declaration
             (try_begin),
                 (ge, ":cur_relation", 0), #old relation > 0 -> peace
@@ -18492,15 +18532,18 @@ scripts = scripts_hardcoded + [
                     (call_script, "script_add_notification_menu", "mnu_notification_war_declared", ":other_faction", "$players_kingdom"),
                 (else_try),
                     #Display some sort of message so you know something happened
+                    (str_store_faction_name_link, s1, ":other_faction"),
                     (display_message, "@{!} There is widespread ill-will towards you in the {s1}."),
                 (try_end),
                 ##nested diplomacy end+
             (try_end),
-            ##diplomacy end
+            # ##diplomacy end
+
             (set_relation, ":other_faction", "fac_player_faction", ":player_relation"),
             (set_relation, ":other_faction", "fac_player_supporters_faction", ":player_relation"),
-            ##diplomacy begin
         (try_end),
+        ##diplomacy begin
+
     (try_end),
     (try_begin),
         (faction_slot_eq, "fac_player_supporters_faction", slot_faction_state, sfs_active),
