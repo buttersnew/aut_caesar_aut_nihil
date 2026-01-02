@@ -77328,6 +77328,10 @@ scripts = scripts_hardcoded + [
 
     (assign, reg1, 1),
 
+    #  we need to save the fixed point multiplier
+    (assign, ":store_fixed_point", 1),
+    (convert_to_fixed_point, ":store_fixed_point"),
+
     (set_fixed_point_multiplier, 1),
     (party_get_position, pos22, ":party_no"),
     (position_get_x, ":pos_x", pos22),
@@ -77349,6 +77353,9 @@ scripts = scripts_hardcoded + [
         (eq, ":terrain", rt_desert),
         (assign, reg1, 0),
     (try_end),
+
+    (set_fixed_point_multiplier, ":store_fixed_point"),
+
     (eq, reg1, 0),
 ]),
 
