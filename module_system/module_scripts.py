@@ -77325,30 +77325,28 @@ scripts = scripts_hardcoded + [
 
 ("cf_is_desert_or_mediterreanian",[
     (store_script_param_1, ":party_no"),
-    (party_get_current_terrain, ":terrain", ":party_no"),
-    (call_script, "script_get_region_of_pos22", ":party_no"),
-    (assign, ":cur_region", reg1),
 
     (assign, reg1, 1),
+
+    (set_fixed_point_multiplier, 1),
+    (party_get_position, pos22, ":party_no"),
+    (position_get_x, ":pos_x", pos22),
+    (position_get_y, ":pos_y", pos22),
+
     (try_begin),
-        (this_or_next|eq, ":terrain", rt_snow),
-        (eq, ":terrain", rt_snow_forest),
-        (eq, ":cur_region", region_spain),
+        # Inverse Snow Logic: Y <= 20 OR (In Box)
+        (le, ":pos_y", 20),
         (assign, reg1, 0),
+        (display_message, "@Debug: Desert/Mediterreanian check - Below Y 20"),
     (else_try),
+        (gt, ":pos_x", 185),
+        (lt, ":pos_y", 66),
+        (assign, reg1, 0),
+        (display_message, "@Debug: Desert/Mediterreanian check - In Box 1"),
+    (else_try),
+        (party_get_current_terrain, ":terrain", ":party_no"),
         (this_or_next|eq, ":terrain", rt_desert_forest),
-        (this_or_next|eq, ":terrain", rt_desert),
-        (this_or_next|eq, ":cur_region", region_mesopotamia),
-        (this_or_next|eq, ":cur_region", region_nile_delta),
-        (this_or_next|eq, ":cur_region", region_greece),
-        (this_or_next|eq, ":cur_region", region_north_africa),
-        (this_or_next|eq, ":cur_region", region_africa_green),
-        (this_or_next|eq, ":cur_region", region_southitaly),
-        (this_or_next|eq, ":cur_region", region_anatolia_central),
-        (this_or_next|eq, ":cur_region", region_anatolia_coastal),
-        (this_or_next|eq, ":cur_region", region_persianhill_desert),
-        (this_or_next|eq, ":cur_region", region_persianhill_green),
-        (eq, ":cur_region", region_syria_palestine),
+        (eq, ":terrain", rt_desert),
         (assign, reg1, 0),
     (try_end),
     (eq, reg1, 0),
@@ -80431,7 +80429,7 @@ scripts = scripts_hardcoded + [
         (try_end),
     (try_end),
 ]),
-
+# script_print_cognomen_to_s1
 ("print_cognomen_to_s1",[
     (str_clear, s1),
     (assign, reg0, 0),
