@@ -80436,7 +80436,7 @@ scripts = scripts_hardcoded + [
     (str_clear, s1),
     (assign, reg0, 0),
     (try_for_range, ":quests", "qst_blank_quest_22", "qst_blank_quest_26"),
-        (quest_slot_ge, "qst_blank_quest_22", slot_quest_target_dna, 1),
+        (quest_slot_ge, ":quests", slot_quest_target_dna, 1),
         (try_begin),
             (eq, ":quests", "qst_blank_quest_22"),
             (str_store_string, s0, "@Germanicus"),
