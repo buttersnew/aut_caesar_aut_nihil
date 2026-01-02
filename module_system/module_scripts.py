@@ -63580,6 +63580,7 @@ scripts = scripts_hardcoded + [
     (str_store_string, s16, "str_nobles_at_hall"),
 ]),
 
+# script_cf_conspiracy_check
 ("cf_conspiracy_check", [
     (neg|check_quest_active, "qst_conspiracy"),
 
@@ -63605,6 +63606,8 @@ scripts = scripts_hardcoded + [
         (troop_slot_eq, ":npc", slot_troop_occupation, slto_kingdom_hero), #is active
         (store_faction_of_troop, ":fac", ":npc"), # is in player faction
         (eq, ":fac", "$players_kingdom"),
+        (troop_get_slot, ":leaded_party", ":npc", slot_troop_leaded_party), # only if they are running around the worldmap and have respawned
+        (party_is_active, ":leaded_party"),
         ##define variables
         (call_script, "script_troop_get_relation_with_troop", "trp_player", ":npc"),
         (assign, ":relation", reg0),

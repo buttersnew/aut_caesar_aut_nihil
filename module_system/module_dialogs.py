@@ -83469,12 +83469,21 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr,"conspiracy_talk_leader2",[], "Let me ask you some questions.", "conspiracy_talk_leader3",[]],
 
 [anyone,"conspiracy_talk_leader3",[], "The only thing I have to say is that you will die!", "conspiracy_talk_leader4",[]],
-[anyone|plyr,"conspiracy_talk_leader4",[], "Enough, I will bring an end to your life.", "prisoner_chat_treason",[(complete_quest,  "qst_conspiracy"),
+[anyone|plyr,"conspiracy_talk_leader4",[], "Enough, I will bring an end to your life.", "prisoner_chat_treason",[
+  (call_script, "script_end_quest",  "qst_conspiracy"),
   (display_log_message, "@You may have captured the traitors and sentenced them, but maybe there are even more of them?"),
-  ]],
-[anyone|plyr,"conspiracy_talk_leader4",[], "Enough, I will set you free.", "conspiracy_talk_leader_free",[(complete_quest,  "qst_conspiracy"),
+  # clear slots
+  (quest_set_slot, "qst_conspiracy", slot_quest_target_troop, 0),
+  (quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 0),
+]],
+[anyone|plyr,"conspiracy_talk_leader4",[], "Enough, I will set you free.",
+"conspiracy_talk_leader_free",[
+  (call_script, "script_end_quest",  "qst_conspiracy"),
   (display_log_message, "@You may have captured the traitors and sentenced them, but maybe there are even more of them?"),
-  ]],
+  # clear slots
+  (quest_set_slot, "qst_conspiracy", slot_quest_target_troop, 0),
+  (quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 0),
+]],
 
 [anyone,"conspiracy_talk_leader_free",[], "As a person with manners, I have to thank you, but do not believe that a single act of justice can undo your crimes.", "close_window",
 [
