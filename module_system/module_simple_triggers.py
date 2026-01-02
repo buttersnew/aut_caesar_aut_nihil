@@ -9189,6 +9189,7 @@ simple_triggers = [
         (call_script, "script_spawn_party",":center", "pt_slave_trader_ship"),
         (assign, ":new_party", reg0),
         (party_set_slot, ":new_party", slot_party_home_center, ":center"),
+        (party_set_slot, ":new_party", slot_party_last_traded_center, ":center"),
         (party_set_slot, ":new_party", slot_party_ai_state, spai_trading_with_town),
 
         (party_set_slot, ":new_party", slot_party_ai_object, ":target_port_town"),
@@ -9247,6 +9248,7 @@ simple_triggers = [
         (party_add_template, ":new_party", ":template_to_add"),
 
         (party_set_slot, ":new_party", slot_party_home_center, ":center"),
+        (party_set_slot, ":new_party", slot_party_last_traded_center, ":center"),
         (party_set_slot, ":new_party", slot_party_ai_state, spai_travelling),
 
         # (str_store_party_name, s1, ":center"),

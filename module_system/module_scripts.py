@@ -36560,8 +36560,8 @@ scripts = scripts_hardcoded + [
         #how long ago?
         (this_or_next|troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_traveller_attacked),
         (troop_slot_eq, "trp_log_array_entry_type", ":log_entry_no", logent_party_traded),
-        (troop_get_slot, ":origin",        "trp_log_array_center_object",        ":log_entry_no"),
-        (troop_get_slot, ":destination",   "trp_log_array_troop_object",         ":log_entry_no"),
+        (troop_get_slot, ":origin", "trp_log_array_center_object", ":log_entry_no"),
+        (troop_get_slot, ":destination", "trp_log_array_troop_object", ":log_entry_no"),
         (this_or_next|eq, ":origin", ":center"),
         (eq, ":destination", ":center"),
         (troop_get_slot, ":event_time", "trp_log_array_entry_time",":log_entry_no"),
