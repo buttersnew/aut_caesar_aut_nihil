@@ -4489,7 +4489,7 @@ strings = [
   ("s42", "{s42}"),
   ("test_diagnostic_quest_found_for_s4", "{!}Test diagnostic: Quest found for {s4}"),
   ("s4_changing_sides_aborts_quest", "{!}{s4} changing sides aborts quest"),
-  ("s4_death_aborts_quest_s5", "{!}{s4} deceased and the quest {s5} is aborted"),
+  ("s4_death_aborts_quest_s5", "{!}{s4} deceased and thus the quest is aborted!"),
   ("s4_awarded_to_s5", "{s4} awarded to {s5}"),
   ("s11_reacts_to_granting_of_s12_to_s10", "{!}{s11} reacts to granting of {s12} to {s10}"),
   ("debug__hiring_men_to_s7_ideal_size__reg6_ideal_top_size__reg7_hiring_budget__reg8", "{!}DEBUG : hiring men to {s7} ideal size : {reg6}, ideal top size : {reg7}, hiring budget : {reg8}"),

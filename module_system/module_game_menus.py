@@ -2277,8 +2277,12 @@ game_menus = [
 ("camp_action",mnf_enable_hot_keys,
   "Choose an action:",
   "none",[
-
+    (set_background_mesh, "mesh_pic_camp"),
   ],[
+			("camp_action",[],"Kill Dullius.",[
+        (call_script, "script_kill_lord_lady", "trp_aux_commander_11", "trp_player", 0),
+      ]),
+
     # does not work
     # ("camp_action",[
     #   (eq, "$g_campaign_type", g_campaign_story_rome),
@@ -34797,6 +34801,8 @@ game_menus = [
 			# Original camp menus
 			("camp_action",[],"Take an action.",
 				[(jump_to_menu, "mnu_camp_action")]),
+
+
 
 			("camp_cheat", [(ge, "$cheat_mode", 1)], "CHEAT MENU!",
 				[(jump_to_menu, "mnu_camp_cheat")]),

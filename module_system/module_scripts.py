@@ -21972,8 +21972,15 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, ":troop_no", slot_troop_player_debt, ":cur_debt"),
     (try_begin), #SB : display only if > 0
         (gt, ":cur_debt", 0),
-        (str_store_troop_name_link, s1, ":troop_no"),
-        (display_message, "@You now owe {reg2} denarii to {s1}.", message_negative),
+        (try_begin),
+            (troop_slot_eq, ":troop_no", slot_troop_occupation, dplmc_slto_dead), # is not dead
+            (str_store_troop_name_link, s1, ":troop_no"),
+            (display_message, "@As {s1} deceased, your debt of {reg2} has been cleared.", message_positive),#
+            (troop_set_slot, ":troop_no", slot_troop_player_debt, 0),
+        (else_try),
+            (str_store_troop_name_link, s1, ":troop_no"),
+            (display_message, "@You now owe {reg2} denarii to {s1}.", message_negative),
+        (try_end),
     (try_end),
 ]),
 
@@ -72678,10 +72685,9 @@ scripts = scripts_hardcoded + [
     (try_for_range, ":quest", all_quests_begin, all_quests_end),
         (check_quest_active, ":quest"),
         (quest_slot_eq, ":quest", slot_quest_giver_troop, ":lord"),
-        (str_store_troop_name, s4, ":lord"),
-        (str_store_quest_name, s5, ":quest"),
-        (display_message, "str_s4_death_aborts_quest_s5"),
         (call_script, "script_abort_quest", ":quest", 0),
+        (str_store_troop_name, s4, ":lord"),
+        (display_message, "str_s4_death_aborts_quest_s5"),
     (try_end),
 ]),
 
