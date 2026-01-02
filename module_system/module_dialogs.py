@@ -23325,6 +23325,7 @@ dialogs =[
   (party_get_slot, ":home_town", "$g_encountered_party", slot_party_home_center),
   (str_store_party_name, s11, ":home_town"),
   (party_get_slot, ":target_port", "$g_encountered_party", slot_party_ai_object),
+
   (try_begin),
     (call_script, "script_cf_is_port_party", ":target_port"),
     (party_get_slot, ":target_town", ":target_port", slot_party_port_party),
@@ -23335,28 +23336,33 @@ dialogs =[
 ]],
 
 [anyone|plyr,"traveller_ship_talk",
-[],
-    "I will take all you've got!", "close_window",
-[
-      (call_script, "script_diplomacy_party_attacks_neutral", "p_main_party", "$g_encountered_party"),
+[],"I will take all you've got!", "close_window",[
+  (call_script, "script_diplomacy_party_attacks_neutral", "p_main_party", "$g_encountered_party"),
 
-      (party_get_slot, ":home_town", "$g_encountered_party", slot_party_home_center),
-      (party_get_slot, ":target_port", "$g_encountered_party", slot_party_ai_object),
-      (party_get_slot, ":target_town", ":target_port", slot_party_port_party),
-      (call_script, "script_change_player_relation_with_center", ":home_town", -2),
-      (call_script, "script_change_player_relation_with_center", ":target_town", -1),
-      #
-      (store_relation,":rel", "$g_encountered_party_faction","fac_player_faction"),
-      (try_begin),
-        (gt, ":rel", 0),
-        (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -8),
-      (else_try),
-        (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -3),
-      (try_end),
-      #
-      (assign,"$encountered_party_hostile",1),
-      (assign,"$encountered_party_friendly",0),
-  ]],
+  (party_get_slot, ":home_town", "$g_encountered_party", slot_party_home_center),
+
+  (party_get_slot, ":target_port", "$g_encountered_party", slot_party_ai_object),
+  (try_begin),
+    (call_script, "script_cf_is_port_party", ":target_port"),
+    (party_get_slot, ":target_town", ":target_port", slot_party_port_party),
+  (else_try),
+    (assign, ":target_town", ":target_port"),
+  (try_end),
+
+  (call_script, "script_change_player_relation_with_center", ":home_town", -2),
+  (call_script, "script_change_player_relation_with_center", ":target_town", -1),
+  #
+  (store_relation,":rel", "$g_encountered_party_faction","fac_player_faction"),
+  (try_begin),
+    (gt, ":rel", 0),
+    (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -8),
+  (else_try),
+    (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -3),
+  (try_end),
+  #
+  (assign,"$encountered_party_hostile",1),
+  (assign,"$encountered_party_friendly",0),
+]],
 
 [anyone|plyr,"traveller_ship_talk",[], "Very well. That's all I wanted to know.", "close_window",[(assign, "$g_leave_encounter",1)]],
 

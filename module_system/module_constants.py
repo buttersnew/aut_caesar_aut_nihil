@@ -2655,6 +2655,9 @@ donkeys_end   = "itm_arrows"
 chariots_begin = "itm_basic_chariot_horse"
 chariots_end = "itm_sumpter_horse"
 
+chariot_scene_props_begin = "spr_basic_chariot"
+chariot_scene_props_end   = "spr_new_rome_gaul_a"
+
 arabian_horses_begin = "itm_arabian_horse_a"
 arabian_horses_end   = "itm_parthian_horse_a"
 
