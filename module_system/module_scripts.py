@@ -94651,6 +94651,26 @@ scripts = scripts_hardcoded + [
 
     (assign, reg0, ":culture"),
 ]),
+#script_cf_is_not_poppaea_antonia_but_none
+("cf_is_not_poppaea_antonia_but_none",[
+    (store_script_param, ":true_or_false", 1),
+    (quest_get_slot, ":bitch", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+    (assign, ":c", 0),
+    (try_begin),
+        (eq, ":bitch", -1),
+        (assign, ":c", 1),
+        # (display_message, "@Debug: antonia or poppaea is none."),
+    (else_try),
+        (gt, ":bitch", -1),
+        (this_or_next|troop_slot_eq, ":bitch", slot_troop_occupation, dplmc_slto_dead),
+        (troop_slot_eq, ":bitch", slot_troop_occupation, dplmc_slto_exile),
+        (assign, ":c", 1),
+        # (display_message, "@Debug: antonia or poppaea is dead or exiled."),
+    (try_end),
+    # (assign, reg0, ":bitch"),
+    # (display_message, "@Debug {reg0}"),
+    (eq, ":c", ":true_or_false"),
+]),
 ] + scripts_wse2 + scripts_dplmc
 
 #end of file

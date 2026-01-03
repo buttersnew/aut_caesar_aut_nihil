@@ -2284,6 +2284,25 @@ game_menus = [
       #   (call_script, "script_kill_lord_lady", "trp_aux_commander_11", "trp_player", 0),
       # ]),
 
+    # debug all quest slots
+    # ("debug_all_quest_slots",[
+    #   (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
+    # ],"{!}Debug: All quest slots.",[
+    #   (try_for_range, ":quest",  all_quests_begin, all_quests_end),
+    #     (try_for_range, ":slot", 0, 50),
+    #       (quest_get_slot, reg0, ":quest", ":slot"),
+    #       (str_store_quest_name, s0, ":quest"),
+    #       (assign, reg1, ":slot"),
+    #       (assign, reg2, reg0),
+    #       (display_message, "@Quest {s0} slot {reg1}: {reg2}"),
+    #     (try_end),
+    #   (try_end),
+    # ]),
+    # ("debug_all_quest_slots",[
+    # ],"Test invalid bitch slot",[
+    #   (quest_set_slot, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, -1)
+    # ]),
+
     # does not work
     # ("camp_action",[
     #   (eq, "$g_campaign_type", g_campaign_story_rome),
@@ -4918,6 +4937,17 @@ game_menus = [
     (try_begin), # main story final victory
         (assign, ":legatus", -1),
         (quest_get_slot, ":bitch", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+
+        (try_begin),
+            (eq, ":bitch", -1),
+            (assign, ":bitch", "trp_legatus_legionis"),
+        (else_try),
+            (gt, ":bitch", -1),
+            (this_or_next|troop_slot_eq, ":bitch", slot_troop_occupation, dplmc_slto_dead),
+            (troop_slot_eq, ":bitch", slot_troop_occupation, dplmc_slto_exile),
+            (assign, ":bitch", "trp_legatus_legionis"),
+        (try_end),
+
         (assign, ":enemy_goy", -1),
         (try_begin),
             (check_quest_active, "qst_four_emperors"),
@@ -4942,7 +4972,7 @@ game_menus = [
             (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 16),
         (try_end),
         (gt, ":legatus", -1),
-        (gt, ":bitch", -1),
+        # (gt, ":bitch", -1),
         (gt, ":enemy_goy", -1),
         (assign, "$talk_context", tc_hero_defeated),
 
@@ -4952,12 +4982,17 @@ game_menus = [
         # 1-3 player, antonia, vespasian
         (set_visitor, 0, ":enemy_goy"),
 
-        (mission_tpl_entry_set_override_flags, "mt_conversation_encounter", 2, af_override_everything),
-        (mission_tpl_entry_clear_override_items),
-        (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 2, itm_caligea),#itm_caligea,itm_roman_lupa_dress_2,itm_cloak_5
-        (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 2, itm_roman_lupa_dress_2),#itm_caligea,itm_roman_lupa_dress_2,itm_cloak_5
-        (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 2, itm_cloak_5),#itm_caligea,itm_roman_lupa_dress_2,itm_cloak_5
+
+        (try_begin),
+          (neq, ":bitch", "trp_legatus_legionis"),
+          (mission_tpl_entry_set_override_flags, "mt_conversation_encounter", 2, af_override_everything),
+          (mission_tpl_entry_clear_override_items),
+          (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 2, itm_caligea),
+          (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 2, itm_roman_lupa_dress_2),
+          (mission_tpl_entry_add_override_item, "mt_conversation_encounter", 2, itm_cloak_5),
+        (try_end),
         (set_visitor, 2, ":bitch"),
+
         (set_visitor, 3, ":legatus"),
         (set_visitor, 1, "trp_player"),
 
@@ -14322,7 +14357,21 @@ game_menus = [
     #Who's in the hall? - Dj_FRedy
 
     ##first do all special events in correct order
-    (try_begin),
+    (try_begin),# main story other goy battle of bedriacum
+        (eq, "$current_town", "p_town_6"),
+        (check_quest_active, "qst_four_emperors"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 12),
+        (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_timer, -1),
+        (jump_to_menu, "mnu_first_battle_of_bedriacum_decide"),
+    (else_try), # main story fleet in alexandria
+        (eq, "$current_town", "p_town_20"),
+        (check_quest_active, "qst_four_emperors"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 8),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
+        (jump_to_menu, "mnu_the_fleet_decide"),
+    (else_try),
         (check_quest_active, "qst_nero_greece_tour"),
         (quest_slot_eq, "qst_nero_greece_tour", slot_quest_current_state, 20),
         (quest_slot_eq, "qst_nero_greece_tour", slot_quest_target_center, "$current_town"),
@@ -14351,20 +14400,6 @@ game_menus = [
         (check_quest_active, "qst_triumph"),
         (eq, "$g_encountered_party_faction", "$players_kingdom"),
         (call_script, "script_troop_holds_triumph", "trp_player"),
-    (else_try), # main story other goy battle of bedriacum
-        (eq, "$current_town", "p_town_6"),
-        (check_quest_active, "qst_four_emperors"),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 12),
-        (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_timer, -1),
-        (jump_to_menu, "mnu_first_battle_of_bedriacum_decide"),
-    (else_try), # main story fleet in alexandria
-        (eq, "$current_town", "p_town_20"),
-        (check_quest_active, "qst_four_emperors"),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 8),
-        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
-        (jump_to_menu, "mnu_the_fleet_decide"),
     (else_try),
         (eq, "$current_town", "p_town_6"),
         (neq, "$g_is_emperor", 1),
@@ -54852,7 +54887,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("first_battle_of_bedriacum_1",mnf_disable_all_keys,
-  "As the legions unfurl their banners and set forth on their journey Northward, the heavens above betray a foreboding omen. Like the brooding countenance of Jupiter himself, dark clouds converge upon the firmament, casting a pall over the earth below. And lo, as if stirred by the fury of Neptune's trident, the heavens weep, their tears cascading down in a torrential downpour.",
+  "As the legions raise their eagles and set forth on their journey Northward, the heavens above betray a foreboding omen. Like the brooding countenance of Jupiter himself, dark clouds converge upon the firmament, casting a pall over the earth below. And lo, as if stirred by the fury of Neptune's trident, the heavens weep, their tears cascading down in a torrential downpour.",
   "none",[
     (set_background_mesh, "mesh_pic_legion_march"),
    ],
@@ -55053,9 +55088,27 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ("the_final_speech",0,
   "Wrapped into a red cloak and dressed in a white tunic, {s16} approaches to give a final speech before the battle starts.",
   "none",[
-    (quest_get_slot, ":poppaea_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
-    (str_store_troop_name, s16, ":poppaea_or_antonia"),
-    (set_background_mesh, "mesh_pic_mb_warrior_3"),
+    (str_clear, s16),
+    (try_begin),
+      (call_script, "script_cf_is_not_poppaea_antonia_but_none", 1),
+      (try_begin),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 10),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
+        (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 11),
+      (else_try),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 14),
+        (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+        (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+        (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 15),
+      (try_end),
+      (jump_to_menu, "mnu_simple_encounter"),
+      (display_message, "@DEBUG 1", message_alert),
+    (else_try),
+      (display_message, "@DEBUG 2", message_alert),
+      (quest_get_slot, ":poppaea_or_antonia", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+      (str_store_troop_name, s16, ":poppaea_or_antonia"),
+      (set_background_mesh, "mesh_pic_mb_warrior_3"),
+    (try_end),
   ],[
     ("Continue.",[],"Continue.",[
       (play_track, "track_cutscene_battle", 2),
@@ -55553,7 +55606,14 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_dplmc_copy_inventory", "trp_player", "trp_multiplayer_profile_troop_male"),
 
       (set_visitor, 1, "trp_multiplayer_profile_troop_male"),
-      (set_visitor, 2, "trp_antonia"),
+
+      (try_begin),
+        (call_script, "script_cf_is_not_poppaea_antonia_but_none", 0),
+        (quest_get_slot, ":bitch", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+        (troop_raise_skill, ":bitch", skl_riding, 10),
+        (set_visitor, 2, ":bitch"),
+      (try_end),
+
       (set_visitor, 3, "trp_aux_cav_praetoriani_2"),
       (set_visitor, 4, "trp_aux_cav_praetoriani_2"),
       (set_visitor, 5, "trp_aux_cav_praetoriani_2"),
@@ -55571,8 +55631,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
           (set_visitors, ":entry", "trp_roman_town_walker_female", 6),
           (set_visitors, ":entry", "trp_roman_town_walker", 7),
       (try_end),
-
-      (troop_raise_skill, "trp_antonia", skl_riding, 10),
 
       (assign, "$tutorial_state", 0),
       (try_begin),

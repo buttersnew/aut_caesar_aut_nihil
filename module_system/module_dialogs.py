@@ -14367,6 +14367,20 @@ dialogs =[
 ######################################################
 ################ other goy
 ### after battle
+[trp_legatus_legionis,"start",[ # this is the case that neither poppaea nor antonia are allied with player
+  (check_quest_active, "qst_four_emperors"),
+  (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 16),
+
+  (call_script, "script_cf_is_not_poppaea_antonia_but_none", 1),
+
+  (this_or_next|quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),
+  (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
+
+  (eq, "$talk_context", tc_hero_defeated),
+],"Ave {playername}! Ave Caesar! We soldiers are eager to proclaim you sole Caesar and Imperator!",
+"other_goy_total_defeat_intro_0",[]],
+
+
 [trp_antonia,"start",[
   (quest_slot_eq, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, "trp_antonia"),
   (check_quest_active, "qst_four_emperors"),
@@ -14410,10 +14424,24 @@ dialogs =[
 "other_goy_total_defeat_intro_0",[]],
 
 [anyone|plyr,"other_goy_total_defeat_intro_0",[
+  (call_script, "script_cf_is_not_poppaea_antonia_but_none", 1),
+],"I am honored by your loyalty.",
+"other_goy_total_defeat_intro_1",[]],
+
+[anyone|plyr,"other_goy_total_defeat_intro_0",[
+  (call_script, "script_cf_is_not_poppaea_antonia_but_none", 1),
+],"I accept the Purple.",
+"other_goy_total_defeat_intro_1",[]],
+
+[anyone|plyr,"other_goy_total_defeat_intro_0",[
+  (call_script, "script_cf_is_not_poppaea_antonia_but_none", 0),
 ],"It was a harsh battle. It brings solace to behold your radiant face once more.",
 "other_goy_total_defeat_intro_1",[]],
+
 [anyone|plyr,"other_goy_total_defeat_intro_0",[
+  (call_script, "script_cf_is_not_poppaea_antonia_but_none", 0),
   (quest_get_slot, ":bitch", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+  (neq, ":bitch", -1),
   (str_store_troop_name, s41, ":bitch"),
 ],"I am glad to see you again, {s41}.",
 "other_goy_total_defeat_intro_1",[]],
@@ -14427,9 +14455,14 @@ dialogs =[
       (assign, ":enemy_goy", "trp_senator_2"),
   (try_end),
   (str_store_troop_name_plural, s40, ":enemy_goy"),
-  (quest_get_slot, ":bitch", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
-  (str_store_troop_name, s41, ":bitch"),
-],"{s41} and {playername}. I am happy to inform you that we captured {s40}.",
+  (str_store_string, s42, "@Ave Caesar!"),
+  (try_begin),
+    (call_script, "script_cf_is_not_poppaea_antonia_but_none", 0),
+    (quest_get_slot, ":bitch", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+    (str_store_troop_name, s41, ":bitch"),
+    (str_store_string, s42, "@{s41} and {playername},"),
+  (try_end),
+],"{s42} I am happy to inform you that we captured {s40}.",
 "other_goy_total_defeat_intro_end",[
   (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 17),
   (call_script, "script_set_conversation_troop", "trp_legatus_12"),
@@ -14483,11 +14516,18 @@ dialogs =[
   (quest_set_slot, "qst_four_emperors", slot_quest_failure_consequence, 3),
 ]],
 
+[trp_legatus_legionis,"other_goy_total_defeat_1",[ # this is the case that neither poppaea nor antonia are allied with player
+  (call_script, "script_cf_is_not_poppaea_antonia_but_none", 1),
+],"As you wish {playername}! I will bring him to the most remote part of the world.",
+"other_goy_total_defeat_2",[]],
+
 [trp_kingdom_7_lady_1,"other_goy_total_defeat_1",[
+  (quest_slot_eq, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, "trp_kingdom_7_lady_1"),
 ],"-- She whispers with a sweet voice into your ears. --^^{playername}, keeping a pretender alive is not a good decision. We should make him disappear, at least from the Roman Empire...",
 "other_goy_total_defeat_end",[]],
 
 [trp_antonia,"other_goy_total_defeat_1",[
+  (quest_slot_eq, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, "trp_antonia"),
 ],"What? {playername}! We can't keep him alive after all what happened. We can't keep a defeated pretender alive.",
 "other_goy_total_defeat_2",[]],
 
@@ -14508,6 +14548,11 @@ dialogs =[
   (call_script, "script_set_conversation_troop", "trp_statthalter_9"),
 ]],
 
+[trp_legatus_legionis,"other_goy_total_defeat_3",[ # this is the case that neither poppaea nor antonia are allied with player
+  (call_script, "script_cf_is_not_poppaea_antonia_but_none", 1),
+],"-- He looks towards you, waiting for a sign of approval, and you nod. --^^^Ave Caesar! I will assist him in ending his life.^^-- He leaves together with the condemned man. --",
+"other_goy_total_defeat_end",[]],
+
 [trp_antonia,"other_goy_total_defeat_3",[
   (quest_slot_eq, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, "trp_antonia"),
 ],"Although I would rather see you die painfully, I allow you to die honorably. You're lucky because I'm in a good mood right now and don't want to argue with {playername}.",
@@ -14517,6 +14562,25 @@ dialogs =[
   (quest_slot_eq, "qst_four_emperors", slot_quest_main_antonia_or_poppaea, "trp_kingdom_7_lady_1"),
 ],"Your wish shall be granted!",
 "other_goy_total_defeat_end",[]],
+
+
+[anyone|plyr,"other_goy_total_defeat_end",[
+  (call_script, "script_cf_is_not_poppaea_antonia_but_none", 1),
+  (str_store_troop_name_plural, s39, "trp_legatus_12"),
+],"I will march back to Rome. {s39}, you will burry the death and distribute the loot to the troops.",
+"close_window",[
+  (str_store_troop_name_link, s20, "trp_senator_2"),
+  (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 5),
+  (add_quest_note_from_sreg, "qst_blank_quest_19", 11, "@With combined forces you defeated {s20} in the battle of Bedriacum.", 1),
+  (call_script, "script_succeed_quest", "qst_four_emperors"),
+  (call_script, "script_end_quest", "qst_four_emperors"),
+  (add_xp_as_reward, 5000),
+
+  (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
+  (assign, "$auto_menu", "mnu_player_enter_rome"),
+
+  (assign, "$g_encountered_party", "p_town_6"),
+]],
 
 [anyone,"other_goy_total_defeat_end",[
   (str_store_troop_name_plural, s39, "trp_legatus_12"),
@@ -14689,6 +14753,7 @@ dialogs =[
 +" For you there will only be infinite suffering. In the fires of Hades you will roast until the end of time."
 +" And exactly that will be your punishment. You will be burned alive.",
 "vitellius_total_victory_3",[]],
+
 [trp_statthalter_9,"vitellius_total_victory_2",[
 ],"Don't be a coward {playername}. I can't keep you alive. You have too many supporters and too much power. However, I will allow you to die honorable in Roman fashio.",
 "vitellius_total_victory_3",[]],

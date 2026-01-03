@@ -33580,10 +33580,13 @@ mission_templates = [
               (agent_is_active, ":agent_no"),
               (try_begin),
                   (agent_get_troop_id, ":agent_troop", ":agent_no"),
+
+                  (quest_get_slot, ":bitch", "qst_four_emperors", slot_quest_main_antonia_or_poppaea),
+
                   (this_or_next|main_party_has_troop, ":agent_troop"),
                   (this_or_next|eq, ":agent_troop", "trp_aux_cav_praetoriani_2"),
                   (this_or_next|eq, ":agent_troop", "trp_multiplayer_profile_troop_male"),
-                  (eq, ":agent_troop", "trp_antonia"),
+                  (eq, ":agent_troop", ":bitch"),
                   (store_random_in_range, ":r", 0, 1000),
                   (val_mul, ":r", -1),
                   (position_move_x, pos1, ":r"), # correction for angle numerical loss
