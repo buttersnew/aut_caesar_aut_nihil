@@ -288,43 +288,43 @@ itemsfile version 3
  0
 0
 
- itm_amber Amber Amber 1  tradegood_amber 0  65547 0 1200 0 7.000000 80 0 0 0 0 0 0 0 0 0 0 0
+ itm_amber Amber Amber 1  tradegood_amber 0  65547 0 1200 0 7.000000 80 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_perfume Perfume Perfume 1  roman_palace_jug_2 0  65547 0 5000 0 1.000000 60 0 0 0 0 0 0 0 0 0 0 0
+ itm_perfume Perfume Perfume 1  roman_palace_jug_2 0  65547 0 5000 0 1.000000 60 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_incense Incense Incense 1  roman_palace_jug 0  65547 0 600 0 1.000000 60 0 0 0 0 0 0 0 0 0 0 0
+ itm_incense Incense Incense 1  roman_palace_jug 0  65547 0 600 0 1.000000 60 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_ivory Ivory Ivory 1  tradegood_walrusIvory 0  65547 0 2100 0 7.000000 80 0 0 0 0 0 0 0 0 0 0 0
+ itm_ivory Ivory Ivory 1  tradegood_walrusIvory 0  65547 0 2100 0 7.000000 80 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_silver Silver Silver 1  tradegood_silver 0  65547 0 800 0 7.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_silver Silver Silver 1  tradegood_silver 0  65547 0 800 0 7.000000 90 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_stone Stone Stone 1  tradegood_stone 0  65547 0 104 0 60.000000 100 0 0 0 0 0 0 0 0 0 0 0
+ itm_stone Stone Stone 1  tradegood_stone 0  65547 0 104 0 60.000000 100 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_timber Timber Timber 1  tradegood_wood 0  65547 0 300 0 60.000000 100 0 0 0 0 0 0 0 0 0 0 0
+ itm_timber Timber Timber 1  tradegood_wood 0  65547 0 300 0 60.000000 100 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_soapstone Soapstone Soapstone 1  tradegood_soapastone 0  65547 0 320 0 40.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_soapstone Soapstone Soapstone 1  tradegood_soapastone 0  65547 0 320 0 40.000000 90 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_jewelry Jewellery Jewellery 1  tradegood_jewelry 0  65547 0 3500 0 5.000000 80 0 0 0 0 0 0 0 0 0 0 0
+ itm_jewelry Jewellery Jewellery 1  tradegood_jewelry 0  65547 0 3500 0 5.000000 80 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_salt Salt Salt 1  salt_sack 0  65547 0 255 0 50.000000 120 0 0 0 0 0 0 0 0 0 0 0
+ itm_salt Salt Salt 1  salt_sack 0  65547 0 255 0 50.000000 120 0 0 0 0 0 0 0 0 50 0 0
  0
 0
 
@@ -332,55 +332,55 @@ itemsfile version 3
  0
 0
 
- itm_pottery Pottery Pottery 1  jug 0  65547 0 200 0 36.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_pottery Pottery Pottery 1  jug 0  65547 0 200 0 36.000000 90 0 0 0 0 0 0 0 0 35 0 0
  0
 0
 
- itm_laquerware Laquerware Laquerware 1  laquerware 0  11 0 1000 0 8.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_laquerware Laquerware Laquerware 1  laquerware 0  11 0 1000 0 8.000000 90 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_raw_flax Flax_Bundle Flax_Bundle 1  raw_flax 0  65547 0 300 0 16.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_raw_flax Flax_Bundle Flax_Bundle 1  raw_flax 0  65547 0 300 0 16.000000 90 0 0 0 0 0 0 0 0 25 0 0
  0
 0
 
- itm_linen Linen Linen 1  linen 0  65547 0 500 0 16.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_linen Linen Linen 1  linen 0  65547 0 500 0 16.000000 90 0 0 0 0 0 0 0 0 25 0 0
  0
 0
 
- itm_wool Wool Wool 1  wool_sack 0  65547 0 260 0 16.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_wool Wool Wool 1  wool_sack 0  65547 0 260 0 16.000000 90 0 0 0 0 0 0 0 0 15 0 0
  0
 0
 
- itm_wool_cloth Wool_Cloth Wool_Cloth 1  wool_cloth 0  65547 0 500 0 16.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_wool_cloth Wool_Cloth Wool_Cloth 1  wool_cloth 0  65547 0 500 0 16.000000 90 0 0 0 0 0 0 0 0 15 0 0
  0
 0
 
- itm_raw_silk Raw_Silk Raw_Silk 1  raw_silk_bundle 0  65547 0 1200 0 60.000000 80 0 0 0 0 0 0 0 0 0 0 0
+ itm_raw_silk Raw_Silk Raw_Silk 1  raw_silk_bundle 0  65547 0 1200 0 60.000000 80 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_raw_dyes Dyes Dyes 1  dyes 0  65547 0 400 0 20.000000 80 0 0 0 0 0 0 0 0 0 0 0
+ itm_raw_dyes Dyes Dyes 1  dyes 0  65547 0 400 0 20.000000 80 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_velvet Velvet Velvet 1  velvet 0  65547 0 2050 0 16.000000 30 0 0 0 0 0 0 0 0 0 0 0
+ itm_velvet Velvet Velvet 1  velvet 0  65547 0 2050 0 16.000000 30 0 0 0 0 0 0 0 0 5 0 0
  0
 0
 
- itm_iron Iron Iron 1  iron 0  65547 0 528 0 56.000000 60 0 0 0 0 0 0 0 0 0 0 0
+ itm_iron Iron Iron 1  iron 0  65547 0 528 0 56.000000 60 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_tools Tools Tools 1  iron_hammer 0  65547 0 810 0 36.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_tools Tools Tools 1  iron_hammer 0  65547 0 810 0 36.000000 90 0 0 0 0 0 0 0 0 10 0 0
  0
 0
 
- itm_raw_leather Hides Hides 1  leatherwork_inventory 0  65547 0 240 0 16.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_raw_leather Hides Hides 1  leatherwork_inventory 0  65547 0 240 0 16.000000 90 0 0 0 0 0 0 0 0 30 0 0
  0
 0
 
- itm_leatherwork Leatherwork Leatherwork 1  leatherwork_frame 0  65547 0 440 0 16.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_leatherwork Leatherwork Leatherwork 1  leatherwork_frame 0  65547 0 440 0 16.000000 90 0 0 0 0 0 0 0 0 30 0 0
  0
 0
 
@@ -388,7 +388,7 @@ itemsfile version 3
  0
 0
 
- itm_furs Furs Furs 1  fur_pack 0  65547 0 782 0 16.000000 90 0 0 0 0 0 0 0 0 0 0 0
+ itm_furs Furs Furs 1  fur_pack 0  65547 0 782 0 16.000000 90 0 0 0 0 0 0 0 0 30 0 0
  0
 0
 
@@ -6210,22 +6210,22 @@ itemsfile version 3
  19 22
 0
 
- itm_nubian_spear_1 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_1 0  5643763716 44754521523490560 800 8202 3.000000 20 0 0 0 10 0 86 0 174 0 282 34
+ itm_nubian_spear_1 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_1 0  1348796420 44754521523490560 800 8202 3.000000 20 0 0 0 10 0 86 0 174 0 282 34
  2
  19 22
 0
 
- itm_nubian_spear_2 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_2 0  5643763716 44754521523490560 800 8202 4.000000 20 0 0 0 10 0 84 0 181 0 280 36
+ itm_nubian_spear_2 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_2 0  1348796420 44754521523490560 800 8202 4.000000 20 0 0 0 10 0 84 0 181 0 280 36
  2
  19 22
 0
 
- itm_nubian_spear_3 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_3 0  5643763716 44754521523490560 800 8202 3.000000 20 0 0 0 10 0 87 0 169 0 284 33
+ itm_nubian_spear_3 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_3 0  1348796420 44754521523490560 800 8202 3.000000 20 0 0 0 10 0 87 0 169 0 284 33
  2
  19 22
 0
 
- itm_nubian_spear_4 Long_Nubian_War_Spear Long_Nubian_War_Spear 1  nubian_spear_4 0  5643763716 44754521523490560 800 8202 5.000000 20 0 0 0 10 0 82 0 200 0 286 30
+ itm_nubian_spear_4 Long_Nubian_War_Spear Long_Nubian_War_Spear 1  nubian_spear_4 0  1348796420 44754521523490560 800 8202 5.000000 20 0 0 0 10 0 82 0 200 0 286 30
  2
  19 22
 0
@@ -8285,17 +8285,17 @@ itemsfile version 3
  10 11 12 13 23 14 15
 0
 
- itm_pilum Pilum Pilum 1  roman_pilum_100 0  17592282578954 262144 500 4398046781448 2.000000 70 0 0 90 3 0 80 25 100 1 289 0
+ itm_pilum Pilum Pilum 1  roman_pilum_100 0  17596577546250 262144 500 4398046781448 2.000000 70 0 0 90 3 0 80 25 100 1 289 0
  2
  13 23
 0
 
- itm_pilum_2 Pilum Pilum 1  roman_pilum_100_h 0  17592282578954 262144 500 4398046781448 2.000000 70 0 0 90 4 0 80 25 100 1 291 0
+ itm_pilum_2 Pilum Pilum 1  roman_pilum_100_h 0  17596577546250 262144 500 4398046781448 2.000000 70 0 0 90 4 0 80 25 100 1 291 0
  2
  13 23
 0
 
- itm_pilum_3 Pilum Pilum 1  roman_pilum_87 0  17592282578954 262144 500 4398046781448 2.000000 70 0 0 90 3 0 80 25 87 1 289 0
+ itm_pilum_3 Pilum Pilum 1  roman_pilum_87 0  17596577546250 262144 500 4398046781448 2.000000 70 0 0 90 3 0 80 25 87 1 289 0
  2
  13 23
 0
@@ -9182,22 +9182,22 @@ itemsfile version 3
  19 22
 0
 
- itm_noswing_nubian_spear_1 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_1 0  5643698180 44754521523486976 800 8202 3.000000 20 0 0 0 10 0 86 0 174 0 282 0
+ itm_noswing_nubian_spear_1 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_1 0  1348730884 44754521523486976 800 8202 3.000000 20 0 0 0 10 0 86 0 174 0 282 0
  2
  19 22
 0
 
- itm_noswing_nubian_spear_2 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_2 0  5643698180 44754521523486976 800 8202 4.000000 20 0 0 0 10 0 84 0 181 0 280 0
+ itm_noswing_nubian_spear_2 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_2 0  1348730884 44754521523486976 800 8202 4.000000 20 0 0 0 10 0 84 0 181 0 280 0
  2
  19 22
 0
 
- itm_noswing_nubian_spear_3 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_3 0  5643698180 44754521523486976 800 8202 3.000000 20 0 0 0 10 0 87 0 169 0 284 0
+ itm_noswing_nubian_spear_3 Nubian_War_Spear Nubian_War_Spear 1  nubian_spear_3 0  1348730884 44754521523486976 800 8202 3.000000 20 0 0 0 10 0 87 0 169 0 284 0
  2
  19 22
 0
 
- itm_noswing_nubian_spear_4 Long_Nubian_War_Spear Long_Nubian_War_Spear 1  nubian_spear_4 0  5643698180 44754521523486976 800 8202 5.000000 20 0 0 0 10 0 82 0 200 0 286 0
+ itm_noswing_nubian_spear_4 Long_Nubian_War_Spear Long_Nubian_War_Spear 1  nubian_spear_4 0  1348730884 44754521523486976 800 8202 5.000000 20 0 0 0 10 0 82 0 200 0 286 0
  2
  19 22
 0

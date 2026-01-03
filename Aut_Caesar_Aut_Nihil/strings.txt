@@ -1,5 +1,5 @@
 stringsfile version 1
-9734
+9738
 str_no_string NO_STRING!
 str_empty_string _
 str_yes Yes.
@@ -2998,7 +2998,7 @@ str_traveller_attack_found {!}Traveller_attack_found
 str_s42 {s42}
 str_test_diagnostic_quest_found_for_s4 {!}Test_diagnostic:_Quest_found_for_{s4}
 str_s4_changing_sides_aborts_quest {!}{s4}_changing_sides_aborts_quest
-str_s4_death_aborts_quest_s5 {!}{s4}_deceased_and_the_quest_{s5}_is_aborted
+str_s4_death_aborts_quest_s5 {!}{s4}_deceased_and_thus_the_quest_is_aborted!
 str_s4_awarded_to_s5 {s4}_awarded_to_{s5}
 str_s11_reacts_to_granting_of_s12_to_s10 {!}{s11}_reacts_to_granting_of_{s12}_to_{s10}
 str_debug__hiring_men_to_s7_ideal_size__reg6_ideal_top_size__reg7_hiring_budget__reg8 {!}DEBUG_:_hiring_men_to_{s7}_ideal_size_:_{reg6},_ideal_top_size_:_{reg7},_hiring_budget_:_{reg8}
@@ -4342,7 +4342,7 @@ str_linen_site linen_weavery
 str_wool_cloth_site wool_weavery
 str_velvet_site dyeworks
 str_under_sequestration Under_sequestration
-str_describe_secondary_input _In_addition,_you_will_also_need_to_purchase_{s11}_worth_{reg10}_denarii.
+str_describe_secondary_input _In_addition,_you_will_also_need_to_purchase_{reg14}_units_of_{s11}_worth_{reg10}_denarii.
 str_profit profit
 str_loss loss
 str_server_name_s0 Server_Name:_{s0}
@@ -7479,6 +7479,10 @@ str_slave_skill_looting_2 -_Sneaky,_likely_to_pocket_loose_change.
 str_slave_skill_looting_1 -_Has_sticky_fingers,_watch_small_items.
 str_married Married
 str_single Single
+str_faction_relation_increased_details_s13 Your_relation_with_{s1}_has_increased_from_{reg1}_to_{reg2},_as_they_have_{s13}_relations_with_the_{s2}.
+str_faction_relation_detoriated_details_s13 Your_relation_with_{s1}_has_deteriorated_from_{reg1}_to_{reg2},_as_they_have_{s13}_relations_with_the_{s2}.
+str_good good
+str_bad bad
 str_skl_trade Trade_&_Management
 str_skl_leadership Leadership
 str_skl_prisoner_management Prisoner_Management
