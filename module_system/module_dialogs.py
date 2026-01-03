@@ -72016,93 +72016,102 @@ But the peope here are either drunk or busy with other things, you know. Tell me
    ]],
 
 [anyone|plyr,"tavernkeeper_talk",[
-      (store_current_hours,":cur_hours"),
-      (val_sub, ":cur_hours", 24),
-      (gt, ":cur_hours", "$buy_drinks_last_time"),
-	  ##diplomacy start+ Replace with cultural equivalent
-	  ##OLD:
-      #], "I'd like to buy every man who comes in here tonight a jar of your best wine.", "tavernkeeper_buy_drinks",[]],
-	  ##NEW:
-	  (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_TAVERNWINE, s0),
-	 ], "I'd like to buy every man who comes in here tonight a jar of your best {s0}.", "tavernkeeper_buy_drinks",[]],
-	  ##diplomacy end+
+  (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_TAVERNWINE, s0),
+], "I'd like to buy every man who comes in here tonight a jar of your best {s0}.",
+"tavernkeeper_buy_drinks",[]],
+
+[anyone,"tavernkeeper_buy_drinks",[
+  (store_current_hours,":cur_hours"),
+  (val_sub, ":cur_hours", 24),
+  (ge, "$buy_drinks_last_time", ":cur_hours"),
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+], "Begging your pardon, {s0}, but I am fresh out of supply. Come back later when I have restocked.",
+"tavernkeeper_pretalk",[
+]],
+
 
 [anyone,"tavernkeeper_buy_drinks",
 [(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
-], "Of course, {s0}. I reckon {reg5} denarii should be enough for that. What should I tell the lads?", "tavernkeeper_buy_drinks_2",[
-        (assign, "$temp", 2500),
-        (assign, reg5, "$temp"),
-    ]],
+], "Of course, {s0}. I reckon {reg5} denarii should be enough for that. What should I tell the lads?",
+"tavernkeeper_buy_drinks_2",[
+    (assign, "$temp", 2500),
+    (assign, reg5, "$temp"),
+]],
 
-[anyone|plyr,"tavernkeeper_buy_drinks_2",
-[
-        (store_troop_gold, ":gold", "trp_player"),
-        (ge, ":gold", "$temp"),
-        (str_store_party_name, s10, "$current_town"),
-], "Let everyone know of the generosity of {playername} to the people of {s10}.", "tavernkeeper_buy_drinks_end",[
+[anyone|plyr,"tavernkeeper_buy_drinks_2",[
+  (store_troop_gold, ":gold", "trp_player"),
+  (ge, ":gold", "$temp"),
+  (str_store_party_name, s10, "$current_town"),
+], "Let everyone know of the generosity of {playername} to the people of {s10}.",
+"tavernkeeper_buy_drinks_end",[
+]],
 
-    ]],
-
-[anyone,"tavernkeeper_buy_drinks_end",
-  ##diplomacy start+ Replace {Dominus/Domina} with {s0}
-   #[], "Don't worry {Dominus/Domina}. Your name will be cheered and toasted here all night.", "tavernkeeper_pretalk",
-[(call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$current_town"),
-  ], "Don't worry {s0}. Your name will be cheered and toasted here all night.", "tavernkeeper_pretalk",
-   ##diplomacy end+
-[
-       (troop_remove_gold, "trp_player", "$temp"),
-       (call_script, "script_change_player_relation_with_center", "$current_town", 1),
-       (store_current_hours,":cur_hours"),
-       (assign, "$buy_drinks_last_time", ":cur_hours"),
-   ]],
+[anyone,"tavernkeeper_buy_drinks_end",[
+  (call_script, "script_dplmc_print_commoner_at_arg1_says_sir_madame_to_s0", "$current_town"),
+], "Don't worry {s0}. Your name will be cheered and toasted here all night.",
+"tavernkeeper_pretalk",[
+  (troop_remove_gold, "trp_player", "$temp"),
+  (call_script, "script_change_player_relation_with_center", "$current_town", 1),
+  (store_current_hours,":cur_hours"),
+  (assign, "$buy_drinks_last_time", ":cur_hours"),
+]],
 
 [anyone|plyr,"tavernkeeper_buy_drinks_2",[], "Actually, cancel that order.", "tavernkeeper_pretalk",[]],
 
 [anyone|plyr,"tavernkeeper_talk",[], "Any news in this part of the world?", "tavernkeeper_rumor",[]],
 
-[anyone,"tavernkeeper_rumor",[], "{s4}", "tavernkeeper_rumor2",[
+[anyone,"tavernkeeper_rumor",[], "{s4}",
+"tavernkeeper_rumor2",[
   (call_script, "script_get_generic_rumour_string_to_s4"),
 ]],
 
-[anyone|plyr,"tavernkeeper_rumor2",[], "Thank you.", "tavernkeeper_pretalk",[
-      (assign,"$temp2",0),
-  ]],
+[anyone|plyr,"tavernkeeper_rumor2",[], "Thank you.",
+"tavernkeeper_pretalk",[
+  (assign,"$temp2",0),
+]],
 
 #chief Sot anade barrel empieza
 [anyone|plyr,"tavernkeeper_talk",[
+  (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_TAVERNWINE, s0),
+], "I'd like to buy me and my men a barrel of your best {s0}.",
+"tavernkeeper_buy_drinks_troops",[]],
+
+[anyone,"tavernkeeper_buy_drinks_troops",[
   (store_current_hours,":cur_hours"),
   (val_sub, ":cur_hours", 24),
-  (gt, ":cur_hours", "$buy_drinks_last_time"),
-  (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_TAVERNWINE, s0),
-], "I'd like to buy me and my men a barrel of your best {s0}.", "tavernkeeper_buy_drinks_troops",[]],
+  (ge, "$buy_drinks_last_time", ":cur_hours"),
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+], "Begging your pardon, {s0}, but I am fresh out of supply. Come back later when I have restocked.",
+"tavernkeeper_pretalk",[
+]],
 
 [anyone,"tavernkeeper_buy_drinks_troops",[
   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
-], "Of course, {s0}. I reckon {reg5} denarii should be enough for that. What should I tell the lads?", "tavernkeeper_buy_drinks_troops_2",[
+], "Of course, {s0}. I reckon {reg5} denarii should be enough for that. What should I tell the lads?",
+"tavernkeeper_buy_drinks_troops_2",[
   (assign, "$temp", 20),
   (store_party_size_wo_prisoners, reg5, "p_main_party"),
   (store_mul, "$temp", "$temp", reg5),
   (assign, reg5, "$temp"),
 ]],
 
-[anyone|plyr,"tavernkeeper_buy_drinks_troops_2",
-[
-        (store_troop_gold, ":gold", "trp_player"),
-        (ge, ":gold", "$temp"),
-        (str_store_party_name, s10, "$current_town"),
-], "The price is fair enough, let my men have at it.", "tavernkeeper_buy_drinks_troops_end",[
+[anyone|plyr,"tavernkeeper_buy_drinks_troops_2",[
+  (store_troop_gold, ":gold", "trp_player"),
+  (ge, ":gold", "$temp"),
+  (str_store_party_name, s10, "$current_town"),
+], "The price is fair enough, let my men have at it.",
+"tavernkeeper_buy_drinks_troops_end",[
+]],
 
-    ]],
-
-[anyone,"tavernkeeper_buy_drinks_troops_end",
-[], "Don't worry {Dominus/Domina}. Your men will enjoy their pints.", "tavernkeeper_pretalk",
-[
-       (troop_remove_gold, "trp_player", "$temp"),
-      (call_script, "script_change_player_party_morale", 10),
-       (store_current_hours,":cur_hours"),
-       (assign, "$buy_drinks_last_time", ":cur_hours"),
-      (rest_for_hours, 2, 5, 0)
-   ]],
+[anyone,"tavernkeeper_buy_drinks_troops_end",[
+], "Don't worry {Dominus/Domina}. Your men will enjoy their pints.",
+"tavernkeeper_pretalk",[
+  (troop_remove_gold, "trp_player", "$temp"),
+  (call_script, "script_change_player_party_morale", 10),
+  (store_current_hours,":cur_hours"),
+  (assign, "$buy_drinks_last_time", ":cur_hours"),
+  (rest_for_hours, 2, 5, 0)
+]],
 
 [anyone|plyr,"tavernkeeper_buy_drinks_troops_2",[], "Actually, cancel that order.", "tavernkeeper_pretalk",[]],
 #chief anade barrel acaba
