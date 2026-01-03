@@ -114,6 +114,10 @@ triggers = [
 
 #goy event 2
 (24,0,ti_once,[
+    (this_or_next|eq, "$g_campaign_type", g_campaign_lord),
+    (this_or_next|eq, "$g_campaign_type", g_campaign_king),
+    (eq, "$g_campaign_type", g_campaign_sandbox),
+
     (store_current_day, ":day"),
     (neg|troop_slot_ge, "trp_global_variables", g_civil_war_timer, ":day"),
     #(troop_slot_ge, "trp_global_variables", g_civil_war_timer, ":day"),
