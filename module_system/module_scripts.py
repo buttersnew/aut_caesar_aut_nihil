@@ -24005,9 +24005,9 @@ scripts = scripts_hardcoded + [
     (try_end),
 ]),
 
-  # script_init_town_walkers
-  # Input: none
-  # Output: none
+# script_init_town_walkers
+# Input: none
+# Output: none
 ("init_town_walkers",[
     (try_begin),
         (eq, "$town_nighttime", 0),
@@ -24303,23 +24303,22 @@ scripts = scripts_hardcoded + [
     (try_end),
 ]),
 
-  # script_agent_get_town_walker_details
-  # This script assumes this is one of town walkers.
-  # Input: agent_id
-  # Output: reg0: town_walker_type, reg1: town_walker_dna
-  ("agent_get_town_walker_details",
-    [(store_script_param, ":agent_no", 1),
-     (agent_get_entry_no, ":entry_no", ":agent_no"),
-     (store_sub, ":walker_no", ":entry_no", town_walker_entries_start),
-
-     (store_add, ":type_slot", slot_center_walker_0_type, ":walker_no"),
-     (party_get_slot, ":walker_type", "$current_town", ":type_slot"),
-     (store_add, ":dna_slot", slot_center_walker_0_dna, ":walker_no"),
-     (party_get_slot, ":walker_dna", "$current_town", ":dna_slot"),
-     (assign, reg0, ":walker_type"),
-     (assign, reg1, ":walker_dna"),
-     (assign, reg2, ":walker_no"),
-  ]),
+# script_agent_get_town_walker_details
+# This script assumes this is one of town walkers.
+# Input: agent_id
+# Output: reg0: town_walker_type, reg1: town_walker_dna
+("agent_get_town_walker_details",[
+    (store_script_param, ":agent_no", 1),
+    (agent_get_entry_no, ":entry_no", ":agent_no"),
+    (store_sub, ":walker_no", ":entry_no", town_walker_entries_start),
+    (store_add, ":type_slot", slot_center_walker_0_type, ":walker_no"),
+    (party_get_slot, ":walker_type", "$current_town", ":type_slot"),
+    (store_add, ":dna_slot", slot_center_walker_0_dna, ":walker_no"),
+    (party_get_slot, ":walker_dna", "$current_town", ":dna_slot"),
+    (assign, reg0, ":walker_type"),
+    (assign, reg1, ":walker_dna"),
+    (assign, reg2, ":walker_no"),
+]),
 
 ##diplomacy start+
 ##WARNING: this will also clobber s0 now
