@@ -62424,14 +62424,14 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   (str_store_string_reg, s4, ":random"),
 ]],
 
-[anyone|plyr,"spouse_talk",
-[
-    (is_between, "$g_talk_troop", "trp_knight_1_1_wife", "trp_heroes_end"),
-      (eq,"$g_spouse_embarazada",0),
-  ],   "I want to show love to my spouse.","spouse_action_h1",[]],
+[anyone|plyr,"spouse_talk",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, "trp_player"),
+    # (is_between, "$g_talk_troop", "trp_knight_1_1_wife", "trp_heroes_end"),
+  (eq,"$g_spouse_embarazada",0),
+],"I want to show love to my spouse.",
+"spouse_action_h1",[]],
 
-[anyone, "spouse_action_h1",
-[
+[anyone, "spouse_action_h1",[
 	(try_begin),
 		(ge,"$g_talk_troop_relation",70),
 		(str_store_string, s23, "@Oh your the best husband I can imagine."),
@@ -62447,29 +62447,29 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 	],
     "{s23} What did you have in mind?","spouse_action_h2",[]],
 
-[anyone|plyr, "spouse_action_h2",
-[
-      (store_troop_gold,":gold","trp_player"),
-      (ge,":gold",3000),
-  ],   "A romantic meal and what follows after.","spouse_action_h3",[]],
+[anyone|plyr, "spouse_action_h2",[
+  (store_troop_gold,":gold","trp_player"),
+  (ge,":gold",3000),
+],"A romantic meal and what follows after.",
+"spouse_action_h3",[]],
 
 [anyone|plyr, "spouse_action_h2",[
-      (store_troop_gold,":gold","trp_player"),
-      (ge,":gold",2000),
-  ],"I want to give this beautiful ring, this gold bracelet and this necklace to my wife (2.000 denarii)","spouse_regalocasual",
-[
-      (troop_remove_gold,"trp_player",2000),
-      (call_script,"script_change_player_relation_with_troop","$g_talk_troop",2),
-      (assign,"$g_spouse_embarazada",1), #no embarazada
-  ]],
+  (store_troop_gold,":gold","trp_player"),
+  (ge,":gold",2000),
+],"I want to give this beautiful ring, this gold bracelet and this necklace to my wife (2.000 denarii)",
+"spouse_regalocasual",[
+  (troop_remove_gold,"trp_player",2000),
+  (call_script,"script_change_player_relation_with_troop","$g_talk_troop",2),
+  (assign,"$g_spouse_embarazada",1), #no embarazada
+]],
 
-[anyone|plyr, "spouse_action_h2",[],"Actually, I've changed my mind","close_window",
+[anyone|plyr, "spouse_action_h2",[],"Actually, I've changed my mind",
+"close_window",
 []],
 
 [anyone, "spouse_regalocasual",
-[],   "Oh, {playername}! You're so generous.","close_window",
-[]
- ],
+[],"Oh, {playername}! You're so generous.",
+"close_window",[]],
 
 [anyone, "spouse_action_h3",
 [   (eq, "$character_gender", tf_female),
@@ -62832,8 +62832,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 ##diplomacy end+
 [anyone|plyr,"spouse_talk",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_spouse, "trp_player"),
   (neq, "$g_talk_troop", "trp_antonia"), # not antonia
-],"I want to divorce from you.", "spousedivorce",[]],
+],"I want to divorce from you.",
+"spousedivorce",[]],
+
 [anyone,"spousedivorce",[
 ],"What? I hope this is some weird joke. Otherwise I want to remember you that a divorce without any reason will upset my family.^^[A valid reason would be adultery.]",
 "spousedivorce2",[]],
