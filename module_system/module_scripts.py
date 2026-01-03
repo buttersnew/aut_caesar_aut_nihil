@@ -24615,6 +24615,12 @@ scripts = scripts_hardcoded + [
 ("set_town_walker_destination",[
     (store_script_param_1, ":agent_no"),
 
+    # store fixed point multiplier
+    (assign, ":fixed_point_multi_old", 1),
+    (convert_to_fixed_point, ":fixed_point_multi_old"),
+
+    (set_fixed_point_multiplier, 100),
+
     (store_random_in_range, ":rand_dest", 1 ,12),
     (try_begin),
         (eq, ":rand_dest", 1),
@@ -24658,7 +24664,8 @@ scripts = scripts_hardcoded + [
         (entry_point_get_position, pos1, ":target_entry_point"),
         (try_begin),
             (init_position, pos2),
-            (position_set_y, pos2, 250),
+            (store_random_in_range, ":random_offset", 50, 151),
+            (position_set_y, pos2, ":random_offset"),
             (position_transform_position_to_parent, pos1, pos1, pos2),
         (try_end),
         (agent_set_scripted_destination, ":agent_no", pos1, 0),
@@ -24669,6 +24676,9 @@ scripts = scripts_hardcoded + [
             (agent_set_speed_limit, ":agent_no", 5),
         (try_end),
     (try_end),
+
+    # restore old fixed point multiplier
+    (set_fixed_point_multiplier, ":fixed_point_multi_old"),
 ]),
 
 # script_town_init_doors
