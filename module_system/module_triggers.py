@@ -97,6 +97,9 @@ triggers = [
 
 ## goy event
 (24,0,ti_once,[
+    (neg|check_quest_active, "qst_blank_quest_19"), # not main story
+    (neg|check_quest_active, "qst_four_emperors"),  # not main story
+
     (eq, "$jewish_revolt", 1),
     (this_or_next|eq, "$g_campaign_type", g_campaign_lord),
     (this_or_next|eq, "$g_campaign_type", g_campaign_king),
@@ -114,6 +117,9 @@ triggers = [
 
 #goy event 2
 (24,0,ti_once,[
+    (neg|check_quest_active, "qst_blank_quest_19"), # not main story
+    (neg|check_quest_active, "qst_four_emperors"),  # not main story
+
     (this_or_next|eq, "$g_campaign_type", g_campaign_lord),
     (this_or_next|eq, "$g_campaign_type", g_campaign_king),
     (eq, "$g_campaign_type", g_campaign_sandbox),

@@ -1296,9 +1296,11 @@ game_menus = [
   "Select a cheat:",
   "none",[
   ],[
-    ("camp_cheat_find_item",[(troop_slot_ge, "trp_global_variables", g_is_dev, 1),], "Find an item...",
-       [(jump_to_menu, "mnu_cheat_find_item"),]
-    ),
+    ("camp_cheat_find_item",[
+      (troop_slot_ge, "trp_global_variables", g_is_dev, 1),
+    ], "Find an item...",[
+      (jump_to_menu, "mnu_cheat_find_item"),
+    ]),
     ("camp_cheat_weather",[
       (neg|party_slot_eq, "p_main_party", slot_party_on_water, 1),
     ],"Destroy your ship.",[
@@ -2012,10 +2014,9 @@ game_menus = [
        # ),
 	   ##nested diplomacy end+
 
-      ("cheat_faction_orders",[(ge,"$cheat_mode",1),
+    ("cheat_faction_orders",[(ge,"$cheat_mode",1),
       (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
-      ],
-	  "{!}Cheat: Set Debug messages to All.",
+    ],"{!}Cheat: Set Debug messages to All.",
        [(assign,"$cheat_mode",1),
          (jump_to_menu, "mnu_camp_cheat"),
         ]
@@ -2279,9 +2280,9 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_camp"),
   ],[
-			("camp_action",[],"Kill Dullius.",[
-        (call_script, "script_kill_lord_lady", "trp_aux_commander_11", "trp_player", 0),
-      ]),
+			# ("camp_action",[],"Kill Dullius.",[
+      #   (call_script, "script_kill_lord_lady", "trp_aux_commander_11", "trp_player", 0),
+      # ]),
 
     # does not work
     # ("camp_action",[
@@ -2380,19 +2381,19 @@ game_menus = [
       (start_presentation, "prsnt_display_special_items"),
     ]),
 
-    ("camp_action",[
-    ],"Debug script_change_player_relation_with_faction_ex.",[
-      (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
-        (str_store_faction_name_link, s0, ":faction"),
-        (display_message, "@Decreasing relation with {s0} by 2."),
-        (call_script, "script_change_player_relation_with_faction_ex", ":faction", -2),
-      (try_end),
-      (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
-        (str_store_faction_name_link, s0, ":faction"),
-        (display_message, "@Increasing relation with {s0} by 2."),
-        (call_script, "script_change_player_relation_with_faction_ex", ":faction", 2),
-      (try_end),
-    ]),
+    # ("camp_action",[
+    # ],"Debug script_change_player_relation_with_faction_ex.",[
+    #   (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
+    #     (str_store_faction_name_link, s0, ":faction"),
+    #     (display_message, "@Decreasing relation with {s0} by 2."),
+    #     (call_script, "script_change_player_relation_with_faction_ex", ":faction", -2),
+    #   (try_end),
+    #   (try_for_range, ":faction", kingdoms_begin, kingdoms_end),
+    #     (str_store_faction_name_link, s0, ":faction"),
+    #     (display_message, "@Increasing relation with {s0} by 2."),
+    #     (call_script, "script_change_player_relation_with_faction_ex", ":faction", 2),
+    #   (try_end),
+    # ]),
 
     # ("camp_action",[
     # ],"Export volunteer limits.",[
@@ -2504,27 +2505,27 @@ game_menus = [
     #   (jump_to_menu, "mnu_select_culture"),
     # ]),
 
-    ("options",[
-      (faction_slot_eq, "fac_kingdom_25", slot_faction_state, sfs_active),
-      (ge, "$cheat_mode", 1),
-    ],"CONQUER JUDEA BY VESPASIAN.",[
-      (try_for_range, ":center", walled_centers_begin, walled_centers_end),
-          (store_faction_of_party, ":fac", ":center"),
-          (eq, ":fac", "fac_kingdom_17"),
-          (call_script, "script_give_center_to_faction", ":center", "fac_kingdom_25"),
-      (try_end),
-    ]),
+    # ("options",[
+    #   (faction_slot_eq, "fac_kingdom_25", slot_faction_state, sfs_active),
+    #   (ge, "$cheat_mode", 1),
+    # ],"CONQUER JUDEA BY VESPASIAN.",[
+    #   (try_for_range, ":center", walled_centers_begin, walled_centers_end),
+    #       (store_faction_of_party, ":fac", ":center"),
+    #       (eq, ":fac", "fac_kingdom_17"),
+    #       (call_script, "script_give_center_to_faction", ":center", "fac_kingdom_25"),
+    #   (try_end),
+    # ]),
 
-    ("options",[
-      (faction_slot_eq, "fac_kingdom_27", slot_faction_state, sfs_active),
-      (ge, "$cheat_mode", 1),
-    ],"CONQUER VITELLIUS MAN BA BY GALBA.",[
-      (try_for_range, ":center", walled_centers_begin, walled_centers_end),
-          (store_faction_of_party, ":fac", ":center"),
-          (eq, ":fac", "fac_kingdom_26"),
-          (call_script, "script_give_center_to_faction", ":center", "fac_kingdom_27"),
-      (try_end),
-    ]),
+    # ("options",[
+    #   (faction_slot_eq, "fac_kingdom_27", slot_faction_state, sfs_active),
+    #   (ge, "$cheat_mode", 1),
+    # ],"CONQUER VITELLIUS MAN BA BY GALBA.",[
+    #   (try_for_range, ":center", walled_centers_begin, walled_centers_end),
+    #       (store_faction_of_party, ":fac", ":center"),
+    #       (eq, ":fac", "fac_kingdom_26"),
+    #       (call_script, "script_give_center_to_faction", ":center", "fac_kingdom_27"),
+    #   (try_end),
+    # ]),
 
     ("options",[
       (ge, "$cheat_mode", 1),
@@ -48872,15 +48873,15 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       #   (change_screen_map),
       # ]),
 
-    ("options",[
-    ],"Osrohne provokes Parthia",[
+    # ("options",[
+    # ],"Osrohne provokes Parthia",[
 
-      (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
-      (val_sub, ":slot_provocation_days", kingdoms_begin),
-      (faction_set_slot, "fac_kingdom_6", ":slot_provocation_days", 1),
+    #   (store_add, ":slot_provocation_days", "fac_kingdom_23", slot_faction_provocation_days_with_factions_begin),
+    #   (val_sub, ":slot_provocation_days", kingdoms_begin),
+    #   (faction_set_slot, "fac_kingdom_6", ":slot_provocation_days", 1),
 
-      (change_screen_map),
-    ]),
+    #   (change_screen_map),
+    # ]),
 
       # ("options",[
       # ],"Osrohne provokes Rome",[
@@ -48945,8 +48946,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_scene, "scn_camp_scene_plain"),
       (set_jump_mission, "mt_fortuna_scene_testing2"),
       (change_screen_mission),
-      ]
-    ),
+    ]),
     # ("cheat_slots",[
     #   (check_quest_active, "qst_important_friends"),
     # ],"{!}CHEAT! - End Important friends quest",[

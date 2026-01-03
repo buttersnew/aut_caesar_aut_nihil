@@ -8435,6 +8435,14 @@ simple_triggers = [
 
 (ti_on_switch_to_map,[
     (call_script, "script_execude_debug_message", 136),
+
+    (try_begin),
+        (check_quest_active, "qst_blank_quest_19"), # main story
+        (neq, "$g_campaign_type", g_campaign_story_rome),
+        (display_message, "@ERROR: Campaign Type is not in Story Mode but main quest is active."),
+        (assign, "$g_campaign_type", g_campaign_story_rome),
+    (try_end),
+
     (try_begin),
         (faction_slot_eq, "fac_kingdom_7", slot_faction_icon, 0),
         (call_script, "script_set_faction_icons"),
