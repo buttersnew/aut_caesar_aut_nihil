@@ -6727,6 +6727,8 @@ dialogs =[
   (check_quest_active, "qst_wlodowiecus_adventure_4"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 3),
   (agent_slot_eq, "$g_talk_agent", slot_agent_already_begg, 0),
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_lybian_villa"),
 ],"Hoohoohoo! Let us drink and drink and drink woowoo. YEAHH! You know lad... I know places... where we could go. They are the hunters, we are the foxes. Let's run! Run away and hide!",
 "wlodowiecus_4_party_diggus_1",[
   (agent_set_slot, "$g_talk_agent", slot_agent_already_begg, 1),
@@ -6735,6 +6737,8 @@ dialogs =[
   (check_quest_active, "qst_wlodowiecus_adventure_4"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 3),
   (agent_slot_eq, "$g_talk_agent", slot_agent_already_begg, 1),
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_lybian_villa"),
 ],"Let's talk later ...",
 "close_window",[
 ]],
@@ -6767,6 +6771,9 @@ dialogs =[
   (check_quest_active, "qst_wlodowiecus_adventure_4"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 3),
   (agent_slot_eq, "$g_talk_agent", slot_agent_already_begg, 0),
+
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_lybian_villa"),
 ],"Hey, I have seen you talking with that lovely boy over there.^^--She is pointing in the direction of Hadrianus. --^^You know him?",
 "wlodowiecus_4_party_incon_1",[
   (agent_set_slot, "$g_talk_agent", slot_agent_already_begg, 1),
@@ -6775,6 +6782,9 @@ dialogs =[
   (check_quest_active, "qst_wlodowiecus_adventure_4"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 3),
   (agent_slot_eq, "$g_talk_agent", slot_agent_already_begg, 1),
+
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_lybian_villa"),
 ],"Let's talk later ...",
 "close_window",[
 ]],
@@ -6957,6 +6967,9 @@ dialogs =[
   (check_quest_active, "qst_wlodowiecus_adventure_4"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 2),
   (eq, "$g_talk_troop_met", 0),
+
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_lybian_villa"),
 ],
   "If you would apologize me, I am busy...",
 "close_window",[]],
@@ -6972,6 +6985,9 @@ dialogs =[
   (check_quest_active, "qst_wlodowiecus_adventure_4"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 2),
   (eq, "$g_talk_troop_met", 1),
+
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_lybian_villa"),
 ],
   "{playername}, nice to see you. I was on my way to some more drinks. Maybe let's talk later...",
 "close_window",[]],
@@ -19271,18 +19287,19 @@ dialogs =[
  ],"I must get out of here.", "close_window",[]],
 ##diggus wife
  ##diggus dialogue starts
-[trp_diggus, "start",
-[
-    (store_current_scene, ":scene"),
-    (eq, ":scene", "scn_temple_of_bacchus"),
-    (eq,"$g_talk_troop_met",0),
- ],"Ave my friend. Take a cup of this good wine. What's your name, friend? You don't look familiar to me.", "diggus_talk",[]],
-[trp_diggus, "start",
-[
-    (store_current_scene, ":scene"),
-    (eq, ":scene", "scn_temple_of_bacchus"),
+[trp_diggus, "start",[
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_temple_of_bacchus"),
+  (eq,"$g_talk_troop_met",0),
+],"Ave my friend. Take a cup of this good wine. What's your name, friend? You don't look familiar to me.",
+"diggus_talk",[]],
+
+[trp_diggus, "start",[
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_temple_of_bacchus"),
   (play_sound, "snd_encounter_nobleman"),
- ],"You!! Not you again! Go away, away with you, vile beggar.", "close_window",[]],
+ ],"You!! Not you again! Go away, away with you, vile beggar.",
+ "close_window",[]],
 
 [anyone|plyr, "diggus_talk",
 [],"I am {playername}.", "diggus_talk2",[]],
@@ -99147,81 +99164,87 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [trp_minotau|plyr,"minautau_5",[], "Hm, maybe, I have nothing.", "minautau_3_eat",[]],
 
 ##biggus dialgoue at his villa
-[trp_diggus, "start",
-[
-    (check_quest_active, "qst_amor_quest"),
-    (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 2),
- ],
-  "Ah {playername}. You come pretty late, but nevertheless its good you show up. Can you remember me? 'Biggus Dickus' you called me on the party. Haha.", "diggus_villa_talk_1",[]],
+[trp_diggus, "start",[
+  (check_quest_active, "qst_amor_quest"),
+  (quest_slot_eq, "qst_amor_quest", slot_quest_current_state, 2),
+],"Ah {playername}. You arrived quite late, but nevertheless it is good you showed up. Do you remember me? 'Biggus Dickus' you called me at the party. Haha.",
+"diggus_villa_talk_1",[]],
 
-[trp_diggus|plyr, "diggus_villa_talk_1",
-[],
-  "I think I can remember you. But I have not much memory of this party.", "diggus_villa_talk_2",[]],
+[anyone|plyr, "diggus_villa_talk_1",
+[],"I think I can remember you. But I do not have much memory of that party.",
+"diggus_villa_talk_2",[]],
 
-[trp_diggus, "diggus_villa_talk_2",
+[anyone, "diggus_villa_talk_2",
 [],
-  "Haha! You called me Biggus Dickus all the time and my wife you called Incontinentia Buttocks for whatever reason. My real name is Servius Octavius Libidus. And I also want to introduce you my wife: Gaia Volupta.", "diggus_villa_talk_3",[]],
+  "Haha! You called me Biggus Dickus all the time and my wife you called Incontinentia Buttocks for whatever reason. My real name is Servius Octavius Libidus. And I also want to introduce you to my wife: Gaia Volupta.", "diggus_villa_talk_3",[]],
 
-[trp_diggus|other(trp_orgie_fem4), "diggus_villa_talk_3",
+[anyone|other(trp_orgie_fem4), "diggus_villa_talk_3",
 [],
-  "A pleasure to meet you. I will never forget the moment when we first met on the party. You are such a handsome person. ^^ (She touches your arms.)",
-  "diggus_villa_talk_4",[(call_script, "script_set_conversation_troop", "trp_orgie_fem4"),]],
+"A pleasure to meet you. I will never forget the moment when we first met at the party. You are such a handsome person. ^^ (She touches your arms.)",
+"diggus_villa_talk_4",[
+  (call_script, "script_set_conversation_troop", "trp_orgie_fem4"),
+]],
 
-[trp_diggus|plyr, "diggus_villa_talk_4",
+[anyone|plyr, "diggus_villa_talk_4",
 [],
-  "Oh well. Nice to meet you and I also want to apologies for anything I did on this party.", "diggus_villa_talk_5",[]],
+"Oh well. Nice to meet you and I also want to apologize for anything I did at that party.", "diggus_villa_talk_5",[]],
 
-[trp_diggus, "diggus_villa_talk_5",
+[anyone, "diggus_villa_talk_5",
 [],
-  "No need to apologies. You, me and my wife had a good time together. ^^(He winks.)", "diggus_villa_talk_6",[]],
+"No need to apologize. You, my wife, and I had a good time together. ^^(He winks.)", "diggus_villa_talk_6",[]],
 
-[trp_diggus|plyr, "diggus_villa_talk_6",
+[anyone|plyr, "diggus_villa_talk_6",
 [],
-  "It was perfect! I may ask why you invited me today?", "diggus_villa_talk_7",[]],
+"It was perfect! May I ask why you invited me today?", "diggus_villa_talk_7",[]],
 
-[trp_diggus|plyr, "diggus_villa_talk_6",
+[anyone|plyr, "diggus_villa_talk_6",
 [],
-  "Aha.... and I may ask why you invited me today?", "diggus_villa_talk_7",[]],
+"Aha.... and may I ask why you invited me today?", "diggus_villa_talk_7",[]],
 
-[trp_diggus, "diggus_villa_talk_7",
+[anyone, "diggus_villa_talk_7",
 [],
-  "We are so incredibly bored. Every day the same. We thought it would be a good idea to party with you again. You have the spirit of Bacchus, when it comes to partying. Haha. But unfortunately you came to late.", "diggus_villa_talk_8",[]],
+"We are so incredibly bored. Every day the same. We thought it would be a good idea to party with you again. You have the spirit of Bacchus, when it comes to partying. Haha. But unfortunately you came too late.", "diggus_villa_talk_8",[]],
 
-[trp_diggus|other(trp_orgie_fem4), "diggus_villa_talk_8",
+[anyone|other(trp_orgie_fem4), "diggus_villa_talk_8",
 [],
-  "And? The party shall go on! We don't need the others, just we three is fine.^^Here {playername} take a cup of wine.",
-  "diggus_villa_talk_9",[(call_script, "script_set_conversation_troop", "trp_orgie_fem4"),]],
+"And? The party shall go on! We don't need the others, just the three of us is fine.^^Here {playername} take a cup of wine.",
+"diggus_villa_talk_9",[(call_script, "script_set_conversation_troop", "trp_orgie_fem4"),]],
 
-[trp_diggus|plyr, "diggus_villa_talk_9",
+[anyone|plyr, "diggus_villa_talk_9",
 [],
-  "I am sorry, I refuse. I will leave now. I think, we shouldn't met each other again, I dont want to lose my reputation...", "diggus_villa_talk_player_leave",[]],
-[trp_diggus|other(trp_orgie_fem4), "diggus_villa_talk_player_leave",
+  "I am sorry, I refuse. I will leave now. I think, we shouldn't meet each other again, I don't want to lose my reputation...", "diggus_villa_talk_player_leave",[]],
+[anyone|other(trp_orgie_fem4), "diggus_villa_talk_player_leave",
 [],
-  "Oh come one? What? Have we haver been insulted like that my husband?",
-  "diggus_villa_talk_player_leave2",[(call_script, "script_set_conversation_troop", "trp_orgie_fem4"),]],
+"Oh come on! What? Have we ever been insulted like that, my husband?",
+"diggus_villa_talk_player_leave2",[
+  (call_script, "script_set_conversation_troop", "trp_orgie_fem4"),
+]],
 
-[trp_diggus|plyr, "diggus_villa_talk_player_leave2",
+[anyone|plyr, "diggus_villa_talk_player_leave2",
 [],
   "I am sorry but...", "diggus_villa_talk_player_leave3",[]],
 
-[trp_diggus|other(trp_orgie_fem4), "diggus_villa_talk_player_leave3",
+[anyone|other(trp_orgie_fem4), "diggus_villa_talk_player_leave3",
 [],
-  "If you don't want us, then farewell {playername}.",
-  "diggus_villa_talk_player_leave4",[(call_script, "script_set_conversation_troop", "trp_orgie_fem4"),]],
+"If you don't want us, then farewell {playername}.",
+"diggus_villa_talk_player_leave4",[
+  (call_script, "script_set_conversation_troop", "trp_orgie_fem4"),
+]],
 
-[trp_diggus, "diggus_villa_talk_player_leave4",
+[anyone, "diggus_villa_talk_player_leave4",
 [],
-  "I understand. Now leave my house {playername}. You aren't welcome here any longer.", "close_window",[
-    (jump_to_menu, "mnu_auto_return_map"),
-    (finish_mission),
-  ]],
+"I understand. Now leave my house {playername}. You aren't welcome here any longer.",
+"close_window",[
+  (jump_to_menu, "mnu_auto_return_map"),
+  (finish_mission),
+]],
 
-[trp_diggus|plyr, "diggus_villa_talk_9",
-[],
-  "Sure, why not.", "close_window",[
-    (jump_to_menu, "mnu_biggus_event_end"),
-    (finish_mission),
-  ]],
+[anyone|plyr, "diggus_villa_talk_9",[],
+"Sure, why not.",
+"close_window",[
+  (jump_to_menu, "mnu_biggus_event_end"),
+  (finish_mission),
+]],
 
 [trp_wild_cat,"start",[  (check_quest_active, "qst_amor_quest"),
   (store_current_scene, ":scene"),

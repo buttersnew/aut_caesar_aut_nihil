@@ -46819,6 +46819,8 @@ scripts = scripts_hardcoded + [
 #Called from dialogs, and from simple_triggers
 #This a very inefficient checklist, and if I did it again, I would score for each troop. That way the troop could answer "why not" to an individual lord
 # script_npc_decision_checklist_take_stand_on_issue
+#This a very inefficient checklist, and if I did it again, I would score for each troop. That way the troop could answer "why not" to an individual lord
+# script_npc_decision_checklist_take_stand_on_issue
 ("npc_decision_checklist_take_stand_on_issue",[
     (store_script_param, ":troop_no", 1),
     (store_faction_of_troop, ":troop_faction", ":troop_no"),
@@ -46941,6 +46943,14 @@ scripts = scripts_hardcoded + [
                 (val_div, ":renown", 5),
             (try_end),
             (troop_get_slot, ":controversy_divisor", "trp_player", slot_troop_controversy),
+            (try_begin),
+                (lt, ":controversy_divisor", 0),
+                (assign, reg1, ":controversy_divisor"),
+                (str_store_troop_name, s0, "trp_player"),
+                (display_message, "@{!}ERROR - controversy of {s0} is {reg1} which is < 0!"),
+                (assign, ":controversy_divisor", 50),
+                (troop_set_slot, "trp_player", slot_troop_controversy, 50),
+            (try_end),
             (val_add, ":controversy_divisor", 50),
             (store_div, ":score_to_beat", ":renown", ":controversy_divisor"),
             (assign, ":relation_score_to_beat", ":relation"),
@@ -46984,6 +46994,14 @@ scripts = scripts_hardcoded + [
             (try_end),
             ##diplomacy end+
             (troop_get_slot, ":controversy_divisor", ":active_npc", slot_troop_controversy),
+            (try_begin),
+                (lt, ":controversy_divisor", 0),
+                (assign, reg1, ":controversy_divisor"),
+                (str_store_troop_name, s0, ":active_npc"),
+                (display_message, "@{!}ERROR - controversy of {s0} is {reg1} which is < 0!"),
+                (assign, ":controversy_divisor", 50),
+                (troop_set_slot, ":active_npc", slot_troop_controversy, 50),
+            (try_end),
             (val_add, ":controversy_divisor", 50),
             (store_div, ":score", ":renown", ":controversy_divisor"),
             (try_begin),
@@ -47010,6 +47028,7 @@ scripts = scripts_hardcoded + [
             (try_end),
 
             (val_mul, ":score", 500),
+            (val_max, ":distance_factor", 1),
             (val_div, ":score", ":distance_factor"),
 
             (try_begin),
