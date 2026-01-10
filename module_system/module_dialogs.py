@@ -10488,12 +10488,13 @@ dialogs =[
 ####################BEGIN GARDEN PARTY dialogue
 
 [trp_kingdom_7_lady_1,"start",[
-    (check_quest_active, "qst_nero_special_quest"),
-    (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
-    (store_current_scene, ":scene"),
-    (eq, ":scene", "scn_gardens_of_manacea"),
-    (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
-    (ge, "$g_talk_troop_met", 1),
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+  (check_quest_active, "qst_nero_special_quest"),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_gardens_of_manacea"),
+  (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
+  (ge, "$g_talk_troop_met", 1),
 ],
 "--Her gaze falls upon you and she makes her way over, a sly smile playing on her lips. She approaches you with an air of confidence and grace, her long flowing dress trailing behind her, holding a golden cup in her right hand.--^^Hey there, {playername}! I've been looking for you all night. How are you enjoying the feast?",
 "poppaea_gardens_feast_talk_intro_1",[
@@ -10511,12 +10512,13 @@ dialogs =[
 "poppaea_gardens_feast_talk_2",[]],
 
 [trp_kingdom_7_lady_1,"start",[
-    (check_quest_active, "qst_nero_special_quest"),
-    (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
-    (store_current_scene, ":scene"),
-    (eq, ":scene", "scn_gardens_of_manacea"),
-    (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
-    (le, "$g_talk_troop_met", 0),
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+  (check_quest_active, "qst_nero_special_quest"),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_gardens_of_manacea"),
+  (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
+  (le, "$g_talk_troop_met", 0),
 ],
 "--Her gaze falls upon you and she makes her way over, a sly smile playing on her lips. She approaches you with an air of confidence and grace, her long flowing dress trailing behind her, holding a golden cup in her right hand.--^^Hey, you must be {playername}? Right? I've been looking for a chance to talk with you for a while. I heard a lot talk about your fame. How are you enjoying the feast?",
 "poppaea_gardens_feast_talk_1",[
@@ -10762,11 +10764,12 @@ dialogs =[
 ]],
 
 [trp_kingdom_7_lord,"start",[
-    (check_quest_active, "qst_nero_special_quest"),
-    (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
-    (store_current_scene, ":scene"),
-    (eq, ":scene", "scn_gardens_of_manacea"),
-    (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+  (check_quest_active, "qst_nero_special_quest"),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_gardens_of_manacea"),
+  (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
 ],
   "--He has a golden cup of wine in one hand and the other hand around a dancer. As it seems, he is already a little bit drunken.--^^Welcome {playername} to this grandiose feast. It's good to see you. I trust you've been keeping busy since we last met.",
 "nero_feat_talk_1",[
@@ -10809,12 +10812,13 @@ dialogs =[
 "close_window",[]],
 
 [trp_tigellinus,"start",[
-    (check_quest_active, "qst_nero_special_quest"),
-    (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
-    (store_current_scene, ":scene"),
-    (eq, ":scene", "scn_gardens_of_manacea"),
-    (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
-    (eq, "$g_talk_troop_met", 0),
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+  (check_quest_active, "qst_nero_special_quest"),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_gardens_of_manacea"),
+  (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
+  (eq, "$g_talk_troop_met", 0),
 ],
   "Do I know you?",
 "tigellinius_intro_talk_1",[
@@ -10837,11 +10841,12 @@ dialogs =[
 "close_window",[]],
 
 [anyone,"start",[
-    (check_quest_active, "qst_nero_special_quest"),
-    (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
-    (store_current_scene, ":scene"),
-    (eq, ":scene", "scn_gardens_of_manacea"),
-    (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+  (check_quest_active, "qst_nero_special_quest"),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_gardens_of_manacea"),
+  (agent_slot_eq, "$g_talk_agent", slot_agent_fatiga, 0),
 ],
   "Greetings. Welcome to the gardens of Maecenas, it's quite a sight isn't it?",
 "guest_talk_1",[
@@ -10894,10 +10899,11 @@ dialogs =[
 "close_window",[]],
 
 [anyone,"start",[
-    (check_quest_active, "qst_nero_special_quest"),
-    (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
-    (store_current_scene, ":scene"),
-    (eq, ":scene", "scn_gardens_of_manacea"),
+(neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+  (check_quest_active, "qst_nero_special_quest"),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
+  (store_current_scene, ":scene"),
+  (eq, ":scene", "scn_gardens_of_manacea"),
 ],
   "Let's talk later.",
 "close_window",[]],
@@ -17748,9 +17754,10 @@ dialogs =[
 
 ##Nero special event 2
 [trp_kingdom_7_lord,"start",[
-      (check_quest_active, "qst_nero_special_quest"),
-      (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 4),
-      (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+  (check_quest_active, "qst_nero_special_quest"),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 4),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
 ],
 "We heard news of your adventures and deeds you have accomplished for the glory of Rome, son of Mars."+
 "I am always happy to have such people as commanders, though they shouldn't forget who they are and who they are not.",
@@ -17848,9 +17855,10 @@ dialogs =[
 
 ##Nero special event 1
 [trp_kingdom_7_lord,"start",[
-      (check_quest_active, "qst_nero_special_quest"),
-      (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 6),
-      (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+  (check_quest_active, "qst_nero_special_quest"),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 6),
+  (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
  ],
     "-- He sings with a sad, sweet voice. --^^"+
     "'All the cries, all Heraclit's tears,'^"+
@@ -17931,6 +17939,7 @@ dialogs =[
 ]],
 
 [trp_kingdom_7_lord,"start",[
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
   (check_quest_active, "qst_nero_special_quest"),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 3),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
@@ -47527,6 +47536,7 @@ Everyone said that you were a capable warrior, but appearently, they were wrong.
 
 ##Nero quest
 [trp_guest_female,"start",[
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
   (check_quest_active, "qst_nero_special_quest"),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 1),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 1),
@@ -47627,6 +47637,7 @@ Everyone said that you were a capable warrior, but appearently, they were wrong.
 ]],
 
 [trp_kingdom_7_lord,"lord_start",[
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
   (check_quest_active, "qst_nero_special_quest"),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 2),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 2),
@@ -47737,6 +47748,7 @@ Everyone said that you were a capable warrior, but appearently, they were wrong.
 ]],
 
 [trp_kingdom_7_lord|auto_proceed,"lord_start",[
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
   (check_quest_active, "qst_nero_special_quest"),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 2),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
@@ -47745,6 +47757,7 @@ Everyone said that you were a capable warrior, but appearently, they were wrong.
 "nero_special_quest_stage_2",[]],
 
 [trp_kingdom_7_lord|plyr,"lord_talk",[
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
   (check_quest_active, "qst_nero_special_quest"),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 2),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
@@ -47785,6 +47798,7 @@ Everyone said that you were a capable warrior, but appearently, they were wrong.
 ]],
 
 [trp_kingdom_7_lord|auto_proceed,"lord_start",[
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
   (check_quest_active, "qst_nero_special_quest"),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 1),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
@@ -47793,6 +47807,7 @@ Everyone said that you were a capable warrior, but appearently, they were wrong.
 "nero_special_quest_stage_1",[]],
 
 [trp_kingdom_7_lord|plyr,"lord_talk",[
+  (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
   (check_quest_active, "qst_nero_special_quest"),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 1),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
@@ -53696,32 +53711,31 @@ I will use this to make amends to those you have wronged, and I will let it be k
 (assign, "$g_leave_encounter", 1),
 ]],
 
-[anyone,"lord_ask_pardon_tribue_accept",[], "Excellent, {playername}.\
- I'll use the coin to smooth the feathers of those that can oppose your pardon, and I'm sure that word will soon spread that you are no longer an enemy of {s4}.", "close_window",
-[
-##diplomacy start+ transfer removed gold to bribed lords
-(try_begin),
-	(neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-	(store_div, ":gold_to_lord", reg16, 20),#lord takes 5% cut
-	(call_script, "script_dplmc_distribute_gold_to_lord_and_holdings", ":gold_to_lord", "$g_talk_troop"),
-	(assign, ":gold_to_faction", reg16),#faction splits rest of gold
-	(val_sub, ":gold_to_faction", ":gold_to_lord"),
-(try_end),
-(call_script, "script_dplmc_faction_leader_splits_gold", "$g_talk_troop_faction",
- ":gold_to_faction"),
-##diplomacy end+
-(troop_remove_gold, "trp_player", reg16),
-(store_relation, ":players_kingdom_relation", "$g_talk_troop_faction", "$players_kingdom"),
+[anyone,"lord_ask_pardon_tribue_accept",[], "Excellent, {playername}. I'll use the coin to smooth the feathers of those that can oppose your pardon, and I'm sure that word will soon spread that you are no longer an enemy of {s4}.",
+"close_window",[
+  ##diplomacy start+ transfer removed gold to bribed lords
+  (try_begin),
+    (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+    (store_div, ":gold_to_lord", reg16, 20),#lord takes 5% cut
+    (call_script, "script_dplmc_distribute_gold_to_lord_and_holdings", ":gold_to_lord", "$g_talk_troop"),
+    (assign, ":gold_to_faction", reg16),#faction splits rest of gold
+    (val_sub, ":gold_to_faction", ":gold_to_lord"),
+  (try_end),
+  (call_script, "script_dplmc_faction_leader_splits_gold", "$g_talk_troop_faction",
+  ":gold_to_faction"),
+  ##diplomacy end+
+  (troop_remove_gold, "trp_player", reg16),
+  (store_relation, ":players_kingdom_relation", "$g_talk_troop_faction", "$players_kingdom"),
 
-(try_begin),
- (this_or_next|eq, "$players_kingdom", 0),
-(ge, ":players_kingdom_relation", 0),
- (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
-(else_try),
- (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_talk_troop_faction", "$players_kingdom", 1),
-(try_end),
-(assign,"$g_leave_town_outside",1),
-(assign, "$g_leave_encounter", 1),
+  (try_begin),
+  (this_or_next|eq, "$players_kingdom", 0),
+  (ge, ":players_kingdom_relation", 0),
+  (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
+  (else_try),
+  (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_talk_troop_faction", "$players_kingdom", 1),
+  (try_end),
+  (assign,"$g_leave_town_outside",1),
+  (assign, "$g_leave_encounter", 1),
 ]],
 
 [anyone,"lord_ask_pardon_tribue_deny",[], "Then there's nothing I can do for you, {playername}. No silver, no pardon.", "lord_pretalk",[]],
@@ -53753,16 +53767,13 @@ I will use this to make amends to those you have wronged, and I will let it be k
 ##
 ##[anyone|plyr,"lord_pay_mercenary_2",[], "Thank you, sir.", "lord_pretalk",[]],
 
-[anyone|plyr,"lord_talk",[#(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-                       ##diplomacy start+
-					   (neg|troop_slot_eq, "trp_player", slot_troop_spouse, -1),
-					   #There are certain exotic situations where you would want to support marriage
-					   #where the spouse slots may not match (for example, certain polygamy implementations).
-					   (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_spouse, "trp_player"),
-					   ##diplomacy end+
-                       (troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
+[anyone|plyr,"lord_talk",[
+  (neg|troop_slot_eq, "trp_player", slot_troop_spouse, -1),
+  (this_or_next|troop_slot_eq, "$g_talk_troop", slot_troop_spouse, "trp_player"),
+  (troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
 ],
-"Let us discuss matters related to our household.", "lord_switch_to_spouse",[]],
+"Let us discuss matters related to our household.",
+"lord_switch_to_spouse",[]],
 
 [anyone,"lord_switch_to_spouse",[
 (assign, ":feast_venue", -1),
@@ -59730,11 +59741,16 @@ However, after some time of mercenary service, perhaps you can earn the opportun
 gaining the right to choose a banner of your own and fight under it in battle.", "lord_mercenary_elaborate_1",[]],
 ##diplomacy end+
 
-[anyone,"lord_request_mission_ask",[(store_partner_quest,":lords_quest"),(ge,":lords_quest",0)],
-  "You still haven't finished the last job I gave you, {playername}. You should be working on that, not asking me for other things to do.", "lord_pretalk",[]],
+[anyone,"lord_request_mission_ask",[
+  (store_partner_quest,":lords_quest"),
+  (ge,":lords_quest",0)
+],"You still haven't finished the last job I gave you, {playername}. You should be working on that, not asking me for other things to do.",
+"lord_pretalk",[]],
 
-[anyone,"lord_request_mission_ask",[(troop_slot_eq, "$g_talk_troop", slot_troop_does_not_give_quest, 1)],
-  "I don't have any other jobs for you right now.", "lord_pretalk",[]],
+[anyone,"lord_request_mission_ask",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_does_not_give_quest, 1)
+],"I don't have any other jobs for you right now.",
+"lord_pretalk",[]],
 
 [anyone|auto_proceed,"lord_request_mission_ask",[], "A task?", "lord_tell_mission",
 [
@@ -59743,9 +59759,9 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 ]],
 
 [anyone,"lord_tell_mission",[
-(eq, "$g_talk_troop", "trp_kingdom_13_lord"),
-(quest_slot_eq, "qst_langobard_arrive", slot_quest_current_state, 0),
-(neg|check_quest_active, "qst_langobard_arrive"),
+  (eq, "$g_talk_troop", "trp_kingdom_13_lord"),
+  (quest_slot_eq, "qst_langobard_arrive", slot_quest_current_state, 0),
+  (neg|check_quest_active, "qst_langobard_arrive"),
 ], "I am currently preparing a war, {playername}. Thousands of warriors of a tribe called Winnili landed on our shores. "+
 "They came from the lands past the ocean which we call 'navel of the sea'. "+
 "They set up their camp at the mouth of the river Suebos. I already demanded a high tribute from them, as they have taken our land and started building a settlement! But those bastards refused! "+

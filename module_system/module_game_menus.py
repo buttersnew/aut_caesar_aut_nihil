@@ -15263,6 +15263,7 @@ game_menus = [
       (try_end),
       (try_begin),
           (eq, "$g_encountered_party", "p_town_6"),
+          (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
           (check_quest_active, "qst_nero_special_quest"),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (str_store_string, s32, "@gardens of Maecenas"),
@@ -15312,6 +15313,7 @@ game_menus = [
           (display_message,"str_door_locked",message_locked),
       (else_try),
           (eq, "$g_encountered_party", "p_town_6"),
+          (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
           (check_quest_active, "qst_nero_special_quest"),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (try_begin),
@@ -15365,18 +15367,21 @@ game_menus = [
           (else_try),
               ##new quest with Nero
               (eq, "$current_town", "p_town_6"),
+              (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
               (check_quest_active, "qst_nero_special_quest"),
               (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 3),
               (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
               (jump_to_menu, "mnu_nero_performance"),
           (else_try),
               (eq, "$current_town", "p_town_6"),
+              (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
               (check_quest_active, "qst_nero_special_quest"),
               (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 4),
               (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
               (jump_to_menu, "mnu_tiggelinius_event_1"),
           (else_try),
               (eq, "$current_town", "p_town_6"),
+              (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
               (check_quest_active, "qst_nero_special_quest"),
               (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 6),
               (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
@@ -17229,6 +17234,7 @@ game_menus = [
       (lt, "$sneaked_into_town", 1), #not sneaked
       (try_begin),
           (eq, "$g_encountered_party", "p_town_6"),
+          (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
           (check_quest_active, "qst_nero_special_quest"),
           (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 0),
           (is_currently_night),
@@ -17348,6 +17354,7 @@ game_menus = [
       (try_end),
     ]),
     ("visit_gaius_villae",[
+      (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
       (check_quest_active, "qst_nero_special_quest"),
       (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 2),
       (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 1),
