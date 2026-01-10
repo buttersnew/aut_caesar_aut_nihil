@@ -1946,7 +1946,7 @@ strings = [
   ("npc24_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
   ("npc25_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
   ("npc26_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
-  ("npc27_personalitymatch_speech", "Dominus, I just wanted to laud you for hiring {s11}. He is a true Roman, who honors the old values of the Republic. This is something I really admire. In general I find the Modius family admirable. They represent what made the city-state Rome into an Empire."),
+  ("npc27_personalitymatch_speech", "Dominus, I just wanted to laud you for hiring {s11}. He is a true Roman, who honours the old values of the Republic. This is something I really admire. In general I find the Modius family admirable. They represent what made the city-state Rome into an Empire."),
   ("npc28_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
   ("npc29_personalitymatch_speech", "Ave commander. I just want to say that I think {s11} is capable men."),
   ("npc30_personalitymatch_speech", "Ave commander. I must say that I really like {s11}."),
@@ -2001,18 +2001,18 @@ strings = [
 	+" it makes my blood boil. I want to cut off all the little bits of those bastards who mistreated her -- and I'll do it, too,"
 	+" if we ever run into them in our travels."),
   ("npc17_personalitymatch_speech_b", "{!}."),
-  ("npc18_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc18_personalitymatch_speech_b", "He is a true Roman who honours duty and the mos maiorum. If I where you I would only hire such men from Italia."),
   ("npc19_personalitymatch_speech_b", "He told me he had worked mainly as scribe at the library and port administration, but despite his background is useful and a good solider. He knows how to cook, he helps with searching for firewood, he helps setting up the camp and he never complains! A nice addition to the cohort."),
   ("npc20_personalitymatch_speech_b", "At first I thought he would be a coward, but during the last battle he even saved my life! I was cut of from our main force and I was surround by twelve enemies, almost impossible to win this alone. But he appeared on horse, slain two of them, then I was able to jump on his horse and he brought me back to our main force."),
-  ("npc21_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc21_personalitymatch_speech_b", "He is a true Roman who honours duty and the mos maiorum. If I where you I would only hire such men from Italia."),
   ("npc22_personalitymatch_speech_b", "She lives by her own rules, takes what she wants. I admire that. There is an honesty in her rebellion that I find... compelling."),
   ("npc23_personalitymatch_speech_b", "{!}"),
-  ("npc24_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
-  ("npc25_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
-  ("npc26_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc24_personalitymatch_speech_b", "He is a true Roman who honours duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc25_personalitymatch_speech_b", "He is a true Roman who honours duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc26_personalitymatch_speech_b", "He is a true Roman who honours duty and the mos maiorum. If I where you I would only hire such men from Italia."),
   ("npc27_personalitymatch_speech_b", "I just want to tell you Dominus: Hire more such true Romans and you will be able to conquer the whole world."),
-  ("npc28_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
-  ("npc29_personalitymatch_speech_b", "He is a true Roman who honors duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc28_personalitymatch_speech_b", "He is a true Roman who honours duty and the mos maiorum. If I where you I would only hire such men from Italia."),
+  ("npc29_personalitymatch_speech_b", "He is a true Roman who honours duty and the mos maiorum. If I where you I would only hire such men from Italia."),
   ("npc30_personalitymatch_speech_b", "She is such a beautiful girl. After the last fight she undressed to bath and I saw her naked ... then we 'played' a little bit. ^^-- He smiles. --"),
   ("npc31_personalitymatch_speech_b", "{!}."),
   ("npc32_personalitymatch_speech_b", "{!}."),
@@ -2507,7 +2507,7 @@ strings = [
   ("npc8_kingsupport_1", "Most of the old sagas tells us that a man who does great deeds, beyond those of the other men of his time,"
 	+" may claim the throne. I'd say that you could make that claim."), #Hildr
   ("npc9_kingsupport_1", "Very good, my Commander. I'm a Roman by blood, but I never liked the way Nero rules the Empire."
-	+" I don't owe him anything, and I say, 'Let the throne go to the most valiant!' A true Roman, who honors the mos maiorum."
+	+" I don't owe him anything, and I say, 'Let the throne go to the most valiant!' A true Roman, who honours the mos maiorum."
 	+" Which would be you, Commander {playername}."),
   ("npc10_kingsupport_1", "Well, {Brother/Sister}, I suppose there must be Emperors, and if there must be Emperors,"
 	+" then you would be as good a Caesar as any..."),#Attaklos

@@ -45039,7 +45039,7 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
   (val_add, ":wealth", 20000),
   (troop_set_slot, "$g_talk_troop", slot_troop_wealth, ":wealth"),
 ]],
-[anyone, "lord_gift_improverelation",[], "Thank you. To recieve such a gift honors me.", "lord_pretalk",[]],
+[anyone, "lord_gift_improverelation",[], "Thank you. To recieve such a gift honours me.", "lord_pretalk",[]],
 
 [anyone|plyr,"lord_talk",[
   (ge,"$g_encountered_party_relation",0),
@@ -49970,7 +49970,7 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
     (call_script, "script_cf_dplmc_troop_is_female", "$lord_selected"),
     (assign, reg3, 1),
   (try_end),
-],"{s4} has engendered too much controversy for {reg3?her:him} to be a viable candidate right now.  I would advise {reg3?her:him} to wait a little while before seeking any further honors.",
+],"{s4} has engendered too much controversy for {reg3?her:him} to be a viable candidate right now.  I would advise {reg3?her:him} to wait a little while before seeking any further honours.",
 "lord_pretalk",[]],
 
 [anyone,"dplmc_lord_internal_politics_plyr_request_support_2",[
@@ -50211,7 +50211,7 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
   (troop_slot_ge, "trp_player", slot_troop_controversy, 25),
   (this_or_next|faction_slot_eq, "$players_kingdom", slot_faction_political_issue, 1),
   (troop_slot_ge, "trp_player", slot_troop_controversy, 50),
-],"You have engendered too much controversy to be a viable candidate right now. I would advise you to wait a little while before seeking any further honors for yourself.",
+],"You have engendered too much controversy to be a viable candidate right now. I would advise you to wait a little while before seeking any further honours for yourself.",
 "lord_pretalk",[]],
 
 [anyone,"lord_internal_politics_plyr_request_support",[
@@ -52570,7 +52570,7 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 
 ],
 ##diplomacy start+ replace "him" with "{reg0?her:him}"
-"Yes, and hopefully now {s4} will think twice before entrusting {reg0?her:him} with any additional fiefs, honors, or offices. We are grateful to you.", "lord_pretalk",
+"Yes, and hopefully now {s4} will think twice before entrusting {reg0?her:him} with any additional fiefs, honours, or offices. We are grateful to you.", "lord_pretalk",
 ##diplomacy end+
 [
 (call_script, "script_succeed_quest", "qst_denounce_lord"),
@@ -52610,7 +52610,7 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 ##diplomacy end+
 ],
 ##next line, replace "him" with "{reg0?her:him}"
-"So we hear. Hopefully now {s5} will think twice before entrusting {reg0?her:him} with any additional fiefs, honors, or offices. We are grateful to you.", "lord_pretalk"  ,
+"So we hear. Hopefully now {s5} will think twice before entrusting {reg0?her:him} with any additional fiefs, honours, or offices. We are grateful to you.", "lord_pretalk"  ,
 ##diplomacy end+
 [
 (call_script, "script_end_quest", "qst_intrigue_against_lord"),
@@ -89819,59 +89819,53 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 ###alexandrian library talk
-[trp_alexandrian_library, "start",
-[
+[trp_alexandrian_library, "start",[
 	(eq, "$g_talk_troop_met",0),
-],
-    "Ave. I am Tiberius Claudius Balbilus. I was a tribune in Legio XX Valeria Victrix during Claudius' reign.\
- We thought against the tribes of Britannia. Claudius awarded to me many honors. Amongst other things I was appointed as:\
- Director of the Mouseion. I have held this position for a decade now.", "library_intro",
-[]],
-[trp_alexandrian_library, "library_intro",
-[
-],
-    "However, the Mouseion is a place of knowledge. You can find all books of the world here. Some can be read in the reading room right over there. If you want to acquire the more expensive ones you must first win our trust.", "library_pretalk",
+],"Ave. I am Tiberius Claudius Balbilus. I was a tribune in Legio XX Valeria Victrix during Claudius' reign. We fought against the tribes of Britannia. Claudius awarded me many honours. Amongst other things, I was appointed Director of the Mouseion. I have held this position for a decade now.",
+"library_intro",[]],
+
+[anyone, "library_intro",[
+],"However, the Mouseion is a place of knowledge. You can find books from all over the world here. Some can be read in the reading room right over there. If you want to acquire the more expensive ones, you must first win our trust.",
+"library_pretalk",
 []],
 
-[trp_alexandrian_library, "start",
-[
-],
-    "Welcome. How can I help you?", "library_talk",
+[trp_alexandrian_library, "start",[
+],"Welcome. How can I help you?",
+"library_talk",
 []],
-[trp_alexandrian_library, "library_pretalk",
-[
-],
-    "Is there anything else?", "library_talk",
+
+[anyone, "library_pretalk",[
+],"Is there anything else?",
+"library_talk",
 []],
-[trp_alexandrian_library|plyr, "library_talk",
-[
-],
-    "I want to trade books.", "library_talk_trade",
+
+[anyone|plyr, "library_talk",[
+],"I want to trade books.",
+"library_talk_trade",
 []],
-[trp_alexandrian_library, "library_talk_trade",
-[
+
+[anyone, "library_talk_trade",[
   (this_or_next|party_slot_ge, "$current_town", slot_center_player_relation, 20),
   (eq, "$g_is_emperor",1),#is Emperor
-],
-    "You can buy a copy of every book in the world.", "library_pretalk",
-[
-    (try_for_range, ":books", books_begin, books_end),
-      (store_item_kind_count, ":number", ":books", "trp_alexandrian_library"),
-      (lt, ":number", 1),
-      (troop_add_item,"trp_alexandrian_library",":books"),
-    (try_end),
-    (change_screen_trade),
+],"You can buy a copy of every book in the world.",
+"library_pretalk",[
+  (try_for_range, ":books", books_begin, books_end),
+    (store_item_kind_count, ":number", ":books", "trp_alexandrian_library"),
+    (lt, ":number", 1),
+    (troop_add_item,"trp_alexandrian_library",":books"),
+  (try_end),
+  (change_screen_trade),
 ]],
-[trp_alexandrian_library, "library_talk_trade",
-[
-],
-    "Unfortunately, we only sell books to people we trust. ^^(Improve your relation with Alexandria.)", "library_pretalk",
-[]],
-[trp_alexandrian_library|plyr, "library_talk",
-[
-],
-    "Farewell.", "close_window",
-[]],
+
+[anyone, "library_talk_trade",[
+],  "Unfortunately, we only sell books to people we trust. ^^(Improve your relation with Alexandria.)",
+"library_pretalk",[
+]],
+
+[anyone|plyr, "library_talk",[
+],"Farewell.",
+"close_window",[
+]],
 
 ##guest troops in Alexandria
 [anyone, "start",

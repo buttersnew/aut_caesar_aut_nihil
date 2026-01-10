@@ -45472,7 +45472,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (str_store_string, s23,
           "@Your little play starts out quite conventionally, downright boringly normal."
           +" But then Antonia turns into a she-wolf; with a bit biting and scratching."
-          +" In the end she honors Aphrodite with such ecstasy that even the soldiers outside the tent can only marvel."
+          +" In the end she honours Aphrodite with such ecstasy that even the soldiers outside the tent can only marvel."
           +" Later, when Phoebus' journey comes to an end and Luna covers your camp with a dark cloth, Antonia makes herself on way."
           +" The Night's Watch sees her sneaking away and thinks his part about the day's events."
         ),
@@ -45480,7 +45480,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (str_store_string, s23,
           "@Your little play starts out quite conventionally, downright boringly normal."
           +" But then Antonia turns into a she-wolf; with a bit biting and scratching."
-          +" In the end she honors Aphrodite with such ecstasy that even the slaves and companions outside the tent can only marvel."
+          +" In the end she honours Aphrodite with such ecstasy that even the slaves and companions outside the tent can only marvel."
           +" Later, when Phoebus' journey comes to an end and Luna covers your camp with a dark cloth, Antonia makes herself on way."
           +" The Night's Watch sees her sneaking away and thinks his part about the day's events."
         ),
@@ -56342,7 +56342,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
  ("tiggelinius_event_1",0,
-    "A slaves informs you Nero is awaiting you for a special dinner to your honors in the Triclinium of the palace.^^You make your way towards the palace. As you enter, a woman approaches. You recognize her. She was the one who informed you about the palace 'routines' earlier.^\
+    "A slaves informs you Nero is awaiting you for a special dinner to your honours in the Triclinium of the palace.^^You make your way towards the palace. As you enter, a woman approaches. You recognize her. She was the one who informed you about the palace 'routines' earlier.^\
  She says:^^\
  'Either you angered him, you made him envious or you have an influential enemy in the palace. Either way, you are in great danger! Be careful.'^^As quickly as she approached she leaves before you could say anything.\
  You notice an increase of guards in the palace. There doesn't seem to be a turning back. If you leave the palace now, you will surely be imprisoned. You have no choice than entering the Triclinium.^^\

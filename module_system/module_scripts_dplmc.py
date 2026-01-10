@@ -4180,7 +4180,7 @@ scripts_dplmc = [
     (str_store_troop_name, s0, "trp_player"), # default
 
     (try_begin),
-        #disable extra honors when the player is not recognized
+        #disable extra honours when the player is not recognized
         (gt, "$sneaked_into_town", disguise_none),
         (assign, ":highest_honor", 1),
     (else_try),
@@ -4334,7 +4334,7 @@ scripts_dplmc = [
     (store_faction_of_party, ":party_faction"),
 
     (try_begin),
-        (eq, "$sneaked_into_town", disguise_none),#disable extra honors when the player is not recognized
+        (eq, "$sneaked_into_town", disguise_none),#disable extra honours when the player is not recognized
         (ge, ":party_no", 0),
 
         #This is used in various conditions below, so I am calling it once
@@ -4352,12 +4352,12 @@ scripts_dplmc = [
         (assign, "$g_talk_troop", ":save_g_talk_troop"),
 
         (try_begin),
-            #The player is a full member of the faction: use full honors
+            #The player is a full member of the faction: use full honours
             (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", ":party_faction"),
             (ge, reg0, DPLMC_FACTION_STANDING_DEPENDENT),
             #(nothing more needs to be done)
         (else_try),
-            #the faction has recognized him formally: use full honors
+            #the faction has recognized him formally: use full honours
             (this_or_next|eq, ":party_no", "p_main_party"),
             (this_or_next|eq, ":party_faction", "fac_player_supporters_faction"),
             (faction_slot_ge, ":party_faction", slot_faction_recognized_player, 1),
