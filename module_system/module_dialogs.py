@@ -17759,62 +17759,68 @@ dialogs =[
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_target_dna, 4),
   (quest_slot_eq, "qst_nero_special_quest", slot_quest_current_state, 0),
 ],
-"We heard news of your adventures and deeds you have accomplished for the glory of Rome, son of Mars."+
+"We heard news of your adventures and the deeds you have accomplished for the glory of Rome, son of Mars."+
 "I am always happy to have such people as commanders, though they shouldn't forget who they are and who they are not.",
 "nero_tigellinius_event_1",
 []],
 
 [anyone|other(trp_tigellinus),"nero_tigellinius_event_1",[],
-"Absolutely, oh Divinity. One shouldn't get lost too much into building cloud-castles too much, as one easily forgets that a strong breeze can blow away clouds. "+
-"Especially we Praetorians know how to blow. This guy Piso had a dream, but ...", "nero_tigellinius_event_2",
+"Absolutely, oh Divinity. One shouldn't get lost in building cloud-castles, as one easily forgets that a strong breeze can blow them away. "+
+"We Praetorians, especially, know how to blow. That man Piso had a dream, but ...", "nero_tigellinius_event_2",
 [(call_script, "script_set_conversation_troop", "trp_tigellinus"),]],
 
 [anyone|other(trp_kingdom_7_lady_1),"nero_tigellinius_event_2",[],
-"(She interrupts him.)^^Military men are not daydreamer, this is something for senators who are bored in their houses and who are dreaming of adventures "+
-"A true son of Mars doesn't waste his mind with such nonsense, as he is already busy enough with killing enemies of Rome.", "nero_tigellinius_event_3",
+"-- She interrupts him. --^^Military men are not daydreamers; that is something for senators who are bored in their houses and dream of adventures. "+
+"A true son of Mars doesn't waste his mind on such nonsense, as he is already busy enough killing the enemies of Rome.", "nero_tigellinius_event_3",
 [(call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),]],
 
 [anyone,"nero_tigellinius_event_3",[],
-"Whatever. {playername}, have you ever visited Piso in his villa in Neapolis? You are also owning a nice estate there, aren't you? "+
-"Also, your house and the one of Piso are bordering each other.", "nero_tigellinius_event_4",
+"Whatever. {playername}, have you ever visited Piso in his villa in Neapolis? You own a nice estate there too, don't you? "+
+"In fact, your house and Piso's border each other.", "nero_tigellinius_event_4",
 []],
 
 [anyone|plyr,"nero_tigellinius_event_4",[],
-"I spend most of the time on the battlefield. I usually only come to Rome if you, oh Divinity, need my service. I never met Piso.", "nero_tigellinius_event_5",
+"I do not own any property in Neapolis, this is fake news!", "nero_tigellinius_event_5",
+[]],
+[anyone|plyr,"nero_tigellinius_event_4",[],
+"I may own an estate there, but I spend most of my time on the battlefield and I have never met Piso.", "nero_tigellinius_event_5",
 []],
 
 [anyone|other(trp_tigellinus),"nero_tigellinius_event_5",[],
-"The house of Piso was under observation for quite a while. One saw people who came from Piso's villa to yours too. "+
-"Your wealth is also well known, something, which is usually used to...",
-"nero_tigellinius_event_6",[(call_script, "script_set_conversation_troop", "trp_tigellinus"),]],
+"The house of Piso has been under observation for quite a while. We saw people coming from Piso's villa to yours. "+
+"Your wealth is also well known; something which is usually used to...",
+"nero_tigellinius_event_6",[
+  (call_script, "script_set_conversation_troop", "trp_tigellinus"),
+]],
 
 [anyone|other(trp_kingdom_7_lady_1),"nero_tigellinius_event_6",[],
-"(She interrupts him again. He looks annoyed but has to stop speaking.)^^Slaves are well connected under each other."+
-"The people one saw there must have been slaves. Also, shouldn't we not laud him for his deeds! What he has done for Rome is more than anyone else ever achieved.",
-"nero_tigellinius_event_7",
-[(call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),]],
+"-- She interrupts him again. He looks annoyed but has to stop speaking. --^^Slaves are well connected amongst each other."+
+"The people one saw there must have been slaves. Also, shouldn't we laud him for his deeds! What he has done for Rome is more than anyone else ever achieved.",
+"nero_tigellinius_event_7",[
+  (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
+]],
 
 [anyone,"nero_tigellinius_event_7",[],
-"But, {playername}, you have controversial friends. And most of them are not fond to me.",
+"But, {playername}, you have controversial friends. And most of them are not fond of me.",
 "nero_tigellinius_event_8",
 []],
 
 [anyone|plyr,"nero_tigellinius_event_8",[],
-"There is someone, not fond of you? This are just rumors. If someone hears you sing, oh Divine, then his heart will melt away.",
+"Is there someone not fond of you? These are just rumors. If someone hears you sing, oh Divine, then his heart will melt away.",
 "nero_tigellinius_event_8_1",
 []],
 
 [anyone|plyr,"nero_tigellinius_event_8",[],
-"It is true. But they, who are not fond of you are fools. I am just their friend for convenience.",
+"It is true. But those who are not fond of you are fools. I am just their friend for convenience.",
 "nero_tigellinius_event_8_1",
 []],
 
 [anyone|other(trp_kingdom_7_lady_1),"nero_tigellinius_event_8_1",[],
-"(She interrupts again, by offering grapes.)^^Grapes? I was told they are from Greece. Much sweeter than the Italian ones, as everything from Greece has more taste and flavor.^^(She winks at you.)",
+"-- She interrupts again, by offering grapes. --^^Grapes? I was told they are from Greece. Much sweeter than the Italian ones, as everything from Greece has more taste and flavor.^^(She winks at you.)",
 "nero_tigellinius_event_9",[(call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),]],
 
 [anyone,"nero_tigellinius_event_9",[],
-"(He takes a grape.)^^I am still planing my tour through Greece. I haven't decided yet were to perform my Troyad. Either in Athens or Thessalonica.",
+"-- He takes a grape. --^^I am still planning my tour through Greece. I haven't decided yet where to perform my Troyad. Either in Athens or Thessalonica.",
 "nero_tigellinius_event_10",[]],
 
 [anyone|plyr,"nero_tigellinius_event_10",[],
@@ -17827,30 +17833,31 @@ dialogs =[
 "Why not Dyrrachium?", "nero_tigellinius_event_11",[]],
 
 [anyone,"nero_tigellinius_event_11",[],
-"(Tigellinus wanted to say something too, but you were faster.)^^Oh maybe you are right. "+
-"I am just looking for a town were the people have a good understanding of art.", "nero_tigellinius_event_12",[]],
+"-- Tigellinus wanted to say something too, but you were faster. --^^Oh maybe you are right. "+
+"I am just looking for a town where the people have a good understanding of art.", "nero_tigellinius_event_12",[]],
 
 [anyone|other(trp_kingdom_7_lady_1),"nero_tigellinius_event_12",[],
-"(Again Tigellinus wants to take the word, but Poppaea is faster.)^^I like the choice of {playername}. We should start the travel to Greece as fast as possible. "+
+"-- Again Tigellinus wants to speak, but Poppaea is faster. --^^I like the choice of {playername}. We should start the travel to Greece as fast as possible. "+
 "The Roman air is so unhealthy.",
 "nero_tigellinius_event_13",[(call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),]],
 
 [anyone|other(trp_tigellinus),"nero_tigellinius_event_13",[],
-"(He finally manages to take the word.)^^Oh Divinity, we should come back to the clear evidence we examined before.",
+"(He finally manages to speak.)^^Oh Divinity, we should come back to the clear evidence we examined before.",
  "nero_tigellinius_event_14",[(call_script, "script_set_conversation_troop", "trp_tigellinus"),]],
 
 [anyone|plyr,"nero_tigellinius_event_14",[],
-"Actually, Tigellinus would make a good philosopher: He speaks about evidence which is non-existing, for things which are non-existing.",
+"Actually, Tigellinus would make a good philosopher: He speaks about evidence which is non-existent, for things which are non-existent.",
 "nero_tigellinius_event_15",[]],
 
 [anyone,"nero_tigellinius_event_15",[],
-"(Poppaea and Nero laugh. The discussion is over. The meal goes on cheerfully. After the final dish is eaten, "+
+"-- Poppaea and Nero laugh. The discussion is over. The meal goes on cheerfully. After the final dish is eaten, "+
 "Poppaea convinces Nero to give a small performance. When the performance finished, the meal is concluded and you are allowed to leave. "+
-"Obviously, without Poppaea's help you would be doomed. Obviously, Tigellinus is your enemy.)", "close_window",[
-(call_script, "script_succeed_quest", "qst_nero_special_quest"),
-(call_script, "script_end_quest", "qst_nero_special_quest"),
-(jump_to_menu, "mnu_poppaea_event_3"),
-(finish_mission),
+"Obviously, without Poppaea's help you would be doomed. Obviously, Tigellinus is your enemy. --",
+"close_window",[
+  (call_script, "script_succeed_quest", "qst_nero_special_quest"),
+  (call_script, "script_end_quest", "qst_nero_special_quest"),
+  (jump_to_menu, "mnu_poppaea_event_3"),
+  (finish_mission),
 ]],
 
 ##Nero special event 1
