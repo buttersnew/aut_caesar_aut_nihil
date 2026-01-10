@@ -47581,6 +47581,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "You bring the petition to remove {s22} before the senate. You supporters immediately demand, that you should be nominated as new governor."
   +" You need a two-thirds majority to pass this important decision. You are currently supported by {reg20}% of the senators.",
   "none",[
+    (quest_get_slot, ":town", "qst_usurp_province", slot_quest_target_center),
+    (str_store_party_name, s22, ":town"),
+
     (set_background_mesh, "mesh_pic_senators"),
     (troop_get_slot, reg20, "trp_senator_dummy", slot_senate_support),
   ],[
