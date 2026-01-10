@@ -63760,9 +63760,7 @@ scripts = scripts_hardcoded + [
             (val_add, ":slot", 1),
         (try_end),
     (try_end),
-    (gt, ":enemies", 4),#
-    #there must be at least 2 enemies#
-    #08.11.19: 2 are to few, take 4 instead
+    (gt, ":enemies", 4),#there must be at least 5 enemies
     (store_random_in_range, ":r", 0, 100),
     (try_begin),
         (eq, "$edict6",1),
