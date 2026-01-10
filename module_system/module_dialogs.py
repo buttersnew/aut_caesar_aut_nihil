@@ -25454,6 +25454,10 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
         (troop_set_faction, "trp_gwenhwyfar", "fac_kingdom_2"),
     (try_end),
     (troop_set_note_available, "trp_gwenhwyfar", 1),
+
+    # give her some clothing on marriage
+    (troop_add_item, "trp_gwenhwyfar", "itm_female_1"),
+    (troop_add_item, "trp_gwenhwyfar", "itm_caligea"),
 ]],
 
 [anyone|plyr,"gwenny_love_talk_7",[], "So, from now on we shall be husband and wife!", "gwenny_love_talk_8",[]],
@@ -89425,8 +89429,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "gweny_talk_join1",
 []],
 
-[trp_gwenhwyfar|plyr, "gweny_talk_join1",[(troops_can_join, 1),],
-  "Yes!", "gweny_talk_18",
+[trp_gwenhwyfar|plyr, "gweny_talk_join1",[
+  (troops_can_join, 1),
+],"Yes!",
+"gweny_talk_18",
 []],
 [trp_gwenhwyfar|plyr, "gweny_talk_join1",[],
   "Not yet. I still have not enough space in my party.", "close_window",

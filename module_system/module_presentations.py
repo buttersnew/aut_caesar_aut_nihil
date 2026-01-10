@@ -42547,7 +42547,7 @@ presentations = presentations_wse2 + [
         (try_for_range, ":improvement", village_improvements_begin, walled_center_improvements_end),
           (party_get_slot, ":has_build", "$g_notification_menu_var1", ":improvement"),
           (try_begin),# real number of buildings
-            (eq, ":has_build", 1),
+            (ge, ":has_build", 1),
             (val_add, reg12, 1),
           (try_end),
           (store_random_in_range, ":rand", 0, 100),
@@ -42560,7 +42560,7 @@ presentations = presentations_wse2 + [
             (gt, ":rand", ":skill_effect"),
             (assign, ":has_build", 0),
           (try_end),
-          (eq, ":has_build", 1),
+          (ge, ":has_build", 1),
           (val_add, reg9, 1),
           (call_script, "script_get_improvement_details", ":improvement", "$g_notification_menu_var1"),
           (try_begin),
@@ -42579,7 +42579,7 @@ presentations = presentations_wse2 + [
         (str_store_string, s0,
         "@You, governor of the province of {s40}, have been accused by a delator of evading taxes, exploiting the population with high tributes, and abusing your office."
         +" A local lawyer has taken the opportunity and written a petition to ask the Princeps for help in this case.^^"
-        +" The Princeps now demands a list of all buildings that have been built in {s41}."
+        +" The Princeps now demands a list of all buildings that have ever been built in {s41} (buildings which are finished and NOT under construction!)."
         +" If you do not respond accordingly, you may lose reputation, renown, and your office. If the reported number of buildings is wrong, a trial will start against you."
         +" Due to your trade skill {reg10}, you remember that {s41} has the following buildings (The list may be wrong, depending on your trade skill!):^^{s39}"
         ),
@@ -42671,9 +42671,15 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 0),
         (try_begin),
             (eq, "$g_notification_menu_var2", event_governor),
+            (assign, ":number_buildings", 0),
+            (try_for_range, ":improvement", village_improvements_begin, walled_center_improvements_end),
+              (party_get_slot, ":has_build", "$g_notification_menu_var1", ":improvement"),
+              (ge, ":has_build", 1),
+              (val_add, ":number_buildings", 1),
+            (try_end),
             (try_begin),
-                (eq, reg12, reg11),
-                (eq, reg12, 0),
+                (eq, ":number_buildings", reg11),
+                (eq, ":number_buildings", 0),
                 (str_clear,s29),
                 (str_store_string,s29,"@The number of buildings was reported correctly. The accusations turned out to be wrong. However the Princeps noticed that you haven't build anything yet and wrote the following letter:"
                 +" 'For the glory of Rome, develop your town! To punish you for not properly fullfilling your task as governor you have to pay 5,000 denarii.'"),
@@ -42695,11 +42701,12 @@ presentations = presentations_wse2 + [
                 (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", 5000, "trp_player"),
                 (call_script, "script_change_troop_renown", "trp_player", -5),
             (else_try),
-                (eq, reg12, reg11),
+                (eq, ":number_buildings", reg11),
                 (str_store_string,s29,"@The number of buildings was reported correctly. The accusations turned out to be wrong."),
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
             (else_try),
+                (assign, reg12, ":number_buildings"),
                 (str_store_string,s29,"@The number of buildings was reported wrong! In fact, procurators report that there are {reg12} buildings. You will have to travel to Rome and explain the situation to the Princeps!"),
                 (display_message, "@{s29}"),
                 (jump_to_menu, "mnu_random_juice_events"),
