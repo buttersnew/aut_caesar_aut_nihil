@@ -79845,7 +79845,7 @@ scripts = scripts_hardcoded + [
         (check_quest_active, "qst_usurp_province"),
         (quest_slot_eq, "qst_usurp_province", slot_quest_target_dna, -1),	##means senate
         (quest_get_slot, ":town", "qst_usurp_province", slot_quest_target_center),
-        (str_store_party_name, s20, ":town"),
+        (str_store_party_name, s22, ":town"),
         (str_store_string, s1, "@Bring the petition from {s22} before the senate"),
         (try_begin),
             (eq, ":execude", 1),
