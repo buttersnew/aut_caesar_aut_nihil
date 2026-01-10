@@ -17816,7 +17816,7 @@ dialogs =[
 []],
 
 [anyone|other(trp_kingdom_7_lady_1),"nero_tigellinius_event_8_1",[],
-"-- She interrupts again, by offering grapes. --^^Grapes? I was told they are from Greece. Much sweeter than the Italian ones, as everything from Greece has more taste and flavor.^^(She winks at you.)",
+"-- She interrupts again, by offering grapes. --^^Grapes? I was told they are from Greece. Much sweeter than the Italian ones, as everything from Greece has more taste and flavor.^^-- She winks at you. --",
 "nero_tigellinius_event_9",[(call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),]],
 
 [anyone,"nero_tigellinius_event_9",[],
@@ -17842,7 +17842,7 @@ dialogs =[
 "nero_tigellinius_event_13",[(call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),]],
 
 [anyone|other(trp_tigellinus),"nero_tigellinius_event_13",[],
-"(He finally manages to speak.)^^Oh Divinity, we should come back to the clear evidence we examined before.",
+"-- He finally manages to speak. --^^Oh Divinity, we should come back to the clear evidence we examined before.",
  "nero_tigellinius_event_14",[(call_script, "script_set_conversation_troop", "trp_tigellinus"),]],
 
 [anyone|plyr,"nero_tigellinius_event_14",[],
