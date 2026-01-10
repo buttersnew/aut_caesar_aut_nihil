@@ -14998,14 +14998,16 @@ game_menus = [
     (try_end),
     #forbidden to enter?
     (try_begin),
-        (store_time_of_day,reg(12)),
-        (ge,reg(12),5),
-        (lt,reg(12),21),
+        (store_time_of_day,":cur_hour"),
+        (ge, ":cur_hour", 5),
+        (lt, ":cur_hour", 21),
         (assign,"$town_nighttime",0),
     (else_try),
         (assign,"$town_nighttime",1),
-        (party_slot_eq,"$current_town",slot_party_type, spt_town),
-        (str_store_string, s13, "str_town_nighttime"),
+        (try_begin),
+          (party_slot_eq,"$current_town",slot_party_type, spt_town),
+          (str_store_string, s13, "str_town_nighttime"),
+        (try_end),
     (try_end),
 
     (try_begin),
@@ -15442,15 +15444,25 @@ game_menus = [
           (eq, "$talk_context", tc_prison_break),
           (assign, "$talk_context", tc_escape),
           (assign, "$g_mt_mode", tcm_escape),
+
+          (party_get_slot, ":town_scene", "$current_town", slot_town_center),
+          (modify_visitors_at_site, ":town_scene"),
+          (reset_visitors),
+          (set_jump_mission,"mt_town_center"),
+          # overwrite mission template flags to exclude horses during prison break escape for player
+          (mission_tpl_entry_set_override_flags, "mt_town_center", 0, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_town_center", 1, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_town_center", 2, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_town_center", 3, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_town_center", 4, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_town_center", 5, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_town_center", 6, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_town_center", 7, af_override_horse),
+
           (store_faction_of_party, ":town_faction", "$current_town"),
           (faction_get_slot, ":tier_2_troop", ":town_faction", slot_faction_tier_3_troop),
           (faction_get_slot, ":tier_3_troop", ":town_faction", slot_faction_tier_3_troop),
           (faction_get_slot, ":tier_4_troop", ":town_faction", slot_faction_tier_4_troop),
-          (party_get_slot, ":town_scene", "$current_town", slot_town_center),
-          (modify_visitors_at_site, ":town_scene"),
-          (reset_visitors),
-          #SB : TODO : take account slot_center_has_prisoner_tower
-          #ideally we could alarm troops at locations
           (try_begin),
           #if guards have not gone to some other important happening at nearby villages, then spawn 4 guards. (example : fire)
               (party_get_slot, ":last_nearby_fire_time", "$current_town", slot_town_last_nearby_fire_time),
@@ -15489,7 +15501,6 @@ game_menus = [
                   (set_visitors, 28, ":tier_4_troop", 0),
               (try_end),
           (try_end),
-          (set_jump_mission,"mt_town_center"),
           (try_begin),
               (gt, "$sneaked_into_town", disguise_none), #setup disguise
               (assign, ":override_state", af_override_everything),
@@ -16226,10 +16237,19 @@ game_menus = [
               (set_visitor, ":guard_no", ":cur_troop_id", ":troop_dna"),
               (val_add, ":guard_no", 1),
           (try_end),
+          (set_jump_mission,"mt_castle_visit"),
+
+          (mission_tpl_entry_set_override_flags, "mt_castle_visit", 0, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_castle_visit", 1, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_castle_visit", 2, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_castle_visit", 3, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_castle_visit", 4, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_castle_visit", 5, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_castle_visit", 6, af_override_horse),
+          (mission_tpl_entry_set_override_flags, "mt_castle_visit", 7, af_override_horse),
+
           #(set_jump_entry, 1),
           (set_jump_entry, 7), #SB : g_player_troop back to trp_player
-
-          (set_jump_mission,"mt_castle_visit"),
 
           (try_begin),
               (gt, "$sneaked_into_town", disguise_none), #setup disguise
@@ -18721,10 +18741,10 @@ game_menus = [
 			  (store_random_in_range, ":r", 0, 2),
 			  (try_begin),
 				  (eq, ":r", 0),
-          (store_random_in_range, ":slave_troop", male_slaves_begin, male_slaves_end),
+          (store_random_in_range, ":slave_troop", male_slaves_begin + 1, male_slaves_end), # exclude the generic slaves
 				  (set_visitor, ":visiterator", ":slave_troop",),
 			  (else_try),
-          (store_random_in_range, ":slave_troop", female_slaves_begin, female_slaves_end),
+          (store_random_in_range, ":slave_troop", female_slaves_begin + 1, female_slaves_end), # exclude the generic slaves
 				  (set_visitor, ":visiterator", ":slave_troop",),
 			  (try_end),
       (try_end),

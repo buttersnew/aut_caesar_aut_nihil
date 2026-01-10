@@ -2365,10 +2365,10 @@ follower_troops_end = "trp_caravan_master"
 slaves_begin    = "trp_slave"
 slaves_end      = "trp_orgie_fem1"
 
-male_slaves_begin = "trp_slave"
-male_slaves_end = "trp_slave_female"
+male_slaves_begin = trp_slave
+male_slaves_end = trp_slave_female
 
-female_slaves_begin = "trp_slave_female"
+female_slaves_begin = trp_slave_female
 female_slaves_end = slaves_end
 
 household_slaves_begin = "trp_household_slave_1"

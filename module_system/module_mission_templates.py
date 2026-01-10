@@ -1734,8 +1734,9 @@ dedal_shield_bash_AI = (2, 0, 0,[
     (call_script,"script_shield_bash_ai_trigger")])
 
 bodyguard_triggers = [
- (ti_after_mission_start, 0, ti_once, [(neq, "$g_mt_mode", tcm_disguised)], #condition for not sneaking in; to exclude prison-breaks, etc change to (eq, "$g_mt_mode", tcm_default")
-   [
+  (ti_after_mission_start, 0, ti_once, [
+    (neq, "$g_mt_mode", tcm_disguised) #condition for not sneaking in; to exclude prison-breaks, etc change to (eq, "$g_mt_mode", tcm_default")
+  ],[
     #Get number of bodyguards
     # (store_skill_level, ":leadership", skl_leadership, "trp_player"),
     # (troop_get_slot, ":renown", "trp_player", slot_troop_renown),
@@ -1825,11 +1826,13 @@ bodyguard_triggers = [
         (assign, ":agent_horse",":agent"),
         (assign, ":agent", ":rider"),
         (agent_get_troop_id, ":troop", ":agent"),
-        (str_store_troop_name, s10, ":troop"),
+
+        # (str_store_troop_name, s10, ":troop"),
     (try_end),
     (agent_get_troop_id, ":troop", ":agent"),
     (call_script, "script_cf_can_spawn_as_body_guard", ":troop"),
-    (str_store_troop_name, s10, ":troop"),
+
+    # (str_store_troop_name, s10, ":troop"),
 
     (get_player_agent_no, ":player"),
     (agent_get_team, reg15, ":player"),
@@ -5769,6 +5772,49 @@ dplmc_death_came_triggers = [
   deathcam_cycle_backwards,
   dplmc_death_camera
 ]
+
+adjust_equipment = (1,0,2,[],[
+  (try_for_agents, ":agent_no"),
+      (agent_is_active, ":agent_no"),
+      (agent_is_human, ":agent_no"),
+      (agent_is_alive, ":agent_no"),
+      (agent_is_non_player, ":agent_no"),
+      (agent_get_wielded_item, ":wielded_item", ":agent_no", 0),
+      (gt, ":wielded_item", 0),
+      (try_begin),#remove kontos for dismounted units
+          (is_between, ":wielded_item", kontos_begin, kontos_end),
+          (agent_get_horse, ":horse", ":agent_no"),
+          (le, ":horse", 0),
+          (agent_unequip_item, ":agent_no", ":wielded_item"),
+          (call_script, "script_equip_best_melee_weapon", ":agent_no", 0, 0, 1),
+          (try_begin),
+              (eq, "$cheat_mode", 1),
+              (agent_get_troop_id, ":troop", ":agent_no"),
+              (str_store_troop_name, s33, ":troop"),
+              (display_message, "@{s33} changes weapons"),
+          (try_end),
+      (else_try),#fix too large shields beeing used with bows
+          (is_between, ":wielded_item", "itm_hunting_bow", "itm_ballista_mounted"),
+          (agent_get_wielded_item, ":shield", ":agent_no", 1),
+          (gt, ":shield", 0),
+          (neg|is_between, ":shield", "itm_scythian_shield_cav1", "itm_eastern_germanic_shield_1"),
+          (neg|is_between, ":shield", "itm_ad_mixed_round_shields_01", "itm_signum_bireme"),
+          (neg|is_between, ":shield", "itm_celtic_round_shild1", "itm_irish_shield_1"),
+          (neg|is_between, ":shield", "itm_s_parma_mak_plain_16", "itm_eastern_shield_inf_light1"),
+          (neg|is_between, ":shield", "itm_leather_covered_round_shield", "itm_javelin"),
+          (neq, ":shield", "itm_african_round_shield"),
+          (agent_set_wielded_item, ":agent_no", -1), #this will unequip all items
+          (agent_set_wielded_item, ":agent_no", ":wielded_item"), #reequip bow
+          (try_begin),
+              (eq, "$cheat_mode", 1),
+              (agent_get_troop_id, ":troop", ":agent_no"),
+              (str_store_troop_name, s33, ":troop"),
+              (display_message, "@{s33} unequip shield as too large"),
+          (try_end),
+      (try_end),
+  (try_end),
+])
+
 dplmc_battle_mode_triggers_no_deathcam = [
   # torches for night battles?
   # (ti_on_agent_spawn, 0.5, 0, [
@@ -6150,47 +6196,8 @@ dplmc_battle_mode_triggers_no_deathcam = [
     (try_end),
   ]),
 
-  (1,0,2,[],[
-    (try_for_agents, ":agent_no"),
-        (agent_is_active, ":agent_no"),
-        (agent_is_human, ":agent_no"),
-        (agent_is_alive, ":agent_no"),
-        (agent_is_non_player, ":agent_no"),
-        (agent_get_wielded_item, ":wielded_item", ":agent_no", 0),
-        (gt, ":wielded_item", 0),
-        (try_begin),#remove kontos for dismounted units
-            (is_between, ":wielded_item", kontos_begin, kontos_end),
-            (agent_get_horse, ":horse", ":agent_no"),
-            (le, ":horse", 0),
-            (agent_unequip_item, ":agent_no", ":wielded_item"),
-            (call_script, "script_equip_best_melee_weapon", ":agent_no", 0, 0, 1),
-            (try_begin),
-                (eq, "$cheat_mode", 1),
-                (agent_get_troop_id, ":troop", ":agent_no"),
-                (str_store_troop_name, s33, ":troop"),
-                (display_message, "@{s33} changes weapons"),
-            (try_end),
-        (else_try),#fix too large shields beeing used with bows
-            (is_between, ":wielded_item", "itm_hunting_bow", "itm_ballista_mounted"),
-            (agent_get_wielded_item, ":shield", ":agent_no", 1),
-            (gt, ":shield", 0),
-            (neg|is_between, ":shield", "itm_scythian_shield_cav1", "itm_eastern_germanic_shield_1"),
-            (neg|is_between, ":shield", "itm_ad_mixed_round_shields_01", "itm_signum_bireme"),
-            (neg|is_between, ":shield", "itm_celtic_round_shild1", "itm_irish_shield_1"),
-            (neg|is_between, ":shield", "itm_s_parma_mak_plain_16", "itm_eastern_shield_inf_light1"),
-            (neg|is_between, ":shield", "itm_leather_covered_round_shield", "itm_javelin"),
-            (neq, ":shield", "itm_african_round_shield"),
-            (agent_set_wielded_item, ":agent_no", -1), #this will unequip all items
-            (agent_set_wielded_item, ":agent_no", ":wielded_item"), #reequip bow
-            (try_begin),
-                (eq, "$cheat_mode", 1),
-                (agent_get_troop_id, ":troop", ":agent_no"),
-                (str_store_troop_name, s33, ":troop"),
-                (display_message, "@{s33} unequip shield as too large"),
-            (try_end),
-        (try_end),
-    (try_end),
-  ]),
+  adjust_equipment,
+
   ##make dismounted cavalry to infantry
   (ti_on_agent_dismount, 0, 0, [],[
     (store_trigger_param_1, ":rider"),
@@ -7589,6 +7596,8 @@ mission_templates = [
     (60,mtef_visitor_source,af_override_horse,0,1,[]),
   ], p_wetter + storms +
   [
+    adjust_equipment,
+
     (1,0,ti_once, [
       (eq, "$current_town","p_town_6"),
       (troop_slot_eq, "trp_christ",slot_troop_days_on_mission, 0),
@@ -7741,7 +7750,7 @@ mission_templates = [
       (agent_get_troop_id, ":troop_no", ":agent_no"),
       (troop_get_slot, ":will_join_prison_break", ":troop_no", slot_troop_will_join_prison_break),
       (eq, ":will_join_prison_break", 1),
-      (display_message, "@Check 1"),
+
       (agent_ai_set_aggressiveness, ":agent_no", 5),
       (troop_set_slot, ":troop_no", slot_troop_will_join_prison_break, 0),
       (agent_set_is_alarmed, ":agent_no", 1),
@@ -7753,23 +7762,24 @@ mission_templates = [
       (try_end),
     ]),
 	  #The game begins with the town alerted
-    (1, 0, ti_once,[
+    (ti_after_mission_start, 0, ti_once,[
       #If I set this to 1, 0, ti_once, then the prisoner spawns twice
       (eq, "$talk_context", tc_escape),
     ],[
-      (get_player_agent_no, ":player_agent"),
-      (assign, reg6, ":player_agent"),
       (call_script, "script_activate_town_guard"),
+
+      (get_player_agent_no, ":player_agent"),
       (agent_get_team, ":player_team", ":player_agent"),
-      (try_for_range, ":prisoner", active_npcs_begin, kingdom_ladies_end),
+      (agent_get_position, pos4, ":player_agent"),
+
+      (party_get_num_prisoner_stacks, ":cap", "$current_town"),
+      (try_for_range, ":stack", 0, ":cap"),
+        (party_prisoner_stack_get_troop_id, ":prisoner", "$current_town", ":stack"),
+        (troop_is_hero, ":prisoner"),
         (troop_slot_ge, ":prisoner", slot_troop_mission_participation, mp_prison_break_fight),
         (str_store_troop_name, s4, ":prisoner"),
         (display_message, "str_s4_joins_prison_break"),
-        # (store_current_scene, ":cur_scene"), #this might be a better option? redundant?
-        # (modify_visitors_at_site, ":cur_scene"),
 
-        #<entry_no>,<troop_id>,<number_of_troops>, <team_no>, <group_no>),
-        #team no and group no are used in multiplayer mode only. default team in entry is used in single player mode
         (store_current_scene, ":cur_scene"),
         (modify_visitors_at_site, ":cur_scene"),
         (add_visitors_to_current_scene, 24, ":prisoner", 1, ":player_team", 0),
@@ -7825,17 +7835,7 @@ mission_templates = [
       (agent_get_troop_id, ":dead_agent_troop_no", ":dead_agent_no"),
       (agent_get_troop_id, ":killer_agent_troop_no", ":killer_agent_no"),
       (try_begin),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_dacian_prision_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_caucasian_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_celtic_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_sarmatian_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_germanic_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_eastern_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_batava_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_jew_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_bosporan_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_egyptian_prison_guard"),
-        (eq, ":dead_agent_troop_no", "trp_roman_prison_guard"),
+        (call_script, "script_cf_troop_is_prison_guard", ":dead_agent_troop_no"),
         (eq, ":killer_agent_troop_no", "trp_player"),
         (display_message, "@You got keys to the dungeon.", message_alert),
       (else_try), #SB : do this here instead of post-combat
@@ -11261,6 +11261,7 @@ mission_templates = [
     (46,mtef_visitor_source,af_override_horse,0,1,[]),
   ], p_wetter + storms +
   [
+    adjust_equipment,
     improved_lightning,
     can_spawn_commoners,
     (0,0,ti_once, [],[
@@ -11284,26 +11285,13 @@ mission_templates = [
       (agent_get_troop_id, ":killer_agent_troop_no", ":killer_agent_no"),
 
       (try_begin),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_dacian_prision_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_caucasian_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_celtic_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_sarmatian_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_germanic_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_eastern_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_batava_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_jew_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_bosporan_prison_guard"),
-        (this_or_next|eq, ":dead_agent_troop_no", "trp_egyptian_prison_guard"),
-        (eq, ":dead_agent_troop_no", "trp_roman_prison_guard"),
-
+        (call_script, "script_cf_troop_is_prison_guard", ":dead_agent_troop_no"),
         (eq, ":killer_agent_troop_no", "trp_player"),
-
         #SB : colorize and redo string
         (display_message, "@You got the keys to the dungeon.", message_alert),
         (mission_disable_talk),
       (try_end),
     ]),
-
     #JAILBREAK TRIGGERS
     #Civilians get out of the way
     (1, 0, 0,[
@@ -11347,28 +11335,29 @@ mission_templates = [
       (agent_get_troop_id, ":troop_no", ":agent_no"),
       (troop_get_slot, ":will_join_prison_break", ":troop_no", slot_troop_will_join_prison_break),
       (eq, ":will_join_prison_break", 1),
+
       (agent_ai_set_aggressiveness, ":agent_no", 5),
       (troop_set_slot, ":troop_no", slot_troop_will_join_prison_break, 0),
       (agent_set_is_alarmed, ":agent_no", 1),
+      (agent_set_team, ":agent_no", 0),
       (try_begin),
         (troop_slot_eq, ":troop_no", slot_troop_mission_participation, mp_prison_break_stand_back),
         (agent_get_position, pos1, ":agent_no"),
         (agent_set_scripted_destination, ":agent_no", pos1),
       (try_end),
     ]),
-    (1, 0, ti_once,[
+
+	  #The game begins with the town alerted
+    (ti_after_mission_start, 0, ti_once,[
       #If I set this to 1, 0, ti_once, then the prisoner spawns twice
       (eq, "$talk_context", tc_escape),
     ],[
-      (get_player_agent_no, ":player_agent"),
-      (assign, reg6, ":player_agent"),
       (call_script, "script_activate_town_guard"),
 
       (get_player_agent_no, ":player_agent"),
-      (agent_get_position, pos4, ":player_agent"),
+      (agent_get_team, ":player_team", ":player_agent"),
 
       (party_get_num_prisoner_stacks, ":cap", "$current_town"),
-      (agent_get_team, ":player_team", ":player_agent"),
       (try_for_range, ":stack", 0, ":cap"),
         (party_prisoner_stack_get_troop_id, ":prisoner", "$current_town", ":stack"),
         (troop_is_hero, ":prisoner"),
@@ -11376,13 +11365,8 @@ mission_templates = [
         (str_store_troop_name, s4, ":prisoner"),
         (display_message, "str_s4_joins_prison_break"),
 
-        (store_current_scene, ":cur_scene"), #this might be a better option?
-        (modify_visitors_at_site, ":cur_scene"),
-        #<entry_no>,<troop_id>,<number_of_troops>, <team_no>, <group_no>),
-        #team no and group no are used in multiplayer mode only. default team in entry is used in single player mode
         (store_current_scene, ":cur_scene"),
         (modify_visitors_at_site, ":cur_scene"),
-        # (assign, ":nearest_entry_no", 24),
         (add_visitors_to_current_scene, 24, ":prisoner", 1, ":player_team", 0),
         (troop_set_slot, ":prisoner", slot_troop_will_join_prison_break, 1),
       (try_end),

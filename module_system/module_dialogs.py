@@ -43572,19 +43572,19 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 []],
 
 [anyone|plyr,"lord_prison_break_confirm_3",[],
-"You keep well behind me, and try to stay out of the fighting.", "lord_prison_break_confirm_4",
-[
-(troop_set_slot, "$g_talk_troop", slot_troop_mission_participation, mp_prison_break_stand_back),
-(assign, "$g_reset_mission_participation", 1),
-(agent_set_team, "$g_talk_agent", 0),
+"You keep well behind me, and try to stay out of the fighting.", "lord_prison_break_confirm_4",[
+  (troop_set_slot, "$g_talk_troop", slot_troop_mission_participation, mp_prison_break_stand_back),
+  (assign, "$g_reset_mission_participation", 1),
+  (agent_set_team, "$g_talk_agent", 0),
 ]],
 
 [anyone|plyr,"lord_prison_break_confirm_3",[],
-"I'll need you to grab a weapon and help me, despite your weakness.", "lord_prison_break_confirm_4",
+"I'll need you to grab a weapon and help me, despite your weakness.",
+"lord_prison_break_confirm_4",
 [
-(troop_set_slot, "$g_talk_troop", slot_troop_mission_participation, mp_prison_break_fight),
-(assign, "$g_reset_mission_participation", 1),
-(agent_set_team, "$g_talk_agent", 0),
+  (troop_set_slot, "$g_talk_troop", slot_troop_mission_participation, mp_prison_break_fight),
+  (assign, "$g_reset_mission_participation", 1),
+  (agent_set_team, "$g_talk_agent", 0),
 ]],
 
 [anyone|plyr,"lord_prison_break_confirm_3",[],
