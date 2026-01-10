@@ -71647,15 +71647,15 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (eq, "$current_town", "p_town_14"),
   (check_quest_active, "qst_pirates"),
   (quest_slot_eq, "qst_pirates", slot_quest_current_state, 1),
-], "Have you heard something about the legendary craftsman Farbius?",
+], "Have you heard anything about the legendary craftsman Farbius?",
 "tavernkeeper_farbius",[]],
 
 [anyone,"tavernkeeper_farbius",[
   (eq, "$current_town", "p_town_14"),
 ], "You want Farbius? Ha! You and every other captain on the Black Sea."
 +" ^^But you're not going to get him. Barbarus Rufus runs the biggest fleet in this sea, and he decided that nobody else gets Farbius' fast ships anymore."
-+" ^^Farbius was volun-told last year to travel with Rufus' fleet and work only for him. ^^You can find Rufus' fleet on Lake Maeotis, just north of here, through the straight."
-+" He owns that sea and milks all the trade coming down the Tanais river from the plains",
++" ^^Farbius was forced last year to travel with Rufus' fleet and work only for him. ^^You can find Rufus' fleet on Lake Maeotis, just north of here, through the strait."
++" He owns that sea and milks all the trade coming down the Tanais river from the plains.",
  "tavernkeeper_pretalk",[
   (quest_set_slot, "qst_pirates", slot_quest_current_state, 2),
   (display_message, "str_quest_updated", message_alert),
@@ -71676,7 +71676,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
 [anyone,"tavernkeeper_farbius",[
   (str_store_party_name, s1, "$current_town"),
-], "Yes, I've heard of Farbius. He was here last year and had no shortage of clients. The man is a wizard when it comes to ship bottoms, and if there's one thing every sailor wants,"
+], "Yes, I've heard of Farbius. He was here last year and had no shortage of clients. The man is a wizard when it comes to ship hulls, and if there's one thing every sailor wants,"
 +" it's a faster ship. That, and strong wine, of course. ^^He hasn't been around here in a long time. It's not too unusual, no. With skill like his, he can go when and where he pleases,"
 +" but if you find him, let him know there are a lot of people in {s1} eager to see him.",
 "tavernkeeper_pretalk",
@@ -89721,101 +89721,94 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 ]],
 
-[trp_invidia, "start",
-[(eq, "$temp4", 0),
-],
-    "And who are you?", "invidia_talk",
+[trp_invidia, "start",[
+  (eq, "$temp4", 0),
+],"And who are you?",
+"invidia_talk",
 []],
-[trp_invidia|plyr, "invidia_talk",
-[
-],
-    "I am {playername}, always at your service.", "invidia_talk2",
+
+[trp_invidia|plyr, "invidia_talk",[
+],"I am {playername}, always at your service.",
+"invidia_talk2",[
+]],
+
+[trp_invidia|plyr, "invidia_talk",[
+],"I am {playername}, my lady.",
+"invidia_talk2",[
+]],
+
+[trp_invidia, "invidia_talk2",[
+],"Ah, never heard of you. You look like a common soldier. I usually don't talk with folk like you. Now if you would excuse me...",
+"invidia_talk3",[
+]],
+
+[trp_invidia|plyr, "invidia_talk3",[
+],"I am the reason why we are here at this party today. Nero hosted the party in my honor.",
+"invidia_talk4",[
+]],
+
+[trp_invidia, "invidia_talk4",[
+],"I am not sure what you are talking about. A party for a common soldier? I thought this party was hosted to celebrate a victory or something like that. It doesn't matter in the end. Now, if you would excuse me...^^(She wants to leave, but you block her way.)", "invidia_talk5",
 []],
-[trp_invidia|plyr, "invidia_talk",
-[
-],
-    "I am {playername}, my lady.", "invidia_talk2",
+
+[trp_invidia|plyr, "invidia_talk5",[
+],"There is something I want to show you. Please come with me.",
+"invidia_talk5_1",[]],
+
+[trp_invidia, "invidia_talk5_1",[
+],"And I don't want to see it. Now, leave me alone, I want to go and talk a bit with my sweet Nero.",
+"invidia_talk5_6_1",
 []],
-[trp_invidia, "invidia_talk2",
-[
-],
-    "Ah, never heard. You look like a common soldier. I usually don't talk with folk like you. Now if you would excuse me...", "invidia_talk3",
+
+[trp_invidia|plyr, "invidia_talk5",[
+],"I just wanted to tell you that I think you are the most beautiful woman at this party.",
+"invidia_talk5_2",
 []],
-[trp_invidia|plyr, "invidia_talk3",
-[
-],
-    "I am the reason why we are here at this party today. Nero hosted the party in my honor.", "invidia_talk4",
+
+[trp_invidia, "invidia_talk5_2",[
+],"I know that. Now, leave me alone, I want to go and talk a bit with my sweet Nero.",
+"invidia_talk5_6_1",
 []],
-[trp_invidia, "invidia_talk4",
-[
-],
-    "I am not sure what you are talking about? A party for a common soldier? I thought this party was hosted to celebrate a victory or something like that.\
- It doesn't matter in the end. Now, if you would excuse me...^^(She wants to leave, but you block her way.)", "invidia_talk5",
+[trp_invidia, "invidia_talk5_6_1",[
+],"-- Your attempt to flirt failed. It wasn't really your fault, it just happened because she is not interested at all. Poppaea's plan will fail if you don't make a bold move now. You see only one option. --",
+"invidia_talk5_6",
 []],
-[trp_invidia|plyr, "invidia_talk5",
-[
-],
-    "There is something I want to show you. Please come with me.", "invidia_talk5_1",
+
+[trp_invidia, "invidia_talk5_6",[
+],"-- You grab her by her arm. --^^What are you doing?",
+"invidia_talk7",
 []],
-[trp_invidia, "invidia_talk5_1",
-[
-],
-    "And I don't want to see it. Now, leave me alone, I want to go and talk a bit with my sweet Nero", "invidia_talk5_6_1",
+
+[trp_invidia|plyr, "invidia_talk7",[
+],"I really feel sorry for what I have to do, but I have to do it.",
+"invidia_talk8",
 []],
-[trp_invidia|plyr, "invidia_talk5",
-[
-],
-    "I just wanted to tell you that I think you are the most beautiful woman on this party.", "invidia_talk5_2",
+
+[trp_invidia|plyr, "invidia_talk7",[
+],"Your disrespectful behavior makes it quite easy for me to do what I have to do.",
+"invidia_talk8",
 []],
-[trp_invidia, "invidia_talk5_2",
-[
-],
-    "I know that. Now, leave me alone, I want to go and talk a bit with my sweet Nero.", "invidia_talk5_6_1",
+
+[trp_invidia, "invidia_talk8",[
+],"What weird stuff are you saying?^^-- You look around to make sure nobody watches you. Then you draw a pugio. --",
+"invidia_talk9",
 []],
-[trp_invidia, "invidia_talk5_6_1",
-[
-],
-    "(Your attempt to flirt failed. It wasn't really your fault, it just happened because she is not interested at all.\
- Poppaea's plan will fail if you don't do a bold move now. You see only one option.)", "invidia_talk5_6",
+
+[trp_invidia|plyr, "invidia_talk9",[
+],"-- You threaten her with your pugio. --^^You will stay quiet and come with me, or I cut your throat.",
+"invidia_talk10",
 []],
-[trp_invidia, "invidia_talk5_6",
-[
-],
-    "(You grab her by her arm.)^^What are you doing?", "invidia_talk7",
-[]],
-[trp_invidia|plyr, "invidia_talk7",
-[
-],
-    "I really feel sorry for what I have to do but I have to do it.", "invidia_talk8",
-[]],
-[trp_invidia|plyr, "invidia_talk7",
-[
-],
-    "Your disrespectful behavior makes it quite easy for me to do what I have to do.", "invidia_talk8",
-[]],
-[trp_invidia, "invidia_talk8",
-[
-],
-    "What weird stuff are you talking?^^(You look around to make sure nobody watches you. Then you draw a pugio.)", "invidia_talk9",
-[]],
-[trp_invidia|plyr, "invidia_talk9",
-[
-],
-    "(You threaten her with your pugio.)^^You will stay quiet and come with me or I cut your throat.", "invidia_talk10",
-[]],
-[trp_invidia, "invidia_talk10",
-[
-],
-    "Okay, Okay.^^(Your risky maneuver works. You guide her into a room. Before you enter, you make sure that nobody watches you.)", "close_window",
-[
-        (assign, "$temp4", 1),
-        (set_jump_mission, "mt_palace"),
-        (modify_visitors_at_site,"scn_londinium_castle"),
-        (reset_visitors),
-        (mission_tpl_entry_set_override_flags, "mt_palace", 0, af_override_horse|af_override_weapons|af_override_head),
-        (set_visitor,0,"trp_player"),
-        (set_visitor,1,"$g_talk_troop"),
-        (jump_to_scene, "scn_londinium_castle"),
+
+[trp_invidia, "invidia_talk10",[
+],"Okay, Okay.^^-- Your risky maneuver works. You guide her into a room. Before you enter, you make sure that nobody watches you. --", "close_window",[
+  (assign, "$temp4", 1),
+  (set_jump_mission, "mt_palace"),
+  (modify_visitors_at_site,"scn_londinium_castle"),
+  (reset_visitors),
+  (mission_tpl_entry_set_override_flags, "mt_palace", 0, af_override_horse|af_override_weapons|af_override_head),
+  (set_visitor,0,"trp_player"),
+  (set_visitor,1,"$g_talk_troop"),
+  (jump_to_scene, "scn_londinium_castle"),
 ]],
 
 ###alexandrian library talk
