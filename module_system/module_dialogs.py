@@ -50355,15 +50355,14 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 []],
 
 [anyone,"lord_recruit_1_relation",[
-(troop_slot_ge, "$g_talk_troop", slot_troop_intrigue_impatience, 100),
-],
-"I am a bit weary of talking politics. Perhaps at a later date", "lord_pretalk",
-[
-(troop_get_slot, reg3, "$g_talk_troop", slot_troop_intrigue_impatience),
-(try_begin),
-    (eq, "$cheat_mode", 1),
-    (display_message, "str_intrigue_impatience=_reg3_must_be_less_than_100"),
-(try_end),
+  (troop_slot_ge, "$g_talk_troop", slot_troop_intrigue_impatience, 100),
+],"I am a bit weary of talking politics. Perhaps at a later date",
+"lord_pretalk",[
+  (troop_get_slot, reg3, "$g_talk_troop", slot_troop_intrigue_impatience),
+  (try_begin),
+      (eq, "$cheat_mode", 1),
+      (display_message, "str_intrigue_impatience=_reg3_must_be_less_than_100"),
+  (try_end),
 ]],
 
 #lord proximity

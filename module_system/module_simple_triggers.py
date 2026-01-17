@@ -2979,7 +2979,8 @@ simple_triggers = [
 
     (try_begin),
         (troop_get_slot, ":impatience", "$g_hire_troops_and_controversy", slot_troop_intrigue_impatience),
-        (val_sub, ":impatience", 5),
+        (gt, ":impatience", 0),
+        (val_sub, ":impatience", 10),
         (val_max, ":impatience", 0),
         (troop_set_slot, "$g_hire_troops_and_controversy", slot_troop_intrigue_impatience, ":impatience"),
     (try_end),
