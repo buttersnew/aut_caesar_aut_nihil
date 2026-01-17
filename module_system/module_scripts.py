@@ -61400,14 +61400,13 @@ scripts = scripts_hardcoded + [
       # (else_try),
         # (display_message, "@{!}Error: get_next_water_position"),
       # (try_end),]),
-  # script_get_next_land_position
-  # Component: Ships and sea (map)
-  # Input: pos1
-  # Output: pos2
-  ("get_next_land_position",
-    [(store_script_param, ":radius", 1),
-
-      (try_begin),
+# script_get_next_land_position
+# Component: Ships and sea (map)
+# Input: pos1
+# Output: pos2
+("get_next_land_position",[
+    (store_script_param, ":radius", 1),
+    (try_begin),
         (map_get_land_position_around_position, pos2, pos1, ":radius"),
         (party_set_position, "p_temp_party", pos2),
         (party_get_current_terrain, ":terrain_type", "p_temp_party"),
@@ -61415,18 +61414,19 @@ scripts = scripts_hardcoded + [
         (neq, ":terrain_type", 1), #cliffs
         (neq, ":terrain_type", 7),
         (neq, ":terrain_type", 8),
-      (else_try),
+    (else_try),
         (try_begin),
-		  (assign, reg1, ":radius"),
-          (ge, "$cheat_mode", 1),
-          (display_message, "@{!}get_next_land_position failed with radius: {reg1}"),
+        (assign, reg1, ":radius"),
+        (ge, "$cheat_mode", 1),
+        (display_message, "@{!}get_next_land_position failed with radius: {reg1}"),
         (try_end),
         (lt, ":radius", 100),
         (val_add, ":radius", 1),
         (call_script, "script_get_next_land_position", ":radius"),
-      (else_try),
+    (else_try),
         (display_message, "@{!}Error: get_next_land_position"),
-      (try_end),]),
+    (try_end),
+]),
 
 # ###sea travel VC sea scripts
 # script_map_sea_ai_1
@@ -66006,7 +66006,7 @@ scripts = scripts_hardcoded + [
     (jump_to_scene, ":current_scene"),
     (change_screen_mission),
 ]),
-
+# script_spawn_latifundium
 #input: party to spawn,
 #spawns latifundium near a village
 #output: reg0 - party id.
@@ -66014,48 +66014,127 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":center", 1),
     (store_script_param, ":latifundia_culture", 2),
 
+    (assign, ":fixed_point_backup", 1),
+    (convert_to_fixed_point, ":fixed_point_backup"),
+
     (troop_get_slot, ":number_of_lat", "trp_global_variables", g_number_of_lat),
     (val_add, ":number_of_lat", 1),
     (troop_set_slot, "trp_global_variables", g_number_of_lat, ":number_of_lat"),
 
-    (set_spawn_radius, 7),
+    (set_spawn_radius, 1),
     (store_faction_of_party, ":center_faction", ":center"),
     (call_script, "script_spawn_party", ":center", "pt_latifundium"),
     (assign, ":party_id", reg0),
-    (try_begin), #this can fail?
-        (party_get_position, pos0, ":center"),
-        (map_get_land_position_around_position, pos1, pos0, 5),
-    (try_end),
 
-    (party_get_position, pos0, ":center"),
+    (set_fixed_point_multiplier, 100),
+
+    (display_message, "@Debug: START Iteration"),
+
+
     (assign, ":upper_bound", 3000),
-    (try_for_range, reg1, 0, ":upper_bound"),
-        (map_get_land_position_around_position, pos1, pos0, 7),
-        (assign, ":bad", 0),
+    (try_for_range, ":unused", 0, ":upper_bound"),
+        (assign, ":bad_party", 0),
+        (party_get_position, pos10, ":party_id"),
         (try_for_parties, ":parties"),
+            (eq, ":bad_party", 0),
+            (neq, ":parties", ":party_id"),
+            (party_get_template_id, ":template", ":parties"),
             (this_or_next|is_between, ":parties", centers_begin, centers_end),
-            (eq, ":parties", "pt_latifundium"),
-            (party_get_position, pos2, ":parties"),
-            (get_distance_between_positions_in_meters, ":distance", pos2, pos1),
-            (try_begin),
-                (le, ":distance", 3),
-                (assign, ":bad", 1),
-            (try_end),
+            (eq, ":template", "pt_latifundium"),
+
+            (party_get_position, pos13, ":parties"),
+            (get_distance_between_positions, ":distance", pos13, pos10),
+            (le, ":distance", 200),
+            (assign, ":bad_party", ":parties"),
+            (str_store_party_name, s10, ":parties"),
+            (display_message, "@Debug: Iteration found problem {s10}"),
         (try_end),
         (try_begin),
-            (eq, ":bad", 0),
-            (party_set_position,":party_id",pos1),
-            (party_get_current_terrain, ":terrain", ":party_id"),
-            (try_begin), #bridge/shore - means boo boo
-                (eq, ":terrain", rt_bridge),
-            (else_try),
-                (assign, ":upper_bound", -1),
+            (gt, ":bad_party", 0),
+
+
+            # calculate the new position by drawing a circle of radius 1 around pos10, iteratively
+            (assign, ":found_valid", 0),
+
+            # Use sin/cos method as requested
+            (set_fixed_point_multiplier, 100),
+            (position_get_x, ":center_x", pos10),
+            (position_get_y, ":center_y", pos10),
+            (assign, ":radius", 100), # Radius 1
+
+            (try_for_range, ":i_angle", 0, 72),# 36 * 2 = 72, 72 * 5 = 360 degrees
+                (eq, ":found_valid", 0),
+
+                (store_mul, ":iter_angle", ":i_angle", 5), # 5 degree steps
+                (store_mul, ":offset", ":unused", 19), # Add some pseudo-randomness from outer loop
+                (val_add, ":iter_angle", ":offset"),
+                (convert_to_fixed_point, ":iter_angle"),
+
+                (store_cos, ":x", ":iter_angle"),
+                (store_sin, ":y", ":iter_angle"),
+
+                (val_mul, ":x", ":radius"),
+                (val_mul, ":y", ":radius"),
+                (val_div, ":x", 100),
+                (val_div, ":y", 100),
+
+                (val_add, ":x", ":center_x"),
+                (val_add, ":y", ":center_y"),
+
+                (init_position, pos11),
+                (position_set_x, pos11, ":x"),
+                (position_set_y, pos11, ":y"),
+
+                # only continue if the found land is NOT water or mountain
+                (party_set_position, ":party_id", pos11),
+                (party_get_current_terrain, ":terrain", ":party_id"),
+
+                (assign, ":terrain_is_bad", 0),
+                (try_begin),
+                    (this_or_next|eq, ":terrain", rt_deep_water),
+                    (this_or_next|eq, ":terrain", rt_water),
+                    (this_or_next|eq, ":terrain", rt_river),
+                    (this_or_next|eq, ":terrain", rt_mountain_forest),
+                    (this_or_next|eq, ":terrain", rt_mountain),
+                    (eq, ":terrain", rt_bridge),
+                    (assign, ":terrain_is_bad", 1),
+                (try_end),
+
+                (try_begin),
+                    (eq, ":terrain_is_bad", 0),
+                    (assign, ":found_valid", 1),
+                    # pos11 is now the good position
+                (try_end),
             (try_end),
+
+            (try_begin),
+                (eq, ":found_valid", 0),
+                (party_set_position, ":party_id", pos10), # Reset if failed to find any spot
+            (try_end),
+
+            (party_set_position,":party_id", pos11),
+            (display_message, "@Debug: Iteration {reg1}"),
         (try_end),
+        (assign, reg1, ":unused"),
     (try_end),
-    (party_set_slot, "$current_town", slot_center_has_latifundium, ":party_id"),
+
+    (display_message, "@Debug: END Iteration"),
+
+    (party_set_slot, ":center", slot_center_has_latifundium, ":party_id"),
     (party_get_current_terrain, ":terrain", ":party_id"),
     (try_begin),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_greek"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_egyptian"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_syrian"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_nubian"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_saka"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_garmantian"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_berber"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_arabian"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_bosporan"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_judean"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_parthian"),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_caucasian"),
         (eq, ":latifundia_culture", "fac_culture_roman"),
         (try_begin),
             (this_or_next|eq, ":terrain", rt_plain),
@@ -66072,6 +66151,7 @@ scripts = scripts_hardcoded + [
         (try_end),
     (else_try),
         (party_set_slot, ":party_id", slot_town_center, "scn_barbarian_estate"),
+        (party_set_icon, ":party_id", "icon_barbarian_estate"),
     (try_end),
     (party_set_slot, ":party_id", slot_party_type, spt_latifundium),
     (party_set_slot, ":party_id", slot_center_culture, ":latifundia_culture"),
@@ -66083,15 +66163,17 @@ scripts = scripts_hardcoded + [
     (party_set_slot, ":party_id", slot_village_bound_center, ":center"),
     (str_store_party_name, s0, ":center"),
     (try_begin),
+        (this_or_next|eq, ":latifundia_culture", "fac_culture_greek"),
         (eq, ":latifundia_culture", "fac_culture_roman"),
         (str_store_string, s2, "@Latifundia near {s0}"),
     (else_try),
         (str_store_string, s2, "@Estate near {s0}"),
-        (party_set_icon, ":party_id", "icon_barbarian_estate"),
     (try_end),
     (party_set_name, ":party_id", s2),
 
     (call_script, "script_calculate_latifundium_rents", ":party_id", ":center"),
+
+    (set_fixed_point_multiplier, ":fixed_point_backup"),
 
     (assign, reg0, ":party_id"),
 ]),
@@ -94209,7 +94291,6 @@ scripts = scripts_hardcoded + [
 ("get_cultural_antiparty",[
     (store_script_param, ":culture", 1),
     (store_script_param, ":other_culture", 2),
-
     (assign, ":antipathy_penalty", 35), # Default antipathy for any two different cultures
     (try_begin),
         # SAME CULTURE: Affinity bonus
@@ -94275,7 +94356,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":culture", "fac_culture_germanic"),
         (this_or_next|eq, ":culture", "fac_culture_celtic"),
         (this_or_next|eq, ":culture", "fac_culture_caledonian"),
-        (eq, ":culture", "fac_culture_dacian"),
+        (this_or_next|eq, ":culture", "fac_culture_dacian"),
 
         (this_or_next|eq, ":other_culture", "fac_culture_germanic"),
         (this_or_next|eq, ":other_culture", "fac_culture_celtic"),
@@ -94386,7 +94467,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":culture", "fac_culture_syrian"),
         (this_or_next|eq, ":culture", "fac_culture_egyptian"),
         (this_or_next|eq, ":culture", "fac_culture_bosporan"),
-        (eq, ":culture", "fac_culture_arabian"), # Also includes key client kingdoms
+        (this_or_next|eq, ":culture", "fac_culture_arabian"), # Also includes key client kingdoms
 
         (this_or_next|eq, ":other_culture", "fac_culture_greek"),
         (this_or_next|eq, ":other_culture", "fac_culture_syrian"),
@@ -94409,6 +94490,9 @@ scripts = scripts_hardcoded + [
         (assign, ":antipathy_penalty", 10),
     (try_end),
     (assign, reg0, ":antipathy_penalty"),
+    # (str_store_faction_name, s0, ":culture"),
+    # (str_store_faction_name, s1, ":other_culture"),
+    # (display_message, "@Calculated cultural antipathy between {s0} and {s1}: {reg0}."),
 ]),
 # script_get_generic_rumour_string_to_s4
 ("get_generic_rumour_string_to_s4", [
