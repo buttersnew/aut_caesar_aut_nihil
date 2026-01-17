@@ -87555,12 +87555,12 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_roman"),
             (assign, ":compatibility", 2),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_egyptian"),
             (this_or_next|eq, ":culture", "fac_culture_syrian"),
             (this_or_next|eq, ":culture", "fac_culture_caucasian"),
             (eq, ":culture", "fac_culture_bosporan"),#bosporans
             (assign, ":compatibility", 1),
         (else_try),
-            (this_or_next|eq, ":culture", "fac_culture_egyptian"),
             (this_or_next|eq, ":culture", "fac_culture_germanic"),
             (this_or_next|eq, ":culture", "fac_culture_celtic"),
             (this_or_next|eq, ":culture", "fac_culture_dacian"),
