@@ -41730,9 +41730,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("attack_the_hord",
     [], "Attack them",[
       (try_begin),
-        (call_script, "script_party_count_members_with_full_health", "p_main_party"),
-        (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -50),
+        (call_script, "script_party_count_members_with_full_health_including_attached", "p_main_party"),# include attached parties
         (gt, reg0, 200),
+
+        (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -50),
+
         (party_set_morale, "$g_encountered_party", 100),##enemy has high morale
         (assign, "$g_battle_result", 0),
         (assign, "$g_engaged_enemy", 1),
@@ -41745,7 +41747,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (jump_to_menu, "mnu_battle_debrief"),
         (change_screen_mission),
       (else_try),
-        (display_message,"@You need to have at least 200 men."),
+        (display_message,"@You need to have at least 200 men (not wounded)."),
       (try_end),
 	  ]),
 
@@ -41862,30 +41864,21 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ]),
 ]),
 
-  (
-    "attack_desert_town",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-    "You order your troops to march towards the town. The enemy has noticed your advance and prepared a counterattack. Now you are surrounded by enemies.",
-    "none",
-    [
-	(store_faction_of_party, ":fac", "$g_encountered_party"),
-	(try_begin),
-		(this_or_next|eq, ":fac", "fac_garamantes"),
-		(eq, ":fac", "fac_gaetuli"),
-		(set_background_mesh, "mesh_pic_numider"),
+("attack_desert_town",menu_text_color(0xFF000000)|mnf_disable_all_keys,
+  "You order your troops to march towards the town. The enemy has noticed your advance and prepared a counterattack. Now you are surrounded by enemies.",
+  "none",[
+    (store_faction_of_party, ":fac", "$g_encountered_party"),
+    (try_begin),
+      (this_or_next|eq, ":fac", "fac_garamantes"),
+      (eq, ":fac", "fac_gaetuli"),
+      (set_background_mesh, "mesh_pic_numider"),
     (else_try),
-        (eq, ":fac", "fac_kush"),
-        (set_background_mesh, "mesh_pic_nubian"),
-	(try_end),
-
-	(str_store_faction_name, s51, ":fac"),
-
-    ],
-    [
-      ("continue",
-       [
-           ],
-       "Defend!",
-       [
+      (eq, ":fac", "fac_kush"),
+      (set_background_mesh, "mesh_pic_nubian"),
+    (try_end),
+    (str_store_faction_name, s51, ":fac"),
+  ],[
+    ("continue",[],"Defend!",[
 			(assign, "$g_battle_result", 0),
 			(assign, "$g_engaged_enemy", 1),
 			(call_script, "script_calculate_battle_advantage"),
@@ -41898,11 +41891,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (jump_to_scene, ":exterior_scene"),
       (assign, "$g_next_menu", "mnu_desert_town_fight"),
       (jump_to_menu, "mnu_battle_debrief"),
-            (change_screen_mission),
-        ]),
-
-    ]
-  ),
+      (change_screen_mission),
+    ]),
+]),
 
 ("desert_town",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "In the distance you see {s50}. It is the capital of the {s51}. ^^{s52}",
@@ -42077,7 +42068,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_player_tributary, 1),
 	],"Attack the town.",[
     (try_begin),
-      (call_script, "script_party_count_members_with_full_health", "p_main_party"),
+      (call_script, "script_party_count_members_with_full_health_including_attached", "p_main_party"),# include attached parties
       (gt, reg0, 200),
       (party_set_morale, "$g_encountered_party", 100),##enemy has high morale
       (jump_to_menu, "mnu_attack_desert_town"),
@@ -42085,7 +42076,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -120),#make sure you are at war
       (call_script, "script_change_player_relation_with_troop", ":troop", -10),
     (else_try),
-      (display_message,"@You need to have at least 200 men."),
+      (display_message,"@You need to have at least 200 men (not wounded)."),
     (try_end),
 	]),
 

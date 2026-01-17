@@ -8093,6 +8093,35 @@ scripts = scripts_hardcoded + [
         (val_add, reg0, ":num_fit"),
     (try_end),
 ]),
+
+#script_party_count_members_with_full_health_including_attached
+# INPUT:
+# param1: Party-id
+# OUTPUT: reg0 = result
+("party_count_members_with_full_health_including_attached",[
+    (store_script_param, ":party_no", 1),
+    (assign, ":total_members", 0),
+
+    (call_script, "script_party_count_members_with_full_health", ":party_no"),
+    (val_add, ":total_members", reg0),
+
+    # (str_store_party_name, s0, ":party_no"),
+    # (assign, reg1, ":total_members"),
+    # (display_message, "@party {s0} has {reg1} members with full health."),
+    # loop over attached parties
+    (party_get_num_attached_parties, ":num_attached", ":party_no"),
+    (try_for_range, ":i", 0, ":num_attached"),
+        (party_get_attached_party_with_rank, ":attached_party", ":party_no", ":i"),
+        (neq, ":attached_party", ":party_no"),
+        (call_script, "script_party_count_members_with_full_health", ":attached_party"),
+        (val_add, ":total_members", reg0),
+
+        # (str_store_party_name, s0, ":attached_party"),
+        # (assign, reg1, ":total_members"),
+        # (display_message, "@Attached party {s0} has {reg1} members with full health."),
+    (try_end),
+    (assign, reg0, ":total_members"),
+]),
 # script_inflict_casualties_to_party:
 # derived from script_simulate_battle_with_parties, but not dependent on a second party for damage levels (casualties are normalized to party's own strength)
 # Input: party
@@ -94776,6 +94805,7 @@ scripts = scripts_hardcoded + [
     (this_or_next|eq, ":troop_no", "trp_saka_prison_guard"),
     (eq, ":troop_no", "trp_garamantian_prison_guard"),
 ]),
+
 ] + scripts_wse2 + scripts_dplmc
 
 #end of file
