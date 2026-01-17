@@ -79456,7 +79456,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone,"barb_estate_talk",[
   (party_get_slot, ":culture", "$current_town", slot_center_culture),
-  (neg|troop_slot_eq, "trp_player", slot_troop_culture, ":culture"),
+  (troop_get_slot, ":player_culture", "trp_player", slot_troop_culture),
+
+  (call_script, "script_get_cultural_antiparty", ":player_culture", ":culture"),
+  (gt, reg0, 10),
 ],
   "We won't sell land to foreigners like you!",
 "village_elder_pretalk",[]],
@@ -79565,8 +79568,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone,"barb_estate_talk_3",[],
 "My Lord, now you are the new master of this land. It can be found next to the village.",
 "village_elder_pretalk",[
-  (party_get_slot, ":culture", "$current_town", slot_center_culture),
-  (call_script, "script_spawn_latifundium", "$current_town", ":culture"),
+  (troop_get_slot, ":player_culture", "trp_player", slot_center_culture),
+  (call_script, "script_spawn_latifundium", "$current_town", ":player_culture"),
   (troop_remove_gold, "trp_player", reg44),
 ]],
 
@@ -79660,7 +79663,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone,"lad_talk",[
   (party_get_slot, ":culture", "$current_town", slot_center_culture),
-  (neg|troop_slot_eq, "trp_player", slot_troop_culture, ":culture"),
+  (troop_get_slot, ":player_culture", "trp_player", slot_troop_culture),
+
+  (call_script, "script_get_cultural_antiparty", ":player_culture", ":culture"),
+  (gt, reg0, 10),
 ],"We won't sell land to foreigners like you!",
 "village_elder_pretalk",[]],
 
@@ -79818,8 +79824,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],
 "Very well Dominus, now you are the new master of this land. It can be found next to the village.",
 "village_elder_pretalk",[
-  (party_get_slot, ":culture", "$current_town", slot_center_culture),
-  (call_script, "script_spawn_latifundium", "$current_town", ":culture"),
+  (troop_get_slot, ":player_culture", "trp_player", slot_center_culture),
+  (call_script, "script_spawn_latifundium", "$current_town", ":player_culture"),
   (troop_remove_gold, "trp_player", reg44),
 ]],
 
