@@ -3578,7 +3578,7 @@ dialogs =[
 "household_slave_change_equipment",[]],
 
 [anyone, "household_slave_change_equipment",[
-],"Of course, {s1Dominus/Domina0}. I am ready for your inspection.", "household_slave_pretalk",[
+],"Of course, {Dominus/Domina}. I am ready for your inspection.", "household_slave_pretalk",[
     (change_screen_equip_other),
 ]],
 
@@ -24640,9 +24640,15 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
     (assign, "$g_leave_encounter", 1),#to really leave
 										 ]],
 
-[anyone|plyr,"mate_chat_talk",[], "I want to talk about troops and prisoners.", "mate_chat_pre_talk",[
- (change_screen_exchange_members,0),
-		   ]],
+[anyone|plyr,"mate_chat_talk",[
+  # only enable this option if the respective talk troop is leader of the party, i.e. first troop
+  # (party_stack_get_troop_id,":leader","$g_encountered_party",0),
+  # (eq, ":leader", "$g_talk_troop"),
+], "I want to talk about troops and prisoners.",
+"mate_chat_pre_talk",[
+  (change_screen_exchange_members, 0, "$g_encountered_party"),
+]],
+
 #[anyone,"mate_give_troops2",[], "I'm sorry, but I can't lead more troops.", "mate_chat_pre_talk",[
   # ]],
 
