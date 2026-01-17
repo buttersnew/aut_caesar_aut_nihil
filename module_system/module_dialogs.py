@@ -29198,14 +29198,39 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 ##SB : Messenger changed to template, store actual mission
 [pt_messenger_party|party_tpl, "start",[
+  (party_get_slot, ":party_no", "$g_encountered_party", slot_party_ai_object),
+  (neq, ":party_no", "p_main_party"),
+  (str_store_party_name, s6, ":party_no"),
 ], "Greetings. Sorry but I don't have time to talk now. I am delivering a very important message to {s6}.",
 "dplmc_messenger_talk",[
-  (party_get_slot, ":party_no", "$g_encountered_party", slot_party_ai_object),
-  (str_store_party_name, s6, ":party_no"),
 ]],
 
-[anyone|plyr, "dplmc_messenger_talk",[], "Alright, I don't want to delay you. Godspeed!", "dplmc_messenger_talk_farewell",[]],
-[anyone, "dplmc_messenger_talk_farewell",[], "Thank you. Farewell!", "close_window",[(assign, "$g_leave_encounter", 1),]],
+[pt_messenger_party|party_tpl, "start",[
+  (party_get_slot, ":party_no", "$g_encountered_party", slot_party_ai_object),
+  (eq, ":party_no", "p_main_party"),
+], "Greetings, my Lord. I am returning to you with urgent dispatches. I shall rejoin your company and deliver the detailed report momentarily, but first, I must attend to my horse.",
+"dplmc_messenger_talk_return",[
+]],
+[anyone|plyr, "dplmc_messenger_talk_return",[
+], "Very well. Fall in and report when ready.",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
+[anyone|plyr, "dplmc_messenger_talk_return",[
+], "Hurry yourself, messenger! We have no time to waste.",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
+
+[anyone|plyr, "dplmc_messenger_talk",[
+], "Alright, I don't want to delay you. Godspeed!",
+"dplmc_messenger_talk_farewell",[]],
+
+[anyone, "dplmc_messenger_talk_farewell",[
+], "Thank you. Farewell!",
+"close_window",[
+  (assign, "$g_leave_encounter", 1),
+]],
 
 ##patrol
 [party_tpl|pt_patrol_party, "start",[

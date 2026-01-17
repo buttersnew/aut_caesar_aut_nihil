@@ -25749,43 +25749,32 @@ game_menus = [
      ]
   ),
 
-  (
-    "dplmc_messenger",0,
-##nested diplomacy start+ "His" to "{reg4?Her:His}"
-    "Sire, I found {s10} and delivered your message. {reg4?Her:His} answer was {s11}.",
-##nested diplomacy end+
-    "none",
-    [
-        (set_background_mesh, "mesh_pic_messenger"),
-        (str_store_troop_name, s10, "$g_notification_menu_var1"),
-        (try_begin),
-          (eq, "$g_notification_menu_var2", 1),
-          (str_store_string, s11, "@positive"),
-        (else_try),
-          (str_store_string, s11, "@negative"),
-        (try_end),
-        ##nested diplomacy start+
-        (try_begin),
-           (call_script, "script_cf_dplmc_troop_is_female", "$g_notification_menu_var1"),
-           (assign, reg4, 1),
-        (else_try),
-           (assign, reg4, 0),
-        (try_end),
-        ##nested diplomacy end+
-    ],
-    [
-      ("dplmc_continue",[],"Continue.",
-       [
-         (change_screen_return),
-        ]),
-     ]
-  ),
+("dplmc_messenger",0,
+  "Sire, I found {s10} and delivered your message. {reg4?Her:His} answer was {s11}.",
+  "none",[
+    (set_background_mesh, "mesh_pic_messenger"),
+    (str_store_troop_name, s10, "$g_notification_menu_var1"),
+    (try_begin),
+      (eq, "$g_notification_menu_var2", 1),
+      (str_store_string, s11, "@positive"),
+    (else_try),
+      (str_store_string, s11, "@negative"),
+    (try_end),
+    (try_begin),
+        (call_script, "script_cf_dplmc_troop_is_female", "$g_notification_menu_var1"),
+        (assign, reg4, 1),
+    (else_try),
+        (assign, reg4, 0),
+    (try_end),
+  ],[
+      ("dplmc_continue",[],"Continue.",[
+        (change_screen_return),
+      ]),
+]),
 
-  (
-    "dplmc_scout",0,
-    "Your spy returned from {s10}^^{s11}{s12}",
-    "none",
-    [
+("dplmc_scout",0,
+  "Your spy returned from {s10}^^{s11}{s12}",
+  "none",[
     (set_background_mesh, "mesh_pic_messenger"),
     (str_store_party_name, s10, "$g_notification_menu_var1"),
 
@@ -25807,26 +25796,19 @@ game_menus = [
     (try_begin),#<- dplmc+ unclosed try_begin!
       (gt, ":num_attached_parties", 0),
       (str_store_string, s12, "@^^Additional the following parties are currently inside:^"),
-        (try_for_range, ":attached_party_rank", 0, ":num_attached_parties"),
-          (party_get_attached_party_with_rank, ":attached_party", "$g_notification_menu_var1", ":attached_party_rank"),
-          (str_store_party_name, s3, ":attached_party"),
-          (store_party_size, reg1, ":attached_party"),
-          (str_store_string, s12, "@{s12} {s3} with {reg1} troops.^"),
-        (try_end),
-	##diplomacy start+
-	#Add missing try-end for (gt, ":num_attached_parties", 0),
-	(try_end),
-	##diplomacy end+
-
+      (try_for_range, ":attached_party_rank", 0, ":num_attached_parties"),
+        (party_get_attached_party_with_rank, ":attached_party", "$g_notification_menu_var1", ":attached_party_rank"),
+        (str_store_party_name, s3, ":attached_party"),
+        (store_party_size, reg1, ":attached_party"),
+        (str_store_string, s12, "@{s12} {s3} with {reg1} troops.^"),
+      (try_end),
+    (try_end),
     (call_script, "script_update_center_recon_notes", "$g_notification_menu_var1"),
-    ],
-    [
-      ("dplmc_continue",[],"Continue.",
-       [
-         (change_screen_return),
-        ]),
-     ]
-  ),
+  ],[
+    ("dplmc_continue",[],"Continue.",[
+      (change_screen_return),
+    ]),
+]),
 
   (
     "dplmc_domestic_policy",0,
