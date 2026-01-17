@@ -32182,6 +32182,7 @@ presentations = presentations_wse2 + [
     (assign, "$chk_unassigned", -1),
     (assign, "$g_btn_show_toggle", -1),
     (assign, "$factions", -1),
+    (assign, "$show_faction_lbl", -1),
     (assign, "$cbo_grant", -1),
     (assign, "$g_help", -1),
     (assign, "$g_presentation_obj_1", -1),

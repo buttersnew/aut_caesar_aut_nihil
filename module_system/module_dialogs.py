@@ -29044,8 +29044,8 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (show_object_details_overlay, 0),
 ]],
 
-[anyone|plyr, "minister_talk",
-[
+[anyone|plyr, "minister_talk",[
+  (eq, 0, 1), #disabled for now
   (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_feudal),
   (is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),
   (assign, ":fief_found", -1),
@@ -29059,24 +29059,24 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (try_end),
   ##diplomacy end+
   (try_for_range, ":center", centers_begin, centers_end),
-  (eq, ":fief_found", -1),
-  (store_faction_of_party, ":center_faction", ":center"),
-  ##diplomacy start+ Handle player is co-ruler of kingdom
-  (this_or_next|eq, ":center_faction", ":alt_faction"),
-  ##diploamcy end+
-  (eq, ":center_faction", "fac_player_supporters_faction"),
-  (party_get_slot, ":town_lord", ":center", slot_town_lord),
-  (try_begin),
-  (ge, ":town_lord", active_npcs_begin),
-  (store_faction_of_troop, ":town_lord_faction", ":town_lord"),
-  ##diplomacy start+ Handle player is co-ruler of kingdom
-  (neq, ":town_lord_faction", ":alt_faction"),
-  ##diplomacy end+
-  (neq, ":town_lord_faction", "fac_player_supporters_faction"),
-  (assign, ":town_lord", -1),
-  (try_end),
-  (lt, ":town_lord", 0),
-  (assign, ":fief_found", ":center"),
+    (eq, ":fief_found", -1),
+    (store_faction_of_party, ":center_faction", ":center"),
+    ##diplomacy start+ Handle player is co-ruler of kingdom
+    (this_or_next|eq, ":center_faction", ":alt_faction"),
+    ##diploamcy end+
+    (eq, ":center_faction", "fac_player_supporters_faction"),
+    (party_get_slot, ":town_lord", ":center", slot_town_lord),
+    (try_begin),
+      (ge, ":town_lord", active_npcs_begin),
+      (store_faction_of_troop, ":town_lord_faction", ":town_lord"),
+      ##diplomacy start+ Handle player is co-ruler of kingdom
+      (neq, ":town_lord_faction", ":alt_faction"),
+      ##diplomacy end+
+      (neq, ":town_lord_faction", "fac_player_supporters_faction"),
+      (assign, ":town_lord", -1),
+    (try_end),
+    (lt, ":town_lord", 0),
+    (assign, ":fief_found", ":center"),
   (try_end),
   (gt, ":fief_found", -1),
   (str_store_party_name, s4, ":fief_found"),
