@@ -8712,7 +8712,7 @@ game_menus = [
 ]),
 #######siege warfare
 #Low food = sally out
-("nofood_siege_defenders_sally",0,
+("nofood_siege_defenders_sally", mnf_enable_hot_keys,
   "The lack of food forces the desperate defenders of {s4} to sally out in an attempt to break the siege.",
   "none",[
     (set_background_mesh, "mesh_pic_sally_out"),
@@ -8723,7 +8723,7 @@ game_menus = [
       (change_screen_mission),
     ]),
 ]),
-("suicide_siege_defenders_starved",0,
+("suicide_siege_defenders_starved", 0,
   "The defenders of {s4} are broken in body but unbroken in spirit. Though starvation has reduced them to shadows, their resolve burns like the sun."
   +" In the shadow of great legacies, blades flash in the dusk - not against invaders, but against their own throats."
   +" A final act of defiance echoes from the cliffs: 'Death before enslavement!'^"
