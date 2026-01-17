@@ -6744,6 +6744,7 @@ tournament_triggers = [
 
   (ti_on_agent_spawn,1,0, [],[
     (store_trigger_param_1, ":agent"),
+    (agent_is_active, ":agent"),
     (agent_get_troop_id, ":troop", ":agent"),
     (this_or_next|eq, ":troop", "trp_guest"),
     (eq, ":troop", "trp_guest_female"),
@@ -6762,6 +6763,7 @@ tournament_triggers = [
     (get_player_agent_no, ":player_agent"),
     (assign, ":team_set", 0),
     (try_for_agents, ":agent_no"),
+      (agent_is_active, ":agent_no"),
       (neq, ":agent_no", ":player_agent"),
       (agent_get_troop_id, ":troop_id", ":agent_no"),
       (is_between, ":troop_id", regular_troops_begin, regular_troops_end),
@@ -6778,12 +6780,15 @@ tournament_triggers = [
     (store_trigger_param_1, ":dead_agent_no"),
     (store_trigger_param_2, ":killer_agent_no"),
 
+    (agent_is_active, ":killer_agent_no"),
+
     # (get_player_agent_no, ":player_agent"),
     # (eq, ":killer_agent_no", ":player_agent"),
     (agent_get_troop_id, ":killer_troop", ":killer_agent_no"),
     (troop_is_hero, ":killer_troop"),
 
     (agent_is_human, ":dead_agent_no"),
+    (ge, ":dead_agent_no", 0),
     (agent_get_troop_id, ":wounded_troop", ":dead_agent_no"),
     (troop_is_hero, ":wounded_troop"),
     (is_between, ":wounded_troop", heroes_begin, heroes_end), #exclude common tournament fighters
