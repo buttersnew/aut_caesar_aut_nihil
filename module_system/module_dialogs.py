@@ -4288,7 +4288,7 @@ dialogs =[
 [anyone|plyr,"antonia_talk3_1",[
 ],"Of course, you don't look like a prostitute. I will ensure the troublemakers are punished.",
 "antonia_talk3_1_0",[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
 ]],
 
 [anyone,"antonia_talk3_1_0",[
@@ -4391,7 +4391,7 @@ dialogs =[
 [anyone|plyr,"antonia_talk3_1_6",[
 ],"Please forgive me Divinity. You are beautiful and noble! And I am ignorant.",
 "antonia_talk3_1_7",[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
 ]],
 
 [anyone,"antonia_talk3_1_7",[
@@ -4420,7 +4420,7 @@ dialogs =[
 [anyone|plyr,"antonia_talk3_slave_1",[
 ],"A lechering maniac? Me? Only at midnight.",
 "antonia_talk3_slave_1_0",[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 4),
 ]],
 
 [anyone,"antonia_talk3_slave_1_0",[
@@ -4522,7 +4522,7 @@ dialogs =[
 [anyone|plyr,"antonia_talk3_slave_1_6",[
 ],"Please forgive me Divinity. You are beautiful and noble! And I am ignorant.",
 "antonia_talk3_slave_1_7",[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
 ]],
 
 [anyone,"antonia_talk3_slave_1_7",[
@@ -14613,7 +14613,7 @@ dialogs =[
   (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_legatus_11"),
   (eq, "$talk_context", tc_hero_defeated),
 
-  (troop_slot_ge, "$g_talk_troop", slot_troop_player_relation, 75),
+  (troop_slot_ge, "$g_talk_troop", slot_troop_player_relation, 65),
 ],"--She throws herself into your arms and kisses you. --^^You are alive!",
 "vitellius_total_defeat_intro_0",[]],
 
@@ -15943,7 +15943,7 @@ dialogs =[
 ],
 "She needs mule milk to look beautiful, while your beauty is eternal.", "temple_looted_antonia_talk_16_1",
 [
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
 ]],
 [anyone,"temple_looted_antonia_talk_16_1",[
 ],
@@ -102316,7 +102316,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [anyone|plyr,"antonia_talk4_6",[
 ],"I enjoyed it a lot. And the food you made was deligious.",
 "antonia_talk4_7_1",[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
 ]],
 
 [anyone,"antonia_talk4_7",[
@@ -102439,7 +102439,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 ],
 "My 'majestic tool' put this idea in your head, didn't it?",
 "antonia_talk2_2_1",[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
 ]],
 [anyone,"antonia_talk2_2_1",[
 ],

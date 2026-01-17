@@ -45487,7 +45487,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
   ],[
     ("Continue.",[],"Continue.",[
-      (call_script, "script_change_player_relation_with_troop", "trp_antonia", 5),
+      (call_script, "script_change_player_relation_with_troop", "trp_antonia", 6),
       (add_xp_as_reward, 2500),
       (display_message, "str_quest_updated", message_alert),
       (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
@@ -45514,7 +45514,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     (try_end),
   ],[
   ("Continue.",[],"Continue.",[
-    (call_script, "script_change_player_relation_with_troop", "trp_antonia", -5),
+    (call_script, "script_change_player_relation_with_troop", "trp_antonia", -7),
     (display_message, "str_quest_updated", message_alert),
     (add_quest_note_from_sreg, "qst_blank_quest_19", 5, "@Meet Antonia at Tarquinii as fast as possible to discuss the further plan.", 1),
     (quest_set_slot,"qst_blank_quest_19", slot_quest_object_state, 1),
