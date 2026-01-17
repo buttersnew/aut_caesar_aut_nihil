@@ -7401,7 +7401,7 @@ dialogs =[
   (gt, ":spouse", 0),
   (str_store_troop_name, s12, ":spouse"),
 ],
-  "Have you lost your mind? I am already married with {12}! And what if this causes the opposite reaction, what if he gets mad and tries to harm us! She stole that dagger from her father and gave it to you in exchange for this?",
+  "Have you lost your mind? I am already married with {s12}! And what if this causes the opposite reaction, what if he gets mad and tries to harm us! She stole that dagger from her father and gave it to you in exchange for this?",
 "wlodowiecus_3_sciri_2_4",[]],
 
 [anyone|plyr,"wlodowiecus_3_sciri_2_3",[
