@@ -27983,8 +27983,8 @@ presentations = presentations_wse2 + [
             (try_end),
 
             #civilian equipment
-            (troop_add_item, ":choice", "itm_graves_simple_2"),
-            (troop_add_item, ":choice", "itm_roman_toga"),
+            (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
+            (call_script, "script_add_item_depending_on_culture", ":choice", ":culture"),
 
             #SB : change troop base type (if player hasn't touched it already) after adding equipment
             (try_begin),
@@ -28600,8 +28600,8 @@ presentations = presentations_wse2 + [
             (try_end),
 
             #civilian equipment
-            (troop_add_item, ":choice", "itm_graves_simple_2"),
-            (troop_add_item, ":choice", "itm_roman_toga"),
+            (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
+            (call_script, "script_add_item_depending_on_culture", ":choice", ":culture"),
 
             #SB : change troop base type (if player hasn't touched it already) after adding equipment
             (try_begin),
@@ -28949,7 +28949,7 @@ presentations = presentations_wse2 + [
             (troop_set_slot, "trp_temp_array_a", ":center_no", reg0), # overlay center
         (else_try),
             (create_image_button_overlay, reg0, "mesh_white_dot", "mesh_white_dot"),
-            (overlay_set_additional_render_height,reg0, 6),
+            (overlay_set_additional_render_height,reg0, 3),
             (try_begin),
               (assign, ":break", slot_legion_home_end),
               (try_for_range, ":legion_slot", slot_legion_home_begin, ":break"),
@@ -30253,6 +30253,8 @@ presentations = presentations_wse2 + [
     # (assign, ":slot", 0),
     (set_container_overlay, reg1),#start scroll
     (try_for_range, ":active_npc", active_npcs_including_player_begin, active_npcs_end),
+        # troop should not be player minister
+        (neq, ":active_npc", "$g_player_minister"),
         (try_begin),
             (eq, ":active_npc", active_npcs_including_player_begin),
             (assign, ":active_npc", "trp_player"),
@@ -30606,8 +30608,8 @@ presentations = presentations_wse2 + [
             (try_end),
 
             #civilian equipment
-            (troop_add_item, "$temp2", "itm_graves_simple_2"),
-            (troop_add_item, "$temp2", "itm_roman_toga"),
+            (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
+            (call_script, "script_add_item_depending_on_culture", "$temp2", ":culture"),
 
             #SB : change troop base type (if player hasn't touched it already) after adding equipment
             (try_begin),
@@ -32464,7 +32466,7 @@ presentations = presentations_wse2 + [
       #     (overlay_set_size, reg0, pos1),
       # (else_try),
         (create_image_button_overlay, reg0, "mesh_white_dot", "mesh_white_dot"),
-        (overlay_set_additional_render_height,reg0, 6),
+        (overlay_set_additional_render_height,reg0, 3),
         (overlay_set_color, reg0, 0),
         (position_set_x, pos1, ":center_x"),
         (position_set_y, pos1, ":center_y"),
@@ -32698,10 +32700,17 @@ presentations = presentations_wse2 + [
     (create_combo_button_overlay, "$cbo_grant"),
 
     (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
-        (this_or_next|troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
-        (main_party_has_troop, ":id_npc"),
-        (store_troop_faction, ":npc_faction", ":id_npc"),
-        (eq, ":npc_faction", "$players_kingdom"),
+        (assign, ":c", 0),
+        (try_begin),
+          (troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
+          (store_troop_faction, ":npc_faction", ":id_npc"),
+          (eq, ":npc_faction", "$players_kingdom"),
+          (assign, ":c", 1),
+        (else_try),
+          (main_party_has_troop, ":id_npc"),
+          (assign, ":c", 1),
+        (try_end),
+        (eq, ":c", 1),
 
         (str_store_troop_name, s0, ":id_npc"),
         (call_script, "script_troop_get_player_relation", ":id_npc"),
@@ -33235,6 +33244,88 @@ presentations = presentations_wse2 + [
             (troop_get_slot, ":indx0", "trp_temp_array_c", 0),
             (store_add, ":indx1", ":indx0", 0),
             (troop_get_slot, ":lord", "trp_temp_array_b", ":indx1"),
+
+            (try_begin), #if it is a companion
+                (is_between, ":lord", companions_begin, companions_end),
+                (troop_slot_eq, ":lord", slot_troop_occupation, slto_player_companion),
+
+                (remove_member_from_party, ":lord", "p_main_party"),
+                (troop_set_slot, ":lord", slot_troop_occupation, slto_kingdom_hero),
+                (troop_set_slot, ":lord", slot_troop_playerparty_history, dplmc_pp_history_granted_fief),
+
+                (troop_set_faction, ":lord", "fac_player_supporters_faction"),
+
+                (try_begin),
+                    (troop_slot_eq, ":lord", slot_troop_original_faction, 0),
+                    (troop_set_slot, ":lord", slot_troop_original_faction, "$players_kingdom"),
+                (try_end),
+
+                (store_character_level, ":renown", ":lord"),
+                (val_mul, ":renown", 15),
+                (val_max, ":renown", 200),
+                (call_script, "script_change_troop_renown", ":lord", ":renown"),
+
+                (troop_get_slot, ":initial_wealth", ":lord", slot_troop_wealth),
+                (store_troop_gold, ":initial_gold", ":lord"), #SB : account actual abstracted wealth
+                (val_add, ":initial_gold", ":initial_wealth"),
+
+                (store_skill_level, ":modifier", "skl_trade", ":lord"),
+                (store_skill_level, ":skill_level", "skl_looting", ":lord"),
+                (val_add, ":modifier", ":skill_level"),
+                (val_add, ":modifier", 10),
+                (val_mul, ":initial_gold", ":modifier"),
+                (val_add, ":initial_gold", 5),
+                (val_div, ":initial_gold", 10),
+
+                (troop_set_slot, ":lord", slot_troop_wealth, ":initial_gold"), #represents accumulated loot
+                ##diplomacy end+
+
+                #SB : add a decent horse if none present
+                (try_begin),
+                    (troop_slot_eq, ":lord", dplmc_slot_upgrade_horse, 1),
+                    (troop_get_inventory_slot, ":cur_horse", ":lord", ek_horse),
+                    (eq, ":cur_horse", -1),
+                    (store_random_in_range, ":item_no","itm_horse_1", "itm_steppe_horse_1"),
+                    (troop_set_inventory_slot, ":lord", ek_horse, ":item_no"),
+                    (store_random_in_range, ":imod", imod_stubborn, imod_fresh),
+                    (troop_set_inventory_slot_modifier, ":lord", ek_horse, ":imod"),
+                (try_end),
+
+                #civilian equipment
+                (troop_get_slot, ":culture", "trp_player", slot_troop_culture),
+                (call_script, "script_add_item_depending_on_culture", ":lord", ":culture"),
+
+                #SB : change troop base type (if player hasn't touched it already) after adding equipment
+                (try_begin),
+                    (troop_get_class, ":class", ":lord"),
+                    (eq, ":class", grc_infantry),
+                    (assign, ":slot_end", ek_head),
+                    (try_for_range, ":item_slot", ek_item_0, ":slot_end"),
+                        (troop_get_inventory_slot, ":item_no", ":lord", ":item_slot"),
+                        (gt, ":item_no", -1),
+                        (item_get_type, ":itp", ":item_no"),
+                        (this_or_next|is_between, ":itp", itp_type_bow, itp_type_goods),
+                        (is_between, ":itp", itp_type_pistol, itp_type_bullets),
+                        (assign, ":class", grc_archers),
+                        (assign, ":slot_end", -1),
+                    (try_end),
+                    (try_begin),
+                        (troop_get_inventory_slot, ":cur_horse", ":lord", ek_horse),
+                        (gt, ":cur_horse", -1),
+                        (assign, ":class", grc_cavalry),
+                    (try_end),
+                    (troop_set_class, ":lord", ":class"),
+                (try_end),
+
+                (troop_set_auto_equip, ":lord", 1), #dckplmc
+
+                (call_script, "script_dplmc_npc_morale", ":lord", 0), #just get the number
+                (store_div, ":relation_boost", reg0, 3),
+                (call_script, "script_troop_change_relation_with_troop", ":lord", "trp_player", ":relation_boost"),
+
+                (store_troop_faction, ":kingdom_hero_faction", ":lord"),
+                (call_script, "script_set_troop_banner_according_to_faction", ":lord", ":kingdom_hero_faction"),
+            (try_end),#END companion
 
             (is_between, "$fief_selected", walled_centers_begin, walled_centers_end),
             (this_or_next|is_between, ":lord", active_npcs_begin, active_npcs_end),

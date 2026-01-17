@@ -26081,6 +26081,8 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "member_intelgathering_1",[]],
 
 [anyone|plyr,"member_question_2",[
+    (eq, 1, 0),# disable this option
+
     (neg|faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
     (neq, "$g_talk_troop", "trp_thestia_tomitia"),
     (neq, "$g_talk_troop", "trp_mathildiz"),
