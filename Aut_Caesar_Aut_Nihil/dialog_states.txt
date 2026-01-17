@@ -2704,6 +2704,7 @@ minister_grant_fief
 minister_talk_province_management
 minister_grant_self_fief
 dplmc_messenger_talk
+dplmc_messenger_talk_return
 dplmc_messenger_talk_farewell
 dplmc_patrol_talk
 dplmc_patrol_orders_area_ask
