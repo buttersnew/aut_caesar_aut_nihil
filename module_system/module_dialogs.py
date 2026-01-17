@@ -29197,7 +29197,9 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 # # Recruiter kit end
 
 ##SB : Messenger changed to template, store actual mission
-[pt_messenger_party|party_tpl, "start",[], "Greetings. Sorry but I don't have time to talk now. I am delivering a very important message to {s6}.", "dplmc_messenger_talk",[
+[pt_messenger_party|party_tpl, "start",[
+], "Greetings. Sorry but I don't have time to talk now. I am delivering a very important message to {s6}.",
+"dplmc_messenger_talk",[
   (party_get_slot, ":party_no", "$g_encountered_party", slot_party_ai_object),
   (str_store_party_name, s6, ":party_no"),
 ]],
