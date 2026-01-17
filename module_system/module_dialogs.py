@@ -48181,29 +48181,33 @@ Everyone said that you were a capable warrior, but appearently, they were wrong.
 "Ah, you have arrived at last, {playername}. We've been expecting you. I hope you have brought with you troops of sufficient number and experience.", "lord_report_to_army_asked",
 []],
 
-[anyone|plyr,"lord_report_to_army_asked",[(quest_get_slot, ":quest_target_amount", "qst_report_to_army", slot_quest_target_amount),
-           (call_script, "script_party_count_fit_for_battle", "p_main_party"),
-           (gt, reg0, ":quest_target_amount"), # +1 for player
-            ],
-"I have a company of good, hardened soldiers with me. We are ready to join you.", "lord_report_to_army_completed",
-[]],
+[anyone|plyr,"lord_report_to_army_asked",[
+  (quest_get_slot, ":quest_target_amount", "qst_report_to_army", slot_quest_target_amount),
+  (call_script, "script_party_count_fit_for_battle", "p_main_party"),
+  (gt, reg0, ":quest_target_amount"), # +1 for player
+],"I have a company of good, hardened soldiers with me. We are ready to join you.",
+"lord_report_to_army_completed",[
+]],
 
 [anyone|plyr,"lord_report_to_army_asked",[],
-"I don't have the sufficient number of troops yet. I will need some more time.", "lord_report_to_army_continue",
-[]],
+"I don't have the sufficient number of troops yet. I will need some more time.",
+"lord_report_to_army_continue",[
+]],
 
-[anyone,"lord_report_to_army_completed",[], "Excellent. We'll be moving soon. Now -- you are a {man/warrior} of sound judgement, and we trust that you will do what is necessary to support our campaign. I do not require you to remain close at hand, and I will not count it against you if you believe that your forces would be of better use elsewhere. But if you do choose to remain with me, to support me in battle, that would be appreciated. I may also have additional tasks for you to perform.", "close_window",[
-(call_script, "script_end_quest", "qst_report_to_army"),
-(quest_set_slot, "qst_report_to_army", slot_quest_giver_troop, "$g_talk_troop"),
-#TODO: Change this value
-(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
-#Activating follow army quest
-(str_store_troop_name_link, s9, "$g_talk_troop"),
-(setup_quest_text, "qst_follow_army"),
-(str_store_string, s2, "@{s9} wants you to follow his army until further notice."),
-(call_script, "script_start_quest", "qst_follow_army", "$g_talk_troop"),
-(assign, "$g_player_follow_army_warnings", 0),
-(assign, "$g_leave_encounter", 1),
+[anyone,"lord_report_to_army_completed",[
+], "Excellent. We'll be moving soon. Now -- you are a {man/warrior} of sound judgement, and we trust that you will do what is necessary to support our campaign. I do not require you to remain close at hand, and I will not count it against you if you believe that your forces would be of better use elsewhere. But if you do choose to remain with me, to support me in battle, that would be appreciated. I may also have additional tasks for you to perform.",
+"close_window",[
+  (call_script, "script_end_quest", "qst_report_to_army"),
+  (quest_set_slot, "qst_report_to_army", slot_quest_giver_troop, "$g_talk_troop"),
+  #TODO: Change this value
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
+  #Activating follow army quest
+  (str_store_troop_name_link, s9, "$g_talk_troop"),
+  (setup_quest_text, "qst_follow_army"),
+  (str_store_string, s2, "@{s9} wants you to follow his army until further notice."),
+  (call_script, "script_start_quest", "qst_follow_army", "$g_talk_troop"),
+  (assign, "$g_player_follow_army_warnings", 0),
+  (assign, "$g_leave_encounter", 1),
 ]],
 
 [anyone,"lord_report_to_army_continue",[], "Then you'd better hurry. We'll be moving out soon against the enemy and I need every able hand we can muster.", "close_window",
