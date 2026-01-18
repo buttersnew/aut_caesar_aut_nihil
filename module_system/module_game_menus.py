@@ -14231,6 +14231,7 @@ game_menus = [
       (reset_visitors),
       (assign, ":num_priest", 5),
       (store_character_level, ":level", "trp_player"),
+      (val_min, ":level", 63),
       (val_div, ":level", 5),
       (val_max, ":level", 1),
       (val_add, ":num_priest", ":level"),
@@ -14269,6 +14270,7 @@ game_menus = [
       (reset_visitors),
       (assign, ":num_priest", 5),
       (store_character_level, ":level", "trp_player"),
+      (val_min, ":level", 63),
       (val_div, ":level", 5),
       (val_max, ":level", 1),
       (val_add, ":num_priest", ":level"),
@@ -18235,6 +18237,7 @@ game_menus = [
         (reset_visitors),
         (assign, ":num_rebels", 6),
         (store_character_level, ":level", "trp_player"),
+        (val_min, ":level", 63),
         (val_div, ":level", 5),
         (val_add, ":num_rebels", ":level"),
 
@@ -18292,6 +18295,7 @@ game_menus = [
     "none",
     [
       (store_character_level, ":level", "trp_player"),
+      (val_min, ":level", 63),
       (val_div, ":level", 10),
       (val_add, ":level", 1),
       (quest_get_slot, ":quest_target_amount", "qst_train_peasants_against_bandits", slot_quest_target_amount),
@@ -18383,6 +18387,7 @@ game_menus = [
         (modify_visitors_at_site, ":scene_to_use"),
         (reset_visitors),
         (store_character_level, ":level", "trp_player"),
+        (val_min, ":level", 63),
         (val_div, ":level", 2),
         (store_add, ":min_bandits", ":level", 16),
         (store_add, ":max_bandits", ":min_bandits", 6),
@@ -20361,6 +20366,7 @@ game_menus = [
       (troop_get_slot, ":player_renown", "trp_player", slot_troop_renown),
       (val_mul, ":player_renown", 2),
       (store_character_level, ":player_level", "trp_player"),
+      (val_min, ":player_level", 63),
       (store_mul, "$player_ransom_amount", ":player_level", 50),
       (val_add, "$player_ransom_amount", 100),
       (val_add, "$player_ransom_amount", ":player_renown"),
@@ -24218,6 +24224,7 @@ game_menus = [
         (reset_visitors),
 
         (store_character_level, ":player_level", "trp_player"),
+        (val_min, ":player_level", 63),
         (store_add, ":number_of_bandits_will_be_spawned_at_each_period", 5, ":player_level"),
         (val_div, ":number_of_bandits_will_be_spawned_at_each_period", 3),
 
@@ -26391,6 +26398,7 @@ game_menus = [
 
         #add additional troops
         (store_character_level, ":player_level", "trp_player"),
+        (val_min, ":player_level", 63),
         (store_div, ":player_leveld2", ":player_level", 2),
         (store_mul, ":player_levelx2", ":player_level", 2),
         (try_begin),
@@ -27229,7 +27237,7 @@ game_menus = [
   ),
 
 #helper menu to show all troop slots
-( "display_troop_slots", menu_text_color(0xFF009900),
+("display_troop_slots", menu_text_color(0xFF009900),
   "{s1}^{s2}",
   "none",[
     # (set_background_mesh, "mesh_pic_cattle"),
@@ -27241,6 +27249,7 @@ game_menus = [
     (troop_get_class, ":class", "$g_talk_troop"),
     (str_store_class_name, s4, ":class"),
     (store_character_level, reg2, "$g_talk_troop"),
+    (val_min, reg2, 63),
     (str_store_string, s1, "@{reg1}: {s1}, {s2} classified as level {reg2} {s3} {s4}"),
     (try_begin), #upgrades
       (neg|troop_is_hero, "$g_talk_troop"),
@@ -35160,6 +35169,7 @@ game_menus = [
     (reset_visitors),
     (assign, ":num_monks", 50),
     (store_character_level, ":level", "trp_player"),
+    (val_min, ":level", 63),
     (val_div, ":level", 5),
     (val_add, ":num_monks", ":level"),
     (set_visitors, 1, "trp_judean_rebel", ":num_monks"),
@@ -35344,6 +35354,7 @@ game_menus = [
     (reset_visitors),
     (assign, ":num_monks", 50),
     (store_character_level, ":level", "trp_player"),
+    (val_min, ":level", 63),
     (val_div, ":level", 5),
     (val_add, ":num_monks", ":level"),
     (set_visitors, 1, "trp_judean_rebel", ":num_monks"),

@@ -7012,6 +7012,7 @@ simple_triggers = [
     #     (display_message, "@Your Custos Publicus upgraded troops in {s8} ({reg5} exp)."),
     # (try_end),
     (store_character_level, ":troop_limit", "trp_player"),
+    (val_min, ":troop_limit", 63),
     (try_begin),
         (ge, "$g_constable_training_improved", 1),
         (store_mul, ":addition", "$g_constable_training_improved", 3),

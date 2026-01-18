@@ -2205,6 +2205,7 @@ wounds_vc = (ti_on_agent_hit, 0, 0, [],[
 
     # PASS 3
     (store_character_level, ":level", "trp_player"),
+    (val_min, ":level", 63),
     (store_mul, ":current_wounds_mul_10", ":num_current_wounds", 10),	#0-0, 1-10, 2-20, 3-30
     (ge, ":level", ":current_wounds_mul_10"),
 
@@ -4490,6 +4491,7 @@ morale_triggers = [
     (try_end),
   # (agent_get_troop_id, ":troop_id", ":agent_no"),
     (store_character_level, ":troop_level", ":troop_id"),
+    (val_min, ":troop_level", 63),
     (val_mul, ":troop_level", 200), #was 100
     #I want to make the difference to high level troops a bit bigger
     (val_add, ":initial_courage_score", ":troop_level"), #average : 25 * 100 = 2500
@@ -6333,6 +6335,7 @@ common_battle_mission_start = (
 common_battle_player_fallen_renown_lose = (
   1, 4, ti_once, [(main_hero_fallen)],[
     (store_character_level, ":player_level", "trp_player"), #depend on level, more level more penalty
+    (val_min, ":player_level", 63),
     (try_begin), #difficult setting
       (ge, ":player_level", 7),
       (val_div, ":player_level", 6),
@@ -12993,6 +12996,7 @@ mission_templates = [
 
       (agent_get_troop_id, ":troop_id", ":agent_no"),
       (store_character_level, ":troop_level", ":troop_id"),
+      (val_min, ":troop_level", 63),
       (val_mul, ":troop_level", 100), #was 35
       (val_add, ":initial_courage_score", ":troop_level"), #average : 20 * 35 = 700
 
@@ -13470,6 +13474,7 @@ mission_templates = [
 	    (le, "$defender_reinforcement_stage", 1),
 	  ],[
       (store_character_level, ":player_level", "trp_player"),
+      (val_min, ":player_level", 63),
       (store_add, ":number_of_bandits_will_be_spawned_at_each_period", 5, ":player_level"),
       (val_div, ":number_of_bandits_will_be_spawned_at_each_period", 3),
 
@@ -13611,6 +13616,7 @@ mission_templates = [
         (val_add, "$defender_reinforcement_stage", 1),
 
         (store_character_level, ":player_level", "trp_player"),
+        (val_min, ":player_level", 63),
         (store_add, ":number_of_bandits_will_be_spawned_at_each_period", 5, ":player_level"),
         (val_div, ":number_of_bandits_will_be_spawned_at_each_period", 3),
         (try_begin),
@@ -16299,8 +16305,7 @@ mission_templates = [
 ),
 
 
-("temple_raid", mtf_battle_mode,-1, "monasterio",
-  [
+("temple_raid", mtf_battle_mode,-1, "monasterio",[
 	  (1,mtef_team_0, af_override_horse,aif_start_alarmed,15,[]),
     (30,mtef_visitor_source|mtef_team_1,af_override_horse, 0, 10,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,10,[]),

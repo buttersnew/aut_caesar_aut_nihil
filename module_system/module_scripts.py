@@ -5857,6 +5857,7 @@ scripts = scripts_hardcoded + [
         (party_stack_get_troop_id, ":stack_troop", ":party", ":i_stack"),
         (neg|troop_is_hero, ":stack_troop"),
         (store_character_level, ":stack_strength", ":stack_troop"),
+        (val_min, ":stack_strength", 63),
         (val_add, ":stack_strength", 12),
         (val_mul, ":stack_strength", ":stack_strength"),
         (val_div, ":stack_strength", 100),
@@ -5885,6 +5886,7 @@ scripts = scripts_hardcoded + [
     (try_for_range, ":i_stack", ":first_stack", ":num_stacks"),
         (party_stack_get_troop_id, ":stack_troop",":party", ":i_stack"),
         (store_character_level, ":stack_strength", ":stack_troop"),
+        (val_min, ":stack_strength", 63),
         #hero +4 (they are better equipped)
         (try_begin),
             (troop_is_hero, ":stack_troop"),
@@ -6263,6 +6265,7 @@ scripts = scripts_hardcoded + [
             (party_stack_get_troop_id, ":cur_troop", ":enemy_party", ":cur_stack"),
             (neg|troop_is_hero, ":cur_troop"),
             (store_character_level, ":troop_level", ":cur_troop"),
+            (val_min, ":troop_level", 63),
             (gt, ":troop_level", ":best_level"),
             (assign, ":best_level", ":troop_level"),
             (assign, ":best_stack", ":cur_stack"),
@@ -6344,6 +6347,7 @@ scripts = scripts_hardcoded + [
         (neg|troop_is_hero, ":stack_troop"),
         (party_stack_get_size, ":stack_size",":enemy_party",":i_stack"),
         (store_character_level, ":level", ":stack_troop"),
+        (val_min, ":level", 63),
         (store_add, ":gain", ":level", 10),
         (val_mul, ":gain", ":gain"),
         (val_div, ":gain", 10),
@@ -6893,6 +6897,7 @@ scripts = scripts_hardcoded + [
         ##diplomacy end+
 
         (store_character_level, ":level", ":stack_troop"),
+        (val_min, ":level", 63),
         (store_add, ":gain", ":level", 3),
 
         #if died/wounded troop is player troop then give its level +30 while calculating troop die effect on morale
@@ -6936,6 +6941,7 @@ scripts = scripts_hardcoded + [
         (store_sub, ":stack_size_mul_2_sub_wounded", ":stack_size_mul_2", ":num_wounded"),
 
         (store_character_level, ":level", ":stack_troop"),
+        (val_min, ":level", 63),
         (store_add, ":gain", ":level", 3),
 
         #if troop is hero give extra +15 level while calculating troop die effect on morale
@@ -6981,6 +6987,7 @@ scripts = scripts_hardcoded + [
             ##diplomacy end+
 
             (store_character_level, ":level", ":stack_troop"),
+            (val_min, ":level", 63),
             (store_add, ":gain", ":level", 3),
 
             #if troop is hero give extra +15 level while calculating troop die effect on morale
@@ -7625,14 +7632,14 @@ scripts = scripts_hardcoded + [
   # arg1: troop_id, arg2: stack_no, arg3: troop_count, arg4: xp_ratio_to_add
   #OUTPUT:
   # none
-  ("cf_training_ground_sub_routine_for_training_result",
-   [
+  ("cf_training_ground_sub_routine_for_training_result",[
      (store_script_param, ":troop_id", 1),
      (store_script_param, ":stack_no", 2),
      (store_script_param, ":amount", 3),
      (store_script_param, ":xp_ratio_to_add", 4),
 
      (store_character_level, ":level", ":troop_id"),
+     (val_min, ":level", 63),
      (store_add, ":level_added", ":level", 5),
      (store_mul, ":min_hardness", ":level_added", 3),
      (val_min, ":min_hardness", 100),
@@ -7932,6 +7939,7 @@ scripts = scripts_hardcoded + [
          (try_end),
          (val_add, ":cur_entry_point", 1),
          (store_character_level, ":cur_troop_level", ":cur_troop"),
+         (val_min, ":cur_troop_level", 63),
          (val_add, ":cur_troop_level", 10),
          (val_mul, ":cur_troop_level", ":cur_troop_level"),
          (val_add, ":total_difficulty", ":cur_troop_level"),
@@ -8635,6 +8643,7 @@ scripts = scripts_hardcoded + [
 ("get_quest",[
     (store_script_param_1, ":giver_troop"),
     (store_character_level, ":player_level", "trp_player"),
+    (val_min, ":player_level", 63),
     (store_troop_faction, ":giver_faction_no", ":giver_troop"),
     (troop_get_slot, ":giver_party_no", ":giver_troop", slot_troop_leaded_party),
     (troop_get_slot, ":giver_reputation", ":giver_troop", slot_lord_reputation_type),
@@ -8811,6 +8820,7 @@ scripts = scripts_hardcoded + [
 			(assign, ":quest_xp_reward", 1500),
 			(assign, ":quest_gold_reward", 5000), #actual reward in dialogues
             (store_character_level, ":quest_convince_value", ":quest_target_troop"),
+            (val_min, ":quest_convince_value", 63),
 			(val_mul, ":quest_convince_value", 65), #SB : we normalize this to match the gold reward for ~level 30 lords
             (call_script, "script_calculate_ransom_amount_for_troop", ":quest_target_troop"), #SB: calculate a set amount
             (assign, ":quest_target_amount", reg0),
@@ -9070,6 +9080,7 @@ scripts = scripts_hardcoded + [
                 (eq, ":quest_no", "qst_troublesome_bandits"),
                 (is_between, ":giver_center_no", centers_begin, centers_end),
                 (store_character_level, ":quest_gold_reward", "trp_player"),
+                (val_min, ":quest_gold_reward", 63),
                 (val_add, ":quest_gold_reward", 20),
                 (val_mul, ":quest_gold_reward", 35),
                 (val_div, ":quest_gold_reward",100),
@@ -9087,6 +9098,7 @@ scripts = scripts_hardcoded + [
                 (is_between, ":quest_target_center", centers_begin, centers_end),
 
                 (store_character_level, ":quest_target_amount"),
+                (val_min, ":quest_target_amount", 63),
                 (val_add, ":quest_target_amount", 15),
                 (store_distance_to_party_from_party, ":dist", ":giver_center_no", ":quest_target_center"),
                 (val_add, ":dist", 15),
@@ -9492,6 +9504,7 @@ scripts = scripts_hardcoded + [
                     (try_end),
 
                     (store_character_level, ":cur_level", "trp_player"),
+                    (val_min, ":cur_level", 63),
                     (assign, ":required_skill", 5),
                     (val_div, ":cur_level", 10),
                     (val_add, ":required_skill", ":cur_level"),
@@ -9630,6 +9643,7 @@ scripts = scripts_hardcoded + [
                     (ge, "$g_talk_troop_faction_relation", 0),#
                     (troop_slot_ge, "trp_player", slot_troop_renown, 200),
                     (store_character_level, ":quest_target_amount", "trp_player"),
+                    (val_min, ":quest_target_amount", 63),
                     (gt,":quest_target_amount", 10),
                     (party_is_active, ":giver_party_no"),
                     (assign, ":temple", -1),
@@ -9702,7 +9716,7 @@ scripts = scripts_hardcoded + [
                     (ge, ":giver_relation", 5),
                     #(troop_slot_ge, "trp_player", slot_troop_renown, 50),
                     (store_character_level, ":quest_gold_reward", "trp_player"),
-                    #(gt,":quest_gold_reward", 5),
+                    (val_min, ":quest_gold_reward", 63),
                     (assign, ":quest_target_troop", ":spouse"),
                     (troop_get_slot, ":quest_target_center", ":spouse", slot_troop_cur_center),
                     (assign, ":quest_object_troop", -1),
@@ -9841,6 +9855,7 @@ scripts = scripts_hardcoded + [
                     (assign, ":quest_expiration_days", 30),
                     #SB : do quest rewards here instead of upon completion
                     (store_character_level, ":quest_gold_reward", "trp_player"),
+                    (val_min, ":quest_gold_reward", 63),
                     (val_mul, ":quest_gold_reward", 20),
                     (val_add, ":quest_gold_reward", 600),
                     (assign, ":quest_xp_reward", 350),
@@ -9854,6 +9869,7 @@ scripts = scripts_hardcoded + [
 
                     (ge, "$g_talk_troop_faction_relation", 0),
                     (store_character_level, ":cur_level", "trp_player"),
+                    (val_min, ":cur_level", 63),
                     (gt, ":cur_level", 5),
                     (troop_slot_ge, "trp_player", slot_troop_renown, 100),
 
@@ -10124,6 +10140,7 @@ scripts = scripts_hardcoded + [
                     (assign, ":quest_importance", 1),
                     #SB : scale reward by level
                     (store_character_level, ":stack_level", ":quest_target_troop"),
+                    (val_min, ":stack_level", 63),
                     (store_mul, ":quest_xp_reward", ":stack_level", 20), #base level of 15
                     # (assign, ":quest_xp_reward", 300),
                     # (assign, ":quest_gold_reward", 400),
@@ -10288,6 +10305,7 @@ scripts = scripts_hardcoded + [
                     (assign, ":quest_target_faction", ":cur_target_faction"),
                     (assign, ":quest_importance", 1),
                     (store_character_level, ":quest_gold_reward", ":cur_target_troop"),
+                    (val_min, ":quest_gold_reward", 63),
                     (val_add, ":quest_gold_reward", 30),
                     (val_mul, ":quest_gold_reward", ":quest_gold_reward"),
                     (val_div, ":quest_gold_reward", 5),
@@ -13579,6 +13597,7 @@ scripts = scripts_hardcoded + [
         (val_add, ":result", ":cur_wage"),
 
         (store_character_level, ":level", ":stack_troop"),
+        (val_min, ":level", 63),
         (val_mul, ":level", ":stack_size"),
         (val_add, reg22, ":level"),
     (try_end),
@@ -13647,6 +13666,7 @@ scripts = scripts_hardcoded + [
     (store_troop_faction,":faction_no", ":troop_no"),
     ##level money
     (store_character_level, ":weekly_income", ":troop_no"),
+    (val_min, ":weekly_income", 63),
     (val_mul, ":weekly_income", 100),
     ##trade skill
     (store_skill_level,":trade_skill", "skl_trade", ":troop_no"),
@@ -16851,6 +16871,7 @@ scripts = scripts_hardcoded + [
             (party_get_slot, ":mercenary_troop", ":center_no", slot_center_mercenary_troop_type),
             (gt, ":mercenary_troop", 0),
             (store_character_level, ":level", ":mercenary_troop"),
+            (val_min, ":level", 63),
             #chance of not hiring
             (store_random_in_range, ":reduce", ":level", 100),
             (gt, ":reduce", 69), #favors high-level
@@ -22439,6 +22460,7 @@ scripts = scripts_hardcoded + [
 
           (agent_get_troop_id, ":cur_troop", ":cur_agent"),
           (store_character_level, ":cur_level", ":cur_troop"),
+          (val_min, ":cur_level", 63),
           (val_add, ":cur_level", 5),
           (try_begin),
             (troop_is_hero, ":cur_troop"),
@@ -22766,7 +22788,9 @@ scripts = scripts_hardcoded + [
         (agent_get_troop_id, ":closest_troop", ":closest_agent"),
         (agent_get_troop_id, ":cur_troop", ":cur_agent"),
         (store_character_level, ":closest_level", ":closest_troop"),
+        (val_min, ":closest_level", 63),
         (store_character_level, ":cur_level", ":cur_troop"),
+        (val_min, ":cur_level", 63),
         (store_sub, ":level_dif", ":cur_level", ":closest_level"),
         (val_div, ":level_dif", 5),
         (val_add, ":cur_damage", ":level_dif"),
@@ -24171,6 +24195,7 @@ scripts = scripts_hardcoded + [
       # (assign, ":bandit_troop", reg0),
     # (try_end),
     (store_character_level, ":level", "trp_player"),
+    (val_min, ":level", 63),
 
     (set_jump_mission, "mt_bandits_at_night"),
     (try_begin),
@@ -33146,36 +33171,37 @@ scripts = scripts_hardcoded + [
 
   # script_get_troop_priority_point_for_tournament
   # Input: arg1 = troop_no
-  # Output: reg0 = troop_point
-  ("get_troop_priority_point_for_tournament",
-    [(store_script_param, ":troop_no", 1),
-     (assign, ":troop_point", 0),
-     (try_begin),
-       (ge, ":troop_no", 0),
-       (val_add, ":troop_point", 40000),
-       (try_begin),
-         (eq, ":troop_no", "trp_player"),
-         (val_add, ":troop_point", 80000),
-       (try_end),
-       (try_begin),
-         (troop_is_hero, ":troop_no"),
-         (val_add, ":troop_point", 20000),
-       (try_end),
-       (try_begin),
-         (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_player_companion),
-         (val_add, ":troop_point", 10000),
-       (else_try),
-         (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-         (troop_get_slot, ":renown", ":troop_no", slot_troop_renown),
-         (val_add, ":troop_point", ":renown"),
-         (val_add, ":troop_point", 1000), #in order to make it more prior than tournament heroes with higher levels
-       (else_try),
-         (store_character_level, ":level", ":troop_no"),
-         (val_add, ":troop_point", ":level"),
-       (try_end),
-     (try_end),
-     (assign, reg0, ":troop_point"),
-     ]),
+# Output: reg0 = troop_point
+("get_troop_priority_point_for_tournament",[
+    (store_script_param, ":troop_no", 1),
+    (assign, ":troop_point", 0),
+    (try_begin),
+        (ge, ":troop_no", 0),
+        (val_add, ":troop_point", 40000),
+        (try_begin),
+            (eq, ":troop_no", "trp_player"),
+            (val_add, ":troop_point", 80000),
+        (try_end),
+        (try_begin),
+            (troop_is_hero, ":troop_no"),
+            (val_add, ":troop_point", 20000),
+        (try_end),
+        (try_begin),
+            (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_player_companion),
+            (val_add, ":troop_point", 10000),
+        (else_try),
+            (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+            (troop_get_slot, ":renown", ":troop_no", slot_troop_renown),
+            (val_add, ":troop_point", ":renown"),
+            (val_add, ":troop_point", 1000), #in order to make it more prior than tournament heroes with higher levels
+        (else_try),
+            (store_character_level, ":level", ":troop_no"),
+            (val_min, ":level", 63),
+            (val_add, ":troop_point", ":level"),
+        (try_end),
+    (try_end),
+    (assign, reg0, ":troop_point"),
+    ]),
 
   # script_sort_tournament_participant_troops
   # Input: none
@@ -37450,6 +37476,7 @@ scripts = scripts_hardcoded + [
         (agent_is_human, ":agent_no"),
         (agent_get_troop_id, ":agent_troop_id", ":agent_no"),
         (store_character_level, ":troop_level", ":agent_troop_id"),
+        (val_min, ":troop_level", 63),
         (val_add, ":troop_level", 10),
         (val_mul, ":troop_level", ":troop_level"),
         (try_begin),
@@ -45708,9 +45735,11 @@ scripts = scripts_hardcoded + [
 			#The lord's level must not be less than 75% of the player's (only if prejudice settings are not "low")
 			(lt, "$g_disable_condescending_comments", 2),
 			(store_character_level, reg0, "trp_player"),
+            (val_min, reg0, 63),
 			(val_mul, reg0, 3),
 			(val_div, reg0, 4),
 			(store_character_level, reg1, ":npc"),
+            (val_min, reg1, 63),
 			(lt, reg1, reg0),
 			(assign, ":veto", 1),
 		(else_try),
@@ -73324,6 +73353,7 @@ scripts = scripts_hardcoded + [
     (try_for_range, ":participants", 0, 49),#find other victor
         (troop_get_slot,":guy", "trp_olympia_participants", ":participants"),
         (store_character_level, ":level", ":guy"),
+        (val_min, ":level", 63),
         (gt, ":level", ":score_to_beat"),
         (assign, ":score_to_beat", ":level"),
         (assign, ":victor", ":guy"),
@@ -73380,6 +73410,7 @@ scripts = scripts_hardcoded + [
         (troop_get_slot,":guy", "trp_temp_array_olympia_c", ":participants"),
         (gt, ":guy", -1),
         (store_character_level, ":level", ":guy"),
+        (val_min, ":level", 63),
         (store_random_in_range, ":rand_addition", 0, 25),
         (val_add, ":level", ":rand_addition"),
         (gt, ":level", ":score_to_beat"),
@@ -88146,6 +88177,7 @@ scripts = scripts_hardcoded + [
 
                         #add additional troops
                         (store_character_level, ":player_level", "trp_player"),
+                        (val_min, ":player_level", 63),
                         (store_div, ":player_leveld2", ":player_level", 2),
                         (store_mul, ":player_levelx2", ":player_level", 2),
                         (try_begin),
