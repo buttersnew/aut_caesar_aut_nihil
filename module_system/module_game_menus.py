@@ -35170,8 +35170,8 @@ game_menus = [
     (assign, ":num_monks", 50),
     (store_character_level, ":level", "trp_player"),
     (val_min, ":level", 63),
-    (val_div, ":level", 5),
-    (val_add, ":num_monks", ":level"),
+    (val_div, ":level", 3),
+    (val_add, ":num_monks", ":level"), # max is 50 + 63 / 3 = 50 + 21 = 71
     (set_visitors, 1, "trp_judean_rebel", ":num_monks"),
     (set_visitors, 1, "trp_judean_village_walker", ":num_monks"),
     (set_jump_mission,"mt_temple_raid"),
@@ -35355,8 +35355,8 @@ game_menus = [
     (assign, ":num_monks", 50),
     (store_character_level, ":level", "trp_player"),
     (val_min, ":level", 63),
-    (val_div, ":level", 5),
-    (val_add, ":num_monks", ":level"),
+    (val_div, ":level", 3),
+    (val_add, ":num_monks", ":level"), # max is 50 + 63 / 3 = 50 + 21 = 71
     (set_visitors, 1, "trp_judean_rebel", ":num_monks"),
     (set_visitors, 1, "trp_judean_village_walker", ":num_monks"),
     #(set_visitors, 1, "trp_abad", 1),
