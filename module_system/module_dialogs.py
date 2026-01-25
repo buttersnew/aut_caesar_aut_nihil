@@ -23661,14 +23661,14 @@ dialogs =[
 [anyone|plyr,"praefectus_urbani_talk_preatorian_gifts_actions",[
 ],"I have in mind 100,000 denarii. The funds will be taken from the imperial treasury.",
 "praefectus_urbani_talk_preatorian_gifts_actions_decide",[
-  (call_script, "script_add_to_faction_treasury", -100000),
+  (call_script, "script_add_to_faction_treasury", -100000, "$players_kingdom"),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
   (call_script, "script_change_player_honor", -2),
 ]],
 [anyone|plyr,"praefectus_urbani_talk_preatorian_gifts_actions",[
 ],"I have in mind 50,000 denarii. The funds will be taken from the imperial treasury.",
 "praefectus_urbani_talk_preatorian_gifts_actions_decide",[
-  (call_script, "script_add_to_faction_treasury", -50000),
+  (call_script, "script_add_to_faction_treasury", -50000, "$players_kingdom"),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
   (call_script, "script_change_player_honor", -1),
 ]],
