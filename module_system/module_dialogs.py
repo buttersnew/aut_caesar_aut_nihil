@@ -61808,7 +61808,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   (quest_slot_eq, "qst_blank_quest_19", slot_quest_main_poppaea_fate, 3),
   (neg|troop_slot_eq, "trp_kingdom_7_lady_1", slot_troop_occupation, slto_kingdom_lady),
   (quest_slot_eq, "qst_blank_quest_19", slot_quest_main_poppaea_timer, -1),
-],"You heard the news about Poppaea Sabina death?",
+],"Have you heard the news about Poppaea Sabina's death?",
 "antonia_murdered_poppaea_talk_1",[
   (quest_set_slot, "qst_blank_quest_19", slot_quest_main_poppaea_timer, -2),
 ]],
@@ -61832,7 +61832,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
     (ge, ":int", 16),
     (str_store_string, s12, "@^^-- While talking you notice how she constantly avoids your gaze. --"),
   (try_end),
-], "And? Rumours say all kind of nonsense about me, as there are people hating me or being jealous.^^{s12}",
+], "And? Rumours say all kinds of nonsense about me, as there are people hating me or being jealous.^^{s12}",
 "antonia_murdered_poppaea_talk_4",[]],
 
 [anyone|plyr,"antonia_murdered_poppaea_talk_4",[
@@ -61844,7 +61844,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 "spouse_pretalk",[]],
 
 [anyone,"antonia_murdered_poppaea_talk_5",[
-], "Of course not! How can you even think that! How can you believe such nonsentical rumours? Why should I care about her?",
+], "Of course not! How can you even think that! How can you believe such nonsensical rumours? Why should I care about her?",
 "antonia_murdered_poppaea_talk_6",[]],
 
 [anyone|plyr,"antonia_murdered_poppaea_talk_6",[
@@ -61854,7 +61854,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 "antonia_murdered_poppaea_talk_7",[]],
 
 [anyone,"antonia_murdered_poppaea_talk_7",[
-], "Damn it, you got better at reading my intentions and it was also too obvious ... Yes I admit, I am involved into it, and?"
+], "Damn it, you got better at reading my intentions and it was also too obvious ... Yes I admit, I am involved in it, and?"
 +" I can do what I want after all.",
 "antonia_murdered_poppaea_talk_8",[]],
 
@@ -61869,13 +61869,13 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 [anyone,"antonia_murdered_poppaea_talk_9",[
 ], "What? She was expecting to be murdered and lived in constant fear. I freed her from her fear."
 +" You have to understand that sometimes it is necessary to kill people. She was too involved in what was happening. She had her nose stuck everywhere."
-+" Seen in the long term she was too dangerous for us, because piggy gave her the title 'Augusta' ... people could have tried to use her for false claims...",
++" Seen in the long term she was too dangerous for us, because Piggy gave her the title 'Augusta' ... people could have tried to use her for false claims...",
 "antonia_murdered_poppaea_talk_end_10",[
-  (call_script, "script_change_player_relation_with_troop", -5),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
 ]],
 
 [anyone|plyr,"antonia_murdered_poppaea_talk_end_10",[
-], "Just being said, never do this again! I don't like it when you make decisions behind my back!",
+], "That being said, never do this again! I don't like it when you make decisions behind my back!",
 "antonia_murdered_poppaea_talk_end_11",[]],
 
 [anyone|plyr,"antonia_murdered_poppaea_talk_end_10",[
@@ -61883,14 +61883,14 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 "spouse_pretalk",[]],
 
 [anyone,"antonia_murdered_poppaea_talk_end_11",[
-], "I am sorry {playername}. I will not murder a blond, light-minded, beautiful woman who enjoys taking a bath in milk. That will never happen again."
+], "I am sorry {playername}. I will not murder a blonde, light-minded, beautiful woman who enjoys taking a bath in milk. That will never happen again."
 +" ^^-- She comes closer until you can feel her breath. --^^ I promise you.",
 "antonia_murdered_poppaea_talk_end_12",[
   (play_sound, "snd_female_laugh"),
 ]],
 
 [anyone|plyr,"antonia_murdered_poppaea_talk_end_12",[
-], "You are kidding me. Antonia, swear that you wont do anything without asking me.",
+], "You are kidding me. Antonia, swear that you won't do anything without asking me.",
 "antonia_murdered_poppaea_talk_end_13",[]],
 
 [anyone|plyr,"antonia_murdered_poppaea_talk_end_12",[
@@ -61907,10 +61907,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 [anyone|plyr,"antonia_murdered_poppaea_talk_end_15",[
   (play_sound, "snd_female_laugh"),
-], "-- She giggles and comes closer. --^^Let us spend some time together, shall we? Let us forget all those blond, light-minded girls out there."
+], "-- She giggles and comes closer. --^^Let us spend some time together, shall we? Let us forget all those blonde, light-minded girls out there."
 " Let us enjoy the time and us...^^-- She kisses you. --",
 "close_window",[
-  (finish_mission),
+  (finish_mission, 2),
+  (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
   (jump_to_menu, "mnu_funny_nights"),
   (assign, "$g_leave_encounter", 1),
 ]],
@@ -85700,6 +85701,12 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ], "Farewell then", "close_window",[]],
 
 [anyone|plyr,"hall_guard_talk",[
+  (is_between, "$current_town", walled_centers_begin, walled_centers_end),
+  (store_current_scene, ":cur_scene"),
+
+  (this_or_next|party_slot_eq, "$current_town", slot_town_castle, ":cur_scene"),
+  (eq, ":cur_scene", "scn_imperial_dinning_room"),
+
   (troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
   (gt, ":spouse", 0),
   (troop_slot_eq, ":spouse", slot_troop_cur_center, "$current_town"),
