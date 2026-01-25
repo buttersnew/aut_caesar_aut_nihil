@@ -76852,51 +76852,58 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr,"mayor_investment_confirm",[
   (store_troop_gold, ":player_gold", "trp_player"),
   (ge, ":player_gold","$enterprise_cost"),
- ], "Yes. Here is money for the land.", "mayor_investment_purchase",[
+ ], "Yes. I will pay it from my own pocket.", "mayor_investment_purchase",[
+  (troop_remove_gold, "trp_player", "$enterprise_cost"),
+]],
+[anyone|plyr,"mayor_investment_confirm",[
+  (store_troop_gold, ":player_gold", "trp_household_possessions"),
+  (ge, ":player_gold","$enterprise_cost"),
+ ], "Yes. I will use funds from my private treasury to pay it.", "mayor_investment_purchase",[
+  (call_script, "script_dplmc_withdraw_from_treasury", "$enterprise_cost"),
+]],
+
+[anyone|plyr,"mayor_investment_confirm",[
+], "No -- that's not economical for me at the moment.",
+"mayor_pretalk",[
+]],
+
+[anyone,"mayor_investment_purchase",[
+], "Very good. Your enterprise should be up and running in about a week. When next you come, and thereafter, you should speak to your {s4} about its operations.",
+"mayor_pretalk",[
   (party_set_slot, "$g_encountered_party", slot_center_player_enterprise, "$enterprise_production"),
   (party_set_slot, "$g_encountered_party", slot_center_player_enterprise_days_until_complete, 7),
-
-  (troop_remove_gold, "trp_player", "$enterprise_cost"),
-  # (store_sub, ":current_town_order", "$current_town", towns_begin),
-  # (store_add, ":craftsman_troop", ":current_town_order", "trp_town_1_master_craftsman"),
   (party_get_slot, ":craftsman_troop", "$current_town",slot_town_mastercraftman),
   (try_begin),
-	(eq, "$enterprise_production", "itm_bread"),
+	  (eq, "$enterprise_production", "itm_bread"),
     (troop_set_name, ":craftsman_troop", "str_master_miller"),
   (else_try),
-	(eq, "$enterprise_production", "itm_ale"),
+	  (eq, "$enterprise_production", "itm_ale"),
     (troop_set_name, ":craftsman_troop", "str_master_brewer"),
   (else_try),
-	(eq, "$enterprise_production", "itm_oil"),
+	  (eq, "$enterprise_production", "itm_oil"),
     (troop_set_name, ":craftsman_troop", "str_master_presser"),
   (else_try),
-	(eq, "$enterprise_production", "itm_tools"),
+	  (eq, "$enterprise_production", "itm_tools"),
     (troop_set_name, ":craftsman_troop", "str_master_smith"),
   (else_try),
-	(eq, "$enterprise_production", "itm_wool_cloth"),
+	  (eq, "$enterprise_production", "itm_wool_cloth"),
     (troop_set_name, ":craftsman_troop", "str_master_weaver"),
   (else_try),
-	(eq, "$enterprise_production", "itm_linen"),
+	  (eq, "$enterprise_production", "itm_linen"),
     (troop_set_name, ":craftsman_troop", "str_master_weaver"),
   (else_try),
-	(eq, "$enterprise_production", "itm_leatherwork"),
+	  (eq, "$enterprise_production", "itm_leatherwork"),
     (troop_set_name, ":craftsman_troop", "str_master_tanner"),
   (else_try),
-	(eq, "$enterprise_production", "itm_velvet"),
+	  (eq, "$enterprise_production", "itm_velvet"),
     (troop_set_name, ":craftsman_troop", "str_master_dyer"),
   (else_try),
-	(eq, "$enterprise_production", "itm_wine"),
+	  (eq, "$enterprise_production", "itm_wine"),
     (troop_set_name, ":craftsman_troop", "str_master_vinter"),
   (try_end),
-  ]],
-
-[anyone|plyr,"mayor_investment_confirm",[], "No -- that's not economical for me at the moment.", "mayor_pretalk",[
-  ]],
-
-[anyone,"mayor_investment_purchase",[], "Very good. Your enterprise should be up and running in about a week. When next you come, and thereafter, you should speak to your {s4} about its operations.", "mayor_pretalk",[
   (party_get_slot, ":craftsman_troop", "$current_town",slot_town_mastercraftman),
   (str_store_troop_name, s4, ":craftsman_troop"),
-  ]],
+]],
 
 [anyone|plyr,"mayor_talk",[
   (check_quest_active, "qst_wlodowiecus_adventure_1"),
@@ -79601,14 +79608,22 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr,"barb_estate_talk_2",[
   (store_troop_gold, ":g", "trp_player"),
   (ge, ":g", reg44),
-],"I wish to buy the land.", "barb_estate_talk_3",[]],
+],"I wish to buy the land using coin from my own purse.", "barb_estate_talk_3",[
+  (troop_remove_gold, "trp_player", reg44),
+]],
+
+[anyone|plyr,"barb_estate_talk_2",[
+  (store_troop_gold, ":g", "trp_household_possessions"),
+  (ge, ":g", reg44),
+],"I wish to buy the land using funds from my private treasury.", "barb_estate_talk_3",[
+  (call_script, "script_dplmc_withdraw_from_treasury", reg44),
+]],
 
 [anyone,"barb_estate_talk_3",[],
 "My Lord, now you are the new master of this land. It can be found next to the village.",
 "village_elder_pretalk",[
-  (troop_get_slot, ":player_culture", "trp_player", slot_center_culture),
+  (troop_get_slot, ":player_culture", "trp_player", slot_troop_culture),
   (call_script, "script_spawn_latifundium", "$current_town", ":player_culture"),
-  (troop_remove_gold, "trp_player", reg44),
 ]],
 
 [anyone|plyr,"barb_estate_talk_2",[],
@@ -79855,16 +79870,25 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr,"lad_talk2",[
   (store_troop_gold, ":g", "trp_player"),
   (ge, ":g", reg44),
-],"I wish to buy the land.",
-"lad_talk3",[]],
+],"I wish to buy the land using coin from my own purse.",
+"lad_talk3",[
+  (troop_remove_gold, "trp_player", reg44),
+]],
+
+[anyone|plyr,"lad_talk2",[
+  (store_troop_gold, ":g", "trp_household_possessions"),
+  (ge, ":g", reg44),
+],"I wish to buy the land using funds from my private treasury.", "lad_talk3",[
+  (call_script, "script_dplmc_withdraw_from_treasury", reg44),
+]],
+
 
 [anyone,"lad_talk3",[
 ],
 "Very well Dominus, now you are the new master of this land. It can be found next to the village.",
 "village_elder_pretalk",[
-  (troop_get_slot, ":player_culture", "trp_player", slot_center_culture),
+  (troop_get_slot, ":player_culture", "trp_player", slot_troop_culture),
   (call_script, "script_spawn_latifundium", "$current_town", ":player_culture"),
-  (troop_remove_gold, "trp_player", reg44),
 ]],
 
 [anyone|plyr,"lad_talk2",[
@@ -89020,12 +89044,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
   "We have a deal.", "help_garama5",
 []],
 [anyone|plyr, "help_garama5",
-[
- ],
-  "Very good. I will send a message to my king. After some days the troops will arrive. They will search for you and join you.", "close_window",
-[(troop_set_slot, "trp_diplomat_africa", slot_troop_days_on_mission, 6),
+[],"Very good. I will send a message to my king. After some days the troops will arrive. They will search for you and join you.",
+"close_window",[
+  (troop_set_slot, "trp_diplomat_africa", slot_troop_days_on_mission, 6),
   (call_script, "script_dplmc_withdraw_from_treasury", 30000),
-  ]],
+]],
 [anyone|plyr, "help_garama4",
 [],
   "Forget it.", "close_window",

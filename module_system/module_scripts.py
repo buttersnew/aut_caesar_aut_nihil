@@ -66094,7 +66094,7 @@ scripts = scripts_hardcoded + [
 
     (set_fixed_point_multiplier, 100),
 
-    (display_message, "@Debug: START Iteration"),
+    # (display_message, "@Debug: START Iteration"),
 
 
     (assign, ":upper_bound", 3000),
@@ -66112,8 +66112,8 @@ scripts = scripts_hardcoded + [
             (get_distance_between_positions, ":distance", pos13, pos10),
             (le, ":distance", 200),
             (assign, ":bad_party", ":parties"),
-            (str_store_party_name, s10, ":parties"),
-            (display_message, "@Debug: Iteration found problem {s10}"),
+            # (str_store_party_name, s10, ":parties"),
+            # (display_message, "@Debug: Iteration found problem {s10}"),
         (try_end),
         (try_begin),
             (gt, ":bad_party", 0),
@@ -66179,15 +66179,18 @@ scripts = scripts_hardcoded + [
             (try_end),
 
             (party_set_position,":party_id", pos11),
-            (display_message, "@Debug: Iteration {reg1}"),
+            # (display_message, "@Debug: Iteration {reg1}"),
         (try_end),
         (assign, reg1, ":unused"),
     (try_end),
 
-    (display_message, "@Debug: END Iteration"),
+    # (display_message, "@Debug: END Iteration"),
 
     (party_set_slot, ":center", slot_center_has_latifundium, ":party_id"),
     (party_get_current_terrain, ":terrain", ":party_id"),
+
+    # (str_store_faction_name, s10, ":latifundia_culture"),
+    # (display_message, "@{s10}"),
     (try_begin),
         (this_or_next|eq, ":latifundia_culture", "fac_culture_greek"),
         (this_or_next|eq, ":latifundia_culture", "fac_culture_egyptian"),
@@ -66215,6 +66218,7 @@ scripts = scripts_hardcoded + [
         (else_try),
             (party_set_slot, ":party_id", slot_town_center, "scn_latifundium_plain"),
         (try_end),
+        (party_set_icon, ":party_id", "icon_villa_icon"),
     (else_try),
         (party_set_slot, ":party_id", slot_town_center, "scn_barbarian_estate"),
         (party_set_icon, ":party_id", "icon_barbarian_estate"),
