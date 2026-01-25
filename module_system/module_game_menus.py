@@ -15538,19 +15538,11 @@ game_menus = [
               (set_visitor, 29, ":companion"),
           (try_end),
 
-          (try_begin),
-              (neq, ":town_faction", "fac_player_supporters_faction"),
-              (faction_get_slot, ":troop_prison_guard", "$g_encountered_party_faction", slot_faction_prison_guard_troop),
-              (faction_get_slot, ":troop_castle_guard", "$g_encountered_party_faction", slot_faction_castle_guard_troop),
-              (faction_get_slot, ":tier_2_troop", ":town_faction", slot_faction_tier_2_troop),
-              (faction_get_slot, ":tier_3_troop", ":town_faction", slot_faction_tier_3_troop),
-          (else_try),
-              (party_get_slot, ":town_original_faction", "$current_town", slot_center_original_faction),
-              (faction_get_slot, ":troop_prison_guard", ":town_original_faction", slot_faction_prison_guard_troop),
-              (faction_get_slot, ":troop_castle_guard", ":town_original_faction", slot_faction_castle_guard_troop),
-              (faction_get_slot, ":tier_2_troop", ":town_original_faction", slot_faction_tier_2_troop),
-              (faction_get_slot, ":tier_3_troop", ":town_original_faction", slot_faction_tier_3_troop),
-          (try_end),
+          (faction_get_slot, ":troop_prison_guard", "$g_encountered_party_faction", slot_faction_prison_guard_troop),
+          (faction_get_slot, ":troop_castle_guard", "$g_encountered_party_faction", slot_faction_castle_guard_troop),
+          (faction_get_slot, ":tier_2_troop", ":town_faction", slot_faction_tier_2_troop),
+          (faction_get_slot, ":tier_3_troop", ":town_faction", slot_faction_tier_3_troop),
+
           (try_begin), #think about this, should castle guard have to go nearby fire too? If he do not go, killing 2 armored guard is too hard for player. For now he goes too.
               #if guards have not gone to some other important happening at nearby villages, then spawn 4 guards. (example : fire)
               (party_get_slot, ":last_nearby_fire_time", "$current_town", slot_town_last_nearby_fire_time),
@@ -16950,19 +16942,11 @@ game_menus = [
         (assign, "$g_mt_mode", tcm_default),
         (store_faction_of_party, ":town_faction","$current_town"),
 
-        (try_begin),
-          (neq, ":town_faction", "fac_player_supporters_faction"),
-          (faction_get_slot, ":troop_prison_guard", "$g_encountered_party_faction", slot_faction_prison_guard_troop),
-          (faction_get_slot, ":troop_castle_guard", "$g_encountered_party_faction", slot_faction_castle_guard_troop),
-          (faction_get_slot, ":tier_2_troop", ":town_faction", slot_faction_tier_2_troop),
-          (faction_get_slot, ":tier_3_troop", ":town_faction", slot_faction_tier_3_troop),
-        (else_try),
-          (party_get_slot, ":town_original_faction", "$current_town", slot_center_original_faction),
-          (faction_get_slot, ":troop_prison_guard", ":town_original_faction", slot_faction_prison_guard_troop),
-          (faction_get_slot, ":troop_castle_guard", ":town_original_faction", slot_faction_castle_guard_troop),
-          (faction_get_slot, ":tier_2_troop", ":town_original_faction", slot_faction_tier_2_troop),
-          (faction_get_slot, ":tier_3_troop", ":town_original_faction", slot_faction_tier_3_troop),
-        (try_end),
+        (faction_get_slot, ":troop_prison_guard", "$g_encountered_party_faction", slot_faction_prison_guard_troop),
+        (faction_get_slot, ":troop_castle_guard", "$g_encountered_party_faction", slot_faction_castle_guard_troop),
+        (faction_get_slot, ":tier_2_troop", ":town_faction", slot_faction_tier_2_troop),
+        (faction_get_slot, ":tier_3_troop", ":town_faction", slot_faction_tier_3_troop),
+
         (try_begin), #think about this, should castle guard have to go nearby fire too? If he do not go, killing 2 armored guard is too hard for player. For now he goes too.
           #if guards have not gone to some other important happening at nearby villages, then spawn 4 guards. (example : fire)
           (party_get_slot, ":last_nearby_fire_time", "$current_town", slot_town_last_nearby_fire_time),
