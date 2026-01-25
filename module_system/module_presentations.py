@@ -19856,6 +19856,7 @@ presentations = presentations_wse2 + [
       (overlay_set_val, "$g_presentation_obj_admin_panel_7", "$g_governor_appointment_message"),
       (overlay_set_val, "$form_options_overlay_2", "$show_raid_messages"),
       (overlay_set_val, "$g_presentation_obj_11", "$g_love_messages_on"),
+      (overlay_set_val, "$g_presentation_obj_admin_panel_8", "$g_body_guard_on"),
 
     (else_try),
       (assign, "$difficulty_type", camp_d1),	#all other changes will change the difficulty type
