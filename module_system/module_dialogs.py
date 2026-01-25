@@ -88585,6 +88585,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (eq, ":fac", "$players_kingdom"),
     (val_add, reg24, 1),
   (try_end),
+  (store_mul, reg23, reg22, reg24),
 ],"You could establish an office that handle this petitions and help you govern. I could establish such an office for you. But it would generate additional costs. I would need 50,000 denarii immediately."
 +"additionally it would generate bureaucratic costs of {reg22} denarii per town or fortress. We have {reg24} towns and fortresses so it would some up to a total of {reg23} denarii each month.",
 "petition4",[]],
