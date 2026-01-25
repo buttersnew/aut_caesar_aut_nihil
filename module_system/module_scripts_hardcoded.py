@@ -4016,6 +4016,11 @@ scripts_hardcoded = [
                 (neq, ":defeated_faction", "fac_kingdom_19"),# not a rebel faction
                 (neq, ":defeated_faction", "fac_kingdom_17"),# not a rebel faction
 
+                (neg|faction_slot_eq, ":defeated_faction", slot_faction_government_type, gov_imperial),# not roman empire
+
+                (neg|faction_slot_eq, ":winner_faction", slot_faction_leader, "trp_player"),# player cannot force puppet states
+                (neg|faction_slot_eq, ":defeated_faction", slot_faction_leader, "trp_player"),# player cannot force puppet states
+
                 (faction_get_slot, ":centers_defeated", ":defeated_faction", slot_faction_num_towns),
                 (faction_get_slot, ":castles", ":defeated_faction", slot_faction_num_castles),
                 (val_add, ":centers_defeated", ":castles"),
