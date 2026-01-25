@@ -46243,7 +46243,9 @@ scripts = scripts_hardcoded + [
 
 	(val_div, ":drink_amount", ":num_servings"), #1 to 100 for each
 	(val_min, ":drink_amount", 100),
+
 	(val_mul, ":drink_variety", 50), #1 to 100 for each
+    (val_min, ":drink_variety", 100),
 
 	#in the future, it might be worthwhile to add different varieties of spices
 	(item_get_slot, ":spice_amount", "itm_spice", slot_item_amount_available),
