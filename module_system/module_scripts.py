@@ -16690,8 +16690,8 @@ scripts = scripts_hardcoded + [
             (party_slot_eq, ":center_no", slot_center_current_improvement_2, 0), #not already building
             #this randomization applies so that there is a chance of not building an improvement (1/6) or (4/6)
             #(neg|is_between, ":improvement_no", slot_center_has_forum, slot_center_has_blacksmith),##this are player only special buildings
-            (store_random_in_range, ":rand", 0, 25),
-            (le, ":rand", 8),
+            (store_random_in_range, ":rand", 0, 26),
+            (le, ":rand", 6),
             (try_begin), #villages
                 (party_slot_eq, ":center_no", slot_party_type, spt_village),
                 (store_random_in_range, ":improvement_no", village_improvements_begin, village_improvements_end),
@@ -16704,41 +16704,41 @@ scripts = scripts_hardcoded + [
             (party_slot_eq, ":center_no", ":improvement_no", 0), # not already built
 
             #block certain buildings if conditions not met
-            (assign, ":continue", 0),
+            (assign, ":continue", 1),
             (try_begin),
-                (this_or_next|eq, ":improvement_no", slot_center_change_culture_town),
-                (eq, ":improvement_no", slot_center_change_culture_village),
-                (troop_get_slot, ":lord_culture", ":troop_no", slot_troop_culture),
-                (neg|party_slot_eq, ":center_no", slot_center_culture, ":lord_culture"),
-                (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_goodnatured),
-                (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_martial),
-                (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_cunning),
-                (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_selfrighteous),
-                (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_upstanding),
-                (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_custodian),
-                (troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_benefactor),
-                (assign, ":continue", 1),
-            (else_try),
+            #     (this_or_next|eq, ":improvement_no", slot_center_change_culture_town),
+            #     (eq, ":improvement_no", slot_center_change_culture_village),
+            #     (troop_get_slot, ":lord_culture", ":troop_no", slot_troop_culture),
+            #     (neg|party_slot_eq, ":center_no", slot_center_culture, ":lord_culture"),
+            #     (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_goodnatured),
+            #     (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_martial),
+            #     (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_cunning),
+            #     (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_selfrighteous),
+            #     (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_upstanding),
+            #     (this_or_next|troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_custodian),
+            #     (troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_benefactor),
+            #     (assign, ":continue", 0),
+            # (else_try),
                 (eq, ":improvement_no", slot_center_has_port),
                 (party_slot_eq, ":center_no", slot_town_port, 0),
-                (assign, ":continue", 0),#block
+                (assign, ":continue", 0),#block port without water
             (else_try),
                 (eq, ":improvement_no", slot_center_has_fishport),
                 (party_slot_eq, ":center_no", slot_center_fishing_fleet, 0),
-                (assign, ":continue", 0),#block
+                (assign, ":continue", 0),#block fishery without fish
             (else_try),
                 (eq, ":improvement_no", slot_center_has_slave_market),#
                 (this_or_next|faction_slot_eq, ":troop_faction", dplmc_slot_faction_serfdom, -3),
                 (troop_slot_eq, ":troop_no", slot_lord_reputation_type, lrep_goodnatured),
-                (assign, ":continue", 0),#block
+                (assign, ":continue", 0),#block slave market if not allowed by faction or lord personality
             (else_try),
                 (eq, ":improvement_no", slot_center_has_iron_mine),
                 (party_slot_eq, ":center_no", slot_center_iron_deposits, 0),
-                (assign, ":continue", 0),#block
+                (assign, ":continue", 0),#block iron mine without iron
             (else_try),
                 (eq, ":improvement_no", slot_center_has_silver_mine),
                 (party_slot_eq, ":center_no", slot_center_silver_deposits, 0),
-                (assign, ":continue", 0),#block
+                (assign, ":continue", 0),#block gold/silver mine without gold/silver
             # (else_try),
             #     (eq, ":improvement_no", slot_center_has_quarry),
             #     (party_slot_eq, ":center_no", slot_center_iron_deposits, 0),
@@ -16779,14 +16779,22 @@ scripts = scripts_hardcoded + [
             (val_mul, ":improvement_time", ":num_prisoners_modifier"),
             (val_div, ":improvement_time", 100),
 
+            # debug message
+            # (assign, reg55, ":troop_wealth"), #DEBUG
+            # (assign, reg56, ":improvement_cost"), #DEBUG
+            # (assign, reg57, ":improvement_time"), #DEBUG
+            # (str_store_troop_name_link, s10, ":troop_no"),
+            # (str_store_party_name_link, s4, ":center_no"),
+            # (display_message, "@DEBUG check for {s10} at {s4}. DEBUG: Buiding {s0}. Troop wealth: {reg55} Improvement cost: {reg56}, Improvement time: {reg57}"),
+
             (lt, ":improvement_time", 365), #feasible
             (val_max, ":improvement_time", 14), #not instantaneous
 
             (gt, ":troop_wealth", ":improvement_cost"),
             (val_sub, ":troop_wealth", ":improvement_cost"),
             (try_begin),
-                (this_or_next|ge, "$cheat_mode", 1),
-                (ge, ":is_affiliated", 1),#<-- dplmc+ added
+                # (this_or_next|ge, "$cheat_mode", 1),
+                # (ge, ":is_affiliated", 1),#<-- dplmc+ added
                 (assign, reg6, ":improvement_time"),
                 (assign, reg7, ":improvement_cost"),
                 (str_store_troop_name_link, s10, ":troop_no"),
