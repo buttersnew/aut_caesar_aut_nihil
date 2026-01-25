@@ -69466,29 +69466,39 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (assign, "$g_leave_encounter",1),
 ]],
 
-[party_tpl|pt_kingdom_caravan_party,"start",
-[(quest_slot_eq, "qst_escort_merchant_caravan", slot_quest_current_state, 1),
-    (quest_slot_eq, "qst_escort_merchant_caravan", slot_quest_target_party, "$g_encountered_party"),
-    (eq, "$talk_context", tc_party_encounter),
-],
-   "We've made it this far... Is everything clear up ahead?", "talk_caravan_escort",[]],
-[anyone|plyr,"talk_caravan_escort",[],
-   "There might be bandits nearby. Stay close.", "talk_caravan_escort_2a",[]],
+[party_tpl|pt_kingdom_caravan_party,"start",[
+  (quest_slot_eq, "qst_escort_merchant_caravan", slot_quest_current_state, 1),
+  (quest_slot_eq, "qst_escort_merchant_caravan", slot_quest_target_party, "$g_encountered_party"),
+  (eq, "$talk_context", tc_party_encounter),
+],"We've made it this far... Is everything clear up ahead?",
+"talk_caravan_escort",[]],
 
-[anyone|plyr,"talk_caravan_escort",[],
-   "I want you to attach your party to my party.", "talk_caravan_escort_attach",[]],
+[anyone|plyr,"talk_caravan_escort",[
+],"I want to attach your party to my party.",
+"talk_caravan_escort_attach",[]],
 
-[anyone,"talk_caravan_escort_attach",[],
-   "Aye, we will do that.", "close_window",[
+[anyone,"talk_caravan_escort_attach",[
+],"Aye, we will do that.", "close_window",[
    (party_attach_to_party, "$g_encountered_party", "p_main_party"),
-   (assign, "$g_leave_encounter",1)]],
+   (assign, "$g_leave_encounter",1)
+]],
+
 [anyone,"talk_caravan_escort_2a",[],
-   "Trust me, {playername}, we're already staying as close to you as we can. Lead the way.", "close_window",[(assign, "$g_leave_encounter",1)]],
+"Trust me, {playername}, we're already staying as close to you as we can. Lead the way.",
+"close_window",[
+  (assign, "$g_leave_encounter",1)
+]],
+
 [anyone|plyr,"talk_caravan_escort",[],
    "No sign of trouble, we can breathe easy.", "talk_caravan_escort_2b",[]],
-[anyone,"talk_caravan_escort_2b",[(quest_get_slot, ":destination", "qst_escort_merchant_caravan", slot_quest_target_center),
-    (str_store_party_name, s3, ":destination"),],
-   "I'll breathe easy when we reach {s3} and not a moment sooner. Let's keep moving.", "close_window",[(assign, "$g_leave_encounter",1)]],
+
+[anyone,"talk_caravan_escort_2b",[
+  (quest_get_slot, ":destination", "qst_escort_merchant_caravan", slot_quest_target_center),
+  (str_store_party_name, s3, ":destination"),
+],"I'll breathe easy when we reach {s3} and not a moment sooner. Let's keep moving.",
+"close_window",[
+  (assign, "$g_leave_encounter",1)
+]],
 
 #caravan merchants
 [anyone,"start",
@@ -69520,20 +69530,33 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (assign, "$g_leave_encounter",1),
 ]],
 
-[anyone,"start",
-[(eq, "$caravan_escort_state", 1),
-    (eq, "$g_encountered_party", "$caravan_escort_party_id"),
-    (eq, "$talk_context", tc_party_encounter),
-],
-   "We've made it this far... Is everything clear up ahead?", "talk_caravan_escort",[]],
-[anyone|plyr,"talk_caravan_escort",[],
-   "There might be bandits nearby. Stay close.", "talk_caravan_escort_2a",[]],
-[anyone,"talk_caravan_escort_2a",[],
-   "Trust me, {playername}, we're already staying as close to you as we can. Lead the way.", "close_window",[(assign, "$g_leave_encounter",1)]],
-[anyone|plyr,"talk_caravan_escort",[],
-   "No sign of trouble, we can breathe easy.", "talk_caravan_escort_2b",[]],
-[anyone,"talk_caravan_escort_2b",[],
-   "I'll breathe easy when we reach {s1} and not a moment sooner. Let's keep moving.", "close_window",[[str_store_party_name,s1,"$caravan_escort_destination_town"],(assign, "$g_leave_encounter",1)]],
+[anyone,"start",[
+  (eq, "$caravan_escort_state", 1),
+  (eq, "$g_encountered_party", "$caravan_escort_party_id"),
+  (eq, "$talk_context", tc_party_encounter),
+],"We've made it this far... Is everything clear up ahead?",
+"talk_caravan_escort_new",[]],
+
+[anyone|plyr,"talk_caravan_escort_new",[],
+"There might be bandits nearby. Stay close.",
+"talk_caravan_escort_new_2a",[]],
+
+[anyone,"talk_caravan_escort_new_2a",[
+],"Trust me, {playername}, we're already staying as close to you as we can. Lead the way.",
+"close_window",[
+  (assign, "$g_leave_encounter",1)
+]],
+
+[anyone|plyr,"talk_caravan_escort_new",[
+],"No sign of trouble, we can breathe easy.",
+"talk_caravan_escort_new_2b",[]],
+
+[anyone,"talk_caravan_escort_new_2b",[
+],"I'll breathe easy when we reach {s1} and not a moment sooner. Let's keep moving.",
+"close_window",[
+  [str_store_party_name,s1,"$caravan_escort_destination_town"],
+  (assign, "$g_leave_encounter",1)
+]],
 
 [anyone,"start",[
   (eq,"$talk_context", tc_party_encounter),
