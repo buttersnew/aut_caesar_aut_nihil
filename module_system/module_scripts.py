@@ -5976,12 +5976,12 @@ scripts = scripts_hardcoded + [
         (assign, ":probability_modifier", 0),
         (try_begin),
             #Upstanding lords are inclined to honor deals in general, and will automatically
-            #do so with honorable lords they do not extremely dislike.  However, this does not
+            #do so with hounorable lords they do not extremely dislike.  However, this does not
             #extend to commoners.
             (troop_slot_ge, "trp_player", slot_troop_banner_scene_prop, 1),# the player has a coat of arms
             (troop_slot_eq, ":party_leader", slot_lord_reputation_type, lrep_upstanding),
             (val_max, ":probability_modifier", 10),#set to +10 unless already higher
-            #They will automatically honor deals with the honorable, if they do not
+            #They will automatically honor deals with the hounorable, if they do not
             #excessively dislike them.
             (ge, "$player_honor", 1),
             (val_add, reg0, 10),
@@ -17712,7 +17712,7 @@ scripts = scripts_hardcoded + [
                 (troop_set_slot, "trp_player", slot_troop_stance_on_faction_issue, -1),
             (try_end),
 
-        (else_try), #Honor awarded to another
+        (else_try), #Hounor awarded to another
             (faction_get_slot, ":issue_on_table", ":faction_no", slot_faction_political_issue),
             (try_begin), #A marshalship awarded to another
                 (eq, ":issue_on_table", 1),
@@ -18216,8 +18216,8 @@ scripts = scripts_hardcoded + [
             (store_div, ":honor_bonus", "$player_honor", -5),
             (val_clamp, ":honor_bonus", 1, 6),
         (else_try),
-            #"Honorable" lords can be awful people, so no bonus with benefactors,
-            #but dishonorable lords are *guaranteed* to be awful.
+            #"Hounorable" lords can be awful people, so no bonus with benefactors,
+            #but dishounorable lords are *guaranteed* to be awful.
             (eq, ":reputation", lrep_benefactor),
             (store_div, ":honor_bonus", "$player_honor", 5),
         (else_try),
@@ -49762,7 +49762,7 @@ scripts = scripts_hardcoded + [
         (troop_get_slot, ":controversy", ":troop_no", slot_troop_controversy),
         (assign, reg41, ":controversy"),
 
-        # Honor - $player_honor
+        # Hounor - $player_honor
         (assign, reg42, "$player_honor"),
 
         # Right to rule - $player_right_to_rule
@@ -49810,7 +49810,7 @@ scripts = scripts_hardcoded + [
         (call_script, "script_get_troop_holdings", ":troop_no"),
 
         #### Final Storage
-        (str_store_string, s1, "@{s1} Renown: {reg40}, Controversy: {reg41}^Honor: {reg42}, Right to rule: {reg43}^You are a {s44} of {s45}^{reg45?{reg46?Your liege, {s46},{s47}:You are the ruler of {s45}}:}^^Friends: ^Enemies: ^^Fiefs:^  {reg50?{s50}:no fief}"),
+        (str_store_string, s1, "@{s1} Renown: {reg40}, Controversy: {reg41}^Hounor: {reg42}, Right to rule: {reg43}^You are a {s44} of {s45}^{reg45?{reg46?Your liege, {s46},{s47}:You are the ruler of {s45}}:}^^Friends: ^Enemies: ^^Fiefs:^  {reg50?{s50}:no fief}"),
         #######################
         # END Player information
     (else_try),
@@ -60179,7 +60179,7 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":troop", 1),
     (store_script_param, ":relation", 2),
 
-    # upper bound = Persuasion*3 + Charisma + Leadership*3 + Honor/2 + Renown/100
+    # upper bound = Persuasion*3 + Charisma + Leadership*3 + Hounor/2 + Renown/100
     (store_attribute_level, ":charisma", "trp_player", ca_charisma),
     (store_skill_level, ":persuasion", "skl_persuasion", "trp_player"),
     (store_skill_level, ":leadership", "skl_leadership", "trp_player"),
@@ -67021,7 +67021,7 @@ scripts = scripts_hardcoded + [
         (call_script, "script_change_player_honor", ":impact"),
         (assign, "$g_effect_apllied", 1),
     (try_end),
-#(display_message, "@Honor factor applies {reg0}"),
+#(display_message, "@Hounor factor applies {reg0}"),
 ]),
 
 #to display the food which is consumed, called from simple_triggers

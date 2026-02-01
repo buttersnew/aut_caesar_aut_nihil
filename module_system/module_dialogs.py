@@ -3326,7 +3326,7 @@ dialogs =[
 
 [anyone, "household_slave_punish_confirm",[
     (try_begin),
-        (le, "$g_player_honor", -60), # Dishonorable / Cruel Tyrant
+        (le, "$g_player_honor", -60), # Dishounorable / Cruel Tyrant
         (str_store_string, s1, "@Mercy, great {Dominus/Domina}! Please, mercy! Do not let them hurt me again! I will do anything, anything you ask!"),
     (else_try),
         (le, "$g_player_honor", -20), # Low Honour / Harsh Master
@@ -3335,7 +3335,7 @@ dialogs =[
         (le, "$g_player_honor", 20), # Neutral / Stern Master
         (str_store_string, s1, "@{Dominus/Domina}, please! If I have failed in my duties, tell me how, and I will atone for it. A flogging is not necessary!"),
     (else_try),
-        (le, "$g_player_honor", 60), # Honorable / Fair Master
+        (le, "$g_player_honor", 60), # Hounorable / Fair Master
         (str_store_string, s1, "@{Dominus/Domina}? I... I do not understand. Have I truly given you cause for such displeasure? I promise I can fix whatever I have done wrong!"),
     (else_try), # Very High Honour / Kind Master
         (str_store_string, s1, "@You wish to punish me, {Dominus/Domina}? Surely there has been some misunderstanding! Please, tell me what troubles you. I live only to serve this household faithfully."),
@@ -3411,7 +3411,7 @@ dialogs =[
         (le, "$g_player_honor", 20),  # Neutral/Stern Master
         (str_store_string, s1, "@Death? But... why? I don't understand what I have done to deserve this..."),
     (else_try),
-        (le, "$g_player_honor", 60),  # Honorable Master
+        (le, "$g_player_honor", 60),  # Hounorable Master
         (str_store_string, s1, "@{Dominus/Domina}, please! There must be some mistake! I have always served you faithfully! Don't do this!"),
     (else_try), # Very High Honour / Kind Master
         (str_store_string, s1, "@I... I cannot believe this. I must have failed you in some terrible way... Forgive me, {Dominus/Domina}. I am ready."),
@@ -3526,7 +3526,7 @@ dialogs =[
 
 [anyone, "household_slave_special_reward_confirm",[
     (try_begin),
-        (le, "$g_player_honor", -60), # Dishonorable / Cruel Tyrant
+        (le, "$g_player_honor", -60), # Dishounorable / Cruel Tyrant
         (str_store_string, s1, "@-- The slave begins to tremble uncontrollably, their eyes wide with sheer terror. --^^No... please, {Dominus/Domina}... not that... I beg of you..."),
     (else_try),
         (le, "$g_player_honor", -20), # Low Honour / Harsh Master
@@ -3535,7 +3535,7 @@ dialogs =[
         (le, "$g_player_honor", 20),  # Neutral / Stern Master
         (str_store_string, s1, "@-- The slave stands frozen for a moment, their expression unreadable. They offer a slow, submissive nod. --^^I understand, {Dominus/Domina}. I will... prepare myself."),
     (else_try),
-        (le, "$g_player_honor", 60),  # Honorable / Fair Master
+        (le, "$g_player_honor", 60),  # Hounorable / Fair Master
         (str_store_string, s1, "@-- The slave looks up, clearly confused but not frightened. --^^You... wish me to attend you personally, {s10}? I... am honored by your notice. I will obey."),
     (else_try), # Very High Honour / Kind Master
         (str_store_string, s1, "@-- The slave seems genuinely taken aback, a blush rising on their cheeks. They seem to interpret your command as a sign of profound, if unusual, trust. --^^Of course, my {Dominus/Domina}. I am yours to command, in all things."),
@@ -12586,7 +12586,7 @@ dialogs =[
 "You're right, I have strayed from good in my thirst for knowledge. I will leave.", "game_cave_talk_6_end",
 []],
 [trp_courtier_female,"game_cave_talk_6_end",[],
-"Thank you. You are an honorable son of Rome.", "close_window",
+"Thank you. You are an hounorable son of Rome.", "close_window",
 [
 (call_script, "script_change_player_honor", 5),
 (jump_to_menu, "mnu_greek_game_no"),
@@ -14002,7 +14002,7 @@ dialogs =[
 ]],
 [anyone|plyr,"vespasian_final_intro_13",[
 ],
-"I don't want that Poppaea is killed like that, give her at least an honorable death.",
+"I don't want that Poppaea is killed like that, give her at least an hounorable death.",
 "vespasian_final_c_1",[]],
 [anyone|plyr,"vespasian_final_intro_13",[
 ],
@@ -14124,7 +14124,7 @@ dialogs =[
 ]],
 [anyone|plyr,"vespasian_final_c_2",[
 ],
-"I agree. You shall die honorable in Roman fashion.",
+"I agree. You shall die hounorable in Roman fashion.",
 "vespasian_final_c_3",[]],
 [anyone|plyr,"vespasian_final_c_2",[
 ],
@@ -14191,7 +14191,7 @@ dialogs =[
 
 [anyone|other(trp_kingdom_7_lady_1),"vespasian_final_b_2",[
 ],
-"^^--Tears are rolling over her cheeks. --^^No! {playername}, please I beg you. Do something. Don't let me be murdered like that! Please, I beg you. Give me at least an honorable death. ",
+"^^--Tears are rolling over her cheeks. --^^No! {playername}, please I beg you. Do something. Don't let me be murdered like that! Please, I beg you. Give me at least an hounorable death. ",
 "vespasian_final_antonia_sided_1",[
   (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
 ]],
@@ -14487,8 +14487,8 @@ dialogs =[
 [anyone|other(trp_statthalter_9),"other_goy_total_defeat_intro_end",[
   (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),#enemy goy, thus other way round
 ],
- "Damn it! I failed I am defeated. I dreamed of victory, but I got defeat. I wanted everything and now I have nothing. All I ask now is having a honorable death."
- +" A honorable suicide, in Roman fashion.",
+ "Damn it! I failed I am defeated. I dreamed of victory, but I got defeat. I wanted everything and now I have nothing. All I ask now is having a hounorable death."
+ +" A hounorable suicide, in Roman fashion.",
 "other_goy_total_defeat",[
   (call_script, "script_set_conversation_troop", "trp_statthalter_9"),
   (call_script, "script_add_log_entry", logent_battle_of_bedriacum, "trp_player",  -1, "trp_statthalter_9", "$players_kingdom"),
@@ -14510,7 +14510,7 @@ dialogs =[
 
 [anyone|plyr,"other_goy_total_defeat",[
 ],
-"You shall die honorable, in Roman fashion.",
+"You shall die hounorable, in Roman fashion.",
 "other_goy_total_defeat_end",[
   (quest_set_slot, "qst_four_emperors", slot_quest_failure_consequence, 3),
 ]],
@@ -14549,7 +14549,7 @@ dialogs =[
   (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_senator_2"),#enemy goy, thus other way round
 ],
  "Before I subject myself to humiliation of defeat I choose death. I accept my defeat and will take it's consequences. I will take my life into the hands of the gods. I will commit suicide in Roman fashion."
- +" A honorable suicide, in Roman fashion.",
+ +" A hounorable suicide, in Roman fashion.",
 "other_goy_total_defeat_3",[
   (call_script, "script_set_conversation_troop", "trp_statthalter_9"),
 ]],
@@ -14761,7 +14761,7 @@ dialogs =[
 "vitellius_total_victory_3",[]],
 
 [trp_statthalter_9,"vitellius_total_victory_2",[
-],"Don't be a coward {playername}. I can't keep you alive. You have too many supporters and too much power. However, I will allow you to die honorable in Roman fashio.",
+],"Don't be a coward {playername}. I can't keep you alive. You have too many supporters and too much power. However, I will allow you to die hounorable in Roman fashio.",
 "vitellius_total_victory_3",[]],
 
 [anyone|plyr,"vitellius_total_victory_3",[
@@ -14797,7 +14797,7 @@ dialogs =[
 [anyone,"vitellius_total_victory_4",[
    (eq, "$g_talk_troop", "trp_statthalter_9"),
    (str_store_troop_name, s10, "trp_antonia"),
-],"You will die honorable! Fear not. And {s10} will also die with you. After all what happened I can't keep her alive. It must be."
+],"You will die hounorable! Fear not. And {s10} will also die with you. After all what happened I can't keep her alive. It must be."
 "^^Soldiers! Let you all know that this is the day of victory! The day of justice. The day on which the true Caesar returns to Rome."
 "^Soldiers! It's the day on which Rome will have a Princeps worthy for it's glory. It will be a new age, an age of conquest and glory!",
 "close_window",[
@@ -16366,7 +16366,7 @@ dialogs =[
   (quest_slot_eq, "qst_four_emperors", slot_quest_target_troop, "trp_statthalter_9"),
   (check_quest_active, "qst_four_emperors"),
   (quest_slot_eq, "qst_four_emperors", slot_quest_current_state, 9),
-],"Though Poppaea shattered my heart, I am confident that a brighter future awaits me. {playername}, I am sorry, but your time has come to an end. Ambition knows no loyalty and my ambition is to be Princeps, first among the Romans. Not you! If you surrender now, I assure you get an honorable death.",
+],"Though Poppaea shattered my heart, I am confident that a brighter future awaits me. {playername}, I am sorry, but your time has come to an end. Ambition knows no loyalty and my ambition is to be Princeps, first among the Romans. Not you! If you surrender now, I assure you get an hounorable death.",
 "senate_stab_goy_1",[
   (quest_set_slot, "qst_four_emperors", slot_quest_current_state, 11),
 ]],
@@ -17185,7 +17185,7 @@ dialogs =[
 ]],
 
 [anyone|other(trp_kingdom_7_lady_1),"final_poppaea_12",[
-],"I have met defeat in my game. I recognize when it's concluded. All I ask for is an honorable death.",
+],"I have met defeat in my game. I recognize when it's concluded. All I ask for is an hounorable death.",
 "final_player_28",[
   (call_script, "script_set_conversation_troop", "trp_kingdom_7_lady_1"),
 ]],
@@ -19543,7 +19543,7 @@ dialogs =[
 "lucia_talk_4_1",[]],
 
 [trp_lucia|plyr, "lucia_talk_4_1",[],"Yes. That was my intention.", "lucia_talk_4_1_good",[]],
-[trp_lucia|plyr, "lucia_talk_4_1",[],"No, of course not. I am an honorable man. I merely wished to pay my respects.", "lucia_talk_4_1_bad",[]],
+[trp_lucia|plyr, "lucia_talk_4_1",[],"No, of course not. I am an hounorable man. I merely wished to pay my respects.", "lucia_talk_4_1_bad",[]],
 
 [trp_lucia, "lucia_talk_4_1_bad",[],"Please, {playername}, don't insult my intelligence. It is the only thing I have left. Do you have any idea what my 'vast fortune' actually consists of?",
 "lucia_talk_5",[
@@ -23695,7 +23695,7 @@ dialogs =[
 
 [anyone,"praefectus_urbani_talk_senate_actions_kill",[
 ],"Aye, I can order to kill your enemies and replace them by more loyal senators. But this will also have negative effects on your renown, reputation.\
- Honorable people will despise such an actions.", "praefectus_urbani_talk_senate_actions_kill2",[]],
+ Hounorable people will despise such an actions.", "praefectus_urbani_talk_senate_actions_kill2",[]],
 [anyone|plyr,"praefectus_urbani_talk_senate_actions_kill2",[
 ],"Do it as I ordered.", "praefectus_urbani_talk_senate_actions_kill3",[]],
 [anyone,"praefectus_urbani_talk_senate_actions_kill3",[
@@ -23724,7 +23724,7 @@ dialogs =[
 
 [anyone,"praefectus_urbani_talk_senate_actions_frighten",[
 ],"Aye, I can order to frighten and terrorize your enemies. I am sure most of them will switch to your side then. But this will also have negative effects on your renown, reputation.\
- Honorable people will despise such an actions. Though, the negative effects are much lower compared to the negative effects of a purge.", "praefectus_urbani_talk_senate_actions_frighten2",[]],
+ Hounorable people will despise such an actions. Though, the negative effects are much lower compared to the negative effects of a purge.", "praefectus_urbani_talk_senate_actions_frighten2",[]],
 [anyone|plyr,"praefectus_urbani_talk_senate_actions_frighten2",[
 ],"Do it as I ordered.", "praefectus_urbani_talk_senate_actions_frighten3",[]],
 [anyone,"praefectus_urbani_talk_senate_actions_frighten3",[
@@ -35295,7 +35295,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 [trp_kingdom_7_lord|plyr,"nero_poop_talk_4",[
 ],
-"Of course, Divine Caesar. You are an honorable man, forgive me for bringing it up.", "nero_poop_talk_3",[(call_script, "script_end_quest", "qst_money_stinks"),
+"Of course, Divine Caesar. You are an hounorable man, forgive me for bringing it up.", "nero_poop_talk_3",[(call_script, "script_end_quest", "qst_money_stinks"),
 ]],
 [trp_kingdom_7_lord|plyr,"nero_poop_talk_4",[
 ],
@@ -43039,7 +43039,7 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 "player_hostage_surrender",[]],
 
 [anyone|plyr,"player_siege_castle_commander_1",[
-],"I offer an honorable agreement to end the siege. Pay us tribute, and we will go.",
+],"I offer an hounorable agreement to end the siege. Pay us tribute, and we will go.",
 "player_siege_tributo",[]],
 
 [anyone|plyr,"player_siege_castle_commander_1",[], "Nothing. I'll leave you now.",
@@ -43967,7 +43967,7 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 
 [anyone,"corruption_prison",[
 ],
-"What? What! No, what are you doing! You dishonorable bastard!^^ (Your guard takes him prisoner.)",
+"What? What! No, what are you doing! You dishounorable bastard!^^ (Your guard takes him prisoner.)",
 "close_window",[
 	#(call_script, "script_add_to_troop_wealth", "$g_talk_troop", -15000),
 	(quest_get_slot, ":center", "qst_blank_quest_21",slot_quest_target_center),
@@ -45480,7 +45480,7 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 ],"It is a honor, your highness.", "lord_pretalk",[
 
   (call_script, "script_change_player_honor", -10),
-  (display_message, "@Intrigues and plots are a dishonorable business."),
+  (display_message, "@Intrigues and plots are a dishounorable business."),
 
   (party_get_slot, ":province", "$temp2", slot_center_province),
   (try_for_range, ":fiefs", walled_centers_begin, walled_centers_end),
@@ -47135,7 +47135,7 @@ And, need I remind you, there could be much more to come if you've a mind to ear
                    (check_quest_failed, "qst_incriminate_loyal_commander")],
 "You werent't able to complete a simple task. I had set up everything.\
 The only thing you needed to do was sacrifice a messenger, and we would be celebrating now.\
-But no, you were too damned honorable, weren't you?", "close_window",[
+But no, you were too damned hounorable, weren't you?", "close_window",[
 (call_script, "script_end_quest", "qst_incriminate_loyal_commander"),
 (call_script, "script_change_player_relation_with_troop","$g_talk_troop",-5),
 (call_script, "script_change_player_honor", 3),
@@ -51202,7 +51202,7 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 	(store_add, ":honor_change", ":faction_liege_relation", 5),
 	(val_div, ":honor_change", -10),
 	(val_min, ":honor_change", 0),
-	#Defecting during a time of war is more dishonorable than defecting during a time
+	#Defecting during a time of war is more dishounorable than defecting during a time
 	#of peace.
 	(try_begin),
 		(assign, ":is_war", 0),
@@ -57858,7 +57858,7 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (troop_get_slot, ":wealth", "$g_talk_troop", slot_troop_wealth),
   (assign, "$temp2", 0),
   (assign, "$temp", 0),
-  (try_begin),
+  (try_begin),# pay money, troops flee, lord flee
     (ge, ":wealth", 5000),
     (store_mul, ":obereschranke", ":wealth", 2),
     (val_div, ":obereschranke", 3),
@@ -57867,12 +57867,12 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
     (store_random_in_range, "$temp", ":untereschranke", ":obereschranke"),
     (assign, reg29, "$temp"),
     (str_store_string, s40, "@I have {reg29} denarii with me. I'll offer you that as ransom. You will get the coins and me and my men are free to go."),
-  (else_try),
+  (else_try),# no money pay, asks to let them go
     (this_or_next|eq, ":rep", lrep_upstanding),
     (this_or_next|eq, ":rep", lrep_goodnatured),
     (eq, ":rep", lrep_martial),
-    (str_store_string, s40, "@I don't have any money with me that I could offer you as ransom. I appeal that you let us go home and won't harm us. It would be inhonorable to slaughter us!"),
-  (else_try),
+    (str_store_string, s40, "@I don't have any money with me that I could offer you as ransom. I appeal that you let us go home and won't harm us. It would be dishounorable to slaughter us!"),
+  (else_try),# player gets prisoners
     (str_store_string, s40, "@I don't have any money with me that I could offer you as ransom. So I would suggest to give you my men as prisoners and let me go."),
     (assign, "$temp2", 1),
     (call_script, "script_game_get_party_prisoner_limit", "p_main_party"),
@@ -57881,25 +57881,23 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
     (assign, reg1, ":num"),
     (display_message, "@And {reg1} prisoners."),
   (try_end),
-],"However, we are totaly outnumbered and I won't let my men be slaughtered like sheep, we surrender. {s40}",
+],"However, we are totally outnumbered and I won't let my men be slaughtered like sheep, we surrender. {s40}",
 "player_reaction",[
    # (assign,"$g_enemy_surrenders",1),
 ]],
 
 [anyone|plyr,"player_reaction",[],
 "I agree.", "reaction_lord2",[
-
-	]],
+]],
 
 [anyone,"reaction_lord2",[],
 "Well, {playername}, then we have an agreement. {s41}", "close_window",[
- (assign, "$g_enemy_surrenders", 1),
- (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
- (assign, "$g_move_heroes", 0),
- (party_clear, "p_routed_enemies"),
- (call_script, "script_party_add_party", "p_routed_enemies", "$g_encountered_party"),
- #(call_script, "script_party_add_party", "p_total_enemy_casualties", "$g_encountered_party"),
-	(try_begin),
+  (assign, "$g_enemy_surrenders", 1),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (assign, "$g_move_heroes", 0),
+  (party_clear, "p_routed_enemies"),
+  (str_clear, s41),
+	(try_begin),# player gets money
 		(gt, "$temp", 0),
 		(val_mul, "$temp", -1),
 		(call_script, "script_add_to_troop_wealth", "$g_talk_troop", "$temp"),
@@ -57907,25 +57905,29 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 		(call_script, "script_troop_add_gold", "trp_player", "$temp"),
 		(display_message, "@You receive the gold. Then your enemy and his men leave."),
 		(str_store_string, s41, "@I bring you the gold."),
-	(else_try),
+
+    (call_script, "script_party_add_party", "p_routed_enemies", "$g_encountered_party"),
+	(else_try),# player gets prisoners
 		(gt, "$temp2", 0),
 		(display_message, "@The enemy commander leaves. You gain his troops as prisoners."),
-		(str_store_string, s41, "@You will gain my men as prisoners. They are good warriors, threat them well."),
+		(str_store_string, s41, "@You will gain my men as prisoners. They are good warriors, treat them well."),
 		(call_script, "script_party_wound_all_members", "$g_talk_troop_party"),
 		(assign, "$g_move_heroes", 0),
 		(call_script, "script_party_add_party_companions",  "p_total_enemy_casualties", "$g_talk_troop_party"),
-	(else_try),
+	(else_try),# enemy asks to be let go
 		(display_message, "@You let your enemy go."),
 		(str_store_string, s41, "@I won't forget this act of honor."),
 		(call_script, "script_change_player_honor", 5),
 		(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 4),
-	(try_end),
 
-	]],
+    (call_script, "script_party_add_party", "p_routed_enemies", "$g_encountered_party"),
+	(try_end),
+]],
 
 [anyone|plyr,"player_reaction",[],
-"I want more than this, especially you as prisoner!", "reaction_lord",[
-	]],
+"I want more than this, especially you as prisoner!",
+"reaction_lord",[
+]],
 
 [anyone,"reaction_lord",[],
 "Rat, then we will fight till the end!", "close_window",[
@@ -60000,7 +60002,7 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 [anyone,"lord_tell_mission",
 [(eq,"$random_quest_no","qst_rescue_prisoner"),
  ],#Next line "he" to {reg3?she:he}, etc.
-   "My {s11}, {s13}, has been taken prisoner by {s14} of the {s15}. Normally, honorable nobles will grant prisoners of gentle blood the privilege of parole, and treat them as honored guests so long as they give their word that they will not attempt to escape, until such time as a ransom can be paid. But {s14}, instead of granting {s13} parole, has consigned my {s11} to {reg3?her:his} dungeons -- no doubt in the hope that {reg3?she:he} can demand more from us.", "lord_mission_rescue_prisoner",
+   "My {s11}, {s13}, has been taken prisoner by {s14} of the {s15}. Normally, hounorable nobles will grant prisoners of gentle blood the privilege of parole, and treat them as honored guests so long as they give their word that they will not attempt to escape, until such time as a ransom can be paid. But {s14}, instead of granting {s13} parole, has consigned my {s11} to {reg3?her:his} dungeons -- no doubt in the hope that {reg3?she:he} can demand more from us.", "lord_mission_rescue_prisoner",
    ##diplomcay end+
 [
      (quest_get_slot, ":quest_target_troop", "$random_quest_no", slot_quest_target_troop),
@@ -63730,7 +63732,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 	(ge, ":town_lord", active_npcs_begin),
 	(str_store_troop_name, s12, ":town_lord"),
 ],
-   "The honorable {s12} has agreed to allow us to return home to our families. We shall be departing shortly.", "close_window",[
+   "The hounorable {s12} has agreed to allow us to return home to our families. We shall be departing shortly.", "close_window",[
  ]],
 
 [anyone,"start", #default for time since last talk
@@ -67430,14 +67432,14 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
 	(lt, "$player_honor", 10)
 	],
-    "It is good to hear that your intentions are honorable. However, I have resolved only to marry a man of the strongest moral fiber. I would like you to prove yourself more in that regard.", "lady_proposal_refused",[
+    "It is good to hear that your intentions are hounorable. However, I have resolved only to marry a man of the strongest moral fiber. I would like you to prove yourself more in that regard.", "lady_proposal_refused",[
 ]],
 
 [anyone,"lady_marriage_discussion",
 [
 	(lt, "$g_talk_troop_relation", 20),
 ],
-    "Sir -- it is comforting to hear that your intentions towards me are honorable. But perhaps we should take the time to get to allow our affections for each other to grow a little stronger, before making any such decision.", "lady_proposal_refused",[
+    "Sir -- it is comforting to hear that your intentions towards me are hounorable. But perhaps we should take the time to get to allow our affections for each other to grow a little stronger, before making any such decision.", "lady_proposal_refused",[
 ]],
 
 [anyone,"lady_marriage_discussion",
@@ -82906,7 +82908,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (eq, "$g_encountered_party_faction", "fac_roman_rebells"), #first stack should always be a bandit
 	(encountered_party_is_attacker),
 ],
-   "We fight for our freedom against corruption and tyranny. As the honorable gods have made us all free men, nobody can force slavery or tyranny on us! You are one of those tyrants, one of those who suppress free men. Lads, we will kill this rat!",
+   "We fight for our freedom against corruption and tyranny. As the hounorable gods have made us all free men, nobody can force slavery or tyranny on us! You are one of those tyrants, one of those who suppress free men. Lads, we will kill this rat!",
 "battle_reason_stated",[]],
 
 [party_tpl|pt_raider_party,"start",[(eq, "$g_encountered_party_template", "pt_raider_party"),#to fix bug in dialog
@@ -83368,7 +83370,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "prisoner_chat_lady_kill",[]],
 
 [anyone,"prisoner_chat_lady_kill",[
-], "You dishonorable bastard! You pig! What did I do? What?",
+], "You dishounorable bastard! You pig! What did I do? What?",
 "prisoner_chat_lady_kill_2",[]],
 
 [anyone|plyr,"prisoner_chat_lady_kill_2",[
@@ -83537,7 +83539,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone,"prisoner_chat_treason_plead",[
   (troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 2),
 ],
-"You are gravely mistaken!  I am an honorable man, and I have done nothing that you would not do were our roles exchanged.",
+"You are gravely mistaken!  I am an hounorable man, and I have done nothing that you would not do were our roles exchanged.",
 "prisoner_chat_treason_choose",[]],
 [anyone,"prisoner_chat_treason_plead",[
   (troop_slot_eq, "$g_talk_troop", slot_prisoner_agreed, 3),
@@ -85931,7 +85933,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 #post 0907 changes begin
 [anyone,"party_encounter_hostile_ultimatum_surrender",[
   (neq, "$g_encountered_party_template", "pt_rebels"),
-  (ge, "$player_honor", -25),#not dishonorable
+  (ge, "$player_honor", -25),#not dishounorable
   (call_script, "script_party_count_members_with_full_health", "p_main_party"),
   (assign, ":player_strength", reg0),
   (call_script, "script_party_count_members_with_full_health", "$g_encountered_party"),
@@ -91101,7 +91103,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),]],
 
 [trp_garamantian_queen|plyr, "darta_talky43",[],"I see. Stay here with Garat. I won't bring you to your father", "darta_leave",[]],
-[trp_garamantian_queen, "darta_leave",[],"Thank you {playername}. I won't forget your honorable act. ^--She gives you a kiss. --", "close_window",[
+[trp_garamantian_queen, "darta_leave",[],"Thank you {playername}. I won't forget your hounorable act. ^--She gives you a kiss. --", "close_window",[
   (assign, "$temp", 1),
   (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I don't have Darta. I will tell that she was killed by a snake or something like that.", 0),
   (display_message, "str_quest_updated", message_alert),
@@ -91283,7 +91285,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone, "desert_queen_pretalk",
 [(try_begin),
 		(ge,"$g_talk_troop_relation",30),
-		(str_store_string, s23, "@Anything else, my honorable {playername}?"),
+		(str_store_string, s23, "@Anything else, my hounorable {playername}?"),
 	(else_try),
 		(ge,"$g_talk_troop_relation",0),
 		(str_store_string, s23, "@Anything else?"),
@@ -92498,7 +92500,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [
   (eq, "$talk_context", tc_campaign_talk),
  ],
-  "Ave friend. You watched the spectacle too? This world is full of cruelty. What a shame that honorable people are murdered in such a way. But there is hope for this dark world.\
+  "Ave friend. You watched the spectacle too? This world is full of cruelty. What a shame that hounorable people are murdered in such a way. But there is hope for this dark world.\
  You must know, I am part of the Christian community and we are always looking for new people, especially poor people like you. People who have enough from this suffering.", "petron_talk_new",
 []],
 
@@ -96835,7 +96837,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [trp_praetoriani_milites_exp,"start",[
   (eq, "$talk_context", tc_pret_event_2),
 ],
-"(The soldiers from the previous shift seem to be in a conversation. They didn't noticed you so far.)^^Isn't it so kind and honorable of our Princeps Nero to post us at the door of this man to protect him after everything he did.", "event_2_pret_talk_1",[]],
+"(The soldiers from the previous shift seem to be in a conversation. They didn't noticed you so far.)^^Isn't it so kind and hounorable of our Princeps Nero to post us at the door of this man to protect him after everything he did.", "event_2_pret_talk_1",[]],
 
 [anyone|other(trp_quest_tiro),"event_2_pret_talk_1",[
 ],
@@ -97601,7 +97603,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
  ]],
 [anyone|other(trp_octavia),"event_octavia_2",[
 ],
-"I am sure this only happened because of this witch... ^^Whatever evil he made up for me, I am ready to take my life into the hands of the gods. I only want to die with honor and a honorable funeral.",
+"I am sure this only happened because of this witch... ^^Whatever evil he made up for me, I am ready to take my life into the hands of the gods. I only want to die with honor and a hounorable funeral.",
 "event_octavia_3",[
     (call_script, "script_set_conversation_troop", "trp_octavia"),
 ]],
@@ -100079,7 +100081,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 []],
 
 [anyone|other(trp_wlodowiecus),"wlodowiecus_adventure_1_final_8",[],
-  "Given the fact that it was you fault you should do the honorable and share your spoils with us.",
+  "Given the fact that it was you fault you should do the hounorable and share your spoils with us.",
   "wlodowiecus_adventure_1_final_9",
 [(call_script, "script_set_conversation_troop", "trp_wlodowiecus"),]],
 
@@ -104156,7 +104158,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 	(store_add, ":honor_change", "$g_talk_troop_relation", 5),
 	(val_div, ":honor_change", -10),
 	(val_min, ":honor_change", 0),
-	#Defecting during a time of war is more dishonorable than defecting during a time
+	#Defecting during a time of war is more dishounorable than defecting during a time
 	#of peace.
 	(try_begin),
 		(assign, ":is_war", 0),

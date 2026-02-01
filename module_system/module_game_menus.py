@@ -5192,6 +5192,9 @@ game_menus = [
             (try_end),
             (eq, ":block", 0),
             (eq, "$enlisted_party", -1),#freelancer
+
+            (neq,"$g_enemy_surrenders",1),#enemy surrenders, no talk to lord
+
             (assign, ":break", 0),
 
             (party_get_num_companion_stacks, ":num_stacks", "p_total_enemy_casualties"), #p_encountered changed to total_enemy_casualties
@@ -30723,7 +30726,7 @@ game_menus = [
                 # (is_between, ":r", 0, 10),
                 # (call_script, "script_change_player_honor", -5),
                 # (troop_remove_gold, "trp_player", 15000),
-                # (display_message, "@The senators you wanted to bribe called you dishonorable!"),
+                # (display_message, "@The senators you wanted to bribe called you dishounorable!"),
                 # (call_script, "script_change_player_relation_with_center", "$current_town", -1),
                 # (troop_get_slot, ":con", "trp_player", slot_troop_controversy),
                 # (val_add, ":con", 60),
@@ -35373,7 +35376,7 @@ game_menus = [
   ("answere_1",[],"Luckily alive!",[
     (try_begin),
       (neq, "$jewish_revolt", 1),
-      (display_message, "@Your dishonorable greedy act has angered the Jewish population so much, that they started to rebel against the foreign occupation!", message_negative),
+      (display_message, "@Your dishounorable greedy act has angered the Jewish population so much, that they started to rebel against the foreign occupation!", message_negative),
       (call_script, "script_cf_start_jewish_revolt"),
       (call_script, "script_change_player_relation_with_center", "p_town_19", -100),
       (call_script, "script_change_player_honor", -20),
@@ -35897,7 +35900,7 @@ game_menus = [
         (val_mul, ":max_loot", 200),	# 0 -1000
         (val_add, ":max_loot", 500),	# 100 - 1500
 
-        (try_begin),#being dishonorable gives a bonues
+        (try_begin),#being dishounorable gives a bonues
             (lt, "$player_honor", -90),
             (val_mul, ":max_loot", 21),
             (val_div, ":max_loot", 10),
@@ -39751,7 +39754,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_change_troop_renown", "trp_player", 3),
       (call_script, "script_change_player_honor", -3),
       (str_clear,s1),
-      (str_store_string,s1,"@Now even more people think, that you are dishonorable."),
+      (str_store_string,s1,"@Now even more people think, that you are dishounorable."),
       (display_message, "@{s1}"),
       (change_screen_map),
     ]),
@@ -43286,7 +43289,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_13_1nj",[],"Agree to this petition.",[
 		  (call_script, "script_change_player_relation_with_center", "$current_town", 1),
       (str_clear,s29),
-      (str_store_string,s29,"@The woman seems happy about your decision and spreads word that you are a honorable man."),
+      (str_store_string,s29,"@The woman seems happy about your decision and spreads word that you are a hounorable man."),
       (display_message, "@{s29}"),
       (jump_to_menu, "mnu_random_juice_events"),
     ]),
@@ -47593,7 +47596,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
         (str_store_string, s49, "@You won the vote! {reg27}% of the senators voted for your proposal. Now you are the new governor of {s57}."),
 
         (call_script, "script_change_player_honor", -10),
-        (display_message, "@Intrigues and plots are a dishonorable business."),
+        (display_message, "@Intrigues and plots are a dishounorable business."),
 
         (call_script, "script_change_troop_controversy", "trp_player", 80),
         (party_get_slot, ":province", ":town", slot_center_province),

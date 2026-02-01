@@ -2230,7 +2230,7 @@ lrep_end             = 17 #end of reputation slots
 
 #successful vs unlucky -- basic gauge of success
 #daring vs cautious -- maybe not necessary
-#honorable/pious/ideological vs unscrupulous -- character's adherance to an external code of conduct. Fails to capture complexity of people like Aurangzeb, maybe, but good for NPCs
+#hounorable/pious/ideological vs unscrupulous -- character's adherance to an external code of conduct. Fails to capture complexity of people like Aurangzeb, maybe, but good for NPCs
 	#(visionary/altruist and orthodox/unorthodox could be a subset of the above, or the specific external code could be another tag)
 #generous/loyal vs manipulative/exploitative -- character's sense of duty to specific individuals, based on their relationship. Affects loyalty of troops, etc
 #merciful vs cruel/ruthless/sociopathic -- character's general sense of compassion. Sher Shah is example of unscrupulous and merciful (the latter to a degree).

@@ -1090,8 +1090,8 @@ strings = [
   ("npc29_backstory_c", "Now I am travelling around and looking for a capable commander to serve him."),
   ("npc30_backstory_c", "Now I am travelling around and looking for a capable commander to serve him."),
   ("npc31_backstory_c", "{!}."),#special
-  ("npc32_backstory_c", "My family, the Lemonia, are an ancient line. We go so far back, that nobody even knows if we were here when Rome was founded. We were definitely in the area. One of the sixteen rural Servian Tribes bears our name. We were the founders of the original Republic! We may not be as rich and powerful now as the Claudia, Julia or Flavia, but we are every bit as honorable and dignified, unlike some lowlifes of Modia family."),
-  ("npc33_backstory_c", "My family, the Modia, are an ancient line. I carry this coin with me as a reminder of my ancestors. It is over three centuries old, minted by the great Gaius Modius during his magistracy. We may not be as rich and powerful as the Claudia, Julia or Flavia today, but we are every bit as honorable and dignified as ever, unlike some lowlifes of Lemonia family."),
+  ("npc32_backstory_c", "My family, the Lemonia, are an ancient line. We go so far back, that nobody even knows if we were here when Rome was founded. We were definitely in the area. One of the sixteen rural Servian Tribes bears our name. We were the founders of the original Republic! We may not be as rich and powerful now as the Claudia, Julia or Flavia, but we are every bit as hounorable and dignified, unlike some lowlifes of Modia family."),
+  ("npc33_backstory_c", "My family, the Modia, are an ancient line. I carry this coin with me as a reminder of my ancestors. It is over three centuries old, minted by the great Gaius Modius during his magistracy. We may not be as rich and powerful as the Claudia, Julia or Flavia today, but we are every bit as hounorable and dignified as ever, unlike some lowlifes of Lemonia family."),
   ("npc34_backstory_c", "If noble {Dominus/Domina} could take us two, poor Christian souls, away of this city and redeem ours from their hate towards followers of Christ, I would be grateful."),
   ("npc35_backstory_c", "{!}"),
   ("npc36_backstory_c", "I was a different person back then: Authoritarian, proud, wrothful and brutal. I, initially, didn't love Ligia, however she brought my interest nevertherless. I tried to court her - unsuccesfully, which almost resulted in tragedy, and my demise at the hands of Ligia's guard, Ursus. It was a turning point in my life. First, because I learned that Ligia is Christian. I paid a Greek to spy on her - which led me to beknowing Christian community myself. Second, because I learned that Nero's lifestyle is utterly degenerate and amoral. I lost interest in it - leaving the Palace to itself. Instead, I dedicated myself to a more noble lifestyle, became accustomed to Christians and most importantly, learned that I actually love Ligia as person, not as 'flesh'. I am looking for her to repent for my sins before her, but while I am doing so, I certainly would need to find a means to make a living. Like rejoining the military, that is."),
@@ -1602,9 +1602,9 @@ strings = [
   ("npc37_morality_speech", "Commander I hope you do not get offended by what I will say but please refrain from running from battles, if you do then what would I write about?"),
   ("npc38_morality_speech", "To win is always an objective but to lose so many men pursuing it is a waste of resources, try to not repeat the mistakes of the late Pyrrhus. Dominus, remember what he said: if he won in that fashion one more time, he would be ruined."),
   ("npc39_morality_speech", "{playername}, it's a bit tough for me to picture us {s21}. Maybe we could show a bit more mercy now and then - it would definitely help me sleep better."),
-  ("npc40_morality_speech", "{Dominus/Domina}, I have to criticize your last decision. It's just dishonorable to {s21}. That should not happen again!"),
+  ("npc40_morality_speech", "{Dominus/Domina}, I have to criticize your last decision. It's just dishounorable to {s21}. That should not happen again!"),
   ("npc41_morality_speech", "{Dominus/Domina}, I think it is terrible that you {s21}. A good chief should take care for his warband!"),
-  ("npc42_morality_speech", "Chief, a warrior should never {s21}. That should not happen again! I am a proud and honorable noble and warrior. I can't serve a chief who gives such orders!"),
+  ("npc42_morality_speech", "Chief, a warrior should never {s21}. That should not happen again! I am a proud and hounorable noble and warrior. I can't serve a chief who gives such orders!"),
 
   ("npc1_2ary_morality_speech", "Master -- just so you know, I've got no problem if we {s21}."
 	+" Living to fight another day makes good sense to me."),
@@ -1658,7 +1658,7 @@ strings = [
   ("npc39_2ary_morality_speech", "{!}"),
   ("npc40_2ary_morality_speech", "{Dominus/Domina}, I am happy to serve you. But you should take care that we don't {s21}. That's really all I wanted to say. It really bothers me."),
   ("npc41_2ary_morality_speech", "{!}"),
-  ("npc42_2ary_morality_speech", "Chief, it's an honor to serve you. I know, {s21} is a dishonorable action for some people, but I believe this is not the case. War is harsh, and sometimes it's necessary to {s21}."),
+  ("npc42_2ary_morality_speech", "Chief, it's an honor to serve you. I know, {s21} is a dishounorable action for some people, but I believe this is not the case. War is harsh, and sometimes it's necessary to {s21}."),
 
   ("npc1_personalityclash_speech", "Master -- no offense, but I'm a bit tired of {s11}, who puts on airs like she's something better than"
 	+" me."),
@@ -1707,8 +1707,8 @@ strings = [
   ("npc29_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
   ("npc30_personalityclash_speech", "Ave commander. I want to let you know that I don't like {s11}."),
   ("npc31_personalityclash_speech", "Chief, I must say {s11} is a suspicious man. He always talks about the sea, fish and sailing. He is not a good warrior, he is just a simple fisher."),
-  ("npc32_personalityclash_speech", "Dominus, you are a great Roman, but why do you insist on sheltering this snake {s11}? The Lemonia would really like to nail him and every other Modius to a cross and send it floating down the river. The Modia have been traitors for generations, seeking to harm good Romans and damage the Empire! Their family has attacked us in court, set fire to our businesses, murdered us for over a century, all because they are dishonorable scum!"),
-  ("npc33_personalityclash_speech", "Dominus, forgive me if I speak out of turn, but I'm sure you don't know what vile snakes the Lemonia are, to have one of them in your employ. They have been traitors for generations, seeking to harm good Romans and damage the Empire! Their family has attacked us in court, set fire to our businesses, murdered us for over a century, all because they are dishonorable scum!"),
+  ("npc32_personalityclash_speech", "Dominus, you are a great Roman, but why do you insist on sheltering this snake {s11}? The Lemonia would really like to nail him and every other Modius to a cross and send it floating down the river. The Modia have been traitors for generations, seeking to harm good Romans and damage the Empire! Their family has attacked us in court, set fire to our businesses, murdered us for over a century, all because they are dishounorable scum!"),
+  ("npc33_personalityclash_speech", "Dominus, forgive me if I speak out of turn, but I'm sure you don't know what vile snakes the Lemonia are, to have one of them in your employ. They have been traitors for generations, seeking to harm good Romans and damage the Empire! Their family has attacked us in court, set fire to our businesses, murdered us for over a century, all because they are dishounorable scum!"),
   ("npc34_personalityclash_speech", "I don't want to bother you, Dominus, but there is something I want to mention."),
   ("npc35_personalityclash_speech", "{Dominus/Domina}, I don't talk much, but ... this guy {s11} is annoying..."),
   ("npc36_personalityclash_speech", "I have to speak about {s11} with you, Dominus."),
@@ -2303,7 +2303,7 @@ strings = [
   ("npc18_home_description", "Italia is a beautiful place, no other place in this world can match it. Rome, the eternal city, lies here. It is the center of the world. Did you know that centuries ago Rome was a common city-state? Now it is the ruler of the world."),
   ("npc19_home_description", "Well, don't look at me like that, Dominus. Yes, I'm a Roman citizen, who hates Rome. Don't get me wrong, I'll die for the Empire, but this city is full of snakes in human form, and the laws here... I much prefer being on campaign. No, Dominus, I'm not a criminal. Well, maybe I am, but I did nothing wrong. I will tell you my story and you be the judge."),
   ("npc20_home_description", "Many greats graced this city with their presence. Philosopher Athenodorus Cananites, who tutored the great Augustus, was from our academy. Anthony and Cleopatry met here, while he was using our famous shipyards to build his great fleet."),
-  ("npc21_home_description", "From there, I joined the legion, served faithfully to earn my honorable bronze diploma discharge, and here I am. I'm getting old now, Dominus. Probably would've already settled down here with some pretty girl with big brown eyes if I didn't love adventure so much. Someday I will."),
+  ("npc21_home_description", "From there, I joined the legion, served faithfully to earn my hounorable bronze diploma discharge, and here I am. I'm getting old now, Dominus. Probably would've already settled down here with some pretty girl with big brown eyes if I didn't love adventure so much. Someday I will."),
   ("npc22_home_description", "So, then they sail even more west and build this place, and they call it 'Carthago' also. Makes sense, right, why wouldn't you have two cities with the same name? Does't everyone enjoy explaining all the time which Carthago they mean? Geniuses. Then the great Scipio Africanus kicks their sorry baby-sacrificing asses, conquers the place for Rome and calls it Carthago Nova."),
   ("npc23_home_description", "Ahh... there are other reasons why I despise Capua. It calls itself 'Second Rome,' but it has only copied Rome's sins. It is full of arrogant lanistas and their pampered fighters, feasting on the finest Campanian wines while the farmers who grow their grapes starve in the fields. What kind of a life is that?"),
   ("npc24_home_description", "Brundisium itself is a must visit, too. A true city on the crossroads -- Via Appia and Via Appia Nova meet here and become a sea route to all of Graecia. The wisest philosophers, the best actors and performers pass through here. You can watch them play at the amphitheater, or even bump into one at the forum."),
@@ -2885,7 +2885,7 @@ strings = [
   ("npc39_kingsupport_objection", "{!}"),
   ("npc40_kingsupport_objection", "Why you told Ligia to run around and raise support for those Chrestos fanatics? They hate us and our life style. Don't you see how she treats me? I never did anything against her, but she is constantly telling her lover Ursus to beat me ... I tell you, {playername}, you can't trust her. She may looks beautiful, with nicely round breasts and a nice petite belly ... but she is just a snake!"),
   ("npc41_kingsupport_objection", "{!}"),
-  ("npc42_kingsupport_objection", "Why you told this pirate Anicetius to run around and raise support among the pirates! This are dishonorable bandits. Chief, you can't trust them. It gives you no advantage and will only cause trouble!"),
+  ("npc42_kingsupport_objection", "Why you told this pirate Anicetius to run around and raise support among the pirates! This are dishounorable bandits. Chief, you can't trust them. It gives you no advantage and will only cause trouble!"),
 
   ("npc1_intel_mission", "Well, Master, as it happens, I have a few cousins over in {s17}, and unlike some in my family,"
 	+" they can still stand the sight of me. They deal in horses --- I've even been able to supply them with stock from time to time --"
@@ -2982,7 +2982,7 @@ strings = [
   ("npc4_fief_acceptance", "It is good of you to grant me {s17} as a fief -- and most appropriate."
 	+" Proud indeed is the king who has a warlord of my reputation as {his/her} vassal."), #Abadutiker
   ("npc5_fief_acceptance", "Oh captain -- I would be most pleased to hold {s17}. I will send word to the hills,"
-	+" to my kinsmen, and let them know that there is honorable gold to be earned serving under me in your armies --"
+	+" to my kinsmen, and let them know that there is hounorable gold to be earned serving under me in your armies --"
 	+" and they will come flocking to fight for you!"), #Satibarzanes
   ("npc6_fief_acceptance", "Commander -- I am surprised that you find me worthy to govern men, as I am just beginning to learn to"
 	+" govern myself. But if you indeed wish it, I would be most honored to hold {s17} in your name, and dedicate myself to the protection"
@@ -3291,9 +3291,9 @@ strings = [
 
   #SB : remove "stolen from my property", cattles -> cattle
   ("comment_you_stole_cattles_from_my_village_enemy_benevolent",    "I have heard that you have stolen cattle from innocent farmers under my protection in the village of {s51}. I will punish you for your misdeeds!"),
-  ("comment_you_stole_cattles_from_my_village_enemy_spiteful",      "I have heard that you have stolen cattle from my villagers living at {s51}. You will pay results of this dishonorable act!"),
+  ("comment_you_stole_cattles_from_my_village_enemy_spiteful",      "I have heard that you have stolen cattle from my villagers living at {s51}. You will pay results of this dishounorable act!"),
   ("comment_you_stole_cattles_from_my_village_enemy_coldblooded",   "I have heard that you have stolen cattle from my villagers living at {s51}. I will make you think twice before you disrupt my revenues like that again."),
-  ("comment_you_stole_cattles_from_my_village_enemy",               "I have heard that you have stolen cattle from my villagers living at {s51}. You will pay results of this dishonorable act!"),
+  ("comment_you_stole_cattles_from_my_village_enemy",               "I have heard that you have stolen cattle from my villagers living at {s51}. You will pay results of this dishounorable act!"),
   ("comment_you_stole_cattles_from_my_village_unfriendly_spiteful", "I have heard that you have stolen cattle from my villagers living at {s51}. Do it again and I'll gut you like a fish."),
   ("comment_you_stole_cattles_from_my_village_friendly",            "I have heard that you have stolen cattle from my villagers living at {s51}. This will place a grave strain on our friendship."),
   ("comment_you_stole_cattles_from_my_village_default",             "I have heard that you have stolen cattle from my villagers living at {s51}. If you continue to behave this way, we may soon come to blows."),
@@ -3531,7 +3531,7 @@ strings = [
   ("comment_marriage_elopement_liege",   "I hear that you have eloped with {s50}, against {reg4?her:his} family's wishes. I am not pleased. {reg4?Her:His} family are among the great lords of my realm, and I do not like to see them made to look like fools."),
   ##diplomacy end+
 
-  ("comment_you_broke_truce_as_my_vassal",  		"I hear that you have broken my truce by attacking {s55}. Do you know how this makes me look? If you were acting under my orders, I appear dishonorable. If you were not, I look weak. I have half a mind to indict you for treason here and now."),
+  ("comment_you_broke_truce_as_my_vassal",  		"I hear that you have broken my truce by attacking {s55}. Do you know how this makes me look? If you were acting under my orders, I appear dishounorable. If you were not, I look weak. I have half a mind to indict you for treason here and now."),
   ("comment_you_attacked_neutral_as_my_vassal", "I hear that you have attacked subjects of the {s55}. You have given them an excuse to attack me, if they want... We shall see what comes of this. A fine day's work you have done!"),
 
   ("personality_archetypes",   "liege"),
@@ -3698,7 +3698,7 @@ strings = [
   ("lord_derogatory_quarrelsome",           "quarrelsome and divisive"),
   ("lord_derogatory_pitiless",              "cruel, tyrannical"),
   ("lord_derogatory_cunning",               "unscrupulous and manipulative"),
-  ("lord_derogatory_sadistic",              "vile and dishonorable"),
+  ("lord_derogatory_sadistic",              "vile and dishounorable"),
   ("lord_derogatory_goodnatured",           "hopelessly naive"),
   ("lord_derogatory_upstanding",            "stiffnecked and sanctimonious"),
 
@@ -4845,7 +4845,7 @@ strings = [
   ("s18_i_am_sorry_to_say_is_far_too_softhearted_a_man_to_be_given_any_kind_of_responsibility_his_chivalry_will_allow_the_enemy_to_flee_to_fight_another_day_and_will_cost_the_lives_of_my_own_faithful_men", "{s18}, I am sorry to say, is far too softhearted a {reg3?woman:man} to be given any kind of responsibility. {reg3?Her:His} chivalry will allow the enemy to flee to fight another day, and will cost the lives of my own faithful {reg65?soldiers:men}."),
   ("s18_seems_to_have_something_against_me_for_some_reason_i_dont_like_to_talk_ill_of_people_but_i_think_hes_can_be_a_bit_of_a_cad_sometimes", "{s18} seems to have something against me, for some reason. I don't like to talk ill of people, but I think {reg3?she:he} can be a bit of a cad, sometimes."),#also removed improper "'s"
   ("s18_has_always_treated_me_contemptuously_although_i_have_done_him_no_wrong", "{s18} has always treated me contemptuously, although I have done {reg3?her:him} no wrong."),
-  ("s18_is_thoroughly_dishonorable_and_a_compulsive_spinner_of_intrigues_which_i_fear_will_drag_us_into_wars_or_incite_rebellions", "{s18} is thoroughly dishonorable, and a compulsive spinner of intrigues which I fear will drag us into wars or incite rebellions."),
+  ("s18_is_thoroughly_dishonorable_and_a_compulsive_spinner_of_intrigues_which_i_fear_will_drag_us_into_wars_or_incite_rebellions", "{s18} is thoroughly dishounorable, and a compulsive spinner of intrigues which I fear will drag us into wars or incite rebellions."),
   ("s18_disappoints_me_i_once_scolded_for_his_rashness_in_battle_and_he_took_offense_i_do_not_care_to_apologize_for_my_efforts_to_save_his_life_and_the_lives_of_his_men", "{s18} disappoints me. I once scolded {reg3?her:him} for {reg3?her:his} rashness in battle, and {reg3?she:he} took offense. I do not care to apologize for my efforts to save {reg3?her:his} life, and the lives of {reg3?her:his} {reg3?soldiers:men}."),#also added missing pronoun
   ("s18_squanders_money_and_carouses_in_a_way_most_unbefitting_a_noble_by_doing_so_he_disgraces_us_all", "{s18} squanders money and carouses in a way most unbefitting a noble. By doing so, {reg3?she:he} disgraces us all."),
   ("s18_has_been_speaking_ill_of_me_behind_my_back_or_so_they_say", "{s18} has been speaking ill of me behind my back, or so they say."),
@@ -5487,7 +5487,7 @@ strings = [
   ("may", "May"),
   ("very_well_as_far_as_im_concerned_i_suppose_she_can_see_most_anyone_she_likes__within_reason_of_course", "Very well. As far as I'm concerned, I suppose she can see most anyone she likes - within reason, of course."),
   ("very_well_an_alliance_with_you_could_be_valuable_go_chat_with_her_and_see_if_you_can_get_her_to_take_a_fancy_to_you_if_she_doesnt_and_if_we_still_want_to_conclude_this_business_then_i_can_make_her_see_reason", "Very well. An alliance with you could be valuable. Go chat with her, and see if you can get her to take a fancy to you. If she doesn't, and if we still want to conclude this business, then I can make her see reason."),
-  ("you_have_my_blessing_to_pay_suit_to_her__so_long_as_your_intentions_are_honorable_of_course_depending_on_how_things_proceed_between_you_two_we_may_have_more_to_discuss_at_a_later_date", "You have my blessing to pay suit to her -- so long as your intentions are honorable, of course. Depending on how things proceed between you two, we may have more to discuss at a later date."),
+  ("you_have_my_blessing_to_pay_suit_to_her__so_long_as_your_intentions_are_honorable_of_course_depending_on_how_things_proceed_between_you_two_we_may_have_more_to_discuss_at_a_later_date", "You have my blessing to pay suit to her -- so long as your intentions are hounorable, of course. Depending on how things proceed between you two, we may have more to discuss at a later date."),
   ("war_damage_inflicted_reg3_suffered_reg4_ratio_reg5", "{!}DEBUG : War damage inflicted: {reg3}, suffered: {reg4}, ratio: {reg5}"),
   ("error__did_not_calculate_war_progress_string_properly", "{!}ERROR - did not calculate war progress string properly"),
   ("the_war_has_barely_begun_so_and_it_is_too_early_to_say_who_is_winning_and_who_is_losing", "The war has barely begun, so and it is too early to say who is winning and who is losing."),
@@ -6972,7 +6972,7 @@ strings = [
 ("worships_vest_intro", "The honest Vesta is the goddess of life and protection. She can guard you in battle, but also help you to heal the sick. Be honest and humble and have a good reputation and you will gain her gifts and blessings."),
 ("worships_saturn_intro", "Saturn protects your land and can gift you a good harvest. To gain his support you must obtain several holdings. Then you must own a certain amount of wealth. When he sees that you are a rich man he will help you to protect this wealth."),
 ("worships_aphrodite_intro", "The beautiful and lovely Aphrodite is the goddess of marriage. So to get her blessing you must be married. You have to be full of true love for her. But I am sure she will also gift you if you fall in love with a girl true and pure."),
-("worships_jupiter_intro", "Jupiter, the king of gods, will bless and gift you with charisma and strength and all other things you need to govern a realm, if you be renowned and honorable, if you be wealthy and strong. Go, win battles and make sacrifices and he will bless you."),
+("worships_jupiter_intro", "Jupiter, the king of gods, will bless and gift you with charisma and strength and all other things you need to govern a realm, if you be renowned and hounorable, if you be wealthy and strong. Go, win battles and make sacrifices and he will bless you."),
 ("worships_castor_pollux_intro", "Castor et Pollux will bless you when you are curious. They can help you to navigate and they will let you always find a way or path, even if you are on the ass of the world."),
 ("worships_christus_intro", "Christus has no intro"),
 ("worships_yhwe_intro", "YHW has no intro"),
@@ -6984,9 +6984,9 @@ strings = [
 ("worships_zalmoxis_intro", "In the time of our forfathers, Zalmoxis lived in a cave and taught our people about the afterlife and immortality. He then ascendet to the world as king and ruled our people, led us to glory and victory. Though this times are long over. Now he is the god of afterlife. Sacrifice your gold to him and he will give you a long and wealthy live and will strengthen your rule."),
 ("worships_goitosuros_intro", "Goitosuros is mainly the god of cattle. He helps you to protect your cattle from evil, but not only that, he will also protect you during hunts. You best worship him by sacrificing some of your cattle to him."),
 ("worships_artimpasa_intro", "Artimpasa is goddess of fertility. She can even make dried out women fertile again and legends tell she can even make dickless men cum. But she is also goddess of war! She can gift you victory. She is best worshipped by cutting of dicks of enemy soldiers and then burning them in the holy fire."),
-("worships_mihr_intro", "Mihr is the sun, the eternal, unkillable sun! He is also the light and bringer of justice. Mihr was born from the union of the god of the sky, Vahagn and the goddess of earth, Astghik! To properly worship him be just, honorable and hold your word. He will punish those who violate their oaths and contracts."),
+("worships_mihr_intro", "Mihr is the sun, the eternal, unkillable sun! He is also the light and bringer of justice. Mihr was born from the union of the god of the sky, Vahagn and the goddess of earth, Astghik! To properly worship him be just, hounorable and hold your word. He will punish those who violate their oaths and contracts."),
 ("worships_armazi_intro", "Great Armazi is the son of the creator god, who born from a golden egg. He has a golden beard and wars a crown of stars and carries a scepter of light. He rules from his realm Armaziskhevi over earth and the other gods! He is the god of agriculture and harvest. He can gift you a bountiful harvest. Do not forget to gift him a part of your harvest as sacrifice, otherwise he may be upset and will send you a disease."),
-("worships_mazda_intro", "Ahura Mazda is the creator of all things. He is the wise lord. Ahura Mazda is the only good force. He is the light that brings truth, order, and justice. He represents the highest ideals of goodness and wisdom. To worship and honor him be good, honorable and just."),
+("worships_mazda_intro", "Ahura Mazda is the creator of all things. He is the wise lord. Ahura Mazda is the only good force. He is the light that brings truth, order, and justice. He represents the highest ideals of goodness and wisdom. To worship and honor him be good, hounorable and just."),
 ("worships_allat_intro", "Al-Let is the goddess of fertility, health and prosperity. But also the goddess of the underworld. She also gives protection to travellers. Touching her golden holy statue will make women more fertile and corpulent to ensure they can bear more children. To worship her you must sacrifice food and wine, in particular one tenth of your harvest to her."),
 ("worships_ifri_intro", "Ifri is a great god, living in the mountains of our lands. Ifri is powerful, strong and unkillable. Ifri is god of fertility, prosperity and protection. Ifri created the humans using clay, he is the father of us all. Ifri is also the god of nature and wild-life. To worship Ifri you need to respect nature and the lands. But, do not exploit the land and nature. Otherwise Ifri will punish you."),
 ("worships_ammon_intro", "Ammon is the god of creation and wind. He created the world and a living beings in it. Thus also us humans. he is the god of rule and order. A god who should be appeased by a good king with plenty of sacrifices! You best worship him by donating to our temple. We will then use the money to make proper sacrifices, following the Ancient rituals."),
@@ -7024,7 +7024,7 @@ strings = [
 ("poem_8", "a tragedy, comparing Caesar with Priamus, king of Troja, under whom's rule Troy was destroyed."),
 ("poem_end", "poem_end"),
 
-##since Imperium they are only honorable titles
+##since Imperium they are only hounorable titles
 ("title_begin", "title_begin"),
 ("title_4", "Quaestor"),
 ("title_3", "Aedile"),
@@ -7308,7 +7308,7 @@ strings = [
 
   ("not_enough_party_space", "You don't have enough space in your party"),
   ("not_enough_gold", "You don't have enough gold. How embarassing!"),
-  ("character_report", "Character Renown: {reg5}^Honor: {s60} ({reg6})^Party Morale: {reg8}^Party Size Limit: {reg7}^^{s44}^{s45}^{s1}"),
+  ("character_report", "Character Renown: {reg5}^Hounor: {s60} ({reg6})^Party Morale: {reg8}^Party Size Limit: {reg7}^^{s44}^{s45}^{s1}"),
   ("diplo_version_string_1", "Uses Diplomacy version {reg1}.0"),
   ("diplo_version_string_2", "Uses Diplomacy version {reg1}.00{reg2}"),
   ("diplo_version_string_3", "Uses Diplomacy version {reg1}.0{reg2}"),
@@ -7731,7 +7731,7 @@ strings = [
 
 ("emperor_request_text_41", "Finally, finally you noticed me. Oh, oh, Divinity, there is something... but I ... I am ... I have ... Oh I am so stupid. Please, please just forgive me."),
 
-("emperor_request_text_42", "{reg40?O Divinity, I have a small and humble request. I life in a small town and I already asked the provincial governor but he refused. So I would ask for the following: I am a widow and mother to seven children. My husband was a honorable men and so my children are. Now I would like to establish my own enterprise. Nothing important, just selling necklaces I produce. But law demands that I need permission for it as I am a woman. But the governor refused. Since I am a widow, according to law it is my right. Please grant me that permission the governor refused to give.:My Caesar I would have a small request. I already asked the provincial governor, but he refused. But I am sure it is my right so I thought to ask you, oh Divinity. The request is a small one: I need a certification to start my own enterprise. Its nothing big, I just want to sell chairs and tables I would like to produce. But the governor refused to grant me that permission because I am not Roman citizen. I a small tribe Rome conquered decades ago. I have no idea of Roman law but I always made sacrifices to you as I was told you are a god and my king. I beg you, oh Divinity, to grant me that request.}"),
+("emperor_request_text_42", "{reg40?O Divinity, I have a small and humble request. I life in a small town and I already asked the provincial governor but he refused. So I would ask for the following: I am a widow and mother to seven children. My husband was a hounorable men and so my children are. Now I would like to establish my own enterprise. Nothing important, just selling necklaces I produce. But law demands that I need permission for it as I am a woman. But the governor refused. Since I am a widow, according to law it is my right. Please grant me that permission the governor refused to give.:My Caesar I would have a small request. I already asked the provincial governor, but he refused. But I am sure it is my right so I thought to ask you, oh Divinity. The request is a small one: I need a certification to start my own enterprise. Its nothing big, I just want to sell chairs and tables I would like to produce. But the governor refused to grant me that permission because I am not Roman citizen. I a small tribe Rome conquered decades ago. I have no idea of Roman law but I always made sacrifices to you as I was told you are a god and my king. I beg you, oh Divinity, to grant me that request.}"),
 
 ("emperor_request_text_43", "Oh divine Caesar! I come to you to represent my small tribe, which was conquered by the legions decades ago. Oh Divinity, all what we wanted to do was to sell the goods we produce in our village to the next market town. But the governor refused us to do so stating we are not allowed as we are not citizens of Rome. He told us we shall sell our goods to a merchant to horrendous low prices! We understand nothing of Roman law and we didn't know what to do. But we were told that you, oh Divine, are helping your subjects if they were wronged. So I thought to travel to Rome to ask you to help us in this matter. I beg you, Divinity. We always made sacrifices to you and respected Roman rule."),
 
@@ -8446,7 +8446,7 @@ strings = [
 ("forum_name_dacian", "Temple of Zalmoxis"),
 ("forum_description_dacian", "Building a great temple for Zalmoxis is a sign of power. It will increase your renown and your relation with this center. It will also increase your reputation and gain you experience. Additionally the income from tariffs will be increased due to pilgrims coming into the town."),
 ("forum_name_nomadic", "Sanctuary of Api"),
-("forum_description_nomadic", "Honor the great goddess Api. It will increase your renown and your relation with this center. It will also increase your reputation and gain you experience. Additionally the tariffs income will be increased due to pilgrims entering town."),
+("forum_description_nomadic", "Hounor the great goddess Api. It will increase your renown and your relation with this center. It will also increase your reputation and gain you experience. Additionally the tariffs income will be increased due to pilgrims entering town."),
 
 ("temple_name_rome", "Temple of {s38}"),
 ("temple_description_rome", "Your own temple to honor {s38} will allow you to make sacrifices at the town. It will for sure please {s38}."),
@@ -9439,16 +9439,16 @@ strings = [
 ("minor_faction_merchant_talk_end", "end"),
 
 
-("event_01_normal_1", "Parody^^You've heard that a famous poet has composed an epigram about your life. It parodies your dishonorable life."),
-("event_01_normal_2", "Satire^^A renowned poet has written a satirical epigram about your life, mocking your dishonorable actions."),
+("event_01_normal_1", "Parody^^You've heard that a famous poet has composed an epigram about your life. It parodies your dishounorable life."),
+("event_01_normal_2", "Satire^^A renowned poet has written a satirical epigram about your life, mocking your dishounorable actions."),
 ("event_01_normal_3", "Lampoon^^You've discovered that a celebrated poet has crafted an epigram about your life, lampooning your disgraceful behavior."),
 ("event_01_normal_4", "Mockery^^A famous poet has created an epigram about your life, ridiculing your shameful past."),
-("event_01_normal_5", "Ridicule^^You've been told that a well-known poet has penned an epigram about your life, ridiculing your dishonorable actions."),
+("event_01_normal_5", "Ridicule^^You've been told that a well-known poet has penned an epigram about your life, ridiculing your dishounorable actions."),
 ("event_01_normal_end", "end"),
 
 ("event_01_normal_1_1", "Song of praise^^You've heard that a famous poet has composed a song about your noble deeds."),
 ("event_01_normal_1_2", "Ode^^A renowned poet has written an ode celebrating your noble actions."),
-("event_01_normal_1_3", "Tribute^^You've discovered that a celebrated poet has crafted a tribute in song, honoring your honorable deeds."),
+("event_01_normal_1_3", "Tribute^^You've discovered that a celebrated poet has crafted a tribute in song, honoring your hounorable deeds."),
 ("event_01_normal_1_4", "Eulogy^^A famous poet has created a eulogy in your name, praising your virtuous past."),
 ("event_01_normal_1_5", "Homage^^You've been told that a well-known poet has penned a song paying homage to your noble achievements."),
 ("event_01_normal_1_end", "end"),
@@ -10014,7 +10014,7 @@ strings = [
 ("crispinilla_banter_sober", "-- Crispinilla leans towards you, her eyes sparkling.--^^ Divine Nero is in fine form tonight, is he not? Such passion. It's quite... inspiring."),
 ("crispinilla_banter_drunk", "-- Crispinilla giggles, pointing at a statue.--^^ 'He looks like my third husband! -- hic --... Or was it the fourth? So hard to keep track..."),
 
-("poppaea_response_honor", "Honor? Honor is a luxury we cannot afford! Your duty is to the stability of the Empire, and that stability rests entirely on my husband's fragile mood. His pride IS his safety - and ours!"),
+("poppaea_response_honor", "Hounor? Hounor is a luxury we cannot afford! Your duty is to the stability of the Empire, and that stability rests entirely on my husband's fragile mood. His pride IS his safety - and ours!"),
 
 ("poppaea_response_pragmatic", "Riots? A few broken stalls in the agora? I would trade a hundred riots for the silence that is now in my husband's villa! You prevented a small fire by inviting an earthquake."),
 
@@ -10146,7 +10146,7 @@ strings = [
 ("lady_scheme_response_otherworldly", "Oh, wonderful! If this scheme means we can spend more time together, my love, then my heart is already in it."),
 ("lady_scheme_response_ambitious", "Good. It is right that you include me in your plans to advance our station. We deserve more power than we have, my love."),
 ("lady_scheme_response_adventurous", "A scheme? It sounds like an adventure! Count me in, my love. I will do my best to help."),
-("lady_scheme_response_moralist", "I find such intrigue to be... dishonorable, to be honest. However, you are my husband. If you insist on this path, I will help you as best I can."),
+("lady_scheme_response_moralist", "I find such intrigue to be... dishounorable, to be honest. However, you are my husband. If you insist on this path, I will help you as best I can."),
 ("lady_scheme_response_hedonistic", "A scheme? Oh, how deliciously wicked! I was growing so tired of all this tedious courtly nonsense. Count me in, my love. This sounds far more entertaining."),
 ("lady_scheme_response_default", "It would be a pleasure to help you, my love."),
 
@@ -10230,7 +10230,7 @@ strings = [
 
 ("lady_meet_famous_adventurous", "Of course! I have heard the tales of your deeds. It is an honor to finally meet a fellow soul who understands that a life is meant to be lived, not just observed."),
 ("lady_meet_famous_ambitious", "Your name is well known. You have become a significant player in the realm. It is a pleasure to make the acquaintance of a man of influence."),
-("lady_meet_famous_moralist", "I have heard your name, yes. It is my hope that your actions are as honorable as your reputation is great. It is a pleasure to meet you."),
+("lady_meet_famous_moralist", "I have heard your name, yes. It is my hope that your actions are as hounorable as your reputation is great. It is a pleasure to meet you."),
 ("lady_meet_famous_hedonistic", "Ah, the famous {playername}! The stories they tell of you are... quite entertaining. I am very curious to see if you are as amusing in person."),
 ("lady_meet_famous_otherworldly", "Of course. Your name is already a thread in the grand tapestry of the bards' songs. It is as if I know you already."),
 ("lady_meet_famous_default", "Of course. How splendid to finally make your acquaintance."),

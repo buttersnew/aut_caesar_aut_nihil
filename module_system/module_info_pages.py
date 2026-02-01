@@ -146,7 +146,7 @@ info_pages = [
 +" For your loan you have two options. Either you order the argentarius to reinvest the money again, or you order him to send you back all the money. In the first case,"
 +" you will only receive the interests of your loan and a new loan will be lend out right away after recieving the interests. In the later case you will receive all the money back. Sometimes the interests can be negative. That shall simulate the case"
 +" when the debtor is not able to repay the loan you offered him."
-+"^^Diplomacy feature:^ You can become part of a family. To do this you must talk with a lord, depending the character of the lord you must either be honorable, or dishonorable, "
++"^^Diplomacy feature:^ You can become part of a family. To do this you must talk with a lord, depending the character of the lord you must either be hounorable, or dishounorable, "
 +"famous, have a good relation or own a fief or wealth.^^"
 +"You need at least 200 renown to be considered as a full citizen of Rome. With 200 renown you can: Enter the great hall of towns and fortresses and you must pay the punitive tax (Lex Julia et Papia)."
 +"If you are Emperor or have a military rank in the Roman Army your renown won't go beyond: 450 if emperor, 200 if common military rank.^^"
