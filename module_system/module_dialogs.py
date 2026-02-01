@@ -25183,8 +25183,9 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
 "What do you wish to tell {reg0?her:him}?", "member_direct_send_message_to_realm_type",
 []],
 
-[anyone|plyr, "member_direct_send_message_to_realm_type",
-[
+[anyone|plyr, "member_direct_send_message_to_realm_type",[
+  (eq, 1, 0), # disable for now
+
   (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
   (store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
   (ge, ":relation", 0),
@@ -25193,8 +25194,9 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
   (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_sarmatian"),
   (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_germanic"),
 ],
-"That I want to ask about a foederati contract.", "member_emissary_dispatch",
-[(assign, "$g_initiative_selected", npc_mission_foederati_request)]],
+"That I want to ask about a foederati contract.", "member_emissary_dispatch",[
+  (assign, "$g_initiative_selected", npc_mission_foederati_request)
+]],
 
 [anyone|plyr, "member_direct_send_message_to_realm_type",
 [
@@ -38168,66 +38170,65 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (try_end),
 ]],
 
-[anyone|plyr|repeat_for_parties, "dplmc_companion_spy_request_select_center",
-[
-(store_repeat_object, ":center_no"),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(is_between, ":center_no", centers_begin, centers_end),
-(store_faction_of_party, ":center_faction", ":center_no"),
-(eq, ":center_faction", ":mission_object"),
-(str_store_party_name, s60, ":center_no"),
-],"{s60}", "dplmc_companion_spy_request_center_selected",
-[
-(store_repeat_object, "$spy_center_selected"),
+[anyone|plyr|repeat_for_parties, "dplmc_companion_spy_request_select_center",[
+  (store_repeat_object, ":center_no"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (is_between, ":center_no", centers_begin, centers_end),
+  (store_faction_of_party, ":center_faction", ":center_no"),
+  (eq, ":center_faction", ":mission_object"),
+  (str_store_party_name, s60, ":center_no"),
+],"{s60}", "dplmc_companion_spy_request_center_selected",[
+  (store_repeat_object, "$spy_center_selected"),
 ]],
 
 [anyone, "dplmc_companion_spy_request_center_selected",[
-(call_script, "script_dplmc_party_calculate_strength", "$spy_center_selected", 0),
-(assign, reg10, reg0),
+  (call_script, "script_dplmc_party_calculate_strength", "$spy_center_selected", 0),
+  (assign, reg10, reg0),
 
-#round it
-# (val_mul, reg10, 10),
-# (val_div, reg10, 10),
+  #round it
+  # (val_mul, reg10, 10),
+  # (val_div, reg10, 10),
 
-(call_script, "script_dplmc_describe_prosperity_to_s4", "$spy_center_selected"),
+  (call_script, "script_dplmc_describe_prosperity_to_s4", "$spy_center_selected"),
 
-(party_get_slot, ":center_relation", "$spy_center_selected", slot_center_player_relation),
-(call_script, "script_describe_center_relation_to_s3", ":center_relation"),
+  (party_get_slot, ":center_relation", "$spy_center_selected", slot_center_player_relation),
+  (call_script, "script_describe_center_relation_to_s3", ":center_relation"),
 
-(str_clear, s20),
-(try_begin),
-    (is_between, "$spy_center_selected", walled_centers_begin, walled_centers_end),
-    (party_get_slot, ":town_food_store", "$spy_center_selected", slot_party_food_store),
-    (call_script, "script_center_get_food_consumption", "$spy_center_selected"),
-    (assign, ":food_consumption", reg0),
-    (assign, reg7, ":food_consumption"),
-    (assign, reg8, ":town_food_store"),
-    (store_div, reg3, ":town_food_store", ":food_consumption"),
+  (str_clear, s20),
+  (try_begin),
+      (is_between, "$spy_center_selected", walled_centers_begin, walled_centers_end),
+      (party_get_slot, ":town_food_store", "$spy_center_selected", slot_party_food_store),
+      (call_script, "script_center_get_food_consumption", "$spy_center_selected"),
+      (assign, ":food_consumption", reg0),
+      (assign, reg7, ":food_consumption"),
+      (assign, reg8, ":town_food_store"),
+      (store_div, reg3, ":town_food_store", ":food_consumption"),
 
-    (str_store_party_name, s21, "$spy_center_selected"),
+      (str_store_party_name, s21, "$spy_center_selected"),
 
-    (try_begin),
-        (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
-        (assign, reg6, 1),
-    (else_try),
-        (assign, reg6, 0),
-    (try_end),
+      (try_begin),
+          (party_slot_eq, "$g_encountered_party", slot_party_type, spt_town),
+          (assign, reg6, 1),
+      (else_try),
+          (assign, reg6, 0),
+      (try_end),
 
-    (try_begin),
-        (gt, reg3, 0),
-        (str_store_string, s20, "@The food stores of the {reg6?town:fort} {s21} should last for {reg3} more days."),
-    (else_try),
-        (str_store_string, s20, "@The food stores of the {reg6?town:fort} {s21} have run out and the garrison and population are starving."),
-    (try_end),
-(try_end),
-
-],  "{s4} {s3} and there are {reg10} troops in garrison.^{s20}", "dplmc_companion_spy_request_select_newcenter",[
+      (try_begin),
+          (gt, reg3, 0),
+          (str_store_string, s20, "@The food stores of the {reg6?town:fort} {s21} should last for {reg3} more days."),
+      (else_try),
+          (str_store_string, s20, "@The food stores of the {reg6?town:fort} {s21} have run out and the garrison and population are starving."),
+      (try_end),
+  (try_end),
+], "{s4} {s3} and there are {reg10} troops in garrison.^{s20}",
+"dplmc_companion_spy_request_select_newcenter",[
 ]],
 
 [anyone, "dplmc_companion_spy_request_select_newcenter",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(call_script, "script_texto_kingdom_armies", ":mission_object"),
-],  "Do you need information about another location?^^{s1}", "dplmc_companion_spy_request_select_center",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_texto_kingdom_armies", ":mission_object"),
+],"Do you need information about another location?^^{s1}",
+"dplmc_companion_spy_request_select_center",[
 ]],
 
 [anyone|plyr, "dplmc_companion_spy_request_select_center",[
@@ -38257,273 +38258,244 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (str_store_faction_name, s11, "$g_faction_selected"),
   (str_clear, s14),
 ],
-"Tell {s10} that I want to form an alliance with him.", "minister_diplomatic_emissary",
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_alliance_request),
+"Tell {s10} that I want to form an alliance with him.", "minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", dplmc_npc_mission_alliance_request),
 ]],
 
 ##companion returning after alliance request
 [anyone, "event_triggered",[
-     (store_conversation_troop, "$map_talk_troop"),
-     (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-     (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
-          (eq, ":mission", dplmc_npc_mission_alliance_request),
+  (store_conversation_troop, "$map_talk_troop"),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
+  (eq, ":mission", dplmc_npc_mission_alliance_request),
 
-          (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-     (str_store_string, 21, ":string"),
-          (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-          (str_store_faction_name, s31, ":mission_object"),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (str_store_string, 21, ":string"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s31, ":mission_object"),
 
-          (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
-          (assign, "$g_mission_result_with_player", reg0),
-           ],
-"Well, {s21}, at last I've found you. I have returned from my mission to {s31}. ","dplmc_companion_alliance_request_response",[
-          ]],
-
-##response to alliance request success
-[anyone, "dplmc_companion_alliance_request_response",[
-# (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_alliance_request),
-# (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-# (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-# (ge, reg0, 0),  #player is at peace or truce with the mission_faction
-# (eq, "$g_concession_demanded", 0), #doesn't want a center from us
-# (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
-# (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
-# (store_random_in_range,":random", 20, 95),
-# (ge, ":relation", ":random"),
-# (store_random_in_range,":random", 5, 75),
-# (ge, "$player_honor", ":random"),
-# (store_random_in_range,":random", 5, 50),
-# (ge, "$player_right_to_rule", ":random"),
-# (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-# (str_store_troop_name, s4, ":emissary_object"),
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_alliance_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-
-(faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
-
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
-
-(ge, "$g_mission_result_with_player", 1), #doesn't want war with us
-(store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
-
-(assign, ":number_other_faction_at_war", 0),#Nero
-(try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
-  (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
-  (neq, ":kingdom_to_check", ":mission_object"),
-  (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
-  (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
-  (lt, ":relation_of_factions", 0),
-  (val_add, ":number_other_faction_at_war", 1),#Nero
-(try_end),
-(try_begin),
-  (ge, ":number_other_faction_at_war", 2),
-  (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
-(try_end),
-
-(eq, "$g_concession_demanded", 0), #doesn't want a center from us
-
-(val_mul, ":number_other_faction_at_war", 5),
-(val_add, ":relation", ":number_other_faction_at_war"),
-
-(store_random_in_range,":random", 20, 95),
-(ge, ":relation", ":random"),
-(store_random_in_range,":random", 0, 10),
-(store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
-(ge, ":honor_plus", ":random"),
-(store_random_in_range,":random", 50, 70),
-(store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
-(ge, ":right_to_rule_plus", ":random"),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
+  (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
+  (assign, "$g_mission_result_with_player", reg0),
 ],
-"{s4} is willing to form an alliance with you.","dplmc_companion_alliance_confirm",[
-     ]],
+"Well, {s21}, at last I've found you. I have returned from my mission to {s31}. ",
+"dplmc_companion_alliance_request_response",[
+]],
+
+[anyone, "dplmc_companion_alliance_request_response",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_alliance_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+
+  (faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
+
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
+  (ge, reg0, 0),  #player is at peace or truce with the mission_faction
+
+  (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
+  (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
+
+  (assign, ":number_other_faction_at_war", 0),#Nero
+  (try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
+    (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
+    (neq, ":kingdom_to_check", ":mission_object"),
+    (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
+    (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
+    (lt, ":relation_of_factions", 0),
+    (val_add, ":number_other_faction_at_war", 1),#Nero
+  (try_end),
+  (try_begin),
+    (ge, ":number_other_faction_at_war", 2),
+    (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
+  (try_end),
+
+  (eq, "$g_concession_demanded", 0), #doesn't want a center from us
+
+  (val_mul, ":number_other_faction_at_war", 5),
+  (val_add, ":relation", ":number_other_faction_at_war"),
+
+  (store_random_in_range,":random", 20, 95),
+  (ge, ":relation", ":random"),
+  (store_random_in_range,":random", 0, 10),
+  (store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
+  (ge, ":honor_plus", ":random"),
+  (store_random_in_range,":random", 50, 70),
+  (store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
+  (ge, ":right_to_rule_plus", ":random"),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
+],
+"{s4} is willing to form an alliance with you.",
+"dplmc_companion_alliance_confirm",[
+]],
 
 [anyone|plyr, "dplmc_companion_alliance_confirm",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(str_store_faction_name, s4, ":mission_object"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
 ],
 "Very well -- let this alliance with {s4} be concluded.","companion_rejoin_response",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(call_script, "script_dplmc_start_alliance_between_kingdoms", ":mission_object", "$players_kingdom", 1),
-(str_store_faction_name, s4, ":mission_object"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_dplmc_start_alliance_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (str_store_faction_name, s4, ":mission_object"),
 ]],
 
 [anyone|plyr, "dplmc_companion_alliance_confirm",[],
 "On second thought, perhaps this is not now in our interests.","companion_rejoin_response",[
-     ]],
+]],
 
-##response to alliance request failed
 [anyone, "dplmc_companion_alliance_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_alliance_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
-(str_clear, s33),
-(str_clear, s34),
-(try_begin),
-  (lt, "$player_honor", 0),
-  (str_store_string, s33, "@One of the reasons why they rejected your offer I think is your low honor. He fears that any deal with you will be broken sooner or later."),
-(try_end),
-(try_begin),
-  (is_between, "$g_concession_demanded", walled_centers_begin, walled_centers_end),
-  (str_store_party_name, s43, "$g_concession_demanded"),
-  (str_store_string, s34, "@I also found out that he demands {s43}, and thinks he can take the settlement sooner or later."),
-(try_end),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_alliance_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
+  (str_clear, s33),
+  (str_clear, s34),
+  (try_begin),
+    (lt, "$player_honor", 0),
+    (str_store_string, s33, "@One of the reasons why they rejected your offer I think is your low honor. He fears that any deal with you will be broken sooner or later."),
+  (try_end),
+  (try_begin),
+    (is_between, "$g_concession_demanded", walled_centers_begin, walled_centers_end),
+    (str_store_party_name, s43, "$g_concession_demanded"),
+    (str_store_string, s34, "@I also found out that he demands {s43}, and thinks he can take the settlement sooner or later."),
+  (try_end),
 ],
-"{s4} is not willing to form an alliance with you. {s33} {s34}","companion_rejoin_response",[
-     ]],
+"{s4} is not willing to form an alliance with you. {s33} {s34}",
+"companion_rejoin_response",[
+]],
 
-##defensive request
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(eq, reg0, 1),  #player is at truce with the mission_faction
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
+  (eq, reg0, 1),  #player is at truce with the mission_faction
 
-(assign, ":proceed", 0),
-(try_begin),
-    (store_add, ":slot_truce_days", "$g_faction_selected", slot_faction_truce_days_with_factions_begin),
-    (val_sub, ":slot_truce_days", kingdoms_begin),
-    (faction_get_slot, ":truce_days", "fac_player_supporters_faction", ":slot_truce_days"),
-    #(gt, ":truce_days", 20), #if we have more than 20 truce days left don't proceed
-    (is_between, ":truce_days", 0, 30), #you need a non-aggression or trade agreement for an defensive pact
-    (assign, ":proceed", 1),
-(try_end),
-(eq, ":proceed", 1),
+  (assign, ":proceed", 0),
+  (try_begin),
+      (store_add, ":slot_truce_days", "$g_faction_selected", slot_faction_truce_days_with_factions_begin),
+      (val_sub, ":slot_truce_days", kingdoms_begin),
+      (faction_get_slot, ":truce_days", "fac_player_supporters_faction", ":slot_truce_days"),
+      #(gt, ":truce_days", 20), #if we have more than 20 truce days left don't proceed
+      (is_between, ":truce_days", 0, 30), #you need a non-aggression or trade agreement for an defensive pact
+      (assign, ":proceed", 1),
+  (try_end),
+  (eq, ":proceed", 1),
 
-(faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 1), #recognized us
-(faction_slot_eq, "$g_faction_selected", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),
+  (faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 1), #recognized us
+  (faction_slot_eq, "$g_faction_selected", slot_faction_state, sfs_active),
+  (faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),
 
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, "$g_faction_selected"),
-(str_clear, s14),
-###diplomacy start+ Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#Next line "him" to {reg0?her:him}
-"Tell {s10} that I want to conclude a defensive pact with {reg0?her:him}.", "minister_diplomatic_emissary",
-##diplomacy end+
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_defensive_request),
+  (str_store_troop_name, s10, ":leader_no"),
+  (str_store_faction_name, s11, "$g_faction_selected"),
+  (str_clear, s14),
+  (call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
+],
+"Tell {s10} that I want to conclude a defensive pact with {reg0?her:him}.",
+"minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", dplmc_npc_mission_defensive_request),
 ]],
 
 ##companion returning after defensive request
 [anyone, "event_triggered",[
-     (store_conversation_troop, "$map_talk_troop"),
-     (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-     (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
-          (eq, ":mission", dplmc_npc_mission_defensive_request),
+  (store_conversation_troop, "$map_talk_troop"),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
+  (eq, ":mission", dplmc_npc_mission_defensive_request),
 
-          (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-     (str_store_string, 21, ":string"),
-          (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-          (str_store_faction_name, s31, ":mission_object"),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (str_store_string, 21, ":string"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s31, ":mission_object"),
 
-          (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
-          (assign, "$g_mission_result_with_player", reg0),
-           ],
-"Well, {s21}, at last I've found you. I have returned from my mission to {s31}. ","dplmc_companion_defensive_request_response",[
-          ]],
+  (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
+  (assign, "$g_mission_result_with_player", reg0),
+],
+"Well, {s21}, at last I've found you. I have returned from my mission to {s31}.",
+"dplmc_companion_defensive_request_response",[
+]],
 
 ##response to defensive request success
 [anyone, "dplmc_companion_defensive_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_defensive_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_defensive_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 
-(faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
+  (faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
 
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
+  (ge, reg0, 0),  #player is at peace or truce with the mission_faction
 
-(ge, "$g_mission_result_with_player", 1), #doesn't want war with us
-(store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
+  (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
+  (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
 
-(assign, ":number_other_faction_at_war", 0),#Nero
-(try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
-  (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
-  (neq, ":kingdom_to_check", ":mission_object"),
-  (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
-  (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
-  (lt, ":relation_of_factions", 0),
-  (val_add, ":number_other_faction_at_war", 1),#Nero
-(try_end),
-(try_begin),
-  (ge, ":number_other_faction_at_war", 2),
-  (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
-(try_end),
+  (assign, ":number_other_faction_at_war", 0),#Nero
+  (try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
+    (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
+    (neq, ":kingdom_to_check", ":mission_object"),
+    (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
+    (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
+    (lt, ":relation_of_factions", 0),
+    (val_add, ":number_other_faction_at_war", 1),#Nero
+  (try_end),
+  (try_begin),
+    (ge, ":number_other_faction_at_war", 2),
+    (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
+  (try_end),
 
-(eq, "$g_concession_demanded", 0), #doesn't want a center from us
+  (eq, "$g_concession_demanded", 0), #doesn't want a center from us
 
-(val_mul, ":number_other_faction_at_war", 6),
-(val_add, ":relation", ":number_other_faction_at_war"),
+  (val_mul, ":number_other_faction_at_war", 6),
+  (val_add, ":relation", ":number_other_faction_at_war"),
 
-(store_random_in_range,":random", 14, 60),
-(ge, ":relation", ":random"),
-(store_random_in_range,":random", -10, 0),
-(store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
-(ge, ":honor_plus", ":random"),
-(store_random_in_range,":random", 20, 50),
-(store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
-(ge, ":right_to_rule_plus", ":random"),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
-# (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_defensive_request),
-# (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-# (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-# (ge, reg0, 0),  #player is at peace or truce with the mission_faction
-# (eq, "$g_concession_demanded", 0), #doesn't want a center from us
-# (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
-# (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
-# (store_random_in_range,":random", 15, 70), #20 96 alliance
-# (ge, ":relation", ":random"),
-# (store_random_in_range,":random", 0, 50), #5 75 alliance
-# (ge, "$player_honor", ":random"),
-# (store_random_in_range,":random", 5, 30), #5 50 alliance
-# (ge, "$player_right_to_rule", ":random"),
-# (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-# (str_store_troop_name, s4, ":emissary_object"),
+  (store_random_in_range,":random", 14, 60),
+  (ge, ":relation", ":random"),
+  (store_random_in_range,":random", -10, 0),
+  (store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
+  (ge, ":honor_plus", ":random"),
+  (store_random_in_range,":random", 20, 50),
+  (store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
+  (ge, ":right_to_rule_plus", ":random"),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
 ],
-"{s4} is willing to form a defensive pact with you.","dplmc_companion_defensive_confirm",[
-     ]],
+"{s4} is willing to form a defensive pact with you.",
+"dplmc_companion_defensive_confirm",[
+]],
 
 [anyone|plyr, "dplmc_companion_defensive_confirm",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(str_store_faction_name, s4, ":mission_object"),
-],
-"Very well -- let this defensive pact with {s4} be concluded.","companion_rejoin_response",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(call_script, "script_dplmc_start_defensive_between_kingdoms", ":mission_object", "$players_kingdom", 1),
-(str_store_faction_name, s4, ":mission_object"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
+],"Very well -- let this defensive pact with {s4} be concluded.",
+"companion_rejoin_response",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_dplmc_start_defensive_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (str_store_faction_name, s4, ":mission_object"),
 ]],
 
 [anyone|plyr, "dplmc_companion_defensive_confirm",[],
-"On second thought, perhaps this is not now in our interests.","companion_rejoin_response",[
-     ]],
+"On second thought, perhaps this is not now in our interests.",
+"companion_rejoin_response",[
+]],
 
 ##response to defensive request failed
 [anyone, "dplmc_companion_defensive_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_defensive_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
-(str_clear, s33),
-(str_clear, s34),
-(try_begin),
-  (lt, "$player_honor", 0),
-  (str_store_string, s33, "@One of the reasons why they rejected your offer I think is your low honor. He fears that any deal with you will be broken sooner or later."),
-(try_end),
-(try_begin),
-  (is_between, "$g_concession_demanded", walled_centers_begin, walled_centers_end),
-  (str_store_party_name, s43, "$g_concession_demanded"),
-  (str_store_string, s34, "@I also found out that he demands {s43}, and thinks he can take the settlement sooner or later."),
-(try_end),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_defensive_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
+  (str_clear, s33),
+  (str_clear, s34),
+  (try_begin),
+    (lt, "$player_honor", 0),
+    (str_store_string, s33, "@One of the reasons why they rejected your offer I think is your low honor. He fears that any deal with you will be broken sooner or later."),
+  (try_end),
+  (try_begin),
+    (is_between, "$g_concession_demanded", walled_centers_begin, walled_centers_end),
+    (str_store_party_name, s43, "$g_concession_demanded"),
+    (str_store_string, s34, "@I also found out that he demands {s43}, and thinks he can take the settlement sooner or later."),
+  (try_end),
 ],
-"{s4} is not willing to conclude a defensive pact with you. {s33} {s34}","companion_rejoin_response",[
-     ]],
+"{s4} is not willing to conclude a defensive pact with you. {s33} {s34}",
+"companion_rejoin_response",[
+]],
 
 ##trade request
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
   (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
   (ge, reg0, 0),  #player is at peace or truce with the mission_faction
 
@@ -38547,210 +38519,210 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   ##diplomacy start+ correct pronouns
   (call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
 ],
-"Tell {s10} that I want to sign a trade agreement with {reg0?her:him}.", "minister_diplomatic_emissary",
-##diplomacy end+
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_trade_request),
+"Tell {s10} that I want to sign a trade agreement with {reg0?her:him}.", "minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", dplmc_npc_mission_trade_request),
 ]],
 
-##companion returning after trade request
 [anyone, "event_triggered",[
-     (store_conversation_troop, "$map_talk_troop"),
-     (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-     (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
-          (eq, ":mission", dplmc_npc_mission_trade_request),
+  (store_conversation_troop, "$map_talk_troop"),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
+  (eq, ":mission", dplmc_npc_mission_trade_request),
 
-          (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-     (str_store_string, 21, ":string"),
-          (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-          (str_store_faction_name, s31, ":mission_object"),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (str_store_string, 21, ":string"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s31, ":mission_object"),
 
-          (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
-          (assign, "$g_mission_result_with_player", reg0),
-           ],
-"Well, {s21}, at last I've found you. I have returned from my mission to {s31}. ","dplmc_companion_trade_request_response",[
-          ]],
+  (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
+  (assign, "$g_mission_result_with_player", reg0),
+],
+"Well, {s21}, at last I've found you. I have returned from my mission to {s31}. ",
+"dplmc_companion_trade_request_response",[
+]],
 
-##response to trade request success
 [anyone, "dplmc_companion_trade_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_trade_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_trade_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 
-(faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
+  (faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
 
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
+  (ge, reg0, 0),  #player is at peace or truce with the mission_faction
 
-(ge, "$g_mission_result_with_player", 1), #doesn't want war with us
-(store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
+  (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
+  (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
 
-(assign, ":number_other_faction_at_war", 0),#Nero
-(try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
-  (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
-  (neq, ":kingdom_to_check", ":mission_object"),
-  (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
-  (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
-  (lt, ":relation_of_factions", 0),
-  (val_add, ":number_other_faction_at_war", 1),#Nero
-(try_end),
-(try_begin),
-  (ge, ":number_other_faction_at_war", 2),
-  (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
-(try_end),
+  (assign, ":number_other_faction_at_war", 0),#Nero
+  (try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
+    (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
+    (neq, ":kingdom_to_check", ":mission_object"),
+    (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
+    (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
+    (lt, ":relation_of_factions", 0),
+    (val_add, ":number_other_faction_at_war", 1),#Nero
+  (try_end),
+  (try_begin),
+    (ge, ":number_other_faction_at_war", 2),
+    (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
+  (try_end),
 
-(eq, "$g_concession_demanded", 0), #doesn't want a center from us
+  (eq, "$g_concession_demanded", 0), #doesn't want a center from us
 
-(val_mul, ":number_other_faction_at_war", 5),
-(val_add, ":relation", ":number_other_faction_at_war"),
+  (val_mul, ":number_other_faction_at_war", 5),
+  (val_add, ":relation", ":number_other_faction_at_war"),
 
-(store_random_in_range,":random", 10, 30),
-(ge, ":relation", ":random"),
-(store_random_in_range,":random", -30, 0),
-(store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
-(ge, ":honor_plus", ":random"),
-(store_random_in_range,":random", 5, 15),
-(store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
-(ge, ":right_to_rule_plus", ":random"),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
+  (store_random_in_range,":random", 10, 30),
+  (ge, ":relation", ":random"),
+  (store_random_in_range,":random", -30, 0),
+  (store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
+  (ge, ":honor_plus", ":random"),
+  (store_random_in_range,":random", 5, 15),
+  (store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
+  (ge, ":right_to_rule_plus", ":random"),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
 ],
 "{s4} is willing to sign a trade agreement with you.","dplmc_companion_trade_confirm",[
-     ]],
+]],
 
 [anyone|plyr, "dplmc_companion_trade_confirm",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(str_store_faction_name, s4, ":mission_object"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
 ],
 "Very well -- let's sign the trade agreement with {s4}.","companion_rejoin_response",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(call_script, "script_dplmc_start_trade_between_kingdoms", ":mission_object", "$players_kingdom", 1),
-(str_store_faction_name, s4, ":mission_object"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_dplmc_start_trade_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (str_store_faction_name, s4, ":mission_object"),
 ]],
 
 [anyone|plyr, "dplmc_companion_trade_confirm",[],
-"On second thought, perhaps this is not now in our interests.","companion_rejoin_response",[
-     ]],
+"On second thought, perhaps this is not now in our interests.",
+"companion_rejoin_response",[
+]],
 
 ##response to trade request failed
 [anyone, "dplmc_companion_trade_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_trade_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
-(str_clear, s33),
-(str_clear, s34),
-(try_begin),
-  (lt, "$player_honor", 0),
-  (str_store_string, s33, "@One of the reasons why they rejected your offer I think is your low honor. He fears that any deal with you will be broken sooner or later."),
-(try_end),
-(try_begin),
-  (is_between, "$g_concession_demanded", walled_centers_begin, walled_centers_end),
-  (str_store_party_name, s43, "$g_concession_demanded"),
-  (str_store_string, s34, "@I also found out that he demands {s43}, and thinks he can take the settlement sooner or later."),
-(try_end),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_trade_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
+  (str_clear, s33),
+  (str_clear, s34),
+  (try_begin),
+    (lt, "$player_honor", 0),
+    (str_store_string, s33, "@One of the reasons why they rejected your offer I think is your low honor. He fears that any deal with you will be broken sooner or later."),
+  (try_end),
+  (try_begin),
+    (is_between, "$g_concession_demanded", walled_centers_begin, walled_centers_end),
+    (str_store_party_name, s43, "$g_concession_demanded"),
+    (str_store_string, s34, "@I also found out that he demands {s43}, and thinks he can take the settlement sooner or later."),
+  (try_end),
 ],
-"{s4} is not willing to sign a trade agreement. {s33} {s34}","companion_rejoin_response",[
-     ]],
+"{s4} is not willing to sign a trade agreement. {s33} {s34}",
+"companion_rejoin_response",[
+]],
 
 ##nonaggression request
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(eq, reg0, 0),  #player is at peace
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
+  (eq, reg0, 0),  #player is at peace
 
-(faction_slot_eq, "$g_faction_selected", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),
+  (faction_slot_eq, "$g_faction_selected", slot_faction_state, sfs_active),
+  (faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),
 
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, "$g_faction_selected"),
-(str_clear, s14),
-###diplomacy start+ Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
+  (str_store_troop_name, s10, ":leader_no"),
+  (str_store_faction_name, s11, "$g_faction_selected"),
+  (str_clear, s14),
+  ###diplomacy start+ Use reg0 for gender
+  (call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
 ],#next line "him" to {reg0?her:him}
-"Tell {s10} that I want to conclude a non-aggression treaty with {reg0?her:him}.", "minister_diplomatic_emissary",
-##diplomacy end+
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_nonaggression_request),
+"Tell {s10} that I want to conclude a non-aggression treaty with {reg0?her:him}.",
+"minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", dplmc_npc_mission_nonaggression_request),
 ]],
 
 ##companion returning after nonaggression request
 [anyone, "event_triggered",[
-     (store_conversation_troop, "$map_talk_troop"),
-     (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-     (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
-          (eq, ":mission", dplmc_npc_mission_nonaggression_request),
+  (store_conversation_troop, "$map_talk_troop"),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
+  (eq, ":mission", dplmc_npc_mission_nonaggression_request),
 
-          (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-     (str_store_string, 21, ":string"),
-          (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-          (str_store_faction_name, s31, ":mission_object"),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (str_store_string, 21, ":string"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s31, ":mission_object"),
 
-          (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
-          (assign, "$g_mission_result_with_player", reg0),
-           ],
-"Well, {s21}, at last I've found you. I have returned from my mission to {s31}. ","dplmc_companion_nonaggression_request_response",[
-          ]],
+  (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
+  (assign, "$g_mission_result_with_player", reg0),
+],
+"Well, {s21}, at last I've found you. I have returned from my mission to {s31}.",
+"dplmc_companion_nonaggression_request_response",[
+]],
 
 ##response to nonaggression request success
 [anyone, "dplmc_companion_nonaggression_request_response",[
-# (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_nonaggression_request),
-# (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-# (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-# (ge, reg0, 0),  #player is at peace or truce with the mission_faction
-# (eq, "$g_concession_demanded", 0), #doesn't want a center from us
-# (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
-# (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
-# (store_random_in_range,":random", 5, 25), #20 96 alliance
-# (ge, ":relation", ":random"),
-# (store_random_in_range,":random", 0, 20), #5 75 alliance
-# (ge, "$player_honor", ":random"),
-# (store_random_in_range,":random", 5, 10), #5 50 alliance
-# (ge, "$player_right_to_rule", ":random"),
-# (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-# (str_store_troop_name, s4, ":emissary_object"),
+  # (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_nonaggression_request),
+  # (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  # (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
+  # (ge, reg0, 0),  #player is at peace or truce with the mission_faction
+  # (eq, "$g_concession_demanded", 0), #doesn't want a center from us
+  # (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
+  # (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
+  # (store_random_in_range,":random", 5, 25), #20 96 alliance
+  # (ge, ":relation", ":random"),
+  # (store_random_in_range,":random", 0, 20), #5 75 alliance
+  # (ge, "$player_honor", ":random"),
+  # (store_random_in_range,":random", 5, 10), #5 50 alliance
+  # (ge, "$player_right_to_rule", ":random"),
+  # (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  # (str_store_troop_name, s4, ":emissary_object"),
 
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_nonaggression_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_nonaggression_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 
-(faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
+  (faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
 
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
+  (ge, reg0, 0),  #player is at peace or truce with the mission_faction
 
-(ge, "$g_mission_result_with_player", 1), #doesn't want war with us
-(store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
+  (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
+  (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
 
-(assign, ":number_other_faction_at_war", 0),#Nero
-(try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
-  (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
-  (neq, ":kingdom_to_check", ":mission_object"),
-  (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
-  (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
-  (lt, ":relation_of_factions", 0),
-  (val_add, ":number_other_faction_at_war", 1),#Nero
-(try_end),
-(try_begin),
-  (ge, ":number_other_faction_at_war", 2),
-  (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
-(try_end),
+  (assign, ":number_other_faction_at_war", 0),#Nero
+  (try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
+    (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
+    (neq, ":kingdom_to_check", ":mission_object"),
+    (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
+    (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
+    (lt, ":relation_of_factions", 0),
+    (val_add, ":number_other_faction_at_war", 1),#Nero
+  (try_end),
+  (try_begin),
+    (ge, ":number_other_faction_at_war", 2),
+    (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
+  (try_end),
 
-(eq, "$g_concession_demanded", 0), #doesn't want a center from us
+  (eq, "$g_concession_demanded", 0), #doesn't want a center from us
 
-(val_mul, ":number_other_faction_at_war", 5),
-(val_add, ":relation", ":number_other_faction_at_war"),
+  (val_mul, ":number_other_faction_at_war", 5),
+  (val_add, ":relation", ":number_other_faction_at_war"),
 
-(store_random_in_range,":random", 5, 25),
-(ge, ":relation", ":random"),
-(store_random_in_range,":random", -35, 0),
-(store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
-(ge, ":honor_plus", ":random"),
-(store_random_in_range,":random", 5, 10),
-(store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
-(ge, ":right_to_rule_plus", ":random"),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
-
+  (store_random_in_range,":random", 5, 25),
+  (ge, ":relation", ":random"),
+  (store_random_in_range,":random", -35, 0),
+  (store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
+  (ge, ":honor_plus", ":random"),
+  (store_random_in_range,":random", 5, 10),
+  (store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
+  (ge, ":right_to_rule_plus", ":random"),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
 ],
-"{s4} is willing to conclude a non-aggression treaty with you.","dplmc_companion_nonaggression_confirm",[
-     ]],
+"{s4} is willing to conclude a non-aggression treaty with you.",
+"dplmc_companion_nonaggression_confirm",[
+]],
 
 [anyone|plyr, "dplmc_companion_nonaggression_confirm",[
 (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
@@ -38768,134 +38740,97 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 ##response to nonaggression request failed
 [anyone, "dplmc_companion_nonaggression_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_nonaggression_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
-(str_clear, s33),
-(str_clear, s34),
-(try_begin),
-  (lt, "$player_honor", 0),
-  (str_store_string, s33, "@One of the reasons why they rejected your offer I think is your low honor. He fears that any deal with you will be broken sooner or later."),
-(try_end),
-(try_begin),
-  (is_between, "$g_concession_demanded", walled_centers_begin, walled_centers_end),
-  (str_store_party_name, s43, "$g_concession_demanded"),
-  (str_store_string, s34, "@I also found out that he demands {s43}, and thinks he can take the settlement sooner or later."),
-(try_end),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_nonaggression_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
+  (str_clear, s33),
+  (str_clear, s34),
+  (try_begin),
+    (lt, "$player_honor", 0),
+    (str_store_string, s33, "@One of the reasons why they rejected your offer I think is your low honor. He fears that any deal with you will be broken sooner or later."),
+  (try_end),
+  (try_begin),
+    (is_between, "$g_concession_demanded", walled_centers_begin, walled_centers_end),
+    (str_store_party_name, s43, "$g_concession_demanded"),
+    (str_store_string, s34, "@I also found out that he demands {s43}, and thinks he can take the settlement sooner or later."),
+  (try_end),
 ],
-"{s4} is not willing to conclude a non-aggression treaty with you. {s33} {s34}","companion_rejoin_response",[
-     ]],
-
-##war request
-[anyone|plyr|repeat_for_factions, "minister_diplomatic_initiative_type_select",
-[
-(assign, ":proceed", 1),
-(try_begin),
-(eq, reg0, 2), #truce
-(store_add, ":slot_truce_days", "$g_faction_selected", slot_faction_truce_days_with_factions_begin),
-(val_sub, ":slot_truce_days", kingdoms_begin),
-(faction_get_slot, ":truce_days", "fac_player_supporters_faction", ":slot_truce_days"),
-(gt, ":truce_days", 0), #you need at least a non-aggression pact
-(assign, ":proceed", 0),
-(try_end),
-(eq, ":proceed", 1),
-
-(store_repeat_object, ":faction_no"),
-(is_between, ":faction_no", kingdoms_begin, kingdoms_end),
-(neq, ":faction_no", "fac_player_supporters_faction"),
-(neq, ":faction_no", "$g_faction_selected"),
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":faction_no"),
-(eq, reg0, -2), #player is at war with the target faction
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "$g_faction_selected", ":faction_no"),
-(is_between, reg0, -1, 1),  #mission_faction provocated or peace with target_faction
-(faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 1), #recognized us
-(faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, ":faction_no"),
-(str_clear, s14),
-###diplomacy start+ Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "him" to {reg0?her:him}
-"That I want {reg0?her:him} to help me and attack {s11}{s14}.", "minister_diplomatic_emissary",
-##diplomacy end+
-[ (assign, "$g_initiative_selected", dplmc_npc_mission_war_request),
-(store_repeat_object, "$diplomacy_var"),
+"{s4} is not willing to conclude a non-aggression treaty with you. {s33} {s34}",
+"companion_rejoin_response",[
 ]],
 
 ##companion returning after war request
 [anyone, "event_triggered",[
-(store_conversation_troop, "$map_talk_troop"),
-(eq, "$map_talk_troop", "$npc_to_rejoin_party"),
-(troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
-(eq, ":mission", dplmc_npc_mission_war_request),
+  (store_conversation_troop, "$map_talk_troop"),
+  (eq, "$map_talk_troop", "$npc_to_rejoin_party"),
+  (troop_get_slot, ":mission", "$g_talk_troop", slot_troop_current_mission),
+  (eq, ":mission", dplmc_npc_mission_war_request),
 
-(troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
-(str_store_string, 21, ":string"),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
-(str_store_faction_name, s31, ":mission_object"),
+  (troop_get_slot, ":string", "$map_talk_troop", slot_troop_honorific),
+  (str_store_string, 21, ":string"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
+  (str_store_faction_name, s31, ":mission_object"),
 
-(call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
-(assign, "$g_mission_result_with_player", reg0),
-(call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "$diplomacy_var", -1),
-(assign, "$g_mission_result_with_target", reg0),
-##diplomacy start+
-#Disable agreeing to declare war when the kingdoms are allied.
-#Make it less likely when they have other treaties.
-(call_script, "script_dplmc_get_faction_truce_length_with_faction", ":mission_object", "$diplomacy_var"),
-(try_begin),
-	#TODO: Later there should be other intrigue options, but for now let's just
-	#make it so refusal is automatic for alliances, and possible for other types.
-	(gt, reg0, dplmc_treaty_defense_days_expire),
-	(val_max, "$g_mission_result_with_target", 3),#Positive means does not want war
-(else_try),
-	(gt, reg0, dplmc_treaty_truce_days_expire),
-	(store_random_in_range, reg0, 0, 2),
-	(try_begin),
-		(eq, reg0, 1),
-		(val_max, "$g_mission_result_with_target", 3),#Positive means does not want war
-	(else_try),
-		(val_add, "$g_mission_result_with_target", 1),#If was undecided, choose no
-		(val_max, "$g_mission_result_with_target", 0),#Best result is "undecided"
-	(try_end),
-(try_end),
-##diplomacy end+
-           ],
-"Well, {s21}, at last I've found you. I have returned from my mission to {s31}. ","dplmc_companion_war_request_response",[
-          ]],
+  (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
+  (assign, "$g_mission_result_with_player", reg0),
+  (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "$diplomacy_var", -1),
+  (assign, "$g_mission_result_with_target", reg0),
+  ##diplomacy start+
+  #Disable agreeing to declare war when the kingdoms are allied.
+  #Make it less likely when they have other treaties.
+  (call_script, "script_dplmc_get_faction_truce_length_with_faction", ":mission_object", "$diplomacy_var"),
+  (try_begin),
+    #TODO: Later there should be other intrigue options, but for now let's just
+    #make it so refusal is automatic for alliances, and possible for other types.
+    (gt, reg0, dplmc_treaty_defense_days_expire),
+    (val_max, "$g_mission_result_with_target", 3),#Positive means does not want war
+  (else_try),
+    (gt, reg0, dplmc_treaty_truce_days_expire),
+    (store_random_in_range, reg0, 0, 2),
+    (try_begin),
+      (eq, reg0, 1),
+      (val_max, "$g_mission_result_with_target", 3),#Positive means does not want war
+    (else_try),
+      (val_add, "$g_mission_result_with_target", 1),#If was undecided, choose no
+      (val_max, "$g_mission_result_with_target", 0),#Best result is "undecided"
+    (try_end),
+  (try_end),
+],
+"Well, {s21}, at last I've found you. I have returned from my mission to {s31}. ",
+"dplmc_companion_war_request_response",[
+]],
 
 ##response to war request success
 [anyone, "dplmc_companion_war_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
-(lt, "$g_mission_result_with_target", 0), #<0 want's war with target
-(ge, "$g_mission_result_with_player", 2), #doesn't want war with us
-(eq, "$g_concession_demanded", 0), #doesn't want a center from us
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
-(troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
-##diplomacy start+
-#The other kingdom will only agree to declare war without asking for money in return
-#if the player's kingdom is also at war with it, or if it is in an alliance with the
-#player's kingdom.
-(store_relation, ":player_faction_relation_with_war_target", ":war_target_faction", "$players_kingdom"),
-(call_script, "script_dplmc_get_faction_truce_length_with_faction", ":mission_object", "$players_kingdom"),
-(this_or_next|ge, reg0, dplmc_treaty_defense_days_half_done),
-   (lt, ":player_faction_relation_with_war_target", 0),
-##diplomacy end+
-(str_store_faction_name, s31, ":war_target_faction"),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
+  (lt, "$g_mission_result_with_target", 0), #<0 want's war with target
+  (ge, "$g_mission_result_with_player", 2), #doesn't want war with us
+  (eq, "$g_concession_demanded", 0), #doesn't want a center from us
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
+  (ge, reg0, 0),  #player is at peace or truce with the mission_faction
+  (troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
+  ##diplomacy start+
+  #The other kingdom will only agree to declare war without asking for money in return
+  #if the player's kingdom is also at war with it, or if it is in an alliance with the
+  #player's kingdom.
+  (store_relation, ":player_faction_relation_with_war_target", ":war_target_faction", "$players_kingdom"),
+  (call_script, "script_dplmc_get_faction_truce_length_with_faction", ":mission_object", "$players_kingdom"),
+  (this_or_next|ge, reg0, dplmc_treaty_defense_days_half_done),
+    (lt, ":player_faction_relation_with_war_target", 0),
+  ##diplomacy end+
+  (str_store_faction_name, s31, ":war_target_faction"),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
 ],
-"{s4} is willing to start a war with {s31}.","companion_rejoin_response",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
-(call_script, "script_diplomacy_start_war_between_kingdoms",  ":mission_object", ":war_target_faction", 1)
-     ]],
+"{s4} is willing to start a war with {s31}.",
+"companion_rejoin_response",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
+  (call_script, "script_diplomacy_start_war_between_kingdoms",  ":mission_object", ":war_target_faction", 1),
+]],
 
 ##response to war request success
 [anyone, "dplmc_companion_war_request_response",[
@@ -38969,253 +38904,295 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "dplmc_companion_war_pay",[
 ]],
 
-##diplomacy end+
-
 ##option to pay for war
 [anyone|plyr, "dplmc_companion_war_pay",[
+  (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),#
+
   (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
   (str_store_faction_name, s4, ":mission_object"),
   (gt, "$g_player_chamberlain", 0),
   (store_troop_gold, ":gold", "trp_household_possessions"),
-  ##diplomacy start+
-  #(ge, ":gold", 5000),
+  (store_troop_gold, ":gold_player", "trp_player"),
+  (val_add, ":gold", ":gold_player"),
   (ge, ":gold", "$temp_2"),
-  (call_script, "script_dplmc_store_troop_is_female", ":mission_object"),
+  (faction_get_slot, ":leader", ":mission_object", slot_faction_leader),
+  (call_script, "script_dplmc_store_troop_is_female", ":leader"),
   (assign, reg1, "$temp_2"),
 ],
-#"Pay 5000 denarii from the treasury and tell him to start the war.","companion_rejoin_response",[
-"Pay {reg1} denarii from the treasury and tell {reg0?her:him} to start the war.","companion_rejoin_response",[
-  #(call_script, "script_dplmc_withdraw_from_treasury", 5000),
+"Pay {reg1} denarii and tell {reg0?her:him} to start the war.",
+"companion_rejoin_response",[
   (assign, ":paid_gold", "$temp_2"),
-  (call_script, "script_dplmc_withdraw_from_treasury", ":paid_gold"),
-  ##diplomacy end+
+  (assign, ":expense", ":paid_gold"),
+  (val_mul, ":expense", -1),
+  (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", ":expense"),
+
   (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-  ##diplomacy start+ actually give gold to other kingdom
   (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", ":paid_gold"),
-  ##diplomacy end+
+  (troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
+  (call_script, "script_diplomacy_start_war_between_kingdoms",  ":mission_object", ":war_target_faction", 1)
+]],
+
+
+[anyone|plyr, "dplmc_companion_war_pay",[
+  (neg|faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),#
+
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
+  (gt, "$g_player_chamberlain", 0),
+  (store_troop_gold, ":gold", "trp_household_possessions"),
+  (store_troop_gold, ":gold_player", "trp_player"),
+  (val_add, ":gold", ":gold_player"),
+  (ge, ":gold", "$temp_2"),
+  (faction_get_slot, ":leader", ":mission_object", slot_faction_leader),
+  (call_script, "script_dplmc_store_troop_is_female", ":leader"),
+  (assign, reg1, "$temp_2"),
+],
+"Pay {reg1} denarii and tell {reg0?her:him} to start the war.","companion_rejoin_response",[
+
+  (assign, ":paid_gold", "$temp_2"),
+  (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", ":paid_gold", "trp_player"),
+
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", ":paid_gold"),
   (troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
   (call_script, "script_diplomacy_start_war_between_kingdoms",  ":mission_object", ":war_target_faction", 1)
 ]],
 
 [anyone|plyr, "dplmc_companion_war_pay",[],
-"On second thought, I don't think we can take so much money from the treasury.","companion_rejoin_response",[
-     ]],
+"On second thought, this is too expensive.",
+"companion_rejoin_response",[
+]],
 
 ##response to war request failed
 [anyone, "dplmc_companion_war_request_response",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
-(str_store_faction_name, s31, ":war_target_faction"),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, dplmc_npc_mission_war_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (troop_get_slot, ":war_target_faction", "$g_talk_troop", dplmc_slot_troop_mission_diplomacy),
+  (str_store_faction_name, s31, ":war_target_faction"),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
 ],
-"{s4} is not willing to start a war with {s31}.","companion_rejoin_response",[
-     ]],
+"{s4} is not willing to start a war with {s31}.",
+"companion_rejoin_response",[
+]],
 
 #
 [anyone, "companion_embassy_results",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-##diplomacy start+ save the results of the script to avoid unnecessary repeated calls,
-#which may introduce unexpected behavior if it's changed to used random numbers.
-(call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", ":mission_object", "$g_mission_result"),
-(assign, "$temp", reg0),
-(assign, "$temp_2", reg1),
-##diplomacy end+
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s12, ":emissary_object"),
-(is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0
-##diplomacy start+
-#(call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", ":mission_object", "$g_mission_result"),
-(gt, "$temp", 0),
-(lt, "$temp_2", 0),
-(assign, reg4, 0),#Use reg4 for gender
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
-	(assign, reg4, 1),
-(try_end),
-],
-"{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you pay {reg4?her:him} {reg0} denarii.","dplmc_companion_truce_pay",[
-     ]],
-
-[anyone, "companion_embassy_results",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_foederati_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-
-(call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
-(assign, "$g_mission_result_with_player", reg0),
-
-(faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
-
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
-(ge, reg0, 0),  #player is at peace or truce with the mission_faction
-
-(ge, "$g_mission_result_with_player", 1), #doesn't want war with us
-(store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
-
-(assign, ":number_other_faction_at_war", 0),#Nero
-(try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
-  (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
-  (neq, ":kingdom_to_check", ":mission_object"),
-  (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
-  (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
-  (lt, ":relation_of_factions", 0),
-  (val_add, ":number_other_faction_at_war", 1),#Nero
-(try_end),
-(try_begin),
-  (ge, ":number_other_faction_at_war", 2),
-  (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
-(try_end),
-
-(eq, "$g_concession_demanded", 0), #doesn't want a center from us
-
-(val_mul, ":number_other_faction_at_war", 5),
-(val_add, ":relation", ":number_other_faction_at_war"),
-
-(store_random_in_range,":random", 20, 55),
-(ge, ":relation", ":random"),
-(store_random_in_range,":random", -35, 0),
-(store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
-(ge, ":honor_plus", ":random"),
-(store_random_in_range,":random", 40, 65),
-(store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
-(ge, ":right_to_rule_plus", ":random"),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s4, ":emissary_object"),
-
-(assign, reg10, 5000),
-(try_for_parties, ":party_no"),
-  (store_faction_of_party, ":party_current_faction", ":party_no"),
-  (eq, ":party_current_faction",":mission_object"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", ":mission_object", "$g_mission_result"),
+  (assign, "$temp", reg0),
+  (assign, "$temp_2", reg1),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s12, ":emissary_object"),
+  (is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0
+  (gt, "$temp", 0),
+  (lt, "$temp_2", 0),
+  (assign, reg4, 0),#Use reg4 for gender
   (try_begin),
-    (party_get_template_id, ":template", ":party_no"),
-    (eq, ":template", "pt_kingdom_hero_party"),
-    (val_add, reg10, 1000),
-  (else_try),
-    (is_between, ":party_no", walled_centers_begin, walled_centers_end),
-    (val_add, reg10, 2000),
+    (call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
+    (assign, reg4, 1),
   (try_end),
-(try_end),
 ],
-"{s12} says that he is willing to sign a foederati contract if you pay {reg10} denarii.","foedarti_contract",[
-     ]],
-[anyone, "companion_embassy_results",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_foederati_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+"{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you pay {reg4?her:him} {reg0} denarii.",
+"dplmc_companion_truce_pay",[
+]],
 
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s12, ":emissary_object"),
+[anyone, "companion_embassy_results",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_foederati_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+
+  (call_script, "script_npc_decision_checklist_peace_or_war", ":mission_object", "fac_player_supporters_faction", "$g_talk_troop"),
+  (assign, "$g_mission_result_with_player", reg0),
+
+  (faction_slot_eq, ":mission_object", slot_faction_state, sfs_active),#not defeated meanwhile
+
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":mission_object"),
+  (ge, reg0, 0),  #player is at peace or truce with the mission_faction
+
+  (ge, "$g_mission_result_with_player", 1), #doesn't want war with us
+  (store_relation, ":relation", "fac_player_supporters_faction", ":mission_object"),
+
+  (assign, ":number_other_faction_at_war", 0),#Nero
+  (try_for_range, ":kingdom_to_check", kingdoms_begin, kingdoms_end),
+    (neq, ":kingdom_to_check", "fac_player_supporters_faction"),
+    (neq, ":kingdom_to_check", ":mission_object"),
+    (faction_slot_eq, ":kingdom_to_check", slot_faction_state, sfs_active),
+    (store_relation, ":relation_of_factions", ":kingdom_to_check", ":mission_object"),
+    (lt, ":relation_of_factions", 0),
+    (val_add, ":number_other_faction_at_war", 1),#Nero
+  (try_end),
+  (try_begin),
+    (ge, ":number_other_faction_at_war", 2),
+    (assign, "$g_concession_demanded", 0), #I don't care, cause I am at war!
+  (try_end),
+
+  (eq, "$g_concession_demanded", 0), #doesn't want a center from us
+
+  (val_mul, ":number_other_faction_at_war", 5),
+  (val_add, ":relation", ":number_other_faction_at_war"),
+
+  (store_random_in_range,":random", 20, 55),
+  (ge, ":relation", ":random"),
+  (store_random_in_range,":random", -35, 0),
+  (store_add, ":honor_plus", ":number_other_faction_at_war", "$player_honor"),
+  (ge, ":honor_plus", ":random"),
+  (store_random_in_range,":random", 40, 65),
+  (store_add, ":right_to_rule_plus", ":number_other_faction_at_war", "$player_right_to_rule"),
+  (ge, ":right_to_rule_plus", ":random"),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s4, ":emissary_object"),
+
+  (assign, reg10, 5000),
+  (try_for_parties, ":party_no"),
+    (store_faction_of_party, ":party_current_faction", ":party_no"),
+    (eq, ":party_current_faction",":mission_object"),
+    (try_begin),
+      (party_get_template_id, ":template", ":party_no"),
+      (eq, ":template", "pt_kingdom_hero_party"),
+      (val_add, reg10, 1000),
+    (else_try),
+      (is_between, ":party_no", walled_centers_begin, walled_centers_end),
+      (val_add, reg10, 2000),
+    (try_end),
+  (try_end),
+  (assign, "$temp", reg10),
+],
+"{s4} says that he is willing to sign a foederati contract if you pay {reg10} denarii.",
+"foedarti_contract",[
+]],
+
+[anyone, "companion_embassy_results",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_foederati_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s12, ":emissary_object"),
 ],
 "{s12} says that he will never sign such a pact with you.","companion_rejoin_response",[
-     ]],
+]],
+
 [anyone|plyr, "foedarti_contract",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(str_store_faction_name, s4, ":mission_object"),
-(store_troop_gold, ":gold", "trp_player"),#
-##diplomacy start+
-(assign, reg0, "$temp"),
-(gt, reg0, 0),
-(ge, ":gold", reg0),
+  (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
+  (store_troop_gold, ":gold", "trp_player"),#
+  ##diplomacy start+
+  (assign, reg0, "$temp"),
+  (gt, reg0, 0),
+  (ge, ":gold", reg0),
+],
+"Pay {reg0} denarii from the imperial treasury and let the foedus with the {s4} be concluded","companion_rejoin_response",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+
+  (assign, ":paid_gold", "$temp"),
+  (assign, ":expense", ":paid_gold"),
+  (val_mul, ":expense", -1),
+  (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", ":expense"),
+
+  (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", ":paid_gold"),
+
+  (call_script, "script_dplmc_start_defensive_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (call_script, "script_change_player_relation_with_troop", ":emissary_object", 10),
+  (str_store_faction_name, s4, ":mission_object"),
+]],
+
+
+[anyone|plyr, "foedarti_contract",[
+  (neg|faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
+  (store_troop_gold, ":gold", "trp_household_possessions"),#
+  (store_troop_gold, ":gold_player", "trp_player"),#
+  (val_add, ":gold", ":gold_player"),
+  ##diplomacy start+
+  (assign, reg0, "$temp"),
+  (gt, reg0, 0),
+  (ge, ":gold", reg0),
 ],
 "Pay {reg0} denarii and let the foedus with the {s4} be concluded","companion_rejoin_response",[
-    (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-    (troop_remove_gold, "trp_player", "$temp"),#todo change amount
-    #actually give gold to other kingdom
-    (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
-    ##diplomacy end+
-    (call_script, "script_dplmc_start_defensive_between_kingdoms", ":mission_object", "$players_kingdom", 1),
-    (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-    (call_script, "script_change_player_relation_with_troop", ":emissary_object", 10),
-    (str_store_faction_name, s4, ":mission_object"),
+  (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", "$temp", "trp_player"),
 
-    (faction_get_slot, ":party_template_a", ":mission_object", slot_faction_reinforcements_a),
-    (faction_get_slot, ":party_template_b", ":mission_object", slot_faction_reinforcements_b),
-    (faction_get_slot, ":party_template_c", ":mission_object", slot_faction_reinforcements_c),
-    (party_add_template, "p_main_party", ":party_template_a"),
-    (party_add_template, "p_main_party", ":party_template_a"),
-    (party_add_template, "p_main_party", ":party_template_a"),
-    (party_add_template, "p_main_party", ":party_template_a"),
-    (party_add_template, "p_main_party", ":party_template_b"),
-    (party_add_template, "p_main_party", ":party_template_b"),
-    (party_add_template, "p_main_party", ":party_template_b"),
-    (party_add_template, "p_main_party", ":party_template_c"),
-    (party_add_template, "p_main_party", ":party_template_c"),
-    (display_message, "@Warriors from {s4} join your army", color_good_news),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+
+  #actually give gold to other kingdom
+  (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
+
+  (call_script, "script_dplmc_start_defensive_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (call_script, "script_change_player_relation_with_troop", ":emissary_object", 10),
+  (str_store_faction_name, s4, ":mission_object"),
 ]],
 
 [anyone|plyr, "foedarti_contract",[],
 "On second thought, perhaps this is not now in our interests..","companion_rejoin_response",[
-     ]],
-
-		 ##diplomacy end+
+]],
 
 ##we can pay him or pay him and give a center
 [anyone, "companion_embassy_results",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s12, ":emissary_object"),
-(is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0
-##diplomacy start+
-#(call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", ":mission_object", "$g_mission_result"),
-(gt, "$temp", 0),
-(gt, "$temp_2", 0),
-(assign, reg0, "$temp"),
-(assign, reg1, "$temp_2"),
-(str_store_party_name, s18, "$g_concession_demanded"),
-(assign, reg4, 0),#Use reg4 for gender
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
-	(assign, reg4, 1),
-(try_end),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s12, ":emissary_object"),
+  (is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0
+  ##diplomacy start+
+  #(call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", ":mission_object", "$g_mission_result"),
+  (gt, "$temp", 0),
+  (gt, "$temp_2", 0),
+  (assign, reg0, "$temp"),
+  (assign, reg1, "$temp_2"),
+  (str_store_party_name, s18, "$g_concession_demanded"),
+  (assign, reg4, 0),#Use reg4 for gender
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
+    (assign, reg4, 1),
+  (try_end),
 ],
-##next line fixed diplomacy bug, companion_truce_pay -> dplmc_companion_truce_pay; also gender from reg4
-"{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you yield to {reg4?her:his} terms. Either you pay {reg0} denarii or you pay {reg1} denarii and give {reg4?her:him} {s18}.","dplmc_companion_truce_pay",[
-     ]],
-##diplomacy end+
+"{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you yield to {reg4?her:his} terms. Either you pay {reg0} denarii or you pay {reg1} denarii and give {reg4?her:him} {s18}.",
+"dplmc_companion_truce_pay",[
+]],
 
-##diplomacy start+
-#Missing options: will only accept a center / will only accept a center and money
-[anyone, "companion_embassy_results",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s12, ":emissary_object"),
-(is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0,
-(le, "$temp", 0),
-(eq, "$temp_2", 0),
-(str_store_party_name, s18, "$g_concession_demanded"),
-(assign, reg4, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
-	(assign, reg4, 1),
-(try_end),
-],#Next line: gender from reg4
-"{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you give {reg4?her:him} {s18}.","dplmc_companion_truce_pay",[
-     ]],
- ##diplomacy end+
 
 [anyone, "companion_embassy_results",[
-(troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(str_store_troop_name, s12, ":emissary_object"),
-(is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0,
-(le, "$temp", 0),
-(ge, "$temp_2", 1),
-(assign, reg0, "$temp_2"),
-(str_store_party_name, s18, "$g_concession_demanded"),
-##diplomacy start+ Make gender correct
-(assign, reg4, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
-	(assign, reg4, 1),
-(try_end),
-],#Next line: gender from reg4
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s12, ":emissary_object"),
+  (is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0,
+  (le, "$temp", 0),
+  (eq, "$temp_2", 0),
+  (str_store_party_name, s18, "$g_concession_demanded"),
+  (assign, reg4, 0),
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
+    (assign, reg4, 1),
+  (try_end),
+],"{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you give {reg4?her:him} {s18}.",
+"dplmc_companion_truce_pay",[
+]],
+
+[anyone, "companion_embassy_results",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (str_store_troop_name, s12, ":emissary_object"),
+  (is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0,
+  (le, "$temp", 0),
+  (ge, "$temp_2", 1),
+  (assign, reg0, "$temp_2"),
+  (str_store_party_name, s18, "$g_concession_demanded"),
+  ##diplomacy start+ Make gender correct
+  (assign, reg4, 0),
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
+    (assign, reg4, 1),
+  (try_end),
+],
 "{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you pay {reg4?her:him} {reg0} denarii and give {reg4?her:him} {s18}.","dplmc_companion_truce_pay",[
-     ]],
-##diplomacy end+
+]],
 
 ##we can pay him or give the center
 [anyone, "companion_embassy_results",[
@@ -39239,22 +39216,6 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "{s12} says that {reg4?she:he} is willing to consider a truce of twenty days if you pay {reg4?her:him} {reg0} or give {reg4?her:him} {s18}.","dplmc_companion_truce_pay",[
 ]],
 
-#This was bugged, and should logically never occur.
-##we have so many prisoners we don't have to pay
-#[anyone, "companion_embassy_results",[
-#  (troop_slot_eq, "$g_talk_troop", slot_troop_current_mission, npc_mission_peace_request),#
-#		(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-#		(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-#		(str_store_troop_name, s12, ":emissary_object"),
-#		(is_between, "$g_mission_result", -2, 1), #-2 or -1 or 0
-#  (call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", ":mission_object", "$g_mission_result"),
-#  (eq, reg0, 0),
-#  (le, reg1, 0),
-#],
-# "{s12} says that he is willing to consider a truce of twenty days.","companion_truce_confirm",[
-#					]],
-##diplomacy end+
-
 ##option to pay him
 [anyone|plyr, "dplmc_companion_truce_pay",[
   (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
@@ -39266,7 +39227,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
   (val_abs, "$temp"),
   (val_mul, "$temp", -1),
-  (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", "$temp"),#todo change amount
+  (call_script, "script_add_to_faction_bugdet", slot_faction_spending_diplomacy, "$players_kingdom", "$temp"),
 
   (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
   (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
@@ -39274,19 +39235,26 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ]],
 
 [anyone|plyr, "dplmc_companion_truce_pay",[
+  (neg|faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+
   (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
   (str_store_faction_name, s4, ":mission_object"),
+
+  (store_troop_gold, ":gold_player", "trp_player"),#
   (store_troop_gold, ":gold", "trp_household_possessions"),#
+  (val_add, ":gold", ":gold_player"),
   ##diplomacy start+
   (assign, reg0, "$temp"),
   (gt, reg0, 0),
   (ge, ":gold", reg0),
 ],
-"Pay {reg0} denarii from your personal treasury and let the truce with the {s4} be concluded","companion_rejoin_response",[
+"Pay {reg0} denarii and let the truce with the {s4} be concluded","companion_rejoin_response",[
   (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
 
   (val_abs, "$temp"),
-  (call_script, "script_dplmc_withdraw_from_treasury", "$temp"),#todo change amount
+
+  (call_script, "script_dplmc_remove_gold_from_lord_and_holdings", "$temp", "trp_player"),
+
   #actually give gold to other kingdom
   (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
   ##diplomacy end+
@@ -39294,75 +39262,59 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (str_store_faction_name, s4, ":mission_object"),
 ]],
 
-[anyone|plyr, "dplmc_companion_truce_pay",[
-  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-  (str_store_faction_name, s4, ":mission_object"),
-  (store_troop_gold, ":gold", "trp_player"),#
-  ##diplomacy start+
-  (assign, reg0, "$temp"),
-  (gt, reg0, 0),
-  (ge, ":gold", reg0),
-],
-"Pay {reg0} denarii from your own coffers and let the truce with the {s4} be concluded","companion_rejoin_response",[
-  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-  (troop_remove_gold, "trp_player", "$temp"),#todo change amount
-  #actually give gold to other kingdom
-  (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", "$temp"),
-  ##diplomacy end+
-  (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
-  (str_store_faction_name, s4, ":mission_object"),
-]],
 
 ##option to pay him and give him a center
 [anyone|plyr, "dplmc_companion_truce_pay",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(str_store_faction_name, s4, ":mission_object"),
-(store_troop_gold, ":gold", "trp_player"),
-##diplomacy start+
-(assign, reg1, "$temp_2"),
-(gt, reg1, 0),
-(ge, ":gold", reg1),
-(faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
-(assign, reg4, 0),
-(try_begin),
-	(call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
-	(assign, reg4, 1),
-(try_end),
-],
-"Pay {reg1} denarii and give {reg4?her:him} {s18} let this truce with the {s4} be concluded","companion_rejoin_response",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(troop_remove_gold, "trp_player", reg1),#todo change amount
-#actually give gold to other kingdom
-(call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", reg0),
-##diplomacy end+
-(call_script, "script_give_center_to_faction", "$g_concession_demanded", ":mission_object"),
-(call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
-(str_store_faction_name, s4, ":mission_object"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
+  (store_troop_gold, ":gold", "trp_player"),
+  ##diplomacy start+
+  (assign, reg1, "$temp_2"),
+  (gt, reg1, 0),
+  (ge, ":gold", reg1),
+  (faction_get_slot, ":emissary_object", ":mission_object", slot_faction_leader),
+  (assign, reg4, 0),
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", ":emissary_object"),
+    (assign, reg4, 1),
+  (try_end),
+],"Pay {reg1} denarii and give {reg4?her:him} {s18} let this truce with the {s4} be concluded",
+"companion_rejoin_response",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (troop_remove_gold, "trp_player", reg1),
+  #actually give gold to other kingdom
+  (call_script, "script_dplmc_faction_leader_splits_gold", ":mission_object", reg0),
+  ##diplomacy end+
+  (call_script, "script_give_center_to_faction", "$g_concession_demanded", ":mission_object"),
+  (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (str_store_faction_name, s4, ":mission_object"),
 ]],
 
-##option to give him a center
 [anyone|plyr, "dplmc_companion_truce_pay",[
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(str_store_faction_name, s4, ":mission_object"),
-(gt, "$g_concession_demanded", 0),
-##diplomacy start+
-(eq, "$temp_2", 0),
-(faction_get_slot, ":leader_no", ":mission_object", slot_faction_leader),
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "him" to {reg0?her:him}
-"Give {reg0?her:him} {s18} let this truce with the {s4} be concluded","companion_rejoin_response",[
-##diplomacy end+
-(troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
-(call_script, "script_give_center_to_faction", "$g_concession_demanded", ":mission_object"),
-(call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
-(str_store_faction_name, s4, ":mission_object"),
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (str_store_faction_name, s4, ":mission_object"),
+  (gt, "$g_concession_demanded", 0),
+  ##diplomacy start+
+  (eq, "$temp_2", 0),
+  (faction_get_slot, ":leader_no", ":mission_object", slot_faction_leader),
+  (call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
+],
+"Give {reg0?her:him} {s18} let this truce with the {s4} be concluded",
+"companion_rejoin_response",[
+  (troop_get_slot, ":mission_object", "$g_talk_troop", slot_troop_mission_object),
+  (call_script, "script_give_center_to_faction", "$g_concession_demanded", ":mission_object"),
+  (call_script, "script_diplomacy_start_peace_between_kingdoms", ":mission_object", "$players_kingdom", 1),
+  (str_store_faction_name, s4, ":mission_object"),
 ]],
 
 [anyone|plyr, "dplmc_companion_truce_pay",[],
-"On second thought, perhaps this is not now in our interests..","companion_rejoin_response",[
-     ]],
+"On second thought, perhaps this is not now in our interests..",
+"companion_rejoin_response",[
+]],
+## end diplomacy via companions
 
-##diplomacy end
+
+## minister
 
 [anyone|plyr, "minister_talk",
 [],
@@ -39549,25 +39501,24 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "To whom do you wish to send this emissary?", "minister_diplomatic_kingdoms_select",
 []],
 
-[anyone|plyr|repeat_for_factions, "minister_diplomatic_kingdoms_select",
-[
-(store_repeat_object, ":faction_no"),
-(is_between, ":faction_no", kingdoms_begin, kingdoms_end),
-##diplomacy start+ Required if the player can be ruler or co-ruler of another faction
-(neg|faction_slot_eq, ":faction_no", slot_faction_leader, "trp_player"),
-(neq, ":faction_no", "$players_kingdom"),
-##diplomacy end+
-(neq, ":faction_no", "fac_player_supporters_faction"),
-(faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, ":faction_no"),
-(str_clear, s14),
-#Has/has not recognized us a monarch
+[anyone|plyr|repeat_for_factions, "minister_diplomatic_kingdoms_select",[
+  (store_repeat_object, ":faction_no"),
+  (is_between, ":faction_no", kingdoms_begin, kingdoms_end),
+  ##diplomacy start+ Required if the player can be ruler or co-ruler of another faction
+  (neg|faction_slot_eq, ":faction_no", slot_faction_leader, "trp_player"),
+  (neq, ":faction_no", "$players_kingdom"),
+  ##diplomacy end+
+  (neq, ":faction_no", "fac_player_supporters_faction"),
+  (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
+  (faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
+  (str_store_troop_name, s10, ":leader_no"),
+  (str_store_faction_name, s11, ":faction_no"),
+  (str_clear, s14),
+  #Has/has not recognized us a monarch
 ],
-"{s10} of the {s11}{s14}", "minister_diplomatic_initiative_type",
-[
-(store_repeat_object, "$g_faction_selected"),
+"{s10} of the {s11}{s14}",
+"minister_diplomatic_initiative_type",[
+  (store_repeat_object, "$g_faction_selected"),
 ]],
 
 [anyone|plyr, "minister_diplomatic_kingdoms_select",
@@ -39575,33 +39526,69 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "Never mind.", "minister_pretalk",
 []],
 
-[anyone, "minister_diplomatic_initiative_type",
-##diplomacy start+
-#[],
-[
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),#Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "him" to {reg0?her:him}
-"What do you wish to tell {reg0?her:him}?", "minister_diplomatic_initiative_type_select",
+[anyone, "minister_diplomatic_initiative_type",[
+  (faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),#Use reg0 for gender
+  (call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
+],"What do you wish to tell {reg0?her:him}?",
+"minister_diplomatic_initiative_type_select",
 []],
-##diplomacy end+
 
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
-(eq, "$g_is_emperor", 1),
-(store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
-(ge, ":relation", 0),
-(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_dacian"),
-(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_celtic"),
-(this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_sarmatian"),
-(faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_germanic"),
-(neg|faction_slot_eq, "$g_faction_selected", slot_faction_tributary_of, "$players_kingdom"),
+[anyone|plyr|repeat_for_factions, "minister_diplomatic_initiative_type_select",[
+  (assign, ":proceed", 1),
+  (try_begin),
+  (eq, reg0, 2), #truce
+  (store_add, ":slot_truce_days", "$g_faction_selected", slot_faction_truce_days_with_factions_begin),
+  (val_sub, ":slot_truce_days", kingdoms_begin),
+  (faction_get_slot, ":truce_days", "fac_player_supporters_faction", ":slot_truce_days"),
+  (gt, ":truce_days", 0), #you need at least a non-aggression pact
+  (assign, ":proceed", 0),
+  (try_end),
+  (eq, ":proceed", 1),
+
+  (store_repeat_object, ":faction_no"),
+  (is_between, ":faction_no", kingdoms_begin, kingdoms_end),
+  (neq, ":faction_no", "fac_player_supporters_faction"),
+  (neq, ":faction_no", "$g_faction_selected"),
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", ":faction_no"),
+  (eq, reg0, -2), #player is at war with the target faction
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "fac_player_supporters_faction", "$g_faction_selected"),
+  (ge, reg0, 0),  #player is at peace or truce with the mission_faction
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "$g_faction_selected", ":faction_no"),
+  (is_between, reg0, -1, 1),  #mission_faction provocated or peace with target_faction
+  (faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 1), #recognized us
+  (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
+  (faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
+  (str_store_troop_name, s10, ":leader_no"),
+  (str_store_faction_name, s11, ":faction_no"),
+  (str_clear, s14),
+  ###diplomacy start+ Use reg0 for gender
+  (call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
+],#next line "him" to {reg0?her:him}
+"That I want {reg0?her:him} to help me and attack {s11}{s14}.",
+"minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", dplmc_npc_mission_war_request),
+  (store_repeat_object, "$diplomacy_var"),
+]],
+
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
+  (eq, 1, 0), # disable for now
+
+  (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+  (eq, "$g_is_emperor", 1),
+  (store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
+  (ge, ":relation", 0),
+  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_dacian"),
+  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_celtic"),
+  (this_or_next|faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_sarmatian"),
+  (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_germanic"),
+  (neg|faction_slot_eq, "$g_faction_selected", slot_faction_tributary_of, "$players_kingdom"),
 ],
-"That I want to ask about a foederati contract.", "minister_diplomatic_emissary",
-[(assign, "$g_initiative_selected", npc_mission_foederati_request)]],
+"That I want to ask about a foederati contract.",
+"minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", npc_mission_foederati_request)
+]],
 
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
   (store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
   (lt, ":relation", 0),
   (assign, reg0, 0),
@@ -39611,39 +39598,39 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
       (assign, reg0, 1),
   (try_end),
   (eq, reg0, 0),
+],"That our two kingdoms should enter into truce.",
+"minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", npc_mission_peace_request)
+]],
+
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
+  (store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
+  (lt, ":relation", 0),
+],"That he should subjugate to my rule and his kingdom shall be my tributary state.",
+"minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", npc_mission_tributary)
+]],
+
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
+  (neg|faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+  (neq, "$g_is_emperor", 1),
+  (neg|is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
+  (faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),#Use reg0 for gender
+  (call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
 ],
-"That our two kingdoms should enter into truce.", "minister_diplomatic_emissary",
-[(assign, "$g_initiative_selected", npc_mission_peace_request)]],
+"That I wish to put myself under {reg0?her:his} protection, as {reg0?her:his} vassal.",
+"minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", npc_mission_pledge_vassal)
+]],
 
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[(store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
-(lt, ":relation", 0),],
-"That he should subjugate to my rule and his kingdom shall be my vassal state.", "minister_diplomatic_emissary",
-[(assign, "$g_initiative_selected", npc_mission_tributary)]],
-
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-##diplomacy start+
-#[],
-[
-(neq, "$g_is_emperor", 1),#is not Emperor of Rome
-#Disable when the player is the ruler or co-ruler of an NPC kingdom.
-#Setting up a separate dialog for this is something to do later, but
-#not a high priority.
-#TODO: Consider if there should be an alternative when the player is married to a pretender.
-(neg|is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-(faction_get_slot, ":leader_no", "$g_faction_selected", slot_faction_leader),#Use reg0 for gender
-(call_script, "script_dplmc_store_troop_is_female", ":leader_no"),
-],#next line "his" to {reg0?her:his}
-"That I wish to put myself under {reg0?her:his} protection, as {reg0?her:his} vassal.", "minister_diplomatic_emissary",
-##diplomacy end+
-[(assign, "$g_initiative_selected", npc_mission_pledge_vassal)]],
-
-[anyone|plyr, "minister_diplomatic_initiative_type_select",
-[(store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
-(faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 0),
-(ge, ":relation", 0),],
-"That I wish to express my goodwill, as one monarch to another.", "minister_diplomatic_emissary",
-[(assign, "$g_initiative_selected", npc_mission_seek_recognition),]],
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
+  (store_relation, ":relation", "fac_player_supporters_faction", "$g_faction_selected"),
+  (faction_slot_eq, "$g_faction_selected", slot_faction_recognized_player, 0),
+  (ge, ":relation", 0),
+],"That I wish to express my goodwill, as one monarch to another.",
+"minister_diplomatic_emissary",[
+  (assign, "$g_initiative_selected", npc_mission_seek_recognition),
+]],
 
 [anyone|plyr, "minister_diplomatic_initiative_type_select",[
   (neg|faction_slot_eq, "fac_player_supporters_faction", slot_faction_tributary_of, "$g_faction_selected"),
@@ -39663,14 +39650,9 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ],
 "I want to declare independence from {reg0?her:him}.", "minister_declare_war",[]],
 
-[anyone|plyr, "minister_diplomatic_initiative_type_select",[], "Never mind.", "minister_pretalk",[]],
+[anyone|plyr, "minister_diplomatic_initiative_type_select",[
+], "Never mind.", "minister_pretalk",[]],
 
-##diplomacy start+
-##
-#Disable when the player is the ruler or co-ruler of an NPC kingdom.
-#Setting up a separate dialog for this is something to do later, but
-#not a high priority.
-#TODO: Consider if there should be an alternative when the player is married to a pretender.
 [anyone, "minister_declare_war",[
   (assign, ":veto_troop", 0),
   (try_begin),
@@ -39689,10 +39671,12 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ], "For that you should first speak to {s0}.",
 "dplmc_minister_nevermind",[]],
 
-[anyone|plyr, "dplmc_minister_nevermind",[], "I might go do so.", "close_window",[]],
+[anyone|plyr, "dplmc_minister_nevermind",[
+], "I might go do so.", "close_window",[]],
 
-[anyone|plyr, "dplmc_minister_nevermind",[], "Never mind.", "minister_pretalk",[]],
-##diplomacy end+
+[anyone|plyr, "dplmc_minister_nevermind",[
+], "Never mind.", "minister_pretalk",[]],
+
 [anyone, "minister_declare_war",[
   (try_begin),
     (faction_slot_eq, "$players_kingdom", slot_faction_tributary_of, "$g_faction_selected"),
