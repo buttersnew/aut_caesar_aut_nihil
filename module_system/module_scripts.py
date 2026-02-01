@@ -73371,11 +73371,18 @@ scripts = scripts_hardcoded + [
     (assign, ":score_to_beat",-1),
     (try_for_range, ":participants", 0, 49),#find other victor
         (troop_get_slot,":guy", "trp_olympia_participants", ":participants"),
+        (gt, ":guy", -1),
         (store_character_level, ":level", ":guy"),
         (val_min, ":level", 63),
         (gt, ":level", ":score_to_beat"),
         (assign, ":score_to_beat", ":level"),
         (assign, ":victor", ":guy"),
+    (try_end),
+
+    (try_begin),
+        (eq, ":victor", -1),
+        (assign, ":victor", "trp_athlet_4"),
+        (display_message, "@No valid victor has been found, a random participant has been chosen instead!", color_bad_news),
     (try_end),
     (call_script, "script_add_notification_menu", "mnu_games_over",":victor",0),
 ]),
