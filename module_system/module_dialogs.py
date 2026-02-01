@@ -45037,14 +45037,22 @@ Here, take this purse of {reg3} denarii, as I promised. I hope we can travel tog
 [anyone,"conspiracy_talk_praefect",[],"Yes divine {playername}. We have captured all the traitors. You have to decide what happens to them.", "conspiracy_talk_praefect2",[]],
 
 [anyone|plyr,"conspiracy_talk_praefect2",[],"Yes I will do that. Let's talk about something else.", "lord_pretalk",[(quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 2),]],
+
 [anyone|plyr,"conspiracy_talk_praefect2",[],"My friend, why has the praetorian guard not protected me?", "conspiracy_talk_praefect3",[]],
-[anyone|plyr,"conspiracy_talk_praefect3",[],"I had to overwhelme the traitors myself. The guard came as I had defeated them all.", "conspiracy_talk_praefect4",[]],
+
+[anyone|plyr,"conspiracy_talk_praefect3",[],"I had to overwhelm the traitors myself. The guard came as I had defeated them all.", "conspiracy_talk_praefect4",[]],
+
 [anyone,"conspiracy_talk_praefect4",[],"Yes that was an error of the centurio. Just as the conspirators attacked you, O divine Caesar, there was an exercise of the Guard in the courtyard of the palace.", "conspiracy_talk_praefect5",[]],
+
 [anyone|plyr,"conspiracy_talk_praefect5",[],"What exercise?", "conspiracy_talk_praefect6",[]],
-[anyone,"conspiracy_talk_praefect6",[],"A fire exercise in case a fire should take place in the palace. This is always at the same time once a month. It seemes that the traitors waited for this exercise to kill you.", "conspiracy_talk_praefect7",[]],
-[anyone|plyr,"conspiracy_talk_praefect7",[],"I didn't know that this exist.", "conspiracy_talk_praefect8",[]],
-[anyone,"conspiracy_talk_praefect8",[],"Yes it's true. Well.", "lord_pretalk",[(quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 2),
-(display_message, "@Is he part of the conspiracy?"),
+
+[anyone,"conspiracy_talk_praefect6",[],"A fire exercise in case a fire should break out in the palace. This is always at the same time once a month. It seems that the traitors waited for this exercise to kill you.", "conspiracy_talk_praefect7",[]],
+
+[anyone|plyr,"conspiracy_talk_praefect7",[],"I didn't know that this existed.", "conspiracy_talk_praefect8",[]],
+
+[anyone,"conspiracy_talk_praefect8",[],"Yes it's true. Well.", "lord_pretalk",[
+  (quest_set_slot, "qst_conspiracy", slot_quest_temp_slot, 2),
+  (display_message, "@Is he part of the conspiracy?"),
 ]],
 
 [anyone|plyr,"lord_talk",[
@@ -83453,7 +83461,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr,"prisoner_chat_noble",[
 		(check_quest_active, "qst_conspiracy"),
 		(quest_slot_eq, "qst_conspiracy", slot_quest_target_troop, "$g_talk_troop"),
-  ], "We must talk about the conspiracy, my friend.", "conspiracy_talk_leader",[]],
+  ], "We must talk about the conspiracy you were involved in!", "conspiracy_talk_leader",[]],
 
 [anyone,"conspiracy_talk_leader",[], "I am sure you will kill me. So I will say only one thing: Your tyranny will end sooner or later! You are nothing more than a wild beggar and you will end like one.\
   Your life is full of pain and you will die soon. I am sure.", "conspiracy_talk_leader2",[]],
