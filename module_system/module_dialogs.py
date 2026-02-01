@@ -23127,6 +23127,7 @@ dialogs =[
   (try_begin),
     (get_player_agent_no, ":player_agent"),
     (agent_get_wielded_item, ":wielded_item", ":player_agent", 0),
+    (gt, ":wielded_item", -1),
     (item_get_type, ":itp", ":wielded_item"), #SB : itp check to match mission_templates
     (this_or_next|is_between, ":itp", itp_type_bow, itp_type_goods),
     (is_between, ":itp", itp_type_pistol, itp_type_bullets),
@@ -23155,7 +23156,6 @@ dialogs =[
         (assign, ":end_cond", 0), #break
       (try_end),
     (try_end),
-
     (agent_set_wielded_item, ":player_agent", ":default_item"),
   (else_try),
     (str_store_string, s9, "str_em_ill_stay_out_of_this"),
