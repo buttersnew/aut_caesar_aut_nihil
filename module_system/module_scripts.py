@@ -76863,6 +76863,51 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_arab_noble_tunic_2"),
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_eastern_shoe_b"),
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_2"),
+    (else_try), # Otho
+        (eq, ":king", "trp_statthalter_9"),
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_roman_spatha_rich_3"),
+        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_officer_shield"),
+        (troop_set_inventory_slot, "trp_player", ek_head, "itm_roman_legatus_helm_5"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_musculata_legatus_5"),
+        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_legio_armored_caligea"),
+        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_leopard_horse_2"),
+        ## civilian
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_roman_rich2"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_caligea"),
+    (else_try), # Galba
+        (eq, ":king", "trp_senator_1"),
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_roman_spatha_2"),
+        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_officer_shield"),
+        (troop_set_inventory_slot, "trp_player", ek_head, "itm_roman_legatus_helm_2"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_musculata_legatus_2"),
+        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_legio_armored_caligea_2"),
+        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_leopard_horse_2"),
+        ## civilian
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_roman_rich3"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_calceus_3"),
+    (else_try), # Vitellius
+        (eq, ":king", "trp_senator_2"),
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_roman_spatha"),
+        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_officer_shield"),
+        (troop_set_inventory_slot, "trp_player", ek_head, "itm_roman_legatus_helm_3"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_musculata_legatus_3"),
+        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_graves_simple_2"),
+        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_horse_1"),
+        ## civilian
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_roman_rich_vitellius"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_calceus_4"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_1"),
+    (else_try), # Vespasian
+        (eq, ":king", "trp_legatus_11"),
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_roman_spatha_rich_2"),
+        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_officer_shield_2"),
+        (troop_set_inventory_slot, "trp_player", ek_head, "itm_legatus_legionis_helm_4"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_musculata_legatus_1"),
+        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_centurio_west_graves"),
+        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_leopard_horse_2"),
+        ## civilian
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_roman_rich2"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_calceus_4"),
     (try_end),
 
     # (troop_equip_items, "trp_player"),

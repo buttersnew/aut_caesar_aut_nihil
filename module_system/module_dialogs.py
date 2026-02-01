@@ -62235,7 +62235,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 "spouse_heir",[]],
 
 [anyone,"spouse_heir",[
-  (troop_get_slot, ":reputation", "$g_talk_troop", slot_lord_reputation),
+  (troop_get_slot, ":reputation", "$g_talk_troop", slot_lord_reputation_type),
   (try_begin),
     (eq, ":reputation", lrep_conventional),
     (str_store_string, s5, "@Very good. I will order to proclaim it in the Empire, that our son is the rightful heir to the throne!"),
