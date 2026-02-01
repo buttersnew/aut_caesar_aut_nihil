@@ -50894,10 +50894,15 @@ scripts = scripts_hardcoded + [
             (eq, "$g_heir_of_rome", 0),
             (str_store_troop_name, s1, "$g_heir_of_rome"),
             (str_store_troop_name, s2, ":leader"),
-            (str_store_string, s0, "@{reg2?Our Empire:The {s5}} has {s1}, {reg0?daughter:son} of {s2}, as successor to the throne of the {s5}."),
+            # {reg0?daughter:son}
+            (str_store_string, s0, "@{reg2?Our Empire:The {s5}} has {s1}, son of {s2}, as successor to the throne of the {s5}."),
         (else_try),
             (str_store_troop_name, s1, "$g_heir_of_rome"),
             (str_store_troop_name, s2, ":leader"),
+
+            # get gender in reg0
+            (call_script, "script_dplmc_store_troop_is_female", "$g_heir_of_rome"),
+
             (str_store_string, s0, "@{reg2?Our Empire:The {s5}} has {s1}, adoptive {reg0?daughter:son} of {s2}, is successor of the {s5}."),
         (try_end),
         (str_store_string, s20, "@{s20}{s0}{reg3?^: }"),

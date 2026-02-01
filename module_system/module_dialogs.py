@@ -62194,7 +62194,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 [anyone|plyr,"spouse_talk",
 [      (this_or_next|ge,"$g_nino_varon",1),
       (ge,"$g_nina_chica",1),
-  ],   "How are my offspring?","spouse_descendescia_reply",[]], #pregunta sobre descendencia
+  ],   "How are my offspring?","spouse_descendescia_reply",[]],
 
 [anyone,"spouse_descendescia_reply",
 [
@@ -62226,33 +62226,55 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
 
 [anyone|plyr,"spouse_descendescia_reply2",
 [
-  ],   "Very well. Take care of them and make sure they lack for nothing.","spouse_pretalk",[]], #pregunta sobre descendencia
-[anyone|plyr,"spouse_descendescia_reply2",
-[
-    (eq, "$g_is_emperor", 1),#is emperor
-    (ge,"$g_nino_varon",1),
-    (neq, "$g_heir_of_rome", 0),
-  ],   "I want to nominate my oldest son heir to the Imperium Romanum.","spouse_heir",[]], #pregunta sobre descendencia
+  ],   "Very well. Take care of them and make sure they lack for nothing.","spouse_pretalk",[]],
+[anyone|plyr,"spouse_descendescia_reply2",[
+  (eq, "$g_is_emperor", 1),#is emperor
+  (ge,"$g_nino_varon",1),
+  (neq, "$g_heir_of_rome", 0),
+],"I want to nominate my oldest son heir to the Imperium Romanum.",
+"spouse_heir",[]],
 
-[anyone,"spouse_heir",
-[
-  ],   "Very good. I will order to proclaim it in the Empire, that my, I mean our, son is the rightful heir to the throne!","spouse_pretalk",[
-	   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 15),
-	   (display_log_message, "@Your oldest son is now heir to the throne."),
-       (try_begin),
-        (ge, "$g_heir_of_rome", 1),
-        (str_store_troop_name, s40, "$g_heir_of_rome"),
-        (call_script, "script_change_player_relation_with_troop", "$g_heir_of_rome", -100),
-        (display_log_message, "@ {s40} is no longer heir of the Imperium Romanum"),
-       (try_end),
-       (assign, "$g_heir_of_rome", 0),
-	  ]], #pregunta sobre descendencia
+[anyone,"spouse_heir",[
+  (troop_get_slot, ":reputation", "$g_talk_troop", slot_lord_reputation),
+  (try_begin),
+    (eq, ":reputation", lrep_conventional),
+    (str_store_string, s5, "@Very good. I will order to proclaim it in the Empire, that our son is the rightful heir to the throne!"),
+  (else_try),
+    (eq, ":reputation", lrep_adventurous),
+    (str_store_string, s5, "@Of course! Our blood is strong. He will be a strong Imperator, I am sure of it!"),
+  (else_try),
+    (eq, ":reputation", lrep_otherworldly),
+    (str_store_string, s5, "@It is destined. I have seen omens... he will bring a new dawn to Rome."),
+  (else_try),
+    (eq, ":reputation", lrep_ambitious),
+    (str_store_string, s5, "@Finally. The throne belongs to our line. We must ensure no one questions his right."),
+  (else_try),
+    (eq, ":reputation", lrep_moralist),
+    (str_store_string, s5, "@It is a heavy burden, but he must accept his duty. We will raise him to be just and wise."),
+  (else_try),
+    (eq, ":reputation", lrep_hedonistic),
+    (str_store_string, s5, "@Wonderful! We shall have the most magnificent celebration! Rome will drink to his health!"),
+  (else_try),
+    (str_store_string, s5, "@Very good. I will order to proclaim it in the Empire, that our son is the rightful heir to the throne!"),
+  (try_end),
+],"{s5}",
+"spouse_pretalk",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 15),
+  (display_log_message, "@Your oldest son is now heir to the throne."),
+  (try_begin),
+    (ge, "$g_heir_of_rome", 1),
+    (str_store_troop_name, s40, "$g_heir_of_rome"),
+    (call_script, "script_change_player_relation_with_troop", "$g_heir_of_rome", -100),
+    (display_log_message, "@ {s40} is no longer heir of the Imperium Romanum"),
+  (try_end),
+  (assign, "$g_heir_of_rome", 0),
+]],
 
-[anyone|plyr,"spouse_talk",
-[
-      (eq,"$g_spouse_embarazada",2),
-      (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),
-  ],   "Have I a son?","spouse_show_hijo2",[]],
+[anyone|plyr,"spouse_talk",[
+  (eq,"$g_spouse_embarazada",2),
+  (troop_slot_eq,"$g_talk_troop",slot_troop_days_on_mission,0),
+],"Have I a son?",
+"spouse_show_hijo2",[]],
 
 [anyone, "spouse_show_hijo2",
 [        (str_clear, s4),
