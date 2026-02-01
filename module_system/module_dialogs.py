@@ -28935,13 +28935,11 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "I wish to rename our capital.", "minister_rename_court",
 []],
 
-[anyone, "minister_rename_court",
-[
-    (eq, "$g_is_emperor", 1),
- ],
-  "Are you sure, oh Caesar? The good citizens of {s1} might not welcome this arbitrary change. Signs will need to be torn down,\
- records must be reinked, and we'll need at least 10,000 denarii in the treasury to officialize our decision.\
- -- alternatively we can host a feast here for both the townspeople and any attending lords so as to spread the word more easily.", "minister_rename_confirm",
+[anyone, "minister_rename_court",[
+  (eq, "$g_is_emperor", 1),
+  (str_store_party_name, 13, "$g_player_court"),
+],"Are you sure, oh Caesar? The good citizens of {13} might not welcome this arbitrary change. Signs will need to be torn down, records must be reinked, and we'll need at least 10,000 denarii in the treasury to officialize our decision. -- alternatively we can host a feast here for both the townspeople and any attending lords so as to spread the word more easily.",
+"minister_rename_confirm",
 []],
 
 [anyone, "minister_rename_court",
@@ -56909,49 +56907,60 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 "lord_talk_ask_something_again",[]],
 
 [anyone|plyr, "lord_strategy_follow_up",[
-(eq, "$g_talk_troop_disagrees_with_marshal", 1),
-(neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-(faction_get_slot, ":faction_marshal", "$g_talk_troop_faction", slot_faction_marshall),
-(is_between, ":faction_marshal", active_npcs_begin, active_npcs_end),
-(str_store_troop_name, s4, ":faction_marshal"),
-],
-"Would you say, then, that {s4} should no longer be marshal?",
+  (eq, "$g_talk_troop_disagrees_with_marshal", 1),
+  (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+  (faction_get_slot, ":faction_marshal", "$g_talk_troop_faction", slot_faction_marshall),
+  (is_between, ":faction_marshal", active_npcs_begin, active_npcs_end),
+  (str_store_troop_name, s4, ":faction_marshal"),
+],"Would you say, then, that {s4} should no longer be marshal?",
 "lord_talk_replace_marshal",[]],
 
 [anyone, "lord_talk_replace_marshal",[
-(faction_get_slot, ":faction_issue", "$g_talk_troop_faction", slot_faction_political_issue),
-(is_between, ":faction_issue", centers_begin, centers_end),
-(str_store_party_name, s4, ":faction_issue"),
+  (faction_get_slot, ":faction_issue", "$g_talk_troop_faction", slot_faction_political_issue),
+  (is_between, ":faction_issue", centers_begin, centers_end),
+  (str_store_party_name, s4, ":faction_issue"),
 ],
 "I believe that our realm should resolve the issue of {s4} before we begin to debate replacing the marshal.",
 "lord_talk_ask_something_again",[]],
 
 [anyone, "lord_talk_replace_marshal",[
-(faction_slot_eq, "$g_talk_troop_faction", slot_faction_political_issue, 1),
-(troop_get_slot, ":stance_on_faction_issue", "$g_talk_troop", slot_troop_stance_on_faction_issue),
-(faction_get_slot, ":faction_marshal", "$g_talk_troop_faction", slot_faction_marshall),
-(neq, ":stance_on_faction_issue", ":faction_marshal"),
-(str_store_troop_name, s4,  ":stance_on_faction_issue"),
-(str_store_troop_name, s5,  ":faction_marshal"),
-
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_political_issue, 1),
+  (troop_get_slot, ":stance_on_faction_issue", "$g_talk_troop", slot_troop_stance_on_faction_issue),
+  (faction_get_slot, ":faction_marshal", "$g_talk_troop_faction", slot_faction_marshall),
+  (gt, ":faction_marshal", -1),
+  (gt, ":stance_on_faction_issue", -1),
+  (neq, ":stance_on_faction_issue", ":faction_marshal"),
+  (str_store_troop_name, s4,  ":stance_on_faction_issue"),
+  (str_store_troop_name, s5,  ":faction_marshal"),
 ],
 "Yes. I have already made my position on this matter clear. I believe that {s4} should be marshal instead of {s5}.",
 "lord_talk_ask_something_again",[]],
 
 [anyone, "lord_talk_replace_marshal",[
-(faction_get_slot, ":faction_marshal", "$g_talk_troop_faction", slot_faction_marshall),
-(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":faction_marshal"),
-(assign, ":relation_with_marshal", reg0),
-(gt, ":relation_with_marshal", "$g_talk_troop_effective_relation"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_political_issue, 1),
+  (troop_get_slot, ":stance_on_faction_issue", "$g_talk_troop", slot_troop_stance_on_faction_issue),
+  (faction_get_slot, ":faction_marshal", "$g_talk_troop_faction", slot_faction_marshall),
+  (gt, ":faction_marshal", -1),
+  (eq, ":stance_on_faction_issue", -1),
+  (str_store_troop_name, s5,  ":faction_marshal"),
 ],
-"I will make up my mind on this matter without your persuasion.",
+"I believe that {s5} should remain marshal.",
+"lord_talk_ask_something_again",[]],
+
+[anyone, "lord_talk_replace_marshal",[
+  (faction_get_slot, ":faction_marshal", "$g_talk_troop_faction", slot_faction_marshall),
+  (gt, ":faction_marshal", -1),
+  (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":faction_marshal"),
+  (assign, ":relation_with_marshal", reg0),
+  (gt, ":relation_with_marshal", "$g_talk_troop_effective_relation"),
+],"I will make up my mind on this matter without your persuasion.",
 "lord_talk_ask_something_again",[]],
 
 [anyone, "lord_talk_replace_marshal",[
 ],
 "Hmm...",
 "lord_talk_replace_marshal_decision",[
-(faction_set_slot, "$g_talk_troop_faction", slot_faction_political_issue, 1),
+  (faction_set_slot, "$g_talk_troop_faction", slot_faction_political_issue, 1),
 ]],
 
 [anyone, "lord_talk_replace_marshal_decision",[
