@@ -13276,6 +13276,10 @@ game_menus = [
         (call_script,"script_cf_fix_party_size_village","$g_encountered_party",1),
         (str_store_string, s22, "@If you place prisoners in your village they will work on the fields and in the mines and generate additional rents."),
     (try_end),
+
+    # update prisoner slot as player moves prisoner
+    (call_script, "script_update_prisoner_slot", "p_main_party"),
+    (call_script, "script_update_prisoner_slot", "$g_encountered_party"),
   ],[
     ("exchange",[
       (this_or_next|eq, reg63, 1),
@@ -16553,6 +16557,10 @@ game_menus = [
           (str_store_string, s55, "@Manage the garrison"),
       (try_end),
       (eq, ":player_can_draw_from_garrison", 1),
+
+      # update prisoner slot as player moves prisoner
+      (call_script, "script_update_prisoner_slot", "p_main_party"),
+      (call_script, "script_update_prisoner_slot", "$g_encountered_party"),
     ],"{s55}",[
       (try_begin),
           (faction_slot_eq, "$g_encountered_party_faction", slot_faction_marshal, "trp_player"),
