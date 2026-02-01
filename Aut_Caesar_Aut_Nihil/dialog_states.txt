@@ -2839,9 +2839,6 @@ dplmc_constable_patrol_to_center_confirm
 dplmc_constable_patrol_disband_ask
 dplmc_constable_patrol_disband_confirm
 dplmc_constable_prisoner
-dplmc_constable_garrison_prisoner_manage
-dplmc_constable_garrison_prisoner_sell
-dplmc_constable_garrison_prisoner_done
 dplmc_constable_dismiss_confirm_ask
 dplmc_constable_dismiss_confirm
 dplmc_constable_dismiss_confirm_yes
@@ -4341,9 +4338,11 @@ seneschal_ask_location_3
 grain_suplpy_train
 grain_suplpy_train2
 talk_caravan_escort
-talk_caravan_escort_2a
 talk_caravan_escort_attach
 talk_caravan_escort_2b
+talk_caravan_escort_new
+talk_caravan_escort_new_2a
+talk_caravan_escort_new_2b
 merchant_talk
 merchant_trade_request
 merchant_pretalk
@@ -5516,11 +5515,11 @@ goods_confirme
 legion_assign
 mili_talk2
 game
+mili_talk_pretalk
 game2
 game_play
 mili_talk3
 mili_talk4
-mili_talk_pretalk
 fin_talk
 money_send
 money_send2
@@ -7281,3 +7280,4 @@ dplmc_lord_ask_leave_rebellion_confirm_final
 dplmc_lord_ask_leave_rebellion_end
 sack
 commander_leave
+talk_caravan_escort_2a

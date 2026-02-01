@@ -695,7 +695,7 @@ ui_group_value_control|Group %d!
 ui_drop_weapon|Drop Weapon
 ui_multiplayer_message_all|Send Message to Everyone
 ui_multiplayer_message_team|Send Message to Team
-ui_command_line|Command Line
+ui_command_line|Command Line (WARNING using cheatmode can corrupt your game)
 ui_use_ranged_weapon_as_melee|Toggle Weapon Mode
 ui_send_message_all|Send Message to Everyone
 ui_send_message_team|Send Message to Team
