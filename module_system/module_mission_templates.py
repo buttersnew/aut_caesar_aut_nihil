@@ -8696,7 +8696,7 @@ mission_templates = [
 ]),
 
 
-("back_alley_kill_local_merchant",mtf_battle_mode,-1,
+("back_alley_kill_local_merchant",mtf_battle_mode|mtf_synch_inventory,-1,
   "You enter the back alley",[
     (0,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
     (1,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[]),
@@ -8810,7 +8810,7 @@ mission_templates = [
     wounds_vc,
 ]),
 
-("back_alley_revolt",mtf_battle_mode,charge,
+("back_alley_revolt",mtf_battle_mode|mtf_synch_inventory,charge,
     "You lead your men to battle.",
     [(0,mtef_team_0|mtef_use_exact_number,af_override_horse|af_override_weapons|af_override_head,aif_start_alarmed,4,[itm_quarter_staff]),
      (1,mtef_visitor_source|mtef_team_1,af_override_horse|af_override_weapons,aif_start_alarmed,1,[]),
@@ -10142,7 +10142,7 @@ mission_templates = [
 ),
 
   (
-    "besiege_inner_battle_castle",mtf_battle_mode,-1,
+    "besiege_inner_battle_castle",mtf_battle_mode|mtf_synch_inventory,-1,
     "You attack the walls of the castle...",
     [
      (0, mtef_attackers|mtef_use_exact_number|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
@@ -10229,7 +10229,7 @@ mission_templates = [
     ),
 
   (
-    "besiege_inner_battle_town_center",mtf_battle_mode,-1,
+    "besiege_inner_battle_town_center",mtf_battle_mode|mtf_synch_inventory,-1,
     "You attack the walls of the castle...",
     [
      (0, mtef_attackers|mtef_use_exact_number|mtef_team_1,af_override_horse,aif_start_alarmed,25,[]),
@@ -10318,7 +10318,7 @@ mission_templates = [
     + auxiliary_player
  ),
 
-("castle_attack_walls_defenders_sally",mtf_battle_mode,-1,#|mtf_synch_inventory
+("castle_attack_walls_defenders_sally",mtf_battle_mode|mtf_synch_inventory,-1,#|mtf_synch_inventory
   "You attack the walls of the castle...",[
      (0,mtef_attackers|mtef_team_1,0,aif_start_alarmed,40,[]),
      (0,mtef_attackers|mtef_team_1,0,aif_start_alarmed,0,[]),
@@ -10518,7 +10518,7 @@ mission_templates = [
   + auxiliary_player
 ),
 
-("castle_attack_walls_ladder",mtf_battle_mode,-1,#|mtf_synch_inventory
+("castle_attack_walls_ladder",mtf_battle_mode|mtf_synch_inventory,-1,#|mtf_synch_inventory
   "You attack the walls of the castle...",[
     #defender spawns
     (16,mtef_defenders|mtef_team_0,af_override_horse,aif_start_alarmed,11,[]),#0
@@ -14375,7 +14375,7 @@ mission_templates = [
     ]),
 ]),
 
-("ambush_riversw",mtf_battle_mode,-1,"Forest",[
+("ambush_riversw",mtf_battle_mode|mtf_synch_inventory,-1,"Forest",[
     (0,mtef_scene_source|mtef_team_0,af_override_horse,0,1,[]), #player go
     (1,mtef_scene_source|mtef_team_0,af_override_horse,0,1,[]), #player back
     (2,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,20,[]),
@@ -14561,7 +14561,7 @@ mission_templates = [
   ] + theoris_decapitation + jacobhinds_morale_triggers + morale_triggers + ai_horn
 ),
 
-("center_plunder", mtf_battle_mode,-1,
+("center_plunder", mtf_battle_mode|mtf_synch_inventory,-1,
     "plundering a settlement",
     [(1,mtef_team_0, 0,aif_start_alarmed,10,[]),
       (30,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
@@ -16305,7 +16305,7 @@ mission_templates = [
 ),
 
 
-("temple_raid", mtf_battle_mode,-1, "monasterio",[
+("temple_raid", mtf_battle_mode|mtf_synch_inventory,-1, "monasterio",[
 	  (1,mtef_team_0, af_override_horse,aif_start_alarmed,15,[]),
     (30,mtef_visitor_source|mtef_team_1,af_override_horse, 0, 10,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,10,[]),
@@ -16779,7 +16779,7 @@ mission_templates = [
     ]+ bodyguard_triggers,
 ),
 
-("paganholysites_atacado", mtf_battle_mode,-1,"monasterio",[
+("paganholysites_atacado", mtf_battle_mode|mtf_synch_inventory,-1,"monasterio",[
     (1,mtef_team_0,af_override_horse,aif_start_alarmed,60,[]),
     (30,mtef_visitor_source|mtef_team_1,af_override_horse, aif_start_alarmed, 12,[]),
     (3,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,12,[]),
@@ -17577,7 +17577,7 @@ mission_templates = [
     ]+ bodyguard_triggers,
   ),
 
-("ship_battle",mtf_battle_mode,-1,"You close in and board the enemy ships",[
+("ship_battle",mtf_battle_mode|mtf_synch_inventory,-1,"You close in and board the enemy ships",[
     (0,mtef_attackers|mtef_team_1,af_override_horse,aif_start_alarmed,2,[]),
     (1,mtef_attackers|mtef_team_1,af_override_horse,aif_start_alarmed,2,[]),
     (2,mtef_attackers|mtef_team_1,af_override_horse,aif_start_alarmed,2,[]),
@@ -19244,7 +19244,7 @@ mission_templates = [
     + auxiliary_player
   ),
 
-("conspiracy_fight", mtf_battle_mode,-1,"monasterio",[
+("conspiracy_fight", mtf_battle_mode|mtf_synch_inventory,-1,"monasterio",[
     (0,mtef_scene_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[]),
     (1,mtef_scene_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[]),
     (2,mtef_scene_source|mtef_team_0,af_override_horse, 0, 1,[]),
@@ -19907,7 +19907,7 @@ mission_templates = [
     ],[]),
 ],),
 
-("kill_supporters", mtf_battle_mode,-1,"monasterio",[
+("kill_supporters", mtf_battle_mode|mtf_synch_inventory,-1,"monasterio",[
     (0,mtef_visitor_source|mtef_team_0, af_override_horse|af_override_head|af_override_weapons,aif_start_alarmed,1,[itm_laurel_gold, itm_roman_gladius_rich_3]),
     (1,mtef_visitor_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[itm_roman_gladius]),
     (2,mtef_visitor_source|mtef_team_0,af_override_horse|af_override_weapons,aif_start_alarmed,1,[itm_roman_gladius]),
@@ -20048,7 +20048,7 @@ mission_templates = [
     ]),
 ]),
 
-("kill_christs", mtf_battle_mode,-1,"monasterio",[
+("kill_christs", mtf_battle_mode|mtf_synch_inventory,-1,"monasterio",[
     (0,mtef_scene_source|mtef_team_0, af_override_horse,aif_start_alarmed,1,[]),
     (1,mtef_visitor_source|mtef_team_1, af_override_horse,aif_start_alarmed,1,[]),
     (2,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed, 1,[]),
@@ -21266,7 +21266,7 @@ mission_templates = [
     ambient_scene_play_random_sound,
 ]),
 
-("viking_duel_normal",mtf_battle_mode|mtf_commit_casualties,-1,
+("viking_duel_normal",mtf_battle_mode|mtf_synch_inventory|mtf_commit_casualties,-1,
   "Prepare to duel.",[
     (0, mtef_visitor_source|mtef_team_0, af_override_horse, aif_start_alarmed, 1, []), #player start
     (1, mtef_visitor_source|mtef_team_2, af_override_horse, aif_start_alarmed, 1, []), #opponent start
@@ -24030,7 +24030,7 @@ mission_templates = [
     ambient_agent_play_sound,
 ]),
 
-("bandit_fight", 0,-1,
+("bandit_fight", mtf_synch_inventory,-1,
   "monasterio",[
     (0,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (1,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
@@ -24202,7 +24202,7 @@ mission_templates = [
       ]),
 ]),
 
-("street_fight", mtf_battle_mode,-1,
+("street_fight", mtf_battle_mode|mtf_synch_inventory,-1,
     "monasterio",
     [
       (0,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
@@ -24300,7 +24300,7 @@ mission_templates = [
   custom_commander_critical_strike,
 ]),
 
-("street_fight_2", mtf_battle_mode,-1,
+("street_fight_2", mtf_battle_mode|mtf_synch_inventory,-1,
     "monasterio",
     [
       (0,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
@@ -24394,7 +24394,7 @@ mission_templates = [
   custom_commander_critical_strike,
 ]),
 
-("bandit_fight_farmestead", mtf_battle_mode,-1,
+("bandit_fight_farmestead", mtf_battle_mode|mtf_synch_inventory,-1,
     "monasterio",
     [
       (0,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
@@ -24690,7 +24690,7 @@ mission_templates = [
     common_inventory_not_available,
 ]),
 
-("faustus_last_battle", mtf_battle_mode, -1, "monasterio",[
+("faustus_last_battle", mtf_battle_mode|mtf_synch_inventory, -1, "monasterio",[
     (0,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
     (1,mtef_visitor_source|mtef_team_1,  0,aif_start_alarmed,1,[]),
     (2,mtef_visitor_source|mtef_team_0,  0,aif_start_alarmed,1,[]),
@@ -24915,7 +24915,7 @@ mission_templates = [
           (finish_mission),
       ]),
 ]),
-("nile_fight", mtf_battle_mode,-1,"monasterio",[
+("nile_fight", mtf_battle_mode|mtf_synch_inventory,-1,"monasterio",[
     (0,mtef_visitor_source|mtef_team_0, af_override_horse,aif_start_alarmed,0,[]),
     (1,mtef_visitor_source|mtef_team_0, af_override_horse,aif_start_alarmed,0,[]),
     (2,mtef_visitor_source|mtef_team_0,af_override_horse, aif_start_alarmed, 0,[]),
@@ -25072,7 +25072,7 @@ mission_templates = [
     ]),
 ]),
 
-("freelancer_mission_bandit", mtf_battle_mode,-1,
+("freelancer_mission_bandit", mtf_battle_mode|mtf_synch_inventory,-1,
   "monasterio",[
     (0,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,0,[]),
     (1,mtef_visitor_source|mtef_team_0,0,aif_start_alarmed,0,[]),
@@ -29948,7 +29948,7 @@ mission_templates = [
     ],[]),
 ]),
 
-("wlods_advantures_fight", mtf_battle_mode,-1,
+("wlods_advantures_fight", mtf_battle_mode|mtf_synch_inventory,-1,
   "monasterio",[
     (0,mtef_visitor_source|mtef_team_0, 0,aif_start_alarmed,0,[]),
     (1,mtef_visitor_source|mtef_team_0, 0,aif_start_alarmed,0,[]),
@@ -30066,7 +30066,7 @@ mission_templates = [
     common_battle_order_panel_tick,
 ] + utility_triggers + battle_panel_triggers + improved_horse_archer_ai + dplmc_battle_mode_triggers_no_deathcam + theoris_decapitation),
 
-("wlods_advantures_jilu_siege", mtf_battle_mode,-1,
+("wlods_advantures_jilu_siege", mtf_battle_mode|mtf_synch_inventory,-1,
   "monasterio",[
     (0,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
     (1,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
@@ -30248,7 +30248,7 @@ mission_templates = [
     common_battle_order_panel_tick,
 ] + utility_triggers + battle_panel_triggers + dplmc_battle_mode_triggers_no_deathcam + theoris_decapitation),
 
-("wlods_advantures_sogdia_siege", mtf_battle_mode,-1,
+("wlods_advantures_sogdia_siege", mtf_battle_mode|mtf_synch_inventory,-1,
   "monasterio",[
     #attacker spawn + reinforcements
     (0,mtef_visitor_source|mtef_team_1,af_override_horse,aif_start_alarmed,1,[]),
@@ -30646,7 +30646,7 @@ mission_templates = [
     common_battle_order_panel_tick,
 ] + utility_triggers + battle_panel_triggers + dplmc_battle_mode_triggers_no_deathcam + theoris_decapitation),
 
-("wlods_advantures_3_sciri_battle", mtf_battle_mode,-1,
+("wlods_advantures_3_sciri_battle", mtf_battle_mode|mtf_synch_inventory,-1,
   "monasterio",[
     (0,mtef_visitor_source|mtef_team_0, 0,aif_start_alarmed,0,[]),
     (1,mtef_visitor_source|mtef_team_0, 0,aif_start_alarmed,0,[]),
@@ -31043,7 +31043,7 @@ mission_templates = [
     common_inventory_not_available,
 ]),
 
-("langobard_battle",mtf_battle_mode,-1,
+("langobard_battle",mtf_battle_mode|mtf_synch_inventory,-1,
     "plundering a settlement",
     [(0,mtef_visitor_source,0,0,1,[]),#player
     (1,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),#
@@ -33728,7 +33728,7 @@ mission_templates = [
     common_inventory_not_available,
 ]),
 
-("werdheri_battle_lair",mtf_battle_mode,-1, "triumph",[
+("werdheri_battle_lair",mtf_battle_mode|mtf_synch_inventory,-1, "triumph",[
     (0,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (1,mtef_visitor_source|mtef_team_1,af_override_horse,0,1,[]),
     (2,mtef_visitor_source|mtef_team_2,af_override_horse,0,1,[]),
