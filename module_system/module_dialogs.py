@@ -32486,69 +32486,83 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 []],
 
 ##prisoner
-[anyone|plyr,"dplmc_constable_talk",
-[(store_num_regular_prisoners,":prisoners", "p_main_party"),(ge,":prisoners",1)],
-"I have some prisoners -- can you sell them for me?", "dplmc_constable_prisoner",[]],
-
-##SB : convenience feature of selling prisoners in garrison
-[anyone|plyr,"dplmc_constable_talk",
-[(store_num_regular_prisoners,":prisoners", "$current_town"),(ge,":prisoners",1)],
-"We have prisoners in the dungeon -- let's have a look over them.", "dplmc_constable_garrison_prisoner_manage",[
-  #move prisoner
-  (party_clear, "p_temp_party"),
-  (assign, "$g_move_heroes", 1),
-  (call_script, "script_party_prisoners_add_party_prisoners", "p_temp_party", "p_main_party"),
-  (call_script, "script_party_remove_all_prisoners", "p_main_party"),
-  #mark global variable here to allow player to hold all the prisoners
-  (party_get_num_prisoners, "$diplomacy_var2", "$current_town"),
-  (assign, "$diplomacy_var", DPLMC_CURRENT_VERSION_CODE),
-  (call_script, "script_party_prisoners_add_party_prisoners", "p_main_party", "$current_town"),
-  (assign, "$g_move_heroes", 0),
-]],
-
-[anyone,"dplmc_constable_garrison_prisoner_manage",[
-  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
-  (party_get_num_prisoners, ":num_prisoners", "p_main_party"),
-  (store_num_regular_prisoners,reg0, "p_main_party"), #does this skip over heroes?
-  (store_sub, reg1, ":num_prisoners", reg0),
-],
-"Of course, {s0}. There are {reg0} prisoners left{reg1? and {reg1} nobles incarcerated:}.", "dplmc_constable_garrison_prisoner_sell",
-[(change_screen_trade_prisoners)]],
-
-[anyone|plyr,"dplmc_constable_garrison_prisoner_sell",[
-  # (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
-  (party_get_num_prisoners, ":num_prisoners", "p_main_party"),
-  (gt, ":num_prisoners", 0),
-],
-"Let's keep selling.", "dplmc_constable_garrison_prisoner_manage",
-[(change_screen_trade_prisoners)]],
-
-[anyone|plyr,"dplmc_constable_garrison_prisoner_sell",[],
-"We're done here.", "dplmc_constable_garrison_prisoner_done",[
-  #unset variables
-  (assign, "$diplomacy_var", 0),
-  (assign, "$diplomacy_var2", 0),
-]],
-
-[anyone,"dplmc_constable_garrison_prisoner_done",[
-],
-"Hopefully they'll get some honest labor done instead of languishing in the dungeon.", "dplmc_constable_pretalk",[
-  (assign, "$g_move_heroes", 1),
-  #move remaining prisoners back to garrison
-  (call_script, "script_party_remove_all_prisoners", "$current_town"),
-  (call_script, "script_party_prisoners_add_party_prisoners", "$current_town", "p_main_party"),
-  #restore player's prisoner
-  (call_script, "script_party_remove_all_prisoners", "p_main_party"),
-  (call_script, "script_party_prisoners_add_party_prisoners", "p_main_party", "p_temp_party"),
-  (assign, "$g_move_heroes", 0),
-]],
-
+[anyone|plyr,"dplmc_constable_talk",[
+  (store_num_regular_prisoners,":prisoners", "p_main_party"),
+  (store_num_regular_prisoners,":prisoners_town", "$current_town"),
+  (val_add, ":prisoners", ":prisoners_town"),
+  (ge, ":prisoners", 1),
+],"I have some prisoners -- can you sell them for me?",
+"dplmc_constable_prisoner",[]],
 [anyone,"dplmc_constable_prisoner",[
-  #SB : replaced Sire
-  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
 ],
-"At once, {s0}.", "dplmc_constable_pretalk",
-[(change_screen_trade_prisoners)]],
+"Better visit a slave trader...", "dplmc_constable_pretalk",[
+  (change_screen_trade_prisoners),
+]],
+# ##SB : convenience feature of selling prisoners in garrison
+# [anyone|plyr,"dplmc_constable_talk",[
+#   (store_num_regular_prisoners,":prisoners", "$current_town"),
+#   (ge,":prisoners",1)
+# ],
+# "We have prisoners in the dungeon -- let's have a look over them.",
+# "dplmc_constable_garrison_prisoner_manage",[
+#   #move prisoner
+#   (party_clear, "p_temp_party"),
+#   (assign, "$g_move_heroes", 1),
+#   (call_script, "script_party_prisoners_add_party_prisoners", "p_temp_party", "p_main_party"),
+#   (call_script, "script_party_remove_all_prisoners", "p_main_party"),
+#   #mark global variable here to allow player to hold all the prisoners
+#   (party_get_num_prisoners, "$diplomacy_var2", "$current_town"),
+#   (assign, "$diplomacy_var", DPLMC_CURRENT_VERSION_CODE),
+#   (call_script, "script_party_prisoners_add_party_prisoners", "p_main_party", "$current_town"),
+#   (assign, "$g_move_heroes", 0),
+# ]],
+
+# [anyone,"dplmc_constable_garrison_prisoner_manage",[
+#   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+#   (party_get_num_prisoners, ":num_prisoners", "p_main_party"),
+#   (store_num_regular_prisoners,reg0, "p_main_party"), #does this skip over heroes?
+#   (store_sub, reg1, ":num_prisoners", reg0),
+# ],
+# "Of course, {s0}. There are {reg0} prisoners left{reg1? and {reg1} nobles incarcerated:}.",
+# "dplmc_constable_garrison_prisoner_sell",[
+#   (change_screen_trade_prisoners)
+# ]],
+
+# [anyone|plyr,"dplmc_constable_garrison_prisoner_sell",[
+#   # (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+#   (party_get_num_prisoners, ":num_prisoners", "p_main_party"),
+#   (gt, ":num_prisoners", 0),
+# ],
+# "Let's keep selling.", "dplmc_constable_garrison_prisoner_manage",[
+#   (change_screen_trade_prisoners),
+# ]],
+
+# [anyone|plyr,"dplmc_constable_garrison_prisoner_sell",[],
+# "We're done here.", "dplmc_constable_garrison_prisoner_done",[
+#   #unset variables
+#   (assign, "$diplomacy_var", 0),
+#   (assign, "$diplomacy_var2", 0),
+# ]],
+
+# [anyone,"dplmc_constable_garrison_prisoner_done",[
+# ],
+# "Hopefully they'll get some honest labor done instead of languishing in the dungeon.", "dplmc_constable_pretalk",[
+#   (assign, "$g_move_heroes", 1),
+#   #move remaining prisoners back to garrison
+#   (call_script, "script_party_remove_all_prisoners", "$current_town"),
+#   (call_script, "script_party_prisoners_add_party_prisoners", "$current_town", "p_main_party"),
+#   #restore player's prisoner
+#   (call_script, "script_party_remove_all_prisoners", "p_main_party"),
+#   (call_script, "script_party_prisoners_add_party_prisoners", "p_main_party", "p_temp_party"),
+#   (assign, "$g_move_heroes", 0),
+# ]],
+
+# [anyone,"dplmc_constable_prisoner",[
+#   #SB : replaced Sire
+#   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+# ],
+# "At once, {s0}.", "dplmc_constable_pretalk",
+# [(change_screen_trade_prisoners)]],
 
 ##dismiss constable
 [anyone|plyr, "dplmc_constable_talk",
@@ -66070,6 +66084,8 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (ge, "$g_encountered_party_relation", 0),
   (neg|troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
   (neg|troop_slot_eq, "$g_talk_troop", slot_troop_mother, "trp_player"),
+  (neg|troop_slot_eq, "trp_player", slot_troop_father, "$g_talk_troop"),
+  (neg|troop_slot_eq, "trp_player", slot_troop_mother, "$g_talk_troop"),
 ],"[Flirt with her to improve relation]",
 "flirt",[
   (troop_set_slot, "$g_talk_troop", slot_troop_flirted_with, 1),
