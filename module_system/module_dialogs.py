@@ -24771,6 +24771,7 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
     (neq, "$g_talk_troop", "trp_mathildiz"),
     (neq, "$g_talk_troop", "trp_turakina"),
     (neq, "$g_talk_troop", "trp_antonia"),
+    (neq, "$g_talk_troop", "trp_npc34"),
     (neq, "$g_talk_troop", "trp_npc35"),
     (neg|troop_slot_eq, "$g_talk_troop", slot_troop_spouse, "trp_player"),
     (neg|troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
@@ -29902,7 +29903,10 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 #SB : grammar whom do -> whom would
 "To whom would you like to send the message?", "dplmc_chancellor_message_lord_select",[]],
 
-##select the lord who shall receive the message to hand over
+[anyone|plyr, "dplmc_chancellor_message_lord_select",
+[],"Nevermind.", "dplmc_chancellor_pretalk",
+[]],
+
 [anyone|plyr|repeat_for_troops, "dplmc_chancellor_message_lord_select",[
   (store_repeat_object, ":troop_no"),
   (neq, "$g_talk_troop", ":troop_no"),
@@ -29929,32 +29933,23 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
     (str_store_string, s1, "@{s1} at {s2}"), #str_s8_in_s12
   (try_end),
   (gt, ":leaded_party", 0),
-],"{s1}.", "dplmc_chancellor_message_ask",
-[
-(store_repeat_object, "$lord_selected"),
+],"{s1}.",
+"dplmc_chancellor_message_ask",[
+  (store_repeat_object, "$lord_selected"),
 ]],
 
-[anyone|plyr, "dplmc_chancellor_message_lord_select",
-[],"Nevermind.", "dplmc_chancellor_pretalk",
-[]],
-
-[anyone|plyr, "dplmc_chancellor_gift_lord_select",
-[
-],
-"I can't think of anyone.", "dplmc_chancellor_pretalk",[]],
-
-[anyone, "dplmc_chancellor_message_ask",
-[
-(str_store_troop_name, s6, "$lord_selected"),
-##diplomacy start+ Save gender to reg4
-(assign, reg4, 0),
-(try_begin),
-(call_script, "script_cf_dplmc_troop_is_female", "$lord_selected"),
-(assign, reg4, 1),
-(try_end),
+[anyone, "dplmc_chancellor_message_ask",[
+  (str_store_troop_name, s6, "$lord_selected"),
+  ##diplomacy start+ Save gender to reg4
+  (assign, reg4, 0),
+  (try_begin),
+    (call_script, "script_cf_dplmc_troop_is_female", "$lord_selected"),
+    (assign, reg4, 1),
+  (try_end),
 ##diplomacy end+
 ],
-"What do you want to tell {s6}?", "dplmc_chancellor_message_select",[]],
+"What do you want to tell {s6}?",
+"dplmc_chancellor_message_select",[]],
 
 ##ask to accompany to another lord
 [anyone|plyr, "dplmc_chancellor_message_select",
@@ -30473,36 +30468,33 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ],
 "To whom do you like to send the gift?", "dplmc_chancellor_gift_lord_select",[]],
 
-##select the lord who shall receive the gift to hand over
-[anyone|plyr|repeat_for_troops, "dplmc_chancellor_gift_lord_select",
-[
-(store_repeat_object, ":troop_no"),
-(troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-(neg|troop_slot_ge, ":troop_no", slot_troop_prisoner_of_party, 0),
-(troop_slot_eq, ":troop_no", slot_troop_met, 1),
-(neq, "trp_player", ":troop_no"),
-(troop_get_slot, ":target_party", ":troop_no", slot_troop_leaded_party),
-(gt, ":target_party", 0),
-(store_troop_faction, ":faction_no", ":troop_no"),
-(eq, ":faction_no", "$g_faction_selected"),
-(str_store_troop_name, s11, ":troop_no"),
+[anyone|plyr, "dplmc_chancellor_gift_lord_select",[
+],
+"I can't think of anyone.",
+"dplmc_chancellor_pretalk",[]],
 
-],"{s11}.", "dplmc_chancellor_gift_send_ask",
-[
-(store_repeat_object, "$lord_selected"),
+[anyone|plyr|repeat_for_troops, "dplmc_chancellor_gift_lord_select",[
+  (store_repeat_object, ":troop_no"),
+  (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
+  (neg|troop_slot_ge, ":troop_no", slot_troop_prisoner_of_party, 0),
+  (troop_slot_eq, ":troop_no", slot_troop_met, 1),
+  (neq, "trp_player", ":troop_no"),
+  (troop_get_slot, ":target_party", ":troop_no", slot_troop_leaded_party),
+  (gt, ":target_party", 0),
+  (store_troop_faction, ":faction_no", ":troop_no"),
+  (eq, ":faction_no", "$g_faction_selected"),
+  (str_store_troop_name, s11, ":troop_no"),
+],"{s11}.",
+"dplmc_chancellor_gift_send_ask",[
+  (store_repeat_object, "$lord_selected"),
 ]],
 
-[anyone|plyr, "dplmc_chancellor_gift_lord_select",
-[
+[anyone, "dplmc_chancellor_gift_send_ask",[
+  (str_store_item_name,s6,"$diplomacy_var"),
+  (str_store_troop_name, s11, "$lord_selected"),
 ],
-"I can't think of anyone.", "dplmc_chancellor_pretalk",[]],
-
-[anyone, "dplmc_chancellor_gift_send_ask",
-[
-(str_store_item_name,s6,"$diplomacy_var"),
-(str_store_troop_name, s11, "$lord_selected"),
-],
-"I will send a servant with the {s6} to {s11}.", "dplmc_chancellor_gift_send_confirm",[]],
+"I will send a servant with the {s6} to {s11}.",
+"dplmc_chancellor_gift_send_confirm",[]],
 
 [anyone|plyr, "dplmc_chancellor_gift_send_confirm",
 [
@@ -39465,30 +39457,35 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "Never mind.", "minister_pretalk",
 []],
 
-[anyone, "minister_diplomatic_kingdoms",
-[
-##diplomacy start+
-#Speed up, and also support non-traditional companions.
-##OLD:
-#(assign, ":companion_found", 0),
-#(try_for_range, ":emissary", companions_begin, companions_end),
-#(main_party_has_troop, ":emissary"),
-#(assign, ":companion_found", 1),
-#(try_end),
-#(eq, ":companion_found", 1),
-(assign, ":end_cond", kingdom_ladies_end),
-(try_for_range, ":emissary", heroes_begin, ":end_cond"),
+[anyone, "minister_diplomatic_kingdoms",[
+  ##diplomacy start+
+  #Speed up, and also support non-traditional companions.
+  ##OLD:
+  #(assign, ":companion_found", 0),
+  #(try_for_range, ":emissary", companions_begin, companions_end),
+  #(main_party_has_troop, ":emissary"),
+  #(assign, ":companion_found", 1),
+  #(try_end),
+  #(eq, ":companion_found", 1),
+  (assign, ":end_cond", kingdom_ladies_end),
+  (try_for_range, ":emissary", heroes_begin, ":end_cond"),
+    (neq, ":emissary", "trp_gwenhwyfar"),
+    (neq, ":emissary", "trp_thestia_tomitia"),
+    (neq, ":emissary", "trp_mathildiz"),
+    (neq, ":emissary", "trp_turakina"),
+    (neq, ":emissary", "trp_antonia"),
+    (neq, ":emissary", "trp_npc34"),
+    (neq, ":emissary", "trp_npc35"),
     (troop_slot_eq, ":emissary", slot_troop_occupation, slto_player_companion),
-	(main_party_has_troop, ":emissary"),
-	(assign, ":end_cond", ":emissary"),
-(try_end),
-(lt, ":end_cond", kingdom_ladies_end),
+    (main_party_has_troop, ":emissary"),
+    (assign, ":end_cond", ":emissary"),
+  (try_end),
+  (lt, ":end_cond", kingdom_ladies_end),
 ],
 "To whom do you wish to send this emissary?", "minister_diplomatic_kingdoms_select",
 []],
 
-[anyone, "minister_diplomatic_kingdoms",
-[
+[anyone, "minister_diplomatic_kingdoms",[
 ],
 "Unfortunately, there is no one to send right now.", "minister_pretalk",
 []],
@@ -39501,17 +39498,14 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 [anyone|plyr|repeat_for_factions, "minister_diplomatic_kingdoms_select",[
   (store_repeat_object, ":faction_no"),
   (is_between, ":faction_no", kingdoms_begin, kingdoms_end),
-  ##diplomacy start+ Required if the player can be ruler or co-ruler of another faction
   (neg|faction_slot_eq, ":faction_no", slot_faction_leader, "trp_player"),
   (neq, ":faction_no", "$players_kingdom"),
-  ##diplomacy end+
   (neq, ":faction_no", "fac_player_supporters_faction"),
   (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
   (faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
   (str_store_troop_name, s10, ":leader_no"),
   (str_store_faction_name, s11, ":faction_no"),
   (str_clear, s14),
-  #Has/has not recognized us a monarch
 ],
 "{s10} of the {s11}{s14}",
 "minister_diplomatic_initiative_type",[
@@ -39720,17 +39714,23 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 []],
 
 [anyone|plyr|repeat_for_troops, "minister_emissary_select",[
-    (store_repeat_object, ":emissary"),
-    (main_party_has_troop, ":emissary"),
-    (neq, ":emissary", "trp_npc34"),
-    (neq, ":emissary", "trp_npc35"),
-    (troop_slot_eq, ":emissary", slot_troop_prisoner_of_party, -1),
-    (is_between, ":emissary", companions_begin, companions_end),
-    (troop_slot_eq, ":emissary", slot_troop_occupation, slto_player_companion),
+  (store_repeat_object, ":emissary"),
+  (main_party_has_troop, ":emissary"),
 
-(str_store_troop_name, s11, ":emissary"),
+  (neq, ":emissary", "trp_gwenhwyfar"),
+  (neq, ":emissary", "trp_thestia_tomitia"),
+  (neq, ":emissary", "trp_mathildiz"),
+  (neq, ":emissary", "trp_turakina"),
+  (neq, ":emissary", "trp_antonia"),
+  (neq, ":emissary", "trp_npc34"),
+  (neq, ":emissary", "trp_npc35"),
+
+  (troop_slot_eq, ":emissary", slot_troop_prisoner_of_party, -1),
+  (is_between, ":emissary", companions_begin, companions_end),
+  (troop_slot_eq, ":emissary", slot_troop_occupation, slto_player_companion),
+  (str_store_troop_name, s11, ":emissary"),
 ], "{s11}", "minister_emissary_dispatch",[
-(store_repeat_object, "$g_emissary_selected"),
+  (store_repeat_object, "$g_emissary_selected"),
 ]],
 
 [anyone|plyr, "minister_emissary_select",[
