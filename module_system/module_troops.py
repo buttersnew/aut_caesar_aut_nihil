@@ -4622,7 +4622,7 @@ itm_arab_noble_tunic_1,itm_ring_2], knight_attrib_2,wp(150),knight_skills_2, 0x0
 ["senator_1", "Proconsul Ocella Sulpicius Galba", "Ocella Sulpicius Galba", tf_hero, 0, reserved,fac_kingdom_7,
 [itm_roman_legatus_helm_2,itm_roman_spatha_2,itm_leopard_horse_2,itm_musculata_legatus_2,itm_legio_armored_caligea_2,itm_officer_shield,itm_calceus_3,itm_roman_rich3],knight_attrib_2,wp(180),knight_skills_2, 0x0000000eb101200953c992fca30c975100000000001d2b2a0000000000000000, ],
 ["senator_2", "Consul Aulus Vitellius", "Aulus Vitellius", tf_hero, 0, reserved,fac_kingdom_7,
-[itm_roman_legatus_helm_3,itm_roman_spatha,itm_horse_1,itm_musculata_legatus_3,itm_graves_simple_2,itm_officer_shield,itm_calceus_4,itm_roman_rich_vitellius],knight_attrib_3,wp(200),knight_skills_3, 0x0000000af601300927701af12c2c0fac00000000001feb1a0000000000000000, ],
+[itm_roman_legatus_helm_3,itm_roman_spatha,itm_horse_1,itm_musculata_legatus_3,itm_graves_simple_2,itm_officer_shield,itm_calceus_4,itm_ring_1,itm_roman_rich_vitellius],knight_attrib_3,wp(200),knight_skills_3, 0x0000000af601300927701af12c2c0fac00000000001feb1a0000000000000000, ],
 ["senator_3", "Proconsul P. Cornelius Scipio", "P. Cornelius Scipio", tf_hero, 0, reserved,fac_kingdom_7,
 [itm_roman_legatus_helm_4,itm_roman_spatha_2,itm_horse_3,itm_musculata_legatus_4,itm_legio_armored_caligea,itm_officer_shield,itm_calceus_3,itm_roman_rich3],knight_attrib_4,wp(220),knight_skills_4, 0x0000000af110500954a25a852cac9b2d00000000001ea7220000000000000000, ],
 ["senator_4", "Consul Primus Fabius", "Primus Fabius", tf_hero, 0, reserved,fac_kingdom_7,
