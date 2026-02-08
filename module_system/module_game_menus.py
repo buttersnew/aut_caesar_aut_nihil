@@ -2904,7 +2904,7 @@ game_menus = [
 ]),
 
 ("camp_make_slaves",0,
-  "By selling their equipment to your men you can make your prisoners to slaves. From now on, they will lose their social status and their standing within their faction.",
+  "By stripping their equipment and consigning them to bondage you can make your prisoners into slaves. You gain no payment for this act; from now on, they will lose their social status and their standing within their faction.",
   "none",[
     (set_background_mesh, "mesh_pic_prisoner_man"),
   ],[
@@ -2920,7 +2920,6 @@ game_menus = [
 
       (jump_to_menu, "mnu_auto_return"),
     ]),
-
     ("continue",[
       (le, "$g_prisoner_recruit_troop_id", 0)
     ],"Go back.",[
@@ -2928,23 +2927,19 @@ game_menus = [
     ]),
 ]),
 
-  ("camp_no_prisoners",0,
-   "You have no prisoners to recruit from.",
-   "none",
-   [],
-    [
-      ("continue",[],"Continue.",
-       [(jump_to_menu, "mnu_camp"),
-        ]
-       ),
-      ]
-  ),
+("camp_no_prisoners",0,
+  "You have no prisoners to recruit from.",
+  "none",[
+  ],[
+    ("continue",[],"Continue.",[
+      (jump_to_menu, "mnu_camp"),
+    ]),
+]),
 
-  ("camp_action_read_book",0,
-   "Choose a book to read:",
-   "none",
-   [],
-    [
+("camp_action_read_book",0,
+  "Choose a book to read:",
+  "none",
+  [],[
       ("action_read_book_1",[(player_has_item, "itm_book_tactics"),
                              (item_slot_eq, "itm_book_tactics", slot_item_book_read, 0),
                              (str_store_item_name, s1, "itm_book_tactics"),
@@ -3055,8 +3050,7 @@ game_menus = [
        [(jump_to_menu, "mnu_camp"),
         ]
        ),
-      ]
-  ),
+]),
 
 ("camp_action_read_book_start",0,
   "{s1}",
@@ -5372,10 +5366,47 @@ game_menus = [
                 (party_clear, "p_temp_party_2"),
                 (call_script, "script_move_members_with_ratio", "p_temp_party", "p_temp_party_2"),
 
+                # print stats of p_temp_party_2
+                # (party_get_num_companions, ":num_rescued_prisoners", "p_temp_party_2"),
+                # (party_get_num_prisoners,  ":num_captured_enemies", "p_temp_party_2"),
+                # (assign, reg0, ":num_rescued_prisoners"),
+                # (assign, reg1, ":num_captured_enemies"),
+                # (display_message, "@{reg0} rescued prisoners and {reg1} captured enemies to be distributed to allies..."),
+
+
                 #TODO: This doesn't handle prisoners if our allies joined battle after us.
+                (display_message, "@Check..."),
                 (try_begin),
                     (gt, "$g_ally_party", 0),
+                    # (str_store_party_name, s13, "$g_ally_party"),
+                    # (display_message, "@Distributing prisoners to {s13}..."),
+                    # (display_message, "@Distributing prisoners to ally party..."),
                     (distribute_party_among_party_group, "p_temp_party_2", "$g_ally_party"),
+                (else_try),
+                    # (display_message, "@No ally party to distribute prisoners to attached parties of main party."),
+
+                    (val_sub, ":total_initial_strength", ":player_party_initial_strength"), #we need to remove player party strength from total strength to calculate share of attached parties correctly.
+                    (gt, ":total_initial_strength", 0),
+
+                    (party_get_num_attached_parties, ":num_attached_parties",  "p_main_party"),
+                    (ge, ":num_attached_parties", 1),
+                    (try_for_range_backwards, ":attached_party_rank", 0, ":num_attached_parties"),
+
+                        (party_get_attached_party_with_rank, ":attached_party", "p_main_party", ":attached_party_rank"),
+                        (party_is_active, ":attached_party"),
+
+                        # (str_store_party_name, s13, ":attached_party"),
+                        # (display_message, "@Distributing prisoners to attached party {s13}..."),
+
+                        (call_script, "script_party_calculate_strength", ":attached_party",0),
+                        (assign, ":attached_party_strength", reg(0)),
+                        (store_mul, ":attached_party_share", ":attached_party_strength", 1000),
+                        (val_div, ":attached_party_share", ":total_initial_strength"),
+                        (assign, "$pin_number", ":attached_party_share"), #we send this as a parameter to the script.
+
+                        (call_script, "script_move_members_with_ratio", "p_temp_party_2", ":attached_party"),
+                    (try_end),
+
                 (try_end),
                 #next if there's anything left, we'll open up the party exchange screen and offer them to the player.
             (try_end),

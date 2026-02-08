@@ -11585,6 +11585,10 @@ scripts = scripts_hardcoded + [
             (party_quick_attach_to_current_battle, ":party_no", 0),
             (str_store_party_name, s1, ":party_no"),
             (display_message, "str_s1_joined_battle_friend"),
+            # (try_begin),
+            #     (le, "$g_ally_party", 0),
+            #     (assign, "$g_ally_party", ":party_no"),
+            # (try_end),
         (else_try),
             (party_slot_eq, ":party_no", slot_party_type, spt_companion_raider),
             ##water travel
@@ -11594,6 +11598,10 @@ scripts = scripts_hardcoded + [
             (party_quick_attach_to_current_battle, ":party_no", 0),
             (str_store_party_name, s1, ":party_no"),
             (display_message, "str_s1_joined_battle_friend"),
+            # (try_begin),
+            #     (le, "$g_ally_party", 0),
+            #     (assign, "$g_ally_party", ":party_no"),
+            # (try_end),
         (else_try),
             (eq, ":besiege_mode", 0),
             (lt, ":reln_with_player", 0),
@@ -11693,6 +11701,10 @@ scripts = scripts_hardcoded + [
             # ## SB : colorize
             # (faction_get_color, ":color", ":faction_no"),
             (display_message, "str_s1_joined_battle_friend", message_positive),
+            # (try_begin),
+            #     (le, "$g_ally_party", 0),
+            #     (assign, "$g_ally_party", ":party_no"),
+            # (try_end),
 
             (troop_get_slot, ":limit", "$g_player_troop", slot_troop_renown),
             (val_sub, ":limit", dplmc_command_renown_limit),
