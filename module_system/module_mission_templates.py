@@ -30118,6 +30118,16 @@ mission_templates = [
     (47,mtef_visitor_source|mtef_team_0,af_override_horse,aif_start_alarmed,1,[]),
   ], p_wetter + storms +
   [
+    (ti_on_agent_knocked_down, 0, 0, [],[
+      (store_trigger_param_1, ":agent"),
+      (agent_get_troop_id, ":troop", ":agent"),
+      (eq, ":troop", "$temp1"),
+      (jump_to_menu, "$temp2"),
+      (stop_all_sounds, 1),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 500),
+      (finish_mission, 14),
+      (display_message, "@YOU KILLED THE ENEMY LEADER! Unfortunately, he shoots with a crossbow, hitting you with his last shot. You have been defeated...", message_negative),
+    ]),
     common_siege_attacker_do_not_stall,
     cannot_spawn_commoners,
     improved_lightning,
@@ -30160,7 +30170,9 @@ mission_templates = [
       (call_script, "script_music_set_situation_with_culture", mtf_sit_siege),
     ]),
 
-    (ti_tab_pressed, 0, 0, [(display_message,"str_cannot_leave_now")],[]),
+    (ti_tab_pressed, 0, 0, [
+      (display_message,"str_cannot_leave_now")
+    ],[]),
 
     (1, 3, ti_once, [
       (neg|main_hero_fallen),

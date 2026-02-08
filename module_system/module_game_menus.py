@@ -2280,6 +2280,11 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_camp"),
   ],[
+    ("text_scene",[
+    ],"Test jilu_fortress.",[
+      (jump_to_scene, "scn_jilu_fortress"),
+      (change_screen_mission),
+    ]),
 			# ("camp_action",[],"Kill Dullius.",[
       #   (call_script, "script_kill_lord_lady", "trp_aux_commander_11", "trp_player", 0),
       # ]),
