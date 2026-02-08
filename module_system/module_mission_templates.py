@@ -95,10 +95,10 @@ spawn_alexandria_lighthouse = (0, 0, ti_once, [
   (position_set_z, pos1, 0),
 
   # --- DEBUG: Print the final spawn coordinates ---
-  (assign, reg5, ":dir_x"),
-  (assign, reg6, ":dir_y"),
-  (assign, reg7, 0),
-  (display_message, "@DEBUG: Lighthouse spawning at X:{reg5}, Y:{reg6}, Z:{reg7}"),
+  # (assign, reg5, ":dir_x"),
+  # (assign, reg6, ":dir_y"),
+  # (assign, reg7, 0),
+  # (display_message, "@DEBUG: Lighthouse spawning at X:{reg5}, Y:{reg6}, Z:{reg7}"),
 
   (set_spawn_position, pos1),
   (spawn_scene_prop, "spr_alexandria_lighthouse_icon"),
