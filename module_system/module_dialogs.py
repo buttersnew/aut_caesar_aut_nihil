@@ -32495,8 +32495,8 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 "dplmc_constable_prisoner",[]],
 [anyone,"dplmc_constable_prisoner",[
 ],
-"Better visit a slave trader...", "dplmc_constable_pretalk",[
-  (change_screen_trade_prisoners),
+"Better visit a slave trader...",
+"dplmc_constable_pretalk",[
 ]],
 # ##SB : convenience feature of selling prisoners in garrison
 # [anyone|plyr,"dplmc_constable_talk",[
