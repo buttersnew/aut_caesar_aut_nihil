@@ -5914,8 +5914,15 @@ dialogs =[
 ],"I am {playername}.",
 "wlodowiecus_4_intro_1_roman_lady_2",[]],
 [anyone|plyr ,"wlodowiecus_4_intro_1_roman_lady_1",[
+	(str_store_string, s40, "@."),
+	(try_begin),
+		(eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+    (call_script, "script_get_player_rank_string_s43"),
+    (str_store_string, s40, "@, {s43}."),
+	(try_end),
 ],"My name is {playername}{s40} At your service {reg65?Domina:Dominus}.",
 "wlodowiecus_4_intro_1_roman_lady_2",[]],
+
 [anyone ,"wlodowiecus_4_intro_1_roman_lady_2",[
 ],"Ah, a pleasure to meet you, {playername}. You must be one of the adventurers The Lybian spoke so highly of."
 +" I was just about to head over and enjoy the evening meal, but do seek me out afterwards. I'd love to hear all about your journeys"
@@ -5982,6 +5989,12 @@ dialogs =[
 ],"I am {playername}.",
 "wlodowiecus_4_intro_roman_lady_2",[]],
 [anyone|plyr ,"wlodowiecus_4_intro_roman_lady_1",[
+	(str_store_string, s40, "@."),
+	(try_begin),
+		(eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+    (call_script, "script_get_player_rank_string_s43"),
+    (str_store_string, s40, "@, {s43}."),
+	(try_end),
 ],"My name is {playername}{s40} At your service {reg65?Domina:Dominus}.",
 "wlodowiecus_4_intro_roman_lady_2",[]],
 [anyone ,"wlodowiecus_4_intro_roman_lady_2",[
@@ -6320,11 +6333,17 @@ dialogs =[
 	(str_store_string, s40, "@."),
 	(try_begin),
 		(eq, "$g_talk_troop_faction", "fac_kingdom_7"),
-        (call_script, "script_get_player_rank_string_s43"),
-        (str_store_string, s40, "@, {s43}."),
+    (call_script, "script_get_player_rank_string_s43"),
+    (str_store_string, s40, "@, {s43}."),
 	(try_end),
 ],"I am {playername}{s40}", "wlodowiecus_4_intro_roman_noble_2",[]],
 [anyone|plyr ,"wlodowiecus_4_intro_roman_noble_1",[
+	(str_store_string, s40, "@."),
+	(try_begin),
+		(eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+    (call_script, "script_get_player_rank_string_s43"),
+    (str_store_string, s40, "@, {s43}."),
+	(try_end),
 ],"My name is {playername}{s40} At your service {reg65?Domina:Dominus}.",
 "wlodowiecus_4_intro_roman_noble_2",[]],
 [anyone,"wlodowiecus_4_intro_roman_noble_2",[
@@ -46258,10 +46277,14 @@ I knew that I had found someone worthy of becoming a commander of my realm.", "l
 	(try_end),
 ],  "I am {playername}{s40}", "lord_intro",[]],
 [anyone|plyr ,"lord_meet_neutral",[
-##diplomacy start+ use correct gender
+	(str_store_string, s40, "@."),
+	(try_begin),
+		(eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+    (call_script, "script_get_player_rank_string_s43"),
+    (str_store_string, s40, "@, {s43}."),
+	(try_end),
 ],  "My name is {playername}{s40} At your service {reg65?Domina:Dominus}.",
 "lord_intro",[]],
-##diplomacy end+
 
 [trp_kingdom_7_lord ,"lord_intro",[
   (troop_slot_eq, "trp_global_variables", g_nero_intro, 1),
