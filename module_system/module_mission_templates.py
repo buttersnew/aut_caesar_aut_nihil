@@ -23394,13 +23394,46 @@ mission_templates = [
         (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
         (finish_mission, 3),
       (else_try),
-        (num_active_teams_le,1),
-        (display_message, "@The training is over. Press tab to leave."),
+
+        # some schizo reported he couldnt leave the mission
+        (assign, ":enemy_alive", 0),
+        (try_for_agents, ":agent_no"),
+          (agent_is_active, ":agent_no"),
+          (agent_is_alive, ":agent_no"),
+          (agent_get_team, ":agent_team", ":agent_no"),
+          (eq, ":agent_team", 1),
+          (assign, ":enemy_alive", 1),
+        (try_end),
+        (this_or_next|eq, ":enemy_alive", 0),
+
+        (num_active_teams_le, 1),
+        # (get_player_agent_no, ":player_agent"),
+        # (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),#use this for conversation
+        # (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
+        # (assign, "$auto_menu", "mnu_freelancer_task_training_debrief"),
+        # (jump_to_menu, "mnu_auto_return_map"),
+        # (stop_all_sounds, 1),
+        # (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+        # (finish_mission, 3),
+        (display_message, "@The training is over. Press TAB to leave."),
       (try_end),
     ]),
-    (ti_tab_pressed, 0, 0, [],[
+    (ti_tab_pressed, 0, 0, [
+    ],[
       (try_begin),
-        (num_active_teams_le,1),
+
+        # some schizo reported he couldnt leave the mission
+        (assign, ":enemy_alive", 0),
+        (try_for_agents, ":agent_no"),
+          (agent_is_active, ":agent_no"),
+          (agent_is_alive, ":agent_no"),
+          (agent_get_team, ":agent_team", ":agent_no"),
+          (eq, ":agent_team", 1),
+          (assign, ":enemy_alive", 1),
+        (try_end),
+        (this_or_next|eq, ":enemy_alive", 0),
+        (num_active_teams_le, 1),
+
         (get_player_agent_no, ":player_agent"),
         (agent_get_kill_count, "$g_arena_training_kills", ":player_agent", 1),#use this for conversation
         (quest_set_slot, "qst_freelancing", slot_quest_freelancer_event, 1),
