@@ -59750,10 +59750,14 @@ gaining the right to choose a banner of your own and fight under it in battle.",
 [anyone,"lord_tell_mission",[
   (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
   (eq, "$g_talk_troop_faction", "$players_kingdom"),
-  #(ge, "$g_rank", 1),
+
+  (neg|check_quest_active, "qst_thunder"), # to avoid issues
+  (neg|check_quest_active, "qst_nero_greece_tour"),# to avoid issues, nero if busy with greece tour anyway
+
   (neg|quest_slot_ge, "qst_thunder", slot_quest_thunder_dont_give_again, 1),
   (neg|check_quest_active, "qst_thunder"),
-], "As a matter of fact, I have a task for you, {playername}.", "thunder_god_talk",
+], "As a matter of fact, I have a task for you, {playername}.",
+"thunder_god_talk",
 []],
 
 [anyone,"lord_tell_mission",[

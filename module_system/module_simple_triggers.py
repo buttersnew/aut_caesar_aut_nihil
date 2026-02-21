@@ -11916,7 +11916,8 @@ simple_triggers = [
     (ge, ":hour", 24*14),#2 weeks
 
     (try_begin),
-        (neg|check_quest_active, "qst_nero_greece_tour"),# do avoid issues, nero if busy with greece tour anyway
+        (neg|check_quest_active, "qst_thunder"), # to avoid issues
+        (neg|check_quest_active, "qst_nero_greece_tour"),# to avoid issues, nero if busy with greece tour anyway
         (neg|check_quest_active, "qst_nero_special_quest"),
         (eq, "$players_kingdom", "fac_kingdom_7"),
         (troop_slot_ge, "trp_player", slot_troop_renown, 200),

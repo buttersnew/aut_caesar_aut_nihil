@@ -17534,7 +17534,7 @@ scripts = scripts_hardcoded + [
         (store_current_hours, ":hours_at_current_state"),
         (faction_get_slot, ":current_state_started", ":faction_no", slot_faction_ai_current_state_started),
         (val_sub, ":hours_at_current_state", ":current_state_started"),
-        (ge, ":hours_at_current_state", 72),
+        (ge, ":hours_at_current_state", 72),#3 days
         (faction_set_slot, ":faction_no", slot_faction_ai_state, sfai_default),
         (faction_set_slot, ":faction_no", slot_faction_ai_object, -1),
         (assign, "$player_marshal_ai_state", sfai_default),
@@ -73227,7 +73227,7 @@ scripts = scripts_hardcoded + [
     (this_or_next|eq, ":troop", "trp_syrian_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_egyptian_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_custom_standard_bearer"),
-    (this_or_next|eq, ":troop", "trp_custom_standard_bearer_car"),
+    (this_or_next|eq, ":troop", "trp_custom_standard_bearer_cav"),
     (this_or_next|eq, ":troop", "trp_custom_standard_bearer_skirmisher"),
 
     (this_or_next|eq, ":troop", "trp_legatus_legionis"),
@@ -94934,7 +94934,7 @@ scripts = scripts_hardcoded + [
 # block suitors who are dead from being selected as rivals, and also update slot
 ("block_dead_suitors",[
     (store_script_param, ":possible_rival", 1),
-    (assign, ":c", 1)
+    (assign, ":c", 1),
     (try_begin),# block dead lords
       (troop_slot_ge, ":possible_rival", slot_troop_occupation, dplmc_slto_dead),#is dead
       (troop_set_slot, ":possible_rival", slot_troop_love_interest_1, -1),
