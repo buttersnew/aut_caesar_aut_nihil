@@ -2372,6 +2372,8 @@ praefectus_urbani_replace_confirm_2
 praefectus_urbani_talk_explain
 minister_talk
 minister_issues
+thestia_court_rejoin_talk
+thestia_court_rejoin_confirm
 member_wilderness_talk
 member_wilderness_join
 member_wilderness_no_join
