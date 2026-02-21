@@ -16805,8 +16805,8 @@ scripts = scripts_hardcoded + [
             (gt, ":troop_wealth", ":improvement_cost"),
             (val_sub, ":troop_wealth", ":improvement_cost"),
             (try_begin),
-                # (this_or_next|ge, "$cheat_mode", 1),
-                # (ge, ":is_affiliated", 1),#<-- dplmc+ added
+                (this_or_next|ge, "$cheat_mode", 1),
+                (ge, ":is_affiliated", 1),#<-- dplmc+ added
                 (assign, reg6, ":improvement_time"),
                 (assign, reg7, ":improvement_cost"),
                 (str_store_troop_name_link, s10, ":troop_no"),
@@ -73210,16 +73210,20 @@ scripts = scripts_hardcoded + [
 
 ("cf_is_high_officer",[
     (store_script_param_1, ":troop"),
-    (this_or_next|eq, ":troop", "trp_egyptian_standard_bearer"),
-    (this_or_next|eq, ":troop", "trp_celtic_standard_bearer"),
-    (this_or_next|eq, ":troop", "trp_judean_standard_bearer"),
-    (this_or_next|eq, ":troop", "trp_parthian_standard_bearer"),
-    (this_or_next|eq, ":troop", "trp_armenian_standard_bearer"),
-    (this_or_next|eq, ":troop", "trp_caucasian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_bosporan_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_judean_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_germanic_standard_bearer"),
-    (this_or_next|eq, ":troop", "trp_bosporan_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_celtic_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_dacian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_armenian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_caucasian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_parthian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_syrian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_egyptian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_custom_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_custom_standard_bearer_car"),
+    (this_or_next|eq, ":troop", "trp_custom_standard_bearer_skirmisher"),
+
     (this_or_next|eq, ":troop", "trp_legatus_legionis"),
     (this_or_next|eq, ":troop", "trp_custom_tribunus"),
     (this_or_next|eq, ":troop", "trp_custom_primus_pilius"),
