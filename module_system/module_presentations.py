@@ -6317,14 +6317,12 @@ presentations = presentations_wse2 + [
         (overlay_set_position, reg1, pos1),
 
         (store_random_in_range, ":cost_for6", 21000, 22000),
-        (val_mul, ":cost_for6", -1),
-        (assign, reg0, ":cost_for6"),
         (val_sub, ":net_change", ":cost_for6"),
+
+        (store_mul, reg0, ":cost_for6", -1),
 
         (create_text_overlay, reg1, "str_reg0", tf_right_align|tf_single_line),
         (overlay_set_color, reg1, 0xFF2C2C),
-
-
 
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),

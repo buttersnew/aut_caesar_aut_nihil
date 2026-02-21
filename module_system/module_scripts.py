@@ -20916,6 +20916,13 @@ scripts = scripts_hardcoded + [
         (troop_slot_eq, ":companion", slot_troop_occupation, 0),
         (set_visitor, 8, ":companion"),
     (try_end),
+    (try_begin),
+        (eq, ":center_no", "$g_player_court"),
+        (neg|main_party_has_troop, "trp_thestia_tomitia"),
+        (troop_slot_eq, "trp_thestia_tomitia", slot_troop_occupation, slto_player_companion),
+        (troop_slot_eq, "trp_thestia_tomitia", slot_troop_cur_center, ":center_no"),
+        (set_visitor, 16, "trp_thestia_tomitia"),
+    (try_end),
 
     (try_begin),##ROME
         (eq, "$current_town", "p_town_6"),

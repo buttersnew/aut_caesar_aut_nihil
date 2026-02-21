@@ -24019,6 +24019,33 @@ dialogs =[
 ],"It has been an honor to serve you, {sire/my lady}",
 "close_window",[]],
 
+[trp_thestia_tomitia,"start",[
+  (eq, "$talk_context", tc_court_talk),
+  (neg|main_party_has_troop, "trp_thestia_tomitia"),
+  (troop_slot_eq, "trp_thestia_tomitia", slot_troop_occupation, slto_player_companion),
+  (troop_slot_eq, "trp_thestia_tomitia", slot_troop_cur_center, "$g_player_court"),
+],"Do you want me to rejoin your retinue?", "thestia_court_rejoin_talk",[]],
+
+[trp_thestia_tomitia,"start",[
+  (eq, "$talk_context", tc_court_talk),
+  (main_party_has_troop, "trp_thestia_tomitia"),
+  (troop_slot_eq, "trp_thestia_tomitia", slot_troop_occupation, slto_player_companion),
+],"Let's leave whenever you are ready.", "close_window",[]],
+
+
+[anyone|plyr,"thestia_court_rejoin_talk",[], "Yes. Rejoin me.", "thestia_court_rejoin_confirm",[]],
+[anyone|plyr,"thestia_court_rejoin_talk",[], "Not yet. Wait for me in court.", "close_window",[]],
+
+[anyone,"thestia_court_rejoin_confirm",[
+  (troops_can_join, 1),
+],"At once. I will rejoin your retinue.", "close_window",[
+  (call_script, "script_recruit_troop_as_companion", "trp_thestia_tomitia"),
+]],
+
+[anyone,"thestia_court_rejoin_confirm",[
+  (neg|troops_can_join, 1),
+],"Your party is full at the moment. I will remain in your court until there is room.", "close_window",[]],
+
 # [anyone,"start",[
 #   (troop_slot_eq,"$g_talk_troop", slot_troop_occupation, slto_player_companion),
 #   (party_slot_eq, "$g_encountered_party", slot_party_type, spt_castle),
@@ -63032,8 +63059,11 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
   (quest_set_slot, "qst_organize_feast", slot_quest_expiration_days, 30),
   (call_script, "script_start_quest", "qst_organize_feast", "$g_talk_troop"),
 
+  (store_current_hours, ":hours"),
   (faction_set_slot, "$players_kingdom", slot_faction_ai_state, sfai_feast),
   (faction_set_slot, "$players_kingdom", slot_faction_ai_object, "$g_player_court"),
+  (faction_set_slot, "$players_kingdom", slot_faction_ai_current_state_started, ":hours"),
+  (faction_set_slot, "$players_kingdom", slot_faction_last_feast_start_time, ":hours"),
 
   (assign, "$player_marshal_ai_state", sfai_feast),
   (assign, "$player_marshal_ai_object", "$g_player_court"),
@@ -99104,7 +99134,6 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
   (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
 ], "Your orders, {s0}?", "hall_guard_talk",[]],
 					#diplomacy end+
-
 
 [anyone,"start",[
   (this_or_next|eq, "$talk_context", tc_court_talk),

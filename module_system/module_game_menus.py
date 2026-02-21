@@ -2280,6 +2280,11 @@ game_menus = [
   "none",[
     (set_background_mesh, "mesh_pic_camp"),
   ],[
+    # jump to menu mnu_emperor_event_00
+    # ("text_scene",[
+    # ],"Test Thestitia.",[
+    #   (jump_to_menu, "mnu_emperor_event_00"),
+    # ]),
     # ("text_scene",[
     # ],"Test jilu_fortress.",[
     #   (jump_to_scene, "scn_jilu_fortress"),
@@ -2288,7 +2293,6 @@ game_menus = [
 			# ("camp_action",[],"Kill Dullius.",[
       #   (call_script, "script_kill_lord_lady", "trp_aux_commander_11", "trp_player", 0),
       # ]),
-
     # debug all quest slots
     # ("debug_all_quest_slots",[
     #   (troop_slot_eq, "trp_global_variables", g_is_dev, 1),
@@ -32734,11 +32738,29 @@ game_menus = [
       (troop_set_slot, "trp_thestia_tomitia", slot_troop_occupation, slto_player_companion),
       (troop_set_slot, "trp_thestia_tomitia", slot_troop_cur_center, -1),
       (troop_set_slot, "trp_thestia_tomitia", slot_troop_met, 1),
-      (call_script, "script_recruit_troop_as_companion", "trp_thestia_tomitia"),
+      (assign, ":joined_party", 0),
+      (try_begin),
+        (troops_can_join, 1),
+        (call_script, "script_recruit_troop_as_companion", "trp_thestia_tomitia"),
+        (assign, ":joined_party", 1),
+      (else_try),
+        (assign, ":target_court", "p_town_6"),
+        (try_begin),
+          (gt, "$g_player_court", 0),
+          (assign, ":target_court", "$g_player_court"),
+        (try_end),
+        (troop_set_slot, "trp_thestia_tomitia", slot_troop_cur_center, ":target_court"),
+      (try_end),
       (call_script, "script_change_player_relation_with_troop", "trp_thestia_tomitia", 20),
       (troop_set_faction, "trp_thestia_tomitia", "$players_kingdom"),
       (troop_set_note_available, "trp_thestia_tomitia", 1),
-      (str_store_string, s1, "@She seems to be very happy about your proposal and accepts. Rumors spread through Roma, about your good deed! She is now a companion."),
+      (try_begin),
+        (eq, ":joined_party", 1),
+        (str_store_string, s1, "@She seems to be very happy about your proposal and accepts. Rumors spread through Roma, about your good deed! She is now a companion."),
+      (else_try),
+        (str_store_party_name, s13, ":target_court"),
+        (str_store_string, s1, "@She seems to be very happy about your proposal and accepts. Your retinue is full, so she has been sent to your court at {s13} and will await you there."),
+      (try_end),
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
     ("answere_0",[
@@ -32752,11 +32774,29 @@ game_menus = [
       (troop_set_slot, "trp_thestia_tomitia", slot_troop_occupation, slto_kingdom_lady),
       (troop_set_slot, "trp_thestia_tomitia", slot_troop_cur_center, -1),
       (troop_set_slot, "trp_thestia_tomitia", slot_troop_met, 1),
-      (call_script, "script_recruit_troop_as_companion", "trp_thestia_tomitia"),
+      (assign, ":joined_party", 0),
+      (try_begin),
+        (troops_can_join, 1),
+        (call_script, "script_recruit_troop_as_companion", "trp_thestia_tomitia"),
+        (assign, ":joined_party", 1),
+      (else_try),
+        (assign, ":target_court", "p_town_6"),
+        (try_begin),
+          (is_between, "$g_player_court", walled_centers_begin, walled_centers_end),
+          (assign, ":target_court", "$g_player_court"),
+        (try_end),
+        (troop_set_slot, "trp_thestia_tomitia", slot_troop_cur_center, ":target_court"),
+      (try_end),
       (call_script, "script_change_player_relation_with_troop", "trp_thestia_tomitia", 20),
       (troop_set_faction, "trp_thestia_tomitia", "$players_kingdom"),
       (troop_set_note_available, "trp_thestia_tomitia", 1),
-      (str_store_string, s1, "@She seems to be very happy about your proposal and accepts. Rumors spread through Roma, about your good deed! She is now your wife."),
+      (try_begin),
+        (eq, ":joined_party", 1),
+        (str_store_string, s1, "@She seems to be very happy about your proposal and accepts. Rumors spread through Roma, about your good deed! She is now your wife."),
+      (else_try),
+        (str_store_party_name, s13, ":target_court"),
+        (str_store_string, s1, "@She seems to be very happy about your proposal and accepts. Your retinue is full, so she has been sent to your court at {s13} and will await you there as your wife."),
+      (try_end),
       (jump_to_menu, "mnu_event_juicio_end"),
     ]),
     ("answere_0",[],"I will adopt her. She deserves something better.",[
