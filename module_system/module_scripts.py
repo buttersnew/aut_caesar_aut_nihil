@@ -12434,6 +12434,7 @@ scripts = scripts_hardcoded + [
             (call_script, "script_courtship_event_lady_break_relation_with_suitor", ":courted_lady", ":troop_no"),
         (try_end),
         (try_begin),
+            (neg|troop_slot_ge, ":troop_no", slot_troop_occupation, slto_retirement),#not dead
             (neg|troop_slot_ge, ":troop_no", slot_troop_spouse, 0),
             (neg|is_between, ":troop_no", kings_begin, kings_end),
         #	(neg|is_between, ":troop_no", pretenders_begin, pretenders_end),
@@ -72736,6 +72737,11 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, ":lord", slot_troop_assassin_attempt, 0),
     (troop_set_slot, ":lord", slot_troop_cur_center, -1),
 
+    # love interests
+    (troop_set_slot, ":lord", slot_troop_love_interest_1, -1),
+    (troop_set_slot, ":lord", slot_troop_love_interest_2, -1),
+    (troop_set_slot, ":lord", slot_troop_love_interest_3, -1),
+
     ##handle honorary titles
     (try_begin),
         (troop_get_slot, ":title", ":lord", slot_troop_honorary_title),
@@ -94924,7 +94930,20 @@ scripts = scripts_hardcoded + [
     (this_or_next|eq, ":troop_no", "trp_saka_prison_guard"),
     (eq, ":troop_no", "trp_garamantian_prison_guard"),
 ]),
-
+# script_block_dead_suitors
+# block suitors who are dead from being selected as rivals, and also update slot
+("block_dead_suitors",[
+    (store_script_param, ":possible_rival", 1),
+    (assign, ":c", 1)
+    (try_begin),# block dead lords
+      (troop_slot_ge, ":possible_rival", slot_troop_occupation, dplmc_slto_dead),#is dead
+      (troop_set_slot, ":possible_rival", slot_troop_love_interest_1, -1),
+      (troop_set_slot, ":possible_rival", slot_troop_love_interest_2, -1),
+      (troop_set_slot, ":possible_rival", slot_troop_love_interest_3, -1),
+      (assign, ":c", 0),
+    (try_end),
+    (assign, reg0, ":c"),
+]),
 ] + scripts_wse2 + scripts_dplmc
 
 #end of file

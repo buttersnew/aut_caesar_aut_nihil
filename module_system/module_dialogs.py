@@ -56124,6 +56124,10 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
       (this_or_next|troop_slot_eq, ":competitor", slot_troop_love_interest_1, ":bride"),
       (this_or_next|troop_slot_eq, ":competitor", slot_troop_love_interest_2, ":bride"),
       (troop_slot_eq, ":competitor", slot_troop_love_interest_3, ":bride"),
+
+      (call_script, "script_block_dead_suitors", ":competitor"),
+      (eq, reg0, 1),
+
       (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":competitor"),
       (gt, reg0, ":highest_competitor_score"),
       (assign, ":highest_competitor_score", reg0),
@@ -63990,7 +63994,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 			(is_between, ":troop_no", lords_begin, lords_end),
 			(this_or_next|troop_slot_eq, ":troop_no", slot_troop_love_interest_1, "$g_talk_troop"),
 			(this_or_next|troop_slot_eq, ":troop_no", slot_troop_love_interest_2, "$g_talk_troop"),
-				(troop_slot_eq, ":troop_no", slot_troop_love_interest_3, "$g_talk_troop"),
+			(troop_slot_eq, ":troop_no", slot_troop_love_interest_3, "$g_talk_troop"),
+
+      (call_script, "script_block_dead_suitors", ":troop_no"),
+      (eq, reg0, 1),
 
 			(call_script, "script_troop_get_relation_with_troop", ":troop_no", "$g_talk_troop"),
 			(assign, ":fondness", reg0),
@@ -64552,7 +64559,11 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (try_for_range, ":rival_lord", lords_begin, lords_end),
     (this_or_next|troop_slot_eq, ":rival_lord", slot_troop_love_interest_1, "$g_talk_troop"),
     (this_or_next|troop_slot_eq, ":rival_lord", slot_troop_love_interest_2, "$g_talk_troop"),
-    (troop_slot_eq, ":rival_lord", slot_troop_love_interest_2, "$g_talk_troop"),
+    (troop_slot_eq, ":rival_lord", slot_troop_love_interest_3, "$g_talk_troop"),
+
+    (call_script, "script_block_dead_suitors", ":rival_lord"),
+    (eq, reg0, 1),
+
     (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":rival_lord"),
     (le, reg0, -4),
 
@@ -64860,25 +64871,27 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone,"lady_suggest_elope",[(troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional)],
     "Good {playername} -- you are a good and kind man, but a lady cannot defy her family. Such things are not done!", "lady_conclude_relationship",[]],
 
-[anyone,"lady_suggest_elope",
-[
-      (assign, "$romantic_rival", -1),
-	  (try_for_range, ":possible_rival", lords_begin, lords_end),
-	    (this_or_next|troop_slot_eq, ":possible_rival", slot_troop_love_interest_1, "$g_talk_troop"),
-	    (this_or_next|troop_slot_eq, ":possible_rival", slot_troop_love_interest_2, "$g_talk_troop"),
-	    (troop_slot_eq, ":possible_rival", slot_troop_love_interest_2, "$g_talk_troop"),
-	    (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":possible_rival"),
+[anyone,"lady_suggest_elope",[
+  (assign, "$romantic_rival", -1),
+  (try_for_range, ":possible_rival", lords_begin, lords_end),
+    (this_or_next|troop_slot_eq, ":possible_rival", slot_troop_love_interest_1, "$g_talk_troop"),
+    (this_or_next|troop_slot_eq, ":possible_rival", slot_troop_love_interest_2, "$g_talk_troop"),
+    (troop_slot_eq, ":possible_rival", slot_troop_love_interest_3, "$g_talk_troop"),
 
-	    (try_begin),
-	      (eq, "$cheat_mode", 1),
-	      (str_store_troop_name, s4, ":possible_rival"),
-	      (display_message, "str_rival_found_s4_reg0_relation"),
-		(try_end),
-		(gt, reg0, "$g_talk_troop_relation"),
-		(assign, "$romantic_rival", ":possible_rival"),
-      (try_end),
+    (call_script, "script_block_dead_suitors", ":possible_rival"),
+    (eq, reg0, 1),
 
-      (gt, "$romantic_rival", -1),
+    (call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":possible_rival"),
+
+    (try_begin),
+      (eq, "$cheat_mode", 1),
+      (str_store_troop_name, s4, ":possible_rival"),
+      (display_message, "str_rival_found_s4_reg0_relation"),
+    (try_end),
+    (gt, reg0, "$g_talk_troop_relation"),
+    (assign, "$romantic_rival", ":possible_rival"),
+  (try_end),
+  (gt, "$romantic_rival", -1),
 ],
 	##diplomacy start+ change "gentlemen" to "{gentlemen/suitors}", and Sir to {Dominus/Domina}
     "{Dominus/Dominae} -- as you may know, I have been entertaining offers from a number of {gentlemen/suitors} such as yourself. I am not yet at a stage where I can commit to any of them.", "lady_other_suitor",
@@ -65975,7 +65988,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -65999,7 +66015,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -66014,7 +66033,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -66062,7 +66084,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -66638,6 +66663,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (try_for_range, ":lords", active_npcs_begin, active_npcs_end),
     (try_for_range, ":love_interest_slot", slot_troop_love_interest_1, slot_troop_love_interests_end),
       (troop_slot_eq, ":lords", ":love_interest_slot", "$g_talk_troop"),
+
+      (call_script, "script_block_dead_suitors", ":lords"),
+      (eq, reg0, 1),
+
       (assign, ":suitor", ":lords"),
     (try_end),
   (try_end),
@@ -66842,7 +66871,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -66866,7 +66898,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -66881,7 +66916,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -66929,7 +66967,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -67432,7 +67473,11 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 	(try_for_range, ":possible_rival", lords_begin, lords_end),
 		(this_or_next|troop_slot_eq, ":possible_rival", slot_troop_love_interest_1, "$g_talk_troop"),
 		(this_or_next|troop_slot_eq, ":possible_rival", slot_troop_love_interest_2, "$g_talk_troop"),
-			(troop_slot_eq, ":possible_rival", slot_troop_love_interest_2, "$g_talk_troop"),
+    (troop_slot_eq, ":possible_rival", slot_troop_love_interest_2, "$g_talk_troop"),
+
+    (call_script, "script_block_dead_suitors", ":possible_rival"),
+    (eq, reg0, 1),
+
 		(call_script, "script_troop_get_relation_with_troop", "$g_talk_troop", ":possible_rival"),
 
 		(try_begin),
@@ -73771,7 +73816,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -73795,7 +73843,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -73810,7 +73861,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
@@ -73858,7 +73912,10 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 					(troop_slot_eq, ":lady", slot_troop_met, 2),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_1, ":lady"),
 					(this_or_next|troop_slot_eq, ":suitor", slot_troop_love_interest_2, ":lady"),
-						(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+					(troop_slot_eq, ":suitor", slot_troop_love_interest_3, ":lady"),
+
+          (call_script, "script_block_dead_suitors", ":suitor"),
+          (eq, reg0, 1),
 
 					(assign, "$romantic_rival", ":suitor"),
 				(try_end),
