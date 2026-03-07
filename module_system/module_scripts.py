@@ -39233,9 +39233,27 @@ scripts = scripts_hardcoded + [
     (store_faction_of_party, ":led_party_1_faction", ":led_party_1"),
 
     (assign, ":other_lords_nearby", 0),
+
     (try_for_range, ":troop_2", active_npcs_begin, active_npcs_end),
         (neq, ":troop", ":troop_2"),
         (eq, ":other_lords_nearby", 0),
+
+        (assign, ":block", 0),
+        (try_begin),
+            (troop_get_slot, ":aux", ":troop_2", slot_troop_aux),
+            (gt, ":aux", 0),
+            (val_sub, ":aux", "pt_cohors_aux"),
+
+            (store_add, ":slot_legion", ":aux", slot_aux_legion_begin),
+            (troop_get_slot, ":aux_legion", "trp_province_array", ":slot_legion"),
+
+            (store_add, ":slot_legion_commander", ":aux_legion", slot_legion_commanders_begin),
+            (troop_get_slot, ":legion_commander", "trp_province_array", ":slot_legion_commander"),
+
+            (eq, ":legion_commander", ":troop_2"),
+            (assign, ":block", 1),
+        (try_end),
+        (eq, ":block", 0),
 
         (troop_slot_eq, ":troop_2", slot_troop_occupation, slto_kingdom_hero),
 
@@ -39249,7 +39267,7 @@ scripts = scripts_hardcoded + [
         (try_begin),
             (eq, ":led_party_1_attached", -1),
             (store_distance_to_party_from_party, ":distance", ":led_party_1", ":led_party_2"),
-            (lt, ":distance", 2),
+            (le, ":distance", 1),
             (assign, ":other_lords_nearby", 1),
         (else_try),
             (is_between, ":led_party_1_attached", walled_centers_begin, walled_centers_end),
