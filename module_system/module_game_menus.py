@@ -40724,6 +40724,18 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_map),
     ]),
 ]),
+("men_drowned",0,
+  "You are caught in a storm at sea.^^Your casualties: {s8}",
+  "none", [
+	  (set_background_mesh, "mesh_pic_seabattle"),
+    (assign, s8, "str_none"),
+    (call_script, "script_inflict_casualties_to_party", "p_main_party", 2),
+  ],[
+    ("back_to_sea",[],"Continue...",[
+      (call_script, "script_change_player_party_morale", -5),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
 
 ("event_1_games",menu_text_color(0xFF000000)|mnf_disable_all_keys,
   "Boring Games^^You are attending gladiatorial games staged in your honor. The event has not been a success so far. The fighters were sad and unimpressive, the animals slow and disinterested. Even a couple of prisoners tied to stakes for a trio of fierce lions to devour have passed in a quick and unsatisfying fashion.",

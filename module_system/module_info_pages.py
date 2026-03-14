@@ -180,7 +180,6 @@ info_pages = [
 +"Roman officers provide a skill bonus: ^High rank officers, like Vexilarius, Aquilifer, Primus Pilus and Tribunus provide a bonus to leadership skill."
 +"For each 100 men in your party you need two officers (centurio, signifer etc.), otherwise you will get a malus on tactics skill. The only non-Roman 'officer' is currently the hornman."
 +"The idea behind this is the following: Larger armies are more difficult to lead during battles. The orders you give must reach the soldiers. Officers and musicians can help with that.^^"
-+"Sailors can be found as mercenaries in taverns of port towns. Each sailor in the party increases party speed on water by 1% up to a maximum of 40%. (Also sea raiders in your party will increase speed on water)^^"
 +"Commander panel: ^With an army large than 40 men you have access to the commander panel before a battle starts. It allows you to make sacrifices to the gods (improves moral, depends on a dice role, is a good choice if you have a low oratory skill), "
 +"give a speech (depending on your oratory, persuasion and leadership skill it is either a success or fail) or to send skirmishers to attack the enemy (success depends on your tactics skill).^^"
 +"Currently the escape change for a hero after battle is: 37%. Note that this also effect the player."),
@@ -204,7 +203,7 @@ which the enemy has laid. Additionally, on the battlefield you will encounter bu
 ("follower_party", "Follower party",
     "For creating a follower party you need to have at least 60 men in your main party, have 10 non-wounded women and 2,500 denarii for hiring a physician and mules."
     +" Once created, the follower party will automatically disband if you either get defeated or your party size goes below 40 men.^^"
-    +" You can manage the follower party over the camp menu. There you can add more women to the party, store items on the mules or use the physician to treat major wounds. You can also add sailors to the follower party which will grant you a speed bonus when on water. But the troops in the follower party wont fight during battles. You can also manually disband the follower party.^^"
+    +" You can manage the follower party over the camp menu. There you can add more women to the party, store items on the mules or use the physician to treat major wounds. But the troops in the follower party wont fight during battles. You can also manually disband the follower party.^^"
     +" Other advantages of the follower party:^"
     +"^-) Food items stored on the mules will be consumed by your party, saving space in your inventory."
     +"^-) If you enable to automatically buy food after leaving a town, the food will be added to your follower party, if you have one (saving your own inventory space)."
@@ -213,6 +212,13 @@ which the enemy has laid. Additionally, on the battlefield you will encounter bu
     +"^-) For women in your follower party you gain a moral bonus."
     +"^-) Women in your follower party won't fight on the battlefield and you don't have to pay wages for them."
     +"^^As a disadvantage, a follower party will significantly slow down your army."
+),
+
+("sea_travell", "Sea Travell",
+    "Ships can be bought in the harbour of any port town for 40,000 denarii. After buying one, go to that harbour and choose 'Set sail from port'. You need at least 15 men in your party before you can sail.^^"
+    +"Each sailor in the party increases party speed on water by 1% up to a maximum of 40%. Sea raiders also improve speed on water, and sailors in the follower party count as well. Wind and weather change over time, from calm to storm, and will also affect how fast you travel.^^"
+    +"Sea travel has risks. With a party of 30 men or more, random sea events may happen while sailing. These can reduce morale incure costs if a ship gets damaged.^^"
+    +"To land your boat, either sail into a friendly port or, while on water and close to shore, right click your party on the world map and choose 'Find landing point'. This option cannot be used too close to a port. After disembarking, your ships remain on the coast and can be used to embark again. Enemy ports cannot be entered."
 ),
 
 ("aor", "AOR Recruitment", "All Auxiliary cohorts are listed here:^^\

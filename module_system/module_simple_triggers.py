@@ -8319,7 +8319,7 @@ simple_triggers = [
         (try_end),
     (else_try),
         (party_slot_eq, "p_main_party", slot_party_on_water, 1),#not on water
-        (store_random_in_range, ":rand", 1, 16),
+        (store_random_in_range, ":rand", 1, 17),
         (try_begin),
             (eq, ":rand", 1),
             (jump_to_menu,"mnu_event_1_sea"),
@@ -8332,6 +8332,12 @@ simple_triggers = [
         (else_try),
             (eq, ":rand", 4),
             (jump_to_menu,"mnu_event_4_sea"),
+        (else_try),
+            (eq, ":rand", 5),
+            (ge, "$wind_power", 3),
+            (call_script, "script_party_count_fit_regulars", "p_main_party"),
+            (gt, reg0, 50),
+            (jump_to_menu, "mnu_men_drowned"),
         (try_end),
     (try_end),
 ]),
@@ -9344,7 +9350,7 @@ simple_triggers = [
     (store_random_in_range, ":center", walled_centers_begin, walled_centers_end),
 
     (party_slot_eq, ":center", slot_center_can_rebell, 1),
-    (party_slot_ge, ":center", slot_town_lord, 0),
+    # (party_slot_ge, ":center", slot_town_lord, 0),
 
     (party_slot_eq, ":center", slot_center_ongoing_rebellion, 0),
 
@@ -9359,7 +9365,6 @@ simple_triggers = [
     (faction_get_slot, ":culture_overlord", ":faction", slot_faction_culture),
     (neg|party_slot_eq, ":center", slot_center_culture, ":culture_overlord"),
     (store_party_size, ":size", ":center"),
-    #(display_message, "@Check1"),
     (try_begin),
         (party_slot_eq, ":center", slot_party_type, spt_castle),
         (try_begin),
