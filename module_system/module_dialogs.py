@@ -22645,6 +22645,7 @@ dialogs =[
     (assign, ":new_owner", "$temp"),
 
     (try_begin),
+        (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
         (party_get_slot, ":province", "$g_center_taken_by_player_faction", slot_center_province),#
         (neg|troop_slot_ge, "trp_province_array", ":province", 0),
         (troop_set_slot, "trp_province_array", ":province", "$temp"),

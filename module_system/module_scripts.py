@@ -12602,6 +12602,7 @@ scripts = scripts_hardcoded + [
         (else_try),
             (this_or_next|is_between, ":troop_no", active_npcs_begin, active_npcs_end),
             (eq, ":troop_no", "trp_player"),
+            (faction_slot_eq, ":faction_no", slot_faction_government_type, gov_imperial),
             (troop_get_slot, ":cur_province", ":troop_no", slot_troop_govern),
             (ge, ":cur_province", 1),
             (store_add, ":slot", ":cur_province", slot_province_senatorial_begin),
