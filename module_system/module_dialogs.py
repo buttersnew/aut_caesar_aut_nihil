@@ -42770,50 +42770,52 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ]],
 
 [anyone, "event_triggered",[
-(is_between, "$g_talk_troop", companions_begin, companions_end),
-(neg|troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
-(neg|main_party_has_troop, "$g_talk_troop"),
-(assign, reg50, 0),
-(try_for_parties, ":party"),
-	  (party_slot_eq, ":party", slot_party_type, spt_companion_raider),
-	  (party_get_num_companion_stacks, ":num_stacks",":party"),
-	  (try_for_range, ":i_stack", 0, ":num_stacks"),
-			(party_stack_get_troop_id, ":stack_troop",":party",":i_stack"),
-			(eq, ":stack_troop", "$g_talk_troop"),
-	  (try_end),
-	  (assign, reg50, 1),
-(try_end),
-(eq, reg50, 0),
-           ],
-"Would you have me rejoin you?", "companion_rejoin_response",[
-(assign, "$map_talk_troop", "$g_talk_troop"),
- ]],
+  (is_between, "$g_talk_troop", companions_begin, companions_end),
+  (neg|troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
+  (neg|main_party_has_troop, "$g_talk_troop"),
+  (assign, reg50, 0),
+  (try_for_parties, ":party"),
+      (party_slot_eq, ":party", slot_party_type, spt_companion_raider),
+      (party_get_num_companion_stacks, ":num_stacks",":party"),
+      (try_for_range, ":i_stack", 0, ":num_stacks"),
+        (party_stack_get_troop_id, ":stack_troop",":party",":i_stack"),
+        (eq, ":stack_troop", "$g_talk_troop"),
+        (assign, reg50, 1),
+      (try_end),
+  (try_end),
+  (eq, reg50, 0),
+],
+"Would you have me rejoin you?",
+"companion_rejoin_response",[
+  (assign, "$map_talk_troop", "$g_talk_troop"),
+]],
 
 #caravan merchants
 #SB : this should be deprecated
-[anyone, "event_triggered",
-[(eq, "$caravan_escort_state",1),
-(eq, "$g_encountered_party","$caravan_escort_party_id"),
-(le, "$talk_context",tc_party_encounter),
-(store_distance_to_party_from_party, reg0, "$caravan_escort_destination_town", "$caravan_escort_party_id"),
-(lt, reg0, 5),
-(str_store_party_name, s3, "$caravan_escort_destination_town"),
-(assign, reg3, "$caravan_escort_agreed_reward"),
+[anyone, "event_triggered",[
+  (eq, "$caravan_escort_state",1),
+  (eq, "$g_encountered_party","$caravan_escort_party_id"),
+  (le, "$talk_context",tc_party_encounter),
+  (store_distance_to_party_from_party, reg0, "$caravan_escort_destination_town", "$caravan_escort_party_id"),
+  (lt, reg0, 5),
+  (str_store_party_name, s3, "$caravan_escort_destination_town"),
+  (assign, reg3, "$caravan_escort_agreed_reward"),
 ],
-"There! I can see the walls of {s3} in the distance. We've made it safely.\
-Here, take this purse of {reg3} denarii, as I promised. I hope we can travel together again someday.", "close_window",
-[
-(assign,"$caravan_escort_state",0),
-(call_script, "script_troop_add_gold", "trp_player", "$caravan_escort_agreed_reward"),
-(assign,reg(4), "$caravan_escort_agreed_reward"),
-(val_mul,reg(4), 1),
-(add_xp_as_reward,reg(4)),
-(assign, "$g_leave_encounter",1),
+"There! I can see the walls of {s3} in the distance. We've made it safely. Here, take this purse of {reg3} denarii, as I promised. I hope we can travel together again someday.",
+"close_window",[
+  (assign,"$caravan_escort_state",0),
+  (call_script, "script_troop_add_gold", "trp_player", "$caravan_escort_agreed_reward"),
+  (assign,reg(4), "$caravan_escort_agreed_reward"),
+  (val_mul,reg(4), 1),
+  (add_xp_as_reward,reg(4)),
+  (assign, "$g_leave_encounter",1),
 ]],
 
 [anyone, "event_triggered",[],
-"{!}Sorry -- just talking to myself[ERROR- {s51}]", "close_window",[
- ]],
+"{!}Sorry -- just talking to myself[ERROR- {s51}]",
+"close_window",[
+  (assign, "$npc_to_rejoin_party", 0),
+]],
 
 #KINGDOM LORD DIALOGS BEGINS HERE
 
