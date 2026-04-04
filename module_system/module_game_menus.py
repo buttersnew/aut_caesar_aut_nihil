@@ -18760,37 +18760,43 @@ game_menus = [
 	  ("slavemarket",[
 		  (party_slot_ge, "$current_town", slot_center_has_slave_market, 1),
     ],"Visit the slave market.",[
-      (modify_visitors_at_site, "scn_slavemarket"),
-		  (assign, "$talk_context", 0),
-      (reset_visitors),
+      (try_begin),
+        (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
+        (assign, ":slave_trader", reg0),
+        (is_between, ":slave_trader", slave_traders_centers_begin, slave_traders_centers_end),
 
-      (try_for_range, ":visiterator", 1, 8),
-			  (store_random_in_range, ":r", 0, 2),
-			  (try_begin),
-				  (eq, ":r", 0),
-				  (set_visitor, ":visiterator", "trp_roman_town_walker",),
-			  (else_try),
-				  (set_visitor, ":visiterator", "trp_roman_town_walker_female",),
-			  (try_end),
+        (modify_visitors_at_site, "scn_slavemarket"),
+        (assign, "$talk_context", 0),
+        (reset_visitors),
+
+        (try_for_range, ":visiterator", 1, 8),
+          (store_random_in_range, ":r", 0, 2),
+          (try_begin),
+            (eq, ":r", 0),
+            (set_visitor, ":visiterator", "trp_roman_town_walker",),
+          (else_try),
+            (set_visitor, ":visiterator", "trp_roman_town_walker_female",),
+          (try_end),
+        (try_end),
+        # (set_visitor, 10, ":slave_trader",),
+        (set_visitor, 11, ":slave_trader",),
+        (try_for_range, ":visiterator", 12, 31),
+          (store_random_in_range, ":r", 0, 2),
+          (try_begin),
+            (eq, ":r", 0),
+            (store_random_in_range, ":slave_troop", male_slaves_begin + 1, male_slaves_end), # exclude the generic slaves
+            (set_visitor, ":visiterator", ":slave_troop",),
+          (else_try),
+            (store_random_in_range, ":slave_troop", female_slaves_begin + 1, female_slaves_end), # exclude the generic slaves
+            (set_visitor, ":visiterator", ":slave_troop",),
+          (try_end),
+        (try_end),
+        (set_jump_mission,"mt_slave_market"),
+        (jump_to_scene, "scn_slavemarket"),
+        (change_screen_mission),
+      (else_try),
+        (display_message, "@The slave trader is sick...", color_bad_news),
       (try_end),
-      (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
-      (assign, ":slave_trader", reg0),
-      # (set_visitor, 10, ":slave_trader",),
-      (set_visitor, 11, ":slave_trader",),
-      (try_for_range, ":visiterator", 12, 31),
-			  (store_random_in_range, ":r", 0, 2),
-			  (try_begin),
-				  (eq, ":r", 0),
-          (store_random_in_range, ":slave_troop", male_slaves_begin + 1, male_slaves_end), # exclude the generic slaves
-				  (set_visitor, ":visiterator", ":slave_troop",),
-			  (else_try),
-          (store_random_in_range, ":slave_troop", female_slaves_begin + 1, female_slaves_end), # exclude the generic slaves
-				  (set_visitor, ":visiterator", ":slave_troop",),
-			  (try_end),
-      (try_end),
-      (set_jump_mission,"mt_slave_market"),
-		  (jump_to_scene, "scn_slavemarket"),
-		  (change_screen_mission),
     ]),
 
 	  ("scriptorium", [
@@ -23980,27 +23986,32 @@ game_menus = [
         (assign, ":scene_to_use", "scn_lair_forest_bandits"),
       (try_end),
 
-      (set_jump_mission,"mt_visit_bandit_lair"),
+      (try_begin),
+        (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
+        (gt, reg0, -1),
+        (assign, ":slave_trader", reg0),
 
-      (modify_visitors_at_site,":scene_to_use"),
-      (reset_visitors),
+        (set_jump_mission,"mt_visit_bandit_lair"),
 
-      (set_visitor, 0, "trp_player"),
+        (modify_visitors_at_site,":scene_to_use"),
+        (reset_visitors),
 
-      (try_for_range, ":entry", 2, 12),
-        (set_visitor, ":entry", ":bandit_troop", 1),
+        (set_visitor, 0, "trp_player"),
+        (set_visitor, 5, ":slave_trader", 1),
+
+        (try_for_range, ":entry", 2, 12),
+          (set_visitor, ":entry", ":bandit_troop", 1),
+        (try_end),
+
+        (assign, "$talk_context", tc_bandit_lair),
+
+        (assign, "$temp_troop", ":slave_trader"),
+
+        (jump_to_scene, ":scene_to_use"),
+        (change_screen_mission),
+      (else_try),
+        (display_message, "@The slave trader is unavailable right now...", color_bad_news),
       (try_end),
-
-      (assign, "$talk_context", tc_bandit_lair),
-
-      (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
-      (assign, ":slave_trader", reg0),
-      (set_visitor, 5, ":slave_trader", 1),
-
-      (assign, "$temp_troop", ":slave_trader"),
-
-      (jump_to_scene, ":scene_to_use"),
-      (change_screen_mission),
     ]),
 
     ("hire_troops",[
@@ -24166,27 +24177,31 @@ game_menus = [
         (assign, ":scene_to_use", "scn_lair_forest_bandits"),
       (try_end),
 
-      (set_jump_mission,"mt_visit_bandit_lair"),
+      (try_begin),
+        (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
+        (gt, reg0, -1),
+        (assign, ":slave_trader", reg0),
+        (set_jump_mission,"mt_visit_bandit_lair"),
 
-      (modify_visitors_at_site,":scene_to_use"),
-      (reset_visitors),
+        (modify_visitors_at_site,":scene_to_use"),
+        (reset_visitors),
 
-      (set_visitor, 0, "trp_player"),
+        (set_visitor, 0, "trp_player"),
 
-      (try_for_range, ":entry", 2, 12),
-        (set_visitor, ":entry", ":bandit_troop", 1),
+        (try_for_range, ":entry", 2, 12),
+          (set_visitor, ":entry", ":bandit_troop", 1),
+        (try_end),
+
+        (assign, "$talk_context", tc_bandit_lair),
+        (set_visitor, 5, ":slave_trader", 1),
+
+        (assign, "$temp_troop", -1),
+
+        (jump_to_scene, ":scene_to_use"),
+        (change_screen_mission),
+      (else_try),
+        (display_message, "@The slave trader is unavailable right now...", color_bad_news),
       (try_end),
-
-      (assign, "$talk_context", tc_bandit_lair),
-
-      (call_script, "script_get_slave_merchant_troop", "$g_encountered_party"),
-      (assign, ":slave_trader", reg0),
-      (set_visitor, 5, ":slave_trader", 1),
-
-      (assign, "$temp_troop", -1),
-
-      (jump_to_scene, ":scene_to_use"),
-      (change_screen_mission),
     ]),
     ("continue_1",[
       (party_slot_eq, "$g_encountered_party", slot_party_ai_substate, 0), #used in place of global variable

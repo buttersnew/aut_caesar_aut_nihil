@@ -92667,6 +92667,7 @@ scripts = scripts_hardcoded + [
 # script_get_slave_merchant_troop
 ("get_slave_merchant_troop", [
     (store_script_param, ":party", 1),
+    (assign, reg0, -1),
     (try_begin),
         (is_between, ":party", walled_centers_begin, walled_centers_end),
         (store_sub, ":offset", ":party", walled_centers_begin),
