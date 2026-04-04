@@ -90246,9 +90246,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
 []],
 
 [anyone, "pagan_eagle",[],
-"Years ago, a Roman called Germanicus came and searched for the eagles. He found two of the three. If you want to find the third eagle, you should visit"
-+" the witch Hanna. She leaves in a hut near a sacred grove not far from here. It is said she is thousands of years old, but still looks like a young girl."
-+" Also Germanicus visited her, but he wasn't able to persuade her to hand over the Eagle.", "pagan_eagle2",
+"Years ago, a Roman named Germanicus came here searching for the eagles. He found two of the three. If you want to find the third eagle, you should visit"
++" the witch Hanna. She lives in a hut near a sacred grove not far from here. It is said that she is thousands of years old, yet still looks like a young girl."
++" Germanicus also visited her, but he was not able to persuade her to hand over the eagle.", "pagan_eagle2",
 []],
 [anyone|plyr, "pagan_eagle2",[],"Thank you for the information",
 "pagan_eagle3",[]],
