@@ -806,25 +806,25 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_cenutrio_legion_squamata_1 Lorica_Hamata_(Centurio) Lorica_Hamata_(Centurio) 1  cenutrio_legion_squamata_1 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
+ itm_cenutrio_legion_squamata_1 Lorica_Squamata_(Centurio) Lorica_Squamata_(Centurio) 1  cenutrio_legion_squamata_1 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_cenutrio_legion_squamata_2 Lorica_Hamata_(Centurio) Lorica_Hamata_(Centurio) 1  cenutrio_legion_squamata_2 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
+ itm_cenutrio_legion_squamata_2 Lorica_Squamata_(Centurio) Lorica_Squamata_(Centurio) 1  cenutrio_legion_squamata_2 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_cenutrio_legion_squamata_3 Lorica_Hamata_(Centurio) Lorica_Hamata_(Centurio) 1  cenutrio_legion_squamata_3 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
+ itm_cenutrio_legion_squamata_3 Lorica_Squamata_(Centurio) Lorica_Squamata_(Centurio) 1  cenutrio_legion_squamata_3 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_cenutrio_legion_squamata_4 Lorica_Hamata_(Centurio) Lorica_Hamata_(Centurio) 1  cenutrio_legion_squamata_4 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
+ itm_cenutrio_legion_squamata_4 Lorica_Squamata_(Centurio) Lorica_Squamata_(Centurio) 1  cenutrio_legion_squamata_4 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
  2
  13 23
 1
@@ -854,25 +854,25 @@ itemsfile version 3
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_centurio_praetorian_squamata_1 Lorica_Hamata_(Centurio) Lorica_Hamata_(Centurio) 1  centurio_praetorian_squamata_1 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
+ itm_centurio_praetorian_squamata_1 Lorica_Squamata_Praetoriani_(Centurio) Lorica_Squamata_Praetoriani_(Centurio) 1  centurio_praetorian_squamata_1 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_centurio_praetorian_squamata_2 Lorica_Hamata_(Centurio) Lorica_Hamata_(Centurio) 1  centurio_praetorian_squamata_2 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
+ itm_centurio_praetorian_squamata_2 Lorica_Squamata_Praetoriani_(Centurio) Lorica_Squamata_Praetoriani_(Centurio) 1  centurio_praetorian_squamata_2 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_cenutrio_aux_squamata_1 Lorica_Hamata_(Centurio) Lorica_Hamata_(Centurio) 1  cenutrio_aux_squamata_1 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
+ itm_cenutrio_aux_squamata_1 Lorica_Squamata_Auxiliari_(Centurio) Lorica_Squamata_Auxiliari_(Centurio) 1  cenutrio_aux_squamata_1 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
  2
  13 23
 1
 -50.000000  1 1 1 936748722493063917 
 
- itm_cenutrio_aux_hamata_1 Lorica_Hamata_(Centurio) Lorica_Hamata_(Centurio) 1  cenutrio_aux_hamata_1 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
+ itm_cenutrio_aux_hamata_1 Lorica_Hamata_Auxiliari_(Centurio) Lorica_Hamata_Auxiliari_(Centurio) 1  cenutrio_aux_hamata_1 0  16777229 0 6144 704643236 40.750000 75 0 51 13 9 0 0 0 0 0 0 0
  2
  13 23
 1
