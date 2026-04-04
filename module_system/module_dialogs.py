@@ -3716,7 +3716,7 @@ dialogs =[
 "hannibal_prophecy_talk_3",[
 ]],
 [anyone|plyr,"hannibal_prophecy_talk_2",[
-], "Final I meet you too.",
+], "Finally, I meet you!",
 "hannibal_prophecy_talk_3",[
 ]],
 [anyone|plyr,"hannibal_prophecy_talk_2",[
