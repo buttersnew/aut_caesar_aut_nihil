@@ -1,6 +1,14 @@
 
 from __future__ import absolute_import
-export_dir = "C:/Users/maxim/Dropbox/ACAN Modding/Current PILOS/MB Warband - ACAN/Modules/Aut Caesar aut nihil/"
+import subprocess
+
+_branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()
+if _branch == "main":
+    export_dir = "C:/Users/maxim/Dropbox/ACAN Modding/Current PILOS/MB Warband - ACAN/Modules/Aut Caesar aut nihil/"
+    print("Exporting to main branch directory:", export_dir)
+else:
+    export_dir = "C:/Users/maxim/Dropbox/ACAN Modding/Current PILOS/MB Warband - ACAN/Modules/Aut Caesar aut nihil dev/"
+    print("Exporting to dev branch directory:", export_dir)
 
 ## Build release txt files in the <Module> subfolder
 #export_dir = path + "/Module/"
