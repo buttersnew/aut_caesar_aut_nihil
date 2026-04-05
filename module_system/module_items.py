@@ -1387,6 +1387,10 @@ tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 pants_price, pants_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),]),], [fac_culture_garmantian] ],
 
+["berber_nobel_tunic_1", "Berber Nobel Tunic", [("berber_nobel_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
+(call_script, "script_init_desert_tunic"),]),], [fac_culture_garmantian] ],
+
 ["numidian_armor_1", "Berber Tunic", [("berber_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_roman_slinger"),],),], [fac_culture_berber] ],

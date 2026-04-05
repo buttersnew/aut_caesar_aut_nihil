@@ -7971,6 +7971,12 @@ strings = [
 ("body_upper_miadage2", "body_upper_miadage2"),
 ("body_upper", "body_upper"),
 
+("body_upper_desert_tunic_african", "body_upper_desert_tunic_african"),
+("body_upper_desert_tunic_rugged", "body_upper_desert_tunic_rugged"),
+("body_upper_desert_tunic_black3", "body_upper_desert_tunic_black3"),
+("body_upper_desert_tunic_miadage2", "body_upper_desert_tunic_miadage2"),
+("body_upper_desert_tunic", "body_upper_desert_tunic"),
+
 ("leg_no_boots", "leg_no_boots"),
 ("leg_no_boots_african", "leg_no_boots_african"),
 ("leg_no_boots_black3", "leg_no_boots_black3"),

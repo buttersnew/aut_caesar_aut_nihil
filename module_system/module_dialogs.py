@@ -3274,9 +3274,9 @@ dialogs =[
     (this_or_next|eq, "$g_talk_troop", "trp_hispanic_rebell"),
     (this_or_next|eq, "$g_talk_troop", "trp_egyptian_infantry_heavy"),
     (this_or_next|eq, "$g_talk_troop", "trp_desert_bandit"),
-    (this_or_next|eq, "$g_talk_troop", "trp_garamantian_horseman"),
+    (this_or_next|eq, "$g_talk_troop", "trp_garamantian_horseman_merc"),
     (this_or_next|eq, "$g_talk_troop", "trp_meroe_archers"),
-    (this_or_next|eq, "$g_talk_troop", "trp_gaetuli_horseman"),
+    (this_or_next|eq, "$g_talk_troop", "trp_gaetuli_horseman_merc"),
     (this_or_next|eq, "$g_talk_troop", "trp_judean_rebel"),
     (this_or_next|eq, "$g_talk_troop", "trp_illyrian_rebell"),
     (this_or_next|eq, "$g_talk_troop", "trp_alannic_raider"),
@@ -4921,7 +4921,7 @@ dialogs =[
 "close_window",[
 ]],
 
-[trp_gaetuli_horseman,"start",[
+[trp_gaetuli_horseman_merc,"start",[
   (check_quest_active, "qst_wlodowiecus_adventure_4"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 10),
 ],"Chief, Wlodowiecus wants to talk with you.",
@@ -20790,14 +20790,14 @@ dialogs =[
 #start hire of rome talk	END
 
 ###########WLOD ADVENTURES II
-[trp_garamantian_horseman,"start",[
+[trp_garamantian_horseman_merc,"start",[
   (check_quest_active, "qst_wlodowiecus_adventure_2"),
   (quest_slot_eq, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 5),
   (store_current_scene, ":scene"),
   (eq, ":scene", "scn_subsaharan_african_village"),
 ],"Let's celebrate our victory!",
 "close_window",[]],
-[trp_garamantian_horseman,"start",[
+[trp_garamantian_horseman_merc,"start",[
   # (check_quest_active, "qst_wlodowiecus_adventure_2"),
   # (quest_slot_eq, "qst_wlodowiecus_adventure_2", slot_quest_current_state, 5),
   (store_current_scene, ":scene"),
