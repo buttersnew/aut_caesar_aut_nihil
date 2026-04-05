@@ -4327,8 +4327,11 @@ male_egyptian_names_end   = "str_egyptian_name_end"
 male_hebrew_names_begin = "str_hebrew_name_01"
 male_hebrew_names_end   = "str_hebrew_name_end"
 
-male_north_african_names_begin = "str_north_african_name_01"
-male_north_african_names_end   = "str_north_african_name_end"
+male_berber_names_begin = "str_berber_name_01"
+male_berber_names_end   = "str_berber_name_end"
+
+male_garamantian_names_begin = "str_garamantian_name_01"
+male_garamantian_names_end   = "str_garamantian_name_end"
 
 male_nubian_names_begin = "str_nubian_name_01"
 male_nubian_names_end   = "str_nubian_name_end"
@@ -4374,8 +4377,11 @@ female_greek_names_begin = "str_greek_female_name_01"
 female_greek_names_end   = "str_greek_female_name_end"
 
 
-female_north_african_names_begin = "str_north_african_female_name_01"
-female_north_african_names_end   = "str_north_african_female_name_end"
+female_berber_names_begin = "str_berber_female_name_01"
+female_berber_names_end   = "str_berber_female_name_end"
+
+female_garamantian_names_begin = "str_garamantian_female_name_01"
+female_garamantian_names_end   = "str_garamantian_female_name_end"
 
 female_nubian_names_begin = "str_nubian_female_name_01"
 female_nubian_names_end   = "str_nubian_female_name_end"

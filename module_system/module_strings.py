@@ -8,10 +8,10 @@ from strings_character_names.module_names_dacian import *
 from strings_character_names.module_names_nubian import *
 from strings_character_names.module_names_roman import *
 from strings_character_names.module_names_caucasian import *
-from strings_character_names.module_names_north_african import *
+from strings_character_names.module_names_berber import *
+from strings_character_names.module_names_garamantian import *
 from strings_character_names.module_names_arabian import *
 from strings_character_names.module_names_egyptian import *
-from strings_character_names.module_names_north_african import *
 from strings_character_names.module_names_persian import *
 from strings_character_names.module_names_sarmatian import *
 from strings_character_names.module_names_hebrew import *
@@ -10514,4 +10514,4 @@ strings = [
   ("bad", "bad"),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
-] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + north_african_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names
+] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + berber_names + garamantian_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names
