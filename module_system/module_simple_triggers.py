@@ -10749,6 +10749,8 @@ simple_triggers = [
     (store_current_day, ":day"),
     (ge, ":day", 75),
     (eq, "$g_fire", 0),
+    (party_get_slot, ":lord", "p_town_6", slot_town_lord),
+    (eq, ":lord", "trp_kingdom_7_lord"),
     (call_script, "script_add_notification_menu", "mnu_fire_of_rome", 0, 0),
 ]),
 ###civil war triggers in rome
