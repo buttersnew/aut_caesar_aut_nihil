@@ -32923,7 +32923,7 @@ presentations = presentations_wse2 + [
     (try_end),
 
     (call_script, "script_search_lords_tmp", 0, 0),
-    (troop_get_slot, ":indx", "trp_temp_array_c",reg0),
+    (troop_get_slot, ":indx", "trp_temp_array_c",0),
     (val_add, ":indx", 3),
     (troop_set_slot, "trp_temp_array_b", ":indx", ":i"),
     (str_store_troop_name, s0, 0),
