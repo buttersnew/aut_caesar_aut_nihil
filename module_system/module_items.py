@@ -1387,7 +1387,6 @@ tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 pants_price, pants_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),]),], [fac_culture_garmantian] ],
 
-
 ["garmantian_noble_cloak_1", "Noble Garamantian Loincloth with Coat", [("lybian_coat_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garmantian] ],
@@ -1400,22 +1399,22 @@ pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 ["garmantian_noble_cloak_4", "Noble Garamantian Loincloth with Coat", [("lybian_coat_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garmantian] ],
-["garmantian_noble_cloak_5", "Noble Garamantian Loincloth with Coat", [("lybian_coat_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
+["garmantian_noble_cloak_5", "Garamantian Loincloth with Coat", [("lybian_coat_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garmantian] ],
 
 ["lybian_cloth_1", "Garamantian Lioncloth", [("lybian_cloth_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_desert_tunic"),]),], [fac_culture_garmantian] ],
+(call_script, "script_init_pants_long"),]),], [fac_culture_garmantian] ],
 ["lybian_cloth_2", "Garamantian Lioncloth", [("lybian_cloth_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_desert_tunic"),]),], [fac_culture_garmantian] ],
+(call_script, "script_init_pants_long"),]),], [fac_culture_garmantian] ],
 ["lybian_cloth_3", "Garamantian Lioncloth", [("lybian_cloth_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_desert_tunic"),]),], [fac_culture_garmantian] ],
+(call_script, "script_init_pants_long"),]),], [fac_culture_garmantian] ],
 ["lybian_cloth_4", "Garamantian Lioncloth", [("lybian_cloth_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
-(call_script, "script_init_desert_tunic"),]),], [fac_culture_garmantian] ],
+(call_script, "script_init_pants_long"),]),], [fac_culture_garmantian] ],
 
 ["berber_nobel_tunic_1", "Berber Nobel Tunic", [("berber_nobel_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
