@@ -6297,7 +6297,7 @@ weight(get_shield_weight(shield_armor_t2,30,0))|hit_points(shield_hitpoints_t2)|
 425 , abundance(80)|weight(2)|difficulty(2)|spd_rtng(85)|shoot_speed(25) | thrust_damage(28 ,  pierce)|max_ammo(3)|weapon_length(85)|accuracy(90),imodbits_thrown ], #cambiado chief
 
 #african
-["javelin_berber",         "Berber Javelins", [("javelin_x",0),("javelin_x_carry", ixmesh_carry)], itp_type_thrown|itp_primary|itp_secondary ,itcf_throw_javelin|itcf_carry_quiver_back|itcf_show_holster_when_drawn,
+["javelin_berber",         "Light Javelins", [("javelin_x",0),("javelin_x_carry", ixmesh_carry)], itp_type_thrown|itp_primary|itp_secondary ,itcf_throw_javelin|itcf_carry_quiver_back|itcf_show_holster_when_drawn,
 310, abundance(90)|weight(4)|difficulty(1)|spd_rtng(91) | shoot_speed(27) | thrust_damage(27 ,  pierce)|max_ammo(5)|weapon_length(65)|accuracy(90),imodbits_thrown ],
 
 #eastern
