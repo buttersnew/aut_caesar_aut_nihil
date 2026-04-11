@@ -681,8 +681,10 @@ eastern_cives = [itm_sarranid_cloth_robe_fancy_1,itm_sarranid_cloth_robe_fancy_2
 nomadic_cives = [itm_sarmatian_light1,itm_sarmatian_light2,itm_scythian_light4,itm_scythian_light5]
 bosporan_cives = bosporan_tunic+nomadic_cives
 caucasian_cives = caucasian_tunic
-berber_cives = [itm_numidian_armor_5]
-garamantian_cives = [itm_garmantian_armor_2,itm_garmantian_armor_1]
+
+berber_cives = [itm_numidian_armor_5,itm_berber_nobel_tunic_1,itm_berber_nobel_tunic_2,itm_berber_nobel_tunic_3,itm_berber_nobel_tunic_4,itm_berber_nobel_tunic_5,itm_berber_nobel_tunic_6]
+garamantian_cives = [itm_garmantian_armor_2,itm_garmantian_armor_1,itm_garmantian_noble_cloak_1,itm_garmantian_noble_cloak_2,itm_garmantian_noble_cloak_3,itm_garmantian_noble_cloak_4]
+
 syrian_cives = [itm_arab_noble_tunic_1,itm_arab_noble_tunic_2,itm_sarranid_cloth_robe_fancy_1,itm_sarranid_cloth_robe_fancy_2,itm_sarranid_cloth_robe_fancy_3]
 
 weapons_peasant_generic = [itm_shepherds_crook,itm_scythe,itm_pitch_fork,itm_sickle,itm_knife,itm_knife_2,itm_butchering_knife,itm_butchering_knife_2]
