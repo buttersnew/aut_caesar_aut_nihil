@@ -65929,10 +65929,10 @@ scripts = scripts_hardcoded + [
         (eq, ":faction_no", "fac_culture_syrian"),#16
         (str_store_string, s1, "@Syrians"),
     (else_try),
-        (eq, ":faction_no", "fac_culture_berber"),#17
+        (eq, ":faction_no", "fac_culture_egyptian"),#17
         (str_store_string, s1, "@Berbers"),
     (else_try),
-        (eq, ":faction_no", "fac_culture_garmantian"),#18
+        (eq, ":faction_no", "fac_culture_greek"),#18
         (str_store_string, s1, "@Garamntes"),
     (else_try),
         (str_store_string, s1, "str_noone"),

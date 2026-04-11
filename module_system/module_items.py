@@ -1399,7 +1399,7 @@ pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 ["garmantian_noble_cloak_4", "Noble Garamantian Loincloth with Coat", [("lybian_coat_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garmantian] ],
-["garmantian_noble_cloak_5", "Garamantian Loincloth with Coat", [("lybian_coat_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["garmantian_cloak_5", "Garamantian Loincloth with Coat", [("lybian_coat_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garmantian] ],
 
@@ -3465,6 +3465,19 @@ light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garmant
 ["african_feather_band_2", "Bandana with Feathers", [("african_feather_band_2",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
 light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garmantian,fac_culture_nubian] ],
 
+["lion_head", "Lion Helm", [("a_lion_head",0)], itp_type_head_armor   ,0,
+light_head_price,light_head,imodbits_plate, [], [fac_culture_garmantian,fac_culture_nubian,fac_culture_berber] ],
+
+["pilos_old", "Old Pilos", [("pilos_old",0)], itp_unique|itp_type_head_armor |itp_covers_beard ,0,
+medium_head_price,medium_head,imodbits_plate, [], [] ],
+
+["a_lybian_feathers_1", "Lybian Feathers", [("a_lybian_feathers_1",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
+light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garmantian] ],
+["a_lybian_feathers_2", "Lybian Feathers", [("a_lybian_feathers_2",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
+light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garmantian] ],
+["a_lybian_feathers_3", "Lybian Feathers", [("a_lybian_feathers_3",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
+light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garmantian] ],
+
 ["numidian_helm", "Nubian Earings", [("nubian_helmet",0)], itp_merchandise|itp_type_head_armor|itp_civilian,0,
 100, weight(0.1)|head_armor(2)|body_armor(0)|leg_armor(0)|difficulty(7) ,imodbits_plate, [], [fac_culture_nubian]  ],
 ["numidian_wig", "Wig", [("wig_nubian_bl",0)], itp_merchandise|itp_type_head_armor|itp_civilian|itp_covers_beard,0,
@@ -4633,6 +4646,16 @@ weight(get_w_weight(167))|difficulty(7)|spd_rtng(get_polew_speed(167)) | weapon_
 ["numidian_spear_1",         "Numidian Spear", [("numidian_spear_1",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
 get_polarm_price(142,get_w_weight(142),get_polew_speed(142),17,28),
 weight(get_w_weight(142))|difficulty(7)|spd_rtng(get_polew_speed(142)) | weapon_length(142)|swing_damage(28 , pierce) | thrust_damage(28 ,  pierce),imodbits_polearm, [], [fac_culture_berber, fac_culture_garmantian] ],
+["berber_spear_1",         "Numidian War Spear", [("berber_spear_1",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
+get_polarm_price(169,get_w_weight(169),get_polew_speed(169),17,29),
+weight(get_w_weight(169))|difficulty(7)|spd_rtng(get_polew_speed(169)) | weapon_length(169)|swing_damage(29 , pierce) | thrust_damage(29 ,  pierce),imodbits_polearm, [], [fac_culture_berber, fac_culture_garmantian] ],
+
+["garamantian_spear_2",         "Garamantian War Spear", [("garamantian_spear_2",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
+get_polarm_price(167,get_w_weight(167),get_polew_speed(167),17,30),
+weight(get_w_weight(167))|difficulty(7)|spd_rtng(get_polew_speed(167)) | weapon_length(167)|swing_damage(30 , pierce) | thrust_damage(30 ,  pierce),imodbits_polearm, [], [fac_culture_berber, fac_culture_garmantian] ],
+["garamantian_spear_1",         "Garamantian Spear", [("garamantian_spear_1",0)], itp_type_polearm|itp_offset_lance|itp_merchandise| itp_primary|itp_secondary|itp_wooden_parry|itp_has_upper_stab|itp_no_blur, itc_spear,
+get_polarm_price(173,get_w_weight(173),get_polew_speed(173),17,28),
+weight(get_w_weight(173))|difficulty(7)|spd_rtng(get_polew_speed(173)) | weapon_length(173)|swing_damage(28 , pierce) | thrust_damage(28 ,  pierce),imodbits_polearm, [], [fac_culture_berber, fac_culture_garmantian] ],
 #End nubian
 
 #Caucasian
@@ -5073,45 +5096,80 @@ weight(get_shield_weight(shield_armor_t2,38,91))|hit_points(shield_hitpoints_t2)
 get_shield_price(shield_armor_t2, 40, 85),
 weight(get_shield_weight(shield_armor_t2,40,85))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(85),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian]  ],
 
-["african_round_shield",         "African Round Shield", [("african_round_shield",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+["african_round_shield",         "Hide Round Shield", [("african_round_shield",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 49, 0),
-weight(get_shield_weight(shield_armor_t1,49,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(49),imodbits_shield, [], [] ],
+weight(get_shield_weight(shield_armor_t1,49,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(49),imodbits_shield, [], [
+fac_culture_egyptian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian
+] ],
+["african_round_shield_1",         "Hide Round Shield", [("african_round_shield_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t1, 49, 0),
+weight(get_shield_weight(shield_armor_t1,49,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(49),imodbits_shield, [], [
+fac_culture_egyptian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian
+] ],
+["african_round_shield_2",         "Hide Round Shield", [("african_round_shield_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t1, 49, 0),
+weight(get_shield_weight(shield_armor_t1,49,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(49),imodbits_shield, [], [
+fac_culture_egyptian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian
+] ],
+["african_round_shield_3",         "Hide Round Shield", [("african_round_shield_3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t1, 49, 0),
+weight(get_shield_weight(shield_armor_t1,49,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(49),imodbits_shield, [], [
+fac_culture_egyptian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian
+] ],
+["african_round_shield_4",         "Hide Round Shield", [("african_round_shield_4",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t1, 49, 0),
+weight(get_shield_weight(shield_armor_t1,49,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(49),imodbits_shield, [], [
+fac_culture_egyptian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian
+] ],
 
 #nubian
 ["nubian_kite_shield_1",         "Nubian Heater Shield", [("nubian_kite_shield_1",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 90),
 weight(get_shield_weight(shield_armor_t2,40,90))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(92)|shield_width(30)|shield_height(40)|abundance(10),imodbits_shield, [],
-[]  ],
+[fac_culture_egyptian,fac_culture_nubian]  ],
 ["nubian_kite_shield_2",         "Nubian Heater Shield", [("nubian_kite_shield_2",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 90),
 weight(get_shield_weight(shield_armor_t2,40,90))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(92)|shield_width(30)|shield_height(40)|abundance(10),imodbits_shield, [],
-[]  ],
+[fac_culture_egyptian,fac_culture_nubian]  ],
 ["nubian_kite_shield_3",         "Nubian Heater Shield", [("nubian_kite_shield_3",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 90),
 weight(get_shield_weight(shield_armor_t2,40,90))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(92)|shield_width(30)|shield_height(40)|abundance(10),imodbits_shield, [],
-[]  ],
+[fac_culture_egyptian,fac_culture_nubian]  ],
 ["nubian_kite_shield_4",         "Nubian Heater Shield", [("nubian_kite_shield_4",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 90),
 weight(get_shield_weight(shield_armor_t2,40,90))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(92)|shield_width(30)|shield_height(40)|abundance(10),imodbits_shield, [],
-[]  ],
+[fac_culture_egyptian,fac_culture_nubian]  ],
 ["nubian_kite_shield_5",         "Nubian Heater Shield", [("nubian_kite_shield_5",0)], itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 90),
 weight(get_shield_weight(shield_armor_t2,40,90))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(92)|shield_width(30)|shield_height(40)|abundance(10),imodbits_shield, [],
-[]  ],
+[fac_culture_egyptian,fac_culture_nubian]  ],
 
 # eastern shields
-["eastern_shield_inf_light1",         "Light Eastern Shield", [("eovalspineless1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+["african_shield_inf_light1",         "Light Hide Shield", [("eovalspineless_new_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 83),
-weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian]  ],
-["eastern_shield_inf_light2",         "Light Eastern Shield", [("eovalspineless2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_berber,fac_culture_garmantian,fac_culture_nubian]  ],
+["african_shield_inf_light2",         "Light Hide Shield", [("eovalspineless_new_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 83),
-weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian]  ],
-["eastern_shield_inf_light3",         "Light Eastern Shield", [("eovalspineless3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_berber,fac_culture_garmantian,fac_culture_nubian]  ],
+["african_shield_inf_light3",         "Light Hide Shield", [("eovalspineless_new_3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 83),
-weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian]  ],
-["eastern_shield_inf_light4",         "Light Eastern Shield", [("eovalspineless4",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_berber,fac_culture_garmantian,fac_culture_nubian]  ],
+["african_shield_inf_light4",         "Light Hide Shield", [("eovalspineless_new_4",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t2, 40, 83),
-weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian]  ],
+weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_berber,fac_culture_garmantian,fac_culture_nubian]  ],
+
+["eastern_shield_inf_light1",         "Light Wicker Shield", [("eovalspineless1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+get_shield_price(shield_armor_t2, 40, 83),
+weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian]  ],
+["eastern_shield_inf_light2",         "Light Wicker Shield", [("eovalspineless2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+get_shield_price(shield_armor_t2, 40, 83),
+weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian]  ],
+["eastern_shield_inf_light3",         "Light Wicker Shield", [("eovalspineless3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+get_shield_price(shield_armor_t2, 40, 83),
+weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian]  ],
+["eastern_shield_inf_light4",         "Light Wicker Shield", [("eovalspineless4",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+get_shield_price(shield_armor_t2, 40, 83),
+weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian,fac_culture_berber,fac_culture_garmantian,fac_culture_nubian]  ],
 
 ["heavy_wicker_1",         "Eastern Shield", [("heavy_wicker_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_board_shield,
 get_shield_price(shield_armor_t3, 55, 130),
@@ -5175,6 +5233,22 @@ weight(get_shield_weight(shield_armor_t3,50,100))|hit_points(shield_hitpoints_t3
 ["eastern_shield_inf_heavy8",         "Eastern Shield", [("efoval8",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t3,50,100),
 weight(get_shield_weight(shield_armor_t3,50,100))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(50)|shield_height(100)|abundance(80),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian]  ],
+
+["berber_shield_inf_heavy9",         "Eastern Shield", [("efoval_new_9",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+get_shield_price(shield_armor_t3,50,100),
+weight(get_shield_weight(shield_armor_t3,50,100))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(50)|shield_height(100)|abundance(80),imodbits_shield, [], [fac_culture_berber]  ],
+
+["berber_shield_inf_heavy10",         "Eastern Shield", [("efoval_new_a",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+get_shield_price(shield_armor_t3,50,100),
+weight(get_shield_weight(shield_armor_t3,50,100))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(50)|shield_height(100)|abundance(80),imodbits_shield, [], [fac_culture_berber]  ],
+
+["berber_shield_inf_heavy11",         "Eastern Shield", [("efoval_new_b",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+get_shield_price(shield_armor_t3,50,100),
+weight(get_shield_weight(shield_armor_t3,50,100))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(50)|shield_height(100)|abundance(80),imodbits_shield, [], [fac_culture_berber]  ],
+
+["berber_shield_inf_heavy12",         "Eastern Shield", [("efoval_new_c",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
+get_shield_price(shield_armor_t3,50,100),
+weight(get_shield_weight(shield_armor_t3,50,100))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(50)|shield_height(100)|abundance(80),imodbits_shield, [], [fac_culture_berber]  ],
 
 ["eastern_shield_inf_heavy9",         "Eastern Shield", [("efoval9",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_kite_shield,
 get_shield_price(shield_armor_t3,50,100),

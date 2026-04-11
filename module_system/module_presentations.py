@@ -24162,7 +24162,7 @@ presentations = presentations_wse2 + [
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
-    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_berber"),
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_egyptian"),
 
     # clear the string globals that we'll use
     (str_clear, s0),
@@ -24254,7 +24254,7 @@ presentations = presentations_wse2 + [
 
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":object"),
-    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_berber"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_egyptian"),
   ]),
 ]),
 ("upgrade_tree_16", 0, mesh_load_window,[
@@ -24262,7 +24262,7 @@ presentations = presentations_wse2 + [
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
-    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_berber"),
+    (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_greek"),
 
     # clear the string globals that we'll use
     (str_clear, s0),
@@ -24354,7 +24354,7 @@ presentations = presentations_wse2 + [
 
   (ti_on_presentation_event_state_change,[
     (store_trigger_param_1, ":object"),
-    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_berber"),
+    (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_greek"),
   ]),
 ]),
 ##########TROOP TREE END

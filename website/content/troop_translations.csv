@@ -71,8 +71,18 @@ indian_archer,Dhanurdhara,Dhanurdharah,Sanskrit,Archer
 indian_spearman,Patti Kauntika,Patti Kauntikah,Sanskrit,Infantry Spearman
 garamantian_horseman,Amhadi Garamanti,Imhaditen Garamantin,Libyco-Berber,Garamantian Guard
 garamantian_noble_horseman,Aballun Garamanti,Iballunen Garamantin,Libyco-Berber,Garamantian Spearman
+garamantian_skirmisher,Ameggar,Imeggaren,Libyco-Berber (Eastern / Proto-Tuareg),Garamantian Skirmisher
+garamantian_archer,Bu Tagust,At Bu Tagust,Libyco-Berber (Eastern / Proto-Tuareg),Garamantian Archer
+garamantian_noble_spearman,Amallagh Amghar,Imallaghen Imgharen,Libyco-Berber (Eastern / Proto-Tuareg),Garamantian Noble Spearman
+garamantian_noble_cav,Amanay Amghar,Imanayan Imgharen,Libyco-Berber (Eastern / Proto-Tuareg),Garamantian Noble Cavalry
+garamantian_skirmisher_cav,Amanay Ameggar,Imanayan Imeggaren,Libyco-Berber (Eastern / Proto-Tuareg),Garamantian Mounted Skirmisher
 gaetuli_horseman,Amenay Amawri,Imnayen Imawriyen,Libyco-Berber,Moorish Horseman
 gaetuli_noble_horseman,Amhadi n Thugga,Imhaditen n Thugga,Libyco-Berber,Guard of Thugga
+gaetulian_skirmisher,Awedday,Iweddayen,Libyco-Berber (Western / Proto-Zenati),Gaetulian Skirmisher
+gaetulian_archer,Ameznay,Imeznayen,Libyco-Berber (Western / Proto-Zenati),Gaetulian Archer
+gaetulian_noble_spearman,Amenagh Ameqqran,Imenaghen Imeqqranen,Libyco-Berber (Western / Proto-Zenati),Gaetulian Noble Spearman
+gaetulian_noble_cav,Amanay Ameqqran,Imanayan Imeqqranen,Libyco-Berber (Western / Proto-Zenati),Gaetulian Noble Cavalry
+gaetulian_skirmisher_cav,Amanay Awedday,Imanayan Iweddayen,Libyco-Berber (Western / Proto-Zenati),Gaetulian Mounted Skirmisher
 meroe_archers,Neteke,Netekeli,Meroitic / Nubian,Nobleman
 meroe_infantry,Adke-tkk,Adkeli-tkkli,Meroitic / Nubian,Great Warrior
 meroe_guard,Adke Qore-li,Adkeli Qore-li,Meroitic / Nubian,Warrior of the King
